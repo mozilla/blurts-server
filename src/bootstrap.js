@@ -11,54 +11,57 @@ const dump = Cu.reportError;
 
 const XMLHttpRequest = Components.Constructor("@mozilla.org/xmlextras/xmlhttprequest;1");
 
+const kBreachListURL = "https://stage.haveibeenpwned.com/api/v2/breaches";
+
 function initSiteList() {
   let xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = () => {
+  xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       let sites = JSON.parse(xhr.responseText);
       siteSet = new Set(sites.map(site => site.Domain));
       startObserving();
     }
   };
-  xhr.open("GET", "https://stage.haveibeenpwned.com/api/v2/breaches", true);
+  xhr.open("GET", kBreachListURL, true);
   xhr.send();
 }
 
-var kNotificationTopic = "link-visited";
 var observerAdded = false;
 
-var obs = {
-  observe: function(sub, topic, data) {
-    if (topic != kNotificationTopic) {
-      return;
-    }
-    sub.QueryInterface(Ci.nsIURI);
-    warnIfNeeded(sub.host);
+var tpl = {
+  onLocationChange: function(aBrowser, aWebProgress, aRequest, aLocation) {
+    warnIfNeeded(aBrowser, aLocation.host);
   }
 }
 
 function startObserving() {
-  Services.obs.addObserver(obs, kNotificationTopic);
+  EveryWindow.registerCallback(
+    "breach-alerts",
+    (win) => {
+      win.gBrowser.addTabsProgressListener(tpl);
+    },
+    () => {}
+  );
   observerAdded = true;
 }
 
 function stopObserving() {
   if (observerAdded) {
-    Services.obs.removeObserver(obs, kNotificationTopic);
+    EveryWindow.unregisterCallback("breach-alerts");
   }
 }
 
 var siteSet = new Set();
 var warnedHostSet = new Set();
 
-function warnIfNeeded(host) {
+function warnIfNeeded(browser, host) {
   if (host.startsWith("www.")) {
     host = host.substring(4);
   }
   if (!warnedHostSet.has(host) && siteSet.has(host)) {
-    let doc = RecentWindow.getMostRecentBrowserWindow().document;
-    let nb = doc.getElementById("high-priority-global-notificationbox");
-    nb.appendNotification("You visited hacked site " + host + "!", "breachalerts", "", nb.PRIORITY_WARNING_MEDIUM);
+    browser.ownerDocument.defaultView.PopupNotifications.show(
+      browser, "breach-alerts", "You visited hacked site " + host + "!",
+      null, null, null, {persistent: true});
     warnedHostSet.add(host);
   }
 }
@@ -73,3 +76,60 @@ function shutdown(aData, aReason) {
 
 function install(aData, aReason) {}
 function uninstall(aData, aReason) {}
+
+var EveryWindow = {
+  _callbacks: new Map(),
+  _initialized: false,
+
+  registerCallback: function EW_registerCallback(id, init, uninit) {
+    if (this._callbacks.has(id)) {
+      return;
+    }
+
+    this._callForEveryWindow(init);
+    this._callbacks.set(id, {id, init, uninit});
+
+    if (!this._initialized) {
+      Services.obs.addObserver(this._onOpenWindow.bind(this),
+                               "browser-delayed-startup-finished");
+      this._initialized = true;
+    }
+  },
+
+  unregisterCallback: function EW_unregisterCallback(aId, aCallUninit = true) {
+    if (!this._callbacks.has(aId)) {
+      return;
+    }
+
+    if (aCallUninit) {
+      this._callForEveryWindow(this._callbacks.get(aId).uninit);
+    }
+
+    this._callbacks.delete(aId);
+  },
+
+  _callForEveryWindow(aFunction) {
+    let windowList = Services.wm.getEnumerator("navigator:browser");
+    while (windowList.hasMoreElements()) {
+      let win = windowList.getNext();
+      win.delayedStartupPromise.then(() => { aFunction(win) });
+    }
+  },
+
+  _onOpenWindow(aWindow) {
+    for (let c of this._callbacks.values()) {
+      c.init(aWindow);
+    }
+
+    aWindow.addEventListener("unload",
+                             this._onWindowClosing.bind(this),
+                             { once: true });
+  },
+
+  _onWindowClosing(aEvent) {
+    let win = aEvent.target;
+    for (let c of this._callbacks.values()) {
+      c.uninit(win);
+    }
+  },
+};
