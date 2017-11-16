@@ -15,6 +15,7 @@ var kSMTPPassword;
 
 app.post("/user/add", function(req, res) {
   gEmails.add(req.body.email);
+  console.log(req.body.email);
   res.send("");
 });
 
