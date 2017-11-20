@@ -26,6 +26,7 @@ app.post("/user/remove", function(req, res) {
 
 app.post("/user/breached", function(req, res) {
   let emails = req.body.emails;
+  console.log(emails);
   let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
