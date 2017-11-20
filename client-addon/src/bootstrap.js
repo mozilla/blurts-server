@@ -11,7 +11,7 @@ const dump = Cu.reportError;
 const XMLHttpRequest = Components.Constructor("@mozilla.org/xmlextras/xmlhttprequest;1");
 
 const kBreachListURL = "https://stage.haveibeenpwned.com/api/v2/breaches";
-const kAddUserURL = "http://localhost:6060/user/add";
+const kDefaultAddUserURL = "http://localhost:6060/user/add";
 
 function initSiteList() {
   let xhr = new XMLHttpRequest();
@@ -78,10 +78,11 @@ function warnIfNeeded(browser, host) {
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
-            doc.defaultView.alert("success!");
+            doc.defaultView.alert("Breach alerts prototype: user successfully registered with server.");
           }
         };
-        xhr.open("POST", kAddUserURL, true);
+        let addUserURL = Services.prefs.getCharPref("extensions.breachalerts.addUserURL", kDefaultAddUserURL);
+        xhr.open("POST", addUserURL, true);
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xhr.send(JSON.stringify({ email: i.value }));
         i.removeEventListener("keydown", listener);
