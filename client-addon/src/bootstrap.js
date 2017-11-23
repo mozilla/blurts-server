@@ -18,12 +18,10 @@ function initSiteList() {
   xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       let sites = JSON.parse(xhr.responseText);
-      siteSet = new Set(sites.map(site => site.Domain));
       breachData = sites.reduce((lookup, site) => {
         lookup[site.Domain] = site
         return lookup
       }, {} )
-      siteSet.add("haveibeenpwned.com");
       startObserving();
     }
   };
@@ -56,7 +54,6 @@ function stopObserving() {
   }
 }
 
-var siteSet = new Set();
 var warnedHostSet = new Set();
 var breachData = {}
 
@@ -66,7 +63,7 @@ function warnIfNeeded(browser, host) {
   }
 
   let data = breachData[host]
-  if (warnedHostSet.has(host) || !data || !data.IsVerified) {
+  if ((warnedHostSet.has(host) || data == undefined || !data.IsVerified) && host != "haveibeenpwned.com") {
     return;
   }
 
