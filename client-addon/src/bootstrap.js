@@ -118,7 +118,9 @@ function warnIfNeeded(browser, host) {
   warnedHostSet.add(host);
 
   showPopupNotification(
-    "\"" + host + "\" suffered a data breach on " + breachData[host].breachDate + ", in which the following data was lost: " + breachData[host].dataClasses.join(", ") + ".",
+    "\"" + host + "\" suffered a data breach on " + breachData[host].breachDate
+      + ", in which the following data was lost: "
+      + breachData[host].dataClasses.join(", ") + ".",
     aText => {
       let xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function() {
