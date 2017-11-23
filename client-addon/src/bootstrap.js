@@ -20,11 +20,7 @@ function initSiteList() {
       let sites = JSON.parse(xhr.responseText);
       siteSet = new Set(sites.map(site => site.Domain));
       breachData = sites.reduce((lookup, site) => {
-        lookup[site.Domain] = {
-          breachDate: site.BreachDate,
-          verified: site.IsVerified,
-          dataClasses: site.DataClasses,
-        }
+        lookup[site.Domain] = site
         return lookup
       }, {} )
       siteSet.add("haveibeenpwned.com");
@@ -69,7 +65,8 @@ function warnIfNeeded(browser, host) {
     host = host.substring(4);
   }
 
-  if (warnedHostSet.has(host) || !siteSet.has(host) || !breachData[host].verified) {
+  let data = breachData[host]
+  if (warnedHostSet.has(host) || !data || !data.IsVerified) {
     return;
   }
 
@@ -118,9 +115,9 @@ function warnIfNeeded(browser, host) {
   warnedHostSet.add(host);
 
   showPopupNotification(
-    "\"" + host + "\" suffered a data breach on " + breachData[host].breachDate
+    "\"" + host + "\" suffered a data breach on " + data.BreachDate
       + ", in which the following data was lost: "
-      + breachData[host].dataClasses.join(", ") + ".",
+      + data.DataClasses.join(", ") + ".",
     aText => {
       let xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function() {
