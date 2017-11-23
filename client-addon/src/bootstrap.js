@@ -18,8 +18,10 @@ function initSiteList() {
   xhr.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       let sites = JSON.parse(xhr.responseText);
-      siteSet = new Set(sites.map(site => site.Domain));
-      siteSet.add("haveibeenpwned.com");
+      breachData = sites.reduce((lookup, site) => {
+        lookup[site.Domain] = site;
+        return lookup;
+      }, {})
       startObserving();
     }
   };
@@ -52,15 +54,16 @@ function stopObserving() {
   }
 }
 
-var siteSet = new Set();
 var warnedHostSet = new Set();
+var breachData = {}
 
 function warnIfNeeded(browser, host) {
   if (host.startsWith("www.")) {
     host = host.substring(4);
   }
 
-  if (warnedHostSet.has(host) || !siteSet.has(host)) {
+  let data = breachData[host]
+  if (!warnedHostSet.has(host) && data != undefined && data.IsVerified || host == "haveibeenpwned.com") {} else {
     return;
   }
 
@@ -108,7 +111,11 @@ function warnIfNeeded(browser, host) {
 
   warnedHostSet.add(host);
 
-  showPopupNotification("You visited hacked site " + host + "!", aText => {
+  let popupText = "\"" + host + "\" suffered a data breach on "
+    + data.BreachDate + ", in which the following data was lost: "
+    + data.DataClasses.join(", ") + ".";
+
+  showPopupNotification(popupText, aText => {
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
@@ -119,7 +126,7 @@ function warnIfNeeded(browser, host) {
     xhr.open("POST", addUserURL, true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.send(JSON.stringify({ email: aText }));
-  }, "Enter email address and press enter");
+  }, "Enter email address and press enter" );
 }
 
 function startup(aData, aReason) {
