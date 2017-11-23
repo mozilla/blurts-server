@@ -19,6 +19,14 @@ function initSiteList() {
     if (this.readyState == 4 && this.status == 200) {
       let sites = JSON.parse(xhr.responseText);
       siteSet = new Set(sites.map(site => site.Domain));
+      breachData = sites.reduce((lookup, site) => {
+        lookup[site.Domain] = {
+          breachDate: site.BreachDate,
+          verified: site.IsVerified,
+          dataClasses: site.DataClasses,
+        }
+        return lookup
+      }, {} )
       siteSet.add("haveibeenpwned.com");
       startObserving();
     }
@@ -54,6 +62,7 @@ function stopObserving() {
 
 var siteSet = new Set();
 var warnedHostSet = new Set();
+var breachData = {}
 
 function warnIfNeeded(browser, host) {
   if (host.startsWith("www.")) {
