@@ -117,18 +117,22 @@ function warnIfNeeded(browser, host) {
 
   warnedHostSet.add(host);
 
-  showPopupNotification("You visited hacked site " + host + "!", aText => {
-    let xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        doc.defaultView.alert("Breach alerts prototype: user successfully registered with server.");
-      }
-    };
-    let addUserURL = Services.prefs.getCharPref("extensions.breachalerts.serverURL", kDefaultServerURL) + "/user/add";
-    xhr.open("POST", addUserURL, true);
-    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.send(JSON.stringify({ email: aText }));
-  }, "Enter email address and press enter");
+  showPopupNotification(
+    "\"" + host + "\" suffered a data breach on " + breachData[host].breachDate + ", in which the following data was lost: " + breachData[host].dataClasses.join(", ") + ".",
+    aText => {
+      let xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          doc.defaultView.alert("Breach alerts prototype: user successfully registered with server.");
+        }
+      };
+      let addUserURL = Services.prefs.getCharPref("extensions.breachalerts.serverURL", kDefaultServerURL) + "/user/add";
+      xhr.open("POST", addUserURL, true);
+      xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+      xhr.send(JSON.stringify({ email: aText }));
+    },
+    "Enter email address and press enter"
+  );
 }
 
 function startup(aData, aReason) {
