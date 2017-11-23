@@ -69,7 +69,7 @@ function warnIfNeeded(browser, host) {
     host = host.substring(4);
   }
 
-  if (warnedHostSet.has(host) || !siteSet.has(host)) {
+  if (warnedHostSet.has(host) || !siteSet.has(host) || !breachData[host].verified) {
     return;
   }
 
