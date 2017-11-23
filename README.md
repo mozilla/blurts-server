@@ -4,7 +4,7 @@
 
 This is an extension that I'm going to be using as a vehicle for prototyping basic UI and interaction flow for an upcoming feature in Firefox that notifies users when their credentials have possibly been leaked or stolen in a data breach.
 
-# This is only meant as a vehicle for quick testing as we iterate on the design, and to help visualize different ideas. In its current state it is in no way meant to represent actual production code, or how the feature will work or look like when it ships. Pull requests are welcome but please keep in mind the highly experimental/volatile nature of this repository.
+### This is only meant as a vehicle for quick testing as we iterate on the design, and to help visualize different ideas. In its current state it is in no way meant to represent actual production code, or how the feature will work or look like when it ships. Pull requests are welcome but please keep in mind the highly experimental/volatile nature of this repository.
 
 ## Context
 
