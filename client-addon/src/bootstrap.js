@@ -63,7 +63,7 @@ function warnIfNeeded(browser, host) {
   }
 
   let data = breachData[host]
-  if ((warnedHostSet.has(host) || data == undefined || !data.IsVerified) && host != "haveibeenpwned.com") {
+  if (!warnedHostSet.has(host) && data != undefined && data.IsVerified || host == "haveibeenpwned.com") {} else {
     return;
   }
 
