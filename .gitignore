@@ -1,3 +1,2 @@
-server/smtp-credentials.json
-client-addon/dist
-
+smtp-credentials.json
+node_modules
