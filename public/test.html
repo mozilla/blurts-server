@@ -11,8 +11,13 @@
           if (aAlertText) {
             alert(aAlertText);
           }
-          document.getElementById("responseDump").appendChild(
-            document.createTextNode(xhr.response));
+          let responseDumpElt = document.getElementById("responseDump");
+          responseDumpElt.appendChild(
+            document.createTextNode(JSON.stringify(xhr.response));
+          responseDumpElt.appendChild(
+            document.createElement("hr"));
+          responseDumpElt.appendChild(
+            document.createElement("br"));
         }
       };
       xhr.open("POST", aURL, true);
