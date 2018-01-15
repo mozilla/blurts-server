@@ -20,12 +20,17 @@ app.get("/")
 
 app.post("/user/add", function(req, res) {
   gEmails.add(req.body.email);
-  res.json(req.body.email);
+  res.json({ email: req.body.email, info: "added user" });
 });
 
 app.post("/user/remove", function(req, res) {
   gEmails.delete(req.body.email);
-  res.json(req.body.email);
+  res.json({ email: req.body.email, info: "removed user" });
+});
+
+app.post("/user/reset", function(req, res) {
+  gEmails.clear();
+  res.json({ info: "user list cleared" });
 });
 
 let gTransporter;
@@ -51,7 +56,7 @@ app.post("/user/breached", function(req, res) {
       });
     }
   }
-  res.json(response);
+  res.json({ info: "breach alert sent", emails: response });
 });
 
 var port = process.env.PORT || 6060;
