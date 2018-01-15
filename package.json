@@ -3,5 +3,23 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "nodemailer": "^4.4.0"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "blurts-server",
+  "description": "## Summary",
+  "version": "0.0.1",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nhnt11/blurts-server.git"
+  },
+  "author": "Nihanth Subramanya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nhnt11/blurts-server/issues"
+  },
+  "homepage": "https://github.com/nhnt11/blurts-server#readme"
 }
