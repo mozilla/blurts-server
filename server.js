@@ -3,7 +3,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
-const fs = require("fs");
 
 var app = express();
 app.use(bodyParser.json());
@@ -62,17 +61,14 @@ app.post("/user/breached", function(req, res) {
 
 var port = process.env.PORT || 6060;
 
-console.log("Attempting to read SMTP credentials...");
-fs.readFile("smtp-credentials.json", "utf8", function (err, data) {
-  if (err) {
-    return console.log(err);
-  }
-
-  let creds = JSON.parse(data);
-  kSMTPUsername = creds.username;
-  kSMTPPassword = creds.password;
-
+console.log("Attempting to get SMTP credentials from environment...");
+kSMTPUsername = process.env.SMTP_USERNAME;
+kSMTPPassword = process.env.SMTP_PASSWORD;
+if (kSMTPUsername && kSMTPPassword) {
   app.listen(port, function() {
     console.log("Listening on " + port);
   });
-});
+}
+else {
+  console.error("SMTP credentials couldn't be read from the environment, exiting.");
+}
