@@ -80,6 +80,12 @@ if (process.env.DEBUG_DUMMY_SMTP) {
         pass: password,
       },
     });
+    gTransporter.verify(function(error, success) {
+      if (error) {
+        console.log(error);
+        gTransporter = null;
+      }
+    });
   }
 }
 
