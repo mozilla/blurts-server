@@ -39,6 +39,10 @@
       doXHR("/user/breached",
             { emails: document.getElementById("breachUsersInput").value.split(",").map(e => e.trim()) });
     }
+
+    function clearUserList() {
+      doXHR("/user/reset", {});
+    }
   </script>
 </head>
 
@@ -46,6 +50,7 @@
   <input type="text" id="addUserField" /><input type="submit" value="Add User" onclick="addUser()" /><br/>
   <input type="text" id="removeUserField" /><input type="submit" value="Remove User" onclick="removeUser()" /><br/>
   <input type="text" id="breachUsersInput" /><input type="submit" value="Simulate Breach" onclick="simulateBreach()" /><br/>
+  <input type="submit" value="Clear User List" onclick="clearUserList()" /><br/>
   <br/>
   <h1>Response dump:</h1>
   <div id="responseDump" />
