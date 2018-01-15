@@ -60,7 +60,7 @@ if (process.env.DEBUG_DUMMY_SMTP) {
   console.log("Running in dummp SMTP mode, /user/breached will send a JSON response instead of sending emails.");
   gTransporter = {
     sendMail(options, callback) {
-      callback(null, "")
+      callback(null, "dummy mode")
     },
   };
 } else {
