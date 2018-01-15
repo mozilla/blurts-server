@@ -44,12 +44,9 @@ app.post("/user/breached", function(req, res) {
       };
 
       gTransporter.sendMail(mailOptions, (error, info) => {
+        response.push({ email, error, info });
         if (error) {
           console.log(error);
-          response.push([{ email, error }]);
-        }
-        if (info) {
-          response.push([{ email, info }]);
         }
       });
     }
