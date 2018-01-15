@@ -6,6 +6,7 @@ const nodemailer = require("nodemailer");
 
 var app = express();
 app.use(bodyParser.json());
+app.use(express.static("public"));
 
 var gEmails = new Set();
 
@@ -15,6 +16,8 @@ var kSMTPPassword;
 app.get("/", function(req, res) {
   res.send("blurts-server v0.01a");
 });
+
+app.get("/")
 
 app.post("/user/add", function(req, res) {
   gEmails.add(req.body.email);
