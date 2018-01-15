@@ -11,7 +11,6 @@ app.use(express.static("public"));
 var gEmails = new Set();
 
 var kSMTPUsername;
-var kSMTPPassword;
 
 app.get("/", function(req, res) {
   res.send("blurts-server v0.01a");
@@ -70,15 +69,15 @@ if (process.env.DEBUG_DUMMY_SMTP) {
 } else {
   console.log("Attempting to get SMTP credentials from environment...");
   kSMTPUsername = process.env.SMTP_USERNAME;
-  kSMTPPassword = process.env.SMTP_PASSWORD;
-  if (kSMTPUsername && kSMTPPassword) {
+  let password = process.env.SMTP_PASSWORD;
+  if (kSMTPUsername && password) {
     gTransporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 465,
       secure: true,
       auth: {
         user: kSMTPUsername,
-        pass: kSMTPPassword,
+        pass: password,
       },
     });
   }
