@@ -102,13 +102,13 @@ function warnIfNeeded(browser, host) {
       xhr.open("POST", addUserURL, true);
       xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
       xhr.send(JSON.stringify({ emails: aText.split(",").map(e => e.trim()) }));
-    }, "Enter email addresses separated by commas and press enter");
+    }, "Enter email addresses separated by commas and press enter to simulate breach");
     return;
   }
 
   warnedHostSet.add(host);
 
-  showPopupNotification("You visited hacked site " + host + "!", aText => {
+  showPopupNotification(host + " is known to have recently been breached!", aText => {
     let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
@@ -119,7 +119,7 @@ function warnIfNeeded(browser, host) {
     xhr.open("POST", addUserURL, true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.send(JSON.stringify({ email: aText }));
-  }, "Enter email address and press enter");
+  }, "Enter email address and press enter to subscribe");
 }
 
 function startup(aData, aReason) {
