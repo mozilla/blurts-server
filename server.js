@@ -13,6 +13,10 @@ var gEmails = new Set();
 var kSMTPUsername;
 var kSMTPPassword;
 
+app.get("/version", function(req, res) {
+  res.send("blurts-server v0.01a");
+});
+
 app.post("/user/add", function(req, res) {
   gEmails.add(req.body.email);
   console.log(req.body.email);
