@@ -63,8 +63,8 @@ const FxAOAuthUtils = {
   versionSuffix: "/v1",
   authorizationSuffix: "/authorization",
   tokenSuffix: "/token",
-  get authorizationUri() { this.serverURL + this.versionSuffix + this.authorizationSuffix },
-  get tokenUri() { this.serverURL + this.versionSuffix + this.tokenSuffix },
+  get authorizationUri() { return (this.serverURL + this.versionSuffix + this.authorizationSuffix) },
+  get tokenUri() { return (this.serverURL + this.versionSuffix + this.tokenSuffix) },
 };
 
 const localServerURL = process.env.SERVER_URL || "localhost:6060";
