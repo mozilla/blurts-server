@@ -4,6 +4,20 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 const ClientOAuth2 = require("client-oauth2");
+const popsicle = require("popsicle");
+const defaultRequest = function (method, url, body, headers) {
+  return popsicle.get({
+    url: url,
+    body: body,
+    method: method,
+    headers: headers
+  }).then(function (res) {
+    return {
+      status: res.status,
+      body: res.body
+    }
+  })
+}
 
 var app = express();
 app.use(bodyParser.json());
@@ -30,6 +44,10 @@ app.post("/user/remove", function(req, res) {
 app.post("/user/reset", function(req, res) {
   gEmails.clear();
   res.json({ info: "user list cleared" });
+});
+
+app.post("/user/list", function(req, res) {
+  res.json({ emails: Array.from(gEmails) });
 });
 
 let gTransporter;
@@ -59,15 +77,18 @@ app.post("/user/breached", function(req, res) {
 });
 
 const FxAOAuthUtils = {
-  serverURL: "https://oauth-stable.dev.lcip.org",
+  baseURL: "https://oauth-stable.dev.lcip.org",
+  profileBaseURL: "https://stable.dev.lcip.org/profile",
   versionSuffix: "/v1",
   authorizationSuffix: "/authorization",
   tokenSuffix: "/token",
-  get authorizationUri() { return (this.serverURL + this.versionSuffix + this.authorizationSuffix) },
-  get tokenUri() { return (this.serverURL + this.versionSuffix + this.tokenSuffix) },
+  profileSuffix: "/profile",
+  get authorizationUri() { return (this.baseURL + this.versionSuffix + this.authorizationSuffix) },
+  get tokenUri() { return (this.baseURL + this.versionSuffix + this.tokenSuffix) },
+  get profileUri() { return (this.profileBaseURL + this.versionSuffix + this.profileSuffix) },
 };
 
-const localServerURL = process.env.SERVER_URL || "localhost:6060";
+const localServerURL = process.env.SERVER_URL || "http://localhost:6060";
 
 var FxAOAuth = new ClientOAuth2({
   clientId: process.env.OAUTH_CLIENT_ID,
@@ -87,7 +108,13 @@ app.get("/oauth/init", function(req, res) {
 app.get('/oauth/redirect', function (req, res) {
   FxAOAuth.code.getToken(req.originalUrl)
     .then(function (user) {
-      return res.send(user);
+      defaultRequest("get", FxAOAuthUtils.profileUri, "", {
+        Authorization: "Bearer " + user.accessToken,
+      }).then(function (res2) {
+        let email = JSON.parse(res2.body).email;
+        gEmails.add(email);
+        res.send("Registered " + email + " for breach alerts. You may now close this window/tab.");
+      });
     });
 });
 
