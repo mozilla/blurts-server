@@ -76,6 +76,7 @@ var FxAOAuth = new ClientOAuth2({
   authorizationUri: FxAOAuthUtils.authorizationUri,
   redirectUri: localServerURL + "/oauth/redirect",
   scopes: ["profile:email"],
+  state: "DUMMY_FOR_NOW",
 });
 
 app.get("/oauth/init", function(req, res) {
