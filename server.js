@@ -3,6 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
+const ClientOAuth2 = require("client-oauth2");
 
 var app = express();
 app.use(bodyParser.json());
@@ -56,6 +57,42 @@ app.post("/user/breached", function(req, res) {
   }
   res.json({ info: "breach alert sent", emails: response });
 });
+
+const FxAOAuthUtils = {
+  serverURL: "https://oauth-stable.dev.lcip.org",
+  versionSuffix: "/v1",
+  authorizationSuffix: "/authorization",
+  tokenSuffix: "/token",
+  get authorizationUri() { this.serverURL + this.versionSuffix + this.authorizationSuffix },
+  get tokenUri() { this.serverURL + this.versionSuffix + this.tokenSuffix },
+};
+
+const localServerURL = process.env.SERVER_URL || "localhost:6060";
+
+var FxAOAuth = new ClientOAuth2({
+  clientId: process.env.OAUTH_CLIENT_ID,
+  clientSecret: process.env.OAUTH_CLIENT_SECRET,
+  accessTokenUri: FxAOAuthUtils.tokenUri,
+  authorizationUri: FxAOAuthUtils.authorizationUri,
+  redirectUri: localServerURL + "/oauth/redirect",
+  scopes: ["profile:email"],
+});
+
+app.get("/oauth/init", function(req, res) {
+  var uri = FxAOAuth.code.getUri();
+  res.redirect(uri);
+});
+
+app.get('/oauth/redirect', function (req, res) {
+  FxAOAuth.code.getToken(req.originalUrl)
+    .then(function (user) {
+      return res.send(user);
+    });
+});
+
+app.get("/test", function(req, res) {
+  res.send(req.body);
+})
 
 var port = process.env.PORT || 6060;
 
