@@ -1,2 +1,3 @@
 smtp-credentials.json
 node_modules
+.local-run.sh
