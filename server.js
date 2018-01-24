@@ -22,21 +22,65 @@ const defaultRequest = function (method, url, body, headers) {
   })
 }
 
+const localServerURL = process.env.SERVER_URL || "http://localhost:6060";
+
+const getStateString = function() {
+  return crypto.randomBytes(40).toString("hex");
+}
+
 var app = express();
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
 var gEmails = new Set();
+var gUnverifiedEmails = new Map();
 
 var kSMTPUsername;
+
+app.use(sessions({
+  cookieName: "session",
+  secret: process.env.COOKIE_SECRET,
+  duration: 15 * 60 * 1000,
+  activeDuration: 5 * 60 * 100,
+}));
 
 app.get("/", function(req, res) {
   res.send("blurts-server v0.01a");
 });
 
 app.post("/user/add", function(req, res) {
-  gEmails.add(req.body.email);
-  res.json({ email: req.body.email, info: "added user" });
+  let state = getStateString();
+  req.session.state = state;
+  let email = req.body.email;
+  req.session.email = email;
+  let url = localServerURL + "/user/verify?state=" + state;
+  let mailOptions = {
+    from: "\"Firefox Breach Alerts\" <" + kSMTPUsername + ">", // sender address
+    to: email, // list of receivers
+    subject: "Firefox Breach Alert", // Subject line
+    text: "Visit this link to subscribe: " + url, // plain text body
+  };
+
+  gTransporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+      res.json({ email, info: "failed to send verification link", error });
+      return;
+    }
+    gUnverifiedEmails.set(state, email);
+    res.json({ email, info: "sent verification link", link: process.env.DEBUG_DUMMY_SMTP ? url : undefined });
+  });
+});
+
+app.get("/user/verify", function(req, res) {
+  let email = gUnverifiedEmails.get(req.query.state);
+  if (email) {
+    gEmails.add(email);
+    gUnverifiedEmails.delete(req.query.state);
+    res.json({ email, info: "Successfully added " + email});
+    return;
+  }
+  res.json({ info: "Who are you?" });
 });
 
 app.post("/user/remove", function(req, res) {
@@ -91,8 +135,6 @@ const FxAOAuthUtils = {
   get profileUri() { return (this.profileBaseURL + this.versionSuffix + this.profileSuffix) },
 };
 
-const localServerURL = process.env.SERVER_URL || "http://localhost:6060";
-
 var FxAOAuth = new ClientOAuth2({
   clientId: process.env.OAUTH_CLIENT_ID,
   clientSecret: process.env.OAUTH_CLIENT_SECRET,
@@ -102,15 +144,8 @@ var FxAOAuth = new ClientOAuth2({
   scopes: ["profile:email"],
 });
 
-app.use(sessions({
-  cookieName: "session",
-  secret: process.env.COOKIE_SECRET,
-  duration: 15 * 60 * 1000,
-  activeDuration: 5 * 60 * 100,
-}));
-
 app.get("/oauth/init", function(req, res) {
-  let state = crypto.randomBytes(40).toString("hex");
+  let state = getStateString();
   let uri = FxAOAuth.code.getUri({state});
   req.session.state = state;
   res.redirect(uri);

@@ -32,7 +32,10 @@
 
     function addUser() {
       doXHR("/user/add",
-            { email: document.getElementById("addUserField").value });
+            { email: document.getElementById("addUserField").value })
+        .then(function() {
+          alert("A verification link has been emailed to the specified address.");
+        });
     }
 
     function removeUser() {
