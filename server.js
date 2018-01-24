@@ -5,6 +5,9 @@ const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 const ClientOAuth2 = require("client-oauth2");
 const popsicle = require("popsicle");
+const sessions = require("client-sessions");
+const crypto = require("crypto");
+
 const defaultRequest = function (method, url, body, headers) {
   return popsicle.get({
     url: url,
@@ -97,21 +100,36 @@ var FxAOAuth = new ClientOAuth2({
   authorizationUri: FxAOAuthUtils.authorizationUri,
   redirectUri: localServerURL + "/oauth/redirect",
   scopes: ["profile:email"],
-  state: "DUMMY_FOR_NOW",
 });
 
+app.use(sessions({
+  cookieName: "session",
+  secret: process.env.COOKIE_SECRET,
+  duration: 15 * 60 * 1000,
+  activeDuration: 5 * 60 * 100,
+}));
+
 app.get("/oauth/init", function(req, res) {
-  var uri = FxAOAuth.code.getUri();
+  let state = crypto.randomBytes(40).toString("hex");
+  let uri = FxAOAuth.code.getUri({state});
+  req.session.state = state;
   res.redirect(uri);
 });
 
 app.get('/oauth/redirect', function (req, res) {
-  FxAOAuth.code.getToken(req.originalUrl)
+  if (!req.session.state) {
+    res.send("Who are you?");
+    return;
+  }
+  FxAOAuth.code.getToken(req.originalUrl, { state: req.session.state })
+    .catch(function (err) {
+      res.send(err);
+    })
     .then(function (user) {
       defaultRequest("get", FxAOAuthUtils.profileUri, "", {
         Authorization: "Bearer " + user.accessToken,
-      }).then(function (res2) {
-        let email = JSON.parse(res2.body).email;
+      }).then(function (data) {
+        let email = JSON.parse(data.body).email;
         gEmails.add(email);
         res.send("Registered " + email + " for breach alerts. You may now close this window/tab.");
       });
