@@ -4,7 +4,8 @@
     "client-oauth2": "^4.1.0",
     "client-sessions": "^0.8.0",
     "express": "^4.16.2",
-    "nodemailer": "^4.4.0"
+    "nodemailer": "^4.4.0",
+    "popsicle": "^9.2.0"
   },
   "scripts": {
     "start": "node server.js"
