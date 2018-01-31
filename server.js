@@ -124,15 +124,9 @@ app.post("/user/breached", function(req, res) {
 });
 
 const FxAOAuthUtils = {
-  baseURL: "https://oauth-stable.dev.lcip.org",
-  profileBaseURL: "https://stable.dev.lcip.org/profile",
-  versionSuffix: "/v1",
-  authorizationSuffix: "/authorization",
-  tokenSuffix: "/token",
-  profileSuffix: "/profile",
-  get authorizationUri() { return (this.baseURL + this.versionSuffix + this.authorizationSuffix) },
-  get tokenUri() { return (this.baseURL + this.versionSuffix + this.tokenSuffix) },
-  get profileUri() { return (this.profileBaseURL + this.versionSuffix + this.profileSuffix) },
+  get authorizationUri() { return process.env.OAUTH_AUTHORIZATION_URI },
+  get tokenUri() { return process.env.OAUTH_TOKEN_URI },
+  get profileUri() { return process.env.OAUTH_PROFILE_URI },
 };
 
 var FxAOAuth = new ClientOAuth2({
