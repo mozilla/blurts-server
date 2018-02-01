@@ -110,7 +110,7 @@ app.post("/user/breached", function(req, res) {
   let response = [];
 
   // Send notification email to the intersection of the set of
-  // emails in the requet and the set of registered emails.
+  // emails in the request and the set of registered emails.
   for (let email of emails) {
     if (gEmails.has(email)) {
       let mailOptions = {
