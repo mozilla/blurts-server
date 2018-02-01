@@ -8,20 +8,6 @@ const popsicle = require("popsicle");
 const sessions = require("client-sessions");
 const crypto = require("crypto");
 
-const defaultRequest = function (method, url, body, headers) {
-  return popsicle.get({
-    url: url,
-    body: body,
-    method: method,
-    headers: headers
-  }).then(function (res) {
-    return {
-      status: res.status,
-      body: res.body
-    }
-  })
-}
-
 const localServerURL = process.env.SERVER_URL || "http://localhost:6060";
 
 const getStateString = function() {
@@ -155,8 +141,13 @@ app.get('/oauth/redirect', function (req, res) {
       res.send(err);
     })
     .then(function (user) {
-      defaultRequest("get", FxAOAuthUtils.profileUri, "", {
-        Authorization: "Bearer " + user.accessToken,
+      popsicle.get({
+        method: "get",
+        url: FxAOAuthUtils.profileUri,
+        body: "",
+        headers: {
+          Authorization: "Bearer " + user.accessToken,
+        },
       }).then(function (data) {
         let email = JSON.parse(data.body).email;
         gEmails.add(email);
