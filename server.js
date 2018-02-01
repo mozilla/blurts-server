@@ -40,7 +40,7 @@ app.use(sessions({
   cookieName: "session",
   secret: process.env.COOKIE_SECRET,
   duration: 15 * 60 * 1000, // 15 minutes
-  activeDuration: 5 * 60 * 100, // 5 minutes
+  activeDuration: 5 * 60 * 1000, // 5 minutes
 }));
 
 app.get("/", function(req, res) {
