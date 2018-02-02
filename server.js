@@ -164,9 +164,6 @@ app.get('/oauth/redirect', function (req, res) {
     return;
   }
   FxAOAuth.code.getToken(req.originalUrl, { state: req.session.state })
-    .catch(function (err) {
-      res.send(err);
-    })
     .then(function (user) {
       popsicle.get({
         method: "get",
@@ -180,6 +177,9 @@ app.get('/oauth/redirect', function (req, res) {
         gEmails.add(email);
         res.send("Registered " + email + " for breach alerts. You may now close this window/tab.");
       });
+    })
+    .catch(function (err) {
+      res.send(err);
     });
 });
 
