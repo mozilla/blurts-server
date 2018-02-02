@@ -3,54 +3,16 @@
 <head>
   <meta charset="utf-8">
   <title>blurts-server testing UI</title>
-  <script type="text/javascript">
-    function doXHR(aURL, aBodyObj, aAlertText) {
-      let xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          if (aAlertText) {
-            alert(aAlertText);
-          }
-          let responseDumpElt = document.getElementById("responseDump");
-          responseDumpElt.appendChild(
-            document.createTextNode(xhr.response));
-          responseDumpElt.appendChild(
-            document.createElement("hr"));
-          responseDumpElt.appendChild(
-            document.createElement("br"));
-        }
-      };
-      xhr.open("POST", aURL, true);
-      xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-      xhr.send(JSON.stringify(aBodyObj));
-    }
-
-    function addUser() {
-      doXHR("/user/add",
-            { email: document.getElementById("addUserField").value });
-    }
-
-    function removeUser() {
-      doXHR("/user/remove",
-            { email: document.getElementById("removeUserField").value });
-    }
-
-    function simulateBreach() {
-      doXHR("/user/breached",
-            { emails: document.getElementById("breachUsersInput").value.split(",").map(e => e.trim()) });
-    }
-
-    function clearUserList() {
-      doXHR("/user/reset", {});
-    }
-  </script>
+  <script src="main.js"></script>
 </head>
 
 <body>
   <input type="text" id="addUserField" /><input type="submit" value="Add User" onclick="addUser()" /><br/>
+  <input type="submit" value="Add User Using FxA" onclick="doOauth()"/><br/>
   <input type="text" id="removeUserField" /><input type="submit" value="Remove User" onclick="removeUser()" /><br/>
   <input type="text" id="breachUsersInput" /><input type="submit" value="Simulate Breach" onclick="simulateBreach()" /><br/>
   <input type="submit" value="Clear User List" onclick="clearUserList()" /><br/>
+  <input type="submit" value="Dump User List" onclick="dumpUserList()" /><br/>
   <br/>
   <h1>Response dump:</h1>
   <div id="responseDump" />

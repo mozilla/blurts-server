@@ -1,2 +1,2 @@
-smtp-credentials.json
 node_modules
+.env
