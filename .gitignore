@@ -2,3 +2,5 @@ node_modules
 .env
 .nyc_output
 .coveralls.yml
+.DS_Store
+breach_hashsets

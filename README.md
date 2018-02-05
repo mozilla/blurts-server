@@ -51,14 +51,6 @@ for more background, objectives, key use cases.
 
 2. Visit the `test.html` page at [localhost:6060/test.html](http://localhost:6060/test.html)
 
-### Lint
-
-After installing the dependencies, you can lint the code by calling:
-
-```sh
-npm run lint
-```
-
 #### Emails
 
 The included `.env-dist` sets `DEBUG_DUMMY_SMTP=1` which disables emails.
@@ -91,9 +83,34 @@ OAUTH_PROFILE_URI="https://stable.dev.lcip.org/profile/v1/profile"
 OAUTH_TOKEN_URI="https://oauth-stable.dev.lcip.org/v1/token"
 ```
 
+#### Breach Hashsets
+
+This requires an enterprise subscriber API token from HIBP, which you will have
+to get manually. Please ask a project admin if you need one. To download HIBP 
+breach hashsets, set a `HIBP_API_TOKEN` environment variable. You can set and 
+source it via the `.env` file, or set it directly:
+
+```sh
+export HIBP_API_TOKEN="<HIBP-API-TOKEN>"
+```
+
+With the `HIBP_API_TOKEN` set, run the `get_hashsets.js` script:
+
+```sh
+node get_hashsets.js
+```
+
+This will download the `.zip` files into `breach_hashsets/` directory.
+
 ## Testing
 
-TBD
+### Lint
+
+After installing the dependencies, you can lint the code by calling:
+
+```sh
+npm run lint
+```
 
 ## Deployment
 

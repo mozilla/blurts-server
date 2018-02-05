@@ -13,7 +13,8 @@
     "dotenv": "^5.0.0",
     "express": "^4.16.2",
     "nodemailer": "^4.4.0",
-    "popsicle": "^9.2.0"
+    "popsicle": "^9.2.0",
+    "request": "^2.83.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.0",
@@ -41,6 +42,6 @@
     "lint": "eslint .",
     "pretest": "eslint .",
     "start": "node server.js",
-    "test": "nyc tape tests/**/*.js | faucet && nyc report --reporter=text-lcov | coveralls"
+    "test": "nyc tape tests/**/test*.js | faucet && nyc report --reporter=text-lcov | coveralls"
   }
 }
