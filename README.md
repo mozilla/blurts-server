@@ -18,13 +18,13 @@ cases.
 ## Development
 ### Requirements
 
-* [node](https://nodejs.org/) (with npm)
+* [node](https://nodejs.org/) 8 (with npm)
 
 ### Install
 
 1. clone and change to the directory:
 
-        git clone https://github.com/nhnt11/blurts-server.git
+        git clone https://github.com/mozilla/blurts-server.git
         cd blurts-server
 
 2. Install dependencies:
@@ -37,13 +37,11 @@ cases.
 
 ### Run
 
-1. Source the `.env` file to set required environment variables:
-
-        source .env
-
-2. Run the server:
+1. Run the server:
 
         node server.js
+
+2. Visit the `test.html` page at [localhost:6060/test.html](http://localhost:6060/test.html)
 
 #### Emails
 
@@ -54,11 +52,11 @@ config values for sending email.
 
 You can set and source these via the `.env` file, or set them directly:
 ```
-export DEBUG_DUMMY_SMTP=0
+export DEBUG_DUMMY_SMTP=
 export SMTP_HOST=<your-smtp-host>
 export SMTP_PORT=<your-smtp-port>
 export SMTP_USERNAME=<your-username>
-export SMTP_PASSWORD=<your-password
+export SMTP_PASSWORD=<your-password>
 ```
 
 #### Firefox Accounts

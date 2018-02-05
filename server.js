@@ -203,12 +203,12 @@ if (process.env.DEBUG_DUMMY_SMTP) {
   console.log("Attempting to get SMTP config from environment...");
   kSMTPUsername = process.env.SMTP_USERNAME;
   let password = process.env.SMTP_PASSWORD;
-  let SMTP_host = process.env.SMTP_HOST;
-  let SMTP_port = process.env.SMTP_PORT;
-  if (kSMTPUsername && password) {
+  let host = process.env.SMTP_HOST;
+  let port = process.env.SMTP_PORT;
+  if (kSMTPUsername && password && host && port) {
     gTransporter = nodemailer.createTransport({
-      host: SMTP_host,
-      port: SMTP_port,
+      host: host,
+      port: port,
       secure: true,
       auth: {
         user: kSMTPUsername,
@@ -225,7 +225,7 @@ if (process.env.DEBUG_DUMMY_SMTP) {
 }
 
 if (!gTransporter) {
-  console.log("SMTP config unavailble. Email features will not work.")
+  console.log("SMTP config unavailable. Email features will not work.")
 }
 app.listen(port, function() {
   console.log("Listening on " + port);
