@@ -1,81 +1,90 @@
-# Breach Alerts Prototype
+# Breach Alerts
 
 ## Summary
 
-This is an extension that I'm going to be using as a vehicle for prototyping basic UI and interaction flow for an upcoming feature in Firefox that notifies users when their credentials have possibly been leaked or stolen in a data breach.
-
-### This is only meant as a vehicle for quick testing as we iterate on the design, and to help visualize different ideas. In its current state it is in no way meant to represent actual production code, or how the feature will work or look like when it ships. Pull requests are welcome but please keep in mind the highly experimental/volatile nature of this repository.
+Firefox Breach Alerts notifies users when their credentials have possibly been leaked or stolen in a data breach. Powered by [haveibeenpwned.com](https://haveibeenpwned.com/).
 
 ## Context
 
-Data breaches ("hacks") are a real problem on the modern Web, with sensitive data like email addresses, passwords, credit card details, and other personal information being stolen and/or leaked by parties with malicious intent. As they grow more frequent, it's desirable to keep track of them and communicate about them to Web users when their credentials may have been compromised, and educate them on the repercussions, what they can do when such a breach occurs, and protect themselves in the future.
+See the [Have I Been Pwned about page](https://haveibeenpwned.com/About) for
+the "what" and "why" of data breach alerts.
 
-This project aims to explore how we, as the user agent, can attempt to do this. We're teaming up with https://haveibeenpwned.com/ [1][2] as our data source.
+This project aims to explore how Firefox - as the user agent - can support this. 
 
-[1] https://haveibeenpwned.com/About
-[2] https://en.wikipedia.org/wiki/Have_I_Been_Pwned%3F
+See [the Breach Alert Product
+Brief](https://docs.google.com/document/d/1GTS0HIihfTErA7P19HPYfvHCA3v9g67B_Cf2bpmE0Bw/edit) for more background, objectives, key use
+cases.
 
-## Basic Goals
+## Development
+### Requirements
 
-1. Inform users about data breaches through the Firefox UI - for example, a notification when they visit a site (or maybe when they focus a form on a login page) known to have recently been breached.
-2. Expose documentation/educational information about data breaches in the Firefox UI - for example, a "Learn more" link in the notification mentioned above leading to a support page.
-3. Offer a way for interested users to learn about and opt into a service that notifies them (e.g. via email) when they may be affected by breaches in the future.
+* [node](https://nodejs.org/) 8 (with npm)
 
-## Privacy Concerns
+### Install
 
-The third goal brings up some privacy concerns, since users would need to supply an email address to receive notifications. Who is the custodian of this data? Can we avoid sending user data to haveibeenpwned.com? Can we still offer useful functionality to users who opt out of subscribing their email address? While the project is still in infancy, the idea is to offer as much utility as possible while respecting the user's privacy.
+1. clone and change to the directory:
 
-## Try it (basic testing instructions for Unix OSes as of Nov 23 2017)
+        git clone https://github.com/mozilla/blurts-server.git
+        cd blurts-server
 
-### Clone
+2. Install dependencies:
 
+        npm install
+
+3. Copy the `.env-dist` file to `.env`:
+
+        cp .env-dist .env
+
+### Run
+
+1. Run the server:
+
+        node server.js
+
+2. Visit the `test.html` page at [localhost:6060/test.html](http://localhost:6060/test.html)
+
+#### Emails
+
+The included `.env-dist` sets `DEBUG_DUMMY_SMTP=1` which disables emails.
+
+To send emails, you'll need to unset `DEBUG_DUMMY_SMTP` and supply real SMTP
+config values for sending email.
+
+You can set and source these via the `.env` file, or set them directly:
 ```
-$ git clone https://github.com/nhnt11/BreachAlerts.git
-```
-
-### Server (to test subscribing an email address and sending a "Breach Alert" email)
-
-Prerequisites: Node.js and npm (example commands assume you have `node` and `npm` in your path)
-
-You'll need to supply SMTP credentials for sending the email. To do so, create a file `smtp-credentials.json` in the `BreachAlerts/server` folder:
-
-```
-{
-  "username": "<username>",
-  "password": "<password>"
-}
-
-```
-
-NOTE: Currently the Gmail SMTP server is hardcoded, so you'll need to modify that in server.js if you're using something else.
-
-```
-$ cd BreachAlerts/server
-$ npm install
-$ node server.js
-```
-
-### Client:
-
-Prerequisites: currently Firefox 58.0 or 59.0.
-
-```
-$ cd BreachAlerts/client-addon
-$ ./package.sh # This creates a client-addon.xpi file in the dist/ folder
+export DEBUG_DUMMY_SMTP=
+export SMTP_HOST=<your-smtp-host>
+export SMTP_PORT=<your-smtp-port>
+export SMTP_USERNAME=<your-username>
+export SMTP_PASSWORD=<your-password>
 ```
 
-Then, in Firefox:
-1. Navigate to `about:config`
-2. Search for the `extensions.legacy.enabled` pref and change the value to true
-3. Navigate to `about:debugging`
-4. Click the "Load Temporary Add-on" button, and select client-addon.xpi created by package.sh (`/path/to/clone/BreachAlerts/client-addon/dist/client-addon.xpi`)
+#### Firefox Accounts
 
-Current functionality:
+To use Firefox Accounts, you'll need to [create an FxA Oauth Client](https://oauth-stable.dev.lcip.org/console/clients)
+and then set some `OAUTH` config values.
 
-1. A doorhanger notification is shown when you visit a site known to have been breached (like linkedin.com or adobe.com)
-2. The doorhanger has a textbox you can use to subscribe an email address for future email alerts - type the address and press enter.
-3. If you visit haveibeenpwned.com (an arbitrary, hard-coded choice), you'll get a doorhanger with a textbox - you can use this one to simulate a breach. Type a list of comma-separated email addresses and press enter; the server will send an email to any email addresses in the list that were previously subscribed.
+You can set and source these via the `.env` file, or set them directly:
+```
+OAUTH_CLIENT_ID=<your-fxa-oauth-client-id>
+OAUTH_CLIENT_SECRET=<your-fxa-oauth-client-secret>
+OAUTH_AUTHORIZATION_URI="https://oauth-stable.dev.lcip.org/v1/authorization"
+OAUTH_PROFILE_URI="https://stable.dev.lcip.org/profile/v1/profile"
+OAUTH_TOKEN_URI="https://oauth-stable.dev.lcip.org/v1/token"
+```
 
-## Notes
+## Testing
+TBD
 
-I chose to make it a legacy addon to make it easy to port into mozilla-central in the future - it will likely involve window manipulation code.
+## Deployment
+
+blurts is designed with [12-factor](https://12factor.net/) methodology.
+
+### Deploy on heroku
+
+You will need to set required environment variables on heroku.
+
+```
+heroku config:set COOKIE_SECRET=unsafe-cookie-secret-for-heroku
+heroku config:set DEBUG_DUMMY_SMTP=1
+```
