@@ -29,12 +29,6 @@ app.get("/", function(req, res) {
 app.use("/oauth", OAuthRoute);
 app.use("/user", UserRoute);
 
-
-// TODO: remove this
-app.get("/test", function(req, res) {
-  res.send(req.body);
-})
-
 EmailUtils.init().then(() => {
   app.listen(AppConstants.PORT, function() {
     console.log("Listening on " + AppConstants.PORT);
