@@ -61,10 +61,12 @@ router.post("/reset", function(req, res) {
   res.json({ info: "user list cleared" });
 });
 
-// This exists only right now for development purposes.
-router.post("/list", function(req, res) {
-  res.json({ emails: Array.from(gEmails) });
-});
+if (process.env.DEBUG_ALLOW_USER_LIST) {
+  // This exists for development purposes.
+  router.post("/list", function(req, res) {
+    res.json({ emails: Array.from(gEmails) });
+  });
+}
 
 router.post("/breached", function(req, res) {
   let emails = req.body.emails;
