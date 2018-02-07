@@ -1,4 +1,11 @@
 {
+  "name": "blurts-server",
+  "description": "Blurts backend Server",
+  "version": "0.0.1",
+  "author": "Nihanth Subramanya",
+  "bugs": {
+    "url": "https://github.com/mozilla/blurts-server/issues"
+  },
   "dependencies": {
     "body-parser": "^1.18.2",
     "client-oauth2": "^4.1.0",
@@ -8,23 +15,19 @@
     "nodemailer": "^4.4.0",
     "popsicle": "^9.2.0"
   },
-  "scripts": {
-    "start": "node server.js"
+  "devDependencies": {
+    "eslint": "^4.17.0"
   },
-  "name": "blurts-server",
-  "description": "Blurts backend Server",
-  "version": "0.0.1",
+  "homepage": "https://github.com/mozilla/blurts-server#readme",
+  "license": "ISC",
   "main": "server.js",
-  "devDependencies": {},
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mozilla/blurts-server.git"
   },
-  "author": "Nihanth Subramanya",
-  "license": "ISC",
-  "private": true,
-  "bugs": {
-    "url": "https://github.com/mozilla/blurts-server/issues"
-  },
-  "homepage": "https://github.com/mozilla/blurts-server#readme"
+  "scripts": {
+    "lint": "eslint .",
+    "start": "node server.js"
+  }
 }

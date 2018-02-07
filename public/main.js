@@ -1,19 +1,18 @@
+/* eslint-env browser */
+
 function doXHR(aURL, aBodyObj, aAlertText, aDebug=true) {
   return new Promise((resolve) => {
-    let xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
+      if (this.readyState === 4 && this.status === 200) {
         if (aAlertText) {
           alert(aAlertText);
         }
         if (aDebug) {
-          let responseDumpElt = document.getElementById("responseDump");
-          responseDumpElt.appendChild(
-            document.createTextNode(xhr.response));
-          responseDumpElt.appendChild(
-            document.createElement("hr"));
-          responseDumpElt.appendChild(
-            document.createElement("br"));
+          const responseDumpElt = document.getElementById("responseDump");
+          responseDumpElt.appendChild(document.createTextNode(xhr.response));
+          responseDumpElt.appendChild(document.createElement("hr"));
+          responseDumpElt.appendChild(document.createElement("br"));
         }
         resolve(xhr.response);
       }
@@ -24,6 +23,7 @@ function doXHR(aURL, aBodyObj, aAlertText, aDebug=true) {
   });
 }
 
+// eslint-disable-next-line no-unused-vars
 function addUser() {
   doXHR("/user/add",
         { email: document.getElementById("addUserField").value })
@@ -32,24 +32,29 @@ function addUser() {
     });
 }
 
+// eslint-disable-next-line no-unused-vars
 function removeUser() {
   doXHR("/user/remove",
         { email: document.getElementById("removeUserField").value });
 }
 
+// eslint-disable-next-line no-unused-vars
 function simulateBreach() {
   doXHR("/user/breached",
         { emails: document.getElementById("breachUsersInput").value.split(",").map(e => e.trim()) });
 }
 
+// eslint-disable-next-line no-unused-vars
 function clearUserList() {
   doXHR("/user/reset", {});
 }
 
+// eslint-disable-next-line no-unused-vars
 function dumpUserList() {
   doXHR("/user/list", {});
 }
 
+// eslint-disable-next-line no-unused-vars
 function doOauth() {
   window.open("/oauth/init");
 }
