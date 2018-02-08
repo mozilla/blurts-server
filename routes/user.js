@@ -62,6 +62,7 @@ router.post("/reset", (req, res) => {
   res.json({ info: "user list cleared" });
 });
 
+// eslint-disable-next-line no-process-env
 if (process.env.DEBUG_ALLOW_USER_LIST) {
   // This exists for development purposes.
   router.post("/list", (req, res) => {

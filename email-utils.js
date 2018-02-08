@@ -15,6 +15,7 @@ let gTransporter;
 const EmailUtils = {
   init() {
     // Allow a debug mode that will send JSON back to the client instead of sending emails.
+    // eslint-disable-next-line no-process-env
     if (process.env.DEBUG_DUMMY_SMTP) {
       console.log("Running in dummy SMTP mode, /user/breached will send a JSON response instead of sending emails.");
       gTransporter = {

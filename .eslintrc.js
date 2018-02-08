@@ -14,6 +14,7 @@ module.exports = {
     "no-process-env": "error",
     "no-unused-vars": ["error", {vars: "all", args: "none", ignoreRestSiblings: false}],
     "no-var": "error",
+    "no-warning-comments": "warn",
     "prefer-const": "off",
     "require-jsdoc": "off",
     "semi": ["error", "always"],
