@@ -14,12 +14,12 @@ const gEmails = require("../subscribers");
 // to abstract fetching API endpoints from the OAuth server (instead
 // of specifying them in the environment) in the future.
 const FxAOAuthUtils = {
-  get authorizationUri() { return AppConstants.OAUTH_AUTHORIZATION_URI },
-  get tokenUri() { return AppConstants.OAUTH_TOKEN_URI },
-  get profileUri() { return AppConstants.OAUTH_PROFILE_URI },
+  get authorizationUri() { return AppConstants.OAUTH_AUTHORIZATION_URI; },
+  get tokenUri() { return AppConstants.OAUTH_TOKEN_URI; },
+  get profileUri() { return AppConstants.OAUTH_PROFILE_URI; },
 };
 
-var FxAOAuth = new ClientOAuth2({
+const FxAOAuth = new ClientOAuth2({
   clientId: AppConstants.OAUTH_CLIENT_ID,
   clientSecret: AppConstants.OAUTH_CLIENT_SECRET,
   accessTokenUri: FxAOAuthUtils.tokenUri,
@@ -28,36 +28,37 @@ var FxAOAuth = new ClientOAuth2({
   scopes: ["profile:email"],
 });
 
-router.get("/init", function(req, res) {
+router.get("/init", (req, res) => {
   // Set a random state string in a cookie so that we can verify
   // the user when they're redirected back to us after auth.
-  let state = crypto.randomBytes(40).toString("hex");
-  let uri = FxAOAuth.code.getUri({state});
+  const state = crypto.randomBytes(40).toString("hex");
+  const uri = FxAOAuth.code.getUri({state});
   req.session.state = state;
   res.redirect(uri);
 });
 
-router.get("/redirect", function (req, res) {
+router.get("/redirect", (req, res) => {
   if (!req.session.state) {
+    // TODO: Needs better error message
     res.send("Who are you?");
     return;
   }
   FxAOAuth.code.getToken(req.originalUrl, { state: req.session.state })
-    .then(function (user) {
+    .then((user) => {
       return popsicle.get({
         method: "get",
         url: FxAOAuthUtils.profileUri,
         body: "",
         headers: {
-          Authorization: "Bearer " + user.accessToken,
+          Authorization: `Bearer ${user.accessToken}`,
         },
-      }).then(function (data) {
-        let email = JSON.parse(data.body).email;
+      }).then((data) => {
+        const email = JSON.parse(data.body).email;
         gEmails.add(email);
-        res.send("Registered " + email + " for breach alerts. You may now close this window/tab.");
+        res.send(`Registered ${email} for breach alerts. You may now close this window/tab.`);
       });
     })
-    .catch(function (err) {
+    .catch((err) => {
       res.send(err);
     });
 });

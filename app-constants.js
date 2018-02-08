@@ -1,5 +1,7 @@
 "use strict";
 
+/* eslint-disable no-process-env */
+
 require("dotenv").load();
 
 const kEnvironmentVariables = [

@@ -12,18 +12,18 @@ const gEmails = require("../subscribers");
 // We send verification emails to addresses that want to subscribe.
 // These addresses are temporarily stored here, mapped to the unique
 // string token that is used for verification.
-var gUnverifiedEmails = new Map();
+const gUnverifiedEmails = new Map();
 
-router.post("/add", function(req, res) {
+router.post("/add", (req, res) => {
   // TODO: use a hash of the email address instead of a random string.
-  let state = crypto.randomBytes(40).toString("hex");
+  const state = crypto.randomBytes(40).toString("hex");
   req.session.state = state;
-  let email = req.body.email;
+  const email = req.body.email;
   req.session.email = email;
-  let url = AppConstants.SERVER_URL + "/user/verify?state=" + state;
+  const url = `${AppConstants.SERVER_URL}/user/verify?state=${state}`;
 
   EmailUtils.sendEmail(email, "Firefox Breach Alert",
-    "Visit this link to subscribe: " + url)
+    `Visit this link to subscribe: ${url}`)
     .then(info => {
       // TODO: set a timer to clear this after an arbitrary timeout period.
       gUnverifiedEmails.set(state, email);
@@ -40,37 +40,39 @@ router.post("/add", function(req, res) {
     });
 });
 
-router.get("/verify", function(req, res) {
-  let email = gUnverifiedEmails.get(req.query.state);
+router.get("/verify", (req, res) => {
+  const email = gUnverifiedEmails.get(req.query.state);
   if (email) {
     gEmails.add(email);
     gUnverifiedEmails.delete(req.query.state);
-    res.json({ email, info: "Successfully added " + email});
+    res.json({ email, info: `Successfully added ${email}`});
     return;
   }
+  // TODO: Needs better error message.
   res.json({ info: "Who are you?" });
 });
 
-router.post("/remove", function(req, res) {
+router.post("/remove", (req, res) => {
   gEmails.delete(req.body.email);
   res.json({ email: req.body.email, info: "removed user" });
 });
 
-router.post("/reset", function(req, res) {
+router.post("/reset", (req, res) => {
   gEmails.clear();
   res.json({ info: "user list cleared" });
 });
 
+// eslint-disable-next-line no-process-env
 if (process.env.DEBUG_ALLOW_USER_LIST) {
   // This exists for development purposes.
-  router.post("/list", function(req, res) {
+  router.post("/list", (req, res) => {
     res.json({ emails: Array.from(gEmails) });
   });
 }
 
-router.post("/breached", function(req, res) {
-  let emails = req.body.emails;
-  let response = [];
+router.post("/breached", (req, res) => {
+  const emails = req.body.emails;
+  const response = [];
 
   let emailQueue = Promise.resolve();
   // Send notification email to the intersection of the set of
