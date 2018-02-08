@@ -19,7 +19,7 @@ const kEnvironmentVariables = [
 
 const AppConstants = {
   init() {
-    for (const v of kEnvironmentVariables) {
+    for (let v of kEnvironmentVariables) {
       if (process.env[v] === undefined) {
         throw new Error(`Required environment variable was not set: ${v}`);
       }
