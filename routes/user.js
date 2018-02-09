@@ -31,7 +31,7 @@ router.post("/add", (req, res) => {
         email,
         info: "sent verification link",
         // Send the would-be link back to the client in dummy mode.
-        link: AppConstants.DEBUG_DUMMY_SMTP ? url : undefined
+        link: AppConstants.DEBUG_DUMMY_SMTP ? url : undefined,
       });
     })
     .catch(error => {

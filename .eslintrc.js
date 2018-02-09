@@ -5,10 +5,14 @@ module.exports = {
   },
   extends: [
     "eslint:recommended",
+    "plugin:node/recommended",
+  ],
+  plugins: [
+    "node",
   ],
   root: true,
   rules: {
-    "comma-dangle": "off",
+    "comma-dangle": ["error", {arrays: "only-multiline", objects: "only-multiline"}],
     "eqeqeq": "warn",
     "no-console": "warn",
     "no-process-env": "error",
@@ -16,8 +20,10 @@ module.exports = {
     "no-var": "error",
     "no-warning-comments": "warn",
     "prefer-const": "off",
+    "quotes": ["error", "double"],
     "require-jsdoc": "off",
     "semi": ["error", "always"],
+    "strict": ["error", "safe"],
     "valid-jsdoc": "warn",
   }
 };
