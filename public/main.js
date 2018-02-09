@@ -1,5 +1,7 @@
 /* eslint-env browser */
 
+"use strict";
+
 function doXHR(aURL, aBodyObj, aAlertText, aDebug=true) {
   return new Promise((resolve) => {
     const xhr = new XMLHttpRequest();

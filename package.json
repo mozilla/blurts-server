@@ -16,7 +16,11 @@
     "popsicle": "^9.2.0"
   },
   "devDependencies": {
-    "eslint": "^4.17.0"
+    "eslint": "^4.17.0",
+    "eslint-plugin-node": "^6.0.0"
+  },
+  "engines": {
+    "node": ">=8"
   },
   "homepage": "https://github.com/mozilla/blurts-server#readme",
   "license": "ISC",
