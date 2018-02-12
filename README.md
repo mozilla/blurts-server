@@ -18,7 +18,7 @@ for more background, objectives, key use cases.
 
 ### Requirements
 
-* [Node](https://nodejs.org/) 8 (with npm)
+* [Node](https://nodejs.org/) 9 (with npm)
 
 ### Install
 
