@@ -39,6 +39,7 @@
     "url": "git+https://github.com/mozilla/blurts-server.git"
   },
   "scripts": {
+    "get_hashsets": "node get_hashsets",
     "lint": "eslint .",
     "pretest": "eslint .",
     "start": "node server.js",

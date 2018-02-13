@@ -9,7 +9,7 @@ const request = require("request");
 const pkg = require("./package.json");
 
 const HIBP_AUTH = `Bearer ${AppConstants.HIBP_API_TOKEN}`;
-const USER_AGENT = `${pkg.name}@${pkg.version}`;
+const HIBP_USER_AGENT = `${pkg.name}/${pkg.version}`;
 const BREACH_HASHSET_DIR = "breach_hashsets";
 
 
@@ -22,38 +22,53 @@ function getBreachHashset(breach) {
    * See https://haveibeenpwned.com/API/v2#BreachModel for more
    */
   if (breach.IsActive && breach.IsVerified && breach.DataClasses.includes("Email addresses")) {
-    console.log("Active, verified breach with email addresses: " + breach.Name);
-    const url = AppConstants.HIBP_API_ROOT + "/enterprisesubscriber/hashset/" + breach.Name;
-    console.log("url: " + url);
-
+    const url = `${AppConstants.HIBP_API_ROOT}/enterprisesubscriber/hashset/${breach.Name}`;
     const headers = {
-      "User-Agent": USER_AGENT,
+      "User-Agent": HIBP_USER_AGENT,
       "Authorization": HIBP_AUTH,
     };
     const hashsetRequestObject = {
-      url: url,
-      headers: headers,
+      url,
+      headers,
     };
+    const BREACH_HASHSET_ZIP = path.join(BREACH_HASHSET_DIR, `${breach.Name}.zip`);
 
-    request(hashsetRequestObject).pipe(fs.createWriteStream(path.join(BREACH_HASHSET_DIR, `${breach.Name}.zip`)));
+    console.log(`Active, verified breach with email addresses: ${breach.Name}`);
+    console.log(`Fetching ${url}...`);
+    request(hashsetRequestObject).pipe(fs.createWriteStream(BREACH_HASHSET_ZIP));
   }
 }
 
 function handleBreachesResponse(error, response, body) {
-  let breachesJSON = JSON.parse(body);
-  for (let breach of breachesJSON) {
-    getBreachHashset(breach);
+  if (error) {
+    console.error(error);
+    // We can `process.exit()` here since it's a CLI script.
+    // eslint-disable-next-line no-process-exit
+    process.exit(1);
+  }
+
+  try {
+    const breachesJSON = JSON.parse(body);
+
+    if (!fs.existsSync(BREACH_HASHSET_DIR)) {
+      fs.mkdirSync(BREACH_HASHSET_DIR);
+    }
+    for (const breach of breachesJSON) {
+      getBreachHashset(breach);
+    }
+  } catch (err) {
+    console.error(err);
   }
 }
 
-const breachesRequestObject = {
-  url: AppConstants.HIBP_API_ROOT + "/breaches",
-  headers: {
-    "User-Agent": USER_AGENT,
-  },
-};
-
-if (!fs.existsSync(BREACH_HASHSET_DIR)) {
-  fs.mkdirSync(BREACH_HASHSET_DIR);
+function getBreaches() {
+  const breachesRequestObject = {
+    url: `${AppConstants.HIBP_API_ROOT}/breaches`,
+    headers: {
+      "User-Agent": HIBP_USER_AGENT,
+    },
+  };
+  request(breachesRequestObject, handleBreachesResponse);
 }
-request(breachesRequestObject, handleBreachesResponse);
+
+getBreaches();
