@@ -17,10 +17,10 @@ function getBreachHashset(breach) {
   /*
    * HIBP Breach, Object.keys(breach):
    * [ 'Title', 'Name', 'Domain', 'BreachDate', 'AddedDate', 'ModifiedDate', 'PwnCount', 'Description',
-       'DataClasses', 'IsVerified', 'IsFabricated', 'IsSensitive', 'IsActive', 'IsRetired', 'IsSpamList',
-       'LogoType' ]
-  * See https://haveibeenpwned.com/API/v2#BreachModel for more
-  */
+   *   'DataClasses', 'IsVerified', 'IsFabricated', 'IsSensitive', 'IsActive', 'IsRetired', 'IsSpamList',
+   *   'LogoType' ]
+   * See https://haveibeenpwned.com/API/v2#BreachModel for more
+   */
   if (breach.IsActive && breach.IsVerified && breach.DataClasses.includes("Email addresses")) {
     console.log("Active, verified breach with email addresses: " + breach.Name);
     const url = AppConstants.HIBP_API_ROOT + "/enterprisesubscriber/hashset/" + breach.Name;
@@ -50,7 +50,7 @@ const breachesRequestObject = {
   url: AppConstants.HIBP_API_ROOT + "/breaches",
   headers: {
     "User-Agent": USER_AGENT,
-  }
+  },
 };
 
 if (!fs.existsSync(BREACH_HASHSET_DIR)) {

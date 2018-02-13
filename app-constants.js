@@ -18,7 +18,7 @@ const kEnvironmentVariables = [
   "OAUTH_CLIENT_ID",
   "OAUTH_CLIENT_SECRET",
   "HIBP_API_ROOT",
-  "HIBP_API_TOKEN"
+  "HIBP_API_TOKEN",
 ];
 
 const AppConstants = {
@@ -30,7 +30,7 @@ const AppConstants = {
       this[v] = process.env[v];
     }
     return this;
-  }
+  },
 };
 
 module.exports = AppConstants;
