@@ -76,7 +76,7 @@ const EmailUtils = {
         resolve(info);
       });
     });
-  }
+  },
 };
 
 module.exports = EmailUtils;

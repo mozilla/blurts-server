@@ -12,7 +12,7 @@ module.exports = {
   ],
   root: true,
   rules: {
-    "comma-dangle": ["error", {arrays: "only-multiline", objects: "only-multiline"}],
+    "comma-dangle": ["error", {arrays: "always-multiline", objects: "always-multiline"}],
     "eqeqeq": "warn",
     "no-console": "warn",
     "no-process-env": "error",
