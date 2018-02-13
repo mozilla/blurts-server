@@ -8,7 +8,7 @@ const express = require("express");
 const popsicle = require("popsicle");
 const router = express.Router();
 
-const gEmails = require("../subscribers");
+const Subscribers = require("../subscribers");
 
 // This object exists instead of inlining the env vars to make it easy
 // to abstract fetching API endpoints from the OAuth server (instead
@@ -54,8 +54,9 @@ router.get("/redirect", (req, res) => {
         },
       }).then((data) => {
         const email = JSON.parse(data.body).email;
-        gEmails.add(email);
-        res.send(`Registered ${email} for breach alerts. You may now close this window/tab.`);
+        Subscribers.addUser(email).then(() => {
+          res.send(`Registered ${email} for breach alerts. You may now close this window/tab.`);
+        });
       });
     })
     .catch((err) => {
