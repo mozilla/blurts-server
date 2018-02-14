@@ -1,19 +1,21 @@
 "use strict";
 
-const AppConstants = require("./app-constants").init();
-
 const fs = require("fs");
-const path = require("path");
 const request = require("request");
+const S3 = require("aws-sdk/clients/s3");
 
-const pkg = require("./package.json");
+const AppConstants = require("../app-constants").init();
+const pkg = require("../package.json");
 
 const HIBP_AUTH = `Bearer ${AppConstants.HIBP_API_TOKEN}`;
 const HIBP_USER_AGENT = `${pkg.name}/${pkg.version}`;
-const BREACH_HASHSET_DIR = "breach_hashsets";
+
+const s3 = new S3();
+const BREACH_HASHSET_DIR = "../breach_hashsets";
+const BREACH_HASHSET_BUCKET_NAME = "mozilla.breach_alerts.stage.breach_hashsets";
 
 
-function getBreachHashset(breach) {
+async function getBreachHashset(breach) {
   /*
    * HIBP Breach, Object.keys(breach):
    * [ 'Title', 'Name', 'Domain', 'BreachDate', 'AddedDate', 'ModifiedDate', 'PwnCount', 'Description',
@@ -31,15 +33,30 @@ function getBreachHashset(breach) {
       url,
       headers,
     };
-    const BREACH_HASHSET_ZIP = path.join(BREACH_HASHSET_DIR, `${breach.Name}.zip`);
 
     console.log(`Active, verified breach with email addresses: ${breach.Name}`);
     console.log(`Fetching ${url}...`);
-    request(hashsetRequestObject).pipe(fs.createWriteStream(BREACH_HASHSET_ZIP));
+
+    request(hashsetRequestObject, async (error, response, body) => {
+      if (response.statusCode === 200) {
+        console.log("Uploading to S3 ...");
+        const uploadParams = {
+          Bucket: BREACH_HASHSET_BUCKET_NAME,
+          Key: `${breach.Name}.zip`,
+          Body: body,
+        };
+        try {
+          const uploadData = await s3.upload(uploadParams);
+          console.log(`Uploaded to ${uploadData.Location}`);
+        } catch (err) {
+          console.error(`err: ${err}`);
+        }
+      }
+    });
   }
 }
 
-function handleBreachesResponse(error, response, body) {
+async function handleBreachesResponse(error, response, body) {
   if (error) {
     console.error(error);
     // We can `process.exit()` here since it's a CLI script.
@@ -49,6 +66,12 @@ function handleBreachesResponse(error, response, body) {
 
   try {
     const breachesJSON = JSON.parse(body);
+
+    const listData = await s3.listObjects({Bucket: BREACH_HASHSET_BUCKET_NAME});
+    console.log(`listData: ${listData}`);
+
+    const bucketData = await s3.createBucket({Bucket: BREACH_HASHSET_BUCKET_NAME});
+    console.log(`bucketData: ${bucketData}`);
 
     if (!fs.existsSync(BREACH_HASHSET_DIR)) {
       fs.mkdirSync(BREACH_HASHSET_DIR);

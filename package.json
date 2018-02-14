@@ -7,6 +7,7 @@
     "url": "https://github.com/mozilla/blurts-server/issues"
   },
   "dependencies": {
+    "aws-sdk": "^2.194.0",
     "body-parser": "^1.18.2",
     "client-oauth2": "^4.1.0",
     "client-sessions": "^0.8.0",
@@ -41,11 +42,11 @@
     "url": "git+https://github.com/mozilla/blurts-server.git"
   },
   "scripts": {
-    "get_hashsets": "node get_hashsets",
     "lint": "npm-run-all lint:*",
     "lint:js": "eslint .",
     "lint:nsp": "nsp check",
     "pretest": "npm run lint",
+    "get-hashsets": "node scripts/get-hashsets",
     "start": "node server.js",
     "test": "nyc tape tests/**/test*.js | faucet && nyc report --reporter=text-lcov | coveralls"
   }
