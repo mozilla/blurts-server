@@ -77,7 +77,7 @@ router.post("/breached", (req, res) => {
   let emailQueue = Promise.resolve();
   // Send notification email to the intersection of the set of
   // emails in the request and the set of registered emails.
-  for (let email of emails) {
+  for (const email of emails) {
     if (gEmails.has(email)) {
       emailQueue = emailQueue.then(() => {
         EmailUtils.sendEmail(email, "Firefox Breach Alert",

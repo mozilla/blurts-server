@@ -19,7 +19,7 @@ module.exports = {
     "no-unused-vars": ["error", {vars: "all", args: "none", ignoreRestSiblings: false}],
     "no-var": "error",
     "no-warning-comments": "warn",
-    "prefer-const": "off",
+    "prefer-const": "error",
     "quotes": ["error", "double"],
     "require-jsdoc": "off",
     "semi": ["error", "always"],
