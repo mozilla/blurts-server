@@ -26,6 +26,7 @@ async function smokeTest() {
   await setup();
   const email = "test@test.com";
   console.log(await subscribers.addUser(email));
+  console.log(await subscribers.getUser(email));
   console.log(await subscribers.addUser(email));
   console.log(await subscribers.deleteUser(email));
   console.log(await subscribers.getUser(email));
