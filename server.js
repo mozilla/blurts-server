@@ -1,6 +1,6 @@
 "use strict";
 
-const AppConstants = require("./app-constants").init();
+const AppConstants = require("./app-constants");
 
 const bodyParser = require("body-parser");
 const express = require("express");

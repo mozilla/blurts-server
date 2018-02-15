@@ -26,16 +26,13 @@ const kEnvironmentVariables = [
   "DATABASE_PORT",
 ];
 
-const AppConstants = {
-  init() {
-    for (const v of kEnvironmentVariables) {
-      if (process.env[v] === undefined) {
-        throw new Error(`Required environment variable was not set: ${v}`);
-      }
-      this[v] = process.env[v];
-    }
-    return this;
-  },
-};
+const AppConstants = { };
+
+for (const v of kEnvironmentVariables) {
+  if (process.env[v] === undefined) {
+    throw new Error(`Required environment variable was not set: ${v}`);
+  }
+  AppConstants[v] = process.env[v];
+}
 
 module.exports = AppConstants;

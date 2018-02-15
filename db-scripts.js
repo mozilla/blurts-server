@@ -2,7 +2,7 @@
 
 const pg = require("pg");
 
-const AppConstants = require("./app-constants").init();
+const AppConstants = require("./app-constants");
 const subscribers = require("./subscribers");
 
 async function setup() {
