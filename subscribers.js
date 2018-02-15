@@ -68,13 +68,13 @@ const Subscribers = {
         return _ret(false);
       }
 
-      const { id, email } = rows[0];
-      if (!id || !email) {
+      const { email } = rows[0];
+      if (!email) {
         // This shouldn't happen, but... better safe than sorry.
-        return _ret(false, "Entry was missing fields", { id, email });
+        return _ret(false, "Entry was found but with no value");
       }
 
-      return _ret(true, null, { id, email });
+      return _ret(true, null, { email });
     } catch(e) {
       return _ret(false, e);
     }
