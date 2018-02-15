@@ -20,7 +20,7 @@ function dbq(aQuery) {
 function _ret(aSuccess, aError, aOther) {
   return Object.assign({
     success: aSuccess,
-    error: aError,
+    error: aError || null,
   }, aOther);
 }
 
