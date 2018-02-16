@@ -21,6 +21,8 @@
     "eslint": "^4.17.0",
     "eslint-plugin-node": "^6.0.0",
     "faucet": "^0.0.1",
+    "npm-run-all": "^4.1.2",
+    "nsp": "^3.2.1",
     "nyc": "^11.4.1",
     "tape": "^4.8.0"
   },
@@ -40,8 +42,10 @@
   },
   "scripts": {
     "get_hashsets": "node get_hashsets",
-    "lint": "eslint .",
-    "pretest": "eslint .",
+    "lint": "npm-run-all lint:*",
+    "lint:js": "eslint .",
+    "lint:nsp": "nsp check",
+    "pretest": "npm run lint",
     "start": "node server.js",
     "test": "nyc tape tests/**/test*.js | faucet && nyc report --reporter=text-lcov | coveralls"
   }
