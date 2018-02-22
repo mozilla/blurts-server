@@ -94,10 +94,10 @@ source it via the `.env` file, or set it directly:
 export HIBP_API_TOKEN="<HIBP-API-TOKEN>"
 ```
 
-With the `HIBP_API_TOKEN` set, run the `get_hashsets.js` script:
+With the `HIBP_API_TOKEN` set, run the `get-hashsets.js` script:
 
 ```sh
-node get_hashsets.js
+npm run scripts/get-hashsets.js
 ```
 
 This will download the `.zip` files into `breach_hashsets/` directory.
