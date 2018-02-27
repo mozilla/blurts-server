@@ -1,9 +1,7 @@
 "use strict";
 
 const test = require("tape");
-const pg = require("pg");
 
-const AppConstants = require("../app-constants");
 const Subscribers = require("../subscribers");
 const DBUtils = require("../db-utils");
 
