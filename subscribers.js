@@ -2,12 +2,7 @@
 
 const pg = require("pg");
 
-const AppConstants = require("./app-constants");
-
 const dbConfig = {
-  database: AppConstants.DATABASE_NAME,
-  host: AppConstants.DATABASE_HOST,
-  port: AppConstants.DATABASE_PORT,
   max: 10,
 };
 

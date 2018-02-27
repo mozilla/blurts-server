@@ -9,7 +9,7 @@ const DBUtils = {
   async setupDatabase() {
     try {
       await client.connect();
-      await client.query("DROP TABLE users;");
+      await client.query("DROP TABLE IF EXISTS users;");
       await client.query("CREATE TABLE users ( email varchar(320) UNIQUE );");
     } finally {
       await client.end();
