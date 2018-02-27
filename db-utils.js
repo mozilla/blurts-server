@@ -2,13 +2,8 @@
 
 const pg = require("pg");
 
-const AppConstants = require("./app-constants");
-
-const client = new pg.Client({
-  database: AppConstants.DATABASE_NAME,
-  host: AppConstants.DATABASE_HOST,
-  port: AppConstants.DATABASE_PORT,
-});
+// Use PG* env vars to configure client.
+const client = new pg.Client();
 
 const DBUtils = {
   async setupDatabase() {
