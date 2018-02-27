@@ -1,5 +1,7 @@
 "use strict";
 
+require("dotenv").load();
+
 const test = require("tape");
 
 const Subscribers = require("../subscribers");
@@ -56,6 +58,7 @@ tests.push({
 (async function setupDbAndRunTests() {
   try {
     await DBUtils.setupDatabase();
+    console.log("test!");
     for (const t of tests) {
       test(t.msg, (testObj) => {
         (async () => {

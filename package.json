@@ -50,6 +50,6 @@
     "pretest": "npm run lint",
     "get-hashsets": "node scripts/get-hashsets",
     "start": "node server.js",
-    "test": "nyc tape tests/**/test*.js | faucet && nyc report --reporter=text-lcov | coveralls"
+    "test": "nyc tape tests/test*.js | faucet && nyc report --reporter=text-lcov | coveralls"
   }
 }
