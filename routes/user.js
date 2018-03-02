@@ -44,9 +44,11 @@ router.post("/add", (req, res) => {
 router.get("/verify", (req, res) => {
   const email = gUnverifiedEmails.get(req.query.state);
   if (email) {
+    gUnverifiedEmails.delete(req.query.state);
     Subscribers.addUser(email).then(() => {
-      gUnverifiedEmails.delete(req.query.state);
       res.json({ email, info: `Successfully added ${email}`});
+    }).catch((error) => {
+      res.json({ info: "Failed to add email to database.", error });
     });
     return;
   }
@@ -55,25 +57,13 @@ router.get("/verify", (req, res) => {
 });
 
 router.post("/remove", (req, res) => {
-  Subscribers.deleteUser(req.body.email).then(() => {
-    res.json({ email: req.body.email, info: "removed user" });
+  const email = req.body.email;
+  Subscribers.deleteUser(email).then(() => {
+    res.json({ email, info: "removed user" });
+  }).catch((error) => {
+    res.json({ email, info: "Failed to remove user.", error });
   });
 });
-
-router.post("/reset", (req, res) => {
-  Subscribers.clearAllUsers().then(() => {
-    res.json({ info: "user list cleared" });
-  });
-});
-
-// eslint-disable-next-line no-process-env
-if (process.env.DEBUG_ALLOW_USER_LIST) {
-  // This exists for development purposes.
-  router.post("/list", (req, res) => {
-    // DOESN'T WORK WITH DATABASE CODE YET.
-    // res.json({ emails: Array.from(gEmails) });
-  });
-}
 
 router.post("/breached", (req, res) => {
   const emails = req.body.emails;
@@ -99,6 +89,8 @@ router.post("/breached", (req, res) => {
             response.push({ email, error });
           });
       });
+    }).catch((error) => {
+      console.log(error);
     });
   }
   emailQueue.then(() => {
