@@ -21,7 +21,7 @@ function _ret(aError=null, aOther={}) {
 const Subscribers = {
   async addUser(aEmail) {
     // Error code for attempting to add a duplicate entry on a UNIQUE key.
-    const DUPLICATE_ERROR = 23505;
+    const DUPLICATE_ERROR = "23505";
     try {
       await dbq({
         text: "INSERT INTO users ( email ) VALUES ( $1 );",

@@ -43,9 +43,10 @@ router.get("/redirect", (req, res) => {
     res.send("Who are you?");
     return;
   }
-  FxAOAuth.code.getToken(req.originalUrl, { state: req.session.state })
-    .then((user) => {
-      return popsicle.get({
+  (async () => {
+    try {
+      const user = await FxAOAuth.code.getToken(req.originalUrl, { state: req.session.state });
+      const data = await popsicle.get({
         method: "get",
         url: FxAOAuthUtils.profileUri,
         body: "",
@@ -53,14 +54,14 @@ router.get("/redirect", (req, res) => {
           Authorization: `Bearer ${user.accessToken}`,
         },
       });
-    }).then((data) => {
-      return Subscribers.addUser(JSON.parse(data.body).email);
-    }).then(() => {
+      const email = JSON.parse(data.body).email;
+      await Subscribers.addUser(email);
       res.send(`Registered ${email} for breach alerts. You may now close this window/tab.`);
-    }).catch((err) => {
+    } catch (err) {
       console.log(err);
       res.send(err);
-    });
+    }
+  })();
 });
 
 module.exports = router;

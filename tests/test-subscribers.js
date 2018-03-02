@@ -44,7 +44,7 @@ tests.push({
     }, "Delete the user.");
 
     ret = await Subscribers.getUser(email);
-    t.ok(ret.error, "Try getting the user - should fail.")
+    t.ok(ret.error, "Try getting the user - should fail.");
   },
 });
 
