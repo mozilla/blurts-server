@@ -52,14 +52,13 @@ router.get("/redirect", (req, res) => {
         headers: {
           Authorization: `Bearer ${user.accessToken}`,
         },
-      }).then((data) => {
-        const email = JSON.parse(data.body).email;
-        Subscribers.addUser(email).then(() => {
-          res.send(`Registered ${email} for breach alerts. You may now close this window/tab.`);
-        });
       });
-    })
-    .catch((err) => {
+    }).then((data) => {
+      return Subscribers.addUser(JSON.parse(data.body).email);
+    }).then(() => {
+      res.send(`Registered ${email} for breach alerts. You may now close this window/tab.`);
+    }).catch((err) => {
+      console.log(err);
       res.send(err);
     });
 });
