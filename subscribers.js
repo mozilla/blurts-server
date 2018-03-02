@@ -12,10 +12,9 @@ function dbq(aQuery) {
   return dbPool.query(aQuery);
 }
 
-function _ret(aSuccess, aError, aOther) {
+function _ret(aError=null, aOther={}) {
   return Object.assign({
-    success: aSuccess,
-    error: aError || null,
+    error: aError,
   }, aOther);
 }
 
@@ -29,14 +28,14 @@ const Subscribers = {
         values: [ aEmail ],
       });
 
-      return _ret(true);
+      return _ret();
     } catch (e) {
-      if (e.code == DUPLICATE_ERROR) {
+      if (e.code === DUPLICATE_ERROR) {
         // Duplicate entry, count it as success.
-        return _ret(true, null, { duplicate: true });
+        return _ret(null, { duplicate: true });
       }
 
-      return _ret(false, e);
+      return _ret(e);
     }
   },
 
@@ -46,9 +45,9 @@ const Subscribers = {
         text: "DELETE FROM users WHERE email = $1;",
         values: [ aEmail ],
       });
-      return _ret(true);
+      return _ret();
     } catch(e) {
-      return _ret(false, e);
+      return _ret(e);
     }
   },
 
@@ -60,18 +59,18 @@ const Subscribers = {
       })).rows;
 
       if (!rows.length) {
-        return _ret(false);
+        return _ret(new Error("Email not found"));
       }
 
       const { email } = rows[0];
       if (!email) {
         // This shouldn't happen, but... better safe than sorry.
-        return _ret(false, "Entry was found but with no value");
+        return _ret(new Error("Entry was found but with no email value"));
       }
 
-      return _ret(true, null, { email });
+      return _ret(null, { email });
     } catch(e) {
-      return _ret(false, e);
+      return _ret(e);
     }
   },
 
@@ -80,9 +79,9 @@ const Subscribers = {
       await dbq({
         text: "TRUNCATE users;",
       });
-      return _ret(true);
+      return _ret();
     } catch (e) {
-      return _ret(false, e);
+      return _ret(e);
     }
   },
 };
