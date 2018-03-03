@@ -32,4 +32,4 @@ for (const v of kEnvironmentVariables) {
   AppConstants[v] = process.env[v];
 }
 
-module.exports = AppConstants;
+module.exports = Object.freeze(AppConstants);
