@@ -7,7 +7,7 @@ const express = require("express");
 const router = express.Router();
 
 const EmailUtils = require("../email-utils");
-const gEmails = require("../subscribers");
+const Subscribers = require("../subscribers");
 
 // We send verification emails to addresses that want to subscribe.
 // These addresses are temporarily stored here, mapped to the unique
@@ -31,7 +31,8 @@ router.post("/add", (req, res) => {
         email,
         info: "sent verification link",
         // Send the would-be link back to the client in dummy mode.
-        link: AppConstants.DEBUG_DUMMY_SMTP ? url : undefined,
+        // eslint-disable-next-line no-process-env
+        link: process.env.DEBUG_DUMMY_SMTP ? url : undefined,
       });
     })
     .catch(error => {
@@ -43,9 +44,12 @@ router.post("/add", (req, res) => {
 router.get("/verify", (req, res) => {
   const email = gUnverifiedEmails.get(req.query.state);
   if (email) {
-    gEmails.add(email);
     gUnverifiedEmails.delete(req.query.state);
-    res.json({ email, info: `Successfully added ${email}`});
+    Subscribers.addUser(email).then(() => {
+      res.json({ email, info: `Successfully added ${email}`});
+    }).catch((error) => {
+      res.json({ info: "Failed to add email to database.", error });
+    });
     return;
   }
   // TODO: Needs better error message.
@@ -53,22 +57,13 @@ router.get("/verify", (req, res) => {
 });
 
 router.post("/remove", (req, res) => {
-  gEmails.delete(req.body.email);
-  res.json({ email: req.body.email, info: "removed user" });
-});
-
-router.post("/reset", (req, res) => {
-  gEmails.clear();
-  res.json({ info: "user list cleared" });
-});
-
-// eslint-disable-next-line no-process-env
-if (process.env.DEBUG_ALLOW_USER_LIST) {
-  // This exists for development purposes.
-  router.post("/list", (req, res) => {
-    res.json({ emails: Array.from(gEmails) });
+  const email = req.body.email;
+  Subscribers.deleteUser(email).then(() => {
+    res.json({ email, info: "removed user" });
+  }).catch((error) => {
+    res.json({ email, info: "Failed to remove user.", error });
   });
-}
+});
 
 router.post("/breached", (req, res) => {
   const emails = req.body.emails;
@@ -78,7 +73,11 @@ router.post("/breached", (req, res) => {
   // Send notification email to the intersection of the set of
   // emails in the request and the set of registered emails.
   for (const email of emails) {
-    if (gEmails.has(email)) {
+    Subscribers.getUser(email).then((row) => {
+      if (!row) {
+        return;
+      }
+
       emailQueue = emailQueue.then(() => {
         EmailUtils.sendEmail(email, "Firefox Breach Alert",
           "Your credentials were compromised in a breach.")
@@ -90,7 +89,9 @@ router.post("/breached", (req, res) => {
             response.push({ email, error });
           });
       });
-    }
+    }).catch((error) => {
+      console.log(error);
+    });
   }
   emailQueue.then(() => {
     res.json({ info: "breach alert sent", emails: response });

@@ -8,7 +8,7 @@ const express = require("express");
 const popsicle = require("popsicle");
 const router = express.Router();
 
-const gEmails = require("../subscribers");
+const Subscribers = require("../subscribers");
 
 // This object exists instead of inlining the env vars to make it easy
 // to abstract fetching API endpoints from the OAuth server (instead
@@ -43,24 +43,25 @@ router.get("/redirect", (req, res) => {
     res.send("Who are you?");
     return;
   }
-  FxAOAuth.code.getToken(req.originalUrl, { state: req.session.state })
-    .then((user) => {
-      return popsicle.get({
+  (async () => {
+    try {
+      const user = await FxAOAuth.code.getToken(req.originalUrl, { state: req.session.state });
+      const data = await popsicle.get({
         method: "get",
         url: FxAOAuthUtils.profileUri,
         body: "",
         headers: {
           Authorization: `Bearer ${user.accessToken}`,
         },
-      }).then((data) => {
-        const email = JSON.parse(data.body).email;
-        gEmails.add(email);
-        res.send(`Registered ${email} for breach alerts. You may now close this window/tab.`);
       });
-    })
-    .catch((err) => {
+      const email = JSON.parse(data.body).email;
+      await Subscribers.addUser(email);
+      res.send(`Registered ${email} for breach alerts. You may now close this window/tab.`);
+    } catch (err) {
+      console.log(err);
       res.send(err);
-    });
+    }
+  })();
 });
 
 module.exports = router;

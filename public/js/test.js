@@ -47,16 +47,6 @@ function simulateBreach() {
 }
 
 // eslint-disable-next-line no-unused-vars
-function clearUserList() {
-  doXHR("/user/reset", {});
-}
-
-// eslint-disable-next-line no-unused-vars
-function dumpUserList() {
-  doXHR("/user/list", {});
-}
-
-// eslint-disable-next-line no-unused-vars
 function doOauth() {
   window.open("/oauth/init");
 }

@@ -1,4 +1,11 @@
 language: node_js
 node_js:
-    - "node"
-    - "lts/*"
+  - "node"
+  - "lts/*"
+services:
+  - postgresql
+env:
+  - TESTING_ENVIRONMENT=1
+before_script:
+  - cp .env-dist .env
+  - psql -c 'create database blurts;' -U postgres

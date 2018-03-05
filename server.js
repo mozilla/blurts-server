@@ -1,6 +1,6 @@
 "use strict";
 
-const AppConstants = require("./app-constants").init();
+const AppConstants = require("./app-constants");
 
 const bodyParser = require("body-parser");
 const express = require("express");
@@ -30,8 +30,8 @@ app.use("/oauth", OAuthRoute);
 app.use("/user", UserRoute);
 
 EmailUtils.init().then(() => {
-  app.listen(AppConstants.PORT, () => {
-    console.log(`Listening on ${AppConstants.PORT}`);
+  const listener = app.listen(AppConstants.PORT, () => {
+    console.log(`Listening on ${listener.address().port}`);
   });
 }).catch(error => {
   console.error(error);
