@@ -7,6 +7,12 @@ const client = new pg.Client();
 
 const DBUtils = {
   async setupDatabase() {
+    // eslint-disable-next-line no-process-env
+    if (!process.env.TESTING_ENVIRONMENT) {
+      console.log("Attempting to run database tests without TESTING_ENVIRONMENT set, exiting.");
+      return;
+    }
+
     try {
       await client.connect();
       await client.query("DROP TABLE IF EXISTS users;");
