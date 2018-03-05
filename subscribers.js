@@ -73,17 +73,6 @@ const Subscribers = {
       return _ret(e);
     }
   },
-
-  async clearAllUsers() {
-    try {
-      await dbq({
-        text: "TRUNCATE users;",
-      });
-      return _ret();
-    } catch (e) {
-      return _ret(e);
-    }
-  },
 };
 
 module.exports = Subscribers;
