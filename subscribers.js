@@ -1,6 +1,7 @@
 "use strict";
 
 const pg = require("pg");
+const crypto = require("crypto");
 
 const dbConfig = {
   max: 10,
@@ -75,6 +76,10 @@ const Subscribers = {
   },
 
   async addTempUser(aEmail, aToken) {
+    if (!this.validateToken(aToken)) {
+      throw new Error("Invalid token, are you using Subscribers.generateToken?");
+    }
+
     // Error code for attempting to add a duplicate entry on a UNIQUE key.
     const DUPLICATE_ERROR = "23505";
     try {
@@ -128,6 +133,14 @@ const Subscribers = {
     } catch(e) {
       return _ret(e);
     }
+  },
+
+  generateToken() {
+    return crypto.randomBytes(40).toString("hex");
+  },
+
+  validateToken(aToken) {
+    return (typeof aToken === "string" && aToken.length === 80);
   },
 };
 
