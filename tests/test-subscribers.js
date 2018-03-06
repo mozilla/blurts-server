@@ -12,7 +12,7 @@ tests.push({
   msg: "Test adding, getting, and deleting subscribers",
   callback: async (t) => {
     try {
-      await DBUtils.setupDatabase();
+      await DBUtils.setupUsersTable();
     } catch (e) {
       t.fail(`Database setup failed:\n${e}`);
       return;
@@ -45,6 +45,49 @@ tests.push({
     }, "Delete the user.");
 
     ret = await Subscribers.getUser(email);
+    t.ok(ret.error, "Try getting the user - should fail.");
+  },
+});
+
+tests.push({
+  msg: "Test adding, getting, and deleting temp user with token.",
+  callback: async (t) => {
+    try {
+      await DBUtils.setupTempUsersTable();
+    } catch (e) {
+      t.fail(`Database setup failed:\n${e}`);
+      return;
+    }
+
+    t.plan(5);
+
+    const email = "test@test.com";
+    const token = "testtoken";
+
+    let ret = await Subscribers.addTempUser(email, token);
+    t.deepEqual(ret, {
+      error: null,
+    }, "Add a user.");
+
+    ret = await Subscribers.getTempUser(email);
+    t.deepEqual(ret, {
+      error: null,
+      email,
+      token,
+    }, "Get the same user.");
+
+    ret = await Subscribers.addTempUser(email, token);
+    t.deepEqual(ret, {
+      error: null,
+      duplicate: true,
+    }, "Add the same user again.");
+
+    ret = await Subscribers.deleteTempUser(email);
+    t.deepEqual(ret, {
+      error: null,
+    }, "Delete the user.");
+
+    ret = await Subscribers.getTempUser(email);
     t.ok(ret.error, "Try getting the user - should fail.");
   },
 });
