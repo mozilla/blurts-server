@@ -9,8 +9,7 @@ const DBUtils = {
   async setupDatabase() {
     // eslint-disable-next-line no-process-env
     if (!process.env.TESTING_ENVIRONMENT) {
-      console.log("Attempting to run database tests without TESTING_ENVIRONMENT set, exiting.");
-      return;
+      throw new Error("Attempting to run database setup without TESTING_ENVIRONMENT set, exiting.");
     }
 
     try {

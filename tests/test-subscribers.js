@@ -7,16 +7,17 @@ const test = require("tape");
 const Subscribers = require("../subscribers");
 const DBUtils = require("../db-utils");
 
-// eslint-disable-next-line no-process-env
-if (!process.env.TESTING_ENVIRONMENT) {
-  console.log("Attempting to run database tests without TESTING_ENVIRONMENT set, exiting.");
-  return;
-}
-
 const tests = [];
 tests.push({
   msg: "Test adding, getting, and deleting subscribers",
   callback: async (t) => {
+    try {
+      await DBUtils.setupDatabase();
+    } catch (e) {
+      t.fail(`Database setup failed:\n${e}`);
+      return;
+    }
+
     t.plan(5);
 
     const email = "test@test.com";
@@ -48,18 +49,12 @@ tests.push({
   },
 });
 
-(async function setupDbAndRunTests() {
-  try {
-    await DBUtils.setupDatabase();
-    console.log("test!");
-    for (const t of tests) {
-      test(t.msg, (testObj) => {
-        (async () => {
-          await t.callback(testObj);
-        })();
-      });
-    }
-  } catch (e) {
-    console.log(e);
+(async function runTests() {
+  for (const t of tests) {
+    test(t.msg, (testObj) => {
+      (async () => {
+        await t.callback(testObj);
+      })();
+    });
   }
 })();
