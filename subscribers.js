@@ -1,6 +1,7 @@
 "use strict";
 
 const pg = require("pg");
+const crypto = require("crypto");
 
 const dbConfig = {
   max: 10,
@@ -72,6 +73,74 @@ const Subscribers = {
     } catch(e) {
       return _ret(e);
     }
+  },
+
+  async addTempUser(aEmail, aToken) {
+    if (!this.validateToken(aToken)) {
+      throw new Error("Invalid token, are you using Subscribers.generateToken?");
+    }
+
+    // Error code for attempting to add a duplicate entry on a UNIQUE key.
+    const DUPLICATE_ERROR = "23505";
+    try {
+      await dbq({
+        text: "INSERT INTO users_temp ( email, token ) VALUES ( $1, $2 );",
+        values: [ aEmail, aToken ],
+      });
+
+      return _ret();
+    } catch (e) {
+      if (e.code === DUPLICATE_ERROR) {
+        // Duplicate entry, count it as success.
+        return _ret(null, { duplicate: true });
+      }
+
+      return _ret(e);
+    }
+  },
+
+  async deleteTempUser(aEmail) {
+    try {
+      await dbq({
+        text: "DELETE FROM users_temp WHERE email = $1;",
+        values: [ aEmail ],
+      });
+      return _ret();
+    } catch(e) {
+      return _ret(e);
+    }
+  },
+
+  async getTempUser(aEmail) {
+    try {
+      const rows = (await dbq({
+        text: "SELECT * FROM users_temp WHERE email = $1;",
+        values: [ aEmail ],
+      })).rows;
+
+      if (!rows.length) {
+        return _ret(new Error("Email not found."));
+      }
+
+      const { email, token } = rows[0];
+      if (!email || !token) {
+        // This shouldn't happen, but... better safe than sorry.
+        return _ret(new Error(`Entry was found but with values missing. \
+                              { email: ${email}, token: ${token} }`));
+      }
+
+      return _ret(null, { email, token });
+    } catch(e) {
+      return _ret(e);
+    }
+  },
+
+  generateToken() {
+    return crypto.randomBytes(40).toString("hex");
+  },
+
+  validateToken(aToken) {
+    return (typeof aToken === "string" && aToken.length === 80);
   },
 };
 
