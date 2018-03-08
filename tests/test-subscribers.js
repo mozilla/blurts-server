@@ -88,7 +88,9 @@ tests.push({
     }, "Delete the user.");
 
     ret = await Subscribers.getTempUser(email);
-    t.ok(ret.error, "Try getting the user - should fail.");
+    t.deepEqual(ret, {
+      error: null,
+    }, "Get the same user again - email and token shouldn't be available");
 
     try {
       await Subscribers.addTempUser(email, "fake token");
