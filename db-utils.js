@@ -34,11 +34,11 @@ const DBUtils = {
     try {
       await client.connect();
       await client.query("DROP TABLE IF EXISTS users_temp;");
-      await client.query("CREATE TABLE users_temp ( \
-                            email VARCHAR(320) UNIQUE, \
-                            token VARCHAR(80), \
-                            time_added TIMESTAMP DEFAULT NOW() \
-                          );");
+      await client.query(`CREATE TABLE users_temp (
+                            email VARCHAR(320) UNIQUE,
+                            token VARCHAR(80),
+                            time_added TIMESTAMP DEFAULT NOW()
+                          );`);
 
     } finally {
       await client.end();

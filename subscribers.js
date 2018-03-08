@@ -113,10 +113,10 @@ const Subscribers = {
 
   async getTempUser(aEmail) {
     try {
-      const rows = (await dbq({
+      const { rows } = await dbq({
         text: "SELECT * FROM users_temp WHERE email = $1;",
         values: [ aEmail ],
-      })).rows;
+      });
 
       if (!rows.length) {
         return _ret();
