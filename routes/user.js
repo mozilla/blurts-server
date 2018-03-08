@@ -18,7 +18,6 @@ const ResponseCodes = Object.freeze({
 function resDatabaseError(res, error) {
   console.log(error);
   res.status(500).json({
-    code: 500,
     error_code: ResponseCodes.InternalError,
     info: "Database error.",
   });
@@ -31,7 +30,6 @@ router.post("/add", async (req, res) => {
 
   if (!email)  {
     res.status(400).json({
-      code: 400,
       error_code: ResponseCodes.EmailNotProvided,
       info: "Request did not include email address.",
     });
@@ -52,7 +50,6 @@ router.post("/add", async (req, res) => {
       `Visit this link to subscribe: ${url}`);
 
     res.status(202).json({
-      code: 202,
       info: "Sent verification link",
       // Send the would-be link back to the client in dummy mode.
       // eslint-disable-next-line no-process-env
@@ -61,7 +58,6 @@ router.post("/add", async (req, res) => {
   } catch (e) {
     console.log(e);
     res.status(500).json({
-      code: 500,
       error_code: ResponseCodes.InternalError,
       info: "SMTP error.",
     });
@@ -79,7 +75,6 @@ router.get("/verify", async (req, res) => {
 
   if (!email) {
     res.status(400).json({
-      code: 400,
       error_code: ResponseCodes.EmailNotFound,
       info: "Email not marked for verification.",
     });
@@ -95,7 +90,6 @@ router.get("/verify", async (req, res) => {
 
   if (token !== req.query.state) {
     res.status(400).json({
-      code: 400,
       error_code: ResponseCodes.TokenMismatch,
       info: "Email and token do not match.",
     });
@@ -111,7 +105,6 @@ router.get("/verify", async (req, res) => {
   }
 
   res.status(201).json({
-    code: 201,
     duplicate,
     info: `Successfully added ${email}`,
   });
