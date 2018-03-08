@@ -17,7 +17,9 @@
     "nodemailer": "^4.6.0",
     "pg": "^7.4.1",
     "popsicle": "^9.2.0",
-    "request": "^2.83.0"
+    "request": "^2.83.0",
+    "sequelize": "^4.35.2",
+    "sequelize-cli": "^4.0.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.0",
