@@ -119,7 +119,7 @@ const Subscribers = {
       })).rows;
 
       if (!rows.length) {
-        return _ret(new Error("Email not found."));
+        return _ret();
       }
 
       const { email, token } = rows[0];
