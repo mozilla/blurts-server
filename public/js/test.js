@@ -50,3 +50,7 @@ function simulateBreach() {
 function doOauth() {
   window.open("/oauth/init");
 }
+
+$(document).foundation();
+
+document.querySelector("#subscribe-fxa-btn").addEventListener("click", doOauth);
