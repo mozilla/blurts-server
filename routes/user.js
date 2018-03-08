@@ -15,12 +15,12 @@ const ResponseCodes = Object.freeze({
   TokenMismatch: 102,
 });
 
-function resDatabaseError(res) {
+function resDatabaseError(res, error) {
   console.log(error);
   res.status(500).json({
     code: 500,
     error_code: ResponseCodes.InternalError,
-    info: "Database error."
+    info: "Database error.",
   });
 }
 
@@ -30,7 +30,11 @@ router.post("/add", async (req, res) => {
   const email = req.body.email;
 
   if (!email)  {
-    resDatabaseError(res);
+    res.status(400).json({
+      code: 400,
+      error_code: ResponseCodes.EmailNotProvided,
+      info: "Request did not include email address.",
+    });
     return;
   }
 
@@ -39,7 +43,7 @@ router.post("/add", async (req, res) => {
   const { error } = await Subscribers.addTempUser(email, state);
 
   if (error) {
-    resDatabaseError(res);
+    resDatabaseError(res, error);
     return;
   }
 
@@ -59,17 +63,17 @@ router.post("/add", async (req, res) => {
     res.status(500).json({
       code: 500,
       error_code: ResponseCodes.InternalError,
-      info: "SMTP error."
+      info: "SMTP error.",
     });
   }
 });
 
 router.get("/verify", async (req, res) => {
-  let email, token, error, duplicate;
-  ({ email, token, error } = await Subscribers.getTempUser(req.query.email));
+  // eslint-disable-next-line prefer-const
+  let { email, token, error } = await Subscribers.getTempUser(req.query.email);
 
   if (error) {
-    resDatabaseError(res);
+    resDatabaseError(res, error);
     return;
   }
 
@@ -77,7 +81,7 @@ router.get("/verify", async (req, res) => {
     res.status(400).json({
       code: 400,
       error_code: ResponseCodes.EmailNotFound,
-      info: "Email not marked for verification."
+      info: "Email not marked for verification.",
     });
     return;
   }
@@ -85,7 +89,7 @@ router.get("/verify", async (req, res) => {
   // Invalidate the entry even if the token doesn't match.
   ({ error } = await Subscribers.deleteTempUser(email));
   if (error) {
-    resDatabaseError(res);
+    resDatabaseError(res, error);
     return;
   }
 
@@ -93,21 +97,23 @@ router.get("/verify", async (req, res) => {
     res.status(400).json({
       code: 400,
       error_code: ResponseCodes.TokenMismatch,
-      info: "Email and token do not match."
+      info: "Email and token do not match.",
     });
     return;
   }
 
+  let duplicate;
+  // eslint-disable-next-line prefer-const
   ({ error, duplicate } = await Subscribers.addUser(email));
   if (error) {
-    resDatabaseError(res);
+    resDatabaseError(res, error);
     return;
   }
 
   res.status(201).json({
     code: 201,
     duplicate,
-    info: `Successfully added ${email}`
+    info: `Successfully added ${email}`,
   });
 });
 
