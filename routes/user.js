@@ -70,46 +70,14 @@ router.get("/verify", async (req, res) => {
   }
 });
 
-router.post("/remove", (req, res) => {
+router.post("/remove", async (req, res) => {
   const email = req.body.email;
-  Subscribers.deleteUser(email).then(() => {
+  try {
+    await Subscribers.deleteUser(email);
     res.json({ email, info: "removed user" });
-  }).catch((error) => {
+  } catch (error) {
     res.json({ email, info: "Failed to remove user.", error });
-  });
-});
-
-router.post("/breached", (req, res) => {
-  const emails = req.body.emails;
-  const response = [];
-
-  let emailQueue = Promise.resolve();
-  // Send notification email to the intersection of the set of
-  // emails in the request and the set of registered emails.
-  for (const email of emails) {
-    Subscribers.getUser(email).then((row) => {
-      if (!row) {
-        return;
-      }
-
-      emailQueue = emailQueue.then(() => {
-        EmailUtils.sendEmail(email, "Firefox Breach Alert",
-          "Your credentials were compromised in a breach.")
-          .then(info => {
-            response.push({ email, info });
-          })
-          .catch(error => {
-            console.log(error);
-            response.push({ email, error });
-          });
-      });
-    }).catch((error) => {
-      console.log(error);
-    });
   }
-  emailQueue.then(() => {
-    res.json({ info: "breach alert sent", emails: response });
-  });
 });
 
 module.exports = router;
