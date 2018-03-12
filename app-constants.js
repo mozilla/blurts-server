@@ -21,6 +21,7 @@ const kEnvironmentVariables = [
   "HIBP_API_TOKEN",
   "AWS_ACCESS_KEY_ID",
   "AWS_SECRET_ACCESS_KEY",
+  "DATABASE_URL",
 ];
 
 const AppConstants = { };
