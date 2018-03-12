@@ -2,11 +2,12 @@
 
 const AppConstants = require("../app-constants");
 
+const crypto = require("crypto");
 const express = require("express");
 const router = express.Router();
 
+const models = require("../db/models");
 const EmailUtils = require("../email-utils");
-const Subscribers = require("../subscribers");
 
 const ResponseCodes = Object.freeze({
   InternalError: 999,
@@ -15,38 +16,12 @@ const ResponseCodes = Object.freeze({
   TokenMismatch: 102,
 });
 
-function resDatabaseError(res, error) {
-  console.log(error);
-  res.status(500).json({
-    error_code: ResponseCodes.InternalError,
-    info: "Database error.",
-  });
-}
-
 router.post("/add", async (req, res) => {
-  // TODO: use a hash of the email address instead of a random string.
-  const state = Subscribers.generateToken();
-  const email = req.body.email;
-
-  if (!email)  {
-    res.status(400).json({
-      error_code: ResponseCodes.EmailNotProvided,
-      info: "Request did not include email address.",
-    });
-    return;
-  }
-
-  const url = `${AppConstants.SERVER_URL}/user/verify?state=${state}&email=${email}`;
-
-  const { error } = await Subscribers.addTempUser(email, state);
-
-  if (error) {
-    resDatabaseError(res, error);
-    return;
-  }
+  const user = await models.User.create({ email: req.body.email });
+  const url = `${AppConstants.SERVER_URL}/user/verify?state=${user.verificationToken}&email=${user.email}`;
 
   try {
-    await EmailUtils.sendEmail(email, "Firefox Breach Alert",
+    await EmailUtils.sendEmail(user.email, "Firefox Breach Alert",
       `Visit this link to subscribe: ${url}`);
 
     res.status(202).json({
@@ -66,58 +41,29 @@ router.post("/add", async (req, res) => {
 
 router.get("/verify", async (req, res) => {
   // eslint-disable-next-line prefer-const
-  let { email, token, error } = await Subscribers.getTempUser(req.query.email);
-
-  if (error) {
-    resDatabaseError(res, error);
-    return;
-  }
-
-  if (!email) {
+  const user = await models.User.findOne({ email: req.query.email, verificationToken: req.query.state });
+  if (user === null) {
     res.status(400).json({
       error_code: ResponseCodes.EmailNotFound,
-      info: "Email not marked for verification.",
+      info: "Email not found or verification token does not match.",
     });
     return;
-  }
-
-  // Invalidate the entry even if the token doesn't match.
-  ({ error } = await Subscribers.deleteTempUser(email));
-  if (error) {
-    resDatabaseError(res, error);
-    return;
-  }
-
-  if (token !== req.query.state) {
-    res.status(400).json({
-      error_code: ResponseCodes.TokenMismatch,
-      info: "Email and token do not match.",
+  } else {
+    // TODO: make a better user "verified" status than implicit presence of
+    // SHA1 hash value
+    user.sha1 = crypto.createHash("sha1").update(user.email).digest("hex");
+    const res = await user.save();
+    res.status(201).json({
+      info: `Successfully verified ${user.email}`,
     });
-    return;
   }
-
-  let duplicate;
-  // eslint-disable-next-line prefer-const
-  ({ error, duplicate } = await Subscribers.addUser(email));
-  if (error) {
-    resDatabaseError(res, error);
-    return;
-  }
-
-  res.status(201).json({
-    duplicate,
-    info: `Successfully added ${email}`,
-  });
 });
 
 router.post("/remove", async (req, res) => {
-  const email = req.body.email;
-  try {
-    await Subscribers.deleteUser(email);
-    res.json({ email, info: "removed user" });
-  } catch (error) {
-    res.json({ email, info: "Failed to remove user.", error });
-  }
+  models.User.destroy({ where: { email: req.query.email } });
+  res.status(200).json({
+    info: "Deleted user.",
+  });
 });
 
 module.exports = router;
