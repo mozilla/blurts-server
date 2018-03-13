@@ -1,7 +1,5 @@
 "use strict";
 
-require("dotenv").load();
-
 const test = require("tape");
 
 const models = require("../db/models");
