@@ -41,7 +41,7 @@ router.post("/add", async (req, res) => {
 
 router.get("/verify", async (req, res) => {
   // eslint-disable-next-line prefer-const
-  const user = await models.User.findOne({ email: req.query.email, verificationToken: req.query.state });
+  const user = await models.User.findOne({ where: { email: req.query.email, verificationToken: req.query.state } });
   if (user === null) {
     res.status(400).json({
       error_code: ResponseCodes.EmailNotFound,
@@ -52,7 +52,7 @@ router.get("/verify", async (req, res) => {
     // TODO: make a better user "verified" status than implicit presence of
     // SHA1 hash value
     user.sha1 = crypto.createHash("sha1").update(user.email).digest("hex");
-    const res = await user.save();
+    await user.save();
     res.status(201).json({
       info: `Successfully verified ${user.email}`,
     });
