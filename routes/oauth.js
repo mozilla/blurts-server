@@ -45,17 +45,19 @@ router.get("/redirect", async (req, res) => {
   }
 
   try {
-    const user = await FxAOAuth.code.getToken(req.originalUrl, { state: req.session.state });
+    const fxaUser = await FxAOAuth.code.getToken(req.originalUrl, { state: req.session.state });
     const data = await popsicle.get({
       method: "get",
       url: FxAOAuthUtils.profileUri,
       body: "",
       headers: {
-        Authorization: `Bearer ${user.accessToken}`,
+        Authorization: `Bearer ${fxaUser.accessToken}`,
       },
     });
     const email = JSON.parse(data.body).email;
-    await models.User.create({ email: req.body.email });
+    const user = await models.User.create({ email: email });
+    user.saveSha1();
+
     res.send(`Registered ${email} for breach alerts. You may now close this window/tab.`);
   } catch (err) {
     console.log(err);

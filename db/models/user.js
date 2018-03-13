@@ -22,5 +22,11 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.BreachedUser);
   };
 
+  User.prototype.saveSha1 = async function() {
+    this.sha1 = crypto.createHash("sha1").update(this.email).digest("hex");
+    await this.save();
+    return this.sha1;
+  };
+
   return User;
 };
