@@ -17,7 +17,7 @@ const ResponseCodes = Object.freeze({
 
 router.post("/add", async (req, res) => {
   const user = await models.User.create({ email: req.body.email });
-  const url = `${AppConstants.SERVER_URL}/user/verify?state=${user.verificationToken}&email=${user.email}`;
+  const url = `${AppConstants.SERVER_URL}/user/verify?state=${encodeURIComponent(user.verificationToken)}&email=${encodeURIComponent(user.email)}`;
 
   try {
     await EmailUtils.sendEmail(user.email, "Firefox Breach Alert",
