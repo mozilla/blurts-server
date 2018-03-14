@@ -13,6 +13,7 @@
     "client-sessions": "^0.8.0",
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
+    "express-hbs": "^1.0.4",
     "hbs": "^4.0.1",
     "nodemailer": "^4.6.0",
     "pg": "^7.4.1",
