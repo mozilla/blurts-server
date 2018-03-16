@@ -4,7 +4,7 @@ const crypto = require("crypto");
 
 module.exports = (sequelize, DataTypes) => {
 
-  const User = sequelize.define("User", {
+  const Subscriber = sequelize.define("Subscriber", {
     email: {
       type: DataTypes.STRING,
       validate: { isEmail: true },
@@ -18,15 +18,15 @@ module.exports = (sequelize, DataTypes) => {
     sha1: DataTypes.STRING,
   }, {});
 
-  User.associate = function(models) {
-    User.hasMany(models.BreachedUser);
+  Subscriber.associate = function(models) {
+    Subscriber.hasMany(models.BreachedUser);
   };
 
-  User.prototype.saveSha1 = async function() {
+  Subscriber.prototype.saveSha1 = async function() {
     this.sha1 = crypto.createHash("sha1").update(this.email).digest("hex");
     await this.save();
     return this.sha1;
   };
 
-  return User;
+  return Subscriber;
 };
