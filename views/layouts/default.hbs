@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/css/vendor/foundation.min.css">
+    <script type="text/javascript" src="/js/vendor/jquery.js" defer></script>
+    <script type="text/javascript" src="/js/vendor/foundation.min.js" defer></script>
+    <script type="text/javascript" src="/js/test.js" defer></script>
+  </head>
+
+  <body>
+
+    {{{ body }}}
+
+
+    <div class="reveal" id="subscribe-modal" data-reveal>
+      <h3>Subscribe to Breach Alerts</h3>
+      <p>Explanation of what the user will get if they subscribe to breach alerts.</p>
+      <a id="subscribe-fxa-btn" class="button sign-in-btn">Subscribe with Firefox Accounts</a>
+      <div class="grid-x">
+        <div class="cell small-5"><hr></div>
+        <div class="cell small-2">or</div>
+        <div class="cell small-5"><hr></div>
+      </div>
+      <form action="/subscribe" method="post">
+        <input type="email" name="email">
+        <input type="submit" class="button" value="Subscribe with Email Account">
+      </form>
+    </div>
+
+  </body>
+
+</html>

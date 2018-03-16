@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Firefox Breach Alerts</title>
-    <link rel="stylesheet" href="/css/vendor/foundation.min.css">
-    <script type="text/javascript" src="/js/vendor/jquery.js" defer></script>
-    <script type="text/javascript" src="/js/vendor/foundation.min.js" defer></script>
-    <script type="text/javascript" src="/js/test.js" defer></script>
-  </head>
-
-  <body>
+{{!< default }}
     <div class="top-bar">
       <div class="top-bar-left">
         <h1><a href="/">Firefox Breach Alert</a></h1>
@@ -32,9 +20,9 @@
         <p>Simple reason and explanation as to what scanning will do and why the user should do it.</p>
         <form action="/scan" method="post">
           <div class="input-group">
-            <input class="input-group-field" type="email" name="email">
+            <input class="input-group-field email-to-hash" type="email" name="email">
             <div class="input-group-button">
-              <input type="submit" class="button" value="Scan">
+              <input id="submit-email" type="submit" class="button" value="Scan">
             </div>
           </div>
         </form>
@@ -60,7 +48,3 @@
         <input type="submit" class="button" value="Subscribe with Email Account">
       </form>
     </div>
-
-  </body>
-
-</html>

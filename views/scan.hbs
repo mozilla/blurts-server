@@ -1,0 +1,44 @@
+{{!< default }}
+
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <h1><a href="/">Firefox Breach Alerts</a></h1>
+      </div>
+      <div class="top-bar-right">
+        <ul class="menu">
+          <li><a href="/">About</a></li>
+          <li><a href="#tips">Tips</a></li>
+          <li><a class="button" data-open="subscribe-modal">Subscribe</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-x grid-margin-x grid-padding-x grid-margin-y grid-padding-y">
+
+      <div class="cell small-8">
+        <h2>Uh oh! Here are your results</h2>
+        <h3>{{ email }} <a href="">Subscribe</a></h3>
+        <div class="callout alert"><img src="http://via.placeholder.com/100x100">Really bad breach</div>
+        <div class="callout warning"><img src="http://via.placeholder.com/100x100">Bad breach</div>
+        <div class="callout secondary"><img src="http://via.placeholder.com/100x100">Regular breach</div>
+      </div>
+
+      <div class="cell small-4">
+        <p>Title that encourages user to try again</p>
+        <form action="/scan" method="post">
+          <div class="input-group">
+            <input class="input-group-field email-to-hash" type="email" name="email" placeholder="Enter Email">
+            <div class="input-group-button">
+              <input id="submit-email" type="submit" class="button" value="Scan">
+            </div>
+          </div>
+        </form>
+        <hr>
+        <p>Text explaining that you should tell your friends about this great feature and why.</p>
+        <p>
+          <a class="button" data-open="share-modal">Share</a>
+        </p>
+      </div>
+
+    </div>
+
