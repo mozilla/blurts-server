@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
 
   Subscriber.associate = function(models) {
-    Subscriber.hasMany(models.BreachedUser);
+    Subscriber.hasOne(models.EmailHash);
   };
 
   Subscriber.prototype.saveSha1 = async function() {

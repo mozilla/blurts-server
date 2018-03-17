@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
 
   Breach.associate = function(models) {
-    Breach.hasMany(models.BreachedHash, { "as": "Hashes" });
+    Breach.belongsToMany(models.EmailHash, { through: "BreachedHashes" });
   };
 
   return Breach;
