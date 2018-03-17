@@ -38,5 +38,5 @@ models.sequelize.sync().then(async () => {
 });
 
 function getSha1(email) {
-  return crypto.createHash("sha1").update(email.toLowerCase()).digest("hex");
+  return crypto.createHash("sha1").update(email).digest("hex");
 }

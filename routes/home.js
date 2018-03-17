@@ -25,7 +25,7 @@ router.post("/scan", async (req, res) => {
 });
 
 function getSha1(email) {
-  return crypto.createHash("sha1").update(email.toLowerCase()).digest("hex");
+  return crypto.createHash("sha1").update(email).digest("hex");
 }
 
 module.exports = router;

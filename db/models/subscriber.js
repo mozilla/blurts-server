@@ -15,17 +15,16 @@ module.exports = (sequelize, DataTypes) => {
         return crypto.randomBytes(40).toString("hex");
       },
     },
-    sha1: DataTypes.STRING,
   }, {});
 
   Subscriber.associate = function(models) {
     Subscriber.hasOne(models.EmailHash);
   };
 
-  Subscriber.prototype.saveSha1 = async function() {
-    this.sha1 = crypto.createHash("sha1").update(this.email).digest("hex");
-    await this.save();
-    return this.sha1;
+  Subscriber.prototype.saveSha1 = async function(models) {
+    const sha1 = crypto.createHash("sha1").update(this.email).digest("hex");
+    const emailHash = await models.EmailHash.findOrCreate( { where: { sha1 }});
+    await this.setEmailHash(emailHash);
   };
 
   return Subscriber;
