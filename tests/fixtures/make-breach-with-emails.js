@@ -30,7 +30,7 @@ models.sequelize.sync().then(async () => {
   }
 
   const testEmail = "test1@test.com";
-  const emailHash = await models.EmailHash.find({ where: { sha1: getSha1(testEmail) }});
+  const emailHash = await models.EmailHash.findOne({ where: { sha1: getSha1(testEmail) }});
   const foundBreaches = (await emailHash.getBreaches()).map(aBreach => aBreach.dataValues.name);
   console.log(`\n\n${testEmail} was found in the following breaches:\n`);
   console.log(foundBreaches);
