@@ -34,6 +34,7 @@ models.sequelize.sync().then(async () => {
   const foundBreaches = (await emailHash.getBreaches()).map(aBreach => aBreach.dataValues.name);
   console.log(`\n\n${testEmail} was found in the following breaches:\n`);
   console.log(foundBreaches);
+  // eslint-disable-next-line no-process-exit
   process.exit();
 });
 

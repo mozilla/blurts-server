@@ -9,7 +9,7 @@ const INVALID_EMAIL = "asdfghjkl";
 
 test("Test building user autogenerates verification token", t => {
   t.plan(2);
-  const user = models.User.build({ email: VALID_EMAIL });
+  const user = models.Subscriber.build({ email: VALID_EMAIL });
   t.notEqual(user.verificationToken, null, "verificationToken is not null");
   t.equal(user.verificationToken.length, 80, "verificationToken is expected length");
 });
@@ -17,15 +17,15 @@ test("Test building user autogenerates verification token", t => {
 test("Test building user validates email", t => {
   t.plan(2);
 
-  let user = models.User.build({ email: VALID_EMAIL });
+  let user = models.Subscriber.build({ email: VALID_EMAIL });
   user.validate().then(user=>{
     t.equal(user.email, VALID_EMAIL, "valid email is valid");
   });
 
-  user = models.User.build({ email: INVALID_EMAIL });
+  user = models.Subscriber.build({ email: INVALID_EMAIL });
   user.validate().then(user=>{
     t.fail("invalid email should have rejected");
-  }).catch(models.User.sequelize.ValidationError, err => {
+  }).catch(models.Subscriber.sequelize.ValidationError, err => {
     t.pass("invalid email was rejected");
   });
 });

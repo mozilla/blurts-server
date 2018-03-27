@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 app.engine("hbs", hbs.express4({
-  layoutsDir: __dirname + "/views/layouts"
+  layoutsDir: __dirname + "/views/layouts",
 }));
 app.set("view engine", "hbs");
 app.set("views", __dirname + "/views");
