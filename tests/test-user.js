@@ -18,7 +18,7 @@ test("Test building user validates email", t => {
   t.plan(2);
 
   let user = models.Subscriber.build({ email: VALID_EMAIL });
-  user.validate().then(user=>{
+  user.validate().then(user => {
     t.equal(user.email, VALID_EMAIL, "valid email is valid");
   });
 
