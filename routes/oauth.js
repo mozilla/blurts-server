@@ -5,8 +5,8 @@ const AppConstants = require("../app-constants");
 const ClientOAuth2 = require("client-oauth2");
 const crypto = require("crypto");
 const express = require("express");
+const bodyParser = require("body-parser");
 const popsicle = require("popsicle");
-const router = express.Router();
 
 const models = require("../db/models");
 
@@ -28,7 +28,10 @@ const FxAOAuth = new ClientOAuth2({
   scopes: ["profile:email"],
 });
 
-router.get("/init", (req, res) => {
+const router = express.Router();
+const jsonParser = bodyParser.json();
+
+router.get("/init", jsonParser, (req, res) => {
   // Set a random state string in a cookie so that we can verify
   // the user when they're redirected back to us after auth.
   const state = crypto.randomBytes(40).toString("hex");
@@ -37,7 +40,7 @@ router.get("/init", (req, res) => {
   res.redirect(uri);
 });
 
-router.get("/redirect", async (req, res) => {
+router.get("/redirect", jsonParser, async (req, res) => {
   if (!req.session.state) {
     // TODO: Needs better error message
     res.send("Who are you?");

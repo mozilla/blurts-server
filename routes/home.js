@@ -2,24 +2,32 @@
 
 const crypto = require("crypto");
 const express = require("express");
-const router = express.Router();
+const bodyParser = require("body-parser");
 
 const models = require("../db/models");
 
-router.get("/", (req, res) => {
+const router = express.Router();
+const urlEncodedParser = bodyParser.urlencoded({ extended: false });
+
+router.get("/", urlEncodedParser, (req, res) => {
   res.render("home", {
     title: "Firefox Breach Alerts",
   });
 });
 
-router.post("/scan", async (req, res) => {
+router.post("/scan", urlEncodedParser, async (req, res) => {
   const email = req.body.email;
-  const emailHash = await models.EmailHash.findOne({ where: { sha1: getSha1(email) }});
-  const foundBreaches = (await emailHash.getBreaches()).map(aBreach => aBreach.dataValues.name);
+  let foundBreaches;
+  if (email) {
+    const emailHash = await models.EmailHash.findOne({ where: { sha1: getSha1(email) }});
+    if (emailHash) {
+      foundBreaches = (await emailHash.getBreaches()).map(aBreach => aBreach.dataValues);
+    }
+  }
   res.render("scan", {
     title: "Firefox Breach Alerts: Scan Results",
     email: email,
-    breaches: foundBreaches,
+    foundBreaches: foundBreaches,
   });
 });
 

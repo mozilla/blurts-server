@@ -16,11 +16,16 @@
     <div class="grid-x grid-margin-x grid-padding-x grid-margin-y grid-padding-y">
 
       <div class="cell small-8">
-        <h2>Uh oh! Here are your results</h2>
+        {{#if foundBreaches }}
+          <h2>Uh oh! Here are your results</h2>
+        {{ else }}
+          <h2>No breaches found.</h2>
+        {{/if}}
+
         <h3>{{ email }} <a href="">Subscribe</a></h3>
-        <div class="callout alert"><img src="http://via.placeholder.com/100x100">Really bad breach</div>
-        <div class="callout warning"><img src="http://via.placeholder.com/100x100">Bad breach</div>
-        <div class="callout secondary"><img src="http://via.placeholder.com/100x100">Regular breach</div>
+        {{#each foundBreaches }}
+          <div class="callout alert"><img src="http://via.placeholder.com/100x100">{{ name }}</div>
+        {{/each}}
       </div>
 
       <div class="cell small-4">

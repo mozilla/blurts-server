@@ -2,7 +2,6 @@
 
 const AppConstants = require("./app-constants");
 
-const bodyParser = require("body-parser");
 const express = require("express");
 const hbs = require("express-hbs");
 const sessions = require("client-sessions");
@@ -13,7 +12,6 @@ const OAuthRoutes = require("./routes/oauth");
 const UserRoutes = require("./routes/user");
 
 const app = express();
-app.use(bodyParser.json());
 app.use(express.static("public"));
 
 app.engine("hbs", hbs.express4({
