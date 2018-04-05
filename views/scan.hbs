@@ -15,33 +15,43 @@
 
     <div class="grid-x grid-margin-x grid-padding-x grid-margin-y grid-padding-y">
 
-      <div class="cell small-8">
+      <div class="cell small-7">
         {{#if foundBreaches }}
           <h2>Uh oh! Here are your results</h2>
         {{ else }}
-          <h2>No breaches found.</h2>
+          <h2>Whew! No breaches found</h2>
         {{/if}}
 
-        <h3>{{ email }} <a href="">Subscribe</a></h3>
-        {{#each foundBreaches }}
-          <div class="callout alert"><img src="http://via.placeholder.com/100x100">{{ name }}</div>
-        {{/each}}
+        <h3>{{ email }}</h3>
+        <p><a href="">Notify me</a> about the next breach</p>
       </div>
 
-      <div class="cell small-4">
-        <p>Title that encourages user to try again</p>
+      <div class="cell small-5">
         <form action="/scan" method="post">
           <div class="input-group">
             <input class="input-group-field email-to-hash" type="email" name="email" placeholder="Enter Email">
             <div class="input-group-button">
-              <input id="submit-email" type="submit" class="button" value="Scan">
+              <input id="submit-email" type="submit" class="button" value="Try Again">
             </div>
           </div>
         </form>
-        <hr>
-        <p>Text explaining that you should tell your friends about this great feature and why.</p>
+      </div>
+
+      <div class="cell small-7">
+        {{#each foundBreaches }}
+          <div class="callout alert"><img src="http://via.placeholder.com/100x100">{{ name }}</div>
+        {{/each}}
         <p>
-          <a class="button" data-open="share-modal">Share</a>
+          Text explaining that you should tell your friends about this great feature and why.
+        </p>
+        <a class="button" data-open="share-modal">Share</a>
+      </div>
+
+      <div class="cell small-5">
+        <strong>Next Steps:</strong>
+        <p>
+          Make sure to change your password on all websites that have been breached,
+          and that you don't use the breached password in other areas.
         </p>
       </div>
 

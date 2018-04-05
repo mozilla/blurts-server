@@ -4,6 +4,8 @@ const crypto = require("crypto");
 
 module.exports = (sequelize, DataTypes) => {
 
+  const EmailHash = sequelize.import("./emailhash");
+
   const Subscriber = sequelize.define("Subscriber", {
     email: {
       type: DataTypes.STRING,
@@ -17,14 +19,14 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
 
-  Subscriber.associate = function(models) {
-    Subscriber.hasOne(models.EmailHash);
+  Subscriber.associate = function() {
+    Subscriber.hasOne(EmailHash);
   };
 
-  Subscriber.prototype.saveSha1 = async function(models) {
+  Subscriber.prototype.saveSha1 = async function() {
     const sha1 = crypto.createHash("sha1").update(this.email).digest("hex");
-    const emailHash = await models.EmailHash.findOrCreate( { where: { sha1 }});
-    await this.setEmailHash(emailHash);
+    const emailHash = await EmailHash.findOrCreate( { where: { sha1 }});
+    await this.setEmailHash(emailHash.id);
   };
 
   return Subscriber;

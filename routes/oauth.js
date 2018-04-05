@@ -58,10 +58,14 @@ router.get("/redirect", jsonParser, async (req, res) => {
       },
     });
     const email = JSON.parse(data.body).email;
-    const user = await models.User.create({ email: email });
+    const user = await models.Subscriber.create({ email: email });
     user.saveSha1();
 
-    res.send(`Registered ${email} for breach alerts. You may now close this window/tab.`);
+    res.render("confirm", {
+      title: "Firefox Breach Alerts: Subscribed",
+      email: email,
+      user: user,
+    });
   } catch (err) {
     console.log(err);
     res.send(err);
