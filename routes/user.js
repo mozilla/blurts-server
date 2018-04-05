@@ -3,7 +3,7 @@
 const AppConstants = require("../app-constants");
 
 const express = require("express");
-const router = express.Router();
+const bodyParser = require("body-parser");
 
 const models = require("../db/models");
 const EmailUtils = require("../email-utils");
@@ -15,8 +15,11 @@ const ResponseCodes = Object.freeze({
   TokenMismatch: 102,
 });
 
-router.post("/add", async (req, res) => {
-  const user = await models.User.create({ email: req.body.email });
+const router = express.Router();
+const jsonParser = bodyParser.json();
+
+router.post("/add", jsonParser, async (req, res) => {
+  const user = await models.Subscriber.create({ email: req.body.email });
   const url = `${AppConstants.SERVER_URL}/user/verify?state=${encodeURIComponent(user.verificationToken)}&email=${encodeURIComponent(user.email)}`;
 
   try {
@@ -38,8 +41,8 @@ router.post("/add", async (req, res) => {
   }
 });
 
-router.get("/verify", async (req, res) => {
-  const user = await models.User.findOne({ where: { email: req.query.email, verificationToken: req.query.state } });
+router.get("/verify", jsonParser, async (req, res) => {
+  const user = await models.Subscriber.findOne({ where: { email: req.query.email, verificationToken: req.query.state } });
   if (user === null) {
     res.status(400).json({
       error_code: ResponseCodes.EmailNotFound,
@@ -55,8 +58,8 @@ router.get("/verify", async (req, res) => {
   });
 });
 
-router.post("/remove", async (req, res) => {
-  models.User.destroy({ where: { email: req.query.email } });
+router.post("/remove", jsonParser, async (req, res) => {
+  models.Subscriber.destroy({ where: { email: req.query.email } });
   res.status(200).json({
     info: "Deleted user.",
   });

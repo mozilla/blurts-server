@@ -2,18 +2,23 @@
 
 const AppConstants = require("./app-constants");
 
-const bodyParser = require("body-parser");
 const express = require("express");
+const hbs = require("express-hbs");
 const sessions = require("client-sessions");
 
 const EmailUtils = require("./email-utils");
-const OAuthRoute = require("./routes/oauth");
-const UserRoute = require("./routes/user");
+const BaseRoutes = require("./routes/home");
+const OAuthRoutes = require("./routes/oauth");
+const UserRoutes = require("./routes/user");
 
 const app = express();
-app.use(bodyParser.json());
 app.use(express.static("public"));
+
+app.engine("hbs", hbs.express4({
+  layoutsDir: __dirname + "/views/layouts",
+}));
 app.set("view engine", "hbs");
+app.set("views", __dirname + "/views");
 
 app.use(sessions({
   cookieName: "session",
@@ -22,12 +27,9 @@ app.use(sessions({
   activeDuration: 5 * 60 * 1000, // 5 minutes
 }));
 
-app.get("/", (req, res) => {
-  res.render("home");
-});
-
-app.use("/oauth", OAuthRoute);
-app.use("/user", UserRoute);
+app.use("/", BaseRoutes);
+app.use("/oauth", OAuthRoutes);
+app.use("/user", UserRoutes);
 
 EmailUtils.init().then(() => {
   const listener = app.listen(AppConstants.PORT, () => {

@@ -13,11 +13,12 @@
     "client-sessions": "^0.8.0",
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
+    "express-hbs": "^1.0.4",
     "hbs": "^4.0.1",
     "nodemailer": "^4.6.0",
     "pg": "^7.4.1",
     "popsicle": "^9.2.0",
-    "request": "^2.83.0",
+    "request": "^2.85.0",
     "sequelize": "^4.35.2",
     "sequelize-cli": "^4.0.0"
   },
@@ -48,7 +49,6 @@
   },
   "scripts": {
     "lint": "npm-run-all lint:*",
-    "lint:html": "htmllint 'views/*.hbs'",
     "lint:js": "eslint .",
     "lint:nsp": "nsp check",
     "pretest": "npm run lint",

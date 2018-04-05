@@ -1,23 +1,18 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('BreachedUsers', {
+    return queryInterface.createTable('EmailHashes', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userId: {
+      SubscriberId: {
         type: Sequelize.INTEGER,
-        references: { model: 'Users', key: 'id' },
       },
-      breachId: {
-        type: Sequelize.INTEGER,
-        references: { model: 'Breaches', key: 'id' },
-      },
-      notified: {
-        type: Sequelize.DATE
+      sha1: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -30,6 +25,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('BreachedUsers');
+    return queryInterface.dropTable('EmailHashes');
   }
 };
