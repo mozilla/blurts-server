@@ -17,8 +17,9 @@ const ResponseCodes = Object.freeze({
 
 const router = express.Router();
 const jsonParser = bodyParser.json();
+const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 
-router.post("/add", jsonParser, async (req, res) => {
+router.post("/add", urlEncodedParser, async (req, res) => {
   const user = await models.Subscriber.create({ email: req.body.email });
   const url = `${AppConstants.SERVER_URL}/user/verify?state=${encodeURIComponent(user.verificationToken)}&email=${encodeURIComponent(user.email)}`;
 
@@ -26,11 +27,9 @@ router.post("/add", jsonParser, async (req, res) => {
     await EmailUtils.sendEmail(user.email, "Firefox Breach Alert",
       `Visit this link to subscribe: ${url}`);
 
-    res.status(202).json({
-      info: "Sent verification link",
-      // Send the would-be link back to the client in dummy mode.
-      // eslint-disable-next-line no-process-env
-      link: process.env.DEBUG_DUMMY_SMTP ? url : undefined,
+    res.render("add", {
+      title: "Verify email",
+      email: user.email,
     });
   } catch (e) {
     console.log(e);

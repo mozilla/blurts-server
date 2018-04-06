@@ -45,6 +45,22 @@ function doOauth() {
   window.open("/oauth/init");
 }
 
+function isValidEmail(val) {
+  // https://stackoverflow.com/a/46181
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(val).toLowerCase());
+}
+
+function enableBtnIfEmailValid(e) {
+  const emailBtn = document.getElementById("subscribe-email-btn");
+  if (isValidEmail(e.target.value)) {
+    emailBtn.disabled = false;
+  } else {
+    emailBtn.disabled = true;
+  }
+}
+
 $(document).foundation();
 
 document.querySelector("#subscribe-fxa-btn").addEventListener("click", doOauth);
+document.querySelector("#subscribe-email-input").addEventListener("input", enableBtnIfEmailValid);
