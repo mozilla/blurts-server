@@ -1,4 +1,18 @@
 .top-bar {
-  padding-inline-start: 8.33vw; /* equal to one 1 grid column out of 12 */
-  padding-inline-end: 8.33vw;
+  padding-inline-start: calc(8.33vw + .625rem); /* equal to one 1 grid column out of 12 */
+  padding-inline-end: calc(8.33vw + .625rem);
+  background-color: white;
+}
+
+.top-bar-right > ul {
+  background: none;
+}
+
+.top-bar-right > ul > li {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+}
+
+.gray-bg {
+  background-color: #eeeeee;
 }
