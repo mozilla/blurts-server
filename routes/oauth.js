@@ -24,7 +24,7 @@ const FxAOAuth = new ClientOAuth2({
   clientSecret: AppConstants.OAUTH_CLIENT_SECRET,
   accessTokenUri: FxAOAuthUtils.tokenUri,
   authorizationUri: FxAOAuthUtils.authorizationUri,
-  redirectUri: AppConstants.SERVER_URL + "/oauth/redirect",
+  redirectUri: AppConstants.SERVER_URL + "/oauth/confirmed",
   scopes: ["profile:email"],
 });
 
@@ -40,7 +40,7 @@ router.get("/init", jsonParser, (req, res) => {
   res.redirect(uri);
 });
 
-router.get("/redirect", jsonParser, async (req, res) => {
+router.get("/confirmed", jsonParser, async (req, res) => {
   if (!req.session.state) {
     // TODO: Needs better error message
     res.send("Who are you?");
