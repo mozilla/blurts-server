@@ -1,7 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,600,700');
+
+* {
+  font-family: 'Fira Sans', sans-serif;
+  --grey-20: #EDEDF0;
+  --primary-text-color: #0c0c0d;
+  --secondary-text-color: #737373;
+}
+
+h1, h2, h3 {
+  font-family: 'Fira Sans', sans-serif; /* Override Foundation */
+}
+
+h3,
+.bold {
+  font-weight: 600;
+}
+
+.lighter {
+  color: var(--secondary-text-color);
+}
+
 .top-bar {
   padding-inline-start: calc(8.33vw + .625rem); /* equal to one 1 grid column out of 12 */
   padding-inline-end: calc(8.33vw + .625rem);
   background-color: white;
+}
+
+.top-bar a:not(.button) {
+  color: inherit;
 }
 
 .top-bar-right > ul {
@@ -14,5 +40,23 @@
 }
 
 .gray-bg {
-  background-color: #eeeeee;
+  background-color: var(--grey-20);
+}
+
+.padding-left {
+  padding-left: 1.625rem !important;
+}
+
+#subscribe-modal {
+  width: 31rem;
+}
+
+#subscribe-modal:focus {
+  outline: none;
+}
+
+.or-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
