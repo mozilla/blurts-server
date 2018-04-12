@@ -7,17 +7,13 @@
   --secondary-text-color: #737373;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
   font-family: 'Fira Sans', sans-serif; /* Override Foundation */
 }
 
 h3,
 .bold {
   font-weight: 600;
-}
-
-.lighter {
-  color: var(--secondary-text-color);
 }
 
 .top-bar {
@@ -35,16 +31,15 @@ h3,
 }
 
 .top-bar-right > ul > li {
-  padding-left: 0.625rem;
-  padding-right: 0.625rem;
+  padding-inline-start: 1.25rem;
 }
 
 .gray-bg {
   background-color: var(--grey-20);
 }
 
-.padding-left {
-  padding-left: 1.625rem !important;
+.padding-start {
+  padding-inline-start: 1.625rem !important;
 }
 
 #subscribe-modal {
@@ -55,8 +50,23 @@ h3,
   outline: none;
 }
 
-.or-block {
+.center-center {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.breach-item-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.breach-item-container > img {
+  flex: 0 0 auto;
+  padding-inline-end: 1rem;
+  object-fit: contain;
 }
