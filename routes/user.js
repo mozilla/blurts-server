@@ -41,7 +41,9 @@ router.post("/add", urlEncodedParser, async (req, res) => {
 });
 
 router.get("/verify", jsonParser, async (req, res) => {
-  const user = await models.Subscriber.findOne({ where: { email: req.query.email, verificationToken: req.query.state } });
+  const email = req.query.email;
+  const user = await models.Subscriber.findOne({ where: { email, verificationToken: req.query.state } });
+
   if (user === null) {
     res.status(400).json({
       error_code: ResponseCodes.EmailNotFound,
@@ -49,11 +51,15 @@ router.get("/verify", jsonParser, async (req, res) => {
     });
     return;
   }
+
   // TODO: make a better user "verified" status than implicit presence of
   // SHA1 hash value
   user.saveSha1();
-  res.status(201).json({
-    info: `Successfully verified ${user.email}`,
+
+  res.render("confirm", {
+    title: "Firefox Breach Alerts: Subscribed",
+    email: email,
+    user: user,
   });
 });
 
