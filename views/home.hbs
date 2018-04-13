@@ -1,78 +1,89 @@
 {{!< default }}
-    <div class="top-bar">
-      <div class="top-bar-left">
-        <h1><a href="/">Firefox Breach Alert</a></h1>
-      </div>
-      <div class="top-bar-right">
-        <ul class="menu">
-          <li><a href="/">About</a></li>
-          <li><a href="#tips">Tips</a></li>
-          <li><a class="button" data-open="subscribe-modal">Subscribe</a></li>
-        </ul>
-      </div>
-    </div>
+  <div class="cell small-12 gray-bg"></div>
+  <div class="cell small-12 gray-bg"></div>
 
-    <div class="grid-x grid-margin-x grid-padding-x grid-margin-y grid-padding-y">
+  <div class="cell small-1 gray-bg"></div>
 
-      <div class="cell small-6">
-        <h2>Helpful Subtitle Here</h2>
-        <p>Brief explanation of what breaches are</p>
-        <p>Simple reason and explanation as to what scanning will do and why the user should do it.</p>
-        <form action="/scan" method="post">
-          <div class="input-group">
-            <input class="input-group-field email-to-hash" type="email" name="email">
-            <div class="input-group-button">
-              <input id="submit-email" type="submit" class="button" value="Scan">
-            </div>
-          </div>
-        </form>
+  <div class="cell small-4 gray-bg">
+    <h3>Helpful Subtitle Here</h3>
+    <br>
+    <p>Brief explanation of what breaches are</p>
+    <p>Simple reason and explanation as to what scanning will do and why the user should do it.</p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec volutpat hendrerit !nibus.
+    </p>
+    <br>
+    <form action="/scan" method="post">
+      <div class="input-group">
+        <input class="input-group-field email-to-hash" type="email" name="email">
+        <div class="input-group-button">
+          <input id="submit-email" type="submit" class="button" value="Scan">
+        </div>
       </div>
+    </form>
+  </div>
 
-      <div class="cell small-6">
-        <img alt="placeholder" class="thumbnail" src="https://placehold.it/750x350">
-      </div>
+  <div class="cell small-6 gray-bg padding-start">
+    <img alt="placeholder" class="thumbnail" src="https://placehold.it/720x480">
+  </div>
 
-      <hr>
+  <div class="cell small-1 gray-bg"></div>
 
-      <div class="cell">
-        <h2>Quick Tips</h2>
-      </div>
+  <hr>
 
-      <div class="cell small-6">
-        <h3>Use 2FA</h3>
-        <p>It's great</p>
-      </div>
-      <div class="cell small-6">
-        <img alt="placeholder" class="thumbnail" src="https://placehold.it/450x210">
-      </div>
+  <div class="cell"></div>
 
-      <div class="cell small-6">
-        <img alt="placeholder" class="thumbnail" src="https://placehold.it/450x210">
-      </div>
-      <div class="cell small-6">
-        <h3>Use unique, strong passwords on every site</h3>
-        <p>It's great</p>
-      </div>
+  <a name="tips"></a>
+  <div class="cell text-center">
+    <h3>Quick Tips</h3>
+  </div>
 
-      <div class="cell small-6">
-        <h3>Use a Password Manager</h3>
-        <p>It's great</p>
-      </div>
-      <div class="cell small-6">
-        <img alt="placeholder" class="thumbnail" src="https://placehold.it/450x210">
-      </div>
+  <div class="cell"></div>
 
-    <div class="reveal" id="subscribe-modal" data-reveal>
-      <h3>Subscribe to Breach Alerts</h3>
-      <p>Explanation of what the user will get if they subscribe to breach alerts.</p>
-      <a id="subscribe-fxa-btn" class="button sign-in-btn">Subscribe with Firefox Accounts</a>
-      <div class="grid-x">
-        <div class="cell small-5"><hr></div>
-        <div class="cell small-2">or</div>
-        <div class="cell small-5"><hr></div>
-      </div>
-      <form action="/subscribe" method="post">
-        <input type="email" name="email">
-        <button type="submit" class="button" disabled>Subscribe with Email Account</button>
-      </form>
-    </div>
+  <div class="cell small-1"></div>
+
+  <div class="cell small-5">
+    <h3>Use 2FA</h3>
+    <br>
+    <p>It's great</p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec volutpat hendrerit !nibus. Donec eu auctor eros. Donec venenatis, eros id suscipit scelerisque, leo orci porta felis, vitae rutrum ipsum odio eu lectus.
+    </p>
+  </div>
+  <div class="cell small-5">
+    <img alt="placeholder" class="thumbnail" src="https://placehold.it/550x310">
+  </div>
+
+  <div class="cell small-1"></div>
+
+  <div class="cell small-1"></div>
+
+  <div class="cell small-5">
+    <img alt="placeholder" class="thumbnail" src="https://placehold.it/550x310">
+  </div>
+  <div class="cell small-5">
+    <h3>Use unique, strong passwords</h3>
+    <br>
+    <p>It's great</p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec volutpat hendrerit !nibus. Donec eu auctor eros. Donec venenatis, eros id suscipit scelerisque, leo orci porta felis, vitae rutrum ipsum odio eu lectus.
+    </p>
+  </div>
+
+  <div class="cell small-1"></div>
+
+  <div class="cell small-1"></div>
+
+  <div class="cell small-5">
+    <h3>Use a Password Manager</h3>
+    <br>
+    <p>It's great</p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec volutpat hendrerit !nibus. Donec eu auctor eros. Donec venenatis, eros id suscipit scelerisque, leo orci porta felis, vitae rutrum ipsum odio eu lectus.
+    </p>
+  </div>
+  <div class="cell small-5 padding">
+    <img alt="placeholder" class="thumbnail" src="https://placehold.it/550x310">
+  </div>
+
+  <div class="cell small-1"></div>
