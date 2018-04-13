@@ -7,6 +7,20 @@
   --secondary-text-color: #737373;
 }
 
+.default-body {
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column;
+}
+
+.default-body > :not(.filler-footer) {
+  flex: 0 0 auto;
+}
+
+.default-body > .filler-footer {
+  flex: 1 0 auto;
+}
+
 h1, h2, h3, h4 {
   font-family: 'Fira Sans', sans-serif; /* Override Foundation */
 }
