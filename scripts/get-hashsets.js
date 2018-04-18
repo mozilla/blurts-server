@@ -4,6 +4,8 @@ const request = require("request");
 const S3 = require("aws-sdk/clients/s3");
 
 const AppConstants = require("../app-constants");
+// Disable eslint here till this file gets updated to use DBUtils.
+// eslint-disable-next-line node/no-missing-require
 const models = require("../db/models");
 const pkg = require("../package.json");
 

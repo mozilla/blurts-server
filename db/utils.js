@@ -1,7 +1,7 @@
 "use strict";
 
-const Breach = require("./models/Breach");
-const EmailHash = require("./models/EmailHash");
+const Breach = require("./models/breach");
+const EmailHash = require("./models/emailhash");
 
 const getSha1 = require("../sha1-utils");
 
