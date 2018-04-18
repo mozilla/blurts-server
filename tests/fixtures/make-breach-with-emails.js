@@ -5,8 +5,7 @@ const Knex = require("knex");
 const knexConfig = require('../../db/knexfile');
 const { Model } = require("objection");
 
-const DBUtils = require("../../db/utils.js")
-const getSha1 = require("../../sha1-utils");
+const DBUtils = require("../../db/utils")
 
 const knex = Knex(knexConfig.development);
 Model.knex(knex);
@@ -33,12 +32,12 @@ const sampleBreaches = [
   for (const sB of sampleBreaches) {
     await DBUtils.createBreach(sB.name, sB.meta);
     for (const e of sB.emails) {
-      await DBUtils.addBreachedHash(sB.name, getSha1(e));
+      await DBUtils.addBreachedEmail(sB.name, e);
     }
   }
 
   const testEmail = "test1@test.com";
-  const foundBreaches = await DBUtils.getBreachesForHash(getSha1(testEmail));
+  const foundBreaches = await DBUtils.getBreachesForEmail(testEmail);
   console.log(`\n\n${testEmail} was found in the following breaches:\n`);
   console.log(foundBreaches.map(b => b.name));
   // eslint-disable-next-line no-process-exit

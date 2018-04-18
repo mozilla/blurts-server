@@ -48,6 +48,26 @@ const DBUtils = {
     return await this._addEmailHash(sha1, email);
   },
 
+  async removeSubscriber(email) {
+    const sha1 = getSha1(email);
+
+    // Check if an entry exists.
+    const existingEntries = await EmailHash
+      .query()
+      .where("sha1", sha1);
+
+    // If not, nothing to be done, return.
+    if (!existingEntries.length) {
+      return;
+    }
+
+    // Patch out the email from the entry.
+    await existingEntries[0]
+      .$query()
+      .patch({ email: null })
+      .returning('*'); // Postgres trick to return the updated row as model.
+  },
+
   async addBreachedHash(breachName, sha1) {
     console.log(`Adding ${sha1} to ${breachName}`);
     const addedEmailHash = await this._addEmailHash(sha1);
@@ -61,6 +81,10 @@ const DBUtils = {
       .relate(addedEmailHash.id);
   },
 
+  addBreachedEmail(breachName, email) {
+    return this.addBreachedHash(breachName, getSha1(email));
+  },
+
   async getBreachesForHash(sha1) {
     console.log(`Finding EmailHash entry for ${sha1}`);
     const emailHashesBySha1 = await EmailHash
@@ -70,7 +94,11 @@ const DBUtils = {
     return await emailHashesBySha1[0]
       .$relatedQuery("breaches")
       .orderBy("name");
-  }
+  },
+
+  getBreachesForEmail(email) {
+    return this.getBreachesForHash(getSha1(email));
+  },
 };
 
 module.exports = DBUtils;

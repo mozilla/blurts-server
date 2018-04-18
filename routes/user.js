@@ -4,8 +4,9 @@ const AppConstants = require("../app-constants");
 
 const express = require("express");
 const bodyParser = require("body-parser");
+const crypto = require("crypto");
 
-const models = require("../db/models");
+const DBUtils = require("../db/utils");
 const EmailUtils = require("../email-utils");
 
 const ResponseCodes = Object.freeze({
@@ -19,17 +20,22 @@ const router = express.Router();
 const jsonParser = bodyParser.json();
 const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 
+const tempUserStore = new Map();
+
 router.post("/add", urlEncodedParser, async (req, res) => {
-  const user = await models.Subscriber.create({ email: req.body.email });
-  const url = `${AppConstants.SERVER_URL}/user/verify?state=${encodeURIComponent(user.verificationToken)}&email=${encodeURIComponent(user.email)}`;
+  const email = req.body.email;
+  const verificationToken = crypto.randomBytes(40).toString("hex");
+  tempUserStore.set(verificationToken, email);
+  const url = `${AppConstants.SERVER_URL}/user/verify?state=${encodeURIComponent(verificationToken)}&email=${encodeURIComponent(email)}`;
+  console.log(url); // Temporary for debugging.
 
   try {
-    await EmailUtils.sendEmail(user.email, "Firefox Breach Alert",
+    await EmailUtils.sendEmail(email, "Firefox Breach Alert",
       `Visit this link to subscribe: ${url}`);
 
     res.render("add", {
       title: "Verify email",
-      email: user.email,
+      email: email,
     });
   } catch (e) {
     console.log(e);
@@ -41,24 +47,23 @@ router.post("/add", urlEncodedParser, async (req, res) => {
 });
 
 router.get("/verify", jsonParser, async (req, res) => {
-  const user = await models.Subscriber.findOne({ where: { email: req.query.email, verificationToken: req.query.state } });
-  if (user === null) {
+  const email = tempUserStore.get(req.query.state);
+  if (!email || email !== req.query.email) {
     res.status(400).json({
       error_code: ResponseCodes.EmailNotFound,
       info: "Email not found or verification token does not match.",
     });
     return;
   }
-  // TODO: make a better user "verified" status than implicit presence of
-  // SHA1 hash value
-  user.saveSha1();
+
+  await DBUtils.addSubscriber(email);
   res.status(201).json({
-    info: `Successfully verified ${user.email}`,
+    info: `Successfully verified ${email}`,
   });
 });
 
 router.post("/remove", jsonParser, async (req, res) => {
-  models.Subscriber.destroy({ where: { email: req.query.email } });
+  await DBUtils.removeSubscriber(req.body.email);
   res.status(200).json({
     info: "Deleted user.",
   });

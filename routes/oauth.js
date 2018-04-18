@@ -8,7 +8,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const popsicle = require("popsicle");
 
-const models = require("../db/models");
+const DBUtils = require("../db/utils");
 
 // This object exists instead of inlining the env vars to make it easy
 // to abstract fetching API endpoints from the OAuth server (instead
@@ -58,8 +58,7 @@ router.get("/confirmed", jsonParser, async (req, res) => {
       },
     });
     const email = JSON.parse(data.body).email;
-    const user = await models.Subscriber.create({ email: email });
-    user.saveSha1();
+    const user = await DBUtils.addSubscriber(email);
 
     res.render("confirm", {
       title: "Firefox Breach Alerts: Subscribed",
