@@ -69,13 +69,10 @@ const DBUtils = {
   },
 
   async addBreachedHash(breachName, sha1) {
-    console.log(`Adding ${sha1} to ${breachName}`);
     const addedEmailHash = await this._addEmailHash(sha1);
-    console.log(`Added email hash id: ${addedEmailHash.id}`);
     const breachesByName = await Breach
       .query()
       .where("name", breachName);
-    console.log(`Got ${breachesByName.length} breaches for that name`);
     await breachesByName[0]
       .$relatedQuery("email_hashes")
       .relate(addedEmailHash.id);
@@ -86,11 +83,9 @@ const DBUtils = {
   },
 
   async getBreachesForHash(sha1) {
-    console.log(`Finding EmailHash entry for ${sha1}`);
     const emailHashesBySha1 = await EmailHash
       .query()
       .where("sha1", sha1);
-    console.log(`Found ${emailHashesBySha1.length} entries`);
     return await emailHashesBySha1[0]
       .$relatedQuery("breaches")
       .orderBy("name");
