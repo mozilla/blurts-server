@@ -6,7 +6,7 @@ const express = require("express");
 const hbs = require("express-hbs");
 const sessions = require("client-sessions");
 const Knex = require("knex");
-const knexConfig = require('./db/knexfile');
+const knexConfig = require("./db/knexfile");
 const { Model } = require("objection");
 
 const EmailUtils = require("./email-utils");

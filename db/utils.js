@@ -8,10 +8,12 @@ const getSha1 = require("../sha1-utils");
 const DBUtils = {
   async createBreach(name, meta) {
     try {
-    return await Breach
-      .query()
-      .insert({ name, meta });
-    } catch(e) {}
+      return await Breach
+        .query()
+        .insert({ name, meta });
+    } catch(e) {
+      // Duplicate (TODO: check properly)
+    }
   },
 
   async deleteBreach(id) {
@@ -37,7 +39,7 @@ const DBUtils = {
       return await existingEntries[0]
         .$query()
         .patch({ email })
-        .returning('*'); // Postgres trick to return the updated row as model.
+        .returning("*"); // Postgres trick to return the updated row as model.
     }
 
     return existingEntries[0];
@@ -65,7 +67,7 @@ const DBUtils = {
     await existingEntries[0]
       .$query()
       .patch({ email: null })
-      .returning('*'); // Postgres trick to return the updated row as model.
+      .returning("*"); // Postgres trick to return the updated row as model.
   },
 
   async addBreachedHash(breachName, sha1) {

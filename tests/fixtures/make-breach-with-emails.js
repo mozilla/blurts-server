@@ -2,10 +2,10 @@
 
 require("dotenv").load();
 const Knex = require("knex");
-const knexConfig = require('../../db/knexfile');
+const knexConfig = require("../../db/knexfile");
 const { Model } = require("objection");
 
-const DBUtils = require("../../db/utils")
+const DBUtils = require("../../db/utils");
 
 const knex = Knex(knexConfig.development);
 Model.knex(knex);
