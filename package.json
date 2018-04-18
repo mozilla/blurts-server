@@ -15,11 +15,12 @@
     "express": "^4.16.2",
     "express-hbs": "^1.0.4",
     "hbs": "^4.0.1",
+    "knex": "^0.14.6",
     "nodemailer": "^4.6.0",
+    "objection": "^1.1.6",
     "pg": "^7.4.1",
     "popsicle": "^9.2.0",
     "request": "^2.85.0",
-    "sequelize": "^4.35.2",
     "sequelize-cli": "^4.0.0"
   },
   "devDependencies": {
@@ -51,6 +52,7 @@
     "lint": "npm-run-all lint:*",
     "lint:js": "eslint .",
     "lint:nsp": "nsp check",
+    "migrate": "knex migrate:latest --knexfile db/knexfile.js",
     "pretest": "npm run lint",
     "get-hashsets": "node scripts/get-hashsets",
     "start": "node server.js",

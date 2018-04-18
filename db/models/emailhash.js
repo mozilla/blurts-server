@@ -1,13 +1,42 @@
-"use strict";
+'use strict';
 
-module.exports = (sequelize, DataTypes) => {
-  const EmailHash = sequelize.define("EmailHash", {
-    sha1: DataTypes.STRING,
-  }, {});
+const Model = require("objection").Model;
 
-  EmailHash.associate = function(models) {
-    EmailHash.belongsToMany(models.Breach, { through: "BreachedHashes" });
-  };
+class EmailHash extends Model {
+  // Table name is the only required property.
+  static get tableName() {
+    return "email_hashes";
+  }
 
-  return EmailHash;
-};
+/*
+  static get jsonSchema() {
+    return {
+      type: "object",
+      required: [],
+
+      properties: {
+        id: { type: "integer" },
+      }
+    };
+  }
+*/
+
+  static get relationMappings() {
+    return {
+      breaches: {
+        relation: Model.ManyToManyRelation,
+        modelClass: __dirname + "/Breach",
+        join: {
+          from: "email_hashes.id",
+          through: {
+            from: "breached_hashes.sha1_id",
+            to: "breached_hashes.breach_id",
+          },
+          to: "breaches.id",
+        },
+      },
+    };
+  }
+}
+
+module.exports = EmailHash;

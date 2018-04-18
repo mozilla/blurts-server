@@ -1,33 +1,38 @@
-"use strict";
+'use strict';
 
-const crypto = require("crypto");
+const Model = require("objection").Model;
 
-module.exports = (sequelize, DataTypes) => {
+class Subscriber extends Model {
+  // Table name is the only required property.
+  static get tableName() {
+    return "subscribers";
+  }
 
-  const EmailHash = sequelize.import("./emailhash");
+/*
+  static get jsonSchema() {
+    return {
+      type: "object",
+      required: [],
 
-  const Subscriber = sequelize.define("Subscriber", {
-    email: {
-      type: DataTypes.STRING,
-      validate: { isEmail: true },
-    },
-    verificationToken: {
-      type: DataTypes.STRING,
-      defaultValue: function () {
-        return crypto.randomBytes(40).toString("hex");
+      properties: {
+        id: { type: "integer" },
+      }
+    };
+  }
+*/
+
+  static get relationMappings() {
+    return {
+      sha1: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: __dirname + "/EmailHash",
+        join: {
+          from: "subscribers.sha1_id",
+          to: "email_hashes.id",
+        },
       },
-    },
-  }, {});
+    };
+  }
+}
 
-  Subscriber.associate = function() {
-    Subscriber.hasOne(EmailHash);
-  };
-
-  Subscriber.prototype.saveSha1 = async function() {
-    const sha1 = crypto.createHash("sha1").update(this.email).digest("hex");
-    const emailHash = await EmailHash.findOrCreate( { where: { sha1 }});
-    await this.setEmailHash(emailHash.id);
-  };
-
-  return Subscriber;
-};
+module.exports = Subscriber;
