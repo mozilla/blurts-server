@@ -28,7 +28,6 @@ exports.up = knex => {
 
 exports.down = knex => {
   return knex.schema
-    .dropTableIfExists("subscribers")
     .dropTableIfExists("email_hashes")
     .dropTableIfExists("breaches")
     .dropTableIfExists("breached_hashes");
