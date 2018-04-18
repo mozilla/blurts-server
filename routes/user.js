@@ -57,8 +57,9 @@ router.get("/verify", jsonParser, async (req, res) => {
   }
 
   await DBUtils.addSubscriber(email);
-  res.status(201).json({
-    info: `Successfully verified ${email}`,
+  res.render("confirm", {
+    title: "Firefox Breach Alerts: Subscribed",
+    email: email,
   });
 });
 
