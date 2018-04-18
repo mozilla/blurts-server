@@ -1,12 +1,14 @@
 "use strict";
 
-const test = require("tape");
 
-const models = require("../db/models");
+// OLD TESTS FOR SEQUELIZE - TODO: UPDATE
+
+
+/*
+const test = require("tape");
 
 const VALID_EMAIL = "test@test.com";
 const INVALID_EMAIL = "asdfghjkl";
-
 test("Test building user autogenerates verification token", t => {
   t.plan(2);
   const user = models.Subscriber.build({ email: VALID_EMAIL });
@@ -29,6 +31,7 @@ test("Test building user validates email", t => {
     t.pass("invalid email was rejected");
   });
 });
+*/
 
 /*
 test("Test saving sha1", t => {
