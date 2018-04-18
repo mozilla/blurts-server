@@ -20,8 +20,7 @@
     "objection": "^1.1.6",
     "pg": "^7.4.1",
     "popsicle": "^9.2.0",
-    "request": "^2.85.0",
-    "sequelize-cli": "^4.0.0"
+    "request": "^2.85.0"
   },
   "devDependencies": {
     "coveralls": "^3.0.0",
