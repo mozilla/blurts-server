@@ -1,6 +1,5 @@
-
-
-html, body {
+html,
+body {
   margin: 0 0 0 0;
   padding:0 0 0 0;
   color: #ffffff;
@@ -597,5 +596,3 @@ span.breach-info {
 .top-bar .section-wrapper {
   display:flex;
 }
-
-
