@@ -5,11 +5,17 @@ const AppConstants = require("./app-constants");
 const express = require("express");
 const hbs = require("express-hbs");
 const sessions = require("client-sessions");
+const Knex = require("knex");
+const knexConfig = require("./db/knexfile");
+const { Model } = require("objection");
 
 const EmailUtils = require("./email-utils");
 const BaseRoutes = require("./routes/home");
 const OAuthRoutes = require("./routes/oauth");
 const UserRoutes = require("./routes/user");
+
+const knex = Knex(knexConfig);
+Model.knex(knex);
 
 const app = express();
 app.use(express.static("public"));
