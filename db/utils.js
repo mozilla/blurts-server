@@ -1,9 +1,17 @@
 "use strict";
 
+const Knex = require("knex");
+const knexConfig = require("./knexfile");
+const { Model } = require("objection");
+
 const Breach = require("./models/breach");
 const EmailHash = require("./models/emailhash");
 
 const getSha1 = require("../sha1-utils");
+
+const knex = Knex(knexConfig);
+Model.knex(knex);
+
 
 const DBUtils = {
   async createBreach(name, meta) {
