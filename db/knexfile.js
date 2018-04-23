@@ -1,25 +1,12 @@
 "use strict";
 
 module.exports = {
-  development: {
-    client: "postgresql",
-    connection: {
-      database: "blurts",
-    },
-    pool: {
-      min: 2,
-      max: 10,
-    },
+  client: "postgresql",
+  connection: {
+    database: "blurts",
   },
-
-  production: {
-    client: "postgresql",
-    connection: {
-      database: "blurts",
-    },
-    pool: {
-      min: 2,
-      max: 10,
-    },
+  pool: {
+    min: 2,
+    max: 10,
   },
 };

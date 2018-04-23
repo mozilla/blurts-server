@@ -7,7 +7,7 @@ const { Model } = require("objection");
 
 const DBUtils = require("../../db/utils");
 
-const knex = Knex(knexConfig.development);
+const knex = Knex(knexConfig);
 Model.knex(knex);
 
 const sampleBreaches = [
@@ -38,6 +38,7 @@ const sampleBreaches = [
 
   const testEmail = "test1@test.com";
   const foundBreaches = await DBUtils.getBreachesForEmail(testEmail);
+  await DBUtils.deleteBreach(999999);
   console.log(`\n\n${testEmail} was found in the following breaches:\n`);
   console.log(foundBreaches.map(b => b.name));
   // eslint-disable-next-line no-process-exit
