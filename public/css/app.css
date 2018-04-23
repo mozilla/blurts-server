@@ -42,27 +42,49 @@ h1, h2, h3, h4, h5 {
 
 .top-bar {
   padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
   padding-inline-start: calc(8.33vw + .625rem); /* equal to one 1 grid column out of 12 */
   padding-inline-end: calc(8.33vw + .625rem);
   background-color: black;
   color: white;
+  align-items: baseline;
 }
 
-img.thumbnail.logo {
-  vertical-align: bottom;
-  margin-bottom: 0;
+img.logo {
+  margin-bottom: 10px;
+  width: 64px !important;
+  height: 64px !important;
 }
 
 .top-bar a:not(.button) {
   color: inherit;
 }
 
-.top-bar-right > ul {
-  background: none;
+.top-bar a.button {
+  padding: .75em 1em;
+  margin-bottom: .75em;
 }
 
-.top-bar-right > ul > li {
-  padding-inline-start: 1.25rem;
+.top-bar-left > * {
+  display: inline-block;
+}
+
+.top-bar-left > ul {
+  background: none;
+  margin-inline-start: 1.25rem;
+}
+
+.top-bar-left > ul > li {
+  margin-inline-start: 1.25rem;
+  margin-inline-end: 1.25rem;
+  display: inline-block;
+  border-bottom: 3px solid white;
+}
+
+.top-bar-left > ul > li > a {
+  font-size: 1.25rem;
+  padding: 0;
+  padding-bottom: 0.25rem;
 }
 
 .gray-bg {
@@ -95,9 +117,14 @@ img.thumbnail.logo {
 .protect-img {
   margin: auto;
   width: 33%;
+  max-width: 225px;
   flex: 0 0 auto;
   text-align: center;
   padding-inline-end: 2rem;
+}
+
+.fill {
+  fill: blue;
 }
 
 .flex-grow {
@@ -163,4 +190,8 @@ img.thumbnail.logo {
   flex: 0 0 auto;
   padding-inline-end: 1rem;
   object-fit: contain;
+}
+
+.footer-bg {
+  background-color: #091818;
 }
