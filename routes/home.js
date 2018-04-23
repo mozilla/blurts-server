@@ -14,6 +14,19 @@ router.get("/", urlEncodedParser, (req, res) => {
   });
 });
 
+router.get("/monitor", urlEncodedParser, (req, res) => {
+  res.render("monitor", {
+    title: "Firefox Monitor",
+    breach: {
+      name: "Test Breach",
+      date: "Test date",
+      dataClasses: "Test data classes",
+      acCount: "123",
+      description: "Lorem ipsum",
+    },
+  });
+});
+
 router.post("/scan", urlEncodedParser, async (req, res) => {
   const email = req.body.email;
   let foundBreaches;

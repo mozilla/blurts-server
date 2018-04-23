@@ -1,0 +1,117 @@
+{{!< default }}
+  <div class="cell"></div>
+
+  <div class="cell small-1"></div>
+
+  <div class="cell small-10 rounded-cell flexbox grid-x grid-padding-x grid-padding-y no-padding">
+    <div class="cell">
+      <h2>Protect yourself from hackers. Start here.</h2>
+    </div>
+    <div class="cell flexbox">
+      <div class="breach-img">
+        <img alt="placeholder" class="thumbnail" src="https://placehold.it/180x180">
+      </div>
+      <div class="flex">
+        <h4>{{ breach.name }}</h4><br>
+        <p>
+          <span class="bold">Breach date:</span> {{ breach.date }}<br>
+          <span class="bold">Compromised data:</span> {{ breach.dataClasses }}<br>
+          <span class="bold">Compromised accounts:</span> {{ breach.acCount }}<br>
+          {{ breach.description }}
+        </p>
+      </div>
+    </div>
+    <div class="cell">
+      <div>
+        <p class="bold">The first step to keeping your online accounts safe is knowing what you’re up against.<br>
+        Enter your email to find out if your accounts have been compromised.</p>
+        <br>
+        <form action="/scan" method="post">
+          <div class="input-group">
+            <input class="input-group-field email-to-hash" type="email" name="email">
+            <div class="input-group-button">
+              <input id="submit-email" type="submit" class="button" value="Scan">
+            </div>
+          </div>
+        </form>
+        <p class="thin">
+          Your email will not be stored or sent content. Find out more in our Privacy Policy.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cell small-1"></div>
+
+  <div class="cell"></div>
+  <div class="cell"></div>
+
+  <div class="cell small-1"></div>
+
+  <div class="cell small-10 rounded-cell flexbox grid-x grid-padding-x grid-padding-y no-padding">
+    <div class="cell tips-header bottom-border">
+      <a name="tips"></a>
+      <div class="text-center">
+        <h4 class="bold">Passwords: The key to account security</h4>
+      </div>
+    </div>
+    <div class="cell flexbox bottom-border">
+      <div class="protect-img">
+        <img alt="placeholder" class="thumbnail" src="https://placehold.it/250x250">
+      </div>
+      <div class="flex">
+        <h5>1. Use a different password for every account.</h5>
+        <br>
+        <p>When an attacker steals the password database for a site that you use (like LinkedIn or Yahoo), there’s nothing you can do but change your password for that site. That’s bad, but the damage can be much worse if you’ve re-used that password with other websites — then the attacker can access your accounts on those sites as well. To keep the damage contained, always use different passwords for different websites.</p>
+        <br>
+      </div>
+    </div>
+    <div class="cell flexbox bottom-border">
+      <div class="protect-img">
+        <img alt="placeholder" class="thumbnail" src="https://placehold.it/250x250">
+      </div>
+      <div class="flex">
+        <h5>2. Create strong passwords.</h5>
+        <br>
+        <p>The secret to preventing guessing, theft or password reset is a whole lot of randomness. When attackers try to guess passwords, they usually do two things: use lists of common passwords that people use all the time and make random guesses. The longer and more random your password is, the less likely that either of these guessing techniques will !nd it.</p>
+        <br>
+      </div>
+    </div>
+    <div class="cell flexbox bottom-border">
+      <div class="protect-img">
+        <img alt="placeholder" class="thumbnail" src="https://placehold.it/250x250">
+      </div>
+      <div class="flex">
+        <h5>3. Make your answers to security questions just as strong as your passwords.</h5>
+        <br>
+        <p>If you’ve forgotten your password, some sites make you answer security questions before you can reset it. The answers to these questions need to be just as secret as your password. Otherwise, an attacker can guess the answers and set your password to something he knows.
+Randomness can be a problem, since the security questions that sites often use things people know or can learn about you, like your birthplace, your birthday, or your relatives’ names. The good news is that websites don’t care if your answers are correct, so you can give answers to the security questions that are long and random, like your passwords.</p>
+        <br>
+      </div>
+    </div>
+    <div class="cell flexbox bottom-border">
+      <div class="protect-img">
+        <img alt="placeholder" class="thumbnail" src="https://placehold.it/250x250">
+      </div>
+      <div class="flex">
+        <h5>4. Use a password manager.</h5>
+        <br>
+        <p>These tips may seem overwhelming, but there are tools that can help. Password managers like 1Password, LastPass, or Dashlane can generate strong passwords for you, remember them for you, and !ll them into websites so you don’t have type them in.
+Many can even store the long, random answers to your security questions, in case you need to reset your accounts. There are risks in using password managers, since they create a database that has all your passwords in it. However, all reputable password managers encrypt their databases with a “master password.”</p>
+        <br>
+      </div>
+    </div>
+    <div class="cell flexbox bottom-border">
+      <div class="protect-img">
+        <img alt="placeholder" class="thumbnail" src="https://placehold.it/250x250">
+      </div>
+      <div class="flex">
+        <h5>5. Use two-factor authentication.</h5>
+        <br>
+        <p>When an attacker steals the password database for a site that you use (like LinkedIn or Yahoo), there’s nothing you can do but change your password for that site. That’s bad, but the damage can be much worse if you’ve re-used that password with other websites — then the attacker can access your accounts on those sites as well. To keep the damage contained, always use different passwords for different websites.</p>
+        <br>
+      </div>
+    </div>
+  </div>
+
+  <div class="cell"></div>
