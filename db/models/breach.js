@@ -1,6 +1,7 @@
 "use strict";
 
 const Model = require("objection").Model;
+const path = require("path");
 
 class Breach extends Model {
   // Table name is the only required property.
@@ -8,24 +9,11 @@ class Breach extends Model {
     return "breaches";
   }
 
-/*
-  static get jsonSchema() {
-    return {
-      type: "object",
-      required: [],
-
-      properties: {
-        id: { type: "integer" },
-      }
-    };
-  }
-*/
-
   static get relationMappings() {
     return {
       email_hashes: {
         relation: Model.ManyToManyRelation,
-        modelClass: `${__dirname}/EmailHash`,
+        modelClass: path.join(__dirname, "EmailHash"),
         join: {
           from: "breaches.id",
           through: {

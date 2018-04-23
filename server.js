@@ -14,7 +14,7 @@ const BaseRoutes = require("./routes/home");
 const OAuthRoutes = require("./routes/oauth");
 const UserRoutes = require("./routes/user");
 
-const knex = Knex(knexConfig.development);
+const knex = Knex(knexConfig);
 Model.knex(knex);
 
 const app = express();

@@ -3,10 +3,14 @@
 
 // OLD TESTS FOR SEQUELIZE - TODO: UPDATE
 
-
-/*
 const test = require("tape");
 
+test("No tests yet!", t => {
+  t.end();
+});
+
+
+/*
 const VALID_EMAIL = "test@test.com";
 const INVALID_EMAIL = "asdfghjkl";
 test("Test building user autogenerates verification token", t => {

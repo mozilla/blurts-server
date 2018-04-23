@@ -1,25 +1,12 @@
 "use strict";
 
-module.exports = {
-  development: {
-    client: "postgresql",
-    connection: {
-      database: "blurts",
-    },
-    pool: {
-      min: 2,
-      max: 10,
-    },
-  },
+const AppConstants = require("../app-constants");
 
-  production: {
-    client: "postgresql",
-    connection: {
-      database: "blurts",
-    },
-    pool: {
-      min: 2,
-      max: 10,
-    },
+module.exports = {
+  client: "postgresql",
+  connection: AppConstants.DATABASE_URL,
+  pool: {
+    min: 2,
+    max: 10,
   },
 };

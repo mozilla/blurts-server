@@ -12,7 +12,13 @@ const DBUtils = {
         .query()
         .insert({ name, meta });
     } catch(e) {
-      // Duplicate (TODO: check properly)
+      if (e.code && e.code === "23505") {
+        // Duplicate error, silently log.
+        console.log(`Duplicate breach: ${name}`);
+        return;
+      }
+
+      throw e;
     }
   },
 
@@ -21,76 +27,92 @@ const DBUtils = {
   },
 
   // Used internally, ideally should not be called by consumers.
-  async _addEmailHash(sha1, email) {
-    // Check if an entry exists
+  async _getSha1EntryAndDo(sha1, aFoundCallback, aNotFoundCallback) {
     const existingEntries = await EmailHash
       .query()
       .where("sha1", sha1);
 
-    // If not, add it and return.
-    if (!existingEntries.length) {
+    if (existingEntries.length && aFoundCallback) {
+      return await aFoundCallback(existingEntries[0]);
+    }
+
+    if (aNotFoundCallback) {
+      return await aNotFoundCallback();
+    }
+  },
+
+  // Used internally.
+  async _addEmailHash(sha1, email) {
+    return await this._getSha1EntryAndDo(sha1, async aEntry => {
+      // Entry existed, patch the email value if supplied.
+      if (email) {
+        return await aEntry
+          .$query()
+          .patch({ email })
+          .returning("*"); // Postgres trick to return the updated row as model.
+      }
+
+      return aEntry;
+    }, async () => {
       return await EmailHash
         .query()
         .insert({ sha1, email });
-    }
-
-    // Entry existed, patch the email value if supplied.
-    if (email) {
-      return await existingEntries[0]
-        .$query()
-        .patch({ email })
-        .returning("*"); // Postgres trick to return the updated row as model.
-    }
-
-    return existingEntries[0];
+    });
   },
 
   async addSubscriber(email) {
-    const sha1 = getSha1(email);
-    return await this._addEmailHash(sha1, email);
+    return await this._addEmailHash(getSha1(email), email);
   },
 
   async removeSubscriber(email) {
     const sha1 = getSha1(email);
 
-    // Check if an entry exists.
-    const existingEntries = await EmailHash
-      .query()
-      .where("sha1", sha1);
-
-    // If not, nothing to be done, return.
-    if (!existingEntries.length) {
-      return;
-    }
-
-    // Patch out the email from the entry.
-    await existingEntries[0]
-      .$query()
-      .patch({ email: null })
-      .returning("*"); // Postgres trick to return the updated row as model.
+    return await this._getSha1EntryAndDo(sha1, async aEntry => {
+      // Patch out the email from the entry.
+      return await aEntry
+        .$query()
+        .patch({ email: null })
+        .returning("*"); // Postgres trick to return the updated row as model.
+    });
   },
 
   async addBreachedHash(breachName, sha1) {
     const addedEmailHash = await this._addEmailHash(sha1);
+
     const breachesByName = await Breach
       .query()
       .where("name", breachName);
-    await breachesByName[0]
+
+    if (!breachesByName.length) {
+      return;
+    }
+
+    const breach = breachesByName[0];
+
+    const relatedSha1 = await breach
+      .$relatedQuery("email_hashes")
+      .where("sha1", sha1);
+
+    if (relatedSha1.length) {
+      // Already associated, nothing to do.
+      return;
+    }
+
+    return await breach
       .$relatedQuery("email_hashes")
       .relate(addedEmailHash.id);
   },
 
-  addBreachedEmail(breachName, email) {
-    return this.addBreachedHash(breachName, getSha1(email));
+  async addBreachedEmail(breachName, email) {
+    return await this.addBreachedHash(breachName, getSha1(email));
   },
 
   async getBreachesForHash(sha1) {
-    const emailHashesBySha1 = await EmailHash
-      .query()
-      .where("sha1", sha1);
-    return await emailHashesBySha1[0]
-      .$relatedQuery("breaches")
-      .orderBy("name");
+    return await this._getSha1EntryAndDo(sha1, async aEntry => {
+      return await aEntry
+        .$relatedQuery("breaches")
+        .orderBy("name");
+    });
   },
 
   getBreachesForEmail(email) {
