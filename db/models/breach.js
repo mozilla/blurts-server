@@ -13,7 +13,7 @@ class Breach extends Model {
     return {
       email_hashes: {
         relation: Model.ManyToManyRelation,
-        modelClass: path.join(__dirname, "EmailHash"),
+        modelClass: path.join(__dirname, "emailhash"),
         join: {
           from: "breaches.id",
           through: {
