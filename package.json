@@ -59,7 +59,7 @@
     "docker:run": "docker run -p 6060:6060 blurts-server",
     "lint": "npm-run-all lint:*",
     "lint:js": "eslint .",
-    "lint:css": "stylelint 'public/css/**/*.css'",
+    "lint:css": "stylelint --fix 'public/css/**/*.css'",
     "lint:nsp": "nsp check",
     "migrate": "knex migrate:latest --knexfile db/knexfile.js",
     "pretest": "npm run lint",
