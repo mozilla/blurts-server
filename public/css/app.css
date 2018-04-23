@@ -135,8 +135,8 @@ img.logo {
   flex: 1 1 auto;
 }
 
-.cell {
-  padding: 2rem !important;
+.main-grid .cell {
+  padding: 2rem;
 }
 
 .padding {
