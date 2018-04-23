@@ -14,18 +14,23 @@
   <body class="default-body">
     <div class="top-bar">
       <div class="top-bar-left">
-        <a href="/"><h2><span class="bold">Firefox</span> Breach Alert</h2></a>
+        <a href="/">
+          <h2>
+            <img alt="placeholder" class="logo" src="/img/firefox.png">
+            <span class="bold">Firefox</span> Monitor
+          </h2>
+        </a>
+        <ul class="menu">
+          <li><a href="#start">Start</a></li>
+          <li><a href="#tips">Tips</a></li>
+        </ul>
       </div>
       <div class="top-bar-right">
-        <ul class="menu">
-          <li><a href="/">About</a></li>
-          <li><a href="#tips">Tips</a></li>
-          <li><a class="button" data-open="subscribe-modal">Subscribe</a></li>
-        </ul>
+        <a class="button" data-open="subscribe-modal">Subscribe</a>
       </div>
     </div>
 
-    <div class="grid-x grid-padding-x grid-padding-y">
+    <div class="grid-x main-grid grid-padding-x grid-padding-y gray-bg">
       {{{ body }}}
     </div>
     <div class="filler-footer gray-bg"></div>
