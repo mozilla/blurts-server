@@ -1,14 +1,11 @@
 "use strict";
 
 require("dotenv").load();
-const Knex = require("knex");
-const knexConfig = require("../../db/knexfile");
-const { Model } = require("objection");
 
 const DBUtils = require("../../db/utils");
 
-const knex = Knex(knexConfig);
-Model.knex(knex);
+
+const extraTestEmail = process.argv[2];
 
 const sampleBreaches = [
   {
@@ -33,6 +30,9 @@ const sampleBreaches = [
     await DBUtils.createBreach(sB.name, sB.meta);
     for (const e of sB.emails) {
       await DBUtils.addBreachedEmail(sB.name, e);
+      if (extraTestEmail) {
+        DBUtils.addBreachedEmail(sB.name, extraTestEmail);
+      }
     }
   }
 
