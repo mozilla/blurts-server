@@ -22,6 +22,7 @@ app.use(express.static("public"));
 
 app.engine("hbs", hbs.express4({
   layoutsDir: __dirname + "/views/layouts",
+  partialsDir: __dirname + "/views/partials",
 }));
 app.set("view engine", "hbs");
 app.set("views", __dirname + "/views");
