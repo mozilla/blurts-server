@@ -131,6 +131,10 @@ img.logo {
   padding-inline-end: 2rem;
 }
 
+.breach-img {
+  max-width: 150px;
+}
+
 .fill {
   fill: blue;
 }

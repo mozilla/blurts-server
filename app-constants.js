@@ -2,7 +2,8 @@
 
 /* eslint-disable no-process-env */
 
-require("dotenv").load();
+const path = require("path");
+require("dotenv").load({path: path.join(__dirname, ".env")});
 
 const kEnvironmentVariables = [
   "SERVER_URL",

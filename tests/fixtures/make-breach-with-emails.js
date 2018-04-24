@@ -10,17 +10,29 @@ const extraTestEmail = process.argv[2];
 const sampleBreaches = [
   {
     name: "Test Breach 1",
-    meta: { },
+    meta: {
+      date: "1/1/1",
+      dataClasses: "a, b, c",
+      acCount: 123,
+    },
     emails: [ "test1@test.com", "test2@test.com" ],
   },
   {
     name: "Test Breach 2",
-    meta: { },
+    meta: {
+      date: "2/2/2",
+      dataClasses: "d, e, f",
+      acCount: 456,
+    },
     emails: [ "test2@test.com", "test3@test.com" ],
   },
   {
     name: "Test Breach 3",
-    meta: { },
+    meta: {
+      date: "3/3/3",
+      dataClasses: "g, h, i",
+      acCount: 789,
+    },
     emails: [ "test3@test.com", "test1@test.com" ],
   },
 ];

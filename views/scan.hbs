@@ -57,16 +57,16 @@
     </div>
     {{#each foundBreaches }}
       <div class="cell flexbox bottom-border">
-        <div class="protect-img">
-          <img src="img/Tip2.svg">
+        <div class="protect-img breach-img">
+          <img src="img/allmusic.png">
         </div>
         <div class="flex">
           <h4>{{ name }}</h4><br>
           <p>
-            <span class="bold">Breach date:</span> {{ date }}<br>
-            <span class="bold">Compromised data:</span> {{ dataClasses }}<br>
-            <span class="bold">Compromised accounts:</span> {{ acCount }}<br>
-            {{ description }}
+            <span class="bold">Breach date:</span> {{ meta.date }}<br>
+            <span class="bold">Compromised data:</span> {{ meta.dataClasses }}<br>
+            <span class="bold">Compromised accounts:</span> {{ meta.acCount }}<br>
+            {{ meta.description }}
           </p>
         </div>
       </div>

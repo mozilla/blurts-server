@@ -10,7 +10,7 @@ exports.up = knex => {
     .createTable("breaches", table => {
       table.increments("id").primary();
       table.string("name").unique();
-      table.string("meta");
+      table.json("meta");
     })
     .createTable("breached_hashes", table => {
       table
