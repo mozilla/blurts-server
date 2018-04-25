@@ -43,8 +43,8 @@ h1, h2, h3, h4, h5 {
 .top-bar {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
-  padding-inline-start: calc(8.33vw + .625rem); /* equal to one 1 grid column out of 12 */
-  padding-inline-end: calc(8.33vw + .625rem);
+  padding-left: calc(8.33vw + .625rem); /* equal to one 1 grid column out of 12 */
+  padding-right: calc(8.33vw + .625rem);
   background-color: black;
   color: white;
   align-items: baseline;
@@ -71,12 +71,12 @@ img.logo {
 
 .top-bar-left > ul {
   background: none;
-  margin-inline-start: 1.25rem;
+  margin-left: 1.25rem;
 }
 
 .top-bar-left > ul > li {
-  margin-inline-start: 1.25rem;
-  margin-inline-end: 1.25rem;
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
   display: inline-block;
   border-bottom: 3px solid white;
 }
@@ -94,8 +94,8 @@ img.logo {
 .rounded-cell {
   border-radius: 0.25rem;
   background: white;
-  margin-inline-start: 0.625rem !important;
-  margin-inline-end: 0 !important;
+  margin-left: 0.625rem !important;
+  margin-right: 0 !important;
   width: calc(83.33333vw - 1.25rem) !important;
 }
 
@@ -119,7 +119,7 @@ img.logo {
   margin: auto;
   flex: 0 0 auto;
   text-align: center;
-  padding-inline-end: 2rem;
+  padding-right: 2rem;
 }
 
 .protect-img {
@@ -128,7 +128,7 @@ img.logo {
   max-width: 225px;
   flex: 0 0 auto;
   text-align: center;
-  padding-inline-end: 2rem;
+  padding-right: 2rem;
 }
 
 .breach-img {
@@ -172,7 +172,7 @@ img.logo {
 }
 
 .padding-start {
-  padding-inline-start: 1.625rem !important;
+  padding-left: 1.625rem !important;
 }
 
 #subscribe-modal {
@@ -200,7 +200,7 @@ img.logo {
 
 .breach-item-container > img {
   flex: 0 0 auto;
-  padding-inline-end: 1rem;
+  padding-right: 1rem;
   object-fit: contain;
 }
 
