@@ -1,63 +1,95 @@
 {{!< default }}
-  <div class="cell small-12 gray-bg"></div>
-  <div class="cell small-12 gray-bg"></div>
+  <div class="cell"></div>
 
-  <div class="cell small-1 gray-bg"></div>
-  <div class="cell small-10 gray-bg">
-    {{#if foundBreaches }}
-      <h3>Uh oh! Here are your results.</h3>
-    {{ else }}
-      <h3>Whew! No breaches found.</h3>
-    {{/if}}
-  </div>
-  <div class="cell small-1 gray-bg"></div>
+  <div class="cell small-1"></div>
 
-  <div class="cell small-1 gray-bg"></div>
-
-  <div class="cell small-6 gray-bg">
-    <h4>{{ email }}</h4>
-    <p><a href="#" data-open="subscribe-modal">Notify me</a> about the next breach.</p>
-  </div>
-
-  <div class="cell small-4 gray-bg center-center">
-    <form action="/scan" method="post" class="full-width">
-      <div class="input-group">
-        <input class="input-group-field email-to-hash" type="email" name="email" placeholder="Enter Email">
-        <div class="input-group-button">
-          <input id="submit-email" type="submit" class="button" value="Try Again">
+  <div class="cell small-10 rounded-cell flexbox grid-x grid-padding-x grid-padding-y no-padding">
+    <div class="cell">
+      <a name="start"></a>
+      <h2>
+        {{#if foundBreaches }}
+          Oh, no! This might be a problem.
+        {{ else }}
+          So far, so good.
+        {{/if}}
+      </h2>
+    </div>
+    <div class="cell">
+      <p class="bold">
+        {{#if foundBreaches }}
+          {{ email }} appears in our list of compromised accounts. Change your password on these sites and anywhere else you’ve used the same password. Then, take action to protect all of your accounts and sign up for alerts from Firefox Monitor.
+        {{ else }}
+          {{ email }} does not appear in our list of compromised accounts. That’s good news. But it doesn’t mean you’re safe - data breaches can happen at any time in a number of ways, so take action to protect your passwords and sign up for alerts from Firefox Monitor.
+        {{/if}}
+      </p>
+      <br>
+      <form action="/scan" method="post">
+        <div class="input-group">
+          <input class="input-group-field email-to-hash" type="email" name="email">
+          <div class="input-group-button">
+            <input id="submit-email" type="submit" class="button" value="Scan">
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+      <p class="thin">
+        Your email will not be stored or sent content. Find out more in our Privacy Policy.
+      </p>
+      <p>
+        Get an alert if your account information is compromised.<br>
+        <a>Subscribe to Firefox Monitor</a>
+      </p>
+    </div>
   </div>
 
-  <div class="cell small-1 gray-bg"></div>
+  <div class="cell small-1"></div>
 
-  <div class="cell small-1 gray-bg"></div>
 
-  <div class="cell small-6 gray-bg">
+{{#if foundBreaches }}
+  <div class="cell"></div>
+
+  <div class="cell small-1"></div>
+
+  <div class="cell small-6 rounded-cell flexbox grid-x grid-padding-x grid-padding-y no-padding">
+    <div class="cell tips-header bottom-border">
+      <div class="text-center">
+        <h4 class="bold">Your Compromised Accounts</h4>
+      </div>
+    </div>
     {{#each foundBreaches }}
-      <div class="callout breach-item-container">
-        <img src="https://via.placeholder.com/100x100">
-        <div >
-          <h4>{{ name }}</h4>
-          <p>Passwords and usernames were stolen. Breach most likely occurred in late 2011.</p>
+      <div class="cell flexbox bottom-border">
+        <div class="protect-img breach-img">
+          <img src="img/allmusic.png">
+        </div>
+        <div class="flex">
+          <h4>{{ name }}</h4><br>
+          <p>
+            <span class="bold">Breach date:</span> {{ meta.date }}<br>
+            <span class="bold">Compromised data:</span> {{ meta.dataClasses }}<br>
+            <span class="bold">Compromised accounts:</span> {{ meta.acCount }}<br>
+            {{ meta.description }}
+          </p>
         </div>
       </div>
     {{/each}}
-    <br>
-    <p>
-      Text explaining that you should tell your friends about this great feature and why.
-    </p>
-    <br>
-    <a class="button" data-open="share-modal">Share</a>
   </div>
 
-  <div class="cell small-4 gray-bg">
-    <h4>Next Steps:</h4>
-    <p>
-      Make sure to change your password on all websites that have been breached,
-      and that you don't use the breached password in other areas.
-    </p>
+  <div class="cell small-4 rounded-cell flexbox grid-y grid-padding-x grid-padding-y no-padding">
+    <div class="cell tips-header bottom-border">
+      <div class="text-center">
+        <h4 class="bold">What to Do</h4>
+      </div>
+    </div>
+    <div class="cell">
+      <p><span class="bold">Change your password</span> on these sites and anywhere else you’ve used the same password.</p>
+      <p>Make your answers to <span class="bold">security questions</span> just as strong as your passwords.</p>
+      <p><span class="bold">Use password managers</span> like 1Password, LastPass, or Dashlane to generate strong passwords for you, remember them for you, and !ll them into websites so you don’t have type them in.</p>
+      <p>Sign up for alerts from Firefox Monitor to learn sooner about your compromised accounts.</p>
+    </div>
+    <div class="cell"></div>
   </div>
 
-  <div class="cell small-1 gray-bg"></div>
+  <div class="cell small-1"></div>
+{{ else }}
+  <div class="cell"></div>
+  {{> tips }}
+{{/if}}
