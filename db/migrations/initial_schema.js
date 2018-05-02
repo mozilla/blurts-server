@@ -23,12 +23,15 @@ exports.up = knex => {
         .unsigned()
         .references("id")
         .inTable("breaches");
+      table
+        .boolean("notified")
+        .defaultTo(false);
     });
 };
 
 exports.down = knex => {
   return knex.schema
+    .dropTableIfExists("breached_hashes")
     .dropTableIfExists("email_hashes")
-    .dropTableIfExists("breaches")
-    .dropTableIfExists("breached_hashes");
+    .dropTableIfExists("breaches");
 };

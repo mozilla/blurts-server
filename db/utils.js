@@ -87,7 +87,8 @@ const DBUtils = {
   async getSubscribersForBreach(breach) {
     return await breach
       .$relatedQuery("email_hashes")
-      .whereNotNull("email");
+      .whereNotNull("email")
+      .where("notified", false);
   },
 
   async addBreachedHash(breachName, sha1) {
