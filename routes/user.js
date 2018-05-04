@@ -34,7 +34,7 @@ router.post("/add", urlEncodedParser, async (req, res) => {
       email,
       "Verify your email address to subscribe to Firefox Monitor.",
       "email_verify",
-      { email: email, url: url}
+      { email, url}
     );
 
     res.render("add", {
