@@ -29,13 +29,8 @@ async function notifySubscribersOfNewBreach(breachName) {
       );
       console.log("DONE sending email.");
       console.log("Setting notified=true ...");
-      console.log("SQL: ", subscriber.$relatedQuery("breaches").where("breach_id", breach.id).patch({notified: true}).toSql());
-      subscriber
-        .$relatedQuery("breaches")
-        .where("breach_id", "=",  breach.id)
-        .patch({notified: true});
+      DBUtils.setBreachedHashNotified(breach, subscriber);
       console.log("DONE setting notified=true");
-      // TODO: mark the subscriber as already notified for this breach
     } catch (e) {
       console.log(e);
     }

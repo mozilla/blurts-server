@@ -19,6 +19,7 @@ class Breach extends Model {
           through: {
             from: "breached_hashes.breach_id",
             to: "breached_hashes.sha1_id",
+            modelClass: path.join(__dirname, "breachedhash"),
             extra: ["notified"],
           },
           to: "email_hashes.id",
