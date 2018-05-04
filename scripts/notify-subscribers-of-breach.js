@@ -35,7 +35,10 @@ async function notifySubscribersOfNewBreach(breachName) {
       console.log(e);
     }
   }
-  return;
 }
 
-notifySubscribersOfNewBreach(breachName).then(()=>{return;});
+(async () => {
+  await notifySubscribersOfNewBreach(breachName);
+  // eslint-disable-next-line no-process-exit
+  process.exit();
+})();
