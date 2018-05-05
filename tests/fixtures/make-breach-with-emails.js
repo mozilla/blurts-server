@@ -53,6 +53,9 @@ const sampleBreaches = [
   await DBUtils.deleteBreach(999999);
   console.log(`\n\n${testEmail} was found in the following breaches:\n`);
   console.log(foundBreaches.map(b => b.name));
+  const breach = await DBUtils.getBreachByName("Linkedin");
+  console.log(breach);
+  await DBUtils.setBreachedHashNotified(breach, testEmail);
   // eslint-disable-next-line no-process-exit
   process.exit();
 })();

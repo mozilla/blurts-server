@@ -6,7 +6,6 @@ const { Model } = require("objection");
 
 const Breach = require("./models/breach");
 const EmailHash = require("./models/emailhash");
-const BreachedHash = require("./models/breachedhash");
 
 const getSha1 = require("../sha1-utils");
 
@@ -123,8 +122,11 @@ const DBUtils = {
     return await this.addBreachedHash(breachName, getSha1(email));
   },
 
-  async setBreachedHashNotified(breach, subscriber) {
-    return await BreachedHash.query().patch({notified: true}).where("breach_id", "=", breach.id).andWhere("sha1_id", "=", subscriber.id);
+  async setBreachedHashNotified(breach, email) {
+    return await breach
+      .$relatedQuery("email_hashes")
+      .where("sha1", getSha1(email))
+      .patch({ notified: true });
   },
 
   async getBreachesForHash(sha1) {
