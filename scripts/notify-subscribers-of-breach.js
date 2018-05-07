@@ -29,7 +29,7 @@ async function notifySubscribersOfNewBreach(breachName) {
       );
       console.log("DONE sending email.");
       console.log("Setting notified=true ...");
-      DBUtils.setBreachedHashNotified(breach, subscriber);
+      await DBUtils.setBreachedHashNotified(breach, subscriber.email);
       console.log("DONE setting notified=true");
     } catch (e) {
       console.log(e);
