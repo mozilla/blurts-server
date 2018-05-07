@@ -19,6 +19,7 @@ class EmailHash extends Model {
           through: {
             from: "breached_hashes.sha1_id",
             to: "breached_hashes.breach_id",
+            extra: ["notified"],
           },
           to: "breaches.id",
         },

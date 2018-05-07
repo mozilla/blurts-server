@@ -17,6 +17,7 @@
     "hbs": "^4.0.1",
     "knex": "^0.14.6",
     "nodemailer": "^4.6.0",
+    "nodemailer-express-handlebars": "^3.0.0",
     "objection": "^1.1.6",
     "pg": "^7.4.1",
     "popsicle": "^9.2.0",

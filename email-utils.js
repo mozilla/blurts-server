@@ -1,8 +1,22 @@
 "use strict";
 
+const path = require("path");
+
 const AppConstants = require("./app-constants");
 
 const nodemailer = require("nodemailer");
+const hbs = require("nodemailer-express-handlebars");
+
+const hbsOptions = {
+  viewEngine: {
+    extname: ".hbs",
+    layoutsDir: __dirname + path.sep + path.join("views", "layouts"),
+    defaultLayout: "email",
+    partialsDir: __dirname + path.sep + path.join("views", "partials"),
+  },
+  viewPath: __dirname + path.sep + path.join("views", "email"),
+  extName: ".hbs",
+};
 
 // This is set later when reading SMTP credentials from the environment.
 // This exists as a variable so we can use it in the from header of emails.
@@ -55,17 +69,19 @@ const EmailUtils = {
       });
     });
   },
-  sendEmail(aRecipient, aSubject, aBody) {
+  sendEmail(aRecipient, aSubject, aTemplate, aContext) {
     if (!gTransporter) {
       return Promise.reject("SMTP transport not initialized");
     }
 
     return new Promise((resolve, reject) => {
+      gTransporter.use("compile", hbs(hbsOptions));
       const mailOptions = {
-        from: `"Firefox Breach Alerts" <${kSMTPUsername}>`,
+        from: `"Firefox Monitor" <${kSMTPUsername}>`,
         to: aRecipient,
         subject: aSubject,
-        text: aBody,
+        template: aTemplate,
+        context: aContext,
       };
 
       gTransporter.sendMail(mailOptions, (error, info) => {

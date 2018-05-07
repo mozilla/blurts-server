@@ -84,6 +84,13 @@ const DBUtils = {
     });
   },
 
+  async getSubscribersForBreach(breach) {
+    return await breach
+      .$relatedQuery("email_hashes")
+      .whereNotNull("email")
+      .where("notified", false);
+  },
+
   async addBreachedHash(breachName, sha1) {
     const addedEmailHash = await this._addEmailHash(sha1);
 
@@ -115,6 +122,13 @@ const DBUtils = {
     return await this.addBreachedHash(breachName, getSha1(email));
   },
 
+  async setBreachedHashNotified(breach, email) {
+    return await breach
+      .$relatedQuery("email_hashes")
+      .where("sha1", getSha1(email))
+      .patch({ notified: true });
+  },
+
   async getBreachesForHash(sha1) {
     return await this._getSha1EntryAndDo(sha1, async aEntry => {
       return await aEntry
@@ -125,6 +139,10 @@ const DBUtils = {
 
   getBreachesForEmail(email) {
     return this.getBreachesForHash(getSha1(email));
+  },
+
+  async getBreachByName(breachName) {
+    return (await Breach.query().where("name", breachName))[0];
   },
 };
 

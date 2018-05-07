@@ -30,8 +30,12 @@ router.post("/add", urlEncodedParser, async (req, res) => {
   console.log(url); // Temporary for debugging.
 
   try {
-    await EmailUtils.sendEmail(email, "Firefox Breach Alert",
-      `Visit this link to subscribe: ${url}`);
+    await EmailUtils.sendEmail(
+      email,
+      "Verify your email address to subscribe to Firefox Monitor.",
+      "email_verify",
+      { email, url}
+    );
 
     res.render("add", {
       title: "Verify email",

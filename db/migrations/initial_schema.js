@@ -13,6 +13,7 @@ exports.up = knex => {
       table.json("meta");
     })
     .createTable("breached_hashes", table => {
+      table.increments("id").primary();
       table
         .integer("sha1_id")
         .unsigned()
@@ -23,12 +24,15 @@ exports.up = knex => {
         .unsigned()
         .references("id")
         .inTable("breaches");
+      table
+        .boolean("notified")
+        .defaultTo(false);
     });
 };
 
 exports.down = knex => {
   return knex.schema
+    .dropTableIfExists("breached_hashes")
     .dropTableIfExists("email_hashes")
-    .dropTableIfExists("breaches")
-    .dropTableIfExists("breached_hashes");
+    .dropTableIfExists("breaches");
 };
