@@ -3,10 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
-const DBUtils = require("../db/utils");
-
 const router = express.Router();
-const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 
 function handleIndexRoute(req, res) {
   res.render("monitor", {
@@ -21,29 +18,7 @@ function handleIndexRoute(req, res) {
   });
 }
 
-router.get("/", urlEncodedParser, handleIndexRoute);
-router.get("/monitor", urlEncodedParser, handleIndexRoute);
-
-router.post("/scan", urlEncodedParser, async (req, res) => {
-  const email = req.body.email;
-  let foundBreaches;
-
-  if (email) {
-    if (req.session.scanResults && req.session.scanResults[email]) {
-      foundBreaches = req.session.scanResults[email];
-    } else {
-      req.session.scanResults = {};
-      console.log("querying database for breaches");
-      foundBreaches = await DBUtils.getBreachesForEmail(email);
-      req.session.scanResults[email] = foundBreaches;
-    }
-  }
-
-  res.render("scan", {
-    title: "Firefox Breach Alerts: Scan Results",
-    email: email,
-    foundBreaches: foundBreaches,
-  });
-});
+router.get("/", handleIndexRoute);
+router.get("/monitor", handleIndexRoute);
 
 module.exports = router;

@@ -49,6 +49,20 @@ const DBUtils = {
     }
   },
 
+  async _getSha1EntriesFromPrefixAndDo(sha1Prefix, aFoundCallback, aNotFoundCallback) {
+    console.log("sha1Prefix: ", sha1Prefix);
+    const existingEntries = await EmailHash.query().where("sha1", "like", sha1Prefix + '%').eager("breaches");
+    console.log("SQL: ", EmailHash.query().where("sha1", "like", sha1Prefix + '%').eager("breaches").toSql());
+
+    if (existingEntries.length && aFoundCallback) {
+      return await aFoundCallback(existingEntries);
+    }
+
+    if (aNotFoundCallback) {
+      return await aNotFoundCallback();
+    }
+  },
+
   // Used internally.
   async _addEmailHash(sha1, email) {
     return await this._getSha1EntryAndDo(sha1, async aEntry => {
@@ -134,6 +148,14 @@ const DBUtils = {
       return await aEntry
         .$relatedQuery("breaches")
         .orderBy("name");
+    }, async () => {
+      return [];
+    });
+  },
+
+  async getBreachesForHashPrefix(sha1Prefix) {
+    return await this._getSha1EntriesFromPrefixAndDo(sha1Prefix, async aEntries => {
+      return aEntries;
     }, async () => {
       return [];
     });

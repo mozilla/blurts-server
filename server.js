@@ -7,8 +7,11 @@ const hbs = require("express-hbs");
 const sessions = require("client-sessions");
 
 const EmailUtils = require("./email-utils");
-const BaseRoutes = require("./routes/home");
+
+const HIBPRoutes = require("./routes/hibp-stubs");
+const HomeRoutes = require("./routes/home");
 const OAuthRoutes = require("./routes/oauth");
+const ScanRoutes = require("./routes/scan");
 const UserRoutes = require("./routes/user");
 
 
@@ -29,8 +32,10 @@ app.use(sessions({
   activeDuration: 5 * 60 * 1000, // 5 minutes
 }));
 
-app.use("/", BaseRoutes);
+app.use("/", HomeRoutes);
+app.use("/hibp", HIBPRoutes);
 app.use("/oauth", OAuthRoutes);
+app.use("/scan", ScanRoutes);
 app.use("/user", UserRoutes);
 
 EmailUtils.init().then(() => {
