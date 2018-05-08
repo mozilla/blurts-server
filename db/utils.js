@@ -134,6 +134,8 @@ const DBUtils = {
       return await aEntry
         .$relatedQuery("breaches")
         .orderBy("name");
+    }, async () => {
+      return [];
     });
   },
 
