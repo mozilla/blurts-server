@@ -170,7 +170,7 @@ const DBUtils = {
   },
 
   async getBreachesByNames(breachNames) {
-    return await Breach.query().where("name", "in", breachNames).debug(true);
+    return await Breach.query().where("name", "in", breachNames);
   },
 
 };
