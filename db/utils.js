@@ -168,6 +168,11 @@ const DBUtils = {
   async getBreachByName(breachName) {
     return (await Breach.query().where("name", breachName))[0];
   },
+
+  async getBreachesByNames(breachNames) {
+    return await Breach.query().where("name", "in", breachNames).debug(true);
+  },
+
 };
 
 module.exports = DBUtils;

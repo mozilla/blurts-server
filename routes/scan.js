@@ -3,22 +3,27 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
-const DBUtils = require("../db/utils");
+const HIBP = require("../hibp");
 
 
 const router = express.Router();
 const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 
+
+
 router.post("/", urlEncodedParser, async (req, res) => {
   const email = req.body.email;
-  let foundBreaches;
+  let foundBreaches = [];
+
+  if (!req.session.scanResults) {
+    req.session.scanResults = {};
+  }
 
   if (email) {
-    if (req.session.scanResults && req.session.scanResults[email]) {
+    if (req.session.scanResults[email]) {
       foundBreaches = req.session.scanResults[email];
     } else {
-      req.session.scanResults = {};
-      foundBreaches = await DBUtils.getBreachesForEmail(email);
+      foundBreaches = await HIBP.getBreachesForEmail(email);
       req.session.scanResults[email] = foundBreaches;
     }
   }
