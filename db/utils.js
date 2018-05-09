@@ -50,9 +50,13 @@ const DBUtils = {
   },
 
   async _getSha1EntriesFromPrefixAndDo(sha1Prefix, aFoundCallback, aNotFoundCallback) {
-    console.log("sha1Prefix: ", sha1Prefix);
+    // Only accept 6-character hash prefixes so requests:
+    // 1. can't get more than the intended hash range results FROM us
+    // 2. can't reveal a more specific hash query TO us
+    if (sha1Prefix.length !== 6) {
+      return await aNotFoundCallback();
+    }
     const existingEntries = await EmailHash.query().where("sha1", "like", sha1Prefix + "%").eager("breaches");
-    console.log("SQL: ", EmailHash.query().where("sha1", "like", sha1Prefix + "%").eager("breaches").toSql());
 
     if (existingEntries.length && aFoundCallback) {
       return await aFoundCallback(existingEntries);
