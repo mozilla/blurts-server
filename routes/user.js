@@ -4,7 +4,6 @@ const AppConstants = require("../app-constants");
 
 const express = require("express");
 const bodyParser = require("body-parser");
-const crypto = require("crypto");
 
 const DBUtils = require("../db/utils");
 const EmailUtils = require("../email-utils");
@@ -20,13 +19,12 @@ const router = express.Router();
 const jsonParser = bodyParser.json();
 const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 
-const tempUserStore = new Map();
 
 router.post("/add", urlEncodedParser, async (req, res) => {
   const email = req.body.email;
-  const verificationToken = crypto.randomBytes(40).toString("hex");
-  tempUserStore.set(verificationToken, email);
-  const url = `${AppConstants.SERVER_URL}/user/verify?state=${encodeURIComponent(verificationToken)}&email=${encodeURIComponent(email)}`;
+  const unverifiedEmailHash = await DBUtils.addUnverifiedEmailHash(email);
+
+  const url = `${AppConstants.SERVER_URL}/user/verify?token=${encodeURIComponent(unverifiedEmailHash.verification_token)}&email=${encodeURIComponent(email)}`;
   console.log(url); // Temporary for debugging.
 
   try {
@@ -51,8 +49,8 @@ router.post("/add", urlEncodedParser, async (req, res) => {
 });
 
 router.get("/verify", jsonParser, async (req, res) => {
-  const email = tempUserStore.get(req.query.state);
-  if (!email || email !== req.query.email) {
+  const verifiedEmailHash = await DBUtils.verifyEmailHash(req.query.token, req.query.email);
+  if (!verifiedEmailHash) {
     res.status(400).json({
       error_code: ResponseCodes.EmailNotFound,
       info: "Email not found or verification token does not match.",
@@ -60,10 +58,9 @@ router.get("/verify", jsonParser, async (req, res) => {
     return;
   }
 
-  await DBUtils.addSubscriber(email);
   res.render("confirm", {
     title: "Firefox Breach Alerts: Subscribed",
-    email: email,
+    email: verifiedEmailHash.email,
   });
 });
 
