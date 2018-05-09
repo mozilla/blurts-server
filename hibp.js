@@ -23,14 +23,13 @@ const HIBP = {
     };
 
     console.log(`Fetching ${url}...`);
-    const hibpAccountRangeRequestObject = {url, headers};
 
     try {
       const response = await got(url, {headers});
       // Parse response body, format:
       // {breachedAccount1sha1}:{breach1Name}[,{breach2Name},...]
       // {breachedAccount2sha1}:{breach3Name}[,{breach4Name},...]
-      for (let breachedAccount of response.body.split("\n")) {
+      for (const breachedAccount of response.body.split("\n")) {
         if (!breachedAccount) {
           break;
         }
@@ -45,7 +44,7 @@ const HIBP = {
       console.error(error);
     }
     return foundBreaches;
-  }
-}
+  },
+};
 
-module.exports = HIBP
+module.exports = HIBP;

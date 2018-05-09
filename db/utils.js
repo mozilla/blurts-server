@@ -51,8 +51,8 @@ const DBUtils = {
 
   async _getSha1EntriesFromPrefixAndDo(sha1Prefix, aFoundCallback, aNotFoundCallback) {
     console.log("sha1Prefix: ", sha1Prefix);
-    const existingEntries = await EmailHash.query().where("sha1", "like", sha1Prefix + '%').eager("breaches");
-    console.log("SQL: ", EmailHash.query().where("sha1", "like", sha1Prefix + '%').eager("breaches").toSql());
+    const existingEntries = await EmailHash.query().where("sha1", "like", sha1Prefix + "%").eager("breaches");
+    console.log("SQL: ", EmailHash.query().where("sha1", "like", sha1Prefix + "%").eager("breaches").toSql());
 
     if (existingEntries.length && aFoundCallback) {
       return await aFoundCallback(existingEntries);
