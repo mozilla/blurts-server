@@ -44,7 +44,7 @@ const DBUtils = {
       return await aFoundCallback(existingEntries[0]);
     }
 
-    if (aNotFoundCallback) {
+    if (!existingEntries.length && aNotFoundCallback) {
       return await aNotFoundCallback();
     }
   },
@@ -62,7 +62,7 @@ const DBUtils = {
       return await aFoundCallback(existingEntries);
     }
 
-    if (aNotFoundCallback) {
+    if (!existingEntries.length && aNotFoundCallback) {
       return await aNotFoundCallback();
     }
   },

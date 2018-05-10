@@ -33,11 +33,10 @@ const HIBP = {
         if (!breachedAccount) {
           break;
         }
-        const split = breachedAccount.split(":");
-        const breachedSha1 = split[0];
-        const breaches = split[1].split(",");
+        const [breachedSha1, breachNamesStr] = breachedAccount.split(":", 2);
+        const breachNames = breachNamesStr.split(",");
         if (sha1 === breachedSha1) {
-          foundBreaches = await DBUtils.getBreachesByNames(breaches);
+          foundBreaches = await DBUtils.getBreachesByNames(breachNames);
         }
       }
     } catch (error) {
