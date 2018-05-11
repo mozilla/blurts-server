@@ -1,5 +1,7 @@
 "use strict";
 
+// eslint-disable-next-line node/no-extraneous-require
+const uuidv4 = require("uuid/v4");
 const Knex = require("knex");
 const knexConfig = require("./knexfile");
 const { Model } = require("objection");
@@ -34,6 +36,23 @@ const DBUtils = {
     await Breach.query().deleteById(id);
   },
 
+  async addUnverifiedEmailHash(email) {
+    return await EmailHash.query().insert(
+      {email: email, verification_token: uuidv4(), verified: false}
+    );
+  },
+
+  async verifyEmailHash(token, email) {
+    return await EmailHash.query()
+      .where("verification_token", "=", token)
+      .andWhere("email", "=", email)
+      .patch({
+        verified: true,
+        sha1: getSha1(email),
+      })
+      .returning("*");
+  },
+
   // Used internally, ideally should not be called by consumers.
   async _getSha1EntryAndDo(sha1, aFoundCallback, aNotFoundCallback) {
     const existingEntries = await EmailHash
@@ -50,13 +69,13 @@ const DBUtils = {
   },
 
   // Used internally.
-  async _addEmailHash(sha1, email) {
+  async _addEmailHash(sha1, email, verified = false) {
     return await this._getSha1EntryAndDo(sha1, async aEntry => {
       // Entry existed, patch the email value if supplied.
       if (email) {
         return await aEntry
           .$query()
-          .patch({ email })
+          .patch({ email, verified })
           .returning("*"); // Postgres trick to return the updated row as model.
       }
 
@@ -64,12 +83,13 @@ const DBUtils = {
     }, async () => {
       return await EmailHash
         .query()
-        .insert({ sha1, email });
+        .insert({ sha1, email, verified });
     });
   },
 
   async addSubscriber(email) {
-    return await this._addEmailHash(getSha1(email), email);
+    const emailHash = await this._addEmailHash(getSha1(email), email, true);
+    return await emailHash.$query().patch({ verified: true });
   },
 
   async removeSubscriber(email) {

@@ -4,8 +4,10 @@ exports.up = knex => {
   return knex.schema
     .createTable("email_hashes", table => {
       table.increments("id").primary();
-      table.string("sha1").unique();
-      table.string("email").unique();
+      table.string("sha1");
+      table.string("email");
+      table.string("verification_token").unique();
+      table.boolean("verified").defaultTo(false);
     })
     .createTable("breaches", table => {
       table.increments("id").primary();
@@ -14,19 +16,9 @@ exports.up = knex => {
     })
     .createTable("breached_hashes", table => {
       table.increments("id").primary();
-      table
-        .integer("sha1_id")
-        .unsigned()
-        .references("id")
-        .inTable("email_hashes");
-      table
-        .integer("breach_id")
-        .unsigned()
-        .references("id")
-        .inTable("breaches");
-      table
-        .boolean("notified")
-        .defaultTo(false);
+      table.integer("sha1_id").unsigned().references("id").inTable("email_hashes");
+      table.integer("breach_id").unsigned().references("id").inTable("breaches");
+      table.boolean("notified").defaultTo(false);
     });
 };
 

@@ -58,12 +58,11 @@ router.get("/confirmed", jsonParser, async (req, res) => {
       },
     });
     const email = JSON.parse(data.body).email;
-    const user = await DBUtils.addSubscriber(email);
+    await DBUtils.addSubscriber(email);
 
     res.render("confirm", {
       title: "Firefox Breach Alerts: Subscribed",
       email: email,
-      user: user,
     });
   } catch (err) {
     console.log(err);
