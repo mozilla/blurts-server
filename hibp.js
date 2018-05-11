@@ -29,10 +29,7 @@ const HIBP = {
       // Parse response body, format:
       // {breachedAccount1sha1}:{breach1Name}[,{breach2Name},...]
       // {breachedAccount2sha1}:{breach3Name}[,{breach4Name},...]
-      for (const breachedAccount of response.body.split("\n")) {
-        if (!breachedAccount) {
-          break;
-        }
+      for (const breachedAccount of response.body.trim().split("\n")) {
         const [breachedSha1, breachNamesStr] = breachedAccount.split(":", 2);
         const breachNames = breachNamesStr.split(",");
         if (sha1 === breachedSha1) {
