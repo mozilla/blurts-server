@@ -30,7 +30,9 @@ const HIBP = {
       // {breachedAccount1sha1}:{breach1Name}[,{breach2Name},...]
       // {breachedAccount2sha1}:{breach3Name}[,{breach4Name},...]
       for (const breachedAccount of response.body.trim().split("\n")) {
-        const [breachedSha1, breachNamesStr] = breachedAccount.split(":", 2);
+        const sliceIndex = breachedAccount.indexOf(":");
+        const breachedSha1 = breachedAccount.slice(0, sliceIndex);
+        const breachNamesStr = breachedAccount.slice(sliceIndex + 1);
         const breachNames = breachNamesStr.split(",");
         if (sha1 === breachedSha1) {
           foundBreaches = await DBUtils.getBreachesByNames(breachNames);
