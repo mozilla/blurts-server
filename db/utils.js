@@ -63,7 +63,25 @@ const DBUtils = {
       return await aFoundCallback(existingEntries[0]);
     }
 
-    if (aNotFoundCallback) {
+    if (!existingEntries.length && aNotFoundCallback) {
+      return await aNotFoundCallback();
+    }
+  },
+
+  async _getSha1EntriesFromPrefixAndDo(sha1Prefix, aFoundCallback, aNotFoundCallback) {
+    // Only accept 6-character hash prefixes so requests:
+    // 1. can't get more than the intended hash range results FROM us
+    // 2. can't reveal a more specific hash query TO us
+    if (sha1Prefix.length !== 6) {
+      return await aNotFoundCallback();
+    }
+    const existingEntries = await EmailHash.query().where("sha1", "like", sha1Prefix + "%").eager("breaches");
+
+    if (existingEntries.length && aFoundCallback) {
+      return await aFoundCallback(existingEntries);
+    }
+
+    if (!existingEntries.length && aNotFoundCallback) {
       return await aNotFoundCallback();
     }
   },
@@ -154,6 +172,16 @@ const DBUtils = {
       return await aEntry
         .$relatedQuery("breaches")
         .orderBy("name");
+    }, async () => {
+      return [];
+    });
+  },
+
+  async getBreachesForHashPrefix(sha1Prefix) {
+    return await this._getSha1EntriesFromPrefixAndDo(sha1Prefix, async aEntries => {
+      return aEntries;
+    }, async () => {
+      return [];
     });
   },
 
@@ -164,6 +192,11 @@ const DBUtils = {
   async getBreachByName(breachName) {
     return (await Breach.query().where("name", breachName))[0];
   },
+
+  async getBreachesByNames(breachNames) {
+    return await Breach.query().where("name", "in", breachNames);
+  },
+
 };
 
 module.exports = DBUtils;
