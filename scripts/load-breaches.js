@@ -6,7 +6,6 @@ const AppConstants = require("../app-constants");
 const DBUtils = require("../db/utils");
 const pkg = require("../package.json");
 
-const HIBP_AUTH = `Bearer ${AppConstants.HIBP_API_TOKEN}`;
 const HIBP_USER_AGENT = `${pkg.name}/${pkg.version}`;
 
 
@@ -18,7 +17,6 @@ async function handleBreachesResponse(response) {
       await DBUtils.createBreach(breach.Name, breach);
     }
   } catch (error) {
-    debugger;
     console.error(error);
     // We can `process.exit()` here since it's a CLI script.
     // eslint-disable-next-line no-process-exit
@@ -44,5 +42,7 @@ async function handleBreachesResponse(response) {
     process.exit(1);
   }
   console.log("Done handling breaches response.");
+  // We can `process.exit()` here since it's a CLI script.
+  // eslint-disable-next-line no-process-exit
   process.exit();
 })();

@@ -17,6 +17,8 @@ if (args["--help"]) {
   console.log("Usage: node make-breach-with-emails.js [--createAMBreach] [--extraTestEmail=<...>]");
   console.log("--createAMBreach creates the 'AllMusic' test fixture breach.");
   console.log("--extraTestEmail adds the supplied test email address and includes it in the LinkedIn, Adobe, and AllMusic breaches.");
+  // We can `process.exit()` here since it's a CLI script.
+  // eslint-disable-next-line no-process-exit
   process.exit();
 }
 
@@ -36,8 +38,8 @@ const sampleBreaches = [
 ];
 
 (async () => {
-  if (args['--createAMBreach']) {
-    const allMusicBreach = await DBUtils.createBreach("AllMusic", {
+  if (args["--createAMBreach"]) {
+    await DBUtils.createBreach("AllMusic", {
       Name: "AllMusic",
       BreachDate: "2015-012-06",
       DataClasses: ["Email addresses", "IP addresses", "Passwords", "Usernames", "Website activity"],
@@ -45,7 +47,7 @@ const sampleBreaches = [
     });
   }
   for (const sB of sampleBreaches) {
-    const breach = await DBUtils.getBreachByName(sB.name);
+    await DBUtils.getBreachByName(sB.name);
     for (const e of sB.emails) {
       await DBUtils.addBreachedEmail(sB.name, e);
       if (args["--extraTestEmail"]) {
@@ -55,7 +57,6 @@ const sampleBreaches = [
   }
 
   const testEmail = "test1@test.com";
-  const foundBreaches = await DBUtils.getBreachesForEmail(testEmail);
   await DBUtils.deleteBreach(999999);
   const breach = await DBUtils.getBreachByName("LinkedIn");
   await DBUtils.setBreachedHashNotified(breach, testEmail);
