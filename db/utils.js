@@ -24,7 +24,7 @@ const DBUtils = {
     } catch(e) {
       if (e.code && e.code === "23505") {
         // Duplicate error, silently log.
-        console.log(`Duplicate breach: ${name}`);
+        console.error(`Duplicate breach: ${name}`);
         return;
       }
 

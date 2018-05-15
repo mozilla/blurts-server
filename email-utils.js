@@ -31,7 +31,7 @@ const EmailUtils = {
     // Allow a debug mode that will send JSON back to the client instead of sending emails.
     // eslint-disable-next-line no-process-env
     if (process.env.DEBUG_DUMMY_SMTP) {
-      console.log("Running in dummy SMTP mode, /user/breached will send a JSON response instead of sending emails.");
+      console.info("Running in dummy SMTP mode, /user/breached will send a JSON response instead of sending emails.");
       gTransporter = {
         sendMail(options, callback) {
           callback(null, "dummy mode");
@@ -39,7 +39,7 @@ const EmailUtils = {
       };
       return Promise.resolve(true);
     }
-    console.log("Attempting to get SMTP credentials from environment...");
+    console.info("Attempting to get SMTP credentials from environment...");
     kSMTPUsername = AppConstants.SMTP_USERNAME;
     const password = AppConstants.SMTP_PASSWORD;
     const host = AppConstants.SMTP_HOST;
@@ -60,7 +60,7 @@ const EmailUtils = {
     return new Promise((resolve, reject) => {
       gTransporter.verify((error, success) => {
         if (error) {
-          console.log(error);
+          console.error(error);
           gTransporter = null;
           reject(error);
           return;

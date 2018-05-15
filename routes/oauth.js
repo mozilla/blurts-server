@@ -65,7 +65,7 @@ router.get("/confirmed", jsonParser, async (req, res) => {
       email: email,
     });
   } catch (err) {
-    console.log(err);
+    console.error(err);
     res.send(err);
   }
 });
