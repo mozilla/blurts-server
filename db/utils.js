@@ -18,17 +18,15 @@ Model.knex(knex);
 const DBUtils = {
   async createBreach(name, meta) {
     try {
-      return await Breach
-        .query()
-        .insert({ name, meta });
+      const insertedBreach = await Breach.query().insert({ name, meta });
+      return insertedBreach;
     } catch(e) {
+      console.error(e);
       if (e.code && e.code === "23505") {
         // Duplicate error, silently log.
-        console.log(`Duplicate breach: ${name}`);
+        console.error(`Duplicate breach: ${name}`);
         return;
       }
-
-      throw e;
     }
   },
 
