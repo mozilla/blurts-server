@@ -8,6 +8,18 @@ module.exports = {
     "eslint:recommended",
     "plugin:node/recommended",
   ],
+  overrides: [
+    {
+      files: [
+        'scripts/*.js',
+        'tests/**/*.js',
+      ],
+      rules: {
+        "no-console": "off",
+        "no-process-exit": "off",
+      }
+    }
+  ],
   plugins: [
     "node",
   ],
@@ -15,7 +27,7 @@ module.exports = {
   rules: {
     "comma-dangle": ["error", {arrays: "always-multiline", objects: "always-multiline"}],
     "eqeqeq": "warn",
-    "no-console": "warn",
+    "no-console": ["warn", {allow: ["error", "info", "warn"]}],
     "no-process-env": "error",
     "no-unused-vars": ["error", {vars: "all", args: "none", ignoreRestSiblings: false}],
     "no-var": "error",
