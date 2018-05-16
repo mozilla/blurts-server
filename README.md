@@ -51,6 +51,16 @@ for more background, objectives, key use cases.
 
 2. Visit the `test.html` page at [localhost:6060/test.html](http://localhost:6060/test.html)
 
+#### Test Data
+
+To populate the database with test data, use these scripts in `scripts/`:
+
+* `load-breaches.js` loads breaches from HIBP into the database
+* `add-breached-emails.js` adds some breached email records for
+  `test[1-3]@test.com` users
+
+Both scripts have `--help` arguments for usage help.
+
 #### Emails
 
 The included `.env-dist` sets `DEBUG_DUMMY_SMTP=1` which disables emails.
