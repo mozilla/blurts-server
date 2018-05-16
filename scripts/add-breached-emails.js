@@ -4,19 +4,18 @@ const arg = require("arg");
 
 require("dotenv").load();
 
-const DBUtils = require("../../db/utils");
+const DBUtils = require("../db/utils");
 
 
 const args = arg({
-  "--createAMBreach": Boolean,
   "--extraTestEmail": String,
   "--help": Boolean,
 });
 
 if (args["--help"]) {
-  console.log("Usage: node make-breach-with-emails.js [--createAMBreach] [--extraTestEmail=<...>]");
-  console.log("--createAMBreach creates the 'AllMusic' test fixture breach.");
-  console.log("--extraTestEmail adds the supplied test email address and includes it in the LinkedIn, Adobe, and AllMusic breaches.");
+  console.log("Usage: node add-breached-emails.js [--extraTestEmail=<...>]");
+  console.log("Adds test[1-3]@test.com emails to LinkedIn, Adobe, and AllMusic breaches.");
+  console.log("--extraTestEmail also adds the supplied test email address and includes it in the LinkedIn, Adobe, and AllMusic breaches.");
   // We can `process.exit()` here since it's a CLI script.
   // eslint-disable-next-line no-process-exit
   process.exit();
@@ -38,16 +37,7 @@ const sampleBreaches = [
 ];
 
 (async () => {
-  if (args["--createAMBreach"]) {
-    await DBUtils.createBreach("AllMusic", {
-      Name: "AllMusic",
-      BreachDate: "2015-012-06",
-      DataClasses: ["Email addresses", "IP addresses", "Passwords", "Usernames", "Website activity"],
-      PwnCount: 1436486,
-    });
-  }
   for (const sB of sampleBreaches) {
-    await DBUtils.getBreachByName(sB.name);
     for (const e of sB.emails) {
       await DBUtils.addBreachedEmail(sB.name, e);
       if (args["--extraTestEmail"]) {
