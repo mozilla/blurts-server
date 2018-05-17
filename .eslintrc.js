@@ -12,7 +12,6 @@ module.exports = {
     {
       files: [
         'scripts/*.js',
-        'tests/**/*.js',
       ],
       rules: {
         "no-console": "off",
