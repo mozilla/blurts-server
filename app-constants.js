@@ -18,6 +18,7 @@ const kEnvironmentVariables = [
   "OAUTH_PROFILE_URI",
   "OAUTH_CLIENT_ID",
   "OAUTH_CLIENT_SECRET",
+  "HIBP_STUB_API_ROOT",
   "HIBP_API_ROOT",
   "HIBP_API_TOKEN",
   "AWS_ACCESS_KEY_ID",

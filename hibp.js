@@ -17,7 +17,7 @@ const HIBP = {
 
     const sha1 = getSha1(email);
     const sha1Prefix = sha1.slice(0, 6);
-    const url = `${AppConstants.HIBP_API_ROOT}/breachedaccount/range/${sha1Prefix}`;
+    const url = `${AppConstants.HIBP_STUB_API_ROOT}/breachedaccount/range/${sha1Prefix}`;
     const headers = {
       "User-Agent": HIBP_USER_AGENT,
     };
