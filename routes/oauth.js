@@ -5,8 +5,8 @@ const AppConstants = require("../app-constants");
 const ClientOAuth2 = require("client-oauth2");
 const crypto = require("crypto");
 const express = require("express");
+const got = require("got");
 const bodyParser = require("body-parser");
-const popsicle = require("popsicle");
 
 const DBUtils = require("../db/utils");
 
@@ -49,10 +49,8 @@ router.get("/confirmed", jsonParser, async (req, res) => {
 
   try {
     const fxaUser = await FxAOAuth.code.getToken(req.originalUrl, { state: req.session.state });
-    const data = await popsicle.get({
-      method: "get",
-      url: FxAOAuthUtils.profileUri,
-      body: "",
+    const data = await got(FxAOAuthUtils.profileUri,
+      {
       headers: {
         Authorization: `Bearer ${fxaUser.accessToken}`,
       },

@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "arg": "^2.0.0",
-    "aws-sdk": "^2.241.1",
     "body-parser": "^1.18.3",
     "client-oauth2": "^4.2.1",
     "client-sessions": "^0.8.0",
@@ -21,9 +20,7 @@
     "nodemailer": "^4.6.4",
     "nodemailer-express-handlebars": "^3.0.0",
     "objection": "^1.1.9",
-    "pg": "^7.4.3",
-    "popsicle": "^9.2.0",
-    "request": "^2.86.0"
+    "pg": "^7.4.3"
   },
   "devDependencies": {
     "coveralls": "^3.0.1",
