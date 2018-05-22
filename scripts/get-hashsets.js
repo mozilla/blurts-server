@@ -58,8 +58,6 @@ function getBreachHashset(breach) {
 async function handleBreachesResponse(error, response, body) {
   if (error) {
     console.error(error);
-    // We can `process.exit()` here since it's a CLI script.
-    // eslint-disable-next-line no-process-exit
     process.exit(1);
   }
 

@@ -40,7 +40,7 @@ app.use("/user", UserRoutes);
 
 EmailUtils.init().then(() => {
   const listener = app.listen(AppConstants.PORT, () => {
-    console.log(`Listening on ${listener.address().port}`);
+    console.info(`Listening on ${listener.address().port}`);
   });
 }).catch(error => {
   console.error(error);
