@@ -7,6 +7,7 @@ const hbs = require("express-hbs");
 const sessions = require("client-sessions");
 
 const EmailUtils = require("./email-utils");
+const HBSHelpers = require("./hbs-helpers");
 
 const HIBPRoutes = require("./routes/hibp-stubs");
 const HomeRoutes = require("./routes/home");
@@ -24,6 +25,7 @@ app.engine("hbs", hbs.express4({
 }));
 app.set("view engine", "hbs");
 app.set("views", __dirname + "/views");
+HBSHelpers.init(hbs);
 
 app.use(sessions({
   cookieName: "session",
