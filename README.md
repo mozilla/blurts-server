@@ -19,6 +19,7 @@ for more background, objectives, key use cases.
 ### Requirements
 
 * [Node](https://nodejs.org/) 9 (with npm)
+* [Postgres](https://www.postgresql.org/)
 
 ### Install
 
@@ -53,10 +54,14 @@ for more background, objectives, key use cases.
 
 #### Test Data
 
+To create the test database tables, run the `knex` migrations:
+
+* `./node_modules/.bin/knex --knexfile db/knexfile.js migrate:latest`
+
 To populate the database with test data, use these scripts in `scripts/`:
 
-* `load-breaches.js` loads breaches from HIBP into the database
-* `add-breached-emails.js` adds some breached email records for
+* `node scripts/load-breaches.js` loads breaches from HIBP into the database
+* `node scripts/add-breached-emails.js` adds some breached email records for
   `test[1-3]@test.com` users
 
 Both scripts have `--help` arguments for usage help.
