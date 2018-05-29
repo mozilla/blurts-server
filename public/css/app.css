@@ -132,7 +132,6 @@ img.logo {
   overflow:hidden;
 }
 
-
 #banner-left, 
 #banner-right {
   flex: 1 1 auto;
@@ -150,7 +149,6 @@ img.logo {
   padding-left: 4.5rem;
 }
 
-
 #banner-right img#arrow-divider {
   position:absolute;
   top:-5%;
@@ -158,6 +156,7 @@ img.logo {
   left:-11%;
   height:110%;
 }
+
 
 .banner-content {
   display: flex;
@@ -167,6 +166,10 @@ img.logo {
   height: 100%;
   margin: auto;
   flex-flow: column;
+}
+
+#banner-right .banner-content {
+  align-items:center;
 }
 
 .banner-content p{
@@ -230,7 +233,6 @@ form span {
   position:absolute;
   bottom:0;
   top:0;
-
 }
 
 .input-group-button img {
