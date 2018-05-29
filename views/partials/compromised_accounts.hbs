@@ -1,0 +1,24 @@
+<div id="compromised-accounts">
+    <h2>Your Compromised Accounts</h2>
+    {{#each foundBreaches }}
+        <div class="cell flexbox bottom-border">
+            <div class="protect-img breach-img">
+            <img src="img/{{ name }}.png">
+            </div>
+            <div class="flex">
+            <h4>{{ name }}</h4><br>
+            <p>
+                <span class="bold">Breach date:</span> {{prettyDate meta.BreachDate }}<br>
+                <span class="bold">Compromised data:</span> {{breachDataClasses meta.DataClasses }}<br>
+                <span class="bold">Compromised accounts:</span> {{localeString meta.PwnCount }}<br>
+                {{! TODO: make sure meta.Description is a safe string so we can use triple-{{{ }}
+                {{{ meta.Description }}}
+            </p>
+            </div>
+        </div>
+    {{/each}}
+</div>
+               
+              
+        
+ 

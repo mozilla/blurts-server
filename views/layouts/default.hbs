@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500,600" rel="stylesheet">
     <link rel="stylesheet" href="/css/vendor/foundation.min.css">
     <link rel="stylesheet" href="/css/app.css">
     <script type="text/javascript" src="/js/vendor/jquery.js" defer></script>
@@ -11,67 +13,24 @@
     <script type="text/javascript" src="/js/test.js" defer></script>
   </head>
 
-  <body class="default-body">
-    <div class="top-bar">
-      <div class="top-bar-left">
-        <a href="/">
-          <h2>
-            <img alt="placeholder" class="logo" src="/img/firefox.png">
-            <span class="bold">Firefox</span> Monitor
-          </h2>
-        </a>
-        <ul class="menu">
-          <li><a href="#start">Start</a></li>
-          <li><a href="#tips">Tips</a></li>
-        </ul>
+  <body>
+   
+    <header class ="top-bar">
+      <div class="section-wrapper">
+        <div class="topBarLeft">
+          <a href="/" alt="Firefox Monitor">
+            <h2><img alt="Firefox Logo" class="logo" src="/img/firefox.png" /><span class="medium">Firefox</span> Monitor</h2>
+          </a>
+        </div>
       </div>
-      <div class="top-bar-right">
-        <a class="button" data-open="subscribe-modal">Subscribe</a>
-      </div>
-    </div>
+    </header>
 
-    <div class="grid-x main-grid grid-padding-x grid-padding-y gray-bg">
 
 
       {{{ body }}}
 
 
-      <div class="cell"></div>
 
-      <div class="cell small-1 footer-bg"></div>
-      <div class="cell small-10 no-padding footer-bg"><img src="img/footer.png"></div>
-      <div class="cell small-1 footer-bg"></div>
-    </div>
-
-    <div class="reveal grid-x" id="subscribe-modal" data-reveal>
-      <div class="cell small-1"></div>
-      <div class="cell small-10">
-        <br>
-        <h3 class="text-justify cell">Subscribe to Breach Alerts</h3>
-        <br>
-
-        <p class="cell">Explanation of what the user will get if they subscribe to breach alerts.</p>
-        <br>
-
-        <a id="subscribe-fxa-btn" class="button sign-in-btn cell">Subscribe with Firefox Accounts</a>
-
-        <div class="grid-x cell">
-          <div class="cell small-5"><hr></div>
-          <div class="cell small-2 center-center">OR</div>
-          <div class="cell small-5"><hr></div>
-        </div>
-        <br>
-
-        <div class="cell grid-x">
-          <form class="cell small-12" action="/user/add" method="post">
-            <input id="subscribe-email-input" type="email" name="email" placeholder="Enter Email">
-            <button id="subscribe-email-btn" type="submit" class="button cell" disabled>Subscribe with Email Account</button>
-          </form>
-        </div>
-        <br>
-      </div>
-      <div class="cell small-1"></div>
-    </div>
 
   </body>
 
