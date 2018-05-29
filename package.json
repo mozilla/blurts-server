@@ -14,6 +14,7 @@
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
     "express-hbs": "^1.0.4",
+    "git-rev-sync": "^1.12.0",
     "got": "^8.3.1",
     "hbs": "^4.0.1",
     "knex": "^0.14.6",
@@ -36,7 +37,7 @@
   "engines": {
     "node": ">=8"
   },
-  "homepage": "https://github.com/mozilla/blurts-server#readme",
+  "homepage": "https://github.com/mozilla/blurts-server",
   "license": "ISC",
   "main": "server.js",
   "nyc": {
