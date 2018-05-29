@@ -60,7 +60,18 @@ function enableBtnIfEmailValid(e) {
   }
 }
 
+
+function showFalseDoor(){
+  document.querySelector("#false-door").classList.add("show");
+}
+
+function closeFalseDoor(){
+  document.getElementById("false-door").classList.remove("show");
+}
+
 $(document).foundation();
 
-document.querySelector("#subscribe-fxa-btn").addEventListener("click", doOauth);
-document.querySelector("#subscribe-email-input").addEventListener("input", enableBtnIfEmailValid);
+// document.querySelector("#subscribe-fxa-btn").addEventListener("click", doOauth);
+// document.querySelector("#subscribe-email-input").addEventListener("input", enableBtnIfEmailValid);
+document.querySelector("#sign-up").addEventListener("click", showFalseDoor);
+document.querySelector("#close-false-door").addEventListener("click", closeFalseDoor);
