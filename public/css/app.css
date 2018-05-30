@@ -372,15 +372,7 @@ form span {
   left:0;
   right:0;
   bottom: 0;
-  display: none;
-  opacity: 0;
-  background-color: rgba(0,0,0,0);
-  transition: opacity .2s ease, display .25s ease, background-color .2s ease;
   z-index:2;
-}
-
-#false-door.show {
-  opacity: 1;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -402,10 +394,6 @@ form span {
   padding-bottom: calc(4.33vw + .625rem);
   transition: all 0.2s ease;
 }
-/* 
-#false-door, #false-door.show, #false-door div, #false-door.show div {
-
-} */
 
 #false-door div p {
   line-height:1.3;

@@ -61,17 +61,27 @@ function enableBtnIfEmailValid(e) {
 }
 
 
+
 function showFalseDoor(){
-  document.querySelector("#false-door").classList.add("show");
+  const falseDoorBlurb = "<div class='section-container'><h4>Thank you for trying Firefox Monitor</h4><p>FireFox Monitor is a concept we are testing. We hope to provide the service to everyone soon.</p><p>Stay up-to-date with Firefox Monitor and other new features when you sign up for the <a href='https://www.mozilla.org/en-US/newsletter/firefox/'>Firefox newsletter.</a></p><button class='button' id='close-false-door'>Close</button></div>";
+  let falseDoor = document.createElement("div");
+  falseDoor.setAttribute("id", "false-door");
+  document.body.appendChild(falseDoor);
+  falseDoor.innerHTML = falseDoorBlurb;
+  let falseDoorButton = document.getElementById("close-false-door");
+  falseDoorButton.onclick = function (){
+    falseDoor.parentElement.removeChild(falseDoor);
+  }
+
 }
 
-function closeFalseDoor(){
-  document.getElementById("false-door").classList.remove("show");
-}
+
+
 
 $(document).foundation();
 
+document.querySelector("#sign-up").addEventListener("click", showFalseDoor);
+
 // document.querySelector("#subscribe-fxa-btn").addEventListener("click", doOauth);
 // document.querySelector("#subscribe-email-input").addEventListener("input", enableBtnIfEmailValid);
-document.querySelector("#sign-up").addEventListener("click", showFalseDoor);
-document.querySelector("#close-false-door").addEventListener("click", closeFalseDoor);
+
