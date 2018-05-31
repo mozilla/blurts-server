@@ -4,3 +4,4 @@ node_modules
 .coveralls.yml
 .DS_Store
 breach_hashsets
+version.json

@@ -50,6 +50,8 @@
     "url": "git+https://github.com/mozilla/blurts-server.git"
   },
   "scripts": {
+    "docker:build": "docker build -t blurts-server .",
+    "docker:run": "docker run -p 6060:6060 blurts-server",
     "lint": "npm-run-all lint:*",
     "lint:js": "eslint .",
     "lint:nsp": "nsp check",

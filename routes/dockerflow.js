@@ -15,7 +15,7 @@ try {
   console.error("Error in git-rev-sync: ", err);
 }
 
-const versionJsonPath = path.join(__dirname, "..", "public", "version.json");
+const versionJsonPath = path.join(__dirname, "..", "version.json");
 const versionJson = {
   commit,
   source: homepage,
