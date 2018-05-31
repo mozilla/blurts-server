@@ -4,6 +4,7 @@ const AppConstants = require("./app-constants");
 
 const express = require("express");
 const hbs = require("express-hbs");
+const helmet = require("helmet");
 const sessions = require("client-sessions");
 
 const EmailUtils = require("./email-utils");
@@ -18,6 +19,19 @@ const UserRoutes = require("./routes/user");
 
 
 const app = express();
+app.use(helmet());
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    baseUri: ["'none'"],
+    defaultSrc: ["'none'"],
+    fontSrc: ["fonts.gstatic.com"],
+    frameAncestors: ["'none'"],
+    imgSrc: ["'self'"],
+    scriptSrc: ["'self'"],
+    styleSrc: ["'self'", "fonts.googleapis.com"],
+    reportUri: "/__cspreport__",
+  },
+}));
 app.use(express.static("public"));
 
 app.engine("hbs", hbs.express4({
