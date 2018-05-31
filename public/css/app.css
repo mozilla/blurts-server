@@ -25,7 +25,6 @@ h1, h2, h3, h4, h5 {
   font-weight:300;
 }
 
-
 .demi {
   font-weight:400;
 }
@@ -50,11 +49,7 @@ h1, h2, h3, h4, h5 {
   text-align:center;
 }
 
-
-
-/* *************** header **************** */
-
-
+/* header **************** */
 
 .logo-wrapper {
     max-height:100px;
@@ -77,20 +72,19 @@ header.top-bar {
   max-height: 100px;
 }
 
-
-.topBarLeft a,
-.topBarLeft a h2,
-.topBarLeft {
+.top-bar-left a,
+.top-bar-left a h2,
+.top-bar-left {
   height: 100%;
 }
 
-.topBarLeft a {
+.top-bar-left a {
   color: inherit;
   display:flex;
   align-items:center;
 }
 
-.topBarLeft a h2 {
+.top-bar-left a h1 {
   font-size: calc(27px + .5vw);
   letter-spacing: -0.77px;
 }
@@ -101,13 +95,7 @@ img.logo {
   height:60px;
 }
 
-
-
-
-/* ************* banner-info **************** */
-
-
-
+/* banner-info **************** */
 
 .section-container{
   display:flex;
@@ -177,11 +165,9 @@ img.logo {
   display:block;
 }
 
-
 #breach-title-wrapper {
   display:flex;
   margin-bottom:calc(.5vh + .5vw);
-
 }
 
 #breach-title-date {
@@ -196,8 +182,6 @@ img.logo {
   white-space:nowrap;
 }
 
-
-
 #banner-right {
   padding-left: 4.5rem;
 }
@@ -211,7 +195,6 @@ img.logo {
   pointer-events: none;
 }
 
-
 .banner-content {
   display: flex;
   align-items: flex-start;
@@ -220,7 +203,7 @@ img.logo {
   height: 100%;
   flex-flow: column;
   min-width: 350px;
-max-width: 500px;
+  max-width: 500px;
 }
 
 #banner-right .banner-content {
@@ -228,9 +211,6 @@ max-width: 500px;
   margin: auto;
 }
 
-/* #banner-right .banner-content .aligner {
-  align-items: left;
-} */
 .banner-content p{
   max-width:520px;
   line-height:1.3;
@@ -272,7 +252,6 @@ max-width: 500px;
 
 .banner-content form input:focus {
   border-color: #0a84ff;
-
 }
 
 div.input-group {
@@ -284,13 +263,13 @@ form span {
 }
 
 .input-group-button {
-  /* background-color: #0060df; */
   color: white;
   transition: background-color .25s ease-out,color .25s ease-out;
   border-radius: 0px 3px 3px 0px;
   position: relative;
   min-width: 100px;
 }
+
 .input-group img, .input-group-button .button {
   margin: auto;
   position:absolute;
@@ -315,7 +294,7 @@ form span {
 }
 
 
- /* ************************ sign up for alerts button + message *************************** */
+ /* sign up for alerts button + message *************************** */
 
 
 #sign-up-button-group {
@@ -331,9 +310,7 @@ form span {
   font-size:20px;
 } 
 
-
-
- /* ************************ tips *************************** */
+ /* tips *************************** */
 
  #tips-container {
    padding-bottom: calc(4.33vw + .625rem);
@@ -346,9 +323,7 @@ form span {
 #password-advice p {
   margin: calc(.66vw + .625rem) auto calc(.66vw + .625rem) auto;
   width: 70%;
- 
 }
-
 
 .tips-wrapper {
   display:inline-flex;
@@ -363,7 +338,6 @@ form span {
   width:100%;
   flex-basis: 32%;
 }
-
 
 .tip {
   min-height:400px;
@@ -392,7 +366,7 @@ form span {
   padding-bottom: calc(10px + .55vw);
 }
 
-.tip-header h3 {
+.tip-header h4 {
   font-weight:400;
   font-size:18px;
   text-align: center;
@@ -426,7 +400,6 @@ form span {
   max-width:80%;
   max-height:60%;
 }
-
 
 #false-door {
   position: absolute;
@@ -470,9 +443,7 @@ form span {
   margin: 2vh auto 2vh auto;
 }
 
-
-
-/* ******** compromised accounts ********** */
+/* compromised accounts ********** */
 
 #compromised-accounts-wrapper {
   display:inline-flex;
@@ -489,7 +460,7 @@ form span {
   flex-direction: column;
 }
 
-#compromised-accounts h2 {
+#compromised-accounts h3 {
  margin-bottom: calc(15px + 1vh + 1vw);
 }
 .column-container-twothirds {
@@ -525,7 +496,6 @@ span.breach-info {
   font-size:17px;
   list-style: none;
   background-color: #0021753a;
-  /* make sure this stays the same as the margin-right on the image-wrap */
   padding: calc(15px + .5vh + .5vw);
   width:100%;
   min-width: 250px;
@@ -585,13 +555,16 @@ span.breach-info {
   width:50px;
   min-width:50px;
 }
+
 #what-to-do .input-group-button .button {
   background-color: #0a84ff;
 }
+
 #source-info {
   margin-top: calc(15px + .5vh + .5vw);
   font-size:15px;
 }
+
 #pwned {
   display: inline-block;
   border:1px solid white;
@@ -599,3 +572,32 @@ span.breach-info {
   padding: 0 .45rem .1rem .45rem;
   margin:0 .5rem;
 }
+
+/* sign up button in header on {{breach}} */
+
+#header-button {
+  display: inline-flex;
+  align-self: flex-end;
+  align-items: center;
+  height:100%;
+}
+
+#header-button p {
+  margin:0 0 0 0;
+  line-height: 1.2;
+  font-size:16px;
+  text-align:right;
+}
+
+#header-button #sign-up {
+  background-color: #003eaa;
+  margin-left: calc(10px + .25vh + .25vw);
+  margin-bottom: 0px;
+  height: 55px;
+}
+
+.top-bar .section-wrapper {
+  display:flex;
+}
+
+
