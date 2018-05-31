@@ -43,6 +43,7 @@ router.get("/init", jsonParser, (req, res) => {
 router.get("/confirmed", jsonParser, async (req, res) => {
   if (!req.session.state) {
     // TODO: Needs better error message
+    res.set("Content-Type", "text/text");
     res.send("Who are you?");
     return;
   }
@@ -64,6 +65,7 @@ router.get("/confirmed", jsonParser, async (req, res) => {
     });
   } catch (err) {
     console.error(err);
+    res.set("Content-Type", "text/text");
     res.send(err);
   }
 });
