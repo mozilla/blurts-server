@@ -42,7 +42,6 @@ router.get("/init", jsonParser, (req, res) => {
 
 router.get("/confirmed", jsonParser, async (req, res) => {
   if (!req.session.state) {
-    // TODO: Needs better error message
     res.send("Who are you?");
     return;
   }

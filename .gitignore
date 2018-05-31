@@ -3,4 +3,5 @@ node_modules
 .nyc_output
 .coveralls.yml
 .DS_Store
+.vscode
 breach_hashsets
