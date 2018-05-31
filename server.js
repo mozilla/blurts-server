@@ -47,6 +47,10 @@ app.use(sessions({
   secret: AppConstants.COOKIE_SECRET,
   duration: 15 * 60 * 1000, // 15 minutes
   activeDuration: 5 * 60 * 1000, // 5 minutes
+  cookie: {
+    httpOnly: true,
+    secureProxy: true,
+  },
 }));
 
 app.use("/", HomeRoutes);
