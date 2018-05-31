@@ -2,6 +2,8 @@
 
 const arg = require("arg");
 const got = require("got");
+const createDOMPurify = require("dompurify");
+const { JSDOM } = require("jsdom");
 
 const AppConstants = require("../app-constants");
 const DBUtils = require("../db/utils");
@@ -9,6 +11,8 @@ const pkg = require("../package.json");
 
 const HIBP_USER_AGENT = `${pkg.name}/${pkg.version}`;
 
+
+const DOMPurify = createDOMPurify((new JSDOM("")).window);
 
 const args = arg({
   "--createAMBreach": Boolean,
@@ -28,6 +32,8 @@ async function handleBreachesResponse(response) {
     const breachesJSON = JSON.parse(response.body);
 
     for (const breach of breachesJSON) {
+      // purify the description going into the DB
+      breach.Description = DOMPurify.sanitize(breach.Description);
       await DBUtils.createBreach(breach.Name, breach);
     }
   } catch (error) {
