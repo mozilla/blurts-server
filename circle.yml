@@ -1,0 +1,48 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  override:
+    - docker info
+    - |
+      printf '{"version":{"hash":"%s","version":"%s","source":"https://github.com/%s/%s","build":"%s"}}\n' \
+        "$CIRCLE_SHA1" \
+        "$CIRCLE_TAG" \
+        "$CIRCLE_PROJECT_USERNAME" \
+        "$CIRCLE_PROJECT_REPONAME" \
+        "$CIRCLE_BUILD_URL" \
+        | tee config/version.json version.json
+    - docker build -f Dockerfile -t blurts-server .
+
+test:
+  override:
+    - docker run blurts-server npm test
+
+deployment:
+  hub_latest:
+    owner: mozilla
+    # push certain branches, they are used for deployment
+    branch: /^(master|feature.*|dockerpush.*)$/
+    commands:
+      - "[ ! -z $DOCKERHUB_REPO ]"
+      - docker login -e "$DOCKER_EMAIL" -u "$DOCKER_USER" -p "$DOCKER_PASS"
+      - |
+          if [ $CIRCLE_BRANCH = "master" ]; then
+            CIRCLE_BRANCH=latest
+          fi
+          echo ${DOCKERHUB_REPO}:${CIRCLE_BRANCH}
+          docker tag blurts-server ${DOCKERHUB_REPO}:${CIRCLE_BRANCH}
+          docker push ${DOCKERHUB_REPO}:${CIRCLE_BRANCH}
+
+  hub_releases:
+    # push all tags
+    owner: mozilla
+    tag: /.*/
+    commands:
+      - "[ ! -z $DOCKERHUB_REPO ]"
+      - docker login -e "$DOCKER_EMAIL" -u "$DOCKER_USER" -p "$DOCKER_PASS"
+      - "echo ${DOCKERHUB_REPO}:${CIRCLE_TAG}"
+      - "docker tag blurts-server ${DOCKERHUB_REPO}:${CIRCLE_TAG}"
+      - "docker images"
+      - "docker push ${DOCKERHUB_REPO}:${CIRCLE_TAG}"
