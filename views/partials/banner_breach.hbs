@@ -1,0 +1,16 @@
+<div class="account">
+  <div id="breach-title-wrapper">
+    <div class="image-wrap">
+      <img alt="placeholder"src="img/{{ breach.name }}.png">
+    </div>
+    <div id="breach-title-date">
+      <h3>{{ breach.name }} Breach</h3>
+      <span class="breach-info"><span class="medium">Breach date:</span> {{prettyDate breach.date }}</span>
+    </div>
+  </div>
+  <span class="breach-info"><span class="medium">Compromised data:</span> {{ breach.dataClasses }}</span>
+  <span class="breach-info"><span class="medium">Compromised accounts:</span> {{ breach.acCount }}</span>
+  <span class="breach-info">{{ breach.description }}</span>
+</div>
+
+

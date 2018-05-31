@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
@@ -12,7 +11,6 @@
     <script type="text/javascript" src="/js/vendor/foundation.min.js" defer></script>
     <script type="text/javascript" src="/js/test.js" defer></script>
   </head>
-
   <body>
     <header class ="top-bar">
       <div class="section-wrapper">
@@ -21,16 +19,16 @@
             <h2><img alt="Firefox Logo" class="logo" src="/img/firefox.png" /><span class="medium">Firefox</span> Monitor</h2>
           </a>
         </div>
+        {{#if breach}}
+          <div class="top-bar-right">
+            {{> sign_up_header }}
+          </div>
+        {{/if}}
       </div>
     </header>
 
-
-
       {{{ body }}}
 
-
-
-
   </body>
-
 </html>
+

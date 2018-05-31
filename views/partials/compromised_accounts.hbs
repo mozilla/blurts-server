@@ -1,22 +1,19 @@
 <div id="compromised-accounts">
-    <h2>Your Compromised Accounts</h2>
-    {{#each foundBreaches }}
-        <div class="cell flexbox bottom-border">
-            <div class="protect-img breach-img">
-            <img src="img/{{ name }}.png">
-            </div>
-            <div class="flex">
-            <h4>{{ name }}</h4><br>
-            <p>
-                <span class="bold">Breach date:</span> {{prettyDate meta.BreachDate }}<br>
-                <span class="bold">Compromised data:</span> {{breachDataClasses meta.DataClasses }}<br>
-                <span class="bold">Compromised accounts:</span> {{localeString meta.PwnCount }}<br>
-                {{! TODO: make sure meta.Description is a safe string so we can use triple-{{{ }}
-                {{{ meta.Description }}}
-            </p>
-            </div>
-        </div>
-    {{/each}}
+  <h2>Your Compromised Accounts</h2>
+  {{#each foundBreaches }}
+    <div class="account">
+      <div class="image-wrap">
+        <img alt="Breached Account Icon" src="img/{{ name }}.png">
+      </div>
+      <div class="breach-info-wrap">
+        <h3 class="demi">{{ name }}</h3>
+        <span class="breach-info"><span class="medium">Breach date:</span> {{prettyDate meta.BreachDate }}</span>
+        <span class="breach-info"><span class="medium">Compromised data:</span> {{breachDataClasses meta.DataClasses }}</span>
+        <span class="breach-info"><span class="medium">Compromised accounts:</span> {{localeString meta.PwnCount }}</span>
+      </div>
+    </div>
+  {{/each}}
+  <span id="source-info">Breach data provided by <span id="pwned">';--</span><span class="medium"> Have I been Pwned?</span></span>
 </div>
                
               
