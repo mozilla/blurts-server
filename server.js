@@ -19,6 +19,21 @@ const UserRoutes = require("./routes/user");
 
 
 const app = express();
+
+// Redirect non-dev environments to HTTPS
+app.enable("trust proxy");
+
+if (app.get("env") !== "dev") {
+  app.use( (req, res, next) => {
+    if (req.secure) {
+      next();
+    } else {
+      res.redirect("https://" + req.headers.host + req.url);
+    }
+  });
+}
+
+// Use helmet to set security headers
 app.use(helmet());
 app.use(helmet.contentSecurityPolicy({
   directives: {
