@@ -66,7 +66,7 @@
             <span class="bold">Breach date:</span> {{prettyDate meta.BreachDate }}<br>
             <span class="bold">Compromised data:</span> {{breachDataClasses meta.DataClasses }}<br>
             <span class="bold">Compromised accounts:</span> {{localeString meta.PwnCount }}<br>
-            {{! TODO: make sure meta.Description is a safe string so we can use triple-{{{ }}
+            {{! breach Description is run thru dompurify, so we can use triple-{{{ }}
             {{{ meta.Description }}}
           </p>
         </div>
