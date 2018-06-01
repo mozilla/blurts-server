@@ -25,8 +25,6 @@ router.post("/add", urlEncodedParser, async (req, res) => {
   const unverifiedEmailHash = await DBUtils.addUnverifiedEmailHash(email);
 
   const url = `${AppConstants.SERVER_URL}/user/verify?token=${encodeURIComponent(unverifiedEmailHash.verification_token)}&email=${encodeURIComponent(email)}`;
-  // TODO: Temporary for debugging.
-  console.log(url);
 
   try {
     await EmailUtils.sendEmail(
