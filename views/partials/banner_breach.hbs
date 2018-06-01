@@ -1,3 +1,4 @@
+{{#if breach }}
 <div class="account">
   <div id="breach-title-wrapper">
     <div class="image-wrap">
@@ -5,10 +6,11 @@
     </div>
     <div id="breach-title-date">
       <h3>{{ breach.name }} Breach</h3>
-      <span class="breach-info"><span class="medium">Breach date:</span> {{prettyDate breach.date }}</span>
+      <span class="breach-info"><span class="medium">Breach date:</span> {{prettyDate breach.meta.BreachDate }}</span>
     </div>
   </div>
-  <span class="breach-info"><span class="medium">Compromised data:</span> {{ breach.dataClasses }}</span>
-  <span class="breach-info"><span class="medium">Compromised accounts:</span> {{ breach.acCount }}</span>
-  <span class="breach-info">{{ breach.description }}</span>
+  <span class="breach-info"><span class="medium">Compromised data:</span> {{breachDataClasses breach.meta.DataClasses }}</span>
+  <span class="breach-info"><span class="medium">Compromised accounts:</span> {{localeString breach.meta.PwnCount }}</span>
+  <span class="breach-info">{{{ breach.meta.Description }}}</span>
 </div>
+{{/if}}
