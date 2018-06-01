@@ -2,5 +2,8 @@
   "extends": "stylelint-config-standard",
   "ignoreFiles": [
     "public/css/vendor/*.css"
-  ]
+  ],
+  "rules": {
+    "no-descending-specificity": null
+  }
 }
