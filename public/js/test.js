@@ -25,26 +25,6 @@ function doXHR(aURL, aBodyObj, aAlertText, aDebug=true) {
   });
 }
 
-// eslint-disable-next-line no-unused-vars
-function addUser() {
-  doXHR("/user/add",
-        { email: document.getElementById("addUserField").value })
-    .then(function() {
-      alert("A verification link has been emailed to the specified address.");
-    });
-}
-
-// eslint-disable-next-line no-unused-vars
-function removeUser() {
-  doXHR("/user/remove",
-        { email: document.getElementById("removeUserField").value });
-}
-
-// eslint-disable-next-line no-unused-vars
-// function doOauth() {
-//   window.open("/oauth/init");
-// }
-
 // function isValidEmail(val) {
 //   // https://stackoverflow.com/a/46181
 //   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -60,8 +40,6 @@ function removeUser() {
 //   }
 // }
 
-
-
 function showFalseDoor(){
   const falseDoorBlurb = "<div class='section-container'><h4>Thank you for trying Firefox Monitor</h4><p>FireFox Monitor is a concept we are testing. We hope to provide the service to everyone soon.</p><p>Stay up-to-date with Firefox Monitor and other new features when you sign up for the <a href='https://www.mozilla.org/newsletter/firefox/'>Firefox newsletter.</a></p><button class='button' id='close-false-door'>Close</button></div>";
   const falseDoor = document.createElement("div");
@@ -75,9 +53,24 @@ function showFalseDoor(){
 
 }
 
+async function sha1(message) {
+  const msgBuffer = new TextEncoder("utf-8").encode(message);
+  const hashBuffer = await crypto.subtle.digest("SHA-1", msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hashHex = hashArray.map(b => ("00" + b.toString(16)).slice(-2)).join("");
+  return hashHex;
+}
 
+async function hashEmailAndSend(emailFormSubmitEvent) {
+  emailFormSubmitEvent.preventDefault();
+  const emailForm = emailFormSubmitEvent.target;
+  for (const emailInput of emailForm.querySelectorAll("input[type=email]")) {
+    emailInput.value = await sha1(emailInput.value);
+  }
+  emailForm.submit();
+}
 
-
+document.querySelector(".email-scan").addEventListener("submit", hashEmailAndSend);
 $(document).foundation();
 
 document.querySelector("#sign-up").addEventListener("click", showFalseDoor);

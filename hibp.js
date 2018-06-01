@@ -5,17 +5,15 @@ const got = require("got");
 const AppConstants = require("./app-constants");
 const DBUtils = require("./db/utils");
 const pkg = require("./package.json");
-const getSha1 = require("./sha1-utils");
 
 
 const HIBP_USER_AGENT = `${pkg.name}/${pkg.version}`;
 
 
 const HIBP = {
-  async getBreachesForEmail(email) {
+  async getBreachesForEmail(sha1) {
     let foundBreaches = [];
 
-    const sha1 = getSha1(email);
     const sha1Prefix = sha1.slice(0, 6);
     const url = `${AppConstants.HIBP_STAGE_API_ROOT}/breachedaccount/range/${sha1Prefix}?code=${encodeURIComponent(AppConstants.HIBP_STAGE_API_TOKEN)}`;
     const headers = {
