@@ -6,6 +6,7 @@ const path = require("path");
 require("dotenv").load({path: path.join(__dirname, ".env")});
 
 const kEnvironmentVariables = [
+  "NODE_ENV",
   "SERVER_URL",
   "PORT",
   "COOKIE_SECRET",
