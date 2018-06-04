@@ -64,6 +64,9 @@ function removeLoader(){
   if(document.getElementsByClassName("input-group-button")[0].classList.contains("loading-data")){
     document.getElementsByClassName("input-group-button")[0].classList.remove("loading-data");
   }
+  else {
+    return;
+  }
 }
 
 function displayLoader(){
@@ -95,11 +98,12 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
 
 
 if(document.querySelector(".email-scan")){
+  window.addEventListener("pageshow", removeLoader);
   document.querySelector(".email-scan").addEventListener("submit", hashEmailAndSend);
 }
 
 //removes "loading-data" class from button even when user clicks the back button. 
-window.addEventListener("pageshow", removeLoader);
+
 document.querySelector("#sign-up").addEventListener("click", showFalseDoor);
 
 // $(document).foundation();
