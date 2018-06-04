@@ -60,6 +60,15 @@ function removeUser() {
 //   }
 // }
 
+function removeLoader(){
+  if(document.getElementsByClassName("input-group-button")[0].classList.contains("loading-data")){
+    document.getElementsByClassName("input-group-button")[0].classList.remove("loading-data");
+  }
+}
+
+function displayLoader(){
+  document.getElementsByClassName("input-group-button")[0].classList.add("loading-data");
+}
 
 
 function showFalseDoor(){
@@ -75,13 +84,25 @@ function showFalseDoor(){
 
 }
 
+async function hashEmailAndSend(emailFormSubmitEvent) {
+
+  emailFormSubmitEvent.preventDefault();
+  const emailForm = emailFormSubmitEvent.target;
+  // luke's code for sending to sha1 etc
+  emailForm.submit();
+  displayLoader();
+}
 
 
+if(document.querySelector(".email-scan")){
+  document.querySelector(".email-scan").addEventListener("submit", hashEmailAndSend);
+}
 
-$(document).foundation();
-
+//removes "loading-data" class from button even when user clicks the back button. 
+window.addEventListener("pageshow", removeLoader);
 document.querySelector("#sign-up").addEventListener("click", showFalseDoor);
 
+// $(document).foundation();
 // document.querySelector("#subscribe-fxa-btn").addEventListener("click", doOauth);
 // document.querySelector("#subscribe-email-input").addEventListener("input", enableBtnIfEmailValid);
 
