@@ -164,7 +164,6 @@ img.logo {
 
 .banner-content span.breach-info {
   margin-top: calc(5px + 0.25vh + 0.25vw);
-  max-width: 300px;
   width: 100%;
   font-weight: 400;
 }
