@@ -60,7 +60,18 @@ function removeUser() {
 //   }
 // }
 
+function removeLoader(){
+  if(document.getElementsByClassName("input-group-button")[0].classList.contains("loading-data")){
+    document.getElementsByClassName("input-group-button")[0].classList.remove("loading-data");
+  }
+  else {
+    return;
+  }
+}
 
+function displayLoader(){
+  document.getElementsByClassName("input-group-button")[0].classList.add("loading-data");
+}
 
 function showFalseDoor(){
   const falseDoorBlurb = "<div class='section-container'><h4>Thank you for trying Firefox Monitor</h4><p>FireFox Monitor is a concept we are testing. We hope to provide the service to everyone soon.</p><p>Stay up-to-date with Firefox Monitor and other new features when you sign up for the <a href='https://www.mozilla.org/newsletter/firefox/'>Firefox newsletter.</a></p><button class='button' id='close-false-door'>Close</button></div>";
@@ -72,16 +83,26 @@ function showFalseDoor(){
   falseDoorButton.onclick = function (){
     falseDoor.parentElement.removeChild(falseDoor);
   };
+}
 
+async function hashEmailAndSend(emailFormSubmitEvent) {
+  emailFormSubmitEvent.preventDefault();
+  const emailForm = emailFormSubmitEvent.target;
+  // luke's code for sending to sha1 etc
+  emailForm.submit();
+  displayLoader();
 }
 
 
+if(document.querySelector(".email-scan")){
+  window.addEventListener("pageshow", removeLoader);
+  document.querySelector(".email-scan").addEventListener("submit", hashEmailAndSend);
+}
 
-
-$(document).foundation();
-
+//removes "loading-data" class from button even when user clicks the back button. 
 document.querySelector("#sign-up").addEventListener("click", showFalseDoor);
 
+// $(document).foundation();
 // document.querySelector("#subscribe-fxa-btn").addEventListener("click", doOauth);
 // document.querySelector("#subscribe-email-input").addEventListener("input", enableBtnIfEmailValid);
 

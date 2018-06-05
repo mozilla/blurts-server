@@ -1,14 +1,14 @@
+
 html,
 body {
   margin: 0 0 0 0;
   padding: 0 0 0 0;
   color: #fff;
-  font-family: "Fira Sans", sans-serif;
+  font-family: 'Fira Sans', sans-serif;
   font-weight: 300;
 }
 
 body {
-  background: rgba(0, 62, 170, 1);
   background-image:
     linear-gradient(
       140deg,
@@ -30,7 +30,7 @@ h3,
 h4,
 h5 {
   margin-bottom: 0;
-  font-family: "Fira Sans", sans-serif !important;
+  font-family: 'Fira Sans', sans-serif !important;
   font-weight: 300;
 }
 
@@ -154,7 +154,8 @@ img.logo {
 
 .banner-content .account .image-wrap {
   flex-basis: auto;
-  max-width: 90px;
+  width: 90px;
+  height: 90px;
 }
 
 .banner-content span.medium {
@@ -281,12 +282,40 @@ form span {
   min-width: 100px;
 }
 
-.input-group img,
 .input-group-button .button {
   margin: auto;
   position: absolute;
   bottom: 0;
   top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: right;
+}
+
+.input-group-button .loader {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+  opacity: 0;
+  left: 0;
+  right: 0;
+}
+
+.input-group-button.loading-data .loader {
+  display: block;
+  opacity: 0.58;
+  width: 25px;
+  height: auto;
+  visibility: visible;
+}
+
+.input-group-button.loading-data .button {
+  color: rgba(0, 0, 0, 0);
+}
+
+.input-group-button.loading-data img:first-of-type {
+  opacity: 0;
 }
 
 .input-group-button img {
@@ -294,12 +323,8 @@ form span {
   position: absolute;
   left: 12px;
   margin: auto;
-}
-
-.input-group-button .button {
-  width: 100%;
-  right: 0;
-  text-align: right;
+  top: 0;
+  bottom: 0;
 }
 
 .input-group-button:hover,
@@ -393,7 +418,7 @@ form span {
 }
 
 .svg-background {
-  background: white;
+  background: #fff;
   border-radius: 50%;
   height: calc(60px + 1.95vw);
   width: calc(60px + 1.95vw);
@@ -433,8 +458,8 @@ form span {
 #false-door div {
   margin: auto;
   border-radius: 2px;
-  background: white;
-  color: black;
+  background: #fff;
+  color: #000;
   display: inline-block;
   width: 40vw;
   min-width: 300px;
@@ -519,7 +544,7 @@ span.breach-info {
   max-width: 400px;
 }
 
-#what-to-do span:first-of-type {
+#what-to-do span.numeral {
   display: block;
   font-size: 32px;
   line-height: 1.05;
@@ -531,7 +556,7 @@ span.breach-info {
 }
 
 #what-to-do form label {
-  color: white;
+  color: #fff;
   font-size: 17px;
 }
 
@@ -576,6 +601,18 @@ span.breach-info {
 
 #what-to-do .input-group-button .button {
   background-color: #0a84ff;
+  color: rgba(0, 0, 0, 0);
+}
+
+#what-to-do .scan-another-email {
+  font-size: 17px !important;
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+#what-to-do form span {
+  display: none !important;
 }
 
 #source-info {
