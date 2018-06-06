@@ -12,25 +12,24 @@ const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 
 
 router.post("/", urlEncodedParser, async (req, res) => {
-  const email = req.body.email;
+  const emailHash = req.body.emailHash;
   let foundBreaches = [];
 
   if (!req.session.scanResults) {
     req.session.scanResults = {};
   }
 
-  if (email) {
-    if (req.session.scanResults[email]) {
-      foundBreaches = req.session.scanResults[email];
+  if (emailHash) {
+    if (req.session.scanResults[emailHash]) {
+      foundBreaches = req.session.scanResults[emailHash];
     } else {
-      foundBreaches = await HIBP.getBreachesForEmail(email);
-      req.session.scanResults[email] = foundBreaches;
+      foundBreaches = await HIBP.getBreachesForEmail(emailHash);
+      req.session.scanResults[emailHash] = foundBreaches;
     }
   }
 
   res.render("scan", {
     title: "Firefox Breach Alerts: Scan Results",
-    email: email,
     foundBreaches: foundBreaches,
   });
 });
