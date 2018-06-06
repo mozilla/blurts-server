@@ -95,9 +95,6 @@ if(document.querySelector(".email-scan")){
 
 $(document).foundation();
 
-document.querySelector(".email-scan").addEventListener("submit", hashEmailAndSend);
 document.querySelector("#sign-up").addEventListener("click", showFalseDoor);
-
-// $(document).foundation();
 // document.querySelector("#subscribe-fxa-btn").addEventListener("click", doOauth);
 // document.querySelector("#subscribe-email-input").addEventListener("input", enableBtnIfEmailValid);
