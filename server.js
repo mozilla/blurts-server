@@ -7,15 +7,14 @@ const hbs = require("express-hbs");
 const helmet = require("helmet");
 const sessions = require("client-sessions");
 
-const EmailUtils = require("./email-utils");
+// const EmailUtils = require("./email-utils");
 const HBSHelpers = require("./hbs-helpers");
 
 const DockerflowRoutes = require("./routes/dockerflow");
-const HIBPRoutes = require("./routes/hibp-stubs");
 const HomeRoutes = require("./routes/home");
-const OAuthRoutes = require("./routes/oauth");
 const ScanRoutes = require("./routes/scan");
-const UserRoutes = require("./routes/user");
+// const OAuthRoutes = require("./routes/oauth");
+// const UserRoutes = require("./routes/user");
 
 
 const app = express();
@@ -70,15 +69,14 @@ app.use(sessions({
 
 app.use("/", HomeRoutes);
 app.use("/", DockerflowRoutes);
-app.use("/hibp", HIBPRoutes);
-app.use("/oauth", OAuthRoutes);
 app.use("/scan", ScanRoutes);
-app.use("/user", UserRoutes);
+// app.use("/oauth", OAuthRoutes);
+// app.use("/user", UserRoutes);
 
-EmailUtils.init().then(() => {
+// EmailUtils.init().then(() => {
   const listener = app.listen(AppConstants.PORT, () => {
     console.info(`Listening on ${listener.address().port}`);
   });
-}).catch(error => {
+/* }).catch(error => {
   console.error(error);
-});
+}); */
