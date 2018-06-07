@@ -153,7 +153,6 @@ img.logo {
 }
 
 .banner-content .account .image-wrap {
- 
   max-width: 90px;
   max-height: 90px;
 }
@@ -500,7 +499,7 @@ form span {
 }
 
 #compromised-accounts h3,
-#what-to-do lh {
+#what-to-do li:first-of-type {
   margin-bottom: calc(15px + 1vh + 1vw);
 }
 
@@ -527,7 +526,7 @@ form span {
   margin-right: calc(15px + 0.5vh + 0.5vw);
   border-radius: 9%;
   overflow: hidden;
-  max-width:60px;
+  max-width: 60px;
 }
 
 span.breach-info {
@@ -545,7 +544,7 @@ span.breach-info {
 }
 
 #what-to-do span.numeral,
-#what-to-do lh {
+#what-to-do li:first-of-type {
   display: block;
   font-size: 32px;
   line-height: 1.05;
@@ -607,7 +606,7 @@ span.breach-info {
 
 .button.disabled,
 .button[disabled] {
-  opacity: 0.6 !important; 
+  opacity: 0.6 !important;
 }
 
 #what-to-do .scan-another-email {
