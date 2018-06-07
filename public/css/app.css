@@ -153,9 +153,9 @@ img.logo {
 }
 
 .banner-content .account .image-wrap {
-  flex-basis: auto;
-  width: 90px;
-  height: 90px;
+ 
+  max-width: 90px;
+  max-height: 90px;
 }
 
 .banner-content span.medium {
@@ -469,7 +469,7 @@ form span {
 }
 
 #false-door div p {
-  line-height: 1.3;
+  line-height: 1.5;
   font-size: 14px;
 }
 
@@ -499,7 +499,8 @@ form span {
   flex-direction: column;
 }
 
-#compromised-accounts h3 {
+#compromised-accounts h3,
+#what-to-do lh {
   margin-bottom: calc(15px + 1vh + 1vw);
 }
 
@@ -511,7 +512,6 @@ form span {
 
 .column-container-third {
   flex-basis: 30%;
-  align-self: flex-end;
 }
 
 .account {
@@ -527,6 +527,7 @@ form span {
   margin-right: calc(15px + 0.5vh + 0.5vw);
   border-radius: 9%;
   overflow: hidden;
+  max-width:60px;
 }
 
 span.breach-info {
@@ -543,7 +544,8 @@ span.breach-info {
   max-width: 400px;
 }
 
-#what-to-do span.numeral {
+#what-to-do span.numeral,
+#what-to-do lh {
   display: block;
   font-size: 32px;
   line-height: 1.05;
@@ -601,6 +603,11 @@ span.breach-info {
 #what-to-do .input-group-button .button {
   background-color: #0a84ff;
   color: rgba(0, 0, 0, 0);
+}
+
+.button.disabled,
+.button[disabled] {
+  opacity: 0.6 !important; 
 }
 
 #what-to-do .scan-another-email {

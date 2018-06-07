@@ -33,7 +33,7 @@ async function handleBreachesResponse(response) {
 
     for (const breach of breachesJSON) {
       // purify the description going into the DB
-      breach.Description = DOMPurify.sanitize(breach.Description);
+      breach.Description = DOMPurify.sanitize(breach.Description, {ALLOWED_TAGS: []});
       await DBUtils.createBreach(breach.Name, breach);
     }
   } catch (error) {
