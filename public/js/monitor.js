@@ -31,7 +31,7 @@ function isValidEmail(val) {
 }
 
 function enableBtnIfEmailValid(e) {
-  const emailBtn = document.getElementById("subscribe-email-btn");
+  const emailBtn = document.getElementById("submit-button");
   if (isValidEmail(e.target.value)) {
     emailBtn.disabled = false;
   } else {
@@ -87,10 +87,11 @@ if(document.querySelector(".email-scan")){
   //removes "loading-data" class from button even when user clicks the back button. 
   window.addEventListener("pageshow", removeLoader);
   document.querySelector(".email-scan").addEventListener("submit", hashEmailAndSend);
+  document.querySelector(".email-to-hash").addEventListener("input", enableBtnIfEmailValid);
 }
 
 $(document).foundation();
 
 document.querySelector("#sign-up").addEventListener("click", showFalseDoor);
 // document.querySelector("#subscribe-fxa-btn").addEventListener("click", doOauth);
-// document.querySelector("#subscribe-email-input").addEventListener("input", enableBtnIfEmailValid);
+
