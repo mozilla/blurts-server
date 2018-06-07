@@ -40,7 +40,21 @@ function enableBtnIfEmailValid(e) {
     emailBtn.disabled = true;
   }
 }
+
 */
+
+function removeLoader(){
+  if(document.getElementsByClassName("input-group-button")[0].classList.contains("loading-data")){
+    document.getElementsByClassName("input-group-button")[0].classList.remove("loading-data");
+  }
+  else {
+    return;
+  }
+}
+
+function displayLoader(){
+  document.getElementsByClassName("input-group-button")[0].classList.add("loading-data");
+}
 
 function showFalseDoor(){
   const falseDoorBlurb = "<div class='section-container'><h4>Thank you for trying Firefox Monitor</h4><p>FireFox Monitor is a concept we are testing. We hope to provide the service to everyone soon.</p><p>Stay up-to-date with Firefox Monitor and other new features when you sign up for the <a href='https://www.mozilla.org/newsletter/firefox/'>Firefox newsletter.</a></p><button class='button' id='close-false-door'>Close</button></div>";
@@ -52,7 +66,6 @@ function showFalseDoor(){
   falseDoorButton.onclick = function (){
     falseDoor.parentElement.removeChild(falseDoor);
   };
-
 }
 
 async function sha1(message) {
@@ -71,13 +84,17 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
     emailInput.value = "";
   }
   emailForm.submit();
+  displayLoader();
 }
 
-document.querySelector(".email-scan").addEventListener("submit", hashEmailAndSend);
+if(document.querySelector(".email-scan")){
+  //removes "loading-data" class from button even when user clicks the back button. 
+  window.addEventListener("pageshow", removeLoader);
+  document.querySelector(".email-scan").addEventListener("submit", hashEmailAndSend);
+}
+
 $(document).foundation();
 
 document.querySelector("#sign-up").addEventListener("click", showFalseDoor);
-
 // document.querySelector("#subscribe-fxa-btn").addEventListener("click", doOauth);
 // document.querySelector("#subscribe-email-input").addEventListener("input", enableBtnIfEmailValid);
-
