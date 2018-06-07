@@ -1,7 +1,7 @@
 "use strict";
 
 
-// OLD TESTS FOR SEQUELIZE - TODO: UPDATE
+// OLD TESTS FOR SEQUELIZE - TODO: UPDATE (see #162)
 
 const test = require("tape");
 
