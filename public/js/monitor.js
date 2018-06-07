@@ -2,30 +2,6 @@
 
 "use strict";
 
-/*
-function doXHR(aURL, aBodyObj, aAlertText, aDebug=true) {
-  return new Promise((resolve) => {
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-      if (this.readyState === 4) {
-        if (aAlertText) {
-          alert(aAlertText);
-        }
-        if (aDebug) {
-          const responseDumpElt = document.getElementById("responseDump");
-          responseDumpElt.appendChild(document.createTextNode(xhr.response));
-          responseDumpElt.appendChild(document.createElement("hr"));
-          responseDumpElt.appendChild(document.createElement("br"));
-        }
-        resolve(xhr.response);
-      }
-    };
-    xhr.open("POST", aURL, true);
-    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.send(JSON.stringify(aBodyObj));
-  });
-}
-
 function isValidEmail(val) {
   // https://stackoverflow.com/a/46181
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -33,15 +9,13 @@ function isValidEmail(val) {
 }
 
 function enableBtnIfEmailValid(e) {
-  const emailBtn = document.getElementById("subscribe-email-btn");
+  const emailBtn = document.getElementById("submit-button");
   if (isValidEmail(e.target.value)) {
     emailBtn.disabled = false;
   } else {
     emailBtn.disabled = true;
   }
 }
-
-*/
 
 function removeLoader(){
   if(document.getElementsByClassName("input-group-button")[0].classList.contains("loading-data")){
@@ -91,10 +65,11 @@ if(document.querySelector(".email-scan")){
   //removes "loading-data" class from button even when user clicks the back button. 
   window.addEventListener("pageshow", removeLoader);
   document.querySelector(".email-scan").addEventListener("submit", hashEmailAndSend);
+  document.querySelector(".email-to-hash").addEventListener("input", enableBtnIfEmailValid);
 }
 
 $(document).foundation();
 
 document.querySelector("#sign-up").addEventListener("click", showFalseDoor);
 // document.querySelector("#subscribe-fxa-btn").addEventListener("click", doOauth);
-// document.querySelector("#subscribe-email-input").addEventListener("input", enableBtnIfEmailValid);
+
