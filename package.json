@@ -44,7 +44,7 @@
     "node": ">=8"
   },
   "homepage": "https://github.com/mozilla/blurts-server",
-  "license": "ISC",
+  "license": "MPL-2.0",
   "main": "server.js",
   "nyc": {
     "all": true
