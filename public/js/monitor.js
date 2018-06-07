@@ -52,7 +52,6 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
 }
 
 
-
 if(document.querySelector(".email-scan")){
   window.addEventListener("pageshow", removeLoader);
   document.querySelector(".email-scan").addEventListener("submit", hashEmailAndSend);
