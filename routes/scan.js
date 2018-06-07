@@ -20,12 +20,7 @@ router.post("/", urlEncodedParser, async (req, res) => {
   }
 
   if (emailHash) {
-    if (req.session.scanResults[emailHash]) {
-      foundBreaches = req.session.scanResults[emailHash];
-    } else {
-      foundBreaches = await HIBP.getBreachesForEmail(emailHash);
-      req.session.scanResults[emailHash] = foundBreaches;
-    }
+    foundBreaches = await HIBP.getBreachesForEmail(emailHash);
   }
 
   res.render("scan", {
