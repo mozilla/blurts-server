@@ -1,5 +1,6 @@
 /* eslint-env browser */
 
+
 "use strict";
 
 function isValidEmail(val) {
@@ -9,7 +10,7 @@ function isValidEmail(val) {
 }
 
 function enableBtnIfEmailValid(e) {
-  const emailBtn = document.getElementById("submit-button");
+  const emailBtn = document.getElementById("submit-email");
   if (isValidEmail(e.target.value)) {
     emailBtn.disabled = false;
   } else {
@@ -31,7 +32,7 @@ function displayLoader(){
 }
 
 function showFalseDoor(){
-  const falseDoorBlurb = "<div class='section-container'><h4>Thank you for trying Firefox Monitor</h4><p>FireFox Monitor is a concept we are testing. We hope to provide the service to everyone soon.</p><p>Stay up-to-date with Firefox Monitor and other new features when you sign up for the <a href='https://www.mozilla.org/newsletter/firefox/'>Firefox newsletter.</a></p><button class='button' id='close-false-door'>Close</button></div>";
+  const falseDoorBlurb = "<div class='section-container'><h4>Thank you for trying Firefox Monitor</h4><p>Firefox Monitor is a concept we are testing. During this test, we are not storing email addresses. This means that while we will use your email to give you real results about data breaches, we will not keep your email to alert you in case of future breaches</p><p>We hope to provide this service soon, but in the meantime, you can stay up-to-date on Firefox Monitor and other new features when you sign up for the <a href='https://www.mozilla.org/newsletter/firefox/'>Firefox newsletter.</a></p><button class='button' id='close-false-door'>Close</button></div>";
   const falseDoor = document.createElement("div");
   falseDoor.setAttribute("id", "false-door");
   document.body.appendChild(falseDoor);
@@ -68,8 +69,4 @@ if(document.querySelector(".email-scan")){
   document.querySelector(".email-to-hash").addEventListener("input", enableBtnIfEmailValid);
 }
 
-$(document).foundation();
-
 document.querySelector("#sign-up").addEventListener("click", showFalseDoor);
-// document.querySelector("#subscribe-fxa-btn").addEventListener("click", doOauth);
-
