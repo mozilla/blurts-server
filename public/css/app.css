@@ -622,17 +622,13 @@ span.breach-info {
   display: none !important;
 }
 
-#source-info {
+.source-info {
   margin-top: calc(15px + 0.5vh + 0.5vw);
   font-size: 15px;
 }
 
-#pwned {
-  display: inline-block;
-  border: 1px solid white;
-  border-radius: 5px;
-  padding: 0 0.45rem 0.1rem 0.45rem;
-  margin: 0 0.5rem;
+.account .source-info {
+  font-size: 10px;
 }
 
 /* sign up button in header on {{breach}} */
