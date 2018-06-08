@@ -16,8 +16,6 @@ if (args["--help"]) {
   console.log("Usage: node add-breached-emails.js [--extraTestEmail=<...>]");
   console.log("Adds test[1-3]@test.com emails to LinkedIn, Adobe, and AllMusic breaches.");
   console.log("--extraTestEmail also adds the supplied test email address and includes it in the LinkedIn, Adobe, and AllMusic breaches.");
-  // We can `process.exit()` here since it's a CLI script.
-  // eslint-disable-next-line no-process-exit
   process.exit();
 }
 
@@ -50,6 +48,5 @@ const sampleBreaches = [
   await DBUtils.deleteBreach(999999);
   const breach = await DBUtils.getBreachByName("LinkedIn");
   await DBUtils.setBreachedHashNotified(breach, testEmail);
-  // eslint-disable-next-line no-process-exit
   process.exit();
 })();

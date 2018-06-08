@@ -39,6 +39,5 @@ async function notifySubscribersOfNewBreach(breachName) {
 
 (async () => {
   await notifySubscribersOfNewBreach(breachName);
-  // eslint-disable-next-line no-process-exit
   process.exit();
 })();
