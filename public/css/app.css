@@ -527,6 +527,8 @@ form span {
   border-radius: 9%;
   overflow: hidden;
   max-width: 60px;
+  width: 60px;
+  min-width: 60px;
 }
 
 span.breach-info {
