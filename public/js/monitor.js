@@ -68,7 +68,7 @@ if(document.querySelector(".email-scan")){
   document.querySelector(".email-to-hash").addEventListener("input", enableBtnIfEmailValid);
 }
 
-$(document).foundation();
+
 
 document.querySelector("#sign-up").addEventListener("click", showFalseDoor);
 // document.querySelector("#subscribe-fxa-btn").addEventListener("click", doOauth);
