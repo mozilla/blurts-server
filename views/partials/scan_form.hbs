@@ -1,6 +1,6 @@
   <form action="/scan" class="email-scan" method="post" data-no-csrf>
       <div class="input-group">
-          <input class="input-group-field email-to-hash" type="email" name="email" placeholder="Enter Email Address">
+          <input class="input-group-field email-to-hash" type="email" name="email" placeholder="Enter Email Address" required="required">
           <input type="hidden" name="emailHash">
           <div class="input-group-button">
               <img src="img/Search.svg" alt="search icon" />
@@ -8,7 +8,5 @@
               <input id="submit-email" type="submit" class="button" value="Search">
           </div>
       </div>
-      <span>Your email will not be stored. Find out more in our <a href="
-      https://www.mozilla.org/privacy/firefox/" alt="Mozilla Firefox privacy policy">Privacy Policy.</a></span>
+      <span>Your email will not be stored. Find out more in our <a href="https://www.mozilla.org/privacy/firefox/" aria-label="Mozilla Firefox privacy policy">Privacy Policy.</a></span>
   </form>
- 
