@@ -4,6 +4,8 @@
 
 Firefox Breach Alerts notifies users when their credentials have possibly been leaked or stolen in a data breach. Powered by [haveibeenpwned.com](https://haveibeenpwned.com/).
 
+Communicates with the [blurts-addon](https://github.com/mozilla/blurts-addon) client-side add-on for Firefox Monitor.
+
 ## Context
 
 See the [Have I Been Pwned about page](https://haveibeenpwned.com/About) for
@@ -18,7 +20,7 @@ for more background, objectives, key use cases.
 
 ### Requirements
 
-* [Node](https://nodejs.org/) 9 (with npm)
+* [Node](https://nodejs.org/) 8+ (with npm)
 * [Postgres](https://www.postgresql.org/)
 
 ### Install
