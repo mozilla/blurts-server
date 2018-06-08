@@ -1,6 +1,3 @@
-/* eslint-env browser */
-
-
 "use strict";
 
 function isValidEmail(val) {

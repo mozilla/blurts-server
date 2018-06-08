@@ -1,14 +1,25 @@
 module.exports = {
   env: {
     es6: true,
-    node: true,
-    jquery: true,
+    node: true
   },
   extends: [
     "eslint:recommended",
     "plugin:node/recommended",
   ],
   overrides: [
+    {
+      files: [
+        'public/js/**/*.js'
+      ],
+      env: {
+        browser: true,
+        node: false
+      },
+      rules: {
+        "strict": "off"
+      }
+    },
     {
       files: [
         'scripts/*.js',
