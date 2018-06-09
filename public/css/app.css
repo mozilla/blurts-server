@@ -228,7 +228,8 @@ h5 {
 }
 
 .top-bar,
-.section-container {
+.section-container,
+#footer {
   padding-left: calc(4.33vw + 0.625rem);
   padding-right: calc(4.33vw + 0.625rem);
 }
@@ -831,4 +832,62 @@ span.breach-info {
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: nowrap;
+}
+
+/* footer */
+
+#footer {
+  background-color: #fff;
+  height: 10vh;
+  max-height: 150px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+#footer p {
+  font-size: 12px;
+}
+
+#footer a {
+  font-weight: 400;
+  color: #000;
+}
+
+#footer .section-wrapper {
+  display: inline-flex;
+  flex-flow: row;
+  justify-content: space-between;
+  color: #000;
+}
+
+.footer-left {
+  display: flex;
+  flex-flow: row;
+  width: 40%;
+  align-items: center;
+  align-content: center;
+}
+
+.footer-right {
+  display: inline-flex;
+  width: 31.333%;
+  align-items: center;
+  text-align: left;
+}
+
+.link-wrapper {
+  display: inline-flex;
+  width: 100%;
+  flex-basis: 38%;
+  justify-content: center;
+}
+
+.footer-left a:first-of-type {
+  display: inline-flex;
+  flex-basis: 33.333%;
+}
+
+#footer img {
+  max-width: 150px;
 }
