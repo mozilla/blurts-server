@@ -1,8 +1,8 @@
 /* eslint-env browser */
 
 "use strict";
-
-  const privacySettingsEnabled = function(dnt, ua){
+	const trackingProtection = {};
+  trackingProtection.enabled = function(dnt, ua){
   window.dataLayer = window.dataLayer || [];
 	let userPrivacySettings = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
 	const userAgent = ua || navigator.userAgent;
@@ -11,13 +11,14 @@
 	const ieRegEx = /MSIE|Trident/i;
 	const isIE = ieRegEx.test(userAgent);
   const platform = userAgent.match(/Windows.+?(?=;)/g);
-  console.log(`user privacy settings so far: ${userPrivacySettings}`);
+	console.log(`user privacy settings so far: ${userPrivacySettings}`);
+	console.log(`user agent is : ${userAgent}`);
 	if(isIE&&typeof Array.prototype.indexOf !== "function"){
 		return false;
 	} else if(fxMatch&&parseInt(fxMatch[1],10)<32){
 		userPrivacySettings="Unspecified";
 		} 
-		else if( isIE&&platform&&anomalousWinVersions.indexOf(platform.toString()) !== -1){
+		else if( isIE && platform&&anomalousWinVersions.indexOf(platform.toString()) !== -1){
 			userPrivacySettings="Unspecified";
 		}
 	else{
@@ -25,9 +26,9 @@
 			0 : "Disabled",
 			1 : "Enabled",
     }[userPrivacySettings] || "Unspecified";}
-    console.log(userPrivacySettings);
 		return userPrivacySettings === "Enabled"?true:false;
 };
+
 
 
 /* global ga */
@@ -48,10 +49,10 @@
 // 	);
 // }
 
-if (!privacySettingsEnabled()) {
+if (trackingProtection && !trackingProtection.enabled()) {
   console.log("privacy settings are enabled");
 } else {
-	console.warn( // eslint-disable-line no-console
+	console.log( // eslint-disable-line no-console
 		"You have google analytics blocked. We understand. Take a " +
 		"look at our privacy policy to see how we handle your data."
 	);
