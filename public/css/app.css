@@ -81,11 +81,11 @@ a {
   color: #0060df;
   text-decoration: none;
   cursor: pointer;
-  transition: all cubic-bezier(.07,.95,0,1)
+  transition: all cubic-bezier(0.07, 0.95, 0, 1);
 }
 
 a:hover {
-  transition: all cubic-bezier(.07,.95,0,1);
+  transition: all cubic-bezier(0.07, 0.95, 0, 1);
 }
 
 .input-group-field {
