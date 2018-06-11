@@ -1,6 +1,10 @@
 /* eslint-env browser */
-
 "use strict";
+
+/* 
+	Respect user privacy settings and honor user privacy choices.
+	From Schalk Neethling at https://github.com/schalkneethling/dnt-helper */
+	
 	const trackingProtection = {};
   trackingProtection.enabled = function(dnt, ua){
   window.dataLayer = window.dataLayer || [];
@@ -34,12 +38,8 @@ if (trackingProtection && !trackingProtection.enabled()) {
 	(i[r].q=i[r].q||[]).push(arguments);},i[r].l=1*new Date();a=s.createElement(o),
 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m);
 	})(window,document,"script","https://www.google-analytics.com/analytics.js","ga");
-	}	else {
-		console.log( // eslint-disable-line no-console
-		"You have google analytics blocked. We understand. Take a " +
-		"look at our privacy policy to see how we handle your data."
-		);
-		}
+}
+
 if (typeof(ga) !== "undefined") {
 			ga("create", "UA-77033033-16");
 			ga("set", "anonymizeIp", true);
