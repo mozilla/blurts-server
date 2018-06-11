@@ -7,7 +7,7 @@ function sendEvent(category, action, label){
 
 function handleClicks(string){
   const eventCategory = "Sign Ups";
-  const eventAction = "Clicked";
+  const eventAction = "Clicked Sign Up";
   if(document.getElementById("header-button")){
     sendEvent(eventCategory, eventAction, "Sign up button clicked from featured breach.");
   }
