@@ -15,8 +15,7 @@ function handleClicks(string){
     sendEvent(eventCategory, eventAction, "Sign up button clicked after scanning email with breaches.");
   }
   else {
-    const headlineText = document.getElementsByTagName("h2")[0].innerHTML;
-    if(headlineText.includes("good")){
+    if(window.location.href.indexOf("scan") > -1){
       sendEvent(eventCategory, eventAction, "Sign up button clicked after scanning email with no breaches.");
     }
     else {

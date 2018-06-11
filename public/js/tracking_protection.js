@@ -18,19 +18,17 @@ trackingProtection.enabled = function(dnt, ua){
 	if(isIE&&typeof Array.prototype.indexOf !== "function") {
 		return false;
 	} 
-	else if(fxMatch&&parseInt(fxMatch[1],10)<32) {
+	else if(fxMatch && parseInt(fxMatch[1],10)<32) {
 		userPrivacySettings="Unspecified";
 	} 
-	else if(isIE && platform&&anomalousWinVersions.indexOf(platform.toString()) !== -1) {
+	else if(isIE && platform && anomalousWinVersions.indexOf(platform.toString()) !== -1) {
 		userPrivacySettings="Unspecified";
 	}
 	else {
-		userPrivacySettings = {
-		0 : "Disabled",
-		1 : "Enabled",
-		}[userPrivacySettings] || "Unspecified";}
+		userPrivacySettings = { 0 : "Disabled", 1 : "Enabled" }[userPrivacySettings] || "Unspecified";
+	}
 		return userPrivacySettings === "Enabled"?true:false;
-	};
+};
 
 /* global ga */
 
