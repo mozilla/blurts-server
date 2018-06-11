@@ -6,6 +6,9 @@ body {
   color: #fff;
   font-family: 'Fira Sans', sans-serif;
   font-weight: 300;
+  box-sizing: border-box;
+  font-size: 100%;
+  line-height: 1.5;
 }
 
 body {
@@ -22,7 +25,155 @@ body {
   background-attachment: fixed;
   background-position: center center;
   background-size: cover;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
 }
+
+body,
+p {
+  text-rendering: optimizeLegibility;
+}
+
+/* legacy foundation css with minor mods */
+
+h3 {
+  font-size: 1.9375rem;
+}
+
+h4 {
+  font-size: 1.5625rem;
+}
+
+h3,
+h4 {
+  line-height: 1.4;
+}
+
+div,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+ol,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.input-group {
+  display: flex;
+  width: 100%;
+}
+
+a {
+  line-height: inherit;
+  color: #0060df;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.input-group-field {
+  flex: 1 1 0;
+  margin: 0;
+  white-space: nowrap;
+}
+
+[type="email"] {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #cacaca;
+  background-color: #fefefe;
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #0a0a0a;
+  transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 0.5rem;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+input {
+  overflow: visible;
+}
+
+.button {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 1rem 0;
+  font-family: inherit;
+  padding: 0.85em 1em;
+  padding-top: 0.85em;
+  padding-bottom: 0.85em;
+  -webkit-appearance: none;
+  border: 1px solid transparent;
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-right-color: transparent;
+  border-radius: 3px;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  font-size: 0.9rem;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  background-color: #0060df;
+  color: #fefefe;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #cacaca;
+}
+
+.button:focus,
+.button:hover {
+  color: #fefefe;
+  outline: none;
+}
+
+.input-group > :last-child > * {
+  border-radius: 0 3px 3px 0;
+}
+
+.input-group-button input {
+  align-self: stretch;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+[type="button"],
+[type="submit"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 3px;
+}
+
+a img {
+  border: 0;
+}
+
+img {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+}
+
+/* end legacy foundation css */
 
 h1,
 h2,
@@ -32,6 +183,7 @@ h5 {
   margin-bottom: 0;
   font-family: 'Fira Sans', sans-serif !important;
   font-weight: 300;
+  text-rendering: optimizeLegibility;
 }
 
 .demi {
@@ -67,6 +219,12 @@ h5 {
   max-height: 100px;
   min-height: 80px;
   height: 10vh;
+}
+
+.top-bar {
+  flex-wrap: nowrap;
+  display: flex;
+  align-items: center;
 }
 
 .top-bar,
@@ -105,7 +263,7 @@ header.top-bar {
 img.logo {
   margin-right: 20px;
   width: auto !important;
-  height: 60px;
+  height: 55px;
 }
 
 /* banner-info **************** */
@@ -261,7 +419,8 @@ img.logo {
 }
 
 .banner-content form input:focus {
-  border-color: #0a84ff;
+  border-color: #82c0fe;
+  outline: none;
 }
 
 div.input-group {
@@ -300,6 +459,11 @@ form span {
   right: 0;
 }
 
+.input-group-button .loader,
+.input-group-button.loading-data .loader {
+  transition: all 0.25s ease-out;
+}
+
 .input-group-button.loading-data .loader {
   display: block;
   opacity: 0.58;
@@ -309,11 +473,12 @@ form span {
 }
 
 .input-group-button.loading-data .button {
-  color: rgba(0, 0, 0, 0);
+  color: #fff0;
 }
 
 .input-group-button.loading-data img:first-of-type {
   opacity: 0;
+  transition: opacity 0.25s ease-out;
 }
 
 .input-group-button img {
@@ -323,6 +488,8 @@ form span {
   margin: auto;
   top: 0;
   bottom: 0;
+  opacity: 1;
+  transition: opacity 0.25s ease-out;
 }
 
 .input-group-button:hover,
@@ -439,7 +606,7 @@ form span {
 }
 
 #false-door {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -606,6 +773,11 @@ span.breach-info {
   color: rgba(0, 0, 0, 0);
 }
 
+#what-to-do [type=email] {
+  border: none !important;
+  box-shadow: none !important;
+}
+
 .button.disabled,
 .button[disabled] {
   opacity: 0.6 !important;
@@ -656,4 +828,7 @@ span.breach-info {
 
 .top-bar .section-wrapper {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
 }
