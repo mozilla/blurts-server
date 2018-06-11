@@ -29,7 +29,7 @@ function handleEmailScans(){
   const eventCategory = "Scans";
   const eventAction = "Scanned Email Address";
   if(document.getElementById("header-button")){
-    sendEvent("User submitted email from a featured breach.");
+    sendEvent(eventCategory, eventAction, "User submitted email from a featured breach.");
   }
   else if(document.getElementById("what-to-do")){
     sendEvent(eventCategory, eventAction, "User submitted additional email.");
