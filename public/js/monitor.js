@@ -1,4 +1,75 @@
 "use strict";
+/* global ga */
+
+function sendEvent(category, action, label){
+  ga("send", "event", category, action, label);
+}
+
+function handleClicks(string){
+  const eventCategory = "Sign Ups";
+  const eventAction = "Clicked";
+  if(document.getElementById("header-button")){
+    sendEvent(eventCategory, eventAction, "Sign up button clicked from featured breach.");
+  }
+  else if (document.getElementById("what-to-do")) {
+    sendEvent(eventCategory, eventAction, "Sign up button clicked after scanning email with breaches.");
+  }
+  else {
+    const headlineText = document.getElementsByTagName("h2")[0].innerHTML;
+    if(headlineText.includes("good")){
+      sendEvent(eventCategory, eventAction, "Sign up button clicked after scanning email with no breaches.");
+    }
+    else {
+      sendEvent(eventCategory, eventAction, "Sign up button clicked from landing page.");
+    }
+  }
+}
+
+function handleEmailScans(){
+  const eventCategory = "Scans";
+  const eventAction = "Scanned Email Address";
+  if(document.getElementById("header-button")){
+    sendEvent("User submitted email from a featured breach.");
+  }
+  else if(document.getElementById("what-to-do")){
+    sendEvent(eventCategory, eventAction, "User submitted additional email.");
+  }
+  else {
+    sendEvent(eventCategory, eventAction, "User submitted email from homepage.");
+  }
+}
+
+function handlePageViews(){
+  const eventCategory = "Scan Results";
+  const eventAction = "Viewed Results";
+  if(window.location.href.indexOf("scan") > -1){
+    if(document.getElementById("what-to-do")){
+      sendEvent(eventCategory, eventAction, "Found Breaches");
+    } else {
+      sendEvent(eventCategory, eventAction, "No Breaches");
+    }
+  }
+}
+
+function showFalseDoor(){
+  handleClicks();
+  const falseDoor = document.getElementById("false-door");
+  falseDoor.classList.remove("hidden");
+  const falseDoorButton = document.getElementById("close-false-door");
+  falseDoorButton.onclick = function (){
+    falseDoor.classList.add("hidden");
+  };
+}
+
+function removeLoader(){
+  if(document.getElementsByClassName("input-group-button")[0].classList.contains("loading-data")){
+    document.getElementsByClassName("input-group-button")[0].classList.remove("loading-data");
+  }
+}
+
+function displayLoader(){
+  document.getElementsByClassName("input-group-button")[0].classList.add("loading-data");
+}
 
 function isValidEmail(val) {
   // https://stackoverflow.com/a/46181
@@ -15,31 +86,6 @@ function enableBtnIfEmailValid(e) {
   }
 }
 
-function removeLoader(){
-  if(document.getElementsByClassName("input-group-button")[0].classList.contains("loading-data")){
-    document.getElementsByClassName("input-group-button")[0].classList.remove("loading-data");
-  }
-  else {
-    return;
-  }
-}
-
-function displayLoader(){
-  document.getElementsByClassName("input-group-button")[0].classList.add("loading-data");
-}
-
-function showFalseDoor(){
-  const falseDoorBlurb = "<div class='section-container'><h4>Thank you for trying Firefox Monitor</h4><p>Firefox Monitor is a concept we are testing. During this test, we are not storing email addresses. This means that while we will use your email to give you real results about data breaches, we will not keep your email to alert you in case of future breaches</p><p>We hope to provide this service soon, but in the meantime, you can stay up-to-date on Firefox Monitor and other new features when you sign up for the <a href='https://www.mozilla.org/newsletter/firefox/'>Firefox newsletter.</a></p><button class='button' id='close-false-door'>Close</button></div>";
-  const falseDoor = document.createElement("div");
-  falseDoor.setAttribute("id", "false-door");
-  document.body.appendChild(falseDoor);
-  falseDoor.innerHTML = falseDoorBlurb;
-  const falseDoorButton = document.getElementById("close-false-door");
-  falseDoorButton.onclick = function (){
-    falseDoor.parentElement.removeChild(falseDoor);
-  };
-}
-
 async function sha1(message) {
   const msgBuffer = new TextEncoder("utf-8").encode(message);
   const hashBuffer = await crypto.subtle.digest("SHA-1", msgBuffer);
@@ -50,6 +96,7 @@ async function sha1(message) {
 
 async function hashEmailAndSend(emailFormSubmitEvent) {
   emailFormSubmitEvent.preventDefault();
+  handleEmailScans();
   const emailForm = emailFormSubmitEvent.target;
   for (const emailInput of emailForm.querySelectorAll("input[type=email]")) {
     emailForm.querySelector("input[name=emailHash]").value = await sha1(emailInput.value);
@@ -60,10 +107,10 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
 }
 
 if(document.querySelector(".email-scan")){
-  //removes "loading-data" class from button even when user clicks the back button. 
   window.addEventListener("pageshow", removeLoader);
   document.querySelector(".email-scan").addEventListener("submit", hashEmailAndSend);
   document.querySelector(".email-to-hash").addEventListener("input", enableBtnIfEmailValid);
 }
-
+window.addEventListener("pageshow", handlePageViews);
 document.getElementById("sign-up").addEventListener("click", showFalseDoor);
+
