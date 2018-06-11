@@ -36,6 +36,12 @@ p {
 
 /* legacy foundation css with minor mods */
 
+/* *,
+::after,
+::before {
+  box-sizing: inherit;
+} */
+
 h3 {
   font-size: 1.9375rem;
 }
@@ -75,6 +81,11 @@ a {
   color: #0060df;
   text-decoration: none;
   cursor: pointer;
+  transition: all cubic-bezier(0.07, 0.95, 0, 1);
+}
+
+a:hover {
+  transition: all cubic-bezier(0.07, 0.95, 0, 1);
 }
 
 .input-group-field {
@@ -221,14 +232,16 @@ h5 {
   height: 10vh;
 }
 
-.top-bar {
+.top-bar,
+footer {
   flex-wrap: nowrap;
   display: flex;
   align-items: center;
 }
 
 .top-bar,
-.section-container {
+.section-container,
+footer {
   padding-left: calc(4.33vw + 0.625rem);
   padding-right: calc(4.33vw + 0.625rem);
 }
@@ -549,7 +562,14 @@ form span {
   text-align: center;
   position: relative;
   border: 1px solid #002275;
-  border-radius: 2px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0);
+  transition: all 0.25s ease-out;
+}
+
+.tip:hover {
+  background: rgba(0, 0, 0, 0.03);
+  transition: all 0.25s ease-out;
 }
 
 .tip p {
@@ -568,6 +588,8 @@ form span {
   color: white;
   padding-top: calc(45px + 1.95vw);
   padding-bottom: calc(10px + 0.55vw);
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
 }
 
 .tip-header h4 {
@@ -598,6 +620,7 @@ form span {
   right: 0;
   margin: 0 auto;
   color: #002275;
+  box-sizing: border-box;
 }
 
 .svg-background img {
@@ -606,7 +629,7 @@ form span {
 }
 
 #false-door {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -820,10 +843,14 @@ span.breach-info {
 }
 
 #header-button #sign-up {
-  background-color: #003eaa;
+  background-color: #0052be;
   margin-left: calc(10px + 0.25vh + 0.25vw);
   margin-bottom: 0;
   height: 55px;
+}
+
+#header-button #sign-up:hover {
+  background-color: #00399c;
 }
 
 .top-bar .section-wrapper {
@@ -831,4 +858,55 @@ span.breach-info {
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: nowrap;
+}
+
+footer {
+  background-color: #fff;
+  height: 10vh;
+  max-height: 150px;
+}
+
+footer p {
+  font-size: 12px;
+}
+
+footer a {
+  font-weight: 400;
+  color: #000;
+}
+
+footer a:hover {
+  color: #000000b3;
+}
+
+footer .section-wrapper {
+  display: inline-flex;
+  justify-content: space-between;
+  color: #000;
+  height: 100%;
+}
+
+.footer-left,
+.footer-right {
+  display: flex;
+  align-items: center;
+  width: 31.333%;
+  text-align: left;
+}
+
+.footer-left a {
+  margin-right: 2em;
+}
+
+.footer-nav {
+  display: inline-flex;
+  flex-basis: 40%;
+  justify-content: space-around;
+}
+
+.footer-logo-wrapper {
+  flex-basis: 33.333%;
+  min-width: 120px;
+  max-width: 170px;
+  margin-right: 1em;
 }
