@@ -168,7 +168,6 @@ textarea::placeholder {
 [type="submit"] {
   -webkit-appearance: none;
   -moz-appearance: none;
-  appearance: none;
   border-radius: 3px;
 }
 
@@ -852,21 +851,10 @@ span.breach-info {
 
 /* sign up button in header on {{breach}} */
 
-#header-button {
-  display: inline-flex;
-  align-self: flex-end;
-  align-items: center;
-  height: 100%;
-}
-
 #header-button #sign-up-button-group {
   display: inline-flex;
   flex-flow: row-reverse;
-
-  /* justify-content: center; */
   align-items: center;
-  max-width: auto !important;
-  width: auto;
 }
 
 #header-button p {
@@ -884,7 +872,6 @@ span.breach-info {
   height: 55px;
   font-size: 17px;
   white-space: nowrap;
-  max-width: 200px;
 }
 
 #header-button #sign-up-button-group br {
@@ -950,5 +937,4 @@ footer .section-wrapper {
   flex-basis: 33.333%;
   min-width: 120px;
   max-width: 170px;
-  margin-right: 1em;
 }
