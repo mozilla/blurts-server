@@ -168,7 +168,6 @@ textarea::placeholder {
 [type="submit"] {
   -webkit-appearance: none;
   -moz-appearance: none;
-  appearance: none;
   border-radius: 3px;
 }
 
@@ -402,6 +401,10 @@ img.logo {
   padding-top: 0;
 }
 
+#sign-up-button-group br {
+  display: none;
+}
+
 .banner-content p,
 .banner-content form {
   padding-top: 2rem;
@@ -502,6 +505,7 @@ form span {
   top: 0;
   bottom: 0;
   opacity: 1;
+  pointer-events: none;
   transition: opacity 0.25s ease-out;
 }
 
@@ -628,8 +632,9 @@ form span {
   max-height: 60%;
 }
 
+#false-door.hidden,
 #false-door {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -639,8 +644,24 @@ form span {
   align-content: center;
   justify-content: center;
   align-items: center;
+  transition: all 0.15s ease-out;
+}
+
+#false-door {
+  opacity: 1;
+  visibility: visible;
   background-color: rgba(0, 0, 0, 0.22);
-  transition: opacity 0.15s ease, display 0.2s ease, background-color 0.2s ease;
+}
+
+#false-door.hidden {
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+}
+
+#false-door,
+#false-door p {
+  text-align: left !important;
 }
 
 #false-door div {
@@ -660,6 +681,8 @@ form span {
 #false-door div p {
   line-height: 1.5;
   font-size: 14px;
+  max-width: 100%;
+  padding-top: 0;
 }
 
 #false-door div button {
@@ -828,11 +851,10 @@ span.breach-info {
 
 /* sign up button in header on {{breach}} */
 
-#header-button {
+#header-button #sign-up-button-group {
   display: inline-flex;
-  align-self: flex-end;
+  flex-flow: row-reverse;
   align-items: center;
-  height: 100%;
 }
 
 #header-button p {
@@ -840,6 +862,7 @@ span.breach-info {
   line-height: 1.2;
   font-size: 16px;
   text-align: right;
+  min-width: 300px;
 }
 
 #header-button #sign-up {
@@ -847,6 +870,12 @@ span.breach-info {
   margin-left: calc(10px + 0.25vh + 0.25vw);
   margin-bottom: 0;
   height: 55px;
+  font-size: 17px;
+  white-space: nowrap;
+}
+
+#header-button #sign-up-button-group br {
+  display: block;
 }
 
 #header-button #sign-up:hover {
@@ -908,5 +937,4 @@ footer .section-wrapper {
   flex-basis: 33.333%;
   min-width: 120px;
   max-width: 170px;
-  margin-right: 1em;
 }
