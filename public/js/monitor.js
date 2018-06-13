@@ -29,14 +29,10 @@ function displayLoader(){
 }
 
 function showFalseDoor(){
-  const falseDoorBlurb = "<div class='section-container'><h4>Thank you for trying Firefox Monitor</h4><p>Firefox Monitor is a concept we are testing. During this test, we are not storing email addresses. This means that while we will use your email to give you real results about data breaches, we will not keep your email to alert you in case of future breaches</p><p>We hope to provide this service soon, but in the meantime, you can stay up-to-date on Firefox Monitor and other new features when you sign up for the <a href='https://www.mozilla.org/newsletter/firefox/'>Firefox newsletter.</a></p><button class='button' id='close-false-door'>Close</button></div>";
-  const falseDoor = document.createElement("div");
-  falseDoor.setAttribute("id", "false-door");
-  document.body.appendChild(falseDoor);
-  falseDoor.innerHTML = falseDoorBlurb;
-  const falseDoorButton = document.getElementById("close-false-door");
-  falseDoorButton.onclick = function (){
-    falseDoor.parentElement.removeChild(falseDoor);
+  const falseDoor = document.getElementById("false-door");
+  falseDoor.classList.remove("hidden");
+  document.getElementById("close-false-door").onclick = function (){
+    falseDoor.classList.add("hidden");
   };
 }
 
@@ -60,7 +56,6 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
 }
 
 if(document.querySelector(".email-scan")){
-  //removes "loading-data" class from button even when user clicks the back button. 
   window.addEventListener("pageshow", removeLoader);
   document.querySelector(".email-scan").addEventListener("submit", hashEmailAndSend);
   document.querySelector(".email-to-hash").addEventListener("input", enableBtnIfEmailValid);
