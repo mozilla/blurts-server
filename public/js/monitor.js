@@ -8,7 +8,7 @@ const events = {
     "featuredBreach" : "Sign up button clicked from featured breach.",
     "foundBreaches": "Sign up button clicked after scanning email with breaches.",
     "noBreaches": "Sign up button clicked after scanning email with no associated breaches.",
-    "landingPage": "Sign up button clicked from default landing page."
+    "landingPage": "Sign up button clicked from default landing page.",
   },
   "Scan" : {
     "eventCategory": "Scans",
@@ -16,7 +16,7 @@ const events = {
     "featuredBreach": "User submitted email from featured breach page.",
     "foundBreaches": "User submitted additional email.",
     "noBreaches": "...",
-    "landingPage": "User submitted email from landing page."
+    "landingPage": "User submitted email from landing page.",
   },
   "Pageview": {
     "eventCategory":"Views",
@@ -24,8 +24,8 @@ const events = {
     "featuredBreach": "Featured Breach",
     "foundBreaches": "List of compromised accounts.",
     "noBreaches": "No associated breaches.",
-    "landingPage": "Default landing page without featured breach."
-  }
+    "landingPage": "Default landing page without featured breach.",
+  },
 };
 
 function getLocation() {
