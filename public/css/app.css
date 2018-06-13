@@ -410,6 +410,7 @@ img.logo {
 .banner-content h2 {
   line-height: 1.3;
   font-size: calc(24px + 0.5vw);
+  white-space: nowrap;
 }
 
 .banner-content form {
@@ -502,6 +503,7 @@ form span {
   bottom: 0;
   opacity: 1;
   transition: opacity 0.25s ease-out;
+  pointer-events: none;
 }
 
 .input-group-button:hover,
@@ -627,8 +629,16 @@ form span {
   max-height: 60%;
 }
 
+#false-door.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.25s ease-out;
+}
+
+#false-door.hidden,
 #false-door {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -639,7 +649,12 @@ form span {
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.22);
-  transition: opacity 0.15s ease, display 0.2s ease, background-color 0.2s ease;
+}
+
+#false-door {
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.25s ease-out;
 }
 
 #false-door div {
@@ -651,14 +666,19 @@ form span {
   width: 40vw;
   min-width: 300px;
   max-width: 600px;
-  padding-top: calc(4.33vw + 0.625rem);
-  padding-bottom: calc(4.33vw + 0.625rem);
+  padding: calc(3.33vw + 0.625rem) !important;
+  text-align: left;
+  box-sizing: border-box;
   transition: all 0.2s ease;
 }
 
 #false-door div p {
-  line-height: 1.5;
+  line-height: 1.7;
   font-size: 14px;
+  max-width: 100%;
+  width: 100%;
+  padding-top: 0;
+  text-align: left;
 }
 
 #false-door div button {
@@ -667,7 +687,7 @@ form span {
 
 #false-door div p,
 #false-door div button {
-  margin: 2vh auto 2vh auto;
+  margin: 1.5vh auto 1.5vh auto;
 }
 
 /* compromised accounts ********** */
@@ -827,28 +847,38 @@ span.breach-info {
 
 /* sign up button in header on {{breach}} */
 
-#header-button {
+.top-bar-right {
   display: inline-flex;
   align-self: flex-end;
   align-items: center;
   height: 100%;
 }
 
-#header-button p {
+.top-bar-right #sign-up-button-group {
+  display: inline-flex;
+  flex-flow: row-reverse;
+  align-items: center;
+}
+
+.top-bar-right p {
   margin: 0 0 0 0;
   line-height: 1.2;
   font-size: 16px;
   text-align: right;
+  min-width: 300px;
 }
 
-#header-button #sign-up {
+.top-bar-right #sign-up {
   background-color: #0052be;
   margin-left: calc(10px + 0.25vh + 0.25vw);
   margin-bottom: 0;
   height: 55px;
+  font-size: 17px;
+  min-width: 180px;
+  white-space: nowrap;
 }
 
-#header-button #sign-up:hover {
+.top-bar-right #sign-up:hover {
   background-color: #00399c;
 }
 
