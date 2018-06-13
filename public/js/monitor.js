@@ -2,7 +2,9 @@
 /* global ga */
 
 function sendEvent(category, action, label){
+  if(ga){
   ga("send", "event", category, action, label);
+  }
 }
 
 function handleSignUpClicks(string){
