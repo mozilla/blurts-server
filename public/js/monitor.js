@@ -36,7 +36,7 @@ function getLocation() {
   } else if(document.getElementById("no-breaches")) {
       return("noBreaches");
   } else {
-    return("landingPage");
+      return("landingPage");
   }
 }
 
