@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Firefox Monitor notifies users when their credentials have possibly been leaked or stolen in a data breach. Powered by haveibeenpwned.com."/>
     <title>{{ title }}</title>
     <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
     <link rel="stylesheet" href="/css/app.css">
@@ -17,6 +18,7 @@
             <h1><img alt="Firefox Logo" class="logo" src="/img/firefox.png" /><span class="medium">Firefox</span> Monitor</h1>
           </a>
         </div>
+
         {{#if breach}}
           <div class="top-bar-right">
             {{> sign_up }}
@@ -25,7 +27,7 @@
       </div>
     </header>
 
-      {{{ body }}}
+    {{{ body }}}
 
     <footer>
      <div class="section-wrapper">
@@ -35,7 +37,7 @@
           <a href="https://www.mozilla.org/privacy/websites/">Privacy</a>
       </div>
       <div class="footer-right">
-        <p>Portions of this content are &copy; 1998-2018 by individual mozilla.org contributors. Content available under a <a href="https://www.mozilla.org/en-US/foundation/licensing/website-content/">Creative Commons license</a>.</p>
+        <p>Portions of this content are &copy; 1998-2018 by individual mozilla.org contributors. Content available under a <a href="https://www.mozilla.org/foundation/licensing/website-content/">Creative Commons license</a>.</p>
       </div>
      </div>
     </footer>

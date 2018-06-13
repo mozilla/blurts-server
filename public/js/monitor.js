@@ -1,54 +1,53 @@
 "use strict";
 /* global ga */
 
-function sendEvent(category, action, label){
-  if(ga){
-  ga("send", "event", category, action, label);
+const events = { 
+  "SignUp" : {
+    "eventCategory": "Sign Ups",
+    "eventAction:": "Clicked Sign Up Button",
+    "featuredBreach" : "Sign up button clicked from featured breach.",
+    "foundBreaches": "Sign up button clicked after scanning email with breaches.",
+    "noBreaches": "Sign up button clicked after scanning email with no associated breaches.",
+    "landingPage": "Sign up button clicked from default landing page."
+  },
+  "Scan" : {
+    "eventCategory": "Scans",
+    "eventAction:": "User scanned email address",
+    "featuredBreach": "User submitted email from featured breach page.",
+    "foundBreaches": "User submitted additional email.",
+    "noBreaches": "...",
+    "landingPage": "User submitted email from landing page."
+  },
+  "Pageview": {
+    "eventCategory":"Views",
+    "eventAction": "Viewed",
+    "featuredBreach": "Featured Breach",
+    "foundBreaches": "List of compromised accounts.",
+    "noBreaches": "No associated breaches.",
+    "landingPage": "Default landing page without featured breach."
+  }
+};
+
+function getLocation() {
+  if(document.getElementById("breach-title-wrapper")) {
+      return("featuredBreach");
+  } else if (document.getElementById("found-breaches")) {
+      return("foundBreaches");
+  } else if(document.getElementById("no-breaches")) {
+      return("noBreaches");
+  } else {
+    return("landingPage");
   }
 }
 
-function handleSignUpClicks(string){
-  const eventCategory = "Sign Ups";
-  const eventAction = "Clicked Sign Up";
-  if(window.location.href.indexOf("breach") > -1){
-    sendEvent(eventCategory, eventAction, "Sign up button clicked from featured breach.");
-  }
-  else if (document.getElementById("what-to-do")) {
-    sendEvent(eventCategory, eventAction, "Sign up button clicked after scanning email with breaches.");
-  }
-  else {
-    if(window.location.href.indexOf("scan") > -1){
-      sendEvent(eventCategory, eventAction, "Sign up button clicked after scanning email with no breaches.");
-    }
-    else {
-      sendEvent(eventCategory, eventAction, "Sign up button clicked from landing page.");
-    }
-  }
-}
-
-function handleEmailScans(){
-  const eventCategory = "Scans";
-  const eventAction = "Scanned Email Address";
-  if(window.location.href.indexOf("breach") > -1){
-    sendEvent(eventCategory, eventAction, "User submitted email from a featured breach.");
-  }
-  else if(document.getElementById("what-to-do")){
-    sendEvent(eventCategory, eventAction, "User submitted additional email.");
-  }
-  else {
-    sendEvent(eventCategory, eventAction, "User submitted email from homepage.");
-  }
-}
-
-function handlePageViews(){
-  const eventCategory = "Scan Results";
-  const eventAction = "Viewed Scan Results";
-  if(window.location.href.indexOf("scan") > -1){
-    if(document.getElementById("what-to-do")){
-      sendEvent(eventCategory, eventAction, "Found Breaches");
-    } else {
-      sendEvent(eventCategory, eventAction, "No Breaches");
-    }
+function handleEvents(string) {
+  if(ga) {
+    const eventLocation = getLocation();
+    const event = events[string];
+    const eventCategory = event["eventCategory"];
+    const eventAction = event["eventAction"];
+    const eventLabel = event[eventLocation];
+    ga("send", "event", eventCategory, eventAction, eventLabel);
   }
 }
 
@@ -61,18 +60,15 @@ function isValidEmail(val) {
 function enableBtnIfEmailValid(e) {
   const emailBtn = document.getElementById("submit-email");
   if (isValidEmail(e.target.value)) {
-    emailBtn.disabled = false;
+      emailBtn.disabled = false;
   } else {
-    emailBtn.disabled = true;
+      emailBtn.disabled = true;
   }
 }
 
 function removeLoader(){
   if(document.getElementsByClassName("input-group-button")[0].classList.contains("loading-data")){
-    document.getElementsByClassName("input-group-button")[0].classList.remove("loading-data");
-  }
-  else {
-    return;
+      document.getElementsByClassName("input-group-button")[0].classList.remove("loading-data");
   }
 }
 
@@ -81,7 +77,7 @@ function displayLoader(){
 }
 
 function showFalseDoor(){
-  handleSignUpClicks();
+  handleEvents("SignUp");
   const falseDoor = document.getElementById("false-door");
   falseDoor.classList.remove("hidden");
   document.getElementById("close-false-door").onclick = function (){
@@ -99,7 +95,7 @@ async function sha1(message) {
 
 async function hashEmailAndSend(emailFormSubmitEvent) {
   emailFormSubmitEvent.preventDefault();
-  handleEmailScans();
+  handleEvents("Scan");
   const emailForm = emailFormSubmitEvent.target;
   for (const emailInput of emailForm.querySelectorAll("input[type=email]")) {
     emailForm.querySelector("input[name=emailHash]").value = await sha1(emailInput.value);
@@ -114,5 +110,10 @@ if(document.querySelector(".email-scan")){
   document.querySelector(".email-scan").addEventListener("submit", hashEmailAndSend);
   document.querySelector(".email-to-hash").addEventListener("input", enableBtnIfEmailValid);
 }
-window.addEventListener("pageshow", handlePageViews);
+window.addEventListener("pageshow", function(){
+  if(document.getElementById("no-breaches") || document.getElementById("found-breaches")){
+    handleEvents("Pageview");
+  }
+});
 document.getElementById("sign-up").addEventListener("click", showFalseDoor);
+

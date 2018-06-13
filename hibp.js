@@ -26,12 +26,12 @@ const HIBP = {
       const response = await got(url, {headers, json: true});
       // Parse response body, format:
       // [
-      //   {"HashSuffix":<suffix>,"Websites":[<breach1Name>,...]},
-      //   {"HashSuffix":<suffix>,"Websites":[<breach1Name>,...]},
+      //   {"hashSuffix":<suffix>,"websites":[<breach1Name>,...]},
+      //   {"hashSuffix":<suffix>,"websites":[<breach1Name>,...]},
       // ]
       for (const breachedAccount of response.body) {
-        if (sha1.toUpperCase() === sha1Prefix + breachedAccount.HashSuffix) {
-          foundBreaches = await DBUtils.getBreachesByNames(breachedAccount.Websites);
+        if (sha1.toUpperCase() === sha1Prefix + breachedAccount.hashSuffix) {
+          foundBreaches = await DBUtils.getBreachesByNames(breachedAccount.websites);
         }
       }
     } catch (error) {
