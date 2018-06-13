@@ -1,10 +1,11 @@
 <div class="aligner">
-<h2>Protect yourself from hackers.<br />Start here.</h2>
-{{#if breach }}
-  <p class="demi">See if your account was exposed in the {{ breach.name }} breach or other data breaches.</p>
-{{else}}
-  <p class="demi">The first step to keeping your online accounts safe is knowing what you’re up against. Enter your email to find out if your accounts have been compromised.</p>
-{{/if}}
-{{> scan_form }}
-</div>
+  <h2>Protect yourself from hackers.<br />Start here.</h2>
 
+  {{#if breach }}
+    <p class="demi">See if your account was exposed in the {{ breach.name }} breach or other data breaches.</p>
+  {{else}}
+    <p class="demi">The first step to keeping your online accounts safe is knowing what you’re up against. Enter your email to find out if your accounts have been compromised.</p>
+  {{/if}}
+
+  {{> scan_form }}
+</div>
