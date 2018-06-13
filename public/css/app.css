@@ -132,7 +132,7 @@ input {
   border-right-style: solid;
   border-right-color: transparent;
   border-radius: 3px;
-  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  transition: all 0.25s ease-out;
   font-size: 0.9rem;
   line-height: 1;
   text-align: center;
@@ -168,7 +168,6 @@ textarea::placeholder {
 [type="submit"] {
   -webkit-appearance: none;
   -moz-appearance: none;
-  appearance: none;
   border-radius: 3px;
 }
 

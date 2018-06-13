@@ -38,11 +38,11 @@ app.use(helmet.contentSecurityPolicy({
   directives: {
     baseUri: ["'none'"],
     defaultSrc: ["'none'"],
-    fontSrc: ["fonts.gstatic.com"],
+    fontSrc: ["https://code.cdn.mozilla.net/fonts/"],
     frameAncestors: ["'none'"],
     imgSrc: ["'self'"],
     scriptSrc: ["'self'"],
-    styleSrc: ["'self'", "fonts.googleapis.com"],
+    styleSrc: ["'self'", "https://code.cdn.mozilla.net/fonts/"],
     reportUri: "/__cspreport__",
   },
 }));
