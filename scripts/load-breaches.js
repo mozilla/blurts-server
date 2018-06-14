@@ -22,8 +22,6 @@ const args = arg({
 if (args["--help"]) {
   console.log("Usage: node load-breaaches.js [--createAMBreach]");
   console.log("--createAMBreach creates the 'AllMusic' test fixture breach.");
-  // We can `process.exit()` here since it's a CLI script.
-  // eslint-disable-next-line no-process-exit
   process.exit();
 }
 
@@ -38,8 +36,6 @@ async function handleBreachesResponse(response) {
     }
   } catch (error) {
     console.error(error);
-    // We can `process.exit()` here since it's a CLI script.
-    // eslint-disable-next-line no-process-exit
     process.exit(1);
   }
 }
@@ -65,12 +61,8 @@ async function handleBreachesResponse(response) {
     await handleBreachesResponse(breachesResponse);
   } catch (error) {
     console.error(error);
-    // We can `process.exit()` here since it's a CLI script.
-    // eslint-disable-next-line no-process-exit
     process.exit(1);
   }
   console.log("Done handling breaches response.");
-  // We can `process.exit()` here since it's a CLI script.
-  // eslint-disable-next-line no-process-exit
   process.exit();
 })();
