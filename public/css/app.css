@@ -749,7 +749,6 @@ span.breach-info {
   list-style: none;
   background-color: #0021753a;
   padding: calc(15px + 0.5vh + 0.5vw);
-  width: 100%;
   min-width: 250px;
   max-width: 400px;
 }

@@ -41,7 +41,7 @@ function getLocation() {
 }
 
 function handleEvents(string) {
-  if(ga) {
+  if(typeof(ga) !== "undefined") {
     const eventLocation = getLocation();
     const event = events[string];
     const eventCategory = event["eventCategory"];
