@@ -1,1 +1,2 @@
-db/migrations
+db/migration
+public/js/vendor
