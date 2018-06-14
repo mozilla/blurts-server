@@ -3,6 +3,7 @@ from molotov import scenario
 
 HOMEPAGE = 'https://fx-breach-alerts.herokuapp.com'
 SCAN = 'https://fx-breach-alerts.herokuapp.com/scan'
+# This hash is for test@example.com
 TEST_EMAIL_HASH = 'b84c4c03b2af4050ac2d3b105e58adf83fa5af05'
 
 
