@@ -6,3 +6,4 @@ node_modules
 .vscode
 breach_hashsets
 version.json
+public/js/vendor
