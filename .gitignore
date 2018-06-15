@@ -7,3 +7,5 @@ node_modules
 breach_hashsets
 version.json
 public/js/vendor
+loadtests/__pycache__
+loadtests/venv
