@@ -926,6 +926,12 @@ footer .section-wrapper {
   margin-right: 2em;
 }
 
+#github-logo {
+  min-width: 20px;
+  margin-left: 1px;
+  padding-bottom: 3px;
+}
+
 .footer-nav {
   display: inline-flex;
   flex-basis: 40%;
