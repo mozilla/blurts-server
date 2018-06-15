@@ -139,6 +139,7 @@ input {
   cursor: pointer;
   background-color: #0060df;
   color: #fefefe;
+  width: 100%;
 }
 
 input::placeholder,
@@ -394,7 +395,7 @@ img.logo {
 .banner-content p {
   max-width: 520px;
   line-height: 1.3;
-  font-size: 15px;
+  font-size: 17px;
 }
 
 #sign-up-button-group p.demi {
@@ -432,7 +433,6 @@ img.logo {
 }
 
 .banner-content form input:focus {
-  border-color: #82c0fe;
   outline: none;
 }
 
@@ -441,7 +441,7 @@ div.input-group {
 }
 
 form span {
-  font-size: 11px;
+  font-size: 17px;
 }
 
 .input-group-button {
@@ -450,6 +450,8 @@ form span {
   border-radius: 0 3px 3px 0;
   position: relative;
   min-width: 100px;
+  pointer-events: all;
+  cursor: pointer;
 }
 
 .input-group-button .button {
@@ -506,8 +508,7 @@ form span {
   pointer-events: none;
 }
 
-.input-group-button:hover,
-.input-group-button:hover .button,
+/* .input-group-button:hover .button, */
 .button:hover {
   background-color: #0052be;
 }
@@ -575,7 +576,7 @@ form span {
 
 .tip p {
   margin: 0 0 0 0;
-  font-size: 15px;
+  font-size: 17px;
   padding-top: calc(10px + 0.55vw);
   padding-left: calc(10px + 1vw + 1vh);
   padding-right: calc(10px + 1vw + 1vh);
@@ -674,7 +675,7 @@ form span {
 
 #false-door div p {
   line-height: 1.7;
-  font-size: 14px;
+  font-size: 17px;
   max-width: 100%;
   width: 100%;
   padding-top: 0;
@@ -715,6 +716,7 @@ form span {
 .column-container-twothirds {
   flex-basis: 66%;
   align-self: flex-start;
+  margin-right: 3%;
   width: 100%;
 }
 
@@ -798,6 +800,11 @@ span.breach-info {
   position: relative;
   border-radius: 6px;
   overflow: hidden;
+  border: 1px solid #d7002000;
+}
+
+#what-to-do input[type=email] {
+  box-shadow: none !important;
 }
 
 #what-to-do .input-group-button {
@@ -807,6 +814,12 @@ span.breach-info {
   right: 0;
   width: 50px;
   min-width: 50px;
+}
+
+#what-to-do #invalid-email-message {
+  display: block !important;
+  margin-bottom: 5px;
+  color: white;
 }
 
 #what-to-do .input-group-button .button {
@@ -822,12 +835,48 @@ span.breach-info {
 .button.disabled,
 .button[disabled] {
   opacity: 0.6 !important;
+  pointer-events: none;
+}
+
+.button[disabled]:hover {
+  background-color: #0060df !important;
+}
+
+#what-to-do .input-group.invalid {
+  border: 1px solid #d7002093;
+}
+
+.input-group.invalid input[type=email] {
+  border-left: 1px solid #d7002054;
+  border-top: 1px solid #d7002054;
+  border-bottom: 1px solid #d7002054;
+}
+
+.input-group.invalid .button {
+  border-right: 1px solid #d7002054 !important;
+  border-top: 1px solid #d7002054;
+  border-bottom: 1px solid #d7002054;
+}
+
+#invalid-email-message,
+#invalid-email-message.show {
+  transition: all 0.25s ease-out;
+}
+
+#invalid-email-message {
+  visibility: hidden;
+  color: #d70022;
+  opacity: 0;
+}
+
+#invalid-email-message.show {
+  visibility: visible;
+  opacity: 1;
 }
 
 #what-to-do .scan-another-email {
-  font-size: 17px !important;
+  margin-top:1vh;
   font-weight: 600;
-  margin-bottom: 5px;
   display: inline-block;
 }
 
@@ -841,7 +890,7 @@ span.breach-info {
 }
 
 .account .source-info {
-  font-size: 10px;
+  font-size: 15px;
 }
 
 /* sign up button in header on {{breach}} */
@@ -862,7 +911,7 @@ span.breach-info {
 .top-bar-right p {
   margin: 0 0 0 0;
   line-height: 1.2;
-  font-size: 16px;
+  font-size: 17px;
   text-align: right;
   min-width: 300px;
 }
@@ -895,7 +944,7 @@ footer {
 }
 
 footer p {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 footer a {
