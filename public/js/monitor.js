@@ -115,5 +115,7 @@ window.addEventListener("pageshow", function(){
     handleEvents("Pageview");
   }
 });
-document.getElementById("sign-up").addEventListener("click", showFalseDoor);
+if(document.getElementById("sign-up")){
+  document.getElementById("sign-up").addEventListener("click", showFalseDoor);
+}
 
