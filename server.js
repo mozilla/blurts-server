@@ -67,11 +67,11 @@ app.use(sessions({
   },
 }));
 
-app.use("/", HomeRoutes);
 app.use("/", DockerflowRoutes);
 app.use("/scan", ScanRoutes);
 // app.use("/oauth", OAuthRoutes);
 // app.use("/user", UserRoutes);
+app.use("/", HomeRoutes);
 
 // EmailUtils.init().then(() => {
   const listener = app.listen(AppConstants.PORT, () => {
