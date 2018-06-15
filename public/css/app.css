@@ -27,6 +27,7 @@ body {
   background-size: cover;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  font-size: 17px;
 }
 
 body,
@@ -441,7 +442,7 @@ div.input-group {
 }
 
 form span {
-  font-size: 17px;
+  font-size: 13px;
 }
 
 .input-group-button {
@@ -975,7 +976,7 @@ footer .section-wrapper {
   margin-right: 2em;
 }
 
-#github-logo {
+#GitHub-logo {
   min-width: 20px;
   margin-left: 1px;
   padding-bottom: 3px;

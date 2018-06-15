@@ -58,14 +58,16 @@ function isValidEmail(val) {
 }
 
 function addClass(selector, className){
-  if(document.querySelector(selector)){
-    document.querySelector(selector).classList.add(className);
+  const el = document.querySelector(selector);
+  if(el){
+    el.classList.add(className);
   }
 }
 
 function removeClass(selector, className){
-  if(document.querySelector(selector).classList.contains(className)){
-    document.querySelector(selector).classList.remove(className);
+  const el = document.querySelector(selector);
+  if(el){
+    el.classList.remove(className);
   }
 }
 
@@ -126,7 +128,7 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
   emailFormSubmitEvent.preventDefault();
   const emailForm = emailFormSubmitEvent.target;
   if(emailForm.querySelector("input[name=email]").value === ""){
-    emailForm.querySelector("input[type=submit").disabled = true;
+    emailForm.querySelector("input[type=submit]").disabled = true;
     addInvalidMessage();
     return;
   }
@@ -144,10 +146,11 @@ if(document.querySelector(".email-scan")){
     removeClass(".input-group-button", "loading-data");
   });
   document.querySelector(".email-scan").addEventListener("submit", hashEmailAndSend);
-  document.querySelector(".email-to-hash").addEventListener("input", enableBtnIfEmailValid);
   document.querySelector(".input-group-button").addEventListener("click", showMessageIfDisabled);
-  document.querySelector(".email-to-hash").addEventListener("focusout", enableBtnIfInputEmpty);
-  document.querySelector(".email-to-hash").addEventListener("focusin", function(){
+  const emailToHash = document.querySelector(".email-to-hash");
+  emailToHash.addEventListener("input", enableBtnIfEmailValid);
+  emailToHash.addEventListener("focusout", enableBtnIfInputEmpty);
+  emailToHash.addEventListener("focusin", function(){
     removeInvalidMessage();
   });
 }
