@@ -53,7 +53,7 @@ async function handleBreachesResponse(response) {
   }
   try {
     const breachesResponse = await got(
-      `${AppConstants.HIBP_STAGE_API_ROOT}/breaches`,
+      `${AppConstants.HIBP_API_ROOT}/breaches`,
       {
         headers: {
           "User-Agent": HIBP_USER_AGENT,
