@@ -327,6 +327,8 @@ img.logo {
 .banner-content .account .image-wrap {
   max-width: 90px;
   max-height: 90px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .banner-content span.medium {

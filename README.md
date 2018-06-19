@@ -11,7 +11,7 @@ Communicates with the [blurts-addon](https://github.com/mozilla/blurts-addon) cl
 See the [Have I Been Pwned about page](https://haveibeenpwned.com/About) for
 the "what" and "why" of data breach alerts.
 
-This project aims to explore how Firefox - as the user agent - can support this. 
+This project explores how Firefox - as the user agent - can support this. 
 
 See [the Breach Alert Product Brief](https://docs.google.com/document/d/1GTS0HIihfTErA7P19HPYfvHCA3v9g67B_Cf2bpmE0Bw/edit)
 for more background, objectives, key use cases.
@@ -52,7 +52,7 @@ for more background, objectives, key use cases.
     npm start
     ```
 
-2. Visit the `test.html` page at [localhost:6060/test.html](http://localhost:6060/test.html)
+2. Visit the `test.html` page at [localhost:6060] (http://localhost:6060)
 
 #### Test Data
 
@@ -63,42 +63,8 @@ To create the test database tables, run the `knex` migrations:
 To populate the database with test data, use these scripts in `scripts/`:
 
 * `node scripts/load-breaches.js` loads breaches from HIBP into the database
-* `node scripts/add-breached-emails.js` adds some breached email records for
-  `test[1-3]@test.com` users
 
-Both scripts have `--help` arguments for usage help.
-
-#### Emails
-
-The included `.env-dist` sets `DEBUG_DUMMY_SMTP=1` which disables emails.
-
-To send emails, you'll need to unset `DEBUG_DUMMY_SMTP` and supply real SMTP
-config values for sending email.
-
-You can set and source these via the `.env` file, or set them directly:
-
-```sh
-export DEBUG_DUMMY_SMTP=
-export SMTP_HOST=<your-smtp-host>
-export SMTP_PORT=<your-smtp-port>
-export SMTP_USERNAME=<your-username>
-export SMTP_PASSWORD=<your-password>
-```
-
-#### Firefox Accounts
-
-To use Firefox Accounts, you'll need to [create an FxA Oauth Client](https://oauth-stable.dev.lcip.org/console/clients)
-and then set some `OAUTH` config values.
-
-You can set and source these via the `.env` file, or set them directly:
-
-```sh
-OAUTH_CLIENT_ID=<your-fxa-oauth-client-id>
-OAUTH_CLIENT_SECRET=<your-fxa-oauth-client-secret>
-OAUTH_AUTHORIZATION_URI="https://oauth-stable.dev.lcip.org/v1/authorization"
-OAUTH_PROFILE_URI="https://stable.dev.lcip.org/profile/v1/profile"
-OAUTH_TOKEN_URI="https://oauth-stable.dev.lcip.org/v1/token"
-```
+* `node scripts/load-breaches.js --help` will display usage help.
 
 #### Breach Hashsets
 
@@ -131,7 +97,7 @@ npm run lint
 
 ## Deployment
 
-blurts is designed with [12-factor](https://12factor.net/) methodology.
+Firefox Monitor Breach Alerts is designed with [12-factor](https://12factor.net/) methodology.
 
 ### Deploy on Heroku
 

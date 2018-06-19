@@ -16,11 +16,11 @@ Model.knex(knex);
 
 
 const DBUtils = {
-  async createBreach(name, meta) {
+  async createBreach(name, domain, meta) {
     try {
       return await Breach
         .query()
-        .insert({ name, meta });
+        .insert({ name, domain, meta });
     } catch(e) {
       console.error(e);
       if (e.code && e.code === "23505") {
@@ -196,6 +196,10 @@ const DBUtils = {
 
   async getBreachesByNames(breachNames) {
     return await Breach.query().where("name", "in", breachNames);
+  },
+
+  async getBreachesByDomain(breachDomain){
+    return (await Breach.query().where("domain", breachDomain));
   },
 
 };

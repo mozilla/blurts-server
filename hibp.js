@@ -14,7 +14,7 @@ const HIBP = {
   async getBreachesForEmail(sha1) {
     let foundBreaches = [];
 
-    const sha1Prefix = sha1.slice(0, 6);
+    const sha1Prefix = sha1.slice(0, 6).toUpperCase();
     const url = `${AppConstants.HIBP_STAGE_API_ROOT}/breachedaccount/range/${sha1Prefix}?code=${encodeURIComponent(AppConstants.HIBP_STAGE_API_TOKEN)}`;
     const headers = {
       "User-Agent": HIBP_USER_AGENT,
