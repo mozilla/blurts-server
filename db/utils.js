@@ -23,11 +23,11 @@ const DBUtils = {
         .insert({ name, domain, meta });
     } catch(e) {
       console.error(e);
-      if (e.code && e.code === "23505") {
-        // Duplicate error, silently log.
-        console.error(`Duplicate breach: ${name}`);
-        return;
-      }
+      // if (e.code && e.code === "23505") {
+      //   // Duplicate error, silently log.
+      //   console.error(`Duplicate breach: ${name}`);
+      //   return;
+      // }
 
       throw e;
     }
