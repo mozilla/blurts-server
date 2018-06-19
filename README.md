@@ -52,7 +52,7 @@ for more background, objectives, key use cases.
     npm start
     ```
 
-2. Visit the `test.html` page at [localhost:6060] (http://localhost:6060)
+2. Navigate to (http://localhost:6060)
 
 #### Test Data
 
@@ -64,7 +64,7 @@ To populate the database with test data, use these scripts in `scripts/`:
 
 * `node scripts/load-breaches.js` loads breaches from HIBP into the database
 
-* `node scripts/load-breaches.js --help` will display usage help.
+<!-- * `node scripts/load-breaches.js --help` will display usage help. -->
 
 #### Breach Hashsets
 
