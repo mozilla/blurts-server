@@ -14,12 +14,12 @@ const HIBP_USER_AGENT = `${pkg.name}/${pkg.version}`;
 const DOMPurify = createDOMPurify((new JSDOM("")).window);
 
 // const args = arg({
-//   "--createExample": Boolean,
+//   "--createExampleBreach": Boolean,
 //   "--help": Boolean,
 // });
 
 // if (args["--help"]) {
-//   console.log("\n\n  Usage: node load-breaches.js [--createExample]");
+//   console.log("\n\n  Usage: node load-breaches.js [--createExampleBreach]");
 //   console.log("  --createExampleBreach creates an example breach.");
 //   console.log("  start the server and navigate to 'localhost:6060/?breach=examplebreachURL' to see the Example Breach.\n\n");
 //   process.exit();
@@ -41,17 +41,16 @@ async function handleBreachesResponse(response) {
 }
 
 (async () => {
-//   if (args["--createExample"]) {
-//     console.log('here');
-//     await DBUtils.createBreach("Example", {
-//       Name: "Example Breach Name",
-//       Domain: "examplebreachURL",
-//       BreachDate: "2018-012-06",
-//       DataClasses: ["Email addresses", "IP addresses", "Passwords", "Usernames", "Website activity"],
-//       LogoType: "svg",
-//       Description: "This is example breach data. Users arrive on this page by clicking the 'Go to Firefox Monitor' button from the Firefox Monitor Add-on (https://github.com/mozilla/blurts-addon) after visiting a site with known data breaches. ",
-//     });
-//   }
+  // if (args["--createExampleBreach"]) {
+  //   await DBUtils.createBreach("Example", {
+  //     Name: "Example Breach Name",
+  //     Domain: "examplebreachURL",
+  //     BreachDate: "2018-12-06",
+  //     DataClasses: ["Email addresses", "IP addresses", "Passwords", "Usernames", "Website activity"],
+  //     LogoType: "svg",
+  //     Description: "This is example breach data. Users arrive on this page by clicking the 'Go to Firefox Monitor' button from the Firefox Monitor Add-on (https://github.com/mozilla/blurts-addon) after visiting a site with known data breaches. ",
+  //   });
+  // }
   try {
     const breachesResponse = await got(
       `${AppConstants.HIBP_API_ROOT}/breaches`,
