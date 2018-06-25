@@ -7,7 +7,13 @@
     <title>{{ title }}</title>
     <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
     <link rel="stylesheet" href="/css/app.css">
+    <script type="text/javascript" src="js/vendor/dnt-helper.js"></script>
+    <script type="text/javascript" src="/js/tracking_protection.js" defer></script>
     <script type="text/javascript" src="/js/monitor.js" defer></script>
+    <link rel="icon" href="/img/favicons/favicon-32.png" sizes="32x32" />
+    <link rel="icon" href="/img/favicons/favicon-96.png" sizes="96x96" />
+    <link rel="icon" href="/img/favicons/favicon-128.png" sizes="128x128" />
+    <link rel="icon" href="/img/favicons/favicon-228.png" sizes="228x228" />
   </head>
   <body>
     <header class ="top-bar">
@@ -20,7 +26,7 @@
 
         {{#if breach}}
           <div class="top-bar-right">
-            {{> sign_up_header }}
+            {{> sign_up }}
           </div>
         {{/if}}
       </div>
@@ -34,6 +40,7 @@
         <a class="footer-logo-wrapper" href="https://www.mozilla.org"><img src="/img/moz-logo-bw-rgb.svg" alt="Mozilla Logo" /></a>
           <a href="https://www.mozilla.org/about/legal/">Terms</a>
           <a href="https://www.mozilla.org/privacy/websites/">Privacy</a>
+          <a id="GitHub-logo" href="https://github.com/mozilla/blurts-server/"><img src="/img/github.svg" alt="Github Logo" /></a>
       </div>
       <div class="footer-right">
         <p>Portions of this content are &copy; 1998-2018 by individual mozilla.org contributors. Content available under a <a href="https://www.mozilla.org/foundation/licensing/website-content/">Creative Commons license</a>.</p>

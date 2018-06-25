@@ -6,3 +6,5 @@ node_modules
 .vscode
 breach_hashsets
 version.json
+loadtests/__pycache__
+loadtests/venv

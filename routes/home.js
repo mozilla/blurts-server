@@ -6,7 +6,7 @@ const DBUtils = require("../db/utils");
 
 const router = express.Router();
 
-async function handleIndexRoute(req, res) {
+router.get("/", async (req, res) => {
   let breach = null;
   if (req.query.breach) {
     breach = await DBUtils.getBreachByName(req.query.breach);
@@ -15,9 +15,10 @@ async function handleIndexRoute(req, res) {
     title: "Firefox Monitor",
     breach: breach,
   });
-}
+});
 
-router.get("/", handleIndexRoute);
-router.get("/monitor", handleIndexRoute);
+router.use(async (req, res) => {
+  res.status(404).render("404");
+});
 
 module.exports = router;

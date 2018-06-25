@@ -40,8 +40,8 @@ app.use(helmet.contentSecurityPolicy({
     defaultSrc: ["'none'"],
     fontSrc: ["https://code.cdn.mozilla.net/fonts/"],
     frameAncestors: ["'none'"],
-    imgSrc: ["'self'"],
-    scriptSrc: ["'self'"],
+    imgSrc: ["'self'", "https://www.google-analytics.com"],
+    scriptSrc: ["'self'", "https://www.google-analytics.com/analytics.js"],
     styleSrc: ["'self'", "https://code.cdn.mozilla.net/fonts/"],
     reportUri: "/__cspreport__",
   },
@@ -67,11 +67,11 @@ app.use(sessions({
   },
 }));
 
-app.use("/", HomeRoutes);
 app.use("/", DockerflowRoutes);
 app.use("/scan", ScanRoutes);
 // app.use("/oauth", OAuthRoutes);
 // app.use("/user", UserRoutes);
+app.use("/", HomeRoutes);
 
 // EmailUtils.init().then(() => {
   const listener = app.listen(AppConstants.PORT, () => {

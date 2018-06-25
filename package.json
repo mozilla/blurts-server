@@ -11,6 +11,7 @@
     "body-parser": "^1.18.3",
     "client-oauth2": "^4.2.1",
     "client-sessions": "^0.8.0",
+    "cpr": "^3.0.1",
     "dompurify": "^1.0.4",
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
