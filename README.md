@@ -11,7 +11,7 @@ Communicates with the [blurts-addon](https://github.com/mozilla/blurts-addon) cl
 See the [Have I Been Pwned about page](https://haveibeenpwned.com/About) for
 the "what" and "why" of data breach alerts.
 
-This project aims to explore how Firefox - as the user agent - can support this. 
+This project explores how Firefox - as the user agent - can support this. 
 
 See [the Breach Alert Product Brief](https://docs.google.com/document/d/1GTS0HIihfTErA7P19HPYfvHCA3v9g67B_Cf2bpmE0Bw/edit)
 for more background, objectives, key use cases.
@@ -52,7 +52,7 @@ for more background, objectives, key use cases.
     npm start
     ```
 
-2. Visit the `test.html` page at [localhost:6060/test.html](http://localhost:6060/test.html)
+2. Navigate to [localhost:6060/](http://localhost:6060/)
 
 #### Test Data
 
@@ -131,7 +131,7 @@ npm run lint
 
 ## Deployment
 
-blurts is designed with [12-factor](https://12factor.net/) methodology.
+Firefox Monitor Breach Alerts is designed with [12-factor](https://12factor.net/) methodology.
 
 ### Deploy on Heroku
 

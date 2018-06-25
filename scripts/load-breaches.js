@@ -15,13 +15,13 @@ const HIBP_USER_AGENT = `${pkg.name}/${pkg.version}`;
 const DOMPurify = createDOMPurify((new JSDOM("")).window);
 
 const args = arg({
-  "--createAMBreach": Boolean,
+  "--createExampleBreach": Boolean,
   "--help": Boolean,
 });
 
 if (args["--help"]) {
-  console.log("Usage: node load-breaaches.js [--createAMBreach]");
-  console.log("--createAMBreach creates the 'AllMusic' test fixture breach.");
+  console.log("Usage: node load-breaaches.js [--createExampleBreach]");
+  console.log("--createExampleBreach creates the 'ExampleBreach' test fixture breach.");
   process.exit();
 }
 
@@ -41,12 +41,14 @@ async function handleBreachesResponse(response) {
 }
 
 (async () => {
-  if (args["--createAMBreach"]) {
-    await DBUtils.createBreach("AllMusic", {
-      Name: "AllMusic",
-      BreachDate: "2015-012-06",
+  if (args["--createExampleBreach"]) {
+    await DBUtils.createBreach("ExampleBreach", {
+      Title: "Example",
+      BreachDate: "2015-12-06",
       DataClasses: ["Email addresses", "IP addresses", "Passwords", "Usernames", "Website activity"],
       PwnCount: 1436486,
+      LogoType: "svg",
+      Description: "This is an example of the data available for each breach. Compromised Data classes are not limited to the classes listed above.",
     });
   }
   try {

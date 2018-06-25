@@ -14,17 +14,22 @@ const blankStringSha1 = sha1("");
 
 router.post("/", urlEncodedParser, async (req, res) => {
   const emailHash = req.body.emailHash;
-
+  let signup = "";
+  
   if (!emailHash || emailHash === blankStringSha1) {
     res.redirect("/");
     return;
   }
 
+  if (req.body.signup) {
+    signup = "checkboxChecked";
+  }
   const foundBreaches = await HIBP.getBreachesForEmail(emailHash);
 
   res.render("scan", {
     title: "Firefox Breach Alerts: Scan Results",
     foundBreaches,
+    signup,
   });
 });
 

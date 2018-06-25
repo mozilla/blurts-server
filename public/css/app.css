@@ -327,6 +327,8 @@ img.logo {
 .banner-content .account .image-wrap {
   max-width: 90px;
   max-height: 90px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .banner-content span.medium {
@@ -650,12 +652,14 @@ form span {
   align-content: center;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.22);
+  background-color: rgba(0, 0, 0, 0.38);
 }
 
 #false-door {
   opacity: 1;
   visibility: visible;
+  pointer-events: all;
+  cursor: pointer;
   transition: all 0.25s ease-out;
 }
 
@@ -666,17 +670,19 @@ form span {
   color: #000;
   display: inline-block;
   width: 40vw;
-  min-width: 300px;
+  min-width: 350px;
   max-width: 600px;
   padding: calc(3.33vw + 0.625rem) !important;
   text-align: left;
   box-sizing: border-box;
+  box-shadow: 0 0 9px #0000002e;
+  cursor: default;
   transition: all 0.2s ease;
 }
 
 #false-door div p {
   line-height: 1.7;
-  font-size: 17px;
+  font-size: 14px;
   max-width: 100%;
   width: 100%;
   padding-top: 0;
