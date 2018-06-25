@@ -1,6 +1,6 @@
 "use strict";
 
-const arg = require("arg");
+// const arg = require("arg");
 const got = require("got");
 const createDOMPurify = require("dompurify");
 const { JSDOM } = require("jsdom");
@@ -11,19 +11,19 @@ const pkg = require("../package.json");
 
 const HIBP_USER_AGENT = `${pkg.name}/${pkg.version}`;
 
-
 const DOMPurify = createDOMPurify((new JSDOM("")).window);
 
-const args = arg({
-  "--createAMBreach": Boolean,
-  "--help": Boolean,
-});
+// const args = arg({
+//   "--createExampleBreach": Boolean,
+//   "--help": Boolean,
+// });
 
-if (args["--help"]) {
-  console.log("Usage: node load-breaaches.js [--createAMBreach]");
-  console.log("--createAMBreach creates the 'AllMusic' test fixture breach.");
-  process.exit();
-}
+// if (args["--help"]) {
+//   console.log("\n\n  Usage: node load-breaches.js [--createExampleBreach]");
+//   console.log("  --createExampleBreach creates an example breach.");
+//   console.log("  start the server and navigate to 'localhost:6060/?breach=examplebreachURL' to see the Example Breach.\n\n");
+//   process.exit();
+// }
 
 async function handleBreachesResponse(response) {
   try {
@@ -32,7 +32,7 @@ async function handleBreachesResponse(response) {
     for (const breach of breachesJSON) {
       // purify the description going into the DB
       breach.Description = DOMPurify.sanitize(breach.Description, {ALLOWED_TAGS: []});
-      await DBUtils.createBreach(breach.Name, breach);
+      await DBUtils.createBreach(breach.Name, breach.Domain, breach);
     }
   } catch (error) {
     console.error(error);
@@ -41,14 +41,16 @@ async function handleBreachesResponse(response) {
 }
 
 (async () => {
-  if (args["--createAMBreach"]) {
-    await DBUtils.createBreach("AllMusic", {
-      Name: "AllMusic",
-      BreachDate: "2015-012-06",
-      DataClasses: ["Email addresses", "IP addresses", "Passwords", "Usernames", "Website activity"],
-      PwnCount: 1436486,
-    });
-  }
+  // if (args["--createExampleBreach"]) {
+  //   await DBUtils.createBreach("Example", {
+  //     Name: "Example Breach Name",
+  //     Domain: "examplebreachURL",
+  //     BreachDate: "2018-12-06",
+  //     DataClasses: ["Email addresses", "IP addresses", "Passwords", "Usernames", "Website activity"],
+  //     LogoType: "svg",
+  //     Description: "This is example breach data. Users arrive on this page by clicking the 'Go to Firefox Monitor' button from the Firefox Monitor Add-on (https://github.com/mozilla/blurts-addon) after visiting a site with known data breaches. ",
+  //   });
+  // }
   try {
     const breachesResponse = await got(
       `${AppConstants.HIBP_API_ROOT}/breaches`,

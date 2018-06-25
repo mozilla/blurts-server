@@ -11,7 +11,8 @@ exports.up = knex => {
     })
     .createTable("breaches", table => {
       table.increments("id").primary();
-      table.string("name").unique();
+      table.string("name");
+      table.string("domain");
       table.json("meta");
     })
     .createTable("breached_hashes", table => {

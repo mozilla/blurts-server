@@ -327,6 +327,8 @@ img.logo {
 .banner-content .account .image-wrap {
   max-width: 90px;
   max-height: 90px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .banner-content span.medium {
@@ -650,7 +652,7 @@ form span {
   align-content: center;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.22);
+  background-color: rgba(0, 0, 0, 0.32);
 }
 
 #false-door {
@@ -676,7 +678,7 @@ form span {
 
 #false-door div p {
   line-height: 1.7;
-  font-size: 17px;
+  font-size: 14px;
   max-width: 100%;
   width: 100%;
   padding-top: 0;

@@ -5,14 +5,15 @@
         <img alt="{{ breach.name }}" src="img/logos/{{ breach.name }}.{{ breach.meta.LogoType }}">
       </div>
       <div id="breach-title-date">
-        <h3>{{ breach.name }} Breach</h3>
-        <span class="breach-info"><span class="medium">Breach date:</span> {{prettyDate breach.meta.BreachDate }}</span>
+        <h3>{{ breach.meta.Title }}</h3>
+        <span class="breach-info"><span class="medium">Breach Date</span> {{prettyDate breach.meta.BreachDate }}</span>
       </div>
     </div>
 
-    <span class="breach-info"><span class="medium">Compromised data:</span> {{breachDataClasses breach.meta.DataClasses }}</span>
-    <span class="breach-info"><span class="medium">Compromised accounts:</span> {{localeString breach.meta.PwnCount }}</span>
+    <span class="breach-info"><span class="medium">Compromised Data</span> {{breachDataClasses breach.meta.DataClasses }}</span>
+    <span class="breach-info"><span class="medium">Compromised Accounts</span> {{localeString breach.meta.PwnCount }}</span>
     <span class="breach-info">{{{ breach.meta.Description }}}</span>
     <span class="source-info">Breach data provided by<span class="demi"> Have I been Pwned?</span></span>
   </div>
 {{/if}}
+

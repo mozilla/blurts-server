@@ -57,43 +57,47 @@ function isValidEmail(val) {
   return re.test(String(val).toLowerCase());
 }
 
-function addClass(selector, className){
+function addClass(selector, className) {
   const el = document.querySelector(selector);
   if(el){
     el.classList.add(className);
   }
 }
 
-function removeClass(selector, className){
+function removeClass(selector, className) {
   const el = document.querySelector(selector);
   if(el){
     el.classList.remove(className);
   }
 }
 
-function removeInvalidMessage(){
+function removeInvalidMessage() {
   removeClass("#invalid-email-message", "show");
   removeClass(".input-group","invalid");
 }
 
-function addInvalidMessage(){
+function addInvalidMessage() {
   addClass("#invalid-email-message", "show");
   addClass(".input-group", "invalid");
 }
 
 function enableBtnIfEmailValid(e) {
+  removeInvalidMessage();
   const emailBtn = document.getElementById("submit-email");
   if (isValidEmail(e.target.value)) {
       emailBtn.disabled = false;
       removeInvalidMessage();
   } else {
       emailBtn.disabled = true;
+      if(e.code === "Enter") {
+        addInvalidMessage();
+      }
   }
 }
 
 function enableBtnIfInputEmpty(e) {
   const emailBtn = document.getElementById("submit-email");
-  if(e.target.value === ""){
+  if(e.target.value === "") {
       emailBtn.disabled = false;
       removeInvalidMessage();
   } else {
@@ -101,15 +105,30 @@ function enableBtnIfInputEmpty(e) {
   }
 }
 
-function showFalseDoor(){
-  handleEvents("SignUp");
-  removeClass("#false-door", "hidden");
-  document.getElementById("close-false-door").onclick = function (){
+function closeByEscape(e) {
+  if(e.code === "Enter" || e.code === "Escape") {
     addClass("#false-door", "hidden");
-  };
+    window.removeEventListener("keydown", (e) => {
+      closeByEscape(e);
+    });
+  }
 }
 
-function showMessageIfDisabled(){
+function showFalseDoor() {
+  handleEvents("SignUp");
+  removeClass("#false-door", "hidden");
+  const falseDoor = document.getElementById("false-door");
+  window.addEventListener("keydown", (e) => {
+    closeByEscape(e);
+  });
+  falseDoor.addEventListener("click", (e) => {
+    if(e.target === falseDoor || e.target === document.getElementById("close-false-door")) {
+      addClass("#false-door", "hidden");
+    }
+  });
+}
+
+function showMessageIfDisabled() {
   const emailBtn = document.getElementById("submit-email");
   if(emailBtn.disabled){
     addInvalidMessage();
@@ -148,7 +167,7 @@ if(document.querySelector(".email-scan")){
   document.querySelector(".email-scan").addEventListener("submit", hashEmailAndSend);
   document.querySelector(".input-group-button").addEventListener("click", showMessageIfDisabled);
   const emailToHash = document.querySelector(".email-to-hash");
-  emailToHash.addEventListener("input", enableBtnIfEmailValid);
+  emailToHash.addEventListener("keydown", enableBtnIfEmailValid);
   emailToHash.addEventListener("focusout", enableBtnIfInputEmpty);
   emailToHash.addEventListener("focusin", function(){
     removeInvalidMessage();
@@ -162,4 +181,3 @@ window.addEventListener("pageshow", function(){
 if(document.getElementById("sign-up")){
   document.getElementById("sign-up").addEventListener("click", showFalseDoor);
 }
-
