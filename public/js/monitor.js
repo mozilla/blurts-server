@@ -89,11 +89,10 @@ function enableBtnIfEmailValid(e) {
       removeInvalidMessage();
   } else {
       emailBtn.disabled = true;
-      if(e.keyCode === 13) {
+      if(e.code === "Enter") {
         addInvalidMessage();
       }
   }
-
 }
 
 function enableBtnIfInputEmpty(e) {
@@ -107,7 +106,7 @@ function enableBtnIfInputEmpty(e) {
 }
 
 function closeByEscape(e) {
-  if(e.keyCode === 27 || e.keyCode === 13) {
+  if(e.code === "Enter" || e.code === "Escape") {
     addClass("#false-door", "hidden");
     window.removeEventListener("keydown", (e) => {
       closeByEscape(e);
