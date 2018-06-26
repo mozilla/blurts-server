@@ -97,7 +97,7 @@ function enableBtnIfEmailValid(e) {
 
 function enableBtnIfInputEmpty(e) {
   const emailBtn = document.getElementById("submit-email");
-  if (e.target.value === "") {
+  if (!document.querySelector("input[name=email]").value) {
       emailBtn.disabled = false;
       removeInvalidMessage();
   } else {
@@ -115,17 +115,17 @@ function showFalseDoor() {
   removeClass("#false-door", "hidden");
   document.body.style.overflow = "hidden";
   const falseDoor = document.getElementById("false-door");
-  window.addEventListener("keydown", function listener(e) {
+  window.addEventListener("keydown", function falseDoorKeyListener(e) {
     if (e.code !== "Enter" && e.code !== "Escape") {
       return;
     }
     hideFalseDoor();
-    window.removeEventListener("keydown", listener);
+    window.removeEventListener("keydown", falseDoorKeyListener);
   });
-  falseDoor.addEventListener("click", function listener (e) {
+  falseDoor.addEventListener("click", function falseDoorClickListener (e) {
     if (e.target === falseDoor || e.target === document.getElementById("close-false-door")) {
       hideFalseDoor();
-      falseDoor.removeEventListener("click", listener);
+      falseDoor.removeEventListener("click", falseDoorClickListener);
     }
   });
 }
@@ -173,6 +173,7 @@ if (document.querySelector(".email-scan")) {
   emailToHash.addEventListener("focusout", enableBtnIfInputEmpty);
   emailToHash.addEventListener("focusin", function() {
     removeInvalidMessage();
+    enableBtnIfInputEmpty();
   });
 }
 
@@ -184,9 +185,9 @@ window.addEventListener("pageshow", function() {
 
 if (document.getElementById("sign-up")) {
   document.getElementById("sign-up").addEventListener("click", showFalseDoor);
+  if (document.getElementById("false-door").getAttribute("data-name") === "checkboxChecked") {
+    document.getElementById("false-door").setAttribute("data-name", "");
+    showFalseDoor();
+  }
 }
 
-if (document.getElementById("false-door").getAttribute("data-name") === "checkboxChecked") {
-  document.getElementById("false-door").setAttribute("data-name", "");
-  showFalseDoor();
-}
