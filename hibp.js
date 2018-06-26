@@ -20,7 +20,7 @@ const HIBP = {
       "User-Agent": HIBP_USER_AGENT,
     };
 
-    console.info(`Fetching ${url}...`);
+    //console.info(`Fetching ${url}...`);
 
     try {
       const response = await got(url, {headers, json: true});
