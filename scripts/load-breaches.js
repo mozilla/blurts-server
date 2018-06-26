@@ -1,6 +1,5 @@
 "use strict";
 
-const arg = require("arg");
 const got = require("got");
 const createDOMPurify = require("dompurify");
 const { JSDOM } = require("jsdom");
@@ -13,17 +12,6 @@ const HIBP_USER_AGENT = `${pkg.name}/${pkg.version}`;
 
 
 const DOMPurify = createDOMPurify((new JSDOM("")).window);
-
-const args = arg({
-  "--createAMBreach": Boolean,
-  "--help": Boolean,
-});
-
-if (args["--help"]) {
-  console.log("Usage: node load-breaaches.js [--createAMBreach]");
-  console.log("--createAMBreach creates the 'AllMusic' test fixture breach.");
-  process.exit();
-}
 
 async function handleBreachesResponse(response) {
   try {
@@ -41,14 +29,6 @@ async function handleBreachesResponse(response) {
 }
 
 (async () => {
-  if (args["--createAMBreach"]) {
-    await DBUtils.createBreach("AllMusic", {
-      Name: "AllMusic",
-      BreachDate: "2015-012-06",
-      DataClasses: ["Email addresses", "IP addresses", "Passwords", "Usernames", "Website activity"],
-      PwnCount: 1436486,
-    });
-  }
   try {
     const breachesResponse = await got(
       `${AppConstants.HIBP_API_ROOT}/breaches`,

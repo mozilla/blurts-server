@@ -145,7 +145,7 @@ input {
 
 input::placeholder,
 textarea::placeholder {
-  color: #cacaca;
+  color: #000;
 }
 
 .button:focus,
@@ -327,6 +327,8 @@ img.logo {
 .banner-content .account .image-wrap {
   max-width: 90px;
   max-height: 90px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .banner-content span.medium {
@@ -421,7 +423,7 @@ img.logo {
 
 .input-group > :first-child {
   min-width: 300px;
-  text-indent: 1rem;
+  text-indent: 0.65rem;
 }
 
 .banner-content form input {
@@ -430,7 +432,7 @@ img.logo {
 }
 
 .banner-content form input::-moz-placeholder {
-  color: #979797;
+  color: #000;
 }
 
 .banner-content form input:focus {
@@ -489,7 +491,7 @@ form span {
 }
 
 .input-group-button.loading-data .button {
-  color: #fff0;
+  color: rgba(255, 255, 255, 0);
 }
 
 .input-group-button.loading-data img:first-of-type {
@@ -588,7 +590,7 @@ form span {
 
 .tip-header {
   background: #002275;
-  color: white;
+  color: #fff;
   padding-top: calc(45px + 1.95vw);
   padding-bottom: calc(10px + 0.55vw);
   border-top-right-radius: 3px;
@@ -650,12 +652,14 @@ form span {
   align-content: center;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.22);
+  background-color: rgba(0, 0, 0, 0.38);
 }
 
 #false-door {
   opacity: 1;
   visibility: visible;
+  pointer-events: all;
+  cursor: pointer;
   transition: all 0.25s ease-out;
 }
 
@@ -666,17 +670,19 @@ form span {
   color: #000;
   display: inline-block;
   width: 40vw;
-  min-width: 300px;
+  min-width: 350px;
   max-width: 600px;
   padding: calc(3.33vw + 0.625rem) !important;
   text-align: left;
   box-sizing: border-box;
+  box-shadow: 0 0 9px rgba(0, 0, 0, 0.18);
+  cursor: default;
   transition: all 0.2s ease;
 }
 
 #false-door div p {
   line-height: 1.7;
-  font-size: 17px;
+  font-size: 14px;
   max-width: 100%;
   width: 100%;
   padding-top: 0;
@@ -750,7 +756,7 @@ span.breach-info {
 #what-to-do {
   font-size: 17px;
   list-style: none;
-  background-color: #0021753a;
+  background-color: rgba(0, 33, 117, 0.227);
   padding: calc(15px + 0.5vh + 0.5vw);
   min-width: 250px;
   max-width: 400px;
@@ -823,6 +829,10 @@ span.breach-info {
   color: white;
 }
 
+.input-group.invalid input::-moz-placeholder {
+  opacity: 0 !important;
+}
+
 #what-to-do .input-group-button .button {
   background-color: #0a84ff;
   color: rgba(0, 0, 0, 0);
@@ -843,22 +853,6 @@ span.breach-info {
   background-color: #0060df !important;
 }
 
-#what-to-do .input-group.invalid {
-  border: 1px solid #d7002093;
-}
-
-.input-group.invalid input[type=email] {
-  border-left: 1px solid #d7002054;
-  border-top: 1px solid #d7002054;
-  border-bottom: 1px solid #d7002054;
-}
-
-.input-group.invalid .button {
-  border-right: 1px solid #d7002054 !important;
-  border-top: 1px solid #d7002054;
-  border-bottom: 1px solid #d7002054;
-}
-
 #invalid-email-message,
 #invalid-email-message.show {
   transition: all 0.25s ease-out;
@@ -866,7 +860,7 @@ span.breach-info {
 
 #invalid-email-message {
   visibility: hidden;
-  color: #d70022;
+  color: #2b2b2b;
   opacity: 0;
 }
 
@@ -954,7 +948,7 @@ footer a {
 }
 
 footer a:hover {
-  color: #000000b3;
+  color: rgba(0, 0, 0, 0.702);
 }
 
 footer .section-wrapper {
