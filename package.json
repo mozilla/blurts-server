@@ -62,7 +62,7 @@
     "lint:js": "eslint .",
     "lint:css": "stylelint --fix 'public/css/**/*.css'",
     "lint:nsp": "nsp check",
-    "migrate": "knex migrate:latest --knexfile db/knexfile.js",
+    "migrate": "knex migrate:latest --knexfile db/knexfile.js && node scripts/load-breaches.js",
     "pretest": "npm run lint",
     "get-hashsets": "node scripts/get-hashsets",
     "start": "node server.js",

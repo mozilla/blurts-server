@@ -10,8 +10,9 @@ const kEnvironmentVariables = [
   "SERVER_URL",
   "PORT",
   "COOKIE_SECRET",
-  "HIBP_API_ROOT",
-  "HIBP_API_TOKEN",
+  "HIBP_BREACH_API_URL",
+  "HIBP_SCAN_API_ROOT",
+  "HIBP_SCAN_API_TOKEN",
   "DATABASE_URL",
 ];
 
