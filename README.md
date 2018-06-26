@@ -66,7 +66,7 @@ To populate the database with test data, use these scripts in `scripts/`:
 * `node scripts/add-breached-emails.js` adds some breached email records for
   `test[1-3]@test.com` users
 
-Both scripts have `--help` arguments for usage help.
+* `node scripts/add-breached-email.sjs --help` for usage help.
 
 #### Emails
 

@@ -105,6 +105,11 @@ function enableBtnIfInputEmpty(e) {
   }
 }
 
+function hideFalseDoor() {
+  addClass("#false-door", "hidden");
+  document.body.style.overflow = "scroll";
+}
+
 function showFalseDoor() {
   handleEvents("SignUp");
   removeClass("#false-door", "hidden");
@@ -114,17 +119,13 @@ function showFalseDoor() {
     if (e.code !== "Enter" && e.code !== "Escape") {
       return;
     }
-    addClass("#false-door", "hidden");
-    document.body.style.overflow = "scroll";
+    hideFalseDoor();
     window.removeEventListener("keydown", listener);
-    falseDoor.removeEventListener("click", listener);
   });
   falseDoor.addEventListener("click", function listener (e) {
     if (e.target === falseDoor || e.target === document.getElementById("close-false-door")) {
-      addClass("#false-door", "hidden");
-      document.body.style.overflow = "scroll";
+      hideFalseDoor();
       falseDoor.removeEventListener("click", listener);
-      window.removeEventListener("keydown", listener);
     }
   });
 }
@@ -147,7 +148,7 @@ async function sha1(message) {
 async function hashEmailAndSend(emailFormSubmitEvent) {
   emailFormSubmitEvent.preventDefault();
   const emailForm = emailFormSubmitEvent.target;
-  if (emailForm.querySelector("input[name=email]").value === "") {
+  if (!emailForm.querySelector("input[name=email]").value) {
     emailForm.querySelector("input[type=submit]").disabled = true;
     addInvalidMessage();
     return;
@@ -174,11 +175,13 @@ if (document.querySelector(".email-scan")) {
     removeInvalidMessage();
   });
 }
+
 window.addEventListener("pageshow", function() {
   if (document.getElementById("no-breaches") || document.getElementById("found-breaches")) {
     handleEvents("Pageview");
   }
 });
+
 if (document.getElementById("sign-up")) {
   document.getElementById("sign-up").addEventListener("click", showFalseDoor);
 }
