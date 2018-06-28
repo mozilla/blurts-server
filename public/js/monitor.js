@@ -1,7 +1,7 @@
 "use strict";
 /* global ga */
 
-const events = { 
+const events = {
   "SignUp" : {
     "eventCategory": "Sign Ups",
     "eventAction:": "Clicked Sign Up Button",
@@ -138,6 +138,7 @@ function showMessageIfDisabled() {
 }
 
 async function sha1(message) {
+  message = message.toLowerCase();
   const msgBuffer = new TextEncoder("utf-8").encode(message);
   const hashBuffer = await crypto.subtle.digest("SHA-1", msgBuffer);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
