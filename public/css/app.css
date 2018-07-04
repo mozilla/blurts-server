@@ -884,12 +884,13 @@ span.breach-info {
   font-size: 15px;
 }
 
-.account .source-info {
-  font-size: 15px;
+.source-info a {
+  margin-left: 5px;
+  font-weight: 600;
 }
 
-a.demi.compromised {
-  color: #ffffff !important;
+#compromised-accounts .source-info a {
+  color: #fff !important;
 }
 
 /* sign up button in header on {{breach}} */
