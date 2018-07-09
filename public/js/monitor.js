@@ -158,6 +158,9 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
   for (const emailInput of emailForm.querySelectorAll("input[type=email]")) {
     emailForm.querySelector("input[name=emailHash]").value = await sha1(emailInput.value);
     emailInput.value = "";
+    emailInput.disabled = true;
+    emailInput.placeholder="";
+    addClass(".email-to-hash", "hide-caret");
   }
   emailForm.submit();
   addClass(".input-group-button", "loading-data");
