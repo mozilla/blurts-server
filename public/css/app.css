@@ -834,10 +834,6 @@ span.breach-info {
   color: white;
 }
 
-.input-group.invalid input::-moz-placeholder {
-  opacity: 0 !important;
-}
-
 #what-to-do .input-group-button .button {
   background-color: #0a84ff;
   color: rgba(0, 0, 0, 0);

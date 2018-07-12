@@ -12,7 +12,6 @@ const HIBP_USER_AGENT = `${pkg.name}/${pkg.version}`;
 
 const HIBP = {
   async getBreachesForEmail(sha1) {
-    const filteredBreaches = [];
     let foundBreaches = [];
     const sha1Prefix = sha1.slice(0, 6).toUpperCase();
     const url = `${AppConstants.HIBP_STAGE_API_ROOT}/breachedaccount/range/${sha1Prefix}?code=${encodeURIComponent(AppConstants.HIBP_STAGE_API_TOKEN)}`;
@@ -37,12 +36,7 @@ const HIBP = {
     } catch (error) {
       console.error(error);
     }
-    for (const breach of foundBreaches) {
-      if ( breach.meta.IsVerified && !breach.meta.IsRetired && !breach.meta.IsSensitive && !breach.meta.IsSpamList ) {
-        filteredBreaches.push(breach);
-      }
-    }
-    return filteredBreaches;
+    return foundBreaches.filter(({meta}) => meta.IsVerified && !meta.IsRetired && !meta.IsSensitive && !meta.IsSpamList);
   },
 };
 

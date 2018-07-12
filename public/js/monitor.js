@@ -159,7 +159,7 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
     emailForm.querySelector("input[name=emailHash]").value = await sha1(emailInput.value);
     emailInput.value = "";
     emailInput.disabled = true;
-    emailInput.placeholder="";
+    emailInput.placeholder = "";
     addClass(".email-to-hash", "hide-caret");
   }
   emailForm.submit();
