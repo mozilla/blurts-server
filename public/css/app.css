@@ -511,6 +511,11 @@ form span {
   pointer-events: none;
 }
 
+.email-to-hash.hide-caret {
+  caret-color: rgba(0, 0, 0, 0) !important;
+  transition: all 0.2s ease-out;
+}
+
 /* .input-group-button:hover .button, */
 .button:hover {
   background-color: #0052be;
@@ -827,10 +832,6 @@ span.breach-info {
   display: block !important;
   margin-bottom: 5px;
   color: white;
-}
-
-.input-group.invalid input::-moz-placeholder {
-  opacity: 0 !important;
 }
 
 #what-to-do .input-group-button .button {
