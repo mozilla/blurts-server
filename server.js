@@ -41,7 +41,7 @@ app.use(helmet.contentSecurityPolicy({
     connectSrc: [
       "'self'",
       "https://code.cdn.mozilla.net/fonts/",
-      "https://www.google-analytics.com"
+      "https://www.google-analytics.com",
     ],
     fontSrc: ["'self'", "https://code.cdn.mozilla.net/fonts/"],
     frameAncestors: ["'none'"],
