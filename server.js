@@ -38,7 +38,12 @@ app.use(helmet.contentSecurityPolicy({
   directives: {
     baseUri: ["'none'"],
     defaultSrc: ["'none'"],
-    fontSrc: ["https://code.cdn.mozilla.net/fonts/"],
+    connectSrc: [
+      "'self'",
+      "https://code.cdn.mozilla.net/fonts/",
+      "https://www.google-analytics.com"
+    ],
+    fontSrc: ["'self'", "https://code.cdn.mozilla.net/fonts/"],
     frameAncestors: ["'none'"],
     imgSrc: ["'self'", "https://www.google-analytics.com"],
     scriptSrc: ["'self'", "https://www.google-analytics.com/analytics.js"],
