@@ -83,57 +83,39 @@ function addInvalidMessage() {
 
 function enableBtnIfEmailValid(e) {
   removeInvalidMessage();
-  const emailBtn = document.getElementById("submit-email");
-  if (isValidEmail(e.target.value)) {
-      emailBtn.disabled = false;
-      removeInvalidMessage();
-  } else {
-      emailBtn.disabled = true;
-      if(e.code === "Enter") {
-        addInvalidMessage();
-      }
+  const emailBtns = document.querySelectorAll(".submit-email");
+  for (const emailBtn of emailBtns) {
+    if (isValidEmail(e.target.value)) {
+        emailBtn.disabled = false;
+        removeInvalidMessage();
+    } else {
+        emailBtn.disabled = true;
+        if(e.code === "Enter") {
+          addInvalidMessage();
+        }
+    }
   }
 }
 
 function enableBtnIfInputEmpty(e) {
-  const emailBtn = document.getElementById("submit-email");
-  if (!document.querySelector("input[name=email]").value) {
-      emailBtn.disabled = false;
-      removeInvalidMessage();
-  } else {
-      enableBtnIfEmailValid(e);
+  const emailBtns = document.querySelectorAll(".submit-email");
+  for (const emailBtn of emailBtns) {
+    if (!document.querySelector("input[name=email]").value) {
+        emailBtn.disabled = false;
+        removeInvalidMessage();
+    } else {
+        enableBtnIfEmailValid(e);
+    }
   }
 }
 
-function hideFalseDoor() {
-  addClass("#false-door", "hidden");
-  document.body.style.overflow = "scroll";
-}
-
-function showFalseDoor() {
-  handleEvents("SignUp");
-  removeClass("#false-door", "hidden");
-  document.body.style.overflow = "hidden";
-  const falseDoor = document.getElementById("false-door");
-  window.addEventListener("keydown", function falseDoorKeyListener(e) {
-    if (e.code !== "Enter" && e.code !== "Escape") {
-      return;
-    }
-    hideFalseDoor();
-    window.removeEventListener("keydown", falseDoorKeyListener);
-  });
-  falseDoor.addEventListener("click", function falseDoorClickListener (e) {
-    if (e.target === falseDoor || e.target === document.getElementById("close-false-door")) {
-      hideFalseDoor();
-      falseDoor.removeEventListener("click", falseDoorClickListener);
-    }
-  });
-}
 
 function showMessageIfDisabled() {
-  const emailBtn = document.getElementById("submit-email");
-  if (emailBtn.disabled) {
-    addInvalidMessage();
+  const emailBtns = document.querySelectorAll(".submit-email");
+  for (const emailBtn of emailBtns) {
+    if (emailBtn.disabled) {
+      addInvalidMessage();
+    }
   }
 }
 
@@ -187,11 +169,10 @@ window.addEventListener("pageshow", function() {
   }
 });
 
-if (document.getElementById("sign-up")) {
-  document.getElementById("sign-up").addEventListener("click", showFalseDoor);
-  if (document.getElementById("false-door").getAttribute("data-name") === "checkboxChecked") {
-    document.getElementById("false-door").setAttribute("data-name", "");
-    showFalseDoor();
-  }
+// eslint-disable-next-line no-unused-vars
+function doOauth() {
+  window.open("/oauth/init");
 }
 
+document.querySelector("#subscribe-fxa-btn").addEventListener("click", doOauth);
+document.querySelector("#subscribe-email-input").addEventListener("input", enableBtnIfEmailValid);
