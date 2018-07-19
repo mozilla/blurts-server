@@ -6,10 +6,12 @@
       <button id="subscribe-fxa-btn" class="button sign-in-btn cell">Subscribe with Firefox Accounts</button>
       <span>Or</span>
       <form action="/user/add" class="email-form" method="post" data-no-csrf>
-        <input id="subscribe-email-input" class="input-group-field" type="email" name="email" placeholder="Subscribe with an Email Account" aria-label="Enter Email Address" tabindex="0" autocomplete="off" >
-        <button id="subscribe-email-btn" type="submit" class="input-group-button button">Subscribe</button>
+        <input id="subscribe-email-input" class="input-group-field" type="email" name="email" placeholder="Subscribe with an Email Account" minlength="1" aria-label="Enter Email Address" tabindex="0" autocomplete="off" required >
+        <div class="input-group-button">
+          <img class="loader" src="img/loader.gif" alt="loading data" />
+          <input id="subscribe-email-btn" type="submit" class="button submit-email" value="Submit" />
+        </div>
       </form>
     </div>
   </div>
 </div>
-

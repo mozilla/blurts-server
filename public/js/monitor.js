@@ -71,70 +71,57 @@ function removeClass(selector, className) {
   }
 }
 
-function removeInvalidMessage() {
-  removeClass("#invalid-email-message", "show");
-  removeClass(".input-group","invalid");
+function doOauth() {
+  window.open("/oauth/init");
 }
-
-function addInvalidMessage() {
-  addClass("#invalid-email-message", "show");
-  addClass(".input-group", "invalid");
-}
-
-const removeModalThings = function() {
-  removeClass("body", "show-subscribe-modal");
-  document.querySelector("#subscribe-fxa-btn").removeEventListener("click", doOauth);
-  document.getElementById("subscribe-modal").removeEventListener("click", subscribeModalClickListener);
-  document.querySelector("#subscribe-fxa-btn").removeEventListener("click", doOauth);
-  window.removeEventListener("keydown", subscribeModalKeyListener);
-};
 
 function handleSignUpModal() {
   handleEvents("SignUp");
   addClass("body","show-subscribe-modal");
-
-  const subscribeModal = document.getElementById("subscribe-modal");
   window.addEventListener("keydown", function subscribeModalKeyListener(e) {
     if (e.code !== "Enter" && e.code !== "Escape") {
       return;
     }
-    removeModalThings();
+    removeClass("body", "show-subscribe-modal");
+    window.removeEventListener("keydown", subscribeModalKeyListener);
   });
-  subscribeModal.addEventListener("click", function subscribeModalClickListener (e) {
+}
+
+function addSubscriptionListeners() {
+  const subscribeModal = document.getElementById("subscribe-modal");
+  subscribeModal.addEventListener("click", function subscribeModalClickListener(e) {
     if (e.target === subscribeModal || e.target === document.getElementById("close-subscribe-modal")) {
-      removeModalThings();
+      removeClass("body", "show-subscribe-modal");
     }
   });
-  document.querySelector("#subscribe-fxa-btn").addEventListener("click", ()=>{
+  document.querySelector("#subscribe-fxa-btn").addEventListener("click", function fxaSubmit() {
     doOauth();
-    removeModalThings();
+    removeClass("body", "show-subscribe-modal");
   });
 }
 
 function enableBtnIfEmailValid(e) {
-  removeInvalidMessage();
-  const emailBtns = document.querySelectorAll(".submit-email");
-  for (const emailBtn of emailBtns) {
-    if (isValidEmail(e.target.value)) {
-        emailBtn.disabled = false;
-        removeInvalidMessage();
-    } else {
-        emailBtn.disabled = true;
-        if(e.code === "Enter") {
-          addInvalidMessage();
-        }
-    }
+  const thisForm = e.target.form;
+  const emailButton = thisForm.querySelector(".submit-email");
+  if (isValidEmail(e.target.value)) {
+      emailButton.disabled = false;
+      thisForm.classList.remove("invalid");
+  } else {
+      emailButton.disabled = true;
+      if(e.code === "Enter") {
+        thisForm.classList.add("invalid");
+      }
   }
 }
 
 function enableBtnIfInputEmpty(e) {
-  const emailBtns = document.querySelectorAll(".submit-email");
-  for (const emailBtn of emailBtns) {
-    if (!document.querySelector("input[name=email]").value) {
-        emailBtn.disabled = false;
-        removeInvalidMessage();
+  const thisForm = e.target.form;
+  if(thisForm.querySelector(".submit-email")) {
+    if (!e.target.value) {
+      thisForm.classList.remove("invalid");
+
     } else {
-        enableBtnIfEmailValid(e);
+      enableBtnIfEmailValid(e);
     }
   }
 }
@@ -143,9 +130,15 @@ function showMessageIfDisabled() {
   const emailBtns = document.querySelectorAll(".submit-email");
   for (const emailBtn of emailBtns) {
     if (emailBtn.disabled) {
-      addInvalidMessage();
+      addClass(".email-form", "invalid");
     }
   }
+}
+
+function removeInvalidMessage(e) {
+  enableBtnIfEmailValid(e);
+  const thisForm = e.target.form;
+  thisForm.classList.remove("invalid");
 }
 
 async function sha1(message) {
@@ -162,7 +155,7 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
   const emailForm = emailFormSubmitEvent.target;
   if (!emailForm.querySelector("input[name=email]").value) {
     emailForm.querySelector("input[type=submit]").disabled = true;
-    addInvalidMessage();
+    addClass(".email-form", "invalid");
     return;
   }
   handleEvents("Scan");
@@ -178,27 +171,23 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
 }
 
 function addFormListeners() {
-  document.querySelector(".input-group-field").addEventListener("keydown", enableBtnIfEmailValid);
-  document.querySelector(".input-group-button").addEventListener("click", showMessageIfDisabled);
-  document.querySelector(".input-group-field").addEventListener("focusout", enableBtnIfInputEmpty);
-  document.querySelector(".input-group-field").addEventListener("focusin", removeInvalidMessage);
+  removeClass(".input-group-button", "loading-data");
+  for (const input of document.querySelectorAll(".input-group-field")) {
+    if (input.disabled) {
+      input.disabled = false;
+    }
+    input.addEventListener("keydown", (e) => enableBtnIfEmailValid(e));
+    input.addEventListener("focusout", (e) => enableBtnIfInputEmpty(e));
+    input.addEventListener("focusin", (e) => removeInvalidMessage(e));
+  }
+  for (const buttonWrapper of document.querySelectorAll(".input-group-button")) {
+    buttonWrapper.addEventListener("click", showMessageIfDisabled);
+  }
 }
 
 if (document.querySelector(".email-scan")) {
-  window.addEventListener("pageshow", function() {
-    removeClass(".input-group-button", "loading-data");
-  });
   addFormListeners();
   document.querySelector(".email-scan").addEventListener("submit", hashEmailAndSend);
-  
-  // const emailToHash = document.querySelector(".email-to-hash");
-  // emailToHash.addEventListener("keydown", enableBtnIfEmailValid);
-  // document.querySelector(".input-group-field").addEventListener("keydown", enableBtnIfEmailValid);
-  // emailToHash.addEventListener("focusout", enableBtnIfInputEmpty);
-  // emailToHash.addEventListener("focusin", function() {
-  //   removeInvalidMessage();
-  //   enableBtnIfInputEmpty();
-  // });
 }
 
 window.addEventListener("pageshow", function() {
@@ -208,13 +197,10 @@ window.addEventListener("pageshow", function() {
 });
 
 // eslint-disable-next-line no-unused-vars
-function doOauth() {
-  window.open("/oauth/init");
-}
 
 if (document.getElementById("sign-up")) {
   document.getElementById("sign-up").addEventListener("click", handleSignUpModal);
 }
-
-
-// document.querySelector("#subscribe-email-input").addEventListener("input", enableBtnIfEmailValid);
+if(document.getElementById("subscribe-modal")) {
+  addSubscriptionListeners();
+}

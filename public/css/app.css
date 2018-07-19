@@ -114,6 +114,8 @@ input {
   padding: 0.5rem;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
+  overflow: visible;
+  height: 55px;
 }
 
 .button {
@@ -140,19 +142,13 @@ input {
   width: 100%;
 }
 
-input {
-  overflow: visible;
-  height: 55px;
-}
-
-input::placeholder{
+input::placeholder {
   color: rgba(0, 0, 0, 1);
 }
 
 input:focus::placeholder {
   color: rgba(0, 0, 0, 0);
 }
-
 
 .button:focus,
 .button:hover {
@@ -423,7 +419,7 @@ img.logo {
   white-space: nowrap;
 }
 
-.banner-content .email-scan  {
+.banner-content .email-scan {
   max-width: 385px;
 }
 
@@ -435,10 +431,6 @@ img.logo {
 .banner-content .email-scan input {
   border-right: none !important;
 }
-
-/* .banner-content form input::-moz-placeholder {
-  color: #000;
-} */
 
 .banner-content form input:focus {
   outline: none;
@@ -643,7 +635,6 @@ form span {
   max-height: 60%;
 }
 
-
 #subscribe-modal {
   opacity: 0;
   visibility: hidden;
@@ -675,7 +666,6 @@ body.show-subscribe-modal #subscribe-modal {
   border-radius: 2px;
   background: #fff;
   color: #000;
-  display: inline-block;
   padding: calc(30px + 1vw);
   width: 40vw;
   min-width: 300px;
@@ -716,14 +706,14 @@ body.show-subscribe-modal #subscribe-modal {
 
 #subscribe-modal span {
   display: block;
-  line-height:4rem;
+  line-height: 4rem;
 }
 
 #subscribe-modal span::before,
 #subscribe-modal span::after {
   content: "";
   height: 1px;
-  background-color: rgba(0, 0, 0, .3);
+  background-color: rgba(0, 0, 0, 0.3);
   width: 30px;
   display: inline-block;
   vertical-align: middle;
@@ -737,15 +727,20 @@ body.show-subscribe-modal #subscribe-modal {
 }
 
 #subscribe-fxa-btn {
-  margin-bottom: 0px;
+  margin-bottom: 0;
   margin-top: 2rem;
 }
 
-#subscribe-email-input {
+#subscribe-modal input {
   height: 40px;
   margin-bottom: 15px;
   font-size: 14px;
+  border-radius: 3px 3px 3px 3px;
+}
 
+#subscribe-email-btn {
+  text-align: center;
+  position: relative !important;
 }
 
 .subscribe-message-wrapper {
@@ -761,10 +756,10 @@ body.show-subscribe-modal #subscribe-modal {
 }
 
 .subscribe-message {
-  border: 1px solid rgba(255, 255, 255, .21);
+  border: 1px solid rgba(255, 255, 255, 0.21);
   border-radius: 3px;
-  background-color: rgba(255, 255, 255, .07);
-  max-width:400px;
+  background-color: rgba(255, 255, 255, 0.07);
+  max-width: 400px;
   min-width: 300px;
   padding: 7vh;
   margin: auto;
@@ -773,16 +768,13 @@ body.show-subscribe-modal #subscribe-modal {
 }
 
 .subscribe-message h5 {
-  margin: .5rem 0 1rem 0;
-
+  margin: 0.5rem 0 1rem 0;
 }
 
 .page-wrap {
-  min-height: 100vh;
-  display: relative;
+  margin-bottom: 10vh;
+  min-height: 81vh;
 }
-
-
 
 /* compromised accounts ********** */
 
@@ -925,7 +917,6 @@ span.breach-info {
   box-shadow: none !important;
 }
 
-.button.disabled,
 .button[disabled] {
   opacity: 0.6 !important;
   pointer-events: none;
@@ -935,8 +926,9 @@ span.breach-info {
   background-color: #0060df !important;
 }
 
-#invalid-email-message,
-#invalid-email-message.show {
+.email-form.invalid #invalid-email-message {
+  visibility: visible;
+  opacity: 1;
   transition: all 0.25s ease-out;
 }
 
@@ -944,11 +936,6 @@ span.breach-info {
   visibility: hidden;
   color: #2b2b2b;
   opacity: 0;
-}
-
-#invalid-email-message.show {
-  visibility: visible;
-  opacity: 1;
 }
 
 #what-to-do .scan-another-email {
@@ -1019,10 +1006,6 @@ span.breach-info {
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
   background-color: #fff;
   height: 10vh;
   max-height: 150px;
