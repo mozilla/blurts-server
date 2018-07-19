@@ -52,7 +52,7 @@ const HIBP = {
     const path = "/range/subscribe";
     const options = {
       method: "POST",
-      body: `{hashPrefix: "${sha1Prefix}"}`,
+      body: {hashPrefix: sha1Prefix},
     }
 
     try {

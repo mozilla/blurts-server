@@ -65,7 +65,6 @@ router.get("/confirmed", jsonParser, async (req, res) => {
     });
   } catch (err) {
     console.error(err);
-    res.set("Content-Type", "text/text");
     res.send(err);
   }
 });

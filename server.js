@@ -11,6 +11,7 @@ const EmailUtils = require("./email-utils");
 const HBSHelpers = require("./hbs-helpers");
 
 const DockerflowRoutes = require("./routes/dockerflow");
+const HibpRoutes = require("./routes/hibp");
 const HomeRoutes = require("./routes/home");
 const ScanRoutes = require("./routes/scan");
 const OAuthRoutes = require("./routes/oauth");
@@ -76,8 +77,9 @@ app.use(sessions({
 }));
 
 app.use("/", DockerflowRoutes);
-app.use("/scan", ScanRoutes);
+app.use("/hibp", HibpRoutes);
 app.use("/oauth", OAuthRoutes);
+app.use("/scan", ScanRoutes);
 app.use("/user", UserRoutes);
 app.use("/", HomeRoutes);
 

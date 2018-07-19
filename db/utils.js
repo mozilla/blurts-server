@@ -9,6 +9,7 @@ const { Model } = require("objection");
 const Breach = require("./models/breach");
 const EmailHash = require("./models/emailhash");
 
+const HIBP = require("../hibp");
 const getSha1 = require("../sha1-utils");
 
 const knex = Knex(knexConfig);
@@ -44,14 +45,10 @@ const DBUtils = {
   },
 
   async verifyEmailHash(token, email) {
-    return await EmailHash.query()
+    const emailHash = await EmailHash.query()
       .where("verification_token", "=", token)
-      .andWhere("email", "=", email)
-      .patch({
-        verified: true,
-        sha1: getSha1(email),
-      })
-      .returning("*");
+      .andWhere("email", "=", email);
+    return await this.verifySubscriber(emailHash);
   },
 
   // Used internally, ideally should not be called by consumers.
@@ -108,7 +105,12 @@ const DBUtils = {
 
   async addSubscriber(email) {
     const emailHash = await this._addEmailHash(getSha1(email), email, true);
-    return await emailHash.$query().patch({ verified: true });
+    return this.verifySubscriber(emailHash);
+  },
+
+  async verifySubscriber(emailHash) {
+    await HIBP.subscribeHash(emailHash.sha1);
+    return await emailHash.$query().patch({ verified: true }).returning("*");
   },
 
   async removeSubscriber(email) {
@@ -128,6 +130,10 @@ const DBUtils = {
       .$relatedQuery("email_hashes")
       .whereNotNull("email")
       .where("notified", false);
+  },
+
+  async getSubscribersByHashes(hashes) {
+    return await EmailHash.query().whereIn("sha1", hashes).andWhere("verified", "=", true);
   },
 
   async addBreachedHash(breachName, sha1) {
