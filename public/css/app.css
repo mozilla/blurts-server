@@ -28,6 +28,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-size: 17px;
+  position: relative;
 }
 
 body,
@@ -95,7 +96,7 @@ a:hover {
   white-space: nowrap;
 }
 
-[type="email"] {
+input {
   display: block;
   box-sizing: border-box;
   width: 100%;
@@ -113,10 +114,6 @@ a:hover {
   padding: 0.5rem;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
-}
-
-input {
-  overflow: visible;
 }
 
 .button {
@@ -143,10 +140,19 @@ input {
   width: 100%;
 }
 
-input::placeholder,
-textarea::placeholder {
-  color: #000;
+input {
+  overflow: visible;
+  height: 55px;
 }
+
+input::placeholder{
+  color: rgba(0, 0, 0, 1);
+}
+
+input:focus::placeholder {
+  color: rgba(0, 0, 0, 0);
+}
+
 
 .button:focus,
 .button:hover {
@@ -154,7 +160,7 @@ textarea::placeholder {
   outline: none;
 }
 
-.input-group > :last-child > * {
+.email-scan .input-group > :last-child > * {
   border-radius: 0 3px 3px 0;
 }
 
@@ -406,7 +412,7 @@ img.logo {
 }
 
 .banner-content p,
-.banner-content form {
+.banner-content .email-scan {
   padding-top: 2rem;
   margin-bottom: 0;
 }
@@ -417,7 +423,7 @@ img.logo {
   white-space: nowrap;
 }
 
-.banner-content form {
+.banner-content .email-scan  {
   max-width: 385px;
 }
 
@@ -426,14 +432,13 @@ img.logo {
   text-indent: 0.65rem;
 }
 
-.banner-content form input {
-  height: 55px;
+.banner-content .email-scan input {
   border-right: none !important;
 }
 
-.banner-content form input::-moz-placeholder {
+/* .banner-content form input::-moz-placeholder {
   color: #000;
-}
+} */
 
 .banner-content form input:focus {
   outline: none;
@@ -638,15 +643,12 @@ form span {
   max-height: 60%;
 }
 
-#false-door.hidden {
+
+#subscribe-modal {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transition: all 0.25s ease-out;
-}
-
-#false-door.hidden,
-#false-door {
   position: fixed;
   top: 0;
   left: 0;
@@ -660,7 +662,7 @@ form span {
   background-color: rgba(0, 0, 0, 0.38);
 }
 
-#false-door {
+body.show-subscribe-modal #subscribe-modal {
   opacity: 1;
   visibility: visible;
   pointer-events: all;
@@ -668,40 +670,119 @@ form span {
   transition: all 0.25s ease-out;
 }
 
-#false-door div {
+#subscribe-modal .modal-wrapper {
   margin: auto;
   border-radius: 2px;
   background: #fff;
   color: #000;
   display: inline-block;
+  padding: calc(30px + 1vw);
   width: 40vw;
-  min-width: 350px;
+  min-width: 300px;
   max-width: 600px;
-  padding: calc(3.33vw + 0.625rem) !important;
-  text-align: left;
+  text-align: center;
   box-sizing: border-box;
   box-shadow: 0 0 9px rgba(0, 0, 0, 0.18);
+  display: flex;
+  align-content: center;
+  align-items: center;
   cursor: default;
   transition: all 0.2s ease;
 }
 
-#false-door div p {
+.modal-content {
+  margin: auto;
+}
+
+#subscribe-modal div p {
   line-height: 1.7;
   font-size: 14px;
   max-width: 100%;
   width: 100%;
   padding-top: 0;
-  text-align: left;
 }
 
-#false-door div button {
+#subscribe-modal div h3 {
+  font-size: 1.3rem;
+}
+
+#subscribe-modal div button {
   width: 100%;
 }
 
-#false-door div p,
-#false-door div button {
-  margin: 1.5vh auto 1.5vh auto;
+#subscribe-modal form {
+  max-width: 100%;
 }
+
+#subscribe-modal span {
+  display: block;
+  line-height:4rem;
+}
+
+#subscribe-modal span::before,
+#subscribe-modal span::after {
+  content: "";
+  height: 1px;
+  background-color: rgba(0, 0, 0, .3);
+  width: 30px;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 15px 0 15px;
+}
+
+#subscribe-modal p {
+  margin: 10px auto 20px auto;
+  padding: 0 10px 0 10px;
+  box-sizing: border-box;
+}
+
+#subscribe-fxa-btn {
+  margin-bottom: 0px;
+  margin-top: 2rem;
+}
+
+#subscribe-email-input {
+  height: 40px;
+  margin-bottom: 15px;
+  font-size: 14px;
+
+}
+
+.subscribe-message-wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.subscribe-message {
+  border: 1px solid rgba(255, 255, 255, .21);
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, .07);
+  max-width:400px;
+  min-width: 300px;
+  padding: 7vh;
+  margin: auto;
+  text-align: center;
+  pointer-events: all;
+}
+
+.subscribe-message h5 {
+  margin: .5rem 0 1rem 0;
+
+}
+
+.page-wrap {
+  min-height: 100vh;
+  display: relative;
+}
+
+
 
 /* compromised accounts ********** */
 
@@ -938,6 +1019,10 @@ span.breach-info {
 }
 
 footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background-color: #fff;
   height: 10vh;
   max-height: 150px;

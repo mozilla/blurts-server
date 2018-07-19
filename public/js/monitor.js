@@ -81,6 +81,36 @@ function addInvalidMessage() {
   addClass(".input-group", "invalid");
 }
 
+const removeModalThings = function() {
+  removeClass("body", "show-subscribe-modal");
+  document.querySelector("#subscribe-fxa-btn").removeEventListener("click", doOauth);
+  document.getElementById("subscribe-modal").removeEventListener("click", subscribeModalClickListener);
+  document.querySelector("#subscribe-fxa-btn").removeEventListener("click", doOauth);
+  window.removeEventListener("keydown", subscribeModalKeyListener);
+}
+
+function handleSignUpModal() {
+  handleEvents("SignUp");
+  addClass("body","show-subscribe-modal");
+
+  const subscribeModal = document.getElementById("subscribe-modal");
+  window.addEventListener("keydown", function subscribeModalKeyListener(e) {
+    if (e.code !== "Enter" && e.code !== "Escape") {
+      return;
+    }
+    removeModalThings();
+  });
+  subscribeModal.addEventListener("click", function subscribeModalClickListener (e) {
+    if (e.target === subscribeModal || e.target === document.getElementById("close-subscribe-modal")) {
+      removeModalThings();
+    }
+  });
+  document.querySelector("#subscribe-fxa-btn").addEventListener("click", ()=>{
+    doOauth();
+    removeModalThings();
+  });
+}
+
 function enableBtnIfEmailValid(e) {
   removeInvalidMessage();
   const emailBtns = document.querySelectorAll(".submit-email");
@@ -108,7 +138,6 @@ function enableBtnIfInputEmpty(e) {
     }
   }
 }
-
 
 function showMessageIfDisabled() {
   const emailBtns = document.querySelectorAll(".submit-email");
@@ -148,19 +177,28 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
   addClass(".input-group-button", "loading-data");
 }
 
+function addFormListeners() {
+  document.querySelector(".input-group-field").addEventListener("keydown", enableBtnIfEmailValid);
+  document.querySelector(".input-group-button").addEventListener("click", showMessageIfDisabled);
+  document.querySelector(".input-group-field").addEventListener("focusout", enableBtnIfInputEmpty);
+  document.querySelector(".input-group-field").addEventListener("focusin", removeInvalidMessage);
+}
+
 if (document.querySelector(".email-scan")) {
   window.addEventListener("pageshow", function() {
     removeClass(".input-group-button", "loading-data");
   });
+  addFormListeners();
   document.querySelector(".email-scan").addEventListener("submit", hashEmailAndSend);
-  document.querySelector(".input-group-button").addEventListener("click", showMessageIfDisabled);
-  const emailToHash = document.querySelector(".email-to-hash");
-  emailToHash.addEventListener("keydown", enableBtnIfEmailValid);
-  emailToHash.addEventListener("focusout", enableBtnIfInputEmpty);
-  emailToHash.addEventListener("focusin", function() {
-    removeInvalidMessage();
-    enableBtnIfInputEmpty();
-  });
+  
+  // const emailToHash = document.querySelector(".email-to-hash");
+  // emailToHash.addEventListener("keydown", enableBtnIfEmailValid);
+  // document.querySelector(".input-group-field").addEventListener("keydown", enableBtnIfEmailValid);
+  // emailToHash.addEventListener("focusout", enableBtnIfInputEmpty);
+  // emailToHash.addEventListener("focusin", function() {
+  //   removeInvalidMessage();
+  //   enableBtnIfInputEmpty();
+  // });
 }
 
 window.addEventListener("pageshow", function() {
@@ -174,5 +212,9 @@ function doOauth() {
   window.open("/oauth/init");
 }
 
-document.querySelector("#subscribe-fxa-btn").addEventListener("click", doOauth);
-document.querySelector("#subscribe-email-input").addEventListener("input", enableBtnIfEmailValid);
+if (document.getElementById("sign-up")) {
+  document.getElementById("sign-up").addEventListener("click", handleSignUpModal);
+}
+
+
+// document.querySelector("#subscribe-email-input").addEventListener("input", enableBtnIfEmailValid);
