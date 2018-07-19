@@ -61,15 +61,18 @@ app.set("view engine", "hbs");
 app.set("views", __dirname + "/views");
 HBSHelpers.init(hbs);
 
+let cookie = {httpOnly: true};
+
+if (app.get("env") !== "dev") {
+  cookie = {...cookie, secureProxy: true};
+}
+
 app.use(sessions({
   cookieName: "session",
   secret: AppConstants.COOKIE_SECRET,
   duration: 15 * 60 * 1000, // 15 minutes
   activeDuration: 5 * 60 * 1000, // 5 minutes
-  cookie: {
-    httpOnly: true,
-    secureProxy: true,
-  },
+  cookie: cookie,
 }));
 
 app.use("/", DockerflowRoutes);
