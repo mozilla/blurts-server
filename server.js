@@ -62,10 +62,11 @@ app.set("view engine", "hbs");
 app.set("views", __dirname + "/views");
 HBSHelpers.init(hbs);
 
-let cookie = {httpOnly: true};
+const cookie = {httpOnly: true, secureProxy: true};
 
-if (app.get("env") !== "dev") {
-  cookie = {...cookie, secureProxy: true};
+// Disable secure cookies in dev environment
+if (app.get("env") === "dev") {
+  cookie.secureProxy = false;
 }
 
 app.use(sessions({

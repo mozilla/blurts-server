@@ -18,9 +18,9 @@ const HIBP = {
       headers: {
         "User-Agent": HIBP_USER_AGENT,
       },
-      json: true
+      json: true,
     };
-    const reqOptions = {...options, ...hibpOptions};
+    const reqOptions = Object.assign(options, hibpOptions);
     return await got(url, reqOptions);
   },
 
@@ -53,10 +53,11 @@ const HIBP = {
     const options = {
       method: "POST",
       body: {hashPrefix: sha1Prefix},
-    }
+    };
 
+    let response;
     try {
-      const response = await HIBP.req(path, options);
+      response = await HIBP.req(path, options);
     } catch (error) {
       console.error(error);
     }

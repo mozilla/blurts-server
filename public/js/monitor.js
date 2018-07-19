@@ -87,7 +87,7 @@ const removeModalThings = function() {
   document.getElementById("subscribe-modal").removeEventListener("click", subscribeModalClickListener);
   document.querySelector("#subscribe-fxa-btn").removeEventListener("click", doOauth);
   window.removeEventListener("keydown", subscribeModalKeyListener);
-}
+};
 
 function handleSignUpModal() {
   handleEvents("SignUp");

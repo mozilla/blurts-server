@@ -25,7 +25,7 @@ router.post("/notify", jsonParser, async (req, res) => {
     );
   } catch (e) {
     res.status(500).json(
-      {info: "Internal error.",}
+      {info: "Internal error."}
     );
   }
 });

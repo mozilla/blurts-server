@@ -40,7 +40,7 @@ const DBUtils = {
 
   async addUnverifiedEmailHash(email) {
     return await EmailHash.query().insert(
-      {email: email, verification_token: uuidv4(), verified: false}
+      {email: email, sha1: getSha1(email), verification_token: uuidv4(), verified: false}
     );
   },
 
@@ -48,7 +48,7 @@ const DBUtils = {
     const emailHash = await EmailHash.query()
       .where("verification_token", "=", token)
       .andWhere("email", "=", email);
-    return await this.verifySubscriber(emailHash);
+    return await this.verifySubscriber(emailHash[0]);
   },
 
   // Used internally, ideally should not be called by consumers.
