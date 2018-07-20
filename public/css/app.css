@@ -4,7 +4,7 @@ body {
   margin: 0 0 0 0;
   padding: 0 0 0 0;
   color: #fff;
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Fira Sans', helvetica, arial, sans-serif;
   font-weight: 300;
   box-sizing: border-box;
   font-size: 100%;
@@ -29,6 +29,7 @@ body {
   -webkit-font-smoothing: antialiased;
   font-size: 17px;
   position: relative;
+  overflow: scroll;
 }
 
 body,
@@ -108,7 +109,7 @@ input {
   font-weight: 400;
   line-height: 1.5;
   color: #0a0a0a;
-  transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+  transition: box-shadow 0.2s, border-color 0.2s ease-in-out;
   -webkit-appearance: none;
   -moz-appearance: none;
   padding: 0.5rem;
@@ -132,7 +133,7 @@ input {
   border-right-style: solid;
   border-right-color: transparent;
   border-radius: 3px;
-  transition: all 0.25s ease-out;
+  transition: all 0.2s ease-out;
   font-size: 0.9rem;
   line-height: 1;
   text-align: center;
@@ -140,6 +141,14 @@ input {
   background-color: #0060df;
   color: #fefefe;
   width: 100%;
+}
+
+img {
+  user-select: none;
+  -webkit-user-select: none;
+  display: inline-block;
+  vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
 }
 
 input::placeholder {
@@ -177,14 +186,6 @@ input:focus::placeholder {
 
 a img {
   border: 0;
-}
-
-img {
-  display: inline-block;
-  vertical-align: middle;
-  max-width: 100%;
-  height: auto;
-  -ms-interpolation-mode: bicubic;
 }
 
 /* end legacy foundation css */
@@ -445,8 +446,7 @@ form span {
 }
 
 .input-group-button {
-  color: white;
-  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  transition: background-color 0.2s ease-out, color 0.2s ease-out;
   border-radius: 0 3px 3px 0;
   position: relative;
   min-width: 100px;
@@ -454,7 +454,7 @@ form span {
   cursor: pointer;
 }
 
-.input-group-button .button {
+.form-group .button {
   margin: auto;
   position: absolute;
   bottom: 0;
@@ -465,7 +465,18 @@ form span {
   text-align: right;
 }
 
-.input-group-button .loader {
+.form-group img {
+  z-index: 1;
+  position: absolute;
+  left: 12px;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.form-group .loader {
   visibility: hidden;
   height: 0;
   width: 0;
@@ -474,12 +485,13 @@ form span {
   right: 0;
 }
 
-.input-group-button .loader,
-.input-group-button.loading-data .loader {
-  transition: all 0.25s ease-out;
+.form-group.loading-data .button,
+.form-group.loading-data input::placeholder,
+.form-group.loading-data input {
+  color: rgba(0, 0, 0, 0) !important;
 }
 
-.input-group-button.loading-data .loader {
+.form-group.loading-data .loader {
   display: block;
   opacity: 0.58;
   width: 25px;
@@ -487,35 +499,24 @@ form span {
   visibility: visible;
 }
 
-.input-group-button.loading-data .button {
-  color: rgba(255, 255, 255, 0);
+.form-group.loading-data .input-group-button,
+.form-group.loading-data .button {
+  color: rgba(255, 255, 255, 0) !important;
 }
 
-.input-group-button.loading-data img:first-of-type {
+.form-group.loading-data .search-icon {
   opacity: 0;
-  transition: opacity 0.25s ease-out;
 }
 
-.input-group-button img {
-  z-index: 1;
-  position: absolute;
-  left: 12px;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  opacity: 1;
-  transition: opacity 0.25s ease-out;
-  pointer-events: none;
-}
-
-.email-to-hash.hide-caret {
-  caret-color: rgba(0, 0, 0, 0) !important;
-  transition: all 0.2s ease-out;
-}
-
-/* .input-group-button:hover .button, */
 .button:hover {
   background-color: #0052be;
+}
+
+.form-group,
+.form-group.loading-data,
+.form-group input,
+.form-group.loading-data input {
+  transition: all 0.2s ease-out;
 }
 
 /* sign up for alerts button + message *************************** */
@@ -571,12 +572,12 @@ form span {
   border: 1px solid #002275;
   border-radius: 4px;
   background: rgba(0, 0, 0, 0);
-  transition: all 0.25s ease-out;
+  transition: all 0.2s ease-out;
 }
 
 .tip:hover {
   background: rgba(0, 0, 0, 0.03);
-  transition: all 0.25s ease-out;
+  transition: all 0.2s ease-out;
 }
 
 .tip p {
@@ -639,7 +640,6 @@ form span {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: all 0.25s ease-out;
   position: fixed;
   top: 0;
   left: 0;
@@ -651,6 +651,11 @@ form span {
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.38);
+  transition: all 0.25s ease-out;
+}
+
+body.show-subscribe-modal {
+  overflow: hidden;
 }
 
 body.show-subscribe-modal #subscribe-modal {
@@ -658,7 +663,7 @@ body.show-subscribe-modal #subscribe-modal {
   visibility: visible;
   pointer-events: all;
   cursor: pointer;
-  transition: all 0.25s ease-out;
+  transition: all 0.2s ease-out;
 }
 
 #subscribe-modal .modal-wrapper {
@@ -712,9 +717,9 @@ body.show-subscribe-modal #subscribe-modal {
 #subscribe-modal span::before,
 #subscribe-modal span::after {
   content: "";
-  height: 1px;
+  height: 2px;
   background-color: rgba(0, 0, 0, 0.3);
-  width: 30px;
+  width: 10px;
   display: inline-block;
   vertical-align: middle;
   margin: 0 15px 0 15px;
@@ -926,10 +931,10 @@ span.breach-info {
   background-color: #0060df !important;
 }
 
-.email-form.invalid #invalid-email-message {
+.form-group.invalid #invalid-email-message {
   visibility: visible;
   opacity: 1;
-  transition: all 0.25s ease-out;
+  transition: all 0.2s ease-out;
 }
 
 #invalid-email-message {
