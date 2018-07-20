@@ -71,70 +71,74 @@ function removeClass(selector, className) {
   }
 }
 
-function removeInvalidMessage() {
-  removeClass("#invalid-email-message", "show");
-  removeClass(".input-group","invalid");
+function doOauth() {
+  window.open("/oauth/init");
 }
 
-function addInvalidMessage() {
-  addClass("#invalid-email-message", "show");
-  addClass(".input-group", "invalid");
+function handleSignUpModal() {
+  handleEvents("SignUp");
+  addClass("body","show-subscribe-modal");
+  window.addEventListener("keydown", function subscribeModalKeyListener(e) {
+    if (e.code !== "Enter" && e.code !== "Escape") {
+      return;
+    }
+    removeClass("body", "show-subscribe-modal");
+    window.removeEventListener("keydown", subscribeModalKeyListener);
+  });
+}
+
+function addSubscriptionListeners() {
+  const subscribeModal = document.getElementById("subscribe-modal");
+  subscribeModal.addEventListener("click", function subscribeModalClickListener(e) {
+    if (e.target === subscribeModal || e.target === document.getElementById("close-subscribe-modal")) {
+      removeClass("body", "show-subscribe-modal");
+    }
+  });
+  document.querySelector("#subscribe-fxa-btn").addEventListener("click", function fxaSubmit() {
+    doOauth();
+    removeClass("body", "show-subscribe-modal");
+  });
 }
 
 function enableBtnIfEmailValid(e) {
-  removeInvalidMessage();
-  const emailBtn = document.getElementById("submit-email");
+  const thisForm = e.target.form;
+  const emailButton = thisForm.querySelector(".submit-email");
   if (isValidEmail(e.target.value)) {
-      emailBtn.disabled = false;
-      removeInvalidMessage();
+      emailButton.disabled = false;
+      thisForm.classList.remove("invalid");
   } else {
-      emailBtn.disabled = true;
+      emailButton.disabled = true;
       if(e.code === "Enter") {
-        addInvalidMessage();
+        thisForm.classList.add("invalid");
       }
   }
 }
 
 function enableBtnIfInputEmpty(e) {
-  const emailBtn = document.getElementById("submit-email");
-  if (!document.querySelector("input[name=email]").value) {
-      emailBtn.disabled = false;
-      removeInvalidMessage();
-  } else {
+  const thisForm = e.target.form;
+  if(thisForm.querySelector(".submit-email")) {
+    if (!e.target.value) {
+      thisForm.classList.remove("invalid");
+
+    } else {
       enableBtnIfEmailValid(e);
+    }
   }
-}
-
-function hideFalseDoor() {
-  addClass("#false-door", "hidden");
-  document.body.style.overflow = "scroll";
-}
-
-function showFalseDoor() {
-  handleEvents("SignUp");
-  removeClass("#false-door", "hidden");
-  document.body.style.overflow = "hidden";
-  const falseDoor = document.getElementById("false-door");
-  window.addEventListener("keydown", function falseDoorKeyListener(e) {
-    if (e.code !== "Enter" && e.code !== "Escape") {
-      return;
-    }
-    hideFalseDoor();
-    window.removeEventListener("keydown", falseDoorKeyListener);
-  });
-  falseDoor.addEventListener("click", function falseDoorClickListener (e) {
-    if (e.target === falseDoor || e.target === document.getElementById("close-false-door")) {
-      hideFalseDoor();
-      falseDoor.removeEventListener("click", falseDoorClickListener);
-    }
-  });
 }
 
 function showMessageIfDisabled() {
-  const emailBtn = document.getElementById("submit-email");
-  if (emailBtn.disabled) {
-    addInvalidMessage();
+  const emailBtns = document.querySelectorAll(".submit-email");
+  for (const emailBtn of emailBtns) {
+    if (emailBtn.disabled) {
+      addClass(".email-form", "invalid");
+    }
   }
+}
+
+function removeInvalidMessage(e) {
+  enableBtnIfEmailValid(e);
+  const thisForm = e.target.form;
+  thisForm.classList.remove("invalid");
 }
 
 async function sha1(message) {
@@ -151,7 +155,7 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
   const emailForm = emailFormSubmitEvent.target;
   if (!emailForm.querySelector("input[name=email]").value) {
     emailForm.querySelector("input[type=submit]").disabled = true;
-    addInvalidMessage();
+    addClass(".email-form", "invalid");
     return;
   }
   handleEvents("Scan");
@@ -166,19 +170,24 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
   addClass(".input-group-button", "loading-data");
 }
 
+function addFormListeners() {
+  removeClass(".input-group-button", "loading-data");
+  for (const input of document.querySelectorAll(".input-group-field")) {
+    if (input.disabled) {
+      input.disabled = false;
+    }
+    input.addEventListener("keydown", (e) => enableBtnIfEmailValid(e));
+    input.addEventListener("focusout", (e) => enableBtnIfInputEmpty(e));
+    input.addEventListener("focusin", (e) => removeInvalidMessage(e));
+  }
+  for (const buttonWrapper of document.querySelectorAll(".input-group-button")) {
+    buttonWrapper.addEventListener("click", showMessageIfDisabled);
+  }
+}
+
 if (document.querySelector(".email-scan")) {
-  window.addEventListener("pageshow", function() {
-    removeClass(".input-group-button", "loading-data");
-  });
+  addFormListeners();
   document.querySelector(".email-scan").addEventListener("submit", hashEmailAndSend);
-  document.querySelector(".input-group-button").addEventListener("click", showMessageIfDisabled);
-  const emailToHash = document.querySelector(".email-to-hash");
-  emailToHash.addEventListener("keydown", enableBtnIfEmailValid);
-  emailToHash.addEventListener("focusout", enableBtnIfInputEmpty);
-  emailToHash.addEventListener("focusin", function() {
-    removeInvalidMessage();
-    enableBtnIfInputEmpty();
-  });
 }
 
 window.addEventListener("pageshow", function() {
@@ -187,11 +196,11 @@ window.addEventListener("pageshow", function() {
   }
 });
 
-if (document.getElementById("sign-up")) {
-  document.getElementById("sign-up").addEventListener("click", showFalseDoor);
-  if (document.getElementById("false-door").getAttribute("data-name") === "checkboxChecked") {
-    document.getElementById("false-door").setAttribute("data-name", "");
-    showFalseDoor();
-  }
-}
+// eslint-disable-next-line no-unused-vars
 
+if (document.getElementById("sign-up")) {
+  document.getElementById("sign-up").addEventListener("click", handleSignUpModal);
+}
+if(document.getElementById("subscribe-modal")) {
+  addSubscriptionListeners();
+}

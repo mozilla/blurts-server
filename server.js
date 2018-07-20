@@ -7,14 +7,15 @@ const hbs = require("express-hbs");
 const helmet = require("helmet");
 const sessions = require("client-sessions");
 
-// const EmailUtils = require("./email-utils");
+const EmailUtils = require("./email-utils");
 const HBSHelpers = require("./hbs-helpers");
 
 const DockerflowRoutes = require("./routes/dockerflow");
+const HibpRoutes = require("./routes/hibp");
 const HomeRoutes = require("./routes/home");
 const ScanRoutes = require("./routes/scan");
-// const OAuthRoutes = require("./routes/oauth");
-// const UserRoutes = require("./routes/user");
+const OAuthRoutes = require("./routes/oauth");
+const UserRoutes = require("./routes/user");
 
 
 const app = express();
@@ -61,27 +62,32 @@ app.set("view engine", "hbs");
 app.set("views", __dirname + "/views");
 HBSHelpers.init(hbs);
 
+const cookie = {httpOnly: true, secureProxy: true};
+
+// Disable secure cookies in dev environment
+if (app.get("env") === "dev") {
+  cookie.secureProxy = false;
+}
+
 app.use(sessions({
   cookieName: "session",
   secret: AppConstants.COOKIE_SECRET,
   duration: 15 * 60 * 1000, // 15 minutes
   activeDuration: 5 * 60 * 1000, // 5 minutes
-  cookie: {
-    httpOnly: true,
-    secureProxy: true,
-  },
+  cookie: cookie,
 }));
 
 app.use("/", DockerflowRoutes);
+app.use("/hibp", HibpRoutes);
+app.use("/oauth", OAuthRoutes);
 app.use("/scan", ScanRoutes);
-// app.use("/oauth", OAuthRoutes);
-// app.use("/user", UserRoutes);
+app.use("/user", UserRoutes);
 app.use("/", HomeRoutes);
 
-// EmailUtils.init().then(() => {
+EmailUtils.init().then(() => {
   const listener = app.listen(AppConstants.PORT, () => {
     console.info(`Listening on ${listener.address().port}`);
   });
-/* }).catch(error => {
+}).catch(error => {
   console.error(error);
-}); */
+});

@@ -11,18 +11,26 @@ const HIBP_USER_AGENT = `${pkg.name}/${pkg.version}`;
 
 
 const HIBP = {
+  async req(path, options = {}) {
+    // Construct HIBP url and standard headers
+    const url = `${AppConstants.HIBP_KANON_API_ROOT}${path}?code=${encodeURIComponent(AppConstants.HIBP_KANON_API_TOKEN)}`;
+    const hibpOptions = {
+      headers: {
+        "User-Agent": HIBP_USER_AGENT,
+      },
+      json: true,
+    };
+    const reqOptions = Object.assign(options, hibpOptions);
+    return await got(url, reqOptions);
+  },
+
   async getBreachesForEmail(sha1) {
     let foundBreaches = [];
     const sha1Prefix = sha1.slice(0, 6).toUpperCase();
-    const url = `${AppConstants.HIBP_STAGE_API_ROOT}/breachedaccount/range/${sha1Prefix}?code=${encodeURIComponent(AppConstants.HIBP_STAGE_API_TOKEN)}`;
-    const headers = {
-      "User-Agent": HIBP_USER_AGENT,
-    };
-
-    console.info(`Fetching ${url}...`);
+    const path = `/breachedaccount/range/${sha1Prefix}`;
 
     try {
-      const response = await got(url, {headers, json: true});
+      const response = await HIBP.req(path);
       // Parse response body, format:
       // [
       //   {"hashSuffix":<suffix>,"websites":[<breach1Name>,...]},
@@ -37,6 +45,23 @@ const HIBP = {
       console.error(error);
     }
     return foundBreaches.filter(({meta}) => meta.IsVerified && !meta.IsRetired && !meta.IsSensitive && !meta.IsSpamList);
+  },
+
+  async subscribeHash(sha1) {
+    const sha1Prefix = sha1.slice(0, 6).toUpperCase();
+    const path = "/range/subscribe";
+    const options = {
+      method: "POST",
+      body: {hashPrefix: sha1Prefix},
+    };
+
+    let response;
+    try {
+      response = await HIBP.req(path, options);
+    } catch (error) {
+      console.error(error);
+    }
+    return response;
   },
 };
 
