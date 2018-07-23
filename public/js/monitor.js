@@ -181,6 +181,7 @@ function restoreInputs() {
     }
   }
   removeClass(".form-group", "loading-data");
+  removeClass(".form-group", "invalid");
 }
 
 //adds listeners to scan and subscription forms.

@@ -112,8 +112,6 @@ input {
 }
 
 .button {
-  display: inline-block;
-  vertical-align: middle;
   margin: 0 0 1rem 0;
   font-family: inherit;
   padding: 0.85em 1em;
@@ -438,7 +436,7 @@ form span {
 }
 
 .input-group-button {
-  transition: background-color 0.2s ease-out, color 0.2s ease-out;
+  transition: all 0.2s ease-out;
   border-radius: 0 3px 3px 0;
   position: relative;
   min-width: 100px;
@@ -489,11 +487,6 @@ form span {
   width: 25px;
   height: auto;
   visibility: visible;
-}
-
-.form-group.loading-data .input-group-button,
-.form-group.loading-data .button {
-  color: rgba(255, 255, 255, 0) !important;
 }
 
 .form-group.loading-data .search-icon {
@@ -872,10 +865,12 @@ span.breach-info {
 }
 
 #what-to-do form .input-group-button {
-  width: 50px;
   position: absolute;
+  top: 0;
   bottom: 0;
   right: 0;
+  width: 50px;
+  min-width: 50px;
 }
 
 #what-to-do .input-group {
@@ -887,15 +882,6 @@ span.breach-info {
 
 #what-to-do input[type=email] {
   box-shadow: none !important;
-}
-
-#what-to-do .input-group-button {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 50px;
-  min-width: 50px;
 }
 
 #what-to-do #invalid-email-message {
