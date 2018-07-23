@@ -114,9 +114,21 @@ function enableBtnIfEmailValid(e) {
   }
 }
 
+function findParent(element, tag) {
+  while (element.parentNode) {
+      element = element.parentNode;
+      if (element.tagName === tag)
+          return element;
+  }
+  return null;
+}
+
 function showMessageIfDisabled(e) {
-  const thisForm = e.target.parentElement.parentElement;
-  thisForm.classList.add("invalid");
+  const thisElement = e.target;
+  const thisForm = findParent(thisElement, "FORM");
+  if(thisForm) {
+    thisForm.classList.add("invalid");
+  }
 }
 
 function removeInvalidMessage(e) {

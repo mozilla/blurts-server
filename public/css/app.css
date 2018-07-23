@@ -37,14 +37,6 @@ p {
   text-rendering: optimizeLegibility;
 }
 
-/* legacy foundation css with minor mods */
-
-/* *,
-::after,
-::before {
-  box-sizing: inherit;
-} */
-
 h3 {
   font-size: 1.9375rem;
 }
@@ -651,7 +643,7 @@ form span {
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.38);
-  transition: all 0.25s ease-out;
+  transition: all 0.2s ease-out;
 }
 
 body.show-subscribe-modal {
