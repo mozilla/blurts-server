@@ -6,7 +6,7 @@
         <img alt="{{ name }}" src="img/logos/{{ name }}.{{ meta.LogoType }}" />
       </div>
       <div class="breach-info-wrap">
-        <h4 class="demi">{{ name }}</h4>
+        <h4 class="demi">{{ meta.Title }}</h4>
         <span class="breach-info"><span class="medium">Breach date:</span> {{prettyDate meta.BreachDate }}</span>
         <span class="breach-info"><span class="medium">Compromised data:</span> {{breachDataClasses meta.DataClasses }}</span>
         <span class="breach-info"><span class="medium">Compromised accounts:</span> {{localeString meta.PwnCount }}</span>
