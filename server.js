@@ -9,6 +9,7 @@ const sessions = require("client-sessions");
 
 const EmailUtils = require("./email-utils");
 const HBSHelpers = require("./hbs-helpers");
+const HIBP = require("./hibp");
 
 const DockerflowRoutes = require("./routes/dockerflow");
 const HibpRoutes = require("./routes/hibp");
@@ -32,6 +33,14 @@ if (app.get("env") !== "dev") {
     }
   });
 }
+
+(async () => {
+  try {
+    await HIBP.loadBreachesIntoApp(app);
+  } catch (error) {
+    console.error(error);
+  }
+})();
 
 // Use helmet to set security headers
 app.use(helmet());

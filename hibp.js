@@ -1,36 +1,68 @@
 "use strict";
 
 const got = require("got");
+const createDOMPurify = require("dompurify");
+const { JSDOM } = require("jsdom");
 
 const AppConstants = require("./app-constants");
 const DBUtils = require("./db/utils");
 const pkg = require("./package.json");
 
 
+const DOMPurify = createDOMPurify((new JSDOM("")).window);
 const HIBP_USER_AGENT = `${pkg.name}/${pkg.version}`;
 
 
 const HIBP = {
-  async req(path, options = {}) {
-    // Construct HIBP url and standard headers
-    const url = `${AppConstants.HIBP_KANON_API_ROOT}${path}?code=${encodeURIComponent(AppConstants.HIBP_KANON_API_TOKEN)}`;
+  _addStandardOptions (options = {}) {
     const hibpOptions = {
       headers: {
         "User-Agent": HIBP_USER_AGENT,
       },
       json: true,
     };
-    const reqOptions = Object.assign(options, hibpOptions);
+    return Object.assign(options, hibpOptions);
+  },
+
+  async req(path, options = {}) {
+    const url = `${AppConstants.HIBP_API_ROOT}${path}?code=${encodeURIComponent(AppConstants.HIBP_API_TOKEN)}`;
+    const reqOptions = this._addStandardOptions(options);
     return await got(url, reqOptions);
   },
 
-  async getBreachesForEmail(sha1) {
+  async kAnonReq(path, options = {}) {
+    // Construct HIBP url and standard headers
+    const url = `${AppConstants.HIBP_KANON_API_ROOT}${path}?code=${encodeURIComponent(AppConstants.HIBP_KANON_API_TOKEN)}`;
+    const reqOptions = this._addStandardOptions(options);
+    return await got(url, reqOptions);
+  },
+
+  async loadBreachesIntoApp(app) {
+    console.log("Loading breaches from HIBP into app.locals");
+    try {
+      const breachesResponse = await this.req("/breaches");
+      const breaches = [];
+
+      for (const breachIndex in breachesResponse.body) {
+        const breach = breachesResponse.body[breachIndex];
+        // purify the description
+        breach.Description = DOMPurify.sanitize(breach.Description, {ALLOWED_TAGS: []});
+        breaches.push(breach);
+      }
+      app.locals.breaches = breaches;
+    } catch (error) {
+      console.error(error);
+    }
+    console.log("Done loading breaches.");
+  },
+
+  async getBreachesForEmail(sha1, allBreaches) {
     let foundBreaches = [];
     const sha1Prefix = sha1.slice(0, 6).toUpperCase();
     const path = `/breachedaccount/range/${sha1Prefix}`;
 
     try {
-      const response = await HIBP.req(path);
+      const response = await this.kAnonReq(path);
       // Parse response body, format:
       // [
       //   {"hashSuffix":<suffix>,"websites":[<breach1Name>,...]},
@@ -57,7 +89,7 @@ const HIBP = {
 
     let response;
     try {
-      response = await HIBP.req(path, options);
+      response = await this.kAnonReq(path, options);
     } catch (error) {
       console.error(error);
     }
