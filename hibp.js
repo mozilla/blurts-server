@@ -70,6 +70,7 @@ const HIBP = {
       for (const breachedAccount of response.body) {
         if (sha1.toUpperCase() === sha1Prefix + breachedAccount.hashSuffix) {
           foundBreaches = allBreaches.filter(breach => breachedAccount.websites.includes(breach.Name));
+          break;
         }
       }
     } catch (error) {
