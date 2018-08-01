@@ -5,7 +5,6 @@ const createDOMPurify = require("dompurify");
 const { JSDOM } = require("jsdom");
 
 const AppConstants = require("./app-constants");
-const DBUtils = require("./db/utils");
 const pkg = require("./package.json");
 
 
@@ -70,13 +69,13 @@ const HIBP = {
       // ]
       for (const breachedAccount of response.body) {
         if (sha1.toUpperCase() === sha1Prefix + breachedAccount.hashSuffix) {
-          foundBreaches = await DBUtils.getBreachesByNames(breachedAccount.websites);
+          foundBreaches = allBreaches.filter(breach => breachedAccount.websites.includes(breach.Name));
         }
       }
     } catch (error) {
       console.error(error);
     }
-    return foundBreaches.filter(({meta}) => meta.IsVerified && !meta.IsRetired && !meta.IsSensitive && !meta.IsSpamList);
+    return foundBreaches.filter(breach => breach.IsVerified && !breach.IsRetired && !breach.IsSensitive && !breach.IsSpamList);
   },
 
   async subscribeHash(sha1) {

@@ -24,7 +24,7 @@ router.post("/", urlEncodedParser, async (req, res) => {
   if (req.body.signup) {
     signup = "checkboxChecked";
   }
-  const foundBreaches = await HIBP.getBreachesForEmail(emailHash);
+  const foundBreaches = await HIBP.getBreachesForEmail(emailHash, req.app.locals.breaches);
 
   res.render("scan", {
     title: "Firefox Breach Alerts: Scan Results",
