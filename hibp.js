@@ -42,8 +42,8 @@ const HIBP = {
       const breachesResponse = await this.req("/breaches");
       const breaches = [];
 
-      for (const breachIndex in breachesResponse.body) {
-        const breach = breachesResponse.body[breachIndex];
+      for (const breach of breachesResponse.body) {
+        // const breach = breachesResponse.body[breachIndex];
         // purify the description
         breach.Description = DOMPurify.sanitize(breach.Description, {ALLOWED_TAGS: []});
         breaches.push(breach);
