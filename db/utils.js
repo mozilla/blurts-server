@@ -9,7 +9,8 @@ const { Model } = require("objection");
 const Breach = require("./models/breach");
 const EmailHash = require("./models/emailhash");
 
-const HIBP = require("../hibp");
+// FIXME: TODO: resolve circular depenency b/w db/utils and hibp
+// const HIBP = require("../hibp");
 const getSha1 = require("../sha1-utils");
 
 const knex = Knex(knexConfig);
@@ -109,7 +110,8 @@ const DBUtils = {
   },
 
   async verifySubscriber(emailHash) {
-    await HIBP.subscribeHash(emailHash.sha1);
+    // FIXME: TODO: resolve circular depenency b/w db/utils and hibp
+    // await HIBP.subscribeHash(emailHash.sha1);
     return await emailHash.$query().patch({ verified: true }).returning("*");
   },
 

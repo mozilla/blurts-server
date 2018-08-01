@@ -2,10 +2,10 @@
   <div class="account">
     <div id="breach-title-wrapper">
       <div class="image-wrap">
-        <img alt="{{ breach.name }}" src="img/logos/{{ breach.name }}.{{ breach.meta.LogoType }}">
+        <img alt="{{ breach.meta.Title }}" src="img/logos/{{ breach.name }}.{{ breach.meta.LogoType }}">
       </div>
       <div id="breach-title-date">
-        <h3>{{ breach.name }} Breach</h3>
+        <h3>{{ breach.meta.Title }} Breach</h3>
         <span class="breach-info"><span class="medium">Breach Date</span> {{prettyDate breach.meta.BreachDate }}</span>
       </div>
     </div>
