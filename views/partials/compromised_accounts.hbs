@@ -3,13 +3,13 @@
   {{#each foundBreaches }}
     <div class="account">
       <div class="image-wrap">
-        <img alt="{{ name }}" src="img/logos/{{ name }}.{{ meta.LogoType }}" />
+        <img alt="{{ Name }}" src="img/logos/{{ Name }}.{{ LogoType }}" />
       </div>
       <div class="breach-info-wrap">
-        <h4 class="demi">{{ meta.Title }}</h4>
-        <span class="breach-info"><span class="medium">Breach date:</span> {{prettyDate meta.BreachDate }}</span>
-        <span class="breach-info"><span class="medium">Compromised data:</span> {{breachDataClasses meta.DataClasses }}</span>
-        <span class="breach-info"><span class="medium">Compromised accounts:</span> {{localeString meta.PwnCount }}</span>
+        <h4 class="demi">{{ Title }}</h4>
+        <span class="breach-info"><span class="medium">Breach date:</span> {{prettyDate BreachDate }}</span>
+        <span class="breach-info"><span class="medium">Compromised data:</span> {{breachDataClasses DataClasses }}</span>
+        <span class="breach-info"><span class="medium">Compromised accounts:</span> {{localeString PwnCount }}</span>
       </div>
     </div>
   {{/each}}
