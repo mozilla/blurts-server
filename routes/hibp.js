@@ -16,7 +16,7 @@ router.post("/notify", jsonParser, async (req, res) => {
     const subscribers = await DB.getSubscribersByHashes(hashes);
     console.log("subscribers: ", subscribers);
 
-    const reqBreachName = req.body.breachName;
+    const reqBreachName = req.body.breachName.toLowerCase();
     const breach = req.app.locals.breaches.filter(breach => breach.Name.toLowerCase() === reqBreachName)[0];
     console.log("breach: ", breach);
 
