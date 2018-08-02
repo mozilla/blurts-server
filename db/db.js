@@ -46,7 +46,7 @@ const DB = {
       // Entry existed, patch the email value if supplied.
       if (email) {
         const res = await knex("subscribers")
-          .update({email: email, verified: verified})
+          .update({ email, verified })
           .where("id", "=", aEntry.id)
           .returning("*");
         return res[0];
@@ -55,7 +55,7 @@ const DB = {
       return aEntry;
     }, async () => {
       const res = await knex("subscribers")
-        .insert({ sha1: sha1, email: email, verified: verified })
+        .insert({ sha1, email, verified })
         .returning("*");
       return res[0];
     });
