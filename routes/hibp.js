@@ -6,17 +6,18 @@ const bodyParser = require("body-parser");
 const router = express.Router();
 const jsonParser = bodyParser.json();
 
-const DBUtils = require("../db/utils");
+const DB = require("../db/db");
 
 router.post("/notify", jsonParser, async (req, res) => {
   try {
     const hashes = req.body.hashSuffixes.map(suffix=>req.body.hashPrefix + suffix);
     console.log("hashes: ", hashes);
 
-    const subscribers = await DBUtils.getSubscribersByHashes(hashes);
+    const subscribers = await DB.getSubscribersByHashes(hashes);
     console.log("subscribers: ", subscribers);
 
-    const breach = DBUtils.getBreachByName(req.body.breachName);
+    const reqBreachName = req.body.breachName;
+    const breach = req.app.locals.breaches.filter(breach => breach.Name.toLowerCase() === reqBreachName)[0];
     console.log("breach: ", breach);
 
     // TODO: Send notification(s), either by SMTP or by Basket

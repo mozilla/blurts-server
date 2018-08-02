@@ -5,7 +5,7 @@ const AppConstants = require("../app-constants");
 const express = require("express");
 const bodyParser = require("body-parser");
 
-const DBUtils = require("../db/utils");
+const DB = require("../db/db");
 const EmailUtils = require("../email-utils");
 
 const ResponseCodes = Object.freeze({
@@ -22,9 +22,9 @@ const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 
 router.post("/add", urlEncodedParser, async (req, res) => {
   const email = req.body.email;
-  const unverifiedEmailHash = await DBUtils.addUnverifiedEmailHash(email);
+  const verificationToken = await DB.addSubscriberUnverifiedEmailHash(email);
 
-  const url = `${AppConstants.SERVER_URL}/user/verify?token=${encodeURIComponent(unverifiedEmailHash.verification_token)}&email=${encodeURIComponent(email)}`;
+  const url = `${AppConstants.SERVER_URL}/user/verify?token=${encodeURIComponent(verificationToken)}&email=${encodeURIComponent(email)}`;
 
   try {
     await EmailUtils.sendEmail(
@@ -48,7 +48,7 @@ router.post("/add", urlEncodedParser, async (req, res) => {
 });
 
 router.get("/verify", jsonParser, async (req, res) => {
-  const verifiedEmailHash = await DBUtils.verifyEmailHash(req.query.token, req.query.email);
+  const verifiedEmailHash = await DB.verifyEmailHash(req.query.token, req.query.email);
   if (!verifiedEmailHash) {
     res.status(400).json({
       error_code: ResponseCodes.EmailNotFound,
@@ -64,7 +64,7 @@ router.get("/verify", jsonParser, async (req, res) => {
 });
 
 router.post("/remove", jsonParser, async (req, res) => {
-  await DBUtils.removeSubscriber(req.body.email);
+  await DB.removeSubscriber(req.body.email);
   res.status(200).json({
     info: "Deleted user.",
   });

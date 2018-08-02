@@ -2,14 +2,13 @@
 
 const express = require("express");
 
-const DBUtils = require("../db/utils");
-
 const router = express.Router();
 
 router.get("/", async (req, res) => {
   let breach = null;
   if (req.query.breach) {
-    breach = await DBUtils.getBreachByName(req.query.breach);
+    const reqBreachName = req.query.breach.toLowerCase();
+    breach = req.app.locals.breaches.filter(breach => breach.Name.toLowerCase() === reqBreachName)[0];
   }
   res.render("monitor", {
     title: "Firefox Monitor",

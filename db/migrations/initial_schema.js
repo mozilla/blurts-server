@@ -2,7 +2,7 @@
 
 exports.up = knex => {
   return knex.schema
-    .createTable("email_hashes", table => {
+    .createTable("subscribers", table => {
       table.increments("id").primary();
       table.string("sha1");
       table.string("email");
@@ -13,5 +13,5 @@ exports.up = knex => {
 
 exports.down = knex => {
   return knex.schema
-    .dropTableIfExists("email_hashes");
+    .dropTableIfExists("subscribers");
 };

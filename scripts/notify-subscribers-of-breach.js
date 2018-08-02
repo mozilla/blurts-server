@@ -5,7 +5,7 @@ if (!breachName) {
   throw("Usage: node notify-subscribers-of-breach.js \"breach-name\"");
 }
 
-const DBUtils = require("../db/utils");
+const DBUtils = require("../db/db");
 const EmailUtils = require("../email-utils");
 
 

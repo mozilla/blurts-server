@@ -24,7 +24,6 @@
     "knex": "^0.14.6",
     "nodemailer": "^4.6.4",
     "nodemailer-express-handlebars": "^3.0.0",
-    "objection": "^1.1.9",
     "pg": "^7.4.3",
     "uuid": "^3.2.1"
   },
