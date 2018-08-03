@@ -1,20 +1,15 @@
-# Breach Alerts
+# Firefox Monitor Server
 
 ## Summary
 
-Firefox Breach Alerts notifies users when their credentials have possibly been leaked or stolen in a data breach. Powered by [haveibeenpwned.com](https://haveibeenpwned.com/).
+Firefox Monitor notifies users when their credentials have been compromised in a data breach.
 
-Communicates with the [blurts-addon](https://github.com/mozilla/blurts-addon) client-side add-on for Firefox Monitor.
+This code is for the monitor.firefox.com service & website.
 
-## Context
+Breach data is powered by [haveibeenpwned.com](https://haveibeenpwned.com/).
 
 See the [Have I Been Pwned about page](https://haveibeenpwned.com/About) for
 the "what" and "why" of data breach alerts.
-
-This project explores how Firefox - as the user agent - can support this. 
-
-See [the Breach Alert Product Brief](https://docs.google.com/document/d/1GTS0HIihfTErA7P19HPYfvHCA3v9g67B_Cf2bpmE0Bw/edit)
-for more background, objectives, key use cases.
 
 ## Development
 
@@ -54,19 +49,28 @@ for more background, objectives, key use cases.
 
 2. Navigate to [localhost:6060/](http://localhost:6060/)
 
-#### Test Data
+#### Database
 
-To create the test database tables, run the `knex` migrations:
+To create the database tables ...
 
-* `./node_modules/.bin/knex --knexfile db/knexfile.js migrate:latest`
+1. Create the `blurts` database:
 
-To populate the database with test data, use these scripts in `scripts/`:
+   ```sh
+   createdb blurts
+   ```
 
-* `node scripts/load-breaches.js` loads breaches from HIBP into the database
-* `node scripts/add-breached-emails.js` adds some breached email records for
-  `test[1-3]@test.com` users
+2. Update the `DATABASE_URL` value in your `.env` file with your local db
+   credentials:
 
-* `node scripts/add-breached-emails.js --help` for usage help.
+   ```
+   DATABASE_URL="postgres://<username>@localhost:<port>/blurts"
+   ```
+
+3. Run the migrations:
+
+   ```
+   npm run db:migrate
+   ```
 
 #### Emails
 
@@ -87,10 +91,13 @@ export SMTP_PASSWORD=<your-password>
 
 #### Firefox Accounts
 
-To use Firefox Accounts, you'll need to [create an FxA Oauth Client](https://oauth-stable.dev.lcip.org/console/clients)
-and then set some `OAUTH` config values.
+The repo comes with a development FxA oauth app pre-configured in `.env`, which
+should work fine running the app on http://localhost:6060
 
-You can set and source these via the `.env` file, or set them directly:
+To use a different Firefox Accounts oauth relying party,
+you'll need to [create an FxA Oauth Client](https://oauth-stable.dev.lcip.org/console/clients) and then set some `OAUTH` config values.
+
+You can set and source these via the `.env` file:
 
 ```sh
 OAUTH_CLIENT_ID=<your-fxa-oauth-client-id>
@@ -99,25 +106,6 @@ OAUTH_AUTHORIZATION_URI="https://oauth-stable.dev.lcip.org/v1/authorization"
 OAUTH_PROFILE_URI="https://stable.dev.lcip.org/profile/v1/profile"
 OAUTH_TOKEN_URI="https://oauth-stable.dev.lcip.org/v1/token"
 ```
-
-#### Breach Hashsets
-
-This requires an enterprise subscriber API token from HIBP, which you will have
-to get manually. Please ask a project admin if you need one. To download HIBP 
-breach hashsets, set a `HIBP_API_TOKEN` environment variable. You can set and 
-source it via the `.env` file, or set it directly:
-
-```sh
-export HIBP_API_TOKEN="<HIBP-API-TOKEN>"
-```
-
-With the `HIBP_API_TOKEN` set, run the `get-hashsets.js` script:
-
-```sh
-npm run scripts/get-hashsets.js
-```
-
-This will download the `.zip` files into `breach_hashsets/` directory.
 
 ## Testing
 
@@ -135,9 +123,12 @@ Firefox Monitor Breach Alerts is designed with [12-factor](https://12factor.net/
 
 ### Deploy on Heroku
 
-You will need to set required environment variables on Heroku.
+You will need to set some required environment variables on Heroku.
 
 ```sh
 heroku config:set COOKIE_SECRET=unsafe-cookie-secret-for-heroku
 heroku config:set DEBUG_DUMMY_SMTP=1
 ```
+
+And any others, depending on the features you're running on Heroku - e.g.,
+Email or Firefox Accounts.
