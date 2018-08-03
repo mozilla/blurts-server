@@ -8,7 +8,7 @@ const express = require("express");
 const got = require("got");
 const bodyParser = require("body-parser");
 
-const DB = require("../db/db");
+const DB = require("../db/DB");
 
 // This object exists instead of inlining the env vars to make it easy
 // to abstract fetching API endpoints from the OAuth server (instead

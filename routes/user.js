@@ -5,7 +5,7 @@ const AppConstants = require("../app-constants");
 const express = require("express");
 const bodyParser = require("body-parser");
 
-const DB = require("../db/db");
+const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 
 const ResponseCodes = Object.freeze({

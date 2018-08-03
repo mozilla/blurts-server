@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const router = express.Router();
 const jsonParser = bodyParser.json();
 
-const DB = require("../db/db");
+const DB = require("../db/DB");
 
 router.post("/notify", jsonParser, async (req, res) => {
   try {
