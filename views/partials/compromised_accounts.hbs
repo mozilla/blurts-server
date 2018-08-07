@@ -1,4 +1,10 @@
-<h3>Your Compromised Accounts</h3>
+<!--if user scanned email from a 'featured Breach' page-->
+{{#if featuredBreach}}
+  {{> featured_compromised_account}}
+{{else}}
+  <h3>Your Compromised Accounts</h3>
+{{/if}}
+
 <!--list first 5 breaches-->
 {{#each_from_to foundBreaches 0 5 }}
   {{> breach_listing }}

@@ -5,6 +5,9 @@
   <div class="input-group">
     <input class="input-group-field email-to-hash" type="email" name="email" placeholder="Enter Email Address" aria-label="Enter Email Address" tabindex="0" autocomplete="off" />
     <input type="hidden" name="emailHash" />
+    {{#if breach}}
+      <input type="hidden" name="featuredBreach" value="{{ breach.Name }}"/>
+    {{/if}}
     <div class="input-group-button">
       <img class="search-icon" src="img/Search.svg" alt="search icon" />
       <img class="loader" src="img/loader.gif" alt="loading data" />
