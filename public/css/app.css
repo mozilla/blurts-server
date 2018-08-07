@@ -15,6 +15,8 @@ body {
   --gap: 20px;
   --darker: rgba(0, 33, 117, 0.25);
   --lighter: rgba(255, 255, 255, 0.15);
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -87,11 +89,11 @@ a {
   color: #0060df;
   text-decoration: none;
   cursor: pointer;
-  transition: all cubic-bezier(0.07, 0.95, 0, 1);
+  transition: all .15s cubic-bezier(0.07, 0.95, 0, 1);
 }
 
 a:hover {
-  transition: all cubic-bezier(0.07, 0.95, 0, 1);
+  transition: all .15s cubic-bezier(0.07, 0.95, 0, 1);
 }
 
 img {
@@ -182,7 +184,7 @@ input {
   font-weight: 400;
   line-height: 1.5;
   color: #0a0a0a;
-  transition: box-shadow 0.2s, border-color 0.2s ease-in-out;
+  transition: all 0.15s ease-out;
   -webkit-appearance: none;
   -moz-appearance: none;
   padding: 0.5rem;
@@ -292,7 +294,7 @@ form span {
 }
 
 .input-group-button {
-  transition: all 0.2s ease-out;
+  transition: all 0.15s ease-out;
   border-radius: 0 3px 3px 0;
   position: relative;
   min-width: 100px;
@@ -365,7 +367,7 @@ form span {
 .form-group.loading-data,
 .form-group input,
 .form-group.loading-data input {
-  transition: all 0.2s ease-out;
+  transition: all 0.15s ease-out;
 }
 
 
@@ -565,12 +567,12 @@ main span.breach-info {
   border: 1px solid rgba(0, 34, 117, 0);
   border-radius: 4px;
   background-color: rgba(255, 255, 255, .05);
-  transition: background-color 0.2s ease-out;
+  transition: background-color 0.15s ease-out;
 }
 
 .tip:hover {
   background-color: rgba(0, 0, 0, 0.03);
-  transition: background-color 0.2s ease-out;
+  transition: background-color 0.15s ease-out;
 }
 
 .tip p {
@@ -643,7 +645,7 @@ main span.breach-info {
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.38);
-  transition: all 0.2s ease-out;
+  transition: all 0.15s ease-out;
 }
 
 body.show-subscribe-modal {
@@ -655,7 +657,7 @@ body.show-subscribe-modal #subscribe-modal {
   visibility: visible;
   pointer-events: all;
   cursor: pointer;
-  transition: all 0.2s ease-out;
+  transition: all 0.15s ease-out;
 }
 
 #subscribe-modal .modal-wrapper {
@@ -673,7 +675,7 @@ body.show-subscribe-modal #subscribe-modal {
   align-content: center;
   align-items: center;
   cursor: default;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
 }
 
 #modal-content {
@@ -758,21 +760,18 @@ body.show-subscribe-modal #subscribe-modal {
   align-items: flex-start;
 }
 
-.compromised-accounts .two-thirds .account{
-  margin-right: calc(var(--gap)*2) !important;
-}
-
 #show-additional-breaches {
-  background-color: var(--darker);
+  background-color: #45a1ff;
   margin-top: calc(var(--gap)*3);
   margin-bottom: calc(var(--gap)*3);
-  transition: all 0.3s ease;
+  max-width:500px;
+  transition: all 0.2s ease;
 }
 
 #show-additional-breaches.hide {
   visibility: hidden;
   height: 0;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 #additional-breaches {
@@ -783,14 +782,14 @@ body.show-subscribe-modal #subscribe-modal {
 #additional-breaches,
 #additional-breaches .account {
   opacity: 0;
-  transition: all 0.35s ease;
+  transition: all 0.25s ease;
 }
 
 #additional-breaches.show-breaches,
 #additional-breaches.show-breaches .account {
   opacity: 1;
   visibility: visible;
-  transition: all 0.35s ease;
+  transition: all 0.25s ease;
 }
 
 .account {
@@ -813,6 +812,16 @@ span.breach-info {
   display: block;
 }
 
+#featured-compromised-account h3,
+h3#other-accounts-found {
+  margin-bottom: calc(var(--gap)/2);
+  /* margin-top: calc(var(--gap)*3); */
+}
+
+#featured-compromised-account .account{
+  border-bottom: 0px;
+}
+
 #what-to-do {
   list-style: none;
   background-color: var(--darker);
@@ -824,7 +833,6 @@ span.breach-info {
 #what-to-do li:first-of-type {
   display: block;
   font-size: 32px;
-  line-height: 1.05;
 }
 
 #what-to-do li {
@@ -835,7 +843,7 @@ span.breach-info {
 #what-to-do .form-group img {
   right: 0;
   left: 0;
-  transition: all 0.15s ease-out;
+  transition: all 0.1s ease-out;
 }
 
 #what-to-do form .input-group-button {
@@ -854,7 +862,7 @@ span.breach-info {
   display: block !important;
   margin-bottom: 5px;
   color: rgb(255, 255, 255);
-  transition: all 0.15s ease-out;
+  transition: all 0.1s ease-out;
 }
 
 #what-to-do .input-group-button {
@@ -877,13 +885,13 @@ span.breach-info {
 
 #what-to-do .form-group.invalid img{
   opacity: .3;
-  transition: all 0.15s ease-out;
+  transition: all 0.1s ease-out;
 }
 
 .form-group.invalid #invalid-email-message {
   visibility: visible;
   opacity: 1;
-  transition: all 0.15s ease-out;
+  transition: all 0.1s ease-out;
 }
 
 #invalid-email-message {
@@ -943,7 +951,7 @@ footer a:hover {
 }
 
 footer a, footer a:hover {
-  transition: all 0.2s ease-out;
+  transition: all 0.15s ease-out;
 }
 
 footer .two-thirds, 
@@ -1043,6 +1051,7 @@ footer .two-thirds > * {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+    align-items: center;
     border-bottom: 1px solid rgba(255, 255, 255, .07);
     padding-bottom: calc(var(--gap)*1.5);
     padding-top: calc(var(--gap)*1.5);
