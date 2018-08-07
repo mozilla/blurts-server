@@ -16,38 +16,33 @@
     <link rel="icon" href="/img/favicons/favicon-228.png" sizes="228x228" />
   </head>
   <body>
-    <div class="page-wrap">
-      <header class ="top-bar">
-        <div class="section-wrapper">
-          <div class="top-bar-left">
-            <a href="/">
-              <h1><img alt="Firefox Logo" class="logo" src="/img/firefox.png" /><span class="medium">Firefox</span> Monitor</h1>
-            </a>
-          </div>
-
-          {{#if breach}}
-            <div class="top-bar-right">
-              {{> sign_up }}
-            </div>
-          {{/if}}
-        </div>
-      </header>
-
+    <header class ="section-wrapper">
+      <div class="whole">
+        <a href="/">
+          <img alt="Firefox Logo" class="logo" src="/img/firefox.png" />
+          <h1><span class="medium">Firefox</span> Monitor</h1>
+        </a>
+      {{#if breach}}
+          {{> sign_up }}
+      {{/if}}
+      </div>
+    </header>
       {{{ body }}}
-    </div>
-      <footer>
+  
+    <footer id="footer">
       <div class="section-wrapper">
-        <div class="footer-left">
+        <div class="two-thirds">
           <a class="footer-logo-wrapper" href="https://www.mozilla.org"><img src="/img/moz-logo-bw-rgb.svg" alt="Mozilla Logo" /></a>
+          <div class="footer-links">
             <a href="https://www.mozilla.org/about/legal/">Terms</a>
             <a href="https://www.mozilla.org/privacy/websites/">Privacy</a>
             <a id="GitHub-logo" href="https://github.com/mozilla/blurts-server/"><img src="/img/github.svg" alt="Github Logo" /></a>
+          </div>
         </div>
-        <div class="footer-right">
+        <div class="third">
           <p>Portions of this content are &copy; 1998-2018 by individual mozilla.org contributors. Content available under a <a href="https://www.mozilla.org/foundation/licensing/website-content/">Creative Commons license</a>.</p>
         </div>
       </div>
-      </footer>
+    </footer>
   </body>
 </html>
-

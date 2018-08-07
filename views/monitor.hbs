@@ -1,27 +1,27 @@
 {{!< default }}
-  <main id="banner-info" class="section-container">
-    <div id="banner-sections-wrapper">
-      <div id="banner-left">
-        <div class="banner-content">
-          {{#if breach }}
-            {{> banner_breach }}
-          {{ else }}
-            {{> protect_yourself }}
-          {{/if}}
+<main>
+  <div class="section-wrapper">
+    <div class="half">
+      <div class="banner-content">
+        {{#if breach }}
+          {{> banner_breach }}
+        {{ else }}
+          {{> protect_yourself }}
+        {{/if}}
         </div>
-      </div><!--closes banner-left-->
-
-      <div id="banner-right">
-        <img id="arrow-divider" src="img/arrow_divider.png" alt="" />
-        <div class="banner-content">
-          {{#if breach}}
-            {{> protect_yourself }}
-          {{ else }}  
-            {{> sign_up }}
-          {{/if}}
-        </div>
-      </div><!--close banner-right -->
     </div>
-  </main>
 
-  {{> tips }}
+    <div class="half">
+      <img id="arrow-divider" src="img/arrow_divider.png" alt="" />
+      <div class="banner-content">
+        {{#if breach}}
+          {{> protect_yourself }}
+        {{ else }}  
+          {{> sign_up }}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</main>
+
+{{> tips }}

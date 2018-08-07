@@ -1,18 +1,8 @@
-<div id="compromised-accounts">
-  <h3>Your Compromised Accounts</h3>
-  {{#each foundBreaches }}
-    <div class="account">
-      <div class="image-wrap">
-        <img alt="{{ Name }}" src="img/logos/{{ Name }}.{{ LogoType }}" />
-      </div>
-      <div class="breach-info-wrap">
-        <h4 class="demi">{{ Title }}</h4>
-        <span class="breach-info"><span class="medium">Breach date:</span> {{prettyDate BreachDate }}</span>
-        <span class="breach-info"><span class="medium">Compromised data:</span> {{breachDataClasses DataClasses }}</span>
-        <span class="breach-info"><span class="medium">Compromised accounts:</span> {{localeString PwnCount }}</span>
-      </div>
-    </div>
-  {{/each}}
+<h3>Your Compromised Accounts</h3>
 
-  {{> hipb_attribution }}
-</div>
+<!--list first 5 breaches-->
+{{#each foundBreaches}}
+  {{> breach_listing }}
+{{/each}}
+
+{{>hibp_attribution}}
