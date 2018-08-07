@@ -21,6 +21,11 @@ router.post("/", urlEncodedParser, async (req, res) => {
   }
 
   let foundBreaches = await HIBP.getBreachesForEmail(emailHash, req.app.locals.breaches);
+  foundBreaches.sort( (a,b) => {
+    const oldestBreach = new Date(a.BreachDate);
+    const newestBreach = new Date(b.BreachDate);
+    return newestBreach-oldestBreach;
+  });
 
   if (req.body.featuredBreach) {
     let featuredBreach = req.body.featuredBreach;
