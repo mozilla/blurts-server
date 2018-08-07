@@ -102,7 +102,7 @@ function addSubscriptionListeners() {
 
 function enableBtnIfEmailValid(e) {
   const thisForm = e.target.form;
-  const emailButton = thisForm.querySelector("#scan-email");
+  const emailButton = thisForm.querySelector(".button");
   if (isValidEmail(e.target.value)) {
       emailButton.disabled = false;
       thisForm.classList.remove("invalid");
