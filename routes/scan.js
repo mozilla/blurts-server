@@ -1,4 +1,5 @@
 "use strict";
+/*eslint-disable prefer-const*/
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -44,7 +45,7 @@ router.post("/", urlEncodedParser, async (req, res) => {
   else {
     res.render("scan", {
       title: "Firefox Breach Alerts: Scan Results",
-      foundBreaches
+      foundBreaches,
     });
   }
 

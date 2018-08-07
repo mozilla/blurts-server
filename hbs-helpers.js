@@ -16,19 +16,19 @@ const HBSHelpers = {
       return input.toLocaleString();
     });
 
-    hbs.registerHelper('each_from_to', function(ary, min, max, options) {
-      if(!ary || ary.length == 0)
+    hbs.registerHelper("each_from_to", function(ary, min, max, options) {
+      if(!ary || ary.length === 0)
           return options.inverse(this);
-    
-      let result = [];
+
+      const result = [];
       
       for (let i = min; i < max && i < ary.length; i++) {
         result.push(options.fn(ary[i], { data : { itemIndex : i } } ));
       }
-      return result.join('');
+      return result.join("");
     });
 
-    hbs.registerHelper('if_conditional', function(conditional, value, options) {
+    hbs.registerHelper("if_conditional", function(conditional, value, options) {
       if (conditional.length > value) {
         return options.fn(this);
       } else {

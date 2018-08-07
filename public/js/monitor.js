@@ -181,7 +181,7 @@ function doButtonRouting(event) {
     addClass("#additional-breaches", "show-breaches");
     const additionalBreaches = document.getElementById("additional-breaches");
     if (additionalBreaches.classList.contains("show-breaches")) {
-      additionalBreaches.style.height = additionalBreaches.scrollHeight + 'px';
+      additionalBreaches.style.height = additionalBreaches.scrollHeight + "px";
     }
   }
   if (event.target.id === "sign-up") {
@@ -219,8 +219,8 @@ window.addEventListener("pageshow", function() {
 });
 
 if (document.querySelectorAll("button")) {
-  let buttons = [].slice.call(document.querySelectorAll("button"));
+  const buttons = [].slice.call(document.querySelectorAll("button"));
   buttons.forEach(button => {
-    button.addEventListener("click", (e) => doButtonRouting(e))
+    button.addEventListener("click", (e) => doButtonRouting(e));
   });
-};
+}

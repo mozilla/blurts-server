@@ -12,9 +12,11 @@ body {
   box-sizing: border-box;
   font-size: 100%;
   line-height: 1.5;
+
   --gap: 20px;
   --darker: rgba(0, 33, 117, 0.25);
   --lighter: rgba(255, 255, 255, 0.15);
+
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
 }
@@ -89,11 +91,11 @@ a {
   color: #0060df;
   text-decoration: none;
   cursor: pointer;
-  transition: all .15s cubic-bezier(0.07, 0.95, 0, 1);
+  transition: all 0.15s cubic-bezier(0.07, 0.95, 0, 1);
 }
 
 a:hover {
-  transition: all .15s cubic-bezier(0.07, 0.95, 0, 1);
+  transition: all 0.15s cubic-bezier(0.07, 0.95, 0, 1);
 }
 
 img {
@@ -104,16 +106,15 @@ img {
   -ms-interpolation-mode: bicubic;
 }
 
-
 /* // structure  */
 
 .section-wrapper {
   display: flex;
   flex-wrap: wrap;
-  padding: calc(var(--gap)*2) calc(var(--gap)*1.5);
+  padding: calc(var(--gap) * 2) calc(var(--gap) * 1.5);
   justify-content: space-between;
   max-width: 1400px;
-  min-width:300px;
+  min-width: 300px;
   margin: auto;
   overflow: hidden;
 }
@@ -145,7 +146,7 @@ img {
 .third,
 .two-thirds,
 .half {
-  margin: calc(var(--gap)/2);
+  margin: calc(var(--gap) / 2);
 }
 
 .whole,
@@ -192,7 +193,7 @@ input {
   border-bottom-left-radius: 3px;
   overflow: visible;
   height: 55px;
-  text-indent: .65rem;
+  text-indent: 0.65rem;
 }
 
 button,
@@ -210,7 +211,7 @@ button,
   color: #fefefe;
   width: 100%;
   height: 55px;
-  text-indent: 0px;
+  text-indent: 0;
 }
 
 .button[disabled] {
@@ -281,16 +282,15 @@ h5 {
 
 /* form stuff  */
 
-
 form input:focus {
   outline: none;
 }
 
 form span {
   display: block;
-  font-size: calc(11px + .15vw);
-  margin-top: calc(5px + .35vw);
-  margin-bottom: calc(5px + .15vw);
+  font-size: calc(11px + 0.15vw);
+  margin-top: calc(5px + 0.35vw);
+  margin-bottom: calc(5px + 0.15vw);
 }
 
 .input-group-button {
@@ -318,7 +318,7 @@ form span {
 }
 
 .input-group input[type="submit"] {
-  border-radius: 0px 3px 3px 0px;
+  border-radius: 0 3px 3px 0;
 }
 
 .form-group img {
@@ -370,7 +370,6 @@ form span {
   transition: all 0.15s ease-out;
 }
 
-
 /* header **************** */
 
 header {
@@ -379,7 +378,7 @@ header {
   background: rgba(0, 0, 0, 0);
   background-color: rgba(0, 0, 0, 0);
   min-height: 90px;
-  height: calc(var(--gap)*5);
+  height: calc(var(--gap) * 5);
 }
 
 header a {
@@ -390,11 +389,11 @@ header a {
 
 header a h1 {
   font-size: calc(27px + 0.5vw);
-  letter-spacing: -.77px;
+  letter-spacing: -0.77px;
 }
 
 header h1 span.medium {
-  letter-spacing: .77px;
+  letter-spacing: 0.77px;
 }
 
 img.logo {
@@ -443,22 +442,21 @@ header #sign-up:hover {
 
 main {
   background-color: rgba(255, 255, 255, 1);
-  color: rgba(0, 0, 0, .9);
+  color: rgba(0, 0, 0, 0.9);
   padding: 0 0 0 0;
   margin: 0 0 0 0;
 }
 
 main .section-wrapper {
-  padding-top: 0px; 
-  padding-bottom: 0px;
+  padding-top: 0;
+  padding-bottom: 0;
   min-height: 40vh;
 }
 
 main div.half {
-  position:relative;
-  min-height: 300px;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 0;
   min-height: 400px;
 }
 
@@ -471,8 +469,8 @@ main div.half:last-of-type {
 .banner-content {
   max-width: 500px;
   min-width: 300px;
-  padding-top: calc(var(--gap)*2);
-  padding-bottom: calc(var(--gap)*2);
+  padding-top: calc(var(--gap) * 2);
+  padding-bottom: calc(var(--gap) * 2);
 }
 
 img#arrow-divider {
@@ -486,9 +484,10 @@ img#arrow-divider {
 
 main h2,
 main h3 {
-  font-size: calc(1.55em + .35vw);
+  font-size: calc(1.55em + 0.35vw);
   line-height: 1.25em;
 }
+
 main p {
   margin-bottom: var(--gap);
   margin-top: var(--gap);
@@ -497,7 +496,7 @@ main p {
 
 main .account {
   flex-direction: column;
-  border-bottom: 0px;
+  border-bottom: 0;
 }
 
 main .account .image-wrap {
@@ -509,7 +508,7 @@ main .account .image-wrap {
 
 .image-wrap img {
   margin-top: 5px;
-  margin-bottom: calc(var(--gap)/2);
+  margin-bottom: calc(var(--gap / 2));
   width: 100%;
 }
 
@@ -528,26 +527,15 @@ main span.breach-info {
   align-items: center;
 }
 
-/* sign up for alerts button + message *************************** */
-
-/* #sign-up-button-group {
-  width: calc(300px + 1vw);
-} */
-
-#sign-up-button-group p {
-  margin-bottom: 0px;
-  margin-top: calc(var(--gap)/2);
-}
-
 /* tips *************************** */
 
 #password-advice {
   text-align: center;
   flex-direction: column;
-  background: rgba(255,255,255,.04);
-  margin-top: calc(var(--gap)*2);
-  margin-bottom: calc(var(--gap)*2);
-  padding: calc(var(--gap)*2);
+  background: rgba(255, 255, 255, 0.04);
+  margin-top: calc(var(--gap) * 2);
+  margin-bottom: calc(var(--gap) * 2);
+  padding: calc(var(--gap) * 2);
 }
 
 #password-advice p {
@@ -555,8 +543,8 @@ main span.breach-info {
 }
 
 .tip-container {
-  margin-top: calc(var(--gap)*2);
-  margin-bottom: calc(var(--gap)*2);
+  margin-top: calc(var(--gap) * 2);
+  margin-bottom: calc(var(--gap) * 2);
 }
 
 .tip {
@@ -566,7 +554,7 @@ main span.breach-info {
   position: relative;
   border: 1px solid rgba(0, 34, 117, 0);
   border-radius: 4px;
-  background-color: rgba(255, 255, 255, .05);
+  background-color: rgba(255, 255, 255, 0.05);
   transition: background-color 0.15s ease-out;
 }
 
@@ -577,16 +565,16 @@ main span.breach-info {
 
 .tip p {
   padding-top: var(--gap);
-  padding-left: calc(var(--gap)*2);
-  padding-right: calc(var(--gap)*2);
-  padding-bottom: calc(var(--gap)*2);
+  padding-left: calc(var(--gap) * 2);
+  padding-right: calc(var(--gap) * 2);
+  padding-bottom: calc(var(--gap) * 2);
 }
 
 .tip-header {
-  background: rgba(0, 34, 117, .7);
+  background: rgba(0, 34, 117, 0.7);
   color: rgb(255, 255, 255);
-  padding-top: calc(var(--gap)*3.5);
-  padding-bottom: calc(var(--gap)*1.5);
+  padding-top: calc(var(--gap) * 3.5);
+  padding-bottom: calc(var(--gap) * 1.5);
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
 }
@@ -605,13 +593,13 @@ main span.breach-info {
 .svg-background {
   background: rgb(255, 255, 255);
   border-radius: 50%;
-  height: calc(var(--gap)*4);
-  width: calc(var(--gap)*4);
+  height: calc(var(--gap) * 4);
+  width: calc(var(--gap) * 4);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: calc(var(--gap)/2);
+  padding: calc(var(--gap) / 2);
   position: absolute;
   top: -30px;
   left: 0;
@@ -626,9 +614,7 @@ main span.breach-info {
   max-height: 60%;
 }
 
-
 /* ////// subscribe window */
-
 
 #subscribe-modal {
   opacity: 0;
@@ -718,7 +704,7 @@ body.show-subscribe-modal #subscribe-modal {
 }
 
 #subscribe-modal .input-group-button {
-  min-width: calc(var(--gap)*4);
+  min-width: calc(var(--gap) * 4);
 }
 
 #subscribe-modal input[type="email"],
@@ -733,10 +719,9 @@ body.show-subscribe-modal #subscribe-modal {
 
 #subscribe-fxa-btn {
   background: rgba(255, 255, 255, 0);
-  border: 1px solid rgba(0, 0, 0, .25);
+  border: 1px solid rgba(0, 0, 0, 0.25);
   color: rgba(0, 0, 0, 1);
 }
-
 
 /* ///// compromised accounts  */
 
@@ -747,12 +732,12 @@ body.show-subscribe-modal #subscribe-modal {
 
 .compromised-accounts h3,
 #what-to-do li:first-of-type {
-  margin-bottom: calc(var(--gap)*2);
+  margin-bottom: calc(var(--gap) * 2);
 }
 
 .compromised-accounts h3 {
   white-space: normal;
-  margin-top: calc(var(--gap)*1.5)
+  margin-top: calc(var(--gap) * 1.5);
 }
 
 .compromised-accounts.section-wrapper .two-thirds {
@@ -762,9 +747,9 @@ body.show-subscribe-modal #subscribe-modal {
 
 #show-additional-breaches {
   background-color: #45a1ff;
-  margin-top: calc(var(--gap)*3);
-  margin-bottom: calc(var(--gap)*3);
-  max-width:500px;
+  margin-top: calc(var(--gap) * 3);
+  margin-bottom: calc(var(--gap) * 3);
+  max-width: 500px;
   transition: all 0.2s ease;
 }
 
@@ -776,7 +761,7 @@ body.show-subscribe-modal #subscribe-modal {
 
 #additional-breaches {
   visibility: hidden;
-  height: 0px;
+  height: 0;
 }
 
 #additional-breaches,
@@ -814,19 +799,20 @@ span.breach-info {
 
 #featured-compromised-account h3,
 h3#other-accounts-found {
-  margin-bottom: calc(var(--gap)/2);
-  /* margin-top: calc(var(--gap)*3); */
+  margin-bottom: calc(var(--gap) / 2);
+
+  /* margin-top: calc(var(--gap) * 3); */
 }
 
-#featured-compromised-account .account{
-  border-bottom: 0px;
+#featured-compromised-account .account {
+  border-bottom: 0;
 }
 
 #what-to-do {
   list-style: none;
   background-color: var(--darker);
-  padding: calc(var(--gap)*1.5);
-  margin-bottom: calc(var(--gap)*4);
+  padding: calc(var(--gap) * 1.5);
+  margin-bottom: calc(var(--gap) * 4);
 }
 
 #what-to-do span.numeral,
@@ -836,7 +822,7 @@ h3#other-accounts-found {
 }
 
 #what-to-do li {
-  margin-bottom: calc(var(--gap)*1.5);
+  margin-bottom: calc(var(--gap) * 1.5);
   line-height: 1.4;
 }
 
@@ -875,7 +861,7 @@ h3#other-accounts-found {
 }
 
 #what-to-do .form-group .button[disabled] {
-  background-color: rgba(0, 62, 170, .6);
+  background-color: rgba(0, 62, 170, 0.6);
 }
 
 #what-to-do [type=email] {
@@ -883,8 +869,8 @@ h3#other-accounts-found {
   box-shadow: none !important;
 }
 
-#what-to-do .form-group.invalid img{
-  opacity: .3;
+#what-to-do .form-group.invalid img {
+  opacity: 0.3;
   transition: all 0.1s ease-out;
 }
 
@@ -895,7 +881,7 @@ h3#other-accounts-found {
 }
 
 #invalid-email-message {
-  margin-top: 0px !important;
+  margin-top: 0 !important;
   visibility: hidden;
   color: rgb(43, 43, 43);
   opacity: 0;
@@ -932,7 +918,7 @@ h3#other-accounts-found {
 footer {
   background-color: rgba(255, 255, 255, 1);
   color: rgba(0, 0, 0, 1);
-  min-height:50px;
+  min-height: 50px;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -947,14 +933,15 @@ footer a {
 }
 
 footer a:hover {
-  opacity: .8;
+  opacity: 0.8;
 }
 
-footer a, footer a:hover {
+footer a,
+footer a:hover {
   transition: all 0.15s ease-out;
 }
 
-footer .two-thirds, 
+footer .two-thirds,
 .footer-links {
   justify-content: flex-start;
   align-items: center;
@@ -979,14 +966,9 @@ footer .two-thirds > * {
   min-width: 120px;
 }
 
-.footer-links {
-  display: flex;
-}
-
 /* // media screens */
 
 @media screen and (max-width: 1000px) {
-
   main .section-wrapper {
     padding: 0 0 0 0;
   }
@@ -999,20 +981,19 @@ footer .two-thirds > * {
   main .half {
     flex: 0 0 100%;
     margin: 0 0 0 0;
-    /* padding: calc(var(--gap)*2); */
     display: flex;
     align-content: center;
     justify-content: center;
   }
 
   .banner-content {
-    padding: calc(var(--gap)*2);
-    min-width: 0px;
+    padding: calc(var(--gap) * 2);
+    min-width: 0;
   }
 
   main .half:last-of-type {
     background-color: #f9f9fa;
-    padding-left: 0px !important;
+    padding-left: 0 !important;
   }
 
   img#arrow-divider {
@@ -1020,7 +1001,7 @@ footer .two-thirds > * {
   }
 
   #what-to-do {
-    margin-top: calc(var(--gap)*2);
+    margin-top: calc(var(--gap) * 2);
   }
 
   .compromised-accounts h3,
@@ -1052,16 +1033,15 @@ footer .two-thirds > * {
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, .07);
-    padding-bottom: calc(var(--gap)*1.5);
-    padding-top: calc(var(--gap)*1.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    padding-bottom: calc(var(--gap) * 1.5);
+    padding-top: calc(var(--gap) * 1.5);
   }
 
   #what-to-do li,
   #what-to-do li:first-of-type {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
-
 
   #what-to-do li:last-of-type {
     flex-direction: column;
@@ -1083,7 +1063,6 @@ footer .two-thirds > * {
 }
 
 @media screen and (max-width: 786px) {
-  
   header #sign-up-button-group {
     display: none;
   }
@@ -1099,18 +1078,17 @@ footer .two-thirds > * {
 }
 
 @media screen and (max-width: 480px) {
-
   body {
     padding-bottom: 30vh;
   }
 
   #what-to-do li:first-of-type {
-    border-bottom: 1px solid rgba(0,33,117,0.314);
+    border-bottom: 1px solid rgba(0, 33, 117, 0.314);
     padding-bottom: var(--gap);
   }
 
   .compromised-accounts .account:first-of-type {
-    border-top: 1px solid rgba(0,33,117,0.314);
+    border-top: 1px solid rgba(0, 33, 117, 0.314);
   }
 
   .compromised-accounts .account {
@@ -1128,9 +1106,4 @@ footer .two-thirds > * {
   .footer-links {
     margin-top: var(--gap);
   }
-
-}
-
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx), only screen and (min-resolution: 144dpi) {
-
 }
