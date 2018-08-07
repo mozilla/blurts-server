@@ -20,13 +20,13 @@ router.post("/", urlEncodedParser, async (req, res) => {
     return;
   }
 
-  const foundBreaches = await HIBP.getBreachesForEmail(emailHash, req.app.locals.breaches);
+  let foundBreaches = await HIBP.getBreachesForEmail(emailHash, req.app.locals.breaches);
 
   if (req.body.featuredBreach) {
     let featuredBreach = req.body.featuredBreach;
 
     if(foundBreaches.filter(breach => breach.Name === featuredBreach).length > 0) {
-      featuredBreach = foundBreaches.filter(breach => breach.Name === req.body.featuredBreach);
+      featuredBreach = foundBreaches.splice(foundBreaches.findIndex(breach => breach.Name === req.body.featuredBreach),1);
     }
 
     res.render("scan", {
