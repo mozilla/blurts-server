@@ -102,7 +102,7 @@ function addSubscriptionListeners() {
 
 function enableBtnIfEmailValid(e) {
   const thisForm = e.target.form;
-  const emailButton = thisForm.querySelector(".submit-email");
+  const emailButton = thisForm.querySelector("#scan-email");
   if (isValidEmail(e.target.value)) {
       emailButton.disabled = false;
       thisForm.classList.remove("invalid");
@@ -127,7 +127,9 @@ function showMessageIfDisabled(e) {
   const thisElement = e.target;
   const thisForm = findParent(thisElement, "FORM");
   if(thisForm) {
+    if ( thisForm.querySelector(".button").disabled)  {
     thisForm.classList.add("invalid");
+    }
   }
 }
 
@@ -173,6 +175,21 @@ function addFormListeners() {
   }
 }
 
+function doButtonRouting(event) {
+  if (event.target.id === "show-additional-breaches") {
+    addClass("#show-additional-breaches", "hide");
+    addClass("#additional-breaches", "show-breaches");
+    const additionalBreaches = document.getElementById("additional-breaches");
+    if (additionalBreaches.classList.contains("show-breaches")) {
+      additionalBreaches.style.height = additionalBreaches.scrollHeight + 'px';
+    }
+  }
+  if (event.target.id === "sign-up") {
+    handleSignUpModal();
+    addSubscriptionListeners();
+  }
+}
+
 //re-enables inputs and clears loader 
 function restoreInputs() {
   for (const input of document.querySelectorAll(".input-group-field")) {
@@ -201,9 +218,9 @@ window.addEventListener("pageshow", function() {
   }
 });
 
-// eslint-disable-next-line no-unused-vars
-
-if (document.getElementById("sign-up")) {
-  document.getElementById("sign-up").addEventListener("click", handleSignUpModal);
-  addSubscriptionListeners();
-}
+if (document.querySelectorAll("button")) {
+  let buttons = [].slice.call(document.querySelectorAll("button"));
+  buttons.forEach(button => {
+    button.addEventListener("click", (e) => doButtonRouting(e))
+  });
+};

@@ -1,8 +1,17 @@
 <h3>Your Compromised Accounts</h3>
-
 <!--list first 5 breaches-->
-{{#each foundBreaches}}
+{{#each_from_to foundBreaches 0 5 }}
   {{> breach_listing }}
-{{/each}}
+{{/each_from_to}}
 
-{{>hibp_attribution}}
+<!--display button and list remainder of breaches on click-->
+ {{#if_conditional foundBreaches 5}}
+  <div id="additional-breaches">
+    {{#each_from_to foundBreaches 5 foundBreaches.length }}
+      {{> breach_listing }}
+    {{/each_from_to}}
+  </div>
+  <button id="show-additional-breaches" class="button">Show Additional Breaches</button>
+{{/if_conditional}}
+
+{{> hibp_attribution }}
