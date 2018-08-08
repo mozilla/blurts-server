@@ -50,6 +50,10 @@
   "license": "MPL-2.0",
   "main": "server.js",
   "nyc": {
+    "exclude": [
+      "db/seeds/**.js",
+      "db/migrations/**.js"
+    ],
     "all": true
   },
   "private": true,
@@ -70,7 +74,9 @@
     "start": "node server.js",
     "test:db:migrate": "knex migrate:latest --knexfile db/knexfile.js --env tests",
     "test:db:seed": "knex seed:run --knexfile db/knexfile.js --env tests",
-    "test:tests": "NODE_ENV=tests nyc tape tests/**/test*.js | faucet && nyc report --reporter=text-lcov | coveralls",
-    "test": "run-s test:db:migrate test:db:seed test:tests"
+    "test:tests": "NODE_ENV=tests nyc tape tests/**/test*.js | faucet",
+    "test:report": "nyc report",
+    "test:coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "test": "run-s test:db:migrate test:db:seed test:tests test:report test:coveralls"
   }
 }
