@@ -13,6 +13,7 @@ const TEST_DATABASE_URL = AppConstants.DATABASE_URL.replace(/\/(\w*)$/, "/test-$
 
 module.exports = {
   dev: RUNTIME_CONFIG,
+  heroku: RUNTIME_CONFIG,
   stage: RUNTIME_CONFIG,
   prod: RUNTIME_CONFIG,
   tests: {
