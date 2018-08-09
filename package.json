@@ -38,7 +38,8 @@
     "nyc": "^11.8.0",
     "stylelint": "^9.2.0",
     "stylelint-config-standard": "^18.2.0",
-    "tape": "^4.9.0"
+    "tape": "^4.9.1",
+    "tape-async": "^2.3.0"
   },
   "engines": {
     "node": ">=8"
@@ -47,6 +48,10 @@
   "license": "MPL-2.0",
   "main": "server.js",
   "nyc": {
+    "exclude": [
+      "db/seeds/**.js",
+      "db/migrations/**.js"
+    ],
     "all": true
   },
   "private": true,
@@ -65,6 +70,11 @@
     "pretest": "npm run lint",
     "get-hashsets": "node scripts/get-hashsets",
     "start": "node server.js",
-    "test": "nyc tape tests/**/test*.js | faucet && nyc report --reporter=text-lcov | coveralls"
+    "test:db:migrate": "knex migrate:latest --knexfile db/knexfile.js --env tests",
+    "test:db:seed": "knex seed:run --knexfile db/knexfile.js --env tests",
+    "test:tests": "NODE_ENV=tests nyc tape tests/**/test*.js | faucet",
+    "test:report": "nyc report",
+    "test:coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "test": "run-s test:db:migrate test:db:seed test:tests test:report test:coveralls"
   }
 }

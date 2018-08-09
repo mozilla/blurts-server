@@ -5,7 +5,7 @@ node_js:
 services:
   - postgresql
 env:
-  - TESTING_ENVIRONMENT=1
+  - NODE_ENV=tests
 before_script:
   - cp .env-dist .env
-  - psql -c 'create database blurts;' -U postgres
+  - createdb test-blurts
