@@ -17,9 +17,3 @@ test("getSha1 returns hex digest", t => {
   t.ok(isHexString(getSha1("test@test.com")));
   t.end();
 });
-
-test("tape-async example", async t => {
-  t.ok(isHexString(getSha1("test@test.com")));
-  const a = await Promise.resolve(42);
-  t.equal(a, 42);
-});

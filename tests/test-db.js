@@ -29,7 +29,7 @@ test("getSubscribersByHashes accepts hashes and only returns verified subscriber
 test("addSubscriberUnverifiedEmailHash accepts email and returns unverified subscriber with sha1 hash and verification token", async t => {
   const testEmail = "test@test.com";
   // https://stackoverflow.com/a/13653180
-  const uuidRE = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+  const uuidRE = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
   const subscriber = await DB.addSubscriberUnverifiedEmailHash(testEmail);
   t.ok(subscriber.sha1 === getSha1(testEmail));
@@ -63,7 +63,6 @@ test("removeSubscriber accepts email and removes the email address", async t => 
 
   const verifiedSubscriber = await DB.addSubscriber(testEmail);
   const removedSubscriber = await DB.removeSubscriber(verifiedSubscriber.email);
-  console.log("removedSubscriber: ", removedSubscriber);
 
   t.ok(removedSubscriber.email === null);
 });
