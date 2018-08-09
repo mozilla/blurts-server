@@ -10,8 +10,8 @@ test("getSubscriberByEmailAndToken accepts email and token and returns subscribe
   const testToken = "0e2cb147-2041-4e5b-8ca9-494e773b2cf0";
   const subscriber = await DB.getSubscriberByEmailAndToken(testEmail, testToken);
 
-  t.ok(subscriber.email === testEmail);
-  t.ok(subscriber.verification_token === testToken);
+  t.deepEqual(subscriber.email, testEmail);
+  t.deepEqual(subscriber.verification_token, testToken);
 });
 
 test("getSubscribersByHashes accepts hashes and only returns verified subscribers", async t => {
@@ -32,7 +32,7 @@ test("addSubscriberUnverifiedEmailHash accepts email and returns unverified subs
   const uuidRE = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
   const subscriber = await DB.addSubscriberUnverifiedEmailHash(testEmail);
-  t.ok(subscriber.sha1 === getSha1(testEmail));
+  t.deepEqual(subscriber.sha1, getSha1(testEmail));
   t.ok(uuidRE.test(subscriber.verification_token));
   t.notOk(subscriber.verified);
 });
@@ -44,7 +44,7 @@ test("verifyEmailHash accepts token and email and returns verified subscriber", 
   t.notOk(unverifiedSubscriber.verified);
 
   const verifiedSubscriber = await DB.verifyEmailHash(unverifiedSubscriber.verification_token, unverifiedSubscriber.email);
-  t.ok(verifiedSubscriber.sha1 === getSha1(testEmail));
+  t.deepEqual(verifiedSubscriber.sha1, getSha1(testEmail));
   t.ok(verifiedSubscriber.verified);
 });
 
@@ -53,9 +53,9 @@ test("addSubscriber accepts email and returns verified subscriber", async t => {
 
   const verifiedSubscriber = await DB.addSubscriber(testEmail);
 
-  t.ok(verifiedSubscriber.email === testEmail);
+  t.deepEqual(verifiedSubscriber.email, testEmail);
   t.ok(verifiedSubscriber.verified);
-  t.ok(verifiedSubscriber.sha1 === getSha1(testEmail));
+  t.deepEqual(verifiedSubscriber.sha1, getSha1(testEmail));
 });
 
 test("removeSubscriber accepts email and removes the email address", async t => {
@@ -64,7 +64,7 @@ test("removeSubscriber accepts email and removes the email address", async t => 
   const verifiedSubscriber = await DB.addSubscriber(testEmail);
   const removedSubscriber = await DB.removeSubscriber(verifiedSubscriber.email);
 
-  t.ok(removedSubscriber.email === null);
+  t.deepEqual(removedSubscriber.email, null);
 });
 
 test("teardown", async t => {
