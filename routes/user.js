@@ -49,7 +49,7 @@ router.post("/add", urlEncodedParser, async (req, res) => {
 });
 
 router.get("/verify", jsonParser, async (req, res) => {
-  const verifiedEmailHash = await DB.verifyEmailHash(req.query.token, req.query.email);
+  const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
   if (!verifiedEmailHash) {
     res.status(400).json({
       error_code: ResponseCodes.EmailNotFound,

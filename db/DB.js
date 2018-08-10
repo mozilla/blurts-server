@@ -28,7 +28,7 @@ const DB = {
     return res[0];
   },
 
-  async verifyEmailHash(token, email) {
+  async verifyEmailHash(token) {
     const unverifiedSubscriber = await this.getSubscriberByToken(token);
     const verifiedSubscriber = await this._verifySubscriber(unverifiedSubscriber);
     return verifiedSubscriber[0];

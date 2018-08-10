@@ -76,7 +76,7 @@ const EmailUtils = {
 
     return new Promise((resolve, reject) => {
       gTransporter.use("compile", hbs(hbsOptions));
-      const emailFrom = AppConstants.EMAIL_FROM || `"Firefox Monitor" < ${kSMTPUsername}`;
+      const emailFrom = AppConstants.EMAIL_FROM || `"Firefox Monitor" <${kSMTPUsername}>`;
       const mailOptions = {
         from: emailFrom,
         to: aRecipient,
