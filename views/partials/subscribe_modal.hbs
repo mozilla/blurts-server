@@ -4,15 +4,20 @@
       <h3 class="demi">Sign Up for Firefox Monitor</h3>
       <p>Firefox Monitor is a service that collects information about data breaches and alerts users when their online accounts are exposed to hackers.</p>
       <button id="subscribe-fxa-btn" class="button sign-in-btn cell">Subscribe with Firefox Account</button>
-      <span>Or</span>
-      <form action="/user/add" class="form-group" method="post" data-no-csrf>
-        <div class="input-group">
-          <input id="subscribe-email-input" class="input-group-field" type="email" name="email" placeholder="Subscribe with Email Account" minlength="1" aria-label="Enter Email Address" tabindex="0" autocomplete="off" required >
+        <form action="/user/add" class="form-group" method="post" novalidate data-no-csrf>
+          <div class="input-group">
+            <input id="subscribe-email-input" class="input-group-field" type="email" name="email" placeholder="Subscribe with Email Account" minlength="1" aria-label="Enter Email Address" tabindex="0" autocomplete="off" required >
+            <span id="invalid-signup-email-message" class="error-message">Must be a valid email.</span>
+          </div>
+          <div class="checkbox-group">
+            <input type="checkbox" name="additional-emails" value="additional-emails" />
+            {{!-- <div class="visible-checkbox-element checkbox"></div> --}}
+            <label>Get the lastest news from Mozilla and Firefox.</label>
+          </div>
           <div class="input-group-button">
             <img class="loader" src="img/loader.gif" alt="loading data" />
             <input id="subscribe-email-btn" type="submit" class="button submit-email" value="Submit" />
           </div>
-        </div>
       </form>
     </div>
   </div>

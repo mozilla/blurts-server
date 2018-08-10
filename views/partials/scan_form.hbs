@@ -1,18 +1,16 @@
 <form action="/scan" class="email-scan form-group" method="post" data-no-csrf>
-  <span id="invalid-email-message">
-      Please enter a valid email.
-    </span>
   <div class="input-group">
     <input class="input-group-field email-to-hash" type="email" name="email" placeholder="Enter Email Address" aria-label="Enter Email Address" tabindex="0" autocomplete="off" />
     <input type="hidden" name="emailHash" />
+    <span id="invalid-email-message" class="error-message">Must be a valid email.</span>
     {{#if breach}}
       <input type="hidden" name="featuredBreach" value="{{ breach.Name }}"/>
     {{/if}}
     <div class="input-group-button">
+      <input id="scan-email" type="submit" class="button submit" value="Search" tabindex="0"/>
       <img class="search-icon" src="img/Search.svg" alt="search icon" />
       <img class="loader" src="img/loader.gif" alt="loading data" />
-      <input id="scan-email" type="submit" class="button submit-email" value="Search" tabindex="0"/>
     </div>
   </div>
-  <span>Your email will not be stored. Find out more in our <a href="https://www.mozilla.org/privacy/firefox/" aria-label="Mozilla Firefox privacy policy">Privacy Policy.</a></span>
 </form>
+<span class="privacy-policy">Your email will not be stored. Find out more in our <a href="https://www.mozilla.org/privacy/firefox/" aria-label="Mozilla Firefox privacy policy">Privacy Policy.</a></span>

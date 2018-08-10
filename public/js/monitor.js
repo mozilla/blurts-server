@@ -71,6 +71,12 @@ function removeClass(selector, className) {
   }
 }
 
+function removeInvalidMessage(e) {
+  enableBtnIfEmailValid(e);
+  const thisForm = e.target.form;
+  thisForm.classList.remove("invalid");
+}
+
 function doOauth() {
   window.open("/oauth/init");
 }
@@ -79,7 +85,7 @@ function handleSignUpModal() {
   handleEvents("SignUp");
   addClass("body","show-subscribe-modal");
   window.addEventListener("keydown", function subscribeModalKeyListener(e) {
-    if (e.code !== "Enter" && e.code !== "Escape") {
+    if (e.code !== "Escape") {
       return;
     }
     removeClass("body", "show-subscribe-modal");
@@ -98,10 +104,12 @@ function addSubscriptionListeners() {
     doOauth();
     removeClass("body", "show-subscribe-modal");
   });
+
 }
 
 function enableBtnIfEmailValid(e) {
   const thisForm = e.target.form;
+  thisForm.classList.remove("invalid");
   const emailButton = thisForm.querySelector(".button");
   if (isValidEmail(e.target.value)) {
       emailButton.disabled = false;
@@ -123,20 +131,31 @@ function findParent(element, tag) {
   return null;
 }
 
-function showMessageIfDisabled(e) {
+// function findChild(element, tag) {
+//   while (element.)
+// }
+
+function showMessageIfInvalid(e) {
   const thisElement = e.target;
   const thisForm = findParent(thisElement, "FORM");
-  if(thisForm) {
-    if ( thisForm.querySelector(".button").disabled)  {
+  if (!thisForm.querySelector("input").value || thisForm.querySelector(".button").disabled) {
     thisForm.classList.add("invalid");
-    }
+    return true;
   }
 }
 
-function removeInvalidMessage(e) {
-  enableBtnIfEmailValid(e);
-  const thisForm = e.target.form;
-  thisForm.classList.remove("invalid");
+function checkBoxStates(e) {
+  const checkboxGroup = e.target;
+  const checkBox = [].slice.call(checkboxGroup.querySelectorAll("input"))[0];
+  console.log(checkBox);
+  if (checkBox.checked) {
+    console.log("checkbox is checked")
+    checkBox.checked = false;
+    return;
+  } else {
+    console.log("checkbox isn't checked");
+    checkBox.checked = true;
+  }
 }
 
 async function sha1(message) {
@@ -151,8 +170,7 @@ async function sha1(message) {
 async function hashEmailAndSend(emailFormSubmitEvent) {
   emailFormSubmitEvent.preventDefault();
   const emailForm = emailFormSubmitEvent.target;
-  if (!emailForm.querySelector("input[name=email]").value) {
-    emailForm.querySelector("input[type=submit]").disabled = true;
+  if (!emailForm.querySelector("input").value) {
     emailForm.classList.add("invalid");
     return;
   }
@@ -171,7 +189,10 @@ function addFormListeners() {
     input.addEventListener("focusin", (e) => removeInvalidMessage(e));
   }
   for (const buttonWrapper of document.querySelectorAll(".input-group-button")) {
-    buttonWrapper.addEventListener("click", (e) => showMessageIfDisabled(e));
+    buttonWrapper.addEventListener("click", (e) => showMessageIfInvalid(e));
+  }
+  for(const checkbox of document.querySelectorAll(".checkbox-group")) {
+    checkbox.addEventListener("click", (e) => checkBoxStates(e));
   }
 }
 
@@ -218,7 +239,8 @@ window.addEventListener("pageshow", function() {
   }
 });
 
-if (document.querySelectorAll("button")) {
+if (document.querySelectorAll(".button")) {
+  console.log("button");
   const buttons = [].slice.call(document.querySelectorAll("button"));
   buttons.forEach(button => {
     button.addEventListener("click", (e) => doButtonRouting(e));
