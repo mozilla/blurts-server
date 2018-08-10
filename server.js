@@ -15,6 +15,7 @@ const DockerflowRoutes = require("./routes/dockerflow");
 const HibpRoutes = require("./routes/hibp");
 const HomeRoutes = require("./routes/home");
 const ScanRoutes = require("./routes/scan");
+const SesRoutes = require("./routes/ses");
 const OAuthRoutes = require("./routes/oauth");
 const UserRoutes = require("./routes/user");
 
@@ -90,6 +91,7 @@ app.use("/", DockerflowRoutes);
 app.use("/hibp", HibpRoutes);
 app.use("/oauth", OAuthRoutes);
 app.use("/scan", ScanRoutes);
+app.use("/ses", SesRoutes);
 app.use("/user", UserRoutes);
 app.use("/", HomeRoutes);
 
