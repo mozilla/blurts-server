@@ -22,7 +22,8 @@ const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 
 router.post("/add", urlEncodedParser, async (req, res) => {
   const email = req.body.email;
-  const verificationToken = await DB.addSubscriberUnverifiedEmailHash(email);
+  const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(email);
+  const verificationToken = unverifiedSubscriber.verification_token;
 
   const url = `${AppConstants.SERVER_URL}/user/verify?token=${encodeURIComponent(verificationToken)}&email=${encodeURIComponent(email)}`;
 
