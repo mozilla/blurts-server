@@ -14,10 +14,9 @@ const knex = Knex(knexConfig[AppConstants.NODE_ENV]);
 
 
 const DB = {
-  async getSubscriberByEmailAndToken(email, token) {
+  async getSubscriberByToken(token) {
     const res = await knex("subscribers")
-      .where("verification_token", "=", token)
-      .andWhere("email", "=", email);
+      .where("verification_token", "=", token);
 
     return res[0];
   },
@@ -30,7 +29,7 @@ const DB = {
   },
 
   async verifyEmailHash(token, email) {
-    const unverifiedSubscriber = await this.getSubscriberByEmailAndToken(email, token);
+    const unverifiedSubscriber = await this.getSubscriberByToken(token);
     const verifiedSubscriber = await this._verifySubscriber(unverifiedSubscriber);
     return verifiedSubscriber[0];
   },

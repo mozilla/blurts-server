@@ -25,7 +25,7 @@ router.post("/add", urlEncodedParser, async (req, res) => {
   const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(email);
   const verificationToken = unverifiedSubscriber.verification_token;
 
-  const url = `${AppConstants.SERVER_URL}/user/verify?token=${encodeURIComponent(verificationToken)}&email=${encodeURIComponent(email)}`;
+  const url = `${AppConstants.SERVER_URL}/user/verify?token=${encodeURIComponent(verificationToken)}`;
 
   try {
     await EmailUtils.sendEmail(
