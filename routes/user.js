@@ -22,9 +22,10 @@ const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 
 router.post("/add", urlEncodedParser, async (req, res) => {
   const email = req.body.email;
-  const verificationToken = await DB.addSubscriberUnverifiedEmailHash(email);
+  const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(email);
+  const verificationToken = unverifiedSubscriber.verification_token;
 
-  const url = `${AppConstants.SERVER_URL}/user/verify?token=${encodeURIComponent(verificationToken)}&email=${encodeURIComponent(email)}`;
+  const url = `${AppConstants.SERVER_URL}/user/verify?token=${encodeURIComponent(verificationToken)}`;
 
   try {
     await EmailUtils.sendEmail(
@@ -48,7 +49,7 @@ router.post("/add", urlEncodedParser, async (req, res) => {
 });
 
 router.get("/verify", jsonParser, async (req, res) => {
-  const verifiedEmailHash = await DB.verifyEmailHash(req.query.token, req.query.email);
+  const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
   if (!verifiedEmailHash) {
     res.status(400).json({
       error_code: ResponseCodes.EmailNotFound,

@@ -5,10 +5,10 @@ const test = require("tape-async");
 const DB = require("../db/DB");
 const getSha1 = require("../sha1-utils");
 
-test("getSubscriberByEmailAndToken accepts email and token and returns subscriber", async t => {
+test("getSubscriberByToken accepts token and returns subscriber", async t => {
   const testEmail = "unverifiedemail@test.com";
   const testToken = "0e2cb147-2041-4e5b-8ca9-494e773b2cf0";
-  const subscriber = await DB.getSubscriberByEmailAndToken(testEmail, testToken);
+  const subscriber = await DB.getSubscriberByToken(testToken);
 
   t.deepEqual(subscriber.email, testEmail);
   t.deepEqual(subscriber.verification_token, testToken);
@@ -37,13 +37,13 @@ test("addSubscriberUnverifiedEmailHash accepts email and returns unverified subs
   t.notOk(subscriber.verified);
 });
 
-test("verifyEmailHash accepts token and email and returns verified subscriber", async t => {
+test("verifyEmailHash accepts token and returns verified subscriber", async t => {
   const testEmail = "verifyEmailHash@test.com";
 
   const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(testEmail);
   t.notOk(unverifiedSubscriber.verified);
 
-  const verifiedSubscriber = await DB.verifyEmailHash(unverifiedSubscriber.verification_token, unverifiedSubscriber.email);
+  const verifiedSubscriber = await DB.verifyEmailHash(unverifiedSubscriber.verification_token);
   t.deepEqual(verifiedSubscriber.sha1, getSha1(testEmail));
   t.ok(verifiedSubscriber.verified);
 });
