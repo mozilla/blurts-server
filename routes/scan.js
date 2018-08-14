@@ -32,7 +32,7 @@ router.post("/", urlEncodedParser, async (req, res) => {
     let featuredBreach = req.body.featuredBreach;
 
     if(foundBreaches.filter(breach => breach.Name === featuredBreach).length > 0) {
-      featuredBreach = foundBreaches.splice(foundBreaches.findIndex(breach => breach.Name === req.body.featuredBreach),1);
+      featuredBreach = foundBreaches.filter(foundBreaches.findIndex(breach => breach.Name === req.body.featuredBreach),1);
     }
 
     res.render("scan", {
