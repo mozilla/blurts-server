@@ -76,36 +76,23 @@ function doOauth() {
 // restricts tabbing to modal elements when modal is open.
 // disables tabbing on modal elements when modal is closed. 
 function setModalTabbing(){
-  const tabbableElements = Array.from(document.querySelectorAll("a, button, input")); 
-
   // get tabbable elements in sign up form window
   let modalTabContent = Array.from(document.getElementById("subscribe-to-ffxm").querySelectorAll("a, input, button"));
-
   // if "confirm your email" message is showing, tab those elements instead
   if (!document.getElementById("subscribe-to-ffxm").classList.contains("show")) {
     modalTabContent = Array.from(document.getElementById("confirm-your-account").querySelectorAll("a, input, button"));
   }
-
   // if modal is displayed, set tabindex to 1 on only those elements 
   // and disable tabbing on everything else
   if (document.body.classList.contains("show-subscribe-modal")) {
-    for (const eachElement of tabbableElements) {
-      if (modalTabContent.indexOf(eachElement) === -1) {
-        eachElement.setAttribute("tabindex", "-1");
-      }
-      else {
-        eachElement.setAttribute("tabindex", "1");
-      }
+    for (const eachElement of document.querySelectorAll("a, button, input")) {
+      eachElement.setAttribute("tabindex", modalTabContent.includes(eachElement) ? "1" : "-1");
     }
     return;
   }
   // disable tabbing if modal window is closed and re-enable all other tabbing
-  for (const eachElement of tabbableElements) {
-    if (modalTabContent.indexOf(eachElement) === -1) {
-      eachElement.setAttribute("tabindex", "1");
-    } else {
-      eachElement.setAttribute("tabindex", "-1");
-    }
+  for (const eachElement of document.querySelectorAll("a, button, input")) {
+    eachElement.setAttribute("tabindex", !modalTabContent.includes(eachElement) ? "1" : "-1");
   }
 }
 
@@ -135,7 +122,7 @@ function openModalWindow() {
 // by letting user click the checkbox's wrapping div to toggle states
 function checkBoxStates(checkBoxEvent) {
   checkBoxEvent.preventDefault();
-  let checkBox = null;
+  let checkBox;
   // user tabs (keyCode === 16) or tabs BACK (keyCode === 16) to checkbox element
   if (checkBoxEvent.keyCode === 9 || checkBoxEvent.keyCode === 16) {
     checkBox = checkBoxEvent.target;
@@ -151,12 +138,7 @@ function checkBoxStates(checkBoxEvent) {
     const thisCheckBoxGroup = checkBoxEvent.target;
     checkBox = thisCheckBoxGroup.querySelector("input[type=checkbox]");
   }
-  if (checkBox.checked) {
-    checkBox.checked = false;
-    return;
-  } else {
-    checkBox.checked = true;
-  }
+  checkBox.checked = !checkBox.checked;
 }
 
 async function sha1(message) {
@@ -188,7 +170,6 @@ const addUser = (formEvent) => {
   }
   postData(formElement.action, formObject)
     .then(data => {
-      console.log(data);
       document.getElementById("subscribe-to-ffxm").classList.remove("show");
       document.getElementById("confirm-your-account").classList.add("show");
       setModalTabbing();

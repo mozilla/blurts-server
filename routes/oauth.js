@@ -60,7 +60,7 @@ router.get("/confirmed", jsonParser, async (req, res) => {
     await DB.addSubscriber(email);
 
     res.render("confirm", {
-      title: "Firefox Breach Alerts: Subscribed",
+      title: "Firefox Monitor : Subscribed",
       email: email,
     });
   } catch (err) {

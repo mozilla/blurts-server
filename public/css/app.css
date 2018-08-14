@@ -12,10 +12,12 @@ body {
   box-sizing: border-box;
   font-size: 100%;
   line-height: 1.5;
+
   --roundedCorners: 2px;
   --gap: 20px;
   --darker: rgba(0, 33, 117, 0.25);
   --maxWidthHalf: 500px;
+
   -webkit-overflow-scrolling: touch;
 
   /* photon style vars */
@@ -220,8 +222,7 @@ img {
 input[type="checkbox"] {
   width: 16px;
   height: 16px;
-
-  /* pointer-events: none; */
+  pointer-events: none;
 }
 
 .checkbox-group {
@@ -274,11 +275,17 @@ input[type="password"]:hover {
   border: 1px solid var(--grey90a5);
 }
 
+button:focus,
 input[type="email"]:focus,
 input[type="text"]:focus,
 input[type="password"]:focus {
   border: 1px solid var(--blue50);
   box-shadow: 0 0 0 1px #0a84ff, 0 0 0 4px rgba(10, 132, 255, 0.3);
+  outline: none;
+}
+
+a:focus {
+  outline: 2px solid var(--blue50);
 }
 
 .form-group.invalid input[type="email"] {
@@ -288,6 +295,10 @@ input[type="password"]:focus {
 
 .form-group.invalid img {
   opacity: 0.4;
+}
+
+input:focus {
+  outline: none;
 }
 
 .form-group.invalid input:focus {
@@ -461,13 +472,12 @@ h5 {
 
 /* header **************** */
 
-header {
+header.section-wrapper {
   padding-top: 0;
   padding-bottom: 0;
   background: rgba(0, 0, 0, 0);
   background-color: rgba(0, 0, 0, 0);
   min-height: 90px;
-  height: calc(var(--gap) * 5);
 }
 
 header a {
@@ -823,10 +833,14 @@ body.show-subscribe-modal .modal-content.show {
 }
 
 #show-additional-breaches {
-  /* background-color: rgb(69, 161, 255); */
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   margin-top: calc(var(--gap) * 3);
   max-width: var(--maxWidthHalf);
+}
+
+button#show-additional-breaches:hover {
+  background-color: rgba(0, 0, 0, 0.06);
 }
 
 #show-additional-breaches.hide,
@@ -925,7 +939,7 @@ span.breach-info {
   display: none;
 }
 
-#what-to-do label {
+.scan-another-email {
   font-weight: 600;
   display: inline-block;
   margin-top: calc(var(--gap) * 2);
@@ -1024,18 +1038,24 @@ footer .section-wrapper {
 footer a {
   font-weight: 400;
   color: var(--grey90);
-  opacity: 1;
 }
 
-.footer-links {
-  justify-content: flex-start;
-  align-items: center;
-  display: flex;
+footer p.third {
+  display: block;
 }
 
-.footer-links > *,
-footer .two-thirds > * {
-  margin-right: var(--gap);
+footer p.third br {
+  display: none;
+}
+
+footer .two-thirds {
+  flex-direction: row;
+}
+
+.footer-links-wrapper section {
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-around;
 }
 
 #GitHub-logo {
@@ -1154,11 +1174,40 @@ footer .two-thirds > * {
     padding-left: var(--gap);
     padding-right: var(--gap);
   }
+
+  footer .two-thirds {
+    flex-direction: column;
+  }
+
+  section.footer-links {
+    padding-top: var(--gap);
+    padding-bottom: var(--gap);
+    border-top: 1px solid var(--grey90a1);
+    border-bottom: 1px solid var(--grey90a1);
+  }
+
+  .footer-logo-wrapper {
+    margin-top: var(--gap);
+    margin-bottom: var(--gap);
+    align-self: center;
+  }
+
+  footer .third {
+    text-align: center;
+  }
+
+  footer p.third br {
+    display: block;
+  }
 }
 
 @media screen and (max-width: 480px) {
   body {
     padding-bottom: 30vh;
+  }
+
+  .third {
+    min-width: 250px !important;
   }
 
   .modal-content {
@@ -1181,14 +1230,16 @@ footer .two-thirds > * {
     margin: var(--gap) 0 0 0;
   }
 
-  .footer-links {
-    margin-top: var(--gap);
+  footer p.third br {
+    display: none;
   }
 }
 
 @media screen and (max-width: 375px) {
   body {
     --gap: 15px;
+
+    padding-bottom: 60vh;
   }
 
   .section-wrapper {
@@ -1196,7 +1247,7 @@ footer .two-thirds > * {
   }
 
   .third {
-    min-width: 200;
+    min-width: 200px !important;
   }
 
   .tip-container {
@@ -1205,6 +1256,34 @@ footer .two-thirds > * {
 
   .tip {
     min-height: 300px;
+  }
+
+  footer .two-thirds {
+    flex-direction: column-reverse;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+
+  .footer-logo-wrapper {
+    align-self: flex-start;
+    margin-bottom: 0;
+  }
+
+  footer .third {
+    text-align: left;
+  }
+
+  .footer-links a {
+    line-height: 30px;
+  }
+
+  #GitHub-logo {
+    max-width: 20px;
   }
 }
 
