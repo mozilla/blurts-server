@@ -16,6 +16,11 @@ const createRequestBody = function(notificationType) {
   return fs.readFileSync(bodyFile).toString();
 };
 
+test("setup", async t => {
+  DB.createConnection();
+});
+
+
 test("ses notification with Permanent bounce unsubscribes recipient", async t => {
   const testEmail = "bounce@simulator.amazonses.com";
 

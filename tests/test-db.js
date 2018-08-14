@@ -5,6 +5,12 @@ const test = require("tape-async");
 const DB = require("../db/DB");
 const getSha1 = require("../sha1-utils");
 
+
+test("setup", async t => {
+  DB.createConnection();
+});
+
+
 test("getSubscriberByToken accepts token and returns subscriber", async t => {
   const testEmail = "unverifiedemail@test.com";
   const testToken = "0e2cb147-2041-4e5b-8ca9-494e773b2cf0";

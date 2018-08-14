@@ -10,7 +10,7 @@ const HIBP = require("../hibp");
 const getSha1 = require("../sha1-utils");
 
 const knexConfig = require("./knexfile");
-const knex = Knex(knexConfig[AppConstants.NODE_ENV]);
+let knex = Knex(knexConfig[AppConstants.NODE_ENV]);
 
 
 const DB = {
@@ -101,6 +101,10 @@ const DB = {
 
   async getSubscribersByHashes(hashes) {
     return await knex("subscribers").whereIn("sha1", hashes).andWhere("verified", "=", true);
+  },
+
+  async createConnection() {
+    knex = Knex(knexConfig[AppConstants.NODE_ENV]);
   },
 
   async destroyConnection() {
