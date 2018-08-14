@@ -62,9 +62,12 @@ test("removeSubscriber accepts email and removes the email address", async t => 
   const testEmail = "removingFirefoxAccount@test.com";
 
   const verifiedSubscriber = await DB.addSubscriber(testEmail);
-  const removedSubscriber = await DB.removeSubscriber(verifiedSubscriber.email);
+  let subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
+  t.deepEqual(subscribers.length, 1);
 
-  t.deepEqual(removedSubscriber.email, null);
+  await DB.removeSubscriber(verifiedSubscriber.email);
+  subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
+  t.deepEqual(subscribers.length, 0);
 });
 
 test("teardown", async t => {
