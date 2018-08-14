@@ -1,19 +1,21 @@
 "use strict";
 
-const fs = require("fs");
 const httpMocks = require("node-mocks-http");
-const path = require("path");
 const test = require("tape-async");
 
 const DB = require("../db/DB");
 const getSha1 = require("../sha1-utils");
 const ses = require("../controllers/ses");
 
+const testNotifications = new Map();
+testNotifications.set("bounce", require("./ses-bounce-notification.json"));
+testNotifications.set("complaint", require("./ses-complaint-notification.json"));
+
 
 const createRequestBody = function(notificationType) {
-  const bodyFile = path.join(__dirname, `ses-${notificationType}-notification.json`);
-  return fs.readFileSync(bodyFile).toString();
+  return JSON.stringify(testNotifications.get(notificationType));
 };
+
 
 test("setup", async t => {
   DB.createConnection();
