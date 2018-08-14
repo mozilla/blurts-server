@@ -83,6 +83,9 @@ const EmailUtils = {
         subject: aSubject,
         template: aTemplate,
         context: aContext,
+        headers: {
+          "x-ses-configuration-set": AppConstants.SES_CONFIG_SET,
+        },
       };
 
       gTransporter.sendMail(mailOptions, (error, info) => {

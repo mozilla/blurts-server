@@ -1,16 +1,16 @@
 "use strict";
 
-const AppConstants = require("../app-constants");
 
 // eslint-disable-next-line node/no-extraneous-require
 const uuidv4 = require("uuid/v4");
 const Knex = require("knex");
-const knexConfig = require("./knexfile");
 
+const AppConstants = require("../app-constants");
 const HIBP = require("../hibp");
 const getSha1 = require("../sha1-utils");
 
-const knex = Knex(knexConfig[AppConstants.NODE_ENV]);
+const knexConfig = require("./knexfile");
+let knex = Knex(knexConfig[AppConstants.NODE_ENV]);
 
 
 const DB = {
@@ -88,11 +88,14 @@ const DB = {
     const sha1 = getSha1(email);
 
     return await this._getSha1EntryAndDo(sha1, async aEntry => {
-      const removedSubscriber = await knex("subscribers")
-        .update({ email: null })
+      await knex("subscribers")
         .where("id", "=", aEntry.id)
-        .returning("*");
-      return removedSubscriber[0];
+        .del();
+      console.log("Removed subscriber ID: ", aEntry.id);
+      return aEntry;
+    }, async () => {
+      console.warn("removeSubscriber called with email not found in database.");
+      return;
     });
   },
 
@@ -100,8 +103,15 @@ const DB = {
     return await knex("subscribers").whereIn("sha1", hashes).andWhere("verified", "=", true);
   },
 
+  async createConnection() {
+    if (knex === null) {
+      knex = Knex(knexConfig[AppConstants.NODE_ENV]);
+    }
+  },
+
   async destroyConnection() {
     await knex.destroy();
+    knex = null;
   },
 
 };

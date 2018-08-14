@@ -15,6 +15,7 @@ const kEnvironmentVariables = [
   "SMTP_USERNAME",
   "SMTP_PASSWORD",
   "EMAIL_FROM",
+  "SES_CONFIG_SET",
   "OAUTH_AUTHORIZATION_URI",
   "OAUTH_TOKEN_URI",
   "OAUTH_PROFILE_URI",
