@@ -12,12 +12,10 @@ body {
   box-sizing: border-box;
   font-size: 100%;
   line-height: 1.5;
-
   --roundedCorners: 2px;
   --gap: 20px;
   --darker: rgba(0, 33, 117, 0.25);
   --maxWidthHalf: 500px;
-
   -webkit-overflow-scrolling: touch;
 
   /* photon style vars */
@@ -1032,15 +1030,12 @@ footer a {
 .footer-links {
   justify-content: flex-start;
   align-items: center;
+  display: flex;
 }
 
 .footer-links > *,
 footer .two-thirds > * {
   margin-right: var(--gap);
-}
-
-.footer-links {
-  display: flex;
 }
 
 #GitHub-logo {
@@ -1144,12 +1139,7 @@ footer .two-thirds > * {
   .email-scan .input-group {
     max-width: 100% !important;
   }
-
-  /* footer div {
-    text-align: center;
-    justify-content: center !important;
-  }
-} */
+}
 
 @media screen and (max-width: 786px) {
   header #sign-up-button-group {
@@ -1191,10 +1181,6 @@ footer .two-thirds > * {
     margin: var(--gap) 0 0 0;
   }
 
-  /* footer .two-thirds {
-    flex-direction: column;
-  } */
-
   .footer-links {
     margin-top: var(--gap);
   }
@@ -1220,10 +1206,6 @@ footer .two-thirds > * {
   .tip {
     min-height: 300px;
   }
-
-  /* .svg-background {
-
-  } */
 }
 
 button,
@@ -1245,3 +1227,4 @@ button:hover,
 .form-group.invalid .error-message::before {
   transition: all 0.1s ease;
 }
+
