@@ -3,7 +3,7 @@
 const DB = require("../db/DB");
 
 
-const notification = async function(req, res) {
+async function notification(req, res) {
   try {
     const notification = JSON.parse(req.body);
     // TODO: verifyNotification(notification) or use http basic auth
@@ -17,10 +17,10 @@ const notification = async function(req, res) {
       {info: "Internal error."}
     );
   }
-};
+}
 
 
-const handleNotification = async function(notification) {
+async function handleNotification(notification) {
   console.log("Received SES message, ID: ", notification.MessageId);
   const message = JSON.parse(notification.Message);
   switch (message.eventType) {
@@ -33,10 +33,10 @@ const handleNotification = async function(notification) {
     default:
       console.log("Unhandled eventType: ", message.eventType);
   }
-};
+}
 
 
-const handleBounceMessage = async function(message) {
+async function handleBounceMessage(message) {
   const bounce = message.bounce;
   if (
     bounce.bounceType === "Permanent" &&
@@ -44,20 +44,20 @@ const handleBounceMessage = async function(message) {
   ) {
     return await removeSubscribersFromDB(bounce.bouncedRecipients);
   }
-};
+}
 
 
-const handleComplaintMessage = async function(message) {
+async function handleComplaintMessage(message) {
   const complaint = message.complaint;
   return await removeSubscribersFromDB(complaint.complainedRecipients);
-};
+}
 
 
-const removeSubscribersFromDB = async function(recipients) {
+async function removeSubscribersFromDB(recipients) {
   for (const recipient of recipients) {
     await DB.removeSubscriber(recipient.emailAddress);
   }
-};
+}
 
 module.exports = {
   notification,
