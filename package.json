@@ -51,7 +51,8 @@
   "nyc": {
     "exclude": [
       "db/seeds/**.js",
-      "db/migrations/**.js"
+      "db/migrations/**.js",
+      "public/**/**.js"
     ],
     "all": true
   },
