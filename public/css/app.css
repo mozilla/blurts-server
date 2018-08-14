@@ -1018,13 +1018,17 @@ footer {
   font-size: 13px;
 }
 
+footer .section-wrapper {
+  padding-top: var(--gap);
+  padding-bottom: var(--gap);
+}
+
 footer a {
   font-weight: 400;
   color: var(--grey90);
   opacity: 1;
 }
 
-footer .two-thirds,
 .footer-links {
   justify-content: flex-start;
   align-items: center;
@@ -1141,11 +1145,11 @@ footer .two-thirds > * {
     max-width: 100% !important;
   }
 
-  footer div {
+  /* footer div {
     text-align: center;
     justify-content: center !important;
   }
-}
+} */
 
 @media screen and (max-width: 786px) {
   header #sign-up-button-group {
@@ -1187,16 +1191,16 @@ footer .two-thirds > * {
     margin: var(--gap) 0 0 0;
   }
 
-  footer .two-thirds {
+  /* footer .two-thirds {
     flex-direction: column;
-  }
+  } */
 
   .footer-links {
     margin-top: var(--gap);
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 375px) {
   body {
     --gap: 15px;
   }
@@ -1206,7 +1210,7 @@ footer .two-thirds > * {
   }
 
   .third {
-    min-width: 270px;
+    min-width: 200;
   }
 
   .tip-container {
