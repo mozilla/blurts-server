@@ -17,10 +17,9 @@ const ResponseCodes = Object.freeze({
 
 const router = express.Router();
 const jsonParser = bodyParser.json();
-const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 
 
-router.post("/add", urlEncodedParser, async (req, res) => {
+router.post("/add", jsonParser, async (req, res) => {
   const email = req.body.email;
   const verificationToken = await DB.addSubscriberUnverifiedEmailHash(email);
 
@@ -34,10 +33,9 @@ router.post("/add", urlEncodedParser, async (req, res) => {
       { email, url}
     );
 
-    res.render("add", {
-      title: "Verify email",
-      email: email,
-    });
+      res.send({
+        title: "Firefox Monitor : Confirm Email",
+      });
   } catch (e) {
     console.error(e);
     res.status(500).json({
