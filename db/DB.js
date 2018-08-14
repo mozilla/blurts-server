@@ -104,11 +104,14 @@ const DB = {
   },
 
   async createConnection() {
-    knex = Knex(knexConfig[AppConstants.NODE_ENV]);
+    if (knex === null) {
+      knex = Knex(knexConfig[AppConstants.NODE_ENV]);
+    }
   },
 
   async destroyConnection() {
     await knex.destroy();
+    knex = null;
   },
 
 };
