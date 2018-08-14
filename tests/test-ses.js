@@ -11,8 +11,7 @@ const ses = require("../controllers/ses");
 
 
 const createRequestBody = function(notificationType) {
-  const cwd = path.join(path.dirname(fs.realpathSync(__filename)));
-  const bodyFile = path.join(cwd, `ses-${notificationType}-notification.json`);
+  const bodyFile = path.join(__dirname, `ses-${notificationType}-notification.json`);
   return fs.readFileSync(bodyFile).toString();
 };
 
