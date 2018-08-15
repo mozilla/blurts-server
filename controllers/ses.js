@@ -38,10 +38,7 @@ async function handleNotification(notification) {
 
 async function handleBounceMessage(message) {
   const bounce = message.bounce;
-  if (
-    bounce.bounceType === "Permanent" &&
-    ["General", "NoEmail"].includes(bounce.bounceSubType)
-  ) {
+  if (bounce.bounceType === "Permanent") {
     return await removeSubscribersFromDB(bounce.bouncedRecipients);
   }
 }

@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "arg": "^2.0.0",
+    "basic-auth": "^2.0.0",
     "body-parser": "^1.18.3",
     "client-oauth2": "^4.2.1",
     "client-sessions": "^0.8.0",
