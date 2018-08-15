@@ -131,7 +131,7 @@ img {
 .section-wrapper {
   display: flex;
   flex-wrap: wrap;
-  padding: calc(var(--gap) * 2) calc(var(--gap) * 1.5);
+  padding: 0 calc(var(--gap) * 1.5);
   justify-content: space-between;
   max-width: 1400px;
   min-width: 300px;
@@ -633,6 +633,7 @@ main span.breach-info {
   text-align: center;
   flex-direction: column;
   background: rgba(255, 255, 255, 0.04);
+  margin-top: calc(var(--gap) * 2);
   margin-bottom: calc(var(--gap) * 2);
   padding: calc(var(--gap) * 2);
 }
