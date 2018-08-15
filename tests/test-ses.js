@@ -30,11 +30,12 @@ test("setup", async t => {
 
 test("ses notification with Permanent bounce unsubscribes recipient", async t => {
   const bounceSubTypes = ["General", "NoEmail", "Suppressed"];
-  for (let i=0; i < bounceSubTypes.length; i++) {
-    const testEmail = "bounce@simulator.amazonses.com";
+  const testEmail = "bounce@simulator.amazonses.com";
+  const testHashes = [getSha1(testEmail)];
 
+  for (let i=0; i < bounceSubTypes.length; i++) {
     await DB.addSubscriber(testEmail);
-    let subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
+    let subscribers = await DB.getSubscribersByHashes(testHashes);
     t.deepEqual(subscribers.length, 1);
 
     const req = httpMocks.createRequest({
@@ -47,7 +48,7 @@ test("ses notification with Permanent bounce unsubscribes recipient", async t =>
     await ses.notification(req, resp);
     t.deepEqual(resp.statusCode, 200);
 
-    subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
+    subscribers = await DB.getSubscribersByHashes(testHashes);
     t.deepEqual(subscribers.length, 0);
   }
 });
