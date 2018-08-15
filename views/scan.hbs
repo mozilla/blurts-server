@@ -1,33 +1,30 @@
 {{!< default }}
-
-  <div id="banner-info" class="section-container">
-    <div id="banner-sections-wrapper">
-      <div id="banner-left">
-        <div class="banner-content">
-          {{#if foundBreaches }}
-            {{> oh_no }}
-          {{ else }}
-            {{> no_breaches }}
-          {{/if}}
-        </div>
-      </div><!--closes banner-left-->
-
-      <div id="banner-right">
-        <img id="arrow-divider" src="img/arrow_divider.png" alt="" />
-        <div class="banner-content">
-          {{> sign_up }}
-        </div>
-      </div><!--close banner-right -->
-    </div>
-  </div>
-
-  {{#if foundBreaches }}
-    <div class="section-container">
-      <div id="compromised-accounts-wrapper">
-        <div class="column-container-twothirds">{{> compromised_accounts }}</div>
-        <div class="column-container-third">{{> what_to_do }}</div>
+<main>
+  <div class="section-wrapper">
+    <div class="half">
+      <div class="banner-content">
+        {{#if foundBreaches }}
+          {{> oh_no }}
+        {{ else }}
+          {{> no_breaches }}
+        {{/if}}
       </div>
     </div>
-  {{ else }}
-    {{> tips }}
-  {{/if}}
+
+    <div class="half">
+      <img id="arrow-divider" src="img/arrow_divider.png" alt="" />
+      <div class="banner-content">
+        {{> sign_up_button }}
+      </div>
+    </div>
+  </div>
+</main>
+
+{{#if foundBreaches }}
+  <div class="compromised-accounts section-wrapper">
+    <div class="two-thirds">{{> compromised_accounts }}</div>
+    <div class="third">{{> what_to_do }}</div>
+  </div>
+{{ else }}
+  {{> tips }}
+{{/if}}

@@ -1,18 +1,23 @@
-<div id="compromised-accounts">
+<!--if user scanned email from a 'featured Breach' page-->
+{{#if featuredBreach}}
+  {{> featured_compromised_account}}
+{{else}}
   <h3>Your Compromised Accounts</h3>
-  {{#each foundBreaches }}
-    <div class="account">
-      <div class="image-wrap">
-        <img alt="{{ Name }}" src="img/logos/{{ Name }}.{{ LogoType }}" />
-      </div>
-      <div class="breach-info-wrap">
-        <h4 class="demi">{{ Title }}</h4>
-        <span class="breach-info"><span class="medium">Breach date:</span> {{prettyDate BreachDate }}</span>
-        <span class="breach-info"><span class="medium">Compromised data:</span> {{breachDataClasses DataClasses }}</span>
-        <span class="breach-info"><span class="medium">Compromised accounts:</span> {{localeString PwnCount }}</span>
-      </div>
-    </div>
-  {{/each}}
+{{/if}}
 
-  {{> hipb_attribution }}
-</div>
+<!--list first 5 breaches-->
+{{#each_from_to foundBreaches 0 5 }}
+  {{> breach_listing }}
+{{/each_from_to}}
+
+<!--display button and list remainder of breaches on click-->
+ {{#if_conditional foundBreaches 5}}
+  <div id="additional-breaches">
+    {{#each_from_to foundBreaches 5 foundBreaches.length }}
+      {{> breach_listing }}
+    {{/each_from_to}}
+  </div>
+  <button id="show-additional-breaches" class="button">Show Additional Breaches</button>
+{{/if_conditional}}
+
+{{> hibp_attribution }}

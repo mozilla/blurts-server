@@ -40,7 +40,7 @@ function getLocation() {
   }
 }
 
-function handleEvents(string) {
+function sendGAPing(string) {
   if(typeof(ga) !== "undefined") {
     const eventLocation = getLocation();
     const event = events[string];
@@ -57,13 +57,6 @@ function isValidEmail(val) {
   return re.test(String(val).toLowerCase());
 }
 
-function addClass(selector, className) {
-  const el = document.querySelector(selector);
-  if (el) {
-    el.classList.add(className);
-  }
-}
-
 function removeClass(selector, className) {
   const el = document.querySelector(selector);
   if (el) {
@@ -71,70 +64,82 @@ function removeClass(selector, className) {
   }
 }
 
+function removeInvalidMessage(e) {
+  const thisForm = e.target.form;
+  thisForm.classList.remove("invalid");
+}
+
 function doOauth() {
   window.open("/oauth/init");
 }
 
-function handleSignUpModal() {
-  handleEvents("SignUp");
-  addClass("body","show-subscribe-modal");
-  window.addEventListener("keydown", function subscribeModalKeyListener(e) {
-    if (e.code !== "Enter" && e.code !== "Escape") {
-      return;
+// restricts tabbing to modal elements when modal is open.
+// disables tabbing on modal elements when modal is closed. 
+function setModalTabbing(){
+  // get tabbable elements in sign up form window
+  let modalTabContent = Array.from(document.getElementById("subscribe-to-ffxm").querySelectorAll("a, input, button"));
+  // if "confirm your email" message is showing, tab those elements instead
+  if (!document.getElementById("subscribe-to-ffxm").classList.contains("show")) {
+    modalTabContent = Array.from(document.getElementById("confirm-your-account").querySelectorAll("a, input, button"));
+  }
+  // if modal is displayed, set tabindex to 1 on only those elements 
+  // and disable tabbing on everything else
+  if (document.body.classList.contains("show-subscribe-modal")) {
+    for (const eachElement of document.querySelectorAll("a, button, input")) {
+      eachElement.setAttribute("tabindex", modalTabContent.includes(eachElement) ? "1" : "-1");
     }
-    removeClass("body", "show-subscribe-modal");
-    window.removeEventListener("keydown", subscribeModalKeyListener);
-  });
+    return;
+  }
+  // disable tabbing if modal window is closed and re-enable all other tabbing
+  for (const eachElement of document.querySelectorAll("a, button, input")) {
+    eachElement.setAttribute("tabindex", !modalTabContent.includes(eachElement) ? "1" : "-1");
+  }
+}  
+
+function closeModalWindow() {
+  document.body.classList.remove("show-subscribe-modal");
+  removeClass("#subscribe-to-ffm", "show");
+  removeClass("#confirm-your-account", "show");
+  document.getElementById("subscribe-email-input").value = "";
+  document.getElementById("additional-emails-checkbox").checked = false;
+  setModalTabbing();
 }
 
-function addSubscriptionListeners() {
+function openModalWindow() {
+  sendGAPing("SignUp");
+  document.body.classList.add("show-subscribe-modal");
+  document.getElementById("subscribe-to-ffxm").classList.add("show");
+  setModalTabbing();
   const subscribeModal = document.getElementById("subscribe-modal");
-  subscribeModal.addEventListener("click", function subscribeModalClickListener(e) {
+  subscribeModal.addEventListener("click", function closeWrapper(e) {
     if (e.target === subscribeModal) {
-      removeClass("body", "show-subscribe-modal");
+      closeModalWindow();
+      document.getElementById("subscribe-modal").removeEventListener("click", closeWrapper);
     }
   });
-  document.querySelector("#subscribe-fxa-btn").addEventListener("click", function fxaSubmit() {
-    doOauth();
-    removeClass("body", "show-subscribe-modal");
-  });
 }
 
-function enableBtnIfEmailValid(e) {
-  const thisForm = e.target.form;
-  const emailButton = thisForm.querySelector(".submit-email");
-  if (isValidEmail(e.target.value)) {
-      emailButton.disabled = false;
-      thisForm.classList.remove("invalid");
-  } else {
-      emailButton.disabled = true;
-      if(e.code === "Enter") {
-        thisForm.classList.add("invalid");
-      }
+// handles checkbox states and expands the 'checkbox clickable space'
+// by letting user click the checkbox's wrapping div to toggle states
+function checkBoxStates(checkBoxEvent) {
+  checkBoxEvent.preventDefault();
+  let checkBox;
+  // user tabs (keyCode === 16) or tabs BACK (keyCode === 16) to checkbox element
+  if (checkBoxEvent.keyCode === 9 || checkBoxEvent.keyCode === 16) {
+    checkBox = checkBoxEvent.target;
+    checkBox.focused = true;
+    return;
   }
-}
-
-function findParent(element, tag) {
-  while (element.parentNode) {
-      element = element.parentNode;
-      if (element.tagName === tag)
-          return element;
+  // user hit space to select checkbox element
+  if (checkBoxEvent.keyCode === 32 ) {
+    checkBox = checkBoxEvent.target;
+  } 
+  // user clicks checkbox group
+  if (checkBoxEvent.target.classList.contains("checkbox-group")) {
+    const thisCheckBoxGroup = checkBoxEvent.target;
+    checkBox = thisCheckBoxGroup.querySelector("input[type=checkbox]");
   }
-  return null;
-}
-
-function showMessageIfDisabled(e) {
-  const thisElement = e.target;
-  const thisForm = findParent(thisElement, "FORM");
-  if(thisForm) {
-    thisForm.classList.add("invalid");
-  }
-}
-
-function removeInvalidMessage(e) {
-  enableBtnIfEmailValid(e);
-  const thisForm = e.target.form;
-  thisForm.classList.remove("invalid");
+  checkBox.checked = !checkBox.checked;
 }
 
 async function sha1(message) {
@@ -147,14 +152,8 @@ async function sha1(message) {
 }
 
 async function hashEmailAndSend(emailFormSubmitEvent) {
-  emailFormSubmitEvent.preventDefault();
   const emailForm = emailFormSubmitEvent.target;
-  if (!emailForm.querySelector("input[name=email]").value) {
-    emailForm.querySelector("input[type=submit]").disabled = true;
-    emailForm.classList.add("invalid");
-    return;
-  }
-  handleEvents("Scan");
+  sendGAPing("Scan");
   emailForm.classList.add("loading-data");
   for (const emailInput of emailForm.querySelectorAll("input[type=email]")) {
     emailForm.querySelector("input[name=emailHash]").value = await sha1(emailInput.value);
@@ -163,47 +162,129 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
   emailForm.submit();
 }
 
-function addFormListeners() {
-  for (const input of document.querySelectorAll(".input-group-field")) {
-    input.addEventListener("keydown", (e) => enableBtnIfEmailValid(e));
-    input.addEventListener("focusin", (e) => removeInvalidMessage(e));
+const addUser = (formEvent) => {
+  const formElement = formEvent.target;
+  const formObject = {};
+  formObject["email"] = formElement.querySelector("#subscribe-email-input").value;
+  if (formElement.querySelector("input[type=checkbox]").checked) {
+    formObject["additionalEmails"] = "Opt user in to additional emails";
   }
-  for (const buttonWrapper of document.querySelectorAll(".input-group-button")) {
-    buttonWrapper.addEventListener("click", (e) => showMessageIfDisabled(e));
+  postData(formElement.action, formObject)
+    .then(data => {
+      document.getElementById("subscribe-to-ffxm").classList.remove("show");
+      document.getElementById("confirm-your-account").classList.add("show");
+      setModalTabbing();
+    })
+    .catch(error => console.error(error));
+};
+
+const postData = (url, data = {}) => {
+  return fetch(url, {
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      headers: {
+          "Content-Type": "application/json; charset=utf-8",
+      },
+      // redirect: "follow", // manual, *follow, error
+      referrer: "no-referrer", // no-referrer, *client
+      body: JSON.stringify(data), // body data type must match "Content-Type" header
+  })
+  .then(response => response.json()) // parses response to JSON
+  .catch(error => console.error(error));
+};
+
+function handleFormSubmits(formEvent) {
+  formEvent.preventDefault();
+  const thisForm = formEvent.target;
+  if (!thisForm.email.value || !isValidEmail(thisForm.email.value)) {
+    thisForm.classList.add("invalid");
+    return;
+  }
+  if (thisForm.classList.contains("email-scan")) {
+    hashEmailAndSend(formEvent);
+    return;
+  }
+  if (formEvent.target.id === "subscribe-form") {
+    addUser(formEvent);
+    setModalTabbing();
+    return;
+  }
+  return;
+}
+
+function addFormListeners() {
+  for (const form of document.forms) {
+    if (form.querySelector("input[type=email]")) {
+      const emailInput = form.querySelector("input[type=email]");
+      emailInput.addEventListener("keydown", (e) => removeInvalidMessage(e));
+      emailInput.addEventListener("focusin", (e) => removeInvalidMessage(e));
+    }
+    if (form.querySelector("input[type=checkbox]")) {
+      const checkBoxWrapper = form.querySelector(".checkbox-group");
+      checkBoxWrapper.addEventListener("click", (e) => checkBoxStates(e));
+      checkBoxWrapper.addEventListener("keyup",(e) => checkBoxStates(e));
+    }
+    form.addEventListener("submit", (e) => handleFormSubmits(e));
   }
 }
 
-//re-enables inputs and clears loader 
+function showAdditionalBreaches(){
+  document.getElementById("show-additional-breaches").classList.toggle("hide");
+  const additionalBreaches = document.getElementById("additional-breaches");
+  additionalBreaches.classList.toggle("show-breaches");
+  //setting height this way enables transition easing... setting the new height to "auto" 
+  if (additionalBreaches.classList.contains("show-breaches")) {
+    additionalBreaches.style.height = additionalBreaches.scrollHeight + "px";
+  }
+}
+
+function doButtonRouting(event) {
+  if (event.target.id === "show-additional-breaches") {
+    showAdditionalBreaches();
+    return;
+  }
+  if (event.target.id === "sign-up") {
+    openModalWindow();
+    return;
+  }
+  if (event.target.id === "subscribe-fxa-btn") {
+    doOauth();
+    closeModalWindow();
+    return;
+  }
+  if (event.target.classList.contains("close-modal")) {
+    closeModalWindow();
+    return;
+  }
+  return;
+}
+
+//re-enables inputs and clears loader
 function restoreInputs() {
-  for (const input of document.querySelectorAll(".input-group-field")) {
+  for (const input of document.querySelectorAll("input")) {
     if (input.disabled) {
       input.disabled = false;
     }
   }
-  removeClass(".form-group", "loading-data");
-  removeClass(".form-group", "invalid");
+  removeClass("form", "loading-data");
+  removeClass("form", "invalid");
 }
 
-//adds listeners to scan and subscription forms.
-if (document.querySelector(".form-group")) {
-  addFormListeners();
-  if (document.querySelector(".email-scan")) {
-    document.querySelector(".email-scan").addEventListener("submit", hashEmailAndSend);
-  }
-}
 
 window.addEventListener("pageshow", function() {
   if (document.getElementById("no-breaches") || document.getElementById("found-breaches")) {
-    handleEvents("Pageview");
+    sendGAPing("Pageview");
   }
-  if (document.querySelector(".form-group")) {
+  if (document.forms) {
     restoreInputs();
   }
 });
 
-// eslint-disable-next-line no-unused-vars
+if(document.forms) {
+  addFormListeners();
+}
 
-if (document.getElementById("sign-up")) {
-  document.getElementById("sign-up").addEventListener("click", handleSignUpModal);
-  addSubscriptionListeners();
+if (document.querySelectorAll("button")) {
+  for (const eachButton of document.querySelectorAll("button")) {
+    eachButton.addEventListener("click", (e) => doButtonRouting(e));
+  }
 }

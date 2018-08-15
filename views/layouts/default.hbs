@@ -2,8 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Firefox Monitor notifies users when their credentials have possibly been leaked or stolen in a data breach. Powered by haveibeenpwned.com."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Firefox Monitor notifies users when their credentials have possibly been leaked or stolen in a data breach. Powered by haveibeenpwned.com." />
+    <meta property="og:title" content="Firefox Monitor" />
+    <meta name="twitter:title" content="Firefox Monitor" />
+    <meta property="og:description" content="Protect yourself from hackers." />
+    <meta name="twitter:description" content="Protect yourself from hackers." />
+    <meta property="og:url" content="https://monitor.firefox.com" />
+    <meta property="og:image" content="https://monitor.firefox.com/img/firefox-share.png" />
     <title>{{ title }}</title>
     <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
     <link rel="stylesheet" href="/css/app.css">
@@ -16,38 +22,32 @@
     <link rel="icon" href="/img/favicons/favicon-228.png" sizes="228x228" />
   </head>
   <body>
-    <div class="page-wrap">
-      <header class ="top-bar">
-        <div class="section-wrapper">
-          <div class="top-bar-left">
-            <a href="/">
-              <h1><img alt="Firefox Logo" class="logo" src="/img/firefox.png" /><span class="medium">Firefox</span> Monitor</h1>
-            </a>
-          </div>
-
-          {{#if breach}}
-            <div class="top-bar-right">
-              {{> sign_up }}
-            </div>
-          {{/if}}
-        </div>
-      </header>
-
+    <header class ="section-wrapper">
+      <div class="whole">
+        <a href="/">
+          <img alt="Firefox Logo" class="logo" src="/img/firefox.png" />
+          <h1><span class="medium">Firefox</span> Monitor</h1>
+        </a>
+        {{#if breach}}
+          {{> sign_up_button }}
+        {{/if}}
+      </div>
+    </header>
       {{{ body }}}
-    </div>
-      <footer>
+  
+    <footer id="footer">
       <div class="section-wrapper">
-        <div class="footer-left">
+        <nav class="footer-links-wrapper two-thirds">
           <a class="footer-logo-wrapper" href="https://www.mozilla.org"><img src="/img/moz-logo-bw-rgb.svg" alt="Mozilla Logo" /></a>
+          <section class="footer-links">
             <a href="https://www.mozilla.org/about/legal/">Terms</a>
             <a href="https://www.mozilla.org/privacy/websites/">Privacy</a>
+            <a href="/">Give Feedback</a>
             <a id="GitHub-logo" href="https://github.com/mozilla/blurts-server/"><img src="/img/github.svg" alt="Github Logo" /></a>
-        </div>
-        <div class="footer-right">
-          <p>Portions of this content are &copy; 1998-2018 by individual mozilla.org contributors. Content available under a <a href="https://www.mozilla.org/foundation/licensing/website-content/">Creative Commons license</a>.</p>
-        </div>
+          </section>
+        </nav>
+        <p class="third">Portions of this content are &copy; 1998-2018 by individual mozilla.org contributors. <br />Content available under a <a href="https://www.mozilla.org/foundation/licensing/website-content/">Creative Commons license</a>.</p>
       </div>
-      </footer>
+    </footer>
   </body>
 </html>
-
