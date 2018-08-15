@@ -990,7 +990,7 @@ span.breach-info {
 
 .social-media-sharing-buttons img {
   min-width: 20px;
-  max-width:20px;
+  max-width: 20px;
 }
 
 /* PLACEHOLDER
@@ -1079,7 +1079,6 @@ footer .two-thirds {
 /* // PLACEHOLDER media screens */
 
 @media screen and (max-width: 1000px) {
-
   main .section-wrapper {
     padding: 0 0 0 0;
   }
@@ -1171,7 +1170,6 @@ footer .two-thirds {
 }
 
 @media screen and (max-width: 786px) {
-
   header #sign-up-button-group {
     display: none;
   }
@@ -1212,7 +1210,6 @@ footer .two-thirds {
 }
 
 @media screen and (max-width: 480px) {
-
   body {
     padding-bottom: 30vh;
   }
@@ -1247,9 +1244,9 @@ footer .two-thirds {
 }
 
 @media screen and (max-width: 375px) {
-
   body {
     --gap: 15px;
+
     padding-bottom: 60vh;
   }
 
