@@ -94,7 +94,7 @@ function setModalTabbing(){
   for (const eachElement of document.querySelectorAll("a, button, input")) {
     eachElement.setAttribute("tabindex", !modalTabContent.includes(eachElement) ? "1" : "-1");
   }
-}
+}  
 
 function closeModalWindow() {
   document.body.classList.remove("show-subscribe-modal");
@@ -111,9 +111,10 @@ function openModalWindow() {
   document.getElementById("subscribe-to-ffxm").classList.add("show");
   setModalTabbing();
   const subscribeModal = document.getElementById("subscribe-modal");
-  subscribeModal.addEventListener("click", (e) => {
+  subscribeModal.addEventListener("click", function closeWrapper(e) {
     if (e.target === subscribeModal) {
       closeModalWindow();
+      document.getElementById("subscribe-modal").removeEventListener("click", closeWrapper);
     }
   });
 }

@@ -276,12 +276,19 @@ input[type="password"]:hover {
 }
 
 button:focus,
+.button:focus,
+input[type="submit"]:focus,
 input[type="email"]:focus,
 input[type="text"]:focus,
 input[type="password"]:focus {
   border: 1px solid var(--blue50);
   box-shadow: 0 0 0 1px #0a84ff, 0 0 0 4px rgba(10, 132, 255, 0.3);
   outline: none;
+}
+
+button:focus::-moz-focus-inner,
+input:focus::-moz-focus-inner {
+  border: 0;
 }
 
 a:focus {
@@ -421,22 +428,6 @@ h5 {
 
 /* scan email form  */
 
-.email-scan .button {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  margin: auto;
-  font-size: 1rem;
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  text-align: right;
-  border: 1px solid var(--blue50);
-  border-left: 0;
-}
-
 .email-scan .input-group {
   flex-direction: row;
   position: relative;
@@ -458,16 +449,27 @@ h5 {
   min-width: 100px;
 }
 
-.form-group.invalid .button[disabled],
-.form-group .button[disabled] {
-  pointer-events: none !important;
+.email-scan input[type="submit"] {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  font-size: 1rem;
+  text-align: right;
+  border: 0;
 }
 
-.email-scan.invalid .button {
-  border: 1px solid var(--red60);
-  border-left: 0;
+.email-scan.invalid input[type="submit"] {
   background-color: var(--red60);
-  color: rgba(254, 254, 254, 0.4);
+  color: rgba(254, 254, 254, 0.6);
+}
+
+.email-scan input[type="submit"]:focus {
+  border-top-left-radius: var(--roundedCorners);
+  border-bottom-left-radius: var(--roundedCorners);
+}
+
+.email-scan.invalid input[type="submit"]:focus {
+  border: 0;
+  box-shadow: none;
 }
 
 /* header **************** */
@@ -545,7 +547,7 @@ main {
   margin: 0 0 0 0;
 }
 
-main .section-wrapper {
+main.section-wrapper {
   padding-top: 0;
   padding-bottom: 0;
   min-height: 40vh;
@@ -631,7 +633,6 @@ main span.breach-info {
   text-align: center;
   flex-direction: column;
   background: rgba(255, 255, 255, 0.04);
-  margin-top: calc(var(--gap) * 2);
   margin-bottom: calc(var(--gap) * 2);
   padding: calc(var(--gap) * 2);
 }
@@ -650,7 +651,6 @@ main span.breach-info {
   height: 100%;
   text-align: center;
   position: relative;
-  border: 1px solid rgba(0, 34, 117, 0);
   border-radius: var(--roundedCorners);
   background-color: rgba(255, 255, 255, 0.05);
   transition: background-color 0.15s ease-out;
@@ -725,7 +725,6 @@ main span.breach-info {
   display: flex;
   background-color: rgba(12, 12, 13, 0.6);
   opacity: 0;
-  pointer-events: none;
   transition: opacity 0.1s ease, visibility 0.1s ease;
 }
 
@@ -750,6 +749,7 @@ body.show-subscribe-modal .modal-content {
   left: var(--gap);
   right: var(--gap);
   width: auto;
+  min-height: 400px;
   height: auto;
   max-height: 500px;
   max-width: var(--maxWidthHalf);
@@ -766,10 +766,20 @@ body.show-subscribe-modal .modal-content {
 }
 
 body.show-subscribe-modal .modal-content.show {
+  color: var(--grey90);
   visibility: visible;
   pointer-events: all;
   opacity: 1;
   transition: opacity 0.1s ease, visibility 0.1s ease;
+}
+
+.modal-content ::-moz-selection,
+.modal-content ::selection {
+  background: transparent;
+}
+
+.modal-content.show h3 {
+  color: var(--grey90);
 }
 
 .modal-wrapper {
@@ -798,6 +808,12 @@ body.show-subscribe-modal .modal-content.show {
 
 #subscribe-modal form {
   margin-top: var(--gap);
+}
+
+.modal-content h3,
+.modal-content p,
+.modal-content label {
+  user-select: none;
 }
 
 /* ///// compromised accounts  */
@@ -902,13 +918,8 @@ span.breach-info {
 
 /* /////// WHAT TO DO LIST FORM */
 
-#what-to-do .form-group.invalid .error-message {
-  display: block !important;
-  margin-bottom: 5px;
-  color: rgb(255, 255, 255);
-}
-
 #what-to-do .form-group input[type="email"] {
+  padding-right: 54px;
   border: 1px solid var(--blue50);
 }
 
@@ -965,24 +976,20 @@ span.breach-info {
 /* /// SOCIAL MEDIA SHARING BUTTONS  */
 
 .social-media-sharing-buttons {
-  justify-content: space-between;
-  max-width: calc(var(--maxWidthHalf) / 2);
+  list-style-type: none;
   white-space: nowrap;
   font-size: 12px;
 }
 
-.social-media-sharing-buttons a {
-  align-items: center;
-  margin: auto;
-}
-
-.social-media-sharing-buttons,
-.social-media-sharing-buttons > * {
-  display: flex;
+.social-media-sharing-buttons li {
+  max-width: 20px;
+  display: inline-block;
+  margin-right: 10px;
 }
 
 .social-media-sharing-buttons img {
   min-width: 20px;
+  max-width:20px;
 }
 
 /* PLACEHOLDER
@@ -1071,6 +1078,7 @@ footer .two-thirds {
 /* // PLACEHOLDER media screens */
 
 @media screen and (max-width: 1000px) {
+
   main .section-wrapper {
     padding: 0 0 0 0;
   }
@@ -1162,6 +1170,7 @@ footer .two-thirds {
 }
 
 @media screen and (max-width: 786px) {
+
   header #sign-up-button-group {
     display: none;
   }
@@ -1202,6 +1211,7 @@ footer .two-thirds {
 }
 
 @media screen and (max-width: 480px) {
+
   body {
     padding-bottom: 30vh;
   }
@@ -1236,14 +1246,14 @@ footer .two-thirds {
 }
 
 @media screen and (max-width: 375px) {
+
   body {
     --gap: 15px;
-
     padding-bottom: 60vh;
   }
 
   .section-wrapper {
-    padding: 0 var(--gap);
+    padding: var(--gap);
   }
 
   .third {
