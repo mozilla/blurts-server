@@ -1,7 +1,6 @@
 "use strict";
 
 const httpMocks = require("node-mocks-http");
-const test = require("tape-async");
 
 const DB = require("../db/DB");
 const getSha1 = require("../sha1-utils");
@@ -23,12 +22,12 @@ const createRequestBody = function(notificationType, bounceSubType = null) {
 };
 
 
-test("setup", async t => {
+beforeAll(() => {
   DB.createConnection();
 });
 
 
-test("ses notification with Permanent bounce unsubscribes recipient", async t => {
+test("ses notification with Permanent bounce unsubscribes recipient", async () => {
   const bounceSubTypes = ["General", "NoEmail", "Suppressed"];
   const testEmail = "bounce@simulator.amazonses.com";
   const testHashes = [getSha1(testEmail)];
@@ -36,7 +35,7 @@ test("ses notification with Permanent bounce unsubscribes recipient", async t =>
   for (let i=0; i < bounceSubTypes.length; i++) {
     await DB.addSubscriber(testEmail);
     let subscribers = await DB.getSubscribersByHashes(testHashes);
-    t.deepEqual(subscribers.length, 1);
+    expect(subscribers.length).toEqual(1);
 
     const req = httpMocks.createRequest({
       method: "POST",
@@ -46,20 +45,20 @@ test("ses notification with Permanent bounce unsubscribes recipient", async t =>
     const resp = httpMocks.createResponse();
 
     await ses.notification(req, resp);
-    t.deepEqual(resp.statusCode, 200);
+    expect(resp.statusCode).toEqual(200);
 
     subscribers = await DB.getSubscribersByHashes(testHashes);
-    t.deepEqual(subscribers.length, 0);
+    expect(subscribers.length).toEqual(0);
   }
 });
 
 
-test("ses notification with Complaint unsubscribes recipient", async t => {
+test("ses notification with Complaint unsubscribes recipient", async () => {
   const testEmail = "complaint@simulator.amazonses.com";
 
   await DB.addSubscriber(testEmail);
   let subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
-  t.deepEqual(subscribers.length, 1);
+  expect(subscribers.length).toEqual(1);
 
   const req = httpMocks.createRequest({
     method: "POST",
@@ -69,13 +68,13 @@ test("ses notification with Complaint unsubscribes recipient", async t => {
   const resp = httpMocks.createResponse();
 
   await ses.notification(req, resp);
-  t.deepEqual(resp.statusCode, 200);
+  expect(resp.statusCode).toEqual(200);
 
   subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
-  t.deepEqual(subscribers.length, 0);
+  expect(subscribers.length).toEqual(0);
 });
 
 
-test("teardown", async t => {
+afterAll(() => {
   DB.destroyConnection();
 });
