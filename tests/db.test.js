@@ -59,19 +59,6 @@ test("verifyEmailHash accepts token and returns verified subscriber", async () =
 });
 
 
-test("verifyEmailHash accepts token, gets error response from HIBP, returns verified subscriber", async () => {
-  const testEmail = "verifyEmailHash@test.com";
-
-  const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(testEmail);
-  expect(unverifiedSubscriber.verified).toBeFalsy();
-
-  HIBP.subscribeHash.mockResolvedValue(true);
-  const verifiedSubscriber = await DB.verifyEmailHash(unverifiedSubscriber.verification_token);
-  expect(verifiedSubscriber.sha1).toBe(getSha1(testEmail));
-  expect(verifiedSubscriber.verified).toBeTruthy();
-});
-
-
 test("addSubscriber accepts email and returns verified subscriber", async () => {
   const testEmail = "newFirefoxAccount@test.com";
 
