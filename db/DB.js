@@ -77,6 +77,7 @@ const DB = {
 
   async _verifySubscriber(emailHash) {
     await HIBP.subscribeHash(emailHash.sha1);
+    // TODO: resolve with error if HIBP fails
     const verifiedSubscriber = await knex("subscribers")
       .where("email", "=", emailHash.email)
       .update({ verified: true })

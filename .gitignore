@@ -1,6 +1,6 @@
 node_modules
 .env
-.nyc_output
+coverage
 .coveralls.yml
 .DS_Store
 .vscode

@@ -34,14 +34,13 @@
     "eslint-plugin-node": "^6.0.1",
     "faucet": "^0.0.1",
     "htmllint-cli": "^0.0.6",
+    "jest": "^23.5.0",
+    "jest-tap-reporter": "^1.9.0",
     "node-mocks-http": "^1.7.0",
     "npm-run-all": "^4.1.3",
     "nsp": "^3.2.1",
-    "nyc": "^11.8.0",
     "stylelint": "^9.2.0",
-    "stylelint-config-standard": "^18.2.0",
-    "tape": "^4.9.1",
-    "tape-async": "^2.3.0"
+    "stylelint-config-standard": "^18.2.0"
   },
   "engines": {
     "node": ">=8"
@@ -49,13 +48,15 @@
   "homepage": "https://github.com/mozilla/blurts-server",
   "license": "MPL-2.0",
   "main": "server.js",
-  "nyc": {
-    "exclude": [
-      "db/seeds/**.js",
-      "db/migrations/**.js",
-      "public/**/**.js"
-    ],
-    "all": true
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.js",
+      "!db/seeds/**.js",
+      "!db/migrations/**.js",
+      "!coverage/**/**.js",
+      "!public/**/**.js"
+    ]
   },
   "private": true,
   "repository": {
@@ -75,9 +76,8 @@
     "start": "node server.js",
     "test:db:migrate": "knex migrate:latest --knexfile db/knexfile.js --env tests",
     "test:db:seed": "knex seed:run --knexfile db/knexfile.js --env tests",
-    "test:tests": "NODE_ENV=tests nyc tape tests/**/test*.js | faucet",
-    "test:report": "nyc report",
-    "test:coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "test": "run-s test:db:migrate test:db:seed test:tests test:report test:coveralls"
+    "test:tests": "NODE_ENV=tests jest tests/ --coverage",
+    "test:coveralls": "cat ./coverage/lcov.info | coveralls",
+    "test": "run-s test:db:migrate test:db:seed test:tests test:coveralls"
   }
 }
