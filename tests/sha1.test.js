@@ -1,6 +1,5 @@
 "use strict";
 
-const test = require("tape-async");
 const getSha1 = require("../sha1-utils");
 
 
@@ -13,7 +12,7 @@ function isHexString(hashDigest) {
   return true;
 }
 
-test("getSha1 returns hex digest", t => {
-  t.ok(isHexString(getSha1("test@test.com")));
-  t.end();
+
+test("getSha1 returns hex digest", () => {
+  expect(isHexString(getSha1("test@test.com"))).toBeTruthy();
 });
