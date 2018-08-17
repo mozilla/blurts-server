@@ -1,2 +1,3 @@
 db/migration
 public/js/vendor
+coverage
