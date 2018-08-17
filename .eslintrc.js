@@ -28,7 +28,15 @@ module.exports = {
         "no-console": "off",
         "no-process-exit": "off",
       }
-    }
+    },
+    {
+      files: [
+        'tests/**/*.js',
+      ],
+      env: {
+        jest: true,
+      }
+    },
   ],
   plugins: [
     "node",
