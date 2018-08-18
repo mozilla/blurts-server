@@ -21,6 +21,11 @@ const DB = {
     return res[0];
   },
 
+  async getSubscribersByEmail(email) {
+    return await knex("subscribers")
+      .where("email", "=", email);
+  },
+
   async addSubscriberUnverifiedEmailHash(email) {
     const res = await knex("subscribers").insert(
       { email: email, sha1: getSha1(email), verification_token: uuidv4(), verified: false }

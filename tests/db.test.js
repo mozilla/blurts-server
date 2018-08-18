@@ -4,13 +4,10 @@ const HIBP = require("../hibp");
 const DB = require("../db/DB");
 const getSha1 = require("../sha1-utils");
 
+require("./resetDB");
+
 
 jest.mock("../hibp");
-
-
-beforeAll(() => {
-  DB.createConnection();
-});
 
 
 test("getSubscriberByToken accepts token and returns subscriber", async () => {
@@ -80,9 +77,4 @@ test("removeSubscriber accepts email and removes the email address", async () =>
   await DB.removeSubscriber(verifiedSubscriber.email);
   subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
   expect(subscribers.length).toEqual(0);
-});
-
-
-afterAll(() => {
-  DB.destroyConnection();
 });
