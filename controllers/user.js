@@ -1,7 +1,8 @@
 "use strict";
 
-const AppConstants = require("../app-constants");
+const isemail = require("isemail");
 
+const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 
@@ -15,29 +16,24 @@ const ResponseCodes = Object.freeze({
 
 async function add(req, res) {
   const email = req.body.email;
-  const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(email);
-  const verificationToken = unverifiedSubscriber.verification_token;
-
-  const url = `${AppConstants.SERVER_URL}/user/verify?token=${encodeURIComponent(verificationToken)}`;
-
-  try {
-    await EmailUtils.sendEmail(
-      email,
-      "Verify your email address to subscribe to Firefox Monitor.",
-      "email_verify",
-      { email, url}
-    );
-
-      res.send({
-        title: "Firefox Monitor : Confirm Email",
-      });
-  } catch (e) {
-    console.error(e);
-    res.status(500).json({
-      error_code: ResponseCodes.InternalError,
-      info: "SMTP error.",
-    });
+  if (!isemail.validate(email)) {
+    throw new Error("Invalid Email");
   }
+  const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(email);
+  const token = unverifiedSubscriber.verification_token;
+
+  const url = `${AppConstants.SERVER_URL}/user/verify?token=${encodeURIComponent(token)}`;
+
+  await EmailUtils.sendEmail(
+    email,
+    "Verify your email address to subscribe to Firefox Monitor.",
+    "email_verify",
+    { email, url}
+  );
+
+  res.send({
+    title: "Firefox Monitor : Confirm Email",
+  });
 }
 
 

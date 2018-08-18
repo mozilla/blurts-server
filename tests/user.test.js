@@ -22,7 +22,7 @@ test("POST with email adds unverified subscriber and sends verification email", 
     const req = httpMocks.createRequest({
       method: "POST",
       url: "/user/add",
-      body: {email:"userAdd@test.com"},
+      body: {email:userAddEmail},
     });
     const resp = httpMocks.createResponse();
     EmailUtils.sendEmail.mockResolvedValue(true);
@@ -43,4 +43,18 @@ test("POST with email adds unverified subscriber and sends verification email", 
     const mockCallArgs = mockCalls[0];
     expect(mockCallArgs).toContain(userAddEmail);
     expect(mockCallArgs).toContain("email_verify");
+});
+
+
+test("request with invalid email throws error", async () => {
+    // Set up mocks
+    const req = httpMocks.createRequest({
+      method: "POST",
+      url: "/user/add",
+      body: {email:"a"},
+    });
+    const resp = httpMocks.createResponse();
+
+    // Call code-under-test
+    await expect(user.add(req, resp)).rejects.toThrow("Invalid Email");
 });
