@@ -12,7 +12,7 @@ require("./resetDB");
 jest.mock("../email-utils");
 
 
-test("POST with email adds unverified subscriber and sends verification email", async () => {
+test("user add POST with email adds unverified subscriber and sends verification email", async () => {
     // Set up test context
     const userAddEmail = "userAdd@test.com";
     let subscribers = await DB.getSubscribersByEmail(userAddEmail);
@@ -46,7 +46,7 @@ test("POST with email adds unverified subscriber and sends verification email", 
 });
 
 
-test("request with invalid email throws error", async () => {
+test("user add request with invalid email throws error", async () => {
     // Set up mocks
     const req = httpMocks.createRequest({
       method: "POST",
@@ -57,4 +57,35 @@ test("request with invalid email throws error", async () => {
 
     // Call code-under-test
     await expect(user.add(req, resp)).rejects.toThrow("Invalid Email");
+});
+
+
+test("user verify request with valid token verifies user", async () => {
+  const validToken = "0e2cb147-2041-4e5b-8ca9-494e773b2cf0";
+  // Set up mocks
+  const req = httpMocks.createRequest({
+    method: "GET",
+    url: `/user/verify?token=${validToken}`,
+  });
+  const resp = httpMocks.createResponse();
+
+  // Call code-under-test
+  await user.verify(req, resp);
+
+  expect(resp.statusCode).toEqual(200);
+  const subscriber = await DB.getSubscriberByToken(validToken);
+  expect(subscriber.verified).toBeTruthy();
+});
+
+
+test("user verify request with invalid token returns error", async () => {
+  const invalidToken = "123456789";
+
+  const req = httpMocks.createRequest({
+    method: "GET",
+    url: `/user/verify?token=${invalidToken}`,
+  });
+  const resp = httpMocks.createResponse();
+
+  await expect(user.verify(req, resp)).rejects.toThrow("Token not found");
 });

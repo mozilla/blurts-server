@@ -34,6 +34,9 @@ const DB = {
 
   async verifyEmailHash(token) {
     const unverifiedSubscriber = await this.getSubscriberByToken(token);
+    if (!unverifiedSubscriber) {
+      throw new Error("Token not found");
+    }
     const verifiedSubscriber = await this._verifySubscriber(unverifiedSubscriber);
     return verifiedSubscriber[0];
   },
