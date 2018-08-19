@@ -1,14 +1,12 @@
 "use strict";
 
-const httpMocks = require("node-mocks-http");
-
 const home = require("../controllers/home");
 
 
 function addBreachesToMockRequest(mockRequest) {
   const mockBreaches = [
-    {Name: 'Test'},
-    {Name: 'DontShow'},
+    {Name: "Test"},
+    {Name: "DontShow"},
   ];
   mockRequest.app = { locals: { breaches: mockBreaches } };
   return mockRequest;
@@ -28,7 +26,7 @@ test("home GET without breach renders monitor without breach", () => {
 
 
 test("home GET with breach renders monitor with breach", () => {
-  const testBreach = {Name: 'Test'};
+  const testBreach = {Name: "Test"};
   let mockRequest = { query: { breach: testBreach.Name } };
   mockRequest = addBreachesToMockRequest(mockRequest);
   const mockResponse = { render: jest.fn() };

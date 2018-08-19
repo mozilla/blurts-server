@@ -1,7 +1,5 @@
 "use strict";
 
-const express = require("express");
-
 
 function home(req, res) {
   let breach = null;
@@ -17,11 +15,11 @@ function home(req, res) {
 
 
 function notFound(req, res) {
-  res.status(404)
+  res.status(404);
   res.render("404");
 }
 
 module.exports = {
   home,
   notFound,
-}
+};
