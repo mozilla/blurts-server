@@ -2,20 +2,20 @@
 
 const Knex = require("knex");
 
-const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
 const knexConfig = require("../db/knexfile");
 const {seed} = require("../db/seeds/test_subscribers");
 
 
 // (Re-)create DB connection at the beginning of each test suite
-beforeAll(async () => {
+beforeAll(() => {
   DB.createConnection();
 });
 
 
+// Reset the subscribers records before each test
 beforeEach(async () => {
-  const knex = Knex(knexConfig[AppConstants.NODE_ENV]);
+  const knex = Knex(knexConfig);
   await knex("subscribers").truncate();
   await seed(knex);
   knex.destroy();

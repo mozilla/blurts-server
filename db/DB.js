@@ -5,12 +5,11 @@
 const uuidv4 = require("uuid/v4");
 const Knex = require("knex");
 
-const AppConstants = require("../app-constants");
 const HIBP = require("../hibp");
 const getSha1 = require("../sha1-utils");
 
 const knexConfig = require("./knexfile");
-let knex = Knex(knexConfig[AppConstants.NODE_ENV]);
+let knex = Knex(knexConfig);
 
 
 const DB = {
@@ -111,7 +110,7 @@ const DB = {
 
   async createConnection() {
     if (knex === null) {
-      knex = Knex(knexConfig[AppConstants.NODE_ENV]);
+      knex = Knex(knexConfig);
     }
   },
 
