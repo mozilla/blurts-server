@@ -3,11 +3,18 @@
 {{#if_conditional foundBreaches 1}}
   <div class="compromised-accounts">
     <div class="section-wrapper">
-      {{#if userAccountCompromised }}
-        <h3 class="whole">Other Compromised Accounts Found</h3>
+      <h3 class="whole section-headline">
+        {{#if userAccountCompromised }}
+          Other Compromised Accounts Found>
+        {{else}}
+          Compromised Accounts
+        {{/if}}
+      </h3>
+      {{!-- {{#if userAccountCompromised }}
+        <h3 class="whole section-headline">Other Compromised Accounts Found</h3>
       {{else}}
-        <h3 class="whole">Compromised Accounts</h3>
-      {{/if}}
+        <h3 class="whole section-headline">Compromised Accounts</h3>
+      {{/if}} --}}
 
 <!--list first 5 breaches-->
 {{#each_from_to foundBreaches 0 4 }}

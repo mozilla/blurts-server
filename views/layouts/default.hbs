@@ -24,14 +24,14 @@
   <body>
     {{> subscribe_modal }}
     <header class ="section-wrapper">
-      <div class="whole">
+      <div class="half">
         <a href="/">
           <img alt="Firefox Logo" class="logo" src="/img/firefox.png" />
           <h1><span class="medium">Firefox</span> Monitor</h1>
         </a>
-        {{#if breach}}
-          {{> sign_up_button }}
-        {{/if}}
+      </div>
+      <div class="half">
+        {{> social_media_sharing_buttons}}
       </div>
     </header>
     
@@ -39,16 +39,27 @@
   
     <footer id="footer">
       <div class="section-wrapper">
-        <nav class="footer-links-wrapper two-thirds">
+        <div class="fourth">
           <a class="footer-logo-wrapper" href="https://www.mozilla.org"><img src="/img/moz-logo-bw-rgb.svg" alt="Mozilla Logo" /></a>
-          <section class="footer-links">
-            <a href="https://www.mozilla.org/about/legal/">Terms</a>
-            <a href="https://www.mozilla.org/privacy/websites/">Privacy</a>
-            <a href="/">Give Feedback</a>
-            <a id="GitHub-logo" href="https://github.com/mozilla/blurts-server/"><img src="/img/github.svg" alt="Github Logo" /></a>
-          </section>
-        </nav>
-        <p class="third">Portions of this content are &copy; 1998-2018 by individual mozilla.org contributors. <br />Content available under a <a href="https://www.mozilla.org/foundation/licensing/website-content/">Creative Commons license</a>.</p>
+          <p>Portions of this content are &copy; 1998-2018 by individual mozilla.org contributors. <br />Content available under a <a href="https://www.mozilla.org/foundation/licensing/website-content/">Creative Commons license</a>.</p>
+        </div>
+        <ul class="fourth">
+          <li>Support</li>
+          <li><a href="/">Give Feedback</a></li>
+          <li><a id="GitHub-logo" href="https://github.com/mozilla/blurts-server/"><img src="/img/github.svg" alt="Github Logo" /></a></li>
+        </ul>
+        <ul class="fourth">
+          <li>Legal</li>
+          <li><a href="https://www.mozilla.org/about/legal/">Terms</a></li>
+          <li><a href="https://www.mozilla.org/privacy/websites/">Privacy</a></li>
+        </ul>
+        <ul class="fourth">
+          <li>Firefox</li>
+          <li><a href="https://www.mozilla.org/firefox/new/">Download Firefox</a></li>
+          <li><a href="https://www.mozilla.org/firefox/mobile/">Download Firefox Mobile</a></li>
+          <li><a href="https://www.mozilla.org/firefox/features/">Features</a></li>
+          <li><a href="https://www.mozilla.org/en-US/firefox/channel/desktop/">Beta, Nightly, Developer Edition</a></li>
+        </ul>
       </div>
     </footer>
   </body>

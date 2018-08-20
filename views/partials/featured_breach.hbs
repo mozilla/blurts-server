@@ -9,7 +9,7 @@
     <span class="breach-info"><span class="bold">Breach Date</span> {{prettyDate featuredBreach.BreachDate }}</span>
     <span class="breach-info"><span class="bold">Compromised Accounts</span> {{localeString featuredBreach.PwnCount }}</span>
     <span class="breach-info"><span class="bold">Compromised Data</span> {{breachDataClasses featuredBreach.DataClasses }}</span>
-    <span class="breach-info breach">{{{ featuredBreach.Description }}}</span>
+    <span class="breach-info breach-description">{{{ featuredBreach.Description }}}</span>
     {{> hibp_attribution }}
   </div>
 {{/if}}

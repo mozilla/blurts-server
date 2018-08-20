@@ -17,7 +17,6 @@ body {
   --gap: 20px;
   --columnSpacing: 60px;
   --darker: rgba(0, 33, 117, 0.25);
-  --maxWidthHalf: 500px;
 
   -webkit-overflow-scrolling: touch;
 
@@ -35,13 +34,15 @@ body {
   --red50: #ff0039;
   --red60: #d70022;
   --red70: #a4000f;
+  --green60: #12bc00;
+  --green70: #058b00;
 }
 
 body {
   background-image:
     linear-gradient(
       #002275,
-      #440071
+      #34122d
     );
   background-repeat: no-repeat;
   background-position: center center;
@@ -53,12 +54,13 @@ body {
   overflow: scroll;
   min-height: 100vh;
   height: 100%;
-  padding-bottom: 15vh;
+  padding-bottom: 20vh;
   text-rendering: optimizeLegibility;
 }
 
 h2,
-h3 {
+h3,
+.section-headline {
   font-size: 1.9375rem;
   line-height: 1.4;
 }
@@ -135,6 +137,7 @@ img {
 
 .fourth {
   flex: 1 1 calc(25% - var(--columnSpacing));
+  min-width: 200px;
 }
 
 .third {
@@ -149,7 +152,8 @@ img {
 
 .half {
   flex: 1 1 calc(50% - var(--columnSpacing));
-  min-width: 250px;
+  min-width: 300px;
+  max-width: 500px;
 }
 
 .fourth,
@@ -404,13 +408,18 @@ button[type="submit"] {
   margin-top: calc(var(--gap) / 2);
 }
 
+.privacy-policy br {
+  display: none;
+}
+
 /* typography */
 
 h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+.section-headline {
   font-weight: 300;
 }
 
@@ -445,7 +454,13 @@ header.section-wrapper {
   padding-bottom: 0;
   background: rgba(0, 0, 0, 0);
   background-color: rgba(0, 0, 0, 0);
+  height: 10vh;
   min-height: 90px;
+  max-height: 150px;
+}
+
+header .half:last-of-type {
+  justify-content: flex-end;
 }
 
 header a {
@@ -469,36 +484,30 @@ img.logo {
   height: 55px;
 }
 
-/* sign up button in header on {{breach}} */
-
-header > div {
-  display: inline-flex;
-  align-self: flex-end;
-  align-items: center;
-  height: 100%;
-}
-
 /* main banner content  */
 
 main {
   padding: 0 0 0 0;
-  margin-top: calc(var(--columnSpacing) * 2);
-  margin-bottom: calc(var(--columnSpacing) * 2);
 }
 
 main.section-wrapper {
-  /* padding-top: 0;
-  padding-bottom: 0; */
   min-height: 40vh;
 }
 
 main div.half {
-  max-width: 500px;
-  margin-bottom: 0;
   justify-content: flex-start;
   flex-direction: column;
   align-items: normal;
-  margin-top: var(--gap);
+}
+
+main .wrap .half {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+main .half:last-of-type p {
+  align-self: center;
+  margin: Auto;
 }
 
 main .wrap {
@@ -569,10 +578,6 @@ main span.breach-info .bold {
   color: #fff;
 }
 
-#featured-compromised-account {
-  margin-bottom: var(--gap);
-}
-
 #breach-title-wrapper {
   display: flex;
   align-items: center;
@@ -580,10 +585,6 @@ main span.breach-info .bold {
 
 main .breach-headline {
   font-size: 22px;
-}
-
-main.scan-results {
-  margin-bottom: 0;
 }
 
 /* ////  SIGN UP BUTTON GROUP  */
@@ -605,12 +606,12 @@ main.scan-results {
 }
 
 .sign-up-button {
-  background-color: #12bc00;
+  background-color: var(--green60);
   font-weight: 600;
 }
 
 .sign-up-button:hover {
-  background-color: #12bc00;
+  background-color: var(--green70);
 }
 
 /* tips *************************** */
@@ -721,7 +722,7 @@ body.show-subscribe-modal .modal-content {
   min-height: 400px;
   height: auto;
   max-height: 500px;
-  max-width: var(--maxWidthHalf);
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -798,11 +799,6 @@ body.show-subscribe-modal .modal-content.show {
   flex-wrap: wrap;
 }
 
-.compromised-accounts h3,
-#what-to-do li:first-of-type {
-  margin-bottom: calc(var(--gap) * 2);
-}
-
 #additional-breaches.section-wrapper {
   padding: 0 0 0 0;
   margin: 0 0 0 0;
@@ -837,6 +833,7 @@ button#show-additional-breaches:hover {
 #additional-breaches {
   visibility: hidden;
   height: 0;
+  margin: 0;
   transition: all 0.25s ease-out;
 }
 
@@ -872,19 +869,16 @@ span.breach-info {
 }
 
 #what-to-do .section-wrapper {
-  padding-left: var(--gap);
-  padding-right: var(--gap);
   margin-top: var(--columnSpacing);
-  margin-bottom: var(--columnSpacing);
   background-color: rgba(255, 255, 255, 0.01);
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+  flex-wrap: wrap;
 }
 
 #what-to-do .fourth {
   justify-content: flex-start;
   flex-direction: column;
   text-align: center;
-  min-width: 200px;
 }
 
 #what-to-do h3 {
@@ -944,21 +938,25 @@ span.breach-info {
 
 /* /// SOCIAL MEDIA SHARING BUTTONS  */
 
-.social-media-sharing-buttons {
+ul.social-media-sharing-buttons {
   list-style-type: none;
   white-space: nowrap;
   font-size: 12px;
 }
 
-.social-media-sharing-buttons li {
-  max-width: 20px;
+ul.social-media-sharing-buttons li {
   display: inline-block;
-  margin-right: 10px;
+  margin-left: var(--gap);
 }
 
-.social-media-sharing-buttons img {
-  min-width: 20px;
-  max-width: 20px;
+ul.social-media-sharing-buttons img {
+  min-width: var(--gap);
+  max-width: var(--gap);
+  margin-left: 10px;
+}
+
+.facebook-button {
+  margin-left: 2px !important;
 }
 
 /* PLACEHOLDER
@@ -1008,6 +1006,7 @@ footer {
 footer .section-wrapper {
   padding-top: var(--gap);
   padding-bottom: var(--gap);
+  flex-direction: row;
 }
 
 footer a {
@@ -1015,22 +1014,33 @@ footer a {
   color: #fff;
 }
 
-footer p.third {
-  display: block;
-}
-
-footer p.third br {
+footer p br {
   display: none;
 }
 
-footer .two-thirds {
-  flex-direction: row;
+footer ul {
+  list-style-type: none;
 }
 
-.footer-links-wrapper section {
-  display: inline-flex;
-  width: 100%;
-  justify-content: space-around;
+footer ul li {
+  display: block;
+}
+
+footer ul li img {
+  min-width: 20px;
+  max-width: 20px;
+}
+
+footer ul li:first-of-type {
+  font-weight: 500;
+  font-size: 17px;
+}
+
+footer .fourth {
+  flex-direction: column;
+  text-align: left;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 #GitHub-logo {
@@ -1041,11 +1051,31 @@ footer .two-thirds {
 
 .footer-logo-wrapper {
   min-width: 120px;
+  height: 40px;
+}
+
+footer ul li,
+footer ul li a {
+  line-height: 30px;
+  height: 30px;
+  width: 100%;
+  display: block;
+}
+
+footer ul li:first-of-type,
+.footer-logo-wrapper {
+  line-height: 40px;
+  height: 40px;
+  margin-bottom: 4px;
 }
 
 /* // PLACEHOLDER media screens */
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1100px) {
+  .fourth {
+    flex: 1 1 calc(50% - var(--columnSpacing));
+  }
+
   main .half {
     display: flex;
     align-content: center;
@@ -1104,12 +1134,16 @@ footer .two-thirds {
     width: 100%;
   }
 
-  #what-to-do p {
+  /* #what-to-do p {
     width: 90%;
-  }
+  } */
 
   .email-scan .input-group {
     max-width: 100% !important;
+  }
+
+  footer .section-wrapper {
+    flex-wrap: column-reverse;
   }
 }
 
@@ -1119,11 +1153,29 @@ footer .two-thirds {
   }
 
   body {
-    padding-bottom: 23vh;
+    padding-bottom: 80vh;
+  }
+
+  .half {
+    max-width: 100%;
   }
 
   #sign-up-button-group .section-wrapper {
     flex-direction: column;
+  }
+
+  button,
+  #sign-up {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  main.scan-results #sign-up {
+    margin-top: var(--gap);
+  }
+
+  #featured-compromised-account-headline {
+    margin-bottom: calc(var(--gap) / 2);
   }
 
   #password-advice {
@@ -1131,43 +1183,50 @@ footer .two-thirds {
     padding-right: var(--gap);
   }
 
-  footer .two-thirds {
-    flex-direction: column;
+  footer .section-wrapper {
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
   }
+}
 
-  section.footer-links {
-    padding-top: var(--gap);
-    padding-bottom: var(--gap);
-    border-top: 1px solid var(--grey90a1);
-    border-bottom: 1px solid var(--grey90a1);
-  }
-
-  .footer-logo-wrapper {
-    margin-top: var(--gap);
-    margin-bottom: var(--gap);
-    align-self: center;
-  }
-
-  footer .third {
-    text-align: center;
-  }
-
-  footer p.third br {
-    display: block;
+@media screen and (max-width: 575px) {
+  body {
+    --columnSpacing: 40px;
   }
 }
 
 @media screen and (max-width: 480px) {
   body {
-    padding-bottom: 30vh;
+    --columnSpacing: 30px;
+
+    padding-bottom: 80vh;
+    font-size: 13px;
   }
 
-  .third {
+  h2,
+  h3,
+  .section-headline {
+    font-size: 1.68rem;
+    line-height: 1.3;
+  }
+
+  .third,
+  .fourth,
+  .half {
     min-width: 250px !important;
   }
 
-  .modal-content {
-    font-size: 13px;
+  main.scan-results {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  main.scan-results .account .breach-description {
+    display: none;
+  }
+
+  .privacy-policy br {
+    display: block;
   }
 
   #what-to-do li:first-of-type {
@@ -1185,53 +1244,28 @@ footer .two-thirds {
   #password-advice p {
     margin: var(--gap) 0 0 0;
   }
-
-  footer p.third br {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 375px) {
   body {
     --gap: 15px;
 
-    padding-bottom: 60vh;
+    padding-bottom: 110vh;
   }
 
   .section-wrapper {
-    padding: var(--gap);
+    padding-left: var(--gap);
+    padding-right: var(--gap);
   }
 
-  .third {
+  .half,
+  .third,
+  .fourth {
     min-width: 200px !important;
   }
 
   .tip-container {
     margin-top: calc(var(--gap) * 2);
-  }
-
-  footer .two-thirds {
-    flex-direction: column-reverse;
-  }
-
-  .footer-links {
-    display: flex;
-    flex-direction: column;
-    margin-top: 4px;
-    margin-bottom: 4px;
-  }
-
-  .footer-logo-wrapper {
-    align-self: flex-start;
-    margin-bottom: 0;
-  }
-
-  footer .third {
-    text-align: left;
-  }
-
-  .footer-links a {
-    line-height: 30px;
   }
 
   #GitHub-logo {
