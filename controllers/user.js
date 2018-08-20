@@ -34,7 +34,7 @@ async function verify(req, res) {
   const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
 
   res.render("confirm", {
-    title: "Firefox Breach Alerts: Subscribed",
+    title: "Firefox Monitor: Subscribed",
     email: verifiedEmailHash.email,
   });
 }

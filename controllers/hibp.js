@@ -9,9 +9,9 @@ async function notify (req, res) {
   const subscribers = await DB.getSubscribersByHashes(hashes);
 
   const reqBreachName = req.body.breachName.toLowerCase();
-  const breach = req.app.locals.breaches.filter(breach => breach.Name.toLowerCase() === reqBreachName)[0];
+  const breach = req.app.locals.breaches.find(breach => breach.Name.toLowerCase() === reqBreachName);
 
-  console.log(`Found ${subscribers.length} in ${breach.Name}. Notifying ...`);
+  console.log(`Found ${subscribers.length} subscribers in ${breach.Name}. Notifying ...`);
   // TODO: loop over subscribers and send breach notification(s)
   res.status(200);
   res.json(

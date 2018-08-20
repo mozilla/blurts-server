@@ -17,7 +17,7 @@ const FxAOAuthUtils = {
   get profileUri() { return AppConstants.OAUTH_PROFILE_URI; },
 };
 
-const FxAOAuth = new ClientOAuth2({
+const FxAOAuthClient = new ClientOAuth2({
   clientId: AppConstants.OAUTH_CLIENT_ID,
   clientSecret: AppConstants.OAUTH_CLIENT_SECRET,
   accessTokenUri: FxAOAuthUtils.tokenUri,
@@ -27,7 +27,7 @@ const FxAOAuth = new ClientOAuth2({
 });
 
 
-function init(req, res, client = FxAOAuth) {
+function init(req, res, client = FxAOAuthClient) {
   // Set a random state string in a cookie so that we can verify
   // the user when they're redirected back to us after auth.
   const state = crypto.randomBytes(40).toString("hex");
@@ -37,7 +37,7 @@ function init(req, res, client = FxAOAuth) {
 }
 
 
-async function confirmed(req, res, client = FxAOAuth) {
+async function confirmed(req, res, client = FxAOAuthClient) {
   if (!req.session.state) {
     throw new Error("Invalid session");
   }
