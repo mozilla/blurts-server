@@ -1,9 +1,11 @@
 <div id="featured-compromised-account-headline">
-    <!--if their account was involved in the featured breach-->
+  <h3 class="whole section-headline">
+      <!--if their account was involved in the featured breach-->
     {{#if userAccountCompromised }}
-        <h3>The account you scanned was compromised in the {{ featuredBreach.Title }} breach.</h3>
+      The account you scanned was compromised in the {{ featuredBreach.Title }} breach.
     <!--their account wasn't involved in the breach, but they still scanned their email from a 'featured breach page'-->
     {{ else }}
-        <h3>Your account wasn't compromised in the {{ featuredBreach.Title }} breach</h3>
+      Your account wasn't compromised in the {{ featuredBreach.Title }} breach.
     {{/if}}
+  </h3>
 </div>

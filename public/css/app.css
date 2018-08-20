@@ -42,10 +42,11 @@ body {
   background-image:
     linear-gradient(
       #002275,
-      #34122d
+      #23113d
     );
   background-repeat: no-repeat;
   background-position: center center;
+  background-attachment: fixed;
   background-size: cover;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -54,20 +55,24 @@ body {
   overflow: scroll;
   min-height: 100vh;
   height: 100%;
-  padding-bottom: 20vh;
   text-rendering: optimizeLegibility;
 }
 
-h2,
-h3,
 .section-headline {
-  font-size: 1.9375rem;
+  font-weight: 300;
   line-height: 1.4;
+  font-size: 1.9375rem;
+  display: block;
+  margin-bottom: calc(var(--gap) / 2);
+}
+
+.section-sub-head {
+  font-size: 1.15rem;
+  font-weight: 500;
 }
 
 h1,
-h2,
-h3 {
+.section-headline {
   letter-spacing: -0.77px;
 }
 
@@ -137,7 +142,6 @@ img {
 
 .fourth {
   flex: 1 1 calc(25% - var(--columnSpacing));
-  min-width: 200px;
 }
 
 .third {
@@ -295,7 +299,8 @@ a:focus {
   outline: 2px solid var(--blue50);
 }
 
-.form-group.invalid input[type="email"] {
+.form-group.invalid input[type="email"],
+.form-group.invalid input[type="submit"] {
   border: 1px solid var(--red50);
   box-shadow: 0 0 0 1px rgba(255, 0, 55, 0.514), 0 0 0 4px rgba(255, 0, 55, 0.3);
 }
@@ -326,32 +331,34 @@ input::placeholder {
 
 .input-group-button {
   margin-top: calc(var(--gap) / 2);
+  position: relative;
 }
 
-/* buttons */
+/* BUTTONS */
 
 button,
 .button {
-  font-family: inherit;
-  font-size: 20px;
+  width: 100%;
+  height: 55px;
   padding: 0.85em 1em;
+  line-height: 1;
   -webkit-appearance: none;
   border: none;
   border-radius: var(--roundedCorners);
-  line-height: 1;
-  text-align: center;
   cursor: pointer;
-  background-color: var(--blue60);
-  color: rgba(254, 254, 254, 1);
-  width: 100%;
-  height: 55px;
+  text-align: center;
   text-indent: 0;
   white-space: nowrap;
+  background-color: var(--green60);
+  color: rgba(254, 254, 254, 1);
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 button:hover,
 .button:hover {
-  background-color: var(--blue70);
+  background-color: var(--green70);
 }
 
 button[type="button"],
@@ -359,6 +366,18 @@ button[type="submit"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   border-radius: var(--roundedCorners);
+}
+
+.transparent-button {
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  max-width: 500px;
+  font-size: 18px;
+}
+
+.transparent-button:hover {
+  background-color: rgba(255, 255, 255, 0.01);
+  border: 1px solid (255, 255, 255, 1);
 }
 
 /* /////// ERROR MESSAGES */
@@ -435,18 +454,6 @@ h5,
   font-weight: 600;
 }
 
-/* scan email form  */
-
-.email-scan input[type="submit"] {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: transparent;
-}
-
-.email-scan.invalid input[type="submit"] {
-  background-color: var(--red60);
-  color: rgba(254, 254, 254, 0.6);
-}
-
 /* header **************** */
 
 header.section-wrapper {
@@ -470,28 +477,28 @@ header a {
 }
 
 header a h1 {
-  font-size: calc(27px + 0.5vw);
-  letter-spacing: -0.77px;
-}
-
-header h1 span.medium {
-  letter-spacing: 0.77px;
+  font-size: calc(27px + 0.6vw);
 }
 
 img.logo {
-  margin-right: var(--gap);
+  margin-right: calc(var(--gap) / 2);
   width: auto !important;
-  height: 55px;
+  height: 60px;
 }
 
 /* main banner content  */
 
 main {
   padding: 0 0 0 0;
+  font-size: 17px;
 }
 
 main.section-wrapper {
   min-height: 40vh;
+}
+
+main .half:first-of-type {
+  margin-bottom: 0;
 }
 
 main div.half {
@@ -523,9 +530,12 @@ main .image-wrap img {
   margin-top: 0;
 }
 
-main h2 {
-  font-size: calc(1.55em + 0.35vw);
-  line-height: 1.25em;
+main h2.section-headline {
+  margin-bottom: 0;
+}
+
+main.scan-results h2.section-headline {
+  margin-bottom: calc(var(--gap) / 2);
 }
 
 main p {
@@ -587,31 +597,37 @@ main .breach-headline {
   font-size: 22px;
 }
 
+main .source-info {
+  margin-top: var(--gap);
+}
+
+main .breach-description {
+  display: none;
+}
+
 /* ////  SIGN UP BUTTON GROUP  */
 
-#sign-up-button-group {
+#sign-up-banner {
   background-color: rgba(0, 0, 0, 0.2);
   min-height: 200px;
   display: flex;
 }
 
-#sign-up-button-group .half {
+#sign-up-banner .fourth,
+#sign-up-banner .half {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#sign-up-banner .half {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 }
 
-#sign-up-button-group span.bold {
-  margin-bottom: var(--gap);
-}
-
-.sign-up-button {
-  background-color: var(--green60);
-  font-weight: 600;
-}
-
-.sign-up-button:hover {
-  background-color: var(--green70);
+#sign-up-banner span.medium {
+  margin-bottom: calc(var(--gap) / 2);
+  font-size: 21px;
 }
 
 /* tips *************************** */
@@ -621,27 +637,24 @@ main .breach-headline {
   flex-direction: column;
 }
 
-#password-advice p {
-  margin: var(--gap);
+#password-advice .section-headline {
+  margin-bottom: 0;
 }
 
-.tip-container {
-  margin-top: var(--columnSpacing);
-  margin-bottom: var(--columnSpacing);
+#password-advice p {
+  margin: var(--gap);
+  max-width: 800px;
+  font-size: 17px;
 }
 
 .tip {
   height: 100%;
   text-align: center;
-  position: relative;
-  border-radius: var(--roundedCorners);
   background-color: rgba(255, 255, 255, 0);
-  transition: background-color 0.15s ease-out;
 }
 
-.tip:hover {
-  background-color: rgba(0, 0, 0, 0.03);
-  transition: background-color 0.15s ease-out;
+.tip-container {
+  margin-bottom: 0;
 }
 
 .tip p {
@@ -659,16 +672,12 @@ main .breach-headline {
   padding-top: var(--gap);
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
-  max-height: 60px;
-  height: 60px;
+  height: 50px;
   margin-bottom: var(--gap);
 }
 
 .tip-header h4 {
-  font-weight: 400;
-  font-size: 20px;
-  max-width: 250px;
-  margin: auto;
+  font-size: 17px;
 }
 
 .tip-numeral {
@@ -727,7 +736,12 @@ body.show-subscribe-modal .modal-content {
   flex-direction: column;
   margin: auto;
   box-shadow: 0 2px 13px rgba(0, 0, 0, 0.28);
-  background: rgb(255, 255, 255);
+  background:
+    linear-gradient(
+      rgb(5, 64, 209),
+      rgb(31, 15, 116)
+    );
+  color: rgba(255, 255, 255, 1);
   padding: calc(var(--gap) * 1.5);
   border-radius: var(--roundedCorners);
   pointer-events: none;
@@ -736,7 +750,6 @@ body.show-subscribe-modal .modal-content {
 }
 
 body.show-subscribe-modal .modal-content.show {
-  color: var(--grey90);
   visibility: visible;
   pointer-events: all;
   opacity: 1;
@@ -746,10 +759,6 @@ body.show-subscribe-modal .modal-content.show {
 .modal-content ::-moz-selection,
 .modal-content ::selection {
   background: transparent;
-}
-
-.modal-content.show h3 {
-  color: var(--grey90);
 }
 
 .modal-wrapper {
@@ -770,10 +779,10 @@ body.show-subscribe-modal .modal-content.show {
   height: 30px;
   width: auto;
   font-size: 13px;
-  background: rgba(255, 255, 255, 0);
-  border-bottom: 1px solid var(--grey90);
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
   border-radius: 0;
-  color: var(--grey90);
 }
 
 #subscribe-modal form {
@@ -789,7 +798,7 @@ body.show-subscribe-modal .modal-content.show {
 /* ///// compromised accounts  */
 
 .compromised-accounts {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.25);
 }
 
 .compromised-accounts > * {
@@ -813,27 +822,24 @@ body.show-subscribe-modal .modal-content.show {
   display: none;
 }
 
-#featured-compromised-account .account {
+#featured-compromised-account-headline h3.whole.section-headline {
+  margin-bottom: var(--gap) !important;
+}
+
+#featured-compromised-account-headline .account {
   margin-bottom: calc(var(--gap) * 4);
   padding-bottom: calc(var(--gap) * 4);
 }
 
 #show-additional-breaches {
-  background-color: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  margin: calc(var(--gap) * 3) auto var(--gap) auto;
-  max-width: var(--maxWidthHalf);
-}
-
-button#show-additional-breaches:hover {
-  background-color: rgba(0, 0, 0, 0.06);
+  margin: calc(var(--gap) * 2) auto calc(var(--gap) / 2) auto;
 }
 
 #show-additional-breaches.hide,
 #additional-breaches {
   visibility: hidden;
   height: 0;
-  margin: 0;
+  margin: 0 auto;
   transition: all 0.25s ease-out;
 }
 
@@ -868,20 +874,26 @@ span.breach-info {
   display: block;
 }
 
+/* //// WHAT TO DO  */
+
 #what-to-do .section-wrapper {
+  flex-wrap: wrap;
+  justify-content: center;
   margin-top: var(--columnSpacing);
   background-color: rgba(255, 255, 255, 0.01);
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
-  flex-wrap: wrap;
 }
 
 #what-to-do .fourth {
   justify-content: flex-start;
   flex-direction: column;
   text-align: center;
+  min-width: 200px;
+  max-width: 300px;
 }
 
-#what-to-do h3 {
+#what-to-do .section-headline {
+  text-align: center;
   justify-content: center;
 }
 
@@ -892,7 +904,6 @@ span.breach-info {
 }
 
 .scan-another-email {
-  font-weight: 600;
   margin-top: 0;
   margin-bottom: calc(var(--gap) / 2);
   justify-content: center;
@@ -903,13 +914,6 @@ span.breach-info {
   align-items: normal;
   max-width: 500px;
   text-align: center;
-}
-
-.section-headline {
-  font-weight: 300;
-  letter-spacing: -0.77px;
-  line-height: 1.4;
-  font-size: 1.9375rem;
 }
 
 .scan-another-email .featured {
@@ -923,17 +927,12 @@ span.breach-info {
 }
 
 .source-info {
-  margin-top: calc(var(--gap) / 2);
   font-size: 13px;
   width: 100%;
 }
 
 .source-info a {
   font-weight: 600;
-}
-
-.compromised-accounts .source-info a {
-  color: rgb(255, 255, 255) !important;
 }
 
 /* /// SOCIAL MEDIA SHARING BUTTONS  */
@@ -1071,11 +1070,13 @@ footer ul li:first-of-type,
 
 /* // PLACEHOLDER media screens */
 
-@media screen and (max-width: 1100px) {
-  .fourth {
-    flex: 1 1 calc(50% - var(--columnSpacing));
+@media screen and (max-width: 1200px) {
+  #what-to-do .section-wrapper {
+    margin-top: 0;
   }
+}
 
+@media screen and (max-width: 1100px) {
   main .half {
     display: flex;
     align-content: center;
@@ -1085,10 +1086,6 @@ footer ul li:first-of-type,
   .main-content {
     padding: calc(var(--gap) * 2);
     min-width: 0;
-  }
-
-  #what-to-do {
-    margin-top: calc(var(--gap) * 2);
   }
 
   .compromised-accounts .source-info {
@@ -1134,34 +1131,26 @@ footer ul li:first-of-type,
     width: 100%;
   }
 
-  /* #what-to-do p {
-    width: 90%;
-  } */
-
-  .email-scan .input-group {
-    max-width: 100% !important;
-  }
-
   footer .section-wrapper {
     flex-wrap: column-reverse;
   }
 }
 
-@media screen and (max-width: 786px) {
-  header #sign-up-button-group {
+@media screen and (max-width: 850px) {
+  header #sign-up-banner {
     display: none;
-  }
-
-  body {
-    padding-bottom: 80vh;
   }
 
   .half {
     max-width: 100%;
   }
 
-  #sign-up-button-group .section-wrapper {
+  #sign-up-banner .section-wrapper {
     flex-direction: column;
+  }
+
+  #sign-up-banner .section-wrapper > * {
+    margin-bottom: var(--gap);
   }
 
   button,
@@ -1172,10 +1161,6 @@ footer ul li:first-of-type,
 
   main.scan-results #sign-up {
     margin-top: var(--gap);
-  }
-
-  #featured-compromised-account-headline {
-    margin-bottom: calc(var(--gap) / 2);
   }
 
   #password-advice {
@@ -1199,7 +1184,6 @@ footer ul li:first-of-type,
   body {
     --columnSpacing: 30px;
 
-    padding-bottom: 80vh;
     font-size: 13px;
   }
 
@@ -1249,8 +1233,6 @@ footer ul li:first-of-type,
 @media screen and (max-width: 375px) {
   body {
     --gap: 15px;
-
-    padding-bottom: 110vh;
   }
 
   .section-wrapper {
@@ -1259,8 +1241,7 @@ footer ul li:first-of-type,
   }
 
   .half,
-  .third,
-  .fourth {
+  .third {
     min-width: 200px !important;
   }
 

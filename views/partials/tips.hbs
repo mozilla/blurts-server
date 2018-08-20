@@ -1,8 +1,8 @@
 {{!< default }}
   <div class="section-wrapper" role="complementary">
     <section id="password-advice" class="whole">
-      <h3>Passwords</h3>
-      <h4>The Key to Account Security</h4>
+      <h3 class="section-headline">Passwords</h3>
+      <h4 class="section-sub-head">The Key to Account Security</h4>
       <p>Your passwords protect all of the personal information that resides in your online accounts, from bank balances and credit card numbers to your home address and private messages. Passwords are so valuable that thousands of passwords are stolen every day and accounts are traded on the black market.  Take these six steps to protect yours.</p>
     </section>
     {{#each passwordTips}}
@@ -10,7 +10,7 @@
       <div class="tip">
         <img src="img/{{ image }}" alt="{{ headline }}" />
         <div class="tip-header">
-          <h4>{{ headline }}</h4>
+          <h4 class="medium">{{{ headline }}}</h4>
         </div>
         <p>{{ summary }}</p>
       </div>

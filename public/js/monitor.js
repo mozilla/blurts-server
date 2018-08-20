@@ -270,7 +270,14 @@ function restoreInputs() {
 }
 
 
+//prevents footer from covering stuff up
+function bodyPadding() {
+  const footerHeight = document.getElementById("footer").offsetHeight;
+  document.body.style.paddingBottom = footerHeight + 60 + 'px';
+}
+
 window.addEventListener("pageshow", function() {
+  bodyPadding();
   if (document.getElementById("no-breaches") || document.getElementById("found-breaches")) {
     sendGAPing("Pageview");
   }
@@ -278,6 +285,8 @@ window.addEventListener("pageshow", function() {
     restoreInputs();
   }
 });
+
+window.addEventListener("resize", bodyPadding);
 
 if(document.forms) {
   addFormListeners();
@@ -288,3 +297,4 @@ if (document.querySelectorAll("button")) {
     eachButton.addEventListener("click", (e) => doButtonRouting(e));
   }
 }
+
