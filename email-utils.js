@@ -18,20 +18,16 @@ const hbsOptions = {
   extName: ".hbs",
 };
 
-// This is set later when reading SMTP credentials from the environment.
-// This exists as a variable so we can use it in the from header of emails.
-let kSMTPUsername;
-
 // The SMTP transport object. This is initialized to a nodemailer transport
 // object while reading SMTP credentials, or to a dummy function in debug mode.
 let gTransporter;
 
 const EmailUtils = {
-  init() {
-    // Allow a debug mode that will send JSON back to the client instead of sending emails.
-    // eslint-disable-next-line no-process-env
-    if (process.env.DEBUG_DUMMY_SMTP) {
-      console.info("Running in dummy SMTP mode, /user/breached will send a JSON response instead of sending emails.");
+  async init(smtpUrl = AppConstants.SMTP_URL) {
+
+    // Allow a debug mode that will log JSON instead of sending emails.
+    if (!smtpUrl) {
+      console.info("smtpUrl is empty, EmailUtils will log a JSON response instead of sending emails.");
       gTransporter = {
         sendMail(options, callback) {
           callback(null, "dummy mode");
@@ -39,36 +35,12 @@ const EmailUtils = {
       };
       return Promise.resolve(true);
     }
-    console.info("Attempting to get SMTP credentials from environment...");
-    kSMTPUsername = AppConstants.SMTP_USERNAME;
-    const password = AppConstants.SMTP_PASSWORD;
-    const host = AppConstants.SMTP_HOST;
-    const port = AppConstants.SMTP_PORT;
-    if (!(kSMTPUsername && password && host && port)) {
-      return Promise.reject("SMTP credentials could not be read from the environment");
-    }
 
-    gTransporter = nodemailer.createTransport({
-      host,
-      port,
-      secure: true,
-      auth: {
-        user: kSMTPUsername,
-        pass: password,
-      },
-    });
-    return new Promise((resolve, reject) => {
-      gTransporter.verify((error, success) => {
-        if (error) {
-          console.error(error);
-          gTransporter = null;
-          reject(error);
-          return;
-        }
-        resolve();
-      });
-    });
+    gTransporter = nodemailer.createTransport(smtpUrl);
+    const gTransporterVerification = await gTransporter.verify();
+    return Promise.resolve(gTransporterVerification);
   },
+
   sendEmail(aRecipient, aSubject, aTemplate, aContext) {
     if (!gTransporter) {
       return Promise.reject("SMTP transport not initialized");
@@ -76,7 +48,7 @@ const EmailUtils = {
 
     return new Promise((resolve, reject) => {
       gTransporter.use("compile", hbs(hbsOptions));
-      const emailFrom = AppConstants.EMAIL_FROM || `"Firefox Monitor" <${kSMTPUsername}>`;
+      const emailFrom = AppConstants.EMAIL_FROM;
       const mailOptions = {
         from: emailFrom,
         to: aRecipient,
