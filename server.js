@@ -11,7 +11,6 @@ const EmailUtils = require("./email-utils");
 const HBSHelpers = require("./hbs-helpers");
 const HIBP = require("./hibp");
 
-const DockerflowRoutes = require("./routes/dockerflow");
 const HibpRoutes = require("./routes/hibp");
 const HomeRoutes = require("./routes/home");
 const ScanRoutes = require("./routes/scan");
@@ -87,7 +86,10 @@ app.use(sessions({
   cookie: cookie,
 }));
 
-app.use("/", DockerflowRoutes);
+if (!AppConstants.DISABLE_DOCKERFLOW) {
+  const DockerflowRoutes = require("./routes/dockerflow");
+  app.use("/", DockerflowRoutes);
+}
 app.use("/hibp", HibpRoutes);
 app.use("/oauth", OAuthRoutes);
 app.use("/scan", ScanRoutes);
