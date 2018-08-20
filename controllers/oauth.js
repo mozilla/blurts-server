@@ -27,43 +27,35 @@ const FxAOAuth = new ClientOAuth2({
 });
 
 
-function init(req, res) {
+function init(req, res, client = FxAOAuth) {
   // Set a random state string in a cookie so that we can verify
   // the user when they're redirected back to us after auth.
   const state = crypto.randomBytes(40).toString("hex");
-  const uri = FxAOAuth.code.getUri({state});
+  const uri = client.code.getUri({state});
   req.session.state = state;
   res.redirect(uri);
 }
 
 
-async function confirmed(req, res) {
+async function confirmed(req, res, client = FxAOAuth) {
   if (!req.session.state) {
-    // TODO: Needs better error message
-    res.set("Content-Type", "text/text");
-    res.send("Who are you?");
-    return;
+    throw new Error("Invalid session");
   }
 
-  try {
-    const fxaUser = await FxAOAuth.code.getToken(req.originalUrl, { state: req.session.state });
-    const data = await got(FxAOAuthUtils.profileUri,
-      {
-      headers: {
-        Authorization: `Bearer ${fxaUser.accessToken}`,
-      },
-    });
-    const email = JSON.parse(data.body).email;
-    await DB.addSubscriber(email);
+  const fxaUser = await client.code.getToken(req.originalUrl, { state: req.session.state });
+  const data = await got(FxAOAuthUtils.profileUri,
+    {
+    headers: {
+      Authorization: `Bearer ${fxaUser.accessToken}`,
+    },
+  });
+  const email = JSON.parse(data.body).email;
+  await DB.addSubscriber(email);
 
-    res.render("confirm", {
-      title: "Firefox Monitor : Subscribed",
-      email: email,
-    });
-  } catch (err) {
-    console.error(err);
-    res.send(err);
-  }
+  res.render("confirm", {
+    title: "Firefox Monitor : Subscribed",
+    email: email,
+  });
 }
 
 
