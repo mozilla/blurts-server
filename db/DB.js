@@ -5,12 +5,11 @@
 const uuidv4 = require("uuid/v4");
 const Knex = require("knex");
 
-const AppConstants = require("../app-constants");
 const HIBP = require("../hibp");
 const getSha1 = require("../sha1-utils");
 
 const knexConfig = require("./knexfile");
-let knex = Knex(knexConfig[AppConstants.NODE_ENV]);
+let knex = Knex(knexConfig);
 
 
 const DB = {
@@ -19,6 +18,11 @@ const DB = {
       .where("verification_token", "=", token);
 
     return res[0];
+  },
+
+  async getSubscribersByEmail(email) {
+    return await knex("subscribers")
+      .where("email", "=", email);
   },
 
   async addSubscriberUnverifiedEmailHash(email) {
@@ -30,6 +34,9 @@ const DB = {
 
   async verifyEmailHash(token) {
     const unverifiedSubscriber = await this.getSubscriberByToken(token);
+    if (!unverifiedSubscriber) {
+      throw new Error("Token not found");
+    }
     const verifiedSubscriber = await this._verifySubscriber(unverifiedSubscriber);
     return verifiedSubscriber[0];
   },
@@ -106,7 +113,7 @@ const DB = {
 
   async createConnection() {
     if (knex === null) {
-      knex = Knex(knexConfig[AppConstants.NODE_ENV]);
+      knex = Knex(knexConfig);
     }
   },
 

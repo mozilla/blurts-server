@@ -6,6 +6,9 @@ const DB = require("../db/DB");
 const getSha1 = require("../sha1-utils");
 const ses = require("../controllers/ses");
 
+require("./resetDB");
+
+
 const testNotifications = new Map();
 testNotifications.set("bounce", require("./ses-bounce-notification.json"));
 testNotifications.set("complaint", require("./ses-complaint-notification.json"));
@@ -20,11 +23,6 @@ const createRequestBody = function(notificationType, bounceSubType = null) {
   }
   return JSON.stringify(notification);
 };
-
-
-beforeAll(() => {
-  DB.createConnection();
-});
 
 
 test("ses notification with Permanent bounce unsubscribes recipient", async () => {
@@ -72,9 +70,4 @@ test("ses notification with Complaint unsubscribes recipient", async () => {
 
   subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
   expect(subscribers.length).toEqual(0);
-});
-
-
-afterAll(() => {
-  DB.destroyConnection();
 });

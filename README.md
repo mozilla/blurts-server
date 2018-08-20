@@ -109,6 +109,22 @@ OAUTH_TOKEN_URI="https://oauth-stable.dev.lcip.org/v1/token"
 
 ## Testing
 
+The full test suite can be run via `npm test`.
+
+### Individual tests
+
+To run individual tests, use `NODE_ENV=tests` and `jest`:
+
+```
+NODE_ENV=tests jest --runInBand tests/home.test.js
+```
+
+To run tests with interactive `debugger` lines enabled:
+
+```
+NODE_ENV=tests node inspect --harmony ./node_modules/.bin/jest tests/home.test.js
+```
+
 ### Lint
 
 After installing the dependencies, you can lint the code by calling:

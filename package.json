@@ -21,6 +21,7 @@
     "got": "^8.3.1",
     "hbs": "^4.0.1",
     "helmet": "^3.12.1",
+    "isemail": "^3.1.3",
     "jsdom": "^11.11.0",
     "knex": "^0.14.6",
     "nodemailer": "^4.6.4",
@@ -49,7 +50,6 @@
   "license": "MPL-2.0",
   "main": "server.js",
   "jest": {
-    "collectCoverage": true,
     "collectCoverageFrom": [
       "**/*.js",
       "!db/seeds/**.js",
@@ -76,7 +76,7 @@
     "start": "node server.js",
     "test:db:migrate": "knex migrate:latest --knexfile db/knexfile.js --env tests",
     "test:db:seed": "knex seed:run --knexfile db/knexfile.js --env tests",
-    "test:tests": "NODE_ENV=tests jest tests/ --coverage",
+    "test:tests": "NODE_ENV=tests jest --runInBand --coverage tests/",
     "test:coveralls": "cat ./coverage/lcov.info | coveralls",
     "test": "run-s test:db:migrate test:db:seed test:tests test:coveralls"
   }

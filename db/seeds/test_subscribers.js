@@ -6,9 +6,9 @@ const getSha1 = require("../../sha1-utils");
 exports.seed = function(knex) {
   // Deletes ALL existing entries
   return knex("subscribers").del()
-    .then(function () {
+    .then(async function () {
       // Inserts seed entries
-      return knex("subscribers").insert([
+      return await knex("subscribers").insert([
         {
           sha1: getSha1("firefoxaccount@test.com"),
           email: "firefoxaccount@test.com",
