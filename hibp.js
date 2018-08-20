@@ -39,7 +39,7 @@ const HIBP = {
   async loadBreachesIntoApp(app) {
     console.log("Loading breaches from HIBP into app.locals");
     try {
-      const breachesResponse = await this.req("/breaches");
+      const breachesResponse = await this.req("/api/v2/breaches");
       const breaches = [];
 
       for (const breach of breachesResponse.body) {

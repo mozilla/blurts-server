@@ -1,23 +1,34 @@
 <!--if user scanned email from a 'featured Breach' page-->
-{{#if featuredBreach}}
-  {{> featured_compromised_account}}
-{{else}}
-  <h3>Your Compromised Accounts</h3>
-{{/if}}
+
+{{#if_conditional foundBreaches 1}}
+  <div class="compromised-accounts">
+    <div class="section-wrapper">
+      {{#if userAccountCompromised }}
+        <h3 class="whole">Other Compromised Accounts Found</h3>
+      {{else}}
+        <h3 class="whole">Compromised Accounts</h3>
+      {{/if}}
 
 <!--list first 5 breaches-->
-{{#each_from_to foundBreaches 0 5 }}
-  {{> breach_listing }}
+{{#each_from_to foundBreaches 0 4 }}
+  <div class="half listings">
+    {{> breach_listing }}
+  </div>
 {{/each_from_to}}
 
 <!--display button and list remainder of breaches on click-->
- {{#if_conditional foundBreaches 5}}
-  <div id="additional-breaches">
-    {{#each_from_to foundBreaches 5 foundBreaches.length }}
-      {{> breach_listing }}
-    {{/each_from_to}}
-  </div>
-  <button id="show-additional-breaches" class="button">Show Additional Breaches</button>
+      {{#if_conditional foundBreaches 4}}
+        <div id="additional-breaches" class="section-wrapper">
+          {{#each_from_to foundBreaches 4 foundBreaches.length }}
+            <div class="half listings">
+              {{> breach_listing }}
+            </div>
+          {{/each_from_to}}
+        </div>
+        <button id="show-additional-breaches" class="button">Show Additional Breaches</button>
+        {{> hibp_attribution }}
+      {{/if_conditional}}
+    </div><!--coses .section-wrapper-->
+  </div><!--closes .compromised-accounts-->
 {{/if_conditional}}
 
-{{> hibp_attribution }}

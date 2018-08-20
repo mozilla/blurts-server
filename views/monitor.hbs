@@ -2,25 +2,23 @@
 <main>
   <div class="section-wrapper">
     <div class="half">
-      <div class="banner-content">
-        {{#if breach }}
-          {{> banner_breach }}
-        {{ else }}
-          {{> protect_yourself }}
+      <h2>Protect yourself from hackers.<br />Start here.</h2>
+        {{#if featuredBreach }}
+          <p class="demi">See if your account was exposed in the <span class="bold">{{ featuredBreach.Name }}</span> breach or other data breaches.</p>
+        {{else}}
+          <p class="demi">Enter your email to find out if your account has been compromised.</p>
         {{/if}}
-        </div>
+        {{> scan_form }}
     </div>
-
     <div class="half">
-      <img id="arrow-divider" src="img/arrow_divider.png" alt="" />
-      <div class="banner-content">
-        {{#if breach}}
-          {{> protect_yourself }}
-        {{ else }}  
-          {{> sign_up_button}}
+        {{#if featuredBreach}}
+          {{> featured_breach }}
+        {{ else }}
+          <p>Let Firefox Monitor help you stay safe online.  Find out what hackers already know about you and get alerts when data breaches put you at risk.</p>
         {{/if}}
-      </div>
     </div>
   </div>
 </main>
+
+{{> sign_up_banner}}
 {{> tips }}
