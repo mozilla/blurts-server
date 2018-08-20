@@ -1,5 +1,7 @@
 "use strict";
 
+const TIPS = require("../tips");
+
 
 function home(req, res) {
   const passwordTips = TIPS.getPasswordTips();

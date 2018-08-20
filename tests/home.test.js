@@ -21,7 +21,7 @@ test("home GET without breach renders monitor without breach", () => {
 
   const mockRenderCallArgs = mockResponse.render.mock.calls[0];
   expect(mockRenderCallArgs[0]).toBe("monitor");
-  expect(mockRenderCallArgs[1].breach).toBe(null);
+  expect(mockRenderCallArgs[1].featuredBreach).toBe(null);
 });
 
 
@@ -35,7 +35,7 @@ test("home GET with breach renders monitor with breach", () => {
 
   const mockRenderCallArgs = mockResponse.render.mock.calls[0];
   expect(mockRenderCallArgs[0]).toBe("monitor");
-  expect(mockRenderCallArgs[1].breach).toEqual(testBreach);
+  expect(mockRenderCallArgs[1].featuredBreach).toEqual(testBreach);
 });
 
 
