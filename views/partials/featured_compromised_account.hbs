@@ -1,19 +1,9 @@
 <div id="featured-compromised-account">
-
-    <!--if their account was found to be involved in the featured breach-->
-    {{#if featuredBreach.0.Title}}
-        <h3>The account you scanned is associated with the {{featuredBreach.0.Title}} breach.</h3>
-        {{#each featuredBreach }}
-            {{>breach_listing}}
-        {{/each}}
-
+    <!--if their account was involved in the featured breach-->
+    {{#if userAccountCompromised }}
+        <h3>The account you scanned was compromised in the {{ featuredBreach.Title }} breach.</h3>
     <!--their account wasn't involved in the breach, but they still scanned their email from a 'featured breach page'-->
-    {{else}}
-        <h3>The email address you scanned was not involved with the {{featuredBreach}} breach.</h3>
+    {{ else }}
+        <h3>Your account wasn't compromised in the {{ featuredBreach.Title }} breach</h3>
     {{/if}}
-
-    <!--their account was involved in additional breaches...-->
-    {{#if_conditional foundBreaches 1}}
-        <h3 id="other-accounts-found">Other Compromised Accounts Found</h3>
-    {{/if_conditional}}
 </div>
