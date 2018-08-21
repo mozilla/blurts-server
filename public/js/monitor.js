@@ -273,7 +273,7 @@ function restoreInputs() {
 //prevents footer from covering stuff up
 function bodyPadding() {
   const footerHeight = document.getElementById("footer").offsetHeight;
-  document.body.style.paddingBottom = footerHeight + 60 + 'px';
+  document.body.style.paddingBottom = footerHeight + 60 + "px";
 }
 
 window.addEventListener("pageshow", function() {

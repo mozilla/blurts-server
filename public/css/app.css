@@ -20,7 +20,6 @@ body {
 
   -webkit-overflow-scrolling: touch;
 
-  /* photon style vars */
   --grey90: #0c0c0d;
   --grey90a1: rgba(12, 12, 13, 0.1);
   --grey90a3: rgba(12, 12, 13, 0.3);
@@ -129,6 +128,7 @@ img {
   flex-wrap: wrap;
   padding: var(--columnSpacing);
   justify-content: space-between;
+  width: 100%;
   max-width: 1200px;
   min-width: 300px;
   margin: auto;
@@ -619,6 +619,10 @@ main .breach-description {
   margin-bottom: 0;
 }
 
+#sign-up-banner .fourth:first-of-type {
+  justify-content: flex-end;
+}
+
 #sign-up-banner .half {
   flex-direction: column;
   justify-content: center;
@@ -665,7 +669,7 @@ main .breach-description {
 }
 
 .tip img {
-  max-height: 60px;
+  max-height: 90px;
 }
 
 .tip-header {
@@ -684,11 +688,6 @@ main .breach-description {
   font-size: 22px;
   line-height: 10px;
   margin-top: 10px;
-}
-
-.svg-background img {
-  max-width: 80%;
-  max-height: 60%;
 }
 
 /* ////// subscribe window */
@@ -897,6 +896,10 @@ span.breach-info {
   justify-content: center;
 }
 
+#what-to-do img {
+  margin-bottom: calc(var(--columnSpacing) / 2);
+}
+
 /* SCAN ANOTHER EMAIL  */
 
 #scan-another-email-container {
@@ -941,6 +944,8 @@ ul.social-media-sharing-buttons {
   list-style-type: none;
   white-space: nowrap;
   font-size: 12px;
+  display: flex;
+  align-content: center;
 }
 
 ul.social-media-sharing-buttons li {
@@ -949,13 +954,12 @@ ul.social-media-sharing-buttons li {
 }
 
 ul.social-media-sharing-buttons img {
-  min-width: var(--gap);
-  max-width: var(--gap);
-  margin-left: 10px;
+  max-height: 24px;
+  margin-right: 8px;
 }
 
 .facebook-button {
-  margin-left: 2px !important;
+  margin-right: 5px !important;
 }
 
 /* PLACEHOLDER
@@ -1068,11 +1072,31 @@ footer ul li:first-of-type,
   margin-bottom: 4px;
 }
 
+/* WAVES GRAPHIC */
+
+img.waves-footer,
+img.waves-header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+img.waves-footer {
+  transform: rotate(180deg);
+}
+
 /* // PLACEHOLDER media screens */
 
 @media screen and (max-width: 1200px) {
   #what-to-do .section-wrapper {
     margin-top: 0;
+  }
+
+  #sign-up-banner .fourth,
+  #sign-up-banner .half {
+    margin-top: var(--gap);
+    margin-bottom: var(--gap);
   }
 }
 
@@ -1097,40 +1121,6 @@ footer ul li:first-of-type,
     align-self: center;
   }
 
-  #what-to-do span.numeral,
-  #what-to-do p {
-    display: inline-block;
-  }
-
-  #what-to-do li {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-    padding-bottom: calc(var(--gap) * 1.5);
-    padding-top: calc(var(--gap) * 1.5);
-  }
-
-  #what-to-do li:first-of-type {
-    text-align: center;
-  }
-
-  #what-to-do li,
-  #what-to-do li:first-of-type {
-    margin-bottom: 0;
-  }
-
-  #what-to-do li:last-of-type {
-    flex-direction: column;
-    border-bottom: none;
-    align-items: flex-start;
-  }
-
-  #what-to-do li:last-of-type > * {
-    width: 100%;
-  }
-
   footer .section-wrapper {
     flex-wrap: column-reverse;
   }
@@ -1151,6 +1141,7 @@ footer ul li:first-of-type,
 
   #sign-up-banner .section-wrapper > * {
     margin-bottom: var(--gap);
+    margin-top: var(--gap);
   }
 
   button,
@@ -1213,16 +1204,10 @@ footer ul li:first-of-type,
     display: block;
   }
 
-  #what-to-do li:first-of-type {
-    padding-bottom: var(--gap);
-  }
-
-  #what-to-do li {
-    flex-direction: column;
-  }
-
   .compromised-accounts .account {
     flex-direction: column;
+    padding-top: var(--gap);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   #password-advice p {
