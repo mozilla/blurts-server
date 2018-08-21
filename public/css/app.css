@@ -371,7 +371,6 @@ button[type="submit"] {
 .transparent-button {
   background-color: rgba(255, 255, 255, 0);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  max-width: 500px;
   font-size: 18px;
 }
 
@@ -832,6 +831,7 @@ body.show-subscribe-modal .modal-content.show {
 
 #show-additional-breaches {
   margin: calc(var(--gap) * 2) auto calc(var(--gap) / 2) auto;
+  max-width: 500px;
 }
 
 #show-additional-breaches.hide,
@@ -1161,7 +1161,7 @@ img.waves-footer {
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 680px) {
   #sign-up-banner .section-wrapper {
     flex-direction: column;
   }
@@ -1174,6 +1174,22 @@ img.waves-footer {
 @media screen and (max-width: 575px) {
   body {
     --columnSpacing: 40px;
+  }
+
+  ul.social-media-sharing-buttons {
+    display: none;
+  }
+
+  main .half:last-of-type {
+    display: none;
+  }
+
+  main.scan-results .half:last-of-type {
+    display: flex;
+  }
+
+  #what-to-do .fourth {
+    margin-top: var(--columnSpacing);
   }
 }
 
@@ -1212,8 +1228,6 @@ img.waves-footer {
 
   .compromised-accounts .account {
     flex-direction: column;
-    padding-top: var(--gap);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   #password-advice p {
