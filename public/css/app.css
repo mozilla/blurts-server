@@ -619,7 +619,7 @@ main .breach-description {
   margin-bottom: 0;
 }
 
-#sign-up-banner .fourth:first-of-type {
+#sign-up-banner .subscribe-icon-wrapper {
   justify-content: flex-end;
 }
 
@@ -1135,10 +1135,6 @@ img.waves-footer {
     max-width: 100%;
   }
 
-  #sign-up-banner .section-wrapper {
-    flex-direction: column;
-  }
-
   #sign-up-banner .section-wrapper > * {
     margin-bottom: var(--gap);
     margin-top: var(--gap);
@@ -1162,6 +1158,16 @@ img.waves-footer {
   footer .section-wrapper {
     flex-wrap: wrap;
     flex-direction: column-reverse;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  #sign-up-banner .section-wrapper {
+    flex-direction: column;
+  }
+
+  #sign-up-banner .subscribe-icon-wrapper {
+    justify-content: flex-start;
   }
 }
 
