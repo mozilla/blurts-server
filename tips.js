@@ -1,8 +1,6 @@
 "use strict";
 
-const TIPS = {
-    getPasswordTips() {
-       const allTips = [
+const TIPS = [
       {
         "image" : "password-tip-1.svg",
         "alt": "Use a different password for every account.",
@@ -40,9 +38,6 @@ const TIPS = {
         "summary": "We'll let you know if your account information is compromised in a data breach or exposed to hackers in some other way.",
       },
     ];
-    return allTips;
-  },
-    };
   
   
   module.exports = TIPS;

@@ -4,7 +4,6 @@ const TIPS = require("../tips");
 
 
 function home(req, res) {
-  const passwordTips = TIPS.getPasswordTips();
   let featuredBreach = null;
   if (req.query.breach) {
     const reqBreachName = req.query.breach.toLowerCase();
@@ -13,7 +12,7 @@ function home(req, res) {
   res.render("monitor", {
     title: "Firefox Monitor",
     featuredBreach: featuredBreach,
-    passwordTips: passwordTips,
+    passwordTips: TIPS,
   });
 }
 
