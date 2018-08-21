@@ -7,7 +7,6 @@ const TIPS = require("../tips");
 
 async function post (req, res) {
   const emailHash = req.body.emailHash;
-  const passwordTips = TIPS.getPasswordTips();
   let featuredBreach = null;
   let userAccountCompromised = false;
   
@@ -42,7 +41,7 @@ async function post (req, res) {
       foundBreaches,
       featuredBreach,
       userAccountCompromised,
-      passwordTips,
+      passwordTips: TIPS,
     });
   }
 
@@ -50,7 +49,7 @@ async function post (req, res) {
     res.render("scan", {
       title: "Firefox Monitor : Scan Results",
       foundBreaches,
-      passwordTips,
+      passwordTips: TIPS,
     });
   }
 }
