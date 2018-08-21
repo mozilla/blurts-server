@@ -8,7 +8,7 @@
     {{#each passwordTips}}
      <div class="tip-container third">
       <div class="tip">
-        <img src="img/password_tips/{{ image }}" alt="{{ alt }}" />
+        {{> password_tip_svg svg_content=svg_content}}
         <div class="tip-header">
           <h4 class="medium">{{{ headline }}}</h4>
         </div>

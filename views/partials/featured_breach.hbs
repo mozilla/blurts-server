@@ -2,13 +2,13 @@
   <div class="account">
     <div id="breach-title-wrapper">
       <div class="image-wrap">
-        <img alt="{{ featuredBreach.Name }}" src="img/logos/{{ featuredBreach.Name }}.{{ featuredBreach.LogoType }}">
+        <img alt="{{ featuredBreach.Title }}" src="img/logos/{{ featuredBreach.Title }}.{{ featuredBreach.LogoType }}">
       </div>
       <span class="breach-headline">{{ featuredBreach.Name }} Breach</span>
     </div>
-    <span class="breach-info"><span class="bold">Breach Date</span> {{prettyDate featuredBreach.BreachDate }}</span>
-    <span class="breach-info"><span class="bold">Compromised Accounts</span> {{localeString featuredBreach.PwnCount }}</span>
-    <span class="breach-info"><span class="bold">Compromised Data</span> {{breachDataClasses featuredBreach.DataClasses }}</span>
+    <span class="breach-info"><span class="medium">Breach Date</span> {{prettyDate featuredBreach.BreachDate }}</span>
+    <span class="breach-info"><span class="medium">Compromised Accounts</span> {{localeString featuredBreach.PwnCount }}</span>
+    <span class="breach-info"><span class="medium">Compromised Data</span> {{breachDataClasses featuredBreach.DataClasses }}</span>
     <span class="breach-info breach-description">{{{ featuredBreach.Description }}}</span>
     {{> hibp_attribution }}
   </div>

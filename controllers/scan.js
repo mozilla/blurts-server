@@ -7,6 +7,7 @@ const TIPS = require("../tips");
 
 async function post (req, res) {
   const emailHash = req.body.emailHash;
+  const whatToDo = "4";
   let featuredBreach = null;
   let userAccountCompromised = false;
   
@@ -21,11 +22,11 @@ async function post (req, res) {
     const newestBreach = new Date(b.BreachDate);
     return newestBreach-oldestBreach;
   });
-
+  
   if (req.body.featuredBreach) {
-    featuredBreach = req.app.locals.breaches.filter(breach => breach.Name.toLowerCase() === req.body.featuredBreach.toLowerCase())[0];
+    featuredBreach = req.app.locals.breaches.find(breach => breach.Name.toLowerCase() === req.body.featuredBreach.toLowerCase()); 
 
-    if(foundBreaches.filter(breach => breach.Name === featuredBreach.Name).length > 0) {
+    if (foundBreaches.find(breach => breach.Name === featuredBreach.Name)) {
       userAccountCompromised = true;
 
       if (foundBreaches.length > 1) {
@@ -42,6 +43,7 @@ async function post (req, res) {
       featuredBreach,
       userAccountCompromised,
       passwordTips: TIPS,
+      whatToDo,
     });
   }
 
@@ -50,6 +52,7 @@ async function post (req, res) {
       title: "Firefox Monitor : Scan Results",
       foundBreaches,
       passwordTips: TIPS,
+      whatToDo,
     });
   }
 }

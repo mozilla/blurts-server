@@ -580,18 +580,6 @@ main span.breach-info {
   color: #999cbf;
 }
 
-main span.breach-info .bold {
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-weight: 500;
-  color: #fff;
-}
-
-#breach-title-wrapper {
-  display: flex;
-  align-items: center;
-}
-
 main .breach-headline {
   font-size: 22px;
 }
@@ -873,6 +861,17 @@ span.breach-info {
   display: block;
 }
 
+.compromised-acounts .account h4,
+span.breach-info .medium {
+  letter-spacing: 0.5px;
+  color: #fff;
+}
+
+.compromised-accounts .account h4 {
+  font-size: 19px;
+  font-weight: 500;
+}
+
 /* //// WHAT TO DO  */
 
 #what-to-do .section-wrapper {
@@ -896,7 +895,7 @@ span.breach-info {
   justify-content: center;
 }
 
-#what-to-do img {
+#what-to-do svg {
   margin-bottom: calc(var(--columnSpacing) / 2);
 }
 
