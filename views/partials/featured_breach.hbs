@@ -4,7 +4,7 @@
       <div class="image-wrap">
         <img alt="{{ featuredBreach.Title }}" src="img/logos/{{ featuredBreach.Name }}.{{ featuredBreach.LogoType }}">
       </div>
-      <span class="breach-headline">{{ featuredBreach.Name }} Breach</span>
+      <span class="breach-headline">{{ featuredBreach.Title }}</span>
     </div>
     <span class="breach-info"><span class="medium">Breach Date</span> {{prettyDate featuredBreach.BreachDate }}</span>
     <span class="breach-info"><span class="medium">Compromised Accounts</span> {{localeString featuredBreach.PwnCount }}</span>
