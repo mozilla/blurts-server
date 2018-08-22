@@ -7,6 +7,7 @@ require("dotenv").load({path: path.join(__dirname, ".env")});
 
 const kEnvironmentVariables = [
   "NODE_ENV",
+  "DISABLE_DOCKERFLOW",
   "SERVER_URL",
   "PORT",
   "COOKIE_SECRET",
