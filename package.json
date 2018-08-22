@@ -52,10 +52,12 @@
   "jest": {
     "collectCoverageFrom": [
       "**/*.js",
+      "!coverage/**/**.js",
       "!db/seeds/**.js",
       "!db/migrations/**.js",
-      "!coverage/**/**.js",
-      "!public/**/**.js"
+      "!public/**/**.js",
+      "!scripts/*.js",
+      "!.eslintrc.js"
     ]
   },
   "private": true,
