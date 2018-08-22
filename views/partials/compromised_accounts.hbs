@@ -11,14 +11,14 @@
         {{/if}}
       </h3>
 
-<!--list first 5 breaches-->
-{{#each_from_to foundBreaches 0 4 }}
-  <div class="half listings">
-    {{> breach_listing }}
-  </div>
-{{/each_from_to}}
+      <!--list first 5 breaches-->
+      {{#each_from_to foundBreaches 0 4 }}
+        <div class="half listings">
+          {{> breach_listing }}
+        </div>
+      {{/each_from_to}}
 
-<!--display button and list remainder of breaches on click-->
+      <!--display button and list remainder of breaches on click-->
       {{#if_conditional foundBreaches 4}}
         <div id="additional-breaches" class="section-wrapper">
           {{#each_from_to foundBreaches 4 foundBreaches.length }}
@@ -33,4 +33,3 @@
     </div><!--closes section-wrapper-->
   </div><!--closes .compromised-accounts-->
 {{/if}}
-
