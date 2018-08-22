@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+     <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
+    <link rel="stylesheet" href="/css/app.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content="Firefox Monitor notifies users when their credentials have possibly been leaked or stolen in a data breach. Powered by haveibeenpwned.com." />
     <meta property="og:title" content="Firefox Monitor" />
-    <meta name="twitter:title" content="Firefox Monitor" />
     <meta property="og:description" content="Protect yourself from hackers." />
-    <meta name="twitter:description" content="Protect yourself from hackers." />
-    <meta property="og:url" content="https://monitor.firefox.com" />
-    <meta property="og:image" content="https://monitor.firefox.com/img/firefox-share.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta property="og:url" content="https://fx-breach-alerts.herokuapp.com/" />
+    <meta property="og:image" content="/img/firefox-share.png" />
+    <meta name="theme-color" content="#002275" />
     <title>{{ title }}</title>
-    <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
-    <link rel="stylesheet" href="/css/app.css">
     <script type="text/javascript" src="/js/vendor/dnt-helper.js"></script>
     <script type="text/javascript" src="/js/tracking_protection.js" defer></script>
     <script type="text/javascript" src="/js/monitor.js" defer></script>
@@ -22,31 +22,43 @@
     <link rel="icon" href="/img/favicons/favicon-228.png" sizes="228x228" />
   </head>
   <body>
+    {{> subscribe_modal }}
     <header class ="section-wrapper">
-      <div class="whole">
+      <div class="half">
         <a href="/">
           <img alt="Firefox Logo" class="logo" src="/img/firefox.png" />
-          <h1><span class="medium">Firefox</span> Monitor</h1>
+          <h1><span class="demi">Firefox</span> Monitor</h1>
         </a>
-        {{#if breach}}
-          {{> sign_up_button }}
-        {{/if}}
+      </div>
+      <div class="half">
+        {{> social_media_sharing_buttons}}
       </div>
     </header>
+    
       {{{ body }}}
-  
     <footer id="footer">
       <div class="section-wrapper">
-        <nav class="footer-links-wrapper two-thirds">
+        <div class="fourth">
           <a class="footer-logo-wrapper" href="https://www.mozilla.org"><img src="/img/moz-logo-bw-rgb.svg" alt="Mozilla Logo" /></a>
-          <section class="footer-links">
-            <a href="https://www.mozilla.org/about/legal/">Terms</a>
-            <a href="https://www.mozilla.org/privacy/websites/">Privacy</a>
-            <a href="/">Give Feedback</a>
-            <a id="GitHub-logo" href="https://github.com/mozilla/blurts-server/"><img src="/img/github.svg" alt="Github Logo" /></a>
-          </section>
-        </nav>
-        <p class="third">Portions of this content are &copy; 1998-2018 by individual mozilla.org contributors. <br />Content available under a <a href="https://www.mozilla.org/foundation/licensing/website-content/">Creative Commons license</a>.</p>
+          <p>Portions of this content are &copy; 1998-2018 by individual mozilla.org contributors. <br />Content available under a <a href="https://www.mozilla.org/foundation/licensing/website-content/">Creative Commons license</a>.</p>
+        </div>
+        <ul class="fourth">
+          <li>Support</li>
+          <li><a href="/">Give Feedback</a></li>
+          <li><a id="GitHub-logo" href="https://github.com/mozilla/blurts-server/"><img src="/img/github.svg" alt="Github Logo" /></a></li>
+        </ul>
+        <ul class="fourth">
+          <li>Legal</li>
+          <li><a href="https://www.mozilla.org/about/legal/">Terms</a></li>
+          <li><a href="https://www.mozilla.org/privacy/websites/">Privacy</a></li>
+        </ul>
+        <ul class="fourth">
+          <li>Firefox</li>
+          <li><a href="https://www.mozilla.org/firefox/new/">Download Firefox</a></li>
+          <li><a href="https://www.mozilla.org/firefox/mobile/">Download Firefox Mobile</a></li>
+          <li><a href="https://www.mozilla.org/firefox/features/">Features</a></li>
+          <li><a href="https://www.mozilla.org/firefox/channel/desktop/">Beta, Nightly, Developer Edition</a></li>
+        </ul>
       </div>
     </footer>
   </body>

@@ -1,19 +1,22 @@
 {{!< default }}
-<main>
+<main class="scan-results">
   <div class="section-wrapper">
     <div class="half">
-      <div class="banner-content">
-        {{#if foundBreaches }}
-          {{> oh_no }}
+      {{#if featuredBreach }}
+        {{> featured_compromised_account_headline}}
+      {{else}}
+        {{> scan_results_headline}}
+      {{/if}}
+    </div>
+    <div class="wrap">
+      <div class="half">
+        {{#if featuredBreach }}
+          {{> featured_breach }}
         {{ else }}
-          {{> no_breaches }}
+          {{> scan_results_blurb }}
         {{/if}}
       </div>
-    </div>
-
-    <div class="half">
-      <img id="arrow-divider" src="img/arrow_divider.png" alt="" />
-      <div class="banner-content">
+      <div class="half">
         {{> sign_up_button }}
       </div>
     </div>
@@ -21,10 +24,12 @@
 </main>
 
 {{#if foundBreaches }}
-  <div class="compromised-accounts section-wrapper">
-    <div class="two-thirds">{{> compromised_accounts }}</div>
-    <div class="third">{{> what_to_do }}</div>
-  </div>
+  {{> compromised_accounts }}
+  {{> what_to_do }}
+  {{> scan_another_email}}
 {{ else }}
+  <div id="scan-another-email-container">
+    {{> scan_another_email}}
+  </div>
   {{> tips }}
 {{/if}}
