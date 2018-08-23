@@ -121,8 +121,6 @@ img {
   -ms-interpolation-mode: bicubic;
 }
 
-/* // structure  */
-
 .section-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -525,10 +523,6 @@ main .wrap {
   flex-wrap: wrap;
 }
 
-main .image-wrap img {
-  margin-top: 0;
-}
-
 main h2.section-headline {
   margin-bottom: 0;
 }
@@ -543,27 +537,23 @@ main p {
   line-height: 150%;
 }
 
-main.scan-results p {
-  margin: 0 0 0 0;
+/* BREACH LISTING */
+
+.breach-headline {
+  text-transform: capitalize;
 }
 
-main.scan-results button {
-  max-width: 300px;
-  margin: 0 auto;
+.account {
+  display: flex;
+  flex-direction: row;
 }
 
-main .account {
-  flex-direction: column;
-  border-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-main .account .image-wrap {
+.account .image-wrap {
+  align-self: flex-start;
+  margin-right: var(--gap);
+  overflow: hidden;
   max-width: 50px;
-  max-height: 50px;
-  margin-top: auto;
-  margin-bottom: auto;
+  width: 50px;
   min-width: 50px;
 }
 
@@ -573,26 +563,64 @@ main .account .image-wrap {
   width: 100%;
 }
 
-main span.breach-info {
-  margin-top: calc(var(--gap) / 2);
+span.breach-info {
+  display: block;
+}
+
+/* FEAUTURED BREACH LISTING */
+
+#featured-breach .account {
+  border-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#featured-breach.account .image-wrap {
+  min-width: 50px;
+  max-width: 50px;
+  max-height: 50px;
+}
+
+#featured-breach.account .image-wrap img {
+  margin-top: 0;
+}
+
+#featured-breach .row {
+  align-items: flex-end;
+  margin-bottom: calc(var(--gap) / 2);
+}
+
+#featured-breach span.breach-info {
+  margin-top: 5px;
   width: 100%;
   font-weight: 400;
   color: #999cbf;
 }
 
-main .breach-headline {
+#featured-breach .breach-headline {
   font-size: 22px;
 }
 
-main .source-info {
-  margin-top: var(--gap);
+/* FEATURED BREACH LISTING - RESULTS PAGE  */
+
+main.scan-results p {
+  margin: 0 0 0 0;
 }
 
-main .breach-description {
+main.scan-results button {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+main.scan-results #featured-breach .breach-description {
   display: none;
 }
 
-/* ////  SIGN UP BUTTON GROUP  */
+main.scan-results #featured-breach .breach-headline {
+  font-size: 19px;
+}
+
+/*  SIGN UP BUTTON GROUP  */
 
 #sign-up-banner {
   background-color: rgba(0, 0, 0, 0.2);
@@ -621,7 +649,7 @@ main .breach-description {
   font-size: 21px;
 }
 
-/* tips *************************** */
+/* COMPROMISED ACCOUNTS -  *************************** */
 
 #password-advice {
   text-align: center;
@@ -804,7 +832,7 @@ body.show-subscribe-modal .modal-content.show {
   align-items: flex-start;
 }
 
-.half.listings .breach-description {
+.compromised-accounts .breach-description {
   display: none;
 }
 
@@ -841,24 +869,6 @@ body.show-subscribe-modal .modal-content.show {
   opacity: 1;
   visibility: visible;
   transition: all 0.25s ease;
-}
-
-.account {
-  display: flex;
-  flex-direction: row;
-}
-
-.account .image-wrap {
-  align-self: flex-start;
-  margin-right: var(--gap);
-  overflow: hidden;
-  max-width: 50px;
-  width: 50px;
-  min-width: 50px;
-}
-
-span.breach-info {
-  display: block;
 }
 
 .compromised-acounts .account h4,
@@ -924,13 +934,10 @@ span.breach-info .medium {
 
 /* //// HIBP ATTRIBUTION */
 
-.compromised-accounts .source-info {
-  text-align: center;
-}
-
 .source-info {
-  font-size: 13px;
   width: 100%;
+  font-size: 13px;
+  text-align: center;
 }
 
 .source-info a {
@@ -1111,11 +1118,6 @@ img.waves-footer {
     min-width: 0;
   }
 
-  .compromised-accounts .source-info {
-    width: 100%;
-    text-align: center;
-  }
-
   #show-additional-breaches {
     align-self: center;
   }
@@ -1195,8 +1197,6 @@ img.waves-footer {
 @media screen and (max-width: 480px) {
   body {
     --columnSpacing: 30px;
-
-    font-size: 13px;
   }
 
   h2,
@@ -1217,16 +1217,16 @@ img.waves-footer {
     padding-top: 0;
   }
 
-  main.scan-results .account .breach-description {
-    display: none;
-  }
-
   .privacy-policy br {
     display: block;
   }
 
-  .compromised-accounts .account {
+  .account {
     flex-direction: column;
+  }
+
+  .account .image-wrap {
+    margin-bottom: calc(var(--gap) / 2);
   }
 
   #password-advice p {

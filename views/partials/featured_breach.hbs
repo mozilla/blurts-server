@@ -1,15 +1,14 @@
 {{#if featuredBreach }}
-  <div class="account">
-    <div id="breach-title-wrapper">
+  <div id="featured-breach" class="account">
       <div class="image-wrap">
         <img alt="{{ featuredBreach.Title }}" src="/img/logos/{{ featuredBreach.Name }}.{{ featuredBreach.LogoType }}">
       </div>
-      <span class="breach-headline">{{ featuredBreach.Title }}</span>
+    <div class="breach-info-wrap">
+      <span class="breach-headline">{{ featuredBreach.Title }} Breach</span>
+      <span class="breach-info breach-date"><span class="medium">Breach Date</span> {{prettyDate featuredBreach.BreachDate }}</span>
+      <span class="breach-info"><span class="medium">Compromised Accounts</span> {{localeString featuredBreach.PwnCount }}</span>
+      <span class="breach-info"><span class="medium">Compromised Data</span> {{breachDataClasses featuredBreach.DataClasses }}</span>
+      <span class="breach-info breach-description">{{ featuredBreach.Description }}</span>
     </div>
-    <span class="breach-info"><span class="medium">Breach Date</span> {{prettyDate featuredBreach.BreachDate }}</span>
-    <span class="breach-info"><span class="medium">Compromised Accounts</span> {{localeString featuredBreach.PwnCount }}</span>
-    <span class="breach-info"><span class="medium">Compromised Data</span> {{breachDataClasses featuredBreach.DataClasses }}</span>
-    <span class="breach-info breach-description">{{{ featuredBreach.Description }}}</span>
-    {{> hibp_attribution }}
   </div>
 {{/if}}
