@@ -1,23 +1,32 @@
 "use strict";
 
+const MessageValidator = require("sns-validator");
+
 const DB = require("../db/DB");
 
 
-async function notification(req, res) {
-  try {
-    const notification = JSON.parse(req.body);
-    // TODO: verifyNotification(notification) or use http basic auth
-    await handleNotification(notification);
+const validator = new MessageValidator();
 
-    res.status(200).json(
-      {status: "OK"}
-    );
-  } catch (e) {
-    console.error("SES notification error: ", e);
-    res.status(500).json(
-      {info: "Internal error."}
-    );
-  }
+
+async function notification(req, res) {
+  const message = JSON.parse(req.body);
+  return new Promise((resolve, reject) => {
+    validator.validate(message, async (err, message) => {
+      if (err) {
+        console.error(err);
+        const body = "Access denied. " + err.message;
+        res.status(401).send(body);
+        return reject(body);
+      }
+
+      await handleNotification(message);
+
+      res.status(200).json(
+        {status: "OK"}
+      );
+      return resolve("OK");
+    });
+  });
 }
 
 
