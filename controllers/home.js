@@ -5,7 +5,7 @@ const TIPS = require("../tips");
 
 function home(req, res) {
   let featuredBreach = null;
-  let scanFeaturedBreach = null;
+  let scanFeaturedBreach = false;
   if (req.query.breach) {
     const reqBreachName = req.query.breach.toLowerCase();
     featuredBreach = req.app.locals.breaches.filter(breach => breach.Name.toLowerCase() === reqBreachName)[0];
