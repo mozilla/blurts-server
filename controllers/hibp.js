@@ -1,6 +1,8 @@
 "use strict";
 
+const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
+const HIBP = require("../hibp");
 
 
 async function notify (req, res) {
@@ -20,6 +22,50 @@ async function notify (req, res) {
 }
 
 
+/*
+ * Endpoint for clients to request latest breaches data.
+ * Clients should send the date-time of the most recent breach they know in the
+ * If-Modified-Since HTTP header.
+ *
+   > GET /hibp/breaches HTTP/1.1
+   > If-Modified-Since: 2018-08-25T00:00:00
+ *
+ * If the client already has the latest breach, it will receive a 304:
+ *
+ * < HTTP/1.1 304 Not Modified
+ *
+ * ... or, if the client needs new breach data, it will receive a 200 with the
+ * latest breach date in the Last-Modified header with a full body of breach data:
+ *
+ * < HTTP/1.1 200 OK
+ * < Last-Modified: Thu Aug 23 2018 23:36:24 GMT-0500 (CDT)
+ * <
+ * [{"Title":"000webhost","Name":"000webhost", ...}]
+ *
+ * The client should store the 'Last-Modified' value and start sending it in
+ * its 'If-Modified-Since' header in future requests.
+ */
+async function breaches (req, res, next) {
+  const clientMostRecentBreachDateTime = new Date(req.headers["if-modified-since"]);
+  const serverMostRecentBreachDateTime = req.app.locals.mostRecentBreachDateTime;
+  if (clientMostRecentBreachDateTime < serverMostRecentBreachDateTime) {
+    res.append("Last-Modified", serverMostRecentBreachDateTime);
+    res.json(req.app.locals.breaches);
+  } else {
+    res.sendStatus(304);
+  }
+
+  if (Date.now() - req.app.locals.breachesLoadedDateTime >= AppConstants.HIBP_RELOAD_BREACHES_TIMER * 1000) {
+    await HIBP.loadBreachesIntoApp(req.app);
+    const freshBreachesLatestBreachDateTime = HIBP.getLatestBreachDateTime(req.app.locals.breaches);
+    if (freshBreachesLatestBreachDateTime > req.app.locals.mostRecentBreachDateTime) {
+      req.app.locals.mostRecentBreachDateTime = freshBreachesLatestBreachDateTime;
+    }
+  }
+}
+
+
 module.exports = {
   notify,
+  breaches,
 };
