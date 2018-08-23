@@ -16,6 +16,7 @@ if (AppConstants.SES_NOTIFICATION_LOG_ONLY) {
     console.log("SES Notification request body: ", req.body);
   });
 } else {
+  router.use("/notification", textParser);
   router.use("/notification", sesAuth);
   router.post("/notification", textParser, notification);
 }
