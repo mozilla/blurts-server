@@ -1,6 +1,8 @@
 "use strict";
 
+const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
+const HIBP = require("../hibp");
 
 
 async function notify (req, res) {
@@ -20,6 +22,27 @@ async function notify (req, res) {
 }
 
 
+async function breaches (req, res, next) {
+  const clientMostRecentBreachDateTime = new Date(req.headers["if-modified-since"]);
+  const serverMostRecentBreachDateTime = req.app.locals.mostRecentBreachDateTime;
+  if (clientMostRecentBreachDateTime < serverMostRecentBreachDateTime) {
+    res.append("Last-Modified", serverMostRecentBreachDateTime);
+    res.json(HIBP.filterOutUnsafeBreaches(req.app.locals.breaches));
+  } else {
+    res.sendStatus(304);
+  }
+
+  if (new Date() - req.app.locals.breachesLoadedDateTime >= AppConstants.HIBP_RELOAD_BREACHES_TIMER) {
+    await HIBP.loadBreachesIntoApp(req.app);
+    const freshBreachesLatestBreachDateTime = HIBP.getLatestBreachDateTime(req.app.locals.breaches);
+    if (freshBreachesLatestBreachDateTime > req.app.locals.mostRecentBreachDateTime) {
+      req.app.locals.mostRecentBreachDateTime = freshBreachesLatestBreachDateTime;
+    }
+  }
+}
+
+
 module.exports = {
   notify,
+  breaches,
 };
