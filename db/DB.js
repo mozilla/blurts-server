@@ -20,6 +20,16 @@ const DB = {
     return res[0];
   },
 
+  async getSubscriberByTokenAndHash(token, emailSha1) {
+    const res = await knex.table("subscribers")
+      .first()
+      .where({
+        "verification_token": token,
+        "sha1": emailSha1,
+      });
+    return res;
+  },
+
   async getSubscribersByEmail(email) {
     return await knex("subscribers")
       .where("email", "=", email);
@@ -84,7 +94,6 @@ const DB = {
 
   async _verifySubscriber(emailHash) {
     await HIBP.subscribeHash(emailHash.sha1);
-    // TODO: resolve with error if HIBP fails
     const verifiedSubscriber = await knex("subscribers")
       .where("email", "=", emailHash.email)
       .update({ verified: true })
@@ -92,9 +101,8 @@ const DB = {
     return verifiedSubscriber;
   },
 
-  async removeSubscriber(email) {
+  async removeSubscriberByEmail(email) {
     const sha1 = getSha1(email);
-
     return await this._getSha1EntryAndDo(sha1, async aEntry => {
       await knex("subscribers")
         .where("id", "=", aEntry.id)
@@ -105,6 +113,17 @@ const DB = {
       console.warn("removeSubscriber called with email not found in database.");
       return;
     });
+  },
+
+  async removeSubscriberByToken(token, emailSha1) {
+    const subscriber = await this.getSubscriberByTokenAndHash(token, emailSha1);
+    await knex("subscribers")
+      .where({
+        "verification_token": subscriber.verification_token,
+        "sha1": subscriber.sha1,
+      })
+      .del();
+    return subscriber;
   },
 
   async getSubscribersByHashes(hashes) {

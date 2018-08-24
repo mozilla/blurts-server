@@ -74,7 +74,7 @@ test("removeSubscriber accepts email and removes the email address", async () =>
   let subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
   expect(subscribers.length).toEqual(1);
 
-  await DB.removeSubscriber(verifiedSubscriber.email);
+  await DB.removeSubscriberByEmail(verifiedSubscriber.email);
   subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
   expect(subscribers.length).toEqual(0);
 });

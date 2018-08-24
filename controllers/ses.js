@@ -13,6 +13,7 @@ async function notification(req, res) {
       {status: "OK"}
     );
   } catch (e) {
+    console.error("SES notification error: ", e);
     res.status(500).json(
       {info: "Internal error."}
     );
@@ -52,7 +53,7 @@ async function handleComplaintMessage(message) {
 
 async function removeSubscribersFromDB(recipients) {
   for (const recipient of recipients) {
-    await DB.removeSubscriber(recipient.emailAddress);
+    await DB.removeSubscriberByEmail(recipient.emailAddress);
   }
 }
 
