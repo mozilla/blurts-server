@@ -1,20 +1,20 @@
 "use strict";
 
+const HIBP = require("../hibp");
 const home = require("../controllers/home");
 
 
-function addBreachesToMockRequest(mockRequest) {
-  const mockBreaches = [
-    {Name: "Test"},
-    {Name: "DontShow"},
-  ];
-  mockRequest.app = { locals: { breaches: mockBreaches } };
-  return mockRequest;
-}
+jest.mock("../hibp");
+
+
+HIBP.breaches = [
+  {Name: "Test"},
+  {Name: "DontShow"},
+];
+
 
 test("home GET without breach renders monitor without breach", () => {
   let mockRequest = { query: { breach: null } };
-  mockRequest = addBreachesToMockRequest(mockRequest);
   const mockResponse = { render: jest.fn() };
 
   home.home(mockRequest, mockResponse);
@@ -28,7 +28,6 @@ test("home GET without breach renders monitor without breach", () => {
 test("home GET with breach renders monitor with breach", () => {
   const testBreach = {Name: "Test"};
   let mockRequest = { query: { breach: testBreach.Name } };
-  mockRequest = addBreachesToMockRequest(mockRequest);
   const mockResponse = { render: jest.fn() };
 
   home.home(mockRequest, mockResponse);

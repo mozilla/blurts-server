@@ -36,7 +36,7 @@ if (app.get("env") !== "dev") {
 
 (async () => {
   try {
-    await HIBP.loadBreachesIntoApp(app);
+    req.app.locals.breaches = await HIBP.loadBreaches();
   } catch (error) {
     console.error(error);
   }

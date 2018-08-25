@@ -13,6 +13,10 @@ const HIBP_USER_AGENT = `${pkg.name}/${pkg.version}`;
 
 
 const HIBP = {
+  breaches: [],
+  breachesLoadedDateTime: null,
+  mostRecentBreachDateTime: null,
+
   _addStandardOptions (options = {}) {
     const hibpOptions = {
       headers: {
@@ -36,8 +40,8 @@ const HIBP = {
     return await got(url, reqOptions);
   },
 
-  async loadBreachesIntoApp(app) {
-    console.log("Loading breaches from HIBP into app.locals");
+  async loadBreaches() {
+    console.log("Loading breaches from HIBP.");
     try {
       const breachesResponse = await this.req("/breaches");
       const breaches = [];
@@ -48,9 +52,10 @@ const HIBP = {
         breach.Description = DOMPurify.sanitize(breach.Description, {ALLOWED_TAGS: []});
         breaches.push(breach);
       }
-      app.locals.breaches = breaches;
-      app.locals.breachesLoadedDateTime = new Date();
-      app.locals.mostRecentBreachDateTime = this.getLatestBreachDateTime(breaches);
+      this.breaches = breaches;
+      this.breachesLoadedDateTime = new Date();
+      this.mostRecentBreachDateTime = this.getLatestBreachDateTime(breaches);
+      return this.breaches;
     } catch (error) {
       console.error(error);
     }
@@ -85,9 +90,9 @@ const HIBP = {
   filterOutUnsafeBreaches(breaches) {
     return breaches.filter(
       breach => breach.IsVerified && 
-      !breach.IsRetired && 
-      !breach.IsSensitive &&
-      !breach.IsSpamList
+                !breach.IsRetired &&
+                !breach.IsSensitive &&
+                !breach.IsSpamList
     );
   },
 

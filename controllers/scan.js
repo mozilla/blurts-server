@@ -14,7 +14,7 @@ async function post (req, res) {
     res.redirect("/");
     return;
   }
-  let foundBreaches = await HIBP.getBreachesForEmail(emailHash, req.app.locals.breaches);
+  let foundBreaches = await HIBP.getBreachesForEmail(emailHash, HIBP.breaches);
 
   foundBreaches.sort( (a,b) => {
     const oldestBreach = new Date(a.BreachDate);
@@ -23,7 +23,7 @@ async function post (req, res) {
   });
   
   if (req.body.featuredBreach) {
-    featuredBreach = req.app.locals.breaches.find(breach => breach.Name.toLowerCase() === req.body.featuredBreach.toLowerCase()); 
+    featuredBreach = HIBP.breaches.find(breach => breach.Name.toLowerCase() === req.body.featuredBreach.toLowerCase()); 
 
     if (foundBreaches.find(breach => breach.Name === featuredBreach.Name)) {
       userAccountCompromised = true;

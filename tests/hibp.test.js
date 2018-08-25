@@ -1,9 +1,16 @@
 "use strict";
 
+const HIBP = require("../hibp");
+
 const sha1 = require("../sha1-utils");
 const hibp = require("../controllers/hibp");
 
 const { testBreaches } = require("./test-breaches");
+
+jest.mock("../hibp");
+
+HIBP.breaches = testBreaches;
+
 require("./resetDB");
 
 
@@ -13,7 +20,7 @@ test("notify POST with breach, hash prefix, and suffixes should respond with 200
   const testPrefix = testHash.slice(0, 6).toUpperCase();
   const testSuffix = testHash.slice(6).toUpperCase();
 
-  const mockRequest = { body: { hashPrefix: testPrefix, hashSuffixes: [testSuffix], breachName: "Test" }, app: { locals: { breaches: testBreaches } } };
+  const mockRequest = { body: { hashPrefix: testPrefix, hashSuffixes: [testSuffix], breachName: "Test" } };
   const mockResponse = { status: jest.fn(), json: jest.fn() };
 
   await hibp.notify(mockRequest, mockResponse);
