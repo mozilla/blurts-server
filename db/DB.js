@@ -111,6 +111,12 @@ const DB = {
     return await knex("subscribers").whereIn("sha1", hashes).andWhere("verified", "=", true);
   },
 
+  async deleteUnverifiedSubscribers() {
+    await knex("subscribers")
+      .where("verified", false)
+      .del();
+  },
+
   async createConnection() {
     if (knex === null) {
       knex = Knex(knexConfig);
