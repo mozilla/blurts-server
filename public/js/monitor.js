@@ -273,7 +273,20 @@ function restoreInputs() {
 //prevents footer from covering stuff up
 function bodyPadding() {
   const footerHeight = document.getElementById("footer").offsetHeight;
-  document.body.style.paddingBottom = footerHeight + 60 + "px";
+  const headerWave = document.getElementById("header-wave");
+  const footerWave = document.getElementById("footer-wave");
+  if(window.innerWidth >= 2200) {
+    headerWave.style.top = 0 - Math.floor(window.innerWidth / 12) + "px";
+  }
+  if(window.innerWidth >= 1200 && window.innerWidth < 2200) {
+    headerWave.style.top = 0 - Math.floor(window.innerWidth / 20) + "px";
+  }
+  if (window.innerWidth <= 1200) {
+    headerWave.style.top = 0;
+  }
+  document.getElementById("content-wrap").paddingBottom = footerHeight + "px";
+  footerWave.style.bottom = 0 - Math.floor(footerWave.offsetHeight / 5) + "px";
+  document.body.style.paddingBottom = footerHeight + "px";
 }
 
 window.addEventListener("pageshow", function() {

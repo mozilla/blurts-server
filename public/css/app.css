@@ -13,6 +13,8 @@ body {
   font-size: 100%;
   line-height: 1.5;
   -webkit-overflow-scrolling: touch;
+
+  --breachInfo: #c4c6d6;
   --roundedCorners: 2px;
   --gap: 20px;
   --columnSpacing: 60px;
@@ -597,6 +599,8 @@ main p {
 
 span.breach-info {
   display: block;
+  font-weight: 300;
+  color: var(--breachInfo);
 }
 
 /* FEAUTURED BREACH LISTING */
@@ -954,7 +958,7 @@ span.breach-info .medium {
 #what-to-do .section-wrapper {
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: var(--columnSpacing);
+  margin-bottom: var(--columnSpacing);
   background-color: rgba(255, 255, 255, 0.01);
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
 }
@@ -1004,6 +1008,7 @@ span.breach-info .medium {
   width: 100%;
   font-size: 13px;
   text-align: center;
+  margin-top: var(--columnSpacing);
 }
 
 .source-info a {
@@ -1155,6 +1160,7 @@ footer ul li:first-of-type,
   width: 100%;
   margin: auto;
   pointer-events: none;
+  opacity: 0.8;
 }
 
 #footer-wave {

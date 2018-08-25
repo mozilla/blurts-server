@@ -22,19 +22,23 @@
     <link rel="icon" href="/img/favicons/favicon-228.png" sizes="228x228" />
   </head>
   <body>
-    {{> subscribe_modal/subscribe_modal_wrapper}}
-    <header class ="section-wrapper">
-      <div class="half">
-        <a href="/">
-          <img alt="Firefox Logo" class="logo" src="/img/firefox.png" />
-          <h1><span class="demi">Firefox</span> Monitor</h1>
-        </a>
-      </div>
-      <div class="half">
-        {{> social_media_sharing_buttons}}
-      </div>
-    </header>
-      {{{ body }}}
+    <img id="header-wave" class="wave" src="/img/wave.svg" />
+    <div id="content-wrap" class="content-wrap">
+      {{> subscribe_modal/subscribe_modal_wrapper}}
+      <header class ="section-wrapper">
+        <div class="half">
+          <a href="/">
+            <img alt="Firefox Logo" class="logo" src="/img/firefox.png" />
+            <h1><span class="demi">Firefox</span> Monitor</h1>
+          </a>
+        </div>
+        <div class="half">
+          {{> social_media_sharing_buttons}}
+        </div>
+      </header>
+        {{{ body }}}
+        <img id="footer-wave" class="wave" src="/img/wave.svg" />
+    </div>
     <footer id="footer">
       <div class="section-wrapper">
         <div class="fourth">
