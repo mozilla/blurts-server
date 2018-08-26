@@ -61,7 +61,11 @@ const DB = {
       // Entry existed, patch the email value if supplied.
       if (email) {
         const res = await knex("subscribers")
-          .update({ email, verified })
+          .update({
+            email,
+            verified,
+            updated_at: knex.fn.now(),
+          })
           .where("id", "=", aEntry.id)
           .returning("*");
         return res[0];
@@ -87,7 +91,10 @@ const DB = {
     // TODO: resolve with error if HIBP fails
     const verifiedSubscriber = await knex("subscribers")
       .where("email", "=", emailHash.email)
-      .update({ verified: true })
+      .update({
+        verified: true,
+        updated_at: knex.fn.now(),
+      })
       .returning("*");
     return verifiedSubscriber;
   },
