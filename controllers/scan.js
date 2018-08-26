@@ -21,19 +21,20 @@ async function post (req, res) {
     const newestBreach = new Date(b.BreachDate);
     return newestBreach-oldestBreach;
   });
-  
+
   if (req.body.featuredBreach) {
     featuredBreach = req.app.locals.breaches.find(breach => breach.Name.toLowerCase() === req.body.featuredBreach.toLowerCase()); 
 
-    if (foundBreaches.find(breach => breach.Name === featuredBreach.Name)) {
+    if (foundBreaches.find(breach => featuredBreach)) {
       userAccountCompromised = true;
 
       if (foundBreaches.length > 1) {
-        foundBreaches.splice(foundBreaches.findIndex(breach => breach.Name === req.body.featuredBreach),1);
+        foundBreaches.splice(featuredBreach,1);
+        foundBreaches.unshift(featuredBreach);
       }
 
       if (foundBreaches.length === 1) {
-        foundBreaches = false;
+        foundBreaches = true;
       } 
     }
     res.render("scan", {
