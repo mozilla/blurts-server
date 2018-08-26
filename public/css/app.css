@@ -74,6 +74,10 @@ h1,
   letter-spacing: -0.77px;
 }
 
+.secondary-title {
+  font-size: 22px;
+}
+
 h1 {
   white-space: nowrap;
 }
@@ -130,12 +134,18 @@ img {
   display: flex;
   flex-wrap: wrap;
   padding: var(--columnSpacing);
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   max-width: 1200px;
   min-width: 300px;
   margin: auto;
   overflow: hidden;
+}
+
+.wrap-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .whole {
@@ -185,6 +195,14 @@ img {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap-reverse;
+}
+
+.banner {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.hide {
+  display: none;
 }
 
 /* input fields */
@@ -496,8 +514,6 @@ header .half:last-of-type {
 }
 
 header a {
-  display: flex;
-  align-items: center;
   white-space: nowrap;
 }
 
@@ -652,12 +668,6 @@ main.scan-results #featured-breach .breach-headline {
 }
 
 /*  SIGN UP BUTTON GROUP  */
-
-#sign-up-banner {
-  background-color: rgba(0, 0, 0, 0.2);
-  min-height: 200px;
-  display: flex;
-}
 
 #sign-up-banner .fourth,
 #sign-up-banner .half {
@@ -1212,7 +1222,7 @@ footer ul li:first-of-type,
     max-width: 100%;
   }
 
-  #sign-up-banner .section-wrapper > * {
+  .banner .section-wrapper > * {
     margin-bottom: var(--gap);
     margin-top: var(--gap);
   }
