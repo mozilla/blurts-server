@@ -5,6 +5,7 @@
 const uuidv4 = require("uuid/v4");
 const Knex = require("knex");
 
+const AppConstants = require("../app-constants");
 const HIBP = require("../hibp");
 const getSha1 = require("../sha1-utils");
 
@@ -119,8 +120,11 @@ const DB = {
   },
 
   async deleteUnverifiedSubscribers() {
+    const expiredDateTime = new Date(Date.now() - AppConstants.DELETE_UNVERIFIED_SUBSCRIBERS_TIMER * 1000);
+    const expiredTimeStamp = expiredDateTime.toISOString();
     await knex("subscribers")
       .where("verified", false)
+      .andWhere("created_at", "<", expiredTimeStamp)
       .del();
   },
 

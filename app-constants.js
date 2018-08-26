@@ -27,6 +27,7 @@ const kEnvironmentVariables = [
   "HIBP_API_ROOT",
   "HIBP_API_TOKEN",
   "DATABASE_URL",
+  "DELETE_UNVERIFIED_SUBSCRIBERS_TIMER",
 ];
 
 const AppConstants = { };
