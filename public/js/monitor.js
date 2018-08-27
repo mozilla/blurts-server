@@ -208,6 +208,16 @@ function handleFormSubmits(formEvent) {
     setModalTabbing();
     return;
   }
+
+  if (formEvent.target.id === "unsubscribe-form") {
+    formEvent.submit();
+    return;
+  }
+
+  if (formEvent.target.id === "unsubscribe-survey-form") {
+    formEvent.submit();
+    return;
+  }
   return;
 }
 
