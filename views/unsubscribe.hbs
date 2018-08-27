@@ -1,0 +1,15 @@
+{{!< default }}
+<div class="unsubscribe-message-wrapper">
+  <div class="unsubscribe-message">
+      {{#if unsubscribed }}
+          <h4>You have unsubscribed.</h4>
+      {{ else }}
+          <h4>Are you sure you want to unsubscribe?</h4>
+          <form action="/user/unsubscribe" method="post" id="unsubscribe-form">
+              <input type="hidden" name="token" value="{{ token }}">
+              <input type="hidden" name="emailHash" value="{{ hash }}">
+              <input type="submit" class="button" value="Unsubscribe">
+          </form>
+      {{/if}}
+  </div>
+</div>

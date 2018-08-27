@@ -28,11 +28,7 @@ const EmailUtils = {
     // Allow a debug mode that will log JSON instead of sending emails.
     if (!smtpUrl) {
       console.info("smtpUrl is empty, EmailUtils will log a JSON response instead of sending emails.");
-      gTransporter = {
-        sendMail(options, callback) {
-          callback(null, "dummy mode");
-        },
-      };
+      gTransporter = nodemailer.createTransport({jsonTransport: true});
       return Promise.resolve(true);
     }
 
@@ -65,10 +61,22 @@ const EmailUtils = {
           reject(error);
           return;
         }
+        if (gTransporter.transporter.name === "JSONTransport") {
+          console.log(info.message.toString());
+        }
         resolve(info);
       });
     });
   },
+
+  verifyUrl (subscriber) {
+    return `${AppConstants.SERVER_URL}/user/verify?token=${encodeURIComponent(subscriber.verification_token)}`;
+  },
+
+  unsubscribeUrl (subscriber) {
+    return `${AppConstants.SERVER_URL}/user/unsubscribe?token=${encodeURIComponent(subscriber.verification_token)}&hash=${encodeURIComponent(subscriber.sha1)}`;
+  },
+
 };
 
 module.exports = EmailUtils;

@@ -193,6 +193,10 @@ const postData = (url, data = {}) => {
 };
 
 function handleFormSubmits(formEvent) {
+  if (formEvent.target.id === "unsubscribe-form") {
+    // default form submit behavior for unsubscribe-form
+    return;
+  }
   formEvent.preventDefault();
   const thisForm = formEvent.target;
   if (!thisForm.email.value || !isValidEmail(thisForm.email.value)) {
