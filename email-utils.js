@@ -2,10 +2,11 @@
 
 const path = require("path");
 
-const AppConstants = require("./app-constants");
-
 const nodemailer = require("nodemailer");
 const hbs = require("nodemailer-express-handlebars");
+
+const AppConstants = require("./app-constants");
+
 
 const hbsOptions = {
   viewEngine: {
@@ -41,6 +42,9 @@ const EmailUtils = {
     if (!gTransporter) {
       return Promise.reject("SMTP transport not initialized");
     }
+
+    // Always include SERVER_URL and unsubscribeUrl for footer
+    aContext.SERVER_URL = AppConstants.SERVER_URL;
 
     return new Promise((resolve, reject) => {
       gTransporter.use("compile", hbs(hbsOptions));

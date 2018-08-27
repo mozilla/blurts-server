@@ -57,7 +57,11 @@ const HIBP = {
     console.log("Done loading breaches.");
   },
 
-  async getBreachesForEmail(sha1, allBreaches) {
+  async getUnsafeBreachesForEmail(sha1, allBreaches) {
+    return await this.getBreachesForEmail(sha1, allBreaches, true);
+  },
+
+  async getBreachesForEmail(sha1, allBreaches, includeUnsafe = false) {
     let foundBreaches = [];
     const sha1Prefix = sha1.slice(0, 6).toUpperCase();
     const path = `/breachedaccount/range/${sha1Prefix}`;
@@ -77,6 +81,9 @@ const HIBP = {
       }
     } catch (error) {
       console.error(error);
+    }
+    if (includeUnsafe) {
+      return foundBreaches;
     }
     return this.filterOutUnsafeBreaches(foundBreaches);
   },
