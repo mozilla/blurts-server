@@ -25,7 +25,7 @@ async function post (req, res) {
   if (req.body.featuredBreach) {
     featuredBreach = req.app.locals.breaches.find(breach => breach.Name.toLowerCase() === req.body.featuredBreach.toLowerCase()); 
 
-    if (foundBreaches.find(breach => featuredBreach)) {
+    if (foundBreaches.find(breach => breach.Name === featuredBreach.Name)) {
       userAccountCompromised = true;
 
       if (foundBreaches.length > 1) {
@@ -33,7 +33,7 @@ async function post (req, res) {
         foundBreaches.unshift(featuredBreach);
       }
 
-      if (foundBreaches.length === 1) {
+      if (foundBreaches.length === 1 && foundBreaches.find(breach => breach.Name === featuredBreach.Name)) {
         foundBreaches = true;
       } 
     }
