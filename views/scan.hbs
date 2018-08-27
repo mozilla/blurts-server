@@ -2,29 +2,28 @@
 <main class="scan-results">
   <div class="section-wrapper breach-container">
   {{#if foundBreaches }}
-    <div class="half scan-results-content-left">
-      <h3 class="section-headline">This might be a problem</h3>
+    <section class="half scan-results-content-left">
+      <h3 id="found-breaches" class="section-headline">This might be a problem</h3>
       {{#if featuredBreach}}
         {{#if userAccountCompromised}}
           {{#if_conditional foundBreaches 1}} <!-- checking for additional "non-featured" breaches (is foundBreaches.length > 1) -->
-            <p>Your accounts appear in the {{ featuredBreach.Title }} Breach, as well as other breaches.</p>
-          </div><!--closes scan-results-content-left-->
+            <p>Your accounts appear in the <span class="bold">{{ featuredBreach.Title }}</span> Breach, as well as other breaches.</p>
           {{else}} <!-- no other breaches  -->
-            <p>Your account appears in the {{ featuredBreach.Title }} breach, but does not appear in any other known breaches.</p>
-          </div><!--closes scan-results-content-left-->
+            <p>Your account appears in the <span class="bold">{{ featuredBreach.Title }}</span> breach, but does not appear in any other known breaches.</p>
+          </section><!--closes scan-results-content-left-->
             <div class="half order-last">
               {{> featured_breach}}
             </div>
           {{/if_conditional}}
         {{else}} <!--(userAccountCompromised = false) -->
           {{#if_conditional foundBreaches 0}} <!-- user has breached accounts (foundBreaches.length > 0) but wasn't compromised in the 'featuredBreach' -->
-            <p>While your account is not included in the {{ featuredBreach.Title }} breach, your accounts do appear in the following breaches.</p>
+            <p>While your account is not included in the <span class="bold">{{ featuredBreach.Title }}</span> breach, your accounts do appear in the following breaches.</p>
           {{/if_conditional}}
         {{/if}}
       {{else}} <!--no featuredBreach, but user has other breached accounts (foundBreaches.length > 0)-->
         <p>Your accounts were compromised in the following breaches.</p>
       {{/if}}
-    </div><!--closes scan-results-content-left-->
+    </section><!--closes scan-results-content-left-->
     {{> compromised_accounts }}
   </div>
 </main>
@@ -35,7 +34,7 @@
     
   {{else}} <!--no foundBreaches (foundBreaches.length = 0)-->
     <div class="two-thirds">
-      <h3 class="section-headline">So far, so good</h3>
+      <h3 id="no-breaches" class="section-headline">So far, so good</h3>
       Your account does not appear in our basic scan. That's good news, but it doesn't mean you're safe. Data breaches can happen at any time in a number of ways. Subscribe to Firefox Monitor for a full report including sensitive breaches, alerts when new breaches happen, and advice on ways to protect your passwords.</p>
     </div>
     <div class="third">

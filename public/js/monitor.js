@@ -2,6 +2,24 @@
 /* global ga */
 
 const events = {
+  "facebook": {
+    "eventCategory": "Social Media Event",
+    "eventAction": "User shared Firefox Monitor on Facebook",
+    "featuredBreach": "User shared Firefox Monitor from a featured breach page.",
+    "foundBreaches": "User shared Firefox Monitor after discovering breached accounts.",
+    "noBreaches": "User shared Firefox Monitor after scanning email with no associated breaches.",
+    "landingPage": "User shared Firefox Monitor from landing page.",
+    "confirmAccount": "User shared Firefox Monitor from account confirmation page.",  
+  },
+  "twitter": {
+    "eventCategory": "Social Media Event",
+    "eventAction": "User tweeted link to Firefox Monitor",
+    "featuredBreach": "User tweeted link to Firefox Monitor from a featured breach page.",
+    "foundBreaches": "User tweeted link to Firefox Monitor after discovering breached accounts.",
+    "noBreaches": "User tweeted link to Firefox Monitor after scanning email with no associated breaches.",
+    "landingPage": "User tweeted link to Firefox Monitor from landing page.",
+    "confirmAccount": "User shared link to Firefox Monitor from account confirmation page.",
+  },
   "SignUp" : {
     "eventCategory": "Sign Ups",
     "eventAction:": "Clicked Sign Up Button",
@@ -13,10 +31,11 @@ const events = {
   "Scan" : {
     "eventCategory": "Scans",
     "eventAction:": "User scanned email address",
-    "featuredBreach": "User submitted email from featured breach page.",
-    "foundBreaches": "User submitted additional email.",
-    "noBreaches": "...",
+    "featuredBreach": "User scanned email from featured breach page.",
+    "foundBreaches": "User scanned additional email.",
+    "noBreaches": "User scanned email address after scanning email with no assciated breaches.",
     "landingPage": "User submitted email from landing page.",
+
   },
   "Pageview": {
     "eventCategory":"Views",
@@ -25,24 +44,26 @@ const events = {
     "foundBreaches": "List of compromised accounts.",
     "noBreaches": "No associated breaches.",
     "landingPage": "Default landing page without featured breach.",
+    "confirmAccount": "Your account is confirmed page.",
   },
 };
 
-function getLocation() {
-  if (document.getElementById("breach-title-wrapper")) {
+function ga_getLocation() {
+  if (document.getElementById("featured-breach-landing")) {
       return("featuredBreach");
-  } else if (document.getElementById("found-breaches")) {
-      return("foundBreaches");
-  } else if (document.getElementById("no-breaches")) {
-      return("noBreaches");
-  } else {
-      return("landingPage");
   }
+  if (document.getElementById("found-breaches")) {
+      return("foundBreaches");
+  }
+  if (document.getElementById("no-breaches")) {
+      return("noBreaches");
+  }
+    return("landingPage");
 }
 
-function sendGAPing(string) {
+async function ga_sendPing(string) {
   if(typeof(ga) !== "undefined") {
-    const eventLocation = getLocation();
+    const eventLocation = ga_getLocation();
     const event = events[string];
     const eventCategory = event["eventCategory"];
     const eventAction = event["eventAction"];
@@ -106,7 +127,7 @@ function closeModalWindow() {
 }
 
 function openModalWindow() {
-  sendGAPing("SignUp");
+  ga_sendPing("SignUp");
   document.body.classList.add("show-subscribe-modal");
   document.getElementById("subscribe-to-ffxm").classList.add("show");
   setModalTabbing();
@@ -153,7 +174,7 @@ async function sha1(message) {
 
 async function hashEmailAndSend(emailFormSubmitEvent) {
   const emailForm = emailFormSubmitEvent.target;
-  sendGAPing("Scan");
+  ga_sendPing("Scan");
   emailForm.classList.add("loading-data");
   for (const emailInput of emailForm.querySelectorAll("input[type=email]")) {
     emailForm.querySelector("input[name=emailHash]").value = await sha1(emailInput.value);
@@ -270,49 +291,36 @@ function doButtonRouting(event) {
 
 //re-enables inputs and clears loader
 function restoreInputs() {
+  for (const form of document.forms) {
+    form.classList.remove("loading-data");
+    form.classList.remove("invalid");
+  }
   for (const input of document.querySelectorAll("input")) {
     if (input.disabled) {
       input.disabled = false;
     }
   }
-  removeClass("form", "loading-data");
-  removeClass("form", "invalid");
 }
-
 
 //prevents footer from covering stuff up
-function bodyPadding() {
-  const footerHeight = document.getElementById("footer").offsetHeight;
-  const headerWave = document.getElementById("header-wave");
-  const footerWave = document.getElementById("footer-wave");
-  if(window.innerWidth >= 2200) {
-    headerWave.style.top = 0 - Math.floor(window.innerWidth / 12) + "px";
-  }
-  if(window.innerWidth >= 1200 && window.innerWidth < 2200) {
-    headerWave.style.top = 0 - Math.floor(window.innerWidth / 20) + "px";
-  }
-  if (window.innerWidth <= 1200) {
-    headerWave.style.top = 0;
-  }
-  document.getElementById("content-wrap").paddingBottom = footerHeight + "px";
-  footerWave.style.bottom = 0 - Math.floor(footerWave.offsetHeight / 5) + "px";
-  document.body.style.paddingBottom = footerHeight + "px";
-}
 
 window.addEventListener("pageshow", function() {
-  bodyPadding();
   if (document.getElementById("no-breaches") || document.getElementById("found-breaches")) {
-    sendGAPing("Pageview");
+    ga_sendPing("Pageview");
   }
   if (document.forms) {
     restoreInputs();
   }
 });
 
-window.addEventListener("resize", bodyPadding);
-
 if(document.forms) {
   addFormListeners();
+}
+
+if(document.querySelectorAll(".sendGA")) {
+  for (const el of document.querySelectorAll(".sendGA")) {
+    el.addEventListener("click", (e) => ga_sendPing(e.target.dataset.analyticsEvent));
+  }
 }
 
 if (document.querySelectorAll("button")) {
