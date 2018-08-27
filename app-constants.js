@@ -26,6 +26,7 @@ const kEnvironmentVariables = [
   "HIBP_KANON_API_TOKEN",
   "HIBP_API_ROOT",
   "HIBP_API_TOKEN",
+  "HIBP_RELOAD_BREACHES_TIMER",
   "DATABASE_URL",
 ];
 
