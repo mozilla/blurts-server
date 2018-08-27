@@ -1,8 +1,19 @@
 {{!< default }}
-<div class="subscribe-message-wrapper">
-  <div class="subscribe-message">
-      <h4>Your Email Is Confirmed!</h4>
-      <h5>You will receive Firefox Monitor notifications at {{ email }}.</h5>
-      <button class="button" data-open="share-modal">Share</button>
+<div class="confirm-message-wrapper">
+  <div class="confirm-message">
+      <h3 class="section-headline">
+        Confirmed!<br />
+        You're Subscribed
+      </h3>
+      <p>Firefox Monitor will email you a full report shortly, and will send an email alert if your account appears in new reported breaches.</p>
+      <h4 class="medium secondary-title">Tell your friends about Firefox Monitor</h4>
+      <nav class="secondary-social-media">
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ SERVER_URL}}" target="_blank" rel="noopener noreferrer">
+          <img src="/img/social_media_icons/facebook-round.svg" alt="Share Firefox Monitor on Facebook" />
+        </a>
+        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Find%20out%20if%20your%20email%20addresses%20have%20been%20hacked%20at%20{{ SERVER_URL }}" target="_blank" rel="noopener noreferrer">
+          <img src="/img/social_media_icons/twitter-round.svg" alt="Share Firefox Monitor on Twitter" />
+        </a>
+      </nav>
   </div>
 </div>
