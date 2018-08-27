@@ -1,22 +1,27 @@
 "use strict";
 
-const auth = require("basic-auth");
+const got = require("got");
 
 const AppConstants = require("./app-constants");
 
 
-function checkSESAuth (user, pass) {
-  return user === AppConstants.SES_USERNAME && pass === AppConstants.SES_PASSWORD;
-}
+// Verifies SES notification message signatures
+async function sesAuth (req, res, next) {
+  let error = "";
+  const messageBody = JSON.parse(req.body);
+  if (messageBody.SignatureVersion !== "1") {
+    error = "Wrong SES Signature version";
+  }
+  if (!messageBody.SigningCertURL.startsWith("https://")) {
+    error = "SigningCertURL must be https://";
+  }
 
+  const certificate = await got(messageBody.SigningCertURL);
 
-function sesAuth (req, res, next) {
-  const credentials = auth(req);
-  if (!credentials || !checkSESAuth(credentials.name, credentials.pass)) {
-    res.setHeader("WWW-Authenticate", `Basic realm="${AppConstants.SERVER_URL}"`);
-    res.status(401).send("Access denied");
-  } else {
+  if (false) {
     next();
+  } else {
+    res.status(401).send("Access denied. Error: ", error);
   }
 }
 
@@ -30,6 +35,6 @@ function asyncMiddleware (fn) {
 }
 
 module.exports = {
-  sesAuth,
+  sesAuth: asyncMiddleware(sesAuth),
   asyncMiddleware,
 };
