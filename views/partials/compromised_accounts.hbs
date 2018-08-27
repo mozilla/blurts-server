@@ -1,6 +1,6 @@
 
 
-{{#if foundBreaches}}
+{{#if_conditional foundBreaches 0}}
   <div class="compromised-accounts">
     <div class="section-wrapper">
       <!--list first 5 breaches-->
@@ -23,4 +23,4 @@
       {{/if_conditional}}
     </div><!--closes section-wrapper-->
   </div><!--closes .compromised-accounts-->
-{{/if}}
+{{/if_conditional}}
