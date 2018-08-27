@@ -35,7 +35,9 @@ if (!_dntEnabled()) {
 	})(window,document,"script","https://www.google-analytics.com/analytics.js","ga");
 
 	if (browserName() == "firefox") {
+		if (document.getElementById("download-firefox")) {
 		document.getElementById("download-firefox").classList.add("hide");
+		}
 	}
 }
 
