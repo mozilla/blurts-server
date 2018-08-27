@@ -5,6 +5,7 @@
 const uuidv4 = require("uuid/v4");
 const Knex = require("knex");
 
+const AppConstants = require("../app-constants");
 const HIBP = require("../hibp");
 const getSha1 = require("../sha1-utils");
 
@@ -71,7 +72,11 @@ const DB = {
       // Entry existed, patch the email value if supplied.
       if (email) {
         const res = await knex("subscribers")
-          .update({ email, verified })
+          .update({
+            email,
+            verified,
+            updated_at: knex.fn.now(),
+          })
           .where("id", "=", aEntry.id)
           .returning("*");
         return res[0];
@@ -96,7 +101,10 @@ const DB = {
     await HIBP.subscribeHash(emailHash.sha1);
     const verifiedSubscriber = await knex("subscribers")
       .where("email", "=", emailHash.email)
-      .update({ verified: true })
+      .update({
+        verified: true,
+        updated_at: knex.fn.now(),
+      })
       .returning("*");
     return verifiedSubscriber;
   },
@@ -128,6 +136,15 @@ const DB = {
 
   async getSubscribersByHashes(hashes) {
     return await knex("subscribers").whereIn("sha1", hashes).andWhere("verified", "=", true);
+  },
+
+  async deleteUnverifiedSubscribers() {
+    const expiredDateTime = new Date(Date.now() - AppConstants.DELETE_UNVERIFIED_SUBSCRIBERS_TIMER * 1000);
+    const expiredTimeStamp = expiredDateTime.toISOString();
+    await knex("subscribers")
+      .where("verified", false)
+      .andWhere("created_at", "<", expiredTimeStamp)
+      .del();
   },
 
   async createConnection() {
