@@ -991,16 +991,6 @@ main.scan-results .two-thirds {
   align-items: flex-start;
 }
 
-main.scan-results .button-wrapper {
-  align-self: center;
-  font-size: 16px;
-}
-
-main.scan-results .button-wrapper p {
-  margin-top: 10px;
-  line-height: 21px;
-}
-
 #additional-breaches.section-wrapper {
   padding: 0 0 0 0;
   margin: 0 0 0 0;
@@ -1055,6 +1045,7 @@ span.breach-info .medium {
 #what-to-do .section-wrapper {
   justify-content: center;
   margin-bottom: var(--columnSpacing);
+  margin-top: var(--columnSpacing);
 }
 
 #what-to-do .fourth {
@@ -1075,7 +1066,7 @@ span.breach-info .medium {
 
 /* SCAN ANOTHER EMAIL  */
 
-.scan-another-email {
+.scan-another-email .section-wrapper {
   margin-top: 0;
   justify-content: center;
 }
@@ -1146,11 +1137,18 @@ footer .section-wrapper {
   flex-direction: row;
 }
 
+footer .half,
 footer .fourth {
   flex-direction: column;
   text-align: left;
   justify-content: flex-start;
   align-items: flex-start;
+}
+
+footer .half div {
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 footer ul li,
@@ -1185,7 +1183,6 @@ footer ul li:first-of-type,
 .footer-logo-wrapper {
   line-height: 40px;
   height: 40px;
-  margin-bottom: 4px;
   min-width: 120px;
 }
 
@@ -1253,10 +1250,6 @@ footer ul li:first-of-type,
 }
 
 @media screen and (max-width: 1200px) {
-  #what-to-do .section-wrapper {
-    margin-top: 0;
-  }
-
   #sign-up-banner .fourth,
   #sign-up-banner .half {
     margin-top: var(--gap);
