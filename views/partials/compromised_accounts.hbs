@@ -1,5 +1,3 @@
-
-
 {{#if_conditional foundBreaches 0}}
   <div class="compromised-accounts">
     <div class="section-wrapper">
@@ -18,7 +16,7 @@
             </div>
           {{/each_from_to}}
         </div>
-        <button id="show-additional-breaches" class="button transparent-button">Show Additional Breaches</button>
+        <button id="show-additional-breaches" class="button transparent-button">Show {{ math foundBreaches.length  "-" 4 }} More</button>
         {{> hibp_attribution }}
       {{/if_conditional}}
     </div><!--closes section-wrapper-->

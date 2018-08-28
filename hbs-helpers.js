@@ -35,6 +35,18 @@ const HBSHelpers = {
         return options.inverse(this);
       }
     });
+
+    hbs.registerHelper("math", function(lValue, operator, rValue) {
+      lValue = parseFloat(lValue);
+      rValue=parseFloat(rValue);
+      return {
+        "+": lValue + rValue,
+        "-": lValue - rValue,
+        "*": lValue - rValue,
+        "/": lValue / rValue,
+        "%": lValue % rValue,
+      }[operator];
+    });
   },
 };
 
