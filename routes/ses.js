@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 const express = require("express");
 
 const AppConstants = require("../app-constants");
-const {sesAuth} = require("../middleware");
 const {notification} = require("../controllers/ses");
 
 
@@ -16,7 +15,6 @@ if (AppConstants.SES_NOTIFICATION_LOG_ONLY) {
     console.log("SES Notification request body: ", req.body);
   });
 } else {
-  router.use("/notification", sesAuth);
   router.post("/notification", textParser, notification);
 }
 
