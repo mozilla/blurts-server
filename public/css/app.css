@@ -1036,6 +1036,10 @@ main.scan-results .button-wrapper p {
   transition: all 0.25s ease;
 }
 
+#additional-breaches.section-wrapper.show-breaches {
+  margin-bottom: var(--gap);
+}
+
 .compromised-acounts .account h4,
 span.breach-info .medium {
   letter-spacing: 0.5px;
@@ -1113,13 +1117,19 @@ ul.social-media-sharing-buttons img {
   pointer-events: none;
 }
 
+.secondary-social-icon,
+.sub-page-content .primary-social-icon,
+.sub-page-content span {
+  display: none;
+}
+
 .facebook-button {
   margin-right: 5px !important;
 }
 
-nav.secondary-social-media a {
-  margin-left: 10px;
-  margin-right: 10px;
+.sub-page-content .secondary-social-icon {
+  display: inline;
+  max-height: 40px;
 }
 
 /* //// FOOTER */
@@ -1206,11 +1216,11 @@ footer ul li:first-of-type,
 }
 
 #header-wave {
-  top: -12%;
+  top: -100px;
 }
 
 #footer-wave {
-  bottom: -12%;
+  bottom: -100px;
   transform: rotate(180deg);
 }
 
@@ -1222,13 +1232,13 @@ footer ul li:first-of-type,
 
 /* // PLACEHOLDER media screens */
 
-@media screen and (max-width: 2200px) {
+@media screen and (min-width: 2200px) {
   img#header-wave {
-    top: -2%;
+    top: -200px;
   }
 
   img#footer-wave {
-    bottom: -2%;
+    bottom: -200px;
   }
 }
 
