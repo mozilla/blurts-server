@@ -71,11 +71,12 @@ app.set("view engine", "hbs");
 app.set("views", __dirname + "/views");
 HBSHelpers.init(hbs);
 
-const cookie = {httpOnly: true, secureProxy: true};
+const cookie = {httpOnly: true, sameSite: "lax"};
 
-// Disable secure cookies in dev environment
 if (app.get("env") === "dev") {
-  cookie.secureProxy = false;
+  app.set("trust proxy", false);
+} else {
+  app.set("trust proxy", true);
 }
 
 app.locals.SERVER_URL = AppConstants.SERVER_URL;
