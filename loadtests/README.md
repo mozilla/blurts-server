@@ -16,13 +16,12 @@ $ pip install -r requirements.txt
 
 ## Running the load tests
 
-To run the exquisite load tests, simply run <kbd>$ ./run.sh</kbd>.
-To modify the default settings, tweak the settings in ./molotov.env.
+Dev server:
+```sh
+locust --host=https://fx-breach-alerts.herokuapp.com
+```
 
-By default, the load tests will run for 180s (3 minutes), with 20 processes (each w/ 10 workers, for a total of 200 workers).
-
-```ini
-DURATION=180
-PROCESSES=20
-WORKERS=10
+Stage server (Note: ask breach-alerts@mozilla.com first): 
+```sh
+locust --host=https://blurts-server.stage.mozaws.net/
 ```
