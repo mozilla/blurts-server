@@ -222,7 +222,7 @@ img {
 }
 
 .hide {
-  display: none;
+  display: none !important;
 }
 
 .sub-page-content {

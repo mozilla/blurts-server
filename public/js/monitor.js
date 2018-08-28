@@ -317,6 +317,10 @@ if(document.forms) {
   addFormListeners();
 }
 
+if(document.getElementById("confirmation")) {
+  document.querySelector("header").querySelector(".social-media-sharing-buttons").classList.add("hide");
+}
+
 if(document.querySelectorAll(".sendGA")) {
   for (const el of document.querySelectorAll(".sendGA")) {
     el.addEventListener("click", (e) => ga_sendPing(e.target.dataset.analyticsEvent));
