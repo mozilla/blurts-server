@@ -7,7 +7,7 @@
       {{#if featuredBreach}}
         {{#if userAccountCompromised}}
           {{#if_conditional foundBreaches 1}} <!-- checking for additional "non-featured" breaches (is foundBreaches.length > 1) -->
-            <p>Your accounts appear in the <span class="bold">{{ featuredBreach.Title }}</span> Breach, as well as {{math foundBreaches.length "-" 1}} other breach{{#if_conditional foundBreaches.length 2}}es.{{/if_conditional}}.</p>
+            <p>Your accounts appear in the <span class="bold">{{ featuredBreach.Title }}</span> Breach, as well as <span class="bold">{{ breachMath foundBreaches.length "-" 1 }}</span> other breach{{#if_conditional foundBreaches 2}}es{{/if_conditional}}.</p>
           {{else}} <!-- no other breaches  -->
             <p>Your account appears in the <span class="bold">{{ featuredBreach.Title }}</span> breach, but does not appear in any other known breaches.</p>
           </section><!--closes scan-results-content-left-->
@@ -17,7 +17,7 @@
           {{/if_conditional}}
         {{else}} <!--(userAccountCompromised = false) -->
           {{#if_conditional foundBreaches 0}} <!-- user has breached accounts (foundBreaches.length > 0) but wasn't compromised in the 'featuredBreach' -->
-            <p>Your account did not appear in the <span class="bold">{{ featuredBreach.Title }}</span> breach, but it did appear in {{ foundBreaches.length }} other breach{{#if_conditional foundBreaches.length 1}}es.{{/if_conditional}}.</p>
+            <p>Your account did not appear in the <span class="bold">{{ featuredBreach.Title }}</span> breach, but it did appear in <span class="bold">{{ breachMath foundBreaches.length "-" 0 }}</span> other breach{{#if_conditional foundBreaches 1}}es{{/if_conditional}}.</p>
           {{/if_conditional}}
         {{/if}}
       {{else}} <!--no featuredBreach, but user has other breached accounts (foundBreaches.length > 0)-->
