@@ -29,7 +29,7 @@ async function post (req, res) {
       userAccountCompromised = true;
 
       if (foundBreaches.length > 1) {
-        foundBreaches.splice(featuredBreach,1);
+        foundBreaches.splice(foundBreaches.indexOf(foundBreaches.find(breach => breach.Name === featuredBreach.Name),1));
         foundBreaches.unshift(featuredBreach);
       }
 
