@@ -14,8 +14,7 @@ const kEnvironmentVariables = [
   "SMTP_URL",
   "EMAIL_FROM",
   "SES_CONFIG_SET",
-  "SES_USERNAME",
-  "SES_PASSWORD",
+  "SES_NOTIFICATION_LOG_ONLY",
   "OAUTH_AUTHORIZATION_URI",
   "OAUTH_TOKEN_URI",
   "OAUTH_PROFILE_URI",
@@ -25,8 +24,9 @@ const kEnvironmentVariables = [
   "HIBP_KANON_API_TOKEN",
   "HIBP_API_ROOT",
   "HIBP_API_TOKEN",
+  "HIBP_RELOAD_BREACHES_TIMER",
   "DATABASE_URL",
-  "SERVER_URL",
+  "DELETE_UNVERIFIED_SUBSCRIBERS_TIMER",
 ];
 
 const AppConstants = { };
