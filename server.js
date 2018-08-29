@@ -78,6 +78,8 @@ if (app.get("env") === "dev") {
   cookie.secureProxy = false;
 }
 
+app.locals.SERVER_URL = AppConstants.SERVER_URL;
+
 app.use(sessions({
   cookieName: "session",
   secret: AppConstants.COOKIE_SECRET,
