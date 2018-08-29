@@ -35,7 +35,6 @@ const HBSHelpers = {
         return options.inverse(this);
       }
     });
-
   },
 };
 
