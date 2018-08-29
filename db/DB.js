@@ -4,6 +4,7 @@
 // eslint-disable-next-line node/no-extraneous-require
 const uuidv4 = require("uuid/v4");
 const Knex = require("knex");
+const Basket = require("mozilla-basket");
 
 const AppConstants = require("../app-constants");
 const HIBP = require("../hibp");
@@ -36,9 +37,9 @@ const DB = {
       .where("email", "=", email);
   },
 
-  async addSubscriberUnverifiedEmailHash(email) {
+  async addSubscriberUnverifiedEmailHash(email, fxNewsletter = false) {
     const res = await knex("subscribers").insert(
-      { email: email, sha1: getSha1(email), verification_token: uuidv4(), verified: false }
+      { email: email, sha1: getSha1(email), verification_token: uuidv4(), verified: false, fx_newsletter: fxNewsletter }
     ).returning("*");
     return res[0];
   },
@@ -98,7 +99,10 @@ const DB = {
   },
 
   async _verifySubscriber(emailHash) {
+    // Subscribe user to HIBP
     await HIBP.subscribeHash(emailHash.sha1);
+
+    // Update our subscriber record to verified
     const verifiedSubscriber = await knex("subscribers")
       .where("email", "=", emailHash.email)
       .update({
@@ -106,6 +110,20 @@ const DB = {
         updated_at: knex.fn.now(),
       })
       .returning("*");
+
+    // If the user opted in, send newsletter subscription request to basket
+    if (emailHash.fx_newsletter) {
+      const b = new Basket({BASKET_URL: AppConstants.BASKET_URL, API_KEY: AppConstants.BASKET_API_KEY});
+      // Duplicative calling code; see https://github.com/mozilla/node-basket/issues/4
+      b.subscribe(emailHash.email, AppConstants.BASKET_NEWSLETTER, { email: emailHash.email, newsletters: AppConstants.BASKET_NEWSLETTER, validated: true}, (err, body) => {
+        if (err) {
+          console.error(err);
+        } else {
+          console.log(body);
+        }
+      });
+    }
+
     return verifiedSubscriber;
   },
 
