@@ -13,7 +13,9 @@ test("EmailUtils.init with empty host doesnt invoke nodemailer", () => {
 
   EmailUtils.init("");
 
-  expect(nodemailer.createTransport.mock.calls.length).toBe(0);
+  const mockCreateTransport = nodemailer.createTransport.mock;
+  expect(mockCreateTransport.calls.length).toBe(1);
+  expect(mockCreateTransport.calls[0][0]).toEqual({jsonTransport: true});
 });
 
 
