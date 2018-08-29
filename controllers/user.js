@@ -2,7 +2,6 @@
 
 const isemail = require("isemail");
 
-const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 
@@ -12,16 +11,16 @@ async function add(req, res) {
   if (!isemail.validate(email)) {
     throw new Error("Invalid Email");
   }
-  const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(email);
-  const token = unverifiedSubscriber.verification_token;
 
-  const url = `${AppConstants.SERVER_URL}/user/verify?token=${encodeURIComponent(token)}`;
+  const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(email);
+  const verifyUrl = EmailUtils.verifyUrl(unverifiedSubscriber);
+  const unsubscribeUrl = EmailUtils.unsubscribeUrl(unverifiedSubscriber);
 
   await EmailUtils.sendEmail(
     email,
     "Verify your email address to subscribe to Firefox Monitor.",
     "email_verify",
-    { email, url}
+    { email, verifyUrl, unsubscribeUrl}
   );
 
   res.send({
@@ -40,10 +39,28 @@ async function verify(req, res) {
 }
 
 
-// TODO: create unsubscribe controller with token authentication
+function getUnsubscribe(req, res) {
+  res.render("unsubscribe", {
+    title: "Firefox Monitor: Unsubscribe",
+    token: req.query.token,
+    hash: req.query.hash,
+  });
+}
+
+
+async function postUnsubscribe(req, res) {
+  const unsubscribedUser = await DB.removeSubscriberByToken(req.body.token, req.body.emailHash);
+
+  res.render("unsubscribe", {
+    title: "Firefox Monitor: Unsubscribe",
+    unsubscribed: unsubscribedUser,
+  });
+}
 
 
 module.exports = {
   add,
   verify,
+  getUnsubscribe,
+  postUnsubscribe,
 };

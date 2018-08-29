@@ -49,6 +49,13 @@ the "what" and "why" of data breach alerts.
 
 2. Navigate to [localhost:6060/](http://localhost:6060/)
 
+Note: In development, you may want to use `nodemon` to run the server; it will
+automatically refresh the `server.js` process when files are changed:
+
+```sh
+nodemon server.js
+```
+
 #### Database
 
 To create the database tables ...

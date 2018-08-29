@@ -5,6 +5,7 @@
 const uuidv4 = require("uuid/v4");
 const Knex = require("knex");
 
+const AppConstants = require("../app-constants");
 const HIBP = require("../hibp");
 const getSha1 = require("../sha1-utils");
 
@@ -18,6 +19,16 @@ const DB = {
       .where("verification_token", "=", token);
 
     return res[0];
+  },
+
+  async getSubscriberByTokenAndHash(token, emailSha1) {
+    const res = await knex.table("subscribers")
+      .first()
+      .where({
+        "verification_token": token,
+        "sha1": emailSha1,
+      });
+    return res;
   },
 
   async getSubscribersByEmail(email) {
@@ -61,7 +72,11 @@ const DB = {
       // Entry existed, patch the email value if supplied.
       if (email) {
         const res = await knex("subscribers")
-          .update({ email, verified })
+          .update({
+            email,
+            verified,
+            updated_at: knex.fn.now(),
+          })
           .where("id", "=", aEntry.id)
           .returning("*");
         return res[0];
@@ -84,17 +99,18 @@ const DB = {
 
   async _verifySubscriber(emailHash) {
     await HIBP.subscribeHash(emailHash.sha1);
-    // TODO: resolve with error if HIBP fails
     const verifiedSubscriber = await knex("subscribers")
       .where("email", "=", emailHash.email)
-      .update({ verified: true })
+      .update({
+        verified: true,
+        updated_at: knex.fn.now(),
+      })
       .returning("*");
     return verifiedSubscriber;
   },
 
-  async removeSubscriber(email) {
+  async removeSubscriberByEmail(email) {
     const sha1 = getSha1(email);
-
     return await this._getSha1EntryAndDo(sha1, async aEntry => {
       await knex("subscribers")
         .where("id", "=", aEntry.id)
@@ -107,8 +123,28 @@ const DB = {
     });
   },
 
+  async removeSubscriberByToken(token, emailSha1) {
+    const subscriber = await this.getSubscriberByTokenAndHash(token, emailSha1);
+    await knex("subscribers")
+      .where({
+        "verification_token": subscriber.verification_token,
+        "sha1": subscriber.sha1,
+      })
+      .del();
+    return subscriber;
+  },
+
   async getSubscribersByHashes(hashes) {
     return await knex("subscribers").whereIn("sha1", hashes).andWhere("verified", "=", true);
+  },
+
+  async deleteUnverifiedSubscribers() {
+    const expiredDateTime = new Date(Date.now() - AppConstants.DELETE_UNVERIFIED_SUBSCRIBERS_TIMER * 1000);
+    const expiredTimeStamp = expiredDateTime.toISOString();
+    await knex("subscribers")
+      .where("verified", false)
+      .andWhere("created_at", "<", expiredTimeStamp)
+      .del();
   },
 
   async createConnection() {

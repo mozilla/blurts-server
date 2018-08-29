@@ -49,6 +49,8 @@ const HIBP = {
         breaches.push(breach);
       }
       app.locals.breaches = breaches;
+      app.locals.breachesLoadedDateTime = Date.now();
+      app.locals.mostRecentBreachDateTime = this.getLatestBreachDateTime(breaches);
     } catch (error) {
       console.error(error);
     }
@@ -76,8 +78,31 @@ const HIBP = {
     } catch (error) {
       console.error(error);
     }
-    return foundBreaches.filter(breach => breach.IsVerified && !breach.IsRetired && !breach.IsSensitive && !breach.IsSpamList);
+    return this.filterOutUnsafeBreaches(foundBreaches);
   },
+
+
+  filterOutUnsafeBreaches(breaches) {
+    return breaches.filter(
+      breach => breach.IsVerified && 
+                !breach.IsRetired && 
+                !breach.IsSensitive &&
+                !breach.IsSpamList
+    );
+  },
+
+
+  getLatestBreachDateTime(breaches) {
+    let latestBreachDateTime = new Date(0);
+    for (const breach of breaches) {
+      const breachAddedDate = new Date(breach.AddedDate);
+      if (breachAddedDate > latestBreachDateTime) {
+        latestBreachDateTime = breachAddedDate;
+      }
+    }
+    return latestBreachDateTime;
+  },
+
 
   async subscribeHash(sha1) {
     const sha1Prefix = sha1.slice(0, 6).toUpperCase();
