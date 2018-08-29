@@ -4,6 +4,7 @@ const isemail = require("isemail");
 
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
+const UNSUB_REASONS = require("../unsubscribe_reasons");
 
 
 async function add(req, res) {
@@ -54,6 +55,7 @@ async function postUnsubscribe(req, res) {
   res.render("unsubscribe", {
     title: "Firefox Monitor: Unsubscribe",
     unsubscribed: unsubscribedUser,
+    UNSUB_REASONS,
   });
 }
 
