@@ -63,12 +63,12 @@ jobs:
                     echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
                     # deploy master
                     if [ "${CIRCLE_BRANCH}" == "master" ]; then
-                        docker tag app:build ${DOCKERHUB_REPO}:latest
+                        docker tag blurts-server ${DOCKERHUB_REPO}:latest
                         docker push ${DOCKERHUB_REPO}:latest
                     elif  [ ! -z "${CIRCLE_TAG}" ]; then
                         # deploy a release tag...
                         echo "${DOCKERHUB_REPO}:${CIRCLE_TAG}"
-                        docker tag app:build "${DOCKERHUB_REPO}:${CIRCLE_TAG}"
+                        docker tag blurts-server "${DOCKERHUB_REPO}:${CIRCLE_TAG}"
                         docker images
                         docker push "${DOCKERHUB_REPO}:${CIRCLE_TAG}"
                     fi
