@@ -7,6 +7,7 @@ const Knex = require("knex");
 
 const AppConstants = require("../app-constants");
 const HIBP = require("../hibp");
+const Basket = require("../basket");
 const getSha1 = require("../sha1-utils");
 
 const knexConfig = require("./knexfile");
@@ -36,10 +37,14 @@ const DB = {
       .where("email", "=", email);
   },
 
-  async addSubscriberUnverifiedEmailHash(email) {
-    const res = await knex("subscribers").insert(
-      { email: email, sha1: getSha1(email), verification_token: uuidv4(), verified: false }
-    ).returning("*");
+  async addSubscriberUnverifiedEmailHash(email, fxNewsletter = false) {
+    const res = await knex("subscribers").insert({
+      email: email,
+      sha1: getSha1(email),
+      verification_token: uuidv4(),
+      verified: false,
+      fx_newsletter: fxNewsletter,
+    }).returning("*");
     return res[0];
   },
 
@@ -98,7 +103,11 @@ const DB = {
   },
 
   async _verifySubscriber(emailHash) {
+    // Subscribe user to HIBP
+    // TODO: move this "up" into controllers/users ?
     await HIBP.subscribeHash(emailHash.sha1);
+
+    // Update our subscriber record to verified
     const verifiedSubscriber = await knex("subscribers")
       .where("email", "=", emailHash.email)
       .update({
@@ -106,6 +115,13 @@ const DB = {
         updated_at: knex.fn.now(),
       })
       .returning("*");
+
+    // If the user opted in, send newsletter subscription request to basket
+    // TODO: move this "up" into controllers/users ?
+    if (emailHash.fx_newsletter) {
+      Basket.subscribe(emailHash.email);
+    }
+
     return verifiedSubscriber;
   },
 

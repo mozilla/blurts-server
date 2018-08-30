@@ -11,8 +11,10 @@ async function add(req, res) {
   if (!isemail.validate(email)) {
     throw new Error("Invalid Email");
   }
+  const fxNewsletter = Boolean(req.body.additionalEmails);
 
-  const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(email);
+
+  const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(email, fxNewsletter);
   const verifyUrl = EmailUtils.verifyUrl(unverifiedSubscriber);
   const unsubscribeUrl = EmailUtils.unsubscribeUrl(unverifiedSubscriber);
 
