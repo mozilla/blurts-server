@@ -63,6 +63,7 @@
       "!db/migrations/**.js",
       "!public/**/**.js",
       "!scripts/*.js",
+      "!loadtests/**/**.js",
       "!.eslintrc.js"
     ]
   },
