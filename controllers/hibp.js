@@ -2,6 +2,7 @@
 
 const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
+const EmailUtils = require("../email-utils");
 const HIBP = require("../hibp");
 
 
@@ -14,7 +15,21 @@ async function notify (req, res) {
   const breach = req.app.locals.breaches.find(breach => breach.Name.toLowerCase() === reqBreachName);
 
   console.log(`Found ${subscribers.length} subscribers in ${breach.Name}. Notifying ...`);
-  // TODO: loop over subscribers and send breach notification(s)
+  const notifiedSubscribers = [];
+  for (const subscriber of subscribers) {
+    const email = subscriber.email;
+    if (!notifiedSubscribers.includes(email)) {
+      console.log(email);
+      await EmailUtils.sendEmail(
+        subscriber.email,
+        "You were in a breach!",
+        "breach_notification",
+        { email, breach }
+      );
+      notifiedSubscribers.push(email);
+    }
+  }
+  console.log(`Notified ${notifiedSubscribers.length} unique subscribers.`);
   res.status(200);
   res.json(
     {info: "Notified subscribers of breach."}
