@@ -226,37 +226,6 @@ const postData = (url, data = {}) => {
   .catch(error => console.error(error));
 };
 
-function handleFormSubmits(formEvent) {
-  if (formEvent.target.id === "unsubscribe-form") {
-    return;
-  }
-  formEvent.preventDefault();
-  if (formEvent.target.id === "unsubscribe-survey-form") {
-    if (!formEvent.target.querySelector("input[type='radio']:checked")) {
-      return;
-    }
-    ga_sendPing("unsubscribeSurvey", formEvent.target.querySelector("input[type='radio']:checked").value);
-    window.location.href = "https://monitor.firefox.com";
-    return;
-  }
-  const thisForm = formEvent.target;
-  if (!thisForm.email.value || !isValidEmail(thisForm.email.value)) {
-    thisForm.classList.add("invalid");
-    return;
-  }
-  if (thisForm.classList.contains("email-scan")) {
-    hashEmailAndSend(formEvent);
-    return;
-  }
-  if (formEvent.target.id === "subscribe-form") {
-    addUser(formEvent);
-    setModalTabbing();
-    return;
-  }
-  formEvent.submit();
-  return;
-}
-
 function addFormListeners() {
   for (const form of document.forms) {
     if (form.querySelector("input[type=email]")) {
@@ -281,6 +250,37 @@ function showAdditionalBreaches(){
   if (additionalBreaches.classList.contains("show-breaches")) {
     additionalBreaches.style.height = additionalBreaches.scrollHeight + "px";
   }
+}
+
+function handleFormSubmits(formEvent) {
+  if (formEvent.target.id === "unsubscribe-form") {
+    return;
+  }
+  formEvent.preventDefault();
+  if (formEvent.target.id === "unsubscribe-survey-form") {
+    if (!formEvent.target.querySelector("input[type='radio']:checked")) {
+      return;
+    }
+    ga_sendPing("unsubscribeSurvey", formEvent.target.querySelector("input[type='radio']:checked").value);
+    window.location.href = document.body.dataset.serverUrl;
+    return;
+  }
+  const thisForm = formEvent.target;
+  if (!thisForm.email.value || !isValidEmail(thisForm.email.value)) {
+    thisForm.classList.add("invalid");
+    return;
+  }
+  if (thisForm.classList.contains("email-scan")) {
+    hashEmailAndSend(formEvent);
+    return;
+  }
+  if (formEvent.target.id === "subscribe-form") {
+    addUser(formEvent);
+    setModalTabbing();
+    return;
+  }
+  formEvent.submit();
+  return;
 }
 
 function doButtonRouting(event) {
