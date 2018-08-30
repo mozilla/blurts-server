@@ -9,3 +9,4 @@ env:
 before_script:
   - cp .env-dist .env
   - createdb test-blurts
+  - npm install npm@latest -g
