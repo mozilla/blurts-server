@@ -5,30 +5,30 @@
 
 // L8-L29 courtesy of https://github.com/mozilla/send
 
-	function browserName() {
-		try {
-			if (/firefox/i.test(navigator.userAgent)) {
-				return "firefox";
-			}
-			if (/edge/i.test(navigator.userAgent)) {
-				return "edge";
-			}
-			if (/trident/i.test(navigator.userAgent)) {
-				return "ie";
-			}
-			if (/chrome/i.test(navigator.userAgent)) {
-				return "chrome";
-			}
-			if (/safari/i.test(navigator.userAgent)) {
-				return "safari";
-			}
-			return "other";
-		} catch (e) {
-			return "unknown";
-		}
+function browserName() {
+  try {
+    if (/firefox/i.test(navigator.userAgent)) {
+      return "firefox";
+    }
+    if (/edge/i.test(navigator.userAgent)) {
+      return "edge";
+    }
+    if (/trident/i.test(navigator.userAgent)) {
+      return "ie";
+    }
+    if (/chrome/i.test(navigator.userAgent)) {
+      return "chrome";
+    }
+    if (/safari/i.test(navigator.userAgent)) {
+      return "safari";
+    }
+    return "other";
+  } catch (e) {
+    return "unknown";
   }
+}
   
-  if (browserName() == "firefox") {
+  if (browserName() === "firefox") {
     if (document.getElementById("download-firefox")) {
     document.getElementById("download-firefox").classList.add("hide");
     }

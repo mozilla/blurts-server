@@ -28,21 +28,32 @@ const HBSHelpers = {
       return result.join("");
     });
 
-    hbs.registerHelper("if_conditional", function(conditional, value, options) {
-      if (conditional.length > value) {
-        return options.fn(this);
-      } else {
+    //https://stackoverflow.com/questions/28978759/length-check-in-a-handlebars-js-if-conditional
+
+    hbs.registerHelper("if_compare", function (v1, operator, v2, options) {
+      const operators = {
+        ">": v1 > v2 ? true : false,
+        ">=": v1 >= v2 ? true : false,
+        "<": v1 < v2 ? true : false,
+        "<=": v1 <= v2 ? true : false,
+        "===": v1 === v2 ? true : false,
+      };
+      if (operators.hasOwnProperty(operator)) {
+        if (operators[operator]) {
+          return options.fn(this);
+        }
         return options.inverse(this);
       }
+      return console.error(`Error: ${operator} not found`);
     });
 
     hbs.registerHelper("breachMath", function(lValue, operator, rValue) {
       lValue = parseFloat(lValue);
-      rValue=parseFloat(rValue);
+      rValue = parseFloat(rValue);
       const returnValue = {
         "+": lValue + rValue,
         "-": lValue - rValue,
-        "*": lValue - rValue,
+        "*": lValue * rValue,
         "/": lValue / rValue,
         "%": lValue % rValue,
       }[operator];
@@ -62,9 +73,6 @@ const HBSHelpers = {
       return returnValue;
     });
 
-    hbs.registerHelper("encodeURI", function(input) {
-      return encodeURI(input);
-    });
   },
 };
 

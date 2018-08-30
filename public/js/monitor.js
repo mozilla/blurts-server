@@ -2,6 +2,10 @@
 /* global ga */
 
 const events = {
+  "unsubscribeSurvey": {
+    "eventCategory": "Unsubscribe Survey Submittal",
+    "eventAction": "User submitted unsubscribe survey answer.",
+  },
   "facebook": {
     "eventCategory": "Social Media Event",
     "eventAction": "User shared Firefox Monitor on Facebook",
@@ -33,7 +37,7 @@ const events = {
     "eventAction:": "User scanned email address",
     "featuredBreach": "User scanned email from featured breach page.",
     "foundBreaches": "User scanned additional email.",
-    "noBreaches": "User scanned email address after scanning email with no assciated breaches.",
+    "noBreaches": "User scanned email address after scanning email with no associated breaches.",
     "landingPage": "User submitted email from landing page.",
 
   },
@@ -58,16 +62,25 @@ function ga_getLocation() {
   if (document.getElementById("no-breaches")) {
       return("noBreaches");
   }
+  if (document.getElementById("unsubscribe-survey-form")) {
+    return("unsubscribePage");
+  }
     return("landingPage");
 }
 
-async function ga_sendPing(string) {
+function ga_sendPing(string, eventLabel = false) {
   if(typeof(ga) !== "undefined") {
-    const eventLocation = ga_getLocation();
+
     const event = events[string];
     const eventCategory = event["eventCategory"];
     const eventAction = event["eventAction"];
-    const eventLabel = event[eventLocation];
+
+    if (!eventLabel) {
+      const eventLocation = ga_getLocation();
+      eventLabel = event[eventLocation];
+      ga("send", "event", eventCategory, eventAction, eventLabel);
+      return;
+    }
     ga("send", "event", eventCategory, eventAction, eventLabel);
   }
 }
@@ -215,10 +228,17 @@ const postData = (url, data = {}) => {
 
 function handleFormSubmits(formEvent) {
   if (formEvent.target.id === "unsubscribe-form") {
-    // default form submit behavior for unsubscribe-form
     return;
   }
   formEvent.preventDefault();
+  if (formEvent.target.id === "unsubscribe-survey-form") {
+    if (!formEvent.target.querySelector("input[type='radio']:checked")) {
+      return;
+    }
+    ga_sendPing("unsubscribeSurvey", formEvent.target.querySelector("input[type='radio']:checked").value);
+    window.location.href = "https://monitor.firefox.com";
+    return;
+  }
   const thisForm = formEvent.target;
   if (!thisForm.email.value || !isValidEmail(thisForm.email.value)) {
     thisForm.classList.add("invalid");
@@ -233,16 +253,7 @@ function handleFormSubmits(formEvent) {
     setModalTabbing();
     return;
   }
-
-  if (formEvent.target.id === "unsubscribe-form") {
-    formEvent.submit();
-    return;
-  }
-
-  if (formEvent.target.id === "unsubscribe-survey-form") {
-    formEvent.submit();
-    return;
-  }
+  formEvent.submit();
   return;
 }
 
@@ -321,7 +332,7 @@ if(document.forms) {
   addFormListeners();
 }
 
-if(document.getElementById("confirmation")) {
+if(document.getElementById("confirmation") || document.getElementById("unsubscribe-survey-form") || document.getElementById("unsubscribe-form")) {
   document.querySelector("header").querySelector(".social-media-sharing-buttons").classList.add("hide");
 }
 
@@ -329,10 +340,8 @@ if (document.getElementById("no-breaches")) {
   document.getElementById("scan-another-email").classList.add("banner");
 }
 
-if(document.querySelectorAll(".sendGA")) {
-  for (const el of document.querySelectorAll(".sendGA")) {
-    el.addEventListener("click", (e) => ga_sendPing(e.target.dataset.analyticsEvent));
-  }
+for (const el of document.querySelectorAll(".sendGA")) {
+  el.addEventListener("click", (e) => ga_sendPing(e.target.dataset.analyticsEvent));
 }
 
 if (document.querySelectorAll("button")) {

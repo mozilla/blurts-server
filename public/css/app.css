@@ -347,13 +347,14 @@ input[type="radio"] {
   margin-left: 40px;
 }
 
-.radio-dot {
+span.radio-dot {
   position: absolute;
+  display: flex;
   left: 0;
   top: 0;
   height: 19px;
   width: 19px;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(255, 255, 255, 0);
   border-radius: 50%;
   transition: background-color 0.2s ease;
@@ -362,13 +363,13 @@ input[type="radio"] {
 .radio-dot::after {
   content: "";
   position: absolute;
-  top: 2px;
-  left: 2px;
+  top: -2px;
+  left: -2px;
   border-radius: 50%;
   opacity: 0;
-  background: rgba(255, 255, 255, 0.3);
-  height: 14px;
-  width: 14px;
+  border: 1px solid white;
+  height: 19px;
+  width: 19px;
 }
 
 .radio-button-group:hover .radio-dot,
@@ -1110,7 +1111,7 @@ ul.social-media-sharing-buttons img {
 
 .secondary-social-icon,
 .sub-page-content .primary-social-icon,
-.sub-page-content span {
+.sub-page-content .social-media-sharing-buttons span {
   display: none;
 }
 
