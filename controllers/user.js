@@ -4,6 +4,8 @@ const isemail = require("isemail");
 
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
+const HIBP = require("../hibp");
+const sha1 = require("../sha1-utils");
 
 
 async function add(req, res) {
@@ -33,6 +35,25 @@ async function add(req, res) {
 
 async function verify(req, res) {
   const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
+
+  const unsafeBreachesForEmail = await HIBP.getUnsafeBreachesForEmail(
+    sha1(verifiedEmailHash.email),
+    req.app.locals.breaches
+  );
+
+  const unsubscribeUrl = EmailUtils.unsubscribeUrl(verifiedEmailHash);
+
+  await EmailUtils.sendEmail(
+    verifiedEmailHash.email,
+    "Your Firefox Monitor report",
+    "welcome",
+    {
+      email: verifiedEmailHash.email,
+      date: new Date(),
+      unsafeBreachesForEmail,
+      unsubscribeUrl,
+    }
+  );
 
   res.render("confirm", {
     title: "Firefox Monitor: Subscribed",

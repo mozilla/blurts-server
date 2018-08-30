@@ -6,6 +6,7 @@ const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const user = require("../controllers/user");
 
+const { testBreaches } = require ("./test-breaches");
 require("./resetDB");
 
 
@@ -67,6 +68,7 @@ test("user verify request with valid token verifies user", async () => {
     method: "GET",
     url: `/user/verify?token=${validToken}`,
   });
+  req.app = { locals: { breaches: testBreaches } };
   const resp = httpMocks.createResponse();
 
   // Call code-under-test

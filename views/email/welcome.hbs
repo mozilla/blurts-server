@@ -1,0 +1,17 @@
+{{!< email }}
+<h1>Firefox Monitor Report</h1>
+{{!-- TODO: get prettyDate helper in here --}}
+<h3>Report date: {{ date }}</h3>
+<h3>Email address: {{ email }}</h3>
+
+This might be a problem.
+
+Your accounts were compromised in the following breaches.
+
+Website Breaches
+
+<ul>
+{{#each unsafeBreachesForEmail }}
+  <li>{{ this.Name }}</li>
+{{/each}}
+</ul>
