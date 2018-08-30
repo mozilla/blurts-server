@@ -1,13 +1,13 @@
 {{#if_compare foundBreaches.length ">=" 1}}
   <div class="compromised-accounts">
     <div class="section-wrapper">
-      <!--list first 5 breaches-->
+      <!--show first 4 breaches-->
       {{#each_from_to foundBreaches 0 4 }}
         <div class="half listings">
           {{> breach_listing }}
         </div>
       {{/each_from_to}}
-      <!--display button and list remainder of breaches on click-->
+      <!--display "Show More" button and show remaining breaches onclick if foundBreaches.length > 4-->
       {{#if_compare foundBreaches.length ">" 4}}
         <div id="additional-breaches" class="section-wrapper">
           {{#each_from_to foundBreaches 4 foundBreaches.length }}
@@ -16,9 +16,9 @@
             </div>
           {{/each_from_to}}
         </div>
-        <button id="show-additional-breaches" class="button transparent-button">Show {{ breachMath foundBreaches.length  "-" 4 }} More</button>
+        <button id="show-additional-breaches" class="button transparent-button">Show More</button>
         {{> hibp_attribution }}
       {{/if_compare}}
-    </div><!--closes section-wrapper-->
-  </div><!--closes .compromised-accounts-->
+    </div>
+  </div>
 {{/if_compare}}
