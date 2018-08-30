@@ -12,17 +12,17 @@ const Basket = {
       email,
       newsletters: AppConstants.BASKET_NEWSLETTER,
       validated: true,
-      "api-key": AppConstants.BASKET_API_KEY
-    }
+      "api-key": AppConstants.BASKET_API_KEY,
+    };
     const postParams = Object.keys(params).map(k=>[k,params[k]].join("=")).join("&");
-    const url = `${AppConstants.BASKET_URL}/news/subscribe/`
+    const url = `${AppConstants.BASKET_URL}/news/subscribe/`;
     const reqOptions = {
       method: "POST",
       body: postParams,
-    }
-    const resp = await got(url, reqOptions);
-  }
+    };
+    await got(url, reqOptions);
+  },
 
-}
+};
 
 module.exports = Basket;

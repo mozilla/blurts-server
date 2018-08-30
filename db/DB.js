@@ -38,9 +38,13 @@ const DB = {
   },
 
   async addSubscriberUnverifiedEmailHash(email, fxNewsletter = false) {
-    const res = await knex("subscribers").insert(
-      { email: email, sha1: getSha1(email), verification_token: uuidv4(), verified: false, fx_newsletter: fxNewsletter }
-    ).returning("*");
+    const res = await knex("subscribers").insert({
+      email: email,
+      sha1: getSha1(email),
+      verification_token: uuidv4(),
+      verified: false,
+      fx_newsletter: fxNewsletter,
+    }).returning("*");
     return res[0];
   },
 
