@@ -1,0 +1,100 @@
+version: 2.0
+jobs:
+    build:
+        docker:
+            - image: docker:stable-git
+        working_directory: /dockerflow
+        steps:
+            - checkout
+            - setup_remote_docker
+            - run:
+                name: Create version.json
+                command: |
+                    # create a version.json per https://github.com/mozilla-services/Dockerflow/blob/master/docs/version_object.md
+                    printf '{"commit":"%s","version":"%s","source":"https://github.com/%s/%s","build":"%s"}\n' \
+                    "$CIRCLE_SHA1" \
+                    "$CIRCLE_TAG" \
+                    "$CIRCLE_PROJECT_USERNAME" \
+                    "$CIRCLE_PROJECT_REPONAME" \
+                    "$CIRCLE_BUILD_URL" > version.json
+
+            - run:
+                name: Build docker image
+                command: docker build -t blurts-server .
+
+            # save the built docker container into CircleCI's cache. This is
+            # required since Workflows do not have the same remote docker instance.
+            - run:
+                  name: docker save blurts-server
+                  command: mkdir -p /cache; docker save -o /cache/docker.tar "blurts-server"
+            - save_cache:
+                  key: v1-{{ .Branch }}-{{epoch}}
+                  paths:
+                      - /cache/docker.tar
+
+    test:
+        docker:
+            - image: docker:18.02.0-ce
+        steps:
+            - setup_remote_docker
+            - restore_cache:
+                key: v1-{{.Branch}}
+            - run:
+                name: Restore Docker image cache
+                command: docker load -i /cache/docker.tar
+            - run:
+                name: Test Code
+                command: docker run blurts-server npm run lint
+
+    deploy:
+        docker:
+            - image: docker:18.02.0-ce
+        steps:
+            - setup_remote_docker
+            - restore_cache:
+                key: v1-{{.Branch}}
+            - run:
+                name: Restore Docker image cache
+                command: docker load -i /cache/docker.tar
+
+            - run:
+                name: Deploy to Dockerhub
+                command: |
+                    echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+                    # deploy master
+                    if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                        docker tag app:build ${DOCKERHUB_REPO}:latest
+                        docker push ${DOCKERHUB_REPO}:latest
+                    elif  [ ! -z "${CIRCLE_TAG}" ]; then
+                        # deploy a release tag...
+                        echo "${DOCKERHUB_REPO}:${CIRCLE_TAG}"
+                        docker tag app:build "${DOCKERHUB_REPO}:${CIRCLE_TAG}"
+                        docker images
+                        docker push "${DOCKERHUB_REPO}:${CIRCLE_TAG}"
+                    fi
+
+workflows:
+  version: 2
+  build-test-deploy:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /.*/
+
+      - test:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /.*/
+
+      - deploy:
+          requires:
+            - build
+            - test
+          filters:
+            tags:
+              only: /.*/
+            branches:
+                only: master
