@@ -1,24 +1,30 @@
 {{!< default }}
-<main>
-  <div class="section-wrapper">
-    <div class="half">
-      <h2 class="section-headline">Protect yourself from hackers.<br />Start here.</h2>
-        {{#if featuredBreach }}
-          <p class="demi">See if your account was exposed in the <span class="bold">{{ featuredBreach.Title }}</span> breach or other data breaches.</p>
-        {{else}}
-          <p class="demi">Enter your email to find out if your account has been compromised.</p>
-        {{/if}}
-        {{> scan_form }}
-    </div>
-    <div class="half">
-        {{#if featuredBreach}}
-          {{> featured_breach }}
-        {{ else }}
-          <p>Let Firefox Monitor help you stay safe online.  Find out what hackers already know about you and get alerts when data breaches put you at risk.</p>
-        {{/if}}
-    </div>
-  </div>
+<main class="landing-content">
+  <section class="section-wrapper">
+    {{#if featuredBreach }}
+      <div class="half">
+        <h2 class="section-headline">Protect yourself from hackers.<br />Start here.</h2>
+        <span class="demi">Find out if your <span class="bold">{{ featuredBreach.Title }}</span> account was compromised.</span>
+        {{> scan_form}}
+      </div>
+      <div id="featured-breach-landing" class="half">
+        {{> featured_breach }}
+      </div>
+    {{else}}
+      <h2 class="whole section-headline">Protect yourself from hackers.<br />Start here.</h2>
+        <div class="wrap-row">
+          <p class="half">
+            Let Firefox Monitor help you stay safe online. Find out what hackers already know about you and get alerts when data breaches put you at risk.
+          </p>
+        <div class="half">
+          <span>Try it out. Enter your email for a basic scan.</span>
+          {{> scan_form}}
+        </div>
+      </div>
+    {{/if}}
+  </section>
 </main>
 
-{{> sign_up_banner}}
-{{> tips }}
+{{> banners/sign_up_banner}}
+{{> password_tips }}
+{{> banners/download_firefox_banner}}

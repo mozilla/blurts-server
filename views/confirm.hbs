@@ -1,8 +1,12 @@
 {{!< default }}
-<div class="subscribe-message-wrapper">
-  <div class="subscribe-message">
-      <h4>Your Email Is Confirmed!</h4>
-      <h5>You will receive Firefox Monitor notifications at {{ email }}.</h5>
-      <button class="button" data-open="share-modal">Share</button>
+<div id="confirmation" class="sub-page-content">
+  <div class="section-wrapper centered-content">
+    <h3 class="section-headline whole">
+      Confirmed!<br />
+      You're Subscribed
+    </h3>
+    <p class="whole sub-head">Firefox Monitor will email you a full report shortly, and will send an email alert if your account appears in new reported breaches.</p>
+    <h4 class="whole medium secondary-title">Tell your friends about Firefox Monitor</h4>
+    {{> social_media_sharing_buttons}}
   </div>
 </div>

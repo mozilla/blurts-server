@@ -5,9 +5,9 @@
     <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
     <link rel="stylesheet" href="/css/app.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="description" content="Firefox Monitor notifies users when their credentials have possibly been leaked or stolen in a data breach. Powered by haveibeenpwned.com." />
+    <meta name="description" content="Have your accounts been leaked or stolen in a data breach? Find out at Firefox Monitor. Search our database and sign up for alerts." />
     <meta property="og:title" content="Firefox Monitor" />
-    <meta property="og:description" content="Protect yourself from hackers." />
+    <meta property="og:description" content="Have your accounts been leaked or stolen in a data breach? Find out at Firefox Monitor. Search our database and sign up for alerts." />
     <meta name="twitter:card" content="summary" />
     <meta property="og:url" content="{{ SERVER_URL }}" />
     <meta property="og:image" content="{{ SERVER_URL }}/img/firefox-share.png" />
@@ -21,43 +21,45 @@
     <link rel="icon" href="/img/favicons/favicon-128.png" sizes="128x128" />
     <link rel="icon" href="/img/favicons/favicon-228.png" sizes="228x228" />
   </head>
-  <body>
-    {{> subscribe_modal }}
-    <header class ="section-wrapper">
-      <div class="half">
-        <a href="/">
-          <img alt="Firefox Logo" class="logo" src="/img/firefox.png" />
-          <h1><span class="demi">Firefox</span> Monitor</h1>
-        </a>
-      </div>
-      <div class="half">
-        {{> social_media_sharing_buttons}}
-      </div>
-    </header>
-    
-      {{{ body }}}
+  <body data-server-url="{{ SERVER_URL }}">
+    <div id="content-wrap" class="content-wrap">
+      <img id="header-wave" class="wave" src="/img/wave.svg" />
+      {{> subscribe_modal/subscribe_modal_wrapper}}
+      <header class ="section-wrapper">
+        <div class="half">
+          <a class="wrap-row" href="/">
+            <img alt="Firefox Logo" class="logo" src="/img/firefox.png" />
+            <h1><span class="demi">Firefox</span> Monitor</h1>
+          </a>
+        </div>
+        <div class="half">
+          {{> social_media_sharing_buttons}}
+        </div>
+      </header>
+        {{{ body }}}
+      <img id="footer-wave" class="wave" src="/img/wave.svg" />
+    </div>
     <footer id="footer">
       <div class="section-wrapper">
-        <div class="fourth">
-          <a class="footer-logo-wrapper" href="https://www.mozilla.org"><img src="/img/moz-logo-bw-rgb.svg" alt="Mozilla Logo" /></a>
-          <p>Portions of this content are &copy; 1998-2018 by individual mozilla.org contributors. <br />Content available under a <a href="https://www.mozilla.org/foundation/licensing/website-content/">Creative Commons license</a>.</p>
+        <div class="half">
+          <a class="footer-logo-wrapper" href="https://www.mozilla.org" target="_blank" rel="noopener"><img src="/img/moz-logo-bw-rgb.svg" alt="Mozilla Logo" /></a>
+          <div>
+            <p>Portions of this content are &copy; 1998-2018 by individual mozilla.org contributors. Content available under a <a href="https://www.mozilla.org/foundation/licensing/website-content/" rel="noopener">Creative Commons license</a>.</p>
+          </div>
         </div>
         <ul class="fourth">
           <li>Support</li>
-          <li><a href="https://qsurvey.mozilla.com/s3/Firefox-Monitor-Feedback" target="_blank" rel="noopener noreferrer">Give Feedback</a></li>
-          <li><a id="GitHub-logo" href="https://github.com/mozilla/blurts-server/"><img src="/img/github.svg" alt="Github Logo" /></a></li>
-        </ul>
-        <ul class="fourth">
-          <li>Legal</li>
-          <li><a href="https://www.mozilla.org/about/legal/">Terms</a></li>
-          <li><a href="https://www.mozilla.org/privacy/websites/">Privacy</a></li>
+          <li><a href="https://qsurvey.mozilla.com/s3/Firefox-Monitor-Feedback" target="_blank" rel="noopener">Give Feedback</a></li>
+          <li><a href="https://www.mozilla.org/about/legal/" target="_blank" rel="noopener">Terms</a></li>
+          <li><a href="https://www.mozilla.org/privacy/websites/" target="_blank" rel="noopener">Privacy</a></li>
+          <li><a id="GitHub-logo" href="https://github.com/mozilla/blurts-server/" target="_blank" rel="noopener noreferrer"><img src="/img/github.svg" alt="GitHub Logo" /></a></li>
         </ul>
         <ul class="fourth">
           <li>Firefox</li>
-          <li><a href="https://www.mozilla.org/firefox/new/">Download Firefox</a></li>
-          <li><a href="https://www.mozilla.org/firefox/mobile/">Download Firefox Mobile</a></li>
-          <li><a href="https://www.mozilla.org/firefox/features/">Features</a></li>
-          <li><a href="https://www.mozilla.org/firefox/channel/desktop/">Beta, Nightly, Developer Edition</a></li>
+          <li><a href="https://www.mozilla.org/firefox/new/" target="_blank" rel="noopener">Download Firefox</a></li>
+          <li><a href="https://www.mozilla.org/firefox/mobile/" target="_blank" rel="noopener">Download Firefox Mobile</a></li>
+          <li><a href="https://www.mozilla.org/firefox/features/" target="_blank" rel="noopener">Features</a></li>
+          <li><a href="https://www.mozilla.org/firefox/channel/desktop/" target="_blank" rel="noopener">Beta, Nightly, Developer Edition</a></li>
         </ul>
       </div>
     </footer>
