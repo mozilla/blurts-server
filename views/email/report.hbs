@@ -1,0 +1,24 @@
+{{!< default_email}}
+
+
+<div style="width: 100%;">
+  {{> email_logo }}
+  {{> report_header_details }}
+  
+  {{#if breachAlert}}
+    {{>breach_alert}}
+  {{else}}
+    <div id="report-content" style="padding-left: 20px; padding-right: 20px; padding-bottom: 20px; padding-bottom: 40px;">
+      {{> report_list_headline }}
+      <table id="breach-list" style="color: #333333; min-width: 200px;">
+        {{#if unsafeBreachesForEmail}}
+          {{> report_breach_listing }}
+        {{else}}
+          {{> report_password_tips}}
+        {{/if}}
+      </table>
+    </div>
+
+    {{>email_button href=serverUrl value="Scan Another Email" }}
+  </div>
+{{/if}}

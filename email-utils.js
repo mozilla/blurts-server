@@ -1,6 +1,6 @@
 "use strict";
 
-const path = require("path");
+
 
 const AppConstants = require("./app-constants");
 
@@ -10,11 +10,11 @@ const hbs = require("nodemailer-express-handlebars");
 const hbsOptions = {
   viewEngine: {
     extname: ".hbs",
-    layoutsDir: __dirname + path.sep + path.join("views", "layouts"),
-    defaultLayout: "email",
-    partialsDir: __dirname + path.sep + path.join("views", "partials"),
+    layoutsDir: __dirname + "/views/email/layouts",
+    defaultLayout: "default_email",
+    partialsDir: __dirname + "/views/email/email_partials/",
   },
-  viewPath: __dirname + path.sep + path.join("views", "email"),
+  viewPath: __dirname + "/views/email/",
   extName: ".hbs",
 };
 
