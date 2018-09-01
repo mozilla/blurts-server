@@ -10,28 +10,28 @@
       </p>
     </section><!--.unsubscribe-content.section-wrapper-->
     <section class="unsubscribe-survey section-wrapper drop-shadow">
-      <span class="secondary-title whole">Why are you unsubscribing from Firefox Monitor alerts?</span>
       <div class="whole">
         <form action="" method="post" id="unsubscribe-survey-form" class="form-group">
+          <span class="secondary-title whole" tabindex="1">Why are you unsubscribing from Firefox Monitor alerts?</span>
           {{#each UNSUB_REASONS}}
-            <div class="radio-button-group">
-              <input id="reason{{ id_number }}" type="radio" name="unsubscribe-reason" value="{{ value }}" tabindex="1" />
+            <div class="radio-button-group" tabindex="1">
+              <input id="reason{{ id_number }}" type="radio" name="unsubscribe-reason" value="{{ value }}" />
               <span class="radio-dot"></span>
-              <label for="reason{{ id_number }}" tabindex="1">{{ value }}</label>
+              <label for="reason{{ id_number }}">{{ value }}</label>
             </div>
           {{/each}}
           <div class="input-group-button">
-            <input id="unsubscribe" type="submit" class="button submit transparent-button" value="Unsubscribe" tabindex="0"/>
+            <span class="thank-you-message">Thank you for your feedback.</span>
+            <input id="unsubscribe-survey-submit" type="submit" class="button submit transparent-button" value="Unsubscribe" tabindex="1"/>
             <img class="loader" src="/img/loader.gif" alt="loading data" />
-            <span id="invalid-unsubscribe-reason" class="error-message">Please choose an answer.</span>
           </div>
         </form>
       </div>
     </section>
   {{ else }}
     <section class="unsubscribe-content section-wrapper">
-      <h2 class="section-headline whole">Unsubscribe from Firefox Monitor</h2>
-      <p class="whole sub-head">
+      <h2 class="section-headline whole" tabindex="1">Unsubscribe from Firefox Monitor</h2>
+      <p class="whole sub-head" tabindex="1">
         This will remove your email from the Firefox Monitor list and you will no longer receive alerts when new breaches are announced.
       </p>
       <div class="half">
