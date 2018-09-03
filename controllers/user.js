@@ -40,13 +40,13 @@ async function verify(req, res) {
     req.app.locals.breaches
   );
 
-  // since the helpers to help out on emails yet...
   if(unsafeBreachesForEmail) {
     unsafeBreachesForEmail.forEach((breach) => {
       breach.BreachDate = new Date(breach.BreachDate).toLocaleString("en-US", {year: "numeric", month: "long", day: "numeric"});
       breach.DataClasses = breach.DataClasses.join(", ");
     });
   }
+
   const unsubscribeUrl = EmailUtils.unsubscribeUrl(verifiedEmailHash);
   const serverUrl = req.app.locals.SERVER_URL;
   await EmailUtils.sendEmail(
@@ -69,8 +69,6 @@ async function verify(req, res) {
   });
 }
 
-
-
 function getUnsubscribe(req, res) {
   res.render("unsubscribe", {
     title: "Firefox Monitor: Unsubscribe",
@@ -78,7 +76,6 @@ function getUnsubscribe(req, res) {
     hash: req.query.hash,
   });
 }
-
 
 async function postUnsubscribe(req, res) {
   const unsubscribedUser = await DB.removeSubscriberByToken(req.body.token, req.body.emailHash);
@@ -89,7 +86,6 @@ async function postUnsubscribe(req, res) {
     UNSUB_REASONS,
   });
 }
-
 
 module.exports = {
   add,

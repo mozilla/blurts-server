@@ -1,16 +1,66 @@
-<!-- Emails use the XHTML Strict doctype -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width"/>
+    <title>Firefox Monitor</title>>
+    <style>
+       body {
+        text-align: center;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        color: #5d5d5d;
+        font-weight: 300;
+      }
+
+      a {
+        text-decoration: none;
+        color: #000000;
+      }
+
+      .header-image {
+        display: none;
+      }
+
+      .image {
+        background-image: url("https://fx-breach-alerts.herokuapp.com/img/firefox-share.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        min-height: 300px;
+        width: 100%;
+        max-width: 603px;
+        min-width: 200px;
+        margin: 0 auto;
+      }
+
+      .borders {
+        border-top: 1px solid #e1e1e1;
+        border-bottom: 1px solid #e1e1e1;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      p {
+        line-height: 1.65em;
+      }
+    </style>
   </head>
-  <body style="padding: 0; margin: 0; width: 100%; height: 100%; color: #333333;">
-    <div align="center" style="min-height: 100%; height: 100%; margin: 0 auto; text-aling: left; max-width: 603px; width: 100%;">
-      <div style="border: 1px solid #dddddd; text-align: left; width: 100%; padding-bottom: 30px; margin-top:20px;">
-        {{>email_header_image}}
-        {{{ body }}}
-      </div>
-    </div>
+  <body style="padding: 10px; margin: 0px; width: 100%; height: 100%; color: #333333; size: 14px;">
+    <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" style="padding-bottom: 30px;">
+      <tr>
+        <td align="center">
+          <table border="0" cellspacing="0" cellpadding="0" align="center" style="padding-bottom: 30px; max-width: 603px; min-width: 200px; width: 100%; text-align: center;">
+            <div style="width: 100%">
+              {{>email_header_image}}
+              {{>email_logo}}
+              {{{ body }}}
+              {{>email_footer}}
+            </div>
+          </table>
+        </td>
+      </tr>
+    </table>
   </body>
 </html>
+
+

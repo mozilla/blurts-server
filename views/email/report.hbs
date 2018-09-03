@@ -1,24 +1,37 @@
 {{!< default_email}}
 
 
-<div style="width: 100%;">
-  {{> email_logo }}
-  {{> report_header_details }}
-  
-  {{#if breachAlert}}
-    {{>breach_alert}}
-  {{else}}
-    <div id="report-content" style="padding-left: 20px; padding-right: 20px; padding-bottom: 20px; padding-bottom: 40px;">
-      {{> report_list_headline }}
-      <table id="breach-list" style="color: #333333; min-width: 200px;">
-        {{#if unsafeBreachesForEmail}}
-          {{> report_breach_listing }}
-        {{else}}
-          {{> report_password_tips}}
-        {{/if}}
-      </table>
-    </div>
+<div style="width: 100%; max-width: 603px;">
+  <table border="0" cellpadding="0" cellspacing="0" style="text-align: left; width: 100%;">
+    <tr>
+      <td>
+        {{> report_header_details}}
+      </td>
+    </tr>
+  </table>
+  <table border="0" cellpadding="0" cellspacing="0" style="text-align: left; padding-top: 20px; width: 100%;">
+    <tr>
+      <td>
+        {{> report_list_headline }}
+      </td>
+    </tr>
+  </table>
+  <table border="0" cellpadding="0" cellspacing="0" style="text-align: left; padding-top: 10px;">
+    {{#if breachAlert}}
+      {{> email_single_breach}}
+    {{else}}
 
-    {{>email_button href=serverUrl value="Scan Another Email" }}
-  </div>
-{{/if}}
+      {{#if unsafeBreachesForEmail}}
+        {{#each unsafeBreachesForEmail }}
+          {{> email_single_breach}}
+        {{/each}}
+      {{else}}
+        {{> report_password_tips}}
+      {{/if}}<!--unsafeBreachesForEmail-->
+
+    {{/if}}<!--breachAlert-->
+  </table>
+
+  {{>email_button href=serverUrl value="Scan Another Email" }}
+</div>
+

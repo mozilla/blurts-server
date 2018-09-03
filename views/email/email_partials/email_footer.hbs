@@ -1,6 +1,30 @@
-<div width="100%" style="color: #333333; padding-left: 30px; padding-right: 30px; text-align: center;">
-  <p style="padding-top: 20px; padding-bottom: 20px;">
-    You got this email because you signed up at <a href="{{ SERVER_URL }}" style="color: #000000;">Firefox Monitor</a>. 
-    <a style="color: #000000;" href="{{ unsubscribeUrl }}" rel="noreferrer noopener">Unsubscribe</a>
-  </p>
-</div>
+<br />
+<table align="center" width="100%" border="0" cellspacing="0" cellpadding="0" style="text-align: center; max-width: 603px; padding: 40px 10px 10px 10px; color: #5d5d5d; font-size: 10px;">
+  <tr>
+    <td style="border-top: 1px solid #e1e1e1;">
+      <p style="size: 11px; color: #5d5d5d; padding: 10px 0px 3px 0px; margin: 0px; font-weight: 300;">
+        We sent this email to {{ email }} because someone, hopefully you, opted into alerts from <a href="{{ serverUrl }}" style="color: #000000; font-weight: 500;">Firefox Monitor</a>.
+      </p>
+      <p style="padding: 0px 0px 3px 0px; margin: 0px;">
+        If you no longer want to receive alerts, please 
+        <a style="color: #000000; font-weight: 500;" href="{{ unsubscribeUrl }}" rel="noreferrer noopener">unsubscribe</a>.
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td valign="center" style="margin:0px; padding: 0px; height: 80px;">
+      <a href="https://www.mozilla.org" style="margin: 0px; padding: 0px;">
+        <img src="{{ serverUrl }}/img/favicon/favicon-196x196.c80e6abe0767.png" width="40" height="40" style="width: 40px; height: 40px;" />
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <p style="padding: 0px 0px 3px 0px; margin: 0px; font-weight: 600; color: #000000;">Mozilla</p>
+      <p style="padding: 0px 0px 3px 0px; margin: 0px; color: #5d5d5d;">331 E. Evelyn Avenue Mountain View CA 94041</p>
+      <p style="padding: 0px; margin: 0px;">
+        <a href="https://www.mozilla.org/about/legal/" style="text-decoration: none; color: #5d5d5d;" >Legal</a> | <a href="https://www.mozilla.org/privacy/websites/" style="text-decoration: none; color: #5d5d5d;">Privacy</a>
+      </p>
+    </td>
+  </tr>
+</table>
