@@ -1104,9 +1104,16 @@ ul.social-media-sharing-buttons li {
   margin-left: var(--gap);
 }
 
+ul.social-media-sharing-buttons a {
+  display: block;
+  height: 100%;
+  padding: 3px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  outline: 1px solid rgba(0, 0, 0, 0);
+}
+
 ul.social-media-sharing-buttons img {
   max-height: 24px;
-  margin-right: 8px;
   pointer-events: none;
 }
 
