@@ -916,7 +916,8 @@ body.show-subscribe-modal .modal-content.show {
 
 .modal-content h3,
 .modal-content p,
-.modal-content label {
+.modal-content label,
+.modal-content span {
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
