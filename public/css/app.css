@@ -1200,7 +1200,7 @@ footer ul li:first-of-type,
 .content-wrap {
   width: 100%;
   overflow-x: hidden;
-  overflow-y: visible;
+  overflow-y: hidden;
   position: relative;
   height: 100%;
   pointer-events: none;
