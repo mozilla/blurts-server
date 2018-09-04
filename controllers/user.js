@@ -43,8 +43,6 @@ async function verify(req, res) {
 
 
 function getUnsubscribe(req, res) {
-
-
   res.render("unsubscribe", {
     title: "Firefox Monitor: Unsubscribe",
     token: req.query.token,
@@ -55,19 +53,17 @@ function getUnsubscribe(req, res) {
 
 async function postUnsubscribe(req, res) {
 
-const unsubscribedUser = await DB.removeSubscriberByToken(req.body.token, req.body.emailHash);
+  const unsubscribedUser = await DB.removeSubscriberByToken(req.body.token, req.body.emailHash);
 
-if (!unsubscribedUser) {
-  res.redirect("/");
-}
-
-else {
-    res.render("unsubscribe", {
-      title: "Firefox Monitor: Unsubscribe",
-      unsubscribed: unsubscribedUser,
-      UNSUB_REASONS,
-    });
+  if (!unsubscribedUser) {
+    res.redirect("/");
+    return;
   }
+  res.render("unsubscribe", {
+    title: "Firefox Monitor: Unsubscribe",
+    unsubscribed: unsubscribedUser,
+    UNSUB_REASONS,
+  });
 }
 
 
