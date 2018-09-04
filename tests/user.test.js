@@ -5,6 +5,7 @@ const httpMocks = require("node-mocks-http");
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const user = require("../controllers/user");
+const { testBreaches } = require ("./test-breaches");
 
 require("./resetDB");
 
@@ -63,10 +64,7 @@ test("user add request with invalid email throws error", async () => {
 test("user verify request with valid token verifies user", async () => {
   const validToken = "0e2cb147-2041-4e5b-8ca9-494e773b2cf0";
   // Set up mocks
-  const req = httpMocks.createRequest({
-    method: "GET",
-    url: `/user/verify?token=${validToken}`,
-  });
+  const req = { query: { token: validToken }, app: { locals: { breaches: testBreaches } } };
   const resp = httpMocks.createResponse();
 
   // Call code-under-test
