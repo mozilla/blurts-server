@@ -1146,18 +1146,16 @@ footer .section-wrapper {
   flex-direction: row;
 }
 
-footer .half,
-footer .fourth {
+footer .third {
   flex-direction: column;
   text-align: left;
   justify-content: flex-start;
   align-items: flex-start;
 }
 
-footer .half div {
-  height: 100%;
-  display: flex;
-  align-items: center;
+footer .two-thirds {
+  text-align: center;
+  justify-content: center;
 }
 
 footer ul li,
@@ -1193,6 +1191,10 @@ footer ul li:first-of-type,
   line-height: 40px;
   height: 40px;
   min-width: 120px;
+}
+
+footer .copyright-info a {
+  color: var(--blue40);
 }
 
 /* WAVES GRAPHIC */
@@ -1288,13 +1290,18 @@ footer ul li:first-of-type,
 }
 
 @media screen and (max-width: 850px) {
-  .half {
+  .half,
+  .third {
     max-width: 100%;
   }
 
   .banner .section-wrapper > * {
     margin-bottom: var(--gap);
     margin-top: var(--gap);
+  }
+
+  header ul.social-media-sharing-buttons {
+    display: none;
   }
 
   button,
@@ -1316,6 +1323,20 @@ footer ul li:first-of-type,
     flex-wrap: wrap;
     flex-direction: column-reverse;
   }
+
+  footer .section-wrapper:first-of-type {
+    padding-bottom: 0;
+  }
+
+  footer .third {
+    margin-bottom: 0;
+  }
+
+  footer .copyright-info {
+    padding-top: 0;
+    margin-top: 0;
+    text-align: left;
+  }
 }
 
 @media screen and (max-width: 680px) {
@@ -1335,10 +1356,6 @@ footer ul li:first-of-type,
 @media screen and (max-width: 575px) {
   body {
     --columnSpacing: 40px;
-  }
-
-  ul.social-media-sharing-buttons {
-    display: none;
   }
 
   main.scan-results .half:last-of-type {
