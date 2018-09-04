@@ -52,8 +52,13 @@ function getUnsubscribe(req, res) {
 
 
 async function postUnsubscribe(req, res) {
+
   const unsubscribedUser = await DB.removeSubscriberByToken(req.body.token, req.body.emailHash);
 
+  if (!unsubscribedUser) {
+    res.redirect("/");
+    return;
+  }
   res.render("unsubscribe", {
     title: "Firefox Monitor: Unsubscribe",
     unsubscribed: unsubscribedUser,

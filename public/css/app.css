@@ -916,7 +916,8 @@ body.show-subscribe-modal .modal-content.show {
 
 .modal-content h3,
 .modal-content p,
-.modal-content label {
+.modal-content label,
+.modal-content span {
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -1103,9 +1104,16 @@ ul.social-media-sharing-buttons li {
   margin-left: var(--gap);
 }
 
+ul.social-media-sharing-buttons a {
+  display: block;
+  height: 100%;
+  padding: 3px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  outline: 1px solid rgba(0, 0, 0, 0);
+}
+
 ul.social-media-sharing-buttons img {
   max-height: 24px;
-  margin-right: 8px;
   pointer-events: none;
 }
 
@@ -1192,7 +1200,7 @@ footer ul li:first-of-type,
 .content-wrap {
   width: 100%;
   overflow-x: hidden;
-  overflow-y: visible;
+  overflow-y: hidden;
   position: relative;
   height: 100%;
   pointer-events: none;

@@ -141,6 +141,9 @@ const DB = {
 
   async removeSubscriberByToken(token, emailSha1) {
     const subscriber = await this.getSubscriberByTokenAndHash(token, emailSha1);
+    if (!subscriber) {
+      return false;
+    }
     await knex("subscribers")
       .where({
         "verification_token": subscriber.verification_token,
