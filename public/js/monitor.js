@@ -193,7 +193,7 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
     emailForm.querySelector("input[name=emailHash]").value = await sha1(emailInput.value);
     emailInput.value = "";
   }
-  // emailForm.submit();
+  emailForm.submit();
 }
 
 const addUser = (formEvent) => {
