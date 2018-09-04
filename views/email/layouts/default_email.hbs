@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width"/>
-    <title>Firefox Monitor</title>>
+    <title>Firefox Monitor</title>
     <style>
        body {
         text-align: center;
@@ -22,7 +22,7 @@
       }
 
       .image {
-        background-image: url("https://fx-breach-alerts.herokuapp.com/img/firefox-share.png");
+        background-image: url("{{ serverUrl }}/img/firefox-share.png");
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -50,12 +50,14 @@
       <tr>
         <td align="center">
           <table border="0" cellspacing="0" cellpadding="0" align="center" style="padding-bottom: 30px; max-width: 603px; min-width: 200px; width: 100%; text-align: center;">
-            <div style="width: 100%">
-              {{>email_header_image}}
-              {{>email_logo}}
-              {{{ body }}}
-              {{>email_footer}}
-            </div>
+              <tr>
+                <td>
+                  {{>email_header_image}}
+                  {{>email_logo}}
+                  {{{ body }}}
+                  {{>email_footer}}
+                </td>
+              </tr>
           </table>
         </td>
       </tr>

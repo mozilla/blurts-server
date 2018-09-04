@@ -1,11 +1,16 @@
 {{!< default_email }}
 
-  <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="text-align: center; margin-top: 0px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px;">
+  <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="text-align: center; padding-top: 0px; padding-left: 10px; padding-right: 10px; margin: 0px;">
     <tr>
       <td valign="top">
-        <p style="font-weight: 300; width: 100%; font-size: 17px; padding: 0px;">Verify your email address for a full report of your accounts.</p>
+        <p style="font-weight: 300; width: 100%; font-size: 17px; padding: 0px; margin: 0px;">Verify your email address for a full report of your accounts.</p>
       </td>
     </tr>
   </table>
-
-{{>email_button href=verifyUrl value="Verify Your Subscription"}}
+  <table border="0" cellspacing="0" cellpadding="0" width="100%" style="padding-top:20px; padding-bottom: 20px; margin: 0px;">
+    <tr>
+      <td>
+        {{>email_button href=verifyUrl value="Verify Your Subscription"}}
+      </td>
+    </tr>
+  </table>

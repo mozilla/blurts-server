@@ -12,7 +12,7 @@
   <table border="0" cellpadding="0" cellspacing="0" style="text-align: left; padding-top: 20px; width: 100%;">
     <tr>
       <td>
-        {{> report_list_headline }}
+        {{> report_list_headline}}
       </td>
     </tr>
   </table>
@@ -22,7 +22,7 @@
     {{else}}
 
       {{#if unsafeBreachesForEmail}}
-        {{#each unsafeBreachesForEmail }}
+        {{#each unsafeBreachesForEmail}}
           {{> email_single_breach}}
         {{/each}}
       {{else}}
@@ -31,7 +31,12 @@
 
     {{/if}}<!--breachAlert-->
   </table>
-
-  {{>email_button href=serverUrl value="Scan Another Email" }}
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-top: 20px; padding-bottom: 20px; margin: 0px;">
+    <tr>
+      <td>
+        {{>email_button href=serverUrl value="Scan Another Email"}}
+      </td>
+    </tr>
+  </table>
 </div>
 

@@ -10,11 +10,11 @@ const TIPS = require("../tips");
 
 async function add(req, res) {
   const email = req.body.email;
+
   if (!isemail.validate(email)) {
     throw new Error("Invalid Email");
   }
   const fxNewsletter = Boolean(req.body.additionalEmails);
-
 
   const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(email, fxNewsletter);
   const verifyUrl = EmailUtils.verifyUrl(unverifiedSubscriber);
@@ -31,6 +31,7 @@ async function add(req, res) {
     title: "Firefox Monitor : Confirm Email",
   });
 }
+
 
 async function verify(req, res) {
   const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
@@ -49,6 +50,7 @@ async function verify(req, res) {
 
   const unsubscribeUrl = EmailUtils.unsubscribeUrl(verifiedEmailHash);
   const serverUrl = req.app.locals.SERVER_URL;
+
   await EmailUtils.sendEmail(
     verifiedEmailHash.email,
     "Your Firefox Monitor report",
@@ -69,6 +71,7 @@ async function verify(req, res) {
   });
 }
 
+
 function getUnsubscribe(req, res) {
   res.render("unsubscribe", {
     title: "Firefox Monitor: Unsubscribe",
@@ -76,6 +79,7 @@ function getUnsubscribe(req, res) {
     hash: req.query.hash,
   });
 }
+
 
 async function postUnsubscribe(req, res) {
   const unsubscribedUser = await DB.removeSubscriberByToken(req.body.token, req.body.emailHash);
@@ -86,6 +90,7 @@ async function postUnsubscribe(req, res) {
     UNSUB_REASONS,
   });
 }
+
 
 module.exports = {
   add,
