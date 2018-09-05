@@ -9,7 +9,11 @@ const HBSHelpers = {
     });
 
     hbs.registerHelper("breachDataClasses", function(dataClasses) {
-      return dataClasses.join(", ");
+      if (dataClasses.constructor === Array) {
+        return dataClasses.join(", ");
+      } else {
+        return "";
+      }
     });
 
     hbs.registerHelper("localeString", function(input) {
