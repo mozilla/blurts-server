@@ -1,6 +1,16 @@
-{{!< email }}
-  <p>Someone - hopefully you - asked to add {{ email }} to Firefox Monitor.</p>
+{{!< default_email }}
 
-  <p>To verify your subscription, please visit this link:</p>
-
-  {{ verifyUrl }}
+  <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="text-align: center; padding-top: 0px; padding-left: 10px; padding-right: 10px; margin: 0px;">
+    <tr>
+      <td valign="top">
+        <p style="font-weight: 300; width: 100%; font-size: 17px; padding: 0px; margin: 0px;">Verify your email address for a full report of your accounts.</p>
+      </td>
+    </tr>
+  </table>
+  <table border="0" cellspacing="0" cellpadding="0" width="100%" style="padding-top:20px; padding-bottom: 20px; margin: 0px;">
+    <tr>
+      <td>
+        {{>email_button href=verifyUrl value="Verify Your Subscription"}}
+      </td>
+    </tr>
+  </table>

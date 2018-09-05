@@ -1365,6 +1365,10 @@ footer .copyright-info a {
     --columnSpacing: 40px;
   }
 
+  header ul.social-media-sharing-buttons {
+    display: none;
+  }
+  
   main.scan-results .half:last-of-type {
     display: flex;
   }

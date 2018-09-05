@@ -1,19 +1,20 @@
 "use strict";
 
 const isemail = require("isemail");
-
+const HIBP = require("../hibp");
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const UNSUB_REASONS = require("../unsubscribe_reasons");
-
+const sha1 = require("../sha1-utils");
+const TIPS = require("../tips");
 
 async function add(req, res) {
   const email = req.body.email;
+
   if (!isemail.validate(email)) {
     throw new Error("Invalid Email");
   }
   const fxNewsletter = Boolean(req.body.additionalEmails);
-
 
   const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(email, fxNewsletter);
   const verifyUrl = EmailUtils.verifyUrl(unverifiedSubscriber);
@@ -21,7 +22,7 @@ async function add(req, res) {
 
   await EmailUtils.sendEmail(
     email,
-    "Verify your email address to subscribe to Firefox Monitor.",
+    "Verify your subscription to Firefox Monitor.",
     "email_verify",
     { email, verifyUrl, unsubscribeUrl}
   );
@@ -34,6 +35,35 @@ async function add(req, res) {
 
 async function verify(req, res) {
   const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
+
+  const unsafeBreachesForEmail = await HIBP.getUnsafeBreachesForEmail(
+    sha1(verifiedEmailHash.email),
+    req.app.locals.breaches
+  );
+
+  if(unsafeBreachesForEmail) {
+    unsafeBreachesForEmail.forEach((breach) => {
+      breach.BreachDate = new Date(breach.BreachDate).toLocaleString("en-US", {year: "numeric", month: "long", day: "numeric"});
+      breach.DataClasses = breach.DataClasses.join(", ");
+    });
+  }
+
+  const unsubscribeUrl = EmailUtils.unsubscribeUrl(verifiedEmailHash);
+  const serverUrl = req.app.locals.SERVER_URL;
+
+  await EmailUtils.sendEmail(
+    verifiedEmailHash.email,
+    "Your Firefox Monitor report",
+    "report",
+    {
+      email: verifiedEmailHash.email,
+      date: new Date().toLocaleString("en-US", {year: "numeric", month: "long", day: "numeric"}),
+      unsafeBreachesForEmail,
+      TIPS,
+      unsubscribeUrl,
+      serverUrl,
+    }
+  );
 
   res.render("confirm", {
     title: "Firefox Monitor: Subscribed",
