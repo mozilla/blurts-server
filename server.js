@@ -61,6 +61,7 @@ app.use(helmet.contentSecurityPolicy({
     reportUri: "/__cspreport__",
   },
 }));
+app.use(helmet.referrerPolicy({ policy: "strict-origin-when-cross-origin" }));
 app.use(express.static("public"));
 
 app.engine("hbs", exphbs({
