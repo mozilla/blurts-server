@@ -4,6 +4,7 @@ const isemail = require("isemail");
 const HIBP = require("../hibp");
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
+const HBSHelpers = require("../hbs-helpers");
 const UNSUB_REASONS = require("../unsubscribe_reasons");
 const sha1 = require("../sha1-utils");
 const TIPS = require("../tips");
@@ -43,8 +44,8 @@ async function verify(req, res) {
 
   if(unsafeBreachesForEmail) {
     unsafeBreachesForEmail.forEach((breach) => {
-      breach.BreachDate = new Date(breach.BreachDate).toLocaleString("en-US", {year: "numeric", month: "long", day: "numeric"});
-      breach.DataClasses = breach.DataClasses.join(", ");
+      breach.BreachDate = HBSHelpers.prettyDate(breach.BreachDate);
+      breach.DataClasses = HBSHelpers.breachDataClasses(breach.DataClasses);
     });
   }
 

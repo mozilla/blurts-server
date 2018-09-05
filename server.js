@@ -69,7 +69,7 @@ app.engine("hbs", hbs.express4({
 }));
 app.set("view engine", "hbs");
 app.set("views", __dirname + "/views");
-HBSHelpers.init(hbs);
+HBSHelpers.register(hbs);
 
 const cookie = {httpOnly: true, secureProxy: true};
 

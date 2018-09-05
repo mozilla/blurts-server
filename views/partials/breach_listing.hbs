@@ -6,6 +6,8 @@
     <h4 class="medium">{{ Title }}</h4>
     <span class="breach-info"><span class="medium">Breach date:</span> {{prettyDate BreachDate }}</span>
     <span class="breach-info"><span class="medium">Compromised accounts:</span> {{localeString PwnCount }}</span>
+    {{#if DataClasses }}
     <span class="breach-info"><span class="medium">Compromised data:</span> {{breachDataClasses DataClasses }}</span>
+    {{/if}}
   </div>
 </div>
