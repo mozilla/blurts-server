@@ -1146,6 +1146,10 @@ footer .section-wrapper {
   flex-direction: row;
 }
 
+footer .section-wrapper:last-of-type {
+  justify-content: flex-end;
+}
+
 footer .third {
   flex-direction: column;
   text-align: left;
@@ -1154,8 +1158,7 @@ footer .third {
 }
 
 footer .two-thirds {
-  text-align: center;
-  justify-content: center;
+  max-width: 660px;
 }
 
 footer ul li,
@@ -1350,6 +1353,10 @@ footer .copyright-info a {
 
   .unsubscribe-content p {
     padding-right: 0;
+  }
+
+  footer .copyright-info br {
+    display: none;
   }
 }
 
