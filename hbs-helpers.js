@@ -77,7 +77,7 @@ const HBSHelpers = {
   register(hbs) {
     hbs.registerHelper("prettyDate", this.prettyDate);
     hbs.registerHelper("breachDataClasses", this.breachDataClasses);
-    hbs.registerHelper("localeString", this.localString);
+    hbs.registerHelper("localeString", this.localeString);
     hbs.registerHelper("each_from_to", this.eachFromTo);
     hbs.registerHelper("if_compare", this.ifCompare);
     hbs.registerHelper("breachMath", this.breachMath);
