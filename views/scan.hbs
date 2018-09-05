@@ -7,25 +7,26 @@
         <h3 id="found-breaches" class="section-headline">This might be a problem</h3>
         {{#if featuredBreach}}
           {{#if userAccountCompromised}}
-            {{#if_compare foundBreaches.length ">" 1}} <!-- checking for additional "non-featured" breaches (is foundBreaches.length > 1) -->
-              <p>Your accounts appear in the <span class="bold">{{ featuredBreach.Title }}</span> breach, as well as <span class="bold">{{ breachMath foundBreaches.length "-" 1 }}</span> other breach{{#if_compare foundBreaches.length ">" 2}}es{{/if_compare}}.</p>
+            {{#ifCompare foundBreaches.length ">" 1}} <!-- checking for additional "non-featured" breaches (is foundBreaches.length > 1) -->
+              <p>Your accounts appear in the <span class="bold">{{ featuredBreach.Title }}</span> breach, as well as <span class="bold">{{ breachMath foundBreaches.length "-" 1 }}</span> other breach{{#ifCompare foundBreaches.length ">" 2}}es{{/ifCompare}}.</p>
             {{else}}
               <p>Your account appears in the <span class="bold">{{ featuredBreach.Title }}</span> breach, but does not appear in any other known breaches.</p>
             </section><!--closes half.scan-results-content-left-->
               <section class="half order-last">
                 {{> featured_breach}}
-            {{/if_compare}}
+              </div>
+            {{/ifCompare}}
           {{else}} <!--#if !userAccountCompromised -->
-            {{#if_compare foundBreaches.length ">=" 1}} <!-- user has breached accounts (foundBreaches.length > 0) but wasn't compromised in the 'featuredBreach' -->
-              <p>Your account did not appear in the <span class="bold">{{ featuredBreach.Title }}</span> breach, but it did appear in <span class="bold">{{ breachMath foundBreaches.length "-" 0 }}</span> other breach{{#if_compare foundBreaches.length ">" 1}}es{{/if_compare}}.</p>
-            {{/if_compare}}
+            {{#ifCompare foundBreaches.length ">=" 1}} <!-- user has breached accounts (foundBreaches.length > 0) but wasn't compromised in the 'featuredBreach' -->
+              <p>Your account did not appear in the <span class="bold">{{ featuredBreach.Title }}</span> breach, but it did appear in <span class="bold">{{ breachMath foundBreaches.length "-" 0 }}</span> other breach{{#ifCompare foundBreaches.length ">" 1}}es{{/ifCompare}}.</p>
+            {{/ifCompare}}
           {{/if}}
         {{else}} <!--#if !featuredBreach-->
-          {{#if_compare foundBreaches.length "===" 1}}
+          {{#ifCompare foundBreaches.length "===" 1}}
             <p>Your account was compromised in the following breach.</p>
           {{else}}
             <p>Your accounts were compromised in the following breaches.</p>
-          {{/if_compare}}
+          {{/ifCompare}}
         {{/if}}<!--/#if featuredBreach-->
       </section><!--.half.scan-results-content-left // or closes .half.order-last (Line 15)-->
       {{> compromised_accounts }}

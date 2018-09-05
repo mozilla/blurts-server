@@ -42,13 +42,6 @@ async function verify(req, res) {
     req.app.locals.breaches
   );
 
-  if(unsafeBreachesForEmail) {
-    unsafeBreachesForEmail.forEach((breach) => {
-      breach.BreachDate = HBSHelpers.prettyDate(breach.BreachDate);
-      breach.DataClasses = HBSHelpers.breachDataClasses(breach.DataClasses);
-    });
-  }
-
   const unsubscribeUrl = EmailUtils.unsubscribeUrl(verifiedEmailHash);
   const serverUrl = req.app.locals.SERVER_URL;
 
@@ -58,7 +51,7 @@ async function verify(req, res) {
     "report",
     {
       email: verifiedEmailHash.email,
-      date: new Date().toLocaleString("en-US", {year: "numeric", month: "long", day: "numeric"}),
+      date: HBSHelpers.prettyDate(new Date()),
       unsafeBreachesForEmail,
       TIPS,
       unsubscribeUrl,
