@@ -1,6 +1,7 @@
 {{!< default }}
 <main class="scan-results">
   <div class="section-wrapper breach-container">
+    
     {{#if foundBreaches }}
       <section class="half scan-results-content-left">
         <h3 id="found-breaches" class="section-headline">This might be a problem</h3>
@@ -11,9 +12,8 @@
             {{else}}
               <p>Your account appears in the <span class="bold">{{ featuredBreach.Title }}</span> breach, but does not appear in any other known breaches.</p>
             </section><!--closes half.scan-results-content-left-->
-              <div class="half order-last">
+              <section class="half order-last">
                 {{> featured_breach}}
-              </div>
             {{/if_compare}}
           {{else}} <!--#if !userAccountCompromised -->
             {{#if_compare foundBreaches.length ">=" 1}} <!-- user has breached accounts (foundBreaches.length > 0) but wasn't compromised in the 'featuredBreach' -->
@@ -23,11 +23,11 @@
         {{else}} <!--#if !featuredBreach-->
           {{#if_compare foundBreaches.length "===" 1}}
             <p>Your account was compromised in the following breach.</p>
-          {{ else }}
+          {{else}}
             <p>Your accounts were compromised in the following breaches.</p>
           {{/if_compare}}
         {{/if}}<!--/#if featuredBreach-->
-      </section><!--.half.scan-results-content-left-->
+      </section><!--.half.scan-results-content-left // or closes .half.order-last (Line 15)-->
       {{> compromised_accounts }}
     </div>
   </main>
