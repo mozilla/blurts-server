@@ -1,11 +1,12 @@
 "use strict";
 
-
-
 const AppConstants = require("./app-constants");
 
 const nodemailer = require("nodemailer");
 const hbs = require("nodemailer-express-handlebars");
+
+const HBSHelpers = require("./hbs-helpers");
+
 
 const hbsOptions = {
   viewEngine: {
@@ -13,6 +14,7 @@ const hbsOptions = {
     layoutsDir: __dirname + "/views/email/layouts",
     defaultLayout: "default_email",
     partialsDir: __dirname + "/views/email/email_partials/",
+    helpers: HBSHelpers,
   },
   viewPath: __dirname + "/views/email/",
   extName: ".hbs",

@@ -3,7 +3,7 @@
 const AppConstants = require("./app-constants");
 
 const express = require("express");
-const hbs = require("express-hbs");
+const exphbs = require("express-handlebars");
 const helmet = require("helmet");
 const sessions = require("client-sessions");
 
@@ -63,13 +63,14 @@ app.use(helmet.contentSecurityPolicy({
 }));
 app.use(express.static("public"));
 
-app.engine("hbs", hbs.express4({
+app.engine("hbs", exphbs({
+  extname: ".hbs",
   layoutsDir: __dirname + "/views/layouts",
+  defaultLayout: "default",
   partialsDir: __dirname + "/views/partials",
+  helpers: HBSHelpers,
 }));
 app.set("view engine", "hbs");
-app.set("views", __dirname + "/views");
-HBSHelpers.register(hbs);
 
 const cookie = {httpOnly: true, secureProxy: true};
 
