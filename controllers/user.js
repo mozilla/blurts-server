@@ -49,7 +49,6 @@ async function verify(req, res) {
     "Your Firefox Monitor report",
     "report",
     {
-      SERVER_URL: req.app.locals.SERVER_URL,
       TIPS,
       email: verifiedEmailHash.email,
       date: HBSHelpers.prettyDate(new Date()),
