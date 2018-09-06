@@ -20,12 +20,13 @@ async function add(req, res) {
   const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(email, fxNewsletter);
   const verifyUrl = EmailUtils.verifyUrl(unverifiedSubscriber);
   const unsubscribeUrl = EmailUtils.unsubscribeUrl(unverifiedSubscriber);
+  const serverUrl = req.app.locals.SERVER_URL;
 
   await EmailUtils.sendEmail(
     email,
     "Verify your subscription to Firefox Monitor.",
     "email_verify",
-    { email, verifyUrl, unsubscribeUrl}
+    { email, verifyUrl, unsubscribeUrl, serverUrl }
   );
 
   res.send({
