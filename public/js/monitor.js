@@ -208,6 +208,9 @@ const addUser = (formEvent) => {
       document.getElementById("subscribe-to-ffxm").classList.remove("show");
       document.getElementById("confirm-your-account").classList.add("show");
       setModalTabbing();
+      document.getElementById("submitted-email").innerText = formObject["email"];
+      document.getElementById("resend-data").addEventListener("click", postData(formElement.action, formObject));
+
     })
     .catch(error => console.error(error));
 };
@@ -275,6 +278,7 @@ function handleFormSubmits(formEvent) {
     return;
   }
   if (formEvent.target.id === "subscribe-form") {
+    formEvent.target.classList.add("loading-data");
     addUser(formEvent);
     setModalTabbing();
     return;

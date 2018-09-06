@@ -946,8 +946,7 @@ body.show-subscribe-modal .modal-content.show {
   font-size: 1.5375rem;
 }
 
-.close-modal,
-#subscribe-fxa-btn,
+.modal-content .internal-link,
 .modal-content p {
   font-size: 17px;
   font-weight: 300;
@@ -957,12 +956,12 @@ body.show-subscribe-modal .modal-content.show {
   margin-bottom: var(--gap);
 }
 
-#subscribe-to-ffxm .close-modal,
-#subscribe-fxa-btn {
+.modal-content button.internal-link {
   background-color: rgba(0, 0, 0, 0);
   color: var(--blue60);
   font-weight: 400;
-  height: 45px;
+  min-height: 30px;
+  height: 30px;
   margin-top: calc(var(--gap) / 2);
 }
 
@@ -980,8 +979,9 @@ body.show-subscribe-modal .modal-content.show {
   margin-top: 0;
 }
 
-.modal-content img {
+#confirm-your-account img {
   padding-right: 15.5%;
+  margin-bottom: var(--gap);
 }
 
 /* ///// compromised accounts  */
