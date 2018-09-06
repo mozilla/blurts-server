@@ -158,7 +158,7 @@ function openModalWindow() {
 function checkBoxStates(checkBoxEvent) {
   checkBoxEvent.preventDefault();
   let checkBox;
-  // user tabs (keyCode === 16) or tabs BACK (keyCode === 16) to checkbox element
+  // user tabs (keyCode === 9) or tabs BACK (keyCode === 16) to checkbox element
   if (checkBoxEvent.keyCode === 9 || checkBoxEvent.keyCode === 16) {
     checkBox = checkBoxEvent.target;
     checkBox.focused = true;
@@ -226,22 +226,6 @@ const postData = (url, data = {}) => {
   .catch(error => console.error(error));
 };
 
-function addFormListeners() {
-  for (const form of document.forms) {
-    if (form.querySelector("input[type=email]")) {
-      const emailInput = form.querySelector("input[type=email]");
-      emailInput.addEventListener("keydown", (e) => removeInvalidMessage(e));
-      emailInput.addEventListener("focusin", (e) => removeInvalidMessage(e));
-    }
-    if (form.querySelector("input[type=checkbox]")) {
-      const checkBoxWrapper = form.querySelector(".checkbox-group");
-      checkBoxWrapper.addEventListener("click", (e) => checkBoxStates(e));
-      checkBoxWrapper.addEventListener("keyup",(e) => checkBoxStates(e));
-    }
-    form.addEventListener("submit", (e) => handleFormSubmits(e));
-  }
-}
-
 function showAdditionalBreaches(){
   document.getElementById("show-additional-breaches").classList.toggle("hide");
   const additionalBreaches = document.getElementById("additional-breaches");
@@ -252,17 +236,65 @@ function showAdditionalBreaches(){
   }
 }
 
+const handleRadioButtons = function(form) {
+  const inputFields = form.querySelectorAll(".radio-button-group, .button");
+  // set up ability to move between radio options by arrow key
+  for (let x = 0; x < inputFields.length ; x++) { 
+    const input = inputFields[x];
+    input.addEventListener("focus", (e) => {
+      if (form.classList.contains("invalid")) {
+        form.classList.remove("invalid");
+      }
+      input.addEventListener("keydown", (e) => {
+        // if up arrow (keyCode 38) is clicked
+        if (e.keyCode === 38 && inputFields[x-1]) {
+          inputFields[x-1].focus();
+        }
+        // if down arrow (keyCode 40) is clicked
+        if (e.keyCode === 40 && inputFields[x+1]) {
+          inputFields[x+1].focus();
+        }
+        // select option by space key (keyCode 32)
+        if (e.keyCode === 32 && input.classList.contains("radio-button-group")) {
+          inputFields[x].querySelector("input").checked = true;
+        }
+      });
+    });
+  }
+};
+
+function addFormListeners() {
+  for (const form of document.forms) {
+    if (form.querySelector("input[type=email]")) {
+      const emailInput = form.querySelector("input[type=email]");
+      emailInput.addEventListener("keydown", (e) => removeInvalidMessage(e));
+    }
+    if (form.querySelector("input[type=checkbox]")) {
+      const checkBoxWrapper = form.querySelector(".checkbox-group");
+      checkBoxWrapper.addEventListener("click", (e) => checkBoxStates(e));
+      checkBoxWrapper.addEventListener("keyup",(e) => checkBoxStates(e));
+    }
+
+    if(form.querySelector("input[type=radio]")) {
+      handleRadioButtons(form);
+    }
+    form.addEventListener("submit", (e) => handleFormSubmits(e));
+  }
+}
+
 function handleFormSubmits(formEvent) {
   if (formEvent.target.id === "unsubscribe-form") {
     return;
   }
   formEvent.preventDefault();
   if (formEvent.target.id === "unsubscribe-survey-form") {
+    // show error message if no option is selected
     if (!formEvent.target.querySelector("input[type='radio']:checked")) {
+      formEvent.target.classList.add("invalid");
       return;
     }
+    formEvent.target.classList.add("show-thankyou");
     ga_sendPing("unsubscribeSurvey", formEvent.target.querySelector("input[type='radio']:checked").value);
-    window.location.href = document.body.dataset.serverUrl;
     return;
   }
   const thisForm = formEvent.target;
