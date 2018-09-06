@@ -6,6 +6,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const helmet = require("helmet");
 const sessions = require("client-sessions");
+const url = require("url");
 
 const EmailUtils = require("./email-utils");
 const HBSHelpers = require("./hbs-helpers");
@@ -82,6 +83,7 @@ if (app.get("env") === "dev") {
 }
 
 app.locals.SERVER_URL = AppConstants.SERVER_URL;
+app.locals.UTM_SOURCE = url.parse(AppConstants.SERVER_URL).hostname;
 
 app.use(sessions({
   cookieName: "session",
