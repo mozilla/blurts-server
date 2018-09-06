@@ -238,17 +238,23 @@ function showAdditionalBreaches(){
 
 const handleRadioButtons = function(form) {
   const inputFields = form.querySelectorAll(".radio-button-group, .button");
-  inputFields[0].querySelector("input").checked = true;
+  // set up ability to move between radio options by arrow key
   for (let x = 0; x < inputFields.length ; x++) { 
     const input = inputFields[x];
     input.addEventListener("focus", (e) => {
+      if (form.classList.contains("invalid")) {
+        form.classList.remove("invalid");
+      }
       input.addEventListener("keydown", (e) => {
+        // if up arrow (keyCode 38) is clicked
         if (e.keyCode === 38 && inputFields[x-1]) {
           inputFields[x-1].focus();
         }
+        // if down arrow (keyCode 40) is clicked
         if (e.keyCode === 40 && inputFields[x+1]) {
           inputFields[x+1].focus();
         }
+        // select option by space key (keyCode 32)
         if (e.keyCode === 32 && input.classList.contains("radio-button-group")) {
           inputFields[x].querySelector("input").checked = true;
         }
@@ -282,6 +288,11 @@ function handleFormSubmits(formEvent) {
   }
   formEvent.preventDefault();
   if (formEvent.target.id === "unsubscribe-survey-form") {
+    // show error message if no option is selected
+    if (!formEvent.target.querySelector("input[type='radio']:checked")) {
+      formEvent.target.classList.add("invalid");
+      return;
+    }
     formEvent.target.classList.add("show-thankyou");
     ga_sendPing("unsubscribeSurvey", formEvent.target.querySelector("input[type='radio']:checked").value);
     return;

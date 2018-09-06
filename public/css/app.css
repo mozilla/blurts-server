@@ -542,11 +542,6 @@ input[type="submit"].transparent-button:active {
   box-shadow: 0 0 0 1px rgba(255, 0, 55, 0.514), 0 0 0 4px rgba(255, 0, 55, 0.3);
 }
 
-.form-group.invalid input[type="submit"],
-.form-group.invalid input[type="submit"]:hover {
-  background-color: var(--red60);
-}
-
 .form-group.invalid input:focus {
   outline: none;
 }
@@ -1247,6 +1242,16 @@ form.show-thankyou input[type="submit"] {
 form.show-thankyou span.thank-you-message {
   opacity: 1;
   transition: all 0.1s ease;
+}
+
+#unsubscribe-survey-form .error-message {
+  bottom: -40px;
+  top: auto;
+}
+
+#unsubscribe-survey-form .error-message::before {
+  top: -7px;
+  bottom: auto;
 }
 
 /* // PLACEHOLDER media screens */
