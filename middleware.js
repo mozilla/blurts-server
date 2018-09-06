@@ -9,6 +9,31 @@ function asyncMiddleware (fn) {
   };
 }
 
+
+function logErrors (err, req, res, next) {
+  console.error(err.stack);
+  next(err);
+}
+
+
+function clientErrorHandler (err, req, res, next) {
+  if (req.xhr) {
+    res.status(500).send({ message: err.message });
+  } else {
+    next(err);
+  }
+}
+
+
+function errorHandler (err, req, res, next) {
+  res.status(500);
+  res.render("error", { message: err.message });
+}
+
+
 module.exports = {
   asyncMiddleware,
+  logErrors,
+  clientErrorHandler,
+  errorHandler,
 };

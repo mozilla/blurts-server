@@ -11,6 +11,7 @@ const url = require("url");
 const EmailUtils = require("./email-utils");
 const HBSHelpers = require("./hbs-helpers");
 const HIBP = require("./hibp");
+const {logErrors, clientErrorHandler, errorHandler} = require("./middleware");
 
 const HibpRoutes = require("./routes/hibp");
 const HomeRoutes = require("./routes/home");
@@ -103,6 +104,10 @@ app.use("/scan", ScanRoutes);
 app.use("/ses", SesRoutes);
 app.use("/user", UserRoutes);
 app.use("/", HomeRoutes);
+
+app.use(logErrors);
+app.use(clientErrorHandler);
+app.use(errorHandler);
 
 EmailUtils.init().then(() => {
   const listener = app.listen(AppConstants.PORT, () => {
