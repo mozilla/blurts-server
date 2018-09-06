@@ -12,7 +12,16 @@ async function notify (req, res) {
   const subscribers = await DB.getSubscribersByHashes(hashes);
 
   const reqBreachName = req.body.breachName.toLowerCase();
-  const breach = req.app.locals.breaches.find(breach => breach.Name.toLowerCase() === reqBreachName);
+  let breach = req.app.locals.breaches.find(breach => breach.Name.toLowerCase() === reqBreachName);
+  if (!breach) {
+    // If breach isn't found, try to reload breaches from HIBP
+    await HIBP.loadBreachesIntoApp(req.app);
+    breach = req.app.locals.breaches.find(breach => breach.Name.toLowerCase() === reqBreachName);
+    if (!breach) {
+      // If breach *still* isn't found, we have a real error
+      throw new Error("Unrecognized breach: " + reqBreachName);
+    }
+  }
 
   console.log(`Found ${subscribers.length} subscribers in ${breach.Name}. Notifying ...`);
   const notifiedSubscribers = [];

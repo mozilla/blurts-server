@@ -17,7 +17,7 @@ function logErrors (err, req, res, next) {
 
 
 function clientErrorHandler (err, req, res, next) {
-  if (req.xhr) {
+  if (req.xhr || req.headers["content-type"] === "application/json") {
     res.status(500).send({ message: err.message });
   } else {
     next(err);
