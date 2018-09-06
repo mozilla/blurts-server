@@ -27,13 +27,23 @@ function browserName() {
     return "unknown";
   }
 }
-  
-  if (browserName() === "firefox") {
-    if (document.getElementById("download-firefox")) {
-    document.getElementById("download-firefox").classList.add("hide");
-    }
+
+
+function removeUtms() {
+  const win = window;
+  const loc = win.location;
+  if (loc.search.includes("utm_") && win.history.replaceState) {
+    win.history.replaceState({}, "", loc.pathname);
   }
-	
+}
+
+
+if (browserName() === "firefox") {
+  if (document.getElementById("download-firefox")) {
+  document.getElementById("download-firefox").classList.add("hide");
+  }
+}
+
 if (!_dntEnabled()) {
 	(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
 	(i[r].q=i[r].q||[]).push(arguments);},i[r].l=1*new Date();a=s.createElement(o),
@@ -44,5 +54,16 @@ if (!_dntEnabled()) {
 if(typeof(ga) !== "undefined") {
 	ga("create", "UA-77033033-16");
 	ga("set", "anonymizeIp", true);
-	ga("send", "pageview");
+
+
+  // Strip token and hash values from pings sent to GA
+  const loc = document.location;
+  let pageValue = loc.pathname + loc.search;
+  if (loc.search && (loc.search.includes("token=") || loc.search.includes("hash="))) {
+    pageValue = loc.pathname;
+    ga("set", "location", pageValue);
+    ga("set", "page", pageValue);
+  }
+
+	ga("send", "pageview", {"hitCallback": removeUtms});
 }
