@@ -43,19 +43,18 @@ async function verify(req, res) {
   );
 
   const unsubscribeUrl = EmailUtils.unsubscribeUrl(verifiedEmailHash);
-  const serverUrl = req.app.locals.SERVER_URL;
 
   await EmailUtils.sendEmail(
     verifiedEmailHash.email,
     "Your Firefox Monitor report",
     "report",
     {
+      SERVER_URL: req.app.locals.SERVER_URL,
+      TIPS,
       email: verifiedEmailHash.email,
       date: HBSHelpers.prettyDate(new Date()),
       unsafeBreachesForEmail,
-      TIPS,
       unsubscribeUrl,
-      serverUrl,
     }
   );
 
