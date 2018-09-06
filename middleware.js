@@ -11,16 +11,14 @@ function asyncMiddleware (fn) {
 
 
 function logErrors (err, req, res, next) {
-  console.log("logErrors");
   console.error(err.stack);
   next(err);
 }
 
 
 function clientErrorHandler (err, req, res, next) {
-  console.log("clientErrorHandler");
   if (req.xhr) {
-    res.status(500).send({ error: err });
+    res.status(500).send({ message: err.message });
   } else {
     next(err);
   }
@@ -28,9 +26,8 @@ function clientErrorHandler (err, req, res, next) {
 
 
 function errorHandler (err, req, res, next) {
-  console.log("errorHandler");
   res.status(500);
-  res.render("error", { error: err.message });
+  res.render("error", { message: err.message });
 }
 
 

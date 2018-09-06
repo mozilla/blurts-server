@@ -85,5 +85,5 @@ test("user verify request with invalid token returns error", async () => {
   });
   const resp = httpMocks.createResponse();
 
-  await expect(user.verify(req, resp)).rejects.toThrow("Token not found");
+  await expect(user.verify(req, resp)).rejects.toThrow("Verification token not found");
 });
