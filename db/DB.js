@@ -51,7 +51,7 @@ const DB = {
   async verifyEmailHash(token) {
     const unverifiedSubscriber = await this.getSubscriberByToken(token);
     if (!unverifiedSubscriber) {
-      throw new Error("Verification token not found");
+      throw new Error("This email address is not subscribed to Firefox Monitor.");
     }
     const verifiedSubscriber = await this._verifySubscriber(unverifiedSubscriber);
     return verifiedSubscriber[0];
