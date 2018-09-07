@@ -83,6 +83,7 @@ if (app.get("env") === "dev") {
   app.set("trust proxy", true);
 }
 
+app.locals.FXA_ENABLED = AppConstants.FXA_ENABLED;
 app.locals.SERVER_URL = AppConstants.SERVER_URL;
 app.locals.UTM_SOURCE = url.parse(AppConstants.SERVER_URL).hostname;
 
@@ -99,7 +100,9 @@ if (!AppConstants.DISABLE_DOCKERFLOW) {
   app.use("/", DockerflowRoutes);
 }
 app.use("/hibp", HibpRoutes);
-app.use("/oauth", OAuthRoutes);
+if (AppConstants.FXA_ENABLED) {
+  app.use("/oauth", OAuthRoutes);
+}
 app.use("/scan", ScanRoutes);
 app.use("/ses", SesRoutes);
 app.use("/user", UserRoutes);

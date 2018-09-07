@@ -98,6 +98,9 @@ export SMTP_PASSWORD=<your-password>
 
 #### Firefox Accounts
 
+Subscribe with a Firefox Account is controlled via the `FXA_ENABLED`
+environment variable. (See `.env-dist`)
+
 The repo comes with a development FxA oauth app pre-configured in `.env`, which
 should work fine running the app on http://localhost:6060
 
