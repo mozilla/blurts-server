@@ -59,13 +59,15 @@ const HIBP = {
 
   async getUnsafeBreachesForEmail(sha1, allBreaches) {
     const allFoundBreaches = await this.getBreachesForEmail(sha1, allBreaches, true);
-    if (!allFoundBreaches ) {
-      return false;
-    }
+
     const breachLists = {
       "websiteBreaches": allFoundBreaches.filter(breach => breach.IsSpamList === false),
       "spamLists": allFoundBreaches.filter(breach => breach.IsSpamList === true),
     };
+
+    if (breachLists.websiteBreaches.length === 0 && breachLists.spamLists.length === 0) {
+      return false;
+    }
 
     breachLists.totalBreaches = breachLists.websiteBreaches.length + breachLists.spamLists.length;
     return breachLists;
