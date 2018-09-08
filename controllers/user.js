@@ -25,7 +25,7 @@ async function add(req, res) {
     email,
     "Verify your subscription to Firefox Monitor.",
     "email_verify",
-    { email, verifyUrl, unsubscribeUrl}
+    { email, verifyUrl, unsubscribeUrl, SERVER_URL: req.app.locals.SERVER_URL}
   );
 
   res.send({
@@ -36,13 +36,12 @@ async function add(req, res) {
 
 async function verify(req, res) {
   const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
+  const unsubscribeUrl = EmailUtils.unsubscribeUrl(verifiedEmailHash);
 
   const unsafeBreachesForEmail = await HIBP.getUnsafeBreachesForEmail(
     sha1(verifiedEmailHash.email),
     req.app.locals.breaches
   );
-
-  const unsubscribeUrl = EmailUtils.unsubscribeUrl(verifiedEmailHash);
 
   await EmailUtils.sendEmail(
     verifiedEmailHash.email,
@@ -52,8 +51,9 @@ async function verify(req, res) {
       TIPS,
       email: verifiedEmailHash.email,
       date: HBSHelpers.prettyDate(new Date()),
-      unsafeBreachesForEmail,
-      unsubscribeUrl,
+      unsafeBreachesForEmail: unsafeBreachesForEmail,
+      unsubscribeUrl: unsubscribeUrl,
+      SERVER_URL: req.app.locals.SERVER_URL,
     }
   );
 

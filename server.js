@@ -3,6 +3,7 @@
 const AppConstants = require("./app-constants");
 
 const express = require("express");
+// eslint-disable-next-line node/no-extraneous-require
 const exphbs = require("express-handlebars");
 const helmet = require("helmet");
 const sessions = require("client-sessions");

@@ -4,27 +4,40 @@ const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const HIBP = require("../hibp");
-
+const sha1 = require("../sha1-utils");
+const HBSHelpers = require("../hbs-helpers");
 
 async function notify (req, res) {
   const hashes = req.body.hashSuffixes.map(suffix=>req.body.hashPrefix + suffix);
-
   const subscribers = await DB.getSubscribersByHashes(hashes);
-
   const reqBreachName = req.body.breachName.toLowerCase();
-  const breach = req.app.locals.breaches.find(breach => breach.Name.toLowerCase() === reqBreachName);
+  const breachAlert = req.app.locals.breaches.find(breach => breach.Name.toLowerCase() === reqBreachName);
 
-  console.log(`Found ${subscribers.length} subscribers in ${breach.Name}. Notifying ...`);
+  console.log(`Found ${subscribers.length} subscribers in ${breachAlert.Name}. Notifying ...`);
+
   const notifiedSubscribers = [];
+
   for (const subscriber of subscribers) {
     const email = subscriber.email;
+
+    const unsafeBreachesForEmail = await HIBP.getUnsafeBreachesForEmail(
+      sha1(email),
+      req.app.locals.breaches
+    );
+
     if (!notifiedSubscribers.includes(email)) {
       console.log(email);
       await EmailUtils.sendEmail(
-        subscriber.email,
-        "You were in a breach!",
-        "breach_notification",
-        { email, breach }
+        email,
+        "Firefox Monitor Alert : Your account was involved in a breach.",
+        "report",
+        { 
+          email,
+          date: HBSHelpers.prettyDate(new Date()),
+          breachAlert, 
+          unsafeBreachesForEmail, 
+          SERVER_URL: req.app.locals.SERVER_URL,
+        }
       );
       notifiedSubscribers.push(email);
     }

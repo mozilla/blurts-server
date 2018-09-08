@@ -8,15 +8,38 @@
        body {
         text-align: center;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        color: #5d5d5d;
-        font-weight: 300;
+        font-weight: 400;
       }
 
       a {
         text-decoration: none;
-        color: #000000;
       }
 
+      .button {
+        display: inline-block;
+        width: 100%;
+      }
+
+      .footer a,
+      .footer-link {
+        text-decoration: none;
+        color: #0060df;
+        font-weight: 400;
+      }
+
+      .body-copy {
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: 400;
+      }
+
+      .h1 {
+        color: #363959;
+      }
+
+      .body-copy {
+        color: #ffffff !important;
+      }
       .header-image {
         display: none;
       }
@@ -33,31 +56,39 @@
         margin: 0 auto;
       }
 
-      .borders {
-        border-top: 1px solid #e1e1e1;
-        border-bottom: 1px solid #e1e1e1;
-        padding-top: 10px;
-        padding-bottom: 10px;
-      }
-
       p {
         line-height: 1.65em;
       }
+      .footer-copy {
+        color:#738597;
+      }
+
     </style>
   </head>
-  <body style="padding: 0px 10px; margin: 0px; width: 100%; height: 100%; color: #333333; size: 14px;">
+  <body style="padding: 0px 10px; margin: 0px; width: 100%; height: 100%; line-height: 22px; font-famly: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; color: #ffffff;" >
     <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" style="padding-bottom: 30px;">
       <tr>
         <td align="center">
-          <table border="0" cellspacing="0" cellpadding="0" align="center" style="padding-bottom: 30px; max-width: 603px; min-width: 200px; width: 100%; text-align: center;">
-              <tr>
-                <td>
-                  {{>email_header_image}}
-                  {{>email_logo}}
-                  {{{ body }}}
-                  {{>email_footer}}
-                </td>
-              </tr>
+          <table border="0" cellspacing="0" cellpadding="0" width="100%" style="max-width: 603px; padding-top:30px; min-width: 200px;">
+            <tr>
+              <td style="padding-left: 30px; padding-right: 30px;">
+                {{>email_logo}}
+              </td>
+            </tr>
+          </table>
+          <table bgcolor="#002275" border="0" cellspacing="0" cellpadding="0" align="center" width="100%" style="padding-left: 0px; padding-right: 0px; padding-bottom: 50px; max-width: 603px; min-width: 200px; width: 100%; text-align: center; background-image: url('{{ SERVER_URL }}/img/email_images/wave-header.png'), url('{{ SERVER_URL }}/img/email_images/wave-footer.png'), linear-gradient(177deg, rgb(0, 34, 117), rgb(35, 17, 61) 95.11%); background-repeat: no-repeat; background-position: top center, bottom center; background-size: 603px auto;">
+            <tr>
+              <td style="padding: 30px;">
+                {{{ body }}}
+              </td>
+            </tr>
+          </table>
+          <table border="0" cellspacing="0" cellpadding="0" align="center" width="100%" style="max-width: 603px; min-width: 200px;">
+            <tr>
+              <td>
+                {{>email_footer}}
+              </td>
+            </tr>
           </table>
         </td>
       </tr>
