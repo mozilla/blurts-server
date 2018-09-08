@@ -979,9 +979,54 @@ body.show-subscribe-modal .modal-content.show {
   margin-top: 0;
 }
 
-#confirm-your-account img {
+.confirm-your-account-icon {
   padding-right: 15.5%;
   margin-bottom: var(--gap);
+}
+
+.resend-data {
+  position: relative;
+  width: auto;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.modal-content.show.sending p,
+.modal-content.show.sent p,
+.modal-content.show.sending .confirm-your-account-icon,
+.modal-content.show.sent .confirm-your-account-icon,
+.modal-content.show.sending .close-modal,
+.modal-content.show.sending h3,
+.modal-content.show.sent h3 {
+  opacity: 0.35;
+  transition: all 0.3s ease;
+}
+
+.modal-content.show.sent .close-modal {
+  opacity: 1;
+}
+
+.modal-content.show.sending button#resend-data:focus,
+.modal-content.show.sent button#resend-data:focus {
+  outline: none;
+  border: 0;
+  box-shadow: none;
+}
+
+.modal-content.show.sending button.resend-data,
+.modal-content.show.sent button.resend-data {
+  pointer-events: none;
+  color: rgba(0, 0, 0, 0);
+}
+
+.modal-content.show.sent button.resend-data::after {
+  content: "Sent!";
+  color: #0060df;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
 }
 
 /* ///// compromised accounts  */

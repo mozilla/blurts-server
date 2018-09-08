@@ -91,13 +91,6 @@ function isValidEmail(val) {
   return re.test(String(val).toLowerCase());
 }
 
-function removeClass(selector, className) {
-  const el = document.querySelector(selector);
-  if (el) {
-    el.classList.remove(className);
-  }
-}
-
 function removeInvalidMessage(e) {
   const thisForm = e.target.form;
   thisForm.classList.remove("invalid");
@@ -132,8 +125,9 @@ function setModalTabbing(){
 
 function closeModalWindow() {
   document.body.classList.remove("show-subscribe-modal");
-  removeClass("#subscribe-to-ffm", "show");
-  removeClass("#confirm-your-account", "show");
+  document.getElementById("subscribe-to-ffxm").classList.remove("show");
+  document.getElementById("confirm-your-account").classList.remove("show", "sending", "sent");
+  document.getElementById("subscribe-form").classList.remove("invalid");
   document.getElementById("subscribe-email-input").value = "";
   document.getElementById("additional-emails-checkbox").checked = false;
   setModalTabbing();
@@ -143,6 +137,7 @@ function openModalWindow() {
   ga_sendPing("SignUp");
   document.body.classList.add("show-subscribe-modal");
   document.getElementById("subscribe-to-ffxm").classList.add("show");
+  document.getElementById("subscribe-form").classList.remove("loading-data");
   setModalTabbing();
   const subscribeModal = document.getElementById("subscribe-modal");
   subscribeModal.addEventListener("click", function closeWrapper(e) {
@@ -196,6 +191,19 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
   emailForm.submit();
 }
 
+const resendSubscribeData = function() {
+  document.getElementById("confirm-your-account").classList.add("sending");
+  const userEmail = {
+    "email": document.getElementById("submitted-email").innerText,
+  };
+  postData("/user/add", userEmail)
+    .then(data => {
+      document.getElementById("confirm-your-account").classList.add("sent");
+      document.getElementById("resend-data").removeEventListener("click", resendSubscribeData);
+    })
+  .catch(error => console.error(error));
+};
+
 const addUser = (formEvent) => {
   const formElement = formEvent.target;
   const formObject = {};
@@ -209,8 +217,7 @@ const addUser = (formEvent) => {
       document.getElementById("confirm-your-account").classList.add("show");
       setModalTabbing();
       document.getElementById("submitted-email").innerText = formObject["email"];
-      document.getElementById("resend-data").addEventListener("click", postData(formElement.action, formObject));
-
+      document.getElementById("resend-data").addEventListener("click", resendSubscribeData);
     })
     .catch(error => console.error(error));
 };
