@@ -8,10 +8,22 @@ const sha1 = require("../sha1-utils");
 const HBSHelpers = require("../hbs-helpers");
 
 async function notify (req, res) {
+
   const hashes = req.body.hashSuffixes.map(suffix=>req.body.hashPrefix + suffix);
   const subscribers = await DB.getSubscribersByHashes(hashes);
+
   const reqBreachName = req.body.breachName.toLowerCase();
-  const breachAlert = req.app.locals.breaches.find(breach => breach.Name.toLowerCase() === reqBreachName);
+  let breachAlert = HIBP.getBreachByName(req.app.locals.breaches, reqBreachName);
+  
+  if (!breachAlert) {
+    // If breach isn't found, try to reload breaches from HIBP
+    await HIBP.loadBreachesIntoApp(req.app);
+    breachAlert = HIBP.getBreachByName(req.app.locals.breaches, reqBreachName);
+    if (!breachAlert) {
+      // If breach *still* isn't found, we have a real error
+      throw new Error("Unrecognized breach: " + reqBreachName);
+    }
+  }
 
   console.log(`Found ${subscribers.length} subscribers in ${breachAlert.Name}. Notifying ...`);
 
