@@ -13,6 +13,7 @@ const Basket = {
       newsletters: AppConstants.BASKET_NEWSLETTER,
       validated: true,
       "api-key": AppConstants.BASKET_API_KEY,
+      source_url: "monitor.firefox.com",
     };
     const postParams = Object.keys(params).map(k=>[k,params[k]].join("=")).join("&");
     const url = `${AppConstants.BASKET_URL}/news/subscribe/`;
