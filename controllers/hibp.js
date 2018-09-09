@@ -9,9 +9,6 @@ const HBSHelpers = require("../hbs-helpers");
 
 async function notify (req, res) {
 
-  const hashes = req.body.hashSuffixes.map(suffix=>req.body.hashPrefix + suffix);
-  const subscribers = await DB.getSubscribersByHashes(hashes);
-
   const reqBreachName = req.body.breachName.toLowerCase();
   let breachAlert = HIBP.getBreachByName(req.app.locals.breaches, reqBreachName);
   
@@ -24,6 +21,9 @@ async function notify (req, res) {
       throw new Error("Unrecognized breach: " + reqBreachName);
     }
   }
+
+  const hashes = req.body.hashSuffixes.map(suffix=>req.body.hashPrefix + suffix);
+  const subscribers = await DB.getSubscribersByHashes(hashes);
 
   console.log(`Found ${subscribers.length} subscribers in ${breachAlert.Name}. Notifying ...`);
 
@@ -38,7 +38,6 @@ async function notify (req, res) {
     );
 
     if (!notifiedSubscribers.includes(email)) {
-      console.log(email);
       await EmailUtils.sendEmail(
         email,
         "Firefox Monitor Alert : Your account was involved in a breach.",

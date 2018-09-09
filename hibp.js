@@ -69,7 +69,7 @@ const HIBP = {
       return false;
     }
 
-    breachLists.totalBreaches = breachLists.websiteBreaches.length + breachLists.spamLists.length;
+    breachLists.totalBreaches = allFoundBreaches.length;
     return breachLists;
   },
 
