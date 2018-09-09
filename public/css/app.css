@@ -1010,6 +1010,7 @@ main.scan-results .two-thirds {
 span.breach-info .medium {
   letter-spacing: 0.5px;
   color: #fff;
+  padding-right: 6px;
 }
 
 .compromised-accounts .account h4 {
