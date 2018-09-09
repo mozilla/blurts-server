@@ -194,7 +194,7 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
 const resendSubscribeData = function() {
   document.getElementById("confirm-your-account").classList.add("sending");
   const userEmail = {
-    "email": document.getElementById("submitted-email").innerText,
+    "email": document.getElementById("submitted-email").textContent,
   };
   postData("/user/add", userEmail)
     .then(data => {
@@ -216,7 +216,7 @@ const addUser = (formEvent) => {
       document.getElementById("subscribe-to-ffxm").classList.remove("show");
       document.getElementById("confirm-your-account").classList.add("show");
       setModalTabbing();
-      document.getElementById("submitted-email").innerText = formObject["email"];
+      document.getElementById("submitted-email").textContent = formObject["email"];
       document.getElementById("resend-data").addEventListener("click", resendSubscribeData);
     })
     .catch(error => console.error(error));
