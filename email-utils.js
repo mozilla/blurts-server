@@ -79,6 +79,10 @@ const EmailUtils = {
     return `${AppConstants.SERVER_URL}/user/unsubscribe?token=${encodeURIComponent(subscriber.verification_token)}&hash=${encodeURIComponent(subscriber.sha1)}`;
   },
 
+  getServerUrl () {
+    return `${AppConstants.SERVER_URL}`;
+  },
+
 };
 
 module.exports = EmailUtils;
