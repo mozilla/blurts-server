@@ -14,7 +14,6 @@ body {
   line-height: 1.5;
   -webkit-overflow-scrolling: touch;
 
-  --breachInfo: #c4c6d6;
   --roundedCorners: 2px;
   --gap: 20px;
   --columnSpacing: 60px;
@@ -340,7 +339,6 @@ input[type="radio"] {
 }
 
 .radio-button-group label {
-  color: var(--breachInfo);
   position: absolute;
   left: 0;
   right: 0;
@@ -704,7 +702,6 @@ main.landing-content .wrap-row .half {
 span.breach-info {
   display: block;
   font-weight: 300;
-  color: var(--breachInfo);
 }
 
 /* FEAUTURED BREACH LISTING */
@@ -713,7 +710,6 @@ span.breach-info {
 span.breach-info {
   width: 100%;
   font-weight: 400;
-  color: #999cbf;
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -787,7 +783,6 @@ main.scan-results #featured-breach .breach-headline {
 
 .tip p {
   padding: calc(var(--gap) / 2);
-  color: var(--breachInfo);
 }
 
 .tip img {
