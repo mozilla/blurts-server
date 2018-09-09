@@ -1050,6 +1050,11 @@ span.breach-info .medium {
 
 .scan-another-email .half {
   flex-direction: column;
+  align-items: left;
+}
+
+.scan-another-email .privacy-policy {
+  align-self: flex-start;
 }
 
 /* //// HIBP ATTRIBUTION */
