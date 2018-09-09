@@ -7,12 +7,20 @@ const HIBP = require("../hibp");
 
 
 async function notify (req, res) {
-  const hashes = req.body.hashSuffixes.map(suffix=>req.body.hashPrefix + suffix);
-
-  const subscribers = await DB.getSubscribersByHashes(hashes);
-
   const reqBreachName = req.body.breachName.toLowerCase();
-  const breach = req.app.locals.breaches.find(breach => breach.Name.toLowerCase() === reqBreachName);
+  let breach = HIBP.getBreachByName(req.app.locals.breaches, reqBreachName);
+  if (!breach) {
+    // If breach isn't found, try to reload breaches from HIBP
+    await HIBP.loadBreachesIntoApp(req.app);
+    breach = HIBP.getBreachByName(req.app.locals.breaches, reqBreachName);
+    if (!breach) {
+      // If breach *still* isn't found, we have a real error
+      throw new Error("Unrecognized breach: " + reqBreachName);
+    }
+  }
+
+  const hashes = req.body.hashSuffixes.map(suffix=>req.body.hashPrefix + suffix);
+  const subscribers = await DB.getSubscribersByHashes(hashes);
 
   console.log(`Found ${subscribers.length} subscribers in ${breach.Name}. Notifying ...`);
   const notifiedSubscribers = [];

@@ -88,6 +88,10 @@ const HIBP = {
     return this.filterOutUnsafeBreaches(foundBreaches);
   },
 
+  getBreachByName(allBreaches, breachName) {
+    return allBreaches.find(breach => breach.Name.toLowerCase() === breachName.toLowerCase());
+  },
+
 
   filterOutUnsafeBreaches(breaches) {
     return breaches.filter(

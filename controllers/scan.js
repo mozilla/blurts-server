@@ -23,7 +23,7 @@ async function post (req, res) {
   });
 
   if (req.body.featuredBreach) {
-    featuredBreach = req.app.locals.breaches.find(breach => breach.Name.toLowerCase() === req.body.featuredBreach.toLowerCase()); 
+    featuredBreach = HIBP.getBreachByName(req.app.locals.breaches, req.body.featuredBreach.toLowerCase());
     const findFeaturedBreach = foundBreaches.findIndex(breach => breach.Name === featuredBreach.Name);
 
     if (findFeaturedBreach != -1) {
