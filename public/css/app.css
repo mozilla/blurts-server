@@ -1151,7 +1151,6 @@ footer li a {
 }
 
 footer li a:hover {
-  background-color: rgba(255, 255, 255, 0.04);
   opacity: 1;
 }
 
