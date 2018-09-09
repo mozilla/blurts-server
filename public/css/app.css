@@ -1063,6 +1063,7 @@ span.breach-info .medium {
 
 .source-info a {
   font-weight: 600;
+  color: var(--blue40);
 }
 
 /* /// SOCIAL MEDIA SHARING BUTTONS  */
