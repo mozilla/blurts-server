@@ -14,7 +14,6 @@ body {
   line-height: 1.5;
   -webkit-overflow-scrolling: touch;
 
-  --breachInfo: #c4c6d6;
   --roundedCorners: 2px;
   --gap: 20px;
   --columnSpacing: 60px;
@@ -340,7 +339,6 @@ input[type="radio"] {
 }
 
 .radio-button-group label {
-  color: var(--breachInfo);
   position: absolute;
   left: 0;
   right: 0;
@@ -704,7 +702,6 @@ main.landing-content .wrap-row .half {
 span.breach-info {
   display: block;
   font-weight: 300;
-  color: var(--breachInfo);
 }
 
 /* FEAUTURED BREACH LISTING */
@@ -713,7 +710,6 @@ span.breach-info {
 span.breach-info {
   width: 100%;
   font-weight: 400;
-  color: #999cbf;
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -787,7 +783,6 @@ main.scan-results #featured-breach .breach-headline {
 
 .tip p {
   padding: calc(var(--gap) / 2);
-  color: var(--breachInfo);
 }
 
 .tip img {
@@ -984,6 +979,8 @@ main.scan-results .two-thirds {
 #show-additional-breaches.hide,
 #additional-breaches {
   visibility: hidden;
+  min-height: 0;
+  max-height: 0;
   height: 0;
   margin: 0 auto;
   transition: all 0.25s ease-out;
@@ -995,6 +992,13 @@ main.scan-results .two-thirds {
   transition: all 0.25s ease;
 }
 
+#additional-breaches.section-wrapper.show-breaches {
+  height: 100%;
+  max-height: 100%;
+  margin-bottom: var(--gap);
+  align-content: start;
+}
+
 #additional-breaches.show-breaches,
 #additional-breaches.show-breaches .account {
   opacity: 1;
@@ -1002,14 +1006,11 @@ main.scan-results .two-thirds {
   transition: all 0.25s ease;
 }
 
-#additional-breaches.section-wrapper.show-breaches {
-  margin-bottom: var(--gap);
-}
-
 .compromised-acounts .account h4,
 span.breach-info .medium {
   letter-spacing: 0.5px;
   color: #fff;
+  padding-right: 6px;
 }
 
 .compromised-accounts .account h4 {
@@ -1049,6 +1050,11 @@ span.breach-info .medium {
 
 .scan-another-email .half {
   flex-direction: column;
+  align-items: left;
+}
+
+.scan-another-email .privacy-policy {
+  align-self: flex-start;
 }
 
 /* //// HIBP ATTRIBUTION */
@@ -1062,6 +1068,7 @@ span.breach-info .medium {
 
 .source-info a {
   font-weight: 600;
+  color: var(--blue40);
 }
 
 /* /// SOCIAL MEDIA SHARING BUTTONS  */
@@ -1149,7 +1156,6 @@ footer li a {
 }
 
 footer li a:hover {
-  background-color: rgba(255, 255, 255, 0.04);
   opacity: 1;
 }
 
