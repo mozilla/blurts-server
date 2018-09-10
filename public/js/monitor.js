@@ -129,7 +129,7 @@ const focusFirstInput = function(e) {
     e.target.querySelector("input").focus();
   }
   e.target.removeEventListener("transitioned", focusFirstInput);
-}
+};
 
 function closeModalWindow() {
   document.body.classList.remove("show-subscribe-modal");
