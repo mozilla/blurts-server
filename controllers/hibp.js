@@ -8,6 +8,7 @@ const HIBP = require("../hibp");
 
 async function notify (req, res) {
   const reqBreachName = req.body.breachName.toLowerCase();
+  const reqHashPrefix = req.body.hashPrefix.toLowerCase();
   let breach = HIBP.getBreachByName(req.app.locals.breaches, reqBreachName);
   if (!breach) {
     // If breach isn't found, try to reload breaches from HIBP
@@ -19,7 +20,7 @@ async function notify (req, res) {
     }
   }
 
-  const hashes = req.body.hashSuffixes.map(suffix=>req.body.hashPrefix + suffix);
+  const hashes = req.body.hashSuffixes.map(suffix=>reqHashPrefix + suffix.toLowerCase());
   const subscribers = await DB.getSubscribersByHashes(hashes);
 
   console.log(`Found ${subscribers.length} subscribers in ${breach.Name}. Notifying ...`);
