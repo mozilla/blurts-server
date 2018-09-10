@@ -615,6 +615,24 @@ h5,
   font-weight: 600;
 }
 
+/* internal link styling  */
+
+.internal-link {
+  color: var(--blue60);
+}
+
+.internal-link:hover {
+  text-decoration: underline;
+}
+
+.internal-link:active {
+  color: var(--blue70);
+}
+
+.internal-link:focus {
+  box-shadow: 0 0 0 2px #0a84ff, 0 0 0 6px rgba(10, 132, 255, 0.3);
+}
+
 /* header **************** */
 
 header.section-wrapper {
@@ -893,22 +911,26 @@ body.show-subscribe-modal .modal-content.show {
 }
 
 .modal-content .section-headline {
-  font-size: 1.4375rem;
+  margin-bottom: var(--gap);
+  font-size: 1.5375rem;
 }
 
-.close-modal,
-#subscribe-fxa-btn,
+.modal-content .internal-link,
 .modal-content p {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 300;
 }
 
-#subscribe-to-ffxm .close-modal,
-#subscribe-fxa-btn {
+.modal-content p {
+  margin-bottom: var(--gap);
+}
+
+.modal-content button.internal-link {
   background-color: rgba(0, 0, 0, 0);
   color: var(--blue60);
   font-weight: 400;
-  height: 45px;
+  min-height: 30px;
+  height: 30px;
   margin-top: calc(var(--gap) / 2);
 }
 
@@ -926,13 +948,54 @@ body.show-subscribe-modal .modal-content.show {
   margin-top: 0;
 }
 
-#subscribe-to-ffxm .close-modal:hover {
-  background-color: rgba(0, 0, 0, 0.04);
-  color: var(--blue70);
+.confirm-your-account-icon {
+  padding-right: 15.5%;
+  margin-bottom: var(--gap);
 }
 
-.modal-content img {
-  padding-right: 15.5%;
+.resend-data {
+  position: relative;
+  width: auto;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.modal-content.show.sending p,
+.modal-content.show.sent p,
+.modal-content.show.sending .confirm-your-account-icon,
+.modal-content.show.sent .confirm-your-account-icon,
+.modal-content.show.sending .close-modal,
+.modal-content.show.sending h3,
+.modal-content.show.sent h3 {
+  opacity: 0.35;
+  transition: all 0.3s ease;
+}
+
+.modal-content.show.sent .close-modal {
+  opacity: 1;
+}
+
+.modal-content.show.sending button#resend-data:focus,
+.modal-content.show.sent button#resend-data:focus {
+  outline: none;
+  border: 0;
+  box-shadow: none;
+}
+
+.modal-content.show.sending button.resend-data,
+.modal-content.show.sent button.resend-data {
+  pointer-events: none;
+  color: rgba(0, 0, 0, 0);
+}
+
+.modal-content.show.sent button.resend-data::after {
+  content: "Sent!";
+  color: #0060df;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
 }
 
 /* ///// compromised accounts  */
