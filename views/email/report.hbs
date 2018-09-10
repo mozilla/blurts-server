@@ -32,7 +32,7 @@
           </td>
         </tr>
         {{#each unsafeBreachesForEmail.websiteBreaches}}
-          {{> email_single_breach}}
+          {{> email_single_breach SERVER_URL=../SERVER_URL}}
         {{/each}}
         {{#ifCompare unsafeBreachesForEmail.spamLists.length ">" 0}}
           <tr>
@@ -41,7 +41,7 @@
             </td>
           </tr>
         {{#each unsafeBreachesForEmail.spamLists}}
-            {{> email_single_breach}}
+            {{> email_single_breach SERVER_URL=../SERVER_URL}}
         {{/each}}
       {{/ifCompare}}
       <tr>
@@ -51,7 +51,9 @@
         </td>
       </tr>
       {{else}}
-        {{> report_password_tips}}
+        {{#eachFromTo TIPS 0 3 }}
+          {{> report_password_tips SERVER_URL=../SERVER_URL}}
+        {{/eachFromTo}}
     {{/if}}<!--unsafeBreachesForEmail-->
   </table>
   <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-top: 20px; padding-bottom: 20px; margin: 0px;">
