@@ -4,10 +4,10 @@
       </td>
       <td valign="top" style="vertical-align: top; padding-top: 0px; padding-right: 20px; padding-bottom: 10px;">
         <p class="body-copy" style="padding: 0px; margin: 0px; color: #ffffff; margin: 0px; font-weight: 600; font-size: 16px;">{{ breachAlert.Title }}</p>
-        <p class="body-copy" style="padding: 0px; margin: 0px; color: #ffffff; font-weight: 600;">Breach date:<span class="body-copy" style="font-weight:300; padding-left: 6px; color: #ffffff">{{prettyDate breachAlert.BreachDate }}</span></p>
-        <p class="body-copy" style="padding: 0px; margin: 0px; color: #ffffff; font-weight: 600;">Compromised accounts:<span class="body-copy" style="font-weight:300; padding-left: 6px; color: #ffffff">{{localeString breachAlert.PwnCount }}</span></p>
+        <p class="body-copy" style="padding: 0px; margin: 0px; color: #ffffff; font-weight: 600;">Breach date:<span class="body-copy" style="font-weight:300; color: #ffffff">&nbsp;{{prettyDate breachAlert.BreachDate }}</span></p>
+        <p class="body-copy" style="padding: 0px; margin: 0px; color: #ffffff; font-weight: 600;">Compromised accounts:<span class="body-copy" style="font-weight:300; color: #ffffff">&nbsp;{{localeString breachAlert.PwnCount }}</span></p>
         {{#if breachAlert.DataClasses }}
-          <p class="body-copy" style="padding: 0px; margin: 0px; color: #ffffff; font-weight: 600;">Compromised data:<span class="body-copy" style="font-weight:300; padding-left: 6px; color: #ffffff">{{breachDataClasses breachAlert.DataClasses }}</span></p>
+          <p class="body-copy" style="padding: 0px; margin: 0px; color: #ffffff; font-weight: 600;">Compromised data:<span class="body-copy" style="font-weight:300; color: #ffffff">&nbsp;{{breachDataClasses breachAlert.DataClasses }}</span></p>
         {{/if}}
       </td>
     </tr>
