@@ -225,7 +225,7 @@ img {
   align-items: center;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 85vh;
   margin-top: -10vh;
 }
 
@@ -1252,7 +1252,7 @@ footer .copyright-info a {
   position: relative;
   height: 100%;
   pointer-events: none;
-  min-height: 100vh;
+  min-height: 75vh;
 }
 
 .content-wrap > * {
