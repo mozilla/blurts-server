@@ -220,17 +220,22 @@ img {
   display: none !important;
 }
 
-.sub-page-content {
+.sub-page-content,
+.error-page-content {
   justify-content: center;
   align-items: center;
   display: flex;
   flex-direction: column;
-  min-height: 85vh;
+  min-height: 75vh;
+  margin-top: 0;
+}
+
+.error-page-content {
   margin-top: -10vh;
 }
 
 .sub-page-content .section-wrapper {
-  margin: 0 0 0 0;
+  margin: 0 0 var(--columnSpacing) 0;
 }
 
 .centered-content {
