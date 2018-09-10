@@ -14,7 +14,7 @@ const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 router.post("/add", jsonParser, asyncMiddleware(add));
 router.get("/verify", jsonParser, asyncMiddleware(verify));
 router.use("/unsubscribe", urlEncodedParser);
-router.get("/unsubscribe", getUnsubscribe);
+router.get("/unsubscribe", asyncMiddleware(getUnsubscribe));
 router.post("/unsubscribe", asyncMiddleware(postUnsubscribe));
 
 

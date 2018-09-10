@@ -64,7 +64,12 @@ async function verify(req, res) {
 }
 
 
-function getUnsubscribe(req, res) {
+async function getUnsubscribe(req, res) {
+  const subscriber = await DB.getSubscriberByToken(req.query.token);
+  if (!subscriber) {
+    throw new Error("This email address is not subscribed to Firefox Monitor.");
+  }
+
   res.render("unsubscribe", {
     title: "Firefox Monitor: Unsubscribe",
     token: req.query.token,
