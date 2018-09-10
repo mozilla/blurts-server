@@ -44,6 +44,9 @@ const EmailUtils = {
       return Promise.reject("SMTP transport not initialized");
     }
 
+    const emailContext = Object.assign({
+      SERVER_URL: AppConstants.SERVER_URL,
+    }, aContext);
     return new Promise((resolve, reject) => {
       gTransporter.use("compile", hbs(hbsOptions));
       const emailFrom = AppConstants.EMAIL_FROM;
@@ -52,7 +55,7 @@ const EmailUtils = {
         to: aRecipient,
         subject: aSubject,
         template: aTemplate,
-        context: aContext,
+        context: emailContext,
         headers: {
           "x-ses-configuration-set": AppConstants.SES_CONFIG_SET,
         },
