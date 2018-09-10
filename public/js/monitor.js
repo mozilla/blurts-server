@@ -91,13 +91,6 @@ function isValidEmail(val) {
   return re.test(String(val).toLowerCase());
 }
 
-function removeClass(selector, className) {
-  const el = document.querySelector(selector);
-  if (el) {
-    el.classList.remove(className);
-  }
-}
-
 function removeInvalidMessage(e) {
   const thisForm = e.target.form;
   thisForm.classList.remove("invalid");
@@ -110,6 +103,7 @@ function doOauth() {
 // restricts tabbing to modal elements when modal is open.
 // disables tabbing on modal elements when modal is closed. 
 function setModalTabbing(){
+
   // get tabbable elements in sign up form window
   let modalTabContent = Array.from(document.getElementById("subscribe-to-ffxm").querySelectorAll("a, input, button"));
   // if "confirm your email" message is showing, tab those elements instead
@@ -128,12 +122,20 @@ function setModalTabbing(){
   for (const eachElement of document.querySelectorAll("a, button, input")) {
     eachElement.setAttribute("tabindex", !modalTabContent.includes(eachElement) ? "1" : "-1");
   }
-}  
+}
+
+const focusFirstInput = function(e) {
+  if (e.target.querySelector("input")) {
+    e.target.querySelector("input").focus();
+  }
+  e.target.removeEventListener("transitioned", focusFirstInput);
+};
 
 function closeModalWindow() {
   document.body.classList.remove("show-subscribe-modal");
-  removeClass("#subscribe-to-ffm", "show");
-  removeClass("#confirm-your-account", "show");
+  document.getElementById("subscribe-to-ffxm").classList.remove("show");
+  document.getElementById("confirm-your-account").classList.remove("show", "sending", "sent");
+  document.getElementById("subscribe-form").classList.remove("invalid");
   document.getElementById("subscribe-email-input").value = "";
   document.getElementById("additional-emails-checkbox").checked = false;
   setModalTabbing();
@@ -141,10 +143,12 @@ function closeModalWindow() {
 
 function openModalWindow() {
   ga_sendPing("SignUp");
+  const subscribeModal = document.getElementById("subscribe-modal");
   document.body.classList.add("show-subscribe-modal");
   document.getElementById("subscribe-to-ffxm").classList.add("show");
   setModalTabbing();
-  const subscribeModal = document.getElementById("subscribe-modal");
+  document.getElementById("subscribe-form").classList.remove("loading-data");
+  subscribeModal.addEventListener("transitionend", (e) => focusFirstInput(e));
   subscribeModal.addEventListener("click", function closeWrapper(e) {
     if (e.target === subscribeModal) {
       closeModalWindow();
@@ -196,6 +200,19 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
   emailForm.submit();
 }
 
+const resendSubscribeData = function() {
+  document.getElementById("confirm-your-account").classList.add("sending");
+  const userEmail = {
+    "email": document.getElementById("submitted-email").textContent,
+  };
+  postData("/user/add", userEmail)
+    .then(data => {
+      document.getElementById("confirm-your-account").classList.add("sent");
+      document.getElementById("resend-data").removeEventListener("click", resendSubscribeData);
+    })
+  .catch(error => console.error(error));
+};
+
 const addUser = (formEvent) => {
   const formElement = formEvent.target;
   const formObject = {};
@@ -208,6 +225,8 @@ const addUser = (formEvent) => {
       document.getElementById("subscribe-to-ffxm").classList.remove("show");
       document.getElementById("confirm-your-account").classList.add("show");
       setModalTabbing();
+      document.getElementById("submitted-email").textContent = formObject["email"];
+      document.getElementById("resend-data").addEventListener("click", resendSubscribeData);
     })
     .catch(error => console.error(error));
 };
@@ -232,7 +251,7 @@ function showAdditionalBreaches(){
   additionalBreaches.classList.toggle("show-breaches");
   //setting height this way enables transition easing... setting the new height to "auto" 
   if (additionalBreaches.classList.contains("show-breaches")) {
-    additionalBreaches.style.height = additionalBreaches.scrollHeight + "px";
+    additionalBreaches.style.minHeight = additionalBreaches.scrollHeight + "px";
   }
 }
 
@@ -307,6 +326,7 @@ function handleFormSubmits(formEvent) {
     return;
   }
   if (formEvent.target.id === "subscribe-form") {
+    formEvent.target.classList.add("loading-data");
     addUser(formEvent);
     setModalTabbing();
     return;
@@ -381,4 +401,3 @@ if (document.querySelectorAll("button")) {
     eachButton.addEventListener("click", (e) => doButtonRouting(e));
   }
 }
-

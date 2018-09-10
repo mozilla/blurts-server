@@ -10,6 +10,7 @@ const HBSHelpers = require("../hbs-helpers");
 async function notify (req, res) {
 
   const reqBreachName = req.body.breachName.toLowerCase();
+  const reqHashPrefix = req.body.hashPrefix.toLowerCase();
   let breachAlert = HIBP.getBreachByName(req.app.locals.breaches, reqBreachName);
   
   if (!breachAlert) {
@@ -22,7 +23,7 @@ async function notify (req, res) {
     }
   }
 
-  const hashes = req.body.hashSuffixes.map(suffix=>req.body.hashPrefix + suffix);
+  const hashes = req.body.hashSuffixes.map(suffix=>reqHashPrefix + suffix.toLowerCase());
   const subscribers = await DB.getSubscribersByHashes(hashes);
 
   console.log(`Found ${subscribers.length} subscribers in ${breachAlert.Name}. Notifying ...`);
