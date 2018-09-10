@@ -11,7 +11,6 @@ const TIPS = require("../tips");
 
 
 async function add(req, res) {
-  const SERVER_URL = EmailUtils.getServerUrl();
   const email = req.body.email;
 
   if (!isemail.validate(email)) {
@@ -27,9 +26,7 @@ async function add(req, res) {
     email,
     "Verify your subscription to Firefox Monitor.",
     "email_verify",
-    { email, verifyUrl, unsubscribeUrl,
-    SERVER_URL,
-  }
+    { email, verifyUrl, unsubscribeUrl },
   );
 
   res.send({
@@ -39,7 +36,6 @@ async function add(req, res) {
 
 
 async function verify(req, res) {
-  const SERVER_URL = EmailUtils.getServerUrl();
   const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
   const unsubscribeUrl = EmailUtils.unsubscribeUrl(verifiedEmailHash);
 
@@ -58,7 +54,6 @@ async function verify(req, res) {
       date: HBSHelpers.prettyDate(new Date()),
       unsafeBreachesForEmail: unsafeBreachesForEmail,
       unsubscribeUrl: unsubscribeUrl,
-      SERVER_URL,
     }
   );
 
