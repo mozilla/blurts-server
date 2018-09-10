@@ -103,6 +103,7 @@ function doOauth() {
 // restricts tabbing to modal elements when modal is open.
 // disables tabbing on modal elements when modal is closed. 
 function setModalTabbing(){
+
   // get tabbable elements in sign up form window
   let modalTabContent = Array.from(document.getElementById("subscribe-to-ffxm").querySelectorAll("a, input, button"));
   // if "confirm your email" message is showing, tab those elements instead
@@ -121,7 +122,14 @@ function setModalTabbing(){
   for (const eachElement of document.querySelectorAll("a, button, input")) {
     eachElement.setAttribute("tabindex", !modalTabContent.includes(eachElement) ? "1" : "-1");
   }
-}  
+}
+
+const focusFirstInput = function(e) {
+  if (e.target.querySelector("input")) {
+    e.target.querySelector("input").focus();
+  }
+  e.target.removeEventListener("transitioned", focusFirstInput);
+}
 
 function closeModalWindow() {
   document.body.classList.remove("show-subscribe-modal");
@@ -135,11 +143,12 @@ function closeModalWindow() {
 
 function openModalWindow() {
   ga_sendPing("SignUp");
+  const subscribeModal = document.getElementById("subscribe-modal");
   document.body.classList.add("show-subscribe-modal");
   document.getElementById("subscribe-to-ffxm").classList.add("show");
-  document.getElementById("subscribe-form").classList.remove("loading-data");
   setModalTabbing();
-  const subscribeModal = document.getElementById("subscribe-modal");
+  document.getElementById("subscribe-form").classList.remove("loading-data");
+  subscribeModal.addEventListener("transitionend", (e) => focusFirstInput(e));
   subscribeModal.addEventListener("click", function closeWrapper(e) {
     if (e.target === subscribeModal) {
       closeModalWindow();
@@ -392,4 +401,3 @@ if (document.querySelectorAll("button")) {
     eachButton.addEventListener("click", (e) => doButtonRouting(e));
   }
 }
-
