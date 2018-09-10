@@ -1,12 +1,14 @@
 <div id="subscribe-to-ffxm" class="modal-content">
   <h3 class="section-headline">Subscribe to Firefox Monitor</h3>
-  <p>Sign up for your full report, alerts when new breaches happen, and safety tips from Firefox Monitor. </p>
+  <p>Sign up for your full report, alerts when new breaches happen, and safety tips from Firefox&nbsp;Monitor. <a class="internal-link" href="https://www.mozilla.org/about/legal/" target="_blank" rel="noopener">Terms&nbsp;and&nbsp;Privacy</a></p>
+  
   {{#if FXA_ENABLED }}
-  <button id="subscribe-fxa-btn" class="button">Subscribe with Firefox Account</button>
+    <button id="subscribe-fxa-btn" class="button">Subscribe with Firefox Account</button>
   {{/if}}
+  
   <form action="/user/add" id="subscribe-form" class="form-group" method="post" novalidate data-no-csrf>
     <div class="input-group">
-      <input id="subscribe-email-input" class="input-group-field" type="email" name="email" placeholder="Subscribe with Email Account" minlength="1" aria-label="Enter Email Address" tabindex="0" autocomplete="off" />
+      <input id="subscribe-email-input" class="input-group-field" type="email" name="email" placeholder="Subscribe with Email Account" minlength="1" aria-label="Subscribe with Email Account"  autocomplete="off" />
       <span id="invalid-signup-email-message" class="error-message">Must be a valid email.</span>
     </div>
     <div class="checkbox-group">
@@ -15,8 +17,8 @@
     </div>
     <div class="input-group-button">
       <img class="loader" src="/img/loader.gif" alt="loading data" />
-      <input id="subscribe-submit" type="submit" class="button submit-email blue-button" value="Submit" tabindex="0" />
+      <input id="subscribe-submit" type="submit" class="button submit-email blue-button" value="Submit"  />
     </div>
   </form>
-  <button class="close-modal">Close</button>
+  <button class="close-modal internal-link">Close</button>
 </div>
