@@ -4,17 +4,20 @@ const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const HIBP = require("../hibp");
-
+const sha1 = require("../sha1-utils");
+const HBSHelpers = require("../hbs-helpers");
 
 async function notify (req, res) {
+
   const reqBreachName = req.body.breachName.toLowerCase();
   const reqHashPrefix = req.body.hashPrefix.toLowerCase();
-  let breach = HIBP.getBreachByName(req.app.locals.breaches, reqBreachName);
-  if (!breach) {
+  let breachAlert = HIBP.getBreachByName(req.app.locals.breaches, reqBreachName);
+  
+  if (!breachAlert) {
     // If breach isn't found, try to reload breaches from HIBP
     await HIBP.loadBreachesIntoApp(req.app);
-    breach = HIBP.getBreachByName(req.app.locals.breaches, reqBreachName);
-    if (!breach) {
+    breachAlert = HIBP.getBreachByName(req.app.locals.breaches, reqBreachName);
+    if (!breachAlert) {
       // If breach *still* isn't found, we have a real error
       throw new Error("Unrecognized breach: " + reqBreachName);
     }
@@ -23,17 +26,30 @@ async function notify (req, res) {
   const hashes = req.body.hashSuffixes.map(suffix=>reqHashPrefix + suffix.toLowerCase());
   const subscribers = await DB.getSubscribersByHashes(hashes);
 
-  console.log(`Found ${subscribers.length} subscribers in ${breach.Name}. Notifying ...`);
+  console.log(`Found ${subscribers.length} subscribers in ${breachAlert.Name}. Notifying ...`);
+
   const notifiedSubscribers = [];
+
   for (const subscriber of subscribers) {
     const email = subscriber.email;
+
+    const unsafeBreachesForEmail = await HIBP.getUnsafeBreachesForEmail(
+      sha1(email),
+      req.app.locals.breaches
+    );
+
     if (!notifiedSubscribers.includes(email)) {
-      console.log(email);
       await EmailUtils.sendEmail(
-        subscriber.email,
-        "You were in a breach!",
-        "breach_notification",
-        { email, breach }
+        email,
+        "Firefox Monitor Alert : Your account was involved in a breach.",
+        "report",
+        { 
+          email,
+          date: HBSHelpers.prettyDate(new Date()),
+          breachAlert, 
+          unsafeBreachesForEmail, 
+          SERVER_URL: req.app.locals.SERVER_URL,
+        }
       );
       notifiedSubscribers.push(email);
     }
