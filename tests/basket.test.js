@@ -10,7 +10,6 @@ jest.mock("got");
 
 test("subscribe calls got with expected url and options", async () => {
   const testEmail = "test@example.com";
-  jest.mock("got");
 
   await basket.subscribe(testEmail);
 

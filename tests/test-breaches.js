@@ -13,6 +13,13 @@ const testBreaches = [
     Domain: "test2.com",
     BreachDate: "2016-11-08",
   },
+  {
+    Title: "Sensitive",
+    Name: "Sensitive",
+    Domain: "sensitive.com",
+    BreachDate: "2017-11-08",
+    IsSensitive: true,
+  },
 ];
 
 module.exports = {
