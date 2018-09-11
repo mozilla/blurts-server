@@ -1,16 +1,16 @@
 "use strict";
 
-const HIBPLib = require("../hibp");
-const hibp = require("../controllers/hibp");
-const EmailUtils = require("../email-utils");
-const sha1 = require("../sha1-utils");
+const HIBPLib = require("../../hibp");
+const hibp = require("../../controllers/hibp");
+const EmailUtils = require("../../email-utils");
+const sha1 = require("../../sha1-utils");
 
-const { testBreaches } = require("./test-breaches");
-require("./resetDB");
+const { testBreaches } = require("../test-breaches");
+require("../resetDB");
 
 
 test("notify POST with breach, subscriber hash prefix and suffixes should call sendEmail and respond with 200", async () => {
-  jest.mock("../email-utils");
+  jest.mock("../../email-utils");
   EmailUtils.sendEmail = jest.fn();
   const testEmail = "verifiedemail@test.com";
   const testHash = sha1(testEmail);
@@ -38,7 +38,7 @@ test("notify POST with breach, subscriber hash prefix and suffixes should call s
 
 
 test("notify POST with unknown breach should throw error", async () => {
-  jest.mock("../hibp");
+  jest.mock("../../hibp");
   HIBPLib.loadBreachesIntoApp = jest.fn();
   const testEmail = "test@example.com";
   const testHash = sha1(testEmail);

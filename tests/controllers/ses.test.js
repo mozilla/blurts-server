@@ -2,11 +2,11 @@
 
 const httpMocks = require("node-mocks-http");
 
-const DB = require("../db/DB");
-const getSha1 = require("../sha1-utils");
-const ses = require("../controllers/ses");
+const DB = require("../../db/DB");
+const getSha1 = require("../../sha1-utils");
+const ses = require("../../controllers/ses");
 
-require("./resetDB");
+require("../resetDB");
 
 
 const testNotifications = new Map();

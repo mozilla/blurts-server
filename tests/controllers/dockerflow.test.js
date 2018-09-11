@@ -1,6 +1,6 @@
 "use strict";
 
-const {vers, heartbeat} = require("../controllers/dockerflow");
+const {vers, heartbeat} = require("../../controllers/dockerflow");
 
 
 test("GET __version__ calls sendFile", () => {
