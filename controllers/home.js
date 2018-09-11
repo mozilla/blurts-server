@@ -22,7 +22,7 @@ function home(req, res) {
 
 function notFound(req, res) {
   res.status(404);
-  res.render("404");
+  res.render("error", { message: "Page not found." });
 }
 
 module.exports = {
