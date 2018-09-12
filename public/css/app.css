@@ -234,7 +234,7 @@ img {
   margin-top: -10vh;
 }
 
-.sub-page-content .section-wrapper {
+.sub-page-content .section-wrapper:last-of-type {
   margin: 0 0 var(--columnSpacing) 0;
 }
 
@@ -1291,8 +1291,16 @@ footer .copyright-info a {
 
 /* UNSUBSCRIBE CONTENT */
 
+section.unsubscribe-content.section-wrapper {
+  padding-bottom: var(--gap);
+}
+
 .unsubscribe-content p {
   padding-right: 30%;
+}
+
+.unsubscribe-content .section-headline {
+  margin-bottom: var(--gap);
 }
 
 form .thank-you-message {
