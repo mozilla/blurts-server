@@ -13,7 +13,7 @@ const events = {
     "foundBreaches": "User shared Firefox Monitor after discovering breached accounts.",
     "noBreaches": "User shared Firefox Monitor after scanning email with no associated breaches.",
     "landingPage": "User shared Firefox Monitor from landing page.",
-    "confirmAccount": "User shared Firefox Monitor from account confirmation page.",  
+    "confirmAccount": "User shared Firefox Monitor from account confirmation page.",
   },
   "twitter": {
     "eventCategory": "Social Media Event",
@@ -101,7 +101,7 @@ function doOauth() {
 }
 
 // restricts tabbing to modal elements when modal is open.
-// disables tabbing on modal elements when modal is closed. 
+// disables tabbing on modal elements when modal is closed.
 function setModalTabbing(){
 
   // get tabbable elements in sign up form window
@@ -110,7 +110,7 @@ function setModalTabbing(){
   if (!document.getElementById("subscribe-to-ffxm").classList.contains("show")) {
     modalTabContent = Array.from(document.getElementById("confirm-your-account").querySelectorAll("a, input, button"));
   }
-  // if modal is displayed, set tabindex to 1 on only those elements 
+  // if modal is displayed, set tabindex to 1 on only those elements
   // and disable tabbing on everything else
   if (document.body.classList.contains("show-subscribe-modal")) {
     for (const eachElement of document.querySelectorAll("a, button, input")) {
@@ -171,7 +171,7 @@ function checkBoxStates(checkBoxEvent) {
   // user hit space to select checkbox element
   if (checkBoxEvent.keyCode === 32 ) {
     checkBox = checkBoxEvent.target;
-  } 
+  }
   // user clicks checkbox group
   if (checkBoxEvent.target.classList.contains("checkbox-group")) {
     const thisCheckBoxGroup = checkBoxEvent.target;
@@ -249,7 +249,7 @@ function showAdditionalBreaches(){
   document.getElementById("show-additional-breaches").classList.toggle("hide");
   const additionalBreaches = document.getElementById("additional-breaches");
   additionalBreaches.classList.toggle("show-breaches");
-  //setting height this way enables transition easing... setting the new height to "auto" 
+  //setting height this way enables transition easing... setting the new height to "auto"
   if (additionalBreaches.classList.contains("show-breaches")) {
     additionalBreaches.style.minHeight = additionalBreaches.scrollHeight + "px";
   }
@@ -258,7 +258,7 @@ function showAdditionalBreaches(){
 const handleRadioButtons = function(form) {
   const inputFields = form.querySelectorAll(".radio-button-group, .button");
   // set up ability to move between radio options by arrow key
-  for (let x = 0; x < inputFields.length ; x++) { 
+  for (let x = 0; x < inputFields.length ; x++) {
     const input = inputFields[x];
     input.addEventListener("focus", (e) => {
       if (form.classList.contains("invalid")) {
@@ -317,6 +317,7 @@ function handleFormSubmits(formEvent) {
     return;
   }
   const thisForm = formEvent.target;
+  thisForm.email.value = thisForm.email.value.trim();
   if (!thisForm.email.value || !isValidEmail(thisForm.email.value)) {
     thisForm.classList.add("invalid");
     return;
