@@ -109,13 +109,13 @@ test("user unsubscribe POST request with valid hash and token unsubscribes user"
   const validToken = "0e2cb147-2041-4e5b-8ca9-494e773b2cf0";
   const validHash = getSha1("unverifiedemail@test.com");
   // Set up mocks
-  const req = { body: { token: validToken, emailHash: validHash } };
+  const req = { body: { token: validToken, emailHash: validHash }, session: {}};
   const resp = httpMocks.createResponse();
 
   // Call code-under-test
   await user.postUnsubscribe(req, resp);
 
-  expect(resp.statusCode).toEqual(200);
+  expect(resp.statusCode).toEqual(302);
   const subscriber = await DB.getSubscriberByToken(validToken);
   expect(subscriber).toBeUndefined();
 });
@@ -134,15 +134,12 @@ test("user unsubscribe GET request with invalid token returns error", async () =
 });
 
 
-test("user unsubscribe POST request with invalid token and hash redirects home", async () => {
+test("user unsubscribe POST request with invalid token and throws error", async () => {
   const invalidToken = "123456789";
   const invalidHash = "0123456789abcdef";
 
   const req = { body: { token: invalidToken, emailHash: invalidHash } };
   const resp = { redirect: jest.fn() };
 
-  await user.postUnsubscribe(req, resp);
-
-  const mockRedirectCallArgs = resp.redirect.mock.calls[0];
-  expect(mockRedirectCallArgs[0]).toBe("/");
+  await expect(user.postUnsubscribe(req, resp)).rejects.toThrow("This email address is not subscribed to Firefox Monitor.");
 });

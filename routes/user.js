@@ -16,7 +16,7 @@ router.get("/verify", jsonParser, asyncMiddleware(verify));
 router.use("/unsubscribe", urlEncodedParser);
 router.get("/unsubscribe", asyncMiddleware(getUnsubscribe));
 router.post("/unsubscribe", asyncMiddleware(postUnsubscribe));
-router.get("/unsubscribe_survey", asyncMiddleware(getUnsubSurvey));
-router.post("/unsubscribe_survey", jsonParser, asyncMiddleware(postUnsubSurvey));
+router.get("/unsubscribe_survey", getUnsubSurvey);
+router.post("/unsubscribe_survey", jsonParser, postUnsubSurvey);
 
 module.exports = router;
