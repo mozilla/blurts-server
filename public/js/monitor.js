@@ -145,6 +145,10 @@ function openModalWindow() {
   ga_sendPing("SignUp");
   const subscribeModal = document.getElementById("subscribe-modal");
   document.body.classList.add("show-subscribe-modal");
+  const currentEmail = sessionStorage.getItem("current_email");
+  if (currentEmail) {
+    document.getElementById("subscribe-email-input").value = currentEmail;
+  }
   document.getElementById("subscribe-to-ffxm").classList.add("show");
   setModalTabbing();
   document.getElementById("subscribe-form").classList.remove("loading-data");
@@ -323,6 +327,7 @@ function handleFormSubmits(formEvent) {
     return;
   }
   if (thisForm.classList.contains("email-scan")) {
+    sessionStorage.setItem("current_email", thisForm.email.value);
     hashEmailAndSend(formEvent);
     return;
   }
