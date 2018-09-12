@@ -17,7 +17,7 @@ test("req adds hibp api root, token, and standard options", async() => {
   expect(gotCalls.length).toEqual(1);
   const gotCallArgs = gotCalls[0];
   expect(gotCallArgs[0]).toContain(`${AppConstants.HIBP_API_ROOT}/some-path`);
-  expect(gotCallArgs[0]).toContain(`?code=${AppConstants.HIBP_API_TOKEN}`);
+  expect(gotCallArgs[0]).toContain(`?code=${encodeURIComponent(AppConstants.HIBP_API_TOKEN)}`);
   expect(gotCallArgs[1].headers["User-Agent"]).toContain("blurts-server");
   expect(gotCallArgs[1].json).toBe(true);
 });
