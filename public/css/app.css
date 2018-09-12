@@ -870,7 +870,7 @@ body.show-subscribe-modal .modal-content {
   width: auto;
   height: auto;
   min-height: 450px;
-  max-height: 460px;
+  max-height: 480px;
   min-width: 250px;
   max-width: 550px;
   display: flex;
@@ -920,14 +920,20 @@ body.show-subscribe-modal .modal-content.show {
   font-size: 1.5375rem;
 }
 
+.modal-content p,
+.modal-content .section-headline,
+.modal-content .internal-link {
+  margin-bottom: var(--gap);
+}
+
+.modal-content > *:last-child {
+  margin-bottom: 0;
+}
+
 .modal-content .internal-link,
 .modal-content p {
   font-size: 17px;
   font-weight: 300;
-}
-
-.modal-content p {
-  margin-bottom: var(--gap);
 }
 
 .modal-content button.internal-link {
