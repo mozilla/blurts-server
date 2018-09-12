@@ -12,7 +12,7 @@ async function notify (req, res) {
   const reqBreachName = req.body.breachName.toLowerCase();
   const reqHashPrefix = req.body.hashPrefix.toLowerCase();
   let breachAlert = HIBP.getBreachByName(req.app.locals.breaches, reqBreachName);
-  
+
   if (!breachAlert) {
     // If breach isn't found, try to reload breaches from HIBP
     await HIBP.loadBreachesIntoApp(req.app);
@@ -43,11 +43,11 @@ async function notify (req, res) {
         email,
         "Firefox Monitor Alert : Your account was involved in a breach.",
         "report",
-        { 
+        {
           email,
           date: HBSHelpers.prettyDate(new Date()),
-          breachAlert, 
-          unsafeBreachesForEmail, 
+          breachAlert,
+          unsafeBreachesForEmail,
           SERVER_URL: req.app.locals.SERVER_URL,
         }
       );

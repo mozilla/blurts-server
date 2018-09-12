@@ -44,9 +44,11 @@ module.exports = {
   root: true,
   rules: {
     "comma-dangle": ["error", {arrays: "always-multiline", objects: "always-multiline"}],
-    "eqeqeq": "warn",
+    "eol-last": ["error", "always"],
+    "eqeqeq": "error",
     "no-console": ["warn", {allow: ["error", "info", "warn"]}],
     "no-process-env": "error",
+    "no-trailing-spaces": "error",
     "no-unused-vars": ["error", {vars: "all", args: "none", ignoreRestSiblings: false}],
     "no-var": "error",
     "no-warning-comments": "warn",

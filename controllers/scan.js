@@ -9,7 +9,7 @@ async function post (req, res) {
   const emailHash = req.body.emailHash;
   let featuredBreach = null;
   let userAccountCompromised = false;
-  
+
   if (!emailHash || emailHash === sha1("")) {
     res.redirect("/");
     return;
@@ -26,7 +26,7 @@ async function post (req, res) {
     featuredBreach = HIBP.getBreachByName(req.app.locals.breaches, req.body.featuredBreach.toLowerCase());
     const findFeaturedBreach = foundBreaches.findIndex(breach => breach.Name === featuredBreach.Name);
 
-    if (findFeaturedBreach != -1) {
+    if (findFeaturedBreach !== -1) {
       userAccountCompromised = true;
 
       if (foundBreaches.length > 1) {
@@ -36,7 +36,7 @@ async function post (req, res) {
 
       if (foundBreaches.length === 1 && userAccountCompromised) {
         foundBreaches = true;
-      } 
+      }
     }
     res.render("scan", {
       title: "Firefox Monitor : Scan Results",
