@@ -484,7 +484,7 @@ input[type="submit"].transparent-button {
 .transparent-button:hover,
 input[type="submit"].transparent-button:hover {
   background-color: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0);
+  border: 2px solid rgba(255, 255, 255, 1);
 }
 
 button.transparent-button:active,
