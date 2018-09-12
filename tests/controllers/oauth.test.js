@@ -2,12 +2,12 @@
 
 const got = require("got");
 
-const AppConstants = require("../app-constants");
-const DB = require("../db/DB");
-const getSha1 = require("../sha1-utils");
-const {init, confirmed} = require("../controllers/oauth");
+const AppConstants = require("../../app-constants");
+const DB = require("../../db/DB");
+const getSha1 = require("../../sha1-utils");
+const {init, confirmed} = require("../../controllers/oauth");
 
-require("./resetDB");
+require("../resetDB");
 
 
 jest.mock("got");

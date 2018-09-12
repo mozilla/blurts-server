@@ -1,14 +1,14 @@
 "use strict";
 
-const sha1 = require("../sha1-utils");
-const HIBP = require("../hibp");
-const scan = require("../controllers/scan");
+const sha1 = require("../../sha1-utils");
+const HIBP = require("../../hibp");
+const scan = require("../../controllers/scan");
 
-const { testBreaches } = require ("./test-breaches");
-require("./resetDB");
+const { testBreaches } = require ("../test-breaches");
+require("../resetDB");
 
 
-jest.mock("../hibp");
+jest.mock("../../hibp");
 
 
 test("scan GET redirects to home", () => {

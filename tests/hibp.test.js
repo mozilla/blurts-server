@@ -1,52 +1,61 @@
 "use strict";
 
-const HIBPLib = require("../hibp");
-const hibp = require("../controllers/hibp");
-const EmailUtils = require("../email-utils");
-const sha1 = require("../sha1-utils");
+const got = require("got");
+
+const AppConstants = require("../app-constants");
+const hibp = require("../hibp");
 
 const { testBreaches } = require("./test-breaches");
-require("./resetDB");
 
 
-test("notify POST with breach, subscriber hash prefix and suffixes should call sendEmail and respond with 200", async () => {
-  jest.mock("../email-utils");
-  EmailUtils.sendEmail = jest.fn();
-  const testEmail = "verifiedemail@test.com";
-  const testHash = sha1(testEmail);
-  const testPrefix = testHash.slice(0, 6).toUpperCase();
-  const testSuffix = testHash.slice(6).toUpperCase();
+jest.mock("got");
 
-  const mockRequest = { body: { hashPrefix: testPrefix, hashSuffixes: [testSuffix], breachName: "Test" }, app: { locals: { breaches: testBreaches } } };
-  const mockResponse = { status: jest.fn(), json: jest.fn() };
+test("req adds hibp api root, token, and standard options", async() => {
+  hibp.req("/some-path");
 
-  await hibp.notify(mockRequest, mockResponse);
-
-  const mockSendEmailCalls = EmailUtils.sendEmail.mock.calls;
-  expect (mockSendEmailCalls.length).toBe(1);
-  const mockSendEmailCallArgs = mockSendEmailCalls[0];
-  expect (mockSendEmailCallArgs[0]).toBe(testEmail);
-  expect (mockSendEmailCallArgs[2]).toBe("report");
-  const mockStatusCallArgs = mockResponse.status.mock.calls[0];
-  expect(mockStatusCallArgs[0]).toBe(200);
-  const mockJsonCallArgs = mockResponse.json.mock.calls[0];
-  expect(mockJsonCallArgs[0].info).toContain("Notified");
+  const gotCalls = got.mock.calls;
+  expect(gotCalls.length).toEqual(1);
+  const gotCallArgs = gotCalls[0];
+  expect(gotCallArgs[0]).toContain(`${AppConstants.HIBP_API_ROOT}/some-path`);
+  expect(gotCallArgs[0]).toContain(`?code=${AppConstants.HIBP_API_TOKEN}`);
+  expect(gotCallArgs[1].headers["User-Agent"]).toContain("blurts-server");
+  expect(gotCallArgs[1].json).toBe(true);
 });
 
 
-// TODO: test("notify POST with unknown breach should successfully reload breaches")
+test("loadBreachesIntoApp adds app.locals.breaches|breachesLoadedDateTime|mostRecentBreachDateTime", async() => {
+  got.mockClear();
+  got.mockResolvedValue( { body: testBreaches });
+  const app = { locals: {} };
+
+  await hibp.loadBreachesIntoApp(app);
+
+  const gotCalls = got.mock.calls;
+  expect(gotCalls.length).toEqual(1);
+  const gotCallArgs = gotCalls[0];
+  expect(gotCallArgs[0]).toContain(`${AppConstants.HIBP_API_ROOT}/breaches`);
+  expect(app.locals.breaches).toEqual(testBreaches);
+  expect(app.locals.mostRecentBreachDateTime).toEqual(hibp.getLatestBreachDateTime(testBreaches));
+});
 
 
-test("notify POST with unknown breach should throw error", async () => {
-  jest.mock("../hibp");
-  HIBPLib.loadBreachesIntoApp = jest.fn();
-  const testEmail = "test@example.com";
-  const testHash = sha1(testEmail);
-  const testPrefix = testHash.slice(0, 6).toUpperCase();
-  const testSuffix = testHash.slice(6).toUpperCase();
+test("filterOutUnsafeBreaches removes sensitive breaches", async() => {
+  let foundSensitive = false;
+  for (const breach of testBreaches) {
+    if (breach.IsSensitive) {
+      foundSensitive = true;
+      break;
+    }
+  }
+  expect(foundSensitive).toBe(true);
 
-  const mockRequest = { body: { hashPrefix: testPrefix, hashSuffixes: [testSuffix], breachName: "Test" }, app: { locals: { breaches: [] } } };
-  const mockResponse = { status: jest.fn(), json: jest.fn() };
 
-  await expect(hibp.notify(mockRequest, mockResponse)).rejects.toThrow("Unrecognized breach: test");
+  const safeBreaches = hibp.filterOutUnsafeBreaches(testBreaches);
+
+  for (const breach of safeBreaches) {
+    expect(breach.IsSensitive).toBe(false);
+    expect(breach.IsSpamList).toBe(false);
+    expect(breach.IsRetired).toBe(false);
+    expect(breach.IsVerified).toBe(true);
+  }
 });

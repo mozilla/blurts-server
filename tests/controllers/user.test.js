@@ -2,17 +2,17 @@
 
 const httpMocks = require("node-mocks-http");
 
-const DB = require("../db/DB");
-const EmailUtils = require("../email-utils");
-const getSha1 = require("../sha1-utils");
-const user = require("../controllers/user");
+const DB = require("../../db/DB");
+const EmailUtils = require("../../email-utils");
+const getSha1 = require("../../sha1-utils");
+const user = require("../../controllers/user");
 
-const { testBreaches } = require ("./test-breaches");
+const { testBreaches } = require ("../test-breaches");
 
-require("./resetDB");
+require("../resetDB");
 
 
-jest.mock("../email-utils");
+jest.mock("../../email-utils");
 
 
 test("user add POST with email adds unverified subscriber and sends verification email", async () => {

@@ -1,5 +1,6 @@
 "use strict";
 
+const Basket = require("../basket");
 const HIBP = require("../hibp");
 const DB = require("../db/DB");
 const getSha1 = require("../sha1-utils");
@@ -8,6 +9,12 @@ require("./resetDB");
 
 
 jest.mock("../hibp");
+jest.mock("../basket");
+
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 
 test("getSubscriberByToken accepts token and returns subscriber", async () => {
@@ -64,6 +71,42 @@ test("addSubscriber accepts email and returns verified subscriber", async () => 
   expect(verifiedSubscriber.email).toBe(testEmail);
   expect(verifiedSubscriber.verified).toBeTruthy();
   expect(verifiedSubscriber.sha1).toBe(getSha1(testEmail));
+});
+
+
+test("addSubscriber with existing email updates updated_at", async () => {
+  const testEmail = "newFirefoxAccount@test.com";
+
+  let verifiedSubscriber = await DB.addSubscriber(testEmail);
+
+  expect(verifiedSubscriber.email).toBe(testEmail);
+  expect(verifiedSubscriber.verified).toBeTruthy();
+  expect(verifiedSubscriber.sha1).toBe(getSha1(testEmail));
+  const updatedAt = verifiedSubscriber.updated_at;
+
+  await sleep(1000);
+
+  verifiedSubscriber = await DB.addSubscriber(testEmail);
+
+  expect(verifiedSubscriber.email).toBe(testEmail);
+  expect(verifiedSubscriber.verified).toBeTruthy();
+  expect(verifiedSubscriber.sha1).toBe(getSha1(testEmail));
+  expect(verifiedSubscriber.updated_at).not.toBe(updatedAt);
+});
+
+
+test("verifyEmailHash with fx_newsletter calls Basket.subscribe", async () => {
+  const testEmail = "newFirefoxNewsletterSubscriber@test.com";
+
+  const unVerifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(testEmail, true);
+  await DB.verifyEmailHash(unVerifiedSubscriber.verification_token);
+
+  Basket.subscribe.mockReturnValue(true);
+
+  const basketSubscribeCalls = Basket.subscribe.mock.calls;
+  expect(basketSubscribeCalls.length).toBe(1);
+  const basketSubscribeCallArgs = basketSubscribeCalls[0];
+  expect(basketSubscribeCallArgs[0]).toBe(testEmail);
 });
 
 

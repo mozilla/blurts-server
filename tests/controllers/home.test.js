@@ -1,6 +1,6 @@
 "use strict";
 
-const home = require("../controllers/home");
+const home = require("../../controllers/home");
 
 
 function addBreachesToMockRequest(mockRequest) {

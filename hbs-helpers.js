@@ -11,6 +11,7 @@ function breachDataClasses(dataClasses) {
 
 function prettyDate(date) {
   const jsDate = new Date(date);
+  // TODO: localize this
   return jsDate.toLocaleDateString("en-US", {year: "numeric", month: "long", day: "numeric"});
 }
 
@@ -52,16 +53,19 @@ function ifCompare(v1, operator, v2, options) {
 }
 
 
-function breachMath(lValue, operator, rValue) {
+function breachMath(lValue, operator = null, rValue = null) {
   lValue = parseFloat(lValue);
-  rValue = parseFloat(rValue);
-  const returnValue = {
-    "+": lValue + rValue,
-    "-": lValue - rValue,
-    "*": lValue * rValue,
-    "/": lValue / rValue,
-    "%": lValue % rValue,
-  }[operator];
+  let returnValue = lValue;
+  if (operator) {
+    rValue = parseFloat(rValue);
+    returnValue = {
+      "+": lValue + rValue,
+      "-": lValue - rValue,
+      "*": lValue * rValue,
+      "/": lValue / rValue,
+      "%": lValue % rValue,
+    }[operator];
+  }
   if (returnValue < 10) {
     return {
       1: "one",
