@@ -231,6 +231,16 @@ const addUser = (formEvent) => {
     .catch(error => console.error(error));
 };
 
+const unsubscribeSurvey = (formEvent) => {
+  const unsubSurvey = formEvent.target;
+  ga_sendPing("unsubscribeSurvey", unsubSurvey.querySelector("input[type='radio']:checked").value);
+  const surveyObject = {};
+  postData(unsubSurvey.action, surveyObject)
+    .then( () => {
+      unsubSurvey.classList.add("show-thankyou");
+    });
+};
+
 const postData = (url, data = {}) => {
   return fetch(url, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -312,8 +322,7 @@ function handleFormSubmits(formEvent) {
       formEvent.target.classList.add("invalid");
       return;
     }
-    formEvent.target.classList.add("show-thankyou");
-    ga_sendPing("unsubscribeSurvey", formEvent.target.querySelector("input[type='radio']:checked").value);
+    unsubscribeSurvey(formEvent);
     return;
   }
   const thisForm = formEvent.target;
