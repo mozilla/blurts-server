@@ -1507,6 +1507,11 @@ form.show-thankyou span.thank-you-message {
     left: -60%;
     right: -40%;
   }
+
+  .unsubscribe-survey form {
+    padding-top: var(--columnSpacing);
+    padding-bottom: var(--columnSpacing);
+  }
 }
 
 @media screen and (max-width: 480px) {
