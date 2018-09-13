@@ -86,7 +86,7 @@ async function postUnsubscribe(req, res) {
   if (!unsubscribedUser) {
     throw new Error("This email address is not subscribed to Firefox Monitor.");
   }
-  
+
   const surveyTicket = crypto.randomBytes(40).toString("hex");
   req.session.unsub = surveyTicket;
 
