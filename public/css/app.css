@@ -234,7 +234,7 @@ img {
   margin-top: -10vh;
 }
 
-.sub-page-content .section-wrapper {
+.sub-page-content .section-wrapper:last-of-type {
   margin: 0 0 var(--columnSpacing) 0;
 }
 
@@ -358,6 +358,11 @@ span.radio-dot {
   background-color: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(255, 255, 255, 0);
   border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }
 
 .radio-button-group:hover span.radio-dot,
@@ -484,7 +489,7 @@ input[type="submit"].transparent-button {
 .transparent-button:hover,
 input[type="submit"].transparent-button:hover {
   background-color: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0);
+  border: 2px solid rgba(255, 255, 255, 1);
 }
 
 button.transparent-button:active,
@@ -870,7 +875,7 @@ body.show-subscribe-modal .modal-content {
   width: auto;
   height: auto;
   min-height: 450px;
-  max-height: 460px;
+  max-height: 480px;
   min-width: 250px;
   max-width: 550px;
   display: flex;
@@ -920,14 +925,20 @@ body.show-subscribe-modal .modal-content.show {
   font-size: 1.5375rem;
 }
 
+.modal-content p,
+.modal-content .section-headline,
+.modal-content .internal-link {
+  margin-bottom: var(--gap);
+}
+
+.modal-content > *:last-child {
+  margin-bottom: 0;
+}
+
 .modal-content .internal-link,
 .modal-content p {
   font-size: 17px;
   font-weight: 300;
-}
-
-.modal-content p {
-  margin-bottom: var(--gap);
 }
 
 .modal-content button.internal-link {
@@ -1285,8 +1296,16 @@ footer .copyright-info a {
 
 /* UNSUBSCRIBE CONTENT */
 
+section.unsubscribe-content.section-wrapper {
+  padding-bottom: var(--gap);
+}
+
 .unsubscribe-content p {
   padding-right: 30%;
+}
+
+.unsubscribe-content .section-headline {
+  margin-bottom: var(--gap);
 }
 
 form .thank-you-message {
