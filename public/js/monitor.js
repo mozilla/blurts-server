@@ -259,10 +259,6 @@ function showAdditionalBreaches(){
   document.getElementById("show-additional-breaches").classList.toggle("hide");
   const additionalBreaches = document.getElementById("additional-breaches");
   additionalBreaches.classList.toggle("show-breaches");
-  //setting height this way enables transition easing... setting the new height to "auto"
-  if (additionalBreaches.classList.contains("show-breaches")) {
-    additionalBreaches.style.minHeight = additionalBreaches.scrollHeight + "px";
-  }
 }
 
 const handleRadioButtons = function(form) {
@@ -412,3 +408,14 @@ if (document.querySelectorAll("button")) {
     eachButton.addEventListener("click", (e) => doButtonRouting(e));
   }
 }
+
+
+// window.addEventListener("resize", function(e) {
+//   console.log("just resized");
+//   console.log(e);
+// })
+
+// window.addEventListener("fullscreenChange", function(e) {
+//   console.log("full screen change");
+//   console.log(e);
+// })

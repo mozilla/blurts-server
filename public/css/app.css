@@ -1072,7 +1072,7 @@ main.scan-results .two-thirds {
 }
 
 #additional-breaches.section-wrapper.show-breaches {
-  height: 100%;
+  height: auto;
   max-height: 100%;
   margin-bottom: var(--gap);
   align-content: start;
@@ -1100,7 +1100,7 @@ span.breach-info .medium {
 
 #what-to-do .section-wrapper {
   justify-content: center;
-  margin-bottom: var(--columnSpacing);
+  margin-bottom: 0px;
   margin-top: var(--columnSpacing);
 }
 
@@ -1234,6 +1234,10 @@ footer li a {
   background-color: rgba(255, 255, 255, 0);
 }
 
+footer a img {
+  max-width: 120px;
+}
+
 footer li a:hover {
   opacity: 1;
 }
@@ -1280,7 +1284,7 @@ footer .copyright-info a {
   left: 0;
   right: 0;
   width: 100%;
-  margin: auto;
+  margin: 0 auto;
   pointer-events: none;
   opacity: 0.8;
 }
