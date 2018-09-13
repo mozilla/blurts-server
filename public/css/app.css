@@ -514,7 +514,7 @@ input[type="submit"].transparent-button:active {
   color: #fff;
   padding: 5px 12px;
   position: absolute;
-  top: -35px;
+  bottom: -35px;
   left: 5px;
   z-index: 3;
   font-size: 13px;
@@ -525,7 +525,7 @@ input[type="submit"].transparent-button:active {
 .form-group .error-message::before {
   opacity: 0;
   background: #d70022;
-  bottom: -7px;
+  top: -7px;
   content: '.';
   height: 16px;
   position: absolute;
@@ -1100,7 +1100,7 @@ span.breach-info .medium {
 
 #what-to-do .section-wrapper {
   justify-content: center;
-  margin-bottom: 0px;
+  margin-bottom: 0;
   margin-top: var(--columnSpacing);
 }
 
@@ -1352,16 +1352,6 @@ form.show-thankyou input[type="submit"] {
 form.show-thankyou span.thank-you-message {
   opacity: 1;
   transition: all 0.1s ease;
-}
-
-#unsubscribe-survey-form .error-message {
-  bottom: -40px;
-  top: auto;
-}
-
-#unsubscribe-survey-form .error-message::before {
-  top: -7px;
-  bottom: auto;
 }
 
 /* // PLACEHOLDER media screens */
