@@ -514,7 +514,7 @@ input[type="submit"].transparent-button:active {
   color: #fff;
   padding: 5px 12px;
   position: absolute;
-  top: -35px;
+  bottom: -35px;
   left: 5px;
   z-index: 3;
   font-size: 13px;
@@ -525,7 +525,7 @@ input[type="submit"].transparent-button:active {
 .form-group .error-message::before {
   opacity: 0;
   background: #d70022;
-  bottom: -7px;
+  top: -7px;
   content: '.';
   height: 16px;
   position: absolute;
@@ -1072,7 +1072,7 @@ main.scan-results .two-thirds {
 }
 
 #additional-breaches.section-wrapper.show-breaches {
-  height: 100%;
+  height: auto;
   max-height: 100%;
   margin-bottom: var(--gap);
   align-content: start;
@@ -1100,7 +1100,7 @@ span.breach-info .medium {
 
 #what-to-do .section-wrapper {
   justify-content: center;
-  margin-bottom: var(--columnSpacing);
+  margin-bottom: 0;
   margin-top: var(--columnSpacing);
 }
 
@@ -1234,6 +1234,10 @@ footer li a {
   background-color: rgba(255, 255, 255, 0);
 }
 
+footer a img {
+  max-width: 120px;
+}
+
 footer li a:hover {
   opacity: 1;
 }
@@ -1280,7 +1284,7 @@ footer .copyright-info a {
   left: 0;
   right: 0;
   width: 100%;
-  margin: auto;
+  margin: 0 auto;
   pointer-events: none;
   opacity: 0.8;
 }
@@ -1348,16 +1352,6 @@ form.show-thankyou input[type="submit"] {
 form.show-thankyou span.thank-you-message {
   opacity: 1;
   transition: all 0.1s ease;
-}
-
-#unsubscribe-survey-form .error-message {
-  bottom: -40px;
-  top: auto;
-}
-
-#unsubscribe-survey-form .error-message::before {
-  top: -7px;
-  bottom: auto;
 }
 
 /* // PLACEHOLDER media screens */
@@ -1506,6 +1500,11 @@ form.show-thankyou span.thank-you-message {
   #header-wave {
     left: -60%;
     right: -40%;
+  }
+
+  .unsubscribe-survey form {
+    padding-top: var(--columnSpacing);
+    padding-bottom: var(--columnSpacing);
   }
 }
 
