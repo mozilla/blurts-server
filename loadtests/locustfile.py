@@ -8,18 +8,18 @@ from locust import HttpLocust, TaskSet, task
 
 TEST_SIGNUP_ADDRESSES = [
     'success@simulator.amazonses.com',
-    'bounce@simulator.amazonses.com',
+    # 'bounce@simulator.amazonses.com',
     'ooto@simulator.amazonses.com',
-    'complaint@simulator.amazonses.com',
-    'suppressionlist@simulator.amazonses.com',
+    # 'complaint@simulator.amazonses.com',
+    # 'suppressionlist@simulator.amazonses.com',
 ]
 
 TEST_SIGNUP_ADDRESSES_WEIGHTS = [
     0.9,
-    0.06,
+    # 0.06,
     0.02,
-    0.01,
-    0.01
+    # 0.01,
+    # 0.01
 ]
 
 
@@ -69,7 +69,12 @@ def sign_up(l):
 
 @task
 def verify(l):
-    l.client.get("/user/verify?token=5a66c262-9bed-4893-b53d-3759cbe3d564")
+    l.client.get("/user/verify?token=47fd676c-8f12-4320-af80-cd9ea44b73c6")
+
+
+@task
+def check_breaches(l):
+    l.client.get("/hibp/breaches", headers={["If-Modified-Since"]: ""})
 
 
 class WebsiteBounce(TaskSet):
@@ -88,6 +93,10 @@ class Verify(TaskSet):
     tasks = {visit_home: 1, scan: 1, sign_up: 1, verify: 1}
 
 
+class CheckBreaches(TaskSet):
+    tasks = {check_breaches: 100}
+
+
 class WebsiteBouncer(HttpLocust):
 
     task_set = WebsiteBounce
@@ -101,6 +110,7 @@ class Scanner(HttpLocust):
     max_wait = 15000
 
 
+"""
 class Subscriber(HttpLocust):
     task_set = Signup
     min_wait = 2000
@@ -111,3 +121,8 @@ class Verifier(HttpLocust):
     task_set = Verify
     min_wait = 2000
     max_wait = 15000
+"""
+
+
+class FirefoxClientCheckingForBreaches(HttpLocust):
+    task_set = CheckBreaches
