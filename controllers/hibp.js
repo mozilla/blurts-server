@@ -86,8 +86,9 @@ async function notify (req, res) {
  * its 'If-Modified-Since' header in future requests.
  */
 async function breaches (req, res, next) {
-  const clientMostRecentBreachDateTime = new Date(req.headers["if-modified-since"]);
   const serverMostRecentBreachDateTime = req.app.locals.mostRecentBreachDateTime;
+  const clientMostRecentBreachDateTime = req.headers["if-modified-since"] ? new Date(req.headers["if-modified-since"]) : new Date(0);
+
   if (clientMostRecentBreachDateTime < serverMostRecentBreachDateTime) {
     res.append("Last-Modified", serverMostRecentBreachDateTime);
     res.json(req.app.locals.breaches);
