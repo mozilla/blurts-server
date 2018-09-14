@@ -408,14 +408,3 @@ if (document.querySelectorAll("button")) {
     eachButton.addEventListener("click", (e) => doButtonRouting(e));
   }
 }
-
-
-// window.addEventListener("resize", function(e) {
-//   console.log("just resized");
-//   console.log(e);
-// })
-
-// window.addEventListener("fullscreenChange", function(e) {
-//   console.log("full screen change");
-//   console.log(e);
-// })
