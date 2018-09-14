@@ -50,3 +50,61 @@ test("notify POST with unknown breach should throw error", async () => {
 
   await expect(hibp.notify(mockRequest, mockResponse)).rejects.toThrow("Unrecognized breach: test");
 });
+
+
+test("GET breaches with no if-modified-since responds with Last-Modified and json", async () => {
+  const testDate = new Date();
+  const mockReq = { headers: [], app: { locals: { breaches: testBreaches, mostRecentBreachDateTime: testDate } } };
+  const mockResp = { append: jest.fn(), json: jest.fn() };
+
+  await hibp.breaches(mockReq, mockResp);
+
+  const mockAppendCallArgs = mockResp.append.mock.calls[0];
+  expect(mockAppendCallArgs[0]).toBe("Last-Modified");
+  expect(mockAppendCallArgs[1]).toBe(testDate);
+  const mockJsonCallArgs = mockResp.json.mock.calls[0];
+  expect(mockJsonCallArgs[0]).toBe(testBreaches);
+});
+
+
+test("GET breaches with expired if-modified-since responds with Last-Modified and json", async () => {
+  const testDate = new Date();
+  const mockReq = { headers: {"if-modified-since": "Mon, 10 Sep 2016 00:00:00 GMT"}, app: { locals: { breaches: testBreaches, mostRecentBreachDateTime: testDate } } };
+  const mockResp = { append: jest.fn(), json: jest.fn() };
+
+  await hibp.breaches(mockReq, mockResp);
+
+  const mockAppendCallArgs = mockResp.append.mock.calls[0];
+  expect(mockAppendCallArgs[0]).toBe("Last-Modified");
+  expect(mockAppendCallArgs[1]).toBe(testDate);
+  const mockJsonCallArgs = mockResp.json.mock.calls[0];
+  expect(mockJsonCallArgs[0]).toBe(testBreaches);
+});
+
+
+test("GET breaches with up-to-date if-modified-since responds 304", async () => {
+  const mockReq = { headers: {"if-modified-since": "Mon, 10 Sep 2018 00:00:00 GMT"}, app: { locals: { breaches: testBreaches } } };
+  const mockResp = { sendStatus: jest.fn() };
+
+  await hibp.breaches(mockReq, mockResp);
+
+  const mockSendStatusCallArgs = mockResp.sendStatus.mock.calls[0];
+  expect(mockSendStatusCallArgs[0]).toBe(304);
+});
+
+
+test("GET breaches after HIBP_RELOAD_BREACHES_TIMER triggers HIBP reload", async () => {
+  jest.mock("../../hibp");
+  HIBPLib.loadBreachesIntoApp = jest.fn();
+  const breachesLoaded20mAgoDateTime = new Date();
+  breachesLoaded20mAgoDateTime.setMinutes(breachesLoaded20mAgoDateTime.getMinutes() - 20);
+  const mockReq = { headers: {"if-modified-since": "Mon, 10 Sep 2018 00:00:00 GMT"}, app: { locals: { breaches: testBreaches, breachesLoadedDateTime: breachesLoaded20mAgoDateTime } } };
+  const mockResp = { sendStatus: jest.fn() };
+
+  await hibp.breaches(mockReq, mockResp);
+
+  const mockSendStatusCallArgs = mockResp.sendStatus.mock.calls[0];
+  expect(mockSendStatusCallArgs[0]).toBe(304);
+  const mockLoadBreachesCallArgs = HIBPLib.loadBreachesIntoApp.mock.calls[0];
+  expect(mockLoadBreachesCallArgs[0]).toBe(mockReq.app);
+});
