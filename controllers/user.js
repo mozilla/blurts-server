@@ -14,7 +14,7 @@ const TIPS = require("../tips");
 async function add(req, res) {
   const email = req.body.email;
 
-  if (!isemail.validate(email)) {
+  if (!email || !isemail.validate(email)) {
     throw new Error("Invalid Email");
   }
   const fxNewsletter = Boolean(req.body.additionalEmails);
@@ -37,6 +37,9 @@ async function add(req, res) {
 
 
 async function verify(req, res) {
+  if (!req.query.token) {
+    throw new Error("Verification token is required.");
+  }
   const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
   const unsubscribeUrl = EmailUtils.unsubscribeUrl(verifiedEmailHash);
 
