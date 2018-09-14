@@ -40,7 +40,7 @@ test("confirmed request checks session cookie, calls FXA for token and email, ad
   const mockGotCallArgs = got.mock.calls[0];
   expect(mockGotCallArgs[0]).toMatch(AppConstants.OAUTH_PROFILE_URI);
   expect(mockGotCallArgs[1].headers.Authorization).toMatch("testToken");
-  
+
   const subscribers = await DB.getSubscribersByHashes([getSha1(testFxAEmail)]);
   expect(subscribers[0].verified).toBeTruthy();
   expect(subscribers[0].email).toBe(testFxAEmail);

@@ -107,8 +107,8 @@ const HIBP = {
 
   filterOutUnsafeBreaches(breaches) {
     return breaches.filter(
-      breach => breach.IsVerified && 
-                !breach.IsRetired && 
+      breach => breach.IsVerified &&
+                !breach.IsRetired &&
                 !breach.IsSensitive &&
                 !breach.IsSpamList
     );

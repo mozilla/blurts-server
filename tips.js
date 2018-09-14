@@ -39,7 +39,6 @@ const TIPS = [
         "summary": "We'll let you know if your account information is compromised in a data breach or exposed to hackers in some other way.",
       },
     ];
-  
-  
+
+
   module.exports = TIPS;
-  
