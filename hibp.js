@@ -10,6 +10,8 @@ const pkg = require("./package.json");
 
 const DOMPurify = createDOMPurify((new JSDOM("")).window);
 const HIBP_USER_AGENT = `${pkg.name}/${pkg.version}`;
+const HIBP_THROTTLE_DELAY = 2000;
+const HIBP_THROTTLE_MAX_RETRIES = 5;
 
 
 const HIBP = {
@@ -23,17 +25,36 @@ const HIBP = {
     return Object.assign(options, hibpOptions);
   },
 
+  async _throttledGot (url, reqOptions, retryCount = 0) {
+    try {
+      return await got(url, reqOptions);
+    } catch (err) {
+      console.error("got an error: " + err);
+      if (err.statusCode === 429) {
+        console.log("got a 429, retryCount: ", retryCount);
+        if (retryCount >= HIBP_THROTTLE_MAX_RETRIES) {
+          throw new Error(err.message);
+        } else {
+          await new Promise(resolve => setTimeout(resolve, HIBP_THROTTLE_DELAY * retryCount));
+          return await this._throttledGot(url, reqOptions, retryCount)
+        }
+      } else {
+        throw new Error("Error connecting to HIBP.");
+      }
+    }
+  },
+
   async req(path, options = {}) {
     const url = `${AppConstants.HIBP_API_ROOT}${path}?code=${encodeURIComponent(AppConstants.HIBP_API_TOKEN)}`;
     const reqOptions = this._addStandardOptions(options);
-    return await got(url, reqOptions);
+    return await this._throttledGot(url, reqOptions);
   },
 
   async kAnonReq(path, options = {}) {
     // Construct HIBP url and standard headers
     const url = `${AppConstants.HIBP_KANON_API_ROOT}${path}?code=${encodeURIComponent(AppConstants.HIBP_KANON_API_TOKEN)}`;
     const reqOptions = this._addStandardOptions(options);
-    return await got(url, reqOptions);
+    return await this._throttledGot(url, reqOptions);
   },
 
   async loadBreachesIntoApp(app) {
@@ -52,7 +73,7 @@ const HIBP = {
       app.locals.breachesLoadedDateTime = Date.now();
       app.locals.mostRecentBreachDateTime = this.getLatestBreachDateTime(breaches);
     } catch (error) {
-      console.error(error);
+      throw new Error("Could not load breaches: " + error);
     }
     console.log("Done loading breaches.");
   },
@@ -78,22 +99,19 @@ const HIBP = {
     const sha1Prefix = sha1.slice(0, 6).toUpperCase();
     const path = `/breachedaccount/range/${sha1Prefix}`;
 
-    try {
-      const response = await this.kAnonReq(path);
-      // Parse response body, format:
-      // [
-      //   {"hashSuffix":<suffix>,"websites":[<breach1Name>,...]},
-      //   {"hashSuffix":<suffix>,"websites":[<breach1Name>,...]},
-      // ]
-      for (const breachedAccount of response.body) {
-        if (sha1.toUpperCase() === sha1Prefix + breachedAccount.hashSuffix) {
-          foundBreaches = allBreaches.filter(breach => breachedAccount.websites.includes(breach.Name));
-          break;
-        }
+    const response = await this.kAnonReq(path);
+    // Parse response body, format:
+    // [
+    //   {"hashSuffix":<suffix>,"websites":[<breach1Name>,...]},
+    //   {"hashSuffix":<suffix>,"websites":[<breach1Name>,...]},
+    // ]
+    for (const breachedAccount of response.body) {
+      if (sha1.toUpperCase() === sha1Prefix + breachedAccount.hashSuffix) {
+        foundBreaches = allBreaches.filter(breach => breachedAccount.websites.includes(breach.Name));
+        break;
       }
-    } catch (error) {
-      console.error(error);
     }
+
     if (includeUnsafe) {
       return foundBreaches;
     }
