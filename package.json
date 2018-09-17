@@ -28,9 +28,14 @@
     "nodemailer-express-handlebars": "^3.0.0",
     "pg": "^7.4.3",
     "sns-validator": "^0.3.4",
+    "update": "^0.7.4",
     "uuid": "^3.2.1"
   },
   "devDependencies": {
+    "autoprefixer": "^9.1.5",
+    "babel-minify": "^0.4.3",
+    "clean-css-cli": "^4.2.1",
+    "concat": "^1.0.3",
     "coveralls": "^3.0.1",
     "eslint": "^4.18.1",
     "eslint-plugin-node": "^6.0.1",
@@ -41,8 +46,13 @@
     "node-mocks-http": "^1.7.0",
     "nodemon": "^1.18.3",
     "npm-run-all": "^4.1.3",
+    "onchange": "^4.1.0",
+    "postcss-cli": "^6.0.0",
+    "postcss-css-variables": "^0.9.0",
+    "postcss-preset-env": "^5.3.0",
     "stylelint": "^9.2.0",
-    "stylelint-config-standard": "^18.2.0"
+    "stylelint-config-standard": "^18.2.0",
+    "uglify-js": "^3.4.9"
   },
   "engines": {
     "node": ">=8"
@@ -73,6 +83,17 @@
     "url": "git+https://github.com/mozilla/blurts-server.git"
   },
   "scripts": {
+    "js:minify": "minify public/dist/app.min.js -o public/dist/app.min.js",
+    "js:concat": "concat -o public/dist/app.min.js public/js/*.js",
+    "css:minify": "cleancss -o public/dist/app.min.css public/dist/app.min.css",
+    "css:autoprefixer": "postcss -u autoprefixer --autoprefixer.browsers '> 5%, ie 11' -r public/dist/app.min.css --no-map",
+    "css:vars": "postcss -u postcss-css-variables -o public/dist/app.min.css public/css/app.css",
+    "build:js": "run-s js:concat js:minify",
+    "build:css": "run-s css:vars css:autoprefixer css:minify",
+    "watch:js": "onchange 'public/js/monitor.js' -- npm run build:js",
+    "watch:css": "onchange 'public/css/app.css' -- npm run build:css",
+    "watch:all": "run-p watch:css watch:js",
+    "build:all": "run-s build:js build:css watch:all",
     "db:migrate": "knex migrate:latest --knexfile db/knexfile.js",
     "docker:build": "docker build -t blurts-server .",
     "docker:run": "docker run -p 6060:6060 blurts-server",
