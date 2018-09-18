@@ -16,9 +16,9 @@ const TIPS = [
       },
       {
         "number": "3",
-        "tip_title": "Make strong security questions.",
-        "headline": "Make Strong<br>Security Questions",
-        "summary": "Websites don't care if your security questions are accurate - they only care that your answers match every time. So give answers to the security questions that are long and random, like your passwords.",
+        "tip_title": "Treat Security Questions Like Extra Passwords",
+        "headline": "Treat Security Questions<br>Like Extra Passwords",
+        "summary": "Websites don’t check that your answers are accurate, just that they match every time. So create long, random answers and store them somewhere safe. ",
       },
       {
         "number": "4",
@@ -30,7 +30,7 @@ const TIPS = [
         "number": "5",
         "tip_title": "Use two-factor authentication.",
         "headline": "Use Two-Factor<br>Authentication",
-        "summary": "Websites that offer two-factor authentication (also known as 2FA) will commonly register your mobile number or provide you with an access code to install an app. When you log in to the site, you will be prompted to enter a code sent to your phone or respond to a message on the app before gaining access.",
+        "summary": "2FA offers an extra layer of protection by requiring you to enter additional information (like a code sent via text) before you can access your accounts.",
       },
       {
         "number": "6",
