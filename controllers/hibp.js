@@ -8,6 +8,9 @@ const sha1 = require("../sha1-utils");
 const HBSHelpers = require("../hbs-helpers");
 
 async function notify (req, res) {
+  if(!["breachName", "hashPrefix", "hashSuffixes"].every(req.body.hasOwnProperty, req.body)) {
+    throw new Error("Breach notification requires breachName, hashPrefix, and hashSuffixes.");
+  }
 
   const reqBreachName = req.body.breachName.toLowerCase();
   const reqHashPrefix = req.body.hashPrefix.toLowerCase();

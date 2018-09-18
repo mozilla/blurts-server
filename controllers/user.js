@@ -69,6 +69,9 @@ async function verify(req, res) {
 
 
 async function getUnsubscribe(req, res) {
+  if (!req.query.token) {
+    throw new Error("Unsubscribe requires a token.");
+  }
   const subscriber = await DB.getSubscriberByToken(req.query.token);
   //throws error if user backs into and refreshes unsubscribe page
   if (!subscriber) {
@@ -84,6 +87,9 @@ async function getUnsubscribe(req, res) {
 
 
 async function postUnsubscribe(req, res) {
+  if (!req.body.token || !req.body.emailHash) {
+    throw new Error("Unsubscribe requires a token and emailHash.");
+  }
   const unsubscribedUser = await DB.removeSubscriberByToken(req.body.token, req.body.emailHash);
   // if user backs into unsubscribe page and clicks "unsubscribe" again
   if (!unsubscribedUser) {
