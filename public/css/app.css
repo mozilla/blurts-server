@@ -667,6 +667,10 @@ h5,
   margin-bottom: 0;
 }
 
+.download-firefox-bar a {
+  white-space: nowrap;
+}
+
 /* header **************** */
 
 header.section-wrapper {
@@ -1615,10 +1619,6 @@ form.show-thankyou span.thank-you-message {
 
   .tip-container {
     margin-top: calc(var(--gap) * 2);
-  }
-
-  #github-logo {
-    max-width: 20px;
   }
 }
 
