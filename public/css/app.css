@@ -79,6 +79,7 @@ h1,
 }
 
 .secondary-title {
+  margin-bottom: 10px;
   font-size: 22px;
 }
 
@@ -115,10 +116,6 @@ a {
   transition: opacity 0.15s cubic-bezier(0.07, 0.95, 0, 1);
 }
 
-a:focus {
-  outline: 2px solid var(--blue50);
-}
-
 a:hover {
   opacity: 0.8;
   transition: opacity 0.15s cubic-bezier(0.07, 0.95, 0, 1);
@@ -142,8 +139,6 @@ img {
   display: flex;
   flex-wrap: wrap;
   padding: var(--columnSpacing);
-
-  /* justify-content: center; */
   width: 100%;
   max-width: 1200px;
   min-width: 300px;
@@ -244,6 +239,7 @@ img {
   align-items: center;
   align-content: center;
   max-width: 700px;
+  padding-bottom: calc(var(--columnSpacing) * 2.5);
 }
 
 .centered-content > * {
@@ -297,7 +293,6 @@ input[type="text"] {
 input:focus,
 button:focus,
 .button:focus,
-a:focus,
 .radio-button-group:focus {
   border: 1px solid var(--blue50);
   box-shadow: 0 0 0 1px #0a84ff, 0 0 0 4px rgba(10, 132, 255, 0.3);
@@ -514,8 +509,8 @@ input[type="submit"].transparent-button:active {
   color: #fff;
   padding: 5px 12px;
   position: absolute;
-  bottom: -35px;
-  left: 5px;
+  bottom: -44px;
+  left: -1px;
   z-index: 3;
   font-size: 13px;
   opacity: 0;
@@ -544,8 +539,7 @@ input[type="submit"].transparent-button:active {
   opacity: 1;
 }
 
-.form-group.invalid input[type="email"],
-.form-group.invalid input[type="submit"] {
+.form-group.invalid input[type="email"] {
   border: 1px solid var(--red50);
   box-shadow: 0 0 0 1px rgba(255, 0, 55, 0.514), 0 0 0 4px rgba(255, 0, 55, 0.3);
 }
@@ -643,6 +637,36 @@ h5,
   box-shadow: 0 0 0 2px #0a84ff, 0 0 0 6px rgba(10, 132, 255, 0.3);
 }
 
+/* // download firefox top bar  */
+
+.download-firefox-bar {
+  margin-bottom: var(--gap);
+  text-align: center;
+}
+
+.download-firefox-bar .section-wrapper {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.download-firefox-bar .whole {
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.download-firefox-bar a.internal-link {
+  color: var(--blue40);
+  margin-left: 5px;
+}
+
+.download-firefox.banner .secondary-title {
+  margin-bottom: 0;
+}
+
 /* header **************** */
 
 header.section-wrapper {
@@ -703,7 +727,6 @@ main.landing-content section.section-wrapper .wrap-row {
 
 main.landing-content .wrap-row .half {
   margin-top: 0;
-  margin-bottom: 0;
 }
 
 /* BREACH LISTING */
@@ -769,7 +792,7 @@ main.scan-results #featured-breach .breach-headline {
 }
 
 #sign-up-banner .subscribe-icon-wrapper {
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 #sign-up-banner .half {
@@ -955,9 +978,14 @@ body.show-subscribe-modal .modal-content.show {
   width: 100%;
 }
 
-.modal-content .error-message,
-.modal-content .error-message::before {
+.modal-content .error-message {
   z-index: 5;
+  bottom: -34px;
+}
+
+.modal-content.form-group .error-message::before {
+  z-index: 4;
+  top: -4px;
 }
 
 .modal-content .input-group-button {
@@ -1100,7 +1128,6 @@ span.breach-info .medium {
 
 #what-to-do .section-wrapper {
   justify-content: center;
-  margin-bottom: 0;
   margin-top: var(--columnSpacing);
 }
 
@@ -1110,6 +1137,8 @@ span.breach-info .medium {
   text-align: center;
   min-width: 200px;
   max-width: 300px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 #what-to-do .section-headline {
@@ -1354,6 +1383,11 @@ form.show-thankyou span.thank-you-message {
   transition: all 0.1s ease;
 }
 
+#unsubscribe-survey-form .input-group-button {
+  margin-top: 30px;
+  max-width: 500px;
+}
+
 /* // PLACEHOLDER media screens */
 
 @media screen and (min-width: 2200px) {
@@ -1387,8 +1421,6 @@ form.show-thankyou span.thank-you-message {
 @media screen and (max-width: 1100px) {
   main .half {
     display: flex;
-    align-content: center;
-    justify-content: center;
   }
 
   .main-content {
@@ -1398,6 +1430,17 @@ form.show-thankyou span.thank-you-message {
 
   #show-additional-breaches {
     align-self: center;
+  }
+
+  #what-to-do .fourth {
+    margin-left: calc(var(--gap) / 2);
+    margin-right: calc(var(--gap) / 2);
+    min-width: 350px;
+    max-width: 400px;
+  }
+
+  #what-to-do .fourth p {
+    max-width: 290px;
   }
 
   footer .section-wrapper {
@@ -1435,6 +1478,15 @@ form.show-thankyou span.thank-you-message {
     padding-right: var(--gap);
   }
 
+  .download-firefox-bar {
+    margin-bottom: 0;
+  }
+
+  .download-firefox-bar.banner .section-wrapper > * {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
   footer .section-wrapper {
     flex-wrap: wrap;
     flex-direction: column-reverse;
@@ -1456,6 +1508,18 @@ form.show-thankyou span.thank-you-message {
 }
 
 @media screen and (max-width: 680px) {
+  .section-wrapper.breach-container {
+    padding-top: 0;
+  }
+
+  .breach-container .half {
+    margin-bottom: 10px;
+  }
+
+  #what-to-do .section-wrapper {
+    margin-top: 0;
+  }
+
   #sign-up-banner .section-wrapper {
     flex-direction: column;
   }
@@ -1488,23 +1552,6 @@ form.show-thankyou span.thank-you-message {
 
   #what-to-do .fourth {
     margin-top: var(--columnSpacing);
-  }
-
-  #footer-wave,
-  #header-wave {
-    min-width: 1000px;
-    left: -50%;
-    right: -50%;
-  }
-
-  #header-wave {
-    left: -60%;
-    right: -40%;
-  }
-
-  .unsubscribe-survey form {
-    padding-top: var(--columnSpacing);
-    padding-bottom: var(--columnSpacing);
   }
 }
 
@@ -1542,13 +1589,17 @@ form.show-thankyou span.thank-you-message {
   #password-advice p {
     margin: var(--gap) 0 0 0;
   }
+
+  .tip {
+    margin-top: var(--gap);
+  }
 }
 
 @media screen and (max-width: 375px) {
   body {
     --gap: 15px;
 
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 300;
   }
 
@@ -1566,12 +1617,11 @@ form.show-thankyou span.thank-you-message {
     margin-top: calc(var(--gap) * 2);
   }
 
-  #GitHub-logo {
+  #github-logo {
     max-width: 20px;
   }
 }
 
-/* TRANSITIONS */
 a,
 a:hover,
 button,

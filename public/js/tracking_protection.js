@@ -3,7 +3,7 @@
 /* global ga */
 /* global _dntEnabled  */
 
-// L8-L29 courtesy of https://github.com/mozilla/send
+// L8-L29 courtesy of https://github.com/mozilla/send //
 
 function browserName() {
   try {
@@ -40,7 +40,9 @@ function removeUtms() {
 
 if (browserName() === "firefox") {
   if (document.getElementById("download-firefox")) {
-  document.getElementById("download-firefox").classList.add("hide");
+    for (const downloadBanner of document.querySelectorAll(".download-firefox")) {
+      downloadBanner.classList.add("hide");
+    }
   }
 }
 
