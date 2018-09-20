@@ -7,6 +7,7 @@ const getSha1 = require("../../sha1-utils");
 const ses = require("../../controllers/ses");
 
 require("../resetDB");
+jest.mock("../../hibp");
 
 
 const testNotifications = new Map();
