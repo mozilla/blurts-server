@@ -11,7 +11,7 @@ const Basket = {
     const params = {
       email,
       newsletters: AppConstants.BASKET_NEWSLETTER,
-      validated: true,
+      optin: "Y",
       "api-key": AppConstants.BASKET_API_KEY,
       source_url: "monitor.firefox.com",
     };
@@ -19,6 +19,7 @@ const Basket = {
     const url = `${AppConstants.BASKET_URL}/news/subscribe/`;
     const reqOptions = {
       method: "POST",
+      form: true,
       body: postParams,
     };
     await got(url, reqOptions);
