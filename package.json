@@ -28,7 +28,6 @@
     "nodemailer-express-handlebars": "^3.0.0",
     "pg": "^7.4.3",
     "sns-validator": "^0.3.4",
-    "update": "^0.7.4",
     "uuid": "^3.2.1"
   },
   "devDependencies": {
@@ -93,7 +92,8 @@
     "watch:js": "onchange 'public/js/monitor.js' -- npm run build:js",
     "watch:css": "onchange 'public/css/app.css' -- npm run build:css",
     "watch:all": "run-p watch:css watch:js",
-    "build:all": "run-s build:js build:css watch:all",
+    "build:dev": "run-s build:js build:css watch:all",
+    "build:all": "run-s build:js build:css",
     "db:migrate": "knex migrate:latest --knexfile db/knexfile.js",
     "docker:build": "docker build -t blurts-server .",
     "docker:run": "docker run -p 6060:6060 blurts-server",
