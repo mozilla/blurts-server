@@ -2,3 +2,4 @@ db/migration
 public/js/vendor
 coverage
 loadtests
+public/dist
