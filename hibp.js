@@ -10,8 +10,6 @@ const pkg = require("./package.json");
 
 const DOMPurify = createDOMPurify((new JSDOM("")).window);
 const HIBP_USER_AGENT = `${pkg.name}/${pkg.version}`;
-const HIBP_THROTTLE_DELAY = 2000;
-const HIBP_THROTTLE_MAX_RETRIES = 5;
 
 
 const HIBP = {
@@ -25,18 +23,19 @@ const HIBP = {
     return Object.assign(options, hibpOptions);
   },
 
-  async _throttledGot (url, reqOptions, retryCount = 0) {
+  async _throttledGot (url, reqOptions, tryCount = 1) {
     try {
       return await got(url, reqOptions);
     } catch (err) {
       console.error("got an error: " + err);
       if (err.statusCode === 429) {
-        console.log("got a 429, retryCount: ", retryCount);
-        if (retryCount >= HIBP_THROTTLE_MAX_RETRIES) {
+        console.log("got a 429, tryCount: ", tryCount);
+        if (tryCount >= AppConstants.HIBP_THROTTLE_MAX_TRIES) {
           throw new Error(err.message);
         } else {
-          await new Promise(resolve => setTimeout(resolve, HIBP_THROTTLE_DELAY * retryCount));
-          return await this._throttledGot(url, reqOptions, retryCount)
+          tryCount++;
+          await new Promise(resolve => setTimeout(resolve, AppConstants.HIBP_THROTTLE_DELAY * tryCount));
+          return await this._throttledGot(url, reqOptions, tryCount);
         }
       } else {
         throw new Error("Error connecting to HIBP.");

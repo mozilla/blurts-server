@@ -3,6 +3,7 @@
 const got = require("got");
 
 const AppConstants = require("../app-constants");
+const getSha1 = require("../sha1-utils");
 const hibp = require("../hibp");
 
 const { testBreaches } = require("./test-breaches");
@@ -58,4 +59,19 @@ test("filterOutUnsafeBreaches removes sensitive breaches", async() => {
     expect(breach.IsRetired).toBe(false);
     expect(breach.IsVerified).toBe(true);
   }
+});
+
+
+test("getBreachesForEmail HIBP responses with status of 429 cause throttled retries up to HIBP_THROTTLE_MAX_TRIES", async() => {
+  // Assumes running with max tries of 3 and delay of 1000
+  jest.setTimeout(20000);
+  got.mockClear();
+  got.mockRejectedValue( { statusCode: 429 });
+
+  await expect(hibp.getBreachesForEmail(getSha1("unverifiedemail@test.com"), testBreaches)).rejects.toThrow();
+
+  const gotCalls = got.mock.calls;
+  expect(gotCalls.length).toEqual(Number(AppConstants.HIBP_THROTTLE_MAX_TRIES));
+
+  jest.setTimeout(5000);
 });
