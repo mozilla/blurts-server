@@ -153,13 +153,7 @@ const HIBP = {
       body: {hashPrefix: sha1Prefix},
     };
 
-    let response;
-    try {
-      response = await this.kAnonReq(path, options);
-    } catch (error) {
-      console.error(error);
-    }
-    return response;
+    return await this.kAnonReq(path, options);
   },
 };
 

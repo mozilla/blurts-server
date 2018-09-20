@@ -13,6 +13,7 @@ require("../resetDB");
 
 
 jest.mock("../../email-utils");
+jest.mock("../../hibp");
 
 
 test("user add POST with email adds unverified subscriber and sends verification email", async () => {
