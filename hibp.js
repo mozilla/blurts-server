@@ -31,7 +31,8 @@ const HIBP = {
       if (err.statusCode === 429) {
         console.log("got a 429, tryCount: ", tryCount);
         if (tryCount >= AppConstants.HIBP_THROTTLE_MAX_TRIES) {
-          throw new Error(err.message);
+          console.error(err.message);
+          throw new Error("Too many connections to HIBP.");
         } else {
           tryCount++;
           await new Promise(resolve => setTimeout(resolve, AppConstants.HIBP_THROTTLE_DELAY * tryCount));
