@@ -7,6 +7,11 @@
           {{> breach_listing }}
         </div>
       {{/eachFromTo}}
+      {{#ifCompare foundBreaches.length "<=" 4}}
+        <div class="whole align-left">
+          {{> hibp_attribution}}
+        </div>
+      {{/ifCompare}}
       <!--display "Show More" button and show remaining breaches onclick if foundBreaches.length > 4-->
       {{#ifCompare foundBreaches.length ">" 4}}
         <div id="additional-breaches" class="section-wrapper">
