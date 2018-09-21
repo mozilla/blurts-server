@@ -15,6 +15,9 @@ RUN npm install && rm -rf ~app/.npm /tmp/*
 COPY . /app
 
 USER root
+
+RUN npm run build:all
+
 RUN chown app:app /app
 
 USER app

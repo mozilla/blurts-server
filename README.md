@@ -47,14 +47,11 @@ the "what" and "why" of data breach alerts.
     npm start
     ```
 
+Note: `npm start` uses `onchange` and `nodemon` to automatically detect file
+changes, re-compile static assets, and restart the express process. If you want
+more control, see the `scripts` section of `package.json` for more commands.
+
 2. Navigate to [localhost:6060/](http://localhost:6060/)
-
-Note: In development, you may want to use `nodemon` to run the server; it will
-automatically refresh the `server.js` process when files are changed:
-
-```sh
-nodemon server.js
-```
 
 #### Database
 
