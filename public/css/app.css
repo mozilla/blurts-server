@@ -141,7 +141,6 @@ img {
   padding: var(--columnSpacing);
   width: 100%;
   max-width: 1200px;
-  min-width: 300px;
   margin: auto;
   overflow: hidden;
 }
@@ -316,6 +315,11 @@ input[type="text"]:hover {
 .input-group-button {
   margin-top: calc(var(--gap) / 2);
   position: relative;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: none;
+  -webkit-text-fill-color: #fff !important;
 }
 
 /* RADIO BUTTONS  */
@@ -692,7 +696,7 @@ header a h1 {
 img.logo {
   margin-right: calc(var(--gap) / 2);
   width: auto !important;
-  height: 50px;
+  height: 60px;
 }
 
 /* main banner content  */
@@ -1049,9 +1053,7 @@ body.show-subscribe-modal .modal-content.show {
 /* ///// compromised accounts  */
 
 .compromised-accounts .section-wrapper {
-  padding-top: 0;
-  padding-left: 0;
-  padding-right: 0;
+  padding: 0;
   margin-top: 0;
 }
 
@@ -1176,6 +1178,13 @@ span.breach-info .medium {
   font-size: 13px;
   text-align: center;
   margin-top: var(--gap);
+}
+
+.whole.align-left .source-info {
+  text-align: left;
+  padding-left: 70px;
+  padding-top: var(--columnSpacing);
+  margin-top: 0;
 }
 
 .source-info a {
@@ -1463,7 +1472,7 @@ form.show-thankyou span.thank-you-message {
     margin-top: var(--gap);
   }
 
-  header ul.social-media-sharing-buttons {
+  header .half.social_container {
     display: none;
   }
 
@@ -1512,6 +1521,7 @@ form.show-thankyou span.thank-you-message {
 }
 
 @media screen and (max-width: 680px) {
+  .landing-content .section-wrapper,
   .section-wrapper.breach-container {
     padding-top: 0;
   }
@@ -1556,6 +1566,7 @@ form.show-thankyou span.thank-you-message {
 
   #what-to-do .fourth {
     margin-top: var(--columnSpacing);
+    min-width: 200px;
   }
 }
 
@@ -1596,6 +1607,10 @@ form.show-thankyou span.thank-you-message {
 
   .tip {
     margin-top: var(--gap);
+  }
+
+  .whole.align-left .source-info {
+    padding-left: 0;
   }
 }
 
