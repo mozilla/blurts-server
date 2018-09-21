@@ -5,11 +5,13 @@ const createDOMPurify = require("dompurify");
 const { JSDOM } = require("jsdom");
 
 const AppConstants = require("./app-constants");
+const mozlog = require("./log");
 const pkg = require("./package.json");
 
 
 const DOMPurify = createDOMPurify((new JSDOM("")).window);
 const HIBP_USER_AGENT = `${pkg.name}/${pkg.version}`;
+const log = mozlog("hibp");
 
 
 const HIBP = {
@@ -29,14 +31,14 @@ const HIBP = {
       response = await got(url, reqOptions);
       return response;
     } catch (err) {
-      console.error("got an error: " + err);
+      log.error("_throttledGot", {err: err});
       if (err.statusCode === 404) {
         // 404 can mean "no results", return undefined response; sorry calling code
         return response;
       } else if (err.statusCode === 429) {
-        console.log("got a 429, tryCount: ", tryCount);
+        log.info("_throttledGot", {err: "got a 429, tryCount: " + tryCount});
         if (tryCount >= AppConstants.HIBP_THROTTLE_MAX_TRIES) {
-          console.error(err.message);
+          log.error("_throttledGot", {err: err});
           throw new Error("Too many connections to HIBP.");
         } else {
           tryCount++;
@@ -63,7 +65,7 @@ const HIBP = {
   },
 
   async loadBreachesIntoApp(app) {
-    console.log("Loading breaches from HIBP into app.locals");
+    log.info("loadBreachesIntoApp", {});
     try {
       const breachesResponse = await this.req("/breaches");
       const breaches = [];
@@ -80,7 +82,7 @@ const HIBP = {
     } catch (error) {
       throw new Error("Could not load breaches: " + error);
     }
-    console.log("Done loading breaches.");
+    log.info("Done loading breaches");
   },
 
   async getUnsafeBreachesForEmail(sha1, allBreaches) {

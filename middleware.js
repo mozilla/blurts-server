@@ -1,6 +1,9 @@
 "use strict";
 
+const mozlog = require("./log");
 
+
+const log = mozlog("middleware");
 // Helps handle errors for all async route controllers
 // See https://medium.com/@Abazhenov/using-async-await-in-express-with-node-8-b8af872c0016
 function asyncMiddleware (fn) {
@@ -11,7 +14,7 @@ function asyncMiddleware (fn) {
 
 
 function logErrors (err, req, res, next) {
-  console.error(err.stack);
+  log.error("error", {stack: err.stack});
   next(err);
 }
 

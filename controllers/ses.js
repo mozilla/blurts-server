@@ -4,8 +4,11 @@ const MessageValidator = require("sns-validator");
 
 const DB = require("../db/DB");
 
+const mozlog = require("../log");
+
 
 const validator = new MessageValidator();
+const log = mozlog("controllers.ses");
 
 
 async function notification(req, res) {
@@ -13,7 +16,7 @@ async function notification(req, res) {
   return new Promise((resolve, reject) => {
     validator.validate(message, async (err, message) => {
       if (err) {
-        console.error(err);
+        log.error(err);
         const body = "Access denied. " + err.message;
         res.status(401).send(body);
         return reject(body);
@@ -31,7 +34,7 @@ async function notification(req, res) {
 
 
 async function handleNotification(notification) {
-  console.log("Received SES message, ID: ", notification.MessageId);
+  log.info("received-SES", { id: notification.MessageId });
   const message = JSON.parse(notification.Message);
   switch (message.eventType) {
     case "Bounce":
@@ -41,7 +44,7 @@ async function handleNotification(notification) {
       await handleComplaintMessage(message);
       break;
     default:
-      console.log("Unhandled eventType: ", message.eventType);
+      log.info("unhandled-eventType", { type: message.eventType });
   }
 }
 

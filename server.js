@@ -12,6 +12,7 @@ const EmailUtils = require("./email-utils");
 const HBSHelpers = require("./hbs-helpers");
 const HIBP = require("./hibp");
 const {logErrors, clientErrorHandler, errorHandler} = require("./middleware");
+const mozlog = require("./log");
 
 const HibpRoutes = require("./routes/hibp");
 const HomeRoutes = require("./routes/home");
@@ -21,6 +22,7 @@ const OAuthRoutes = require("./routes/oauth");
 const UserRoutes = require("./routes/user");
 
 
+const log = mozlog("server");
 const app = express();
 
 // Redirect non-dev environments to HTTPS
@@ -40,7 +42,7 @@ if (app.get("env") !== "dev") {
   try {
     await HIBP.loadBreachesIntoApp(app);
   } catch (error) {
-    console.error(error);
+    log.error(error);
   }
 })();
 
@@ -114,8 +116,8 @@ app.use(errorHandler);
 
 EmailUtils.init().then(() => {
   const listener = app.listen(AppConstants.PORT, () => {
-    console.info(`Listening on ${listener.address().port}`);
+    log.info("Listening", {port: listener.address().port});
   });
 }).catch(error => {
-  console.error(error);
+  log.error(error);
 });

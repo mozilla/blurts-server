@@ -6,6 +6,11 @@ const EmailUtils = require("../email-utils");
 const HIBP = require("../hibp");
 const sha1 = require("../sha1-utils");
 const HBSHelpers = require("../hbs-helpers");
+const mozlog = require("../log");
+
+
+const log = mozlog("controllers.hibp");
+
 
 async function notify (req, res) {
   if(!["breachName", "hashPrefix", "hashSuffixes"].every(req.body.hasOwnProperty, req.body)) {
@@ -29,7 +34,7 @@ async function notify (req, res) {
   const hashes = req.body.hashSuffixes.map(suffix=>reqHashPrefix + suffix.toLowerCase());
   const subscribers = await DB.getSubscribersByHashes(hashes);
 
-  console.log(`Found ${subscribers.length} subscribers in ${breachAlert.Name}. Notifying ...`);
+  log.info("notification", { length: subscribers.length, breachAlertName: breachAlert.Name });
 
   const notifiedSubscribers = [];
 
@@ -57,7 +62,7 @@ async function notify (req, res) {
       notifiedSubscribers.push(email);
     }
   }
-  console.log(`Notified ${notifiedSubscribers.length} unique subscribers.`);
+  log.info("notified", { length: notifiedSubscribers.length });
   res.status(200);
   res.json(
     {info: "Notified subscribers of breach."}

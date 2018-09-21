@@ -9,9 +9,12 @@ const AppConstants = require("../app-constants");
 const HIBP = require("../hibp");
 const Basket = require("../basket");
 const getSha1 = require("../sha1-utils");
+const mozlog = require("../log");
 
 const knexConfig = require("./knexfile");
+
 let knex = Knex(knexConfig);
+const log = mozlog("DB");
 
 
 const DB = {
@@ -131,10 +134,10 @@ const DB = {
       await knex("subscribers")
         .where("id", "=", aEntry.id)
         .del();
-      console.log("Removed subscriber ID: ", aEntry.id);
+      log.info("removed-subscriber", { id: aEntry.id });
       return aEntry;
     }, async () => {
-      console.warn("removeSubscriber called with email not found in database.");
+      log.warn("removed-subscriber-not-found");
       return;
     });
   },

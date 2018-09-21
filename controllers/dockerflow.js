@@ -5,18 +5,21 @@ const path = require("path");
 
 const {version, homepage} = require("../package.json");
 
+const mozlog = require("../log");
 
+
+const log = mozlog("dockerflow");
 const versionJsonPath = path.join(__dirname, "..", "version.json");
 
 // If the version.json file already exists (e.g., created by circle + docker),
 // don't need to generate it
 if (!fs.existsSync(versionJsonPath)) {
-  console.log("Could not find version.json, generating ...");
+  log.info("generating");
   let commit;
   try {
     commit = require("git-rev-sync").short();
   } catch (err) {
-    console.error("Error in git-rev-sync: ", err);
+    log.error("generating", {err: err});
   }
 
   const versionJson = {
