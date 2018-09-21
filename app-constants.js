@@ -19,6 +19,7 @@ const kEnvironmentVariables = [
   "BASKET_API_KEY",
   "BASKET_NEWSLETTER",
   "FXA_ENABLED",
+  "MOZLOG_FMT",
   "MOZLOG_LEVEL",
   "OAUTH_AUTHORIZATION_URI",
   "OAUTH_TOKEN_URI",

@@ -65,7 +65,7 @@ const HIBP = {
   },
 
   async loadBreachesIntoApp(app) {
-    log.info("loadBreachesIntoApp", {});
+    log.info("loadBreachesIntoApp");
     try {
       const breachesResponse = await this.req("/breaches");
       const breaches = [];
