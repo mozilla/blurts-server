@@ -1,5 +1,10 @@
 "use strict";
 
+const mozlog = require("./log");
+
+
+const log = mozlog("hbs-helpers");
+
 function breachDataClasses(dataClasses) {
   if (dataClasses.constructor === Array) {
     return dataClasses.join(", ");
@@ -49,7 +54,8 @@ function ifCompare(v1, operator, v2, options) {
     }
     return options.inverse(this);
   }
-  return console.error(`Error: ${operator} not found`);
+  log.error("ifCompare", {message: `${operator} not found`});
+  return;
 }
 
 

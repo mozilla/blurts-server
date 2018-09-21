@@ -6,7 +6,10 @@ const nodemailer = require("nodemailer");
 const hbs = require("nodemailer-express-handlebars");
 
 const HBSHelpers = require("./hbs-helpers");
+const mozlog = require("./log");
 
+
+const log = mozlog("email-utils");
 
 const hbsOptions = {
   viewEngine: {
@@ -29,7 +32,7 @@ const EmailUtils = {
 
     // Allow a debug mode that will log JSON instead of sending emails.
     if (!smtpUrl) {
-      console.info("smtpUrl is empty, EmailUtils will log a JSON response instead of sending emails.");
+      log.info("smtpUrl-empty", { message: "EmailUtils will log a JSON response instead of sending emails." });
       gTransporter = nodemailer.createTransport({jsonTransport: true});
       return Promise.resolve(true);
     }
@@ -67,7 +70,7 @@ const EmailUtils = {
           return;
         }
         if (gTransporter.transporter.name === "JSONTransport") {
-          console.log(info.message.toString());
+          log.info("JSONTransport", { message: info.message.toString() });
         }
         resolve(info);
       });

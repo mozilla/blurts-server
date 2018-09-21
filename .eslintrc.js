@@ -46,7 +46,7 @@ module.exports = {
     "comma-dangle": ["error", {arrays: "always-multiline", objects: "always-multiline"}],
     "eol-last": ["error", "always"],
     "eqeqeq": "error",
-    "no-console": ["warn", {allow: ["error", "info", "warn"]}],
+    "no-console": ["error", {allow: ["error", "info", "warn"]}],
     "no-process-env": "error",
     "no-trailing-spaces": "error",
     "no-unused-vars": ["error", {vars: "all", args: "none", ignoreRestSiblings: false}],
