@@ -8,7 +8,7 @@ const {version, homepage} = require("../package.json");
 const mozlog = require("../log");
 
 
-const log = mozlog("dockerflow");
+const log = mozlog("controllers.dockerflow");
 const versionJsonPath = path.join(__dirname, "..", "version.json");
 
 // If the version.json file already exists (e.g., created by circle + docker),

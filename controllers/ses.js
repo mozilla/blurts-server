@@ -16,7 +16,7 @@ async function notification(req, res) {
   return new Promise((resolve, reject) => {
     validator.validate(message, async (err, message) => {
       if (err) {
-        log.error(err);
+        log.error("notification", { err: err });
         const body = "Access denied. " + err.message;
         res.status(401).send(body);
         return reject(body);

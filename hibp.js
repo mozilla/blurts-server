@@ -82,7 +82,7 @@ const HIBP = {
     } catch (error) {
       throw new Error("Could not load breaches: " + error);
     }
-    log.info("Done loading breaches");
+    log.info("done-loading-breaches");
   },
 
   async getUnsafeBreachesForEmail(sha1, allBreaches) {

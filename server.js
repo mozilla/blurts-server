@@ -42,7 +42,7 @@ if (app.get("env") !== "dev") {
   try {
     await HIBP.loadBreachesIntoApp(app);
   } catch (error) {
-    log.error(error);
+    log.error("try-load-breaches-error", { error: error });
   }
 })();
 
@@ -119,5 +119,5 @@ EmailUtils.init().then(() => {
     log.info("Listening", { port: listener.address().port });
   });
 }).catch(error => {
-  log.error(error);
+  log.error("try-initialize-email-error", { error: error });
 });
