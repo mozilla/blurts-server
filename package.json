@@ -31,7 +31,6 @@
     "uuid": "^3.2.1"
   },
   "devDependencies": {
-    "autoprefixer": "^9.1.5",
     "babel-minify": "^0.4.3",
     "clean-css-cli": "^4.2.1",
     "concat": "^1.0.3",
@@ -85,10 +84,9 @@
     "js:minify": "minify public/dist/app.min.js -o public/dist/app.min.js",
     "js:concat": "concat -o public/dist/app.min.js public/js/*.js",
     "css:minify": "cleancss -o public/dist/app.min.css public/dist/app.min.css",
-    "css:autoprefixer": "postcss -u autoprefixer --autoprefixer.browsers '> 5%, ie 11' -r public/dist/app.min.css --no-map",
     "css:vars": "postcss -u postcss-css-variables -o public/dist/app.min.css public/css/app.css",
     "build:js": "run-s js:concat js:minify",
-    "build:css": "run-s css:vars css:autoprefixer css:minify",
+    "build:css": "run-s css:vars css:minify",
     "watch:js": "onchange 'public/js/monitor.js' -- npm run build:js",
     "watch:css": "onchange 'public/css/app.css' -- npm run build:css",
     "watch:all": "run-p watch:css watch:js",
