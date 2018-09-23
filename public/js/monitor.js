@@ -10,19 +10,19 @@ const eventList = {
     "eventCategory": "Sign Ups",
     "eventAction": "Button Click",
   },
-  "SignUp_Complete" : {
-    "eventCategory": "Subscribe",
+  "SignUp_Complete": {
+    "eventCategory": "Sign Ups",
     "eventAction": "Complete",
   },
   "Resend": {
     "eventCategory": "Resend Confirmation Email",
-    "eventAction" : "Button Click",
+    "eventAction": "Button Click",
   },
   "CloseModal": {
     "eventCategory": "Modal Closes",
     "eventAction": "Closed Modal",
   },
-  "Unsubscribe" : {
+  "Unsubscribe": {
     "eventCategory": "Unsubscribe",
     "eventAction": "Button Click",
   },
@@ -42,7 +42,7 @@ const eventList = {
     "eventCategory":"Views",
     "eventAction": "",
   },
-  "Download" : {
+  "Download": {
     "eventCategory": "Download",
     "eventAction": "Firefox Download",
   },
@@ -52,7 +52,7 @@ const eventList = {
   },
 };
 
-// determines which page the event occurs and is sent to google analytics in ga_sendPing() as the eventLabel.
+// determines which page the event occurs and is sent to google analytics in ga_sendPing() as the eventLabel or custom dimension.
 
 function ga_getLocation() {
   if (document.querySelector(".landing-content")) {
@@ -62,10 +62,10 @@ function ga_getLocation() {
     return "Landing Page";
   }
   if (document.getElementById("found-breaches")) {
-      return "Scan Results - found breaches.";
+      return "Scan Results - found breaches";
   }
   if (document.getElementById("no-breaches")) {
-      return "Scan Results - no breaches.";
+      return "Scan Results - no breaches";
   }
   if (document.getElementById("unsubscribe-form")) {
     return "Unsubscribe Page";
@@ -83,35 +83,38 @@ function ga_getLocation() {
 
 
 function ga_sendPing(eventDescription, eventLabel) {
-  if(typeof(ga) !== "undefined") {
+  if (typeof(ga) !== "undefined") {
     const event = eventList[eventDescription];
     const eventCategory = event["eventCategory"];
     const eventAction = event["eventAction"];
 
-    if(eventLabel) {
-      if(eventDescription.includes("UnsubscribeSurvey")) {
+    if (eventLabel) {
+      if (eventDescription.includes("UnsubscribeSurvey")) {
         return ga("send", "event", eventCategory, eventAction, eventLabel);
       }
-      return ga("send", "event", eventCategory, eventAction, eventLabel, ga_getLocation());
+      if (eventDescription.includes("Download")) {
+        return ga("send", "event", eventCategory, eventAction, eventLabel, "", {"dimension1": ga_getLocation()});
+      }
+      if (eventDescription.includes("Social")) {
+        return ga("send", "event", eventCategory, eventAction, eventLabel, "", {"dimension2": ga_getLocation()});
+      }
+      return ga("send", "event", eventCategory, eventAction, eventLabel, "", {"dimension3": ga_getLocation()});
     }
 
     eventLabel = ga_getLocation();
 
-    // catch pageviews on error pages and send to dedicated event category.
     if (eventLabel.includes("Error")) {
       eventLabel = document.getElementById("error-message").innerText;
-      return ga("send", "event", "Errors", "", "Error Page", eventLabel);
+      return ga("send", "event", "Errors", "", "Error Page", "", {"dimension4": eventLabel});
     }
-    //catch pageviews on account confirmation page and send to dedicated event category
     if (eventLabel.includes("Confirm")) {
       return ga("send", "event", "Confirmed Account", "");
     }
 
     // append metric "1" to scan pings per analytics team request
-    if(eventDescription.includes("Scan")) {
-      return ga("send", "event", eventCategory, eventAction, eventLabel, "", 1);
+    if (eventDescription.includes("Scan")) {
+      return ga("send", "event", eventCategory, eventAction, `User submitted email from - ${eventLabel}`, "", {"metric1" : 1});
     }
-
     return ga("send", "event", eventCategory, eventAction, eventLabel);
   }
 }
@@ -184,8 +187,7 @@ function openModalWindow() {
     if (e.target === subscribeModal) {
       if (document.getElementById("subscribe-to-ffxm").classList.contains("show")) {
         ga_sendPing("CloseModal", "Clicked outside modal to close - Before Sign Up");
-      }
-      else {
+      } else {
         ga_sendPing("CloseModal", "Clicked outside modal to close - After Sign Up");
       }
       closeModalWindow();
