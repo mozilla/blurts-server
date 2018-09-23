@@ -38,28 +38,28 @@
         {{{ body }}}
       <img id="footer-wave" class="wave" src="/img/wave.svg" />
     </div>
-    <footer id="footer">
+        <footer id="footer">
       <div class="section-wrapper">
         <div class="third">
-          <a class="footer-logo-wrapper" href="https://www.mozilla.org/{{> utm_site_footer }}" target="_blank" rel="noopener"><img src="/img/moz-logo-bw-rgb.svg" alt="Mozilla Logo" /></a>
+          <a {{> analytics/link_event eventLabel="Mozilla Logo"}} class="footer-logo-wrapper" href="https://www.mozilla.org/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener"><img src="/img/moz-logo-bw-rgb.svg" alt="Mozilla Logo" /></a>
         </div>
         <ul class="third">
           <li>Support</li>
-          <li><a href="https://qsurvey.mozilla.com/s3/Firefox-Monitor-Feedback" target="_blank" rel="noopener">Give Feedback</a></li>
-          <li><a href="https://www.mozilla.org/privacy/firefox-monitor/{{> utm_site_footer }}" target="_blank" rel="noopener">Terms&nbsp;and&nbsp;Privacy</a></li>
-          <li><a id="GitHub-logo" href="https://github.com/mozilla/blurts-server/" target="_blank" rel="noopener noreferrer"><img src="/img/github.svg" alt="GitHub Logo" /></a></li>
+          <li><a {{> analytics/link_event eventLabel="Give Feedback"}} href="https://qsurvey.mozilla.com/s3/Firefox-Monitor-Feedback" target="_blank" rel="noopener">Give Feedback</a></li>
+          <li><a {{> analytics/link_event eventLabel="Terms & Privacy"}} href="https://www.mozilla.org/privacy/firefox-monitor/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">Terms&nbsp;and&nbsp;Privacy</a></li>
+          <li><a {{> analytics/link_event eventLabel="GitHub"}} href="https://github.com/mozilla/blurts-server/" target="_blank" rel="noopener noreferrer"><img src="/img/github.svg" alt="GitHub Logo" /></a></li>
         </ul>
         <ul class="third">
           <li>Firefox</li>
-          <li><a href="https://www.mozilla.org/firefox/new/{{> utm_site_footer }}" target="_blank" rel="noopener">Download Firefox Quantum</a></li>
-          <li><a href="https://www.mozilla.org/firefox/mobile/{{> utm_site_footer }}" target="_blank" rel="noopener">Download Firefox Mobile</a></li>
-          <li><a href="https://www.mozilla.org/firefox/features/{{> utm_site_footer }}" target="_blank" rel="noopener">Features</a></li>
-          <li><a href="https://www.mozilla.org/firefox/channel/desktop/{{> utm_site_footer }}" target="_blank" rel="noopener">Beta, Nightly, Developer Edition</a></li>
+          <li><a {{> analytics/download_event eventLabel="Quantum"}} href="https://www.mozilla.org/firefox/new/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">Download Firefox Quantum</a></li>
+          <li><a {{> analytics/download_event eventLabel="Firefox Mobile"}} href="https://www.mozilla.org/firefox/mobile/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">Download Firefox Mobile</a></li>
+          <li><a {{> analytics/link_event eventLabel="Features"}} href="https://www.mozilla.org/firefox/features/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">Features</a></li>
+          <li><a {{> analytics/download_event eventLabel="Beta, Nightly, Developer Edition"}} href="https://www.mozilla.org/firefox/channel/desktop/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">Beta, Nightly, Developer Edition</a></li>
         </ul>
       </div>
       <div class="section-wrapper">
         <div class="two-thirds copyright-info">
-          <p>Portions of this content are &copy; 1998-2018 by individual mozilla.org contributors. <br />Content available under a <a href="https://www.mozilla.org/foundation/licensing/website-content/" rel="noopener">Creative Commons license</a>.</p>
+          <p>Portions of this content are &copy; 1998-2018 by individual mozilla.org contributors. <br />Content available under a <a {{> analytics/link_event eventLabel="Creative Commons"}} href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons license</a>.</p>
         </div>
       </div>
     </footer>

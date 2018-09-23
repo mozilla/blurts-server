@@ -133,6 +133,13 @@ img {
   -ms-interpolation-mode: bicubic;
 }
 
+/* Disable pointer events on elements nested inside analytics triggering links */
+
+ul.social-media-sharing-buttons span,
+footer img {
+  pointer-events: none;
+}
+
 /* Flexbox Content Wrappers */
 
 .section-wrapper {

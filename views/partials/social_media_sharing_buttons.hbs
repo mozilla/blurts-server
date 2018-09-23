@@ -1,13 +1,13 @@
 <ul class="social-media-sharing-buttons">
   <li>
-    <a href="https://www.facebook.com/sharer/sharer.php?u={{ SERVER_URL }}" target="_blank" rel="noopener noreferrer" data-analytics-event="facebook" class="sendGA">
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ SERVER_URL }}" target="_blank" rel="noopener noreferrer" {{> analytics/social_event eventLabel="Facebook"}}>
     <img class="primary-social-icon facebook-button" alt="Share Firefox Monitor on Facebook" src="/img/social_media_icons/facebook.svg" />
     <img class="secondary-social-icon" src="/img/social_media_icons/facebook-round.svg" alt="Share Firefox Monitor on Facebook" />
     <span>Share</span>
     </a>
   </li>
   <li>
-    <a href="https://twitter.com/intent/tweet?url={{ SERVER_URL }}" target="_blank" rel="noopener noreferrer" data-analytics-event="twitter" class="twitter-share-button sendGA">
+    <a href="https://twitter.com/intent/tweet?url={{ SERVER_URL }}" target="_blank" rel="noopener noreferrer" {{> analytics/social_event eventLabel="Twitter"}} class="twitter-share-button">
       <img class="primary-social-icon" alt="Share Firefox Monitor on Twitter" src="/img/social_media_icons/twitter.svg" />
       <img class="secondary-social-icon" alt="Share Firefox Monitor on Twitter" src="/img/social_media_icons/twitter-round.svg" />
       <span>Tweet</span>
