@@ -696,7 +696,7 @@ header a h1 {
 img.logo {
   margin-right: calc(var(--gap) / 2);
   width: auto !important;
-  height: 60px;
+  height: 50px;
 }
 
 /* main banner content  */
