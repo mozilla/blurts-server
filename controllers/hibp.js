@@ -13,6 +13,10 @@ const log = mozlog("controllers.hibp");
 
 
 async function notify (req, res) {
+  if (!req.token || req.token !== AppConstants.HIBP_NOTIFY_TOKEN) {
+    const errorMessage = "HIBP notify endpoint requires valid authorization token.";
+    throw new Error(errorMessage);
+  }
   if(!["breachName", "hashPrefix", "hashSuffixes"].every(req.body.hasOwnProperty, req.body)) {
     throw new Error("Breach notification requires breachName, hashPrefix, and hashSuffixes.");
   }
