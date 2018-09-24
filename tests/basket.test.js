@@ -18,6 +18,7 @@ test("subscribe calls got with expected url and options", async () => {
   const gotCallArgs = gotCalls[0];
   expect(gotCallArgs[0]).toBe(`${AppConstants.BASKET_URL}/news/subscribe/`);
   expect(gotCallArgs[1].method).toBe("POST");
-  expect(gotCallArgs[1].body).toContain(`email=${testEmail}`);
-  expect(gotCallArgs[1].body).toContain("optin=Y");
+  const reqBody = gotCallArgs[1].body;
+  expect(reqBody.email).toEqual(testEmail);
+  expect(reqBody.optin).toEqual("Y");
 });
