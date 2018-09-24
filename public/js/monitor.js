@@ -96,9 +96,9 @@ function ga_sendPing(eventDescription, eventLabel) {
         return ga("send", "event", eventCategory, eventAction, eventLabel, "", {"dimension1": ga_getLocation()});
       }
       if (eventDescription.includes("Social")) {
-        return ga("send", "event", eventCategory, eventAction, eventLabel, "", {"dimension2": ga_getLocation()});
+        return ga("send", "event", eventCategory, eventAction, eventLabel, "", {"dimension1": ga_getLocation()});
       }
-      return ga("send", "event", eventCategory, eventAction, eventLabel, "", {"dimension3": ga_getLocation()});
+      return ga("send", "event", eventCategory, eventAction, eventLabel, "", {"dimension1": ga_getLocation()});
     }
 
     eventLabel = ga_getLocation();
