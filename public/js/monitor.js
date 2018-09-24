@@ -1,5 +1,14 @@
 "use strict";
 /* global ga */
+/* global libpolycrypt */
+
+
+if (typeof TextEncoder === "undefined") {
+  const cryptoScript = document.createElement("script");
+  const scripts = document.getElementsByTagName("script")[0];
+  cryptoScript.src = "/dist/edge.min.js";
+  scripts.parentNode.insertBefore(cryptoScript, scripts);
+}
 
 const eventList = {
   "Social": {
@@ -222,7 +231,12 @@ function checkBoxStates(checkBoxEvent) {
 async function sha1(message) {
   message = message.toLowerCase();
   const msgBuffer = new TextEncoder("utf-8").encode(message);
-  const hashBuffer = await crypto.subtle.digest("SHA-1", msgBuffer);
+  let hashBuffer;
+  if (/edge/i.test(navigator.userAgent)) {
+    hashBuffer = libpolycrypt.sha1(msgBuffer);
+  } else {
+    hashBuffer = await crypto.subtle.digest("SHA-1", msgBuffer);
+  }
   const hashArray = Array.from(new Uint8Array(hashBuffer));
   const hashHex = hashArray.map(b => ("00" + b.toString(16)).slice(-2)).join("");
   return hashHex.toUpperCase();
@@ -232,7 +246,7 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
   const emailForm = emailFormSubmitEvent.target;
   ga_sendPing("Scan", false);
   emailForm.classList.add("loading-data");
-  const emailInput = document.getElementById("scan-email") 
+  const emailInput = document.getElementById("scan-email");
   emailForm.querySelector("input[name=emailHash]").value = await sha1(emailInput.value);
   emailInput.value = "";
   emailForm.submit();
