@@ -232,10 +232,9 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
   const emailForm = emailFormSubmitEvent.target;
   ga_sendPing("Scan", false);
   emailForm.classList.add("loading-data");
-  for (const emailInput of emailForm.querySelectorAll("input[type=email]")) {
-    emailForm.querySelector("input[name=emailHash]").value = await sha1(emailInput.value);
-    emailInput.value = "";
-  }
+  const emailInput = document.getElementById("scan-email") 
+  emailForm.querySelector("input[name=emailHash]").value = await sha1(emailInput.value);
+  emailInput.value = "";
   emailForm.submit();
 }
 
