@@ -1,89 +1,124 @@
 "use strict";
 /* global ga */
 
-const events = {
-  "unsubscribeSurvey": {
-    "eventCategory": "Unsubscribe Survey Submittal",
-    "eventAction": "User submitted unsubscribe survey answer.",
+const eventList = {
+  "Social": {
+    "eventCategory": "Social",
+    "eventAction": "Share",
   },
-  "facebook": {
-    "eventCategory": "Social Media Event",
-    "eventAction": "User shared Firefox Monitor on Facebook",
-    "featuredBreach": "User shared Firefox Monitor from a featured breach page.",
-    "foundBreaches": "User shared Firefox Monitor after discovering breached accounts.",
-    "noBreaches": "User shared Firefox Monitor after scanning email with no associated breaches.",
-    "landingPage": "User shared Firefox Monitor from landing page.",
-    "confirmAccount": "User shared Firefox Monitor from account confirmation page.",
-  },
-  "twitter": {
-    "eventCategory": "Social Media Event",
-    "eventAction": "User tweeted link to Firefox Monitor",
-    "featuredBreach": "User tweeted link to Firefox Monitor from a featured breach page.",
-    "foundBreaches": "User tweeted link to Firefox Monitor after discovering breached accounts.",
-    "noBreaches": "User tweeted link to Firefox Monitor after scanning email with no associated breaches.",
-    "landingPage": "User tweeted link to Firefox Monitor from landing page.",
-    "confirmAccount": "User shared link to Firefox Monitor from account confirmation page.",
-  },
-  "SignUp" : {
+  "SignUp": {
     "eventCategory": "Sign Ups",
-    "eventAction:": "Clicked Sign Up Button",
-    "featuredBreach" : "Sign up button clicked from featured breach.",
-    "foundBreaches": "Sign up button clicked after scanning email with breaches.",
-    "noBreaches": "Sign up button clicked after scanning email with no associated breaches.",
-    "landingPage": "Sign up button clicked from default landing page.",
+    "eventAction": "Button Click",
   },
-  "Scan" : {
+  "SignUp_Complete": {
+    "eventCategory": "Sign Ups",
+    "eventAction": "Complete",
+  },
+  "Resend": {
+    "eventCategory": "Resend Confirmation Email",
+    "eventAction": "Button Click",
+  },
+  "CloseModal": {
+    "eventCategory": "Modal Closes",
+    "eventAction": "Closed Modal",
+  },
+  "Unsubscribe": {
+    "eventCategory": "Unsubscribe",
+    "eventAction": "Button Click",
+  },
+  "UnsubscribeSurvey": {
+    "eventCategory": "Unsubscribe Survey Submittal",
+    "eventAction": "Button Click",
+  },
+  "Scan": {
     "eventCategory": "Scans",
-    "eventAction:": "User scanned email address",
-    "featuredBreach": "User scanned email from featured breach page.",
-    "foundBreaches": "User scanned additional email.",
-    "noBreaches": "User scanned email address after scanning email with no associated breaches.",
-    "landingPage": "User submitted email from landing page.",
-
+    "eventAction": "",
+  },
+  "ShowAdditional": {
+    "eventCategory": "Show Additional Breaches",
+    "eventAction": "Button Click",
   },
   "Pageview": {
     "eventCategory":"Views",
-    "eventAction": "Viewed",
-    "featuredBreach": "Featured Breach",
-    "foundBreaches": "List of compromised accounts.",
-    "noBreaches": "No associated breaches.",
-    "landingPage": "Default landing page without featured breach.",
-    "confirmAccount": "Your account is confirmed page.",
+    "eventAction": "",
+  },
+  "Download": {
+    "eventCategory": "Download",
+    "eventAction": "Firefox Download",
+  },
+  "Link": {
+    "eventCategory": "Link Clicks",
+    "eventAction": "Link Click",
   },
 };
 
+// determines which page the event occurs and is sent to google analytics in ga_sendPing() as the eventLabel or custom dimension.
+
 function ga_getLocation() {
-  if (document.getElementById("featured-breach-landing")) {
-      return("featuredBreach");
+  if (document.querySelector(".landing-content")) {
+    if (document.getElementById("featured-breach-landing")) {
+      return "Featured Breach Page";
+    }
+    return "Landing Page";
   }
   if (document.getElementById("found-breaches")) {
-      return("foundBreaches");
+      return "Scan Results - found breaches";
   }
   if (document.getElementById("no-breaches")) {
-      return("noBreaches");
+      return "Scan Results - no breaches";
+  }
+  if (document.getElementById("unsubscribe-form")) {
+    return "Unsubscribe Page";
   }
   if (document.getElementById("unsubscribe-survey-form")) {
-    return("unsubscribePage");
+    return "Unsubscribe Survey";
   }
-    return("landingPage");
+  if (document.getElementById("confirmation")) {
+    return "Account Confirmation Page";
+  }
+  if (document.getElementById("error-message")) {
+    return "Error Page";
+  }
 }
 
-function ga_sendPing(string, eventLabel = false) {
-  if(typeof(ga) !== "undefined") {
 
-    const event = events[string];
+function ga_sendPing(eventDescription, eventLabel) {
+  if (typeof(ga) !== "undefined") {
+    const event = eventList[eventDescription];
     const eventCategory = event["eventCategory"];
     const eventAction = event["eventAction"];
 
-    if (!eventLabel) {
-      const eventLocation = ga_getLocation();
-      eventLabel = event[eventLocation];
-      ga("send", "event", eventCategory, eventAction, eventLabel);
-      return;
+    if (eventLabel) {
+      if (eventDescription.includes("UnsubscribeSurvey")) {
+        return ga("send", "event", eventCategory, eventAction, eventLabel);
+      }
+      if (eventDescription.includes("Download")) {
+        return ga("send", "event", eventCategory, eventAction, eventLabel, "", {"dimension1": ga_getLocation()});
+      }
+      if (eventDescription.includes("Social")) {
+        return ga("send", "event", eventCategory, eventAction, eventLabel, "", {"dimension2": ga_getLocation()});
+      }
+      return ga("send", "event", eventCategory, eventAction, eventLabel, "", {"dimension3": ga_getLocation()});
     }
-    ga("send", "event", eventCategory, eventAction, eventLabel);
+
+    eventLabel = ga_getLocation();
+
+    if (eventLabel.includes("Error")) {
+      eventLabel = document.getElementById("error-message").innerText;
+      return ga("send", "event", "Errors", "", "Error Page", "", {"dimension4": eventLabel});
+    }
+    if (eventLabel.includes("Confirm")) {
+      return ga("send", "event", "Confirmed Account", "");
+    }
+
+    // append metric "1" to scan pings per analytics team request
+    if (eventDescription.includes("Scan")) {
+      return ga("send", "event", eventCategory, eventAction, `User submitted email from - ${eventLabel}`, "", {"metric1" : 1});
+    }
+    return ga("send", "event", eventCategory, eventAction, eventLabel);
   }
 }
+
 
 function isValidEmail(val) {
   // https://stackoverflow.com/a/46181
@@ -142,7 +177,6 @@ function closeModalWindow() {
 }
 
 function openModalWindow() {
-  ga_sendPing("SignUp");
   const subscribeModal = document.getElementById("subscribe-modal");
   document.body.classList.add("show-subscribe-modal");
   document.getElementById("subscribe-to-ffxm").classList.add("show");
@@ -151,6 +185,11 @@ function openModalWindow() {
   subscribeModal.addEventListener("transitionend", (e) => focusFirstInput(e));
   subscribeModal.addEventListener("click", function closeWrapper(e) {
     if (e.target === subscribeModal) {
+      if (document.getElementById("subscribe-to-ffxm").classList.contains("show")) {
+        ga_sendPing("CloseModal", "Clicked outside modal to close - Before Sign Up");
+      } else {
+        ga_sendPing("CloseModal", "Clicked outside modal to close - After Sign Up");
+      }
       closeModalWindow();
       document.getElementById("subscribe-modal").removeEventListener("click", closeWrapper);
     }
@@ -191,7 +230,7 @@ async function sha1(message) {
 
 async function hashEmailAndSend(emailFormSubmitEvent) {
   const emailForm = emailFormSubmitEvent.target;
-  ga_sendPing("Scan");
+  ga_sendPing("Scan", false);
   emailForm.classList.add("loading-data");
   for (const emailInput of emailForm.querySelectorAll("input[type=email]")) {
     emailForm.querySelector("input[name=emailHash]").value = await sha1(emailInput.value);
@@ -201,6 +240,7 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
 }
 
 const resendSubscribeData = function() {
+  ga_sendPing("Resend", false);
   document.getElementById("confirm-your-account").classList.add("sending");
   const userEmail = {
     "email": document.getElementById("submitted-email").textContent,
@@ -233,7 +273,7 @@ const addUser = (formEvent) => {
 
 const unsubscribeSurvey = (formEvent) => {
   const unsubSurvey = formEvent.target;
-  ga_sendPing("unsubscribeSurvey", unsubSurvey.querySelector("input[type='radio']:checked").value);
+  ga_sendPing("UnsubscribeSurvey", unsubSurvey.querySelector("input[type='radio']:checked").value);
   const surveyObject = {};
   postData(unsubSurvey.action, surveyObject)
     .then( () => {
@@ -309,6 +349,7 @@ function addFormListeners() {
 
 function handleFormSubmits(formEvent) {
   if (formEvent.target.id === "unsubscribe-form") {
+    ga_sendPing("Unsubscribe", false);
     return;
   }
   formEvent.preventDefault();
@@ -336,6 +377,7 @@ function handleFormSubmits(formEvent) {
     formEvent.target.classList.add("loading-data");
     addUser(formEvent);
     setModalTabbing();
+    ga_sendPing("SignUp_Complete", false);
     return;
   }
   formEvent.submit();
@@ -344,10 +386,12 @@ function handleFormSubmits(formEvent) {
 
 function doButtonRouting(event) {
   if (event.target.id === "show-additional-breaches") {
+    ga_sendPing("ShowAdditional", false);
     showAdditionalBreaches();
     return;
   }
   if (event.target.id === "sign-up") {
+    ga_sendPing("SignUp", false);
     openModalWindow();
     return;
   }
@@ -357,6 +401,7 @@ function doButtonRouting(event) {
     return;
   }
   if (event.target.classList.contains("close-modal")) {
+    ga_sendPing("CloseModal", event.target.dataset.analyticsLabel);
     closeModalWindow();
     return;
   }
@@ -379,9 +424,8 @@ function restoreInputs() {
 //prevents footer from covering stuff up
 
 window.addEventListener("pageshow", function() {
-  if (document.getElementById("no-breaches") || document.getElementById("found-breaches")) {
-    ga_sendPing("Pageview");
-  }
+  ga_sendPing("Pageview", false);
+
   if (document.forms) {
     restoreInputs();
   }
@@ -407,8 +451,10 @@ if (document.getElementById("no-breaches")) {
   document.getElementById("scan-another-email").classList.add("banner");
 }
 
-for (const el of document.querySelectorAll(".sendGA")) {
-  el.addEventListener("click", (e) => ga_sendPing(e.target.dataset.analyticsEvent));
+for (const el of Array.from(document.querySelectorAll("[data-analytics-event]"))) {
+  el.addEventListener("click", (e) => {
+    ga_sendPing(e.target.dataset.analyticsEvent, e.target.dataset.analyticsLabel);
+  });
 }
 
 if (document.querySelectorAll("button")) {

@@ -1,6 +1,6 @@
 <div id="subscribe-to-ffxm" class="modal-content">
   <h3 class="section-headline">Sign Up for Firefox Monitor</h3>
-  <p>Sign up for your full report, alerts when new breaches happen, and safety tips from Firefox&nbsp;Monitor. <a class="internal-link" href="https://www.mozilla.org/privacy/firefox-monitor/" target="_blank" rel="noopener">Terms&nbsp;and&nbsp;Privacy</a></p>
+  <p>Sign up for your full report, alerts when new breaches happen, and safety tips from Firefox&nbsp;Monitor. <a {{> analytics/link_event eventLabel="Terms & Privacy - Sign Up Modal"}} class="internal-link" href="https://www.mozilla.org/privacy/firefox-monitor/" target="_blank" rel="noopener">Terms&nbsp;and&nbsp;Privacy</a></p>
   
   {{#if FXA_ENABLED }}
     <button id="subscribe-fxa-btn" class="button">Subscribe with Firefox Account</button>
@@ -20,5 +20,5 @@
       <input id="subscribe-submit" type="submit" class="button submit-email blue-button" value="Sign Up"  />
     </div>
   </form>
-  <button class="close-modal internal-link">Close</button>
+  <button data-analytics-label="Before Sign Up" class="close-modal internal-link">Close</button>
 </div>
