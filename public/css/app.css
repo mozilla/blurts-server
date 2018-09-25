@@ -1312,6 +1312,23 @@ footer .copyright-info a {
   color: var(--blue40);
 }
 
+/* CONFIRMATION */
+
+#confirmation h4.secondary-title,
+#confirmation .whole.sub-head {
+  font-size: 18px;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+#confirmation h4.secondary-title {
+  margin-top: calc(var(--gap) * 2);
+}
+
+#confirmation .section-wrapper {
+  padding: 60px 30px;
+}
+
 /* WAVES GRAPHIC */
 
 .content-wrap {
