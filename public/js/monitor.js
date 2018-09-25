@@ -1,5 +1,14 @@
 "use strict";
 /* global ga */
+/* global libpolycrypt */
+
+
+if (typeof TextEncoder === "undefined") {
+  const cryptoScript = document.createElement("script");
+  const scripts = document.getElementsByTagName("script")[0];
+  cryptoScript.src = "/dist/edge.min.js";
+  scripts.parentNode.insertBefore(cryptoScript, scripts);
+}
 
 const eventList = {
   "Social": {
@@ -148,15 +157,16 @@ function setModalTabbing(){
   // if modal is displayed, set tabindex to 1 on only those elements
   // and disable tabbing on everything else
   if (document.body.classList.contains("show-subscribe-modal")) {
-    for (const eachElement of document.querySelectorAll("a, button, input")) {
+    document.querySelectorAll("a, button, input").forEach(eachElement => {
       eachElement.setAttribute("tabindex", modalTabContent.includes(eachElement) ? "1" : "-1");
-    }
+    });
+
     return;
   }
   // disable tabbing if modal window is closed and re-enable all other tabbing
-  for (const eachElement of document.querySelectorAll("a, button, input")) {
+  document.querySelectorAll("a, button, input").forEach( eachElement => {
     eachElement.setAttribute("tabindex", !modalTabContent.includes(eachElement) ? "1" : "-1");
-  }
+  });
 }
 
 const focusFirstInput = function(e) {
@@ -222,7 +232,12 @@ function checkBoxStates(checkBoxEvent) {
 async function sha1(message) {
   message = message.toLowerCase();
   const msgBuffer = new TextEncoder("utf-8").encode(message);
-  const hashBuffer = await crypto.subtle.digest("SHA-1", msgBuffer);
+  let hashBuffer;
+  if (/edge/i.test(navigator.userAgent)) {
+    hashBuffer = libpolycrypt.sha1(msgBuffer);
+  } else {
+    hashBuffer = await crypto.subtle.digest("SHA-1", msgBuffer);
+  }
   const hashArray = Array.from(new Uint8Array(hashBuffer));
   const hashHex = hashArray.map(b => ("00" + b.toString(16)).slice(-2)).join("");
   return hashHex.toUpperCase();
@@ -232,10 +247,9 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
   const emailForm = emailFormSubmitEvent.target;
   ga_sendPing("Scan", false);
   emailForm.classList.add("loading-data");
-  for (const emailInput of emailForm.querySelectorAll("input[type=email]")) {
-    emailForm.querySelector("input[name=emailHash]").value = await sha1(emailInput.value);
-    emailInput.value = "";
-  }
+  const emailInput = document.getElementById("scan-email");
+  emailForm.querySelector("input[name=emailHash]").value = await sha1(emailInput.value);
+  emailInput.value = "";
   emailForm.submit();
 }
 
@@ -302,7 +316,7 @@ function showAdditionalBreaches(){
 }
 
 const handleRadioButtons = function(form) {
-  const inputFields = form.querySelectorAll(".radio-button-group, .button");
+  const inputFields = Array.from(form.querySelectorAll(".radio-button-group, .button"));
   // set up ability to move between radio options by arrow key
   for (let x = 0; x < inputFields.length ; x++) {
     const input = inputFields[x];
@@ -329,7 +343,7 @@ const handleRadioButtons = function(form) {
 };
 
 function addFormListeners() {
-  for (const form of document.forms) {
+  Array.from(document.forms).forEach( form =>  {
     if (form.querySelector("input[type=email]")) {
       const emailInput = form.querySelector("input[type=email]");
       emailInput.addEventListener("keydown", (e) => removeInvalidMessage(e));
@@ -344,7 +358,7 @@ function addFormListeners() {
       handleRadioButtons(form);
     }
     form.addEventListener("submit", (e) => handleFormSubmits(e));
-  }
+  });
 }
 
 function handleFormSubmits(formEvent) {
@@ -410,15 +424,15 @@ function doButtonRouting(event) {
 
 //re-enables inputs and clears loader
 function restoreInputs() {
-  for (const form of document.forms) {
+  Array.from(document.forms).forEach( form => {
     form.classList.remove("loading-data");
     form.classList.remove("invalid");
-  }
-  for (const input of document.querySelectorAll("input")) {
+  });
+  document.querySelectorAll("input").forEach( input => {
     if (input.disabled) {
       input.disabled = false;
     }
-  }
+  });
 }
 
 //prevents footer from covering stuff up
@@ -451,14 +465,14 @@ if (document.getElementById("no-breaches")) {
   document.getElementById("scan-another-email").classList.add("banner");
 }
 
-for (const el of Array.from(document.querySelectorAll("[data-analytics-event]"))) {
+document.querySelectorAll("[data-analytics-event]").forEach(el => {
   el.addEventListener("click", (e) => {
     ga_sendPing(e.target.dataset.analyticsEvent, e.target.dataset.analyticsLabel);
   });
-}
+});
 
 if (document.querySelectorAll("button")) {
-  for (const eachButton of document.querySelectorAll("button")) {
-    eachButton.addEventListener("click", (e) => doButtonRouting(e));
-  }
+  document.querySelectorAll("button").forEach(button => {
+    button.addEventListener("click", (e) => doButtonRouting(e));
+  });
 }
