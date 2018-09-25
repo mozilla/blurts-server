@@ -451,7 +451,6 @@ if(document.forms) {
 
 if (document.getElementById("confirmation")) {
   document.querySelector("header").querySelector(".social-media-sharing-buttons").classList.add("hide");
-  document.getElementById("download-firefox-bar").classList.add("hide");
 }
 
 if (document.getElementById("unsubscribe-survey-form") || document.getElementById("unsubscribe-form") || document.getElementById("error-page-content")) {

@@ -39,7 +39,7 @@ function removeUtms() {
 
 
 if (browserName() === "firefox") {
-  if (document.getElementById("download-firefox")) {
+  if (document.getElementById("download-firefox") || document.getElementById("download-firefox-bar")) {
     document.querySelectorAll(".download-firefox").forEach(downloadBanner => {
       downloadBanner.classList.add("hide");
     });
