@@ -1,11 +1,5 @@
-/* eslint-disable no-var*/
-/* eslint-disable semi */
-/* eslint-disable eqeqeq */
-/* eslint-disable no-redeclare */
-/* eslint-disable comma-dangle */
-/* eslint-disable prefer-const */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-global-assign */
+// L3 - L51 courtesy of PolyCrypt - A pure JS implementation of the WebCrypto API repo 
+// https://github.com/polycrypt/polycrypt
 
 var CryptoJS=CryptoJS||function(h,o){var f={},j=f.lib={},k=j.Base=function(){function a(){}return{extend:function(b){a.prototype=this;var c=new a;b&&c.mixIn(b);c.$super=this;return c},create:function(){var a=this.extend();a.init.apply(a,arguments);return a},init:function(){},mixIn:function(a){for(var c in a)a.hasOwnProperty(c)&&(this[c]=a[c]);a.hasOwnProperty("toString")&&(this.toString=a.toString)},clone:function(){return this.$super.extend(this)}}}(),i=j.WordArray=k.extend({init:function(a,b){a=
   this.words=a||[];this.sigBytes=b!=o?b:4*a.length},toString:function(a){return(a||p).stringify(this)},concat:function(a){var b=this.words,c=a.words,d=this.sigBytes,a=a.sigBytes;this.clamp();if(d%4)for(var e=0;e<a;e++)b[d+e>>>2]|=(c[e>>>2]>>>24-8*(e%4)&255)<<24-8*((d+e)%4);else if(65535<c.length)for(e=0;e<a;e+=4)b[d+e>>>2]=c[e>>>2];else b.push.apply(b,c);this.sigBytes+=a;return this},clamp:function(){var a=this.words,b=this.sigBytes;a[b>>>2]&=4294967295<<32-8*(b%4);a.length=h.ceil(b/4)},clone:function(){var a=
@@ -56,6 +50,9 @@ const libpolycrypt = {
       return util.wa2abv(hash);
   },
 };
+
+//TextEncoder polyfill (L56 - L108) from Mozilla Developer Network 
+// https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder
 
 if (typeof TextEncoder === "undefined") {
   TextEncoder=function TextEncoder(){};
