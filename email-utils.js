@@ -39,6 +39,7 @@ const EmailUtils = {
 
     gTransporter = nodemailer.createTransport(smtpUrl);
     const gTransporterVerification = await gTransporter.verify();
+    gTransporter.use("compile", hbs(hbsOptions));
     return Promise.resolve(gTransporterVerification);
   },
 
@@ -51,7 +52,6 @@ const EmailUtils = {
       SERVER_URL: AppConstants.SERVER_URL,
     }, aContext);
     return new Promise((resolve, reject) => {
-      gTransporter.use("compile", hbs(hbsOptions));
       const emailFrom = AppConstants.EMAIL_FROM;
       const mailOptions = {
         from: emailFrom,
