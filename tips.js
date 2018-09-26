@@ -24,7 +24,7 @@ const TIPS = [
         "number": "4",
         "tip_title": "Use a password manager.",
         "headline": "Use a Password<br>Manager",
-        "summary": "Password managers like 1Password, LastPass, or Dashlane can generate strong passwords for you, remember them for you, and fill them into websites so you don't have to type them in.",
+        "summary": "Password managers like 1Password, LastPass, Dashlane, or Bitwarden can generate strong passwords for you, remember them for you, and fill them into websites so you don't have to type them in.",
       },
       {
         "number": "5",
