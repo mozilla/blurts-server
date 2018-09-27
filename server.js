@@ -66,7 +66,10 @@ app.use(helmet.contentSecurityPolicy({
   },
 }));
 app.use(helmet.referrerPolicy({ policy: "strict-origin-when-cross-origin" }));
-app.use(express.static("public"));
+app.use(express.static("public", {
+  setHeaders: res => res.set("Cache-Control",
+    "public, maxage=" + 10 * 60 * 1000 + ", s-maxage=" + 24 * 60 * 60 * 1000),
+})); // 10-minute client-side caching; 24-hour server-side caching
 
 app.engine("hbs", exphbs({
   extname: ".hbs",
