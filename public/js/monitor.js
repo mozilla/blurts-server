@@ -97,32 +97,14 @@ function ga_sendPing(eventDescription, eventLabel) {
     const eventCategory = event["eventCategory"];
     const eventAction = event["eventAction"];
 
-    if (eventLabel) {
-      if (eventDescription.includes("UnsubscribeSurvey")) {
-        return ga("send", "event", eventCategory, eventAction, eventLabel);
-      }
-      if (eventDescription.includes("Download")) {
-        return ga("send", "event", eventCategory, eventAction, eventLabel, "", {"dimension1": ga_getLocation()});
-      }
-      if (eventDescription.includes("Social")) {
-        return ga("send", "event", eventCategory, eventAction, eventLabel, "", {"dimension1": ga_getLocation()});
-      }
-      return ga("send", "event", eventCategory, eventAction, eventLabel, "", {"dimension1": ga_getLocation()});
+    if (!eventLabel) {
+      eventLabel = ga_getLocation();
+    } else {
+      eventLabel = eventLabel + " --- " + ga_getLocation();
     }
-
-    eventLabel = ga_getLocation();
-
     if (eventLabel.includes("Error")) {
       eventLabel = document.getElementById("error-message").innerText;
-      return ga("send", "event", "Errors", "", "Error Page", "", {"dimension4": eventLabel});
-    }
-    if (eventLabel.includes("Confirm")) {
-      return ga("send", "event", "Confirmed Account", "");
-    }
-
-    // append metric "1" to scan pings per analytics team request
-    if (eventDescription.includes("Scan")) {
-      return ga("send", "event", eventCategory, eventAction, `User submitted email from - ${eventLabel}`, "", {"metric1" : 1});
+      return ga("send", "event", "Errors", "Error Page", eventLabel);
     }
     return ga("send", "event", eventCategory, eventAction, eventLabel);
   }
