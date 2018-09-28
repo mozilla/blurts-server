@@ -224,7 +224,6 @@ footer img {
 .sub-page-content,
 .error-page-content {
   justify-content: center;
-  align-items: center;
   display: flex;
   flex-direction: column;
   min-height: 75vh;
