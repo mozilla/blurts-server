@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ locale }}">
   <head>
-     <meta charset="utf-8" />
+    <meta charset="utf-8" />
     <link rel="stylesheet" href="/dist/app.min.css">
     <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -14,6 +14,7 @@
     <meta name="theme-color" content="#002275" />
     <title>{{ title }}</title>
     <script type="text/javascript" src="/dist/app.min.js" defer></script>
+
     <link rel="icon" href="/img/favicons/favicon-32.png" sizes="32x32" />
     <link rel="icon" href="/img/favicons/favicon-96.png" sizes="96x96" />
     <link rel="icon" href="/img/favicons/favicon-128.png" sizes="128x128" />
@@ -42,10 +43,10 @@
           <a {{> analytics/link_event eventLabel="Mozilla Logo"}} class="footer-logo-wrapper" href="https://www.mozilla.org/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener" aria-label="Mozilla.">{{> sprite symID="Mozilla" }}</a>
         </div>
         <ul class="third">
-          <li>Support</li>
-          <li><a {{> analytics/link_event eventLabel="Give Feedback"}} href="https://qsurvey.mozilla.com/s3/Firefox-Monitor-Feedback" target="_blank" rel="noopener">Give Feedback</a></li>
-          <li><a {{> analytics/link_event eventLabel="Terms & Privacy"}} href="https://www.mozilla.org/privacy/firefox-monitor/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">Terms&nbsp;and&nbsp;Privacy</a></li>
-          <li><a {{> analytics/link_event eventLabel="GitHub"}} href="https://github.com/mozilla/blurts-server/" target="_blank" rel="noopener noreferrer" aria-label="Firefox Monitor repository on GitHub.">{{> sprite symID="GitHub" }}</a></li>
+          <li>{{fluentFormat req "layout-support" }}</li>
+          <li><a {{> analytics/link_event eventLabel="Give Feedback"}} href="https://qsurvey.mozilla.com/s3/Firefox-Monitor-Feedback" target="_blank" rel="noopener">{{fluentFormat req "layout-feedback" }}</a></li>
+          <li><a {{> analytics/link_event eventLabel="Terms & Privacy"}} href="https://www.mozilla.org/privacy/firefox-monitor/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">{{fluentFormat req "layout-terms"}}</a></li>
+          <li><a {{> analytics/link_event eventLabel="GitHub"}} href="https://github.com/mozilla/blurts-server/" target="_blank" rel="noopener noreferrer"><img src="/img/github.svg" alt="GitHub Logo" /></a></li>
         </ul>
         <ul class="third">
           <li>Firefox</li>

@@ -1,9 +1,16 @@
 "use strict";
 
+const { LocaleUtils } = require("./locale-utils");
 const mozlog = require("./log");
 
 
 const log = mozlog("hbs-helpers");
+
+
+function fluentFormat (req, fluentID, args) {
+  return LocaleUtils.fluentFormat(req.pickedLanguage, fluentID, args);
+}
+
 
 function breachDataClasses(dataClasses) {
   if (dataClasses.constructor === Array) {
@@ -16,7 +23,7 @@ function breachDataClasses(dataClasses) {
 
 function prettyDate(date) {
   const jsDate = new Date(date);
-  // TODO: localize this
+  // TODO: l10n
   return jsDate.toLocaleDateString("en-US", {year: "numeric", month: "long", day: "numeric"});
 }
 
@@ -90,6 +97,7 @@ function breachMath(lValue, operator = null, rValue = null) {
 
 
 module.exports = {
+  fluentFormat,
   breachDataClasses,
   prettyDate,
   localeString,

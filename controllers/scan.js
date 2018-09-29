@@ -39,7 +39,7 @@ async function post (req, res) {
       }
     }
     res.render("scan", {
-      title: "Firefox Monitor : Scan Results",
+      title: req.fluentFormat("scan-title"),
       foundBreaches,
       featuredBreach,
       userAccountCompromised,
@@ -49,7 +49,7 @@ async function post (req, res) {
 
   else {
     res.render("scan", {
-      title: "Firefox Monitor : Scan Results",
+      title: req.fluentFormat("scan-title"),
       foundBreaches,
       passwordTips: TIPS,
     });

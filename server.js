@@ -11,7 +11,8 @@ const url = require("url");
 const EmailUtils = require("./email-utils");
 const HBSHelpers = require("./hbs-helpers");
 const HIBP = require("./hibp");
-const {logErrors, clientErrorHandler, errorHandler} = require("./middleware");
+const {addRequestToResponse, pickLanguage, logErrors, localizeErrorMessages, clientErrorHandler, errorHandler} = require("./middleware");
+const { LocaleUtils } = require("./locale-utils");
 const mozlog = require("./log");
 
 const HibpRoutes = require("./routes/hibp");
@@ -36,6 +37,13 @@ if (app.get("env") !== "dev") {
       res.redirect("https://" + req.headers.host + req.url);
     }
   });
+}
+
+try {
+  LocaleUtils.init();
+  LocaleUtils.loadLanguagesIntoApp(app);
+} catch (error) {
+  log.error("try-load-languages-error", { error: error });
 }
 
 (async () => {
@@ -102,6 +110,9 @@ app.use(sessions({
   cookie: cookie,
 }));
 
+app.use(pickLanguage);
+app.use(addRequestToResponse);
+
 if (!AppConstants.DISABLE_DOCKERFLOW) {
   const DockerflowRoutes = require("./routes/dockerflow");
   app.use("/", DockerflowRoutes);
@@ -116,6 +127,7 @@ app.use("/user", UserRoutes);
 app.use("/", HomeRoutes);
 
 app.use(logErrors);
+app.use(localizeErrorMessages);
 app.use(clientErrorHandler);
 app.use(errorHandler);
 

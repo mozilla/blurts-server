@@ -1,5 +1,6 @@
 "use strict";
 
+// TODO: l10n
 const UNSUB_REASONS = [
   {
     "id_number": "1",

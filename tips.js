@@ -1,6 +1,7 @@
 "use strict";
 /*eslint-disable quotes */
 
+// TODO: l10n
 const TIPS = [
       {
         "number": "1",

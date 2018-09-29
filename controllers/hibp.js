@@ -1,9 +1,12 @@
 "use strict";
 
+const acceptLanguage = require("accept-language");
+
 const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const HIBP = require("../hibp");
+const { LocaleUtils } = require ("../locale-utils");
 const HBSHelpers = require("../hbs-helpers");
 const mozlog = require("../log");
 
@@ -39,15 +42,19 @@ async function notify (req, res) {
 
   log.info("notification", { length: subscribers.length, breachAlertName: breachAlert.Name });
 
+  // Set languages for acceptLanguage to get the right lang for each subscriber
+  acceptLanguage.languages(req.app.locals.AVAILABLE_LANGUAGES);
+
   const notifiedSubscribers = [];
 
   for (const subscriber of subscribers) {
     const email = subscriber.email;
+    const subscriberLanguage = acceptLanguage.get(subscriber.signup_language);
 
     if (!notifiedSubscribers.includes(email)) {
       await EmailUtils.sendEmail(
         email,
-        "Firefox Monitor Alert : Your account was involved in a breach.",
+        LocaleUtils.fluentFormat(subscriberLanguage, "hibp-notify-email-subject"),
         "report",
         {
           email,

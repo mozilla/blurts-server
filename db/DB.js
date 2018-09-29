@@ -5,6 +5,7 @@
 const uuidv4 = require("uuid/v4");
 const Knex = require("knex");
 
+const { FluentError } = require("../locale-utils");
 const AppConstants = require("../app-constants");
 const HIBP = require("../hibp");
 const Basket = require("../basket");
@@ -55,7 +56,7 @@ const DB = {
   async verifyEmailHash(token) {
     const unverifiedSubscriber = await this.getSubscriberByToken(token);
     if (!unverifiedSubscriber) {
-      throw new Error("This email address is not subscribed to Firefox Monitor.");
+      throw new FluentError("error-not-subscribed");
     }
     const verifiedSubscriber = await this._verifySubscriber(unverifiedSubscriber);
     return verifiedSubscriber[0];
