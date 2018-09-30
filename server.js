@@ -60,7 +60,7 @@ app.use(helmet.contentSecurityPolicy({
     fontSrc: ["'self'", "https://code.cdn.mozilla.net/fonts/"],
     frameAncestors: ["'none'"],
     imgSrc: ["'self'", "https://www.google-analytics.com"],
-    objectSrc: ["'none'"],
+    objectSrc: ["'self'"],
     scriptSrc: ["'self'", "https://www.google-analytics.com/analytics.js"],
     styleSrc: ["'self'", "https://code.cdn.mozilla.net/fonts/"],
     reportUri: "/__cspreport__",
