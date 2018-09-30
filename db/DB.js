@@ -40,13 +40,14 @@ const DB = {
       .where("email", "=", email);
   },
 
-  async addSubscriberUnverifiedEmailHash(email, fxNewsletter = false) {
+  async addSubscriberUnverifiedEmailHash(email, fxNewsletter = false, signupLanguage="en") {
     const res = await knex("subscribers").insert({
       email: email,
       sha1: getSha1(email),
       verification_token: uuidv4(),
       verified: false,
       fx_newsletter: fxNewsletter,
+      signup_language: signupLanguage,
     }).returning("*");
     return res[0];
   },
