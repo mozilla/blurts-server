@@ -38,15 +38,16 @@ body {
   position: relative;
   background: #07081e;
   background-image:
+    url("/img/wave-header.svg"),
     linear-gradient(
       177deg,
       #002275,
       #23113d 95.11%
     );
   background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed;
-  background-size: cover;
+  background-position: 0 -5%, center center;
+  background-attachment: scroll, fixed;
+  background-size: contain, cover;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -1349,29 +1350,21 @@ footer .copyright-info a {
   height: 100%;
   pointer-events: none;
   min-height: 75vh;
+  background-image: url("/img/wave-footer.svg");
+  background-position: 0 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .content-wrap > * {
   pointer-events: all;
 }
 
-.wave {
-  position: absolute;
-  left: 0;
-  right: 0;
-  width: 100%;
-  margin: 0 auto;
-  pointer-events: none;
-  opacity: 0.8;
-}
+/* Disable inline wave images on static 429 error page */
 
-#header-wave {
-  top: -100px;
-}
-
+#header-wave,
 #footer-wave {
-  bottom: -100px;
-  transform: rotate(180deg);
+  display: none;
 }
 
 /* UNSUBSCRIBE CONTENT */
@@ -1438,26 +1431,40 @@ form.show-thankyou span.thank-you-message {
 /* // PLACEHOLDER media screens */
 
 @media screen and (min-width: 2200px) {
-  img#header-wave {
-    top: -200px;
+  body {
+    background-position: 0  -8%, center center;
   }
 
-  img#footer-wave {
-    bottom: -200px;
+  .content-wrap {
+    background-position: 0 120%;
+  }
+}
+
+@media screen and (max-width: 2300px) {
+  body {
+    background-position: 0  -5%, center center;
+  }
+
+  .content-wrap {
+    background-position: 0 105%;
   }
 }
 
 @media screen and (max-width: 1300px) {
-  img#header-wave {
-    top: 0;
+  body {
+    background-position: 0 -3%, center center;
   }
 
-  img#footer-wave {
-    bottom: 0;
+  .content-wrap {
+    background-position: 0 100%;
   }
 }
 
 @media screen and (max-width: 1200px) {
+  body {
+    background-position: 0 0, center center;
+  }
+
   #sign-up-banner .fourth,
   #sign-up-banner .half {
     margin-top: var(--gap);
