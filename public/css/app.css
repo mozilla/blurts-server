@@ -711,10 +711,13 @@ header a h1 {
   font-size: calc(23px + 0.6vw);
 }
 
-img.logo {
+.firefox-logo {
   margin-right: calc(var(--gap) / 2);
-  width: auto !important;
-  height: 50px;
+  background: url("/img/gradient-sprites.png") -330px 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 55px;
+  height: 55px;
 }
 
 /* main banner content  */
