@@ -825,7 +825,6 @@ main.scan-results #featured-breach .breach-headline {
 .subscribe-icon-wrapper svg {
   height: 80px;
   max-width: 140px;
-  
 }
 
 #sign-up-banner .half {
@@ -858,37 +857,52 @@ main.scan-results #featured-breach .breach-headline {
 .tip {
   height: 100%;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0);
+  flex-direction: column;
 }
 
-.tip-container {
-  margin-bottom: 0;
-}
-
-.tip p {
-  padding: calc(var(--gap) / 2);
-}
-
-.tip img {
-  max-height: 90px;
-}
-
-.tip-header {
-  padding-top: var(--gap);
-  border-top-right-radius: 3px;
-  border-top-left-radius: 3px;
-  height: 50px;
+.tip > * {
   margin-bottom: var(--gap);
 }
 
-.tip-header h4 {
+.tip p {
+  padding: 0 calc(var(--gap) / 2);
+}
+
+.tip h4 {
   font-size: 17px;
 }
 
-.tip-numeral {
-  font-size: 22px;
-  line-height: 10px;
-  margin-top: 10px;
+.tip-icon-1 {
+  background: url(/img/gradient-sprites.png) 0 0;
+}
+
+.tip-icon-2 {
+  background: url(/img/gradient-sprites.png) -85px 0;
+}
+
+.tip-icon-3 {
+  background: url(/img/gradient-sprites.png) -170px 0;
+}
+
+.tip-icon-4 {
+  background: url(/img/gradient-sprites.png) -255px 0;
+}
+
+.tip-icon-5 {
+  background: url(/img/gradient-sprites.png) -340px 0;
+}
+
+.tip-icon-6 {
+  background: url(/img/gradient-sprites.png) -425px 0;
+}
+
+.tip-icon {
+  height: 85px;
+  width: 85px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ////// subscribe window */
@@ -1229,7 +1243,7 @@ ul.social-media-sharing-buttons li {
 }
 
 ul.social-media-sharing-buttons li:first-of-type {
-  margin-left: 0px;
+  margin-left: 0;
 }
 
 ul.social-media-sharing-buttons a {
@@ -1240,7 +1254,7 @@ ul.social-media-sharing-buttons a {
   min-height: 30px;
 }
 
-ul.social-media-sharing-buttons a span, 
+ul.social-media-sharing-buttons a span,
 ul.social-media-sharing-buttons li a svg {
   vertical-align: middle;
   display: inline-block;
@@ -1263,7 +1277,7 @@ ul.social-media-sharing-buttons li a svg:last-of-type,
   width: 31px;
 }
 
-ul.social-media-sharing-buttons a {
+.sub-page-content ul.social-media-sharing-buttons a {
   min-width: 50px;
 }
 
@@ -1272,7 +1286,7 @@ ul.social-media-sharing-buttons a {
   height: 50px;
   width: 50px;
   max-width: 50px;
-;}
+}
 
 /* //// FOOTER */
 
@@ -1696,9 +1710,9 @@ form.show-thankyou span.thank-you-message {
     min-width: 200px !important;
   }
 
-  .tip-container {
+  /* .tip-container {
     margin-top: calc(var(--gap) * 2);
-  }
+  } */
 }
 
 a,
