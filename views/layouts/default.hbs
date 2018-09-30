@@ -39,13 +39,13 @@
         <footer id="footer">
       <div class="section-wrapper">
         <div class="third">
-          <a {{> analytics/link_event eventLabel="Mozilla Logo"}} class="footer-logo-wrapper" href="https://www.mozilla.org/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener"><img src="/img/moz-logo-bw-rgb.svg" alt="Mozilla Logo" /></a>
+          <a {{> analytics/link_event eventLabel="Mozilla Logo"}} class="footer-logo-wrapper" href="https://www.mozilla.org/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener" aria-label="Mozilla.">{{> sprite symID="Mozilla" }}</a>
         </div>
         <ul class="third">
           <li>Support</li>
           <li><a {{> analytics/link_event eventLabel="Give Feedback"}} href="https://qsurvey.mozilla.com/s3/Firefox-Monitor-Feedback" target="_blank" rel="noopener">Give Feedback</a></li>
           <li><a {{> analytics/link_event eventLabel="Terms & Privacy"}} href="https://www.mozilla.org/privacy/firefox-monitor/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">Terms&nbsp;and&nbsp;Privacy</a></li>
-          <li><a {{> analytics/link_event eventLabel="GitHub"}} href="https://github.com/mozilla/blurts-server/" target="_blank" rel="noopener noreferrer"><img src="/img/github.svg" alt="GitHub Logo" /></a></li>
+          <li><a {{> analytics/link_event eventLabel="GitHub"}} href="https://github.com/mozilla/blurts-server/" target="_blank" rel="noopener noreferrer" aria-label="Firefox Monitor repository on GitHub.">{{> sprite symID="GitHub" }}</a></li>
         </ul>
         <ul class="third">
           <li>Firefox</li>
