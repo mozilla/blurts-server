@@ -713,7 +713,7 @@ header a h1 {
 
 .firefox-logo {
   margin-right: calc(var(--gap) / 2);
-  background: url("/img/gradient-sprites.png") -330px 0px;
+  background: url("/img/gradient-sprites.png") -330px 0;
   background-repeat: no-repeat;
   background-size: cover;
   width: 55px;
@@ -1043,8 +1043,13 @@ body.show-subscribe-modal .modal-content.show {
 }
 
 .confirm-your-account-icon {
-  padding-right: 15.5%;
+  padding-right: 14%;
   margin-bottom: var(--gap);
+}
+
+.confirm-your-account-icon svg {
+  max-width: 127px;
+  max-height: 94px;
 }
 
 .resend-data {
@@ -1056,8 +1061,8 @@ body.show-subscribe-modal .modal-content.show {
 
 .modal-content.show.sending p,
 .modal-content.show.sent p,
-.modal-content.show.sending .confirm-your-account-icon,
-.modal-content.show.sent .confirm-your-account-icon,
+.modal-content.show.sending .confirm-your-account svg,
+.modal-content.show.sent .confirm-your-account svg,
 .modal-content.show.sending .close-modal,
 .modal-content.show.sending h3,
 .modal-content.show.sent h3 {
