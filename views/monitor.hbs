@@ -1,27 +1,25 @@
 {{!< default }}
 <main class="landing-content">
   <section class="section-wrapper">
-    {{#if featuredBreach }}
-      <div class="half">
-        <h2 class="section-headline">Your right to be safe from hackers starts here.</h2>
-        <span class="demi">Find out if your <span class="bold">{{ featuredBreach.Title }}</span> account was compromised.</span>
+    <div class="half">
+      <h2 data-location="landing-page" class="section-headline">Your right to be safe from hackers starts here.</h2>
+      {{#if featuredBreach }}
+        <span data-location="featured-breach" class="demi form-desc">Find out if your <span class="bold">{{ featuredBreach.Title }}</span> account was compromised.</span>
         {{> scan_form}}
-      </div>
-      <div id="featured-breach-landing" class="half">
+      {{else}}
+        <p class="landing-blurb">
+          Firefox Monitor arms you with tools to keep your personal information safe. Find out what hackers already know about you and learn how to stay a step ahead of them.
+        </p>
+      {{/if}}
+    </div>
+    <div class="half">
+      {{#if featuredBreach}}
         {{> featured_breach }}
-      </div>
-    {{else}}
-      <h2 class="half section-headline">Your right to be safe from hackers starts here.</h2>
-        <div class="wrap-row">
-          <p class="half">
-            Firefox Monitor arms you with tools to keep your personal information safe. Find out what hackers already know about you and learn how to stay a step ahead of them.
-          </p>
-        <div class="half">
-          <span>Try it out. Enter your email for a basic scan.</span>
-          {{> scan_form}}
-        </div>
-      </div>
-    {{/if}}
+      {{else}}
+        <span class="demi form-desc">Try it out. Enter your email for a basic scan.</span>
+        {{> scan_form}}
+      {{/if}}
+    </div>
   </section>
 </main>
 
