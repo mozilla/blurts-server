@@ -233,6 +233,16 @@ footer img {
 
 .error-page-content {
   margin-top: -10vh;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.error-page-content.section-wrapper .half {
+  flex-direction: column !important;
+  justify-content: center;
+  display: block;
+  flex: none;
+  margin-bottom: 20vh;
 }
 
 .sub-page-content .section-wrapper:last-of-type {
