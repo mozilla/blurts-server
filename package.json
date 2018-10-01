@@ -48,8 +48,6 @@
     "npm-run-all": "^4.1.3",
     "onchange": "^4.1.0",
     "postcss-cli": "^6.0.0",
-    "postcss-css-variables": "^0.9.0",
-    "postcss-preset-env": "^5.3.0",
     "stylelint": "^9.2.0",
     "stylelint-config-standard": "^18.2.0",
     "uglify-js": "^3.4.9"
@@ -85,11 +83,10 @@
   "scripts": {
     "js:minify": "minify public/dist/app.min.js -o public/dist/app.min.js",
     "js:concat": "concat -o public/dist/app.min.js public/js/*.js",
-    "css:minify": "cleancss -o public/dist/app.min.css public/dist/app.min.css",
-    "css:vars": "postcss -u postcss-css-variables -o public/dist/app.min.css public/css/app.css",
+    "css:minify": "cleancss -o public/dist/app.min.css public/css/app.css",
+    "build:css": "run-s css:minify",
     "build:js": "run-s js:concat js:minify",
-    "build:css": "run-s css:vars css:minify",
-    "build:polyfills":"minify public/js/polyfills/edge.js -o public/dist/edge.min.js",
+    "build:polyfills": "minify public/js/polyfills/edge.js -o public/dist/edge.min.js",
     "watch:js": "onchange 'public/js/monitor.js' -- npm run build:js",
     "watch:css": "onchange 'public/css/app.css' -- npm run build:css",
     "watch:all": "run-p watch:css watch:js",
