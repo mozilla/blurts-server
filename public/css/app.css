@@ -713,7 +713,7 @@ header a h1 {
 
 .firefox-logo {
   margin-right: calc(var(--gap) / 2);
-  background: url("/img/gradient-sprites.png") -330px 0;
+  background: url("/img/gradient-sprites.png") -331px 0;
   background-repeat: no-repeat;
   background-size: cover;
   width: 55px;
