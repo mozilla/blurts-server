@@ -19,6 +19,7 @@ jest.mock("../../hibp");
 test("user add POST with email adds unverified subscriber and sends verification email", async () => {
     // Set up test context
     const userAddEmail = "userAdd@test.com";
+    const userAddLanguages = "en-US,en;q=0.5";
     let subscribers = await DB.getSubscribersByEmail(userAddEmail);
     expect(subscribers.length).toEqual(0);
 
@@ -26,6 +27,7 @@ test("user add POST with email adds unverified subscriber and sends verification
     const req = httpMocks.createRequest({
       method: "POST",
       url: "/user/add",
+      headers: { "accept-language": userAddLanguages },
       body: {email:userAddEmail},
     });
     const resp = httpMocks.createResponse();
@@ -41,6 +43,7 @@ test("user add POST with email adds unverified subscriber and sends verification
     const userAdded = subscribers[0];
     expect(userAdded.email).toEqual(userAddEmail);
     expect(userAdded.verified).toBeFalsy();
+    expect(userAdded.signup_language).toEqual(userAddLanguages);
 
     const mockCalls = EmailUtils.sendEmail.mock.calls;
     expect(mockCalls.length).toEqual(1);
