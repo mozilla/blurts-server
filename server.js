@@ -51,7 +51,7 @@ app.use(helmet());
 app.use(helmet.contentSecurityPolicy({
   directives: {
     baseUri: ["'none'"],
-    defaultSrc: ["'none'"],
+    defaultSrc: ["'self'"],
     connectSrc: [
       "'self'",
       "https://code.cdn.mozilla.net/fonts/",
@@ -59,6 +59,7 @@ app.use(helmet.contentSecurityPolicy({
     ],
     fontSrc: ["'self'", "https://code.cdn.mozilla.net/fonts/"],
     frameAncestors: ["'none'"],
+    mediaSrc: ["'self'"],
     imgSrc: ["'self'", "https://www.google-analytics.com"],
     objectSrc: ["'none'"],
     scriptSrc: ["'self'", "https://www.google-analytics.com/analytics.js"],

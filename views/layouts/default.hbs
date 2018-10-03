@@ -21,13 +21,12 @@
   </head>
   <body data-server-url="{{ SERVER_URL }}">
     <div id="content-wrap" class="content-wrap">
-      <img id="header-wave" class="wave" src="/img/wave.svg" />
       {{> subscribe_modal/subscribe_modal_wrapper}}
       {{> banners/download_firefox_bar}}
       <header class ="section-wrapper">
         <div class="half">
           <a class="wrap-row" href="/">
-            <img alt="Firefox Logo" class="logo" src="/img/firefox-logo.png" />
+            <div class="firefox-logo"></div>
             <h1><span class="demi">Firefox</span> Monitor</h1>
           </a>
         </div>
@@ -36,18 +35,17 @@
         </div>
       </header>
         {{{ body }}}
-      <img id="footer-wave" class="wave" src="/img/wave.svg" />
     </div>
         <footer id="footer">
       <div class="section-wrapper">
         <div class="third">
-          <a {{> analytics/link_event eventLabel="Mozilla Logo"}} class="footer-logo-wrapper" href="https://www.mozilla.org/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener"><img src="/img/moz-logo-bw-rgb.svg" alt="Mozilla Logo" /></a>
+          <a {{> analytics/link_event eventLabel="Mozilla Logo"}} class="footer-logo-wrapper" href="https://www.mozilla.org/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener" aria-label="Mozilla.">{{> sprite symID="Mozilla" }}</a>
         </div>
         <ul class="third">
           <li>Support</li>
           <li><a {{> analytics/link_event eventLabel="Give Feedback"}} href="https://qsurvey.mozilla.com/s3/Firefox-Monitor-Feedback" target="_blank" rel="noopener">Give Feedback</a></li>
           <li><a {{> analytics/link_event eventLabel="Terms & Privacy"}} href="https://www.mozilla.org/privacy/firefox-monitor/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">Terms&nbsp;and&nbsp;Privacy</a></li>
-          <li><a {{> analytics/link_event eventLabel="GitHub"}} href="https://github.com/mozilla/blurts-server/" target="_blank" rel="noopener noreferrer"><img src="/img/github.svg" alt="GitHub Logo" /></a></li>
+          <li><a {{> analytics/link_event eventLabel="GitHub"}} href="https://github.com/mozilla/blurts-server/" target="_blank" rel="noopener noreferrer" aria-label="Firefox Monitor repository on GitHub.">{{> sprite symID="GitHub" }}</a></li>
         </ul>
         <ul class="third">
           <li>Firefox</li>

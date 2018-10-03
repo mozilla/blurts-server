@@ -38,15 +38,16 @@ body {
   position: relative;
   background: #07081e;
   background-image:
+    url("/img/wave-header.svg"),
     linear-gradient(
       177deg,
       #002275,
       #23113d 95.11%
     );
   background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed;
-  background-size: cover;
+  background-position: 0 -5%, center center;
+  background-attachment: scroll, fixed;
+  background-size: contain, cover;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -710,10 +711,13 @@ header a h1 {
   font-size: calc(23px + 0.6vw);
 }
 
-img.logo {
+.firefox-logo {
   margin-right: calc(var(--gap) / 2);
-  width: auto !important;
-  height: 50px;
+  background: url("/img/gradient-sprites.png") -331px 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 55px;
+  height: 55px;
 }
 
 /* main banner content  */
@@ -837,7 +841,13 @@ main.scan-results #featured-breach .breach-headline {
 }
 
 #sign-up-banner .subscribe-icon-wrapper {
-  justify-content: flex-start;
+  justify-content: center;
+  max-width: 200px;
+}
+
+.subscribe-icon-wrapper svg {
+  height: 80px;
+  max-width: 140px;
 }
 
 #sign-up-banner .half {
@@ -870,37 +880,52 @@ main.scan-results #featured-breach .breach-headline {
 .tip {
   height: 100%;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0);
+  flex-direction: column;
 }
 
-.tip-container {
-  margin-bottom: 0;
-}
-
-.tip p {
-  padding: calc(var(--gap) / 2);
-}
-
-.tip img {
-  max-height: 90px;
-}
-
-.tip-header {
-  padding-top: var(--gap);
-  border-top-right-radius: 3px;
-  border-top-left-radius: 3px;
-  height: 50px;
+.tip > * {
   margin-bottom: var(--gap);
 }
 
-.tip-header h4 {
+.tip p {
+  padding: 0 calc(var(--gap) / 2);
+}
+
+.tip h4 {
   font-size: 17px;
 }
 
-.tip-numeral {
-  font-size: 22px;
-  line-height: 10px;
-  margin-top: 10px;
+.tip-icon-1 {
+  background: url(/img/gradient-sprites.png) 0 0;
+}
+
+.tip-icon-2 {
+  background: url(/img/gradient-sprites.png) -85px 0;
+}
+
+.tip-icon-3 {
+  background: url(/img/gradient-sprites.png) -170px 0;
+}
+
+.tip-icon-4 {
+  background: url(/img/gradient-sprites.png) -255px 0;
+}
+
+.tip-icon-5 {
+  background: url(/img/gradient-sprites.png) -340px 0;
+}
+
+.tip-icon-6 {
+  background: url(/img/gradient-sprites.png) -425px 0;
+}
+
+.tip-icon {
+  height: 85px;
+  width: 85px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ////// subscribe window */
@@ -1038,8 +1063,13 @@ body.show-subscribe-modal .modal-content.show {
 }
 
 .confirm-your-account-icon {
-  padding-right: 15.5%;
+  padding-right: 14%;
   margin-bottom: var(--gap);
+}
+
+.confirm-your-account-icon svg {
+  max-width: 127px;
+  max-height: 94px;
 }
 
 .resend-data {
@@ -1051,8 +1081,8 @@ body.show-subscribe-modal .modal-content.show {
 
 .modal-content.show.sending p,
 .modal-content.show.sent p,
-.modal-content.show.sending .confirm-your-account-icon,
-.modal-content.show.sent .confirm-your-account-icon,
+.modal-content.show.sending .confirm-your-account svg,
+.modal-content.show.sent .confirm-your-account svg,
 .modal-content.show.sending .close-modal,
 .modal-content.show.sending h3,
 .modal-content.show.sent h3 {
@@ -1232,43 +1262,58 @@ span.breach-info .medium {
 /* /// SOCIAL MEDIA SHARING BUTTONS  */
 
 ul.social-media-sharing-buttons {
-  white-space: nowrap;
-  font-size: 12px;
   display: flex;
-  align-content: center;
+  font-size: 14px;
 }
 
 ul.social-media-sharing-buttons li {
-  display: inline-block;
   margin-left: var(--gap);
 }
 
+ul.social-media-sharing-buttons li:first-of-type {
+  margin-left: 0;
+}
+
 ul.social-media-sharing-buttons a {
-  display: block;
   height: 100%;
   padding: 3px;
   border: 1px solid rgba(0, 0, 0, 0);
   outline: 1px solid rgba(0, 0, 0, 0);
+  min-height: 30px;
 }
 
-ul.social-media-sharing-buttons img {
-  max-height: 24px;
-  pointer-events: none;
+ul.social-media-sharing-buttons a span,
+ul.social-media-sharing-buttons li a svg {
+  vertical-align: middle;
+  display: inline-block;
 }
 
-.secondary-social-icon,
-.sub-page-content .primary-social-icon,
+ul.social-media-sharing-buttons li a svg:last-of-type,
+.sub-page-content ul.social-media-sharing-buttons li a svg:first-of-type,
 .sub-page-content .social-media-sharing-buttons span {
   display: none;
 }
 
-.facebook-button {
-  margin-right: 5px !important;
+.facebook svg {
+  height: 21px;
+  max-width: 10px;
+  margin-right: 5px;
 }
 
-.sub-page-content .secondary-social-icon {
-  display: inline;
-  max-height: 40px;
+.twitter svg {
+  height: 21px;
+  width: 31px;
+}
+
+.sub-page-content ul.social-media-sharing-buttons a {
+  min-width: 50px;
+}
+
+.sub-page-content ul.social-media-sharing-buttons li a svg:last-of-type {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  max-width: 50px;
 }
 
 /* //// FOOTER */
@@ -1313,8 +1358,9 @@ footer li a {
   background-color: rgba(255, 255, 255, 0);
 }
 
-footer a img {
+footer a svg {
   max-width: 120px;
+  max-height: 40px;
 }
 
 footer li a:hover {
@@ -1326,7 +1372,7 @@ footer ul li:first-of-type {
   font-size: 17px;
 }
 
-footer ul li img {
+footer ul li a svg {
   min-width: 20px;
   max-width: 20px;
 }
@@ -1369,29 +1415,21 @@ footer .copyright-info a {
   height: 100%;
   pointer-events: none;
   min-height: 75vh;
+  background-image: url("/img/wave-footer.svg");
+  background-position: 0 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .content-wrap > * {
   pointer-events: all;
 }
 
-.wave {
-  position: absolute;
-  left: 0;
-  right: 0;
-  width: 100%;
-  margin: 0 auto;
-  pointer-events: none;
-  opacity: 0.8;
-}
+/* Disable inline wave images on static 429 error page */
 
-#header-wave {
-  top: -100px;
-}
-
+#header-wave,
 #footer-wave {
-  bottom: -100px;
-  transform: rotate(180deg);
+  display: none;
 }
 
 /* UNSUBSCRIBE CONTENT */
@@ -1458,26 +1496,40 @@ form.show-thankyou span.thank-you-message {
 /* // PLACEHOLDER media screens */
 
 @media screen and (min-width: 2200px) {
-  img#header-wave {
-    top: -200px;
+  body {
+    background-position: 0  -8%, center center;
   }
 
-  img#footer-wave {
-    bottom: -200px;
+  .content-wrap {
+    background-position: 0 120%;
+  }
+}
+
+@media screen and (max-width: 2300px) {
+  body {
+    background-position: 0  -5%, center center;
+  }
+
+  .content-wrap {
+    background-position: 0 105%;
   }
 }
 
 @media screen and (max-width: 1300px) {
-  img#header-wave {
-    top: 0;
+  body {
+    background-position: 0 -3%, center center;
   }
 
-  img#footer-wave {
-    bottom: 0;
+  .content-wrap {
+    background-position: 0 100%;
   }
 }
 
 @media screen and (max-width: 1200px) {
+  body {
+    background-position: 0 0, center center;
+  }
+
   #sign-up-banner .fourth,
   #sign-up-banner .half {
     margin-top: var(--gap);
@@ -1716,10 +1768,6 @@ form.show-thankyou span.thank-you-message {
   .half,
   .third {
     min-width: 200px !important;
-  }
-
-  .tip-container {
-    margin-top: calc(var(--gap) * 2);
   }
 }
 
