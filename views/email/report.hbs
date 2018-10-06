@@ -49,8 +49,8 @@
       {{/each}}
       <tr>
         <td><!--empty cell to align HIBP attribution with other table items--></td>
-        <td style="padding-left: 10px; padding-right: 20px;">
-          <p class="body-copy" style="color: #333333">Breach data provided by <a href="https://www.haveibeenpwned.com" rel="noopener noreferrer" style="color: #45a1ff">Have I Been Pwned</a></p>
+        <td>
+          <p class="body-copy" style="color: #333333">Breach data provided by <a href="https://www.haveibeenpwned.com" rel="noopener noreferrer" style="color: #0060df">Have I Been Pwned</a></p>
         </td>
       </tr>
     {{else}}
@@ -59,7 +59,7 @@
       {{/eachFromTo}}
     {{/if}}<!--unsafeBreachesForEmail-->
   </table>
-  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-top: 20px; padding-bottom: 20px; margin: 0px; center;">
+  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-top: 20px; padding-bottom: 20px; margin: 0px;">
     <tr>
       <td>
         {{>email_button href=SERVER_URL value="Scan another email in Firefox Monitor"}}
