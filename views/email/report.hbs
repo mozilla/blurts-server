@@ -31,19 +31,9 @@
           {{/if}}
         </td>
       </tr>
-      {{#each unsafeBreachesForEmail.websiteBreaches}}
+      {{#each unsafeBreachesForEmail}}
         {{> email_single_breach SERVER_URL=../SERVER_URL}}
       {{/each}}
-      {{#ifCompare unsafeBreachesForEmail.spamLists.length ">" 0}}
-        <tr>
-          <td colspan="2">
-            <h2 class="body-copy" style="color: #333333; font-size: 22px; font-weight: 300; width: 100%">Spam Lists</h2>
-          </td>
-        </tr>
-        {{#each unsafeBreachesForEmail.spamLists}}
-            {{> email_single_breach SERVER_URL=../SERVER_URL}}
-        {{/each}}
-      {{/ifCompare}}
       <tr>
         <td><!--empty cell to align HIBP attribution with other table items--></td>
         <td>

@@ -18,7 +18,10 @@
 {{else}}
   {{#if unsafeBreachesForEmail}}
     <p class="body-copy" style="color: #333333; font-size: 15px;">
-      Your accounts appeared in {{ unsafeBreachesForEmail.totalBreaches }}</span> breach{{#ifCompare unsafeBreachesForEmail.totalBreaches ">" 1}}es{{/ifCompare}}.
+      Your accounts appeared in {{ unsafeBreachesForEmail.length }}
+      {{#ifCompare unsafeBreachesForEmail.length "<" 2}} breach.{{/ifCompare}}
+      {{#ifCompare unsafeBreachesForEmail.length ">" 1}} breaches.{{/ifCompare}}
+      
     </p>
   {{else}}
     <p class="body-copy" style="color: #333333; font-size: 15px;">
