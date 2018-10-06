@@ -417,6 +417,11 @@ function restoreInputs() {
   });
 }
 
+const replaceBrokenImage = function(e) {
+  const SERVER_URL = document.body.dataset.serverUrl;
+  e.target.src = `${SERVER_URL}/img/logos/missing-logo-icon.png`;
+};
+
 //prevents footer from covering stuff up
 
 window.addEventListener("pageshow", function() {
@@ -456,5 +461,11 @@ document.querySelectorAll("[data-analytics-event]").forEach(el => {
 if (document.querySelectorAll("button")) {
   document.querySelectorAll("button").forEach(button => {
     button.addEventListener("click", (e) => doButtonRouting(e));
+  });
+}
+
+if (document.querySelector(".breach-image")) {
+  document.querySelectorAll(".breach-image").forEach(breachImage => {
+    breachImage.addEventListener("error", replaceBrokenImage);
   });
 }
