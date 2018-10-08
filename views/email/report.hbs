@@ -21,16 +21,16 @@
         {{> breach_alert}}
     {{/if}}
     {{#if unsafeBreachesForEmail}}
-      <tr>
-        <td colspan="2">
-          <h2 class="body-copy" style="color: #333333; font-size: 22px; font-weight: 300; width: 100%">Website Breaches</h2>
-          {{#if breachAlert}}
-            <p class="body-copy" style="color: #333333; font-size: 15px;">
-              Your email appears in our database of compromised accounts. Read about each one and learn what you can do to protect your passwords. Don't forget to sign up for Firefox Monitor with all the email addresses you use for online accounts.
-            </p>
-          {{/if}}
-        </td>
-      </tr>
+      {{#if breachAlert}}
+        <tr>
+          <td colspan="2">
+            <h2 class="body-copy" style="color: #333333; font-size: 22px; font-weight: 300; width: 100%">Website Breaches</h2>
+              <p class="body-copy" style="color: #333333; font-size: 15px;">
+                Your email appears in our database of compromised accounts. Read about each one and learn what you can do to protect your passwords. Don't forget to sign up for Firefox Monitor with all the email addresses you use for online accounts.
+              </p>
+          </td>
+        </tr>
+        {{/if}}
       {{#each unsafeBreachesForEmail}}
         {{> email_single_breach SERVER_URL=../SERVER_URL}}
       {{/each}}
@@ -40,6 +40,7 @@
           <p class="body-copy" style="color: #333333">Breach data provided by <a href="https://www.haveibeenpwned.com" rel="noopener noreferrer" style="color: #0060df">Have I Been Pwned</a></p>
         </td>
       </tr>
+      {{> report_what_to_do_next}}
     {{else}}
       {{#eachFromTo TIPS 0 3 }}
         {{> report_password_tips SERVER_URL=../SERVER_URL}}
