@@ -715,6 +715,7 @@ header a h1 {
   background: url("/img/gradient-sprites.png") -331px 0;
   background-repeat: no-repeat;
   background-size: cover;
+  min-width: 55px;
   width: 55px;
   height: 55px;
 }
