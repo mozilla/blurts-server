@@ -4,7 +4,6 @@ const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const HIBP = require("../hibp");
-const sha1 = require("../sha1-utils");
 const HBSHelpers = require("../hbs-helpers");
 const mozlog = require("../log");
 
@@ -45,11 +44,6 @@ async function notify (req, res) {
   for (const subscriber of subscribers) {
     const email = subscriber.email;
 
-    const unsafeBreachesForEmail = await HIBP.getUnsafeBreachesForEmail(
-      sha1(email),
-      req.app.locals.breaches
-    );
-
     if (!notifiedSubscribers.includes(email)) {
       await EmailUtils.sendEmail(
         email,
@@ -59,7 +53,6 @@ async function notify (req, res) {
           email,
           date: HBSHelpers.prettyDate(new Date()),
           breachAlert,
-          unsafeBreachesForEmail,
           SERVER_URL: req.app.locals.SERVER_URL,
         }
       );

@@ -15,10 +15,10 @@
         background: #ededf0;
       }
 
-      a {
-        text-decoration: none;
+      a,
+      .footer-copy a {
         color: #0060df;
-        font-weight: 500;
+        font-weight: 400;
       }
 
       .button {
@@ -40,9 +40,11 @@
       .body-copy {
         color: #333333 !important;
       }
+
       p {
         line-height: 1.65em;
       }
+
       .footer-copy {
         color:#738597;
       }
@@ -50,6 +52,25 @@
       td {
         border-collapse: collapse;
         border-width: 0px;
+      }
+
+      @media screen and (max-width: 500px) {
+        br.break-line {
+          display: none;
+        }
+
+        td.logomark-wrapper {
+          width: 50px !important;
+        }
+
+        img.firefox-logomark {
+          width: 40px !important;
+        }
+
+        h1.firefox-logotype {
+          white-space: nowrap;
+          font-size: 25px !important;
+        }
       }
 
     </style>
