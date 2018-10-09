@@ -6,6 +6,7 @@ const got = require("got");
 
 const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
+const { FluentError } = require("../locale-utils");
 
 
 // This object exists instead of inlining the env vars to make it easy
@@ -39,7 +40,7 @@ function init(req, res, next, client = FxAOAuthClient) {
 
 async function confirmed(req, res, next, client = FxAOAuthClient) {
   if (!req.session.state) {
-    throw new Error(req.fluentFormat("oauth-invalid-session"));
+    throw new FluentError("oauth-invalid-session");
   }
 
   const fxaUser = await client.code.getToken(req.originalUrl, { state: req.session.state });

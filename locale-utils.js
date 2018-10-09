@@ -24,6 +24,7 @@ class FluentError extends Error {
     }
 
     this.fluentID = fluentID;
+    this.message = fluentID;
   }
 }
 

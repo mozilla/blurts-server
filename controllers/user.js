@@ -5,6 +5,7 @@ const isemail = require("isemail");
 const HIBP = require("../hibp");
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
+const { FluentError } = require("../locale-utils");
 const HBSHelpers = require("../hbs-helpers");
 const UNSUB_REASONS = require("../unsubscribe_reasons");
 const sha1 = require("../sha1-utils");
@@ -15,7 +16,7 @@ async function add(req, res) {
   const email = req.body.email;
 
   if (!email || !isemail.validate(email)) {
-    throw new Error(req.fluentFormat("user-add-invalid-email"));
+    throw new FluentError("user-add-invalid-email");
   }
   const fxNewsletter = Boolean(req.body.additionalEmails);
   const signupLanguage = req.headers["accept-language"];
@@ -39,7 +40,7 @@ async function add(req, res) {
 
 async function verify(req, res) {
   if (!req.query.token) {
-    throw new Error(req.fluentFormat("user-verify-token-error"));
+    throw new FluentError("user-verify-token-error");
   }
   const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
   const unsubscribeUrl = EmailUtils.unsubscribeUrl(verifiedEmailHash);
@@ -71,12 +72,12 @@ async function verify(req, res) {
 
 async function getUnsubscribe(req, res) {
   if (!req.query.token) {
-    throw new Error(req.fluentFormat("user-unsubscribe-token-error"));
+    throw new FluentError("user-unsubscribe-token-error");
   }
   const subscriber = await DB.getSubscriberByToken(req.query.token);
   //throws error if user backs into and refreshes unsubscribe page
   if (!subscriber) {
-    throw new Error(req.fluentFormat("error-not-subscribed"));
+    throw new FluentError("error-not-subscribed");
   }
 
   res.render("unsubscribe", {
@@ -89,12 +90,12 @@ async function getUnsubscribe(req, res) {
 
 async function postUnsubscribe(req, res) {
   if (!req.body.token || !req.body.emailHash) {
-    throw new Error(req.fluentFormat("user-unsubscribe-token-email-error"));
+    throw new FluentError("user-unsubscribe-token-email-error");
   }
   const unsubscribedUser = await DB.removeSubscriberByToken(req.body.token, req.body.emailHash);
   // if user backs into unsubscribe page and clicks "unsubscribe" again
   if (!unsubscribedUser) {
-    throw new Error(req.fluentFormat("error-not-subscribed"));
+    throw new FluentError("error-not-subscribed");
   }
 
   const surveyTicket = crypto.randomBytes(40).toString("hex");
@@ -107,7 +108,7 @@ async function postUnsubscribe(req, res) {
 function getUnsubSurvey(req, res) {
   //throws error if user refreshes unsubscribe survey page after they have submitted an answer
   if(!req.session.unsub) {
-    throw new Error(req.fluentFormat("error-not-subscribed"));
+    throw new FluentError("error-not-subscribed");
   }
   res.render("unsubscribe_survey", {
   title: req.fluentFormat("user-unsubscribe-survey-title"),
