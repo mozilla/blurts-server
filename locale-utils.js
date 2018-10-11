@@ -53,9 +53,15 @@ const LocaleUtils = {
     app.locals.FLUENT_BUNDLES = fluentBundles;
   },
 
-  fluentFormat (language, fluentID, args=null, errors=null) {
-    const bundle = fluentBundles[language];
-    return bundle.format(bundle.getMessage(fluentID, args));
+  fluentFormat (supportedLocales, id, args=null, errors=null) {
+    for (const locale of supportedLocales) {
+      const bundle = fluentBundles[locale];
+      if (bundle.hasMessage(id)) {
+        const message = bundle.getMessage(id);
+        return bundle.format(message, args);
+      }
+    }
+    return id;
   },
 };
 

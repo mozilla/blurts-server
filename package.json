@@ -7,7 +7,6 @@
     "url": "https://github.com/mozilla/blurts-server/issues"
   },
   "dependencies": {
-    "accept-language": "^3.0.18",
     "arg": "^2.0.0",
     "basic-auth": "^2.0.0",
     "body-parser": "^1.18.3",
@@ -20,6 +19,7 @@
     "express-bearer-token": "^2.2.0",
     "express-handlebars": "^3.0.0",
     "fluent": "^0.8.1",
+    "fluent-langneg": "^0.1.0",
     "git-rev-sync": "^1.12.0",
     "got": "^8.3.1",
     "hbs": "^4.0.1",

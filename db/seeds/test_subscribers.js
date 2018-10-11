@@ -26,6 +26,7 @@ exports.seed = function(knex) {
           email: "verifiedemail@test.com",
           verification_token: "54010800-6c3c-4186-971a-76dc92874941",
           verified: true,
+          signup_language: "en-US;q=0.7,en;q=0.3",
         },
       ]);
     });

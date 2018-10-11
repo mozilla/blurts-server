@@ -1,6 +1,6 @@
 "use strict";
 
-const acceptLanguage = require("accept-language");
+const { negotiateLanguages, acceptedLanguages } = require("fluent-langneg");
 
 const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
@@ -42,19 +42,22 @@ async function notify (req, res) {
 
   log.info("notification", { length: subscribers.length, breachAlertName: breachAlert.Name });
 
-  // Set languages for acceptLanguage to get the right lang for each subscriber
-  acceptLanguage.languages(req.app.locals.AVAILABLE_LANGUAGES);
-
   const notifiedSubscribers = [];
 
   for (const subscriber of subscribers) {
     const email = subscriber.email;
-    const subscriberLanguage = acceptLanguage.get(subscriber.signup_language);
+    log.info("notify", {subscriber});
+    const requestedLanguage = acceptedLanguages(subscriber.signup_language);
+    const supportedLocales = negotiateLanguages(
+      requestedLanguage,
+      req.app.locals.AVAILABLE_LANGUAGES,
+      {defaultLocale: "en-US"}
+    );
 
     if (!notifiedSubscribers.includes(email)) {
       await EmailUtils.sendEmail(
         email,
-        LocaleUtils.fluentFormat(subscriberLanguage, "hibp-notify-email-subject"),
+        LocaleUtils.fluentFormat(supportedLocales, "hibp-notify-email-subject"),
         "report",
         {
           email,

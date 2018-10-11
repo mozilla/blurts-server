@@ -1,7 +1,7 @@
 "use strict";
 
 
-const acceptLanguage = require("accept-language");
+const { negotiateLanguages, acceptedLanguages } = require("fluent-langneg");
 
 const { FluentError } = require("./locale-utils");
 const mozlog = require("./log");
@@ -19,13 +19,25 @@ function addRequestToResponse (req, res, next) {
 
 // picks available language by Accept-Language and assigns to request
 function pickLanguage (req, res, next) {
-  acceptLanguage.languages(req.app.locals.AVAILABLE_LANGUAGES);
-  const pickedLanguage = acceptLanguage.get(req.headers["accept-language"]);
-  req.pickedLanguage = pickedLanguage;
-  const fluentBundle = req.app.locals.FLUENT_BUNDLES[pickedLanguage];
-  req.fluentFormat = (message, args = null, errors = null) => {
-    return fluentBundle.format(fluentBundle.getMessage(message, args));
+  const requestedLanguage = acceptedLanguages(req.headers["accept-language"]);
+  const supportedLocales = negotiateLanguages(
+    requestedLanguage,
+    req.app.locals.AVAILABLE_LANGUAGES,
+    {defaultLocale: "en-US"}
+  );
+  req.supportedLocales = supportedLocales;
+
+  req.fluentFormat = (id, args = null, errors = null) => {
+    for (const locale of supportedLocales) {
+      const bundle = req.app.locals.FLUENT_BUNDLES[locale];
+      if (bundle.hasMessage(id)) {
+        const message = bundle.getMessage(id);
+        return bundle.format(message, args);
+      }
+    }
+    return id;
   };
+
   next();
 }
 

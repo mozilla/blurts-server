@@ -7,8 +7,8 @@ const mozlog = require("./log");
 const log = mozlog("hbs-helpers");
 
 
-function fluentFormat (req, fluentID, args) {
-  return LocaleUtils.fluentFormat(req.pickedLanguage, fluentID, args);
+function fluentFormat (req, id, args) {
+  return LocaleUtils.fluentFormat(req.supportedLocales, id, args);
 }
 
 
