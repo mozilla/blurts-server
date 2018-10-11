@@ -30,7 +30,7 @@ const TIPS = [
         "number": "5",
         "tip_title": "Use two-factor authentication.",
         "headline": "Use Two-Factor<br>Authentication",
-        "summary": "2FA offers an extra layer of protection by requiring you to enter additional information (like a code sent via text) before you can access your accounts.",
+        "summary": "2FA protects your account by requiring something you know (your password) and something you have (like your phone) to login. Tools like 2fanotifier.org and turnon2fa.com can help you enable 2FA on your accounts.",
       },
       {
         "number": "6",
