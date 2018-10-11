@@ -13,7 +13,7 @@ function fluentFormat (req, id, args) {
 
 function getValue (req, key, number, args) {
   const fluentID = `${key}${number}`;
-  return LocaleUtils.fluentFormat(req.pickedLanguage, fluentID, args);
+  return LocaleUtils.fluentFormat(req.supportedLocales, fluentID, args);
 }
 
 function breachResponse(req, id, breachTitle, breachCount) {
@@ -21,7 +21,7 @@ function breachResponse(req, id, breachTitle, breachCount) {
     "featuredBreachTitle" : breachTitle,
     "breachCount" : breachCount-1,
   };
-  return LocaleUtils.fluentFormat(req.pickedLanguage, id, args);
+  return LocaleUtils.fluentFormat(req.supportedLocales, id, args);
 }
 
 function breachDataClasses(req, dataClasses, args) {
@@ -29,23 +29,23 @@ function breachDataClasses(req, dataClasses, args) {
   if (dataClasses.constructor === Array) {
     dataClasses.forEach(dataClass => {
       dataClass.split(" ").join("-");
-      localizedDataClasses.push(LocaleUtils.fluentFormat(req.pickedLanguage, dataClass.split(" ").join("-").toLowerCase(), args));
+      localizedDataClasses.push(LocaleUtils.fluentFormat(req.supportedLocales, dataClass.split(" ").join("-").toLowerCase(), args));
     });
     return localizedDataClasses.join(", ");
   } else {
-    return LocaleUtils.fluentFormat(req.pickedLanguage, dataClasses.split(" ").join("-"), args);
+    return LocaleUtils.fluentFormat(req.supportedLocales, dataClasses.split(" ").join("-"), args);
   }
 }
 
 function insertValue(req, value, fluentID, args) {
-  const localizedString = LocaleUtils.fluentFormat(req.pickedLanguage, fluentID, args);
+  const localizedString = LocaleUtils.fluentFormat(req.supportedLocales, fluentID, args);
   return localizedString.replace("---", `${value}`);
 }
 
 
 function prettyDate(req, date) {
   const jsDate = new Date(date);
-  return jsDate.toLocaleDateString(req.pickedLanguage, {year: "numeric", month: "long", day: "numeric"});
+  return jsDate.toLocaleDateString(req.supportedLocales, {year: "numeric", month: "long", day: "numeric"});
 }
 
 
