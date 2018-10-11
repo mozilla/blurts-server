@@ -269,7 +269,7 @@ const addUser = (formEvent) => {
 
 const unsubscribeSurvey = (formEvent) => {
   const unsubSurvey = formEvent.target;
-  ga_sendPing("UnsubscribeSurvey", unsubSurvey.querySelector("input[type='radio']:checked").value);
+  ga_sendPing("UnsubscribeSurvey", unsubSurvey.querySelector("input[type='radio']:checked").dataset.analyticsLabel);
   const surveyObject = {};
   postData(unsubSurvey.action, surveyObject)
     .then( () => {

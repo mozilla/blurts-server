@@ -4,7 +4,7 @@
       <!--show first 4 breaches-->
       {{#eachFromTo foundBreaches 0 4 }}
         <div class="half listings">
-          {{> breach_listing }}
+          {{> breach_listing req=../req}}
         </div>
       {{/eachFromTo}}
       {{#ifCompare foundBreaches.length "<=" 4}}
@@ -21,7 +21,7 @@
             </div>
           {{/eachFromTo}}
         </div>
-        <button id="show-additional-breaches" class="button transparent-button">Show More</button>
+        <button id="show-additional-breaches" class="button transparent-button">{{fluentFormat req "show-more-breaches"}}</button>
         {{> hibp_attribution }}
       {{/ifCompare}}
     </div>

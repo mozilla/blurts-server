@@ -1,12 +1,9 @@
 {{!< default }}
 <div id="confirmation" class="sub-page-content">
   <div class="section-wrapper centered-content">
-    <h3 class="section-headline whole">
-      Confirmed!<br />
-      You're Subscribed
-    </h3>
-    <p class="whole sub-head">Firefox Monitor will email you a full report shortly, and will send an email alert if your account appears in a new reported breach.</p>
-    <h4 class="whole medium secondary-title">If you've been breached, chances are your friends, family, or online connections have been too. Let them know about Firefox Monitor.</h4>
+    <h3 class="section-headline whole">{{{fluentFormat req "confirmed"}}}</h3>
+    <p class="whole sub-head">{{fluentFormat req "confirmed-blurb"}}</p>
+    <h4 class="whole medium secondary-title">{{fluentFormat req "confirmed-social-blurb"}}</h4>
     {{> social_media_sharing_buttons}}
   </div>
 </div>

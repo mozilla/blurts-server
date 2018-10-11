@@ -4,28 +4,27 @@
     
     {{#if foundBreaches }}
       <section class="half scan-results-content-left">
-        <h3 id="found-breaches" class="section-headline">This might be a problem</h3>
+        <h3 id="found-breaches" class="section-headline">{{fluentFormat req "found-breaches-headline"}}</h3>
         {{#if featuredBreach}}
           {{#if userAccountCompromised}}
             {{#ifCompare foundBreaches.length ">" 1}} <!-- checking for additional "non-featured" breaches (is foundBreaches.length > 1) -->
-              <p>Your accounts appear in the <span class="bold">{{ featuredBreach.Title }}</span> breach, as well as <span class="bold">{{ breachMath foundBreaches.length "-" 1 }}</span> other breach{{#ifCompare foundBreaches.length ">" 2}}es{{/ifCompare}}.</p>
+            <p>{{breachResponse req "featured-breach-results" featuredBreach.Title foundBreaches.length}}</p>
             {{else}}
-              <p>Your account appears in the <span class="bold">{{ featuredBreach.Title }}</span> breach, but does not appear in any other known breaches.</p>
-            </section><!--closes half.scan-results-content-left-->
+              <p>{{{insertValue req featuredBreach.Title "featured-breach-only"}}}</p>
+              </section><!--closes half.scan-results-content-left-->
               <section class="half order-last">
                 {{> featured_breach}}
-              </div>
             {{/ifCompare}}
-          {{else}} <!--#if !userAccountCompromised -->
-            {{#ifCompare foundBreaches.length ">=" 1}} <!-- user has breached accounts (foundBreaches.length > 0) but wasn't compromised in the 'featuredBreach' -->
-              <p>Your account did not appear in the <span class="bold">{{ featuredBreach.Title }}</span> breach, but it did appear in <span class="bold">{{ breachMath foundBreaches.length "-" 0 }}</span> other breach{{#ifCompare foundBreaches.length ">" 1}}es{{/ifCompare}}.</p>
+          {{else}} <!--#if !userAccountCompromised in featuredBreach-->
+            {{#ifCompare foundBreaches.length ">=" 1}}
+              <p>{{{insertValue req featuredBreach.Title "featured-breach-other-breaches"}}}</p>
             {{/ifCompare}}
           {{/if}}
         {{else}} <!--#if !featuredBreach-->
           {{#ifCompare foundBreaches.length "===" 1}}
-            <p>Your account was compromised in the following breach.</p>
+            <p>{{fluentFormat req "found-breaches-singular-blurb"}}</p>
           {{else}}
-            <p>Your accounts were compromised in the following breaches.</p>
+            <p>{{fluentFormat req "found-breaches-plural-blurb"}}</p>
           {{/ifCompare}}
         {{/if}}<!--/#if featuredBreach-->
       </section><!--.half.scan-results-content-left // or closes .half.order-last (Line 15)-->
@@ -41,10 +40,8 @@
     
   {{else}} <!--no foundBreaches (foundBreaches.length = 0)-->
     <div class="two-thirds">
-      <h3 id="no-breaches" class="section-headline">So far, so good</h3>
-      <p>
-        Your account did not appear in our basic scan. That's good news, but data breaches can happen any time and there is still more you can do. Subscribe to Firefox Monitor for a full report, alerts when new breaches happen, and tips on protecting your passwords.
-      </p>
+      <h3 id="no-breaches" class="section-headline">{{fluentFormat req "no-breaches-headline"}}</h3>
+      <p>{{fluentFormat req "no-breaches-blurb"}}</p>
     </div>
     <div class="third">
       {{> sign_up_button}}

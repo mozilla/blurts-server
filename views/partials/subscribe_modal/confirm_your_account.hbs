@@ -1,9 +1,9 @@
 <div id="confirm-your-account" class="modal-content confirm-your-account">
-  <h3 class="section-headline">Verify Your Subscription</h3>
+  <h3 class="section-headline">{{fluentFormat req "signup-modal-verify-headline"}}</h3>
   <div class="confirm-your-account-icon">
     {{> sprite symID="confirm-sending"}}
   </div>
-  <p>We sent a verification link to <span id="submitted-email" class="medium"></span>.<br>This link expires in 24 hours.</p>
-  <button id="resend-data" class="resend-data internal-link">Not in inbox or spam folder? Resend</button>
-  <button data-analytics-label="After Sign Up" class="close-modal blue-button">Close</button>
+  <p>{{{fluentFormat req "signup-modal-verify-blurb"}}}<br>{{fluentFormat req "signup-modal-verify-expiration"}}</p>
+  <button id="resend-data" class="resend-data internal-link">{{fluentFormat req "signup-modal-verify-resend"}}</button>
+  <button data-analytics-label="After Sign Up" class="close-modal blue-button">{{fluentFormat req "signup-modal-close"}}</button>
 </div>

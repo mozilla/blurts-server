@@ -11,20 +11,41 @@ function fluentFormat (req, id, args) {
   return LocaleUtils.fluentFormat(req.supportedLocales, id, args);
 }
 
+function getValue (req, key, number, args) {
+  const fluentID = `${key}${number}`;
+  return LocaleUtils.fluentFormat(req.pickedLanguage, fluentID, args);
+}
 
-function breachDataClasses(dataClasses) {
+function breachResponse(req, id, breachTitle, breachCount) {
+  const args = {
+    "featuredBreachTitle" : breachTitle,
+    "breachCount" : breachCount-1,
+  };
+  return LocaleUtils.fluentFormat(req.pickedLanguage, id, args);
+}
+
+function breachDataClasses(req, dataClasses, args) {
+  const localizedDataClasses = [];
   if (dataClasses.constructor === Array) {
-    return dataClasses.join(", ");
+    dataClasses.forEach(dataClass => {
+      dataClass.split(" ").join("-");
+      localizedDataClasses.push(LocaleUtils.fluentFormat(req.pickedLanguage, dataClass.split(" ").join("-").toLowerCase(), args));
+    });
+    return localizedDataClasses.join(", ");
   } else {
-    return dataClasses;
+    return LocaleUtils.fluentFormat(req.pickedLanguage, dataClasses.split(" ").join("-"), args);
   }
 }
 
+function insertValue(req, value, fluentID, args) {
+  const localizedString = LocaleUtils.fluentFormat(req.pickedLanguage, fluentID, args);
+  return localizedString.replace("---", `${value}`);
+}
 
-function prettyDate(date) {
+
+function prettyDate(req, date) {
   const jsDate = new Date(date);
-  // TODO: l10n
-  return jsDate.toLocaleDateString("en-US", {year: "numeric", month: "long", day: "numeric"});
+  return jsDate.toLocaleDateString(req.pickedLanguage, {year: "numeric", month: "long", day: "numeric"});
 }
 
 
@@ -104,4 +125,7 @@ module.exports = {
   eachFromTo,
   ifCompare,
   breachMath,
+  getValue,
+  insertValue,
+  breachResponse,
 };

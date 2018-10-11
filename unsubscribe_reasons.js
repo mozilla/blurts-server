@@ -1,31 +1,31 @@
 "use strict";
 
-// TODO: l10n
 const UNSUB_REASONS = [
   {
     "id_number": "1",
-    "value": "I think that alerts don't make my data safer",
+    "value": "{{fluentFormat ../req 'unsub-reason-1'}}",
   },
   {
     "id_number": "2",
-    "value": "I get too many emails from Firefox Monitor",
+    "value": "{{fluentFormat ../req 'unsub-reason-2'}}",
   },
   {
     "id_number": "3",
-    "value": "I don't find the service valuable",
+    "value": "{{fluentFormat ../req 'unsub-reason-3'}}",
   },
   {
     "id_number": "4",
-    "value": "I've already taken steps to protect my accounts",
+    "value": "{{fluentFormat ../req 'unsub-reason-4'}}",
   },
   {
     "id_number": "5",
-    "value": "I am using another service to monitor my accounts",
+    "value": "{{fluentFormat ../req 'unsub-reason-5'}}",
   },
   {
     "id_number": "6",
-    "value": "None of the above",
+    "value": "{{fluentFormat ../req 'unsub-reason-6'}}",
   },
 ];
 
 module.exports = UNSUB_REASONS;
+

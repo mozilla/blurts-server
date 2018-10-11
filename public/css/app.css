@@ -134,6 +134,10 @@ img {
   -ms-interpolation-mode: bicubic;
 }
 
+.nowrap {
+  white-space: nowrap;
+}
+
 /* Disable pointer events on elements nested inside analytics triggering links */
 
 ul.social-media-sharing-buttons span,
@@ -1032,6 +1036,10 @@ body.show-subscribe-modal .modal-content.show {
 .modal-content p {
   font-size: 17px;
   font-weight: 300;
+}
+
+.modal-content .internal-link {
+  display: block;
 }
 
 .modal-content button.internal-link {
