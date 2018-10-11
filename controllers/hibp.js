@@ -51,7 +51,7 @@ async function notify (req, res) {
     const supportedLocales = negotiateLanguages(
       requestedLanguage,
       req.app.locals.AVAILABLE_LANGUAGES,
-      {defaultLocale: "en-US"}
+      {defaultLocale: "en"}
     );
 
     if (!notifiedSubscribers.includes(email)) {

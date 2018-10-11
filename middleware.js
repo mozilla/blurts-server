@@ -23,7 +23,7 @@ function pickLanguage (req, res, next) {
   const supportedLocales = negotiateLanguages(
     requestedLanguage,
     req.app.locals.AVAILABLE_LANGUAGES,
-    {defaultLocale: "en-US"}
+    {defaultLocale: "en"}
   );
   req.supportedLocales = supportedLocales;
 
