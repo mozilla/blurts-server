@@ -730,7 +730,7 @@ main {
   font-size: 17px;
 }
 
-main .section-wrapper {
+main.landing-content .section-wrapper {
   padding-top: calc(var(--columnSpacing) / 2);
   padding-bottom: calc(var(--columnSpacing) / 2);
 }
@@ -746,15 +746,11 @@ main .section-wrapper .half:first-of-type {
 
 main .section-wrapper .half:last-of-type {
   justify-content: flex-end;
+  flex-direction: column;
 }
 
 main .half.vertical-center {
   justify-content: center !important;
-}
-
-div.half.no-found-breaches,
-main.scan-results .section-wrapper {
-  padding-bottom: calc(var(--columnSpacing) / 2);
 }
 
 main .section-headline {
@@ -1131,7 +1127,7 @@ body.show-subscribe-modal .modal-content.show {
   margin-top: 0;
 }
 
-section.half.scan-results-content-left {
+main.scan-results section.half:first-of-type {
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
@@ -1251,14 +1247,14 @@ span.breach-info .medium {
   width: 100%;
   font-size: 13px;
   text-align: center;
-  margin-top: var(--gap);
+  padding: 0;
+  margin-top: var(--columnSpacing);
 }
 
-.whole.align-left .source-info {
+.half .source-info {
   text-align: left;
   padding-left: 70px;
-  padding-top: var(--columnSpacing);
-  margin-top: 0;
+  margin-top: var(--gap);
 }
 
 .source-info a {
@@ -1402,6 +1398,7 @@ footer .copyright-info a {
   font-size: 18px;
   margin-left: 0 !important;
   margin-right: 0 !important;
+  display: block;
 }
 
 #confirmation h4.secondary-title {
@@ -1443,14 +1440,21 @@ footer .copyright-info a {
 
 section.unsubscribe-content.section-wrapper {
   padding-bottom: var(--gap);
+  margin: var(--gap) auto;
 }
 
 .unsubscribe-content p {
   padding-right: 30%;
+  display: block;
 }
 
 .unsubscribe-content .section-headline {
   margin-bottom: var(--gap);
+  display: block;
+}
+
+form span.secondary-title.whole {
+  display: block;
 }
 
 form .thank-you-message {
@@ -1759,7 +1763,7 @@ form.show-thankyou span.thank-you-message {
     margin-top: var(--gap);
   }
 
-  .whole.align-left .source-info {
+  .half .source-info {
     padding-left: 0;
   }
 }

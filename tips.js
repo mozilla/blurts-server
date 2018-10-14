@@ -4,33 +4,34 @@
 const TIPS = [
       {
         "number": "1",
-        "headline": "{{fluentFormat ../req 'pwt-headline-1'}}",
-        "summary": "{{fluentFormat ../req 'pwt-summary-1'}}",
+        "tip_title": "Use a different password for every account.",
+        "summary": "You can't prevent a data breach, but you can limit your exposure by always using different passwords for different websites.",
       },
       {
         "number": "2",
-        "headline": "{{{fluentFormat ../req 'pwt-headline-2'}}}s",
-        "summary": "{{fluentFormat ../req 'pwt-summary-1'}}",
+        "tip_title": "Create strong passwords.",
+        "summary": "Hackers try to steal passwords by using lists of common passwords and by guessing. The longer and more random your password is, the harder it will be to steal.",
       },
       {
         "number": "3",
-        "headline": "{{{fluentFormat ../req 'pwt-headline-3'}}}",
-        "summary": "{{fluentFormat ../req 'pwt-summary-1'}}",
+        "tip_title": "Treat Security Questions Like Extra Passwords",
+        "summary": "Websites don’t check that your answers are accurate, just that they match every time. So create long, random answers and store them somewhere safe. ",
       },
       {
         "number": "4",
-        "headline": "{{{fluentFormat ../req 'pwt-headline-4'}}}",
-        "summary": "{{fluentFormat ../req 'pwt-summary-1'}}",
+        "tip_title": "Use a password manager.",
+        "headline": "Use a Password<br>Manager",
+        "summary": "Password managers like 1Password, LastPass, or Dashlane can generate strong passwords for you, remember them for you, and fill them into websites so you don't have to type them in.",
       },
       {
         "number": "5",
-        "headline": "{{{fluentFormat ../req 'pwt-headline-5'}}}",
-        "summary": "{{fluentFormat ../req 'pwt-summary-1'}}",
+        "tip_title": "Use two-factor authentication.",
+        "summary": "2FA offers an extra layer of protection by requiring you to enter additional information (like a code sent via text) before you can access your accounts.",
       },
       {
         "number": "6",
-        "headline": "{{{fluentFormat ../req 'pwt-headline-6'}}}",
-        "summary": "{{fluentFormat ../req 'pwt-summary-1'}}",
+        "tip_title": "Sign up for alerts from Firefox Monitor.",
+        "summary": "We'll let you know if your account information is compromised in a data breach or exposed to hackers in some other way.",
       },
     ];
 

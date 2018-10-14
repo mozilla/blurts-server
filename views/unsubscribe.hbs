@@ -1,8 +1,8 @@
 {{!< default }}
 <div class="sub-page-content">
   <section class="unsubscribe-content section-wrapper">
-    <h2 class="section-headline whole" tabindex="1">{{fluentFormat req "unsub-headline"}}</h2>
-    <p class="whole sub-head" tabindex="1">{{fluentFormat req "unsub-blurb"}}</p>
+    <h2 class="section-headline whole" tabindex="1">{{{fluentFormat req "unsub-headline"}}}</h2>
+    <p class="whole sub-head" tabindex="1">{{{fluentFormat req "unsub-blurb"}}}</p>
     <div class="half">
       <form action="/user/unsubscribe" class="form-group" method="post" id="unsubscribe-form">
         <input type="hidden" name="token" value="{{ token }}">

@@ -8,20 +8,12 @@ const log = mozlog("hbs-helpers");
 
 
 function fluentFormat (req, id, args) {
-  return LocaleUtils.fluentFormat(req.supportedLocales, id, args);
+  return LocaleUtils.fluentFormat(req.supportedLocales, id, args.hash);
 }
 
-function getValue (req, key, number, args) {
+function getStringID (req, key, number) {
   const fluentID = `${key}${number}`;
-  return LocaleUtils.fluentFormat(req.supportedLocales, fluentID, args);
-}
-
-function breachResponse(req, id, breachTitle, breachCount) {
-  const args = {
-    "featuredBreachTitle" : breachTitle,
-    "breachCount" : breachCount-1,
-  };
-  return LocaleUtils.fluentFormat(req.supportedLocales, id, args);
+  return LocaleUtils.fluentFormat(req.supportedLocales, fluentID);
 }
 
 function breachDataClasses(req, dataClasses, args) {
@@ -35,11 +27,6 @@ function breachDataClasses(req, dataClasses, args) {
   } else {
     return LocaleUtils.fluentFormat(req.supportedLocales, dataClasses.split(" ").join("-"), args);
   }
-}
-
-function insertValue(req, value, fluentID, args) {
-  const localizedString = LocaleUtils.fluentFormat(req.supportedLocales, fluentID, args);
-  return localizedString.replace("---", `${value}`);
 }
 
 
@@ -91,7 +78,7 @@ function breachMath(lValue, operator = null, rValue = null) {
   lValue = parseFloat(lValue);
   let returnValue = lValue;
   if (operator) {
-    rValue = parseFloat(rValue);
+      rValue = parseFloat(rValue);
     returnValue = {
       "+": lValue + rValue,
       "-": lValue - rValue,
@@ -100,32 +87,17 @@ function breachMath(lValue, operator = null, rValue = null) {
       "%": lValue % rValue,
     }[operator];
   }
-  if (returnValue < 10) {
-    return {
-      1: "one",
-      2: "two",
-      3: "three",
-      4: "four",
-      5: "five",
-      6: "six",
-      7: "seven",
-      8: "eight",
-      9: "nine",
-    }[returnValue];
-  }
   return returnValue;
 }
 
 
 module.exports = {
   fluentFormat,
+  getStringID,
   breachDataClasses,
   prettyDate,
   localeString,
   eachFromTo,
   ifCompare,
   breachMath,
-  getValue,
-  insertValue,
-  breachResponse,
 };

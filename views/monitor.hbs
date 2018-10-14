@@ -2,13 +2,13 @@
 <main class="landing-content">
   <section class="section-wrapper">
     <div class="half">
-      <h2 data-location="landing-page" class="section-headline">{{fluentFormat req "landing-headline"}}</h2>
+      <h2 data-location="landing-page" class="section-headline">{{{fluentFormat req "landing-headline"}}}</h2>
       {{#if featuredBreach }}
-        <span data-location="featured-breach" class="demi form-desc">{{{insertValue req featuredBreach.Title "scan-featuredbreach-label"}}}</span>
+        <span data-location="featured-breach" class="demi form-desc">{{{fluentFormat req "scan-featuredbreach-label" featuredBreach=featuredBreach.Title}}}</span>
         {{> scan_form}}
       {{else}}
         <p class="landing-blurb">
-          {{fluentFormat req "landing-blurb"}}
+          {{{fluentFormat req "landing-blurb"}}}
         </p>
       {{/if}}
     </div>

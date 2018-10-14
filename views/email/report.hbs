@@ -29,8 +29,8 @@
         {{> email_hibp_attribution}}
         {{> report_what_to_do_next}}
       {{else}}
-        {{#eachFromTo TIPS 0 3 }}
-          {{> report_password_tips SERVER_URL=../SERVER_URL}}
+        {{#eachFromTo TIPS 0 3}}
+          {{> report_password_tips SERVER_URL=../SERVER_URL req=../req}}
         {{/eachFromTo}}
       {{/if}}<!--unsafeBreachesForEmail-->
     {{/if}}<!--breachAlert-->

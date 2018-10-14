@@ -17,7 +17,7 @@
         <div id="additional-breaches" class="section-wrapper">
           {{#eachFromTo foundBreaches 4 foundBreaches.length }}
             <div class="half listings">
-              {{> breach_listing }}
+              {{> breach_listing req=../req}}
             </div>
           {{/eachFromTo}}
         </div>

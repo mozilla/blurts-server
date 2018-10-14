@@ -1,18 +1,18 @@
 {{!< default }}
 <div class="sub-page-content">
   <section class="unsubscribe-content section-wrapper">
-    <h2 class="section-headline whole">{{fluentFormat req "unsub-survey-headline"}}</h2>
-    <p class="whole sub-head">{{fluentFormat req "unsub-survey-blurb"}}</p>
+    <h2 class="section-headline whole">{{{fluentFormat req "unsub-survey-headline"}}}</h2>
+    <p class="whole sub-head">{{{fluentFormat req "unsub-survey-blurb"}}}</p>
   </section><!--.unsubscribe-content.section-wrapper-->
   <section class="unsubscribe-survey section-wrapper drop-shadow">
     <div class="whole">
       <form action="" method="post" id="unsubscribe-survey-form" class="form-group">
-        <span class="secondary-title whole" tabindex="1">{{fluentFormat req "unsub-survey-form-label"}}</span>
+        <span class="secondary-title whole" tabindex="1">{{{fluentFormat req "unsub-survey-form-label"}}}</span>
         {{#each UNSUB_REASONS}}
           <div class="radio-button-group" tabindex="1">
-            <input id="reason{{ id_number }}" type="radio" name="unsubscribe-reason" data-analytics-label="{{ value }}" value="{{getValue ../req "unsub-reason-" id_number}}" />
+            <input id="reason{{ id_number }}" type="radio" name="unsubscribe-reason" data-analytics-label="{{ value }}" value="{{getStringID ../req "unsub-reason-" id_number}}" />
             <span class="radio-dot"></span>
-            <label for="reason{{ id_number }}">{{getValue ../req "unsub-reason-" id_number}}</label>
+            <label for="reason{{ id_number }}">{{{getStringID ../req "unsub-reason-" id_number}}}</label>
           </div>
         {{/each}}
         <div class="input-group-button">

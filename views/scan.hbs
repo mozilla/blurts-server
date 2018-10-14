@@ -1,58 +1,67 @@
 {{!< default }}
 <main class="scan-results">
   <div class="section-wrapper breach-container">
-    
-    {{#if foundBreaches }}
-      <section class="half scan-results-content-left">
-        <h3 id="found-breaches" class="section-headline">{{fluentFormat req "found-breaches-headline"}}</h3>
-        {{#if featuredBreach}}
-          {{#if userAccountCompromised}}
-            {{#ifCompare foundBreaches.length ">" 1}} <!-- checking for additional "non-featured" breaches (is foundBreaches.length > 1) -->
-            <p>{{breachResponse req "featured-breach-results" featuredBreach.Title foundBreaches.length}}</p>
-            {{else}}
-              <p>{{{insertValue req featuredBreach.Title "featured-breach-only"}}}</p>
-              </section><!--closes half.scan-results-content-left-->
-              <section class="half order-last">
-                {{> featured_breach}}
-            {{/ifCompare}}
-          {{else}} <!--#if !userAccountCompromised in featuredBreach-->
-            {{#ifCompare foundBreaches.length ">=" 1}}
-              <p>{{{insertValue req featuredBreach.Title "featured-breach-other-breaches"}}}</p>
-            {{/ifCompare}}
-          {{/if}}
-        {{else}} <!--#if !featuredBreach-->
-          {{#ifCompare foundBreaches.length "===" 1}}
-            <p>{{fluentFormat req "found-breaches-singular-blurb"}}</p>
-          {{else}}
-            <p>{{fluentFormat req "found-breaches-plural-blurb"}}</p>
-          {{/ifCompare}}
-        {{/if}}<!--/#if featuredBreach-->
-      </section><!--.half.scan-results-content-left // or closes .half.order-last (Line 15)-->
-      {{> compromised_accounts }}
-    </div>
-  </main>
+    <section class="half">
 
-  {{> banners/sign_up_banner}}
-  {{> what_to_do }}
-  {{> scan_another_email}}
-  {{> banners/download_firefox_banner}}
-    
-    
-  {{else}} <!--no foundBreaches (foundBreaches.length = 0)-->
-    <div class="two-thirds">
-      <h3 id="no-breaches" class="section-headline">{{fluentFormat req "no-breaches-headline"}}</h3>
-      <p>{{fluentFormat req "no-breaches-blurb"}}</p>
-    </div>
-    <div class="third">
-      {{> sign_up_button}}
-    </div>
+      {{#ifCompare foundBreaches.length "===" 0}}
+        <h3 id="no-breaches" class="section-headline">{{fluentFormat req "no-breaches-headline" breachCount=foundBreaches.length}}</h3>
+      {{else}}
+        <h3 id="found-breaches" class="section-headline">{{fluentFormat req "found-breaches-headline" breachCount=foundBreaches.length}}</h3>
+      {{/ifCompare}}
+      
+      {{#ifCompare foundBreaches.length ">" 1}}
+        {{#if featuredBreach}}
+          <p>{{{fluentFormat req "featured-breach-results" featuredBreach=featuredBreach.Title breachCount=(breachMath foundBreaches.length "-" 1)}}}</p>
+        {{else}}
+          <p>{{fluentFormat req "found-breaches-plural" breachCount=foundBreaches.length}}</p>
+        {{/if}}
+      </section>
+      {{> compromised_accounts }}
+      
+      {{else}} <!--foundBreaches.length < 1-->
+        {{#ifCompare foundBreaches.length "===" 0}}
+          <p>{{fluentFormat req "no-breaches-blurb"}}</p>
+        {{else}}
+          {{#if featuredBreach }}
+            {{#if userAccountCompromised}}
+              <p>{{{fluentFormat req "featured-breach-only" featuredBreach=featuredBreach.Title userBreached="true"}}}</p>
+            {{else}}
+              <p>{{{fluentFormat req "featured-breach-other" featuredBreach=featuredBreach.Title userBreached="false"}}}</p>
+            {{/if}}
+          {{else}}
+            <p>{{fluentFormat req "found-breaches-singular" breachCount=foundBreaches.length}}</p>
+          {{/if}}
+        {{/ifCompare}}
+      </section>
+
+        {{#ifCompare foundBreaches.length "===" 0}}
+          <section class="third">
+            {{> sign_up_button}}
+          </section>
+        {{else}}
+          <section class="half">
+            {{#each foundBreaches}}
+              {{> breach_listing req=../req}}
+            {{/each}}
+            {{> hibp_attribution}}
+          </section>
+        {{/ifCompare}}
+    {{/ifCompare}}
   </div>
 </main>
 
-<div id="scan-another-email-container">
+{{#ifCompare foundBreaches.length "===" 0}}
+  <div id="scan-another-email-container" class="scan-another-email banner">
+    {{> scan_another_email}}
+  </div>
+    {{> password_tips }}
+{{else}}
+  {{> banners/sign_up_banner}}
+  {{> what_to_do }}
   {{> scan_another_email}}
-</div>
-  {{> password_tips }}
-  {{> banners/download_firefox_banner}}
+{{/ifCompare}}
 
-  {{/if}}<!--/#if foundBreaches-->
+{{> banners/download_firefox_banner}}
+
+
+

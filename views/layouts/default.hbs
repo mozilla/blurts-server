@@ -44,8 +44,8 @@
         </div>
         <ul class="third">
           <li>{{fluentFormat req "layout-support" }}</li>
-          <li><a {{> analytics/link_event eventLabel="Give Feedback"}} href="https://qsurvey.mozilla.com/s3/Firefox-Monitor-Feedback" target="_blank" rel="noopener">{{fluentFormat req "layout-feedback" }}</a></li>
-          <li><a {{> analytics/link_event eventLabel="Terms & Privacy"}} href="https://www.mozilla.org/privacy/firefox-monitor/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">{{fluentFormat req "layout-terms"}}</a></li>
+          <li><a {{> analytics/link_event eventLabel="Give Feedback"}} href="https://qsurvey.mozilla.com/s3/Firefox-Monitor-Feedback" target="_blank" rel="noopener">{{{fluentFormat req "give-feedback" }}}</a></li>
+          <li><a {{> analytics/link_event eventLabel="Terms & Privacy"}} href="https://www.mozilla.org/privacy/firefox-monitor/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">{{{fluentFormat req "terms-and-privacy"}}}</a></li>
           <li><a {{> analytics/link_event eventLabel="GitHub"}} href="https://github.com/mozilla/blurts-server/" target="_blank" rel="noopener noreferrer">{{> sprite symID="GitHub"}}</a></li>
         </ul>
         <ul class="third">

@@ -1,6 +1,6 @@
 <div id="subscribe-to-ffxm" class="modal-content">
-  <h3 class="section-headline">{{fluentFormat req "signup-modal-headline"}}</h3>
-  <p>{{fluentFormat req "signup-modal-blurb"}}<a {{> analytics/link_event eventLabel="Terms & Privacy - Sign Up Modal"}} class="nowrap internal-link" href="https://www.mozilla.org/privacy/firefox-monitor/" target="_blank" rel="noopener">{{fluentFormat req "signup-modal-terms-and-privacy"}}</a></p>
+  <h3 class="section-headline">{{{fluentFormat req "signup-modal-headline"}}}</h3>
+  <p>{{{fluentFormat req "signup-modal-blurb"}}}<a {{> analytics/link_event eventLabel="Terms & Privacy - Sign Up Modal"}} class="nowrap internal-link" href="https://www.mozilla.org/privacy/firefox-monitor/" target="_blank" rel="noopener">{{{fluentFormat req "terms-and-privacy"}}}</a></p>
   
   {{#if FXA_ENABLED }}
     <button id="subscribe-fxa-btn" class="button">{{fluentFormat req "signup-with-fxa"}}</button>
