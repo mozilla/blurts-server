@@ -34,14 +34,6 @@ test("localeString adds commas to numbers", () => {
 });
 
 
-test("breachMath shows text up to nine", () => {
-  for (let i = 0; i++; i <= 9) {
-    expect(typeof(HBSHelpers.breachMath(i))).toBe("string");
-  }
-  expect(typeof(HBSHelpers.breachMath(10))).toBe("number");
-});
-
-
 test("breachMath accepts operators", () => {
-  expect(HBSHelpers.breachMath(1, "+", 2)).toBe("three");
+  expect(HBSHelpers.breachMath(1, "+", 2)).toBe(3);
 });
