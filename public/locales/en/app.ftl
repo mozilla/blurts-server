@@ -6,8 +6,9 @@
 -product-name-nowrap = <span class="nowrap">Firefox Monitor</span>
 
 layout-Firefox = {-brand-name}
-# noun
+# Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Support
+# Link that takes the user to a Firefox Monitor survey. 
 give-feedback = <span class="nowrap">Give Feedback</span>
 terms-and-privacy = <span class="nowrap">Terms and Privacy</span>
 
@@ -34,8 +35,8 @@ user-verify-token-error = Verification token is required.
 user-verify-email-report-subject = Your {-product-name} report
 user-verify-title = {-product-name} : Subscribed
 
-user-unsubscribe-token-error = Unsubscribe requires a token.
-user-unsubscribe-token-email-error = Unsubscribe requires a token and emailHash.
+user-unsubscribe-token-error = Unsubscribing requires a token.
+user-unsubscribe-token-email-error = Unsubscribing requires a token and emailHash.
 user-unsubscribe-title = {-product-name} : Unsubscribe
 user-unsubscribe-survey-title = {-product-name} : Unsubscribe Survey
 user-unsubscribed-title {-product-name} : Unsubscribed
@@ -78,7 +79,7 @@ signup-banner-headline = Stay safe with {-product-name-nowrap} protection.
 signup-banner-blurb = Sign up for {-product-name-nowrap}. You’ll get a full report on your compromised accounts and notifications any time your accounts appear in new data breaches.
 signup-button = Sign up
 
-download-firefox-bar-blurb = {-product-name-nowrap} is brought to you by the all-new {-brand-name}.
+download-firefox-bar-blurb = {-product-name-nowrap} is brought to you by the <span class="nowrap">all-new {-brand-name}</span>.
 download-firefox-bar-link = Download {-brand-name} now
 
 download-firefox-banner-blurb = Take control of your browser
@@ -104,31 +105,29 @@ form-signup-error = Must be a valid email.
 found-breaches-headline = This could be a problem...
 no-breaches-headline = So far, so good
 
-found-breaches-plural = Your email address appears in the following { $breachCount } breaches.
-found-breaches-singular = Your email address apppeared in the following breach.
-
-no-breaches-blurb = 
-  Your email address did not appear in our basic scan. 
-  That's good news, but data breaches can happen any time and there is still more you can do. 
-  Subscribe to Firefox Monitor for a full report, alerts when new breaches happen, and tips on protecting your passwords.
-
 featured-breach-results = 
-  Your email address appeared in the <span class="bold"> { $featuredBreach } </span> breach, as well as { $breachCount } other 
+  Your account appeared in the <span class="bold"> { $featuredBreach } </span> breach, 
     { $breachCount ->
-        [one] breach
-       *[other] breaches
+        [0] but did not appear in any other known data breaches
+        [1] as well as { $breachCount } other breach
+       *[other] as well as { $breachCount } other breaches
     }.
 
-featured-breach-only = Your email address appears in the <span class="bold"> { $featuredBreach } </span> breach, but does not appear in any other known breaches.
-featured-breach-other = Your email address did not appear in the <span class="bold"> { $featuredBreach } </span> breach, but did appear in one other breach.
+scan-results = Your account { $breachCount ->
+    [0] Your email address did not appear in our basic scan.
+        That's good news, but data breaches can happen any time and there is still more you can do. 
+        Subscribe to Firefox Monitor for a full report, alerts when new breaches happen, and tips on protecting your passwords
+    [1] appeared in the following breach
+   *[other] appeared in the following { $breachCount } breaches
+  }.
 
 show-more-breaches = Show More
 
-wtd-section-headline = What To Do
-wtd-1 = Change your password on these sites and anywhere else you've used the same password.
-wtd-2 = Make your answers to security questions just as strong as your passwords.
-wtd-3 = Use password managers like 1Password, LastPass, or Dashlane to generate strong passwords, remember them, and fill them into websites so you don't have to.
-wtd-4 = Subscribe to alerts from {-product-name-nowrap} to learn sooner about your compromised accounts.
+what-to-do-headline = What To Do
+what-to-do-1 = Change your password on these sites and anywhere else you've used the same password.
+what-to-do-2 = Make your answers to security questions just as strong as your passwords.
+what-to-do-3 = Use password managers like 1Password, LastPass, or Dashlane to generate strong passwords, remember them, and fill them into websites so you don't have to.
+what-to-do-4 = Subscribe to alerts from {-product-name-nowrap} to learn sooner about your compromised accounts.
 
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Breach date
@@ -179,7 +178,7 @@ beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 
 # copyright-info (without markup) = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
 copyright-info = 
-  Portions of this content are <span class='copyright-symbol'>&copy;</span> 1998-2018 by individual mozilla.org contributors. <br />
+  Portions of this content are <span class="copyright-symbol">&copy;</span> 1998-2018 by individual mozilla.org contributors. <br />
   Content available under a  <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons license</a>.
 
 

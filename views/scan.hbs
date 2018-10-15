@@ -4,41 +4,25 @@
     <section class="half">
 
       {{#ifCompare foundBreaches.length "===" 0}}
-        <h3 id="no-breaches" class="section-headline">{{fluentFormat req "no-breaches-headline" breachCount=foundBreaches.length}}</h3>
+        <h3 id="no-breaches" class="section-headline">{{fluentFormat req "no-breaches-headline"}}</h3>
       {{else}}
-        <h3 id="found-breaches" class="section-headline">{{fluentFormat req "found-breaches-headline" breachCount=foundBreaches.length}}</h3>
+        <h3 id="found-breaches" class="section-headline">{{fluentFormat req "found-breaches-headline"}}</h3>
       {{/ifCompare}}
       
-      {{#ifCompare foundBreaches.length ">" 1}}
         {{#if featuredBreach}}
           <p>{{{fluentFormat req "featured-breach-results" featuredBreach=featuredBreach.Title breachCount=(breachMath foundBreaches.length "-" 1)}}}</p>
         {{else}}
-          <p>{{fluentFormat req "found-breaches-plural" breachCount=foundBreaches.length}}</p>
+          <p>{{fluentFormat req "scan-results" breachCount=foundBreaches.length}}</p>
         {{/if}}
-      </section>
-      {{> compromised_accounts }}
-      
-      {{else}} <!--foundBreaches.length < 1-->
-        {{#ifCompare foundBreaches.length "===" 0}}
-          <p>{{fluentFormat req "no-breaches-blurb"}}</p>
-        {{else}}
-          {{#if featuredBreach }}
-            {{#if userAccountCompromised}}
-              <p>{{{fluentFormat req "featured-breach-only" featuredBreach=featuredBreach.Title userBreached="true"}}}</p>
-            {{else}}
-              <p>{{{fluentFormat req "featured-breach-other" featuredBreach=featuredBreach.Title userBreached="false"}}}</p>
-            {{/if}}
-          {{else}}
-            <p>{{fluentFormat req "found-breaches-singular" breachCount=foundBreaches.length}}</p>
-          {{/if}}
-        {{/ifCompare}}
       </section>
 
         {{#ifCompare foundBreaches.length "===" 0}}
           <section class="third">
             {{> sign_up_button}}
           </section>
-        {{else}}
+        {{/ifCompare}}
+
+        {{#ifCompare foundBreaches.length "===" 1}}
           <section class="half">
             {{#each foundBreaches}}
               {{> breach_listing req=../req}}
@@ -46,7 +30,12 @@
             {{> hibp_attribution}}
           </section>
         {{/ifCompare}}
-    {{/ifCompare}}
+
+      {{#ifCompare foundBreaches.length ">" 1}}
+        {{> compromised_accounts }}
+      {{/ifCompare}}
+
+    </section>
   </div>
 </main>
 
