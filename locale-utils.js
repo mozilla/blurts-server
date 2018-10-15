@@ -3,6 +3,9 @@
 const fs = require("fs");
 const path = require("path");
 
+// node.js needs Intl.PluralRules polyfill
+require("intl-pluralrules");
+
 const { FluentBundle } = require("fluent");
 
 const mozlog = require("./log");
