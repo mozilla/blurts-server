@@ -458,14 +458,11 @@ document.querySelectorAll("[data-analytics-event]").forEach(el => {
   });
 });
 
-if (document.querySelectorAll("button")) {
+
   document.querySelectorAll("button").forEach(button => {
     button.addEventListener("click", (e) => doButtonRouting(e));
   });
-}
 
-if (document.querySelector(".breach-image")) {
   document.querySelectorAll(".breach-image").forEach(breachImage => {
     breachImage.addEventListener("error", replaceBrokenImage);
   });
-}

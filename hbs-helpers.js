@@ -1,12 +1,9 @@
 "use strict";
 
-const fs = require("fs");
-const AppConstants = require("./app-constants");
 const mozlog = require("./log");
 
 
 const log = mozlog("hbs-helpers");
-const SERVER_URL = AppConstants.SERVER_URL;
 
 function breachDataClasses(dataClasses) {
   if (dataClasses.constructor === Array) {
@@ -91,17 +88,6 @@ function breachMath(lValue, operator = null, rValue = null) {
   return returnValue;
 }
 
-function checkImageSrc(imageName) {
-  try {
-    fs.statSync(`public/img/logos/${imageName}.png`);
-  } catch(err) {
-    if(err.code === "ENOENT") {
-      return `${SERVER_URL}/img/logos/missing-logo-icon.png`;
-    }
-  }
-  return `${SERVER_URL}/img/logos/${imageName}.png`;
-}
-
 
 module.exports = {
   breachDataClasses,
@@ -110,5 +96,4 @@ module.exports = {
   eachFromTo,
   ifCompare,
   breachMath,
-  checkImageSrc,
 };
