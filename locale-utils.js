@@ -14,6 +14,7 @@ const mozlog = require("./log");
 const log = mozlog("locale-utils");
 
 const localesDir = path.join("public", "locales");
+
 const availableLanguages = [];
 const fluentBundles = {};
 
@@ -40,8 +41,13 @@ const LocaleUtils = {
     for (const lang of languageDirectories) {
       try {
         const langBundle = new FluentBundle(lang);
-        const langFTLSource = fs.readFileSync(path.join(localesDir, lang, "app.ftl"), "utf8");
-        langBundle.addMessages(langFTLSource);
+        const ftlFiles = fs.readdirSync(path.join(localesDir, lang)).filter(item => {
+          return (item.endsWith(".ftl"));
+        });
+        for (const file of ftlFiles) {
+          const langFTLSource = fs.readFileSync(path.join(localesDir, lang, file), "utf8");
+          langBundle.addMessages(langFTLSource);
+        }
         fluentBundles[lang] = langBundle;
         availableLanguages.push(lang);
       } catch (e) {
@@ -49,6 +55,7 @@ const LocaleUtils = {
       }
     }
     log.info("LocaleUtils.init", {availableLanguages});
+    log.info("LocaleUtils.init", {fluentBundles});
   },
 
   loadLanguagesIntoApp (app) {
