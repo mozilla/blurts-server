@@ -13,7 +13,7 @@ const mozlog = require("./log");
 
 const log = mozlog("locale-utils");
 
-const localesDir = path.join("public", "locales");
+const localesDir = "locales";
 
 const availableLanguages = [];
 const fluentBundles = {};
