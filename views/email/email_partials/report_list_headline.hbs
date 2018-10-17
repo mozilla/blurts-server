@@ -1,5 +1,5 @@
 
-<h2 class="body-copy" style="color: #ffffff; font-size: 22px; font-weight: 300;">
+<h2 class="body-copy" style="color: #333333; font-size: 22px; font-weight: 300;">
   {{#if breachAlert}}
     Alert! Your account has been compromised!
   {{else}}
@@ -11,27 +11,28 @@
   {{/if}} <!--if breachAlert-->
 </h2>
 {{#if breachAlert}}
-  <p class="body-copy" style="color: #ffffff; font-size: 15px;">
-    Your email appeared in a recently reported breach. <br />
-    Here are the details.
+  <p class="body-copy" style="color: #333333; font-size: 15px; font-weight: 300;">
+    Your email appeared in a recently reported breach. <br class="break-line"/>Here are the details.
   </p>
 {{else}}
   {{#if unsafeBreachesForEmail}}
-    <p class="body-copy" style="color: #ffffff; font-size: 15px;">
-      Your accounts appeared in {{ unsafeBreachesForEmail.totalBreaches }}</span> breach{{#ifCompare unsafeBreachesForEmail.totalBreaches ">" 1}}es{{/ifCompare}}.
+    <p class="body-copy" style="color: #333333; font-size: 15px; font-weight: 300;">
+      Your accounts appeared in {{ unsafeBreachesForEmail.length }}
+      {{#ifCompare unsafeBreachesForEmail.length "<" 2}} breach.{{/ifCompare}}
+      {{#ifCompare unsafeBreachesForEmail.length ">" 1}} breaches.{{/ifCompare}}
     </p>
   {{else}}
-    <p class="body-copy" style="color: #ffffff; font-size: 15px;">
+    <p class="body-copy" style="color: #333333; font-size: 15px; font-weight: 300;">
       Your account doesn't appear in our full report of breaches. That's good news, but there is more you can do. Data breaches happen at any time, so read on to learn how you can protect your passwords.
     </p>
   </td>
 </tr>
 <tr>
   <td>
-    <h2 class="body-copy" style="color: #ffffff; font-size: 22px; font-weight: 300;">
+    <h2 class="body-copy" style="color: #333333; font-size: 22px; font-weight: 300;">
       Passwords: The Key to Account Security
     </h2>
-    <p class="body-copy" style="color: #ffffff; font-size: 15px;">
+    <p class="body-copy" style="color: #333333; font-size: 15px; font-weight: 300;">
       Your passwords protect all of the personal information that resides in your online accounts, from bank balances and credit card numbers to your home address and private messages. Passwords are so valuable that thousands of passwords are stolen every day and accounts are traded on the black market. Take these steps to protect yours.
     </p>
   {{/if}}

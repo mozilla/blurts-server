@@ -3,33 +3,33 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width"/>
+    <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
     <title>Firefox Monitor</title>
     <style>
+
        body {
         text-align: center;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-family: 'Fira Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-weight: 400;
+        color: #333333;
+        background: #ededf0;
       }
-
-      a {
-        text-decoration: none;
+      
+      a,
+      .footer-copy a {
+        color: #0060df;
+        font-weight: 400;
       }
 
       .button {
         display: inline-block;
         width: 100%;
-      }
-
-      .footer a,
-      .footer-link {
-        text-decoration: none;
-        color: #0060df;
-        font-weight: 400;
+        color: #ffffff;
       }
 
       .body-copy {
         text-decoration: none;
-        color: #ffffff;
+        color: #333333;
         font-weight: 400;
       }
 
@@ -38,51 +38,60 @@
       }
 
       .body-copy {
-        color: #ffffff !important;
-      }
-      .header-image {
-        display: none;
-      }
-
-      .image {
-        background-image: url("{{ SERVER_URL }}/img/firefox-share.png");
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        min-height: 300px;
-        width: 100%;
-        max-width: 603px;
-        min-width: 200px;
-        margin: 0 auto;
+        color: #333333 !important;
       }
 
       p {
         line-height: 1.65em;
       }
+
       .footer-copy {
         color:#738597;
       }
+
+      td {
+        border-collapse: collapse;
+        border-width: 0px;
+      }
+
+      @media screen and (max-width: 500px) {
+        br.break-line {
+          display: none;
+        }
+
+        td.logomark-wrapper {
+          width: 50px !important;
+        }
+
+        img.firefox-logomark {
+          width: 40px !important;
+        }
+
+        h1.firefox-logotype {
+          white-space: nowrap;
+          font-size: 25px !important;
+        }
+      }
+
     </style>
   </head>
-  <body style="padding: 0px; margin: 0px; width: 100%; height: 100%; line-height: 22px; font-famly: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; color: #ffffff;" >
-    <table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" style="padding-bottom: 30px;">
+  <body bgcolor="#ededf0" style="background-color: #ededf0; padding-left: 0px; padding-right: 0px; padding-top:30px; padding-bottom: 50px; margin: 0px; width: 100%; height: 100%; line-height: 22px; font-famly: 'Fira Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; color: #333333;" >
+    <table bgcolor="#ededf0" height="100%" width="100%" style="width: 100%; height: 100%; background-color: #ededf0; padding-bottom: 100px; padding-top: 50px;">
       <tr>
-        <td align="center">
-          <table border="0" cellspacing="0" cellpadding="0" width="100%" style="max-width: 603px; padding-top:30px; min-width: 200px;">
+        <td width="603px" >
+          <table border="1" cellspacing="0" cellpadding="0" align="center" width="100%" style="padding: 0px; max-width: 603px; min-width: 200px; width: 100%; text-align: center; border-collapse: collapse; box-shadow: 1px 1px 2px #b1b1b3; border: 1px solid #b1b1b3;">
             <tr>
-              <td style="padding-left: 25px; padding-right: 30px;">
+              <td border="0" cellpadding="0" cellspacing="0" style="border-width: 0px; border-collapse: collapse;">
                 {{>email_logo}}
               </td>
             </tr>
-          </table>
-          <table bgcolor="#002275" border="0" cellspacing="0" cellpadding="0" align="center" width="100%" style="padding-left: 0px; padding-right: 0px; padding-bottom: 50px; max-width: 603px; min-width: 200px; width: 100%; text-align: center; background-image: url('{{ SERVER_URL }}/img/email_images/wave-header.png'), url('{{ SERVER_URL }}/img/email_images/wave-footer.png'), linear-gradient(177deg, rgb(0, 34, 117), rgb(35, 17, 61) 95.11%); background-repeat: no-repeat; background-position: top center, bottom center; background-size: 603px auto;">
             <tr>
-              <td style="padding: 30px;">
+              <td bgcolor="#ffffff" style="padding: 30px" border="0" cellpadding="0" cellspacing="0" style="border-width: 0px;">
                 {{{ body }}}
               </td>
             </tr>
           </table>
-          <table border="0" cellspacing="0" cellpadding="0" align="center" width="100%" style="width: 100%; max-width: 603px; min-width: 100px;">
+          <table border="0" cellspacing="0" cellpadding="0" align="center" width="100%" style="width: 100%; max-width: 603px; min-width: 100px; padding-top: 30px;">
             <tr>
               <td>
                 {{>email_footer}}
@@ -94,5 +103,3 @@
     </table>
   </body>
 </html>
-
-

@@ -18,43 +18,22 @@
   </table>
   <table border="0" cellpadding="0" cellspacing="0" style="text-align: left; padding-top: 10px;">
     {{#if breachAlert}}
-        {{> breach_alert}}
-    {{/if}}
+      {{> breach_alert supportedLocales=supportedLocales}}
+      {{> email_hibp_attribution}}
+      {{> report_what_to_do_next}}
+    {{else}}
       {{#if unsafeBreachesForEmail}}
-        <tr>
-          <td colspan="2">
-            <h2 class="body-copy" style="color: #ffffff; font-size: 22px; font-weight: 300; width: 100%">Website Breaches</h2>
-            {{#if breachAlert}}
-              <p class="body-copy" style="color: #ffffff; font-size: 15px;">
-                Your email appears in our database of compromised accounts. Read about each one and learn what you can do to protect your passwords. Don't forget to sign up for Firefox Monitor with all the email addresses you use for online accounts.
-              </p>
-            {{/if}}
-          </td>
-        </tr>
-        {{#each unsafeBreachesForEmail.websiteBreaches}}
-          {{> email_single_breach SERVER_URL=../SERVER_URL}}
+        {{#each unsafeBreachesForEmail}}
+          {{> email_single_breach SERVER_URL=../SERVER_URL req=../req}}
         {{/each}}
-        {{#ifCompare unsafeBreachesForEmail.spamLists.length ">" 0}}
-          <tr>
-            <td colspan="2">
-              <h2 class="body-copy" style="color: #ffffff; font-size: 22px; font-weight: 300; width: 100%">Spam Lists</h2>
-            </td>
-          </tr>
-        {{#each unsafeBreachesForEmail.spamLists}}
-            {{> email_single_breach SERVER_URL=../SERVER_URL}}
-        {{/each}}
-      {{/ifCompare}}
-      <tr>
-        <td><!--empty cell to align HIBP attribution with other table items--></td>
-        <td style="padding-left: 10px; padding-right: 20px;">
-           <p class="body-copy" style="color: #ffffff">Breach data provided by <a href="https://www.haveibeenpwned.com" rel="noopener noreferrer" style="color: #45a1ff">Have I Been Pwned</a></p>
-        </td>
-      </tr>
+        {{> email_hibp_attribution}}
+        {{> report_what_to_do_next}}
       {{else}}
-        {{#eachFromTo TIPS 0 3 }}
-          {{> report_password_tips SERVER_URL=../SERVER_URL}}
+        {{#eachFromTo TIPS 0 3}}
+          {{> report_password_tips SERVER_URL=../SERVER_URL req=../req}}
         {{/eachFromTo}}
-    {{/if}}<!--unsafeBreachesForEmail-->
+      {{/if}}<!--unsafeBreachesForEmail-->
+    {{/if}}<!--breachAlert-->
   </table>
   <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-top: 20px; padding-bottom: 20px; margin: 0px;">
     <tr>

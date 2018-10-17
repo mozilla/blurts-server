@@ -13,8 +13,11 @@ require("../resetDB");
 jest.mock("got");
 
 
+const mockRequest = { fluentFormat: jest.fn() };
+
+
 test("init request sets session cookie and redirects", () => {
-  const mockRequest = { session: { } };
+  mockRequest.session = { };
   const mockResponse = { redirect: jest.fn() };
 
   init(mockRequest, mockResponse);
@@ -27,7 +30,8 @@ test("init request sets session cookie and redirects", () => {
 test("confirmed request checks session cookie, calls FXA for token and email, adds subscriber, and renders", async () => {
   const testFxAEmail = "fxa@test.com";
   // Mock the getToken, got, and render calls
-  const mockRequest = { session: { state: { } }, originalUrl: "" };
+  mockRequest.session = { state: { } };
+  mockRequest.originalUrl = "";
   const mockResponse = { render: jest.fn() };
   const mockFxAClient = { code : { getToken: jest.fn().mockReturnValueOnce({ accessToken: "testToken"}) } };
   got.mockResolvedValue({ body: `{"email": "${testFxAEmail}"}` });
@@ -52,16 +56,17 @@ test("confirmed request checks session cookie, calls FXA for token and email, ad
 
 
 test("confirmed request without session state cookie throws Error", async () => {
-  const mockRequest = { session: {} };
+  mockRequest.session = {};
   const mockResponse = {};
 
-  await expect(confirmed(mockRequest, mockResponse)).rejects.toThrow("Invalid session");
+  await expect(confirmed(mockRequest, mockResponse)).rejects.toThrowError("oauth-invalid-session");
 });
 
 
 test("confirmed request with bad session state cookie throws Error", async () => {
   // Mock request, but don't mock the getToken call to trigger the client-oauth2 error
-  const mockRequest = { session: { state: { } }, originalUrl: "" };
+  mockRequest.session = { state: { } };
+  mockRequest.originalUrl = "";
   const mockResponse = {};
 
   await expect(confirmed(mockRequest, mockResponse)).rejects.toThrow("Invalid state");

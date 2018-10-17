@@ -29,6 +29,7 @@ test("user add POST with email adds unverified subscriber and sends verification
       url: "/user/add",
       headers: { "accept-language": userAddLanguages },
       body: {email:userAddEmail},
+      fluentFormat: jest.fn(),
     });
     const resp = httpMocks.createResponse();
     EmailUtils.sendEmail.mockResolvedValue(true);
@@ -59,18 +60,19 @@ test("user add request with invalid email throws error", async () => {
       method: "POST",
       url: "/user/add",
       body: {email:"a"},
+      fluentFormat: jest.fn(),
     });
     const resp = httpMocks.createResponse();
 
     // Call code-under-test
-    await expect(user.add(req, resp)).rejects.toThrow("Invalid Email");
+    await expect(user.add(req, resp)).rejects.toThrow("user-add-invalid-email");
 });
 
 
 test("user verify request with valid token verifies user", async () => {
   const validToken = "0e2cb147-2041-4e5b-8ca9-494e773b2cf0";
   // Set up mocks
-  const req = { query: { token: validToken }, app: { locals: { breaches: testBreaches } } };
+  const req = { fluentFormat: jest.fn(), query: { token: validToken }, app: { locals: { breaches: testBreaches } } };
   const resp = httpMocks.createResponse();
 
   // Call code-under-test
@@ -88,10 +90,11 @@ test("user verify request with invalid token returns error", async () => {
   const req = httpMocks.createRequest({
     method: "GET",
     url: `/user/verify?token=${invalidToken}`,
+    fluentFormat: jest.fn(),
   });
   const resp = httpMocks.createResponse();
 
-  await expect(user.verify(req, resp)).rejects.toThrow("This email address is not subscribed to Firefox Monitor.");
+  await expect(user.verify(req, resp)).rejects.toThrow("error-not-subscribed");
 });
 
 
@@ -99,7 +102,7 @@ test("user unsubscribe GET request with valid token returns error", async () => 
   const validToken = "0e2cb147-2041-4e5b-8ca9-494e773b2cf0";
 
   // Set up mocks
-  const req = { query: { token: validToken } };
+  const req = { fluentFormat: jest.fn(), query: { token: validToken } };
   const resp = httpMocks.createResponse();
 
   // Call code-under-test
@@ -113,7 +116,7 @@ test("user unsubscribe POST request with valid hash and token unsubscribes user"
   const validToken = "0e2cb147-2041-4e5b-8ca9-494e773b2cf0";
   const validHash = getSha1("unverifiedemail@test.com");
   // Set up mocks
-  const req = { body: { token: validToken, emailHash: validHash }, session: {}};
+  const req = { fluentFormat: jest.fn(), body: { token: validToken, emailHash: validHash }, session: {}};
   const resp = httpMocks.createResponse();
 
   // Call code-under-test
@@ -131,10 +134,11 @@ test("user unsubscribe GET request with invalid token returns error", async () =
   const req = httpMocks.createRequest({
     method: "GET",
     url: `/user/unsubscribe?token=${invalidToken}`,
+    fluentFormat: jest.fn(),
   });
   const resp = httpMocks.createResponse();
 
-  await expect(user.getUnsubscribe(req, resp)).rejects.toThrow("This email address is not subscribed to Firefox Monitor.");
+  await expect(user.getUnsubscribe(req, resp)).rejects.toThrow("error-not-subscribed");
 });
 
 
@@ -142,8 +146,8 @@ test("user unsubscribe POST request with invalid token and throws error", async 
   const invalidToken = "123456789";
   const invalidHash = "0123456789abcdef";
 
-  const req = { body: { token: invalidToken, emailHash: invalidHash } };
+  const req = { fluentFormat: jest.fn(), body: { token: invalidToken, emailHash: invalidHash } };
   const resp = { redirect: jest.fn() };
 
-  await expect(user.postUnsubscribe(req, resp)).rejects.toThrow("This email address is not subscribed to Firefox Monitor.");
+  await expect(user.postUnsubscribe(req, resp)).rejects.toThrow("error-not-subscribed");
 });

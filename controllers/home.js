@@ -12,7 +12,7 @@ function home(req, res) {
     scanFeaturedBreach = true;
   }
   res.render("monitor", {
-    title: "Firefox Monitor",
+    title: req.fluentFormat("home-title"),
     featuredBreach: featuredBreach,
     passwordTips: TIPS,
     scanFeaturedBreach,
@@ -22,7 +22,7 @@ function home(req, res) {
 
 function notFound(req, res) {
   res.status(404);
-  res.render("error", { message: "Page not found." });
+  res.render("error", { message: req.fluentFormat("home-not-found") });
 }
 
 module.exports = {

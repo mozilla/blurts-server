@@ -1,14 +1,14 @@
 {{#if featuredBreach }}
   <div id="featured-breach" class="account wrap-row">
       <div class="image-wrap">
-        <img class="breach-image" alt="{{ featuredBreach.Title }}" src="/img/logos/{{ featuredBreach.ImgSrc }}.{{ featuredBreach.LogoType }}">
+        <img class="breach-image" alt="{{ featuredBreach.Title }}" src="/img/logos/{{ featuredBreach.ImgSrc }}.{{ featuredBreach.LogoType }}" />
       </div>
     <div class="breach-info-wrap">
       <span class="breach-headline medium">{{ featuredBreach.Title }}</span>
-      <span class="breach-info breach-date"><span class="medium">Breach date:</span>{{prettyDate featuredBreach.BreachDate }}</span>
-      <span class="breach-info"><span class="medium">Compromised accounts:</span>{{localeString featuredBreach.PwnCount }}</span>
+      <span class="breach-info breach-date"><span class="medium">{{fluentFormat req "breach-date"}}</span>{{prettyDate req featuredBreach.BreachDate }}</span>
+      <span class="breach-info"><span class="medium">{{fluentFormat req "compromised-accounts"}}</span>{{localeString featuredBreach.PwnCount }}</span>
       {{#if featuredBreach.DataClasses }}
-      <span class="breach-info"><span class="medium">Compromised data:</span>{{breachDataClasses featuredBreach.DataClasses }}</span>
+        <span class="breach-info"><span class="medium">{{fluentFormat req "compromised-data"}}</span>{{breachDataClasses req featuredBreach.DataClasses }}</span>
       {{/if}}
     </div>
   </div>

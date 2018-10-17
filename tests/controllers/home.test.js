@@ -3,6 +3,8 @@
 const home = require("../../controllers/home");
 
 
+let mockRequest = { fluentFormat: jest.fn() };
+
 function addBreachesToMockRequest(mockRequest) {
   const mockBreaches = [
     {Name: "Test"},
@@ -13,7 +15,7 @@ function addBreachesToMockRequest(mockRequest) {
 }
 
 test("home GET without breach renders monitor without breach", () => {
-  let mockRequest = { query: { breach: null } };
+  mockRequest.query = { breach: null };
   mockRequest = addBreachesToMockRequest(mockRequest);
   const mockResponse = { render: jest.fn() };
 
@@ -27,7 +29,7 @@ test("home GET without breach renders monitor without breach", () => {
 
 test("home GET with breach renders monitor with breach", () => {
   const testBreach = {Name: "Test"};
-  let mockRequest = { query: { breach: testBreach.Name } };
+  mockRequest.query = { breach: testBreach.Name };
   mockRequest = addBreachesToMockRequest(mockRequest);
   const mockResponse = { render: jest.fn() };
 
@@ -40,7 +42,6 @@ test("home GET with breach renders monitor with breach", () => {
 
 
 test("notFound set status 404 and renders 404", () => {
-  const mockRequest = {};
   const mockResponse = { status: jest.fn(), render: jest.fn() };
 
   home.notFound(mockRequest, mockResponse);

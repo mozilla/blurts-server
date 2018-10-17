@@ -1,23 +1,45 @@
 "use strict";
 
+const { LocaleUtils } = require("./locale-utils");
 const mozlog = require("./log");
 
 
 const log = mozlog("hbs-helpers");
 
-function breachDataClasses(dataClasses) {
+
+function fluentFormat (req, id, args) {
+  return LocaleUtils.fluentFormat(req.supportedLocales, id, args.hash);
+}
+
+
+function getStringID (req, key, number) {
+  const fluentID = `${key}${number}`;
+  return LocaleUtils.fluentFormat(req.supportedLocales, fluentID);
+}
+
+
+function breachDataClasses(req, dataClasses, args) {
+  return localizedBreachDataClasses(req.supportedLocales, dataClasses, args);
+}
+
+
+function localizedBreachDataClasses(supportedLocales, dataClasses, args) {
+  const localizedDataClasses = [];
   if (dataClasses.constructor === Array) {
-    return dataClasses.join(", ");
+    dataClasses.forEach(dataClass => {
+      dataClass = dataClass.replace("'", "");
+      localizedDataClasses.push(LocaleUtils.fluentFormat(supportedLocales, dataClass.split(" ").join("-").toLowerCase(), args));
+    });
+    return localizedDataClasses.join(", ");
   } else {
-    return dataClasses;
+    return LocaleUtils.fluentFormat(supportedLocales, dataClasses.split(" ").join("-"), args);
   }
 }
 
 
-function prettyDate(date) {
+function prettyDate(req, date) {
   const jsDate = new Date(date);
-  // TODO: localize this
-  return jsDate.toLocaleDateString("en-US", {year: "numeric", month: "long", day: "numeric"});
+  return jsDate.toLocaleDateString(req.supportedLocales, {year: "numeric", month: "long", day: "numeric"});
 }
 
 
@@ -63,7 +85,7 @@ function breachMath(lValue, operator = null, rValue = null) {
   lValue = parseFloat(lValue);
   let returnValue = lValue;
   if (operator) {
-    rValue = parseFloat(rValue);
+      rValue = parseFloat(rValue);
     returnValue = {
       "+": lValue + rValue,
       "-": lValue - rValue,
@@ -72,25 +94,15 @@ function breachMath(lValue, operator = null, rValue = null) {
       "%": lValue % rValue,
     }[operator];
   }
-  if (returnValue < 10) {
-    return {
-      1: "one",
-      2: "two",
-      3: "three",
-      4: "four",
-      5: "five",
-      6: "six",
-      7: "seven",
-      8: "eight",
-      9: "nine",
-    }[returnValue];
-  }
   return returnValue;
 }
 
 
 module.exports = {
+  fluentFormat,
+  getStringID,
   breachDataClasses,
+  localizedBreachDataClasses,
   prettyDate,
   localeString,
   eachFromTo,
