@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ locale }}">
   <head>
-     <meta charset="utf-8" />
+    <meta charset="utf-8" />
     <link rel="stylesheet" href="/dist/app.min.css">
     <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -14,6 +14,10 @@
     <meta name="theme-color" content="#002275" />
     <title>{{ title }}</title>
     <script type="text/javascript" src="/dist/app.min.js" defer></script>
+
+    {{#if ENABLE_PONTOON_JS}}
+      <script src="https://pontoon.mozilla.org/pontoon.js"></script>
+    {{/if}}
     <link rel="icon" href="/img/favicons/favicon-32.png" sizes="32x32" />
     <link rel="icon" href="/img/favicons/favicon-96.png" sizes="96x96" />
     <link rel="icon" href="/img/favicons/favicon-128.png" sizes="128x128" />
@@ -39,25 +43,25 @@
         <footer id="footer">
       <div class="section-wrapper">
         <div class="third">
-          <a {{> analytics/link_event eventLabel="Mozilla Logo"}} class="footer-logo-wrapper" href="https://www.mozilla.org/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener" aria-label="Mozilla.">{{> sprite symID="Mozilla" }}</a>
+          <a {{> analytics/link_event eventLabel="Mozilla Logo"}} class="footer-logo-wrapper" href="https://www.mozilla.org/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener" aria-label="Mozilla">{{> sprite symID="Mozilla" }}</a>
         </div>
         <ul class="third">
-          <li>Support</li>
-          <li><a {{> analytics/link_event eventLabel="Give Feedback"}} href="https://qsurvey.mozilla.com/s3/Firefox-Monitor-Feedback" target="_blank" rel="noopener">Give Feedback</a></li>
-          <li><a {{> analytics/link_event eventLabel="Terms & Privacy"}} href="https://www.mozilla.org/privacy/firefox-monitor/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">Terms&nbsp;and&nbsp;Privacy</a></li>
-          <li><a {{> analytics/link_event eventLabel="GitHub"}} href="https://github.com/mozilla/blurts-server/" target="_blank" rel="noopener noreferrer" aria-label="Firefox Monitor repository on GitHub.">{{> sprite symID="GitHub" }}</a></li>
+          <li>{{fluentFormat req "layout-support" }}</li>
+          <li><a {{> analytics/link_event eventLabel="Give Feedback"}} href="https://qsurvey.mozilla.com/s3/Firefox-Monitor-Feedback" target="_blank" rel="noopener"><span class="nowrap">{{{fluentFormat req "give-feedback"}}}</span></a></li>
+          <li><a {{> analytics/link_event eventLabel="Terms & Privacy"}} href="https://www.mozilla.org/privacy/firefox-monitor/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">{{{fluentFormat req "terms-and-privacy"}}}</a></li>
+          <li><a {{> analytics/link_event eventLabel="GitHub"}} href="https://github.com/mozilla/blurts-server/" target="_blank" rel="noopener noreferrer">{{> sprite symID="GitHub"}}</a></li>
         </ul>
         <ul class="third">
-          <li>Firefox</li>
-          <li><a {{> analytics/download_event eventLabel="Quantum"}} href="https://www.mozilla.org/firefox/new/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">Download Firefox Quantum</a></li>
-          <li><a {{> analytics/download_event eventLabel="Mobile"}} href="https://www.mozilla.org/firefox/mobile/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">Download Firefox Mobile</a></li>
-          <li><a {{> analytics/link_event eventLabel="Features"}} href="https://www.mozilla.org/firefox/features/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">Features</a></li>
-          <li><a {{> analytics/download_event eventLabel="Beta, Nightly, Developer Edition"}} href="https://www.mozilla.org/firefox/channel/desktop/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">Beta, Nightly, Developer Edition</a></li>
+          <li>{{fluentFormat req "layout-Firefox"}}</li>
+          <li><a {{> analytics/download_event eventLabel="Quantum"}} href="https://www.mozilla.org/firefox/new/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">{{fluentFormat req "download-firefox-quantum"}}</a></li>
+          <li><a {{> analytics/download_event eventLabel="Mobile"}} href="https://www.mozilla.org/firefox/mobile/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">{{fluentFormat req "download-firefox-mobile"}}</a></li>
+          <li><a {{> analytics/link_event eventLabel="Features"}} href="https://www.mozilla.org/firefox/features/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">{{fluentFormat req "features"}}</a></li>
+          <li><a {{> analytics/download_event eventLabel="Beta, Nightly, Developer Edition"}} href="https://www.mozilla.org/firefox/channel/desktop/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">{{fluentFormat req "beta-nightly-developer-edition"}}</a></li>
         </ul>
       </div>
       <div class="section-wrapper">
         <div class="two-thirds copyright-info">
-          <p>Portions of this content are &copy; 1998-2018 by individual mozilla.org contributors. <br />Content available under a <a {{> analytics/link_event eventLabel="Creative Commons"}} href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons license</a>.</p>
+          <p>{{{fluentFormat req "copyright-info"}}}</p>
         </div>
       </div>
     </footer>

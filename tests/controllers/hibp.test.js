@@ -4,6 +4,7 @@ const AppConstants = require("../../app-constants");
 const HIBPLib = require("../../hibp");
 const hibp = require("../../controllers/hibp");
 const EmailUtils = require("../../email-utils");
+const { LocaleUtils } = require("../../locale-utils");
 const sha1 = require("../../sha1-utils");
 
 const { testBreaches } = require("../test-breaches");
@@ -39,6 +40,7 @@ test("notify POST with invalid token should throw error", async() => {
 test("notify POST with breach, subscriber hash prefix and suffixes should call sendEmail and respond with 200", async () => {
   jest.mock("../../email-utils");
   EmailUtils.sendEmail = jest.fn();
+  LocaleUtils.fluentFormat = jest.fn();
   const testEmail = "verifiedemail@test.com";
   const testHash = sha1(testEmail);
   const testPrefix = testHash.slice(0, 6).toUpperCase();
@@ -46,10 +48,16 @@ test("notify POST with breach, subscriber hash prefix and suffixes should call s
 
   HIBPLib.getUnsafeBreachesForEmail = jest.fn();
 
-  const mockRequest = { token: AppConstants.HIBP_NOTIFY_TOKEN, body: { hashPrefix: testPrefix, hashSuffixes: [testSuffix], breachName: "Test" }, app: { locals: { breaches: testBreaches } } };
+  const mockRequest = { token: AppConstants.HIBP_NOTIFY_TOKEN, body: { hashPrefix: testPrefix, hashSuffixes: [testSuffix], breachName: "Test" }, app: { locals: { breaches: testBreaches, AVAILABLE_LANGUAGES: ["en"] } } };
   const mockResponse = { status: jest.fn(), json: jest.fn() };
 
   await hibp.notify(mockRequest, mockResponse);
+
+  const mockFluentFormatCalls = LocaleUtils.fluentFormat.mock.calls;
+  expect (mockFluentFormatCalls.length).toBe(1);
+  const mockFluentFormatCallArgs = mockFluentFormatCalls[0];
+  expect (mockFluentFormatCallArgs[0]).toEqual(["en"]);
+  expect (mockFluentFormatCallArgs[1]).toBe("hibp-notify-email-subject");
 
   const mockSendEmailCalls = EmailUtils.sendEmail.mock.calls;
   expect (mockSendEmailCalls.length).toBe(1);

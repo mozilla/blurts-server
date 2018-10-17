@@ -18,19 +18,19 @@
   </table>
   <table border="0" cellpadding="0" cellspacing="0" style="text-align: left; padding-top: 10px;">
     {{#if breachAlert}}
-      {{> breach_alert}}
+      {{> breach_alert supportedLocales=supportedLocales}}
       {{> email_hibp_attribution}}
       {{> report_what_to_do_next}}
     {{else}}
       {{#if unsafeBreachesForEmail}}
         {{#each unsafeBreachesForEmail}}
-          {{> email_single_breach SERVER_URL=../SERVER_URL}}
+          {{> email_single_breach SERVER_URL=../SERVER_URL req=../req}}
         {{/each}}
         {{> email_hibp_attribution}}
         {{> report_what_to_do_next}}
       {{else}}
-        {{#eachFromTo TIPS 0 3 }}
-          {{> report_password_tips SERVER_URL=../SERVER_URL}}
+        {{#eachFromTo TIPS 0 3}}
+          {{> report_password_tips SERVER_URL=../SERVER_URL req=../req}}
         {{/eachFromTo}}
       {{/if}}<!--unsafeBreachesForEmail-->
     {{/if}}<!--breachAlert-->

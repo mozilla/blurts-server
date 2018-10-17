@@ -11,22 +11,22 @@ require("../resetDB");
 jest.mock("../../hibp");
 
 
-test("scan GET redirects to home", () => {
-  const mockRequest = {};
+const mockRequest = { fluentFormat: jest.fn() };
 
+test("scan GET redirects to home", () => {
   shouldRedirectHome(scan.get, mockRequest);
 });
 
 
 test("scan POST with empty email hash redirects to home", () => {
-  const mockRequest = { body: { emailHash: null } };
+  mockRequest.body = { emailHash: null };
 
   shouldRedirectHome(scan.post, mockRequest);
 });
 
 
 test("scan POST with hash of empty string redirects to home", () => {
-  const mockRequest = { body: { emailHash: sha1("") } };
+  mockRequest.body = { emailHash: sha1("") };
 
   shouldRedirectHome(scan.post, mockRequest);
 });
@@ -36,7 +36,8 @@ test("scan POST with hash should render scan with foundBreaches", async () => {
   const testEmail = "test@example.com";
   const testFoundBreaches = [];
 
-  const mockRequest = { body: { emailHash: sha1(testEmail) }, app: { locals: { breaches: testBreaches } } };
+  mockRequest.body = { emailHash: sha1(testEmail) };
+  mockRequest.app = { locals: { breaches: testBreaches } };
   const mockResponse = { render: jest.fn() };
   HIBP.getBreachesForEmail.mockResolvedValue(testFoundBreaches);
 

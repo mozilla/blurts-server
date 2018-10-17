@@ -1,29 +1,25 @@
 {{!< default }}
 <div class="sub-page-content">
   <section class="unsubscribe-content section-wrapper">
-    <h2 class="section-headline whole">
-    You are no longer subscribed.
-    </h2>
-    <p class="whole sub-head">
-    Your email is unsubscribed from Firefox Monitor. Thank you for using this service. Will you take a moment to answer one question about your experience?
-    </p>
+    <h2 class="section-headline whole">{{{fluentFormat req "unsub-survey-headline"}}}</h2>
+    <p class="whole sub-head">{{{fluentFormat req "unsub-survey-blurb"}}}</p>
   </section><!--.unsubscribe-content.section-wrapper-->
   <section class="unsubscribe-survey section-wrapper drop-shadow">
     <div class="whole">
       <form action="" method="post" id="unsubscribe-survey-form" class="form-group">
-        <span class="secondary-title whole" tabindex="1">Why are you unsubscribing from Firefox Monitor alerts?</span>
+        <span class="secondary-title whole" tabindex="1">{{{fluentFormat req "unsub-survey-form-label"}}}</span>
         {{#each UNSUB_REASONS}}
           <div class="radio-button-group" tabindex="1">
-            <input id="reason{{ id_number }}" type="radio" name="unsubscribe-reason" value="{{ value }}" />
+            <input id="reason{{ id_number }}" type="radio" name="unsubscribe-reason" data-analytics-label="{{ value }}" value="{{getStringID ../req "unsub-reason-" id_number}}" />
             <span class="radio-dot"></span>
-            <label for="reason{{ id_number }}">{{ value }}</label>
+            <label for="reason{{ id_number }}">{{{getStringID ../req "unsub-reason-" id_number}}}</label>
           </div>
         {{/each}}
         <div class="input-group-button">
-          <span class="thank-you-message">Thank you for your feedback.</span>
-          <span class="error-message">Please select one.</span>
-          <input id="unsubscribe-survey-submit" type="submit" class="button submit transparent-button" value="Unsubscribe" tabindex="1" />
-          <img class="loader" src="/img/loader.gif" alt="loading data" />
+          <span class="thank-you-message">{{fluentFormat req "unsub-survey-thankyou"}}</span>
+          <span class="error-message">{{fluentFormat req "unsub-survey-error"}}</span>
+          <input id="unsubscribe-survey-submit" type="submit" class="button submit transparent-button" value="{{fluentFormat req "unsub-button"}}" tabindex="1" />
+          <img class="loader" src="/img/loader.gif" alt="" />
         </div>
       </form>
     </div>

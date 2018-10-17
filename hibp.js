@@ -5,6 +5,7 @@ const createDOMPurify = require("dompurify");
 const { JSDOM } = require("jsdom");
 
 const AppConstants = require("./app-constants");
+const { FluentError } = require("./locale-utils");
 const mozlog = require("./log");
 const pkg = require("./package.json");
 
@@ -39,14 +40,14 @@ const HIBP = {
         log.info("_throttledGot", {err: "got a 429, tryCount: " + tryCount});
         if (tryCount >= AppConstants.HIBP_THROTTLE_MAX_TRIES) {
           log.error("_throttledGot", {err: err});
-          throw new Error("Too many connections to HIBP.");
+          throw new FluentError("error-hibp-throttled");
         } else {
           tryCount++;
           await new Promise(resolve => setTimeout(resolve, AppConstants.HIBP_THROTTLE_DELAY * tryCount));
           return await this._throttledGot(url, reqOptions, tryCount);
         }
       } else {
-        throw new Error("Error connecting to HIBP.");
+        throw new FluentError("error-hibp-connect");
       }
     }
   },
@@ -80,7 +81,7 @@ const HIBP = {
       app.locals.breachesLoadedDateTime = Date.now();
       app.locals.mostRecentBreachDateTime = this.getLatestBreachDateTime(breaches);
     } catch (error) {
-      throw new Error("Could not load breaches: " + error);
+      throw new FluentError("error-hibp-load-breaches");
     }
     log.info("done-loading-breaches");
   },
