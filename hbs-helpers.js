@@ -11,21 +11,28 @@ function fluentFormat (req, id, args) {
   return LocaleUtils.fluentFormat(req.supportedLocales, id, args.hash);
 }
 
+
 function getStringID (req, key, number) {
   const fluentID = `${key}${number}`;
   return LocaleUtils.fluentFormat(req.supportedLocales, fluentID);
 }
 
+
 function breachDataClasses(req, dataClasses, args) {
+  return localizedBreachDataClasses(req.supportedLocales, dataClasses, args);
+}
+
+
+function localizedBreachDataClasses(supportedLocales, dataClasses, args) {
   const localizedDataClasses = [];
   if (dataClasses.constructor === Array) {
     dataClasses.forEach(dataClass => {
       dataClass = dataClass.replace("'", "");
-      localizedDataClasses.push(LocaleUtils.fluentFormat(req.supportedLocales, dataClass.split(" ").join("-").toLowerCase(), args));
+      localizedDataClasses.push(LocaleUtils.fluentFormat(supportedLocales, dataClass.split(" ").join("-").toLowerCase(), args));
     });
     return localizedDataClasses.join(", ");
   } else {
-    return LocaleUtils.fluentFormat(req.supportedLocales, dataClasses.split(" ").join("-"), args);
+    return LocaleUtils.fluentFormat(supportedLocales, dataClasses.split(" ").join("-"), args);
   }
 }
 
@@ -95,6 +102,7 @@ module.exports = {
   fluentFormat,
   getStringID,
   breachDataClasses,
+  localizedBreachDataClasses,
   prettyDate,
   localeString,
   eachFromTo,

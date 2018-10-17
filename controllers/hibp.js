@@ -61,6 +61,7 @@ async function notify (req, res) {
         "report",
         {
           email,
+          supportedLocales,
           date: HBSHelpers.prettyDate(new Date()),
           breachAlert,
           SERVER_URL: req.app.locals.SERVER_URL,
