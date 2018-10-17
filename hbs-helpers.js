@@ -20,7 +20,7 @@ function breachDataClasses(req, dataClasses, args) {
   const localizedDataClasses = [];
   if (dataClasses.constructor === Array) {
     dataClasses.forEach(dataClass => {
-      dataClass.split(" ").join("-");
+      dataClass = dataClass.replace("'", "");
       localizedDataClasses.push(LocaleUtils.fluentFormat(req.supportedLocales, dataClass.split(" ").join("-").toLowerCase(), args));
     });
     return localizedDataClasses.join(", ");

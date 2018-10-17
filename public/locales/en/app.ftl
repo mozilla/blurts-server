@@ -1,23 +1,29 @@
+# String IDs beginning with "-product" and "-brand" should remain in English.
+# They should not be:
+# - Declined to adapt to grammatical case.
+# - Transliterated.
+# - Translated.
 -product-name = Firefox Monitor
+-product-name-nowrap = <span class="nowrap">{-product-name}</span>
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
+# HIBP is the acronym of Have I Been Pwned.
 -brand-HIBP = HIBP
--product-name-nowrap = <span class="nowrap">Firefox Monitor</span>
 
 layout-Firefox = {-brand-name}
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Support
 # Link that takes the user to a Firefox Monitor survey. 
-give-feedback = <span class="nowrap">Give Feedback</span>
-terms-and-privacy = <span class="nowrap">Terms and Privacy</span>
+give-feedback = Give Feedback
+terms-and-privacy = Terms and Privacy
 
 error-not-subscribed = This email address is not subscribed to {-product-name}.
 error-hibp-throttled = Too many connections to {-brand-HIBP}.
 error-hibp-connect = Error connecting to {-brand-HIBP}.
 error-hibp-load-breaches = Could not load breaches.
 
-hibp-notify-email-subject = {-product-name} Alert : Your account was involved in a breach.
+hibp-notify-email-subject = {-product-name} Alert: Your account was involved in a breach.
 
 home-title = {-product-name}
 home-not-found = Page not found.
@@ -51,18 +57,22 @@ pwt-section-blurb =
   so that if they hack one account, they can hack many. Here are six ways to protect your accounts.
 
 pwt-headline-1 = Use a Different Password for Every Account
-pwt-headline-2 = Create Strong Passwords
-pwt-headline-3 = Treat Security Questions Like Extra Passwords
-pwt-headline-4 = Use a Password Manager
-pwt-headline-5 = Use Two-Factor Authentication
-pwt-headline-6 = Sign Up for Alerts From {-product-name-nowrap}
+pwt-summary-1 = You can’t prevent a data breach, but you can limit your exposure by always using different passwords for different websites.
 
-pwt-summary-1 = You can't prevent a data breach, but you can limit your exposure by always using different passwords for different websites.
+pwt-headline-2 = Create Strong Passwords
 pwt-summary-2 = Hackers try to steal passwords by using lists of common passwords and by guessing. The longer and more random your password is, the harder it will be to steal.
+
+pwt-headline-3 = Treat Security Questions Like Extra Passwords
 pwt-summary-3 = Websites don’t check that your answers are accurate, just that they match every time. So create long, random answers and store them somewhere safe.
-pwt-summary-4 = Password managers like 1Password, LastPass, or Dashlane can generate strong passwords for you, remember them for you, and fill them into websites so you don't have to type them in.
+
+pwt-headline-4 = Use a Password Manager
+pwt-summary-4 = Password managers like 1Password, LastPass, or Dashlane can generate strong passwords for you, remember them for you, and fill them into websites so you don’t have to type them in.
+
+pwt-headline-5 = Use Two-Factor Authentication
 pwt-summary-5 = 2FA offers an extra layer of protection by requiring you to enter additional information (like a code sent via text) before you can access your accounts.
-pwt-summary-6 = We'll let you know if your account information is compromised in a data breach or exposed to hackers in some other way.
+
+pwt-headline-6 = Sign Up for Alerts From {-product-name-nowrap}
+pwt-summary-6 = We’ll let you know if your account information is compromised in a data breach or exposed to hackers in some other way.
 
 landing-headline = Your right to be safe from hackers starts here.
 landing-blurb = {-product-name-nowrap} arms you with tools to keep your personal information safe. Find out what hackers already know about you and learn how to stay a step ahead of them.
@@ -99,34 +109,33 @@ signup-with-fxa - Sign Up with {-brand-name} Account
 form-signup-placeholder = Enter email
 form-signup-checkbox = Get the latest from {-brand-Mozilla} and {-brand-name}.
 form-signup-submit = Sign up
-form-signup-error = Must be a valid email.
+form-signup-error = Must be a valid email
 
-
-found-breaches-headline = This could be a problem...
+found-breaches-headline = This could be a problem
 no-breaches-headline = So far, so good
 
-featured-breach-results = 
-  Your account appeared in the <span class="bold"> { $featuredBreach } </span> breach, 
-    { $breachCount ->
-        [0] but did not appear in any other known data breaches
-        [1] as well as { $breachCount } other breach
-       *[other] as well as { $breachCount } other breaches
-    }.
+featured-breach-results =  
+  { $breachCount ->
+      [0] Your account appeared in the <span class="bold"> { $featuredBreach } </span> breach, but did not appear in any other known data breaches.
+      [1] Your account appeared in the <span class="bold"> { $featuredBreach } </span> breach, as well as one other breach.
+      *[other] Your account appeared in the <span class="bold"> { $featuredBreach } </span> breach, as well as { $breachCount } other breaches.
+  }
 
-scan-results = Your account { $breachCount ->
-    [0] Your email address did not appear in our basic scan.
-        That's good news, but data breaches can happen any time and there is still more you can do. 
-        Subscribe to Firefox Monitor for a full report, alerts when new breaches happen, and tips on protecting your passwords
-    [1] appeared in the following breach
-   *[other] appeared in the following { $breachCount } breaches
-  }.
+scan-results = 
+  { $breachCount ->
+      [0] Your email address did not appear in our basic scan.
+          That’s good news, but data breaches can happen any time and there is still more you can do. 
+          Subscribe to Firefox Monitor for a full report, alerts when new breaches happen, and tips on protecting your passwords
+      [1] Your account appeared in the following breach.
+     *[other] Your accounts appeared in the following { $breachCount } breaches.
+  }
 
 show-more-breaches = Show More
 
 what-to-do-headline = What To Do
-what-to-do-1 = Change your password on these sites and anywhere else you've used the same password.
+what-to-do-1 = Change your password on these sites and anywhere else you’ve used the same password.
 what-to-do-2 = Make your answers to security questions just as strong as your passwords.
-what-to-do-3 = Use password managers like 1Password, LastPass, or Dashlane to generate strong passwords, remember them, and fill them into websites so you don't have to.
+what-to-do-3 = Use password managers like 1Password, LastPass, or Dashlane to generate strong passwords, remember them, and fill them into websites so you don’t have to.
 what-to-do-4 = Subscribe to alerts from {-product-name-nowrap} to learn sooner about your compromised accounts.
 
 # breach-date = the calendar date a particular data theft occurred. 
@@ -138,10 +147,9 @@ compromised-accounts = Compromised accounts
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Compromised data 
 
-
-confirmed = Confirmed!<br />You're Subscribed!
+confirmed = Confirmed!<br />You’re Subscribed!
 confirmed-blurb = {-product-name-nowrap} will email you a full report shortly, and will send an email alert if your account appears in a new reported breach.
-confirmed-social-blurb = If you've been breached, chances are your friends, family, or online connections have been too. Let them know about {-product-name-nowrap}.
+confirmed-social-blurb = If you’ve been breached, chances are your friends, family, or online connections have been too. Let them know about {-product-name-nowrap}.
 
 unsub-headline = Unsubscribe from {-product-name-nowrap}
 unsub-blurb = This will remove your email from the {-product-name-nowrap} list and you will no longer receive alerts when new breaches are announced. 
@@ -151,10 +159,10 @@ unsub-survey-headline = You are no longer subscribed.
 unsub-survey-blurb = Your email is unsubscribed from {-product-name-nowrap}. Thank you for using this service. Will you take a moment to answer one question about your experience?
 unsub-survey-form-label = Why are you unsubscribing from {-product-name-nowrap} alerts?
 
-unsub-reason-1 = I think that alerts don't make my data safer
+unsub-reason-1 = I think that alerts don’t make my data safer
 unsub-reason-2 = I get too many emails from {-product-name-nowrap}
-unsub-reason-3 = I don't find the service valuable
-unsub-reason-4 = I've already taken steps to protect my accounts
+unsub-reason-3 = I don’t find the service valuable
+unsub-reason-4 = I’ve already taken steps to protect my accounts
 unsub-reason-5 = I am using another service to monitor my accounts
 unsub-reason-6 = None of the above
 
@@ -176,10 +184,10 @@ features = Features
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 
-# copyright-info (without markup) = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
+# The following string contains HTML markup which should not be translated. 
+# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
 copyright-info = 
-  Portions of this content are <span class="copyright-symbol">&copy;</span> 1998-2018 by individual mozilla.org contributors. <br />
+  Portions of this content are &#x24B8; 1998-2018 by individual mozilla.org contributors. <br />
   Content available under a  <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons license</a>.
-
 
 hibp-attribution = Breach data provided by
