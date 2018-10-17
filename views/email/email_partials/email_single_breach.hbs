@@ -7,7 +7,7 @@
         <p class="body-copy" style="padding: 2px 0px 2px 0px; margin: 0px; color: #333333; font-weight: 400; font-size: 14px;">Breach date:<span class="body-copy" style="font-weight:300; padding-left: 6px; color: #333333">{{prettyDate this.BreachDate }}</span></p>
         <p class="body-copy" style="padding: 2px 0px 2px 0px; margin: 0px; color: #333333; font-weight: 400; font-size: 14px;">Compromised accounts:<span class="body-copy" style="font-weight:300; padding-left: 6px; color: #333333">{{localeString this.PwnCount }}</span></p>
         {{#if this.DataClasses }}
-          <p class="body-copy" style="padding: 2px 0px 2px 0px; margin: 0px; color: #333333; font-weight: 400; font-size: 14px;">Compromised data:<span class="body-copy" style="font-weight:300; padding-left: 6px; color: #333333">{{breachDataClasses this.DataClasses }}</span></p>
+          <p class="body-copy" style="padding: 2px 0px 2px 0px; margin: 0px; color: #333333; font-weight: 400; font-size: 14px;">Compromised data:<span class="body-copy" style="font-weight:300; padding-left: 6px; color: #333333">{{breachDataClasses req this.DataClasses }}</span></p>
         {{/if}}
       </td>
     </tr>

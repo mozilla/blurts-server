@@ -55,6 +55,7 @@ async function verify(req, res) {
     req.fluentFormat("user-verify-email-report-subject"),
     "report",
     {
+      req,
       TIPS,
       email: verifiedEmailHash.email,
       date: HBSHelpers.prettyDate(new Date()),

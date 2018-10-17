@@ -24,7 +24,7 @@
     {{else}}
       {{#if unsafeBreachesForEmail}}
         {{#each unsafeBreachesForEmail}}
-          {{> email_single_breach SERVER_URL=../SERVER_URL}}
+          {{> email_single_breach SERVER_URL=../SERVER_URL req=../req}}
         {{/each}}
         {{> email_hibp_attribution}}
         {{> report_what_to_do_next}}
