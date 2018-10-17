@@ -1,0 +1,37 @@
+{
+  "name": "blurts-server",
+    "description": "The app powering monitor.firefox.com.",
+    "repository": {
+      "url": "https://github.com/mozilla/blurts-server",
+      "license": "MPL2",
+      "tests": "https://travis-ci.org/mozilla/blurts-server/"
+    },
+    "participate": {
+      "home": "https://github.com/mozilla/blurts-server",
+      "docs": "https://github.com/mozilla/blurts-server/blob/master/README.md",
+      "irc": "irc://irc.mozilla.org/#breach-alerts",
+      "irc-contacts": [
+        "groovecoder",
+        "lesleynorton",
+        "nhnt11",
+        "pdehaan"
+      ]
+    },
+    "bugs": {
+      "list": "https://github.com/mozilla/blurts-server/issues",
+      "report": "https://github.com/mozilla/blurts-server/issues/new",
+      "mentored": "https://github.com/mozilla/blurts-server/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22"
+    },
+    "urls": {
+      "prod": "https://monitor.firefox.com",
+      "stage": "https://blurts-server.stage.mozaws.net/",
+      "dev": "https://fx-breach-alerts.herokuapp.com/"
+    },
+    "keywords": [
+      "node",
+      "postgres",
+      "security",
+      "api",
+      "email"
+    ]
+}
