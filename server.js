@@ -56,6 +56,25 @@ try {
 
 // Use helmet to set security headers
 app.use(helmet());
+
+const SCRIPT_SOURCES = ["'self'", "https://www.google-analytics.com/analytics.js"];
+const STYLE_SOURCES = ["'self'", "https://code.cdn.mozilla.net/fonts/"];
+const FRAME_ANCESTORS = ["'none'"];
+
+app.locals.ENABLE_PONTOON_JS = false;
+// Allow pontoon.mozilla.org on heroku for in-page localization
+const PONTOON_DOMAIN = "https://pontoon.mozilla.org";
+if (AppConstants.NODE_ENV === "heroku") {
+  app.locals.ENABLE_PONTOON_JS = true;
+  SCRIPT_SOURCES.push(PONTOON_DOMAIN);
+  STYLE_SOURCES.push(PONTOON_DOMAIN);
+  FRAME_ANCESTORS.push(PONTOON_DOMAIN);
+  app.use(helmet.frameguard({
+    action: "allow-from",
+    domain: PONTOON_DOMAIN,
+  }));
+}
+
 app.use(helmet.contentSecurityPolicy({
   directives: {
     baseUri: ["'none'"],
@@ -65,13 +84,19 @@ app.use(helmet.contentSecurityPolicy({
       "https://code.cdn.mozilla.net/fonts/",
       "https://www.google-analytics.com",
     ],
-    fontSrc: ["'self'", "https://code.cdn.mozilla.net/fonts/"],
-    frameAncestors: ["'none'"],
+    fontSrc: [
+      "'self'",
+      "https://code.cdn.mozilla.net/fonts/",
+    ],
+    frameAncestors: FRAME_ANCESTORS,
     mediaSrc: ["'self'"],
-    imgSrc: ["'self'", "https://www.google-analytics.com"],
+    imgSrc: [
+      "'self'",
+      "https://www.google-analytics.com",
+    ],
     objectSrc: ["'none'"],
-    scriptSrc: ["'self'", "https://www.google-analytics.com/analytics.js"],
-    styleSrc: ["'self'", "https://code.cdn.mozilla.net/fonts/"],
+    scriptSrc: SCRIPT_SOURCES,
+    styleSrc: STYLE_SOURCES,
     reportUri: "/__cspreport__",
   },
 }));
