@@ -1,21 +1,21 @@
 <div id="what-to-do">
   <div class="section-wrapper drop-shadow">
-    <h3 class="whole section-headline">{{fluentFormat req "what-to-do-headline"}}</h3>
+    <h3 class="whole section-headline">{{fluentFormat req.supportedLocales "what-to-do-headline"}}</h3>
     <div class="fourth">
       {{> what_to_do_svg number=1 }}
-      <p>{{fluentFormat req "what-to-do-1"}}</p>
+      <p>{{fluentFormat req.supportedLocales "what-to-do-1"}}</p>
     </div>
     <div class="fourth">
       {{> what_to_do_svg number=2 }}
-      <p>{{fluentFormat req "what-to-do-2"}}</p>
+      <p>{{fluentFormat req.supportedLocales "what-to-do-2"}}</p>
     </div>
     <div class="fourth">
       {{> what_to_do_svg number=3 }}
-      <p>{{fluentFormat req "what-to-do-3"}}</p>
+      <p>{{fluentFormat req.supportedLocales "what-to-do-3"}}</p>
     </div>
     <div class="fourth">
       {{> what_to_do_svg number=4 }}
-      <p>{{{fluentFormat req "what-to-do-4"}}}</p>
+      <p>{{{fluentFormat req.supportedLocales "what-to-do-4"}}}</p>
     </div>
   </div>
 </div>
