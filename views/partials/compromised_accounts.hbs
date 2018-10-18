@@ -1,4 +1,4 @@
-{{#ifCompare foundBreaches.length ">=" 1}}
+{{#ifCompare foundBreaches.length ">" 1}}
   <div class="compromised-accounts">
     <div class="section-wrapper">
       <!--show first 4 breaches-->
@@ -21,7 +21,7 @@
             </div>
           {{/eachFromTo}}
         </div>
-        <button id="show-additional-breaches" class="button transparent-button">{{fluentFormat req "show-more-breaches"}}</button>
+        <button id="show-additional-breaches" class="button transparent-button">{{fluentFormat req.supportedLocales "show-more-breaches"}}</button>
         {{> hibp_attribution }}
       {{/ifCompare}}
     </div>

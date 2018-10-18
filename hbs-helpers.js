@@ -7,19 +7,14 @@ const mozlog = require("./log");
 const log = mozlog("hbs-helpers");
 
 
-function fluentFormat (req, id, args) {
-  return LocaleUtils.fluentFormat(req.supportedLocales, id, args.hash);
+function fluentFormat (supportedLocales, id, args) {
+  return LocaleUtils.fluentFormat(supportedLocales, id, args.hash);
 }
 
 
-function getStringID (req, key, number) {
+function getStringID (supportedLocales, key, number) {
   const fluentID = `${key}${number}`;
-  return LocaleUtils.fluentFormat(req.supportedLocales, fluentID);
-}
-
-
-function breachDataClasses(req, dataClasses, args) {
-  return localizedBreachDataClasses(req.supportedLocales, dataClasses, args);
+  return LocaleUtils.fluentFormat(supportedLocales, fluentID);
 }
 
 
@@ -37,9 +32,9 @@ function localizedBreachDataClasses(supportedLocales, dataClasses, args) {
 }
 
 
-function prettyDate(req, date) {
+function prettyDate(supportedLocales, date) {
   const jsDate = new Date(date);
-  return jsDate.toLocaleDateString(req.supportedLocales, {year: "numeric", month: "long", day: "numeric"});
+  return jsDate.toLocaleDateString(supportedLocales, {year: "numeric", month: "long", day: "numeric"});
 }
 
 
@@ -101,7 +96,6 @@ function breachMath(lValue, operator = null, rValue = null) {
 module.exports = {
   fluentFormat,
   getStringID,
-  breachDataClasses,
   localizedBreachDataClasses,
   prettyDate,
   localeString,

@@ -3,14 +3,14 @@
     <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ SERVER_URL }}" target="_blank" rel="noopener noreferrer" {{> analytics/social_event eventLabel="Facebook"}} aria-label="Facebook">
       {{> sprite symID="facebook"}}
       {{> sprite symID="facebook-round"}}
-      <span>{{fluentFormat req "share"}}</span>
+      <span>{{fluentFormat req.supportedLocales "share"}}</span>
     </a>
   </li>
   <li>
     <a class="twitter" href="https://twitter.com/intent/tweet?url={{ SERVER_URL }}" target="_blank" rel="noopener noreferrer" {{> analytics/social_event eventLabel="Twitter"}} aria-label="Twitter">
       {{> sprite symID="twitter"}}
       {{> sprite symID="twitter-round"}}
-      <span>{{fluentFormat req "tweet"}}</span>
+      <span>{{fluentFormat req.supportedLocales "tweet"}}</span>
     </a>
   </li>
 </ul>

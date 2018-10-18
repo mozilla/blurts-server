@@ -2,13 +2,13 @@
 <main class="landing-content">
   <section class="section-wrapper">
     <div class="half">
-      <h2 data-location="landing-page" class="section-headline">{{{fluentFormat req "landing-headline"}}}</h2>
+      <h2 data-location="landing-page" class="section-headline">{{{fluentFormat req.supportedLocales "landing-headline"}}}</h2>
       {{#if featuredBreach }}
-        <span data-location="featured-breach" class="demi form-desc">{{{fluentFormat req "scan-featuredbreach-label" featuredBreach=featuredBreach.Title}}}</span>
+        <span data-location="featured-breach" class="demi form-desc">{{{fluentFormat req.supportedLocales "scan-featuredbreach-label" featuredBreach=featuredBreach.Title}}}</span>
         {{> scan_form}}
       {{else}}
         <p class="landing-blurb">
-          {{{fluentFormat req "landing-blurb"}}}
+          {{{fluentFormat req.supportedLocales "landing-blurb"}}}
         </p>
       {{/if}}
     </div>
@@ -16,7 +16,7 @@
       {{#if featuredBreach}}
         {{> featured_breach }}
       {{else}}
-        <span class="demi form-desc">{{fluentFormat req "scan-label"}}</span>
+        <span class="demi form-desc">{{fluentFormat req.supportedLocales "scan-label"}}</span>
         {{> scan_form}}
       {{/if}}
     </div>

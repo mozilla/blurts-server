@@ -1,9 +1,9 @@
 {{!< default }}
 <div id="confirmation" class="sub-page-content">
   <div class="section-wrapper centered-content">
-    <h3 class="section-headline whole">{{{fluentFormat req "confirmed"}}}</h3>
-    <p class="whole sub-head">{{{fluentFormat req "confirmed-blurb"}}}</p>
-    <h4 class="whole medium secondary-title">{{{fluentFormat req "confirmed-social-blurb"}}}</h4>
+    <h3 class="section-headline whole">{{{fluentFormat req.supportedLocales "confirmed"}}}</h3>
+    <p class="whole sub-head">{{{fluentFormat req.supportedLocales "confirmed-blurb"}}}</p>
+    <h4 class="whole medium secondary-title">{{{fluentFormat req.supportedLocales "confirmed-social-blurb"}}}</h4>
     {{> social_media_sharing_buttons}}
   </div>
 </div>
