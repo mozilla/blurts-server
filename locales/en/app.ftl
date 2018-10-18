@@ -114,29 +114,29 @@ form-signup-error = Must be a valid email
 found-breaches-headline = This could be a problem
 no-breaches-headline = So far, so good
 
--no-breaches = 
-        Your email address did not appear in our basic scan.
-        That’s good news, but data breaches can happen any time and there is still more you can do. 
-        Subscribe to Firefox Monitor for a full report, alerts when new breaches happen, and tips on protecting your passwords.
+no-breaches = 
+  Your email address did not appear in our basic scan.
+  That’s good news, but data breaches can happen any time and there is still more you can do. 
+  Subscribe to Firefox Monitor for a full report, alerts when new breaches happen, and tips on protecting your passwords.
 
 featured-breach-results =  
   { $breachCount ->
       [0] Your account appears in the <span class="bold">{ $featuredBreach }</span> breach, but does not appear in any other known data breaches.
-      [1] Your account appeared in the <span class="bold"> { $featuredBreach } </span> breach, as well as one other breach.
-      *[other] Your account appeared in the <span class="bold"> { $featuredBreach } </span> breach, as well as { $breachCount } other breaches.
+      [one] Your account appeared in the <span class="bold"> { $featuredBreach } </span> breach, as well as one other breach.
+     *[other] Your account appeared in the <span class="bold"> { $featuredBreach } </span> breach, as well as { $breachCount } other breaches.
   }
 
 featured-breach-not-compromised = 
   { $breachCount ->
-    [0] {-no-breaches}
-    [1] Your account did not appear in the <span class="bold">{ $featuredBreach }</span> breach, but did appear in one other breach.
-   *[other] Your account did not appear in the <span class="bold">{ $featuredBreach }</span> breach, but did appear in { $breachCount } other breaches.
+      [0] { no-breaches }
+      [one] Your account did not appear in the <span class="bold">{ $featuredBreach }</span> breach, but did appear in one other breach.
+     *[other] Your account did not appear in the <span class="bold">{ $featuredBreach }</span> breach, but did appear in { $breachCount } other breaches.
   }
 
 scan-results = 
   { $breachCount ->
-      [0] {-no-breaches}
-      [1] Your account appeared in the following breach.
+      [0] { no-breaches }
+      [one] Your account appeared in the following breach.
      *[other] Your accounts appeared in the following { $breachCount } breaches.
   }
 
