@@ -19,16 +19,11 @@ function getStringID (supportedLocales, key, number) {
 
 
 function localizedBreachDataClasses(supportedLocales, dataClasses, args) {
-  const localizedDataClasses = [];
-  if (dataClasses.constructor === Array) {
+    const localizedDataClasses = [];
     dataClasses.forEach(dataClass => {
-      dataClass = dataClass.replace(/[^-a-z0-9]/ig,"-").toLowerCase();
       localizedDataClasses.push(LocaleUtils.fluentFormat(supportedLocales, dataClass, args));
     });
     return localizedDataClasses.join(", ");
-  } else {
-    return LocaleUtils.fluentFormat(supportedLocales, dataClasses.split(" ").join("-"), args);
-  }
 }
 
 
