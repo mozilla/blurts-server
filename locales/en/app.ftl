@@ -45,7 +45,7 @@ user-unsubscribe-token-error = Unsubscribing requires a token.
 user-unsubscribe-token-email-error = Unsubscribing requires a token and emailHash.
 user-unsubscribe-title = {-product-name} : Unsubscribe
 user-unsubscribe-survey-title = {-product-name} : Unsubscribe Survey
-user-unsubscribed-title {-product-name} : Unsubscribed
+user-unsubscribed-title = {-product-name} : Unsubscribed
 
 ## Password Tips
 
@@ -121,7 +121,7 @@ signup-modal-verify-blurb = We sent a verification link to <span id="submitted-e
 signup-modal-verify-expiration = This link expires in 24 hours.
 signup-modal-verify-resend = Not in inbox or spam folder? Resend.
 
-signup-with-fxa - Sign Up with {-brand-name} Account
+signup-with-fxa = Sign Up with {-brand-name} Account
 
 form-signup-placeholder = Enter email
 form-signup-checkbox = Get the latest from {-brand-Mozilla} and {-brand-name}.
@@ -176,7 +176,7 @@ what-to-do-subhead-3 = Take extra steps to secure your financial accounts
 what-to-do-blurb-3 = 
   Most breaches only expose emails and passwords, but some do include sensitive financial information. 
   If your bank account or credit card numbers were included in a breach, alert your your bank to possible fraud, 
-  and monitor statements for charges you don't recognize.
+  and monitor statements for charges you don’t recognize.
 
 what-to-do-subhead-4 = Get help creating good passwords and keeping them safe.
 what-to-do-blurb-4 = 

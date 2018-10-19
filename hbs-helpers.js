@@ -22,8 +22,8 @@ function localizedBreachDataClasses(supportedLocales, dataClasses, args) {
   const localizedDataClasses = [];
   if (dataClasses.constructor === Array) {
     dataClasses.forEach(dataClass => {
-      dataClass = dataClass.replace("'", "");
-      localizedDataClasses.push(LocaleUtils.fluentFormat(supportedLocales, dataClass.split(" ").join("-").toLowerCase(), args));
+      dataClass = dataClass.replace(/[^-a-z0-9]/ig,"-").toLowerCase();
+      localizedDataClasses.push(LocaleUtils.fluentFormat(supportedLocales, dataClass, args));
     });
     return localizedDataClasses.join(", ");
   } else {
