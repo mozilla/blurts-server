@@ -238,4 +238,6 @@ copyright-info =
   Portions of this content are &#x24B8; 1998-2018 by individual mozilla.org contributors. <br />
   Content available under a  <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons license</a>.
 
+# This string is followed by a link to Have I Been Pwned, the code for which is created elsewhere.
+# The final string reads: Breach data provided by Have I Been Pwned. 
 hibp-attribution = Breach data provided by
