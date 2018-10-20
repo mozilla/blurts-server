@@ -142,11 +142,27 @@ scan-results =
 
 show-more-breaches = Show More
 
-what-to-do-headline = What To Do
-what-to-do-1 = Change your password on these sites and anywhere else you’ve used the same password.
-what-to-do-2 = Make your answers to security questions just as strong as your passwords.
-what-to-do-3 = Use password managers like 1Password, LastPass, or Dashlane to generate strong passwords, remember them, and fill them into websites so you don’t have to.
-what-to-do-4 = Subscribe to alerts from {-product-name-nowrap} to learn sooner about your compromised accounts.
+what-to-do-subhead-1 = Change your passwords, even for old accounts
+what-to-do-blurb-1 =
+  If you can’t log in, contact the website to ask how you can recover or shut down the account. 
+  See an account you don’t recognize? The site may have changed names or someone may have created an account for you.
+
+what-to-do-subhead-2 = If you reuse an exposed password, change it
+what-to-do-blurb-2 =
+  Hackers may try to reuse your exposed password to get into other accounts. 
+  Create a different password for each website, especially for your bank account, 
+  email and other websites where you save personal information.
+
+what-to-do-subhead-3 = Take extra steps to secure your financial accounts
+what-to-do-blurb-3 = 
+  Most breaches only expose emails and passwords, but some do include sensitive financial information. 
+  If your bank account or credit card numbers were included in a breach, alert your your bank to possible fraud, 
+  and monitor statements for charges you don’t recognize.
+
+what-to-do-subhead-4 = Get help creating good passwords and keeping them safe.
+what-to-do-blurb-4 = 
+  Password managers like 1Password, LastPass, Dashlane, and Bitwarden generate strong passwords, 
+  store them securely, and fill them into websites for you.
 
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Breach date
