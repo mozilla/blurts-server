@@ -40,19 +40,24 @@ async function notify (req, res) {
   const hashes = req.body.hashSuffixes.map(suffix=>reqHashPrefix + suffix.toLowerCase());
   const subscribers = await DB.getSubscribersByHashes(hashes);
 
+
   log.info("notification", { length: subscribers.length, breachAlertName: breachAlert.Name });
 
   const notifiedSubscribers = [];
 
   for (const subscriber of subscribers) {
-    const email = subscriber.email;
     log.info("notify", {subscriber});
+
+    const email = subscriber.email;
+    const buttonValue = "Scan another email in Firefox Monitor";
+    // need to create unsubscribe button for these
     const requestedLanguage = acceptedLanguages(subscriber.signup_language);
     const supportedLocales = negotiateLanguages(
       requestedLanguage,
       req.app.locals.AVAILABLE_LANGUAGES,
       {defaultLocale: "en"}
     );
+
 
     if (!notifiedSubscribers.includes(email)) {
       await EmailUtils.sendEmail(
@@ -65,7 +70,8 @@ async function notify (req, res) {
           date: HBSHelpers.prettyDate(new Date()),
           breachAlert,
           SERVER_URL: req.app.locals.SERVER_URL,
-        }
+          buttonValue,
+        },
       );
       notifiedSubscribers.push(email);
     }

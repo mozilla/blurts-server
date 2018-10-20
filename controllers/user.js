@@ -25,11 +25,14 @@ async function add(req, res) {
   const verifyUrl = EmailUtils.verifyUrl(unverifiedSubscriber);
   const unsubscribeUrl = EmailUtils.unsubscribeUrl(unverifiedSubscriber);
 
+  const supportedLocales = EmailUtils.getSupportedLocales(req);
+  const buttonValue = req.fluentFormat("verify-my-email");
+
   await EmailUtils.sendEmail(
     email,
     req.fluentFormat("user-add-email-verify-subject"),
     "email_verify",
-    { email, verifyUrl, unsubscribeUrl },
+    { email, verifyUrl, unsubscribeUrl, buttonValue, supportedLocales},
   );
 
   res.send({
@@ -42,25 +45,32 @@ async function verify(req, res) {
   if (!req.query.token) {
     throw new FluentError("user-verify-token-error");
   }
+
+  let unsafeBreachesForEmail = [];
   const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
   const unsubscribeUrl = EmailUtils.unsubscribeUrl(verifiedEmailHash);
 
-  const unsafeBreachesForEmail = await HIBP.getUnsafeBreachesForEmail(
+  unsafeBreachesForEmail = await HIBP.getUnsafeBreachesForEmail(
     sha1(verifiedEmailHash.email),
     req.app.locals.breaches
   );
+
+  const supportedLocales = EmailUtils.getSupportedLocales(req);
+
+  const buttonValue = req.fluentFormat("scan-another-email");
 
   await EmailUtils.sendEmail(
     verifiedEmailHash.email,
     req.fluentFormat("user-verify-email-report-subject"),
     "report",
     {
-      req,
+      supportedLocales,
       TIPS,
       email: verifiedEmailHash.email,
-      date: HBSHelpers.prettyDate(new Date()),
+      date: HBSHelpers.prettyDate(supportedLocales, new Date()),
       unsafeBreachesForEmail: unsafeBreachesForEmail,
       unsubscribeUrl: unsubscribeUrl,
+      buttonValue,
     }
   );
 
