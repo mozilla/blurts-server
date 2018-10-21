@@ -64,22 +64,18 @@ const HIBP = {
   },
 
   matchFluentID(dataCategory) {
-    dataCategory = dataCategory.replace(/[^-a-z0-9]/ig,"-").toLowerCase();
-    dataCategory = dataCategory.replace(/-+/g, "-");
-    dataCategory = dataCategory.replace(/-$/g, "");
-    return dataCategory;
+    return dataCategory.toLowerCase()
+      .replace(/[^-a-z0-9]/g, "-")
+      .replace(/-{2,}/g, "-")
+      .replace(/(^-|-$)/g, "");
   },
 
   formatDataClassesArray(dataCategories) {
     const formattedArray = [];
-    if (dataCategories.constructor === Array) {
       dataCategories.forEach(category => {
         formattedArray.push(this.matchFluentID(category));
       });
-      return formattedArray;
-    } else {
-      return formattedArray.push(this.matchFluentID(dataCategories));
-    }
+    return formattedArray;
   },
 
   async loadBreachesIntoApp(app) {
@@ -90,7 +86,7 @@ const HIBP = {
 
       for (const breach of breachesResponse.body) {
         // const breach = breachesResponse.body[breachIndex];
-        // purify the description
+        // convert data class strings to Fluent IDs
         breach.DataClasses = this.formatDataClassesArray(breach.DataClasses);
         breaches.push(breach);
       }
