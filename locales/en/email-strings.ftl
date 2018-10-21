@@ -1,4 +1,3 @@
-# The brand name inside HTML markup. Should not be translated.
 
 click-to-verify = 
   Select the Verify My Email button within 24 hours to confirm your Firefox Monitor account. 
@@ -10,7 +9,7 @@ scan-another-email = Scan another email in {-product-name}.
 automated-message = 
   This is an automated email; if you received it in error, no action is required.
 
-# Without HTML markup reads: We sent this message to [user's email address] because the email address opted into alerts from Firefox Monitor.
+# Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
 we-sent-this-alert = We sent this message to { $userEmail } because the email address opted into alerts from {-product-name}.
 
 unsubscribe = unsubscribe
@@ -19,13 +18,13 @@ unsubscribe = unsubscribe
 unsubscribe-blurb = 
   If you no longer want {-product-name} alerts,
 
-# A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user's email address was found amongst the stolen data.
+# A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = {-product-name} Report 
 report-date = Report Date:
 email-address = Email Address:
 
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user's information. 
-your-full-report = Here's your full {-product-name} report, which includes all known data breaches that contain this email address.
+# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
+your-full-report = Here’s your full {-product-name} report, which includes all known data breaches that contain this email address.
 
 report-no-breaches = 
   Your email address did not appear in our database of known breaches. 
@@ -43,8 +42,8 @@ report-headline =
 
 report-subhead =
   { $breachCount ->
-      [0] Your account doesn't appear in our full report of breaches. 
-          That's good news, but there is more you can do. 
+      [0] Your account doesn’t appear in our full report of breaches. 
+          That’s good news, but there is more you can do. 
           Data breaches happen at any time, so read on to learn how you can protect your passwords.
      *[other] Here’s your full Firefox Monitor report, which includes all known data breaches that contain this email address. 
   }
