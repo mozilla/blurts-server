@@ -3,7 +3,11 @@
 # - Declined to adapt to grammatical case.
 # - Transliterated.
 # - Translated.
--product-name = Firefox Monitor
+-product-name =
+    { $breachCount ->
+        [one] Ihr Konto ist von { $breachCount } Datenleck betroffen.
+       *[other] Ihr Konto ist von { $breachCount } Datenlecks betroffen.
+    }
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
