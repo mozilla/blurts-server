@@ -18,3 +18,7 @@ home-not-found = Page non trouvée
 
 ## Password Tips
 
+pwt-headline-1 = Utilisez un mot de passe différent pour chaque compte
+pwt-summary-1 = La réutilisation du même mot de passe partout laisse la porte grande ouverte à l’usurpation d’identité. N’importe qui possédant ce mot de passe peut se connecter à tous vos comptes.
+pwt-headline-2 = Créez des mots de passe suffisamment forts et difficiles à deviner
+pwt-headline-5 = Ajoutez une sécurité supplémentaire avec l’authentification à deux facteurs
