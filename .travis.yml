@@ -6,9 +6,12 @@ services:
   - postgresql
 env:
   - NODE_ENV=tests
+install:
+  - sudo pip install compare-locales
+  - npm install
 before_script:
-  - pip install compare-locales
   - compare-locales --validate l10n.toml .
+  - compare-locales l10n.toml . `ls locales`
   - cp .env-dist .env
   - createdb test-blurts
   - npm install npm@latest -g
