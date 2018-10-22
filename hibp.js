@@ -3,6 +3,7 @@
 const got = require("got");
 const fs = require("fs");
 
+
 const AppConstants = require("./app-constants");
 const { FluentError } = require("./locale-utils");
 const mozlog = require("./log");
@@ -11,6 +12,7 @@ const pkg = require("./package.json");
 
 const HIBP_USER_AGENT = `${pkg.name}/${pkg.version}`;
 const log = mozlog("hibp");
+
 
 
 const HIBP = {
@@ -74,6 +76,21 @@ const HIBP = {
     });
     return emailLogos;
   },
+  
+  matchFluentID(dataCategory) {
+    return dataCategory.toLowerCase()
+      .replace(/[^-a-z0-9]/g, "-")
+      .replace(/-{2,}/g, "-")
+      .replace(/(^-|-$)/g, "");
+  },
+
+  formatDataClassesArray(dataCategories) {
+    const formattedArray = [];
+      dataCategories.forEach(category => {
+        formattedArray.push(this.matchFluentID(category));
+      });
+    return formattedArray;
+  },
 
   async loadBreachesIntoApp(app) {
     log.info("loadBreachesIntoApp");
@@ -84,7 +101,6 @@ const HIBP = {
 
       for (const breach of breachesResponse.body) {
         // const breach = breachesResponse.body[breachIndex];
-
         // check if we have png logo & set breach.ImgSrc to "missing-logo-icon" if not.
         if (!pngLogoList.includes(`${breach.Name}.png`)) {
           log.info(`missing image ${breach.Name}`);
@@ -92,6 +108,8 @@ const HIBP = {
         } else {
           breach.ImgSrc = breach.Name;
         }
+        // convert data class strings to Fluent IDs
+        breach.DataClasses = this.formatDataClassesArray(breach.DataClasses);
         breaches.push(breach);
       }
       app.locals.breaches = breaches;

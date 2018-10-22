@@ -4,26 +4,26 @@ const HBSHelpers = require("../hbs-helpers");
 const { LocaleUtils } = require("../locale-utils");
 
 
-test("breachDataClasses joins array by ',' and renders fluent translation or fluent ID", () => {
+test("localizedBreachDataClasses joins array by ',' and renders fluent translation or fluent ID", () => {
   LocaleUtils.init();
   LocaleUtils.loadLanguagesIntoApp({locals: {}});
   const supportedLocales = ["en"];
 
   const singleDataClassArray = new Array();
   singleDataClassArray.push("usernames");
-  const singleDisplay = HBSHelpers.breachDataClasses({supportedLocales}, singleDataClassArray);
+  const singleDisplay = HBSHelpers.localizedBreachDataClasses(supportedLocales, singleDataClassArray);
   expect(singleDisplay).toEqual("Usernames");
 
   const realDataClassesArray = new Array();
   realDataClassesArray.push("usernames");
   realDataClassesArray.push("passwords");
-  const realDisplay = HBSHelpers.breachDataClasses({supportedLocales}, realDataClassesArray);
+  const realDisplay = HBSHelpers.localizedBreachDataClasses(supportedLocales, realDataClassesArray);
   expect(realDisplay).toEqual("Usernames, Passwords");
 
   const notFoundDataClassesArray = new Array();
   notFoundDataClassesArray.push("fdhsaigp12");
   notFoundDataClassesArray.push("jfdiosapgys8");
-  const notFoundDisplay = HBSHelpers.breachDataClasses({supportedLocales}, notFoundDataClassesArray);
+  const notFoundDisplay = HBSHelpers.localizedBreachDataClasses(supportedLocales, notFoundDataClassesArray);
   expect(notFoundDisplay).toEqual("fdhsaigp12, jfdiosapgys8");
 });
 

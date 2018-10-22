@@ -1,24 +1,24 @@
 <div id="subscribe-to-ffxm" class="modal-content">
-  <h3 class="section-headline">{{{fluentFormat req "signup-modal-headline"}}}</h3>
-  <p>{{{fluentFormat req "signup-modal-blurb"}}}<a {{> analytics/link_event eventLabel="Terms & Privacy - Sign Up Modal"}} class="nowrap internal-link" href="https://www.mozilla.org/privacy/firefox-monitor/" target="_blank" rel="noopener"><span class="nowrap">{{{fluentFormat req "terms-and-privacy"}}}</span></a></p>
+  <h3 class="section-headline">{{{fluentFormat req.supportedLocales "signup-modal-headline"}}}</h3>
+  <p>{{{fluentFormat req.supportedLocales "signup-modal-blurb"}}}<a {{> analytics/link_event eventLabel="Terms & Privacy - Sign Up Modal"}} class="nowrap internal-link" href="https://www.mozilla.org/privacy/firefox-monitor/" target="_blank" rel="noopener"><span class="nowrap">{{{fluentFormat req.supportedLocales "terms-and-privacy"}}}</span></a></p>
   
   {{#if FXA_ENABLED }}
-    <button id="subscribe-fxa-btn" class="button">{{fluentFormat req "signup-with-fxa"}}</button>
+    <button id="subscribe-fxa-btn" class="button">{{fluentFormat req.supportedLocales "signup-with-fxa"}}</button>
   {{/if}}
   
   <form action="/user/add" id="subscribe-form" class="form-group" method="post" novalidate data-no-csrf>
     <div class="input-group">
-      <input id="subscribe-email-input" class="input-group-field" type="email" name="email" placeholder="Enter email" minlength="1" aria-label="{{fluentFormat req "form-signup-placeholder"}}"  autocomplete="off" />
-      <span id="invalid-signup-email-message" class="error-message">{{fluentFormat req "form-signup-error"}}</span>
+      <input id="subscribe-email-input" class="input-group-field" type="email" name="email" placeholder="Enter email" minlength="1" aria-label="{{fluentFormat req.supportedLocales "form-signup-placeholder"}}"  autocomplete="off" />
+      <span id="invalid-signup-email-message" class="error-message">{{fluentFormat req.supportedLocales "form-signup-error"}}</span>
     </div>
     <div class="checkbox-group">
       <input id="additional-emails-checkbox" type="checkbox" name="additional-emails" value="additional-emails" />
-      <label for="additional-emails-checkbox">{{fluentFormat req "form-signup-checkbox"}}</label>
+      <label for="additional-emails-checkbox">{{fluentFormat req.supportedLocales "form-signup-checkbox"}}</label>
     </div>
     <div class="input-group-button">
       <img class="loader" src="/img/loader.gif" alt="" />
-      <input id="subscribe-submit" type="submit" class="button submit-email blue-button" value="{{fluentFormat req "form-signup-submit"}}"  />
+      <input id="subscribe-submit" type="submit" class="button submit-email blue-button" value="{{fluentFormat req.supportedLocales "sign-up"}}"  />
     </div>
   </form>
-  <button data-analytics-label="Before Sign Up" class="close-modal internal-link">{{fluentFormat req "signup-modal-close"}}</button>
+  <button data-analytics-label="Before Sign Up" class="close-modal internal-link">{{fluentFormat req.supportedLocales "signup-modal-close"}}</button>
 </div>

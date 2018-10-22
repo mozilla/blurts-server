@@ -1,15 +1,15 @@
 <form action="/scan" class="email-scan form-group" method="post" data-no-csrf novalidate>
   <div class="input-group">
-    <input id="scan-email" class="input-group-field email-to-hash" type="email" name="email" placeholder="{{fluentFormat req "scan-placeholder"}}" aria-label="{{fluentFormat req "scan-placeholder"}}" tabindex="0" autocomplete="off" />
-    <span id="invalid-email-message" class="error-message">{{fluentFormat req "scan-error"}}</span>
+    <input id="scan-email" class="input-group-field email-to-hash" type="email" name="email" placeholder="{{fluentFormat req.supportedLocales "scan-placeholder"}}" aria-label="{{fluentFormat req.supportedLocales "scan-placeholder"}}" tabindex="0" autocomplete="off" />
+    <span id="invalid-email-message" class="error-message">{{fluentFormat req.supportedLocales "scan-error"}}</span>
   </div>
   <input type="hidden" name="emailHash" />
   {{#if scanFeaturedBreach}}
     <input id="featured" type="hidden" name="featuredBreach" value="{{ featuredBreach.Name }}"/>
   {{/if}}
   <div class="input-group-button">
-    <input type="submit" class="button submit transparent-button" value="Scan" tabindex="0"/>
+    <input type="submit" class="button submit transparent-button" value="{{fluentFormat req.supportedLocales "scan-submit"}}" tabindex="0"/>
     <img class="loader" src="/img/loader.gif" alt="" />
   </div>
 </form>
-<span class="privacy-policy">{{fluentFormat req "scan-privacy"}}</span>
+<span class="privacy-policy">{{fluentFormat req.supportedLocales "scan-privacy"}}</span>
