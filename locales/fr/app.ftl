@@ -29,3 +29,9 @@ pwt-headline-1 = Utilisez un mot de passe différent pour chaque compte
 pwt-summary-1 = La réutilisation du même mot de passe partout laisse la porte grande ouverte à l’usurpation d’identité. N’importe qui possédant ce mot de passe peut se connecter à tous vos comptes.
 pwt-headline-2 = Créez des mots de passe suffisamment forts et difficiles à deviner
 pwt-headline-5 = Ajoutez une sécurité supplémentaire avec l’authentification à deux facteurs
+scan-placeholder = Saisissez votre adresse électronique
+scan-privacy = Votre adresse électronique ne sera pas stockée.
+scan-error = L’adresse électronique doit être valide.
+signup-banner-blurb =
+    Le rapport détaillé de { -product-name-nowrap } indique si des informations provenant de vos comptes en ligne ont été divulguées ou volées.
+    Nous vous préviendrons aussi si vos comptes apparaissent à l’occasion de nouvelles failles de sécurité.
