@@ -1,8 +1,6 @@
 "use strict";
 
 const got = require("got");
-const createDOMPurify = require("dompurify");
-const { JSDOM } = require("jsdom");
 
 const AppConstants = require("./app-constants");
 const { FluentError } = require("./locale-utils");
@@ -10,9 +8,9 @@ const mozlog = require("./log");
 const pkg = require("./package.json");
 
 
-const DOMPurify = createDOMPurify((new JSDOM("")).window);
 const HIBP_USER_AGENT = `${pkg.name}/${pkg.version}`;
 const log = mozlog("hibp");
+
 
 
 const HIBP = {
@@ -65,6 +63,21 @@ const HIBP = {
     return await this._throttledGot(url, reqOptions);
   },
 
+  matchFluentID(dataCategory) {
+    return dataCategory.toLowerCase()
+      .replace(/[^-a-z0-9]/g, "-")
+      .replace(/-{2,}/g, "-")
+      .replace(/(^-|-$)/g, "");
+  },
+
+  formatDataClassesArray(dataCategories) {
+    const formattedArray = [];
+      dataCategories.forEach(category => {
+        formattedArray.push(this.matchFluentID(category));
+      });
+    return formattedArray;
+  },
+
   async loadBreachesIntoApp(app) {
     log.info("loadBreachesIntoApp");
     try {
@@ -73,8 +86,8 @@ const HIBP = {
 
       for (const breach of breachesResponse.body) {
         // const breach = breachesResponse.body[breachIndex];
-        // purify the description
-        breach.Description = DOMPurify.sanitize(breach.Description, {ALLOWED_TAGS: []});
+        // convert data class strings to Fluent IDs
+        breach.DataClasses = this.formatDataClassesArray(breach.DataClasses);
         breaches.push(breach);
       }
       app.locals.breaches = breaches;

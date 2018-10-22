@@ -16,7 +16,7 @@
           <p>{{{fluentFormat req.supportedLocales "featured-breach-not-compromised" featuredBreach=featuredBreach.Title breachCount=foundBreaches.length}}}</p>
         {{/if}}
       {{else}}
-        <p>{{fluentFormat req.supportedLocales "scan-results" breachCount=foundBreaches.length}}</p>
+        <p>{{{fluentFormat req.supportedLocales "scan-results" breachCount=foundBreaches.length}}}</p>
       {{/if}}
     </section>
 
@@ -35,7 +35,7 @@
       {{/ifCompare}}
 
       {{> compromised_accounts }} 
-           
+
     </section>
   </div>
 </main>
