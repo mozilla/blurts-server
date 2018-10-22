@@ -49,7 +49,6 @@ async function notify (req, res) {
     log.info("notify", {subscriber});
 
     const email = subscriber.email;
-    const buttonValue = "Scan another email in Firefox Monitor";
     // need to create unsubscribe button for these
     const requestedLanguage = acceptedLanguages(subscriber.signup_language);
     const supportedLocales = negotiateLanguages(
@@ -58,6 +57,7 @@ async function notify (req, res) {
       {defaultLocale: "en"}
     );
 
+    // const buttonValue = LocaleUtils.fluentFormat(supportedLocales, "report-scan-another-email");
 
     if (!notifiedSubscribers.includes(email)) {
       await EmailUtils.sendEmail(
@@ -70,7 +70,7 @@ async function notify (req, res) {
           date: HBSHelpers.prettyDate(new Date()),
           breachAlert,
           SERVER_URL: req.app.locals.SERVER_URL,
-          buttonValue,
+          buttonValue: LocaleUtils.fluentFormat(supportedLocales, "report-scan-another-email"),
         },
       );
       notifiedSubscribers.push(email);
