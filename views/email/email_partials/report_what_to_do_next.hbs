@@ -5,59 +5,19 @@
         </p>
       </td>
     </tr>
-    
-    <tr>
-      <td valign="top" width="60" style="width: 60px; padding-top: 15px;">
-        <img width="45" src="{{ SERVER_URL }}/img/email_images/wtd-1.png" alt="Number 1" />
-      </td>
-      <td valign="top" style="padding-top: 10px;">
-        <p class="body-copy" style="color: #333333; font-weight: 400; font-size: 16px; padding: 0px; margin: 0px; ">
-          {{fluentFormat supportedLocales "what-to-do-subhead-1"}}
-        </p>
-        <p class="body-copy" style="color: #333333; font-weight: 300; font-size: 14px; padding: 3px 0px 10px 0px; margin-top: 0px; ">
-          {{fluentFormat supportedLocales "what-to-do-blurb-1"}}
-        </p>
-      </td>
-    </tr>
 
-    <tr>
-      <td valign="top" width="60" style="width: 60px; padding-top: 15px;">
-        <img width="45" src="{{ SERVER_URL }}/img/email_images/wtd-2.png" alt="Number 1" />
-      </td>
-      <td valign="top" style="padding-top: 10px;">
-        <p class="body-copy" style="color: #333333; font-weight: 400; font-size: 16px; padding: 0px; margin: 0px; ">
-          {{fluentFormat supportedLocales "what-to-do-subhead-2"}}
-        </p>
-        <p class="body-copy" style="color: #333333; font-weight: 300; font-size: 14px; padding: 3px 0px 10px 0px; margin-top: 0px; ">
-          {{fluentFormat supportedLocales "what-to-do-blurb-2"}}
-        </p>
-      </td>
-    </tr>
-
-    <tr>
-      <td valign="top" width="60" style="width: 60px; padding-top: 15px;">
-        <img width="45" src="{{ SERVER_URL }}/img/email_images/wtd-3.png" alt="Number 1" />
-      </td>
-      <td valign="top" style="padding-top: 10px;">
-        <p class="body-copy" style="color: #333333; font-weight: 400; font-size: 16px; padding: 0px; margin: 0px; ">
-          {{fluentFormat supportedLocales "what-to-do-subhead-3"}}
-        </p>
-        <p class="body-copy" style="color: #333333; font-weight: 300; font-size: 14px; padding: 3px 0px 10px 0px; margin-top: 0px; ">
-          {{fluentFormat supportedLocales "what-to-do-blurb-3"}}
-        </p>
-      </td>
-    </tr>
-
-    <tr>
-      <td valign="top" width="60" style="width: 60px; padding-top: 15px;">
-        <img width="45" src="{{ SERVER_URL }}/img/email_images/wtd-4.png" alt="Number 1" />
-      </td>
-      <td valign="top" style="padding-top: 10px;">
-        <p class="body-copy" style="color: #333333; font-weight: 400; font-size: 16px; padding: 0px; margin: 0px; ">
-          {{fluentFormat supportedLocales "what-to-do-subhead-4"}}
-        </p>
-        <p class="body-copy" style="color: #333333; font-weight: 300; font-size: 14px; padding: 3px 0px 10px 0px; margin-top: 0px; ">
-          {{fluentFormat supportedLocales "what-to-do-blurb-4"}} 
-        </p>
-      </td>
-    </tr>
+    {{#loop 1 4 1}}
+      <tr>
+        <td valign="top" width="60" style="width: 60px; padding-top: 15px;">
+          <img width="45" src="{{ ../SERVER_URL }}/img/email_images/wtd-{{ this }}.png" alt="{{ this }}" />
+        </td>
+        <td valign="top" style="padding-top: 10px;">
+          <p class="body-copy" style="color: #333333; font-weight: 400; font-size: 16px; padding: 0px; margin: 0px; ">
+            {{getStringID ../supportedLocales "what-to-do-subhead-" this}}
+          </p>
+          <p class="body-copy" style="color: #333333; font-weight: 300; font-size: 14px; padding: 3px 0px 10px 0px; margin-top: 0px; ">
+            {{getStringID ../supportedLocales "what-to-do-blurb-" this}}
+          </p>
+        </td>
+      </tr>
+    {{/loop}}

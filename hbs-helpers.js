@@ -55,6 +55,17 @@ function eachFromTo(ary, min, max, options) {
   return result.join("");
 }
 
+function loop(from, to, inc, block) {
+  block = block || {fn: function () { return arguments[0]; }};
+  const data = block.data || {index: null};
+  let output = "";
+  for (let i = from; i <= to; i += inc) {
+      data["index"] = i;
+      output += block.fn(i, {data: data});
+  }
+  return output;
+}
+
 
 function ifCompare(v1, operator, v2, options) {
   //https://stackoverflow.com/questions/28978759/length-check-in-a-handlebars-js-if-conditional
@@ -102,4 +113,5 @@ module.exports = {
   eachFromTo,
   ifCompare,
   breachMath,
+  loop,
 };

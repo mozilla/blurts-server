@@ -9,7 +9,6 @@ const { FluentError } = require("../locale-utils");
 const HBSHelpers = require("../hbs-helpers");
 const UNSUB_REASONS = require("../unsubscribe_reasons");
 const sha1 = require("../sha1-utils");
-const TIPS = require("../tips");
 
 
 async function add(req, res) {
@@ -57,7 +56,7 @@ async function verify(req, res) {
 
   const supportedLocales = EmailUtils.getSupportedLocales(req);
 
-  const buttonValue = req.fluentFormat("scan-another-email");
+  const buttonValue = req.fluentFormat("report-scan-another-email");
 
   await EmailUtils.sendEmail(
     verifiedEmailHash.email,
@@ -65,7 +64,6 @@ async function verify(req, res) {
     "report",
     {
       supportedLocales,
-      TIPS,
       email: verifiedEmailHash.email,
       date: HBSHelpers.prettyDate(supportedLocales, new Date()),
       unsafeBreachesForEmail: unsafeBreachesForEmail,
