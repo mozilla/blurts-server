@@ -7,6 +7,7 @@ const testBreaches = [
     Domain: "test.com",
     BreachDate: "2012-12-21",
     AddedDate: "2013-01-01",
+    DataClasses: [],
   },
   {
     Title: "Test2",
@@ -14,6 +15,7 @@ const testBreaches = [
     Domain: "test2.com",
     BreachDate: "2016-11-08",
     AddedDate: "2017-01-01",
+    DataClasses: [],
   },
   {
     Title: "Sensitive",
@@ -22,6 +24,7 @@ const testBreaches = [
     BreachDate: "2017-11-08",
     AddedDate: "2018-11-08",
     IsSensitive: true,
+    DataClasses: [],
   },
 ];
 

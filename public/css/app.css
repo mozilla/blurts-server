@@ -841,7 +841,7 @@ main.scan-results #featured-breach .breach-headline {
 }
 
 #sign-up-banner .subscribe-icon-wrapper {
-  justify-content: center;
+  justify-content: flex-start;
   max-width: 200px;
 }
 
@@ -854,6 +854,7 @@ main.scan-results #featured-breach .breach-headline {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  margin-left: 0;
 }
 
 /* COMPROMISED ACCOUNTS -  *************************** */
@@ -1207,22 +1208,25 @@ span.breach-info .medium {
   margin-top: var(--columnSpacing);
 }
 
-#what-to-do .fourth {
-  justify-content: flex-start;
-  flex-direction: column;
-  text-align: center;
-  min-width: 200px;
-  max-width: 300px;
-  margin-left: 5px;
-  margin-right: 5px;
+#what-to-do .half {
+  align-items: flex-start;
+}
+
+#what-to-do .half p.bold {
+  margin-bottom: calc(var(--gap) / 2);
 }
 
 #what-to-do .section-headline {
-  justify-content: center;
+  text-align: center;
+  margin-bottom: var(--gap);
 }
 
-#what-to-do svg {
-  margin-bottom: calc(var(--columnSpacing) / 2);
+#what-to-do .section-wrapper > * {
+  max-width: 600px;
+}
+
+.num-icon {
+  margin-right: var(--gap);
 }
 
 /* SCAN ANOTHER EMAIL  */
@@ -1546,6 +1550,10 @@ form.show-thankyou span.thank-you-message {
     margin-top: var(--gap);
     margin-bottom: var(--gap);
   }
+
+  #sign-up-banner .half {
+    margin-left: calc(var(--columnSpacing) / 2);
+  }
 }
 
 @media screen and (max-width: 1100px) {
@@ -1560,17 +1568,6 @@ form.show-thankyou span.thank-you-message {
 
   #show-additional-breaches {
     align-self: center;
-  }
-
-  #what-to-do .fourth {
-    margin-left: calc(var(--gap) / 2);
-    margin-right: calc(var(--gap) / 2);
-    min-width: 350px;
-    max-width: 400px;
-  }
-
-  #what-to-do .fourth p {
-    max-width: 290px;
   }
 
   footer .section-wrapper {
@@ -1682,10 +1679,6 @@ form.show-thankyou span.thank-you-message {
     flex-direction: column;
   }
 
-  #sign-up-banner .subscribe-icon-wrapper {
-    justify-content: flex-start;
-  }
-
   .unsubscribe-content p {
     padding-right: 0;
   }
@@ -1711,11 +1704,6 @@ form.show-thankyou span.thank-you-message {
 
   main.scan-results .half:last-of-type {
     display: flex;
-  }
-
-  #what-to-do .fourth {
-    margin-top: var(--columnSpacing);
-    min-width: 200px;
   }
 
   .resend-data {
@@ -1747,11 +1735,13 @@ form.show-thankyou span.thank-you-message {
     padding-top: 0;
   }
 
-  .account {
+  .account,
+  #what-to-do .half {
     flex-direction: column;
   }
 
-  .account .image-wrap {
+  .account .image-wrap,
+  .num-icon {
     margin-bottom: calc(var(--gap) / 2);
   }
 
