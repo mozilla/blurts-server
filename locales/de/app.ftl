@@ -137,3 +137,35 @@ breach-date = Datum des Lecks
 compromised-accounts = Kompromittierte Konten
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Kompromittierte Daten
+confirmed = Es hat geklappt!<br />Abonnement erfolgreich!
+confirmed-blurb = { -product-name-nowrap } sendet Ihnen in Kürze eine E-Mail mit einem vollständigen Bericht und sendet eine E-Mail-Benachrichtigung, wenn Ihr Konto von einem neuen gemeldeten Datenleck betroffen ist.
+confirmed-social-blurb = Wenn Sie von einem Datenleck betroffen sind, sind Ihre Freunde, Ihre Familie oder Ihre Online-Kontakte es wahrscheinlich auch. Erzählen Sie ihnen von { -product-name-nowrap }.
+unsub-headline = Abonnement von { -product-name-nowrap } löschen
+unsub-blurb = Dadurch wird Ihre E-Mail-Adresse aus der Liste { -product-name-nowrap } entfernt und Sie erhalten keine Benachrichtigungen mehr, wenn neue Datenlecks gemeldet werden.
+unsub-button = Abonnement entfernen
+unsub-survey-headline = Ihr Abonnement wurde gelöscht.
+unsub-survey-blurb = Ihre E-Mail-Adresse wurde aus dem Abonnement von { -product-name-nowrap } entfernt. Danke, dass Sie diesen Dienst verwendet haben. Nehmen Sie sich einen Moment Zeit, um uns eine Frage zu Ihrem Erlebnis zu beantworten?
+unsub-survey-form-label = Warum melden Sie sich von Warnungen zu { -product-name-nowrap } ab?
+unsub-reason-1 = Ich glaube nicht, dass Warnungen meine Daten sicherer machen
+unsub-reason-2 = Ich erhalten zu viele E-Mails von { -product-name-nowrap }
+unsub-reason-3 = Ich finde diesen Dienst nicht nützlich
+unsub-reason-4 = Ich habe bereits Schritte unternommen, um meine Konten zu schützen
+unsub-reason-5 = Ich verwende einen anderen Dienst, um meine Konten zu überwachen
+unsub-reason-6 = Nichts davon
+unsub-survey-thankyou = Vielen Dank für Ihre Rückmeldung.
+unsub-survey-error = Bitte wählen Sie einen Punkt aus.
+# Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
+share = Teilen
+# Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
+tweet = Twittern
+download-firefox-quantum = { -brand-Quantum } herunterladen
+download-firefox-mobile = { -brand-name } Mobile herunterladen
+# Features here refers to Firefox browser features. 
+features = Funktionen
+# beta-nightly-developer-edition refers to additional versions of Firefox Browser
+beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# The following string contains HTML markup which should not be translated. 
+# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
+copyright-info = Teile dieses Inhalts stehen unter einem &#x24B8; 1998-2018 von einzelnen Mitwirkenden an mozilla.org. Der Inhalt steht unter einer <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative-Commons-Lizenz</a>.
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Informationen zum Datenleck stammen von { $hibp-link }
