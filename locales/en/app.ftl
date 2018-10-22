@@ -45,7 +45,7 @@ user-unsubscribe-token-error = Unsubscribing requires a token.
 user-unsubscribe-token-email-error = Unsubscribing requires a token and emailHash.
 user-unsubscribe-title = {-product-name} : Unsubscribe
 user-unsubscribe-survey-title = {-product-name} : Unsubscribe Survey
-user-unsubscribed-title {-product-name} : Unsubscribed
+user-unsubscribed-title = {-product-name} : Unsubscribed
 
 ## Password Tips
 
@@ -156,7 +156,7 @@ what-to-do-blurb-2 =
 what-to-do-subhead-3 = Take extra steps to secure your financial accounts
 what-to-do-blurb-3 = 
   Most breaches only expose emails and passwords, but some do include sensitive financial information. 
-  If your bank account or credit card numbers were included in a breach, alert your your bank to possible fraud, 
+  If your bank account or credit card numbers were included in a breach, alert your bank to possible fraud, 
   and monitor statements for charges you don’t recognize.
 
 what-to-do-subhead-4 = Get help creating good passwords and keeping them safe.

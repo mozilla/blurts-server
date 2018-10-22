@@ -1,10 +1,11 @@
+# Firefox Monitor is a product name and should not be translated.
+-product-name = Firefox Monitor
 
 click-to-verify = 
   Select the Verify My Email button within 24 hours to confirm your Firefox Monitor account. 
   Your report will then be on its way.
 verify-my-email = Verify My Email
-
-scan-another-email = Scan another email in {-product-name}.
+report-scan-another-email = Scan Another Email in {-product-name}
 
 automated-message = 
   This is an automated email; if you received it in error, no action is required.
@@ -12,11 +13,8 @@ automated-message =
 # Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
 we-sent-this-alert = We sent this message to { $userEmail } because the email address opted into alerts from {-product-name}.
 
-unsubscribe = unsubscribe
-
-# This string is followed by an Unsubscribe button, and appears in full: If you no longer want Firefox Monitor alerts, unsubscribe.
-unsubscribe-blurb = 
-  If you no longer want {-product-name} alerts,
+unsubscribe-link  = 
+  If you no longer want {-product-name} alerts, unsubscribe
 
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = {-product-name} Report 
@@ -40,13 +38,13 @@ report-headline =
      *[other] Your accounts appeared in { $breachCount } breaches.
   }
 
-report-subhead =
-  { $breachCount ->
-      [0] Your account doesn’t appear in our full report of breaches. 
-          That’s good news, but there is more you can do. 
-          Data breaches happen at any time, so read on to learn how you can protect your passwords.
-     *[other] Here’s your full Firefox Monitor report, which includes all known data breaches that contain this email address. 
-  }
+report-subhead-no-breaches =
+  Your account doesn’t appear in our full report of breaches. 
+  That’s good news, but there is more you can do. 
+  Data breaches happen at any time, so read on to learn how you can protect your passwords.
+
+report-subhead-found-breaches =
+  Here’s your full Firefox Monitor report, which includes all known data breaches that contain this email address. 
 
 breach-alert-headline = Your account was involved in a data breach.
 breach-alert-subhead = A recently reported data breach contains your email and the following data
