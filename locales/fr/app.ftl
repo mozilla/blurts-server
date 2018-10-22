@@ -11,6 +11,9 @@
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Assistance
+# Link that takes the user to a Firefox Monitor survey. 
+give-feedback = Donner votre avis
+terms-and-privacy = Confidentialité et conditions d’utilisation
 error-hibp-throttled = Connexions trop nombreuses à { -brand-HIBP }.
 error-hibp-connect = Erreur de connexion à { -brand-HIBP }.
 home-title = { -product-name }
