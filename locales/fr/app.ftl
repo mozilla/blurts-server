@@ -18,6 +18,10 @@ error-hibp-throttled = Connexions trop nombreuses à { -brand-HIBP }.
 error-hibp-connect = Erreur de connexion à { -brand-HIBP }.
 home-title = { -product-name }
 home-not-found = Page non trouvée
+oauth-invalid-session = Session invalide
+scan-title = { -product-name } : résultats de l’analyse
+user-add-invalid-email = Adresse électronique invalide
+user-add-title = { -product-name } : confirmez votre adresse électronique
 
 ## Password Tips
 
