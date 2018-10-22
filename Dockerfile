@@ -21,4 +21,4 @@ RUN npm run build:all
 RUN chown app:app /app
 
 USER app
-CMD node server.js
+CMD NODE_ICU_DATA=./node_modules/full-icu node server.js

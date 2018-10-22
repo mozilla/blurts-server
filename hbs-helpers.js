@@ -29,12 +29,15 @@ function localizedBreachDataClasses(supportedLocales, dataClasses, args) {
 
 function prettyDate(supportedLocales, date) {
   const jsDate = new Date(date);
-  return jsDate.toLocaleDateString(supportedLocales, {year: "numeric", month: "long", day: "numeric"});
+  const options = {year: "numeric", month: "long", day: "numeric"};
+  const intlDateTimeFormatter = new Intl.DateTimeFormat(supportedLocales, options);
+  return intlDateTimeFormatter.format(jsDate);
 }
 
 
-function localeString(input) {
-  return input.toLocaleString();
+function localeString(supportedLocales, numericInput) {
+  const intlNumberFormatter = new Intl.NumberFormat(supportedLocales);
+  return intlNumberFormatter.format(numericInput);
 }
 
 
