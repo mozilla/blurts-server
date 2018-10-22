@@ -57,8 +57,6 @@ async function notify (req, res) {
       {defaultLocale: "en"}
     );
 
-    // const buttonValue = LocaleUtils.fluentFormat(supportedLocales, "report-scan-another-email");
-
     if (!notifiedSubscribers.includes(email)) {
       await EmailUtils.sendEmail(
         email,
@@ -67,7 +65,7 @@ async function notify (req, res) {
         {
           email,
           supportedLocales,
-          date: HBSHelpers.prettyDate(new Date()),
+          date: HBSHelpers.prettyDate(supportedLocales, new Date()),
           breachAlert,
           SERVER_URL: req.app.locals.SERVER_URL,
           buttonValue: LocaleUtils.fluentFormat(supportedLocales, "report-scan-another-email"),
