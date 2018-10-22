@@ -8,6 +8,7 @@
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
+-brand-HIBP = Have I Been Pwned
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Podpora
@@ -29,6 +30,7 @@ signup-modal-close = Zapri
 signup-modal-verify-blurb = Na <span id="submitted-email" class="medium"></span> smo poslali potrditveno povezavo.
 signup-modal-verify-expiration = Povezava bo potekla po 24 urah.
 signup-modal-verify-resend = Ni med prejeto ali vsiljeno pošto? Pošlji znova.
+form-signup-placeholder = Vnesite e-poštni naslov
 show-more-breaches = Prikaži več
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Deli
