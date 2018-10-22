@@ -8,8 +8,7 @@
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
-# HIBP is the acronym of Have I Been Pwned.
--brand-HIBP = HIBP
+-brand-HIBP = Have I Been Pwned
 layout-Firefox = { -brand-name }
 home-title = { -product-name }
 
