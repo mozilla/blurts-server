@@ -21,3 +21,14 @@ home-not-found = Strani ni mogoče najti.
 
 scan-placeholder = Vnesite e-poštni naslov
 scan-privacy = Vaš e-poštni naslov ne bo shranjen.
+signup-modal-close = Zapri
+signup-modal-verify-blurb = Na <span id="submitted-email" class="medium"></span> smo poslali potrditveno povezavo.
+signup-modal-verify-expiration = Povezava bo potekla po 24 urah.
+signup-modal-verify-resend = Ni med prejeto ali vsiljeno pošto? Pošlji znova.
+show-more-breaches = Prikaži več
+# Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
+share = Deli
+download-firefox-quantum = Prenesite { -brand-Quantum }
+download-firefox-mobile = Prenesite { -brand-name } za mobilne naprave
+# beta-nightly-developer-edition refers to additional versions of Firefox Browser
+beta-nightly-developer-edition = Beta, Nightly, Developer Edition
