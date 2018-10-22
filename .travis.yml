@@ -7,6 +7,8 @@ services:
 env:
   - NODE_ENV=tests
 before_script:
+  - pip install compare-locales
+  - compare-locales --validate l10n.toml .
   - cp .env-dist .env
   - createdb test-blurts
   - npm install npm@latest -g
