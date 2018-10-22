@@ -8,8 +8,7 @@
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
-# HIBP is the acronym of Have I Been Pwned.
--brand-HIBP = HIBP
+-brand-HIBP = Have I Been Pwned
 
 layout-Firefox = {-brand-name}
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
@@ -216,4 +215,8 @@ copyright-info =
   Portions of this content are &#x24B8; 1998-2018 by individual mozilla.org contributors. <br />
   Content available under a  <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons license</a>.
 
-hibp-attribution = Breach data provided by
+# the following string contains HTML markup and should not be translated.
+hibp-link = <a id="hibp-link" href="https://www.haveibeenpwned.com" target="_blank" rel="noopener noreferrer">{-brand-HIBP}</a>
+
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Breach data provided by { hibp-link }.
