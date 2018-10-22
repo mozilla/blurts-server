@@ -8,8 +8,7 @@
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
-# HIBP is the acronym of Have I Been Pwned.
--brand-HIBP = HIBP
+-brand-HIBP = Have I Been Pwned
 
 layout-Firefox = {-brand-name}
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
@@ -175,7 +174,7 @@ what-to-do-blurb-2 =
 what-to-do-subhead-3 = Take extra steps to secure your financial accounts
 what-to-do-blurb-3 = 
   Most breaches only expose emails and passwords, but some do include sensitive financial information. 
-  If your bank account or credit card numbers were included in a breach, alert your your bank to possible fraud, 
+  If your bank account or credit card numbers were included in a breach, alert your bank to possible fraud, 
   and monitor statements for charges you don’t recognize.
 
 what-to-do-subhead-4 = Get help creating good passwords and keeping them safe.
@@ -238,6 +237,5 @@ copyright-info =
   Portions of this content are &#x24B8; 1998-2018 by individual mozilla.org contributors. <br />
   Content available under a  <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons license</a>.
 
-# This string is followed by a link to Have I Been Pwned, the code for which is created elsewhere.
-# The final string reads: Breach data provided by Have I Been Pwned. 
-hibp-attribution = Breach data provided by
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Breach data provided by { $hibp-link }

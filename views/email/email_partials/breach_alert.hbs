@@ -4,10 +4,10 @@
       </td>
       <td valign="top" style="vertical-align: top; padding-top: 0px; padding-right: 20px; padding-bottom: 10px;">
         <p class="body-copy" style="padding: 0px; margin: 0px; color: #333333; margin: 0px; font-weight: 500; font-size: 16px;">{{ breachAlert.Title }}</p>
-        <p class="body-copy" style="padding: 2px 0px 2px 0px; margin: 0px; color: #333333; font-weight: 400; font-size: 14px;">Breach date:<span class="body-copy" style="font-weight:300; padding-left: 6px; color: #333333">{{prettyDate breachAlert.BreachDate }}</span></p>
-        <p class="body-copy" style="padding: 2px 0px 2px 0px; margin: 0px; color: #333333; font-weight: 400; font-size: 14px;">Compromised accounts:<span class="body-copy" style="font-weight:300; padding-left: 6px; color: #333333">{{localeString breachAlert.PwnCount }}</span></p>
+        <p class="body-copy" style="padding: 2px 0px 2px 0px; margin: 0px; color: #333333; font-weight: 400; font-size: 14px;">{{fluentFormat supportedLocales "breach-date"}}:<span class="body-copy" style="font-weight:300; padding-left: 6px; color: #333333">{{prettyDate supportedLocales breachAlert.BreachDate }}</span></p>
+        <p class="body-copy" style="padding: 2px 0px 2px 0px; margin: 0px; color: #333333; font-weight: 400; font-size: 14px;">{{fluentFormat supportedLocales "compromised-accounts"}}:<span class="body-copy" style="font-weight:300; padding-left: 6px; color: #333333">{{localeString breachAlert.PwnCount }}</span></p>
         {{#if breachAlert.DataClasses }}
-          <p class="body-copy" style="padding: 2px 0px 2px 0px; margin: 0px; color: #333333; font-weight: 400; font-size: 14px;">Compromised data:<span class="body-copy" style="font-weight:300; padding-left: 6px; color: #333333">{{localizedBreachDataClasses supportedLocales breachAlert.DataClasses }}</span></p>
+          <p class="body-copy" style="padding: 2px 0px 2px 0px; margin: 0px; color: #333333; font-weight: 400; font-size: 14px;">{{fluentFormat supportedLocales "compromised-data"}}:<span class="body-copy" style="font-weight:300; padding-left: 6px; color: #333333">{{localizedBreachDataClasses supportedLocales breachAlert.DataClasses }}</span></p>
         {{/if}}
       </td>
     </tr>

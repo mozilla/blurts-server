@@ -54,7 +54,7 @@ test("notify POST with breach, subscriber hash prefix and suffixes should call s
   await hibp.notify(mockRequest, mockResponse);
 
   const mockFluentFormatCalls = LocaleUtils.fluentFormat.mock.calls;
-  expect (mockFluentFormatCalls.length).toBe(1);
+  expect (mockFluentFormatCalls.length).toBe(2);
   const mockFluentFormatCallArgs = mockFluentFormatCalls[0];
   expect (mockFluentFormatCallArgs[0]).toEqual(["en"]);
   expect (mockFluentFormatCallArgs[1]).toBe("hibp-notify-email-subject");

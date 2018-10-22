@@ -1,13 +1,16 @@
 <table class="footer" align="center" width="100%" border="0" cellspacing="0" cellpadding="0" style="text-align: center; max-width: 603px; font-size: 13px; padding: 0px 15px; margin: 0px;">
   <tr>
     <td>
-      <p class="footer-copy legal-copy" style="margin-top: 0px; font-weight: 300; color: #738597;">This is an automated email; if you received it in error, no action is required.</p>
+      <p class="footer-copy legal-copy" style="margin-top: 0px; font-weight: 300; color: #738597;">
+        {{fluentFormat supportedLocales "automated-message"}}
+      </p>
       <p class="footer-copy" style="margin-top: 0px; font-weight: 300; color: #738597;">
-        We sent this email to {{ email }} because the email address opted into alerts from <a class="footer-link" href="{{ SERVER_URL }}" style="color: #0060df;">Firefox Monitor</a>.
+        {{{fluentFormat supportedLocales "we-sent-this-alert" userEmail=email}}}
       </p>
       <p class="footer-copy" style="padding: 0px 0px 3px 0px; margin: 0px; font-weight: 300; color: #738597 ;">
-        If you no longer want to receive alerts, please 
-        <a class="footer-link" style="color: #0060df;" href="{{ unsubscribeUrl }}" rel="noreferrer noopener">unsubscribe</a>.
+        <a class="footer-link" style="color: #0060df;" href="{{ unsubscribeUrl }}" rel="noreferrer noopener">
+          {{fluentFormat supportedLocales "unsubscribe-link"}}.
+        </a>
       </p>
     </td>
   </tr>
@@ -23,7 +26,7 @@
       <p class="footer-copy" style="padding: 0px 0px 3px 0px; margin: 0px; font-weight: 300; color: #738597;">Mozilla</p>
       <p class="footer-copy" style="padding: 0px 0px 3px 0px; margin: 0px; font-weight: 300; color: #738597 ;">331 E. Evelyn Avenue Mountain View CA 94041</p>
       <p class="footer-copy" style="padding: 0px; margin: 0px;">
-        <a class="footer-link" href="https://www.mozilla.org/about/legal/{{> utm_email_footer }}" rel="noopener" style="color: #0060df;">Legal</a><span style="color:#738597;"> &#8226;</span> <a class="footer-link" href="https://www.mozilla.org/privacy/firefox-monitor/{{> utm_email_footer }}" rel="noopener" style="color: #0060df;">Terms&nbsp;and&nbsp;Privacy</a>
+        <a class="footer-link" href="https://www.mozilla.org/about/legal/{{> utm_email_footer }}" rel="noopener" style="color: #0060df;">{{fluentFormat supportedLocales "legal"}}</a><span style="color:#738597;"> &#8226;</span> <a class="footer-link" href="https://www.mozilla.org/privacy/firefox-monitor/{{> utm_email_footer }}" rel="noopener" style="color: #0060df;">{{fluentFormat supportedLocales "terms-and-privacy"}}</a>
       </p>
     </td>
   </tr>

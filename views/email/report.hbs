@@ -22,25 +22,23 @@
       {{> email_hibp_attribution}}
       {{> report_what_to_do_next}}
     {{else}}
-      {{#if unsafeBreachesForEmail}}
+      {{#ifCompare unsafeBreachesForEmail.length ">" 0}}
         {{#each unsafeBreachesForEmail}}
-          {{> email_single_breach SERVER_URL=../SERVER_URL req=../req}}
+          {{> email_single_breach SERVER_URL=../SERVER_URL supportedLocales=../supportedLocales}}
         {{/each}}
         {{> email_hibp_attribution}}
         {{> report_what_to_do_next}}
       {{else}}
-        {{#eachFromTo TIPS 0 3}}
-          {{> report_password_tips SERVER_URL=../SERVER_URL req=../req}}
-        {{/eachFromTo}}
-      {{/if}}<!--unsafeBreachesForEmail-->
+        {{> report_password_tips}}
+      {{/ifCompare}}
+
     {{/if}}<!--breachAlert-->
   </table>
   <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-top: 20px; padding-bottom: 20px; margin: 0px;">
     <tr>
       <td>
-        {{>email_button href=SERVER_URL value="Scan another email in Firefox Monitor"}}
+        {{>email_button href=SERVER_URL}}
       </td>
     </tr>
   </table>
 </div>
-
