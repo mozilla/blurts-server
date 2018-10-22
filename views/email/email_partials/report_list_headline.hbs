@@ -6,19 +6,17 @@
     {{fluentFormat supportedLocales "report-headline" breachCount=unsafeBreachesForEmail.length}}
   {{/if}}
 </h2>
-{{#if breachAlert}}
-  <p class="body-copy" style="color: #333333; font-size: 15px; font-weight: 300;">
-    {{fluentFormat supportedLocales "breach-alert-subhead"}}
+ <p class="body-copy" style="color: #333333; font-size: 15px; font-weight: 300;">
+  {{#if breachAlert}}
+      {{fluentFormat supportedLocales "breach-alert-subhead"}}
+  {{else}}
+    {{#ifCompare unsafeBreachesForEmail.length "===" 0}}
+      {{fluentFormat supportedLocales "report-subhead-no-breaches"}}
+    {{else}}
+      {{fluentFormat supportedLocales "report-subhead-found-breaches" breachCount=unsafeBreachesForEmail.length}}
+    {{/ifCompare}}
   </p>
-{{else}}
-    <p class="body-copy" style="color: #333333; font-size: 15px; font-weight: 300;">
-      {{fluentFormat supportedLocales "report-subhead" breachCount=unsafeBreachesForEmail.length}}
-    </p>
-  </td>
-</tr>
-{{#ifCompare unsafeBreachesForEmail.length "===" 0}}
-<tr>
-  <td>
+  {{#ifCompare unsafeBreachesForEmail.length "===" 0}}
     <h2 class="body-copy" style="color: #333333; font-size: 22px; font-weight: 300;">
       {{fluentFormat supportedLocales "pwt-section-headline"}}
     </h2>
