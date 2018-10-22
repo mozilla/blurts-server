@@ -56,6 +56,7 @@ async function notify (req, res) {
       req.app.locals.AVAILABLE_LANGUAGES,
       {defaultLocale: "en"}
     );
+    const unsubscribeUrl = EmailUtils.unsubscribeUrl(subscriber);
 
     if (!notifiedSubscribers.includes(email)) {
       await EmailUtils.sendEmail(
@@ -66,6 +67,7 @@ async function notify (req, res) {
           email,
           supportedLocales,
           date: HBSHelpers.prettyDate(supportedLocales, new Date()),
+          unsubscribeUrl,
           breachAlert,
           SERVER_URL: req.app.locals.SERVER_URL,
           buttonValue: LocaleUtils.fluentFormat(supportedLocales, "report-scan-another-email"),
