@@ -36,6 +36,7 @@ signup-banner-headline = { -product-name-nowrap } détecte les menaces sur vos c
 signup-banner-blurb =
     Le rapport détaillé de { -product-name-nowrap } indique si des informations provenant de vos comptes en ligne ont été divulguées ou volées.
     Nous vous préviendrons aussi si vos comptes apparaissent à l’occasion de nouvelles failles de sécurité.
+download-firefox-banner-blurb = Reprenez le contrôle de votre navigateur
 found-breaches-headline = Vos informations personnelles ont été compromises dans une fuite de données.
 show-more-breaches = Afficher davantage
 what-to-do-subhead-1 = Changez de mots de passe, même pour des comptes anciens
