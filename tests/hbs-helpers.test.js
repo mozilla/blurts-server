@@ -29,7 +29,8 @@ test("localizedBreachDataClasses joins array by ',' and renders fluent translati
 
 
 test("localeString adds commas to numbers", () => {
-  const display = HBSHelpers.localeString(1000000);
+  const supportedLocales = ["en"];
+  const display = HBSHelpers.localeString(supportedLocales, 1000000);
   expect(display).toEqual("1,000,000");
 });
 
