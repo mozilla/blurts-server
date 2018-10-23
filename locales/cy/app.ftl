@@ -43,3 +43,10 @@ pwt-section-headline = Cyfrineiriau Cryfach = Gwell Diogelwch
 pwt-section-subhead = Mae eich manylion preifat ond mor ddiogel â'ch cyfrineiriau.
 pwt-section-blurb = Mae eich cyfrineiriau'n gwarchod mwy na'ch cyfrifon. Maen nhw'n diogelu pob darn o wybodaeth bersonol sy'n bod o'u mewn. Ac mae hacwyr yn dibynnu ar arferion drwg, fel defnyddio'r un cyfrinair ym mhobman neu ddefnyddio ymadroddion cyffredin (p@ssw0rd??) felly os byddan nhw'n hacio un cyfrif, mae modd iddyn nhw hacio llwyth. Dyma sut i amddiffyn eich cyfrifon yn well.
 pwt-headline-1 = Defnyddiwch gyfrinair gwahanol ar gyfer pob cyfrif
+pwt-summary-1 = Mae ailddefnyddio'r un cyfrinair ym mhobman yn agor y drws lled y pen ar gyfer dwyn hunaniaeth. Gall unrhyw un sydd â'r cyfrinair hwnnw fewngofnodi i'ch holl gyfrifon.
+pwt-headline-2 = Creu cyfrineiriau cryf, anodd eu dyfalu
+pwt-summary-2 = Mae hacwyr yn defnyddio miloedd o gyfrineiriau cyffredin i geisio dyfalu eich un chi. Yr hiraf a mwyaf annisgwyl ydyw, yr anoddaf fydd i'w ddyfalu.
+pwt-headline-3 = Rhaid trin cwestiynnau diogelwch fel cyfrineiriau ychwanegol
+pwt-summary-3 = Nid yw gwefannau yn gwirio bod eich atebion yn gywir, dim ond eu bod yn cyfateb bob tro. Crewch atebion hir, ar hap a'u storio yn rhywle diogel.
+pwt-headline-4 = Helpu eich hun i gofio eich cyfrineiriau
+pwt-summary-4 = Mae rheolwyr cyfrinair fel 1Password, LastPass, Dashlane, a Bitwarden yn creu cyfrineiriau cryf, unigryw. Maen nhw hefyd yn storio cyfrineiriau'n ddiogel a'u llanw ar wefannau i chi
