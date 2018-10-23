@@ -18,3 +18,5 @@ nicknames = vzdevki
 occupations = poklici
 passwords = gesla
 photos = fotografije
+usernames = uporabniška imena
+work-habits = delovne navade
