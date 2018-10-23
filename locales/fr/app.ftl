@@ -32,6 +32,8 @@ pwt-headline-5 = Ajoutez une sécurité supplémentaire avec l’authentificatio
 scan-placeholder = Saisissez votre adresse électronique
 scan-privacy = Votre adresse électronique ne sera pas stockée.
 scan-error = L’adresse électronique doit être valide.
+signup-banner-headline = { -product-name-nowrap } détecte les menaces sur vos comptes en ligne.
 signup-banner-blurb =
     Le rapport détaillé de { -product-name-nowrap } indique si des informations provenant de vos comptes en ligne ont été divulguées ou volées.
     Nous vous préviendrons aussi si vos comptes apparaissent à l’occasion de nouvelles failles de sécurité.
+found-breaches-headline = Vos informations personnelles ont été compromises dans une fuite de données.

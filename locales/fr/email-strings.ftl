@@ -1,4 +1,5 @@
 report-pwt-headline-1 = Utilisez un mot de passe différent pour chaque compte
+report-pwt-summary-1 = La réutilisation du même mot de passe partout ouvre la porte aux pirates. Ils peuvent utiliser ce mot de passe pour se connecter à vos autres comptes.
 report-pwt-headline-2 = Créez des mots de passe robustes et différents pour chaque site ou service
 report-pwt-summary-2 = Les pirates utilisent des listes de mots de passe courants pour tenter de deviner les vôtres. Plus votre mot de passe est long et aléatoire, plus il sera difficile de le voler.
 report-pwt-headline-3 = Traitez les questions de sécurité comme des mots de passe supplémentaires
