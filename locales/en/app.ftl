@@ -120,6 +120,9 @@ signup-modal-verify-blurb = We sent a verification link to <span id="submitted-e
 signup-modal-verify-expiration = This link expires in 24 hours.
 signup-modal-verify-resend = Not in inbox or spam folder? Resend.
 
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = Sent!
+
 signup-with-fxa = Sign Up with {-brand-name} Account
 
 form-signup-placeholder = Enter email
@@ -239,3 +242,5 @@ copyright-info =
 
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Breach data provided by { $hibp-link }
+
+site-description = Have your accounts been leaked or stolen in a data breach? Find out at {-product-name}. Search our database and sign up for alerts.
