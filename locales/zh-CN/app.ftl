@@ -21,6 +21,7 @@ user-add-invalid-email = 无效的电子邮件地址
 ## Password Tips
 
 scan-placeholder = 输入电子邮件地址
+scan-error = 须为有效的电子邮件地址。
 download-firefox-banner-blurb = 掌控您的浏览器
 signup-modal-close = 关闭
 form-signup-placeholder = 输入电子邮件地址
