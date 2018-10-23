@@ -3,11 +3,7 @@
 # - Declined to adapt to grammatical case.
 # - Transliterated.
 # - Translated.
--product-name =
-    { $breachCount ->
-        [one] Ihr Konto ist von { $breachCount } Datenleck betroffen.
-       *[other] Ihr Konto ist von { $breachCount } Datenlecks betroffen.
-    }
+-product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
@@ -108,8 +104,9 @@ no-breaches =
     Das sind gute Nachrichten, aber Datenlecks können jederzeit passieren und es gibt noch mehr, was Sie tun können. Abonnieren Sie { -product-name-nowrap } und erhalten Sie einen vollständigen Bericht, Warnungen bei neuen Sicherheitsverletzungen und Tipps zum Schutz Ihrer Passwörter.
 featured-breach-results =
     { $breachCount ->
-        [one] Ihr Konto ist vom Datenleck bei <span class="bold">{ $featuredBreach }</span> betroffen, nicht aber von anderen bekannten Datenlecks.
-       *[other] Ihr Konto ist vom Datenleck bei <span class="bold">{ $featuredBreach }</span> betroffen, sowie von einem anderen Datenleck.
+        [0] Ihr Konto ist vom Datenleck bei <span class="bold">{ $featuredBreach }</span> betroffen, nicht aber von anderen bekannten Datenlecks.
+        [one] Ihr Konto ist vom Datenleck bei <span class="bold">{ $featuredBreach }</span> betroffen, sowie von einem anderen Datenleck.
+       *[other] Ihr Konto ist vom Datenleck bei <span class="bold">{ $featuredBreach }</span> betroffen, sowie von { $breachCount } anderen Datenlecks.
     }
 featured-breach-not-compromised =
     { $breachCount ->
