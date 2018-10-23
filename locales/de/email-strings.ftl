@@ -18,11 +18,6 @@ report-no-breaches =
     Aber Datenlecks können jederzeit passieren. Führen Sie diese Schritte aus, um Ihre persönlichen Daten im Internet zu schützen.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Nächste Schritte
-report-headline =
-    { $breachCount ->
-        [one] Ihr Konto ist von { $breachCount } Datenleck betroffen.
-       *[other] Ihr Konto ist von { $breachCount } Datenlecks betroffen.
-    }
 report-subhead-no-breaches =
     Ihr Konto erscheint nicht in unserem vollständigen Bericht über Datenlecks.
     Das sind gute Nachrichten, aber Sie können noch mehr tun.

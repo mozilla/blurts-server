@@ -113,11 +113,13 @@ featured-breach-results =
     }
 featured-breach-not-compromised =
     { $breachCount ->
+        [0] { no-breaches }
         [one] Ihr Konto ist nicht vom Datenleck bei <span class="bold">{ $featuredBreach }</span> betroffen, aber von einem anderen Datenleck.
        *[other] Ihr Konto ist nicht vom Datenleck bei <span class="bold">{ $featuredBreach }</span> betroffen, aber von { $breachCount } anderen Datenlecks.
     }
 scan-results =
     { $breachCount ->
+        [0] { no-breaches }
         [one] Ihr Konto ist von { $breachCount } Datenleck betroffen.
        *[other] Von den folgenden { $breachCount } Datenlecks sind Konten mit Ihren E-Mail-Adressen betroffen.
     }
