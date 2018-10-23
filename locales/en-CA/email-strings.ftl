@@ -22,6 +22,7 @@ report-no-breaches =
 what-to-do-next = What To Do Next
 report-headline =
     { $breachCount ->
+        [0] So far, so good.
         [one] Your account appeared in { $breachCount } breach.
        *[other] Your accounts appeared in { $breachCount } breaches.
     }

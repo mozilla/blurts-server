@@ -114,11 +114,13 @@ featured-breach-results =
     }
 featured-breach-not-compromised =
     { $breachCount ->
+        [0] { no-breaches }
         [one] Your account did not appear in the <span class="bold">{ $featuredBreach }</span> breach, but did appear in one other breach.
        *[other] Your account did not appear in the <span class="bold">{ $featuredBreach }</span> breach, but did appear in { $breachCount } other breaches.
     }
 scan-results =
     { $breachCount ->
+        [0] { no-breaches }
         [one] Your account appeared in { $breachCount } breach.
        *[other] Accounts associated with your email address appeared in the following { $breachCount } breaches.
     }
