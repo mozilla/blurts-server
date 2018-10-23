@@ -145,7 +145,7 @@ what-to-do-blurb-4 =
     Password managers like 1Password, LastPass, Dashlane, and Bitwarden generate strong passwords, 
     store them securely, and fill them into websites for you.
 # breach-date = the calendar date a particular data theft occurred. 
-breach-date = Breach date
+breach-date = Breach date:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Compromised accounts
 # compromised-data = the kind of user data exposed to hackers in data breach.
