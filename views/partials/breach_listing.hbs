@@ -4,10 +4,10 @@
   </div>
   <div class="breach-info-wrap">
     <h4 class="medium">{{ Title }}</h4>
-    <span class="breach-info"><span class="medium">{{fluentFormat req.supportedLocales "breach-date"}}:</span>{{prettyDate req.supportedLocales BreachDate }}</span>
-    <span class="breach-info"><span class="medium">{{fluentFormat req.supportedLocales "compromised-accounts"}}:</span>{{localeString PwnCount }}</span>
+    <span class="breach-info"><span class="medium">{{fluentFormat req.supportedLocales "breach-date"}}</span>{{prettyDate req.supportedLocales BreachDate }}</span>
+    <span class="breach-info"><span class="medium">{{fluentFormat req.supportedLocales "compromised-accounts"}}</span>{{localeString PwnCount }}</span>
     {{#if DataClasses }}
-      <span class="breach-info"><span class="medium">{{fluentFormat req.supportedLocales "compromised-data"}}:</span>{{localizedBreachDataClasses req.supportedLocales DataClasses }}</span>
+      <span class="breach-info"><span class="medium">{{fluentFormat req.supportedLocales "compromised-data"}}</span>{{localizedBreachDataClasses req.supportedLocales DataClasses }}</span>
     {{/if}}
   </div>
 </div>

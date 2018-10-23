@@ -183,13 +183,13 @@ what-to-do-blurb-4 =
   store them securely, and fill them into websites for you.
 
 # breach-date = the calendar date a particular data theft occurred. 
-breach-date = Breach date
+breach-date = Breach date:
 
 # compromised accounts = the total number of user accounts exposed in data breach
-compromised-accounts = Compromised accounts
+compromised-accounts = Compromised accounts:
 
 # compromised-data = the kind of user data exposed to hackers in data breach.
-compromised-data = Compromised data 
+compromised-data = Compromised data:
 
 confirmed = Confirmed!<br />You’re Subscribed!
 confirmed-blurb = {-product-name-nowrap} will email you a full report shortly, and will send an email alert if your account appears in a new reported breach.
