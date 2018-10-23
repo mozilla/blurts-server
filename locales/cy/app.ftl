@@ -56,3 +56,40 @@ pwt-headline-6 = Cofrestru ar gyfer rhybuddion { -product-name-nowrap }
 pwt-summary-6 = Mae tor-data gwefanau ar gynnydd. Cyn gynted ag y bydd tor-data newydd yn cael ei ychwanegu at ein cronfa ddata, mae { -product-name-nowrap } yn anfon rhybudd i chi - fel y gallwch chi weithredu a diogelu'ch cyfrif.
 scan-label = Gweld os ydych wedi bod yn rhad o dor-data.
 scan-featuredbreach-label = Gweld os yw eich cyfrif <span class="bold"> { $featuredBreach } </span> wedi ei gyfaddawdu.
+signup-banner-blurb = Mae eich adroddiad manwl { -product-name-nowrap } yn dangos os yw gwybodaeth o'ch cyfrifon ar-lein wedi cael ei ryddhau neu ei ddwyn. Byddwn hefyd yn eich hysbysu os bydd eich cyfrifon yn ymddangos mewn achosion o dor-data gwefannau newydd.
+signup-modal-blurb = Cofrestrwch am eich adroddiad llawn, rhybuddion pan fo toriadau newydd yn digwydd, ac awgrymiadau diogelwch o { -product-name-nowrap }.
+no-breaches-headline = Go lew, hyd yma.
+found-breaches-headline = Mae eich manylion wedi bod yn rhan o dor-ddata.
+no-breaches =
+    Nid oedd eich cyfeiriad e-bost yn ymddangos yn ein sgan sylfaenol.
+    Mae hynny'n newyddion da, ond gall tor-ddata ddigwydd ar unrhyw adeg ac mae mwy y gallwch chi ei wneud.
+    Tanysgrifiwch i { -product-name-nowrap } am adroddiad llawn, rhybuddion pan fo tor-ddata newydd yn digwydd, ac awgrymiadau ar ddiogelu eich cyfrineiriau.
+featured-breach-results =
+    { $breachCount ->
+        [zero] Mae eich cyfrif yn ymddangos yn tor-ddata <span class="bold">{ $featuredBreach }</span>, ond nid yw'n ymddangos mewn unrhyw achosion o dor-ddata eraill.
+        [one] Mae eich cyfrif yn ymddangos yn tor-ddata <span class="bold">{ $featuredBreach }</span>, yn ogystal ag un tor-data arall.
+        [two] Mae eich cyfrif yn ymddangos yn tor-ddata <span class="bold">{ $featuredBreach }</span>, yn ogystal a { $breachCount } tor-data arall.
+        [few] Mae eich cyfrif yn ymddangos yn tor-ddata <span class="bold">{ $featuredBreach }</span>, yn ogystal â { $breachCount } tor-data arall.
+        [many] Mae eich cyfrif yn ymddangos yn tor-ddata <span class="bold">{ $featuredBreach }</span>, yn ogystal â { $breachCount } tor-data arall.
+       *[other] Mae eich cyfrif yn ymddangos yn tor-ddata <span class="bold">{ $featuredBreach }</span>, yn ogystal â { $breachCount } tor-data arall.
+    }
+featured-breach-not-compromised =
+    { $breachCount ->
+        [zero] { no-breaches }
+        [one] Nid oedd eich cyfrif yn ymddangos yn y tor-data <span class="bold">{ $featuredBreach }</span>, ond mae'n ymddangos mewn un tor-data arall.
+        [two] Nid oedd eich cyfrif yn ymddangos yn y tor-data <span class="bold">{ $featuredBreach }</span>, ond mae'n ymddangos mewn { $breachCount } tor-data eraill.
+        [few] Nid oedd eich cyfrif yn ymddangos yn y tor-data <span class="bold">{ $featuredBreach }</span>, ond mae'n ymddangos mewn { $breachCount } tor-data eraill.
+        [many] Nid oedd eich cyfrif yn ymddangos yn y tor-data <span class="bold">{ $featuredBreach }</span>, ond mae'n ymddangos mewn { $breachCount } tor-data eraill.
+       *[other] Nid oedd eich cyfrif yn ymddangos yn y tor-data <span class="bold">{ $featuredBreach }</span>, ond mae'n ymddangos mewn { $breachCount } tor-data eraill.
+    }
+scan-results =
+    { $breachCount ->
+        [zero] { no-breaches }
+        [one] Ymddangosodd eich cyfrif mewn { $breachCount } tor-data.
+        [two] Ymddangosodd cyfrifon sy'n gysylltiedig â'ch cyfeiriad e-bost yn y { $breachCount } tor-data canlynol.
+        [few] Ymddangosodd cyfrifon sy'n gysylltiedig â'ch cyfeiriad e-bost yn y { $breachCount } tor-data canlynol.
+        [many] Ymddangosodd cyfrifon sy'n gysylltiedig â'ch cyfeiriad e-bost yn y { $breachCount } tor-data canlynol.
+       *[other] Ymddangosodd cyfrifon sy'n gysylltiedig â'ch cyfeiriad e-bost yn y { $breachCount } tor-data canlynol.
+    }
+show-more-breaches = Dangos Rhagor
+what-to-do-headline = Beth i'w Wneud pan mae eich Manylion wedi'i Amlygu mewn Tor-data
