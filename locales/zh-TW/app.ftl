@@ -42,6 +42,12 @@ user-unsubscribed-title = { -product-name } : 已退訂
 pwt-section-headline = 更強的密碼 = 更好的保護
 pwt-headline-1 = 為每個帳號使用不同密碼
 pwt-headline-2 = 建立強大、難猜測的密碼
+pwt-headline-3 = 把安全性問題當作額外一道的密碼保護
+pwt-headline-4 = 使用工具來協助您記憶密碼
+pwt-headline-5 = 使用雙因素身分驗證，多加一道安全保護
+pwt-headline-6 = 訂閱 { -product-name-nowrap } 警告
+landing-headline = 您獲得安全，不受駭客影響的權利，從這裡開始。
+scan-label = 看看您有沒有遭受密碼洩露事件的影響。
 scan-placeholder = 輸入電子郵件地址
 scan-privacy = 不會儲存您的電子郵件地址。
 scan-submit = 搜尋您的 E-Mail 信箱
@@ -61,6 +67,11 @@ form-signup-placeholder = 輸入電子郵件地址
 sign-up = 訂閱
 form-signup-error = 必須是有效的電子郵件地址
 show-more-breaches = 顯示更多
+what-to-do-subhead-1 = 改掉密碼，就算是舊帳號也一起改掉
+what-to-do-blurb-1 = 若您無法登入，請聯絡網站詢問要如何更改密碼，或是刪除帳號。發現您不認識的帳號嗎？有可能網站改名，或別人用您的身分註冊帳號。
+what-to-do-subhead-2 = 若您重複使用被洩漏的密碼，請改掉該密碼
+what-to-do-blurb-2 = 駭客可能會使用您被洩漏的密碼，來嘗試登入您在別的網站上的帳號。請針對每個網站設定不同密碼，尤其是銀行帳號、電子郵件帳號，以及任何您會儲存個人資料的網站。
+what-to-do-subhead-3 = 採取額外步驟來保護您的財務帳號
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = 洩漏日期
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -74,6 +85,7 @@ unsub-survey-headline = 您已退訂成功。
 unsub-reason-1 = 我覺得這些警告不會讓我的資料更安全
 unsub-reason-2 = 我收到太多來自 { -product-name-nowrap } 的郵件
 unsub-reason-3 = 我覺得這個服務沒有價值
+unsub-reason-4 = 我已經採取措施來保護帳號
 unsub-reason-5 = 我使用其他服務來監控我的帳號
 unsub-reason-6 = 以上皆非
 unsub-survey-thankyou = 感謝您的意見回饋！
@@ -86,3 +98,7 @@ download-firefox-quantum = 下載 { -brand-Quantum }
 download-firefox-mobile = 下載 { -brand-name } 行動版
 # Features here refers to Firefox browser features. 
 features = 功能
+# beta-nightly-developer-edition refers to additional versions of Firefox Browser
+beta-nightly-developer-edition = Beta、Nightly、Developer Edition
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = 資料洩露情況由 { $hibp-link } 提供
