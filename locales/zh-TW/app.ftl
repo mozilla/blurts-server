@@ -26,6 +26,7 @@ oauth-invalid-session = Session 無效
 oauth-confirmed-title = { -product-name } : 已訂閱
 scan-title = { -product-name } : 掃描結果
 user-add-invalid-email = 無效的電子郵件地址
+user-add-email-verify-subject = 確認您要訂閱 { -product-name }。
 user-add-title = { -product-name } : 確認電子郵件
 user-verify-token-error = 缺少驗證 token。
 user-verify-email-report-subject = 您的 { -product-name } 掃描報告
@@ -38,8 +39,11 @@ user-unsubscribed-title = { -product-name } : 已退訂
 
 ## Password Tips
 
+pwt-section-headline = 更強的密碼 = 更好的保護
+pwt-headline-1 = 為每個帳號使用不同密碼
+pwt-headline-2 = 建立強大、難猜測的密碼
 scan-placeholder = 輸入電子郵件地址
-scan-privacy = 將不會儲存您的電子郵件地址。
+scan-privacy = 不會儲存您的電子郵件地址。
 scan-submit = 搜尋您的 E-Mail 信箱
 scan-another-email = 掃描另一個 E-Mail 信箱
 scan-error = 必須是有效的電子郵件地址。
