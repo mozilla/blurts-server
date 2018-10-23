@@ -419,7 +419,7 @@ input[type="checkbox"] {
   pointer-events: none;
   border: 1px solid var(--grey90a3);
   border-radius: var(--roundedCorners);
-  margin: 10px 10px 10px 0;
+  margin: 12px 0;
   -webkit-appearance: none;
   -moz-appearance: none;
   background-image: url("/img/checkbox-check.svg");
@@ -429,7 +429,7 @@ input[type="checkbox"] {
 }
 
 .checkbox-group {
-  align-items: center;
+  align-items: flex-start;
   display: flex;
   pointer-events: all;
   cursor: pointer;
@@ -450,9 +450,11 @@ input[type="checkbox"]:checked {
 
 .checkbox-group label {
   font-size: 13px;
+  margin: 12px;
   cursor: pointer;
   pointer-events: none;
-  white-space: nowrap;
+  white-space: normal;
+  text-align: left;
 }
 
 /* BUTTONS */
@@ -460,15 +462,16 @@ input[type="checkbox"]:checked {
 button,
 a.button {
   width: 100%;
-  line-height: 1;
-  height: 55px;
+  line-height: 1.2;
+  min-height: 55px;
+  padding: 10px 5px;
   -webkit-appearance: none;
   border: none;
   border-radius: var(--roundedCorners);
   cursor: pointer;
   text-align: center;
   text-indent: 0;
-  white-space: nowrap;
+  white-space: normal;
   background-color: var(--green60);
   color: rgba(254, 254, 254, 1);
   font-family: inherit;
@@ -806,43 +809,22 @@ span.breach-info {
 
 /* FEAUTURED BREACH LISTING */
 
-#featured-breach span.breach-info,
-span.breach-info {
-  width: 100%;
-  font-weight: 400;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-#featured-breach span.breach-info.breach-date {
-  margin-top: 0;
-}
-
-#featured-breach .breach-headline {
+main .breach-headline {
   font-size: 22px;
-}
-
-/* FEATURED BREACH LISTING - RESULTS PAGE  */
-
-main.scan-results #featured-breach .breach-description {
-  display: none;
-}
-
-main.scan-results #featured-breach .breach-headline {
-  font-size: 19px;
 }
 
 /*  SIGN UP BUTTON GROUP  */
 
 #sign-up-banner .fourth,
 #sign-up-banner .half {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-top: var(--gap);
+  margin-bottom: var(--gap);
 }
 
 #sign-up-banner .subscribe-icon-wrapper {
   justify-content: flex-start;
   max-width: 200px;
+  min-width: 150px;
 }
 
 .subscribe-icon-wrapper svg {
@@ -931,78 +913,78 @@ main.scan-results #featured-breach .breach-headline {
 
 /* ////// subscribe window */
 
-.modal-container {
-  visibility: hidden;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 4;
-  display: flex;
-  background-color: rgba(12, 12, 13, 0.6);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.1s ease, visibility 0.1s ease;
-}
-
 body.show-subscribe-modal {
   overflow: hidden;
 }
 
-body.show-subscribe-modal .modal-container {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: all;
-  cursor: pointer;
-  transition: opacity 0.1s ease, visibility 0.1s ease;
-}
-
-.modal-content,
-body.show-subscribe-modal .modal-content {
-  visibility: hidden;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: auto;
-  height: auto;
-  min-height: 450px;
-  max-height: 480px;
-  min-width: 250px;
-  max-width: 550px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 2px 13px rgba(0, 0, 0, 0.28);
-  background-color: rgba(255, 255, 255, 1);
-  color: var(--grey90);
-  padding: var(--columnSpacing);
-  border-radius: var(--roundedCorners);
-  pointer-events: none;
-  text-align: center;
-  font-weight: 300;
-  opacity: 0;
-  cursor: auto;
-}
-
-body.show-subscribe-modal .modal-content.show {
-  visibility: visible;
-  pointer-events: all;
-  opacity: 1;
-  transition: opacity 0.1s ease, visibility 0.1s ease;
-}
-
+.modal-container,
 .modal-content,
 .modal-content > * {
   pointer-events: none;
   margin: auto;
 }
 
+.modal-container,
+body.show-subscribe-modal .modal-content,
+body.show-subscribe-modal .modal-content .modal-content-wrap {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease, visibility 0.1s ease;
+}
+
+body.show-subscribe-modal .modal-container,
+body.show-subscribe-modal .modal-content.show,
+body.show-subscribe-modal .modal-content.show .modal-content-wrap {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.2s ease, visibility 0.1s ease;
+}
+
+.modal-container {
+  display: none;
+  position: fixed;
+  z-index: 4;
+  background-color: rgba(12, 12, 13, 0.6);
+  pointer-events: none;
+}
+
+.modal-content {
+  position: absolute;
+  color: var(--grey90);
+  text-align: center;
+  font-weight: 300;
+  cursor: auto;
+}
+
+.modal-container,
+.modal-content {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+}
+
+/* lets user click shadowed background to close modal */
+body.show-subscribe-modal .modal-container,
 .modal-content.show > * {
   pointer-events: all;
+}
+
+body.show-subscribe-modal .modal-container {
+  cursor: pointer;
+}
+
+.modal-content-wrap {
+  background-color: rgba(255, 255, 255, 1);
+  padding: var(--columnSpacing);
+  border-radius: var(--roundedCorners);
+  box-shadow: 0 2px 13px rgba(0, 0, 0, 0.28);
+  margin: auto;
+  max-width: 550px;
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-content h3,
@@ -1015,27 +997,26 @@ body.show-subscribe-modal .modal-content.show {
 }
 
 .modal-content .section-headline {
-  margin-bottom: var(--gap);
   font-size: 1.5375rem;
 }
 
-.modal-content p,
-.modal-content .section-headline,
-.modal-content .internal-link {
+.modal-content-wrap > * {
   margin-bottom: var(--gap);
 }
 
-.modal-content > *:last-child {
+.modal-content-wrap form,
+.modal-content-wrap > *:last-child {
   margin-bottom: 0;
+}
+
+.modal-content-wrap form {
+  margin-top: var(--gap);
 }
 
 .modal-content .internal-link,
 .modal-content p {
   font-size: 17px;
   font-weight: 300;
-}
-
-.modal-content .internal-link {
   display: block;
 }
 
@@ -1045,11 +1026,6 @@ body.show-subscribe-modal .modal-content.show {
   font-weight: 400;
   min-height: 30px;
   margin-top: calc(var(--gap) / 2);
-}
-
-.modal-content form {
-  margin: var(--gap) auto 0 auto;
-  width: 100%;
 }
 
 .modal-content .error-message {
@@ -1068,7 +1044,6 @@ body.show-subscribe-modal .modal-content.show {
 
 .confirm-your-account-icon {
   padding-right: 14%;
-  margin-bottom: var(--gap);
 }
 
 .confirm-your-account-icon svg {
@@ -1077,16 +1052,16 @@ body.show-subscribe-modal .modal-content.show {
 }
 
 .resend-data {
-  position: relative;
-  width: auto;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: calc(var(-var(--columnSpacing) / 2));
+  padding-right: calc(var(-var(--columnSpacing) / 2));
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .modal-content.show.sending p,
 .modal-content.show.sent p,
-.modal-content.show.sending .confirm-your-account svg,
-.modal-content.show.sent .confirm-your-account svg,
+.modal-content.show.sending .confirm-your-account-icon,
+.modal-content.show.sent .confirm-your-account-icon,
 .modal-content.show.sending .close-modal,
 .modal-content.show.sending h3,
 .modal-content.show.sent h3 {
@@ -1149,10 +1124,6 @@ main.scan-results .two-thirds {
 #additional-breaches.section-wrapper {
   padding: 0 0 0 0;
   margin: 0 0 0 0;
-}
-
-.compromised-accounts .breach-description {
-  display: none;
 }
 
 #show-additional-breaches {
@@ -1356,13 +1327,16 @@ footer ul li,
 footer ul li a {
   font-weight: 400;
   display: block;
-  line-height: 30px;
+  min-height: 40px;
+  line-height: 1.7;
   width: 100%;
 }
 
 footer li a {
   opacity: 0.8;
   background-color: rgba(255, 255, 255, 0);
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 footer a svg {
@@ -1545,12 +1519,6 @@ form.show-thankyou span.thank-you-message {
     background-position: 0 0, center center;
   }
 
-  #sign-up-banner .fourth,
-  #sign-up-banner .half {
-    margin-top: var(--gap);
-    margin-bottom: var(--gap);
-  }
-
   #sign-up-banner .half {
     margin-left: calc(var(--columnSpacing) / 2);
   }
@@ -1661,7 +1629,7 @@ form.show-thankyou span.thank-you-message {
   }
 }
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: fpx) {
   .landing-content .section-wrapper,
   .section-wrapper.breach-container {
     padding-top: 0;
@@ -1687,9 +1655,8 @@ form.show-thankyou span.thank-you-message {
     display: none;
   }
 
-  footer ul li a {
-    line-height: 40px;
-    min-height: 40px;
+  a span.nowrap {
+    white-space: normal;
   }
 }
 
@@ -1706,9 +1673,17 @@ form.show-thankyou span.thank-you-message {
     display: flex;
   }
 
+  main.landing-content .section-wrapper {
+    padding-bottom: var(--columnSpacing);
+  }
+
   .resend-data {
     white-space: normal;
     line-height: 120%;
+  }
+
+  .modal-content-wrap {
+    justify-content: center;
   }
 }
 
@@ -1746,7 +1721,7 @@ form.show-thankyou span.thank-you-message {
   }
 
   #password-advice p {
-    margin: var(--gap) 0 0 0;
+    margin: var(--gap) 0 var(--gap) 0;
   }
 
   .tip {
