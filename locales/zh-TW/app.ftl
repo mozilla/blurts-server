@@ -55,11 +55,13 @@ pwt-summary-5 = 兩階段驗證需要您額外提供一組資料（例如透過�
 pwt-headline-6 = 訂閱 { -product-name-nowrap } 警報
 pwt-summary-6 = 網站資料外洩事件越來越多，當有新的洩露事件加入到我們的資料庫後，{ -product-name-nowrap } 就會傳送警報給您，這樣就可以快速採取措施，保護您的帳號。
 landing-headline = 您獲得安全，不受駭客影響的權利，從這裡開始。
+landing-blurb = { -product-name-nowrap } 為您提供工具來確保個人資料的安全。看看駭客們已經知道您的哪些資料，以及可如何搶先一步，確保安全。
 scan-label = 看看您有沒有遭受密碼洩露事件的影響。
 scan-placeholder = 輸入電子郵件地址
 scan-privacy = 不會儲存您的電子郵件地址。
 scan-submit = 搜尋您的 E-Mail 信箱
 scan-another-email = 掃描另一個 E-Mail 信箱
+scan-featuredbreach-label = 看看您的 <span class="bold">{ $featuredBreach }</span> 帳號是否遭到入侵。
 scan-error = 必須是有效的電子郵件地址。
 signup-banner-headline = { -product-name-nowrap } 會為您的線上帳號偵測是否有任何風險存在。
 signup-banner-blurb = { -product-name-nowrap } 詳細報告可顯示您在哪些網站的帳號資料已遭竊或洩漏。我們也會在您的帳號出現於新的資料外洩事件時，通知您。

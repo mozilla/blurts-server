@@ -10,6 +10,7 @@ audio-recordings = 錄音
 auth-tokens = 帳號驗證權杖
 avatars = 帳號大頭照
 bank-account-numbers = 銀行帳號
+beauty-ratings = 美貌等級評分
 biometric-data = 生物識別資料
 browser-user-agent-details = 瀏覽器 User Agent 詳細資料
 browsing-histories = 上網紀錄
