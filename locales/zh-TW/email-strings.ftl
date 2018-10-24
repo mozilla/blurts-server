@@ -1,7 +1,9 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+click-to-verify = 請在 24 小時內收信，並點擊「驗證我的 E-Mail」來確認您的 Firefox Monitor 帳號。接下來就可以收到報告了。
 verify-my-email = 驗證我的電子郵件地址
 report-scan-another-email = 到 { -product-name } 掃描其他電子郵件信箱
+automated-message = 這是電腦自動發送的郵件，若您突然收到這封信，不需要做任何事。
 unsubscribe-link = 如果您不想再收到 { -product-name } 警報，可取消訂閱
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = { -product-name } 報告

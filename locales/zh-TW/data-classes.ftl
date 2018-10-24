@@ -77,6 +77,7 @@ personal-interests = 個人興趣
 phone-numbers = 電話號碼
 photos = 照片
 physical-addresses = 收件地址
+physical-attributes = 身體特徵
 pins = PIN 碼
 political-donations = 政治捐款
 political-views = 政治觀點
