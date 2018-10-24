@@ -15,9 +15,24 @@ layout-support = 用户支持
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = 提供反馈
 terms-and-privacy = 使用条款和隐私
+error-not-subscribed = 此电子邮件地址未订阅 { -product-name }。
+error-hibp-throttled = 与 { -brand-HIBP } 的连接过多。
+error-hibp-connect = 连接 { -brand-HIBP } 时出错。
+error-hibp-load-breaches = 未能加载泄露信息。
+hibp-notify-email-subject = { -product-name } 警报：您的账号信息已遭泄露。
 home-title = { -product-name }
+home-not-found = 找不到网页。
+oauth-invalid-session = 无效会话
+oauth-confirmed-title = { -product-name } ：已订阅
 scan-title = { -product-name }：扫描结果
 user-add-invalid-email = 无效的电子邮件地址
+user-add-email-verify-subject = 确认您要订阅 { -product-name }。
+user-add-title = { -product-name }：确认电子邮件
+user-verify-token-error = 必须持有验证令牌（Token）。
+user-verify-email-report-subject = 您的 { -product-name } 报告
+user-verify-title = { -product-name }：已订阅
+user-unsubscribe-token-error = 退订需要令牌（Token）。
+user-unsubscribe-token-email-error = 退订需要令牌（Token）与 emailHash。
 
 ## Password Tips
 
