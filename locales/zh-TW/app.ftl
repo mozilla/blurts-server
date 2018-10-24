@@ -41,7 +41,9 @@ user-unsubscribed-title = { -product-name } : 已退訂
 
 pwt-section-headline = 更強的密碼 = 更好的保護
 pwt-section-subhead = 若您的密碼被洩漏，也可以認定您的個人資料被洩露了。
+pwt-section-blurb = 您的密碼不只可以保護帳號安全，還可以保護帳號中的所有個人資訊。駭客會根據一些不良的使用習慣而得益，例如在每個地方都使用相同的密碼，或是使用常見的密碼組合（還使用 123456 嗎？），這樣的話只要一個帳號被駭，他們就可以輕而易舉駭掉您的多個帳號。以下是能夠更加保護您的帳號的其他方式。
 pwt-headline-1 = 為每個帳號使用不同密碼
+pwt-summary-1 = 在每個帳號中都重複使用相同的密碼，會讓您門戶大開，可能造成身分竊盜事故。只要有人拿到您的唯一一組密碼，即可登入所有帳號。
 pwt-headline-2 = 建立強大、難猜測的密碼
 pwt-summary-2 = 駭客使用數以千計的常用密碼，來猜測您的密碼。若您的密碼越長、越隨機，就越不容易被猜到。
 pwt-headline-3 = 把安全性問題當作額外一道的密碼保護
@@ -73,6 +75,7 @@ form-signup-checkbox = 從 { -brand-Mozilla } 與 { -brand-name } 取得最新�
 sign-up = 訂閱
 form-signup-error = 必須是有效的電子郵件地址
 no-breaches-headline = 一切都好。
+found-breaches-headline = 過去的資料洩露事件中，包含您的資料。
 show-more-breaches = 顯示更多
 what-to-do-headline = 若您的資料也出現在洩露事件中時，該怎麼辦
 what-to-do-subhead-1 = 改掉密碼，就算是舊帳號也一起改掉
