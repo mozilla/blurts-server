@@ -51,7 +51,9 @@ signup-banner-blurb =
     Nous vous préviendrons aussi si vos comptes apparaissent à l’occasion de nouvelles failles de sécurité.
 download-firefox-banner-blurb = Reprenez le contrôle de votre navigateur
 download-firefox-banner-button = Télécharger { -brand-name }
+signup-modal-close = Fermer
 no-breaches-headline = Jusqu’ici, tout va bien.
 found-breaches-headline = Vos informations personnelles ont été compromises dans une fuite de données.
 show-more-breaches = Afficher davantage
+what-to-do-headline = Que faire lorsque vos informations sont exposées à une fuite de données
 what-to-do-subhead-1 = Changez de mots de passe, même pour des comptes anciens
