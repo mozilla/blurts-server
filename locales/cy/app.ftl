@@ -160,5 +160,9 @@ download-firefox-mobile = Llwytho { -brand-name } Symudol i Lawr
 features = nodweddion
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# The following string contains HTML markup which should not be translated. 
+# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
+copyright-info = Mae darnau o'r cynnwys hwn yn Ⓒ 1998-2018 gan gyfranwyr mozilla.org unigol. <br /> Mae cynnwys ar gael o dan <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">drwydded Creative Commons</a> .
 # Breach data provided by Have I Been Pwned.
-hibp-attribution = Data tor-data wedi ei ddarparu gan { $hibp-link }
+hibp-attribution = Mae data tor-data wedi ei ddarparu gan { $hibp-link }
+site-description = A gafodd eich cyfrifon eu ryddhau neu eu dwyn mewn tor-data? Gallwch weld yn { -product-name }. Chwiliwch ein cronfa ddata a chofrestru am rybuddion.
