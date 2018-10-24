@@ -18,5 +18,6 @@ breach-alert-subhead = 最近發生的資料洩露事件，包含您的電子郵
 report-pwt-headline-1 = 為每個帳號使用不同密碼
 report-pwt-headline-2 = 使用強大、獨特的密碼
 report-pwt-headline-4 = 使用密碼管理員
+report-pwt-summary-4 = 諸如 1Password、LastPass、Dashlane、Bitwarden 等服務，可產生高強度的密碼，安全地儲存，並在上網時自動為您填寫表單，這樣就不用記住每一筆密碼了。
 # A link to legal information about mozilla products.
 legal = 法律資訊
