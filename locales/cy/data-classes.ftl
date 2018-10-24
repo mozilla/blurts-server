@@ -20,3 +20,4 @@ career-levels = Lefelau gyrfaol
 cellular-network-names = Enwau rhwydwaith cellol
 charitable-donations = Rhoddion elusennol
 chat-logs = Cofnodion sgwrsio
+credit-card-cvv = CVV cerdyn credyd
