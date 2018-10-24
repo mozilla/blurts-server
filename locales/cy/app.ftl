@@ -41,7 +41,10 @@ user-unsubscribed-title = { -product-name } : Wedi Dad-danyscrifio
 
 pwt-section-headline = Cyfrineiriau Cryfach = Gwell Diogelwch
 pwt-section-subhead = Mae eich manylion preifat ond mor ddiogel â'ch cyfrineiriau.
-pwt-section-blurb = Mae eich cyfrineiriau'n gwarchod mwy na'ch cyfrifon. Maen nhw'n diogelu pob darn o wybodaeth bersonol sy'n bod o'u mewn. Ac mae hacwyr yn dibynnu ar arferion drwg, fel defnyddio'r un cyfrinair ym mhobman neu ddefnyddio ymadroddion cyffredin (p@ssw0rd??) felly os byddan nhw'n hacio un cyfrif, mae modd iddyn nhw hacio llwyth. Dyma sut i amddiffyn eich cyfrifon yn well.
+pwt-section-blurb =
+    Mae eich cyfrineiriau'n gwarchod mwy na'ch cyfrifon. Maen nhw'n diogelu pob darn o wybodaeth bersonol sy'n bod o'u mewn.
+    Ac mae hacwyr yn dibynnu ar arferion drwg, fel defnyddio'r un cyfrinair ym mhobman neu ddefnyddio ymadroddion cyffredin (p@ssw0rd??) felly,
+    os byddan nhw'n hacio un cyfrif, mae modd iddyn nhw hacio llwyth. Dyma sut i amddiffyn eich cyfrifon yn well.
 pwt-headline-1 = Defnyddio cyfrinair gwahanol ar gyfer pob cyfrif
 pwt-summary-1 = Mae ailddefnyddio'r un cyfrinair ym mhobman yn agor y drws lled y pen ar gyfer dwyn hunaniaeth. Gall unrhyw un sydd â'r cyfrinair hwnnw fewngofnodi i'ch holl gyfrifon.
 pwt-headline-2 = Creu cyfrineiriau cryf, anodd eu dyfalu
@@ -55,7 +58,7 @@ pwt-summary-5 = Mae dilysu dau gam yn gofyn am ddarn ychwanegol o wybodaeth (fel
 pwt-headline-6 = Cofrestru ar gyfer rhybuddion { -product-name-nowrap }
 pwt-summary-6 = Mae tor-data gwefanau ar gynnydd. Cyn gynted ag y bydd tor-data newydd yn cael ei ychwanegu at ein cronfa ddata, mae { -product-name-nowrap } yn anfon rhybudd i chi - fel y gallwch chi weithredu a diogelu'ch cyfrif.
 landing-headline = Mae eich hawl i fod yn ddiogel rhag hacwyr yn cychwyn yma.
-landing-blurb = Mae { -product-name-nowrap } yn eich arfogi gydag offer i gadw'ch manylion personol yn ddiogel. Dewch i weld beth mae hacwyr eisoes yn ei wybod amdanoch chi, a dysgu sut i gadw cam ar y blaen.
+landing-blurb = Mae { -product-name-nowrap } yn darparu offer i gadw'ch manylion personol yn ddiogel. Dewch i weld beth mae hacwyr eisoes yn ei wybod amdanoch chi, a dysgu sut i gadw cam ar y blaen.
 scan-label = Gweld os ydych wedi bod yn rhan o dor-data.
 scan-placeholder = Rhowch eich Cyfeiriad E-bost
 scan-privacy = Ni fydd eich e-bost yn cael ei gadw.
@@ -64,7 +67,9 @@ scan-another-email = Sganio Cyfeiriad E-bost Arall
 scan-featuredbreach-label = Gweld os yw eich cyfrif <span class="bold"> { $featuredBreach } </span> wedi ei gyfaddawdu.
 scan-error = Rhaid ei fod yn e-bost dilys.
 signup-banner-headline = Mae { -product-name-nowrap } yn canfod bygythiadau i'ch cyfrifon ar-lein.
-signup-banner-blurb = Mae eich adroddiad { -product-name-nowrap } manwl yn dangos os yw gwybodaeth o'ch cyfrifon ar-lein wedi cael ei ryddhau neu ei ddwyn. Byddwn hefyd yn eich hysbysu os bydd eich cyfrifon yn ymddangos mewn achosion o dor-data gwefannau newydd.
+signup-banner-blurb =
+    Mae eich adroddiad { -product-name-nowrap } manwl yn dangos os yw manylion o'ch cyfrifon ar-lein wedi cael ei ryddhau neu ei ddwyn.
+    Byddwn hefyd yn eich hysbysu os bydd eich cyfrifon yn ymddangos mewn achosion o dor-data gwefannau newydd.
 download-firefox-bar-blurb = Mae { -product-name-nowrap } yn cael ei gyflwyno i chi gan y <span class="nowrap">{ -brand-name } newydd sbon</span> .
 download-firefox-bar-link = Llwytho { -brand-name } i lawr nawr
 download-firefox-banner-blurb = Cymerwch reolaeth o'ch porwr
