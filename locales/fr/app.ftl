@@ -27,8 +27,10 @@ scan-title = { -product-name } : résultats de l’analyse
 user-add-invalid-email = Adresse électronique invalide
 user-add-email-verify-subject = Vérifiez votre inscription à { -product-name }.
 user-add-title = { -product-name } : confirmez votre adresse électronique
+user-verify-email-report-subject = Votre rapport { -product-name }
 user-verify-title = { -product-name } : inscription réussie
 user-unsubscribe-title = { -product-name } : désinscription
+user-unsubscribe-survey-title = { -product-name } : questionnaire sur la désinscription
 user-unsubscribed-title = { -product-name } : désinscription effectuée
 
 ## Password Tips
@@ -41,10 +43,13 @@ pwt-headline-2 = Créez des mots de passe suffisamment forts et difficiles à de
 pwt-summary-2 = Les pirates utilisent des milliers de mots de passe courants pour tenter de deviner les vôtres. Plus votre mot de passe est long et aléatoire, plus il sera difficile à deviner.
 pwt-summary-3 = Les sites web ne vérifient pas que vos réponses sont exactes, mais simplement qu’elles correspondent à chaque fois. Créez des réponses longues et aléatoires et stockez-les dans un endroit sûr.
 pwt-headline-4 = Obtenez de l’aide pour vous rappeler vos mots de passe
+pwt-summary-4 = Les gestionnaires de mots de passe tels que 1Password, LastPass, Dashlane et Bitwarden génèrent des mots de passe forts et uniques. Ils stockent également les mots de passe en toute sécurité et les remplissent dans les sites web pour vous.
 pwt-headline-5 = Ajoutez une sécurité supplémentaire avec l’authentification à deux facteurs
+pwt-summary-6 = Les fuites de données de sites web sont à la hausse. Dès qu’une nouvelle fuite est ajoutée à notre base de données, { -product-name-nowrap } vous envoie une alerte afin que vous puissiez agir et protéger votre compte.
 scan-label = Voyez si vous avez été impliqué dans une fuite de données.
 scan-placeholder = Saisissez votre adresse électronique
 scan-privacy = Votre adresse électronique ne sera pas stockée.
+scan-submit = Vérifier votre adresse électronique
 scan-another-email = Analysez une autre adresse électronique
 scan-featuredbreach-label = Découvrez si votre compte <span class="bold">{ $FeaturedBreach }</span> a été compromis.
 scan-error = L’adresse électronique doit être valide.
@@ -52,6 +57,7 @@ signup-banner-headline = { -product-name-nowrap } détecte les menaces sur vos c
 signup-banner-blurb =
     Le rapport détaillé de { -product-name-nowrap } indique si des informations provenant de vos comptes en ligne ont été divulguées ou volées.
     Nous vous préviendrons aussi si vos comptes apparaissent à l’occasion de nouvelles failles de sécurité.
+download-firefox-bar-blurb = { -product-name-nowrap } vous est proposé par le <span class="nowrap">tout nouveau { -brand-name }</span>.
 download-firefox-banner-blurb = Reprenez le contrôle de votre navigateur
 download-firefox-banner-button = Télécharger { -brand-name }
 signup-modal-close = Fermer
