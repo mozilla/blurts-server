@@ -40,7 +40,7 @@ const LocaleUtils = {
     });
     for (const lang of languageDirectories) {
       try {
-        const langBundle = new FluentBundle(lang);
+        const langBundle = new FluentBundle(lang, {useIsolating: false});
         const ftlFiles = fs.readdirSync(path.join(localesDir, lang)).filter(item => {
           return (item.endsWith(".ftl"));
         });
