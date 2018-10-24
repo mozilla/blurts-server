@@ -43,6 +43,10 @@ pwt-section-blurb =
     Vaše hesla chrání víc než jen samotné přihlášení k účtu. Chrání všechna vaše data, která jsou skrze něj dostupná.
     Hackeři spoléhají na špatné zvyky jako je používání stejného hesla na více místech, nebo příliš běžného a lehce uhodnutého hesla (h3sl0).
     Takže pokud se jim podaří prolomit jeden váš účet, dostanou se velmi rychle dostat i k ostatním. Jak se můžete chránit?
+pwt-headline-1 = Používejte rozdílná hesla pro každý účet.
+pwt-headline-2 = Vytvářejte silná a těžko uhodnutelná hesla.
+pwt-summary-2 = Hackeři používají tisíce běžně používaných hesel, aby se pokusili uhodnout to vaše. Čím delší a náhodnější je vaše heslo, tím těžší ho bude uhádnout.
+pwt-headline-4 = Získejte pomoc při pamatování vašich hesel
 scan-placeholder = Zadejte e-mailovou adresu
 scan-privacy = Zadanou e-mailovou adresu nebudeme nikde ukládat.
 scan-submit = Vyhledejte svou e-mailovou adresu
@@ -50,5 +54,17 @@ scan-another-email = Vyhledat další e-mailovou adresu
 scan-error = Zadaná e-mailová adresa není platná.
 download-firefox-bar-link = Stáhněte si { -brand-name }
 download-firefox-banner-button = Stáhnout { -brand-name }
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = Odesláno!
 form-signup-checkbox = Nechte si posílat nejnovější informace o společnosti { -brand-Mozilla } a aplikaci { -brand-name }.
+show-more-breaches = Zobrazit více
+what-to-do-subhead-1 = Změňte svá hesla i pro staré účty
+# Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
+share = Sdílet
+# Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
+tweet = Tweetnout
 download-firefox-mobile = Stáhnout { -brand-name } pro mobil
+# Features here refers to Firefox browser features. 
+features = Funkce
+# beta-nightly-developer-edition refers to additional versions of Firefox Browser
+beta-nightly-developer-edition = Beta, Nightly, Developer Edition
