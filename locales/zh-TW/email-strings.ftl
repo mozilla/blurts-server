@@ -29,9 +29,9 @@ report-pwt-headline-1 = 為每個帳號使用不同密碼
 report-pwt-summary-1 = 在每個帳號中都重複使用相同的密碼，會讓您門戶大開，也讓駭客可在您的一組密碼外洩後，用來登入您的其他帳號。
 report-pwt-headline-2 = 使用強大、獨特的密碼
 report-pwt-summary-2 = 駭客使用許多常用密碼來猜測您的密碼。若您的密碼越長、越隨機，就越不容易被偷走。
-report-pwt-headline-3 = 把安全性問題當作額外一道的密碼保護
+report-pwt-headline-3 = 把安全性問題當作額外密碼保護
 report-pwt-summary-3 = 網站不會確認您的答案是否正確，而只會檢查是否與原先設定的答案相符。您可以建立長度較長、隨機的答案，並儲存在安全的地方。
 report-pwt-headline-4 = 使用密碼管理員
-report-pwt-summary-4 = 諸如 1Password、LastPass、Dashlane、Bitwarden 等服務，可產生高強度的密碼，安全地儲存，並在上網時自動為您填寫表單，這樣就不用記住每一筆密碼了。
+report-pwt-summary-4 = 諸如 1Password、LastPass、Dashlane、Bitwarden 等服務，可產生高強度密碼，安全地儲存，並在上網時自動為您填寫表單，這樣就不用記住每一筆密碼了。
 # A link to legal information about mozilla products.
 legal = 法律資訊
