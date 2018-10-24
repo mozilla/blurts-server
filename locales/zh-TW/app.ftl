@@ -65,6 +65,8 @@ signup-modal-verify-headline = 確認訂閱
 signup-modal-verify-blurb = 我們寄送了驗證鏈結到 <span id="submitted-email" class="medium"></span> 。
 signup-modal-verify-expiration = 該鏈結將於 24 小時後過期。
 signup-modal-verify-resend = 沒在收件匣或垃圾信件匣中找到嗎？點此重送。
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = 已送出！
 signup-with-fxa = 使用 { -brand-name } 帳號註冊
 form-signup-placeholder = 輸入電子郵件地址
 form-signup-checkbox = 從 { -brand-Mozilla } 與 { -brand-name } 取得最新資訊。
