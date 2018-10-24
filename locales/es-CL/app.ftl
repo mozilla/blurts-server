@@ -30,3 +30,4 @@ user-verify-title = { -product-name } : Suscrito
 
 ## Password Tips
 
+pwt-section-headline = Contraseñas más fuertes = Mejor protección
