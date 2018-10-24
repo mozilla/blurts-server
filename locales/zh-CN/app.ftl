@@ -16,6 +16,7 @@ layout-support = 用户支持
 give-feedback = 提供反馈
 terms-and-privacy = 使用条款和隐私
 home-title = { -product-name }
+scan-title = { -product-name }：扫描结果
 user-add-invalid-email = 无效的电子邮件地址
 
 ## Password Tips
@@ -24,6 +25,8 @@ scan-placeholder = 输入电子邮件地址
 scan-error = 须为有效的电子邮件地址。
 download-firefox-banner-blurb = 掌控您的浏览器
 signup-modal-close = 关闭
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = 已发送！
 form-signup-placeholder = 输入电子邮件地址
 show-more-breaches = 显示更多
 unsub-survey-thankyou = 感谢您的反馈。
@@ -33,3 +36,5 @@ download-firefox-quantum = 下载 { -brand-Quantum }
 download-firefox-mobile = 下载 { -brand-name } 移动版
 # Features here refers to Firefox browser features. 
 features = 功能
+# beta-nightly-developer-edition refers to additional versions of Firefox Browser
+beta-nightly-developer-edition = Beta、Nightly、开发者版本
