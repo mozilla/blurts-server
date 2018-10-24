@@ -113,3 +113,5 @@ utility-bills = Biliau cyfleustodau
 vehicle-details = Manylion cerbyd
 website-activity = Gweithgaredd gwefan
 work-habits = Arferion gwaith
+years-of-birth = Blynyddoedd geni
+years-of-professional-experience = Blynyddoedd o brofiad proffesiynol
