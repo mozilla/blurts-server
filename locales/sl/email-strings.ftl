@@ -10,6 +10,8 @@ email-address = E-poštni naslov:
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Naslednji koraki
 report-pwt-headline-1 = Uporabite različna gesla za posamezne račune
+report-pwt-headline-2 = Ustvarite močna, enkratna gesla
 report-pwt-headline-3 = Obravnavajte varnostna vprašanja, kot dodatna gesla
+report-pwt-headline-4 = Uporabite upravitelja gesel
 # A link to legal information about mozilla products.
 legal = Pravno obvestilo

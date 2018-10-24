@@ -15,10 +15,12 @@ layout-support = Podpora
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Sporočite nam svoje mnenje
 terms-and-privacy = Pogoji in zasebnost
+error-not-subscribed = Ta e-poštni naslov ni naročen na { -product-name }.
 home-title = { -product-name }
 home-not-found = Strani ni mogoče najti.
 oauth-invalid-session = Neveljavna seja
 user-add-invalid-email = Neveljavna e-pošta
+user-add-email-verify-subject = Potrdite naročnino na { -product-name }.
 
 ## Password Tips
 
@@ -30,9 +32,17 @@ pwt-summary-1 =
     S tem geslom se lahko vsakdo prijavi v vse vaše račune.
 pwt-headline-2 = Ustvarite močna gesla, ki jih je težko uganiti
 pwt-headline-3 = Obravnavajte varnostna vprašanja, kot dodatna gesla
+pwt-summary-3 =
+    Spletne strani ne preverjajo, ali so vaši odgovori točni, le da se vsakič ujemajo.
+    Ustvarite dolge, naključne odgovore in jih shranite na varnem mestu.
 pwt-summary-4 =
     Upravitelji gesel kot so 1Password, LastPass, Dashlane in Bitwarden ustvarjajo močna, edinstvena gesla. 
     Gesla tudi varno shranjujejo in jih zapolnjujejo na spletnih straneh.
+landing-headline = Vaša pravica do varnega zavetja pred hekerji se začne tukaj.
+landing-blurb =
+    { -product-name-nowrap } vas opremi z orodji, ki vaše osebne podatke ohranjajo varne.
+    Ugotovite, kaj o vas hekerji že vedo, in se naučite, kako ostati korak pred njimi.
+scan-label = Preverite, ali ste bili vpleteni v kršitev podatkov.
 scan-placeholder = Vnesite e-poštni naslov
 scan-privacy = Vaš e-poštni naslov ne bo shranjen.
 scan-submit = Poiščite vaš e-poštni naslov
@@ -48,6 +58,8 @@ signup-modal-verify-headline = Potrdite svojo naročnino
 signup-modal-verify-blurb = Na <span id="submitted-email" class="medium"></span> smo poslali potrditveno povezavo.
 signup-modal-verify-expiration = Povezava bo potekla po 24 urah.
 signup-modal-verify-resend = Ni med prejeto ali vsiljeno pošto? Pošlji znova.
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = Poslano!
 form-signup-placeholder = Vnesite e-poštni naslov
 sign-up = Prijava
 form-signup-error = E-poštni naslov mora biti veljaven
