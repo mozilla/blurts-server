@@ -92,6 +92,8 @@ signup-modal-verify-headline = Bestätigen Sie Ihr Abonnement
 signup-modal-verify-blurb = Wir haben einen Bestätigungslink an <span id="submitted-email" class="medium"></span> geschickt.
 signup-modal-verify-expiration = Dieser Link läuft in 24 Stunden ab.
 signup-modal-verify-resend = Weder in Ihrem Posteingang noch im Spam-Ordner? Erneut senden.
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = Gesendet!
 signup-with-fxa = Abonnieren mit { -brand-name }-Konto
 form-signup-placeholder = E-Mail-Adresse eingeben
 form-signup-checkbox = Holen Sie sich das Neueste von { -brand-Mozilla } und { -brand-name }.
@@ -172,3 +174,4 @@ beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 copyright-info = Teile dieses Inhalts stehen unter einem &#x24B8; 1998-2018 von einzelnen Mitwirkenden an mozilla.org. Der Inhalt steht unter einer <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative-Commons-Lizenz</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Informationen zum Datenleck stammen von { $hibp-link }
+site-description = Wurden Ihre Kontodaten bei einem Datenleck öffentlich bekannt oder gestohlen? Erfahren Sie es mit { -product-name }. Durchsuchen Sie unsere Datenbank und abonnieren Sie die Warnungen.
