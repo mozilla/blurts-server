@@ -102,7 +102,7 @@ scan-results =
     { $breachCount ->
         [0] { no-breaches }
         [one] 您的帳號出現在 { $breachCount } 資料外洩事件中。
-       *[other] 與您的電子郵件信箱相關聯的帳號，出現在下列  { $breachCount } 場資料外洩事件中。
+       *[other] 與您的電子郵件信箱相關聯的帳號，出現在下列 { $breachCount } 場資料外洩事件中。
 }
 show-more-breaches = 顯示更多
 what-to-do-headline = 若您的資料也出現在洩露事件中時，該怎麼辦
