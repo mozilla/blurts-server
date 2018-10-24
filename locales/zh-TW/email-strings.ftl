@@ -1,11 +1,11 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
-click-to-verify = 請在 24 小時內收信，並點擊「驗證我的 E-Mail」來確認您的 Firefox Monitor 帳號。接下來就可以收到報告了。
-verify-my-email = 驗證我的電子郵件地址
+click-to-verify = 請在 24 小時內點擊下方的「驗證我的 E-Mail」來確認您的 Firefox Monitor 帳號。接下來就可以收到報告了。
+verify-my-email = 驗證我的 E-Mail
 report-scan-another-email = 到 { -product-name } 掃描其他電子郵件信箱
 automated-message = 這是電腦自動發送的郵件，若您突然收到這封信，不需要做任何事。
 # Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
-we-sent-this-alert = 由於此信箱訂閱過了 { -product-name } 的警報，我們發送此郵件給 { $userEmail }。
+we-sent-this-alert = 由於此信箱希望訂閱 { -product-name } 警報，我們發送此郵件給 { $userEmail }。
 unsubscribe-link = 如果您不想再收到 { -product-name } 警報，可取消訂閱
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = { -product-name } 報告
@@ -18,12 +18,14 @@ report-no-breaches = 您的電子郵件地址並未出現在我們的資料庫�
 what-to-do-next = 接下來可以做什麼
 report-headline =
     { $breachCount ->
+        [0] 一切都好。
+        [one] 您的帳號出現在 { $breachCount } 次資料洩露事件中。
        *[other] 您的帳號出現在 { $breachCount } 次資料洩露事件中。
     }
 report-subhead-no-breaches = 您的帳號並未出現在我們的資料外洩事故完整報告中。這是好消息，但您還可以做更多事來自保。資料外洩事件隨時都有可能發生，請繼續閱讀，以了解可如何保護密碼安全。
 report-subhead-found-breaches = 以下是您的 Firefox Monitor 完整報告，包含與此信箱地址有關的所有資料外洩事件。
-breach-alert-headline = 您的帳號受到資料洩露事件影響。
-breach-alert-subhead = 最近發生的資料洩露事件，包含您的電子郵件地址與下列資料
+breach-alert-headline = 您的帳號受到資料外洩事件影響。
+breach-alert-subhead = 最近發生的資料外洩事件，包含您的電子郵件地址與下列資料
 report-pwt-blurb = 密碼很有價值，每天都有數以千組的密碼被偷走，並且在黑市上交易。強大的密碼可保護您的帳號，以及帳號當中的個人資訊。
 report-pwt-headline-1 = 為每個帳號使用不同密碼
 report-pwt-summary-1 = 在每個帳號中都重複使用相同的密碼，會讓您門戶大開，也讓駭客可在您的一組密碼外洩後，用來登入您的其他帳號。
