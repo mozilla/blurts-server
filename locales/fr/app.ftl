@@ -61,6 +61,11 @@ download-firefox-bar-blurb = { -product-name-nowrap } vous est proposé par le <
 download-firefox-banner-blurb = Reprenez le contrôle de votre navigateur
 download-firefox-banner-button = Télécharger { -brand-name }
 signup-modal-close = Fermer
+signup-modal-verify-resend = Vous ne voyez rien dans votre boîte de réception ni dans le dossier des indésirables ? Renvoyez le message.
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = Envoyé !
+sign-up = S’inscrire
+form-signup-error = L’adresse électronique doit être valide
 no-breaches-headline = Jusqu’ici, tout va bien.
 found-breaches-headline = Vos informations personnelles ont été compromises dans une fuite de données.
 show-more-breaches = Afficher davantage
