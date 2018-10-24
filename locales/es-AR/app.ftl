@@ -52,3 +52,37 @@ pwt-headline-4 = Conseguí ayuda para recordar tus contraseñas
 pwt-summary-4 = Los administradores de contraseñas como 1Password, LastPass, Dashlane y Bitwarden generan contraseñas seguras y únicas. También almacenan las contraseñas de forma segura y las completan en los sitios web
 pwt-headline-5 = Agregá seguridad adicional con la autenticación de dos factores
 pwt-summary-5 = 2FA requiere información adicional (como un código de una sola vez enviado por mensaje de texto) para iniciar sesión en tu cuenta. Incluso si alguien tiene tu contraseña no puede entrar.
+pwt-headline-6 = Registrate para recibir las alertas de { -product-name-nowrap }
+pwt-summary-6 = Las violaciones de datos de sitios web están en aumento. Tan pronto como se agrega una nueva violación a nuestra base de datos, { -product-name-nowrap } te envía una alerta para que puedas tomar medidas y proteger tu cuenta.
+landing-headline = Tu derecho a estar a salvo de los piratas comienza aquí.
+landing-blurb = { -product-name-nowrap } te brinda herramientas para mantener segura tu información personal. Descubrí lo que los piratas ya saben de vos y aprendé cómo mantenerte un paso adelante de ellos.
+scan-label = Mirá si te involucraste en una violación de datos.
+scan-placeholder = Ingresá la dirección de correo electrónico
+scan-privacy = Tu dirección de correo electrónico no será almacenado.
+scan-submit = Buscá tu dirección de correo electrónico
+scan-another-email = Escanear otra dirección de correo electrónico
+scan-featuredbreach-label = Averigüá si tu cuenta <span class="bold"> { $featuredBreach } </span> fue comprometida.
+scan-error = Debe ser una dirección de correo electrónico válida.
+signup-banner-headline = { -product-name-nowrap } detecta amenazas contra tus cuentas en línea.
+signup-banner-blurb = Tu informe detallado de { -product-name-nowrap } muestra si la información de tus cuentas en línea ha sido filtrada o robada. También te avisaremos si tus cuentas aparecen en nuevas violaciones de sitios web.
+download-firefox-bar-blurb = { -product-name-nowrap } es presentado por el <span class="nowrap">nuevo { -brand-name }</span>.
+download-firefox-bar-link = Descargar { -brand-name } ahora
+download-firefox-banner-blurb = Tomá el control de tu navegador
+download-firefox-banner-button = Descargar { -brand-name }
+signup-modal-headline = Registrarse para { -product-name-nowrap }
+signup-modal-blurb = Registrarse para obtener tu informe completo, alertas cuando ocurran nuevas violaciones y consejos de seguridad de { -product-name-nowrap }.
+signup-modal-close = Cerrar
+get-your-report = Conseguí tu informe
+signup-modal-verify-headline = Verificá tu suscripción
+signup-modal-verify-blurb = Enviamos un enlace de verificación a <span id="submitted-email" class="medium"></span>.
+signup-modal-verify-expiration = Este enlace caduca en 24 horas.
+signup-modal-verify-resend = ¿No está en la bandeja de entrada o en el correo basura? Reenviar
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = ¡Enviado!
+signup-with-fxa = Registrarse con la cuenta { -brand-name }
+form-signup-placeholder = Ingresar dirección de correo electrónico
+form-signup-checkbox = Obtené lo último de { -brand-Mozilla } y { -brand-name }.
+sign-up = Registrarse
+form-signup-error = Debe ser una dirección de correo electrónico válida
+no-breaches-headline = Por ahora va todo bien.
+found-breaches-headline = Tu información fue parte de una violación de datos.
