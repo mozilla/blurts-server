@@ -80,8 +80,12 @@ signup-modal-verify-resend = Ddim yn y blwch derbyn na'r sbam? Ailanfon
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Anfonwyd!
 signup-with-fxa = Cofrestrwch gyda Chyfrif { -brand-name }
+form-signup-placeholder = Rhowch eich e-bost
+form-signup-checkbox = Cael y diweddaraf o { -brand-Mozilla } a { -brand-name }.
+sign-up = Ymuno
+form-signup-error = Rhaid ei fod yn e-bost dilys
 no-breaches-headline = Go lew, hyd yma.
-found-breaches-headline = Mae eich manylion wedi bod yn rhan o dor-ddata.
+found-breaches-headline = Mae eich manylion wedi bod yn rhan o dor-data.
 no-breaches =
     Nid oedd eich cyfeiriad e-bost yn ymddangos yn ein sgan sylfaenol.
     Mae hynny'n newyddion da, ond gall tor-ddata ddigwydd ar unrhyw adeg ac mae mwy y gallwch chi ei wneud.
@@ -115,15 +119,46 @@ scan-results =
     }
 show-more-breaches = Dangos Rhagor
 what-to-do-headline = Beth i'w Wneud pan mae eich Manylion wedi'i Amlygu mewn Tor-data
-what-to-do-blurb-3 = Mae'r rhan fwyaf o achosion o dor-data dim ond yn datgelu e-byst a chyfrineiriau, ond mae rhai yn cynnwys manylion ariannol sensitif. Os cafodd eich cyfrif banc neu rifau cerdyn credyd eu cynnwys mewn tor-data, rhowch wybod i'ch banc i dwyll posibl, a monitro datganiadau am daliadau nad ydych yn gyfarwydd â nhw.
+what-to-do-subhead-1 = Newidiwch eich cyfrineiriau, hyd yn oed ar gyfer hen gyfrifon
+what-to-do-blurb-1 = Os na allwch chi fewngofnodi, cysylltwch â'r wefan i ofyn sut y gallwch chi adennill neu gau'r cyfrif. Gweld cyfrif nad ydych yn ei adnabod? Efallai bod y wefan wedi newid enw neu fod rhywun wedi creu cyfrif ar eich rhan.
+what-to-do-subhead-2 = Os ydych yn ailddefnyddio cyfrinair hysbys, mae'n amser ei newid
+what-to-do-blurb-2 = Gall hacwyr geisio ailddefnyddio'ch cyfrinair hysbys i fynd i mewn i gyfrifon eraill. Creuwch gyfrinair gwahanol ar gyfer pob gwefan, yn enwedig ar gyfer eich cyfrif banc, e-bost a gwefannau eraill lle rydych yn cadw manylion bersonol.
+what-to-do-subhead-3 = Cymerwch gamau ychwanegol i ddiogelu eich cyfrifon ariannol
+what-to-do-blurb-3 = Mae'r rhan fwyaf o achosion o dor-data dim ond yn datgelu e-byst a chyfrineiriau, ond mae rhai yn cynnwys manylion ariannol sensitif. Os cafodd eich cyfrif banc neu rifau cerdyn credyd eu cynnwys mewn tor-data, rhowch wybod i'ch banc am dwyll posibl, a monitro datganiadau am daliadau nad ydych yn gyfarwydd â nhw.
+what-to-do-subhead-4 = Cael help i greu cyfrineiriau da a'u cadw'n ddiogel.
+what-to-do-blurb-4 = Mae rheolwyr cyfrinair fel 1Password, LastPass, Dashlane, a Bitwarden yn creu cyfrineiriau cryf, yn eu storio'n ddiogel, a'u llenwi i mewn i wefannau i chi.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Dyddiad tor-data:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Cyfrifon wedi eu cyfaddawdu:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Data wedi ei gyfaddawdu:
+confirmed = Cadarnhawyd! <br /> Rydych wedi Tanysgrifio!
 confirmed-blurb = Bydd { -product-name-nowrap } yn e-bostio adroddiad llawn i chi yn fuan, a bydd yn anfon rhybudd e-bost os bydd eich cyfrif yn ymddangos mewn tor-data hysbys newydd.
 confirmed-social-blurb = Os ydych wedi cael tor-data, mae'n bosib fod eich ffrindiau, teulu, neu gysylltiadau ar-lein hefyd dioddef un hefyd. Gadewch iddyn nhw wybod am { -product-name-nowrap }.
-unsub-blurb = Bydd hyn yn dileu'ch e-bost o'r rhestr { -product-name-nowrap } a fyddwch chi ddim yn derbyn rhybuddion mwyach pan fydd achosion o dor-data newydd yn dod i'r amlwg.
+unsub-headline = Dad-danysgrifio o { -product-name-nowrap }
+unsub-blurb = Bydd hyn yn dileu'ch e-bost o'r rhestr { -product-name-nowrap } ac ni fyddwch yn derbyn rhybuddion pan fydd achosion o tor-data'n cael eu cyhoeddi.
+unsub-button = Dad-danysgrifio
+unsub-survey-headline = Nid ydych yn tanysgrifio bellach.
+unsub-survey-blurb = Mae eich e-bost wedi'i ddad-danysgrifio { -product-name-nowrap }. Diolch am ddefnyddio'r gwasanaeth hwn. A wnewch chi gymryd munud i ateb un cwestiwn am eich profiad?
+unsub-survey-form-label = Pam ydych chin dad-danysgrifio rhag rybuddion { -product-name-nowrap }}?
+unsub-reason-1 = Rwy'n credu nad yw rhybuddion yn gwneud fy data yn fwy diogel
+unsub-reason-2 = Rwy'n cael gormod o negeseuon e-bost gan { -product-name-nowrap }
+unsub-reason-3 = Nid yw'r gwasanaeth yn werthfawr i mi
+unsub-reason-4 = Rwyf eisoes wedi cymryd camau i ddiogelu fy nghyfrifon
+unsub-reason-5 = Rwy'n defnyddio gwasanaeth arall i fonitro fy nghyfrifon
+unsub-reason-6 = Dim un o'r uchod
+unsub-survey-thankyou = Diolch am eich adborth.
+unsub-survey-error = Dewiswch un.
+# Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
+share = Rhannu
+# Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
+tweet = Trydar
+download-firefox-quantum = Lleytho { -brand-Quantum } i Lawr
+download-firefox-mobile = Llwytho { -brand-name } Symudol i Lawr
+# Features here refers to Firefox browser features. 
+features = nodweddion
+# beta-nightly-developer-edition refers to additional versions of Firefox Browser
+beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Data tor-data wedi ei ddarparu gan { $hibp-link }
