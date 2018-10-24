@@ -106,12 +106,14 @@ featured-breach-results =
     }
 featured-breach-not-compromised =
     { $breachCount ->
+        [0] { no-breaches }
         [one] Váš účet nebyl nalezen v úniku dat <span class="bold">{ $featuredBreach }</span>, ale byl nalezen v jednom dalším.
         [few] Váš účet nebyl nalezen v úniku dat <span class="bold">{ $featuredBreach }</span>, ale byl nalezen ve { $breachCount } dalších.
        *[other] Váš účet nebyl nalezen v úniku dat <span class="bold">{ $featuredBreach }</span>, ale byl nalezen v { $breachCount } dalších.
     }
 scan-results =
     { $breachCount ->
+        [0] { no-breaches }
         [one] Váš účet byl nalezen jen v jednom úniku dat.
         [few] Účty s vaší e-mailovou adresou byly nalezeny ve { $breachCount } dalších únicích.
        *[other] Účty s vaší e-mailovou adresou byly nalezeny v { $breachCount } dalších únicích.
