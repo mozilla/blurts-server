@@ -18,5 +18,13 @@ report-no-breaches =
     Amma oğurluqlar hər vaxt ola bilər. Şəxsi məlumatlarınızı onlayn məkanda güvəndə tutmaq üçün bu addımları izləyin.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Bundan sonra nə etməli
+report-headline =
+    { $breachCount ->
+        [0] Yaxşı görünür.
+        [one] Hesabınız { $breachCount } oğurlamada görünüb.
+       *[other] Hesabınız { $breachCount } oğurlamada görünüb.
+    }
+report-pwt-headline-1 = Hər hesab üçün fərqli parol işlədin
+report-pwt-headline-4 = Parol idarəçisi işlət
 # A link to legal information about mozilla products.
 legal = Qanuni
