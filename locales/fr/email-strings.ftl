@@ -8,6 +8,15 @@ report-date = Date du rapport :
 email-address = Adresse électronique :
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Prochaines étapes
+report-headline =
+    { $breachCount ->
+        [0] Jusqu’ici, tout va bien.
+        [one] Votre compte apparaît dans { $breachCount } fuite de données.
+       *[other] Vos comptes apparaissent dans { $breachCount } fuites de données.
+    }
+report-subhead-found-breaches = Voici votre rapport complet de Firefox Monitor, qui comprend tous les cas connus de fuites de données ayant compromis cette adresse électronique.
+breach-alert-headline = Votre compte a été compromis dans une fuite de données.
+breach-alert-subhead = Une fuite de données signalée récemment contient votre adresse électronique et les données suivantes.
 report-pwt-headline-1 = Utilisez un mot de passe différent pour chaque compte
 report-pwt-summary-1 = La réutilisation du même mot de passe partout ouvre la porte aux pirates. Ils peuvent utiliser ce mot de passe pour se connecter à vos autres comptes.
 report-pwt-headline-2 = Créez des mots de passe robustes et différents pour chaque site ou service
