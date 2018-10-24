@@ -60,6 +60,7 @@ signup-modal-verify-expiration = Povezava bo potekla po 24 urah.
 signup-modal-verify-resend = Ni med prejeto ali vsiljeno pošto? Pošlji znova.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Poslano!
+signup-with-fxa = Prijavite se s { -brand-name } Računom
 form-signup-placeholder = Vnesite e-poštni naslov
 sign-up = Prijava
 form-signup-error = E-poštni naslov mora biti veljaven
@@ -79,6 +80,7 @@ unsub-survey-blurb = Vaš e-poštni naslov je odjavljen iz { -product-name-nowra
 unsub-survey-form-label = Zakaj ste se odjavili od opozoril { -product-name-nowrap }?
 unsub-reason-2 = Od { -product-name-nowrap } prejemam preveč e-pošte
 unsub-reason-3 = Storitev se mi ne zdi koristna
+unsub-reason-5 = Za spremljanje računov uporabljam drugo storitev
 unsub-reason-6 = Nič od naštetega
 unsub-survey-thankyou = Hvala za vaše povratne informacije.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
