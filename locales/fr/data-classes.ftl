@@ -1,5 +1,6 @@
 ## Breach Data Classes
 
+account-balances = soldes des comptes
 avatars = avatars
 browsing-histories = historiques de navigation
 credit-cards = cartes bancaires
@@ -22,6 +23,7 @@ religions = convictions religieuses
 security-questions-and-answers = questions et réponses de sécurité
 sexual-fetishes = préférences sexuelles
 sexual-orientations = orientations sexuelles
+smoking-habits = consommation de tabac
 sms-messages = SMS
 social-connections = réseau de connaissances
 spoken-languages = langues parlées
