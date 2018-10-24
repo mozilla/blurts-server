@@ -92,3 +92,8 @@ featured-breach-results =
         [one] Tu cuenta apareció en la violación de <span class="bold"> pr{ $featuredBreach } </span> pero no aparece en ninguna otra violación de datos conocida
        *[other] Tu cuenta apareció en la violación de <span class="bold"> { $featuredBreach } </span>, así como en otra violación.
     }
+show-more-breaches = Mostrar más
+what-to-do-headline = Qué hacer cuando tu información se expone en una violación de datos
+what-to-do-subhead-1 = Cambiá tus contraseñas, incluso para cuentas antiguas
+what-to-do-blurb-1 = Si no podés iniciar la sesión, comunicate con el sitio web para preguntar cómo podés recuperar o cerrar la cuenta. ¿Ves una cuenta que no reconocés? Es posible que el sitio haya cambiado de nombre o que alguien haya creado una cuenta para vos.
+what-to-do-subhead-2 = Si reutilizás una contraseña expuesta, cambiala.
