@@ -1,10 +1,20 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+click-to-verify =
+    请在 24 小时内点击“验证我的电子邮件”按钮以确认您的 Firefox Monitor 账户。
+    您的报告即将开始生成。
 verify-my-email = 验证我的电子邮件
+report-scan-another-email = 到 { -product-name } 扫描其他电子邮件地址
+automated-message = 这是一封自动发送的电子邮件；如果您并未要求但收到这封邮件，您不需要进行任何操作。
+# Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
+we-sent-this-alert = 由于该电子邮件地址已选择启用来自 { -product-name } 的警报，我们已将此消息发送到 { $userEmail }。
+unsubscribe-link = 如果您不想再收到 { -product-name } 警报，可以将其退订
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = { -product-name } 报告
 report-date = 报告日期：
 email-address = 电子邮件地址：
+# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
+your-full-report = 这是您的 { -product-name } 完整报告，其中包含此电子邮件地址的所有已知数据泄露信息。
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = 接下来怎么做
 report-headline =

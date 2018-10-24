@@ -112,6 +112,14 @@ what-to-do-subhead-2 = 若您重复使用了已泄漏的密码，请更改该密
 what-to-do-blurb-2 =
     黑客很可能利用您已遭泄漏的密码，尝试登录您在其他网站上的账号，这也被称为“撞库”攻击。
     请为每个网站设置不同的密码，尤其是银行账号、电子邮件账号，以及其他您用来存储个人信息的网站。
+what-to-do-subhead-3 = 采取额外步骤来保护您的金融账户
+what-to-do-blurb-3 =
+    大多数的数据泄露事件只会泄露电子邮件地址与密码，但某些事件中也会包含敏感的个人财务信息。
+    若您的银行账户或信用卡卡号也遭泄露，请通知银行以预防盗用，并检查月结账单，检查是否有不明的交易记录。
+what-to-do-subhead-4 = 获取帮助以创建好的密码并保证其安全。
+what-to-do-blurb-4 =
+    如 1Password、LastPass、Dashlane 和 Bitwarden 等密码管理器可以生成强健、唯一的密码，
+    安全地存储密码，并为您自动填写到网站上。
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = 泄漏日期
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -119,8 +127,18 @@ compromised-accounts = 泄漏账户数量
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = 泄漏的数据
 confirmed = 成功确认！<br />您已完成订阅！
+confirmed-blurb = { -product-name-nowrap } 会尽快通过电子邮件向您发送完整报告，如果您的账号出现在新报告的泄漏事件中，我们会发送电子邮件提醒。
+confirmed-social-blurb = 若您的数据遭到外泄，很有可能您的朋友、家人、网络上的朋友也会受到影响。也让他们知道 { -product-name-nowrap } 吧！
+unsub-headline = 退订 { -product-name-nowrap }
+unsub-blurb = 这将使您的电子邮件地址移出 { -product-name-nowrap } 列表，在发生新的数据泄漏事件时，您将不再收到警报。
 unsub-button = 退订
 unsub-survey-headline = 您的退订已成功。
+unsub-survey-blurb =
+    您的电子邮件地址已退订 { -product-name-nowrap }。感谢您使用此服务。
+    可以花点时间来回答一个问题吗？我们想了解您的体验。
+unsub-survey-form-label = 为什么您退订了 { -product-name-nowrap } 警报？
+unsub-reason-1 = 我觉得那些警报不会让我的数据更安全
+unsub-reason-2 = 我收到了太多的 { -product-name-nowrap } 的邮件
 unsub-reason-3 = 我觉得这项服务没有价值
 unsub-reason-4 = 我已经采取措施保护我的账号
 unsub-reason-5 = 我正使用其他服务来监控我的账号
@@ -137,3 +155,11 @@ download-firefox-mobile = 下载 { -brand-name } 移动版
 features = 功能
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta、Nightly、开发者版本
+# The following string contains HTML markup which should not be translated. 
+# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
+copyright-info =
+    &#x24B8; 1998–2018 部分内容著作权由个别 mozilla.org 贡献者所有。
+    内容遵循<a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">知识共享许可协议</a>进行授权。
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = 泄露数据由 { $hibp-link } 提供
+site-description = 您的账号信息是否在数据外泄事件中被泄漏或遭窃？可到 { -product-name } 查看。欢迎在我们的数据库中搜索并订阅警报。
