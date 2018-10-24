@@ -19,9 +19,14 @@ error-hibp-connect = Erreur de connexion à { -brand-HIBP }.
 home-title = { -product-name }
 home-not-found = Page non trouvée
 oauth-invalid-session = Session invalide
+oauth-confirmed-title = { -product-name } : inscription réussie
 scan-title = { -product-name } : résultats de l’analyse
 user-add-invalid-email = Adresse électronique invalide
+user-add-email-verify-subject = Vérifiez votre inscription à { -product-name }.
 user-add-title = { -product-name } : confirmez votre adresse électronique
+user-verify-title = { -product-name } : inscription réussie
+user-unsubscribe-title = { -product-name } : désinscription
+user-unsubscribed-title = { -product-name } : désinscription effectuée
 
 ## Password Tips
 
