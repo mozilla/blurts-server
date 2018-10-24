@@ -11,7 +11,13 @@ email-address = E-poštni naslov:
 what-to-do-next = Naslednji koraki
 report-pwt-headline-1 = Uporabite različna gesla za posamezne račune
 report-pwt-headline-2 = Ustvarite močna, enkratna gesla
-report-pwt-headline-3 = Obravnavajte varnostna vprašanja, kot dodatna gesla
+report-pwt-summary-2 =
+    Napadalci uporabljajo sezname pogostih gesel, s pomočjo katerih poskušajo uganiti vaše.
+    Daljše in naključnejše kot je vaše geslo, teže ga bo ukrasti.
+report-pwt-headline-3 = Uporabljajte varnostna vprašanja kot dodatna gesla
+report-pwt-summary-3 =
+    Spletne strani ne preverjajo, ali so vaši odgovori točni, le da se vsakič ujemajo.
+    Ustvarite dolge, naključne odgovore in jih shranite na varnem mestu.
 report-pwt-headline-4 = Uporabite upravitelja gesel
 # A link to legal information about mozilla products.
 legal = Pravno obvestilo
