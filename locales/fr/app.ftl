@@ -14,8 +14,11 @@ layout-support = Assistance
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Donner votre avis
 terms-and-privacy = Confidentialité et conditions d’utilisation
+error-not-subscribed = Cette adresse électronique n’est pas inscrite aux alertes { -product-name }.
 error-hibp-throttled = Connexions trop nombreuses à { -brand-HIBP }.
 error-hibp-connect = Erreur de connexion à { -brand-HIBP }.
+error-hibp-load-breaches = Impossible de charger les failles de sécurité.
+hibp-notify-email-subject = Alerte { -product-name } : votre compte a été compromis par une faille de sécurité.
 home-title = { -product-name }
 home-not-found = Page non trouvée
 oauth-invalid-session = Session invalide
@@ -30,6 +33,8 @@ user-unsubscribed-title = { -product-name } : désinscription effectuée
 
 ## Password Tips
 
+pwt-section-headline = Mots de passe robustes = protection renforcée
+pwt-section-blurb = Vos mots de passe protègent plus que vos comptes. Ils protègent chaque information personnelle qui s’y trouve. Et les pirates informatiques tirent profit de nos mauvaises habitudes, comme utiliser le même mot de passe partout ou utiliser des expressions courantes (« monmotdepasse » ou « 1234 », ça vous parle ?) pour pouvoir pirater plusieurs comptes. Voici comment mieux protéger vos comptes.
 pwt-headline-1 = Utilisez un mot de passe différent pour chaque compte
 pwt-summary-1 = La réutilisation du même mot de passe partout laisse la porte grande ouverte à l’usurpation d’identité. N’importe qui possédant ce mot de passe peut se connecter à tous vos comptes.
 pwt-headline-2 = Créez des mots de passe suffisamment forts et difficiles à deviner
