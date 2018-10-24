@@ -39,14 +39,19 @@ pwt-headline-1 = Utilisez un mot de passe différent pour chaque compte
 pwt-summary-1 = La réutilisation du même mot de passe partout laisse la porte grande ouverte à l’usurpation d’identité. N’importe qui possédant ce mot de passe peut se connecter à tous vos comptes.
 pwt-headline-2 = Créez des mots de passe suffisamment forts et difficiles à deviner
 pwt-headline-5 = Ajoutez une sécurité supplémentaire avec l’authentification à deux facteurs
+scan-label = Voyez si vous avez été impliqué dans une fuite de données.
 scan-placeholder = Saisissez votre adresse électronique
 scan-privacy = Votre adresse électronique ne sera pas stockée.
+scan-another-email = Analysez une autre adresse électronique
+scan-featuredbreach-label = Découvrez si votre compte <span class="bold">{ $FeaturedBreach }</span> a été compromis.
 scan-error = L’adresse électronique doit être valide.
 signup-banner-headline = { -product-name-nowrap } détecte les menaces sur vos comptes en ligne.
 signup-banner-blurb =
     Le rapport détaillé de { -product-name-nowrap } indique si des informations provenant de vos comptes en ligne ont été divulguées ou volées.
     Nous vous préviendrons aussi si vos comptes apparaissent à l’occasion de nouvelles failles de sécurité.
 download-firefox-banner-blurb = Reprenez le contrôle de votre navigateur
+download-firefox-banner-button = Télécharger { -brand-name }
+no-breaches-headline = Jusqu’ici, tout va bien.
 found-breaches-headline = Vos informations personnelles ont été compromises dans une fuite de données.
 show-more-breaches = Afficher davantage
 what-to-do-subhead-1 = Changez de mots de passe, même pour des comptes anciens
