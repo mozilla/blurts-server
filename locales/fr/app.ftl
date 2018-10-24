@@ -27,8 +27,10 @@ scan-title = { -product-name } : résultats de l’analyse
 user-add-invalid-email = Adresse électronique invalide
 user-add-email-verify-subject = Vérifiez votre inscription à { -product-name }.
 user-add-title = { -product-name } : confirmez votre adresse électronique
+user-verify-token-error = Un jeton de vérification est nécessaire.
 user-verify-email-report-subject = Votre rapport { -product-name }
 user-verify-title = { -product-name } : inscription réussie
+user-unsubscribe-token-error = La désinscription nécessite un jeton.
 user-unsubscribe-title = { -product-name } : désinscription
 user-unsubscribe-survey-title = { -product-name } : questionnaire sur la désinscription
 user-unsubscribed-title = { -product-name } : désinscription effectuée
@@ -36,11 +38,13 @@ user-unsubscribed-title = { -product-name } : désinscription effectuée
 ## Password Tips
 
 pwt-section-headline = Mots de passe robustes = protection renforcée
+pwt-section-subhead = Vos informations personnelles ne sont sûres que si vos mots de passe le sont.
 pwt-section-blurb = Vos mots de passe protègent plus que vos comptes. Ils protègent chaque information personnelle qui s’y trouve. Et les pirates informatiques tirent profit de nos mauvaises habitudes, comme utiliser le même mot de passe partout ou utiliser des expressions courantes (« monmotdepasse » ou « 1234 », ça vous parle ?) pour pouvoir pirater plusieurs comptes. Voici comment mieux protéger vos comptes.
 pwt-headline-1 = Utilisez un mot de passe différent pour chaque compte
 pwt-summary-1 = La réutilisation du même mot de passe partout laisse la porte grande ouverte à l’usurpation d’identité. N’importe qui possédant ce mot de passe peut se connecter à tous vos comptes.
 pwt-headline-2 = Créez des mots de passe suffisamment forts et difficiles à deviner
 pwt-summary-2 = Les pirates utilisent des milliers de mots de passe courants pour tenter de deviner les vôtres. Plus votre mot de passe est long et aléatoire, plus il sera difficile à deviner.
+pwt-headline-3 = Considérez les questions de sécurité comme des mots de passe supplémentaires
 pwt-summary-3 = Les sites web ne vérifient pas que vos réponses sont exactes, mais simplement qu’elles correspondent à chaque fois. Créez des réponses longues et aléatoires et stockez-les dans un endroit sûr.
 pwt-headline-4 = Obtenez de l’aide pour vous rappeler vos mots de passe
 pwt-summary-4 = Les gestionnaires de mots de passe tels que 1Password, LastPass, Dashlane et Bitwarden génèrent des mots de passe forts et uniques. Ils stockent également les mots de passe en toute sécurité et les remplissent dans les sites web pour vous.
@@ -60,6 +64,7 @@ signup-banner-blurb =
 download-firefox-bar-blurb = { -product-name-nowrap } vous est proposé par le <span class="nowrap">tout nouveau { -brand-name }</span>.
 download-firefox-banner-blurb = Reprenez le contrôle de votre navigateur
 download-firefox-banner-button = Télécharger { -brand-name }
+signup-modal-headline = Inscrivez-vous à { -product-name-nowrap }
 signup-modal-close = Fermer
 signup-modal-verify-resend = Vous ne voyez rien dans votre boîte de réception ni dans le dossier des indésirables ? Renvoyez le message.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
@@ -72,3 +77,24 @@ show-more-breaches = Afficher davantage
 what-to-do-headline = Que faire lorsque vos informations sont exposées à une fuite de données
 what-to-do-subhead-1 = Changez de mots de passe, même pour des comptes anciens
 what-to-do-blurb-1 = Si vous ne pouvez pas vous connecter, contactez le site web pour savoir comment vous pouvez récupérer ou fermer le compte. Vous ne reconnaissez pas l’un des comptes ? Le site peut avoir changé de nom ou quelqu’un peut avoir créé un compte à votre place.
+what-to-do-subhead-2 = Si vous réutilisez un mot de passe qui a été compromis, changez-le.
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = Date de la fuite de données :
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Comptes compromis :
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Données compromises :
+unsub-button = Se désabonner
+unsub-survey-headline = Vous n’êtes plus abonné⋅e.
+unsub-reason-3 = Je ne trouve pas le service utile
+unsub-reason-4 = J’ai déjà pris des mesures pour protéger mes comptes
+unsub-reason-5 = J’utilise un autre service pour surveiller mes comptes
+unsub-reason-6 = Aucune de ces propositions
+# Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
+share = Partager
+# Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
+tweet = Twitter
+download-firefox-quantum = Télécharger { -brand-Quantum }
+download-firefox-mobile = Télécharger { -brand-name } mobile
+# Features here refers to Firefox browser features. 
+features = Fonctionnalités
