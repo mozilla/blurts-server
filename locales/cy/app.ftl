@@ -70,7 +70,7 @@ signup-banner-headline = Mae { -product-name-nowrap } yn canfod bygythiadau i'ch
 signup-banner-blurb =
     Mae eich adroddiad { -product-name-nowrap } manwl yn dangos os yw manylion o'ch cyfrifon ar-lein wedi cael ei ryddhau neu ei ddwyn.
     Byddwn hefyd yn eich hysbysu os bydd eich cyfrifon yn ymddangos mewn achosion o dor-data gwefannau newydd.
-download-firefox-bar-blurb = Mae { -product-name-nowrap } yn cael ei gyflwyno i chi gan y <span class="nowrap">{ -brand-name } newydd sbon</span> .
+download-firefox-bar-blurb = Mae { -product-name-nowrap } yn cael ei gyflwyno i chi gan y <span class="nowrap">{ -brand-name } newydd sbon</span>.
 download-firefox-bar-link = Llwytho { -brand-name } i lawr nawr
 download-firefox-banner-blurb = Cymerwch reolaeth o'ch porwr
 download-firefox-banner-button = Llwytho { -brand-name } i Lawr
