@@ -40,3 +40,20 @@ user-unsubscribed-title = { -product-name } : Tuffɣa seg ujerred tedda
 ## Password Tips
 
 pwt-section-headline = Awal uffir uzmir = Ammesten ufrin
+pwt-section-subhead = Talɣut-ik tusligt tettwadmen ma ttwaḍemnen wawalen-ik uffiren.
+pwt-headline-1 = Seqdec awal-nniḍen uffir i yal amiḍan.
+pwt-headline-2 = Rnu awalen uffiren uzmiren iweɛren i tifin
+scan-placeholder = Sekcem tansa imayl
+scan-submit = Nadi imayl-ik
+scan-another-email = Sleḍ tansa-nniḍen imayl
+scan-featuredbreach-label = Wali ma yella amiḍan-ik <span class="bold">{ $featuredBreach }</span> yettwaker.
+scan-error = Yessefk ad tili d tansa tameɣtut.
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = Azemz n trewla n yisefka:
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Imiḍanene yettwakren:
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Isefka yettwakren:
+confirmed = Yentem!<br />Tettwajerdeḍ!
+unsub-button = Ffeɣ seg ujerred
+unsub-survey-headline = Ur tezgiḍ tettwajerrdeḍ.
