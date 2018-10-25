@@ -117,6 +117,12 @@ featured-breach-not-compromised =
         [one] 您的账号未出现在 <span class="bold">{ $featuredBreach }</span> 数据外泄事件中，但出现在其他 1 次事件中。
        *[other] 您的账号未出现在 <span class="bold">{ $featuredBreach }</span> 数据外泄事件中，但出现在其他 { $breachCount } 次事件中。
     }
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] 您的账号出现在 { $breachCount } 次数据外泄事件中。
+       *[other] 与您的电子邮件地址相关联的账号，出现在下列 { $breachCount } 次数据外泄事件中。
+    }
 show-more-breaches = 显示更多
 what-to-do-headline = 如果您的信息出现在泄露事件中，您该怎么办
 what-to-do-subhead-1 = 更改密码，即使是旧账号也是如此

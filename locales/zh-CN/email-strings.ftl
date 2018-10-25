@@ -35,11 +35,17 @@ report-pwt-blurb =
     密码很有价值，每天都有数以千计的密码被窃取，并在黑市上被交易。
     强大的密码可以保护您的账号，以及账号中所含的个人信息。
 report-pwt-headline-1 = 为每个账号使用不同的密码
+report-pwt-summary-1 =
+    在每个账号中都重复使用相同的密码，会让您门户大开。
+    黑客可使用那串密码，用来登录您的其他账号。
 report-pwt-headline-2 = 创建强壮、唯一的密码
 report-pwt-summary-2 =
     黑客使用常用密码列表来尝试猜测您的密码。
     您的密码越长、越随机，就越不容易被窃取。
 report-pwt-headline-3 = 把安全问题当作另一道密码
+report-pwt-summary-3 =
+    网站不会确认您的答案是否正确，而只会检查是否与所设定的答案相符。
+    您可以创建长度较长、无厘头的答案，并存储在安全的地方。
 report-pwt-headline-4 = 使用密码管理器
 report-pwt-summary-4 =
     像 1Password、LastPass、Dashlane 和 Bitwarden 等服务可以生成强壮、唯一的密码，安全地进行存储，
