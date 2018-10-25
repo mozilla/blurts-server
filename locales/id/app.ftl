@@ -86,8 +86,19 @@ what-to-do-blurb-4 =
     menyimpannya dengan aman, dan mengisikannya pada situs web untuk Anda.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Tanggal kebocoran:
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Akun yang telah diketahui orang lain:
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Data yang telah diketahui orang lain:
+confirmed = Terkonfirmasi!<br />Anda Telah Berlangganan!
+unsub-headline = Berhenti berlangganan { -product-name-nowrap }
 unsub-button = Berhenti Berlangganan
 unsub-survey-headline = Anda telah berhenti berlangganan.
+unsub-survey-form-label = Mengapa Anda berhenti berlangganan peringatan { -product-name-nowrap }?
+unsub-reason-1 = Saya rasa peringatannya tidak membuat data saya semakin aman
+unsub-reason-2 = Saya menerima terlalu banyak surel dari { -product-name-nowrap }
+unsub-reason-5 = Saya menggunakan layanan lain untuk mengawasi akun saya
+unsub-reason-6 = Bukan dari salah satu di atas
 unsub-survey-thankyou = Terima kasih atas umpan balik Anda.
 unsub-survey-error = Silakan pilih satu.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
@@ -95,7 +106,10 @@ share = Bagikan
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
 tweet = Cuitkan
 download-firefox-quantum = Unduh { -brand-Quantum }
+download-firefox-mobile = Unduh { -brand-name } Seluler
 # Features here refers to Firefox browser features. 
 features = Fitur
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Data kebocoran tersedia oleh { $hibp-link }
