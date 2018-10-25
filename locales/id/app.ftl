@@ -44,6 +44,7 @@ pwt-headline-4 = Dapatkan bantuan mengingat sandi Anda
 pwt-headline-5 = Tambahkan pengamanan ekstra dengan autentikasi dua faktor
 landing-headline = Hak Anda untuk aman dari para peretas dimulai dari sini.
 landing-blurb = { -product-name-nowrap } mempersenjatai Anda dengan peralatan yang menjaga informasi pribadi Anda tetap aman. Cari tahu apa yang telah peretas ketahui tentang Anda, dan pelajari bagaimana supaya selalu selangkah di depan mereka.
+scan-label = Periksa apakah Anda tersangkut dalam kebocoran data.
 scan-placeholder = Masukkan Alamat Surel
 scan-privacy = Surel Anda tidak akan disimpan.
 scan-submit = Cari Surel Anda
@@ -61,6 +62,7 @@ signup-modal-verify-expiration = Tautan ini kedaluwarsa dalam 24 jam.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Terkirim!
 form-signup-placeholder = Masukkan surel
+form-signup-checkbox = Dapatkan kabar terbaru dari { -brand-Mozilla } dan { -brand-name }.
 no-breaches-headline = Sejauh ini baik baik saja.
 show-more-breaches = Tampilkan Lebih Banyak
 what-to-do-subhead-1 = Ubah sandi Anda, termasuk untuk akun lama
