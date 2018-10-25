@@ -115,3 +115,7 @@ compromised-accounts = Cuentas comprometidas:
 compromised-data = Datos comprometidos:
 confirmed = ¡Confirmado! <br /> ¡Estás suscrito!
 confirmed-blurb = { -product-name-nowrap } te enviará un informe completo por correo electrónico en breve, y te enviará una alerta por correo electrónico si tu cuenta aparece en una nueva violación informada.
+confirmed-social-blurb = Si tuviste un problema de seguridad, es probable que tus amigos, familiares o conexiones en línea también lo hayan tenido. Comentales acerca de { -product-name-nowrap }.
+unsub-headline = Cancelar la suscripción de { -product-name-nowrap }
+unsub-blurb = Esto eliminará tu dirección de correo electrónico de la lista { -product-name-nowrap } y ya no recibirás alertas cuando se anuncien nuevas violaciones.
+unsub-button = Cancelar suscripción
