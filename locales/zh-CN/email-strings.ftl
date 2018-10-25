@@ -38,7 +38,7 @@ report-pwt-headline-1 = 为每个账号使用不同的密码
 report-pwt-summary-1 =
     在每个账号中都重复使用相同的密码，会让您门户大开。
     黑客可使用那串密码，用来登录您的其他账号。
-report-pwt-headline-2 = 创建强壮、唯一的密码
+report-pwt-headline-2 = 创建强健、唯一的密码
 report-pwt-summary-2 =
     黑客使用常用密码列表来尝试猜测您的密码。
     您的密码越长、越随机，就越不容易被窃取。
@@ -48,7 +48,7 @@ report-pwt-summary-3 =
     您可以创建长度较长、无厘头的答案，并存储在安全的地方。
 report-pwt-headline-4 = 使用密码管理器
 report-pwt-summary-4 =
-    像 1Password、LastPass、Dashlane 和 Bitwarden 等服务可以生成强壮、唯一的密码，安全地进行存储，
+    像 1Password、LastPass、Dashlane 和 Bitwarden 等服务可以生成强健、唯一的密码，安全地进行存储，
     并可在网站上自动填充，由此你不必记住每一个密码。
 # A link to legal information about mozilla products.
 legal = 法律信息
