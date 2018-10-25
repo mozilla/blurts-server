@@ -8,7 +8,7 @@ report-scan-another-email = 到 { -product-name } 扫描其他电子邮件地址
 automated-message = 这是一封自动发送的电子邮件；如果您并未要求但收到这封邮件，您不需要进行任何操作。
 # Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
 we-sent-this-alert = 由于该电子邮件地址已选择启用来自 { -product-name } 的警报，我们已将此消息发送到 { $userEmail }。
-unsubscribe-link = 如果您不想再收到 { -product-name } 警报，可以将其退订
+unsubscribe-email-link = 如果您不想再收到 { -product-name } 的警报，请取消订阅。
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = { -product-name } 报告
 report-date = 报告日期：
