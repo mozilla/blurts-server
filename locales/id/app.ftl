@@ -41,6 +41,9 @@ pwt-headline-1 = Gunakan kata sandi yang berbeda untuk setiap akun
 pwt-headline-2 = Buat kata sandi yang kuat dan susah ditebak
 pwt-headline-3 = Perlakukan pertanyaan keamanan seperti sandi tambahan.
 pwt-headline-4 = Dapatkan bantuan mengingat sandi Anda
+pwt-summary-4 =
+    Pengelola sandi seperti 1Password, LastPass, Dashlane, dan Bitwarden mampu menghasilkan sandi yang kuat dan unik. 
+    Pengelola sandi juga akan menyimpan sandi dengan aman dan mengisikannya pada situs web untuk kepentingan Anda
 pwt-headline-5 = Tambahkan pengamanan ekstra dengan autentikasi dua faktor
 landing-headline = Hak Anda untuk aman dari para peretas dimulai dari sini.
 landing-blurb = { -product-name-nowrap } mempersenjatai Anda dengan peralatan yang menjaga informasi pribadi Anda tetap aman. Cari tahu apa yang telah peretas ketahui tentang Anda, dan pelajari bagaimana supaya selalu selangkah di depan mereka.
@@ -54,6 +57,8 @@ signup-banner-headline = { -product-name-nowrap } mendeteksi ancaman terhadap ak
 download-firefox-bar-link = Unduh { -brand-name } sekarang
 download-firefox-banner-blurb = Ambil alih kendali peramban Anda
 download-firefox-banner-button = Unduh { -brand-name }
+signup-modal-headline = Daftar untuk { -product-name-nowrap }
+signup-modal-blurb = Daftar untuk laporan penuh Anda, peringatan ketika terjadi kebocoran baru, dan kiat keamanan dari { -product-name-nowrap }.
 signup-modal-close = Tutup
 get-your-report = Dapatkan Laporan Anda
 signup-modal-verify-headline = Verifikasi Keberlangganan Anda
@@ -61,13 +66,26 @@ signup-modal-verify-blurb = Kami telah mengirimkan tautan verifikasi ke <span id
 signup-modal-verify-expiration = Tautan ini kedaluwarsa dalam 24 jam.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Terkirim!
+signup-with-fxa = Daftar dengan Akun { -brand-name }
 form-signup-placeholder = Masukkan surel
 form-signup-checkbox = Dapatkan kabar terbaru dari { -brand-Mozilla } dan { -brand-name }.
+sign-up = Daftar
+form-signup-error = Harus surel yang valid
 no-breaches-headline = Sejauh ini baik baik saja.
 show-more-breaches = Tampilkan Lebih Banyak
+what-to-do-headline = Apa yang Perlu Dilakukan ketika Informasi Anda Terekspos dalam Suatu Kebocoran Data
 what-to-do-subhead-1 = Ubah sandi Anda, termasuk untuk akun lama
 what-to-do-subhead-2 = Jika Anda menggunakan kembali sandi yang telah terekspos, ubah ia.
 what-to-do-subhead-3 = Ambil langkah ekstra untuk mengamankan akun finansial Anda
+what-to-do-blurb-3 =
+    Kebanyakan kebocoran hanya mengekspos surel dan sandi, tetapi beberapa juga membeberkan informasi keuangan. 
+    Jika nomor rekening bank atau kartu kredit Anda tersangkut dalam kebocoran, beri tahu bank Anda tentang kemungkinan kecurangan, 
+    dan awasi pernyataan atas biaya yang tidak Anda kenali.
+what-to-do-blurb-4 =
+    Pengelola sandi seperti 1Password, LastPass, Dashlane, dan Bitwarden mampu menghasilkan sandi yang kuat, 
+    menyimpannya dengan aman, dan mengisikannya pada situs web untuk Anda.
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = Tanggal kebocoran:
 unsub-button = Berhenti Berlangganan
 unsub-survey-headline = Anda telah berhenti berlangganan.
 unsub-survey-thankyou = Terima kasih atas umpan balik Anda.
