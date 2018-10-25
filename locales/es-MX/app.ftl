@@ -35,3 +35,10 @@ user-unsubscribe-token-error = Eliminar suscripción quiere un token.
 
 ## Password Tips
 
+signup-modal-close = Cerrar
+signup-modal-verify-headline = Verificar tu suscripción
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = ¡Enviado!
+form-signup-placeholder = Ingresar dirección de correo electrónico
+sign-up = Registrarse
+show-more-breaches = Mostrar más
