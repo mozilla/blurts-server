@@ -10,6 +10,9 @@ email-address = E-poštni naslov:
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Naslednji koraki
 report-pwt-headline-1 = Uporabite različna gesla za posamezne račune
+report-pwt-summary-1 =
+    Uporaba enakega gesla povsod pomeni odprta vrata za napadalce.
+    Ukradeno geslo lahko uporabijo za prijavo v druge vaše račune.
 report-pwt-headline-2 = Ustvarite močna, enkratna gesla
 report-pwt-summary-2 =
     Napadalci uporabljajo sezname pogostih gesel, s pomočjo katerih poskušajo uganiti vaše.
