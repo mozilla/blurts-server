@@ -26,3 +26,4 @@ user-add-invalid-email = Email non valida
 
 ## Password Tips
 
+pwt-section-headline = Password più forti = Maggiore protezione
