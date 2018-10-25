@@ -15,12 +15,40 @@ layout-support = Dəstək
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Əks-əlaqə ver
 terms-and-privacy = Şərtlər və Məxfilik
+error-not-subscribed = Bu e-poçt ünvanı { -product-name } xidmətinə abunə olmayıb.
+error-hibp-throttled = { -brand-HIBP } üçün həddindən artıq əlaqə.
+error-hibp-connect = { -brand-HIBP } xidmətinə qoşulmada xəta.
+error-hibp-load-breaches = Oğurlamalar yüklənə bilmir.
+hibp-notify-email-subject = { -product-name } Xəbərdarlığı: Hesabınız oğurlanıb.
 home-title = { -product-name }
 home-not-found = Səhifə tapılmadı.
+oauth-invalid-session = Xətalı sessiya
+oauth-confirmed-title = { -product-name } : Abunə Olundu
+scan-title = { -product-name } : Tədqiqat Nəticələri
+user-add-invalid-email = Xətalı E-poçt
+user-add-email-verify-subject = { -product-name } üçün abunəliyinizi təsdiqləyin.
+user-add-title = { -product-name } : E-poçtu Təsdiqlə
+user-verify-token-error = Təsdiqləmə açarı tələb edilir.
+user-verify-email-report-subject = { -product-name } hesabatınız
+user-verify-title = { -product-name } : Abunə Olundu
+user-unsubscribe-token-error = Abunəlikdən çıxmaq üçün açar tələb edilir.
+user-unsubscribe-token-email-error = Abunəlikdən çıxmaq üçün açar və emailHash tələb edilir.
+user-unsubscribe-title = { -product-name } : Abunəlikdən Çıxma
+user-unsubscribe-survey-title = { -product-name } : Abunəlikdən Çıxma Anketi
+user-unsubscribed-title = { -product-name } : Abunəlikdən Çıxıldı
 
 ## Password Tips
 
+pwt-section-headline = Güclü Parol = Daha Yaxşı Qoruma
+pwt-section-subhead = Daha güclü parollar, daha güclü məxfilik qoruması.
 show-more-breaches = Daha çox göstər
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = Oğurlanma tarixi:
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Oğurlanmış hesablar:
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Oğurlanan məlumatlar:
+confirmed = Təsdiqləndi!<br />Abunə oldunuz!
 unsub-button = Abunəlikdən çıx
 unsub-survey-headline = Abunəlikdən çıxdınız.
 unsub-survey-thankyou = Əks-əlaqəniz üçün təşəkkürlər.
