@@ -73,6 +73,7 @@ smoking-habits = Kebiasaan merokok
 sms-messages = Pesan SMS
 social-connections = Hubungan sosial
 social-media-profiles = Profil media sosial
+spoken-languages = Bahasa lisan
 survey-results = Hasil survei
 time-zones = Zona waktu
 travel-habits = Kebiasaan bepergian

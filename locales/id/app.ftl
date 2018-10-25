@@ -40,10 +40,12 @@ pwt-section-headline = Sandi yang Lebih Kuat = Perlindungan yang Lebih Baik
 pwt-headline-1 = Gunakan kata sandi yang berbeda untuk setiap akun
 pwt-headline-2 = Buat kata sandi yang kuat dan susah ditebak
 pwt-headline-3 = Perlakukan pertanyaan keamanan seperti sandi tambahan.
+pwt-headline-4 = Dapatkan bantuan mengingat sandi Anda
 pwt-headline-5 = Tambahkan pengamanan ekstra dengan autentikasi dua faktor
 landing-headline = Hak Anda untuk aman dari para peretas dimulai dari sini.
 landing-blurb = { -product-name-nowrap } mempersenjatai Anda dengan peralatan yang menjaga informasi pribadi Anda tetap aman. Cari tahu apa yang telah peretas ketahui tentang Anda, dan pelajari bagaimana supaya selalu selangkah di depan mereka.
 scan-placeholder = Masukkan Alamat Surel
+scan-privacy = Surel Anda tidak akan disimpan.
 scan-submit = Cari Surel Anda
 scan-another-email = Pindai Alamat Surel Lainnya
 scan-featuredbreach-label = Cari tahu apakah akun <span class="bold">{ $featuredBreach }</span> Anda telah diketahui orang lain.
