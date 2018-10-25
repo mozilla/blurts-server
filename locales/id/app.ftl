@@ -21,6 +21,7 @@ error-hibp-connect = Gagal terhubung dengan { -brand-HIBP }.
 error-hibp-load-breaches = Tidak dapat memuat data penerobosan.
 hibp-notify-email-subject = { -product-name } Waspada: Akun anda telah terlibat dalam sebuah penerobosan.
 home-title = { -product-name }
+home-not-found = Laman tidak ditemukan.
 
 ## Password Tips
 
