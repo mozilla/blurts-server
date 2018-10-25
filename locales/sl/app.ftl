@@ -31,13 +31,14 @@ pwt-summary-1 =
     Uporaba istega gesla v vseh računih pušča odprta vrata kraji vaše identitete.
     S tem geslom se lahko vsakdo prijavi v vse vaše račune.
 pwt-headline-2 = Ustvarite močna gesla, ki jih je težko uganiti
-pwt-headline-3 = Obravnavajte varnostna vprašanja, kot dodatna gesla
+pwt-headline-3 = Uporabljajte varnostna vprašanja kot dodatna gesla
 pwt-summary-3 =
     Spletne strani ne preverjajo, ali so vaši odgovori točni, le da se vsakič ujemajo.
     Ustvarite dolge, naključne odgovore in jih shranite na varnem mestu.
 pwt-summary-4 =
     Upravitelji gesel kot so 1Password, LastPass, Dashlane in Bitwarden ustvarjajo močna, edinstvena gesla. 
     Gesla tudi varno shranjujejo in jih zapolnjujejo na spletnih straneh.
+pwt-headline-6 = Naročite se na opozorila { -product-name-nowrap }ja
 landing-headline = Vaša pravica do varnega zavetja pred hekerji se začne tukaj.
 landing-blurb =
     { -product-name-nowrap } vas opremi z orodji, ki vaše osebne podatke ohranjajo varne.
