@@ -18,6 +18,7 @@ terms-and-privacy = Podmínky a ochrana soukromí
 error-not-subscribed = Tato e-mailová adresa není přihlášena k odběru ze služby { -product-name }.
 error-hibp-throttled = Příliš mnoho spojení ke službě { -brand-HIBP }.
 error-hibp-connect = Chyba při připojování k { -brand-HIBP }.
+error-hibp-load-breaches = Nepodařilo se načíst informace o únicích.
 hibp-notify-email-subject = { -product-name } - upozornění, váš účet byl součástí úniku dat.
 home-title = { -product-name }
 home-not-found = Stránka nenalezena.
@@ -44,7 +45,7 @@ pwt-section-blurb =
     Vaše hesla chrání víc než jen samotné přihlášení k účtu. Chrání všechna vaše data, která jsou skrze něj dostupná.
     Hackeři spoléhají na špatné zvyky jako je používání stejného hesla na více místech, nebo příliš běžného a lehce uhodnutého hesla (h3sl0).
     Takže pokud se jim podaří prolomit jeden váš účet, dostanou se velmi rychle dostat i k ostatním. Jak se můžete chránit?
-pwt-headline-1 = Používejte rozdílná hesla pro každý účet.
+pwt-headline-1 = Používejte rozdílná hesla pro každý účet
 pwt-summary-1 =
     Používání stejného hesla pro všechny účty nechává otevřené dveře pro krádež vaší identity.
     Kdokoliv uhodne vaše heslo získá přístup ke všem vašim účtům najednou.
@@ -63,6 +64,12 @@ pwt-summary-5 =
     Dvoufázové ověřování vyžaduje pro úspěšné přihlášení zadat nějakou dodatečnou informaci (většinou jednorázový kód poslaný přes SMS).
     I pokud někdo bude znát vaše heslo, bez tohoto ověření přístup k vašemu účtu nezíská.
 pwt-headline-6 = Přihlásit se k odběru oznámení ze služby { -product-name-nowrap }
+pwt-summary-6 = Počet úniků dat z webových stránek stoupá. Kdykoliv je nový únik přidán do databáze, { -product-name-nowrap } vám pošle upozornění, abyste mohli co nejrychleji zareagovat a ochránit svůj účet.
+landing-headline = Každý má právo na bezpečí před hackery.
+landing-blurb =
+    { -product-name-nowrap } je zbraní pro ochranu vašich osobních dat v bezpečí.
+    Podívejte se, co už hackeři o vás vědí, a jak zůstat krok před nimi.
+scan-label = Podívejte se, jestli byly vaše účty součástí nějakého úniku dat.
 scan-placeholder = Zadejte e-mailovou adresu
 scan-privacy = Zadanou e-mailovou adresu nebudeme nikde ukládat.
 scan-submit = Vyhledejte svou e-mailovou adresu
@@ -78,6 +85,7 @@ download-firefox-bar-link = Stáhněte si { -brand-name }
 download-firefox-banner-blurb = Převezměte kontrolu nad svým prohlížečem
 download-firefox-banner-button = Stáhnout { -brand-name }
 signup-modal-headline = Přihlášení ke službě { -product-name-nowrap }
+signup-modal-blurb = Přihlaste se k zaslání kompletního hlášení, upozornění na nové úniky a dobrých tipů pro { -product-name-nowrap }.
 signup-modal-close = Zavřít
 get-your-report = Získejte hlášení o svém účtu
 signup-modal-verify-headline = Potvrďte své přihlášení k odběru
@@ -114,12 +122,27 @@ featured-breach-not-compromised =
 scan-results =
     { $breachCount ->
         [0] { no-breaches }
-        [one] Váš účet byl nalezen jen v jednom úniku dat.
+        [one] Váš účet byl nalezen v jednom úniku dat.
         [few] Účty s vaší e-mailovou adresou byly nalezeny ve { $breachCount } dalších únicích.
        *[other] Účty s vaší e-mailovou adresou byly nalezeny v { $breachCount } dalších únicích.
     }
 show-more-breaches = Zobrazit více
+what-to-do-headline = Co udělat když jsou vaše data součástí nějakého úniku
 what-to-do-subhead-1 = Změňte svá hesla i pro staré účty
+what-to-do-blurb-1 =
+    Pokud se nemůžete přihlásit, kontaktujte správce webové stránky a zeptejte se, jak můžete obnovit přístup ke svému účtu, nebo účet zcela zrušit.
+    Vidíte účet, o kterém vůbec nevíte? Stránka mohla změnit svůj název nebo účet někdo vytvořil za vás.
+what-to-do-subhead-2 = Pokud používáte stejné heslo, jako o uniklého účtu, změňte ho
+what-to-do-blurb-2 =
+    Hackeři mohou použít získaná hesla a dostat se s nimi do dalších vašich účtů.
+    Používejte pro každou webovou stránku jiné heslo, hlavně pokud jde o internetové
+    bankovnictví, e-mailovou schránku nebo další stránky, kde ukládáte svá osobní data.
+what-to-do-subhead-3 = Věnujte speciální péči zabezpečení peněžních účtů
+what-to-do-blurb-3 =
+    Většina úniků obsahuje vaši e-mailovou adresu a hesla, ale mohou v nich být také citlivé finanční informace.
+    Pokud bylo součástí úniku číslo vašeho účtu nebo karty, informujte svou banku a sledujte, jestli nedochází k nečekaným změnám stavu na vašem účtu.
+what-to-do-subhead-4 = Nechte si pomoci s vytvářením dobrých hesel a jejich bezpečným uložením.
+what-to-do-blurb-4 = Správci hesel jako 1Password, LastPass, Dashlane a Bitwarden umí vygenerovat silná hesla, bezpečně je uložit a automaticky je pro vás na webových stránkách vyplnit.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Datum úniku:
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -127,6 +150,8 @@ compromised-accounts = Počet kompromitovaných účtů:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Kompromitovaná data:
 confirmed = Potvrzeno!<br />Jste přihlášeni k odběru.
+confirmed-blurb = { -product-name-nowrap } vám za chvíli pošle e-mail s kompletním hlášením a také vám bude posílat upozornění, kdykoliv se váš účet objeví v nějakém nově nahlášeném úniku.
+confirmed-social-blurb = Pokud unikla vaše data, je velká šance, že se tak stalo i u někoho z vaší rodiny, přátel nebo lidí, se kterými se znáte na internetu. Řekněte jim o službě { -product-name-nowrap }.
 unsub-headline = Odhlásit odběr ze služby { -product-name-nowrap }
 unsub-blurb = Tímto smažete svou e-mailovou adresu ze seznamu služby { -product-name-nowrap } a nebudete nadále dostávat upozornění na nově oznámené úniky dat.
 unsub-button = Odhlásit
@@ -153,5 +178,11 @@ download-firefox-mobile = Stáhnout { -brand-name } pro mobil
 features = Funkce
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# The following string contains HTML markup which should not be translated. 
+# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
+copyright-info =
+    Části tohoto obsahu jsou &#x24B8; 1998–2018 jednotlivými přispěvateli mozilla.org. <br />
+    Obsah je dostupný pod <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">licencí Creative Commons</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Data o únicích poskytuje { $hibp-link }
+site-description = Byly vaše účty součástí úniku, nebo přímo ukradeny? { -product-name } to zjistí. Prohledejte databázi a přihlaste se k odběru upozornění.
