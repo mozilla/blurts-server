@@ -92,8 +92,26 @@ featured-breach-results =
         [one] Tu cuenta apareció en la violación de <span class="bold"> pr{ $featuredBreach } </span> pero no aparece en ninguna otra violación de datos conocida
        *[other] Tu cuenta apareció en la violación de <span class="bold"> { $featuredBreach } </span>, así como en otra violación.
     }
+scan-results =
+    { $breachCount ->
+        [one] Tu cuenta apareció en { $breachCount } violación.
+       *[other] Cuentas asociadas con tu dirección de correo electrónico aparecieron en las siguientes { $breachCount } violaciones.
+    }
 show-more-breaches = Mostrar más
 what-to-do-headline = Qué hacer cuando tu información se expone en una violación de datos
 what-to-do-subhead-1 = Cambiá tus contraseñas, incluso para cuentas antiguas
 what-to-do-blurb-1 = Si no podés iniciar la sesión, comunicate con el sitio web para preguntar cómo podés recuperar o cerrar la cuenta. ¿Ves una cuenta que no reconocés? Es posible que el sitio haya cambiado de nombre o que alguien haya creado una cuenta para vos.
 what-to-do-subhead-2 = Si reutilizás una contraseña expuesta, cambiala.
+what-to-do-blurb-2 = Los piratas informáticos pueden intentar reutilizar tu contraseña expuesta para ingresar a otras cuentas. Creá una contraseña diferente para cada sitio web, especialmente para tu cuenta bancaria, tu correo electrónico y otros sitios web en los que guardás información personal.
+what-to-do-subhead-3 = Tomá medidas adicionales para asegurar sus cuentas financieras
+what-to-do-blurb-3 = La mayoría de las violaciones solo exponen correos electrónicos y contraseñas, pero algunas sí incluyen información financiera confidencial. Si tu cuenta bancaria o los números de tu tarjeta de crédito se incluyeron en una violación, avisá a tu banco de posibles fraudes y supervisá los estados de cuenta de los cargos que no reconozcas.
+what-to-do-subhead-4 = Conseguí ayuda para crear buenas contraseñas y mantenerlas seguras.
+what-to-do-blurb-4 = Los administradores de contraseñas como 1Password, LastPass, Dashlane y Bitwarden generan contraseñas seguras, las almacenan de forma segura y las llenan en sitios web.
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = Fecha de violación:
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Cuentas comprometidas:
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Datos comprometidos:
+confirmed = ¡Confirmado! <br /> ¡Estás suscrito!
+confirmed-blurb = { -product-name-nowrap } te enviará un informe completo por correo electrónico en breve, y te enviará una alerta por correo electrónico si tu cuenta aparece en una nueva violación informada.
