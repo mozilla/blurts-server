@@ -1,7 +1,17 @@
 ## Breach Data Classes
 
+account-balances = Saldo akun
+age-groups = Kelompok usia
+ages = Usia
+apps-installed-on-devices = Aplikasi yang terpasang di peranti
+astrological-signs = Lambang astrologi
+audio-recordings = Rekaman audio
 avatars = Avatar
+bank-account-numbers = Nomor rekening bank
 biometric-data = Data biometrik
+browsing-histories = Riwayat penjelajahan
+buying-preferences = Preferensi pembelian
+car-ownership-statuses = Status kepemilikan mobil
 credit-card-cvv = CVV kartu kredit
 credit-cards = Kartu kredit
 genders = Gender

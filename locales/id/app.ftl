@@ -70,4 +70,10 @@ unsub-survey-thankyou = Terima kasih atas umpan balik Anda.
 unsub-survey-error = Silakan pilih satu.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Bagikan
+# Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
+tweet = Cuitkan
 download-firefox-quantum = Unduh { -brand-Quantum }
+# Features here refers to Firefox browser features. 
+features = Fitur
+# beta-nightly-developer-edition refers to additional versions of Firefox Browser
+beta-nightly-developer-edition = Beta, Nightly, Developer Edition
