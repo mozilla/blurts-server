@@ -119,3 +119,30 @@ confirmed-social-blurb = Si tuviste un problema de seguridad, es probable que tu
 unsub-headline = Cancelar la suscripción de { -product-name-nowrap }
 unsub-blurb = Esto eliminará tu dirección de correo electrónico de la lista { -product-name-nowrap } y ya no recibirás alertas cuando se anuncien nuevas violaciones.
 unsub-button = Cancelar suscripción
+unsub-survey-headline = Ya no estás suscripto.
+unsub-survey-blurb = Tu dirección de correo electrónico se eliminó de la suscripción a { -product-name-nowrap }. Gracias por utilizar este servicio. ¿Podrás tomarte un momento para responder una pregunta sobre tu experiencia?
+unsub-survey-form-label = ¿Por qué cancelás la suscripción de las alertas de { -product-name-nowrap }?
+unsub-reason-1 = Creo que las alertas no hacen que mis datos estén más seguros.
+unsub-reason-2 = Recibo demasiados correos electrónicos de { -product-name-nowrap }
+unsub-reason-3 = No me parece valioso el servicio
+unsub-reason-4 = Ya tomé medidas para proteger mis cuentas.
+unsub-reason-5 = Estoy usando otro servicio para monitorear mis cuentas
+unsub-reason-6 = Ninguna de las mencionadas
+unsub-survey-thankyou = Gracias por tu opinión.
+unsub-survey-error = Por favor seleccioná uno.
+# Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
+share = Compartir
+# Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
+tweet = Tuitear
+download-firefox-quantum = Descargar { -brand-Quantum }
+download-firefox-mobile = Descargar { -brand-name } Mobile
+# Features here refers to Firefox browser features. 
+features = Características
+# beta-nightly-developer-edition refers to additional versions of Firefox Browser
+beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# The following string contains HTML markup which should not be translated. 
+# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
+copyright-info = Partes de este contenido son &#x24B8; 1998-2018 por parte de colaboradores individuales de mozilla.org. <br /> Contenido disponible bajo <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">licencia Creative Commons</a> .
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Datos de violación proporcionados por { $hibp-link }
+site-description = ¿Tus cuentas fueron filtradas o robadas en una violación de datos? Descubrilo en { -product-name }. Buscá en nuestra base de datos y registrate para recibir alertas.
