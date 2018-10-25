@@ -42,3 +42,10 @@ signup-modal-sent = ¡Enviado!
 form-signup-placeholder = Ingresar dirección de correo electrónico
 sign-up = Registrarse
 show-more-breaches = Mostrar más
+unsub-survey-thankyou = Gracias por tus comentarios.
+unsub-survey-error = Por favor, selecciona uno.
+# Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
+share = Compartir
+# Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
+tweet = Tuitear
+download-firefox-quantum = Descargar { -brand-Quantum }
