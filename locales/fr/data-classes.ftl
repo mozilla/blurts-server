@@ -1,9 +1,18 @@
 ## Breach Data Classes
 
 account-balances = soldes des comptes
+age-groups = tranches d’âge
+ages = âges
+auth-tokens = jetons d’authentification
 avatars = avatars
+biometric-data = données biométriques
+browser-user-agent-details = détails sur l’agent utilisateur du navigateur
 browsing-histories = historiques de navigation
 credit-cards = cartes bancaires
+dates-of-birth = dates de naissance
+education-levels = niveaux d’éducation
+email-addresses = adresses électroniques
+employers = employeurs
 family-structure = structure familiale
 income-levels = niveaux de revenus
 payment-histories = historiques de paiement
