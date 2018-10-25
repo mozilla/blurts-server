@@ -6,7 +6,7 @@ report-scan-another-email = Skanna en annan e-postadress i { -product-name }
 automated-message = Detta är ett automatiserat e-postmeddelande; om du fått det felaktigt krävs ingen åtgärd.
 # Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
 we-sent-this-alert = Vi skickade det här meddelandet till { $userEmail } eftersom e-postadressen har valt att få varningar från { -product-name }.
-unsubscribe-link = Om du inte längre vill ha varningar från { -product-name }, avbryt prenumerationen
+unsubscribe-email-link = Om du inte längre vill ha varningar från { -product-name }, avbryt prenumerationen.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Rapport { -product-name }
 report-date = Rapportdatum:
