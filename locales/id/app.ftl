@@ -39,17 +39,29 @@ user-unsubscribed-title = { -product-name } : Berhenti Berlangganan
 pwt-section-headline = Sandi yang Lebih Kuat = Perlindungan yang Lebih Baik
 pwt-headline-1 = Gunakan kata sandi yang berbeda untuk setiap akun
 pwt-headline-2 = Buat kata sandi yang kuat dan susah ditebak
+pwt-headline-3 = Perlakukan pertanyaan keamanan seperti sandi tambahan.
 pwt-headline-5 = Tambahkan pengamanan ekstra dengan autentikasi dua faktor
+landing-headline = Hak Anda untuk aman dari para peretas dimulai dari sini.
+landing-blurb = { -product-name-nowrap } mempersenjatai Anda dengan peralatan yang menjaga informasi pribadi Anda tetap aman. Cari tahu apa yang telah peretas ketahui tentang Anda, dan pelajari bagaimana supaya selalu selangkah di depan mereka.
 scan-placeholder = Masukkan Alamat Surel
 scan-submit = Cari Surel Anda
 scan-another-email = Pindai Alamat Surel Lainnya
 scan-featuredbreach-label = Cari tahu apakah akun <span class="bold">{ $featuredBreach }</span> Anda telah diketahui orang lain.
+signup-banner-headline = { -product-name-nowrap } mendeteksi ancaman terhadap akun daring Anda.
 download-firefox-bar-link = Unduh { -brand-name } sekarang
+download-firefox-banner-blurb = Ambil alih kendali peramban Anda
 download-firefox-banner-button = Unduh { -brand-name }
 signup-modal-close = Tutup
+get-your-report = Dapatkan Laporan Anda
+signup-modal-verify-headline = Verifikasi Keberlangganan Anda
+signup-modal-verify-blurb = Kami telah mengirimkan tautan verifikasi ke <span id="submitted-email" class="medium"></span>.
+signup-modal-verify-expiration = Tautan ini kedaluwarsa dalam 24 jam.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Terkirim!
 form-signup-placeholder = Masukkan surel
+no-breaches-headline = Sejauh ini baik baik saja.
+show-more-breaches = Tampilkan Lebih Banyak
+what-to-do-subhead-1 = Ubah sandi Anda, termasuk untuk akun lama
 unsub-button = Berhenti Berlangganan
 unsub-survey-headline = Anda telah berhenti berlangganan.
 download-firefox-quantum = Unduh { -brand-Quantum }
