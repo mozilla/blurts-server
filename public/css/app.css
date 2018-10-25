@@ -645,6 +645,8 @@ h5,
 
 .bold {
   font-weight: 600;
+  direction: ltr;
+  unicode-bidi: embed;
 }
 
 /* internal link styling  */
