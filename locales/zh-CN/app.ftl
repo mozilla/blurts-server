@@ -102,6 +102,21 @@ sign-up = 订阅
 form-signup-error = 须为有效的电子邮件地址
 no-breaches-headline = 目前为止还不错。
 found-breaches-headline = 您的信息出现在过去的数据外泄事件中。
+no-breaches =
+    您的电子邮件地址未出现在我们的基本扫描数据中。
+    这是个好消息，但数据外泄事件可能随时发生，您还有更多事情可以做。
+    订阅 { -product-name-nowrap } 以获取完整报告，在发生新数据外泄事件时收到警报，以及保护密码的小贴士。
+featured-breach-results =
+    { $breachCount ->
+        [one] 您的账号出现在 <span class="bold"> { $featuredBreach } </span> 数据外泄事件中，此外还有 1 次事件。
+       *[other] 您的账号出现在 <span class="bold"> { $featuredBreach } </span> 数据外泄事件中，此外还有 { $breachCount } 次事件。
+    }
+featured-breach-not-compromised =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] 您的账号未出现在 <span class="bold">{ $featuredBreach }</span> 数据外泄事件中，但出现在其他 1 次事件中。
+       *[other] 您的账号未出现在 <span class="bold">{ $featuredBreach }</span> 数据外泄事件中，但出现在其他 { $breachCount } 次事件中。
+    }
 show-more-breaches = 显示更多
 what-to-do-headline = 如果您的信息出现在泄露事件中，您该怎么办
 what-to-do-subhead-1 = 更改密码，即使是旧账号也是如此

@@ -15,12 +15,19 @@ report-date = 报告日期：
 email-address = 电子邮件地址：
 # "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
 your-full-report = 这是您的 { -product-name } 完整报告，其中包含此电子邮件地址的所有已知数据泄露信息。
+report-no-breaches =
+    您的电子邮件地址未出现在我们的数据库中。
+    但数据外泄事件可能随时发生，请遵照下列步骤来确保您的个人数据安全。
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = 接下来怎么做
 report-headline =
     { $breachCount ->
        *[other] 您的账号出现在 { $breachCount } 次数据泄露事件中。
     }
+report-subhead-no-breaches =
+    您的电子邮件地址未出现在我们的数据外泄完整报告中。
+    这是个好消息，但您还有更多事情可以做。
+    数据外泄事件可能随时发生，请继续阅读，以了解如何保护您的密码。
 report-subhead-found-breaches = 以下是您的 Firefox Monitor 完整报告。包含与此电子邮件地址有关的所有数据外泄事件的信息。
 breach-alert-headline = 您的账号受到了数据泄露事件影响。
 breach-alert-subhead = 在最近发生的数据泄露事件中，包含您的电子邮件地址以及以下数据
