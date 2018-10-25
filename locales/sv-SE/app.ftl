@@ -28,11 +28,24 @@ user-add-email-verify-subject = Verifiera din prenumeration på { -product-name 
 
 ## Password Tips
 
+scan-placeholder = Ange e-postadress
+scan-privacy = Din e-post lagras inte.
+scan-submit = Sök efter din e-postadress
+scan-another-email = Skanna en annan e-postadress
+scan-featuredbreach-label = Ta reda på om ditt <span class="bold"> { $featuredBreach } </span> konto har äventyrats.
+scan-error = Måste vara en giltig e-postadress.
+signup-banner-headline = { -product-name-nowrap } upptäcker hot mot dina konton på nätet.
+download-firefox-bar-link = Hämta { -brand-name } nu
+download-firefox-banner-blurb = Ta kontroll över din webbläsare
+download-firefox-banner-button = Hämta { -brand-name }
+signup-modal-headline = Registrera dig för { -product-name-nowrap }
 signup-modal-close = Stäng
 get-your-report = Få din rapport
 signup-modal-verify-headline = Verifiera din prenumeration
 signup-modal-verify-blurb = Vi skickade en verifieringslänk till <span id="submitted-email" class="medium"></span>.
 signup-modal-verify-expiration = Den här länken upphör om 24 timmar.
+unsub-button = Avsluta prenumeration
+unsub-survey-headline = Du prenumererar inte längre.
 unsub-survey-error = Var god välj en.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Dela
