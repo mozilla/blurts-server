@@ -41,6 +41,9 @@ user-unsubscribed-title = { -product-name } : Abunəlikdən Çıxıldı
 
 pwt-section-headline = Güclü Parol = Daha Yaxşı Qoruma
 pwt-section-subhead = Daha güclü parollar, daha güclü məxfilik qoruması.
+pwt-section-blurb =
+    Parollarınız hesablarınızdan daha çox məlumat qoruyur. Onlarla əlaqəli daha çox məlumatlarınız oğurlana bilər.
+    Oğrular insanların hər yerdə eyni, bənzər və ya çox bilinən parolları işlətmə vərdişlərini istifadə edirlər (telefon nömrəsi və ya doğum tarixi kimi), beləliklə hər hansı bir hesabınızı oğurladıqlarında digərlərini də oğurlaya bilirlər. Hesablarınızı bu addımlarla daha yaxşı qoruya bilərsiz.
 pwt-headline-1 = Hər hesab üçün fərqli parol işlədin
 show-more-breaches = Daha çox göstər
 # breach-date = the calendar date a particular data theft occurred. 
