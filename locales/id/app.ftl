@@ -62,6 +62,12 @@ form-signup-placeholder = Masukkan surel
 no-breaches-headline = Sejauh ini baik baik saja.
 show-more-breaches = Tampilkan Lebih Banyak
 what-to-do-subhead-1 = Ubah sandi Anda, termasuk untuk akun lama
+what-to-do-subhead-2 = Jika Anda menggunakan kembali sandi yang telah terekspos, ubah ia.
+what-to-do-subhead-3 = Ambil langkah ekstra untuk mengamankan akun finansial Anda
 unsub-button = Berhenti Berlangganan
 unsub-survey-headline = Anda telah berhenti berlangganan.
+unsub-survey-thankyou = Terima kasih atas umpan balik Anda.
+unsub-survey-error = Silakan pilih satu.
+# Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
+share = Bagikan
 download-firefox-quantum = Unduh { -brand-Quantum }
