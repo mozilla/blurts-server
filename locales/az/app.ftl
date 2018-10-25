@@ -41,6 +41,7 @@ user-unsubscribed-title = { -product-name } : Abunəlikdən Çıxıldı
 
 pwt-section-headline = Güclü Parol = Daha Yaxşı Qoruma
 pwt-section-subhead = Daha güclü parollar, daha güclü məxfilik qoruması.
+pwt-headline-1 = Hər hesab üçün fərqli parol işlədin
 show-more-breaches = Daha çox göstər
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Oğurlanma tarixi:
