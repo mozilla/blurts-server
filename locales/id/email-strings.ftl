@@ -27,3 +27,6 @@ report-pwt-summary-2 =
     Makin panjang dan makin sebarang sandi, makin sulit pula untuk dicuri.
 report-pwt-headline-3 = Perlakukan pertanyaan keamanan seperti sandi tambahan.
 report-pwt-headline-4 = Gunakan pengelola sandi
+report-pwt-summary-4 =
+    Layanan seperti 1Password, LastPass, Dashlane, dan Bitwarden mampu menghasilkan sandi yang kuat, menyimpannya secara aman, 
+    dan mengisikannya pada situs web sehingga Anda tidak perlu lagi mengingatnya satu per satu.
