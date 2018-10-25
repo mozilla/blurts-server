@@ -925,8 +925,10 @@ body.show-subscribe-modal {
 }
 
 .modal-container,
+.modal-content-wrap,
 body.show-subscribe-modal .modal-content,
-body.show-subscribe-modal .modal-content .modal-content-wrap {
+body.show-subscribe-modal .modal-content .modal-content-wrap,
+.modal-content span.resent-email {
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.2s ease, visibility 0.1s ease;
@@ -934,14 +936,14 @@ body.show-subscribe-modal .modal-content .modal-content-wrap {
 
 body.show-subscribe-modal .modal-container,
 body.show-subscribe-modal .modal-content.show,
-body.show-subscribe-modal .modal-content.show .modal-content-wrap {
+body.show-subscribe-modal .modal-content.show .modal-content-wrap,
+.modal-content.show.sent span.resent-email {
   visibility: visible;
   opacity: 1;
   transition: opacity 0.2s ease, visibility 0.1s ease;
 }
 
 .modal-container {
-  display: none;
   position: fixed;
   z-index: 4;
   background-color: rgba(12, 12, 13, 0.6);
@@ -981,10 +983,12 @@ body.show-subscribe-modal .modal-container {
   border-radius: var(--roundedCorners);
   box-shadow: 0 2px 13px rgba(0, 0, 0, 0.28);
   margin: auto;
+  width: 100%;
   max-width: 550px;
   min-height: 450px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .modal-content h3,
@@ -1021,6 +1025,8 @@ body.show-subscribe-modal .modal-container {
 }
 
 .modal-content button.internal-link {
+  /* transparent border prevents jumping on button focus */
+  border: 1px solid rgba(255, 255, 255, 0);
   background-color: rgba(0, 0, 0, 0);
   color: var(--blue60);
   font-weight: 400;
@@ -1054,12 +1060,12 @@ body.show-subscribe-modal .modal-container {
 .resend-data {
   padding-left: calc(var(-var(--columnSpacing) / 2));
   padding-right: calc(var(-var(--columnSpacing) / 2));
-  margin-top: 0;
   margin-bottom: 0;
+  white-space: normal;
 }
 
-.modal-content.show.sending p,
-.modal-content.show.sent p,
+.modal-content.show.sending .modal-content-wrap p,
+.modal-content.show.sent .modal-content-wrap p,
 .modal-content.show.sending .confirm-your-account-icon,
 .modal-content.show.sent .confirm-your-account-icon,
 .modal-content.show.sending .close-modal,
@@ -1069,7 +1075,8 @@ body.show-subscribe-modal .modal-container {
   transition: all 0.3s ease;
 }
 
-.modal-content.show.sent .close-modal {
+.modal-content.show.sent .close-modal,
+.modal-content.show.sent button.resend-data span.resent-email {
   opacity: 1;
 }
 
@@ -1086,12 +1093,10 @@ body.show-subscribe-modal .modal-container {
   color: rgba(0, 0, 0, 0);
 }
 
-.modal-content.show.sent button.resend-data::after {
-  content: "Sent!";
-  color: #0060df;
-  text-align: center;
-  width: 100%;
+span.resent-email {
+  margin: auto;
   position: absolute;
+  color: #0060df;
   left: 0;
   right: 0;
 }

@@ -5,7 +5,12 @@
       {{> sprite symID="confirm-sending"}}
     </div>
     <p>{{{fluentFormat req.supportedLocales "signup-modal-verify-blurb"}}}<br>{{fluentFormat req.supportedLocales "signup-modal-verify-expiration"}}</p>
-    <button id="resend-data" class="resend-data internal-link">{{fluentFormat req.supportedLocales "signup-modal-verify-resend"}}</button>
-    <button data-analytics-label="After Sign Up" class="close-modal blue-button">{{fluentFormat req.supportedLocales "signup-modal-close"}}</button>
+    <button id="resend-data" class="resend-data internal-link">
+      {{fluentFormat req.supportedLocales "signup-modal-verify-resend"}}
+      <span class="resent-email">{{fluentFormat req.supportedLocales "signup-modal-sent"}}</span>
+    </button>
+    <button data-analytics-label="After Sign Up" class="close-modal blue-button">
+      {{fluentFormat req.supportedLocales "signup-modal-close"}}
+    </button>
   </div>
 </div>
