@@ -35,13 +35,17 @@ user-unsubscribe-token-error = Eliminar suscripción quiere un token.
 
 ## Password Tips
 
+download-firefox-bar-link = Descargar { -brand-name } ahora
+download-firefox-banner-button = Descargar { -brand-name }
 signup-modal-close = Cerrar
 signup-modal-verify-headline = Verificar tu suscripción
+signup-modal-verify-expiration = Este enlace caduca en 24 horas.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = ¡Enviado!
 form-signup-placeholder = Ingresar dirección de correo electrónico
 sign-up = Registrarse
 show-more-breaches = Mostrar más
+unsub-reason-6 = Ninguna de las mencionadas
 unsub-survey-thankyou = Gracias por tus comentarios.
 unsub-survey-error = Por favor, selecciona uno.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
@@ -49,3 +53,5 @@ share = Compartir
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
 tweet = Tuitear
 download-firefox-quantum = Descargar { -brand-Quantum }
+# Features here refers to Firefox browser features. 
+features = Características
