@@ -1,11 +1,13 @@
 ## Breach Data Classes
 
 account-balances = Saldo akun
+address-book-contacts = Kontak buku alamat
 age-groups = Kelompok usia
 ages = Usia
 apps-installed-on-devices = Aplikasi yang terpasang di peranti
 astrological-signs = Lambang astrologi
 audio-recordings = Rekaman audio
+auth-tokens = Token otentikasi
 avatars = Avatar
 bank-account-numbers = Nomor rekening bank
 biometric-data = Data biometrik
@@ -31,6 +33,7 @@ email-addresses = Alamat surel
 email-messages = Pesan surel
 ethnicities = Etnik
 family-members-names = Nama anggota keluarga
+family-plans = Rencana keluarga
 family-structure = Struktur keluarga
 financial-investments = Investasi keuangan
 financial-transactions = Transaksi keuangan
@@ -39,10 +42,14 @@ genders = Gender
 geographic-locations = Lokasi geografis
 government-issued-ids = Identitas yang dikeluarkan pemerintah
 health-insurance-information = Informasi asuransi kesehatan
+historical-passwords = Riwayat kata sandi
+home-loan-information = Informasi pinjaman rumah
 home-ownership-statuses = Status kepemilikan rumah
+homepage-urls = URL beranda
 imei-numbers = Nomor IMEI
 imsi-numbers = Nomor IMSI
 income-levels = Tingkat pendapatan
+instant-messenger-identities = Identitas pesan instan
 ip-addresses = Alamat IP
 job-titles = Jabatan kerja
 mac-addresses = Alamat MAC
