@@ -1,8 +1,10 @@
 ## Breach Data Classes
 
 account-balances = soldes des comptes
+address-book-contacts = contacts du carnet d’adresses
 age-groups = tranches d’âge
 ages = âges
+apps-installed-on-devices = applications installées sur les appareils
 auth-tokens = jetons d’authentification
 avatars = avatars
 biometric-data = données biométriques

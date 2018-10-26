@@ -98,3 +98,5 @@ download-firefox-quantum = Télécharger { -brand-Quantum }
 download-firefox-mobile = Télécharger { -brand-name } mobile
 # Features here refers to Firefox browser features. 
 features = Fonctionnalités
+# beta-nightly-developer-edition refers to additional versions of Firefox Browser
+beta-nightly-developer-edition = Beta, Nightly, Developer Edition
