@@ -5,6 +5,10 @@ click-to-verify =
     Laporan Anda akan segera tiba.
 verify-my-email = Verifikasi Surel Saya
 report-scan-another-email = Pindai Surel Lainnya pada { -product-name }
+automated-message = Ini adalah surel otomatis; Jika Anda menerimanya karena kesalahan, tidak ada yang perlu dilakukan.
+# Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
+we-sent-this-alert = Kami mengirim pesan ini ke { $userEmail } karena alamat surel tersebut mendaftar untuk mendapat pemberitahuan dari { -product-name }.
+unsubscribe-email-link = Jika Anda tidak ingin menerima pemberitahuan { -product-name }, berhenti berlangganan.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Laporan { -product-name }
 report-date = Tanggal Laporan:
@@ -30,3 +34,5 @@ report-pwt-headline-4 = Gunakan pengelola sandi
 report-pwt-summary-4 =
     Layanan seperti 1Password, LastPass, Dashlane, dan Bitwarden mampu menghasilkan sandi yang kuat, menyimpannya secara aman, 
     dan mengisikannya pada situs web sehingga Anda tidak perlu lagi mengingatnya satu per satu.
+# A link to legal information about mozilla products.
+legal = Legal
