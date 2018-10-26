@@ -48,9 +48,21 @@ download-firefox-banner-button = { -brand-name } ڈاونلوڈ کریں
 signup-modal-headline = { -product-name-nowrap } کے لئے سائن اپ کریں
 signup-modal-close = بند کریں
 get-your-report = اپنا رپورٹ حاصل کریں
+signup-modal-verify-headline = آپنی رکنیت کی توثیق کریں
+signup-modal-verify-expiration = یہ لنک 24 گھنٹوں میں ختم ہو جاتا ہے۔
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = ارسال کر دیا گیا!
+form-signup-placeholder = ایمیل درج کریں
+sign-up = سائن اپ کریں
 show-more-breaches = مزید دکھائیں
+what-to-do-subhead-1 = اپنے پاس ورڈ تبدیل کریں، یہاں تک کہ پرانے اکاؤنٹس کا بھی
+unsub-button = رکنیت ختم کریں
 unsub-survey-error = کوئی ایک منتخب کریں۔
+# Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
+share = شیئر کریں
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
 tweet = ٹویٹ
 download-firefox-quantum = { -brand-Quantum } ڈاؤن لوڈ کریں
 download-firefox-mobile = { -brand-name } موبائل ڈاؤن لوڈ کریں
+# Features here refers to Firefox browser features. 
+features = خصوصیات
