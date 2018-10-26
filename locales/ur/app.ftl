@@ -19,10 +19,35 @@ error-not-subscribed = یہ ایمیل ایڈریس { -product-name } مے سب�
 error-hibp-throttled = { -brand-HIBP } کے بہت سے کنکشنس۔
 home-title = { -product-name }
 home-not-found = صفہہ نہیں ملا
+oauth-invalid-session = ناجائز سیشن
+oauth-confirmed-title = { -product-name } : سبسکرائب
+scan-title = { -product-name } : اسکین کے نتائج
+user-add-invalid-email = ناجائز ایمیل
+user-add-email-verify-subject = { -product-name } کے اپنے سبسکرپشن کو تصدیق کریں۔
+user-add-title = { -product-name } : ایمیل کی تصدیق کریں
+user-verify-token-error = توثیق کی ٹوکن درکار ہے۔
+user-verify-email-report-subject = آپکا { -product-name } رپورٹ
+user-verify-title = { -product-name } : سبسکرائب
+user-unsubscribe-token-error = انسبسکریب کرنے کے لئے ایک ٹوکن کی درکار ہے۔
+user-unsubscribe-title = { -product-name } : انسبسکرب
+user-unsubscribe-survey-title = { -product-name } : انسبسکرب سروے
+user-unsubscribed-title = { -product-name } :انسبسکرب ہو گیا
 
 ## Password Tips
 
+pwt-section-headline = مضبوط پاس ورڈ = بہتر تحفظ
+pwt-section-subhead = آپ کی نجی معلومات صرف آپ کے پاس ورڈ کے طور پر محفوظ ہیں۔
+scan-placeholder = ایمیل ایڈریس درج کریں
+scan-privacy = آپ کا ای میل ذخیرہ نہیں کیا جائے گا۔
+scan-submit = آپنا ایمیل تلاش کریں
+scan-another-email = دوسرا ایمیل ایڈریس اسکین کریں
+scan-error = ایک درست ای میل ہونا ضروری ہے۔
+download-firefox-bar-link = { -brand-name } ابھی ڈاونلوڈ کریں
+download-firefox-banner-blurb = اپنے براؤزر کا کنٹرول حاصل کریں
+download-firefox-banner-button = { -brand-name } ڈاونلوڈ کریں
+signup-modal-headline = { -product-name-nowrap } کے لئے سائن اپ کریں
 signup-modal-close = بند کریں
+get-your-report = اپنا رپورٹ حاصل کریں
 show-more-breaches = مزید دکھائیں
 unsub-survey-error = کوئی ایک منتخب کریں۔
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
