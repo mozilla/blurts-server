@@ -15,16 +15,20 @@ layout-support = Podpora
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Poskytnúť spätnú väzbu
 terms-and-privacy = Podmienky a ochrana súkromia
+error-not-subscribed = Táto e-mailová adresa nie je prihlásená na odber zo služby { -product-name }.
 home-not-found = Stránka nebola nájdená.
 user-add-invalid-email = Neplatná e-mailová adresa
 
 ## Password Tips
 
 scan-placeholder = Zadajte e-mailovú adresu
+scan-privacy = Vašu e-mailovú adresu nebudeme nikam ukladať.
 download-firefox-bar-link = Prevezmite si { -brand-name }
 download-firefox-banner-blurb = Prevezmite kontrolu nad svojim prehliadačom
 download-firefox-banner-button = Prevziať { -brand-name }
 signup-modal-close = Zavrieť
+signup-modal-verify-headline = Potvrďte svoje prihlásenie na odber
+signup-modal-verify-blurb = Poslali sme potvrdzovací odkaz na <span id="submitted-email" class="medium"></span>.
 signup-modal-verify-expiration = Platnosť tohto odkazu uplynie o 24 hodín.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Odoslané!
@@ -36,8 +40,18 @@ show-more-breaches = Zobraziť viac
 compromised-accounts = Počet kompromitovaných účtov:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Kompromitované údaje:
+unsub-button = Odhlásiť sa
+unsub-reason-2 = Zo služby { -product-name-nowrap } dostávam príliš veľa e-mailov
 unsub-survey-thankyou = Ďakujeme za vašu spätnú väzbu.
+# Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
+share = Zdieľať
+# Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
+tweet = Tweetovať
+download-firefox-quantum = Prevziať { -brand-Quantum }
+download-firefox-mobile = Prevziať { -brand-name } pre mobil
 # Features here refers to Firefox browser features. 
 features = Funkcie
+# beta-nightly-developer-edition refers to additional versions of Firefox Browser
+beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Údaje o únikoch poskytuje { $hibp-link }
