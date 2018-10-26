@@ -12,6 +12,13 @@
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = سپورٹ
+# Link that takes the user to a Firefox Monitor survey. 
+give-feedback = رائے دیں
+terms-and-privacy = شرائط اور رازداری
+error-not-subscribed = یہ ایمیل ایڈریس { -product-name } مے سبسکرائب نہیں ہے۔
+error-hibp-throttled = { -brand-HIBP } کے بہت سے کنکشنس۔
+home-title = { -product-name }
+home-not-found = صفہہ نہیں ملا
 
 ## Password Tips
 
