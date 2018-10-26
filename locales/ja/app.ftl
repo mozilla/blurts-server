@@ -25,10 +25,35 @@ user-verify-token-error = 検証トークンが必要です。
 
 ## Password Tips
 
-pwt-headline-1 = すべてのアカウントで異なるパスワードを使用してください
+pwt-headline-1 = すべてのアカウントで異なるパスワードを使いましょう
+pwt-summary-1 =
+    さまざまな場所で同じパスワードを使いまわすと、個人情報を盗みだすための扉を大きく開くことになります。
+    誰かがこのパスワードを入手すると、あなたのすべてのアカウントにログインされる恐れがあります。
+pwt-headline-2 = 強度が高く推測されにくいパスワードを作成しましょう
+pwt-summary-2 = 悪いハッカーは数千もの共通パスワードを使ってあなたのパスワードを当てようとします。文字数が多くランダムなパスワードにすることにより、推測されにくくなります。
+pwt-headline-3 = セキュリティの質問は、もう一つのパスワードのように扱いましょう
+pwt-summary-3 =
+    ウェブサイトはあなたの回答が正確かどうかを確認しません。毎回、ただ一致するかどうかを判定するだけです。
+    文字数が多くランダムな回答を作成し、どこか安全な場所に保管してください。
+pwt-headline-4 = パスワードを覚えておくために役立つ情報
+pwt-summary-4 =
+    1Password や LastPass, Dashlane, Bitwarden などのパスワードマネージャーは、強度が高く一意のパスワードを生成します。
+    また、パスワードを安全に保管してウェブサイトへの入力を助けます。
+pwt-headline-5 = 2 段階認証で安全性を高めましょう
+pwt-summary-5 =
+    2 段階認証 (2FA) は、アカウントにログインするために追加の情報 (ワンタイムコードをショートメッセージで送信するなど) を必要とします。
+    誰かがあなたのパスワードを入手してもログインすることはできません。
 scan-placeholder = メールアドレスを入力してください
+scan-submit = あなたのメールアドレスを検索
+scan-another-email = 別のメールアドレスを検索
+download-firefox-bar-link = 今すぐ { -brand-name } をダウンロード
 download-firefox-banner-button = { -brand-name } をダウンロード
 signup-modal-close = 閉じる
+signup-modal-verify-blurb = 登録確認のリンクを <span id="submitted-email" class="medium"></span> へ送信しました。
+signup-modal-verify-expiration = このリンクの有効期限は 24 時間です。
+signup-modal-verify-resend = 受信トレイや迷惑メールフォルダーに見当たらない場合は、再送信します。
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = 送信しました。
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = 共有
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
