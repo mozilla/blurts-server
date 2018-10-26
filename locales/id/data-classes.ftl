@@ -114,4 +114,4 @@ vehicle-details = Detail kendaraan
 website-activity = Aktivitas situs web
 work-habits = Kebiasaan kerja
 years-of-birth = Tahun lahir
-years-of-professional-experience = Tahun pengalaman profesional
+years-of-professional-experience = Bertahun-tahun pengalaman profesional
