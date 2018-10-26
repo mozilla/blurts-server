@@ -37,6 +37,7 @@ user-unsubscribed-title = { -product-name } : Berhenti Berlangganan
 ## Password Tips
 
 pwt-section-headline = Sandi yang Lebih Kuat = Perlindungan yang Lebih Baik
+pwt-section-subhead = Informasi pribadi Anda aman seperti kata sandi Anda.
 pwt-headline-1 = Gunakan kata sandi yang berbeda untuk setiap akun
 pwt-headline-2 = Buat kata sandi yang kuat dan susah ditebak
 pwt-headline-3 = Perlakukan pertanyaan keamanan seperti sandi tambahan.
@@ -76,6 +77,11 @@ form-signup-checkbox = Dapatkan kabar terbaru dari { -brand-Mozilla } dan { -bra
 sign-up = Daftar
 form-signup-error = Harus surel yang valid
 no-breaches-headline = Sejauh ini baik baik saja.
+found-breaches-headline = Informasi Anda tersangkut dalam kebocoran data.
+no-breaches =
+    Alamat surel Anda tidak muncul pada pindaian dasar kami.
+    Kabar yang bagus, tetapi kebocoran data dapat terjadi kapan saja dan masih ada hal lain yang dapat Anda lakukan. 
+    Berlangganan { -product-name-nowrap } untuk laporan lengkap, peringatan ketika terjadi kebocoran baru, dan kiat untuk melindungi sandi Anda.
 featured-breach-results =
     { $breachCount ->
        *[other] Akun Anda muncul dalam kebocoran <span class="bold">{ $featuredBreach }</span>, sebagaimana { $breachCount } kebocoran lainnya.
