@@ -1,7 +1,7 @@
 ## Breach Data Classes
 
 account-balances = 預金残高
-address-book-contacts = アドレス帳連絡先
+address-book-contacts = アドレス帳の連絡先
 age-groups = 年齢層
 ages = 年齢
 apps-installed-on-devices = 端末にインストールされているアプリ
@@ -110,7 +110,8 @@ user-statuses = ユーザー状況
 user-website-urls = ユーザーウェブサイト URL
 usernames = ユーザー名
 utility-bills = 公共料金
-vehicle-details = 自動車の詳細
+vehicle-details = 所有車両の詳細
 website-activity = ウェブサイト使用状況
 work-habits = 労働習慣
 years-of-birth = 生年
+years-of-professional-experience = 勤務年数
