@@ -41,13 +41,23 @@ user-unsubscribed-title = { -product-name } : Tuffɣa seg ujerred tedda
 
 pwt-section-headline = Awal uffir uzmir = Ammesten ufrin
 pwt-section-subhead = Talɣut-ik tusligt tettwadmen ma ttwaḍemnen wawalen-ik uffiren.
+pwt-section-blurb = Awalen-ik uffiren ḥerrzen ugar n yimiḍanen-ik. Ḥerrzen yal abit neɣ talɣut tudmawant yellan deg-sen. Daɣen imakaren imsenselkamen ttfaṛṛasen tagnit seg yir tanumi, am useqdec n yiwen n wawal uffir deg yal amdiq neɣ aseqdec n tinfaliyin yettwassnen (p@ssw0rd, 123) ihi ma kecmen ar yiwen n umiḍan, ad izmiren ad kecmen ɣer ddeqs-nniḍen. Ata wamek i tzemreḍ ad tḥ€rzeḍ imiḍanen-ik.
 pwt-headline-1 = Seqdec awal-nniḍen uffir i yal amiḍan.
+pwt-summary-1 = Tulsa n useqdec n yiwen n wawal uffir deg yal amḍiq ad yeǧǧ tawwurt teldi i takerḍa n timagit. Yal yiwen yesɛan awal-a uffir ad yizmir ad yeqqen ɣer imiḍanen-ik meṛṛa.
 pwt-headline-2 = Rnu awalen uffiren uzmiren iweɛren i tifin
+pwt-summary-2 = Imakaren seqdacen agimen n wawalen uffiren yettwassnen akken ad ɛerḍen ad d-afen ayla-k. Skud awal-ik uffir meqqer, d agacuran, skud ad yettiwɛir i tifin.
+pwt-headline-4 = Awi tallelt akken ad tecfuḍ ɣef wawalen-ik uffiren
+pwt-headline-5 = Rnu taɣellist-nniḍen s usesteb s snat n tarrayin
+pwt-headline-6 = Jerred ar yilɣa { -product-name-nowrap }
+landing-headline = Azref-ik ad teqqimeḍ d aɣelsan seg yimakaren ad yebdu sya.
 scan-placeholder = Sekcem tansa imayl
+scan-privacy = Tansa-ik imayl ur tettwaseklas ara.
 scan-submit = Nadi imayl-ik
 scan-another-email = Sleḍ tansa-nniḍen imayl
 scan-featuredbreach-label = Wali ma yella amiḍan-ik <span class="bold">{ $featuredBreach }</span> yettwaker.
 scan-error = Yessefk ad tili d tansa tameɣtut.
+download-firefox-bar-link = Sider { -brand-name } tura
+download-firefox-banner-blurb = Ṭṭef iminig-ik gar ifassen-ik
 download-firefox-banner-button = Sider { -brand-name }
 signup-modal-headline = Jerred ar { -product-name-nowrap }
 signup-modal-close = Mdel
