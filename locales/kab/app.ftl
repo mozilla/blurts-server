@@ -46,16 +46,25 @@ pwt-headline-1 = Seqdec awal-nniḍen uffir i yal amiḍan.
 pwt-summary-1 = Tulsa n useqdec n yiwen n wawal uffir deg yal amḍiq ad yeǧǧ tawwurt teldi i takerḍa n timagit. Yal yiwen yesɛan awal-a uffir ad yizmir ad yeqqen ɣer imiḍanen-ik meṛṛa.
 pwt-headline-2 = Rnu awalen uffiren uzmiren iweɛren i tifin
 pwt-summary-2 = Imakaren seqdacen agimen n wawalen uffiren yettwassnen akken ad ɛerḍen ad d-afen ayla-k. Skud awal-ik uffir meqqer, d agacuran, skud ad yettiwɛir i tifin.
+pwt-headline-3 = Yessefk ad terreḍ deg uqerru-k d tilufa n yisteqsiyen n tɣellist am wawalen uffiren-nniḍen
+pwt-summary-3 =
+    Ismal web ur senqaden ara ma yella tiririt-ik d tudidt, maca ma mmenṭaḍen yal tikelt.
+    Rnu tiririyin ɣezzifen, tigacuranin, daqen sekles-itent deg umḍiq yettwaḍemnen.
 pwt-headline-4 = Awi tallelt akken ad tecfuḍ ɣef wawalen-ik uffiren
+pwt-summary-4 =
+    Imsefraken n wawalen uffiren am 1Password, LastPass, Dashlane, akked Bitwarden snulfuyen-d awalen uffiren isufen, iǧehden. 
+    Seklasen daɣen s wudem aɣelsan awalen uffiren, ttaččren yes-sen ar yismal web i kečč.
 pwt-headline-5 = Rnu taɣellist-nniḍen s usesteb s snat n tarrayin
 pwt-headline-6 = Jerred ar yilɣa { -product-name-nowrap }
 landing-headline = Azref-ik ad teqqimeḍ d aɣelsan seg yimakaren ad yebdu sya.
+scan-label = Wali ma telliḍ seg wid tḥuza trewla n yisefka.
 scan-placeholder = Sekcem tansa imayl
 scan-privacy = Tansa-ik imayl ur tettwaseklas ara.
 scan-submit = Nadi imayl-ik
 scan-another-email = Sleḍ tansa-nniḍen imayl
 scan-featuredbreach-label = Wali ma yella amiḍan-ik <span class="bold">{ $featuredBreach }</span> yettwaker.
 scan-error = Yessefk ad tili d tansa tameɣtut.
+signup-banner-headline = { -product-name-nowrap } yettaf-d uguren ɣef yimiḍanen-ik srid.
 download-firefox-bar-link = Sider { -brand-name } tura
 download-firefox-banner-blurb = Ṭṭef iminig-ik gar ifassen-ik
 download-firefox-banner-button = Sider { -brand-name }
@@ -63,12 +72,14 @@ signup-modal-headline = Jerred ar { -product-name-nowrap }
 signup-modal-close = Mdel
 get-your-report = Awi aneqqis-ik
 signup-modal-verify-headline = Senqed ajerred-ik
+signup-modal-verify-blurb = Nuzen aseɣwen n usentem ar <span id="submitted-email" class="medium"></span>.
 signup-modal-verify-expiration = Aseɣwen-a ad yemmet deg 24 n yisragen.
 signup-modal-verify-resend = Ulac-it deg tnaka n urmas neɣ akaram n yispamen? Ales tuzna.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Yettwazen!
 signup-with-fxa = Jerred s umiḍan { -brand-name }
 form-signup-placeholder = Sekcem imayl
+form-signup-checkbox = Awi aneggaru i d-yeffɣen seg { -brand-Mozilla } d { -brand-name }.
 sign-up = Jerred
 form-signup-error = Yessefk ad yili d imayl ameɣtu
 no-breaches-headline = Ar da, igerrez.
@@ -76,6 +87,7 @@ found-breaches-headline = Talɣut-ik tettwaker deg yiwet n trewla n yisefka.
 show-more-breaches = Sken ugar
 what-to-do-headline = Acu ara txedmeḍ ticki talɣut-ik tban-d deg trewla n yisefka
 what-to-do-subhead-1 = Beddel awalen-ik uffiren, xas ma d imiḍanen iqbuṛen
+what-to-do-subhead-2 = Ma tulseḍ aseqdec n wawal uffir yettuḥazen, beddel-it
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Azemz n trewla n yisefka:
 # compromised accounts = the total number of user accounts exposed in data breach
