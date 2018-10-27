@@ -72,17 +72,27 @@ scan-another-email = Skanna en annan e-postadress
 scan-featuredbreach-label = Ta reda på om ditt <span class="bold"> { $featuredBreach } </span> konto har äventyrats.
 scan-error = Måste vara en giltig e-postadress.
 signup-banner-headline = { -product-name-nowrap } upptäcker hot mot dina konton på nätet.
+signup-banner-blurb = Din detaljerade rapport från { -product-name-nowrap } visar om information från dina konton på nätet har läckt eller stulits. Vi kommer också att varna dig om dina konton visas på nya webbsidor.
+download-firefox-bar-blurb = { -product-name-nowrap } presenteras av <span class="nowrap">helt nya { -brand-name }</span>.
 download-firefox-bar-link = Hämta { -brand-name } nu
 download-firefox-banner-blurb = Ta kontroll över din webbläsare
 download-firefox-banner-button = Hämta { -brand-name }
 signup-modal-headline = Registrera dig för { -product-name-nowrap }
+signup-modal-blurb = Registrera dig för din fullständiga rapport, varningar när nya överträdelser inträffar och säkerhetsanvisningar från { -product-name-nowrap }.
 signup-modal-close = Stäng
 get-your-report = Få din rapport
 signup-modal-verify-headline = Verifiera din prenumeration
 signup-modal-verify-blurb = Vi skickade en verifieringslänk till <span id="submitted-email" class="medium"></span>.
 signup-modal-verify-expiration = Den här länken upphör om 24 timmar.
+form-signup-placeholder = Ange e-postadress
+sign-up = Registrera dig
+form-signup-error = Måste vara en giltig e-postadress
+no-breaches-headline = Än så länge verkar allt bra.
+found-breaches-headline = Din information var en del av en dataöverträdelse.
+show-more-breaches = Visa mer
 unsub-button = Avsluta prenumeration
 unsub-survey-headline = Du prenumererar inte längre.
+unsub-survey-thankyou = Tack för din återkoppling.
 unsub-survey-error = Var god välj en.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Dela
