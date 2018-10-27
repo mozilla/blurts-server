@@ -18,6 +18,24 @@ terms-and-privacy = Terma dan Privasi
 error-not-subscribed = Alamat e-mel ini tidak dilanggan ke { -product-name }.
 error-hibp-throttled = Terlalu banyak sambungan ke { -brand-HIBP }.
 error-hibp-connect = Ralat menyambung ke { -brand-HIBP }.
+error-hibp-load-breaches = Tidak dapat memuat pelanggaran keselamatan.
+hibp-notify-email-subject = { -product-name } Amaran: Akaun anda terlibat dalam pelanggaran keselamatan.
+home-title = { -product-name }
+home-not-found = Halaman tidak ditemui.
+oauth-invalid-session = Sesi tidak sah
+oauth-confirmed-title = { -product-name }: Dilanggan
+scan-title = { -product-name }: Imbas Keputusan
+user-add-invalid-email = E-mail tidak sah
+user-add-email-verify-subject = Sahkan langganan anda untuk { -product-name }.
+user-add-title = { -product-name }: Sahkan E-mel
+user-verify-token-error = Token pengesahan diperlukan.
+user-verify-email-report-subject = Laporan { -product-name } anda
+user-verify-title = { -product-name }: Dilanggan
+user-unsubscribe-token-error = Perlu ada token untuk membatalkan langganan.
+user-unsubscribe-token-email-error = Perlu ada token dan emailHash untuk membatalkan langganan.
+user-unsubscribe-title = { -product-name }: Nyahlanggan
+user-unsubscribe-survey-title = { -product-name }: Nyahlanggan Kajian
+user-unsubscribed-title = { -product-name }: Dinyahlanggan
 
 ## Password Tips
 
