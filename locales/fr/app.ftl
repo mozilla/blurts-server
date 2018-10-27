@@ -66,6 +66,7 @@ download-firefox-banner-blurb = Reprenez le contrôle de votre navigateur
 download-firefox-banner-button = Télécharger { -brand-name }
 signup-modal-headline = Inscrivez-vous à { -product-name-nowrap }
 signup-modal-close = Fermer
+signup-modal-verify-blurb = Nous avons envoyé un lien de vérification à <span id="submitted-email" class="medium"></span>
 signup-modal-verify-resend = Vous ne voyez rien dans votre boîte de réception ni dans le dossier des indésirables ? Renvoyez le message.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Envoyé !
