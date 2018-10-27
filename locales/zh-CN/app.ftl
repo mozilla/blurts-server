@@ -18,8 +18,8 @@ terms-and-privacy = 使用条款和隐私
 error-not-subscribed = 此电子邮件地址未订阅 { -product-name }。
 error-hibp-throttled = 与 { -brand-HIBP } 的连接过多。
 error-hibp-connect = 连接 { -brand-HIBP } 时出错。
-error-hibp-load-breaches = 未能加载泄露信息。
-hibp-notify-email-subject = { -product-name } 警报：您的账号信息已遭泄露。
+error-hibp-load-breaches = 未能加载泄漏信息。
+hibp-notify-email-subject = { -product-name } 警报：您的账号信息已遭泄漏。
 home-title = { -product-name }
 home-not-found = 找不到网页。
 oauth-invalid-session = 无效会话
@@ -65,12 +65,12 @@ pwt-summary-5 =
     双因素验证要求提供一些额外信息（例如通过短信接收的一次性验证码）才能登录账号。
     即使有人拿到了您的密码，他们也无法登录。
 pwt-headline-6 = 订阅 { -product-name-nowrap } 警报
-pwt-summary-6 = 网站数据外泄事件越来越多，当有新的泄露事件加入到我们的数据库后，{ -product-name-nowrap } 就会发送警报给您，这样您就可以快速采取措施，保​​护自己的账号。
+pwt-summary-6 = 网站数据外泄事件越来越多，当有新的泄漏事件加入到我们的数据库后，{ -product-name-nowrap } 就会发送警报给您，这样您就可以快速采取措施，保​​护自己的账号。
 landing-headline = 您获得安全，不受黑客影响的权利，从这里开始。
 landing-blurb =
     { -product-name-nowrap } 为您提供工具来确保个人信息的安全。
     看看黑客们已经知道您的哪些信息，以及该如何抢先一步，确保安全。
-scan-label = 看看您是否遭受到密码泄露事件的影响。
+scan-label = 看看您是否遭受到密码泄漏事件的影响。
 scan-placeholder = 输入电子邮件地址
 scan-privacy = 我们不会存储您的电子邮件地址。
 scan-submit = 搜索您的电子邮件
@@ -124,7 +124,7 @@ scan-results =
        *[other] 与您的电子邮件地址相关联的账号，出现在下列 { $breachCount } 次数据外泄事件中。
     }
 show-more-breaches = 显示更多
-what-to-do-headline = 如果您的信息出现在泄露事件中，您该怎么办
+what-to-do-headline = 如果您的信息出现在泄漏事件中，您该怎么办
 what-to-do-subhead-1 = 更改密码，即使是旧账号也是如此
 what-to-do-blurb-1 =
     若您无法登录，请联系网站询问如何来更改密码或者删除账号。
@@ -135,8 +135,8 @@ what-to-do-blurb-2 =
     请为每个网站设置不同的密码，尤其是银行账号、电子邮件账号，以及其他您用来存储个人信息的网站。
 what-to-do-subhead-3 = 采取额外步骤来保护您的金融账户
 what-to-do-blurb-3 =
-    大多数的数据泄露事件只会泄露电子邮件地址与密码，但某些事件中也会包含敏感的个人财务信息。
-    若您的银行账户或信用卡卡号也遭泄露，请通知银行以预防盗用，并检查月结账单，检查是否有不明的交易记录。
+    大多数的数据泄漏事件只会泄漏电子邮件地址与密码，但某些事件中也会包含敏感的个人财务信息。
+    若您的银行账户或信用卡卡号也遭泄漏，请通知银行以预防盗用，并检查月结账单，检查是否有不明的交易记录。
 what-to-do-subhead-4 = 获取帮助以创建好的密码并保证其安全。
 what-to-do-blurb-4 =
     如 1Password、LastPass、Dashlane 和 Bitwarden 等密码管理器可以生成强健、唯一的密码，
@@ -182,5 +182,5 @@ copyright-info =
     &#x24B8; 1998–2018 部分内容著作权由个别 mozilla.org 贡献者所有。
     内容遵循<a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">知识共享许可协议</a>进行授权。
 # Breach data provided by Have I Been Pwned.
-hibp-attribution = 泄露数据由 { $hibp-link } 提供
+hibp-attribution = 泄漏数据由 { $hibp-link } 提供
 site-description = 您的账号信息是否在数据外泄事件中被泄漏或遭窃？可到 { -product-name } 查看。欢迎在我们的数据库中搜索并订阅警报。
