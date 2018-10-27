@@ -23,11 +23,48 @@ hibp-notify-email-subject = { -product-name } varning: Ditt konto var inblandat 
 home-title = { -product-name }
 home-not-found = Sidan hittades inte.
 oauth-invalid-session = Ogiltig session
+oauth-confirmed-title = { -product-name }: Prenumererar
+scan-title = { -product-name }: Skanna resultat
 user-add-invalid-email = Ogiltig e-postadress
 user-add-email-verify-subject = Verifiera din prenumeration på { -product-name }.
+user-add-title = { -product-name }: Bekräfta e-postadress
+user-verify-token-error = Verifieringstecken är obligatoriskt.
+user-verify-email-report-subject = Ditt rapport för { -product-name }
+user-verify-title = { -product-name }: Prenumererar
+user-unsubscribe-token-error = Avsluta prenumeration kräver ett tecken.
+user-unsubscribe-token-email-error = Avsluta prenumeration kräver ett tecken och emailHash.
+user-unsubscribe-title = { -product-name }: Avsluta prenumeration
+user-unsubscribe-survey-title = { -product-name }: Avsluta undersökning
+user-unsubscribed-title = { -product-name }: Avslutat prenumeration
 
 ## Password Tips
 
+pwt-section-headline = Starkare lösenord = bättre skydd
+pwt-section-subhead = Din privata information är endast lika säker som dina lösenord.
+pwt-section-blurb = Dina lösenord skyddar mer än dina konton. De skyddar alla personliga uppgifter som finns i dem. Hackare litar på dåliga vanor, som att använda samma lösenord överallt eller använda vanliga fraser (p@ssw0rd, någon?) så att de kan hacka många om de hackar ett konto. Så här skyddar du dina konton bättre.
+pwt-headline-1 = Använd olika lösenord för varje konto
+pwt-summary-1 = Återanvändning av samma lösenord överallt lämnar dörren öppen för identitetsstöld. Alla med det lösenordet kan logga in på alla dina konton.
+pwt-headline-2 = Skapa starka, svåra lösenord att gissa
+pwt-summary-2 =
+    Hackers använder tusentals vanliga lösenord för att försöka gissa ditt.
+    Ju längre och mer slumpmässigt ditt lösenord är desto svårare blir det att gissa.
+pwt-headline-3 = Behandla säkerhetsfrågor som extra lösenord
+pwt-summary-3 =
+    Webbplatser kontrollerar inte att dina svar är korrekta, bara att de matchar varje gång.
+    Skapa långa, slumpmässiga svar och lagra dem någonstans säkert.
+pwt-headline-4 = Få hjälp med att komma ihåg dina lösenord
+pwt-summary-4 =
+    Lösenordshanterare som 1Password, LastPass, Dashlane och Bitwarden genererar starka, unika lösenord. 
+    De lagrar också lösenord säkert och fyller i dem på webbplatser åt dig
+pwt-headline-5 = Lägg till extra säkerhet med tvåfaktorsautentisering
+pwt-summary-5 = 2FA kräver ytterligare information (en engångskod som skickas via SMS) för att logga in på ditt konto. Även om någon har ditt lösenord kan de inte komma in.
+pwt-headline-6 = Registrera dig för varningar från { -product-name-nowrap }
+pwt-summary-6 = Webbplatsöverträdelser ökar. Så snart en ny överträdelse läggs till i vår databas skickar { -product-name-nowrap } dig en varning - så du kan vidta åtgärder och skydda ditt konto.
+landing-headline = Din rätt att vara säker från hackare börjar här.
+landing-blurb =
+    { -product-name-nowrap } ger dig verktyg för att hålla din personliga information säker. 
+    Ta reda på vad hackare redan vet om dig, och lära dig hur du kan ligga ett steg före dem.
+scan-label = Se om du har varit inblandad i en dataöverträdelse.
 scan-placeholder = Ange e-postadress
 scan-privacy = Din e-post lagras inte.
 scan-submit = Sök efter din e-postadress
