@@ -19,6 +19,6 @@ what-to-do-next = Qué hacer a continuación
 report-headline =
     { $breachCount ->
         [0] Por ahora, todo bien
-        [one] Tu cuenta apareció en { $breachCount } violaciones.
+        [one] Tu cuenta apareció en { $breachCount } violación.
        *[other] Tus cuentas aparecieron en { $breachCount } violaciones.
     }
