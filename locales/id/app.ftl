@@ -54,12 +54,19 @@ pwt-summary-2 =
     Para peretas menggunakan ribuan sandi yang lazim untuk mencoba menebak sandi Anda.
     Makin panjang dan sebarang sandi Anda, makin sulit pula untuk menebaknya.
 pwt-headline-3 = Perlakukan pertanyaan keamanan seperti sandi tambahan.
+pwt-summary-3 =
+    Situs web tidak memeriksa apakah jawaban Anda akurat; situs web hanya memeriksa kecocokannya.
+    Buat jawaban yang panjang dan sebarang, lalu taruh di tempat yang aman.
 pwt-headline-4 = Dapatkan bantuan mengingat sandi Anda
 pwt-summary-4 =
     Pengelola sandi seperti 1Password, LastPass, Dashlane, dan Bitwarden mampu menghasilkan sandi yang kuat dan unik. 
     Pengelola sandi juga akan menyimpan sandi dengan aman dan mengisikannya pada situs web untuk kepentingan Anda
 pwt-headline-5 = Tambahkan pengamanan ekstra dengan autentikasi dua faktor
+pwt-summary-5 =
+    Autentikasi dua faktor (ADF) memerlukan informasi tambahan lain (seperti kode sekali pakai yang dikirimkan melalui pesan teks) untuk masuk ke akun Anda. 
+    Bahkan ketika seseorang telah memiliki sandi Anda, ia tidak akan dapat masuk begitu saja.
 pwt-headline-6 = Daftar untuk peringatan { -product-name-nowrap }
+pwt-summary-6 = Kebocoran data situs web terus meningkat. Begitu kebocoran baru telah ditambahkan ke basis data kami, { -product-name-nowrap } akan segera memberi Anda peringatan — sehingga Anda dapat mengambil tindakan dan melindungi akun Anda.
 landing-headline = Hak Anda untuk aman dari para peretas dimulai dari sini.
 landing-blurb = { -product-name-nowrap } mempersenjatai Anda dengan peralatan yang menjaga informasi pribadi Anda tetap aman. Cari tahu apa yang telah peretas ketahui tentang Anda, dan pelajari bagaimana supaya selalu selangkah di depan mereka.
 scan-label = Periksa apakah Anda tersangkut dalam kebocoran data.
@@ -70,6 +77,9 @@ scan-another-email = Pindai Alamat Surel Lainnya
 scan-featuredbreach-label = Cari tahu apakah akun <span class="bold">{ $featuredBreach }</span> Anda telah diketahui orang lain.
 scan-error = Harus surel yang valid.
 signup-banner-headline = { -product-name-nowrap } mendeteksi ancaman terhadap akun daring Anda.
+signup-banner-blurb =
+    Laporan { -product-name-nowrap } terperinci Anda menunjukkan apakah informasi dari akun daring Anda telah terkuak atau tercuri. 
+    Kami juga akan memberi Anda peringatan jika akun Anda muncul pada kebocoran situs web yang baru.
 download-firefox-bar-blurb = { -product-name-nowrap } dipersembahkan oleh <span class="nowrap">{ -brand-name } yang serba baru</span>.
 download-firefox-bar-link = Unduh { -brand-name } sekarang
 download-firefox-banner-blurb = Ambil alih kendali peramban Anda

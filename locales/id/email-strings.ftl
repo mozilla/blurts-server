@@ -24,6 +24,9 @@ report-headline =
 report-subhead-found-breaches = Berikut adalah laporan lengkap Firefox Monitor Anda, yang mencakup seluruh kebocoran data yang diketahui memuat alamat surel ini.
 breach-alert-headline = Akun Anda tersangkut dalam kebocoran data.
 breach-alert-subhead = Kebocoran data yang terlaporkan baru-baru ini memuat surel Anda dan data berikut ini
+report-pwt-blurb =
+    Sandi begitu berarti, hingga ribuan darinya dicuri setiap hari dan diperjualbelikan di pasar gelap.
+    Sandi yang lebih kuat akan melindungi akun Anda dan seluruh informasi pribadi yang ada di dalamnya.
 report-pwt-headline-1 = Gunakan sandi yang berbeda untuk setiap akun
 report-pwt-headline-2 = Buat sandi yang kuat dan unik
 report-pwt-summary-2 =
