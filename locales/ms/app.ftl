@@ -43,11 +43,22 @@ pwt-section-headline = Kata Laluan Lebih Sulit = Perlindungan Lebih Selamat
 pwt-section-subhead = Maklumat peribadi anda selamat seperti kata laluan anda.
 pwt-headline-1 = Guna kata laluan yang berbeza untuk setiap akaun
 pwt-headline-2 = Cipta kata laluan yang sukar diteka
+scan-placeholder = Masukkan Alamat E-mel
+scan-privacy = E-mel anda tidak akan disimpan.
 scan-submit = Cari E-mel Anda
 scan-another-email = Imbas Alamat E-mel Lain
 scan-featuredbreach-label = Ketahui samada akaun <span class="bold">{ $featuredBreach } </span> anda telah dikompromi.
 scan-error = Perlu e-mel yang sah
 signup-banner-headline = { -product-name-nowrap } mengesan ancaman terhadap akaun atas talian anda.
+download-firefox-banner-button = Muat turun { -brand-name }
+signup-modal-headline = Daftar untuk { -product-name-nowrap }
+signup-modal-blurb = Daftar untuk mendapatkan laporan penuh, makluman apabila ada pelanggaran keselamatan baru dan panduan keselamatan dari { -product-name-nowrap }.
+signup-modal-close = Tutup
+get-your-report = Dapatkan Laporan Anda
+signup-modal-verify-headline = Sahkan Langganan Anda
+signup-modal-verify-blurb = Kami telah menghantar pautan pengesahan ke <span id="submitted-email" class="medium"></span> .
+signup-modal-verify-expiration = Pautan ini luput dalam 24 jam.
+signup-modal-verify-resend = Tiada dalam peti masuk atau folder spam? Hantar semula.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Sudah dihantar!
 signup-with-fxa = Daftar dengan Akaun { -brand-name }
