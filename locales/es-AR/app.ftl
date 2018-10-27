@@ -87,16 +87,6 @@ form-signup-error = Debe ser una dirección de correo electrónico válida
 no-breaches-headline = Por ahora va todo bien.
 found-breaches-headline = Tu información fue parte de una violación de datos.
 no-breaches = Tu dirección de correo electrónico no apareció en nuestro escaneo básico. Es una buena noticia, pero las violaciones de datos pueden ocurrir en cualquier momento y todavía hay más que podés hacer. Suscribite a { -product-name-nowrap } para obtener un informe completo, alertas cuando ocurran nuevas violaciones y consejos para proteger tus contraseñas.
-featured-breach-results =
-    { $breachCount ->
-        [one] Tu cuenta apareció en la violación de <span class="bold"> pr{ $featuredBreach } </span> pero no aparece en ninguna otra violación de datos conocida
-       *[other] Tu cuenta apareció en la violación de <span class="bold"> { $featuredBreach } </span>, así como en otra violación.
-    }
-scan-results =
-    { $breachCount ->
-        [one] Tu cuenta apareció en { $breachCount } violación.
-       *[other] Cuentas asociadas con tu dirección de correo electrónico aparecieron en las siguientes { $breachCount } violaciones.
-    }
 show-more-breaches = Mostrar más
 what-to-do-headline = Qué hacer cuando tu información se expone en una violación de datos
 what-to-do-subhead-1 = Cambiá tus contraseñas, incluso para cuentas antiguas

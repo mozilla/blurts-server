@@ -16,8 +16,3 @@ your-full-report = Aquí está tu informe completo de { -product-name }, que inc
 report-no-breaches = Tu dirección de correo electrónico no apareció en nuestra base de datos de violaciones. Pero las mismas pueden ocurrir en cualquier momento. Seguí estos pasos para mantener tus datos personales seguros en línea.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Qué hacer a continuación
-report-headline =
-    { $breachCount ->
-        [one] Tu cuenta apareció en { $breachCount } violaciones.
-       *[other] Tus cuentas aparecieron en { $breachCount } violaciones.
-    }
