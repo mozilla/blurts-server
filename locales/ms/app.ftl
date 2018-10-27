@@ -39,3 +39,21 @@ user-unsubscribed-title = { -product-name }: Dinyahlanggan
 
 ## Password Tips
 
+pwt-section-headline = Kata Laluan Lebih Sulit = Perlindungan Lebih Selamat
+pwt-section-subhead = Maklumat peribadi anda selamat seperti kata laluan anda.
+pwt-headline-1 = Guna kata laluan yang berbeza untuk setiap akaun
+pwt-headline-2 = Cipta kata laluan yang sukar diteka
+scan-submit = Cari E-mel Anda
+scan-another-email = Imbas Alamat E-mel Lain
+scan-featuredbreach-label = Ketahui samada akaun <span class="bold">{ $featuredBreach } </span> anda telah dikompromi.
+scan-error = Perlu e-mel yang sah
+signup-banner-headline = { -product-name-nowrap } mengesan ancaman terhadap akaun atas talian anda.
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = Sudah dihantar!
+signup-with-fxa = Daftar dengan Akaun { -brand-name }
+form-signup-placeholder = Masukkan e-mel
+form-signup-checkbox = Ketahui perkembangan terbaru dari { -brand-Mozilla } dan { -brand-name }.
+sign-up = Daftar
+form-signup-error = Perlu e-mel yang sah
+no-breaches-headline = Nampak bagus buat setakat ini.
+found-breaches-headline = Maklumat anda menjadi sebahagian daripada pelanggaran keselamatan data.
