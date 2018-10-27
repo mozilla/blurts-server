@@ -113,6 +113,7 @@ compromised-accounts = Akun yang telah diketahui orang lain:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Data yang telah diketahui orang lain:
 confirmed = Terkonfirmasi!<br />Anda Telah Berlangganan!
+confirmed-social-blurb = Jika data Anda bocor, kemungkinan data teman, keluarga, atau koneksi daring Anda juga mengalaminya. Beri tahu mereka tentang { -product-name-nowrap }.
 unsub-headline = Berhenti berlangganan { -product-name-nowrap }
 unsub-blurb = Ini akan menghapus surel Anda dari daftar { -product-name-nowrap } dan Anda tidak akan menerima peringatan lagi ketika ada pengumuman kebocoran yang baru.
 unsub-button = Berhenti Berlangganan
@@ -139,5 +140,11 @@ download-firefox-mobile = Unduh { -brand-name } Seluler
 features = Fitur
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# The following string contains HTML markup which should not be translated. 
+# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
+copyright-info =
+    Bagian-bagian konten ini merupakan Ⓒ 1998-2018 oleh kontributor individu mozilla.org. <br />
+    Konten tersedia di bawah <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">lisensi Creative Commons</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Data kebocoran tersedia oleh { $hibp-link }
+site-description = Pernahkah akun Anda terkuak atau tercuri dalam kebocoran data? Cari tahu di { -product-name }. Telusuri basis data kami dan daftarkan diri untuk mendapatkan peringatan.
