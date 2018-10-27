@@ -46,7 +46,13 @@ pwt-section-blurb =
     Dan para peretas mengandalkan kebiasaan buruk, seperti menggunakan sandi yang sama di mana-mana atau menggunakan frasa yang biasa (p@ssw0rd, teman-teman?) 
     sehingga ketika mereka meretas satu akun, mereka bisa meretas banyak akun. Beginilah cara untuk melindungi akun Anda dengan lebih baik.
 pwt-headline-1 = Gunakan kata sandi yang berbeda untuk setiap akun
+pwt-summary-1 =
+    Menggunakan kembali sandi yang sama di mana-mana akan membiarkan pintu yang terbuka untuk pencurian identitas. 
+    Siapa pun yang memiliki sandi tersebut dapat masuk ke semua akun Anda.
 pwt-headline-2 = Buat kata sandi yang kuat dan susah ditebak
+pwt-summary-2 =
+    Para peretas menggunakan ribuan sandi yang lazim untuk mencoba menebak sandi Anda.
+    Makin panjang dan sebarang sandi Anda, makin sulit pula untuk menebaknya.
 pwt-headline-3 = Perlakukan pertanyaan keamanan seperti sandi tambahan.
 pwt-headline-4 = Dapatkan bantuan mengingat sandi Anda
 pwt-summary-4 =
