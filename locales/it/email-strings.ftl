@@ -2,3 +2,5 @@
 -product-name = Firefox Monitor
 report-pwt-headline-1 = Utilizza una password diversa per ogni account
 report-pwt-headline-4 = Utilizza un gestore di password
+# A link to legal information about mozilla products.
+legal = Note legali
