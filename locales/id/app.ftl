@@ -41,6 +41,10 @@ user-unsubscribed-title = { -product-name } : Berhenti Berlangganan
 
 pwt-section-headline = Sandi yang Lebih Kuat = Perlindungan yang Lebih Baik
 pwt-section-subhead = Informasi pribadi Anda aman seperti kata sandi Anda.
+pwt-section-blurb =
+    Sandi Anda melindungi lebih dari sekadar akun Anda. Sandi dapat melindungi setiap titik informasi pribadi yang ada di dalamnya. 
+    Dan para peretas mengandalkan kebiasaan buruk, seperti menggunakan sandi yang sama di mana-mana atau menggunakan frasa yang biasa (p@ssw0rd, teman-teman?) 
+    sehingga ketika mereka meretas satu akun, mereka bisa meretas banyak akun. Beginilah cara untuk melindungi akun Anda dengan lebih baik.
 pwt-headline-1 = Gunakan kata sandi yang berbeda untuk setiap akun
 pwt-headline-2 = Buat kata sandi yang kuat dan susah ditebak
 pwt-headline-3 = Perlakukan pertanyaan keamanan seperti sandi tambahan.
@@ -110,8 +114,12 @@ compromised-accounts = Akun yang telah diketahui orang lain:
 compromised-data = Data yang telah diketahui orang lain:
 confirmed = Terkonfirmasi!<br />Anda Telah Berlangganan!
 unsub-headline = Berhenti berlangganan { -product-name-nowrap }
+unsub-blurb = Ini akan menghapus surel Anda dari daftar { -product-name-nowrap } dan Anda tidak akan menerima peringatan lagi ketika ada pengumuman kebocoran yang baru.
 unsub-button = Berhenti Berlangganan
 unsub-survey-headline = Anda telah berhenti berlangganan.
+unsub-survey-blurb =
+    Surel Anda telah berhenti berlangganan { -product-name-nowrap }. Terima kasih telah menggunakan layanan ini. 
+    Anda bersedia untuk sejenak menjawab satu pertanyaan tentang pengalaman Anda?
 unsub-survey-form-label = Mengapa Anda berhenti berlangganan peringatan { -product-name-nowrap }?
 unsub-reason-1 = Saya rasa peringatannya tidak membuat data saya semakin aman
 unsub-reason-2 = Saya menerima terlalu banyak surel dari { -product-name-nowrap }
