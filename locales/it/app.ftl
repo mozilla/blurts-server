@@ -33,6 +33,7 @@ user-verify-email-report-subject = Il tuo rapporto di { -product-name }
 user-verify-title = { -product-name } : Iscrizione completata
 user-unsubscribe-token-error = È richiesto un token per annullare l’iscrizione.
 user-unsubscribe-token-email-error = Sono richiesti un token e un emaiHash per annullare l’iscrizione.
+user-unsubscribe-title = { -product-name } : Annulla iscrizione
 user-unsubscribe-survey-title = { -product-name } : Sondaggio annullamento iscrizione
 user-unsubscribed-title = { -product-name } : Iscrizione annullata
 
