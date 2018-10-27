@@ -18,8 +18,8 @@ terms-and-privacy = 使用条款和隐私
 error-not-subscribed = 此电子邮件地址未订阅 { -product-name }。
 error-hibp-throttled = 与 { -brand-HIBP } 的连接过多。
 error-hibp-connect = 连接 { -brand-HIBP } 时出错。
-error-hibp-load-breaches = 未能加载泄漏信息。
-hibp-notify-email-subject = { -product-name } 警报：您的账号信息已遭泄漏。
+error-hibp-load-breaches = 未能加载泄露信息。
+hibp-notify-email-subject = { -product-name } 警报：您的账号信息已遭泄露。
 home-title = { -product-name }
 home-not-found = 找不到网页。
 oauth-invalid-session = 无效会话
@@ -65,12 +65,12 @@ pwt-summary-5 =
     双因素验证要求提供一些额外信息（例如通过短信接收的一次性验证码）才能登录账号。
     即使有人拿到了您的密码，他们也无法登录。
 pwt-headline-6 = 订阅 { -product-name-nowrap } 警报
-pwt-summary-6 = 网站数据外泄事件越来越多，当有新的泄漏事件加入到我们的数据库后，{ -product-name-nowrap } 就会发送警报给您，这样您就可以快速采取措施，保​​护自己的账号。
+pwt-summary-6 = 网站数据外泄事件越来越多，当有新的泄露事件加入到我们的数据库后，{ -product-name-nowrap } 就会发送警报给您，这样您就可以快速采取措施，保​​护自己的账号。
 landing-headline = 您获得安全，不受黑客影响的权利，从这里开始。
 landing-blurb =
     { -product-name-nowrap } 为您提供工具来确保个人信息的安全。
     看看黑客们已经知道您的哪些信息，以及该如何抢先一步，确保安全。
-scan-label = 看看您是否遭受到密码泄漏事件的影响。
+scan-label = 看看您是否遭受到密码泄露事件的影响。
 scan-placeholder = 输入电子邮件地址
 scan-privacy = 我们不会存储您的电子邮件地址。
 scan-submit = 搜索您的电子邮件
@@ -79,7 +79,7 @@ scan-featuredbreach-label = 了解您的<span class="bold"> { $featuredBreach } 
 scan-error = 须为有效的电子邮件地址。
 signup-banner-headline = { -product-name-nowrap } 检测针对您的线上账户的威胁。
 signup-banner-blurb =
-    您的 { -product-name-nowrap } 详细报告可显示您的哪些在线账号已遭窃或泄漏。
+    您的 { -product-name-nowrap } 详细报告可显示您的哪些在线账号已遭窃或泄露。
     我们也会在您的账号出现于新的网站数据外泄事件时通知您。
 download-firefox-bar-blurb = { -product-name-nowrap } 由<span class="nowrap">焕然一新的 { -brand-name }</span> 提供。
 download-firefox-bar-link = 立即下载 { -brand-name }
@@ -124,34 +124,34 @@ scan-results =
        *[other] 与您的电子邮件地址相关联的账号，出现在下列 { $breachCount } 次数据外泄事件中。
     }
 show-more-breaches = 显示更多
-what-to-do-headline = 如果您的信息出现在泄漏事件中，您该怎么办
+what-to-do-headline = 如果您的信息出现在泄露事件中，您该怎么办
 what-to-do-subhead-1 = 更改密码，即使是旧账号也是如此
 what-to-do-blurb-1 =
     若您无法登录，请联系网站询问如何来更改密码或者删除账号。
     发现有您不知道的账号？有可能网站已改名，或是别人盗用您的身份注册了账号。
-what-to-do-subhead-2 = 若您重复使用了已泄漏的密码，请更改该密码
+what-to-do-subhead-2 = 若您重复使用了已泄露的密码，请更改该密码
 what-to-do-blurb-2 =
-    黑客很可能利用您已遭泄漏的密码，尝试登录您在其他网站上的账号，这也被称为“撞库”攻击。
+    黑客很可能利用您已遭泄露的密码，尝试登录您在其他网站上的账号，这也被称为“撞库”攻击。
     请为每个网站设置不同的密码，尤其是银行账号、电子邮件账号，以及其他您用来存储个人信息的网站。
 what-to-do-subhead-3 = 采取额外步骤来保护您的金融账户
 what-to-do-blurb-3 =
-    大多数的数据泄漏事件只会泄漏电子邮件地址与密码，但某些事件中也会包含敏感的个人财务信息。
-    若您的银行账户或信用卡卡号也遭泄漏，请通知银行以预防盗用，并检查月结账单，检查是否有不明的交易记录。
+    大多数的数据泄露事件只会泄露电子邮件地址与密码，但某些事件中也会包含敏感的个人财务信息。
+    若您的银行账户或信用卡卡号也遭泄露，请通知银行以预防盗用，并检查月结账单，检查是否有不明的交易记录。
 what-to-do-subhead-4 = 获取帮助以创建好的密码并保证其安全。
 what-to-do-blurb-4 =
     如 1Password、LastPass、Dashlane 和 Bitwarden 等密码管理器可以生成强健、唯一的密码，
     安全地存储密码，并为您自动填写到网站上。
 # breach-date = the calendar date a particular data theft occurred. 
-breach-date = 泄漏日期
+breach-date = 泄露日期
 # compromised accounts = the total number of user accounts exposed in data breach
-compromised-accounts = 泄漏账户数量
+compromised-accounts = 泄露账户数量
 # compromised-data = the kind of user data exposed to hackers in data breach.
-compromised-data = 泄漏的数据
+compromised-data = 泄露的数据
 confirmed = 成功确认！<br />您已完成订阅！
-confirmed-blurb = { -product-name-nowrap } 会尽快通过电子邮件向您发送完整报告，如果您的账号出现在新报告的泄漏事件中，我们会发送电子邮件提醒。
+confirmed-blurb = { -product-name-nowrap } 会尽快通过电子邮件向您发送完整报告，如果您的账号出现在新报告的泄露事件中，我们会发送电子邮件提醒。
 confirmed-social-blurb = 若您的数据遭到外泄，很有可能您的朋友、家人、网络上的朋友也会受到影响。也让他们知道 { -product-name-nowrap } 吧！
 unsub-headline = 退订 { -product-name-nowrap }
-unsub-blurb = 这将使您的电子邮件地址移出 { -product-name-nowrap } 列表，在发生新的数据泄漏事件时，您将不再收到警报。
+unsub-blurb = 这将使您的电子邮件地址移出 { -product-name-nowrap } 列表，在发生新的数据泄露事件时，您将不再收到警报。
 unsub-button = 退订
 unsub-survey-headline = 您的退订已成功。
 unsub-survey-blurb =
@@ -182,5 +182,5 @@ copyright-info =
     &#x24B8; 1998–2018 部分内容著作权由个别 mozilla.org 贡献者所有。
     内容遵循<a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">知识共享许可协议</a>进行授权。
 # Breach data provided by Have I Been Pwned.
-hibp-attribution = 泄漏数据由 { $hibp-link } 提供
-site-description = 您的账号信息是否在数据外泄事件中被泄漏或遭窃？可到 { -product-name } 查看。欢迎在我们的数据库中搜索并订阅警报。
+hibp-attribution = 泄露数据由 { $hibp-link } 提供
+site-description = 您的账号信息是否在数据外泄事件中被泄露或遭窃？可到 { -product-name } 查看。欢迎在我们的数据库中搜索并订阅警报。
