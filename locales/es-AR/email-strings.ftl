@@ -22,3 +22,18 @@ report-headline =
         [one] Tu cuenta apareció en { $breachCount } violación.
        *[other] Tus cuentas aparecieron en { $breachCount } violaciones.
     }
+report-subhead-no-breaches = Tu cuenta no aparece en nuestro informe completo de violaciones. Son buenas noticias, pero hay más que podés hacer. Las violaciones de datos ocurren en cualquier momento, así que seguí leyendo para saber cómo podés proteger tus contraseñas.
+report-subhead-found-breaches = Aquí está tu informe completo de Firefox Monitor, que incluye todas las violaciones de datos conocidas que contienen esta dirección de correo electrónico.
+breach-alert-headline = Tu cuenta estuvo involucrada en una violación de datos.
+breach-alert-subhead = Una violación de datos informada recientemente contiene tu dirección de correo electrónico y los siguientes datos
+report-pwt-blurb = Las contraseñas son tan valiosas que miles de ellas son robadas cada día y negociadas o vendidas en el mercado negro. Las contraseñas más seguras protegen tus cuentas y toda la información personal incluida en ellas.
+report-pwt-headline-1 = Usá una contraseña diferente para cada cuenta
+report-pwt-summary-1 = Reutilizar la misma contraseña en todas partes abre la puerta a los piratas. Pueden usar esa contraseña para iniciar sesión en tus otras cuentas.
+report-pwt-headline-2 = Creá contraseñas seguras y únicas.
+report-pwt-summary-2 = Los piratas usan miles de contraseñas comunes para tratar de adivinar la tuya. Cuanto más larga y aleatoria sea tu contraseña, más difícil será de adivinar.
+report-pwt-headline-3 = Tratá  las preguntas de seguridad como contraseñas adicionales
+report-pwt-summary-3 = Los sitios web no verifican que tus respuestas sean precisas, solo que coincidan cada vez. Creá respuestas largas y aleatorias y guardalas en un lugar seguro.
+report-pwt-headline-4 = Usá un administrador de contraseñas
+report-pwt-summary-4 = Los servicios como 1Password, LastPass, Dashlane y Bitwarden generan contraseñas seguras, las almacenan de forma segura y las rellenan en sitios web para que no tengas que recordar cada una de ellas.
+# A link to legal information about mozilla products.
+legal = Legal
