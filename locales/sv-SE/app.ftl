@@ -98,6 +98,24 @@ no-breaches =
     Din e-postadress visas inte i vår grundläggande skanning. 
     Det är bra nyheter, men dataöverträdelser kan hända när som helst och det finns fortfarande mer du kan göra. 
     Prenumerera på { -product-name-nowrap } för en fullständig rapport, varnar när nya överträdelser uppstår och tipsar om hur du skyddar dina lösenord.
+featured-breach-results =
+    { $breachCount ->
+        [0] Ditt konto förkommer i dataintrånget <span class="bold">{ $featuredBreach }</span>, men verkar inte förekomma i några andra kända dataintrång.
+        [one] Ditt konto förekom i intrånget <span class="bold">{ $featuredBreach }</span>, liksom { $breachCount } annat intrång.
+       *[other] Ditt konto förekom i intrånget <span class="bold">{ $featuredBreach }</span>, liksom { $breachCount } andra intrång.
+    }
+featured-breach-not-compromised =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Ditt konto förekom inte i intrånget <span class="bold">{ $featuredBreach }</span>, men förekom i ett annat intrång.
+       *[other] Ditt konto förekom inte i intrånget <span class="bold">{ $featuredBreach }</span>, men förekom i { $breachCount } andra intrång.
+    }
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Ditt konto förekom i { $breachCount } intrång.
+       *[other] Konton som är kopplade till din e-postadress förekom i följande { $breachCount } intrång.
+    }
 show-more-breaches = Visa mer
 what-to-do-headline = Vad ska du göra när din information är utsatt för ett dataöverträdelse
 what-to-do-subhead-1 = Ändra dina lösenord, även för gamla konton
