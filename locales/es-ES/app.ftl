@@ -33,6 +33,7 @@ show-more-breaches = Mostrar más
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Datos comprometidos:
 confirmed = ¡Confirmado!<br />¡Estás suscrito!
+unsub-reason-6 = Ninguno de las anteriores
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Compartir
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
