@@ -54,9 +54,21 @@ pwt-summary-2 =
     Penggodam menggunakan beribu-ribu kata laluan lazim untuk kata laluan anda.
     Semakin panjang dan lebih rawak kata laluan itu, semakin sukar untuk diteka.
 pwt-headline-3 = Anggap soalan keselamatan seperti kata laluan tambahan
+pwt-summary-3 =
+    Laman web tidak memeriksa jawapan yang tepat, hanya yang sepadan.
+    Cipta jawapan yang panjang, rawak dan simpan di tempat yang selamat.
 pwt-headline-4 = Dapatkan bantuan untuk mengingati kata laluan anda
+pwt-summary-4 =
+    Pengurus kata laluan seperti 1Password, LastPass, Dashlane, dan Bitwarden menghasilkan kata laluan yang sukar dan unik.
+    Juga menyimpan kata laluan dengan selamat dan memasukkannya ke dalam laman web untuk anda
 pwt-headline-5 = Tambah keselamatan dengan pengesahan dua faktor
+pwt-summary-5 =
+    2FA memerlukan maklumat tambahan (seperti kod tunggal yang dihantar melalui mesej teks) untuk log masuk ke akaun anda.
+    Walaupun seseorang ada kata laluan anda, mereka tidak boleh log masuk.
 pwt-headline-6 = Daftar untuk makluman { -product-name-nowrap }
+pwt-summary-6 =
+    Pelanggaran keselamatan data laman web semakin meningkat. Sebaik sahaja pelanggaran keselamatan baru dimasukkan ke dalam pangkalan data kami,
+    { -product-name-nowrap } menghantar amaran kepada anda - supaya anda boleh mengambil tindakan dan melindungi akaun anda.
 landing-headline = Hak anda untuk selamat daripada penggodam bermula di sini.
 scan-label = Lihat samada anda terlibat dalam pelanggaran keselamatan data.
 scan-placeholder = Masukkan Alamat E-mel
