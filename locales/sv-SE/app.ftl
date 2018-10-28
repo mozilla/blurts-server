@@ -18,8 +18,8 @@ terms-and-privacy = Villkor och sekretess
 error-not-subscribed = Den här e-postadressen prenumererar inte på { -product-name }.
 error-hibp-throttled = För många anslutningar till { -brand-HIBP }.
 error-hibp-connect = Det gick inte att ansluta till { -brand-HIBP }.
-error-hibp-load-breaches = Kunde inte ladda överträdelser.
-hibp-notify-email-subject = { -product-name } varning: Ditt konto var inblandat i en överträdelse.
+error-hibp-load-breaches = Kunde inte ladda intrång.
+hibp-notify-email-subject = { -product-name } varning: Ditt konto var inblandat i ett intrång.
 home-title = { -product-name }
 home-not-found = Sidan hittades inte.
 oauth-invalid-session = Ogiltig session
@@ -59,12 +59,12 @@ pwt-summary-4 =
 pwt-headline-5 = Lägg till extra säkerhet med tvåfaktorsautentisering
 pwt-summary-5 = 2FA kräver ytterligare information (en engångskod som skickas via SMS) för att logga in på ditt konto. Även om någon har ditt lösenord kan de inte komma in.
 pwt-headline-6 = Registrera dig för varningar från { -product-name-nowrap }
-pwt-summary-6 = Webbplatsöverträdelser ökar. Så snart en ny överträdelse läggs till i vår databas skickar { -product-name-nowrap } dig en varning - så du kan vidta åtgärder och skydda ditt konto.
+pwt-summary-6 = Webbplatsintrång ökar. Så snart ett nytt intrång läggs till i vår databas skickar { -product-name-nowrap } dig en varning - så du kan vidta åtgärder och skydda ditt konto.
 landing-headline = Din rätt att vara säker från hackare börjar här.
 landing-blurb =
     { -product-name-nowrap } ger dig verktyg för att hålla din personliga information säker. 
     Ta reda på vad hackare redan vet om dig, och lära dig hur du kan ligga ett steg före dem.
-scan-label = Se om du har varit inblandad i en dataöverträdelse.
+scan-label = Se om du har varit inblandad i en dataintrång.
 scan-placeholder = Ange e-postadress
 scan-privacy = Din e-post lagras inte.
 scan-submit = Sök efter din e-postadress
@@ -78,7 +78,7 @@ download-firefox-bar-link = Hämta { -brand-name } nu
 download-firefox-banner-blurb = Ta kontroll över din webbläsare
 download-firefox-banner-button = Hämta { -brand-name }
 signup-modal-headline = Registrera dig för { -product-name-nowrap }
-signup-modal-blurb = Registrera dig för din fullständiga rapport, varningar när nya överträdelser inträffar och säkerhetsanvisningar från { -product-name-nowrap }.
+signup-modal-blurb = Registrera dig för din fullständiga rapport, varningar när nya intrång inträffar och säkerhetsanvisningar från { -product-name-nowrap }.
 signup-modal-close = Stäng
 get-your-report = Få din rapport
 signup-modal-verify-headline = Verifiera din prenumeration
@@ -93,11 +93,11 @@ form-signup-checkbox = Få det senaste från { -brand-Mozilla } och { -brand-nam
 sign-up = Registrera dig
 form-signup-error = Måste vara en giltig e-postadress
 no-breaches-headline = Än så länge verkar allt bra.
-found-breaches-headline = Din information var en del av en dataöverträdelse.
+found-breaches-headline = Din information var en del av ett dataintrång.
 no-breaches =
     Din e-postadress visas inte i vår grundläggande skanning. 
-    Det är bra nyheter, men dataöverträdelser kan hända när som helst och det finns fortfarande mer du kan göra. 
-    Prenumerera på { -product-name-nowrap } för en fullständig rapport, varnar när nya överträdelser uppstår och tipsar om hur du skyddar dina lösenord.
+    Det är bra nyheter, men dataintrång kan hända när som helst och det finns fortfarande mer du kan göra. 
+    Prenumerera på { -product-name-nowrap } för en fullständig rapport, som varnar när nya intrång uppstår och tipsar om hur du skyddar dina lösenord.
 featured-breach-results =
     { $breachCount ->
         [0] Ditt konto förkommer i dataintrånget <span class="bold">{ $featuredBreach }</span>, men verkar inte förekomma i några andra kända dataintrång.
@@ -117,26 +117,26 @@ scan-results =
        *[other] Konton som är kopplade till din e-postadress förekom i följande { $breachCount } intrång.
     }
 show-more-breaches = Visa mer
-what-to-do-headline = Vad ska du göra när din information är utsatt för ett dataöverträdelse
+what-to-do-headline = Vad ska du göra när din information är utsatt för ett dataintrång
 what-to-do-subhead-1 = Ändra dina lösenord, även för gamla konton
 what-to-do-blurb-1 = Om du inte kan logga in, kontakta webbplatsen för att fråga hur du kan återställa eller stänga av kontot. Ser du ett konto du inte känner igen? Webbplatsen kan ha ändrat namn eller någon kan ha skapat ett konto åt dig.
 what-to-do-subhead-2 = Om du återanvänder ett exponerat lösenord, ändra det
 what-to-do-blurb-2 = Hackare kan försöka återanvända ditt exponerade lösenord för att komma in på andra konton. Skapa ett annat lösenord för varje webbplats, särskilt för ditt bankkonto, e-post och andra webbplatser där du sparar personlig information.
 what-to-do-subhead-3 = Ta extra steg för att säkra dina finansiella konton
-what-to-do-blurb-3 = De flesta överträdelser visar bara e-postadresser och lösenord, men vissa inkluderar känslig finansiell information. Om ditt bankkonto eller kreditkortsnummer ingår i en överträdelse, varna din bank för eventuella bedrägerier och bevaka avgifter som du inte känner igen.
+what-to-do-blurb-3 = De flesta intrång visar bara e-postadresser och lösenord, men vissa inkluderar känslig finansiell information. Om ditt bankkonto eller kreditkortsnummer ingår i ett intrång, varna din bank för eventuella bedrägerier och bevaka avgifter som du inte känner igen.
 what-to-do-subhead-4 = Få hjälp med att skapa bra lösenord och hålla dem säkra.
 what-to-do-blurb-4 = Lösenordshanterare som 1Password, LastPass, Dashlane och Bitwarden genererar starka lösenord, lagrar dem säkert och fyller i dem på webbplatser åt dig.
 # breach-date = the calendar date a particular data theft occurred. 
-breach-date = Överträdelsedatum:
+breach-date = Intrångsdatum:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Berörda konton:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Berörd data:
 confirmed = Bekräftat!<br />Du är prenumerant!
-confirmed-blurb = { -product-name-nowrap } skickar dig en fullständig rapport inom kort och varnar om ditt konto visas i en ny rapporterad överträdelse.
-confirmed-social-blurb = Om du har drabbats av en överträdelse är chansen stor att dina vänner, familj eller kontakter på nätet har drabbats med. Berätta för dem om { -product-name-nowrap }.
+confirmed-blurb = { -product-name-nowrap } skickar dig en fullständig rapport inom kort och varnar om ditt konto visas i ett nytt rapporterat intrång.
+confirmed-social-blurb = Om du har drabbats av ett intrång är chansen stor att dina vänner, familj eller kontakter på nätet har drabbats med. Berätta för dem om { -product-name-nowrap }.
 unsub-headline = Avsluta prenumerationen från { -product-name-nowrap }
-unsub-blurb = Detta kommer att ta bort din e-postadress från listan { -product-name-nowrap } och du får inte längre varningar när nya överträdelser meddelas.
+unsub-blurb = Detta kommer att ta bort din e-postadress från listan { -product-name-nowrap } och du får inte längre varningar när nya intrång meddelas.
 unsub-button = Avsluta prenumeration
 unsub-survey-headline = Du prenumererar inte längre.
 unsub-survey-blurb = Din e-postadress är borttagen från { -product-name-nowrap }. Tack för att du använde den här tjänsten. Har du tid en stund att svara på några frågor om din upplevelse?
@@ -164,4 +164,4 @@ beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 copyright-info = Delar av detta innehåll är  &#x24B8; 1998-2018 av enskilda mozilla.org-bidragsgivare. <br />Innehållet är tillgängligt under en <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons-licens</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Breach data tillhandahålls av { $hibp-link }
-site-description = Har dina konton läckt eller blivit stulna vid en dataöverträdelse? Ta reda på det hos { -product-name }. Sök i vår databas och registrera dig för varningar.
+site-description = Har dina konton läckt eller blivit stulna vid ett dataintrång? Ta reda på det hos { -product-name }. Sök i vår databas och registrera dig för varningar.
