@@ -99,6 +99,8 @@ no-breaches =
     Det är bra nyheter, men dataöverträdelser kan hända när som helst och det finns fortfarande mer du kan göra. 
     Prenumerera på { -product-name-nowrap } för en fullständig rapport, varnar när nya överträdelser uppstår och tipsar om hur du skyddar dina lösenord.
 show-more-breaches = Visa mer
+what-to-do-headline = Vad ska du göra när din information är utsatt för ett dataöverträdelse
+what-to-do-subhead-1 = Ändra dina lösenord, även för gamla konton
 unsub-button = Avsluta prenumeration
 unsub-survey-headline = Du prenumererar inte längre.
 unsub-survey-thankyou = Tack för din återkoppling.
