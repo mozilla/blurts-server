@@ -18,6 +18,7 @@ report-no-breaches = Din e-postadress finns inte i vår databas med kända över
 what-to-do-next = Nästa steg
 report-headline =
     { $breachCount ->
+        [0] Än så länge är allt bra.
         [one] Ditt konto figurerar i { $breachCount } överträdelse.
        *[other] Dina konton figurerar i { $breachCount } överträdelser.
     }
