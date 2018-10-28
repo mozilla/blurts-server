@@ -46,8 +46,13 @@ pwt-section-blurb =
     Dan penggodam bergantung pada tabiat buruk seseorang, seperti menggunakan kata laluan yang sama atau frasa umum (p@ ssw0rd, sesiapa?) supaya
     jika berjaya menggodam satu akaun, mereka boleh menggodam lebih banyak akaun. Inilah cara yang lebih baik untuk melindungi akaun anda.
 pwt-headline-1 = Guna kata laluan yang berbeza untuk setiap akaun
-pwt-summary-1 = Menggunakan kata laluan yang sama membuka peluang untuk kecurian identiti. Sesiapa yang menggunakan kata laluan itu boleh log masuk ke semua akaun anda.
+pwt-summary-1 =
+    Menggunakan kata laluan yang sama membuka peluang untuk kecurian identiti.
+    Sesiapa yang menggunakan kata laluan itu boleh log masuk ke semua akaun anda.
 pwt-headline-2 = Cipta kata laluan yang sukar diteka
+pwt-summary-2 =
+    Penggodam menggunakan beribu-ribu kata laluan lazim untuk kata laluan anda.
+    Semakin panjang dan lebih rawak kata laluan itu, semakin sukar untuk diteka.
 pwt-headline-3 = Anggap soalan keselamatan seperti kata laluan tambahan
 pwt-headline-4 = Dapatkan bantuan untuk mengingati kata laluan anda
 pwt-headline-5 = Tambah keselamatan dengan pengesahan dua faktor
