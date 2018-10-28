@@ -113,3 +113,7 @@ compromised-data = Data dikompromi:
 confirmed = Disahkan! <br /> Anda Sudah Melanggan!
 confirmed-blurb = { -product-name-nowrap } akan menghantar e-mel  laporan lengkap kepada anda tidak lama lagi, dan akan menghantar e-mel amaran jika akaun anda ada dilaporkan dalam pelanggaran keselamatan baru.
 confirmed-social-blurb = Jika anda ada pelanggaran keselamatan, kemungkinan juga berlaku kepada rakan, keluarga, atau talian anda. Maklumkan kepada mereka perihal { -product-name-nowrap }.
+unsub-headline = Henti langganan { -product-name-nowrap }
+unsub-blurb = Ini akan mengeluarkan e-mel anda daripada senarai { -product-name-nowrap } dan anda tidak lagi akan menerima makluman apabila ada makluman  pelanggaran keselamatan baru.
+unsub-button = Henti langganan
+unsub-survey-headline = Anda tidak lagi melanggan.
