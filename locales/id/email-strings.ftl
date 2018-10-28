@@ -28,11 +28,17 @@ report-pwt-blurb =
     Sandi begitu berarti, hingga ribuan darinya dicuri setiap hari dan diperjualbelikan di pasar gelap.
     Sandi yang lebih kuat akan melindungi akun Anda dan seluruh informasi pribadi yang ada di dalamnya.
 report-pwt-headline-1 = Gunakan sandi yang berbeda untuk setiap akun
+report-pwt-summary-1 =
+    Menggunakan kembali sandi yang sama di mana-mana akan membuka pintu bagi para peretas.
+    Mereka dapat menggunakan sandi itu untuk masuk ke akun Anda yang lain.
 report-pwt-headline-2 = Buat sandi yang kuat dan unik
 report-pwt-summary-2 =
     Para peretas menggunakan daftar sandi yang umum untuk mencoba menebak sandi Anda.
     Makin panjang dan makin sebarang sandi, makin sulit pula untuk dicuri.
 report-pwt-headline-3 = Perlakukan pertanyaan keamanan seperti sandi tambahan.
+report-pwt-summary-3 =
+    Situs web tidak memeriksa apakah jawaban Anda akurat; situs web hanya memeriksa kecocokannya.
+    Buat jawaban yang panjang dan sebarang, lalu simpan di tempat yang aman.
 report-pwt-headline-4 = Gunakan pengelola sandi
 report-pwt-summary-4 =
     Layanan seperti 1Password, LastPass, Dashlane, dan Bitwarden mampu menghasilkan sandi yang kuat, menyimpannya secara aman, 
