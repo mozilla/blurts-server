@@ -84,7 +84,11 @@ get-your-report = Få din rapport
 signup-modal-verify-headline = Verifiera din prenumeration
 signup-modal-verify-blurb = Vi skickade en verifieringslänk till <span id="submitted-email" class="medium"></span>.
 signup-modal-verify-expiration = Den här länken upphör om 24 timmar.
+signup-modal-verify-resend = Inte i inkorg eller skräppost? Skicka igen.
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = Skickat!
 form-signup-placeholder = Ange e-postadress
+form-signup-checkbox = Få det senaste från { -brand-Mozilla } och { -brand-name }.
 sign-up = Registrera dig
 form-signup-error = Måste vara en giltig e-postadress
 no-breaches-headline = Än så länge verkar allt bra.
