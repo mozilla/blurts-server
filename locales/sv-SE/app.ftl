@@ -87,12 +87,17 @@ signup-modal-verify-expiration = Den här länken upphör om 24 timmar.
 signup-modal-verify-resend = Inte i inkorg eller skräppost? Skicka igen.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Skickat!
+signup-with-fxa = Registrera dig med { -brand-name }-konto
 form-signup-placeholder = Ange e-postadress
 form-signup-checkbox = Få det senaste från { -brand-Mozilla } och { -brand-name }.
 sign-up = Registrera dig
 form-signup-error = Måste vara en giltig e-postadress
 no-breaches-headline = Än så länge verkar allt bra.
 found-breaches-headline = Din information var en del av en dataöverträdelse.
+no-breaches =
+    Din e-postadress visas inte i vår grundläggande skanning. 
+    Det är bra nyheter, men dataöverträdelser kan hända när som helst och det finns fortfarande mer du kan göra. 
+    Prenumerera på { -product-name-nowrap } för en fullständig rapport, varnar när nya överträdelser uppstår och tipsar om hur du skyddar dina lösenord.
 show-more-breaches = Visa mer
 unsub-button = Avsluta prenumeration
 unsub-survey-headline = Du prenumererar inte längre.
