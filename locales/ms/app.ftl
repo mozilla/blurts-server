@@ -41,6 +41,10 @@ user-unsubscribed-title = { -product-name }: Dinyahlanggan
 
 pwt-section-headline = Kata Laluan Lebih Sulit = Perlindungan Lebih Selamat
 pwt-section-subhead = Maklumat peribadi anda selamat seperti kata laluan anda.
+pwt-section-blurb =
+    Kata laluan bukan sahaja melindungi akaun anda. Juga melindungi setiap maklumat peribadi yang berada di dalamnya.
+    Dan penggodam bergantung pada tabiat buruk seseorang, seperti menggunakan kata laluan yang sama atau frasa umum (p@ ssw0rd, sesiapa?) supaya
+    jika berjaya menggodam satu akaun, mereka boleh menggodam lebih banyak akaun. Inilah cara yang lebih baik untuk melindungi akaun anda.
 pwt-headline-1 = Guna kata laluan yang berbeza untuk setiap akaun
 pwt-headline-2 = Cipta kata laluan yang sukar diteka
 pwt-headline-6 = Daftar untuk makluman { -product-name-nowrap }
