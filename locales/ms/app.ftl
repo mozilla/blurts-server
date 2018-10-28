@@ -43,6 +43,8 @@ pwt-section-headline = Kata Laluan Lebih Sulit = Perlindungan Lebih Selamat
 pwt-section-subhead = Maklumat peribadi anda selamat seperti kata laluan anda.
 pwt-headline-1 = Guna kata laluan yang berbeza untuk setiap akaun
 pwt-headline-2 = Cipta kata laluan yang sukar diteka
+pwt-headline-6 = Daftar untuk makluman { -product-name-nowrap }
+landing-headline = Hak anda untuk selamat daripada penggodam bermula di sini.
 scan-placeholder = Masukkan Alamat E-mel
 scan-privacy = E-mel anda tidak akan disimpan.
 scan-submit = Cari E-mel Anda
