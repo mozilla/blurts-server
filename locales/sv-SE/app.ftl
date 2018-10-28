@@ -112,8 +112,23 @@ what-to-do-blurb-4 = Lösenordshanterare som 1Password, LastPass, Dashlane och B
 breach-date = Överträdelsedatum:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Berörda konton:
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Berörd data:
+confirmed = Bekräftat!<br />Du är prenumerant!
+confirmed-blurb = { -product-name-nowrap } skickar dig en fullständig rapport inom kort och varnar om ditt konto visas i en ny rapporterad överträdelse.
+confirmed-social-blurb = Om du har drabbats av en överträdelse är chansen stor att dina vänner, familj eller kontakter på nätet har drabbats med. Berätta för dem om { -product-name-nowrap }.
+unsub-headline = Avsluta prenumerationen från { -product-name-nowrap }
+unsub-blurb = Detta kommer att ta bort din e-postadress från listan { -product-name-nowrap } och du får inte längre varningar när nya överträdelser meddelas.
 unsub-button = Avsluta prenumeration
 unsub-survey-headline = Du prenumererar inte längre.
+unsub-survey-blurb = Din e-postadress är borttagen från { -product-name-nowrap }. Tack för att du använde den här tjänsten. Har du tid en stund att svara på några frågor om din upplevelse?
+unsub-survey-form-label = Varför avslutar du varningar från { -product-name-nowrap }?
+unsub-reason-1 = Jag tror att varningarna inte gör mina data säkrare
+unsub-reason-2 = Jag får för många e-postmeddelanden från { -product-name-nowrap }
+unsub-reason-3 = Jag finner inte tjänsten värdefull
+unsub-reason-4 = Jag har redan vidtagit åtgärder för att skydda mina konton
+unsub-reason-5 = Jag använder en annan tjänst för att övervaka mina konton
+unsub-reason-6 = Inget av ovanstående
 unsub-survey-thankyou = Tack för din återkoppling.
 unsub-survey-error = Var god välj en.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
@@ -126,3 +141,9 @@ download-firefox-mobile = Hämta { -brand-name } för mobil
 features = Funktioner
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# The following string contains HTML markup which should not be translated. 
+# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
+copyright-info = Delar av detta innehåll är  &#x24B8; 1998-2018 av enskilda mozilla.org-bidragsgivare. <br />Innehållet är tillgängligt under en <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons-licens</a>.
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Breach data tillhandahålls av { $hibp-link }
+site-description = Har dina konton läckt eller blivit stulna vid en dataöverträdelse? Ta reda på det hos { -product-name }. Sök i vår databas och registrera dig för varningar.
