@@ -13,6 +13,7 @@ layout-Firefox = { -brand-name }
 layout-support = Ondersteuning
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Feedback geven
+error-hibp-load-breaches = Kon datalekken niet laden.
 home-title = { -product-name }
 home-not-found = Pagina niet gevonden.
 oauth-invalid-session = Ongeldige sessie
@@ -22,6 +23,13 @@ user-add-title = { -product-name } : E-mailadres bevestigen
 
 ## Password Tips
 
+pwt-headline-1 = Gebruik voor iedere account een ander wachtwoord
+pwt-summary-1 = Hergebruik van hetzelfde wachtwoord zet de deur wagenwijd open voor identiteitsroof. Iedereen met dat wachtwoord kan zich bij al uw accounts aanmelden.
+pwt-headline-2 = Maak sterke, moeilijk te raden wachtwoorden
+pwt-summary-3 = Websites controleren niet of uw antwoorden kloppen, alleen maar of ze telkens overeenkomen. Maak lange, willekeurige antwoorden en bewaar ze op een veilige plek.
+pwt-headline-5 = Voeg extra beveiliging toe met authenticatie in twee stappen
+scan-label = Bekijk of u betrokken bent bij een datalek.
+scan-placeholder = Voer e-mailadres in
 scan-privacy = Uw e-mailadres wordt niet opgeslagen.
 scan-submit = Uw e-mailadres zoeken
 scan-another-email = Een ander e-mailadres scannen
