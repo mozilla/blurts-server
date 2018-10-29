@@ -32,9 +32,31 @@ user-verify-token-error = Se requiere el token de verificación.
 user-verify-email-report-subject = Tu reporte de { -product-name }
 user-verify-title = { -product-name } : Suscrito
 user-unsubscribe-token-error = Eliminar suscripción quiere un token.
+user-unsubscribe-token-email-error = Eliminar suscripción requiere un token y con correo electrónico.
+user-unsubscribe-title = { -product-name } : Eliminar suscripción
+user-unsubscribe-survey-title = { -product-name } : Eliminar suscripción a encuesta
+user-unsubscribed-title = { -product-name } : Suscripción eliminada
 
 ## Password Tips
 
+pwt-section-headline = Contraseñas más seguras = Mejor protección
+pwt-section-subhead = Tu información privada está tan segura como tus contraseñas.
+pwt-section-blurb =
+    Tus contraseñas protegen más que tus cuentas. Protegen cada parte de tu información personal que contienen.
+    Los hackers confían los malos hábitos de la gente, como usar la misma contraseña para todo o usar frases comunes (p@ssw0rd, anyone?) así que
+    ellos tratan de dañar una cuenta, pueden dañar muchas.  Aquí mostramos como proteger mejor tus cuentas.
+pwt-headline-1 = Usa una contraseña diferente para cada cuenta
+pwt-summary-1 =
+    Volver a usar la misma contraseña en todos lados deja la puerta abierta para el robo de información.
+    Cualquiera con esa contraseña puede acceder a todas tus cuentas.
+pwt-headline-2 = Crea una contraseña fuerte y difícil de adivinar
+pwt-summary-2 =
+    Los hackers usan miles de contraseñas comunes para tratar de adivinar la tuya.
+    Mientras más larga y más aleatoria es tu contraseña, es más difícil que la adivinen.
+pwt-headline-3 = Trata las preguntas de seguridad como contraseñas adicionales
+pwt-summary-3 =
+    Los sitios web no revisan que tus contraseñas sean correctas, solamente que concuerden.
+    Crea contraseñas largas y aleatorias y almacénalas en algún lugar seguro.
 download-firefox-bar-link = Descargar { -brand-name } ahora
 download-firefox-banner-button = Descargar { -brand-name }
 signup-modal-close = Cerrar
