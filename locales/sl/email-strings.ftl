@@ -1,8 +1,10 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+click-to-verify =
+    V naslednjih 24 urah kliknite gumb Potrdi e-poštni naslov za potrditev vašega računa Firefox Monitor.
+    Nato vam bomo poslali poročilo.
 verify-my-email = Potrdi e-poštni naslov
 automated-message = Sporočilo je bilo poslano samodejno. Če ste ga prejeli po pomoti, vam ni potrebno storiti ničesar.
-unsubscribe-link = Če ne želite več prejemati opozoril { -product-name }ja, se odjavite
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Poročilo { -product-name }
 report-date = Datum poročila:
