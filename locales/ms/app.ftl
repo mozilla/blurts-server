@@ -138,3 +138,4 @@ features = Ciri
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Data pelanggaran keselamatan disediakan oleh { $hibp-link }
+site-description = Adakah akaun anda terdedah atau dicuri dalam data pelanggaran keselamatan? Semak di { -product-name }. Cari pangkalan data kami dan daftar untuk makluman.
