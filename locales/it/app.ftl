@@ -52,3 +52,35 @@ pwt-headline-2 = Crea password complesse e difficili da indovinare
 pwt-summary-2 =
     Gli hacker utilizzano milioni di password comuni per cercare di indovinare la tua.
     Più lunga e casuale è la tua password, più sarà difficile indovinarla.
+pwt-headline-3 = Tratta le domande di sicurezza come password aggiuntive
+pwt-summary-3 =
+    I siti web non controllano che le risposte siano accurate, ma solo che corrispondano ogni volta.
+    Crea risposte lunghe e complesse e archiviale in un posto sicuro.
+pwt-headline-4 = Fatti dare una mano a ricordare le password
+pwt-summary-4 =
+    I gestori di password come 1Password, LastPass, Dashlane e Bitwarden possono generare password complesse e uniche. 
+    Sono anche in grado di memorizzarle in modo sicuro e inserirle direttamente nei siti web quando li visiti.
+pwt-summary-5 =
+    L’autenticazione a due fattori (2FA) richiede un’informazione aggiuntiva, come un codice inviato tramite SMS, per accedere all’account.
+    Anche se qualcuno conosce la tua password, non potrà accedere.
+pwt-headline-6 = Iscriviti agli avvisi di { -product-name-nowrap }
+pwt-summary-6 = Le violazioni di dati dei siti web sono in constante crescita. { -product-name-nowrap } ti invia un avviso non appena una nuova violazione viene aggiunta al nostro database, così puoi intervenire e proteggere il tuo account.
+landing-blurb =
+    { -product-name-nowrap } ti offre gli strumenti per mantenere al sicuro le tue informazioni personali.
+    Scopri quello che gli hacker già conoscono su di te e come essere sempre un passo avanti a loro.
+scan-label = Verifica se sei stato coinvolto in una violazione di dati.
+scan-placeholder = Inserisci il tuo indirizzo email
+scan-submit = Cerca il tuo indirizzo email
+scan-another-email = Controlla un altro indirizzo email
+scan-featuredbreach-label = Scopri se il tuo account su <span class="bold">{ $featuredBreach }</span> è stato compromesso.
+signup-banner-headline = { -product-name-nowrap } rileva minacce contro i tuoi account online.
+signup-banner-blurb =
+    Il rapporto dettagliato di { -product-name-nowrap } mostra se le informazioni contenute nei tuoi account online sono state compromesse o rubate.
+    Ti avviseremo se i tuoi account appaiono in nuove violazioni di dati di siti web.
+download-firefox-bar-blurb = { -product-name-nowrap } è offerto da <span class="nowrap">{ -brand-name }</span>.
+download-firefox-bar-link = Scarica subito { -brand-name }
+download-firefox-banner-blurb = Prendi il controllo del tuo browser
+download-firefox-banner-button = Scarica { -brand-name }
+signup-modal-headline = Iscriviti a { -product-name-nowrap }
+signup-modal-blurb = Iscriviti per ricevere da { -product-name-nowrap } il rapporto completo, avvisi quando si verificano nuove violazioni di dati e suggerimenti per la sicurezza.
+signup-modal-close = Chiudi
