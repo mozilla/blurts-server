@@ -43,5 +43,9 @@ signup-modal-sent = Verzonden!
 form-signup-placeholder = Voer e-mailadres in
 sign-up = Inschrijven
 show-more-breaches = Meer weergeven
+# Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
+share = Delen
+download-firefox-quantum = { -brand-Quantum } downloaden
+download-firefox-mobile = { -brand-name } Mobiel downloaden
 # Features here refers to Firefox browser features. 
 features = Functies
