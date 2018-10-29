@@ -63,6 +63,7 @@ marital-statuses = Stati coniugali
 names = Nomi
 nationalities = Nazionalità
 net-worths = Patrimoni netti
+nicknames = Pseudonimi (nickname)
 occupations = Occupazioni
 parenting-plans = Piani di affido minori
 partial-credit-card-data = Dati parziali della carta di credito
