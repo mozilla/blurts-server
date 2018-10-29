@@ -14,9 +14,11 @@ layout-support = サポート
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = フィードバックを提供
 terms-and-privacy = 利用規約と個人情報保護方針
+error-not-subscribed = このメールアドレスは { -product-name } に登録されていません。
 error-hibp-throttled = { -brand-HIBP } への接続数が多すぎます
 error-hibp-connect = { -brand-HIBP } への接続でエラーが発生しました。
 error-hibp-load-breaches = 侵害データを読み込めませんでした。
+hibp-notify-email-subject = { -product-name } 通知: あなたのアカウントが侵害されたデータに含まれていました。
 home-title = { -product-name }
 home-not-found = ページが見つかりません。
 oauth-invalid-session = 不正なセッション
@@ -24,6 +26,7 @@ oauth-confirmed-title = { -product-name } : 登録しました
 scan-title = { -product-name } : スキャン結果
 user-add-invalid-email = メールアドレスが正しくありません
 user-add-email-verify-subject = { -product-name } の登録を確認してください。
+user-add-title = { -product-name } : メールを確認してください
 user-verify-token-error = 検証トークンが必要です。
 user-verify-email-report-subject = あなたの { -product-name } レポート
 user-verify-title = { -product-name } : 登録しました
@@ -55,6 +58,8 @@ pwt-headline-5 = 2 段階認証で安全性を高めましょう
 pwt-summary-5 =
     2 段階認証 (2FA) は、アカウントにログインするために追加の情報 (ワンタイムコードをショートメッセージで送信するなど) を必要とします。
     誰かがあなたのパスワードを入手してもログインすることはできません。
+pwt-headline-6 = { -product-name-nowrap } からの通知を登録
+pwt-summary-6 = ウェブサイトデータの侵害は上昇傾向にあります。新たな侵害は、すぐに私たちのデータベースに追加され、{ -product-name-nowrap } からの通知が送られます。通知が来たら、すぐに行動を起こしてアカウントを守ってください。
 scan-placeholder = メールアドレスを入力してください
 scan-privacy = あなたのメールアドレスは保存されません。
 scan-submit = あなたのメールアドレスを検索
@@ -62,12 +67,15 @@ scan-another-email = 別のメールアドレスを検索
 scan-error = メールアドレスを正しく入力してください。
 download-firefox-bar-link = 今すぐ { -brand-name } をダウンロード
 download-firefox-banner-button = { -brand-name } をダウンロード
+signup-modal-blurb = 登録すると、完全なレポートや新たな侵害の通知、安全性を高めるためのヒントを { -product-name-nowrap } から受けられます。
 signup-modal-close = 閉じる
+signup-modal-verify-headline = 登録を確認してください
 signup-modal-verify-blurb = 登録確認のリンクを <span id="submitted-email" class="medium"></span> へ送信しました。
 signup-modal-verify-expiration = このリンクの有効期限は 24 時間です。
 signup-modal-verify-resend = 受信トレイや迷惑メールフォルダーに見当たらない場合は、再送信します。
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = 送信しました。
+form-signup-placeholder = メールアドレスを入力
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = 共有
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
