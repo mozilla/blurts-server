@@ -66,10 +66,15 @@ download-firefox-banner-blurb = Reprenez le contrôle de votre navigateur
 download-firefox-banner-button = Télécharger { -brand-name }
 signup-modal-headline = Inscrivez-vous à { -product-name-nowrap }
 signup-modal-close = Fermer
+signup-modal-verify-headline = Vérifiez votre inscription
 signup-modal-verify-blurb = Nous avons envoyé un lien de vérification à <span id="submitted-email" class="medium"></span>
+signup-modal-verify-expiration = Ce lien expirera dans 24 heures.
 signup-modal-verify-resend = Vous ne voyez rien dans votre boîte de réception ni dans le dossier des indésirables ? Renvoyez le message.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Envoyé !
+signup-with-fxa = Se connecter avec votre compte { -brand-name }
+form-signup-placeholder = Saisissez votre adresse électronique
+form-signup-checkbox = Recevez les dernières nouvelles de { -brand-Mozilla } et { -brand-name }.
 sign-up = S’inscrire
 form-signup-error = L’adresse électronique doit être valide
 no-breaches-headline = Jusqu’ici, tout va bien.
@@ -79,6 +84,8 @@ what-to-do-headline = Que faire lorsque vos informations sont exposées à une f
 what-to-do-subhead-1 = Changez de mots de passe, même pour des comptes anciens
 what-to-do-blurb-1 = Si vous ne pouvez pas vous connecter, contactez le site web pour savoir comment vous pouvez récupérer ou fermer le compte. Vous ne reconnaissez pas l’un des comptes ? Le site peut avoir changé de nom ou quelqu’un peut avoir créé un compte à votre place.
 what-to-do-subhead-2 = Si vous réutilisez un mot de passe qui a été compromis, changez-le.
+what-to-do-subhead-3 = Prenez des mesures supplémentaires pour sécuriser vos comptes financiers
+what-to-do-subhead-4 = Obtenez de l’aide pour créer de robustes mots de passe et pour les garder en sécurité.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Date de la fuite de données :
 # compromised accounts = the total number of user accounts exposed in data breach
