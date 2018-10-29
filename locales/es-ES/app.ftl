@@ -32,7 +32,9 @@ user-verify-token-error = Se requiere un token de verificación.
 user-verify-email-report-subject = Tu informe de { -product-name }
 user-verify-title = { -product-name } : Suscrito
 user-unsubscribe-token-error = Se requiere un token para cancelar la suscripción.
+user-unsubscribe-token-email-error = Para darse de baja se requiere un token y un hash de correo electrónico.
 user-unsubscribe-title = { -product-name } : Cancelar suscripción
+user-unsubscribe-survey-title = { -product-name } : Darse de baja de la encuesta
 user-unsubscribed-title = { -product-name } : Suscripción cancelada
 
 ## Password Tips
@@ -45,6 +47,7 @@ pwt-summary-2 =
     Los piratas informáticos usan miles de contraseñas comunes para intentar adivinar la tuya. 
     Cuanto más larga y aleatoria sea tu contraseña, más difícil será de adivinar.
 pwt-headline-3 = Trata las preguntas de seguridad como si fueran contraseñas adicionales
+pwt-headline-4 = Obtén ayuda para recordar tus contraseñas
 scan-label = Comprueba si has estado involucrado en una fuga de datos.
 scan-placeholder = Introduce una dirección de correo electrónico
 scan-privacy = No se guardará tu correo electrónico.
@@ -80,5 +83,7 @@ share = Compartir
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
 tweet = Tuitear
 download-firefox-quantum = Descarga { -brand-Quantum }
+# Features here refers to Firefox browser features. 
+features = Características
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
