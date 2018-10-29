@@ -30,6 +30,7 @@ report-subhead-no-breaches =
     Le violazioni di dati possono verificarsi in qualsiasi momento, quindi continua a leggere per scoprire come proteggere le tue password.
 report-subhead-found-breaches = Ecco il tuo rapporto completo da Firefox Monitor. Il documento include tutte le violazioni di dati conosciute che coinvolgono questo indirizzo email.
 breach-alert-headline = Il tuo account è stato coinvolto in una violazione di dati.
+breach-alert-subhead = Una violazione di dati recentemente segnalata contiene la tua email e i seguenti dati
 report-pwt-blurb =
     Le password sono così preziose che ne vengono rubate a migliaia ogni giorno, per poi essere scambiate o vendute sul mercato nero.
     Password più complesse possono proteggere i tuoi account e tutte le informazioni personali memorizzate al loro interno.

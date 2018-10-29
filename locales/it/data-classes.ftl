@@ -51,6 +51,7 @@ health-insurance-information = Informazioni sull’assicurazione sanitaria
 historical-passwords = Cronologia delle password
 home-loan-information = Informazioni sul mutuo della casa
 home-ownership-statuses = Stati di proprietà delle case
+homepage-urls = URL della home page
 imei-numbers = Numeri IMEI
 imsi-numbers = Numeri IMSI
 income-levels = Livelli di reddito
