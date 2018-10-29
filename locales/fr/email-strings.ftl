@@ -6,7 +6,7 @@ report-scan-another-email = Vérifier une autre adresse électronique avec { -pr
 automated-message = Ceci est un message automatique ; si vous l’avez reçu par erreur, aucune action n’est requise.
 # Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
 we-sent-this-alert = Nous avons envoyé ce message à { $userEmail }, car les alertes pour cette adresse électronique ont été activées dans { -product-name }.
-unsubscribe-link = SI vous ne souhaitez plus recevoir des alertes de { -product-name }, veuillez vous désinscrire.
+unsubscribe-email-link = Si vous ne souhaitez plus recevoir d’alertes de { -product-name }, veuillez vous désinscrire.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Rapport { -product-name }
 report-date = Date du rapport :
