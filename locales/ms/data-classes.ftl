@@ -1,0 +1,37 @@
+## Breach Data Classes
+
+account-balances = Baki akaun
+address-book-contacts = Buku alamat kenalan
+age-groups = Kumpulan umur
+ages = Umur
+apps-installed-on-devices = Aplikasi yang dipasang pada peranti
+astrological-signs = Tanda astrologi
+audio-recordings = Rakaman audio
+auth-tokens = Token pengesahan
+avatars = Avatar
+bank-account-numbers = Nombor akaun bank
+beauty-ratings = Kadaran kecantikan
+biometric-data = Data biometrik
+browser-user-agent-details = Butiran ejen pengguna pelayar
+browsing-histories = Sejarah pelayaran
+buying-preferences = Keutamaan membeli
+car-ownership-statuses = Status pemilikan kereta
+career-levels = Tahap kerjaya
+cellular-network-names = Nama rangkaian selular
+charitable-donations = Derma amal
+chat-logs = Log sembang
+credit-card-cvv = CW kad kredit
+credit-cards = Kad kredit
+credit-status-information = Maklumat status kredit
+customer-feedback = Maklum balas pelanggan
+customer-interactions = Interaksi pelanggan
+dates-of-birth = Tarikh lahir
+deceased-date = Tarikh kematian
+deceased-statuses = Status kematian
+device-information = Maklumat peranti
+device-usage-tracking-data = Data penjejakan penggunaan peranti
+drinking-habits = Tabiat minum
+drug-habits = Tabiat ubat
+eating-habits = Tabiat makan
+education-levels = Tahap pendidikan
+email-addresses = Alamat e-mel
