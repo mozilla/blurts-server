@@ -109,6 +109,10 @@ featured-breach-results =
     { $breachCount ->
        *[other] Akun Anda muncul dalam kebocoran <span class="bold">{ $featuredBreach }</span>, sebagaimana { $breachCount } kebocoran lainnya.
     }
+featured-breach-not-compromised =
+    { $breachCount ->
+       *[other] Akun Anda tidak muncul di dalam pembobolan <span class="bold">{ $featuredBreach }</span>, namun muncul di { $breachCount } pembobolan lainnya.
+    }
 show-more-breaches = Tampilkan Lebih Banyak
 what-to-do-headline = Apa yang Perlu Dilakukan ketika Informasi Anda Terekspos dalam Suatu Kebocoran Data
 what-to-do-subhead-1 = Ubah sandi Anda, termasuk untuk akun lama
