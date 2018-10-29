@@ -50,6 +50,7 @@ pwt-summary-3 = Les sites web ne vérifient pas que vos réponses sont exactes, 
 pwt-headline-4 = Obtenez de l’aide pour vous rappeler vos mots de passe
 pwt-summary-4 = Les gestionnaires de mots de passe tels que 1Password, LastPass, Dashlane et Bitwarden génèrent des mots de passe forts et uniques. Ils stockent également les mots de passe en toute sécurité et les remplissent dans les sites web pour vous.
 pwt-headline-5 = Ajoutez une sécurité supplémentaire avec l’authentification à deux facteurs
+pwt-headline-6 = Inscrivez-vous pour recevoir les alertes { -product-name-nowrap }
 pwt-summary-6 = Les fuites de données de sites web sont à la hausse. Dès qu’une nouvelle fuite est ajoutée à notre base de données, { -product-name-nowrap } vous envoie une alerte afin que vous puissiez agir et protéger votre compte.
 scan-label = Voyez si vous avez été impliqué dans une fuite de données.
 scan-placeholder = Saisissez votre adresse électronique
@@ -63,9 +64,11 @@ signup-banner-blurb =
     Le rapport détaillé de { -product-name-nowrap } indique si des informations provenant de vos comptes en ligne ont été divulguées ou volées.
     Nous vous préviendrons aussi si vos comptes apparaissent à l’occasion de nouvelles failles de sécurité.
 download-firefox-bar-blurb = { -product-name-nowrap } vous est proposé par le <span class="nowrap">tout nouveau { -brand-name }</span>.
+download-firefox-bar-link = Télécharger { -brand-name }
 download-firefox-banner-blurb = Reprenez le contrôle de votre navigateur
 download-firefox-banner-button = Télécharger { -brand-name }
 signup-modal-headline = Inscrivez-vous à { -product-name-nowrap }
+signup-modal-blurb = Inscrivez-vous pour recevoir votre rapport complet, des alertes en cas de nouvelles fuites de données et des conseils de sécurité de { -product-name-nowrap }.
 signup-modal-close = Fermer
 signup-modal-verify-headline = Vérifiez votre inscription
 signup-modal-verify-blurb = Nous avons envoyé un lien de vérification à <span id="submitted-email" class="medium"></span>
@@ -80,6 +83,7 @@ sign-up = S’inscrire
 form-signup-error = L’adresse électronique doit être valide
 no-breaches-headline = Jusqu’ici, tout va bien.
 found-breaches-headline = Vos informations personnelles ont été compromises dans une fuite de données.
+no-breaches = Votre adresse électronique ne figurait pas dans notre analyse de base. C’est une bonne nouvelle, mais des fuites de données peuvent survenir à tout moment et vous pouvez toujours prendre des mesures supplémentaires. Abonnez-vous à { -product-name-nowrap } pour obtenir un rapport complet, recevoir des alertes en cas de nouvelles fuites et des conseils pour la protection de vos mots de passe.
 show-more-breaches = Afficher davantage
 what-to-do-headline = Que faire lorsque vos informations sont exposées à une fuite de données
 what-to-do-subhead-1 = Changez de mots de passe, même pour des comptes anciens.
@@ -87,6 +91,7 @@ what-to-do-blurb-1 = Si vous ne pouvez pas vous connecter, contactez le site web
 what-to-do-subhead-2 = Si vous réutilisez un mot de passe qui a été compromis, changez-le.
 what-to-do-subhead-3 = Prenez des mesures supplémentaires pour sécuriser vos comptes financiers.
 what-to-do-subhead-4 = Obtenez de l’aide pour créer de robustes mots de passe et pour les garder en sécurité.
+what-to-do-blurb-4 = Les gestionnaires de mots de passe tels que 1Password, LastPass, Dashlane et Bitwarden génèrent des mots de passe forts, les stockent de manière sécurisée et les remplissent pour vous sur les sites web.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Date de la fuite de données :
 # compromised accounts = the total number of user accounts exposed in data breach
