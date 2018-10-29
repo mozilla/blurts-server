@@ -15,6 +15,9 @@ report-date = Datë Raporti:
 email-address = Adresë Email:
 # "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
 your-full-report = Ja raporti i plotë { -product-name } për ju, që përfshin krejt shkeljet e njohura të të dhënave që përmbajnë këtë adresë email.
+report-no-breaches =
+    Adresa juaj email nuk duket te baza jonë e të dhënave për shkeljet e ditura. 
+    Por shkeljet mund të ndodhin kurdo. Kryeni këto hapa që t’i mbani të parrezikuara në internet të dhënat tuaja personale.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Ç’të Bëhet Më Pas
 report-headline =
