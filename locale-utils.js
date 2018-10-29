@@ -8,6 +8,7 @@ require("intl-pluralrules");
 
 const { FluentBundle } = require("fluent");
 
+const AppConstants = require("./app-constants");
 const mozlog = require("./log");
 
 
@@ -35,9 +36,13 @@ class FluentError extends Error {
 
 const LocaleUtils = {
   init() {
-    const languageDirectories = fs.readdirSync( localesDir ).filter(item => {
-      return (!item.startsWith(".") && fs.lstatSync(path.join(localesDir, item)).isDirectory());
-    });
+    const supportedLocales = AppConstants.SUPPORTED_LOCALES;
+    let languageDirectories = supportedLocales.split(",");
+    if (supportedLocales === "*") {
+      languageDirectories = fs.readdirSync( localesDir ).filter(item => {
+        return (!item.startsWith(".") && fs.lstatSync(path.join(localesDir, item)).isDirectory());
+      });
+    }
     for (const lang of languageDirectories) {
       try {
         const langBundle = new FluentBundle(lang, {useIsolating: false});
