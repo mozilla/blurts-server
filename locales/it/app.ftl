@@ -84,3 +84,86 @@ download-firefox-banner-button = Scarica { -brand-name }
 signup-modal-headline = Iscriviti a { -product-name-nowrap }
 signup-modal-blurb = Iscriviti per ricevere da { -product-name-nowrap } il rapporto completo, avvisi quando si verificano nuove violazioni di dati e suggerimenti per la sicurezza.
 signup-modal-close = Chiudi
+get-your-report = Ottieni il tuo rapporto
+signup-modal-verify-headline = Conferma la tua iscrizione
+signup-modal-verify-blurb = Abbiamo inviato un link di conferma a <span id="submitted-email" class="medium"></span> .
+signup-modal-verify-expiration = Il link scade tra 24 ore.
+signup-modal-verify-resend = Il messaggio non si trova nella posta in arrivo e neppure nello spam? Invia nuovamente il link.
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = Inviato.
+signup-with-fxa = Registra un account { -brand-name }
+form-signup-placeholder = Inserisci un indirizzo email
+form-signup-checkbox = Ricevi le ultime notizie da { -brand-Mozilla } e { -brand-name }.
+sign-up = Registrati
+no-breaches-headline = Fin qui tutto bene.
+found-breaches-headline = Le tue informazioni sono state coinvolte in una violazione di dati.
+featured-breach-results =
+    { $breachCount ->
+        [0] Il tuo account è stato coinvolto nella violazione di dati di <span class="bold">{ $featuredBreach }</span> ma non appare in nessun'altra violazione.
+        [one] Il tuo account è stato coinvolto nella violazione di dati di <span class="bold">{ $featuredBreach }</span> e in un’altra violazione.
+       *[other] Il tuo account è stato coinvolto nella violazione di dati di <span class="bold">{ $featuredBreach }</span> e in altre { $breachCount } violazioni.
+    }
+featured-breach-not-compromised =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Il tuo account non è stato coinvolto nella violazione di dati di <span class="bold">{ $featuredBreach }</span>, ma è coinvolto in un’altra violazione.
+       *[other] Il tuo account non è stato coinvolto nella violazione di dati di <span class="bold">{ $featuredBreach }</span>, ma è coinvolto in altre { $breachCount } violazioni.
+    }
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Il tuo account è stato coinvolto in { $breachCount } violazione di dati.
+       *[other] Gli account associati al tuo indirizzo email sono stati coinvolti nelle seguenti { $breachCount } violazioni di dati.
+    }
+show-more-breaches = Mostra dettagli
+what-to-do-headline = Che cosa fare quando le tue informazioni sono coinvolte in una violazione di dati
+what-to-do-subhead-1 = Cambia le tue password, anche per i vecchi account
+what-to-do-blurb-1 =
+    Se non riesci ad accedere, chiedi al gestore del sito come ripristinare l’accesso o eliminare l’account.
+    Non riconosci uno degli account? Il sito potrebbe aver cambiato nome o qualcuno potrebbe aver creato un account al tuo posto.
+what-to-do-subhead-2 = Se utilizzi una password compromessa su altri siti, cambiala
+what-to-do-subhead-3 = Adotta misure aggiuntive per proteggere gli account connessi alle tue finanze
+what-to-do-blurb-3 =
+    La maggior parte delle violazioni espone solo email e password, ma alcune includono informazioni finanziarie riservate.
+    Se il tuo conto bancario o numero di carta di credito sono inclusi in una violazione, avvisa la banca di possibili frodi
+    e verifica negli estratti conto la presenza di addebiti che non riconosci.
+what-to-do-blurb-4 = I gestori di password come 1Password, LastPass, Dashlane e Bitwarden possono generare password complesse e uniche, memorizzarle in modo sicuro e inserirle direttamente nei siti web quando li visiti.
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = Data della violazione:
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Account compromessi:
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Dati compromessi:
+confirmed = Tutto confermato,<br />ora sei iscritto.
+confirmed-blurb = A breve riceverai un rapporto completo da { -product-name-nowrap }. In futuro verranno inviati avvisi nel caso in cui il tuo indirizzo email appaia in nuove violazioni di dati.
+confirmed-social-blurb = Se sei stato vittima di una violazione di dati, è possibile che anche i tuoi amici, i tuoi famigliari o i tuoi conoscenti online ne siano stati affetti. Fagli conoscere { -product-name-nowrap }.
+unsub-headline = Annulla iscrizione a { -product-name-nowrap }
+unsub-blurb = Questa operazione rimuoverà la tua email dall’elenco di { -product-name-nowrap } e non riceverai più avvisi quando verranno annunciate nuove violazioni di dati.
+unsub-button = Annulla iscrizione
+unsub-survey-headline = Hai annullato la tua iscrizione.
+unsub-survey-form-label = Perché stai annullando la tua iscrizione agli avvisi di { -product-name-nowrap }?
+unsub-reason-1 = Non credo che gli avvisi contribuiscano a rendere i miei dati più sicuri
+unsub-reason-2 = Ricevo troppe email da { -product-name-nowrap }
+unsub-reason-3 = Non trovo utile il servizio
+unsub-reason-4 = Ho già adottato misure per proteggere i miei account
+unsub-reason-5 = Sto usando un altro servizio per tenere sotto controllo i miei account
+unsub-reason-6 = Nessuna delle precedenti
+unsub-survey-thankyou = Grazie per aver condiviso la tua opinione.
+unsub-survey-error = Seleziona un’opzione.
+# Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
+share = Condividi
+# Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
+tweet = Invia un tweet
+download-firefox-quantum = Scarica { -brand-Quantum }
+download-firefox-mobile = Scarica { -brand-name } per dispositivi mobili
+# Features here refers to Firefox browser features. 
+features = Caratteristiche
+# beta-nightly-developer-edition refers to additional versions of Firefox Browser
+beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# The following string contains HTML markup which should not be translated. 
+# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
+copyright-info =
+    Parte di questi contenuti sono ©1998–2018 di singoli collaboratori di mozilla.org.<br/>
+    I contenuti sono disponibili secondo la <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">licenza Creative Commons</a> .
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Dati sulle violazioni forniti da { $hibp-link }
