@@ -117,3 +117,24 @@ unsub-headline = Henti langganan { -product-name-nowrap }
 unsub-blurb = Ini akan mengeluarkan e-mel anda daripada senarai { -product-name-nowrap } dan anda tidak lagi akan menerima makluman apabila ada makluman  pelanggaran keselamatan baru.
 unsub-button = Henti langganan
 unsub-survey-headline = Anda tidak lagi melanggan.
+unsub-survey-form-label = Kenapa anda berhenti melanggan amaran { -product-name-nowrap }?
+unsub-reason-1 = Saya fikir bahawa makluman tidak menjadikan data saya lebih selamat
+unsub-reason-2 = Saya dapat terlalu banyak e-mel dari { -product-name-nowrap }
+unsub-reason-3 = Saya fikir perkhidmatan ini tidak bernilai
+unsub-reason-4 = Saya telah mengambil langkah untuk melindungi akaun saya
+unsub-reason-5 = Saya menggunakan perkhidmatan lain untuk memantau akaun saya
+unsub-reason-6 = Tiada satu pun di atas
+unsub-survey-thankyou = Terima kasih atas maklum balas anda.
+unsub-survey-error = Sila pilih satu.
+# Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
+share = Kongsi
+# Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
+tweet = Tweet
+download-firefox-quantum = Muat turun { -brand-Quantum }
+download-firefox-mobile = Muat turun { -brand-name } Mobile
+# Features here refers to Firefox browser features. 
+features = Ciri
+# beta-nightly-developer-edition refers to additional versions of Firefox Browser
+beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Data pelanggaran keselamatan disediakan oleh { $hibp-link }
