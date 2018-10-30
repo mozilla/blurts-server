@@ -13,7 +13,7 @@
   
     <form action="/user/add" id="subscribe-form" class="form-group" method="post" novalidate data-no-csrf>
       <div class="input-group">
-        <input id="subscribe-email-input" class="input-group-field" type="email" name="email" placeholder="Enter email" minlength="1" aria-label="{{fluentFormat req.supportedLocales "form-signup-placeholder"}}"  autocomplete="off" />
+        <input id="subscribe-email-input" class="input-group-field" type="email" name="email" placeholder="{{fluentFormat req.supportedLocales "form-signup-placeholder"}}" minlength="1" aria-label="{{fluentFormat req.supportedLocales "form-signup-placeholder"}}"  autocomplete="off" />
         <span id="invalid-signup-email-message" class="error-message">{{fluentFormat req.supportedLocales "form-signup-error"}}</span>
       </div>
       <div class="checkbox-group">
