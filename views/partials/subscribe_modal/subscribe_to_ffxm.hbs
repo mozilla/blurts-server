@@ -1,7 +1,11 @@
 <div id="subscribe-to-ffxm" class="modal-content">
   <div class="modal-content-wrap">
     <h3 class="section-headline">{{{fluentFormat req.supportedLocales "signup-modal-headline"}}}</h3>
-    <p>{{{fluentFormat req.supportedLocales "signup-modal-blurb"}}}<a {{> analytics/link_event eventLabel="Terms & Privacy - Sign Up Modal"}} class="nowrap internal-link" href="https://www.mozilla.org/privacy/firefox-monitor/" target="_blank" rel="noopener"><span class="nowrap">{{{fluentFormat req.supportedLocales "terms-and-privacy"}}}</span></a></p>
+    <p>{{{fluentFormat req.supportedLocales "signup-modal-blurb"}}}
+      <a {{> analytics/link_event eventLabel="Terms & Privacy - Sign Up Modal"}} class="internal-link" href="https://www.mozilla.org/privacy/firefox-monitor/" target="_blank" rel="noopener">
+        {{{fluentFormat req.supportedLocales "terms-and-privacy"}}}
+      </a>
+    </p>
   
     {{#if FXA_ENABLED }}
       <button id="subscribe-fxa-btn" class="button">{{fluentFormat req.supportedLocales "signup-with-fxa"}}</button>
@@ -9,7 +13,7 @@
   
     <form action="/user/add" id="subscribe-form" class="form-group" method="post" novalidate data-no-csrf>
       <div class="input-group">
-        <input id="subscribe-email-input" class="input-group-field" type="email" name="email" placeholder="{{fluentFormat req.supportedLocales "form-signup-placeholder"}}" minlength="1" aria-label="{{fluentFormat req.supportedLocales "form-signup-placeholder"}}"  autocomplete="off" />
+        <input id="subscribe-email-input" class="input-group-field" type="email" name="email" placeholder="Enter email" minlength="1" aria-label="{{fluentFormat req.supportedLocales "form-signup-placeholder"}}"  autocomplete="off" />
         <span id="invalid-signup-email-message" class="error-message">{{fluentFormat req.supportedLocales "form-signup-error"}}</span>
       </div>
       <div class="checkbox-group">
@@ -24,3 +28,4 @@
     <button data-analytics-label="Before Sign Up" class="close-modal internal-link">{{fluentFormat req.supportedLocales "signup-modal-close"}}</button>
   </div>
 </div>
+

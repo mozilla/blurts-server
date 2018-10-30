@@ -1,8 +1,11 @@
 <div id="download-firefox-bar" class="download-firefox download-firefox-bar banner">
   <div class="section-wrapper">
     <div class="whole">
-      <p>{{{fluentFormat req.supportedLocales "download-firefox-bar-blurb"}}} <a {{> analytics/download_event eventLabel="Quantum - Top Bar"}} class="internal-link nowrap" href="https://www.mozilla.org/firefox/new/?utm_source={{ UTM_SOURCE }}&utm_medium=referral&utm_campaign=fx_monitor_downloads&utm_content=top_download_banner" target="_blank" rel="noopener">{{fluentFormat req.supportedLocales "download-firefox-bar-link"}} &#187;</a>
-    </p>
-  </div>
+      <p>{{{fluentFormat req.supportedLocales "download-firefox-bar-blurb"}}}
+        <a {{> analytics/download_event eventLabel="Quantum - Top Bar"}} class="internal-link" href="https://www.mozilla.org/firefox/new/?utm_source={{ UTM_SOURCE }}&utm_medium=referral&utm_campaign=fx_monitor_downloads&utm_content=top_download_banner" target="_blank" rel="noopener">
+          {{fluentFormat req.supportedLocales "download-firefox-bar-link"}} &#187;
+        </a>
+      </p>
+    </div>
   </div>
 </div>
