@@ -1,3 +1,9 @@
+# String IDs beginning with "-product" and "-brand" should remain in English.
+# They should not be:
+# - Declined to adapt to grammatical case.
+# - Transliterated.
+# - Translated.
+-product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
@@ -86,3 +92,81 @@ get-your-report = Veja Seu Relatório
 signup-modal-verify-headline = Verificar Seu Cadastro
 signup-modal-verify-blurb = Enviamos um link de verificação para <span id="submitted-email" class="medium"></span>.
 signup-modal-verify-expiration = Este link irá expirar em 24 horas.
+signup-modal-verify-resend = Não apareceu na caixa de entrada nem no spam? Reenviar.
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = Enviado!
+signup-with-fxa = Cadastre-se com um Conta { -brand-name }
+form-signup-placeholder = Digite o endereço de e-mail
+form-signup-checkbox = Fique informado sobre a { -brand-Mozilla } e o { -brand-name }.
+sign-up = Cadastre-se
+form-signup-error = Precisa ser um endereço de e-mail válido
+no-breaches-headline = Por enquanto tudo certo.
+found-breaches-headline = Suas informações estão presentes em um vazamento de dados.
+no-breaches =
+    Seu endereço de e-mail não aparece em nossa análise básica.
+    Isso é uma boa notícia, mas vazamentos podem acontecer a qualquer hora e você pode fazer mais para se proteger.
+    Cadastre-se no { -product-name-nowrap } para obter um relatório completo, receber alertas quando novos vazamentos acontecerem e dicas para proteger suas senhas.
+featured-breach-results =
+    { $breachCount ->
+        [one] Sua conta aparece em uma vazamento em<span class="bold">{ $featuredBreach }</span>, mas não parece estar presente em outros vazamentos conhecidos.
+       *[other] Sua conta apareceu em um vazamento em <span class="bold">{ $featuredBreach }</span> e também em um outro vazamento,
+    }
+featured-breach-not-compromised =
+    { $breachCount ->
+        [one] Sua conta não apareceu no vazamento em <span class="bold">{ $featuredBreach }</span>, mas apareceu em um outro vazamento.
+       *[other] Sua conta não apareceu no vazamento em <span class="bold">{ $featuredBreach }</span>, mas apareceu em { $breachCount } outros vazamentos.
+    }
+scan-results =
+    { $breachCount ->
+        [one] Sua conta apareceu em { $breachCount } vazamento.
+       *[other] Contas associadas a este endereço de e-mail apareceram nos seguintes { $breachCount } vazamentos.
+    }
+show-more-breaches = Mostar Mais
+what-to-do-headline = O Que Fazer Quando Suas Informações São Expostas Em Um Vazamento De Dados
+what-to-do-subhead-1 = Troque suas senhas, até nas contas antigas
+what-to-do-blurb-1 = Se você não consegue acessar sua conta, entre em contato com o site perguntando como recuperar ou encerrar sua conta.
+what-to-do-subhead-2 = Se você utiliza a senha vazada em outras contas, troque-a
+what-to-do-subhead-3 = Tome providências extras para proteger suas contas financeiras
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = Data do vazamento:
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Contas comprometidas:
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Dados comprometidos:
+confirmed = Confirmado!<br />Você Está Cadastrado!
+confirmed-blurb = O { -product-name-nowrap } irá enviar um relatório completo por e-mail para você em breve, e você receberá um alerta se sua conta aparecer em novos vazamentos.
+confirmed-social-blurb = Se seus dados foram vazados, é possível que os dos seus amigos, família e conexões virtuais tenham sido afetados também. Compartilhe com eles o { -product-name-nowrap }.
+unsub-headline = Descadastrar do { -product-name-nowrap }
+unsub-blurb = Isso irá remover seu endereço de e-mail da lista do { -product-name-nowrap } e você não irá mais receber alertas quando novos vazamentos forem anunciados.
+unsub-button = Descadastrar
+unsub-survey-headline = Você não está mais cadastrado
+unsub-survey-blurb =
+    Seu endereço de e-mail não foi descadastrado do { -product-name-nowrap }. Obrigado por usado este serviço.
+    Você responderia uma pergunta sobre sua experiência?
+unsub-survey-form-label = Por que você está se descadastrando dos alertas do { -product-name-nowrap }?
+unsub-reason-1 = Eu não acho que os alertas tornam meus dados mais seguros
+unsub-reason-2 = Eu recebo e-mails demais do { -product-name-nowrap }
+unsub-reason-3 = Eu não acho que o serviço tenha valor
+unsub-reason-4 = Eu já fiz o necessário para proteger minhas contas
+unsub-reason-5 = Estou usando outros serviços para monitorar minhas contas
+unsub-reason-6 = Nenhuma resposta acima
+unsub-survey-thankyou = Obrigado por sua opinião
+unsub-survey-error = Por favor selecione uma resposta:
+# Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
+share = Compartilhar
+# Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
+tweet = Tuítar
+download-firefox-quantum = Baixar o { -brand-Quantum }
+download-firefox-mobile = Baixar o { -brand-name } Mobile
+# Features here refers to Firefox browser features. 
+features = Funcionalidades
+# beta-nightly-developer-edition refers to additional versions of Firefox Browser
+beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# The following string contains HTML markup which should not be translated. 
+# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
+copyright-info =
+    Partes deste conteúdo são &#x24B8; 1998-2018 por contribuidores individuais do mozilla.org<br />
+    Conteúdo disponível sob uma licença <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons</a>,
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Dados de vazamentos fornecidos por { $hibp-link }
+site-description = Suas contas foram vazadas ou roubadas em um vazamento de dados? Descubra com o { -product-name }. Pesquise nossa base e cadastre-se para receber alertas.
