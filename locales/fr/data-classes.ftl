@@ -50,6 +50,7 @@ mac-addresses = adresses MAC
 marital-statuses = état matrimonial
 names = noms
 nationalities = nationalités
+net-worths = valeurs nettes
 nicknames = surnoms
 occupations = professions
 partial-credit-card-data = données partielles de cartes bancaires
