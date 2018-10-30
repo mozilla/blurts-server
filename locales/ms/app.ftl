@@ -70,6 +70,9 @@ pwt-summary-6 =
     Pelanggaran keselamatan data laman web semakin meningkat. Sebaik sahaja pelanggaran keselamatan baru dimasukkan ke dalam pangkalan data kami,
     { -product-name-nowrap } menghantar amaran kepada anda - supaya anda boleh mengambil tindakan dan melindungi akaun anda.
 landing-headline = Hak anda untuk selamat daripada penggodam bermula di sini.
+landing-blurb =
+    { -product-name-nowrap } melengkapkan anda dengan alatan untuk memastikan maklumat peribadi anda selamat.
+    Ketahui apa yang telah diketahui oleh penggodam tentang anda dan pelajari cara untuk mengelakkannya.
 scan-label = Lihat samada anda terlibat dalam pelanggaran keselamatan data.
 scan-placeholder = Masukkan Alamat E-mel
 scan-privacy = E-mel anda tidak akan disimpan.
