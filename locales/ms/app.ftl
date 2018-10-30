@@ -115,14 +115,32 @@ featured-breach-results =
     }
 featured-breach-not-compromised =
     { $breachCount ->
-       *[other] Akaun anda tiada dalam pelanggaran keselamatan <span class="bold">{ $featuredBreach }</span> tetapi ada pelanggaran keselamatan { $breachCount } lain.
+       *[other] { no-breaches } Akaun anda tiada dalam pelanggaran keselamatan <span class="bold">{ $featuredBreach }</span> tetapi ada pelanggaran keselamatan { $breachCount } lain.
+    }
+scan-results =
+    { $breachCount ->
+       *[other] { no-breaches } Akaun yang dikaitkan dengan alamat e-mel anda ada dalam pelanggaran keselamatan { $breachCount } berikut.
     }
 show-more-breaches = Papar Selanjutnya
 what-to-do-headline = Apa Yang Perlu Dilakukan Apabila Maklumat Anda Terlibat dalam Pelanggaran Keselamatan Data
 what-to-do-subhead-1 = Tukar kata laluan, walaupun untuk akaun lama
+what-to-do-blurb-1 =
+    Jika anda tidak boleh log masuk, hubungi laman web untuk bertanya cara memulihkan atau menutup akaun.
+    Ada akaun yang tidak dikenali? Laman ini mungkin telah menukar nama atau seseorang mungkin membuat akaun untuk anda.
 what-to-do-subhead-2 = Jika anda menggunakan semula kata laluan yang terdedah, ubahnya
+what-to-do-blurb-2 =
+    Penggodam boleh cuba menggunakan semula kata laluan terdahulu untuk masuk ke akaun lain.
+    Cipta kata laluan yang berbeza untuk setiap laman web, terutamanya untuk akaun bank,
+    e-mel dan laman web lain tempat anda menyimpan maklumat peribadi.
 what-to-do-subhead-3 = Ambil langkah tambahan untuk keselamatan akaun kewangan anda
+what-to-do-blurb-3 =
+    Sebilangan besar pelanggaran keselamatan hanya mendedahkan e-mel dan kata laluan, tetapi ada  termasuk maklumat kewangan sensitif.
+    Jika akaun bank atau nombor kad kredit anda ada dalam pelanggaran keselamatan, maklumkan bank anda untuk mengelakkan penipuan,
+    dan memantau penyata bank bagi mengelakkan caj yang tidak ketahui.
 what-to-do-subhead-4 = Dapatkan bantuan untuk mencipta kata laluan yang bagus dan menjaga keselamatannya.
+what-to-do-blurb-4 =
+    Pengurus kata laluan seperti 1Password, LastPass, Dashlane, dan Bitwarden menghasilkan kata laluan yang sukar,
+    menyimpannya dengan selamat, dan mengisikannya ke laman web untuk anda.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Tarikh pelanggaran data:
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -136,6 +154,9 @@ unsub-headline = Henti langganan { -product-name-nowrap }
 unsub-blurb = Ini akan mengeluarkan e-mel anda daripada senarai { -product-name-nowrap } dan anda tidak lagi akan menerima makluman apabila ada makluman  pelanggaran keselamatan baru.
 unsub-button = Henti langganan
 unsub-survey-headline = Anda tidak lagi melanggan.
+unsub-survey-blurb =
+    E-mel anda berhenti melanggan { -product-name-nowrap }. Terima kasih kerana menggunakan perkhidmatan ini.
+    Bolehkah anda meluangkan  masa untuk menjawab satu soalan mengenai pengalaman anda?
 unsub-survey-form-label = Kenapa anda berhenti melanggan amaran { -product-name-nowrap }?
 unsub-reason-1 = Saya fikir bahawa makluman tidak menjadikan data saya lebih selamat
 unsub-reason-2 = Saya dapat terlalu banyak e-mel dari { -product-name-nowrap }
@@ -155,6 +176,11 @@ download-firefox-mobile = Muat turun { -brand-name } Mobile
 features = Ciri
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# The following string contains HTML markup which should not be translated. 
+# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
+copyright-info =
+    Sebahagian kandungan &#x24B8; 1998-2018 adalah hasil sumbangan</a> individu mozilla.org. <br />
+    Kandungan tersedia di bawah <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons license</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Data pelanggaran keselamatan disediakan oleh { $hibp-link }
 site-description = Adakah akaun anda terdedah atau dicuri dalam data pelanggaran keselamatan? Semak di { -product-name }. Cari pangkalan data kami dan daftar untuk makluman.
