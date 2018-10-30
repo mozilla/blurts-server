@@ -111,5 +111,6 @@ share = Compartir
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
 tweet = Tuitear
 download-firefox-quantum = Descargar { -brand-Quantum }
+download-firefox-mobile = Descargar { -brand-name } móvil
 # Features here refers to Firefox browser features. 
 features = Características
