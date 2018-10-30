@@ -31,3 +31,24 @@ report-subhead-no-breaches =
 report-subhead-found-breaches = Ini laporan penuh Firefox Monitor, yang merangkumi semua pelanggaran keselamatan data yang diketahui, yang mengandungi alamat e-mel ini.
 breach-alert-headline = Akaun anda terlibat dalam pelanggaran keselamatan data.
 breach-alert-subhead = Pelanggaran keselamatan data yang dilaporkan baru-baru ini mengandungi e-mel anda dan data berikut
+report-pwt-blurb =
+    Kata laluan sangat berharga, beribu-ribu kata laluan  dicuri setiap hari dan didagangkan atau dijual di pasaran gelap.
+    Kata laluan yang lebih sulit melindungi akaun anda dan semua maklumat peribadi yang berada di dalamnya.
+report-pwt-headline-1 = Gunakan kata laluan yang berbeza untuk setiap akaun
+report-pwt-summary-1 =
+    Menggunakan kata laluan yang sama membuka pintu untuk penggodam.
+    Mereka boleh menggunakan kata laluan itu untuk log masuk ke akaun anda yang lain.
+report-pwt-headline-2 = Cipta kata laluan yang sulit dan unik
+report-pwt-summary-2 =
+    Penggodam menggunakan beribu-ribu kata laluan lazim untuk meneka kata laluan anda.
+    Semakin panjang dan lebih rawak kata laluan itu, semakin sukar untuk diteka.
+report-pwt-headline-3 = Anggaplah soalan keselamatan sebagaii kata laluan tambahan
+report-pwt-summary-3 =
+    Laman web tidak memeriksa jawapan yang tepat, hanya yang sepadan.
+    Cipta jawapan yang panjang, rawak dan simpan di tempat yang selamat.
+report-pwt-headline-4 = Gunakan pengurus kata laluan
+report-pwt-summary-4 =
+    Perkhidmatan seperti 1Password, LastPass, Dashlane dan Bitwarden menghasilkan kata laluan yang sulit dan menyimpannya dengan selamat,
+    dan memasukkannya ke laman web supaya anda tidak perlu mengingati setiap satu.
+# A link to legal information about mozilla products.
+legal = Legal
