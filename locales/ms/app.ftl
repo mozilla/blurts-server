@@ -113,6 +113,10 @@ featured-breach-results =
     { $breachCount ->
        *[other] Akaun anda ada dalam pelanggaran keselamatan <span class="bold">{ $featuredBreach }</span> serta dalam data pelanggaran keselamatan yang lain.
     }
+featured-breach-not-compromised =
+    { $breachCount ->
+       *[other] Akaun anda tiada dalam pelanggaran keselamatan <span class="bold">{ $featuredBreach }</span> tapi ada pelanggaran keselamatan { $breachCount } lain.
+    }
 show-more-breaches = Papar Selanjutnya
 what-to-do-headline = Apa Yang Perlu Dilakukan Apabila Maklumat Anda Terlibat dalam Pelanggaran Keselamatan Data
 what-to-do-subhead-1 = Tukar kata laluan, walaupun untuk akaun lama
