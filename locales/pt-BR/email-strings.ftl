@@ -46,7 +46,7 @@ report-pwt-summary-2 =
 report-pwt-headline-3 = Trate perguntas de segurança como senhas extras
 report-pwt-summary-3 =
     Sites não verificam se suas respostas são reais, eles apenas verificam se elas coincidem com as respostas dadas no momento do cadastro.
-    Cria senhas longas e aleatórias e as armazene em algum lugar seguro.
+    Crie respostas longas e aleatórias e as armazene em algum lugar seguro.
 report-pwt-headline-4 = Use um gerenciador de senhas
 report-pwt-summary-4 = Serviços como o 1Password, Lastpass, Dashlane e Bitwarden geram senhas fortes, as armazenam com segurança e as preenchem nos sites para que você não precise se lembrar de cada uma.
 # A link to legal information about mozilla products.
