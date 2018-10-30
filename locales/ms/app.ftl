@@ -115,7 +115,7 @@ featured-breach-results =
     }
 featured-breach-not-compromised =
     { $breachCount ->
-       *[other] Akaun anda tiada dalam pelanggaran keselamatan <span class="bold">{ $featuredBreach }</span> tapi ada pelanggaran keselamatan { $breachCount } lain.
+       *[other] Akaun anda tiada dalam pelanggaran keselamatan <span class="bold">{ $featuredBreach }</span> tetapi ada pelanggaran keselamatan { $breachCount } lain.
     }
 show-more-breaches = Papar Selanjutnya
 what-to-do-headline = Apa Yang Perlu Dilakukan Apabila Maklumat Anda Terlibat dalam Pelanggaran Keselamatan Data
