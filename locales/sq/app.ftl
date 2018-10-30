@@ -18,16 +18,23 @@ error-not-subscribed = Kjo adresë email s’është e pajtuar te { -product-nam
 error-hibp-throttled = Shumë lidhje me { -brand-HIBP }.
 error-hibp-connect = Gabim në lidhjen me { -brand-HIBP }.
 error-hibp-load-breaches = S’u ngarkuan dot shkeljet.
+hibp-notify-email-subject = { -product-name } Sinjalizim: Llogaria juaj qe përfshirë në një shkelje.
 home-title = { -product-name }
 home-not-found = S’u gjet faqe.
 oauth-invalid-session = Sesion i pavlefshëm
+scan-title = { -product-name } : Përfundime Skanimi
 user-add-invalid-email = Email i Pavlefshëm
 user-add-email-verify-subject = Verifikoni pajtimin tuaj te { -product-name }.
 user-verify-token-error = Token-i i verifikimit është i domosdoshëm.
+user-verify-email-report-subject = Raporti juaj { -product-name }
+user-unsubscribe-token-error = Shpajtimi lyp një token.
+user-unsubscribe-token-email-error = Shpajtimi lyp një token dhe emailHash.
+user-unsubscribe-title = { -product-name } : Shpajtomëni
 
 ## Password Tips
 
 pwt-section-headline = Më i Fuqishëm Fjalëkalimi = Më e Mirë Mbrojtja
+pwt-section-subhead = Të dhënat tuaja private janë aq të sigurta, sa ç’janë fjalëkalimet tuaja.
 pwt-headline-1 = Përdorni një fjalëkalim të ndryshëm për çdo llogari
 scan-placeholder = Jepni Adresë Email
 scan-privacy = Email-i juaj nuk do të depozitohet.
