@@ -36,6 +36,7 @@ const kEnvironmentVariables = [
   "HIBP_NOTIFY_TOKEN",
   "DATABASE_URL",
   "SERVER_URL",
+  "SUPPORTED_LOCALES",
   "DELETE_UNVERIFIED_SUBSCRIBERS_TIMER",
 ];
 
