@@ -59,6 +59,7 @@ no-breaches-headline = ابھی تک، سب سہی۔
 show-more-breaches = مزید دکھائیں
 what-to-do-subhead-1 = اپنے پاس ورڈ تبدیل کریں، یہاں تک کہ پرانے اکاؤنٹس کا بھی
 unsub-button = رکنیت ختم کریں
+unsub-reason-6 = اوپر سے کوئی بھی نہیں
 unsub-survey-error = کوئی ایک منتخب کریں۔
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = شیئر کریں
@@ -68,3 +69,5 @@ download-firefox-quantum = { -brand-Quantum } ڈاؤن لوڈ کریں
 download-firefox-mobile = { -brand-name } موبائل ڈاؤن لوڈ کریں
 # Features here refers to Firefox browser features. 
 features = خصوصیات
+# beta-nightly-developer-edition refers to additional versions of Firefox Browser
+beta-nightly-developer-edition = بیٹا، نائٹلی، ڈیولپر ایڈیشن
