@@ -124,9 +124,20 @@ scan-results =
 show-more-breaches = Mostar Mais
 what-to-do-headline = O Que Fazer Quando Suas Informações São Expostas Em Um Vazamento De Dados
 what-to-do-subhead-1 = Troque suas senhas, até nas contas antigas
-what-to-do-blurb-1 = Se você não consegue acessar sua conta, entre em contato com o site perguntando como recuperar ou encerrar sua conta.
+what-to-do-blurb-1 =
+    Se você não consegue acessar sua conta, entre em contato com o site perguntando como recuperar ou encerrar sua conta.
+    Vê uma conta que não reconhece? O site pode ter trocado de nome ou alguém usou seu endereço de e-mail para criar uma conta.
 what-to-do-subhead-2 = Se você utiliza a senha vazada em outras contas, troque-a
+what-to-do-blurb-2 =
+    Hackers podem tentar reutilizar sua senha exposta para acessar outras contas.
+    Cria uma senha diferente para cada site, especialmente sua conta bancária,
+    e-mail e outros sites onde você salva informações pessoais.
 what-to-do-subhead-3 = Tome providências extras para proteger suas contas financeiras
+what-to-do-blurb-3 =
+    A maioria dos vazamentos expõe apenas endereços de e-mail e senhas, mas alguns incluem informações financeiras sensíveis.
+    Se sua conta bancária ou números de cartão de crédito foram expostos, alerte seu banco sobre possíveis fraudes e monitore seus extratos por cobranças que você não reconhece.
+what-to-do-subhead-4 = Obtenha ajuda para criar boas senhas e mantê-las seguras.
+what-to-do-blurb-4 = Gerenciadores de senhas como 1Password, LastPass, Dashlane e Bitwarden geram senhas fortes, as armazenam com segurança e as preenchem automaticamente em sites para você.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Data do vazamento:
 # compromised accounts = the total number of user accounts exposed in data breach
