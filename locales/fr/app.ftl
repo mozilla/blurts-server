@@ -54,6 +54,7 @@ pwt-headline-5 = Ajoutez une sécurité supplémentaire avec l’authentificatio
 pwt-summary-5 = L’authentification à deux facteurs (2FA) demande une information supplémentaire (un code à usage unique envoyé par SMS par exemple) pour se connecter à votre compte. Même si quelqu’un connaît votre mot de passe, il ne pourra pas se connecter.
 pwt-headline-6 = Inscrivez-vous pour recevoir les alertes { -product-name-nowrap }
 pwt-summary-6 = Les fuites de données de sites web sont à la hausse. Dès qu’une nouvelle fuite est ajoutée à notre base de données, { -product-name-nowrap } vous envoie une alerte afin que vous puissiez agir et protéger votre compte.
+landing-blurb = { -product-name-nowrap } met à votre disposition des outils pour conserver vos informations personnelles en toute sécurité. Découvrez quelles sont les données personnelles accessibles aux cybercriminels et apprenez à vous protéger.
 scan-label = Voyez si vous avez été impliqué dans une fuite de données.
 scan-placeholder = Saisissez votre adresse électronique
 scan-privacy = Votre adresse électronique ne sera pas stockée.
@@ -87,6 +88,12 @@ form-signup-error = L’adresse électronique doit être valide
 no-breaches-headline = Jusqu’ici, tout va bien.
 found-breaches-headline = Vos informations personnelles ont été compromises dans une fuite de données.
 no-breaches = Votre adresse électronique ne figurait pas dans notre analyse de base. C’est une bonne nouvelle, mais des fuites de données peuvent survenir à tout moment et vous pouvez toujours prendre des mesures supplémentaires. Abonnez-vous à { -product-name-nowrap } pour obtenir un rapport complet, recevoir des alertes en cas de nouvelles fuites et des conseils pour la protection de vos mots de passe.
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Votre compte apparaît dans { $breachCount } fuite de données.
+       *[other] Les comptes associés à votre adresse électronique apparaissent dans ces { $breachCount } fuites de données.
+    }
 show-more-breaches = Afficher davantage
 what-to-do-headline = Que faire lorsque vos informations sont exposées à une fuite de données
 what-to-do-subhead-1 = Changez de mots de passe, même pour des comptes anciens.
