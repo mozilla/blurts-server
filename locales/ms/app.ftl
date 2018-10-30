@@ -81,6 +81,10 @@ scan-another-email = Imbas Alamat E-mel Lain
 scan-featuredbreach-label = Ketahui samada akaun <span class="bold">{ $featuredBreach } </span> anda telah dikompromi.
 scan-error = Perlu e-mel yang sah
 signup-banner-headline = { -product-name-nowrap } mengesan ancaman terhadap akaun atas talian anda.
+signup-banner-blurb =
+    Laporan terperinci { -product-name-nowrap } memaparkan samada maklumat akaun dalam talian anda telah terdedah atau dicuri.
+    Kami juga akan memaklumkan samada akaun anda ada dalam laman web pelanggaran keselamatan.
+download-firefox-bar-blurb = { -product-name-nowrap } dibawa kepada anda oleh <span class="nowrap"> { -brand-name } </ span>.
 download-firefox-bar-link = Muat turun { -brand-name } sekarang
 download-firefox-banner-blurb = Kuasai pelayar anda
 download-firefox-banner-button = Muat turun { -brand-name }
@@ -101,6 +105,14 @@ sign-up = Daftar
 form-signup-error = Perlu e-mel yang sah
 no-breaches-headline = Nampak bagus buat setakat ini.
 found-breaches-headline = Maklumat anda menjadi sebahagian daripada pelanggaran keselamatan data.
+no-breaches =
+    Alamat e-mel anda tiada dalam imbasan asas kami.
+    Ini berita baik, tetapi pelanggaran keselamatan data boleh berlaku pada bila-bila masa dan masih banyak lagi yang anda boleh lakukan.
+    Langgan { -product-name-nowrap } untuk laporan penuh, makluman apabila ada pelanggaran keselamatan  dan panduan untuk melindungi kata laluan anda.
+featured-breach-results =
+    { $breachCount ->
+       *[other] Akaun anda ada dalam pelanggaran keselamatan <span class="bold">{ $featuredBreach }</span> serta dalam data pelanggaran keselamatan yang lain.
+    }
 show-more-breaches = Papar Selanjutnya
 what-to-do-headline = Apa Yang Perlu Dilakukan Apabila Maklumat Anda Terlibat dalam Pelanggaran Keselamatan Data
 what-to-do-subhead-1 = Tukar kata laluan, walaupun untuk akaun lama
