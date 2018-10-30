@@ -105,12 +105,9 @@ no-breaches =
     Alamat surel Anda tidak muncul pada pindaian dasar kami.
     Kabar yang bagus, tetapi kebocoran data dapat terjadi kapan saja dan masih ada hal lain yang dapat Anda lakukan. 
     Berlangganan { -product-name-nowrap } untuk laporan lengkap, peringatan ketika terjadi kebocoran baru, dan kiat untuk melindungi sandi Anda.
-featured-breach-results =
-    { $breachCount ->
-       *[other] Akun Anda muncul dalam kebocoran <span class="bold">{ $featuredBreach }</span>, sebagaimana { $breachCount } kebocoran lainnya.
-    }
 featured-breach-not-compromised =
     { $breachCount ->
+        [0] { no-breaches }
        *[other] Akun Anda tidak muncul di dalam pembobolan <span class="bold">{ $featuredBreach }</span>, namun muncul di { $breachCount } pembobolan lainnya.
     }
 show-more-breaches = Tampilkan Lebih Banyak

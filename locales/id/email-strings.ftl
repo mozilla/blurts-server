@@ -17,10 +17,6 @@ email-address = Alamat Surel:
 your-full-report = Berikut adalah laporan lengkap { -product-name } Anda, yang mencakup seluruh kebocoran data yang diketahui memuat alamat surel ini.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Yang Selanjutnya Perlu Dilakukan
-report-headline =
-    { $breachCount ->
-       *[other] Akun Anda muncul dalam { $breachCount } kebocoran.
-    }
 report-subhead-found-breaches = Berikut adalah laporan lengkap Firefox Monitor Anda, yang mencakup seluruh kebocoran data yang diketahui memuat alamat surel ini.
 breach-alert-headline = Akun Anda tersangkut dalam kebocoran data.
 breach-alert-subhead = Kebocoran data yang terlaporkan baru-baru ini memuat surel Anda dan data berikut ini
