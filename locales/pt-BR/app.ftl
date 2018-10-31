@@ -106,18 +106,15 @@ no-breaches =
     Seu endereço de e-mail não aparece em nossa análise básica.
     Isso é uma boa notícia, mas vazamentos podem acontecer a qualquer hora e você pode fazer mais para se proteger.
     Cadastre-se no { -product-name-nowrap } para obter um relatório completo, receber alertas quando novos vazamentos acontecerem e dicas para proteger suas senhas.
-featured-breach-results =
-    { $breachCount ->
-        [one] Sua conta aparece em uma vazamento em<span class="bold">{ $featuredBreach }</span>, mas não parece estar presente em outros vazamentos conhecidos.
-       *[other] Sua conta apareceu em um vazamento em <span class="bold">{ $featuredBreach }</span> e também em um outro vazamento,
-    }
 featured-breach-not-compromised =
     { $breachCount ->
+        [0] { no-breaches }
         [one] Sua conta não apareceu no vazamento em <span class="bold">{ $featuredBreach }</span>, mas apareceu em um outro vazamento.
        *[other] Sua conta não apareceu no vazamento em <span class="bold">{ $featuredBreach }</span>, mas apareceu em { $breachCount } outros vazamentos.
     }
 scan-results =
     { $breachCount ->
+        [0] { no-breaches }
         [one] Sua conta apareceu em { $breachCount } vazamento.
        *[other] Contas associadas a este endereço de e-mail apareceram nos seguintes { $breachCount } vazamentos.
     }
