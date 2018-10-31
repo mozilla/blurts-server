@@ -88,6 +88,12 @@ form-signup-error = L’adresse électronique doit être valide
 no-breaches-headline = Jusqu’ici, tout va bien.
 found-breaches-headline = Vos informations personnelles ont été compromises dans une fuite de données.
 no-breaches = Votre adresse électronique ne figurait pas dans notre analyse de base. C’est une bonne nouvelle, mais des fuites de données peuvent survenir à tout moment et vous pouvez toujours prendre des mesures supplémentaires. Abonnez-vous à { -product-name-nowrap } pour obtenir un rapport complet, recevoir des alertes en cas de nouvelles fuites et des conseils pour la protection de vos mots de passe.
+featured-breach-results =
+    { $breachCount ->
+        [0] Votre compte apparaît dans la fuite de données <span class="bold">{ $featuredBreach }</span>, mais n’apparaît dans aucune autre liste de données compromises.
+        [one] Votre compte apparaît dans la fuite de données <span class="bold">{ $featuredBreach }</span>, ainsi que dans une autre liste de données compromises.
+       *[other] Votre compte apparaît dans la fuite de données <span class="bold">{ $featuredBreach }</span>, ainsi que dans { $breachCount } listes de données compromises.
+    }
 scan-results =
     { $breachCount ->
         [0] { no-breaches }
@@ -100,6 +106,7 @@ what-to-do-subhead-1 = Changez de mots de passe, même pour des comptes anciens.
 what-to-do-blurb-1 = Si vous ne pouvez pas vous connecter, contactez le site web pour savoir comment vous pouvez récupérer ou fermer le compte. Vous ne reconnaissez pas l’un des comptes ? Le site peut avoir changé de nom ou quelqu’un peut avoir créé un compte à votre place.
 what-to-do-subhead-2 = Si vous réutilisez un mot de passe qui a été compromis, changez-le.
 what-to-do-subhead-3 = Prenez des mesures supplémentaires pour sécuriser vos comptes financiers.
+what-to-do-blurb-3 = La plupart des fuites de données compromettent les adresses électroniques et les mots de passe, mais certaines impliquent des informations financières sensibles. Si vos numéros de compte bancaire ou de carte bancaire ont été inclus dans une fuite de données, prévenez votre banque de toute fraude éventuelle et assurez-vous qu’aucun paiement frauduleux n’ait lieu en surveillant vos relevés de comptes.
 what-to-do-subhead-4 = Obtenez de l’aide pour créer de robustes mots de passe et pour les garder en sécurité.
 what-to-do-blurb-4 = Les gestionnaires de mots de passe tels que 1Password, LastPass, Dashlane et Bitwarden génèrent des mots de passe forts, les stockent de manière sécurisée et les remplissent pour vous sur les sites web.
 # breach-date = the calendar date a particular data theft occurred. 
@@ -109,17 +116,22 @@ compromised-accounts = Comptes compromis :
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Données compromises :
 confirmed = Confirmé !<br />Vous êtes abonné⋅e !
+confirmed-blurb = { -product-name-nowrap } vous enverra bientôt un rapport complet par courriel et vous transmettra une alerte si votre compte apparaît dans une nouvelle fuite de données signalée.
+confirmed-social-blurb = Si vos données ont été compromises, il y a de fortes chances que celles de vos amis, de vos proches ou de vos connaissances en ligne l’aient aussi été. Faites-leur connaître { -product-name-nowrap }.
 unsub-headline = Se désabonner de { -product-name-nowrap }
+unsub-blurb = Cela supprimera votre adresse électronique de la liste { -product-name-nowrap } et vous ne recevrez plus d’alertes lorsque de nouvelles fuites de données seront annoncées.
 unsub-button = Se désabonner
 unsub-survey-headline = Vous n’êtes plus abonné⋅e.
 unsub-survey-blurb = Votre courriel a été retiré de la liste de { -product-name-nowrap }. Nous vous remercions d’avoir utilisé ce service. Pourriez-vous prendre un instant afin de répondre à une question concernant votre expérience d’utilisation ?
 unsub-survey-form-label = Pourquoi vous désinscrivez-vous des alertes de { -product-name-nowrap } ?
 unsub-reason-1 = Je pense que les alertes ne me permettent pas de protéger mes données de façon plus sûre
+unsub-reason-2 = Je reçois trop de messages de { -product-name-nowrap }
 unsub-reason-3 = Je ne trouve pas le service utile
 unsub-reason-4 = J’ai déjà pris des mesures pour protéger mes comptes
 unsub-reason-5 = J’utilise un autre service pour surveiller mes comptes
 unsub-reason-6 = Aucune de ces propositions
 unsub-survey-thankyou = Merci de votre retour.
+unsub-survey-error = Veuillez choisir une proposition.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Partager
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -130,3 +142,11 @@ download-firefox-mobile = Télécharger { -brand-name } mobile
 features = Fonctionnalités
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# The following string contains HTML markup which should not be translated. 
+# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
+copyright-info =
+    Certaines parties de ce contenu sont &#x24B8; 1998-2018 par les contributeurs individuels de mozilla.org. <br />
+    Le contenu est disponible sous <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">licence Creative Commons</a>.
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Données des différentes fuites fournies par { $hibp-link }
+site-description = Vos comptes ont-ils été divulgués ou volés suite à une fuite de données ? Découvrez-le avec { -product-name }. Recherchez dans notre base de données et inscrivez-vous pour recevoir des alertes.
