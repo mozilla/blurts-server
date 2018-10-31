@@ -106,6 +106,12 @@ no-breaches =
     您的电子邮件地址未出现在我们的基本扫描数据中。
     这是个好消息，但数据外泄事件可能随时发生，您还有更多事情可以做。
     订阅 { -product-name-nowrap } 以获取完整报告，在发生新数据外泄事件时收到警报，以及保护密码的小贴士。
+featured-breach-results =
+    { $breachCount ->
+        [0] 您的账号出现在 <span class="bold"> { $featuredBreach } </span> 数据外泄事件中，但未出现在其他已知的事件。
+        [one] 您的账号出现在 <span class="bold"> { $featuredBreach } </span> 数据外泄事件中，此外还有 1 次事件。
+       *[other] 您的账号出现在 <span class="bold"> { $featuredBreach } </span> 数据外泄事件中，此外还有 { $breachCount } 次事件。
+    }
 featured-breach-not-compromised =
     { $breachCount ->
         [0] { no-breaches }
