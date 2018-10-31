@@ -20,10 +20,6 @@ report-no-breaches =
     但数据外泄事件可能随时发生，请遵照下列步骤来确保您的个人数据安全。
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = 接下来怎么做
-report-headline =
-    { $breachCount ->
-       *[other] 您的账号出现在 { $breachCount } 次数据泄露事件中。
-    }
 report-subhead-no-breaches =
     您的电子邮件地址未出现在我们的数据外泄完整报告中。
     这是个好消息，但您还有更多事情可以做。
