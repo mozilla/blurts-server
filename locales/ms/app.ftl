@@ -109,16 +109,14 @@ no-breaches =
     Alamat e-mel anda tiada dalam imbasan asas kami.
     Ini berita baik, tetapi pelanggaran keselamatan data boleh berlaku pada bila-bila masa dan masih banyak lagi yang anda boleh lakukan.
     Langgan { -product-name-nowrap } untuk laporan penuh, makluman apabila ada pelanggaran keselamatan  dan panduan untuk melindungi kata laluan anda.
-featured-breach-results =
-    { $breachCount ->
-       *[other] Akaun anda ada dalam pelanggaran keselamatan <span class="bold">{ $featuredBreach }</span> serta dalam data pelanggaran keselamatan yang lain.
-    }
 featured-breach-not-compromised =
     { $breachCount ->
+        [0] { no-breaches }
        *[other] { no-breaches } Akaun anda tiada dalam pelanggaran keselamatan <span class="bold">{ $featuredBreach }</span> tetapi ada pelanggaran keselamatan { $breachCount } lain.
     }
 scan-results =
     { $breachCount ->
+        [0] { no-breaches }
        *[other] { no-breaches } Akaun yang dikaitkan dengan alamat e-mel anda ada dalam pelanggaran keselamatan { $breachCount } berikut.
     }
 show-more-breaches = Papar Selanjutnya
