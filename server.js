@@ -1,6 +1,12 @@
 "use strict";
 
+// initialize Sentry ASAP to capture fatal startup errors
+const Sentry = require("@sentry/node");
 const AppConstants = require("./app-constants");
+Sentry.init({
+  dsn: AppConstants.SENTRY_DSN,
+  environment: AppConstants.NODE_ENV,
+});
 
 const express = require("express");
 const exphbs = require("express-handlebars");
