@@ -91,3 +91,11 @@ unsub-reason-3 = S’më duket me vlerë ky shërbim
 unsub-reason-5 = Përdor një shërbim tjetër për mbikëqyrje të llogarive të mia
 unsub-reason-6 = Asnjë prej sa më sipër
 unsub-survey-thankyou = Faleminderit për përshtypjet tuaja.
+unsub-survey-error = Ju lutemi, përzgjidhni një
+# Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
+share = Ndajeni me të tjerët
+download-firefox-quantum = Shkarko { -brand-Quantum }
+# Features here refers to Firefox browser features. 
+features = Veçori
+# beta-nightly-developer-edition refers to additional versions of Firefox Browser
+beta-nightly-developer-edition = Beta, Nightly, Developer Edition
