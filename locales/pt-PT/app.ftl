@@ -29,6 +29,7 @@ user-add-invalid-email = Email inválido
 user-add-email-verify-subject = Verifique a sua subscrição do { -product-name }.
 user-add-title = { -product-name } : Confirmar email
 user-verify-token-error = Um token de verificação é requerido.
+user-verify-email-report-subject = O seu relatório do { -product-name }
 user-verify-title = { -product-name } : Subscrito
 user-unsubscribe-token-error = Cancelar a subscrição requer um token.
 user-unsubscribe-token-email-error = Cancelar a subscrição requer um token e emailHash.
@@ -38,6 +39,18 @@ user-unsubscribed-title = { -product-name } : Subscrição cancelada
 
 ## Password Tips
 
+pwt-section-headline = Palavras-passe mais fortes = melhor proteção
+pwt-section-subhead = A sua informação privada é tão segura quanto as suas palavras-passe.
+pwt-headline-1 = Use uma palavra-passe diferente para cada conta
+pwt-headline-2 = Crie palavras-passe fortes e difíceis de adivinhar
+pwt-headline-3 = Trate as questões de segurança como palavras-passe extra
+pwt-headline-4 = Obtenha ajuda para se lembrar das suas palavras-passe
+pwt-summary-4 =
+    Gestores de palavras-passe como 1Password, LastPass, Dashlane e Bitwarden geram palavras-passe fortes e únicas.
+    Estes também armazenam palavras-passe com segurança e preenchem-nas em websites por si
+pwt-headline-5 = Adicione segurança extra com autenticação de dois fatores
+landing-headline = O seu direito de estar a salvo de hackers começa aqui.
+scan-label = Veja se foi envolvido(a) numa brecha de dados.
 scan-placeholder = Introduzir endereço de email
 scan-privacy = O seu email não será armazenado.
 scan-submit = Pesquisar o seu email
@@ -45,6 +58,7 @@ scan-another-email = Verificar outro endereço de email
 scan-featuredbreach-label = Descubra se a sua conta <span class="bold"> { $featuredBreach } </span> foi comprometida.
 scan-error = Tem de ser um email válido.
 signup-banner-headline = O { -product-name-nowrap } deteta ameaças contra as suas contas online.
+download-firefox-bar-blurb = O { -product-name-nowrap } é trazido a si pelo <span class="nowrap">todo novo { -brand-name }</span>.
 download-firefox-bar-link = Transferir o { -brand-name } agora
 download-firefox-banner-blurb = Tome o controlo do seu navegador
 download-firefox-banner-button = Transferir o { -brand-name }
@@ -53,12 +67,23 @@ get-your-report = Obter o seu relatório
 signup-modal-verify-headline = Verifique a sua subscrição
 signup-modal-verify-blurb = Enviámos uma ligação de verificação para <span id="submitted-email" class="medium"></span>.
 signup-modal-verify-expiration = Esta ligação expira em 24 horas.
+signup-modal-verify-resend = Não está na caixa de entrada ou pasta de lixo? Reenviar.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Enviado!
+signup-with-fxa = Registe-se com uma Conta { -brand-name }
+form-signup-placeholder = Introduzir email
+form-signup-checkbox = Obtenha as últimas da { -brand-Mozilla } e do { -brand-name }.
 form-signup-error = Tem de ser um email válido
 no-breaches-headline = Por enquanto, tudo bem.
 found-breaches-headline = A sua informação foi parte de uma brecha de dados.
 show-more-breaches = Mostrar mais
+what-to-do-subhead-1 = Altere as suas palavras-passe, mesmo para contas antigas
+what-to-do-subhead-2 = Se reutilizar uma palavra-passe exposta, altere-a
+what-to-do-subhead-3 = Tome passos extra para proteger as suas contas financeiras
+what-to-do-subhead-4 = Obtenha ajuda para criar boas palavras-passe e mantê-las seguras.
+what-to-do-blurb-4 =
+    Gestores de palavras-passe como 1Password, LastPass, Dashlane e Bitwarden geram palavras-passe fortes,
+    armazenam-nas com segurança e preenchem-nas em websites por si.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Data da brecha
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -71,6 +96,15 @@ unsub-button = Cancelar subscrição
 unsub-survey-blurb =
     O seu email foi cancelado da subscrição do { -product-name-nowrap }. Obrigado por uitilizar este serviço.
     Tem um momento para responder a uma pergunta acerca da sua experiência?
+unsub-survey-form-label = Porque está a cancelar a sua subscrição de alertas do { -product-name-nowrap }?
+unsub-reason-1 = Acho que os alertas não tornam os meus dados mais seguros
+unsub-reason-2 = Recebo demasiados emails do { -product-name-nowrap }
+unsub-reason-3 = Não acho o serviço valioso
+unsub-reason-4 = Já tomei medidas para proteger as minhas contas
+unsub-reason-5 = Estou a utilizar outro serviço para monitorizar as minhas contas
+unsub-reason-6 = Nenhuma das acima
+unsub-survey-thankyou = Obrigado pelo seu feedback.
+unsub-survey-error = Por favor selecione uma.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Partilhar
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
