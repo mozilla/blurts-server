@@ -115,5 +115,10 @@ download-firefox-mobile = Transferir o { -brand-name } Móvel
 features = Funcionalidades
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# The following string contains HTML markup which should not be translated. 
+# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
+copyright-info =
+    Porções deste conteúdo são &#x24B8; 1998-2018 por contribuidores individuais da mozilla.org. <br />
+    Conteúdo disponível sob uma <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">licença Creative Commons</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Dados de brechas fornecidos por { $hibp-link }
