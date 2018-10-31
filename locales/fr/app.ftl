@@ -105,6 +105,7 @@ what-to-do-headline = Que faire lorsque vos informations sont exposées à une f
 what-to-do-subhead-1 = Changez de mots de passe, même pour des comptes anciens.
 what-to-do-blurb-1 = Si vous ne pouvez pas vous connecter, contactez le site web pour savoir comment vous pouvez récupérer ou fermer le compte. Vous ne reconnaissez pas l’un des comptes ? Le site peut avoir changé de nom ou quelqu’un peut avoir créé un compte à votre place.
 what-to-do-subhead-2 = Si vous réutilisez un mot de passe qui a été compromis, changez-le.
+what-to-do-blurb-2 = Des pirates peuvent essayer de réutiliser vos mots de passe compromis pour accéder à d’autres comptes. Créez un mot de passe différent pour chaque site web, en particulier pour votre compte bancaire, votre messagerie en ligne et autres sites web où sont enregistrées vos données personnelles.
 what-to-do-subhead-3 = Prenez des mesures supplémentaires pour sécuriser vos comptes financiers.
 what-to-do-blurb-3 = La plupart des fuites de données compromettent les adresses électroniques et les mots de passe, mais certaines impliquent des informations financières sensibles. Si vos numéros de compte bancaire ou de carte bancaire ont été inclus dans une fuite de données, prévenez votre banque de toute fraude éventuelle et assurez-vous qu’aucun paiement frauduleux n’ait lieu en surveillant vos relevés de comptes.
 what-to-do-subhead-4 = Obtenez de l’aide pour créer de robustes mots de passe et pour les garder en sécurité.
