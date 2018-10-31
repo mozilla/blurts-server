@@ -24,6 +24,7 @@ function dhm(t){
 
 (async () => {
   const breaches = await HIBP.req("/breaches");
+  breaches.body.sort((a,b) => {return new Date(a.AddedDate) - new Date(b.AddedDate)});
 
   let oldestBreachDate = new Date();
   let oldestBreach = "";
@@ -31,8 +32,9 @@ function dhm(t){
   let fastestResponseBreach = "";
 
   for (const breach of breaches.body) {
-    console.log("checking breach: ", breach.Name);
     const breachDate = new Date(breach.BreachDate);
+    const addedDate = new Date(breach.AddedDate);
+    console.log("breach: ", breach.Name, ", date: ", addedDate, ", count: ", breach.PwnCount);
     if (breachDate < oldestBreachDate){
       oldestBreachDate = breachDate;
       oldestBreach = breach.Name;
