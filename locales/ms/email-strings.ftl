@@ -20,6 +20,11 @@ report-no-breaches =
     Tetapi pelanggaran keselamatan boleh berlaku pada bila-bila masa. Ambil langkah ini untuk memastikan data peribadi anda selamat dalam talian.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Tindakan Seterusnya
+report-headline =
+    { $breachCount ->
+        [0] Keadaan baik setakat ini.
+       *[other] Keadaan baik setakat ini. Akaun anda ada dalam pelanggaran keselamatan { $breachCount }
+    }
 report-subhead-no-breaches =
     Akaun anda tiada  dalam laporan penuh pelanggaran keselamatan kami.
     Ini berita baik, tetapi ada lagi yang anda boleh lakukan.

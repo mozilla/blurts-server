@@ -109,6 +109,11 @@ no-breaches =
     Alamat e-mel anda tiada dalam imbasan asas kami.
     Ini berita baik, tetapi pelanggaran keselamatan data boleh berlaku pada bila-bila masa dan masih banyak lagi yang anda boleh lakukan.
     Langgan { -product-name-nowrap } untuk laporan penuh, makluman apabila ada pelanggaran keselamatan  dan panduan untuk melindungi kata laluan anda.
+featured-breach-results =
+    { $breachCount ->
+        [0] Akaun anda ada dalam pelanggaran keselamatan <span class="bold">{ $featuredBreach }</span> tapi tiada dalam data pelanggaran keselamatan yang lain.
+       *[other] Akaun anda ada dalam pelanggaran keselamatan <span class="bold">{ $featuredBreach }</span> serta dalam data pelanggaran keselamatan yang lain.
+    }
 featured-breach-not-compromised =
     { $breachCount ->
         [0] { no-breaches }
