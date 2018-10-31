@@ -87,6 +87,12 @@ form-signup-error = 必須是有效的電子郵件地址
 no-breaches-headline = 一切都好。
 found-breaches-headline = 您的資料出現在過去的資料外洩事件中。
 no-breaches = 好消息，您的電子郵件信箱並沒有出現在我們的基本掃描資料當中。但資料外洩事件隨時都有可能發生，您還有更多事情能做。可訂閱 { -product-name-nowrap } 取得完整掃描報告、在資料外洩時收到警報，以及如何保護密碼的相關秘訣。
+featured-breach-results =
+    { $breachCount ->
+        [0] 您的帳號出現在 <span class="bold"> { $featuredBreach } </span> 資料外洩事件中，但沒有出現在其他已知的事件。
+        [one] 您的帳號出現在 <span class="bold"> { $featuredBreach } </span> 資料外洩事件中，此外還有 1 場事件。
+       *[other] 您的帳號出現在 <span class="bold"> { $featuredBreach } </span> 資料外洩事件中，此外還有 { $breachCount } 場事件。
+    }
 featured-breach-not-compromised =
     { $breachCount ->
         [0] { no-breaches }
