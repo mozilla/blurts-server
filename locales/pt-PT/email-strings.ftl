@@ -15,6 +15,12 @@ report-date = Data do relatório:
 email-address = Endereço de email:
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = O que fazer a seguir
+report-headline =
+    { $breachCount ->
+        [0] Até agora, tudo bem.
+        [one] A sua conta apareceu em { $breachCount } brecha.
+       *[other] As suas contas apareceram em { $breachCount } brechas.
+    }
 breach-alert-headline = A sua conta foi envolvida numa brecha de dados.
 report-pwt-headline-2 = Crie palavras-passe fortes e únicas
 report-pwt-headline-3 = Trate as questões de segurança como palavras-passe extra
