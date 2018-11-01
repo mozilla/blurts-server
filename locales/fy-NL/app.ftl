@@ -118,14 +118,60 @@ what-to-do-subhead-1 = Wizigje jo wachtwurden, sels foar âlde accounts
 what-to-do-blurb-1 =
     As jo jo net oanmelde kinne, nim dan kontakt op mei de website om te freegjen hoe't jo jo account werstelle of beëinigje kinne. 
     Sjogge jo in ûnbekende account? De website kin fan namme feroare wêze of ien kin in account foar jo oanmakke hawwe.
+what-to-do-subhead-2 = As jo in lekt wachtwurd opnij brûke, wizigje dit dan
+what-to-do-blurb-2 =
+    Hackers kinne probearje jo lekte wachtwurd opnij te brûken om tagong te krijen ta oare accounts. 
+    Meitsje foar elke website in oar wachtwurd oan, foaral foar jo bankrekkening, 
+    e-mailaccount en oare websites wêr't jo persoanlike gegevens bewarje.
+what-to-do-subhead-3 = Nim ekstra stappen om jo finansjele accounts te befeiligjen
+what-to-do-blurb-3 =
+    De measte lekken omfetsje allinnich e-mailadressen en wachtwurden, mar guon befetsje ek gefoelige finansjele ynformaasje. 
+    As jo bankrekkening of creditcardnûmers lekt binne, warskôgje dan jo bank foar mooglike fraude, 
+    en let op ôfskriuwingen dy't jo net werkenne.
+what-to-do-subhead-4 = Brûk help by it meitsjen fan goede wachtwurden dy't feilich bewarre wurde.
+what-to-do-blurb-4 =
+    Wachtwurdbehearders lykas 1Password, LastPass, Dashlane en Bitwarden generearje sterke wachtwurden, 
+    bewarje se befeiligd, en folje se foar jo yn op websites.
 # breach-date = the calendar date a particular data theft occurred. 
-breach-date = Lekdatum:
+breach-date = Datum fan datalek:
 # compromised accounts = the total number of user accounts exposed in data breach
-compromised-accounts = Kompromittearre accounts:
+compromised-accounts = Troffen accounts:
 # compromised-data = the kind of user data exposed to hackers in data breach.
-compromised-data = Kompromittearre gegevens:
-unsub-button = Ofmelde
-unsub-survey-headline = Jo binne net langer oanmeld.
+compromised-data = Troffen gegevens:
+confirmed = Befêstige!<br />Jo binne ynskreaun!
+confirmed-blurb = { -product-name-nowrap } stjoert jo ynkoarten in folslein rapport, en sil per e-mail in warskôging stjoere as jo account yn in nij meld lek foarkomt.
+confirmed-social-blurb = As jo account lekt is, bestiet de kâns dat jo freonen, famylje of online relaasjes dat ek binne. Fertel se oer { -product-name-nowrap }.
+unsub-headline = Utskriuwe fan { -product-name-nowrap }
+unsub-blurb = Dit smyt jo e-mailadres fuort út de list fan { -product-name-nowrap } en jo ûntfange gjin warskôgingen mear wannear't nije lekken bekendmakke wurde.
+unsub-button = Utskriuwe
+unsub-survey-headline = Jo binne net langer ynskreaun.
+unsub-survey-blurb =
+    Jo e-mailadres is útskreaun fan { -product-name-nowrap }. Tank foar it brûken fan dizze tsjinst. 
+    Hawwe jo in momint foar in fraach oer jo ûnderfining?
+unsub-survey-form-label = Wêrom skriuwe jo jo út foar warskôgingen fan { -product-name-nowrap }?
+unsub-reason-1 = Ik tink net dat warskôgingen myn gegevens feiliger meitsje
 unsub-reason-2 = Ik krij tefolle e-maiberjochten fan { -product-name-nowrap }
 unsub-reason-3 = Ik fyn de tsjinst net weardefol
+unsub-reason-4 = Ik haw al stappen nommen om myn accounts te beskermjen
+unsub-reason-5 = Ik brûk in oare tsjinst om myn accounts te beweitsjen
+unsub-reason-6 = Gjin fan boppesteande
 unsub-survey-thankyou = Tank foar jo kommentaar.
+unsub-survey-error = Selektearje der ien.
+# Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
+share = Diele
+# Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
+tweet = Tweete
+download-firefox-quantum = { -brand-Quantum } downloade
+download-firefox-mobile = { -brand-name } Mobyl downloade
+# Features here refers to Firefox browser features. 
+features = Funksjes
+# beta-nightly-developer-edition refers to additional versions of Firefox Browser
+beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# The following string contains HTML markup which should not be translated. 
+# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
+copyright-info =
+    Underdielen fan dizze ynhâld binne &#x24B8; 1998-2018 troch yndividuele meiwurkers fan mozilla.org. <br />
+    Ynhâld is beskikber ûnder in <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons-lisinsje</a>.
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Gegevens fan datalekken ferstrekt troch { $hibp-link }
+site-description = Binne jo accounts lekt of stellen by in datalek? Untdek it by { -product-name }. Trochsykje ús database en skriuw jo yn foar warskôgingen.
