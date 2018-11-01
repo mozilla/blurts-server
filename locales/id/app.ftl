@@ -105,15 +105,30 @@ no-breaches =
     Alamat surel Anda tidak muncul pada pindaian dasar kami.
     Kabar yang bagus, tetapi kebocoran data dapat terjadi kapan saja dan masih ada hal lain yang dapat Anda lakukan. 
     Berlangganan { -product-name-nowrap } untuk laporan lengkap, peringatan ketika terjadi kebocoran baru, dan kiat untuk melindungi sandi Anda.
+featured-breach-results =
+    { $breachCount ->
+        [0] Akun Anda muncul dalam kebocoran <span class="bold">{ $featuredBreach }</span>, namun tidak muncul pada kebocoran data lainnya yang telah diketahui.
+       *[other] Akun Anda muncul dalam kebocoran <span class="bold">{ $featuredBreach }</span>, sebagaimana { $breachCount } kebocoran lainnya.
+    }
 featured-breach-not-compromised =
     { $breachCount ->
         [0] { no-breaches }
        *[other] Akun Anda tidak muncul di dalam pembobolan <span class="bold">{ $featuredBreach }</span>, namun muncul di { $breachCount } pembobolan lainnya.
     }
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+       *[other] Akun-akun yang diasosiasikan dengan alamat surel Anda muncul pada { $breachCount } kebocoran berikut.
+    }
 show-more-breaches = Tampilkan Lebih Banyak
 what-to-do-headline = Apa yang Perlu Dilakukan ketika Informasi Anda Terekspos dalam Suatu Kebocoran Data
 what-to-do-subhead-1 = Ubah sandi Anda, termasuk untuk akun lama
+what-to-do-blurb-1 = Jika Anda tidak dapat masuk, hubungi situs web tersebut untuk menanyakan bagaimana Anda dapat memulihkan atau menutup akun tersebut. Lihat akun yang Anda tidak kenali? Mungkin saja situs telah berubah nama atau seseorang telah membuatkan akun untuk Anda.
 what-to-do-subhead-2 = Jika Anda menggunakan kembali sandi yang telah terekspos, ubah ia.
+what-to-do-blurb-2 =
+    Peretas dapat coba menggunakan ulang kata sandi Anda yang terdedah untuk masuk ke dalam akun lainnya.
+    Buat kata sandi yang berbeda untuk setiap situs web, khususnya untuk akun bank Anda,
+    surel dan situs web lainnya di mana Anda menyimpan informasi pribadi.
 what-to-do-subhead-3 = Ambil langkah ekstra untuk mengamankan akun finansial Anda
 what-to-do-blurb-3 =
     Kebanyakan kebocoran hanya mengekspos surel dan sandi, tetapi beberapa juga membeberkan informasi keuangan. 
@@ -130,6 +145,7 @@ compromised-accounts = Akun yang telah diketahui orang lain:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Data yang telah diketahui orang lain:
 confirmed = Terkonfirmasi!<br />Anda Telah Berlangganan!
+confirmed-blurb = { -product-name-nowrap } akan segera mengirimkan surel beriisikan laporan lengkap, dan akan mengirimkan surel pemberitahuan jika akun Anda muncul pada kebocoran terlapor yang baru.
 confirmed-social-blurb = Jika data Anda bocor, kemungkinan data teman, keluarga, atau koneksi daring Anda juga mengalaminya. Beri tahu mereka tentang { -product-name-nowrap }.
 unsub-headline = Berhenti berlangganan { -product-name-nowrap }
 unsub-blurb = Ini akan menghapus surel Anda dari daftar { -product-name-nowrap } dan Anda tidak akan menerima peringatan lagi ketika ada pengumuman kebocoran yang baru.
