@@ -41,7 +41,7 @@ user-unsubscribed-title = { -product-name } : Subscrição cancelada
 
 pwt-section-headline = Palavras-passe mais fortes = melhor proteção
 pwt-section-subhead = A sua informação privada é tão segura quanto as suas palavras-passe.
-pwt-headline-1 = Use uma palavra-passe diferente para cada conta
+pwt-headline-1 = Utilize uma palavra-passe diferente para cada conta
 pwt-headline-2 = Crie palavras-passe fortes e difíceis de adivinhar
 pwt-headline-3 = Trate as questões de segurança como palavras-passe extra
 pwt-headline-4 = Obtenha ajuda para se lembrar das suas palavras-passe
