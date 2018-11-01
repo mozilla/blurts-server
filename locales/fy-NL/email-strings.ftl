@@ -41,3 +41,14 @@ report-pwt-summary-1 =
     It oeral opnij brûken fan wachtwurden iepenet de doar foar hackers. 
     Se kinne dat wachtwurd brûke om har by jo oare accounts oan te melden.
 report-pwt-headline-2 = Meitsje sterke, unike wachtwurden
+report-pwt-summary-2 =
+    Hackers brûke listen mei faaks brûkte wachtwurden om dat fan jo te probearje te rieden. 
+    Hoe langer en mear willekeurich jo wachtwurd is, hoe swierder it is om it te stellen.
+report-pwt-headline-3 = Behannelje befeiligingsfragen as ekstra wachtwurden
+report-pwt-summary-3 =
+    Websites kontrolearje net oft jo antwurden krekt binne, allinnich oft se elke kear oerienkomme. 
+    Meitsje lange, willekeurige antwurden en bewarje se op in feilich plak.
+report-pwt-headline-4 = Brûk in wachtwurdbehearder
+report-pwt-summary-4 = Tsjinsten lykas 1Password, LastPass, Dashlane en Bitwarden generearje sterke wachtwurden, bewarje se befeiligd en folje se op websites yn, sadat jo se net allegearre hoege te ûnthâlden.
+# A link to legal information about mozilla products.
+legal = Juridysk
