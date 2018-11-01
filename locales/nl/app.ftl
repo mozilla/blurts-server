@@ -86,6 +86,20 @@ form-signup-checkbox = Ontvang het laatste nieuws van { -brand-Mozilla } en { -b
 sign-up = Inschrijven
 form-signup-error = Moet een geldig e-mailadres zijn
 no-breaches-headline = Tot zover geen problemen.
+no-breaches =
+    Uw e-mailadres kwam niet voor in onze basisscan.
+    Dat is goed nieuws, maar datalekken kunnen op elk moment gebeuren en er is nog meer dat u kunt doen. 
+    Abonneer u op { -product-name-nowrap } voor een volledig rapport, waarschuwingen bij nieuwe datalekken en tips over het beschermen van uw wachtwoorden.
+featured-breach-results =
+    { $breachCount ->
+        [one] Uw account komt voor in het <span class="bold">{ $featuredBreach }</span>-datalek en in één ander lek.
+       *[other] Uw account komt voor in het <span class="bold">{ $featuredBreach }</span>-datalek en in { $breachCount } andere lekken.
+    }
+featured-breach-not-compromised =
+    { $breachCount ->
+        [one] Uw account komt niet voor in het <span class="bold">{ $featuredBreach }</span>-datalek, maar verschijnt wel in één ander lek.
+       *[other] Uw account komt niet voor in het <span class="bold">{ $featuredBreach }</span>-datalek, maar verschijnt wel in { $breachCount } andere lekken.
+    }
 show-more-breaches = Meer weergeven
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Delen
