@@ -49,7 +49,9 @@ pwt-summary-2 = Hackers gebruiken duizenden veelvoorkomende wachtwoorden om het 
 pwt-headline-3 = Behandel beveiligingsvragen als extra wachtwoorden
 pwt-summary-3 = Websites controleren niet of uw antwoorden kloppen, alleen maar of ze telkens overeenkomen. Maak lange, willekeurige antwoorden en bewaar ze op een veilige plek.
 pwt-headline-4 = Gebruik hulp bij het onthouden van uw wachtwoorden
-pwt-summary-4 = Wachtwoordbeheerders als 1Password, LastPass, Dashlane en Bitwarden genereren sterke, unieke wachtwoorden. Ze slaan wachtwoorden ook beveiligd op en vullen ze voor u op websites in.
+pwt-summary-4 =
+    Wachtwoordbeheerders zoals 1Password, LastPass, Dashlane en Bitwarden genereren sterke, unieke wachtwoorden. 
+    Ook slaan ze wachtwoorden beveiligd op en vullen ze voor u in op websites.
 pwt-headline-5 = Voeg extra beveiliging toe met authenticatie in twee stappen
 pwt-summary-5 = 2FA vereist wat extra informatie (zoals een eenmalige code die via sms wordt toegezonden) om u aan te melden bij uw account. Zelfs als iemand uw wachtwoord heeft, komt hij of zij er niet in.
 pwt-headline-6 = Schrijf u in voor { -product-name-nowrap }-waarschuwingen
