@@ -55,23 +55,69 @@ pwt-summary-4 =
 pwt-headline-5 = Foegje ekstra befeiliging ta mei autentikaasje yn twa stappen
 pwt-summary-5 = 2FA fereasket wat ekstra ynformaasje (lykas in koade foar ien kear dy't fia sms tastjoerd wurdt) om jo oan te melden by jo account. Sels as ien jo wachtwurd hat, komt hy of sy der net yn.
 pwt-headline-6 = Skriuw jo yn foar { -product-name-nowrap }-warskôgingen
+pwt-summary-6 = Wy sjogge in tanimming yn datalekken fan websites. Sa gau as in nij lek oan ús database tafoege wurdt, stjoert { -product-name-nowrap } jo in warskôging - sadat jo aksje ûndernimme kinne en jo account beskermje kinne.
+landing-headline = Jo rjocht om feilich foar hackers te wêzen begjint hjir.
+landing-blurb =
+    { -product-name-nowrap } bewapenet jo mei helpmiddelen om jo priveegegevens feilich te hâlden. 
+    Untdek wat hackers al oer jo witte, en lear hoe't jo se in stap yn it foar bliuwe kinne.
+scan-label = Besjoch oft jo belutsen binne by in datalek.
 scan-placeholder = Fier e-mailadres yn
 scan-privacy = Jo e-mailadres wurdt net bewarre.
 scan-submit = Jo e-mailadres sykje
 scan-another-email = In oar e-mailadres skanne
+scan-featuredbreach-label = Untdek oft jo <span class="bold"> { $featuredBreach } </span>-account troffen is.
 scan-error = Moat in jildich e-mailadres wêze.
 signup-banner-headline = { -product-name-nowrap } detektearret bedrigingen fan jo online accounts.
+signup-banner-blurb = Jo detaillearre { -product-name-nowrap }-rapport lit sjen oft ynformaasje fan jo online accounts lekt of stellen is. Wy stjoere jo ek in warskôging as jo accounts yn nije websitelekken foarkomme.
+download-firefox-bar-blurb = { -product-name-nowrap } wurdt jo oanbean troch it <span class="nowrap">folslein nije { -brand-name }</span>.
 download-firefox-bar-link = { -brand-name } no downloade
+download-firefox-banner-blurb = Nim de kontrôle oer jo browser
 download-firefox-banner-button = { -brand-name } downloade
+signup-modal-headline = Ynskriuwe foar { -product-name-nowrap }
+signup-modal-blurb = Skriuw jo yn foar jo folsleine rapport, warskôgingen by nije datalekken en befeiligingstips fan { -product-name-nowrap }.
 signup-modal-close = Slute
+get-your-report = Jo rapport ophelje
+signup-modal-verify-headline = Ferifiearje jo ynskriuwing
+signup-modal-verify-blurb = Wy hawwe in ferifikaasjekeppeling stjoerd nei <span id="submitted-email" class="medium"></span>.
 signup-modal-verify-expiration = Dizze keppeling ferrint oer 24 oer.
+signup-modal-verify-resend = Net yn Postfek YN of map mei spam? Opnij ferstjoere.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Ferstjoerd!
+signup-with-fxa = Ynskriuwe mei { -brand-name }-account
 form-signup-placeholder = Fier e-mailadres yn
+form-signup-checkbox = Untfang it lêste nijs fan { -brand-Mozilla } en { -brand-name }.
 sign-up = Ynskriuwe
 form-signup-error = Moat in jildich e-mailadres wêze
 no-breaches-headline = Oant no ta alles goed.
+found-breaches-headline = Jo gegevens binne yn in datalek te finen.
+no-breaches =
+    Jo e-mailadres kaam net foar yn ús basisskan.
+    Dat is goed nijs, mar datalekken kinne op elk momint barre en der is noch mear dat jo dwaan kinne. 
+    Abonnearje jo op { -product-name-nowrap } foar in folslein rapport, warskôgingen by nije datalekken en tips oer it beskermjen fan jo wachtwurden.
+featured-breach-results =
+    { $breachCount ->
+        [0] Jo account komt foar yn it <span class="bold">{ $featuredBreach }</span>-datalek, mar net yn oare bekende datalekken.
+        [one] Jo account komt foar yn it <span class="bold">{ $featuredBreach }</span>-datalek en yn ien oar lek.
+       *[other] Jo account komt foar yn it <span class="bold">{ $featuredBreach }</span>-datalek en yn { $breachCount } oare datalekken.
+    }
+featured-breach-not-compromised =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] { no-breaches }Jo account komt net foar yn it <span class="bold">{ $featuredBreach }</span>-datalek, mar wol yn ien oar lek.
+       *[other] Jo account komt net foar yn it <span class="bold">{ $featuredBreach }</span>-datalek, mar wol yn { $breachCount } oare lekken.
+    }
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Jo account komt foar yn { $breachCount } datalek.
+       *[other] Accounts dy't mei jo e-mailadres keppele binne, komme foar yn de folgjende { $breachCount } datalekken.
+    }
 show-more-breaches = Mear werjaan
+what-to-do-headline = Wat te dwaan as jo gegevens belutsen binne by in datalek
+what-to-do-subhead-1 = Wizigje jo wachtwurden, sels foar âlde accounts
+what-to-do-blurb-1 =
+    As jo jo net oanmelde kinne, nim dan kontakt op mei de website om te freegjen hoe't jo jo account werstelle of beëinigje kinne. 
+    Sjogge jo in ûnbekende account? De website kin fan namme feroare wêze of ien kin in account foar jo oanmakke hawwe.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Lekdatum:
 # compromised accounts = the total number of user accounts exposed in data breach
