@@ -99,10 +99,18 @@ form-signup-placeholder = Ingresar dirección de correo electrónico
 form-signup-checkbox = Obtén las últimas noticias de { -brand-Mozilla } y { -brand-name }.
 sign-up = Registrarse
 show-more-breaches = Mostrar más
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = Fecha de violación:
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Cuentas comprometidas:
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Datos comprometidos:
+confirmed = ¡Confirmado!<br />¡Estás suscrito!
 unsub-button = Cancelar suscripción
 unsub-survey-headline = Ya no estás suscrito.
 unsub-reason-1 = Creo que las alertas no hacen que mis datos estén más seguros.
 unsub-reason-2 = Recibo demasiados correos electrónicos de { -product-name-nowrap }
+unsub-reason-3 = No me parece valioso el servicio
 unsub-reason-6 = Ninguna de las mencionadas
 unsub-survey-thankyou = Gracias por tus comentarios.
 unsub-survey-error = Por favor, selecciona uno.
@@ -114,3 +122,5 @@ download-firefox-quantum = Descargar { -brand-Quantum }
 download-firefox-mobile = Descargar { -brand-name } móvil
 # Features here refers to Firefox browser features. 
 features = Características
+# beta-nightly-developer-edition refers to additional versions of Firefox Browser
+beta-nightly-developer-edition = Beta, Nightly, Developer Edition
