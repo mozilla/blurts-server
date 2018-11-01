@@ -94,6 +94,12 @@ featured-breach-results =
         [one] Votre compte apparaît dans la fuite de données <span class="bold">{ $featuredBreach }</span>, ainsi que dans une autre liste de données compromises.
        *[other] Votre compte apparaît dans la fuite de données <span class="bold">{ $featuredBreach }</span>, ainsi que dans { $breachCount } listes de données compromises.
     }
+featured-breach-not-compromised =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Votre compte n’apparaît pas dans la fuite de données <span class="bold">{ $featuredBreach }</span>, mais apparaît dans une autre liste de données compromises.
+       *[other] Votre compte n’apparaît pas dans la fuite de données <span class="bold">{ $featuredBreach }</span>, mais il apparaît dans { $breachCount } listes de données compromises.
+    }
 scan-results =
     { $breachCount ->
         [0] { no-breaches }
