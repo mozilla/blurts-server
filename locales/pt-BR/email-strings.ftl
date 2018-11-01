@@ -20,6 +20,12 @@ report-no-breaches =
     Porém vazamentos podem acontecer a qualquer momento. Tome estas medidas para manter seus dados pessoais seguros online.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = O Que Fazer Agora
+report-headline =
+    { $breachCount ->
+        [0] Até agora tudo bem
+        [one] Sua conta não foi afetada por vazamentos de dados.
+       *[other] Suas contas apareceram em { $breachCount } vazamentos.
+    }
 report-subhead-no-breaches =
     Sua conta não aparece em nosso relatório completo de vazamentos.
     Isso é uma boa notícia, mas você pode fazer mais para se proteger.
