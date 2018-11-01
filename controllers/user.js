@@ -26,12 +26,12 @@ async function add(req, res) {
 
   const supportedLocales = EmailUtils.getSupportedLocales(req);
   const buttonValue = req.fluentFormat("verify-my-email");
-
+  const whichView = "email_partials/email_verify";
   await EmailUtils.sendEmail(
     email,
     req.fluentFormat("user-add-email-verify-subject"),
-    "email_verify",
-    { email, verifyUrl, unsubscribeUrl, buttonValue, supportedLocales},
+    "default_email",
+    { email, verifyUrl, unsubscribeUrl, buttonValue, supportedLocales, whichView},
   );
 
   res.send({
@@ -55,13 +55,13 @@ async function verify(req, res) {
   );
 
   const supportedLocales = EmailUtils.getSupportedLocales(req);
-
   const buttonValue = req.fluentFormat("report-scan-another-email");
+  const whichView = "email_partials/report";
 
   await EmailUtils.sendEmail(
     verifiedEmailHash.email,
     req.fluentFormat("user-verify-email-report-subject"),
-    "report",
+    "default_email",
     {
       supportedLocales,
       email: verifiedEmailHash.email,
@@ -69,6 +69,7 @@ async function verify(req, res) {
       unsafeBreachesForEmail: unsafeBreachesForEmail,
       unsubscribeUrl: unsubscribeUrl,
       buttonValue,
+      whichView,
     }
   );
 
@@ -142,4 +143,5 @@ module.exports = {
   postUnsubscribe,
   getUnsubSurvey,
   postUnsubSurvey,
+
 };
