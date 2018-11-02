@@ -31,8 +31,8 @@ user-add-title = { -product-name } : Konfirmasi Surel
 user-verify-token-error = Token verifikasi diperlukan.
 user-verify-email-report-subject = Laporan { -product-name } Anda
 user-verify-title = { -product-name } : Berlangganan
-user-unsubscribe-token-error = Perlu token untuk berhenti berlangganan.
-user-unsubscribe-token-email-error = Perlu token dan emailHash untuk berhenti berlangganan.
+user-unsubscribe-token-error = Token untuk berhenti berlangganan diperlukan.
+user-unsubscribe-token-email-error = Token dan emailHash untuk berhenti berlangganan diperlukan.
 user-unsubscribe-title = { -product-name } : Berhenti Berlangganan
 user-unsubscribe-survey-title = { -product-name } : Berhenti Berlangganan Survei
 user-unsubscribed-title = { -product-name } : Berhenti Berlangganan
@@ -88,9 +88,9 @@ signup-modal-headline = Daftar untuk { -product-name-nowrap }
 signup-modal-blurb = Daftar untuk laporan penuh Anda, peringatan ketika terjadi kebocoran baru, dan kiat keamanan dari { -product-name-nowrap }.
 signup-modal-close = Tutup
 get-your-report = Dapatkan Laporan Anda
-signup-modal-verify-headline = Verifikasi Keberlangganan Anda
+signup-modal-verify-headline = Verifikasi langganan Anda
 signup-modal-verify-blurb = Kami telah mengirimkan tautan verifikasi ke <span id="submitted-email" class="medium"></span>.
-signup-modal-verify-expiration = Tautan ini kedaluwarsa dalam 24 jam.
+signup-modal-verify-expiration = Tautan ini akan kedaluwarsa dalam 24 jam.
 signup-modal-verify-resend = Tidak ada di folder kotak masuk atau spam? Kirim ulang.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Terkirim!
