@@ -74,9 +74,16 @@ sign-up = Registrarse
 form-signup-error = Debe ser una dirección de correo electrónico válida
 no-breaches-headline = Hasta aquí todo bien.
 show-more-breaches = Mostrar más
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = Fecha de la filtración de datos:
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Cuentas comprometidas:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Datos comprometidos:
 confirmed = ¡Confirmado!<br />¡Estás suscrito!
+unsub-headline = Cancelar la suscripción de  { -product-name-nowrap }.
+unsub-button = Cancelar suscripción
+unsub-reason-2 = Recibo muchos correos electrónicos de { -product-name-nowrap }
 unsub-reason-6 = Ninguno de las anteriores
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Compartir
