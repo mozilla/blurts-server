@@ -47,7 +47,7 @@ pwt-summary-1 = Opnij brûken fan itselde wachtwurd set de doar wiidwaach iepen 
 pwt-headline-2 = Meitsje sterke, swier te rieden wachtwurden
 pwt-summary-2 = Hackers brûke tûzenen faaks foarkommende wachtwurden om dat fan jo te rieden. Hoe langer en mear willekeurich jo wachtwurd is, hoe swierder it te rieden is.
 pwt-headline-3 = Behannelje befeiligingsfragen as ekstra wachtwurden
-pwt-summary-3 = Websites kontrolearje net oft jo antwurden klopje, allinnich mar oft se hieltyd oerienkomme. Meitsje lange, willekeurige antwyrden en bewarje se op in feilich plak.
+pwt-summary-3 = Websites kontrolearje net oft jo antwurden klopje, allinnich mar oft se hieltyd oerienkomme. Meitsje lange, willekeurige antwurden en bewarje se op in feilich plak.
 pwt-headline-4 = Brûk help by it ûnthâlden fan jo wachtwurden
 pwt-summary-4 =
     Wachtwurdbehearders lykas 1Password, LastPass, Dashlane en Bitwarden generearje sterke, unike wachtwurden. 
@@ -61,7 +61,7 @@ landing-blurb =
     { -product-name-nowrap } bewapenet jo mei helpmiddelen om jo priveegegevens feilich te hâlden. 
     Untdek wat hackers al oer jo witte, en lear hoe't jo se in stap yn it foar bliuwe kinne.
 scan-label = Besjoch oft jo belutsen binne by in datalek.
-scan-placeholder = Fier e-mailadres yn
+scan-placeholder = Fier in e-mailadres yn
 scan-privacy = Jo e-mailadres wurdt net bewarre.
 scan-submit = Jo e-mailadres sykje
 scan-another-email = In oar e-mailadres skanne
@@ -84,7 +84,7 @@ signup-modal-verify-resend = Net yn Postfek YN of map mei spam? Opnij ferstjoere
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Ferstjoerd!
 signup-with-fxa = Ynskriuwe mei { -brand-name }-account
-form-signup-placeholder = Fier e-mailadres yn
+form-signup-placeholder = Fier in e-mailadres yn
 form-signup-checkbox = Untfang it lêste nijs fan { -brand-Mozilla } en { -brand-name }.
 sign-up = Ynskriuwe
 form-signup-error = Moat in jildich e-mailadres wêze
