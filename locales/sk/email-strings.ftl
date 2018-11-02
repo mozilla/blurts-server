@@ -20,6 +20,13 @@ report-no-breaches =
     K úniku však môže dôjsť kedykoľvek. Zabezpečte svoje osobné údaje na internete.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Čo ďalej
+report-headline =
+    { $breachCount ->
+        [0] Zatiaľ je všetko v poriadku.
+        [one] Váš účet bol nájdený v { $breachCount } úniku dát.
+        [few] Váš účet bol nájdený v { $breachCount } únikoch dát.
+       *[other] Váš účet bol nájdený v { $breachCount } únikoch dát.
+    }
 report-subhead-no-breaches =
     Váš účet nie je súčasťou našej databáze únikov dát. 
     To je dobrá správa, no stále je čo zlepšovať. 

@@ -19,17 +19,32 @@ error-not-subscribed = Táto e-mailová adresa nie je prihlásená na odber zo s
 error-hibp-throttled = Príliš mnoho spojení k službe { -brand-HIBP }.
 error-hibp-connect = Chyba pri pripájaní k { -brand-HIBP }.
 error-hibp-load-breaches = Nepodarilo sa načítať údaje o únikoch.
+hibp-notify-email-subject = { -product-name } - upozornenie, váš účet bol súčasťou úniku dát.
 home-title = { -product-name }
 home-not-found = Stránka nebola nájdená.
 oauth-invalid-session = Neplatná relácia
+oauth-confirmed-title = { -product-name } - prihlásenie na odber
+scan-title = { -product-name } - výsledky skenu
 user-add-invalid-email = Neplatná e-mailová adresa
+user-add-email-verify-subject = Potvrďte svoje prihlásenie k odberu zo služby { -product-name }.
+user-add-title = { -product-name } - potvrdzovací e-mail
 user-verify-token-error = Vyžaduje sa overovací token.
 user-verify-email-report-subject = Vaša správa zo služby { -product-name }
+user-verify-title = { -product-name } - prihlásenie je dokončené
+user-unsubscribe-token-error = Pre odhlásenie je vyžadovaný token.
+user-unsubscribe-token-email-error = Pre odhlásenie je vyžadovaný token a emailHash.
+user-unsubscribe-title = { -product-name } - odhlásenie
+user-unsubscribe-survey-title = { -product-name } - dotazník k odhláseniu
+user-unsubscribed-title = { -product-name } - odhlásenie je dokončené
 
 ## Password Tips
 
 pwt-section-headline = Silnejšie heslá = lepšia ochrana
+pwt-section-subhead = Vaše osobné údaje sú len tak v bezpečí, ako sú bezpečné vaše heslá.
 pwt-headline-1 = Používajte rozdielne heslá pre každý účet
+pwt-summary-1 =
+    Používanie rovnakého hesla pre všetky vaše účty necháva otvorené dvere pre krádež vašej identity. 
+    Ktokoľvek, kto pozná vaše heslo sa môže dostať do všetkých vašich účtov.
 pwt-headline-2 = Vytvárajte silné a ťažko uhádnuteľné heslá
 pwt-headline-3 = Považujte bezpečnostné otázky za prídavné heslá
 pwt-summary-3 =
@@ -40,17 +55,28 @@ pwt-summary-4 =
     Správcovia hesiel, ako je 1Password, LastPass, Dashlane a Bitwarden vedia vygenerovať silné a jedinečné heslá.
     Naviac ich vedia bezpečne uložiť a automaticky ich pre vás na webových stránkach vyplnia.
 pwt-headline-5 = Využívajte dvojstupňové overenie
+pwt-summary-5 =
+    Dvojstupňové overenie vyžaduje pre úspešné prihlásenie zadať nejakú dodatočnú informáciu (napríklad jednorázový kód poslaný cez SMS).
+    Aj ak niekto pozná vaše heslo, bez tohoto overenia prístup ku vášmu účtu nezíska.
+pwt-headline-6 = Prihláste sa na odber upozornení zo služby { -product-name-nowrap }
+pwt-summary-6 =
+    Počet únikov dát z webových stránok stúpa. Kedykoľvek je nový únik pridaný do našej databázy,
+    { -product-name-nowrap } vám pošle upozornenie, aby ste mohli čo najrýchlejšie zareagovať a ochrániť svoj účet.
 landing-headline = Každý má právo byť v bezpečí pred hackermi.
 scan-label = Pozrite sa, či boli vaše účty súčasťou úniku dát.
 scan-placeholder = Zadajte e-mailovú adresu
 scan-privacy = Vašu e-mailovú adresu nebudeme nikam ukladať.
 scan-submit = Vyhľadajte svoju e-mailovú adresu
 scan-another-email = Vyhľadajte ďalšiu e-mailovú adresu
+scan-featuredbreach-label = Zistite, či bol váš účet z <span class="bold"> { $featuredBreach } </span>  kompromitovaný.
 scan-error = Zadaná e-mailová adresa nie je platná.
+signup-banner-headline = { -product-name-nowrap } zisťuje hrozby pre vaše internetové účty.
+download-firefox-bar-blurb = Službu { -product-name-nowrap } vám prináša <span class="nowrap">{ -brand-name }</span>.
 download-firefox-bar-link = Prevezmite si { -brand-name }
 download-firefox-banner-blurb = Prevezmite kontrolu nad svojim prehliadačom
 download-firefox-banner-button = Prevziať { -brand-name }
 signup-modal-headline = Prihlásenie sa k službe { -product-name-nowrap }
+signup-modal-blurb = Prihláste sa na zaslanie kompletnej správy, na odber upozornení na nové úniky a zistite dobré tipy na ochranu dát od služby { -product-name-nowrap }.
 signup-modal-close = Zavrieť
 get-your-report = Získajte správu o svojom účte
 signup-modal-verify-headline = Potvrďte svoje prihlásenie na odber
@@ -67,6 +93,7 @@ form-signup-error = Zadaná e-mailová adresa nie je platná.
 no-breaches-headline = Zatiaľ je všetko v poriadku.
 found-breaches-headline = Vaše informácie boli súčasťou úniku dát.
 show-more-breaches = Zobraziť viac
+what-to-do-headline = Čo urobiť, keď sú vaše údaje súčasťou nejakého úniku
 what-to-do-subhead-1 = Zmeňte svoje heslá, aj pre staré účty
 what-to-do-subhead-2 = Ak niekde používate rovnaké heslo, ako k uniknutému účtu, zmeňte ho
 what-to-do-subhead-3 = Venujte špeciálnu pozornosť zabezpečeniu finančných účtov
@@ -77,8 +104,14 @@ compromised-accounts = Počet kompromitovaných účtov:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Kompromitované údaje:
 confirmed = Potvrdené!<br />Ste prihlásení na odber.
+confirmed-social-blurb = Ak unikli vaše údaje, je veľká šanca, že sa to stalo aj členom vašej rodiny či vašim priateľom. Povedzte im o službe { -product-name-nowrap }.
+unsub-headline = Odhlásiť odber zo služby { -product-name-nowrap }
+unsub-blurb = Týmto odstránite svoju e-mailovú adresu zo zoznamu služby { -product-name-nowrap } a nebudete naďalej dostávať upozornenia na novo oznámené úniky dát.
 unsub-button = Odhlásiť sa
 unsub-survey-headline = Už nie ste prihlásení na odber.
+unsub-survey-blurb =
+    Vaša e-mailová adresa bola odhlásená. Ďakujeme vám za využitie služby { -product-name-nowrap }.
+    Nájdete si chvíľku pre odpoveď na jednu otázku o našej službe?
 unsub-survey-form-label = Z akého dôvodu sa odhlasujete zo zasielania upozornení zo služby { -product-name-nowrap }?
 unsub-reason-1 = Nemyslím si, že upozornenia pomáhajú zabezpečiť moje údaje
 unsub-reason-2 = Zo služby { -product-name-nowrap } dostávam príliš veľa e-mailov
@@ -105,3 +138,4 @@ copyright-info =
     Obsah je dostupný v rámci licencie <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Údaje o únikoch poskytuje { $hibp-link }
+site-description = Boli vaše účty súčasťou úniku? { -product-name } to zistí. Prehľadajte databázu a prihláste sa na odber upozornení.
