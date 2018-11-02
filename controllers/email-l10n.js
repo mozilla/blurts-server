@@ -3,24 +3,32 @@
 const HBSHelpers = require("../hbs-helpers");
 
 
-function testEmails(req, res) {
+function getEmailMockUps(req, res) {
   const unsafeBreachesForEmail = [];
   const email = "example@email.com";
   let breachAlert;
   let buttonValue = req.fluentFormat("verify-my-email");
 
-  if (!req.query.view) {
-    req.query.view = "email_verify";
+  if (!req.query.partial) {
+    req.query.partial = "email_verify";
+  } else if (req.query.partial !== "report") {
+    res.redirect("/email-l10n");
   }
 
   if (req.query.type) {
+    const emailType = req.query.type;
+
+    if (["breachAlert", "singleBreach", "multipleBreaches", "noBreaches"].indexOf(emailType) === -1) {
+      res.redirect("/email-l10n");
+    }
+
     buttonValue = req.fluentFormat("report-scan-another-email");
-    if(req.query.type === "singleBreach" || req.query.type === "breachAlert") {
+    if(emailType === "singleBreach" || emailType === "breachAlert") {
       unsafeBreachesForEmail.push(req.app.locals.breaches.filter(breach => breach.Name === "Experian")[0]);
-      if(req.query.type === "breachAlert") {
+      if(emailType === "breachAlert") {
         breachAlert = unsafeBreachesForEmail[0];
       }
-    } else if (req.query.type === "multipleBreaches") {
+    } else if (emailType === "multipleBreaches") {
       const breachArray = ["Experian", "Dropbox", "Apollo"];
       breachArray.forEach(name => {
         unsafeBreachesForEmail.push(req.app.locals.breaches.filter(breach => breach.Name === name)[0]);
@@ -28,11 +36,11 @@ function testEmails(req, res) {
     }
   }
 
-  res.render("test_emails", {
-    layout: "email_l10n_testing.hbs",
+  res.render("email_l10n", {
+    layout: "email_l10n_mockups.hbs",
     unsafeBreachesForEmail: unsafeBreachesForEmail,
     supportedLocales: req.supportedLocales,
-    whichView: `email_partials/${req.query.view}`,
+    whichPartial: `email_partials/${req.query.partial}`,
     date: HBSHelpers.prettyDate(req.supportedLocales, new Date()),
     buttonValue,
     breachAlert,
@@ -40,6 +48,12 @@ function testEmails(req, res) {
   });
 }
 
+function notFound(req, res) {
+  res.status(404);
+  res.redirect("/email-l10n");
+}
+
 module.exports = {
-  testEmails,
+  getEmailMockUps,
+  notFound,
 };

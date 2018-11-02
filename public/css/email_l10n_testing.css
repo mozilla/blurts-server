@@ -1,6 +1,6 @@
 body.email-locale-testing {
-  background: #ededf0;
-  background-color: #ededf0;
+  background: rgb(237, 237, 240);
+  background-color: rgb(237, 237, 240);
   background-image: none;
   color: rgba(12, 12, 13, 0.7);
 }
@@ -20,7 +20,7 @@ body.email-locale-testing .section-wrapper {
 }
 
 .email-locale-testing nav a {
-  color: #000;
+  color: rgb(0, 0, 0);
   display: block;
   font-size: 13px;
   margin: 10px 0;
@@ -35,7 +35,7 @@ body.email-locale-testing .section-wrapper {
 .email-content {
   overflow: hidden;
   border-radius: 3px;
-  box-shadow: 2px 2px 5px #7788995c;
+  box-shadow: 2px 2px 5px rgba(119, 136, 153, 0.361);
 }
 
 .email-test-wrapper .firefox-logo,
@@ -44,7 +44,7 @@ body.email-locale-testing .section-wrapper {
 }
 
 .email-body {
-  background: #fff;
+  background: rgb(255, 255, 255);
   min-height: 300px;
   display: flex;
   flex-direction: column;
@@ -63,7 +63,7 @@ body.email-locale-testing .section-wrapper {
 }
 
 .email-footer a {
-  color: #0060df;
+  color: rgb(0, 96, 223);
 }
 
 .footer-copy {
@@ -90,7 +90,7 @@ body.email-locale-testing .section-wrapper {
   padding: 10px 30px !important;
   display: inline-block;
   border-radius: 3px !important;
-  background-color: #0060df;
+  background-color: rgb(0, 96, 223);
 }
 
 .email-headline-copy {
@@ -120,7 +120,7 @@ td.logomark-wrapper {
 td h1.firefox-logotype {
   font-size: 2rem;
   font-weight: 400 !important;
-  color: #fff;
+  color: rgb(255, 255, 255);
 }
 
 table.table-button tr {

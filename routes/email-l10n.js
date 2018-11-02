@@ -1,10 +1,10 @@
 "use strict";
 const express = require("express");
-const { testEmails } = require("../controllers/email-l10n");
+const { getEmailMockUps, notFound } = require("../controllers/email-l10n");
 const router = express.Router();
 
 
-router.get("/", testEmails);
-
+router.get("/", getEmailMockUps);
+router.use(notFound);
 
 module.exports = router;
