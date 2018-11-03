@@ -109,9 +109,21 @@ no-breaches =
     Pajtohuni te { -product-name-nowrap } për një raport të plotë, sinjalizime kur ndodhin shkelje të reja, dhe ndihmëza rreth mbrojtjes së fjalëkalimeve tuaj.
 featured-breach-results =
     { $breachCount ->
-        [0] Llogaria juaj shfaqet te shkelja <span class="bold">{ $featuredBreach }</span>, por nuk duke te ndonjë shkelje tjetër e njohur të dhënash.
+        [0] Llogaria juaj shfaqet te shkelja <span class="bold">{ $featuredBreach }</span>, por nuk duket te ndonjë shkelje tjetër e njohur të dhënash.
         [one] Llogaria juaj u shfaq te shkelja <span class="bold"> { $featuredBreach } </span>, si dhe te një tjetër shkelje.
        *[other] Llogaria juaj u shfaq te shkelja <span class="bold"> { $featuredBreach } </span>, si dhe te { $breachCount } shkelje të tjera.
+    }
+featured-breach-not-compromised =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Llogaria juaj s’u shfaq te shkelja <span class="bold">{ $featuredBreach }</span>, por u shfaq te një shkelje tjetër.
+       *[other] Llogaria juaj s’u shfaq te shkelja <span class="bold">{ $featuredBreach }</span>, por u shfaq te { $breachCount } shkelje të tjera.
+    }
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Llogaria juaj u shfaq në { $breachCount } shkelje.
+       *[other] Llogaritë e përshoqëruara me adresën tuaj email u shfaqën në { $breachCount } shkeljet vijuese.
     }
 show-more-breaches = Shfaq Më Tepër
 what-to-do-headline = Ç’të Bëhet Kur të Dhënat Tuaja Ekspozohen në një Shkelje të Dhënash
@@ -130,12 +142,15 @@ what-to-do-blurb-3 =
     Nëse llogaria juaj bankare apo numra kartash krediti qenë përfshirë në një shkelje, sinjalizoni bankën tuaj për mashtrim të mundshëm, 
     dhe mbikëqyrni bilancet për zëra që nuk i njihni.
 what-to-do-subhead-4 = Merrni ndihmë për krijim fjalëkalime të mirë dhe për t’i mbajtur të parrezikuar.
+what-to-do-blurb-4 = Përgjegjës fjalëkalimesh, të tillë si 1Password, LastPass, Dashlane, dhe Bitwarden prodhojnë fjalëkalime të fuqishëm, i depozitojnë në mënyrë të sigurt dhe i plotësojnë ato për ju në sajte.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Datë shkeljeje:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Llogari të komprometuara:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Të dhëna të komprometuara
+confirmed = E ripohuar!<br />Jeni Pajtuar!
+confirmed-blurb = { -product-name-nowrap } do t’ju dërgojë me email pa humbur kohë një raport të plotë, dhe do t’ju dërgojë një sinjalizim me email nëse llogaria juaj shfaqet në një shkelje të re të raportuar.
 unsub-button = Shpajtomë
 unsub-reason-3 = S’më duket me vlerë ky shërbim
 unsub-reason-5 = Përdor një shërbim tjetër për mbikëqyrje të llogarive të mia
