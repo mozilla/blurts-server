@@ -18,10 +18,6 @@ your-full-report = この { -product-name } からの詳細レポートには、
 report-no-breaches = あなたのメールアドレスは既知の侵害情報のデータベースに見つかりませんでした。ただし、侵害はいつでも起こり得ます。以下の手順でオンライン上のあなたの個人情報を安全に保ちましょう。
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = 次に何をしたらよいか
-report-headline =
-    { $breachCount ->
-       *[other] あなたのアカウントが { $breachCount } 件の侵害情報に含まれています。
-    }
 report-subhead-no-breaches =
     あなたのアカウントは、侵害情報の詳細レポートには含まれていませんでした。
     これは良い知らせです。ただし、個人情報を守るために、まだできることがあります。
