@@ -63,6 +63,7 @@ pwt-summary-5 =
     誰かがあなたのパスワードを入手してもログインすることはできません。
 pwt-headline-6 = { -product-name-nowrap } からの通知を登録
 pwt-summary-6 = ウェブサイトデータの侵害は上昇傾向にあります。新たな侵害は、すぐに私たちのデータベースに追加され、{ -product-name-nowrap } からの通知が送られます。通知が来たら、すぐに行動を起こしてアカウントを守ってください。
+landing-headline = 悪いハッカーから個人情報を守るために、ここから始めましょう。
 landing-blurb =
     { -product-name-nowrap } はツールであなたの個人情報の安全を保ちます。
     あなたについてハッカーがすでに知っていることを見きわめて、彼らよりも先回りする方法を学びましょう。
@@ -75,11 +76,13 @@ scan-featuredbreach-label = あなたの <span class="bold">{ $featuredBreach }<
 scan-error = メールアドレスを正しく入力してください。
 signup-banner-headline = { -product-name-nowrap } はあなたのオンラインアカウントが脅かされていないか検出します。
 signup-banner-blurb = { -product-name-nowrap } 詳細レポートでは、あなたのオンラインアカウントの情報が漏洩したり盗まれたりしていないかを報告します。また、あなたのアカウントが新たなウェブサイト侵害に巻き込まれた場合にも通知します。
+download-firefox-bar-blurb = { -product-name-nowrap } は、<span class="nowrap">全く新しい { -brand-name }</span> により提供されています。
 download-firefox-bar-link = 今すぐ { -brand-name } をダウンロード
 download-firefox-banner-button = { -brand-name } をダウンロード
 signup-modal-headline = { -product-name-nowrap } のアカウントを登録
 signup-modal-blurb = 登録すると、完全なレポートや新たな侵害の通知、安全性を高めるためのヒントを { -product-name-nowrap } から受けられます。
 signup-modal-close = 閉じる
+get-your-report = レポートを入手しましょう
 signup-modal-verify-headline = 登録を確認してください
 signup-modal-verify-blurb = 登録確認のリンクを <span id="submitted-email" class="medium"></span> へ送信しました。
 signup-modal-verify-expiration = このリンクの有効期限は 24 時間です。
@@ -88,8 +91,17 @@ signup-modal-verify-resend = 受信トレイや迷惑メールフォルダーに
 signup-modal-sent = 送信しました。
 signup-with-fxa = { -brand-name } アカウントで登録する
 form-signup-placeholder = メールアドレスを入力
+form-signup-checkbox = 最新情報を { -brand-Mozilla } と { -brand-name } から入手します。
 sign-up = アカウント登録
 form-signup-error = 有効なメールアドレスを登録してください
+unsub-headline = { -product-name-nowrap } の登録を解除
+unsub-blurb = 登録を解除すると、あなたのメールアドレスを { -product-name-nowrap } のリストから削除し、新たなデータ侵害があっても通知を受け取れなくなります。
+unsub-button = 登録解除
+unsub-survey-headline = 登録を解除しました。
+unsub-survey-blurb =
+    あなたのメールアドレスは { -product-name-nowrap } の登録を解除されました。サービスをご利用いただきありがとうございました。
+    よろしければ、サービス利用についての質問にお答えください。
+unsub-survey-form-label = { -product-name-nowrap } からの通知を登録解除した理由をお聞かせください。
 unsub-survey-error = いずれか一つを選んでください。
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = 共有
