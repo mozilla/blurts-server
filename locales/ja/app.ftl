@@ -40,6 +40,9 @@ user-unsubscribed-title = { -product-name } : 登録解除しました
 
 pwt-section-headline = 強いパスワード = 効果的な防護
 pwt-section-subhead = あなたの個人情報の安全性は、パスワードの強さと同じくらいです。
+pwt-section-blurb =
+    あなたのパスワードが保護するのは、アカウント情報だけではありません。アカウント情報に属するすべての個人情報を保護しています。
+    また、悪意のあるハッカーは、どこでも同じパスワードを使いまわしたり、一般的なフレーズ (p@ssw0rd, anyone?) を使っているユーザーを狙っているため、このような一つのアカウントをハッキングすると多くのアカウントをハッキングできてしまいます。ここでは、あなたのアカウントを保護する方法をご紹介します。
 pwt-headline-1 = すべてのアカウントで異なるパスワードを使いましょう
 pwt-summary-1 =
     さまざまな場所で同じパスワードを使いまわすと、個人情報を盗みだすための扉を大きく開くことになります。
@@ -60,6 +63,10 @@ pwt-summary-5 =
     誰かがあなたのパスワードを入手してもログインすることはできません。
 pwt-headline-6 = { -product-name-nowrap } からの通知を登録
 pwt-summary-6 = ウェブサイトデータの侵害は上昇傾向にあります。新たな侵害は、すぐに私たちのデータベースに追加され、{ -product-name-nowrap } からの通知が送られます。通知が来たら、すぐに行動を起こしてアカウントを守ってください。
+landing-blurb =
+    { -product-name-nowrap } はツールであなたの個人情報の安全を保ちます。
+    あなたについてハッカーがすでに知っていることを見きわめて、彼らよりも先回りする方法を学びましょう。
+scan-label = データ侵害に巻き込まれていないか確認してください。
 scan-placeholder = メールアドレスを入力してください
 scan-privacy = あなたのメールアドレスは保存されません。
 scan-submit = あなたのメールアドレスを検索
@@ -67,6 +74,7 @@ scan-another-email = 別のメールアドレスを検索
 scan-error = メールアドレスを正しく入力してください。
 download-firefox-bar-link = 今すぐ { -brand-name } をダウンロード
 download-firefox-banner-button = { -brand-name } をダウンロード
+signup-modal-headline = { -product-name-nowrap } のアカウントを登録
 signup-modal-blurb = 登録すると、完全なレポートや新たな侵害の通知、安全性を高めるためのヒントを { -product-name-nowrap } から受けられます。
 signup-modal-close = 閉じる
 signup-modal-verify-headline = 登録を確認してください
@@ -76,6 +84,7 @@ signup-modal-verify-resend = 受信トレイや迷惑メールフォルダーに
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = 送信しました。
 form-signup-placeholder = メールアドレスを入力
+sign-up = アカウント登録
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = 共有
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
