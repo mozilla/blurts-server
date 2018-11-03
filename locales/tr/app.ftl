@@ -40,34 +40,70 @@ user-unsubscribed-title = { -product-name } : Abonelikten çıkıldı
 ## Password Tips
 
 pwt-section-headline = Daha Güçlü Parolalar = Daha İyi Koruma
+pwt-section-subhead = Parolalarınız ne kadar güvendeyse kişisel bilgileriniz de o kadar güvendedir.
 pwt-headline-1 = Her hesap için farklı bir parola kullanın
 pwt-headline-2 = Güçlü, tahmin edilmesi zor parolalar oluşturun
+pwt-summary-2 =
+    Hacker’lar parolalarınızı tahmin etmek için sık kullanılan binlerce parolayı kullanır.
+    Parolanız ne kadar uzun ve karmaşıksa tahmin edilmesi de o kadar zor olacaktır.
+pwt-headline-3 = Güvenlik soruları da parolalar kadar önemlidir
+pwt-headline-4 = Parolalarınızı hatırlamak için yardım alın
+pwt-headline-6 = { -product-name-nowrap } uyarılarına kaydolun
 landing-headline = Hacker’lardan korunmaya herkesin hakkı var.
 landing-blurb =
     { -product-name-nowrap }, kişisel bilgilerinizi güvende tutacak araçlarla sizi destekliyor.
-    Hacker’ların sizin hakkında neler bildiğini öğrenin, onların bir adım önünde kalın.
+    Hacker’ların hakkınızda neler bildiğini öğrenin, onların bir adım önünde kalın.
 scan-placeholder = E-posta adresinizi yazın
 scan-privacy = E-postanız kaydedilmeyecektir.
 scan-submit = E-postanızı arayın
 scan-another-email = Başka bir e-posta adresini tara
+scan-featuredbreach-label = <span class="bold"> { $featuredBreach } </span> hesabınız ele geçirilmiş olabilir mi? Hemen öğrenin.
 scan-error = Geçerli bir e-posta adresi olmalı.
+download-firefox-bar-blurb = { -product-name-nowrap }, <span class="nowrap">yenilenen { -brand-name }</span> tarafından sunulmaktadır.
+download-firefox-bar-link = { -brand-name }’u hemen indirebilirsiniz
+download-firefox-banner-blurb = Tarayıcının kontrolünü eline al
+download-firefox-banner-button = { -brand-name }’u indir
+signup-modal-headline = { -product-name-nowrap }’e kaydolun
 signup-modal-close = Kapat
 get-your-report = Raporunuzu alın
 signup-modal-verify-headline = Aboneliğinizi doğrulayın
+signup-modal-verify-expiration = Bu bağlantı 24 saatten sonra kullanılamaz.
+signup-modal-verify-resend = Gelen kutusunda da spam klasöründe de yok mu? Yeniden gönder.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Gönderildi!
+signup-with-fxa = { -brand-name } Hesabı ile kaydolun
 form-signup-placeholder = E-posta adresinizi yazın
+form-signup-checkbox = { -brand-Mozilla } ve { -brand-name } ile ilgili güncel haberleri alın.
 sign-up = Kaydol
 form-signup-error = Geçerli bir e-posta adresi olmalı
 no-breaches-headline = Şimdilik her şey yolunda.
+show-more-breaches = Devamını göster
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = İhlal tarihi:
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Ele geçirilen hesaplar:
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Ele geçirilen veriler:
+confirmed = Onaylandı!<br />Abone oldunuz!
+unsub-headline = { -product-name-nowrap } aboneliğinden çık
 unsub-button = Abonelikten çık
 unsub-survey-headline = Artık abone değilsiniz.
+unsub-reason-1 = Uyarıların verilerimi daha güvenli hale getirmediğini düşünüyorum
+unsub-reason-3 = Hizmeti değerli bulmuyorum
+unsub-reason-4 = Hesaplarımı korumak için zaten önlem aldım
+unsub-reason-5 = Hesaplarımı izlemek için başka bir hizmet kullanıyorum
+unsub-reason-6 = Yukarıdakilerin hiçbiri
+unsub-survey-thankyou = Görüşleriniz için teşekkür ederiz.
 unsub-survey-error = Lütfen birini seçin.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Paylaş
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
 tweet = Tweetle
+download-firefox-quantum = { -brand-Quantum }’u indir
+download-firefox-mobile = Mobil cihazlar için { -brand-name }’u indir
 # Features here refers to Firefox browser features. 
 features = Özellikler
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = İhlal verileri { $hibp-link } tarafından sağlanmaktadır
