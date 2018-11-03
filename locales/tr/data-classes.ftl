@@ -1,0 +1,32 @@
+## Breach Data Classes
+
+account-balances = Hesap bakiyeleri
+address-book-contacts = Adres defteri kişileri
+age-groups = Yaş grupları
+ages = Yaşlar
+apps-installed-on-devices = Cihazlarda yüklü uygulamalar
+astrological-signs = Burçlar
+audio-recordings = Ses kayıtları
+auth-tokens = Kimlik belirteçleri
+avatars = Avatarlar
+bank-account-numbers = Banka hesap numaraları
+beauty-ratings = Güzellik derecelendirmeleri
+biometric-data = Biyometrik veriler
+buying-preferences = Satın alma tercihleri
+car-ownership-statuses = Araba sahipliği durumları
+career-levels = Kariyer seviyeleri
+chat-logs = Sohbet kayıtları
+credit-card-cvv = Kredi kartı CVV
+credit-cards = Kredi kartları
+credit-status-information = Kredi durumu bilgisi
+dates-of-birth = Doğum tarihleri
+deceased-date = Ölüm tarihi
+deceased-statuses = Ölüm durumları
+device-information = Cihaz bilgileri
+device-usage-tracking-data = Cihaz kullanımı izleme verileri
+drinking-habits = İçki alışkanlıkları
+drug-habits = İlaç alışkanlıkları
+eating-habits = Yeme alışkanlıkları
+education-levels = Eğitim seviyeleri
+email-addresses = E-posta adresleri
+email-messages = E-posta iletileri
