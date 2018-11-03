@@ -46,6 +46,9 @@ pwt-summary-1 =
     Používanie rovnakého hesla pre všetky vaše účty necháva otvorené dvere pre krádež vašej identity. 
     Ktokoľvek, kto pozná vaše heslo sa môže dostať do všetkých vašich účtov.
 pwt-headline-2 = Vytvárajte silné a ťažko uhádnuteľné heslá
+pwt-summary-2 =
+    Hackeri používajú zoznam bežne používaných hesiel, aby sa pokúsili uhádnuť to vaše. 
+    Čím je vaše heslo dlhšie a náhodnejšie, tým ťažšie ho bude možné uhádnuť.
 pwt-headline-3 = Považujte bezpečnostné otázky za prídavné heslá
 pwt-summary-3 =
     Webové stránky nekontrolujú, či sú vaše odpovede správne, iba či sa zhodujú 
@@ -95,8 +98,15 @@ found-breaches-headline = Vaše informácie boli súčasťou úniku dát.
 show-more-breaches = Zobraziť viac
 what-to-do-headline = Čo urobiť, keď sú vaše údaje súčasťou nejakého úniku
 what-to-do-subhead-1 = Zmeňte svoje heslá, aj pre staré účty
+what-to-do-blurb-1 =
+    Ak sa nemôžete prihlásiť, kontaktujte správcu webovej stránky a spýtajte sa, ako môžete obnoviť prístup k svojmu účtu alebo účet odstrániť. 
+    Vidíte účet, o ktorom vôbec neviete? Stránka mohla zmeniť svoj názov alebo účet vytvoril niekto za vás.
 what-to-do-subhead-2 = Ak niekde používate rovnaké heslo, ako k uniknutému účtu, zmeňte ho
 what-to-do-subhead-3 = Venujte špeciálnu pozornosť zabezpečeniu finančných účtov
+what-to-do-subhead-4 = Nechajte si pomôcť s vytváraním dobrých hesiel a ich bezpečným uložením.
+what-to-do-blurb-4 =
+    Správcovia hesiel, ako je 1Password, LastPass, Dashlane a Bitwarden vedia vygenerovať silné a jedinečné heslá, 
+    bezpečne ich uložiť a automaticky ich pre vás na webových stránkach vyplniť.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Dátum úniku:
 # compromised accounts = the total number of user accounts exposed in data breach
