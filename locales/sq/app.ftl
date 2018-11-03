@@ -22,14 +22,19 @@ hibp-notify-email-subject = { -product-name } Sinjalizim: Llogaria juaj qe përf
 home-title = { -product-name }
 home-not-found = S’u gjet faqe.
 oauth-invalid-session = Sesion i pavlefshëm
+oauth-confirmed-title = { -product-name } : I pajtuar
 scan-title = { -product-name } : Përfundime Skanimi
 user-add-invalid-email = Email i Pavlefshëm
 user-add-email-verify-subject = Verifikoni pajtimin tuaj te { -product-name }.
+user-add-title = { -product-name } : Email Ripohimi
 user-verify-token-error = Token-i i verifikimit është i domosdoshëm.
 user-verify-email-report-subject = Raporti juaj { -product-name }
+user-verify-title = { -product-name } : I pajtuar
 user-unsubscribe-token-error = Shpajtimi lyp një token.
 user-unsubscribe-token-email-error = Shpajtimi lyp një token dhe emailHash.
 user-unsubscribe-title = { -product-name } : Shpajtomëni
+user-unsubscribe-survey-title = { -product-name } : Pyetësor Shpajtimesh
+user-unsubscribed-title = { -product-name } : I shpajtuar
 
 ## Password Tips
 
@@ -51,7 +56,21 @@ pwt-summary-3 =
     Sajtet nuk kontrollojnë nëse përgjigjet tuaja janë të sakta a jo, ata thjesht shohin nëse përputhen çdo herë. 
     Krijoni përgjigje të gjata, kuturu, dhe depozitojini diku në një vend pa rrezik.
 pwt-headline-4 = Merrni ndihmë lidhur me mbajtjen mend të fjalëkalimeve tuaj
+pwt-summary-4 =
+    Përgjegjës fjalëkalimesh, të tillë si 1Password, LastPass, Dashlane, dhe Bitwarden prodhojnë fjalëkalime të fuqishëm, unikë. 
+    Ata i depozitojnë gjithashtu fjalëkalimet në mënyrë të sigurt dhe i plotësojnë ato për ju në sajte
 pwt-headline-5 = Shtoni siguri ekstra përmes mirëfilltësimit dyfaktorësh
+pwt-summary-5 =
+    2FA lyp një copës shtesë informacioni (pak a shumë si një kod njëpërdorimësh i dërguar përmes mesazhi tekst) për të bërë hyrjen në llogarinë tuaj. 
+    Edhe pse dikush mund të ketë fjalëkalimin tuaj, nuk hyjnë dot.
+pwt-headline-6 = Regjistrohuni për sinjalizimi { -product-name-nowrap }
+pwt-summary-6 =
+    Shkeljet e të dhënave në sajte po shtohen. Sapo një shkelje e re shtohet në bazën tonë të të dhënave, 
+    { -product-name-nowrap } ju dërgon një sinjalizim — kështu mund veproni dhe të mbroni llogarinë tuaj.
+landing-headline = E drejta juaj për të qenë të parrezikuar nga hacker-at e ka fillimin këtu.
+landing-blurb =
+    { -product-name-nowrap } ju armatos me mjete për t’i mbajtur të parrezikuara të dhënat tuaja personale. 
+    Gjeni se ç’dinë tashmë hacker-at rreth jush, dhe mësoni se si të jeni përherë një hap para tyre.
 scan-label = Shihni nëse jeni përfshirë në një shkelje të dhënash.
 scan-placeholder = Jepni Adresë Email
 scan-privacy = Email-i juaj nuk do të depozitohet.
@@ -60,24 +79,34 @@ scan-another-email = Skanoni Një Tjetër Adresë Email
 scan-featuredbreach-label = Shihni nëse llogaria juaj <span class="bold"> { $featuredBreach } </span> qe komprometuar.
 scan-error = Duhet të jetë një email i vlefshëm.
 signup-banner-headline = { -product-name-nowrap } zbulon rreziqe kundër llogarive tuaja internetore.
+signup-banner-blurb =
+    Raporti i hollësishëm { -product-name-nowrap } për ju tregon nëse ka patur rrjedhje të dhënash prej llogarish tuaj internetore, apo nëse janë vjedhur të tilla. 
+    Do t’ju njoftojmë edhe nëse llogaritë tuaja shfaqen në shkelje të reja sajtesh.
 download-firefox-bar-blurb = { -product-name-nowrap } ju vjen nga <span class="nowrap">{ -brand-name }-i fringo i ri</span>.
 download-firefox-bar-link = Shkarkojeni { -brand-name }-in që tani
 download-firefox-banner-blurb = Vihuni në kontroll të shfletuesit tuaj
 download-firefox-banner-button = Shkarko { -brand-name }-in
 signup-modal-headline = Regjistrohuni për { -product-name-nowrap }
+signup-modal-blurb = Regjistrohuni për raportin tuaj të plotë rreth jush, sinjalizime kur ndodhin shkelje të reja, dhe ndihmëza sigurie nga { -product-name-nowrap }.
 signup-modal-close = Mbylle
 get-your-report = Merrni Raportin Tuaj
 signup-modal-verify-headline = Verifikoni pajtimin tuaj
 signup-modal-verify-blurb = Kemi dërguar te <span id="submitted-email" class="medium"></span> një lidhje verifikimi.
 signup-modal-verify-expiration = Kjo lidhje skadon pas 24 orësh.
+signup-modal-verify-resend = S’duket te të marrët apo te dosja e hedhurinave? Ridërgoje.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = U dërgua!
 signup-with-fxa = Regjistrohuni me Llogari { -brand-name }
 form-signup-placeholder = Jepni email
 form-signup-checkbox = Merrni lajmet më të reja prej { -brand-Mozilla }-s dhe { -brand-name }-it.
+sign-up = Regjistrohuni
 form-signup-error = Duhet të jetë një email i vlefshëm
 no-breaches-headline = Deri këtu, mirë.
 found-breaches-headline = Të dhënat tuaja qenë pjesë e një shkeljeje të dhënash.
+no-breaches =
+    Adresa juaj email nuk u pa gjatë kontrollit tonë të thjeshtë.
+    Kjo është gjë e mirë, por shkelje të dhënash mund të ndodhin në çdo kohë dhe ka më tepër gjëra që mund të bëni. 
+    Pajtohuni te { -product-name-nowrap } për një raport të plotë, sinjalizime kur ndodhin shkelje të reja, dhe ndihmëza rreth mbrojtjes së fjalëkalimeve tuaj.
 show-more-breaches = Shfaq Më Tepër
 what-to-do-subhead-1 = Ndryshoni fjalëkalimet tuaj, madje edhe për llogari të vjetra
 # breach-date = the calendar date a particular data theft occurred. 
@@ -99,3 +128,11 @@ download-firefox-quantum = Shkarko { -brand-Quantum }
 features = Veçori
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# The following string contains HTML markup which should not be translated. 
+# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
+copyright-info =
+    Pjesë të kësaj lënde janë &#x24B8; 1998-2018 nga kontribues individualë te mozilla.org. <br />
+    Lëndë e përdorshme sipas një licence  <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons</a>.
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Të dhëna shkeljesh furnizuar nga { $hibp-link }
+site-description = A ka rrjedhje nga llogaritë tuaja apo janë vjedhur gjatë një shkeljeje të dhënash? Gjejeni te { -product-name }. Kërkoni në bazën tonë të të dhënave dhe regjistrohuni për sinjalizime.
