@@ -107,8 +107,29 @@ no-breaches =
     Adresa juaj email nuk u pa gjatë kontrollit tonë të thjeshtë.
     Kjo është gjë e mirë, por shkelje të dhënash mund të ndodhin në çdo kohë dhe ka më tepër gjëra që mund të bëni. 
     Pajtohuni te { -product-name-nowrap } për një raport të plotë, sinjalizime kur ndodhin shkelje të reja, dhe ndihmëza rreth mbrojtjes së fjalëkalimeve tuaj.
+featured-breach-results =
+    { $breachCount ->
+        [0] Llogaria juaj shfaqet te shkelja <span class="bold">{ $featuredBreach }</span>, por nuk duke te ndonjë shkelje tjetër e njohur të dhënash.
+        [one] Llogaria juaj u shfaq te shkelja <span class="bold"> { $featuredBreach } </span>, si dhe te një tjetër shkelje.
+       *[other] Llogaria juaj u shfaq te shkelja <span class="bold"> { $featuredBreach } </span>, si dhe te { $breachCount } shkelje të tjera.
+    }
 show-more-breaches = Shfaq Më Tepër
+what-to-do-headline = Ç’të Bëhet Kur të Dhënat Tuaja Ekspozohen në një Shkelje të Dhënash
 what-to-do-subhead-1 = Ndryshoni fjalëkalimet tuaj, madje edhe për llogari të vjetra
+what-to-do-blurb-1 =
+    Nëse s’bëni dot hyrjen në llogarinë tuaj, lidhuni me sajtin për t’u kërkuar se si mund të rimerrni llogarinë tuaj, ose se si mund të mbyllni atë. 
+    Shihni një llogari që nuk e njihni më? Sajti mund të kenë ndryshuar emrat ose dikush mund të ketë krijuar një llogari për ju.
+what-to-do-subhead-2 = Nëse përdorni një fjalëkalim të ekspozuar, ndryshojeni
+what-to-do-blurb-2 =
+    Hacker-at mund të provojnë të ripërdorin fjalëkalimin tuaj të ekspozuar që të hyjnë në llogari të   tjera. 
+    Krijoni një fjalëkalim të ndryshëm për çdo sajt, veçanërisht për llogarinë tuaj bankare, 
+    atë email dhe sajte të tjerë ku ruani të dhëna personale.
+what-to-do-subhead-3 = Ndërmerrni hapa ekstra për të siguruar llogaritë tuaja financiare
+what-to-do-blurb-3 =
+    Shumica e shkeljeve ekspozojnë vetëm email-e dhe fjalëkalime, por disa përfshijnë edhe të dhëna financiare me spec. 
+    Nëse llogaria juaj bankare apo numra kartash krediti qenë përfshirë në një shkelje, sinjalizoni bankën tuaj për mashtrim të mundshëm, 
+    dhe mbikëqyrni bilancet për zëra që nuk i njihni.
+what-to-do-subhead-4 = Merrni ndihmë për krijim fjalëkalime të mirë dhe për t’i mbajtur të parrezikuar.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Datë shkeljeje:
 # compromised accounts = the total number of user accounts exposed in data breach
