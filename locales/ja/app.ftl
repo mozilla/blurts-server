@@ -71,7 +71,10 @@ scan-placeholder = メールアドレスを入力してください
 scan-privacy = あなたのメールアドレスは保存されません。
 scan-submit = あなたのメールアドレスを検索
 scan-another-email = 別のメールアドレスを検索
+scan-featuredbreach-label = あなたの <span class="bold">{ $featuredBreach }</span> アカウント情報が漏洩していないか調べてください。
 scan-error = メールアドレスを正しく入力してください。
+signup-banner-headline = { -product-name-nowrap } はあなたのオンラインアカウントが脅かされていないか検出します。
+signup-banner-blurb = { -product-name-nowrap } 詳細レポートでは、あなたのオンラインアカウントの情報が漏洩したり盗まれたりしていないかを報告します。また、あなたのアカウントが新たなウェブサイト侵害に巻き込まれた場合にも通知します。
 download-firefox-bar-link = 今すぐ { -brand-name } をダウンロード
 download-firefox-banner-button = { -brand-name } をダウンロード
 signup-modal-headline = { -product-name-nowrap } のアカウントを登録
@@ -83,8 +86,11 @@ signup-modal-verify-expiration = このリンクの有効期限は 24 時間で�
 signup-modal-verify-resend = 受信トレイや迷惑メールフォルダーに見当たらない場合は、再送信します。
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = 送信しました。
+signup-with-fxa = { -brand-name } アカウントで登録する
 form-signup-placeholder = メールアドレスを入力
 sign-up = アカウント登録
+form-signup-error = 有効なメールアドレスを登録してください
+unsub-survey-error = いずれか一つを選んでください。
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = 共有
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
