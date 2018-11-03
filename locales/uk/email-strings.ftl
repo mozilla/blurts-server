@@ -18,12 +18,6 @@ report-no-breaches =
     Але витік даних може статися в будь-який час. Виконайте ці кроки, щоб утримувати свої особисті дані в безпеці онлайн.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Що робити далі
-report-headline =
-    { $breachCount ->
-        [one] Наразі все гаразд.
-        [few] Ваш обліковий запис з'явився в { $breachCount } витоку даних.
-       *[other] Ваш обліковий запис з'явився в { $breachCount } витоках даних.
-    }
 report-subhead-no-breaches =
     Ваш обліковий запис не з'являється в нашому повному звіті вразливостей.
     Це гарна новина, але ви можете зробити ще дещо.
