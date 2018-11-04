@@ -12,11 +12,6 @@ report-date = Rapor Tarihi:
 email-address = E-posta adresi:
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Sırada ne var?
-report-headline =
-    { $breachCount ->
-        [one] Hesabınız { $breachCount } veri ihlalinde yer alıyor.
-       *[other] Hesaplarınız { $breachCount } veri ihlalinde yer alıyor.
-    }
 breach-alert-headline = Hesabınız bir veri ihlali kapsamında yer alıyor.
 report-pwt-headline-1 = Her hesap için farklı bir parola kullanın
 report-pwt-headline-4 = Parola yöneticisi kullanın
