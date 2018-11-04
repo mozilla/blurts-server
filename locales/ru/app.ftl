@@ -39,6 +39,7 @@ user-verify-title = { -product-name } : Вы подписаны
 user-unsubscribe-token-error = Чтобы отписаться необходим токен.
 user-unsubscribe-token-email-error = Чтобы отписаться необходим токен и emailHash.
 user-unsubscribe-title = { -product-name } : Отписаться
+user-unsubscribe-survey-title = { -product-name } : Почему вы отписались?
 user-unsubscribed-title = { -product-name } : Вы отписались
 
 ## Password Tips
