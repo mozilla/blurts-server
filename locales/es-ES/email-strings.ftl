@@ -33,6 +33,7 @@ report-pwt-summary-1 =
     Si utilizas la misma contraseña en todas partes puedes estar abriendo la puerta a los piratas informáticos.
     Pueden utilizar esa contraseña para acceder a tus otras cuentas.
 report-pwt-headline-2 = Crea contraseñas seguras y únicas
+report-pwt-headline-3 = Trata las preguntas de seguridad como si fueran contraseñas adicionales
 report-pwt-headline-4 = Utilice un administrador de contraseñas
 report-pwt-summary-4 = Servicios como 1Password, LastPass, Dashlane y Bitwarden generan contraseñas robustas, las almacenan de forma segura y las introducen por ti en los sitios web para que no tengas que recordar cada una.
 # A link to legal information about mozilla products.
