@@ -48,6 +48,7 @@ pwt-summary-2 =
     Cuanto más larga y aleatoria sea tu contraseña, más difícil será de adivinar.
 pwt-headline-3 = Trata las preguntas de seguridad como si fueran contraseñas adicionales
 pwt-headline-4 = Obtén ayuda para recordar tus contraseñas
+pwt-headline-6 = Regístrate para recibir alertas de { -product-name-nowrap }
 scan-label = Comprueba si has estado involucrado en una fuga de datos.
 scan-placeholder = Introduce una dirección de correo electrónico
 scan-privacy = No se guardará tu correo electrónico.
@@ -74,6 +75,13 @@ sign-up = Registrarse
 form-signup-error = Debe ser una dirección de correo electrónico válida
 no-breaches-headline = Hasta aquí todo bien.
 show-more-breaches = Mostrar más
+what-to-do-subhead-1 = Cambia tus contraseñas, aunque se trate de cuentas antiguas
+what-to-do-subhead-2 = Si reutilizas una contraseña que ha sido expuesta, cámbiala
+what-to-do-blurb-2 = Los piratas informáticos pueden intentar hacer uso de tu contraseña para acceder a otras cuentas. Crea una contraseña diferente para cada sitio web, especialmente para tu cuenta bancaria, correo electrónico y otros sitios web en los que guardes tu  información personal.
+what-to-do-subhead-3 = Toma medidas adicionales para asegurar tus cuentas bancarias
+what-to-do-blurb-3 = La mayoría de las filtraciones de datos solo exponen correos electrónicos y contraseñas, pero algunas incluyen información financiera confidencial. Si los números de tu cuenta bancaria o de tu tarjeta de crédito fueron incluidos en un caso de filtración de datos, alerta a tu banco sobre un posible fraude y revisa los movimientos de tu cuenta en busca de cargos que no reconoces.
+what-to-do-subhead-4 = Obtén ayuda para crear buenas contraseñas y mantenerlas seguras.
+what-to-do-blurb-4 = Los administradores de contraseñas como 1Password, LastPass, Dashlane y Bitwarden generan contraseñas robustas, las almacenan de forma segura y las introducen por ti en los sitios web.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Fecha de la filtración de datos:
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -83,8 +91,14 @@ compromised-data = Datos comprometidos:
 confirmed = ¡Confirmado!<br />¡Estás suscrito!
 unsub-headline = Cancelar la suscripción de  { -product-name-nowrap }.
 unsub-button = Cancelar suscripción
+unsub-survey-headline = Ya no estás suscrito.
+unsub-reason-1 = Creo que las alertas no hacen que mis datos estén más seguros
 unsub-reason-2 = Recibo muchos correos electrónicos de { -product-name-nowrap }
+unsub-reason-3 = No me parece que el servicio sea de gran utilidad
+unsub-reason-4 = Ya he tomado medidas para proteger mis cuentas
 unsub-reason-6 = Ninguno de las anteriores
+unsub-survey-thankyou = Gracias por tu opinión.
+unsub-survey-error = Por favor selecciona uno.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Compartir
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
