@@ -70,6 +70,7 @@ download-firefox-banner-button = Prenesite { -brand-name }
 signup-modal-headline = Prijavite se na { -product-name-nowrap }
 signup-modal-blurb = Naročite svoje celotno poročilo, opozorila ob novih krajah podatkov in varnostne nasvete { -product-name-nowrap }.
 signup-modal-close = Zapri
+get-your-report = Prejmite svoje poročilo
 signup-modal-verify-headline = Potrdite svojo naročnino
 signup-modal-verify-blurb = Na <span id="submitted-email" class="medium"></span> smo poslali potrditveno povezavo.
 signup-modal-verify-expiration = Povezava bo potekla po 24 urah.
