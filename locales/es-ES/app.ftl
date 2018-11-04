@@ -48,6 +48,7 @@ pwt-summary-2 =
     Cuanto más larga y aleatoria sea tu contraseña, más difícil será de adivinar.
 pwt-headline-3 = Trata las preguntas de seguridad como si fueran contraseñas adicionales
 pwt-headline-4 = Obtén ayuda para recordar tus contraseñas
+pwt-summary-4 = Los administradores de contraseñas como 1Password, LastPass, Dashlane y Bitwarden generan contraseñas robustas y únicas. También las almacenan de forma segura y las introducen por ti en los sitios web.
 pwt-headline-6 = Regístrate para recibir alertas de { -product-name-nowrap }
 scan-label = Comprueba si has estado involucrado en una fuga de datos.
 scan-placeholder = Introduce una dirección de correo electrónico
