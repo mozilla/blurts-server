@@ -53,20 +53,27 @@ landing-headline = Hacker’lardan korunmaya herkesin hakkı var.
 landing-blurb =
     { -product-name-nowrap }, kişisel bilgilerinizi güvende tutacak araçlarla sizi destekliyor.
     Hacker’ların hakkınızda neler bildiğini öğrenin, onların bir adım önünde kalın.
+scan-label = Veri ihlallerine karışıp karışmadığınız görün.
 scan-placeholder = E-posta adresinizi yazın
 scan-privacy = E-postanız kaydedilmeyecektir.
 scan-submit = E-postanızı arayın
 scan-another-email = Başka bir e-posta adresini tara
 scan-featuredbreach-label = <span class="bold"> { $featuredBreach } </span> hesabınız ele geçirilmiş olabilir mi? Hemen öğrenin.
 scan-error = Geçerli bir e-posta adresi olmalı.
+signup-banner-headline = { -product-name-nowrap }, çevrimiçi hesaplarınıza yönelik tehditleri algılar.
+signup-banner-blurb =
+    Ayrıntılı { -product-name-nowrap } raporunuz, hangi çevrimiçi hesaplarınızdaki bilgilerin sızdırıldığını veya çalındığını gösterir.
+    Ayrıca, hesaplarınız yeni web sitesi güvenlik ihlallerinde yer alırsa sizi uyarırız.
 download-firefox-bar-blurb = { -product-name-nowrap }, <span class="nowrap">yenilenen { -brand-name }</span> tarafından sunulmaktadır.
 download-firefox-bar-link = { -brand-name }’u hemen indirebilirsiniz
 download-firefox-banner-blurb = Tarayıcının kontrolünü eline al
 download-firefox-banner-button = { -brand-name }’u indir
 signup-modal-headline = { -product-name-nowrap }’e kaydolun
+signup-modal-blurb = Eksiksiz raporunuz, yeni ihlal uyarıları ve güvenlikle ilgili ipuçları için { -product-name-nowrap }’e kaydolun.
 signup-modal-close = Kapat
 get-your-report = Raporunuzu alın
 signup-modal-verify-headline = Aboneliğinizi doğrulayın
+signup-modal-verify-blurb = <span id="submitted-email" class="medium"> adresine bir doğrulama bağlantısı gönderdik.
 signup-modal-verify-expiration = Bu bağlantı 24 saatten sonra kullanılamaz.
 signup-modal-verify-resend = Gelen kutusunda da spam klasöründe de yok mu? Yeniden gönder.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
@@ -77,6 +84,7 @@ form-signup-checkbox = { -brand-Mozilla } ve { -brand-name } ile ilgili güncel 
 sign-up = Kaydol
 form-signup-error = Geçerli bir e-posta adresi olmalı
 no-breaches-headline = Şimdilik her şey yolunda.
+found-breaches-headline = Bilgileriniz bir veri ihlali kapsamında ele geçirilmiş.
 show-more-breaches = Devamını göster
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = İhlal tarihi:
