@@ -16,11 +16,6 @@ your-full-report = Aquí está tu informe completo de { -product-name }, que inc
 report-no-breaches = Tu dirección de correo electrónico no aparece en nuestra base de datos de filtraciones conocidas. Pero éstas pueden ocurrir en cualquier momento. Sigue estos pasos para mantener tu información personal segura.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Qué hacer a continuación
-report-headline =
-    { $breachCount ->
-        [one] Tu cuenta apareció en { $breachCount } filtración.
-       *[other] Tus cuentas aparecieron en { $breachCount } filtraciones.
-    }
 report-subhead-no-breaches =
     Tu cuenta no aparece en nuestro informe completo de filtraciones de datos. 
     Esas son buenas noticias, pero hay más cosas que puedes hacer. 
