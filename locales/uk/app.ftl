@@ -32,6 +32,14 @@ user-verify-token-error = Необхідний токен підтверджен
 user-verify-email-report-subject = Ваш звіт від { -product-name }
 user-verify-title = { -product-name } : Ви підписані
 user-unsubscribe-token-error = Для скасування підписки необхідний токен.
+user-unsubscribe-token-email-error = Для скасування підписки необхідний токен і emailHash.
+user-unsubscribe-title = { -product-name } : Відписатися
+user-unsubscribe-survey-title = { -product-name } : Чому ви відписалися
+user-unsubscribed-title = { -product-name } : Підписку скасовано
 
 ## Password Tips
 
+pwt-section-headline = Надійніші паролі = Кращий захист
+pwt-section-subhead = Ваша особиста інформація настільки захищена, наскільки надійні ваші паролі.
+pwt-section-blurb = Ваші паролі захищають не лише облікові записи. Вони захищають кожен біт особистої інформації, пов'язаної з ними. Але хакери покладаються на погані звички, такі як використання всюди однакового пароля, або використання звичайних фраз (наприклад, p@ssw0rd), отже якщо вони зламають один обліковий запис, то можуть потім зламати багато інших. Ось, як краще захистити ваші облікові записи.
+pwt-headline-1 = Використовуйте різні паролі для кожного облікового запису
