@@ -16,6 +16,12 @@ your-full-report = Aquí está tu informe completo de { -product-name }, que inc
 report-no-breaches = Tu dirección de correo electrónico no aparece en nuestra base de datos de filtraciones conocidas. Pero éstas pueden ocurrir en cualquier momento. Sigue estos pasos para mantener tu información personal segura.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Qué hacer a continuación
+report-headline =
+    { $breachCount ->
+        [0] De momento, todo correcto.
+        [one] Tu cuenta apareció en { $breachCount } filtración.
+       *[other] Tus cuentas aparecieron en { $breachCount } filtraciones.
+    }
 report-subhead-no-breaches =
     Tu cuenta no aparece en nuestro informe completo de filtraciones de datos. 
     Esas son buenas noticias, pero hay más cosas que puedes hacer. 
@@ -29,6 +35,9 @@ report-pwt-summary-1 =
     Pueden utilizar esa contraseña para acceder a tus otras cuentas.
 report-pwt-headline-2 = Crea contraseñas seguras y únicas
 report-pwt-headline-3 = Trata las preguntas de seguridad como si fueran contraseñas adicionales
+report-pwt-summary-3 =
+    Los sitios web no comprueban que tus contraseñas sean adecuadas, solo que coincidan cada vez.
+    Crea contraseñas largas, aleatorias y guárdalas en un lugar seguro.
 report-pwt-headline-4 = Utilice un administrador de contraseñas
 report-pwt-summary-4 = Servicios como 1Password, LastPass, Dashlane y Bitwarden generan contraseñas robustas, las almacenan de forma segura y las introducen por ti en los sitios web para que no tengas que recordar cada una.
 # A link to legal information about mozilla products.

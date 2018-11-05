@@ -41,15 +41,29 @@ user-unsubscribed-title = { -product-name } : Suscripción cancelada
 
 pwt-section-headline = Contraseñas más robustas = Mejor protección
 pwt-section-subhead = Tu información privada es tan segura como lo son tus contraseñas.
+pwt-section-blurb =
+    Tus contraseñas protegen algo más que tus cuentas. Protegen cada aspecto de tu información personal que hay en ellas.
+    Los piratas informáticos se basan en los malos hábitos de la gente, como usar la misma contraseña para todo o usar contraseñas sencillas (1234, ¿te suena?) así que si han podido piratear una cuenta, pueden hacerlo con muchas. Aquí te mostramos cómo proteger mejor tus cuentas.
 pwt-headline-1 = Usa una contraseña diferente para cada cuenta
+pwt-summary-1 =
+    Utilizar la misma contraseña en todas partes deja abierta la puerta a la usurpación de identidad.
+    Cualquiera con esa contraseña puede acceder a todas tus cuentas.
 pwt-headline-2 = Crea contraseñas seguras y difíciles de adivinar
 pwt-summary-2 =
     Los piratas informáticos usan miles de contraseñas comunes para intentar adivinar la tuya. 
     Cuanto más larga y aleatoria sea tu contraseña, más difícil será de adivinar.
 pwt-headline-3 = Trata las preguntas de seguridad como si fueran contraseñas adicionales
+pwt-summary-3 =
+    Los sitios web no comprueban que tus contraseñas sean adecuadas, solo que coincidan cada vez.
+    Crea contraseñas largas, aleatorias y guárdalas en un lugar seguro.
 pwt-headline-4 = Obtén ayuda para recordar tus contraseñas
 pwt-summary-4 = Los administradores de contraseñas como 1Password, LastPass, Dashlane y Bitwarden generan contraseñas robustas y únicas. También las almacenan de forma segura y las introducen por ti en los sitios web.
+pwt-headline-5 = Añade seguridad adicional con la autenticación de dos factores
+pwt-summary-5 =
+    La autenticación de dos factores requiere información adicional (como un código de un solo uso enviado por SMS) para acceder a tu cuenta.
+    Incluso si alguien tiene tu contraseña, no podrá acceder.
 pwt-headline-6 = Regístrate para recibir alertas de { -product-name-nowrap }
+landing-headline = Tu derecho a estar a salvo de los piratas informáticos empieza aquí.
 scan-label = Comprueba si has estado involucrado en una fuga de datos.
 scan-placeholder = Introduce una dirección de correo electrónico
 scan-privacy = No se guardará tu correo electrónico.
@@ -72,9 +86,11 @@ signup-modal-verify-resend = ¿No está en la bandeja de entrada o en la de spam
 signup-modal-sent = ¡Enviado!
 signup-with-fxa = Regístrate con la cuenta { -brand-name }
 form-signup-placeholder = Introduce correo electrónico
+form-signup-checkbox = Recibe las últimas novedades de { -brand-Mozilla } y { -brand-name }.
 sign-up = Registrarse
 form-signup-error = Debe ser una dirección de correo electrónico válida
 no-breaches-headline = Hasta aquí todo bien.
+found-breaches-headline = Tu información fue comprometida en una filtración de datos.
 show-more-breaches = Mostrar más
 what-to-do-subhead-1 = Cambia tus contraseñas, aunque se trate de cuentas antiguas
 what-to-do-subhead-2 = Si reutilizas una contraseña que ha sido expuesta, cámbiala
@@ -105,7 +121,10 @@ share = Compartir
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
 tweet = Tuitear
 download-firefox-quantum = Descarga { -brand-Quantum }
+download-firefox-mobile = Descarga { -brand-name } para dispositivos móviles
 # Features here refers to Firefox browser features. 
 features = Características
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Filtración de datos proporcionada por { $hibp-link }
