@@ -41,13 +41,26 @@ user-unsubscribed-title = { -product-name } : Abonelikten çıkıldı
 
 pwt-section-headline = Daha Güçlü Parolalar = Daha İyi Koruma
 pwt-section-subhead = Parolalarınız ne kadar güvendeyse kişisel bilgileriniz de o kadar güvendedir.
+pwt-section-blurb =
+    Parolalarınız yalnızca hesaplarınızı korumakla kalmaz, hesaplarınıza kayıtlı tüm kişisel bilgilerinizi de korur.
+    Hacker’lar, her yerde aynı parolayı kullanmak veya sık kullanılan parolaları kullanmak (p@r0la) gibi kötü alışkanlıklardan faydalanır. Böylece bir hesabı ele geçirdiklten sonra diğer hesapları da ele geçirebilirler. Hesaplarınızı daha iyi korumanın yollarını aşağıda anlatıyoruz.
 pwt-headline-1 = Her hesap için farklı bir parola kullanın
+pwt-summary-1 =
+    Her yerde aynı parolayı kullanırsanız kimlik hırsızlarına kapıyı açık bırakmış olursunuz.
+    Tek bir parolanızı ele geçiren herkes tüm hesaplarınıza giriş yapabilir.
 pwt-headline-2 = Güçlü, tahmin edilmesi zor parolalar oluşturun
 pwt-summary-2 =
     Hacker’lar parolalarınızı tahmin etmek için sık kullanılan binlerce parolayı kullanır.
     Parolanız ne kadar uzun ve karmaşıksa tahmin edilmesi de o kadar zor olacaktır.
 pwt-headline-3 = Güvenlik soruları da parolalar kadar önemlidir
+pwt-summary-3 =
+    Güvenlik sorularına gerçekten doğru yanıt vermeniz gerekmez. Önemli olan, yazdığınız yanıtı daha sonra hatırlamanızdır. 
+    Uzun ve rasgele yanıtlar oluşturup bu yanıtlarınızı güvenli bir yerde saklayın.
 pwt-headline-4 = Parolalarınızı hatırlamak için yardım alın
+pwt-headline-5 = İki aşamalı kimlik doğrulamayla güvenliği artırın
+pwt-summary-5 =
+    İki aşamalı doğrulamada (2FA) hesabınıza girmek için ek bir bilgi (kısa mesajla gönderilen tek kullanımlık kod gibi) gerekir.
+    Böylece, birisi parolanıza sahip olsa bile hesabınıza giremez.
 pwt-headline-6 = { -product-name-nowrap } uyarılarına kaydolun
 landing-headline = Hacker’lardan korunmaya herkesin hakkı var.
 landing-blurb =
@@ -85,7 +98,32 @@ sign-up = Kaydol
 form-signup-error = Geçerli bir e-posta adresi olmalı
 no-breaches-headline = Şimdilik her şey yolunda.
 found-breaches-headline = Bilgileriniz bir veri ihlali kapsamında ele geçirilmiş.
+no-breaches =
+    E-posta adresiniz temel taramamızda görünmedi.
+    Bu iyi haber ama veri ihlalleri her zaman yaşanabilir ve yapabileceğiniz başka şeyler de var.
+    Eksiksiz raporunuz, yeni ihlal uyarıları ve parolalarınızı korumaya dair ipuçları için { -product-name-nowrap }’e abone olabilirsiniz.
+featured-breach-results =
+    { $breachCount ->
+        [0] Hesabınız <span class="bold">{ $featuredBreach }</span> ihlalinde yer alıyor ama başka bilinen veri ihallerinde görünmüyor.
+        [one] Hesabınız <span class="bold">{ $featuredBreach }</span> ihlalinde ve bir ihlalde daha yer alıyor.
+       *[other] Hesabınız <span class="bold">{ $featuredBreach }</span> ihlalinde ve { $breachCount } ihlalde daha yer alıyor.
+    }
+featured-breach-not-compromised =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Hesabınız <span class="bold">{ $featuredBreach }</span> ihlalinde yer almıyor ama başka bir ihlalde yer alıyor.
+       *[other] Hesabınız <span class="bold">{ $featuredBreach }</span> ihlalinde yer almıyor ama başka { $breachCount } ihlalde yer alıyor.
+    }
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Hesabınız { $breachCount } ihlalde yer alıyor.
+       *[other] E-posta adresinizle ilişkili hesaplar aşağıdaki { $breachCount } ihlalde yer alıyor.
+    }
 show-more-breaches = Devamını göster
+what-to-do-headline = Bilgileriniz veri ihlaline maruz kaldığında yapmanız gerekenler
+what-to-do-subhead-1 = Eski hesaplarınız da dahil olmak üzere parolalarınızı değiştirin
+what-to-do-subhead-3 = Finansal hesaplarınızı güvenceye almak için ek adımlar atın
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = İhlal tarihi:
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -96,7 +134,9 @@ confirmed = Onaylandı!<br />Abone oldunuz!
 unsub-headline = { -product-name-nowrap } aboneliğinden çık
 unsub-button = Abonelikten çık
 unsub-survey-headline = Artık abone değilsiniz.
+unsub-survey-form-label = { -product-name-nowrap } uyarıları aboneliğinizi neden iptal ediyorsunuz?
 unsub-reason-1 = Uyarıların verilerimi daha güvenli hale getirmediğini düşünüyorum
+unsub-reason-2 = { -product-name-nowrap }'den çok fazla e-posta alıyorum
 unsub-reason-3 = Hizmeti değerli bulmuyorum
 unsub-reason-4 = Hesaplarımı korumak için zaten önlem aldım
 unsub-reason-5 = Hesaplarımı izlemek için başka bir hizmet kullanıyorum
@@ -113,5 +153,10 @@ download-firefox-mobile = Mobil cihazlar için { -brand-name }’u indir
 features = Özellikler
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# The following string contains HTML markup which should not be translated. 
+# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
+copyright-info =
+    Bu içeriğin bazı kısımları &#x24B8; 1998-2018 bireysel mozilla.org gönüllüleri. <br />
+    İçerik, <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener"> Creative Commons lisansı</a> ile kullanılabilir.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = İhlal verileri { $hibp-link } tarafından sağlanmaktadır
