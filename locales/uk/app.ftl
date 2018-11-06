@@ -152,3 +152,38 @@ compromised-accounts = Скомпрометовані облікові запи�
 compromised-data = Скомпрометовані дані:
 confirmed = Підтверджено!<br />Ви підписані!
 confirmed-blurb = { -product-name-nowrap } за мить надішле вам повний звіт, а також надсилатиме вам попередження, якщо ваш обліковий запис з'явиться у нових відомих витоках даних.
+confirmed-social-blurb = Якщо ваші дані опинилися під загрозою, ймовірно, пов'язані дані ваших родичів та друзів теж. Повідомте їх про { -product-name-nowrap }.
+unsub-headline = Відписатися від { -product-name-nowrap }
+unsub-blurb = Ця дія призведе до вилучення адреси вашої електронної пошти зі списку { -product-name-nowrap } і ви надалі не будете отримувати попередження про нові вразливості.
+unsub-button = Відписатись
+unsub-survey-headline = Ви більше не підписані.
+unsub-survey-blurb =
+    Ваша адреса електронної пошти відписана від { -product-name-nowrap }. Дякуємо, що скористалися цим сервісом.
+    Чи бажаєте відповісти на одне запитання про досвід вашого користування сервісом?
+unsub-survey-form-label = Чому ви відписуєтеся від попереджень { -product-name-nowrap }?
+unsub-reason-1 = Я вважаю, що попередження не захищають мої дані
+unsub-reason-2 = Я отримую забагато повідомлень від { -product-name-nowrap }
+unsub-reason-3 = Я вважаю, що цей сервіс не є корисним
+unsub-reason-4 = Я вже маю все необхідне для захисту своїх даних
+unsub-reason-5 = Я використовую інший сервіс для моніторингу своїх облікових даних
+unsub-reason-6 = Нічого з переліченого вище
+unsub-survey-thankyou = Дякуємо вам за відповідь.
+unsub-survey-error = Будь ласка, оберіть одну причину.
+# Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
+share = Поширити
+# Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
+tweet = Твіт
+download-firefox-quantum = Завантажити { -brand-Quantum }
+download-firefox-mobile = Завантажити мобільний { -brand-name }
+# Features here refers to Firefox browser features. 
+features = Можливості
+# beta-nightly-developer-edition refers to additional versions of Firefox Browser
+beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# The following string contains HTML markup which should not be translated. 
+# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
+copyright-info =
+    Частини цього вмісту створені учасниками проекту mozilla.org &#x24B8; 1998-2018. <br />
+    Вміст доступний на умовах <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">ліцензії Creative Commons</a>.
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Дані про загрози надано { $hibp-link }
+site-description = Чи були ваші облікові записи викрадені в результаті витоку даних? Дізнайтеся в { -product-name }. Виконайте пошук в нашій базі даних та підпишіться на отримання попереджень.
