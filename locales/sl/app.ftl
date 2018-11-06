@@ -30,6 +30,7 @@ user-verify-token-error = Zahtevan je potrditveni žeton.
 user-verify-email-report-subject = Vaše poročilo { -product-name }
 user-verify-title = { -product-name }: Naročeno
 user-unsubscribe-token-error = Za odjavo potrebujete žeton.
+user-unsubscribe-title = { -product-name }: Odjava
 user-unsubscribed-title = { -product-name }: Odjavljeno
 
 ## Password Tips
@@ -84,6 +85,7 @@ form-signup-error = E-poštni naslov mora biti veljaven
 no-breaches-headline = Zaenkrat vse lepo in prav.
 show-more-breaches = Prikaži več
 what-to-do-subhead-1 = Spremenite gesla, tudi za starejše račune
+what-to-do-subhead-2 = Če izpostavljeno geslo uporabljate na več mestih, ga spremenite
 what-to-do-subhead-3 = Z dodatnimi ukrepi zavarujte svoje finančne račune
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Datum kršitve:

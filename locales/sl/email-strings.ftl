@@ -5,6 +5,9 @@ click-to-verify =
     Nato vam bomo poslali poročilo.
 verify-my-email = Potrdi e-poštni naslov
 automated-message = Sporočilo je bilo poslano samodejno. Če ste ga prejeli po pomoti, vam ni potrebno storiti ničesar.
+# Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
+we-sent-this-alert = To sporočilo smo poslali na { $userEmail }, ker se je e-poštni naslov naročil na prejemanje opozoril { -product-name }ja.
+unsubscribe-email-link = Če ne želite več prejemati opozoril { -product-name }ja, se odjavite.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Poročilo { -product-name }
 report-date = Datum poročila:
