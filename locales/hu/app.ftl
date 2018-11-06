@@ -51,6 +51,26 @@ pwt-summary-2 =
     A hackerek több ezer gyakori jelszót használnak, hogy kitalálják az Önét.
     Minél hosszabb és véletlenszerűbb a jelszava, annál nehezebb kitalálni.
 pwt-headline-3 = Kezelje további jelszavakként a biztonsági kérdéseket
+pwt-summary-3 =
+    A weboldalak nem ellenőrzik, hogy a válaszok pontosak-e, csak azt hogy minden alkalommal megegyeznek.
+    Hozzon létre hosszú, véletlen válaszokat és tárolja őket biztonságosan.
+pwt-headline-4 = Kérjen segítséget a jelszavai megjegyzésekor
+pwt-summary-4 =
+    A jelszókezelők, mint a 1Password, LastPass, Dashlane és a Bitwarden erős, egyedi jelszavakat állítanak elő.
+    Biztonságosan tárolják a jelszavakat, és be is töltik őket a weboldalakon Ön helyett.
+pwt-headline-5 = Kapjon nagyobb biztonságot kétfaktoros hitelesítéssel
+pwt-summary-5 =
+    A 2FA további információkat követel meg (például egyszer használatos kódot küld SMS-ben), hogy bejelentkezzen a fiókjába.
+    Még akkor is, ha valaki rendelkezik a jelszavával, nem tud belépni.
+pwt-headline-6 = Iratkozzon fel a { -product-name-nowrap } figyelmeztetésekre
+pwt-summary-6 =
+    A weboldalak betöréseinek száma növekszik. Amint egy új betörés kerül be az adatbázisunkba,
+    a { -product-name-nowrap } figyelmeztetést küld – így lépéseket tehet és megvédheti fiókját.
+landing-headline = Itt kezdődik a joga, hogy biztonságban legyen a hackerektől.
+landing-blurb =
+    A { -product-name-nowrap } felvértezi Önt az eszközökkel, hogy biztonságban tartsa a személyes információit.
+    Tudja meg, hogy a hackerek mit tudnak Önről, és tudja meg hogyan lehet egy lépéssel előttük.
+scan-label = Nézze meg, hogy érintette-e már betörés.
 scan-placeholder = Adja meg az e-mail címét
 scan-privacy = Az e-mail címe nem lesz tárolva.
 scan-submit = Az e-mail címe keresése
@@ -58,10 +78,15 @@ scan-another-email = Másik e-mail cím szkennelése
 scan-featuredbreach-label = Tudja meg, hogy veszélybe került-e a(z) <span class="bold"> { $featuredBreach } </span> fiókja.
 scan-error = Érvényes e-mail címnek kell lennie.
 signup-banner-headline = A { -product-name-nowrap } észleli az online fiókjaival szembeni fenyegetéseket.
+signup-banner-blurb =
+    A részletes { -product-name-nowrap } jelentés megjeleníti, hogy szivárgott-e már ki adata, vagy loptak-e el már információkat az online fiókjaiból.
+    Figyelmeztetni fogjuk akkor is, ha a fiókja új weboldal betörésekben jelenik meg.
+download-firefox-bar-blurb = A { -product-name-nowrap }t a <span class="nowrap">vadonatúj { -brand-name }</span> szállítja Önnek.
 download-firefox-bar-link = A { -brand-name } letöltése most
 download-firefox-banner-blurb = Vegye át a böngészője irányítását
 download-firefox-banner-button = A { -brand-name } letöltése
 signup-modal-headline = Regisztráljon a { -product-name-nowrap }ra
+signup-modal-blurb = Iratkozzon fel a tejes jelentésre, és figyelmeztetésekre, ha betörés történik, valamint biztonsági tippekre a { -product-name-nowrap }tól.
 signup-modal-close = Bezárás
 get-your-report = Szerezze meg a jelentését
 signup-modal-verify-headline = Erősítse meg a feliratkozását
@@ -75,6 +100,8 @@ form-signup-placeholder = Adja meg az e-mail címet
 form-signup-checkbox = Kapja meg a legfrissebbeket a { -brand-Mozilla } és { -brand-name } háza tájáról.
 sign-up = Regisztráció
 form-signup-error = Érvényes e-mail címnek kell lennie
+no-breaches-headline = Eddig jó.
+found-breaches-headline = Az Ön adatai egy betörés részét képezték.
 unsub-button = Leiratkozás
 unsub-survey-headline = Ön már nincs feliratkozva.
 unsub-survey-form-label = Miért iratkozik le a { -product-name-nowrap } figyelmeztetésekről?
