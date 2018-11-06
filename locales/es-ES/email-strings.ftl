@@ -29,11 +29,17 @@ report-subhead-no-breaches =
 report-subhead-found-breaches = Aquí está tu informe completo de Firefox Monitor, que incluye todas las filtraciones de datos conocidas que contienen tu dirección de correo electrónico.
 breach-alert-headline = Tu cuenta se vio involucrada en una filtración de datos.
 breach-alert-subhead = Una filtración de datos conocida recientemente contiene tu correo electrónico y los siguientes datos
+report-pwt-blurb =
+    Las contraseñas son tan valiosas que miles de ellas son robadas cada día y vendidas en el mercado negro.
+    Usar contraseñas más seguras protege tus cuentas y toda la información personal que reside dentro de ellas.
 report-pwt-headline-1 = Utiliza una contraseña diferente para cada cuenta
 report-pwt-summary-1 =
     Si utilizas la misma contraseña en todas partes puedes estar abriendo la puerta a los piratas informáticos.
     Pueden utilizar esa contraseña para acceder a tus otras cuentas.
 report-pwt-headline-2 = Crea contraseñas seguras y únicas
+report-pwt-summary-2 =
+    Los piratas informáticos usan listas de contraseñas comunes para intentar adivinar la tuya. 
+    Cuanto más larga y aleatoria sea tu contraseña, más difícil será de adivinar.
 report-pwt-headline-3 = Trata las preguntas de seguridad como si fueran contraseñas adicionales
 report-pwt-summary-3 =
     Los sitios web no comprueban que tus contraseñas sean adecuadas, solo que coincidan cada vez.

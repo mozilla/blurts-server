@@ -99,8 +99,34 @@ sign-up = Registrarse
 form-signup-error = Debe ser una dirección de correo electrónico válida
 no-breaches-headline = Hasta aquí todo bien.
 found-breaches-headline = Tu información fue comprometida en una filtración de datos.
+no-breaches =
+    Tu dirección de correo no aparece en nuestro análisis básico.
+    Eso son buenas noticias, pero las filtraciones de datos pueden suceder en cualquier momento y aún hay algo más que puedes hacer.
+    Suscríbete a { -product-name-nowrap } para un informe completo, alertas cuando sucedan nuevas filtraciones y consejos para proteger tus contraseñas.
+featured-breach-results =
+    { $breachCount ->
+        [0] Tu cuenta parece en la filtración de <span class="bold">{ $featuredBreach }</span>, pero no aparece en otras filtraciones conocidas.
+        [one] Tu cuenta parece en la filtración de <span class="bold">{ $featuredBreach }</span>, y también en otra filtración
+       *[other] Tu cuenta aparece en la filtración de <span class="bold">{ $featuredBreach }</span>, así como en otras { $breachCount } filtraciones.
+    }
+featured-breach-not-compromised =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Tu cuenta no aparecer en la filtración de <span class="bold">{ $featuredBreach }</span>, pero aparece en otra filtración.
+       *[other] Tu cuenta no aparecer en la filtración de <span class="bold">{ $featuredBreach }</span>, pero aparece en otras { $breachCount } filtraciones.
+    }
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Tu cuenta apareció en { $breachCount } filtración.
+       *[other] Cuentas asociadas con tu dirección de correo electrónico aparecieron en las siguientes { $breachCount } filtraciones.
+    }
 show-more-breaches = Mostrar más
+what-to-do-headline = Qué hacer cuando tu información ha sido revelada en una filtración de datos
 what-to-do-subhead-1 = Cambia tus contraseñas, aunque se trate de cuentas antiguas
+what-to-do-blurb-1 =
+    Si no puedes iniciar sesión contacta con el sitio web para preguntar cómo puedes recuperar o cerrar la cuenta.
+    ¿Ves una cuenta que no reconoces? Es posible que el sitio haya cambiado de nombre o que alguien haya creado una cuenta en tu nombre.
 what-to-do-subhead-2 = Si reutilizas una contraseña que ha sido expuesta, cámbiala
 what-to-do-blurb-2 = Los piratas informáticos pueden intentar hacer uso de tu contraseña para acceder a otras cuentas. Crea una contraseña diferente para cada sitio web, especialmente para tu cuenta bancaria, correo electrónico y otros sitios web en los que guardes tu  información personal.
 what-to-do-subhead-3 = Toma medidas adicionales para asegurar tus cuentas bancarias
@@ -114,13 +140,21 @@ compromised-accounts = Cuentas comprometidas:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Datos comprometidos:
 confirmed = ¡Confirmado!<br />¡Estás suscrito!
+confirmed-blurb = { -product-name-nowrap } te enviará por correo electrónico un informe completo en breve y te enviará una alerta por correo electrónico si tu cuenta aparece en un nuevo informe de filtración.
+confirmed-social-blurb = Si tus datos han sido filtrados es probable que los de tus amigos, familiares o contactos en línea también lo hayan sido. Hazles saber acerca de { -product-name-nowrap }.
 unsub-headline = Cancelar la suscripción de  { -product-name-nowrap }.
+unsub-blurb = Esto eliminará tu correo electrónico de la lista de { -product-name-nowrap } y ya no recibirás alertas cuando se anuncien nuevas filtraciones.
 unsub-button = Cancelar suscripción
 unsub-survey-headline = Ya no estás suscrito.
+unsub-survey-blurb =
+    Se ha cancelado la suscripción de tu correo electrónico a { -product-name-nowrap }. Gracias por utilizar este servicio.
+    ¿Podrías dedicar un momento para responder una pregunta sobre tu experiencia?
+unsub-survey-form-label = ¿Por qué cancelas la suscripción a las alertas de { -product-name-nowrap }?
 unsub-reason-1 = Creo que las alertas no hacen que mis datos estén más seguros
 unsub-reason-2 = Recibo muchos correos electrónicos de { -product-name-nowrap }
 unsub-reason-3 = No me parece que el servicio sea de gran utilidad
 unsub-reason-4 = Ya he tomado medidas para proteger mis cuentas
+unsub-reason-5 = Estoy usando otro servicio para vigilar mis cuentas
 unsub-reason-6 = Ninguno de las anteriores
 unsub-survey-thankyou = Gracias por tu opinión.
 unsub-survey-error = Por favor selecciona uno.
@@ -134,5 +168,10 @@ download-firefox-mobile = Descarga { -brand-name } para dispositivos móviles
 features = Características
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# The following string contains HTML markup which should not be translated. 
+# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
+copyright-info =
+    Algunas partes de este contenido tienen &#x24B8; 1998-2018 por colaboradores individuales de mozilla.org. <br />
+    El contenido está disponible bajo una <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener"> licencia de Creative Commons </a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Filtración de datos proporcionada por { $hibp-link }
