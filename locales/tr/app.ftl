@@ -132,6 +132,7 @@ what-to-do-subhead-1 = Eski hesaplarınız da dahil olmak üzere parolalarınız
 what-to-do-blurb-1 =
     Siteye giriş yapamıyorsanız siteyle iletişim kurarak hesabınızı nasıl kurtarabileceğinizi veya kapatabileceğinizi öğrenin.
     Tanıdık gelmeyen bir hesap mı gördünüz? Sitenin adı değişmiş olabilir veya birisi sizin adınıza hesap açmış olabilir.
+what-to-do-subhead-2 = Ele geçirilen bir parolayı başka yerlerde de kullandıysanız hepsini değiştirin
 what-to-do-subhead-3 = Finansal hesaplarınızı güvenceye almak için ek adımlar atın
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = İhlal tarihi:
@@ -140,9 +141,15 @@ compromised-accounts = Ele geçirilen hesaplar:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Ele geçirilen veriler:
 confirmed = Onaylandı!<br />Abone oldunuz!
+confirmed-blurb = { -product-name-nowrap } birazdan size tam raporunuzu gönderecek, yeni veri ihlallerinde hesabınız algılandığında da e-posta uyarısı gönderecek.
+confirmed-social-blurb = Sizin verileriniz ele geçirildiyse arkadaşlarınızın, akrabalarınızın ve internetteki tanıdıklarınızın da verileri ele geçirilmiş olabilir. Onları { -product-name-nowrap } hakkında bilgilendirin.
 unsub-headline = { -product-name-nowrap } aboneliğinden çık
+unsub-blurb = E-posta adresiniz { -product-name-nowrap } listesinden kaldırılacak ve bundan sonraki ihlallerle ilgili uyarı almayacaksınız.
 unsub-button = Abonelikten çık
 unsub-survey-headline = Artık abone değilsiniz.
+unsub-survey-blurb =
+    { -product-name-nowrap } aboneliğiniz iptal edildi. Hizmetimizi kullandığınız için teşekkür ederiz. 
+    Deneyiminizle ilgili kısa bir soruyu yanıtlamanızı rica ediyoruz.
 unsub-survey-form-label = { -product-name-nowrap } uyarıları aboneliğinizi neden iptal ediyorsunuz?
 unsub-reason-1 = Uyarıların verilerimi daha güvenli hale getirmediğini düşünüyorum
 unsub-reason-2 = { -product-name-nowrap }'den çok fazla e-posta alıyorum
@@ -169,3 +176,4 @@ copyright-info =
     İçerik, <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener"> Creative Commons lisansı</a> ile kullanılabilir.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = İhlal verileri { $hibp-link } tarafından sağlanmaktadır
+site-description = Veri ihlallerinde hesaplarınız sızdırılmış veya çalınmış olabilir mi? { -product-name } ile öğrenin. Veritabanımızda arama yapın ve uyarılara kaydolun.
