@@ -44,3 +44,6 @@ report-pwt-summary-3 =
     ウェブサイトはあなたの回答が正確かどうかを確認しません。毎回、ただ一致するかどうかを判定するだけです。
     文字数が多くランダムな回答を作成し、どこか安全な場所に保管してください。
 report-pwt-headline-4 = パスワード管理ツールを使いましょう
+report-pwt-summary-4 = 1Password や LastPass, Dashlane, Bitwarden などのサービスは強度の高いパスワードを生成するだけでなく、それらを安全に保管し、ウェブサイトへの入力も助けるため、サイトごとに憶えておく必要はありません。
+# A link to legal information about mozilla products.
+legal = 法的通知
