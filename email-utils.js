@@ -15,12 +15,12 @@ const log = mozlog("email-utils");
 const hbsOptions = {
   viewEngine: {
     extname: ".hbs",
-    layoutsDir: __dirname + "/views/email/layouts",
+    layoutsDir: __dirname + "/views/layouts",
     defaultLayout: "default_email",
-    partialsDir: __dirname + "/views/email/email_partials/",
+    partialsDir: __dirname + "/views/partials",
     helpers: HBSHelpers,
   },
-  viewPath: __dirname + "/views/email/",
+  viewPath: __dirname + "/views/layouts",
   extName: ".hbs",
 };
 

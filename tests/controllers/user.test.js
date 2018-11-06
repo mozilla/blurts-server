@@ -50,7 +50,7 @@ test("user add POST with email adds unverified subscriber and sends verification
     expect(mockCalls.length).toEqual(1);
     const mockCallArgs = mockCalls[0];
     expect(mockCallArgs).toContain(userAddEmail);
-    expect(mockCallArgs).toContain("email_verify");
+    expect(mockCallArgs).toContain("default_email");
 });
 
 

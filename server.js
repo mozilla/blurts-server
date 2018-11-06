@@ -27,7 +27,7 @@ const ScanRoutes = require("./routes/scan");
 const SesRoutes = require("./routes/ses");
 const OAuthRoutes = require("./routes/oauth");
 const UserRoutes = require("./routes/user");
-
+const EmailL10nRoutes= require("./routes/email-l10n");
 
 const log = mozlog("server");
 const app = express();
@@ -155,6 +155,7 @@ if (AppConstants.FXA_ENABLED) {
 app.use("/scan", ScanRoutes);
 app.use("/ses", SesRoutes);
 app.use("/user", UserRoutes);
+app.use("/email-l10n", EmailL10nRoutes);
 app.use("/", HomeRoutes);
 
 app.use(logErrors);
