@@ -50,7 +50,7 @@ async function notify (req, res) {
 
     const email = subscriber.email;
     // need to create unsubscribe button for these
-    const requestedLanguage = acceptedLanguages(subscriber.signup_language);
+    const requestedLanguage = subscriber.signup_language ? acceptedLanguages(subscriber.signup_language) : "";
     const supportedLocales = negotiateLanguages(
       requestedLanguage,
       req.app.locals.AVAILABLE_LANGUAGES,

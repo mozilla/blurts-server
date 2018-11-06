@@ -1,6 +1,7 @@
 "use strict";
 
 const AppConstants = require("../../app-constants");
+const DB = require("../../db/DB");
 const HIBPLib = require("../../hibp");
 const hibp = require("../../controllers/hibp");
 const EmailUtils = require("../../email-utils");
@@ -86,6 +87,35 @@ test("notify POST with unknown breach should throw error", async () => {
   const mockResponse = { status: jest.fn(), json: jest.fn() };
 
   await expect(hibp.notify(mockRequest, mockResponse)).rejects.toThrow("Unrecognized breach: test");
+});
+
+
+test("notify POST for subscriber with no signup_language should default to en", async () => {
+  jest.mock("../../email-utils");
+  jest.mock("../../hibp");
+  EmailUtils.sendEmail = jest.fn();
+  LocaleUtils.fluentFormat = jest.fn();
+  const testEmail = "subscriberWithoutLanguage@test.com";
+
+  await DB.addSubscriber(testEmail);
+
+  const testHash = sha1(testEmail);
+  const testPrefix = testHash.slice(0, 6).toUpperCase();
+  const testSuffix = testHash.slice(6).toUpperCase();
+
+  const mockRequest = { token: AppConstants.HIBP_NOTIFY_TOKEN, body: { hashPrefix: testPrefix, hashSuffixes: [testSuffix], breachName: "Test" }, app: { locals: { breaches: testBreaches } } };
+  const mockResponse = { status: jest.fn(), json: jest.fn() };
+
+  await hibp.notify(mockRequest, mockResponse);
+
+  const mockSendEmailCalls = EmailUtils.sendEmail.mock.calls;
+  expect (mockSendEmailCalls.length).toBe(1);
+  const mockSendEmailCallArgs = mockSendEmailCalls[0];
+  expect (mockSendEmailCallArgs[0]).toBe(testEmail);
+  expect (mockSendEmailCallArgs[2]).toBe("default_email");
+  const mockFluentFormatCalls = LocaleUtils.fluentFormat.mock.calls;
+  const mockFluentFormatCallArgs = mockFluentFormatCalls[0];
+  expect (mockFluentFormatCallArgs[0]).toEqual(["en"]);
 });
 
 
