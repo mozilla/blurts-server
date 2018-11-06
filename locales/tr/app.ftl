@@ -133,14 +133,26 @@ what-to-do-blurb-1 =
     Siteye giriş yapamıyorsanız siteyle iletişim kurarak hesabınızı nasıl kurtarabileceğinizi veya kapatabileceğinizi öğrenin.
     Tanıdık gelmeyen bir hesap mı gördünüz? Sitenin adı değişmiş olabilir veya birisi sizin adınıza hesap açmış olabilir.
 what-to-do-subhead-2 = Ele geçirilen bir parolayı başka yerlerde de kullandıysanız hepsini değiştirin
+what-to-do-blurb-2 =
+    Hacker'lar ele geçirdikleri parolalarınızı kullanarak diğer hesaplarınıza girmeyi de deneyebilir.
+    Her web sitesi için, özellikle de banka hesabınız, e-posta hesabınız ve 
+    kişisel bilgilerinizi kaydettiğiniz diğer siteler için farklı parolalar kullanın.
 what-to-do-subhead-3 = Finansal hesaplarınızı güvenceye almak için ek adımlar atın
+what-to-do-blurb-3 =
+    Çoğu veri ihlalinde yalnızca e-postalar ve parolalar ele geçirilir ama bazı ihlaller hassas finansal bilgilerinizi de içerebilir. 
+    Banka hesabınız veya kredi kartı numaralarınız ele geçirilmişse bankanızı olası sahtekârlıklara karşı uyarın ve 
+    kredi kartı hesap özetlerinizde tanıdık gelmeyen harcamalara karşı tetikte olun.
+what-to-do-subhead-4 = İyi parolalar oluşturma ve onları güvende tutma konusunda yardım alın.
+what-to-do-blurb-4 =
+    1Password, LastPass, Dashlane ve Bitwarden gibi parola yöneticileri güçlü parolalar üretir,
+    parolalarınızı güvenli bir şekilde depolar ve web sitelerindeki parola alanlarını otomatik doldurur.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = İhlal tarihi:
 # compromised accounts = the total number of user accounts exposed in data breach
-compromised-accounts = Ele geçirilen hesaplar:
+compromised-accounts = Ele geçirilen hesap sayısı:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Ele geçirilen veriler:
-confirmed = Onaylandı!<br />Abone oldunuz!
+confirmed = Onaylandı!<br />Abone oldunuz.
 confirmed-blurb = { -product-name-nowrap } birazdan size tam raporunuzu gönderecek, yeni veri ihlallerinde hesabınız algılandığında da e-posta uyarısı gönderecek.
 confirmed-social-blurb = Sizin verileriniz ele geçirildiyse arkadaşlarınızın, akrabalarınızın ve internetteki tanıdıklarınızın da verileri ele geçirilmiş olabilir. Onları { -product-name-nowrap } hakkında bilgilendirin.
 unsub-headline = { -product-name-nowrap } aboneliğinden çık

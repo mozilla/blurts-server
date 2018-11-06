@@ -6,10 +6,12 @@ click-to-verify =
 verify-my-email = E-postamı doğrula
 report-scan-another-email = { -product-name }’de başka bir e-posta tara
 automated-message = Bu e-posta otomatik olarak gönderilmiştir. Hatalı olduğunu düşünüyorsanız bir şey yapmanıza gerek yoktur.
+# Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
+we-sent-this-alert = Bu mesaj, { -product-name } uyarılarına kaydolan { $userEmail } e-posta adresine gönderilmiştir.
 unsubscribe-email-link = Artık { -product-name } uyarılarını almak istemiyorsanız abonelikten çıkabilirsiniz.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = { -product-name } Raporu
-report-date = Rapor Tarihi:
+report-date = Rapor tarihi:
 email-address = E-posta adresi:
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Sırada ne var?
