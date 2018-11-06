@@ -63,6 +63,9 @@ pwt-summary-5 =
     La autenticación de dos factores requiere información adicional (como un código de un solo uso enviado por SMS) para acceder a tu cuenta.
     Incluso si alguien tiene tu contraseña, no podrá acceder.
 pwt-headline-6 = Regístrate para recibir alertas de { -product-name-nowrap }
+pwt-summary-6 =
+    Las filtraciones de datos de sitios web están en aumento. Tan pronto como una nueva infracción se añada a nuestra base de datos,
+    { -product-name-nowrap } te envía una alerta para que puedas tomar medidas y proteger tu cuenta.
 landing-headline = Tu derecho a estar a salvo de los piratas informáticos empieza aquí.
 scan-label = Comprueba si has estado involucrado en una fuga de datos.
 scan-placeholder = Introduce una dirección de correo electrónico
@@ -72,10 +75,15 @@ scan-another-email = Analizar otra dirección de correo electrónico
 scan-featuredbreach-label = Descubre si tu cuenta de <span class="bold">{ $featuredBreach }</span> fue comprometida.
 scan-error = Debe ser un correo electrónico válido.
 signup-banner-headline = { -product-name-nowrap } detecta amenazas a tus cuentas en línea.
+signup-banner-blurb =
+    Tu informe detallado de { -product-name-nowrap } muestra si la información de tus cuentas en línea ha sido filtrada o robada.
+    También te avisaremos si tus cuentas aparecen en nuevas filtraciones de sitios web.
+download-firefox-bar-blurb = { -product-name-nowrap } está disponible gracias al <span class = "nowrap">totalmente nuevo { -brand-name } </span>.
 download-firefox-bar-link = Descargar { -brand-name } ahora
 download-firefox-banner-blurb = Toma el control de tu navegador
 download-firefox-banner-button = Descargar { -brand-name }
 signup-modal-headline = Regístrate en { -product-name-nowrap }
+signup-modal-blurb = Date de alta para obtener tu informe completo, alertas cuando ocurran nuevas filtraciones y consejos de seguridad de { -product-name-nowrap }.
 signup-modal-close = Cerrar
 get-your-report = Consigue tu informe
 signup-modal-verify-headline = Verifica tu suscripción
