@@ -30,8 +30,16 @@ report-subhead-no-breaches =
     Hesabınız veri ihlalleri veritabanımızda yer almıyor.
     Bu iyi haber ama yapabileceğiniz birkaç şey daha var.
     Her an yeni veri ihlalleri yaşanabilir, o yüzden parolalarınızı korumayı öğrenmek için okumaya devam edin.
+report-subhead-found-breaches = Bu e-posta adresini içerdiği bilinen tüm veri ihlallerini sıraladığımız tam Firefox Monitor raporunuz aşağıdadır.
 breach-alert-headline = Hesabınız bir veri ihlali kapsamında yer alıyor.
+breach-alert-subhead = Yakın zamanda bildirilen bir veri ihlali, e-posta adresinizi ve aşağıdaki verileri içeriyor
+report-pwt-blurb =
+    Parolalar o kadar değerlidir ki her gün binlerce çalınıp karaborsada işlem görür veya satılır. 
+    Daha güçlü parolalar seçmeniz, hesaplarınızı ve hesaplarınızdaki tüm kişisel bilgileri korur.
 report-pwt-headline-1 = Her hesap için farklı bir parola kullanın
+report-pwt-summary-1 =
+    Her yerde aynı parolayı kullanırsanız hacker’lara kapıyı açık bırakmış olursunuz. 
+    Tek bir parolanızı ele geçirdikten sonra tüm hesaplarınıza giriş yapabilirler.
 report-pwt-headline-2 = Güçlü, benzersiz parolalar oluşturun
 report-pwt-summary-2 =
     Hacker’lar parolalarınızı tahmin etmek için sık kullanılan parola listelerden yararlanır.
