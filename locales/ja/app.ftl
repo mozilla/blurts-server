@@ -122,6 +122,18 @@ what-to-do-blurb-1 =
     ログインできない場合は、ウェブサイトにアカウントを復旧または停止する方法を問い合わせてください。
     知らないアカウントが登録されていたら、そのサイトの名前が変更されたか、誰かがあなたのアカウントを作成している可能性があります。
 what-to-do-subhead-2 = 晒されてしまったパスワードを再利用する場合は、変更してください
+what-to-do-blurb-2 =
+    悪いハッカーは、手に入れたパスワードを再利用して他のアカウントにもログインしようとします。
+    ウェブサイトごとに異なるパスワードを作成してください。特に銀行関連のサイトやメールアカウント、個人情報を保存しているウェブサイトのアカウントでは、同じパスワードを使いまわしてはいけません。
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = 侵害日:
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = 漏洩したアカウント:
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = 漏洩したデータ:
+confirmed = 確認しました。<br />登録完了です。
+confirmed-blurb = 間もなく、{ -product-name-nowrap } から詳細レポートのメールが送信されます。また、新たに報告された侵害にあなたのアカウントが含まれていた場合にもメールで通知します。
+confirmed-social-blurb = あなたのアカウントが侵害された場合、あなたの友人や家族、オンライン接続も同様の可能性があります。彼らにも { -product-name-nowrap } のサイトを教えてください。
 unsub-headline = { -product-name-nowrap } の登録を解除
 unsub-blurb = 登録を解除すると、あなたのメールアドレスを { -product-name-nowrap } のリストから削除し、新たなデータ侵害があっても通知を受け取れなくなります。
 unsub-button = 登録解除
@@ -130,6 +142,7 @@ unsub-survey-blurb =
     あなたのメールアドレスは { -product-name-nowrap } の登録を解除されました。サービスをご利用いただきありがとうございました。
     よろしければ、サービス利用についての質問にお答えください。
 unsub-survey-form-label = { -product-name-nowrap } からの通知を登録解除した理由をお聞かせください。
+unsub-survey-thankyou = フィードバックをありがとうございます。
 unsub-survey-error = いずれか一つを選んでください。
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = 共有
