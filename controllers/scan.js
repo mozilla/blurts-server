@@ -2,7 +2,6 @@
 
 const sha1 = require("../sha1-utils");
 const HIBP = require("../hibp");
-const TIPS = require("../tips");
 
 
 async function post (req, res) {
@@ -40,7 +39,6 @@ async function post (req, res) {
       foundBreaches,
       featuredBreach,
       userAccountCompromised,
-      passwordTips: TIPS,
     });
   }
 
@@ -48,7 +46,6 @@ async function post (req, res) {
     res.render("scan", {
       title: req.fluentFormat("scan-title"),
       foundBreaches,
-      passwordTips: TIPS,
     });
   }
 }
