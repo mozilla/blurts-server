@@ -88,3 +88,15 @@ signup-modal-blurb = Підпишіться для отримання повно
 signup-modal-close = Закрити
 get-your-report = Отримати звіт
 signup-modal-verify-headline = Підтвердьте свою підписку
+signup-modal-verify-blurb = Ми надіслали посилання для підтвердження на <span id="submitted-email" class="medium"></span>.
+signup-modal-verify-expiration = Це посилання втратить дію через 24 години.
+signup-modal-verify-resend = Немає у вхідних чи спамі? Надіслати ще раз.
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = Надіслано!
+signup-with-fxa = Увійдіть за допомогою облікового запису { -brand-name }
+form-signup-placeholder = Введіть адресу електронної пошти
+form-signup-checkbox = Отримуйте новини від { -brand-Mozilla } та { -brand-name }.
+sign-up = Підписатися
+form-signup-error = Необхідно вказати дійсну адресу електронної пошти
+no-breaches-headline = Наразі все гаразд.
+found-breaches-headline = Ваша інформація стала жертвою компрометації даних.
