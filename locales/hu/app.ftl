@@ -102,6 +102,16 @@ sign-up = Regisztráció
 form-signup-error = Érvényes e-mail címnek kell lennie
 no-breaches-headline = Eddig jó.
 found-breaches-headline = Az Ön adatai egy betörés részét képezték.
+no-breaches =
+    Az Ön e-mail címe nem jelent meg az alapvető vizsgálatunkban.
+    Ez jó hír, de betörések bármikor történhetnek, és többet is tehet.
+    Iratkozzon fel a { -product-name-nowrap }ra a teljes jelentésért, a betörésekkor történő figyelmeztetésekért, valamint a jelszavai védelméről szóló tippekért.
+featured-breach-results =
+    { $breachCount ->
+        [0] A fiókja szerepel a(z) <span class="bold">{ $featuredBreach }</span> betörésben, de más ismert betörésben nem jelenik meg.
+        [one] A fiókja szerepel a(z) <span class="bold">{ $featuredBreach }</span> betörésben, és egy másik betörésben is.
+       *[other] A fiókja szerepel a(z) <span class="bold">{ $featuredBreach }</span> betörésben, de más ismert { $breachCount } betörésekben is.
+    }
 unsub-button = Leiratkozás
 unsub-survey-headline = Ön már nincs feliratkozva.
 unsub-survey-form-label = Miért iratkozik le a { -product-name-nowrap } figyelmeztetésekről?
