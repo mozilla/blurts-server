@@ -41,6 +41,7 @@ user-unsubscribed-title = { -product-name } : Leiratkozott
 
 pwt-section-headline = Erősebb jelszavak = jobb védelem
 pwt-section-subhead = Személyes adatai csak annyira biztonságosak, mint a jelszavai.
+pwt-headline-2 = Hozzon létre nehezen kitalálható jelszavakat
 scan-placeholder = Adja meg az e-mail címét
 scan-privacy = Az e-mail címe nem lesz tárolva.
 scan-submit = Az e-mail címe keresése
