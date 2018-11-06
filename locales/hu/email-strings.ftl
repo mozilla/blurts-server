@@ -14,3 +14,5 @@ report-headline =
         [one] A fiókja { $breachCount } betörésnél jelent meg.
        *[other] A fiókja { $breachCount } betörésnél jelent meg.
     }
+# A link to legal information about mozilla products.
+legal = Jogi információk

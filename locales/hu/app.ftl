@@ -41,7 +41,16 @@ user-unsubscribed-title = { -product-name } : Leiratkozott
 
 pwt-section-headline = Erősebb jelszavak = jobb védelem
 pwt-section-subhead = Személyes adatai csak annyira biztonságosak, mint a jelszavai.
+pwt-section-blurb = A jelszavai több mindent védenek, mint a fiókjait. Megvédik az összes személyes információját, melyek azokban találhatóak. És a hackerek támaszkodnak a rossz szokásokra, például arra, hogy mindenhol ugyanazt a jelszót használja, vagy gyakori kifejezéseket használ (p@ssw0rd, valaki?), így ha egy fiókot megtörnek, akkor többet is meg tudnak. Így védheti meg jobban a fiókjait.
+pwt-headline-1 = Használjon különböző jelszót minden fiókhoz
+pwt-summary-1 =
+    Ugyanannak a jelszónak az újra felhasználása nyitva hagyja az ajtót a személyazonosság ellopásának.
+    Bárki, aki ismeri a jelszót, be tud jelentkezni az összes fiókjába.
 pwt-headline-2 = Hozzon létre nehezen kitalálható jelszavakat
+pwt-summary-2 =
+    A hackerek több ezer gyakori jelszót használnak, hogy kitalálják az Önét.
+    Minél hosszabb és véletlenszerűbb a jelszava, annál nehezebb kitalálni.
+pwt-headline-3 = Kezelje további jelszavakként a biztonsági kérdéseket
 scan-placeholder = Adja meg az e-mail címét
 scan-privacy = Az e-mail címe nem lesz tárolva.
 scan-submit = Az e-mail címe keresése
@@ -66,3 +75,32 @@ form-signup-placeholder = Adja meg az e-mail címet
 form-signup-checkbox = Kapja meg a legfrissebbeket a { -brand-Mozilla } és { -brand-name } háza tájáról.
 sign-up = Regisztráció
 form-signup-error = Érvényes e-mail címnek kell lennie
+unsub-button = Leiratkozás
+unsub-survey-headline = Ön már nincs feliratkozva.
+unsub-survey-form-label = Miért iratkozik le a { -product-name-nowrap } figyelmeztetésekről?
+unsub-reason-1 = Úgy gondolom, hogy a figyelmeztetések nem teszik biztonságosabbá az adataimat
+unsub-reason-2 = Túl sok e-mailt kapok a { -product-name-nowrap }tól
+unsub-reason-3 = Nem találom értékesnek a szolgáltatást
+unsub-reason-4 = Már tettem lépéseket a fiókjaim védelme érdekében
+unsub-reason-5 = Egy másik szolgáltatást használok a fiókjaim ellenőrzéséhez
+unsub-reason-6 = A fentiek egyike sem
+unsub-survey-thankyou = Köszönjük visszajelzését.
+unsub-survey-error = Válasszon egyet.
+# Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
+share = Megosztás
+# Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
+tweet = Tweet
+download-firefox-quantum = { -brand-Quantum } letöltése
+download-firefox-mobile = Mobil { -brand-name } letöltése
+# Features here refers to Firefox browser features. 
+features = Funkciók
+# beta-nightly-developer-edition refers to additional versions of Firefox Browser
+beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# The following string contains HTML markup which should not be translated. 
+# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
+copyright-info =
+    A tartalom egyes részeire egyéni mozilla.org közreműködők szerzői jogai vonatkoznak: &#x24B8; 1998-2018.<br />
+    A tartalom <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons licenc</a> alatt érhető el.
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = A betörési adatokat a { $hibp-link } biztosítja
+site-description = A fiókjai kiszivárogtak vagy ellopták őket egy betörés során? Tudjon meg többet a { -product-name } segítségével. Keressen az adatbázisunkban, és iratkozzon fel a figyelmeztetésekre.
