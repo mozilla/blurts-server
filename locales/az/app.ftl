@@ -45,6 +45,19 @@ pwt-section-blurb =
     Parollarınız hesablarınızdan daha çox məlumat qoruyur. Onlarla əlaqəli daha çox məlumatlarınız oğurlana bilər.
     Oğrular insanların hər yerdə eyni, bənzər və ya çox bilinən parolları işlətmə vərdişlərini istifadə edirlər (telefon nömrəsi və ya doğum tarixi kimi), beləliklə hər hansı bir hesabınızı oğurladıqlarında digərlərini də oğurlaya bilirlər. Hesablarınızı bu addımlarla daha yaxşı qoruya bilərsiz.
 pwt-headline-1 = Hər hesab üçün fərqli parol işlədin
+pwt-summary-1 =
+    Eyni parolu hər yerdə işlətmək profil oğurluğu üçün açıq qapı buraxır.
+    Bu parola sahib olan hər kəs bütün hesablarınıza daxil ola bilər.
+pwt-headline-2 = Güclü, təxmin edilə bilinməyəcək parollar yaradın
+pwt-summary-2 =
+    Hücumçular parolunuzu təxmin etmək üçün minlərlə çox işlədilən adi parolları yoxlayırlar.
+    Parolunuz nə qədər uzun və qarmaşıq olsa, təxmin etmək o qədər çətin olacaq.
+pwt-headline-3 = Təhlükəsizlik sualları da parollar qədər vacibdir
+pwt-summary-3 =
+    Saytlar cavablarınızın doğru olub-olmamasını yoxlamırlar, sadəcə hər dəfə eyni olmasını istəyirlər.
+    Uzun və əlaqəsiz cavablar yaradın və təhlükəsiz bir yerdə özünüz üçün qeyd edin.
+pwt-headline-4 = Parollarınızı yadda saxlamaqda kömək alın
+pwt-summary-4 = 1Password, LastPass, Dashlane və Bitwarden kimi parol idarəçiləri güclü və unikal parollar yarada bilirlər. Bu tətbiqlər həmçinin parolları güvənilir şəkildə saxlayıb saytlarda sizin üçün doldururlar
 show-more-breaches = Daha çox göstər
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Oğurlanma tarixi:
