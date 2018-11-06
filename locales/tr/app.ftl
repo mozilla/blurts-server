@@ -57,11 +57,17 @@ pwt-summary-3 =
     Güvenlik sorularına gerçekten doğru yanıt vermeniz gerekmez. Önemli olan, yazdığınız yanıtı daha sonra hatırlamanızdır. 
     Uzun ve rasgele yanıtlar oluşturup bu yanıtlarınızı güvenli bir yerde saklayın.
 pwt-headline-4 = Parolalarınızı hatırlamak için yardım alın
+pwt-summary-4 =
+    1Password, LastPass, Dashlane ve Bitwarden gibi parola yöneticileri güçlü ve benzersiz parolalar üretir.
+    Ayrıca parolalarınızı güvenli bir şekilde depolayarak web sitelerindeki parola alanlarını otomatik doldurur.
 pwt-headline-5 = İki aşamalı kimlik doğrulamayla güvenliği artırın
 pwt-summary-5 =
     İki aşamalı doğrulamada (2FA) hesabınıza girmek için ek bir bilgi (kısa mesajla gönderilen tek kullanımlık kod gibi) gerekir.
     Böylece, birisi parolanıza sahip olsa bile hesabınıza giremez.
 pwt-headline-6 = { -product-name-nowrap } uyarılarına kaydolun
+pwt-summary-6 =
+    Web sitelerinin karşılaştığı veri ihlalleri sürekli artıyor. Veritabanımıza yeni bir ihlal eklendiği anda
+    { -product-name-nowrap } size uyarı gönderir. Böylece hemen eyleme geçip hesabınızı koruyabilirsiniz.
 landing-headline = Hacker’lardan korunmaya herkesin hakkı var.
 landing-blurb =
     { -product-name-nowrap }, kişisel bilgilerinizi güvende tutacak araçlarla sizi destekliyor.
@@ -123,6 +129,9 @@ scan-results =
 show-more-breaches = Devamını göster
 what-to-do-headline = Bilgileriniz veri ihlaline maruz kaldığında yapmanız gerekenler
 what-to-do-subhead-1 = Eski hesaplarınız da dahil olmak üzere parolalarınızı değiştirin
+what-to-do-blurb-1 =
+    Siteye giriş yapamıyorsanız siteyle iletişim kurarak hesabınızı nasıl kurtarabileceğinizi veya kapatabileceğinizi öğrenin.
+    Tanıdık gelmeyen bir hesap mı gördünüz? Sitenin adı değişmiş olabilir veya birisi sizin adınıza hesap açmış olabilir.
 what-to-do-subhead-3 = Finansal hesaplarınızı güvenceye almak için ek adımlar atın
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = İhlal tarihi:
