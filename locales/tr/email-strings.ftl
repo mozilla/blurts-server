@@ -13,14 +13,23 @@ unsubscribe-email-link = Artık { -product-name } uyarılarını almak istemiyor
 firefox-monitor-report = { -product-name } Raporu
 report-date = Rapor tarihi:
 email-address = E-posta adresi:
+# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
+your-full-report = Bu e-posta adresini içerdiği bilinen tüm veri ihlallerini sıraladığımız tam { -product-name } raporunuz aşağıdadır.
+report-no-breaches =
+    E-posta adresiniz bilinen ihlaller veritabanımızda yer almıyor. 
+    Ancak her an yeni ihlaller yaşabilir. Kişisel verilerinizi güvende tutmak için aşağıdaki adımları atın.
 # A list of next steps someone should take if their information has been involved in a data breach.
-what-to-do-next = Sırada ne var?
+what-to-do-next = Şimdi ne yapmalı?
 report-headline =
     { $breachCount ->
         [0] Şimdilik her şey yolunda.
         [one] Hesabınız { $breachCount } veri ihlalinde yer alıyor.
        *[other] Hesaplarınız { $breachCount } veri ihlalinde yer alıyor.
     }
+report-subhead-no-breaches =
+    Hesabınız veri ihlalleri veritabanımızda yer almıyor.
+    Bu iyi haber ama yapabileceğiniz birkaç şey daha var.
+    Her an yeni veri ihlalleri yaşanabilir, o yüzden parolalarınızı korumayı öğrenmek için okumaya devam edin.
 breach-alert-headline = Hesabınız bir veri ihlali kapsamında yer alıyor.
 report-pwt-headline-1 = Her hesap için farklı bir parola kullanın
 report-pwt-headline-2 = Güçlü, benzersiz parolalar oluşturun
