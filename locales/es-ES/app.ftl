@@ -67,6 +67,9 @@ pwt-summary-6 =
     Las filtraciones de datos de sitios web están en aumento. Tan pronto como una nueva infracción se añada a nuestra base de datos,
     { -product-name-nowrap } te envía una alerta para que puedas tomar medidas y proteger tu cuenta.
 landing-headline = Tu derecho a estar a salvo de los piratas informáticos empieza aquí.
+landing-blurb =
+    { -product-name-nowrap } te brinda herramientas para mantener segura tu información personal.
+    Descubre lo que los piratas informáticos ya saben de ti y aprende cómo mantenerte un paso por delante de ellos.
 scan-label = Comprueba si has estado involucrado en una fuga de datos.
 scan-placeholder = Introduce una dirección de correo electrónico
 scan-privacy = No se guardará tu correo electrónico.
@@ -175,3 +178,4 @@ copyright-info =
     El contenido está disponible bajo una <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener"> licencia de Creative Commons </a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Filtración de datos proporcionada por { $hibp-link }
+site-description = ¿Se han filtrado o robado tus cuentas en una filtración de datos? Descúbrelo en { -product-name }. Busca en nuestra base de datos y date de alta para recibir alertas.
