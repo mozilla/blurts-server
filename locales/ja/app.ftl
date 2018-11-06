@@ -94,6 +94,34 @@ form-signup-placeholder = メールアドレスを入力
 form-signup-checkbox = 最新情報を { -brand-Mozilla } と { -brand-name } から入手します。
 sign-up = アカウント登録
 form-signup-error = 有効なメールアドレスを登録してください
+no-breaches-headline = 問題ありません。
+found-breaches-headline = あなたの個人情報がデータ侵害に含まれていました。
+no-breaches =
+    基本スキャンではあなたのメールアドレスを見つけられませんでした。
+    これは良いニュースですが、いつでも起こり得るデータ侵害に対して、あなたにできることがまだあります。
+    { -product-name-nowrap } に登録することにより、新たなデータ侵害が起こった場合に通知と詳細レポート、パスワードを保護するためのヒントを受け取れます。
+featured-breach-results =
+    { $breachCount ->
+        [0] あなたのアカウントが <span class="bold">{ $featuredBreach }</span> の侵害に含まれています。しかし、他の既知のデータ侵害には見つかりませんでした。
+       *[other] あなたのアカウントが <span class="bold">{ $featuredBreach }</span> と他の { $breachCount } 件の侵害に含まれています。
+    }
+featured-breach-not-compromised =
+    { $breachCount ->
+        [0] { no-breaches }
+       *[other] あなたのアカウントは <span class="bold">{ $featuredBreach }</span> の侵害には含まれていませんでしたが、他の { $breachCount } 件のデータ侵害に含まれています。
+    }
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+       *[other] あなたのメールアドレスに関連付けられたアカウントが次の { $breachCount } 件の侵害に含まれています。
+    }
+show-more-breaches = さらに表示
+what-to-do-headline = あなたの個人情報がデータ侵害に晒されている場合に何をしたらよいか
+what-to-do-subhead-1 = 古いアカウントでもパスワードを変更しましょう
+what-to-do-blurb-1 =
+    ログインできない場合は、ウェブサイトにアカウントを復旧または停止する方法を問い合わせてください。
+    知らないアカウントが登録されていたら、そのサイトの名前が変更されたか、誰かがあなたのアカウントを作成している可能性があります。
+what-to-do-subhead-2 = 晒されてしまったパスワードを再利用する場合は、変更してください
 unsub-headline = { -product-name-nowrap } の登録を解除
 unsub-blurb = 登録を解除すると、あなたのメールアドレスを { -product-name-nowrap } のリストから削除し、新たなデータ侵害があっても通知を受け取れなくなります。
 unsub-button = 登録解除
