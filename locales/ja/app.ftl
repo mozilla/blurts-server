@@ -8,6 +8,7 @@
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
+-brand-HIBP = Have I Been Pwned
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = サポート
@@ -78,6 +79,7 @@ signup-banner-headline = { -product-name-nowrap } はあなたのオンライン
 signup-banner-blurb = { -product-name-nowrap } 詳細レポートでは、あなたのオンラインアカウントの情報が漏洩したり盗まれたりしていないかを報告します。また、あなたのアカウントが新たなウェブサイト侵害に巻き込まれた場合にも通知します。
 download-firefox-bar-blurb = { -product-name-nowrap } は、<span class="nowrap">全く新しい { -brand-name }</span> により提供されています。
 download-firefox-bar-link = 今すぐ { -brand-name } をダウンロード
+download-firefox-banner-blurb = ブラウザーを使いこなそう
 download-firefox-banner-button = { -brand-name } をダウンロード
 signup-modal-headline = { -product-name-nowrap } のアカウントを登録
 signup-modal-blurb = 登録すると、完全なレポートや新たな侵害の通知、安全性を高めるためのヒントを { -product-name-nowrap } から受けられます。
@@ -125,6 +127,12 @@ what-to-do-subhead-2 = 晒されてしまったパスワードを再利用する
 what-to-do-blurb-2 =
     悪いハッカーは、手に入れたパスワードを再利用して他のアカウントにもログインしようとします。
     ウェブサイトごとに異なるパスワードを作成してください。特に銀行関連のサイトやメールアカウント、個人情報を保存しているウェブサイトのアカウントでは、同じパスワードを使いまわしてはいけません。
+what-to-do-subhead-3 = 金融口座を保護するために特別な手続きを取りましょう
+what-to-do-blurb-3 =
+    多くの侵害はメールアドレスとパスワードのみを晒しますが、中には取り扱いに注意が必要な金融情報が含まれることもあります。
+    あなたの銀行口座やクレジットカード番号がデータ侵害に含まれていた場合は、詐欺行為の可能性があることを銀行に知らせ、口座に覚えのない取り引きがないか監視してください。
+what-to-do-subhead-4 = 良いパスワードを作成するための助けを得て安全に管理しましょう。
+what-to-do-blurb-4 = 1Password や LastPass, Dashlane, Bitwarden などのパスワード管理ツールを利用すると、強度の高いパスワードを生成し、それを安全に保管し、ウェブサイトへの入力も助けてくれます。
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = 侵害日:
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -142,6 +150,12 @@ unsub-survey-blurb =
     あなたのメールアドレスは { -product-name-nowrap } の登録を解除されました。サービスをご利用いただきありがとうございました。
     よろしければ、サービス利用についての質問にお答えください。
 unsub-survey-form-label = { -product-name-nowrap } からの通知を登録解除した理由をお聞かせください。
+unsub-reason-1 = 通知はデータの安全を守るのに役立っていない
+unsub-reason-2 = { -product-name-nowrap } からのメールが多すぎる
+unsub-reason-3 = サービスに価値を見出せない
+unsub-reason-4 = すでに自分でアカウントを保護している
+unsub-reason-5 = アカウントの監視に別のサービスを利用している
+unsub-reason-6 = 上記のいずれにも当てはまらない
 unsub-survey-thankyou = フィードバックをありがとうございます。
 unsub-survey-error = いずれか一つを選んでください。
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
