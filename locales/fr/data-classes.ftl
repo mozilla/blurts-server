@@ -14,6 +14,7 @@ biometric-data = données biométriques
 browser-user-agent-details = détails sur l’agent utilisateur du navigateur
 browsing-histories = historiques de navigation
 buying-preferences = préférences d’achat
+career-levels = niveaux de carrière
 cellular-network-names = noms des réseaux téléphoniques
 charitable-donations = dons à des associations humanitaires
 chat-logs = historiques des discussions en ligne
