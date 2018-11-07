@@ -101,7 +101,31 @@ sign-up = Registrarse
 form-signup-error = Debe ser un correo electrónico válido
 no-breaches-headline = Hasta ahora, todo bien.
 found-breaches-headline = Tu información fue parte de una filtración de datos.
+no-breaches =
+    Tu dirección de correo electrónico no aparece en nuestro escaneo básico.
+    Esas son buenas noticias, pero las filtraciones de datosa pueden ocurrir en cualquier momento y todavía hay más que puedes hacer.
+    Suscríbete a { -product-name-nowrap } para un reporte completo y alertas cuando ocurran nuevas filtraciones y consejos para proteger tus contraseñas.
+featured-breach-results =
+    { $breachCount ->
+        [0] Tu cuenta aparece en la filtración de <span class="bold">{ $featuredBreach }</span>, sin embargo no aparece en otras filtraciones de datos conocidas.
+        [one] Tu cuenta aparece en la filtración de <span class="bold">{ $featuredBreach }</span>, así como en otra filtración.
+       *[other] Tu cuenta aparece en la filtración de <span class="bold">{ $featuredBreach }</span>, así como en otras { $breachCount } filtraciones.
+    }
+featured-breach-not-compromised =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Tu cuenta no apareció en la filtración de <span class="bold">{ $featuredBreach }</span>, pero apareció en alguna otra filtración.
+       *[other] Tu cuenta no apareció en la filtración de <span class="bold">{ $featuredBreach }</span>, pero apareció en otras { $breachCount } filtraciones.
+    }
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Tu cuenta apareció en la filtración { $breachCount }.
+       *[other] Cuentas asociadas con tu dirección de correo electrónico aparecieron en las siguientes filtraciones { $breachCount }.
+    }
 show-more-breaches = Mostrar más
+what-to-do-headline = Qué hacer cuando tu información está expuesta en una filtración de datos
+what-to-do-subhead-1 = Cambiar tus contraseñas, incluso para cuentas antiguas
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Fecha de violación:
 # compromised accounts = the total number of user accounts exposed in data breach
