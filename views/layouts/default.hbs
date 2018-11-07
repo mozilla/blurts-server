@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content="{{fluentFormat req.supportedLocales "site-description"}}" />
     <meta property="og:title" content="Firefox Monitor" />
-    <meta property="og:description" content="{{fluentFormat req.supportedLocales "site-description"}} />
+    <meta property="og:description" content="{{fluentFormat req.supportedLocales "site-description"}}" />
     <meta name="twitter:card" content="summary" />
     <meta property="og:url" content="{{ SERVER_URL }}" />
     <meta property="og:image" content="{{ SERVER_URL }}/img/firefox-monitor.png" />
@@ -47,7 +47,7 @@
         </div>
         <ul class="third">
           <li>{{fluentFormat req.supportedLocales "layout-support" }}</li>
-          <li><a {{> analytics/link_event eventLabel="Give Feedback"}} href="https://qsurvey.mozilla.com/s3/Firefox-Monitor-Feedback" target="_blank" rel="noopener"><span class="nowrap">{{{fluentFormat req.supportedLocales "give-feedback"}}}</span></a></li>
+          <li><a {{> analytics/link_event eventLabel="Give Feedback"}} href="https://qsurvey.mozilla.com/s3/Firefox-Monitor-Feedback" target="_blank" rel="noopener">{{{fluentFormat req.supportedLocales "give-feedback"}}}</a></li>
           <li><a {{> analytics/link_event eventLabel="Terms & Privacy"}} href="https://www.mozilla.org/privacy/firefox-monitor/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">{{{fluentFormat req.supportedLocales "terms-and-privacy"}}}</a></li>
           <li><a {{> analytics/link_event eventLabel="GitHub"}} href="https://github.com/mozilla/blurts-server/" target="_blank" rel="noopener noreferrer">{{> sprite symID="GitHub"}}</a></li>
         </ul>

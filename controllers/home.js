@@ -1,6 +1,5 @@
 "use strict";
 
-const TIPS = require("../tips");
 
 
 function home(req, res) {
@@ -14,7 +13,6 @@ function home(req, res) {
   res.render("monitor", {
     title: req.fluentFormat("home-title"),
     featuredBreach: featuredBreach,
-    passwordTips: TIPS,
     scanFeaturedBreach,
   });
 }
