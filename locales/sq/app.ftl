@@ -8,7 +8,7 @@
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
--brand-HIBP = Ma Kanë Kallur?
+-brand-HIBP = Have I Been Pwned
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Asistencë
