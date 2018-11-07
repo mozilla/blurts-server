@@ -2,7 +2,7 @@
 -product-name = Firefox Monitor
 click-to-verify = Cliciwch y botwm Gwirio fy E-bost o fewn 24 awr i gadarnhau eich cyfrif Firefox Monitor. Yna bydd eich adroddiad yn cael ei anfon atoch.
 verify-my-email = Gwirio fy E-bost
-report-scan-another-email = Sganio E-bost arall yn { -product-name }
+report-scan-another-email = Sganio E-bost arall gyda { -product-name }
 automated-message = E-bost awtomatig yw hwn; os ydych wedi derbyn yr e-bost hwn ar gam, nid oes angen gweithredu.
 # Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
 we-sent-this-alert = Rydym wedi anfon y neges hon at { $userEmail } oherwydd dewisodd y cyfeiriad e-bost rybuddion gan { -product-name }.
@@ -13,7 +13,7 @@ report-date = Dyddiad yr Adroddiad:
 email-address = Cyfeiriad E-bost:
 # "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
 your-full-report = Hwn yw eich adroddiad { -product-name } llawn, sy'n cynnwys yr holl dor-data sy'n hysbys am y cyfeiriad e-bost hwn.
-report-no-breaches = Nid oedd eich cyfeiriad e-bost yn ymddangos yn ein cronfa ddata o dor-data hysbys. Ond gall tor-data ddigwydd ar unrhyw adeg. Cymerwch y camau hyn i gadw'ch data personol yn ddiogel ar-lein.
+report-no-breaches = Nid yw eich cyfeiriad e-bost yn ymddangos yn ein cronfa ddata o dor-data hysbys. Ond gall tor-data ddigwydd ar unrhyw adeg. Cymrwch y camau hyn i gadw'ch data personol yn ddiogel ar-lein.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Beth i'w Wneud Nesaf
 report-headline =
@@ -30,8 +30,8 @@ report-subhead-no-breaches =
     Mae hynny'n newyddion da, ond mae mwy y gallwch chi ei wneud.
     Mae tor-data yn digwydd ar unrhyw adeg, felly parhewch i ddarllenwch i wybod sut y gallwch ddiogelu eich cyfrineiriau.
 report-subhead-found-breaches = Hwn yw eich adroddiad Firefox Monitor llawn, sy'n cynnwys yr holl dor-data sy'n hysbys am y cyfeiriad e-bost hwn.
-breach-alert-headline = Roedd eich cyfrif yn ymwneud â thor-data.
-breach-alert-subhead = Mae tor-data a adroddwyd yn ddiweddar yn cynnwys eich e-bost a'r data canlynol
+breach-alert-headline = Mae eich cyfrif wedi bod yn rhan o dor-data.
+breach-alert-subhead = Mae adroddiad diweddar ar dor-data yn cynnwys eich e-bost a'r data canlynol
 report-pwt-blurb =
     Mae cyfrineiriau mor werthfawr, mae miloedd ohonyn nhw'n cael eu dwyn bob dydd a'u masnachu neu eu gwerthu ar y farchnad ddu.
     Mae cyfrineiriau cryfach yn diogelu'ch cyfrifon a'r holl fanylion personol sy'n bodoli o'u mewn.

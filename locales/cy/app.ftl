@@ -72,7 +72,7 @@ signup-banner-blurb =
     Byddwn hefyd yn eich hysbysu os bydd eich cyfrifon yn ymddangos mewn achosion o dor-data gwefannau newydd.
 download-firefox-bar-blurb = Mae { -product-name-nowrap } yn cael ei gyflwyno i chi gan y <span class="nowrap">{ -brand-name } newydd sbon</span>.
 download-firefox-bar-link = Llwytho { -brand-name } i lawr nawr
-download-firefox-banner-blurb = Cymerwch reolaeth o'ch porwr
+download-firefox-banner-blurb = Cymryd reolaeth o'ch porwr
 download-firefox-banner-button = Llwytho { -brand-name } i Lawr
 signup-modal-headline = Cofrestru ar gyfer { -product-name-nowrap }
 signup-modal-blurb = Cofrestrwch am eich adroddiad llawn, rhybuddion pan fo toriadau newydd yn digwydd, ac awgrymiadau diogelwch o { -product-name-nowrap }.
@@ -124,11 +124,11 @@ scan-results =
     }
 show-more-breaches = Dangos Rhagor
 what-to-do-headline = Beth i'w Wneud pan mae eich Manylion wedi'i Amlygu mewn Tor-data
-what-to-do-subhead-1 = Newidiwch eich cyfrineiriau, hyd yn oed ar gyfer hen gyfrifon
+what-to-do-subhead-1 = Newid eich cyfrineiriau, hyd yn oed ar gyfer hen gyfrifon
 what-to-do-blurb-1 = Os na allwch chi fewngofnodi, cysylltwch â'r wefan i ofyn sut y gallwch chi ei gael yn ôl  neu gau'r cyfrif. Gweld cyfrif nad ydych yn ei adnabod? Efallai bod y wefan wedi newid enw neu fod rhywun wedi creu cyfrif ar eich rhan.
 what-to-do-subhead-2 = Os ydych yn ailddefnyddio cyfrinair hysbys, mae'n amser ei newid
 what-to-do-blurb-2 = Gall hacwyr geisio ailddefnyddio'ch cyfrinair hysbys i fynd i mewn i gyfrifon eraill. Crëwch gyfrinair gwahanol ar gyfer pob gwefan, yn enwedig ar gyfer eich cyfrif banc, e-bost a gwefannau eraill lle rydych yn cadw manylion personol.
-what-to-do-subhead-3 = Cymerwch gamau ychwanegol i ddiogelu eich cyfrifon ariannol
+what-to-do-subhead-3 = Cymryd camau ychwanegol i ddiogelu eich cyfrifon ariannol
 what-to-do-blurb-3 = Mae'r rhan fwyaf o achosion o dor-data dim ond yn datgelu e-byst a chyfrineiriau, ond mae rhai yn cynnwys manylion ariannol sensitif. Os cafodd eich cyfrif banc neu rifau cerdyn credyd eu cynnwys mewn tor-data, rhowch wybod i'ch banc am dwyll posibl, a monitro datganiadau am daliadau nad ydych yn gyfarwydd â nhw.
 what-to-do-subhead-4 = Cael help i greu cyfrineiriau da a'u cadw'n ddiogel.
 what-to-do-blurb-4 = Mae rheolwyr cyfrinair fel 1Password, LastPass, Dashlane, a Bitwarden yn creu cyfrineiriau cryf, yn eu storio'n ddiogel, a'u llenwi i mewn i wefannau i chi.
