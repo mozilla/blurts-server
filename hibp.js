@@ -31,7 +31,8 @@ const HIBP = {
       response = await got(url, reqOptions);
       return response;
     } catch (err) {
-      log.error("_throttledGot", {err: err});
+      const errResponse = err.response;
+      log.error("_throttledGot", {url, err, errResponse});
       if (err.statusCode === 404) {
         // 404 can mean "no results", return undefined response; sorry calling code
         return response;
