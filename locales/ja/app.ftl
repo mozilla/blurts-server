@@ -39,7 +39,7 @@ user-unsubscribed-title = { -product-name } : 登録解除しました
 
 ## Password Tips
 
-pwt-section-headline = 強いパスワード = 効果的な防護
+pwt-section-headline = 強いパスワード = 効果的な保護
 pwt-section-subhead = あなたの個人情報の安全性は、パスワードの強さと同じくらいです。
 pwt-section-blurb =
     あなたのパスワードが保護するのは、アカウント情報だけではありません。アカウント情報に属するすべての個人情報を保護しています。
@@ -121,8 +121,8 @@ show-more-breaches = さらに表示
 what-to-do-headline = あなたの個人情報がデータ侵害に晒されている場合に何をしたらよいか
 what-to-do-subhead-1 = 古いアカウントでもパスワードを変更しましょう
 what-to-do-blurb-1 =
-    ログインできない場合は、ウェブサイトにアカウントを復旧または停止する方法を問い合わせてください。
-    知らないアカウントが登録されていたら、そのサイトの名前が変更されたか、誰かがあなたのアカウントを作成している可能性があります。
+    ログインできない場合は、アカウントを復旧または停止する方法をそのウェブサイトに問い合わせてください。
+    知らないアカウントが登録されている場合、そのサイトの名前が変更されたか、誰かがあなたのアカウントを作成している可能性があります。
 what-to-do-subhead-2 = 晒されてしまったパスワードを再利用する場合は、変更してください
 what-to-do-blurb-2 =
     悪いハッカーは、手に入れたパスワードを再利用して他のアカウントにもログインしようとします。
@@ -136,7 +136,7 @@ what-to-do-blurb-4 = 1Password や LastPass, Dashlane, Bitwarden などのパス
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = 侵害日:
 # compromised accounts = the total number of user accounts exposed in data breach
-compromised-accounts = 漏洩したアカウント:
+compromised-accounts = 漏洩したアカウント数:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = 漏洩したデータ:
 confirmed = 確認しました。<br />登録完了です。
@@ -174,5 +174,5 @@ copyright-info =
     Portions of this content are &#x24B8; 1998-2018 by individual mozilla.org contributors. <br />
     Content available under a  <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons license</a>.
 # Breach data provided by Have I Been Pwned.
-hibp-attribution = { $hibp-link } により提供された侵害データ
+hibp-attribution = 侵害データの提供 { $hibp-link }
 site-description = あなたのアカウントはデータ侵害によって漏洩または盗まれていませんか？ { -product-name } で調べましょう。データベースを検索して、侵害時に知らせるための登録をしてください。
