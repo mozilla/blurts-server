@@ -1,6 +1,12 @@
 "use strict";
 
+// initialize Sentry ASAP to capture fatal startup errors
+const Sentry = require("@sentry/node");
 const AppConstants = require("./app-constants");
+Sentry.init({
+  dsn: AppConstants.SENTRY_DSN,
+  environment: AppConstants.NODE_ENV,
+});
 
 const express = require("express");
 const exphbs = require("express-handlebars");
@@ -21,7 +27,7 @@ const ScanRoutes = require("./routes/scan");
 const SesRoutes = require("./routes/ses");
 const OAuthRoutes = require("./routes/oauth");
 const UserRoutes = require("./routes/user");
-
+const EmailL10nRoutes= require("./routes/email-l10n");
 
 const log = mozlog("server");
 const app = express();
@@ -149,6 +155,7 @@ if (AppConstants.FXA_ENABLED) {
 app.use("/scan", ScanRoutes);
 app.use("/ses", SesRoutes);
 app.use("/user", UserRoutes);
+app.use("/email-l10n", EmailL10nRoutes);
 app.use("/", HomeRoutes);
 
 app.use(logErrors);

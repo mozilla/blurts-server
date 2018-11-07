@@ -8,31 +8,31 @@
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
--brand-HIBP = Apakah Akun Saya Sudah Diterobos
+-brand-HIBP = Have I Been Pwned
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Dukungan
 # Link that takes the user to a Firefox Monitor survey. 
-give-feedback = Beri Umpanbalik
+give-feedback = Beri Masukan
 terms-and-privacy = Ketentuan dan Privasi
 error-not-subscribed = Alamat surel ini tidak berlangganan { -product-name }.
 error-hibp-throttled = Terlalu banyak koneksi ke { -brand-HIBP }.
-error-hibp-connect = Gagal terhubung dengan { -brand-HIBP }.
+error-hibp-connect = Gagal tersambung dengan { -brand-HIBP }.
 error-hibp-load-breaches = Tidak dapat memuat data penerobosan.
-hibp-notify-email-subject = { -product-name } Waspada: Akun anda telah terlibat dalam sebuah penerobosan.
+hibp-notify-email-subject = Peringatan { -product-name }: Akun Anda telah terlibat dalam sebuah penerobosan.
 home-title = { -product-name }
 home-not-found = Laman tidak ditemukan.
-oauth-invalid-session = Sesi tidak sah
+oauth-invalid-session = Sesi tidak valid
 oauth-confirmed-title = { -product-name }: Berlangganan
-scan-title = { -product-name }: Hasil Pindai
-user-add-invalid-email = Surel Tidak Sah
-user-add-email-verify-subject = Verifikasi keberlangganan { -product-name } Anda.
+scan-title = { -product-name }: Hasil Pindaian
+user-add-invalid-email = Surel Tidak Valid
+user-add-email-verify-subject = Verifikasi langganan { -product-name } Anda.
 user-add-title = { -product-name } : Konfirmasi Surel
-user-verify-token-error = Perlu token verifikasi.
+user-verify-token-error = Token verifikasi diperlukan.
 user-verify-email-report-subject = Laporan { -product-name } Anda
 user-verify-title = { -product-name } : Berlangganan
-user-unsubscribe-token-error = Perlu token untuk berhenti berlangganan.
-user-unsubscribe-token-email-error = Perlu token dan emailHash untuk berhenti berlangganan.
+user-unsubscribe-token-error = Token untuk berhenti berlangganan diperlukan.
+user-unsubscribe-token-email-error = Token dan emailHash untuk berhenti berlangganan diperlukan.
 user-unsubscribe-title = { -product-name } : Berhenti Berlangganan
 user-unsubscribe-survey-title = { -product-name } : Berhenti Berlangganan Survei
 user-unsubscribed-title = { -product-name } : Berhenti Berlangganan
@@ -88,9 +88,9 @@ signup-modal-headline = Daftar untuk { -product-name-nowrap }
 signup-modal-blurb = Daftar untuk laporan penuh Anda, peringatan ketika terjadi kebocoran baru, dan kiat keamanan dari { -product-name-nowrap }.
 signup-modal-close = Tutup
 get-your-report = Dapatkan Laporan Anda
-signup-modal-verify-headline = Verifikasi Keberlangganan Anda
+signup-modal-verify-headline = Verifikasi langganan Anda
 signup-modal-verify-blurb = Kami telah mengirimkan tautan verifikasi ke <span id="submitted-email" class="medium"></span>.
-signup-modal-verify-expiration = Tautan ini kedaluwarsa dalam 24 jam.
+signup-modal-verify-expiration = Tautan ini akan kedaluwarsa dalam 24 jam.
 signup-modal-verify-resend = Tidak ada di folder kotak masuk atau spam? Kirim ulang.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Terkirim!
@@ -105,15 +105,30 @@ no-breaches =
     Alamat surel Anda tidak muncul pada pindaian dasar kami.
     Kabar yang bagus, tetapi kebocoran data dapat terjadi kapan saja dan masih ada hal lain yang dapat Anda lakukan. 
     Berlangganan { -product-name-nowrap } untuk laporan lengkap, peringatan ketika terjadi kebocoran baru, dan kiat untuk melindungi sandi Anda.
+featured-breach-results =
+    { $breachCount ->
+        [0] Akun Anda muncul dalam kebocoran <span class="bold">{ $featuredBreach }</span>, namun tidak muncul pada kebocoran data lainnya yang telah diketahui.
+       *[other] Akun Anda muncul dalam kebocoran <span class="bold">{ $featuredBreach }</span>, sebagaimana { $breachCount } kebocoran lainnya.
+    }
 featured-breach-not-compromised =
     { $breachCount ->
         [0] { no-breaches }
        *[other] Akun Anda tidak muncul di dalam pembobolan <span class="bold">{ $featuredBreach }</span>, namun muncul di { $breachCount } pembobolan lainnya.
     }
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+       *[other] Akun-akun yang diasosiasikan dengan alamat surel Anda muncul pada { $breachCount } kebocoran berikut.
+    }
 show-more-breaches = Tampilkan Lebih Banyak
 what-to-do-headline = Apa yang Perlu Dilakukan ketika Informasi Anda Terekspos dalam Suatu Kebocoran Data
 what-to-do-subhead-1 = Ubah sandi Anda, termasuk untuk akun lama
+what-to-do-blurb-1 = Jika Anda tidak dapat masuk, hubungi situs web tersebut untuk menanyakan bagaimana Anda dapat memulihkan atau menutup akun tersebut. Lihat akun yang Anda tidak kenali? Mungkin saja situs telah berubah nama atau seseorang telah membuatkan akun untuk Anda.
 what-to-do-subhead-2 = Jika Anda menggunakan kembali sandi yang telah terekspos, ubah ia.
+what-to-do-blurb-2 =
+    Peretas dapat coba menggunakan ulang kata sandi Anda yang terdedah untuk masuk ke dalam akun lainnya.
+    Buat kata sandi yang berbeda untuk setiap situs web, khususnya untuk akun bank Anda,
+    surel dan situs web lainnya di mana Anda menyimpan informasi pribadi.
 what-to-do-subhead-3 = Ambil langkah ekstra untuk mengamankan akun finansial Anda
 what-to-do-blurb-3 =
     Kebanyakan kebocoran hanya mengekspos surel dan sandi, tetapi beberapa juga membeberkan informasi keuangan. 
@@ -130,6 +145,7 @@ compromised-accounts = Akun yang telah diketahui orang lain:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Data yang telah diketahui orang lain:
 confirmed = Terkonfirmasi!<br />Anda Telah Berlangganan!
+confirmed-blurb = { -product-name-nowrap } akan segera mengirimkan surel beriisikan laporan lengkap, dan akan mengirimkan surel pemberitahuan jika akun Anda muncul pada kebocoran terlapor yang baru.
 confirmed-social-blurb = Jika data Anda bocor, kemungkinan data teman, keluarga, atau koneksi daring Anda juga mengalaminya. Beri tahu mereka tentang { -product-name-nowrap }.
 unsub-headline = Berhenti berlangganan { -product-name-nowrap }
 unsub-blurb = Ini akan menghapus surel Anda dari daftar { -product-name-nowrap } dan Anda tidak akan menerima peringatan lagi ketika ada pengumuman kebocoran yang baru.

@@ -30,6 +30,7 @@ user-verify-token-error = Zahtevan je potrditveni žeton.
 user-verify-email-report-subject = Vaše poročilo { -product-name }
 user-verify-title = { -product-name }: Naročeno
 user-unsubscribe-token-error = Za odjavo potrebujete žeton.
+user-unsubscribe-title = { -product-name }: Odjava
 user-unsubscribed-title = { -product-name }: Odjavljeno
 
 ## Password Tips
@@ -70,6 +71,7 @@ download-firefox-banner-button = Prenesite { -brand-name }
 signup-modal-headline = Prijavite se na { -product-name-nowrap }
 signup-modal-blurb = Naročite svoje celotno poročilo, opozorila ob novih krajah podatkov in varnostne nasvete { -product-name-nowrap }.
 signup-modal-close = Zapri
+get-your-report = Prejmite svoje poročilo
 signup-modal-verify-headline = Potrdite svojo naročnino
 signup-modal-verify-blurb = Na <span id="submitted-email" class="medium"></span> smo poslali potrditveno povezavo.
 signup-modal-verify-expiration = Povezava bo potekla po 24 urah.
@@ -83,6 +85,7 @@ form-signup-error = E-poštni naslov mora biti veljaven
 no-breaches-headline = Zaenkrat vse lepo in prav.
 show-more-breaches = Prikaži več
 what-to-do-subhead-1 = Spremenite gesla, tudi za starejše račune
+what-to-do-subhead-2 = Če izpostavljeno geslo uporabljate na več mestih, ga spremenite
 what-to-do-subhead-3 = Z dodatnimi ukrepi zavarujte svoje finančne račune
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Datum kršitve:

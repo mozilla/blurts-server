@@ -111,6 +111,7 @@ no-breaches =
     Subscribe to { -product-name-nowrap } for a full report, alerts when new breaches happen, and tips on protecting your passwords.
 featured-breach-results =
     { $breachCount ->
+        [0] Your account appears in the <span class="bold">{ $featuredBreach }</span> breach, but does not appear in any other known data breaches.
         [one] Your account appeared in the <span class="bold"> { $featuredBreach } </span> breach, as well as one other breach.
        *[other] Your account appeared in the <span class="bold"> { $featuredBreach } </span> breach, as well as { $breachCount } other breaches.
     }

@@ -9,6 +9,7 @@ email-address = ایمیل اڈریسیس :
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = اگلا کیا کرنا ہے
 report-pwt-headline-1 = ہر اکاؤنٹ کے لئے ایک مختلف پاس ورڈ استعمال کریں
+report-pwt-headline-2 = مضبوط، انوکھا پاس ورڈ بنائیں
 report-pwt-headline-4 = پاس ورڈ مینیجر کا استعمال کریں
 # A link to legal information about mozilla products.
 legal = قانونی

@@ -1,7 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
 click-to-verify =
-    Përzgjidhni brenda 24 orësh butonin Verifiko Email-in Tim që të ripohoni llogarinë tuaj Firefox Monitor. 
+    Që të ripohoni llogarinë tuaj Firefox Monitor, klikoni brenda 24 orësh mbi butonin Verifiko Email-in Tim. 
     Mandej raporti juaj do të jetë rrugës për te ju.
 verify-my-email = Verifiko Email-in Tim
 report-scan-another-email = Skanoni Një Tjetër Email në { -product-name }
@@ -20,11 +20,6 @@ report-no-breaches =
     Por shkeljet mund të ndodhin kurdo. Kryeni këto hapa që t’i mbani të parrezikuara në internet të dhënat tuaja personale.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Ç’të Bëhet Më Pas
-report-headline =
-    { $breachCount ->
-        [one] Llogaria juaj shfaqet në { $breachCount } shkelje.
-       *[other] Llogaria juaj shfaqet në { $breachCount } shkelje.
-    }
 report-subhead-no-breaches =
     Llogaria juaj s’duket te raporti ynë i plotë i shkeljeve. 
     Kaq është mirë, por mund të bëni më tepër. 

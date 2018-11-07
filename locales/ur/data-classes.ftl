@@ -41,6 +41,7 @@ family-structure = خاندان کی ساخت
 financial-investments = مالی سرمایہ کاری
 financial-transactions = مالی معاملات
 fitness-levels = صحت کی سطح
+geographic-locations = جغرافیای مقامات
 government-issued-ids = حکومت جاری کردہ شناخت
 health-insurance-information = ہیلتھ انشورنس کی معلومات
 historical-passwords = تاریخی پاس ورڈ

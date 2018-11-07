@@ -22,6 +22,7 @@ report-no-breaches =
 what-to-do-next = Tindakan Seterusnya
 report-headline =
     { $breachCount ->
+        [0] Keadaan baik setakat ini.
        *[other] Keadaan baik setakat ini. Akaun anda ada dalam pelanggaran keselamatan { $breachCount }
     }
 report-subhead-no-breaches =

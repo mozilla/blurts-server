@@ -63,7 +63,7 @@ test("notify POST with breach, subscriber hash prefix and suffixes should call s
   expect (mockSendEmailCalls.length).toBe(1);
   const mockSendEmailCallArgs = mockSendEmailCalls[0];
   expect (mockSendEmailCallArgs[0]).toBe(testEmail);
-  expect (mockSendEmailCallArgs[2]).toBe("report");
+  expect (mockSendEmailCallArgs[2]).toBe("default_email");
   const mockStatusCallArgs = mockResponse.status.mock.calls[0];
   expect(mockStatusCallArgs[0]).toBe(200);
   const mockJsonCallArgs = mockResponse.json.mock.calls[0];

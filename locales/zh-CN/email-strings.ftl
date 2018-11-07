@@ -22,6 +22,8 @@ report-no-breaches =
 what-to-do-next = 接下来怎么做
 report-headline =
     { $breachCount ->
+        [0] 目前为止还不错。
+        [one] 您的账号出现在 { $breachCount } 次数据泄露事件中。
        *[other] 您的账号出现在 { $breachCount } 次数据泄露事件中。
     }
 report-subhead-no-breaches =

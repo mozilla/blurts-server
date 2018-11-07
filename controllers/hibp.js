@@ -62,7 +62,7 @@ async function notify (req, res) {
       await EmailUtils.sendEmail(
         email,
         LocaleUtils.fluentFormat(supportedLocales, "hibp-notify-email-subject"),
-        "report",
+        "default_email",
         {
           email,
           supportedLocales,
@@ -71,6 +71,7 @@ async function notify (req, res) {
           breachAlert,
           SERVER_URL: req.app.locals.SERVER_URL,
           buttonValue: LocaleUtils.fluentFormat(supportedLocales, "report-scan-another-email"),
+          whichView: "email_partials/report",
         },
       );
       notifiedSubscribers.push(email);

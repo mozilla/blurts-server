@@ -8,7 +8,7 @@
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
--brand-HIBP = He sido Pwned
+-brand-HIBP = Have I Been Pwned
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Soporte
@@ -98,11 +98,67 @@ signup-with-fxa = Regístrate con tu cuenta de { -brand-name }
 form-signup-placeholder = Ingresar dirección de correo electrónico
 form-signup-checkbox = Obtén las últimas noticias de { -brand-Mozilla } y { -brand-name }.
 sign-up = Registrarse
+form-signup-error = Debe ser un correo electrónico válido
+no-breaches-headline = Hasta ahora, todo bien.
+found-breaches-headline = Tu información fue parte de una filtración de datos.
+no-breaches =
+    Tu dirección de correo electrónico no aparece en nuestro escaneo básico.
+    Esas son buenas noticias, pero las filtraciones de datosa pueden ocurrir en cualquier momento y todavía hay más que puedes hacer.
+    Suscríbete a { -product-name-nowrap } para un reporte completo y alertas cuando ocurran nuevas filtraciones y consejos para proteger tus contraseñas.
+featured-breach-results =
+    { $breachCount ->
+        [0] Tu cuenta aparece en la filtración de <span class="bold">{ $featuredBreach }</span>, sin embargo no aparece en otras filtraciones de datos conocidas.
+        [one] Tu cuenta aparece en la filtración de <span class="bold">{ $featuredBreach }</span>, así como en otra filtración.
+       *[other] Tu cuenta aparece en la filtración de <span class="bold">{ $featuredBreach }</span>, así como en otras { $breachCount } filtraciones.
+    }
+featured-breach-not-compromised =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Tu cuenta no apareció en la filtración de <span class="bold">{ $featuredBreach }</span>, pero apareció en alguna otra filtración.
+       *[other] Tu cuenta no apareció en la filtración de <span class="bold">{ $featuredBreach }</span>, pero apareció en otras { $breachCount } filtraciones.
+    }
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Tu cuenta apareció en la filtración { $breachCount }.
+       *[other] Cuentas asociadas con tu dirección de correo electrónico aparecieron en las siguientes filtraciones { $breachCount }.
+    }
 show-more-breaches = Mostrar más
+what-to-do-headline = Qué hacer cuando tu información está expuesta en una filtración de datos
+what-to-do-subhead-1 = Cambiar tus contraseñas, incluso para cuentas antiguas
+what-to-do-blurb-1 =
+    Si no puedes iniciar sesión, contacta al sitio web para preguntar como puedes recuperar o dar de baja tu cuenta.
+    ¿Ves un cuenta que no reconoces? El sitio puede haber cambiado los nombres o alguien pudo haber creado una cuenta para ti.
+what-to-do-subhead-2 = Si puedes usa de nuevo una contraseña descubierta, cambiala
+what-to-do-blurb-2 =
+    Los hackers pueden intentar usar de nuevo tu contraseña descubierta para ingresar en otras contraseñas.
+    Crea una contraseña diferente para cada sitio web, especialmente para tu cuenta del banco, correos y otros sitios web que puedan tener tu información personal.
+what-to-do-subhead-3 = Algunos pasos extra son importantes para tus cuentas financieras
+what-to-do-blurb-3 = La mayoría de las filtraciones solamente exponen correos electrónicos y contraseñas, pero algunas muestran información financiera. Si los números de tu cuenta de banco o tarjeta de crédito fueron incluidos en la filtración, informa a tu banco de un posible fraude y monitorea cualquier cargo que no reconozcas.
+what-to-do-subhead-4 = Obtén ayuda creando buenas contraseñas y mantenerlas seguras.
+what-to-do-blurb-4 = Administradores de contraseñas como 1Password, LastPass, Dashlane y Bitwarden, generan contraseñas fuertes, las almacenan y las usan en tus sitios web.
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = Fecha de violación:
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Cuentas comprometidas:
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Datos comprometidos:
+confirmed = ¡Confirmado!<br />¡Estás suscrito!
+confirmed-blurb = { -product-name-nowrap } te enviará un correo electrónico con un reporte completo en un momento y te enviará una alerta de correo electrónico si tu cuenta aparece en un nuevo reporte de filtración.
+confirmed-social-blurb = Si tus datos fueron filtrados es que probable de que los datos de tus amigos, familia y otras conexiones se hayan filtrado también. Informales acerca de { -product-name-nowrap }.
+unsub-headline = Eliminar suscripción de { -product-name-nowrap }
+unsub-blurb = Esto eliminará tu correo de la lista de { -product-name-nowrap } y no recibirás alertas cuando se anuncie alguna filtración.
 unsub-button = Cancelar suscripción
 unsub-survey-headline = Ya no estás suscrito.
+unsub-survey-blurb =
+    Tu correo se ha eliminado de la suscripción a { -product-name-nowrap }. Gracias por usar este servicio.
+    ¿Te tomarías un momento para responder una pregunta acerca de tu experiencia?
+unsub-survey-form-label = ¿Por qué estás eliminando tu suscripción de las alertas de { -product-name-nowrap }?
 unsub-reason-1 = Creo que las alertas no hacen que mis datos estén más seguros.
 unsub-reason-2 = Recibo demasiados correos electrónicos de { -product-name-nowrap }
+unsub-reason-3 = No me parece valioso el servicio
+unsub-reason-4 = Ya he tomado las medidas para proteger mis cuentas
+unsub-reason-5 = Estoy usando otro servicio para monitorear mis cuentas
 unsub-reason-6 = Ninguna de las mencionadas
 unsub-survey-thankyou = Gracias por tus comentarios.
 unsub-survey-error = Por favor, selecciona uno.
@@ -114,3 +170,13 @@ download-firefox-quantum = Descargar { -brand-Quantum }
 download-firefox-mobile = Descargar { -brand-name } móvil
 # Features here refers to Firefox browser features. 
 features = Características
+# beta-nightly-developer-edition refers to additional versions of Firefox Browser
+beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# The following string contains HTML markup which should not be translated. 
+# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
+copyright-info =
+    Algunas partes de este contenido tienen &#x24B8; 1998-2018 por colaboradores individuales de mozilla.org. <br />
+    El contenido está disponible bajo una <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener"> licencia de Creative Commons </a>.
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Filtración de datos proporcionada por { $hibp-link }
+site-description = ¿Tus cuentas han sido filtradas o robadas en alguna filtración de datos? Descúbrelo en { -product-name }.  Busca en nuestra de base de datos y regístrate para las alertas.

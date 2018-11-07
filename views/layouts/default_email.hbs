@@ -82,19 +82,19 @@
           <table border="1" cellspacing="0" cellpadding="0" align="center" width="100%" style="padding: 0px; max-width: 603px; min-width: 200px; width: 100%; text-align: center; border-collapse: collapse; box-shadow: 1px 1px 2px #b1b1b3; border: 1px solid #b1b1b3;">
             <tr>
               <td border="0" cellpadding="0" cellspacing="0" style="border-width: 0px; border-collapse: collapse;">
-                {{>email_logo}}
+                {{> email_partials/email_logo}}
               </td>
             </tr>
             <tr>
               <td bgcolor="#ffffff" style="padding: 30px" border="0" cellpadding="0" cellspacing="0" style="border-width: 0px;">
-                {{{ body }}}
+                {{> (lookup . 'whichView')}}
               </td>
             </tr>
           </table>
           <table border="0" cellspacing="0" cellpadding="0" align="center" width="100%" style="width: 100%; max-width: 603px; min-width: 100px; padding-top: 30px;">
             <tr>
               <td>
-                {{>email_footer}}
+                {{> email_partials/email_footer}}
               </td>
             </tr>
           </table>

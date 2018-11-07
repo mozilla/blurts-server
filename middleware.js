@@ -2,6 +2,12 @@
 
 
 const { negotiateLanguages, acceptedLanguages } = require("fluent-langneg");
+const Sentry = require("@sentry/node");
+const AppConstants = require("./app-constants");
+Sentry.init({
+  dsn: AppConstants.SENTRY_DSN,
+  environment: AppConstants.NODE_ENV,
+});
 
 const { FluentError } = require("./locale-utils");
 const mozlog = require("./log");
@@ -53,6 +59,7 @@ function asyncMiddleware (fn) {
 
 function logErrors (err, req, res, next) {
   log.error("error", {stack: err.stack});
+  Sentry.captureException(err);
   next(err);
 }
 
