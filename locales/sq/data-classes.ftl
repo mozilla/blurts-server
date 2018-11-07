@@ -1,5 +1,6 @@
 ## Breach Data Classes
 
+address-book-contacts = Kontakte libri adresash
 age-groups = Grupe moshash
 ages = Mosha
 apps-installed-on-devices = Aplikacione të instaluara në pajisje
@@ -24,7 +25,9 @@ customer-feedback = Përshtypje klienti
 customer-interactions = Ndërveprime klienti
 dates-of-birth = Data lindjesh
 deceased-date = Data vdekjesh
+deceased-statuses = Gjendje vdekjeje
 device-information = Të dhëna pajisjeje
+device-usage-tracking-data = Të dhëna gjurmimi përdorimi pajisjeje
 drinking-habits = Zakone pirjeje
 drug-habits = Zakone drogimi
 eating-habits = Zakone ngrënieje
@@ -48,12 +51,14 @@ homepage-urls = URL faqesh hyrëse
 imei-numbers = Numra IMEI
 imsi-numbers = Numra IMSI
 income-levels = Shkallë të ardhurash
+instant-messenger-identities = Identitete shkëmbimi mesazhesh të atypëratyshëm
 ip-addresses = Adresa IP
 job-titles = Emërtesa vendi pune
 mac-addresses = Adresa MAC
 marital-statuses = Gjendje martesore
 names = Emra
 nationalities = Shtetësi
+net-worths = Pasuri neto
 nicknames = Nofka
 occupations = Punësime
 partial-credit-card-data = Të dhëna të pjesshme karte krediti

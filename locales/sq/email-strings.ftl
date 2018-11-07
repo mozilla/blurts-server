@@ -1,7 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
 click-to-verify =
-    Përzgjidhni brenda 24 orësh butonin Verifiko Email-in Tim që të ripohoni llogarinë tuaj Firefox Monitor. 
+    Që të ripohoni llogarinë tuaj Firefox Monitor, klikoni brenda 24 orësh mbi butonin Verifiko Email-in Tim. 
     Mandej raporti juaj do të jetë rrugës për te ju.
 verify-my-email = Verifiko Email-in Tim
 report-scan-another-email = Skanoni Një Tjetër Email në { -product-name }
