@@ -117,16 +117,16 @@ what-to-do-headline = Wat te dwaan as jo gegevens belutsen binne by in datalek
 what-to-do-subhead-1 = Wizigje jo wachtwurden, sels foar âlde accounts
 what-to-do-blurb-1 =
     As jo jo net oanmelde kinne, nim dan kontakt op mei de website om te freegjen hoe't jo jo account werstelle of beëinigje kinne. 
-    Sjogge jo in ûnbekende account? De website kin fan namme feroare wêze of ien kin in account foar jo oanmakke hawwe.
+    Sjogge jo in ûnbekende account? De website kin fan namme feroare wêze of in oar kin in account foar jo oanmakke hawwe.
 what-to-do-subhead-2 = As jo in lekt wachtwurd opnij brûke, wizigje dit dan
 what-to-do-blurb-2 =
     Hackers kinne probearje jo lekte wachtwurd opnij te brûken om tagong te krijen ta oare accounts. 
-    Meitsje foar elke website in oar wachtwurd oan, foaral foar jo bankrekkening, 
-    e-mailaccount en oare websites wêr't jo persoanlike gegevens bewarje.
+    Meitsje foar elke website in oar wachtwurd oan, foaral foar jo bankrekkens, 
+    e-mailaccount en oare websites dêr't jo persoanlike gegevens bewarje.
 what-to-do-subhead-3 = Nim ekstra stappen om jo finansjele accounts te befeiligjen
 what-to-do-blurb-3 =
     De measte lekken omfetsje allinnich e-mailadressen en wachtwurden, mar guon befetsje ek gefoelige finansjele ynformaasje. 
-    As jo bankrekkening of creditcardnûmers lekt binne, warskôgje dan jo bank foar mooglike fraude, 
+    As jo bankrekken of creditcardnûmers lekt binne, warskôgje dan jo bank foar mooglike fraude, 
     en let op ôfskriuwingen dy't jo net werkenne.
 what-to-do-subhead-4 = Brûk help by it meitsjen fan goede wachtwurden dy't feilich bewarre wurde.
 what-to-do-blurb-4 =

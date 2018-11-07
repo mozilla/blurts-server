@@ -1,13 +1,13 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
 click-to-verify =
-    Selektear binnen 24 oer de knop ‘Myn e-mailadres ferifiearje’ om jo Firefox Monitor-account te befêstigjen. 
+    Selektearje binnen 24 oer de knop ‘Myn e-mailadres ferifiearje’ om jo Firefox Monitor-account te befêstigjen. 
     Jo rapport is dan ûnderweis.
 verify-my-email = Myn e-mailadres ferifiearje
 report-scan-another-email = Noch in e-mailadres skanne yn { -product-name }
 automated-message = Dit is in automatisearre e-mailberjocht; as jo it by fersin ûntfongen hawwe, hoege jo neat te dwaan.
 # Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
-we-sent-this-alert = Wy hawwe dit berjocht nei { $userEmail } stjoerd omdat it e-mailadres ynskreaun is foar warskôgingen fan { -product-name }.
+we-sent-this-alert = Wy hawwe dit berjocht nei { $userEmail } stjoerd, omdat it e-mailadres ynskreaun is foar warskôgingen fan { -product-name }.
 unsubscribe-email-link = As jo gjin warskôgingen fan { -product-name } mear ûntfange wolle, skriuw jo dan út.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = { -product-name }-rapport
