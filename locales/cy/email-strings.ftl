@@ -35,17 +35,17 @@ breach-alert-subhead = Mae adroddiad diweddar ar dor-data yn cynnwys eich e-bost
 report-pwt-blurb =
     Mae cyfrineiriau mor werthfawr, mae miloedd ohonyn nhw'n cael eu dwyn bob dydd a'u masnachu neu eu gwerthu ar y farchnad ddu.
     Mae cyfrineiriau cryfach yn diogelu'ch cyfrifon a'r holl fanylion personol sy'n bodoli o'u mewn.
-report-pwt-headline-1 = Defnyddiwch gyfrinair gwahanol ar gyfer pob cyfrif
+report-pwt-headline-1 = Defnyddio cyfrinair gwahanol ar gyfer pob cyfrif
 report-pwt-summary-1 =
     Mae ailddefnyddio'r un cyfrinair ym mhobman yn agor y drws i hacwyr.
     Maen nhw'n gallu defnyddio'r cyfrinair hwnnw i fewngofnodi i'ch cyfrifon eraill.
-report-pwt-headline-2 = Crëwch gyfrineiriau cryf, unigryw
+report-pwt-headline-2 = Creu cyfrineiriau cryf, unigryw
 report-pwt-summary-2 =
     Mae hacwyr yn defnyddio rhestrau o filoedd o gyfrineiriau cyffredin i geisio dyfalu eich un chi.
     Yr hiraf a mwyaf annisgwyl ydyw, yr anoddaf fydd i'w ddyfalu.
 report-pwt-headline-3 = Rhaid trin cwestiynau diogelwch fel cyfrineiriau ychwanegol
 report-pwt-summary-3 = Nid yw gwefannau yn gwirio bod eich atebion yn gywir, dim ond eu bod yn cyfateb bob tro. Crewch atebion hir, ar hap a'u storio yn rhywle diogel.
-report-pwt-headline-4 = Defnyddiwch reolwr cyfrinair
+report-pwt-headline-4 = Defnyddio rheolwr cyfrinair
 report-pwt-summary-4 = Mae gwasanaethau fel 1Password, LastPass, Dashlane, a Bitwarden yn creu cyfrineiriau cryf, yn eu storio'n ddiogel, a'u llenwi i mewn i wefannau felly does dim rhaid i chi gofio pob un.
 # A link to legal information about mozilla products.
 legal = Cyfreithiol
