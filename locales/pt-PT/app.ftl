@@ -93,6 +93,7 @@ compromised-data = Dados comprometidos:
 confirmed = Confirmado!<br />Está subscrito(a)!
 unsub-headline = Cancelar a subscrição do { -product-name-nowrap }
 unsub-button = Cancelar subscrição
+unsub-survey-headline = Já não está subscrito(a).
 unsub-survey-blurb =
     O seu email foi cancelado da subscrição do { -product-name-nowrap }. Obrigado por uitilizar este serviço.
     Tem um momento para responder a uma pergunta acerca da sua experiência?

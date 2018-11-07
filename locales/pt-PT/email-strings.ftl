@@ -22,6 +22,11 @@ report-headline =
        *[other] As suas contas apareceram em { $breachCount } brechas.
     }
 breach-alert-headline = A sua conta foi envolvida numa brecha de dados.
+breach-alert-subhead = Uma brecha de dados relatada recentemente contém o seu email e os seguintes dados
+report-pwt-blurb =
+    As palavras-passe são tão valiosas, que milhares delas são roubadas todos os dias e comercializadas ou vendidas no mercado negro.
+    Palavras-passe mais fortes protegem as suas contas e toda a informação pessoal que reside dentro das mesmas.
+report-pwt-headline-1 = Utilize uma palavra-passe diferente para cada conta
 report-pwt-headline-2 = Crie palavras-passe fortes e únicas
 report-pwt-headline-3 = Trate as questões de segurança como palavras-passe extra
 report-pwt-headline-4 = Utilize um gestor de palavras-passe
