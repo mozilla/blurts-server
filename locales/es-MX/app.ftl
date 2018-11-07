@@ -4,7 +4,7 @@
 # - Transliterated.
 # - Translated.
 -product-name = Firefox Monitor
--product-name-nowrap = <span class="nowrap">{ -product-name }
+-product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
