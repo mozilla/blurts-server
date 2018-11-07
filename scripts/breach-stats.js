@@ -1,5 +1,7 @@
 "use strict";
 
+const psl = require("psl");
+
 const HIBP = require("../hibp");
 
 // https://stackoverflow.com/a/8528531
@@ -28,6 +30,7 @@ function dhm(t){
   breaches.body.sort((a,b) => {return new Date(a.AddedDate) - new Date(b.AddedDate)});
   breaches.body.sort((a,b) => {return a.PwnCount > b.PwnCount});
 
+  let breachTLDs = {};
   let oldestBreachDate = new Date();
   let oldestBreach = "";
   let fastestResponseTime = Math.abs(new Date() - new Date(0));
@@ -36,6 +39,13 @@ function dhm(t){
   for (const breach of breaches.body) {
     const breachDate = new Date(breach.BreachDate);
     const addedDate = new Date(breach.AddedDate);
+    const parsedDomainTLD = psl.parse(breach.Domain).tld;
+    if (breachTLDs.hasOwnProperty(parsedDomainTLD)) {
+      breachTLDs[parsedDomainTLD]++;
+    } else {
+      breachTLDs[parsedDomainTLD] = 1;
+    }
+
     console.log("breach: ", breach.Name, ", domain: ", breach.Domain, ", date: ", addedDate, ", count: ", breach.PwnCount);
     if (breachDate < oldestBreachDate){
       oldestBreachDate = breachDate;
@@ -51,5 +61,6 @@ function dhm(t){
   console.log("===========================");
   console.log("oldest breach: ", oldestBreach, " on date: ", oldestBreachDate);
   console.log("fastest breach response time (dd:hh:mm): ", dhm(Math.abs(fastestResponseTime)), " for breach: ", fastestResponseBreach);
+  console.log("breachTLDs: ", breachTLDs);
 })();
 
