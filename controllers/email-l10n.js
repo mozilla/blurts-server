@@ -6,6 +6,7 @@ const HBSHelpers = require("../hbs-helpers");
 function getEmailMockUps(req, res) {
   const unsafeBreachesForEmail = [];
   const email = "example@email.com";
+  let emailSubject = req.fluentFormat("user-add-email-verify-subject");
   let breachAlert;
   let buttonValue = req.fluentFormat("verify-my-email");
 
@@ -25,8 +26,10 @@ function getEmailMockUps(req, res) {
     buttonValue = req.fluentFormat("report-scan-another-email");
     if(emailType === "singleBreach" || emailType === "breachAlert") {
       unsafeBreachesForEmail.push(req.app.locals.breaches.filter(breach => breach.Name === "Experian")[0]);
+      emailSubject = req.fluentFormat("user-verify-email-report-subject");
       if(emailType === "breachAlert") {
         breachAlert = unsafeBreachesForEmail[0];
+        emailSubject = req.fluentFormat("hibp-notify-email-subject");
       }
     } else if (emailType === "multipleBreaches") {
       const breachArray = ["Experian", "Dropbox", "Apollo"];
@@ -44,6 +47,7 @@ function getEmailMockUps(req, res) {
     date: HBSHelpers.prettyDate(req.supportedLocales, new Date()),
     buttonValue,
     breachAlert,
+    emailSubject,
     email,
   });
 }

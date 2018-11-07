@@ -17,10 +17,11 @@
   <body data-server-url="{{ SERVER_URL }}" class="email-locale-testing">
     <section class="section-wrapper">
       <section class="email-test-wrapper">
+          <p class="email-subject">
+            <span class="bold">Subject: </span>{{ emailSubject }}
+          </p>
         <div class="email-content">
-
             {{> email_partials/email_logo}}
-
           <section class="email-body">
             {{> (lookup . 'whichPartial')}}
           </section>
