@@ -51,7 +51,7 @@ const HIBP = {
   },
 
   async req(path, options = {}) {
-    const url = `${AppConstants.HIBP_API_ROOT}${path}?code=${encodeURIComponent(AppConstants.HIBP_API_TOKEN)}`;
+    const url = `${AppConstants.HIBP_API_ROOT}${path}`;
     const reqOptions = this._addStandardOptions(options);
     return await this._throttledGot(url, reqOptions);
   },
