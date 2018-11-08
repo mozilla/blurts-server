@@ -83,10 +83,13 @@ form-signup-placeholder = Vnesite e-poštni naslov
 sign-up = Prijava
 form-signup-error = E-poštni naslov mora biti veljaven
 no-breaches-headline = Zaenkrat vse lepo in prav.
+found-breaches-headline = Vaši podatki so bili del kraje podatkov.
 show-more-breaches = Prikaži več
+what-to-do-headline = Kaj storiti, ko pride do kraje vaših podatkov
 what-to-do-subhead-1 = Spremenite gesla, tudi za starejše račune
 what-to-do-subhead-2 = Če izpostavljeno geslo uporabljate na več mestih, ga spremenite
 what-to-do-subhead-3 = Z dodatnimi ukrepi zavarujte svoje finančne račune
+what-to-do-subhead-4 = Pomagajte si pri ustvarjanju dobrih gesel in ohranjanju njihove varnosti.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Datum kršitve:
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -121,3 +124,5 @@ beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 copyright-info =
     Deli vsebine so avtorsko zaščiteni &#x24B8; 1998–2018 s strani sodelavcev mozilla.org. <br />
     Vsebina je na voljo pod pogoji <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons</a>.
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Podatke o krajah podatkov omogoča { $hibp-link }

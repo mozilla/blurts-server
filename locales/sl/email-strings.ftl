@@ -14,6 +14,8 @@ report-date = Datum poročila:
 email-address = E-poštni naslov:
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Naslednji koraki
+breach-alert-headline = Vaš račun je bil vpleten v krajo podatkov.
+breach-alert-subhead = Nedavno objavljena kraja podatkov vsebuje vaš e-poštni naslov in naslednje podatke
 report-pwt-headline-1 = Uporabite različna gesla za posamezne račune
 report-pwt-summary-1 =
     Uporaba enakega gesla povsod pomeni odprta vrata za napadalce.
