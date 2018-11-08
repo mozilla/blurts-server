@@ -41,14 +41,30 @@ user-unsubscribed-title = { -product-name } : Subscrição cancelada
 
 pwt-section-headline = Palavras-passe mais fortes = melhor proteção
 pwt-section-subhead = A sua informação privada é tão segura quanto as suas palavras-passe.
+pwt-section-blurb =
+    As suas palavras-passe protegem mais que as suas contas. Estas protegem cada bit de informação pessoal que reside nelas.
+    E os hackers confiam em maus hábitos, como utilizar a mesma palavra-passe em todos os lugares ou utilizar frases comuns (p@ssw0rd, alguém?)
+    então, se conseguem uma conta, podem conseguir muitas. Aqui está como proteger melhor as suas contas.
 pwt-headline-1 = Utilize uma palavra-passe diferente para cada conta
+pwt-summary-1 =
+    Reutilizar a mesma palavra-passe em todos os lugares deixa a porta aberta para o roubo de identidade.
+    Qualquer pessoa com essa palavra-passe pode fazer iniciar sessão em todas as suas contas.
 pwt-headline-2 = Crie palavras-passe fortes e difíceis de adivinhar
+pwt-summary-2 =
+    Os hackers utilizam centenas de palavras-passe comuns para tentar adivinhar as suas.
+    Quanto mais longa e mais aleatória for a sua palavra-passe, mais difícil será adivinhar.
 pwt-headline-3 = Trate as questões de segurança como palavras-passe extra
+pwt-summary-3 =
+    Os websites não verificam se as suas respostas são precisas, apenas que estas correspondem a todas as vezes.
+    Crie respostas longas e aleatórias e armazene-as em algum lugar seguro.
 pwt-headline-4 = Obtenha ajuda para se lembrar das suas palavras-passe
 pwt-summary-4 =
     Gestores de palavras-passe como 1Password, LastPass, Dashlane e Bitwarden geram palavras-passe fortes e únicas.
     Estes também armazenam palavras-passe com segurança e preenchem-nas em websites por si
 pwt-headline-5 = Adicione segurança extra com autenticação de dois fatores
+pwt-summary-6 =
+    As brechas de dados de website estão em ascensão. Assim que uma nova brecha for adicionada à nossa base de dados,
+    o { -product-name-nowrap } envia-lhe um alerta — para que possa tomar medidas e proteger a sua conta.
 landing-headline = O seu direito de estar a salvo de hackers começa aqui.
 scan-label = Veja se foi envolvido(a) numa brecha de dados.
 scan-placeholder = Introduzir endereço de email
@@ -58,6 +74,9 @@ scan-another-email = Verificar outro endereço de email
 scan-featuredbreach-label = Descubra se a sua conta <span class="bold"> { $featuredBreach } </span> foi comprometida.
 scan-error = Tem de ser um email válido.
 signup-banner-headline = O { -product-name-nowrap } deteta ameaças contra as suas contas online.
+signup-banner-blurb =
+    O seu relatório detalhado do { -product-name-nowrap } mostra se as informação das suas contas online foi vazada ou furtada.
+    Também alertaremos se as suas contas aparecerem em novas brechas de websites.
 download-firefox-bar-blurb = O { -product-name-nowrap } é trazido a si pelo <span class="nowrap">todo novo { -brand-name }</span>.
 download-firefox-bar-link = Transferir o { -brand-name } agora
 download-firefox-banner-blurb = Tome o controlo do seu navegador
@@ -78,10 +97,44 @@ sign-up = Registar
 form-signup-error = Tem de ser um email válido
 no-breaches-headline = Até agora, tudo bem.
 found-breaches-headline = A sua informação foi parte de uma brecha de dados.
+no-breaches =
+    O seu endereço de email não apareceu na nossa verificação básica.
+    Isto são boas notícias, mas as brechas de dados podem acontecer a qualquer momento e ainda há mais coisas que pode fazer.
+    Subscreva ao { -product-name-nowrap } para um relatório completo, alertas sobre novas brechas e dicas sobre como proteger as suas palavras-passe.
+featured-breach-results =
+    { $breachCount ->
+        [0] A sua conta aparece na brecha <span class="bold">{ $featuredBreach }</span>, mas não aparece em quaisquer outras brechas de dados conhecidas.
+        [one] A sua conta apareceu na brecha <span class="bold"> { $featuredBreach } </span>, e também numa outra brecha.
+       *[other] A sua conta apareceu na brecha <span class="bold"> { $featuredBreach } </span>, e também em { $breachCount } outras brechas.
+    }
+featured-breach-not-compromised =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] A sua conta não apareceu na brecha <span class="bold">{ $featuredBreach }</span>, mas apareceu numa outra brecha.
+       *[other] A sua conta não apareceu na brecha <span class="bold">{ $featuredBreach }</span>, mas apareceu em { $breachCount } outras brechas.
+    }
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] A sua conta apareceu em { $breachCount } brecha.
+       *[other] As contas associadas com o seu endereço de email apareceram nas seguintes { $breachCount } brechas.
+    }
 show-more-breaches = Mostrar mais
+what-to-do-headline = O que fazer quando a sua informação é exposta numa brecha de dados
 what-to-do-subhead-1 = Altere as suas palavras-passe, mesmo para contas antigas
+what-to-do-blurb-1 =
+    Se não conseguir fazer iniciar sessão, contacte o website para perguntar como recuperar ou encerrar a conta.
+    Vê uma conta que não reconhece? O site pode ter alterado de nome ou alguém pode ter criado uma conta por si.
 what-to-do-subhead-2 = Se reutilizar uma palavra-passe exposta, altere-a
+what-to-do-blurb-2 =
+    Os hackers podem tentar reutilizar a sua palavra-passe exposta para aceder a outras contas.
+    Crie uma palavra-passe diferente para cada website, especialmente para a sua conta bancária,
+    email e outros websites onde guarda informação pessoal.
 what-to-do-subhead-3 = Tome passos extra para proteger as suas contas financeiras
+what-to-do-blurb-3 =
+    A maioria das brechas apenas expõem emails e palavras-passe, mas algumas incluem informação financeira sensível.
+    Se a sua conta bancária ou números de cartão de crédito foram incluídos numa brecha, alerte o seu banco sobre possíveis fraudes,
+    e monitorize os extratos por cobranças que não reconhece.
 what-to-do-subhead-4 = Obtenha ajuda para criar boas palavras-passe e mantê-las seguras.
 what-to-do-blurb-4 =
     Gestores de palavras-passe como 1Password, LastPass, Dashlane e Bitwarden geram palavras-passe fortes,
@@ -93,6 +146,7 @@ compromised-accounts = Contas comprometidas:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Dados comprometidos:
 confirmed = Confirmado!<br />Está subscrito(a)!
+confirmed-blurb = O { -product-name-nowrap } irá enviar-lhe por email um relatório completo, e irá enviar um alerta por email se a sua conta aparecer numa nova brecha relatada.
 unsub-headline = Cancelar a subscrição do { -product-name-nowrap }
 unsub-blurb = Isto irá remover o seu email da lista do { -product-name-nowrap } e não irá receber mais alertas quando novas brechas são anunciadas.
 unsub-button = Cancelar subscrição
