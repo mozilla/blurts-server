@@ -62,10 +62,17 @@ pwt-summary-4 =
     Gestores de palavras-passe como 1Password, LastPass, Dashlane e Bitwarden geram palavras-passe fortes e únicas.
     Estes também armazenam palavras-passe com segurança e preenchem-nas em websites por si
 pwt-headline-5 = Adicione segurança extra com autenticação de dois fatores
+pwt-summary-5 =
+    O 2FA exige um pedaço de informação adicional (como um código único enviado por mensagem de texto) para iniciar sessão na sua conta.
+    Mesmo que alguém tenha a sua palavra-passe, não poderão entrar.
+pwt-headline-6 = Registar-se para alertas do { -product-name-nowrap }
 pwt-summary-6 =
     As brechas de dados de website estão em ascensão. Assim que uma nova brecha for adicionada à nossa base de dados,
     o { -product-name-nowrap } envia-lhe um alerta — para que possa tomar medidas e proteger a sua conta.
 landing-headline = O seu direito de estar a salvo de hackers começa aqui.
+landing-blurb =
+    O { -product-name-nowrap } oferece-lhe ferramentas para manter a sua informação pessoal segura.
+    Descubra o que os hackers já sabem acerca de si, e saiba como ficar um passo à frente dos mesmos.
 scan-label = Veja se foi envolvido(a) numa brecha de dados.
 scan-placeholder = Introduzir endereço de email
 scan-privacy = O seu email não será armazenado.
@@ -82,6 +89,7 @@ download-firefox-bar-link = Transferir o { -brand-name } agora
 download-firefox-banner-blurb = Tome o controlo do seu navegador
 download-firefox-banner-button = Transferir o { -brand-name }
 signup-modal-headline = Registar-se no { -product-name-nowrap }
+signup-modal-blurb = Registe-se para o seu relatório completo, alertas quando novas brechas acontecerem e dicas de segurança do { -product-name-nowrap }.
 signup-modal-close = Fechar
 get-your-report = Obter o seu relatório
 signup-modal-verify-headline = Verifique a sua subscrição
@@ -123,7 +131,7 @@ show-more-breaches = Mostrar mais
 what-to-do-headline = O que fazer quando a sua informação é exposta numa brecha de dados
 what-to-do-subhead-1 = Altere as suas palavras-passe, mesmo para contas antigas
 what-to-do-blurb-1 =
-    Se não conseguir fazer iniciar sessão, contacte o website para perguntar como recuperar ou encerrar a conta.
+    Se não conseguir iniciar sessão, contacte o website para perguntar como recuperar ou encerrar a conta.
     Vê uma conta que não reconhece? O site pode ter alterado de nome ou alguém pode ter criado uma conta por si.
 what-to-do-subhead-2 = Se reutilizar uma palavra-passe exposta, altere-a
 what-to-do-blurb-2 =
@@ -147,6 +155,7 @@ compromised-accounts = Contas comprometidas:
 compromised-data = Dados comprometidos:
 confirmed = Confirmado!<br />Está subscrito(a)!
 confirmed-blurb = O { -product-name-nowrap } irá enviar-lhe por email um relatório completo, e irá enviar um alerta por email se a sua conta aparecer numa nova brecha relatada.
+confirmed-social-blurb = Se tiver sido vítima de brechas, as chances dos seus amigos, familiares ou conexões online de o terem sido são grandes. Deixe-os saber acerca do { -product-name-nowrap }.
 unsub-headline = Cancelar a subscrição do { -product-name-nowrap }
 unsub-blurb = Isto irá remover o seu email da lista do { -product-name-nowrap } e não irá receber mais alertas quando novas brechas são anunciadas.
 unsub-button = Cancelar subscrição
