@@ -479,7 +479,9 @@ a.button {
 }
 
 a.button {
-  line-height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 button:hover,
@@ -724,11 +726,6 @@ header a h1 {
 }
 
 /* main banner content  */
-
-main .section-wrapper {
-  /* padding-top: calc(var(--columnSpacing) / 2);
-  padding-bottom: calc(var(--columnSpacing) / 2); */
-}
 
 main .half {
   flex-direction: column;
