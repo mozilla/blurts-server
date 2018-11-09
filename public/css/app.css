@@ -468,7 +468,7 @@ a.button {
   line-height: 1.2;
   min-height: 55px;
   min-width: 150px;
-  padding: 10px 5px;
+  padding: 10px;
   -webkit-appearance: none;
   border: none;
   border-radius: var(--roundedCorners);
