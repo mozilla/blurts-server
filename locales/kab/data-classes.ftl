@@ -15,6 +15,7 @@ browsing-histories = Amazray n tunigin
 buying-preferences = Ismenyifen n tiɣin
 chat-logs = Iɣmisen n usqerdec
 credit-cards = Tikarḍiwin n usmad
+dates-of-birth = Izmaz n tlalit
 device-information = Talɣut n yibenk
 names = Ismawen
 passwords = Awalen uffiren
