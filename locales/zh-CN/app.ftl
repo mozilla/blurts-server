@@ -70,10 +70,10 @@ landing-headline = 您获得安全，不受黑客影响的权利，从这里开�
 landing-blurb =
     { -product-name-nowrap } 为您提供工具来确保个人信息的安全。
     看看黑客们已经知道您的哪些信息，以及该如何抢先一步，确保安全。
-scan-label = 看看您是否遭受到密码泄露事件的影响。
+scan-label = 看看您是否遭受到数据外泄事件的影响。
 scan-placeholder = 输入电子邮件地址
 scan-privacy = 我们不会存储您的电子邮件地址。
-scan-submit = 搜索您的电子邮件
+scan-submit = 搜索您的电子邮件地址
 scan-another-email = 扫描其他电子邮件地址
 scan-featuredbreach-label = 了解您的<span class="bold"> { $featuredBreach } </span>账户是否遭到侵害。
 scan-error = 须为有效的电子邮件地址。
