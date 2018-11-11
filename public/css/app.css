@@ -713,8 +713,6 @@ header a h1 {
   font-size: calc(23px + 0.6vw);
 }
 
-
-
 .firefox-logo {
   background: url("/img/gradient-sprites.png") -331px 0;
   min-width: 55px;
@@ -735,7 +733,7 @@ header a h1 {
   background-size: cover;
 }
 
-/* main banner content  */ 
+/* main banner content  */
 
 main .half {
   flex-direction: column;
