@@ -67,12 +67,12 @@ pwt-headline-6 = Přihlásit se k odběru oznámení ze služby { -product-name-
 pwt-summary-6 = Počet úniků dat z webových stránek stoupá. Kdykoliv je nový únik přidán do databáze, { -product-name-nowrap } vám pošle upozornění, abyste mohli co nejrychleji zareagovat a ochránit svůj účet.
 landing-headline = Každý má právo na bezpečí před hackery.
 landing-blurb =
-    { -product-name-nowrap } je zbraní pro ochranu vašich osobních dat v bezpečí.
-    Podívejte se, co už hackeři o vás vědí, a jak zůstat krok před nimi.
-scan-label = Podívejte se, jestli byly vaše účty součástí nějakého úniku dat.
+    { -product-name-nowrap } vás vybaví nástroji na uchování vašich osobních údajů v bezpečí.
+    Odhalte, co už o vás hackeři vědí, a zjistěte, jak zůstat krok před nimi.
+scan-label = Podívejte se, jestli nebyly vaše účty součástí nějakého úniku dat.
 scan-placeholder = Zadejte e-mailovou adresu
-scan-privacy = Zadanou e-mailovou adresu nebudeme nikde ukládat.
-scan-submit = Vyhledejte svou e-mailovou adresu
+scan-privacy = Zadanou e-mailovou adresu si nebudeme nikam ukládat.
+scan-submit = Vyhledat e-mailovou adresu
 scan-another-email = Vyhledat další e-mailovou adresu
 scan-featuredbreach-label = Zjistěte, jestli byl váš účet z <span class="bold">{ $featuredBreach }</span> kompromitován.
 scan-error = Zadaná e-mailová adresa není platná.
@@ -85,9 +85,9 @@ download-firefox-bar-link = Stáhněte si { -brand-name }
 download-firefox-banner-blurb = Převezměte kontrolu nad svým prohlížečem
 download-firefox-banner-button = Stáhnout { -brand-name }
 signup-modal-headline = Přihlášení ke službě { -product-name-nowrap }
-signup-modal-blurb = Přihlaste se k zaslání kompletního hlášení, upozornění na nové úniky a dobrých tipů pro { -product-name-nowrap }.
+signup-modal-blurb = Přihlaste se k zaslání kompletního hlášení, upozornění na nové úniky a bezpečnostních tipů od služby { -product-name-nowrap }.
 signup-modal-close = Zavřít
-get-your-report = Získejte hlášení o svém účtu
+get-your-report = Dostávejte hlášení o svém účtu
 signup-modal-verify-headline = Potvrďte své přihlášení k odběru
 signup-modal-verify-blurb = Poslali jsme potvrzovací e-mail na <span id="submitted-email" class="medium"></span>.
 signup-modal-verify-expiration = Platnost odkazu vyprší za 24 hodin.
