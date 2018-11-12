@@ -43,7 +43,7 @@ pwt-section-headline = Daha Güçlü Parolalar = Daha İyi Koruma
 pwt-section-subhead = Parolalarınız ne kadar güvendeyse kişisel bilgileriniz de o kadar güvendedir.
 pwt-section-blurb =
     Parolalarınız yalnızca hesaplarınızı korumakla kalmaz, hesaplarınıza kayıtlı tüm kişisel bilgilerinizi de korur.
-    Hacker’lar, her yerde aynı parolayı kullanmak veya sık kullanılan parolaları kullanmak (p@r0la) gibi kötü alışkanlıklardan faydalanır. Böylece bir hesabı ele geçirdiklten sonra diğer hesapları da ele geçirebilirler. Hesaplarınızı daha iyi korumanın yollarını aşağıda anlatıyoruz.
+    Hacker’lar, her yerde aynı parolayı kullanmak veya sık kullanılan parolaları kullanmak (p@r0la) gibi kötü alışkanlıklardan faydalanır. Böylece bir hesabı ele geçirdikten sonra diğer hesapları da ele geçirebilirler. Hesaplarınızı daha iyi korumanın yollarını aşağıda anlatıyoruz.
 pwt-headline-1 = Her hesap için farklı bir parola kullanın
 pwt-summary-1 =
     Her yerde aynı parolayı kullanırsanız kimlik hırsızlarına kapıyı açık bırakmış olursunuz.
@@ -75,7 +75,7 @@ landing-blurb =
 scan-label = Veri ihlallerine karışıp karışmadığınız görün.
 scan-placeholder = E-posta adresinizi yazın
 scan-privacy = E-postanız kaydedilmeyecektir.
-scan-submit = E-postanızı arayın
+scan-submit = E-postamı ara
 scan-another-email = Başka bir e-posta adresini tara
 scan-featuredbreach-label = <span class="bold"> { $featuredBreach } </span> hesabınız ele geçirilmiş olabilir mi? Hemen öğrenin.
 scan-error = Geçerli bir e-posta adresi olmalı.
@@ -99,7 +99,7 @@ signup-modal-verify-resend = Gelen kutusunda da spam klasöründe de yok mu? Yen
 signup-modal-sent = Gönderildi!
 signup-with-fxa = { -brand-name } Hesabı ile kaydolun
 form-signup-placeholder = E-posta adresinizi yazın
-form-signup-checkbox = { -brand-Mozilla } ve { -brand-name } ile ilgili güncel haberleri alın.
+form-signup-checkbox = { -brand-Mozilla } ve { -brand-name } ile ilgili güncel haberleri de almak istiyorum.
 sign-up = Kaydol
 form-signup-error = Geçerli bir e-posta adresi olmalı
 no-breaches-headline = Şimdilik her şey yolunda.
