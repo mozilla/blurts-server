@@ -2,10 +2,22 @@
 <main class="landing-content">
   <section class="section-wrapper">
     <div class="half">
-      <h2 data-location="landing-page" class="section-headline">{{{fluentFormat req.supportedLocales "landing-headline"}}}</h2>
+      <h2 data-location="landing-page" class="section-headline">
+        {{#if featuredBreach }}
+          {{{fluentFormat req.supportedLocales "scan-featuredbreach-label" featuredBreach=featuredBreach.Title}}}
+        {{else}}
+          {{{fluentFormat req.supportedLocales "landing-headline"}}}
+        {{/if}}
+      </h2>
       {{#if featuredBreach }}
-        <span data-location="featured-breach" class="demi form-desc">{{{fluentFormat req.supportedLocales "scan-featuredbreach-label" featuredBreach=featuredBreach.Title}}}</span>
-        {{> scan_form}}
+
+        {{#if breachIsSensitive}}
+          {{> sign_up_button}}
+          <span>Breach contains sensitive information. Email verification required.</span>
+        {{else}}
+          {{> scan_form}}
+        {{/if}}
+
       {{else}}
         <p class="landing-blurb">
           {{{fluentFormat req.supportedLocales "landing-blurb"}}}
