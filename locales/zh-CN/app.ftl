@@ -66,7 +66,7 @@ pwt-summary-5 =
     即使有人拿到了您的密码，他们也无法登录。
 pwt-headline-6 = 订阅 { -product-name-nowrap } 警报
 pwt-summary-6 = 网站数据外泄事件越来越多，当有新的泄露事件加入到我们的数据库后，{ -product-name-nowrap } 就会发送警报给您，这样您就可以快速采取措施，保​​护自己的账号。
-landing-headline = 您获得安全，不受黑客影响的权利，从这里开始。
+landing-headline = 您获得安全，免受黑客影响的权利，从这里开始。
 landing-blurb =
     { -product-name-nowrap } 为您提供工具来确保个人信息的安全。
     看看黑客们已经知道您的哪些信息，以及该如何抢先一步，确保安全。
