@@ -38,7 +38,7 @@ body.email-locale-testing .section-wrapper {
   box-shadow: 2px 2px 5px rgba(119, 136, 153, 0.361);
 }
 
-.email-test-wrapper .firefox-logo,
+.email-test-wrapper .firefox-monitor-logo,
 .email-test-wrapper h1 {
   display: inline-block;
 }
@@ -70,7 +70,7 @@ body.email-locale-testing .section-wrapper {
   margin: 10px 0;
 }
 
-.email-test-wrapper .firefox-logo {
+.email-test-wrapper .firefox-monitor-logo {
   max-width: auto;
   width: auto;
   height: 70px;
@@ -117,7 +117,7 @@ td.logomark-wrapper {
   width: 70px;
 }
 
-td h1.firefox-logotype {
+td h1.firefox-monitor-logotype {
   font-size: 2rem;
   font-weight: 400 !important;
   color: rgb(255, 255, 255);
@@ -168,7 +168,7 @@ table.table-button,
 }
 
 body.email-locale-testing,
-td h1.firefox-logotype span,
+td h1.firefox-monitor-logotype span,
 .email-test-wrapper,
 .email-locale-testing nav a,
 p.body-copy.medium span,
