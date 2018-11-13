@@ -47,6 +47,7 @@
         </div>
         <ul class="third">
           <li>{{fluentFormat req.supportedLocales "layout-support" }}</li>
+          <li><a {{> analytics/link_event eventLabel="About Firefox alerts"}} href="https://blog.mozilla.org/security/2018/11/12/when-does-firefox-alert-for-breached-sites" target="_blank" rel="noopener">{{{fluentFormat req.supportedLocales "about-firefox-alerts"}}}</a></li>
           <li><a {{> analytics/link_event eventLabel="Give Feedback"}} href="https://qsurvey.mozilla.com/s3/Firefox-Monitor-Feedback" target="_blank" rel="noopener">{{{fluentFormat req.supportedLocales "give-feedback"}}}</a></li>
           <li><a {{> analytics/link_event eventLabel="Terms & Privacy"}} href="https://www.mozilla.org/privacy/firefox-monitor/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">{{{fluentFormat req.supportedLocales "terms-and-privacy"}}}</a></li>
           <li><a {{> analytics/link_event eventLabel="GitHub"}} href="https://github.com/mozilla/blurts-server/" target="_blank" rel="noopener noreferrer">{{> sprite symID="GitHub"}}</a></li>
