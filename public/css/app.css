@@ -705,6 +705,10 @@ header.section-wrapper {
   max-height: 150px;
 }
 
+header .half:first-of-type a:hover {
+  opacity: 1;
+}
+
 header .half:last-of-type {
   justify-content: flex-end;
 }
