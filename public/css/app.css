@@ -705,6 +705,10 @@ header.section-wrapper {
   max-height: 150px;
 }
 
+header .half:first-of-type a:hover {
+  opacity: 1;
+}
+
 header .half:last-of-type {
   justify-content: flex-end;
 }
@@ -714,21 +718,26 @@ header a h1 {
 }
 
 .firefox-logo {
-  margin-right: calc(var(--gap) / 2);
   background: url("/img/gradient-sprites.png") -331px 0;
-  background-repeat: no-repeat;
-  background-size: cover;
   min-width: 55px;
   width: 55px;
   height: 55px;
 }
 
-/* main banner content  */
-
-main .section-wrapper {
-  /* padding-top: calc(var(--columnSpacing) / 2);
-  padding-bottom: calc(var(--columnSpacing) / 2); */
+.firefox-logo.firefox-monitor {
+  background: url("/img/gradient-sprites.png") -422px 0;
+  min-width: 60px;
+  height: 60px;
 }
+
+.firefox-logo,
+.firefox-logo.firefox-monitor {
+  margin-right: calc(var(--gap) / 2);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* main banner content  */
 
 main .half {
   flex-direction: column;
