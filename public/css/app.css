@@ -199,7 +199,8 @@ footer img {
 .fourth,
 .third,
 .two-thirds,
-.half {
+.half,
+.three-fourths {
   margin: calc(var(--columnSpacing) / 2);
 }
 
