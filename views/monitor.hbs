@@ -1,7 +1,7 @@
 {{!< default }}
 <main class="landing-content">
   <section class="section-wrapper">
-    <div class="half">
+    <div class="half {{#if featuredBreach}} featured {{/if}}">
       <h2 data-location="landing-page" class="section-headline">
         {{#if featuredBreach }}
           {{{fluentFormat req.supportedLocales "scan-featuredbreach-label" featuredBreach=featuredBreach.Title}}}
@@ -13,7 +13,7 @@
 
         {{#if breachIsSensitive}}
           {{> sign_up_button}}
-          <span>Breach contains sensitive information. Email verification required.</span>
+          <span class="sensitive-breach-email-required">{{fluentFormat req.supportedLocales "sensitive-breach-email-required"}}</span>
         {{else}}
           {{> scan_form}}
         {{/if}}

@@ -175,6 +175,10 @@ footer img {
   flex: 1 1 calc(25% - var(--columnSpacing));
 }
 
+.three-fourths {
+  flex: 1 1 calc(75% - var(--columnSpacing));
+}
+
 .third {
   flex: 1 1 calc(33.3% - var(--columnSpacing));
   min-width: 200px;
@@ -750,8 +754,13 @@ main h2.section-headline span.bold {
   font-weight: 400;
 }
 
-main.landing-content .half:first-of-type .sign-up-button {
-  margin: var(--gap) 0 var(--gap) 0;
+main.landing-content .half.featured .sign-up-button,
+main.landing-content .half.featured form {
+  margin: var(--gap) 0 0 0;
+}
+
+main .sensitive-breach-email-required {
+  margin-top: calc(var(--gap) / 2);
 }
 
 main .section-headline {
