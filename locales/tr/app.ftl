@@ -12,6 +12,8 @@
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Destek
+# Link that takes the user to a blog post on blog.mozilla.org about the alerts
+about-firefox-alerts = Firefox uyarıları hakkında
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Görüş bildir
 terms-and-privacy = Şartlar ve gizlilik
