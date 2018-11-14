@@ -18,6 +18,9 @@ about-firefox-alerts = Chi rij Retal taq Ruk'ayewal Firefox
 give-feedback = Titaq Na'oj
 terms-and-privacy = Taq Ojqanem chuqa' Ichinanem
 error-not-subscribed = Man rutz'ib'an ta rub'i' re rochochib'al taqoya'l re' { -product-name }.
+error-hibp-throttled = K'ïy taq rokem ri { -brand-HIBP }.
+error-hibp-connect = Xsach toq nok pa { -brand-HIBP }.
+error-hibp-load-breaches = Man xesamajib'ëx ta ri taq mak.
 
 ## Password Tips
 
