@@ -14,5 +14,6 @@ report-headline =
         [one] A fiókja { $breachCount } betörésnél jelent meg.
        *[other] A fiókja { $breachCount } betörésnél jelent meg.
     }
+report-pwt-headline-4 = Használjon jelszókezelőt
 # A link to legal information about mozilla products.
 legal = Jogi információk
