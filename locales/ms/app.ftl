@@ -86,7 +86,7 @@ signup-banner-headline = { -product-name-nowrap } mengesan ancaman terhadap akau
 signup-banner-blurb =
     Laporan terperinci { -product-name-nowrap } memaparkan samada maklumat akaun dalam talian anda telah terdedah atau dicuri.
     Kami juga akan memaklumkan samada akaun anda ada dalam laman web pelanggaran keselamatan.
-download-firefox-bar-blurb = { -product-name-nowrap } dibawa kepada anda oleh <span class="nowrap"> { -brand-name } </ span>.
+download-firefox-bar-blurb = { -product-name-nowrap } dibawa kepada anda oleh <span class="nowrap"> { -brand-name }</span>.
 download-firefox-bar-link = Muat turun { -brand-name } sekarang
 download-firefox-banner-blurb = Kuasai pelayar anda
 download-firefox-banner-button = Muat turun { -brand-name }
