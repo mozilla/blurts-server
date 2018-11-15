@@ -12,6 +12,8 @@
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Tallelt
+# Link that takes the user to a blog post on blog.mozilla.org about the alerts
+about-firefox-alerts = Ɣef ilɣa n Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Mudd-d tikti
 terms-and-privacy = Tiwtilin akked tbaḍnit
@@ -65,6 +67,7 @@ scan-another-email = Sleḍ tansa-nniḍen imayl
 scan-featuredbreach-label = Wali ma yella amiḍan-ik <span class="bold">{ $featuredBreach }</span> yettwaker.
 scan-error = Yessefk ad tili d tansa tameɣtut.
 signup-banner-headline = { -product-name-nowrap } yettaf-d uguren ɣef yimiḍanen-ik srid.
+download-firefox-bar-blurb = { -product-name-nowrap } Iwwi-yak-t-id <span class="nowrap">amaynut { -brand-name }</span>.
 download-firefox-bar-link = Sider { -brand-name } tura
 download-firefox-banner-blurb = Ṭṭef iminig-ik gar ifassen-ik
 download-firefox-banner-button = Sider { -brand-name }
@@ -95,6 +98,7 @@ compromised-accounts = Imiḍanene yettwakren:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Isefka yettwakren:
 confirmed = Yentem!<br />Tettwajerdeḍ!
+unsub-headline = Ffeɣ seg ujerred si { -product-name-nowrap }
 unsub-button = Ffeɣ seg ujerred
 unsub-survey-headline = Ur tezgiḍ tettwajerrdeḍ.
 unsub-reason-3 = Ur walaɣ ara ameẓlu ilaq
