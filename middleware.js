@@ -25,6 +25,7 @@ function addRequestToResponse (req, res, next) {
 
 // picks available language by Accept-Language and assigns to request
 function pickLanguage (req, res, next) {
+  res.vary("Accept-Language");
   const requestedLanguage = acceptedLanguages(req.headers["accept-language"]);
   const supportedLocales = negotiateLanguages(
     requestedLanguage,
