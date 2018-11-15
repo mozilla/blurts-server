@@ -94,7 +94,7 @@ signup-modal-blurb = Eksiksiz raporunuz, yeni ihlal uyarıları ve güvenlikle i
 signup-modal-close = Kapat
 get-your-report = Raporunuzu alın
 signup-modal-verify-headline = Aboneliğinizi doğrulayın
-signup-modal-verify-blurb = <span id="submitted-email" class="medium"> adresine bir doğrulama bağlantısı gönderdik.
+signup-modal-verify-blurb = <span id="submitted-email" class="medium"></span> adresine bir doğrulama bağlantısı gönderdik.
 signup-modal-verify-expiration = Bu bağlantı 24 saatten sonra kullanılamaz.
 signup-modal-verify-resend = Gelen kutusunda da spam klasöründe de yok mu? Yeniden gönder.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
