@@ -84,7 +84,7 @@ scan-featuredbreach-label = Descubra se a sua conta <span class="bold"> { $featu
 scan-error = Tem de ser um email válido.
 signup-banner-headline = O { -product-name-nowrap } deteta ameaças contra as suas contas online.
 signup-banner-blurb =
-    O seu relatório detalhado do { -product-name-nowrap } mostra se as informação das suas contas online foi vazada ou furtada.
+    O seu relatório detalhado do { -product-name-nowrap } mostra se a informação das suas contas online foi vazada ou furtada.
     Também alertaremos se as suas contas aparecerem em novas brechas de websites.
 download-firefox-bar-blurb = O { -product-name-nowrap } é trazido a si pelo <span class="nowrap">todo novo { -brand-name }</span>.
 download-firefox-bar-link = Transferir o { -brand-name } agora
@@ -102,7 +102,7 @@ signup-modal-verify-resend = Não está na caixa de entrada ou pasta de lixo? Re
 signup-modal-sent = Enviado!
 signup-with-fxa = Registe-se com uma Conta { -brand-name }
 form-signup-placeholder = Introduzir email
-form-signup-checkbox = Obtenha as últimas da { -brand-Mozilla } e do { -brand-name }.
+form-signup-checkbox = Obter as últimas da { -brand-Mozilla } e do { -brand-name }.
 sign-up = Registar
 form-signup-error = Tem de ser um email válido
 no-breaches-headline = Até agora, tudo bem.
