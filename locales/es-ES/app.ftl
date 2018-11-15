@@ -81,7 +81,7 @@ signup-banner-headline = { -product-name-nowrap } detecta amenazas a tus cuentas
 signup-banner-blurb =
     Tu informe detallado de { -product-name-nowrap } muestra si la información de tus cuentas en línea ha sido filtrada o robada.
     También te avisaremos si tus cuentas aparecen en nuevas filtraciones de sitios web.
-download-firefox-bar-blurb = { -product-name-nowrap } está disponible gracias al <span class = "nowrap">totalmente nuevo { -brand-name } </span>.
+download-firefox-bar-blurb = { -product-name-nowrap } está disponible gracias al <span class="nowrap">totalmente nuevo { -brand-name } </span>.
 download-firefox-bar-link = Descargar { -brand-name } ahora
 download-firefox-banner-blurb = Toma el control de tu navegador
 download-firefox-banner-button = Descargar { -brand-name }
