@@ -112,6 +112,7 @@ featured-breach-results =
         [one] A fiókja szerepel a(z) <span class="bold">{ $featuredBreach }</span> betörésben, és egy másik betörésben is.
        *[other] A fiókja szerepel a(z) <span class="bold">{ $featuredBreach }</span> betörésben, de más ismert { $breachCount } betörésekben is.
     }
+show-more-breaches = Több megjelenítése
 unsub-button = Leiratkozás
 unsub-survey-headline = Ön már nincs feliratkozva.
 unsub-survey-form-label = Miért iratkozik le a { -product-name-nowrap } figyelmeztetésekről?

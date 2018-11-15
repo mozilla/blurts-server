@@ -12,6 +12,8 @@
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Assistance
+# Link that takes the user to a blog post on blog.mozilla.org about the alerts
+about-firefox-alerts = À propos des alertes Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Donner votre avis
 terms-and-privacy = Confidentialité et conditions d’utilisation
@@ -54,6 +56,7 @@ pwt-headline-5 = Ajoutez une sécurité supplémentaire avec l’authentificatio
 pwt-summary-5 = L’authentification à deux facteurs (2FA) demande une information supplémentaire (un code à usage unique envoyé par SMS par exemple) pour se connecter à votre compte. Même si quelqu’un connaît votre mot de passe, il ne pourra pas se connecter.
 pwt-headline-6 = Inscrivez-vous pour recevoir les alertes { -product-name-nowrap }
 pwt-summary-6 = Les fuites de données de sites web sont à la hausse. Dès qu’une nouvelle fuite est ajoutée à notre base de données, { -product-name-nowrap } vous envoie une alerte afin que vous puissiez agir et protéger votre compte.
+landing-headline = C’est maintenant que commence votre droit d’être à l’abri du piratage informatique.
 landing-blurb = { -product-name-nowrap } met à votre disposition des outils pour conserver vos informations personnelles en toute sécurité. Découvrez quelles sont les données personnelles accessibles aux cybercriminels et apprenez à vous protéger.
 scan-label = Voyez si vous avez été impliqué dans une fuite de données.
 scan-placeholder = Saisissez votre adresse électronique
