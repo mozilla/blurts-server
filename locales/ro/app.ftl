@@ -33,6 +33,10 @@ signup-modal-sent = Trimis!
 form-signup-placeholder = Introdu e-mailul
 sign-up = Înregistrează-te
 show-more-breaches = Afișează mai multe
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Conturi compromise:
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Date compromise:
 unsub-button = Dezabonează-te
 unsub-survey-headline = Nu mai ești abonat.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
