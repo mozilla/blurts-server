@@ -117,7 +117,7 @@ signup-modal-close = Close
 
 get-your-report = Get Your Report
 
-signup-modal-verify-headline = Verify Your subscription
+signup-modal-verify-headline = Verify Your Subscription
 signup-modal-verify-blurb = We sent a verification link to <span id="submitted-email" class="medium"></span>.
 signup-modal-verify-expiration = This link expires in 24 hours.
 signup-modal-verify-resend = Not in inbox or spam folder? Resend.
