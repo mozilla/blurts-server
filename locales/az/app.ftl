@@ -12,6 +12,8 @@
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Dəstək
+# Link that takes the user to a blog post on blog.mozilla.org about the alerts
+about-firefox-alerts = Firefox xəbərdarlıqları haqqında
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Əks-əlaqə ver
 terms-and-privacy = Şərtlər və Məxfilik
@@ -63,12 +65,15 @@ pwt-summary-5 =
     İki mərhələli daxil olma (2FA) hesabınıza daxil olmaq üçün əlavə məlumat (mesaj olaraq göndəriləcək tək səfərlik kod kimi) soruşur.
     Birisi parolunuzu əldə etsə belə hesabınıza daxil ola bilməyəcək.
 pwt-headline-6 = { -product-name-nowrap } xəbərdarlıqları üçün qeyd olun
+landing-headline = Xakerlərdən qorunma hüququnuz buradan başlayır.
+scan-label = Məlumat oğurluqlarında sizin də hesabınızın olub-olmadığını öyrənin.
 scan-placeholder = E-poçt ünvanınızı daxil edin
 scan-privacy = E-poçtunuz saxlanmayacaq.
 scan-submit = E-poçtunuzu axtarın
 scan-another-email = Digər e-poçt ünvanını yoxla
 scan-featuredbreach-label = <span class="bold"> { $featuredBreach } </span> hesabınızın oğurlanıb-oğurlanmadığını öyrənin.
 scan-error = Doğru e-poçt olmalıdır.
+signup-banner-headline = { -product-name-nowrap } onlayn hesablarınıza qarşı ola biləcək təhlükələri aşkarlayır.
 show-more-breaches = Daha çox göstər
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Oğurlanma tarixi:
