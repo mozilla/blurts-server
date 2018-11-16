@@ -161,7 +161,7 @@ unsub-survey-error = Dewiswch un.
 share = Rhannu
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
 tweet = Trydar
-download-firefox-quantum = Lleytho { -brand-Quantum } i Lawr
+download-firefox-quantum = Llwytho { -brand-Quantum } i Lawr
 download-firefox-mobile = Llwytho { -brand-name } Symudol i Lawr
 # Features here refers to Firefox browser features. 
 features = nodweddion
