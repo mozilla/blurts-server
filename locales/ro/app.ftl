@@ -32,6 +32,7 @@ signup-modal-verify-expiration = Acest link expiră în 24 de ore.
 signup-modal-sent = Trimis!
 form-signup-placeholder = Introdu e-mailul
 sign-up = Înregistrează-te
+no-breaches-headline = Totul este în regulă până în prezent.
 show-more-breaches = Afișează mai multe
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Conturi compromise:
