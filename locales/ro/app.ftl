@@ -8,6 +8,7 @@
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
+-brand-HIBP = Have I Been Pwned
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Suport
@@ -117,6 +118,13 @@ unsub-button = Dezabonează-te
 unsub-survey-headline = Nu mai ești abonat.
 unsub-survey-blurb = Adresa ta de e-mail este dezabonată de la { -product-name-nowrap }. Îți mulțumim pentru folosirea serviciului. Ești dispus(ă) să ne acorzi un minut ca să ne răspunzi la o întrebare despre experiența ta?
 unsub-survey-form-label = De ce te dezabonezi de la alertele { -product-name-nowrap }?
+unsub-reason-1 = Cred că alertele nu fac datele mele mai sigure
+unsub-reason-2 = Primesc prea multe e-mailuri de la { -product-name-nowrap }
+unsub-reason-4 = Am luat deja măsuri pentru a-mi proteja conturile
+unsub-reason-5 = Folosesc un alt serviciu pentru a-mi monitoriza conturile
+unsub-reason-6 = Niciuna dintre cele de mai sus
+unsub-survey-thankyou = Îți mulțumim pentru feedback.
+unsub-survey-error = Te rugăm să selectezi una,
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Distribuie
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
