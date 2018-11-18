@@ -14,7 +14,9 @@ about-firefox-alerts = ការ​ជូន​ដំណឹង​អំពី​
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = ផ្ដល់​មតិ​ត្រឡប់
 terms-and-privacy = លក្ខខណ្ឌ​និង​ភាពឯកជន
+error-hibp-throttled = ការ​តភ្ជាប់​ច្រើន​ពេក​ជា​មួយ { -brand-HIBP } ។
 home-not-found = រក​មិន​ឃើញ​ទំព័រ។
 
 ## Password Tips
 
+scan-placeholder = បញ្ចូល​អាសយដ្ឋាន​អ៊ីម៉ែល
