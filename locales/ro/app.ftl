@@ -16,9 +16,27 @@ about-firefox-alerts = Despre alertele Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Oferă feedback
 terms-and-privacy = Termeni și confidențialitate
+error-not-subscribed = Această adresă de e-mail nu este abonată la { -product-name }.
+error-hibp-throttled = Prea multe conexiuni la { -brand-HIBP }.
+error-hibp-connect = Eroare de conectare la { -brand-HIBP }.
+error-hibp-load-breaches = Nu s-au putut încărca breșele.
+hibp-notify-email-subject = Alertă { -product-name }: Contul tău a fost implicat într-o breșă.
 home-title = { -product-name }
 home-not-found = Pagină negăsită.
 oauth-invalid-session = Sesiune nevalidă
+oauth-confirmed-title = { -product-name } : Abonat
+scan-title = { -product-name } : Rezultatele scanării
+user-add-invalid-email = E-mail nevalid
+user-add-email-verify-subject = Verifică-ți abonamentul la { -product-name }.
+user-add-title = { -product-name } : Confirmă adresa de e-mail
+user-verify-token-error = Este necesar un jeton de verificare.
+user-verify-email-report-subject = Raportul tău { -product-name }
+user-verify-title = { -product-name } : Abonat
+user-unsubscribe-token-error = Este necesar un jeton pentru dezabonare.
+user-unsubscribe-token-email-error = Este necesar un jeton și emailHash pentru dezabonare.
+user-unsubscribe-title = { -product-name } : Dezabonare
+user-unsubscribe-survey-title = { -product-name } : Chestionar în urma dezabonării
+user-unsubscribed-title = { -product-name } : Dezabonat
 
 ## Password Tips
 
