@@ -24,3 +24,13 @@ scan-submit = ស្វែងរក​អ៊ីម៉ែល​របស់​អ
 download-firefox-bar-link = ទាញ​យក { -brand-name } ឥឡូវនេះ
 download-firefox-banner-button = ទាញ​យក { -brand-name }
 signup-modal-headline = ចុះ​ឈ្មោះ​សម្រាប់ { -product-name-nowrap }
+signup-modal-close = បិទ
+get-your-report = ទទួល​បាន​របាយការណ៍​របស់​អ្នក
+signup-modal-verify-expiration = តំណ​នេះ​ផុត​កំណត់​ក្នុង​រយៈ​ពេល 24 ម៉ោង។
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = បាន​ផ្ញើ!
+signup-with-fxa = ចុះ​ឈ្មោះ​ជា​មួយ​គណនី { -brand-name }
+form-signup-placeholder = បញ្ចូល​អ៊ីមែល
+show-more-breaches = បង្ហាញ​បន្ថែម​ទៀត
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = គណនី​ដែល​មាន​ការសម្របសម្រួល៖
