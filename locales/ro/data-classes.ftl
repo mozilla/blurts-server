@@ -1,6 +1,6 @@
 ## Breach Data Classes
 
-account-balances = solduri ale conturilor
+account-balances = sold conturi
 address-book-contacts = contacte din agendă
 age-groups = grupuri de vârstă
 ages = vârste
