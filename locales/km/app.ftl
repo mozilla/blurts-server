@@ -20,3 +20,7 @@ home-not-found = រក​មិន​ឃើញ​ទំព័រ។
 ## Password Tips
 
 scan-placeholder = បញ្ចូល​អាសយដ្ឋាន​អ៊ីម៉ែល
+scan-submit = ស្វែងរក​អ៊ីម៉ែល​របស់​អ្នក
+download-firefox-bar-link = ទាញ​យក { -brand-name } ឥឡូវនេះ
+download-firefox-banner-button = ទាញ​យក { -brand-name }
+signup-modal-headline = ចុះ​ឈ្មោះ​សម្រាប់ { -product-name-nowrap }
