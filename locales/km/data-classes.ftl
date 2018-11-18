@@ -1,12 +1,37 @@
 ## Breach Data Classes
 
+address-book-contacts = សៀវភៅ​អាសយដ្ឋាន​​ទំនាក់ទំនង​​
+age-groups = ក្រុម​អាយុ
+ages = អាយុ
+bank-account-numbers = លេខ​គណនី​ធនាគារ
+chat-logs = កំណត់​ហេតុ​ជជែក
+credit-cards = កាត​ឥណទាន
+email-addresses = អាសយដ្ឋាន​អ៊ីមែល
+email-messages = សារ​អ៊ីម៉ែល
+employers = និយោជក
+genders = ភេទ
+income-levels = កម្រិត​ប្រាក់ចំណូល
+ip-addresses = អាសយដ្ឋាន IP
+job-titles = តួនាទី ៖
+mac-addresses = អាសយដ្ឋាន MAC
+names = ឈ្មោះ
+nationalities = សញ្ជាតិ
 nicknames = ឈ្មោះ​ហៅ​ក្រៅ​
+occupations = មុខរបរ
+passport-numbers = លេខ​លិខិត​ឆ្លងដែន
 password-hints = ព័ត៌មាន​ជំនួយ​ពាក្យ​សម្ងាត់
 passwords = ពាក្យ​សម្ងាត់
 payment-histories = ប្រវត្តិ​នៃ​ការទូទាត់
 payment-methods = វិធីសាស្ត្រ​ទូទាត់
+personal-descriptions = សេចក្ដី​ពិពណ៌នា​ផ្ទាល់ខ្លួន
+personal-health-data = ទិន្នន័យ​សុខភាព​ផ្ទាល់ខ្លួន
+personal-interests = ចំណាប់អារម្មណ៍​ផ្ទាល់ខ្លួន
+phone-numbers = លេខទូរសព្ទ
 photos = រូបថត
+pins = កូដ PIN
 survey-results = លទ្ធផល​ស្ទង់មតិ
 time-zones = តំបន់​ពេលវេលា​
 user-statuses = ស្ថានភាព​អ្នក​ប្រើប្រាស់
+user-website-urls = URL គេហទំព័រ​របស់អ្នកប្រើ
 usernames = ឈ្មោះ​អ្នក​ប្រើ
+years-of-birth = ឆ្នាំ​កំណើត

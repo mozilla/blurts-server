@@ -19,6 +19,7 @@ home-not-found = រក​មិន​ឃើញ​ទំព័រ។
 
 ## Password Tips
 
+pwt-headline-1 = ប្រើ​ពាក្យ​សម្ងាត់​ផ្សេង​គ្នា​សម្រាប់​គណនី​នីមួយៗ
 scan-placeholder = បញ្ចូល​អាសយដ្ឋាន​អ៊ីម៉ែល
 scan-submit = ស្វែងរក​អ៊ីម៉ែល​របស់​អ្នក
 download-firefox-bar-link = ទាញ​យក { -brand-name } ឥឡូវនេះ
@@ -34,3 +35,4 @@ form-signup-placeholder = បញ្ចូល​អ៊ីមែល
 show-more-breaches = បង្ហាញ​បន្ថែម​ទៀត
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = គណនី​ដែល​មាន​ការសម្របសម្រួល៖
+download-firefox-quantum = ទាញ​យក { -brand-Quantum }
