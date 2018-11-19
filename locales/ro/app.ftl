@@ -130,7 +130,7 @@ share = Distribuie
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
 tweet = Trimite tweet
 download-firefox-quantum = Descarcă { -brand-Quantum }
-download-firefox-mobile = Descarcă { -brand-name } pentru mobil
+download-firefox-mobile = Descarcă { -brand-name } pentru dispozitive mobile
 # Features here refers to Firefox browser features. 
 features = Funcționalități
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
