@@ -12,6 +12,8 @@
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = サポート
+# Link that takes the user to a blog post on blog.mozilla.org about the alerts
+about-firefox-alerts = Firefox の通知について
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = フィードバックを提供
 terms-and-privacy = 利用規約と個人情報保護方針

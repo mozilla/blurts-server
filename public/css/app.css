@@ -175,6 +175,10 @@ footer img {
   flex: 1 1 calc(25% - var(--columnSpacing));
 }
 
+.three-fourths {
+  flex: 1 1 calc(75% - var(--columnSpacing));
+}
+
 .third {
   flex: 1 1 calc(33.3% - var(--columnSpacing));
   min-width: 200px;
@@ -195,7 +199,8 @@ footer img {
 .fourth,
 .third,
 .two-thirds,
-.half {
+.half,
+.three-fourths {
   margin: calc(var(--columnSpacing) / 2);
 }
 
@@ -678,6 +683,10 @@ h5,
   font-size: 15px;
 }
 
+.download-firefox-bar p {
+  width: 100%;
+}
+
 .download-firefox-bar .section-wrapper {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -711,6 +720,10 @@ header.section-wrapper {
   max-height: 150px;
 }
 
+header .half:first-of-type a:hover {
+  opacity: 1;
+}
+
 header .half:last-of-type {
   justify-content: flex-end;
 }
@@ -720,16 +733,24 @@ header a h1 {
 }
 
 .firefox-logo {
-  margin-right: calc(var(--gap) / 2);
   background: url("/img/gradient-sprites.png") -331px 0;
-  background-repeat: no-repeat;
-  background-size: cover;
   min-width: 55px;
   width: 55px;
   height: 55px;
 }
 
-/* main banner content  */
+.firefox-logo.firefox-monitor {
+  background: url("/img/gradient-sprites.png") -422px 0;
+  min-width: 60px;
+  height: 60px;
+}
+
+.firefox-logo,
+.firefox-logo.firefox-monitor {
+  margin-right: calc(var(--gap) / 2);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 main .half {
   flex-direction: column;
@@ -749,6 +770,20 @@ main.landing-content .section-wrapper .half:last-of-type {
 main h2.section-headline {
   font-weight: 300;
   font-size: 30px;
+}
+
+/* changing font-weight here to avoid changing another string */
+main h2.section-headline span.bold {
+  font-weight: 400;
+}
+
+main.landing-content .half.featured .sign-up-button,
+main.landing-content .half.featured form {
+  margin: var(--gap) 0 0 0;
+}
+
+main .sensitive-breach-email-required {
+  margin-top: calc(var(--gap) / 2);
 }
 
 main .section-headline {

@@ -12,6 +12,8 @@
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Asistencia
+# Link that takes the user to a blog post on blog.mozilla.org about the alerts
+about-firefox-alerts = Acerca de las alertas de Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Enviar comentario
 terms-and-privacy = Términos y privacidad
@@ -81,7 +83,7 @@ signup-banner-headline = { -product-name-nowrap } detecta amenazas a tus cuentas
 signup-banner-blurb =
     Tu informe detallado de { -product-name-nowrap } muestra si la información de tus cuentas en línea ha sido filtrada o robada.
     También te avisaremos si tus cuentas aparecen en nuevas filtraciones de sitios web.
-download-firefox-bar-blurb = { -product-name-nowrap } está disponible gracias al <span class = "nowrap">totalmente nuevo { -brand-name } </span>.
+download-firefox-bar-blurb = { -product-name-nowrap } está disponible gracias al <span class="nowrap">totalmente nuevo { -brand-name } </span>.
 download-firefox-bar-link = Descargar { -brand-name } ahora
 download-firefox-banner-blurb = Toma el control de tu navegador
 download-firefox-banner-button = Descargar { -brand-name }

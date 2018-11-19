@@ -13,6 +13,8 @@
 layout-Firefox = {-brand-name}
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Support
+# Link that takes the user to a blog post on blog.mozilla.org about the alerts
+about-firefox-alerts = About Firefox Alerts
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Give Feedback
 terms-and-privacy = Terms and Privacy
@@ -96,6 +98,7 @@ scan-privacy = Your email will not be stored.
 scan-submit = Search Your Email
 scan-another-email = Scan Another Email Address
 scan-featuredbreach-label = Find out if your <span class="bold"> { $featuredBreach } </span> account was compromised.
+sensitive-breach-email-required = Breach contains sensitive information. Email verification required.
 scan-error = Must be a valid email.
 
 signup-banner-headline = {-product-name-nowrap} detects threats against your online accounts.
@@ -115,7 +118,7 @@ signup-modal-close = Close
 
 get-your-report = Get Your Report
 
-signup-modal-verify-headline = Verify Your subscription
+signup-modal-verify-headline = Verify Your Subscription
 signup-modal-verify-blurb = We sent a verification link to <span id="submitted-email" class="medium"></span>.
 signup-modal-verify-expiration = This link expires in 24 hours.
 signup-modal-verify-resend = Not in inbox or spam folder? Resend.

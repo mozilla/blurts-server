@@ -12,6 +12,8 @@
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = 用户支持
+# Link that takes the user to a blog post on blog.mozilla.org about the alerts
+about-firefox-alerts = 关于 Firefox 警报
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = 提供反馈
 terms-and-privacy = 使用条款和隐私
@@ -42,7 +44,7 @@ user-unsubscribed-title = { -product-name }：已退订
 pwt-section-headline = 更强的密码 = 更好的保护
 pwt-section-subhead = 您的密码安全才能保证您的私人信息安全。
 pwt-section-blurb =
-    您的密码不只可以保护账号安全，还可以保护账号中的所有个人信息。黑客会因一些不良的使用习惯而得益，例如在每个地方都使用相同的密码，或是使用常见的密码组合（还在使用asdf1234 吗？）。
+    您的密码不只可以保护账号安全，还可以保护账号中的所有个人信息。黑客会因一些不良的使用习惯而得益，例如在每个地方都使用相同的密码，或是使用常见的密码组合（还在使用 asdf1234 吗？）。
     这样的话只要一个账号被黑，他们就可以轻而易举地黑掉您多个账号。以下是能够更加保护您账号的其他方式。
 pwt-headline-1 = 为每个账号使用不同的密码
 pwt-summary-1 =
@@ -66,14 +68,14 @@ pwt-summary-5 =
     即使有人拿到了您的密码，他们也无法登录。
 pwt-headline-6 = 订阅 { -product-name-nowrap } 警报
 pwt-summary-6 = 网站数据外泄事件越来越多，当有新的泄露事件加入到我们的数据库后，{ -product-name-nowrap } 就会发送警报给您，这样您就可以快速采取措施，保​​护自己的账号。
-landing-headline = 您获得安全，不受黑客影响的权利，从这里开始。
+landing-headline = 您获得安全，免受黑客影响的权利，从这里开始。
 landing-blurb =
     { -product-name-nowrap } 为您提供工具来确保个人信息的安全。
     看看黑客们已经知道您的哪些信息，以及该如何抢先一步，确保安全。
-scan-label = 看看您是否遭受到密码泄露事件的影响。
+scan-label = 看看您是否遭受到数据外泄事件的影响。
 scan-placeholder = 输入电子邮件地址
 scan-privacy = 我们不会存储您的电子邮件地址。
-scan-submit = 搜索您的电子邮件
+scan-submit = 搜索您的电子邮件地址
 scan-another-email = 扫描其他电子邮件地址
 scan-featuredbreach-label = 了解您的<span class="bold"> { $featuredBreach } </span>账户是否遭到侵害。
 scan-error = 须为有效的电子邮件地址。
@@ -97,7 +99,7 @@ signup-modal-verify-resend = 不在收件箱和垃圾邮件箱？重新发送。
 signup-modal-sent = 已发送！
 signup-with-fxa = 使用 { -brand-name } 账号订阅
 form-signup-placeholder = 输入电子邮件地址
-form-signup-checkbox = 获取 { -brand-Mozilla } 和 { -brand-name } 的最新信息。
+form-signup-checkbox = 获取 { -brand-Mozilla } 和 { -brand-name } 的最新消息。
 sign-up = 订阅
 form-signup-error = 须为有效的电子邮件地址
 no-breaches-headline = 目前为止还不错。

@@ -12,6 +12,8 @@
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Cefnogaeth
+# Link that takes the user to a blog post on blog.mozilla.org about the alerts
+about-firefox-alerts = Ynghylch rhybuddion Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Rhoi Adborth
 terms-and-privacy = Telerau a Phreifatrwydd
@@ -159,7 +161,7 @@ unsub-survey-error = Dewiswch un.
 share = Rhannu
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
 tweet = Trydar
-download-firefox-quantum = Lleytho { -brand-Quantum } i Lawr
+download-firefox-quantum = Llwytho { -brand-Quantum } i Lawr
 download-firefox-mobile = Llwytho { -brand-name } Symudol i Lawr
 # Features here refers to Firefox browser features. 
 features = nodweddion

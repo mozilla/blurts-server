@@ -12,6 +12,8 @@
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Ayuda
+# Link that takes the user to a blog post on blog.mozilla.org about the alerts
+about-firefox-alerts = Acerca de las alertas de Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Dar opinión
 terms-and-privacy = Términos y privacidad
@@ -90,7 +92,7 @@ no-breaches = Tu dirección de correo electrónico no apareció en nuestro escan
 featured-breach-results =
     { $breachCount ->
         [0] Tu cuenta aparece en la violación <span class="bold"> { $featuredBreach } </span>, pero no aparece en ninguna otra violación de datos conocida.
-        [one] Tu cuenta apareció en la violación de <span class="bold"> así como en otra violación.
+        [one] Tu cuenta apareció en la violación de <span class="bold"> { $featuredBreach } </span> así como en otra violación.
        *[other] Tu cuenta apareció en la violación de <span class="bold"> { $featuredBreach } </span>, así como en otras { $breachCount } violaciones.
     }
 featured-breach-not-compromised =
