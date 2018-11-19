@@ -51,8 +51,8 @@ pwt-summary-2 = Hackerii folosesc mii de parole frecvente când încearcă să o
 pwt-headline-3 = Tratează întrebările de securitate ca și când ar fi parole suplimentare
 pwt-summary-3 = Site-urile web nu verifică dacă răspunsurile sunt exacte, ci dacă se potrivesc de fiecare dată. Creează răspunsuri lungi și aleatorii și păstrează-le undeva în siguranță.
 pwt-headline-4 = Obține ajutor pentru amintirea parolelor
-pwt-summary-4 = Managerii de parole, precum 1Password, LastPass, Dashlane și Bitwarden generează parole unice puternice. Le stochează în siguranță și le completează pe site-uri pentru tine
-pwt-headline-5 = Adaugă un plus de securitate prin autentificarea în doi pași
+pwt-summary-4 = Managerii de parole, precum 1Password, LastPass, Dashlane și Bitwarden generează parole unice puternice, le stochează în siguranță și le completează pe site-uri pentru tine
+pwt-headline-5 = Adaugă un plus de securitate prin autentificarea cu doi factori
 pwt-summary-5 = 2FA necesită o informație suplimentară (cum ar fi coduri de unică folosință trimise prin mesaje text) pentru autentificarea în cont. Chiar dacă altcineva îți cunoaște parola, nu poate intra în cont.
 pwt-headline-6 = Înregistrează-te pentru alerte { -product-name-nowrap }
 pwt-summary-6 = Breșele de date de pe site-urile web sunt din ce în ce mai multe. Imediat ce informarea despre o breșă intră în baza noastră de date, { -product-name-nowrap } îți trimite o alertă — ca să poți lua măsuri pentru a-ți proteja contul.
@@ -68,7 +68,7 @@ scan-error = Trebuie să fie o adresă de e-mail validă.
 signup-banner-headline = { -product-name-nowrap } detectează amenințările la care sunt supuse conturile tale online.
 signup-banner-blurb = Raportul tău { -product-name-nowrap } detaliat indică dacă informațiile din conturile tale online au fost compromise sau furate. Te vom alerta și dacă conturile tale apar în breșe noi de pe site-uri web.
 download-firefox-bar-link = Descarcă { -brand-name } acum
-download-firefox-banner-blurb = Preia controlul browserului tău
+download-firefox-banner-blurb = Preia controlul asupra browserului tău
 download-firefox-banner-button = Descarcă { -brand-name }
 signup-modal-headline = Înregistrează-te pentru { -product-name-nowrap }
 signup-modal-close = Închide
@@ -80,7 +80,7 @@ signup-modal-verify-resend = Nu este nici în căsuța poștală, nici la mesaje
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Trimis!
 signup-with-fxa = Înregistrează-te cu contul { -brand-name }
-form-signup-placeholder = Introdu e-mailul
+form-signup-placeholder = Introdu adresa de e-mail
 form-signup-checkbox = Primește cele mai recente știri despre { -brand-Mozilla } și { -brand-name }.
 sign-up = Înregistrează-te
 form-signup-error = Trebuie să fie o adresă de e-mail validă
@@ -139,4 +139,4 @@ beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 # Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
 copyright-info =
     Porțiuni din acest conținut sunt scrise între &#x24B8; 1998-2018 de colaboratori individuali mozilla.org. <br />
-    Conținut disponibil sub <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">licența Creative Commons</a>.
+    Conținut disponibil sub o <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">licență Creative Commons</a>.

@@ -10,9 +10,9 @@ what-to-do-next = Ce să faci în continuare
 report-headline =
     { $breachCount ->
         [0] Totul este în regulă până în prezent.
-        [one] Contul tău a apărut într-o breșă de date.
-        [few] Contul tău a apărut în { $breachCount } breșe de date.
-       *[other] Contul tău a apărut în { $breachCount } de breșe de date.
+        [one] Contul tău a apărut într-o breșă.
+        [few] Contul tău a apărut în { $breachCount } breșe.
+       *[other] Contul tău a apărut în { $breachCount } de breșe.
     }
 report-subhead-found-breaches = Iată raportul complet Firefox Monitor, care include toate breșele cunoscute de date care conțin această adresă de e-mail.
 report-pwt-headline-2 = Creează parole puternice și unice
