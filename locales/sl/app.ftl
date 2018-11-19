@@ -12,12 +12,16 @@
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Podpora
+# Link that takes the user to a blog post on blog.mozilla.org about the alerts
+about-firefox-alerts = O opozorilih Firefoxa
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Sporočite nam svoje mnenje
 terms-and-privacy = Pogoji in zasebnost
 error-not-subscribed = Ta e-poštni naslov ni naročen na { -product-name }.
 error-hibp-throttled = Preveč povezav na { -brand-HIBP }.
 error-hibp-connect = Napaka pri povezovanju na { -brand-HIBP }.
+error-hibp-load-breaches = Ni bilo mogoče naložiti podatkov o krajah.
+hibp-notify-email-subject = Opozorilo { -product-name }: vaš račun je bil vpleten v krajo podatkov
 home-title = { -product-name }
 home-not-found = Strani ni mogoče najti.
 oauth-invalid-session = Neveljavna seja
@@ -30,7 +34,9 @@ user-verify-token-error = Zahtevan je potrditveni žeton.
 user-verify-email-report-subject = Vaše poročilo { -product-name }
 user-verify-title = { -product-name }: Naročeno
 user-unsubscribe-token-error = Za odjavo potrebujete žeton.
+user-unsubscribe-token-email-error = Za odjavo potrebujete žeton in emailHash.
 user-unsubscribe-title = { -product-name }: Odjava
+user-unsubscribe-survey-title = { -product-name }: Anketa o odjavi naročnine
 user-unsubscribed-title = { -product-name }: Odjavljeno
 
 ## Password Tips
@@ -49,11 +55,15 @@ pwt-headline-3 = Uporabljajte varnostna vprašanja kot dodatna gesla
 pwt-summary-3 =
     Spletne strani ne preverjajo, ali so vaši odgovori točni, le da se vsakič ujemajo.
     Ustvarite dolge, naključne odgovore in jih shranite na varnem mestu.
+pwt-headline-4 = Pomagajte si pri shranjevanju gesel
 pwt-summary-4 =
     Upravitelji gesel kot so 1Password, LastPass, Dashlane in Bitwarden ustvarjajo močna, edinstvena gesla. 
     Gesla tudi varno shranjujejo in jih zapolnjujejo na spletnih straneh.
 pwt-headline-5 = Izboljšajte varnost s preverjanjem v dveh korakih
 pwt-headline-6 = Naročite se na opozorila { -product-name-nowrap }ja
+pwt-summary-6 =
+    Kraje podatkov spletnih strani so v porastu. Takoj ko v naši zbirki podatkov objavimo nove kraje podatkov, 
+    vam { -product-name-nowrap } pošlje opozorilo, da lahko hitro ukrepate in zaščitite svoj račun.
 landing-headline = Vaša pravica do varnega zavetja pred hekerji se začne tukaj.
 landing-blurb =
     { -product-name-nowrap } vas opremi z orodji, ki vaše osebne podatke ohranjajo varne.
@@ -63,8 +73,13 @@ scan-placeholder = Vnesite e-poštni naslov
 scan-privacy = Vaš e-poštni naslov ne bo shranjen.
 scan-submit = Poiščite vaš e-poštni naslov
 scan-another-email = Preverite drug e-poštni naslov
+scan-featuredbreach-label = Preverite, ali je bil vaš račun <span class="bold">{ $featuredBreach }</span> ogrožen.
 scan-error = E-poštni naslov mora biti veljaven.
 signup-banner-headline = { -product-name-nowrap } zazna grožnje vašim spletnim računom.
+signup-banner-blurb =
+    Vaše podrobno poročilo { -product-name-nowrap } prikazuje, ali so bili podatki iz vaših spletnih računov izpostavljeni ali ukradeni.
+    Prav tako vas bomo opozorili, če se vaši računi pojavijo v novih krajah podatkov spletnih strani.
+download-firefox-bar-blurb = { -product-name-nowrap } vam omogoča <span class="nowrap">prenovljen { -brand-name }</span>.
 download-firefox-bar-link = Prenesite { -brand-name } zdaj
 download-firefox-banner-blurb = Prevzemite nadzor nad svojim brskalnikom
 download-firefox-banner-button = Prenesite { -brand-name }
@@ -80,10 +95,15 @@ signup-modal-verify-resend = Ni med prejeto ali vsiljeno pošto? Pošlji znova.
 signup-modal-sent = Poslano!
 signup-with-fxa = Prijavite se s { -brand-name } Računom
 form-signup-placeholder = Vnesite e-poštni naslov
+form-signup-checkbox = Prejemajte najnovejše novice { -brand-Mozilla } { -brand-name }.
 sign-up = Prijava
 form-signup-error = E-poštni naslov mora biti veljaven
 no-breaches-headline = Zaenkrat vse lepo in prav.
 found-breaches-headline = Vaši podatki so bili del kraje podatkov.
+no-breaches =
+    Vaš e-poštni naslov ni bil prikazan v našem osnovnem pregledu.
+    To je dobra novica, vendar pa lahko do kraje podatkov pride kadarkoli, zato bodite pozorni.
+    Prijavite se na { -product-name-nowrap } za celotno poročilo, opozorila ob novih krajah podatkov in nasvete, kako zaščititi vaša gesla.
 show-more-breaches = Prikaži več
 what-to-do-headline = Kaj storiti, ko pride do kraje vaših podatkov
 what-to-do-subhead-1 = Spremenite gesla, tudi za starejše račune
