@@ -65,6 +65,9 @@ const eventList = {
 
 function ga_getLocation() {
   if (document.querySelector(".landing-content")) {
+    if (document.getElementById("sensitive-featured-breach")) {
+      return "Sensitive Featured Breach Page";
+    }
     if (document.getElementById("featured-breach")) {
       return "Featured Breach Page";
     }

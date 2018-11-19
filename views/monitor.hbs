@@ -13,7 +13,7 @@
 
         {{#if breachIsSensitive}}
           {{> sign_up_button}}
-          <span class="sensitive-breach-email-required">{{fluentFormat req.supportedLocales "sensitive-breach-email-required"}}</span>
+          <span id="sensitive-featured-breach" class="sensitive-breach-email-required">{{fluentFormat req.supportedLocales "sensitive-breach-email-required"}}</span>
         {{else}}
           {{> scan_form}}
         {{/if}}
