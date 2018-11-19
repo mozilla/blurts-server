@@ -61,7 +61,7 @@ pwt-summary-4 =
 pwt-headline-5 = Kapjon nagyobb biztonságot kétfaktoros hitelesítéssel
 pwt-summary-5 =
     A 2FA további információkat követel meg (például egyszer használatos kódot küld SMS-ben), hogy bejelentkezzen a fiókjába.
-    Még akkor is, ha valaki rendelkezik a jelszavával, nem tud belépni.
+    Ha valaki rendelkezik is a jelszavával, még akkor sem tud belépni.
 pwt-headline-6 = Iratkozzon fel a { -product-name-nowrap } figyelmeztetésekre
 pwt-summary-6 =
     A weboldalak betöréseinek száma növekszik. Amint egy új betörés kerül be az adatbázisunkba,
@@ -76,6 +76,7 @@ scan-privacy = Az e-mail címe nem lesz tárolva.
 scan-submit = Az e-mail címe keresése
 scan-another-email = Másik e-mail cím szkennelése
 scan-featuredbreach-label = Tudja meg, hogy veszélybe került-e a(z) <span class="bold"> { $featuredBreach } </span> fiókja.
+sensitive-breach-email-required = A betörés érzékeny információkat érint. E-mailes megerősítés szükséges.
 scan-error = Érvényes e-mail címnek kell lennie.
 signup-banner-headline = A { -product-name-nowrap } észleli az online fiókjaival szembeni fenyegetéseket.
 signup-banner-blurb =
@@ -112,7 +113,27 @@ featured-breach-results =
         [one] A fiókja szerepel a(z) <span class="bold">{ $featuredBreach }</span> betörésben, és egy másik betörésben is.
        *[other] A fiókja szerepel a(z) <span class="bold">{ $featuredBreach }</span> betörésben, de más ismert { $breachCount } betörésekben is.
     }
+featured-breach-not-compromised =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] A fiókja nem jelent meg a(z) <span class="bold">{ $featuredBreach }</span> betörésben, de egy másikban igen.
+       *[other] A fiókja nem jelent meg a(z) <span class="bold">{ $featuredBreach }</span> betörésben, de { $breachCount } másikban igen.
+    }
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] A fiókja { $breachCount } betörésben jelent meg.
+       *[other] Az e-mail címéhez társított fiókok a következő { $breachCount } betörésben jelentek meg.
+    }
 show-more-breaches = Több megjelenítése
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = A betörés dátuma:
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Veszélyeztetett fiókok:
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Veszélyeztetett adatok:
+confirmed = Megerősítve!<br />Ön feliratkozott!
+unsub-headline = Leiratkozás a { -product-name-nowrap }ról
 unsub-button = Leiratkozás
 unsub-survey-headline = Ön már nincs feliratkozva.
 unsub-survey-form-label = Miért iratkozik le a { -product-name-nowrap } figyelmeztetésekről?
