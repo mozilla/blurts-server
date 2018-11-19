@@ -92,7 +92,7 @@ no-breaches = Tu dirección de correo electrónico no apareció en nuestro escan
 featured-breach-results =
     { $breachCount ->
         [0] Tu cuenta aparece en la violación <span class="bold"> { $featuredBreach } </span>, pero no aparece en ninguna otra violación de datos conocida.
-        [one] Tu cuenta apareció en la violación de <span class="bold"> así como en otra violación.
+        [one] Tu cuenta apareció en la violación de <span class="bold"> { $featuredBreach } </span> así como en otra violación.
        *[other] Tu cuenta apareció en la violación de <span class="bold"> { $featuredBreach } </span>, así como en otras { $breachCount } violaciones.
     }
 featured-breach-not-compromised =
