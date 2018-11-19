@@ -80,6 +80,7 @@ scan-privacy = E-postanız kaydedilmeyecektir.
 scan-submit = E-postamı ara
 scan-another-email = Başka bir e-posta adresini tara
 scan-featuredbreach-label = <span class="bold"> { $featuredBreach } </span> hesabınız ele geçirilmiş olabilir mi? Hemen öğrenin.
+sensitive-breach-email-required = By ihlal hassas bilgiler içeriyor. O yüzden e-postanızı doğrulamanız gerekiyor.
 scan-error = Geçerli bir e-posta adresi olmalı.
 signup-banner-headline = { -product-name-nowrap }, çevrimiçi hesaplarınıza yönelik tehditleri algılar.
 signup-banner-blurb =
