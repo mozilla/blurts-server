@@ -175,6 +175,10 @@ footer img {
   flex: 1 1 calc(25% - var(--columnSpacing));
 }
 
+.three-fourths {
+  flex: 1 1 calc(75% - var(--columnSpacing));
+}
+
 .third {
   flex: 1 1 calc(33.3% - var(--columnSpacing));
   min-width: 200px;
@@ -195,7 +199,8 @@ footer img {
 .fourth,
 .third,
 .two-thirds,
-.half {
+.half,
+.three-fourths {
   margin: calc(var(--columnSpacing) / 2);
 }
 
@@ -737,8 +742,6 @@ header a h1 {
   background-size: cover;
 }
 
-/* main banner content  */
-
 main .half {
   flex-direction: column;
   align-items: normal;
@@ -757,6 +760,20 @@ main.landing-content .section-wrapper .half:last-of-type {
 main h2.section-headline {
   font-weight: 300;
   font-size: 30px;
+}
+
+/* changing font-weight here to avoid changing another string */
+main h2.section-headline span.bold {
+  font-weight: 400;
+}
+
+main.landing-content .half.featured .sign-up-button,
+main.landing-content .half.featured form {
+  margin: var(--gap) 0 0 0;
+}
+
+main .sensitive-breach-email-required {
+  margin-top: calc(var(--gap) / 2);
 }
 
 main .section-headline {
@@ -861,7 +878,6 @@ main .breach-headline {
 #password-advice p {
   margin: var(--gap) 0 var(--gap) 0;
   max-width: 800px;
-  font-size: 17px;
 }
 
 #password-advice h3 {

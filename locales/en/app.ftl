@@ -98,6 +98,7 @@ scan-privacy = Your email will not be stored.
 scan-submit = Search Your Email
 scan-another-email = Scan Another Email Address
 scan-featuredbreach-label = Find out if your <span class="bold"> { $featuredBreach } </span> account was compromised.
+sensitive-breach-email-required = Breach contains sensitive information. Email verification required.
 scan-error = Must be a valid email.
 
 signup-banner-headline = {-product-name-nowrap} detects threats against your online accounts.
