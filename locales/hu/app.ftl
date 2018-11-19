@@ -12,6 +12,8 @@
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Támogatás
+# Link that takes the user to a blog post on blog.mozilla.org about the alerts
+about-firefox-alerts = A Firefox figyelmeztetéseiről
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Adjon visszajelzést
 terms-and-privacy = Feltételek és adatvédelem
@@ -126,6 +128,18 @@ scan-results =
        *[other] Az e-mail címéhez társított fiókok a következő { $breachCount } betörésben jelentek meg.
     }
 show-more-breaches = Több megjelenítése
+what-to-do-headline = Mi a teendő, ha az Ön információi érintettek egy betörésben?
+what-to-do-subhead-1 = Módosítsa jelszavait, még a régi fiókok esetén is
+what-to-do-blurb-1 =
+    Ha nem tud bejelentkezni, lépjen kapcsolatba a webhellyel, és kérdezze meg, hogyan tudja visszaállítani vagy letiltani a fiókját.
+    Olyan fiókot lát, amelyet nem ismer? A webhely megváltoztathatta a nevét, vagy más hozhatott létre fiókot Önnek.
+what-to-do-subhead-2 = Ha újra felhasznál egy kikerült jelszót, változtassa meg
+what-to-do-subhead-3 = Tegyen további lépéseket a pénzügyi fiókok biztosításához
+what-to-do-blurb-3 =
+    A legtöbb betörés csak e-mail címek és jelszavak kikerülését okozza, de néhány érzékeny pénzügyi adatokat is tartalmaz.
+    Ha a bankszámlaszáma, vagy hitelkártyaszáma érintett volt egy betörésben, akkor értesítse a bankját a lehetséges csalásról,
+    és kövesse a levonásokat, melyeket nem ismer fel.
+what-to-do-subhead-4 = Kapjon segítséget a jó jelszavak létrehozásában és biztonságban tartásában.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = A betörés dátuma:
 # compromised accounts = the total number of user accounts exposed in data breach
