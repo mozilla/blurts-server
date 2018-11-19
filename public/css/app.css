@@ -677,6 +677,10 @@ h5,
   font-size: 15px;
 }
 
+.download-firefox-bar p {
+  width: 100%;
+}
+
 .download-firefox-bar .section-wrapper {
   padding-top: 15px;
   padding-bottom: 15px;
