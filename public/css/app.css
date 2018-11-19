@@ -279,6 +279,13 @@ form,
   width: 100%;
 }
 
+input::placeholder,
+::-webkit-input-placeholder,
+input::-moz-placeholder,
+input[type="submit"] {
+  font-size: 15px;
+}
+
 input[type="submit"],
 input[type="email"],
 input[type="password"],
@@ -287,7 +294,6 @@ input[type="text"] {
   width: 100%;
   -webkit-appearance: none;
   -moz-appearance: none;
-  white-space: nowrap;
   font-family: inherit;
   border-radius: var(--roundedCorners);
 }
@@ -295,7 +301,6 @@ input[type="text"] {
 input[type="submit"] {
   color: rgba(255, 255, 255, 1);
   font-weight: 500;
-  font-size: 18px;
   line-height: 40px;
   border: 1px solid rgba(255, 255, 255, 0);
   cursor: pointer;
@@ -468,7 +473,7 @@ a.button {
   line-height: 1.2;
   min-height: 55px;
   min-width: 150px;
-  padding: 10px 5px;
+  padding: 10px;
   -webkit-appearance: none;
   border: none;
   border-radius: var(--roundedCorners);
@@ -484,7 +489,9 @@ a.button {
 }
 
 a.button {
-  line-height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 button:hover,
@@ -506,7 +513,6 @@ input:focus::-moz-focus-inner {
 
 .transparent-button,
 input[type="submit"].transparent-button {
-  font-size: 17px;
   background-color: rgba(255, 255, 255, 0);
   border: 2px solid rgba(255, 255, 255, 1);
   color: rgba(255, 255, 255, 1);
@@ -1581,6 +1587,13 @@ form.show-thankyou span.thank-you-message {
     max-width: 100%;
   }
 
+  .checkbox-group-label,
+  .transparent-button,
+  input[type="submit"],
+  input[type="email"] {
+    font-size: 15px;
+  }
+
   main.scan-results #sign-up {
     margin-top: var(--gap);
   }
@@ -1684,6 +1697,15 @@ form.show-thankyou span.thank-you-message {
     min-width: 250px !important;
   }
 
+  .checkbox-group-label,
+  input::placeholder,
+  ::-webkit-input-placeholder,
+  input::-moz-placeholder,
+  .transparent-button,
+  input[type="submit"] {
+    font-size: 14px;
+  }
+
   .account,
   #what-to-do .half {
     flex-direction: column;
@@ -1706,12 +1728,19 @@ form.show-thankyou span.thank-you-message {
 @media screen and (max-width: 375px) {
   body {
     --gap: 15px;
+
+    font-weight: 300;
   }
 
   body,
-  .radio-button-group label {
-    font-size: 14px;
-    font-weight: 300;
+  .radio-button-group label,
+  .checkbox-group-label,
+  input::placeholder,
+  ::-webkit-input-placeholder,
+  input::-moz-placeholder,
+  .transparent-button,
+  input[type="submit"] {
+    font-size: 12px;
   }
 
   .section-wrapper {
