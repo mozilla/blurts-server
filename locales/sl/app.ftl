@@ -140,6 +140,7 @@ confirmed = Potrjeno!<br />Naročeni ste!
 confirmed-blurb = { -product-name-nowrap } vam bo po e-pošti kmalu poslal podrobno poročilo in vas opozoril, če se bo vaš račun pojavil v novi kraji podatkov.
 confirmed-social-blurb = Če so bili vaši podatki ukradeni, obstaja možnost, da so se v podobnih težavah znašli vaši prijatelji in družina. Povejte jim o { -product-name-nowrap }ju.
 unsub-headline = Odjava iz { -product-name-nowrap }ja
+unsub-blurb = S tem boste odstranili vaš e-poštni naslov iz seznama { -product-name-nowrap } in ob pojavu novih kraj podatkov ne boste več prejemali opozoril.
 unsub-button = Odjavi se
 unsub-survey-headline = Niste več naročeni.
 unsub-survey-blurb = Vaš e-poštni naslov je odjavljen iz { -product-name-nowrap }. Hvala za uporabo. Bi si vzeli trenutek in nam odgovorili na eno vprašanje o svoji izkušnji?
@@ -169,3 +170,4 @@ copyright-info =
     Vsebina je na voljo pod pogoji <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Podatke o krajah podatkov omogoča { $hibp-link }
+site-description = Ali so bili podatki vaših računov izpostavljeni ali ukradeni? Preverite s { -product-name }jem. Preiščite našo bazo podatkov in se prijavite na opozorila.
