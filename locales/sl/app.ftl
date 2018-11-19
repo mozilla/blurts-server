@@ -104,12 +104,32 @@ no-breaches =
     Vaš e-poštni naslov ni bil prikazan v našem osnovnem pregledu.
     To je dobra novica, vendar pa lahko do kraje podatkov pride kadarkoli, zato bodite pozorni.
     Prijavite se na { -product-name-nowrap } za celotno poročilo, opozorila ob novih krajah podatkov in nasvete, kako zaščititi vaša gesla.
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Vaš račun se je pojavil v { $breachCount } kraji podatkov.
+        [two] Vaš račun se je pojavil v { $breachCount } krajah podatkov.
+        [few] Vaš račun se je pojavil v { $breachCount } krajah podatkov.
+       *[other] Računi povezani z vašim e-poštnim naslovom so se pojavili v naslednjih { $breachCount } krajah podatkov.
+    }
 show-more-breaches = Prikaži več
 what-to-do-headline = Kaj storiti, ko pride do kraje vaših podatkov
 what-to-do-subhead-1 = Spremenite gesla, tudi za starejše račune
+what-to-do-blurb-1 =
+    Če se ne morete prijaviti, se obrnite na spletno stran in povprašajte, kako lahko obnovite ali odstranite račun.
+    Opazite račun, ki ga ne prepoznate? Stran je morda spremenila ime ali pa je nekdo v vašem imenu ustvaril račun.
 what-to-do-subhead-2 = Če izpostavljeno geslo uporabljate na več mestih, ga spremenite
+what-to-do-blurb-2 =
+    Hekerji lahko znova poskusijo uporabiti vaše izpostavljeno geslo za dostop do drugih računov.
+    Za vsako spletno stran ustvarite drugo geslo, še posebej za vaš bančni račun, e-pošto in druge spletne strani, kjer shranjujte osebne podatke.
 what-to-do-subhead-3 = Z dodatnimi ukrepi zavarujte svoje finančne račune
+what-to-do-blurb-3 =
+    V večini kraj podatkov so izpostavljeni samo e-poštni naslovi in gesla, nekatere pa vključujejo tudi občutljive finančne podatke.
+    Če je bil vaš bančni račun ali številka kreditne kartice del kraje podatkov, obvestite svojo banko o morebitni goljufiji in spremljajte podrobnosti stroškov, ki jih ne prepoznate.
 what-to-do-subhead-4 = Pomagajte si pri ustvarjanju dobrih gesel in ohranjanju njihove varnosti.
+what-to-do-blurb-4 =
+    Upravitelji gesel, kot so 1Password, LastPass, Dashlane in Bitwarden ustvarjajo močna gesla, 
+    jih shranjujejo varno in namesto vas zapolnjujejo na spletnih straneh.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Datum kršitve:
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -117,6 +137,9 @@ compromised-accounts = Ogroženi računi:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Ogroženi podatki:
 confirmed = Potrjeno!<br />Naročeni ste!
+confirmed-blurb = { -product-name-nowrap } vam bo po e-pošti kmalu poslal podrobno poročilo in vas opozoril, če se bo vaš račun pojavil v novi kraji podatkov.
+confirmed-social-blurb = Če so bili vaši podatki ukradeni, obstaja možnost, da so se v podobnih težavah znašli vaši prijatelji in družina. Povejte jim o { -product-name-nowrap }ju.
+unsub-headline = Odjava iz { -product-name-nowrap }ja
 unsub-button = Odjavi se
 unsub-survey-headline = Niste več naročeni.
 unsub-survey-blurb = Vaš e-poštni naslov je odjavljen iz { -product-name-nowrap }. Hvala za uporabo. Bi si vzeli trenutek in nam odgovorili na eno vprašanje o svoji izkušnji?
