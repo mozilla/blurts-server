@@ -81,6 +81,7 @@ scan-privacy = E-mel anda tidak akan disimpan.
 scan-submit = Cari E-mel Anda
 scan-another-email = Imbas Alamat E-mel Lain
 scan-featuredbreach-label = Ketahui samada akaun <span class="bold">{ $featuredBreach } </span> anda telah dikompromi.
+sensitive-breach-email-required = Pelanggaran keselamatan mengandungi maklumat sensitif. Pengesahan e-mel diperlukan.
 scan-error = Perlu e-mel yang sah
 signup-banner-headline = { -product-name-nowrap } mengesan ancaman terhadap akaun atas talian anda.
 signup-banner-blurb =
