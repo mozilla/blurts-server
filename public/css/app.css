@@ -783,7 +783,13 @@ main.landing-content .half.featured form {
 }
 
 main .sensitive-breach-email-required {
+  font-size: 13px;
   margin-top: calc(var(--gap) / 2);
+}
+
+main .half.featured button#sign-up,
+main .sensitive-breach-email-required {
+  max-width: 300px;
 }
 
 main .section-headline {
@@ -1686,7 +1692,8 @@ form.show-thankyou span.thank-you-message {
 
   h2,
   h3,
-  .section-headline {
+  .section-headline,
+  .half.featured h2.section-headline {
     font-size: 1.68rem;
     line-height: 1.3;
   }
