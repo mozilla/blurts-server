@@ -57,8 +57,8 @@ pwt-summary-3 =
     Ustvarite dolge, naključne odgovore in jih shranite na varnem mestu.
 pwt-headline-4 = Pomagajte si pri shranjevanju gesel
 pwt-summary-4 =
-    Upravitelji gesel kot so 1Password, LastPass, Dashlane in Bitwarden ustvarjajo močna, edinstvena gesla. 
-    Gesla tudi varno shranjujejo in jih zapolnjujejo na spletnih straneh.
+    Upravitelji gesel, kot so 1Password, LastPass, Dashlane in Bitwarden, ustvarjajo močna, edinstvena gesla. 
+    Gesla tudi varno shranjujejo in jih izpolnjujejo na spletnih straneh namesto vas
 pwt-headline-5 = Izboljšajte varnost s preverjanjem v dveh korakih
 pwt-headline-6 = Naročite se na opozorila { -product-name-nowrap }ja
 pwt-summary-6 =
@@ -128,8 +128,8 @@ what-to-do-blurb-3 =
     Če je bil vaš bančni račun ali številka kreditne kartice del kraje podatkov, obvestite svojo banko o morebitni goljufiji in spremljajte podrobnosti stroškov, ki jih ne prepoznate.
 what-to-do-subhead-4 = Pomagajte si pri ustvarjanju dobrih gesel in ohranjanju njihove varnosti.
 what-to-do-blurb-4 =
-    Upravitelji gesel, kot so 1Password, LastPass, Dashlane in Bitwarden ustvarjajo močna gesla, 
-    jih shranjujejo varno in namesto vas zapolnjujejo na spletnih straneh.
+    Upravitelji gesel, kot so 1Password, LastPass, Dashlane in Bitwarden, ustvarjajo močna gesla, 
+    jih varno shranjujejo in namesto vas izpolnjujejo na spletnih straneh.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Datum kršitve:
 # compromised accounts = the total number of user accounts exposed in data breach
