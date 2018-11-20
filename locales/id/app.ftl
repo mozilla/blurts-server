@@ -12,6 +12,8 @@
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Dukungan
+# Link that takes the user to a blog post on blog.mozilla.org about the alerts
+about-firefox-alerts = Tentang Firefox Alerts
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Beri Masukan
 terms-and-privacy = Ketentuan dan Privasi
@@ -75,6 +77,7 @@ scan-privacy = Surel Anda tidak akan disimpan.
 scan-submit = Cari Surel Anda
 scan-another-email = Pindai Alamat Surel Lainnya
 scan-featuredbreach-label = Cari tahu apakah akun <span class="bold">{ $featuredBreach }</span> Anda telah diketahui orang lain.
+sensitive-breach-email-required = Penerobosan mengandung informasi yang sensitif. Verifikasi surel dibutuhkan.
 scan-error = Harus surel yang valid.
 signup-banner-headline = { -product-name-nowrap } mendeteksi ancaman terhadap akun daring Anda.
 signup-banner-blurb =
