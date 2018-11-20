@@ -64,6 +64,7 @@ scan-privacy = 不會儲存您的電子郵件地址。
 scan-submit = 搜尋您的 E-Mail 信箱
 scan-another-email = 掃描另一個 E-Mail 信箱
 scan-featuredbreach-label = 看看您的 <span class="bold">{ $featuredBreach }</span> 帳號是否遭到洩漏。
+sensitive-breach-email-required = 資料洩漏事件中包含個人敏感資料，需要電子郵件驗證。
 scan-error = 必須是有效的電子郵件地址。
 signup-banner-headline = { -product-name-nowrap } 會為您的線上帳號偵測是否有任何風險存在。
 signup-banner-blurb = { -product-name-nowrap } 詳細報告可顯示您在哪些網站的帳號資料已遭竊或洩漏。我們也會在您的帳號出現於新的資料外洩事件時通知您。
