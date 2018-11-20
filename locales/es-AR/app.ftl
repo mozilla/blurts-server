@@ -43,7 +43,7 @@ user-unsubscribed-title = Se canceló la suscripción a: { -product-name }:
 
 pwt-section-headline = Contraseñas más fuertes = Mejor protección
 pwt-section-subhead = Tu información privada es solo tan segura como tus contraseñas.
-pwt-section-blurb = Tus contraseñas protegen más que tus cuentas. Protegen cada parte de la información personal que reside en ellas. Y los piratas informáticos confían en los malos hábitos, como usar la misma contraseña en todas partes o usar frases comunes (p@ssw0rd, ¿alguien?) para que, si piratean una cuenta, puedan piratear muchas. Mirá aquí cómo proteger mejor tus cuentas.
+pwt-section-blurb = Tus contraseñas protegen más que tus cuentas. Protegen cada parte de la información personal que reside en ellas. Y los piratas informáticos confían en los malos hábitos, como usar la misma contraseña en todas partes o usar frases comunes (p@ssw0rd, ¿alguien?) para que, si piratean una cuenta, puedan piratear muchas. Fijate aquí cómo proteger mejor tus cuentas.
 pwt-headline-1 = Usá una contraseña diferente para cada cuenta
 pwt-summary-1 = Reutilizar la misma contraseña en todas partes deja la puerta abierta para el robo de identidad. Cualquier persona con esa contraseña puede iniciar sesión en todas tus cuentas.
 pwt-headline-2 = Creá contraseñas seguras y difíciles de adivinar.
