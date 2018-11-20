@@ -22,6 +22,9 @@ error-hibp-throttled = K'ïy taq rokem ri { -brand-HIBP }.
 error-hibp-connect = Xsach toq nok pa { -brand-HIBP }.
 error-hibp-load-breaches = Man xesamajib'ëx ta ri taq mak.
 home-title = { -product-name }
+home-not-found = Man xilitäj ta ruxaq.
+oauth-invalid-session = Man okel ta ri molojri'ïl
+user-add-invalid-email = Man okel ta ri Taqoya'l
 
 ## Password Tips
 
