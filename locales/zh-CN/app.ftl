@@ -78,7 +78,7 @@ scan-privacy = 我们不会存储您的电子邮件地址。
 scan-submit = 搜索您的电子邮件地址
 scan-another-email = 扫描其他电子邮件地址
 scan-featuredbreach-label = 了解您的<span class="bold"> { $featuredBreach } </span>账户是否遭到侵害。
-sensitive-breach-email-required = 泄露内容包含敏感信息。须验证电子邮件。
+sensitive-breach-email-required = 泄露内容包含敏感信息，需验证电子邮件。
 scan-error = 须为有效的电子邮件地址。
 signup-banner-headline = { -product-name-nowrap } 检测针对您的线上账户的威胁。
 signup-banner-blurb =
