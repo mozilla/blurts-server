@@ -45,14 +45,14 @@ pwt-section-headline = Contraseñas más robustas = Mejor protección
 pwt-section-subhead = Tu información privada es tan segura como lo son tus contraseñas.
 pwt-section-blurb =
     Tus contraseñas protegen algo más que tus cuentas. Protegen cada aspecto de tu información personal que hay en ellas.
-    Los piratas informáticos se basan en los malos hábitos de la gente, como usar la misma contraseña para todo o usar contraseñas sencillas (1234, ¿te suena?) así que si han podido piratear una cuenta, pueden hacerlo con muchas. Aquí te mostramos cómo proteger mejor tus cuentas.
+    Los criminales informáticos se basan en los malos hábitos de la gente, como usar la misma contraseña para todo o usar contraseñas sencillas (1234, ¿te suena?) así que si han podido piratear una cuenta, pueden hacerlo con muchas. Aquí te mostramos cómo proteger mejor tus cuentas.
 pwt-headline-1 = Usa una contraseña diferente para cada cuenta
 pwt-summary-1 =
     Utilizar la misma contraseña en todas partes deja abierta la puerta a la usurpación de identidad.
     Cualquiera con esa contraseña puede acceder a todas tus cuentas.
 pwt-headline-2 = Crea contraseñas seguras y difíciles de adivinar
 pwt-summary-2 =
-    Los piratas informáticos usan miles de contraseñas comunes para intentar adivinar la tuya. 
+    Los criminales informáticos usan miles de contraseñas comunes para intentar adivinar la tuya. 
     Cuanto más larga y aleatoria sea tu contraseña, más difícil será de adivinar.
 pwt-headline-3 = Trata las preguntas de seguridad como si fueran contraseñas adicionales
 pwt-summary-3 =
@@ -68,10 +68,10 @@ pwt-headline-6 = Regístrate para recibir alertas de { -product-name-nowrap }
 pwt-summary-6 =
     Las filtraciones de datos de sitios web están en aumento. Tan pronto como una nueva infracción se añada a nuestra base de datos,
     { -product-name-nowrap } te envía una alerta para que puedas tomar medidas y proteger tu cuenta.
-landing-headline = Tu derecho a estar a salvo de los piratas informáticos empieza aquí.
+landing-headline = Tu derecho a estar a salvo de los criminales informáticos empieza aquí.
 landing-blurb =
     { -product-name-nowrap } te brinda herramientas para mantener segura tu información personal.
-    Descubre lo que los piratas informáticos ya saben de ti y aprende cómo mantenerte un paso por delante de ellos.
+    Descubre lo que los criminales informáticos ya saben de ti y aprende cómo mantenerte un paso por delante de ellos.
 scan-label = Comprueba si has estado involucrado en una fuga de datos.
 scan-placeholder = Introduce una dirección de correo electrónico
 scan-privacy = No se guardará tu correo electrónico.
@@ -133,7 +133,7 @@ what-to-do-blurb-1 =
     Si no puedes iniciar sesión contacta con el sitio web para preguntar cómo puedes recuperar o cerrar la cuenta.
     ¿Ves una cuenta que no reconoces? Es posible que el sitio haya cambiado de nombre o que alguien haya creado una cuenta en tu nombre.
 what-to-do-subhead-2 = Si reutilizas una contraseña que ha sido expuesta, cámbiala
-what-to-do-blurb-2 = Los piratas informáticos pueden intentar hacer uso de tu contraseña para acceder a otras cuentas. Crea una contraseña diferente para cada sitio web, especialmente para tu cuenta bancaria, correo electrónico y otros sitios web en los que guardes tu  información personal.
+what-to-do-blurb-2 = Los criminales informáticos pueden intentar hacer uso de tu contraseña para acceder a otras cuentas. Crea una contraseña diferente para cada sitio web, especialmente para tu cuenta bancaria, correo electrónico y otros sitios web en los que guardes tu  información personal.
 what-to-do-subhead-3 = Toma medidas adicionales para asegurar tus cuentas bancarias
 what-to-do-blurb-3 = La mayoría de las filtraciones de datos solo exponen correos electrónicos y contraseñas, pero algunas incluyen información financiera confidencial. Si los números de tu cuenta bancaria o de tu tarjeta de crédito fueron incluidos en un caso de filtración de datos, alerta a tu banco sobre un posible fraude y revisa los movimientos de tu cuenta en busca de cargos que no reconoces.
 what-to-do-subhead-4 = Obtén ayuda para crear buenas contraseñas y mantenerlas seguras.
