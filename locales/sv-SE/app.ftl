@@ -72,6 +72,7 @@ scan-privacy = Din e-post lagras inte.
 scan-submit = Sök efter din e-postadress
 scan-another-email = Skanna en annan e-postadress
 scan-featuredbreach-label = Ta reda på om ditt <span class="bold"> { $featuredBreach } </span> konto har äventyrats.
+sensitive-breach-email-required = Intrång innehåller känslig information. E-postbekräftelse krävs.
 scan-error = Måste vara en giltig e-postadress.
 signup-banner-headline = { -product-name-nowrap } upptäcker hot mot dina konton på nätet.
 signup-banner-blurb = Din detaljerade rapport från { -product-name-nowrap } visar om information från dina konton på nätet har läckt eller stulits. Vi kommer också att varna dig om dina konton visas på nya webbsidor.
