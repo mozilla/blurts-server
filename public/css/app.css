@@ -279,17 +279,17 @@ form,
   width: 100%;
 }
 
-input::placeholder,
-::-webkit-input-placeholder,
-input::-moz-placeholder,
-input[type="submit"] {
+button.internal-link,
+button.close-modal,
+input.transparent-button,
+input[type="email"],
+input[type="submit"],
+input::placeholder {
   font-size: 15px;
 }
 
 input[type="submit"],
-input[type="email"],
-input[type="password"],
-input[type="text"] {
+input[type="email"] {
   height: 45px;
   width: 100%;
   -webkit-appearance: none;
@@ -306,12 +306,9 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-input[type="email"],
-input[type="password"],
-input[type="text"] {
+input[type="email"] {
   border: 1px solid var(--grey90a3);
   background-color: #fefefe;
-  font-size: 15px;
   color: var(--grey90);
   overflow: visible;
   text-indent: 8px;
@@ -1044,7 +1041,6 @@ body.show-subscribe-modal .modal-container {
 
 .modal-content .internal-link,
 .modal-content p {
-  font-size: 17px;
   font-weight: 300;
   display: block;
 }
@@ -1593,11 +1589,13 @@ form.show-thankyou span.thank-you-message {
     max-width: 100%;
   }
 
-  .checkbox-group-label,
-  .transparent-button,
+  button.internal-link,
+  button.close-modal,
+  input.transparent-button,
+  input[type="email"],
   input[type="submit"],
-  input[type="email"] {
-    font-size: 15px;
+  input::placeholder {
+    font-size: 14px;
   }
 
   main.scan-results #sign-up {
@@ -1687,6 +1685,8 @@ form.show-thankyou span.thank-you-message {
 
 @media screen and (max-width: 480px) {
   body {
+    font-size: 16px;
+
     --columnSpacing: 30px;
   }
 
@@ -1702,15 +1702,6 @@ form.show-thankyou span.thank-you-message {
   .fourth,
   .half {
     min-width: 250px !important;
-  }
-
-  .checkbox-group-label,
-  input::placeholder,
-  ::-webkit-input-placeholder,
-  input::-moz-placeholder,
-  .transparent-button,
-  input[type="submit"] {
-    font-size: 14px;
   }
 
   .account,
@@ -1735,19 +1726,15 @@ form.show-thankyou span.thank-you-message {
 @media screen and (max-width: 375px) {
   body {
     --gap: 15px;
-
-    font-weight: 300;
   }
 
-  body,
   .radio-button-group label,
-  .checkbox-group-label,
+  button.internal-link,
+  input.transparent-button,
+  input[type="submit"],
   input::placeholder,
-  ::-webkit-input-placeholder,
-  input::-moz-placeholder,
-  .transparent-button,
-  input[type="submit"] {
-    font-size: 12px;
+  .checkbox-group label {
+    font-size: 13px;
   }
 
   .section-wrapper {
