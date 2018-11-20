@@ -51,6 +51,6 @@ report-pwt-summary-3 =
     Spletne strani ne preverjajo, ali so vaši odgovori točni, le da se vsakič ujemajo.
     Ustvarite dolge, naključne odgovore in jih shranite na varnem mestu.
 report-pwt-headline-4 = Uporabite upravitelja gesel
-report-pwt-summary-4 = Storitve, kot so 1Password, LastPass, Dashlane in Bitwarden, ustvarjajo močna gesla, jih varno shranjujejo, in jih zapolnijo na spletnih straneh, tako da si vam ni treba zapomniti posameznega gesla.
+report-pwt-summary-4 = Storitve, kot so 1Password, LastPass, Dashlane in Bitwarden, ustvarjajo močna gesla, jih varno shranjujejo in jih na spletnih straneh izpolnijo za vas, tako da si vam ni treba zapomniti posameznih gesel.
 # A link to legal information about mozilla products.
 legal = Pravno obvestilo
