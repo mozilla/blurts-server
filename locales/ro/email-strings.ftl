@@ -1,4 +1,5 @@
-verify-my-email = Verifică-mi e-mailul
+click-to-verify = Selectează butonul Verifică-mi adresa de e-mail în decurs de 24 de ore pentru a-ți confirma contul Firefox Monitor. Raportul tău va fi apoi pe drum.
+verify-my-email = Verifică-mi adresa de e-mail
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Raport { -product-name }
 report-date = Data raportului:

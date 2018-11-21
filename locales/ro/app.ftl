@@ -67,10 +67,12 @@ scan-featuredbreach-label = Află dacă contul tău <span class="bold">{ $featur
 scan-error = Trebuie să fie o adresă de e-mail validă.
 signup-banner-headline = { -product-name-nowrap } detectează amenințările la care sunt supuse conturile tale online.
 signup-banner-blurb = Raportul tău { -product-name-nowrap } detaliat indică dacă informațiile din conturile tale online au fost compromise sau furate. Te vom alerta și dacă conturile tale apar în breșe noi de pe site-uri web.
+download-firefox-bar-blurb = { -product-name-nowrap } îți este oferit de <span class="nowrap">noul { -brand-name }</span>.
 download-firefox-bar-link = Descarcă { -brand-name } acum
 download-firefox-banner-blurb = Preia controlul asupra browserului tău
 download-firefox-banner-button = Descarcă { -brand-name }
 signup-modal-headline = Înregistrează-te pentru { -product-name-nowrap }
+signup-modal-blurb = Înregistrează-te pentru raportul tău complet, alerte când se produc noi breșe și ponturi de siguranță de la { -product-name-nowrap }.
 signup-modal-close = Închide
 get-your-report = Obține raportul
 signup-modal-verify-headline = Verifică-ți abonamentul
