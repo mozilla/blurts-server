@@ -81,6 +81,7 @@ scan-privacy = Vašu e-mailovú adresu nebudeme nikam ukladať.
 scan-submit = Vyhľadajte svoju e-mailovú adresu
 scan-another-email = Vyhľadajte ďalšiu e-mailovú adresu
 scan-featuredbreach-label = Zistite, či bol váš účet z <span class="bold"> { $featuredBreach } </span>  kompromitovaný.
+sensitive-breach-email-required = Únik obsahuje citlivé informácie. Overte svoju e-mailovú adresu.
 scan-error = Zadaná e-mailová adresa nie je platná.
 signup-banner-headline = { -product-name-nowrap } zisťuje hrozby pre vaše internetové účty.
 signup-banner-blurb =
