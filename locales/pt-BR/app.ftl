@@ -76,6 +76,7 @@ scan-privacy = Seu endereço de e-mail não será armazenado,
 scan-submit = Procure Seu Endereço de E-mail
 scan-another-email = Analise Outro Endereço de E-mail
 scan-featuredbreach-label = Descubra se sua conta em <span class="bold">{ $featuredBreach }</span> foi comprometida.
+sensitive-breach-email-required = Brecha contém informações sensíveis. Necessária verificação por email.
 scan-error = Precisa ser um endereço de e-mail válido.
 signup-banner-headline = O { -product-name-nowrap } detecta ameaças contra suas contas online.
 signup-banner-blurb =
