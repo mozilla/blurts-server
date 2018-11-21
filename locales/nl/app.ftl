@@ -68,6 +68,7 @@ scan-privacy = Uw e-mailadres wordt niet opgeslagen.
 scan-submit = Uw e-mailadres zoeken
 scan-another-email = Een ander e-mailadres scannen
 scan-featuredbreach-label = Ontdek of uw <span class="bold"> { $featuredBreach } </span>-account getroffen is.
+sensitive-breach-email-required = Datalek bevat gevoelige gegevens. E-mailverificatie vereist.
 scan-error = Moet een geldig e-mailadres zijn.
 signup-banner-headline = { -product-name-nowrap } detecteert bedreigingen van uw online accounts.
 signup-banner-blurb = Uw gedetailleerde { -product-name-nowrap }-rapport laat zien of informatie van uw online accounts is gelekt of gestolen. We sturen u ook een waarschuwing als uw accounts in nieuwe websitelekken voorkomen.
