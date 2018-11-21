@@ -12,7 +12,7 @@ email-address = Adresă de e-mail:
 # "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
 your-full-report = Iată raportul complet { -product-name }, care include toate breșele cunoscute de date care conțin această adresă de e-mail.
 # A list of next steps someone should take if their information has been involved in a data breach.
-what-to-do-next = O Que Fazer Agora
+what-to-do-next = Pași de urmat
 report-headline =
     { $breachCount ->
         [0] Totul este în regulă până în prezent.
@@ -31,6 +31,9 @@ report-pwt-blurb =
     Parolele sunt atât de valoroase, încât mii dintre ele sunt furate în fiecare zi și tranzacționate sau vândute pe piața neagră.
     Parolele mai puternice îți protejează conturile și toate informațiile personale care există în acestea.
 report-pwt-headline-1 = Folosește o parolă diferită pentru fiecare cont
+report-pwt-summary-1 =
+    Reutilizarea aceleiași parole peste tot deschide ușa pentru hackeri.
+    Aceștia pot folosi acea parolă pentru a se autentifica în celelalte conturi ale tale.
 report-pwt-headline-2 = Creează parole puternice și unice
 report-pwt-summary-2 =
     Hackerii folosesc liste de parole comune ca să încerce să-ți ghicească parola.
