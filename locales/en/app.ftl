@@ -249,8 +249,10 @@ hibp-attribution = Breach data provided by { $hibp-link }
 site-description = Have your accounts been leaked or stolen in a data breach? Find out at {-product-name}. Search our database and sign up for alerts.
 
 confirmation-headline = Your {-product-name} report is on its way.
-confirmation-blurb = Data breaches can affect anyone. Spread the word so your friends and family can check to see if their online accounts are safe. 
-
+confirmation-blurb = Data breaches can affect anyone. Spread the word so your friends and family can check to see if their online accounts are safe.
+share-email = Email
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Other
 share-twitter = Most people have about 100 online accounts. Have any of yours been exposed in a data breach? Find out. 
 share-facebook-headline = Find out if you’ve been part of a data breach
 share-facebook-blurb = Have your online accounts been exposed in a data breach?
