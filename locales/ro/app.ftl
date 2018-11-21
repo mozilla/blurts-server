@@ -44,7 +44,7 @@ user-unsubscribed-title = { -product-name } : Dezabonat
 pwt-section-headline = Parole mai puternice = Protecție mai bună
 pwt-section-subhead = Securitatea informațiilor tale personale depinde de siguranța parolelor.
 pwt-section-blurb = Parolele protejează mai mult decât conturile. Protejează fiecare bit de informații personale pe care le conțin. Hackerii se bazează pe obiceiuri proaste, cum ar fi utilizarea aceleiași parole peste tot sau folosirea de fraze obișnuite (de genul p@ssw0rd), astfel încât, dacă sparg un cont, pot sparge mai multe. Iată cum să îți protejezi mai bine conturile.
-pwt-headline-1 = Folosește parole diferite pentru conturi
+pwt-headline-1 = Folosește o parolă diferită pentru fiecare cont
 pwt-summary-1 = Reutilizarea aceleiași parole peste tot lasă ușa larg deschisă pentru furtul de identitate. Oricine are parola se poate autentifica în toate conturile tale.
 pwt-headline-2 = Creează parole puternice, greu de ghicit
 pwt-summary-2 = Hackerii folosesc mii de parole frecvente când încearcă să o ghicească pe a ta. Cu cât parola este mai lungă și mai aleatorie, cu atât va fi mai greu de ghicit.
@@ -142,3 +142,5 @@ beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 copyright-info =
     Porțiuni din acest conținut sunt scrise între &#x24B8; 1998-2018 de colaboratori individuali mozilla.org. <br />
     Conținut disponibil sub o <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">licență Creative Commons</a>.
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Datele privind breșele sunt furnizate de { $hibp-link }
