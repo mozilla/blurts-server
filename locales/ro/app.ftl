@@ -64,6 +64,7 @@ scan-privacy = Adresa ta de e-mail nu va fi stocată.
 scan-submit = Caută-ți adresa de e-mail
 scan-another-email = Scanează altă adresă de e-mail
 scan-featuredbreach-label = Află dacă contul tău <span class="bold">{ $featuredBreach }</span> a fost compromis.
+sensitive-breach-email-required = Breșa conține informații sensibile. Este necesară verificarea adresei de e-mail.
 scan-error = Trebuie să fie o adresă de e-mail validă.
 signup-banner-headline = { -product-name-nowrap } detectează amenințările la care sunt supuse conturile tale online.
 signup-banner-blurb = Raportul tău { -product-name-nowrap } detaliat indică dacă informațiile din conturile tale online au fost compromise sau furate. Te vom alerta și dacă conturile tale apar în breșe noi de pe site-uri web.
@@ -95,6 +96,20 @@ featured-breach-results =
         [one] Contul tău apare în breșa <span class="bold">{ $featuredBreach }</span> și într-o altă breșă.
         [few] Contul tău apare în breșa <span class="bold">{ $featuredBreach }</span> și în alte { $breachCount } breșe.
        *[other] Contul tău apare în breșa <span class="bold">{ $featuredBreach }</span> și în alte { $breachCount } de breșe.
+    }
+featured-breach-not-compromised =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Contul tău nu a apărut în breșa <span class="bold">{ $featuredBreach }</span>, însă a apărut într-o altă breșă.
+        [few] Contul tău nu a apărut în breșa <span class="bold">{ $featuredBreach }</span>, însă a apărut în alte { $breachCount } breșe.
+       *[other] Contul tău nu a apărut în breșa <span class="bold">{ $featuredBreach }</span>, însă a apărut în alte { $breachCount } de breșe.
+    }
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Contul tău a apărut într-o breșă.
+        [few] Conturi asociate cu adresa ta de e-mail au apărut în următoarele { $breachCount } breșe.
+       *[other] Conturi asociate cu adresa ta de e-mail au apărut în următoarele { $breachCount } de breșe.
     }
 show-more-breaches = Afișează mai multe
 what-to-do-headline = Ce să faci când informațiile ți-au fost expuse într-o breșă de date
