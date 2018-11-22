@@ -129,6 +129,7 @@ compromised-accounts = Conturi compromise:
 compromised-data = Date compromise:
 confirmed = Confirmat!<br />Te-ai abonat!
 confirmed-blurb = { -product-name-nowrap } îți va trimite în curând un e-mail cu raportul complet și va transmite o alertă pe e-mail în cazul în care contul tău va apărea în breșe raportate noi.
+confirmed-social-blurb = Dacă datele tale au fost scurse în urma unei breșe, există șanse ca datele prietenilor, familiei sau a conexiunilor tale online să fi fost și ele la rândul lor. Dă-le de veste despre { -product-name-nowrap }.
 unsub-headline = Dezabonează-te de la { -product-name-nowrap }
 unsub-blurb = Prin aceasta, adresa ta de e-mail va fi eliminată din lista { -product-name-nowrap } și nu vei mai primi alerte când sunt anunțate breșe noi.
 unsub-button = Dezabonează-te
@@ -137,6 +138,7 @@ unsub-survey-blurb = Adresa ta de e-mail este dezabonată de la { -product-name-
 unsub-survey-form-label = De ce te dezabonezi de la alertele { -product-name-nowrap }?
 unsub-reason-1 = Cred că alertele nu fac datele mele mai sigure
 unsub-reason-2 = Primesc prea multe e-mailuri de la { -product-name-nowrap }
+unsub-reason-3 = Nu consider serviciul ca fiind unul util
 unsub-reason-4 = Am luat deja măsuri pentru a-mi proteja conturile
 unsub-reason-5 = Folosesc un alt serviciu pentru a-mi monitoriza conturile
 unsub-reason-6 = Niciuna dintre cele de mai sus
@@ -159,3 +161,4 @@ copyright-info =
     Conținut disponibil sub o <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">licență Creative Commons</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Datele privind breșele sunt furnizate de { $hibp-link }
+site-description = Au fost compromise sau furate conturile tale într-o breșă de date? Află la { -product-name }. Caută în baza noastră de date și înregistrează-te pentru alerte.

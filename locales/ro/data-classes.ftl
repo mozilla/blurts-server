@@ -1,9 +1,13 @@
 ## Breach Data Classes
 
-account-balances = sold conturi
+account-balances = solduri ale conturilor
 address-book-contacts = contacte din agendă
 age-groups = grupuri de vârstă
 ages = vârste
+apps-installed-on-devices = aplicații instalate pe dispozitive
+astrological-signs = semne astrologice
+audio-recordings = înregistrări audio
+auth-tokens = tokenuri de autentificare
 avatars = avataruri
 biometric-data = date biometrice
 browser-user-agent-details = detalii despre agentul utilizator din browser

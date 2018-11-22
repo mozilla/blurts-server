@@ -1,3 +1,5 @@
+# Firefox Monitor is a product name and should not be translated.
+-product-name = Firefox Monitor
 click-to-verify = Selectează butonul Verifică-mi adresa de e-mail în decurs de 24 de ore pentru a-ți confirma contul Firefox Monitor. Raportul tău va fi apoi pe drum.
 verify-my-email = Verifică-mi adresa de e-mail
 report-scan-another-email = Scanează altă adresă de e-mail în { -product-name }
@@ -11,6 +13,9 @@ report-date = Data raportului:
 email-address = Adresă de e-mail:
 # "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
 your-full-report = Iată raportul complet { -product-name }, care include toate breșele cunoscute de date care conțin această adresă de e-mail.
+report-no-breaches =
+    Adresa ta de e-mail nu a apărut în baza noastră de date cu breșe cunoscute.
+    Însă breșele se pot întâmpla oricând. Ia aceste măsuri pentru a-ți păstra în siguranță datele personale.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Pași de urmat
 report-headline =
