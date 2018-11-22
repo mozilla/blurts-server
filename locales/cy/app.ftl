@@ -67,6 +67,7 @@ scan-privacy = Ni fydd eich e-bost yn cael ei gadw.
 scan-submit = Chwilio'ch E-bost
 scan-another-email = Sganio Cyfeiriad E-bost Arall
 scan-featuredbreach-label = Gweld os yw eich cyfrif <span class="bold"> { $featuredBreach } </span> wedi ei gyfaddawdu.
+sensitive-breach-email-required = Mae'r to-data'n cynnwys manylion sensitif. Mae angen dilysu'r e-bost.
 scan-error = Rhaid ei fod yn e-bost dilys.
 signup-banner-headline = Mae { -product-name-nowrap } yn canfod bygythiadau i'ch cyfrifon ar-lein.
 signup-banner-blurb =
