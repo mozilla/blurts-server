@@ -155,9 +155,14 @@ compromised-accounts = Veszélyeztetett fiókok:
 compromised-data = Veszélyeztetett adatok:
 confirmed = Megerősítve!<br />Ön feliratkozott!
 confirmed-blurb = A { -product-name-nowrap } hamarosan e-mailt küld a teljes jelentéssel, és figyelmeztetést fog küldeni, ha egy új bejelentett betörésben jelenik meg a fiókja.
+confirmed-social-blurb = Ha betörés áldozata lett, akkor lehetséges, hogy a barátai, a családja vagy az online kapcsolatai is érintettek. Szóljon nekik a { -product-name-nowrap }ról.
 unsub-headline = Leiratkozás a { -product-name-nowrap }ról
+unsub-blurb = Ez eltávolítja az e-mail címét a { -product-name-nowrap } listáról, és nem fog több figyelmeztetést kapni, ha új betöréseket jelentenek be.
 unsub-button = Leiratkozás
 unsub-survey-headline = Ön már nincs feliratkozva.
+unsub-survey-blurb =
+    Az e-mail címe leiratkozott a { -product-name-nowrap }ról. Köszönjük hogy használta a szolgáltatást.
+    Szán egy kis időt arra, hogy válaszoljon néhány kérdésre a tapasztalatairól?
 unsub-survey-form-label = Miért iratkozik le a { -product-name-nowrap } figyelmeztetésekről?
 unsub-reason-1 = Úgy gondolom, hogy a figyelmeztetések nem teszik biztonságosabbá az adataimat
 unsub-reason-2 = Túl sok e-mailt kapok a { -product-name-nowrap }tól
