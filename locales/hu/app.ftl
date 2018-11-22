@@ -134,12 +134,19 @@ what-to-do-blurb-1 =
     Ha nem tud bejelentkezni, lépjen kapcsolatba a webhellyel, és kérdezze meg, hogyan tudja visszaállítani vagy letiltani a fiókját.
     Olyan fiókot lát, amelyet nem ismer? A webhely megváltoztathatta a nevét, vagy más hozhatott létre fiókot Önnek.
 what-to-do-subhead-2 = Ha újra felhasznál egy kikerült jelszót, változtassa meg
+what-to-do-blurb-2 =
+    A hackerek megpróbálhatják újra felhasználni a kikerült jelszavát, hogy más fiókokba jussanak be.
+    Hozzon létre különböző jelszót minden webhelyhez, különösen a bankszámlájához,
+    e-mail fiókjához és más weboldalakon, ahol személyes adatokat ment el.
 what-to-do-subhead-3 = Tegyen további lépéseket a pénzügyi fiókok biztosításához
 what-to-do-blurb-3 =
     A legtöbb betörés csak e-mail címek és jelszavak kikerülését okozza, de néhány érzékeny pénzügyi adatokat is tartalmaz.
     Ha a bankszámlaszáma, vagy hitelkártyaszáma érintett volt egy betörésben, akkor értesítse a bankját a lehetséges csalásról,
     és kövesse a levonásokat, melyeket nem ismer fel.
 what-to-do-subhead-4 = Kapjon segítséget a jó jelszavak létrehozásában és biztonságban tartásában.
+what-to-do-blurb-4 =
+    Az olyan jelszókezelők, mint a 1Password, a LastPass, a Dashlane és a Bitwarden erős jelszavakat
+    állítanak elő, biztonságosan tárolják őket, és betöltik azokat a weboldalakon Ön helyett.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = A betörés dátuma:
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -147,6 +154,7 @@ compromised-accounts = Veszélyeztetett fiókok:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Veszélyeztetett adatok:
 confirmed = Megerősítve!<br />Ön feliratkozott!
+confirmed-blurb = A { -product-name-nowrap } hamarosan e-mailt küld a teljes jelentéssel, és figyelmeztetést fog küldeni, ha egy új bejelentett betörésben jelenik meg a fiókja.
 unsub-headline = Leiratkozás a { -product-name-nowrap }ról
 unsub-button = Leiratkozás
 unsub-survey-headline = Ön már nincs feliratkozva.
