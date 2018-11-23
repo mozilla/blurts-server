@@ -37,8 +37,8 @@ report-pwt-blurb =
     Parolele mai puternice îți protejează conturile și toate informațiile personale pe care le conțin.
 report-pwt-headline-1 = Folosește o parolă diferită pentru fiecare cont
 report-pwt-summary-1 =
-    Reutilizarea aceleiași parole peste tot deschide ușa pentru hackeri.
-    Aceștia pot folosi acea parolă pentru a se autentifica în celelalte conturi ale tale.
+    Reutilizarea aceleiași parole peste tot lasă ușa larg deschisă pentru hackeri.
+    Ei pot folosi acea parolă pentru a se autentifica în celelalte conturi pe care le ai.
 report-pwt-headline-2 = Creează parole puternice și unice
 report-pwt-summary-2 =
     Hackerii folosesc liste de parole comune ca să încerce să-ți ghicească parola.
