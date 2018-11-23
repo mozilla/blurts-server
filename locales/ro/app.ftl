@@ -129,9 +129,9 @@ compromised-accounts = Conturi compromise:
 compromised-data = Date compromise:
 confirmed = Confirmat!<br />Te-ai abonat!
 confirmed-blurb = { -product-name-nowrap } îți va trimite în curând un e-mail cu raportul complet și va transmite o alertă pe e-mail în cazul în care contul tău va apărea în breșe raportate noi.
-confirmed-social-blurb = Dacă datele tale au fost scurse în urma unei breșe, există șanse ca datele prietenilor, familiei sau a conexiunilor tale online să fi fost și ele la rândul lor. Dă-le de veste despre { -product-name-nowrap }.
+confirmed-social-blurb = Dacă ți-au fost compromise datele într-o breșă, există posibilitatea să fi fost compromise și datele prietenilor, familiei sau ale contactelor tale online. Spune-le despre { -product-name-nowrap }.
 unsub-headline = Dezabonează-te de la { -product-name-nowrap }
-unsub-blurb = Prin aceasta, adresa ta de e-mail va fi eliminată din lista { -product-name-nowrap } și nu vei mai primi alerte când sunt anunțate breșe noi.
+unsub-blurb = Prin dezabonare, adresa ta de e-mail va fi eliminată din lista { -product-name-nowrap } și nu vei mai primi alerte când sunt anunțate breșe noi.
 unsub-button = Dezabonează-te
 unsub-survey-headline = Nu mai ești abonat.
 unsub-survey-blurb = Adresa ta de e-mail este dezabonată de la { -product-name-nowrap }. Îți mulțumim pentru folosirea serviciului. Ești dispus(ă) să ne acorzi un minut ca să ne răspunzi la o întrebare despre experiența ta?
@@ -143,7 +143,7 @@ unsub-reason-4 = Am luat deja măsuri ca să-mi protejez conturile
 unsub-reason-5 = Folosesc un alt serviciu pentru monitorizarea conturilor
 unsub-reason-6 = Niciuna dintre cele de mai sus
 unsub-survey-thankyou = Îți mulțumim pentru feedback.
-unsub-survey-error = Te rugăm să selectezi una.
+unsub-survey-error = Te rugăm să selectezi o opțiune.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Distribuie
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.

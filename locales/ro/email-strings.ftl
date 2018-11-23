@@ -3,10 +3,10 @@
 click-to-verify = Selectează butonul Verifică-mi adresa de e-mail în maxim de 24 de ore pentru a-ți confirma contul Firefox Monitor. Vei primi apoi raportul în scurt timp.
 verify-my-email = Verifică-mi adresa de e-mail
 report-scan-another-email = Scanează altă adresă de e-mail în { -product-name }
-automated-message = Acesta este un e-mail automat; dacă l-ai primit din greșeală, nu este necesară nicio acțiune.
+automated-message = Acesta este un mesaj automat; dacă l-ai primit din greșeală, poți să-l ignori.
 # Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
 we-sent-this-alert = Am trimis acest mesaj către { $userEmail } deoarece adresa de e-mail a optat pentru alerte de la { -product-name }.
-unsubscribe-email-link = Dacă nu mai vrei alerte { -product-name }, dezabonează-te.
+unsubscribe-email-link = Dacă nu mai vrei să primești alerte { -product-name }, dezabonează-te.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Raport { -product-name }
 report-date = Data raportului:
@@ -15,12 +15,12 @@ email-address = Adresă de e-mail:
 your-full-report = Iată raportul complet { -product-name }, care include toate breșele cunoscute de date care conțin această adresă de e-mail.
 report-no-breaches =
     Adresa ta de e-mail nu a apărut în baza noastră de date cu breșe cunoscute.
-    Însă breșele se pot întâmpla oricând. Ia aceste măsuri pentru a-ți păstra în siguranță datele personale.
+    Însă breșele se pot întâmpla oricând. Ia aceste măsuri pentru a-ți păstra datele personale în siguranță.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Ce poți face de acum înainte
 report-headline =
     { $breachCount ->
-        [0] Totul este în regulă până în prezent.
+        [0] Totul este în regulă până acum.
         [one] Contul tău a apărut într-o breșă.
         [few] Contul tău a apărut în { $breachCount } breșe.
        *[other] Contul tău a apărut în { $breachCount } de breșe.
@@ -34,7 +34,7 @@ breach-alert-headline = Contul tău a fost implicat într-o breșă de date.
 breach-alert-subhead = O breșă de date raportată recent conține adresa ta de e-mail și următoarele date
 report-pwt-blurb =
     Parolele sunt atât de valoroase, încât mii dintre ele sunt furate în fiecare zi și tranzacționate sau vândute pe piața neagră.
-    Parolele mai puternice îți protejează conturile și toate informațiile personale care există în acestea.
+    Parolele mai puternice îți protejează conturile și toate informațiile personale pe care le conțin.
 report-pwt-headline-1 = Folosește o parolă diferită pentru fiecare cont
 report-pwt-summary-1 =
     Reutilizarea aceleiași parole peste tot deschide ușa pentru hackeri.
