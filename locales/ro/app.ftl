@@ -36,7 +36,7 @@ user-verify-title = { -product-name } : Abonat
 user-unsubscribe-token-error = Este necesar un jeton pentru dezabonare.
 user-unsubscribe-token-email-error = Este necesar un jeton și emailHash pentru dezabonare.
 user-unsubscribe-title = { -product-name } : Dezabonare
-user-unsubscribe-survey-title = { -product-name } : Chestionar în urma dezabonării
+user-unsubscribe-survey-title = { -product-name } : Chestionar la dezabonare
 user-unsubscribed-title = { -product-name } : Dezabonat
 
 ## Password Tips
@@ -87,7 +87,7 @@ form-signup-placeholder = Introdu adresa de e-mail
 form-signup-checkbox = Primește cele mai recente știri despre { -brand-Mozilla } și { -brand-name }.
 sign-up = Înregistrează-te
 form-signup-error = Trebuie să fie o adresă de e-mail validă
-no-breaches-headline = Totul este în regulă până în prezent.
+no-breaches-headline = Până acum totul este în regulă.
 found-breaches-headline = Informațiile tale au fost implicate într-o breșă de date.
 no-breaches = Adresa ta de e-mail nu apare în scanarea noastră de bază. E de bine, numai că breșele de date se pot petrece în orice moment și sunt încă multe măsuri pe care le poți lua. Abonează-te la { -product-name-nowrap } pentru un raport complet, alerte când au loc breșe de date și ponturi despre protejarea parolelor.
 featured-breach-results =
@@ -136,14 +136,14 @@ unsub-button = Dezabonează-te
 unsub-survey-headline = Nu mai ești abonat.
 unsub-survey-blurb = Adresa ta de e-mail este dezabonată de la { -product-name-nowrap }. Îți mulțumim pentru folosirea serviciului. Ești dispus(ă) să ne acorzi un minut ca să ne răspunzi la o întrebare despre experiența ta?
 unsub-survey-form-label = De ce te dezabonezi de la alertele { -product-name-nowrap }?
-unsub-reason-1 = Cred că alertele nu fac datele mele mai sigure
+unsub-reason-1 = Consider că alertele nu îmi fac datele mai sigure
 unsub-reason-2 = Primesc prea multe e-mailuri de la { -product-name-nowrap }
-unsub-reason-3 = Nu consider serviciul ca fiind unul util
-unsub-reason-4 = Am luat deja măsuri pentru a-mi proteja conturile
-unsub-reason-5 = Folosesc un alt serviciu pentru a-mi monitoriza conturile
+unsub-reason-3 = Nu consider că serviciul este util
+unsub-reason-4 = Am luat deja măsuri ca să-mi protejez conturile
+unsub-reason-5 = Folosesc un alt serviciu pentru monitorizarea conturilor
 unsub-reason-6 = Niciuna dintre cele de mai sus
 unsub-survey-thankyou = Îți mulțumim pentru feedback.
-unsub-survey-error = Te rugăm să selectezi una,
+unsub-survey-error = Te rugăm să selectezi una.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Distribuie
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.

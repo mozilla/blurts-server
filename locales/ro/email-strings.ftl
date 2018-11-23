@@ -17,7 +17,7 @@ report-no-breaches =
     Adresa ta de e-mail nu a apărut în baza noastră de date cu breșe cunoscute.
     Însă breșele se pot întâmpla oricând. Ia aceste măsuri pentru a-ți păstra în siguranță datele personale.
 # A list of next steps someone should take if their information has been involved in a data breach.
-what-to-do-next = Pași de urmat
+what-to-do-next = Ce poți face de acum înainte
 report-headline =
     { $breachCount ->
         [0] Totul este în regulă până în prezent.
