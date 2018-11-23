@@ -160,5 +160,5 @@ copyright-info =
     Porțiuni din acest conținut sunt scrise între &#x24B8; 1998-2018 de colaboratori individuali mozilla.org. <br />
     Conținut disponibil sub o <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">licență Creative Commons</a>.
 # Breach data provided by Have I Been Pwned.
-hibp-attribution = Datele privind breșele sunt furnizate de { $hibp-link }
-site-description = Au fost compromise sau furate conturile tale într-o breșă de date? Află la { -product-name }. Caută în baza noastră de date și înregistrează-te pentru alerte.
+hibp-attribution = Datele despre breșe sunt furnizate de { $hibp-link }
+site-description = Ți-au fost compromise sau furate conturile într-o breșă de date? Află la { -product-name }. Caută în baza noastră de date și înregistrează-te pentru alerte.
