@@ -1,6 +1,6 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
-click-to-verify = Selectează butonul Verifică-mi adresa de e-mail în decurs de 24 de ore pentru a-ți confirma contul Firefox Monitor. Raportul tău va fi apoi pe drum.
+click-to-verify = Selectează butonul Verifică-mi adresa de e-mail în maxim de 24 de ore pentru a-ți confirma contul Firefox Monitor. Vei primi apoi raportul în scurt timp.
 verify-my-email = Verifică-mi adresa de e-mail
 report-scan-another-email = Scanează altă adresă de e-mail în { -product-name }
 automated-message = Acesta este un e-mail automat; dacă l-ai primit din greșeală, nu este necesară nicio acțiune.
