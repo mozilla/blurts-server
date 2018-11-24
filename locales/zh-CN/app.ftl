@@ -107,7 +107,7 @@ no-breaches-headline = 目前为止还不错。
 found-breaches-headline = 您的信息出现在过去的数据外泄事件中。
 no-breaches =
     您的电子邮件地址未出现在我们的基本扫描数据中。
-    这是个好消息，但数据外泄事件可能随时发生，您还有更多事情可以做。
+    这是个好消息，但数据外泄事件随时都可能发生，您还有更多事情可以做。
     订阅 { -product-name-nowrap } 以获取完整报告，在发生新数据外泄事件时收到警报，以及保护密码的小贴士。
 featured-breach-results =
     { $breachCount ->
