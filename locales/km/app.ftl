@@ -49,6 +49,7 @@ signup-modal-sent = បាន​ផ្ញើ!
 signup-with-fxa = ចុះ​ឈ្មោះ​ជា​មួយ​គណនី { -brand-name }
 form-signup-placeholder = បញ្ចូល​អ៊ីមែល
 form-signup-checkbox = ទទួល​បាន​ចុង​ក្រោយ​បង្អស់​ពី { -brand-Mozilla } និង { -brand-name } ។
+sign-up = ចុះ​ឈ្មោះ
 form-signup-error = ត្រូវ​តែ​ជា​អ៊ីម៉ែល​ត្រឹមត្រូវ
 show-more-breaches = បង្ហាញ​បន្ថែម​ទៀត
 # compromised accounts = the total number of user accounts exposed in data breach
