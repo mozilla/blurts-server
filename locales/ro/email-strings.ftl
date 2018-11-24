@@ -20,7 +20,7 @@ report-no-breaches =
 what-to-do-next = Ce poți face de acum înainte
 report-headline =
     { $breachCount ->
-        [0] Totul este în regulă până acum.
+        [0] Până acum totul este în regulă.
         [one] Contul tău a apărut într-o breșă.
         [few] Contul tău a apărut în { $breachCount } breșe.
        *[other] Contul tău a apărut în { $breachCount } de breșe.
