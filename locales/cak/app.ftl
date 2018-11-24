@@ -21,9 +21,11 @@ error-not-subscribed = Man rutz'ib'an ta rub'i' re rochochib'al taqoya'l re' { -
 error-hibp-throttled = K'ïy taq rokem ri { -brand-HIBP }.
 error-hibp-connect = Xsach toq nok pa { -brand-HIBP }.
 error-hibp-load-breaches = Man xesamajib'ëx ta ri taq mak.
+hibp-notify-email-subject = { -product-name } K'ayewal: Ri ataqoya'l xk'oje' pa mak.
 home-title = { -product-name }
 home-not-found = Man xilitäj ta ruxaq.
 oauth-invalid-session = Man okel ta ri molojri'ïl
+oauth-confirmed-title = { -product-name } : Juxun
 user-add-invalid-email = Man okel ta ri Taqoya'l
 
 ## Password Tips
