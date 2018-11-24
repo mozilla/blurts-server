@@ -108,6 +108,8 @@ unsub-survey-thankyou = Tanemmirt ɣef tekti-ik.
 unsub-survey-error = Ma ulac aɣilif, fren yiwen.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Bḍu
+# Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
+tweet = Atwit
 download-firefox-quantum = Sider { -brand-Quantum }
 download-firefox-mobile = Sider { -brand-name } aziraz
 # Features here refers to Firefox browser features. 

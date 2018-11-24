@@ -19,6 +19,7 @@ dates-of-birth = Izmaz n tlalit
 device-information = Talɣut n yibenk
 email-addresses = Tansiwin imayl
 email-messages = Iznan imayl
+ip-addresses = Tansiwin IP
 names = Ismawen
 passwords = Awalen uffiren
 photos = Tiwlafin
