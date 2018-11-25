@@ -81,6 +81,7 @@ scan-privacy = Ваш адрес электронной почты не буде
 scan-submit = Поищите ваш адрес электронной почты
 scan-another-email = Сканировать другой адрес электронной почты
 scan-featuredbreach-label = Узнайте, был ли скомпрометирован ваш аккаунт <span class="bold"> { $featuredBreach } </span>.
+sensitive-breach-email-required = В утечке данных содержится личная информация. Необходимо подтвердить электронную почту.
 scan-error = Должен быть действительным адресом электронной почты.
 signup-banner-headline = { -product-name-nowrap } сообщает об угрозах для ваших аккаунтов.
 signup-banner-blurb =
