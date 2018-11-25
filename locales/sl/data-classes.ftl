@@ -55,6 +55,7 @@ homepage-urls = spletni naslovi domačih strani
 imei-numbers = številke IMEI
 imsi-numbers = številke IMSI
 income-levels = ravni dohodka
+instant-messenger-identities = Identitete neposrednega sporočanja
 ip-addresses = naslovi IP
 job-titles = službeni nazivi
 mac-addresses = naslovi MAC

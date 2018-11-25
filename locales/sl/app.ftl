@@ -43,6 +43,10 @@ user-unsubscribed-title = { -product-name }: Odjavljeno
 
 pwt-section-headline = Močnejša gesla = boljša zaščita
 pwt-section-subhead = Vaši zasebni podatki so varni toliko, kolikor so varna vaša gesla.
+pwt-section-blurb =
+    Vaša gesla ščitijo več kot le vaše račune. Ščitijo vse osebne podatke, ki se v njih nahajajo.
+    In napadalci se zanašajo na slabe navade uporabnikov, kot je uporaba istega gesla na vseh mestih ali pogostih gesel (npr. 123456),
+    zato imajo po vdoru v en račun lahko dostop do mnogih. Naučite se bolje zaščititi svoje račune.
 pwt-headline-1 = Za vsak račun uporabljajte drugačno geslo
 pwt-summary-1 =
     Uporaba istega gesla v vseh računih pušča odprta vrata kraji vaše identitete.
@@ -74,6 +78,7 @@ scan-privacy = Vaš e-poštni naslov ne bo shranjen.
 scan-submit = Poiščite vaš e-poštni naslov
 scan-another-email = Preverite drug e-poštni naslov
 scan-featuredbreach-label = Preverite, ali je bil vaš račun <span class="bold">{ $featuredBreach }</span> ogrožen.
+sensitive-breach-email-required = Kraja vključuje občutljive podatke. Zahtevana je potrditev e-poštnega naslova.
 scan-error = E-poštni naslov mora biti veljaven.
 signup-banner-headline = { -product-name-nowrap } zazna grožnje vašim spletnim računom.
 signup-banner-blurb =
