@@ -78,6 +78,7 @@ scan-privacy = No se guardará tu correo electrónico.
 scan-submit = Busca tu correo electrónico
 scan-another-email = Analizar otra dirección de correo electrónico
 scan-featuredbreach-label = Descubre si tu cuenta de <span class="bold">{ $featuredBreach }</span> fue comprometida.
+sensitive-breach-email-required = La filtración contiene información confidencial. Se requiere verificación de correo.
 scan-error = Debe ser un correo electrónico válido.
 signup-banner-headline = { -product-name-nowrap } detecta amenazas a tus cuentas en línea.
 signup-banner-blurb =
