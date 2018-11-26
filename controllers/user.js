@@ -43,8 +43,8 @@ function getShareByEmail(req) {
 
   const shareByEmailStrings = [
     req.fluentFormat("share-by-email-subject"),
-    req.fluentFormat("share-by-email-message", {markup: ""}),
-    `${req.fluentFormat("share-by-email-step-1", {link: "https://monitor.firefox.com/"})}`,
+    req.fluentFormat("share-by-email-message", {markup: "\n"}),
+    `${req.fluentFormat("share-by-email-step-1", {link: "https://monitor.firefox.com"})}`,
     `${req.fluentFormat("share-by-email-step-2")}`,
     `${req.fluentFormat("share-by-email-step-3")}`,
   ];
@@ -53,7 +53,7 @@ function getShareByEmail(req) {
     shareByEmailStrings[index] = encodeURIComponent(string);
   });
 
-  const subject = `${shareByEmailStrings.shift()}%0D%0A%0D%0A`;
+  const subject = `${shareByEmailStrings.shift()}%0D%0A`;
   const body = shareByEmailStrings.join("%0D%0A");
 
   return {
@@ -65,12 +65,12 @@ function getShareByEmail(req) {
     "yahoo" : {
       client: "Yahoo",
       class: "yahoo",
-      href: `"https://compose.mail.yahoo.com/?subject=${subject}&body=${body}`,
+      href: `https://compose.mail.yahoo.com/?subject=${subject}&body=${body}`,
     },
     "outlook" : {
       client: "Outlook",
       class: "outlook",
-      href: `https://outlook.live.com/mail/EditMessageLight.aspx?n=&amp;subject=${subject}&body=${body}`,
+      href: `https://outlook.live.com/mail/deeplink/compose/?subject=${subject}&body=${body}`,
     },
     "default-email" : {
       client: "Other",
