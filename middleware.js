@@ -84,7 +84,10 @@ function clientErrorHandler (err, req, res, next) {
 
 function errorHandler (err, req, res, next) {
   res.status(500);
-  res.render("error", { message: err.message });
+  res.render("subpage", {
+    headline: "Error",
+    subhead: err.message,
+  });
 }
 
 

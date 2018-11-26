@@ -92,9 +92,7 @@ function ga_getLocation() {
   if (document.getElementById("confirmation")) {
     return "Account Confirmation Page";
   }
-  if (document.getElementById("error-message")) {
-    return "Error Page";
-  }
+  return "Firefox Monitor";
 }
 
 

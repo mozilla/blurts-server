@@ -26,7 +26,9 @@ function home(req, res) {
 
 function notFound(req, res) {
   res.status(404);
-  res.render("error", { message: req.fluentFormat("home-not-found") });
+  res.render("subpage", {
+    headline: "Error",
+    subhead: req.fluentFormat("home-not-found") });
 }
 
 module.exports = {
