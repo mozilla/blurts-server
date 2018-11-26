@@ -82,7 +82,7 @@ legal = Legal
 share-by-email-subject = See if you’ve been part of a data breach.
 
 # Share Firefox Monitor by email message. Followed by steps about how Firefox Monitor works. 
-share-by-email-message = Hi, { $markup }{-brand-name} has a free service where you can check to see if you've been part of a data breach. Here’s how it works:
+share-by-email-message = Hi, { $markup }{-brand-name} has a free service where you can check to see if you’ve been part of a data breach. Here’s how it works:
 
 share-by-email-step-1 = 1. Go to { $link } and search your email.
 share-by-email-step-2 = 2. See if your online accounts have been exposed in a data breach.
