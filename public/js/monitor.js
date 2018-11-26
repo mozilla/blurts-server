@@ -59,6 +59,10 @@ const eventList = {
     "eventCategory": "Link Clicks",
     "eventAction": "Link Click",
   },
+  "ShareByEmail": {
+    "eventCategory": "ShareByEmail",
+    "eventAction": "Shared Firefox Monitor",
+  },
 };
 
 // determines which page the event occurs and is sent to google analytics in ga_sendPing() as the eventLabel or custom dimension.
@@ -422,6 +426,8 @@ function restoreInputs() {
 
 //prevents footer from covering stuff up
 
+document.addEventListener("touchstart", function(){}, true);
+
 window.addEventListener("pageshow", function() {
   ga_sendPing("Pageview", false);
 
@@ -434,7 +440,7 @@ if(document.forms) {
   addFormListeners();
 }
 
-if (document.getElementById("confirmation")) {
+if (document.getElementById("subpage")) {
   document.querySelector("header").querySelector(".social-media-sharing-buttons").classList.add("hide");
 }
 

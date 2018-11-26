@@ -1,0 +1,11 @@
+{{!< default }}
+
+<section id="subpage" class="subpage">
+  <section class="section-wrapper">
+    <h2 class="section-headline whole" tabindex="1">{{{ headline }}}</h2>
+    <p class="sub-head whole" tabindex="1">{{{ subhead }}}</p>
+    {{#if whichPartial}}
+      {{> (lookup . 'whichPartial') }}
+    {{/if}}
+  </section>
+</section>
