@@ -39,6 +39,46 @@ async function add(req, res) {
   });
 }
 
+function getShareByEmail(req) {
+
+  const shareByEmailStrings = [
+    req.fluentFormat("share-by-email-subject"),
+    req.fluentFormat("share-by-email-message", {markup: ""}),
+    `${req.fluentFormat("share-by-email-step-1", {link: "https://monitor.firefox.com/"})}`,
+    `${req.fluentFormat("share-by-email-step-2")}`,
+    `${req.fluentFormat("share-by-email-step-3")}`,
+  ];
+
+  shareByEmailStrings.forEach((string, index) => {
+    shareByEmailStrings[index] = encodeURIComponent(string);
+  });
+
+  const subject = `${shareByEmailStrings.shift()}%0D%0A%0D%0A`;
+  const body = shareByEmailStrings.join("%0D%0A");
+
+  return {
+    "gmail" : {
+      client: "Gmail",
+      class: "gmail",
+      href: `https://mail.google.com/mail/?view=cm&fs=1&su=${subject}&body=${body}`,
+    },
+    "yahoo" : {
+      client: "Yahoo",
+      class: "yahoo",
+      href: `"https://compose.mail.yahoo.com/?subject=${subject}&body=${body}`,
+    },
+    "outlook" : {
+      client: "Outlook",
+      class: "outlook",
+      href: `https://outlook.live.com/mail/EditMessageLight.aspx?n=&amp;subject=${subject}&body=${body}`,
+    },
+    "default-email" : {
+      client: "Other",
+      class: "default-email-client",
+      href: `mailto:?subject=${subject}&body=${body}`,
+    },
+  };
+}
 
 async function verify(req, res) {
   if (!req.query.token) {
@@ -54,28 +94,27 @@ async function verify(req, res) {
     req.app.locals.breaches
   );
 
-  const supportedLocales = EmailUtils.getSupportedLocales(req);
-  const buttonValue = req.fluentFormat("report-scan-another-email");
-  const whichView = "email_partials/report";
-
   await EmailUtils.sendEmail(
     verifiedEmailHash.email,
     req.fluentFormat("user-verify-email-report-subject"),
     "default_email",
     {
-      supportedLocales,
+      supportedLocales: EmailUtils.getSupportedLocales(req),
       email: verifiedEmailHash.email,
-      date: HBSHelpers.prettyDate(supportedLocales, new Date()),
+      date: HBSHelpers.prettyDate(req.supportedLocales, new Date()),
       unsafeBreachesForEmail: unsafeBreachesForEmail,
       unsubscribeUrl: unsubscribeUrl,
-      buttonValue,
-      whichView,
+      buttonValue: req.fluentFormat("report-scan-another-email"),
+      whichView: "email_partials/report",
     }
   );
 
-  res.render("confirm", {
+  res.render("subpage", {
+    headline: req.fluentFormat("confirmation-headline"),
+    subhead: req.fluentFormat("confirmation-blurb"),
     title: req.fluentFormat("user-verify-title"),
-    email: verifiedEmailHash.email,
+    whichPartial: "subpages/confirm",
+    emailLinks: getShareByEmail(req),
   });
 }
 

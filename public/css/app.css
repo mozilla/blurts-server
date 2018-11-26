@@ -1380,22 +1380,144 @@ footer .copyright-info a {
   color: var(--blue40);
 }
 
+/* SUBPAGES */
+
+.subpage {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 75vh;
+  margin-top: 0;
+}
+
+.subpage .section-wrapper > * {
+  margin-bottom: var(--gap);
+  display: block;
+  margin-top: 0;
+}
+
+.subpage p {
+  padding-right: 30%;
+}
+
 /* CONFIRMATION */
 
-#confirmation h4.secondary-title,
-#confirmation .whole.sub-head {
-  font-size: 18px;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-  display: block;
+.confirmation ul li {
+  width: 100%;
+  min-width: 200px;
+  max-width: 200px;
+  text-align: center;
 }
 
-#confirmation h4.secondary-title {
-  margin-top: calc(var(--gap) * 2);
+.confirmation ul li a,
+.confirmation li a span {
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
-#confirmation .section-wrapper {
-  padding: 60px 30px;
+.confirmation ul li a {
+  font-weight: 500;
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  transition: background-color 0.25s ease;
+}
+
+.confirmation li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: background-color 0.15s ease;
+}
+
+ul.email-options {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  -webkit-perspective-origin: 50% 200%;
+  perspective-origin: 50% 200%;
+  transform: translateY(-4px);
+  position: absolute;
+  transition: opacity 0.3s ease, transform 0.15s ease, visibility 0.4s ease;
+}
+
+li.email-options-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+ul.sharing-options li a,
+li.email-options-wrapper {
+  border: 3px solid white;
+  border-radius: 2px;
+}
+
+ul.email-options li.email-options-wrapper a {
+  border: 0 solid white;
+}
+
+ul.sharing-options li:hover ul.email-options {
+  visibility: visible;
+  pointer-events: all;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.01s ease;
+}
+
+ul.sharing-options li {
+  flex: 1 1 20%;
+  display: inline-block;
+  margin-right: calc(var(--gap) / 2);
+}
+
+/* confirmation sprites */
+
+.email::before {
+  background: url("/img/confirm-sprites.png") 0 0;
+}
+
+.twitter::before {
+  background: url("/img/confirm-sprites.png") -25px 0;
+}
+
+.facebook::before {
+  background: url("/img/confirm-sprites.png") -48px 0;
+}
+
+.gmail::before {
+  background: url("/img/confirm-sprites.png") -95px 0;
+}
+
+.yahoo::before {
+  background: url("/img/confirm-sprites.png") -73px 0;
+}
+
+.outlook::before {
+  background: url("/img/confirm-sprites.png") -120px 0;
+}
+
+.default-email-client::before {
+  background: url("/img/confirm-sprites.png") 0 0;
+}
+
+.confirmation ul li span::before {
+  content: '';
+  display: inline-block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 25px;
+  min-width: 25px;
+  margin-top: 2px;
+}
+
+.email-option::before {
+  margin-right: 3px;
 }
 
 /* WAVES GRAPHIC */
@@ -1634,8 +1756,30 @@ form.show-thankyou span.thank-you-message {
     text-align: left;
   }
 
+  .subpage p,
   .unsubscribe-content p {
     padding-right: 0;
+  }
+
+  .confirmation ul.sharing-options li {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    margin-bottom: var(--gap);
+  }
+
+  /* sharing-option titles */
+  .confirmation ul.sharing-options li span {
+    min-width: 80px;
+  }
+
+  /* sharing-option icons */
+  .confirmation ul.sharing-options li span::before {
+    margin-right: 3px;
+  }
+
+  ul.email-options {
+    display: none;
   }
 }
 
