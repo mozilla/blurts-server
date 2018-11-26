@@ -1,5 +1,8 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+click-to-verify =
+    Válassza az E-mail megerősítése gombot 24 órán belül, hogy megerősítse a Firefox Monitor fiókját.
+    A jelentés utána kerül elküldésre.
 verify-my-email = E-mail cím megerősítése
 report-scan-another-email = Keressen még egy e-mailre a { -product-name }ban
 automated-message = Ez egy automatikus üzenet, ha úgy véli tévedésből kapta, akkor nincs teendője.
