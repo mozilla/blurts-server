@@ -1520,42 +1520,7 @@ ul.sharing-options li {
   margin-right: 3px;
 }
 
-/* WAVES GRAPHIC */
-
-.content-wrap {
-  width: 100%;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  position: relative;
-  height: 100%;
-  pointer-events: none;
-  min-height: 75vh;
-  background-image: url("/img/wave-footer.svg");
-  background-position: 0 100%;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.content-wrap > * {
-  pointer-events: all;
-}
-
 /* UNSUBSCRIBE CONTENT */
-
-section.unsubscribe-content.section-wrapper {
-  padding-bottom: var(--gap);
-  margin: var(--gap) auto;
-}
-
-.unsubscribe-content p {
-  padding-right: 30%;
-  display: block;
-}
-
-.unsubscribe-content .section-headline {
-  margin-bottom: var(--gap);
-  display: block;
-}
 
 form span.secondary-title.whole {
   display: block;
@@ -1618,7 +1583,27 @@ form.show-thankyou span.thank-you-message {
   max-width: 500px;
 }
 
-/* // PLACEHOLDER media screens */
+/* WAVES GRAPHIC */
+
+.content-wrap {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative;
+  height: 100%;
+  pointer-events: none;
+  min-height: 75vh;
+  background-image: url("/img/wave-footer.svg");
+  background-position: 0 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.content-wrap > * {
+  pointer-events: all;
+}
+
+/* //media screens */
 
 @media screen and (min-width: 2200px) {
   body {
@@ -1756,8 +1741,7 @@ form.show-thankyou span.thank-you-message {
     text-align: left;
   }
 
-  .subpage p,
-  .unsubscribe-content p {
+  .subpage p {
     padding-right: 0;
   }
 
