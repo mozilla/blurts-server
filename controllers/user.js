@@ -129,8 +129,11 @@ async function getUnsubscribe(req, res) {
     throw new FluentError("error-not-subscribed");
   }
 
-  res.render("unsubscribe", {
+  res.render("subpage", {
     title: req.fluentFormat("user-unsubscribe-title"),
+    headline: req.fluentFormat("unsub-headline"),
+    subhead: req.fluentFormat("unsub-blurb"),
+    whichPartial: "subpages/unsubscribe",
     token: req.query.token,
     hash: req.query.hash,
   });
@@ -159,8 +162,11 @@ function getUnsubSurvey(req, res) {
   if(!req.session.unsub) {
     throw new FluentError("error-not-subscribed");
   }
-  res.render("unsubscribe_survey", {
+  res.render("subpage", {
   title: req.fluentFormat("user-unsubscribe-survey-title"),
+  headline: req.fluentFormat("unsub-survey-headline"),
+  subhead: req.fluentFormat("unsub-survey-blurb"),
+  whichPartial: "subpages/unsubscribe_survey",
   UNSUB_REASONS,
   });
 }

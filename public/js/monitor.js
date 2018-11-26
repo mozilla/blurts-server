@@ -83,10 +83,10 @@ function ga_getLocation() {
   if (document.getElementById("no-breaches")) {
       return "Scan Results - no breaches";
   }
-  if (document.getElementById("unsubscribe-form")) {
+  if (document.getElementById("unsubscribe")) {
     return "Unsubscribe Page";
   }
-  if (document.getElementById("unsubscribe-survey-form")) {
+  if (document.getElementById("unsubscribe-survey")) {
     return "Unsubscribe Survey";
   }
   if (document.getElementById("confirmation")) {

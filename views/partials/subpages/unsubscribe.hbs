@@ -1,0 +1,10 @@
+<section id="unsubscribe" class="half">
+  <form action="/user/unsubscribe" class="form-group" method="post" id="unsubscribe-form">
+    <input type="hidden" name="token" value="{{ token }}">
+    <input type="hidden" name="emailHash" value="{{ hash }}">
+    <div class="input-group-button">
+      <input type="submit" class="button submit transparent-button" value="{{fluentFormat req.supportedLocales "unsub-button"}}" data-server-url="{{ SERVER_URL }}">
+      <img class="loader" src="/img/loader.gif" alt="" />
+    </div>
+  </form>
+</section>
