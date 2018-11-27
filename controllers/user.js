@@ -41,20 +41,8 @@ async function add(req, res) {
 
 function getShareByEmail(req) {
 
-  const shareByEmailStrings = [
-    req.fluentFormat("share-by-email-subject"),
-    req.fluentFormat("share-by-email-message", {markup: "\n"}),
-    `${req.fluentFormat("share-by-email-step-1", {link: "https://monitor.firefox.com"})}`,
-    `${req.fluentFormat("share-by-email-step-2")}`,
-    `${req.fluentFormat("share-by-email-step-3")}`,
-  ];
-
-  shareByEmailStrings.forEach((string, index) => {
-    shareByEmailStrings[index] = encodeURIComponent(string);
-  });
-
-  const subject = `${shareByEmailStrings.shift()}%0D%0A`;
-  const body = shareByEmailStrings.join("%0D%0A");
+  const subject = encodeURIComponent(req.fluentFormat("share-by-email-subject"));
+  const body = encodeURIComponent(req.fluentFormat("share-by-email-message"));
 
   return {
     "gmail" : {
@@ -70,10 +58,10 @@ function getShareByEmail(req) {
     "outlook" : {
       client: "Outlook",
       class: "outlook",
-      href: `https://outlook.live.com/mail/deeplink/compose/?subject=${subject}&body=${body}`,
+      href: `https://outlook.live.com/owa/?path=/mail/action/compose&to=service%40domain.com&subject=${subject}&body=${body}`,
     },
     "default-email" : {
-      client: "Other",
+      client: req.fluentFormat("share-other"),
       class: "default-email-client",
       href: `mailto:?subject=${subject}&body=${body}`,
     },
