@@ -439,15 +439,7 @@ if(document.forms) {
 }
 
 if (document.getElementById("subpage")) {
-  document.querySelector("header").querySelector(".social-media-sharing-buttons").classList.add("hide");
-}
-
-if (document.getElementById("unsubscribe-survey-form") || document.getElementById("unsubscribe-form") || document.getElementById("error-page-content")) {
-  document.querySelector("header").querySelector(".social-media-sharing-buttons").classList.add("hide");
-
-  if(document.getElementById("download-firefox-bar")) {
-    document.getElementById("download-firefox-bar").classList.add("hide");
-  }
+  document.body.classList.add("sub");
 }
 
 if (document.getElementById("no-breaches")) {
