@@ -1,5 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 click-to-verify =
     Selecione o botão Verificar o meu email dentro de 24 horas para confirmar a sua conta do Firefox Monitor.
     O seu relatório então estará a caminho.
@@ -46,7 +48,7 @@ report-pwt-summary-2 =
     Quanto mais longa e mais aleatória for a sua palavra-passe, mais difícil será furtá-la.
 report-pwt-headline-3 = Trate as questões de segurança como palavras-passe extra
 report-pwt-summary-3 =
-    Os websites não verificam se as suas respostas são precisas, apenas que estas correspondem a todas as vezes.
+    Os websites não verificam se as suas respostas são precisas, apenas que estas correspondem todas as vezes.
     Crie respostas longas e aleatórias e armazene-as em algum lugar seguro.
 report-pwt-headline-4 = Utilize um gestor de palavras-passe
 report-pwt-summary-4 =
@@ -54,3 +56,12 @@ report-pwt-summary-4 =
     e preenchem-nas em websites para que não precise de se lembrar de cada uma delas.
 # A link to legal information about mozilla products.
 legal = Informações legais
+# Share Firefox Monitor by email subject line
+share-by-email-subject = Veja se fez parte de uma brecha de dados.
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    Olá,
+    O { -brand-name } tem um serviço gratuito onde pode verificar se fez parte de uma brecha de dados. É assim que funciona:
+    1. Vá a { "https://monitor.firefox.com" } e pesquise o seu email.
+    2. Veja se suas contas online foram expostas numa brecha de dados.
+    3. Obtenha dicas do { -product-name } acerca do que fazer a seguir.

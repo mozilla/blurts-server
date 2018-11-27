@@ -50,14 +50,14 @@ pwt-section-blurb =
 pwt-headline-1 = Utilize uma palavra-passe diferente para cada conta
 pwt-summary-1 =
     Reutilizar a mesma palavra-passe em todos os lugares deixa a porta aberta para o roubo de identidade.
-    Qualquer pessoa com essa palavra-passe pode fazer iniciar sessão em todas as suas contas.
+    Qualquer pessoa com essa palavra-passe pode iniciar sessão em todas as suas contas.
 pwt-headline-2 = Crie palavras-passe fortes e difíceis de adivinhar
 pwt-summary-2 =
     Os hackers utilizam centenas de palavras-passe comuns para tentar adivinhar as suas.
     Quanto mais longa e mais aleatória for a sua palavra-passe, mais difícil será adivinhar.
 pwt-headline-3 = Trate as questões de segurança como palavras-passe extra
 pwt-summary-3 =
-    Os websites não verificam se as suas respostas são precisas, apenas que estas correspondem a todas as vezes.
+    Os websites não verificam se as suas respostas são precisas, apenas que estas correspondem todas as vezes.
     Crie respostas longas e aleatórias e armazene-as em algum lugar seguro.
 pwt-headline-4 = Obtenha ajuda para se lembrar das suas palavras-passe
 pwt-summary-4 =
@@ -67,7 +67,7 @@ pwt-headline-5 = Adicione segurança extra com autenticação de dois fatores
 pwt-summary-5 =
     O 2FA exige um pedaço de informação adicional (como um código único enviado por mensagem de texto) para iniciar sessão na sua conta.
     Mesmo que alguém tenha a sua palavra-passe, não poderão entrar.
-pwt-headline-6 = Registar-se para alertas do { -product-name-nowrap }
+pwt-headline-6 = Registe-se para alertas do { -product-name-nowrap }
 pwt-summary-6 =
     As brechas de dados de website estão em ascensão. Assim que uma nova brecha for adicionada à nossa base de dados,
     o { -product-name-nowrap } envia-lhe um alerta — para que possa tomar medidas e proteger a sua conta.
@@ -201,3 +201,4 @@ share-other = Outro
 share-twitter = A maioria das pessoas tem cerca de 100 contas online. Alguma das suas foi exposta numa brecha de dados? Descubra.
 share-facebook-headline = Descubra se fez parte de uma brecha de dados
 share-facebook-blurb = Alguma das suas contas online foi exposta numa brecha de dados?
+og-site-description = Descubra se fez parte de uma brecha de dados com o { -product-name }. Registe-se para receber alertas acerca de futuras brechas e receba dicas para manter as suas contas seguras.
