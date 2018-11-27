@@ -72,7 +72,7 @@ landing-headline = Vaša pravica do varnega zavetja pred hekerji se začne tukaj
 landing-blurb =
     { -product-name-nowrap } vas opremi z orodji, ki vaše osebne podatke ohranjajo varne.
     Ugotovite, kaj o vas hekerji že vedo, in se naučite, kako ostati korak pred njimi.
-scan-label = Preverite, ali ste bili vpleteni v kršitev podatkov.
+scan-label = Preverite, ali ste bili vpleteni v krajo podatkov.
 scan-placeholder = Vnesite e-poštni naslov
 scan-privacy = Vaš e-poštni naslov ne bo shranjen.
 scan-submit = Poiščite vaš e-poštni naslov
