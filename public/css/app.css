@@ -1320,13 +1320,27 @@ footer .copyright-info a {
 
 /* SUBPAGES */
 
+body.sub .download-firefox-bar,
+body.sub .social-media-sharing-buttons {
+  display: none;
+}
+
+body.sub .content-wrap {
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+}
+
 .subpage {
   justify-content: center;
   align-items: center;
   display: flex;
   flex-direction: column;
-  min-height: 75vh;
+  min-height: 55vh;
   margin-top: 0;
+}
+
+.subpage .section-wrapper {
+  overflow: visible;
 }
 
 .subpage .section-wrapper > * {
@@ -1341,21 +1355,37 @@ footer .copyright-info a {
 
 /* CONFIRMATION */
 
-.confirmation ul li {
-  width: 100%;
-  min-width: 200px;
-  max-width: 200px;
-  text-align: center;
+.confirmation.whole {
+  margin-top: calc(var(--gap) / 2);
+  margin-bottom: 0;
 }
 
-.confirmation ul li a,
-.confirmation li a span {
+.sharing-options li {
+  width: 100%;
+  max-width: 200px;
+  flex: 1 1 20%;
+  display: inline-block;
+  margin-right: calc(var(--gap) / 2);
+}
+
+.sharing-options li a,
+.sharing-options li a span {
   display: flex;
   align-content: center;
   justify-content: center;
 }
 
-.confirmation ul li a {
+.confirmation a span {
+  pointer-events: none;
+}
+
+.sharing-options li a,
+.email-options {
+  border: 3px solid white;
+  border-radius: 3px;
+}
+
+.sharing-options li a {
   font-weight: 500;
   width: 100%;
   padding: 10px;
@@ -1363,80 +1393,71 @@ footer .copyright-info a {
   transition: background-color 0.25s ease;
 }
 
-.confirmation li a:hover {
+.sharing-options li a:hover {
   background-color: rgba(255, 255, 255, 0.2);
   transition: background-color 0.15s ease;
 }
 
-ul.email-options {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  -webkit-perspective: 1000px;
-  perspective: 1000px;
-  -webkit-perspective-origin: 50% 200%;
-  perspective-origin: 50% 200%;
-  transform: translateY(-4px);
-  position: absolute;
-  transition: opacity 0.3s ease, transform 0.15s ease, visibility 0.4s ease;
+.sharing-options li a:active {
+  background-color: rgba(255, 255, 255, 0.15);
+  transition: background-color 0.15s ease;
 }
 
-li.email-options-wrapper {
+.show-email-options {
+  position: relative;
+  overflow: visible;
+}
+
+.email-options {
+  opacity: 0;
+  width: 100%;
+  visibility: hidden;
+  transform: translateY(-4px);
+  position: absolute;
   display: flex;
   flex-direction: column;
   margin-top: 4px;
   background-color: rgba(255, 255, 255, 0.2);
-  position: relative;
+  transition: opacity 0.3s ease, transform 0.15s ease, visibility 0.4s ease;
 }
 
-ul.sharing-options li a,
-li.email-options-wrapper {
-  border: 3px solid white;
-  border-radius: 2px;
-}
-
-ul.email-options li.email-options-wrapper a {
+.sharing-options div.email-options a {
   border: 0 solid white;
 }
 
-ul.sharing-options li:hover ul.email-options {
+.sharing-options li:hover .email-options,
+.sharing-options li:focus .email-options {
   visibility: visible;
-  pointer-events: all;
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.01s ease;
 }
 
-ul.sharing-options li {
-  flex: 1 1 20%;
-  display: inline-block;
-  margin-right: calc(var(--gap) / 2);
-}
-
 /* confirmation sprites */
 
 .email::before {
-  background: url("/img/confirm-sprites.png") 0 0;
+  background: url("/img/confirm-sprites.png") -2px 0;
+  margin-right: 4px;
 }
 
 .twitter::before {
-  background: url("/img/confirm-sprites.png") -25px 0;
+  background: url("/img/confirm-sprites.png") -34px 0;
 }
 
 .facebook::before {
-  background: url("/img/confirm-sprites.png") -48px 0;
+  background: url("/img/confirm-sprites.png") -56px 0;
 }
 
 .gmail::before {
-  background: url("/img/confirm-sprites.png") -95px 0;
+  background: url("/img/confirm-sprites.png") -113px 0;
 }
 
 .yahoo::before {
-  background: url("/img/confirm-sprites.png") -73px 0;
+  background: url("/img/confirm-sprites.png") -83px 0;
 }
 
 .outlook::before {
-  background: url("/img/confirm-sprites.png") -120px 0;
+  background: url("/img/confirm-sprites.png") -141px 0;
 }
 
 .default-email-client::before {
@@ -1448,10 +1469,9 @@ ul.sharing-options li {
   display: inline-block;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 20px;
-  width: 25px;
+  height: 23px;
+  width: 28px;
   min-width: 25px;
-  margin-top: 2px;
 }
 
 .email-option::before {
@@ -1551,6 +1571,15 @@ form.show-thankyou span.thank-you-message {
   .content-wrap {
     background-position: 0 120%;
   }
+
+  /* background wave positioning on subpages */
+  body.sub {
+    background-position: 0 -24%;
+  }
+
+  body.sub .content-wrap {
+    background-position: 0 240%;
+  }
 }
 
 @media screen and (max-width: 2300px) {
@@ -1561,15 +1590,25 @@ form.show-thankyou span.thank-you-message {
   .content-wrap {
     background-position: 0 105%;
   }
+
+  body.sub {
+    background-position: 0 -10%;
+  }
+
+  body.sub .content-wrap {
+    background-position: 0 140%;
+  }
 }
 
 @media screen and (max-width: 1300px) {
-  body {
+  body,
+  body.sub {
     background-position: 0 -3%, center center;
   }
 
-  .content-wrap {
-    background-position: 0 100%;
+  .content-wrap,
+  body.sub .content-wrap {
+    background-position: 0 110%;
   }
 }
 
@@ -1683,25 +1722,16 @@ form.show-thankyou span.thank-you-message {
     padding-right: 0;
   }
 
-  .confirmation ul.sharing-options li {
-    width: 100%;
+  .confirmation ul li {
+    width: 30%;
     max-width: 100%;
-    min-width: 100%;
+    min-width: 120px;
     margin-bottom: var(--gap);
   }
 
   /* sharing-option titles */
   .confirmation ul.sharing-options li span {
     min-width: 80px;
-  }
-
-  /* sharing-option icons */
-  .confirmation ul.sharing-options li span::before {
-    margin-right: 3px;
-  }
-
-  ul.email-options {
-    display: none;
   }
 }
 
@@ -1724,6 +1754,21 @@ form.show-thankyou span.thank-you-message {
 
   a span.nowrap {
     white-space: normal;
+  }
+
+  .confirmation ul.sharing-options li {
+    display: block;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .confirmation .email-options {
+    display: none;
+  }
+
+  body.sub .content-wrap {
+    overflow: hidden !important;
   }
 }
 
