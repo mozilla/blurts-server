@@ -12,6 +12,8 @@
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Soporte
+# Link that takes the user to a blog post on blog.mozilla.org about the alerts
+about-firefox-alerts = Acerca de las alertas de Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Enviar comentario
 terms-and-privacy = Términos y Privacidad
@@ -75,6 +77,7 @@ scan-privacy = Tu correo electrónico no ha sido almacenado.
 scan-submit = Buscar tu correo electrónico
 scan-another-email = Escanear otra dirección de correo electrónico
 scan-featuredbreach-label = Buscar si tu <span class="bold">{ $featuredBreach }</span> cuenta ha sido comprometida.
+sensitive-breach-email-required = La violación contiene información sensible. Se requiere verificación por correo electrónico.
 scan-error = Debe ser un correo electrónico válido.
 signup-banner-headline = { -product-name-nowrap } detecta amenazas contra tu cuentas en línea.
 signup-banner-blurb =
