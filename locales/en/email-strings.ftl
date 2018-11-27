@@ -1,5 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 
 click-to-verify = 
   Select the Verify My Email button within 24 hours to confirm your Firefox Monitor account. 
@@ -75,3 +77,14 @@ report-pwt-summary-4 =
 
 # A link to legal information about mozilla products.
 legal = Legal
+
+# Share Firefox Monitor by email subject line
+share-by-email-subject = See if you’ve been part of a data breach.
+
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message = 
+    Hi,
+    {-brand-name} has a free service where you can check to see if you’ve been part of a data breach. Here’s how it works:
+    1. Go to {"https://monitor.firefox.com"} and search your email.
+    2. See if your online accounts have been exposed in a data breach.
+    3. Get tips from {-product-name} about what to do next.
