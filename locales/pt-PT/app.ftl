@@ -193,3 +193,11 @@ copyright-info =
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Dados de brechas fornecidos por { $hibp-link }
 site-description = As suas contas foram vazadas ou furtadas numa brecha de dados? Descubra no { -product-name }. Pesquise a nossa base de dados e registe-se para alertas.
+confirmation-headline = O seu relatório do { -product-name } está a caminho.
+confirmation-blurb = As brechas de dados podem afetar qualquer um. Espalhe a palavra para que os seus amigos e familiares possam verificar para ver se as suas contas online estão seguras.
+share-email = Email
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Outro
+share-twitter = A maioria das pessoas tem cerca de 100 contas online. Alguma das suas foi exposta numa brecha de dados? Descubra.
+share-facebook-headline = Descubra se fez parte de uma brecha de dados
+share-facebook-blurb = Alguma das suas contas online foi exposta numa brecha de dados?
