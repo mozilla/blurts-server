@@ -176,6 +176,7 @@ copyright-info =
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Podatke o krajah podatkov omogoča { $hibp-link }
 site-description = Ali so bili podatki vaših računov izpostavljeni ali ukradeni? Preverite s { -product-name }jem. Preiščite našo bazo podatkov in se prijavite na opozorila.
+confirmation-headline = Vaše poročilo { -product-name } je na poti.
 share-email = E-pošta
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Drugo
