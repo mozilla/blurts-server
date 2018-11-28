@@ -64,7 +64,7 @@ landing-blurb = Mae { -product-name-nowrap } yn darparu offer i gadw'ch manylion
 scan-label = Gweld os ydych wedi bod yn rhan o dor-data.
 scan-placeholder = Rhowch eich Cyfeiriad E-bost
 scan-privacy = Ni fydd eich e-bost yn cael ei gadw.
-scan-submit = Chwilio'ch E-bost
+scan-submit = Chwilio am eich E-bost
 scan-another-email = Sganio Cyfeiriad E-bost Arall
 scan-featuredbreach-label = Gweld os yw eich cyfrif <span class="bold"> { $featuredBreach } </span> wedi ei gyfaddawdu.
 sensitive-breach-email-required = Mae'r to-data'n cynnwys manylion sensitif. Mae angen dilysu'r e-bost.
@@ -182,3 +182,4 @@ share-other = Arall
 share-twitter = Mae gan y rhan fwyaf o bobl tua 100 o gyfrifon ar-lein. A oes unrhyw un o'ch rhai chi wedi dioddef tor-data? Dewch i weld.
 share-facebook-headline = Dewch i weld a ydych chi wedi bod yn rhan o dor-data
 share-facebook-blurb = A yw eich cyfrifon ar-lein wedi bod yn agored i dor-data?
+og-site-description = Dewch i weld a ydych chi wedi bod yn rhan o dor-data gyda { -product-name }. Cofrestrwch am rybuddion am dor-data'r dyfodol a chael awgrymiadau ar sut i gadw'ch cyfrifon yn ddiogel.

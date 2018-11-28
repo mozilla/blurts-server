@@ -1,5 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 click-to-verify = Cliciwch y botwm Gwirio fy E-bost o fewn 24 awr i gadarnhau eich cyfrif Firefox Monitor. Yna bydd eich adroddiad yn cael ei anfon atoch.
 verify-my-email = Gwirio fy E-bost
 report-scan-another-email = Sganio E-bost arall gyda { -product-name }
@@ -49,3 +51,12 @@ report-pwt-headline-4 = Defnyddio rheolwr cyfrinair
 report-pwt-summary-4 = Mae gwasanaethau fel 1Password, LastPass, Dashlane, a Bitwarden yn creu cyfrineiriau cryf, yn eu storio'n ddiogel, a'u llenwi i mewn i wefannau felly does dim rhaid i chi gofio pob un.
 # A link to legal information about mozilla products.
 legal = Cyfreithiol
+# Share Firefox Monitor by email subject line
+share-by-email-subject = Gweld os ydych chi wedi bod yn rhan o dor-data.
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    Helo,
+    Mae gan { -brand-name } wasanaeth am ddim lle gallwch wirio i weld a ydych wedi bod yn rhan o dor- data. Dyma sut mae'n gweithio:
+    1. Ewch i { "https://monitor.firefox.com" } a chwiliwch am eich e-bost.
+    2. Edrychwch i weld os yw eich cyfrifon ar-lein wedi'u datgelu mewn tor-data.
+    3. Derbyn awgrymiadau gan { -product-name } am yr hyn i'w wneud nesaf.
