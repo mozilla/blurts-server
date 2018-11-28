@@ -189,3 +189,12 @@ copyright-info =
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Data o únicích poskytuje { $hibp-link }
 site-description = Byly vaše účty součástí úniku, nebo přímo ukradeny? { -product-name } to zjistí. Prohledejte databázi a přihlaste se k odběru upozornění.
+confirmation-headline = Vaše hlášení od { -product-name } už je na cestě.
+confirmation-blurb = Únik dat může postihnout kohokoliv. Dejte vědět svým přátelům a rodině aby si taky zkontrolovali své účty.
+share-email = E-mail
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Další
+share-twitter = Většina lidí má na internetu okolo stovky účtů. Zjistěte, jestli nebyl některý z těch vašich součástí úniku dat.
+share-facebook-headline = Zjistěte, zda byla vaše data součástí nějakého úniku
+share-facebook-blurb = Byl některý z vašich účtů součástí nějakého úniku dat?
+og-site-description = { -product-name } zjistí, jestli byla vaše data součástí nějakého úniku. Pro větší bezpečí se také přihlaste k zasílání výstrah o budoucích únicích.

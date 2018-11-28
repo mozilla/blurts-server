@@ -1,5 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 click-to-verify =
     Potvrďte své přihlášení ke službě { -product-name } do 24 hodin od odeslání tohoto e-mailu.
     Hlášení o vašich účtech vám pak pošleme co nejdříve.
@@ -51,3 +53,5 @@ report-pwt-headline-4 = Používejte správce hesel
 report-pwt-summary-4 = Správci hesel jako 1Password, LastPass, Dashlane a Bitwarden umí vygenerovat silná, bezpečně je uložit a automaticky je pro vás na webových stránkách vyplnit, takže si nemusíte každé pamatovat.
 # A link to legal information about mozilla products.
 legal = Právní informace
+# Share Firefox Monitor by email subject line
+share-by-email-subject = Zjistěte, jestli vaše data byla součástí nějakého úniku.
