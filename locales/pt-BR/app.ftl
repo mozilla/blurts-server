@@ -195,3 +195,4 @@ share-other = Outro
 share-twitter = A maioria das pessoas tem cerca de 100 contas online. Alguma das suas foi exposta em uma violação de dados? Descubra.
 share-facebook-headline = Descubra se você foi vítima de uma violação de dados
 share-facebook-blurb = Suas contas online foram expostas em uma violação de dados?
+og-site-description = Descubra se você foi vítima de uma violação de dados com o { -product-name }. Cadastre-se para receber alertas sobre futuras violações e receber dicas para manter suas contas seguras.

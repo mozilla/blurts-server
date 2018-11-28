@@ -54,3 +54,12 @@ report-pwt-headline-4 = Use um gerenciador de senhas
 report-pwt-summary-4 = Serviços como o 1Password, Lastpass, Dashlane e Bitwarden geram senhas fortes, as armazenam com segurança e as preenchem nos sites para que você não precise se lembrar de cada uma.
 # A link to legal information about mozilla products.
 legal = Legal
+# Share Firefox Monitor by email subject line
+share-by-email-subject = Veja se você foi vítima de uma violação de dados.
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    Olá,
+    A { -brand-name } tem um serviço gratuito onde você pode verificar para saber se foi vítima de uma violação de dados. Veja como funciona:
+    1. Vá em { "https://monitor.firefox.com" } e pesquise seu endereço de email.
+    2. Veja se suas contas online foram expostas em uma violação de dados.
+    3. Receba dicas do { -product-name } sobre o que fazer depois.
