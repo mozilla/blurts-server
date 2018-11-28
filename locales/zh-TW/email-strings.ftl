@@ -1,5 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 click-to-verify = 請在 24 小時內點擊下方的「驗證我的 E-Mail」來確認您的 Firefox Monitor 帳號。接下來就可以收到報告了。
 verify-my-email = 驗證我的 E-Mail
 report-scan-another-email = 到 { -product-name } 掃描其他電子郵件信箱
@@ -37,3 +39,12 @@ report-pwt-headline-4 = 使用密碼管理員
 report-pwt-summary-4 = 諸如 1Password、LastPass、Dashlane、Bitwarden 等服務，可產生高強度密碼，安全地儲存，並在上網時自動為您填寫表單，這樣就不用記住每一筆密碼了。
 # A link to legal information about mozilla products.
 legal = 法律資訊
+# Share Firefox Monitor by email subject line
+share-by-email-subject = 看看您是否受資料洩露事件影響。
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    嗨！
+    { -brand-name } 有個免費的服務，可讓你看看你在各個網站註冊帳號，是否曾經出現在資料外洩事故當中。以下是檢查方式:
+    1. 到 { "https://monitor.firefox.com" } 輸入你的信箱帳號。
+    2. 看看你的帳號是否出現在資料外洩事件中。
+    3. 了解 { -product-name } 有什麼能夠處理這些問題的秘訣。

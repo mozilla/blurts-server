@@ -21,7 +21,7 @@ error-not-subscribed = 此電子郵件地址未訂閱 { -product-name }。
 error-hibp-throttled = 與 { -brand-HIBP } 的連線太多。
 error-hibp-connect = 連線到 { -brand-HIBP } 時發生錯誤。
 error-hibp-load-breaches = 無法載入資料外洩資訊。
-hibp-notify-email-subject = { -product-name } 警告: 您的帳號資料已遭洩露。
+hibp-notify-email-subject = { -product-name } 警告: 您的帳號資料已遭外洩。
 home-title = { -product-name }
 home-not-found = 找不到頁面。
 oauth-invalid-session = Session 無效
@@ -55,7 +55,7 @@ pwt-summary-4 = 諸如 1Password、LastPass、Dashlane、Bitwarden 等密碼管�
 pwt-headline-5 = 使用雙因素身分驗證，多加一道安全保護
 pwt-summary-5 = 兩階段驗證需要您額外提供一組資料（例如透過簡訊收到的驗證碼）進行驗證後，才可登入帳號。若別人只拿到您的密碼，也無法登入。
 pwt-headline-6 = 訂閱 { -product-name-nowrap } 警報
-pwt-summary-6 = 網站資料外洩事件越來越多，當有新的洩露事件加入到我們的資料庫後，{ -product-name-nowrap } 就會傳送警報給您，這樣就可以快速採取措施，保護您的帳號。
+pwt-summary-6 = 網站資料外洩事件越來越多，當有新的外洩事件加入到我們的資料庫後，{ -product-name-nowrap } 就會傳送警報給您，這樣就可以快速採取措施，保護您的帳號。
 landing-headline = 讓您獲得安全，不受駭客影響的權利，從這裡開始。
 landing-blurb = { -product-name-nowrap } 為您提供工具來確保個人資料的安全。看看駭客們已經知道您的哪些資料，以及可如何搶先一步，確保安全。
 scan-label = 看看您有沒有遭受資料外洩事件的影響。
@@ -63,11 +63,11 @@ scan-placeholder = 輸入電子郵件地址
 scan-privacy = 不會儲存您的電子郵件地址。
 scan-submit = 搜尋您的 E-Mail 信箱
 scan-another-email = 掃描另一個 E-Mail 信箱
-scan-featuredbreach-label = 看看您的 <span class="bold">{ $featuredBreach }</span> 帳號是否遭到洩漏。
-sensitive-breach-email-required = 資料洩漏事件中包含個人敏感資料，需要電子郵件驗證。
+scan-featuredbreach-label = 看看您的 <span class="bold">{ $featuredBreach }</span> 帳號是否遭到外洩。
+sensitive-breach-email-required = 資料外洩事件中包含個人敏感資料，需要電子郵件驗證。
 scan-error = 必須是有效的電子郵件地址。
 signup-banner-headline = { -product-name-nowrap } 會為您的線上帳號偵測是否有任何風險存在。
-signup-banner-blurb = { -product-name-nowrap } 詳細報告可顯示您在哪些網站的帳號資料已遭竊或洩漏。我們也會在您的帳號出現於新的資料外洩事件時通知您。
+signup-banner-blurb = { -product-name-nowrap } 詳細報告可顯示您在哪些網站的帳號資料已遭竊或外洩。我們也會在您的帳號出現於新的資料外洩事件時通知您。
 download-firefox-bar-blurb = { -product-name-nowrap } 是由<span class="nowrap">全新 { -brand-name }</span> 提供。
 download-firefox-bar-link = 立即下載 { -brand-name }
 download-firefox-banner-blurb = 自行控制您的瀏覽器
@@ -109,7 +109,7 @@ scan-results =
        *[other] 與您的電子郵件信箱相關聯的帳號，出現在下列 { $breachCount } 場資料外洩事件中。
     }
 show-more-breaches = 顯示更多
-what-to-do-headline = 當您的資料被洩露時該怎麼辦
+what-to-do-headline = 當您的資料被外洩時該怎麼辦
 what-to-do-subhead-1 = 改掉密碼，就算是很久沒用的舊帳號也要改掉
 what-to-do-blurb-1 = 若您無法登入，請聯絡網站詢問要如何更改密碼，或是刪除帳號。發現您不認識的帳號嗎？有可能網站改名，或別人用您的身分註冊帳號。
 what-to-do-subhead-2 = 若您也在別的網站使用被洩漏的密碼，也請改掉該網站的密碼
@@ -156,4 +156,13 @@ beta-nightly-developer-edition = Beta、Nightly、Developer Edition
 copyright-info = 本頁的部分內容著作權為 &#x24B8;1998–2018 由個別 mozilla.org 貢獻者所有。內容依照 <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">創用 CC 授權條款</a> 進行授權。
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = 資料外洩情況由 { $hibp-link } 提供
-site-description = 您的帳號資料是否在資料外洩事件中被洩漏或遭竊？可到 { -product-name } 檢查。歡迎在我們的資料庫中查詢並訂閱警報。
+site-description = 您的帳號資料是否在資料外洩事件中被外洩或遭竊？可到 { -product-name } 檢查。歡迎在我們的資料庫中查詢並訂閱警報。
+confirmation-headline = 您的 { -product-name } 報告即將完成。
+confirmation-blurb = 任何人都可能遇到資料外洩。告訴朋友這個消息，這樣親朋好友才能也來檢查看看帳號是否安全。
+share-email = Email
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = 其他
+share-twitter = 一般人大約有 100 組線上帳號，您有任何帳號遭到資料外洩事故影響嗎？快來檢查看看。
+share-facebook-headline = 看看您的帳號是否也在資料外洩事件當中
+share-facebook-blurb = 您的帳號也出現在資料外洩事件當中嗎？
+og-site-description = 使用 { -product-name }，看看您的帳號是否也在資料外洩事件當中。註冊在未來有與您相關的資料外洩事故時，收到警報與祕訣以確保帳號安全。
