@@ -85,9 +85,8 @@ const HIBP = {
       const breaches = [];
 
       for (const breach of breachesResponse.body) {
-        // const breach = breachesResponse.body[breachIndex];
-        // convert data class strings to Fluent IDs
         breach.DataClasses = this.formatDataClassesArray(breach.DataClasses);
+        breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)[0];
         breaches.push(breach);
       }
       app.locals.breaches = breaches;
