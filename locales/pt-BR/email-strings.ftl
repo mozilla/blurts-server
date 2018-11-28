@@ -1,5 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 click-to-verify =
     Clique no botão Verificar Meu Endereço de E-mail dentro de 24 horas para confirmar sua conta do Firefox Monitor.
     Seu relatório então estará a caminho.

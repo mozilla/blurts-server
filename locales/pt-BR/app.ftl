@@ -187,3 +187,11 @@ copyright-info =
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Dados de vazamentos fornecidos por { $hibp-link }
 site-description = Suas contas foram vazadas ou roubadas em um vazamento de dados? Descubra com o { -product-name }. Pesquise nossa base e cadastre-se para receber alertas.
+confirmation-headline = Seu relatório do { -product-name } está a caminho.
+confirmation-blurb = Violações de dados podem afetar qualquer pessoa. Divulgue isso, para que seus amigos e familiares possam verificar para saber se suas contas online estão seguras.
+share-email = Email
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Outro
+share-twitter = A maioria das pessoas tem cerca de 100 contas online. Alguma das suas foi exposta em uma violação de dados? Descubra.
+share-facebook-headline = Descubra se você foi vítima de uma violação de dados
+share-facebook-blurb = Suas contas online foram expostas em uma violação de dados?
