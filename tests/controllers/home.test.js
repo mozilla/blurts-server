@@ -49,5 +49,5 @@ test("notFound set status 404 and renders 404", () => {
   const mockStatusCallArgs = mockResponse.status.mock.calls[0];
   const mockRenderCallArgs = mockResponse.render.mock.calls[0];
   expect(mockStatusCallArgs[0]).toBe(404);
-  expect(mockRenderCallArgs[0]).toBe("error");
+  expect(mockRenderCallArgs[0]).toBe("subpage");
 });
