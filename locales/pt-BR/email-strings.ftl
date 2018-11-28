@@ -55,11 +55,11 @@ report-pwt-summary-4 = Serviços como o 1Password, Lastpass, Dashlane e Bitwarde
 # A link to legal information about mozilla products.
 legal = Legal
 # Share Firefox Monitor by email subject line
-share-by-email-subject = Veja se você foi vítima de uma violação de dados.
+share-by-email-subject = Veja se você foi vítima de um vazamento de dados.
 # Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
 share-by-email-message =
     Olá,
-    A { -brand-name } tem um serviço gratuito onde você pode verificar para saber se foi vítima de uma violação de dados. Veja como funciona:
+    A { -brand-name } tem um serviço gratuito onde você pode verificar para saber se foi vítima de um vazamento de dados. Veja como funciona:
     1. Vá em { "https://monitor.firefox.com" } e pesquise seu endereço de email.
-    2. Veja se suas contas online foram expostas em uma violação de dados.
+    2. Veja se suas contas online foram expostas em um vazamento de dados.
     3. Receba dicas do { -product-name } sobre o que fazer depois.
