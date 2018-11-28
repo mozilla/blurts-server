@@ -157,3 +157,12 @@ copyright-info = Partes de este contenido son &#x24B8; 1998-2018 por parte de co
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Datos de violación proporcionados por { $hibp-link }
 site-description = ¿Tus cuentas fueron filtradas o robadas en una violación de datos? Descubrilo en { -product-name }. Buscá en nuestra base de datos y registrate para recibir alertas.
+confirmation-headline = Tu informe de { -product-name } está en camino.
+confirmation-blurb = Las violaciones de datos pueden afectar a cualquiera. Hacé correr la voz para que tus amigos y familiares puedan verificar si sus cuentas en línea están seguras.
+share-email = Correo electrónico
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Otros
+share-twitter = La mayoría de las personas tienen alrededor de 100 cuentas en línea. ¿Alguno de los tuyos tuvo   una violación de datos? Descubrilo
+share-facebook-headline = Averiguá si fusite parte de una violación de datos.
+share-facebook-blurb = ¿Tus cuentas en línea fueron expuestas en una violación de datos?
+og-site-description = Averiguá si fuiste parte de una violación de datos con { -product-name }. Registrate para recibir alertas sobre futuras infracciones y obtené consejos para mantener tus cuentas seguras.
