@@ -188,3 +188,10 @@ copyright-info =
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = 泄露数据由 { $hibp-link } 提供
 site-description = 您的账号信息是否在数据外泄事件中被泄露或遭窃？可到 { -product-name } 查看。欢迎在我们的数据库中搜索并订阅警报。
+confirmation-headline = 您的 { -product-name } 报告即将出炉。
+share-email = Email
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = 其他
+share-facebook-headline = 看看您的账号是否也在数据外泄事件当中
+share-facebook-blurb = 您的账号也出现在数据外泄事件当中吗？
+og-site-description = 使用 { -product-name }，看看您的账号是否也在数据外泄事件当中。订阅以在未来发生外泄事件时收到警报，并获取确保账号安全的小贴士。

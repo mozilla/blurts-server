@@ -1,5 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 click-to-verify =
     请在 24 小时内点击“验证我的电子邮件”按钮以确认您的 Firefox Monitor 账户。
     您的报告即将开始生成。
@@ -54,3 +56,12 @@ report-pwt-summary-4 =
     并可在网站上自动填充，由此你不必记住每一个密码。
 # A link to legal information about mozilla products.
 legal = 法律信息
+# Share Firefox Monitor by email subject line
+share-by-email-subject = 看看您是否受到数据外泄事件影响。
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    嗨！
+    { -brand-name } 有一项免费服务，让您可以检查自己在各个网站注册的帐号，是否出现在过去的数据外泄事件中。以下是检查方式：
+    1. 转到 { "https://monitor.firefox.com" } 并搜索您的电子邮件地址。
+    2. 看看您的在线账号是出现在数据外泄事件中。
+    3. 从 { -product-name } 获取有关如何处理这些问题的小贴士。
