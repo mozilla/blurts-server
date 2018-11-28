@@ -1,5 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 click-to-verify = Klicken Sie innerhalb von 24 Stunden auf die Schaltfläche „Meine E-Mail-Adresse bestätigen“, um Ihr Firefox-Monitor-Konto zu bestätigen. Ihr Bericht wird dann an Sie gesendet.
 verify-my-email = Meine E-Mail-Adresse bestätigen
 report-scan-another-email = Eine weitere E-Mail-Adresse in { -product-name } scannen
@@ -52,3 +54,12 @@ report-pwt-summary-4 =
     und tragen sie für Sie auf Websites ein, damit Sie sich nicht alle Passwörter merken müssen.
 # A link to legal information about mozilla products.
 legal = Rechtliches
+# Share Firefox Monitor by email subject line
+share-by-email-subject = Sehen Sie, ob Sie von einem Datenleck betroffen sind.
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    Hallo
+    { -brand-name } bietet einen kostenlosen Dienst, um zu testen, ob Sie voneinem Datenleck betroffen sind. So funktioniert es:
+    1. Besuchen Sie { "https://monitor.firefox.com" } und suchen Sie nach Ihrer E-Mail-Adresse.
+    2. Sehen Sie, ob Ihre Online-Konten bei einem Datenleck geknackt wurden.
+    3. Holen Sie sich Tipps von { -product-name } für die nächsten Schritte.

@@ -178,3 +178,12 @@ copyright-info = Teile dieses Inhalts stehen unter einem &#x24B8; 1998-2018 von 
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Informationen zum Datenleck stammen von { $hibp-link }
 site-description = Wurden Ihre Kontodaten bei einem Datenleck öffentlich bekannt oder gestohlen? Erfahren Sie es mit { -product-name }. Durchsuchen Sie unsere Datenbank und abonnieren Sie die Warnungen.
+confirmation-headline = Ihr Bericht f+r { -product-name } ist unterwegs.
+confirmation-blurb = Datenlecks können jeden betreffen. Erzählen Sie anderen davon, sodass Ihre Freunde und Familie überprüfen können, ob ihre Online-Konten sicher sind.
+share-email = E-Mail
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Andere
+share-twitter = Die meisten Leute haben ungefähr 100 Online-Konten. Wurde einer von Ihnen bei einem Datenleck geknackt? Finden Sie es heraus.
+share-facebook-headline = Erfahren Sie, ob Sie von einem Datenleck betroffen sind
+share-facebook-blurb = Wurden Ihre Online-Konten bei einem Datenleck geknackt?
+og-site-description = Erfahren Sie mit { -product-name }, ob Sie von einem Datenleck betroffen sind. Abonnieren Sie Warnungen zu zukünftigen Lecks und erhalten Sie Tipps zum Schutz Ihrer Konten.
