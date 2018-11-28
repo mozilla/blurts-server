@@ -190,3 +190,12 @@ copyright-info =
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Дані про загрози надано { $hibp-link }
 site-description = Чи були ваші облікові записи викрадені в результаті витоку даних? Дізнайтеся в { -product-name }. Виконайте пошук в нашій базі даних та підпишіться на отримання попереджень.
+confirmation-headline = Ваш звіт { -product-name } на шляху до вас.
+confirmation-blurb = Вразливості даних можуть вплинути на кого завгодно. Розкажіть про це своїм друзям і родичам, щоб вони могли перевірити, чи їхні дані не було викрито.
+share-email = Е-пошта
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Інше
+share-twitter = Більшість людей мають близько 100 облікових записів онлайн. Чи було викрито зловмисниками будь-які з ваших? Дізнайтеся.
+share-facebook-headline = Дізнайтеся, чи ваші дані не було викрито
+share-facebook-blurb = Чи виявлено ваші дані у викритті?
+og-site-description = Дізнайтеся за допомогою { -product-name }, чи ваші дані не було викрито. Підпишіться на отримання попереджень про майбутні порушення та отримання порад щодо безпеки ваших облікових записів.

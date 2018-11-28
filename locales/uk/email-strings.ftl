@@ -1,5 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 click-to-verify = Щоб підтвердити свій обліковий запис у Firefox Monitor, упродовж 24 годин натисніть кнопку Підтвердити електронну пошту. Після цього ви отримаєте звіт.
 verify-my-email = Підтвердити електронну пошту
 report-scan-another-email = Сканувати іншу адресу електронної пошти в { -product-name }
@@ -53,3 +55,12 @@ report-pwt-summary-4 =
     а також заповнюють їх на веб-сайтах, тож вам не потрібно пам'ятати їх усі.
 # A link to legal information about mozilla products.
 legal = Юридична інформація
+# Share Firefox Monitor by email subject line
+share-by-email-subject = Перевірте, чи ваші дані не було викрито.
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    Привіт,
+    { -brand-name } має безплатний сервіс, де ви можете перевірити, чи ваші дані не було викрито. Ось, як це працює:
+    1. Перейдіть до { "https://monitor.firefox.com" } і виконайте пошук за своєю адресою електронної пошти.
+    2. Перевірте, чи ваші дані не було викрито зловмисниками.
+    3. Отримайте поради від { -product-name } про подальші дії.
