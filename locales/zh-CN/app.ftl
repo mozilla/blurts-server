@@ -139,8 +139,8 @@ what-to-do-blurb-2 =
     请为每个网站设置不同的密码，尤其是银行账号、电子邮件账号，以及其他您用来存储个人信息的网站。
 what-to-do-subhead-3 = 采取额外步骤来保护您的金融账户
 what-to-do-blurb-3 =
-    大多数的数据泄露事件只会泄露电子邮件地址与密码，但某些事件中也会包含敏感的个人财务信息。
-    若您的银行账户或信用卡卡号也遭泄露，请通知银行以预防盗用，并检查月结账单，检查是否有不明的交易记录。
+    大多数的数据外泄事件只会外泄电子邮件地址与密码，但某些事件中也会包含敏感的个人财务信息。
+    若您的银行账户或信用卡卡号也遭外泄，请通知银行以预防盗用，并检查月结账单，检查是否有不明的交易记录。
 what-to-do-subhead-4 = 获取帮助以创建好的密码并保证其安全。
 what-to-do-blurb-4 =
     如 1Password、LastPass、Dashlane 和 Bitwarden 等密码管理器可以生成强健、唯一的密码，
@@ -155,7 +155,7 @@ confirmed = 成功确认！<br />您已完成订阅！
 confirmed-blurb = { -product-name-nowrap } 会尽快通过电子邮件向您发送完整报告，如果您的账号出现在新报告的泄露事件中，我们会发送电子邮件提醒。
 confirmed-social-blurb = 若您的数据遭到外泄，很有可能您的朋友、家人、网络上的朋友也会受到影响。也让他们知道 { -product-name-nowrap } 吧！
 unsub-headline = 退订 { -product-name-nowrap }
-unsub-blurb = 这将使您的电子邮件地址移出 { -product-name-nowrap } 列表，在发生新的数据泄露事件时，您将不再收到警报。
+unsub-blurb = 这将使您的电子邮件地址移出 { -product-name-nowrap } 列表，在发生新的数据外泄事件时，您将不再收到警报。
 unsub-button = 退订
 unsub-survey-headline = 您的退订已成功。
 unsub-survey-blurb =
@@ -189,9 +189,11 @@ copyright-info =
 hibp-attribution = 泄露数据由 { $hibp-link } 提供
 site-description = 您的账号信息是否在数据外泄事件中被泄露或遭窃？可到 { -product-name } 查看。欢迎在我们的数据库中搜索并订阅警报。
 confirmation-headline = 您的 { -product-name } 报告即将出炉。
+confirmation-blurb = 数据外泄可能会影响任何人。让更多人了解，引导您的朋友和家人去检查他们的在线账号是否安全。
 share-email = Email
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = 其他
+share-twitter = 大部分人拥有约 100 个之多的在线账号。您有任何账号出现在数据外泄事件中吗？快来检查看看。
 share-facebook-headline = 看看您的账号是否也在数据外泄事件当中
 share-facebook-blurb = 您的账号也出现在数据外泄事件当中吗？
 og-site-description = 使用 { -product-name }，看看您的账号是否也在数据外泄事件当中。订阅以在未来发生外泄事件时收到警报，并获取确保账号安全的小贴士。
