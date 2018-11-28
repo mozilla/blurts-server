@@ -192,3 +192,10 @@ copyright-info =
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = İhlal verileri { $hibp-link } tarafından sağlanmaktadır
 site-description = Veri ihlallerinde hesaplarınız sızdırılmış veya çalınmış olabilir mi? { -product-name } ile öğrenin. Veritabanımızda arama yapın ve uyarılara kaydolun.
+confirmation-headline = { -product-name } raporunuz yola çıktı.
+share-email = E-posta
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Diğer
+share-twitter = Çoğu kişinin yaklaşık 100 çevrimiçi hesabı var. Hesaplarınızdan birisi veri ihlaline maruz kalmış olabilir mi? Hemen öğrenin.
+share-facebook-headline = Verilerinizin çalınıp çalınmadığını öğrenin
+share-facebook-blurb = İnternet hesaplarınız veri ihallerine karışmış olabilir mi?

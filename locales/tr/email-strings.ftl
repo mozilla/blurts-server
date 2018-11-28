@@ -1,5 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 click-to-verify =
     Firefox Monitor hesabınızı onaylamak için 24 saat içinde “E-postamı doğrula” düğmesine tıklayın. 
     Ardından raporunuzu göndereceğiz.
