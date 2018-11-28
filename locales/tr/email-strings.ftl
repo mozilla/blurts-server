@@ -56,3 +56,5 @@ report-pwt-summary-4 =
     sitelerdeki parola alanlarını otomatik doldurabilir. Böylece her parolayı ezberlemeniz gerekmez.
 # A link to legal information about mozilla products.
 legal = Yasal bilgiler
+# Share Firefox Monitor by email subject line
+share-by-email-subject = Verilerinin çalınıp çalınmadığını öğren.

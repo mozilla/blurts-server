@@ -193,9 +193,11 @@ copyright-info =
 hibp-attribution = İhlal verileri { $hibp-link } tarafından sağlanmaktadır
 site-description = Veri ihlallerinde hesaplarınız sızdırılmış veya çalınmış olabilir mi? { -product-name } ile öğrenin. Veritabanımızda arama yapın ve uyarılara kaydolun.
 confirmation-headline = { -product-name } raporunuz yola çıktı.
+confirmation-blurb = Veri ihlalleri herkesin başına gelebilir. Bu siteyi paylaşın ki arkadaşlarınız da internet hesaplarının güvende olup olmadığını öğrensin.
 share-email = E-posta
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Diğer
 share-twitter = Çoğu kişinin yaklaşık 100 çevrimiçi hesabı var. Hesaplarınızdan birisi veri ihlaline maruz kalmış olabilir mi? Hemen öğrenin.
 share-facebook-headline = Verilerinizin çalınıp çalınmadığını öğrenin
 share-facebook-blurb = İnternet hesaplarınız veri ihallerine karışmış olabilir mi?
+og-site-description = { -product-name } ile verilerinizin çalınıp çalınmadığını öğrenin. Gelecekteki ihlallere yönelik uyarılara kaydolun ve hesaplarınızı güvende tutmaya dair ipuçları alın.
