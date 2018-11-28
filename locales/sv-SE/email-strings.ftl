@@ -1,5 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 click-to-verify = Klicka på knappen "Verifiera min e-postadress" inom 24 timmar för att bekräfta ditt Firefox Monitor-konto. Din rapport skickas sedan till dig.
 verify-my-email = Verifiera min e-postadress
 report-scan-another-email = Skanna en annan e-postadress i { -product-name }
@@ -46,3 +48,12 @@ report-pwt-headline-4 = Använd en lösenordshanterare
 report-pwt-summary-4 = Tjänster som 1Password, LastPass, Dashlane och Bitwarden genererar starka lösenord, lagra dem säkert och lägg till dem på webbplatser så att du inte behöver komma ihåg alla dina lösenord.
 # A link to legal information about mozilla products.
 legal = Juridisk information
+# Share Firefox Monitor by email subject line
+share-by-email-subject = Se om du har blivit utsatt för ett dataintrång.
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    Hej,
+    { -brand-name } har en gratis tjänst där du kan kontrollera om du har varit med i ett dataintrång. Så här fungerar det:
+    1. Gå till { "https://monitor.firefox.com" } och sök på din e-postadress.
+    2. Se om dina konton på nätet har blivit utsatta för ett dataintrång.
+    3. Hämta tips från { -product-name } om vad du ska göra härnäst.

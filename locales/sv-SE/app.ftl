@@ -168,3 +168,12 @@ copyright-info = Delar av detta innehåll är  &#x24B8; 1998-2018 av enskilda mo
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Breach data tillhandahålls av { $hibp-link }
 site-description = Har dina konton läckt eller blivit stulna vid ett dataintrång? Ta reda på det hos { -product-name }. Sök i vår databas och registrera dig för varningar.
+confirmation-headline = Din rapport från { -product-name } är på väg.
+confirmation-blurb = Dataintrång kan påverka alla. Sprid ordet så att dina vänner och familj kan kontrollera om deras konton på nätet är säkra.
+share-email = E-postadress
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Övriga
+share-twitter = De flesta har cirka 100 konton på nätet. Har något av dessa blivit utsatt för ett dataintrång? Ta reda på det.
+share-facebook-headline = Ta reda på om du har blivit utsatt för ett dataintrång
+share-facebook-blurb = Har dina konton på nätet blivit utsatta för ett dataintrång?
+og-site-description = Ta reda på om du har blivit utsatt för ett dataintrång med { -product-name }. Registrera dig för varningar om framtida intrång och få tips för att hålla dina konton säkra.
