@@ -180,3 +180,5 @@ confirmation-headline = Vaše poročilo { -product-name } je na poti.
 share-email = E-pošta
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Drugo
+share-facebook-headline = Preverite, ali ste bili del kraje podatkov
+share-facebook-blurb = Ali so bili vaši spletni računi izpostavljeni v kraji podatkov?

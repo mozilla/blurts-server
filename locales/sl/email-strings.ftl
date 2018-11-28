@@ -56,3 +56,5 @@ report-pwt-headline-4 = Uporabite upravitelja gesel
 report-pwt-summary-4 = Storitve, kot so 1Password, LastPass, Dashlane in Bitwarden, ustvarjajo močna gesla, jih varno shranjujejo in jih na spletnih straneh izpolnijo za vas, tako da si vam ni treba zapomniti posameznih gesel.
 # A link to legal information about mozilla products.
 legal = Pravno obvestilo
+# Share Firefox Monitor by email subject line
+share-by-email-subject = Preverite, ali ste bili del kraje podatkov.
