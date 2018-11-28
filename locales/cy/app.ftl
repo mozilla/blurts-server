@@ -174,3 +174,11 @@ copyright-info = Mae darnau o'r cynnwys hwn yn Ⓒ 1998-2018 gan gyfranwyr mozil
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Mae data tor-data wedi ei ddarparu gan { $hibp-link }
 site-description = A gafodd eich cyfrifon eu ryddhau neu eu dwyn mewn tor-data? Gallwch weld yn { -product-name }. Chwiliwch ein cronfa ddata a chofrestru am rybuddion.
+confirmation-headline = Mae eich adroddiad { -product-name } ar ei ffordd.
+confirmation-blurb = Gall tor-data effeithio ar unrhyw un. Dwedwch wrth eich ffrindiau a theulu fel eu bod nhw'n gallu gweld os yw eu cyfrifon ar-lein yn ddiogel.
+share-email = E-bost
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Arall
+share-twitter = Mae gan y rhan fwyaf o bobl tua 100 o gyfrifon ar-lein. A oes unrhyw un o'ch rhai chi wedi dioddef tor-data? Dewch i weld.
+share-facebook-headline = Dewch i weld a ydych chi wedi bod yn rhan o dor-data
+share-facebook-blurb = A yw eich cyfrifon ar-lein wedi bod yn agored i dor-data?
