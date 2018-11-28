@@ -21,8 +21,8 @@ what-to-do-next = 接下來可以做什麼
 report-headline =
     { $breachCount ->
         [0] 一切都好。
-        [one] 您的帳號出現在 { $breachCount } 次資料洩露事件中。
-       *[other] 您的帳號出現在 { $breachCount } 次資料洩露事件中。
+        [one] 您的帳號出現在 { $breachCount } 次資料外洩事件中。
+       *[other] 您的帳號出現在 { $breachCount } 次資料外洩事件中。
     }
 report-subhead-no-breaches = 您的帳號並未出現在我們的資料外洩事故完整報告中。這是好消息，但您還可以做更多事來自保。資料外洩事件隨時都有可能發生，請繼續閱讀，以了解可如何保護密碼安全。
 report-subhead-found-breaches = 以下是您的 Firefox Monitor 完整報告，包含與此信箱地址有關的所有資料外洩事件。
@@ -40,7 +40,7 @@ report-pwt-summary-4 = 諸如 1Password、LastPass、Dashlane、Bitwarden 等服
 # A link to legal information about mozilla products.
 legal = 法律資訊
 # Share Firefox Monitor by email subject line
-share-by-email-subject = 看看您是否受資料洩露事件影響。
+share-by-email-subject = 看看您是否受資料外洩事件影響。
 # Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
 share-by-email-message =
     嗨！
