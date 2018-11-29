@@ -85,7 +85,7 @@ function clientErrorHandler (err, req, res, next) {
 function errorHandler (err, req, res, next) {
   res.status(500);
   res.render("subpage", {
-    headline: "Error",
+    headline: req.fluentFormat("error"),
     subhead: err.message,
   });
 }
