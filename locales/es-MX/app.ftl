@@ -183,3 +183,10 @@ copyright-info =
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Filtración de datos proporcionada por { $hibp-link }
 site-description = ¿Tus cuentas han sido filtradas o robadas en alguna filtración de datos? Descúbrelo en { -product-name }.  Busca en nuestra de base de datos y regístrate para las alertas.
+confirmation-headline = Tu informe de { -product-name } está en camino.
+share-email = Correo electrónico
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Otros
+share-twitter = La mayoría de las personas tienen alrededor de 100 cuentas en línea. ¿Alguno de los tuyos fue expuesta a una violación de datos? Averigua.
+share-facebook-headline = Averigua si fuiste parte de una violación de datos
+share-facebook-blurb = ¿Tus cuentas en línea fueron expuestas a una violación de datos?
