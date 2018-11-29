@@ -19,20 +19,19 @@ async function add(req, res) {
   }
   const fxNewsletter = Boolean(req.body.additionalEmails);
   const signupLanguage = req.headers["accept-language"];
-
   const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(email, fxNewsletter, signupLanguage);
-  const verifyUrl = EmailUtils.verifyUrl(unverifiedSubscriber);
-  const unsubscribeUrl = EmailUtils.unsubscribeUrl(unverifiedSubscriber);
 
-  const supportedLocales = EmailUtils.getSupportedLocales(req);
-  const buttonValue = req.fluentFormat("verify-my-email");
-  const whichView = "email_partials/email_verify";
   await EmailUtils.sendEmail(
     email,
     req.fluentFormat("user-add-email-verify-subject"),
     "default_email",
-    { email, verifyUrl, unsubscribeUrl, buttonValue, supportedLocales, whichView},
-  );
+    { email,
+      verifyUrl: EmailUtils.verifyUrl(unverifiedSubscriber),
+      unsubscribeUrl: EmailUtils.unsubscribeUrl(unverifiedSubscriber),
+      buttonValue: req.fluentFormat("verify-my-email"),
+      supportedLocales: req.supportedLocales,
+      whichView: "email_partials/email_verify",
+    });
 
   res.send({
     title: req.fluentFormat("user-add-title"),
@@ -58,7 +57,7 @@ function getShareByEmail(req) {
     "outlook" : {
       client: "Outlook",
       class: "outlook",
-      href: `https://outlook.live.com/owa/?path=/mail/action/compose&to=service%40domain.com&subject=${subject}&body=${body}`,
+      href: `https://outlook.live.com/owa/?path=/mail/action/compose&subject=${subject}&body=${body}`,
     },
     "default-email" : {
       client: req.fluentFormat("share-other"),
@@ -87,7 +86,7 @@ async function verify(req, res) {
     req.fluentFormat("user-verify-email-report-subject"),
     "default_email",
     {
-      supportedLocales: EmailUtils.getSupportedLocales(req),
+      supportedLocales: req.supportedLocales,
       email: verifiedEmailHash.email,
       date: HBSHelpers.prettyDate(req.supportedLocales, new Date()),
       unsafeBreachesForEmail: unsafeBreachesForEmail,
@@ -151,11 +150,11 @@ function getUnsubSurvey(req, res) {
     throw new FluentError("error-not-subscribed");
   }
   res.render("subpage", {
-  title: req.fluentFormat("user-unsubscribe-survey-title"),
-  headline: req.fluentFormat("unsub-survey-headline"),
-  subhead: req.fluentFormat("unsub-survey-blurb"),
-  whichPartial: "subpages/unsubscribe_survey",
-  UNSUB_REASONS,
+    title: req.fluentFormat("user-unsubscribe-survey-title"),
+    headline: req.fluentFormat("unsub-survey-headline"),
+    subhead: req.fluentFormat("unsub-survey-blurb"),
+    whichPartial: "subpages/unsubscribe_survey",
+    UNSUB_REASONS,
   });
 }
 

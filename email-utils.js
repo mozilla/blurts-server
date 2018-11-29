@@ -4,7 +4,6 @@ const AppConstants = require("./app-constants");
 
 const nodemailer = require("nodemailer");
 const hbs = require("nodemailer-express-handlebars");
-const { negotiateLanguages, acceptedLanguages } = require("fluent-langneg");
 
 const HBSHelpers = require("./hbs-helpers");
 const mozlog = require("./log");
@@ -42,16 +41,6 @@ const EmailUtils = {
     const gTransporterVerification = await gTransporter.verify();
     gTransporter.use("compile", hbs(hbsOptions));
     return Promise.resolve(gTransporterVerification);
-  },
-
-  getSupportedLocales(req) {
-    const requestedLanguage = acceptedLanguages(req.headers["accept-language"]);
-    const supportedLocales = negotiateLanguages(
-      requestedLanguage,
-      req.app.locals.AVAILABLE_LANGUAGES,
-      {defaultLocale: "en"}
-    );
-    return supportedLocales;
   },
 
 
