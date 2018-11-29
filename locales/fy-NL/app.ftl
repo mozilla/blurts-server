@@ -178,3 +178,7 @@ copyright-info =
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Gegevens fan datalekken ferstrekt troch { $hibp-link }
 site-description = Binne jo accounts lekt of stellen by in datalek? Untdek it by { -product-name }. Trochsykje ús database en skriuw jo yn foar warskôgingen.
+confirmation-headline = Jo { -product-name }-rapport is ûnderweis.
+share-email = E-mailadres
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Oars
