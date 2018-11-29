@@ -155,7 +155,7 @@ if (AppConstants.FXA_ENABLED) {
 app.use("/scan", ScanRoutes);
 app.use("/ses", SesRoutes);
 app.use("/user", UserRoutes);
-if (app.get("env") === "dev" || AppConstants.NODE_ENV === "heroku") {
+if (["dev", "heroku"].includes(AppConstants.NODE_ENV)) {
   app.use("/email-l10n", EmailL10nRoutes);
 }
 app.use("/", HomeRoutes);
