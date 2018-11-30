@@ -17,3 +17,15 @@ user-add-invalid-email = Άκυρο email
 ## Password Tips
 
 signup-modal-close = Κλείσιμο
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = Απεστάλη!
+# Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
+share = Κοινοποίηση
+# Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
+tweet = Tweet
+download-firefox-quantum = Λήψη του { -brand-Quantum }
+# Features here refers to Firefox browser features. 
+features = Χαρακτηριστικά
+share-email = Email
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Άλλο
