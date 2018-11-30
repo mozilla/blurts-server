@@ -57,3 +57,10 @@ report-pwt-summary-4 =
 legal = Legal
 # Share Firefox Monitor by email subject line
 share-by-email-subject = Ketahui apakah Anda tersangkut dalam kebocoran data.
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    Halo,
+    { -brand-name } memiliki layanan gratis di mana Anda dapat memeriksa apakah Anda tersangkut dalam suatu kebocoran data. Begini caranya:
+    1. Kunjungi { "https://monitor.firefox.com" } dan cari alamat surel Anda.
+    2. Cek apakah akun daring Anda telah tersangkut dalam kebocoran data.
+    3. Dapatkan kiat dari { -product-name } tentang apa yang selanjutnya perlu Anda lakukan.
