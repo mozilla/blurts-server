@@ -1,5 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 click-to-verify =
     Pilih tombol Verifikasi Surel Saya dalam 24 jam untuk mengonfirmasi akun Firefox Monitor Anda. 
     Laporan Anda akan segera tiba.

@@ -184,3 +184,6 @@ copyright-info =
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Data kebocoran tersedia oleh { $hibp-link }
 site-description = Pernahkah akun Anda terkuak atau tercuri dalam kebocoran data? Cari tahu di { -product-name }. Telusuri basis data kami dan daftarkan diri untuk mendapatkan peringatan.
+share-email = Surel
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Lainnya
