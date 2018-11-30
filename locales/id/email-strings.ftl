@@ -55,3 +55,5 @@ report-pwt-summary-4 =
     dan mengisikannya pada situs web sehingga Anda tidak perlu lagi mengingatnya satu per satu.
 # A link to legal information about mozilla products.
 legal = Legal
+# Share Firefox Monitor by email subject line
+share-by-email-subject = Ketahui apakah Anda tersangkut dalam kebocoran data.
