@@ -3,7 +3,7 @@
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
 click-to-verify =
-    Potvrďte své přihlášení ke službě { -product-name } do 24 hodin od odeslání tohoto e-mailu.
+    Potvrďte své přihlášení ke službě Firefox Monitor do 24 hodin od odeslání tohoto e-mailu.
     Hlášení o vašich účtech vám pak pošleme co nejdříve.
 verify-my-email = Ověřit e-mailovou adresu
 report-scan-another-email = Vyhledat další e-mailovou adresu ve službě { -product-name }
@@ -33,7 +33,7 @@ report-subhead-no-breaches =
     Váš účet nebyl součástí naší databáze úniků dat.
     To je dobrá zpráva, ale pořád ještě můžete něco zlepšovat.
     K dalšímu úniku dat může dojít kdykoliv. Přečtěte si, jak můžete ochránit svá hesla.
-report-subhead-found-breaches = Toto je vaše kompletní hlášení ze služby { -product-name }, které obsahuje všechny známé úniky dat s touto e-mailovou adresou.
+report-subhead-found-breaches = Toto je vaše kompletní hlášení ze služby Firefox Monitor, které obsahuje všechny známé úniky dat s touto e-mailovou adresou.
 breach-alert-headline = Váš účet byl součástí úniku dat.
 breach-alert-subhead = Nedávno nahlášený únik dat obsahuje vaši e-mailovou adresu a následující data
 report-pwt-blurb =
