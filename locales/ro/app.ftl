@@ -79,7 +79,7 @@ get-your-report = Obține raportul
 signup-modal-verify-headline = Verifică-ți abonamentul
 signup-modal-verify-blurb = Am trimis un link de verificare la <span id="submitted-email" class="medium"></span>.
 signup-modal-verify-expiration = Acest link expiră în 24 de ore.
-signup-modal-verify-resend = Nu este nici în căsuța poștală, nici la mesaje nedorite? Retrimite.
+signup-modal-verify-resend = Nu este nici în dosarul de mesaje primite, nici în dosarul spam? Retrimite.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Trimis!
 signup-with-fxa = Înregistrează-te cu contul { -brand-name }
@@ -162,3 +162,9 @@ copyright-info =
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Datele despre breșe sunt furnizate de { $hibp-link }
 site-description = Ți-au fost compromise sau furate conturile într-o breșă de date? Află la { -product-name }. Caută în baza noastră de date și înregistrează-te pentru alerte.
+confirmation-headline = Raportul tău { -product-name } este pe drum.
+confirmation-blurb = Breșele de date pot afecta pe oricine. Dă de veste astfel încât prietenii și familia să poată verifica dacă conturile lor online sunt în siguranță.
+share-twitter = Majoritatea persoanelor au aproximativ 100 de conturi online. A fost expus vreunul dintre conturile tale într-o breșă de date? Află.
+share-facebook-headline = Află dacă ai fost parte a unei breșe de date
+share-facebook-blurb = Au fost expuse conturile tale online într-o breșă de date?
+og-site-description = Află dacă ai fost parte a unei breșe de date cu { -product-name }. Înregistrează-te pentru alerte despre viitoare breșe și obține ponturi pentru a-ți menține în siguranță conturile.
