@@ -1,5 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 click-to-verify =
     Чтобы подтвердить свой аккаунт Firefox Monitor, нажмите «Подтвердить мою электронную почту» в течение 24 часов.
     Сразу после этого мы отправим отчёт о ваших аккаунтах.
@@ -53,3 +55,12 @@ report-pwt-headline-4 = Используйте менеджер паролей
 report-pwt-summary-4 = Такие сервисы, как 1Password, LastPass, Dashlane и Bitwarden, генерируют сложные пароли, а также надежно их хранят и автоматически их заполняют на веб-сайтах, так что вам не нужно помнить их все.
 # A link to legal information about mozilla products.
 legal = Юридическая информация
+# Share Firefox Monitor by email subject line
+share-by-email-subject = Проверьте, не стали ли вы жертвой утечки данных.
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    Привет!
+    { -brand-name } имеет бесплатный сервис, где вы можете проверить, не стали ли вы жертвой утечки данных. Вот как это работает:
+    1. Зайдите на { "https://monitor.firefox.com" } и выполните поиск по адресу своей электронной почты.
+    2. Посмотрите, не были ли ваши аккаунты затронуты утечками данных.
+    3. Получите подсказки от { -product-name } о том, что делать дальше.
