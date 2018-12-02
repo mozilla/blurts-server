@@ -26,7 +26,12 @@ home-title = { -product-name }
 home-not-found = Man xilitäj ta ruxaq.
 oauth-invalid-session = Man okel ta ri molojri'ïl
 oauth-confirmed-title = { -product-name } : Juxun
+scan-title = { -product-name } : Ruq'i'oj Tz'ajwachib'enïk
 user-add-invalid-email = Man okel ta ri Taqoya'l
+user-add-email-verify-subject = Tanik'oj ri rutz'ib'axik ab'i' pa { -product-name }.
+user-add-title = { -product-name } : Tajikib'a' Taqoya'l
+user-verify-token-error = K'atzinel ri rutoken jikib'anïk.
+user-verify-email-report-subject = Ri { -product-name } atzijol
 
 ## Password Tips
 
