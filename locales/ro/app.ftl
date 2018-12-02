@@ -147,7 +147,7 @@ unsub-survey-error = Te rugăm să selectezi o opțiune.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Distribuie
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
-tweet = Trimite tweet
+tweet = Trimite un tweet
 download-firefox-quantum = Descarcă { -brand-Quantum }
 download-firefox-mobile = Descarcă { -brand-name } pentru dispozitive mobile
 # Features here refers to Firefox browser features. 
