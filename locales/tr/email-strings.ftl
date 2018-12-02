@@ -58,3 +58,10 @@ report-pwt-summary-4 =
 legal = Yasal bilgiler
 # Share Firefox Monitor by email subject line
 share-by-email-subject = Verilerinin çalınıp çalınmadığını öğren.
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    Merhaba,
+    { -brand-name }, herhangi bir veri ihlalinde verilerinin çalınıp çalınmadığını gösteren ücretsiz bir servis. Şöyle çalışıyor:
+    1. { "https://monitor.firefox.com" } adresine girip e-posta adresini ara.
+    2. İnternet hesaplarının veri ihlallerinde ele geçirip geçirilmediğini öğren.
+    3. Daha sonra ne yapabileceğine dair { -product-name }'den ipuçları al.
