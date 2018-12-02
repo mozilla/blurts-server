@@ -47,13 +47,13 @@ pwt-section-blurb = Uw wachtwoorden beschermen meer dan uw accounts. Ze bescherm
 pwt-headline-1 = Gebruik voor iedere account een ander wachtwoord
 pwt-summary-1 = Hergebruik van hetzelfde wachtwoord zet de deur wagenwijd open voor identiteitsroof. Iedereen met dat wachtwoord kan zich bij al uw accounts aanmelden.
 pwt-headline-2 = Maak sterke, moeilijk te raden wachtwoorden
-pwt-summary-2 = Hackers gebruiken duizenden veelvoorkomende wachtwoorden om het uwe te raden. Hoe langer en willekeuriger uw wachtwoord is, hoe moeilijker het te raden is.
+pwt-summary-2 = Hackers gebruiken duizenden veelvoorkomende wachtwoorden om het uwe te raden. Hoe langer en willekeuriger uw wachtwoord is, hoe moeilijker het wordt om te raden.
 pwt-headline-3 = Behandel beveiligingsvragen als extra wachtwoorden
 pwt-summary-3 = Websites controleren niet of uw antwoorden kloppen, alleen maar of ze telkens overeenkomen. Maak lange, willekeurige antwoorden en bewaar ze op een veilige plek.
 pwt-headline-4 = Gebruik hulp bij het onthouden van uw wachtwoorden
 pwt-summary-4 =
     Wachtwoordbeheerders zoals 1Password, LastPass, Dashlane en Bitwarden genereren sterke, unieke wachtwoorden. 
-    Ook slaan ze wachtwoorden beveiligd op en vullen ze voor u in op websites.
+    Ook slaan ze wachtwoorden beveiligd op en vullen ze deze voor u in op websites.
 pwt-headline-5 = Voeg extra beveiliging toe met authenticatie in twee stappen
 pwt-summary-5 = 2FA vereist wat extra informatie (zoals een eenmalige code die via sms wordt toegezonden) om u aan te melden bij uw account. Zelfs als iemand uw wachtwoord heeft, komt hij of zij er niet in.
 pwt-headline-6 = Schrijf u in voor { -product-name-nowrap }-waarschuwingen
@@ -134,7 +134,7 @@ what-to-do-blurb-3 =
 what-to-do-subhead-4 = Gebruik hulp bij het maken van goede wachtwoorden die veilig worden bewaard.
 what-to-do-blurb-4 =
     Wachtwoordbeheerders zoals 1Password, LastPass, Dashlane en Bitwarden genereren sterke wachtwoorden, 
-    slaan ze beveiligd op, en vullen ze voor u in op websites.
+    slaan ze beveiligd op, en vullen ze deze voor u in op websites.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Datum van datalek:
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -178,3 +178,12 @@ copyright-info =
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Gegevens van datalekken verstrekt door { $hibp-link }
 site-description = Zijn uw accounts gelekt of gestolen bij een datalek? Ontdek het bij { -product-name }. Doorzoek onze database en schrijf u in voor waarschuwingen.
+confirmation-headline = Uw { -product-name }-rapport is onderweg.
+confirmation-blurb = Datalekken kunnen iedereen treffen. Zeg het voort, zodat uw vrienden en familie kunnen controleren of hun online accounts veilig zijn.
+share-email = E-mail
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Anders
+share-twitter = De meeste mensen hebben ongeveer 100 online accounts. Is een van de uwe betrokken bij een datalek? Ontdek het.
+share-facebook-headline = Ontdek of u bent getroffen door een datalek
+share-facebook-blurb = Zijn uw online accounts getroffen door een datalek?
+og-site-description = Ontdek met { -product-name } of u bent getroffen door een datalek. Schrijf u in voor waarschuwingen over toekomstige lekken en ontvang tips over hoe u uw accounts veilig houdt.
