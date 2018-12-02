@@ -32,6 +32,7 @@ user-add-email-verify-subject = Tanik'oj ri rutz'ib'axik ab'i' pa { -product-nam
 user-add-title = { -product-name } : Tajikib'a' Taqoya'l
 user-verify-token-error = K'atzinel ri rutoken jikib'anïk.
 user-verify-email-report-subject = Ri { -product-name } atzijol
+user-verify-title = { -product-name } : Xtz'ib'äx Rub'i'
 
 ## Password Tips
 
