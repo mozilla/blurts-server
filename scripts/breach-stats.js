@@ -25,10 +25,17 @@ function dhm(t){
 
 
 (async () => {
-  const breaches = await HIBP.req("/breaches");
-  // Sort by AddedDate oldest-to-newest
-  breaches.body.sort((a,b) => {return new Date(a.AddedDate) - new Date(b.AddedDate)});
-  breaches.body.sort((a,b) => {return a.PwnCount > b.PwnCount});
+  const breachesResponse = await HIBP.req("/breaches");
+  const breaches = breachesResponse.body;
+  const dataClassesResponse = await HIBP.req("/dataclasses");
+  const dataClassesArray = dataClassesResponse.body;
+  const dataClasses = dataClassesArray.map(dataClassStr => { 
+    const dataClass = {
+      name: dataClassStr,
+      PwnCount: 0,
+    };
+    return dataClass;
+  });
 
   let breachTLDs = {};
   let oldestBreachDate = new Date();
@@ -36,7 +43,7 @@ function dhm(t){
   let fastestResponseTime = Math.abs(new Date() - new Date(0));
   let fastestResponseBreach = "";
 
-  for (const breach of breaches.body) {
+  for (const breach of breaches) {
     const breachDate = new Date(breach.BreachDate);
     const addedDate = new Date(breach.AddedDate);
     const parsedDomainTLD = psl.parse(breach.Domain).tld;
@@ -45,8 +52,11 @@ function dhm(t){
     } else {
       breachTLDs[parsedDomainTLD] = 1;
     }
+    for (const breachDataClass of breach.DataClasses) {
+      const dC = dataClasses.find(dataClass => dataClass.name === breachDataClass)
+      dC.PwnCount += breach.PwnCount;
+    }
 
-    console.log("breach: ", breach.Name, ", domain: ", breach.Domain, ", date: ", addedDate, ", count: ", breach.PwnCount);
     if (breachDate < oldestBreachDate){
       oldestBreachDate = breachDate;
       oldestBreach = breach.Name;
@@ -58,9 +68,19 @@ function dhm(t){
     }
   }
 
+  // Sort by AddedDate oldest-to-newest
+  //breaches.sort((a,b) => {return new Date(a.AddedDate) - new Date(b.AddedDate)});
+  breaches.sort((a,b) => { return a.PwnCount - b.PwnCount });
+  for (const breach of breaches) {
+    console.log("breach: ", breach.Name, ", domain: ", breach.Domain, ", count: ", breach.PwnCount.toLocaleString("en-US"));
+  }
+  dataClasses.sort((a,b) => { return a.PwnCount - b.PwnCount });
+  for (const dataClass of dataClasses) {
+    console.log("individual ", dataClass.name, " exposed ", dataClass.PwnCount.toLocaleString("en-US"), " times.");
+  }
+
   console.log("===========================");
   console.log("oldest breach: ", oldestBreach, " on date: ", oldestBreachDate);
   console.log("fastest breach response time (dd:hh:mm): ", dhm(Math.abs(fastestResponseTime)), " for breach: ", fastestResponseBreach);
-  console.log("breachTLDs: ", breachTLDs);
 })();
 
