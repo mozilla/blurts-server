@@ -89,6 +89,9 @@ function ga_getLocation() {
   if (document.getElementById("unsubscribe-survey")) {
     return "Unsubscribe Survey";
   }
+  if (document.getElementById("subpage").getAttribute("data-analytics-id") === "error") {
+    return "Error";
+  }
   if (document.getElementById("confirmation")) {
     return "Account Confirmation Page";
   }
@@ -106,10 +109,6 @@ function ga_sendPing(eventDescription, eventLabel) {
       eventLabel = ga_getLocation();
     } else {
       eventLabel = eventLabel + " --- " + ga_getLocation();
-    }
-    if (eventLabel.includes("Error")) {
-      eventLabel = document.getElementById("error-message").innerText;
-      return ga("send", "event", "Errors", "Error Page", eventLabel);
     }
     return ga("send", "event", eventCategory, eventAction, eventLabel);
   }
