@@ -1,5 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 click-to-verify =
     Selecteer binnen 24 uur de knop ‘Mijn e-mailadres verifiëren’ om uw Firefox Monitor-account te bevestigen. 
     Uw rapport is dan onderweg.
@@ -52,3 +54,12 @@ report-pwt-headline-4 = Gebruik een wachtwoordbeheerder
 report-pwt-summary-4 = Services zoals 1Password, LastPass, Dashlane en Bitwarden genereren sterke wachtwoorden, slaan ze beveiligd op en vullen ze op websites in, zodat u ze niet allemaal hoeft te onthouden.
 # A link to legal information about mozilla products.
 legal = Juridisch
+# Share Firefox Monitor by email subject line
+share-by-email-subject = Ontdek of u bent getroffen door een datalek.
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    Hallo,
+    { -brand-name } heeft een gratis service waarmee u kunt controleren of u bent getroffen door een datalek. Zo werkt het:
+    1. Ga naar { "https://monitor.firefox.com" } en zoek naar uw e-mailadres.
+    2. Zie of uw online accounts zijn getroffen door een datalek.
+    3. Ontvang tips van { -product-name } over wat u verder kunt doen.
