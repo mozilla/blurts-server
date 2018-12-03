@@ -164,3 +164,5 @@ site-description = Vos comptes ont-ils été divulgués ou volés suite à une f
 confirmation-headline = Votre rapport { -product-name } est en route.
 confirmation-blurb = Les fuites de données peuvent toucher n’importe qui. Faites passer le mot à vos proches afin qu’il puissent vérifier si leurs comptes en ligne sont en sécurité.
 share-email = Adresse électronique
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Autre
