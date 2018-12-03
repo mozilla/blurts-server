@@ -20,8 +20,8 @@ terms-and-privacy = Feltételek és adatvédelem
 error-not-subscribed = Ez az e-mail cím nincs feliratkozva a { -product-name }ra.
 error-hibp-throttled = Túl sok kapcsolat a { -brand-HIBP } felé.
 error-hibp-connect = Hiba a { -brand-HIBP }hoz kapcsolódáskor.
-error-hibp-load-breaches = A betörések nem tölthetőek be.
-hibp-notify-email-subject = { -product-name } figyelmeztetés: A fiókját érintette egy betörés.
+error-hibp-load-breaches = A adatszegések nem tölthetőek be.
+hibp-notify-email-subject = { -product-name } figyelmeztetés: A fiókját érintette egy adatszegés.
 home-title = { -product-name }
 home-not-found = Az oldal nem található.
 oauth-invalid-session = Érvénytelen munkamenet
@@ -66,30 +66,30 @@ pwt-summary-5 =
     Ha valaki rendelkezik is a jelszavával, még akkor sem tud belépni.
 pwt-headline-6 = Iratkozzon fel a { -product-name-nowrap } figyelmeztetésekre
 pwt-summary-6 =
-    A weboldalak betöréseinek száma növekszik. Amint egy új betörés kerül be az adatbázisunkba,
+    A weboldalak adatszegéseinek száma növekszik. Amint egy új adatszegés kerül be az adatbázisunkba,
     a { -product-name-nowrap } figyelmeztetést küld – így lépéseket tehet és megvédheti fiókját.
 landing-headline = Itt kezdődik a joga, hogy biztonságban legyen a hackerektől.
 landing-blurb =
     A { -product-name-nowrap } felvértezi Önt az eszközökkel, hogy biztonságban tartsa a személyes információit.
     Tudja meg, hogy a hackerek mit tudnak Önről, és tudja meg hogyan lehet egy lépéssel előttük.
-scan-label = Nézze meg, hogy érintette-e már betörés.
+scan-label = Nézze meg, hogy érintette-e már adatszegés.
 scan-placeholder = Adja meg az e-mail címét
 scan-privacy = Az e-mail címe nem lesz tárolva.
 scan-submit = Az e-mail címe keresése
 scan-another-email = Másik e-mail cím szkennelése
 scan-featuredbreach-label = Tudja meg, hogy veszélybe került-e a(z) <span class="bold"> { $featuredBreach } </span> fiókja.
-sensitive-breach-email-required = A betörés érzékeny információkat érint. E-mailes megerősítés szükséges.
+sensitive-breach-email-required = Az adatszegés érzékeny információkat érint. E-mailes megerősítés szükséges.
 scan-error = Érvényes e-mail címnek kell lennie.
 signup-banner-headline = A { -product-name-nowrap } észleli az online fiókjaival szembeni fenyegetéseket.
 signup-banner-blurb =
     A részletes { -product-name-nowrap } jelentés megjeleníti, hogy szivárgott-e már ki adata, vagy loptak-e el már információkat az online fiókjaiból.
-    Figyelmeztetni fogjuk akkor is, ha a fiókja új weboldal betörésekben jelenik meg.
+    Figyelmeztetni fogjuk akkor is, ha a fiókja új weboldal adatszegésekben jelenik meg.
 download-firefox-bar-blurb = A { -product-name-nowrap }t a <span class="nowrap">vadonatúj { -brand-name }</span> szállítja Önnek.
 download-firefox-bar-link = A { -brand-name } letöltése most
 download-firefox-banner-blurb = Vegye át a böngészője irányítását
 download-firefox-banner-button = A { -brand-name } letöltése
 signup-modal-headline = Regisztráljon a { -product-name-nowrap }ra
-signup-modal-blurb = Iratkozzon fel a tejes jelentésre, és figyelmeztetésekre, ha betörés történik, valamint biztonsági tippekre a { -product-name-nowrap }tól.
+signup-modal-blurb = Iratkozzon fel a tejes jelentésre, és figyelmeztetésekre, ha adatszegés történik, valamint biztonsági tippekre a { -product-name-nowrap }tól.
 signup-modal-close = Bezárás
 get-your-report = Szerezze meg a jelentését
 signup-modal-verify-headline = Erősítse meg a feliratkozását
@@ -104,31 +104,31 @@ form-signup-checkbox = Kapja meg a legfrissebbeket a { -brand-Mozilla } és { -b
 sign-up = Regisztráció
 form-signup-error = Érvényes e-mail címnek kell lennie
 no-breaches-headline = Eddig jó.
-found-breaches-headline = Az Ön adatai egy betörés részét képezték.
+found-breaches-headline = Az Ön adatai egy adatszegésben szerepelnek.
 no-breaches =
     Az Ön e-mail címe nem jelent meg az alapvető vizsgálatunkban.
-    Ez jó hír, de betörések bármikor történhetnek, és többet is tehet.
+    Ez jó hír, de adatszegések bármikor történhetnek, és többet is tehet.
     Iratkozzon fel a { -product-name-nowrap }ra a teljes jelentésért, a betörésekkor történő figyelmeztetésekért, valamint a jelszavai védelméről szóló tippekért.
 featured-breach-results =
     { $breachCount ->
-        [0] A fiókja szerepel a(z) <span class="bold">{ $featuredBreach }</span> betörésben, de más ismert betörésben nem jelenik meg.
-        [one] A fiókja szerepel a(z) <span class="bold">{ $featuredBreach }</span> betörésben, és egy másik betörésben is.
-       *[other] A fiókja szerepel a(z) <span class="bold">{ $featuredBreach }</span> betörésben, de más ismert { $breachCount } betörésekben is.
+        [0] A fiókja szerepel a(z) <span class="bold">{ $featuredBreach }</span> adatszegésben, de más ismert adatszegésben nem jelenik meg.
+        [one] A fiókja szerepel a(z) <span class="bold">{ $featuredBreach }</span> adatszegésben, és egy másik adatszegésben is.
+       *[other] A fiókja szerepel a(z) <span class="bold">{ $featuredBreach }</span> adatszegésben, de más ismert { $breachCount } adatszegésekben is.
     }
 featured-breach-not-compromised =
     { $breachCount ->
         [0] { no-breaches }
-        [one] A fiókja nem jelent meg a(z) <span class="bold">{ $featuredBreach }</span> betörésben, de egy másikban igen.
-       *[other] A fiókja nem jelent meg a(z) <span class="bold">{ $featuredBreach }</span> betörésben, de { $breachCount } másikban igen.
+        [one] A fiókja nem jelent meg a(z) <span class="bold">{ $featuredBreach }</span> adatszegésben, de egy másikban igen.
+       *[other] A fiókja nem jelent meg a(z) <span class="bold">{ $featuredBreach }</span> adatszegésben, de { $breachCount } másikban igen.
     }
 scan-results =
     { $breachCount ->
         [0] { no-breaches }
-        [one] A fiókja { $breachCount } betörésben jelent meg.
-       *[other] Az e-mail címéhez társított fiókok a következő { $breachCount } betörésben jelentek meg.
+        [one] A fiókja { $breachCount } adatszegésben jelent meg.
+       *[other] Az e-mail címéhez társított fiókok a következő { $breachCount } adatszegésben jelentek meg.
     }
 show-more-breaches = Több megjelenítése
-what-to-do-headline = Mi a teendő, ha az Ön információi érintettek egy betörésben?
+what-to-do-headline = Mi a teendő, ha az Ön információi érintettek egy adatszegésben?
 what-to-do-subhead-1 = Módosítsa jelszavait, még a régi fiókok esetén is
 what-to-do-blurb-1 =
     Ha nem tud bejelentkezni, lépjen kapcsolatba a webhellyel, és kérdezze meg, hogyan tudja visszaállítani vagy letiltani a fiókját.
@@ -140,24 +140,24 @@ what-to-do-blurb-2 =
     e-mail fiókjához és más weboldalakon, ahol személyes adatokat ment el.
 what-to-do-subhead-3 = Tegyen további lépéseket a pénzügyi fiókok biztosításához
 what-to-do-blurb-3 =
-    A legtöbb betörés csak e-mail címek és jelszavak kikerülését okozza, de néhány érzékeny pénzügyi adatokat is tartalmaz.
-    Ha a bankszámlaszáma, vagy hitelkártyaszáma érintett volt egy betörésben, akkor értesítse a bankját a lehetséges csalásról,
+    A legtöbb adatszegés csak e-mail címek és jelszavak kikerülését okozza, de néhány érzékeny pénzügyi adatokat is tartalmaz.
+    Ha a bankszámlaszáma, vagy hitelkártyaszáma érintett volt egy adatszegésben, akkor értesítse a bankját a lehetséges csalásról,
     és kövesse a levonásokat, melyeket nem ismer fel.
 what-to-do-subhead-4 = Kapjon segítséget a jó jelszavak létrehozásában és biztonságban tartásában.
 what-to-do-blurb-4 =
     Az olyan jelszókezelők, mint a 1Password, a LastPass, a Dashlane és a Bitwarden erős jelszavakat
     állítanak elő, biztonságosan tárolják őket, és betöltik azokat a weboldalakon Ön helyett.
 # breach-date = the calendar date a particular data theft occurred. 
-breach-date = A betörés dátuma:
+breach-date = Az adatszegés dátuma:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Veszélyeztetett fiókok:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Veszélyeztetett adatok:
 confirmed = Megerősítve!<br />Ön feliratkozott!
-confirmed-blurb = A { -product-name-nowrap } hamarosan e-mailt küld a teljes jelentéssel, és figyelmeztetést fog küldeni, ha egy új bejelentett betörésben jelenik meg a fiókja.
-confirmed-social-blurb = Ha betörés áldozata lett, akkor lehetséges, hogy a barátai, a családja vagy az online kapcsolatai is érintettek. Szóljon nekik a { -product-name-nowrap }ról.
+confirmed-blurb = A { -product-name-nowrap } hamarosan e-mailt küld a teljes jelentéssel, és figyelmeztetést fog küldeni, ha egy új bejelentett adatszegésben jelenik meg a fiókja.
+confirmed-social-blurb = Ha adatszegés áldozata lett, akkor lehetséges, hogy a barátai, a családja vagy az online kapcsolatai is érintettek. Szóljon nekik a { -product-name-nowrap }ról.
 unsub-headline = Leiratkozás a { -product-name-nowrap }ról
-unsub-blurb = Ez eltávolítja az e-mail címét a { -product-name-nowrap } listáról, és nem fog több figyelmeztetést kapni, ha új betöréseket jelentenek be.
+unsub-blurb = Ez eltávolítja az e-mail címét a { -product-name-nowrap } listáról, és nem fog több figyelmeztetést kapni, ha új adatszegéseket jelentenek be.
 unsub-button = Leiratkozás
 unsub-survey-headline = Ön már nincs feliratkozva.
 unsub-survey-blurb =
@@ -188,14 +188,14 @@ copyright-info =
     A tartalom egyes részeire egyéni mozilla.org közreműködők szerzői jogai vonatkoznak: &#x24B8; 1998-2018.<br />
     A tartalom <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons licenc</a> alatt érhető el.
 # Breach data provided by Have I Been Pwned.
-hibp-attribution = A betörési adatokat a { $hibp-link } biztosítja
-site-description = A fiókjai kiszivárogtak vagy ellopták őket egy betörés során? Tudjon meg többet a { -product-name } segítségével. Keressen az adatbázisunkban, és iratkozzon fel a figyelmeztetésekre.
+hibp-attribution = Az adatszegési adatokat a { $hibp-link } biztosítja
+site-description = A fiókjai kiszivárogtak vagy ellopták őket egy adatszegés során? Tudjon meg többet a { -product-name } segítségével. Keressen az adatbázisunkban, és iratkozzon fel a figyelmeztetésekre.
 confirmation-headline = Úton van a { -product-name } jelentése.
-confirmation-blurb = A betörések bárkit érinthetnek. Mondja el barátainak és családtagjainak, hogy ellenőrizhessék, hogy biztonságosak-e az online fiókjaik.
+confirmation-blurb = Az adatszegések bárkit érinthetnek. Mondja el barátainak és családtagjainak, hogy ellenőrizhessék, hogy biztonságosak-e az online fiókjaik.
 share-email = E-mail
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Egyéb
-share-twitter = A legtöbb embernek körülbelül 100 online fiókja van. Vannak olyanok, amelyek kikerültek egy betöréskor? Tudja meg.
-share-facebook-headline = Tudja meg, hogy része volt-e egy betörésnek
-share-facebook-blurb = Kikerült-e online fiókja egy betörés miatt?
-og-site-description = Tudja meg, hogy része volt-e egy betörésnek a { -product-name } segítségével. Iratkozzon fel a figyelmeztetésekre, és kapjon tippeket arról, hogyan tartsa biztonságban a fiókjait.
+share-twitter = A legtöbb embernek körülbelül 100 online fiókja van. Vannak olyanok, amelyek kikerültek egy adatszegéskor? Tudja meg.
+share-facebook-headline = Tudja meg, hogy része volt-e adatszegésnek
+share-facebook-blurb = Kikerült-e online fiókja egy adatszegés miatt?
+og-site-description = Tudja meg, hogy része volt-e adatszegésnek a { -product-name } segítségével. Iratkozzon fel a figyelmeztetésekre, és kapjon tippeket arról, hogyan tartsa biztonságban a fiókjait.

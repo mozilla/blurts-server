@@ -16,25 +16,25 @@ firefox-monitor-report = { -product-name } jelentés
 report-date = Jelentés ideje:
 email-address = E-mail cím:
 # "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Itt van a teljes { -product-name } jelentés, amely tartalmazza az összes betörést, amely ezt az e-mail címet tartalmazza.
+your-full-report = Itt van a teljes { -product-name } jelentés, amely tartalmazza az összes adatszegést, amely ezt az e-mail címet tartalmazza.
 report-no-breaches =
-    Az Ön e-mail címe nem szerepel az ismert betörések adatbázisában.
-    De betörések bármikor történhetnek. Tegye meg ezeket a lépéseket, hogy személyes adatait biztonságban tartsa online.
+    Az Ön e-mail címe nem szerepel az ismert adatszegések adatbázisában.
+    De adatszegések bármikor történhetnek. Tegye meg ezeket a lépéseket, hogy személyes adatait biztonságban tartsa online.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Mi legyen a következő teendő
 report-headline =
     { $breachCount ->
         [0] Eddig jó.
-        [one] A fiókja { $breachCount } betörésnél jelent meg.
-       *[other] A fiókja { $breachCount } betörésnél jelent meg.
+        [one] A fiókja { $breachCount } adatszegésnél jelent meg.
+       *[other] A fiókja { $breachCount } adatszegésnél jelent meg.
     }
 report-subhead-no-breaches =
-    Az Ön e-mail címe nem szerepel a betörésekről szóló teljes jelentésben.
+    Az Ön e-mail címe nem szerepel a adatszegésekről szóló teljes jelentésben.
     Ez jó hír, de többet is tehet.
-    Betörések bármikor történhetnek, így olvasson arról, hogyan védheti meg jelszavait.
-report-subhead-found-breaches = Itt az Ön teljes Firefox Monitor jelentése, amely tartalmazza az összes ismert betörést, amely ezt az e-mail címet tartalmazza.
-breach-alert-headline = A fiókját érintette egy betörés.
-breach-alert-subhead = Egy nemrég bejelentett betörés tartalmazza az Ön e-mail címét és a következő adatait
+    Adatszegések bármikor történhetnek, így olvasson arról, hogyan védheti meg jelszavait.
+report-subhead-found-breaches = Itt az Ön teljes Firefox Monitor jelentése, amely tartalmazza az összes ismert adatszegést, amely ezt az e-mail címet tartalmazza.
+breach-alert-headline = A fiókját érintette egy adatszegés.
+breach-alert-subhead = Egy nemrég bejelentett adatszegés tartalmazza az Ön e-mail címét és a következő adatait
 report-pwt-blurb =
     A jelszók olyan értékesek, hogy ezret lopnak el minden nap, és ezeket a fekete piacon adják el, és ott kereskednek velük.
     Az erősebb jelszavak védik a fiókjait, és az összes bennük található személyes adatot.
@@ -57,4 +57,11 @@ report-pwt-summary-4 =
 # A link to legal information about mozilla products.
 legal = Jogi információk
 # Share Firefox Monitor by email subject line
-share-by-email-subject = Tudja meg, hogy része volt-e egy betörésnek.
+share-by-email-subject = Tudja meg, hogy volt-e része adatszegésnek.
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    Üdv,
+    A { -brand-name } ingyenes szolgáltatással ellenőrizheti, hogy érintette-e adatszegés. Így működik:
+    1. Lépjen a { "https://monitor.firefox.com" } weboldalra, és keresse meg az e-mail címét.
+    2. Nézze meg, hogy az online fiókjai kikerültek-e egy adatszegéskor.
+    3. Kapjon tippeket a { -product-name }tól arról, hogy mit tehet.
