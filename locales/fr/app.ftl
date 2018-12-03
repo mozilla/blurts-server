@@ -64,6 +64,7 @@ scan-privacy = Votre adresse électronique ne sera pas stockée.
 scan-submit = Vérifier votre adresse électronique
 scan-another-email = Analysez une autre adresse électronique
 scan-featuredbreach-label = Découvrez si votre compte <span class="bold">{ $FeaturedBreach }</span> a été compromis.
+sensitive-breach-email-required = Cette fuite de données contient des informations sensibles. La vérification de l’adresse électronique est requise.
 scan-error = L’adresse électronique doit être valide.
 signup-banner-headline = { -product-name-nowrap } détecte les menaces sur vos comptes en ligne.
 signup-banner-blurb =
@@ -160,3 +161,6 @@ copyright-info =
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Données des différentes fuites fournies par { $hibp-link }
 site-description = Vos comptes ont-ils été divulgués ou volés suite à une fuite de données ? Découvrez-le avec { -product-name }. Recherchez dans notre base de données et inscrivez-vous pour recevoir des alertes.
+confirmation-headline = Votre rapport { -product-name } est en route.
+confirmation-blurb = Les fuites de données peuvent toucher n’importe qui. Faites passer le mot à vos proches afin qu’il puissent vérifier si leurs comptes en ligne sont en sécurité.
+share-email = Adresse électronique
