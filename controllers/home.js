@@ -27,7 +27,8 @@ function home(req, res) {
 function notFound(req, res) {
   res.status(404);
   res.render("subpage", {
-    headline: req.fluentFormat("error"),
+    analyticsID: "error",
+    headline: req.fluentFormat("error-headline"),
     subhead: req.fluentFormat("home-not-found") });
 }
 
