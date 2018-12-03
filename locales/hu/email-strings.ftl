@@ -1,5 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 click-to-verify =
     Válassza az E-mail megerősítése gombot 24 órán belül, hogy megerősítse a Firefox Monitor fiókját.
     A jelentés utána kerül elküldésre.
@@ -54,3 +56,5 @@ report-pwt-summary-4 =
     biztonságosan tárolják azokat, és betöltik őket a weboldalakon, hogy ne kelljen mindet megjegyeznie.
 # A link to legal information about mozilla products.
 legal = Jogi információk
+# Share Firefox Monitor by email subject line
+share-by-email-subject = Tudja meg, hogy része volt-e egy betörésnek.

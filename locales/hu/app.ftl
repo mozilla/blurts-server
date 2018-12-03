@@ -190,3 +190,12 @@ copyright-info =
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = A betörési adatokat a { $hibp-link } biztosítja
 site-description = A fiókjai kiszivárogtak vagy ellopták őket egy betörés során? Tudjon meg többet a { -product-name } segítségével. Keressen az adatbázisunkban, és iratkozzon fel a figyelmeztetésekre.
+confirmation-headline = Úton van a { -product-name } jelentése.
+confirmation-blurb = A betörések bárkit érinthetnek. Mondja el barátainak és családtagjainak, hogy ellenőrizhessék, hogy biztonságosak-e az online fiókjaik.
+share-email = E-mail
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Egyéb
+share-twitter = A legtöbb embernek körülbelül 100 online fiókja van. Vannak olyanok, amelyek kikerültek egy betöréskor? Tudja meg.
+share-facebook-headline = Tudja meg, hogy része volt-e egy betörésnek
+share-facebook-blurb = Kikerült-e online fiókja egy betörés miatt?
+og-site-description = Tudja meg, hogy része volt-e egy betörésnek a { -product-name } segítségével. Iratkozzon fel a figyelmeztetésekre, és kapjon tippeket arról, hogyan tartsa biztonságban a fiókjait.
