@@ -19,6 +19,8 @@ user-add-invalid-email = Email non valide
 
 ## Password Tips
 
+scan-submit = Verificar tu adresse email
+scan-error = Debe ser un adresse email valide
 download-firefox-bar-link = Discarga subito { -brand-name }
 download-firefox-banner-blurb = Prende controlo de tu navigator
 download-firefox-banner-button = Discarga { -brand-name }
