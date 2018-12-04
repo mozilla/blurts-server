@@ -30,6 +30,7 @@ scan-title = { -product-name }：扫描结果
 user-add-invalid-email = 无效的电子邮件地址
 user-add-email-verify-subject = 确认您要订阅 { -product-name }。
 user-add-title = { -product-name }：确认电子邮件
+error-headline = 错误
 user-verify-token-error = 必须持有验证令牌（Token）。
 user-verify-email-report-subject = 您的 { -product-name } 报告
 user-verify-title = { -product-name }：已订阅
