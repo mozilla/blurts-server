@@ -46,3 +46,5 @@ report-pwt-headline-4 = Utilisez un gestionnaire de mots de passe
 report-pwt-summary-4 = Des services tels que 1Password, LastPass, Dashlane et Bitwarden génèrent des mots de passe forts, les stockent en toute sécurité et les insèrent dans les sites web pour que vous n’ayez pas à en retenir un seul.
 # A link to legal information about mozilla products.
 legal = Mentions légales
+# Share Firefox Monitor by email subject line
+share-by-email-subject = Vérifiez si vous avez été victime d’une fuite de données.

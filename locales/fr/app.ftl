@@ -168,3 +168,4 @@ share-email = Adresse électronique
 share-other = Autre
 share-twitter = La plupart des gens possèdent des dizaines de comptes en ligne. L’un des vôtres a-t-il été compromis suite à une fuite de données ? Vérifiez par vous-même.
 share-facebook-headline = Vérifiez si vous êtes concerné⋅e par une fuite de données
+share-facebook-blurb = Vos comptes en ligne ont-ils été compromis suite à une fuite de données ?
