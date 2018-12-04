@@ -166,3 +166,5 @@ confirmation-blurb = Les fuites de données peuvent toucher n’importe qui. Fai
 share-email = Adresse électronique
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Autre
+share-twitter = La plupart des gens possèdent des dizaines de comptes en ligne. L’un des vôtres a-t-il été compromis suite à une fuite de données ? Vérifiez par vous-même.
+share-facebook-headline = Vérifiez si vous êtes concerné⋅e par une fuite de données
