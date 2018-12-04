@@ -30,6 +30,7 @@ scan-title = { -product-name }: Skanna resultat
 user-add-invalid-email = Ogiltig e-postadress
 user-add-email-verify-subject = Verifiera din prenumeration på { -product-name }.
 user-add-title = { -product-name }: Bekräfta e-postadress
+error-headline = Fel
 user-verify-token-error = Verifieringstecken är obligatoriskt.
 user-verify-email-report-subject = Ditt rapport för { -product-name }
 user-verify-title = { -product-name }: Prenumererar
