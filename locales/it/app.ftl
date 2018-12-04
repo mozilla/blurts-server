@@ -188,6 +188,11 @@ copyright-info =
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Dati sulle violazioni forniti da { $hibp-link }
 site-description = I tuoi account sono stati compromessi o rubati in una violazione di dati? Scoprilo su { -product-name }. Cerca nel nostro database e registrati per ricevere avvisi.
+confirmation-headline = Il rapporto di { -product-name } è in arrivo.
+confirmation-blurb = Le violazioni dei dati possono riguardare chiunque. Spargi la voce in modo che i tuoi amici e familiari possano controllare se i loro account online sono al sicuro.
+share-email = Indirizzo email
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Altro
 share-facebook-headline = Scopri se hai subito una violazione dei dati
+share-facebook-blurb = I tuoi account online sono stati esposti a una violazione dei dati?
+og-site-description = Scopri se hai subito una violazione dei dati con { -product-name }. Iscriviti per ricevere notifiche su future violazioni e ottenere suggerimenti per mantenere i tuoi account al sicuro.

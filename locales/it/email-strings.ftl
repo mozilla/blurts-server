@@ -54,3 +54,10 @@ report-pwt-summary-4 = Servizi come 1Password, LastPass, Dashlane e Bitwarden po
 legal = Note legali
 # Share Firefox Monitor by email subject line
 share-by-email-subject = Vedi se hai subito una violazione dei dati.
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    Ciao,
+    { -brand-name } ha un servizio gratuito con il quale puoi verificare se hai subito una violazione dei dati. Ecco la procedura da seguire:
+    1. Vai su { "https://monitor.firefox.com" } e inserisci il tuo indirizzo email.
+    2. Verifica se i tuoi account online sono stati esposti a una violazione dei dati.
+    3. Ottieni suggerimenti da { -product-name } su cosa fare dopo.
