@@ -1,5 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 click-to-verify = Seleziona il pulsante “Verifica il mio indirizzo email” entro 24 ore per confermare il tuo account. Una volta confermato l’account, il tuo rapporto arriverà a breve.
 verify-my-email = Verifica il mio indirizzo email
 report-scan-another-email = Controlla un altro indirizzo email con { -product-name }
@@ -50,3 +52,5 @@ report-pwt-headline-4 = Utilizza un gestore di password
 report-pwt-summary-4 = Servizi come 1Password, LastPass, Dashlane e Bitwarden possono generare password complesse e uniche, memorizzarle in modo sicuro e inserirle direttamente nei siti web quando li visiti, senza più bisogno di ricordarle ogni volta.
 # A link to legal information about mozilla products.
 legal = Note legali
+# Share Firefox Monitor by email subject line
+share-by-email-subject = Vedi se hai subito una violazione dei dati.
