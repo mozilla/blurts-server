@@ -192,3 +192,5 @@ share-email = Surel
 share-other = Lainnya
 share-twitter = Kebanyakan orang memiliki sekitar 100 akun daring. Apakah salah satu dari akun Anda terkena pembobolan data? Temukan segera.
 share-facebook-headline = Cari tahu apakah Anda telah menjadi bagian dari pembobolan data
+share-facebook-blurb = Apakah akun daring Anda sudah terpapar dalam pembobolan data?
+og-site-description = Temukan apakah Anda telah menjadi bagian dari pembobolan data dengan { -product-name }. Daftarkan diri Anda untuk mendapatkan pemberitahuan tentang pembobolan di masa depan dan dapatkan kiat-kiat menjaga akun Anda tetap aman.
