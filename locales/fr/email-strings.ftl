@@ -48,3 +48,10 @@ report-pwt-summary-4 = Des services tels que 1Password, LastPass, Dashlane et Bi
 legal = Mentions légales
 # Share Firefox Monitor by email subject line
 share-by-email-subject = Vérifiez si vous avez été victime d’une fuite de données.
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    Bonjour,
+    { -brand-name } propose un service gratuit où vous pouvez vérifier si vous avez été victime d’une fuite de données. Voici comment ça fonctionne :
+    1. Ouvrez { "https://monitor.firefox.com" } et lancez une recherche avec votre adresse électronique.
+    2. Vérifiez si vos comptes en ligne font partie d’une fuite de données.
+    3. Consultez les conseils de { -product-name } sur ce qu’il faut faire ensuite.
