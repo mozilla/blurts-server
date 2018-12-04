@@ -30,6 +30,7 @@ scan-title = { -product-name } : Rezultatele scanării
 user-add-invalid-email = E-mail nevalid
 user-add-email-verify-subject = Verifică-ți abonamentul la { -product-name }.
 user-add-title = { -product-name } : Confirmă adresa de e-mail
+error-headline = Eroare
 user-verify-token-error = Este necesar un jeton de verificare.
 user-verify-email-report-subject = Raportul tău { -product-name }
 user-verify-title = { -product-name } : Abonat
@@ -164,6 +165,9 @@ hibp-attribution = Datele despre breșe sunt furnizate de { $hibp-link }
 site-description = Ți-au fost compromise sau furate conturile într-o breșă de date? Află la { -product-name }. Caută în baza noastră de date și înregistrează-te pentru alerte.
 confirmation-headline = Raportul tău { -product-name } este pe drum.
 confirmation-blurb = Breșele de date pot afecta pe oricine. Dă de veste astfel încât prietenii și familia să poată verifica dacă conturile lor online sunt în siguranță.
+share-email = E-mail
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Altele
 share-twitter = Majoritatea persoanelor au aproximativ 100 de conturi online. A fost expus vreunul dintre conturile tale într-o breșă de date? Află.
 share-facebook-headline = Află dacă ai fost parte a unei breșe de date
 share-facebook-blurb = Au fost expuse conturile tale online într-o breșă de date?
