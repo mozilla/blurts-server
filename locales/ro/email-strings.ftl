@@ -1,5 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 click-to-verify = Selectează butonul Verifică-mi adresa de e-mail în maxim de 24 de ore pentru a-ți confirma contul Firefox Monitor. Vei primi apoi raportul în scurt timp.
 verify-my-email = Verifică-mi adresa de e-mail
 report-scan-another-email = Scanează altă adresă de e-mail în { -product-name }
@@ -49,3 +51,12 @@ report-pwt-headline-4 = Folosește un manager de parole
 report-pwt-summary-4 = Serviciile precum 1Password, LastPass, Dashlane și Bitwarden generează parole puternice, le stochează în siguranță și le completează pe site-uri pentru tine așa că nu este nevoie să le ții minte absolut pe toate.
 # A link to legal information about mozilla products.
 legal = Mențiuni legale
+# Share Firefox Monitor by email subject line
+share-by-email-subject = Vezi dacă ai fost implicat(ă) într-o breșă de date.
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    Salut,
+    { -brand-name } are un serviciu gratuit unde poți verifica dacă ai fost implicat(ă) într-o breșă de date. Iată cum funcționează:
+    1. Intră pe { "https://monitor.firefox.com" } și caută-ți adresa de e-mail.
+    2. Vezi dacă ți-au fost expuse conturile online într-o breșă de date.
+    3. Obține ponturi de la { -product-name } despre ce să faci în continuare.
