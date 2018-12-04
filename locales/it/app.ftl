@@ -30,6 +30,7 @@ scan-title = { -product-name } : Risultati scansione
 user-add-invalid-email = Email non valida
 user-add-email-verify-subject = Conferma la tua iscrizione a { -product-name }.
 user-add-title = { -product-name } : Conferma email
+error-headline = Errore
 user-verify-token-error = È richiesto un token di verifica.
 user-verify-email-report-subject = Il tuo rapporto di { -product-name }
 user-verify-title = { -product-name } : Iscrizione completata
@@ -187,3 +188,6 @@ copyright-info =
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Dati sulle violazioni forniti da { $hibp-link }
 site-description = I tuoi account sono stati compromessi o rubati in una violazione di dati? Scoprilo su { -product-name }. Cerca nel nostro database e registrati per ricevere avvisi.
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Altro
+share-facebook-headline = Scopri se hai subito una violazione dei dati
