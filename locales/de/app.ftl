@@ -30,6 +30,7 @@ scan-title = { -product-name }: Scan-Ergebnisse
 user-add-invalid-email = Ungültige E-Mail-Adresse
 user-add-email-verify-subject = Bestätigen Sie Ihr Abonnement für { -product-name }.
 user-add-title = { -product-name }: E-Mail-Adresse bestätigen
+error-headline = Fehler
 user-verify-token-error = Verifikations-Token wird benötigt.
 user-verify-email-report-subject = Ihr Bericht für { -product-name }
 user-verify-title = { -product-name }: Abonniert
