@@ -30,6 +30,7 @@ scan-title = { -product-name } : 掃描結果
 user-add-invalid-email = 無效的電子郵件地址
 user-add-email-verify-subject = { -product-name } 訂閱確認
 user-add-title = { -product-name } : 確認電子郵件
+error-headline = 錯誤
 user-verify-token-error = 缺少驗證 token。
 user-verify-email-report-subject = 您的 { -product-name } 掃描報告
 user-verify-title = { -product-name } : 已訂閱
