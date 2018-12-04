@@ -65,6 +65,9 @@ pwt-summary-4 =
     Upravitelji gesel, kot so 1Password, LastPass, Dashlane in Bitwarden, ustvarjajo močna, edinstvena gesla. 
     Gesla tudi varno shranjujejo in jih izpolnjujejo na spletnih straneh namesto vas
 pwt-headline-5 = Izboljšajte varnost s preverjanjem v dveh korakih
+pwt-summary-5 =
+    Preverjanje v dveh korakih za prijavo v račun zahteva dodaten podatek (npr. enkratno kodo, poslano kot sporočilo).
+    Tudi, če nekdo ima vaše geslo, se v račun ne more prijaviti.
 pwt-headline-6 = Naročite se na opozorila { -product-name-nowrap }ja
 pwt-summary-6 =
     Kraje podatkov spletnih strani so v porastu. Takoj ko v naši zbirki podatkov objavimo nove kraje podatkov, 
@@ -182,5 +185,6 @@ share-email = E-pošta
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Drugo
 share-twitter = Večina ljudi ima približno 100 spletnih računov. Je bil kateri od vaših izpostavljen v kraji podatkov? Preverite.
-share-facebook-headline = Preverite, ali ste bili del kraje podatkov
+share-facebook-headline = Preverite, ali ste bili žrtev kraje podatkov
 share-facebook-blurb = Ali so bili vaši spletni računi izpostavljeni v kraji podatkov?
+og-site-description = S { -product-name }jem preverite, ali ste bili žrtev kraje podatkov. Prijavite se za opozorila o prihodnjih krajah in preberite nasvete, kako ohraniti svoje račune varne.

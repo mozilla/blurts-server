@@ -57,4 +57,4 @@ report-pwt-summary-4 = Storitve, kot so 1Password, LastPass, Dashlane in Bitward
 # A link to legal information about mozilla products.
 legal = Pravno obvestilo
 # Share Firefox Monitor by email subject line
-share-by-email-subject = Preverite, ali ste bili del kraje podatkov.
+share-by-email-subject = Preverite, ali ste bili žrtev kraje podatkov.
