@@ -30,6 +30,7 @@ scan-title = { -product-name }: Rezultati pregleda
 user-add-invalid-email = Neveljavna e-pošta
 user-add-email-verify-subject = Potrdite naročnino na { -product-name }.
 user-add-title = { -product-name }: Potrdite e-poštni naslov
+error-headline = Napaka
 user-verify-token-error = Zahtevan je potrditveni žeton.
 user-verify-email-report-subject = Vaše poročilo { -product-name }
 user-verify-title = { -product-name }: Naročeno
