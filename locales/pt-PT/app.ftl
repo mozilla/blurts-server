@@ -30,6 +30,7 @@ scan-title = { -product-name } : Resultados da verificação
 user-add-invalid-email = Email inválido
 user-add-email-verify-subject = Verifique a sua subscrição do { -product-name }.
 user-add-title = { -product-name } : Confirmar email
+error-headline = Erro
 user-verify-token-error = Um token de verificação é requerido.
 user-verify-email-report-subject = O seu relatório do { -product-name }
 user-verify-title = { -product-name } : Subscrito
