@@ -30,6 +30,7 @@ scan-title = { -product-name }: Hasil Pindaian
 user-add-invalid-email = Surel Tidak Valid
 user-add-email-verify-subject = Verifikasi langganan { -product-name } Anda.
 user-add-title = { -product-name } : Konfirmasi Surel
+error-headline = Masalah
 user-verify-token-error = Token verifikasi diperlukan.
 user-verify-email-report-subject = Laporan { -product-name } Anda
 user-verify-title = { -product-name } : Berlangganan
@@ -184,6 +185,10 @@ copyright-info =
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Data kebocoran tersedia oleh { $hibp-link }
 site-description = Pernahkah akun Anda terkuak atau tercuri dalam kebocoran data? Cari tahu di { -product-name }. Telusuri basis data kami dan daftarkan diri untuk mendapatkan peringatan.
+confirmation-headline = Laporan { -product-name } Anda sedang dikirim.
+confirmation-blurb = Pembobolan data dapat mengenai siapa saja. Sebarkan kabar ini sehingga teman dan keluarga Anda dapat memeriksa apakah akun daring mereka aman.
 share-email = Surel
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Lainnya
+share-twitter = Kebanyakan orang memiliki sekitar 100 akun daring. Apakah salah satu dari akun Anda terkena pembobolan data? Temukan segera.
+share-facebook-headline = Cari tahu apakah Anda telah menjadi bagian dari pembobolan data
