@@ -30,6 +30,7 @@ scan-title = { -product-name } : Szkennelési eredmények
 user-add-invalid-email = Érvénytelen e-mail cím
 user-add-email-verify-subject = A { -product-name } feliratkozásának megerősítése.
 user-add-title = { -product-name } : E-mail cím megerősítése
+error-headline = Hiba
 user-verify-token-error = Az ellenőrzési token lejárt.
 user-verify-email-report-subject = Az Ön { -product-name } jelentése
 user-verify-title = { -product-name } : Feliratkozott
