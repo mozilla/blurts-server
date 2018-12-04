@@ -30,6 +30,7 @@ scan-title = { -product-name } - výsledky skenu
 user-add-invalid-email = Neplatný e-mail
 user-add-email-verify-subject = Potvrďte své přihlášení k odběru ze služby { -product-name }.
 user-add-title = { -product-name } - potvrzovací e-mail
+error-headline = Chyba
 user-verify-token-error = Je vyžadován ověřovací token.
 user-verify-email-report-subject = Vaše hlášení ze služby { -product-name }
 user-verify-title = { -product-name } - přihlášení dokončeno
