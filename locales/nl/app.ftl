@@ -30,6 +30,7 @@ scan-title = { -product-name } : Scanresultaten
 user-add-invalid-email = Ongeldig e-mailadres
 user-add-email-verify-subject = Controleer uw abonnement op { -product-name }.
 user-add-title = { -product-name } : E-mailadres bevestigen
+error-headline = Fout
 user-verify-token-error = Verificatietoken is vereist.
 user-verify-email-report-subject = Uw { -product-name }-rapport
 user-verify-title = { -product-name } : Geabonneerd
