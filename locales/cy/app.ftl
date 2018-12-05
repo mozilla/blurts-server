@@ -30,6 +30,7 @@ scan-title = { -product-name } : Canlyniadau Sganio
 user-add-invalid-email = E-bost Annilys
 user-add-email-verify-subject = Dilysu eich tanysgrifiad i { -product-name }.
 user-add-title = { -product-name } : Cadarnhau E-bost
+error-headline = Gwall
 user-verify-token-error = Mae angen tocyn dilysu.
 user-verify-email-report-subject = Eich adroddiad { -product-name }
 user-verify-title = { -product-name } : Tanysgrifiwyd
