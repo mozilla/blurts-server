@@ -193,6 +193,7 @@ confirmation-blurb = Le violazioni dei dati possono riguardare chiunque. Spargi 
 share-email = Indirizzo email
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Altro
+share-twitter = La maggior parte delle persone ha un centinaio di account online. Scopri se alcuni dei tuoi sono stati esposti a una violazione dei dati.
 share-facebook-headline = Scopri se hai subito una violazione dei dati
 share-facebook-blurb = I tuoi account online sono stati esposti a una violazione dei dati?
 og-site-description = Scopri se hai subito una violazione dei dati con { -product-name }. Iscriviti per ricevere notifiche su future violazioni e ottenere suggerimenti per mantenere i tuoi account al sicuro.
