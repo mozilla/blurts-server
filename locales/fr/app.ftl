@@ -30,6 +30,7 @@ scan-title = { -product-name } : résultats de l’analyse
 user-add-invalid-email = Adresse électronique invalide
 user-add-email-verify-subject = Vérifiez votre inscription à { -product-name }.
 user-add-title = { -product-name } : confirmez votre adresse électronique
+error-headline = Erreur
 user-verify-token-error = Un jeton de vérification est nécessaire.
 user-verify-email-report-subject = Votre rapport { -product-name }
 user-verify-title = { -product-name } : inscription réussie
