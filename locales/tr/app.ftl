@@ -30,6 +30,7 @@ scan-title = { -product-name }: Tarama Sonuçları
 user-add-invalid-email = Geçersiz e-posta
 user-add-email-verify-subject = { -product-name } aboneliğinizi doğrulayın.
 user-add-title = { -product-name } : E-postayı onaylayın
+error-headline = Hata
 user-verify-token-error = Doğrulama jetonu gerekli.
 user-verify-email-report-subject = { -product-name } raporunuz
 user-verify-title = { -product-name } : Abone olundu
