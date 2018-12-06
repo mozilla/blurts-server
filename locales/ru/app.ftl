@@ -35,6 +35,7 @@ scan-title = { -product-name } : Результаты сканирования
 user-add-invalid-email = Некорректный адрес электронной почты
 user-add-email-verify-subject = Подтвердите вашу подписку на { -product-name }.
 user-add-title = { -product-name } : Подтвердить эл. почту
+error-headline = Ошибка
 user-verify-token-error = Требуется токен подтверждения.
 user-verify-email-report-subject = Ваш отчёт от { -product-name }
 user-verify-title = { -product-name } : Вы подписаны
