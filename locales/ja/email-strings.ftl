@@ -1,5 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 click-to-verify =
     24 時間以内に「メールアドレスを確認」ボタンを選択して Firefox Monitor アカウントを確認してください。
     あなたのレポートは途上にあります。

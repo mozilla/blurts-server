@@ -30,6 +30,7 @@ scan-title = { -product-name } : スキャン結果
 user-add-invalid-email = メールアドレスが正しくありません
 user-add-email-verify-subject = { -product-name } の登録を確認してください。
 user-add-title = { -product-name } : メールを確認してください
+error-headline = エラー
 user-verify-token-error = 検証トークンが必要です。
 user-verify-email-report-subject = あなたの { -product-name } レポート
 user-verify-title = { -product-name } : 登録しました
