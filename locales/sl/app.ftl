@@ -181,6 +181,7 @@ copyright-info =
 hibp-attribution = Podatke o krajah podatkov omogoča { $hibp-link }
 site-description = Ali so bili podatki vaših računov izpostavljeni ali ukradeni? Preverite s { -product-name }jem. Preiščite našo bazo podatkov in se prijavite na opozorila.
 confirmation-headline = Vaše poročilo { -product-name } je na poti.
+confirmation-blurb = Žrtev kraje podatkov lahko postane vsak. Povejte naprej, naj tudi vaši prijatelji in družinski člani preverijo, ali so njihovi spletni računi varni.
 share-email = E-pošta
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Drugo
