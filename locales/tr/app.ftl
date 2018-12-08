@@ -75,7 +75,7 @@ landing-headline = Hacker’lardan korunmaya herkesin hakkı var.
 landing-blurb =
     { -product-name-nowrap }, kişisel bilgilerinizi güvende tutacak araçlarla sizi destekliyor.
     Hacker’ların hakkınızda neler bildiğini öğrenin, onların bir adım önünde kalın.
-scan-label = Veri ihlallerine karışıp karışmadığınız görün.
+scan-label = Verilerinizin çalınıp çalınmadığını görün.
 scan-placeholder = E-posta adresinizi yazın
 scan-privacy = E-postanız kaydedilmeyecektir.
 scan-submit = E-postamı ara
