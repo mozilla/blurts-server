@@ -46,10 +46,22 @@ pwt-section-blurb =
     nên nếu họ đã đánh cắp một tài khoản, họ sẽ có thể đánh cắp nhiều tài khoản hơn. Dưới đây là cách bảo vệ tài khoản của bạn tốt hơn.
 pwt-headline-1 = Sử dụng một mật khẩu khác nhau cho mỗi tài khoản
 pwt-headline-2 = Tạo mật khẩu mạnh, khó đoán
+pwt-summary-2 =
+    Tin tặc sử dụng hàng ngàn mật khẩu phổ biến để cố gắng đoán mật khẩu của bạn.
+    Mật khẩu của bạn càng dài và càng ngẫu nhiên thì càng khó đoán.
 pwt-headline-3 = Xử lý các câu hỏi bảo mật như mật khẩu bổ sung
 pwt-headline-4 = Nhận trợ giúp về ghi nhớ mật khẩu của bạn
+pwt-summary-4 =
+    Các trình quản lý mật khẩu như 1Password, LastPass, Dashlane và Bitwarden tạo ra các mật khẩu mạnh, độc đáo.
+    Nó lưu trữ mật khẩu an toàn và điền chúng vào các trang web cho bạn
 pwt-headline-5 = Thêm bảo mật bổ sung với xác thực hai yếu tố
+pwt-summary-5 =
+    Xác thực 2 yếu tố yêu cầu một phần thông tin bổ sung (như mã một lần được gửi qua tin nhắn văn bản) để đăng nhập vào tài khoản của bạn.
+    Ngay cả khi ai đó có mật khẩu của bạn, họ vẫn chưa thể vào được.
 pwt-headline-6 = Đăng ký nhận thông báo { -product-name-nowrap }
+pwt-summary-6 =
+    Vi phạm dữ liệu trang web đang gia tăng. Ngay sau khi một vi phạm mới được thêm vào cơ sở dữ liệu của chúng tôi,
+    { -product-name-nowrap } gửi cho bạn một cảnh báo - để bạn có thể hành động và bảo vệ tài khoản của mình.
 landing-headline = Quyền được an toàn của bạn khỏi tin tặc bắt đầu từ đây.
 landing-blurb =
     { -product-name-nowrap } cung cấp cho bạn các công cụ để giữ thông tin cá nhân của bạn an toàn.
@@ -59,6 +71,8 @@ scan-placeholder = Nhập địa chỉ email
 scan-privacy = Email của bạn sẽ không được lưu trữ.
 scan-submit = Tìm kiếm email của bạn
 scan-another-email = Quét địa chỉ email khác
+scan-featuredbreach-label = Tìm hiểu xem tài khoản <span class="bold">{ $featuredBreach }</span> của bạn có bị xâm phạm hay không.
+sensitive-breach-email-required = Vi phạm chứa thông tin nhạy cảm. Yêu cầu xác minh email.
 scan-error = Yêu cầu một email hợp lệ.
 signup-banner-headline = { -product-name-nowrap } phát hiện các mối đe dọa đối với các tài khoản trực tuyến của bạn.
 signup-banner-blurb =
@@ -93,6 +107,16 @@ featured-breach-results =
         [0] Tài khoản của bạn đã xuất hiện trong vi phạm <span class="bold">{ $featuredBreach }</span>, nhưng không xuất hiện trong bất kỳ vi phạm dữ liệu đã biết nào khác.
        *[other] Tài khoản của bạn đã xuất hiện trong vi phạm <span class="bold">{ $featuredBreach }</span>, cũng như { $breachCount } các vi phạm khác.
     }
+featured-breach-not-compromised =
+    { $breachCount ->
+        [0] { no-breaches }
+       *[other] Tài khoản của bạn không xuất hiện trong vi phạm <span class="bold">{ $featuredBreach }</span>, nhưng đã xuất hiện trong { $breachCount } vi phạm khác.
+    }
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+       *[other] Các tài khoản được liên kết với địa chỉ email của bạn đã xuất hiện trong { $breachCount } vi phạm sau đây.
+    }
 show-more-breaches = Xem thêm
 what-to-do-headline = Phải làm gì khi thông tin của bạn bị phơi bày trong vi phạm dữ liệu
 what-to-do-subhead-1 = Thay đổi mật khẩu của bạn, ngay cả đối với các tài khoản cũ
@@ -110,6 +134,15 @@ what-to-do-blurb-3 =
     Nếu số tài khoản ngân hàng hoặc số thẻ tín dụng của bạn bị lộ, hãy báo cho ngân hàng của bạn biết để được giúp đỡ và xử lí kịp thời,
     và theo dõi, báo cáo cho các khoản phí mà bạn không nhận ra.
 what-to-do-subhead-4 = Nhận trợ giúp về tạo mật khẩu tốt và giữ chúng an toàn.
+what-to-do-blurb-4 =
+    Các trình quản lý mật khẩu như 1Password, LastPass, Dashlane và Bitwarden tạo mật khẩu mạnh,
+    lưu trữ chúng một cách an toàn và điền chúng vào các trang web cho bạn.
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = Ngày vi phạm:
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Tài khoản bị xâm phạm:
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Dữ liệu bị xâm phạm:
 confirmed = Đã xác nhận!<br />Bạn đã đăng ký!
 confirmed-blurb = { -product-name-nowrap } sẽ sớm gửi email cho bạn một báo cáo đầy đủ và sẽ gửi thông báo qua email nếu tài khoản của bạn xuất hiện trong một vi phạm mới được báo cáo.
 confirmed-social-blurb = Nếu tài khoản của bạn đã bị vi phạm, rất có thể bạn bè, gia đình hoặc kết nối trực tuyến của bạn cũng vậy. Hãy cho họ biết về { -product-name-nowrap }.
@@ -145,6 +178,12 @@ copyright-info = Các phần của nội dung này được giữ bản quyền 
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Dữ liệu vi phạm được cung cấp bởi { $hibp-link }
 site-description = Tài khoản của bạn đã bị rò rỉ hoặc bị đánh cắp trong một vi phạm dữ liệu? Tìm hiểu tại { -product-name }. Tìm kiếm cơ sở dữ liệu của chúng tôi và đăng ký nhận thông báo.
+confirmation-headline = Báo cáo { -product-name } của bạn sau đó sẽ được gửi đến
+confirmation-blurb = Vi phạm dữ liệu có thể ảnh hưởng đến bất cứ ai. Truyền bá để bạn bè và gia đình của bạn có thể kiểm tra xem tài khoản trực tuyến của họ có an toàn không.
 share-email = Email
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Khác
+share-twitter = Hầu hết mọi người có khoảng 100 tài khoản trực tuyến. Có ai trong số bạn đã bị lộ trong một vi phạm dữ liệu? Tìm hiểu nó.
+share-facebook-headline = Tìm hiểu nếu bạn đã từng là một phần của vi phạm dữ liệu
+share-facebook-blurb = Các tài khoản trực tuyến của bạn đã bị lộ trong một phần của vi phạm dữ liệu không?
+og-site-description = Tìm hiểu xem bạn có phải ở trong một phần của vi phạm dữ liệu không với { -product-name }. Đăng ký nhận thông báo về các vi phạm trong tương lai và nhận các mẹo để giữ an toàn cho tài khoản của bạn.
