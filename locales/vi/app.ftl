@@ -16,7 +16,7 @@ layout-support = Hỗ trợ
 about-firefox-alerts = Về cảnh báo Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Gửi phản hồi
-terms-and-privacy = Điều Khoản và chính sách riêng tư
+terms-and-privacy = Điều khoản và chính sách riêng tư
 error-not-subscribed = Địa chỉ email này không được đăng ký với { -product-name }.
 error-hibp-throttled = Quá nhiều kết nối đến { -brand-HIBP }.
 error-hibp-connect = Lỗi kết nối đến { -brand-HIBP }.
@@ -45,11 +45,25 @@ pwt-section-blurb =
     Và tin tặc dựa vào những thói quen xấu, như sử dụng cùng một mật khẩu ở mọi nơi hoặc sử dụng các cụm từ phổ biến (p@ssw0rd, anyone?)
     nên nếu họ đã đánh cắp một tài khoản, họ sẽ có thể đánh cắp nhiều tài khoản hơn. Dưới đây là cách bảo vệ tài khoản của bạn tốt hơn.
 pwt-headline-1 = Sử dụng một mật khẩu khác nhau cho mỗi tài khoản
+pwt-headline-2 = Tạo mật khẩu mạnh, khó đoán
+pwt-headline-3 = Xử lý các câu hỏi bảo mật như mật khẩu bổ sung
+pwt-headline-4 = Nhận trợ giúp về ghi nhớ mật khẩu của bạn
+pwt-headline-5 = Thêm bảo mật bổ sung với xác thực hai yếu tố
+pwt-headline-6 = Đăng ký nhận thông báo { -product-name-nowrap }
+landing-headline = Quyền được an toàn của bạn khỏi tin tặc bắt đầu từ đây.
+landing-blurb =
+    { -product-name-nowrap } cung cấp cho bạn các công cụ để giữ thông tin cá nhân của bạn an toàn.
+    Tìm hiểu những gì tin tặc đã biết về bạn và tìm hiểu làm thế nào để đi trước họ một bước.
+scan-label = Vui lòng kiểm tra xem nó có liên quan đến vi phạm dữ liệu hay không.
 scan-placeholder = Nhập địa chỉ email
 scan-privacy = Email của bạn sẽ không được lưu trữ.
 scan-submit = Tìm kiếm email của bạn
 scan-another-email = Quét địa chỉ email khác
 scan-error = Yêu cầu một email hợp lệ.
+signup-banner-headline = { -product-name-nowrap } phát hiện các mối đe dọa đối với các tài khoản trực tuyến của bạn.
+signup-banner-blurb =
+    Báo cáo chi tiết của { -product-name-nowrap } gửi cho bạn hiển thị nếu thông tin từ tài khoản trực tuyến của bạn bị rò rỉ hoặc bị đánh cắp.
+    Chúng tôi cũng sẽ thông báo cho bạn nếu tài khoản của bạn xuất hiện trong các vi phạm mới.
 download-firefox-bar-link = Tải về { -brand-name } ngay
 download-firefox-banner-blurb = Kiểm soát trình duyệt của bạn
 download-firefox-banner-button = Tải về { -brand-name }
@@ -74,9 +88,40 @@ no-breaches =
     Địa chỉ email của bạn không xuất hiện trong quá trình quét cơ bản của chúng tôi.
     Đó là tin tốt lành, nhưng vi phạm dữ liệu có thể xảy ra bất cứ lúc nào và vẫn còn nhiều điều bạn có thể làm.
     Đăng ký { -product-name-nowrap } để có báo cáo đầy đủ, cảnh báo khi có vi phạm mới và mẹo về bảo vệ mật khẩu của bạn.
+featured-breach-results =
+    { $breachCount ->
+        [0] Tài khoản của bạn đã xuất hiện trong vi phạm <span class="bold">{ $featuredBreach }</span>, nhưng không xuất hiện trong bất kỳ vi phạm dữ liệu đã biết nào khác.
+       *[other] Tài khoản của bạn đã xuất hiện trong vi phạm <span class="bold">{ $featuredBreach }</span>, cũng như { $breachCount } các vi phạm khác.
+    }
+show-more-breaches = Xem thêm
+what-to-do-headline = Phải làm gì khi thông tin của bạn bị phơi bày trong vi phạm dữ liệu
+what-to-do-subhead-1 = Thay đổi mật khẩu của bạn, ngay cả đối với các tài khoản cũ
+what-to-do-blurb-1 =
+    Nếu bạn không thể đăng nhập, hãy liên hệ với trang web để hỏi cách bạn có thể khôi phục hoặc vô hiệu hía tài khoản.
+    Thấy một tài khoản mà bạn không nhận ra? Trang web có thể đã thay đổi tên hoặc ai đó có thể đã tạo tài khoản cho bạn.
+what-to-do-subhead-2 = Nếu bạn sử dụng lại mật khẩu bị lộ, hãy thay đổi nó
+what-to-do-blurb-2 =
+    Tin tặc có thể cố gắng sử dụng lại mật khẩu bị lộ của bạn để vào các tài khoản khác.
+    Tạo một mật khẩu khác nhau cho mỗi trang web, đặc biệt là cho tài khoản ngân hàng của bạn,
+    email và các trang web khác, nơi bạn lưu thông tin cá nhân.
+what-to-do-subhead-3 = Thực hiện các bước bổ sung để bảo mật tài khoản tài chính của bạn
+what-to-do-blurb-3 =
+    Hầu hết các vi phạm chỉ để lộ email và mật khẩu, nhưng một số bao gồm thông tin tài chính nhạy cảm.
+    Nếu số tài khoản ngân hàng hoặc số thẻ tín dụng của bạn bị lộ, hãy báo cho ngân hàng của bạn biết để được giúp đỡ và xử lí kịp thời,
+    và theo dõi, báo cáo cho các khoản phí mà bạn không nhận ra.
+what-to-do-subhead-4 = Nhận trợ giúp về tạo mật khẩu tốt và giữ chúng an toàn.
 confirmed = Đã xác nhận!<br />Bạn đã đăng ký!
 confirmed-blurb = { -product-name-nowrap } sẽ sớm gửi email cho bạn một báo cáo đầy đủ và sẽ gửi thông báo qua email nếu tài khoản của bạn xuất hiện trong một vi phạm mới được báo cáo.
 confirmed-social-blurb = Nếu tài khoản của bạn đã bị vi phạm, rất có thể bạn bè, gia đình hoặc kết nối trực tuyến của bạn cũng vậy. Hãy cho họ biết về { -product-name-nowrap }.
+unsub-headline = Hủy đăng ký từ { -product-name-nowrap }
+unsub-blurb = Điều này sẽ xóa email của bạn khỏi danh sách { -product-name-nowrap } và bạn sẽ không còn nhận được thông báo khi vi phạm mới được công bố.
+unsub-button = Hủy đăng ký
+unsub-survey-headline = Bạn sẽ không còn đăng ký.
+unsub-survey-blurb =
+    Email của bạn đã hủy đăng ký từ { -product-name-nowrap }. Cảm ơn bạn đã sử dụng dịch vụ này.
+    Bạn sẽ dành một chút thời gian để trả lời một câu hỏi về kinh nghiệm của bạn?
+unsub-survey-form-label = Tại sao bạn hủy đăng ký nhận thông báo { -product-name-nowrap }?
+unsub-reason-1 = Tôi nghĩ rằng cảnh báo đó không làm cho dữ liệu của tôi an toàn hơn
 unsub-reason-2 = Tôi nhận được quá nhiều email từ { -product-name-nowrap }
 unsub-reason-3 = Tôi không tìm thấy nhiều giá trị của dịch vụ
 unsub-reason-4 = Tôi đã thực hiện các bước để bảo vệ tài khoản của mình
