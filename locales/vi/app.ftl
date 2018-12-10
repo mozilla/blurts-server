@@ -51,13 +51,16 @@ pwt-summary-2 =
     Tin tặc sử dụng hàng ngàn mật khẩu phổ biến để cố gắng đoán mật khẩu của bạn.
     Mật khẩu của bạn càng dài và càng ngẫu nhiên thì càng khó đoán.
 pwt-headline-3 = Xử lý các câu hỏi bảo mật như mật khẩu bổ sung
+pwt-summary-3 =
+    Các trang web không kiểm tra xem câu trả lời của bạn có chính xác không, chỉ cần biết là chúng có khớp như khi bạn tạo tài khoản hay không.
+    Tạo câu trả lời dài, ngẫu nhiên và lưu trữ chúng ở nơi an toàn.
 pwt-headline-4 = Nhận trợ giúp về ghi nhớ mật khẩu của bạn
 pwt-summary-4 =
     Các trình quản lý mật khẩu như 1Password, LastPass, Dashlane và Bitwarden tạo ra các mật khẩu mạnh, độc đáo.
     Nó lưu trữ mật khẩu an toàn và điền chúng vào các trang web cho bạn
-pwt-headline-5 = Thêm bảo mật bổ sung với xác thực hai yếu tố
+pwt-headline-5 = Thêm bảo mật bổ sung với xác thực hai bước
 pwt-summary-5 =
-    Xác thực 2 yếu tố yêu cầu một phần thông tin bổ sung (như mã một lần được gửi qua tin nhắn văn bản) để đăng nhập vào tài khoản của bạn.
+    Xác thực 2 bước yêu cầu một phần thông tin bổ sung (như mã một lần được gửi qua tin nhắn văn bản) để đăng nhập vào tài khoản của bạn.
     Ngay cả khi ai đó có mật khẩu của bạn, họ vẫn chưa thể vào được.
 pwt-headline-6 = Đăng ký nhận thông báo { -product-name-nowrap }
 pwt-summary-6 =

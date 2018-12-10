@@ -43,6 +43,9 @@ report-pwt-summary-2 =
     Tin tặc sử dụng danh sách các mật khẩu phổ biến để cố gắng đoán mật khẩu của bạn.
     Mật khẩu của bạn càng dài và càng ngẫu nhiên thì càng khó bị đánh cắp.
 report-pwt-headline-3 = Xử lý các câu hỏi bảo mật như mật khẩu bổ sung
+report-pwt-summary-3 =
+    Các trang web không kiểm tra xem câu trả lời của bạn có chính xác không, chỉ cần biết là chúng có khớp như khi bạn tạo tài khoản hay không.
+    Tạo câu trả lời dài, ngẫu nhiên và lưu trữ chúng ở nơi an toàn.
 report-pwt-headline-4 = Sử dụng trình quản lý mật khẩu
 report-pwt-summary-4 =
     Các dịch vụ như 1Password, LastPass, Dashlane và Bitwarden tạo mật khẩu mạnh, lưu trữ chúng một cách an toàn,
