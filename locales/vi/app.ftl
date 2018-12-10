@@ -4,7 +4,7 @@
 # - Transliterated.
 # - Translated.
 -product-name = Firefox Monitor
--product-name-nowrap = <span class="nowrap">{ -product-name }{ -product-name }
+-product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -58,14 +58,7 @@ pwt-headline-5 = Thêm bảo mật bổ sung với xác thực hai yếu tố
 pwt-summary-5 =
     Xác thực 2 yếu tố yêu cầu một phần thông tin bổ sung (như mã một lần được gửi qua tin nhắn văn bản) để đăng nhập vào tài khoản của bạn.
     Ngay cả khi ai đó có mật khẩu của bạn, họ vẫn chưa thể vào được.
-pwt-headline-6 = Đăng ký nhận thông báo { -product-name-nowrap }
-pwt-summary-6 =
-    Vi phạm dữ liệu trang web đang gia tăng. Ngay sau khi một vi phạm mới được thêm vào cơ sở dữ liệu của chúng tôi,
-    { -product-name-nowrap } gửi cho bạn một cảnh báo - để bạn có thể hành động và bảo vệ tài khoản của mình.
 landing-headline = Quyền được an toàn của bạn khỏi tin tặc bắt đầu từ đây.
-landing-blurb =
-    { -product-name-nowrap } cung cấp cho bạn các công cụ để giữ thông tin cá nhân của bạn an toàn.
-    Tìm hiểu những gì tin tặc đã biết về bạn và tìm hiểu làm thế nào để đi trước họ một bước.
 scan-label = Vui lòng kiểm tra xem nó có liên quan đến vi phạm dữ liệu hay không.
 scan-placeholder = Nhập địa chỉ email
 scan-privacy = Email của bạn sẽ không được lưu trữ.
@@ -75,9 +68,6 @@ scan-featuredbreach-label = Tìm hiểu xem tài khoản <span class="bold">{ $f
 sensitive-breach-email-required = Vi phạm chứa thông tin nhạy cảm. Yêu cầu xác minh email.
 scan-error = Yêu cầu một email hợp lệ.
 signup-banner-headline = { -product-name-nowrap } phát hiện các mối đe dọa đối với các tài khoản trực tuyến của bạn.
-signup-banner-blurb =
-    Báo cáo chi tiết của { -product-name-nowrap } gửi cho bạn hiển thị nếu thông tin từ tài khoản trực tuyến của bạn bị rò rỉ hoặc bị đánh cắp.
-    Chúng tôi cũng sẽ thông báo cho bạn nếu tài khoản của bạn xuất hiện trong các vi phạm mới.
 download-firefox-bar-link = Tải về { -brand-name } ngay
 download-firefox-banner-blurb = Kiểm soát trình duyệt của bạn
 download-firefox-banner-button = Tải về { -brand-name }
