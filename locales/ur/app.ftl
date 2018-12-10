@@ -12,6 +12,8 @@
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = سپورٹ
+# Link that takes the user to a blog post on blog.mozilla.org about the alerts
+about-firefox-alerts = Firefox کے انتباہات کے بارے میں
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = رائے دیں
 terms-and-privacy = شرائط اور رازداری
@@ -28,6 +30,7 @@ scan-title = { -product-name } : اسکین کے نتائج
 user-add-invalid-email = ناجائز ایمیل
 user-add-email-verify-subject = { -product-name } کے اپنے سبسکرپشن کو تصدیق کریں۔
 user-add-title = { -product-name } : ایمیل کی تصدیق کریں
+error-headline = نقص
 user-verify-token-error = توثیق کی ٹوکن درکار ہے۔
 user-verify-email-report-subject = آپکا { -product-name } رپورٹ
 user-verify-title = { -product-name } : سبسکرائب
@@ -76,6 +79,7 @@ unsub-headline = { -product-name-nowrap } سے ان سبسکرائب کریں
 unsub-button = رکنیت ختم کریں
 unsub-survey-headline = آپ اب سبسکرائب نہی ہیں۔
 unsub-reason-6 = اوپر سے کوئی بھی نہیں
+unsub-survey-thankyou = آپ کے رائے کا شکریہ.
 unsub-survey-error = کوئی ایک منتخب کریں۔
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = شیئر کریں
@@ -87,3 +91,6 @@ download-firefox-mobile = { -brand-name } موبائل ڈاؤن لوڈ کریں
 features = خصوصیات
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = بیٹا، نائٹلی، ڈیولپر ایڈیشن
+share-email = ای میل
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = دوسرا

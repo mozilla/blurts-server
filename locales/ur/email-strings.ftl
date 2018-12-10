@@ -1,5 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 verify-my-email = ای میل کی توثیق کریں
 unsubscribe-email-link = اگر آپ اب { -product-name } کے انتباہات نہیں چاہتے ہیں، تو اسے ان سبسکرائب کریں۔
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
