@@ -36,7 +36,7 @@ async function notify (req, res) {
       throw new Error("Unrecognized breach: " + reqBreachName);
     }
   }
-  
+
   if (breachAlert.IsSpamList || breachAlert.Domain === "" || breachAlert.IsFabricated) {
     log.info(`${breachAlert.Name} is fabricated, a spam list, or not associated with a website. \n Breach Alert not sent.`);
     return res.json(
