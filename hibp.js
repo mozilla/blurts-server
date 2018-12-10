@@ -101,7 +101,9 @@ const HIBP = {
   async getUnsafeBreachesForEmail(sha1, allBreaches) {
     const allFoundBreaches = await this.getBreachesForEmail(sha1, allBreaches, true);
     return allFoundBreaches.filter(
-      breach => !breach.IsSpamList
+      breach => !breach.IsSpamList &&
+                !breach.IsFabricated &&
+                breach.Domain !== ""
     );
   },
 
@@ -139,10 +141,11 @@ const HIBP = {
 
   filterOutUnsafeBreaches(breaches) {
     return breaches.filter(
-      breach => breach.IsVerified &&
-                !breach.IsRetired &&
+      breach => !breach.IsRetired &&
                 !breach.IsSensitive &&
-                !breach.IsSpamList
+                !breach.IsSpamList &&
+                !breach.IsFabricated &&
+                breach.Domain !== ""
     );
   },
 
