@@ -76,9 +76,10 @@ async function verify(req, res) {
   const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
   const unsubscribeUrl = EmailUtils.unsubscribeUrl(verifiedEmailHash);
 
-  unsafeBreachesForEmail = await HIBP.getUnsafeBreachesForEmail(
+  unsafeBreachesForEmail = await HIBP.getBreachesForEmail(
     sha1(verifiedEmailHash.email),
-    req.app.locals.breaches
+    req.app.locals.breaches,
+    true,
   );
 
   await EmailUtils.sendEmail(
