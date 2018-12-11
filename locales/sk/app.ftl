@@ -196,3 +196,6 @@ copyright-info =
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Údaje o únikoch poskytuje { $hibp-link }
 site-description = Boli vaše účty súčasťou úniku? { -product-name } to zistí. Prehľadajte databázu a prihláste sa na odber upozornení.
+share-email = E-mail
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Ďalšie
