@@ -8,6 +8,10 @@ const testBreaches = [
     BreachDate: "2012-12-21",
     AddedDate: "2013-01-01",
     DataClasses: [],
+    IsSpamList: false,
+    IsFabricated: false,
+    IsVerified: true,
+    IsRetired: true,
   },
   {
     Title: "Test2",
@@ -16,6 +20,10 @@ const testBreaches = [
     BreachDate: "2016-11-08",
     AddedDate: "2017-01-01",
     DataClasses: [],
+    IsSpamList: false,
+    IsFabricated: false,
+    IsVerified: true,
+    IsRetired: true,
   },
   {
     Title: "Sensitive",
@@ -25,6 +33,10 @@ const testBreaches = [
     AddedDate: "2018-11-08",
     IsSensitive: true,
     DataClasses: [],
+    IsSpamList: false,
+    IsFabricated: false,
+    IsVerified: true,
+    IsRetired: false,
   },
 ];
 

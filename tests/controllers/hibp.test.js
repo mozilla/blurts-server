@@ -47,7 +47,7 @@ test("notify POST with breach, subscriber hash prefix and suffixes should call s
   const testPrefix = testHash.slice(0, 6).toUpperCase();
   const testSuffix = testHash.slice(6).toUpperCase();
 
-  HIBPLib.getUnsafeBreachesForEmail = jest.fn();
+  HIBPLib.getBreachesForEmail = jest.fn();
 
   const mockRequest = { token: AppConstants.HIBP_NOTIFY_TOKEN, body: { hashPrefix: testPrefix, hashSuffixes: [testSuffix], breachName: "Test" }, app: { locals: { breaches: testBreaches, AVAILABLE_LANGUAGES: ["en"] } } };
   const mockResponse = { status: jest.fn(), json: jest.fn() };
