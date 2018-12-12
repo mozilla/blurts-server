@@ -37,6 +37,13 @@ async function notify (req, res) {
     }
   }
 
+  if (breachAlert.IsSpamList || breachAlert.Domain === "" || breachAlert.IsFabricated || !breachAlert.IsVerified) {
+    log.info(`${breachAlert.Name} is fabricated, a spam list, not associated with a website, or unverified. \n Breach Alert not sent.`);
+    return res.status(200).json(
+      {info: "Breach loaded into database. Subscribers not notified."}
+    );
+  }
+
   const hashes = req.body.hashSuffixes.map(suffix=>reqHashPrefix + suffix.toLowerCase());
   const subscribers = await DB.getSubscribersByHashes(hashes);
 
@@ -49,7 +56,6 @@ async function notify (req, res) {
     log.info("notify", {subscriber});
 
     const email = subscriber.email;
-    // need to create unsubscribe button for these
     const requestedLanguage = subscriber.signup_language ? acceptedLanguages(subscriber.signup_language) : "";
     const supportedLocales = negotiateLanguages(
       requestedLanguage,

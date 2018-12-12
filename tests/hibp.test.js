@@ -40,7 +40,7 @@ test("loadBreachesIntoApp adds app.locals.breaches|breachesLoadedDateTime|mostRe
 });
 
 
-test("filterOutUnsafeBreaches removes sensitive breaches", async() => {
+test("filterBreaches removes retired, spam list, fabricated, unverified, and non-website breaches", async() => {
   let foundSensitive = false;
   for (const breach of testBreaches) {
     if (breach.IsSensitive) {
@@ -51,10 +51,10 @@ test("filterOutUnsafeBreaches removes sensitive breaches", async() => {
   expect(foundSensitive).toBe(true);
 
 
-  const safeBreaches = hibp.filterOutUnsafeBreaches(testBreaches);
+  const safeBreaches = hibp.filterBreaches(testBreaches);
 
   for (const breach of safeBreaches) {
-    expect(breach.IsSensitive).toBe(false);
+    expect(breach.IsFabricated).toBe(false);
     expect(breach.IsSpamList).toBe(false);
     expect(breach.IsRetired).toBe(false);
     expect(breach.IsVerified).toBe(true);

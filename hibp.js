@@ -98,14 +98,8 @@ const HIBP = {
     log.info("done-loading-breaches");
   },
 
-  async getUnsafeBreachesForEmail(sha1, allBreaches) {
-    const allFoundBreaches = await this.getBreachesForEmail(sha1, allBreaches, true);
-    return allFoundBreaches.filter(
-      breach => !breach.IsSpamList
-    );
-  },
 
-  async getBreachesForEmail(sha1, allBreaches, includeUnsafe = false) {
+  async getBreachesForEmail(sha1, allBreaches, includeSensitive = false) {
     let foundBreaches = [];
     const sha1Prefix = sha1.slice(0, 6).toUpperCase();
     const path = `/breachedaccount/range/${sha1Prefix}`;
@@ -122,27 +116,32 @@ const HIBP = {
     for (const breachedAccount of response.body) {
       if (sha1.toUpperCase() === sha1Prefix + breachedAccount.hashSuffix) {
         foundBreaches = allBreaches.filter(breach => breachedAccount.websites.includes(breach.Name));
+        foundBreaches = this.filterBreaches(foundBreaches);
         break;
       }
     }
 
-    if (includeUnsafe) {
+    if (includeSensitive) {
       return foundBreaches;
     }
-    return this.filterOutUnsafeBreaches(foundBreaches);
+    return foundBreaches.filter(
+      breach => !breach.IsSensitive
+    );
   },
+
 
   getBreachByName(allBreaches, breachName) {
     return allBreaches.find(breach => breach.Name.toLowerCase() === breachName.toLowerCase());
   },
 
 
-  filterOutUnsafeBreaches(breaches) {
+  filterBreaches(breaches) {
     return breaches.filter(
-      breach => breach.IsVerified &&
-                !breach.IsRetired &&
-                !breach.IsSensitive &&
-                !breach.IsSpamList
+      breach => !breach.IsRetired &&
+                !breach.IsSpamList &&
+                !breach.IsFabricated &&
+                breach.IsVerified &&
+                breach.Domain !== ""
     );
   },
 
