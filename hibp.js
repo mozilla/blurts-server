@@ -116,14 +116,15 @@ const HIBP = {
     for (const breachedAccount of response.body) {
       if (sha1.toUpperCase() === sha1Prefix + breachedAccount.hashSuffix) {
         foundBreaches = allBreaches.filter(breach => breachedAccount.websites.includes(breach.Name));
+        foundBreaches = this.filterBreaches(foundBreaches);
         break;
       }
     }
 
     if (includeSensitive) {
-      return this.filterBreaches(foundBreaches);
+      return foundBreaches;
     }
-    return this.filterBreaches(foundBreaches).filter(
+    return foundBreaches.filter(
       breach => !breach.IsSensitive
     );
   },
