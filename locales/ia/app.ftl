@@ -8,6 +8,7 @@
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
+-brand-HIBP = Have I Been Pwned
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Assistentia
@@ -36,6 +37,7 @@ signup-modal-verify-resend = Non es illo in le cassa de entrata, ni in le plica 
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Inviate!
 sign-up = Acceder
+no-breaches-headline = Fin a aqui, toto ben.
 show-more-breaches = Monstrar plus
 unsub-button = Remover le subscription
 unsub-survey-error = Per favor elige uno.
