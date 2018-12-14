@@ -38,6 +38,7 @@ pwt-summary-2 =
 pwt-headline-4 = Få hjælp til at huske dine adgangskoder
 pwt-headline-6 = Tilmeld dig { -product-name-nowrap }-advarsler
 landing-headline = Din beskyttelse mod hackere begynder her.
+scan-label = Se om du har været omfattet af en datalækage.
 scan-placeholder = Indtast en mailadresse
 scan-submit = Søg efter din mailadresse
 scan-another-email = Skan en anden mailadresse
@@ -104,3 +105,5 @@ features = Funktioner
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 share-email = Mailadresse
+share-facebook-headline = Find ud af, om du er blevet udsat for en datalækage.
+og-site-description = Brug { -product-name } til at finde ud af, om du er blevet ramt af en datalækage. Tilmeld dig for at få advarsler om nye datalækager og få tips til at beskytte dine konti.
