@@ -31,16 +31,23 @@ user-unsubscribed-title = { -product-name } : Afmeldt
 ## Password Tips
 
 pwt-section-headline = Stærkere adgangskoder = Bedre beskyttelse
+pwt-headline-2 = Brug stærke adgangskoder, der er svære at gætte
+pwt-summary-2 =
+    Hackere prøver tusindvis af almindelige adgangskoder for at gætte din.
+    Jo længere og mere tilfældigt din et, desto sværere vil den være at gætte.
+pwt-headline-4 = Få hjælp til at huske dine adgangskoder
 pwt-headline-6 = Tilmeld dig { -product-name-nowrap }-advarsler
 landing-headline = Din beskyttelse mod hackere begynder her.
 scan-placeholder = Indtast en mailadresse
 scan-submit = Søg efter din mailadresse
 scan-another-email = Skan en anden mailadresse
 scan-error = Mailadressen skal være gyldig.
+download-firefox-bar-blurb = { -product-name-nowrap } præsenteres af den <span class="nowrap">nye { -brand-name }</span>.
 download-firefox-bar-link = Hent { -brand-name } nu
 download-firefox-banner-blurb = Tag kontrollen over din browser
 download-firefox-banner-button = Hent { -brand-name }
 signup-modal-headline = Tilmeld dig { -product-name-nowrap }
+signup-modal-blurb = Tilmeld dig for at se den fulde rapport, få advarsler om nye data-lækager og for at få tips om sikkerhed fra { -product-name-nowrap }.
 signup-modal-close = Luk
 signup-modal-verify-headline = Bekræft din tilmelding
 # Appears after Firefox Monitor has sent a verification email to a new user. 
@@ -48,7 +55,27 @@ signup-modal-sent = Sendt!
 form-signup-placeholder = Indtast en mailadresse
 sign-up = Tilmeld dig
 no-breaches-headline = Så langt, så godt.
+featured-breach-results =
+    { $breachCount ->
+        [0] Din konto optræder i datalækagen <span class="bold">{ $featuredBreach }</span>, men ikke i andre kendte datalækager.
+        [one] Din konto optræder i datalækagen <span class="bold">{ $featuredBreach }</span> samt en anden datalækage.
+       *[other] Din konto optræder i datalækagen <span class="bold">{ $featuredBreach }</span> samt i { $breachCount } andre datalækager.
+    }
+featured-breach-not-compromised =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Din konto optræder ikke i datalækagen <span class="bold">{ $featuredBreach }</span>, men findes i en anden datalækage.
+       *[other] Din konto optræder ikke i datalækagen <span class="bold">{ $featuredBreach }</span>, men findes i { $breachCount } andre datalækager.
+    }
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Din konto optræder i { $breachCount } datalækage.
+       *[other] Konti associeret med din mailadresse optræder i de følgende { $breachCount } datalækager.
+    }
 show-more-breaches = Vis flere
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = Dato for datalækage:
 confirmed = Bekræftet!<br />Du er nu tilmeldt!
 confirmed-blurb = { -product-name-nowrap } sender dig snart en mail med en fuldstændig rapport. Du får også tilsendt en mail, hvis din konto optræder i nye datalækager.
 confirmed-social-blurb = Hvis din konto har været involveret i en datalækage, så er der stor risiko for, at dine venner, net-bekendtskaber og din familie også er blevet ramt. Fortæl dem om { -product-name-nowrap }.
