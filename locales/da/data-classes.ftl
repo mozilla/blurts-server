@@ -1,6 +1,7 @@
 ## Breach Data Classes
 
 account-balances = Konto-saldoer
+address-book-contacts = Adressebogs-kontakter
 ages = Aldre
 apps-installed-on-devices = Apps installeret på enheder
 audio-recordings = Lydoptagelser
@@ -22,6 +23,7 @@ device-information = Information om enheder
 education-levels = Uddannelsesniveauer
 email-messages = Mails
 employers = Arbejdsgivere
+ethnicities = Etnicitet
 family-members-names = Familiemedlemmers navne
 financial-investments = Finansielle investeringer
 financial-transactions = Finansielle transaktioner
@@ -36,3 +38,16 @@ job-titles = Jobtitler
 passport-numbers = Pasnumre
 personal-descriptions = Personlige beskrivelser
 personal-interests = Personlige interesser
+physical-addresses = Fysiske adresser
+political-donations = Donationer til politiske formål
+political-views = Politiske synspunkter
+private-messages = Private beskeder
+professional-skills = Faglige kvalifikationer
+sexual-orientations = Seksuelle orienteringer
+social-media-profiles = Profiler på sociale medier
+spoken-languages = Talte sprog
+user-statuses = Bruger-statusser
+utility-bills = El- og varme-regninger
+vehicle-details = Detaljer om køretøjer
+website-activity = Websteds-aktivitet
+work-habits = Arbejdsvaner
