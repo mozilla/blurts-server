@@ -38,6 +38,9 @@ report-pwt-blurb =
     Mật khẩu rất có giá trị, hàng ngàn trong số chúng bị đánh cắp mỗi ngày và được giao dịch hoặc bán trên thị trường chợ đen.
     Mật khẩu mạnh hơn là cách để bảo vệ tài khoản của bạn và tất cả thông tin cá nhân nằm trong đó.
 report-pwt-headline-1 = Sử dụng một mật khẩu khác nhau cho mỗi tài khoản
+report-pwt-summary-1 =
+    Sử dụng lại cùng một mật khẩu ở mọi tài khoản sẽ mở ra cơ hội cho tin tặc.
+    Họ có thể sử dụng mật khẩu đó để đăng nhập vào các tài khoản khác của bạn.
 report-pwt-headline-2 = Tạo mật khẩu mạnh, khó đoán
 report-pwt-summary-2 =
     Tin tặc sử dụng danh sách các mật khẩu phổ biến để cố gắng đoán mật khẩu của bạn.

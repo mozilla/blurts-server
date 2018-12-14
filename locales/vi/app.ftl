@@ -31,8 +31,11 @@ user-add-invalid-email = Email không hợp lệ
 user-add-email-verify-subject = Xác nhận đăng ký của bạn với { -product-name }.
 user-add-title = { -product-name }: Xác nhận email
 error-headline = Lỗi
+user-verify-token-error = Token xác minh được yêu cầu.
 user-verify-email-report-subject = Báo cáo của { -product-name } gửi của bạn
 user-verify-title = { -product-name }: Đã đăng ký
+user-unsubscribe-token-error = Hủy đăng ký yêu cầu token.
+user-unsubscribe-token-email-error = Hủy đăng ký yêu cầu token và emailHash.
 user-unsubscribe-title = { -product-name }: Hủy đăng ký
 user-unsubscribe-survey-title = { -product-name }: Hủy đăng ký khảo sát
 user-unsubscribed-title = { -product-name }: Đã hủy đăng ký
@@ -46,6 +49,9 @@ pwt-section-blurb =
     Và tin tặc dựa vào những thói quen xấu, như sử dụng cùng một mật khẩu ở mọi nơi hoặc sử dụng các cụm từ phổ biến (p@ssw0rd, anyone?)
     nên nếu họ đã đánh cắp một tài khoản, họ sẽ có thể đánh cắp nhiều tài khoản hơn. Dưới đây là cách bảo vệ tài khoản của bạn tốt hơn.
 pwt-headline-1 = Sử dụng một mật khẩu khác nhau cho mỗi tài khoản
+pwt-summary-1 =
+    Sử dụng lại cùng một mật khẩu ở mọi tài khoản sẽ mở ra cơ hội cho tin tặc.
+    Họ có thể sử dụng mật khẩu đó để đăng nhập vào các tài khoản khác của bạn.
 pwt-headline-2 = Tạo mật khẩu mạnh, khó đoán
 pwt-summary-2 =
     Tin tặc sử dụng hàng ngàn mật khẩu phổ biến để cố gắng đoán mật khẩu của bạn.
