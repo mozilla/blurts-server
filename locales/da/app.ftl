@@ -60,6 +60,9 @@ unsub-survey-blurb =
     Din mailadresse er nu frameldt { -product-name-nowrap }. Mange tak for at du brugte tjenesten. 
     Har du tid og lyst til at besvare et enkelt spørgsmål om din oplevelse?
 unsub-survey-form-label = Hvorfor har du frameldt dig advarsler fra { -product-name-nowrap }?
+unsub-reason-1 = Jeg tror ikke, at advarslerne gør mine data sikrere
+unsub-reason-3 = Jeg synes ikke, at tjenesten er nyttig
+unsub-reason-5 = Jeg bruger en anden tjeneste til at holde øje med mine konti
 unsub-reason-6 = Intet af det ovenstående
 unsub-survey-thankyou = Tak for din feedback
 unsub-survey-error = Vælg venligst en.
@@ -68,7 +71,9 @@ share = Del
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
 tweet = Tweet
 download-firefox-quantum = Hent { -brand-Quantum }
+download-firefox-mobile = Hent mobil-versionen af { -brand-name }
 # Features here refers to Firefox browser features. 
 features = Funktioner
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+share-email = Mailadresse
