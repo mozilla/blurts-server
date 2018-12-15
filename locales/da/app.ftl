@@ -36,7 +36,7 @@ pwt-section-headline = Stærkere adgangskoder = Bedre beskyttelse
 pwt-headline-2 = Brug stærke adgangskoder, der er svære at gætte
 pwt-summary-2 =
     Hackere prøver tusindvis af almindelige adgangskoder for at gætte din.
-    Jo længere og mere tilfældigt din et, desto sværere vil den være at gætte.
+    Jo længere og mere tilfældigt din er, desto sværere vil den være at gætte.
 pwt-headline-4 = Få hjælp til at huske dine adgangskoder
 pwt-headline-6 = Tilmeld dig { -product-name-nowrap }-advarsler
 landing-headline = Din beskyttelse mod hackere begynder her.
