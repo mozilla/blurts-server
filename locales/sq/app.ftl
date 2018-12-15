@@ -12,6 +12,8 @@
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Asistencë
+# Link that takes the user to a blog post on blog.mozilla.org about the alerts
+about-firefox-alerts = Mbi Sinjalizimet Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Jepni Përshtypjet
 terms-and-privacy = Kushte dhe Privatësi
@@ -28,6 +30,7 @@ scan-title = { -product-name } : Përfundime Skanimi
 user-add-invalid-email = Email i Pavlefshëm
 user-add-email-verify-subject = Verifikoni pajtimin tuaj te { -product-name }.
 user-add-title = { -product-name } : Email Ripohimi
+error-headline = Gabim
 user-verify-token-error = Token-i i verifikimit është i domosdoshëm.
 user-verify-email-report-subject = Raporti juaj { -product-name }
 user-verify-title = { -product-name } : I pajtuar
@@ -187,3 +190,6 @@ copyright-info =
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Të dhëna shkeljesh furnizuar nga { $hibp-link }
 site-description = A ka rrjedhje nga llogaritë tuaja apo janë vjedhur gjatë një shkeljeje të dhënash? Gjejeni te { -product-name }. Kërkoni në bazën tonë të të dhënave dhe regjistrohuni për sinjalizime.
+share-email = Email
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Tjetër

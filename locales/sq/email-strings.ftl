@@ -1,5 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 click-to-verify =
     Që të ripohoni llogarinë tuaj Firefox Monitor, klikoni brenda 24 orësh mbi butonin Verifiko Email-in Tim. 
     Mandej raporti juaj do të jetë rrugës për te ju.
@@ -52,3 +54,12 @@ report-pwt-headline-4 = Përdorni një përgjegjës fjalëkalimesh
 report-pwt-summary-4 = Shërbime të tillë si 1Password, LastPass, Dashlane, dhe Bitwarden prodhojnë fjalëkalime të fuqishëm, i depozitojnë në mënyrë të sigurt, dhe i japin për sajtet, ndaj s’ju duhet të mbani mend secilin prej tyre.
 # A link to legal information about mozilla products.
 legal = Ligjore
+# Share Firefox Monitor by email subject line
+share-by-email-subject = Shihni nëse jeni prekur nga ndonjë shkelje e të dhënave.
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    Njatjeta,
+    { -brand-name }-i ka një shërbim falas në të cilin mund të kontrolloni për të parë nëse keni qenë prekur nga ndonjë shkelje të dhënash. Ja se si funksionon:
+    1. Shkoni te { "https://monitor.firefox.com" } dhe kërkoni për email-in tuaj.
+    2. Shihni nëse llogaritë tuaja internetore kanë qenë të ekspozuara në ndonjë shkelje të dhënash.
+    3. Get tips from { -product-name } about what to do next.
