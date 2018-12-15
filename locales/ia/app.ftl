@@ -22,11 +22,16 @@ home-not-found = Pagina non trovate.
 oauth-invalid-session = Session non valide
 oauth-confirmed-title = { -product-name } : Subscribite
 user-add-invalid-email = Email non valide
+user-add-title = { -product-name } : Confirmar le adresse email
 error-headline = Error
+user-verify-email-report-subject = Tu reporto de { -product-name }
 user-verify-title = { -product-name } : subscribite
+user-unsubscribe-title = { -product-name } : annullar le subscription
+user-unsubscribed-title = { -product-name } : subscription annullate
 
 ## Password Tips
 
+pwt-section-headline = Contrasignos plu forte = Melior protection
 scan-placeholder = Insere le adresse email
 scan-submit = Verificar tu adresse email
 scan-error = Debe ser un adresse email valide
