@@ -16,12 +16,14 @@ layout-support = Support
 about-firefox-alerts = Om advarsler i Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Giv feedback
+error-not-subscribed = Denne mailadresse er ikke tilmeldt { -product-name }.
 error-hibp-connect = Kan ikke forbinde til { -brand-HIBP }.
 home-title = { -product-name }
 home-not-found = Side ikke fundet.
 oauth-invalid-session = Ugyldig session
 oauth-confirmed-title = { -product-name } : Tilmeldt
 scan-title = { -product-name } : Skanningsresultater
+user-add-email-verify-subject = Bekræft din tilmelding til { -product-name }.
 error-headline = Fejl
 user-verify-email-report-subject = Din { -product-name }-rapport
 user-verify-title = { -product-name } : Tilmeldt
