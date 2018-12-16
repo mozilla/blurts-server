@@ -13,12 +13,17 @@ layout-Firefox = { -brand-name }
 layout-support = Υποστήριξη
 home-title = { -product-name }
 user-add-invalid-email = Άκυρο email
+error-headline = Σφάλμα
 
 ## Password Tips
 
 signup-modal-close = Κλείσιμο
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Απεστάλη!
+sign-up = Εγγραφή
+show-more-breaches = Εμφάνιση περισσότερων
+unsub-reason-6 = Κανένα από τα παραπάνω
+unsub-survey-thankyou = Ευχαριστούμε για τα σχόλιά σας.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Κοινοποίηση
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
