@@ -1,5 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 verify-my-email = Verificar mi correo electrónico
 report-scan-another-email = Escanear otro correo electrónico en { -product-name }
 automated-message = Este es un correo automatizado; si lo recibiste por error, no es necesario que hagas nada.
