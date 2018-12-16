@@ -11,7 +11,9 @@
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Υποστήριξη
+terms-and-privacy = Όροι και απόρρητο
 home-title = { -product-name }
+home-not-found = Η σελίδα δεν βρέθηκε.
 user-add-invalid-email = Άκυρο email
 error-headline = Σφάλμα
 
