@@ -1,6 +1,7 @@
 ## Breach Data Classes
 
 ages = Etates
+astrological-signs = Signos astrologic
 avatars = Avatares
 bank-account-numbers = Numeros de conto bancari
 biometric-data = Datos biometric
@@ -9,6 +10,7 @@ credit-card-cvv = CVV de carta de credito
 credit-cards = Cartas de credito
 credit-status-information = Informationes sur e stato del credito
 customer-feedback = Commentarios del clientes
+customer-interactions = interactiones del clientes
 dates-of-birth = Datas de nascentia
 deceased-date = Data de decesso
 deceased-statuses = Statos de decesso
@@ -23,9 +25,16 @@ email-messages = messages de email
 employers = empleatores
 family-plans = Planos familiar
 family-structure = Structura familiar
+financial-investments = Investimentos financiari
+financial-transactions = Transactiones financiari
 genders = Generes
+geographic-locations = Positiones geographic
+historical-passwords = chronologia del contrasignos
+home-loan-information = Informationes sur le presto del casa
 imei-numbers = numeros IMEI
 imsi-numbers = numeros IMSI
+income-levels = Nivellos de remuneration
+instant-messenger-identities = Identitates del communicatores instantanee
 ip-addresses = Adresses IP
 job-titles = professiones
 mac-addresses = adresses MAC

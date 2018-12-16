@@ -21,7 +21,9 @@ home-title = { -product-name }
 home-not-found = Pagina non trovate.
 oauth-invalid-session = Session non valide
 oauth-confirmed-title = { -product-name } : Subscribite
+scan-title = { -product-name } : Resultatos del scansion
 user-add-invalid-email = Email non valide
+user-add-email-verify-subject = Verifica tu subscription a { -product-name }.
 user-add-title = { -product-name } : Confirmar le adresse email
 error-headline = Error
 user-verify-email-report-subject = Tu reporto de { -product-name }
@@ -44,6 +46,7 @@ signup-modal-verify-headline = Verifica tu subscription
 signup-modal-verify-resend = Non es illo in le cassa de entrata, ni in le plica de spam? Reinvia lo.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Inviate!
+signup-with-fxa = Registra te per un conto { -brand-name }
 form-signup-placeholder = Insere tu adresse email
 sign-up = Acceder
 form-signup-error = Debe esser un adresse email valide
