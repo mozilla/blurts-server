@@ -35,6 +35,7 @@ user-verify-token-error = Toquen de verificación requerido.
 user-verify-email-report-subject = Tu reporte de { -product-name }
 user-verify-title = { -product-name } : Suscrito
 user-unsubscribe-token-error = Cancelar la suscripción requiere de un token.
+user-unsubscribe-token-email-error = Cancelar la suscripción requiere de un token y de un emailHash.
 user-unsubscribe-title = { -product-name }: Cancelar suscripción
 user-unsubscribe-survey-title = { -product-name } : Cancelar suscripción a encuesta
 user-unsubscribed-title = { -product-name }: Suscripción cancelada
