@@ -19,3 +19,5 @@ report-pwt-headline-3 = Trata las preguntas de seguridad como si fueran contrase
 report-pwt-headline-4 = Usa un administrador de contraseñas
 # A link to legal information about mozilla products.
 legal = Legal
+# Share Firefox Monitor by email subject line
+share-by-email-subject = Fijate si fuiste parte de una filtración de datos.

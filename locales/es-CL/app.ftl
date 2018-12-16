@@ -42,6 +42,9 @@ pwt-section-headline = Contraseñas más fuertes = Mejor protección
 pwt-section-subhead = Tu información privada es solo tan segura como tus contraseñas.
 pwt-headline-1 = Usa una contraseña diferente para cada cuenta
 pwt-headline-2 = Crea contraseñas seguras y difíciles de adivinar
+pwt-summary-2 =
+    Los hackers usan miles de contraseñas comunes para intentar adivinar la tuya. 
+    Cuanto más larga y aleatoria sea tu contraseña, más difícil será adivinarla.
 pwt-headline-3 = Trata las preguntas de seguridad como contraseñas adicionales
 pwt-headline-4 = Obtén ayuda para recordar tus contraseñas
 pwt-headline-5 = Agrega seguridad adicional con la autenticación de dos factores
@@ -52,6 +55,7 @@ scan-placeholder = Ingresa tu dirección de correo
 scan-privacy = No se guardará tu correo electrónico.
 scan-submit = Busca tu correo electrónico
 scan-another-email = Escanear otra dirección de correo electrónico
+sensitive-breach-email-required = La filtración contiene información confidencial. Se requiere verificación de correo.
 scan-error = Debe ser un correo electrónico válido.
 signup-banner-headline = { -product-name-nowrap } detecta amenazas contra tus cuentas en línea.
 download-firefox-bar-link = Bajar { -brand-name } ahora
@@ -67,14 +71,17 @@ signup-modal-verify-resend = ¿No está en la bandeja de entrada o en la de spam
 signup-modal-sent = ¡Enviado!
 signup-with-fxa = Regístrate con tu cuenta de { -brand-name }
 form-signup-placeholder = Ingresar dirección de correo electrónico
+form-signup-checkbox = Recibe las últimas novedades de { -brand-Mozilla } y { -brand-name }.
 sign-up = Registrarse
 form-signup-error = Debe ser una dirección de correo electrónico válida
 no-breaches-headline = Hasta aquí, todo bien.
 found-breaches-headline = Tu información fue parte de una filtración de datos.
 show-more-breaches = Mostrar más
+what-to-do-headline = Qué hacer cuando tu información ha sido expuesta en una filtración de datos
 what-to-do-subhead-1 = Cambia tus contraseñas, aunque se trate de cuentas antiguas
 what-to-do-subhead-2 = Si reutilizas una contraseña que ha sido expuesta, cámbiala
 what-to-do-subhead-3 = Toma medidas adicionales para asegurar tus cuentas bancarias
+what-to-do-subhead-4 = Recibe ayuda para crear buenas contraseñas y mantenerlas seguras.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Fecha de la filtración de datos:
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -105,3 +112,6 @@ features = Características
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Datos de la filtración proporcionados por { $hibp-link }
+share-email = Correo
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Otros
