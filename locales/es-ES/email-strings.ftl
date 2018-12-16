@@ -1,5 +1,7 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 click-to-verify = Selecciona el botón Comprobar mi correo electrónico en un máximo de 24 horas para confirmar tu cuenta de Firefox Monitor. Una vez hecho esto, se enviará tu informe.
 verify-my-email = Comprobar mi correo electrónico
 report-scan-another-email = Escanear otro correo electrónico en { -product-name }
@@ -48,3 +50,12 @@ report-pwt-headline-4 = Utilice un administrador de contraseñas
 report-pwt-summary-4 = Servicios como 1Password, LastPass, Dashlane y Bitwarden generan contraseñas robustas, las almacenan de forma segura y las introducen por ti en los sitios web para que no tengas que recordar cada una.
 # A link to legal information about mozilla products.
 legal = Legal
+# Share Firefox Monitor by email subject line
+share-by-email-subject = Descubre si te has visto involucrado en una filtración de datos.
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    Hola,
+    { -brand-name } tiene un servicio gratuito donde puedes verificar si te viste involucrado en una filtración de datos. Así es como funciona:
+    1. Navega a { "https://monitor.firefox.com" } y busca tu correo electrónico.
+    2. Comprueba si tus cuentas en línea resultaron expuestas en alguna filtración de datos.
+    3. Obtén consejos de { -product-name } sobre qué más puedes hacer.
