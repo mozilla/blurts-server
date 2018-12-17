@@ -116,6 +116,9 @@ features = Características
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Datos de la filtración proporcionados por { $hibp-link }
+confirmation-headline = Tu reporte de { -product-name } está en camino.
 share-email = Correo
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Otros
+share-facebook-headline = Averigua si has sido parte de una filtración de datos
+share-facebook-blurb = ¿Han sido tus cuentas en línea expuestas a una filtración de datos?
