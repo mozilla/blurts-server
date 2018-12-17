@@ -1,6 +1,7 @@
 ## Breach Data Classes
 
 ages = Etates
+apps-installed-on-devices = Applicationes installate sur apparatos
 astrological-signs = Signos astrologic
 avatars = Avatares
 bank-account-numbers = Numeros de conto bancari
@@ -27,10 +28,12 @@ family-plans = Planos familiar
 family-structure = Structura familiar
 financial-investments = Investimentos financiari
 financial-transactions = Transactiones financiari
+fitness-levels = Nivellos de condition physic
 genders = Generes
 geographic-locations = Positiones geographic
 historical-passwords = chronologia del contrasignos
 home-loan-information = Informationes sur le presto del casa
+homepage-urls = URLs del pagina principal
 imei-numbers = numeros IMEI
 imsi-numbers = numeros IMSI
 income-levels = Nivellos de remuneration
@@ -46,6 +49,7 @@ occupations = Occupationes
 passport-numbers = numeros de passaporto
 passwords = Contrasignos
 payment-methods = Methodos de pagamento
+phone-numbers = Numeros de telephono
 photos = photos
 pins = PINs
 private-messages = Messages private
