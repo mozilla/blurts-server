@@ -57,3 +57,10 @@ report-pwt-summary-4 = Správcovia hesiel, ako je 1Password, LastPass, Dashlane 
 legal = Právne informácie
 # Share Firefox Monitor by email subject line
 share-by-email-subject = Pozrite sa, či vaše údaje boli súčasťou nejakého úniku.
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    Zdravím,
+    { -brand-name } je služba, ktorá je zdarma a pomocou ktorej môžete skontrolovať, či boli niektoré vaše osobné údaje na internete súčasťou úniku. Takto to funguje:
+    1. Otvorte { "https://monitor.firefox.com" } a zadajte do vyhľadávacieho poľa svoju e-mailovú adresu.
+    2. Pozrite sa, či bol váš účet súčasťou nejakého úniku dát.
+    3. { -product-name } vám ponúkne pár tipov, ako ostať naďalej v bezpečí.

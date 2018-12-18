@@ -196,6 +196,12 @@ copyright-info =
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Údaje o únikoch poskytuje { $hibp-link }
 site-description = Boli vaše účty súčasťou úniku? { -product-name } to zistí. Prehľadajte databázu a prihláste sa na odber upozornení.
+confirmation-headline = Vaša správa zo služby { -product-name } už je na ceste.
+confirmation-blurb = Únik dát môže postihnúť kohokoľvek. Povedzte svojim priateľom a rodine, aby si skontrolovali svoje účty.
 share-email = E-mail
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Ďalšie
+share-twitter = Väčšina ľudí má na internete okolo 100 účtov. Zistite, či nebol niektorý z tých vašich súčasťou úniku dát.
+share-facebook-headline = Zistite, či boli vaše údaje súčasťou nejakého úniku
+share-facebook-blurb = Bol niektorý z vašich účtov súčasťou nejakého úniku dát?
+og-site-description = { -product-name } zistí, či boli vaše dáta súčasťou nejakého úniku. Pre väčšiu bezpečnosť sa taktiež prihláste k zasielaniu výstrah o únikoch v budúcnosti.
