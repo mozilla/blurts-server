@@ -30,6 +30,7 @@ scan-title = { -product-name }: Resultados da Análise
 user-add-invalid-email = Endereço de E-mail Inválido
 user-add-email-verify-subject = Verifique seu cadastro no { -product-name }.
 user-add-title = { -product-name }: Confirmar Endereço de E-mail
+error-headline = Erro
 user-verify-token-error = Token de verificação é necessário.
 user-verify-email-report-subject = Seu relatório do { -product-name }
 user-verify-title = { -product-name }: Cadastrado
