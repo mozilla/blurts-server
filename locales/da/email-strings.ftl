@@ -31,3 +31,5 @@ report-subhead-no-breaches =
     Data-lækager kan ske når som helst, så læs videre for at lære, hvad du kan gøre for at beskytte dine adgangskoder.
 report-subhead-found-breaches = Her er din komplette Firefox Monitor-rapport. Den indeholder alle kendte data-lækager, der indeholder denne mailadresse.
 breach-alert-headline = Din konto er blevet kompromitteret i en data-lækage.
+# A link to legal information about mozilla products.
+legal = Juridisk
