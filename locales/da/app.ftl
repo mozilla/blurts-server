@@ -16,23 +16,29 @@ layout-support = Support
 about-firefox-alerts = Om advarsler i Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Giv feedback
+terms-and-privacy = Vilkår og beskyttelse af personlige oplysninger
 error-not-subscribed = Denne mailadresse er ikke tilmeldt { -product-name }.
+error-hibp-throttled = For mange forbindelser til { -brand-HIBP }.
 error-hibp-connect = Kan ikke forbinde til { -brand-HIBP }.
 home-title = { -product-name }
 home-not-found = Side ikke fundet.
 oauth-invalid-session = Ugyldig session
 oauth-confirmed-title = { -product-name } : Tilmeldt
 scan-title = { -product-name } : Skanningsresultater
+user-add-invalid-email = Ugyldig mailadresse
 user-add-email-verify-subject = Bekræft din tilmelding til { -product-name }.
+user-add-title = { -product-name } : Bekræft mailadresse
 error-headline = Fejl
 user-verify-email-report-subject = Din { -product-name }-rapport
 user-verify-title = { -product-name } : Tilmeldt
 user-unsubscribe-title = { -product-name } : Afmeld
+user-unsubscribe-survey-title = { -product-name } : Afmeldingsundersøgelse
 user-unsubscribed-title = { -product-name } : Afmeldt
 
 ## Password Tips
 
 pwt-section-headline = Stærkere adgangskoder = Bedre beskyttelse
+pwt-section-subhead = Dine private oplysninger er kun så sikre som dine adgangskoder.
 pwt-headline-2 = Brug stærke adgangskoder, der er svære at gætte
 pwt-summary-2 =
     Hackere prøver tusindvis af almindelige adgangskoder for at gætte din.
