@@ -45,6 +45,7 @@ user-unsubscribed-title = { -product-name }: Suscripción cancelada
 pwt-section-headline = Contraseñas más fuertes = Mejor protección
 pwt-section-subhead = Tu información privada es solo tan segura como tus contraseñas.
 pwt-headline-1 = Usa una contraseña diferente para cada cuenta
+pwt-summary-1 = Reutilizar la misma contraseña en todas partes deja la puerta abierta para la suplantación de identidad. Cualquier persona con esa contraseña puede iniciar sesión en todas tus cuentas.
 pwt-headline-2 = Crea contraseñas seguras y difíciles de adivinar
 pwt-summary-2 =
     Los hackers usan miles de contraseñas comunes para intentar adivinar la tuya. 
@@ -54,8 +55,15 @@ pwt-summary-3 =
     Los sitios web no revisan que tus contraseñas sean adecuadas, solo que coincidan.
     Crea contraseñas largas, aleatorias y guárdalas en un lugar seguro.
 pwt-headline-4 = Obtén ayuda para recordar tus contraseñas
+pwt-summary-4 =
+    Los administradores de contraseñas como 1Password, LastPass, Dashlane y Bitwarden generan contraseñas seguras y únicas.
+    También almacenan las contraseñas de forma segura y las colocan en los sitios web por ti
 pwt-headline-5 = Agrega seguridad adicional con la autenticación de dos factores
+pwt-summary-5 =
+    2FA requiere información adicional (como un código de un solo uso enviado por mensaje de texto) para que te conectes con tu cuenta.
+    Incluso si alguien tiene tu contraseña no podrá entrar.
 pwt-headline-6 = Regístrate para recibir alertas de { -product-name-nowrap }
+pwt-summary-6 = Las filtraciones de datos de sitios web están en aumento. Tan pronto como se añade una filtración a nuestra base de datos, { -product-name-nowrap } te envía una alerta — para que puedas tomar una acción inmediata y protegerla.
 landing-headline = Tu derecho a estar a salvo de los hackers comienza aquí.
 landing-blurb = { -product-name-nowrap } te arma con herramientas para mantener tu información personal segura. Averigua lo que los hackers ya saben de ti, y aprende cómo mantenerte un paso adelante de ellos.
 scan-label = Ve si estás afectado por una filtración de datos.
@@ -67,6 +75,10 @@ scan-featuredbreach-label = Averigua si tu <span class="bold"> { $featuredBreach
 sensitive-breach-email-required = La filtración contiene información confidencial. Se requiere verificación de correo.
 scan-error = Debe ser un correo electrónico válido.
 signup-banner-headline = { -product-name-nowrap } detecta amenazas contra tus cuentas en línea.
+signup-banner-blurb =
+    Tu informe detallado de { -product-name-nowrap } muestra si la información de tus cuentas ha sido filtrada o robada.
+    También te alertaremos si tus cuentas aparecen en nuevas filtraciones de sitios.
+download-firefox-bar-blurb = { -product-name-nowrap } es traído a ti por el <span class="nowrap">totalmente renovado { -brand-name }</span>.
 download-firefox-bar-link = Bajar { -brand-name } ahora
 download-firefox-banner-blurb = Toma el control de tu navegador
 download-firefox-banner-button = Bajar { -brand-name }
@@ -75,6 +87,7 @@ signup-modal-blurb = Regístrate para obtener tu informe completo, alertas cuand
 signup-modal-close = Cerrar
 get-your-report = Recibe tu informe
 signup-modal-verify-headline = Verifica tu suscripción
+signup-modal-verify-blurb = Enviamos un enlace de verificación a <span id="submitted-email" class="medium"></span>.
 signup-modal-verify-expiration = Este enlace caduca en 24 horas.
 signup-modal-verify-resend = ¿No está en la bandeja de entrada o en la de spam? Reenviar el mensaje.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
@@ -125,6 +138,7 @@ beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 hibp-attribution = Datos de la filtración proporcionados por { $hibp-link }
 site-description = ¿Han sido tus cuentas filtradas o robadas en una filtración de datos? Averígualo en { -product-name }. Busca en nuestra base de datos y regístrate para recibir alertas.
 confirmation-headline = Tu reporte de { -product-name } está en camino.
+confirmation-blurb = Las filtraciones de datos pueden afectar a cualquiera. Haz correr la palabra para que tus amigos y familiares puedan revisar si sus cuentas en línea están seguras.
 share-email = Correo
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Otros
