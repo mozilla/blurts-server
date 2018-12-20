@@ -6,6 +6,7 @@ const got = require("got");
 
 const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
+const EmailUtils = require("../email-utils");
 const { FluentError } = require("../locale-utils");
 
 
@@ -53,9 +54,12 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
   const email = JSON.parse(data.body).email;
   await DB.addSubscriber(email);
 
-  res.render("confirm", {
-    title: req.fluentFormat("oauth-confirmed-title"),
-    email: email,
+  res.render("subpage", {
+    headline: req.fluentFormat("confirmation-headline"),
+    subhead: req.fluentFormat("confirmation-blurb"),
+    title: req.fluentFormat("user-verify-title"),
+    whichPartial: "subpages/confirm",
+    emailLinks: EmailUtils.getShareByEmail(req),
   });
 }
 
