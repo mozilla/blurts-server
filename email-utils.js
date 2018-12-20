@@ -112,7 +112,7 @@ const EmailUtils = {
         href: `mailto:?subject=${subject}&body=${body}`,
       },
     };
-  }
+  },
 
 };
 
