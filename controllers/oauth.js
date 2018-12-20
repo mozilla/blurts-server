@@ -8,7 +8,9 @@ const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const { FluentError } = require("../locale-utils");
-
+const HBSHelpers = require("../hbs-helpers");
+const sha1 = require("../sha1-utils");
+const HIBP = require("../hibp");
 
 // This object exists instead of inlining the env vars to make it easy
 // to abstract fetching API endpoints from the OAuth server (instead
@@ -27,7 +29,6 @@ const FxAOAuthClient = new ClientOAuth2({
   redirectUri: AppConstants.SERVER_URL + "/oauth/confirmed",
   scopes: ["profile:email"],
 });
-
 
 function init(req, res, next, client = FxAOAuthClient) {
   // Set a random state string in a cookie so that we can verify
@@ -53,6 +54,32 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
   });
   const email = JSON.parse(data.body).email;
   await DB.addSubscriber(email);
+
+  const unsubscribeUrl = ""; // not totally sure yet how this gets handled long-term
+
+  // duping some of user/verify for now
+  let unsafeBreachesForEmail = [];
+
+  unsafeBreachesForEmail = await HIBP.getBreachesForEmail(
+    sha1(email),
+    req.app.locals.breaches,
+    true,
+  );
+
+  await EmailUtils.sendEmail(
+    email,
+    req.fluentFormat("user-verify-email-report-subject"),
+    "default_email",
+    {
+      supportedLocales: req.supportedLocales,
+      email: email,
+      date: HBSHelpers.prettyDate(req.supportedLocales, new Date()),
+      unsafeBreachesForEmail: unsafeBreachesForEmail,
+      unsubscribeUrl: unsubscribeUrl,
+      buttonValue: req.fluentFormat("report-scan-another-email"),
+      whichView: "email_partials/report",
+    }
+  );
 
   res.render("subpage", {
     headline: req.fluentFormat("confirmation-headline"),
