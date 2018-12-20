@@ -50,15 +50,20 @@ pwt-summary-2 =
     Los hackers usan miles de contraseñas comunes para intentar adivinar la tuya. 
     Cuanto más larga y aleatoria sea tu contraseña, más difícil será adivinarla.
 pwt-headline-3 = Trata las preguntas de seguridad como contraseñas adicionales
+pwt-summary-3 =
+    Los sitios web no revisan que tus contraseñas sean adecuadas, solo que coincidan.
+    Crea contraseñas largas, aleatorias y guárdalas en un lugar seguro.
 pwt-headline-4 = Obtén ayuda para recordar tus contraseñas
 pwt-headline-5 = Agrega seguridad adicional con la autenticación de dos factores
 pwt-headline-6 = Regístrate para recibir alertas de { -product-name-nowrap }
 landing-headline = Tu derecho a estar a salvo de los hackers comienza aquí.
+landing-blurb = { -product-name-nowrap } te arma con herramientas para mantener tu información personal segura. Averigua lo que los hackers ya saben de ti, y aprende cómo mantenerte un paso adelante de ellos.
 scan-label = Ve si estás afectado por una filtración de datos.
 scan-placeholder = Ingresa tu dirección de correo
 scan-privacy = No se guardará tu correo electrónico.
 scan-submit = Busca tu correo electrónico
 scan-another-email = Escanear otra dirección de correo electrónico
+scan-featuredbreach-label = Averigua si tu <span class="bold"> { $featuredBreach } </span> cuenta se vio comprometida.
 sensitive-breach-email-required = La filtración contiene información confidencial. Se requiere verificación de correo.
 scan-error = Debe ser un correo electrónico válido.
 signup-banner-headline = { -product-name-nowrap } detecta amenazas contra tus cuentas en línea.
@@ -66,6 +71,7 @@ download-firefox-bar-link = Bajar { -brand-name } ahora
 download-firefox-banner-blurb = Toma el control de tu navegador
 download-firefox-banner-button = Bajar { -brand-name }
 signup-modal-headline = Regístrate para { -product-name-nowrap }
+signup-modal-blurb = Regístrate para obtener tu informe completo, alertas cuando ocurran nuevas filtraciones y consejos de seguridad de { -product-name-nowrap }.
 signup-modal-close = Cerrar
 get-your-report = Recibe tu informe
 signup-modal-verify-headline = Verifica tu suscripción
@@ -96,6 +102,7 @@ confirmed = ¡Confirmado!<br />¡Estás suscrito!
 unsub-headline = Cancelar la suscripción de { -product-name-nowrap }
 unsub-button = Cancelar suscripción
 unsub-survey-headline = Ya no estás suscrito.
+unsub-survey-form-label = ¿Por qué cancelas la suscripción a las alertas de { -product-name-nowrap }?
 unsub-reason-1 = Creo que las alertas no hacen que mis datos estén más seguros
 unsub-reason-2 = Recibo demasiados correos electrónicos de { -product-name-nowrap }
 unsub-reason-3 = No me parece que el servicio sea de gran utilidad
@@ -116,9 +123,12 @@ features = Características
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Datos de la filtración proporcionados por { $hibp-link }
+site-description = ¿Han sido tus cuentas filtradas o robadas en una filtración de datos? Averígualo en { -product-name }. Busca en nuestra base de datos y regístrate para recibir alertas.
 confirmation-headline = Tu reporte de { -product-name } está en camino.
 share-email = Correo
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Otros
+share-twitter = La mayoría de la gente tiene más de 100 cuentas en línea. ¿Ha sido alguna de las tuyas expuesta en una filtración de datos? Averígualo.
 share-facebook-headline = Averigua si has sido parte de una filtración de datos
 share-facebook-blurb = ¿Han sido tus cuentas en línea expuestas a una filtración de datos?
+og-site-description = Averigua si has sido parte de una filtración de datos con { -product-name }. Registrate para recibir alertas de futuras filtraciones y consejos para mantener tus cuentas seguras.

@@ -87,6 +87,7 @@ professional-skills = Habilidades profesionales
 profile-photos = Fotos de perfil
 purchases = Compras
 purchasing-habits = Hábitos de compra
+races = Razas
 recovery-email-addresses = Direcciones de correo de recuperación
 relationship-statuses = Estados de relación
 religions = Religiones

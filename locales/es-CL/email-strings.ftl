@@ -2,6 +2,7 @@
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
+click-to-verify = Selecciona el botón "Verificar mi correo" dentro de las próximas 24 horas para confirmar tu cuenta de Firefox Monitor. Tu reporte será enviado después de eso.
 verify-my-email = Verificar mi correo electrónico
 report-scan-another-email = Escanear otro correo electrónico en { -product-name }
 automated-message = Este es un correo automatizado; si lo recibiste por error, no es necesario que hagas nada.
