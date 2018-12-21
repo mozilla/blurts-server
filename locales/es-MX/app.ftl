@@ -185,9 +185,11 @@ copyright-info =
 hibp-attribution = Filtración de datos proporcionada por { $hibp-link }
 site-description = ¿Tus cuentas han sido filtradas o robadas en alguna filtración de datos? Descúbrelo en { -product-name }.  Busca en nuestra de base de datos y regístrate para las alertas.
 confirmation-headline = Tu informe de { -product-name } está en camino.
+confirmation-blurb = La filtración de datos puede afectar a cualquiera. Coméntalo con tus amigos y familia para que puedan revisar si sus cuentas en línea están seguras.
 share-email = Correo electrónico
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Otros
 share-twitter = La mayoría de las personas tienen alrededor de 100 cuentas en línea. ¿Alguno de los tuyos fue expuesta a una violación de datos? Averigua.
 share-facebook-headline = Averigua si fuiste parte de una violación de datos
 share-facebook-blurb = ¿Tus cuentas en línea fueron expuestas a una violación de datos?
+og-site-description = Encuentra si has sido parte de una filtración de datos con { -product-name }. Regístrate para recibir alertas de futuras filtraciones y obtén consejos para mantener tus cuentas seguras.
