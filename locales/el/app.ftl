@@ -25,6 +25,8 @@ user-unsubscribe-title = { -product-name } : Κατάργηση εγγραφής
 ## Password Tips
 
 pwt-section-headline = Ισχυρότεροι κωδικοί πρόσβασης = Καλύτερη προστασία
+download-firefox-bar-link = Λήψη του { -brand-name } τώρα
+download-firefox-banner-button = Λήψη του { -brand-name }
 signup-modal-close = Κλείσιμο
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Απεστάλη!
