@@ -29,6 +29,9 @@ signup-modal-close = Κλείσιμο
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Απεστάλη!
 sign-up = Εγγραφή
+form-signup-error = Πρέπει να είναι ένα έγκυρο email
+no-breaches-headline = Μέχρι στιγμής, όλα καλά.
+found-breaches-headline = Οι πληροφορίες σας ήταν μέρος μιας διαρροής δεδομένων.
 show-more-breaches = Εμφάνιση περισσότερων
 unsub-reason-6 = Κανένα από τα παραπάνω
 unsub-survey-thankyou = Ευχαριστούμε για τα σχόλιά σας.
