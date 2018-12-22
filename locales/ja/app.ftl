@@ -182,3 +182,5 @@ hibp-attribution = 侵害データの提供 { $hibp-link }
 site-description = あなたのアカウントはデータ侵害によって漏洩または盗まれていませんか？ { -product-name } で調べましょう。データベースを検索して、侵害時に知らせるための登録をしてください。
 confirmation-blurb = データ侵害は他の人にも影響を及ぼす可能性があります。このデータ侵害を伝えて、友人や家族にオンラインアカウントが安全かどうか確認してもらってください。
 share-email = メールアドレス
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = その他
