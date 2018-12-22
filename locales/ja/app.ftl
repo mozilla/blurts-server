@@ -77,6 +77,7 @@ scan-privacy = あなたのメールアドレスは保存されません。
 scan-submit = あなたのメールアドレスを検索
 scan-another-email = 別のメールアドレスを検索
 scan-featuredbreach-label = あなたの <span class="bold">{ $featuredBreach }</span> アカウント情報が漏洩していないか調べてください。
+sensitive-breach-email-required = データ侵害に取り扱いに注意が必要な情報が含まれています。メールでの確認が必要です。
 scan-error = メールアドレスを正しく入力してください。
 signup-banner-headline = { -product-name-nowrap } はあなたのオンラインアカウントが脅かされていないか検出します。
 signup-banner-blurb = { -product-name-nowrap } 詳細レポートでは、あなたのオンラインアカウントの情報が漏洩したり盗まれたりしていないかを報告します。また、あなたのアカウントが新たなウェブサイト侵害に巻き込まれた場合にも通知します。
@@ -179,3 +180,5 @@ copyright-info =
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = 侵害データの提供 { $hibp-link }
 site-description = あなたのアカウントはデータ侵害によって漏洩または盗まれていませんか？ { -product-name } で調べましょう。データベースを検索して、侵害時に知らせるための登録をしてください。
+confirmation-blurb = データ侵害は他の人にも影響を及ぼす可能性があります。このデータ侵害を伝えて、友人や家族にオンラインアカウントが安全かどうか確認してもらってください。
+share-email = メールアドレス
