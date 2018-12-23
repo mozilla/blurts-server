@@ -11,15 +11,26 @@
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Υποστήριξη
+# Link that takes the user to a blog post on blog.mozilla.org about the alerts
+about-firefox-alerts = Σχετικά με τις ειδοποιήσεις του Firefox
+# Link that takes the user to a Firefox Monitor survey. 
+give-feedback = Αποστολή σχολίων
 terms-and-privacy = Όροι και απόρρητο
+error-not-subscribed = Αυτή η διεύθυνση email δεν έχει εγγραφεί στο { -product-name }.
+error-hibp-throttled = Πάρα πολλές συνδέσεις στο { -brand-HIBP }.
 error-hibp-connect = Σφάλμα σύνδεσης στο { -brand-HIBP }.
 error-hibp-load-breaches = Αδυναμία φόρτωσης διαρροών.
 home-title = { -product-name }
 home-not-found = Η σελίδα δεν βρέθηκε.
 oauth-invalid-session = Άκυρη συνεδρία
+scan-title = { -product-name } : Αποτελέσματα σάρωσης
 user-add-invalid-email = Άκυρο email
+user-add-email-verify-subject = Επαληθεύστε τη συνδρομή σας στο { -product-name }.
 user-add-title = { -product-name } : Επιβεβαίωση email
 error-headline = Σφάλμα
+user-verify-token-error = Απαιτείται διακριτικό επαλήθευσης.
+user-verify-email-report-subject = Η αναφορά σας για το { -product-name }
+user-verify-title = { -product-name } : Έχετε εγγραφεί
 user-unsubscribe-title = { -product-name } : Κατάργηση εγγραφής
 
 ## Password Tips
@@ -28,6 +39,7 @@ pwt-section-headline = Ισχυρότεροι κωδικοί πρόσβασης 
 download-firefox-bar-link = Λήψη του { -brand-name } τώρα
 download-firefox-banner-button = Λήψη του { -brand-name }
 signup-modal-close = Κλείσιμο
+signup-modal-verify-expiration = Αυτός ο σύνδεσμος λήγει σε 24 ώρες.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Απεστάλη!
 sign-up = Εγγραφή
