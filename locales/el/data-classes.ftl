@@ -1,7 +1,9 @@
 ## Breach Data Classes
 
+address-book-contacts = Επαφές βιβλίου διευθύνσεων
 age-groups = Ηλικιακές ομάδες
 ages = Ηλικίες
+apps-installed-on-devices = Εφαρμογές σε συσκευές
 astrological-signs = Αστρολογικά ζώδια
 audio-recordings = Ηχογραφήσεις
 bank-account-numbers = Αριθμοί τραπεζικών λογαριασμών

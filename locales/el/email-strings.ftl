@@ -10,3 +10,5 @@ report-date = Ημερομηνία αναφοράς:
 email-address = Διεύθυνση email:
 # A link to legal information about mozilla products.
 legal = Νομικά
+# Share Firefox Monitor by email subject line
+share-by-email-subject = Δείτε αν έχετε επηρεαστεί από τη διαρροή δεδομένων.

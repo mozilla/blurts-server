@@ -47,8 +47,13 @@ form-signup-error = Πρέπει να είναι ένα έγκυρο email
 no-breaches-headline = Μέχρι στιγμής, όλα καλά.
 found-breaches-headline = Οι πληροφορίες σας ήταν μέρος μιας διαρροής δεδομένων.
 show-more-breaches = Εμφάνιση περισσότερων
+unsub-button = Κατάργηση εγγραφής
+unsub-survey-headline = Δεν είστε πλέον εγγεγραμμένοι.
+unsub-reason-2 = Λαμβάνω πάρα πολλά emails από το { -product-name-nowrap }
+unsub-reason-3 = Δεν βρίσκω χρήσιμη αυτή την υπηρεσία
 unsub-reason-6 = Κανένα από τα παραπάνω
 unsub-survey-thankyou = Ευχαριστούμε για τα σχόλιά σας.
+unsub-survey-error = Παρακαλούμε επιλέξτε ένα.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Κοινοποίηση
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
