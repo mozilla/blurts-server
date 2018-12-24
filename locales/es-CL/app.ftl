@@ -106,6 +106,24 @@ no-breaches =
     Tu dirección de correo no apareció en nuestro escaneo básico.
     Eso es bueno, pero las filtraciones de datos pueden suceder en todo momento y hay mucho más que puedes hacer.
     Suscríbete a { -product-name-nowrap } para obtener un informe completo, alertas al ocurrir nuevas filtraciones y consejos para proteger tus contraseñas.
+featured-breach-results =
+    { $breachCount ->
+        [0] Tu cuenta aparece en la filtración <span class="bold">{ $featuredBreach }</span>, pero no aparece en ninguna otra filtración de datos conocida.
+        [one] Tu cuenta apareció en la filtración <span class="bold">{ $featuredBreach }</span>, así como también en otra filtración.
+       *[other] Tu cuenta apareció en la filtración <span class="bold">{ $featuredBreach }</span>, así como también en { $breachCount } otras filtraciones.
+    }
+featured-breach-not-compromised =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Tu cuenta no apareció en la filtración <span class="bold">{ $featuredBreach }</span>, pero apareció en otra filtración.
+       *[other] Tu cuenta no apareció en la filtración <span class="bold">{ $featuredBreach }</span>, pero apareció en { $breachCount } otras filtraciones.
+    }
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Tu cuenta apareció en { $breachCount } filtración.
+       *[other] Cuentas asociadas a tu correo aparecieron en las siguientes { $breachCount } filtraciones.
+    }
 show-more-breaches = Mostrar más
 what-to-do-headline = Qué hacer cuando tu información ha sido expuesta en una filtración de datos
 what-to-do-subhead-1 = Cambia tus contraseñas, aunque se trate de cuentas antiguas
@@ -124,6 +142,7 @@ compromised-accounts = Cuentas comprometidas:
 compromised-data = Datos comprometidos:
 confirmed = ¡Confirmado!<br />¡Estás suscrito!
 confirmed-blurb = { -product-name-nowrap } te enviará un correo con un informe completo dentro de poco, y también te enviará una alerta por correo si tu cuenta aparece en una filtración futura.
+confirmed-social-blurb = Si tus datos han sido filtrados, hay muchas posibilidades de que tus amigos, familia o contactos en línea también lo hayan sido. Hazles saber sobre { -product-name-nowrap }.
 unsub-headline = Cancelar la suscripción de { -product-name-nowrap }
 unsub-blurb = Esto eliminará tu correo de la lista de { -product-name-nowrap } y ya no recibirás alertas cuando se anuncien nuevas filtraciones.
 unsub-button = Cancelar suscripción
@@ -148,6 +167,11 @@ download-firefox-mobile = Bajar { -brand-name } para móviles
 features = Características
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# The following string contains HTML markup which should not be translated. 
+# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
+copyright-info =
+    Algunos de estos contenidos están &#x24B8; 1998-2018 por determinados colaboradores en mozilla.org.
+    Contenido disponible bajo una <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">licencia Creative Commons</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Datos de la filtración proporcionados por { $hibp-link }
 site-description = ¿Han sido tus cuentas filtradas o robadas en una filtración de datos? Averígualo en { -product-name }. Busca en nuestra base de datos y regístrate para recibir alertas.
