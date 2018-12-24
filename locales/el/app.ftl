@@ -42,6 +42,8 @@ signup-modal-close = Κλείσιμο
 signup-modal-verify-expiration = Αυτός ο σύνδεσμος λήγει σε 24 ώρες.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Απεστάλη!
+signup-with-fxa = Εγγραφή με Λογαριασμό { -brand-name }
+form-signup-placeholder = Εισάγετε email
 sign-up = Εγγραφή
 form-signup-error = Πρέπει να είναι ένα έγκυρο email
 no-breaches-headline = Μέχρι στιγμής, όλα καλά.
