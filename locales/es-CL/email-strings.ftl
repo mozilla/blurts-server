@@ -23,6 +23,10 @@ report-headline =
         [one] Tu cuenta apareció en { $breachCount } filtración.
        *[other] Tus cuentas aparecieron en { $breachCount } filtraciones.
     }
+report-subhead-no-breaches =
+    Tu cuenta no apareció en nuestro informe completo de filtraciones.
+    Eso es bueno, pero hay mucho más que puedes hacer.
+    Las filtraciones de datos pueden suceder en todo momento, así que lee sobre cómo puedes proteger tus contraseñas.
 breach-alert-headline = Tu cuenta fue afectada por una filtración de datos.
 breach-alert-subhead = Una filtración de datos reportada recientemente contiene tu correo electrónico y los siguientes datos
 report-pwt-headline-1 = Usa una contraseña diferente para cada cuenta

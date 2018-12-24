@@ -44,6 +44,9 @@ user-unsubscribed-title = { -product-name }: Suscripción cancelada
 
 pwt-section-headline = Contraseñas más fuertes = Mejor protección
 pwt-section-subhead = Tu información privada es solo tan segura como tus contraseñas.
+pwt-section-blurb =
+    Tus contraseñas protegen mucho más que solo tus cuentas. Protegen cada pedazo de información personal que reside en ellas.
+    Y los hackers se aprovechan de los malos hábitos, como usar la misma contraseña en todas partes o frases comunes (el nombre de un famoso, ¿quizás?) así que si logran entrar en una cuenta, pueden entrar a varias. Aquí tienes como proteger mejor tus cuentas.
 pwt-headline-1 = Usa una contraseña diferente para cada cuenta
 pwt-summary-1 = Reutilizar la misma contraseña en todas partes deja la puerta abierta para la suplantación de identidad. Cualquier persona con esa contraseña puede iniciar sesión en todas tus cuentas.
 pwt-headline-2 = Crea contraseñas seguras y difíciles de adivinar
@@ -99,12 +102,20 @@ sign-up = Registrarse
 form-signup-error = Debe ser una dirección de correo electrónico válida
 no-breaches-headline = Hasta aquí, todo bien.
 found-breaches-headline = Tu información fue parte de una filtración de datos.
+no-breaches =
+    Tu dirección de correo no apareció en nuestro escaneo básico.
+    Eso es bueno, pero las filtraciones de datos pueden suceder en todo momento y hay mucho más que puedes hacer.
+    Suscríbete a { -product-name-nowrap } para obtener un informe completo, alertas al ocurrir nuevas filtraciones y consejos para proteger tus contraseñas.
 show-more-breaches = Mostrar más
 what-to-do-headline = Qué hacer cuando tu información ha sido expuesta en una filtración de datos
 what-to-do-subhead-1 = Cambia tus contraseñas, aunque se trate de cuentas antiguas
+what-to-do-blurb-1 = Si no puedes conectarte, contacta al sitio para preguntar sobre cómo puedes recuperar o cerrar la cuenta. ¿Ves una cuenta que no reconoces? El sitio puede haber cambiado de nombre o alguien haber creado una cuenta haciéndose pasar por ti.
 what-to-do-subhead-2 = Si reutilizas una contraseña que ha sido expuesta, cámbiala
+what-to-do-blurb-2 = Los hackers pueden intentar reusar tus contraseñas expuestas para meterse en otras cuentas. Crea contraseñas diferentes para cada sitio, especialmente para tu cuenta bancaria, correo y otros sitios donde guardes información personal.
 what-to-do-subhead-3 = Toma medidas adicionales para asegurar tus cuentas bancarias
+what-to-do-blurb-3 = La mayoría de las filtraciones solo expone correos y contraseñas, pero algunas incluyen información financiera sensible. Si tu cuenta de banco o los números de tu tarjeta de crédito fueron incluidos en la filtración, alerta a tu banco de un posible fraude y monitorea los movimientos en caso de cargos que no reconozcas.
 what-to-do-subhead-4 = Recibe ayuda para crear buenas contraseñas y mantenerlas seguras.
+what-to-do-blurb-4 = Los administradores de contraseñas como 1Password, LastPass, Dashlane y Bitwarden generan contraseñas fuertes, las almacenan de forma segura y las colocan en los sitios web por ti.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Fecha de la filtración de datos:
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -112,6 +123,7 @@ compromised-accounts = Cuentas comprometidas:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Datos comprometidos:
 confirmed = ¡Confirmado!<br />¡Estás suscrito!
+confirmed-blurb = { -product-name-nowrap } te enviará un correo con un informe completo dentro de poco, y también te enviará una alerta por correo si tu cuenta aparece en una filtración futura.
 unsub-headline = Cancelar la suscripción de { -product-name-nowrap }
 unsub-button = Cancelar suscripción
 unsub-survey-headline = Ya no estás suscrito.
