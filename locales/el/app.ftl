@@ -57,6 +57,9 @@ pwt-summary-5 =
     Η μέθοδος αυτή απαιτεί επιπλέον πληροφορίες (όπως κωδικός μιας χρήσης μέσω μηνύματος) για σύνδεση. 
     Ακόμη κι αν έχει κάποιος τον κωδικό σας, δεν μπορεί να συνδεθεί.
 pwt-headline-6 = Συνδρομή στις ειδοποιήσεις του { -product-name-nowrap }
+pwt-summary-6 =
+    Οι παραβιάσεις δεδομένων αυξάνονται. Όταν ανανεώνεται η βάση δεδομένων μας, 
+    το Firefox Monitor σάς ειδοποιεί ώστε να προστατέψετε το λογαριασμό σας.
 landing-headline = Το δικαίωμά σας για προστασία από χάκερς ξεκινά εδώ.
 landing-blurb =
     Το { -product-name-nowrap } σάς οπλίζει με εργαλεία για να προστατέψετε τις προσωπικές σας πληροφορίες. 
@@ -65,6 +68,7 @@ scan-label = Δείτε αν έχουν παραβιαστεί τα δεδομέ
 scan-placeholder = Εισάγετε διεύθυνση email
 scan-privacy = Το email σας δεν θα αποθηκευτεί.
 scan-submit = Αναζήτηση email
+scan-another-email = Σάρωση άλλης διεύθυνσης email
 scan-error = Πρέπει να είναι ένα έγκυρο email.
 signup-banner-headline = Το { -product-name-nowrap } ανιχνεύει απειλές ενάντια στους διαδικτυακούς σας λογαριασμούς.
 signup-banner-blurb =
@@ -91,6 +95,10 @@ sign-up = Εγγραφή
 form-signup-error = Πρέπει να είναι ένα έγκυρο email
 no-breaches-headline = Μέχρι στιγμής, όλα καλά.
 found-breaches-headline = Οι πληροφορίες σας ήταν μέρος μιας διαρροής δεδομένων.
+no-breaches =
+    Η διεύθυνση email σας δεν εμφανίστηκε στη βασική σάρωση. 
+    Αυτό είναι καλό, αλλά παραβιάσεις δεδομένων μπορούν να συμβούν οποτεδήποτε. Εσείς μπορείτε να κάνετε πολλά ακόμη. 
+    Εγγραφείτε στο { -product-name-nowrap } για αναφορές, ειδοποιήσεις νέων διαρροών και συμβουλές προστασίας κωδικών.
 show-more-breaches = Εμφάνιση περισσότερων
 unsub-button = Κατάργηση εγγραφής
 unsub-survey-headline = Δεν είστε πλέον εγγεγραμμένοι.
@@ -109,6 +117,8 @@ download-firefox-mobile = Λήψη του { -brand-name } για κινητά
 features = Χαρακτηριστικά
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+confirmation-headline = Η αναφορά σας από το { -product-name } έρχεται.
+confirmation-blurb = Οι παραβιάσεις δεδομένων μπορούν να επηρεάσουν οποιονδήποτε. Διαδώστε τα νέα, ώστε οι φίλοι και οι συγγενείς σας να μπορέσουν να ελέγξουν αν είναι ασφαλείς οι διαδικτυακοί τους λογαριασμοί.
 share-email = Email
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Άλλο
