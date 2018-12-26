@@ -8,6 +8,8 @@ report-scan-another-email = Σάρωση άλλου email στο { -product-name
 firefox-monitor-report = Αναφορά { -product-name }
 report-date = Ημερομηνία αναφοράς:
 email-address = Διεύθυνση email:
+report-pwt-headline-1 = Χρήση διαφορετικού κωδικού για κάθε λογαριασμό
+report-pwt-headline-3 = Οι ερωτήσεις ασφαλείας είναι επιπλέον κωδικοί πρόσβασης
 # A link to legal information about mozilla products.
 legal = Νομικά
 # Share Firefox Monitor by email subject line
