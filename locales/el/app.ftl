@@ -36,14 +36,29 @@ user-unsubscribe-title = { -product-name } : Κατάργηση εγγραφής
 ## Password Tips
 
 pwt-section-headline = Ισχυρότεροι κωδικοί πρόσβασης = Καλύτερη προστασία
+landing-headline = Το δικαίωμά σας για προστασία από χάκερς ξεκινά εδώ.
+landing-blurb =
+    Το { -product-name-nowrap } σάς οπλίζει με εργαλεία για να προστατέψετε τις προσωπικές σας πληροφορίες. 
+    Μάθετε τι ξέρουν ήδη για εσάς οι χάκερς και μάθετε πώς να είστε ένα βήμα πιο μπροστά από αυτούς.
+scan-label = Δείτε αν έχουν παραβιαστεί τα δεδομένα σας.
+scan-placeholder = Εισάγετε διεύθυνση email
+scan-privacy = Το email σας δεν θα αποθηκευτεί.
+scan-submit = Αναζήτηση email
+scan-error = Πρέπει να είναι ένα έγκυρο email.
+download-firefox-bar-blurb = Το { -product-name-nowrap } προσφέρεται σε εσάς από το <span class="nowrap">ολοκαίνουριο { -brand-name }</span>.
 download-firefox-bar-link = Λήψη του { -brand-name } τώρα
+download-firefox-banner-blurb = Ελέγξτε το πρόγραμμα περιήγησής σας
 download-firefox-banner-button = Λήψη του { -brand-name }
+signup-modal-headline = Εγγραφή στο { -product-name-nowrap }
+signup-modal-blurb = Εγγραφείτε για να λαμβάνετε τις πλήρεις αναφορές σας, ειδοποιήσεις όταν συμβαίνουν νέες παραβιάσεις και συμβουλές ασφαλείας από το { -product-name-nowrap }.
 signup-modal-close = Κλείσιμο
+get-your-report = Λήψη αναφοράς
 signup-modal-verify-expiration = Αυτός ο σύνδεσμος λήγει σε 24 ώρες.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Απεστάλη!
 signup-with-fxa = Εγγραφή με Λογαριασμό { -brand-name }
 form-signup-placeholder = Εισάγετε email
+form-signup-checkbox = Λήψη ειδήσεων από τη { -brand-Mozilla } και το { -brand-name }.
 sign-up = Εγγραφή
 form-signup-error = Πρέπει να είναι ένα έγκυρο email
 no-breaches-headline = Μέχρι στιγμής, όλα καλά.
@@ -61,6 +76,7 @@ share = Κοινοποίηση
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
 tweet = Tweet
 download-firefox-quantum = Λήψη του { -brand-Quantum }
+download-firefox-mobile = Λήψη του { -brand-name } για κινητά
 # Features here refers to Firefox browser features. 
 features = Χαρακτηριστικά
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
