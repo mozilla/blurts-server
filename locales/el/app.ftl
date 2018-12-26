@@ -36,6 +36,7 @@ user-unsubscribe-title = { -product-name } : Κατάργηση εγγραφής
 ## Password Tips
 
 pwt-section-headline = Ισχυρότεροι κωδικοί πρόσβασης = Καλύτερη προστασία
+pwt-section-subhead = Οι ιδιωτικές σας πληροφορίες είναι ασφαλείς όσο και ο κωδικός πρόσβασής σας.
 landing-headline = Το δικαίωμά σας για προστασία από χάκερς ξεκινά εδώ.
 landing-blurb =
     Το { -product-name-nowrap } σάς οπλίζει με εργαλεία για να προστατέψετε τις προσωπικές σας πληροφορίες. 
@@ -45,6 +46,10 @@ scan-placeholder = Εισάγετε διεύθυνση email
 scan-privacy = Το email σας δεν θα αποθηκευτεί.
 scan-submit = Αναζήτηση email
 scan-error = Πρέπει να είναι ένα έγκυρο email.
+signup-banner-headline = Το { -product-name-nowrap } ανιχνεύει απειλές ενάντια στους διαδικτυακούς σας λογαριασμούς.
+signup-banner-blurb =
+    Η λεπτομερής σας αναφορά από το { -product-name-nowrap } δείχνει αν οι πληροφορίες των διαδικτυακών σας λογαριασμών έχουν διαρρεύσει ή κλαπεί. 
+    Επίσης, θα σάς ειδοποιήσουμε αν οι λογαριασμοί σας εμφανιστούν σε νέες διαρροές ιστοσελίδων.
 download-firefox-bar-blurb = Το { -product-name-nowrap } προσφέρεται σε εσάς από το <span class="nowrap">ολοκαίνουριο { -brand-name }</span>.
 download-firefox-bar-link = Λήψη του { -brand-name } τώρα
 download-firefox-banner-blurb = Ελέγξτε το πρόγραμμα περιήγησής σας
