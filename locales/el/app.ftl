@@ -23,6 +23,7 @@ error-hibp-load-breaches = Αδυναμία φόρτωσης διαρροών.
 home-title = { -product-name }
 home-not-found = Η σελίδα δεν βρέθηκε.
 oauth-invalid-session = Άκυρη συνεδρία
+oauth-confirmed-title = { -product-name } : Έχετε εγγραφεί
 scan-title = { -product-name } : Αποτελέσματα σάρωσης
 user-add-invalid-email = Άκυρο email
 user-add-email-verify-subject = Επαληθεύστε τη συνδρομή σας στο { -product-name }.
@@ -58,7 +59,10 @@ signup-modal-headline = Εγγραφή στο { -product-name-nowrap }
 signup-modal-blurb = Εγγραφείτε για να λαμβάνετε τις πλήρεις αναφορές σας, ειδοποιήσεις όταν συμβαίνουν νέες παραβιάσεις και συμβουλές ασφαλείας από το { -product-name-nowrap }.
 signup-modal-close = Κλείσιμο
 get-your-report = Λήψη αναφοράς
+signup-modal-verify-headline = Επαλήθευση συνδρομής
+signup-modal-verify-blurb = Έχουμε στείλει ένα σύνδεσμο επαλήθευσης στο <span id="submitted-email" class="medium"></span>.
 signup-modal-verify-expiration = Αυτός ο σύνδεσμος λήγει σε 24 ώρες.
+signup-modal-verify-resend = Δεν είναι στα εισερχόμενα ή στα ανεπιθύμητα; Νέα αποστολή.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Απεστάλη!
 signup-with-fxa = Εγγραφή με Λογαριασμό { -brand-name }
