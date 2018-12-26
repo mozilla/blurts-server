@@ -10,6 +10,9 @@ report-date = Ημερομηνία αναφοράς:
 email-address = Διεύθυνση email:
 report-pwt-headline-1 = Χρήση διαφορετικού κωδικού για κάθε λογαριασμό
 report-pwt-headline-3 = Οι ερωτήσεις ασφαλείας είναι επιπλέον κωδικοί πρόσβασης
+report-pwt-summary-3 =
+    Οι ιστοσελίδες δεν ελέγχουν αν οι απαντήσεις είναι ακριβείς, ελέγχουν απλά αν ταιριάζουν. 
+    Δημιουργήστε μεγάλες, τυχαίες απαντήσεις και αποθηκεύστε τις σε ασφαλές μέρος.
 # A link to legal information about mozilla products.
 legal = Νομικά
 # Share Firefox Monitor by email subject line
