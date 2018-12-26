@@ -8,6 +8,7 @@
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
+-brand-HIBP = Have I Been Pwned
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Υποστήριξη
@@ -59,7 +60,7 @@ pwt-summary-5 =
 pwt-headline-6 = Συνδρομή στις ειδοποιήσεις του { -product-name-nowrap }
 pwt-summary-6 =
     Οι παραβιάσεις δεδομένων αυξάνονται. Όταν ανανεώνεται η βάση δεδομένων μας, 
-    το Firefox Monitor σάς ειδοποιεί ώστε να προστατέψετε το λογαριασμό σας.
+    το { -product-name-nowrap } σάς ειδοποιεί ώστε να προστατέψετε το λογαριασμό σας.
 landing-headline = Το δικαίωμά σας για προστασία από χάκερς ξεκινά εδώ.
 landing-blurb =
     Το { -product-name-nowrap } σάς οπλίζει με εργαλεία για να προστατέψετε τις προσωπικές σας πληροφορίες. 
@@ -94,12 +95,25 @@ form-signup-checkbox = Λήψη ειδήσεων από τη { -brand-Mozilla } 
 sign-up = Εγγραφή
 form-signup-error = Πρέπει να είναι ένα έγκυρο email
 no-breaches-headline = Μέχρι στιγμής, όλα καλά.
-found-breaches-headline = Οι πληροφορίες σας ήταν μέρος μιας διαρροής δεδομένων.
+found-breaches-headline = Οι πληροφορίες σας έχουν παραβιαστεί.
 no-breaches =
     Η διεύθυνση email σας δεν εμφανίστηκε στη βασική σάρωση. 
     Αυτό είναι καλό, αλλά παραβιάσεις δεδομένων μπορούν να συμβούν οποτεδήποτε. Εσείς μπορείτε να κάνετε πολλά ακόμη. 
     Εγγραφείτε στο { -product-name-nowrap } για αναφορές, ειδοποιήσεις νέων διαρροών και συμβουλές προστασίας κωδικών.
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Ο λογαριασμός σας εμφανίστηκε σε { $breachCount } παραβίαση.
+       *[other] Λογαριασμοί που σχετίζονται με τη διεύθυνση email σας εμφανίστηκαν στις εξής { $breachCount } παραβιάσεις.
+    }
 show-more-breaches = Εμφάνιση περισσότερων
+what-to-do-headline = Τι να κάνετε όταν εκτεθούν οι πληροφορίες σας σε μια παραβίαση δεδομένων
+what-to-do-subhead-1 = Αλλάξτε τους κωδικούς πρόσβασής σας, ακόμη και για παλαιούς λογαριασμούς
+what-to-do-subhead-2 = Αν χρησιμοποιείτε έναν κωδικό πρόσβασης κάπου αλλού, αλλάξτε τον
+what-to-do-subhead-3 = Λάβετε επιπρόσθετα μέτρα ασφάλισης των οικονομικών σας λογαριασμών
+what-to-do-subhead-4 = Λάβετε βοήθεια για τη δημιουργία και την προστασία καλών κωδικών πρόσβασης.
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = Ημερομηνία παραβίασης:
 unsub-button = Κατάργηση εγγραφής
 unsub-survey-headline = Δεν είστε πλέον εγγεγραμμένοι.
 unsub-reason-2 = Λαμβάνω πάρα πολλά emails από το { -product-name-nowrap }
@@ -117,6 +131,8 @@ download-firefox-mobile = Λήψη του { -brand-name } για κινητά
 features = Χαρακτηριστικά
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Δεδομένα παραβίασης από το { $hibp-link }
 confirmation-headline = Η αναφορά σας από το { -product-name } έρχεται.
 confirmation-blurb = Οι παραβιάσεις δεδομένων μπορούν να επηρεάσουν οποιονδήποτε. Διαδώστε τα νέα, ώστε οι φίλοι και οι συγγενείς σας να μπορέσουν να ελέγξουν αν είναι ασφαλείς οι διαδικτυακοί τους λογαριασμοί.
 share-email = Email
