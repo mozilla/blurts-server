@@ -20,6 +20,8 @@ terms-and-privacy = Vilkår og beskyttelse af personlige oplysninger
 error-not-subscribed = Denne mailadresse er ikke tilmeldt { -product-name }.
 error-hibp-throttled = For mange forbindelser til { -brand-HIBP }.
 error-hibp-connect = Kan ikke forbinde til { -brand-HIBP }.
+error-hibp-load-breaches = Kunne ikke indlæse datalæk.
+hibp-notify-email-subject = { -product-name } advarsel: Din konto har været ramt af en datalæk.
 home-title = { -product-name }
 home-not-found = Side ikke fundet.
 oauth-invalid-session = Ugyldig session
@@ -29,8 +31,11 @@ user-add-invalid-email = Ugyldig mailadresse
 user-add-email-verify-subject = Bekræft din tilmelding til { -product-name }.
 user-add-title = { -product-name } : Bekræft mailadresse
 error-headline = Fejl
+user-verify-token-error = Der kræves et bekræftelses-token.
 user-verify-email-report-subject = Din { -product-name }-rapport
 user-verify-title = { -product-name } : Tilmeldt
+user-unsubscribe-token-error = Afmelding kræver et token.
+user-unsubscribe-token-email-error = Afmelding kræver et token og en e-mailHash.
 user-unsubscribe-title = { -product-name } : Afmeld
 user-unsubscribe-survey-title = { -product-name } : Afmeldingsundersøgelse
 user-unsubscribed-title = { -product-name } : Afmeldt
@@ -60,16 +65,20 @@ pwt-summary-5 =
     To faktor-godkendelse kræver yderligere oplysninger (fx en engangskode sendt via SMS) for at logge dig ind på dine konti.
     Så selv hvis nogen har din adgangskode, vil de ikke kunne komme ind.
 pwt-headline-6 = Tilmeld dig { -product-name-nowrap }-advarsler
+pwt-summary-6 =
+    Læk af data fra websteder bliver mere og mere almindelige. Så snart en læk registreres i vores database, 
+    sender { -product-name-nowrap } dig en advarsel — på den måde kan du tage affære og beskytte din konto.
 landing-headline = Din beskyttelse mod hackere begynder her.
 landing-blurb =
     Med { -product-name-nowrap } får du en række værktøjer, så du kan beskytte dine personlige oplysninger. 
     Find ud af, hvor meget hackerne allerede ved om dig, og hvordan du kan komme et skridt foran dem.
-scan-label = Se om du har været omfattet af en datalækage.
+scan-label = Se om du har været omfattet af en datalæk.
 scan-placeholder = Indtast en mailadresse
 scan-privacy = Din mailadresse bliver ikke gemt.
 scan-submit = Søg efter din mailadresse
 scan-another-email = Skan en anden mailadresse
 scan-featuredbreach-label = Find ud af, om din <span class="bold"> { $featuredBreach } </span>-konto er blevet kompromitteret.
+sensitive-breach-email-required = Datalækken indeholder følsomme oplysninger. Der kræves en email-bekræftelse.
 scan-error = Mailadressen skal være gyldig.
 signup-banner-headline = { -product-name-nowrap } finder trusler mod dine online-konti.
 download-firefox-bar-blurb = { -product-name-nowrap } præsenteres af den <span class="nowrap">nye { -brand-name }</span>.
@@ -92,11 +101,16 @@ form-signup-checkbox = Få seneste nyt fra { -brand-Mozilla } og { -brand-name }
 sign-up = Tilmeld dig
 form-signup-error = Mailadressen skal være gyldig
 no-breaches-headline = Så langt, så godt.
+found-breaches-headline = Dine oplysninger er blevet kompromitteret i en datalæk.
+no-breaches =
+    Din mailadresse dukkede ikke op i vores grundlæggende søgning. 
+    Det er gode nyheder - men datalæk kan ske når som helst. Heldigvis kan du selv gøre noget. 
+    Tilmeld dig { -product-name-nowrap } for at få en fuldstændig rapport, advarsler om nye datalæk samt tips til at beskytte dine adgangskoder.
 featured-breach-results =
     { $breachCount ->
-        [0] Din konto optræder i datalækagen <span class="bold">{ $featuredBreach }</span>, men ikke i andre kendte datalækager.
-        [one] Din konto optræder i datalækagen <span class="bold">{ $featuredBreach }</span> samt en anden datalækage.
-       *[other] Din konto optræder i datalækagen <span class="bold">{ $featuredBreach }</span> samt i { $breachCount } andre datalækager.
+        [0] Din konto optræder i datalækken <span class="bold">{ $featuredBreach }</span>, men ikke i andre kendte datalækker.
+        [one] Din konto optræder i datalækken <span class="bold">{ $featuredBreach }</span> samt en anden datalæk.
+       *[other] Din konto optræder i datalækken <span class="bold">{ $featuredBreach }</span> samt i { $breachCount } andre datalækker.
     }
 featured-breach-not-compromised =
     { $breachCount ->
