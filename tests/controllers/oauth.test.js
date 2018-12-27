@@ -18,14 +18,15 @@ jest.mock("got");
 const mockRequest = { fluentFormat: jest.fn() };
 
 
-test("init request sets session cookie and redirects", () => {
+test("init request sets session cookie and redirects with access_type=offline", () => {
   mockRequest.session = { };
   const mockResponse = { redirect: jest.fn() };
 
   init(mockRequest, mockResponse);
 
   const mockRedirectCallArgs = mockResponse.redirect.mock.calls[0];
-  expect(mockRedirectCallArgs[0]).toMatch(AppConstants.OAUTH_AUTHORIZATION_URI);
+  expect(mockRedirectCallArgs[0].href).toMatch(AppConstants.OAUTH_AUTHORIZATION_URI);
+  expect(mockRedirectCallArgs[0].href).toMatch("access_type=offline");
 });
 
 

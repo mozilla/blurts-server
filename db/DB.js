@@ -101,18 +101,40 @@ const DB = {
     });
   },
 
-  async addSubscriber(email) {
+  /**
+   * Add a subscriber:
+   * 1. Add a record to subscribers
+   * 2. Immediately call _verifySubscriber
+   * 3. For FxA subscriber, add refresh token and profile data
+   *
+   * @param {string} email to add
+   * @param {string} fxaRefreshToken from Firefox Account Oauth
+   * @param {string} fxaProfileData from Firefox Account
+   * @returns {object} subscriber knex object added to DB
+   */
+  async addSubscriber(email, fxaRefreshToken=null, fxaProfileData=null) {
     const emailHash = await this._addEmailHash(getSha1(email), email, true);
-    const verifiedSubscriber = await this._verifySubscriber(emailHash);
-    return verifiedSubscriber[0];
+    const verified = await this._verifySubscriber(emailHash);
+    const verifiedSubscriber = verified[0];
+    if (fxaRefreshToken || fxaProfileData) {
+      return this._updateFxAData(verifiedSubscriber, fxaRefreshToken, fxaProfileData);
+    }
+    return verifiedSubscriber;
   },
 
+  /**
+   * When an email is verified, convert it into a subscriber:
+   * 1. Subscribe the hash to HIBP
+   * 2. Update our subscribers record to verified
+   * 3. (if opted in) Subscribe the email to Fx newsletter
+   *
+   * @param {object} emailHash knex object in DB
+   * @returns {object} verified subscriber knex object in DB
+   */
   async _verifySubscriber(emailHash) {
-    // Subscribe user to HIBP
     // TODO: move this "up" into controllers/users ?
     await HIBP.subscribeHash(emailHash.sha1);
 
-    // Update our subscriber record to verified
     const verifiedSubscriber = await knex("subscribers")
       .where("email", "=", emailHash.email)
       .update({
@@ -121,13 +143,31 @@ const DB = {
       })
       .returning("*");
 
-    // If the user opted in, send newsletter subscription request to basket
     // TODO: move this "up" into controllers/users ?
     if (emailHash.fx_newsletter) {
       Basket.subscribe(emailHash.email);
     }
 
     return verifiedSubscriber;
+  },
+
+  /**
+   * Update fxa_refresh_token and fxa_profile_json for subscriber
+   *
+   * @param {object} subscriber knex object in DB
+   * @param {string} fxaRefreshToken from Firefox Account Oauth
+   * @param {string} fxaProfileData from Firefox Account
+   * @returns {object} updated subscriber knex object in DB
+   */
+  async _updateFxAData(subscriber, fxaRefreshToken, fxaProfileData) {
+    const updatedSubscriber = await knex("subscribers")
+    .where("id", "=", subscriber.id)
+    .update({
+      fxa_refresh_token: fxaRefreshToken,
+      fxa_profile_json: fxaProfileData,
+    })
+    .returning("*");
+    return updatedSubscriber;
   },
 
   async removeSubscriberByEmail(email) {
