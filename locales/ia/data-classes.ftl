@@ -59,4 +59,5 @@ sexual-orientations = orientationes sexual
 smoking-habits = habitos re le fumo
 sms-messages = Messages SMS
 spoken-languages = linguas parlate
+time-zones = Fusos horari
 travel-habits = habitos de viage

@@ -53,6 +53,7 @@ form-signup-error = Debe esser un adresse email valide
 no-breaches-headline = Fin a aqui, toto ben.
 show-more-breaches = Monstrar plus
 unsub-button = Remover le subscription
+unsub-survey-thankyou = Gratias pro tu commentario.
 unsub-survey-error = Per favor elige uno.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Compartir
