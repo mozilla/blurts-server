@@ -44,6 +44,19 @@ user-unsubscribed-title = { -product-name } : inscription removite
 
 pwt-section-headline = Contrasignos plu forte = Melior protection
 pwt-section-subhead = Tu informationes private es tam secur que tu contrasignos.
+pwt-section-blurb =
+    Tu contrasignos protege plus de tu contos. Illos protege cata bit de informationes personal que demora in illos.
+    E le hackers fide sur le mal habitos, como usar un identic contrasigno ubique o phrases commun (p@ssw0rd, quicunque?) assi
+    que si illos viola un conto, illos pote violar multos. Ecce como melio proteger tu contos.
+pwt-headline-1 = Usa un differente contrasigno pro cata conto
+pwt-summary-1 =
+    Reusar identic contrasigno ubique lassa le porta large aperte al furto de identitate.
+    Quicunque con ille contrasigno pote acceder a tote tu contos.
+pwt-headline-2 = Crea forte contrasignos, difficile a divinar
+pwt-summary-2 =
+    Le hackers usa milles de commun contrasignos pro provar a divinar illos tue.
+    Plus longe e plus aleatori tu contrasigno es, plus difficile illo sera a divinar.
+pwt-headline-3 = Tracta questiones de securitate como extra contrasignos
 landing-headline = Tu derecto de ser secur del hackers initia ci.
 scan-placeholder = Insere le adresse email
 scan-privacy = Tu adresse email non essera reservate.
