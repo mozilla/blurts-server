@@ -31,15 +31,19 @@ user-add-invalid-email = Email non valide
 user-add-email-verify-subject = Verifica tu subscription a { -product-name }.
 user-add-title = { -product-name } : Confirmar le adresse email
 error-headline = Error
+user-verify-token-error = Un jeton de verification es necesse.
 user-verify-email-report-subject = Tu reporto de { -product-name }
 user-verify-title = { -product-name } : subscribite
-user-unsubscribe-title = { -product-name } : annullar le subscription
-user-unsubscribed-title = { -product-name } : subscription annullate
+user-unsubscribe-token-error = Remover se del inscription require un jeton.
+user-unsubscribe-token-email-error = Remover se del inscription require un jeton e un emailHash.
+user-unsubscribe-title = { -product-name } : remover le inscription
+user-unsubscribe-survey-title = { -product-name } : questionario de remotion de inscription
+user-unsubscribed-title = { -product-name } : inscription removite
 
 ## Password Tips
 
 pwt-section-headline = Contrasignos plu forte = Melior protection
-pwt-section-subhead = Tu informationes private es assi secur que tu contrasignos.
+pwt-section-subhead = Tu informationes private es tam secur que tu contrasignos.
 landing-headline = Tu derecto de ser secur del hackers initia ci.
 scan-placeholder = Insere le adresse email
 scan-privacy = Tu adresse email non essera reservate.
