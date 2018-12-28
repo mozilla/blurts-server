@@ -61,7 +61,23 @@ sign-up = Acceder
 form-signup-error = Debe esser un adresse email valide
 no-breaches-headline = Fin a aqui, toto ben.
 show-more-breaches = Monstrar plus
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = Data del violation de securitate:
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Contos compromittite:
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Datos compromittite:
+confirmed = Confirmate!<br />Tu es subscribite!
+unsub-headline = Remover le subscription de { -product-name-nowrap }
 unsub-button = Remover le subscription
+unsub-survey-headline = Tu non es plus subscribite.
+unsub-survey-form-label = Proque tu remove tu subscription del avisos de { -product-name-nowrap }?
+unsub-reason-1 = Io crede que le avisos non rende mi datos plus secur
+unsub-reason-2 = Io recipe trop emails de { -product-name-nowrap }
+unsub-reason-3 = Io trova inutile le servicio
+unsub-reason-4 = Io ha jam facite lo que es necesse pro proteger mi contos
+unsub-reason-5 = Io usa un altere servicio pro controlar mi contos
+unsub-reason-6 = Nihil del previe unos
 unsub-survey-thankyou = Gratias pro tu commentario.
 unsub-survey-error = Per favor elige uno.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
@@ -69,6 +85,7 @@ share = Compartir
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
 tweet = Invia un tweet
 download-firefox-quantum = Discargar { -brand-Quantum }
+download-firefox-mobile = Discargar { -brand-name } Mobile
 # Features here refers to Firefox browser features. 
 features = Functionalitates
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
