@@ -17,6 +17,11 @@ about-firefox-alerts = A proposito del avisos de Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Inviar opinion
 terms-and-privacy = Conditiones de uso e confidentialitate
+error-not-subscribed = Iste adresse email non es inscribite a { -product-name }
+error-hibp-throttled = Trop connexiones a { -brand-HIBP }.
+error-hibp-connect = Error durante le connexion a { -brand-HIBP }.
+error-hibp-load-breaches = Impossibile cargar datos ex violationes.
+hibp-notify-email-subject = Alerta de { -product-name }: tu conto ha essite compromittite per un violation de securitate.
 home-title = { -product-name }
 home-not-found = Pagina non trovate.
 oauth-invalid-session = Session non valide
@@ -34,9 +39,13 @@ user-unsubscribed-title = { -product-name } : subscription annullate
 ## Password Tips
 
 pwt-section-headline = Contrasignos plu forte = Melior protection
+pwt-section-subhead = Tu informationes private es assi secur que tu contrasignos.
+landing-headline = Tu derecto de ser secur del hackers initia ci.
 scan-placeholder = Insere le adresse email
-scan-submit = Verificar tu adresse email
+scan-privacy = Tu adresse email non essera reservate.
+scan-submit = Cerca tu adresse email
 scan-error = Debe ser un adresse email valide
+signup-banner-headline = { -product-name-nowrap } revela menacias contra tu contos online.
 download-firefox-bar-link = Discarga subito { -brand-name }
 download-firefox-banner-blurb = Prende controlo de tu navigator
 download-firefox-banner-button = Discarga { -brand-name }
