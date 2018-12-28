@@ -1,11 +1,15 @@
 ## Breach Data Classes
 
+age-groups = Gruppos de etate
 ages = Etates
 apps-installed-on-devices = Applicationes installate sur apparatos
 astrological-signs = Signos astrologic
+audio-recordings = Registrationes audio
+auth-tokens = Jetones de authentification
 avatars = Avatares
 bank-account-numbers = Numeros de conto bancari
 biometric-data = Datos biometric
+browsing-histories = Chronologia de navigation
 chat-logs = Registros de chat
 credit-card-cvv = CVV de carta de credito
 credit-cards = Cartas de credito
@@ -48,9 +52,14 @@ nicknames = Pseudonymos
 occupations = Occupationes
 passport-numbers = numeros de passaporto
 passwords = Contrasignos
+payment-histories = Chronologia del pagamentos
 payment-methods = Methodos de pagamento
+personal-descriptions = Descriptiones personal
+personal-interests = Interesses personai
 phone-numbers = Numeros de telephono
 photos = photos
+physical-addresses = Adresse physic
+physical-attributes = Attributos physic
 pins = PINs
 private-messages = Messages private
 religions = Religiones
