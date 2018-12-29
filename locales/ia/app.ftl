@@ -65,12 +65,29 @@ pwt-summary-4 =
     Le gestores de contrasignos como 1Password, LastPass, Dashlane, e Bitwarden genera contrasignos forte, unic.
     Illos alsi reserva le contrasignos con securitate e stipa los in sitos web pro te
 pwt-headline-5 = Adder extra securitate con le authentication a duo factores
+pwt-summary-5 =
+    Le Le authentication a duo factores require un altere pecia de informationes (inviate, como le codification a un-vice, via message de texto) pro acceder a tu conto.
+    Mesmo si alcuno ha tu contrasigno, ille non potera acceder.
+pwt-headline-6 = Registra te pro le alertas de { -product-name-nowrap }
+pwt-summary-6 =
+    Le violationes de datos del sitos web es in accrescimento. A pena un nove brecha es addite a nostre base de datos, 
+    { -product-name-nowrap } te inviara un alerta — assi que tu pote interprender actiones e proteger tu conto.
 landing-headline = Tu derecto de ser secur del hackers initia ci.
+landing-blurb =
+    { -product-name-nowrap } te muni con applicationes pro mantener tu informationes personal secur.
+    Discoperi lo que hackers jam sape re te e apprende como star un grado supra illes.
+scan-label = Vide si tu ha essite implicate in un violation de datos.
 scan-placeholder = Insere le adresse email
 scan-privacy = Tu adresse email non essera reservate.
 scan-submit = Cerca tu adresse email
+scan-another-email = Scande un altere adresse de email
+scan-featuredbreach-label = Discoperi si tu <span class="hardite"> { $featuredBreach } </span> conto ha essite compromittite.
+sensitive-breach-email-required = Le violation contine informationes sensibile. Verification del email obligatori.
 scan-error = Debe ser un adresse email valide
 signup-banner-headline = { -product-name-nowrap } revela menacias contra tu contos online.
+signup-banner-blurb =
+    Tu reporto detaliate de { -product-name-nowrap } monstra si le informationes ex tu contos online ha essite revelate o robate.
+    Nos alsi allertara te si tu contos pare in le nove violationes de sitos web.
 download-firefox-bar-link = Discarga subito { -brand-name }
 download-firefox-banner-blurb = Prende controlo de tu navigator
 download-firefox-banner-button = Discarga { -brand-name }
