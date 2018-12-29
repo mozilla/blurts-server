@@ -113,6 +113,12 @@ no-breaches =
     Tu adresse de email non pareva in nostre scansion basic.
     Isto es bon novas, ma le violationes de datos pote evenir a ulle tempore e il ha ancora plus que tu pote facer.
     Inscribe te a un plen reporto de { -product-name-nowrap } pro reciper alertas quando nove violationes eveni e suggestiones re como proteger tu contrasignos.
+featured-breach-results =
+    { $breachCount ->
+        [0] Tu conto appare in le <span class="bold">{ $featuredBreach }</span> violationes, ma illo non appare in ulle altere note violationes de datos.
+        [one] Tu conto appareva in le <span class="bold"> { $featuredBreach } </span> violation, tam ben como uno altere.
+       *[other] Tu conto appareva in le violation, tam ben como <span class="bold">{ $featuredBreach }</span> altere violationes.
+    }
 show-more-breaches = Monstrar plus
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Data del violation de securitate:
