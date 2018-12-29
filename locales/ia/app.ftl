@@ -140,6 +140,11 @@ what-to-do-blurb-1 =
 what-to-do-subhead-2 = Si tu reusar un contrasigno exponite, cambia illo
 what-to-do-blurb-2 = Le hackers pote provar a reusar tu contrasigno exponite pro acceder in altere contos. Crea un differente contrasigno pro cata sito web, specialmente pro tu conto bancari, email e altere sitos web ubi tu salva informationes personal.
 what-to-do-subhead-3 = Prende extra grados pro tener secur tu contos financiari
+what-to-do-blurb-3 =
+    Le major parte del violationes expone solo emails e contrasignos, ma alcunos include sensibile informationes financiari.
+    Si tu numeros de conto bancari o carta de credito era in un violation de datos, alerta tu banca pro le possibile fraude e verifica declarationes de cargas tu non recognosce.
+what-to-do-subhead-4 = Recipe adjuta pro le creation de bon contrasignos e mantenente los secur.
+what-to-do-blurb-4 = Le gestores de contrasignos, como 1Password, LastPass, Dashlane, e Bitwarden, genera contrasignos forte, reserva los con securitate e stipa los in sitos web pro te.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Data del violation de securitate:
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -147,9 +152,13 @@ compromised-accounts = Contos compromittite:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Datos compromittite:
 confirmed = Confirmate!<br />Tu es subscribite!
+confirmed-blurb = { -product-name-nowrap } te inviara per email un reporto plen tra breve, e un email de alerta si tu conto appare reportate in un nove violation.
+confirmed-social-blurb = Si tu ha essite violate, il ha riscos que tu amicos, familia o connexiones online ha essite alsi. Face les saper re { -product-name-nowrap }.
 unsub-headline = Remover le subscription de { -product-name-nowrap }
+unsub-blurb = Isto removera tu email ab le lista de { -product-name-nowrap } e tu non recipera plus alertas quando nove violationes es annunciate.
 unsub-button = Remover le subscription
 unsub-survey-headline = Tu non es plus subscribite.
+unsub-survey-blurb = Tu email es removite ex le inscription a { -product-name-nowrap }.
 unsub-survey-form-label = Proque tu remove tu subscription del avisos de { -product-name-nowrap }?
 unsub-reason-1 = Io crede que le avisos non rende mi datos plus secur
 unsub-reason-2 = Io recipe trop emails de { -product-name-nowrap }
