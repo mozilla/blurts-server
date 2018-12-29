@@ -88,20 +88,31 @@ signup-banner-headline = { -product-name-nowrap } revela menacias contra tu cont
 signup-banner-blurb =
     Tu reporto detaliate de { -product-name-nowrap } monstra si le informationes ex tu contos online ha essite revelate o robate.
     Nos alsi allertara te si tu contos pare in le nove violationes de sitos web.
+download-firefox-bar-blurb = { -product-name-nowrap } es offerite a te per <span class="nowrap">all-new { -brand-name }</span>.
 download-firefox-bar-link = Discarga subito { -brand-name }
 download-firefox-banner-blurb = Prende controlo de tu navigator
 download-firefox-banner-button = Discarga { -brand-name }
+signup-modal-headline = Registra te pro { -product-name-nowrap }
+signup-modal-blurb = Registra te pro tu plen reporto, alertas quando nove violationes eveni e suggestiones de securitate de { -product-name-nowrap }.
 signup-modal-close = Clauder
 get-your-report = Obtene tu reporto
 signup-modal-verify-headline = Verifica tu subscription
+signup-modal-verify-blurb = Nos ha inviate un ligamine de verification a  <span id="submitted-email" class="medium"></span>.
+signup-modal-verify-expiration = Iste ligamine expira in 24 horas.
 signup-modal-verify-resend = Non es illo in le cassa de entrata, ni in le plica de spam? Reinvia lo.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Inviate!
 signup-with-fxa = Registra te per un conto { -brand-name }
 form-signup-placeholder = Insere tu adresse email
+form-signup-checkbox = Recipe le ultime novas per { -brand-Mozilla } e { -brand-name }.
 sign-up = Acceder
 form-signup-error = Debe esser un adresse email valide
 no-breaches-headline = Fin a aqui, toto ben.
+found-breaches-headline = Tu informationes ha essite parte de un violation de datos.
+no-breaches =
+    Tu adresse de email non pareva in nostre scansion basic.
+    Isto es bon novas, ma le violationes de datos pote evenir a ulle tempore e il ha ancora plus que tu pote facer.
+    Inscribe te a un plen reporto de { -product-name-nowrap } pro reciper alertas quando nove violationes eveni e suggestiones re como proteger tu contrasignos.
 show-more-breaches = Monstrar plus
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Data del violation de securitate:
