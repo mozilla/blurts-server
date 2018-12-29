@@ -82,6 +82,7 @@ salutations = Salutationes
 sexual-orientations = orientationes sexual
 smoking-habits = habitos re le fumo
 sms-messages = Messages SMS
+social-media-profiles = Profilos de retes social
 spoken-languages = linguas parlate
 time-zones = Fusos horari
 travel-habits = habitos de viage
