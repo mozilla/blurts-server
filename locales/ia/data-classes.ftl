@@ -62,6 +62,7 @@ mac-addresses = adresses MAC
 marital-statuses = statos conjugal
 names = Nomines
 nationalities = Nationalitates
+net-worths = Valores nette
 nicknames = Pseudonymos
 occupations = Occupationes
 passport-numbers = numeros de passaporto
