@@ -158,7 +158,9 @@ unsub-headline = Remover le subscription de { -product-name-nowrap }
 unsub-blurb = Isto removera tu email ab le lista de { -product-name-nowrap } e tu non recipera plus alertas quando nove violationes es annunciate.
 unsub-button = Remover le subscription
 unsub-survey-headline = Tu non es plus subscribite.
-unsub-survey-blurb = Tu email es removite ex le inscription a { -product-name-nowrap }.
+unsub-survey-blurb =
+    Tu email es removite ex le inscription a { -product-name-nowrap }. Gratias pro usar iste servicio. 
+    Prendera tu un momento pro responder a un question re tu experientia?
 unsub-survey-form-label = Proque tu remove tu subscription del avisos de { -product-name-nowrap }?
 unsub-reason-1 = Io crede que le avisos non rende mi datos plus secur
 unsub-reason-2 = Io recipe trop emails de { -product-name-nowrap }
@@ -178,6 +180,20 @@ download-firefox-mobile = Discargar { -brand-name } Mobile
 features = Functionalitates
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Edition pro disveloppatores
+# The following string contains HTML markup which should not be translated. 
+# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
+copyright-info =
+    Portiones de iste contento es &#x24B8; 1998-2018 per collaboratores individual de mozilla.org. <br />
+    Contento disponibile sub  <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">licentia Creative Commons </a>.
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Datos re le violation fornite per { $hibp-link }
+site-description = Ha tu contos essite revelate o robate in un violation de datos? Discoperi lo in { -product-name }. Cerca in nostre base de datos e registra te pro le alertas.
+confirmation-headline = Tu reporto de { -product-name } es sur su via.
+confirmation-blurb = Le violation de datos pote afficer quicunque. Diffunde le parola assi tu amicos e familiares pote verificar si lor contos online es secur.
 share-email = Email
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Altero
+share-twitter = Le major parte del personas ha circa 100 contos online. Ha essite exponite ullos del tue a un violation de datos?
+share-facebook-headline = Discoperi si tu ha essite parte de un violation de datos
+share-facebook-blurb = Ha tu contos online essite exponite a un violation de datos?
+og-site-description = Discoperi si tu ha essite parte de un violation de datos con { -product-name }. Registra te pro alertas re futur violationes e obtener suggestiones pro mantener tu contos secur.
