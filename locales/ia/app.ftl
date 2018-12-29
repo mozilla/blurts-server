@@ -119,7 +119,27 @@ featured-breach-results =
         [one] Tu conto appareva in le <span class="bold"> { $featuredBreach } </span> violation, tam ben como uno altere.
        *[other] Tu conto appareva in le violation, tam ben como <span class="bold">{ $featuredBreach }</span> altere violationes.
     }
+featured-breach-not-compromised =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Tu conto non appareva in le violation de <span class="bold">{ $featuredBreach }</span>, ma appareva in uno altere.
+       *[other] Tu conto non appareva in le violation de <span class="bold">{ $featuredBreach }</span>, ma appareva in { $breachCount } altere.
+    }
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Tu conto appareva in { $breachCount } violation.
+       *[other] Le contos associate con tu adresse email appareva in le sequente { $breachCount } violationes.
+    }
 show-more-breaches = Monstrar plus
+what-to-do-headline = Que facer quando tu Informationes es exponite in un violation de datos
+what-to-do-subhead-1 = Cambia tu contrasignos, alsi pro le contos vetere
+what-to-do-blurb-1 =
+    Si tu non pote acceder, continge le sito web a demanda como tu pote recuperar o clauder le conto.
+    Vide un conto que tu non recognosce? Le sito pote haber cambiate nomines o alcuno pote haber create un conto pro te.
+what-to-do-subhead-2 = Si tu reusar un contrasigno exponite, cambia illo
+what-to-do-blurb-2 = Le hackers pote provar a reusar tu contrasigno exponite pro acceder in altere contos. Crea un differente contrasigno pro cata sito web, specialmente pro tu conto bancari, email e altere sitos web ubi tu salva informationes personal.
+what-to-do-subhead-3 = Prende extra grados pro tener secur tu contos financiari
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Data del violation de securitate:
 # compromised accounts = the total number of user accounts exposed in data breach
