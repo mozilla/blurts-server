@@ -57,6 +57,14 @@ pwt-summary-2 =
     Le hackers usa milles de commun contrasignos pro provar a divinar illos tue.
     Plus longe e plus aleatori tu contrasigno es, plus difficile illo sera a divinar.
 pwt-headline-3 = Tracta questiones de securitate como extra contrasignos
+pwt-summary-3 =
+    Le sitos web non verifica que tu responsas es accurate, ma solo que illos concorda sempre.
+    Crea responsas longe, aleatori e reserva los in qualque loco secur.
+pwt-headline-4 = Recipe adjuta a rememorar tu contrasignos
+pwt-summary-4 =
+    Le gestores de contrasignos como 1Password, LastPass, Dashlane, e Bitwarden genera contrasignos forte, unic.
+    Illos alsi reserva le contrasignos con securitate e stipa los in sitos web pro te
+pwt-headline-5 = Adder extra securitate con le authentication a duo factores
 landing-headline = Tu derecto de ser secur del hackers initia ci.
 scan-placeholder = Insere le adresse email
 scan-privacy = Tu adresse email non essera reservate.
