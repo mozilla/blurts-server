@@ -22,8 +22,8 @@ report-no-breaches =
 what-to-do-next = Næste skridt
 report-headline =
     { $breachCount ->
-        [one] Din konto optræder i { $breachCount } læk.
-       *[other] Dine konti optræder i { $breachCount } lækker.
+        [one] Din konto optræder i { $breachCount } datalæk.
+       *[other] Dine konti optræder i { $breachCount } datalækker.
     }
 report-subhead-no-breaches =
     Din konto optræder ikke i nogen af vores rapporter over læk af data.
