@@ -184,9 +184,12 @@ copyright-info =
     Indholdet er tilgængeligt under en  <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons-licens</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Information om datalæk stammer fra { $hibp-link }
+site-description = Er dine konti blevet lækket eller stjålet i en datalæk? Find ud af det med { -product-name }. Søg i vores database, og tilmeld dig for at modtage advarsler.
 confirmation-headline = Din { -product-name }-rapport er på vej.
 share-email = Mailadresse
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Andre
+share-twitter = De fleste mennesker har omkring 100 online-konti. Er nogle af dine konti blevet kompromitteret i en datalæk? Find ud af det.
 share-facebook-headline = Find ud af, om du er blevet udsat for en datalæk.
+share-facebook-blurb = Er dine online-konti blevet ramt i en datalæk?
 og-site-description = Brug { -product-name } til at finde ud af, om du er blevet ramt af en datalæk. Tilmeld dig for at få advarsler om nye datalæk og få tips til at beskytte dine konti.
