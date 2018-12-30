@@ -113,3 +113,5 @@ utility-bills = Facturas
 vehicle-details = Detalios del auto
 website-activity = Activitate del sito web
 work-habits = Habitudes de labor
+years-of-birth = Annos de nascentia
+years-of-professional-experience = Annos de experientia professional
