@@ -140,6 +140,7 @@ what-to-do-blurb-2 =
     Lav en nyt adgangskode for hvert websted - det er især vigtigt, når det handler om
     din bankkonto, din mailkonto og andre steder, hvor du gemmer personlig information.
 what-to-do-subhead-3 = Tag ekstra forholdsregler for at sikre dine bankkonti
+what-to-do-blurb-3 = De fleste datalæk indholder kun mailadresser og adgangskoder, men nogle datalæk indeholder også følsom finansiel information. Hvis din bankkonto eller information om dine betalingskort har været med i en datalæk, så skal du tage kontakt til din bank og bede dem gennemgå dine kontobevægelser for at afsløre svindel eller udgifter, du ikke genkender.
 what-to-do-subhead-4 = Få hjælp til at lave gode adgangskoder og til at opbevare dem sikkert.
 what-to-do-blurb-4 = Der findes software, der kan hjælpe dig med at oprette sikre adgangskoder, opbevare dem sikkert og lade dig sætte dem automatisk ind på websteder. Eksempler er 1Password, LastPass, Dashlane og Bitwarden.
 # breach-date = the calendar date a particular data theft occurred. 
