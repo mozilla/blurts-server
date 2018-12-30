@@ -126,7 +126,7 @@ scan-results =
     { $breachCount ->
         [0] { no-breaches }
         [one] Din konto optræder i { $breachCount } datalæk.
-       *[other] Konti associeret med din mailadresse optræder i de følgende { $breachCount } datalæk.
+       *[other] Konti associeret med din mailadresse optræder i de følgende { $breachCount } datalækker.
     }
 show-more-breaches = Vis flere
 what-to-do-headline = Hvad du skal gøre, når din information er ramt af en datalæk
