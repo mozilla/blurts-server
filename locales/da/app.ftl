@@ -82,6 +82,9 @@ scan-featuredbreach-label = Find ud af, om din <span class="bold"> { $featuredBr
 sensitive-breach-email-required = Datalækken indeholder følsomme oplysninger. Der kræves en email-bekræftelse.
 scan-error = Mailadressen skal være gyldig.
 signup-banner-headline = { -product-name-nowrap } finder trusler mod dine online-konti.
+signup-banner-blurb =
+    Din detaljerede { -product-name-nowrap }-rapport viser, om oplysninger fra dine online-konti er blevet lækket eller stjålet.
+    Vi vil også advare dig, hvis dine konti vises i nye datalæk.
 download-firefox-bar-blurb = { -product-name-nowrap } præsenteres af den <span class="nowrap">nye { -brand-name }</span>.
 download-firefox-bar-link = Hent { -brand-name } nu
 download-firefox-banner-blurb = Tag kontrollen over din browser
@@ -116,8 +119,8 @@ featured-breach-results =
 featured-breach-not-compromised =
     { $breachCount ->
         [0] { no-breaches }
-        [one] Din konto optræder ikke i datalækken <span class="bold">{ $featuredBreach }</span>, men findes i en anden datalækage.
-       *[other] Din konto optræder ikke i datalækken <span class="bold">{ $featuredBreach }</span>, men findes i { $breachCount } andre datalækager.
+        [one] Din konto optræder ikke i datalækken <span class="bold">{ $featuredBreach }</span>, men findes i en anden datalæk.
+       *[other] Din konto optræder ikke i datalækken <span class="bold">{ $featuredBreach }</span>, men findes i { $breachCount } andre datalækker.
     }
 scan-results =
     { $breachCount ->
@@ -126,6 +129,7 @@ scan-results =
        *[other] Konti associeret med din mailadresse optræder i de følgende { $breachCount } datalæk.
     }
 show-more-breaches = Vis flere
+what-to-do-headline = Hvad du skal gøre, når din information er ramt af en datalæk
 what-to-do-subhead-1 = Skift dine adgangskoder, selv for gamle konti
 what-to-do-blurb-1 =
     Kan du ikke logge ind? Kontakt webstedet og spørg, hvordan du kan få en ny adgangskode eller hvordan du kan lukke kontoen. 

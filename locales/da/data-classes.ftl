@@ -91,6 +91,7 @@ recovery-email-addresses = Mailadresser til gendannelse
 relationship-statuses = Parforholds-status
 religions = Religioner
 reward-program-balances = Saldo for loyalitetsprogrammer
+salutations = Hilsener
 school-grades-class-levels = Skole-karakterer (klasse-niveauer)
 security-questions-and-answers = Sikkerhedsspørgsmål og -svar
 sexual-fetishes = Seksuelle feticher
