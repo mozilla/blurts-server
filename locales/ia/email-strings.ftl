@@ -47,5 +47,17 @@ report-pwt-summary-3 =
     Le sitos web non verifica que tu responsas es accurate, ma solo que illos concorda sempre.
     Crea responsas longe, aleatori e reserva los in qualque loco secur.
 report-pwt-headline-4 = Usa le gestor de contrasigno
+report-pwt-summary-4 =
+    Servicios como 1Password, LastPass, Dashlane, e Bitwarden genera contrasignos forte, reserva los con securitate,
+    e stipa los in sitos web assi que tu non ha a rememorar cata singule uno.
 # A link to legal information about mozilla products.
 legal = Legal
+# Share Firefox Monitor by email subject line
+share-by-email-subject = Vide si tu ha essite parte de un violation de datos.
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    Holla,
+    { -brand-name } ha un servicio libere ubi tu pote verificar si tu ha essite parte de un violation de datos. Ecce como illo functiona:
+    1. Va a { "https://monitor.firefox.com" } e cerca tu email.
+    2. Vide si tu contos online ha essite exponite in un violation de datos.
+    3. Recipe le suggestiones ex { -product-name } re que facer successivemente.
