@@ -31,7 +31,21 @@ report-subhead-no-breaches =
 report-subhead-found-breaches = Ecce tu reporto plen de Firefox Monitor, que include tote le note violationes de datos que contine iste adresse de email.
 breach-alert-headline = Tu conto ha essite implicate in un violation de datos.
 breach-alert-subhead = Un violation de datos recentemente reportate contine tu email e le sequente datos
+report-pwt-blurb =
+    Contrasignos es assi preciose que milles de illos es robate cata die e excambiate o vendite sur le mercato nigre.
+    Le contrasignos plus forte protege tu contos e tote le informationes personal que demora intra illos.
+report-pwt-headline-1 = Usa un contrasigno differente pro cata conto
+report-pwt-summary-1 =
+    Reusar identic contrasigno ubique aperi le porta al hackers.
+    Illes pote usar ille contrasigno pro acceder a tu altere contos.
 report-pwt-headline-2 = Crea contrasignos forte e unic
+report-pwt-summary-2 =
+    Le hackers usa listas de commun contrasignos pro provar a divinar illos tue.
+    Plus longe e plus aleatori es tu contrasigno, plus difficile illo sera a robar.
+report-pwt-headline-3 = Tracta le questiones de securitate como contrasignos extra
+report-pwt-summary-3 =
+    Le sitos web non verifica que tu responsas es accurate, ma solo que illos concorda sempre.
+    Crea responsas longe, aleatori e reserva los in qualque loco secur.
 report-pwt-headline-4 = Usa le gestor de contrasigno
 # A link to legal information about mozilla products.
 legal = Legal
