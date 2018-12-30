@@ -44,6 +44,7 @@ user-unsubscribed-title = { -product-name } : Afmeldt
 
 pwt-section-headline = Stærkere adgangskoder = Bedre beskyttelse
 pwt-section-subhead = Dine private oplysninger er kun så sikre som dine adgangskoder.
+pwt-section-blurb = Dine adgangskoder giver adgang til mere end dine konti. De giver adgang til alle de personlige oplysninger, kontoen indeholder. Hackere udnytter folks dårlige vaner, som når man bruger adgangskoder, der er for nemme at gætte (hvor mange har fx brugt "123456"?), eller når man genbruger den samme adgangskode alle steder. Genbruger man en adgangskode, skal hackeren kun skaffe sig adgang til én konto for at få adgang flere konti. Men der er mange ting, du kan gøre for at beskytte dine konti bedre.
 pwt-headline-1 = Benyt forskellige adgangskoder til forskellige konti
 pwt-summary-1 =
     Hvis du genbruger den samme adgangskode overalt, åbner du en ladeport for identitetstyveri. 
@@ -86,7 +87,7 @@ download-firefox-bar-link = Hent { -brand-name } nu
 download-firefox-banner-blurb = Tag kontrollen over din browser
 download-firefox-banner-button = Hent { -brand-name }
 signup-modal-headline = Tilmeld dig { -product-name-nowrap }
-signup-modal-blurb = Tilmeld dig for at se den fulde rapport, få advarsler om nye data-lækager og for at få tips om sikkerhed fra { -product-name-nowrap }.
+signup-modal-blurb = Tilmeld dig for at se den fulde rapport, få advarsler om nye datalæk og for at få tips om sikkerhed fra { -product-name-nowrap }.
 signup-modal-close = Luk
 get-your-report = Få din rapport
 signup-modal-verify-headline = Bekræft din tilmelding
@@ -115,14 +116,14 @@ featured-breach-results =
 featured-breach-not-compromised =
     { $breachCount ->
         [0] { no-breaches }
-        [one] Din konto optræder ikke i datalækagen <span class="bold">{ $featuredBreach }</span>, men findes i en anden datalækage.
-       *[other] Din konto optræder ikke i datalækagen <span class="bold">{ $featuredBreach }</span>, men findes i { $breachCount } andre datalækager.
+        [one] Din konto optræder ikke i datalækken <span class="bold">{ $featuredBreach }</span>, men findes i en anden datalækage.
+       *[other] Din konto optræder ikke i datalækken <span class="bold">{ $featuredBreach }</span>, men findes i { $breachCount } andre datalækager.
     }
 scan-results =
     { $breachCount ->
         [0] { no-breaches }
-        [one] Din konto optræder i { $breachCount } datalækage.
-       *[other] Konti associeret med din mailadresse optræder i de følgende { $breachCount } datalækager.
+        [one] Din konto optræder i { $breachCount } datalæk.
+       *[other] Konti associeret med din mailadresse optræder i de følgende { $breachCount } datalæk.
     }
 show-more-breaches = Vis flere
 what-to-do-subhead-1 = Skift dine adgangskoder, selv for gamle konti
@@ -138,16 +139,16 @@ what-to-do-subhead-3 = Tag ekstra forholdsregler for at sikre dine bankkonti
 what-to-do-subhead-4 = Få hjælp til at lave gode adgangskoder og til at opbevare dem sikkert.
 what-to-do-blurb-4 = Der findes software, der kan hjælpe dig med at oprette sikre adgangskoder, opbevare dem sikkert og lade dig sætte dem automatisk ind på websteder. Eksempler er 1Password, LastPass, Dashlane og Bitwarden.
 # breach-date = the calendar date a particular data theft occurred. 
-breach-date = Dato for datalækage:
+breach-date = Dato for datalæk:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Kompromitterede konti:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Kompromitterede data:
 confirmed = Bekræftet!<br />Du er nu tilmeldt!
-confirmed-blurb = { -product-name-nowrap } sender dig snart en mail med en fuldstændig rapport. Du får også tilsendt en mail, hvis din konto optræder i nye datalækager.
-confirmed-social-blurb = Hvis din konto har været involveret i en datalækage, så er der stor risiko for, at dine venner, net-bekendtskaber og din familie også er blevet ramt. Fortæl dem om { -product-name-nowrap }.
+confirmed-blurb = { -product-name-nowrap } sender dig snart en mail med en fuldstændig rapport. Du får også tilsendt en mail, hvis din konto optræder i nye datalæk.
+confirmed-social-blurb = Hvis din konto har været involveret i en datalæk, så er der stor risiko for, at dine venner, net-bekendtskaber og din familie også er blevet ramt. Fortæl dem om { -product-name-nowrap }.
 unsub-headline = Afmeld { -product-name-nowrap }
-unsub-blurb = Dette vil fjerne din mailadresse fra { -product-name-nowrap }s database, og du vil ikke længere modtage advarsler, når nye datalækager opdages.
+unsub-blurb = Dette vil fjerne din mailadresse fra { -product-name-nowrap }s database, og du vil ikke længere modtage advarsler, når nye datalæk opdages.
 unsub-button = Stop abonnement
 unsub-survey-headline = Du er ikke længere tilmeldt.
 unsub-survey-blurb =
@@ -177,9 +178,11 @@ beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 copyright-info =
     Dele af dette indhold er  &#x24B8; 1998-2018 af individuelle bidragsydere til mozilla.org. <br/>
     Indholdet er tilgængeligt under en  <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons-licens</a>.
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Information om datalæk stammer fra { $hibp-link }
 confirmation-headline = Din { -product-name }-rapport er på vej.
 share-email = Mailadresse
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Andre
-share-facebook-headline = Find ud af, om du er blevet udsat for en datalækage.
-og-site-description = Brug { -product-name } til at finde ud af, om du er blevet ramt af en datalækage. Tilmeld dig for at få advarsler om nye datalækager og få tips til at beskytte dine konti.
+share-facebook-headline = Find ud af, om du er blevet udsat for en datalæk.
+og-site-description = Brug { -product-name } til at finde ud af, om du er blevet ramt af en datalæk. Tilmeld dig for at få advarsler om nye datalæk og få tips til at beskytte dine konti.

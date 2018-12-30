@@ -14,22 +14,22 @@ firefox-monitor-report = { -product-name }-rapport
 report-date = Dato for rapport:
 email-address = Mailadresse:
 # "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Her er din komplette { -product-name }-rapport. Den indeholder alle kendte data-lækager, der indeholder denne mailadresse.
+your-full-report = Her er din komplette { -product-name }-rapport. Den indeholder alle kendte datalæk, der indeholder denne mailadresse.
 report-no-breaches =
-    Din mailadresse optræder ikke i vores database over kendte lækager. 
-    Men lækager kan ske når som helst. Tag disse forholdsregler for at sikre, at dine personlige data er sikre på nettet.
+    Din mailadresse optræder ikke i vores database over kendte læk af data. 
+    Men datalæk kan ske når som helst. Tag disse forholdsregler for at sikre, at dine personlige data er sikre på nettet.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Næste skridt
 report-headline =
     { $breachCount ->
-        [one] Din konto optræder i { $breachCount } lækage.
-       *[other] Dine konti optræder i { $breachCount } lækager.
+        [one] Din konto optræder i { $breachCount } læk.
+       *[other] Dine konti optræder i { $breachCount } læk.
     }
 report-subhead-no-breaches =
-    Din konto optræder ikke i nogen af vores rapporter over lækager.
+    Din konto optræder ikke i nogen af vores rapporter over læk af data.
     Det er godt nyt, men der er mere, du kan gøre. 
-    Data-lækager kan ske når som helst, så læs videre for at lære, hvad du kan gøre for at beskytte dine adgangskoder.
-report-subhead-found-breaches = Her er din komplette Firefox Monitor-rapport. Den indeholder alle kendte data-lækager, der indeholder denne mailadresse.
-breach-alert-headline = Din konto er blevet kompromitteret i en data-lækage.
+    Datalæk kan ske når som helst, så læs videre for at lære, hvad du kan gøre for at beskytte dine adgangskoder.
+report-subhead-found-breaches = Her er din komplette Firefox Monitor-rapport. Den indeholder alle kendte datalæk, der indeholder denne mailadresse.
+breach-alert-headline = Din konto er blevet kompromitteret i en datalæk.
 # A link to legal information about mozilla products.
 legal = Juridisk
