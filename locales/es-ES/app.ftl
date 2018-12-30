@@ -30,6 +30,7 @@ scan-title = { -product-name } : Resultados del análisis
 user-add-invalid-email = Correo electrónico no válido
 user-add-email-verify-subject = Verifica tu suscripción a { -product-name }.
 user-add-title = { -product-name } : Confirmar correo electrónico
+error-headline = Error
 user-verify-token-error = Se requiere un token de verificación.
 user-verify-email-report-subject = Tu informe de { -product-name }
 user-verify-title = { -product-name } : Suscrito
@@ -182,3 +183,12 @@ copyright-info =
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Filtración de datos proporcionada por { $hibp-link }
 site-description = ¿Se han filtrado o robado tus cuentas en una filtración de datos? Descúbrelo en { -product-name }. Busca en nuestra base de datos y date de alta para recibir alertas.
+confirmation-headline = Tu informe de { -product-name } está en camino.
+confirmation-blurb = Las filtraciones de datos pueden afectar a cualquiera. Corre la voz para que tus amigos y familiares puedan revisar si sus cuentas en línea están seguras.
+share-email = Correo electrónico
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Otros
+share-twitter = La mayoría de la gente tiene alrededor de 100 cuentas en línea. ¿Alguna de las tuyas fue expuesta en una filtración de datos? Descúbrelo.
+share-facebook-headline = Comprueba si has sido parte de una filtración de datos
+share-facebook-blurb = ¿Tus cuentas en línea han sido expuestas en una filtración de datos?
+og-site-description = Descubre si has sido parte de una filtración de datos con { -product-name }. Regístrate para recibir alertas de futuras filtraciones y consejos para mantener tus cuentas seguras.
