@@ -18,6 +18,19 @@ your-full-report = Ecce tu plen reporto de { -product-name }, que include tote l
 report-no-breaches = Tu adresse de email non appareva in nostre base de datos del violationes note. Ma le violationes pote evenir in ulle tempore. Prende iste grados pro mantener tu datos personal secur online.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Que facer postea
+report-headline =
+    { $breachCount ->
+        [0] Usque ora, toto bon.
+        [one] Tu conto appareva in { $breachCount } violation.
+       *[other] Tu contos appareva in { $breachCount } violationes.
+    }
+report-subhead-no-breaches =
+    Tu conto non appare in nostre reporto plen del violationes. 
+    Illo es bon novas, ma il ha plus que tu pote facer.
+    Le violationes de datos eveni sempre, assi lege pro apprender como pote tu proteger tu contrasignos.
+report-subhead-found-breaches = Ecce tu reporto plen de Firefox Monitor, que include tote le note violationes de datos que contine iste adresse de email.
+breach-alert-headline = Tu conto ha essite implicate in un violation de datos.
+breach-alert-subhead = Un violation de datos recentemente reportate contine tu email e le sequente datos
 report-pwt-headline-2 = Crea contrasignos forte e unic
 report-pwt-headline-4 = Usa le gestor de contrasigno
 # A link to legal information about mozilla products.
