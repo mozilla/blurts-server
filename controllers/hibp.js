@@ -8,10 +8,11 @@ const EmailUtils = require("../email-utils");
 const HIBP = require("../hibp");
 const { LocaleUtils } = require ("../locale-utils");
 const HBSHelpers = require("../hbs-helpers");
+const BreachLogos = require("../breach-logos");
+
 const mozlog = require("../log");
-
-
 const log = mozlog("controllers.hibp");
+const fs = require("fs");
 
 
 async function notify (req, res) {
@@ -36,6 +37,17 @@ async function notify (req, res) {
       throw new Error("Unrecognized breach: " + reqBreachName);
     }
   }
+  // If we don't have a logo of the breach, get the logo.
+  if (!fs.existsSync(`./public/img/logos/${breachAlert.LogoPath}`)) {
+    try {
+      await BreachLogos.downloadLogo(breachAlert.LogoPath);
+    } catch(err) {
+      // Set LogoPath to missing-logo-icon.png if download fails
+      // LogoPath will reset when the server restarts
+      breachAlert.LogoPath = "missing-logo-icon.png";
+      log.error(`Unable to download logo for ${breachAlert.LogoPath}.`);
+    }
+  }
 
   if (breachAlert.IsSpamList || breachAlert.Domain === "" || breachAlert.IsFabricated || !breachAlert.IsVerified) {
     log.info(`${breachAlert.Name} is fabricated, a spam list, not associated with a website, or unverified. \n Breach Alert not sent.`);
@@ -46,7 +58,6 @@ async function notify (req, res) {
 
   const hashes = req.body.hashSuffixes.map(suffix=>reqHashPrefix + suffix.toLowerCase());
   const subscribers = await DB.getSubscribersByHashes(hashes);
-
 
   log.info("notification", { length: subscribers.length, breachAlertName: breachAlert.Name });
 
