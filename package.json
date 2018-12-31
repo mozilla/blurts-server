@@ -46,6 +46,8 @@
     "eslint-plugin-node": "^6.0.1",
     "faucet": "^0.0.1",
     "htmllint-cli": "^0.0.6",
+    "imagemin": "^6.1.0",
+    "imagemin-pngquant": "^6.0.1",
     "jest": "^23.5.0",
     "jest-tap-reporter": "^1.9.0",
     "node-mocks-http": "^1.7.0",
