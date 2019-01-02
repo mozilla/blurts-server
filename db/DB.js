@@ -62,6 +62,7 @@ const DB = {
     return verifiedSubscriber[0];
   },
 
+  // TODO: refactor into an upsert? https://jaketrent.com/post/upsert-knexjs/
   // Used internally, ideally should not be called by consumers.
   async _getSha1EntryAndDo(sha1, aFoundCallback, aNotFoundCallback) {
     const existingEntries = await knex("subscribers")
@@ -78,27 +79,31 @@ const DB = {
 
   // Used internally.
   async _addEmailHash(sha1, email, verified = false) {
-    return await this._getSha1EntryAndDo(sha1, async aEntry => {
-      // Entry existed, patch the email value if supplied.
-      if (email) {
+    try {
+      return await this._getSha1EntryAndDo(sha1, async aEntry => {
+        // Entry existed, patch the email value if supplied.
+        if (email) {
+          const res = await knex("subscribers")
+            .update({
+              email,
+              verified,
+              updated_at: knex.fn.now(),
+            })
+            .where("id", "=", aEntry.id)
+            .returning("*");
+          return res[0];
+        }
+
+        return aEntry;
+      }, async () => {
         const res = await knex("subscribers")
-          .update({
-            email,
-            verified,
-            updated_at: knex.fn.now(),
-          })
-          .where("id", "=", aEntry.id)
+          .insert({ sha1, email, verified })
           .returning("*");
         return res[0];
-      }
-
-      return aEntry;
-    }, async () => {
-      const res = await knex("subscribers")
-        .insert({ sha1, email, verified })
-        .returning("*");
-      return res[0];
-    });
+      });
+    } catch (e) {
+      throw new FluentError("error-could-not-add-email");
+    }
   },
 
   /**
@@ -115,7 +120,7 @@ const DB = {
   async addSubscriber(email, fxaRefreshToken=null, fxaProfileData=null) {
     const emailHash = await this._addEmailHash(getSha1(email), email, true);
     const verified = await this._verifySubscriber(emailHash);
-    const verifiedSubscriber = verified[0];
+    const verifiedSubscriber = Array.isArray(verified) ? verified[0] : null;
     if (fxaRefreshToken || fxaProfileData) {
       return this._updateFxAData(verifiedSubscriber, fxaRefreshToken, fxaProfileData);
     }
