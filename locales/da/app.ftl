@@ -187,6 +187,7 @@ copyright-info =
 hibp-attribution = Information om datalæk stammer fra { $hibp-link }
 site-description = Er dine konti blevet lækket eller stjålet i en datalæk? Find ud af det med { -product-name }. Søg i vores database, og tilmeld dig for at modtage advarsler.
 confirmation-headline = Din { -product-name }-rapport er på vej.
+confirmation-blurb = Datalæk kan ramme alle. Spred budskabet, så dine venner og din familie kan finde ud af, om deres konti er i sikkerhed.
 share-email = Mailadresse
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Andre
