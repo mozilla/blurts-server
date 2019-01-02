@@ -17,6 +17,7 @@ about-firefox-alerts = Acerca dos alertas do Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Dar feedback
 terms-and-privacy = Termos e privacidade
+error-could-not-add-email = Não foi possível adicionar o endereço de email para a base de dados.
 error-not-subscribed = Este endereço de email não está subscrito no { -product-name }.
 error-hibp-throttled = Demasiadas ligações para { -brand-HIBP }.
 error-hibp-connect = Erro ao ligar-se a { -brand-HIBP }.
