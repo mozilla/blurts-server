@@ -3,6 +3,10 @@
 const got = require("got");
 
 const AppConstants = require("./app-constants");
+const mozlog = require("./log");
+
+
+const log = mozlog("basket");
 
 
 const Basket = {
@@ -21,9 +25,15 @@ const Basket = {
       form: true,
       body: params,
     };
-    await got(url, reqOptions);
+
+    try {
+      await got(url, reqOptions);
+    } catch (e) {
+      log.error("subscribe", {stack: e.stack});
+    }
   },
 
 };
+
 
 module.exports = Basket;

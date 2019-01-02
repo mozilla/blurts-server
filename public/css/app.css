@@ -234,6 +234,7 @@ form,
   width: 100%;
 }
 
+.modal-container.fxa-enabled .modal-content-wrap button,
 button.internal-link,
 button.close-modal,
 input.transparent-button,
@@ -969,6 +970,19 @@ body.show-subscribe-modal .modal-container {
   position: relative;
 }
 
+.modal-container.fxa-enabled .modal-content-wrap {
+  min-height: 200px;
+}
+
+.modal-container.fxa-enabled .modal-content-wrap .blue-button {
+  margin-top: var(--columnSpacing);
+}
+
+.modal-container.fxa-enabled .modal-content-wrap .blue-button,
+.modal-container.fxa-enabled .modal-content-wrap .internal-link {
+  margin-bottom: 0;
+}
+
 .modal-content h3,
 .modal-content p,
 .modal-content label,
@@ -1674,6 +1688,7 @@ form.show-thankyou span.thank-you-message {
     max-width: 100%;
   }
 
+  .modal-container.fxa-enabled .modal-content-wrap button,
   button.internal-link,
   button.close-modal,
   input.transparent-button,
@@ -1840,6 +1855,7 @@ form.show-thankyou span.thank-you-message {
     --gap: 15px;
   }
 
+  .modal-container.fxa-enabled .modal-content-wrap button,
   .radio-button-group label,
   button.internal-link,
   input.transparent-button,

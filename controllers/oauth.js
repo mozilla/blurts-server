@@ -1,4 +1,5 @@
 "use strict";
+const { URL } = require("url");
 
 const ClientOAuth2 = require("client-oauth2");
 const crypto = require("crypto");
@@ -6,8 +7,15 @@ const got = require("got");
 
 const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
+const EmailUtils = require("../email-utils");
 const { FluentError } = require("../locale-utils");
+const HBSHelpers = require("../hbs-helpers");
+const HIBP = require("../hibp");
+const mozlog = require("../log");
+const sha1 = require("../sha1-utils");
 
+
+const log = mozlog("controllers.oauth");
 
 // This object exists instead of inlining the env vars to make it easy
 // to abstract fetching API endpoints from the OAuth server (instead
@@ -24,17 +32,17 @@ const FxAOAuthClient = new ClientOAuth2({
   accessTokenUri: FxAOAuthUtils.tokenUri,
   authorizationUri: FxAOAuthUtils.authorizationUri,
   redirectUri: AppConstants.SERVER_URL + "/oauth/confirmed",
-  scopes: ["profile:email"],
+  scopes: ["profile"],
 });
-
 
 function init(req, res, next, client = FxAOAuthClient) {
   // Set a random state string in a cookie so that we can verify
   // the user when they're redirected back to us after auth.
   const state = crypto.randomBytes(40).toString("hex");
-  const uri = client.code.getUri({state});
   req.session.state = state;
-  res.redirect(uri);
+  const url = new URL(client.code.getUri({state}));
+  url.searchParams.append("access_type", "offline");
+  res.redirect(url);
 }
 
 
@@ -44,18 +52,49 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
   }
 
   const fxaUser = await client.code.getToken(req.originalUrl, { state: req.session.state });
+  log.debug("fxa-confirmed-fxaUser", fxaUser);
   const data = await got(FxAOAuthUtils.profileUri,
     {
     headers: {
       Authorization: `Bearer ${fxaUser.accessToken}`,
     },
   });
+  log.debug("fxa-confirmed-profile-data", data.body);
   const email = JSON.parse(data.body).email;
-  await DB.addSubscriber(email);
+  await DB.addSubscriber(email, fxaUser.refreshToken, data.body);
 
-  res.render("confirm", {
-    title: req.fluentFormat("oauth-confirmed-title"),
-    email: email,
+  const unsubscribeUrl = ""; // not totally sure yet how this gets handled long-term
+
+  // duping some of user/verify for now
+  let unsafeBreachesForEmail = [];
+
+  unsafeBreachesForEmail = await HIBP.getBreachesForEmail(
+    sha1(email),
+    req.app.locals.breaches,
+    true,
+  );
+
+  await EmailUtils.sendEmail(
+    email,
+    req.fluentFormat("user-verify-email-report-subject"),
+    "default_email",
+    {
+      supportedLocales: req.supportedLocales,
+      email: email,
+      date: HBSHelpers.prettyDate(req.supportedLocales, new Date()),
+      unsafeBreachesForEmail: unsafeBreachesForEmail,
+      unsubscribeUrl: unsubscribeUrl,
+      buttonValue: req.fluentFormat("report-scan-another-email"),
+      whichView: "email_partials/report",
+    }
+  );
+
+  res.render("subpage", {
+    headline: req.fluentFormat("confirmation-headline"),
+    subhead: req.fluentFormat("confirmation-blurb"),
+    title: req.fluentFormat("user-verify-title"),
+    whichPartial: "subpages/confirm",
+    emailLinks: EmailUtils.getShareByEmail(req),
   });
 }
 

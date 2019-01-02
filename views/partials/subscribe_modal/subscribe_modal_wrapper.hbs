@@ -1,4 +1,6 @@
-<section id="subscribe-modal" class="modal-container">
-  {{> subscribe_modal/confirm_your_account}}
+<section id="subscribe-modal" class="modal-container {{#if FXA_ENABLED}}fxa-enabled{{/if}}">
+  {{#unless FXA_ENABLED}}
+    {{> subscribe_modal/confirm_your_account}}
+  {{/unless}}
   {{> subscribe_modal/subscribe_to_ffxm}}
 </section>

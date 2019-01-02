@@ -63,6 +63,13 @@ test("verifyEmailHash accepts token and returns verified subscriber", async () =
 });
 
 
+test("addSubscriber invalid argument", async () => {
+  const testEmail = "test".repeat(255);
+
+  await expect(DB.addSubscriber(testEmail)).rejects.toThrow("error-could-not-add-email");
+});
+
+
 test("addSubscriber accepts email and returns verified subscriber", async () => {
   const testEmail = "newFirefoxAccount@test.com";
 
