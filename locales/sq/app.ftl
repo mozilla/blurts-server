@@ -17,6 +17,7 @@ about-firefox-alerts = Mbi Sinjalizimet Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Jepni Përshtypjet
 terms-and-privacy = Kushte dhe Privatësi
+error-could-not-add-email = S’u shtua dot adresë email te baza e të dhënave.
 error-not-subscribed = Kjo adresë email s’është e pajtuar te { -product-name }.
 error-hibp-throttled = Shumë lidhje me { -brand-HIBP }.
 error-hibp-connect = Gabim në lidhjen me { -brand-HIBP }.
@@ -81,6 +82,7 @@ scan-privacy = Email-i juaj nuk do të depozitohet.
 scan-submit = Kërkoni Për Email-in Tuaj
 scan-another-email = Skanoni Një Tjetër Adresë Email
 scan-featuredbreach-label = Shihni nëse llogaria juaj <span class="bold"> { $featuredBreach } </span> qe komprometuar.
+sensitive-breach-email-required = Cenimi përmban të dhëna me spec. Lypset verifikim email-i.
 scan-error = Duhet të jetë një email i vlefshëm.
 signup-banner-headline = { -product-name-nowrap } zbulon rreziqe kundër llogarive tuaja internetore.
 signup-banner-blurb =
@@ -190,6 +192,12 @@ copyright-info =
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Të dhëna shkeljesh furnizuar nga { $hibp-link }
 site-description = A ka rrjedhje nga llogaritë tuaja apo janë vjedhur gjatë një shkeljeje të dhënash? Gjejeni te { -product-name }. Kërkoni në bazën tonë të të dhënave dhe regjistrohuni për sinjalizime.
+confirmation-headline = Raporti juaj rreth { -product-name } po vjen.
+confirmation-blurb = Cenimi i të dhënave mund të prekë këdo. Tregojuani të tjerëve, që shokët dhe familja të mund të kontrollojnë për të parë nëse llogaritë e tyre internetore janë të parrezikuara.
 share-email = Email
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Tjetër
+share-twitter = Shumica e njerëzve kanë rreth 100 llogari internetore. A është ekspozuar ndonjëra nga tuajat në shkelje të dhënash? Shiheni.
+share-facebook-headline = Shihni nëse keni qenë viktimë e ndonjë shkeljeje të dhënash
+share-facebook-blurb = Keni llogari internetore që kanë qenë ekspozuar në shkelje të dhënash?
+og-site-description = Shihni nëse keni qenë pjesë e ndonjë shkeljeje të dhënash, përmes { -product-name }. Regjistrohuni për sinjalizime rreth shkeljesh në të ardhmen dhe merrni ndihmëza si t’i mbani llogaritë tuaja të parrezikuara.
