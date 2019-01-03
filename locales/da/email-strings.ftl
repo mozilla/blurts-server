@@ -46,6 +46,6 @@ report-pwt-summary-3 =
     Sørg for at have lange, tilfældige svar, og sørg for at gemme svarene et sikkert sted.
 report-pwt-summary-4 =
     Tjenester som 1Password, LastPass, Dashlane og Bitwarden opretter stærke adgangskoder, gemmer dem sikkert,
-    og udfylder dem på hjemmesider, så du ikke behøver at huske hver eneste adgangskode.
+    og udfylder dem på webesider, så du ikke behøver at huske hver eneste adgangskode.
 # A link to legal information about mozilla products.
 legal = Juridisk
