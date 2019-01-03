@@ -31,5 +31,21 @@ report-subhead-no-breaches =
     Datalæk kan ske når som helst, så læs videre for at lære, hvad du kan gøre for at beskytte dine adgangskoder.
 report-subhead-found-breaches = Her er din komplette Firefox Monitor-rapport. Den indeholder alle kendte datalæk, der indeholder denne mailadresse.
 breach-alert-headline = Din konto er blevet kompromitteret i en datalæk.
+report-pwt-blurb = Adgangskoder er så værdifulde, at tusindvis af adgangskoder stjæles hver dag og sælges eller byttes på det sorte marked. Stærkere adgangskoder beskytter dine konti og al personlig information, der findes i dem.
+report-pwt-headline-1 = Brug en ny adgangskode for hver konto
+report-pwt-summary-1 =
+    At anvende samme adgangskode overalt er at åbne døren for hackere. 
+    De kan nemlig anvende adgangskoden til at logge ind på alle dine konti.
+report-pwt-headline-2 = Opret stærke, unikke adgangskoder
+report-pwt-summary-2 =
+    Hackers gør brug af lister med almindelige adgangskoder til at gætte din adgangskode.
+    Jo længere og jo mere tilfældig din adgangskode er, jo sværere er den at stjæle.
+report-pwt-headline-3 = Behandl sikkerheds-spørgsmål som ekstra adgangskoder
+report-pwt-summary-3 =
+    Websteder kontrollerer ikke, om dine svar er korrekte - kun om de stemmer hver gang.
+    Sørg for at have lange, tilfældige svar, og sørg for at gemme svarene et sikkert sted.
+report-pwt-summary-4 =
+    Tjenester som 1Password, LastPass, Dashlane og Bitwarden opretter stærke adgangskoder, gemmer dem sikkert,
+    og udfylder dem på hjemmesider, så du ikke behøver at huske hver eneste adgangskode.
 # A link to legal information about mozilla products.
 legal = Juridisk

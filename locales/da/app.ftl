@@ -17,6 +17,7 @@ about-firefox-alerts = Om advarsler i Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Giv feedback
 terms-and-privacy = Vilkår og beskyttelse af personlige oplysninger
+error-could-not-add-email = Kunne ikke tilføje mailadressen til databasen.
 error-not-subscribed = Denne mailadresse er ikke tilmeldt { -product-name }.
 error-hibp-throttled = For mange forbindelser til { -brand-HIBP }.
 error-hibp-connect = Kan ikke forbinde til { -brand-HIBP }.

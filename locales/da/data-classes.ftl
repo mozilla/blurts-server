@@ -46,6 +46,7 @@ financial-transactions = Finansielle transaktioner
 fitness-levels = Konditions-niveauer
 genders = Køn
 geographic-locations = Geografiske placeringer
+government-issued-ids = ID-kort udstedt af regeringer
 health-insurance-information = Information om sundhedsforsikringer
 historical-passwords = Tidligere adgangskoder
 home-loan-information = Information om boliglån
