@@ -17,6 +17,7 @@ about-firefox-alerts = Ynghylch rhybuddion Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Rhoi Adborth
 terms-and-privacy = Telerau a Phreifatrwydd
+error-could-not-add-email = Methu ychwanegu cyfeiriad e-bost i gronfa ddata.
 error-not-subscribed = Nid yw'r cyfeiriad e-bost hwn wedi'i danysgrifio i { -product-name }.
 error-hibp-throttled = Gormod o gysylltiadau i { -brand-HIBP }.
 error-hibp-connect = Gwall wrth gysylltu i { -brand-HIBP }.
