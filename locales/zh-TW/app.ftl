@@ -17,6 +17,7 @@ about-firefox-alerts = 關於 Firefox 警報
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = 提供意見回饋
 terms-and-privacy = 使用條款及隱私權
+error-could-not-add-email = 無法將電子郵件地址新增到資料庫。
 error-not-subscribed = 此電子郵件地址未訂閱 { -product-name }。
 error-hibp-throttled = 與 { -brand-HIBP } 的連線太多。
 error-hibp-connect = 連線到 { -brand-HIBP } 時發生錯誤。
