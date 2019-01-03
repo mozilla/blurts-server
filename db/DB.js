@@ -78,7 +78,7 @@ const DB = {
   },
 
   // Used internally.
-  async _addEmailHash(sha1, email, verified = false) {
+  async _addEmailHash(sha1, email, signup_language, verified = false) {
     try {
       return await this._getSha1EntryAndDo(sha1, async aEntry => {
         // Entry existed, patch the email value if supplied.
@@ -97,7 +97,7 @@ const DB = {
         return aEntry;
       }, async () => {
         const res = await knex("subscribers")
-          .insert({ sha1, email, verified })
+          .insert({ sha1, email, signup_language, verified })
           .returning("*");
         return res[0];
       });
@@ -117,8 +117,8 @@ const DB = {
    * @param {string} fxaProfileData from Firefox Account
    * @returns {object} subscriber knex object added to DB
    */
-  async addSubscriber(email, fxaRefreshToken=null, fxaProfileData=null) {
-    const emailHash = await this._addEmailHash(getSha1(email), email, true);
+  async addSubscriber(email, signupLanguage, fxaRefreshToken=null, fxaProfileData=null) {
+    const emailHash = await this._addEmailHash(getSha1(email), email, signupLanguage, true);
     const verified = await this._verifySubscriber(emailHash);
     const verifiedSubscriber = Array.isArray(verified) ? verified[0] : null;
     if (fxaRefreshToken || fxaProfileData) {

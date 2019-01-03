@@ -30,12 +30,14 @@ test("init request sets session cookie and redirects with access_type=offline", 
 });
 
 
-test("confirmed request checks session cookie, calls FXA for token and email, adds subscriber, and renders", async () => {
+test("confirmed request checks session cookie, calls FXA for token and email, adds subscriber with signup language, and renders", async () => {
   const testFxAEmail = "fxa@test.com";
+  const userAddLanguages = "en-US,en;q=0.5";
   EmailUtils.sendEmail = jest.fn();
   // Mock the getToken, got, and render calls
   const mockRequest = {
     app: { locals: { breaches: testBreaches } },
+    headers: { "accept-language": userAddLanguages },
     fluentFormat: jest.fn(),
     session: { state: { } },
     originalUrl: "",
@@ -56,6 +58,7 @@ test("confirmed request checks session cookie, calls FXA for token and email, ad
   const subscribers = await DB.getSubscribersByHashes([getSha1(testFxAEmail)]);
   expect(subscribers[0].verified).toBeTruthy();
   expect(subscribers[0].email).toBe(testFxAEmail);
+  expect(subscribers[0].signup_language).toBe(userAddLanguages);
 
   const mockRenderCallArgs = mockResponse.render.mock.calls[0];
   expect(mockRenderCallArgs[0]).toBe("subpage");
