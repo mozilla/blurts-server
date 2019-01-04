@@ -17,6 +17,7 @@ about-firefox-alerts = O upozorneniach vo Firefoxe
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Poskytnúť spätnú väzbu
 terms-and-privacy = Podmienky a ochrana súkromia
+error-could-not-add-email = E-mailovú adresu sa nepodarilo pridať do databázy.
 error-not-subscribed = Táto e-mailová adresa nie je prihlásená na odber zo služby { -product-name }.
 error-hibp-throttled = Príliš mnoho spojení k službe { -brand-HIBP }.
 error-hibp-connect = Chyba pri pripájaní k { -brand-HIBP }.
