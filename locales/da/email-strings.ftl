@@ -48,7 +48,7 @@ report-pwt-summary-3 =
 report-pwt-headline-4 = Brug et program til håndtering af adgangskoder
 report-pwt-summary-4 =
     Tjenester som 1Password, LastPass, Dashlane og Bitwarden opretter stærke adgangskoder, gemmer dem sikkert,
-    og udfylder dem på webesider, så du ikke behøver at huske hver eneste adgangskode.
+    og udfylder dem på websider, så du ikke behøver at huske hver eneste adgangskode.
 # A link to legal information about mozilla products.
 legal = Juridisk
 # Share Firefox Monitor by email subject line
