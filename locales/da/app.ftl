@@ -113,21 +113,21 @@ no-breaches =
     Tilmeld dig { -product-name-nowrap } for at få en fuldstændig rapport, advarsler om nye datalæk samt tips til at beskytte dine adgangskoder.
 featured-breach-results =
     { $breachCount ->
-        [0] Din konto optræder i datalækken <span class="bold">{ $featuredBreach }</span>, men ikke i andre kendte datalækker.
+        [0] Din konto optræder i datalækken <span class="bold">{ $featuredBreach }</span>, men ikke i andre kendte datalæk.
         [one] Din konto optræder i datalækken <span class="bold">{ $featuredBreach }</span> samt en anden datalæk.
-       *[other] Din konto optræder i datalækken <span class="bold">{ $featuredBreach }</span> samt i { $breachCount } andre datalækker.
+       *[other] Din konto optræder i datalækken <span class="bold">{ $featuredBreach }</span> samt i { $breachCount } andre datalæk.
     }
 featured-breach-not-compromised =
     { $breachCount ->
         [0] { no-breaches }
         [one] Din konto optræder ikke i datalækken <span class="bold">{ $featuredBreach }</span>, men findes i en anden datalæk.
-       *[other] Din konto optræder ikke i datalækken <span class="bold">{ $featuredBreach }</span>, men findes i { $breachCount } andre datalækker.
+       *[other] Din konto optræder ikke i datalækken <span class="bold">{ $featuredBreach }</span>, men findes i { $breachCount } andre datalæk.
     }
 scan-results =
     { $breachCount ->
         [0] { no-breaches }
         [one] Din konto optræder i { $breachCount } datalæk.
-       *[other] Konti associeret med din mailadresse optræder i de følgende { $breachCount } datalækker.
+       *[other] Konti associeret med din mailadresse optræder i de følgende { $breachCount } datalæk.
     }
 show-more-breaches = Vis flere
 what-to-do-headline = Hvad du skal gøre, når din information er ramt af en datalæk

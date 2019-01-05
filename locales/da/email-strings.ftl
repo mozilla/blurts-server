@@ -23,7 +23,7 @@ what-to-do-next = Næste skridt
 report-headline =
     { $breachCount ->
         [one] Din konto optræder i { $breachCount } datalæk.
-       *[other] Dine konti optræder i { $breachCount } datalækker.
+       *[other] Dine konti optræder i { $breachCount } datalæk.
     }
 report-subhead-no-breaches =
     Din konto optræder ikke i nogen af vores rapporter over læk af data.
@@ -31,6 +31,7 @@ report-subhead-no-breaches =
     Datalæk kan ske når som helst, så læs videre for at lære, hvad du kan gøre for at beskytte dine adgangskoder.
 report-subhead-found-breaches = Her er din komplette Firefox Monitor-rapport. Den indeholder alle kendte datalæk, der indeholder denne mailadresse.
 breach-alert-headline = Din konto er blevet kompromitteret i en datalæk.
+breach-alert-subhead = En nylig rapporteret datalæk indeholder din mailadresse og følgende data
 report-pwt-blurb = Adgangskoder er så værdifulde, at tusindvis af adgangskoder stjæles hver dag og sælges eller byttes på det sorte marked. Stærkere adgangskoder beskytter dine konti og al personlig information, der findes i dem.
 report-pwt-headline-1 = Brug en ny adgangskode for hver konto
 report-pwt-summary-1 =
@@ -44,8 +45,18 @@ report-pwt-headline-3 = Behandl sikkerheds-spørgsmål som ekstra adgangskoder
 report-pwt-summary-3 =
     Websteder kontrollerer ikke, om dine svar er korrekte - kun om de stemmer hver gang.
     Sørg for at have lange, tilfældige svar, og sørg for at gemme svarene et sikkert sted.
+report-pwt-headline-4 = Brug et program til håndtering af adgangskoder
 report-pwt-summary-4 =
     Tjenester som 1Password, LastPass, Dashlane og Bitwarden opretter stærke adgangskoder, gemmer dem sikkert,
     og udfylder dem på webesider, så du ikke behøver at huske hver eneste adgangskode.
 # A link to legal information about mozilla products.
 legal = Juridisk
+# Share Firefox Monitor by email subject line
+share-by-email-subject = Se, om du er omfattet af en datalæk.
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    Hej
+    { -brand-name } har en gratis tjeneste, hvor du kan kontrollere, om du er omfattet af en datalæk. Sådan virker det:
+    1. Gå til { "https://monitor.firefox.com" }, og søg efter din mailadresse.
+    2. Se om dine online-konti er blevet ramt af en datalæk.
+    3. Få tips fra { -product-name } om, hvad du nu skal gøre.
