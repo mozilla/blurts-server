@@ -17,6 +17,7 @@ about-firefox-alerts = Firefox の通知について
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = フィードバックを提供
 terms-and-privacy = 利用規約と個人情報保護方針
+error-could-not-add-email = メールアドレスをデータベースに追加できませんでした。
 error-not-subscribed = このメールアドレスは { -product-name } に登録されていません。
 error-hibp-throttled = { -brand-HIBP } への接続数が多すぎます
 error-hibp-connect = { -brand-HIBP } への接続でエラーが発生しました。
