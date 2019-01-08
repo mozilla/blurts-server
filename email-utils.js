@@ -78,15 +78,26 @@ const EmailUtils = {
     });
   },
 
-  verifyUrl (subscriber) {
-    return `${AppConstants.SERVER_URL}/user/verify?token=${encodeURIComponent(subscriber.verification_token)}`;
+  utmParams(campaign, content) {
+    return `?utm_source=fx-monitor-emails&utm_medium=email&utm_campaign=${campaign}&utm_content=${content}`;
   },
 
-  unsubscribeUrl (subscriber) {
-    return `${AppConstants.SERVER_URL}/user/unsubscribe?token=${encodeURIComponent(subscriber.verification_token)}&hash=${encodeURIComponent(subscriber.sha1)}`;
+  getScanAnotherEmailUrl(emailType) {
+    return `${AppConstants.SERVER_URL}${this.utmParams("scan-another-email", emailType)}`;
   },
 
-  getShareByEmail (req) {
+  getVerificationUrl(subscriber) {
+    const utmParams = this.utmParams("verified subscribers", "account-verification-email");
+    return `${AppConstants.SERVER_URL}/user/verify?token=${encodeURIComponent(subscriber.verification_token)}${utmParams}`;
+  },
+
+  getUnsubscribeUrl(subscriber, emailType) {
+    const unsubUserParams = `?token=${encodeURIComponent(subscriber.verification_token)}&hash=${encodeURIComponent(subscriber.sha1)}`;
+    const utmParams = this.utmParams("unsubscribe", emailType);
+    return `${AppConstants.SERVER_URL}/user/unsubscribe${unsubUserParams}${utmParams}`;
+  },
+
+  getShareByEmail(req) {
     const subject = encodeURIComponent(req.fluentFormat("share-by-email-subject"));
     const body = encodeURIComponent(req.fluentFormat("share-by-email-message"));
 

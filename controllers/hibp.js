@@ -47,6 +47,9 @@ async function notify (req, res) {
   const hashes = req.body.hashSuffixes.map(suffix=>reqHashPrefix + suffix.toLowerCase());
   const subscribers = await DB.getSubscribersByHashes(hashes);
 
+  const utmID = "breach-alert";
+  const buttonHref = EmailUtils.getScanAnotherEmailUrl(utmID);
+
 
   log.info("notification", { length: subscribers.length, breachAlertName: breachAlert.Name });
 
@@ -62,7 +65,6 @@ async function notify (req, res) {
       req.app.locals.AVAILABLE_LANGUAGES,
       {defaultLocale: "en"}
     );
-    const unsubscribeUrl = EmailUtils.unsubscribeUrl(subscriber);
 
     if (!notifiedSubscribers.includes(email)) {
       await EmailUtils.sendEmail(
@@ -73,10 +75,11 @@ async function notify (req, res) {
           email,
           supportedLocales,
           date: HBSHelpers.prettyDate(supportedLocales, new Date()),
-          unsubscribeUrl,
           breachAlert,
           SERVER_URL: req.app.locals.SERVER_URL,
           buttonValue: LocaleUtils.fluentFormat(supportedLocales, "report-scan-another-email"),
+          buttonHref: buttonHref,
+          unsubscribeUrl: EmailUtils.getUnsubscribeUrl(subscriber, utmID),
           whichView: "email_partials/report",
         },
       );
