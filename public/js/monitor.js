@@ -427,7 +427,6 @@ function restoreInputs() {
   });
 }
 
-//prevents footer from covering stuff up
 
 document.addEventListener("touchstart", function(){}, true);
 
@@ -454,6 +453,12 @@ if (document.getElementById("no-breaches")) {
 document.querySelectorAll("[data-analytics-event]").forEach(el => {
   el.addEventListener("click", (e) => {
     ga_sendPing(e.target.dataset.analyticsEvent, e.target.dataset.analyticsLabel);
+  });
+});
+
+document.querySelectorAll(".breach-logo").forEach(logo => {
+  logo.addEventListener("error", (missingLogo) => {
+    missingLogo.target.src = "/img/logos/missing-logo-icon.png";
   });
 });
 
