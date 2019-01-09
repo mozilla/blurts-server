@@ -41,7 +41,11 @@ function init(req, res, next, client = FxAOAuthClient) {
   const state = crypto.randomBytes(40).toString("hex");
   req.session.state = state;
   const url = new URL(client.code.getUri({state}));
+  if (req.query.scanned) {
+    url.searchParams.append("email", req.query.scanned);
+  }
   url.searchParams.append("access_type", "offline");
+  url.searchParams.append("action", "signin");
   res.redirect(url);
 }
 
