@@ -46,6 +46,16 @@ function init(req, res, next, client = FxAOAuthClient) {
   }
   url.searchParams.append("access_type", "offline");
   url.searchParams.append("action", "signin");
+<<<<<<< HEAD
+=======
+  // TODO: if the user has scanned their email address, we can pass it
+  // to pre-populate the FxA email form field
+  // NOTE: To do this and keep our "Your email will not be stored." blurb from the scan,
+  // we need to store the plaintext email in client-side local storage,
+  // and then read it back out when subscribing
+  // May still need to change the disclaimer to "Your email will not be sent to Monitor/Mozilla."
+  // url.searchParams.append("email", "luke.crouch@gmail.com");
+>>>>>>> origin/ugly-af-fxa-signins-678
   res.redirect(url);
 }
 
@@ -93,6 +103,8 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
       whichView: "email_partials/report",
     }
   );
+
+  req.session.user = JSON.parse(data.body);
 
   res.render("subpage", {
     headline: req.fluentFormat("confirmation-headline"),
