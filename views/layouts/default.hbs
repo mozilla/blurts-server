@@ -27,16 +27,11 @@
   <body data-server-url="{{ SERVER_URL }}">
     <div id="content-wrap" class="content-wrap">
       {{> subscribe_modal/subscribe_modal_wrapper}}
-      {{> banners/download_firefox_bar}}
-      <header class ="section-wrapper">
-        <div class="half">
-          <a class="wrap-row" href="/">
-            <div class="firefox-logo firefox-monitor"><!--Firefox Monitor logo--></div>
-            <h1><span class="demi">Firefox</span> Monitor</h1>
-          </a>
-        </div>
-        <div class="half social_container">
-          {{> social_media_sharing_buttons}}
+      <header class ="section-container">
+          {{> banners/download_firefox_bar}}
+        <div class="row-wrapper">
+          {{> firefox_monitor_logo}}
+          {{> global_navigation}}
         </div>
       </header>
         {{{ body }}}

@@ -632,7 +632,6 @@ h5,
 /* // download firefox top bar  */
 
 .download-firefox-bar {
-  margin-bottom: var(--gap);
   text-align: center;
   font-size: 15px;
 }
@@ -664,26 +663,84 @@ h5,
   margin-bottom: 0;
 }
 
+/* global nav temporary */
+
+.section-container {
+  width: 100%;
+}
+
+.row-wrapper {
+  display: flex;
+  padding: calc(var(--columnSpacing) / 2) var(--columnSpacing);
+  max-width: 1050px;
+  justify-content: space-between;
+  flex-wrap: wrap-reverse;
+  margin: auto;
+}
+
+.stack {
+  margin: calc(var(--columnSpacing) / 4)  calc(var(--columnSpacing) / 2);
+  flex: 1 1 auto;
+}
+
+button#login-btn {
+  font-size: 13px;
+  border-radius: 50px;
+  min-height: 20px;
+  padding: 10px;
+  width: auto;
+}
+
+.global-navigation {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.global-navigation .social svg {
+  transform: scale(0.8, 0.8);
+}
+
+.global-navigation .social-media-sharing-buttons {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  border-right: 1px solid rgba(255, 255, 255, 1);
+  margin-right: calc(var(--gap) + calc(var(--gap) / 2));
+}
+
+.global-navigation .social-media-sharing-buttons a {
+  display: flex;
+}
+
+.global-navigation a {
+  margin-right: var(--gap);
+}
+
 /* header **************** */
 
-header.section-wrapper {
-  padding-top: 0;
-  padding-bottom: 0;
-  height: 10vh;
-  min-height: 90px;
-  max-height: 150px;
+header .firefox-monitor-logo {
+  justify-content: flex-start;
+  display: inline-flex;
 }
 
-header .half:first-of-type a:hover {
-  opacity: 1;
-}
-
-header .half:last-of-type {
+header .social-media-sharing-buttons {
   justify-content: flex-end;
 }
 
-header a h1 {
-  font-size: calc(23px + 0.6vw);
+header .section-wrapper {
+  padding-top: 0;
+  padding-bottom: 0;
+  max-width: 100%;
+  justify-content: space-between;
+}
+
+header .firefox-monitor-logo h1 {
+  font-size: calc(27px + 0.6vw);
+}
+
+header a.firefox-monitor-logo:hover {
+  opacity: 1;
 }
 
 .firefox-logo {
@@ -694,9 +751,9 @@ header a h1 {
 }
 
 .firefox-logo.firefox-monitor {
-  background: url("/img/gradient-sprites.png") -422px 0;
-  min-width: 60px;
-  height: 60px;
+  background: url("/img/gradient-sprites.png") -350px 0;
+  min-width: 50px;
+  height: 50px;
 }
 
 .firefox-logo,
@@ -1678,7 +1735,7 @@ form.show-thankyou span.thank-you-message {
     padding-top: 0;
   }
 
-  header .half.social_container {
+  header .half.social-media-sharing-buttons {
     display: none;
   }
 
@@ -1704,10 +1761,6 @@ form.show-thankyou span.thank-you-message {
 
   main .half p.landing-blurb {
     margin-top: 0;
-  }
-
-  .download-firefox-bar {
-    margin-bottom: 0;
   }
 
   .download-firefox-bar.banner .section-wrapper > * {

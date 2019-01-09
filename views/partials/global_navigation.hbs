@@ -1,0 +1,13 @@
+<nav id="global-navigation" class="global-navigation stack">
+  <div class="social-media-sharing-buttons">
+    <a class="social facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ SERVER_URL }}" target="_blank" rel="noopener noreferrer" {{> analytics/social_event eventLabel="Facebook"}} aria-label="Facebook">
+      {{> sprite symID="facebook"}}
+    </a>
+    <a class="social twitter" href="https://twitter.com/intent/tweet?url={{ SERVER_URL }}" target="_blank" rel="noopener noreferrer" {{> analytics/social_event eventLabel="Twitter"}} aria-label="Twitter">
+      {{> sprite symID="twitter"}}
+    </a>
+  </div>
+  <button id="login-btn">
+    Sign Up / Log In
+  </button>
+</nav>
