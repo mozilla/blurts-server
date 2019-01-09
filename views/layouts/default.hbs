@@ -36,6 +36,9 @@
           </a>
         </div>
         <div class="half social_container">
+          {{#if req.session.user }}
+          for <div class="avatar-wrapper"><img class="avatar" src="{{ req.session.user.avatar }}"/></div>{{ req.session.user.email }}<br/><a href="/user/logout">Sign out</a>
+          {{/if}}
           {{> social_media_sharing_buttons}}
         </div>
       </header>
