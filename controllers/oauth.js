@@ -43,13 +43,9 @@ function init(req, res, next, client = FxAOAuthClient) {
   const url = new URL(client.code.getUri({state}));
   url.searchParams.append("access_type", "offline");
   url.searchParams.append("action", "signin");
-  // TODO: if the user has scanned their email address, we can pass it
-  // to pre-populate the FxA email form field
-  // NOTE: To do this and keep our "Your email will not be stored." blurb from the scan ...
-  //  1. Before scanning, encrypt the plaintext email address with a client-side key and store in client-side storage
-  //  2. Before subscribing, decrypt the client-side plaintext email address from storage and POST the plaintext email
-  //  May still need to change the disclaimer to "Your email will not be sent to Monitor/Mozilla."
-  // url.searchParams.append("email", "luke.crouch@gmail.com");
+  if (req.query.scanned) {
+    url.searchParams.append("email", req.query.scanned);
+  }
   res.redirect(url);
 }
 

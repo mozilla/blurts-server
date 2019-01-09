@@ -127,7 +127,12 @@ function removeInvalidMessage(e) {
 }
 
 function doOauth() {
-  window.open("/oauth/init");
+  if (localStorage.getItem("scanned")) {
+    window.open(`/oauth/init/?scanned=${localStorage.getItem("scanned")}`);
+    localStorage.removeItem("scanned");
+  } else {
+    window.open("/oauth/init");
+  }
 }
 
 // restricts tabbing to modal elements when modal is open.
@@ -241,6 +246,7 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
   emailForm.classList.add("loading-data");
   const emailInput = document.getElementById("scan-email");
   emailForm.querySelector("input[name=emailHash]").value = await sha1(emailInput.value);
+  localStorage.setItem("scanned", emailInput.value);
   emailInput.value = "";
   emailForm.submit();
 }
