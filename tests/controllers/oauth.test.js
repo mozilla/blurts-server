@@ -20,6 +20,7 @@ const mockRequest = { fluentFormat: jest.fn() };
 
 test("init request sets session cookie and redirects with access_type=offline", () => {
   mockRequest.session = { };
+  mockRequest.query = { };
   const mockResponse = { redirect: jest.fn() };
 
   init(mockRequest, mockResponse);
