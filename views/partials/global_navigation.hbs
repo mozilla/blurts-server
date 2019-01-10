@@ -7,7 +7,20 @@
       {{> sprite symID="twitter"}}
     </a>
   </div>
-  <button id="login-btn">
-    Sign Up / Log In
-  </button>
+  {{#if req.session.user }}
+    <div id="fxa-user-info" class="fxa-user-info">
+      <span id="user-email" class="user-email">{{ req.session.user.email }}</span>
+      <div class="avatar-wrapper">
+        <img class="avatar" src="{{ req.session.user.avatar }}"/>
+      </div>
+      <div class="hover-menu">
+        <a href="/user/logout">Sign out</a>
+      </div>
+    </div> 
+  {{/if}}
+  {{#unless req.session.user }}
+    <button id="login-btn">
+        Sign Up / Log In
+    </button>
+  {{/unless}}
 </nav>

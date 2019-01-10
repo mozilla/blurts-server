@@ -675,7 +675,7 @@ h5,
   margin-bottom: 0;
 }
 
-/* global nav temporary */
+/* temporary sign up / log in */
 
 .section-container {
   width: 100%;
@@ -725,8 +725,54 @@ button#login-btn {
   display: flex;
 }
 
-.global-navigation a {
+a.social,
+span.user-email {
   margin-right: var(--gap);
+}
+
+.fxa-user-info {
+  position: relative;
+}
+
+span.user-email {
+  font-size: 12px;
+}
+
+.hover-menu {
+  display: hidden;
+  color: rgba(255, 255, 255, 0);
+  position: absolute;
+  right: 0;
+  width: 100%;
+  text-align: right;
+  padding-top: var(--gap);
+  visibility: hidden;
+}
+
+.fxa-user-info:hover .hover-menu {
+  visibility: visible;
+}
+
+.fxa-user-info .hover-menu a {
+  color: rgba(255, 255, 255, 0);
+  border-top: 1px solid rgba(255, 255, 255, 0);
+  width: 100%;
+  pointer-events: none;
+  padding: 5px 0;
+  display: inline-block;
+}
+
+.fxa-user-info:hover .hover-menu a {
+  color: rgba(255, 255, 255, 1);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  pointer-events: all;
+}
+
+.hover-menu,
+.fxa-user-info:hover .hover-menu,
+.fxa-user-info .hover-menu a,
+.fxa-user-info:hover .hover-menu a {
+  transition: all 0.3s ease;
 }
 
 /* header **************** */
