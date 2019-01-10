@@ -246,7 +246,10 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
   emailForm.classList.add("loading-data");
   const emailInput = document.getElementById("scan-email");
   emailForm.querySelector("input[name=emailHash]").value = await sha1(emailInput.value);
-  localStorage.setItem("scanned", emailInput.value);
+  /* if FXA_ENABLED, store most recently scanned email address locally */
+  if ( document.getElementById("global-navigation")) {
+    localStorage.setItem("scanned", emailInput.value);
+  }
   emailInput.value = "";
   emailForm.submit();
 }
