@@ -102,7 +102,7 @@ test("user unsubscribe GET request with valid token returns error", async () => 
   const validToken = "0e2cb147-2041-4e5b-8ca9-494e773b2cf0";
 
   // Set up mocks
-  const req = { fluentFormat: jest.fn(), query: { token: validToken } };
+  const req = { fluentFormat: jest.fn(), query: { token: validToken, hash: "testHash" } };
   const resp = httpMocks.createResponse();
 
   // Call code-under-test
