@@ -217,9 +217,9 @@ const HIBP = {
         // Conditions met, open up writeStream
         const writeStream = fs.createWriteStream(localSrc);
         res.pipe(writeStream);
-        writeStream.on("error", err => log.error(err));
+        writeStream.on("error", err => log.error("download-logo.error", {err}));
         writeStream.on("finish", () => {
-          log.info(`${fileName} logo successfully downloaded.`);
+          log.info("download-logo.finish", {message: `${fileName} logo successfully downloaded.`});
         });
       }
     });
@@ -229,14 +229,14 @@ const HIBP = {
         try {
           logoData = await this.minifyLogoData(logoData);
           await writeFile(localSrc, logoData, "binary");
-          log.info(`${fileName} logo successfully minified and downloaded.`);
+          log.info("download-logo.end", {message: `${fileName} logo successfully minified and downloaded.`});
         } catch (err) {
-          log.error(`Error compressing and saving ${fileName}: ${err}`);
+          log.error("download-logo.end-error", {message: `Error compressing and saving ${fileName}: ${err}`});
         }
       }
     });
     stream.on("error", err => {
-      log.error(`Error downloading ${fileName} image: ${err.message}`);
+      log.error("download-logo.stream-error", {message:`Error downloading ${fileName} image: ${err.message}`});
     });
   },
 };

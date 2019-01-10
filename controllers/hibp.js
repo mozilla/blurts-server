@@ -43,13 +43,13 @@ async function notify (req, res) {
     } catch(err) {
       // Set LogoPath to missing-logo-icon.png if download fails
       // LogoPath will reset when the server restarts
-      log.error(`Unable to download logo for ${breachAlert.LogoPath}.`);
+      log.error("notification", {message: `Unable to download logo for ${breachAlert.LogoPath}.`});
       breachAlert.LogoPath = "missing-logo-icon.png";
     }
   }
 
   if (breachAlert.IsSpamList || breachAlert.Domain === "" || breachAlert.IsFabricated || !breachAlert.IsVerified) {
-    log.info(`${breachAlert.Name} is fabricated, a spam list, not associated with a website, or unverified. \n Breach Alert not sent.`);
+    log.info("notification", {message: `${breachAlert.Name} is fabricated, a spam list, not associated with a website, or unverified. \n Breach Alert not sent.`});
     return res.status(200).json(
       {info: "Breach loaded into database. Subscribers not notified."}
     );
