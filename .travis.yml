@@ -1,14 +1,24 @@
 language: node_js
+
+dist: trusty
+
 node_js:
   - "node"
   - "lts/*"
+
 services:
   - postgresql
+
+addons:
+  postgresql: 9.6
+
 env:
   - NODE_ENV=tests
+
 install:
   - sudo pip install compare-locales
   - npm install
+
 before_script:
   - compare-locales --validate l10n.toml .
   - compare-locales l10n.toml . `ls locales`

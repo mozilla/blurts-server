@@ -17,6 +17,7 @@ about-firefox-alerts = Firefox uyarıları hakkında
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Görüş bildir
 terms-and-privacy = Şartlar ve gizlilik
+error-could-not-add-email = E-posta adresi veritabanına eklenemedi.
 error-not-subscribed = Bu e-posta adresi { -product-name }’e abone değil.
 error-hibp-throttled = Çok fazla { -brand-HIBP } bağlantısı.
 error-hibp-connect = { -brand-HIBP } bağlantısı kurulamadı.

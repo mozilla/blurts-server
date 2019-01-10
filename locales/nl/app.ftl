@@ -17,6 +17,7 @@ about-firefox-alerts = Over Firefox-waarschuwingen
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Feedback geven
 terms-and-privacy = Voorwaarden en Privacy
+error-could-not-add-email = Kon e-mailadres niet aan database toevoegen.
 error-not-subscribed = Dit e-mailadres is niet geabonneerd op { -product-name }.
 error-hibp-throttled = Te veel verbindingen met { -brand-HIBP }.
 error-hibp-connect = Fout bij verbinden met { -brand-HIBP }.

@@ -6,25 +6,24 @@
         {{{fluentFormat req.supportedLocales "terms-and-privacy"}}}
       </a>
     </p>
-  
-    {{#if FXA_ENABLED }}
-      <button id="subscribe-fxa-btn" class="button">{{fluentFormat req.supportedLocales "signup-with-fxa"}}</button>
-    {{/if}}
-  
-    <form action="/user/add" id="subscribe-form" class="form-group" method="post" novalidate data-no-csrf>
-      <div class="input-group">
-        <input id="subscribe-email-input" class="input-group-field" type="email" name="email" placeholder="{{fluentFormat req.supportedLocales "form-signup-placeholder"}}" minlength="1" aria-label="{{fluentFormat req.supportedLocales "form-signup-placeholder"}}"  autocomplete="off" />
-        <span id="invalid-signup-email-message" class="error-message">{{fluentFormat req.supportedLocales "form-signup-error"}}</span>
-      </div>
-      <div class="checkbox-group">
-        <input id="additional-emails-checkbox" type="checkbox" name="additional-emails" value="additional-emails" />
-        <label for="additional-emails-checkbox">{{fluentFormat req.supportedLocales "form-signup-checkbox"}}</label>
-      </div>
-      <div class="input-group-button">
-        <img class="loader" src="/img/loader.gif" alt="" />
-        <input id="subscribe-submit" type="submit" class="button submit-email blue-button" value="{{fluentFormat req.supportedLocales "sign-up"}}"  />
-      </div>
-    </form>
+      {{#if FXA_ENABLED}}
+        <button id="subscribe-fxa-btn" class="blue-button">{{fluentFormat req.supportedLocales "signup-with-fxa"}}</button>
+      {{else}}
+        <form action="/user/add" id="subscribe-form" class="form-group" method="post" novalidate data-no-csrf>
+          <div class="input-group">
+            <input id="subscribe-email-input" class="input-group-field" type="email" name="email" placeholder="{{fluentFormat req.supportedLocales "form-signup-placeholder"}}" minlength="1" aria-label="{{fluentFormat req.supportedLocales "form-signup-placeholder"}}"  autocomplete="off" />
+            <span id="invalid-signup-email-message" class="error-message">{{fluentFormat req.supportedLocales "form-signup-error"}}</span>
+          </div>
+          <div class="checkbox-group">
+            <input id="additional-emails-checkbox" type="checkbox" name="additional-emails" value="additional-emails" />
+            <label for="additional-emails-checkbox">{{fluentFormat req.supportedLocales "form-signup-checkbox"}}</label>
+          </div>
+          <div class="input-group-button">
+            <img class="loader" src="/img/loader.gif" alt="" />
+            <input id="subscribe-submit" type="submit" class="button submit-email blue-button" value="{{fluentFormat req.supportedLocales "sign-up"}}"  />
+          </div>
+        </form>
+      {{/if}}
     <button data-analytics-label="Before Sign Up" class="close-modal internal-link">{{fluentFormat req.supportedLocales "signup-modal-close"}}</button>
   </div>
 </div>

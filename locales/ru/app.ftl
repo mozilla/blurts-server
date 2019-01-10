@@ -22,6 +22,7 @@ about-firefox-alerts = Об уведомлениях Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Оставить отзыв
 terms-and-privacy = Условия и конфиденциальность
+error-could-not-add-email = Не удалось добавить адрес электронной почты в базу данных.
 error-not-subscribed = Этот адрес электронной почты не подписан на { -product-name }.
 error-hibp-throttled = Слишком много попыток соединения с { -brand-HIBP[genitive] }.
 error-hibp-connect = Ошибка подключения к { -brand-HIBP[dative] }.

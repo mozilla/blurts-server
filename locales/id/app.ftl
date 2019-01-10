@@ -17,6 +17,7 @@ about-firefox-alerts = Tentang Firefox Alerts
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Beri Masukan
 terms-and-privacy = Ketentuan dan Privasi
+error-could-not-add-email = Tidak dapat menambahkan alamat surel ke basis data.
 error-not-subscribed = Alamat surel ini tidak berlangganan { -product-name }.
 error-hibp-throttled = Terlalu banyak koneksi ke { -brand-HIBP }.
 error-hibp-connect = Gagal tersambung dengan { -brand-HIBP }.

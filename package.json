@@ -80,7 +80,8 @@
       "!scripts/*.js",
       "!loadtests/**/**.js",
       "!.eslintrc.js"
-    ]
+    ],
+    "setupTestFrameworkScriptFile": "./tests/jest.setup.js"
   },
   "private": true,
   "repository": {

@@ -17,6 +17,7 @@ about-firefox-alerts = A Firefox figyelmeztetéseiről
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Adjon visszajelzést
 terms-and-privacy = Feltételek és adatvédelem
+error-could-not-add-email = Nem sikerült hozzáadni az e-mail címet az adatbázishoz.
 error-not-subscribed = Ez az e-mail cím nincs feliratkozva a { -product-name }ra.
 error-hibp-throttled = Túl sok kapcsolat a { -brand-HIBP } felé.
 error-hibp-connect = Hiba a { -brand-HIBP }hoz kapcsolódáskor.

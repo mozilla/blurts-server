@@ -165,6 +165,9 @@ const focusFirstInput = function(e) {
 function closeModalWindow() {
   document.body.classList.remove("show-subscribe-modal");
   document.getElementById("subscribe-to-ffxm").classList.remove("show");
+  if (document.getElementById("subscribe-modal").classList.contains("fxa-enabled")) {
+    return;
+  }
   document.getElementById("confirm-your-account").classList.remove("show", "sending", "sent");
   document.getElementById("subscribe-form").classList.remove("invalid");
   document.getElementById("subscribe-email-input").value = "";
@@ -177,6 +180,9 @@ function openModalWindow() {
   document.body.classList.add("show-subscribe-modal");
   document.getElementById("subscribe-to-ffxm").classList.add("show");
   setModalTabbing();
+  if (subscribeModal.classList.contains("fxa-enabled")) {
+    return;
+  }
   document.getElementById("subscribe-form").classList.remove("loading-data");
   subscribeModal.addEventListener("transitionend", (e) => focusFirstInput(e));
   subscribeModal.addEventListener("click", function closeWrapper(e) {
@@ -421,7 +427,6 @@ function restoreInputs() {
   });
 }
 
-//prevents footer from covering stuff up
 
 document.addEventListener("touchstart", function(){}, true);
 
@@ -448,6 +453,12 @@ if (document.getElementById("no-breaches")) {
 document.querySelectorAll("[data-analytics-event]").forEach(el => {
   el.addEventListener("click", (e) => {
     ga_sendPing(e.target.dataset.analyticsEvent, e.target.dataset.analyticsLabel);
+  });
+});
+
+document.querySelectorAll(".breach-logo").forEach(logo => {
+  logo.addEventListener("error", (missingLogo) => {
+    missingLogo.target.src = "/img/logos/missing-logo-icon.png";
   });
 });
 

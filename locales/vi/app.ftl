@@ -17,6 +17,7 @@ about-firefox-alerts = Về cảnh báo Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Gửi phản hồi
 terms-and-privacy = Điều khoản và chính sách riêng tư
+error-could-not-add-email = Không thể thêm địa chỉ email vào cơ sở dữ liệu.
 error-not-subscribed = Địa chỉ email này không được đăng ký với { -product-name }.
 error-hibp-throttled = Quá nhiều kết nối đến { -brand-HIBP }.
 error-hibp-connect = Lỗi kết nối đến { -brand-HIBP }.
