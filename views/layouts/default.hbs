@@ -27,16 +27,11 @@
   <body data-server-url="{{ SERVER_URL }}">
     <div id="content-wrap" class="content-wrap">
       {{> subscribe_modal/subscribe_modal_wrapper}}
-      <header class ="section-container">
-          {{> banners/download_firefox_bar}}
-        <div class="row-wrapper">
-          {{> firefox_monitor_logo}}
-          {{> global_navigation}}
-        </div>
-      </header>
-        {{{ body }}}
+      {{> banners/download_firefox_bar}}
+      {{> header }}
+      {{{ body }}}
     </div>
-        <footer id="footer">
+    <footer id="footer">
       <div class="section-wrapper">
         <div class="third">
           <a {{> analytics/link_event eventLabel="Mozilla Logo"}} class="footer-logo-wrapper" href="https://www.mozilla.org/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener" aria-label="Mozilla">{{> sprite symID="Mozilla" }}</a>
