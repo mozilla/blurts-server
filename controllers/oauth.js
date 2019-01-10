@@ -65,7 +65,15 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
   });
   log.debug("fxa-confirmed-profile-data", data.body);
   const email = JSON.parse(data.body).email;
+
+  const existingUser = await DB.getSubscribersByEmail(email);
+  if (existingUser) {
+    req.session.user = JSON.parse(data.body);
+    return res.redirect("/");
+  }
+
   const signupLanguage = req.headers["accept-language"];
+
   await DB.addSubscriber(email, signupLanguage, fxaUser.refreshToken, data.body);
 
   const unsubscribeUrl = ""; // not totally sure yet how this gets handled long-term
