@@ -1,6 +1,5 @@
 "use strict";
 
-const { FluentError } = require("../locale-utils");
 
 function home(req, res) {
   let featuredBreach = null;
@@ -11,7 +10,7 @@ function home(req, res) {
     const reqBreachName = req.query.breach.toLowerCase();
     featuredBreach = req.app.locals.breaches.find(breach => breach.Name.toLowerCase() === reqBreachName);
     if (!featuredBreach) {
-      throw new FluentError("home-not-found");
+      return notFound(req, res);
     }
     scanFeaturedBreach = true;
     if (featuredBreach.IsSensitive) {
