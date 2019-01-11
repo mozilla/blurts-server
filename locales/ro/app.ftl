@@ -17,6 +17,7 @@ about-firefox-alerts = Despre alertele Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Oferă feedback
 terms-and-privacy = Termeni și confidențialitate
+error-could-not-add-email = Adresa de e-mail nu a putut fi adăugată în baza de date.
 error-not-subscribed = Această adresă de e-mail nu este abonată la { -product-name }.
 error-hibp-throttled = Prea multe conexiuni la { -brand-HIBP }.
 error-hibp-connect = Eroare de conectare la { -brand-HIBP }.
