@@ -20,6 +20,7 @@ const mockRequest = { fluentFormat: jest.fn() };
 
 test("init request sets session cookie and redirects with access_type=offline", () => {
   mockRequest.session = { };
+  mockRequest.query =  {};
   const mockResponse = { redirect: jest.fn() };
 
   init(mockRequest, mockResponse);
@@ -42,7 +43,7 @@ test("confirmed request checks session cookie, calls FXA for token and email, ad
     session: { state: { } },
     originalUrl: "",
   };
-  const mockResponse = { render: jest.fn() };
+  const mockResponse = { render: jest.fn(), redirect: jest.fn() };
   const mockFxAClient = { code : { getToken: jest.fn().mockReturnValueOnce({ accessToken: "testToken"}) } };
   got.mockResolvedValue({ body: `{"email": "${testFxAEmail}"}` });
 
