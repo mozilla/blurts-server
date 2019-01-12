@@ -402,7 +402,7 @@ function doButtonRouting(event) {
     showAdditionalBreaches();
     return;
   }
-  if (event.target.id === "sign-up") {
+  if (event.target.id === "sign-up" || event.target.id === "login-btn") {
     ga_sendPing("SignUp", false);
     openModalWindow();
     return;
