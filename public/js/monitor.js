@@ -128,7 +128,8 @@ function removeInvalidMessage(e) {
 
 function doOauth() {
   if (localStorage.getItem("scanned")) {
-    window.open(`/oauth/init/?scanned=${localStorage.getItem("scanned")}`);
+    const scannedEmail = localStorage.getItem("scanned");
+    window.open(`/oauth/init/?scanned=${encodeURIComponent(scannedEmail)}`);
     localStorage.removeItem("scanned");
   } else {
     window.open("/oauth/init");

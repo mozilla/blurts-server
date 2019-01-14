@@ -42,7 +42,7 @@ function init(req, res, next, client = FxAOAuthClient) {
   req.session.state = state;
   const url = new URL(client.code.getUri({state}));
   url.searchParams.append("access_type", "offline");
-  url.searchParams.append("action", "signin");
+  url.searchParams.append("action", "email");
   if (req.query.scanned) {
     url.searchParams.append("email", req.query.scanned);
   }
