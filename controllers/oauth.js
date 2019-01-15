@@ -67,7 +67,7 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
   const email = JSON.parse(data.body).email;
 
   const existingUser = await DB.getSubscribersByEmail(email);
-  if (existingUser) {
+  if (existingUser.length > 0) {
     req.session.user = JSON.parse(data.body);
     return res.redirect("/");
   }
