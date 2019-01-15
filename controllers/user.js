@@ -27,8 +27,7 @@ async function add(req, res) {
     "default_email",
     { email,
       supportedLocales: req.supportedLocales,
-      buttonValue: req.fluentFormat("verify-my-email"),
-      buttonHref: EmailUtils.getVerificationUrl(unverifiedSubscriber),
+      verificationHref: EmailUtils.getVerificationUrl(unverifiedSubscriber),
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(unverifiedSubscriber, "account-verification-email"),
       whichView: "email_partials/email_verify",
     });
@@ -43,8 +42,7 @@ async function verify(req, res) {
   if (!req.query.token) {
     throw new FluentError("user-verify-token-error");
   }
-  const token = req.query.token.toString().replace(/\?utm_.*/g, "");
-  const verifiedEmailHash = await DB.verifyEmailHash(token);
+  const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
 
   let unsafeBreachesForEmail = [];
   unsafeBreachesForEmail = await HIBP.getBreachesForEmail(
@@ -64,7 +62,7 @@ async function verify(req, res) {
       supportedLocales: req.supportedLocales,
       date: HBSHelpers.prettyDate(req.supportedLocales, new Date()),
       unsafeBreachesForEmail: unsafeBreachesForEmail,
-      buttonHref: EmailUtils.getScanAnotherEmailUrl(utmID),
+      scanAnotherEmailHref: EmailUtils.getScanAnotherEmailUrl(utmID),
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(verifiedEmailHash, utmID),
       whichView: "email_partials/report",
     }
@@ -98,7 +96,7 @@ async function getUnsubscribe(req, res) {
     subhead: req.fluentFormat("unsub-blurb"),
     whichPartial: "subpages/unsubscribe",
     token: req.query.token,
-    hash: req.query.hash.toString().replace(/\?utm_.*/g, ""),
+    hash: req.query.hash,
   });
 }
 

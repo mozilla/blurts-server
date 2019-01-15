@@ -48,7 +48,7 @@ async function notify (req, res) {
   const subscribers = await DB.getSubscribersByHashes(hashes);
 
   const utmID = "breach-alert";
-  const buttonHref = EmailUtils.getScanAnotherEmailUrl(utmID);
+  const scanAnotherEmailHref = EmailUtils.getScanAnotherEmailUrl(utmID);
 
 
   log.info("notification", { length: subscribers.length, breachAlertName: breachAlert.Name });
@@ -77,8 +77,7 @@ async function notify (req, res) {
           date: HBSHelpers.prettyDate(supportedLocales, new Date()),
           breachAlert,
           SERVER_URL: req.app.locals.SERVER_URL,
-          buttonValue: LocaleUtils.fluentFormat(supportedLocales, "report-scan-another-email"),
-          buttonHref: buttonHref,
+          scanAnotherEmailHref: scanAnotherEmailHref,
           unsubscribeUrl: EmailUtils.getUnsubscribeUrl(subscriber, utmID),
           whichView: "email_partials/report",
         },

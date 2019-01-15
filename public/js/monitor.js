@@ -435,7 +435,7 @@ window.addEventListener("pageshow", function() {
   ga_sendPing("Pageview", false);
 
   if (window.location.search.includes("utm_") && window.history.replaceState) {
-    window.history.replaceState({}, "", window.location.toString().replace(/\?utm_.*/g, ""));
+    window.history.replaceState({}, "", window.location.toString().replace(/[?&]utm_.*/g, ""));
   }
 
   if (document.forms) {

@@ -1,4 +1,5 @@
 "use strict";
+const { URL } = require("url");
 
 const AppConstants = require("./app-constants");
 
@@ -78,23 +79,38 @@ const EmailUtils = {
     });
   },
 
-  utmParams(campaign, content) {
-    return `?utm_source=fx-monitor-emails&utm_medium=email&utm_campaign=${campaign}&utm_content=${content}`;
+  appendUtmParams(url, campaign, content) {
+    const utmParameters = {
+      utm_source: "fx-monitor-emails",
+      utm_medium: "email",
+      utm_campaign: campaign,
+      utm_content: content,
+    };
+    for (const param in utmParameters) {
+      url.searchParams.append(param, utmParameters[param]);
+    }
+    return url;
   },
 
   getScanAnotherEmailUrl(emailType) {
-    return `${AppConstants.SERVER_URL}${this.utmParams("scan-another-email", emailType)}`;
+    let url = new URL(AppConstants.SERVER_URL);
+    url = this.appendUtmParams(url, "scan-another-email", emailType);
+    return url;
   },
 
   getVerificationUrl(subscriber) {
-    const utmParams = this.utmParams("verified subscribers", "account-verification-email");
-    return `${AppConstants.SERVER_URL}/user/verify?token=${encodeURIComponent(subscriber.verification_token)}${utmParams}`;
+    let url = new URL(`${AppConstants.SERVER_URL}/user/verify`);
+    url.searchParams.append("token", encodeURIComponent(subscriber.verification_token));
+    url = this.appendUtmParams(url, "verified-subscribers", "account-verification-email");
+    return url;
   },
 
   getUnsubscribeUrl(subscriber, emailType) {
-    const unsubUserParams = `?token=${encodeURIComponent(subscriber.verification_token)}&hash=${encodeURIComponent(subscriber.sha1)}`;
-    const utmParams = this.utmParams("unsubscribe", emailType);
-    return `${AppConstants.SERVER_URL}/user/unsubscribe${unsubUserParams}${utmParams}`;
+    let url = new URL(`${AppConstants.SERVER_URL}/user/unsubscribe`);
+    url.searchParams.append("token", encodeURIComponent(subscriber.verification_token));
+    url.searchParams.append("hash", encodeURIComponent(subscriber.sha1));
+    url = this.appendUtmParams(url, "unsubscribe", emailType);
+    return url;
   },
 
   getShareByEmail(req) {

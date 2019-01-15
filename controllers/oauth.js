@@ -85,8 +85,7 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
       supportedLocales: req.supportedLocales,
       date: HBSHelpers.prettyDate(req.supportedLocales, new Date()),
       unsafeBreachesForEmail: unsafeBreachesForEmail,
-      buttonValue: req.fluentFormat("report-scan-another-email"),
-      buttonHref: EmailUtils.getScanAnotherEmailUrl(utmID),
+      scanAnotherEmailHref: EmailUtils.getScanAnotherEmailUrl(utmID),
       unsubscribeUrl: unsubscribeUrl,
       whichView: "email_partials/report",
     }
