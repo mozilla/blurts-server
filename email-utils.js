@@ -1,4 +1,5 @@
 "use strict";
+const { URL } = require("url");
 
 const AppConstants = require("./app-constants");
 
@@ -78,15 +79,41 @@ const EmailUtils = {
     });
   },
 
-  verifyUrl (subscriber) {
-    return `${AppConstants.SERVER_URL}/user/verify?token=${encodeURIComponent(subscriber.verification_token)}`;
+  appendUtmParams(url, campaign, content) {
+    const utmParameters = {
+      utm_source: "fx-monitor-emails",
+      utm_medium: "email",
+      utm_campaign: campaign,
+      utm_content: content,
+    };
+    for (const param in utmParameters) {
+      url.searchParams.append(param, utmParameters[param]);
+    }
+    return url;
   },
 
-  unsubscribeUrl (subscriber) {
-    return `${AppConstants.SERVER_URL}/user/unsubscribe?token=${encodeURIComponent(subscriber.verification_token)}&hash=${encodeURIComponent(subscriber.sha1)}`;
+  getScanAnotherEmailUrl(emailType) {
+    let url = new URL(AppConstants.SERVER_URL);
+    url = this.appendUtmParams(url, "scan-another-email", emailType);
+    return url;
   },
 
-  getShareByEmail (req) {
+  getVerificationUrl(subscriber) {
+    let url = new URL(`${AppConstants.SERVER_URL}/user/verify`);
+    url.searchParams.append("token", encodeURIComponent(subscriber.verification_token));
+    url = this.appendUtmParams(url, "verified-subscribers", "account-verification-email");
+    return url;
+  },
+
+  getUnsubscribeUrl(subscriber, emailType) {
+    let url = new URL(`${AppConstants.SERVER_URL}/user/unsubscribe`);
+    url.searchParams.append("token", encodeURIComponent(subscriber.verification_token));
+    url.searchParams.append("hash", encodeURIComponent(subscriber.sha1));
+    url = this.appendUtmParams(url, "unsubscribe", emailType);
+    return url;
+  },
+
+  getShareByEmail(req) {
     const subject = encodeURIComponent(req.fluentFormat("share-by-email-subject"));
     const body = encodeURIComponent(req.fluentFormat("share-by-email-message"));
 

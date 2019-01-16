@@ -62,9 +62,10 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
   log.debug("fxa-confirmed-profile-data", data.body);
   const email = JSON.parse(data.body).email;
   const signupLanguage = req.headers["accept-language"];
-  await DB.addSubscriber(email, signupLanguage, fxaUser.refreshToken, data.body);
+  const subscriber = await DB.addSubscriber(email, signupLanguage, fxaUser.refreshToken, data.body);
 
-  const unsubscribeUrl = ""; // not totally sure yet how this gets handled long-term
+  const utmID = "report";
+  const unsubscribeUrl = await EmailUtils.getUnsubscribeUrl(subscriber[0], utmID);
 
   // duping some of user/verify for now
   let unsafeBreachesForEmail = [];
@@ -80,12 +81,12 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
     req.fluentFormat("user-verify-email-report-subject"),
     "default_email",
     {
-      supportedLocales: req.supportedLocales,
       email: email,
+      supportedLocales: req.supportedLocales,
       date: HBSHelpers.prettyDate(req.supportedLocales, new Date()),
       unsafeBreachesForEmail: unsafeBreachesForEmail,
+      scanAnotherEmailHref: EmailUtils.getScanAnotherEmailUrl(utmID),
       unsubscribeUrl: unsubscribeUrl,
-      buttonValue: req.fluentFormat("report-scan-another-email"),
       whichView: "email_partials/report",
     }
   );
