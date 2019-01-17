@@ -135,3 +135,72 @@ scan-results =
 show-more-breaches = Show More
 what-to-do-headline = What To Do When Your Information is Exposed in a Data Breach
 what-to-do-subhead-1 = Change your passwords, even for old accounts
+what-to-do-blurb-1 =
+    If you can’t log in, contact the web site to ask how you can recover or shut down the account. 
+    See an account you don’t recognise? The site may have changed names or someone may have created an account for you.
+what-to-do-subhead-2 = If you reuse an exposed password, change it
+what-to-do-blurb-2 =
+    Hackers may try to reuse your exposed password to get into other accounts. 
+    Create a different password for each web site, especially for your bank account, 
+    email and other web sites where you save personal information.
+what-to-do-subhead-3 = Take extra steps to secure your financial accounts
+what-to-do-blurb-3 =
+    Most breaches only expose emails and passwords, but some do include sensitive financial information. 
+    If your bank account or credit card numbers were included in a breach, alert your bank to possible fraud, 
+    and monitor statements for charges you don’t recognise.
+what-to-do-subhead-4 = Get help creating good passwords and keeping them safe.
+what-to-do-blurb-4 =
+    Password managers like 1Password, LastPass, Dashlane, and Bitwarden generate strong passwords, 
+    store them securely, and fill them into web sites for you.
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = Breach date:
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Compromised accounts:
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Compromised data:
+confirmed = Confirmed!<br />You’re Subscribed!
+confirmed-blurb = { -product-name-nowrap } will email you a full report shortly, and will send an email alert if your account appears in a new reported breach.
+confirmed-social-blurb = If you’ve been breached, chances are your friends, family, or online connections have been too. Let them know about { -product-name-nowrap }.
+unsub-headline = Unsubscribe from { -product-name-nowrap }
+unsub-blurb = This will remove your email from the { -product-name-nowrap } list and you will no longer receive alerts when new breaches are announced.
+unsub-button = Unsubscribe
+unsub-survey-headline = You are no longer subscribed.
+unsub-survey-blurb =
+    Your email is unsubscribed from { -product-name-nowrap }. Thank you for using this service. 
+    Will you take a moment to answer one question about your experience?
+unsub-survey-form-label = Why are you unsubscribing from { -product-name-nowrap } alerts?
+unsub-reason-1 = I think that alerts don’t make my data safer
+unsub-reason-2 = I get too many emails from { -product-name-nowrap }
+unsub-reason-3 = I don’t find the service valuable
+unsub-reason-4 = I’ve already taken steps to protect my accounts
+unsub-reason-5 = I am using another service to monitor my accounts
+unsub-reason-6 = None of the above
+unsub-survey-thankyou = Thank you for your feedback.
+unsub-survey-error = Please select one.
+# Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
+share = Share
+# Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
+tweet = Tweet
+download-firefox-quantum = Download { -brand-Quantum }
+download-firefox-mobile = Download { -brand-name } Mobile
+# Features here refers to Firefox browser features. 
+features = Features
+# beta-nightly-developer-edition refers to additional versions of Firefox Browser
+beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# The following string contains HTML markup which should not be translated. 
+# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
+copyright-info =
+    Portions of this content are &#x24B8; 1998-2018 by individual mozilla.org contributors. <br />
+    Content available under a  <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons licence</a>.
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Breach data provided by { $hibp-link }
+site-description = Have your accounts been leaked or stolen in a data breach? Find out at { -product-name }. Search our database and sign up for alerts.
+confirmation-headline = Your { -product-name } report is on its way.
+confirmation-blurb = Data breaches can affect anyone. Spread the word so your friends and family can check to see if their online accounts are safe.
+share-email = Email
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Other
+share-twitter = Most people have about 100 online accounts. Have any of yours been exposed in a data breach? Find out.
+share-facebook-headline = Find out if you’ve been part of a data breach
+share-facebook-blurb = Have your online accounts been exposed in a data breach?
+og-site-description = Find out if you’ve been part of a data breach with { -product-name }. Sign up for alerts about future breaches and get tips to keep your accounts safe.
