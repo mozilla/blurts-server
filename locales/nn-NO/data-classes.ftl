@@ -5,6 +5,7 @@ address-book-contacts = Adressebokskontaktar
 age-groups = Aldersgrupper
 ages = Aldrar
 avatars = Avatarar
+drinking-habits = Drikkevanar
 email-addresses = E-postadresser
 email-messages = E-postmeldingar
 employers = Arbeidsgjevarar
