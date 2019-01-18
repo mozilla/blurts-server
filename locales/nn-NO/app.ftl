@@ -17,11 +17,14 @@ about-firefox-alerts = Om Firefox-varsel
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Tilbakemelding
 terms-and-privacy = Vilkår og personvern
+home-title = { -product-name }
 home-not-found = Fann ikkje sida.
 user-add-invalid-email = Ugyldig e-postadresse
 user-add-email-verify-subject = Stadfest abonnementet ditt på { -product-name }.
 user-add-title = { -product-name }: Stadfest e-postadressa
 error-headline = Feil
+user-verify-title = { -product-name }: Abonnerer
+user-unsubscribe-title = { -product-name }: Avslutt abonnementet
 
 ## Password Tips
 
