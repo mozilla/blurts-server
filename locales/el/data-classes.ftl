@@ -1,5 +1,6 @@
 ## Breach Data Classes
 
+account-balances = Υπόλοιπα λογαριασμών
 address-book-contacts = Επαφές βιβλίου διευθύνσεων
 age-groups = Ηλικιακές ομάδες
 ages = Ηλικίες
