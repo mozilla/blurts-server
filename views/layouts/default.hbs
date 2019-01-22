@@ -25,21 +25,12 @@
     <link rel="icon" href="/img/favicons/favicon-256.png" sizes="256x256" />
   </head>
   <body data-server-url="{{ SERVER_URL }}">
-    <div id="content-wrap" class="content-wrap">
+     <div id="content-wrap" class="content-wrap">
       {{> subscribe_modal/subscribe_modal_wrapper}}
       {{> banners/download_firefox_bar}}
-      <header class ="section-wrapper">
-        <div class="half">
-          <a class="wrap-row" href="/">
-            <div class="firefox-logo firefox-monitor"><!--Firefox Monitor logo--></div>
-            <h1><span class="demi">Firefox</span> Monitor</h1>
-          </a>
-        </div>
-        <div class="half social_container">
-          {{> social_media_sharing_buttons}}
-        </div>
-      </header>
-        {{{ body }}}
+      {{> header }}
+      {{{ body }}}
+    </div>
     </div>
         <footer id="footer">
       <div class="section-wrapper">

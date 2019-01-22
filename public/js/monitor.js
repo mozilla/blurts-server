@@ -127,7 +127,13 @@ function removeInvalidMessage(e) {
 }
 
 function doOauth() {
-  window.open("/oauth/init");
+  if (localStorage.getItem("scanned")) {
+    const scannedEmail = localStorage.getItem("scanned");
+    window.open(`/oauth/init/?scanned=${encodeURIComponent(scannedEmail)}`);
+    localStorage.removeItem("scanned");
+  } else {
+    window.open("/oauth/init");
+  }
 }
 
 // restricts tabbing to modal elements when modal is open.
@@ -241,6 +247,7 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
   emailForm.classList.add("loading-data");
   const emailInput = document.getElementById("scan-email");
   emailForm.querySelector("input[name=emailHash]").value = await sha1(emailInput.value);
+  localStorage.setItem("scanned", emailInput.value);
   emailInput.value = "";
   emailForm.submit();
 }
@@ -396,7 +403,7 @@ function doButtonRouting(event) {
     showAdditionalBreaches();
     return;
   }
-  if (event.target.id === "sign-up") {
+  if (event.target.id === "sign-up" || event.target.id === "login-btn") {
     ga_sendPing("SignUp", false);
     openModalWindow();
     return;

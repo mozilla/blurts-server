@@ -42,6 +42,10 @@ function init(req, res, next, client = FxAOAuthClient) {
   req.session.state = state;
   const url = new URL(client.code.getUri({state}));
   url.searchParams.append("access_type", "offline");
+  url.searchParams.append("action", "email");
+  if (req.query.scanned) {
+    url.searchParams.append("email", req.query.scanned);
+  }
   res.redirect(url);
 }
 
@@ -61,6 +65,13 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
   });
   log.debug("fxa-confirmed-profile-data", data.body);
   const email = JSON.parse(data.body).email;
+
+  const existingUser = await DB.getSubscribersByEmail(email);
+  if (existingUser.length > 0) {
+    req.session.user = JSON.parse(data.body);
+    return res.redirect("/");
+  }
+
   const signupLanguage = req.headers["accept-language"];
   const subscriber = await DB.addSubscriber(email, signupLanguage, fxaUser.refreshToken, data.body);
 
@@ -90,6 +101,8 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
       whichView: "email_partials/report",
     }
   );
+
+  req.session.user = JSON.parse(data.body);
 
   res.render("subpage", {
     headline: req.fluentFormat("confirmation-headline"),

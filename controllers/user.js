@@ -141,6 +141,11 @@ function postUnsubSurvey(req, res) {
   });
 }
 
+function logout(req, res) {
+  req.session.reset();
+  res.redirect("/");
+}
+
 
 module.exports = {
   add,
@@ -149,4 +154,5 @@ module.exports = {
   postUnsubscribe,
   getUnsubSurvey,
   postUnsubSurvey,
+  logout,
 };
