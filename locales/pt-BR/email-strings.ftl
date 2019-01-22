@@ -13,8 +13,8 @@ we-sent-this-alert = Enviamos uma mensagem para { $userEmail } porque o endereç
 unsubscribe-email-link = Se você não quer mais receber alertas do { -product-name }, cancele seu cadastro.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Relatório do { -product-name }
-report-date = Data do Relatório:
-email-address = Endereço de E-mail:
+report-date = Data do relatório:
+email-address = Endereço de e-mail:
 # "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
 your-full-report = Aqui está o seu relatório completo do { -product-name }, que inclui todos os vazamentos de dados conhecidos em que este endereço de e-mail foi afetado.
 report-no-breaches =

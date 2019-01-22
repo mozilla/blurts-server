@@ -28,9 +28,9 @@ home-not-found = Página não encontrada.
 oauth-invalid-session = Sessão inválida
 oauth-confirmed-title = { -product-name }: Cadastrado
 scan-title = { -product-name }: Resultados da Análise
-user-add-invalid-email = Endereço de E-mail Inválido
+user-add-invalid-email = Endereço de e-mail inválido
 user-add-email-verify-subject = Confirme seu cadastro no { -product-name }.
-user-add-title = { -product-name }: Confirmar Endereço de E-mail
+user-add-title = { -product-name }: Confirmar endereço de e-mail
 error-headline = Erro
 user-verify-token-error = Token de verificação é necessário.
 user-verify-email-report-subject = Seu relatório do { -product-name }
@@ -76,7 +76,7 @@ scan-label = Veja se você foi envolvido em um vazamento de dados.
 scan-placeholder = Digite um endereço de e-mail
 scan-privacy = Seu endereço de e-mail não será armazenado,
 scan-submit = Procure seu endereço de e-mail
-scan-another-email = Analise Outro Endereço de E-mail
+scan-another-email = Analise outro endereço de e-mail
 scan-featuredbreach-label = Descubra se sua conta em <span class="bold">{ $featuredBreach }</span> foi comprometida.
 sensitive-breach-email-required = A brecha contém informações sensíveis. É necessária confirmação por e-mail.
 scan-error = Precisa ser um endereço de e-mail válido.
@@ -136,7 +136,7 @@ what-to-do-blurb-1 =
 what-to-do-subhead-2 = Se você utiliza a senha vazada em outras contas, troque-a
 what-to-do-blurb-2 =
     Hackers podem tentar reutilizar sua senha exposta para acessar outras contas.
-    Cria uma senha diferente para cada site, especialmente sua conta bancária,
+    Crie uma senha diferente para cada site, especialmente para sua conta bancária,
     e-mail e outros sites onde você salva informações pessoais.
 what-to-do-subhead-3 = Tome providências extras para proteger suas contas financeiras
 what-to-do-blurb-3 =
