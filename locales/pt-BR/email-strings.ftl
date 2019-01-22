@@ -3,14 +3,14 @@
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
 click-to-verify =
-    Clique no botão Verificar Meu Endereço de E-mail dentro de 24 horas para confirmar sua conta do Firefox Monitor.
+    Clique no botão 'Confirmar meu endereço de e-mail' em até 24 horas para confirmar sua conta do Firefox Monitor.
     Seu relatório então estará a caminho.
-verify-my-email = Verificar Meu Endereço de E=mail
+verify-my-email = Confirmar meu endereço de e-mail
 report-scan-another-email = Analisar Outro Endereço de E-mail no { -product-name }
 automated-message = Esta é uma mensagem automática; se você a recebeu por engano, nenhuma ação é necessária.
 # Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
 we-sent-this-alert = Enviamos uma mensagem para { $userEmail } porque o endereço de e-mail solicitou alertas do { -product-name }
-unsubscribe-email-link = Se você não quer mais receber alertas do { -product-name }, desinscreva-se.
+unsubscribe-email-link = Se você não quer mais receber alertas do { -product-name }, cancele seu cadastro.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Relatório do { -product-name }
 report-date = Data do Relatório:

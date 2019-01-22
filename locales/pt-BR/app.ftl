@@ -29,7 +29,7 @@ oauth-invalid-session = Sessão inválida
 oauth-confirmed-title = { -product-name }: Cadastrado
 scan-title = { -product-name }: Resultados da Análise
 user-add-invalid-email = Endereço de E-mail Inválido
-user-add-email-verify-subject = Verifique seu cadastro no { -product-name }.
+user-add-email-verify-subject = Confirme seu cadastro no { -product-name }.
 user-add-title = { -product-name }: Confirmar Endereço de E-mail
 error-headline = Erro
 user-verify-token-error = Token de verificação é necessário.
@@ -64,12 +64,10 @@ pwt-summary-4 =
     Eles também as armazenam com segurança e as preenchem nos sites para você
 pwt-headline-5 = Adicione segurança extra com autenticação em duas etapas
 pwt-summary-5 =
-    Autenticação em dois fatores exige uma parte adicional de informação (como um código enviado por SMS) para entrar na sua conta.
-    Mesmo que alguém tenha sua senha, sem essa informação não conseguirá fazer login.
+    Autenticação em duas etapas exige uma informação adicional (como um código enviado no momento via mensagem de texto) para entrar na sua conta.
+    Mesmo que alguém tenha sua senha, não conseguirá entrar.
 pwt-headline-6 = Cadastre-se nos alertas do { -product-name-nowrap }
-pwt-summary-6 =
-    Vazamentos de dados de sites aumentam a cada dia. Assim que um novo vazamento for adicionado à nossa base,
-    o { -product-name-nowrap } lhe enviará um alerta - assim você pode tomar ações para proteger sua conta.
+pwt-summary-6 = Vazamentos de dados de sites aumentam a cada dia. Assim que um novo vazamento for adicionado à nossa base de dados, o { -product-name-nowrap } lhe enviará um alerta - assim você pode tomar providências e proteger sua conta.
 landing-headline = Seu direito de ficar seguro contra hackers começa aqui.
 landing-blurb =
     O { -product-name-nowrap } lhe equipa com ferramentas para manter suas informações pessoais seguras.
@@ -80,7 +78,7 @@ scan-privacy = Seu endereço de e-mail não será armazenado,
 scan-submit = Procure seu endereço de e-mail
 scan-another-email = Analise Outro Endereço de E-mail
 scan-featuredbreach-label = Descubra se sua conta em <span class="bold">{ $featuredBreach }</span> foi comprometida.
-sensitive-breach-email-required = Brecha contém informações sensíveis. Necessária verificação por email.
+sensitive-breach-email-required = A brecha contém informações sensíveis. É necessária confirmação por e-mail.
 scan-error = Precisa ser um endereço de e-mail válido.
 signup-banner-headline = O { -product-name-nowrap } detecta ameaças contra suas contas online.
 signup-banner-blurb =
@@ -94,7 +92,7 @@ signup-modal-headline = Cadastre-se no { -product-name-nowrap }
 signup-modal-blurb = Cadastre-se para ter acesso ao seu relatório completo, alertas quando novos vazamentos ocorrerem e dicas do { -product-name-nowrap }.
 signup-modal-close = Fechar
 get-your-report = Veja seu Relatório
-signup-modal-verify-headline = Verificar Seu Cadastro
+signup-modal-verify-headline = Confirme seu cadastro
 signup-modal-verify-blurb = Enviamos um link de verificação para <span id="submitted-email" class="medium"></span>.
 signup-modal-verify-expiration = Este link irá expirar em 24 horas.
 signup-modal-verify-resend = Não apareceu na caixa de entrada nem no spam? Reenviar.
@@ -174,7 +172,7 @@ unsub-survey-error = Por favor selecione uma resposta:
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Compartilhar
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
-tweet = Tuítar
+tweet = Tuitar
 download-firefox-quantum = Baixar o { -brand-Quantum }
 download-firefox-mobile = Baixar o { -brand-name } Mobile
 # Features here refers to Firefox browser features. 
@@ -190,7 +188,7 @@ copyright-info =
 hibp-attribution = Dados de vazamentos fornecidos por { $hibp-link }
 site-description = Suas contas foram vazadas ou roubadas em um vazamento de dados? Descubra com o { -product-name }. Pesquise nossa base e cadastre-se para receber alertas.
 confirmation-headline = Seu relatório do { -product-name } está a caminho.
-confirmation-blurb = Vazamentos de dados podem afetar qualquer pessoa. Divulgue isso, para que seus amigos e familiares possam verificar para saber se suas contas online estão seguras.
+confirmation-blurb = Vazamentos de dados podem afetar qualquer pessoa. Divulgue isso, para que seus amigos e familiares possam verificar e saber se suas contas online estão seguras.
 share-email = Email
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Outro
