@@ -9,7 +9,7 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP =
-    {
+    { $case ->
         [nominative] Сервис Have I Been Pwned
         [genitive] Сервисом Have I Been Pwned
        *[dative] Сервису Have I Been Pwned

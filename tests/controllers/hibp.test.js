@@ -55,7 +55,7 @@ test("notify POST with breach, subscriber hash prefix and suffixes should call s
   await hibp.notify(mockRequest, mockResponse);
 
   const mockFluentFormatCalls = LocaleUtils.fluentFormat.mock.calls;
-  expect (mockFluentFormatCalls.length).toBe(2);
+  expect (mockFluentFormatCalls.length).toBe(1);
   const mockFluentFormatCallArgs = mockFluentFormatCalls[0];
   expect (mockFluentFormatCallArgs[0]).toEqual(["en"]);
   expect (mockFluentFormatCallArgs[1]).toBe("hibp-notify-email-subject");
@@ -95,6 +95,8 @@ test("notify POST for subscriber with no signup_language should default to en", 
   jest.mock("../../hibp");
   EmailUtils.sendEmail = jest.fn();
   LocaleUtils.fluentFormat = jest.fn();
+  HIBPLib.subscribeHash = jest.fn();
+
   const testEmail = "subscriberWithoutLanguage@test.com";
 
   await DB.addSubscriber(testEmail);

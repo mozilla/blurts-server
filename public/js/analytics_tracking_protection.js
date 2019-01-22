@@ -29,14 +29,6 @@ function browserName() {
 }
 
 
-function removeUtms() {
-  const win = window;
-  const loc = win.location;
-  if (loc.search.includes("utm_") && win.history.replaceState) {
-    win.history.replaceState({}, "", loc.pathname);
-  }
-}
-
 
 if (browserName() === "firefox") {
   if (document.getElementById("download-firefox") || document.getElementById("download-firefox-bar")) {
@@ -67,5 +59,5 @@ if(typeof(ga) !== "undefined") {
     ga("set", "page", pageValue);
   }
 
-	ga("send", "pageview", {"hitCallback": removeUtms});
+	ga("send", "pageview");
 }

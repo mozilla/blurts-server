@@ -26,10 +26,9 @@ async function add(req, res) {
     req.fluentFormat("user-add-email-verify-subject"),
     "default_email",
     { email,
-      verifyUrl: EmailUtils.verifyUrl(unverifiedSubscriber),
-      unsubscribeUrl: EmailUtils.unsubscribeUrl(unverifiedSubscriber),
-      buttonValue: req.fluentFormat("verify-my-email"),
       supportedLocales: req.supportedLocales,
+      verificationHref: EmailUtils.getVerificationUrl(unverifiedSubscriber),
+      unsubscribeUrl: EmailUtils.getUnsubscribeUrl(unverifiedSubscriber, "account-verification-email"),
       whichView: "email_partials/email_verify",
     });
 
@@ -43,28 +42,28 @@ async function verify(req, res) {
   if (!req.query.token) {
     throw new FluentError("user-verify-token-error");
   }
+  const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
 
   let unsafeBreachesForEmail = [];
-  const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
-  const unsubscribeUrl = EmailUtils.unsubscribeUrl(verifiedEmailHash);
-
   unsafeBreachesForEmail = await HIBP.getBreachesForEmail(
     sha1(verifiedEmailHash.email),
     req.app.locals.breaches,
     true,
   );
 
+  const utmID = "report";
+
   await EmailUtils.sendEmail(
     verifiedEmailHash.email,
     req.fluentFormat("user-verify-email-report-subject"),
     "default_email",
     {
-      supportedLocales: req.supportedLocales,
       email: verifiedEmailHash.email,
+      supportedLocales: req.supportedLocales,
       date: HBSHelpers.prettyDate(req.supportedLocales, new Date()),
       unsafeBreachesForEmail: unsafeBreachesForEmail,
-      unsubscribeUrl: unsubscribeUrl,
-      buttonValue: req.fluentFormat("report-scan-another-email"),
+      scanAnotherEmailHref: EmailUtils.getScanAnotherEmailUrl(utmID),
+      unsubscribeUrl: EmailUtils.getUnsubscribeUrl(verifiedEmailHash, utmID),
       whichView: "email_partials/report",
     }
   );
@@ -83,7 +82,9 @@ async function getUnsubscribe(req, res) {
   if (!req.query.token) {
     throw new FluentError("user-unsubscribe-token-error");
   }
+
   const subscriber = await DB.getSubscriberByToken(req.query.token);
+
   //throws error if user backs into and refreshes unsubscribe page
   if (!subscriber) {
     throw new FluentError("error-not-subscribed");
