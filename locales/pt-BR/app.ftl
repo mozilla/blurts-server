@@ -74,11 +74,11 @@ landing-blurb =
     Descubra o que hackers já sabem sobre você e aprenda como estar sempre um passo à frente deles.
 scan-label = Veja se você foi envolvido em um vazamento de dados.
 scan-placeholder = Digite um endereço de e-mail
-scan-privacy = Seu endereço de e-mail não será armazenado,
+scan-privacy = Seu endereço de e-mail não será armazenado.
 scan-submit = Procure seu endereço de e-mail
 scan-another-email = Analise outro endereço de e-mail
 scan-featuredbreach-label = Descubra se sua conta em <span class="bold">{ $featuredBreach }</span> foi comprometida.
-sensitive-breach-email-required = A brecha contém informações sensíveis. É necessária confirmação por e-mail.
+sensitive-breach-email-required = A brecha contém informações sensíveis. É necessário uma confirmação por e-mail.
 scan-error = Precisa ser um endereço de e-mail válido.
 signup-banner-headline = O { -product-name-nowrap } detecta ameaças contra suas contas online.
 signup-banner-blurb =
@@ -89,7 +89,7 @@ download-firefox-bar-link = Baixe o { -brand-name } agora
 download-firefox-banner-blurb = Tome as rédeas do seu navegador
 download-firefox-banner-button = Baixe o { -brand-name }
 signup-modal-headline = Cadastre-se no { -product-name-nowrap }
-signup-modal-blurb = Cadastre-se para ter acesso ao seu relatório completo, alertas quando novos vazamentos ocorrerem e dicas do { -product-name-nowrap }.
+signup-modal-blurb = Cadastre-se para ter acesso ao seu relatório completo, alertas quando novos vazamentos ocorrerem e dicas de segurança do { -product-name-nowrap }.
 signup-modal-close = Fechar
 get-your-report = Veja seu Relatório
 signup-modal-verify-headline = Confirme seu cadastro
@@ -111,9 +111,9 @@ no-breaches =
     Cadastre-se no { -product-name-nowrap } para obter um relatório completo, receber alertas quando novos vazamentos acontecerem e dicas para proteger suas senhas.
 featured-breach-results =
     { $breachCount ->
-        [0] Sua conta não aparece no vazamento em <span class="bold">{ $featuredBreach }</span>, mas pode aparecer em outros vazamentos conhecidos.
-        [one] Sua conta aparece em uma vazamento em <span class="bold">{ $featuredBreach }</span>, mas não parece estar presente em outros vazamentos conhecidos.
-       *[other] Sua conta apareceu em um vazamento em <span class="bold">{ $featuredBreach }</span> e também em um outro vazamento,
+        [0] Sua conta aparece no vazamento de <span class="bold">{ $featuredBreach }</span>, mas não aparece em nenhum outro vazamento conhecido.
+        [one] Sua conta apareceu no vazamento de <span class="bold">{ $featuredBreach }</span>, e também em um outro vazamento.
+       *[other] Sua conta apareceu no vazamento de <span class="bold">{ $featuredBreach }</span> e também em { $breachCount } outros vazamentos.
     }
 featured-breach-not-compromised =
     { $breachCount ->
