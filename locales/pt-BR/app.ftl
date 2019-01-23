@@ -158,7 +158,7 @@ unsub-blurb = Isso irá remover seu endereço de e-mail da lista do { -product-n
 unsub-button = Descadastrar
 unsub-survey-headline = Você não está mais cadastrado
 unsub-survey-blurb =
-    Seu endereço de e-mail não foi descadastrado do { -product-name-nowrap }. Obrigado por usado este serviço.
+    Seu endereço de e-mail foi descadastrado do { -product-name-nowrap }. Obrigado por usar este serviço.
     Você responderia uma pergunta sobre sua experiência?
 unsub-survey-form-label = Por que você está se descadastrando dos alertas do { -product-name-nowrap }?
 unsub-reason-1 = Eu não acho que os alertas tornam meus dados mais seguros
@@ -182,8 +182,8 @@ beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 # The following string contains HTML markup which should not be translated. 
 # Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
 copyright-info =
-    Partes deste conteúdo são &#x24B8; 1998-2018 por contribuidores individuais do mozilla.org<br />
-    Conteúdo disponível sob uma licença <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons</a>,
+    Partes deste conteúdo são &#x24B8; 1998-2018 por colaboradores individuais do mozilla.org<br />
+    Conteúdo disponível sob uma licença <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Dados de vazamentos fornecidos por { $hibp-link }
 site-description = Suas contas foram vazadas ou roubadas em um vazamento de dados? Descubra com o { -product-name }. Pesquise nossa base e cadastre-se para receber alertas.
