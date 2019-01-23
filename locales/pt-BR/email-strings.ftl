@@ -6,7 +6,7 @@ click-to-verify =
     Clique no botão 'Confirmar meu endereço de e-mail' em até 24 horas para confirmar sua conta do Firefox Monitor.
     Seu relatório então estará a caminho.
 verify-my-email = Confirmar meu endereço de e-mail
-report-scan-another-email = Analisar Outro Endereço de E-mail no { -product-name }
+report-scan-another-email = Analisar outro endereço de e-mail no { -product-name }
 automated-message = Esta é uma mensagem automática; se você a recebeu por engano, nenhuma ação é necessária.
 # Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
 we-sent-this-alert = Enviamos uma mensagem para { $userEmail } porque o endereço de e-mail solicitou alertas do { -product-name }
@@ -21,31 +21,31 @@ report-no-breaches =
     Seu endereço de e-mail não aparece na nossa base de vazamentos conhecidos.
     Porém vazamentos podem acontecer a qualquer momento. Tome estas medidas para manter seus dados pessoais seguros online.
 # A list of next steps someone should take if their information has been involved in a data breach.
-what-to-do-next = O Que Fazer Agora
+what-to-do-next = O que fazer agora
 report-headline =
     { $breachCount ->
-        [0] Até agora tudo bem
-        [one] Sua conta não foi afetada por vazamentos de dados.
-       *[other] Suas contas apareceram em { $breachCount } vazamentos.
+        [0] Até agora tudo bem.
+        [one] Sua conta apareceu em { $breachCount } vazamento de dados.
+       *[other] Suas contas apareceram em { $breachCount } vazamentos de dados.
     }
 report-subhead-no-breaches =
     Sua conta não aparece em nosso relatório completo de vazamentos.
     Isso é uma boa notícia, mas você pode fazer mais para se proteger.
-    Vazamentos de dados podem acontecer a qualquer hora, então leia adiante para saber como proteger suas senhas.
+    Vazamentos de dados podem acontecer a qualquer hora, então continue lendo para saber como proteger suas senhas.
 report-subhead-found-breaches = Aqui está o seu relatório completo do Firefox Monitor, que inclui todos os vazamentos de dados conhecidos em que este endereço de e-mail foi afetado.
 breach-alert-headline = Sua conta foi afetada por um vazamento de dados.
 breach-alert-subhead = Um vazamento de dados que veio a público recentemente contém o seu endereço de e-mail e os seguintes dados
 report-pwt-blurb =
-    Senhas são tão importantes que milhares delas são roubadas todos os dias e trocadas ou vendidas no mercado negro.
+    Senhas são tão importantes que milhares delas são roubadas todos os dias e negociadas ou vendidas no mercado negro.
     Senhas mais fortes protegem suas contas e todas as informações pessoais que residem dentro delas.
 report-pwt-headline-1 = Use uma senha diferente para cada conta
 report-pwt-summary-1 =
-    Reutilizar a mesma senha em todos os lugares abre portas para hacker.
-    Eles podem usar a senha para acessar as suas outras contas.
-report-pwt-headline-2 = Criando senhas fortes e únicas
+    Reutilizar a mesma senha em todos os lugares abre portas para hackers.
+    Eles podem usar a senha para acessar suas outras contas.
+report-pwt-headline-2 = Crie senhas fortes e únicas
 report-pwt-summary-2 =
     Hackers usam listas de senhas comuns para tentar adivinhar a sua.
-    Quanto maior e mais aleatória for a sua senha, mais difícil ela será de ser roubada.
+    Quanto maior e mais aleatória for sua senha, mais difícil será roubar.
 report-pwt-headline-3 = Trate perguntas de segurança como senhas extras
 report-pwt-summary-3 =
     Sites não verificam se suas respostas são reais, eles apenas verificam se elas coincidem com as respostas dadas no momento do cadastro.
