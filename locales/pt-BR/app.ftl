@@ -118,8 +118,8 @@ featured-breach-results =
 featured-breach-not-compromised =
     { $breachCount ->
         [0] { no-breaches }
-        [one] Sua conta não apareceu no vazamento em <span class="bold">{ $featuredBreach }</span>, mas apareceu em um outro vazamento.
-       *[other] Sua conta não apareceu no vazamento em <span class="bold">{ $featuredBreach }</span>, mas apareceu em { $breachCount } outros vazamentos.
+        [one] Sua conta não apareceu no vazamento de <span class="bold">{ $featuredBreach }</span>, mas apareceu em um outro vazamento.
+       *[other] Sua conta não apareceu no vazamento de <span class="bold">{ $featuredBreach }</span>, mas apareceu em { $breachCount } outros vazamentos.
     }
 scan-results =
     { $breachCount ->
@@ -127,8 +127,8 @@ scan-results =
         [one] Sua conta apareceu em { $breachCount } vazamento.
        *[other] Contas associadas a este endereço de e-mail apareceram nos seguintes { $breachCount } vazamentos.
     }
-show-more-breaches = Mostar Mais
-what-to-do-headline = O Que Fazer Quando Suas Informações São Expostas Em Um Vazamento De Dados
+show-more-breaches = Mostar mais
+what-to-do-headline = O que fazer quando suas informações são expostas em um vazamento de dados
 what-to-do-subhead-1 = Troque suas senhas, até nas contas antigas
 what-to-do-blurb-1 =
     Se você não consegue acessar sua conta, entre em contato com o site perguntando como recuperar ou encerrar sua conta.
