@@ -1,0 +1,13 @@
+      <nav class="{{ class }}">
+        <div class="fxa-links">
+          <a href="/" class="show-mobile">
+            <div class="avatar-wrapper show-mobile">
+              <img class="avatar show-mobile" src="{{ req.session.user.avatar }}"/>
+            </div>
+            <span class="show-mobile bold">{{ req.session.user.email }}</span>
+          </a>
+          <a href="/scan/full_report">{{fluentFormat req.supportedLocales "see-full-report"}}</a>
+          <a href="https://accounts.firefox.com/">{{fluentFormat req.supportedLocales "manage-fxa"}}</a>
+          <a href="/user/logout">{{fluentFormat req.supportedLocales "sign-out"}}</a>
+        </div>
+      </nav>

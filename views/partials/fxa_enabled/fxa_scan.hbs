@@ -1,0 +1,41 @@
+<main class="scan-results">
+  <div class="section-wrapper breach-container">
+    <!-- scan results page left -->
+    <div class="half scan-results-message">
+      {{> fxa_enabled/scan_results/result_headline}}
+      {{> fxa_enabled/scan_results/result_subhead}}
+      <!-- append "see full report", but only if it's a signed in user scanning from a feautred breach page, with scan results greater than one. -->
+      {{#if featuredBreach}}
+        {{#ifCompare foundBreaches.length ">" 1}}
+          {{#if req.session.user }}
+            {{> fxa_enabled/see_full_report_button}}
+          {{/if}}
+        {{/ifCompare}}
+      {{/if}}
+    </div>
+    <!--scan results page right -->
+    {{> fxa_enabled/scan_results/result_page_right}}
+
+    {{#ifCompare featuredBreach "&&" req.session.user}}
+    <!-- "See Full Report Button" is surfaced above -->
+    {{else}}
+      {{> compromised_accounts }}
+    {{/ifCompare}}
+  </div>
+</main>
+
+{{#ifCompare foundBreaches.length "===" 0}}
+  {{> scan_another_email}}
+  {{> password_tips}}
+{{else}}
+  {{#ifCompare foundBreaches.length ">=" 1}}
+    {{> banners/sign_up_banner class="extra-margin"}}
+  {{/ifCompare}}
+  {{#if fullReport}}
+    {{> what_to_do class="extra-margin"}}
+  {{/if}}
+    {{> what_to_do}}
+  {{> scan_another_email}}
+{{/ifCompare}}
+
+{{> banners/download_firefox_banner}}

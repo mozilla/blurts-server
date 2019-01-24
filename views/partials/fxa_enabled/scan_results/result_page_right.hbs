@@ -1,0 +1,51 @@
+    {{#ifCompare foundBreaches.length "===" 0}}
+      {{#if req.session.user}}
+        {{#if authenticatedUser}}
+          <div class="subscribe-icon stack"><!--subscribe-icon--></div>
+        {{/if}}
+      {{else}}
+        {{> fxa_enabled/sign_up_bundle class="third"}}
+      {{/if}}
+    {{/ifCompare}}
+
+    {{#ifCompare foundBreaches.length "===" 1}}
+      {{#if featuredBreach}}
+        {{#if userAccountCompromised}}
+          {{> fxa_enabled/scan_results/single_breach}}
+        {{else}}
+          {{#if req.session.user}}
+            <div class="third">
+              {{> fxa_enabled/see_full_report_button}}
+            </div>
+          {{else}}
+            {{> fxa_enabled/scan_results/single_breach}}
+          {{/if}}
+        {{/if}}
+      {{else}}
+        {{> fxa_enabled/scan_results/single_breach}}
+      {{/if}}
+    {{/ifCompare}}
+
+    {{#ifCompare foundBreaches.length "===" 2}}
+      {{#if req.session.user}}
+        {{#if featuredBreach}}
+          {{> fxa_enabled/scan_results/single_breach}}
+        {{/if}}
+      {{else}}
+        {{> fxa_enabled/sign_up_bundle }}
+      {{/if}}
+    {{/ifCompare}}
+
+    {{#ifCompare foundBreaches.length ">" 2}}
+      {{#if featuredBreach}}
+        {{#if req.session.user}}
+          {{> fxa_enabled/scan_results/single_breach}}
+        {{else}}
+          {{> fxa_enabled/sign_up_bundle class="third"}}
+        {{/if}}
+      {{else}} <!--featuredBreach -->
+        {{#unless req.session.user}}
+          {{> fxa_enabled/sign_up_bundle class="third"}}
+        {{/unless}}
+      {{/if}}
+    {{/ifCompare}}

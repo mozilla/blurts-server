@@ -14,17 +14,19 @@ async function post (req, res) {
     res.redirect("/");
     return;
   }
-  foundBreaches = await HIBP.getBreachesForEmail(emailHash, req.app.locals.breaches);
 
-  foundBreaches.sort( (a,b) => {
-    const oldestBreach = new Date(a.BreachDate);
-    const newestBreach = new Date(b.BreachDate);
-    return newestBreach-oldestBreach;
-  });
+  if (req.session.user) {
+    if (sha1(req.session.user.email).toUpperCase() === emailHash) {
+      return res.redirect("/scan/full_report");
+    }
+  }
+
+  foundBreaches = await HIBP.getBreachesForEmail(emailHash, req.app.locals.breaches);
 
   if (req.body.featuredBreach) {
     featuredBreach = HIBP.getBreachByName(req.app.locals.breaches, req.body.featuredBreach.toLowerCase());
     const findFeaturedBreach = foundBreaches.findIndex(breach => breach.Name === featuredBreach.Name);
+
 
     if (findFeaturedBreach !== -1) {
       userAccountCompromised = true;
@@ -51,6 +53,53 @@ async function post (req, res) {
 }
 
 
+async function getFullReport(req, res) {
+  const fullReport = true;
+  const authenticatedUser = true;
+
+  if (!req.session.user) {
+    return res.redirect("/");
+  }
+  const emailHash = sha1(req.session.user.email);
+  const foundBreaches = await HIBP.getBreachesForEmail(emailHash, req.app.locals.breaches);
+
+  res.render("scan", {
+    title: req.fluentFormat("scan-title"),
+    foundBreaches,
+    fullReport,
+    authenticatedUser,
+  });
+}
+
+
+async function getLatestBreaches(req, res) {
+  const latestBreaches = true;
+  const authenticatedUser = true;
+  let foundBreaches = [];
+  let newUser = false; // new user welcome message bar listens for this
+
+  if (!req.session.user) {
+    return res.redirect("/");
+  }
+
+  if (req.session.newUser === true) {
+    newUser = true;
+    req.session.newUser = false;
+  }
+
+  const emailHash = sha1(req.session.user.email);
+  foundBreaches = await HIBP.getBreachesForEmail(emailHash, req.app.locals.breaches);
+
+  res.render("scan", {
+    title: req.fluentFormat("scan-title"),
+    foundBreaches,
+    latestBreaches,
+    newUser,
+    authenticatedUser,
+  });
+}
+
+
 function get (req, res) {
   res.redirect("/");
 }
@@ -58,4 +107,6 @@ function get (req, res) {
 module.exports = {
   post,
   get,
+  getFullReport,
+  getLatestBreaches,
 };

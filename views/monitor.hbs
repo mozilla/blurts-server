@@ -1,40 +1,7 @@
 {{!< default }}
-<main class="landing-content">
-  <section class="section-wrapper">
-    <div class="half {{#if featuredBreach}} featured {{/if}}">
-      <h2 data-location="landing-page" class="section-headline">
-        {{#if featuredBreach }}
-          {{{fluentFormat req.supportedLocales "scan-featuredbreach-label" featuredBreach=featuredBreach.Title}}}
-        {{else}}
-          {{{fluentFormat req.supportedLocales "landing-headline"}}}
-        {{/if}}
-      </h2>
-      {{#if featuredBreach }}
 
-        {{#if breachIsSensitive}}
-          {{> sign_up_button}}
-          <span id="sensitive-featured-breach" class="sensitive-breach-email-required">{{fluentFormat req.supportedLocales "sensitive-breach-email-required"}}</span>
-        {{else}}
-          {{> scan_form}}
-        {{/if}}
-
-      {{else}}
-        <p class="landing-blurb">
-          {{{fluentFormat req.supportedLocales "landing-blurb"}}}
-        </p>
-      {{/if}}
-    </div>
-    <div class="half">
-      {{#if featuredBreach}}
-        {{> featured_breach }}
-      {{else}}
-        <span class="demi form-desc">{{fluentFormat req.supportedLocales "scan-label"}}</span>
-        {{> scan_form}}
-      {{/if}}
-    </div>
-  </section>
-</main>
-
-{{> banners/sign_up_banner}}
-{{> password_tips }}
-{{> banners/download_firefox_banner}}
+{{#if FXA_ENABLED}}
+  {{> fxa_enabled/fxa_monitor}}
+{{else}}
+  {{> legacy/monitor}}
+{{/if}}

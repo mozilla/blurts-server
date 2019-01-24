@@ -1,0 +1,38 @@
+{{#ifCompare foundBreaches.length ">" 1}}
+  <div class="compromised-accounts">
+    <div class="section-wrapper">
+      {{#if fullReport}} <!-- show all breaches without button -->
+        {{#each foundBreaches}}
+          {{> fxa_enabled/breached_account req=../req}}
+        {{/each}}
+        {{> hibp_attribution }}
+      {{else}}
+        <!--show first 4 breaches-->
+        {{#eachFromTo foundBreaches 0 4 }}
+          {{> fxa_enabled/breached_account req=../req}}
+        {{/eachFromTo}}
+        {{#ifCompare foundBreaches.length "<=" 4}}
+          <div class="whole align-left">
+            {{> hibp_attribution}}
+          </div>
+        {{/ifCompare}}
+        <!--display "Show More" button and show remaining breaches onclick if foundBreaches.length > 4-->
+        {{#ifCompare foundBreaches.length ">" 4}}
+          <div id="additional-breaches" class="section-wrapper additional-breaches">
+            {{#eachFromTo foundBreaches 4 foundBreaches.length }}
+              {{> fxa_enabled/breached_account req=../req}}
+            {{/eachFromTo}}
+          </div>
+          <div class="whole">
+          {{#if latestBreaches}} <!-- show Full Report button on latest breaches page -->
+            {{> fxa_enabled/see_full_report_button}}
+          {{else}}
+            <button id="show-additional-breaches" class="button transparent-button">{{fluentFormat req.supportedLocales "show-all"}}</button>
+          {{/if}}
+          </div>
+          {{> hibp_attribution }}
+        {{/ifCompare}}
+      {{/if}}
+    </div>
+  </div>
+{{/ifCompare}}

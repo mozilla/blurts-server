@@ -2,7 +2,11 @@
 <html lang="{{ locale }}">
   <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="/dist/app.min.css">
+    {{#if FXA_ENABLED}}
+      <link rel="stylesheet" href="/dist/fxa.min.css">
+    {{else}}
+      <link rel="stylesheet" href="/dist/app.min.css">
+    {{/if}}
     <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content="{{fluentFormat req.supportedLocales "og-site-description"}}" />
@@ -15,7 +19,10 @@
     <meta name="twitter:title" content="Firefox Monitor" />
     <meta name="twitter:description" content="{{fluentFormat req.supportedLocales "share-twitter"}}" />
     <title>{{ title }}</title>
-    <script type="text/javascript" src="/dist/app.min.js" defer></script>
+    {{!-- <script type="text/javascript" src="/dist/app.min.js" defer></script> --}}
+    <script type="text/javascript" src="/js/analytics_dnt-helper.js" defer></script>
+    <script type="text/javascript" src="/js/analytics_tracking_protection.js" defer></script>
+    <script type="text/javascript" src="/js/monitor.js" defer></script>
 
     {{#if ENABLE_PONTOON_JS}}
       <script src="https://pontoon.mozilla.org/pontoon.js"></script>
@@ -24,48 +31,21 @@
     <link rel="icon" href="/img/favicons/favicon-128.png" sizes="128x128" />
     <link rel="icon" href="/img/favicons/favicon-256.png" sizes="256x256" />
   </head>
-  <body data-server-url="{{ SERVER_URL }}">
-    <div id="content-wrap" class="content-wrap">
-      {{> subscribe_modal/subscribe_modal_wrapper}}
-      {{> banners/download_firefox_bar}}
-      <header class ="section-wrapper">
-        <div class="half">
-          <a class="wrap-row" href="/">
-            <div class="firefox-logo firefox-monitor"><!--Firefox Monitor logo--></div>
-            <h1><span class="demi">Firefox</span> Monitor</h1>
-          </a>
-        </div>
-        <div class="half social_container">
-          {{> social_media_sharing_buttons}}
-        </div>
-      </header>
-        {{{ body }}}
+  <body data-server-url="{{ SERVER_URL }}" {{#if FXA_ENABLED}} data-fxa-enabled="fxa-enabled"{{/if}}>
+     <div id="content-wrap" class="content-wrap">
+      {{#if newUser}}
+        {{> fxa_enabled/fxa_new_user_bar}}
+      {{else}}
+        {{> banners/download_firefox_bar}}
+      {{/if}}
+      {{#if FXA_ENABLED}}
+        {{> fxa_enabled/menu/fxa_mobile_menu}}
+      {{else}}
+        {{> subscribe_modal/subscribe_modal_wrapper}}
+      {{/if}}
+      {{> header }}
+      {{{ body }}}
     </div>
-        <footer id="footer">
-      <div class="section-wrapper">
-        <div class="third">
-          <a {{> analytics/link_event eventLabel="Mozilla Logo"}} class="footer-logo-wrapper" href="https://www.mozilla.org/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener" aria-label="Mozilla">{{> sprite symID="Mozilla" }}</a>
-        </div>
-        <ul class="third">
-          <li>{{fluentFormat req.supportedLocales "layout-support" }}</li>
-          <li><a {{> analytics/link_event eventLabel="About Firefox alerts"}} href="https://blog.mozilla.org/security/2018/11/14/when-does-firefox-alert-for-breached-sites" target="_blank" rel="noopener">{{{fluentFormat req.supportedLocales "about-firefox-alerts"}}}</a></li>
-          <li><a {{> analytics/link_event eventLabel="Give Feedback"}} href="https://qsurvey.mozilla.com/s3/Firefox-Monitor-Feedback" target="_blank" rel="noopener">{{{fluentFormat req.supportedLocales "give-feedback"}}}</a></li>
-          <li><a {{> analytics/link_event eventLabel="Terms & Privacy"}} href="https://www.mozilla.org/privacy/firefox-monitor/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">{{{fluentFormat req.supportedLocales "terms-and-privacy"}}}</a></li>
-          <li><a {{> analytics/link_event eventLabel="GitHub"}} href="https://github.com/mozilla/blurts-server/" target="_blank" rel="noopener noreferrer">{{> sprite symID="GitHub"}}</a></li>
-        </ul>
-        <ul class="third">
-          <li>{{fluentFormat req.supportedLocales "layout-Firefox"}}</li>
-          <li><a {{> analytics/download_event eventLabel="Quantum"}} href="https://www.mozilla.org/firefox/new/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">{{fluentFormat req.supportedLocales "download-firefox-quantum"}}</a></li>
-          <li><a {{> analytics/download_event eventLabel="Mobile"}} href="https://www.mozilla.org/firefox/mobile/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">{{fluentFormat req.supportedLocales "download-firefox-mobile"}}</a></li>
-          <li><a {{> analytics/link_event eventLabel="Features"}} href="https://www.mozilla.org/firefox/features/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">{{fluentFormat req.supportedLocales "features"}}</a></li>
-          <li><a {{> analytics/download_event eventLabel="Beta, Nightly, Developer Edition"}} href="https://www.mozilla.org/firefox/channel/desktop/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">{{fluentFormat req.supportedLocales "beta-nightly-developer-edition"}}</a></li>
-        </ul>
-      </div>
-      <div class="section-wrapper">
-        <div class="two-thirds copyright-info">
-          <p>{{{fluentFormat req.supportedLocales "copyright-info"}}}</p>
-        </div>
-      </div>
-    </footer>
+    {{> footer}}
   </body>
 </html>

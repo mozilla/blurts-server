@@ -89,7 +89,7 @@ function ga_getLocation() {
   if (document.getElementById("unsubscribe-survey")) {
     return "Unsubscribe Survey";
   }
-  if (document.getElementById("subpage").getAttribute("data-analytics-id") === "error") {
+  if (document.getElementById("subpage") && document.getElementById("subpage").getAttribute("data-analytics-id") === "error" ) {
     return "Error";
   }
   if (document.getElementById("confirmation")) {
@@ -127,7 +127,13 @@ function removeInvalidMessage(e) {
 }
 
 function doOauth() {
-  window.open("/oauth/init");
+  if (localStorage.getItem("scanned")) {
+    const scannedEmail = localStorage.getItem("scanned");
+    window.open(`/oauth/init/?scanned=${encodeURIComponent(scannedEmail)}`);
+    localStorage.removeItem("scanned");
+  } else {
+    window.open("/oauth/init");
+}
 }
 
 // restricts tabbing to modal elements when modal is open.
@@ -241,6 +247,7 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
   emailForm.classList.add("loading-data");
   const emailInput = document.getElementById("scan-email");
   emailForm.querySelector("input[name=emailHash]").value = await sha1(emailInput.value);
+  localStorage.setItem("scanned", emailInput.value);
   emailInput.value = "";
   emailForm.submit();
 }
@@ -391,15 +398,20 @@ function handleFormSubmits(formEvent) {
 }
 
 function doButtonRouting(event) {
+  if (document.body.dataset.fxaEnabled === "fxa-enabled") {
+    if (event.target.id === "sign-up" || event.target.id === "login-btn" || event.target.classList.contains("open-oauth")) {
+      return doOauth();
+    }
+  } else {
+    if (event.target.id === "sign-up") {
+      ga_sendPing("SignUp", false);
+      openModalWindow();
+      return;
+    }
+  }
   if (event.target.id === "show-additional-breaches") {
     ga_sendPing("ShowAdditional", false);
-    showAdditionalBreaches();
-    return;
-  }
-  if (event.target.id === "sign-up") {
-    ga_sendPing("SignUp", false);
-    openModalWindow();
-    return;
+    return showAdditionalBreaches();
   }
   if (event.target.id === "subscribe-fxa-btn") {
     doOauth();
@@ -428,6 +440,39 @@ function restoreInputs() {
 }
 
 
+const animateMobileMenuIcon = () => {
+  if (document.body.classList.contains("menu-open")) {
+    document.getElementById("menu-path").setAttribute("d", "M5.293 6.707a1 1 0 1 1 1.414-1.414L12 10.586l5.293-5.293a1 1 0 1 1 1.414 1.414L13.414 12l5.293 5.293a1 1 0 0 1-1.414 1.414L12 13.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L10.586 12 5.293 6.707z");
+  } else {
+    document.getElementById("menu-path").setAttribute("d", "M4 7a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1zm0 5a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1zm1 4a1 1 0 1 0 0 2h14a1 1 0 1 0 0-2H5z");
+  }
+};
+
+
+const toggleMobileMenu = () => {
+  document.body.classList.toggle("menu-open");
+  animateMobileMenuIcon();
+};
+
+
+const toggleMobileFeatures = function() {
+  const page = document.body;
+  if (window.innerWidth > 575) {
+    if (document.body.classList.contains("menu-open")) {
+      document.body.classList.remove("menu-open");
+      animateMobileMenuIcon();
+      return;
+    }
+    document.body.classList.remove("enable-mobile");
+    return;
+  }
+  page.classList.add("enable-mobile");
+  if (document.getElementById("menu-icon-wrapper")) {
+    document.getElementById("menu-icon-wrapper").addEventListener("click", toggleMobileMenu);
+  }
+};
+
+
 document.addEventListener("touchstart", function(){}, true);
 
 window.addEventListener("pageshow", function() {
@@ -436,38 +481,42 @@ window.addEventListener("pageshow", function() {
   if (window.location.search.includes("utm_") && window.history.replaceState) {
     window.history.replaceState({}, "", window.location.toString().replace(/[?&]utm_.*/g, ""));
   }
-
-  if (document.forms) {
-    restoreInputs();
-  }
+  toggleMobileFeatures();
+  document.forms ? (restoreInputs(), addFormListeners()) : null;
 });
 
-if(document.forms) {
-  addFormListeners();
+if (document.body.dataset.fxaEnabled === "fxa-enabled") {
+  toggleMobileFeatures();
+  window.addEventListener("resize", toggleMobileFeatures);
+  if (document.getElementById("fxa-new-user-bar")) {
+    document.getElementById("x-close").addEventListener("click", () => {
+      document.getElementById("fxa-new-user-bar").classList.toggle("close");
+    });
+  }
 }
 
 if (document.getElementById("subpage")) {
   document.body.classList.add("sub");
 }
 
-if (document.getElementById("no-breaches")) {
+if (document.getElementById("full-report") || document.getElementById("latest-breaches") || document.getElementById("no-breaches")) {
   document.getElementById("scan-another-email").classList.add("banner");
 }
 
+// collect ping triggering elements, attach listeners
 document.querySelectorAll("[data-analytics-event]").forEach(el => {
   el.addEventListener("click", (e) => {
     ga_sendPing(e.target.dataset.analyticsEvent, e.target.dataset.analyticsLabel);
   });
 });
 
+// listen for missing breach logo images and replace them with default icon
 document.querySelectorAll(".breach-logo").forEach(logo => {
   logo.addEventListener("error", (missingLogo) => {
     missingLogo.target.src = "/img/logos/missing-logo-icon.png";
   });
 });
 
-if (document.querySelectorAll("button")) {
-  document.querySelectorAll("button").forEach(button => {
-    button.addEventListener("click", (e) => doButtonRouting(e));
-  });
-}
+document.querySelectorAll("button, .open-oauth").forEach(button => {
+  button.addEventListener("click", (e) => doButtonRouting(e));
+});

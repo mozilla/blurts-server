@@ -1,0 +1,57 @@
+<main class="scan-results">
+  <div class="section-wrapper breach-container">
+    <section class="half scan-results-message">
+
+      {{#ifCompare foundBreaches.length "===" 0}}
+        <h3 id="no-breaches" class="section-headline">{{fluentFormat req.supportedLocales "no-breaches-headline"}}</h3>
+      {{else}}
+        <h3 id="found-breaches" class="section-headline">{{fluentFormat req.supportedLocales "found-breaches-headline"}}</h3>
+      {{/ifCompare}}
+
+      {{#if featuredBreach}}
+        {{#if userAccountCompromised}}
+          <p>{{{fluentFormat req.supportedLocales "featured-breach-results" featuredBreach=featuredBreach.Title breachCount=(breachMath foundBreaches.length "-" 1)}}}</p>
+        {{else}}
+          <p>{{{fluentFormat req.supportedLocales "featured-breach-not-compromised" featuredBreach=featuredBreach.Title breachCount=foundBreaches.length}}}</p>
+        {{/if}}
+      {{else}}
+        <p>{{{fluentFormat req.supportedLocales "scan-results" breachCount=foundBreaches.length}}}</p>
+      {{/if}}
+    </section>
+
+      {{#ifCompare foundBreaches.length "===" 0}}
+          {{#if req.session.user}}
+          <div class="subscribe-icon stack"><!--subscribe-icon--></div>
+          {{else}}
+          <section class="third">
+            {{> sign_up_button}}
+          </section>
+          {{/if}}
+      {{/ifCompare}}
+      {{#ifCompare foundBreaches.length "===" 1}}
+        <section class="half">
+          {{#each foundBreaches}}
+            {{> breach_listing req=../req}}
+          {{/each}}
+          {{> hibp_attribution}}
+        </section>
+      {{/ifCompare}}
+
+      {{> compromised_accounts }} 
+
+    </section>
+  </div>
+</main>
+
+{{#ifCompare foundBreaches.length "===" 0}}
+  <div id="scan-another-email-container" class="scan-another-email banner">
+    {{> scan_another_email}}
+  </div>
+  {{> password_tips }}
+{{else}}
+  {{> banners/sign_up_banner}}
+  {{> what_to_do }}
+  {{> scan_another_email}}
+{{/ifCompare}}
+
+{{> banners/download_firefox_banner}}

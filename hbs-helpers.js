@@ -1,5 +1,6 @@
 "use strict";
 
+const AppConstants = require("./app-constants");
 const { LocaleUtils } = require("./locale-utils");
 const mozlog = require("./log");
 
@@ -8,6 +9,14 @@ const log = mozlog("hbs-helpers");
 
 
 function fluentFormat (supportedLocales, id, args) {
+  return LocaleUtils.fluentFormat(supportedLocales, id, args.hash);
+}
+
+
+function fluentFxa (supportedLocales, id, args) {
+  if (AppConstants.FXA_ENABLED) {
+    id = `fxa-${id}`;
+  }
   return LocaleUtils.fluentFormat(supportedLocales, id, args.hash);
 }
 
@@ -73,6 +82,7 @@ function ifCompare(v1, operator, v2, options) {
     "<": v1 < v2 ? true : false,
     "<=": v1 <= v2 ? true : false,
     "===": v1 === v2 ? true : false,
+    "&&" : v1 && v2 ? true : false,
   };
   if (operators.hasOwnProperty(operator)) {
     if (operators[operator]) {
@@ -104,6 +114,7 @@ function breachMath(lValue, operator = null, rValue = null) {
 
 module.exports = {
   fluentFormat,
+  fluentFxa,
   getStringID,
   localizedBreachDataClasses,
   prettyDate,

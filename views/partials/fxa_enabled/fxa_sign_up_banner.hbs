@@ -1,0 +1,12 @@
+    <div id="sign-up-banner" class="sign-up-banner banner {{ class }}">
+      <div class="row-wrapper">
+        <div class="fourth subscribe-icon-wrapper">
+          {{> sprite symID="subscribe"}}
+        </div>
+        <div class="half">
+          <h2 class="medium secondary-title">{{{fluentFormat req.supportedLocales "fxa-signup-banner-headline"}}}</h2>
+          <p class="demi">{{{fluentFormat req.supportedLocales "fxa-signup-banner-blurb"}}}</p>
+        </div>
+        {{> fxa_enabled/sign_up_bundle class="fourth"}}
+      </div>
+    </div>

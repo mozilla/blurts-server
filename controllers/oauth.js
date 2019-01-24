@@ -42,6 +42,10 @@ function init(req, res, next, client = FxAOAuthClient) {
   req.session.state = state;
   const url = new URL(client.code.getUri({state}));
   url.searchParams.append("access_type", "offline");
+  url.searchParams.append("action", "email");
+  if (req.query.scanned) {
+    url.searchParams.append("email", req.query.scanned);
+  }
   res.redirect(url);
 }
 
@@ -61,11 +65,17 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
   });
   log.debug("fxa-confirmed-profile-data", data.body);
   const email = JSON.parse(data.body).email;
-  const signupLanguage = req.headers["accept-language"];
-  const subscriber = await DB.addSubscriber(email, signupLanguage, fxaUser.refreshToken, data.body);
 
-  const utmID = "report";
-  const unsubscribeUrl = await EmailUtils.getUnsubscribeUrl(subscriber[0], utmID);
+  const existingUser = await DB.getSubscribersByEmail(email);
+  if (existingUser.length === 0) {
+    req.session.newUser = true;
+  }
+
+  const signupLanguage = req.headers["accept-language"];
+
+  await DB.addSubscriber(email, signupLanguage, fxaUser.refreshToken, data.body);
+
+  const unsubscribeUrl = ""; // not totally sure yet how this gets handled long-term
 
   // duping some of user/verify for now
   let unsafeBreachesForEmail = [];
@@ -81,23 +91,18 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
     req.fluentFormat("user-verify-email-report-subject"),
     "default_email",
     {
-      email: email,
       supportedLocales: req.supportedLocales,
+      email: email,
       date: HBSHelpers.prettyDate(req.supportedLocales, new Date()),
       unsafeBreachesForEmail: unsafeBreachesForEmail,
-      scanAnotherEmailHref: EmailUtils.getScanAnotherEmailUrl(utmID),
       unsubscribeUrl: unsubscribeUrl,
+      buttonValue: req.fluentFormat("report-scan-another-email"),
       whichView: "email_partials/report",
     }
   );
 
-  res.render("subpage", {
-    headline: req.fluentFormat("confirmation-headline"),
-    subhead: req.fluentFormat("confirmation-blurb"),
-    title: req.fluentFormat("user-verify-title"),
-    whichPartial: "subpages/confirm",
-    emailLinks: EmailUtils.getShareByEmail(req),
-  });
+  req.session.user = JSON.parse(data.body);
+  res.redirect("/scan/latest_breaches");
 }
 
 

@@ -12,7 +12,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const helmet = require("helmet");
 const sessions = require("client-sessions");
-const url = require("url");
+const { URL } = require("url");
 
 const EmailUtils = require("./email-utils");
 const HBSHelpers = require("./hbs-helpers");
@@ -81,6 +81,15 @@ if (AppConstants.NODE_ENV === "heroku") {
   }));
 }
 
+const imgSrc = [
+  "'self'",
+  "https://www.google-analytics.com",
+];
+if (AppConstants.FXA_ENABLED) {
+  const fxaProfileImgSrc = new URL(AppConstants.OAUTH_PROFILE_URI).origin;
+  imgSrc.push(fxaProfileImgSrc);
+}
+
 app.use(helmet.contentSecurityPolicy({
   directives: {
     baseUri: ["'none'"],
@@ -96,10 +105,7 @@ app.use(helmet.contentSecurityPolicy({
     ],
     frameAncestors: FRAME_ANCESTORS,
     mediaSrc: ["'self'"],
-    imgSrc: [
-      "'self'",
-      "https://www.google-analytics.com",
-    ],
+    imgSrc: imgSrc,
     objectSrc: ["'none'"],
     scriptSrc: SCRIPT_SOURCES,
     styleSrc: STYLE_SOURCES,
@@ -131,7 +137,7 @@ if (app.get("env") === "dev") {
 
 app.locals.FXA_ENABLED = AppConstants.FXA_ENABLED;
 app.locals.SERVER_URL = AppConstants.SERVER_URL;
-app.locals.UTM_SOURCE = url.parse(AppConstants.SERVER_URL).hostname;
+app.locals.UTM_SOURCE = new URL(AppConstants.SERVER_URL).hostname;
 
 app.use(sessions({
   cookieName: "session",
