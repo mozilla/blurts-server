@@ -297,20 +297,20 @@ fxa-download-firefox-bar-blurb = Brought to you by {-brand-name}. 2x faster. Use
 fxa-download-firefox-bar-link = Download now
 fxa-download-firefox-banner-blurb = Better, faster page loading that uses less computer memory.
 
-guest-fb-other-breach-found = You were not in the { $breachName } breach, but we found that email address in another. {-sign-up-with-fxa}
+sign-up-with-fxa = Sign up for a {-brand-fxa} to get your full report and alerts about new breaches.
+
+guest-fb-other-breach-found = You were not in the { $breachName } breach, but we found that email address in another. {sign-up-with-fxa}
 user-fb-other-breach-found = You were not in the { $breachName } breach, but we found that email address in another.
 
 user-fb-compromised = Take action to protect your account.
-guest-fb-compromised = {-sign-up-with-fxa}
+guest-fb-compromised = {sign-up-with-fxa}
 
 user-compromised-headline = Your account appeared in the { $breachName } data breach.
 user-fb-other-breaches-found = You were not in the { $breachName} breach, but we found that email address in others. Take action to protect your accounts.
-guest-fb-other-breaches-found = You were not in the { $breachName } breach, but we found that email address in others. {-sign-up-with-fxa}
+guest-fb-other-breaches-found = You were not in the { $breachName } breach, but we found that email address in others. {sign-up-with-fxa}
 
 user-fb-compromised-other-breaches = Your email address also appeared in { $breachCount } other breaches. Take action to protect your accounts.
-guest-fb-compromised-other-breaches = Your email address also appeared in { $breachCount } other breaches. {-sign-up-with-fxa}
-
-sign-up-with-fxa = Sign up for a {-brand-fxa} to get your full report and alerts about new breaches.
+guest-fb-compromised-other-breaches = Your email address also appeared in { $breachCount } other breaches. {sign-up-with-fxa}
 
 no-breaches-found-headline = No breaches found from a basic search.
 authenticated-no-breaches-blurb = No breaches found. We’ll send you an email if your info appears in new breaches.
