@@ -67,39 +67,40 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
   const email = JSON.parse(data.body).email;
 
   const existingUser = await DB.getSubscribersByEmail(email);
-  if (existingUser.length === 0) {
+
+  // Check if user is signing up or signing in,
+  // then add new users to db and send email.
+  if (existingUser.length === 0 || existingUser[0].fxa_refresh_token === null) {
+    // req.session.newUser determines whether or not we show "fxa_new_user_bar" in template
     req.session.newUser = true;
+    const signupLanguage = req.headers["accept-language"];
+    await DB.addSubscriber(email, signupLanguage, fxaUser.refreshToken, data.body);
+    const unsubscribeUrl = ""; // not totally sure yet how this gets handled long-term
+
+    // duping some of user/verify for now
+    let unsafeBreachesForEmail = [];
+
+    unsafeBreachesForEmail = await HIBP.getBreachesForEmail(
+      sha1(email),
+      req.app.locals.breaches,
+      true,
+    );
+
+    await EmailUtils.sendEmail(
+      email,
+      req.fluentFormat("user-verify-email-report-subject"),
+      "default_email",
+      {
+        supportedLocales: req.supportedLocales,
+        email: email,
+        date: HBSHelpers.prettyDate(req.supportedLocales, new Date()),
+        unsafeBreachesForEmail: unsafeBreachesForEmail,
+        unsubscribeUrl: unsubscribeUrl,
+        buttonValue: req.fluentFormat("report-scan-another-email"),
+        whichView: "email_partials/report",
+      }
+    );
   }
-
-  const signupLanguage = req.headers["accept-language"];
-
-  await DB.addSubscriber(email, signupLanguage, fxaUser.refreshToken, data.body);
-
-  const unsubscribeUrl = ""; // not totally sure yet how this gets handled long-term
-
-  // duping some of user/verify for now
-  let unsafeBreachesForEmail = [];
-
-  unsafeBreachesForEmail = await HIBP.getBreachesForEmail(
-    sha1(email),
-    req.app.locals.breaches,
-    true,
-  );
-
-  await EmailUtils.sendEmail(
-    email,
-    req.fluentFormat("user-verify-email-report-subject"),
-    "default_email",
-    {
-      supportedLocales: req.supportedLocales,
-      email: email,
-      date: HBSHelpers.prettyDate(req.supportedLocales, new Date()),
-      unsafeBreachesForEmail: unsafeBreachesForEmail,
-      unsubscribeUrl: unsubscribeUrl,
-      buttonValue: req.fluentFormat("report-scan-another-email"),
-      whichView: "email_partials/report",
-    }
-  );
 
   req.session.user = JSON.parse(data.body);
   res.redirect("/scan/latest_breaches");

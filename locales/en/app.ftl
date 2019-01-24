@@ -274,7 +274,7 @@ fxa-landing-blurb =
 
 fxa-scan-label = See if you’ve appeared in a data breach.
 fxa-welcome-headline = Welcome to {-product-name}.
-fxa-welcome-blurb = You’re all set to get alerts if { $yourEmail } appears in a data breach.
+fxa-welcome-blurb = You’re all set to get alerts if { $userEmail } appears in a data breach.
 
 fxa-scan-another-email = Want to Check Another Email?
 fxa-scan-submit = Search {-product-name}

@@ -61,7 +61,7 @@ async function getFullReport(req, res) {
     return res.redirect("/");
   }
   const emailHash = sha1(req.session.user.email);
-  const foundBreaches = await HIBP.getBreachesForEmail(emailHash, req.app.locals.breaches);
+  const foundBreaches = await HIBP.getBreachesForEmail(emailHash, req.app.locals.breaches, true);
 
   res.render("scan", {
     title: req.fluentFormat("scan-title"),
@@ -88,7 +88,7 @@ async function getLatestBreaches(req, res) {
   }
 
   const emailHash = sha1(req.session.user.email);
-  foundBreaches = await HIBP.getBreachesForEmail(emailHash, req.app.locals.breaches);
+  foundBreaches = await HIBP.getBreachesForEmail(emailHash, req.app.locals.breaches, true);
 
   res.render("scan", {
     title: req.fluentFormat("scan-title"),
