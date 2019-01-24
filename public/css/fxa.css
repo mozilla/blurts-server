@@ -1332,11 +1332,17 @@ footer a.social-link svg {
 }
 
 .row.legal {
-  margin: auto;
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }
 
-footer p.copyright-info {
+p.copyright-info {
   display: block;
+}
+
+.copyright-info a {
+  color: var(--blue40);
 }
 
 footer .section-wrapper {
@@ -1382,10 +1388,6 @@ footer ul li:first-of-type,
   line-height: 40px;
   height: 40px;
   min-width: 120px;
-}
-
-footer .copyright-info a {
-  color: var(--blue40);
 }
 
 /* SUBPAGES */
