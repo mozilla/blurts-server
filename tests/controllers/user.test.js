@@ -15,6 +15,8 @@ require("../resetDB");
 jest.mock("../../email-utils");
 jest.mock("../../hibp");
 
+const mockRequest = { fluentFormat: jest.fn() };
+
 
 test("user add POST with email adds unverified subscriber and sends verification email", async () => {
     // Set up test context
@@ -81,6 +83,24 @@ test("user verify request with valid token verifies user", async () => {
   expect(resp.statusCode).toEqual(200);
   const subscriber = await DB.getSubscriberByToken(validToken);
   expect(subscriber.verified).toBeTruthy();
+});
+
+
+test("user verify request for already verified user doesn't send extra email", async () => {
+  const alreadyVerifiedToken = "54010800-6c3c-4186-971a-76dc92874941";
+  // Set up mocks
+  EmailUtils.sendEmail = jest.fn();
+  mockRequest.query = { token: alreadyVerifiedToken };
+  mockRequest.app = { locals: { breaches: testBreaches } };
+  const resp = httpMocks.createResponse();
+
+  // Call code-under-test
+  await user.verify(mockRequest, resp);
+
+  expect(resp.statusCode).toEqual(200);
+  const subscriber = await DB.getSubscriberByToken(alreadyVerifiedToken);
+  expect(subscriber.verified).toBeTruthy();
+  expect(EmailUtils.sendEmail).not.toHaveBeenCalled();
 });
 
 
