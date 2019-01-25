@@ -61,7 +61,10 @@ try {
 })();
 
 // Use helmet to set security headers
-app.use(helmet());
+// disable default HSTS; Ops handles it in stage & prod configs
+app.use(helmet({
+  hsts: false,
+}));
 
 const SCRIPT_SOURCES = ["'self'", "https://www.google-analytics.com/analytics.js"];
 const STYLE_SOURCES = ["'self'", "https://code.cdn.mozilla.net/fonts/"];
