@@ -3,9 +3,10 @@
 const fs = require("fs");
 const path = require("path");
 
-const {version, homepage} = require("../package.json");
 
+const AppConstants = require("../app-constants");
 const mozlog = require("../log");
+const {version, homepage} = require("../package.json");
 
 
 const log = mozlog("controllers.dockerflow");
@@ -33,6 +34,15 @@ if (!fs.existsSync(versionJsonPath)) {
 
 
 function vers (req, res) {
+  if (AppConstants.NODE_ENV === "heroku") {
+    /* eslint-disable no-process-env */
+    return res.json({
+      commit: process.env.HEROKU_SLUG_COMMIT,
+      version: process.env.HEROKU_SLUG_COMMIT,
+      source: homepage,
+    });
+    /* eslint-enable no-process-env */
+  }
   return res.sendFile(versionJsonPath);
 }
 
