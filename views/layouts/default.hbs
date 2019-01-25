@@ -19,10 +19,7 @@
     <meta name="twitter:title" content="Firefox Monitor" />
     <meta name="twitter:description" content="{{fluentFormat req.supportedLocales "share-twitter"}}" />
     <title>{{ title }}</title>
-    {{!-- <script type="text/javascript" src="/dist/app.min.js" defer></script> --}}
-    <script type="text/javascript" src="/js/analytics_dnt-helper.js" defer></script>
-    <script type="text/javascript" src="/js/analytics_tracking_protection.js" defer></script>
-    <script type="text/javascript" src="/js/monitor.js" defer></script>
+    <script type="text/javascript" src="/dist/app.min.js" defer></script>
 
     {{#if ENABLE_PONTOON_JS}}
       <script src="https://pontoon.mozilla.org/pontoon.js"></script>
@@ -33,12 +30,12 @@
   </head>
   <body data-server-url="{{ SERVER_URL }}" {{#if FXA_ENABLED}} data-fxa-enabled="fxa-enabled"{{/if}}>
      <div id="content-wrap" class="content-wrap">
-      {{#if newUser}}
-        {{> fxa_enabled/fxa_new_user_bar}}
-      {{else}}
-        {{> banners/download_firefox_bar}}
-      {{/if}}
-      {{#if FXA_ENABLED}}
+       {{#if FXA_ENABLED}}
+        {{#if newUser}}
+          {{> fxa_enabled/fxa_new_user_bar}}
+        {{else}}
+          {{> banners/download_firefox_bar}}
+        {{/if}}
         {{> fxa_enabled/menu/fxa_mobile_menu}}
       {{else}}
         {{> subscribe_modal/subscribe_modal_wrapper}}

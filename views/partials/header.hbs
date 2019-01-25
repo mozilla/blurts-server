@@ -1,5 +1,10 @@
 {{#if FXA_ENABLED}}
-  {{> fxa_enabled/fxa_header}}
+  <header class ="section-wrapper">
+    <div class="whole">
+      {{> firefox_monitor_logo}}
+      {{> fxa_enabled/menu/fxa_navigation}}
+    </div>
+  </header>
 {{else}}
   {{> legacy/legacy_header}}
 {{/if}}
