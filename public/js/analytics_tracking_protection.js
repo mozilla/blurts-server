@@ -7,7 +7,7 @@
 
 function browserName() {
   try {
-    if (/firefox/i.test(navigator.userAgent)) {
+    if (/firefox|FxiOS/i.test(navigator.userAgent)) {
       return "firefox";
     }
     if (/edge/i.test(navigator.userAgent)) {
