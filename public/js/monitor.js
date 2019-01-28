@@ -471,6 +471,7 @@ const toggleMobileFeatures = function() {
   if (document.getElementById("menu-icon-wrapper")) {
     document.body.classList.add("menu-closed");
     document.getElementById("menu-icon-wrapper").addEventListener("click", toggleMobileMenu);
+    document.getElementById("bg-screen").addEventListener("click", toggleMobileMenu);
   }
 };
 
@@ -501,7 +502,7 @@ if (document.getElementById("subpage")) {
   document.body.classList.add("sub");
 }
 
-if (document.getElementById("full-report") || document.getElementById("latest-breaches") || document.getElementById("no-breaches")) {
+if (document.getElementById("latest-breaches") || document.getElementById("no-breaches")) {
   document.getElementById("scan-another-email").classList.add("banner");
 }
 
