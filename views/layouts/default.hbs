@@ -29,13 +29,15 @@
     <link rel="icon" href="/img/favicons/favicon-256.png" sizes="256x256" />
   </head>
   <body data-server-url="{{ SERVER_URL }}" {{#if FXA_ENABLED}} data-fxa-enabled="fxa-enabled"{{/if}}>
+    {{#if FXA_ENABLED}}
+      {{#if newUser}}
+        {{> fxa_enabled/fxa_new_user_bar}}
+      {{else}}
+        {{> banners/download_firefox_bar}}
+      {{/if}}
+    {{/if}}
      <div id="content-wrap" class="content-wrap">
-       {{#if FXA_ENABLED}}
-        {{#if newUser}}
-          {{> fxa_enabled/fxa_new_user_bar}}
-        {{else}}
-          {{> banners/download_firefox_bar}}
-        {{/if}}
+      {{#if FXA_ENABLED}}
         {{> fxa_enabled/menu/fxa_mobile_menu}}
       {{else}}
         {{> subscribe_modal/subscribe_modal_wrapper}}

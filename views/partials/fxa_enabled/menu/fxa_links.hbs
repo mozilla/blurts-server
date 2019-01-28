@@ -7,7 +7,7 @@
             <span class="show-mobile bold">{{ req.session.user.email }}</span>
           </a>
           <a href="/scan/full_report">{{fluentFormat req.supportedLocales "see-full-report"}}</a>
-          <a href="https://accounts.firefox.com/">{{fluentFormat req.supportedLocales "manage-fxa"}}</a>
+          <a href="https://accounts.firefox.com/">{{fluentFormat req.supportedLocales "manage-fxa"}}{{> sprite symID="open-new-window"}}</a>
           <a href="/user/logout">{{fluentFormat req.supportedLocales "sign-out"}}</a>
         </div>
       </nav>

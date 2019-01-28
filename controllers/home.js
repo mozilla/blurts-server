@@ -28,8 +28,6 @@ async function home(req, res) {
       const emailHash = sha1(req.session.user.email);
 
       foundBreaches = await HIBP.getBreachesForEmail(emailHash, req.app.locals.breaches, true);
-      foundBreaches.push(HIBP.getBreachByName(req.app.locals.breaches, "adobe"));
-      foundBreaches.push(HIBP.getBreachByName(req.app.locals.breaches, "linkedin"));
       const findFeaturedBreach = foundBreaches.findIndex(breach => breach.Name === featuredBreach.Name);
 
       if (findFeaturedBreach !== -1) {
@@ -56,10 +54,8 @@ async function home(req, res) {
     breachIsSensitive,
     foundBreaches,
     userAccountCompromised,
-
   });
 }
-
 
 function notFound(req, res) {
   res.status(404);

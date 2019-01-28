@@ -451,6 +451,7 @@ const animateMobileMenuIcon = () => {
 
 const toggleMobileMenu = () => {
   document.body.classList.toggle("menu-open");
+  document.body.classList.toggle("menu-closed");
   animateMobileMenuIcon();
 };
 
@@ -468,6 +469,7 @@ const toggleMobileFeatures = function() {
   }
   page.classList.add("enable-mobile");
   if (document.getElementById("menu-icon-wrapper")) {
+    document.body.classList.add("menu-closed");
     document.getElementById("menu-icon-wrapper").addEventListener("click", toggleMobileMenu);
   }
 };

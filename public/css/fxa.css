@@ -690,7 +690,9 @@ h5,
 }
 
 .fxa-new-user-bar.close {
-  animation: collapseNewUser 0.3s ease forwards;
+  color: rgba(255, 255, 255, 0);
+  transition: color 0.2s ease-out;
+  animation: collapseNewUser 0.2s ease-out forwards;
 }
 
 .fxa-new-user-bar p {
@@ -722,14 +724,10 @@ h5,
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-.fxa-new-user-bar.close .x-close {
-  opacity: 0;
-}
-
 .x-close,
 .x-close:hover,
 .fxa-new-user-bar.close .x-close {
-  transition: all 0.125s ease;
+  transition: all 0.2s ease-out;
 }
 
 .download-firefox.banner .secondary-title {
@@ -776,15 +774,14 @@ h5,
 }
 
 .avatar-wrapper.desktop::before {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 6px solid #e3e2e2;
   content: '';
-  display: inline-block;
-  width: 13px;
-  height: 13px;
-  background-image: url("/img/caret.svg");
-  background-size: contain;
   position: absolute;
   top: 0;
   bottom: 0;
+  height: 0;
   right: -20px;
   margin: auto;
 }
@@ -799,8 +796,11 @@ span.user-email {
   margin-right: calc(var(--gap) / 2);
 }
 
-.fxa-user-info svg {
-  display: none;
+svg#open-new-window {
+  max-width: 23px;
+  max-height: 24px;
+  transform: scale(0.725);
+  opacity: 0.9;
 }
 
 .fxa-user-info {
@@ -819,6 +819,7 @@ span.user-email {
   right: 0;
   top: 100%;
   width: 100%;
+  min-width: 225px;
   text-align: right;
   padding-top: calc(var(--gap) / 1.25);
   visibility: hidden;
@@ -842,7 +843,7 @@ span.user-email {
   width: 100%;
   pointer-events: none;
   padding: 5px 0;
-  display: inline-block;
+  display: flex;
 }
 
 .fxa-user-info:hover .fxa-menu a {
@@ -850,8 +851,18 @@ span.user-email {
   pointer-events: all;
 }
 
+.fxa-links {
+  opacity: 0;
+  background-color: rgba(255, 255, 255, 1);
+  padding: calc(var(--gap) / 2) var(--gap);
+  min-width: 200px;
+  border-radius: 2px;
+  z-index: 2;
+  position: relative;
+}
+
 .fxa-links::before {
-  background: rgba(255, 255, 255, 0);
+  background: rgba(255, 255, 255, 1);
   opacity: 0;
   top: -4px;
   right: 14%;
@@ -866,16 +877,6 @@ span.user-email {
 .fxa-user-info:hover .fxa-links,
 .fxa-user-info:hover .fxa-links::before {
   opacity: 1;
-  background-color: rgba(255, 255, 255, 1);
-}
-
-.fxa-links {
-  background-color: rgba(255, 255, 255, 0);
-  padding: calc(var(--gap) / 2) var(--gap);
-  min-width: 200px;
-  border-radius: 2px;
-  z-index: 2;
-  position: relative;
 }
 
 .fxa-menu,
@@ -1518,13 +1519,13 @@ form.show-thankyou span.thank-you-message {
 /* mobile-menu */
 
 .mobile-menu {
-  padding-top: 0;
+  padding-top: 2vh;
   opacity: 0;
   pointer-events: none;
   visibility: hidden;
   max-height: 30vh;
   transform: translateY(-6%);
-  background-color: rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0);
   z-index: 2;
   position: absolute;
   top: 0;
@@ -1535,23 +1536,23 @@ form.show-thankyou span.thank-you-message {
 }
 
 .menu-open .mobile-menu {
-  padding-top: 2vh;
   opacity: 1;
   pointer-events: all;
   visibility: visible;
   max-height: 50vh;
   transform: translateY(0%);
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .bg-screen {
   pointer-events: none;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 2;
-  background-color: rgba(8, 19, 44, 0.57);
+  background-color: rgba(8, 19, 44, 0.67);
   opacity: 0;
 }
 
@@ -1561,8 +1562,10 @@ form.show-thankyou span.thank-you-message {
 }
 
 .mobile-menu .fxa-links {
+  opacity: 1;
   display: flex;
   flex-direction: column;
+  background-color: rgba(255, 255, 255, 0);
   flex: 0 0 calc(100% - var(--columnSpacing));
   padding-left: 0;
   padding-right: 0;
@@ -1574,25 +1577,28 @@ form.show-thankyou span.thank-you-message {
   min-height: 25px;
   font-size: 12px;
   color: rgba(0, 0, 0, 0);
+  padding-top: 10px;
   padding-bottom: 10px;
 }
 
 .menu-open .mobile-menu .fxa-links a {
+  opacity: 1;
   color: rgba(0, 0, 0, 0.9);
 }
 
 .mobile-menu .fxa-links a:first-of-type {
   margin-left: 0;
   font-weight: 500;
-  padding-top: calc(20px + 0.6vh);
-  padding-bottom: calc(10px + 0.6vh);
+  padding-top: var(--gap);
 }
 
 .mobile-menu .avatar {
+  -webkit-transform: translateZ(0);
   opacity: 0;
 }
 
 .menu-open .mobile-menu .avatar {
+  -webkit-transform: translateZ(0); /* prevent transition jig in chrome */
   opacity: 1;
 }
 
@@ -1616,25 +1622,19 @@ svg#menu-icon path {
   position: fixed;
 }
 
-.mobile-menu,
-.menu-open .mobile-menu {
-  transition: all 0.125s ease;
-}
-
-svg#menu-icon path,
-.menu-open svg#menu-icon path {
-  transition: fill 0.125s ease;
-}
-
-.avatar,
+.menu-closed .mobile-menu,
+.menu-closed .avatar,
+.menu-closed .fxa-links a,
+.menu-closed .firefox-monitor-brand,
+.menu-closed .bg-screen,
 .menu-open .avatar,
-.fxa-links a,
 .menu-open .fxa-links a,
-.firefox-monitor-brand,
+.menu-open .bg-screen,
+.menu-open svg#menu-icon,
+.menu-open svg#menu-icon path,
 .menu-open .firefox-monitor-brand,
-.bg-screen,
-.menu-open .bg-screen {
-  transition: all 0.1s ease;
+.menu-open .mobile-menu {
+  transition: all 0.2s ease-in-out;
 }
 
 /* //media screens */
@@ -1773,7 +1773,7 @@ svg#menu-icon path,
 
 @media screen and (max-width: 680px) {
   .firefox-logo.firefox-monitor {
-    background: url(/img/gradient-sprites.png) -245px 0;
+    background: url(/img/gradient-sprites.png) -246px 0;
     background-size: cover;
     width: 34px !important;
     min-width: 20px;
@@ -1876,8 +1876,6 @@ svg#menu-icon path,
   }
 
   /* hides download firefox top-bar on mobile devices */
-  .fxa-new-user-bar,
-  .download-firefox-bar,
   .hide-mobile {
     display: none !important;
     visibility: hidden;
@@ -1899,12 +1897,12 @@ svg#menu-icon path,
   }
 
   .avatar-wrapper img {
-    width: 32px;
-    height: 32px;
+    width: 31px;
+    height: 31px;
   }
 
   .avatar-wrapper {
-    margin-right: 7px;
+    margin-right: 8px;
     margin-left: 1px;
   }
 
