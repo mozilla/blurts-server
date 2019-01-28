@@ -805,7 +805,14 @@ svg#open-new-window {
   max-width: 23px;
   max-height: 24px;
   transform: scale(0.725);
-  opacity: 0.9;
+}
+
+.fxa-user-info svg#open-new-window {
+  opacity: 0;
+}
+
+.fxa-user-info:hover svg#open-new-window {
+  opacity: 1;
 }
 
 .fxa-user-info {
@@ -842,17 +849,17 @@ svg#open-new-window {
 }
 
 .fxa-user-info .fxa-menu a {
-  color: rgba(0, 0, 0, 0);
+  opacity: 0;
+  color: var(--grey90);
   font-size: 13px;
   text-align: left;
   width: 100%;
   pointer-events: none;
   padding: 5px 0;
-  display: flex;
 }
 
 .fxa-user-info:hover .fxa-menu a {
-  color: var(--grey90);
+  opacity: 1;
   pointer-events: all;
 }
 
@@ -860,7 +867,7 @@ svg#open-new-window {
   background: rgba(255, 255, 255, 1);
   opacity: 0;
   top: -4px;
-  right: 14%;
+  right: 15.75%;
   content: '';
   height: 10px;
   width: 10px;
@@ -874,14 +881,9 @@ svg#open-new-window {
   visibility: hidden;
 }
 
-.fxa-user-info:hover .fxa-links,
-.fxa-user-info:hover .fxa-links::before {
-  opacity: 1;
-  background-color: rgba(255, 255, 255, 1);
-}
-
 .fxa-links {
-  background-color: rgba(255, 255, 255, 0);
+  opacity: 0;
+  background-color: rgba(255, 255, 255, 1);
   padding: calc(var(--gap) / 2) var(--gap);
   min-width: 200px;
   border-radius: 2px;
@@ -889,12 +891,9 @@ svg#open-new-window {
   position: relative;
 }
 
-.fxa-user-info:hover .fxa-links a:hover {
-  color: rgba(0, 0, 0, 0.7);
-}
-
-.fxa-links a span {
-  border-bottom: 1px solid rgba(0, 0, 0, 0);
+.fxa-user-info:hover .fxa-links,
+.fxa-user-info:hover .fxa-links::before {
+  opacity: 1;
 }
 
 .fxa-menu,
@@ -905,8 +904,8 @@ svg#open-new-window {
 .fxa-user-info:hover .fxa-menu a,
 .fxa-user-info .fxa-links::before,
 .fxa-user-info:hover .fxa-links::before,
-.fxa-links a span,
-.fxa-links a:hover span {
+.fxa-user-info svg#open-new-window,
+.fxa-user-info:hover svg#open-new-window {
   transition: all 0.2s ease;
 }
 
