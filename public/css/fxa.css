@@ -1544,7 +1544,7 @@ form.show-thankyou span.thank-you-message {
   visibility: hidden;
   max-height: 30vh;
   transform: translateY(-6%);
-  background: rgba(255, 255, 255, 0);
+  background: rgba(255, 255, 255, 1);
   z-index: 2;
   position: absolute;
   top: 0;
@@ -1560,7 +1560,22 @@ form.show-thankyou span.thank-you-message {
   visibility: visible;
   max-height: 50vh;
   transform: translateY(0%);
-  background-color: rgba(255, 255, 255, 1);
+
+  /* background-color: rgba(255, 255, 255, 1); */
+}
+
+.menu-closed .mobile-menu .fxa-links,
+.menu-closed .bg-screen,
+.menu-closed .mobile-menu .fxa-links a,
+.menu-closed .mobile-menu .avatar {
+  opacity: 0;
+}
+
+.menu-open .bg-screen,
+.menu-open .mobile-menu .fxa-links,
+.menu-open .mobile-menu .fxa-links a,
+.menu-open .mobile-menu .avatar {
+  opacity: 1;
 }
 
 .bg-screen {
@@ -1572,16 +1587,13 @@ form.show-thankyou span.thank-you-message {
   bottom: 0;
   z-index: 2;
   background-color: rgba(8, 19, 44, 0.67);
-  opacity: 0;
 }
 
 .menu-open .bg-screen {
-  opacity: 1;
   pointer-events: all;
 }
 
 .mobile-menu .fxa-links {
-  opacity: 1;
   display: flex;
   flex-direction: column;
   background-color: rgba(255, 255, 255, 0);
@@ -1595,14 +1607,9 @@ form.show-thankyou span.thank-you-message {
   margin-left: 40px;
   min-height: 25px;
   font-size: 12px;
-  color: rgba(0, 0, 0, 0);
+  color: var(--grey90);
   padding-top: 10px;
   padding-bottom: 10px;
-}
-
-.menu-open .mobile-menu .fxa-links a {
-  opacity: 1;
-  color: rgba(0, 0, 0, 0.9);
 }
 
 .menu-open .mobile-menu .fxa-links a span {
@@ -1619,17 +1626,12 @@ form.show-thankyou span.thank-you-message {
   padding-top: var(--gap);
 }
 
-.mobile-menu .avatar {
-  opacity: 0;
-}
-
 .menu-open .mobile-menu .avatar {
   -webkit-transform: translateZ(0); /* prevent transition jig in chrome */
-  opacity: 1;
 }
 
 .menu-open .firefox-monitor-brand {
-  color: rgba(0, 0, 0, 1);
+  color: var(--grey90);
 }
 
 .menu-icon-wrapper {
@@ -1653,6 +1655,8 @@ svg#menu-icon path {
 .menu-closed .fxa-links a,
 .menu-closed .firefox-monitor-brand,
 .menu-closed .bg-screen,
+.menu-closed svg#menu-icon,
+.menu-closed svg#open-new-window,
 .menu-open .avatar,
 .menu-open .fxa-links a,
 .menu-open .fxa-links a span,
@@ -1660,9 +1664,10 @@ svg#menu-icon path {
 .menu-open .bg-screen,
 .menu-open svg#menu-icon,
 .menu-open svg#menu-icon path,
+.menu-open svg#open-new-window,
 .menu-open .firefox-monitor-brand,
 .menu-open .mobile-menu {
-  transition: all 0.2s ease-in-out;
+  transition: all 0.15s ease-in-out;
 }
 
 /* //media screens */
