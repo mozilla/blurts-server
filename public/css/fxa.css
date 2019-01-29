@@ -1565,20 +1565,20 @@ form.show-thankyou span.thank-you-message {
 }
 
 .menu-closed .mobile-menu .fxa-links,
-.menu-closed .bg-screen,
 .menu-closed .mobile-menu .fxa-links a,
 .menu-closed .mobile-menu .avatar {
   opacity: 0;
 }
 
-.menu-open .bg-screen,
 .menu-open .mobile-menu .fxa-links,
 .menu-open .mobile-menu .fxa-links a,
 .menu-open .mobile-menu .avatar {
   opacity: 1;
 }
 
+.menu-closed .bg-screen,
 .bg-screen {
+  background-color: rgba(0, 0, 0, 0);
   pointer-events: none;
   position: fixed;
   top: 0;
@@ -1586,10 +1586,10 @@ form.show-thankyou span.thank-you-message {
   right: 0;
   bottom: 0;
   z-index: 2;
-  background-color: rgba(8, 19, 44, 0.67);
 }
 
 .menu-open .bg-screen {
+  background-color: rgba(8, 19, 44, 0.67);
   pointer-events: all;
 }
 
