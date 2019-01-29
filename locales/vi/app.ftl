@@ -183,7 +183,7 @@ download-firefox-mobile = Tải về { -brand-name } cho điện thoại
 # Features here refers to Firefox browser features. 
 features = Tính năng
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
-beta-nightly-developer-edition = Phiên bản Beta, Nightly, Nhà phát triển
+beta-nightly-developer-edition = Phiên bản Beta, Nightly, nhà phát triển
 # The following string contains HTML markup which should not be translated. 
 # Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
 copyright-info = Các phần của nội dung này được giữ bản quyền &#x24B8; 1998-2018 bởi những người đóng góp mozilla.org. <br /> Nội dung khả dụng theo <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">giấy phép Creative Commons</a>.
