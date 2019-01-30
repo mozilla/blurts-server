@@ -7,11 +7,11 @@
         <div class="fourth subscribe-icon-wrapper">
           {{> sprite symID="subscribe"}}
         </div>
-        <div class="{{#unless breachIsSensitive }} half {{/unless}} {{#if breachIsSensitive }} three-fourths {{/if}}">
+        <div class="{{#if featuredBreach.IsSensitive }} three-fourths {{else}} half {{/if}}">
           <h2 class="medium secondary-title">{{{fluentFormat req.supportedLocales "signup-banner-headline"}}}</h2>
           <p class="demi">{{{fluentFormat req.supportedLocales "signup-banner-blurb"}}}</p>
         </div>
-        {{#unless breachIsSensitive}}
+        {{#unless featuredBreach.IsSensitive}}
           <div class="fourth">
             {{> sign_up_button}}
           </div>

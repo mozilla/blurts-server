@@ -57,8 +57,9 @@ user-unsubscribed-title = {-product-name} : Unsubscribed
 pwt-section-headline = Stronger Passwords = Better Protection
 pwt-section-subhead = Your private information is only as safe as your passwords.
 pwt-section-blurb =
-  Passwords protect all the personal information in your online accounts. 
-  And hackers rely on bad habits, like using the same password everywhere or using common phrases (@p@ssw0rd, anyone?) so that if they hack one account, they can hack many.
+  Your passwords protect more than your accounts. They protect every bit of personal information that resides in them. 
+  And hackers rely on bad habits, like using the same password everywhere or using common phrases (p@ssw0rd, anyone?) so 
+  that if they hack one account, they can hack many. Here’s how to better protect your accounts.
 
 pwt-headline-1 = Use a different password for every account
 pwt-summary-1 = 
@@ -67,18 +68,18 @@ pwt-summary-1 =
 
 pwt-headline-2 = Create strong, hard-to-guess passwords
 pwt-summary-2 = 
-  Short, single-word passwords are easy for hackers to guess. 
-  Use at least two words and a combination of letters, digits, and special characters.
+  Hackers use thousands of common passwords to try to guess yours. 
+  The longer and more random your password is, the harder it will be to guess.
 
 pwt-headline-3 = Treat security questions like extra passwords
 pwt-summary-3 = 
   Websites don’t check that your answers are accurate, just that they match every time. 
-  Create long, random answers, and store them somewhere safe.
+  Create long, random answers and store them somewhere safe.
 
 pwt-headline-4 = Get help remembering your passwords
 pwt-summary-4 =
-  Password managers like 1Password, LastPass, Dashlane, and Bitwarden store your passwords and fill them in to websites for you. 
-  They’ll even help you make strong passwords.
+  Password managers like 1Password, LastPass, Dashlane, and Bitwarden generate strong, unique passwords. 
+  They also store passwords securely and fill them into websites for you
 
 pwt-headline-5 = Add extra security with two-factor authentication
 pwt-summary-5 =
@@ -87,8 +88,8 @@ pwt-summary-5 =
 
 pwt-headline-6 = Sign up for {-product-name-nowrap} alerts
 pwt-summary-6 = 
-  Data breaches are on the rise. If your personal info appears in a new data breach, 
-  {-product-name} sends you an alert — so you can take action and protect your accounts. 
+  Website data breaches are on the rise. As soon as a new breach gets added to our database, 
+  {-product-name-nowrap} sends you an alert — so you can take action and protect your account.
 
 landing-headline = Your right to be safe from hackers starts here.
 landing-blurb = 
@@ -171,24 +172,25 @@ what-to-do-headline = What To Do When Your Information is Exposed in a Data Brea
 
 what-to-do-subhead-1 = Change your passwords, even for old accounts
 what-to-do-blurb-1 =
-  If you can’t log in, contact the website to ask how to update it. 
-  See an account you don’t recognize? Your data could have been sold or redistributed. This could also be an account you forgot you created or a company that changed names.
+  If you can’t log in, contact the website to ask how you can recover or shut down the account. 
+  See an account you don’t recognize? The site may have changed names or someone may have created an account for you.
 
-what-to-do-subhead-2 = Stop using the exposed password, and change it everywhere you’ve used it
+what-to-do-subhead-2 = If you reuse an exposed password, change it
 what-to-do-blurb-2 =
-  Hackers may try to that same password and your email to get into other accounts. 
-  Create a different and unique password for every account, especially for your bank account, email, and other websites where you save personal information.
+  Hackers may try to reuse your exposed password to get into other accounts. 
+  Create a different password for each website, especially for your bank account, 
+  email and other websites where you save personal information.
 
 what-to-do-subhead-3 = Take extra steps to secure your financial accounts
 what-to-do-blurb-3 = 
   Most breaches only expose emails and passwords, but some do include sensitive financial information. 
-  If your bank account or credit card numbers were exposed, alert your bank to possible fraud. 
-  Monitor statements for charges you don’t recognize.
+  If your bank account or credit card numbers were included in a breach, alert your bank to possible fraud, 
+  and monitor statements for charges you don’t recognize.
 
-what-to-do-subhead-4 = Get help remembering all your passwords and keeping them safe
+what-to-do-subhead-4 = Get help creating good passwords and keeping them safe.
 what-to-do-blurb-4 = 
-  Password managers like 1Password, LastPass, Dashlane, and Bitwarden store your passwords securely and fill them into websites for you. 
-  Use a password manager on your phone and computer so you don’t have to remember them all.
+  Password managers like 1Password, LastPass, Dashlane, and Bitwarden generate strong passwords, 
+  store them securely, and fill them into websites for you.
 
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Breach date:
@@ -262,6 +264,7 @@ og-site-description = Find out if you’ve been part of a data breach with {-pro
 
 
 mozilla-security-blog = {-brand-Mozilla} Security Blog
+# A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Social
 show-all = Show all
 
@@ -271,16 +274,17 @@ fxa-landing-blurb =
   Find out what hackers already know about you,
   and learn how to stay a step ahead of them.
 
-
 fxa-scan-label = See if you’ve appeared in a data breach.
 fxa-welcome-headline = Welcome to {-product-name}.
 fxa-welcome-blurb = You’re all set to get alerts if { $userEmail } appears in a data breach.
 
 fxa-scan-another-email = Want to Check Another Email?
+# Search Firefox Monitor
 fxa-scan-submit = Search {-product-name}
 
 sign-up-to-check = Sign Up to Check
 sign-in = Sign In
+sign-out = Sign Out
 
 # All letters should be capitalized.
 full-report-headline = Your {-product-name} Report
@@ -288,10 +292,8 @@ full-report-headline = Your {-product-name} Report
 # All letters should be capitalized.
 see-full-report = See Full Report
 
-#Manage Firefox Account, link to page where account holders can change their account settings.
+# Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Manage {-brand-fxa}
-
-sign-out = Sign Out
 
 fxa-download-firefox-bar-blurb = Brought to you by {-brand-name}. 2x faster. Uses 30% less memory than {-brand-Chrome}.
 fxa-download-firefox-bar-link = Download now
@@ -315,15 +317,60 @@ guest-fb-compromised-other-breaches = Your email address also appeared in { $bre
 no-breaches-found-headline = No breaches found from a basic search.
 authenticated-no-breaches-blurb = No breaches found. We’ll send you an email if your info appears in new breaches.
 user-no-breaches-blurb = No breaches found.
-guest-no-breaches-blurb = For a more in-depth search of this email address in sensitive breaches, create a {-brand-fxa}. You’ll also get alerts if you appear in new data breaches.
+guest-no-breaches-blurb = 
+  For a more in-depth search of this email address in sensitive breaches, 
+  create a {-brand-fxa}. You’ll also get alerts if you appear in new data breaches.
 
 found-breach-headline = Your account appeared in one data breach.
-guest-found-breach-blurb = This breach exposed your personal info. Sign up for a {-brand-fxa} to get your full report and alerts about new breaches.
+guest-found-breach-blurb = This breach exposed your personal info. {sign-up-with-fxa}.
 user-found-breach-blurb = This breach exposed your personal info. Take action to protect your account.
 
 many-found-breaches-headline = Your accounts appeared in { $breachCount } data breaches.
 user-many-found-breaches-blurb = These breaches exposed your personal info. Take action to protect your accounts.
-guest-many-found-breaches-blurb = These breaches exposed your personal info. Sign up for a {-brand-fxa} to get your full report and alerts about new breaches. 
+guest-many-found-breaches-blurb = These breaches exposed your personal info. {sign-up-with-fxa}. 
 
 have-an-account = Already have an account?
 
+signup-banner-sensitive-blurb = 
+  {fxa-landing-blurb} Get alerted if your account appears in new data breaches.
+
+fxa-pwt-section-blurb =
+  Passwords protect all the personal information in your online accounts. And 
+  hackers rely on bad habits, like using the same password everywhere or using 
+  common phrases (@p@ssw0rd, anyone?) so that if they hack one account, they 
+  can hack many.
+
+fxa-pwt-summary-2 =
+  Short, single-word passwords are easy for hackers to guess. 
+  Use at least two words and a combination of letters, digits, and special characters.
+
+fxa-pwt-summary-4 =
+  Password managers like 1Password, LastPass, Dashlane, and Bitwarden store your 
+  passwords and fill them in to websites for you. They’ll even help you make strong passwords.
+
+fxa-pwt-summary-6 =
+  Data breaches are on the rise. If your personal info appears in a new data breach, 
+  {-product-name} sends you an alert — so you can take action and protect your accounts. 
+
+fxa-what-to-do-blurb-1 =
+  If you can’t log in, contact the website to ask how to update it. 
+  See an account you don’t recognize? Your data could have been sold 
+  or redistributed. This could also be an account you forgot you 
+  created or a company that changed names.
+
+fxa-what-to-do-subhead-2 = Stop using the exposed password, and change it everywhere you’ve used it
+fxa-what-to-do-blurb-2 =
+  Hackers may try to that same password and your email to get into other accounts. 
+  Create a different and unique password for every account, especially for your bank account, 
+  email, and other websites where you save personal information.
+
+fxa-what-to-do-blurb-3 = 
+  Most breaches only expose emails and passwords, but some do include sensitive financial information. 
+  If your bank account or credit card numbers were exposed, alert your bank to possible fraud. 
+  Monitor statements for charges you don’t recognize.
+
+fxa-what-to-do-subhead-4 = Get help remembering all your passwords and keeping them safe
+fxa-what-to-do-blurb-4 =
+  Password managers like 1Password, LastPass, Dashlane, and Bitwarden store your 
+  passwords securely and fill them into websites for you. Use a password manager 
+  on your phone and computer so you don’t have to remember them all.

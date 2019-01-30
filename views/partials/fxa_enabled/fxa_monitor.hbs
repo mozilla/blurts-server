@@ -5,18 +5,22 @@
         {{#if featuredBreach }}
           {{{fluentFormat req.supportedLocales "scan-featuredbreach-label" featuredBreach=featuredBreach.Title}}}
         {{else}}
-          {{{fluentFormat req.supportedLocales "landing-headline"}}}
+          {{fluentFormat req.supportedLocales "landing-headline"}}
         {{/if}}
       </h2>
       {{#if featuredBreach }}
-        {{#if breachIsSensitive}}
-          <button class="button sign-up-button" id="sign-up">{{fluentFormat req.supportedLocales "sign-up-to-check"}}</button>
+        {{#if featuredBreach.IsSensitive}}
+          {{#if req.session.user}}
+            {{> fxa_enabled/see_full_report_button}}
+          {{else}}
+            <button class="button sign-up-button" id="sign-up">{{fluentFormat req.supportedLocales "sign-up-to-check"}}</button>
+          {{/if}}
         {{else}}
           {{> scan_form}}
         {{/if}}
       {{else}}
         <p class="landing-blurb">
-          {{{fluentFxa req.supportedLocales "landing-blurb"}}}
+          {{fluentFormat req.supportedLocales "fxa-landing-blurb"}}
         </p>
       {{/if}}
     </div>

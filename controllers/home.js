@@ -1,13 +1,14 @@
 "use strict";
 
-const sha1 = require("../sha1-utils");
+const { URL } = require("url");
+
 const HIBP = require("../hibp");
+const sha1 = require("../sha1-utils");
 
 async function home(req, res) {
 
   let featuredBreach = null;
   let scanFeaturedBreach = false;
-  let breachIsSensitive = false;
   let foundBreaches = [];
   let userAccountCompromised = false;
   let authenticatedUser = false;
@@ -18,18 +19,21 @@ async function home(req, res) {
     if (!featuredBreach) {
       return notFound(req, res);
     }
-    scanFeaturedBreach = true;
-    if (featuredBreach.IsSensitive) {
-      breachIsSensitive = true;
-    }
 
-    if (req.url.includes("utm_source=firefox") && req.session.user) {
+    scanFeaturedBreach = true;
+
+    // Checks if the user is 1.) arriving via the doorhanger and 2.) already signed in to Monitor.
+    // If so, we automatically scan their email and check the results for the breach associated with
+    // the website they were on when they clicked the doorhanger.
+
+    const url = new URL(req.url, req.app.locals.SERVER_URL);
+
+    if (req.session.user && url.searchParams.has("utm_source") && url.searchParams.get("utm_source") === "firefox") {
       authenticatedUser = true;
       const emailHash = sha1(req.session.user.email);
 
       foundBreaches = await HIBP.getBreachesForEmail(emailHash, req.app.locals.breaches, true);
       const findFeaturedBreach = foundBreaches.findIndex(breach => breach.Name === featuredBreach.Name);
-
       if (findFeaturedBreach !== -1) {
         userAccountCompromised = true;
       }
@@ -42,8 +46,10 @@ async function home(req, res) {
       });
     }
   }
-
-  if (req.session.user) {
+  // redirect signed in users to dashboard if they are not
+  // coming from the doorhanger and not attempting to reach
+  // a detailed breach page.
+  if (req.session.user && !req.query.breach) {
       return res.redirect("/scan/latest_breaches");
   }
 
@@ -51,7 +57,6 @@ async function home(req, res) {
     title: req.fluentFormat("home-title"),
     featuredBreach: featuredBreach,
     scanFeaturedBreach,
-    breachIsSensitive,
     foundBreaches,
     userAccountCompromised,
   });

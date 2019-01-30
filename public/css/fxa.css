@@ -999,6 +999,7 @@ main .sensitive-breach-email-required {
 }
 
 main .half.featured button#sign-up,
+main .half.featured a.see-full-report-button,
 main .sensitive-breach-email-required {
   max-width: 300px;
 }
@@ -1104,7 +1105,7 @@ span.breach-info {
   display: block;
 }
 
-/* FEAUTURED BREACH LISTING */
+/* FEATURED BREACH LISTING */
 
 main .breach-headline {
   font-size: 22px;

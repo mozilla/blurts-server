@@ -10,7 +10,7 @@
       </h2>
       {{#if featuredBreach }}
 
-        {{#if breachIsSensitive}}
+        {{#if featuredBreach.IsSensitive}}
           {{> sign_up_button}}
           <span id="sensitive-featured-breach" class="sensitive-breach-email-required">{{fluentFormat req.supportedLocales "sensitive-breach-email-required"}}</span>
         {{else}}

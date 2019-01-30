@@ -5,7 +5,13 @@
         </div>
         <div class="half">
           <h2 class="medium secondary-title">{{{fluentFormat req.supportedLocales "fxa-signup-banner-headline"}}}</h2>
-          <p class="demi">{{{fluentFormat req.supportedLocales "fxa-signup-banner-blurb"}}}</p>
+          <p class="demi">
+            {{#if featuredBreach.IsSensitive}}
+              {{fluentFormat req.supportedLocales "signup-banner-sensitive-blurb"}}
+            {{else}}
+              {{fluentFormat req.supportedLocales "fxa-signup-banner-blurb"}}
+            {{/if}}
+          </p>
         </div>
         {{> fxa_enabled/sign_up_bundle class="fourth"}}
       </div>
