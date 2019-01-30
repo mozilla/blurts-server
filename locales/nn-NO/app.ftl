@@ -32,20 +32,27 @@ user-add-invalid-email = Ugyldig e-postadresse
 user-add-email-verify-subject = Stadfest abonnementet ditt på { -product-name }.
 user-add-title = { -product-name }: Stadfest e-postadressa
 error-headline = Feil
+user-verify-email-report-subject = Din { -product-name }-rapport
 user-verify-title = { -product-name }: Abonnerer
 user-unsubscribe-title = { -product-name }: Avslutt abonnementet
 
 ## Password Tips
 
+pwt-section-headline = Sterkare passord = betre vern
+pwt-section-subhead = Dei private opplysningane dine er berre so sikre som passorda dine er.
+pwt-headline-4 = Få hjelp til å hugse passorda dine
 scan-placeholder = Skriv inn e-postadresse
 scan-privacy = E-postadressa di vert ikkje lagra.
 scan-submit = Søk etter e-postadressa di
 scan-another-email = Skann ei anna e-postadresse
+scan-error = E-postadressa må vere gyldig.
 download-firefox-bar-link = Last ned { -brand-name } no
 download-firefox-banner-blurb = Ta kontroll over nettlesaren din
 download-firefox-banner-button = LAst ned { -brand-name }
 signup-modal-headline = Registrer deg for { -product-name-nowrap }
 signup-modal-close = Lat att
+get-your-report = Få din rapport.
+signup-modal-verify-headline = Stadfest abonnementet ditt.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Sendt!
 sign-up = Registrer deg
