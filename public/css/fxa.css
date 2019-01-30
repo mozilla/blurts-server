@@ -779,7 +779,7 @@ h5,
   overflow: hidden;
 }
 
-.avatar-wrapper.desktop::before {
+.fxa-user-info::before {
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   border-top: 6px solid #e3e2e2;
@@ -788,8 +788,12 @@ h5,
   top: 0;
   bottom: 0;
   height: 0;
-  right: -20px;
+  right: 0;
   margin: auto;
+}
+
+.enable-mobile .fxa-user-info::before {
+  display: none;
 }
 
 .avatar-wrapper img {
@@ -850,7 +854,6 @@ svg#open-new-window {
 }
 
 .fxa-user-info .fxa-menu a {
-  opacity: 0;
   color: var(--grey90);
   font-size: 13px;
   text-align: left;
@@ -860,8 +863,11 @@ svg#open-new-window {
 }
 
 .fxa-user-info:hover .fxa-menu a {
-  opacity: 1;
   pointer-events: all;
+}
+
+.fxa-user-info:hover .fxa-menu a:hover {
+  opacity: 0.7;
 }
 
 .fxa-links::before {
@@ -903,6 +909,7 @@ svg#open-new-window {
 .fxa-user-info:hover .fxa-links,
 .fxa-user-info .fxa-menu a,
 .fxa-user-info:hover .fxa-menu a,
+.fxa-user-info:hover .fxa-menu a:hover,
 .fxa-user-info .fxa-links::before,
 .fxa-user-info:hover .fxa-links::before,
 .fxa-user-info svg#open-new-window,
@@ -1006,8 +1013,7 @@ main .sensitive-breach-email-required {
 }
 
 main .section-headline,
-p.landing-blurb,
-main #no-breaches + p {
+main p {
   max-width: 500px;
 }
 
@@ -1200,6 +1206,7 @@ main .breach-headline {
 /* ///// compromised accounts  */
 
 .compromised-accounts .section-wrapper {
+  padding-top: calc(var(--columnSpacing) - var(--gap));
   padding-left: 0;
   padding-right: 0;
   padding-bottom: 0;

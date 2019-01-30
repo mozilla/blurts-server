@@ -322,12 +322,12 @@ guest-no-breaches-blurb =
   create a {-brand-fxa}. You’ll also get alerts if you appear in new data breaches.
 
 found-breach-headline = Your account appeared in one data breach.
-guest-found-breach-blurb = This breach exposed your personal info. {sign-up-with-fxa}.
+guest-found-breach-blurb = This breach exposed your personal info. {sign-up-with-fxa}
 user-found-breach-blurb = This breach exposed your personal info. Take action to protect your account.
 
 many-found-breaches-headline = Your accounts appeared in { $breachCount } data breaches.
 user-many-found-breaches-blurb = These breaches exposed your personal info. Take action to protect your accounts.
-guest-many-found-breaches-blurb = These breaches exposed your personal info. {sign-up-with-fxa}. 
+guest-many-found-breaches-blurb = These breaches exposed your personal info. {sign-up-with-fxa}
 
 have-an-account = Already have an account?
 
