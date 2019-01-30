@@ -7,20 +7,18 @@
       <!-- append "see full report", but only if it's a signed in user scanning from a feautred breach page, with scan results greater than one. -->
       {{#if featuredBreach}}
         {{#ifCompare foundBreaches.length ">" 1}}
-          {{#if req.session.user }}
+          {{#ifCompare authenticatedUser "&&" userAccountCompromised}}
             {{> fxa_enabled/see_full_report_button}}
-          {{/if}}
+          {{/ifCompare}}
         {{/ifCompare}}
       {{/if}}
     </div>
     <!--scan results page right -->
     {{> fxa_enabled/scan_results/result_page_right}}
 
-    {{#ifCompare featuredBreach "&&" req.session.user}}
-    <!-- "See Full Report Button" is surfaced above -->
-    {{else}}
+    {{#unless authenticatedUser}}
       {{> compromised_accounts }}
-    {{/ifCompare}}
+    {{/unless}}
   </div>
 </main>
 

@@ -10,13 +10,9 @@
   {{else}}
     <h3 class="section-headline">
       {{#if userAccountCompromised}}
-        {{fluentFormat req.supportedLocales "user-compromised-headline" breachName=featuredBreach.Title}}
+        {{fluentFormat req.supportedLocales "compromised-headline" breachName=featuredBreach.Title}}
       {{else}}
-        {{#ifCompare foundBreaches.length "===" 1}}
-          {{fluentFormat req.supportedLocales "found-breach-headline"}}
-        {{else}}
-          {{fluentFormat req.supportedLocales "many-found-breaches-headline" breachCount=foundBreaches.length}}
-        {{/ifCompare}}
+        {{fluentFormat req.supportedLocales "scan-results-headline" breachCount=foundBreaches.length}}
       {{/if}}
     </h3>
   {{/ifCompare}}

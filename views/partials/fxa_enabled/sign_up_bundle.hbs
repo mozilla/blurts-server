@@ -1,3 +1,4 @@
+{{#unless req.session.user}}
 <div class="scan-btn {{ class }}">
   <div class="button-link-wrapper">
     {{> sign_up_button}}
@@ -7,3 +8,4 @@
     </div>
   </div>
 </div>
+{{/unless}}

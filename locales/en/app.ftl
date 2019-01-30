@@ -286,10 +286,8 @@ sign-up-to-check = Sign Up to Check
 sign-in = Sign In
 sign-out = Sign Out
 
-# All letters should be capitalized.
 full-report-headline = Your {-product-name} Report
 
-# All letters should be capitalized.
 see-full-report = See Full Report
 
 # Manage Firefox Account, link to page where account holders can change their account settings.
@@ -301,38 +299,68 @@ fxa-download-firefox-banner-blurb = Better, faster page loading that uses less c
 
 sign-up-with-fxa = Sign up for a {-brand-fxa} to get your full report and alerts about new breaches.
 
-guest-fb-other-breach-found = You were not in the { $breachName } breach, but we found that email address in another. {sign-up-with-fxa}
-user-fb-other-breach-found = You were not in the { $breachName } breach, but we found that email address in another.
-
-user-fb-compromised = Take action to protect your account.
-guest-fb-compromised = {sign-up-with-fxa}
-
-user-compromised-headline = Your account appeared in the { $breachName } data breach.
-user-fb-other-breaches-found = You were not in the { $breachName} breach, but we found that email address in others. Take action to protect your accounts.
-guest-fb-other-breaches-found = You were not in the { $breachName } breach, but we found that email address in others. {sign-up-with-fxa}
-
-user-fb-compromised-other-breaches = Your email address also appeared in { $breachCount } other breaches. Take action to protect your accounts.
-guest-fb-compromised-other-breaches = Your email address also appeared in { $breachCount } other breaches. {sign-up-with-fxa}
-
+compromised-headline = Your account appeared in the { $breachName } data breach.
 no-breaches-found-headline = No breaches found from a basic search.
+
 authenticated-no-breaches-blurb = No breaches found. We’ll send you an email if your info appears in new breaches.
 user-no-breaches-blurb = No breaches found.
 guest-no-breaches-blurb = 
   For a more in-depth search of this email address in sensitive breaches, 
   create a {-brand-fxa}. You’ll also get alerts if you appear in new data breaches.
 
-found-breach-headline = Your account appeared in one data breach.
-guest-found-breach-blurb = This breach exposed your personal info. {sign-up-with-fxa}
-user-found-breach-blurb = This breach exposed your personal info. Take action to protect your account.
+take-action-singular = Take action to protect your account.
+take-action-plural = Take action to protect your accounts.
 
-many-found-breaches-headline = Your accounts appeared in { $breachCount } data breaches.
-user-many-found-breaches-blurb = These breaches exposed your personal info. Take action to protect your accounts.
-guest-many-found-breaches-blurb = These breaches exposed your personal info. {sign-up-with-fxa}
+user-fb-compromised-blurb =
+  { $breachCount ->
+      [0] {take-action-singular}
+      [one] Your email address also appeared in { $breachCount } other breach. {take-action-singular}
+     *[other] Your email address also appeared in { $breachCount } other breaches. {take-action-plural}
+  }
+
+guest-fb-compromised-blurb =
+  { $breachCount ->
+      [0] {sign-up-with-fxa}
+      [one] Your email address also appeared in { $breachCount } other breach. {sign-up-with-fxa}
+     *[other] Your email address also appeared in { $breachCount } other breaches. {sign-up-with-fxa}
+  }
+
+user-fb-not-compromised-blurb =
+  { $breachCount ->
+      [one] You were not in the { $breachName } breach, but we found that email address in another.
+     *[other] You were not in the { $breachName} breach, but we found that email address in others. {take-action-plural}
+  }
+
+guest-fb-not-compromised-blurb =
+  { $breachCount ->
+        [one] You were not in the { $breachName } breach, but we found that email address in another. {sign-up-with-fxa}
+       *[other] You were not in the { $breachName } breach, but we found that email address in others. {sign-up-with-fxa}
+  }
+
+scan-results-headline =
+  { $breachCount ->
+        [one] Your account appeared in one data breach.
+       *[other] Your accounts appeared in { $breachCount } data breaches.
+  }
+
+user-found-breaches-blurb =
+  { $breachCount ->
+        [one] This breach exposed your personal info. {take-action-singular}.
+       *[other] These breaches exposed your personal info. {take-action-plural}.
+  }
+
+guest-found-breaches-blurb =
+  { $breachCount ->
+        [one] This breach exposed your personal info. {sign-up-with-fxa}
+       *[other] These breaches exposed your personal info. {sign-up-with-fxa}
+  }
 
 have-an-account = Already have an account?
 
 signup-banner-sensitive-blurb = 
-  {fxa-landing-blurb} Get alerted if your account appears in new data breaches.
+  Find out what hackers already know about you, and learn how to 
+  stay a step ahead of them. Get alerted if your account appears 
+  in new data breaches.
 
 fxa-pwt-section-blurb =
   Passwords protect all the personal information in your online accounts. And 

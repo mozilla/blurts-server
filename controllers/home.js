@@ -22,12 +22,11 @@ async function home(req, res) {
 
     scanFeaturedBreach = true;
 
+    const url = new URL(req.url, req.app.locals.SERVER_URL);
+
     // Checks if the user is 1.) arriving via the doorhanger and 2.) already signed in to Monitor.
     // If so, we automatically scan their email and check the results for the breach associated with
     // the website they were on when they clicked the doorhanger.
-
-    const url = new URL(req.url, req.app.locals.SERVER_URL);
-
     if (req.session.user && url.searchParams.has("utm_source") && url.searchParams.get("utm_source") === "firefox") {
       authenticatedUser = true;
       const emailHash = sha1(req.session.user.email);
@@ -36,6 +35,11 @@ async function home(req, res) {
       const findFeaturedBreach = foundBreaches.findIndex(breach => breach.Name === featuredBreach.Name);
       if (findFeaturedBreach !== -1) {
         userAccountCompromised = true;
+        // move featured breach to the front of the list so that it appears first.
+        if (foundBreaches.length > 1) {
+          foundBreaches.splice(findFeaturedBreach, 1);
+          foundBreaches.unshift(featuredBreach);
+        }
       }
       return res.render("scan", {
         title: req.fluentFormat("scan-title"),

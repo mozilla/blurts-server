@@ -9,43 +9,33 @@
     {{/ifCompare}}
 
     {{#ifCompare foundBreaches.length "===" 1}}
-      {{#if featuredBreach}}
-        {{#if userAccountCompromised}}
-          {{> fxa_enabled/scan_results/single_breach}}
-        {{else}}
-          {{#if req.session.user}}
-            <div class="third">
-              {{> fxa_enabled/see_full_report_button}}
-            </div>
-          {{else}}
-            {{> fxa_enabled/scan_results/single_breach}}
-          {{/if}}
-        {{/if}}
+        {{#if authenticatedUser}}
+          <div class="third">
+            {{> fxa_enabled/see_full_report_button}}
+          </div>
       {{else}}
         {{> fxa_enabled/scan_results/single_breach}}
       {{/if}}
     {{/ifCompare}}
 
-    {{#ifCompare foundBreaches.length "===" 2}}
-      {{#if req.session.user}}
-        {{#if featuredBreach}}
-          {{> fxa_enabled/scan_results/single_breach}}
-        {{/if}}
-      {{else}}
-        {{> fxa_enabled/sign_up_bundle class="third"}}
-      {{/if}}
-    {{/ifCompare}}
-
-    {{#ifCompare foundBreaches.length ">" 2}}
+    {{#if authenticatedUser}}
       {{#if featuredBreach}}
-        {{#if req.session.user}}
-          {{> fxa_enabled/scan_results/single_breach}}
-        {{else}}
+        {{#ifCompare foundBreaches.length ">=" 1}}
+          {{#if userAccountCompromised}}
+            {{> fxa_enabled/scan_results/single_breach}}
+          {{else}}
+            <div class="third">
+              {{> fxa_enabled/see_full_report_button}}
+            </div>
+          {{/if}}
+        {{/ifCompare}}
+      {{/if}}
+    {{else}}
+      {{#ifCompare foundBreaches.length ">" 1}}
+        {{#if featuredBreach}}
+          {{> fxa_enabled/sign_up_bundle class="third"}}
+        {{else}} <!--featuredBreach -->
           {{> fxa_enabled/sign_up_bundle class="third"}}
         {{/if}}
-      {{else}} <!--featuredBreach -->
-        {{#unless req.session.user}}
-          {{> fxa_enabled/sign_up_bundle class="third"}}
-        {{/unless}}
-      {{/if}}
-    {{/ifCompare}}
+      {{/ifCompare}}
+    {{/if}}

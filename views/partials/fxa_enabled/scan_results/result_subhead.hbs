@@ -8,55 +8,26 @@
       {{/if}}
     {{/ifCompare}}
 
-    {{#ifCompare foundBreaches.length "===" 1}}
+    {{#ifCompare foundBreaches.length ">=" 1}}
       {{#if featuredBreach}}
         {{#if userAccountCompromised}}
           {{#if req.session.user}}
-            <p>{{fluentFormat req.supportedLocales "user-fb-compromised" breachName=featuredBreach.Title}}</p>
+            <p>{{fluentFormat req.supportedLocales "user-fb-compromised-blurb" breachCount=(breachMath foundBreaches.length "-" 1)}}</p>
           {{else}}
-            <p>{{fluentFormat req.supportedLocales "guest-fb-compromised" breachName=featuredBreach.Title}}</p>
+            <p>{{fluentFormat req.supportedLocales "guest-fb-compromised-blurb" breachCount=(breachMath foundBreaches.length "-" 1)}}</p>
           {{/if}}
         {{else}}
           {{#if req.session.user}}
-            <p>{{fluentFormat req.supportedLocales "user-fb-other-breach-found" breachName=featuredBreach.Title}}</p>
+            <p>{{fluentFormat req.supportedLocales "user-fb-not-compromised-blurb" breachCount=foundBreaches.length breachName=featuredBreach.Title}}</p>
           {{else}}
-            <p>{{fluentFormat req.supportedLocales "guest-fb-other-breach-found" breachName=featuredBreach.Title}}</p>
+            <p>{{fluentFormat req.supportedLocales "guest-fb-not-compromised-blurb" breachCount=foundBreaches.length breachName=featuredBreach.Title}}</p>
           {{/if}}
         {{/if}}
       {{else}}
         {{#if req.session.user}}
-          <p>{{fluentFormat req.supportedLocales "user-found-breach-blurb"}}</p>
+          <p>{{fluentFormat req.supportedLocales "user-found-breaches-blurb" breachCount=foundBreaches.length}}</p>
         {{else}}
-          <p>{{fluentFormat req.supportedLocales "guest-found-breach-blurb"}}</p>
-        {{/if}}
-      {{/if}}
-    {{/ifCompare}}
-
-    {{#ifCompare foundBreaches.length ">" 1}}
-      {{#if featuredBreach}}
-        {{#if userAccountCompromised}}
-          {{#if req.session.user}}
-            <p>{{fluentFormat req.supportedLocales "user-fb-compromised-other-breaches" breachCount=(breachMath foundBreaches.length "-" 1)}}</p>
-          {{else}}
-            <p>{{fluentFormat req.supportedLocales "guest-fb-compromised-other-breaches" breachCount=(breachMath foundBreaches.length "-" 1)}}</p>
-          {{/if}}
-        {{else}}
-          {{#if req.session.user}}
-            <p>{{fluentFormat req.supportedLocales "user-fb-other-breaches-found" breachName=featuredBreach.Title}}</p>
-          {{else}}
-            <p>{{fluentFormat req.supportedLocales "guest-fb-other-breaches-found" breachName=featuredBreach.Title}}</p>
-          {{/if}}
-        {{/if}}
-      {{else}}
-
-        {{#if req.session.user}}
-          <p>{{fluentFormat req.supportedLocales "user-many-found-breaches-blurb"}}</p>
-        {{else}}
-          {{#if userAccountCompromised}}
-            <p>{{fluentFormat req.supportedLocales "guest-compromised-blurb" breachCount=(breachMath foundBreaches.length "-" 1)}}</p>
-          {{else}}
-            <p>{{fluentFormat req.supportedLocales "guest-many-found-breaches-blurb"}}</p>
-          {{/if}}
+          <p>{{fluentFormat req.supportedLocales "guest-found-breaches-blurb" breachCount=foundBreaches.length}}</p>
         {{/if}}
       {{/if}}
     {{/ifCompare}}
