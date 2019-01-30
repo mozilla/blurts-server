@@ -776,6 +776,7 @@ h5,
   border-radius: 50%;
   display: inline-flex;
   position: relative;
+  overflow: hidden;
 }
 
 .avatar-wrapper.desktop::before {
