@@ -61,3 +61,4 @@ pins = PIN-kodar
 political-donations = Donasjonar til politiske føremål
 political-views = Politisk syn
 private-messages = Private meldingar
+religions = Religionar
