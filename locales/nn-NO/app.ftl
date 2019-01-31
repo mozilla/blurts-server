@@ -32,9 +32,14 @@ user-add-invalid-email = Ugyldig e-postadresse
 user-add-email-verify-subject = Stadfest abonnementet ditt på { -product-name }.
 user-add-title = { -product-name }: Stadfest e-postadressa
 error-headline = Feil
+user-verify-token-error = Stadfestings-token er påkravd.
 user-verify-email-report-subject = Din { -product-name }-rapport
 user-verify-title = { -product-name }: Abonnerer
+user-unsubscribe-token-error = Avmelding krev eit token.
+user-unsubscribe-token-email-error = Avmelding krev eit token og eit emailHash.
 user-unsubscribe-title = { -product-name }: Avslutt abonnementet
+user-unsubscribe-survey-title = { -product-name }: Avslutt undersøkinga
+user-unsubscribed-title = { -product-name }: Avslutta
 
 ## Password Tips
 
