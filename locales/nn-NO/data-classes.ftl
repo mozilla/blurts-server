@@ -15,6 +15,7 @@ biometric-data = Biometriske data
 browser-user-agent-details = Informasjon om brukaragenten til nettlesaren
 browsing-histories = Nettlesarhistorikk
 buying-preferences = Kjøpspreferansar
+chat-logs = Chatteloggar
 credit-cards = Kredittkort
 dates-of-birth = Fødselsdatoar
 drinking-habits = Drikkevanar

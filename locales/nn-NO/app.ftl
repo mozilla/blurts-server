@@ -60,8 +60,11 @@ signup-modal-headline = Registrer deg for { -product-name-nowrap }
 signup-modal-close = Lat att
 get-your-report = Få din rapport.
 signup-modal-verify-headline = Stadfest abonnementet ditt.
+signup-modal-verify-expiration = Denne lenka går ut om 24 timar.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Sendt!
+signup-with-fxa = Registrer deg med ein { -brand-name }-konto
+form-signup-placeholder = Skriv inn e-postadresse
 sign-up = Registrer deg
 show-more-breaches = Vis fleire
 # breach-date = the calendar date a particular data theft occurred. 
