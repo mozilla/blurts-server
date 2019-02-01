@@ -359,15 +359,15 @@ user-fb-not-compromised-blurb =
 
 user-generic-fb-not-compromised-blurb =
   { $breachCount ->
-      [one] This email was not in the { $breachName } breach, but we found this email address in another.
-     *[other] This email was not in the { $breachName} breach, but we found this email address in others.
+      [one] This email was not in the { $breachName } breach, but was found in another.
+     *[other] This email was not in the { $breachName} breach, but was found in others.
   }
 
 guest-fb-not-compromised-blurb =
   { $breachCount ->
-        [one] This email was not in the { $breachName } breach, but we found that email address in another. 
+        [one] This email was not in the { $breachName } breach, but was found in another. 
               Sign up for a {-brand-fxa} to get your full report and alerts about new breaches.
-       *[other] This email was not in the { $breachName } breach, but we found that email address in others. 
+       *[other] This email was not in the { $breachName } breach, but was found in others. 
                 Sign up for a {-brand-fxa} to get your full report and alerts about new breaches.
   }
 
