@@ -17,7 +17,7 @@ async function post (req, res) {
 
   if (req.session.user) {
     if (sha1(req.session.user.email).toUpperCase() === emailHash) {
-      return res.redirect("/scan/full_report");
+      return res.redirect("/scan/latest_breaches");
     }
   }
 
@@ -76,12 +76,13 @@ async function getLatestBreaches(req, res) {
   const latestBreaches = true;
   const authenticatedUser = true;
   let foundBreaches = [];
-  let newUser = false; // new user welcome message bar listens for this
+  let newUser = false; // new user welcome top-bar listens for this
 
   if (!req.session.user) {
     return res.redirect("/");
   }
-
+  // check session for new users, then set req.session.newUser to false to prevent
+  // susequent showings of the new user welcome top-bar.
   if (req.session.newUser === true) {
     newUser = true;
     req.session.newUser = false;
