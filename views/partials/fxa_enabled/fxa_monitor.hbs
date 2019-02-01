@@ -3,7 +3,7 @@
     <div class="half {{#if featuredBreach}} featured {{/if}}">
       <h2 data-location="landing-page" class="section-headline">
         {{#if featuredBreach }}
-          {{{fluentFormat req.supportedLocales "scan-featuredbreach-label" featuredBreach=featuredBreach.Title}}}
+          {{{fluentNestedBold req.supportedLocales "fb-landing-headline" breachName=featuredBreach.Title}}}
         {{else}}
           {{fluentFormat req.supportedLocales "landing-headline"}}
         {{/if}}

@@ -1,19 +1,24 @@
-{{#if fullReport}}
-  <h3 id="full-report" class="section-headline">{{fluentFormat req.supportedLocales "full-report-headline"}}</h3>
-{{else}}
   {{#ifCompare foundBreaches.length "===" 0}}
-    {{#if latestBreaches}}
-      <h3 id="latest-breaches" class="section-headline">{{fluentFormat req.supportedLocales "no-breaches-headline"}}</h3>
+    {{#ifCompare latestBreaches "||" fullReport}}
+      <h3 id="latest-breaches" class="section-headline">{{fluentFormat req.supportedLocales "user-zero-breaches-headline" userEmail=req.session.user.email}}</h3>
     {{else}}
-      <h3 id="no-breaches" class="section-headline">{{fluentFormat req.supportedLocales "no-breaches-found-headline"}}</h3>
-    {{/if}}
+      <h3 id="no-breaches" class="section-headline">{{fluentFormat req.supportedLocales "guest-zero-breaches-headline"}}</h3>
+    {{/ifCompare}}
   {{else}}
-    <h3 class="section-headline">
+    <h3 id="scan-results-headline" class="section-headline scan-results-headline">
       {{#if userAccountCompromised}}
-        {{fluentFormat req.supportedLocales "compromised-headline" breachName=featuredBreach.Title}}
+        {{#if authenticatedUser}}
+          {{{fluentNestedBold req.supportedLocales "user-fb-compromised-headline" breachName=featuredBreach.Title userEmail=req.session.user.email}}}
+        {{else}}
+          {{{fluentNestedBold req.supportedLocales "guest-fb-compromised-headline" breachName=featuredBreach.Title}}}
+        {{/if}}
       {{else}}
-        {{fluentFormat req.supportedLocales "scan-results-headline" breachCount=foundBreaches.length}}
+        {{#if authenticatedUser}}
+          {{{fluentFormat req.supportedLocales "user-scan-results-headline" breachCount=foundBreaches.length userEmail=req.session.user.email}}}
+        {{else}}
+          {{{fluentFormat req.supportedLocales "guest-scan-results-headline" breachCount=foundBreaches.length}}}
+        {{/if}}
       {{/if}}
     </h3>
   {{/ifCompare}}
-{{/if}}
+

@@ -40,6 +40,12 @@ function localizedBreachDataClasses(supportedLocales, dataClasses, args) {
 }
 
 
+function fluentNestedBold(supportedLocales, id, args) {
+  args.hash.breachName = `<span class="medium">${args.hash.breachName}</span>`;
+  return LocaleUtils.fluentFormat(supportedLocales, id, args.hash);
+}
+
+
 function prettyDate(supportedLocales, date) {
   const jsDate = new Date(date);
   const options = {year: "numeric", month: "long", day: "numeric"};
@@ -87,6 +93,8 @@ function ifCompare(v1, operator, v2, options) {
     "<=": v1 <= v2 ? true : false,
     "===": v1 === v2 ? true : false,
     "&&" : v1 && v2 ? true : false,
+    "||" : v1 || v2 ? true : false,
+    "!!": !v1 || !v2 ? true : false,
   };
   if (operators.hasOwnProperty(operator)) {
     if (operators[operator]) {
@@ -120,6 +128,7 @@ module.exports = {
   fluentFormat,
   fluentFxa,
   getStringID,
+  fluentNestedBold,
   localizedBreachDataClasses,
   prettyDate,
   localeString,
