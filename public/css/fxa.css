@@ -485,6 +485,10 @@ input:focus::-moz-focus-inner {
   border: 0;
 }
 
+.transparent-button {
+  text-transform: capitalize;
+}
+
 .transparent-button,
 input[type="submit"].transparent-button {
   background-color: rgba(255, 255, 255, 0);
@@ -1285,6 +1289,7 @@ span.breach-info .medium {
 
 #what-to-do .section-headline {
   text-align: center;
+  margin-bottom: var(--gap);
 }
 
 #what-to-do .section-wrapper > * {
@@ -1843,12 +1848,13 @@ svg#menu-icon path {
     padding-right: calc(var(--columnSpacing) / 2);
   }
 
-  .firefox-monitor-brand {
-    font-size: calc(22px + 0.6vw);
+  .sign-up-banner .row-wrapper {
+    padding-top: var(--columnSpacing);
+    padding-bottom: var(--columnSpacing);
   }
 
-  main .compromised-accounts .section-wrapper {
-    margin-top: 0;
+  .firefox-monitor-brand {
+    font-size: calc(22px + 0.6vw);
   }
 
   #what-to-do .section-wrapper {
@@ -2009,9 +2015,21 @@ svg#menu-icon path {
     flex-direction: column;
   }
 
-  .account .image-wrap,
-  .num-icon {
+  .source-info {
+    text-align: left;
+    margin-top: 0;
+  }
+
+  .account .image-wrap {
     margin-bottom: calc(var(--gap) / 2);
+  }
+
+  .num-icon {
+    margin: 0 auto calc(var(--gap) / 2);
+  }
+
+  #what-to-do .half {
+    text-align: center;
   }
 
   .half .source-info {
