@@ -21,6 +21,7 @@ const {addRequestToResponse, pickLanguage, logErrors, localizeErrorMessages, cli
 const { LocaleUtils } = require("./locale-utils");
 const mozlog = require("./log");
 
+const DockerflowRoutes = require("./routes/dockerflow");
 const HibpRoutes = require("./routes/hibp");
 const HomeRoutes = require("./routes/home");
 const ScanRoutes = require("./routes/scan");
@@ -61,7 +62,10 @@ try {
 })();
 
 // Use helmet to set security headers
-app.use(helmet());
+// disable default HSTS; Ops handles it in stage & prod configs
+app.use(helmet({
+  hsts: false,
+}));
 
 const SCRIPT_SOURCES = ["'self'", "https://www.google-analytics.com/analytics.js"];
 const STYLE_SOURCES = ["'self'", "https://code.cdn.mozilla.net/fonts/"];
@@ -150,10 +154,7 @@ app.use(sessions({
 app.use(pickLanguage);
 app.use(addRequestToResponse);
 
-if (!AppConstants.DISABLE_DOCKERFLOW) {
-  const DockerflowRoutes = require("./routes/dockerflow");
-  app.use("/", DockerflowRoutes);
-}
+app.use("/", DockerflowRoutes);
 app.use("/hibp", HibpRoutes);
 if (AppConstants.FXA_ENABLED) {
   app.use("/oauth", OAuthRoutes);

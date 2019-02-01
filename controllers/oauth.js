@@ -106,7 +106,6 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
   res.redirect("/scan/latest_breaches");
 }
 
-
 module.exports = {
   init,
   confirmed,

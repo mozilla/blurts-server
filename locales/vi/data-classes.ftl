@@ -91,6 +91,7 @@ races = Chủng tộc
 recovery-email-addresses = Địa chỉ email phụ
 relationship-statuses = Tình trạng mối quan hệ
 religions = Tôn giáo
+reward-program-balances = Phần thưởng cân bằng chương trình
 salutations = Lời chào
 school-grades-class-levels = Khối (lớp) học
 security-questions-and-answers = Câu hỏi và câu trả lời bảo mật

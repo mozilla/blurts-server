@@ -38,10 +38,7 @@ async function add(req, res) {
 }
 
 
-async function verify(req, res) {
-  if (!req.query.token) {
-    throw new FluentError("user-verify-token-error");
-  }
+async function _verify(req) {
   const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
 
   let unsafeBreachesForEmail = [];
@@ -67,6 +64,20 @@ async function verify(req, res) {
       whichView: "email_partials/report",
     }
   );
+}
+
+
+async function verify(req, res) {
+  if (!req.query.token) {
+    throw new FluentError("user-verify-token-error");
+  }
+  const existingSubscriber = await DB.getSubscriberByToken(req.query.token);
+  if (!existingSubscriber) {
+    throw new FluentError("error-not-subscribed");
+  }
+  if (!existingSubscriber.verified) {
+    await _verify(req);
+  }
 
   res.render("subpage", {
     headline: req.fluentFormat("confirmation-headline"),

@@ -17,6 +17,7 @@ about-firefox-alerts = O opozorilih Firefoxa
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Sporočite nam svoje mnenje
 terms-and-privacy = Pogoji in zasebnost
+error-could-not-add-email = E-poštnega naslova ni bilo mogoče dodati v bazo podatkov.
 error-not-subscribed = Ta e-poštni naslov ni naročen na { -product-name }.
 error-hibp-throttled = Preveč povezav na { -brand-HIBP }.
 error-hibp-connect = Napaka pri povezovanju na { -brand-HIBP }.

@@ -17,25 +17,60 @@ about-firefox-alerts = Om Firefox-varsel
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Tilbakemelding
 terms-and-privacy = Vilkår og personvern
+error-could-not-add-email = Klarte ikkje å leggje til e-postadressa i databasen.
+error-not-subscribed = Denne e-postadressa abonnerer ikkje på { -product-name }.
+error-hibp-throttled = For mange tilkoplingar til { -brand-HIBP }.
+error-hibp-connect = Klarte ikkje å kople til { -brand-HIBP }.
+error-hibp-load-breaches = Klarte ikkje å laste datalekkasjar.
+hibp-notify-email-subject = { -product-name } Åtvaring: Kontoen din har vore involvert i ein datalekasje.
 home-title = { -product-name }
 home-not-found = Fann ikkje sida.
+oauth-invalid-session = Ugyldig økt
+oauth-confirmed-title = { -product-name }: Abonnerer
+scan-title = { -product-name } : Skanningsresultat
 user-add-invalid-email = Ugyldig e-postadresse
 user-add-email-verify-subject = Stadfest abonnementet ditt på { -product-name }.
 user-add-title = { -product-name }: Stadfest e-postadressa
 error-headline = Feil
+user-verify-token-error = Stadfestings-token er påkravd.
+user-verify-email-report-subject = Din { -product-name }-rapport
 user-verify-title = { -product-name }: Abonnerer
+user-unsubscribe-token-error = Avmelding krev eit token.
+user-unsubscribe-token-email-error = Avmelding krev eit token og eit emailHash.
 user-unsubscribe-title = { -product-name }: Avslutt abonnementet
+user-unsubscribe-survey-title = { -product-name }: Avslutt undersøkinga
+user-unsubscribed-title = { -product-name }: Avslutta
 
 ## Password Tips
 
+pwt-section-headline = Sterkare passord = betre vern
+pwt-section-subhead = Dei private opplysningane dine er berre so sikre som passorda dine er.
+pwt-headline-4 = Få hjelp til å hugse passorda dine
+landing-headline = Ditt vern mot hackarar startar her.
+scan-label = Sjå om du har vore innblanda i ein datalekkasje.
+scan-placeholder = Skriv inn e-postadresse
+scan-privacy = E-postadressa di vert ikkje lagra.
+scan-submit = Søk etter e-postadressa di
+scan-another-email = Skann ei anna e-postadresse
+scan-error = E-postadressa må vere gyldig.
 download-firefox-bar-link = Last ned { -brand-name } no
 download-firefox-banner-blurb = Ta kontroll over nettlesaren din
 download-firefox-banner-button = LAst ned { -brand-name }
 signup-modal-headline = Registrer deg for { -product-name-nowrap }
 signup-modal-close = Lat att
+get-your-report = Få din rapport.
+signup-modal-verify-headline = Stadfest abonnementet ditt.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Sendt!
 sign-up = Registrer deg
+show-more-breaches = Vis fleire
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = Dato for datalekkasje:
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Kompromiterte kontoar:
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Kompromiterte data:
+confirmed = Stadfesta!<br />Du abonnerer!
 unsub-button = Avslutt abonnementet
 unsub-survey-headline = Du abonnerer ikkje lenger.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.

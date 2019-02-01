@@ -133,7 +133,7 @@ function doOauth() {
     localStorage.removeItem("scanned");
   } else {
     window.open("/oauth/init");
-}
+  }
 }
 
 // restricts tabbing to modal elements when modal is open.
