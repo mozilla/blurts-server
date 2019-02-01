@@ -371,18 +371,24 @@ guest-fb-not-compromised-blurb =
                 Sign up for a {-brand-fxa} to get your full report and alerts about new breaches.
   }
 
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
 user-found-breaches-blurb =
   { $breachCount ->
         [one] This breach exposed the following personal info. If you haven't already, change your password.
        *[other] These breaches exposed the following personal info. If you haven't already, change your passwords.
   }
 
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
 user-generic-found-breaches-blurb =
   { $breachCount ->
         [one] This breach exposed the following personal info.
        *[other] These breaches exposed the following personal info.
   }
 
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
 guest-found-breaches-blurb =
   { $breachCount ->
         [one] This breach exposed the following personal info. Sign up for a 
