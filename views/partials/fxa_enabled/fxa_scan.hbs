@@ -16,9 +16,9 @@
     <!--scan results page right -->
     {{> fxa_enabled/scan_results/result_page_right}}
 
-    {{#unless authenticatedUser}}
+    {{#ifCompare featuredBreach "!!" authenticatedUser}}
       {{> compromised_accounts }}
-    {{/unless}}
+    {{/ifCompare}}
   </div>
 </main>
 
