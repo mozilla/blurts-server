@@ -9,33 +9,33 @@
     {{/ifCompare}}
 
     {{#ifCompare foundBreaches.length "===" 1}}
-        {{#if authenticatedUser}}
+      {{#if authenticatedUser}}
+        {{#if userAccountCompromised}}
+          {{> fxa_enabled/scan_results/single_breach}}
+        {{else}}
           <div class="third">
             {{> fxa_enabled/see_full_report_button}}
           </div>
+        {{/if}}
       {{else}}
         {{> fxa_enabled/scan_results/single_breach}}
       {{/if}}
     {{/ifCompare}}
 
-    {{#if authenticatedUser}}
-      {{#if featuredBreach}}
-        {{#ifCompare foundBreaches.length ">=" 1}}
-          {{#if userAccountCompromised}}
-            {{> fxa_enabled/scan_results/single_breach}}
-          {{else}}
-            <div class="third">
-              {{> fxa_enabled/see_full_report_button}}
-            </div>
-          {{/if}}
-        {{/ifCompare}}
-      {{/if}}
-    {{else}}
-      {{#ifCompare foundBreaches.length ">" 1}}
+    {{#ifCompare foundBreaches.length ">" 1}}
+      {{#if authenticatedUser}}
+        {{#if userAccountCompromised}}
+          {{> fxa_enabled/scan_results/single_breach}}
+        {{else}}
+          <div class="third">
+            {{> fxa_enabled/see_full_report_button}}
+          </div>
+        {{/if}}
+      {{else}}
         {{#if featuredBreach}}
           {{> fxa_enabled/sign_up_bundle class="third"}}
         {{else}} <!--featuredBreach -->
           {{> fxa_enabled/sign_up_bundle class="third"}}
         {{/if}}
-      {{/ifCompare}}
-    {{/if}}
+      {{/if}}
+    {{/ifCompare}}
