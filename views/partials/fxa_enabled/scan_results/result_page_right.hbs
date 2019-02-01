@@ -13,9 +13,11 @@
         {{#if userAccountCompromised}}
           {{> fxa_enabled/scan_results/single_breach}}
         {{else}}
-          <div class="third">
-            {{> fxa_enabled/see_full_report_button}}
-          </div>
+          {{#ifCompare foundBreaches "!!" latestBreaches}}
+            <div class="third">
+              {{> fxa_enabled/see_full_report_button}}
+            </div>
+          {{/ifCompare}}
         {{/if}}
       {{else}}
         {{> fxa_enabled/scan_results/single_breach}}
@@ -27,9 +29,11 @@
         {{#if userAccountCompromised}}
           {{> fxa_enabled/scan_results/single_breach}}
         {{else}}
-          <div class="third">
-            {{> fxa_enabled/see_full_report_button}}
-          </div>
+          {{#ifCompare foundBreaches "!!" latestBreaches}}
+            <div class="third">
+              {{> fxa_enabled/see_full_report_button}}
+            </div>
+          {{/ifCompare}}
         {{/if}}
       {{else}}
         {{#if featuredBreach}}
