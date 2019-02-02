@@ -45,7 +45,12 @@ user-unsubscribed-title = { -product-name }: Avslutta
 
 pwt-section-headline = Sterkare passord = betre vern
 pwt-section-subhead = Dei private opplysningane dine er berre so sikre som passorda dine er.
+pwt-headline-1 = Bruk aldri same passordet på fleire kontoar
+pwt-headline-2 = Lag sterke passord som er vanskelege å gjette seg fram til
+pwt-headline-3 = Sjå på tryggingsspørsmål som ekstra passord
 pwt-headline-4 = Få hjelp til å hugse passorda dine
+pwt-headline-5 = Legg til ekstra sikkerheit med tofaktor-godkjenning
+pwt-headline-6 = Registrer deg for { -product-name-nowrap }-åtvaringar
 landing-headline = Ditt vern mot hackarar startar her.
 scan-label = Sjå om du har vore innblanda i ein datalekkasje.
 scan-placeholder = Skriv inn e-postadresse
@@ -66,7 +71,11 @@ signup-modal-sent = Sendt!
 signup-with-fxa = Registrer deg med ein { -brand-name }-konto
 form-signup-placeholder = Skriv inn e-postadresse
 sign-up = Registrer deg
+form-signup-error = E-postadressa må vere gyldig
+no-breaches-headline = Så langt er alt godt.
 show-more-breaches = Vis fleire
+what-to-do-subhead-1 = Endre passorda dine, sjølv for gamle kontoar
+what-to-do-subhead-4 = Få hjelp til å lage gode passord og å oppebaver dei trygt.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Dato for datalekkasje:
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -74,8 +83,15 @@ compromised-accounts = Kompromiterte kontoar:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Kompromiterte data:
 confirmed = Stadfesta!<br />Du abonnerer!
+unsub-headline = Avslutt abonnementet på { -product-name-nowrap }
 unsub-button = Avslutt abonnementet
 unsub-survey-headline = Du abonnerer ikkje lenger.
+unsub-reason-1 = Eg trur ikkje at åtvaringane gjer mine data sikrare
+unsub-reason-2 = Eg får for mange e-postar frå { -product-name-nowrap }
+unsub-reason-3 = Eg synest ikkje at tenesta er nyttig
+unsub-reason-4 = Eg har allereie gjort noko for å verne kontoane mine
+unsub-reason-6 = Ingen av dei ovanfor
+unsub-survey-thankyou = Takk for tilbakemeldinga di.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Del
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
