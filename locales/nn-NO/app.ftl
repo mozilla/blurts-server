@@ -68,7 +68,9 @@ signup-modal-headline = Registrer deg for { -product-name-nowrap }
 signup-modal-close = Lat att
 get-your-report = Få din rapport.
 signup-modal-verify-headline = Stadfest abonnementet ditt.
+signup-modal-verify-blurb = Vi sende ei stadfestingslenke til <span id="submitted-email" class="medium"></span>.
 signup-modal-verify-expiration = Denne lenka går ut om 24 timar.
+signup-modal-verify-resend = Ikkje i innboksen eller i søppelpostmappa? Send på nytt.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Sendt!
 signup-with-fxa = Registrer deg med ein { -brand-name }-konto
@@ -79,7 +81,9 @@ form-signup-error = E-postadressa må vere gyldig
 no-breaches-headline = Så langt er alt godt.
 found-breaches-headline = Din informasjon var ein del av ein datalekkasje.
 show-more-breaches = Vis fleire
+what-to-do-headline = Kva du skal gjere når informasjon din er utsett for ein datalekkasje
 what-to-do-subhead-1 = Endre passorda dine, sjølv for gamle kontoar
+what-to-do-subhead-3 = Ta ekstra forholdsreglar for å sikre bankkontoane dine
 what-to-do-subhead-4 = Få hjelp til å lage gode passord og å oppebaver dei trygt.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Dato for datalekkasje:
@@ -108,6 +112,8 @@ download-firefox-mobile = Last ned { -brand-name } for mobil
 features = Funksjonar
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Informasjonen om datalekkasjen kjem frå { $hibp-link }
 share-email = E-postadresse
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Andre
