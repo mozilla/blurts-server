@@ -777,6 +777,7 @@ h5,
 }
 
 .avatar-wrapper {
+  box-shadow: 0 0 0 1.25px rgba(255, 255, 255, 1);
   border-radius: 50%;
   display: inline-flex;
   position: relative;
@@ -786,7 +787,7 @@ h5,
 .fxa-user-info::before {
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
-  border-top: 6px solid #e3e2e2;
+  border-top: 6px solid rgba(227, 226, 226, 1);
   content: '';
   position: absolute;
   top: 0;
@@ -801,8 +802,8 @@ h5,
 }
 
 .avatar-wrapper img {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
 }
 
 span.user-email {
@@ -1942,11 +1943,6 @@ svg#menu-icon path {
 
   .menu-open .mobile-menu {
     visibility: visible;
-  }
-
-  .avatar-wrapper img {
-    width: 31px;
-    height: 31px;
   }
 
   .avatar-wrapper {
