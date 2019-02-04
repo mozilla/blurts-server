@@ -9,6 +9,7 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Firefox 账户
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = 用户支持
@@ -199,3 +200,9 @@ share-twitter = 大部分人拥有约 100 个之多的在线账号。您有任�
 share-facebook-headline = 看看您的账号是否也在数据外泄事件当中
 share-facebook-blurb = 您的账号也出现在数据外泄事件当中吗？
 og-site-description = 使用 { -product-name }，看看您的账号是否也在数据外泄事件当中。订阅以在未来发生外泄事件时收到警报，并获取确保账号安全的小贴士。
+mozilla-security-blog = { -brand-Mozilla } 安全博客
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = 社交
+sign-in = 登录
+sign-out = 退出
+full-report-headline = 您的 { -product-name } 报告
