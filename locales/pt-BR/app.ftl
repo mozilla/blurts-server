@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Conta Firefox
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Suporte
@@ -196,3 +198,11 @@ share-twitter = A maioria das pessoas tem cerca de 100 contas online. Alguma das
 share-facebook-headline = Descubra se você foi vítima de um vazamento de dados
 share-facebook-blurb = Suas contas online foram expostas em um vazamento de dados?
 og-site-description = Descubra se você foi vítima de um vazamento de dados com o { -product-name }. Cadastre-se para receber alertas sobre futuros vazamentos e receber dicas para manter suas contas seguras.
+mozilla-security-blog = Blog de segurança do { -brand-Mozilla }
+show-all = Mostrar tudo
+sign-in = Entrar
+sign-out = Sair
+see-full-report = Ver relatório completo
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Gerenciar { -brand-fxa }
+fxa-download-firefox-bar-link = Baixe agora
