@@ -145,6 +145,7 @@ confirmation-blurb = Οι παραβιάσεις δεδομένων μπορού
 share-email = Email
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Άλλο
+show-all = Προβολή όλων
 fxa-scan-another-email = Θέλετε να ελέγξετε άλλο email;
 # Search Firefox Monitor
 fxa-scan-submit = Αναζήτηση { -product-name }
