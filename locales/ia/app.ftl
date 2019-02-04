@@ -206,3 +206,5 @@ show-all = Monstrar toto
 fxa-welcome-headline = Benvenite a { -product-name }.
 sign-in = Authentica te
 sign-out = Disconnexion
+fxa-download-firefox-bar-link = Discargar ora
+fxa-download-firefox-banner-blurb = Le cargamento de pagina es melior, plus rapide e usa minus memoria del computator.
