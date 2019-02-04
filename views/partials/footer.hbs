@@ -1,0 +1,42 @@
+    {{#if FXA_ENABLED}}
+      <footer id="footer" class="footer">
+        <div class="row-wrapper">
+          <div class="wrap-row footer-links">
+            <a {{> analytics/link_event eventLabel="Mozilla Logo"}} class="fourth footer-logo-wrapper" href="https://www.mozilla.org/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener" aria-label="Mozilla">{{> sprite symID="Mozilla" }}</a>
+            <ul class="fourth">
+              <li>{{fluentFormat req.supportedLocales "layout-social"}}</li>
+              <li>
+                <a class="facebook social-link" href="https://www.facebook.com/sharer/sharer.php?u={{ SERVER_URL }}" target="_blank" rel="noopener noreferrer" {{> analytics/social_event eventLabel="Facebook"}} aria-label="Facebook">
+                  {{> sprite symID="fxa-facebook"}}
+                  <span>{{fluentFormat req.supportedLocales "share"}}</span>
+                </a>
+              </li>
+              <li>
+                <a class="twitter social-link" href="https://twitter.com/intent/tweet?url={{ SERVER_URL }}" target="_blank" rel="noopener noreferrer" {{> analytics/social_event eventLabel="Twitter"}} aria-label="Twitter">
+                  {{> sprite symID="fxa-twitter"}}
+                  <span>{{fluentFormat req.supportedLocales "tweet"}}</span>
+                </a>
+              </li>
+            </ul>
+            <ul class="fourth">
+              <li>{{fluentFormat req.supportedLocales "layout-support" }}</li>
+              <li><a {{> analytics/link_event eventLabel="About Firefox alerts"}} href="https://blog.mozilla.org/security/2018/11/14/when-does-firefox-alert-for-breached-sites" target="_blank" rel="noopener">{{fluentFormat req.supportedLocales "mozilla-security-blog"}}</a></li>
+              <li><a {{> analytics/link_event eventLabel="Give Feedback"}} href="https://qsurvey.mozilla.com/s3/Firefox-Monitor-Feedback" target="_blank" rel="noopener">{{fluentFormat req.supportedLocales "give-feedback"}}</a></li>
+              <li><a {{> analytics/link_event eventLabel="Terms & Privacy"}} href="https://www.mozilla.org/privacy/firefox-monitor/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">{{fluentFormat req.supportedLocales "terms-and-privacy"}}</a></li>
+              <li><a {{> analytics/link_event eventLabel="GitHub"}} href="https://github.com/mozilla/blurts-server/" target="_blank" rel="noopener noreferrer">{{> sprite symID="GitHub"}}</a></li>
+            </ul>
+            <ul class="fourth">
+              <li>{{fluentFormat req.supportedLocales "layout-Firefox"}}</li>
+              <li><a {{> analytics/download_event eventLabel="Quantum"}} href="https://www.mozilla.org/firefox/new/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">{{fluentFormat req.supportedLocales "download-firefox-banner-button"}}</a></li>
+              <li><a {{> analytics/link_event eventLabel="Features"}} href="https://www.mozilla.org/firefox/features/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">{{fluentFormat req.supportedLocales "features"}}</a></li>
+              <li><a {{> analytics/download_event eventLabel="Beta, Nightly, Developer Edition"}} href="https://www.mozilla.org/firefox/channel/desktop/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">{{fluentFormat req.supportedLocales "beta-nightly-developer-edition"}}</a></li>
+            </ul>
+          </div>
+          <div class="row legal">
+            <p class="half copyright-info">{{{fluentFormat req.supportedLocales "copyright-info"}}}</p>
+          </div>
+        </div>
+      </footer>
+    {{else}}
+      {{> legacy/legacy_footer }}
+    {{/if}}

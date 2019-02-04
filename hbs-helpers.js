@@ -1,6 +1,8 @@
 "use strict";
 
+const AppConstants = require("./app-constants");
 const { LocaleUtils } = require("./locale-utils");
+const modifiedStringList = require("./modified-strings");
 const mozlog = require("./log");
 
 
@@ -12,9 +14,20 @@ function fluentFormat (supportedLocales, id, args) {
 }
 
 
-function getStringID (supportedLocales, key, number) {
-  const fluentID = `${key}${number}`;
-  return LocaleUtils.fluentFormat(supportedLocales, fluentID);
+function fluentFxa (supportedLocales, id, args) {
+  if (AppConstants.FXA_ENABLED) {
+    id = `fxa-${id}`;
+  }
+  return LocaleUtils.fluentFormat(supportedLocales, id, args.hash);
+}
+
+
+function getStringID (supportedLocales, id, number) {
+  id = `${id}${number}`;
+  if (modifiedStringList.includes(id)) {
+    id = `fxa-${id}`;
+  }
+  return LocaleUtils.fluentFormat(supportedLocales, id);
 }
 
 
@@ -24,6 +37,12 @@ function localizedBreachDataClasses(supportedLocales, dataClasses, args) {
       localizedDataClasses.push(LocaleUtils.fluentFormat(supportedLocales, dataClass, args));
     });
     return localizedDataClasses.join(", ");
+}
+
+
+function fluentNestedBold(supportedLocales, id, args) {
+  args.hash.breachName = `<span class="medium">${args.hash.breachName}</span>`;
+  return LocaleUtils.fluentFormat(supportedLocales, id, args.hash);
 }
 
 
@@ -73,6 +92,10 @@ function ifCompare(v1, operator, v2, options) {
     "<": v1 < v2 ? true : false,
     "<=": v1 <= v2 ? true : false,
     "===": v1 === v2 ? true : false,
+    "&&" : v1 && v2 ? true : false,
+    "||" : v1 || v2 ? true : false,
+    "!|" : !v1 || !v2 ? true : false,
+    "!!" : !v1 && !v2  ? true : false,
   };
   if (operators.hasOwnProperty(operator)) {
     if (operators[operator]) {
@@ -104,7 +127,9 @@ function breachMath(lValue, operator = null, rValue = null) {
 
 module.exports = {
   fluentFormat,
+  fluentFxa,
   getStringID,
+  fluentNestedBold,
   localizedBreachDataClasses,
   prettyDate,
   localeString,

@@ -1,11 +1,10 @@
 {{#if FXA_ENABLED}}
-  <header class ="row-wrapper">
-    {{> firefox_monitor_logo}}
-    {{> fxa_enabled/fxa_navigation}}
+  <header class ="section-wrapper">
+    <div class="whole">
+      {{> firefox_monitor_logo}}
+      {{> fxa_enabled/menu/fxa_navigation}}
+    </div>
   </header>
 {{else}}
-  <header class ="row-wrapper">
-    {{> firefox_monitor_logo}}
-    {{> social_media_sharing_buttons}}
-  </header>
+  {{> legacy/legacy_header}}
 {{/if}}

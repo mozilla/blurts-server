@@ -1,13 +1,30 @@
-<section id="download-firefox" class="download-firefox banner">
+{{#if FXA_ENABLED}}
+  <section id="download-firefox" class="download-firefox banner">
   <div class="section-wrapper">
-    <div class="two-thirds">
+    <div class="half">
       <div class="wrap-row">
         <div class="firefox-logo"></div>
-        <h3 class="medium secondary-title">{{fluentFormat req.supportedLocales "download-firefox-banner-blurb"}}</h3>
+        <h3 class="medium secondary-title">{{fluentFxa req.supportedLocales "download-firefox-banner-blurb"}}</h3>
       </div>
     </div>
     <div class="third">
-      <a {{> analytics/download_event eventLabel="Quantum - Page Banner"}} class="button" href="https://www.mozilla.org/firefox/new/?utm_source={{ UTM_SOURCE }}&utm_medium=referral&utm_campaign=fx_monitor_downloads&utm_content=download_banner" target="_blank" rel="noopener">{{fluentFormat req.supportedLocales "download-firefox-banner-button"}}</a>
+      <a {{> analytics/download_event eventLabel="Quantum - Page Banner"}} class="button download" href="https://www.mozilla.org/firefox/new/?utm_source={{ UTM_SOURCE }}&utm_medium=referral&utm_campaign=fx_monitor_downloads&utm_content=download_banner" target="_blank" rel="noopener">{{fluentFormat req.supportedLocales "download-firefox-banner-button"}}</a>
     </div>
   </div>
 </section>
+{{else}}
+  <section id="download-firefox" class="download-firefox banner">
+    <div class="section-wrapper">
+      <div class="two-thirds">
+        <div class="wrap-row">
+          <div class="firefox-logo"></div>
+          <h3 class="medium secondary-title">{{fluentFormat req.supportedLocales "download-firefox-banner-blurb"}}</h3>
+        </div>
+      </div>
+      <div class="third">
+        <a {{> analytics/download_event eventLabel="Quantum - Page Banner"}} class="button" href="https://www.mozilla.org/firefox/new/?utm_source={{ UTM_SOURCE }}&utm_medium=referral&utm_campaign=fx_monitor_downloads&utm_content=download_banner" target="_blank" rel="noopener">{{fluentFormat req.supportedLocales "download-firefox-banner-button"}}</a>
+      </div>
+    </div>
+  </section>
+{{/if}}
+

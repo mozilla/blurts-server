@@ -1,0 +1,24 @@
+  {{#ifCompare foundBreaches.length "===" 0}}
+    {{#ifCompare latestBreaches "||" fullReport}}
+      <h3 id="latest-breaches" class="section-headline">{{fluentFormat req.supportedLocales "user-zero-breaches-headline" userEmail=req.session.user.email}}</h3>
+    {{else}}
+      <h3 id="no-breaches" class="section-headline">{{fluentFormat req.supportedLocales "guest-zero-breaches-headline"}}</h3>
+    {{/ifCompare}}
+  {{else}}
+    <h3 id="scan-results-headline" class="section-headline scan-results-headline">
+      {{#if userAccountCompromised}}
+        {{#if authenticatedUser}}
+          {{{fluentNestedBold req.supportedLocales "user-fb-compromised-headline" breachName=featuredBreach.Title userEmail=req.session.user.email}}}
+        {{else}}
+          {{{fluentNestedBold req.supportedLocales "guest-fb-compromised-headline" breachName=featuredBreach.Title}}}
+        {{/if}}
+      {{else}}
+        {{#if authenticatedUser}}
+          {{{fluentFormat req.supportedLocales "user-scan-results-headline" breachCount=foundBreaches.length userEmail=req.session.user.email}}}
+        {{else}}
+          {{{fluentFormat req.supportedLocales "guest-scan-results-headline" breachCount=foundBreaches.length}}}
+        {{/if}}
+      {{/if}}
+    </h3>
+  {{/ifCompare}}
+

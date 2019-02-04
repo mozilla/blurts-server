@@ -1,0 +1,16 @@
+<nav id="fxa-navigation" class="fxa-navigation">
+  {{#if req.session.user }}
+    {{> fxa_enabled/menu/fxa_menu_icon}}
+    <div id="fxa-user-info" class="fxa-user-info">
+      <span id="user-email" class="user-email hide-mobile">{{ req.session.user.email }}</span>
+      <div class="avatar-wrapper desktop hide-mobile">
+        <img class="avatar" src="{{ req.session.user.avatar }}"/>
+      </div>
+        {{> fxa_enabled/menu/fxa_links class="fxa-menu desktop" }}
+    </div> 
+  {{else}}
+    <button id="login-btn" class="login-btn open-oauth transparent-button">
+      {{fluentFormat req.supportedLocales "sign-in"}}
+    </button>
+  {{/if}}
+</nav>

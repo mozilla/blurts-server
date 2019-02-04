@@ -1,0 +1,40 @@
+<main class="landing-content">
+  <div class="section-wrapper">
+    <div class="half {{#if featuredBreach}} featured {{/if}}">
+      <h2 data-location="landing-page" class="section-headline">
+        {{#if featuredBreach }}
+          {{{fluentNestedBold req.supportedLocales "fb-landing-headline" breachName=featuredBreach.Title}}}
+        {{else}}
+          {{fluentFormat req.supportedLocales "landing-headline"}}
+        {{/if}}
+      </h2>
+      {{#if featuredBreach }}
+        {{#if featuredBreach.IsSensitive}}
+          {{#if req.session.user}}
+            {{> fxa_enabled/see_full_report_button}}
+          {{else}}
+            <button class="button sign-up-button" id="sign-up">{{fluentFormat req.supportedLocales "sign-up-to-check"}}</button>
+          {{/if}}
+        {{else}}
+          {{> scan_form}}
+        {{/if}}
+      {{else}}
+        <p class="landing-blurb">
+          {{fluentFormat req.supportedLocales "fxa-landing-blurb"}}
+        </p>
+      {{/if}}
+    </div>
+    <div class="half">
+      {{#if featuredBreach}}
+        {{> featured_breach}}
+      {{else}}
+        <span class="demi form-desc">{{fluentFxa req.supportedLocales "scan-label"}}</span>
+        {{> scan_form}}
+      {{/if}}
+    </div>
+  </div>
+</main>
+
+{{> banners/sign_up_banner}}
+{{> password_tips}}
+{{> banners/download_firefox_banner}}

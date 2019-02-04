@@ -42,13 +42,13 @@ function getMockRequest(userAddLanguages = "en-US,en;q=0.5") {
 }
 
 
-test("confirmed request checks session cookie, calls FXA for token and email, adds new subscriber with signup language, and renders", async () => {
+test("confirmed request checks session cookie, calls FXA for token and email, adds new subscriber with signup language, and redirects", async () => {
   const testFxAEmail = "fxa-new-user@test.com";
   const userAddLanguages = "en-US,en;q=0.5";
   EmailUtils.sendEmail = jest.fn();
   // Mock the getToken, got, and render calls
   const mockRequest = getMockRequest(userAddLanguages);
-  const mockResponse = { render: jest.fn()};
+  const mockResponse = { redirect: jest.fn()};
   const mockFxAClient = { code : { getToken: jest.fn().mockReturnValueOnce({ accessToken: "testToken"}) } };
   got.mockResolvedValue({ body: `{"email": "${testFxAEmail}"}` });
 
@@ -66,9 +66,8 @@ test("confirmed request checks session cookie, calls FXA for token and email, ad
   expect(subscribers[0].email).toBe(testFxAEmail);
   expect(subscribers[0].signup_language).toBe(userAddLanguages);
 
-  const mockRenderCallArgs = mockResponse.render.mock.calls[0];
-  expect(mockRenderCallArgs[0]).toBe("subpage");
-  expect(mockRenderCallArgs[1].whichPartial).toBe("subpages/confirm");
+  const mockRedirectCallArgs = mockResponse.redirect.mock.calls[0];
+  expect(mockRedirectCallArgs[0]).toBe("/scan/latest_breaches");
 });
 
 

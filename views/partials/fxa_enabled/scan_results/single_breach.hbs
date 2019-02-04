@@ -1,0 +1,6 @@
+        <div class="half">
+          {{#eachFromTo foundBreaches 0 1}}
+            {{> breach_listing req=../req}}
+          {{/eachFromTo}}
+          {{> hibp_attribution}}
+        </div>

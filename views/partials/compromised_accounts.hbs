@@ -1,29 +1,6 @@
-{{#ifCompare foundBreaches.length ">" 1}}
-  <div class="compromised-accounts">
-    <div class="section-wrapper">
-      <!--show first 4 breaches-->
-      {{#eachFromTo foundBreaches 0 4 }}
-        <div class="half listings">
-          {{> breach_listing req=../req}}
-        </div>
-      {{/eachFromTo}}
-      {{#ifCompare foundBreaches.length "<=" 4}}
-        <div class="whole align-left">
-          {{> hibp_attribution}}
-        </div>
-      {{/ifCompare}}
-      <!--display "Show More" button and show remaining breaches onclick if foundBreaches.length > 4-->
-      {{#ifCompare foundBreaches.length ">" 4}}
-        <div id="additional-breaches" class="section-wrapper">
-          {{#eachFromTo foundBreaches 4 foundBreaches.length }}
-            <div class="half listings">
-              {{> breach_listing req=../req}}
-            </div>
-          {{/eachFromTo}}
-        </div>
-        <button id="show-additional-breaches" class="button transparent-button">{{fluentFormat req.supportedLocales "show-more-breaches"}}</button>
-        {{> hibp_attribution }}
-      {{/ifCompare}}
-    </div>
-  </div>
-{{/ifCompare}}
+{{#if FXA_ENABLED}}
+  {{>fxa_enabled/scan_results/fxa_compromised_accounts}}
+{{else}}
+  {{> legacy/compromised_accounts}}
+{{/if}}
+

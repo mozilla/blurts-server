@@ -1,0 +1,45 @@
+    {{#ifCompare foundBreaches.length "===" 0}}
+      {{#if req.session.user}}
+        {{#if authenticatedUser}}
+          <div class="subscribe-icon stack"><!--subscribe-icon--></div>
+        {{/if}}
+      {{else}}
+        {{> fxa_enabled/sign_up_bundle class="third"}}
+      {{/if}}
+    {{/ifCompare}}
+
+    {{#ifCompare foundBreaches.length "===" 1}}
+      {{#if authenticatedUser}}
+        {{#if userAccountCompromised}}
+          {{> fxa_enabled/scan_results/single_breach}}
+        {{else}}
+          {{#ifCompare foundBreaches "!!" latestBreaches}}
+            <div class="third">
+              {{> fxa_enabled/see_full_report_button}}
+            </div>
+          {{/ifCompare}}
+        {{/if}}
+      {{else}}
+        {{> fxa_enabled/scan_results/single_breach}}
+      {{/if}}
+    {{/ifCompare}}
+
+    {{#ifCompare foundBreaches.length ">" 1}}
+      {{#if authenticatedUser}}
+        {{#if userAccountCompromised}}
+          {{> fxa_enabled/scan_results/single_breach}}
+        {{else}}
+          {{#ifCompare foundBreaches "!!" latestBreaches}}
+            <div class="third">
+              {{> fxa_enabled/see_full_report_button}}
+            </div>
+          {{/ifCompare}}
+        {{/if}}
+      {{else}}
+        {{#if featuredBreach}}
+          {{> fxa_enabled/sign_up_bundle class="third"}}
+        {{else}} <!--featuredBreach -->
+          {{> fxa_enabled/sign_up_bundle class="third"}}
+        {{/if}}
+      {{/if}}
+    {{/ifCompare}}

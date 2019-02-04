@@ -17,6 +17,7 @@ function addBreachesToMockRequest(mockRequest) {
 test("home GET without breach renders monitor without breach", () => {
   mockRequest.query = { breach: null };
   mockRequest = addBreachesToMockRequest(mockRequest);
+  mockRequest.session = { user: null} ;
   const mockResponse = { render: jest.fn() };
 
   home.home(mockRequest, mockResponse);
@@ -31,7 +32,10 @@ test("home GET with breach renders monitor with breach", () => {
   const testBreach = {Name: "Test"};
   mockRequest.query = { breach: testBreach.Name };
   mockRequest = addBreachesToMockRequest(mockRequest);
+  mockRequest.url = "https://www.mozilla.com";
+  mockRequest.session = { user: null };
   const mockResponse = { render: jest.fn() };
+
 
   home.home(mockRequest, mockResponse);
 

@@ -117,6 +117,11 @@ const HIBP = {
       if (sha1.toUpperCase() === sha1Prefix + breachedAccount.hashSuffix) {
         foundBreaches = allBreaches.filter(breach => breachedAccount.websites.includes(breach.Name));
         foundBreaches = this.filterBreaches(foundBreaches);
+        foundBreaches.sort( (a,b) => {
+          const oldestBreach = new Date(a.BreachDate);
+          const newestBreach = new Date(b.BreachDate);
+          return newestBreach-oldestBreach;
+        });
         break;
       }
     }
