@@ -336,7 +336,7 @@ user-generic-fb-compromised-blurb =
   }
 
 user-fb-compromised-single = 
-  This breach exposed the following personal info. If you haven't already, 
+  This breach exposed the following personal info. If you haven’t already, 
   change your passwords.
 user-generic-fb-compromised-single = This breach exposed the following personal info.
 guest-fb-compromised-single = 
@@ -375,8 +375,8 @@ guest-fb-not-compromised-blurb =
 # you can use {$breachCount} to display the number of breaches in your localization.
 user-found-breaches-blurb =
   { $breachCount ->
-        [one] This breach exposed the following personal info. If you haven't already, change your password.
-       *[other] These breaches exposed the following personal info. If you haven't already, change your passwords.
+        [one] This breach exposed the following personal info. If you haven’t already, change your password.
+       *[other] These breaches exposed the following personal info. If you haven’t already, change your passwords.
   }
 
 # While English doesn’t use the actual number of breaches in this sentence,
