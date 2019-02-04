@@ -9,6 +9,11 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa =
+    {
+        [lowercase] compte Firefox
+       *[uppercase] Compte Firefox
+    }
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Assistance
@@ -172,3 +177,5 @@ share-twitter = La plupart des gens possèdent des dizaines de comptes en ligne
 share-facebook-headline = Vérifiez si vous êtes concerné⋅e par une fuite de données
 share-facebook-blurb = Vos comptes en ligne ont-ils été compromis suite à une fuite de données ?
 og-site-description = Vérifiez avec { -product-name } si vous avez été victime d’une fuite de données. Inscrivez-vous pour recevoir des alertes lors de futures fuites de données et des conseils pour renforcer la sécurité de vos comptes.
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Gérer le { -brand-fxa[lowercase] }
