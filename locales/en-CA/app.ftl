@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Firefox Account
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Support
@@ -204,3 +206,136 @@ share-twitter = Most people have about 100 online accounts. Have any of yours be
 share-facebook-headline = Find out if you’ve been part of a data breach
 share-facebook-blurb = Have your online accounts been exposed in a data breach?
 og-site-description = Find out if you’ve been part of a data breach with { -product-name }. Sign up for alerts about future breaches and get tips to keep your accounts safe.
+mozilla-security-blog = { -brand-Mozilla } Security Blog
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Social
+show-all = Show all
+fxa-signup-banner-headline = Monitor threats to your online accounts.
+fxa-signup-banner-blurb = Sign up for a { -brand-fxa } to get your detailed report and alerts about new data breaches.
+fxa-landing-blurb =
+    Find out what hackers already know about you,
+    and learn how to stay a step ahead of them.
+fxa-scan-label = See if you’ve appeared in a data breach.
+fxa-welcome-headline = Welcome to { -product-name }.
+fxa-welcome-blurb = You’re all set to get alerts if { $userEmail } appears in a data breach.
+fxa-scan-another-email = Want to check another email?
+# Search Firefox Monitor
+fxa-scan-submit = Search { -product-name }
+sign-up-to-check = Sign up to Check
+sign-in = Sign in
+sign-out = Sign Out
+full-report-headline = Your { -product-name } Report
+see-full-report = See Full Report
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Manage { -brand-fxa }
+fxa-download-firefox-bar-blurb = Brought to you by { -brand-name }. 2x faster. Uses 30% less memory than { -brand-Chrome }.
+fxa-download-firefox-bar-link = Download now
+fxa-download-firefox-banner-blurb = Better, faster page loading that uses less computer memory.
+user-fb-compromised-headline = { $userEmail } appeared in the { $breachName } data breach.
+guest-fb-compromised-headline = This email appeared in the { $breachName } data breach.
+user-zero-breaches-headline = { $userEmail } appeared in zero data breaches.
+guest-zero-breaches-headline = This email appeared in zero data breaches.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } appeared in 1 data breach.
+       *[other] { $userEmail } appeared in { $breachCount } data breaches.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] This email appeared in 1 data breach.
+       *[other] This email appeared in { $breachCount } data breaches.
+    }
+user-no-breaches-blurb = We’ll alert you if this email address appears in a new breach.
+guest-no-breaches-blurb =
+    To see if this email appears in sensitive breaches, create a { -brand-fxa }. 
+    We’ll also alert you if this address appears in new data breaches.
+user-one-breach-blurb = This breach exposed the following personal info.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Your email also appeared in { $breachCount } other breach.
+       *[other] Your email also appeared in { $breachCount } other breaches.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] This email also appeared in { $breachCount } other breach.
+       *[other] This email also appeared in { $breachCount } other breaches.
+    }
+user-fb-compromised-single =
+    This breach exposed the following personal info. If you haven’t already, 
+    change your passwords.
+user-generic-fb-compromised-single = This breach exposed the following personal info.
+guest-fb-compromised-single =
+    This breach exposed the following personal info. Sign up for a { -brand-fxa } 
+    to get your full report and alerts about new breaches.
+guest-fb-compromised-blurb =
+    { $breachCount ->
+        [one]
+            This email also appeared in { $breachCount } other breach. Sign up for a 
+            { -brand-fxa } to get your full report and alerts about new breaches.
+       *[other]
+            This email also appeared in { $breachCount } other breach. Sign up for a 
+            { -brand-fxa } to get your full report and alerts about new breaches.
+    }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] You were not in the { $breachName } breach, but we found that email address in another.
+       *[other] You were not in the { $breachName } breach, but we found that email address in others.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] This email was not in the { $breachName } breach, but was found in another.
+       *[other] This email was not in the { $breachName } breach, but was found in others.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] This breach exposed the following personal info. If you haven’t already, change your password.
+       *[other] These breaches exposed the following personal info. If you haven’t already, change your passwords.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] This breach exposed the following personal info.
+       *[other] These breaches exposed the following personal info.
+    }
+have-an-account = Already have an account?
+signup-banner-sensitive-blurb =
+    Find out what hackers already know about you, and learn how to 
+    stay a step ahead of them. Get alerted if your account appears 
+    in new data breaches.
+fxa-pwt-section-blurb =
+    Passwords protect all the personal information in your online accounts. And 
+    hackers rely on bad habits, like using the same password everywhere or using 
+    common phrases (@p@ssw0rd, anyone?) so that if they hack one account, they 
+    can hack many.
+fxa-pwt-summary-2 =
+    Short, single-word passwords are easy for hackers to guess. 
+    Use at least two words and a combination of letters, digits, and special characters.
+fxa-pwt-summary-4 =
+    Password managers like 1Password, LastPass, Dashlane, and Bitwarden store your 
+    passwords and fill them in to websites for you. They’ll even help you make strong passwords.
+fxa-pwt-summary-6 =
+    Data breaches are on the rise. If your personal info appears in a new data breach, 
+    { -product-name } sends you an alert — so you can take action and protect your accounts.
+fxa-what-to-do-blurb-1 =
+    If you can’t log in, contact the website to ask how to update it. 
+    See an account you don’t recognize? Your data could have been sold 
+    or redistributed. This could also be an account you forgot you 
+    created or a company that changed names.
+fxa-what-to-do-subhead-2 = Stop using the exposed password, and change it everywhere you’ve used it.
+fxa-what-to-do-blurb-2 =
+    Hackers may try to that same password and your email to get into other accounts. 
+    Create a different and unique password for every account, especially for your bank account, 
+    email, and other websites where you save personal information.
+fxa-what-to-do-blurb-3 =
+    Most breaches only expose emails and passwords, but some do include sensitive financial information. 
+    If your bank account or credit card numbers were exposed, alert your bank to possible fraud. 
+    Monitor statements for charges you don’t recognize.
+fxa-what-to-do-subhead-4 = Get help remembering all your passwords and keeping them safe.
+fxa-what-to-do-blurb-4 =
+    Password managers like 1Password, LastPass, Dashlane, and Bitwarden store your 
+    passwords securely and fill them into websites for you. Use a password manager 
+    on your phone and computer so you don’t have to remember them all.
+fb-landing-headline = Was your info exposed in the { $breachName } data breach?
