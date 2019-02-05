@@ -121,7 +121,7 @@ what-to-do-blurb-2 = 駭客可能會使用您被洩漏的密碼，來嘗試登�
 what-to-do-subhead-3 = 進一步保護您的銀行帳號
 what-to-do-blurb-3 = 大多數的資料外洩事件只會外洩出電子郵件地址與密碼，但某些事件也會包含敏感的個人財務資訊。若您的銀行帳號或信用卡卡號也被洩露出來，請通知銀行防止盜用，並檢查月結單，看看是否有不認識的交易紀錄。
 what-to-do-subhead-4 = 想辦法建立夠強的密碼，並確保密碼安全。
-what-to-do-blurb-4 = 諸如 1Password、LastPass、Dashlane、Bitwarden 等密碼管理員，可產生高強度密碼，安全地保存密碼，並在上網時自動為您填寫表單。
+what-to-do-blurb-4 = 諸如 1Password、LastPass、Dashlane、Bitwarden 等密碼管理員，可產生高強度密碼，安全地儲存，並在上網時自動為您填寫表單。
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = 發生日期:
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -256,3 +256,6 @@ guest-found-breaches-blurb =
        *[other] 以下 { $breachCount } 場資料洩露事件包含下列個資。註冊 { -brand-fxa } 即可取得完整的事件報告，並在未來有新的洩露事件時通知您。
     }
 have-an-account = 已經有帳號了嗎？
+fxa-pwt-summary-4 = 諸如 1Password、LastPass、Dashlane、Bitwarden 等密碼管理員，可產生高強度密碼，安全地儲存，並在上網時自動為您填寫表單。
+fxa-what-to-do-blurb-4 = 諸如 1Password、LastPass、Dashlane、Bitwarden 等密碼管理員可安全地儲存密碼，並在上網時自動為您填寫表單。記得在手機與電腦上都使用密碼管理員，這樣就不用把不同密碼通通背下來。
+fb-landing-headline = 您的資訊是否也出現在 { $breachName } 的資料洩露事件中？
