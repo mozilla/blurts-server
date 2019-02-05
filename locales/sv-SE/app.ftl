@@ -235,5 +235,75 @@ user-generic-fb-compromised-blurb =
         [one] Denna e-postadress förekom i { $breachCount } annat dataintrång.
        *[other] Denna e-postadress förekom i { $breachCount } andra dataintrång.
     }
+user-fb-compromised-single =
+    Denna intrång avslöjade följande personliga information. Om du inte redan 
+    har gjort det, ändra dina lösenord.
+user-generic-fb-compromised-single = Detta intrång avslöjade följande personliga information.
+guest-fb-compromised-single =
+    Detta intrång avslöjade följande personliga information. Registrera dig för ett { -brand-fxa }
+    för att få din fullständiga rapport och varningar om nya intrång.
+guest-fb-compromised-blurb =
+    { $breachCount ->
+        [one]
+            Denna e-postadress förekom också i { $breachCount } annat intrång. Registrera dig för ett
+            { -brand-fxa } för att få din fullständiga rapport och varningar om nya intrång.
+       *[other]
+            Denna e-postadress förekom också i { $breachCount } andra intrång. Registrera dig för ett
+            { -brand-fxa } för att få din fullständiga rapport och varningar om nya intrång.
+    }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Du var inte med i intrånget { $breachName }, men vi hittade e-postadressen i en annan.
+       *[other] Du var inte med i intrånget { $breachName }, men vi hittade e-postadressen i andra.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Denna e-postadress var inte med i intrånget { $breachName }, men hittades i en annan.
+       *[other] Denna e-postadress var inte med i intrånget { $breachName }, men hittades i andra.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Detta intrång avslöjade följande personliga information.
+       *[other] Dessa intrång avslöjade följande personliga information.
+    }
 have-an-account = Har du redan ett konto?
+signup-banner-sensitive-blurb =
+    Ta reda på vad hackare redan vet om dig, och lär dig hur
+    du kan vara ett steg före dem. Få varningar om ditt konto visas
+    i nya dataintrång.
+fxa-pwt-section-blurb =
+    Lösenorden skyddar all personlig information i dina online-konton. Och
+    hackare litar på dåliga vanor, som att använda samma lösenord överallt eller använda
+    vanliga fraser (@p@ssw0rd, någon?) så att om de hackar ett konto, så kan de
+    hacka fler.
+fxa-pwt-summary-2 =
+    Korta lösenord med ett ord är enkla för hackare att gissa.
+    Använd minst två ord och en kombination av bokstäver, siffror och specialtecken.
+fxa-pwt-summary-4 =
+    Lösenordshanterare som 1Password, LastPass, Dashlane och Bitwarden lagrar dina
+    lösenord och fyller i dem på webbplatser åt dig. De hjälper till och med att skapa starka lösenord.
+fxa-pwt-summary-6 =
+    Dataintrång ökar. Om din personliga information avslöjas i ett nytt dataintrång, 
+    skickar { -product-name } dig en varning - så du kan vidta åtgärder och skydda dina konton.
+fxa-what-to-do-blurb-1 =
+    Om du inte kan logga in, kontakta webbplatsen för att fråga hur du uppdaterar den.
+    Ser du ett konto du inte känner igen? Dina uppgifter kan ha sålts
+    eller skickats vidare. Det här kan också vara ett konto du glömt bort
+    eller ett företag som bytt namn.
+fxa-what-to-do-subhead-2 = Sluta använda det exponerade lösenordet och ändra det överallt där du använt det.
+fxa-what-to-do-blurb-2 =
+    Hackers kan försöka att använda samma lösenord och e-postadress för att komma in i andra konton.
+    Skapa olika och unika lösenord för varje konto, särskilt för ditt bankkonto,
+    e-post och andra webbplatser där du sparar personlig information.
+fxa-what-to-do-blurb-3 =
+    De flesta intrång visar bara e-postadress och lösenord, men vissa inkluderar känslig finansiell information.
+    Om ditt bankkonto eller kreditkortsnummer har blivit utsatta, varna din bank för eventuella bedrägerier.
+    Var uppmärksam över kontohändelser du inte känner igen.
 fxa-what-to-do-subhead-4 = Få hjälp med att komma ihåg alla dina lösenord och hålla dem säkra.
+fxa-what-to-do-blurb-4 =
+    Lösenordshanterare som 1Password, LastPass, Dashlane och Bitwarden lagrar dina
+    lösenord säkert och fyller i dem på webbplatser åt dig. Använd en lösenordshanterare
+    på din telefon och dator så att du inte behöver komma ihåg dem alla.
+fb-landing-headline = Var din information utsatt för dataintrång { $breachName }?
