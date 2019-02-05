@@ -218,6 +218,8 @@ fxa-download-firefox-bar-link = 立即下载
 fxa-download-firefox-banner-blurb = 页面载入更好、更快，占用内存更少。
 user-fb-compromised-headline = { $userEmail } 出现在{ $breachName } 数据外泄事件中。
 guest-fb-compromised-headline = 此电子邮件地址出现在{ $breachName } 数据外泄事件中。
+user-zero-breaches-headline = { $userEmail } 未出现在任何数据外泄事件中。
+guest-zero-breaches-headline = 此电子邮件地址未出现在任何数据外泄事件中。
 user-scan-results-headline =
     { $breachCount ->
         [one] { $userEmail } 出现在 1 次数据外泄事件中。
@@ -228,6 +230,8 @@ guest-scan-results-headline =
         [one] 此电子邮件地址出现在 1 次数据外泄事件中。
        *[other] 此电子邮件地址出现在 { $breachCount } 次数据外泄事件中。
     }
+user-no-breaches-blurb = 若此电子邮件地址出现在新的数据外泄事件中，我们会通知您。
+guest-no-breaches-blurb = 若想知道此电子邮件地址是否出现在敏感的数据外泄事件中，请注册 { -brand-fxa }。我们也会在此电子邮件地址出现于新的数据外泄事件时通知您。
 user-one-breach-blurb = 此数据外泄事件泄露了以下个人信息。
 user-fb-compromised-blurb =
     { $breachCount ->
@@ -242,4 +246,19 @@ user-generic-fb-compromised-blurb =
 user-fb-compromised-single = 此数据外泄事件泄露了以下个人信息。请尽快修改密码。
 user-generic-fb-compromised-single = 此数据外泄事件泄露了以下个人信息。
 guest-fb-compromised-single = 此数据外泄事件泄露了以下个人信息。注册 { -brand-fxa }以获取您的完整报告，并在发生新数据外泄事件时收到警报。
+guest-fb-compromised-blurb =
+    { $breachCount ->
+        [one] 此电子邮件地址还出现在其他 { $breachName } 次数据外泄事件中。注册 { -brand-fxa }以获取您的完整报告，并在发生新数据外泄事件时收到警报。
+       *[other] 此电子邮件地址还出现在其他 { $breachName } 次数据外泄事件中。注册 { -brand-fxa }以获取您的完整报告，并在发生新数据外泄事件时收到警报。
+    }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] 您未出现在 { $breachName } 数据外泄事件中，但我们在另一事件中发现了您的电子邮件地址。
+       *[other] 您未出现在 { $breachName } 数据外泄事件中，但我们在其他事件中发现了您的电子邮件地址。
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] 此电子邮件地址未出现在 { $breachName } 数据外泄事件中，但我们在另一事件中发现了您的电子邮件地址。
+       *[other] 此电子邮件地址未出现在 { $breachName } 数据外泄事件中，但我们在其他事件中发现了您的电子邮件地址。
+    }
 have-an-account = 已有账户？
