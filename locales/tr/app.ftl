@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Firefox Hesabı
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Destek
@@ -203,3 +205,11 @@ share-twitter = Çoğu kişinin yaklaşık 100 çevrimiçi hesabı var. Hesaplar
 share-facebook-headline = Verilerinizin çalınıp çalınmadığını öğrenin
 share-facebook-blurb = İnternet hesaplarınız veri ihallerine karışmış olabilir mi?
 og-site-description = { -product-name } ile verilerinizin çalınıp çalınmadığını öğrenin. Gelecekteki ihlallere yönelik uyarılara kaydolun ve hesaplarınızı güvende tutmaya dair ipuçları alın.
+mozilla-security-blog = { -brand-Mozilla } Güvenlik Blogu
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Sosyal
+show-all = Tümünü göster
+sign-in = Giriş yap
+sign-out = Çıkış
+full-report-headline = { -product-name } Raporunuz
+have-an-account = Zaten hesabınız var mı?
