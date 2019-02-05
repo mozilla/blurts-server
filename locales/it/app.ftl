@@ -204,4 +204,8 @@ mozilla-security-blog = Blog sulla sicurezza di { -brand-Mozilla }
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Social
 show-all = Mostra tutto
+fxa-signup-banner-headline = Tieni sotto controllo le minacce ai tuoi account online.
+fxa-signup-banner-blurb = Registra un { -brand-fxa } per ricevere il rapporto completo e avvisi sulle nuove violazioni di dati.
+fxa-landing-blurb = Scopri che cosa gli hacker già sanno su di te e apprendi come mantenerti sempre un passo avanti a loro.
+fxa-scan-label = Scopri se sei stato coinvolto in una violazione di dati.
 fxa-welcome-headline = Benvenuto in { -product-name }.
