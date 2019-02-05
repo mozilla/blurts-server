@@ -228,4 +228,14 @@ guest-scan-results-headline =
         [one] 此电子邮件地址出现在 1 次数据外泄事件中。
        *[other] 此电子邮件地址出现在 { $breachCount } 次数据外泄事件中。
     }
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] 您的电子邮件地址还出现在其他 { $breachCount } 次数据外泄事件中。
+       *[other] 您的电子邮件地址还出现在其他 { $breachCount } 次数据外泄事件中。
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] 此电子邮件地址还出现在其他 { $breachCount } 次数据外泄事件中。
+       *[other] 此电子邮件地址还出现在其他 { $breachCount } 次数据外泄事件中。
+    }
 have-an-account = 已有账户？
