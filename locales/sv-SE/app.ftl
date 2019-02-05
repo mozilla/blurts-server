@@ -185,5 +185,14 @@ mozilla-security-blog = { -brand-Mozilla } säkerhetsblogg
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Socialt
 show-all = Visa alla
+fxa-welcome-headline = Välkommen till { -product-name }.
+# Search Firefox Monitor
+fxa-scan-submit = Sök { -product-name }
 sign-in = Logga in
 sign-out = Logga ut
+see-full-report = Se fullständig rapport
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Hantera { -brand-fxa }
+fxa-download-firefox-bar-link = Hämta nu
+have-an-account = Har du redan ett konto?
+fxa-what-to-do-subhead-4 = Få hjälp med att komma ihåg alla dina lösenord och hålla dem säkra.
