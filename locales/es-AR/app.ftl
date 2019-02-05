@@ -189,3 +189,18 @@ sign-up-to-check = Registrate para Verificar
 sign-in = Iniciar la sesión
 sign-out = Cerrar la sesión
 full-report-headline = Su informe de { -product-name }
+see-full-report = Ver informe completo
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Administrar { -brand-fxa }
+fxa-download-firefox-bar-blurb = Brindado por { -brand-name }. 2 veces más rápido. Utiliza un 30% menos de memoria que { -brand-Chrome }.
+fxa-download-firefox-bar-link = Descargar ahora
+fxa-download-firefox-banner-blurb = Una mejor y más rápida carga de páginas que usa menos memoria de la computadora.
+user-fb-compromised-headline = { $userEmail } apareció en la violación de datos de { $breachName }
+guest-fb-compromised-headline = Este correo electrónico apareció en la violación de datos de { $breachName }.
+user-zero-breaches-headline = { $userEmail } no apareció en ninguna violación de datos.
+guest-zero-breaches-headline = Este correo electrónico no apareció en ninguna violación de datos.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } apareció en { $breachCount } violación { $userEmail } de datos.
+       *[other] { $userEmail } apareció en { $breachCount } violaciones de datos.
+    }
