@@ -199,6 +199,8 @@ share-facebook-headline = Descubra se você foi vítima de um vazamento de dados
 share-facebook-blurb = Suas contas online foram expostas em um vazamento de dados?
 og-site-description = Descubra se você foi vítima de um vazamento de dados com o { -product-name }. Cadastre-se para receber alertas sobre futuros vazamentos e receber dicas para manter suas contas seguras.
 mozilla-security-blog = Blog de segurança do { -brand-Mozilla }
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Social
 show-all = Mostrar tudo
 fxa-signup-banner-headline = Monitore ameaças a suas contas online.
 fxa-signup-banner-blurb = Cadastre uma { -brand-fxa } para receber seu relatório detalhado e alertas sobre novos vazamentos de dados.
@@ -206,8 +208,11 @@ fxa-landing-blurb =
     Descubra o que hackers já sabem sobre você,
     e saiba como estar um passo à frente deles.
 fxa-scan-label = Veja se você apareceu em um vazamento de dados.
+fxa-welcome-headline = Bem-vindo ao { -product-name }.
 fxa-welcome-blurb = Tudo pronto para você receber alertas se { $userEmail } aparecer em um vazamento de dados.
 fxa-scan-another-email = Quer verificar outro e-mail?
+# Search Firefox Monitor
+fxa-scan-submit = Pesquisar no { -product-name }
 sign-up-to-check = Cadastre-se para verificar
 sign-in = Entrar
 sign-out = Sair
@@ -308,10 +313,25 @@ fxa-pwt-section-blurb =
     Os hackers contam com maus hábitos, como usar a mesma senha em todo lugar, 
     ou usar frases comuns, de modo que se conseguirem invadir uma conta, 
     podem invadir várias.
+fxa-pwt-summary-2 =
+    Senhas curtas, de uma só palavra, são fáceis para os hackers adivinharem. 
+    Use pelo menos duas palavras e uma combinação de letras, dígitos e caracteres especiais.
+fxa-pwt-summary-4 =
+    Gerenciadores de senhas como 1Password, LastPass, Dashlane e Bitwarden armazenam 
+    suas senhas e as preenchem em sites para você. Eles até ajudam a criar senhas fortes.
 fxa-pwt-summary-6 =
     Vazamentos de dados vêm aumentando. Se suas informações pessoais aparecerem em um novo vazamento do dados, 
     o { -product-name } envia um alerta — assim você pode tomar providências e proteger suas contas.
+fxa-what-to-do-blurb-1 =
+    Se não consegue entrar na conta, entre em contato com o site para saber como atualizar. 
+    Vê uma conta que não reconhece? Seus dados podem ter sido vendidos 
+    ou redistribuídos. Também pode ser uma conta que você esqueceu que 
+    criou, ou uma empresa que mudou de nome.
 fxa-what-to-do-subhead-2 = Pare de usar a senha exposta, e mude em todo lugar que a usou.
+fxa-what-to-do-blurb-2 =
+    Hackers podem tentar usar esta mesma senha e seu e-mail para entrar em outras contas. 
+    Crie uma senha diferente e única para cada conta, especialmente para sua conta no banco, 
+    e-mail e outros sites onde salva informações pessoais.
 fxa-what-to-do-blurb-3 =
     A maioria dos vazamentos só expõem e-mails e senhas, mas alguns incluem informações financeiras confidenciais. 
     Se números de sua conta de banco ou cartão de crédito foram expostos, alerte seu banco para a possibilidade de fraudes. 
