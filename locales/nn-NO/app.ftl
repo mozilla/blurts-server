@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Firefox-konto
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Hjelp
@@ -117,3 +119,10 @@ hibp-attribution = Informasjonen om datalekkasjen kjem frå { $hibp-link }
 share-email = E-postadresse
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Andre
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Sosialt
+show-all = Vis alle
+# Search Firefox Monitor
+fxa-scan-submit = Sök { -product-name }
+sign-in = Logg in
+sign-out = Logg ut
