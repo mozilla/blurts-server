@@ -228,6 +228,7 @@ guest-scan-results-headline =
         [one] 此电子邮件地址出现在 1 次数据外泄事件中。
        *[other] 此电子邮件地址出现在 { $breachCount } 次数据外泄事件中。
     }
+user-one-breach-blurb = 此数据外泄事件泄露了以下个人信息。
 user-fb-compromised-blurb =
     { $breachCount ->
         [one] 您的电子邮件地址还出现在其他 { $breachCount } 次数据外泄事件中。
@@ -238,4 +239,7 @@ user-generic-fb-compromised-blurb =
         [one] 此电子邮件地址还出现在其他 { $breachCount } 次数据外泄事件中。
        *[other] 此电子邮件地址还出现在其他 { $breachCount } 次数据外泄事件中。
     }
+user-fb-compromised-single = 此数据外泄事件泄露了以下个人信息。请尽快修改密码。
+user-generic-fb-compromised-single = 此数据外泄事件泄露了以下个人信息。
+guest-fb-compromised-single = 此数据外泄事件泄露了以下个人信息。注册 { -brand-fxa }以获取您的完整报告，并在发生新数据外泄事件时收到警报。
 have-an-account = 已有账户？
