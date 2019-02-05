@@ -325,6 +325,10 @@ fxa-what-to-do-blurb-1 =
     ou redistribuídos. Esta também pode ser uma conta que se esqueceu que
     criou ou uma empresa que mudou de nome.
 fxa-what-to-do-subhead-2 = Pare de utilizar a palavra-passe exposta e altere-a em todos os lugares em que a utilizou.
+fxa-what-to-do-blurb-2 =
+    Os hackers podem tentar utilizar esta mesma palavra-passe e o seu email para aceder a outras contas.
+    Crie uma palavra-passe diferente e única para cada conta, especialmente para a sua conta bancária,
+    email e outros websites onde guarda informação pessoal.
 fxa-what-to-do-blurb-3 =
     A maioria das brechas apenas expõem emails e palavras-passe, mas algumas incluem informação financeira sensível.
     Se a sua conta bancária ou números de cartão de crédito foram expostos, alerte o seu banco sobre possíveis fraudes.
