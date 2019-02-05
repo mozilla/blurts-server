@@ -200,9 +200,16 @@ share-facebook-blurb = Suas contas online foram expostas em um vazamento de dado
 og-site-description = Descubra se você foi vítima de um vazamento de dados com o { -product-name }. Cadastre-se para receber alertas sobre futuros vazamentos e receber dicas para manter suas contas seguras.
 mozilla-security-blog = Blog de segurança do { -brand-Mozilla }
 show-all = Mostrar tudo
+fxa-signup-banner-blurb = Cadastre uma { -brand-fxa } para receber seu relatório detalhado e alertas sobre novos vazamentos de dados.
+fxa-scan-label = Veja se você apareceu em um vazamento de dados.
+fxa-welcome-blurb = Tudo pronto para você receber alertas se { $userEmail } aparecer em um vazamento de dados.
 sign-in = Entrar
 sign-out = Sair
 see-full-report = Ver relatório completo
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Gerenciar { -brand-fxa }
 fxa-download-firefox-bar-link = Baixe agora
+user-fb-compromised-headline = { $userEmail } apareceu no vazamento de dados de { $breachName }.
+guest-fb-compromised-headline = Este e-mail apareceu no vazamento de dados de { $breachName }.
+user-zero-breaches-headline = { $userEmail } não apareceu em nenhum vazamento de dados.
+guest-zero-breaches-headline = Este e-mail não apareceu em nenhum vazamento de dados.
