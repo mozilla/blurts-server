@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Účet Firefox
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Podpora
@@ -206,3 +208,6 @@ share-twitter = Väčšina ľudí má na internete okolo 100 účtov. Zistite, �
 share-facebook-headline = Zistite, či boli vaše údaje súčasťou nejakého úniku
 share-facebook-blurb = Bol niektorý z vašich účtov súčasťou nejakého úniku dát?
 og-site-description = { -product-name } zistí, či boli vaše dáta súčasťou nejakého úniku. Pre väčšiu bezpečnosť sa taktiež prihláste k zasielaniu výstrah o únikoch v budúcnosti.
+mozilla-security-blog = Bezpečnostný blog organizácie { -brand-Mozilla }
+sign-in = Prihlásiť sa
+sign-out = Odhlásiť sa
