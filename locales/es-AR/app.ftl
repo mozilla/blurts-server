@@ -176,3 +176,6 @@ layout-social = Social
 show-all = Mostrar todo
 fxa-signup-banner-headline = Monitorea las amenazas a tus cuentas en línea.
 fxa-signup-banner-blurb = Registrate en { -brand-fxa } para obtener un informe detallado y alertas sobre nuevas violaciones de datos.
+fxa-landing-blurb =
+    Descubrí lo que los piratas ya saben acerca tuyo,
+    y aprendé cómo estar un paso adelante de ellos.
