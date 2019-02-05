@@ -256,6 +256,8 @@ guest-found-breaches-blurb =
        *[other] 以下 { $breachCount } 場資料洩露事件包含下列個資。註冊 { -brand-fxa } 即可取得完整的事件報告，並在未來有新的洩露事件時通知您。
     }
 have-an-account = 已經有帳號了嗎？
+signup-banner-sensitive-blurb = 看看駭客已經掌握您的哪些資料，並且了解如何遠離他們。我們也會在此信箱出現於新的資料洩露事件時通知您。
+fxa-pwt-section-blurb = 密碼可保護帳號中的所有個人資訊。駭客會根據不良的使用習慣，例如在每個地方都使用相同的密碼，或是使用常見的密碼組合（還使用 123456 嗎？），這樣的話只要一個帳號被駭，他們就可以輕而易舉駭掉您的多個帳號。
 fxa-pwt-summary-4 = 諸如 1Password、LastPass、Dashlane、Bitwarden 等密碼管理員，可產生高強度密碼，安全地儲存，並在上網時自動為您填寫表單。
 fxa-what-to-do-blurb-4 = 諸如 1Password、LastPass、Dashlane、Bitwarden 等密碼管理員可安全地儲存密碼，並在上網時自動為您填寫表單。記得在手機與電腦上都使用密碼管理員，這樣就不用把不同密碼通通背下來。
 fb-landing-headline = 您的資訊是否也出現在 { $breachName } 的資料洩露事件中？
