@@ -194,6 +194,11 @@ og-site-description = S { -product-name }jem preverite, ali ste bili žrtev kraj
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Družabno
 show-all = Prikaži vse
+fxa-welcome-headline = Dobrodošli v { -product-name }.
 sign-in = Prijava
 sign-out = Odjava
+full-report-headline = Vaše poročilo { -product-name }
 fxa-download-firefox-bar-link = Prenesi zdaj
+fxa-download-firefox-banner-blurb = Boljše in hitrejše nalaganje strani z manjšo porabo računalniškega pomnilnika.
+guest-fb-compromised-headline = Ta e-poštni naslov je bil del kraj podatkov { $breachName }.
+have-an-account = Že imate račun?
