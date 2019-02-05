@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Firefox Account
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = 支援
@@ -168,3 +170,36 @@ share-twitter = 一般人大約有 100 組線上帳號，您有任何帳號遭�
 share-facebook-headline = 看看您的帳號是否也在資料外洩事件當中
 share-facebook-blurb = 您的帳號也出現在資料外洩事件當中嗎？
 og-site-description = 使用 { -product-name }，看看您的帳號是否也在資料外洩事件當中。註冊在未來有與您相關的資料外洩事故時，收到警報與祕訣以確保帳號安全。
+mozilla-security-blog = { -brand-Mozilla } 安全性部落格
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = 社交網路
+show-all = 顯示全部
+fxa-signup-banner-headline = 監控您的線上帳號所遇到的威脅。
+fxa-signup-banner-blurb = 註冊 { -brand-fxa } 即可收到與您有關的新資料洩漏事件的詳細報告。
+fxa-landing-blurb = 看看駭客已經掌握您的哪些資料，並且了解如何遠離他們。
+fxa-scan-label = 看看您是否有資料已遭洩漏。
+fxa-welcome-headline = 歡迎使用 { -product-name }。
+fxa-scan-another-email = 想要檢查另一個信箱帳號嗎？
+# Search Firefox Monitor
+fxa-scan-submit = 搜尋 { -product-name }
+sign-up-to-check = 註冊進行檢查
+sign-in = 登入
+sign-out = 登出
+full-report-headline = 您的 { -product-name } 報告
+see-full-report = 看完整報告
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = 管理 { -brand-fxa }
+fxa-download-firefox-bar-link = 立刻下載
+user-fb-compromised-headline = { $userEmail } 有出現於 { $breachName } 的資料洩露事件中。
+guest-fb-compromised-headline = 此 E-Mail 有出現於 { $breachName } 的資料洩露事件中。
+user-zero-breaches-headline = { $userEmail } 未出現於任何資料洩露事件。
+guest-zero-breaches-headline = 此 E-Mail 未出現於任何資料洩露事件。
+user-scan-results-headline =
+    { $breachCount ->
+       *[other] { $userEmail } 出現於 { $breachCount } 場資料洩露事件中。
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+       *[other] 此 E-Mail 出現於 { $breachCount } 場資料洩露事件中。
+    }
+have-an-account = 已經有帳號了嗎？
