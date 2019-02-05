@@ -6,6 +6,12 @@ addons:
 
 matrix:
     include:
+        - name: "lint"
+          language: node_js
+          node_js:
+              - "node"
+              - "lts/*"
+          script: "npm-run-all lint:*"
         - name: "tests"
           language: node_js
           node_js:

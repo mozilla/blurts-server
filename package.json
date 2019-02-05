@@ -107,7 +107,6 @@
     "lint:js": "eslint .",
     "lint:css": "stylelint --fix 'public/css/**/*.css'",
     "lint:audit": "npm audit",
-    "pretest": "npm run lint",
     "get-hashsets": "node scripts/get-hashsets",
     "server": "NODE_ICU_DATA=./node_modules/full-icu nodemon server.js",
     "start": "run-p build:all watch:all server",
