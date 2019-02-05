@@ -190,6 +190,7 @@ full-report-headline = 您的 { -product-name } 報告
 see-full-report = 看完整報告
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = 管理 { -brand-fxa }
+fxa-download-firefox-bar-blurb = 由 { -brand-name } 提供給您。比起 { -brand-Chrome } 上網速度快上兩倍，記憶體使用量只要七折。
 fxa-download-firefox-bar-link = 立刻下載
 fxa-download-firefox-banner-blurb = 更好、更快的網頁載入速度，占用的記憶體也更少。
 user-fb-compromised-headline = { $userEmail } 有出現於 { $breachName } 的資料洩露事件中。
