@@ -213,3 +213,54 @@ user-fb-compromised-headline = { $userEmail } apareceu no vazamento de dados de 
 guest-fb-compromised-headline = Este e-mail apareceu no vazamento de dados de { $breachName }.
 user-zero-breaches-headline = { $userEmail } não apareceu em nenhum vazamento de dados.
 guest-zero-breaches-headline = Este e-mail não apareceu em nenhum vazamento de dados.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } apareceu em 1 vazamento de dados.
+       *[other] { $userEmail } apareceu em { $breachCount } vazamentos de dados.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Este e-mail apareceu em 1 vazamento de dados.
+       *[other] Este e-mail apareceu em { $breachCount } vazamentos de dados.
+    }
+user-no-breaches-blurb = Alertaremos você caso este endereço de e-mail apareça em um novo vazamento.
+guest-no-breaches-blurb =
+    Para ver se este e-mail aparece em vazamentos sensíveis, crie uma { -brand-fxa }. 
+    Também lhe alertaremos se este endereço aparecer em novos vazamentos de dados.
+user-one-breach-blurb = Este vazamento expôs as seguintes informações pessoais.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Seu e-mail também apareceu em { $breachCount } outro vazamento.
+       *[other] Seu e-mail também apareceu em { $breachCount } outros vazamentos.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Este e-mail também apareceu em { $breachCount } outro vazamento.
+       *[other] Este e-mail também apareceu em { $breachCount } outros vazamentos.
+    }
+user-fb-compromised-single =
+    Este vazamento expôs as seguintes informações pessoais. Se ainda não fez, 
+    mude suas senhas.
+user-generic-fb-compromised-single = Este vazamento expôs as seguintes informações pessoais.
+guest-fb-compromised-single =
+    Este vazamento expôs as seguintes informações pessoais. Cadastre uma { -brand-fxa } 
+    para receber seu relatório completo e alertas sobre novos vazamentos.
+guest-fb-compromised-blurb =
+    { $breachCount ->
+        [one]
+            Este e-mail também apareceu em { $breachCount } outro vazamento. Cadastre uma 
+            { -brand-fxa } para receber seu relatório completo e alertas sobre novos vazamentos.
+       *[other]
+            Este e-mail também apareceu em { $breachCount } outros vazamentos. Cadastre uma 
+            { -brand-fxa } para receber seu relatório completo e alertas sobre novos vazamentos.
+    }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Você não estava no vazamento de { $breachName }, mas encontramos este endereço de e-mail em outro.
+       *[other] Você não estava no vazamento de { $breachName }, mas encontramos este endereço de e-mail em outros.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Este e-mail não estava no vazamento de { $breachName }, mas foi encontrado em outro.
+       *[other] Este e-mail não estava no vazamento de { $breachName }, mas foi encontrado em outros.
+    }
