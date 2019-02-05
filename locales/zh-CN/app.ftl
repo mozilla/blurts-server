@@ -216,4 +216,16 @@ see-full-report = 查看完整报告
 manage-fxa = 管理 { -brand-fxa }
 fxa-download-firefox-bar-link = 立即下载
 fxa-download-firefox-banner-blurb = 页面载入更好、更快，占用内存更少。
+user-fb-compromised-headline = { $userEmail } 出现在{ $breachName } 数据外泄事件中。
+guest-fb-compromised-headline = 此电子邮件地址出现在{ $breachName } 数据外泄事件中。
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } 出现在 1 次数据外泄事件中。
+       *[other] { $userEmail } 出现在 { $breachCount } 次数据外泄事件中。
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] 此电子邮件地址出现在 1 次数据外泄事件中。
+       *[other] 此电子邮件地址出现在 { $breachCount } 次数据外泄事件中。
+    }
 have-an-account = 已有账户？
