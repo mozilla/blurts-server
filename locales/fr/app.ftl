@@ -14,6 +14,7 @@
         [lowercase] compte Firefox
        *[uppercase] Compte Firefox
     }
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Assistance
@@ -177,5 +178,57 @@ share-twitter = La plupart des gens possèdent des dizaines de comptes en ligne
 share-facebook-headline = Vérifiez si vous êtes concerné⋅e par une fuite de données
 share-facebook-blurb = Vos comptes en ligne ont-ils été compromis suite à une fuite de données ?
 og-site-description = Vérifiez avec { -product-name } si vous avez été victime d’une fuite de données. Inscrivez-vous pour recevoir des alertes lors de futures fuites de données et des conseils pour renforcer la sécurité de vos comptes.
+mozilla-security-blog = Blog { -brand-Mozilla } sur la sécurité
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Réseaux sociaux
+show-all = Tout afficher
+fxa-signup-banner-headline = Surveillez les menaces qui pèsent sur vos comptes en ligne.
+fxa-landing-blurb =
+    Découvrez ce que les pirates informatiques savent déjà de vous,
+    et apprenez à garder une longueur d’avance sur eux.
+fxa-scan-label = Vérifiez si une fuite de données vous concerne.
+fxa-welcome-headline = Bienvenue dans { -product-name }.
+fxa-welcome-blurb = Vous recevrez des alertes si { $userEmail } apparaît dans une fuite de données.
+fxa-scan-another-email = Souhaitez-vous vérifier une autre adresse électronique ?
+# Search Firefox Monitor
+fxa-scan-submit = Rechercher dans { -product-name }
+sign-up-to-check = Inscrivez-vous pour vérifier
+sign-in = Se connecter
+sign-out = Se déconnecter
+full-report-headline = Votre rapport { -product-name }
+see-full-report = Voir le rapport complet
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Gérer le { -brand-fxa[lowercase] }
+fxa-download-firefox-bar-blurb = Proposé par { -brand-name }, désormais 2x plus rapide et qui consomme 30 % de moins de mémoire que { -brand-Chrome }.
+fxa-download-firefox-bar-link = Télécharger
+user-fb-compromised-headline = { $userEmail } apparaît dans la fuite de données { $breachName }.
+guest-fb-compromised-headline = Cette adresse électronique apparaît dans la fuite de données { $breachName }.
+user-zero-breaches-headline = { $userEmail } n’apparaît dans aucune fuite de données.
+guest-zero-breaches-headline = Cette adresse électronique n’apparaît dans aucune fuite de données.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } apparaît dans une fuite de données.
+       *[other] { $userEmail } apparaît dans { $breachCount } fuites de données.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Cette adresse électronique apparaît dans une fuite de données.
+       *[other] Cette adresse électronique apparaît dans { $breachCount } fuites de données.
+    }
+user-no-breaches-blurb = Nous vous préviendrons si cette adresse électronique apparaît dans une nouvelle fuite de données.
+guest-no-breaches-blurb = Pour vérifier si cette adresse électronique apparaît dans des fuites de données sensibles, créez un { -brand-fxa[lowercase] }. Nous vous alerterons également si cette adresse apparaît dans de nouvelles fuites de données.
+user-one-breach-blurb = Cette fuite de données a compromis les informations personnelles suivantes.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Votre adresse électronique apparaît également dans une autre fuite de données.
+       *[other] Votre adresse électronique apparaît également dans { $breachCount } autres fuites de données.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Cette adresse électronique apparaît également dans une autre fuite de données.
+       *[other] Cette adresse électronique apparaît également dans { $breachCount } autres fuites de données.
+    }
+user-fb-compromised-single = Cette fuite de données a compromis les informations personnelles suivantes. Si ce n’est pas déjà fait, changez vos mots de passe.
+user-generic-fb-compromised-single = Cette fuite de données a compromis les informations personnelles suivantes.
+fxa-what-to-do-blurb-4 = Les gestionnaires de mots de passe tels que 1Password, LastPass, Dashlane et Bitwarden conservent vos mots de passe en toute sécurité et les remplissent dans les sites web pour vous. Utilisez un gestionnaire de mots de passe sur votre téléphone et votre ordinateur pour ne pas avoir à tous les retenir.
+fb-landing-headline = Vos informations ont-elles été compromises dans la fuite de données { $breachName } ?
