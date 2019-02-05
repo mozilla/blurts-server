@@ -228,6 +228,7 @@ full-report-headline = O seu relatório do { -product-name }
 see-full-report = Ver relatório completo
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Gerir { -brand-fxa }
+fxa-download-firefox-bar-blurb = Trazido a si pelo { -brand-name }. 2x mais rápido. Utiliza 30% menos memória do que o { -brand-Chrome }.
 fxa-download-firefox-bar-link = Transferir agora
 fxa-download-firefox-banner-blurb = Um carregamento de páginas melhor e mais rápido que utiliza menos memória computacional.
 user-fb-compromised-headline = { $userEmail } apareceu na brecha de dados { $breachName }.
@@ -287,9 +288,50 @@ user-generic-fb-not-compromised-blurb =
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] Esta brecha expôs a seguinte informação pessoal. Se ainda não alterou as suas palavras-passe, agora é o momento.
+       *[other] Estas brechas expuseram a seguinte informação pessoal. Se ainda não alterou as suas palavras-passe, agora é o momento.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
 user-generic-found-breaches-blurb =
     { $breachCount ->
         [one] Esta brecha expôs a seguinte informação pessoal.
        *[other] Esta brechas expuseram a seguinte informação pessoal.
     }
 have-an-account = Já tem uma conta?
+signup-banner-sensitive-blurb =
+    Descubra o que os hackers já sabem acerca de si e aprenda como
+    ficar um passo à frente deles. Seja alertado(a) se a sua conta aparecer
+    em novas brechas de dados.
+fxa-pwt-section-blurb =
+    As palavras-passe protegem toda a informação pessoal nas suas contas online. E
+    os hackers confiam em maus hábitos, como utilizar a mesma palavra-passe em todos os lugares ou utilizar
+    frases comuns (p@ssw0rd, alguém?) então, se conseguem uma conta, podem
+    conseguir muitas.
+fxa-pwt-summary-2 =
+    Palavras-passe curtas e de palavra única são fáceis para os hackers adivinharem.
+    Utilize pelo menos duas palavras e uma combinação de letras, dígitos e caracteres especiais.
+fxa-pwt-summary-4 =
+    Os gestores de palavras-passe como 1Password, LastPass, Dashlane e Bitwarden armazenam as suas
+    palavras-passe em segurança e preenchem-nas em websites por si. Estes também lhe ajudam a fazer palavras-passe mais fortes.
+fxa-pwt-summary-6 =
+    As brechas de dados estão em ascensão. Se a sua informação pessoal aparecer numa nova brecha de dados,
+    o { -product-name } irá enviar um alerta — para que possa tomar medidas e proteger as suas contas.
+fxa-what-to-do-blurb-1 =
+    Se não conseguir iniciar sessão, contacte o website para perguntar como atualizá-la.
+    Vê uma conta que não reconhece? Os seus dados podem ter sido vendidos
+    ou redistribuídos. Esta também pode ser uma conta que se esqueceu que
+    criou ou uma empresa que mudou de nome.
+fxa-what-to-do-subhead-2 = Pare de utilizar a palavra-passe exposta e altere-a em todos os lugares em que a utilizou.
+fxa-what-to-do-blurb-3 =
+    A maioria das brechas apenas expõem emails e palavras-passe, mas algumas incluem informação financeira sensível.
+    Se a sua conta bancária ou números de cartão de crédito foram expostos, alerte o seu banco sobre possíveis fraudes.
+    Monitorize os extratos por cobranças que não reconhece.
+fxa-what-to-do-subhead-4 = Obtenha ajuda para se lembrar de todas as suas palavras-passe e mantê-las seguras.
+fxa-what-to-do-blurb-4 =
+    Os gestores de palavras-passe como 1Password, LastPass, Dashlane e Bitwarden armazenam as suas
+    palavras-passe em segurança e preenchem-nas em websites por si. Utilize um gestor de palavras-passe
+    no seu telefone e computador, para que não precise de se lembrar de todas elas.
+fb-landing-headline = A sua informação foi exposta na brecha de dados { $breachName }?
