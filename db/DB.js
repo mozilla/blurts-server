@@ -96,8 +96,10 @@ const DB = {
 
         return aEntry;
       }, async () => {
+        // Always add a verification_token value
+        const verification_token = uuidv4();
         const res = await knex("subscribers")
-          .insert({ sha1, email, signup_language, verified })
+          .insert({ sha1, email, signup_language, verification_token, verified })
           .returning("*");
         return res[0];
       });
@@ -165,13 +167,14 @@ const DB = {
    * @returns {object} updated subscriber knex object in DB
    */
   async _updateFxAData(subscriber, fxaRefreshToken, fxaProfileData) {
-    const updatedSubscriber = await knex("subscribers")
+    const updated = await knex("subscribers")
     .where("id", "=", subscriber.id)
     .update({
       fxa_refresh_token: fxaRefreshToken,
       fxa_profile_json: fxaProfileData,
     })
     .returning("*");
+    const updatedSubscriber = Array.isArray(updated) ? updated[0] : null;
     return updatedSubscriber;
   },
 

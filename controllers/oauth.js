@@ -74,8 +74,7 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
     // req.session.newUser determines whether or not we show "fxa_new_user_bar" in template
     req.session.newUser = true;
     const signupLanguage = req.headers["accept-language"];
-    await DB.addSubscriber(email, signupLanguage, fxaUser.refreshToken, data.body);
-    const unsubscribeUrl = ""; // not totally sure yet how this gets handled long-term
+    const verifiedSubscriber = await DB.addSubscriber(email, signupLanguage, fxaUser.refreshToken, data.body);
 
     // duping some of user/verify for now
     let unsafeBreachesForEmail = [];
@@ -98,7 +97,7 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
         date: HBSHelpers.prettyDate(req.supportedLocales, new Date()),
         unsafeBreachesForEmail: unsafeBreachesForEmail,
         scanAnotherEmailHref: EmailUtils.getScanAnotherEmailUrl(utmID),
-        unsubscribeUrl: unsubscribeUrl,
+        unsubscribeUrl: EmailUtils.getUnsubscribeUrl(verifiedSubscriber, utmID),
         buttonValue: req.fluentFormat("report-scan-another-email"),
         whichView: "email_partials/report",
       }
