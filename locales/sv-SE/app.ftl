@@ -203,6 +203,37 @@ full-report-headline = Din  rapport från { -product-name }
 see-full-report = Se fullständig rapport
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Hantera { -brand-fxa }
+fxa-download-firefox-bar-blurb = Presenteras av  { -brand-name }. 2x snabbare. Använder 30% mindre minne än { -brand-Chrome }.
 fxa-download-firefox-bar-link = Hämta nu
+fxa-download-firefox-banner-blurb = Bättre, snabbare sidladdning som använder mindre datorminne.
+user-fb-compromised-headline = { $userEmail } förekom i dataintrång { $breachName }.
+guest-fb-compromised-headline = Denna e-postadress förekom i dataintrång { $breachName }.
+user-zero-breaches-headline = { $userEmail } förekom i noll dataintrång.
+guest-zero-breaches-headline = Denna e-postadress förekom i noll dataintrång.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } förekom i ett dataintrång.
+       *[other] { $userEmail } förekom i { $breachCount } dataintrång.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Denna e-postadress förekom i ett dataintrång.
+       *[other] Denna e-postadress förekom i { $breachCount } dataintrång.
+    }
+user-no-breaches-blurb = Vi meddelar dig om den här e-postadressen visas i ett nytt dataintrång.
+guest-no-breaches-blurb =
+    För att se om denna e-postadress visas vid känsliga dataintrång, skapa ett { -brand-fxa }.
+    Vi meddelar dig även om den här adressen visas i nya dataintrång.
+user-one-breach-blurb = Detta intrång avslöjade följande personliga information.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Din e-postadress förekom också i { $breachCount } annat dataintrång.
+       *[other] Din e-postadress förekom också i { $breachCount } andra dataintrång.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Denna e-postadress förekom i { $breachCount } annat dataintrång.
+       *[other] Denna e-postadress förekom i { $breachCount } andra dataintrång.
+    }
 have-an-account = Har du redan ett konto?
 fxa-what-to-do-subhead-4 = Få hjälp med att komma ihåg alla dina lösenord och hålla dem säkra.
