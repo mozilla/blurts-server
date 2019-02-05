@@ -212,6 +212,8 @@ sign-in = 登录
 sign-out = 退出
 full-report-headline = 您的 { -product-name } 报告
 see-full-report = 查看完整报告
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = 管理 { -brand-fxa }
 fxa-download-firefox-bar-link = 立即下载
 fxa-download-firefox-banner-blurb = 页面载入更好、更快，占用内存更少。
 have-an-account = 已有账户？
