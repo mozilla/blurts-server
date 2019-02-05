@@ -261,12 +261,39 @@ user-generic-fb-not-compromised-blurb =
         [one] Denna e-postadress var inte med i intrånget { $breachName }, men hittades i en annan.
        *[other] Denna e-postadress var inte med i intrånget { $breachName }, men hittades i andra.
     }
+guest-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one]
+            Denna e-postadress var inte med i intrånget { $breachName }, men hittade i en annan.
+            Registrera dig för ett { -brand-fxa } för att få din fullständiga rapport och varningar om nya intrång.
+       *[other]
+            Denna e-postadress var inte med i intrånget { $breachName }, men hittade i andra.
+            Registrera dig för ett { -brand-fxa } för att få din fullständiga rapport och varningar om nya intrång.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] Detta intrång avslöjade följande personliga information. Ändrat ditt lösenord, om du redan inte har gjort det.
+       *[other] Detta intrång avslöjade följande personliga information. Ändrat dina lösenord, om du redan inte har gjort det.
+    }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
 user-generic-found-breaches-blurb =
     { $breachCount ->
         [one] Detta intrång avslöjade följande personliga information.
        *[other] Dessa intrång avslöjade följande personliga information.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+guest-found-breaches-blurb =
+    { $breachCount ->
+        [one]
+            Detta intrång avslöjade följande personliga information. Registrera dig för ett
+            { -brand-fxa } för att få din fullständiga rapport och varningar om nya intrång.
+       *[other]
+            Dessa intrång avslöjade följande personliga information. Registrera dig för ett
+            { -brand-fxa } för att få din fullständiga rapport och varningar om nya intrång.
     }
 have-an-account = Har du redan ett konto?
 signup-banner-sensitive-blurb =
