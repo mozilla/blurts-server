@@ -205,4 +205,17 @@ guest-scan-results-headline =
     { $breachCount ->
        *[other] 此 E-Mail 出現於 { $breachCount } 場資料洩露事件中。
     }
+user-no-breaches-blurb = 若此信箱出現在新的資料洩漏事件中，我們會通知您。
+guest-no-breaches-blurb =
+    若想知道此信箱是否出現在包含敏感資料的洩漏事件當中，請註冊 { -brand-fxa }。
+    我們也會在此信箱出現於新的資料洩露事件時通知您。
+user-one-breach-blurb = 此次資料洩漏事件包含下列個資。
+user-fb-compromised-blurb =
+    { $breachCount ->
+       *[other] 您的電子郵件地址也出現於另 { $breachCount } 場資料洩露事件中。
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+       *[other] 此電子郵件地址也出現於另 { $breachCount } 場資料洩露事件中。
+    }
 have-an-account = 已經有帳號了嗎？
