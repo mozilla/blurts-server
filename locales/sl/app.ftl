@@ -9,6 +9,7 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Firefox Račun
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Podpora
@@ -190,3 +191,9 @@ share-twitter = Večina ljudi ima približno 100 spletnih računov. Je bil kater
 share-facebook-headline = Preverite, ali ste bili žrtev kraje podatkov
 share-facebook-blurb = Ali so bili vaši spletni računi izpostavljeni v kraji podatkov?
 og-site-description = S { -product-name }jem preverite, ali ste bili žrtev kraje podatkov. Prijavite se za opozorila o prihodnjih krajah in preberite nasvete, kako ohraniti svoje račune varne.
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Družabno
+show-all = Prikaži vse
+sign-in = Prijava
+sign-out = Odjava
+fxa-download-firefox-bar-link = Prenesi zdaj
