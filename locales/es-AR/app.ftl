@@ -204,3 +204,23 @@ user-scan-results-headline =
         [one] { $userEmail } apareció en { $breachCount } violación { $userEmail } de datos.
        *[other] { $userEmail } apareció en { $breachCount } violaciones de datos.
     }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Este correo electrónico apareció en una violación de datos.
+       *[other] Este correo electrónico apareció en { $breachCount } violaciones de datos.
+    }
+user-no-breaches-blurb = Te avisaremos si esta dirección de correo electrónico aparece en una nueva violación.
+guest-no-breaches-blurb =
+    Para ver si este correo electrónico aparece en violaciones confidenciales, creá una { -brand-fxa }.
+    También te avisaremos si esta dirección aparece en nuevas violaciones de datos.
+user-one-breach-blurb = Esta violación expone la siguiente información personal.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Tu correo electrónico también apareció en { $breachCount } violación.
+       *[other] Tu correo electrónico también apareció en { $breachCount } otras violaciones.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Este correo electrónico también apareció en { $breachCount } otra violación.
+       *[other] Este correo electrónico también apareció en { $breachCount } otras violaciones.
+    }
