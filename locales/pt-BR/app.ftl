@@ -62,8 +62,8 @@ pwt-summary-3 =
     Crie respostas longas e aleatórias e as armazene em algum lugar seguro.
 pwt-headline-4 = Tenha ajuda para lembrar de suas senhas
 pwt-summary-4 =
-    Gerenciadores de senha como 1Password, Lastpass, Dashlane e Bitwarden geram senhas fortes e únicas.
-    Eles também as armazenam com segurança e as preenchem nos sites para você
+    Gerenciadores de senhas como 1Password, Lastpass, Dashlane e Bitwarden geram senhas fortes e únicas.
+    Eles também as armazenam com segurança e as preenchem em sites para você
 pwt-headline-5 = Adicione segurança extra com autenticação em duas etapas
 pwt-summary-5 =
     Autenticação em duas etapas exige uma informação adicional (como um código enviado no momento via mensagem de texto) para entrar na sua conta.
@@ -207,6 +207,7 @@ fxa-landing-blurb =
     e saiba como estar um passo à frente deles.
 fxa-scan-label = Veja se você apareceu em um vazamento de dados.
 fxa-welcome-blurb = Tudo pronto para você receber alertas se { $userEmail } aparecer em um vazamento de dados.
+fxa-scan-another-email = Quer verificar outro e-mail?
 sign-up-to-check = Cadastre-se para verificar
 sign-in = Entrar
 sign-out = Sair
@@ -214,8 +215,9 @@ full-report-headline = Seu relatório do { -product-name }
 see-full-report = Ver relatório completo
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Gerenciar { -brand-fxa }
+fxa-download-firefox-bar-blurb = Produzido pela { -brand-name }. 2x mais rápido. Usa 30% menos memória que o { -brand-Chrome }.
 fxa-download-firefox-bar-link = Baixe agora
-fxa-download-firefox-banner-blurb = Melhor, carregamento de páginas mais rápido que usa menos memória do computador.
+fxa-download-firefox-banner-blurb = Carregamento de páginas melhor e mais rápido que usa menos memória do computador.
 user-fb-compromised-headline = { $userEmail } apareceu no vazamento de dados de { $breachName }.
 guest-fb-compromised-headline = Este e-mail apareceu no vazamento de dados de { $breachName }.
 user-zero-breaches-headline = { $userEmail } não apareceu em nenhum vazamento de dados.
@@ -301,6 +303,11 @@ signup-banner-sensitive-blurb =
     Descubra os que hackers já sabem sobre você, e saiba como 
     estar um passo à frente deles. Receba um alerta caso sua conta 
     apareça em novos vazamentos de dados.
+fxa-pwt-section-blurb =
+    As senhas protegem todas as informações pessoais de suas contas online. 
+    Os hackers contam com maus hábitos, como usar a mesma senha em todo lugar, 
+    ou usar frases comuns, de modo que se conseguirem invadir uma conta, 
+    podem invadir várias.
 fxa-pwt-summary-6 =
     Vazamentos de dados vêm aumentando. Se suas informações pessoais aparecerem em um novo vazamento do dados, 
     o { -product-name } envia um alerta — assim você pode tomar providências e proteger suas contas.
@@ -310,4 +317,8 @@ fxa-what-to-do-blurb-3 =
     Se números de sua conta de banco ou cartão de crédito foram expostos, alerte seu banco para a possibilidade de fraudes. 
     Monitore o extrato para ver se há cobranças que você não reconhece.
 fxa-what-to-do-subhead-4 = Receba ajuda para lembrar todas as suas senhas e mantê-las em segurança.
+fxa-what-to-do-blurb-4 =
+    Gerenciadores de senhas como 1Password, LastPass, Dashlane e Bitwarden armazenam suas 
+    senhas com segurança e as preenchem em sites para você. Use um gerenciador de senhas 
+    em seu celular e no computador, assim não precisará lembrar todas elas.
 fb-landing-headline = Suas informações foram expostas no vazamento de dados de { $breachName }?
