@@ -93,7 +93,7 @@ download-firefox-bar-link = 立即下载 { -brand-name }
 download-firefox-banner-blurb = 掌控您的浏览器
 download-firefox-banner-button = 下载 { -brand-name }
 signup-modal-headline = 订阅 { -product-name-nowrap }
-signup-modal-blurb = 订阅以获取您的完整报告，在发生新数据外泄事件时收到警报，以及来自 { -product-name-nowrap } 的安全小贴士。
+signup-modal-blurb = 订阅以获取您的完整报告，在发生新的数据外泄事件时收到警报，以及来自 { -product-name-nowrap } 的安全小贴士。
 signup-modal-close = 关闭
 get-your-report = 获取您的报告
 signup-modal-verify-headline = 确认您的订阅
@@ -112,7 +112,7 @@ found-breaches-headline = 您的信息出现在过去的数据外泄事件中。
 no-breaches =
     您的电子邮件地址未出现在我们的基本扫描数据中。
     这是个好消息，但数据外泄事件随时都可能发生，您还有更多事情可以做。
-    订阅 { -product-name-nowrap } 以获取完整报告，在发生新数据外泄事件时收到警报，以及保护密码的小贴士。
+    订阅 { -product-name-nowrap } 以获取完整报告，在发生新的数据外泄事件时收到警报，以及保护密码的小贴士。
 featured-breach-results =
     { $breachCount ->
         [0] 您的账号出现在 <span class="bold"> { $featuredBreach } </span> 数据外泄事件中，但未出现在其他已知的事件。
@@ -245,11 +245,11 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = 此数据外泄事件泄露了以下个人信息。请尽快修改密码。
 user-generic-fb-compromised-single = 此数据外泄事件泄露了以下个人信息。
-guest-fb-compromised-single = 此数据外泄事件泄露了以下个人信息。注册 { -brand-fxa }以获取您的完整报告，并在发生新数据外泄事件时收到警报。
+guest-fb-compromised-single = 此数据外泄事件泄露了以下个人信息。注册 { -brand-fxa }以获取您的完整报告，并在发生新的数据外泄事件时收到警报。
 guest-fb-compromised-blurb =
     { $breachCount ->
-        [one] 此电子邮件地址还出现在其他 { $breachName } 次数据外泄事件中。注册 { -brand-fxa }以获取您的完整报告，并在发生新数据外泄事件时收到警报。
-       *[other] 此电子邮件地址还出现在其他 { $breachName } 次数据外泄事件中。注册 { -brand-fxa }以获取您的完整报告，并在发生新数据外泄事件时收到警报。
+        [one] 此电子邮件地址还出现在其他 { $breachName } 次数据外泄事件中。注册 { -brand-fxa }以获取您的完整报告，并在发生新的数据外泄事件时收到警报。
+       *[other] 此电子邮件地址还出现在其他 { $breachName } 次数据外泄事件中。注册 { -brand-fxa }以获取您的完整报告，并在发生新的数据外泄事件时收到警报。
     }
 user-fb-not-compromised-blurb =
     { $breachCount ->
@@ -260,5 +260,10 @@ user-generic-fb-not-compromised-blurb =
     { $breachCount ->
         [one] 此电子邮件地址未出现在 { $breachName } 数据外泄事件中，但我们在另一事件中发现了您的电子邮件地址。
        *[other] 此电子邮件地址未出现在 { $breachName } 数据外泄事件中，但我们在其他事件中发现了您的电子邮件地址。
+    }
+guest-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] 此电子邮件地址未出现在 { $breachName } 数据外泄事件中，但我们在另一事件中发现了您的电子邮件地址。注册 { -brand-fxa }以获取您的完整报告，并在发生新的数据外泄事件时收到警报。
+       *[other] 此电子邮件地址未出现在 { $breachName } 数据外泄事件中，但我们在其他事件中发现了您的电子邮件地址。注册 { -brand-fxa }以获取您的完整报告，并在发生新的数据外泄事件时收到警报。
     }
 have-an-account = 已有账户？
