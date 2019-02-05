@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Conta Firefox
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Apoio
@@ -204,3 +206,90 @@ share-twitter = A maioria das pessoas tem cerca de 100 contas online. Alguma das
 share-facebook-headline = Descubra se fez parte de uma brecha de dados
 share-facebook-blurb = Alguma das suas contas online foi exposta numa brecha de dados?
 og-site-description = Descubra se fez parte de uma brecha de dados com o { -product-name }. Registe-se para receber alertas acerca de futuras brechas e receba dicas para manter as suas contas seguras.
+mozilla-security-blog = Blogue de segurança da { -brand-Mozilla }
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Social
+show-all = Mostrar todas
+fxa-signup-banner-headline = Monitorize ameaças às suas contas online.
+fxa-signup-banner-blurb = Registe uma { -brand-fxa } para obter o seu relatório detalhado e alertas acerca de novas brechas de dados.
+fxa-landing-blurb =
+    Descubra o que os hackers já sabem acerca de si
+    e aprenda como ficar um passo à frente deles.
+fxa-scan-label = Veja se já apareceu numa brecha de dados.
+fxa-welcome-headline = Bem-vindo(a) ao { -product-name }.
+fxa-welcome-blurb = Está pronto(a) para obter alertas se { $userEmail } aparecer numa brecha de dados.
+fxa-scan-another-email = Pretende verificar outro email?
+# Search Firefox Monitor
+fxa-scan-submit = Pesquisar no { -product-name }
+sign-up-to-check = Registe-se para verificar
+sign-in = Iniciar sessão
+sign-out = Terminar sessão
+full-report-headline = O seu relatório do { -product-name }
+see-full-report = Ver relatório completo
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Gerir { -brand-fxa }
+fxa-download-firefox-bar-link = Transferir agora
+fxa-download-firefox-banner-blurb = Um carregamento de páginas melhor e mais rápido que utiliza menos memória computacional.
+user-fb-compromised-headline = { $userEmail } apareceu na brecha de dados { $breachName }.
+guest-fb-compromised-headline = Este email apareceu na brecha de dados { $breachName }.
+user-zero-breaches-headline = { $userEmail } apareceu em zero brechas de dados.
+guest-zero-breaches-headline = Este email apareceu em zero brechas de dados.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } apareceu em 1 brecha de dados.
+       *[other] { $userEmail } apareceu em { $breachCount } brechas de dados.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Este email apareceu em 1 brecha de dados.
+       *[other] Este email apareceu em { $breachCount } brechas de dados.
+    }
+user-no-breaches-blurb = Alertaremos-lhe se este endereço de email aparecer numa nova brecha.
+guest-no-breaches-blurb =
+    Para ver se este email aparece em brechas sensíveis, crie uma { -brand-fxa }.
+    Também lhe alertaremos se este endereço aparecer em novas brechas de dados.
+user-one-breach-blurb = Esta brecha expôs a seguinte informação pessoal.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] O seu email também apareceu em { $breachCount } outra brecha.
+       *[other] O seu email também apareceu em { $breachCount } outras brechas.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Este email também apareceu em { $breachCount } outra brecha.
+       *[other] Este email também apareceu em { $breachCount } outras brechas.
+    }
+user-fb-compromised-single =
+    Esta brecha expôs a seguinte informação pessoal. Se ainda não
+    alterou as suas palavras-passe, agora é o momento.
+user-generic-fb-compromised-single = Esta brecha expôs a seguinte informação pessoal.
+guest-fb-compromised-single =
+    Esta brecha expôs a seguinte informação pessoal. Registe uma { -brand-fxa }
+    para obter o seu relatório completo e alertas acerca de novas brechas.
+guest-fb-compromised-blurb =
+    { $breachCount ->
+        [one]
+            Este email também apareceu em { $breachCount } outra brecha. Registe uma
+            { -brand-fxa } para obter o seu relatório completo e alertas acerca de novas brechas.
+       *[other]
+            Este email também apareceu em { $breachCount } outras brechas. Registe uma
+            { -brand-fxa } para obter o seu relatório completo e alertas acerca de novas brechas.
+    }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Não estava na brecha { $breachName }, mas encontrámos esse endereço de email noutra.
+       *[other] Não estava na brecha { $breachName }, mas encontrámos esse endereço de email noutras.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Este email não estava na brecha { $breachName }, mas foi encontrado noutra.
+       *[other] Este email não estava na brecha { $breachName }, mas foi encontrado noutras.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Esta brecha expôs a seguinte informação pessoal.
+       *[other] Esta brechas expuseram a seguinte informação pessoal.
+    }
+have-an-account = Já tem uma conta?
