@@ -205,15 +205,23 @@ mozilla-security-blog = { -brand-Mozilla } 安全博客
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = 社交
 show-all = 全部显示
+fxa-signup-banner-headline = 监控针对您的在线帐户的威胁。
+fxa-signup-banner-blurb = 注册 { -brand-fxa }即可获取与您有关的新数据外泄事件的详细报告。
+fxa-landing-blurb = 看看黑客已经掌握了您哪些资料，并了解如何远离他们。
 fxa-scan-label = 看看您是否出现在数据外泄事件中。
 fxa-welcome-headline = 欢迎来到 { -product-name }。
+fxa-welcome-blurb = 设置完成。若 { $userEmail } 出现在数据外泄事件中，我们会通知您。
 fxa-scan-another-email = 想要检查其他电子邮件地址？
+# Search Firefox Monitor
+fxa-scan-submit = 搜索 { -product-name }
+sign-up-to-check = 注册以进行检查
 sign-in = 登录
 sign-out = 退出
 full-report-headline = 您的 { -product-name } 报告
 see-full-report = 查看完整报告
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = 管理 { -brand-fxa }
+fxa-download-firefox-bar-blurb = 由 { -brand-name } 为您奉上。速度翻倍，占用内存比 { -brand-Chrome } 低 30%。
 fxa-download-firefox-bar-link = 立即下载
 fxa-download-firefox-banner-blurb = 页面载入更好、更快，占用内存更少。
 user-fb-compromised-headline = { $userEmail } 出现在{ $breachName } 数据外泄事件中。
@@ -266,4 +274,41 @@ guest-fb-not-compromised-blurb =
         [one] 此电子邮件地址未出现在 { $breachName } 数据外泄事件中，但我们在另一事件中发现了您的电子邮件地址。注册 { -brand-fxa }以获取您的完整报告，并在发生新的数据外泄事件时收到警报。
        *[other] 此电子邮件地址未出现在 { $breachName } 数据外泄事件中，但我们在其他事件中发现了您的电子邮件地址。注册 { -brand-fxa }以获取您的完整报告，并在发生新的数据外泄事件时收到警报。
     }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] 此数据外泄事件泄露了以下个人信息。请尽快修改密码。
+       *[other] 这些数据外泄事件泄露了以下个人信息。请尽快修改密码。
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] 此数据外泄事件泄露了以下个人信息。
+       *[other] 这些数据外泄事件泄露了以下个人信息。
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+guest-found-breaches-blurb =
+    { $breachCount ->
+        [one] 此数据外泄事件泄露了以下个人信息。注册 { -brand-fxa }以获取您的完整报告，并在发生新的数据外泄事件时收到警报。
+       *[other] 这些数据外泄事件泄露了以下个人信息。注册 { -brand-fxa }以获取您的完整报告，并在发生新的数据外泄事件时收到警报。
+    }
 have-an-account = 已有账户？
+signup-banner-sensitive-blurb = 看看黑客已经掌握了您哪些资料，并了解如何远离他们。我们也会在此电子邮件地址出现于新的数据外泄事件时通知您。
+fxa-pwt-section-blurb = 密码可以保护账号中的所有个人信息。黑客会因一些不良的使用习惯而得益，例如在每个地方都使用相同的密码，或是使用常见的密码组合（还在使用 asdf1234 吗？）。这样的话只要一个账号被黑，他们就可以轻而易举地黑掉您多个账号。
+fxa-pwt-summary-2 = 简短单调的密码很容易被黑客猜中。至少使用两个单词及字母、数字和特殊字符的组合。
+fxa-pwt-summary-4 = 如 1Password、LastPass、Dashlane 和 Bitwarden 等密码管理器，可帮助您创建高强度的密码，安全地存储，并为您自动填写到网站上。
+fxa-pwt-summary-6 = 数据外泄事件层出不穷。若您的个人信息出现在新的数据外泄事件中，{ -product-name } 会发送警报给您，这样就可以采取措施来保护账号。
+fxa-what-to-do-blurb-1 = 若您无法登录，请联系网站询问如何来更改密码或者删除账号。发现有您不知道的账号？有可能是您的数据已经被卖掉了，也有可能是单纯忘记创建过该账号，或是网站已改名。
+fxa-what-to-do-subhead-2 = 停止使用已泄露的密码，并将每个使用该密码的网站密码都进行修改。
+fxa-what-to-do-blurb-2 =
+    黑客很可能利用您已遭泄露的密码，尝试登录您在其他网站上的账号，这也被称为“撞库”攻击。
+    请为每个网站设置不同的密码，尤其是银行账号、电子邮件账号，以及其他您用来存储个人信息的网站。
+fxa-what-to-do-blurb-3 =
+    大多数的数据泄漏事件只会泄漏电子邮件地址与密码，但某些事件中也会包含敏感的个人财务信息。
+    若您的银行账户或信用卡卡号也遭泄漏，请通知银行以预防盗用，并检查月结账单，检查是否有不明的交易记录。
+fxa-what-to-do-subhead-4 = 获取能帮助您记住所有密码，并确保密码安全的建议。
+fxa-what-to-do-blurb-4 = 如 1Password、LastPass、Dashlane 和 Bitwarden 等密码管理器可以安全地存储密码，并为您自动填写到网站上。在您的手机与计算机上使用密码管理器，不必再记忆密码。
+fb-landing-headline = 您的信息是否也出现在 { $breachName } 的数据外泄事件中？
