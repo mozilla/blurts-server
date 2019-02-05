@@ -65,8 +65,8 @@ landing-blurb = { -product-name-nowrap } 為您提供工具來確保個人資料
 scan-label = 看看您有沒有遭受資料外洩事件的影響。
 scan-placeholder = 輸入電子郵件地址
 scan-privacy = 不會儲存您的電子郵件地址。
-scan-submit = 搜尋您的 E-Mail 信箱
-scan-another-email = 掃描另一個 E-Mail 信箱
+scan-submit = 搜尋您的電子郵件地址
+scan-another-email = 掃描另一個電子郵件地址
 scan-featuredbreach-label = 看看您的 <span class="bold">{ $featuredBreach }</span> 帳號是否遭到外洩。
 sensitive-breach-email-required = 資料外洩事件中包含個人敏感資料，需要電子郵件驗證。
 scan-error = 必須是有效的電子郵件地址。
@@ -110,14 +110,14 @@ scan-results =
     { $breachCount ->
         [0] { no-breaches }
         [one] 您的帳號出現在 { $breachCount } 資料外洩事件中。
-       *[other] 與您的電子郵件信箱相關聯的帳號，出現在下列 { $breachCount } 場資料外洩事件中。
+       *[other] 與您的電子郵件地址相關聯的帳號，出現在下列 { $breachCount } 場資料外洩事件中。
     }
 show-more-breaches = 顯示更多
 what-to-do-headline = 當您的資料被外洩時該怎麼辦
 what-to-do-subhead-1 = 改掉密碼，就算是很久沒用的舊帳號也要改掉
 what-to-do-blurb-1 = 若您無法登入，請聯絡網站詢問要如何更改密碼，或是刪除帳號。發現您不認識的帳號嗎？有可能網站改名，或別人用您的身分註冊帳號。
 what-to-do-subhead-2 = 若您也在別的網站使用被洩漏的密碼，也請改掉該網站的密碼
-what-to-do-blurb-2 = 駭客可能會使用您被洩漏的密碼，來嘗試登入您在別的網站上的帳號。請針對每個網站設定不同密碼，尤其是網路銀行、電子郵件，以及任何您會儲存個人資料的網站。
+what-to-do-blurb-2 = 駭客可能會使用您被洩漏的密碼，來嘗試登入您在別的網站上的帳號。請針對每個網站設定不同密碼，尤其是網路銀行、電子郵件信箱，以及任何您會儲存個人資料的網站。
 what-to-do-subhead-3 = 進一步保護您的銀行帳號
 what-to-do-blurb-3 = 大多數的資料外洩事件只會外洩出電子郵件地址與密碼，但某些事件也會包含敏感的個人財務資訊。若您的銀行帳號或信用卡卡號也被洩露出來，請通知銀行防止盜用，並檢查月結單，看看是否有不認識的交易紀錄。
 what-to-do-subhead-4 = 想辦法建立夠強的密碼，並確保密碼安全。
@@ -180,7 +180,7 @@ fxa-landing-blurb = 看看駭客已經掌握您的哪些資料，並且了解如
 fxa-scan-label = 看看您是否有資料已遭洩漏。
 fxa-welcome-headline = 歡迎使用 { -product-name }。
 fxa-welcome-blurb = 一切都搞定了。若 { $userEmail } 出現在資料洩漏事件中，我們會通知您。
-fxa-scan-another-email = 想要檢查另一個信箱帳號嗎？
+fxa-scan-another-email = 想要檢查另一個電子郵件地址嗎？
 # Search Firefox Monitor
 fxa-scan-submit = 搜尋 { -product-name }
 sign-up-to-check = 註冊進行檢查
@@ -194,20 +194,20 @@ fxa-download-firefox-bar-blurb = 由 { -brand-name } 提供給您。比起 { -br
 fxa-download-firefox-bar-link = 立刻下載
 fxa-download-firefox-banner-blurb = 更好、更快的網頁載入速度，占用的記憶體也更少。
 user-fb-compromised-headline = { $userEmail } 有出現於 { $breachName } 的資料洩露事件中。
-guest-fb-compromised-headline = 此 E-Mail 有出現於 { $breachName } 的資料洩露事件中。
+guest-fb-compromised-headline = 此電子郵件地址有出現於 { $breachName } 的資料洩露事件中。
 user-zero-breaches-headline = { $userEmail } 未出現於任何資料洩露事件。
-guest-zero-breaches-headline = 此 E-Mail 未出現於任何資料洩露事件。
+guest-zero-breaches-headline = 此電子郵件地址未出現於任何資料洩露事件。
 user-scan-results-headline =
     { $breachCount ->
        *[other] { $userEmail } 出現於 { $breachCount } 場資料洩露事件中。
     }
 guest-scan-results-headline =
     { $breachCount ->
-       *[other] 此 E-Mail 出現於 { $breachCount } 場資料洩露事件中。
+       *[other] 此電子郵件地址出現於 { $breachCount } 場資料洩露事件中。
     }
-user-no-breaches-blurb = 若此信箱出現在新的資料洩漏事件中，我們會通知您。
+user-no-breaches-blurb = 若此電子郵件地址出現在新的資料洩漏事件中，我們會通知您。
 guest-no-breaches-blurb =
-    若想知道此信箱是否出現在包含敏感資料的洩漏事件當中，請註冊 { -brand-fxa }。
+    若想知道此電子郵件地址是否出現在包含敏感資料的洩漏事件當中，請註冊 { -brand-fxa }。
     我們也會在此信箱出現於新的資料洩露事件時通知您。
 user-one-breach-blurb = 此次資料洩漏事件包含下列個資。
 user-fb-compromised-blurb =
@@ -217,5 +217,42 @@ user-fb-compromised-blurb =
 user-generic-fb-compromised-blurb =
     { $breachCount ->
        *[other] 此電子郵件地址也出現於另 { $breachCount } 場資料洩露事件中。
+    }
+user-fb-compromised-single = 此次資料洩漏事件包含下列個資。請盡快修改密碼。
+user-generic-fb-compromised-single = 此次資料洩漏事件包含下列個資。
+guest-fb-compromised-single = 此次資料洩漏事件包含下列個資。註冊 { -brand-fxa } 即可取得完整的事件報告，並在未來有新的洩露事件時通知您。
+guest-fb-compromised-blurb =
+    { $breachCount ->
+       *[other] 此電子郵件地址也出現於另 { $breachCount } 場資料洩露事件中。註冊 { -brand-fxa } 即可取得完整的事件報告，並在未來有新的洩露事件時通知您。
+    }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+       *[other] 您未出現於 { $breachName } 洩露事件中，但我們在其他事件發現該電子郵件地址。
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+       *[other] 此電子郵件地址未出現於 { $breachName } 洩露事件中，但我們在其他事件發現該地址。
+    }
+guest-fb-not-compromised-blurb =
+    { $breachCount ->
+       *[other] 此電子郵件地址未出現於 { $breachName } 洩露事件中，但我們在其他事件發現該地址。註冊 { -brand-fxa } 即可取得完整的事件報告，並在未來有新的洩露事件時通知您。
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+       *[other] 此次資料洩露事件包含下列個資。請盡快修改密碼。
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+       *[other] 以下 { $breachCount } 場資料洩露事件包含下列個資。
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+guest-found-breaches-blurb =
+    { $breachCount ->
+       *[other] 以下 { $breachCount } 場資料洩露事件包含下列個資。註冊 { -brand-fxa } 即可取得完整的事件報告，並在未來有新的洩露事件時通知您。
     }
 have-an-account = 已經有帳號了嗎？

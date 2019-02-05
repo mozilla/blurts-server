@@ -4,7 +4,7 @@
 -brand-name = Firefox
 click-to-verify = 請在 24 小時內點擊下方的「驗證我的 E-Mail」來確認您的 Firefox Monitor 帳號。接下來就可以收到報告了。
 verify-my-email = 驗證我的 E-Mail
-report-scan-another-email = 到 { -product-name } 掃描其他電子郵件信箱
+report-scan-another-email = 到 { -product-name } 掃描其他電子郵件地址
 automated-message = 這是電腦自動發送的郵件，若您突然收到這封信，不需要做任何事。
 # Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
 we-sent-this-alert = 此信箱訂閱了 { -product-name } 警報，我們才送出本郵件給 { $userEmail }。
@@ -25,7 +25,7 @@ report-headline =
        *[other] 您的帳號出現在 { $breachCount } 次資料外洩事件中。
     }
 report-subhead-no-breaches = 您的帳號並未出現在我們的資料外洩事故完整報告中。這是好消息，但您還可以做更多事來自保。資料外洩事件隨時都有可能發生，請繼續閱讀，以了解可如何保護密碼安全。
-report-subhead-found-breaches = 以下是您的 Firefox Monitor 完整報告，包含與此信箱地址有關的所有資料外洩事件。
+report-subhead-found-breaches = 以下是您的 Firefox Monitor 完整報告，包含與此電子郵件地址有關的所有資料外洩事件。
 breach-alert-headline = 您的帳號受到資料外洩事件影響。
 breach-alert-subhead = 最近發生的資料外洩事件，包含您的電子郵件地址與下列資料
 report-pwt-blurb = 密碼很有價值，每天都有數以千組的密碼被偷走，並且在黑市上交易。強大的密碼可保護您的帳號，以及帳號當中的個人資訊。
@@ -45,6 +45,6 @@ share-by-email-subject = 看看您是否受資料外洩事件影響。
 share-by-email-message =
     嗨！
     { -brand-name } 有個免費的服務，可讓你看看你在各個網站註冊帳號，是否曾經出現在資料外洩事故當中。以下是檢查方式:
-    1. 到 { "https://monitor.firefox.com" } 輸入你的信箱帳號。
+    1. 到 { "https://monitor.firefox.com" } 輸入你的電子郵件地址。
     2. 看看你的帳號是否出現在資料外洩事件中。
     3. 了解 { -product-name } 有什麼能夠處理這些問題的秘訣。
