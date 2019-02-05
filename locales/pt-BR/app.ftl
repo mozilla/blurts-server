@@ -264,3 +264,36 @@ user-generic-fb-not-compromised-blurb =
         [one] Este e-mail não estava no vazamento de { $breachName }, mas foi encontrado em outro.
        *[other] Este e-mail não estava no vazamento de { $breachName }, mas foi encontrado em outros.
     }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] Este vazamento expôs as seguintes informações pessoais. Se ainda não fez, mude sua senha.
+       *[other] Estes vazamentos expuseram as seguintes informações pessoais. Se ainda não fez, mude suas senhas.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Este vazamento expôs as seguintes informações pessoais.
+       *[other] Estes vazamentos expuseram as seguintes informações pessoais.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+guest-found-breaches-blurb =
+    { $breachCount ->
+        [one]
+            Este vazamento expôs as seguintes informações pessoais. Cadastre uma 
+            { -brand-fxa } para receber seu relatório completo e alertas sobre novos vazamentos.
+       *[other]
+            Estes vazamentos expuseram as seguintes informações pessoais. Cadastre uma 
+            { -brand-fxa } para receber seu relatório completo e alertas sobre novos vazamentos.
+    }
+signup-banner-sensitive-blurb =
+    Descubra os que hackers já sabem sobre você, e saiba como 
+    estar um passo à frente deles. Receba um alerta caso sua conta 
+    apareça em novos vazamentos de dados.
+fxa-pwt-summary-6 =
+    Vazamentos de dados vêm aumentando. Se suas informações pessoais aparecerem em um novo vazamento do dados, 
+    o { -product-name } envia um alerta — assim você pode tomar providências e proteger suas contas.
+fb-landing-headline = Suas informações foram expostas no vazamento de dados de { $breachName }?
