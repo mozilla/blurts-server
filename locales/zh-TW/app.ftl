@@ -179,6 +179,7 @@ fxa-signup-banner-blurb = 註冊 { -brand-fxa } 即可收到與您有關的新�
 fxa-landing-blurb = 看看駭客已經掌握您的哪些資料，並且了解如何遠離他們。
 fxa-scan-label = 看看您是否有資料已遭洩漏。
 fxa-welcome-headline = 歡迎使用 { -product-name }。
+fxa-welcome-blurb = 一切都搞定了。若 { $userEmail } 出現在資料洩漏事件中，我們會通知您。
 fxa-scan-another-email = 想要檢查另一個信箱帳號嗎？
 # Search Firefox Monitor
 fxa-scan-submit = 搜尋 { -product-name }
@@ -190,6 +191,7 @@ see-full-report = 看完整報告
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = 管理 { -brand-fxa }
 fxa-download-firefox-bar-link = 立刻下載
+fxa-download-firefox-banner-blurb = 更好、更快的網頁載入速度，占用的記憶體也更少。
 user-fb-compromised-headline = { $userEmail } 有出現於 { $breachName } 的資料洩露事件中。
 guest-fb-compromised-headline = 此 E-Mail 有出現於 { $breachName } 的資料洩露事件中。
 user-zero-breaches-headline = { $userEmail } 未出現於任何資料洩露事件。
