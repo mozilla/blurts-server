@@ -317,3 +317,15 @@ fxa-what-to-do-blurb-1 =
     Fällt Ihnen ein unbekanntes Konto auf? Vielleicht wurden Ihre Daten verkauft oder weitergegeben.
     Vielleicht haben Sie das Konto auch vergessen oder das Unternehmen hat seinen Namen geändert.
 fxa-what-to-do-subhead-2 = Verwenden Sie das offengelegte Passwörter nicht mehr und ändern Sie es überall, wo Sie es verwenden.
+fxa-what-to-do-blurb-2 =
+    Hacker versuchen möglicherweise, dasselbe Passwort und Ihre E-Mail-Adresse zum Zugriff auf andere Konten zu verwenden.
+    Erstellen Sie für jedes Konto ein anderes und einzigartiges Passwort, insbesondere für Ihr Bankkonto, Ihre E-Mail-Adresse und andere Websites, auf denen Sie persönliche Daten speichern.
+fxa-what-to-do-blurb-3 =
+    Bei den meisten Verstößen werden nur E-Mails und Passwörter erbeutet, bei einigen jedoch auch vertrauliche Bankdaten.
+    Wenn Ihre Bankkonto- oder Kreditkartennummern von einem Datenleck offengelegt wurden, warnen Sie Ihre Bank vor möglichen Betrugsfällen und überwachen Sie die Kontoauszüge auf Transaktionen, die Sie nicht kennen.
+fxa-what-to-do-subhead-4 = Holen Sie sich Hilfe, wenn Sie sich Ihre Passwörter merken und sie schützen müssen.
+fxa-what-to-do-blurb-4 =
+    Passwort-Manager wie 1Password, LastPass, Dashlane und Bitwarden speichern Ihre
+    Passwörter sicher und tragen diese auf Websites für Sie ein. Nutzen Sie einen Passwort-Manager
+    auf Ihrem Handy und Ihrem Computer, damit Sie sich nicht alle merken müssen.
+fb-landing-headline = Waren Ihre Daten vom Datenleck { $breachName } betroffen?
