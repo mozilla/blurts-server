@@ -200,15 +200,22 @@ share-facebook-blurb = Suas contas online foram expostas em um vazamento de dado
 og-site-description = Descubra se você foi vítima de um vazamento de dados com o { -product-name }. Cadastre-se para receber alertas sobre futuros vazamentos e receber dicas para manter suas contas seguras.
 mozilla-security-blog = Blog de segurança do { -brand-Mozilla }
 show-all = Mostrar tudo
+fxa-signup-banner-headline = Monitore ameaças a suas contas online.
 fxa-signup-banner-blurb = Cadastre uma { -brand-fxa } para receber seu relatório detalhado e alertas sobre novos vazamentos de dados.
+fxa-landing-blurb =
+    Descubra o que hackers já sabem sobre você,
+    e saiba como estar um passo à frente deles.
 fxa-scan-label = Veja se você apareceu em um vazamento de dados.
 fxa-welcome-blurb = Tudo pronto para você receber alertas se { $userEmail } aparecer em um vazamento de dados.
+sign-up-to-check = Cadastre-se para verificar
 sign-in = Entrar
 sign-out = Sair
+full-report-headline = Seu relatório do { -product-name }
 see-full-report = Ver relatório completo
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Gerenciar { -brand-fxa }
 fxa-download-firefox-bar-link = Baixe agora
+fxa-download-firefox-banner-blurb = Melhor, carregamento de páginas mais rápido que usa menos memória do computador.
 user-fb-compromised-headline = { $userEmail } apareceu no vazamento de dados de { $breachName }.
 guest-fb-compromised-headline = Este e-mail apareceu no vazamento de dados de { $breachName }.
 user-zero-breaches-headline = { $userEmail } não apareceu em nenhum vazamento de dados.
@@ -289,6 +296,7 @@ guest-found-breaches-blurb =
             Estes vazamentos expuseram as seguintes informações pessoais. Cadastre uma 
             { -brand-fxa } para receber seu relatório completo e alertas sobre novos vazamentos.
     }
+have-an-account = Já tem uma conta?
 signup-banner-sensitive-blurb =
     Descubra os que hackers já sabem sobre você, e saiba como 
     estar um passo à frente deles. Receba um alerta caso sua conta 
@@ -296,4 +304,10 @@ signup-banner-sensitive-blurb =
 fxa-pwt-summary-6 =
     Vazamentos de dados vêm aumentando. Se suas informações pessoais aparecerem em um novo vazamento do dados, 
     o { -product-name } envia um alerta — assim você pode tomar providências e proteger suas contas.
+fxa-what-to-do-subhead-2 = Pare de usar a senha exposta, e mude em todo lugar que a usou.
+fxa-what-to-do-blurb-3 =
+    A maioria dos vazamentos só expõem e-mails e senhas, mas alguns incluem informações financeiras confidenciais. 
+    Se números de sua conta de banco ou cartão de crédito foram expostos, alerte seu banco para a possibilidade de fraudes. 
+    Monitore o extrato para ver se há cobranças que você não reconhece.
+fxa-what-to-do-subhead-4 = Receba ajuda para lembrar todas as suas senhas e mantê-las em segurança.
 fb-landing-headline = Suas informações foram expostas no vazamento de dados de { $breachName }?
