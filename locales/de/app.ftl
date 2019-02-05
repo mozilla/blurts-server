@@ -252,3 +252,68 @@ user-generic-fb-compromised-single = Dieses Datenleck enthielt die folgenden per
 guest-fb-compromised-single =
     Dieses Datenleck enthielt die folgenden persönlichen Daten. Holen Sie sich ein { -brand-fxa },
     um den vollständigen Bericht und Meldungen über neue Datenlecks zu erhalten.
+guest-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Diese E-Mail-Adresse ist auch von { $breachCount } anderem Datenleck betroffen. Holen Sie sich ein { -brand-fxa }, um den vollständigen Bericht und Meldungen über neue Datenlecks zu erhalten.
+       *[other] Diese E-Mail-Adresse ist auch von { $breachCount } anderen Datenlecks betroffen. Holen Sie sich ein { -brand-fxa }, um den vollständigen Bericht und Meldungen über neue Datenlecks zu erhalten.
+    }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Sie sind nicht vom Datenleck { $breachName } betroffen, die E-Mail-Adresse taucht aber in einem anderen auf.
+       *[other] Sie sind nicht vom Datenleck { $breachName } betroffen, die E-Mail-Adresse taucht aber in mehreren anderen auf.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Diese E-Mail-Adresse ist nicht vom Datenleck { $breachName } betroffen, aber von einem anderen.
+       *[other] Diese E-Mail-Adresse ist nicht vom Datenleck { $breachName } betroffen, aber von mehreren anderen.
+    }
+guest-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Diese E-Mail-Adresse ist nicht vom Datenleck { $breachName } betroffen, aber von einem anderen. Holen Sie sich ein { -brand-fxa }, um den vollständigen Bericht und Meldungen über neue Datenlecks zu erhalten.
+       *[other] Diese E-Mail-Adresse ist nicht vom Datenleck { $breachName } betroffen, aber von mehreren anderen. Holen Sie sich ein { -brand-fxa }, um den vollständigen Bericht und Meldungen über neue Datenlecks zu erhalten.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] Dieses Datenleck enthielt die folgenden persönlichen Daten. Ändern Sie Ihr Passwort, wenn nicht bereits geschehen.
+       *[other] Dieses Datenleck enthielt die folgenden persönlichen Daten. Ändern Sie Ihre Passwörter, wenn nicht bereits geschehen.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Dieses Datenleck enthielt die folgenden persönlichen Daten.
+       *[other] Diese Datenlecks enthielten die folgenden persönlichen Daten.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+guest-found-breaches-blurb =
+    { $breachCount ->
+        [one] Dieses Datenleck enthielt die folgenden persönlichen Daten. Holen Sie sich ein { -brand-fxa }, um den vollständigen Bericht und Meldungen über neue Datenlecks zu erhalten.
+       *[other] Diese Datenlecks enthielten die folgenden persönlichen Daten. Holen Sie sich ein { -brand-fxa }, um den vollständigen Bericht und Meldungen über neue Datenlecks zu erhalten.
+    }
+have-an-account = Haben Sie schon ein Konto?
+signup-banner-sensitive-blurb =
+    Finden Sie heraus, was Hacker bereits über Sie wissen
+    und erfahren Sie, wie Sie ihnen einen Schritt voraus sein können. Lassen Sie sich
+    benachrichtigen, wenn Ihr Konto von neuen Datenlecks betroffen ist.
+fxa-pwt-section-blurb =
+    Passwörter schützen alle persönlichen Daten in Ihren Online-Konten. Und
+    Hacker verlassen sich auf schlechte Angewohnheiten, wie die Wiederverwendung von Passwörtern
+    oder häufige Ausdrücke (wie @p@ssw0rt), sodass nicht nur ein Konto, sondern
+    mehrere geknackt werden.
+fxa-pwt-summary-2 =
+    Kurze, aus einem Wort bestehende Passwörter sind für Hacker leicht zu erraten.
+    Verwenden Sie mindestens zwei Wörter und eine Kombination aus Buchstaben, Ziffern und Sonderzeichen.
+fxa-pwt-summary-4 =
+    Passwort-Manager wie 1Password, LastPass, Dashlane und Bitwarden speichern Ihre
+    Passwörter und tragen diese auf Websites für Sie ein. Sie helfen Ihnen sogar dabei, sichere Passwörter zu erstellen.
+fxa-pwt-summary-6 =
+    Datenlecks nehmen zu. Wenn Ihre persönlichen Daten von einem neuen Datenleck betroffen sind,
+    benachrichtigt { -product-name } Sie – damit Sie Maßnahmen ergreifen und Ihre Konten schützen können.
+fxa-what-to-do-blurb-1 =
+    Wenn Sie sich nicht anmelden können, wenden sich sich an die Website und fragen Sie nach.
+    Fällt Ihnen ein unbekanntes Konto auf? Vielleicht wurden Ihre Daten verkauft oder weitergegeben.
+    Vielleicht haben Sie das Konto auch vergessen oder das Unternehmen hat seinen Namen geändert.
+fxa-what-to-do-subhead-2 = Verwenden Sie das offengelegte Passwörter nicht mehr und ändern Sie es überall, wo Sie es verwenden.
