@@ -10,6 +10,7 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox 账户
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = 用户支持
@@ -203,6 +204,14 @@ og-site-description = 使用 { -product-name }，看看您的账号是否也在�
 mozilla-security-blog = { -brand-Mozilla } 安全博客
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = 社交
+show-all = 全部显示
+fxa-scan-label = 看看您是否出现在数据外泄事件中。
+fxa-welcome-headline = 欢迎来到 { -product-name }。
+fxa-scan-another-email = 想要检查其他电子邮件地址？
 sign-in = 登录
 sign-out = 退出
 full-report-headline = 您的 { -product-name } 报告
+see-full-report = 查看完整报告
+fxa-download-firefox-bar-link = 立即下载
+fxa-download-firefox-banner-blurb = 页面载入更好、更快，占用内存更少。
+have-an-account = 已有账户？
