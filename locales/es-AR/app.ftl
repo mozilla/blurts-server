@@ -179,3 +179,13 @@ fxa-signup-banner-blurb = Registrate en { -brand-fxa } para obtener un informe d
 fxa-landing-blurb =
     Descubrí lo que los piratas ya saben acerca tuyo,
     y aprendé cómo estar un paso adelante de ellos.
+fxa-scan-label = Fijate si apareciste en una violación de datos.
+fxa-welcome-headline = Bienvenido a { -product-name }.
+fxa-welcome-blurb = Estás listo para recibir alertas si aparece { $userEmail } en una violación de datos.
+fxa-scan-another-email = ¿Querés consultar por otro correo electrónico?
+# Search Firefox Monitor
+fxa-scan-submit = Buscar { -product-name }
+sign-up-to-check = Registrate para Verificar
+sign-in = Iniciar la sesión
+sign-out = Cerrar la sesión
+full-report-headline = Su informe de { -product-name }
