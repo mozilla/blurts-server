@@ -1,14 +1,67 @@
 "use strict";
 
-const sha1 = require("../sha1-utils");
+const crypto = require("crypto");
+
+const AppConstants = require("../app-constants");
+const { FluentError } = require("../locale-utils");
 const HIBP = require("../hibp");
+const mozlog = require("../log");
+const sha1 = require("../sha1-utils");
+
+
+const log = mozlog("controllers.scan");
+
+
+function _decryptPageToken(encryptedPageToken) {
+  const decipher = crypto.createDecipher("aes-256-cbc", AppConstants.COOKIE_SECRET);
+  const decryptedPageToken = JSON.parse([decipher.update(encryptedPageToken, "hex", "utf8"), decipher.final("utf8")].join(""));
+  return decryptedPageToken;
+}
+
+
+function _validatePageToken(pageToken, req) {
+  const requestIP = req.ip;
+  const pageTokenIP = pageToken.ip;
+  if (pageToken.ip !== requestIP) {
+    log.error("_validatePageToken", {msg: "IP mis-match", pageTokenIP, requestIP});
+    return false;
+  }
+  if (Date.now() - new Date(pageToken.date) >= AppConstants.PAGE_TOKEN_TIMER * 1000) {
+    log.error("_validatePageToken", {msg: "expired pageToken"});
+    return false;
+  }
+  /* TODO: block on scans-per-ip instead of scans-per-timespan
+  if (req.session.scans.length > 5) {
+    console.log("too many scans this session");
+    return res.render("error");
+  }
+  if (!req.session.scans.includes(emailHash)) {
+    console.log(`adding ${emailHash} to session scans`);
+    req.session.scans.push(emailHash);
+  }
+  */
+  return true;
+}
 
 
 async function post (req, res) {
   const emailHash = req.body.emailHash;
+  const encryptedPageToken = req.body.pageToken;
   let featuredBreach = null;
   let userAccountCompromised = false;
   let foundBreaches = [];
+
+  // for #688: use a page token to check for bot scans
+  if (AppConstants.PAGE_TOKEN_TIMER > 0) {
+    if (!encryptedPageToken) {
+      throw new FluentError("error-no-page-token");
+    }
+    const decryptedPageToken = _decryptPageToken(encryptedPageToken);
+    if (!_validatePageToken(decryptedPageToken, req)) {
+      throw new FluentError("error-invalid-page-token");
+    }
+  }
+
 
   if (!emailHash || emailHash === sha1("")) {
     res.redirect("/");
@@ -38,6 +91,7 @@ async function post (req, res) {
     }
     res.render("scan", {
       title: req.fluentFormat("scan-title"),
+      csrfToken: req.csrfToken(),
       foundBreaches,
       featuredBreach,
       userAccountCompromised,
@@ -47,6 +101,7 @@ async function post (req, res) {
   else {
     res.render("scan", {
       title: req.fluentFormat("scan-title"),
+      csrfToken: req.csrfToken(),
       foundBreaches,
     });
   }
@@ -65,6 +120,7 @@ async function getFullReport(req, res) {
 
   res.render("scan", {
     title: req.fluentFormat("scan-title"),
+    csrfToken: req.csrfToken(),
     foundBreaches,
     fullReport,
     authenticatedUser,
@@ -93,6 +149,7 @@ async function getLatestBreaches(req, res) {
 
   res.render("scan", {
     title: req.fluentFormat("scan-title"),
+    csrfToken: req.csrfToken(),
     foundBreaches,
     latestBreaches,
     newUser,
