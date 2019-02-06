@@ -230,5 +230,13 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = Cette fuite de données a compromis les informations personnelles suivantes. Si ce n’est pas déjà fait, changez vos mots de passe.
 user-generic-fb-compromised-single = Cette fuite de données a compromis les informations personnelles suivantes.
+have-an-account = Vous possédez déjà un compte ?
+signup-banner-sensitive-blurb = Découvrez ce que les pirates informatiques savent déjà de vous, et apprenez à garder une longueur d’avance sur eux. Recevez des alertes si votre compte apparaît dans de nouvelles fuites de données.
+fxa-pwt-section-blurb = Vos mots de passe protègent toutes les informations personnelles qui se trouvent sur vos comptes en ligne. Et les pirates informatiques tirent profit de nos mauvaises habitudes, comme utiliser le même mot de passe partout ou utiliser des expressions courantes (« m0tdep@sse », ça vous parle ?) pour pouvoir pirater plusieurs comptes.
+fxa-pwt-summary-2 =
+    Les mots de passe courts et constitués d’un seul mot sont faciles à deviner pour les pirates informatiques.
+    Utilisez au moins deux mots et une combinaison de lettres, de chiffres et de caractères spéciaux.
+fxa-pwt-summary-4 = Les gestionnaires de mots de passe tels que 1Password, LastPass, Dashlane et Bitwarden conservent vos mots de passe en toute sécurité et les remplissent dans les sites web pour vous. Ils vous aideront aussi à générer des mots de passe robustes.
+fxa-pwt-summary-6 = Les fuites de données sont de plus en plus fréquentes. Si vos informations personnelles apparaissent dans une nouvelle fuite de données, { -product-name } vous enverra une alerte afin que vous puissiez prendre des mesures et protéger vos comptes.
 fxa-what-to-do-blurb-4 = Les gestionnaires de mots de passe tels que 1Password, LastPass, Dashlane et Bitwarden conservent vos mots de passe en toute sécurité et les remplissent dans les sites web pour vous. Utilisez un gestionnaire de mots de passe sur votre téléphone et votre ordinateur pour ne pas avoir à tous les retenir.
 fb-landing-headline = Vos informations ont-elles été compromises dans la fuite de données { $breachName } ?
