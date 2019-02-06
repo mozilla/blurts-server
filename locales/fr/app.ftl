@@ -71,7 +71,7 @@ scan-placeholder = Saisissez votre adresse électronique
 scan-privacy = Votre adresse électronique ne sera pas stockée.
 scan-submit = Vérifier votre adresse électronique
 scan-another-email = Analysez une autre adresse électronique
-scan-featuredbreach-label = Découvrez si votre compte <span class="bold">{ $FeaturedBreach }</span> a été compromis.
+scan-featuredbreach-label = Découvrez si votre compte <span class="bold">{ $featuredBreach }</span> a été compromis.
 sensitive-breach-email-required = Cette fuite de données contient des informations sensibles. La vérification de l’adresse électronique est requise.
 scan-error = L’adresse électronique doit être valide.
 signup-banner-headline = { -product-name-nowrap } détecte les menaces sur vos comptes en ligne.
