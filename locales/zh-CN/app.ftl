@@ -207,7 +207,7 @@ layout-social = 社交
 show-all = 全部显示
 fxa-signup-banner-headline = 监控针对您的在线帐户的威胁。
 fxa-signup-banner-blurb = 注册 { -brand-fxa }即可获取与您有关的新数据外泄事件的详细报告。
-fxa-landing-blurb = 看看黑客已经掌握了您哪些资料，并了解如何远离他们。
+fxa-landing-blurb = 看看黑客已经掌握了您哪些资料，并了解如何先发制人。
 fxa-scan-label = 看看您是否出现在数据外泄事件中。
 fxa-welcome-headline = 欢迎来到 { -product-name }。
 fxa-welcome-blurb = 设置完成。若 { $userEmail } 出现在数据外泄事件中，我们会通知您。
@@ -296,7 +296,7 @@ guest-found-breaches-blurb =
        *[other] 这些数据外泄事件泄露了以下个人信息。注册 { -brand-fxa }以获取您的完整报告，并在发生新的数据外泄事件时收到警报。
     }
 have-an-account = 已有账户？
-signup-banner-sensitive-blurb = 看看黑客已经掌握了您哪些资料，并了解如何远离他们。我们也会在此电子邮件地址出现于新的数据外泄事件时通知您。
+signup-banner-sensitive-blurb = 看看黑客已经掌握了您哪些资料，并了解如何先发制人。我们也会在此电子邮件地址出现于新的数据外泄事件时通知您。
 fxa-pwt-section-blurb = 密码可以保护账号中的所有个人信息。黑客会因一些不良的使用习惯而得益，例如在每个地方都使用相同的密码，或是使用常见的密码组合（还在使用 asdf1234 吗？）。这样的话只要一个账号被黑，他们就可以轻而易举地黑掉您多个账号。
 fxa-pwt-summary-2 = 简短单调的密码很容易被黑客猜中。至少使用两个单词及字母、数字和特殊字符的组合。
 fxa-pwt-summary-4 = 如 1Password、LastPass、Dashlane 和 Bitwarden 等密码管理器，可帮助您创建高强度的密码，安全地存储，并为您自动填写到网站上。
