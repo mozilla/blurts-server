@@ -198,3 +198,66 @@ fxa-landing-blurb =
     a dysgu sut i gadw un cam ar y blaen.
 fxa-scan-label = Gweld a ydych wedi ymddangos mewn tordata.
 fxa-welcome-headline = Croeso i { -product-name }.
+fxa-welcome-blurb = Rydych nawr yn barod i dderbyn rhybuddion os yw { $userEmail } yn ymddangos mewn tordata.
+fxa-scan-another-email = Eisiau gwirio e-bost arall?
+# Search Firefox Monitor
+fxa-scan-submit = Chwilio { -product-name }
+sign-up-to-check = Cofrestrwch am Wiriad
+sign-in = Mewngofnodi
+sign-out = Allgofnodi
+full-report-headline = Eich Adroddiad { -product-name }
+see-full-report = Gweld fy Adroddiad Llawn
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Rheoli { -brand-fxa }
+fxa-download-firefox-bar-blurb = Wedi'i gyflwyno i chi gan { -brand-name }. 2x yn gyflymach. Yn defnyddio 30% yn llai o gof na { -brand-Chrome }.
+fxa-download-firefox-bar-link = Llwytho i lawr nawr
+fxa-download-firefox-banner-blurb = Llwytho tudalen gwell a chynt, ac yn defnyddio llai o gof cyfrifiadurol.
+user-fb-compromised-headline = Ymddangosodd { $userEmail } yn y tordata { $breachName }.
+guest-fb-compromised-headline = Ymddangosodd yr e-bost hwn yn y tordata { $breachName }.
+user-zero-breaches-headline = Nid yw { $userEmail } wedi ymddangos mewn unrhyw dordata.
+guest-zero-breaches-headline = Nid yw#r e-bost yma wedi ymddangos mewn unrhyw dordata.
+user-scan-results-headline =
+    { $breachCount ->
+        [zero] Ymddangosodd { $userEmail } mewn 0 tordata.
+        [one] Ymddangosodd { $userEmail } mewn 1 tordata.
+        [two] Ymddangosodd { $userEmail } mewn { $breachCount } tordata.
+        [few] Ymddangosodd { $userEmail } mewn { $breachCount } tordata.
+        [many] Ymddangosodd { $userEmail } mewn { $breachCount } tordata.
+       *[other] Ymddangosodd { $userEmail } mewn { $breachCount } tordata.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [zero] Ymddangosodd yr e-bost hwn mewn 0 tordata.
+        [one] Ymddangosodd yr e-bost hwn mewn 1tordata.
+        [two] Ymddangosodd yr e-bost hwn mewn { $breachCount } tordata.
+        [few] Ymddangosodd yr e-bost hwn mewn { $breachCount } tordata.
+        [many] Ymddangosodd yr e-bost hwn mewn { $breachCount } tordata.
+       *[other] Ymddangosodd yr e-bost hwn mewn { $breachCount } tordata.
+    }
+user-no-breaches-blurb = Byddwn yn eich hysbysu os yw'r cyfeiriad e-bost hwn yn ymddangos mewn tordata newydd.
+guest-no-breaches-blurb =
+    I weld a yw'r e-bost hwn yn ymddangos mewn tordata sensitif, crëwch { -brand-fxa }.
+    Byddwn hefyd yn eich hysbysu os yw'r cyfeiriad hwn yn ymddangos mewn tordata newydd.
+user-one-breach-blurb = Mae'r tordata hwn wedi amlygu'r manylion personol canlynol.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [zero] Ymddangosodd eich e-bost hefyd mewn { $breachCount } tordata arall.
+        [one] Ymddangosodd eich e-bost hefyd mewn { $breachCount } tordata arall.
+        [two] Ymddangosodd eich e-bost hefyd mewn { $breachCount } tordata arall.
+        [few] Ymddangosodd eich e-bost hefyd mewn { $breachCount } tordata arall.
+        [many] Ymddangosodd eich e-bost hefyd mewn { $breachCount } tordata arall.
+       *[other] Ymddangosodd eich e-bost hefyd mewn { $breachCount } tordata arall.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [zero] Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall.
+        [one] Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall.
+        [two] Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall.
+        [few] Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall.
+        [many] Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall.
+       *[other] Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall.
+    }
+user-fb-compromised-single =
+    Amlygodd y tordata'r manylion personol canlynol. Os nad ydych eisoes wedi gwneud,
+    newidiwch eich cyfrineiriau.
+user-generic-fb-compromised-single = Amglygodd y tordata'r manylion personol canlyno.
