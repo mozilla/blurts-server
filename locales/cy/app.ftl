@@ -304,3 +304,23 @@ user-generic-fb-not-compromised-blurb =
        *[other] Nid oedd yr e-bost hwn yn y tordata { $breachName }, ond fe'i cafwyd mewn rhai eraill.
     }
 have-an-account = Oes gennych chi gyfrif yn barod?
+signup-banner-sensitive-blurb =
+    Darganfyddwch beth mae hacwyr eisoes yn ei wybod amdanoch chi, a dysgu sut i
+    aros un cam ar y blaen. Cewch wybod os fydd eich cyfrif yn ymddangos
+    mewn unrhyw dordata newydd.
+fxa-pwt-section-blurb =
+    Mae cyfrineiriau'n diogelu yr holl fanylion personol yn eich cyfrifon ar-lein. Mae hacwyr yn dibynnu ar arferion gwael, fel defnyddio'r un cyfrinair ym mhobman neu ddefnyddio
+    ymadroddion cyffredin (@p@ ssw0rd, ?) felly os mae nhw'n hacio un cyfrif, maen nhw
+    gall hacio lot.
+fxa-pwt-summary-2 =
+    Mae cyfrineiriau byr, un-gair yn hawdd i hacwyr eu dyfalu.
+    Defnyddiwch o leiaf ddau air a chyfuniad o lythrennau, digidau a nodau arbennig.
+fxa-pwt-summary-4 =
+    Mae rheolwyr cyfrineiriau fel 1Password, LastPass, Dashlane, a Bitwarden yn cadw eich
+    cyfrineiriau a'u llenwi i wefannau drosto chi. Mae nhw hefyd yn gallu eich helpu i greu cyfrineiriau cryf.
+fxa-pwt-summary-6 =
+    Mae tordata ar gynnydd. Os yw eich manylion personol yn ymddangos mewn tordata newydd, bydd 
+    { -product-name } yn anfon rhybudd i chi - fel y gallwch chi weithredu a diogelu'ch cyfrifon.
+fxa-what-to-do-blurb-1 =
+    Os nad oes modd i chi fewngofnodi, cysylltwch â'r wefan i ofyn sut i'w ddiweddaru.
+    Gweld cyfrif nad ydych chi'n ei adnabod? Gall fod eich data wedi cael ei werthu neu ei ailddosbarthu. Gall hyn hefyd fod am gyfrif rydych wedi'i anghofio roeddech wedi ei greu neu gwmni sydd wedi newid ei enw.
