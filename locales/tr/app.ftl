@@ -209,7 +209,50 @@ mozilla-security-blog = { -brand-Mozilla } Güvenlik Blogu
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Sosyal
 show-all = Tümünü göster
+fxa-signup-banner-headline = Hesaplarınıza yönelik tehditleri takip edin.
+fxa-signup-banner-blurb = { -brand-fxa } açarak ayrıntılı raporunuzu edinebilir ve gelecekte bir veri ihlali yaşandığında uyarı alabilirsiniz.
+fxa-landing-blurb = Hacker’ların hakkınızda neler bildiğini öğrenin, onların bir adım önünde kalın.
+fxa-scan-label = Verilerinizin çalınıp çalınmadığını kontrol edin.
+fxa-welcome-headline = { -product-name }’e hoş geldiniz.
+fxa-welcome-blurb = Bir veri ihlalinde { $userEmail } adresiyle karşılaşırsak sizi uyaracağız.
+fxa-scan-another-email = Başka bir adresi kontrol etmek ister misiniz?
+# Search Firefox Monitor
+fxa-scan-submit = { -product-name }’de ara
+sign-up-to-check = Kontrol etmek için kaydolun
 sign-in = Giriş yap
 sign-out = Çıkış
 full-report-headline = { -product-name } Raporunuz
+see-full-report = Tam raporu göster
+fxa-download-firefox-bar-blurb = { -brand-name }’un katkılarıyla… Eskisinden 2 kat hızlı, { -brand-Chrome }’dan %30 daha az bellek tüketiyor.
+fxa-download-firefox-bar-link = Hemen indir
+fxa-download-firefox-banner-blurb = Daha az bellek tüketmesine rağmen daha iyi, daha hızlı yüklenen sayfalar.
+user-fb-compromised-headline = { $userEmail } adresi { $breachName } veri ihlalinde yer alıyor.
+guest-fb-compromised-headline = Bu e-posta adresi { $breachName } veri ihlalinde yer alıyor.
+user-zero-breaches-headline = { $userEmail } adresi hiçbir veri ihlalinde yer almıyor.
+guest-zero-breaches-headline = Bu e-posta adresi hiçbir veri ihlalinde yer almıyor.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } adresi 1 veri ihlalinde yer alıyor.
+       *[other] { $userEmail } adresi { $breachCount } veri ihlalinde yer alıyor.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Bu e-posta adresi 1 veri ihlalinde yer alıyor.
+       *[other] Bu e-posta adresi { $breachCount } veri ihlalinde yer alıyor.
+    }
+user-no-breaches-blurb = Bu e-posta adresi yeni bir ihlalde karşımıza çıkarsa sizi uyaracağız.
+user-one-breach-blurb = Bu ihlal kapsamında aşağıdaki kişisel bilgiler ele geçirildi.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] E-posta adresiniz { $breachCount } ihlalde daha yer alıyor.
+       *[other] E-posta adresiniz { $breachCount } ihlalde daha yer alıyor.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Bu e-posta adresi { $breachCount } ihlalde daha yer alıyor.
+       *[other] Bu e-posta adresi { $breachCount } ihlalde daha yer alıyor.
+    }
+user-fb-compromised-single = Bu ihlal kapsamında aşağıdaki kişisel bilgiler ele geçirildi. Henüz parolanızı değiştirmediyseniz mutlaka değiştirin.
+user-generic-fb-compromised-single = Bu ihlal kapsamında aşağıdaki kişisel bilgiler ele geçirildi.
+guest-fb-compromised-single = Bu ihlal kapsamında aşağıdaki kişisel bilgiler ele geçirildi. Tam raporunuzu görmek ve yeni bir ihlal yaşandığında uyarılmak isterseniz { -brand-fxa } açabilirsiniz.
 have-an-account = Zaten hesabınız var mı?
