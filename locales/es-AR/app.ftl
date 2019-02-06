@@ -229,3 +229,12 @@ user-generic-fb-compromised-single = Esta violación expuso la siguiente informa
 guest-fb-compromised-single =
     Esta violación expuso la siguiente información personal. Registrate en { -brand-fxa }
     para obtener un informe completo y alertas sobre nuevas violaciones.
+guest-fb-compromised-blurb =
+    { $breachCount ->
+        [one]
+            Este correo electrónico también apareció en { $breachCount } otra violación. Registrate en
+            { -brand-fxa } para obtener un informe completo y alertas sobre nuevas violaciones.
+       *[other]
+            Este correo electrónico también apareció en { $breachCount } otras violaciones. Registrate 
+            { -brand-fxa } para obtener un informe completo y alertas sobre nuevas violaciones .
+    }
