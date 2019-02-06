@@ -55,7 +55,7 @@ report-pwt-summary-4 =
     Serviços como 1Password, LastPass, Dashlane e Bitwarden geram palavras-passe fortes, armazenam-nas com segurança,
     e preenchem-nas em websites para que não precise de se lembrar de cada uma delas.
 # A link to legal information about mozilla products.
-legal = Informações legais
+legal = Informação legal
 # Share Firefox Monitor by email subject line
 share-by-email-subject = Veja se fez parte de uma brecha de dados.
 # Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
