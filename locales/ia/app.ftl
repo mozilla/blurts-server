@@ -200,9 +200,11 @@ share-twitter = Le major parte del personas ha circa 100 contos online. Ha essit
 share-facebook-headline = Discoperi si tu ha essite parte de un violation de datos
 share-facebook-blurb = Ha tu contos online essite exponite a un violation de datos?
 og-site-description = Discoperi si tu ha essite parte de un violation de datos con { -product-name }. Registra te pro alertas re futur violationes e obtener suggestiones pro mantener tu contos secur.
+mozilla-security-blog = Blog re le securitate de { -brand-Mozilla }
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Social
 show-all = Monstrar toto
+fxa-signup-banner-headline = Controla attentemente le attaccos a tu contos online.
 fxa-welcome-headline = Benvenite a { -product-name }.
 sign-in = Authentica te
 sign-out = Disconnexion
