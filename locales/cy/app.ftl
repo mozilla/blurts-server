@@ -104,12 +104,12 @@ no-breaches =
     Tanysgrifiwch i { -product-name-nowrap } am adroddiad llawn, rhybuddion pan fo tor-ddata newydd yn digwydd, ac awgrymiadau ar ddiogelu eich cyfrineiriau.
 featured-breach-results =
     { $breachCount ->
-        [zero] Mae eich cyfrif yn ymddangos yn tor-ddata <span class="bold">{ $featuredBreach }</span>, ond nid yw'n ymddangos mewn unrhyw achosion o dor-ddata eraill.
-        [one] Mae eich cyfrif yn ymddangos yn tor-ddata <span class="bold">{ $featuredBreach }</span>, yn ogystal ag un tor-data arall.
-        [two] Mae eich cyfrif yn ymddangos yn tor-ddata <span class="bold">{ $featuredBreach }</span>, yn ogystal a { $breachCount } tor-data arall.
-        [few] Mae eich cyfrif yn ymddangos yn tor-ddata <span class="bold">{ $featuredBreach }</span>, yn ogystal â { $breachCount } tor-data arall.
-        [many] Mae eich cyfrif yn ymddangos yn tor-ddata <span class="bold">{ $featuredBreach }</span>, yn ogystal â { $breachCount } tor-data arall.
-       *[other] Mae eich cyfrif yn ymddangos yn tor-ddata <span class="bold">{ $featuredBreach }</span>, yn ogystal â { $breachCount } tor-data arall.
+        [zero] Mae eich cyfrif yn ymddangos yn nhor-data <span class="bold">{ $featuredBreach }</span>, ond nid yw'n ymddangos mewn unrhyw achosion o dor-ddata eraill.
+        [one] Mae eich cyfrif yn ymddangos yn nhor-data <span class="bold">{ $featuredBreach }</span>, yn ogystal ag un tor-data arall.
+        [two] Mae eich cyfrif yn ymddangos yn nhor-data <span class="bold">{ $featuredBreach }</span>, yn ogystal a { $breachCount } tor-data arall.
+        [few] Mae eich cyfrif yn ymddangos yn nhor-data <span class="bold">{ $featuredBreach }</span>, yn ogystal â { $breachCount } tor-data arall.
+        [many] Mae eich cyfrif yn ymddangos yn nhor-data <span class="bold">{ $featuredBreach }</span>, yn ogystal â { $breachCount } tor-data arall.
+       *[other] Mae eich cyfrif yn ymddangos yn nhor-data <span class="bold">{ $featuredBreach }</span>, yn ogystal â { $breachCount } tor-data arall.
     }
 featured-breach-not-compromised =
     { $breachCount ->
@@ -130,7 +130,7 @@ scan-results =
        *[other] Ymddangosodd cyfrifon sy'n gysylltiedig â'ch cyfeiriad e-bost yn y { $breachCount } tor-data canlynol.
     }
 show-more-breaches = Dangos Rhagor
-what-to-do-headline = Beth i'w Wneud pan mae eich Manylion wedi'i Amlygu mewn Tor-data
+what-to-do-headline = Beth i'w wneud pan mae eich manylion wedi'i amlygu mewn tor-data
 what-to-do-subhead-1 = Newid eich cyfrineiriau, hyd yn oed ar gyfer hen gyfrifon
 what-to-do-blurb-1 = Os na allwch chi fewngofnodi, cysylltwch â'r wefan i ofyn sut y gallwch chi ei gael yn ôl  neu gau'r cyfrif. Gweld cyfrif nad ydych yn ei adnabod? Efallai bod y wefan wedi newid enw neu fod rhywun wedi creu cyfrif ar eich rhan.
 what-to-do-subhead-2 = Os ydych yn ailddefnyddio cyfrinair hysbys, mae'n amser ei newid
@@ -153,7 +153,7 @@ unsub-blurb = Bydd hyn yn dileu'ch e-bost o'r rhestr { -product-name-nowrap } ac
 unsub-button = Dad-danysgrifio
 unsub-survey-headline = Nid ydych yn tanysgrifio bellach.
 unsub-survey-blurb = Mae eich e-bost wedi'i ddad-danysgrifio { -product-name-nowrap }. Diolch am ddefnyddio'r gwasanaeth hwn. A wnewch chi gymryd munud i ateb un cwestiwn am eich profiad?
-unsub-survey-form-label = Pam ydych chin dad-danysgrifio rhag rybuddion { -product-name-nowrap }?
+unsub-survey-form-label = Pam ydych chi'n dad-danysgrifio rhag rybuddion { -product-name-nowrap }?
 unsub-reason-1 = Rwy'n credu nad yw rhybuddion yn gwneud fy data yn fwy diogel
 unsub-reason-2 = Rwy'n cael gormod o negeseuon e-bost gan { -product-name-nowrap }
 unsub-reason-3 = Nid yw'r gwasanaeth yn werthfawr i mi
@@ -183,7 +183,7 @@ confirmation-blurb = Gall tor-data effeithio ar unrhyw un. Dwedwch wrth eich ffr
 share-email = E-bost
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Arall
-share-twitter = Mae gan y rhan fwyaf o bobl tua 100 o gyfrifon ar-lein. A oes unrhyw un o'ch rhai chi wedi dioddef tor-data? Dewch i weld.
+share-twitter = Mae gan y rhan fwyaf o bobl tua 100 o gyfrifon ar-lein. A oes unrhyw un o'ch rhai chi wedi dioddef tor-data? Dewch i ni gael gweld.
 share-facebook-headline = Dewch i weld a ydych chi wedi bod yn rhan o dor-data
 share-facebook-blurb = A yw eich cyfrifon ar-lein wedi bod yn agored i dor-data?
 og-site-description = Dewch i weld a ydych chi wedi bod yn rhan o dor-data gyda { -product-name }. Cofrestrwch am rybuddion am dor-data'r dyfodol a chael awgrymiadau ar sut i gadw'ch cyfrifon yn ddiogel.
