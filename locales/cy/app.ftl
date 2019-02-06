@@ -261,3 +261,45 @@ user-fb-compromised-single =
     Amlygodd y tordata'r manylion personol canlynol. Os nad ydych eisoes wedi gwneud,
     newidiwch eich cyfrineiriau.
 user-generic-fb-compromised-single = Amglygodd y tordata'r manylion personol canlyno.
+guest-fb-compromised-single =
+    Amlygodd y tordata'r manylion personol canlynol. Cofrestrwch am { -brand-fxa }
+    i gael eich adroddiad llawn a rhybuddion am dordata newydd.
+guest-fb-compromised-blurb =
+    { $breachCount ->
+        [zero]
+            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall. Cofrestrwch am
+            { -brand-fxa } i gael eich adroddiad llawn a rhybuddion am dordata newydd.
+        [one]
+            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall. Cofrestrwch am
+            { -brand-fxa } i gael eich adroddiad llawn a rhybuddion am dordata newydd.
+        [two]
+            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall. Cofrestrwch am
+            { -brand-fxa } i gael eich adroddiad llawn a rhybuddion am dordata newydd.
+        [few]
+            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall. Cofrestrwch am
+            { -brand-fxa } i gael eich adroddiad llawn a rhybuddion am dordata newydd.
+        [many]
+            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall. Cofrestrwch am
+            { -brand-fxa } i gael eich adroddiad llawn a rhybuddion am dordata newydd.
+       *[other]
+            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall. Cofrestrwch am
+            { -brand-fxa } i gael eich adroddiad llawn a rhybuddion am dordata newydd.
+    }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [zero] Nid oeddech ar dordata { $breachName }, ond rydym wedi canfod y cyfeiriad e-bost mewn un arall.
+        [one] Nid oeddech ar dordata { $breachName }, ond rydym wedi canfod y cyfeiriad e-bost mewn rhai eraill.
+        [two] Nid oeddech ar dordata { $breachName }, ond rydym wedi canfod y cyfeiriad e-bost mewn rhai eraill.
+        [few] Nid oeddech ar dordata { $breachName }, ond rydym wedi canfod y cyfeiriad e-bost mewn rhai eraill.
+        [many] Nid oeddech ar dordata { $breachName }, ond rydym wedi canfod y cyfeiriad e-bost mewn rhai eraill.
+       *[other] Nid oeddech ar dordata { $breachName }, ond rydym wedi canfod y cyfeiriad e-bost mewn rhai eraill.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [zero] Nid oedd yr e-bost hwn yn y tordata { $breachName }.
+        [one] Nid oedd yr e-bost hwn yn y tordata { $breachName }, ond fe'i cafwyd mewn 1 arall.
+        [two] Nid oedd yr e-bost hwn yn y tordata { $breachName }, ond fe'i cafwyd mewn rhai eraill.
+        [few] Nid oedd yr e-bost hwn yn y tordata { $breachName }, ond fe'i cafwyd mewn rhai eraill.
+        [many] Nid oedd yr e-bost hwn yn y tordata { $breachName }, ond fe'i cafwyd mewn rhai eraill.
+       *[other] Nid oedd yr e-bost hwn yn y tordata { $breachName }, ond fe'i cafwyd mewn rhai eraill.
+    }
