@@ -303,3 +303,4 @@ user-generic-fb-not-compromised-blurb =
         [many] Nid oedd yr e-bost hwn yn y tordata { $breachName }, ond fe'i cafwyd mewn rhai eraill.
        *[other] Nid oedd yr e-bost hwn yn y tordata { $breachName }, ond fe'i cafwyd mewn rhai eraill.
     }
+have-an-account = Oes gennych chi gyfrif yn barod?
