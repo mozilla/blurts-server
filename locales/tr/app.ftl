@@ -223,6 +223,8 @@ sign-in = Giriş yap
 sign-out = Çıkış
 full-report-headline = { -product-name } Raporunuz
 see-full-report = Tam raporu göster
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = { -brand-fxa }mı yönet
 fxa-download-firefox-bar-blurb = { -brand-name }’un katkılarıyla… Eskisinden 2 kat hızlı, { -brand-Chrome }’dan %30 daha az bellek tüketiyor.
 fxa-download-firefox-bar-link = Hemen indir
 fxa-download-firefox-banner-blurb = Daha az bellek tüketmesine rağmen daha iyi, daha hızlı yüklenen sayfalar.
@@ -255,4 +257,13 @@ user-generic-fb-compromised-blurb =
 user-fb-compromised-single = Bu ihlal kapsamında aşağıdaki kişisel bilgiler ele geçirildi. Henüz parolanızı değiştirmediyseniz mutlaka değiştirin.
 user-generic-fb-compromised-single = Bu ihlal kapsamında aşağıdaki kişisel bilgiler ele geçirildi.
 guest-fb-compromised-single = Bu ihlal kapsamında aşağıdaki kişisel bilgiler ele geçirildi. Tam raporunuzu görmek ve yeni bir ihlal yaşandığında uyarılmak isterseniz { -brand-fxa } açabilirsiniz.
+guest-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Bu e-posta adresi { $breachCount } ihlalde daha yer alıyor. Tam raporunuzu görmek ve yeni bir ihlal yaşandığında uyarılmak isterseniz { -brand-fxa } açabilirsiniz.
+       *[other] Bu e-posta adresi { $breachCount } ihlalde daha yer alıyor. Tam raporunuzu görmek ve yeni bir ihlal yaşandığında uyarılmak isterseniz { -brand-fxa } açabilirsiniz.
+    }
 have-an-account = Zaten hesabınız var mı?
+fxa-what-to-do-blurb-3 =
+    Çoğu veri ihlalinde yalnızca e-postalar ve parolalar ele geçirilir ama bazı ihlaller hassas finansal bilgilerinizi de içerebilir. 
+    Banka hesabınız veya kredi kartı numaralarınız ele geçirilmişse bankanızı olası sahtekârlıklara karşı uyarın. 
+    Kredi kartı hesap özetlerinizde tanıdık gelmeyen harcamalara karşı tetikte olun.
