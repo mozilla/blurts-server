@@ -15,7 +15,7 @@ layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Cefnogaeth
 # Link that takes the user to a blog post on blog.mozilla.org about the alerts
-about-firefox-alerts = Ynghylch rhybuddion Firefox
+about-firefox-alerts = Ynghylch Rhybuddion Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Rhoi Adborth
 terms-and-privacy = Telerau a Phreifatrwydd
@@ -46,21 +46,21 @@ user-unsubscribed-title = { -product-name } : Wedi Dad-danyscrifio
 ## Password Tips
 
 pwt-section-headline = Cyfrineiriau Cryfach = Gwell Diogelwch
-pwt-section-subhead = Mae eich manylion preifat ond mor ddiogel â'ch cyfrineiriau.
+pwt-section-subhead = Cryfder eich cyfrineiriau sy'n diogelu eich manylion preifat.
 pwt-section-blurb =
-    Mae eich cyfrineiriau'n gwarchod mwy na'ch cyfrifon. Maen nhw'n diogelu pob darn o wybodaeth bersonol sy'n bod o'u mewn.
-    Ac mae hacwyr yn dibynnu ar arferion drwg, fel defnyddio'r un cyfrinair ym mhobman neu ddefnyddio ymadroddion cyffredin (p@ssw0rd??) felly,
-    os byddan nhw'n hacio un cyfrif, mae modd iddyn nhw hacio llwyth. Dyma sut i amddiffyn eich cyfrifon yn well.
+    Mae eich cyfrineiriau'n gwarchod mwy na'ch cyfrifon. Maen nhw'n diogelu pob darn o fanylion personol sy'n bod o'u mewn.
+    Mae hacwyr yn dibynnu ar arferion gwael, fel defnyddio'r un cyfrinair ym mhobman neu ddefnyddio ymadroddion cyffredin (p@ssw0rd??) felly,
+    os byddan nhw'n hacio un cyfrif, mae modd iddyn nhw hacio llwythi. Dyma sut mae amddiffyn eich cyfrifon yn well.
 pwt-headline-1 = Defnyddio cyfrinair gwahanol ar gyfer pob cyfrif
-pwt-summary-1 = Mae ailddefnyddio'r un cyfrinair ym mhobman yn agor y drws lled y pen ar gyfer dwyn hunaniaeth. Gall unrhyw un sydd â'r cyfrinair hwnnw fewngofnodi i'ch holl gyfrifon.
+pwt-summary-1 = Mae ail ddefnyddio'r un cyfrinair ym mhobman yn agor y drws lled y pen ar gyfer dwyn hunaniaeth. Gall unrhyw un sydd â'r cyfrinair hwnnw fewngofnodi i'ch holl gyfrifon.
 pwt-headline-2 = Creu cyfrineiriau cryf, anodd eu dyfalu
-pwt-summary-2 = Mae hacwyr yn defnyddio miloedd o gyfrineiriau cyffredin i geisio dyfalu eich un chi. Yr hiraf a mwyaf annisgwyl ydyw, yr anoddaf fydd i'w ddyfalu.
-pwt-headline-3 = Rhaid trin cwestiynnau diogelwch fel cyfrineiriau ychwanegol
-pwt-summary-3 = Nid yw gwefannau yn gwirio bod eich atebion yn gywir, dim ond eu bod yn cyfateb bob tro. Crewch atebion hir, ar hap a'u storio yn rhywle diogel.
+pwt-summary-2 = Mae hacwyr yn defnyddio miloedd o gyfrineiriau cyffredin i geisio dyfalu'ch un chi. Yr hiraf a mwyaf annisgwyl ydyw, yr anoddaf fydd i'w ddyfalu.
+pwt-headline-3 = Rhaid trin cwestiynau diogelwch fel cyfrineiriau ychwanegol
+pwt-summary-3 = Nid yw gwefannau yn gwirio bod eich atebion yn gywir, dim ond eu bod yn cyfateb bob tro. Crëwch atebion hir, ar hap a'u storio mewn man diogel.
 pwt-headline-4 = Helpu eich hun i gofio eich cyfrineiriau
-pwt-summary-4 = Mae rheolwyr cyfrinair fel 1Password, LastPass, Dashlane, a Bitwarden yn creu cyfrineiriau cryf, unigryw. Maen nhw hefyd yn storio cyfrineiriau'n ddiogel a'u llanw ar wefannau i chi
+pwt-summary-4 = Mae rheolwyr cyfrinair fel 1Password, LastPass, Dashlane, a Bitwarden yn creu cyfrineiriau cryf, unigryw. Maen nhw hefyd yn cadw cyfrineiriau'n ddiogel a'u llanw ar wefannau i chi
 pwt-headline-5 = Ychwanegu diogelwch pellach gyda dilysu dau gam
-pwt-summary-5 = Mae dilysu dau gam yn gofyn am ddarn ychwanegol o wybodaeth (fel cod un-amser a anfonir trwy neges destun) i fewngofnodi i'ch cyfrif. Hyd yn oed os oes gan rywun eich cyfrinair, does dim modd iddyn nhw gael mynediad.
+pwt-summary-5 = Mae dilysu dau gam yn gofyn am ddarn ychwanegol o wybodaeth (fel cod un-tro a anfonir trwy neges destun) i fewngofnodi i'ch cyfrif. Hyd yn oed os oes gan rywun eich cyfrinair, does dim modd iddyn nhw gael mynediad.
 pwt-headline-6 = Cofrestru ar gyfer rhybuddion { -product-name-nowrap }
 pwt-summary-6 = Mae tor-data gwefanau ar gynnydd. Cyn gynted ag y bydd tor-data newydd yn cael ei ychwanegu at ein cronfa ddata, mae { -product-name-nowrap } yn anfon rhybudd i chi - fel y gallwch chi weithredu a diogelu'ch cyfrif.
 landing-headline = Mae eich hawl i fod yn ddiogel rhag hacwyr yn cychwyn yma.
@@ -307,10 +307,10 @@ have-an-account = Oes gennych chi gyfrif yn barod?
 signup-banner-sensitive-blurb =
     Darganfyddwch beth mae hacwyr eisoes yn ei wybod amdanoch chi, a dysgu sut i
     aros un cam ar y blaen. Cewch wybod os fydd eich cyfrif yn ymddangos
-    mewn unrhyw dordata newydd.
+    mewn unrhyw dor-data newydd.
 fxa-pwt-section-blurb =
     Mae cyfrineiriau'n diogelu yr holl fanylion personol yn eich cyfrifon ar-lein. Mae hacwyr yn dibynnu ar arferion gwael, fel defnyddio'r un cyfrinair ym mhobman neu ddefnyddio
-    ymadroddion cyffredin (@p@ ssw0rd, ?) felly os mae nhw'n hacio un cyfrif, maen nhw
+    ymadroddion cyffredin (@p@ssw0rd, ?) felly os mae nhw'n hacio un cyfrif, maen nhw
     gall hacio lot.
 fxa-pwt-summary-2 =
     Mae cyfrineiriau byr, un-gair yn hawdd i hacwyr eu dyfalu.
@@ -319,8 +319,17 @@ fxa-pwt-summary-4 =
     Mae rheolwyr cyfrineiriau fel 1Password, LastPass, Dashlane, a Bitwarden yn cadw eich
     cyfrineiriau a'u llenwi i wefannau drosto chi. Mae nhw hefyd yn gallu eich helpu i greu cyfrineiriau cryf.
 fxa-pwt-summary-6 =
-    Mae tordata ar gynnydd. Os yw eich manylion personol yn ymddangos mewn tordata newydd, bydd 
+    Mae tordata ar gynnydd. Os yw eich manylion personol yn ymddangos mewn tor-data newydd, bydd 
     { -product-name } yn anfon rhybudd i chi - fel y gallwch chi weithredu a diogelu'ch cyfrifon.
 fxa-what-to-do-blurb-1 =
     Os nad oes modd i chi fewngofnodi, cysylltwch â'r wefan i ofyn sut i'w ddiweddaru.
     Gweld cyfrif nad ydych chi'n ei adnabod? Gall fod eich data wedi cael ei werthu neu ei ailddosbarthu. Gall hyn hefyd fod am gyfrif rydych wedi'i anghofio roeddech wedi ei greu neu gwmni sydd wedi newid ei enw.
+fxa-what-to-do-subhead-2 = Peidiwch ddefnyddio'r cyfrinair hysbys a'i newid lle bynnag rydych wedi ei ddefnyddio.
+fxa-what-to-do-blurb-2 = Gall hacwyr geisio ailddefnyddio'ch cyfrinair hysbys i fynd i mewn i gyfrifon ac e-byst eraill. Crëwch gyfrinair gwahanol ar gyfer pob gwefan, yn enwedig ar gyfer eich cyfrif banc, e-bost a gwefannau eraill lle rydych yn cadw manylion personol.
+fxa-what-to-do-blurb-3 = Mae'r rhan fwyaf o achosion o dor-data yn datgelu e-byst a chyfrineiriau yn unig ond mae rhai yn cynnwys manylion ariannol sensitif. Os cafodd eich cyfrif banc neu rifau cerdyn credyd eu cynnwys mewn tor-data, rhowch wybod i'ch banc am dwyll posibl, a monitro datganiadau am daliadau nad ydych yn gyfarwydd â nhw.
+fxa-what-to-do-subhead-4 = Derbyn cymorth i gofio'ch cyfrineiriau a'u cadw'n ddiogel.
+fxa-what-to-do-blurb-4 =
+    Mae rheolwyr cyfrineiriau fel 1Password, LastPass, Dashlane, a Bitwarden yn cadw eich
+    cyfrineiriau'n ddiogel a'u cyflwyno i wefannau ar eich cyfer. Defnyddiwch reolwr cyfrinair
+    ar eich ffôn a'ch cyfrifiadur fel does dim rhaid i chi gofio nhw i gyd.
+fb-landing-headline = A gafodd eich manylion eu hamlygu yn nhor-data { $breachName }?
