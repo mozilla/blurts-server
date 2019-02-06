@@ -224,3 +224,8 @@ user-generic-fb-compromised-blurb =
         [one] Este correo electrónico también apareció en { $breachCount } otra violación.
        *[other] Este correo electrónico también apareció en { $breachCount } otras violaciones.
     }
+user-fb-compromised-single = Esta violación expuso la siguiente información personal. Si todavía no cambiaste las contraseñas, hacelo ya.
+user-generic-fb-compromised-single = Esta violación expuso la siguiente información personal.
+guest-fb-compromised-single =
+    Esta violación expuso la siguiente información personal. Registrate en { -brand-fxa }
+    para obtener un informe completo y alertas sobre nuevas violaciones.
