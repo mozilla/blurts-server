@@ -215,7 +215,7 @@ fxa-download-firefox-banner-blurb = Llwytho tudalen gwell a chynt, ac yn defnydd
 user-fb-compromised-headline = Ymddangosodd { $userEmail } yn y tor-data { $breachName }.
 guest-fb-compromised-headline = Ymddangosodd yr e-bost hwn yn y tor-data { $breachName }.
 user-zero-breaches-headline = Nid yw { $userEmail } wedi ymddangos mewn unrhyw dor-data.
-guest-zero-breaches-headline = Nid yw#r e-bost yma wedi ymddangos mewn unrhyw dor-data.
+guest-zero-breaches-headline = Nid yw'r e-bost yma wedi ymddangos mewn unrhyw dor-data.
 user-scan-results-headline =
     { $breachCount ->
         [zero] Ymddangosodd { $userEmail } mewn 0 tor-data.
@@ -228,7 +228,7 @@ user-scan-results-headline =
 guest-scan-results-headline =
     { $breachCount ->
         [zero] Ymddangosodd yr e-bost hwn mewn 0 tordata.
-        [one] Ymddangosodd yr e-bost hwn mewn 1tordata.
+        [one] Ymddangosodd yr e-bost hwn mewn 1 tordata.
         [two] Ymddangosodd yr e-bost hwn mewn { $breachCount } tor-data.
         [few] Ymddangosodd yr e-bost hwn mewn { $breachCount } tor-data.
         [many] Ymddangosodd yr e-bost hwn mewn { $breachCount } tor-data.
