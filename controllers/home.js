@@ -59,6 +59,7 @@ async function home(req, res) {
 
   res.render("monitor", {
     title: req.fluentFormat("home-title"),
+    csrfToken: req.csrfToken(),
     featuredBreach: featuredBreach,
     scanFeaturedBreach,
     foundBreaches,
