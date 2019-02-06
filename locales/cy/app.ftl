@@ -192,7 +192,7 @@ mozilla-security-blog = Blog Diogelwch { -brand-Mozilla }
 layout-social = Cymdeithasol
 show-all = Dangos y cyfan
 fxa-signup-banner-headline = Monitro bygythiadau i'ch cyfrifon ar-lein.
-fxa-signup-banner-blurb = Cofrestrwch i gael { -brand-fxa } a derbyn eich adroddiad manwl a rhybuddion am dor-data newydd.
+fxa-signup-banner-blurb = Cofrestru i gael { -brand-fxa } a derbyn eich adroddiad manwl a rhybuddion am dor-data newydd.
 fxa-landing-blurb =
     Darganfod beth mae hacwyr eisoes yn ei wybod amdanoch chi,
     a dysgu sut i gadw un cam ar y blaen.
@@ -315,9 +315,9 @@ signup-banner-sensitive-blurb =
     aros un cam ar y blaen. Cewch wybod os fydd eich cyfrif yn ymddangos
     mewn unrhyw dor-data newydd.
 fxa-pwt-section-blurb =
-    Cyfrineiriau sy'n diogelu yr holl fanylion personol yn eich cyfrifon ar-lein. Mae hacwyr yn dibynnu ar arferion gwael, fel defnyddio'r un cyfrinair ym mhobman neu ddefnyddio
+    Cyfrineiriau sy'n diogelu'r holl fanylion personol yn eich cyfrifon ar-lein. Mae hacwyr yn dibynnu ar arferion gwael, fel defnyddio'r un cyfrinair ym mhobman neu ddefnyddio
     ymadroddion cyffredin (@p@ssw0rd, ?) felly os mae nhw'n hacio un cyfrif, maen nhw
-    gall hacio lot.
+    gall hacio llawer.
 fxa-pwt-summary-2 =
     Mae cyfrineiriau byr, un-gair yn hawdd i hacwyr eu dyfalu.
     Defnyddiwch o leiaf ddau air a chyfuniad o lythrennau, digidau a nodau arbennig.
@@ -330,7 +330,7 @@ fxa-pwt-summary-6 =
 fxa-what-to-do-blurb-1 =
     Os nad oes modd i chi fewngofnodi, cysylltwch â'r wefan i ofyn sut i'w ddiweddaru.
     Gweld cyfrif nad ydych chi'n ei adnabod? Gall fod eich data wedi cael ei werthu neu ei ailddosbarthu. Gall hyn hefyd fod am gyfrif rydych wedi'i anghofio roeddech wedi ei greu neu gwmni sydd wedi newid ei enw.
-fxa-what-to-do-subhead-2 = Peidiwch ddefnyddio'r cyfrinair hysbys a'i newid lle bynnag rydych wedi ei ddefnyddio.
+fxa-what-to-do-subhead-2 = Peidio ddefnyddio'r cyfrinair hysbys a'i newid lle bynnag rydych wedi ei ddefnyddio.
 fxa-what-to-do-blurb-2 = Gall hacwyr geisio ailddefnyddio'ch cyfrinair hysbys i fynd i mewn i gyfrifon ac e-byst eraill. Crëwch gyfrinair gwahanol ar gyfer pob gwefan, yn enwedig ar gyfer eich cyfrif banc, e-bost a gwefannau eraill lle rydych yn cadw manylion personol.
 fxa-what-to-do-blurb-3 = Mae'r rhan fwyaf o achosion o dor-data yn datgelu e-byst a chyfrineiriau yn unig ond mae rhai yn cynnwys manylion ariannol sensitif. Os cafodd eich cyfrif banc neu rifau cerdyn credyd eu cynnwys mewn tor-data, rhowch wybod i'ch banc am dwyll posibl, a monitro datganiadau am daliadau nad ydych yn gyfarwydd â nhw.
 fxa-what-to-do-subhead-4 = Derbyn cymorth i gofio'ch cyfrineiriau a'u cadw'n ddiogel.
