@@ -65,13 +65,13 @@ pwt-headline-6 = Cofrestru ar gyfer rhybuddion { -product-name-nowrap }
 pwt-summary-6 = Mae tor-data gwefanau ar gynnydd. Cyn gynted ag y bydd tor-data newydd yn cael ei ychwanegu at ein cronfa ddata, mae { -product-name-nowrap } yn anfon rhybudd i chi - fel y gallwch chi weithredu a diogelu'ch cyfrif.
 landing-headline = Mae eich hawl i fod yn ddiogel rhag hacwyr yn cychwyn yma.
 landing-blurb = Mae { -product-name-nowrap } yn darparu offer i gadw'ch manylion personol yn ddiogel. Dewch i weld beth mae hacwyr eisoes yn ei wybod amdanoch chi, a dysgu sut i gadw un cam ar y blaen.
-scan-label = Gweld os ydych wedi bod yn rhan o dor-data.
+scan-label = Gweld os ydych chi wedi bod yn rhan o dor-data.
 scan-placeholder = Rhowch eich Cyfeiriad E-bost
 scan-privacy = Ni fydd eich e-bost yn cael ei gadw.
 scan-submit = Chwilio am eich E-bost
 scan-another-email = Sganio Cyfeiriad E-bost Arall
 scan-featuredbreach-label = Gweld os yw eich cyfrif <span class="bold"> { $featuredBreach } </span> wedi ei gyfaddawdu.
-sensitive-breach-email-required = Mae'r to-data'n cynnwys manylion sensitif. Mae angen dilysu'r e-bost.
+sensitive-breach-email-required = Mae'r tor-data'n cynnwys manylion sensitif. Mae angen dilysu'r e-bost.
 scan-error = Rhaid ei fod yn e-bost dilys.
 signup-banner-headline = Mae { -product-name-nowrap } yn canfod bygythiadau i'ch cyfrifon ar-lein.
 signup-banner-blurb =
@@ -79,21 +79,21 @@ signup-banner-blurb =
     Byddwn hefyd yn eich hysbysu os bydd eich cyfrifon yn ymddangos mewn achosion o dor-data gwefannau newydd.
 download-firefox-bar-blurb = Mae { -product-name-nowrap } yn cael ei gyflwyno i chi gan y <span class="nowrap">{ -brand-name } newydd sbon</span>.
 download-firefox-bar-link = Llwytho { -brand-name } i lawr nawr
-download-firefox-banner-blurb = Cymryd reolaeth o'ch porwr
+download-firefox-banner-blurb = Bod â rheolaeth o'ch porwr
 download-firefox-banner-button = Llwytho { -brand-name } i Lawr
 signup-modal-headline = Cofrestru ar gyfer { -product-name-nowrap }
 signup-modal-blurb = Cofrestrwch am eich adroddiad llawn, rhybuddion pan fo toriadau newydd yn digwydd, ac awgrymiadau diogelwch o { -product-name-nowrap }.
 signup-modal-close = Cau
 get-your-report = Derbyn eich Adroddiad
-signup-modal-verify-headline = Dilysu eich tanysgrifiad
-signup-modal-verify-blurb = Rydym wedi anfon cyswllt dilysu at <span id="submitted-email" class="medium"></span> .
+signup-modal-verify-headline = Dilysu eich Tanysgrifiad
+signup-modal-verify-blurb = Rydym wedi anfon dolen dilysu at <span id="submitted-email" class="medium"></span> .
 signup-modal-verify-expiration = Daw'r ddolen hon i ben ymhen 24 awr.
-signup-modal-verify-resend = Ddim yn y blwch derbyn na'r sbam? Ailanfon
+signup-modal-verify-resend = Ddim yn y blwch derbyn na'r sbam? Ail anfon.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Anfonwyd!
 signup-with-fxa = Cofrestrwch gyda Chyfrif { -brand-name }
 form-signup-placeholder = Rhowch eich e-bost
-form-signup-checkbox = Cael y diweddaraf o { -brand-Mozilla } a { -brand-name }.
+form-signup-checkbox = Derbyn y diweddaraf gan { -brand-Mozilla } a { -brand-name }.
 sign-up = Ymuno
 form-signup-error = Rhaid ei fod yn e-bost dilys
 no-breaches-headline = Go lew, hyd yma.
@@ -302,6 +302,12 @@ user-generic-fb-not-compromised-blurb =
         [few] Nid oedd yr e-bost hwn yn y tordata { $breachName }, ond fe'i cafwyd mewn rhai eraill.
         [many] Nid oedd yr e-bost hwn yn y tordata { $breachName }, ond fe'i cafwyd mewn rhai eraill.
        *[other] Nid oedd yr e-bost hwn yn y tordata { $breachName }, ond fe'i cafwyd mewn rhai eraill.
+    }
+guest-fb-not-compromised-blurb =
+    { $breachCount ->
+       *[other]
+            { -brand-fxa }Nid oedd yr e-bost hwn yn nhordata { $breachName }, ond fe'i welwyd mewn un arall.
+            Cofrestrwch am { -brand-fxa } i gael eich adroddiad llawn a rhybuddion am unrhyw dordata newydd.
     }
 have-an-account = Oes gennych chi gyfrif yn barod?
 signup-banner-sensitive-blurb =
