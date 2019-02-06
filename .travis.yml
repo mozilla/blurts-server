@@ -1,27 +1,41 @@
-language: node_js
-
-dist: trusty
-
-node_js:
-  - "node"
-  - "lts/*"
-
+dist: xenial
 services:
   - postgresql
-
 addons:
   postgresql: 9.6
 
-env:
-  - NODE_ENV=tests
+matrix:
+    include:
+        - name: "lint"
+          language: node_js
+          node_js:
+              - "node"
+              - "lts/*"
+          script: "npm-run-all lint:*"
+        - name: "tests"
+          language: node_js
+          node_js:
+              - "node"
+              - "lts/*"
+          env:
+              - NODE_ENV=tests
+          install:
+              - npm install
+          before_script:
+              - cp .env-dist .env
+              - createdb test-blurts
+              - npm install npm@latest -g
 
-install:
-  - sudo pip install compare-locales
-  - npm install
+        - name: "l10n lint"
+          language: python
+          install:
+              - sudo pip install compare-locales
+          script:
+              - compare-locales --validate l10n.toml .
+              - compare-locales l10n.toml . `ls locales`
 
-before_script:
-  - compare-locales --validate l10n.toml .
-  - compare-locales l10n.toml . `ls locales`
-  - cp .env-dist .env
-  - createdb test-blurts
-  - npm install npm@latest -g
+
+
+
+
+
