@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Cyfrif Firefox
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Cefnogaeth
@@ -185,3 +187,14 @@ share-twitter = Mae gan y rhan fwyaf o bobl tua 100 o gyfrifon ar-lein. A oes un
 share-facebook-headline = Dewch i weld a ydych chi wedi bod yn rhan o dor-data
 share-facebook-blurb = A yw eich cyfrifon ar-lein wedi bod yn agored i dor-data?
 og-site-description = Dewch i weld a ydych chi wedi bod yn rhan o dor-data gyda { -product-name }. Cofrestrwch am rybuddion am dor-data'r dyfodol a chael awgrymiadau ar sut i gadw'ch cyfrifon yn ddiogel.
+mozilla-security-blog = Blog Diogelwch { -brand-Mozilla }
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Cymdeithasol
+show-all = Dangos y cyfan
+fxa-signup-banner-headline = Monitro bygythiadau i'ch cyfrifon ar-lein.
+fxa-signup-banner-blurb = Cofrestrwch am { -brand-fxa } i gael eich adroddiad manwl a rhybuddion am dordata newydd.
+fxa-landing-blurb =
+    Darganfyddwch beth mae hacwyr eisoes yn ei wybod amdanoch chi,
+    a dysgu sut i gadw un cam ar y blaen.
+fxa-scan-label = Gweld a ydych wedi ymddangos mewn tordata.
+fxa-welcome-headline = Croeso i { -product-name }.
