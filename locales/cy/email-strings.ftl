@@ -46,7 +46,7 @@ report-pwt-summary-2 =
     Mae hacwyr yn defnyddio rhestrau o filoedd o gyfrineiriau cyffredin i geisio dyfalu eich un chi.
     Yr hiraf a mwyaf annisgwyl ydyw, yr anoddaf fydd i'w ddyfalu.
 report-pwt-headline-3 = Rhaid trin cwestiynau diogelwch fel cyfrineiriau ychwanegol
-report-pwt-summary-3 = Nid yw gwefannau yn gwirio bod eich atebion yn gywir, dim ond eu bod yn cyfateb bob tro. Crewch atebion hir, ar hap a'u storio yn rhywle diogel.
+report-pwt-summary-3 = Nid yw gwefannau yn gwirio bod eich atebion yn gywir, dim ond eu bod yn cyfateb bob tro. Crëwch atebion hir, ar hap a'u storio yn rhywle diogel.
 report-pwt-headline-4 = Defnyddio rheolwr cyfrinair
 report-pwt-summary-4 = Mae gwasanaethau fel 1Password, LastPass, Dashlane, a Bitwarden yn creu cyfrineiriau cryf, yn eu storio'n ddiogel, a'u llenwi i mewn i wefannau felly does dim rhaid i chi gofio pob un.
 # A link to legal information about mozilla products.

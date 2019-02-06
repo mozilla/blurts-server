@@ -192,13 +192,13 @@ mozilla-security-blog = Blog Diogelwch { -brand-Mozilla }
 layout-social = Cymdeithasol
 show-all = Dangos y cyfan
 fxa-signup-banner-headline = Monitro bygythiadau i'ch cyfrifon ar-lein.
-fxa-signup-banner-blurb = Cofrestrwch am { -brand-fxa } i gael eich adroddiad manwl a rhybuddion am dordata newydd.
+fxa-signup-banner-blurb = Cofrestrwch i gael { -brand-fxa } a derbyn eich adroddiad manwl a rhybuddion am dor-data newydd.
 fxa-landing-blurb =
-    Darganfyddwch beth mae hacwyr eisoes yn ei wybod amdanoch chi,
+    Darganfod beth mae hacwyr eisoes yn ei wybod amdanoch chi,
     a dysgu sut i gadw un cam ar y blaen.
-fxa-scan-label = Gweld a ydych wedi ymddangos mewn tordata.
+fxa-scan-label = Gweld a ydych wedi ymddangos mewn tor-data.
 fxa-welcome-headline = Croeso i { -product-name }.
-fxa-welcome-blurb = Rydych nawr yn barod i dderbyn rhybuddion os yw { $userEmail } yn ymddangos mewn tordata.
+fxa-welcome-blurb = Rydych nawr yn barod i dderbyn rhybuddion os yw { $userEmail } yn ymddangos mewn tor-data.
 fxa-scan-another-email = Eisiau gwirio e-bost arall?
 # Search Firefox Monitor
 fxa-scan-submit = Chwilio { -product-name }
@@ -209,99 +209,99 @@ full-report-headline = Eich Adroddiad { -product-name }
 see-full-report = Gweld fy Adroddiad Llawn
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Rheoli { -brand-fxa }
-fxa-download-firefox-bar-blurb = Wedi'i gyflwyno i chi gan { -brand-name }. 2x yn gyflymach. Yn defnyddio 30% yn llai o gof na { -brand-Chrome }.
+fxa-download-firefox-bar-blurb = Wedi'i gyflwyno i chi gan { -brand-name }. 2x yn gynt. Yn defnyddio 30% yn llai o gof na { -brand-Chrome }.
 fxa-download-firefox-bar-link = Llwytho i lawr nawr
 fxa-download-firefox-banner-blurb = Llwytho tudalen gwell a chynt, ac yn defnyddio llai o gof cyfrifiadurol.
-user-fb-compromised-headline = Ymddangosodd { $userEmail } yn y tordata { $breachName }.
-guest-fb-compromised-headline = Ymddangosodd yr e-bost hwn yn y tordata { $breachName }.
-user-zero-breaches-headline = Nid yw { $userEmail } wedi ymddangos mewn unrhyw dordata.
-guest-zero-breaches-headline = Nid yw#r e-bost yma wedi ymddangos mewn unrhyw dordata.
+user-fb-compromised-headline = Ymddangosodd { $userEmail } yn y tor-data { $breachName }.
+guest-fb-compromised-headline = Ymddangosodd yr e-bost hwn yn y tor-data { $breachName }.
+user-zero-breaches-headline = Nid yw { $userEmail } wedi ymddangos mewn unrhyw dor-data.
+guest-zero-breaches-headline = Nid yw#r e-bost yma wedi ymddangos mewn unrhyw dor-data.
 user-scan-results-headline =
     { $breachCount ->
-        [zero] Ymddangosodd { $userEmail } mewn 0 tordata.
-        [one] Ymddangosodd { $userEmail } mewn 1 tordata.
-        [two] Ymddangosodd { $userEmail } mewn { $breachCount } tordata.
-        [few] Ymddangosodd { $userEmail } mewn { $breachCount } tordata.
-        [many] Ymddangosodd { $userEmail } mewn { $breachCount } tordata.
-       *[other] Ymddangosodd { $userEmail } mewn { $breachCount } tordata.
+        [zero] Ymddangosodd { $userEmail } mewn 0 tor-data.
+        [one] Ymddangosodd { $userEmail } mewn 1 tor-data.
+        [two] Ymddangosodd { $userEmail } mewn { $breachCount } tor-data.
+        [few] Ymddangosodd { $userEmail } mewn { $breachCount } tor-data.
+        [many] Ymddangosodd { $userEmail } mewn { $breachCount } tor-data.
+       *[other] Ymddangosodd { $userEmail } mewn { $breachCount } tor-data.
     }
 guest-scan-results-headline =
     { $breachCount ->
         [zero] Ymddangosodd yr e-bost hwn mewn 0 tordata.
         [one] Ymddangosodd yr e-bost hwn mewn 1tordata.
-        [two] Ymddangosodd yr e-bost hwn mewn { $breachCount } tordata.
-        [few] Ymddangosodd yr e-bost hwn mewn { $breachCount } tordata.
-        [many] Ymddangosodd yr e-bost hwn mewn { $breachCount } tordata.
-       *[other] Ymddangosodd yr e-bost hwn mewn { $breachCount } tordata.
+        [two] Ymddangosodd yr e-bost hwn mewn { $breachCount } tor-data.
+        [few] Ymddangosodd yr e-bost hwn mewn { $breachCount } tor-data.
+        [many] Ymddangosodd yr e-bost hwn mewn { $breachCount } tor-data.
+       *[other] Ymddangosodd yr e-bost hwn mewn { $breachCount } tor-data.
     }
-user-no-breaches-blurb = Byddwn yn eich hysbysu os yw'r cyfeiriad e-bost hwn yn ymddangos mewn tordata newydd.
+user-no-breaches-blurb = Byddwn yn eich hysbysu os yw'r cyfeiriad e-bost hwn yn ymddangos mewn tor-data newydd.
 guest-no-breaches-blurb =
-    I weld a yw'r e-bost hwn yn ymddangos mewn tordata sensitif, crëwch { -brand-fxa }.
-    Byddwn hefyd yn eich hysbysu os yw'r cyfeiriad hwn yn ymddangos mewn tordata newydd.
-user-one-breach-blurb = Mae'r tordata hwn wedi amlygu'r manylion personol canlynol.
+    I weld a yw'r e-bost hwn yn ymddangos mewn tor-data sensitif, crëwch { -brand-fxa }.
+    Byddwn hefyd yn eich hysbysu os yw'r cyfeiriad hwn yn ymddangos mewn tor-data newydd.
+user-one-breach-blurb = Mae'r tor-data hwn wedi amlygu'r manylion personol canlynol.
 user-fb-compromised-blurb =
     { $breachCount ->
-        [zero] Ymddangosodd eich e-bost hefyd mewn { $breachCount } tordata arall.
-        [one] Ymddangosodd eich e-bost hefyd mewn { $breachCount } tordata arall.
-        [two] Ymddangosodd eich e-bost hefyd mewn { $breachCount } tordata arall.
-        [few] Ymddangosodd eich e-bost hefyd mewn { $breachCount } tordata arall.
-        [many] Ymddangosodd eich e-bost hefyd mewn { $breachCount } tordata arall.
-       *[other] Ymddangosodd eich e-bost hefyd mewn { $breachCount } tordata arall.
+        [zero] Ymddangosodd eich e-bost hefyd mewn { $breachCount } tor-data arall.
+        [one] Ymddangosodd eich e-bost hefyd mewn { $breachCount } tor-data arall.
+        [two] Ymddangosodd eich e-bost hefyd mewn { $breachCount } tor-data arall.
+        [few] Ymddangosodd eich e-bost hefyd mewn { $breachCount } tor-data arall.
+        [many] Ymddangosodd eich e-bost hefyd mewn { $breachCount } tor-data arall.
+       *[other] Ymddangosodd eich e-bost hefyd mewn { $breachCount } tor-data arall.
     }
 user-generic-fb-compromised-blurb =
     { $breachCount ->
-        [zero] Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall.
-        [one] Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall.
-        [two] Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall.
-        [few] Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall.
-        [many] Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall.
-       *[other] Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall.
+        [zero] Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall.
+        [one] Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall.
+        [two] Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall.
+        [few] Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall.
+        [many] Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall.
+       *[other] Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall.
     }
 user-fb-compromised-single =
-    Amlygodd y tordata'r manylion personol canlynol. Os nad ydych eisoes wedi gwneud,
+    Amlygodd y tor-data'r manylion personol canlynol. Os nad ydych eisoes wedi gwneud,
     newidiwch eich cyfrineiriau.
-user-generic-fb-compromised-single = Amglygodd y tordata'r manylion personol canlyno.
+user-generic-fb-compromised-single = Amlygodd y tor-data'r manylion personol canlyno.
 guest-fb-compromised-single =
-    Amlygodd y tordata'r manylion personol canlynol. Cofrestrwch am { -brand-fxa }
-    i gael eich adroddiad llawn a rhybuddion am dordata newydd.
+    Amlygodd y tor-data'r manylion personol canlynol. Cofrestrwch am { -brand-fxa }
+    i gael eich adroddiad llawn a rhybuddion am dor-data newydd.
 guest-fb-compromised-blurb =
     { $breachCount ->
         [zero]
-            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall. Cofrestrwch am
+            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall. Cofrestrwch am
             { -brand-fxa } i gael eich adroddiad llawn a rhybuddion am dordata newydd.
         [one]
-            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall. Cofrestrwch am
+            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall. Cofrestrwch am
             { -brand-fxa } i gael eich adroddiad llawn a rhybuddion am dordata newydd.
         [two]
-            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall. Cofrestrwch am
+            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall. Cofrestrwch am
             { -brand-fxa } i gael eich adroddiad llawn a rhybuddion am dordata newydd.
         [few]
-            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall. Cofrestrwch am
+            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall. Cofrestrwch am
             { -brand-fxa } i gael eich adroddiad llawn a rhybuddion am dordata newydd.
         [many]
-            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall. Cofrestrwch am
+            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall. Cofrestrwch am
             { -brand-fxa } i gael eich adroddiad llawn a rhybuddion am dordata newydd.
        *[other]
-            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tordata arall. Cofrestrwch am
+            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall. Cofrestrwch am
             { -brand-fxa } i gael eich adroddiad llawn a rhybuddion am dordata newydd.
     }
 user-fb-not-compromised-blurb =
     { $breachCount ->
-        [zero] Nid oeddech ar dordata { $breachName }, ond rydym wedi canfod y cyfeiriad e-bost mewn un arall.
-        [one] Nid oeddech ar dordata { $breachName }, ond rydym wedi canfod y cyfeiriad e-bost mewn rhai eraill.
-        [two] Nid oeddech ar dordata { $breachName }, ond rydym wedi canfod y cyfeiriad e-bost mewn rhai eraill.
-        [few] Nid oeddech ar dordata { $breachName }, ond rydym wedi canfod y cyfeiriad e-bost mewn rhai eraill.
-        [many] Nid oeddech ar dordata { $breachName }, ond rydym wedi canfod y cyfeiriad e-bost mewn rhai eraill.
-       *[other] Nid oeddech ar dordata { $breachName }, ond rydym wedi canfod y cyfeiriad e-bost mewn rhai eraill.
+        [zero] Nid oeddech ar dor-data { $breachName }, ond rydym wedi canfod y cyfeiriad e-bost mewn un arall.
+        [one] Nid oeddech ar dor-data { $breachName }, ond rydym wedi canfod y cyfeiriad e-bost mewn rhai eraill.
+        [two] Nid oeddech ar dor-data { $breachName }, ond rydym wedi canfod y cyfeiriad e-bost mewn rhai eraill.
+        [few] Nid oeddech ar dor-data { $breachName }, ond rydym wedi canfod y cyfeiriad e-bost mewn rhai eraill.
+        [many] Nid oeddech ar dor-data { $breachName }, ond rydym wedi canfod y cyfeiriad e-bost mewn rhai eraill.
+       *[other] Nid oeddech ar dor-data { $breachName }, ond rydym wedi canfod y cyfeiriad e-bost mewn rhai eraill.
     }
 user-generic-fb-not-compromised-blurb =
     { $breachCount ->
-        [zero] Nid oedd yr e-bost hwn yn y tordata { $breachName }.
-        [one] Nid oedd yr e-bost hwn yn y tordata { $breachName }, ond fe'i cafwyd mewn 1 arall.
-        [two] Nid oedd yr e-bost hwn yn y tordata { $breachName }, ond fe'i cafwyd mewn rhai eraill.
-        [few] Nid oedd yr e-bost hwn yn y tordata { $breachName }, ond fe'i cafwyd mewn rhai eraill.
-        [many] Nid oedd yr e-bost hwn yn y tordata { $breachName }, ond fe'i cafwyd mewn rhai eraill.
-       *[other] Nid oedd yr e-bost hwn yn y tordata { $breachName }, ond fe'i cafwyd mewn rhai eraill.
+        [zero] Nid oedd yr e-bost hwn yn y tor-data { $breachName }.
+        [one] Nid oedd yr e-bost hwn yn y tor-data { $breachName }, ond fe'i cafwyd mewn 1 arall.
+        [two] Nid oedd yr e-bost hwn yn y tor-data { $breachName }, ond fe'i cafwyd mewn rhai eraill.
+        [few] Nid oedd yr e-bost hwn yn y tor-data { $breachName }, ond fe'i cafwyd mewn rhai eraill.
+        [many] Nid oedd yr e-bost hwn yn y tor-data { $breachName }, ond fe'i cafwyd mewn rhai eraill.
+       *[other] Nid oedd yr e-bost hwn yn y tor-data { $breachName }, ond fe'i cafwyd mewn rhai eraill.
     }
 guest-fb-not-compromised-blurb =
     { $breachCount ->
@@ -311,11 +311,11 @@ guest-fb-not-compromised-blurb =
     }
 have-an-account = Oes gennych chi gyfrif yn barod?
 signup-banner-sensitive-blurb =
-    Darganfyddwch beth mae hacwyr eisoes yn ei wybod amdanoch chi, a dysgu sut i
+    Darganfod beth mae hacwyr eisoes yn ei wybod amdanoch chi, a dysgu sut i
     aros un cam ar y blaen. Cewch wybod os fydd eich cyfrif yn ymddangos
     mewn unrhyw dor-data newydd.
 fxa-pwt-section-blurb =
-    Mae cyfrineiriau'n diogelu yr holl fanylion personol yn eich cyfrifon ar-lein. Mae hacwyr yn dibynnu ar arferion gwael, fel defnyddio'r un cyfrinair ym mhobman neu ddefnyddio
+    Cyfrineiriau sy'n diogelu yr holl fanylion personol yn eich cyfrifon ar-lein. Mae hacwyr yn dibynnu ar arferion gwael, fel defnyddio'r un cyfrinair ym mhobman neu ddefnyddio
     ymadroddion cyffredin (@p@ssw0rd, ?) felly os mae nhw'n hacio un cyfrif, maen nhw
     gall hacio lot.
 fxa-pwt-summary-2 =
