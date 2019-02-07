@@ -311,3 +311,20 @@ have-an-account = Už máte účet?
 signup-banner-sensitive-blurb =
     Odhalte, co už o vás hackeři vědí, a zůstaňte o krok před nimi.
     Nechte si posílat upozornění, pokud se váš účet objeví v novém úniku.
+fxa-pwt-section-blurb =
+    Hesla chrání všechny vaše osobní údaje a online účty. Hackeři spoléhají
+    na špatné zvyky jako je používání stejného hesla na více místech, nebo
+    příliš běžného a lehce uhodnutého hesla (h3sl0). Takže pokud se jim podaří
+    prolomit jeden váš účet, dostanou se velmi rychle dostat i k ostatním.
+fxa-pwt-summary-2 =
+    Krátké jednoslovné heslo je velmi snadné uhodnout. Používejte alespoň
+    dvouslovná hesla s kombinací malých a velkých písmen, čísel a speciálních znaků.
+fxa-pwt-summary-4 = Správci hesel jako 1Password, LastPass, Dashlane a Bitwarden umí vaše hesla bezpečně uložit a automaticky je pro vás na webových stránkách vyplnit. Pomohou vám i s vytvořením silného hesla.
+fxa-pwt-summary-6 = Počet úniků dat z webových stránek stoupá. Kdykoliv je nový únik přidán do databáze, { -product-name } vám pošle upozornění, abyste mohli co nejrychleji zareagovat a ochránit svůj účet.
+fxa-what-to-do-blurb-1 = Pokud se nemůžete přihlásit, kontaktujte správce webové stránky a zeptejte se, jak můžete své heslo změnit. Vidíte účet, o kterém vůbec nevíte? Stránka mohla změnit svůj název nebo jste na nepoužívaný účet už zapomněli.
+fxa-what-to-do-subhead-2 = Přestaňte používat uniklé heslo a změňte ho všude, kde jste ho použili.
+fxa-what-to-do-blurb-2 = Hackeři mohou použít stejné heslo a e-mail a dostat se i do dalších účtů. Pro každý účet používejte jiné heslo, zejména pro internetové bankovnictví a další stránky, které mají vaše citlivé osobní údaje.
+fxa-what-to-do-blurb-3 = Většina úniků obsahuje jen e-mailové adresy a hesla. V některých ale mohou být citlivé bankovní údaje. Pokud bylo v úniku číslo vašeho účtu nebo platební karty, informujte neprodleně svou banku o možném zneužití. Sledujte také stav svého účtu, jestli se nečekaně nezměnil.
+fxa-what-to-do-subhead-4 = Nemusíte si sami pamatovat všechna svá hesla.
+fxa-what-to-do-blurb-4 = Správci hesel jako 1Password, LastPass, Dashlane a Bitwarden umí vaše hesla bezpečně uložit a automaticky je pro vás na webových stránkách vyplnit. Používejte správce hesel na mobilu i počítači a už si svá hesla nebudete muset pamatovat.
+fb-landing-headline = Byly vaše údaje součástí úniku dat - { $breachName }?
