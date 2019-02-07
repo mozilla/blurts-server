@@ -61,32 +61,32 @@ pwt-section-blurb =
   And hackers rely on bad habits, like using the same password everywhere or using common phrases (p@ssw0rd, anyone?) so 
   that if they hack one account, they can hack many. Here’s how to better protect your accounts.
 
-pwt-headline-1 = Use a different password for every account
+pwt-headline-1 = Use a different password for every account.
 pwt-summary-1 = 
   Reusing the same password everywhere leaves the door wide open for identity theft. 
   Anyone with that password can log in to all your accounts. 
 
-pwt-headline-2 = Create strong, hard-to-guess passwords
+pwt-headline-2 = Create strong, hard-to-guess passwords.
 pwt-summary-2 = 
   Hackers use thousands of common passwords to try to guess yours. 
   The longer and more random your password is, the harder it will be to guess.
 
-pwt-headline-3 = Treat security questions like extra passwords
+pwt-headline-3 = Treat security questions like extra passwords.
 pwt-summary-3 = 
   Websites don’t check that your answers are accurate, just that they match every time. 
-  Create long, random answers and store them somewhere safe.
+  Create long, random answers, and store them somewhere safe.
 
-pwt-headline-4 = Get help remembering your passwords
+pwt-headline-4 = Get help remembering your passwords.
 pwt-summary-4 =
   Password managers like 1Password, LastPass, Dashlane, and Bitwarden generate strong, unique passwords. 
   They also store passwords securely and fill them into websites for you
 
-pwt-headline-5 = Add extra security with two-factor authentication
+pwt-headline-5 = Add extra security with two-factor authentication.
 pwt-summary-5 =
   2FA requires an additional piece of information (like a one-time code sent via text message) to log in to your account. 
   Even if someone has your password, they can’t get in. 
 
-pwt-headline-6 = Sign up for {-product-name-nowrap} alerts
+pwt-headline-6 = Sign up for {-product-name-nowrap} alerts.
 pwt-summary-6 = 
   Website data breaches are on the rise. As soon as a new breach gets added to our database, 
   {-product-name-nowrap} sends you an alert — so you can take action and protect your account.
