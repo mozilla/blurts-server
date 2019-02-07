@@ -52,17 +52,17 @@ user-unsubscribed-title = { -product-name } : désinscription effectuée
 pwt-section-headline = Mots de passe robustes = protection renforcée
 pwt-section-subhead = Vos informations personnelles ne sont sûres que si vos mots de passe le sont.
 pwt-section-blurb = Vos mots de passe protègent plus que vos comptes. Ils protègent chaque information personnelle qui s’y trouve. Et les pirates informatiques tirent profit de nos mauvaises habitudes, comme utiliser le même mot de passe partout ou utiliser des expressions courantes (« monmotdepasse » ou « 1234 », ça vous parle ?) pour pouvoir pirater plusieurs comptes. Voici comment mieux protéger vos comptes.
-pwt-headline-1 = Utilisez un mot de passe différent pour chaque compte
+pwt-headline-1 = Utilisez un mot de passe différent pour chaque compte.
 pwt-summary-1 = La réutilisation du même mot de passe partout laisse la porte grande ouverte à l’usurpation d’identité. N’importe qui possédant ce mot de passe peut se connecter à tous vos comptes.
-pwt-headline-2 = Créez des mots de passe suffisamment forts et difficiles à deviner
+pwt-headline-2 = Créez des mots de passe suffisamment forts et difficiles à deviner.
 pwt-summary-2 = Les pirates utilisent des milliers de mots de passe courants pour tenter de deviner les vôtres. Plus votre mot de passe est long et aléatoire, plus il sera difficile à deviner.
-pwt-headline-3 = Considérez les questions de sécurité comme des mots de passe supplémentaires
+pwt-headline-3 = Considérez les questions de sécurité comme des mots de passe supplémentaires.
 pwt-summary-3 = Les sites web ne vérifient pas que vos réponses sont exactes, mais simplement qu’elles correspondent à chaque fois. Créez des réponses longues et aléatoires et stockez-les dans un endroit sûr.
-pwt-headline-4 = Obtenez de l’aide pour vous rappeler vos mots de passe
+pwt-headline-4 = Obtenez de l’aide pour vous rappeler vos mots de passe.
 pwt-summary-4 = Les gestionnaires de mots de passe tels que 1Password, LastPass, Dashlane et Bitwarden génèrent des mots de passe forts et uniques. Ils stockent également les mots de passe en toute sécurité et les remplissent dans les sites web pour vous.
-pwt-headline-5 = Ajoutez une sécurité supplémentaire avec l’authentification à deux facteurs
+pwt-headline-5 = Ajoutez une sécurité supplémentaire avec l’authentification à deux facteurs.
 pwt-summary-5 = L’authentification à deux facteurs (2FA) demande une information supplémentaire (un code à usage unique envoyé par SMS par exemple) pour se connecter à votre compte. Même si quelqu’un connaît votre mot de passe, il ne pourra pas se connecter.
-pwt-headline-6 = Inscrivez-vous pour recevoir les alertes { -product-name-nowrap }
+pwt-headline-6 = Inscrivez-vous pour recevoir les alertes { -product-name-nowrap }.
 pwt-summary-6 = Les fuites de données de sites web sont à la hausse. Dès qu’une nouvelle fuite est ajoutée à notre base de données, { -product-name-nowrap } vous envoie une alerte afin que vous puissiez agir et protéger votre compte.
 landing-headline = C’est maintenant que commence votre droit d’être à l’abri du piratage informatique.
 landing-blurb = { -product-name-nowrap } met à votre disposition des outils pour conserver vos informations personnelles en toute sécurité. Découvrez quelles sont les données personnelles accessibles aux cybercriminels et apprenez à vous protéger.
@@ -161,11 +161,6 @@ download-firefox-mobile = Télécharger { -brand-name } mobile
 features = Fonctionnalités
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    Certaines parties de ce contenu sont &#x24B8; 1998-2018 par les contributeurs individuels de mozilla.org. <br />
-    Le contenu est disponible sous <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">licence Creative Commons</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Données des différentes fuites fournies par { $hibp-link }
 site-description = Vos comptes ont-ils été divulgués ou volés suite à une fuite de données ? Découvrez-le avec { -product-name }. Recherchez dans notre base de données et inscrivez-vous pour recevoir des alertes.
@@ -242,7 +237,6 @@ fxa-what-to-do-blurb-1 =
     Si vous ne parvenez pas à vous connecter, contactez le site web pour savoir comment changer vos identifiants.
     Vous apercevez un compte que vous ne reconnaissez pas ? Vos données ont pu être vendues ou redistribuées. Cela pourrait aussi être un compte que vous avez oublié avoir créé ou une entreprise qui a changé de nom.
 fxa-what-to-do-subhead-2 = Arrêtez d’utiliser le mot de passe compromis et changez-le partout où vous l’avez utilisé.
-fxa-what-to-do-blurb-2 = Des pirates peuvent essayer de réutiliser ce même mot de passe et votre adresse électronique pour accéder à d’autres comptes. Créez un mot de passe unique pour chaque site web, en particulier pour votre compte bancaire, votre messagerie en ligne et les autres sites web où sont enregistrées vos données personnelles.
 fxa-what-to-do-blurb-3 = La plupart des fuites de données compromettent les adresses électroniques et les mots de passe, mais certaines impliquent des informations financières sensibles. Si vos numéros de compte bancaire ou de carte bancaire ont été compromis, prévenez votre banque de toute fraude éventuelle. Assurez-vous qu’aucun paiement frauduleux n’ait lieu en surveillant vos relevés de comptes.
 fxa-what-to-do-subhead-4 = Obtenez de l’aide pour retenir tous vos mots de passe et les protéger.
 fxa-what-to-do-blurb-4 = Les gestionnaires de mots de passe tels que 1Password, LastPass, Dashlane et Bitwarden conservent vos mots de passe en toute sécurité et les remplissent dans les sites web pour vous. Utilisez un gestionnaire de mots de passe sur votre téléphone et votre ordinateur pour ne pas avoir à tous les retenir.
