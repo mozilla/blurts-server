@@ -230,3 +230,96 @@ user-fb-compromised-headline = { $userEmail } đã xuất hiện trong vi phạm
 guest-fb-compromised-headline = Email này đã xuất hiện trong vi phạm dữ liệu { $breachName }.
 user-zero-breaches-headline = { $userEmail } xuất hiện trong các vi phạm dữ liệu bằng không.
 guest-zero-breaches-headline = Email này xuất hiện trong các vi phạm dữ liệu bằng không.
+user-scan-results-headline =
+    { $breachCount ->
+       *[other] { $userEmail } đã xuất hiện trong { $breachCount } vi phạm dữ liệu.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+       *[other] Email này xuất hiện trong { $breachCount } vi phạm dữ liệu.
+    }
+user-no-breaches-blurb = Chúng tôi sẽ thông báo cho bạn nếu địa chỉ email này xuất hiện vi phạm mới.
+guest-no-breaches-blurb =
+    Để xem email này có xuất hiện trong các vi phạm nhạy cảm hay không, hãy tạo { -brand-fxa }.
+    Chúng tôi cũng sẽ cảnh báo bạn nếu địa chỉ này xuất hiện trong các vi phạm dữ liệu mới.
+user-one-breach-blurb = Vi phạm này đã tiết lộ thông tin cá nhân sau đây.
+user-fb-compromised-blurb =
+    { $breachCount ->
+       *[other] Email của bạn cũng xuất hiện trong { $breachCount } vi phạm khác.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+       *[other] Email này cũng xuất hiện trong { $breachCount } vi phạm khác.
+    }
+user-fb-compromised-single =
+    Vi phạm này đã tiết lộ thông tin cá nhân sau đây. Nếu bạn chưa có,
+    thay đổi mật khẩu của bạn
+user-generic-fb-compromised-single = Vi phạm này đã tiết lộ thông tin cá nhân sau đây.
+guest-fb-compromised-single =
+    Vi phạm này đã tiết lộ thông tin cá nhân sau đây. Đăng ký { -brand-fxa }
+    để nhận được báo cáo đầy đủ của bạn và cảnh báo về các vi phạm mới.
+guest-fb-compromised-blurb =
+    { $breachCount ->
+       *[other]
+            Email này cũng xuất hiện trong { $breachCount } vi phạm khác. Đăng ký
+            { -brand-fxa } để nhận báo cáo đầy đủ và cảnh báo về các vi phạm mới.
+    }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+       *[other] Dữ liệu của bạn không vi phạm ở { $breachName }, nhưng chúng tôi đã tìm thấy địa chỉ email đó ở nơi khác.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+       *[other] Email này không nằm trong vi phạm { $breachName }, nhưng được tìm thấy ở những nơi khác.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+       *[other] Những vi phạm tiếp xúc với thông tin cá nhân sau đây. Nếu bạn chưa có, hãy thay đổi mật khẩu của bạn.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+       *[other] Những vi phạm tiếp xúc với thông tin cá nhân sau đây.
+    }
+have-an-account = Đã có một tài khoản?
+signup-banner-sensitive-blurb =
+    Tìm hiểu những gì tin tặc đã biết về bạn và tìm hiểu cách
+    đi trước họ một bước. Được cảnh báo nếu tài khoản của bạn xuất hiện
+    trong các vi phạm dữ liệu mới.
+fxa-pwt-section-blurb =
+    Mật khẩu bảo vệ tất cả các thông tin cá nhân trong tài khoản trực tuyến của bạn. Và
+    tin tặc dựa vào những thói quen xấu, như sử dụng cùng một mật khẩu ở mọi nơi hoặc sử dụng
+    cụm từ phổ biến (@p@ssw0rd, anyone?) để nếu họ hack một tài khoản, họ sẽ
+    có thể hack nhiều.
+fxa-pwt-summary-2 =
+    Mật khẩu ngắn, một từ dễ dàng cho tin tặc đoán.
+    Sử dụng ít nhất hai từ và kết hợp các chữ cái, chữ số và ký tự đặc biệt.
+fxa-pwt-summary-4 =
+    Các trình quản lý mật khẩu như 1Password, LastPass, Dashlane và Bitwarden lưu trữ của bạn
+    mật khẩu và điền chúng vào các trang web cho bạn. Họ thậm chí còn giúp bạn tạo mật khẩu mạnh.
+fxa-pwt-summary-6 =
+    Vi phạm dữ liệu đang gia tăng. Nếu thông tin cá nhân của bạn xuất hiện trong một vi phạm dữ liệu mới,
+    { -product-name } gửi cho bạn một cảnh báo - để bạn có thể thực hiện hành động và bảo vệ tài khoản của mình.
+fxa-what-to-do-blurb-1 =
+    Nếu bạn không thể đăng nhập, hãy liên hệ với trang web để hỏi cách cập nhật.
+    Xem một tài khoản mà bạn không nhận ra? Dữ liệu của bạn có thể đã được bán
+    hoặc phân phối lại. Đây cũng có thể là một tài khoản bạn quên bạn
+    tạo ra hoặc một công ty thay đổi tên.
+fxa-what-to-do-subhead-2 = Ngừng sử dụng mật khẩu bị lộ và thay đổi nó ở mọi nơi bạn đã sử dụng nó.
+fxa-what-to-do-blurb-2 =
+    Tin tặc có thể thử cùng mật khẩu và email của bạn để vào các tài khoản khác.
+    Tạo một mật khẩu khác nhau và duy nhất cho mọi tài khoản, đặc biệt là cho tài khoản ngân hàng của bạn,
+    email và các trang web khác nơi bạn lưu thông tin cá nhân.
+fxa-what-to-do-blurb-3 =
+    Hầu hết các vi phạm chỉ để lộ email và mật khẩu, nhưng một số bao gồm thông tin tài chính nhạy cảm.
+    Nếu tài khoản ngân hàng hoặc số thẻ tín dụng của bạn bị lộ, hãy báo cho ngân hàng của bạn biết có thể xảy ra gian lận.
+    Giám sát báo cáo cho các khoản phí mà bạn không nhận ra.
+fxa-what-to-do-subhead-4 = Nhận trợ giúp ghi nhớ tất cả mật khẩu của bạn và giữ chúng an toàn.
+fxa-what-to-do-blurb-4 =
+    Các trình quản lý mật khẩu như 1Password, LastPass, Dashlane và Bitwarden lưu trữ của bạn
+    mật khẩu an toàn và điền chúng vào các trang web cho bạn. Sử dụng trình quản lý mật khẩu
+    trên điện thoại và máy tính của bạn để bạn không phải nhớ tất cả.
+fb-landing-headline = Thông tin của bạn có bị lộ trong vi phạm dữ liệu { $breachName } không?
