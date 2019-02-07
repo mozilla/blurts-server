@@ -924,10 +924,6 @@ main #featured-breach {
 
 /* BREACH LISTING */
 
-.breach-headline {
-  text-transform: capitalize;
-}
-
 .account .image-wrap {
   align-self: flex-start;
   margin-right: var(--gap);

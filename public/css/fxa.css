@@ -485,10 +485,6 @@ input:focus::-moz-focus-inner {
   border: 0;
 }
 
-.transparent-button {
-  text-transform: capitalize;
-}
-
 .transparent-button,
 input[type="submit"].transparent-button {
   background-color: rgba(255, 255, 255, 0);
@@ -1093,10 +1089,6 @@ main #featured-breach {
 }
 
 /* BREACH LISTING */
-
-.breach-headline {
-  text-transform: capitalize;
-}
 
 .account .image-wrap {
   align-self: flex-start;
