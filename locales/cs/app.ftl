@@ -74,7 +74,7 @@ pwt-summary-6 = Počet úniků dat z webových stránek stoupá. Kdykoliv je nov
 landing-headline = Každý má právo na bezpečí před hackery.
 landing-blurb =
     { -product-name-nowrap } vás vybaví nástroji na uchování vašich osobních údajů v bezpečí.
-    Odhalte, co už o vás hackeři vědí, a zjistěte, jak zůstat krok před nimi.
+    Odhalte, co už o vás hackeři vědí, a zůstaňte o krok před nimi.
 scan-label = Podívejte se, jestli nebyly vaše účty součástí nějakého úniku dat.
 scan-placeholder = Zadejte e-mailovou adresu
 scan-privacy = Zadanou e-mailovou adresu si nebudeme nikam ukládat.
@@ -208,9 +208,7 @@ layout-social = Sociální sítě
 show-all = Zobrazit vše
 fxa-signup-banner-headline = Sledujte hrozby pro vaše online účty.
 fxa-signup-banner-blurb = Založte si { -brand-fxa } a nechte si posílat podrobná hlášení o nových únicích dat.
-fxa-landing-blurb =
-    Zjistěte, co o vás už hackeři vědí,
-    a naučte se zůstat o krok před nimi.
+fxa-landing-blurb = Odhalte, co už o vás hackeři vědí, a zůstaňte o krok před nimi.
 fxa-scan-label = Podívejte se, jestli byl váš e-mail součástí nějakého úniku dat.
 fxa-welcome-headline = Vítá vás { -product-name }.
 fxa-welcome-blurb = Vše je nastaveno a pokud se { $userEmail } objeví v nějakém úniku dat, dostanete upozornění.
@@ -227,4 +225,89 @@ manage-fxa = Správa účtu Firefoxu
 fxa-download-firefox-bar-blurb = Službu zajišťuje { -brand-name }. 2x rychlejší a o 30 % úspornější na paměť než { -brand-Chrome }.
 fxa-download-firefox-bar-link = Stáhnout
 fxa-download-firefox-banner-blurb = Lepší, rychlejší načítání stránek, které snižuje používání operační paměti.
+user-fb-compromised-headline = Adresa { $userEmail } byla součástí úniku dat - { $breachName }.
+guest-fb-compromised-headline = Tato adresa byla součástí úniku dat - { $breachName }.
+user-zero-breaches-headline = Adresa { $userEmail } nebyla součástí žádného úniku dat.
+guest-zero-breaches-headline = Tato adresa nebyla součástí žádného úniku dat.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] Adresa { $userEmail } byla součástí jednoho úniku dat.
+        [few] Adresa { $userEmail } byla součástí { $breachCount } úniků dat.
+       *[other] Adresa { $userEmail } byla součástí { $breachCount } úniků dat.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Tato adresa byla součástí jednoho úniků dat.
+        [few] Tato adresa byla součástí { $breachCount } úniků dat.
+       *[other] Tato adresa byla součástí { $breachCount } úniků dat.
+    }
+user-no-breaches-blurb = Pokud se tento e-mail objeví v nějakém úniku dat, dostanete upozornění.
+guest-no-breaches-blurb = Pro nahlédnutí, jestli byl tento e-mail součástí nějakého úniku dat, si prosím vytvořte { -brand-fxa }. Pokud se tento e-mail objeví v nějakém úniku dat v budoucnu, dostanete upozornění.
+user-one-breach-blurb = Tento únik obsahoval následující osobní informace.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Vaše e-mailová adresa byla součástí také jednoho dalšího úniku.
+        [few] Vaše e-mailová adresa byla součástí také { $breachCount } dalších úniků.
+       *[other] Vaše e-mailová adresa byla součástí také { $breachCount } dalších úniků.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Tato e-mailová adresa byla součástí také jednoho dalšího úniku.
+        [few] Tato e-mailová adresa byla součástí také { $breachCount } dalších úniků.
+       *[other] Tato e-mailová adresa byla součástí také { $breachCount } dalších úniků.
+    }
+user-fb-compromised-single = Tento únik obsahoval následující osobní informace. Pokud jste tak ještě neučinili, doporučujeme si změnit heslo.
+user-generic-fb-compromised-single = Tento únik obsahoval následující osobní informace.
+guest-fb-compromised-single = Tento únik obsahoval následující osobní informace. Zaregistrujte si { -brand-fxa } a nechce si poslat podrobné hlášení a upozornění na případné nové úniky.
+guest-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Tato e-mailová adresa byla součástí také jednoho dalšího úniku. Zaregistrujte si { -brand-fxa } a nechce si poslat podrobné hlášení a upozornění na případné nové úniky.
+        [few] Tato e-mailová adresa byla součástí také { $breachCount } dalších úniků. Zaregistrujte si { -brand-fxa } a nechce si poslat podrobné hlášení a upozornění na případné nové úniky.
+       *[other] Tato e-mailová adresa byla součástí také { $breachCount } dalších úniků. Zaregistrujte si { -brand-fxa } a nechce si poslat podrobné hlášení a upozornění na případné nové úniky.
+    }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Vaše e-mailová adresa nebyla součástí úniku dat { $breachName }, ale našli jsme ji v jiném.
+        [few] Vaše e-mailová adresa nebyla součástí úniku dat { $breachName }, ale našli jsme ji v jiných.
+       *[other] Vaše e-mailová adresa nebyla součástí úniku dat { $breachName }, ale našli jsme ji v jiných.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Tato e-mailová adresa nebyla součástí úniku dat { $breachName }, ale našli jsme ji v jiném.
+        [few] Tato e-mailová adresa nebyla součástí úniku dat { $breachName }, ale našli jsme ji v jiných.
+       *[other] Tato e-mailová adresa nebyla součástí úniku dat { $breachName }, ale našli jsme ji v jiných.
+    }
+guest-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Tato e-mailová adresa nebyla součástí úniku dat { $breachName }, ale našli jsme ji v jiném. Zaregistrujte si { -brand-fxa } a nechce si poslat podrobné hlášení a upozornění na případné nové úniky.
+        [few] Tato e-mailová adresa nebyla součástí úniku dat { $breachName }, ale našli jsme ji v jiných. Zaregistrujte si { -brand-fxa } a nechce si poslat podrobné hlášení a upozornění na případné nové úniky.
+       *[other] Tato e-mailová adresa nebyla součástí úniku dat { $breachName }, ale našli jsme ji v jiných. Zaregistrujte si { -brand-fxa } a nechce si poslat podrobné hlášení a upozornění na případné nové úniky.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] Tento únik obsahoval následující osobní informace. Pokud jste tak ještě neučinili, doporučujeme si změnit heslo.
+        [few] Tyto úniky obsahovaly následující osobní informace. Pokud jste tak ještě neučinili, doporučujeme si změnit hesla.
+       *[other] Tyto úniky obsahovaly následující osobní informace. Pokud jste tak ještě neučinili, doporučujeme si změnit hesla.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Tento únik obsahoval následující osobní informace.
+        [few] Tyto úniky obsahovaly následující osobní informace.
+       *[other] Tyto úniky obsahovaly následující osobní informace.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+guest-found-breaches-blurb =
+    { $breachCount ->
+        [one] Tento únik obsahoval následující osobní informace. Zaregistrujte si { -brand-fxa } a nechce si poslat podrobné hlášení a upozornění na případné nové úniky.
+        [few] Tyto úniky obsahovaly následující osobní informace. Zaregistrujte si { -brand-fxa } a nechce si poslat podrobné hlášení a upozornění na případné nové úniky.
+       *[other] Tyto úniky obsahovaly následující osobní informace. Zaregistrujte si { -brand-fxa } a nechce si poslat podrobné hlášení a upozornění na případné nové úniky.
+    }
 have-an-account = Už máte účet?
+signup-banner-sensitive-blurb =
+    Odhalte, co už o vás hackeři vědí, a zůstaňte o krok před nimi.
+    Nechte si posílat upozornění, pokud se váš účet objeví v novém úniku.
