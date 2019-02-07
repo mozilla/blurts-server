@@ -189,11 +189,6 @@ download-firefox-mobile = Download { -brand-name } Mobile
 features = Features
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    Portions of this content are &#x24B8; 1998-2018 by individual mozilla.org contributors. <br />
-    Content available under a  <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons license</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Breach data provided by { $hibp-link }
 site-description = Have your accounts been leaked or stolen in a data breach? Find out at { -product-name }. Search our database and sign up for alerts.
@@ -325,8 +320,8 @@ fxa-what-to-do-blurb-1 =
     or redistributed. This could also be an account you forgot you 
     created or a company that changed names.
 fxa-what-to-do-subhead-2 = Stop using the exposed password, and change it everywhere you’ve used it.
-fxa-what-to-do-blurb-2 =
-    Hackers may try to that same password and your email to get into other accounts. 
+fxa-wtd-blurb-2 =
+    Hackers may try to use that same password and your email to get in to other accounts.  
     Create a different and unique password for every account, especially for your bank account, 
     email, and other websites where you save personal information.
 fxa-what-to-do-blurb-3 =
@@ -339,3 +334,5 @@ fxa-what-to-do-blurb-4 =
     passwords securely and fill them into websites for you. Use a password manager 
     on your phone and computer so you don’t have to remember them all.
 fb-landing-headline = Was your info exposed in the { $breachName } data breach?
+copyright = Portions of this content are © 1999-{ $year } by individual mozilla.org contributors.
+content-available = Content available under a Creative Commons license.
