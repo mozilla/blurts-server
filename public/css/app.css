@@ -1481,6 +1481,7 @@ footer ul li:first-of-type,
 
 footer .copyright-info a {
   color: var(--blue40);
+  display: block;
 }
 
 /* SUBPAGES */

@@ -241,12 +241,6 @@ features = Features
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info = 
-  Portions of this content are &#x24B8; 1998-2018 by individual mozilla.org contributors. <br />
-  Content available under a  <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons license</a>.
-
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Breach data provided by { $hibp-link }
 
@@ -448,6 +442,6 @@ fxa-what-to-do-blurb-4 =
 fb-landing-headline = Was your info exposed in the { $breachName } data breach?
 
 copyright = 
-  Portions of this content are { $years } by individual mozilla.org contributors.
+  Portions of this content are © 1999-{ $year } by individual mozilla.org contributors.
   
 content-available= Content available under a Creative Commons license.

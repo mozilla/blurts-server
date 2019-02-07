@@ -20,7 +20,12 @@
       </div>
       <div class="section-wrapper">
         <div class="two-thirds copyright-info">
-          <p>{{{fluentFormat req.supportedLocales "copyright-info"}}}</p>
+          <p class="copyright-info">
+            {{fluentFormat req.supportedLocales "copyright" year="2019"}}
+            <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">
+              {{fluentFormat req.supportedLocales "content-available"}}
+            </a>
+          </p>
         </div>
       </div>
     </footer>
