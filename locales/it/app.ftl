@@ -209,3 +209,44 @@ fxa-signup-banner-blurb = Registra un { -brand-fxa } per ricevere il rapporto co
 fxa-landing-blurb = Scopri che cosa gli hacker già sanno su di te e apprendi come mantenerti sempre un passo avanti a loro.
 fxa-scan-label = Scopri se sei stato coinvolto in una violazione di dati.
 fxa-welcome-headline = Benvenuto in { -product-name }.
+fxa-welcome-blurb = Ti sei registrato per ricevere avvisi ogni volta che { $userEmail } viene coinvolto in una violazione di dati.
+fxa-scan-another-email = Vuoi controllare un altro indirizzo email?
+# Search Firefox Monitor
+fxa-scan-submit = Cerca su { -product-name }
+sign-up-to-check = Registrati e controlla
+sign-in = Accedi
+sign-out = Disconnetti
+full-report-headline = Il tuo rapporto di { -product-name }
+see-full-report = Vedi rapporto completo
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Gestisci { -brand-fxa }
+fxa-download-firefox-bar-blurb = Offerto da { -brand-name }. 2 volte più veloce. Consuma il 30% di memoria in meno di { -brand-Chrome }.
+fxa-download-firefox-bar-link = Scarica ora
+fxa-download-firefox-banner-blurb = Caricamento delle pagine più fluido e veloce con un minore consumo di memoria.
+user-fb-compromised-headline = { $userEmail } è stato coinvolto nella violazione di dati { $breachName }.
+guest-fb-compromised-headline = Questo indirizzo email è stato coinvolto nella violazione di dati { $breachName }.
+user-zero-breaches-headline = { $userEmail } non è stato coinvolto in alcuna violazione di dati.
+guest-zero-breaches-headline = Questo indirizzo email non è stato coinvolto in alcuna violazione di dati.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } è stato coinvolto in 1 violazione di dati.
+       *[other] { $userEmail } è stato coinvolto in { $breachCount } violazioni di dati.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Questo indirizzo email è stato coinvolto in 1 violazione di dati.
+       *[other] Questo indirizzo email è stato coinvolto in { $breachCount } violazioni di dati.
+    }
+user-no-breaches-blurb = Ti avviseremo se questo indirizzo email sarà coinvolto in una nuova violazione.
+user-one-breach-blurb = Questa violazione di dati ha coinvolto le seguenti informazioni personali.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Il tuo indirizzo email è stato coinvolto anche in { $breachCount } altra violazione.
+       *[other] Il tuo indirizzo email è stato coinvolto anche in { $breachCount } altre violazioni.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Questo indirizzo email è stato coinvolto anche in { $breachCount } altra violazione.
+       *[other] Questo indirizzo email è stato coinvolto anche in { $breachCount } altre violazioni.
+    }
+user-generic-fb-compromised-single = Questa violazione di dati ha coinvolto le seguenti informazioni personali.
