@@ -1312,22 +1312,26 @@ span.breach-info .medium {
 /* //// HIBP ATTRIBUTION */
 
 .source-info {
-  width: 100%;
   font-size: 13px;
   text-align: center;
   padding: 0;
   margin-top: var(--gap);
-}
-
-.half .source-info {
-  text-align: left;
-  padding-left: 60px;
-  margin-top: var(--gap);
+  display: inline-block;
 }
 
 .source-info a {
   font-weight: 600;
-  color: var(--blue40);
+  display: block;
+  text-decoration: underline;
+}
+
+.source-info.align-left {
+  text-align: left;
+  padding-left: 60px;
+}
+
+.source-info.align-left a {
+  display: inline;
 }
 
 /* //// FOOTER */
@@ -1831,7 +1835,8 @@ svg#menu-icon path {
     background-color: rgba(255, 255, 255, 0.1);
   }
 
-  main.landing-content #featured-breach {
+  main.landing-content #featured-breach,
+  main.landing-content .source-info {
     display: none;
   }
 
@@ -2005,7 +2010,7 @@ svg#menu-icon path {
 
   .source-info {
     text-align: left;
-    margin-top: 0;
+    margin-bottom: var(--gap);
   }
 
   .account .image-wrap {
