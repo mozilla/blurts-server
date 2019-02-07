@@ -2,7 +2,7 @@
 
 const AppConstants = require("./app-constants");
 const { LocaleUtils } = require("./locale-utils");
-const modifiedStringList = require("./modified-strings");
+const modifiedStringMap = require("./modified-strings");
 const mozlog = require("./log");
 
 
@@ -24,8 +24,8 @@ function fluentFxa (supportedLocales, id, args) {
 
 function getStringID (supportedLocales, id, number) {
   id = `${id}${number}`;
-  if (modifiedStringList.includes(id)) {
-    id = `fxa-${id}`;
+  if (modifiedStringMap[id]) {
+    id = modifiedStringMap[id];
   }
   return LocaleUtils.fluentFormat(supportedLocales, id);
 }

@@ -429,8 +429,8 @@ fxa-what-to-do-blurb-1 =
   created or a company that changed names.
 
 fxa-what-to-do-subhead-2 = Stop using the exposed password, and change it everywhere you’ve used it.
-fxa-what-to-do-blurb-2 =
-  Hackers may try to that same password and your email to get into other accounts. 
+fxa-wtd-blurb-2 =
+  Hackers may try to use that same password and your email to get in to other accounts.  
   Create a different and unique password for every account, especially for your bank account, 
   email, and other websites where you save personal information.
 
