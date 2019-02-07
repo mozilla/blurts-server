@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Účet Firefoxu
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Podpora
@@ -102,7 +104,7 @@ signup-modal-sent = Odesláno!
 signup-with-fxa = Přihlaste se účtem Firefoxu
 form-signup-placeholder = Zadejte e-mailovou adresu
 form-signup-checkbox = Nechte si posílat nejnovější informace o společnosti { -brand-Mozilla } a aplikaci { -brand-name }.
-sign-up = Přihlásit
+sign-up = Zaregistrovat
 form-signup-error = Neplatná e-mailová adresa
 no-breaches-headline = Zatím jde všechno dobře.
 found-breaches-headline = Vaše informace byly součástí úniku dat.
@@ -200,3 +202,29 @@ share-twitter = Většina lidí má na internetu okolo stovky účtů. Zjistěte
 share-facebook-headline = Zjistěte, zda byla vaše data součástí nějakého úniku
 share-facebook-blurb = Byl některý z vašich účtů součástí nějakého úniku dat?
 og-site-description = { -product-name } zjistí, jestli byla vaše data součástí nějakého úniku. Pro větší bezpečí se také přihlaste k zasílání výstrah o budoucích únicích.
+mozilla-security-blog = Bezpečnostní blog Mozilly
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Sociální sítě
+show-all = Zobrazit vše
+fxa-signup-banner-headline = Sledujte hrozby pro vaše online účty.
+fxa-signup-banner-blurb = Založte si { -brand-fxa } a nechte si posílat podrobná hlášení o nových únicích dat.
+fxa-landing-blurb =
+    Zjistěte, co o vás už hackeři vědí,
+    a naučte se zůstat o krok před nimi.
+fxa-scan-label = Podívejte se, jestli byl váš e-mail součástí nějakého úniku dat.
+fxa-welcome-headline = Vítá vás { -product-name }.
+fxa-welcome-blurb = Vše je nastaveno a pokud se { $userEmail } objeví v nějakém úniku dat, dostanete upozornění.
+fxa-scan-another-email = Chcete zkontrolovat další e-mail?
+# Search Firefox Monitor
+fxa-scan-submit = Prohledat { -product-name }
+sign-up-to-check = Pro kontrolu se zaregistrujte
+sign-in = Přihlásit se
+sign-out = Odhlášení
+full-report-headline = Hlášení služby { -product-name }
+see-full-report = Zobrazit úplné hlášení
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Správa účtu Firefoxu
+fxa-download-firefox-bar-blurb = Službu zajišťuje { -brand-name }. 2x rychlejší a o 30 % úspornější na paměť než { -brand-Chrome }.
+fxa-download-firefox-bar-link = Stáhnout
+fxa-download-firefox-banner-blurb = Lepší, rychlejší načítání stránek, které snižuje používání operační paměti.
+have-an-account = Už máte účet?
