@@ -14,7 +14,7 @@ const log = mozlog("controllers.scan");
 
 function _decryptPageToken(encryptedPageToken) {
   const decipher = crypto.createDecipher("aes-256-cbc", AppConstants.COOKIE_SECRET);
-  const decryptedPageToken = JSON.parse([decipher.update(encryptedPageToken, "hex", "utf8"), decipher.final("utf8")].join(""));
+  const decryptedPageToken = JSON.parse([decipher.update(encryptedPageToken, "base64", "utf8"), decipher.final("utf8")].join(""));
   return decryptedPageToken;
 }
 
