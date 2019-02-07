@@ -446,3 +446,8 @@ fxa-what-to-do-blurb-4 =
   on your phone and computer so you don’t have to remember them all.
 
 fb-landing-headline = Was your info exposed in the { $breachName } data breach?
+
+copyright = 
+  Portions of this content are { $years } by individual mozilla.org contributors.
+  
+content-available= Content available under a Creative Commons license.
