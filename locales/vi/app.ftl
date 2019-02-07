@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Tài khoản Firefox
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Hỗ trợ
@@ -90,7 +92,7 @@ signup-banner-blurb =
     Báo cáo chi tiết của { -product-name-nowrap } gửi cho bạn hiển thị nếu thông tin từ tài khoản trực tuyến của bạn bị rò rỉ hoặc bị đánh cắp.
     Chúng tôi cũng sẽ thông báo cho bạn nếu tài khoản của bạn xuất hiện trong các vi phạm mới.
 download-firefox-bar-blurb = { -product-name-nowrap } được mang đến cho bạn bởi <span class="nowrap">{ -brand-name } hoàn toàn mới</span>.
-download-firefox-bar-link = Tải về { -brand-name } ngay
+download-firefox-bar-link = Tải xuống { -brand-name } ngay
 download-firefox-banner-blurb = Kiểm soát trình duyệt của bạn
 download-firefox-banner-button = Tải về { -brand-name }
 signup-modal-headline = Đăng ký { -product-name-nowrap }
@@ -199,3 +201,32 @@ share-twitter = Hầu hết mọi người có khoảng 100 tài khoản trực 
 share-facebook-headline = Tìm hiểu nếu bạn đã từng là một phần của vi phạm dữ liệu
 share-facebook-blurb = Các tài khoản trực tuyến của bạn đã bị lộ trong một phần của vi phạm dữ liệu không?
 og-site-description = Tìm hiểu xem bạn có phải ở trong một phần của vi phạm dữ liệu không với { -product-name }. Đăng ký nhận thông báo về các vi phạm trong tương lai và nhận các mẹo để giữ an toàn cho tài khoản của bạn.
+mozilla-security-blog = Blog bảo mật { -brand-Mozilla }
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Xã hội
+show-all = Hiện tất cả
+fxa-signup-banner-headline = Theo dõi các mối đe dọa cho các tài khoản trực tuyến của bạn.
+fxa-signup-banner-blurb = Đăng ký { -brand-fxa } để nhận báo cáo chi tiết và cảnh báo về các vi phạm dữ liệu mới.
+fxa-landing-blurb =
+    Tìm hiểu những gì tin tặc đã biết về bạn,
+    và tìm hiểu cách để đi trước họ một bước.
+fxa-scan-label = Hãy xem nếu bạn đã xuất hiện trong một vi phạm dữ liệu.
+fxa-welcome-headline = Chào mừng bạn đến với { -product-name }.
+fxa-welcome-blurb = Bạn đã cài đặt tất cả để nhận thông báo nếu { $userEmail } xuất hiện vi phạm dữ liệu.
+fxa-scan-another-email = Bạn muốn kiểm tra một email khác?
+# Search Firefox Monitor
+fxa-scan-submit = Tìm kiếm { -product-name }
+sign-up-to-check = Đăng ký để kiểm tra
+sign-in = Đăng nhập
+sign-out = Đăng xuất
+full-report-headline = Báo cáo { -product-name } của bạn
+see-full-report = Xem báo cáo đầy đủ
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Quản lý { -brand-fxa }
+fxa-download-firefox-bar-blurb = Mang lại cho bạn bởi { -brand-name }. Nhanh gấp 2 lần. Sử dụng bộ nhớ ít hơn 30% so với { -brand-Chrome }.
+fxa-download-firefox-bar-link = Tải xuống ngay
+fxa-download-firefox-banner-blurb = Tải trang tốt hơn, nhanh hơn, sử dụng bộ nhớ máy tính ít hơn.
+user-fb-compromised-headline = { $userEmail } đã xuất hiện trong vi phạm dữ liệu { $breachName }.
+guest-fb-compromised-headline = Email này đã xuất hiện trong vi phạm dữ liệu { $breachName }.
+user-zero-breaches-headline = { $userEmail } xuất hiện trong các vi phạm dữ liệu bằng không.
+guest-zero-breaches-headline = Email này xuất hiện trong các vi phạm dữ liệu bằng không.
