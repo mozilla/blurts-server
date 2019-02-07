@@ -33,7 +33,12 @@
             </ul>
           </div>
           <div class="row legal">
-            <p class="half copyright-info">{{{fluentFormat req.supportedLocales "copyright-info"}}}</p>
+            <p class="half copyright-info">
+              {{fluentFormat req.supportedLocales "copyright" year="2019"}}
+              <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">
+                {{fluentFormat req.supportedLocales "content-available"}}
+              </a>
+            </p>
           </div>
         </div>
       </footer>
