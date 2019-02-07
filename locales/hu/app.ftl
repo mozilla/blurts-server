@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Firefox fiók
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Támogatás
@@ -201,3 +203,20 @@ share-twitter = A legtöbb embernek körülbelül 100 online fiókja van. Vannak
 share-facebook-headline = Tudja meg, hogy része volt-e adatszegésnek
 share-facebook-blurb = Kikerült-e online fiókja egy adatszegés miatt?
 og-site-description = Tudja meg, hogy része volt-e adatszegésnek a { -product-name } segítségével. Iratkozzon fel a figyelmeztetésekre, és kapjon tippeket arról, hogyan tartsa biztonságban a fiókjait.
+mozilla-security-blog = { -brand-Mozilla } biztonsági blog
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Közösségi média
+show-all = Összes megjelenítése
+fxa-signup-banner-headline = Kísérje figyelemmel az online fiókjait érintő fenyegetéseket.
+fxa-scan-another-email = Szeretne ellenőrizni egy másik e-mail címet is?
+# Search Firefox Monitor
+fxa-scan-submit = { -product-name } keresés
+sign-in = Bejelentkezés
+sign-out = Kijelentkezés
+full-report-headline = A { -product-name } jelentése
+see-full-report = Teljes jelentés megtekintése
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = { -brand-fxa } kezelése
+fxa-download-firefox-bar-link = Letöltés most
+fxa-download-firefox-banner-blurb = Jobb, gyorsabb oldalbetöltés, kevesebb memóriával.
+have-an-account = Már van fiókja?
