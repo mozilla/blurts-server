@@ -226,6 +226,13 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = Cette fuite de données a compromis les informations personnelles suivantes. Si ce n’est pas déjà fait, changez vos mots de passe.
 user-generic-fb-compromised-single = Cette fuite de données a compromis les informations personnelles suivantes.
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+guest-found-breaches-blurb =
+    { $breachCount ->
+        [one] Cette fuite de données a compromis les informations personnelles suivantes. Créez un { -brand-fxa[lowercase] } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
+       *[other] Ces fuites de données ont compromis les informations personnelles suivantes. Créez un { -brand-fxa[lowercase] } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
+    }
 have-an-account = Vous possédez déjà un compte ?
 signup-banner-sensitive-blurb = Découvrez ce que les pirates informatiques savent déjà de vous, et apprenez à garder une longueur d’avance sur eux. Recevez des alertes si votre compte apparaît dans de nouvelles fuites de données.
 fxa-pwt-section-blurb = Vos mots de passe protègent toutes les informations personnelles qui se trouvent sur vos comptes en ligne. Et les pirates informatiques tirent profit de nos mauvaises habitudes, comme utiliser le même mot de passe partout ou utiliser des expressions courantes (« m0tdep@sse », ça vous parle ?) pour pouvoir pirater plusieurs comptes.
@@ -238,6 +245,7 @@ fxa-what-to-do-blurb-1 =
     Si vous ne parvenez pas à vous connecter, contactez le site web pour savoir comment changer vos identifiants.
     Vous apercevez un compte que vous ne reconnaissez pas ? Vos données ont pu être vendues ou redistribuées. Cela pourrait aussi être un compte que vous avez oublié avoir créé ou une entreprise qui a changé de nom.
 fxa-what-to-do-subhead-2 = Arrêtez d’utiliser le mot de passe compromis et changez-le partout où vous l’avez utilisé.
+fxa-wtd-blurb-2 = Des pirates peuvent essayer de réutiliser ce même mot de passe et votre adresse électronique pour accéder à d’autres comptes. Créez un mot de passe unique pour chaque site web, en particulier pour votre compte bancaire, votre messagerie en ligne et les autres sites web où sont enregistrées vos données personnelles.
 fxa-what-to-do-blurb-3 = La plupart des fuites de données compromettent les adresses électroniques et les mots de passe, mais certaines impliquent des informations financières sensibles. Si vos numéros de compte bancaire ou de carte bancaire ont été compromis, prévenez votre banque de toute fraude éventuelle. Assurez-vous qu’aucun paiement frauduleux n’ait lieu en surveillant vos relevés de comptes.
 fxa-what-to-do-subhead-4 = Obtenez de l’aide pour retenir tous vos mots de passe et les protéger.
 fxa-what-to-do-blurb-4 = Les gestionnaires de mots de passe tels que 1Password, LastPass, Dashlane et Bitwarden conservent vos mots de passe en toute sécurité et les remplissent dans les sites web pour vous. Utilisez un gestionnaire de mots de passe sur votre téléphone et votre ordinateur pour ne pas avoir à tous les retenir.
