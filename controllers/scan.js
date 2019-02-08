@@ -20,7 +20,7 @@ function _decryptPageToken(encryptedPageToken) {
 
 
 function _validatePageToken(pageToken, req) {
-  const requestIP = req.ip;
+  const requestIP = req.headers["x-real-ip"] || req.ip;
   const pageTokenIP = pageToken.ip;
   if (pageToken.ip !== requestIP) {
     log.error("_validatePageToken", {msg: "IP mis-match", pageTokenIP, requestIP});

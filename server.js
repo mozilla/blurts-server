@@ -33,9 +33,6 @@ const EmailL10nRoutes= require("./routes/email-l10n");
 const log = mozlog("server");
 const app = express();
 
-// Redirect non-dev environments to HTTPS
-app.enable("trust proxy");
-
 if (app.get("env") !== "dev") {
   app.use( (req, res, next) => {
     if (req.secure) {
@@ -133,11 +130,6 @@ app.set("view engine", "hbs");
 
 const cookie = {httpOnly: true, sameSite: "lax"};
 
-if (app.get("env") === "dev") {
-  app.set("trust proxy", false);
-} else {
-  app.set("trust proxy", true);
-}
 
 app.locals.FXA_ENABLED = AppConstants.FXA_ENABLED;
 app.locals.SERVER_URL = AppConstants.SERVER_URL;
