@@ -181,11 +181,6 @@ download-firefox-mobile = Baixar o { -brand-name } Mobile
 features = Funcionalidades
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    Partes deste conteúdo são &#x24B8; 1998-2018 por colaboradores individuais do mozilla.org<br />
-    Conteúdo disponível sob uma licença <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Dados de vazamentos fornecidos por { $hibp-link }
 site-description = Suas contas foram vazadas ou roubadas em um vazamento de dados? Descubra com o { -product-name }. Pesquise nossa base de dados e cadastre-se para receber alertas.
@@ -333,10 +328,10 @@ fxa-what-to-do-blurb-1 =
     ou redistribuídos. Também pode ser uma conta que você esqueceu que 
     criou, ou uma empresa que mudou de nome.
 fxa-what-to-do-subhead-2 = Pare de usar a senha exposta, e mude em todo lugar que a usou.
-fxa-what-to-do-blurb-2 =
-    Hackers podem tentar usar esta mesma senha e seu e-mail para entrar em outras contas. 
-    Crie uma senha diferente e única para cada conta, especialmente para sua conta no banco, 
-    e-mail e outros sites onde salva informações pessoais.
+fxa-wtd-blurb-2 =
+    Hackers podem tentar usar esta mesma senha e seu e-mail para invadir outras contas.  
+    Crie uma senha diferente e única para cada conta, especialmente para sua conta de banco, 
+    e-mail e outros sites onde você salva informações pessoais.
 fxa-what-to-do-blurb-3 =
     A maioria dos vazamentos só expõem e-mails e senhas, mas alguns incluem informações financeiras confidenciais. 
     Se números de sua conta de banco ou cartão de crédito foram expostos, alerte seu banco para a possibilidade de fraudes. 
@@ -347,3 +342,5 @@ fxa-what-to-do-blurb-4 =
     senhas com segurança e as preenchem em sites para você. Use um gerenciador de senhas 
     em seu celular e no computador, assim não precisará lembrar todas elas.
 fb-landing-headline = Suas informações foram expostas no vazamento de dados de { $breachName }?
+copyright = Parcelas deste conteúdo são © 1999-{ $year } por colaboradores individuais do mozilla.org.
+content-available = Conteúdo disponível sob uma licença Creative Commons.
