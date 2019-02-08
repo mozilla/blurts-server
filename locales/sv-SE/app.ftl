@@ -166,9 +166,6 @@ download-firefox-mobile = Hämta { -brand-name } för mobil
 features = Funktioner
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info = Delar av detta innehåll är  &#x24B8; 1998-2018 av enskilda mozilla.org-bidragsgivare. <br />Innehållet är tillgängligt under en <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons-licens</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Breach data tillhandahålls av { $hibp-link }
 site-description = Har dina konton läckt eller blivit stulna vid ett dataintrång? Ta reda på det hos { -product-name }. Sök i vår databas och registrera dig för varningar.
@@ -320,9 +317,9 @@ fxa-what-to-do-blurb-1 =
     eller skickats vidare. Det här kan också vara ett konto du glömt bort
     eller ett företag som bytt namn.
 fxa-what-to-do-subhead-2 = Sluta använda det exponerade lösenordet och ändra det överallt där du använt det.
-fxa-what-to-do-blurb-2 =
-    Hackers kan försöka att använda samma lösenord och e-postadress för att komma in i andra konton.
-    Skapa olika och unika lösenord för varje konto, särskilt för ditt bankkonto,
+fxa-wtd-blurb-2 =
+    Hackare kan försöka använda samma lösenord och e-postadress för att komma in på andra konton.
+    Skapa ett annat och unikt lösenord för varje konto, särskilt för ditt bankkonto,
     e-post och andra webbplatser där du sparar personlig information.
 fxa-what-to-do-blurb-3 =
     De flesta intrång visar bara e-postadress och lösenord, men vissa inkluderar känslig finansiell information.
@@ -334,3 +331,5 @@ fxa-what-to-do-blurb-4 =
     lösenord säkert och fyller i dem på webbplatser åt dig. Använd en lösenordshanterare
     på din telefon och dator så att du inte behöver komma ihåg dem alla.
 fb-landing-headline = Var din information utsatt för dataintrång { $breachName }?
+copyright = Delar av detta innehåll är © 1999-{ $year } av enskilda mozilla.org-bidragsgivare.
+content-available = Innehåll tillgängligt under en Creative Commons-licens.
