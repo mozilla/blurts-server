@@ -184,11 +184,6 @@ download-firefox-mobile = 下载 { -brand-name } 移动版
 features = 功能
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta、Nightly、开发者版本
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    &#x24B8; 1998–2018 部分内容著作权由个别 mozilla.org 贡献者所有。
-    内容遵循<a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">知识共享许可协议</a>进行授权。
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = 泄露数据由 { $hibp-link } 提供
 site-description = 您的账号信息是否在数据外泄事件中被泄露或遭窃？可到 { -product-name } 查看。欢迎在我们的数据库中搜索并订阅警报。
@@ -303,7 +298,7 @@ fxa-pwt-summary-4 = 如 1Password、LastPass、Dashlane 和 Bitwarden 等密码�
 fxa-pwt-summary-6 = 数据外泄事件层出不穷。若您的个人信息出现在新的数据外泄事件中，{ -product-name } 会发送警报给您，这样就可以采取措施来保护账号。
 fxa-what-to-do-blurb-1 = 若您无法登录，请联系网站询问如何来更改密码或者删除账号。发现有您不知道的账号？有可能是您的数据已经被卖掉了，也有可能是单纯忘记创建过该账号，或是网站已改名。
 fxa-what-to-do-subhead-2 = 停止使用已泄露的密码，并将每个使用该密码的网站密码都进行修改。
-fxa-what-to-do-blurb-2 =
+fxa-wtd-blurb-2 =
     黑客很可能利用您已遭泄露的密码，尝试登录您在其他网站上的账号，这也被称为“撞库”攻击。
     请为每个网站设置不同的密码，尤其是银行账号、电子邮件账号，以及其他您用来存储个人信息的网站。
 fxa-what-to-do-blurb-3 =
@@ -312,3 +307,5 @@ fxa-what-to-do-blurb-3 =
 fxa-what-to-do-subhead-4 = 获取能帮助您记住所有密码，并确保密码安全的建议。
 fxa-what-to-do-blurb-4 = 如 1Password、LastPass、Dashlane 和 Bitwarden 等密码管理器可以安全地存储密码，并为您自动填写到网站上。在您的手机与计算机上使用密码管理器，不必再记忆密码。
 fb-landing-headline = 您的信息是否也出现在 { $breachName } 的数据外泄事件中？
+copyright = © 1999-{ $year } 上述内容中的某些部分系 mozilla.org 志愿者个人版权所有。
+content-available = 内容遵循知识共享许可协议进行授权。
