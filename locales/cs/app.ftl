@@ -185,11 +185,6 @@ download-firefox-mobile = Stáhnout { -brand-name } pro mobil
 features = Funkce
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    Části tohoto obsahu jsou &#x24B8; 1998–2018 jednotlivými přispěvateli mozilla.org. <br />
-    Obsah je dostupný pod <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">licencí Creative Commons</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Data o únicích poskytuje { $hibp-link }
 site-description = Byly vaše účty součástí úniku, nebo přímo ukradeny? { -product-name } to zjistí. Prohledejte databázi a přihlaste se k odběru upozornění.
@@ -323,8 +318,10 @@ fxa-pwt-summary-4 = Správci hesel jako 1Password, LastPass, Dashlane a Bitwarde
 fxa-pwt-summary-6 = Počet úniků dat z webových stránek stoupá. Kdykoliv je nový únik přidán do databáze, { -product-name } vám pošle upozornění, abyste mohli co nejrychleji zareagovat a ochránit svůj účet.
 fxa-what-to-do-blurb-1 = Pokud se nemůžete přihlásit, kontaktujte správce webové stránky a zeptejte se, jak můžete své heslo změnit. Vidíte účet, o kterém vůbec nevíte? Stránka mohla změnit svůj název nebo jste na nepoužívaný účet už zapomněli.
 fxa-what-to-do-subhead-2 = Přestaňte používat uniklé heslo a změňte ho všude, kde jste ho použili.
-fxa-what-to-do-blurb-2 = Hackeři mohou použít stejné heslo a e-mail a dostat se i do dalších účtů. Pro každý účet používejte jiné heslo, zejména pro internetové bankovnictví a další stránky, které mají vaše citlivé osobní údaje.
+fxa-wtd-blurb-2 = Hackeři mohou použít stejné heslo a e-mail a dostat se i do dalších účtů. Pro každý účet používejte jiné heslo, zejména pro internetové bankovnictví a další stránky, které mají vaše citlivé osobní údaje.
 fxa-what-to-do-blurb-3 = Většina úniků obsahuje jen e-mailové adresy a hesla. V některých ale mohou být citlivé bankovní údaje. Pokud bylo v úniku číslo vašeho účtu nebo platební karty, informujte neprodleně svou banku o možném zneužití. Sledujte také stav svého účtu, jestli se nečekaně nezměnil.
 fxa-what-to-do-subhead-4 = Nemusíte si sami pamatovat všechna svá hesla.
 fxa-what-to-do-blurb-4 = Správci hesel jako 1Password, LastPass, Dashlane a Bitwarden umí vaše hesla bezpečně uložit a automaticky je pro vás na webových stránkách vyplnit. Používejte správce hesel na mobilu i počítači a už si svá hesla nebudete muset pamatovat.
 fb-landing-headline = Byly vaše údaje součástí úniku dat - { $breachName }?
+copyright = Části tohoto obsahu jsou © 1999-{ $year } jednotlivými přispěvateli mozilla.org.
+content-available = Obsah je dostupný pod licencí Creative Commons.
