@@ -186,9 +186,6 @@ download-firefox-mobile = Tải về { -brand-name } cho điện thoại
 features = Tính năng
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Phiên bản Beta, Nightly, nhà phát triển
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info = Các phần của nội dung này được giữ bản quyền &#x24B8; 1998-2018 bởi những người đóng góp mozilla.org. <br /> Nội dung khả dụng theo <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">giấy phép Creative Commons</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Dữ liệu vi phạm được cung cấp bởi { $hibp-link }
 site-description = Tài khoản của bạn đã bị rò rỉ hoặc bị đánh cắp trong một vi phạm dữ liệu? Tìm hiểu tại { -product-name }. Tìm kiếm cơ sở dữ liệu của chúng tôi và đăng ký nhận thông báo.
@@ -272,6 +269,10 @@ user-generic-fb-not-compromised-blurb =
     { $breachCount ->
        *[other] Email này không nằm trong vi phạm { $breachName }, nhưng được tìm thấy ở những nơi khác.
     }
+guest-fb-not-compromised-blurb =
+    { $breachCount ->
+       *[other] Email này không tìm thấy vi phạm ở { $breachName }, nhưng được tìm thấy ở những nơi khác. Đăng ký { -brand-fxa } để nhận báo cáo đầy đủ và thông báo về các vi phạm mới.
+    }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
 user-found-breaches-blurb =
@@ -283,6 +284,12 @@ user-found-breaches-blurb =
 user-generic-found-breaches-blurb =
     { $breachCount ->
        *[other] Những vi phạm tiếp xúc với thông tin cá nhân sau đây.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+guest-found-breaches-blurb =
+    { $breachCount ->
+       *[other] Những vi phạm tiếp xúc với thông tin cá nhân sau đây. Đăng ký { -brand-fxa } để nhận được báo cáo đầy đủ của bạn và cảnh báo về các vi phạm mới.
     }
 have-an-account = Đã có một tài khoản?
 signup-banner-sensitive-blurb =
@@ -309,8 +316,8 @@ fxa-what-to-do-blurb-1 =
     hoặc phân phối lại. Đây cũng có thể là một tài khoản bạn quên bạn
     tạo ra hoặc một công ty thay đổi tên.
 fxa-what-to-do-subhead-2 = Ngừng sử dụng mật khẩu bị lộ và thay đổi nó ở mọi nơi bạn đã sử dụng nó.
-fxa-what-to-do-blurb-2 =
-    Tin tặc có thể thử cùng mật khẩu và email của bạn để vào các tài khoản khác.
+fxa-wtd-blurb-2 =
+    Tin tặc có thể cố gắng sử dụng cùng một mật khẩu và email của bạn để vào các tài khoản khác.
     Tạo một mật khẩu khác nhau và duy nhất cho mọi tài khoản, đặc biệt là cho tài khoản ngân hàng của bạn,
     email và các trang web khác nơi bạn lưu thông tin cá nhân.
 fxa-what-to-do-blurb-3 =
@@ -323,3 +330,5 @@ fxa-what-to-do-blurb-4 =
     mật khẩu an toàn và điền chúng vào các trang web cho bạn. Sử dụng trình quản lý mật khẩu
     trên điện thoại và máy tính của bạn để bạn không phải nhớ tất cả.
 fb-landing-headline = Thông tin của bạn có bị lộ trong vi phạm dữ liệu { $breachName } không?
+copyright = Các phần của nội dung này © 1999-{ $year } bởi những người đóng góp mozilla.org cá nhân.
+content-available = Nội dung có sẵn theo giấy phép Creative Commons.
