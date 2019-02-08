@@ -178,6 +178,7 @@ mozilla-security-blog = Blog { -brand-Mozilla } sur la sécurité
 layout-social = Réseaux sociaux
 show-all = Tout afficher
 fxa-signup-banner-headline = Surveillez les menaces qui pèsent sur vos comptes en ligne.
+fxa-signup-banner-blurb = Créez un { -brand-fxa[lowercase] } afin d’obtenir un rapport détaillé et des alertes lors de nouvelles fuites de données.
 fxa-landing-blurb =
     Découvrez ce que les pirates informatiques savent déjà de vous,
     et apprenez à garder une longueur d’avance sur eux.
