@@ -155,9 +155,6 @@ download-firefox-mobile = 下載 { -brand-name } 行動版
 features = 功能
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta、Nightly、Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info = 本頁的部分內容著作權為 &#x24B8;1998–2018 由個別 mozilla.org 貢獻者所有。內容依照 <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">創用 CC 授權條款</a> 進行授權。
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = 資料外洩情況由 { $hibp-link } 提供
 site-description = 您的帳號資料是否在資料外洩事件中被外洩或遭竊？可到 { -product-name } 檢查。歡迎在我們的資料庫中查詢並訂閱警報。
@@ -263,8 +260,10 @@ fxa-pwt-summary-4 = 諸如 1Password、LastPass、Dashlane、Bitwarden 等密碼
 fxa-pwt-summary-6 = 資料洩漏事件層出不窮。若您的個人資料出現在新的資料洩露事件中，{ -product-name } 會發送警報給您，這樣就可以採取措施來保護帳號。
 fxa-what-to-do-blurb-1 = 若您無法登入，請詢問網站要如何更改密碼。發現您不認識的帳號嗎？有可能是您的資料已經被賣掉了；也有可能是單純忘記註冊過，或是網站改名。
 fxa-what-to-do-subhead-2 = 不要再使用已經洩漏出去的密碼，並且將每個使用該密碼的網站密碼全部改掉。
-fxa-what-to-do-blurb-2 = 駭客可能會使用您被洩漏的密碼，來嘗試登入您在別的網站上的帳號。請針對每個網站設定不同密碼，尤其是網路銀行、電子郵件信箱，以及任何您會儲存個人資料的網站。
+fxa-wtd-blurb-2 = 駭客可能會使用您被洩漏的密碼，來嘗試登入您在別的網站上的帳號。請針對每個帳號設定不同密碼，尤其是網路銀行、電子郵件信箱，以及任何您會儲存個人資料的網站。
 fxa-what-to-do-blurb-3 = 大多數的資料外洩事件只會流出電子郵件地址與密碼，但某些事件也會包含敏感的個人財務資訊。若您的銀行帳號或信用卡卡號也被洩露出來，請通知銀行防止盜用，並檢查月結單，看看是否有不認識的交易紀錄。
 fxa-what-to-do-subhead-4 = 取得能幫助您記住所有密碼，並確保密碼安全的建議。
 fxa-what-to-do-blurb-4 = 諸如 1Password、LastPass、Dashlane、Bitwarden 等密碼管理員可安全地儲存密碼，並在上網時自動為您填寫表單。記得在手機與電腦上都使用密碼管理員，這樣就不用把不同密碼通通背下來。
 fb-landing-headline = 您的資訊是否也出現在 { $breachName } 的資料洩露事件中？
+copyright = 本頁的部分內容著作權為 ©1999–{ $year } 由個別 mozilla.org 貢獻者所有。
+content-available = 使用創用 CC 授權條款授權大眾使用。
