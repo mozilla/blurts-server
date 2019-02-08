@@ -176,9 +176,6 @@ download-firefox-mobile = { -brand-name } Mobile herunterladen
 features = Funktionen
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info = Teile dieses Inhalts stehen unter einem &#x24B8; 1998-2018 von einzelnen Mitwirkenden an mozilla.org. Der Inhalt steht unter einer <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative-Commons-Lizenz</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Informationen zum Datenleck stammen von { $hibp-link }
 site-description = Wurden Ihre Kontodaten bei einem Datenleck öffentlich bekannt oder gestohlen? Erfahren Sie es mit { -product-name }. Durchsuchen Sie unsere Datenbank und abonnieren Sie die Warnungen.
@@ -317,7 +314,7 @@ fxa-what-to-do-blurb-1 =
     Fällt Ihnen ein unbekanntes Konto auf? Vielleicht wurden Ihre Daten verkauft oder weitergegeben.
     Vielleicht haben Sie das Konto auch vergessen oder das Unternehmen hat seinen Namen geändert.
 fxa-what-to-do-subhead-2 = Verwenden Sie das offengelegte Passwörter nicht mehr und ändern Sie es überall, wo Sie es verwenden.
-fxa-what-to-do-blurb-2 =
+fxa-wtd-blurb-2 =
     Hacker versuchen möglicherweise, dasselbe Passwort und Ihre E-Mail-Adresse zum Zugriff auf andere Konten zu verwenden.
     Erstellen Sie für jedes Konto ein anderes und einzigartiges Passwort, insbesondere für Ihr Bankkonto, Ihre E-Mail-Adresse und andere Websites, auf denen Sie persönliche Daten speichern.
 fxa-what-to-do-blurb-3 =
@@ -329,3 +326,5 @@ fxa-what-to-do-blurb-4 =
     Passwörter sicher und tragen diese auf Websites für Sie ein. Nutzen Sie einen Passwort-Manager
     auf Ihrem Handy und Ihrem Computer, damit Sie sich nicht alle merken müssen.
 fb-landing-headline = Waren Ihre Daten vom Datenleck { $breachName } betroffen?
+copyright = Teile dieses Inhalts stehen unter einem ©1999–%(current_year)s von einzelnen Mitwirkenden an mozilla.org.
+content-available = Der Inhalt steht unter einer Creative-Commons-Lizenz.
