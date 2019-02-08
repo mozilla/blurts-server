@@ -189,11 +189,6 @@ download-firefox-mobile = Transferir o { -brand-name } Móvel
 features = Funcionalidades
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    Porções deste conteúdo são &#x24B8; 1998-2018 por contribuidores individuais da mozilla.org. <br />
-    Conteúdo disponível sob uma <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">licença Creative Commons</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Dados de brechas fornecidos por { $hibp-link }
 site-description = As suas contas foram vazadas ou furtadas numa brecha de dados? Descubra no { -product-name }. Pesquise a nossa base de dados e registe-se para alertas.
@@ -325,8 +320,8 @@ fxa-what-to-do-blurb-1 =
     ou redistribuídos. Esta também pode ser uma conta que se esqueceu que
     criou ou uma empresa que mudou de nome.
 fxa-what-to-do-subhead-2 = Pare de utilizar a palavra-passe exposta e altere-a em todos os lugares em que a utilizou.
-fxa-what-to-do-blurb-2 =
-    Os hackers podem tentar utilizar esta mesma palavra-passe e o seu email para aceder a outras contas.
+fxa-wtd-blurb-2 =
+    Os hackers podem tentar utilizar essa mesma palavra-passe e o seu email para aceder a outras contas.
     Crie uma palavra-passe diferente e única para cada conta, especialmente para a sua conta bancária,
     email e outros websites onde guarda informação pessoal.
 fxa-what-to-do-blurb-3 =
@@ -339,3 +334,5 @@ fxa-what-to-do-blurb-4 =
     palavras-passe em segurança e preenchem-nas em websites por si. Utilize um gestor de palavras-passe
     no seu telefone e computador, para que não precise de se lembrar de todas elas.
 fb-landing-headline = A sua informação foi exposta na brecha de dados { $breachName }?
+copyright = Porções deste conteúdo são © 1999- { $year } por contribuidores individuais da mozilla.org.
+content-available = Conteúdo disponível sob uma licença Creative Commons.
