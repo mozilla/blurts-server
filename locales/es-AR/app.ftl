@@ -155,9 +155,6 @@ download-firefox-mobile = Descargar { -brand-name } Mobile
 features = Características
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info = Partes de este contenido son &#x24B8; 1998-2018 por parte de colaboradores individuales de mozilla.org. <br /> Contenido disponible bajo <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">licencia Creative Commons</a> .
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Datos de violación proporcionados por { $hibp-link }
 site-description = ¿Tus cuentas fueron filtradas o robadas en una violación de datos? Descubrilo en { -product-name }. Buscá en nuestra base de datos y registrate para recibir alertas.
@@ -237,4 +234,14 @@ guest-fb-compromised-blurb =
        *[other]
             Este correo electrónico también apareció en { $breachCount } otras violaciones. Registrate 
             { -brand-fxa } para obtener un informe completo y alertas sobre nuevas violaciones .
+    }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] No estabas en la violación { $breachName }, pero encontramos esa dirección de correo electrónico en otra.
+       *[other] No estabas en la violación { $breachName }, pero encontramos esa dirección de correo electrónico en otras.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Este correo electrónico no estaba en la violación { $breachName }, pero se encontró en otra.
+       *[other] Este correo electrónico no estaba en la violación { $breachName }, pero se encontró en otras.
     }
