@@ -226,6 +226,41 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = Cette fuite de données a compromis les informations personnelles suivantes. Si ce n’est pas déjà fait, changez vos mots de passe.
 user-generic-fb-compromised-single = Cette fuite de données a compromis les informations personnelles suivantes.
+guest-fb-compromised-single = Cette fuite de données a compromis les informations personnelles suivantes. Créez un { -brand-fxa[lowercase] } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
+guest-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Cette adresse électronique apparaît également dans une autre fuite de données. Créez un { -brand-fxa[lowercase] } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
+       *[other] Cette adresse électronique apparaît également dans { $breachCount } autres fuites de données. Créez un { -brand-fxa[lowercase] } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
+    }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Vous n’apparaissez pas dans la fuite de données { $breachName }, mais nous avons détecté cette adresse électronique dans une autre fuite.
+       *[other] Vous n’apparaissez pas dans la fuite de données { $breachName }, mais nous avons détecté cette adresse électronique dans d’autres fuites.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Cette adresse électronique n’apparaît pas dans la fuite de données { $breachName }, mais a été détectée dans une autre fuite de données.
+       *[other] Cette adresse électronique n’apparaît pas dans la fuite de données { $breachName }, mais a été détectée dans d’autres fuite sde données.
+    }
+guest-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Cette adresse électronique n’apparaît pas dans la fuite de données { $breachName }, mais a été détectée dans une autre fuite de données. Créez un { -brand-fxa[lowercase] } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
+       *[other] Cette adresse électronique n’apparaît pas dans la fuite de données { $breachName }, mais a été détectée dans d’autres fuites de données. Créez un { -brand-fxa[lowercase] } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] Cette fuite de données a compromis les informations personnelles suivantes. Si ce n’est pas déjà fait, changez votre mot de passe.
+       *[other] Ces fuites de données ont compromis les informations personnelles suivantes. Si ce n’est pas déjà fait, changez vos mots de passe.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Cette fuite de données a compromis les informations personnelles suivantes.
+       *[other] Ces fuites de données ont compromis les informations personnelles suivantes.
+    }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
 guest-found-breaches-blurb =
