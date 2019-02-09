@@ -233,5 +233,26 @@ guest-scan-results-headline =
        *[other] Iste adresse email ha essite involvite in { $breachCount } violationes de datos.
     }
 user-no-breaches-blurb = Nos te avisara si tu adresse email essera involvite in un nove violation de datos.
+guest-no-breaches-blurb =
+    Pro vider si iste adresse email es implicate in violationes sensibile, crea un { -brand-fxa }. 
+    Nos alsi te allertara si iste adresse es implicate in nove violationes de datos.
+user-one-breach-blurb = Iste violation ha exponite le sequente info personal.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Tu adresse email alsi appareva in { $breachCount } altere violation.
+       *[other] Tu adresse email alsi appareva in { $breachCount } altere violationes.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Iste adresse email alsi appareva in { $breachCount } altere violation.
+       *[other] Iste adresse email alsi appareva in { $breachCount } altere violationes.
+    }
+user-fb-compromised-single =
+    Iste violation ha exponite le sequente info personal. Si tu non lo ha jam facite,
+    cambia tu contrasignos.
+user-generic-fb-compromised-single = Iste violation ha exponite le sequente info personal.
+guest-fb-compromised-single =
+    Iste violation ha exponite le sequente info personal. Registration a un { -brand-fxa }
+    pro procurar te tu reporto complete e avisos re nove violationes.
 have-an-account = Ha tu ja un conto?
 content-available = Contento disponibile sub licentia Creative Commons.
