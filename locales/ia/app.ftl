@@ -183,11 +183,6 @@ download-firefox-mobile = Discargar { -brand-name } Mobile
 features = Functionalitates
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Edition pro disveloppatores
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    Portiones de iste contento es &#x24B8; 1998-2018 per collaboratores individual de mozilla.org. <br />
-    Contento disponibile sub  <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">licentia Creative Commons </a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Datos re le violation fornite per { $hibp-link }
 site-description = Ha tu contos essite revelate o robate in un violation de datos? Discoperi lo in { -product-name }. Cerca in nostre base de datos e registra te pro le alertas.
@@ -217,6 +212,26 @@ sign-up-to-check = Registra te pro verificar
 sign-in = Authentica te
 sign-out = Disconnexion
 full-report-headline = Tu reporto de { -product-name }
+see-full-report = Vide reporto complete
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Gerer { -brand-fxa }
+fxa-download-firefox-bar-blurb = Offerite per { -brand-name }. 2 vices pus veloce. Usa le 30% de memoria in minus de { -brand-Chrome }.
 fxa-download-firefox-bar-link = Discargar ora
 fxa-download-firefox-banner-blurb = Le cargamento de pagina es melior, plus rapide e usa minus memoria del computator.
+user-fb-compromised-headline = { $userEmail } ha essite involvite in le violation de datos { $breachName }.
+guest-fb-compromised-headline = Iste adresse email ha essite involvite in le violation de datos { $breachName }.
+user-zero-breaches-headline = { $userEmail } non ha essite involvite in ulle violation de datos.
+guest-zero-breaches-headline = Iste adresse email non ha essite involvite in ulle violation de datos.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } ha essite involvite in 1 violation de datos.
+       *[other] { $userEmail } ha essite involvite in { $breachCount } violationes de datos.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Iste adresse email ha essite involvite in 1  violation de datos.
+       *[other] Iste adresse email ha essite involvite in { $breachCount } violationes de datos.
+    }
+user-no-breaches-blurb = Nos te avisara si tu adresse email essera involvite in un nove violation de datos.
 have-an-account = Ha tu ja un conto?
+content-available = Contento disponibile sub licentia Creative Commons.
