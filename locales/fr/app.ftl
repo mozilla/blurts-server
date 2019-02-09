@@ -197,6 +197,7 @@ see-full-report = Voir le rapport complet
 manage-fxa = Gérer le { -brand-fxa[lowercase] }
 fxa-download-firefox-bar-blurb = Proposé par { -brand-name }, désormais 2x plus rapide et qui consomme 30 % de moins de mémoire que { -brand-Chrome }.
 fxa-download-firefox-bar-link = Télécharger
+fxa-download-firefox-banner-blurb = Un chargement des pages plus efficace, plus rapide et qui consomme moins de mémoire.
 user-fb-compromised-headline = { $userEmail } apparaît dans la fuite de données { $breachName }.
 guest-fb-compromised-headline = Cette adresse électronique apparaît dans la fuite de données { $breachName }.
 user-zero-breaches-headline = { $userEmail } n’apparaît dans aucune fuite de données.
