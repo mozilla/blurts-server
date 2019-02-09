@@ -250,3 +250,5 @@ user-generic-fb-compromised-blurb =
     }
 user-generic-fb-compromised-single = Questa violazione di dati ha coinvolto le seguenti informazioni personali.
 have-an-account = Hai già un account?
+fb-landing-headline = I tuoi dati sono stati esposti nella violazione di { $breachName }?
+content-available = Contenuto disponibile sotto licenza Creative Commons.
