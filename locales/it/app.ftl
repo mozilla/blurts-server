@@ -9,7 +9,11 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
--brand-fxa = Account Firefox
+-brand-fxa =
+    { $capitalization ->
+       *[lowercase] account Firefox
+        [uppercase] Account Firefox
+    }
 -brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
@@ -183,11 +187,6 @@ download-firefox-mobile = Scarica { -brand-name } per dispositivi mobili
 features = Caratteristiche
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    Parte di questi contenuti sono ©1998–2018 di singoli collaboratori di mozilla.org.<br/>
-    I contenuti sono disponibili secondo la <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">licenza Creative Commons</a> .
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Dati sulle violazioni forniti da { $hibp-link }
 site-description = I tuoi account sono stati compromessi o rubati in una violazione di dati? Scoprilo su { -product-name }. Cerca nel nostro database e registrati per ricevere avvisi.
@@ -219,7 +218,7 @@ sign-out = Disconnetti
 full-report-headline = Il tuo rapporto di { -product-name }
 see-full-report = Vedi rapporto completo
 # Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Gestisci { -brand-fxa }
+manage-fxa = Gestisci l’{ -brand-fxa }
 fxa-download-firefox-bar-blurb = Offerto da { -brand-name }. 2 volte più veloce. Consuma il 30% di memoria in meno di { -brand-Chrome }.
 fxa-download-firefox-bar-link = Scarica ora
 fxa-download-firefox-banner-blurb = Caricamento delle pagine più fluido e veloce con un minore consumo di memoria.
