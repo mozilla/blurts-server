@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Firefox-konto
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Support
@@ -179,11 +181,6 @@ download-firefox-mobile = Hent mobil-versionen af { -brand-name }
 features = Funktioner
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    Dele af dette indhold er  &#x24B8; 1998-2018 af individuelle bidragsydere til mozilla.org. <br/>
-    Indholdet er tilgængeligt under en  <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons-licens</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Information om datalæk stammer fra { $hibp-link }
 site-description = Er dine konti blevet lækket eller stjålet i en datalæk? Find ud af det med { -product-name }. Søg i vores database, og tilmeld dig for at modtage advarsler.
@@ -196,3 +193,51 @@ share-twitter = De fleste mennesker har omkring 100 online-konti. Er nogle af di
 share-facebook-headline = Find ud af, om du er blevet udsat for en datalæk.
 share-facebook-blurb = Er dine online-konti blevet ramt i en datalæk?
 og-site-description = Brug { -product-name } til at finde ud af, om du er blevet ramt af en datalæk. Tilmeld dig for at få advarsler om nye datalæk og få tips til at beskytte dine konti.
+show-all = Vis alle
+fxa-welcome-headline = Velkommen til { -product-name }.
+# Search Firefox Monitor
+fxa-scan-submit = Søg i { -product-name }
+sign-in = Log ind
+sign-out = Log ud
+full-report-headline = Din { -product-name }-rapport
+fxa-download-firefox-bar-link = Hent nu
+user-fb-compromised-headline = { $userEmail } optrådte i datalækken { $breachName }.
+guest-fb-compromised-headline = Denne mailadresse optrådte i datalækken { $breachName }.
+user-zero-breaches-headline = { $userEmail } optrådte i nul datalæk.
+guest-zero-breaches-headline = Denne mailadresse optrådte i nul datalæk.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } optrådte i 1 datalæk.
+       *[other] { $userEmail } optrådte i { $breachCount } datalæk.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Denne mailadresse optrådte i 1 datalæk.
+       *[other] Denne mailadresse optrådte i { $breachCount } datalæk.
+    }
+user-one-breach-blurb = Denne datalæk kompromitterede følgende personlige oplysninger.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Din mailadresse optrådte også i { $breachCount } anden datalæk.
+       *[other] Din mailadresse optrådte også i { $breachCount } andre datalæk.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Denne mailadresse optrådte også i { $breachCount } anden datalæk.
+       *[other] Denne mailadresse optrådte også i { $breachCount } andre datalæk.
+    }
+user-generic-fb-compromised-single = Denne datalæk kompromitterede følgende personlige oplysninger.
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Denne mailadresse optræder ikke i datalækken { $breachName }, men findes i en anden datalæk.
+       *[other] Denne mailadresse optræder ikke i datalækken { $breachName }, men findes i andre datalæk.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Denne datalæk kompromitterede følgende personlige oplysninger.
+       *[other] Disse { $breachCount } datalæk kompromitterede følgende personlige oplysninger.
+    }
+have-an-account = Har du allerede en konto?
+copyright = Dele af dette indhold er © 1999-{ $year } af individuelle bidragsydere til mozilla.org.
