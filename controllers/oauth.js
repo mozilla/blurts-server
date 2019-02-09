@@ -86,6 +86,8 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
       true,
     );
 
+    const utmID = "report";
+
     await EmailUtils.sendEmail(
       email,
       req.fluentFormat("user-verify-email-report-subject"),
@@ -95,6 +97,7 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
         email: email,
         date: HBSHelpers.prettyDate(req.supportedLocales, new Date()),
         unsafeBreachesForEmail: unsafeBreachesForEmail,
+        scanAnotherEmailHref: EmailUtils.getScanAnotherEmailUrl(utmID),
         unsubscribeUrl: unsubscribeUrl,
         buttonValue: req.fluentFormat("report-scan-another-email"),
         whichView: "email_partials/report",
