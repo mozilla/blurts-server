@@ -249,3 +249,4 @@ user-generic-fb-compromised-blurb =
        *[other] Questo indirizzo email è stato coinvolto anche in { $breachCount } altre violazioni.
     }
 user-generic-fb-compromised-single = Questa violazione di dati ha coinvolto le seguenti informazioni personali.
+have-an-account = Hai già un account?
