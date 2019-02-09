@@ -10,9 +10,9 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa =
-    {
-        [lowercase] compte Firefox
-       *[uppercase] Compte Firefox
+    { $capitalization ->
+       *[lowercase] compte Firefox
+        [uppercase] Compte Firefox
     }
 -brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
@@ -178,7 +178,7 @@ mozilla-security-blog = Blog { -brand-Mozilla } sur la sécurité
 layout-social = Réseaux sociaux
 show-all = Tout afficher
 fxa-signup-banner-headline = Surveillez les menaces qui pèsent sur vos comptes en ligne.
-fxa-signup-banner-blurb = Créez un { -brand-fxa[lowercase] } afin d’obtenir un rapport détaillé et des alertes lors de nouvelles fuites de données.
+fxa-signup-banner-blurb = Créez un { -brand-fxa } afin d’obtenir un rapport détaillé et des alertes lors de nouvelles fuites de données.
 fxa-landing-blurb =
     Découvrez ce que les pirates informatiques savent déjà de vous,
     et apprenez à garder une longueur d’avance sur eux.
@@ -194,7 +194,7 @@ sign-out = Se déconnecter
 full-report-headline = Votre rapport { -product-name }
 see-full-report = Voir le rapport complet
 # Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Gérer le { -brand-fxa[lowercase] }
+manage-fxa = Gérer le { -brand-fxa }
 fxa-download-firefox-bar-blurb = Proposé par { -brand-name }, désormais 2x plus rapide et qui consomme 30 % de moins de mémoire que { -brand-Chrome }.
 fxa-download-firefox-bar-link = Télécharger
 fxa-download-firefox-banner-blurb = Un chargement des pages plus efficace, plus rapide et qui consomme moins de mémoire.
@@ -213,7 +213,7 @@ guest-scan-results-headline =
        *[other] Cette adresse électronique apparaît dans { $breachCount } fuites de données.
     }
 user-no-breaches-blurb = Nous vous préviendrons si cette adresse électronique apparaît dans une nouvelle fuite de données.
-guest-no-breaches-blurb = Pour vérifier si cette adresse électronique apparaît dans des fuites de données sensibles, créez un { -brand-fxa[lowercase] }. Nous vous alerterons également si cette adresse apparaît dans de nouvelles fuites de données.
+guest-no-breaches-blurb = Pour vérifier si cette adresse électronique apparaît dans des fuites de données sensibles, créez un { -brand-fxa }. Nous vous alerterons également si cette adresse apparaît dans de nouvelles fuites de données.
 user-one-breach-blurb = Cette fuite de données a compromis les informations personnelles suivantes.
 user-fb-compromised-blurb =
     { $breachCount ->
@@ -227,11 +227,11 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = Cette fuite de données a compromis les informations personnelles suivantes. Si ce n’est pas déjà fait, changez vos mots de passe.
 user-generic-fb-compromised-single = Cette fuite de données a compromis les informations personnelles suivantes.
-guest-fb-compromised-single = Cette fuite de données a compromis les informations personnelles suivantes. Créez un { -brand-fxa[lowercase] } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
+guest-fb-compromised-single = Cette fuite de données a compromis les informations personnelles suivantes. Créez un { -brand-fxa } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
 guest-fb-compromised-blurb =
     { $breachCount ->
-        [one] Cette adresse électronique apparaît également dans une autre fuite de données. Créez un { -brand-fxa[lowercase] } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
-       *[other] Cette adresse électronique apparaît également dans { $breachCount } autres fuites de données. Créez un { -brand-fxa[lowercase] } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
+        [one] Cette adresse électronique apparaît également dans une autre fuite de données. Créez un { -brand-fxa } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
+       *[other] Cette adresse électronique apparaît également dans { $breachCount } autres fuites de données. Créez un { -brand-fxa } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
     }
 user-fb-not-compromised-blurb =
     { $breachCount ->
@@ -245,8 +245,8 @@ user-generic-fb-not-compromised-blurb =
     }
 guest-fb-not-compromised-blurb =
     { $breachCount ->
-        [one] Cette adresse électronique n’apparaît pas dans la fuite de données { $breachName }, mais a été détectée dans une autre fuite de données. Créez un { -brand-fxa[lowercase] } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
-       *[other] Cette adresse électronique n’apparaît pas dans la fuite de données { $breachName }, mais a été détectée dans d’autres fuites de données. Créez un { -brand-fxa[lowercase] } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
+        [one] Cette adresse électronique n’apparaît pas dans la fuite de données { $breachName }, mais a été détectée dans une autre fuite de données. Créez un { -brand-fxa } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
+       *[other] Cette adresse électronique n’apparaît pas dans la fuite de données { $breachName }, mais a été détectée dans d’autres fuites de données. Créez un { -brand-fxa } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -266,8 +266,8 @@ user-generic-found-breaches-blurb =
 # you can use {$breachCount} to display the number of breaches in your localization.
 guest-found-breaches-blurb =
     { $breachCount ->
-        [one] Cette fuite de données a compromis les informations personnelles suivantes. Créez un { -brand-fxa[lowercase] } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
-       *[other] Ces fuites de données ont compromis les informations personnelles suivantes. Créez un { -brand-fxa[lowercase] } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
+        [one] Cette fuite de données a compromis les informations personnelles suivantes. Créez un { -brand-fxa } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
+       *[other] Ces fuites de données ont compromis les informations personnelles suivantes. Créez un { -brand-fxa } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
     }
 have-an-account = Vous possédez déjà un compte ?
 signup-banner-sensitive-blurb = Découvrez ce que les pirates informatiques savent déjà de vous, et apprenez à garder une longueur d’avance sur eux. Recevez des alertes si votre compte apparaît dans de nouvelles fuites de données.
