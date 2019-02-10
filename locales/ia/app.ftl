@@ -254,6 +254,15 @@ user-generic-fb-compromised-single = Iste violation ha exponite le sequente info
 guest-fb-compromised-single =
     Iste violation ha exponite le sequente info personal. Registration a un { -brand-fxa }
     pro procurar te tu reporto complete e avisos re nove violationes.
+guest-fb-compromised-blurb =
+    { $breachCount ->
+        [one]
+            Iste adresse email alsi esseva implicate in { $breachCount } altere violation. Inscribe te a un 
+            { -brand-fxa } pro te procurar tu reporto complete e avisos re nove violationes.
+       *[other]
+            Iste adresse email alsi esseva implicate in { $breachCount } altere violationes. Inscribe te a un 
+            { -brand-fxa } pro te procurar tu reporto complete e avisos re nove violationes.
+    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Tu non era in le violation { $breachName }, ma nos trovava ille adresse email in un altero.
