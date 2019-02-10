@@ -240,6 +240,7 @@ user-generic-fb-compromised-blurb =
         [one] Dit e-mailadres is door nog { $breachCount } ander lek getroffen.
        *[other] Dit e-mailadres is door nog { $breachCount } andere lekken getroffen.
     }
+user-fb-compromised-single = Dit lek heeft de volgende persoonlijke gegevens gelekt. Wijzig uw wachtwoorden, als u dit nog niet hebt gedaan.
 user-generic-fb-compromised-single = Dit lek heeft de volgende persoonlijke gegevens gelekt.
 guest-fb-compromised-single = Dit lek heeft de volgende persoonlijke gegevens gelekt. Schrijf u in voor een { -brand-fxa } om uw volledige rapport en waarschuwingen voor nieuwe lekken te ontvangen.
 guest-fb-compromised-blurb =
@@ -262,6 +263,27 @@ guest-fb-not-compromised-blurb =
         [one] Dit e-mailadres is niet getroffen door het { $breachName }-lek, maar we hebben het in een ander lek gevonden. Schrijf u in voor een { -brand-fxa } om uw volledige rapport en waarschuwingen voor nieuwe lekken te ontvangen.
        *[other] Dit e-mailadres is niet getroffen door het { $breachName }-lek, maar we hebben het in andere lekken gevonden. Schrijf u in voor een { -brand-fxa } om uw volledige rapport en waarschuwingen voor nieuwe lekken te ontvangen.
     }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] Dit lek heeft de volgende persoonlijke gegevens gelekt. Wijzig uw wachtwoord, als u dit nog niet hebt gedaan.
+       *[other] Dit lek heeft de volgende persoonlijke gegevens gelekt. Wijzig uw wachtwoorden, als u dit nog niet hebt gedaan.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Dit lek heeft de volgende persoonlijke gegevens gelekt.
+       *[other] Deze lekken hebben de volgende persoonlijke gegevens gelekt.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+guest-found-breaches-blurb =
+    { $breachCount ->
+        [one] Dit lek heeft de volgende persoonlijke gegevens gelekt. Schrijf u in voor een { -brand-fxa } om uw volledige rapport en waarschuwingen voor nieuwe lekken te ontvangen.
+       *[other] Deze lekken hebben de volgende persoonlijke gegevens gelekt. Schrijf u in voor een { -brand-fxa } om uw volledige rapport en waarschuwingen voor nieuwe lekken te ontvangen.
+    }
 have-an-account = Hebt u al een account?
 signup-banner-sensitive-blurb = Ontdek wat hackers al over u weten, en leer hoe u ze een stap voor kunt blijven. Ontvang een waarschuwing wanneer uw account door nieuwe datalekken is getroffen.
 fxa-pwt-section-blurb = Wachtwoorden beschermen alle persoonlijke gegevens in uw online accounts. En hackers vertrouwen op slechte gewoonten, zoals overal hetzelfde wachtwoord gebruiken of het gebruik van veelvoorkomende zinnen (gebruikt er iemand @p@ssw0rd?), zodat als ze één account hacken, ze er meteen veel hacken.
@@ -276,6 +298,10 @@ fxa-pwt-summary-6 =
     stuurt { -product-name } u een waarschuwing - zodat u in actie kunt komen en uw accounts kunt beschermen.
 fxa-what-to-do-blurb-1 = Als u zich niet kunt aanmelden, neem dan contact op met de website en vraag hoe u het kunt bijwerken. Ziet u een account die u niet herkent? Mogelijk zijn uw gegevens dan verkocht of herverdeeld. Dit kan ook een vergeten account zijn, of een bedrijf dat van naam is veranderd.
 fxa-what-to-do-subhead-2 = Stop met het gebruik van het gelekte wachtwoord, en wijzig het op de plaatsen waar u het hebt gebruikt.
+fxa-wtd-blurb-2 =
+    Hackers kunnen proberen hetzelfde wachtwoord en uw e-mailadres te gebruiken voor toegang tot andere accounts.  
+    Maak voor elke account een ander en uniek wachtwoord aan, vooral voor uw bankrekening, 
+    e-mailaccount en andere websites waar u persoonlijke gegevens opslaat.
 fxa-what-to-do-blurb-3 =
     De meeste lekken omvatten alleen e-mailadressen en wachtwoorden, maar sommige bevatten ook gevoelige financiële informatie. 
     Als uw bankrekening of creditcardnummers zijn gelekt, waarschuw dan uw bank voor mogelijke fraude. 
