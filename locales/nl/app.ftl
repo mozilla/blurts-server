@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Firefox-account
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Ondersteuning
@@ -172,11 +174,6 @@ download-firefox-mobile = { -brand-name } Mobiel downloaden
 features = Functies
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    Onderdelen van deze inhoud zijn &#x24B8; 1998-2018 door individuele medewerkers van mozilla.org. <br />
-    Inhoud is beschikbaar onder een <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons-licentie</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Gegevens van datalekken verstrekt door { $hibp-link }
 site-description = Zijn uw accounts gelekt of gestolen bij een datalek? Ontdek het bij { -product-name }. Doorzoek onze database en schrijf u in voor waarschuwingen.
@@ -189,3 +186,105 @@ share-twitter = De meeste mensen hebben ongeveer 100 online accounts. Is een van
 share-facebook-headline = Ontdek of u bent getroffen door een datalek
 share-facebook-blurb = Zijn uw online accounts getroffen door een datalek?
 og-site-description = Ontdek met { -product-name } of u bent getroffen door een datalek. Schrijf u in voor waarschuwingen over toekomstige lekken en ontvang tips over hoe u uw accounts veilig houdt.
+mozilla-security-blog = { -brand-Mozilla }-beveiligingsblog
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Sociaal
+show-all = Alles tonen
+fxa-signup-banner-headline = Volg bedreigingen van uw online accounts.
+fxa-signup-banner-blurb = Schrijf u in voor een { -brand-fxa } om uw gedetailleerde rapport en waarschuwingen over nieuwe datalekken te ontvangen.
+fxa-landing-blurb =
+    Ontdek wat hackers al over u weten,
+    en leer hoe u ze een stap voor kunt blijven.
+fxa-scan-label = Bekijk of u getroffen bent door een datalek.
+fxa-welcome-headline = Welkom bij { -product-name }.
+fxa-welcome-blurb = U ontvangt vanaf nu waarschuwingen als { $userEmail } getroffen is door een datalek.
+fxa-scan-another-email = Wilt u een ander e-mailadres controleren?
+# Search Firefox Monitor
+fxa-scan-submit = { -product-name } doorzoeken
+sign-up-to-check = Schrijf u in om te controleren
+sign-in = Aanmelden
+sign-out = Afmelden
+full-report-headline = Uw { -product-name }-rapport
+see-full-report = Volledig rapport bekijken
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = { -brand-fxa } beheren
+fxa-download-firefox-bar-blurb = Aangeboden door { -brand-name }. Dubbel zo snel. Gebruikt 30% minder geheugen dan { -brand-Chrome }.
+fxa-download-firefox-bar-link = Nu downloaden
+fxa-download-firefox-banner-blurb = Beter, sneller pagina’s laden met minder gebruik van computergeheugen.
+user-fb-compromised-headline = { $userEmail } komt voor in het { $breachName }-datalek.
+guest-fb-compromised-headline = Dit e-mailadres is getroffen in het { $breachName }-datalek.
+user-zero-breaches-headline = { $userEmail } komt niet in datalekken voor.
+guest-zero-breaches-headline = Dit e-mailadres komt niet in datalekken voor.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } is door 1 datalek getroffen.
+       *[other] { $userEmail } is door { $breachCount } datalekken getroffen.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Dit e-mailadres is door 1 datalek getroffen.
+       *[other] Dit e-mailadres is door { $breachCount } datalekken getroffen.
+    }
+user-no-breaches-blurb = We sturen u een waarschuwing als dit e-mailadres door een nieuw lek is getroffen.
+guest-no-breaches-blurb =
+    Maak een { -brand-fxa } aan om te zien of dit e-mailadres door gevoelige lekken is getroffen. 
+    We sturen u ook een waarschuwing als dit adres door nieuwe datalekken is getroffen.
+user-one-breach-blurb = Dit lek heeft de volgende persoonlijke gegevens gelekt.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Uw e-mailadres is door nog { $breachCount } ander lek getroffen.
+       *[other] Uw e-mailadres is door nog { $breachCount } andere lekken getroffen.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Dit e-mailadres is door nog { $breachCount } ander lek getroffen.
+       *[other] Dit e-mailadres is door nog { $breachCount } andere lekken getroffen.
+    }
+user-generic-fb-compromised-single = Dit lek heeft de volgende persoonlijke gegevens gelekt.
+guest-fb-compromised-single = Dit lek heeft de volgende persoonlijke gegevens gelekt. Schrijf u in voor een { -brand-fxa } om uw volledige rapport en waarschuwingen voor nieuwe lekken te ontvangen.
+guest-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Dit e-mailadres is door nog { $breachCount } ander lek getroffen. Schrijf u in voor een { -brand-fxa } om uw volledige rapport en waarschuwingen voor nieuwe lekken te ontvangen.
+       *[other] Dit e-mailadres is door nog { $breachCount } andere lekken getroffen. Schrijf u in voor een { -brand-fxa } om uw volledige rapport en waarschuwingen voor nieuwe lekken te ontvangen.
+    }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] U bent niet getroffen door het { $breachName }-lek, maar we hebben dat e-mailadres in een ander lek gevonden.
+       *[other] U bent niet getroffen door het { $breachName }-lek, maar we hebben dat e-mailadres in andere lekken gevonden.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Dit e-mailadres is niet getroffen door het { $breachName }-lek, maar we hebben het in een ander lek gevonden.
+       *[other] Dit e-mailadres is niet getroffen door het { $breachName }-lek, maar we hebben het in andere lekken gevonden.
+    }
+guest-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Dit e-mailadres is niet getroffen door het { $breachName }-lek, maar we hebben het in een ander lek gevonden. Schrijf u in voor een { -brand-fxa } om uw volledige rapport en waarschuwingen voor nieuwe lekken te ontvangen.
+       *[other] Dit e-mailadres is niet getroffen door het { $breachName }-lek, maar we hebben het in andere lekken gevonden. Schrijf u in voor een { -brand-fxa } om uw volledige rapport en waarschuwingen voor nieuwe lekken te ontvangen.
+    }
+have-an-account = Hebt u al een account?
+signup-banner-sensitive-blurb = Ontdek wat hackers al over u weten, en leer hoe u ze een stap voor kunt blijven. Ontvang een waarschuwing wanneer uw account door nieuwe datalekken is getroffen.
+fxa-pwt-section-blurb = Wachtwoorden beschermen alle persoonlijke gegevens in uw online accounts. En hackers vertrouwen op slechte gewoonten, zoals overal hetzelfde wachtwoord gebruiken of het gebruik van veelvoorkomende zinnen (gebruikt er iemand @p@ssw0rd?), zodat als ze één account hacken, ze er meteen veel hacken.
+fxa-pwt-summary-2 =
+    Korte uit één woord bestaande wachtwoorden zijn voor hackers eenvoudig te raden. 
+    Gebruik ten minste twee woorden en een combinatie van letters, cijfers en speciale tekens.
+fxa-pwt-summary-4 =
+    Wachtwoordbeheerders als 1Password, LastPass, Dashlane en Bitwarden slaan uw wachtwoorden 
+    op en vullen ze voor u in op websites. Ze helpen u zelfs bij het aanmaken van sterke wachtwoorden.
+fxa-pwt-summary-6 =
+    Datalekken komen steeds vaker voor. Als uw persoonlijke gegevens in een nieuw datalek verschijnen,
+    stuurt { -product-name } u een waarschuwing - zodat u in actie kunt komen en uw accounts kunt beschermen.
+fxa-what-to-do-blurb-1 = Als u zich niet kunt aanmelden, neem dan contact op met de website en vraag hoe u het kunt bijwerken. Ziet u een account die u niet herkent? Mogelijk zijn uw gegevens dan verkocht of herverdeeld. Dit kan ook een vergeten account zijn, of een bedrijf dat van naam is veranderd.
+fxa-what-to-do-subhead-2 = Stop met het gebruik van het gelekte wachtwoord, en wijzig het op de plaatsen waar u het hebt gebruikt.
+fxa-what-to-do-blurb-3 =
+    De meeste lekken omvatten alleen e-mailadressen en wachtwoorden, maar sommige bevatten ook gevoelige financiële informatie. 
+    Als uw bankrekening of creditcardnummers zijn gelekt, waarschuw dan uw bank voor mogelijke fraude. 
+    Let op afschrijvingen die u niet herkent.
+fxa-what-to-do-subhead-4 = Gebruik hulp bij het onthouden van al uw wachtwoorden en het veilig houden ervan.
+fxa-what-to-do-blurb-4 =
+    Wachtwoordbeheerders als 1Password, LastPass, Dashlane en Bitwarden slaan uw 
+    wachtwoorden veilig op en vullen ze voor u op websites in. Gebruik een wachtwoordbeheerder 
+    op uw telefoon en uw computer, zodat u ze niet allemaal hoeft te onthouden.
+fb-landing-headline = Zijn uw gegevens gelekt in het { $breachName }-datalek?
+copyright = Onderdelen van deze inhoud zijn © 1999-{ $year } door individuele medewerkers van mozilla.org.
+content-available = Inhoud is beschikbaar onder een Creative Commons-licentie.
