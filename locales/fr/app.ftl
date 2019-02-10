@@ -286,3 +286,5 @@ fxa-what-to-do-blurb-3 = La plupart des fuites de données compromettent les adr
 fxa-what-to-do-subhead-4 = Obtenez de l’aide pour retenir tous vos mots de passe et les protéger.
 fxa-what-to-do-blurb-4 = Les gestionnaires de mots de passe tels que 1Password, LastPass, Dashlane et Bitwarden conservent vos mots de passe en toute sécurité et les remplissent dans les sites web pour vous. Utilisez un gestionnaire de mots de passe sur votre téléphone et votre ordinateur pour ne pas avoir à tous les retenir.
 fb-landing-headline = Vos informations ont-elles été compromises dans la fuite de données { $breachName } ?
+copyright = Certaines parties de ce contenu sont © 1999-{ $year } par les contributeurs individuels de mozilla.org.
+content-available = Le contenu est disponible sous licence Creative Commons.
