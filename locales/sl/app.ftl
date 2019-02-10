@@ -10,6 +10,7 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox Račun
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Podpora
@@ -174,11 +175,6 @@ download-firefox-mobile = Prenesite { -brand-name } za mobilne naprave
 features = Značilnosti
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    Deli vsebine so avtorsko zaščiteni &#x24B8; 1998–2018 s strani sodelavcev mozilla.org. <br />
-    Vsebina je na voljo pod pogoji <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Podatke o krajah podatkov omogoča { $hibp-link }
 site-description = Ali so bili podatki vaših računov izpostavljeni ali ukradeni? Preverite s { -product-name }jem. Preiščite našo bazo podatkov in se prijavite na opozorila.
@@ -194,11 +190,33 @@ og-site-description = S { -product-name }jem preverite, ali ste bili žrtev kraj
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Družabno
 show-all = Prikaži vse
+fxa-landing-blurb =
+    Ugotovite, kaj o vas hekerji že vedo,
+    in se naučite, kako ostati korak pred njimi.
 fxa-welcome-headline = Dobrodošli v { -product-name }.
 sign-in = Prijava
 sign-out = Odjava
 full-report-headline = Vaše poročilo { -product-name }
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Upravljaj { -brand-fxa }
 fxa-download-firefox-bar-link = Prenesi zdaj
 fxa-download-firefox-banner-blurb = Boljše in hitrejše nalaganje strani z manjšo porabo računalniškega pomnilnika.
-guest-fb-compromised-headline = Ta e-poštni naslov je bil del kraj podatkov { $breachName }.
+user-fb-compromised-headline = { $userEmail } se je pojavil v kraji podatkov »{ $breachName }«.
+guest-fb-compromised-headline = Ta e-poštni naslov se je pojavil v kraji podatkov »{ $breachName }«.
+user-zero-breaches-headline = { $userEmail } se ni pojavil v nobeni kraji podatkov.
+guest-zero-breaches-headline = Ta e-poštni naslov se ni pojavil v nobeni kraji podatkov.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } se je pojavil v 1 kraji podatkov.
+        [two] { $userEmail } se je pojavil v { $breachCount } krajah podatkov.
+        [few] { $userEmail } se je pojavil v { $breachCount } krajah podatkov.
+       *[other] { $userEmail } se je pojavil v { $breachCount } krajah podatkov.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Ta e-poštni naslov se je pojavil v 1 kraji podatkov.
+        [two] Ta e-poštni naslov se je pojavil v { $breachCount } krajah podatkov.
+        [few] Ta e-poštni naslov se je pojavil v { $breachCount } krajah podatkov.
+       *[other] Ta e-poštni naslov se je pojavil v { $breachCount } krajah podatkov.
+    }
 have-an-account = Že imate račun?
