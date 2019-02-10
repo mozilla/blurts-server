@@ -9,6 +9,7 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Asistencia
@@ -176,11 +177,6 @@ download-firefox-mobile = Descarga { -brand-name } para dispositivos móviles
 features = Características
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    Algunas partes de este contenido tienen &#x24B8; 1998-2018 por colaboradores individuales de mozilla.org. <br />
-    El contenido está disponible bajo una <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener"> licencia de Creative Commons </a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Filtración de datos proporcionada por { $hibp-link }
 site-description = ¿Se han filtrado o robado tus cuentas en una filtración de datos? Descúbrelo en { -product-name }. Busca en nuestra base de datos y date de alta para recibir alertas.
@@ -193,3 +189,15 @@ share-twitter = La mayoría de la gente tiene alrededor de 100 cuentas en línea
 share-facebook-headline = Comprueba si has sido parte de una filtración de datos
 share-facebook-blurb = ¿Tus cuentas en línea han sido expuestas en una filtración de datos?
 og-site-description = Descubre si has sido parte de una filtración de datos con { -product-name }. Regístrate para recibir alertas de futuras filtraciones y consejos para mantener tus cuentas seguras.
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Social
+show-all = Mostrar todo
+fxa-welcome-headline = Bienvenido a { -product-name }.
+sign-in = Iniciar sesión
+sign-out = Cerrar sesión
+full-report-headline = Tu informe de { -product-name }
+see-full-report = Ver informe completo
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Gestionar { -brand-fxa }
+fxa-download-firefox-bar-link = Descargar ahora
+have-an-account = ¿Ya tienes una cuenta?
