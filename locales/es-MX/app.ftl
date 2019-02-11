@@ -245,3 +245,27 @@ user-generic-fb-compromised-blurb =
         [one] Este correo electrónico apareció en { $breachCount } otras violaciones de datos.
        *[other] Este correo electrónico apareció en { $breachCount } otras violaciones de datos.
     }
+user-fb-compromised-single = Esta filtración muestra la siguiente información personal. Si aún no has cambiado tus contraseñas, es un buen momento.
+user-generic-fb-compromised-single = Esta filtración muestra la siguiente información personal.
+guest-fb-compromised-single = Esta filtración muestra la siguiente información personal. Regístrate a { -brand-fxa } para obtener un reporte completo y alertas acerca de nuevas filtraciones de datos.
+guest-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Este correo electrónico apareció en { $breachCount } otra filtración. Regístrate a { -brand-fxa } para obtener un reporte completo y alertas acerca de nuevas filtraciones.
+       *[other] Este correo electrónico apareció en { $breachCount } otras filtraciones. Regístrate a { -brand-fxa } para obtener un reporte completo y alertas acerca de nuevas filtraciones.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Esta violación de datos muestra la siguiente información personal.
+       *[other] Estas violaciones de datos muestran la siguiente información personal.
+    }
+have-an-account = ¿Ya tienes una cuenta?
+fxa-pwt-summary-2 =
+    Contraseñas cortas y de una sola palabra son fáciles para que adivinen los hackers.
+    Usa al menos dos palabras y una combinación de letras, números y caracteres especiales.
+fxa-pwt-summary-4 = Administradores de contraseñas como 1Password, LastPass, Dashlane y Bitwarden almacena tus contraseñas y úsalas en tus sitios web. Ellos ayudarán a crear contraseñas fuertes.
+fxa-what-to-do-subhead-2 = Deja de usar la contraseña expuesta, y cambiala en todos los lugares en los que la usaste.
+fxa-what-to-do-subhead-4 = Obtén ayuda recordando todas tus contraseñas y manteniéndolas seguras.
+copyright = Partes de este contenido son © 1999-{ $year } por colaboradores individuales de mozilla.org.
+content-available = Contenido disponible bajo una licencia Creative Commons.
