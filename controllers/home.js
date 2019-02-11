@@ -34,7 +34,7 @@ async function home(req, res) {
   let authenticatedUser = false;
 
   // for #688: use a page token to check for bot scans
-  const encryptedPageToken = AppConstants.PAGE_TOKEN_TIMER > 0 ? _generatePageToken(req) : "";
+  const pageToken = AppConstants.PAGE_TOKEN_TIMER > 0 ? _generatePageToken(req) : "";
 
   if (req.query.breach) {
     const reqBreachName = req.query.breach.toLowerCase();
@@ -83,7 +83,7 @@ async function home(req, res) {
   res.render("monitor", {
     title: req.fluentFormat("home-title"),
     csrfToken: req.csrfToken(),
-    encryptedPageToken: encryptedPageToken,
+    pageToken: pageToken,
     featuredBreach: featuredBreach,
     scanFeaturedBreach,
     foundBreaches,

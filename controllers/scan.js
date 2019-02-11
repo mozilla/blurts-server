@@ -40,7 +40,7 @@ function _validatePageToken(pageToken, req) {
     req.session.scans.push(emailHash);
   }
   */
-  return true;
+  return pageToken;
 }
 
 
@@ -50,18 +50,19 @@ async function post (req, res) {
   let featuredBreach = null;
   let userAccountCompromised = false;
   let foundBreaches = [];
+  let validPageToken = false;
 
-  // for #688: use a page token to check for bot scans
+  // for #688: use a page token to check that scans come from real pages
   if (AppConstants.PAGE_TOKEN_TIMER > 0) {
     if (!encryptedPageToken) {
-      throw new FluentError("error-no-page-token");
+      throw new FluentError("error-scan-page-token");
     }
     const decryptedPageToken = _decryptPageToken(encryptedPageToken);
-    if (!_validatePageToken(decryptedPageToken, req)) {
-      throw new FluentError("error-invalid-page-token");
+    validPageToken = _validatePageToken(decryptedPageToken, req);
+    if (!validPageToken) {
+      throw new FluentError("error-scan-page-token");
     }
   }
-
 
   if (!emailHash || emailHash === sha1("")) {
     res.redirect("/");
@@ -92,6 +93,7 @@ async function post (req, res) {
     res.render("scan", {
       title: req.fluentFormat("scan-title"),
       csrfToken: req.csrfToken(),
+      pageToken: encryptedPageToken,
       foundBreaches,
       featuredBreach,
       userAccountCompromised,
@@ -102,6 +104,7 @@ async function post (req, res) {
     res.render("scan", {
       title: req.fluentFormat("scan-title"),
       csrfToken: req.csrfToken(),
+      pageToken: encryptedPageToken,
       foundBreaches,
     });
   }
