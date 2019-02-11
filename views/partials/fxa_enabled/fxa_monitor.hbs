@@ -27,7 +27,7 @@
     <div class="half">
       {{#if featuredBreach}}
         {{> featured_breach}}
-        {{> hibp_attribution class="align-left"}}
+        {{> hibp_attribution additionalClasses="align-left"}}
       {{else}}
         <span class="demi form-desc">{{fluentFxa req.supportedLocales "scan-label"}}</span>
         {{> scan_form}}
