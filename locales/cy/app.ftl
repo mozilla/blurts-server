@@ -172,9 +172,6 @@ download-firefox-mobile = Llwytho { -brand-name } Symudol i Lawr
 features = nodweddion
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info = Mae darnau o'r cynnwys hwn yn Ⓒ 1998-2018 gan gyfranwyr mozilla.org unigol. <br /> Mae cynnwys ar gael o dan <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">drwydded Creative Commons</a> .
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Mae data tor-data wedi ei ddarparu gan { $hibp-link }
 site-description = A gafodd eich cyfrifon eu ryddhau neu eu dwyn mewn tor-data? Gallwch weld yn { -product-name }. Chwiliwch ein cronfa ddata a chofrestru am rybuddion.
@@ -309,6 +306,39 @@ guest-fb-not-compromised-blurb =
             { -brand-fxa }Nid oedd yr e-bost hwn yn nhordata { $breachName }, ond fe'i welwyd mewn un arall.
             Cofrestrwch am { -brand-fxa } i gael eich adroddiad llawn a rhybuddion am unrhyw dordata newydd.
     }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [zero] Mae'r tor-data hwn wedi amlygu manylion personol. Os nad ydych eisoes wedi gwneud, newidiwch eich cyfrinair
+        [one] Mae'r tor-data hwn wedi amlygu manylion personol. Os nad ydych eisoes wedi gwneud, newidiwch eich cyfrinair
+        [two] Mae'r tor-data hyn wedi amlygu manylion personol. Os nad ydych eisoes wedi gwneud, newidiwch eich cyfrinair
+        [few] Mae'r tor-data hyn wedi amlygu manylion personol. Os nad ydych eisoes wedi gwneud, newidiwch eich cyfrinair
+        [many] Mae'r tor-data hyn wedi amlygu manylion personol. Os nad ydych eisoes wedi gwneud, newidiwch eich cyfrinair
+       *[other] Mae'r tor-data hyn wedi amlygu manylion personol. Os nad ydych eisoes wedi gwneud, newidiwch eich cyfrinair
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [zero] Mae'r tor-data wedi amlygu'r manylion personol canlynol.
+        [one] Mae'r tor-data wedi amlygu'r manylion personol canlynol.
+        [two] Mae'r tor-data wedi amlygu'r manylion personol canlynol.
+        [few] Mae'r tor-data wedi amlygu'r manylion personol canlynol.
+        [many] Mae'r tor-data wedi amlygu'r manylion personol canlynol.
+       *[other] Mae'r tor-data wedi amlygu'r manylion personol canlynol.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+guest-found-breaches-blurb =
+    { $breachCount ->
+        [zero] Mae'r tor-data wedi amlygu'r manylion personol canlynol. Cofrestrwch am { -brand-fxa } i gael adroddiad llawn a rhybuddion am dor-data newydd.
+        [one] Mae'r tor-data wedi amlygu'r manylion personol canlynol. Cofrestrwch am { -brand-fxa } i gael adroddiad llawn a rhybuddion am dor-data newydd.
+        [two] Mae'r tor-data wedi amlygu'r manylion personol canlynol. Cofrestrwch am { -brand-fxa } i gael adroddiad llawn a rhybuddion am dor-data newydd.
+        [few] Mae'r tor-data wedi amlygu'r manylion personol canlynol. Cofrestrwch am { -brand-fxa } i gael adroddiad llawn a rhybuddion am dor-data newydd.
+        [many] Mae'r tor-data wedi amlygu'r manylion personol canlynol. Cofrestrwch am { -brand-fxa } i gael adroddiad llawn a rhybuddion am dor-data newydd.
+       *[other] Mae'r tor-data wedi amlygu'r manylion personol canlynol. Cofrestrwch am { -brand-fxa } i gael adroddiad llawn a rhybuddion am dor-data newydd.
+    }
 have-an-account = Oes gennych chi gyfrif yn barod?
 signup-banner-sensitive-blurb =
     Darganfod beth mae hacwyr eisoes yn ei wybod amdanoch chi, a dysgu sut i
@@ -331,7 +361,10 @@ fxa-what-to-do-blurb-1 =
     Os nad oes modd i chi fewngofnodi, cysylltwch â'r wefan i ofyn sut i'w ddiweddaru.
     Gweld cyfrif nad ydych chi'n ei adnabod? Gall fod eich data wedi cael ei werthu neu ei ailddosbarthu. Gall hyn hefyd fod am gyfrif rydych wedi'i anghofio roeddech wedi ei greu neu gwmni sydd wedi newid ei enw.
 fxa-what-to-do-subhead-2 = Peidio ddefnyddio'r cyfrinair hysbys a'i newid lle bynnag rydych wedi ei ddefnyddio.
-fxa-what-to-do-blurb-2 = Gall hacwyr geisio ailddefnyddio'ch cyfrinair hysbys i fynd i mewn i gyfrifon ac e-byst eraill. Crëwch gyfrinair gwahanol ar gyfer pob gwefan, yn enwedig ar gyfer eich cyfrif banc, e-bost a gwefannau eraill lle rydych yn cadw manylion personol.
+fxa-wtd-blurb-2 =
+    Gall hacwyr geisio ailddefnyddio'ch cyfrinair hysbys i fynd i mewn i gyfrifon ac e-byst eraill. 
+    Crëwch gyfrinair gwahanol ac unigryw ar gyfer pob gwefan, yn enwedig ar gyfer eich cyfrif banc,
+    e-bost a gwefannau eraill lle rydych yn cadw manylion personol.
 fxa-what-to-do-blurb-3 = Mae'r rhan fwyaf o achosion o dor-data yn datgelu e-byst a chyfrineiriau yn unig ond mae rhai yn cynnwys manylion ariannol sensitif. Os cafodd eich cyfrif banc neu rifau cerdyn credyd eu cynnwys mewn tor-data, rhowch wybod i'ch banc am dwyll posibl, a monitro datganiadau am daliadau nad ydych yn gyfarwydd â nhw.
 fxa-what-to-do-subhead-4 = Derbyn cymorth i gofio'ch cyfrineiriau a'u cadw'n ddiogel.
 fxa-what-to-do-blurb-4 =
@@ -339,3 +372,5 @@ fxa-what-to-do-blurb-4 =
     cyfrineiriau'n ddiogel a'u cyflwyno i wefannau ar eich cyfer. Defnyddiwch reolwr cyfrinair
     ar eich ffôn a'ch cyfrifiadur fel does dim rhaid i chi gofio nhw i gyd.
 fb-landing-headline = A gafodd eich manylion eu hamlygu yn nhor-data { $breachName }?
+copyright = Mae darnau o'r cynnwys hwn yn © 1999-{ $year } gan gyfranwyr mozilla.org unigol.
+content-available = Cynnwys ar gael o dan drwydded Creative Commons.
