@@ -3,13 +3,13 @@
     <div class="section-wrapper">
       {{#if fullReport}} <!-- show all breaches without button -->
         {{#each foundBreaches}}
-          {{> fxa_enabled/breached_account req=../req}}
+          {{> breach_listing req=../req}}
         {{/each}}
         {{> hibp_attribution }}
       {{else}}
         <!--show first 4 breaches-->
         {{#eachFromTo foundBreaches 0 4 }}
-          {{> fxa_enabled/breached_account req=../req}}
+          {{> breach_listing req=../req}}
         {{/eachFromTo}}
         {{#ifCompare foundBreaches.length "<=" 4}}
           <div class="whole align-left">
@@ -20,7 +20,7 @@
         {{#ifCompare foundBreaches.length ">" 4}}
           <div id="additional-breaches" class="section-wrapper additional-breaches">
             {{#eachFromTo foundBreaches 4 foundBreaches.length }}
-              {{> fxa_enabled/breached_account req=../req}}
+              {{> breach_listing req=../req}}
             {{/eachFromTo}}
           </div>
           <div class="whole">
