@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Cuenta de Firefox
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Soporte
@@ -177,11 +179,6 @@ download-firefox-mobile = Descargar { -brand-name } móvil
 features = Características
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    Algunas partes de este contenido tienen &#x24B8; 1998-2018 por colaboradores individuales de mozilla.org. <br />
-    El contenido está disponible bajo una <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener"> licencia de Creative Commons </a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Filtración de datos proporcionada por { $hibp-link }
 site-description = ¿Tus cuentas han sido filtradas o robadas en alguna filtración de datos? Descúbrelo en { -product-name }.  Busca en nuestra de base de datos y regístrate para las alertas.
@@ -194,3 +191,57 @@ share-twitter = La mayoría de las personas tienen alrededor de 100 cuentas en l
 share-facebook-headline = Averigua si fuiste parte de una violación de datos
 share-facebook-blurb = ¿Tus cuentas en línea fueron expuestas a una violación de datos?
 og-site-description = Encuentra si has sido parte de una filtración de datos con { -product-name }. Regístrate para recibir alertas de futuras filtraciones y obtén consejos para mantener tus cuentas seguras.
+mozilla-security-blog = Blog de seguridad de { -brand-Mozilla }
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Social
+show-all = Mostrar todo
+fxa-signup-banner-headline = Monitorea las amenazas a tus cuentas en línea.
+fxa-signup-banner-blurb = Regístrate en { -brand-fxa } para obtener un informe detallado y alertas sobre nuevas violaciones de datos.
+fxa-landing-blurb =
+    Descubre lo que los piratas ya saben acerca de ti,
+    y aprende cómo estar un paso adelante de ellos.
+fxa-scan-label = Mira si apareces una violación de datos.
+fxa-welcome-headline = Bienvenido a { -product-name }.
+fxa-welcome-blurb = Estás listo para recibir alertas si aparece { $userEmail } en una violación de datos.
+fxa-scan-another-email = ¿Quieres revisar otro correo electrónico?
+# Search Firefox Monitor
+fxa-scan-submit = Buscar { -product-name }
+sign-up-to-check = Regístrate para verificar
+sign-in = Inicia sesión
+sign-out = Salir de la sesión
+full-report-headline = Tu reporte de{ -product-name }
+see-full-report = Ver reporte completo
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Administrar { -brand-fxa }
+fxa-download-firefox-bar-blurb = Brindado por { -brand-name }. 2 veces más rápido. Usa 30% menos de memoria que { -brand-Chrome }.
+fxa-download-firefox-bar-link = Descargar ahora
+fxa-download-firefox-banner-blurb = Una mejor y más rápida carga de páginas que usa menos memoria de la computadora.
+user-fb-compromised-headline = { $userEmail } apareció en la violación de datos de { $breachName }.
+guest-fb-compromised-headline = Este correo electrónico apareció en la violación de datos de { $breachName }.
+user-zero-breaches-headline = { $userEmail } apareció en cero violaciones de datos.
+guest-zero-breaches-headline = Este correo electrónico apareció en cero violaciones de datos.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } apareció en 1 violación de datos.
+       *[other] { $userEmail } apareció en { $breachCount } violaciones de datos.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Este correo electrónico apareció en 1 violación de datos.
+       *[other] Este correo electrónico apareció en { $breachCount } filtraciones de datos.
+    }
+user-no-breaches-blurb = Te informaremos si esta dirección de correo electrónico aparece en una nueva violación de datos.
+guest-no-breaches-blurb =
+    Para ver si este correo electrónico aparece en violaciones confidenciales, crea una { -brand-fxa }.
+    También te avisaremos si esta dirección aparece en nuevas violaciones de datos.
+user-one-breach-blurb = Esta violación de datos expone la siguiente información personal.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Tu correo electrónico apareció en { $breachCount } otras violaciones de datos.
+       *[other] Tu correo electrónico apareció en { $breachCount } otras violaciones de datos.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Este correo electrónico apareció en { $breachCount } otras violaciones de datos.
+       *[other] Este correo electrónico apareció en { $breachCount } otras violaciones de datos.
+    }
