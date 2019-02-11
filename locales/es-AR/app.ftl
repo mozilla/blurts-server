@@ -259,3 +259,36 @@ user-generic-found-breaches-blurb =
         [one] Esta violación expuso la siguiente información personal.
        *[other] Estas violaciones expusieron la siguiente información personal.
     }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+guest-found-breaches-blurb =
+    { $breachCount ->
+        [one] Esta violación expuso la siguiente información personal. Registrate en { -brand-fxa } para obtener un informe completo y alertas sobre nuevas violaciones.
+       *[other] Estas violaciones expusieron la siguiente información personal. Registrate { -brand-fxa } para obtener un informe completo y alertas sobre nuevas violaciones.
+    }
+have-an-account = ¿Ya tenés una cuenta?
+signup-banner-sensitive-blurb =
+    Descubrí lo que los piratas informáticos ya saben acerca tuyo y aprendé cómo
+    estar un paso por delante de ellos. Recibí alertas si aparece tu cuenta
+    en las nuevas violaciones de datos.
+fxa-pwt-section-blurb =
+    Las contraseñas protegen toda la información personal en tus cuentas en línea. Y
+    los piratas informáticos confían en los malos hábitos, como usar la misma contraseña en todas partes o usar frases comunes (@ p @ ssw0rd, ¿alguien?) para que si piratean una cuenta,
+    puedan piratear muchas.
+fxa-pwt-summary-2 =
+    Las contraseñas cortas de una sola palabra son fáciles de adivinar por parte de los piratas informáticos.
+    Usá al menos dos palabras y una combinación de letras, dígitos y caracteres especiales.
+fxa-pwt-summary-4 = Los administradores de contraseñas como 1Password, LastPass, Dashlane y Bitwarden almacenan tus  contraseñas y te las ingresan en los sitios web. Incluso te ayudarán a crear contraseñas seguras.
+fxa-pwt-summary-6 = Las violaciones de datos van en aumento. Si tu información personal aparece en una nueva violación de datos, { -product-name } te envía una alerta para que puedas tomar medidas y proteger tus cuentas.
+fxa-what-to-do-blurb-1 =
+    Si no podés iniciar la sesión, contactate con el sitio web para preguntar cómo actualizarlo.
+    ¿Ves una cuenta que no reconocés? Tus datos podrían haberse vendido.
+    O redistribuido. Esta también podría ser una cuenta que te olvidaste de haber creado o una empresa que cambió de nombre.
+fxa-what-to-do-subhead-2 = Dejá de usar la contraseña expuesta y cambiala en todos los lugares en los que la usaste.
+fxa-wtd-blurb-2 = Los piratas informáticos pueden intentar reutilizar tu contraseña expuesta para ingresar a otras cuentas. Creá una contraseña diferente y única para cada sitio web, especialmente para tu cuenta bancaria, tu correo electrónico y otros sitios web en los que guardás información personal.
+fxa-what-to-do-blurb-3 = La mayoría de las violaciones solo exponen correos electrónicos y contraseñas, pero algunas incluyen información financiera confidencial. Si tu cuenta bancaria o los números de tu tarjeta de crédito se incluyeron en una violación, avisá a tu banco de posibles fraudes y supervisá los estados de cuenta de los cargos que no reconozcas.
+fxa-what-to-do-subhead-4 = Obtené ayuda para recordar todas sus contraseñas y mantenerlas seguras.
+fxa-what-to-do-blurb-4 = Los administradores de contraseñas como 1Password, LastPass, Dashlane y Bitwarden almacenan tu contraseñas de forma segura y te la ingresan en los sitios web. Usa un administrador de contraseñas en tu teléfono y computadora para que no tengas que recordarlas todas.
+fb-landing-headline = ¿Tu información fue expuesta en la violación de datos de { $breachName }?
+copyright = Partes de este contenido son © 1999- { $year } por los contribuyentes individuales de mozilla.org.
+content-available = Contenido disponible bajo licencia de Creative Commons.
