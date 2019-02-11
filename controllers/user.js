@@ -7,7 +7,6 @@ const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const { FluentError } = require("../locale-utils");
 const HBSHelpers = require("../hbs-helpers");
-const UNSUB_REASONS = require("../unsubscribe_reasons");
 const sha1 = require("../sha1-utils");
 
 
@@ -139,7 +138,6 @@ function getUnsubSurvey(req, res) {
     headline: req.fluentFormat("unsub-survey-headline"),
     subhead: req.fluentFormat("unsub-survey-blurb"),
     whichPartial: "subpages/unsubscribe_survey",
-    UNSUB_REASONS,
   });
 }
 
