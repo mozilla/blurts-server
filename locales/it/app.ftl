@@ -237,6 +237,7 @@ guest-scan-results-headline =
        *[other] Questo indirizzo email è stato coinvolto in { $breachCount } violazioni di dati.
     }
 user-no-breaches-blurb = Ti avviseremo se questo indirizzo email sarà coinvolto in una nuova violazione.
+guest-no-breaches-blurb = Per vedere se questo indirizzo email è coinvolto in violazioni di dati sensibili, registra un { -brand-fxa }. In questo modo ti avviseremo anche se l’indirizzo sarà coinvolto in nuove violazioni di dati.
 user-one-breach-blurb = Questa violazione di dati ha coinvolto le seguenti informazioni personali.
 user-fb-compromised-blurb =
     { $breachCount ->
@@ -248,6 +249,7 @@ user-generic-fb-compromised-blurb =
         [one] Questo indirizzo email è stato coinvolto anche in { $breachCount } altra violazione.
        *[other] Questo indirizzo email è stato coinvolto anche in { $breachCount } altre violazioni.
     }
+user-fb-compromised-single = Questa violazione di dati ha coinvolto le seguenti informazioni personali. Se non l’hai fatto, cambia le password.
 user-generic-fb-compromised-single = Questa violazione di dati ha coinvolto le seguenti informazioni personali.
 have-an-account = Hai già un account?
 fb-landing-headline = I tuoi dati sono stati esposti nella violazione di { $breachName }?
