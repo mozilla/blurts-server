@@ -249,11 +249,6 @@ user-generic-fb-compromised-blurb =
 user-fb-compromised-single = 此数据外泄事件泄露了以下个人信息。请尽快修改密码。
 user-generic-fb-compromised-single = 此数据外泄事件泄露了以下个人信息。
 guest-fb-compromised-single = 此数据外泄事件泄露了以下个人信息。注册 { -brand-fxa }以获取您的完整报告，并在发生新的数据外泄事件时收到警报。
-guest-fb-compromised-blurb =
-    { $breachCount ->
-        [one] 此电子邮件地址还出现在其他 { $breachName } 次数据外泄事件中。注册 { -brand-fxa }以获取您的完整报告，并在发生新的数据外泄事件时收到警报。
-       *[other] 此电子邮件地址还出现在其他 { $breachName } 次数据外泄事件中。注册 { -brand-fxa }以获取您的完整报告，并在发生新的数据外泄事件时收到警报。
-    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
         [one] 您未出现在 { $breachName } 数据外泄事件中，但我们在另一事件中发现了您的电子邮件地址。
