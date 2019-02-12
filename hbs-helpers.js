@@ -1,4 +1,5 @@
 "use strict";
+const { URL } = require("url");
 
 const AppConstants = require("./app-constants");
 const { LocaleUtils } = require("./locale-utils");
@@ -57,6 +58,10 @@ function prettyDate(supportedLocales, date) {
 function localeString(supportedLocales, numericInput) {
   const intlNumberFormatter = new Intl.NumberFormat(supportedLocales);
   return intlNumberFormatter.format(numericInput);
+}
+
+function getFxaUrl() {
+  return new URL(AppConstants.OAUTH_PROFILE_URI).origin;
 }
 
 
@@ -133,6 +138,7 @@ module.exports = {
   localizedBreachDataClasses,
   prettyDate,
   localeString,
+  getFxaUrl,
   eachFromTo,
   ifCompare,
   breachMath,
