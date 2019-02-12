@@ -1,7 +1,7 @@
 <div id="fxa-new-user-bar" class="fxa-new-user-bar top-bar">
   <div class="row-wrapper">
     <p class="bold">{{fluentFormat req.supportedLocales "fxa-welcome-headline"}}</p>
-    <p>{{fluentFormat req.supportedLocales "fxa-welcome-blurb" userEmail=req.session.user.email}}</p>
+    <p>{{fluentFormat req.supportedLocales "fxa-welcome-blurb" userEmail=signedInUser.email}}</p>
   </div>
   <div id="x-close" class="x-close">
   </div>

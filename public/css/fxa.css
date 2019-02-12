@@ -1013,6 +1013,10 @@ main .sensitive-breach-email-required {
   max-width: 300px;
 }
 
+main a.see-full-report-button {
+  min-width: 220px;
+}
+
 main .section-headline,
 main p {
   max-width: 500px;
@@ -1028,6 +1032,17 @@ main span.demi.form-desc {
 
 main.scan-results .third {
   justify-content: flex-end;
+}
+
+main.scan-results .single-breach {
+  display: block;
+  margin-top: 0px;
+}
+
+main.scan-results .single-breach .half {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 0px;
 }
 
 .button-link-wrapper {

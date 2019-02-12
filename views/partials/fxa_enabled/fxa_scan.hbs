@@ -5,9 +5,9 @@
       {{> fxa_enabled/scan_results/result_headline}}
       {{> fxa_enabled/scan_results/result_subhead}}
       <!-- append "see full report", but only if it's a signed in user scanning from a feautred breach page, with scan results greater than one. -->
-      {{#if featuredBreach}}
+      {{#if specificBreach}}
         {{#ifCompare foundBreaches.length ">" 1}}
-          {{#ifCompare authenticatedUser "&&" userAccountCompromised}}
+          {{#ifCompare selfScan "&&" userCompromised}}
             {{> fxa_enabled/see_full_report_button}}
           {{/ifCompare}}
         {{/ifCompare}}
@@ -16,7 +16,7 @@
     <!--scan results page right -->
     {{> fxa_enabled/scan_results/result_page_right}}
 
-    {{#ifCompare featuredBreach "!|" authenticatedUser}}
+    {{#ifCompare specificBreach "!|" selfScan}}
       {{> compromised_accounts }}
     {{/ifCompare}}
   </div>
@@ -25,16 +25,21 @@
 {{#ifCompare foundBreaches.length "===" 0}}
   {{> scan_another_email}}
   {{> password_tips}}
-{{else}}
-  {{#ifCompare foundBreaches.length ">=" 1}}
+  {{#if signedInUser}}
+    {{> banners/download_firefox_banner}}
+  {{else}}
     {{> banners/sign_up_banner class="extra-margin"}}
-  {{/ifCompare}}
+  {{/if}}
+{{else}}
   {{#if fullReport}}
     {{> what_to_do class="extra-margin"}}
   {{else}}
     {{> what_to_do}}
   {{/if}}
   {{> scan_another_email}}
+  {{#if signedInUser}}
+    {{> banners/download_firefox_banner}}
+  {{else}}
+    {{> banners/sign_up_banner}}
+  {{/if}}
 {{/ifCompare}}
-
-{{> banners/download_firefox_banner}}

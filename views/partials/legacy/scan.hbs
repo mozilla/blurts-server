@@ -8,11 +8,11 @@
         <h3 id="found-breaches" class="section-headline">{{fluentFormat req.supportedLocales "found-breaches-headline"}}</h3>
       {{/ifCompare}}
 
-      {{#if featuredBreach}}
+      {{#if specificBreach}}
         {{#if userAccountCompromised}}
-          <p>{{{fluentFormat req.supportedLocales "featured-breach-results" featuredBreach=featuredBreach.Title breachCount=(breachMath foundBreaches.length "-" 1)}}}</p>
+          <p>{{{fluentFormat req.supportedLocales "featured-breach-results" featuredBreach=specificBreach.Title breachCount=(breachMath foundBreaches.length "-" 1)}}}</p>
         {{else}}
-          <p>{{{fluentFormat req.supportedLocales "featured-breach-not-compromised" featuredBreach=featuredBreach.Title breachCount=foundBreaches.length}}}</p>
+          <p>{{{fluentFormat req.supportedLocales "featured-breach-not-compromised" featuredBreach=specificBreach.Title breachCount=foundBreaches.length}}}</p>
         {{/if}}
       {{else}}
         <p>{{{fluentFormat req.supportedLocales "scan-results" breachCount=foundBreaches.length}}}</p>

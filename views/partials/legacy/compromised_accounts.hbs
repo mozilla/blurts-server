@@ -2,7 +2,7 @@
 {{#ifCompare foundBreaches.length ">" 1}}
     <div class="compromised-accounts">
       <div class="section-wrapper">
-        <!--show first 4 breaches-->
+        <!--show first 4 foundBreaches-->
         {{#eachFromTo foundBreaches 0 4 }}
           {{> breach_listing req=../req}}
         {{/eachFromTo}}
