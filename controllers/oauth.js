@@ -106,7 +106,7 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
   }
 
   req.session.user = JSON.parse(data.body);
-  res.redirect("/scan/latest_breaches");
+  res.redirect("/scan/user_dashboard");
 }
 
 module.exports = {
