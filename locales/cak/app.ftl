@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Firefox Taqoya'l
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = To'ïk
@@ -17,6 +19,7 @@ about-firefox-alerts = Chi rij Retal taq Ruk'ayewal Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Titaq Na'oj
 terms-and-privacy = Taq Ojqanem chuqa' Ichinanem
+error-could-not-add-email = Man xya' ta qa ri rochochib'al taqoya'l pa kicholxe'el tzij.
 error-not-subscribed = Man rutz'ib'an ta rub'i' re rochochib'al taqoya'l re' { -product-name }.
 error-hibp-throttled = K'ïy taq rokem ri { -brand-HIBP }.
 error-hibp-connect = Xsach toq nok pa { -brand-HIBP }.
@@ -30,6 +33,7 @@ scan-title = { -product-name } : Ruq'i'oj Tz'ajwachib'enïk
 user-add-invalid-email = Man okel ta ri Taqoya'l
 user-add-email-verify-subject = Tanik'oj ri rutz'ib'axik ab'i' pa { -product-name }.
 user-add-title = { -product-name } : Tajikib'a' Taqoya'l
+error-headline = Sachoj
 user-verify-token-error = K'atzinel ri rutoken jikib'anïk.
 user-verify-email-report-subject = Ri { -product-name } atzijol
 user-verify-title = { -product-name } : Xtz'ib'äx Rub'i'
