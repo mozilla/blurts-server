@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Firefox-account
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Stipe
@@ -172,11 +174,6 @@ download-firefox-mobile = { -brand-name } Mobyl downloade
 features = Funksjes
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    Underdielen fan dizze ynhâld binne &#x24B8; 1998-2018 troch yndividuele meiwurkers fan mozilla.org. <br />
-    Ynhâld is beskikber ûnder in <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons-lisinsje</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Gegevens fan datalekken ferstrekt troch { $hibp-link }
 site-description = Binne jo accounts lekt of stellen by in datalek? Untdek it by { -product-name }. Trochsykje ús database en skriuw jo yn foar warskôgingen.
@@ -189,3 +186,27 @@ share-twitter = De measte minsken hawwe ûngefear 100 online accounts. Is ien fa
 share-facebook-headline = Untdek oft jo troffen binne troch in datalek
 share-facebook-blurb = Binne jo online accounts troffen troch in datalek?
 og-site-description = Untdek mei { -product-name } oft jo troffen binne troch in datalek. Skriuw jo yn foar warskôgingen oer takomstige lekken en ûntfang tips oer hoe't jo jo accounts feilich hâlde.
+mozilla-security-blog = { -brand-Mozilla }-befeiligingsblog
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Sosjaal
+show-all = Alles toane
+fxa-signup-banner-headline = Folgje bedrigingen fan jo online accounts.
+fxa-signup-banner-blurb = Skriuw jo yn foar in { -brand-fxa } om jo detaillearre rapport en warskôgingen oer nije datalekken te ûntfangen.
+fxa-landing-blurb =
+    Untdek wat hackers al oer jo witte,
+    en lear hoe't jo se in stap foar bliuwe kinne.
+fxa-scan-label = Besjoch oft jo troffen binne troch in datalek.
+fxa-welcome-headline = Wolkom by { -product-name }.
+fxa-welcome-blurb = Jo ûntfange fan no ôf warskôgingen as { $userEmail } troffen is troch in datalek.
+fxa-scan-another-email = Wolle jo in oar e-mailadres kontrolearje?
+# Search Firefox Monitor
+fxa-scan-submit = { -product-name } trochsykje
+sign-up-to-check = Skriuw jo yn om te kontrolearjen
+sign-in = Oanmelde
+sign-out = Ofmelde
+full-report-headline = Jo { -product-name }-rapport
+see-full-report = Folslein rapport besjen
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = { -brand-fxa } beheare
+fxa-download-firefox-bar-blurb = Oanbean troch { -brand-name }. Dûbeld sa fluch. Brûkt 30% minder ûnthâld as { -brand-Chrome }.
+fxa-download-firefox-bar-link = No downloade
