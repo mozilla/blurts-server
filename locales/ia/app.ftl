@@ -273,5 +273,35 @@ user-generic-fb-not-compromised-blurb =
         [one] Iste adresse email non esseva in le violation { $breachName }, ma esseva trovate in un altero
        *[other] Iste adresse email non esseva in le violation { $breachName }, ma esseva trovate in alteros
     }
+guest-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one]
+            Iste adresse email non es in le violation de datos { $breachName }, ma esseva trovate in un altero.
+            Inscribe te pro un { -brand-fxa } pro obtener le reporto complete e avisos re nove violationes
+       *[other]
+            Iste adresse email non es in le violation de datos { $breachName }, ma esseva trovate in alteros.
+            Inscribe te pro un { -brand-fxa } pro obtener le reporto complete e avisos re nove violationes
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] Iste violation de datos ha exponite le sequente informationes personal. Si tu non lo ha jam facite, cambia tu contrasigno
+       *[other] Iste violationes de datos ha exponite le sequente informationes personal. Si tu non lo ha jam facite, cambia tu contrasigno.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Iste violation de datos ha exponite le sequente informationes personal.
+       *[other] Iste violationes de datos ha exponite le sequente informationes personal.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+guest-found-breaches-blurb =
+    { $breachCount ->
+        [one] Iste violation de datos ha exponite le sequente informationes personal. Inscribe te pro un { -brand-fxa } pro procurar te tu reporto complete e avisos re nove violationes.
+       *[other] Iste violationes de datos ha exponite le sequente informationes personal. Inscribe te pro un { -brand-fxa } pro procurar te tu reporto complete e avisos re nove violationes.
+    }
 have-an-account = Ha tu ja un conto?
 content-available = Contento disponibile sub licentia Creative Commons.
