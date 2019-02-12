@@ -210,3 +210,19 @@ see-full-report = Folslein rapport besjen
 manage-fxa = { -brand-fxa } beheare
 fxa-download-firefox-bar-blurb = Oanbean troch { -brand-name }. Dûbeld sa fluch. Brûkt 30% minder ûnthâld as { -brand-Chrome }.
 fxa-download-firefox-bar-link = No downloade
+fxa-download-firefox-banner-blurb = Better, flugger siden lade mei minder gebrûk fan kompjûterûnthâld.
+user-fb-compromised-headline = { $userEmail } komt foar yn it { $breachName }-datalek.
+guest-fb-compromised-headline = Dit e-mailadres is troffen yn it { $breachName }-datalek.
+user-zero-breaches-headline = { $userEmail } komt net yn datalekken foar.
+guest-zero-breaches-headline = Dit e-mailadres komt net yn datalekken foar.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } is troch 1 datalek troffen.
+       *[other] { $userEmail } is troch { $breachCount } datalekken troffen.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Dit e-mailadres is troch 1 datalek troffen.
+       *[other] Dit e-mailadres is troch { $breachCount } datalekken troffen.
+    }
+user-no-breaches-blurb = Wy stjoere jo in warskôging as dit e-mailadres troch in nij lek troffen is.
