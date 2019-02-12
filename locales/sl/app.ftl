@@ -190,6 +190,8 @@ og-site-description = S { -product-name }jem preverite, ali ste bili žrtev kraj
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Družabno
 show-all = Prikaži vse
+fxa-signup-banner-headline = Spremljajte grožnje vašim spletnim računom.
+fxa-signup-banner-blurb = Prijavite se na { -brand-fxa }, za prejem podrobnega poročila in opozoril o novih krajah podatkov.
 fxa-landing-blurb =
     Ugotovite, kaj o vas hekerji že vedo,
     in se naučite, kako ostati korak pred njimi.
