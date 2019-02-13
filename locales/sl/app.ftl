@@ -199,6 +199,7 @@ fxa-welcome-headline = Dobrodošli v { -product-name }.
 sign-in = Prijava
 sign-out = Odjava
 full-report-headline = Vaše poročilo { -product-name }
+see-full-report = Prikaži celotno poročilo
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Upravljaj { -brand-fxa }
 fxa-download-firefox-bar-link = Prenesi zdaj
@@ -221,4 +222,8 @@ guest-scan-results-headline =
         [few] Ta e-poštni naslov se je pojavil v { $breachCount } krajah podatkov.
        *[other] Ta e-poštni naslov se je pojavil v { $breachCount } krajah podatkov.
     }
+user-no-breaches-blurb = Opozorili vas bomo, v kolikor se bo ta e-poštni naslov pojavil v novi kraji podatkov.
+user-one-breach-blurb = Ta kraja podatkov je razkrila naslednje osebne podatke.
 have-an-account = Že imate račun?
+fb-landing-headline = Ali so bili vaši podatki izpostavljeni v kraji podatkov { $breachName }?
+content-available = Vsebina je na voljo pod licenco Creative Commons.
