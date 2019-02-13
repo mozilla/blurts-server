@@ -1,9 +1,29 @@
 "use strict";
 
+const crypto = require("crypto");
 const { URL } = require("url");
+const uuidv4 = require("uuid/v4");
 
+const AppConstants = require("../app-constants");
 const HIBP = require("../hibp");
 const sha1 = require("../sha1-utils");
+
+
+function _generatePageToken(req) {
+  const pageToken = {ip: req.ip, date: new Date(), nonce: uuidv4()};
+  const cipher = crypto.createCipher("aes-256-cbc", AppConstants.COOKIE_SECRET);
+  const encryptedPageToken = [cipher.update(JSON.stringify(pageToken), "utf8", "base64"), cipher.final("base64")].join("");
+  return encryptedPageToken;
+
+  /* TODO: block on scans-per-ip instead of scans-per-timespan
+  if (req.session.scans === undefined){
+    console.log("session scans undefined");
+    req.session.scans = [];
+  }
+  req.session.numScans = req.session.scans.length;
+  */
+}
+
 
 async function home(req, res) {
 
@@ -12,6 +32,9 @@ async function home(req, res) {
   let foundBreaches = [];
   let userAccountCompromised = false;
   let authenticatedUser = false;
+
+  // for #688: use a page token to check for bot scans
+  const pageToken = AppConstants.PAGE_TOKEN_TIMER > 0 ? _generatePageToken(req) : "";
 
   if (req.query.breach) {
     const reqBreachName = req.query.breach.toLowerCase();
@@ -59,6 +82,8 @@ async function home(req, res) {
 
   res.render("monitor", {
     title: req.fluentFormat("home-title"),
+    csrfToken: req.csrfToken(),
+    pageToken: pageToken,
     featuredBreach: featuredBreach,
     scanFeaturedBreach,
     foundBreaches,
