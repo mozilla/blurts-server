@@ -276,10 +276,10 @@ user-generic-fb-not-compromised-blurb =
 guest-fb-not-compromised-blurb =
     { $breachCount ->
         [one]
-            Iste adresse email non es in le violation de datos { $breachName }, ma esseva trovate in un altero.
+            Iste adresse email non esseva in le viuolation { $breachName }, ma esseva trovate in un altero.
             Inscribe te pro un { -brand-fxa } pro obtener le reporto complete e avisos re nove violationes
        *[other]
-            Iste adresse email non es in le violation de datos { $breachName }, ma esseva trovate in alteros.
+            Iste adresse email non esseva in le viuolation { $breachName }, ma esseva trovate in alteros.
             Inscribe te pro un { -brand-fxa } pro obtener le reporto complete e avisos re nove violationes
     }
 # While English doesn’t use the actual number of breaches in this sentence,
@@ -304,4 +304,5 @@ guest-found-breaches-blurb =
        *[other] Iste violationes de datos ha exponite le sequente informationes personal. Inscribe te pro un { -brand-fxa } pro procurar te tu reporto complete e avisos re nove violationes.
     }
 have-an-account = Ha tu ja un conto?
+fb-landing-headline = Ha essite tu info exponite in le violation de datos { $breachName }?
 content-available = Contento disponibile sub licentia Creative Commons.
