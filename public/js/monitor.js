@@ -496,6 +496,10 @@ if (document.body.dataset.fxaEnabled === "fxa-enabled") {
       document.getElementById("fxa-new-user-bar").classList.toggle("close");
     });
   }
+  // capitalize the sign in button for en-US only.
+  if (window.navigator.language.includes("en")) {
+    document.getElementById("login-btn").classList.add("capitalize");
+  }
 }
 
 if (document.getElementById("subpage")) {
