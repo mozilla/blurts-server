@@ -19,6 +19,7 @@ about-firefox-alerts = Ynghylch Rhybuddion Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Rhoi Adborth
 terms-and-privacy = Telerau a Phreifatrwydd
+error-scan-page-token = Rydych wedi ceisio sganio gormod o gyfeiriadau e-bost mewn cyfnod byr. Am resymau diogelwch, rydym wedi eich rhwystro dros dro rhag chwiliadau newydd. Fe gewch chi geisio eto yn ddiweddarach.
 error-could-not-add-email = Methu ychwanegu cyfeiriad e-bost i gronfa ddata.
 error-not-subscribed = Nid yw'r cyfeiriad e-bost hwn wedi'i danysgrifio i { -product-name }.
 error-hibp-throttled = Gormod o gysylltiadau i { -brand-HIBP }.
