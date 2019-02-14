@@ -186,11 +186,6 @@ download-firefox-mobile = Mobil { -brand-name } letöltése
 features = Funkciók
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    A tartalom egyes részeire egyéni mozilla.org közreműködők szerzői jogai vonatkoznak: &#x24B8; 1998-2018.<br />
-    A tartalom <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons licenc</a> alatt érhető el.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Az adatszegési adatokat a { $hibp-link } biztosítja
 site-description = A fiókjai kiszivárogtak vagy ellopták őket egy adatszegés során? Tudjon meg többet a { -product-name } segítségével. Keressen az adatbázisunkban, és iratkozzon fel a figyelmeztetésekre.
@@ -208,9 +203,11 @@ mozilla-security-blog = { -brand-Mozilla } biztonsági blog
 layout-social = Közösségi média
 show-all = Összes megjelenítése
 fxa-signup-banner-headline = Kísérje figyelemmel az online fiókjait érintő fenyegetéseket.
+fxa-welcome-headline = Üdvözli a { -product-name }.
 fxa-scan-another-email = Szeretne ellenőrizni egy másik e-mail címet is?
 # Search Firefox Monitor
 fxa-scan-submit = { -product-name } keresés
+sign-up-to-check = Regisztráció az ellenőrzéshez
 sign-in = Bejelentkezés
 sign-out = Kijelentkezés
 full-report-headline = A { -product-name } jelentése

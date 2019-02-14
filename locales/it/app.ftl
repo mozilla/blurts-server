@@ -251,6 +251,19 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = Questa violazione di dati ha coinvolto le seguenti informazioni personali. Se non l’hai fatto, cambia le password.
 user-generic-fb-compromised-single = Questa violazione di dati ha coinvolto le seguenti informazioni personali.
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Non sei stato coinvolto nella violazione di { $breachName } ma abbiamo trovato quell'indirizzo email in un’altra violazione.
+       *[other] Non sei stato coinvolto nella violazione di { $breachName } ma abbiamo trovato quell'indirizzo email in altre violazioni.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Questa email non era nella violazione di { $breachName } ma è stata coinvolta in un’altra violazione.
+       *[other] Questa email non era nella violazione di { $breachName } ma è stata coinvolta in altre violazioni.
+    }
 have-an-account = Hai già un account?
+fxa-what-to-do-subhead-4 = Usa strumenti che ti aiutino a ricordare tutte le tue password e tenerle al sicuro.
+fxa-what-to-do-blurb-4 = I gestori di password come 1Password, LastPass, Dashlane e Bitwarden memorizzano le tue password in modo sicuro e le inseriscono nei siti web per te. Usa un gestore di password sia sul telefono che sul computer per evitare di dovertele ricordare tutte a memoria.
 fb-landing-headline = I tuoi dati sono stati esposti nella violazione di { $breachName }?
+copyright = Parti di questo contenuto sono protette da © 1999-{ $year } dei singoli collaboratori di mozilla.org.
 content-available = Contenuto disponibile sotto licenza Creative Commons.

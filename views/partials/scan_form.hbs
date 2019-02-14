@@ -1,4 +1,6 @@
-<form action="/scan" class="email-scan form-group" method="post" data-no-csrf novalidate>
+<form action="/scan" class="email-scan form-group" method="post" novalidate>
+  <input type="hidden" name="_csrf" value="{{csrfToken}}">
+  <input type="hidden" name="pageToken" value="{{pageToken}}">
   <div class="input-group">
     <input id="scan-email" class="input-group-field email-to-hash" type="email" name="email" placeholder="{{fluentFormat req.supportedLocales "scan-placeholder"}}" aria-label="{{fluentFormat req.supportedLocales "scan-placeholder"}}" tabindex="0" autocomplete="off" />
     <span id="invalid-email-message" class="error-message">{{fluentFormat req.supportedLocales "scan-error"}}</span>

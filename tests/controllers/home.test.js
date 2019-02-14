@@ -4,7 +4,7 @@ const AppConstants = require("../../app-constants");
 const home = require("../../controllers/home");
 const scanResult = require("../../scan-results");
 
-let mockRequest = { fluentFormat: jest.fn() };
+let mockRequest = { fluentFormat: jest.fn(), csrfToken: jest.fn() };
 
 function addBreachesToMockRequest(mockRequest) {
   const mockBreaches = [
@@ -14,6 +14,7 @@ function addBreachesToMockRequest(mockRequest) {
   mockRequest.app = { locals: { breaches: mockBreaches } };
   return mockRequest;
 }
+
 
 test("home GET without breach renders monitor without breach", () => {
   mockRequest.query = { breach: null };

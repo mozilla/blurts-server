@@ -125,6 +125,7 @@ unsub-button = Κατάργηση εγγραφής
 unsub-survey-headline = Δεν είστε πλέον εγγεγραμμένοι.
 unsub-reason-2 = Λαμβάνω πάρα πολλά emails από το { -product-name-nowrap }
 unsub-reason-3 = Δεν βρίσκω χρήσιμη αυτή την υπηρεσία
+unsub-reason-5 = Χρησιμοποιώ άλλη υπηρεσία για την εποπτεία των λογαριασμών μου
 unsub-reason-6 = Κανένα από τα παραπάνω
 unsub-survey-thankyou = Ευχαριστούμε για τα σχόλιά σας.
 unsub-survey-error = Παρακαλούμε επιλέξτε ένα.

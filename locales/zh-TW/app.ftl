@@ -19,6 +19,7 @@ about-firefox-alerts = 關於 Firefox 警報
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = 提供意見回饋
 terms-and-privacy = 使用條款及隱私權
+error-scan-page-token = 您在短時間內嘗試搜尋太多電子郵件地址，由於安全因素，我們暫時無法讓您進行新搜尋。請稍候再試一次。
 error-could-not-add-email = 無法將電子郵件地址新增到資料庫。
 error-not-subscribed = 此電子郵件地址未訂閱 { -product-name }。
 error-hibp-throttled = 與 { -brand-HIBP } 的連線太多。

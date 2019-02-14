@@ -21,6 +21,7 @@ about-firefox-alerts = About Firefox Alerts
 give-feedback = Give Feedback
 terms-and-privacy = Terms and Privacy
 
+error-scan-page-token = You tried to scan too many email addresses in a short time period. For security reasons, we’ve temporarily blocked you from new searches. You’ll be able to try again later.
 error-could-not-add-email = Could not add email address to database.
 error-not-subscribed = This email address is not subscribed to {-product-name}.
 error-hibp-throttled = Too many connections to {-brand-HIBP}.

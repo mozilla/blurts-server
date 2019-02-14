@@ -19,6 +19,7 @@ about-firefox-alerts = About Firefox Alerts
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Give Feedback
 terms-and-privacy = Terms and Privacy
+error-scan-page-token = You tried to scan too many email addresses in a short time period. For security reasons, we’ve temporarily blocked you from new searches. You’ll be able to try again later.
 error-could-not-add-email = Could not add email address to database.
 error-not-subscribed = This email address is not subscribed to { -product-name }.
 error-hibp-throttled = Too many connections to { -brand-HIBP }.
@@ -281,6 +282,15 @@ user-generic-fb-not-compromised-blurb =
         [one] This email was not in the { $breachName } breach, but was found in another.
        *[other] This email was not in the { $breachName } breach, but was found in others.
     }
+guest-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one]
+            This email was not in the { $breachName } breach, but was found in another. 
+            Sign up for a { -brand-fxa } to get your full report and alerts about new breaches.
+       *[other]
+            This email was not in the { $breachName } breach, but was found in others. 
+            Sign up for a { -brand-fxa } to get your full report and alerts about new breaches.
+    }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
 user-found-breaches-blurb =
@@ -294,6 +304,17 @@ user-generic-found-breaches-blurb =
     { $breachCount ->
         [one] This breach exposed the following personal info.
        *[other] These breaches exposed the following personal info.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+guest-found-breaches-blurb =
+    { $breachCount ->
+        [one]
+            This breach exposed the following personal info. Sign up for a 
+            { -brand-fxa } to get your full report and alerts about new breaches.
+       *[other]
+            These breaches exposed the following personal info. Sign up for a { -brand-fxa } 
+            to get your full report and alerts about new breaches.
     }
 have-an-account = Already have an account?
 signup-banner-sensitive-blurb =

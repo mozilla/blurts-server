@@ -107,6 +107,10 @@ ul {
   padding: 0;
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 ul {
   list-style-type: none;
 }

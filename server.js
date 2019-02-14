@@ -33,8 +33,11 @@ const EmailL10nRoutes= require("./routes/email-l10n");
 const log = mozlog("server");
 const app = express();
 
-// Redirect non-dev environments to HTTPS
-app.enable("trust proxy");
+
+function devOrHeroku() {
+ return ["dev", "heroku"].includes(AppConstants.NODE_ENV);
+}
+
 
 if (app.get("env") !== "dev") {
   app.use( (req, res, next) => {
@@ -133,11 +136,7 @@ app.set("view engine", "hbs");
 
 const cookie = {httpOnly: true, sameSite: "lax"};
 
-if (app.get("env") === "dev") {
-  app.set("trust proxy", false);
-} else {
-  app.set("trust proxy", true);
-}
+(devOrHeroku ? app.set("trust proxy", true) : "");
 
 app.locals.FXA_ENABLED = AppConstants.FXA_ENABLED;
 app.locals.SERVER_URL = AppConstants.SERVER_URL;
@@ -162,9 +161,7 @@ if (AppConstants.FXA_ENABLED) {
 app.use("/scan", ScanRoutes);
 app.use("/ses", SesRoutes);
 app.use("/user", UserRoutes);
-if (["dev", "heroku"].includes(AppConstants.NODE_ENV)) {
-  app.use("/email-l10n", EmailL10nRoutes);
-}
+(devOrHeroku ? app.use("/email-l10n", EmailL10nRoutes) : "");
 app.use("/", HomeRoutes);
 
 app.use(logErrors);

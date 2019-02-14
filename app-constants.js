@@ -33,6 +33,7 @@ const kEnvironmentVariables = [
   "HIBP_THROTTLE_MAX_TRIES",
   "HIBP_NOTIFY_TOKEN",
   "DATABASE_URL",
+  "PAGE_TOKEN_TIMER",
   "SENTRY_DSN",
   "SERVER_URL",
   "SUPPORTED_LOCALES",

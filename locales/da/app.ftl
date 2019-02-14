@@ -194,6 +194,7 @@ share-facebook-headline = Find ud af, om du er blevet udsat for en datalæk.
 share-facebook-blurb = Er dine online-konti blevet ramt i en datalæk?
 og-site-description = Brug { -product-name } til at finde ud af, om du er blevet ramt af en datalæk. Tilmeld dig for at få advarsler om nye datalæk og få tips til at beskytte dine konti.
 show-all = Vis alle
+fxa-scan-label = Se om du har været omfattet af en datalæk.
 fxa-welcome-headline = Velkommen til { -product-name }.
 # Search Firefox Monitor
 fxa-scan-submit = Søg i { -product-name }
