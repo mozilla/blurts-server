@@ -12,8 +12,9 @@ exports.seed = function(knex) {
         {
           sha1: getSha1("firefoxaccount@test.com"),
           email: "firefoxaccount@test.com",
-          verification_token: "",
+          verification_token: "0e2cb147-2041-4e5b-8ca9-494e773b2cf1",
           verified: true,
+          fxa_refresh_token: "4a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc1",
         },
         {
           sha1: getSha1("unverifiedemail@test.com"),

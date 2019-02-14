@@ -117,7 +117,6 @@ async function postUnsubscribe(req, res) {
     throw new FluentError("user-unsubscribe-token-email-error");
   }
   const unsubscribedUser = await DB.removeSubscriberByToken(req.body.token, req.body.emailHash);
-  // FIXME: Should this happen before or after we delete from the DB?
   await FXA.revokeOAuthToken(unsubscribedUser.fxa_refresh_token);
 
   // if user backs into unsubscribe page and clicks "unsubscribe" again
