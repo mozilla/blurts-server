@@ -39,7 +39,7 @@ test("scan POST with hash should render scan with foundBreaches", async () => {
   mockRequest.body = { emailHash: sha1(testEmail) };
   mockRequest.app = { locals: { breaches: testBreaches } };
   mockRequest.session = { user: null };
-  mockRequest.url = { url: "https://www.mozilla.com" };
+  mockRequest.url = { url: AppConstants.SERVER_URL };
   mockRequest.app.locals.SERVER_URL = AppConstants.SERVER_URL;
   const mockResponse = { render: jest.fn() };
   HIBP.getBreachesForEmail.mockResolvedValue(testFoundBreaches);

@@ -1,9 +1,9 @@
   {{#ifCompare foundBreaches.length "===" 0}}
-    {{#ifCompare userDash "||" fullReport}}
+    {{#if selfScan}}
       <h3 id="latest-breaches" class="section-headline">{{fluentFormat req.supportedLocales "user-zero-breaches-headline" userEmail=signedInUser.email}}</h3>
     {{else}}
       <h3 id="no-breaches" class="section-headline">{{fluentFormat req.supportedLocales "guest-zero-breaches-headline"}}</h3>
-    {{/ifCompare}}
+    {{/if}}
   {{else}}
     <h3 id="scan-results-headline" class="section-headline scan-results-headline">
       {{#if userCompromised}}

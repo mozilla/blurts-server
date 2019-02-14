@@ -28,18 +28,29 @@
   {{#if signedInUser}}
     {{> banners/download_firefox_banner}}
   {{else}}
-    {{> banners/sign_up_banner class="extra-margin"}}
+    {{> banners/sign_up_banner}}
   {{/if}}
 {{else}}
+
   {{#if fullReport}}
     {{> what_to_do class="extra-margin"}}
   {{else}}
-    {{> what_to_do}}
+    {{#ifCompare foundBreaches.length "===" 1}}
+      {{> banners/sign_up_banner class="extra-margin"}}
+      {{> what_to_do}}
+      {{> scan_another_email}}
+      {{> banners/download_firefox_banner}}
+    {{/ifCompare}}
+
+    {{#ifCompare foundBreaches.length ">" 1}}
+      {{> what_to_do}}
+      {{> scan_another_email}}
+        {{#if signedInUser}}
+          {{> banners/download_firefox_banner}}
+        {{else}}
+          {{> banners/sign_up_banner}}
+        {{/if}}
+    {{/ifCompare}}
   {{/if}}
-  {{> scan_another_email}}
-  {{#if signedInUser}}
-    {{> banners/download_firefox_banner}}
-  {{else}}
-    {{> banners/sign_up_banner}}
-  {{/if}}
+
 {{/ifCompare}}

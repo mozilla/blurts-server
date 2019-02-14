@@ -1036,13 +1036,13 @@ main.scan-results .third {
 
 main.scan-results .single-breach {
   display: block;
-  margin-top: 0px;
+  margin-top: 0;
 }
 
 main.scan-results .single-breach .half {
   margin-left: 0;
   margin-right: 0;
-  margin-top: 0px;
+  margin-top: 0;
 }
 
 .button-link-wrapper {

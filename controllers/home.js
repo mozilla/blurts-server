@@ -1,8 +1,16 @@
 "use strict";
 
+const AppConstants = require("../app-constants");
 const scanResult = require("../scan-results");
+const { generatePageToken } = require("./utils");
+
 
 async function home(req, res) {
+
+  const formTokens = {
+    pageToken: AppConstants.PAGE_TOKEN_TIMER > 0 ? generatePageToken(req) : "",
+    csrfToken: req.csrfToken(),
+  };
 
   let featuredBreach = null;
   let scanFeaturedBreach = false;
@@ -20,8 +28,9 @@ async function home(req, res) {
     }
 
     const scanRes = await scanResult(req);
-    if (scanRes.doorhangerScan === true) {
-      return res.render("scan", scanRes);
+
+    if (scanRes.doorhangerScan) {
+      return res.render("scan", Object.assign(scanRes, formTokens));
     }
     scanFeaturedBreach = true;
   }
@@ -30,6 +39,8 @@ async function home(req, res) {
     title: req.fluentFormat("home-title"),
     featuredBreach: featuredBreach,
     scanFeaturedBreach,
+    pageToken: formTokens.pageToken,
+    csrfToken: formTokens.csrfToken,
   });
 }
 
