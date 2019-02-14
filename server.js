@@ -105,9 +105,11 @@ app.use(helmet.contentSecurityPolicy({
       "'self'",
       "https://code.cdn.mozilla.net/fonts/",
       "https://www.google-analytics.com",
+      "https://stats.g.doubleclick.net/",
     ],
     fontSrc: [
       "'self'",
+      "https://fonts.gstatic.com/",
       "https://code.cdn.mozilla.net/fonts/",
     ],
     frameAncestors: FRAME_ANCESTORS,
