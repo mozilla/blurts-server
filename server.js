@@ -38,8 +38,8 @@ function devOrHeroku() {
  return ["dev", "heroku"].includes(AppConstants.NODE_ENV);
 }
 
-
 if (app.get("env") !== "dev") {
+  app.enable("trust proxy");
   app.use( (req, res, next) => {
     if (req.secure) {
       next();
@@ -139,8 +139,6 @@ app.set("view engine", "hbs");
 
 const cookie = {httpOnly: true, sameSite: "lax"};
 
-(devOrHeroku ? app.set("trust proxy", true) : "");
-
 app.locals.FXA_ENABLED = AppConstants.FXA_ENABLED;
 app.locals.SERVER_URL = AppConstants.SERVER_URL;
 app.locals.UTM_SOURCE = new URL(AppConstants.SERVER_URL).hostname;
@@ -164,7 +162,7 @@ if (AppConstants.FXA_ENABLED) {
 app.use("/scan", ScanRoutes);
 app.use("/ses", SesRoutes);
 app.use("/user", UserRoutes);
-(devOrHeroku ? app.use("/email-l10n", EmailL10nRoutes) : "");
+(devOrHeroku ? app.use("/email-l10n", EmailL10nRoutes) : null);
 app.use("/", HomeRoutes);
 
 app.use(logErrors);
