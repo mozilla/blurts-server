@@ -2,11 +2,12 @@
 
 const crypto = require("crypto");
 const isemail = require("isemail");
-const HIBP = require("../hibp");
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const { FluentError } = require("../locale-utils");
+const FXA = require("../lib/fxa");
 const HBSHelpers = require("../hbs-helpers");
+const HIBP = require("../hibp");
 const sha1 = require("../sha1-utils");
 
 
@@ -116,6 +117,8 @@ async function postUnsubscribe(req, res) {
     throw new FluentError("user-unsubscribe-token-email-error");
   }
   const unsubscribedUser = await DB.removeSubscriberByToken(req.body.token, req.body.emailHash);
+  await FXA.revokeOAuthToken(unsubscribedUser.fxa_refresh_token);
+
   // if user backs into unsubscribe page and clicks "unsubscribe" again
   if (!unsubscribedUser) {
     throw new FluentError("error-not-subscribed");
