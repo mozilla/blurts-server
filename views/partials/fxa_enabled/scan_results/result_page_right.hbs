@@ -1,6 +1,6 @@
     {{#ifCompare foundBreaches.length "===" 0}}
-      {{#if req.session.user}}
-        {{#if authenticatedUser}}
+      {{#if signedInUser}}
+        {{#if selfScan}}
           <div class="subscribe-icon stack"><!--subscribe-icon--></div>
         {{/if}}
       {{else}}
@@ -8,38 +8,32 @@
       {{/if}}
     {{/ifCompare}}
 
-    {{#ifCompare foundBreaches.length "===" 1}}
-      {{#if authenticatedUser}}
-        {{#if userAccountCompromised}}
-          {{> fxa_enabled/scan_results/single_breach}}
-        {{else}}
-          {{#ifCompare foundBreaches "!!" latestBreaches}}
-            <div class="third">
-              {{> fxa_enabled/see_full_report_button}}
-            </div>
-          {{/ifCompare}}
-        {{/if}}
-      {{else}}
+   {{#ifCompare foundBreaches.length "===" 1}}
+    {{#if specificBreach}}
+      {{#if userCompromised}}
         {{> fxa_enabled/scan_results/single_breach}}
+      {{else}}  
+        {{#if selfScan}}
+          {{> fxa_enabled/see_full_report_button class="third"}}
+        {{else}}
+          {{> fxa_enabled/scan_results/single_breach}}
+        {{/if}}
       {{/if}}
-    {{/ifCompare}}
+    {{else}}
+      {{> fxa_enabled/scan_results/single_breach}}
+    {{/if}}
+   {{/ifCompare}}
 
     {{#ifCompare foundBreaches.length ">" 1}}
-      {{#if authenticatedUser}}
-        {{#if userAccountCompromised}}
+      {{#if selfScan}}
+        {{#if userCompromised}}
           {{> fxa_enabled/scan_results/single_breach}}
         {{else}}
-          {{#ifCompare foundBreaches "!!" latestBreaches}}
-            <div class="third">
-              {{> fxa_enabled/see_full_report_button}}
-            </div>
+          {{#ifCompare userDash "!!" fullReport}}
+            {{> fxa_enabled/see_full_report_button class="third"}}
           {{/ifCompare}}
         {{/if}}
       {{else}}
-        {{#if featuredBreach}}
-          {{> fxa_enabled/sign_up_bundle class="third"}}
-        {{else}} <!--featuredBreach -->
-          {{> fxa_enabled/sign_up_bundle class="third"}}
-        {{/if}}
+        {{> fxa_enabled/sign_up_bundle class="third"}}
       {{/if}}
     {{/ifCompare}}

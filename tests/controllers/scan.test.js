@@ -1,5 +1,5 @@
 "use strict";
-
+const AppConstants = require("../../app-constants");
 const sha1 = require("../../sha1-utils");
 const HIBP = require("../../hibp");
 const scan = require("../../controllers/scan");
@@ -39,7 +39,11 @@ test("scan POST with hash should render scan with foundBreaches", async () => {
   mockRequest.body = { emailHash: sha1(testEmail) };
   mockRequest.app = { locals: { breaches: testBreaches } };
   mockRequest.session = { user: null };
+
+  mockRequest.url = { url: AppConstants.SERVER_URL };
+  mockRequest.app.locals.SERVER_URL = AppConstants.SERVER_URL;
   mockRequest.csrfToken = jest.fn();
+
   const mockResponse = { render: jest.fn() };
   HIBP.getBreachesForEmail.mockResolvedValue(testFoundBreaches);
 

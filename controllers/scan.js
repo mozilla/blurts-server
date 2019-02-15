@@ -4,13 +4,12 @@ const crypto = require("crypto");
 
 const AppConstants = require("../app-constants");
 const { FluentError } = require("../locale-utils");
-const HIBP = require("../hibp");
+const { generatePageToken } = require("./utils");
 const mozlog = require("../log");
+const scanResult = require("../scan-results");
 const sha1 = require("../sha1-utils");
 
-
 const log = mozlog("controllers.scan");
-
 
 function _decryptPageToken(encryptedPageToken) {
   const decipher = crypto.createDecipher("aes-256-cbc", AppConstants.COOKIE_SECRET);
@@ -47,9 +46,6 @@ function _validatePageToken(pageToken, req) {
 async function post (req, res) {
   const emailHash = req.body.emailHash;
   const encryptedPageToken = req.body.pageToken;
-  let featuredBreach = null;
-  let userAccountCompromised = false;
-  let foundBreaches = [];
   let validPageToken = false;
 
   // for #688: use a page token to check that scans come from real pages
@@ -59,105 +55,61 @@ async function post (req, res) {
     }
     const decryptedPageToken = _decryptPageToken(encryptedPageToken);
     validPageToken = _validatePageToken(decryptedPageToken, req);
+
     if (!validPageToken) {
       throw new FluentError("error-scan-page-token");
     }
   }
 
   if (!emailHash || emailHash === sha1("")) {
-    res.redirect("/");
-    return;
+    return res.redirect("/");
   }
 
-  if (req.session.user) {
-    if (sha1(req.session.user.email).toUpperCase() === emailHash) {
-      return res.redirect("/scan/latest_breaches");
-    }
+  const scanRes = await scanResult(req);
+
+  const formTokens = {
+    pageToken: encryptedPageToken,
+    csrfToken: req.csrfToken(),
+  };
+
+  if (req.session.user && scanRes.selfScan && !req.body.featuredBreach) {
+    return res.redirect("/scan/user_dashboard");
   }
-
-  foundBreaches = await HIBP.getBreachesForEmail(emailHash, req.app.locals.breaches);
-
-  if (req.body.featuredBreach) {
-    featuredBreach = HIBP.getBreachByName(req.app.locals.breaches, req.body.featuredBreach.toLowerCase());
-    const findFeaturedBreach = foundBreaches.findIndex(breach => breach.Name === featuredBreach.Name);
-
-
-    if (findFeaturedBreach !== -1) {
-      userAccountCompromised = true;
-
-      if (foundBreaches.length > 1) {
-        foundBreaches.splice(findFeaturedBreach, 1);
-        foundBreaches.unshift(featuredBreach);
-      }
-    }
-    res.render("scan", {
-      title: req.fluentFormat("scan-title"),
-      csrfToken: req.csrfToken(),
-      pageToken: encryptedPageToken,
-      foundBreaches,
-      featuredBreach,
-      userAccountCompromised,
-    });
-  }
-
-  else {
-    res.render("scan", {
-      title: req.fluentFormat("scan-title"),
-      csrfToken: req.csrfToken(),
-      pageToken: encryptedPageToken,
-      foundBreaches,
-    });
-  }
+  res.render("scan", Object.assign(scanRes, formTokens));
 }
 
 
 async function getFullReport(req, res) {
-  const fullReport = true;
-  const authenticatedUser = true;
-
   if (!req.session.user) {
     return res.redirect("/");
   }
-  const emailHash = sha1(req.session.user.email);
-  const foundBreaches = await HIBP.getBreachesForEmail(emailHash, req.app.locals.breaches, true);
 
-  res.render("scan", {
-    title: req.fluentFormat("scan-title"),
-    csrfToken: req.csrfToken(),
-    foundBreaches,
-    fullReport,
-    authenticatedUser,
-  });
+  const scanRes = await scanResult(req, true);
+  res.render("scan", scanRes);
 }
 
 
-async function getLatestBreaches(req, res) {
-  const latestBreaches = true;
-  const authenticatedUser = true;
-  let foundBreaches = [];
-  let newUser = false; // new user welcome top-bar listens for this
+
+async function getUserDashboard(req, res) {
 
   if (!req.session.user) {
     return res.redirect("/");
   }
-  // check session for new users, then set req.session.newUser to false to prevent
-  // susequent showings of the new user welcome top-bar.
+
+  const formTokens = {
+    pageToken: AppConstants.PAGE_TOKEN_TIMER > 0 ? generatePageToken(req) : "",
+    csrfToken: req.csrfToken(),
+  };
+
+  const scanRes = await scanResult(req, true);
+  scanRes.newUser = false;
+
   if (req.session.newUser === true) {
-    newUser = true;
+    scanRes.newUser = true;
     req.session.newUser = false;
   }
 
-  const emailHash = sha1(req.session.user.email);
-  foundBreaches = await HIBP.getBreachesForEmail(emailHash, req.app.locals.breaches, true);
-
-  res.render("scan", {
-    title: req.fluentFormat("scan-title"),
-    csrfToken: req.csrfToken(),
-    foundBreaches,
-    latestBreaches,
-    newUser,
-    authenticatedUser,
-  });
+  return res.render("scan", Object.assign(scanRes, formTokens));
 }
 
 
@@ -169,5 +121,5 @@ module.exports = {
   post,
   get,
   getFullReport,
-  getLatestBreaches,
+  getUserDashboard,
 };
