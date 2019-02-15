@@ -125,13 +125,14 @@ app.use(express.static("public", {
     "public, maxage=" + 10 * 60 * 1000 + ", s-maxage=" + 24 * 60 * 60 * 1000),
 })); // 10-minute client-side caching; 24-hour server-side caching
 
-app.engine("hbs", exphbs({
+const hbs = exphbs.create({
   extname: ".hbs",
   layoutsDir: __dirname + "/views/layouts",
   defaultLayout: "default",
   partialsDir: __dirname + "/views/partials",
   helpers: HBSHelpers,
-}));
+});
+app.engine("hbs", hbs.engine);
 app.set("view engine", "hbs");
 
 const cookie = {httpOnly: true, sameSite: "lax"};
