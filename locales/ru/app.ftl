@@ -14,6 +14,8 @@
         [genitive] Сервисом Have I Been Pwned
        *[dative] Сервису Have I Been Pwned
     }
+-brand-fxa = Аккаунт Firefox
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Поддержка
@@ -188,9 +190,6 @@ download-firefox-mobile = Загрузить мобильный { -brand-name }
 features = Возможности
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Бета, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info = Части этого содержимого созданы участниками проекта mozilla.org &#x24B8; 1998-2018. <br /> Содержимое доступно на условиях <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">лицензии Creative Commons</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Данные об угрозах предоставлены { $hibp-link }
 site-description = Произошли ли в результате взлома утечки данных или кражи ваших аккаунтов? Узнайте в { -product-name }. Поищите в нашей базе данных и подпишитесь на уведомления.
@@ -203,3 +202,15 @@ share-twitter = Многие люди имеют по 100 аккаунтов. З
 share-facebook-headline = Узнайте, не стали ли вы жертвой утечки данных
 share-facebook-blurb = Затронули ли какой-то из ваших аккаунтов утечки данных?
 og-site-description = Узнайте, не стали ли вы жертвой утечки данных с помощью { -product-name }. Подпишитесь на уведомления о будущих угрозах и получайте советы по безопасности.
+mozilla-security-blog = Блог безопасности { -brand-Mozilla }
+show-all = Показать все
+fxa-scan-label = Узнайте, стали ли вы жертвой утечки данных.
+fxa-welcome-headline = Добро пожаловать в { -product-name }.
+fxa-scan-another-email = Хотите проверить другую электронную почту?
+sign-in = Войти
+sign-out = Выйти
+full-report-headline = Ваш отчёт { -product-name }
+see-full-report = Посмотреть полный отчёт
+fxa-download-firefox-bar-link = Загрузить сейчас
+fxa-download-firefox-banner-blurb = Более быстрая загрузка страниц с меньшим расходом памяти.
+have-an-account = Уже есть аккаунт?
