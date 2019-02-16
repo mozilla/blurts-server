@@ -304,5 +304,6 @@ guest-found-breaches-blurb =
        *[other] Iste violationes de datos ha exponite le sequente informationes personal. Inscribe te pro un { -brand-fxa } pro procurar te tu reporto complete e avisos re nove violationes.
     }
 have-an-account = Ha tu ja un conto?
+fxa-what-to-do-subhead-4 = Obtene adjuta a rememorar tote tu contrasignos e pro los retener secur.
 fb-landing-headline = Ha essite tu info exponite in le violation de datos { $breachName }?
 content-available = Contento disponibile sub licentia Creative Commons.
