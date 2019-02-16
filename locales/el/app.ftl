@@ -147,16 +147,22 @@ share-email = Email
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Άλλο
 show-all = Προβολή όλων
+fxa-welcome-headline = Καλώς ορίσατε στο { -product-name }.
 fxa-scan-another-email = Θέλετε να ελέγξετε άλλο email;
 # Search Firefox Monitor
 fxa-scan-submit = Αναζήτηση { -product-name }
 sign-up-to-check = Εγγραφείτε για έλεγχο
 sign-in = Σύνδεση
 sign-out = Αποσύνδεση
+full-report-headline = Η αναφορά { -product-name } σας
 see-full-report = Προβολή πλήρους αναφοράς
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Διαχείριση { -brand-fxa }
+fxa-download-firefox-bar-blurb = Προσφέρεται από το { -brand-name }. 2x ταχύτερο. Χρησιμοποιεί 30% λιγότερη μνήμη από το { -brand-Chrome }.
 fxa-download-firefox-bar-link = Λήψη τώρα
+fxa-download-firefox-banner-blurb = Καλύτερη, ταχύτερη φόρτωση σελίδων που χρησιμοποιεί λιγότερη μνήμη υπολογιστή.
+user-fb-compromised-headline = Το { $userEmail } εμφανίστηκε στην παραβίαση δεδομένων { $breachName }.
+guest-fb-compromised-headline = Αυτό το email εμφανίστηκε στην παραβίαση δεδομένων { $breachName }.
 user-zero-breaches-headline = Το { $userEmail } δεν εμφανίστηκε σε καμία παραβίαση δεδομένων.
 guest-zero-breaches-headline = Αυτό το email δεν εμφανίστηκε σε καμία παραβίαση δεδομένων.
 user-scan-results-headline =
@@ -164,3 +170,22 @@ user-scan-results-headline =
         [one] Το { $userEmail } εμφανίστηκε σε 1 παραβίαση δεδομένων.
        *[other] Το { $userEmail } εμφανίστηκε σε { $breachCount } παραβιάσεις δεδομένων.
     }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Αυτό το email εμφανίστηκε σε 1 παραβίαση δεδομένων.
+       *[other] Αυτό το email εμφανίστηκε σε { $breachCount } παραβιάσεις δεδομένων.
+    }
+user-no-breaches-blurb = Θα σάς ειδοποιήσουμε αν αυτή η διεύθυνση email εμφανιστεί σε νέα διαρροή.
+user-one-breach-blurb = Αυτή η παραβίαση εξέθεσε τις εξής προσωπικές πληροφορίες.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Το email σας εμφανίστηκε επίσης σε { $breachCount } ακόμη παραβίαση.
+       *[other] Το email σας εμφανίστηκε επίσης σε { $breachCount } ακόμη παραβιάσεις.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Αυτό το email εμφανίστηκε επίσης σε { $breachCount } ακόμη παραβίαση.
+       *[other] Αυτό το email εμφανίστηκε επίσης σε { $breachCount } ακόμη παραβιάσεις.
+    }
+user-generic-fb-compromised-single = Αυτή η παραβίαση εξέθεσε τις εξής προσωπικές πληροφορίες.
+have-an-account = Έχετε ήδη λογαριασμό;

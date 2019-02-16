@@ -17,6 +17,7 @@ report-headline =
         [one] Ο λογαριασμός σας εμφανίστηκε σε { $breachCount } παραβίαση.
        *[other] Οι λογαριασμοί σας εμφανίστηκαν σε { $breachCount } παραβιάσεις.
     }
+breach-alert-headline = Ο λογαριασμός σας ενεπλάκη σε παραβίαση δεδομένων.
 report-pwt-headline-1 = Χρήση διαφορετικού κωδικού για κάθε λογαριασμό
 report-pwt-headline-2 = Δημιουργία ισχυρών, μοναδικών κωδικών
 report-pwt-summary-2 =
