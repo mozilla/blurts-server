@@ -24,7 +24,7 @@
   },
   "urls": {
     "prod": "https://monitor.firefox.com",
-    "stage": "https://blurts-server.stage.mozaws.net/",
+    "stage": "https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net/",
     "dev": "https://fx-breach-alerts.herokuapp.com/"
   },
   "keywords": [
