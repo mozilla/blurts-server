@@ -157,3 +157,10 @@ see-full-report = Προβολή πλήρους αναφοράς
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Διαχείριση { -brand-fxa }
 fxa-download-firefox-bar-link = Λήψη τώρα
+user-zero-breaches-headline = Το { $userEmail } δεν εμφανίστηκε σε καμία παραβίαση δεδομένων.
+guest-zero-breaches-headline = Αυτό το email δεν εμφανίστηκε σε καμία παραβίαση δεδομένων.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] Το { $userEmail } εμφανίστηκε σε 1 παραβίαση δεδομένων.
+       *[other] Το { $userEmail } εμφανίστηκε σε { $breachCount } παραβιάσεις δεδομένων.
+    }
