@@ -261,7 +261,15 @@ user-generic-fb-not-compromised-blurb =
         [one] Questa email non era nella violazione di { $breachName } ma è stata coinvolta in un’altra violazione.
        *[other] Questa email non era nella violazione di { $breachName } ma è stata coinvolta in altre violazioni.
     }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Questa violazione di dati ha esposto le seguenti informazioni personali.
+       *[other] Queste violazioni di dati hanno esposto le seguenti informazioni personali.
+    }
 have-an-account = Hai già un account?
+fxa-pwt-summary-2 = Le password brevi che contengono una singola parola sono facili da indovinare per gli hacker. Usare almeno due parole e una combinazione di lettere, numeri e caratteri speciali.
 fxa-what-to-do-subhead-4 = Usa strumenti che ti aiutino a ricordare tutte le tue password e tenerle al sicuro.
 fxa-what-to-do-blurb-4 = I gestori di password come 1Password, LastPass, Dashlane e Bitwarden memorizzano le tue password in modo sicuro e le inseriscono nei siti web per te. Usa un gestore di password sia sul telefono che sul computer per evitare di dovertele ricordare tutte a memoria.
 fb-landing-headline = I tuoi dati sono stati esposti nella violazione di { $breachName }?
