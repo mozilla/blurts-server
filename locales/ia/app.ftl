@@ -315,5 +315,7 @@ fxa-what-to-do-subhead-2 = Cessa de usar le contrasigno exponite e cambia illo u
 fxa-wtd-blurb-2 = Hackers pote provar ille mesme contrasigno e tu adresse email pro acceder in altere contos. Crea un differente e unic contrasigno pro cata conto, specialmente pro tu conto bancari, adresse email e altere sitos web ubi tu salva informationes personal.
 fxa-what-to-do-blurb-3 = Le major parte del violationes expone solo emails e contrasignos, ma alcunos include sensibile informationes financiari. Si tu conto bancari o numeros de carta de credito ha essite exponite, avisa tu banca pro possibile fraude. Verifica le extractos conto bancari pro cargas que tu non recognosce.
 fxa-what-to-do-subhead-4 = Obtene adjuta a rememorar tote tu contrasignos e pro los retener secur.
+fxa-what-to-do-blurb-4 = Le gestores de contrasignos, como 1Password, LastPass, Dashlane e Bitwarden, reserva tu contrasignos securmente e stipa los in sitos web pro te. Usa un gestor de contrasigno sur tu telephono e computator assi tu non ha a rememorar los tote.
 fb-landing-headline = Ha essite tu info exponite in le violation de datos { $breachName }?
+copyright = Partes de iste contento es © 1999-{ $year } per collaboratores individual de mozilla.org.
 content-available = Contento disponibile sub licentia Creative Commons.
