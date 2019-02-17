@@ -52,6 +52,7 @@ pwt-headline-2 = Lag sterke passord som er vanskelege å gjette seg fram til
 pwt-headline-3 = Sjå på tryggingsspørsmål som ekstra passord
 pwt-headline-4 = Få hjelp til å hugse passorda dine
 pwt-headline-5 = Legg til ekstra sikkerheit med tofaktor-godkjenning
+pwt-summary-5 = To faktor-godkjenning krev tilleggsinformasjon (t.d. ein eingangskode sendt via SMS) for å logge inn på kontoen din. Sjølv om nokon har passordet ditt, kan dei ikkje kome seg inn.
 pwt-headline-6 = Registrer deg for { -product-name-nowrap }-åtvaringar
 landing-headline = Ditt vern mot hackarar startar her.
 scan-label = Sjå om du har vore innblanda i ein datalekkasje.
@@ -122,7 +123,13 @@ share-other = Andre
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Sosialt
 show-all = Vis alle
+fxa-welcome-headline = Velkomen til { -product-name }.
 # Search Firefox Monitor
 fxa-scan-submit = Sök { -product-name }
 sign-in = Logg in
 sign-out = Logg ut
+see-full-report = Vis fullstendig rapport
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Handter { -brand-fxa }
+fxa-download-firefox-bar-blurb = Presentert av  { -brand-name }. 2x raskare. Brukar 30% mindre minne enn { -brand-Chrome }.
+fxa-download-firefox-bar-link = Last ned no
