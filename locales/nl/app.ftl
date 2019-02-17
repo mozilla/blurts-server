@@ -19,6 +19,7 @@ about-firefox-alerts = Over Firefox-waarschuwingen
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Feedback geven
 terms-and-privacy = Voorwaarden en Privacy
+error-scan-page-token = U hebt te veel e-mailadressen in een korte tijdsperiode geprobeerd te scannen. Om beveiligingsredenen hebben we uw zoekmogelijkheid tijdelijk geblokkeerd. U kunt het later weer proberen.
 error-could-not-add-email = Kon e-mailadres niet aan database toevoegen.
 error-not-subscribed = Dit e-mailadres is niet geabonneerd op { -product-name }.
 error-hibp-throttled = Te veel verbindingen met { -brand-HIBP }.
