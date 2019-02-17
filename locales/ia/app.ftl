@@ -19,6 +19,7 @@ about-firefox-alerts = A proposito del avisos de Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Inviar opinion
 terms-and-privacy = Conditiones de uso e confidentialitate
+error-scan-page-token = Tu probava a scander trop adresses de email in un breve periodo de tempore. Pro rationes de securitate, nos te ha temporarimente blocate pro nove recercas. Tu potera provar de novo plus tarde.
 error-could-not-add-email = impossibile adder le adresse email al base de datos
 error-not-subscribed = Iste adresse email non es inscribite a { -product-name }
 error-hibp-throttled = Trop connexiones a { -brand-HIBP }.
@@ -304,6 +305,8 @@ guest-found-breaches-blurb =
        *[other] Iste violationes de datos ha exponite le sequente informationes personal. Inscribe te pro un { -brand-fxa } pro procurar te tu reporto complete e avisos re nove violationes.
     }
 have-an-account = Ha tu ja un conto?
+signup-banner-sensitive-blurb = Discoperi lo que hackers jam sape re te e apprende como star un grado supra illes. Mantene te allertate si tu conto es implicate in nove violationes de datos.
+fxa-pwt-section-blurb = Protege per contrasigno tote le informationes personal in tu contos online. E le hackers fide sur le mal habitos, como usar un identic contrasigno ubique o phrases commun (p@ssw0rd, es un exemplo?) assi que si illes viola un conto, illes pote violar multos.
 fxa-what-to-do-subhead-4 = Obtene adjuta a rememorar tote tu contrasignos e pro los retener secur.
 fb-landing-headline = Ha essite tu info exponite in le violation de datos { $breachName }?
 content-available = Contento disponibile sub licentia Creative Commons.
