@@ -141,3 +141,18 @@ see-full-report = Vis fullstendig rapport
 manage-fxa = Handter { -brand-fxa }
 fxa-download-firefox-bar-blurb = Presentert av  { -brand-name }. 2x raskare. Brukar 30% mindre minne enn { -brand-Chrome }.
 fxa-download-firefox-bar-link = Last ned no
+user-fb-compromised-headline = { $userEmail } har vore utsett for datalekkasjen { $breachName }.
+guest-fb-compromised-headline = Denne e-postadressa var involvert i datalekkasjen { $breachName }.
+user-zero-breaches-headline = { $userEmail } har ikkje vore involvert nokon datalekkasje.
+guest-zero-breaches-headline = Denne e-postadressa har ikkje vore utsett for datalekkasjar.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } har vore involvert i ein datalekkasje..
+       *[other] { $userEmail } fhar vore utsett for { $breachCount } datalekkasjar.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Denne e-postadressa har vore involvert i ein datalekkasje.
+       *[other] Denne e-postadressa har vore involvert i { $breachCount } datalekkasjar.
+    }
+user-no-breaches-blurb = Vi vil involvere deg om denne adressa er involvert i ein datalekkasje.
