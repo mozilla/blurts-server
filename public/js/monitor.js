@@ -497,7 +497,7 @@ if (document.body.dataset.fxaEnabled === "fxa-enabled") {
     });
   }
   // capitalize the sign in button for en-US only.
-  if (window.navigator.language.includes("en")) {
+  if (window.navigator.language.includes("en") && document.getElementById("login-btn")) {
     document.getElementById("login-btn").classList.add("capitalize");
   }
 }
