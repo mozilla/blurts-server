@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Firefox アカウント
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = サポート
@@ -173,11 +175,6 @@ download-firefox-mobile = モバイル向け { -brand-name } をダウンロー�
 features = 機能
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta、Nightly、Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    Portions of this content are &#x24B8; 1998-2018 by individual mozilla.org contributors. <br />
-    Content available under a  <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons license</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = 侵害データの提供 { $hibp-link }
 site-description = あなたのアカウントはデータ侵害によって漏洩または盗まれていませんか？ { -product-name } で調べましょう。データベースを検索して、侵害時に知らせるための登録をしてください。
@@ -185,3 +182,6 @@ confirmation-blurb = データ侵害は他の人にも影響を及ぼす可能�
 share-email = メールアドレス
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = その他
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = ソーシャル
+fxa-scan-label = データが侵害されていないか確認してください。
