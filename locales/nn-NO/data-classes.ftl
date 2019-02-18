@@ -49,6 +49,7 @@ government-issued-ids = ID-kort skrivne ut av regjeringar
 health-insurance-information = Informasjon om helseforsikring
 historical-passwords = Tidlegare passord
 home-loan-information = Informasjon om bustadlån
+homepage-urls = Heimesideadresser
 imei-numbers = IMEI-nummer
 imsi-numbers = IMSI-nummer
 ip-addresses = IP-adresser
