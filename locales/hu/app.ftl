@@ -203,7 +203,10 @@ mozilla-security-blog = { -brand-Mozilla } biztonsági blog
 layout-social = Közösségi média
 show-all = Összes megjelenítése
 fxa-signup-banner-headline = Kísérje figyelemmel az online fiókjait érintő fenyegetéseket.
+fxa-signup-banner-blurb = Regisztráljon egy { -brand-fxa }ot, hogy megkapja a részletes jelentését, és értesüljön az új adatszegésekről.
+fxa-scan-label = Nézze meg, hogy szerepelt-e adatszegésben.
 fxa-welcome-headline = Üdvözli a { -product-name }.
+fxa-welcome-blurb = Minden kész, hogy értesítést kapjon, ha a(z) { $userEmail } megjelenik egy adatszegésben.
 fxa-scan-another-email = Szeretne ellenőrizni egy másik e-mail címet is?
 # Search Firefox Monitor
 fxa-scan-submit = { -product-name } keresés
@@ -214,6 +217,34 @@ full-report-headline = A { -product-name } jelentése
 see-full-report = Teljes jelentés megtekintése
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = { -brand-fxa } kezelése
+fxa-download-firefox-bar-blurb = A { -brand-name }tól. 2× gyorsabb. 30%-kal kevesebb memóriát használt, mint a { -brand-Chrome }.
 fxa-download-firefox-bar-link = Letöltés most
 fxa-download-firefox-banner-blurb = Jobb, gyorsabb oldalbetöltés, kevesebb memóriával.
+user-fb-compromised-headline = A(z) { $userEmail } e-mail cím { $breachName } adatszegésben volt érintett.
+guest-fb-compromised-headline = Ez az e-mail cím érintett volt a(z) { $breachName } adatszegésben.
+user-zero-breaches-headline = A(z) { $userEmail } e-mail cím egyetlen adatszegésben sem volt érintett.
+guest-zero-breaches-headline = Ez az e-mail cím egyetlen adatszegésben sem volt érintett.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] A(z) { $userEmail } e-mail cím 1 adatszegésben volt érintett.
+       *[other] A(z) { $userEmail } e-mail cím { $breachCount } adatszegésben volt érintett.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Ez az e-mail cím 1 adatszegésben volt érintett.
+       *[other] Ez az e-mail cím { $breachCount } adatszegésben volt érintett.
+    }
+user-no-breaches-blurb = Értesítjük, ha ez az e-mail cím egy új adatszegésben jelenik meg.
+user-one-breach-blurb = Ez az adatszegés a következő személyes adatok kikerülését eredményezte.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Az Ön e-mail címe { $breachCount } további adatszegésben volt érintett.
+       *[other] Az Ön e-mail címe { $breachCount } további adatszegésben volt érintett.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Ez az e-mail cím { $breachCount } további adatszegésben volt érintett.
+       *[other] Ez az e-mail cím { $breachCount } további adatszegésben volt érintett.
+    }
 have-an-account = Már van fiókja?
+content-available = A tartalom Creative Commons licenc alatt érhető el.
