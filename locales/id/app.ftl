@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Firefox Account
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Dukungan
@@ -17,6 +19,7 @@ about-firefox-alerts = Tentang Firefox Alerts
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Beri Masukan
 terms-and-privacy = Ketentuan dan Privasi
+error-scan-page-token = Anda telah coba memindah terlalu banyak alamat surel dalam periode singkat. Demi alasan keamanan, kami memblokir Anda sementara dari pencarian baru. Anda akan dapat mencobanya nanti kembali.
 error-could-not-add-email = Tidak dapat menambahkan alamat surel ke basis data.
 error-not-subscribed = Alamat surel ini tidak berlangganan { -product-name }.
 error-hibp-throttled = Terlalu banyak koneksi ke { -brand-HIBP }.
@@ -178,11 +181,6 @@ download-firefox-mobile = Unduh { -brand-name } Seluler
 features = Fitur
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    Bagian-bagian konten ini merupakan Ⓒ 1998-2018 oleh kontributor individu mozilla.org. <br />
-    Konten tersedia di bawah <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">lisensi Creative Commons</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Data kebocoran tersedia oleh { $hibp-link }
 site-description = Pernahkah akun Anda terkuak atau tercuri dalam kebocoran data? Cari tahu di { -product-name }. Telusuri basis data kami dan daftarkan diri untuk mendapatkan peringatan.
@@ -195,3 +193,8 @@ share-twitter = Kebanyakan orang memiliki sekitar 100 akun daring. Apakah salah 
 share-facebook-headline = Cari tahu apakah Anda telah menjadi bagian dari pembobolan data
 share-facebook-blurb = Apakah akun daring Anda sudah terpapar dalam pembobolan data?
 og-site-description = Temukan apakah Anda telah menjadi bagian dari pembobolan data dengan { -product-name }. Daftarkan diri Anda untuk mendapatkan pemberitahuan tentang pembobolan di masa depan dan dapatkan kiat-kiat menjaga akun Anda tetap aman.
+mozilla-security-blog = Blog Keamanan { -brand-Mozilla }
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Media Sosial
+show-all = Tampilkan Semua
+fxa-signup-banner-headline = Pantau ancaman terhadap akun daring Anda.
