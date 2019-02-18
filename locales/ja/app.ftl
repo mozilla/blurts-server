@@ -185,3 +185,9 @@ share-other = その他
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = ソーシャル
 fxa-scan-label = データが侵害されていないか確認してください。
+# Search Firefox Monitor
+fxa-scan-submit = { -product-name } で検索する
+sign-up-to-check = アカウント登録してチェックする
+sign-in = ログイン
+sign-out = ログアウト
+have-an-account = 既にアカウントをお持ちですか？
