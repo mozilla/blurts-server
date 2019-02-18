@@ -120,14 +120,17 @@ hibp-attribution = Informasjonen om datalekkasjen kjem frå { $hibp-link }
 share-email = E-postadresse
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Andre
+mozilla-security-blog = { -brand-Mozilla } sikkerheitsblogg
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Sosialt
 show-all = Vis alle
 fxa-welcome-headline = Velkomen til { -product-name }.
 # Search Firefox Monitor
 fxa-scan-submit = Sök { -product-name }
+sign-up-to-check = Registrer deg for å kontrollere
 sign-in = Logg in
 sign-out = Logg ut
+full-report-headline = Din { -product-name }-rapport
 see-full-report = Vis fullstendig rapport
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Handter { -brand-fxa }
