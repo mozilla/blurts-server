@@ -23,6 +23,7 @@ about-firefox-alerts = Informazioni sugli avvisi in Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Invia la tua opinione
 terms-and-privacy = Termini di utilizzo e privacy
+error-scan-page-token = Hai cercato troppi indirizzi email in un breve lasso di tempo. Per motivi di sicurezza la funzione di ricerca è stata temporaneamente sospesa. Potrai riprovare più tardi.
 error-could-not-add-email = Impossibile aggiungere l’indirizzo email al database.
 error-not-subscribed = Questo indirizzo email non è iscritto a { -product-name }
 error-hibp-throttled = Troppe connessioni a { -brand-HIBP }.
@@ -251,6 +252,12 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = Questa violazione di dati ha coinvolto le seguenti informazioni personali. Se non l’hai fatto, cambia le password.
 user-generic-fb-compromised-single = Questa violazione di dati ha coinvolto le seguenti informazioni personali.
+guest-fb-compromised-single = Questa violazione di dati ha esposto le seguenti informazioni personali. Registra un { -brand-fxa } per ottenere il rapporto completo e avvisi su nuove violazioni.
+guest-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Questo indirizzo email è stato coinvolto anche in { $breachCount } altra violazione di dati. Registra un { -brand-fxa } per ricevere il rapporto completo e avvisi di nuove violazioni.
+       *[other] Questo indirizzo email è stato coinvolto anche in altre { $breachCount } violazioni di dati. Registra un { -brand-fxa } per ricevere il rapporto completo e avvisi di nuove violazioni.
+    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Non sei stato coinvolto nella violazione di { $breachName } ma abbiamo trovato quell'indirizzo email in un’altra violazione.
@@ -261,6 +268,18 @@ user-generic-fb-not-compromised-blurb =
         [one] Questa email non era nella violazione di { $breachName } ma è stata coinvolta in un’altra violazione.
        *[other] Questa email non era nella violazione di { $breachName } ma è stata coinvolta in altre violazioni.
     }
+guest-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Questa email non è stata coinvolta nella violazione { $breachName }, ma è stata trovata in un’altra violazione. Registra un { -brand-fxa } per ricevere il rapporto completo e avvisi di nuove violazioni.
+       *[other] Questa email non è stata coinvolta nella violazione { $breachName }, ma è stata trovata in altre violazioni. Registra un { -brand-fxa } per ricevere il rapporto completo e avvisi di nuove violazioni.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] Questa violazione di dati ha esposto le seguenti informazioni personali. Cambia password, se non l’hai già fatto.
+       *[other] Queste violazioni di dati hanno esposto le seguenti informazioni personali. Cambia password, se non l’hai già fatto.
+    }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
 user-generic-found-breaches-blurb =
@@ -268,8 +287,23 @@ user-generic-found-breaches-blurb =
         [one] Questa violazione di dati ha esposto le seguenti informazioni personali.
        *[other] Queste violazioni di dati hanno esposto le seguenti informazioni personali.
     }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+guest-found-breaches-blurb =
+    { $breachCount ->
+        [one] Questa violazione di dati ha esposto le seguenti informazioni personali. Registra un { -brand-fxa } per ricevere il rapporto completo e avvisi di nuove violazioni.
+       *[other] Queste violazioni di dati hanno esposto le seguenti informazioni personali. Registra un { -brand-fxa } per ricevere il rapporto completo e avvisi di nuove violazioni.
+    }
 have-an-account = Hai già un account?
+signup-banner-sensitive-blurb = Scopri ciò che gli hacker già sanno su di te e impara come stare un passo avanti a loro. Ricevi un avviso se il tuo account viene coinvolto in nuove violazioni di dati.
+fxa-pwt-section-blurb = Le password proteggono tutte le informazioni personali degli account online. Gli hacker fanno affidamento sulle cattive abitudini degli utenti, come servirsi della stessa password ovunque o usare frasi comuni (@p@ssw0rd, per esempio). In questo modo, una volta violato un account, possono accedere a molti altri.
 fxa-pwt-summary-2 = Le password brevi che contengono una singola parola sono facili da indovinare per gli hacker. Usare almeno due parole e una combinazione di lettere, numeri e caratteri speciali.
+fxa-pwt-summary-4 = I gestori di password come 1Password, LastPass, Dashlane e Bitwarden conservano le tue password e le inseriscono nei siti web per te. Ti aiutano persino a creare password sicure.
+fxa-pwt-summary-6 = Le violazioni dei dati sono in aumento. Se le tue informazioni personali sono coinvolte in una nuova violazioni di dati, { -product-name } ti invia un avviso, così puoi attivarti per proteggere i tuoi account.
+fxa-what-to-do-blurb-1 = Se non riesci più ad accedere, contatta il sito web e chiedi come aggiornare le tue credenziali. Hai trovato nel rapporto un account che non riconosci?  I tuoi dati potrebbero essere stati venduti o ridistribuiti. Potrebbe anche trattarsi di un account che ti eri dimenticato di aver creato, oppure non lo riconosci perché la società che fornisce il servizio ha ne ha modificato il nome.
+fxa-what-to-do-subhead-2 = Non usare più la password esposta e modificala ovunque tu l’abbia utilizzata.
+fxa-wtd-blurb-2 = Gli hacker potrebbero provare la stessa password in combinazione con il tuo indirizzo email per entrare in altri account. Imposta una password diversa e unica per ciascun account, in particolare per il tuo conto in banca, il tuo account email e altri siti che registrano informazioni personali.
+fxa-what-to-do-blurb-3 = Generalmente le violazioni espongono solo email e password, ma alcune includono anche dati finanziari sensibili. Se il tuo conto bancario o il numero della tua carta di credito sono stati violati, avvisa subito la tua banca del rischio di frodi e controlla se negli estratti conto compaiono addebiti che non riconosci.
 fxa-what-to-do-subhead-4 = Usa strumenti che ti aiutino a ricordare tutte le tue password e tenerle al sicuro.
 fxa-what-to-do-blurb-4 = I gestori di password come 1Password, LastPass, Dashlane e Bitwarden memorizzano le tue password in modo sicuro e le inseriscono nei siti web per te. Usa un gestore di password sia sul telefono che sul computer per evitare di dovertele ricordare tutte a memoria.
 fb-landing-headline = I tuoi dati sono stati esposti nella violazione di { $breachName }?
