@@ -23,6 +23,7 @@ about-firefox-alerts = À propos des alertes Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Donner votre avis
 terms-and-privacy = Confidentialité et conditions d’utilisation
+error-scan-page-token = Vous avez essayé d’analyser trop d’adresses électroniques en peu de temps. Pour des raisons de sécurité, nous avons temporairement bloqué vos nouvelles recherches. Vous pourrez réessayer plus tard.
 error-could-not-add-email = Impossible d’ajouter l’adresse électronique à la base de données.
 error-not-subscribed = Cette adresse électronique n’est pas inscrite aux alertes { -product-name }.
 error-hibp-throttled = Connexions trop nombreuses à { -brand-HIBP }.
