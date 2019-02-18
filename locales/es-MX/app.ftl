@@ -19,6 +19,7 @@ about-firefox-alerts = Acerca de las alertas de Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Enviar comentario
 terms-and-privacy = Términos y Privacidad
+error-scan-page-token = Intentaste escanear demasiadas direcciones de correo electrónico en un corto periodo de tiempo. Por cuestiones de seguridad, hemos bloqueado tus búsquedas temporalmente. Puedes intentarlo de nuevo más tarde.
 error-could-not-add-email = No se pudo agregar la dirección de correo electrónico a la base de datos.
 error-not-subscribed = Esta dirección de correo electrónico no está suscrita a { -product-name }.
 error-hibp-throttled = Demasiadas conexiones para { -brand-HIBP }.
@@ -253,6 +254,11 @@ guest-fb-compromised-blurb =
         [one] Este correo electrónico apareció en { $breachCount } otra filtración. Regístrate a { -brand-fxa } para obtener un reporte completo y alertas acerca de nuevas filtraciones.
        *[other] Este correo electrónico apareció en { $breachCount } otras filtraciones. Regístrate a { -brand-fxa } para obtener un reporte completo y alertas acerca de nuevas filtraciones.
     }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Este correo electrónico no estaba en la violación { $breachName }, pero se encontró en otra.
+       *[other] Este correo electrónico no estaba en la violación { $breachName }, pero se encontró en otras.
+    }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
 user-generic-found-breaches-blurb =
@@ -267,5 +273,6 @@ fxa-pwt-summary-2 =
 fxa-pwt-summary-4 = Administradores de contraseñas como 1Password, LastPass, Dashlane y Bitwarden almacena tus contraseñas y úsalas en tus sitios web. Ellos ayudarán a crear contraseñas fuertes.
 fxa-what-to-do-subhead-2 = Deja de usar la contraseña expuesta, y cambiala en todos los lugares en los que la usaste.
 fxa-what-to-do-subhead-4 = Obtén ayuda recordando todas tus contraseñas y manteniéndolas seguras.
+fb-landing-headline = ¿Tu información fue expuesta en la violación de datos de { $breachName }?
 copyright = Partes de este contenido son © 1999-{ $year } por colaboradores individuales de mozilla.org.
 content-available = Contenido disponible bajo una licencia Creative Commons.
