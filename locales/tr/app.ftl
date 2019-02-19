@@ -301,11 +301,24 @@ fxa-pwt-section-blurb = Parolalarınız çevrimiçihesaplarınızdaki tüm kişi
 fxa-pwt-summary-2 =
     Hacker’lar kısa ve tek kelimeden oluşan parolaları kolayca tahmin edebilir.
     En az iki kelimede oluşan ve harf, rakam ve özel karakterler içeren parolalar kullanın.
+fxa-pwt-summary-4 =
+    1Password, LastPass, Dashlane ve Bitwarden gibi parola yöneticileri parolalarınızı sizin için 
+    saklayabilir web sitelerine otomatik giriş yapmanızı sağlayabilir. Ayrıca kaliteli parolalar oluşturmanıza yardımcı olurlar.
+fxa-pwt-summary-6 = Veri ihlalleri dur durak bilmiyor. Kişisel bilgileriniz yeni bir veri ihlalinde karşımıza çıkarsa { -product-name } size uyarı gönderir. Böylece hemen eyleme geçerek hesaplarınızı koruyabilirsiniz.
+fxa-what-to-do-blurb-1 = Siteye giriş yapamıyorsanız siteyle iletişim kurarak parolanızı nasıl değiştirebileceğinizi öğrenin. Tanıdık gelmeyen bir hesap mı gördünüz? Verielriniz satılmış veya başka bir siteyle paylaşılmış olabilir. Unuttuğunuz bir hesap veya siz üye olduktan sonra adı değişmiş bir site de olabilir.
+fxa-what-to-do-subhead-2 = Ele geçirilen parolanızı artık hiçbir yerde kullanmayın ve bu parolayı kullandığınız her yerde değiştirin.
+fxa-wtd-blurb-2 =
+    Hacker'lar ele geçirdikleri parolayı ve e-posta adresinizi kullanarak diğer hesaplarınıza girmeyi de deneyebilir.
+    Her hesabınızda, özellikle de banka hesabınız, e-posta hesabınız ve 
+    kişisel bilgilerinizi kaydettiğiniz diğer sitelerde birbirinden farklı parolalar kullanın.
 fxa-what-to-do-blurb-3 =
     Çoğu veri ihlalinde yalnızca e-postalar ve parolalar ele geçirilir ama bazı ihlaller hassas finansal bilgilerinizi de içerebilir. 
     Banka hesabınız veya kredi kartı numaralarınız ele geçirilmişse bankanızı olası sahtekârlıklara karşı uyarın. 
     Kredi kartı hesap özetlerinizde tanıdık gelmeyen harcamalara karşı tetikte olun.
 fxa-what-to-do-subhead-4 = Parolalarınızı hatırlamak ve güvende tutmak için yardım alın.
+fxa-what-to-do-blurb-4 =
+    1Password, LastPass, Dashlane ve Bitwarden gibi parola yöneticileri parolalarınızı sizin için 
+    saklayabilir web sitelerine otomatik giriş yapmanızı sağlayabilir. İyi parolaları ezberlemek zordur. O yüzden telefonunuzda ve bilgisayarınızda bir parola yöneticisi kullanmanızı öneriyoruz.
 fb-landing-headline = Verileriniz { $breachName } ihlali kapsamında ele geçirilmiş olabilir mi?
 copyright = Bu içeriğin bazı kısımları ©1999-{ $year } bireysel mozilla.org gönüllüleri.
 content-available = İçerik, Creative Commons lisansı ile sunulmaktadır.
