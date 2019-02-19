@@ -282,6 +282,15 @@ user-generic-fb-not-compromised-blurb =
         [one] Este email não estava na brecha { $breachName }, mas foi encontrado noutra.
        *[other] Este email não estava na brecha { $breachName }, mas foi encontrado noutras.
     }
+guest-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one]
+            Este email não estava na brecha { $breachName }, mas foi encontrado noutra.
+            Registe uma { -brand-fxa } para receber o seu relatório completo e alertas acerca de novas brechas.
+       *[other]
+            Este email não estava na brecha { $breachName }, mas foi encontrado noutras.
+            Registe uma { -brand-fxa } para receber o seu relatório completo e alertas acerca de novas brechas.
+    }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
 user-found-breaches-blurb =
@@ -295,6 +304,17 @@ user-generic-found-breaches-blurb =
     { $breachCount ->
         [one] Esta brecha expôs a seguinte informação pessoal.
        *[other] Esta brechas expuseram a seguinte informação pessoal.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+guest-found-breaches-blurb =
+    { $breachCount ->
+        [one]
+            Esta brecha expôs a seguinte informação pessoal. Registe uma { -brand-fxa }
+            para obter o seu relatório completo e alertas acerca de novas brechas.
+       *[other]
+            Estas brechas expuseram a seguinte informação pessoal. Registe uma { -brand-fxa }
+            para obter o seu relatório completo e alertas acerca de novas brechas.
     }
 have-an-account = Já tem uma conta?
 signup-banner-sensitive-blurb =
