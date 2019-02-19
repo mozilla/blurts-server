@@ -42,7 +42,11 @@ function localizedBreachDataClasses(supportedLocales, dataClasses, args) {
 
 
 function fluentNestedBold(supportedLocales, id, args) {
-  args.hash.breachName = `<span class="medium">${args.hash.breachName}</span>`;
+  for (const key in args.hash) {
+    if (["breachName", "breachCount"].includes(key)) {
+      args.hash[key] = `<span class="medium">${args.hash[key]}</span>`;
+    }
+  }
   return LocaleUtils.fluentFormat(supportedLocales, id, args.hash);
 }
 

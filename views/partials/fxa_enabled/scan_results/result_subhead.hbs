@@ -16,10 +16,10 @@
               {{#if selfScan}}
                 <p>{{fluentFormat req.supportedLocales "user-fb-compromised-single"}}</p>
               {{else}}
-                <p>{{fluentFormat req.supportedLocales "user-generic-fb-compromised-single" breachCount=foundBreaches.length}}</p>
+                <p>{{{fluentNestedBold req.supportedLocales "user-generic-fb-compromised-single" breachCount=foundBreaches.length}}}</p>
               {{/if}}
             {{else}}
-              <p>{{fluentFormat req.supportedLocales "guest-fb-compromised-single" breachCount=foundBreaches.length}}</p>
+              <p>{{{fluentNestedBold req.supportedLocales "guest-fb-compromised-single" breachCount=foundBreaches.length}}}</p>
             {{/if}}
           {{else}}
             {{#if signedInUser}}
@@ -36,12 +36,12 @@
           {{#if userCompromised}}
             {{#if signedInUser}}
               {{#if selfScan}}
-                <p>{{fluentFormat req.supportedLocales "user-fb-compromised-blurb" breachCount=(breachMath foundBreaches.length "-" 1) userEmail=signedInUser.email}}</p>
+                <p>{{{fluentNestedBold req.supportedLocales "user-fb-compromised-blurb" breachCount=(breachMath foundBreaches.length "-" 1) userEmail=signedInUser.email}}}</p>
               {{else}}
-                <p>{{fluentFormat req.supportedLocales "user-generic-fb-compromised-blurb" breachCount=(breachMath foundBreaches.length "-" 1)}}</p>
+                <p>{{{fluentNestedBold req.supportedLocales "user-generic-fb-compromised-blurb" breachCount=(breachMath foundBreaches.length "-" 1)}}}</p>
               {{/if}}
             {{else}}
-              <p>{{fluentFormat req.supportedLocales "guest-fb-compromised-blurb" breachCount=(breachMath foundBreaches.length "-" 1)}}</p>
+              <p>{{{fluentNestedBold req.supportedLocales "guest-fb-compromised-blurb" breachCount=(breachMath foundBreaches.length "-" 1)}}}</p>
             {{/if}}
           {{else}}
             {{#if signedInUser}}
@@ -58,12 +58,12 @@
       {{else}}
         {{#if signedInUser}}
           {{#if selfScan}}
-            <p>{{fluentFormat req.supportedLocales "user-found-breaches-blurb" breachCount=foundBreaches.length}}</p>
+            <p>{{{fluentNestedBold req.supportedLocales "user-found-breaches-blurb" breachCount=foundBreaches.length}}}</p>
           {{else}}
-            <p>{{fluentFormat req.supportedLocales "user-generic-found-breaches-blurb" breachCount=foundBreaches.length}}</p>
+            <p>{{{fluentNestedBold req.supportedLocales "user-generic-found-breaches-blurb" breachCount=foundBreaches.length}}}</p>
           {{/if}}
         {{else}}
-          <p>{{fluentFormat req.supportedLocales "guest-found-breaches-blurb" breachCount=foundBreaches.length}}</p>
+          <p>{{{fluentNestedBold req.supportedLocales "guest-found-breaches-blurb" breachCount=foundBreaches.length}}}</p>
         {{/if}}
       {{/if}}
     {{/ifCompare}}
