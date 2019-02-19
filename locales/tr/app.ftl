@@ -19,6 +19,7 @@ about-firefox-alerts = Firefox uyarıları hakkında
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Görüş bildir
 terms-and-privacy = Şartlar ve gizlilik
+error-scan-page-token = Kısa süre içinde çok fazla e-posta adresi taramaya çalıştınız. Güvenlik nedeniyle yeni aramalar yapmanızı geçici olarak engelledik. Daha sonra yeniden deneyebileceksiniz.
 error-could-not-add-email = E-posta adresi veritabanına eklenemedi.
 error-not-subscribed = Bu e-posta adresi { -product-name }’e abone değil.
 error-hibp-throttled = Çok fazla { -brand-HIBP } bağlantısı.
@@ -188,11 +189,6 @@ download-firefox-mobile = Mobil cihazlar için { -brand-name }’u indir
 features = Özellikler
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    Bu içeriğin bazı kısımları &#x24B8; 1998-2018 bireysel mozilla.org gönüllüleri. <br />
-    İçerik, <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener"> Creative Commons lisansı</a> ile kullanılabilir.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = İhlal verileri { $hibp-link } tarafından sağlanmaktadır
 site-description = Veri ihlallerinde hesaplarınız sızdırılmış veya çalınmış olabilir mi? { -product-name } ile öğrenin. Veritabanımızda arama yapın ve uyarılara kaydolun.
@@ -243,6 +239,7 @@ guest-scan-results-headline =
        *[other] Bu e-posta adresi { $breachCount } veri ihlalinde yer alıyor.
     }
 user-no-breaches-blurb = Bu e-posta adresi yeni bir ihlalde karşımıza çıkarsa sizi uyaracağız.
+guest-no-breaches-blurb = Bu e-postanın hassas ihlallerde yer alıp almadığını görmek için { -brand-fxa } oluşturun. Böylece, bu adres yeni veri ihlallerinde yer alırsa sizi uyarabiliriz.
 user-one-breach-blurb = Bu ihlal kapsamında aşağıdaki kişisel bilgiler ele geçirildi.
 user-fb-compromised-blurb =
     { $breachCount ->
@@ -262,8 +259,53 @@ guest-fb-compromised-blurb =
         [one] Bu e-posta adresi { $breachCount } ihlalde daha yer alıyor. Tam raporunuzu görmek ve yeni bir ihlal yaşandığında uyarılmak isterseniz { -brand-fxa } açabilirsiniz.
        *[other] Bu e-posta adresi { $breachCount } ihlalde daha yer alıyor. Tam raporunuzu görmek ve yeni bir ihlal yaşandığında uyarılmak isterseniz { -brand-fxa } açabilirsiniz.
     }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] { $breachName } ihlalinde yer almıyorsunuz ama bu e-posta adresini içeren başka bir ihlal bulduk.
+       *[other] { $breachName } ihlalinde yer almıyorsunuz ama bu e-posta adresini içeren başka ihlaller bulduk.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Bu e-posta adresi { $breachName } ihlalinde yer almıyor ama başka bir ihlalde yer aldığını tespit ettik.
+       *[other] Bu e-posta adresi { $breachName } ihlalinde yer almıyor ama başka ihlallerde yer aldığını tespit ettik.
+    }
+guest-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Bu e-posta adresi { $breachName } ihlalinde yer almıyor ama başka bir ihlalde yer aldığını tespit ettik. Raporunuzun tamamını almak ve gelecekteki ihlal uyarılarına kaydolmak için { -brand-fxa } açın.
+       *[other] Bu e-posta adresi { $breachName } ihlalinde yer almıyor ama başka ihlallerde yer aldığını tespit ettik. Raporunuzun tamamını almak ve gelecekteki ihlal uyarılarına kaydolmak için { -brand-fxa } açın.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] Bu ihlalde aşağıdaki kişisel bilgiler ele geçirildi. Henüz parolanızı değiştirmediyseniz mutlaka değiştirin.
+       *[other] Bu ihlallerde aşağıdaki kişisel bilgiler ele geçirildi. Henüz parolalarınızı değiştirmediyseniz mutlaka değiştirin.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Bu ihlalde aşağıdaki kişisel bilgiler ele geçirildi.
+       *[other] Bu ihlallerde aşağıdaki kişisel bilgiler ele geçirildi.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+guest-found-breaches-blurb =
+    { $breachCount ->
+        [one] Bu ihlal kapsamında aşağıdaki kişisel bilgiler ele geçirildi. Tam raporunuzu görmek ve yeni bir ihlal yaşandığında uyarılmak isterseniz { -brand-fxa } açabilirsiniz.
+       *[other] Bu ihlaller kapsamında aşağıdaki kişisel bilgiler ele geçirildi. Tam raporunuzu görmek ve yeni bir ihlal yaşandığında uyarılmak isterseniz { -brand-fxa } açabilirsiniz.
+    }
 have-an-account = Zaten hesabınız var mı?
+signup-banner-sensitive-blurb = Hacker’ların hakkınızda neler bildiğini öğrenin, onların bir adım önünde kalın. Hesabınız yeni veri ihlallerinde yer alırsa sizi uyarabiliriz.
+fxa-pwt-section-blurb = Parolalarınız çevrimiçihesaplarınızdaki tüm kişisel bilgilerinizi korur. Hacker’lar, her yerde aynı parolayı kullanmak veya sık kullanılan parolaları kullanmak (p@r0la, 12345 vb.) gibi kötü alışkanlıklardan faydalanır. Böylece bir hesabı ele geçirdikten sonra diğer hesapları da ele geçirebilirler.
+fxa-pwt-summary-2 =
+    Hacker’lar kısa ve tek kelimeden oluşan parolaları kolayca tahmin edebilir.
+    En az iki kelimede oluşan ve harf, rakam ve özel karakterler içeren parolalar kullanın.
 fxa-what-to-do-blurb-3 =
     Çoğu veri ihlalinde yalnızca e-postalar ve parolalar ele geçirilir ama bazı ihlaller hassas finansal bilgilerinizi de içerebilir. 
     Banka hesabınız veya kredi kartı numaralarınız ele geçirilmişse bankanızı olası sahtekârlıklara karşı uyarın. 
     Kredi kartı hesap özetlerinizde tanıdık gelmeyen harcamalara karşı tetikte olun.
+fxa-what-to-do-subhead-4 = Parolalarınızı hatırlamak ve güvende tutmak için yardım alın.
+fb-landing-headline = Verileriniz { $breachName } ihlali kapsamında ele geçirilmiş olabilir mi?
+copyright = Bu içeriğin bazı kısımları ©1999-{ $year } bireysel mozilla.org gönüllüleri.
+content-available = İçerik, Creative Commons lisansı ile sunulmaktadır.
