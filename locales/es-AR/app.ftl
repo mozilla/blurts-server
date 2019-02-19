@@ -246,6 +246,15 @@ user-generic-fb-not-compromised-blurb =
         [one] Este correo electrónico no estaba en la violación { $breachName }, pero se encontró en otra.
        *[other] Este correo electrónico no estaba en la violación { $breachName }, pero se encontró en otras.
     }
+guest-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one]
+            Este correo electrónico no estaba en la violación { $breachName }, pero se encontró en otra.
+            Registratepara tener { -brand-fxa } para obtener un informe completo y alertas sobre nuevas violaciones.
+       *[other]
+            Este correo electrónico no estaba en la violación { $breachName }, pero se encontró en otras.
+            Registrate para tener { -brand-fxa } para obtener tu informe completo y alertas sobre nuevas violaciones.
+    }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
 user-found-breaches-blurb =
