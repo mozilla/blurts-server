@@ -254,10 +254,22 @@ guest-fb-compromised-blurb =
         [one] Este correo electrónico apareció en { $breachCount } otra filtración. Regístrate a { -brand-fxa } para obtener un reporte completo y alertas acerca de nuevas filtraciones.
        *[other] Este correo electrónico apareció en { $breachCount } otras filtraciones. Regístrate a { -brand-fxa } para obtener un reporte completo y alertas acerca de nuevas filtraciones.
     }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] No estabas en la violación { $breachName }, pero encontramos esa dirección de correo electrónico en otra.
+       *[other] No estabas en la violación { $breachName }, pero encontramos esa dirección de correo electrónico en otras.
+    }
 user-generic-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Este correo electrónico no estaba en la violación { $breachName }, pero se encontró en otra.
        *[other] Este correo electrónico no estaba en la violación { $breachName }, pero se encontró en otras.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] Esta violación expuso la siguiente información personal. Si aún no has cambiado tus contraseñas, recomendamos que lo hagas.
+       *[other] Estas violaciones expusieron la siguiente información personal. Si aún no has cambiado tus contraseñas, recomendamos que lo hagas.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -272,7 +284,9 @@ fxa-pwt-summary-2 =
     Usa al menos dos palabras y una combinación de letras, números y caracteres especiales.
 fxa-pwt-summary-4 = Administradores de contraseñas como 1Password, LastPass, Dashlane y Bitwarden almacena tus contraseñas y úsalas en tus sitios web. Ellos ayudarán a crear contraseñas fuertes.
 fxa-what-to-do-subhead-2 = Deja de usar la contraseña expuesta, y cambiala en todos los lugares en los que la usaste.
+fxa-what-to-do-blurb-3 = La mayoría de las violaciones solo exponen correos electrónicos y contraseñas, pero algunas incluyen información financiera confidencial. Si tu cuenta bancaria o los números de tu tarjeta de crédito se incluyeron en una violación, avísale a tu banco de posibles fraudes. Monitorea los estados de cuenta por cualquier cargo que no reconozcas.
 fxa-what-to-do-subhead-4 = Obtén ayuda recordando todas tus contraseñas y manteniéndolas seguras.
+fxa-what-to-do-blurb-4 = Los administradores de contraseñas como 1Password, LastPass, Dashlane y Bitwarden almacenan tus contraseñas de forma segura y te las ingresan en los sitios web. Usa un administrador de contraseñas en tu dispositivo y computadora para que no tengas que recordarlas todas.
 fb-landing-headline = ¿Tu información fue expuesta en la violación de datos de { $breachName }?
 copyright = Partes de este contenido son © 1999-{ $year } por colaboradores individuales de mozilla.org.
 content-available = Contenido disponible bajo una licencia Creative Commons.
