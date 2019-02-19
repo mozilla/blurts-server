@@ -167,9 +167,11 @@ const DB = {
    * @returns {object} updated subscriber knex object in DB
    */
   async _updateFxAData(subscriber, fxaRefreshToken, fxaProfileData) {
+    const fxaUID = JSON.parse(fxaProfileData).uid;
     const updated = await knex("subscribers")
     .where("id", "=", subscriber.id)
     .update({
+      fxa_uid: fxaUID,
       fxa_refresh_token: fxaRefreshToken,
       fxa_profile_json: fxaProfileData,
     })
@@ -217,6 +219,10 @@ const DB = {
       .where("verified", false)
       .andWhere("created_at", "<", expiredTimeStamp)
       .del();
+  },
+
+  async deleteSubscriberByFxAUID(fxaUID) {
+    await knex("subscribers").where("fxa_uid", fxaUID).del();
   },
 
   async createConnection() {
