@@ -14,9 +14,9 @@
         {{/if}}
       {{else}}
         {{#if selfScan}}
-          {{{fluentFormat req.supportedLocales "user-scan-results-headline" breachCount=foundBreaches.length userEmail=signedInUser.email}}}
+          {{{fluentNestedBold req.supportedLocales "user-scan-results-headline" breachCount=foundBreaches.length userEmail=signedInUser.email}}}
         {{else}}
-          {{{fluentFormat req.supportedLocales "guest-scan-results-headline" breachCount=foundBreaches.length}}}
+          {{{fluentNestedBold req.supportedLocales "guest-scan-results-headline" breachCount=foundBreaches.length}}}
         {{/if}}
       {{/if}}
     </h3>
