@@ -270,4 +270,29 @@ user-generic-found-breaches-blurb =
        *[other] Disse { $breachCount } datalæk kompromitterede følgende personlige oplysninger.
     }
 have-an-account = Har du allerede en konto?
+signup-banner-sensitive-blurb =
+    Find ud af, hvad hackerne allerede ved om dig - og lær,
+    hvordan du altid kan være et skridt foran dem.
+    Få en advarsel, hvis din konto optræder i nye datalæk.
+fxa-pwt-summary-2 =
+    Det er nemt for en hacker at gætte en adgangskode bestående af et enkelt ord.
+    Brug som minimum to ord samt en kombination af bogstaver, tal og specielle tegn.
+fxa-pwt-summary-4 =
+    Programmer til at håndtere adgangskoder, som fx 1Password, LastPass, Dashlane og Bitwarden gemmer 
+    dine adgangskoder og sætter dem ind på websteder for dig. De kan også hjælpe dig med at lave sikre adgangskoder.
+fxa-what-to-do-subhead-2 = Stop med at anvende den kompromitterede adgangskode, og skift den ud overalt, du har brugt den.
+fxa-wtd-blurb-2 =
+    Hackere kan forsøge at bruge din mailadresse og samme adgangskode til at logge ind på andre konti.
+    Opret en ny og unik adgangskode for hver konto - det er især vigtigt for din netbank, din mailadresse
+    og andre websteder, hvor du har gemt personlige oplysninger.
+fxa-what-to-do-blurb-3 =
+    De fleste datalæk indeholder kun mailadresser og adgangskoder, men nogle indeholder følsom økonomisk information.
+    Hvis din bankkonto eller dit betalingskort-nummer er blevet lækket, så tag kontakt med din bank. 
+    Hold øje med konto-bevægelser, du ikke kan genkende.
+fxa-what-to-do-subhead-4 = Få hjælp til at huske alle din adgangskoder og til at beskytte dem.
+fxa-what-to-do-blurb-4 =
+    Programmer til at håndtere adgangskoder, som fx 1Password, LastPass, Dashlane og Bitwarden 
+    gemmer dine adgangskoder og sætter dem ind på websteder for dig. Brug et program til at håndtere
+    adgangskoder på din telefon og computer, så du ikke behøver at huske dem.
+fb-landing-headline = Er dine oplysninger blevet kompromitteret i datalækken { $breachName }?
 copyright = Dele af dette indhold er © 1999-{ $year } af individuelle bidragsydere til mozilla.org.
