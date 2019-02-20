@@ -19,6 +19,7 @@ about-firefox-alerts = Om advarsler i Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Giv feedback
 terms-and-privacy = Vilkår og beskyttelse af personlige oplysninger
+error-scan-page-token = Du har forsøgt at skanne for mange mail-adresser inden for et kort tidsrum. Vi har af sikkerhedsgrunde blokeret din mulighed for at søge indtil videre. Du kan prøve igen senere.
 error-could-not-add-email = Kunne ikke tilføje mailadressen til databasen.
 error-not-subscribed = Denne mailadresse er ikke tilmeldt { -product-name }.
 error-hibp-throttled = For mange forbindelser til { -brand-HIBP }.
@@ -204,6 +205,8 @@ fxa-landing-blurb =
     og lær hvordan du kan komme et skridt foran dem.
 fxa-scan-label = Se om du har været omfattet af en datalæk.
 fxa-welcome-headline = Velkommen til { -product-name }.
+fxa-welcome-blurb = Du vil nu modtage advarsler, hvis { $userEmail } optræder i en datalæk.
+fxa-scan-another-email = Vil du tjekke en anden mailadresse?
 # Search Firefox Monitor
 fxa-scan-submit = Søg i { -product-name }
 sign-up-to-check = Tilmeld dig for at tjekke
@@ -250,10 +253,29 @@ user-generic-fb-compromised-single = Denne datalæk kompromitterede følgende pe
 guest-fb-compromised-single =
     Denne datalæk kompromitterede følgende personlige oplysninger. Tilmeld dig en { -brand-fxa } 
     for at få din fulde rapport og advarsler om nye datalæk.
+guest-fb-compromised-blurb =
+    { $breachCount ->
+        [one]
+            Denne mailadresse er også ramt af { $breachCount } anden datalæk. Tilmeld
+            dig en { -brand-fxa } for at få din fulde rapport og advarsler om nye datalæk.
+       *[other]
+            Denne mailadresse er også ramt af { $breachCount } andre datalæk. Tilmeld
+            dig en { -brand-fxa } for at få din fulde rapport og advarsler om nye datalæk.
+    }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Du er ikke blevet ramt af datalækken { $breachName }, men vi har fundet mailadressen i en anden datalæk.
+       *[other] Du er ikke blevet ramt af datalækken { $breachName }, men vi har fundet mailadressen i andre datalæk.
+    }
 user-generic-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Denne mailadresse optræder ikke i datalækken { $breachName }, men findes i en anden datalæk.
        *[other] Denne mailadresse optræder ikke i datalækken { $breachName }, men findes i andre datalæk.
+    }
+guest-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Mailadressen optrådte ikke i datalækken { $breachName }, men vi har fundet den i en anden datalæk. Tilmeld dig en { -brand-fxa } for at få fulde rapporter og advarsler om nye datalæk.
+       *[other] Mailadressen optrådte ikke i datalækken { $breachName }, men vi har fundet den i andre datalæk. Tilmeld dig en { -brand-fxa } for at få fulde rapporter og advarsler om nye datalæk.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -269,17 +291,37 @@ user-generic-found-breaches-blurb =
         [one] Denne datalæk kompromitterede følgende personlige oplysninger.
        *[other] Disse { $breachCount } datalæk kompromitterede følgende personlige oplysninger.
     }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+guest-found-breaches-blurb =
+    { $breachCount ->
+        [one] Denne datalæk kompromitterede følgende personlige data. Tilmeld dig en { -brand-fxa } for at få din fulde rapport og advarsler om nye datalæk.
+       *[other] Disse datalæk kompromitterede følgende personlige data. Tilmeld dig en { -brand-fxa } for at få din fulde rapport og advarsler om nye datalæk.
+    }
 have-an-account = Har du allerede en konto?
 signup-banner-sensitive-blurb =
     Find ud af, hvad hackerne allerede ved om dig - og lær,
     hvordan du altid kan være et skridt foran dem.
     Få en advarsel, hvis din konto optræder i nye datalæk.
+fxa-pwt-section-blurb =
+    Adgangskoder beskytter alle personlige informationer på dine online-konti. 
+    Hackere er afhængige af dine dårlige vaner - som at bruge den samme adgangskode 
+    overalt eller at bruge generiske adgangskoder (fx minkode1234) - så de kan hacke 
+    mange konti, hvis de bare kan hacke én.
 fxa-pwt-summary-2 =
     Det er nemt for en hacker at gætte en adgangskode bestående af et enkelt ord.
     Brug som minimum to ord samt en kombination af bogstaver, tal og specielle tegn.
 fxa-pwt-summary-4 =
     Programmer til at håndtere adgangskoder, som fx 1Password, LastPass, Dashlane og Bitwarden gemmer 
     dine adgangskoder og sætter dem ind på websteder for dig. De kan også hjælpe dig med at lave sikre adgangskoder.
+fxa-pwt-summary-6 =
+    Der bliver stadig flere datalæk. { -product-name }  sender dig en advarsel, hvis dine personlige
+    data optræder i en ny datalæk - så du kan tage forholdsregler og beskytte dine konti.
+fxa-what-to-do-blurb-1 =
+    Hvis du ikke kan logge ind, så kontakt webstedet og spørg, hvordan du logger ind.
+    Er der en konto, du ikke genkender? Dine data kan være blevet solgt eller givet videre.
+    Der kan også være tale om en konto, du har glemt, at du har oprettet - eller 
+    en virksomhed, der har skiftet navn.
 fxa-what-to-do-subhead-2 = Stop med at anvende den kompromitterede adgangskode, og skift den ud overalt, du har brugt den.
 fxa-wtd-blurb-2 =
     Hackere kan forsøge at bruge din mailadresse og samme adgangskode til at logge ind på andre konti.
@@ -296,3 +338,4 @@ fxa-what-to-do-blurb-4 =
     adgangskoder på din telefon og computer, så du ikke behøver at huske dem.
 fb-landing-headline = Er dine oplysninger blevet kompromitteret i datalækken { $breachName }?
 copyright = Dele af dette indhold er © 1999-{ $year } af individuelle bidragsydere til mozilla.org.
+content-available = Indholdet er tilgængeligt under en Creative Commons-licens.
