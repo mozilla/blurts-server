@@ -9,6 +9,7 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Cuenta de Firefox
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Ayuda
@@ -168,11 +169,6 @@ download-firefox-mobile = Bajar { -brand-name } para móviles
 features = Características
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    Algunos de estos contenidos están &#x24B8; 1998-2018 por determinados colaboradores en mozilla.org.
-    Contenido disponible bajo una <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">licencia Creative Commons</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Datos de la filtración proporcionados por { $hibp-link }
 site-description = ¿Han sido tus cuentas filtradas o robadas en una filtración de datos? Averígualo en { -product-name }. Busca en nuestra base de datos y regístrate para recibir alertas.
