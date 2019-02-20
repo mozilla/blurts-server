@@ -206,6 +206,9 @@ see-full-report = Ver el reporte completo
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Gestionar { -brand-fxa }
 fxa-download-firefox-bar-link = Bajar ahora
+have-an-account = ¿Ya tienes una cuenta?
+fxa-what-to-do-subhead-4 = Recibe ayuda para recordar todas tus contraseñas y mantenerlas seguras.
+fxa-what-to-do-blurb-4 = Los administradores de contraseñas como 1Password, LastPass, Dashlane y Bitwarden almacenan tu contraseñas de forma segura y las colocan en los sitios web. Usa un administrador de contraseñas en tu teléfono y computador para que no tengas que recordarlas todas.
 fb-landing-headline = ¿Fue expuesta tu información en la filtración de datos de { $breachName }?
 copyright = Partes de este contenido son © 1999-{ $year } por colaboradores individuales de mozilla.org.
 content-available = Contenido disponible bajo una licencia Creative Commons.
