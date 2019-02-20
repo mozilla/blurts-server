@@ -193,15 +193,29 @@ share-twitter = De fleste mennesker har omkring 100 online-konti. Er nogle af di
 share-facebook-headline = Find ud af, om du er blevet udsat for en datalæk.
 share-facebook-blurb = Er dine online-konti blevet ramt i en datalæk?
 og-site-description = Brug { -product-name } til at finde ud af, om du er blevet ramt af en datalæk. Tilmeld dig for at få advarsler om nye datalæk og få tips til at beskytte dine konti.
+mozilla-security-blog = { -brand-Mozilla }s sikkerhedsblog
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Sociale medier
 show-all = Vis alle
+fxa-signup-banner-headline = Overvåg trusler mod dine online-konti.
+fxa-signup-banner-blurb = Tilmeld dig en { -brand-fxa } for at få din detaljerede rapport og advarsler om nye datalæk.
+fxa-landing-blurb =
+    Find ud af, hvor meget hackerne allerede ved om dig, 
+    og lær hvordan du kan komme et skridt foran dem.
 fxa-scan-label = Se om du har været omfattet af en datalæk.
 fxa-welcome-headline = Velkommen til { -product-name }.
 # Search Firefox Monitor
 fxa-scan-submit = Søg i { -product-name }
+sign-up-to-check = Tilmeld dig for at tjekke
 sign-in = Log ind
 sign-out = Log ud
 full-report-headline = Din { -product-name }-rapport
+see-full-report = Se den komplette rapport
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Håndter { -brand-fxa }
+fxa-download-firefox-bar-blurb = Præsenteret af { -brand-name }. 2 X hurtigere. Bruger 30% mindre hukommelse end { -brand-Chrome }.
 fxa-download-firefox-bar-link = Hent nu
+fxa-download-firefox-banner-blurb = Bedre og hurtigere indlæsning af sider og mindre brug af computerens hukommelse.
 user-fb-compromised-headline = { $userEmail } optrådte i datalækken { $breachName }.
 guest-fb-compromised-headline = Denne mailadresse optrådte i datalækken { $breachName }.
 user-zero-breaches-headline = { $userEmail } optrådte i nul datalæk.
@@ -216,6 +230,10 @@ guest-scan-results-headline =
         [one] Denne mailadresse optrådte i 1 datalæk.
        *[other] Denne mailadresse optrådte i { $breachCount } datalæk.
     }
+user-no-breaches-blurb = Vi vil advare dig, hvis denne mailadresse optræder i en ny datalæk.
+guest-no-breaches-blurb =
+    Opret en { -brand-fxa } for at se, om denne mailadresse optræder i læk af følsomme data.
+    Vi giver dig desuden besked, hvis mailadressen optræder i nye datalæk.
 user-one-breach-blurb = Denne datalæk kompromitterede følgende personlige oplysninger.
 user-fb-compromised-blurb =
     { $breachCount ->
@@ -227,11 +245,22 @@ user-generic-fb-compromised-blurb =
         [one] Denne mailadresse optrådte også i { $breachCount } anden datalæk.
        *[other] Denne mailadresse optrådte også i { $breachCount } andre datalæk.
     }
+user-fb-compromised-single = Denne datalæk kompromitterede følgende personlige oplysninger. Skift dine adgangskoder, hvis du ikke allerede har gjort det.
 user-generic-fb-compromised-single = Denne datalæk kompromitterede følgende personlige oplysninger.
+guest-fb-compromised-single =
+    Denne datalæk kompromitterede følgende personlige oplysninger. Tilmeld dig en { -brand-fxa } 
+    for at få din fulde rapport og advarsler om nye datalæk.
 user-generic-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Denne mailadresse optræder ikke i datalækken { $breachName }, men findes i en anden datalæk.
        *[other] Denne mailadresse optræder ikke i datalækken { $breachName }, men findes i andre datalæk.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] Denne datalæk kompromitterede følgende personlige oplysninger. Skift din adgangskode, hvis du ikke allerede har gjort det.
+       *[other] Disse { $breachCount } datalæk kompromitterede følgende personlige oplysninger. Skift dine adgangskoder, hvis du ikke allerede har gjort det.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
