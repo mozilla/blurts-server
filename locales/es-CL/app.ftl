@@ -10,6 +10,7 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Cuenta de Firefox
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Ayuda
@@ -18,6 +19,7 @@ about-firefox-alerts = Acerca de las alertas de Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Enviar comentario
 terms-and-privacy = Términos y privacidad
+error-scan-page-token = Intentaste escanear demasiadas direcciones de correo en un periodo de tiempo muy corto. Por razones de seguridad, hemos bloqueado temporalmente nuevas búsquedas de tu parte. Podrás volver a intentarlo más tarde.
 error-could-not-add-email = No se pudo añadir el correo a la base de datos
 error-not-subscribed = Este correo no está suscrito a { -product-name }.
 error-hibp-throttled = Demasiadas conexiones a { -brand-HIBP }.
@@ -181,3 +183,29 @@ share-twitter = La mayoría de la gente tiene más de 100 cuentas en línea. ¿H
 share-facebook-headline = Averigua si has sido parte de una filtración de datos
 share-facebook-blurb = ¿Han sido tus cuentas en línea expuestas a una filtración de datos?
 og-site-description = Averigua si has sido parte de una filtración de datos con { -product-name }. Registrate para recibir alertas de futuras filtraciones y consejos para mantener tus cuentas seguras.
+mozilla-security-blog = Blog de seguridad de { -brand-Mozilla }
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Social
+show-all = Mostrar todo
+fxa-signup-banner-headline = Monitorea las amenazas a tus cuentas en línea.
+fxa-signup-banner-blurb = Regístrate par tener una { -brand-fxa } y recibir tu reporte detallado junto con alertas sobre cada nueva filtración de datos que ocurra.
+fxa-landing-blurb =
+    Descubre qué es lo que los hackers ya saben de ti,
+    y aprende cómo estar un paso adelante de ellos.
+fxa-scan-label = Revisa si has aparecido en una filtración de datos.
+fxa-welcome-headline = Bienvenido a { -product-name }.
+fxa-welcome-blurb = Estás listo para recibir alertas si { $userEmail } aparece en una filtración de datos.
+fxa-scan-another-email = ¿Quieres revisar otro correo?
+# Search Firefox Monitor
+fxa-scan-submit = Buscar { -product-name }
+sign-up-to-check = Regístrate para verificar
+sign-in = Conectarse
+sign-out = Salir
+full-report-headline = Tu reporte de { -product-name }
+see-full-report = Ver el reporte completo
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Gestionar { -brand-fxa }
+fxa-download-firefox-bar-link = Bajar ahora
+fb-landing-headline = ¿Fue expuesta tu información en la filtración de datos de { $breachName }?
+copyright = Partes de este contenido son © 1999-{ $year } por colaboradores individuales de mozilla.org.
+content-available = Contenido disponible bajo una licencia Creative Commons.
