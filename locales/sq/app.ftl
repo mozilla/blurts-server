@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Llogari Firefox
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Asistencë
@@ -184,11 +186,6 @@ download-firefox-mobile = Shkarkoni { -brand-name } për Celular
 features = Veçori
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    Pjesë të kësaj lënde janë &#x24B8; 1998-2018 nga kontribues individualë te mozilla.org. <br />
-    Lëndë e përdorshme sipas një licence  <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Të dhëna shkeljesh furnizuar nga { $hibp-link }
 site-description = A ka rrjedhje nga llogaritë tuaja apo janë vjedhur gjatë një shkeljeje të dhënash? Gjejeni te { -product-name }. Kërkoni në bazën tonë të të dhënave dhe regjistrohuni për sinjalizime.
@@ -201,3 +198,19 @@ share-twitter = Shumica e njerëzve kanë rreth 100 llogari internetore. A ësht
 share-facebook-headline = Shihni nëse keni qenë viktimë e ndonjë shkeljeje të dhënash
 share-facebook-blurb = Keni llogari internetore që kanë qenë ekspozuar në shkelje të dhënash?
 og-site-description = Shihni nëse keni qenë pjesë e ndonjë shkeljeje të dhënash, përmes { -product-name }. Regjistrohuni për sinjalizime rreth shkeljesh në të ardhmen dhe merrni ndihmëza si t’i mbani llogaritë tuaja të parrezikuara.
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Shoqërore
+show-all = Shfaqi krejt
+fxa-signup-banner-headline = Mbikëqyrni kërcënime ndaj llogarive tuaja internetore.
+fxa-welcome-headline = Mirë se vini te { -product-name }.
+sign-in = Hyni
+sign-out = Dilni
+see-full-report = Shihni Raportin e Plotë
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Administroni { -brand-fxa }
+fxa-download-firefox-bar-link = Shkarkojeni tani
+have-an-account = Keni tashmë një llogari?
+fxa-what-to-do-blurb-3 =
+    Shumica e shkeljeve ekspozojnë vetëm email-e dhe fjalëkalime, por disa përfshijnë edhe të dhëna financiare me spec. 
+    Nëse llogaria juaj bankare apo numra kartash krediti qenë ekspozuar, sinjalizoni bankën tuaj për mashtrim të mundshëm. 
+    Mbikëqyrni bilancet për zëra që nuk i njihni.
