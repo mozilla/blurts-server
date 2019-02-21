@@ -448,7 +448,7 @@ copyright =
   
 content-available= Content available under a Creative Commons license.
 
-#Alerts is a noun
+# Alerts is a noun
 sign-up-for-alerts=Sign up for Alerts
 
 sign-up-for-fxa-alerts= Sign up for {-product-name} alerts.
