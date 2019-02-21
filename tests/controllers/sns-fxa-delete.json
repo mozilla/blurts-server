@@ -1,0 +1,16 @@
+{
+    "Type" : "Notification",
+    "MessageId" : "f6c93977-a45e-58e2-bf57-6d96b2af524f",
+    "TopicArn" : "arn:aws:sns:us-west-2:927034868273:stable3-fxadev-FxaAccountChangeSNSTopic-VQI9W3GIL7VK",
+    "Message" : "{\"uid\":\"3b1a9d27f85b4a4c977f3a84838f9116\",\"iss\":\"stable.dev.lcip.org\",\"ts\":1550259376.97,\"metricsContext\":{\"time\":1550259376970,\"device_id\":\"2c826839c36e4968a2f15b6eede5525d\",\"flow_id\":\"a753a3e94922088bf65612bedf30bf78ef3addbba5a45e3690435dfbff176c76\",\"flow_time\":1867109,\"flowBeginTime\":1550257509861,\"flowCompleteSignal\":\"account.verified\",\"flowType\":\"registration\"},\"event\":\"delete\"}",
+    "Timestamp" : "2019-02-15T19:36:17.003Z",
+    "SignatureVersion" : "1",
+    "Signature" : "uEfck31RQTJz4cwQQ+Wzknlt645kDbRsPj9chFdKPfAWgq+PjD/YTU7Yr4okwbrwmEQO0bxxSO9fWJ0KvUIUuUsu3p8+Rg/JZTpZsi55ATUre0qpLOY5NGFqnxzTMXRpDctySSRrKWoR1rM6OWmFrkxJXwkfHUltbVWXB4hbPzYLrzTOVg2/C1j/W4q3O2qo24K5L/QGx91T6BOoZAy9+k4sM6f8deyPS4X7k0n+Z+dXi6dm2jXXSIAzLqI3WT7aYbwwsMhzUV5KD6s3tl2l+1QPBG9MyZibYesJC+WDblKe7yO1q1CPD4gw5QXtjf4aq7dM6VlqiPJa/5lPCo1pOg==",
+    "SigningCertURL" : "https://sns.us-west-2.amazonaws.com/SimpleNotificationService-ac565b8b1a6c5d002d285f9598aa1d9b.pem",
+    "UnsubscribeURL" : "https://sns.us-west-2.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-west-2:927034868273:stable3-fxadev-FxaAccountChangeSNSTopic-VQI9W3GIL7VK:5aa250aa-32da-4e22-a36a-0ec0336c866b", 
+    "MessageAttributes" : {   
+        "event_type" : {
+            "Type":"String","Value":"delete"
+        } 
+    }
+}

@@ -34,8 +34,34 @@ async function notification(req, res) {
 
 
 async function handleNotification(notification) {
-  log.info("received-SES", { id: notification.MessageId });
+  log.info("received-SNS", { id: notification.MessageId });
   const message = JSON.parse(notification.Message);
+  if (message.hasOwnProperty("eventType")) {
+    await handleSESMessage(message);
+  }
+  if (message.hasOwnProperty("event")) {
+    await handleFxAMessage(message);
+  }
+}
+
+
+async function handleFxAMessage(message) {
+  switch (message.event) {
+    case "delete":
+      await handleDeleteMessage(message);
+      break;
+    default:
+      log.info("unhandled-event", { event: message.event });
+  }
+}
+
+
+async function handleDeleteMessage(message) {
+  await DB.deleteSubscriberByFxAUID(message.uid);
+}
+
+
+async function handleSESMessage(message) {
   switch (message.eventType) {
     case "Bounce":
       await handleBounceMessage(message);

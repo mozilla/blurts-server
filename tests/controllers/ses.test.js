@@ -14,6 +14,7 @@ const testNotifications = new Map();
 testNotifications.set("bounce", require("./ses-bounce-notification.json"));
 testNotifications.set("complaint", require("./ses-complaint-notification.json"));
 testNotifications.set("invalid", require("./invalid-signature-ses-complaint-notification.json"));
+testNotifications.set("fxa-delete", require("./sns-fxa-delete.json"));
 
 
 const createRequestBody = function(notificationType) {
@@ -87,4 +88,29 @@ test("ses notification with invalid signature responds with error and doesn't ch
 
   subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
   expect(subscribers.length).toEqual(1);
+});
+
+
+test("sns notification for FxA account delete deletes monitor subscriber record", async () => {
+  const testEmail = "fxa-deleter@mailinator.com";
+  const testSignupLanguage = "en";
+  const testFxaRefreshToken = "abcdef123456789";
+  const testFxaUID = "3b1a9d27f85b4a4c977f3a84838f9116";
+  const testFxaProfileData = JSON.stringify({uid: testFxaUID});
+  await DB.addSubscriber(testEmail, testSignupLanguage, testFxaRefreshToken, testFxaProfileData);
+
+  let subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
+  expect(subscribers.length).toEqual(1);
+
+  const req = httpMocks.createRequest({
+    method: "POST",
+    url: "/ses/notification",
+    body: createRequestBody("fxa-delete"),
+  });
+  const resp = httpMocks.createResponse();
+  await ses.notification(req, resp);
+  expect(resp.statusCode).toEqual(200);
+
+  subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
+  expect(subscribers.length).toEqual(0);
 });
