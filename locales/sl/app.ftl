@@ -19,6 +19,7 @@ about-firefox-alerts = O opozorilih Firefoxa
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Sporočite nam svoje mnenje
 terms-and-privacy = Pogoji in zasebnost
+error-scan-page-token = V kratkem časovnem obdobju ste skušali preveriti preveč e-poštnih naslovov. Iz varnostnih razlogov smo vam začasno onemogočili nova iskanja. Znova lahko poskusite kasneje.
 error-could-not-add-email = E-poštnega naslova ni bilo mogoče dodati v bazo podatkov.
 error-not-subscribed = Ta e-poštni naslov ni naročen na { -product-name }.
 error-hibp-throttled = Preveč povezav na { -brand-HIBP }.
@@ -202,6 +203,7 @@ full-report-headline = Vaše poročilo { -product-name }
 see-full-report = Prikaži celotno poročilo
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Upravljaj { -brand-fxa }
+fxa-download-firefox-bar-blurb = Omogoča { -brand-name }. 2x hitrejši. Porablja 30 % manj pomnilnika kot { -brand-Chrome }.
 fxa-download-firefox-bar-link = Prenesi zdaj
 fxa-download-firefox-banner-blurb = Boljše in hitrejše nalaganje strani z manjšo porabo računalniškega pomnilnika.
 user-fb-compromised-headline = { $userEmail } se je pojavil v kraji podatkov »{ $breachName }«.
