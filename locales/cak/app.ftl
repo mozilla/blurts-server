@@ -19,6 +19,7 @@ about-firefox-alerts = Chi rij Retal taq Ruk'ayewal Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Titaq Na'oj
 terms-and-privacy = Taq Ojqanem chuqa' Ichinanem
+error-scan-page-token = Xatojtob'ej xatz'ajwachib'ej yalan k'ïy kochochib'al taqoya'l pa jun ti mej. Richin ajikomal xeqaq'ät ri k'a nimakoj xe'akanoj. Yatikïr natojtob'ej chik pa jun ti ramaj.
 error-could-not-add-email = Man xya' ta qa ri rochochib'al taqoya'l pa kicholxe'el tzij.
 error-not-subscribed = Man rutz'ib'an ta rub'i' re rochochib'al taqoya'l re' { -product-name }.
 error-hibp-throttled = K'ïy taq rokem ri { -brand-HIBP }.
@@ -37,6 +38,7 @@ error-headline = Sachoj
 user-verify-token-error = K'atzinel ri rutoken jikib'anïk.
 user-verify-email-report-subject = Ri { -product-name } atzijol
 user-verify-title = { -product-name } : Xtz'ib'äx Rub'i'
+user-unsubscribe-token-error = Richin nayüj tz'ib'anïk b'i'aj rajowaxik jun token.
 
 ## Password Tips
 
