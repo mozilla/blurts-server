@@ -53,3 +53,19 @@ pwt-section-blurb =
     Ri ajjaker kikuqub'an kik'u'x chi rij ri itzel keb'anikil ri winaqi', achi'el nikokisaj xa jun ewan tzij richin ronojel o nikokisaj retalik taq pajtzij (p@ssw0rd, anyone?) ruma ri'
     nikitojtob'ej nikitz'ila' ri rub'i'a ataqoya'l, yetikïr yekitz'ila' k'ïy. Wawe' niqak'üt chawäch ri ütz rub'eyal richin ye'achajij ri kib'i' ataqoya'l.
 pwt-headline-1 = Tawokisaj jun ewan tzij xa xe richin jun rub'i' ataqoya'l.
+pwt-summary-1 =
+    Nokisäx xa jun ewan tzij pa ronojel k'ojlib'äl, nuya' q'ij richin neleq'äx ri etamab'äl.
+    Rik'in ri ewan tzij ri' xab'achike winäq nitikïr nok pa ronojel rub'i' ataqoya'l.
+pwt-headline-2 = Tatz'uku' jun ewan tzij ri yalan nïm chuqa' k'ayew ninatüx.
+pwt-summary-2 =
+    Ri ajjaker nikokisaj k'ïy relik ewan taq tzij richin nikïl ri awichin.
+    We yalan nïm raqän chuqa' k'exel ri ewan atzij, k'ayew nub'än chi kiwäch richin nikïl.
+pwt-headline-3 = Ke'atz'eta' ri kik'utunïk jikomal achi'el kitz'aqat ewan taq tzij.
+pwt-summary-3 =
+    Ri ajk'amaya'l taq ruxaq man yekinik'oj ta chi e ütz ri ewan taq atzij, xa xe chi tikixima' ki'.
+    Ke'atz'uku' nïm kaqän chuqa' k'exel ewan taq tzij chuqa' ke'ayaka' pa jun jikïl k'ojlib'äl.
+pwt-headline-4 = Tik'ul to'ïk richin ye'anataj ri ewan taq atzij.
+pwt-summary-4 =
+    Nuk'samajel ewan taq tzij achi'el 1Password, LastPass, Dashlane chuqa' Bitwarden yekitz'ük nima'q chuqa' yonil ewan taq tzij.
+    Chuqa' yekiyäk ewan taq tzij achi'el e jikïl chuqa' yekitz'aqatisaj pa ajk'amaya'l ruxaq chawäch
+pwt-headline-5 = Titz'aqatisäx rutz'aqat jikomal rik'in rujikib'anik ka'i'-jachab'äl.
