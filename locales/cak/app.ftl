@@ -39,6 +39,17 @@ user-verify-token-error = K'atzinel ri rutoken jikib'anïk.
 user-verify-email-report-subject = Ri { -product-name } atzijol
 user-verify-title = { -product-name } : Xtz'ib'äx Rub'i'
 user-unsubscribe-token-error = Richin nayüj tz'ib'anïk b'i'aj rajowaxik jun token.
+user-unsubscribe-token-email-error = Richin nayüj tz'ib'anïk b'i'aj rajowaxik jun token chuqa' rik'in taqoya'l.
+user-unsubscribe-title = { -product-name } : Tiyuj tz'ib'anïk b'i'aj
+user-unsubscribe-survey-title = { -product-name } : Tiyuj Tz'ib'anïk B'i'aj pa Molna'oj
+user-unsubscribed-title = { -product-name } : Xyuj Tz'ib'anïk B'i'aj
 
 ## Password Tips
 
+pwt-section-headline = Ütz Ewan taq Tzij = Ütz Chajinïk
+pwt-section-subhead = Yalan e jikïl ri ichinan awetamab'al achi'el ri ewan taq atzij.
+pwt-section-blurb =
+    Ri ewan taq atzij man xa xe ta nikichajij ri rub'i' ataqoya'l. Yekichajij ronojel ri ichinan awetamab'al k'o chupam.
+    Ri ajjaker kikuqub'an kik'u'x chi rij ri itzel keb'anikil ri winaqi', achi'el nikokisaj xa jun ewan tzij richin ronojel o nikokisaj retalik taq pajtzij (p@ssw0rd, anyone?) ruma ri'
+    nikitojtob'ej nikitz'ila' ri rub'i'a ataqoya'l, yetikïr yekitz'ila' k'ïy. Wawe' niqak'üt chawäch ri ütz rub'eyal richin ye'achajij ri kib'i' ataqoya'l.
+pwt-headline-1 = Tawokisaj jun ewan tzij xa xe richin jun rub'i' ataqoya'l.
