@@ -69,3 +69,11 @@ pwt-summary-4 =
     Nuk'samajel ewan taq tzij achi'el 1Password, LastPass, Dashlane chuqa' Bitwarden yekitz'ük nima'q chuqa' yonil ewan taq tzij.
     Chuqa' yekiyäk ewan taq tzij achi'el e jikïl chuqa' yekitz'aqatisaj pa ajk'amaya'l ruxaq chawäch
 pwt-headline-5 = Titz'aqatisäx rutz'aqat jikomal rik'in rujikib'anik ka'i'-jachab'äl.
+pwt-summary-5 =
+    2JACHAB'ÄL nrajo' jub'a' rutz'aqat etamab'äl (achi'el juyonil b'itz'ib', ri nitaq pa rutzijol tz'ib'anïk) richin natikirisaj molojri'ïl pa rub'i' ataqoya'l.
+    Ke ri' chuqa' we k'o nichinan ri ewan atzij, man xtitikïr ta xtok.
+pwt-headline-6 = Tatz'ib'aj ab'i' richin ye'ak'ül { -product-name-nowrap } kitzijol k'ayewal.
+pwt-summary-6 =
+    Tajin yek'iyïr ri kitzelanik ajk'amaya'l ruxaq. Xa xe nitz'aqatisäx jun k'ak'a' itzelanïk pa qacholxe'el tzij,
+    { -product-name-nowrap } nitaq rutzijol chawe richin natz'ët achike nab'än richin nachajij ri rub'i' ataqoya'l.
+landing-headline = Wawe' nitikïr ri ach'ojib'al richin at jikïl chi kiwäch ri ajjaker.
