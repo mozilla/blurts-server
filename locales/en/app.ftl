@@ -455,5 +455,5 @@ sign-up-for-fxa-alerts= Sign up for {-product-name} alerts.
 create-free-account=
   Create a free {-brand-fxa} for your full report of past breaches, new breach 
   alerts, and info about other {-brand-Mozilla} services.
-get-your-report= Get your report and sign up for alerts.
+get-your-report-and-sign-up= Get your report and sign up for alerts.
 
