@@ -110,7 +110,7 @@ async function getUnsubscribe(req, res) {
 
   if (AppConstants.FXA_ENABLED) {
     const fxaUrl = new URL(AppConstants.OAUTH_PROFILE_URI).origin;
-    const manageFxaLink = `<a class="manage-fxa" href="${fxaUrl}" target="_blank" rel="noopener"><span>${req.fluentFormat("manage-fxa")}</span>`;
+    const manageFxaLink = `<a class="manage-fxa" href="${fxaUrl}" target="_blank" rel="noopener">${req.fluentFormat("manage-fxa")}</a>`;
     headline = req.fluentFormat("fxa-unsub-headline");
     subhead = `${req.fluentFormat("fxa-unsub-blurb")}${manageFxaLink}`;
   }
