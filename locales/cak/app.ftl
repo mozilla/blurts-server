@@ -91,3 +91,5 @@ signup-banner-blurb =
     Ri cholon { -product-name-nowrap } atzijol nuk'üt we ri retamab'al rub'i' ataqoya'l pa k'amab'ey echayun o e'eleq'an.
     Chuqa' xtiqaya' rutzijol chawe we ri rub'i' ataqoya'l e k'o pa k'ak'a' kik'ayewal ajk'amaya'l ruxaq.
 download-firefox-bar-blurb = { -product-name-nowrap } k'amon pe chawäch ruma ri <span class="nowrap">ronojel-k'ak'a' { -brand-name }</span>.
+download-firefox-bar-link = Tiqasäx { -brand-name } wakami
+download-firefox-banner-blurb = Tak'waj rub'ey ri akanob'al
