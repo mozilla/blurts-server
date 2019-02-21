@@ -9,6 +9,7 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Cuenta de Firefox
 -brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
@@ -18,6 +19,7 @@ about-firefox-alerts = Acerca de las alertas de Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Enviar comentario
 terms-and-privacy = Términos y privacidad
+error-scan-page-token = Has intentado escanear demasiadas direcciones de correo electrónico en un breve periodo de tiempo. Por razones de seguridad, hemos bloqueado tus búsquedas temporalmente. Puedes volver a intentarlo de nuevo más tarde.
 error-could-not-add-email = No se ha podido añadir la dirección de correo electrónico a la base de datos.
 error-not-subscribed = Esta dirección de correo electrónico no está suscrita a { -product-name }.
 error-hibp-throttled = Demasiadas conexiones a { -brand-HIBP }.
@@ -189,10 +191,14 @@ share-twitter = La mayoría de la gente tiene alrededor de 100 cuentas en línea
 share-facebook-headline = Comprueba si has sido parte de una filtración de datos
 share-facebook-blurb = ¿Tus cuentas en línea han sido expuestas en una filtración de datos?
 og-site-description = Descubre si has sido parte de una filtración de datos con { -product-name }. Regístrate para recibir alertas de futuras filtraciones y consejos para mantener tus cuentas seguras.
+mozilla-security-blog = Blog de seguridad de { -brand-Mozilla }
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Social
 show-all = Mostrar todo
+fxa-signup-banner-headline = Monitorea las amenazas a tus cuentas en línea.
 fxa-welcome-headline = Bienvenido a { -product-name }.
+# Search Firefox Monitor
+fxa-scan-submit = Buscar { -product-name }
 sign-in = Iniciar sesión
 sign-out = Cerrar sesión
 full-report-headline = Tu informe de { -product-name }
