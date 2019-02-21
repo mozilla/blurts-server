@@ -156,3 +156,4 @@ guest-scan-results-headline =
        *[other] Denne e-postadressa har vore involvert i { $breachCount } datalekkasjar.
     }
 user-no-breaches-blurb = Vi vil involvere deg om denne adressa er involvert i ein datalekkasje.
+user-one-breach-blurb = Denne datalekkasjen avslørte følgjande personleg informasjon.
