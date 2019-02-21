@@ -77,3 +77,17 @@ pwt-summary-6 =
     Tajin yek'iyïr ri kitzelanik ajk'amaya'l ruxaq. Xa xe nitz'aqatisäx jun k'ak'a' itzelanïk pa qacholxe'el tzij,
     { -product-name-nowrap } nitaq rutzijol chawe richin natz'ët achike nab'än richin nachajij ri rub'i' ataqoya'l.
 landing-headline = Wawe' nitikïr ri ach'ojib'al richin at jikïl chi kiwäch ri ajjaker.
+landing-blurb = { -product-name-nowrap } nikiya' asamajib'al richin chi ütz nik'oje' ri awetamab'al. Tawetamaj ri ketaman chik ri ajjaker chawij chuqa' tawetamaj achike rub'eyal yanab'eyij chi kiwäch.
+scan-label = Titz'et we keleq'an awetamab'al.
+scan-placeholder = Titz'ib'äx Rochochib'al Taqoya'l
+scan-privacy = Man yakon ta ri ewan ataqoya'l.
+scan-submit = Takanoj ri Ataqoya'l
+scan-another-email = Titz'ajwachib'ëx Jun Chik Rochochib'al Taqoya'l
+scan-featuredbreach-label = Takanoj we ri <span class="bold"> { $featuredBreach } </span> rub'i' ataqoya'l xq'eleb'ëx.
+sensitive-breach-email-required = Ri itzelanïk ruk'wan chajin loq'el etamab'äl. Rajowaxik nijikib'äx pa taqoya'l.
+scan-error = K'o chi jun okel taqoya'l.
+signup-banner-headline = { -product-name-nowrap } nutz'ët itzelanïk chi rij rub'i' ataqoya'l pa k'amab'ey.
+signup-banner-blurb =
+    Ri cholon { -product-name-nowrap } atzijol nuk'üt we ri retamab'al rub'i' ataqoya'l pa k'amab'ey echayun o e'eleq'an.
+    Chuqa' xtiqaya' rutzijol chawe we ri rub'i' ataqoya'l e k'o pa k'ak'a' kik'ayewal ajk'amaya'l ruxaq.
+download-firefox-bar-blurb = { -product-name-nowrap } k'amon pe chawäch ruma ri <span class="nowrap">ronojel-k'ak'a' { -brand-name }</span>.
