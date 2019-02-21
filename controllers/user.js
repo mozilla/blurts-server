@@ -2,6 +2,10 @@
 
 const crypto = require("crypto");
 const isemail = require("isemail");
+const { URL } = require("url");
+
+
+const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const { FluentError } = require("../locale-utils");
@@ -101,10 +105,20 @@ async function getUnsubscribe(req, res) {
     throw new FluentError("error-not-subscribed");
   }
 
+  let headline = req.fluentFormat("unsub-headline");
+  let subhead = req.fluentFormat("unsub-blurb");
+
+  if (AppConstants.FXA_ENABLED) {
+    const fxaUrl = new URL(AppConstants.OAUTH_PROFILE_URI).origin;
+    const manageFxaLink = `<a class="manage-fxa" href="${fxaUrl}" target="_blank" rel="noopener"><span>${req.fluentFormat("manage-fxa")}</span>`;
+    headline = req.fluentFormat("fxa-unsub-headline");
+    subhead = `${req.fluentFormat("fxa-unsub-blurb")}${manageFxaLink}`;
+  }
+
   res.render("subpage", {
     title: req.fluentFormat("user-unsubscribe-title"),
-    headline: req.fluentFormat("unsub-headline"),
-    subhead: req.fluentFormat("unsub-blurb"),
+    headline: headline,
+    subhead: subhead,
     whichPartial: "subpages/unsubscribe",
     token: req.query.token,
     hash: req.query.hash,
@@ -138,8 +152,8 @@ function getUnsubSurvey(req, res) {
   }
   res.render("subpage", {
     title: req.fluentFormat("user-unsubscribe-survey-title"),
-    headline: req.fluentFormat("unsub-survey-headline"),
-    subhead: req.fluentFormat("unsub-survey-blurb"),
+    headline: req.fluentFormat("unsub-survey-headline-v2"),
+    subhead: req.fluentFormat("unsub-survey-blurb-v2"),
     whichPartial: "subpages/unsubscribe_survey",
   });
 }

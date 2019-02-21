@@ -1471,7 +1471,7 @@ body.sub .content-wrap {
 }
 
 .subpage p {
-  padding-right: 30%;
+  padding-right: 20%;
 }
 
 /* UNSUBSCRIBE CONTENT */
@@ -1483,6 +1483,11 @@ form span.secondary-title.whole {
 #unsubscribe-survey-form .error-message {
   top: -36px;
   bottom: auto;
+}
+
+a.manage-fxa {
+  text-decoration: underline;
+  display: block;
 }
 
 #unsubscribe-survey-form .error-message::before {

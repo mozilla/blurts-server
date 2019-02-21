@@ -1,1 +1,7 @@
-<button class="button sign-up-button" id="sign-up">{{fluentFormat req.supportedLocales "sign-up"}}</button>
+<button class="button sign-up-button" id="sign-up">
+  {{#ifCompare foundBreaches.length "===" 0}}
+    {{fluentFormat req.supportedLocales "sign-up-for-alerts"}}
+  {{else}}
+    {{fluentFormat req.supportedLocales "sign-up"}}
+  {{/ifCompare}}
+</button>
