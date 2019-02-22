@@ -157,3 +157,11 @@ compromised-accounts = Tz'ilan rub'i' taq taqoya'l:
 compromised-data = Tz'ilan taq tzij:
 confirmed = ¡Jikib'an!<br />¡Xtz'ib'äx Ab'i'!
 confirmed-blurb = { -product-name-nowrap } pa jun ti ramaj xtutäq jun taqoya'l chawe' rik'in jun tz'aqät rutzijol chuqa' xtutäq jun rutzijol ruk'ayewal ataqoya'l we ri rub'i' ataqoya'l niwachin pa jun k'ak'a' rutzijol tz'ilanïk.
+confirmed-social-blurb = We xatz'iläx, rik'in jub'a' ri taq kitzij awachib'il, awach'alal chuqa' ch'aqa' chik taq okem rik'in jub'a' chuqa' xetz'iläx. Taya' rutzijol chi ke chi rij ri { -product-name-nowrap }.
+unsub-headline = Tiyuj rutz'ib'axik b'i'aj pa { -product-name-nowrap }
+unsub-blurb = Re re' xtuyüj ri ataqoya'l pa ri rucholb'al { -product-name-nowrap } ruma ri' man xke'ak'ül ta chik taq rutzijol k'ayewal toq niya' rutzijol jun tz'ilanïk.
+unsub-button = Tiq'at rutz'ib'axik b'i'aj
+fxa-unsub-headline = Tiyuj rutz'ib'axik b'i'aj pa { -product-name } kitzijol k'ayewal.
+fxa-unsub-blurb =
+    Man xke'ak'ül ta chik { -product-name } kitzijol k'ayewal.
+    Ri { -brand-fxa } k'a tzijïl na rik'in jub'a' k'a xke'akül na jujun taq ch'owen chi rij ri rub'i' ataqoya'l.
