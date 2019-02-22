@@ -221,3 +221,27 @@ full-report-headline = Ваш звіт { -product-name }
 see-full-report = Дивитися повний звіт
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Керувати { -brand-fxa }
+fxa-download-firefox-bar-blurb = Для вас від { -brand-name }. Удвічі швидший. Використовує на 30% менше пам'яті, ніж { -brand-Chrome }.
+fxa-download-firefox-bar-link = Завантажити зараз
+fxa-download-firefox-banner-blurb = Краще, швидше завантаження сторінок, що використовує менше пам'яті.
+user-fb-compromised-headline = { $userEmail } з'являється у витоку даних { $breachName }.
+guest-fb-compromised-headline = Ця електронна пошта з'явилася у витоку даних { $breachName }.
+user-zero-breaches-headline = { $userEmail } відсутня у витоках даних.
+guest-zero-breaches-headline = Ця електронна пошта відсутня у витоках даних.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } з'являється в 1 витоку даних.
+        [few] { $userEmail } з'являється в { $breachCount } витоках даних.
+       *[other] { $userEmail } з'являється в { $breachCount } витоках даних.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Ця електронна пошта з'явилася в 1 витоку даних.
+        [few] Ця електронна пошта з'явилася в { $breachCount } витоках даних.
+       *[other] Ця електронна пошта з'явилася в { $breachCount } витоках даних.
+    }
+user-no-breaches-blurb = Ми повідомимо вас, якщо ця адреса електронної пошти з'явиться в новому витоку даних.
+guest-no-breaches-blurb =
+    Щоб побачити чи ця електронна пошта з'являється у витоках даних, створіть { -brand-fxa }. 
+    Ми також повідомимо вас, якщо ця адреса з'явиться в новому витоку даних.
+user-one-breach-blurb = Ця вразливість розкриває таку особисту інформацію.
