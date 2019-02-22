@@ -245,15 +245,28 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = 此数据外泄事件泄露了以下个人信息。请尽快修改密码。
 user-generic-fb-compromised-single = 此数据外泄事件泄露了以下个人信息。
+guest-fb-compromised-single-v2 =
+    此数据外泄事件泄露了以下个人信息。
+    请创建一个免费的 { -brand-fxa }，用于获取过往外泄事件的完整报告，接收新外泄事件的警报及其他 { -brand-Mozilla } 服务的信息。
+guest-fb-compromised-blurb-v2 =
+    { $breachCount ->
+        [one] 此电子邮件地址还出现在其他 { $breachCount } 次数据外泄事件中。请创建一个免费的 { -brand-fxa }，用于获取过往外泄事件的完整报告，接收新外泄事件的警报及其他 { -brand-Mozilla } 服务的信息。
+       *[other] 此电子邮件地址还出现在其他 { $breachCount } 次数据外泄事件中。请创建一个免费的 { -brand-fxa }，用于获取过往外泄事件的完整报告，接收新外泄事件的警报及其他 { -brand-Mozilla } 服务的信息。
+    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
-        [one] 您未出现在 { $breachName } 数据外泄事件中，但我们在另一事件中发现了您的电子邮件地址。
-       *[other] 您未出现在 { $breachName } 数据外泄事件中，但我们在其他事件中发现了您的电子邮件地址。
+        [one] 您未出现在 { $breachName } 数据外泄事件中，但我们在另一事件中发现了该电子邮件地址。
+       *[other] 您未出现在 { $breachName } 数据外泄事件中，但我们在其他事件中发现了该电子邮件地址。
     }
 user-generic-fb-not-compromised-blurb =
     { $breachCount ->
-        [one] 此电子邮件地址未出现在 { $breachName } 数据外泄事件中，但我们在另一事件中发现了您的电子邮件地址。
-       *[other] 此电子邮件地址未出现在 { $breachName } 数据外泄事件中，但我们在其他事件中发现了您的电子邮件地址。
+        [one] 此电子邮件地址未出现在 { $breachName } 数据外泄事件中，但我们在另一事件中发现了该电子邮件地址。
+       *[other] 此电子邮件地址未出现在 { $breachName } 数据外泄事件中，但我们在其他事件中发现了该电子邮件地址。
+    }
+guest-fb-not-compromised-blurb-v2 =
+    { $breachCount ->
+        [one] 此电子邮件地址未出现在 { $breachName } 数据外泄事件中，但我们在另一事件中发现了该电子邮件地址。请创建一个免费的 { -brand-fxa }，用于获取过往外泄事件的完整报告，接收新外泄事件的警报及其他 { -brand-Mozilla } 服务的信息。
+       *[other] 此电子邮件地址未出现在 { $breachName } 数据外泄事件中，但我们在其他事件中发现了该电子邮件地址。请创建一个免费的 { -brand-fxa }，用于获取过往外泄事件的完整报告，接收新外泄事件的警报及其他 { -brand-Mozilla } 服务的信息。
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
