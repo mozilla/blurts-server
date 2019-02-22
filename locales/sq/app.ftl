@@ -298,6 +298,8 @@ guest-found-breaches-blurb =
        *[other] Këto shkelje ekspozuan të dhënat personale vijuese. Që të merrni raportin e plotë për të dhe sinjalizime rreth shkeljesh të reja, regjistrohuni për një { -brand-fxa }.
     }
 have-an-account = Keni tashmë një llogari?
+signup-banner-sensitive-blurb = Shihni se ç’dinë tashmë rreth jush hacker-at, dhe mësoni se si të jeni përherë një hap përpara tyre. Sinjalizohuni, nëse llogaria juaj shfaqet në shkelje të reja të dhënash.
+fxa-pwt-section-blurb = Fjalëkalimet mbrojnë krejt të dhënat personale në llogaritë tuaja internetore. Dhe hacker-at bazohen në huqe të dëmshme, fjala vjen, përdorimi i të njëjtit fjalëkalim gjithandej ose përdorimi i togfjalëshave të rëndomtë (@fj@lëkal1m, kushmokush?) kështu që nëse zbërthejnë një llogari, mund të zbërthejnë plot të tjera.
 fxa-what-to-do-blurb-3 =
     Shumica e shkeljeve ekspozojnë vetëm email-e dhe fjalëkalime, por disa përfshijnë edhe të dhëna financiare me spec. 
     Nëse llogaria juaj bankare apo numra kartash krediti qenë ekspozuar, sinjalizoni bankën tuaj për mashtrim të mundshëm. 
