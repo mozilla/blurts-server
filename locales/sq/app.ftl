@@ -233,6 +233,12 @@ user-scan-results-headline =
         [one] { $userEmail } u shfaq në 1 shkelje të dhënash.
        *[other] { $userEmail } u shfaq në { $breachCount } shkelje të dhënash.
     }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Ky email u shfaq në 1 shkelje të dhënash.
+       *[other] Ky email u shfaq në { $breachCount } shkelje të dhënash.
+    }
+user-no-breaches-blurb = Do t’ju njoftojmë nëse kjo adresë email shfaqet në shkelje të reja të dhënash.
 have-an-account = Keni tashmë një llogari?
 fxa-what-to-do-blurb-3 =
     Shumica e shkeljeve ekspozojnë vetëm email-e dhe fjalëkalime, por disa përfshijnë edhe të dhëna financiare me spec. 
