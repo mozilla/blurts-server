@@ -300,10 +300,25 @@ guest-found-breaches-blurb =
 have-an-account = Keni tashmë një llogari?
 signup-banner-sensitive-blurb = Shihni se ç’dinë tashmë rreth jush hacker-at, dhe mësoni se si të jeni përherë një hap përpara tyre. Sinjalizohuni, nëse llogaria juaj shfaqet në shkelje të reja të dhënash.
 fxa-pwt-section-blurb = Fjalëkalimet mbrojnë krejt të dhënat personale në llogaritë tuaja internetore. Dhe hacker-at bazohen në huqe të dëmshme, fjala vjen, përdorimi i të njëjtit fjalëkalim gjithandej ose përdorimi i togfjalëshave të rëndomtë (@fj@lëkal1m, kushmokush?) kështu që nëse zbërthejnë një llogari, mund të zbërthejnë plot të tjera.
+fxa-pwt-summary-2 =
+    Fjalëkalimet e shkurtër, njëfjalësh, janë të lehtë për t’u gjetur. 
+    Përdorni të paktën dy fjalë dhe një ndërthurje shkronjash, shifrash dhe shenjash speciale.
+fxa-pwt-summary-4 = Përgjegjës fjalëkalimesh të tillë si 1Password, LastPass, Dashlane,apo Bitwarden i depozitojnë fjalëkalimet tuaj dhe i plotësojnë ato në sajte, në vendin tuaj. Do t’ju ndihmojnë madje edhe të krijoni fjalëkalime të fuqishëm.
+fxa-pwt-summary-6 = Shkeljet e të dhënave po shtohen. Nëse të dhënat tuaja personale shfaqen në një shkelje të re të dhënash, { -product-name } ju dërgon një sinjalizim — që kështu të veproni dhe të mbroni llogaritë tuaja.
+fxa-what-to-do-blurb-1 =
+    Nëse s’hyni dot, lidhuni me sajtin për t’i kërkuar se si ta përditësoni. 
+    Shihni një llogari që nuk e njihni? Të dhënat tuaj mund të jenë shitur apo ridhënë diku. Kjo mund të jetë gjithashtu një llogari që harruat se e keni krijuar ose një kompani që ndryshoi emrat.
+fxa-what-to-do-subhead-2 = Ndaleni përdorimin e fjalëkalimeve të ekspozuar, dhe ndryshojeni një të tillë kudo që e keni përdorur.
+fxa-wtd-blurb-2 =
+    Hacker-at mund të rreken të përdorin të njëjtin fjalëkalim dhe email-in tuaj për hyrje në llogari tuajat të tjera.  
+    Krijoni një fjalëkalim të ndryshim dhe unik për çdo llogari, veçanërisht për llogari tuajat bankare, 
+    email-i, dhe sajte të tjerë ku ruani të dhëna personale.
 fxa-what-to-do-blurb-3 =
     Shumica e shkeljeve ekspozojnë vetëm email-e dhe fjalëkalime, por disa përfshijnë edhe të dhëna financiare me spec. 
     Nëse llogaria juaj bankare apo numra kartash krediti qenë ekspozuar, sinjalizoni bankën tuaj për mashtrim të mundshëm. 
     Mbikëqyrni bilancet për zëra që nuk i njihni.
 fxa-what-to-do-subhead-4 = Merrni ndihmë për të mbajtur mend krejt fjalëkalimet tuaja dhe ruajtur ato të parrezikuara.
+fxa-what-to-do-blurb-4 = Përgjegjës fjalëkalimesh të tillë si 1Password, LastPass, Dashlane,apo Bitwarden i depozitojnë fjalëkalimet tuaj në mënyrë të sigurt dhe i plotësojnë ato në sajte, në vendin tuaj. Përdorni në kompjuterin apo celularin tuaj një të tillë, që të mos ju duhet t’i mbani mend krejt ata.
+fb-landing-headline = Qenë ekspozuar të dhënat tuaja te shkelja { $breachName } e të dhënave?
 copyright = Pjesë të kësaj lënde janë © 1999-{ $year } e kontribuesish individualë te mozilla.org.
 content-available = Lëndë e përdorshme sipas një licence Creative Commons.
