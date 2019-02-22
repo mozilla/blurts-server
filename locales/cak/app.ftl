@@ -165,3 +165,13 @@ fxa-unsub-headline = Tiyuj rutz'ib'axik b'i'aj pa { -product-name } kitzijol k'a
 fxa-unsub-blurb =
     Man xke'ak'ül ta chik { -product-name } kitzijol k'ayewal.
     Ri { -brand-fxa } k'a tzijïl na rik'in jub'a' k'a xke'akül na jujun taq ch'owen chi rij ri rub'i' ataqoya'l.
+unsub-survey-form-label = ¿Achike ruma toq ye'ayüj rutz'ib'axik ab'i' pa { -product-name-nowrap } kitzijol k'ayewal?
+unsub-reason-1 = Ninna'ojij chi ri kitzijol taq k'ayewal man nikib'än ta chi ri taq nutzij ejikib'an.
+unsub-reason-2 = Yenk'ül k'ïy taq rutaqoya'l ri { -product-name-nowrap }
+unsub-reason-3 = Majun rejqalem chi nuwäch re samaj re'
+unsub-reason-4 = Wojqan chi taq na'oj richin yenchajij ri kib'i' taq nutaqoya'l
+unsub-reason-5 = Ninwokisaj jun chik samaj richin yennik'oj ri kib'i' nutaqoya'l
+unsub-reason-6 = Majun chi ke ri yesik'ïx
+unsub-survey-thankyou = Matyox ruma ri atzij.
+unsub-survey-error = Tab'ana' utzil, tacha' jun.
+unsub-survey-headline-v2 = Xaq'ät ri rutz'ib'axik ab'i'.
