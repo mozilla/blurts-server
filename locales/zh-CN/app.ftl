@@ -162,10 +162,7 @@ confirmed-social-blurb = 若您的数据遭到外泄，很有可能您的朋友�
 unsub-headline = 退订 { -product-name-nowrap }
 unsub-blurb = 这将使您的电子邮件地址移出 { -product-name-nowrap } 列表，在发生新的数据外泄事件时，您将不再收到警报。
 unsub-button = 退订
-unsub-survey-headline = 您的退订已成功。
-unsub-survey-blurb =
-    您的电子邮件地址已退订 { -product-name-nowrap }。感谢您使用此服务。
-    可以花点时间来回答一个问题吗？我们想了解您的体验。
+fxa-unsub-headline = 退订 { -product-name } 警报。
 unsub-survey-form-label = 为什么您退订了 { -product-name-nowrap } 警报？
 unsub-reason-1 = 我觉得那些警报不会让我的数据更安全
 unsub-reason-2 = 我收到了太多的 { -product-name-nowrap } 的邮件
@@ -175,6 +172,7 @@ unsub-reason-5 = 我正使用其他服务来监控我的账号
 unsub-reason-6 = 以上皆非
 unsub-survey-thankyou = 感谢您的反馈。
 unsub-survey-error = 请选择一项。
+unsub-survey-headline-v2 = 您已成功退订。
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = 分享
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -201,8 +199,6 @@ mozilla-security-blog = { -brand-Mozilla } 安全博客
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = 社交
 show-all = 全部显示
-fxa-signup-banner-headline = 监控针对您的在线帐户的威胁。
-fxa-signup-banner-blurb = 注册 { -brand-fxa }即可获取与您有关的新数据外泄事件的详细报告。
 fxa-landing-blurb = 看看黑客已经掌握了您哪些资料，并了解如何先发制人。
 fxa-scan-label = 看看您是否出现在数据外泄事件中。
 fxa-welcome-headline = 欢迎来到 { -product-name }。
@@ -249,12 +245,6 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = 此数据外泄事件泄露了以下个人信息。请尽快修改密码。
 user-generic-fb-compromised-single = 此数据外泄事件泄露了以下个人信息。
-guest-fb-compromised-single = 此数据外泄事件泄露了以下个人信息。注册 { -brand-fxa }以获取您的完整报告，并在发生新的数据外泄事件时收到警报。
-guest-fb-compromised-blurb =
-    { $breachCount ->
-        [one] 此电子邮件地址还出现在其他 { $breachCount } 次数据外泄事件中。注册 { -brand-fxa }以获取您的完整报告，并在发生新的数据外泄事件时收到警报。
-       *[other] 此电子邮件地址还出现在其他 { $breachCount } 次数据外泄事件中。注册 { -brand-fxa }以获取您的完整报告，并在发生新的数据外泄事件时收到警报。
-    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
         [one] 您未出现在 { $breachName } 数据外泄事件中，但我们在另一事件中发现了您的电子邮件地址。
@@ -264,11 +254,6 @@ user-generic-fb-not-compromised-blurb =
     { $breachCount ->
         [one] 此电子邮件地址未出现在 { $breachName } 数据外泄事件中，但我们在另一事件中发现了您的电子邮件地址。
        *[other] 此电子邮件地址未出现在 { $breachName } 数据外泄事件中，但我们在其他事件中发现了您的电子邮件地址。
-    }
-guest-fb-not-compromised-blurb =
-    { $breachCount ->
-        [one] 此电子邮件地址未出现在 { $breachName } 数据外泄事件中，但我们在另一事件中发现了您的电子邮件地址。注册 { -brand-fxa }以获取您的完整报告，并在发生新的数据外泄事件时收到警报。
-       *[other] 此电子邮件地址未出现在 { $breachName } 数据外泄事件中，但我们在其他事件中发现了您的电子邮件地址。注册 { -brand-fxa }以获取您的完整报告，并在发生新的数据外泄事件时收到警报。
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -283,13 +268,6 @@ user-generic-found-breaches-blurb =
     { $breachCount ->
         [one] 此数据外泄事件泄露了以下个人信息。
        *[other] 这些数据外泄事件泄露了以下个人信息。
-    }
-# While English doesn’t use the actual number of breaches in this sentence,
-# you can use {$breachCount} to display the number of breaches in your localization.
-guest-found-breaches-blurb =
-    { $breachCount ->
-        [one] 此数据外泄事件泄露了以下个人信息。注册 { -brand-fxa }以获取您的完整报告，并在发生新的数据外泄事件时收到警报。
-       *[other] 这些数据外泄事件泄露了以下个人信息。注册 { -brand-fxa }以获取您的完整报告，并在发生新的数据外泄事件时收到警报。
     }
 have-an-account = 已有账户？
 signup-banner-sensitive-blurb = 看看黑客已经掌握了您哪些资料，并了解如何先发制人。我们也会在此电子邮件地址出现于新的数据外泄事件时通知您。
@@ -310,3 +288,6 @@ fxa-what-to-do-blurb-4 = 如 1Password、LastPass、Dashlane 和 Bitwarden 等�
 fb-landing-headline = 您的信息是否也出现在 { $breachName } 的数据外泄事件中？
 copyright = © 1999-{ $year } 上述内容中的某些部分系 mozilla.org 志愿者个人版权所有。
 content-available = 内容遵循知识共享许可协议进行授权。
+# Alerts is a noun
+sign-up-for-alerts = 注册以获取警报。
+sign-up-for-fxa-alerts = 注册以获取 { -product-name } 警报。
