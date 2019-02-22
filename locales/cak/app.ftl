@@ -194,3 +194,9 @@ share-email = Taqoya'l
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Juley chik
 share-twitter = Konojel ri winaqi' k'o jub'a' 100 rub'i' kitaqoya'l pa k'amab'ey. ¿La k'o Jun chi ke ri awichin xuk'ulwachij jun tz'ilanïk rutzij? Tawila'.
+share-facebook-headline = Tawetamaj we xetz'iläx ri taq atzij
+share-facebook-blurb = ¿La xetz'iläx ri taq rutzij kib'i' ataqoya'l pa k'amab'ey?
+og-site-description = Tawila' we xetz'iläx ri taq atzij rik'in { -product-name }. Tatz'ib'aj ab'i' richin xke'ak'ül taq chayub'al chuqa' richin ye'akül taq na'oj pa ruwi' rub'eyal yejike' ri kib'i' ataqoya'l.
+mozilla-security-blog = { -brand-Mozilla } Jikomal Ichinya'l
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Winaqinem
