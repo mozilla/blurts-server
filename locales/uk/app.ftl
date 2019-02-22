@@ -205,3 +205,19 @@ layout-social = Соціальні мережі
 show-all = Показати все
 fxa-signup-banner-headline = Моніторинг вразливостей ваших мережевих облікових записів.
 fxa-signup-banner-blurb = Зареєструйтеся в { -brand-fxa } для отримання докладного звіту і попереджень про нові витоки даних.
+fxa-landing-blurb =
+    Дізнайтеся, що хакери вже знають про вас,
+    та навчіться, як бути на крок попереду них.
+fxa-scan-label = Перевірте, чи не з'явилася ваша інформація у витоках даних.
+fxa-welcome-headline = Вітаємо в { -product-name }.
+fxa-welcome-blurb = Тепер у вас все налаштовано для отримання попереджень про витоки даних для { $userEmail }.
+fxa-scan-another-email = Хочете перевірити іншу електронну пошту?
+# Search Firefox Monitor
+fxa-scan-submit = Пошук { -product-name }
+sign-up-to-check = Зареєструйтеся для перевірки
+sign-in = Увійти
+sign-out = Вийти
+full-report-headline = Ваш звіт { -product-name }
+see-full-report = Дивитися повний звіт
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Керувати { -brand-fxa }
