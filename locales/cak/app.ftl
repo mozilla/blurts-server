@@ -193,3 +193,4 @@ confirmation-blurb = Ri kitz'ilaxik tzij yekitz'ila' xab'achike. Katzijon chi ri
 share-email = Taqoya'l
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Juley chik
+share-twitter = Konojel ri winaqi' k'o jub'a' 100 rub'i' kitaqoya'l pa k'amab'ey. ¿La k'o Jun chi ke ri awichin xuk'ulwachij jun tz'ilanïk rutzij? Tawila'.
