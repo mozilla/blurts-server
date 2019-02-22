@@ -175,3 +175,15 @@ unsub-reason-6 = Majun chi ke ri yesik'ïx
 unsub-survey-thankyou = Matyox ruma ri atzij.
 unsub-survey-error = Tab'ana' utzil, tacha' jun.
 unsub-survey-headline-v2 = Xaq'ät ri rutz'ib'axik ab'i'.
+# Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
+share = Tikomonïx
+# Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
+tweet = Titwetäx
+download-firefox-quantum = Tiqasäx { -brand-Quantum }
+download-firefox-mobile = Tiqasäx { -brand-name } Oyonib'äl
+# Features here refers to Firefox browser features. 
+features = Taq b'anikil
+# beta-nightly-developer-edition refers to additional versions of Firefox Browser
+beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Kitz'ilanik tzij ya'on ruma { $hibp-link }
