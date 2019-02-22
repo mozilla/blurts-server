@@ -187,3 +187,9 @@ features = Taq b'anikil
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Kitz'ilanik tzij ya'on ruma { $hibp-link }
+site-description = ¿La xetz'iläx o xe'eleq'äx ri rub'i' taq ataqoya'l pa jun kichayub'al taq tzij? Tawila' { -product-name }. Takanoj pa rucholxe'el qatzij chuqa' tatz'ib'aj ab'i' richin ri kitzijol k'ayewal.
+confirmation-headline = Ri { -product-name } atzijol petenäq chik.
+confirmation-blurb = Ri kitz'ilaxik tzij yekitz'ila' xab'achike. Katzijon chi rij kik'in ri awachib'il chuqa' awach'alal richin chi tikinik'oj we e jikïl ri rub'i' kitaqoya'l pa k'amab'ey.
+share-email = Taqoya'l
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Juley chik
