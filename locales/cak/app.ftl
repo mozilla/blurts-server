@@ -115,3 +115,22 @@ no-breaches =
     Man k'o ta ri rochochib'al ataqoya'l pa nab'ey ruk'u'x qatz'ajwachib'enik.
     Ri ri' yalan jeb'ël rutzijol, xa xe chi ri chayub'äl taq tzij nitikïr nik'ulwachitäj xab'achike ramaj ruma ri', k'a k'o yatikïr nab'än.
     Tatz'ib'aj ab'i' pa { -product-name-nowrap } richin jun tz'aqät rutzijol chuqa' rutzijol k'ayewal toq xkek'ulwachitäj k'ak'a' taq chayub'al chuqa' taq na'oj richin ye'achajij ri ewan taq atzij.
+featured-breach-results =
+    { $breachCount ->
+        [0] Ri rub'i' ataqoya'l niwachin pa ri <span class="bold">{ $featuredBreach }</span> tz'ilanïk, chuqa' man niwachin ta pa jun chik tz'ilanïk etaman ruwäch.
+        [one] Ri rub'i' ataqoya'l niwachin pa ri <span class="bold"> { $featuredBreach } </span> tz'ilanïk, chuqa' jun chik tz'ilanïk.
+       *[other] Ri rub'i' ataqoya'l niwachin pa ri <span class="bold"> { $featuredBreach }</span> tz'ilanïk, achi'el chuqa' { $breachCount } pa ch'aqa' chik taq tz'ilanïk.
+    }
+featured-breach-not-compromised =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Man xwachin ta ri rub'i' ataqoya'l pa <span class="bold">{ $featuredBreach }</span> tz'ilanïk, xa xe chi xwachin pa jun chik tz'ilanïk.
+       *[other] Man xwachin ta ri rub'i' ataqoya'l pa <span class="bold">{ $featuredBreach }</span> tz'ilanïk, xa xe chi xwachin pa { $breachCount } ch'aqa' chik taq tz'ilanïk.
+    }
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Ri rub'i' ataqoya'l xwachin pa { $breachCount } tz'ilanïk.
+       *[other] Ri rub'i' ataqoya'l ruximon ri' rik'in ri rochochib'al ataqoya'l niwachin pa re { $breachCount } taq tz'ilanïk re'.
+    }
+show-more-breaches = Kek'ut Pe Ch'aqa' Chik
