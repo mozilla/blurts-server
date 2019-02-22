@@ -31,12 +31,12 @@ test("init request sets session cookie and redirects with access_type=offline", 
 });
 
 
-function getMockRequest(userAddLanguages = "en-US,en;q=0.5") {
+function getMockRequest(userAddLanguages = "en-US,en;q=0.5", sessionState="test-state") {
   return {
     app: { locals: { breaches: testBreaches } },
     headers: { "accept-language": userAddLanguages },
     fluentFormat: jest.fn(),
-    session: { state: { } },
+    session: { state: sessionState },
     originalUrl: "",
   };
 }
@@ -45,9 +45,10 @@ function getMockRequest(userAddLanguages = "en-US,en;q=0.5") {
 test("confirmed request checks session cookie, calls FXA for token and email, adds new subscriber with signup language, and redirects", async () => {
   const testFxAEmail = "fxa-new-user@test.com";
   const userAddLanguages = "en-US,en;q=0.5";
+  const mockState = "123456789";
   EmailUtils.sendEmail = jest.fn();
   // Mock the getToken, got, and render calls
-  const mockRequest = getMockRequest(userAddLanguages);
+  const mockRequest = getMockRequest(userAddLanguages, mockState);
   const mockResponse = { redirect: jest.fn()};
   const mockFxAClient = { code : { getToken: jest.fn().mockReturnValueOnce({ accessToken: "testToken"}) } };
   got.mockResolvedValue({ body: `{"email": "${testFxAEmail}"}` });
@@ -56,7 +57,8 @@ test("confirmed request checks session cookie, calls FXA for token and email, ad
 
   const mockFxACallArgs = mockFxAClient.code.getToken.mock.calls[0];
   expect(mockFxACallArgs[0]).toBe(mockRequest.originalUrl);
-  expect(mockFxACallArgs[1]).toEqual({state: mockRequest.session.state});
+  expect(mockFxACallArgs[1]).toEqual({state: mockState});
+  expect(mockRequest.session.state).toBeNull();
   const mockGotCallArgs = got.mock.calls[0];
   expect(mockGotCallArgs[0]).toMatch(AppConstants.OAUTH_PROFILE_URI);
   expect(mockGotCallArgs[1].headers.Authorization).toMatch("testToken");
@@ -73,7 +75,9 @@ test("confirmed request checks session cookie, calls FXA for token and email, ad
 
 test("confirmed request checks session cookie, calls FXA for token and email, recognizes existing subscriber and redirects", async () => {
   EmailUtils.sendEmail = jest.fn();
-  const mockRequest = getMockRequest();
+  const mockState = "123456789";
+  const userAddLanguages = "en-US,en;q=0.5";
+  const mockRequest = getMockRequest(userAddLanguages, mockState);
   const mockResponse = { redirect: jest.fn() };
   const mockFxAClient = { code : { getToken: jest.fn().mockReturnValueOnce({ accessToken: "testToken"}) } };
 
@@ -85,7 +89,8 @@ test("confirmed request checks session cookie, calls FXA for token and email, re
 
   const mockFxACallArgs = mockFxAClient.code.getToken.mock.calls[0];
   expect(mockFxACallArgs[0]).toBe(mockRequest.originalUrl);
-  expect(mockFxACallArgs[1]).toEqual({state: mockRequest.session.state});
+  expect(mockFxACallArgs[1]).toEqual({state: mockState});
+  expect(mockRequest.session.state).toBeNull();
 
   const mockGotCallArgs = got.mock.calls[0];
   expect(mockGotCallArgs[0]).toMatch(AppConstants.OAUTH_PROFILE_URI);
