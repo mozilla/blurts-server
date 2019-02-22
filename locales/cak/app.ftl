@@ -101,3 +101,13 @@ get-your-report = Tak'ulu' ri Atzijol
 signup-modal-verify-headline = Tanik'oj ri Rutz'ib'axik Ab'i'
 signup-modal-verify-blurb = Xqatäq jun ruximonel jikib'anïk pa <span id="submitted-email" class="medium">.
 signup-modal-verify-expiration = Re ximonel re' xtik'is pa 24 ramaj.
+signup-modal-verify-resend = ¿La man k'o ta pan taqob'äl o pa ruyakwuj seq'tzijol? Titaq chik.
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = ¡Xtaq!
+signup-with-fxa = Tatz'ib'aj ab'i' ri { -brand-name } Ataqoya'l
+form-signup-placeholder = Tatz'ib'aj ataqoya'l
+form-signup-checkbox = Tak'ulu' ri ruk'isib'äl rutzijol { -brand-Mozilla } chuqa' { -brand-name }.
+sign-up = Tatz'ib'aj Awi'
+form-signup-error = K'o chi jun okel taqoya'l
+no-breaches-headline = K'a wakami, ronojel ütz.
+found-breaches-headline = Ri awetamab'al k'o pa jun chayub'äl tzij.
