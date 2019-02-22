@@ -303,3 +303,5 @@ fxa-what-to-do-blurb-3 =
     Nëse llogaria juaj bankare apo numra kartash krediti qenë ekspozuar, sinjalizoni bankën tuaj për mashtrim të mundshëm. 
     Mbikëqyrni bilancet për zëra që nuk i njihni.
 fxa-what-to-do-subhead-4 = Merrni ndihmë për të mbajtur mend krejt fjalëkalimet tuaja dhe ruajtur ato të parrezikuara.
+copyright = Pjesë të kësaj lënde janë © 1999-{ $year } e kontribuesish individualë te mozilla.org.
+content-available = Lëndë e përdorshme sipas një licence Creative Commons.
