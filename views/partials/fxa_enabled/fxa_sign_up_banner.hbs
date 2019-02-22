@@ -3,16 +3,16 @@
         <div class="fourth subscribe-icon-wrapper">
           {{> sprite symID="subscribe"}}
         </div>
-        <div class="half">
-          <h2 class="medium secondary-title">{{{fluentFormat req.supportedLocales "fxa-signup-banner-headline"}}}</h2>
-          <p class="demi">
-            {{#if featuredBreach.IsSensitive}}
-              {{fluentFormat req.supportedLocales "signup-banner-sensitive-blurb"}}
-            {{else}}
-              {{fluentFormat req.supportedLocales "fxa-signup-banner-blurb"}}
-            {{/if}}
-          </p>
+        <div class="{{#if featuredBreach.IsSensitive}} three-fourths {{else}} half {{/if}}">
+          {{#if featuredBreach.IsSensitive}}
+            <h2 class="medium secondary-title">{{fluentFormat req.supportedLocales "get-your-report-and-sign-up"}}</h2>
+          {{else}}
+            <h2 class="medium secondary-title">{{fluentFormat req.supportedLocales "sign-up-for-fxa-alerts"}}</h2>
+          {{/if}}
+          <p class="demi">{{fluentFormat req.supportedLocales "create-free-account"}}</p>
         </div>
-        {{> fxa_enabled/sign_up_bundle class="fourth"}}
+        {{#unless featuredBreach.IsSensitive}}
+          {{> fxa_enabled/sign_up_bundle class="fourth"}}
+        {{/unless}}
       </div>
     </div>

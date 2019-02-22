@@ -19,7 +19,7 @@
                 <p>{{{fluentNestedBold req.supportedLocales "user-generic-fb-compromised-single" breachCount=foundBreaches.length}}}</p>
               {{/if}}
             {{else}}
-              <p>{{{fluentNestedBold req.supportedLocales "guest-fb-compromised-single" breachCount=foundBreaches.length}}}</p>
+              <p>{{{fluentNestedBold req.supportedLocales "guest-fb-compromised-single-v2" breachCount=foundBreaches.length}}}</p>
             {{/if}}
           {{else}}
             {{#if signedInUser}}
@@ -29,7 +29,7 @@
                 <p>{{{fluentNestedBold req.supportedLocales "user-generic-fb-not-compromised-blurb" breachCount=foundBreaches.length breachName=specificBreach.Title}}}</p>
               {{/if}}
             {{else}}
-              <p>{{{fluentNestedBold req.supportedLocales "guest-fb-not-compromised-blurb" breachCount=foundBreaches.length breachName=specificBreach.Title}}}</p>
+              <p>{{{fluentNestedBold req.supportedLocales "guest-fb-not-compromised-blurb-v2" breachCount=foundBreaches.length breachName=specificBreach.Title}}}</p>
             {{/if}}
           {{/if}}
         {{else}}
@@ -41,7 +41,7 @@
                 <p>{{{fluentNestedBold req.supportedLocales "user-generic-fb-compromised-blurb" breachCount=(breachMath foundBreaches.length "-" 1)}}}</p>
               {{/if}}
             {{else}}
-              <p>{{{fluentNestedBold req.supportedLocales "guest-fb-compromised-blurb" breachCount=(breachMath foundBreaches.length "-" 1)}}}</p>
+              <p>{{{fluentNestedBold req.supportedLocales "guest-fb-compromised-blurb-v2" breachCount=(breachMath foundBreaches.length "-" 1)}}}</p>
             {{/if}}
           {{else}}
             {{#if signedInUser}}
@@ -56,14 +56,10 @@
           {{/if}}
         {{/ifCompare}}
       {{else}}
-        {{#if signedInUser}}
-          {{#if selfScan}}
-            <p>{{{fluentNestedBold req.supportedLocales "user-found-breaches-blurb" breachCount=foundBreaches.length}}}</p>
-          {{else}}
-            <p>{{{fluentNestedBold req.supportedLocales "user-generic-found-breaches-blurb" breachCount=foundBreaches.length}}}</p>
-          {{/if}}
+        {{#if selfScan}}
+          <p>{{{fluentNestedBold req.supportedLocales "user-found-breaches-blurb" breachCount=foundBreaches.length}}}</p>
         {{else}}
-          <p>{{{fluentNestedBold req.supportedLocales "guest-found-breaches-blurb" breachCount=foundBreaches.length}}}</p>
+          <p>{{{fluentNestedBold req.supportedLocales "user-generic-found-breaches-blurb" breachCount=foundBreaches.length}}}</p>
         {{/if}}
       {{/if}}
     {{/ifCompare}}

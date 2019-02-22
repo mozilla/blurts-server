@@ -2,6 +2,8 @@
 
 const crypto = require("crypto");
 const isemail = require("isemail");
+
+
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const { FluentError } = require("../locale-utils");
@@ -138,8 +140,8 @@ function getUnsubSurvey(req, res) {
   }
   res.render("subpage", {
     title: req.fluentFormat("user-unsubscribe-survey-title"),
-    headline: req.fluentFormat("unsub-survey-headline"),
-    subhead: req.fluentFormat("unsub-survey-blurb"),
+    headline: req.fluentFormat("unsub-survey-headline-v2"),
+    subhead: req.fluentFormat("unsub-survey-blurb-v2"),
     whichPartial: "subpages/unsubscribe_survey",
   });
 }
