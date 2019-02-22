@@ -532,8 +532,10 @@ if (document.getElementById("subpage")) {
   document.body.classList.add("sub");
 }
 
-if (document.getElementById("latest-breaches") || document.getElementById("no-breaches") && document.getElementById("scan-another-email")) {
+if (document.getElementById("latest-breaches") || document.getElementById("no-breaches")) {
+  if (document.getElementById("scan-another-email")) {
     document.getElementById("scan-another-email").classList.add("banner");
+  }
 }
 
 // collect ping triggering elements, attach listeners

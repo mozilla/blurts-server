@@ -28,9 +28,9 @@ const setMetricsIds = (el) => {
 const getLocation = () => {
   const eventLocation = document.querySelectorAll("[data-page-label]");
   if (eventLocation.length > 0) {
-    return `${eventLocation[0].dataset.pageLabel}`;
+    return `Page ID: ${eventLocation[0].dataset.pageLabel}`;
   } else {
-    return `${ga_getLocation()}`;
+    return `Page ID: ${ga_getLocation()}`;
   }
 };
 
@@ -39,9 +39,7 @@ const sendPing = async(el, eventAction, eventLabel = null) => {
     if (!eventLabel) {
       eventLabel = `${getLocation()}`;
     }
-    eventLabel = `Page ID: ${eventLabel}`;
     const eventCategory = `[v2] ${el.dataset.eventCategory}`;
-
     if (eventCategory.includes("Scan")) {
       // Append user status to eventLabel for scan form events.
       eventLabel = `${eventLabel} [Signed in user: ${document.body.dataset.signedInUser}]`;
@@ -64,7 +62,8 @@ let eventTriggers = [
 
 eventTriggers = document.querySelectorAll(eventTriggers);
 
-// Reset data-event-category and data-fxa-entrypoint if necessary.
+// Reset data-event-category and data-fxa-entrypoint if necessary when
+// the entrypoint is nested inside Sign Up Banner.
 // TODO: send top of funnel ping to FxA for each data-fxa-entrypoint element.
 document.querySelectorAll("#scan-user-email, .open-oauth").forEach(el => {
   setMetricsIds(el);
@@ -76,8 +75,8 @@ const pageLocation = getLocation();
 eventTriggers.forEach(el => {
   sendPing(el, "View", pageLocation);
   if (["BUTTON", "A"].includes(el.tagName)) {
-    el.addEventListener("click", (e) => {
-      sendPing(el, "Engage", pageLocation);
+    el.addEventListener("click", async(e) => {
+      await sendPing(el, "Engage", pageLocation);
     });
   }
 });
@@ -85,9 +84,10 @@ eventTriggers.forEach(el => {
 // Add event listeners to event triggering elements
 // for which we do not send "View" pings.
 if (document.body.dataset.fxaEnabled) {
-  document.querySelectorAll("[data-ga-link]").forEach(el => {
-    el.addEventListener("click", (e) => {
-      sendPing(el, "Click", pageLocation);
+  document.querySelectorAll("[data-ga-link]").forEach((el) => {
+    el.addEventListener("click", async(e) => {
+      const linkId = `Link ID: ${e.target.dataset.eventLabel}`;
+      await sendPing(el, "Click", `${linkId} // ${pageLocation}`);
     });
   });
 }
