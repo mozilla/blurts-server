@@ -214,3 +214,4 @@ fxa-what-to-do-blurb-3 =
     Shumica e shkeljeve ekspozojnë vetëm email-e dhe fjalëkalime, por disa përfshijnë edhe të dhëna financiare me spec. 
     Nëse llogaria juaj bankare apo numra kartash krediti qenë ekspozuar, sinjalizoni bankën tuaj për mashtrim të mundshëm. 
     Mbikëqyrni bilancet për zëra që nuk i njihni.
+fxa-what-to-do-subhead-4 = Merrni ndihmë për të mbajtur mend krejt fjalëkalimet tuaja dhe ruajtur ato të parrezikuara.
