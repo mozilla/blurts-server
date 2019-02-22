@@ -1,1 +1,5 @@
-data-analytics-event="Download" data-analytics-label="Download Firefox {{ eventLabel }}"
+{{#if FXA_ENABLED}}
+  data-ga-link="" data-event-category="Download Links" data-event-label="Download Firefox {{ eventLabel }}"
+{{else}}
+  data-analytics-event="Download" data-analytics-label="Download Firefox {{ eventLabel }}"
+{{/if}}

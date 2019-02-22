@@ -871,6 +871,11 @@ svg#open-new-window {
   pointer-events: all;
 }
 
+/* prevent spans from interfering with ga pings */
+.fxa-links a span {
+  pointer-events: none;
+}
+
 .fxa-user-info:hover .fxa-menu a:hover {
   opacity: 0.7;
 }
@@ -1011,7 +1016,7 @@ main .sensitive-breach-email-required {
   margin-top: calc(var(--gap) / 2);
 }
 
-main .half.featured button#sign-up,
+main .half.featured button.sign-up-button,
 main .half.featured a.see-full-report-button,
 main .sensitive-breach-email-required {
   max-width: 300px;

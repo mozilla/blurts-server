@@ -18,7 +18,7 @@
               {{> breach_listing req=../req}}
             {{/eachFromTo}}
           </div>
-          <button id="show-additional-breaches" class="button transparent-button">{{fluentFormat req.supportedLocales "show-more-breaches"}}</button>
+          <button id="show-additional-breaches" class="button transparent-button" data-event-category="Show All Breaches Button">{{fluentFormat req.supportedLocales "show-more-breaches"}}</button>
           {{> hibp_attribution }}
         {{/ifCompare}}
       </div>

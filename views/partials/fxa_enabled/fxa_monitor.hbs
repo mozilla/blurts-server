@@ -1,4 +1,4 @@
-<main class="landing-content">
+<main class="landing-content" data-page-label={{>analytics/landing_page_label}}>
   <div class="section-wrapper">
     <div class="half {{#if featuredBreach}} featured {{/if}}">
       <h2 data-location="landing-page" class="section-headline">
@@ -13,7 +13,7 @@
           {{#if req.session.user}}
             {{> fxa_enabled/see_full_report_button}}
           {{else}}
-            <button class="button sign-up-button" id="sign-up">{{fluentFormat req.supportedLocales "sign-up-to-check"}}</button>
+            <button class="button sign-up-button" data-event-category="Sign Up To Check Button" {{>analytics/fxa id="fx-monitor-sign-in-to-check-button"}}>{{fluentFormat req.supportedLocales "sign-up-to-check"}}</button>
           {{/if}}
         {{else}}
           {{> scan_form}}

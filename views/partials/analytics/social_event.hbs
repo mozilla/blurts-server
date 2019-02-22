@@ -1,1 +1,5 @@
-data-analytics-event="Social" data-analytics-label="{{ eventLabel }}"
+{{#if FXA_ENABLED}}
+  data-ga-link data-event-category="Social" data-event-label="{{ eventLabel }}"
+{{else}}
+  data-analytics-event="Social" data-analytics-label="{{ eventLabel }}"
+{{/if}}

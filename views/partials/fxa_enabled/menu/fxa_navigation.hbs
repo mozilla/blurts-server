@@ -9,7 +9,7 @@
         {{> fxa_enabled/menu/fxa_links class="fxa-menu desktop" }}
     </div> 
   {{else}}
-    <button id="login-btn" class="login-btn open-oauth transparent-button">
+    <button id="login-btn" class="login-btn open-oauth transparent-button" data-event-category="Sign In Button" {{>analytics/fxa id="fx-monitor-sign-in-button"}}>
       {{fluentFormat req.supportedLocales "sign-in"}}
     </button>
   {{/if}}
