@@ -134,3 +134,13 @@ scan-results =
        *[other] Ri rub'i' ataqoya'l ruximon ri' rik'in ri rochochib'al ataqoya'l niwachin pa re { $breachCount } taq tz'ilanïk re'.
     }
 show-more-breaches = Kek'ut Pe Ch'aqa' Chik
+what-to-do-headline = Achike k'atzinel nab'än toq ri awetamab'al xuk'ulwachij jun tz'ilanïk tzij.
+what-to-do-subhead-1 = Ye'ak'ëx ri ewan taq atzij chuqa' pa ri ojer taq rub'i' ataqoya'l.
+what-to-do-blurb-1 =
+    We man yatikïr ta natikirisaj molojri'ïl, katzijon rik'in ri ajk'amaya'l ruxaq richin nak'utuj achike rub'eyal nak'öl o nak'ïs pa ruwi' ri rub'i' ataqoya'l.
+    ¿La natz'ët jun rub'i' taqoya'l ri man awetaman ta ruwäch? Ri ruxaq rik'in jub'a' xerujäl ri b'i'aj o k'o jun ri xtz'uku jun rub'i' ataqoya'l.
+what-to-do-subhead-2 = We nawokisaj jun ewan tzij xetamäx ruwäch, tajala'.
+what-to-do-blurb-2 =
+    Ri ajjaker yetikïr nikitojtob'ej nikokisaj chik ri k'ak'a' ewan atzij xkïl richin ye'ok pa ch'aqa' chik ewan taq tzij.
+    Tatz'uku' jun ewan rutzij jun ajk'amaya'l ruxaq, achi'el pa rub'i' rutaqoya'l apwaqb'al, taq taqoya'l chuqa' ch'aqa' chik ajk'amaya'l ruxaq, akuchi' e k'o ri awetamab'al.
+what-to-do-subhead-3 = Jujun ruwi' taq xak yalan e k'atzinel richin ri ajpwäq kib'i' ataqoya'l.
