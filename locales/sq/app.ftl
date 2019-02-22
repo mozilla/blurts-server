@@ -19,6 +19,7 @@ about-firefox-alerts = Mbi Sinjalizimet Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Jepni Përshtypjet
 terms-and-privacy = Kushte dhe Privatësi
+error-scan-page-token = Provuat të skanoni shumë adresa email brenda një kohe të shkurtër. Për arsye sigurie, kemi bllokuar përkohësisht kërkime të reja prej jush. Do të jeni në gjendje të riprovoni më vonë.
 error-could-not-add-email = S’u shtua dot adresë email te baza e të dhënave.
 error-not-subscribed = Kjo adresë email s’është e pajtuar te { -product-name }.
 error-hibp-throttled = Shumë lidhje me { -brand-HIBP }.
@@ -198,17 +199,40 @@ share-twitter = Shumica e njerëzve kanë rreth 100 llogari internetore. A ësht
 share-facebook-headline = Shihni nëse keni qenë viktimë e ndonjë shkeljeje të dhënash
 share-facebook-blurb = Keni llogari internetore që kanë qenë ekspozuar në shkelje të dhënash?
 og-site-description = Shihni nëse keni qenë pjesë e ndonjë shkeljeje të dhënash, përmes { -product-name }. Regjistrohuni për sinjalizime rreth shkeljesh në të ardhmen dhe merrni ndihmëza si t’i mbani llogaritë tuaja të parrezikuara.
+mozilla-security-blog = Blogu i { -brand-Mozilla }-s Mbi Sigurinë
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Shoqërore
 show-all = Shfaqi krejt
 fxa-signup-banner-headline = Mbikëqyrni kërcënime ndaj llogarive tuaja internetore.
+fxa-signup-banner-blurb = Regjistrohuni për një { -brand-fxa } që të merrni raportin tuaj të hollësishëm dhe sinjalizime mbi shkelje të reja të të dhënave.
+fxa-landing-blurb =
+    Shihni se ç’dinë tashmë mbi ju hacker-at,
+    dhe mësoni se si të jeni përherë një hap para tyre.
+fxa-scan-label = Shihni nëse jeni përfshirë në shkelje të dhënash
 fxa-welcome-headline = Mirë se vini te { -product-name }.
+fxa-welcome-blurb = Jeni gati të merrni sinjalizime, nëse { $userEmail } shfaqet si pjesë e një shkeljeje të dhënash.
+fxa-scan-another-email = Doni të kontrolloni një email tjetër?
+# Search Firefox Monitor
+fxa-scan-submit = Kërkoni te { -product-name }
+sign-up-to-check = Regjistrohuni për Kontroll
 sign-in = Hyni
 sign-out = Dilni
+full-report-headline = Raporti juaj { -product-name }
 see-full-report = Shihni Raportin e Plotë
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Administroni { -brand-fxa }
+fxa-download-firefox-bar-blurb = Sjellë te ju nga { -brand-name }. 2x më i shpejtë. Përdor 30% më pak kujtesë se sa { -brand-Chrome }.
 fxa-download-firefox-bar-link = Shkarkojeni tani
+fxa-download-firefox-banner-blurb = Ngarkim më i mirë, më i shpejtë faqesh, që përdor më pak kujtesë kompjuteri.
+user-fb-compromised-headline = { $userEmail } është shfaqur në shkeljen e të dhënave  { $breachName }.
+guest-fb-compromised-headline = Ky email u shfaq në shkeljen e të dhënave { $breachName }.
+user-zero-breaches-headline = { $userEmail } u shfaq në zero shkelje të dhënash.
+guest-zero-breaches-headline = Ky email u shfaq në zero shkelje të dhënash.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } u shfaq në 1 shkelje të dhënash.
+       *[other] { $userEmail } u shfaq në { $breachCount } shkelje të dhënash.
+    }
 have-an-account = Keni tashmë një llogari?
 fxa-what-to-do-blurb-3 =
     Shumica e shkeljeve ekspozojnë vetëm email-e dhe fjalëkalime, por disa përfshijnë edhe të dhëna financiare me spec. 
