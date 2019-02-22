@@ -95,3 +95,9 @@ download-firefox-bar-link = Tiqasäx { -brand-name } wakami
 download-firefox-banner-blurb = Tak'waj rub'ey ri akanob'al
 download-firefox-banner-button = Tiqasäx { -brand-name }
 signup-modal-headline = Tatz'ib'aj ab'i' richin { -product-name-nowrap }
+signup-modal-blurb = Tatz'ib'aj ab'i' richin nak'ül ri tz'aqät atzijol, rutzijol k'ayewal toq yek'ulwachitäj k'ak'a' taq k'ayewal chuqa' runa'oj rujikomal { -product-name-nowrap }.
+signup-modal-close = Titz'apïx
+get-your-report = Tak'ulu' ri Atzijol
+signup-modal-verify-headline = Tanik'oj ri Rutz'ib'axik Ab'i'
+signup-modal-verify-blurb = Xqatäq jun ruximonel jikib'anïk pa <span id="submitted-email" class="medium">.
+signup-modal-verify-expiration = Re ximonel re' xtik'is pa 24 ramaj.
