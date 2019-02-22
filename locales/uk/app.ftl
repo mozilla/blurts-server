@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Обліковий запис Firefox
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Підтримка
@@ -17,6 +19,8 @@ about-firefox-alerts = Про попередження Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Залишити відгук
 terms-and-privacy = Умови та конфіденційність
+error-scan-page-token = Ви намагалися сканувати забагато адрес електронної пошти за короткий проміжок часу. З міркувань безпеки ми тимчасово заблокували вам доступ до нових пошуків. Ви зможете спробувати знову пізніше.
+error-could-not-add-email = Не вдалося додати адресу електронної пошти до бази даних.
 error-not-subscribed = Ця адреса електронної пошти не підписана на { -product-name }.
 error-hibp-throttled = Надто багато з'єднань з { -brand-HIBP }.
 error-hibp-connect = Помилка з'єднання з { -brand-HIBP }.
@@ -183,11 +187,6 @@ download-firefox-mobile = Завантажити мобільний { -brand-nam
 features = Можливості
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    Частини цього вмісту створені учасниками проекту mozilla.org &#x24B8; 1998-2018. <br />
-    Вміст доступний на умовах <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">ліцензії Creative Commons</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Дані про загрози надано { $hibp-link }
 site-description = Чи були ваші облікові записи викрадені в результаті витоку даних? Дізнайтеся в { -product-name }. Виконайте пошук в нашій базі даних та підпишіться на отримання попереджень.
@@ -200,3 +199,9 @@ share-twitter = Більшість людей мають близько 100 об
 share-facebook-headline = Дізнайтеся, чи ваші дані не було викрито
 share-facebook-blurb = Чи виявлено ваші дані у викритті?
 og-site-description = Дізнайтеся за допомогою { -product-name }, чи ваші дані не було викрито. Підпишіться на отримання попереджень про майбутні порушення та отримання порад щодо безпеки ваших облікових записів.
+mozilla-security-blog = Блог безпеки { -brand-Mozilla }
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Соціальні мережі
+show-all = Показати все
+fxa-signup-banner-headline = Моніторинг вразливостей ваших мережевих облікових записів.
+fxa-signup-banner-blurb = Зареєструйтеся в { -brand-fxa } для отримання докладного звіту і попереджень про нові витоки даних.
