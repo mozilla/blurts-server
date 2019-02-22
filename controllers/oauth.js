@@ -56,6 +56,8 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
   }
 
   const fxaUser = await client.code.getToken(req.originalUrl, { state: req.session.state });
+  // Clear the session.state to clean up and avoid any replays
+  req.session.state = null;
   log.debug("fxa-confirmed-fxaUser", fxaUser);
   const data = await got(FxAOAuthUtils.profileUri,
     {

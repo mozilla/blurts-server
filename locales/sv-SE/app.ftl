@@ -146,8 +146,11 @@ confirmed-social-blurb = Om du har drabbats av ett intrång är chansen stor att
 unsub-headline = Avsluta prenumerationen från { -product-name-nowrap }
 unsub-blurb = Detta kommer att ta bort din e-postadress från listan { -product-name-nowrap } och du får inte längre varningar när nya intrång meddelas.
 unsub-button = Avsluta prenumeration
-unsub-survey-headline = Du prenumererar inte längre.
-unsub-survey-blurb = Din e-postadress är borttagen från { -product-name-nowrap }. Tack för att du använde den här tjänsten. Har du tid en stund att svara på några frågor om din upplevelse?
+fxa-unsub-headline = Avbryt prenumerationen av varningar från { -product-name }.
+fxa-unsub-blurb =
+    Du får inte längre varningar från { -product-name }.
+    Ditt { -brand-fxa } kommer att förbli aktivt, och du kan få annan
+    kontorelaterad kommunikation.
 unsub-survey-form-label = Varför avslutar du varningar från { -product-name-nowrap }?
 unsub-reason-1 = Jag tror att varningarna inte gör mina data säkrare
 unsub-reason-2 = Jag får för många e-postmeddelanden från { -product-name-nowrap }
@@ -157,6 +160,11 @@ unsub-reason-5 = Jag använder en annan tjänst för att övervaka mina konton
 unsub-reason-6 = Inget av ovanstående
 unsub-survey-thankyou = Tack för din återkoppling.
 unsub-survey-error = Var god välj en.
+unsub-survey-headline-v2 = Din prenumeration har avslutats.
+unsub-survey-blurb-v2 =
+    Du kommer inte längre att få varningar från { -product-name }.
+    Vill du ta en stund och svara på frågor om din upplevelse?
+unsub-survey-button = Skicka in svar
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Dela
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -183,8 +191,6 @@ mozilla-security-blog = { -brand-Mozilla } säkerhetsblogg
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Socialt
 show-all = Visa alla
-fxa-signup-banner-headline = Övervakar hot mot dina online-konton.
-fxa-signup-banner-blurb = Registrera dig för en { -brand-fxa } för att få din detaljerade rapport och varningar om nya dataintrång.
 fxa-landing-blurb =
     Ta reda på vad hackare redan vet om dig,
     och lära dig hur du kan vara ett steg före dem.
@@ -237,17 +243,20 @@ user-fb-compromised-single =
     Denna intrång avslöjade följande personliga information. Om du inte redan 
     har gjort det, ändra dina lösenord.
 user-generic-fb-compromised-single = Detta intrång avslöjade följande personliga information.
-guest-fb-compromised-single =
-    Detta intrång avslöjade följande personliga information. Registrera dig för ett { -brand-fxa }
-    för att få din fullständiga rapport och varningar om nya intrång.
-guest-fb-compromised-blurb =
+guest-fb-compromised-single-v2 =
+    Detta intrång avslöjade följande personliga information.
+    Skapa ett gratis { -brand-fxa } för din fullständiga rapport om tidigare intrång, nya intrångsvarningar
+    och information om andra { -brand-Mozilla }-tjänster.
+guest-fb-compromised-blurb-v2 =
     { $breachCount ->
         [one]
-            Denna e-postadress förekom också i { $breachCount } annat intrång. Registrera dig för ett
-            { -brand-fxa } för att få din fullständiga rapport och varningar om nya intrång.
+            Denna e-postadress förekom också i { $breachCount } annat intrång. Skapa ett
+            gratis { -brand-fxa } för din fullständiga rapport om tidigare intrång, nya intrångsvarningar
+            och information om andra { -brand-Mozilla }-tjänster.
        *[other]
-            Denna e-postadress förekom också i { $breachCount } andra intrång. Registrera dig för ett
-            { -brand-fxa } för att få din fullständiga rapport och varningar om nya intrång.
+            Denna e-postadress förekom också i { $breachCount } andra intrång. Skapa ett
+            gratis { -brand-fxa } för din fullständiga rapport om tidigare intrång, nya intrångsvarningar
+            och information om andra { -brand-Mozilla }-tjänster.
     }
 user-fb-not-compromised-blurb =
     { $breachCount ->
@@ -258,15 +267,6 @@ user-generic-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Denna e-postadress var inte med i intrånget { $breachName }, men hittades i en annan.
        *[other] Denna e-postadress var inte med i intrånget { $breachName }, men hittades i andra.
-    }
-guest-fb-not-compromised-blurb =
-    { $breachCount ->
-        [one]
-            Denna e-postadress var inte med i intrånget { $breachName }, men hittade i en annan.
-            Registrera dig för ett { -brand-fxa } för att få din fullständiga rapport och varningar om nya intrång.
-       *[other]
-            Denna e-postadress var inte med i intrånget { $breachName }, men hittade i andra.
-            Registrera dig för ett { -brand-fxa } för att få din fullständiga rapport och varningar om nya intrång.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -281,17 +281,6 @@ user-generic-found-breaches-blurb =
     { $breachCount ->
         [one] Detta intrång avslöjade följande personliga information.
        *[other] Dessa intrång avslöjade följande personliga information.
-    }
-# While English doesn’t use the actual number of breaches in this sentence,
-# you can use {$breachCount} to display the number of breaches in your localization.
-guest-found-breaches-blurb =
-    { $breachCount ->
-        [one]
-            Detta intrång avslöjade följande personliga information. Registrera dig för ett
-            { -brand-fxa } för att få din fullständiga rapport och varningar om nya intrång.
-       *[other]
-            Dessa intrång avslöjade följande personliga information. Registrera dig för ett
-            { -brand-fxa } för att få din fullständiga rapport och varningar om nya intrång.
     }
 have-an-account = Har du redan ett konto?
 signup-banner-sensitive-blurb =
@@ -334,3 +323,10 @@ fxa-what-to-do-blurb-4 =
 fb-landing-headline = Var din information utsatt för dataintrång { $breachName }?
 copyright = Delar av detta innehåll är © 1999-{ $year } av enskilda mozilla.org-bidragsgivare.
 content-available = Innehåll tillgängligt under en Creative Commons-licens.
+# Alerts is a noun
+sign-up-for-alerts = Anmäl dig för varningar
+sign-up-for-fxa-alerts = Anmäl dig till { -product-name } för varningar.
+create-free-account =
+    Skapa ett gratis { -brand-fxa } för din fullständiga rapport om tidigare intrång, nya intrångsvarningar
+    och information om andra { -brand-Mozilla }-tjänster.
+get-your-report-and-sign-up = Få din rapport och registrera dig för varningar.

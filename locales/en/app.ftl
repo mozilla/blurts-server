@@ -210,10 +210,11 @@ unsub-headline = Unsubscribe from {-product-name-nowrap}
 unsub-blurb = This will remove your email from the {-product-name-nowrap} list and you will no longer receive alerts when new breaches are announced. 
 unsub-button = Unsubscribe
 
-unsub-survey-headline = You are no longer subscribed.
-unsub-survey-blurb = 
-  Your email is unsubscribed from {-product-name-nowrap}. Thank you for using this service. 
-  Will you take a moment to answer one question about your experience?
+fxa-unsub-headline = Unsubscribe from {-product-name} alerts.
+fxa-unsub-blurb = You’ll no longer receive {-product-name} alerts. 
+  Your {-brand-fxa} will remain active, and you may receive other 
+  account-related communications.
+
 
 unsub-survey-form-label = Why are you unsubscribing from {-product-name-nowrap} alerts?
 
@@ -226,6 +227,13 @@ unsub-reason-6 = None of the above
 
 unsub-survey-thankyou = Thank you for your feedback.
 unsub-survey-error = Please select one.
+
+unsub-survey-headline-v2 = You’ve been unsubscribed.
+unsub-survey-blurb-v2 = You will no longer receive {-product-name} alerts. 
+  Will you take a moment to answer one question about your experience?
+
+unsub-survey-button = Submit Response
+
 
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Share
@@ -263,8 +271,6 @@ mozilla-security-blog = {-brand-Mozilla} Security Blog
 layout-social = Social
 show-all = Show all
 
-fxa-signup-banner-headline = Monitor threats to your online accounts.
-fxa-signup-banner-blurb = Sign up for a {-brand-fxa} to get your detailed report and alerts about new data breaches.
 fxa-landing-blurb = 
   Find out what hackers already know about you,
   and learn how to stay a step ahead of them.
@@ -300,14 +306,14 @@ guest-zero-breaches-headline = This email appeared in zero data breaches.
 
 user-scan-results-headline =
   { $breachCount ->
-        [one] { $userEmail } appeared in 1 data breach.
-       *[other] { $userEmail } appeared in { $breachCount } data breaches.
+      [one] { $userEmail } appeared in 1 data breach.
+     *[other] { $userEmail } appeared in { $breachCount } data breaches.
   }
 
 guest-scan-results-headline =
   { $breachCount ->
-        [one] This email appeared in 1 data breach.
-       *[other] This email appeared in { $breachCount } data breaches.
+      [one] This email appeared in 1 data breach.
+     *[other] This email appeared in { $breachCount } data breaches.
   }
 
 user-no-breaches-blurb = We’ll alert you if this email address appears in a new breach.
@@ -334,16 +340,19 @@ user-fb-compromised-single =
   This breach exposed the following personal info. If you haven’t already, 
   change your passwords.
 user-generic-fb-compromised-single = This breach exposed the following personal info.
-guest-fb-compromised-single = 
-  This breach exposed the following personal info. Sign up for a {-brand-fxa} 
-  to get your full report and alerts about new breaches.
 
-guest-fb-compromised-blurb =
+guest-fb-compromised-single-v2 = This breach exposed the following personal info. 
+    Create a free {-brand-fxa} for your full report of past breaches, new breach alerts, 
+    and info about other {-brand-Mozilla} services.
+
+guest-fb-compromised-blurb-v2 =
   { $breachCount ->
-      [one] This email also appeared in { $breachCount } other breach. Sign up for a 
-            {-brand-fxa} to get your full report and alerts about new breaches.
-     *[other] This email also appeared in { $breachCount } other breaches. Sign up for a 
-              {-brand-fxa} to get your full report and alerts about new breaches.
+      [one] This email also appeared in { $breachCount } other breach. Create a 
+            free {-brand-fxa} for your full report of past breaches, new breach alerts, 
+            and info about other {-brand-Mozilla} services.
+     *[other] This email also appeared in { $breachCount } other breaches. Create a 
+              free {-brand-fxa} for your full report of past breaches, new breach alerts, 
+              and info about other {-brand-Mozilla} services.
   }
 
 user-fb-not-compromised-blurb =
@@ -358,12 +367,14 @@ user-generic-fb-not-compromised-blurb =
      *[other] This email was not in the { $breachName} breach, but was found in others.
   }
 
-guest-fb-not-compromised-blurb =
+guest-fb-not-compromised-blurb-v2 =
   { $breachCount ->
         [one] This email was not in the { $breachName } breach, but was found in another. 
-              Sign up for a {-brand-fxa} to get your full report and alerts about new breaches.
+              Create a free {-brand-fxa} for your full report of past breaches, new breach 
+              alerts, and info about other {-brand-Mozilla} services.
        *[other] This email was not in the { $breachName } breach, but was found in others. 
-                Sign up for a {-brand-fxa} to get your full report and alerts about new breaches.
+                Create a free {-brand-fxa} for your full report of past breaches, 
+                new breach alerts, and info about other {-brand-Mozilla} services.
   }
 
 # While English doesn’t use the actual number of breaches in this sentence,
@@ -380,16 +391,6 @@ user-generic-found-breaches-blurb =
   { $breachCount ->
         [one] This breach exposed the following personal info.
        *[other] These breaches exposed the following personal info.
-  }
-
-# While English doesn’t use the actual number of breaches in this sentence,
-# you can use {$breachCount} to display the number of breaches in your localization.
-guest-found-breaches-blurb =
-  { $breachCount ->
-        [one] This breach exposed the following personal info. Sign up for a 
-              {-brand-fxa} to get your full report and alerts about new breaches. 
-       *[other] These breaches exposed the following personal info. Sign up for a {-brand-fxa} 
-                to get your full report and alerts about new breaches.
   }
 
 have-an-account = Already have an account?
@@ -446,3 +447,13 @@ copyright =
   Portions of this content are © 1999-{ $year } by individual mozilla.org contributors.
   
 content-available= Content available under a Creative Commons license.
+
+# Alerts is a noun
+sign-up-for-alerts=Sign up for Alerts
+
+sign-up-for-fxa-alerts= Sign up for {-product-name} alerts.
+create-free-account=
+  Create a free {-brand-fxa} for your full report of past breaches, new breach 
+  alerts, and info about other {-brand-Mozilla} services.
+get-your-report-and-sign-up= Get your report and sign up for alerts.
+

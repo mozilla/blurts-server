@@ -159,10 +159,7 @@ confirmed-social-blurb = Se seus dados foram vazados, é possível que os dos se
 unsub-headline = Descadastrar do { -product-name-nowrap }
 unsub-blurb = Isso irá remover seu endereço de e-mail da lista do { -product-name-nowrap } e você não irá mais receber alertas quando novos vazamentos forem anunciados.
 unsub-button = Descadastrar
-unsub-survey-headline = Você não está mais cadastrado
-unsub-survey-blurb =
-    Seu endereço de e-mail foi descadastrado do { -product-name-nowrap }. Obrigado por usar este serviço.
-    Você responderia uma pergunta sobre sua experiência?
+fxa-unsub-headline = Descadastrar de alertas do { -product-name }.
 unsub-survey-form-label = Por que você está se descadastrando dos alertas do { -product-name-nowrap }?
 unsub-reason-1 = Eu não acho que os alertas tornam meus dados mais seguros
 unsub-reason-2 = Eu recebo e-mails demais do { -product-name-nowrap }
@@ -198,8 +195,6 @@ mozilla-security-blog = Blog de segurança do { -brand-Mozilla }
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Social
 show-all = Mostrar tudo
-fxa-signup-banner-headline = Monitore ameaças a suas contas online.
-fxa-signup-banner-blurb = Cadastre uma { -brand-fxa } para receber seu relatório detalhado e alertas sobre novos vazamentos de dados.
 fxa-landing-blurb =
     Descubra o que hackers já sabem sobre você,
     e saiba como estar um passo à frente deles.
@@ -252,18 +247,6 @@ user-fb-compromised-single =
     Este vazamento expôs as seguintes informações pessoais. Se ainda não fez, 
     mude suas senhas.
 user-generic-fb-compromised-single = Este vazamento expôs as seguintes informações pessoais.
-guest-fb-compromised-single =
-    Este vazamento expôs as seguintes informações pessoais. Cadastre uma { -brand-fxa } 
-    para receber seu relatório completo e alertas sobre novos vazamentos.
-guest-fb-compromised-blurb =
-    { $breachCount ->
-        [one]
-            Este e-mail também apareceu em { $breachCount } outro vazamento. Cadastre uma 
-            { -brand-fxa } para receber seu relatório completo e alertas sobre novos vazamentos.
-       *[other]
-            Este e-mail também apareceu em { $breachCount } outros vazamentos. Cadastre uma 
-            { -brand-fxa } para receber seu relatório completo e alertas sobre novos vazamentos.
-    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Você não estava no vazamento de { $breachName }, mas encontramos este endereço de e-mail em outro.
@@ -273,11 +256,6 @@ user-generic-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Este e-mail não estava no vazamento de { $breachName }, mas foi encontrado em outro.
        *[other] Este e-mail não estava no vazamento de { $breachName }, mas foi encontrado em outros.
-    }
-guest-fb-not-compromised-blurb =
-    { $breachCount ->
-        [one] Este e-mail não estava no vazamento { $breachName }, mas foi encontrado em outro. Cadastre uma { -brand-fxa } para receber seu relatório completo e alertas sobre novos vazamentos.
-       *[other] Este e-mail não estava no vazamento { $breachName }, mas foi encontrado em outros. Cadastre uma { -brand-fxa } para receber seu relatório completo e alertas sobre novos vazamentos.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -292,17 +270,6 @@ user-generic-found-breaches-blurb =
     { $breachCount ->
         [one] Este vazamento expôs as seguintes informações pessoais.
        *[other] Estes vazamentos expuseram as seguintes informações pessoais.
-    }
-# While English doesn’t use the actual number of breaches in this sentence,
-# you can use {$breachCount} to display the number of breaches in your localization.
-guest-found-breaches-blurb =
-    { $breachCount ->
-        [one]
-            Este vazamento expôs as seguintes informações pessoais. Cadastre uma 
-            { -brand-fxa } para receber seu relatório completo e alertas sobre novos vazamentos.
-       *[other]
-            Estes vazamentos expuseram as seguintes informações pessoais. Cadastre uma 
-            { -brand-fxa } para receber seu relatório completo e alertas sobre novos vazamentos.
     }
 have-an-account = Já tem uma conta?
 signup-banner-sensitive-blurb =

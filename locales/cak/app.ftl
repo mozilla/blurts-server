@@ -19,6 +19,7 @@ about-firefox-alerts = Chi rij Retal taq Ruk'ayewal Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Titaq Na'oj
 terms-and-privacy = Taq Ojqanem chuqa' Ichinanem
+error-scan-page-token = Xatojtob'ej xatz'ajwachib'ej yalan k'ïy kochochib'al taqoya'l pa jun ti mej. Richin ajikomal xeqaq'ät ri k'a nimakoj xe'akanoj. Yatikïr natojtob'ej chik pa jun ti ramaj.
 error-could-not-add-email = Man xya' ta qa ri rochochib'al taqoya'l pa kicholxe'el tzij.
 error-not-subscribed = Man rutz'ib'an ta rub'i' re rochochib'al taqoya'l re' { -product-name }.
 error-hibp-throttled = K'ïy taq rokem ri { -brand-HIBP }.
@@ -37,6 +38,76 @@ error-headline = Sachoj
 user-verify-token-error = K'atzinel ri rutoken jikib'anïk.
 user-verify-email-report-subject = Ri { -product-name } atzijol
 user-verify-title = { -product-name } : Xtz'ib'äx Rub'i'
+user-unsubscribe-token-error = Richin nayüj tz'ib'anïk b'i'aj rajowaxik jun token.
+user-unsubscribe-token-email-error = Richin nayüj tz'ib'anïk b'i'aj rajowaxik jun token chuqa' rik'in taqoya'l.
+user-unsubscribe-title = { -product-name } : Tiyuj tz'ib'anïk b'i'aj
+user-unsubscribe-survey-title = { -product-name } : Tiyuj Tz'ib'anïk B'i'aj pa Molna'oj
+user-unsubscribed-title = { -product-name } : Xyuj Tz'ib'anïk B'i'aj
 
 ## Password Tips
 
+pwt-section-headline = Ütz Ewan taq Tzij = Ütz Chajinïk
+pwt-section-subhead = Yalan e jikïl ri ichinan awetamab'al achi'el ri ewan taq atzij.
+pwt-section-blurb =
+    Ri ewan taq atzij man xa xe ta nikichajij ri rub'i' ataqoya'l. Yekichajij ronojel ri ichinan awetamab'al k'o chupam.
+    Ri ajjaker kikuqub'an kik'u'x chi rij ri itzel keb'anikil ri winaqi', achi'el nikokisaj xa jun ewan tzij richin ronojel o nikokisaj retalik taq pajtzij (p@ssw0rd, anyone?) ruma ri'
+    nikitojtob'ej nikitz'ila' ri rub'i'a ataqoya'l, yetikïr yekitz'ila' k'ïy. Wawe' niqak'üt chawäch ri ütz rub'eyal richin ye'achajij ri kib'i' ataqoya'l.
+pwt-headline-1 = Tawokisaj jun ewan tzij xa xe richin jun rub'i' ataqoya'l.
+pwt-summary-1 =
+    Nokisäx xa jun ewan tzij pa ronojel k'ojlib'äl, nuya' q'ij richin neleq'äx ri etamab'äl.
+    Rik'in ri ewan tzij ri' xab'achike winäq nitikïr nok pa ronojel rub'i' ataqoya'l.
+pwt-headline-2 = Tatz'uku' jun ewan tzij ri yalan nïm chuqa' k'ayew ninatüx.
+pwt-summary-2 =
+    Ri ajjaker nikokisaj k'ïy relik ewan taq tzij richin nikïl ri awichin.
+    We yalan nïm raqän chuqa' k'exel ri ewan atzij, k'ayew nub'än chi kiwäch richin nikïl.
+pwt-headline-3 = Ke'atz'eta' ri kik'utunïk jikomal achi'el kitz'aqat ewan taq tzij.
+pwt-summary-3 =
+    Ri ajk'amaya'l taq ruxaq man yekinik'oj ta chi e ütz ri ewan taq atzij, xa xe chi tikixima' ki'.
+    Ke'atz'uku' nïm kaqän chuqa' k'exel ewan taq tzij chuqa' ke'ayaka' pa jun jikïl k'ojlib'äl.
+pwt-headline-4 = Tik'ul to'ïk richin ye'anataj ri ewan taq atzij.
+pwt-summary-4 =
+    Nuk'samajel ewan taq tzij achi'el 1Password, LastPass, Dashlane chuqa' Bitwarden yekitz'ük nima'q chuqa' yonil ewan taq tzij.
+    Chuqa' yekiyäk ewan taq tzij achi'el e jikïl chuqa' yekitz'aqatisaj pa ajk'amaya'l ruxaq chawäch
+pwt-headline-5 = Titz'aqatisäx rutz'aqat jikomal rik'in rujikib'anik ka'i'-jachab'äl.
+pwt-summary-5 =
+    2JACHAB'ÄL nrajo' jub'a' rutz'aqat etamab'äl (achi'el juyonil b'itz'ib', ri nitaq pa rutzijol tz'ib'anïk) richin natikirisaj molojri'ïl pa rub'i' ataqoya'l.
+    Ke ri' chuqa' we k'o nichinan ri ewan atzij, man xtitikïr ta xtok.
+pwt-headline-6 = Tatz'ib'aj ab'i' richin ye'ak'ül { -product-name-nowrap } kitzijol k'ayewal.
+pwt-summary-6 =
+    Tajin yek'iyïr ri kitzelanik ajk'amaya'l ruxaq. Xa xe nitz'aqatisäx jun k'ak'a' itzelanïk pa qacholxe'el tzij,
+    { -product-name-nowrap } nitaq rutzijol chawe richin natz'ët achike nab'än richin nachajij ri rub'i' ataqoya'l.
+landing-headline = Wawe' nitikïr ri ach'ojib'al richin at jikïl chi kiwäch ri ajjaker.
+landing-blurb = { -product-name-nowrap } nikiya' asamajib'al richin chi ütz nik'oje' ri awetamab'al. Tawetamaj ri ketaman chik ri ajjaker chawij chuqa' tawetamaj achike rub'eyal yanab'eyij chi kiwäch.
+scan-label = Titz'et we keleq'an awetamab'al.
+scan-placeholder = Titz'ib'äx Rochochib'al Taqoya'l
+scan-privacy = Man yakon ta ri ewan ataqoya'l.
+scan-submit = Takanoj ri Ataqoya'l
+scan-another-email = Titz'ajwachib'ëx Jun Chik Rochochib'al Taqoya'l
+scan-featuredbreach-label = Takanoj we ri <span class="bold"> { $featuredBreach } </span> rub'i' ataqoya'l xq'eleb'ëx.
+sensitive-breach-email-required = Ri itzelanïk ruk'wan chajin loq'el etamab'äl. Rajowaxik nijikib'äx pa taqoya'l.
+scan-error = K'o chi jun okel taqoya'l.
+signup-banner-headline = { -product-name-nowrap } nutz'ët itzelanïk chi rij rub'i' ataqoya'l pa k'amab'ey.
+signup-banner-blurb =
+    Ri cholon { -product-name-nowrap } atzijol nuk'üt we ri retamab'al rub'i' ataqoya'l pa k'amab'ey echayun o e'eleq'an.
+    Chuqa' xtiqaya' rutzijol chawe we ri rub'i' ataqoya'l e k'o pa k'ak'a' kik'ayewal ajk'amaya'l ruxaq.
+download-firefox-bar-blurb = { -product-name-nowrap } k'amon pe chawäch ruma ri <span class="nowrap">ronojel-k'ak'a' { -brand-name }</span>.
+download-firefox-bar-link = Tiqasäx { -brand-name } wakami
+download-firefox-banner-blurb = Tak'waj rub'ey ri akanob'al
+download-firefox-banner-button = Tiqasäx { -brand-name }
+signup-modal-headline = Tatz'ib'aj ab'i' richin { -product-name-nowrap }
+signup-modal-blurb = Tatz'ib'aj ab'i' richin nak'ül ri tz'aqät atzijol, rutzijol k'ayewal toq yek'ulwachitäj k'ak'a' taq k'ayewal chuqa' runa'oj rujikomal { -product-name-nowrap }.
+signup-modal-close = Titz'apïx
+get-your-report = Tak'ulu' ri Atzijol
+signup-modal-verify-headline = Tanik'oj ri Rutz'ib'axik Ab'i'
+signup-modal-verify-blurb = Xqatäq jun ruximonel jikib'anïk pa <span id="submitted-email" class="medium">.
+signup-modal-verify-expiration = Re ximonel re' xtik'is pa 24 ramaj.
+signup-modal-verify-resend = ¿La man k'o ta pan taqob'äl o pa ruyakwuj seq'tzijol? Titaq chik.
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = ¡Xtaq!
+signup-with-fxa = Tatz'ib'aj ab'i' ri { -brand-name } Ataqoya'l
+form-signup-placeholder = Tatz'ib'aj ataqoya'l
+form-signup-checkbox = Tak'ulu' ri ruk'isib'äl rutzijol { -brand-Mozilla } chuqa' { -brand-name }.
+sign-up = Tatz'ib'aj Awi'
+form-signup-error = K'o chi jun okel taqoya'l
+no-breaches-headline = K'a wakami, ronojel ütz.
+found-breaches-headline = Ri awetamab'al k'o pa jun chayub'äl tzij.

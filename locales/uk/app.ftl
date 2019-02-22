@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Обліковий запис Firefox
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Підтримка
@@ -17,6 +19,8 @@ about-firefox-alerts = Про попередження Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Залишити відгук
 terms-and-privacy = Умови та конфіденційність
+error-scan-page-token = Ви намагалися сканувати забагато адрес електронної пошти за короткий проміжок часу. З міркувань безпеки ми тимчасово заблокували вам доступ до нових пошуків. Ви зможете спробувати знову пізніше.
+error-could-not-add-email = Не вдалося додати адресу електронної пошти до бази даних.
 error-not-subscribed = Ця адреса електронної пошти не підписана на { -product-name }.
 error-hibp-throttled = Надто багато з'єднань з { -brand-HIBP }.
 error-hibp-connect = Помилка з'єднання з { -brand-HIBP }.
@@ -183,11 +187,6 @@ download-firefox-mobile = Завантажити мобільний { -brand-nam
 features = Можливості
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    Частини цього вмісту створені учасниками проекту mozilla.org &#x24B8; 1998-2018. <br />
-    Вміст доступний на умовах <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">ліцензії Creative Commons</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Дані про загрози надано { $hibp-link }
 site-description = Чи були ваші облікові записи викрадені в результаті витоку даних? Дізнайтеся в { -product-name }. Виконайте пошук в нашій базі даних та підпишіться на отримання попереджень.
@@ -200,3 +199,113 @@ share-twitter = Більшість людей мають близько 100 об
 share-facebook-headline = Дізнайтеся, чи ваші дані не було викрито
 share-facebook-blurb = Чи виявлено ваші дані у викритті?
 og-site-description = Дізнайтеся за допомогою { -product-name }, чи ваші дані не було викрито. Підпишіться на отримання попереджень про майбутні порушення та отримання порад щодо безпеки ваших облікових записів.
+mozilla-security-blog = Блог безпеки { -brand-Mozilla }
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Соціальні мережі
+show-all = Показати все
+fxa-signup-banner-headline = Моніторинг вразливостей ваших мережевих облікових записів.
+fxa-signup-banner-blurb = Зареєструйтеся в { -brand-fxa } для отримання докладного звіту і попереджень про нові витоки даних.
+fxa-landing-blurb =
+    Дізнайтеся, що хакери вже знають про вас,
+    та навчіться, як бути на крок попереду них.
+fxa-scan-label = Перевірте, чи не з'явилася ваша інформація у витоках даних.
+fxa-welcome-headline = Вітаємо в { -product-name }.
+fxa-welcome-blurb = Тепер у вас все налаштовано для отримання попереджень про витоки даних для { $userEmail }.
+fxa-scan-another-email = Хочете перевірити іншу електронну пошту?
+# Search Firefox Monitor
+fxa-scan-submit = Пошук { -product-name }
+sign-up-to-check = Зареєструйтеся для перевірки
+sign-in = Увійти
+sign-out = Вийти
+full-report-headline = Ваш звіт { -product-name }
+see-full-report = Дивитися повний звіт
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Керувати { -brand-fxa }
+fxa-download-firefox-bar-blurb = Для вас від { -brand-name }. Удвічі швидший. Використовує на 30% менше пам'яті, ніж { -brand-Chrome }.
+fxa-download-firefox-bar-link = Завантажити зараз
+fxa-download-firefox-banner-blurb = Краще, швидше завантаження сторінок, що використовує менше пам'яті.
+user-fb-compromised-headline = { $userEmail } з'являється у витоку даних { $breachName }.
+guest-fb-compromised-headline = Ця електронна пошта з'явилася у витоку даних { $breachName }.
+user-zero-breaches-headline = { $userEmail } відсутня у витоках даних.
+guest-zero-breaches-headline = Ця електронна пошта відсутня у витоках даних.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } з'являється в 1 витоку даних.
+        [few] { $userEmail } з'являється в { $breachCount } витоках даних.
+       *[other] { $userEmail } з'являється в { $breachCount } витоках даних.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Ця електронна пошта з'явилася в 1 витоку даних.
+        [few] Ця електронна пошта з'явилася в { $breachCount } витоках даних.
+       *[other] Ця електронна пошта з'явилася в { $breachCount } витоках даних.
+    }
+user-no-breaches-blurb = Ми повідомимо вас, якщо ця адреса електронної пошти з'явиться в новому витоку даних.
+guest-no-breaches-blurb =
+    Щоб побачити чи ця електронна пошта з'являється у витоках даних, створіть { -brand-fxa }. 
+    Ми також повідомимо вас, якщо ця адреса з'явиться в новому витоку даних.
+user-one-breach-blurb = Ця вразливість розкриває таку особисту інформацію.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Ваша електронна пошта також з'явилася в { $breachCount } іншому витоку даних.
+        [few] Ваша електронна пошта також з'явилася в { $breachCount } інших витоках даних.
+       *[other] Ваша електронна пошта також з'явилася в { $breachCount } інших витоках даних.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Ця електронна пошта також з'явилася в { $breachCount } іншому витоку даних.
+        [few] Ця електронна пошта також з'явилася в { $breachCount } інших витоках даних.
+       *[other] Ця електронна пошта також з'явилася в { $breachCount } інших витоках даних.
+    }
+user-fb-compromised-single = Ця вразливість розкриває таку особисту інформацію. Якщо ви досі не змінили свої паролі.
+user-generic-fb-compromised-single = Ця вразливість розкриває таку особисту інформацію.
+guest-fb-compromised-single = Ця вразливість розкриває таку особисту інформацію. Зареєструйтеся в { -brand-fxa }, щоб отримати повний звіт та попередження про нові витоки даних.
+guest-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Ця електронна пошта також з'явилася в { $breachCount } іншому витоку даних. Зареєструйтеся в { -brand-fxa }, щоб отримати повний звіт і попередження про нові витоки.
+        [few] Ця електронна пошта також з'явилася в { $breachCount } інших витоках даних. Зареєструйтеся в { -brand-fxa }, щоб отримати повний звіт і попередження про нові витоки.
+       *[other] Ця електронна пошта також з'явилася в { $breachCount } інших витоках даних. Зареєструйтеся в { -brand-fxa }, щоб отримати повний звіт і попередження про нові витоки.
+    }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Ваших даних не виявлено у витоці { $breachName }, але ми знайшли цю адресу електронної пошти в іншому витоку.
+        [few] Ваших даних не виявлено у витоці { $breachName }, але ми знайшли цю адресу електронної пошти в інших витоках.
+       *[other] Ваших даних не виявлено у витоці { $breachName }, але ми знайшли цю адресу електронної пошти в інших витоках.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Цю електронну пошту не виявлено у витоці даних { $breachName }, але ми знайшли її в іншому витоці.
+        [few] Цю електронну пошту не виявлено у витоці даних { $breachName }, але ми знайшли її в інших витоках.
+       *[other] Цю електронну пошту не виявлено у витоці даних { $breachName }, але ми знайшли її в інших витоках.
+    }
+guest-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Цю електронну пошту не виявлено у витоці даних { $breachName }, але ми знайшли її в іншому витоці. Зареєструйтеся в { -brand-fxa }, щоб отримати повний звіт і попередження про нові витоки даних.
+        [few] Цю електронну пошту не виявлено у витоці даних { $breachName }, але ми знайшли її в інших витоках. Зареєструйтеся в { -brand-fxa }, щоб отримати повний звіт і попередження про нові витоки даних.
+       *[other] Цю електронну пошту не виявлено у витоці даних { $breachName }, але ми знайшли її в інших витоках. Зареєструйтеся в { -brand-fxa }, щоб отримати повний звіт і попередження про нові витоки даних.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] Ця вразливість розкриває таку особисту інформацію. Якщо ви ще цього не зробили, змініть свій пароль.
+        [few] Ці вразливості розкривають таку особисту інформацію. Якщо ви ще цього не зробили, змініть свої паролі.
+       *[other] Ці вразливості розкривають таку особисту інформацію. Якщо ви ще цього не зробили, змініть свої паролі.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Ця вразливість розкриває таку особисту інформацію.
+        [few] Ці вразливості розкривають таку особисту інформацію.
+       *[other] Ці вразливості розкривають таку особисту інформацію.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+guest-found-breaches-blurb =
+    { $breachCount ->
+        [one] Ця вразливість розкриває таку особисту інформацію. Зареєструйтеся в { -brand-fxa }, щоб отримати повний звіт і попередження про нові витоки даних.
+        [few] Ці вразливості розкривають таку особисту інформацію. Зареєструйтеся в { -brand-fxa }, щоб отримати повний звіт і попередження про нові витоки даних.
+       *[other] Ці вразливості розкривають таку особисту інформацію. Зареєструйтеся в { -brand-fxa }, щоб отримати повний звіт і попередження про нові витоки даних.
+    }
+have-an-account = Вже маєте обліковий запис?

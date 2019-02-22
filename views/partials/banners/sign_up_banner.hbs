@@ -8,7 +8,11 @@
           {{> sprite symID="subscribe"}}
         </div>
         <div class="{{#if featuredBreach.IsSensitive }} three-fourths {{else}} half {{/if}}">
-          <h2 class="medium secondary-title">{{{fluentFormat req.supportedLocales "signup-banner-headline"}}}</h2>
+          {{#if featuredBreach.IsSensitive}}
+            <h2 class="medium secondary-title">{{fluentFormat req.supportedLocales "get-your-report"}}</h2>
+          {{else}}
+            <h2 class="medium secondary-title">{{fluentFormat req.supportedLocales "sign-up-for-fxa-alerts"}}</h2>
+          {{/if}}
           <p class="demi">{{{fluentFormat req.supportedLocales "signup-banner-blurb"}}}</p>
         </div>
         {{#unless featuredBreach.IsSensitive}}

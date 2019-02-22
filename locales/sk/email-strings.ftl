@@ -30,7 +30,7 @@ report-headline =
        *[other] Váš účet bol nájdený v { $breachCount } únikoch dát.
     }
 report-subhead-no-breaches =
-    Váš účet nie je súčasťou našej databáze únikov dát. 
+    Váš účet nie je súčasťou našej databázy únikov dát. 
     To je dobrá správa, no stále je čo zlepšovať. 
     K ďalšiemu úniku dát môže dôjsť kedykoľvek. Prečítajte si, ako môžete ochrániť svoje heslá.
 report-subhead-found-breaches = Tu je kompletná správa zo služby Firefox Monitor, ktorá obsahuje všetky známe úniky dát s touto e-mailovou adresou.
