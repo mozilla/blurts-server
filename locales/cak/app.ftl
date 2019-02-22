@@ -144,3 +144,5 @@ what-to-do-blurb-2 =
     Ri ajjaker yetikïr nikitojtob'ej nikokisaj chik ri k'ak'a' ewan atzij xkïl richin ye'ok pa ch'aqa' chik ewan taq tzij.
     Tatz'uku' jun ewan rutzij jun ajk'amaya'l ruxaq, achi'el pa rub'i' rutaqoya'l apwaqb'al, taq taqoya'l chuqa' ch'aqa' chik ajk'amaya'l ruxaq, akuchi' e k'o ri awetamab'al.
 what-to-do-subhead-3 = Jujun ruwi' taq xak yalan e k'atzinel richin ri ajpwäq kib'i' ataqoya'l.
+what-to-do-blurb-3 = K'ïy chi ke ri taq tz'ilanïk xa xe yekik'üt ri taq taqoya'l chuqa' ri ewan taq tzij, po k'o ri nikik'üt retamab'al pwaqil. We ri rajilab'al rub'i' rutaqoya'l apwaqb'al o t'impwäq xetz'aqatisäx pa ri tz'ilanïk, taya' rutzijol ri k'ayewal chi re ri apwaqb'al chi rik'in jub'a' xke'eleq' chuqa' tachajij xab'achike tojïk ri man awetaman ta chi xab'än.
+what-to-do-subhead-4 = Tak'ulu' to'ïk richin ye'atz'ük ütz ewan taq tzij chuqa' chi ütz kechajïx.
