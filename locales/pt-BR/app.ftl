@@ -160,6 +160,10 @@ unsub-headline = Descadastrar do { -product-name-nowrap }
 unsub-blurb = Isso irá remover seu endereço de e-mail da lista do { -product-name-nowrap } e você não irá mais receber alertas quando novos vazamentos forem anunciados.
 unsub-button = Descadastrar
 fxa-unsub-headline = Descadastrar de alertas do { -product-name }.
+fxa-unsub-blurb =
+    Você não receberá mais alertas do { -product-name }.
+    Sua { -brand-fxa } permanecerá ativa e você pode receber outras
+    comunicações relacionadas à conta.
 unsub-survey-form-label = Por que você está se descadastrando dos alertas do { -product-name-nowrap }?
 unsub-reason-1 = Eu não acho que os alertas tornam meus dados mais seguros
 unsub-reason-2 = Eu recebo e-mails demais do { -product-name-nowrap }
@@ -169,6 +173,11 @@ unsub-reason-5 = Estou usando outros serviços para monitorar minhas contas
 unsub-reason-6 = Nenhuma resposta acima
 unsub-survey-thankyou = Obrigado por sua opinião
 unsub-survey-error = Por favor selecione uma resposta:
+unsub-survey-headline-v2 = Você foi descadastrado.
+unsub-survey-blurb-v2 =
+    Você não receberá mais alertas do { -product-name }.
+    Tem um momento para responder uma pergunta sobre sua experiência?
+unsub-survey-button = Enviar resposta
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Compartilhar
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -247,6 +256,19 @@ user-fb-compromised-single =
     Este vazamento expôs as seguintes informações pessoais. Se ainda não fez, 
     mude suas senhas.
 user-generic-fb-compromised-single = Este vazamento expôs as seguintes informações pessoais.
+guest-fb-compromised-single-v2 =
+    Este vazamento expôs as seguintes informações pessoais.
+    Crie uma { -brand-fxa } gratuita para receber seu relatório completo de vazamentos anteriores, alertas de novos vazamentos
+    e informações sobre outros serviços da { -brand-Mozilla }.
+guest-fb-compromised-blurb-v2 =
+    { $breachCount ->
+        [one]
+            Este e-mail também apareceu em { $breachCount } outro vazamento. Crie uma { -brand-fxa } gratuita para receber seu relatório completo de vazamentos anteriores, alertas de novos vazamentos
+            e informações sobre outros serviços da { -brand-Mozilla }.
+       *[other]
+            Este e-mail também apareceu em { $breachCount } outros vazamentos. Crie uma { -brand-fxa } gratuita para receber seu relatório completo de vazamentos anteriores, alertas de novos vazamentos
+            e informações sobre outros serviços da { -brand-Mozilla }.
+    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Você não estava no vazamento de { $breachName }, mas encontramos este endereço de e-mail em outro.
@@ -256,6 +278,15 @@ user-generic-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Este e-mail não estava no vazamento de { $breachName }, mas foi encontrado em outro.
        *[other] Este e-mail não estava no vazamento de { $breachName }, mas foi encontrado em outros.
+    }
+guest-fb-not-compromised-blurb-v2 =
+    { $breachCount ->
+        [one]
+            Este e-mail não estava no vazamento de { $breachName }, mas foi encontrado em outro. 
+            Crie uma { -brand-fxa } gratuita para receber seu relatório completo de vazamentos anteriores, alertas de novos vazamentos e informações sobre outros serviços da { -brand-Mozilla }.
+       *[other]
+            Este e-mail não estava no vazamento de { $breachName }, mas foi encontrado em outros. 
+            Crie uma { -brand-fxa } gratuita para receber seu relatório completo de vazamentos anteriores, alertas de novos vazamentos e informações sobre outros serviços da { -brand-Mozilla }.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -312,3 +343,10 @@ fxa-what-to-do-blurb-4 =
 fb-landing-headline = Suas informações foram expostas no vazamento de dados de { $breachName }?
 copyright = Parcelas deste conteúdo são © 1999-{ $year } por colaboradores individuais do mozilla.org.
 content-available = Conteúdo disponível sob uma licença Creative Commons.
+# Alerts is a noun
+sign-up-for-alerts = Cadastre-se para receber alertas
+sign-up-for-fxa-alerts = Cadastre-se para receber alertas do { -product-name }.
+create-free-account =
+    Crie uma { -brand-fxa } gratuita para receber seu relatório completo de vazamentos anteriores,
+    alertas de novos vazamentos e informações sobre outros serviços da { -brand-Mozilla }.
+get-your-report-and-sign-up = Receba seu relatório e cadastre-se para receber alertas.
