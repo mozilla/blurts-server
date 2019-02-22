@@ -93,3 +93,5 @@ signup-banner-blurb =
 download-firefox-bar-blurb = { -product-name-nowrap } k'amon pe chawäch ruma ri <span class="nowrap">ronojel-k'ak'a' { -brand-name }</span>.
 download-firefox-bar-link = Tiqasäx { -brand-name } wakami
 download-firefox-banner-blurb = Tak'waj rub'ey ri akanob'al
+download-firefox-banner-button = Tiqasäx { -brand-name }
+signup-modal-headline = Tatz'ib'aj ab'i' richin { -product-name-nowrap }
