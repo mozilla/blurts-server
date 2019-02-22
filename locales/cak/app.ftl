@@ -111,3 +111,7 @@ sign-up = Tatz'ib'aj Awi'
 form-signup-error = K'o chi jun okel taqoya'l
 no-breaches-headline = K'a wakami, ronojel ütz.
 found-breaches-headline = Ri awetamab'al k'o pa jun chayub'äl tzij.
+no-breaches =
+    Man k'o ta ri rochochib'al ataqoya'l pa nab'ey ruk'u'x qatz'ajwachib'enik.
+    Ri ri' yalan jeb'ël rutzijol, xa xe chi ri chayub'äl taq tzij nitikïr nik'ulwachitäj xab'achike ramaj ruma ri', k'a k'o yatikïr nab'än.
+    Tatz'ib'aj ab'i' pa { -product-name-nowrap } richin jun tz'aqät rutzijol chuqa' rutzijol k'ayewal toq xkek'ulwachitäj k'ak'a' taq chayub'al chuqa' taq na'oj richin ye'achajij ri ewan taq atzij.
