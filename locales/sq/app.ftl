@@ -239,6 +239,64 @@ guest-scan-results-headline =
        *[other] Ky email u shfaq në { $breachCount } shkelje të dhënash.
     }
 user-no-breaches-blurb = Do t’ju njoftojmë nëse kjo adresë email shfaqet në shkelje të reja të dhënash.
+guest-no-breaches-blurb =
+    Që të shihni nëse ky email shfaqet në shkelje të deritashme të dhënash, krijoni një { -brand-fxa }. 
+    Do t’ju njoftojmë edhe nëse kjo adresë shfaqet në shkelje të reja të dhënash.
+user-one-breach-blurb = Kjo shkelje ekspozoi të dhënat vijuese personale.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Email-i juaj u shfaq edhe në { $breachCount } shkelje tjetër.
+       *[other] Email-i juaj u shfaq edhe në { $breachCount } shkelje të tjera.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Ky email u shfaq edhe në { $breachCount } shkelje tjetër.
+       *[other] Ky email u shfaq edhe në { $breachCount } shkelje të tjera.
+    }
+user-fb-compromised-single = Kjo shkelje ekspozoi të dhënat personale vijuese. Nëse s’e keni bërë tashmë, ndryshoni fjalëkalimet tuaj.
+user-generic-fb-compromised-single = Kjo shkelje ekspozoi të dhënat personale vijuese.
+guest-fb-compromised-single = Kjo shkelje ekspozoi të dhënat personale vijuese. Që të merrni raportin e plotë për të dhe sinjalizime rreth shkeljesh të reja, regjistrohuni për një { -brand-fxa }.
+guest-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Ky email u shfaq edhe në { $breachCount } shkelje tjetër. Që të merrni raportin e plotë për të dhe sinjalizime rreth shkeljesh të reja, regjistrohuni për një { -brand-fxa }.
+       *[other] Ky email u shfaq edhe në { $breachCount } shkelje të tjera. Që të merrni raportin e plotë për të dhe sinjalizime rreth shkeljesh të reja, regjistrohuni për një { -brand-fxa }.
+    }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Nuk gjendeshit në shkeljen { $breachName }, por e gjetëm atë adresë email në një tjetër.
+       *[other] Nuk gjendeshit në shkeljen { $breachName }, por e gjetëm atë adresë email në të tjera.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Ky email nuk gjendej në shkeljen { $breachName }, por e gjetëm në një tjetër.
+       *[other] Ky email nuk gjendej në shkeljen { $breachName }, por e gjetëm në të tjera.
+    }
+guest-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Ky email nuk gjendej në shkeljen { $breachName }, por e gjetëm në një tjetër. Që të merrni raportin e plotë për të dhe sinjalizime rreth shkeljesh të reja, regjistrohuni për një { -brand-fxa }.
+       *[other] Ky email nuk gjendej në shkeljen { $breachName }, por e gjetëm në të tjera. Që të merrni raportin e plotë për të dhe sinjalizime rreth shkeljesh të reja, regjistrohuni për një { -brand-fxa }.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] Kjo shkelje ekspozoi të dhënat personale vijuese. Nëse s’e keni bërë tashmë, ndryshoni fjalëkalimet tuaj.
+       *[other] Këto shkelje ekspozuan të dhënat personale vijuese. Nëse s’e keni bërë tashmë, ndryshoni fjalëkalimet tuaj.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Kjo shkelje ekspozoi të dhënat personale vijuese.
+       *[other] Këto shkelje ekspozuan të dhënat personale vijuese.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+guest-found-breaches-blurb =
+    { $breachCount ->
+        [one] Kjo shkelje ekspozoi të dhënat personale vijuese. Që të merrni raportin e plotë për të dhe sinjalizime rreth shkeljesh të reja, regjistrohuni për një { -brand-fxa }.
+       *[other] Këto shkelje ekspozuan të dhënat personale vijuese. Që të merrni raportin e plotë për të dhe sinjalizime rreth shkeljesh të reja, regjistrohuni për një { -brand-fxa }.
+    }
 have-an-account = Keni tashmë një llogari?
 fxa-what-to-do-blurb-3 =
     Shumica e shkeljeve ekspozojnë vetëm email-e dhe fjalëkalime, por disa përfshijnë edhe të dhëna financiare me spec. 
