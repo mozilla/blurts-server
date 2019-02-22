@@ -146,3 +146,14 @@ what-to-do-blurb-2 =
 what-to-do-subhead-3 = Jujun ruwi' taq xak yalan e k'atzinel richin ri ajpwäq kib'i' ataqoya'l.
 what-to-do-blurb-3 = K'ïy chi ke ri taq tz'ilanïk xa xe yekik'üt ri taq taqoya'l chuqa' ri ewan taq tzij, po k'o ri nikik'üt retamab'al pwaqil. We ri rajilab'al rub'i' rutaqoya'l apwaqb'al o t'impwäq xetz'aqatisäx pa ri tz'ilanïk, taya' rutzijol ri k'ayewal chi re ri apwaqb'al chi rik'in jub'a' xke'eleq' chuqa' tachajij xab'achike tojïk ri man awetaman ta chi xab'än.
 what-to-do-subhead-4 = Tak'ulu' to'ïk richin ye'atz'ük ütz ewan taq tzij chuqa' chi ütz kechajïx.
+what-to-do-blurb-4 =
+    Kinuk'samajel ewan taq tzij achi'el 1Password, LastPass, Dashlane, chuqa' Bitwarden yekitz'ük' utziläj ewan taq tzij,
+    yekiyäk chuqa' yekokisaj pa ri ajk'amaya'l ruxaq awichin rat.
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = Ruq'ijul tz'ilanïk:
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Tz'ilan rub'i' taq taqoya'l:
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Tz'ilan taq tzij:
+confirmed = ¡Jikib'an!<br />¡Xtz'ib'äx Ab'i'!
+confirmed-blurb = { -product-name-nowrap } pa jun ti ramaj xtutäq jun taqoya'l chawe' rik'in jun tz'aqät rutzijol chuqa' xtutäq jun rutzijol ruk'ayewal ataqoya'l we ri rub'i' ataqoya'l niwachin pa jun k'ak'a' rutzijol tz'ilanïk.
