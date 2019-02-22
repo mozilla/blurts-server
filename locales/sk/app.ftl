@@ -19,6 +19,7 @@ about-firefox-alerts = O upozorneniach vo Firefoxe
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Poskytnúť spätnú väzbu
 terms-and-privacy = Podmienky a ochrana súkromia
+error-scan-page-token = Vo veľmi krátkom čase ste sa pokúsili skontrolovať príliš mnoho e-mailových adries. Z bezpečnostných dôvodov sme vám ďalšie vyhľadávanie dočasne zablokovali. Skúste to, prosím, neskôr.
 error-could-not-add-email = E-mailovú adresu sa nepodarilo pridať do databázy.
 error-not-subscribed = Táto e-mailová adresa nie je prihlásená na odber zo služby { -product-name }.
 error-hibp-throttled = Príliš mnoho spojení k službe { -brand-HIBP }.
@@ -191,11 +192,6 @@ download-firefox-mobile = Prevziať { -brand-name } pre mobil
 features = Funkcie
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    Časti tohoto obsahu sú &#x24B8; 1998-2018 individuálnymi prispievateľmi mozilla.org. <br />
-    Obsah je dostupný v rámci licencie <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">Creative Commons</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Údaje o únikoch poskytuje { $hibp-link }
 site-description = Boli vaše účty súčasťou úniku? { -product-name } to zistí. Prehľadajte databázu a prihláste sa na odber upozornení.
@@ -209,5 +205,16 @@ share-facebook-headline = Zistite, či boli vaše údaje súčasťou nejakého �
 share-facebook-blurb = Bol niektorý z vašich účtov súčasťou nejakého úniku dát?
 og-site-description = { -product-name } zistí, či boli vaše dáta súčasťou nejakého úniku. Pre väčšiu bezpečnosť sa taktiež prihláste k zasielaniu výstrah o únikoch v budúcnosti.
 mozilla-security-blog = Bezpečnostný blog organizácie { -brand-Mozilla }
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Sociálne siete
+show-all = Zobraziť všetko
+fxa-welcome-headline = Víta vás { -product-name }.
 sign-in = Prihlásiť sa
 sign-out = Odhlásiť sa
+full-report-headline = Vaša správa zo služby { -product-name }
+see-full-report = Zobraziť kompletnú správu
+fxa-download-firefox-bar-link = Prevziať
+fxa-download-firefox-banner-blurb = Lepšie a rýchlejšie načítavanie stránok, ktoré zaberá menej pamäte počítača.
+have-an-account = Už ho máte?
+copyright = Časť tohto obsahu bola v rokoch © 1999 - { $year } vytvorená individuálnymi prispievateľmi mozilla.org.
+content-available = Obsah je dostupný v rámci licencie Creative Commons.
