@@ -268,6 +268,17 @@ user-generic-fb-not-compromised-blurb =
         [one] Denna e-postadress var inte med i intrånget { $breachName }, men hittades i en annan.
        *[other] Denna e-postadress var inte med i intrånget { $breachName }, men hittades i andra.
     }
+guest-fb-not-compromised-blurb-v2 =
+    { $breachCount ->
+        [one]
+            Denna e-postadress var inte med i  { $breachName }, men hittades i en annan.
+            Skapa ett gratis { -brand-fxa } för din fullständiga rapport om tidigare intrång,
+            nya intrångsvarningar och information om andra { -brand-Mozilla }-tjänster.
+       *[other]
+            Denna e-postadress var inte med i  { $breachName }, men hittades andra.
+            Skapa ett gratis { -brand-fxa } för din fullständiga rapport om tidigare intrång,
+            nya intrångsvarningar och information om andra { -brand-Mozilla }-tjänster.
+    }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
 user-found-breaches-blurb =
