@@ -1,7 +1,11 @@
-<button class="button sign-up-button" id="sign-up">
-  {{#ifCompare foundBreaches.length "===" 0}}
-    {{fluentFormat req.supportedLocales "sign-up-for-alerts"}}
+<button class="button sign-up-button" id="sign-up" data-event-category="Sign Up Button" {{>analytics/fxa id="fx-monitor-sign-up-button"}}>
+  {{#if FXA_ENABLED}}
+    {{#ifCompare foundBreaches.length "===" 0}}
+      {{fluentFormat req.supportedLocales "sign-up-for-alerts"}}
+    {{else}}
+      {{fluentFormat req.supportedLocales "sign-up"}}
+    {{/ifCompare}}
   {{else}}
-    {{fluentFormat req.supportedLocales "sign-up"}}
-  {{/ifCompare}}
+    {{fluentFormat req.supportedLocales "get-your-report"}}
+  {{/if}}
 </button>

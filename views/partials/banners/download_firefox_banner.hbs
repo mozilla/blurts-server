@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="third">
-      <a {{> analytics/download_event eventLabel="Quantum - Page Banner"}} class="button download" href="https://www.mozilla.org/firefox/new/?utm_source={{ UTM_SOURCE }}&utm_medium=referral&utm_campaign=fx_monitor_downloads&utm_content=download_banner" target="_blank" rel="noopener">{{fluentFormat req.supportedLocales "download-firefox-banner-button"}}</a>
+      <a id="dl-fx-banner" data-event-category="Download Firefox Banner" class="button download" href="https://www.mozilla.org/firefox/new/?utm_source={{ UTM_SOURCE }}&utm_medium=referral&utm_campaign=fx_monitor_downloads&utm_content=download_banner" target="_blank" rel="noopener">{{fluentFormat req.supportedLocales "download-firefox-banner-button"}}</a>
     </div>
   </div>
 </section>
@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="third">
-        <a {{> analytics/download_event eventLabel="Quantum - Page Banner"}} class="button" href="https://www.mozilla.org/firefox/new/?utm_source={{ UTM_SOURCE }}&utm_medium=referral&utm_campaign=fx_monitor_downloads&utm_content=download_banner" target="_blank" rel="noopener">{{fluentFormat req.supportedLocales "download-firefox-banner-button"}}</a>
+        <a id="dl-fx-banner" {{> analytics/download_event eventLabel="Quantum - Page Banner"}} data-event-category="Download Firefox Banner" class="button" href="https://www.mozilla.org/firefox/new/?utm_source={{ UTM_SOURCE }}&utm_medium=referral&utm_campaign=fx_monitor_downloads&utm_content=download_banner" target="_blank" rel="noopener">{{fluentFormat req.supportedLocales "download-firefox-banner-button"}}</a>
       </div>
     </div>
   </section>

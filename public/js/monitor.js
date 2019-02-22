@@ -1,6 +1,7 @@
 "use strict";
 /* global ga */
 /* global libpolycrypt */
+/* global sendPing */
 
 
 if (typeof TextEncoder === "undefined") {
@@ -65,7 +66,7 @@ const eventList = {
   },
 };
 
-// determines which page the event occurs and is sent to google analytics in ga_sendPing() as the eventLabel or custom dimension.
+// determines which page the event occurs and is sent to google analytics in ga_sendLegacyPing() as the eventLabel or custom dimension.
 
 function ga_getLocation() {
   if (document.querySelector(".landing-content")) {
@@ -99,7 +100,7 @@ function ga_getLocation() {
 }
 
 
-function ga_sendPing(eventDescription, eventLabel) {
+function ga_sendLegacyPing(eventDescription, eventLabel) {
   if (typeof(ga) !== "undefined") {
     const event = eventList[eventDescription];
     const eventCategory = event["eventCategory"];
@@ -189,14 +190,20 @@ function openModalWindow() {
   if (subscribeModal.classList.contains("fxa-enabled")) {
     return;
   }
+  const modalForm = document.getElementById("subscribe-form");
+  sendPing(modalForm, "View");
+  document.getElementById("modal-terms").addEventListener("click", ()=> {
+    sendPing(modalForm, "Terms Engage");
+  });
   document.getElementById("subscribe-form").classList.remove("loading-data");
   subscribeModal.addEventListener("transitionend", (e) => focusFirstInput(e));
   subscribeModal.addEventListener("click", function closeWrapper(e) {
     if (e.target === subscribeModal) {
       if (document.getElementById("subscribe-to-ffxm").classList.contains("show")) {
-        ga_sendPing("CloseModal", "Clicked outside modal to close - Before Sign Up");
+        sendPing(modalForm, "Cancel");
+        ga_sendLegacyPing("CloseModal", "Clicked outside modal to close - Before Sign Up");
       } else {
-        ga_sendPing("CloseModal", "Clicked outside modal to close - After Sign Up");
+        ga_sendLegacyPing("CloseModal", "Clicked outside modal to close - After Sign Up");
       }
       closeModalWindow();
       document.getElementById("subscribe-modal").removeEventListener("click", closeWrapper);
@@ -243,17 +250,18 @@ async function sha1(message) {
 
 async function hashEmailAndSend(emailFormSubmitEvent) {
   const emailForm = emailFormSubmitEvent.target;
-  ga_sendPing("Scan", false);
+  ga_sendLegacyPing("Scan", false);
   emailForm.classList.add("loading-data");
   const emailInput = document.getElementById("scan-email");
   emailForm.querySelector("input[name=emailHash]").value = await sha1(emailInput.value);
   localStorage.setItem("scanned", emailInput.value);
   emailInput.value = "";
+  sendPing(emailForm, "Success");
   emailForm.submit();
 }
 
 const resendSubscribeData = function() {
-  ga_sendPing("Resend", false);
+  ga_sendLegacyPing("Resend", false);
   document.getElementById("confirm-your-account").classList.add("sending");
   const userEmail = {
     "email": document.getElementById("submitted-email").textContent,
@@ -286,7 +294,7 @@ const addUser = (formEvent) => {
 
 const unsubscribeSurvey = (formEvent) => {
   const unsubSurvey = formEvent.target;
-  ga_sendPing("UnsubscribeSurvey", unsubSurvey.querySelector("input[type='radio']:checked").dataset.analyticsLabel);
+  ga_sendLegacyPing("UnsubscribeSurvey", unsubSurvey.querySelector("input[type='radio']:checked").dataset.analyticsLabel);
   const surveyObject = {};
   postData(unsubSurvey.action, surveyObject)
     .then( () => {
@@ -346,6 +354,21 @@ function addFormListeners() {
     if (form.querySelector("input[type=email]")) {
       const emailInput = form.querySelector("input[type=email]");
       emailInput.addEventListener("keydown", (e) => removeInvalidMessage(e));
+      // legacy update: send ping on first keydown for subscribe forms
+      if (form.id === "subscribe-form") {
+          emailInput.addEventListener("keydown", () => {
+            if (emailInput.value === "") {
+              sendPing(form, "Engage");
+            }
+          });
+      } else {
+        // send ping when user focuses cursor in empty input
+        emailInput.addEventListener("focus", () => {
+          if (emailInput.value === "") {
+            sendPing(form, "Engage");
+          }
+        });
+      }
     }
     if (form.querySelector("input[type=checkbox]")) {
       const checkBoxWrapper = form.querySelector(".checkbox-group");
@@ -362,7 +385,7 @@ function addFormListeners() {
 
 function handleFormSubmits(formEvent) {
   if (formEvent.target.id === "unsubscribe-form") {
-    ga_sendPing("Unsubscribe", false);
+    ga_sendLegacyPing("Unsubscribe", false);
     return;
   }
   formEvent.preventDefault();
@@ -378,7 +401,9 @@ function handleFormSubmits(formEvent) {
   const thisForm = formEvent.target;
   const email = thisForm.email.value.trim();
   thisForm.email.value = email;
+  sendPing(thisForm, "Submit");
   if (!email || !isValidEmail(email)) {
+    sendPing(thisForm, "Failure");
     thisForm.classList.add("invalid");
     return;
   }
@@ -390,27 +415,28 @@ function handleFormSubmits(formEvent) {
     formEvent.target.classList.add("loading-data");
     addUser(formEvent);
     setModalTabbing();
-    ga_sendPing("SignUp_Complete", false);
+    sendPing(formEvent.target, "Success");
+    ga_sendLegacyPing("SignUp_Complete", false);
     return;
   }
   formEvent.submit();
   return;
 }
 
-function doButtonRouting(event) {
+async function doButtonRouting(event) {
   if (document.body.dataset.fxaEnabled === "fxa-enabled") {
-    if (event.target.id === "sign-up" || event.target.id === "login-btn" || event.target.classList.contains("open-oauth")) {
+    if (event.target.classList.contains("sign-up-button") || event.target.id === "login-btn" || event.target.classList.contains("open-oauth")) {
       return doOauth();
     }
   } else {
     if (event.target.id === "sign-up") {
-      ga_sendPing("SignUp", false);
+      ga_sendLegacyPing("SignUp", false);
       openModalWindow();
       return;
     }
   }
   if (event.target.id === "show-additional-breaches") {
-    ga_sendPing("ShowAdditional", false);
+    ga_sendLegacyPing("ShowAdditional", false);
     return showAdditionalBreaches();
   }
   if (event.target.id === "subscribe-fxa-btn") {
@@ -419,7 +445,7 @@ function doButtonRouting(event) {
     return;
   }
   if (event.target.classList.contains("close-modal")) {
-    ga_sendPing("CloseModal", event.target.dataset.analyticsLabel);
+    ga_sendLegacyPing("CloseModal", event.target.dataset.analyticsLabel);
     closeModalWindow();
     return;
   }
@@ -479,7 +505,7 @@ const toggleMobileFeatures = function() {
 document.addEventListener("touchstart", function(){}, true);
 
 window.addEventListener("pageshow", function() {
-  ga_sendPing("Pageview", false);
+  ga_sendLegacyPing("Pageview", false);
 
   if (window.location.search.includes("utm_") && window.history.replaceState) {
     window.history.replaceState({}, "", window.location.toString().replace(/[?&]utm_.*/g, ""));
@@ -507,13 +533,15 @@ if (document.getElementById("subpage")) {
 }
 
 if (document.getElementById("latest-breaches") || document.getElementById("no-breaches")) {
-  document.getElementById("scan-another-email").classList.add("banner");
+  if (document.getElementById("scan-another-email")) {
+    document.getElementById("scan-another-email").classList.add("banner");
+  }
 }
 
 // collect ping triggering elements, attach listeners
 document.querySelectorAll("[data-analytics-event]").forEach(el => {
   el.addEventListener("click", (e) => {
-    ga_sendPing(e.target.dataset.analyticsEvent, e.target.dataset.analyticsLabel);
+    ga_sendLegacyPing(e.target.dataset.analyticsEvent, e.target.dataset.analyticsLabel);
   });
 });
 

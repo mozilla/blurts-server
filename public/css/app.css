@@ -918,8 +918,17 @@ main.scan-results .section-wrapper .half {
   justify-content: flex-start;
 }
 
+main.scan-results .breach-container .half.listings {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.half.listings .wrap-row {
+  align-items: flex-start;
+}
+
 main #featured-breach {
-  margin: auto;
+  margin: 0 auto auto auto;
 }
 
 /* BREACH LISTING */
@@ -1819,10 +1828,6 @@ form.show-thankyou span.thank-you-message {
   main.scan-results div.half.no-found-breaches {
     margin-bottom: 0;
     padding-bottom: var(--gap);
-  }
-
-  main .section-wrapper div.half.listings {
-    padding-top: 0;
   }
 
   header .social-media-sharing-buttons {

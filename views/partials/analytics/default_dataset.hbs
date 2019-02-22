@@ -1,0 +1,10 @@
+data-server-url="{{ SERVER_URL }}"
+
+{{#if FXA_ENABLED}}
+  {{#if req.session.user}}
+    data-signed-in-user="true";
+  {{else}}
+    data-signed-in-user="false";
+  {{/if}}
+  data-fxa-enabled="fxa-enabled"
+{{/if}}
