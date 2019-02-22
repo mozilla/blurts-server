@@ -291,3 +291,4 @@ content-available = 内容遵循知识共享许可协议进行授权。
 # Alerts is a noun
 sign-up-for-alerts = 注册以获取警报。
 sign-up-for-fxa-alerts = 注册以获取 { -product-name } 警报。
+create-free-account = 创建一个免费的 { -brand-fxa }，用于获取过往外泄事件的完整报告，接收新外泄事件的警报及其他 { -brand-Mozilla } 服务的信息。
