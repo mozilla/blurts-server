@@ -135,8 +135,7 @@ confirmed-social-blurb = 若您的資料遭到外洩，很有可能您的朋友�
 unsub-headline = 取消訂閱 { -product-name-nowrap }
 unsub-blurb = 將會從 { -product-name-nowrap } 郵寄清單把您的信箱移除，您不會再於有新的資料外洩事件發生時收到警報。
 unsub-button = 取消訂閱
-unsub-survey-headline = 您已退訂成功。
-unsub-survey-blurb = 您已取消訂閱 { -product-name-nowrap }，感謝使用此服務。您願意花點時間回答關於使用經驗的意見調查嗎？
+fxa-unsub-headline = 取消訂閱 { -product-name } 警報。
 unsub-survey-form-label = 您為什麼要退訂 { -product-name-nowrap } 警報？
 unsub-reason-1 = 我覺得這些警報不會讓我的資料更安全
 unsub-reason-2 = 我收到太多來自 { -product-name-nowrap } 的郵件
@@ -172,8 +171,6 @@ mozilla-security-blog = { -brand-Mozilla } 安全性部落格
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = 社交網路
 show-all = 顯示全部
-fxa-signup-banner-headline = 監控您的線上帳號所遇到的威脅。
-fxa-signup-banner-blurb = 註冊 { -brand-fxa } 即可收到與您有關的新資料洩漏事件的詳細報告。
 fxa-landing-blurb = 看看駭客已經掌握您的哪些資料，並且了解如何遠離他們。
 fxa-scan-label = 看看您是否有資料已遭洩漏。
 fxa-welcome-headline = 歡迎使用 { -product-name }。
@@ -218,11 +215,6 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = 此次資料洩漏事件包含下列個資。請盡快修改密碼。
 user-generic-fb-compromised-single = 此次資料洩漏事件包含下列個資。
-guest-fb-compromised-single = 此次資料洩漏事件包含下列個資。註冊 { -brand-fxa } 即可取得完整的事件報告，並在未來有新的洩露事件時通知您。
-guest-fb-compromised-blurb =
-    { $breachCount ->
-       *[other] 此電子郵件地址也出現於另 { $breachCount } 場資料洩露事件中。註冊 { -brand-fxa } 即可取得完整的事件報告，並在未來有新的洩露事件時通知您。
-    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
        *[other] 您未出現於 { $breachName } 洩露事件中，但我們在其他事件發現該電子郵件地址。
@@ -230,10 +222,6 @@ user-fb-not-compromised-blurb =
 user-generic-fb-not-compromised-blurb =
     { $breachCount ->
        *[other] 此電子郵件地址未出現於 { $breachName } 洩露事件中，但我們在其他事件發現該地址。
-    }
-guest-fb-not-compromised-blurb =
-    { $breachCount ->
-       *[other] 此電子郵件地址未出現於 { $breachName } 洩露事件中，但我們在其他事件發現該地址。註冊 { -brand-fxa } 即可取得完整的事件報告，並在未來有新的洩露事件時通知您。
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -246,12 +234,6 @@ user-found-breaches-blurb =
 user-generic-found-breaches-blurb =
     { $breachCount ->
        *[other] 以下 { $breachCount } 場資料洩露事件包含下列個資。
-    }
-# While English doesn’t use the actual number of breaches in this sentence,
-# you can use {$breachCount} to display the number of breaches in your localization.
-guest-found-breaches-blurb =
-    { $breachCount ->
-       *[other] 以下 { $breachCount } 場資料洩露事件包含下列個資。註冊 { -brand-fxa } 即可取得完整的事件報告，並在未來有新的洩露事件時通知您。
     }
 have-an-account = 已經有帳號了嗎？
 signup-banner-sensitive-blurb = 看看駭客已經掌握您的哪些資料，並且了解如何遠離他們。我們也會在此信箱出現於新的資料洩露事件時通知您。
