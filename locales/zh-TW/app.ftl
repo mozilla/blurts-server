@@ -136,6 +136,10 @@ unsub-headline = 取消訂閱 { -product-name-nowrap }
 unsub-blurb = 將會從 { -product-name-nowrap } 郵寄清單把您的信箱移除，您不會再於有新的資料外洩事件發生時收到警報。
 unsub-button = 取消訂閱
 fxa-unsub-headline = 取消訂閱 { -product-name } 警報。
+fxa-unsub-blurb =
+    您將不再收到 { -product-name } 警報。
+    您的 { -brand-fxa } 帳號依然存在，而且可能還會
+    收到其他帳號相關訊息。
 unsub-survey-form-label = 您為什麼要退訂 { -product-name-nowrap } 警報？
 unsub-reason-1 = 我覺得這些警報不會讓我的資料更安全
 unsub-reason-2 = 我收到太多來自 { -product-name-nowrap } 的郵件
@@ -145,6 +149,11 @@ unsub-reason-5 = 我使用其他服務來監控我的帳號
 unsub-reason-6 = 以上皆非
 unsub-survey-thankyou = 感謝您的意見回饋！
 unsub-survey-error = 請選擇。
+unsub-survey-headline-v2 = 您已退訂成功。
+unsub-survey-blurb-v2 =
+    您將不再收到 { -product-name } 警報。
+    方便花一點時間告訴我們您的使用體驗嗎？
+unsub-survey-button = 送出回應
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = 分享
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -172,9 +181,9 @@ mozilla-security-blog = { -brand-Mozilla } 安全性部落格
 layout-social = 社交網路
 show-all = 顯示全部
 fxa-landing-blurb = 看看駭客已經掌握您的哪些資料，並且了解如何遠離他們。
-fxa-scan-label = 看看您是否有資料已遭洩漏。
+fxa-scan-label = 看看您是否有資料已遭外洩。
 fxa-welcome-headline = 歡迎使用 { -product-name }。
-fxa-welcome-blurb = 一切都搞定了。若 { $userEmail } 出現在資料洩漏事件中，我們會通知您。
+fxa-welcome-blurb = 一切都搞定了。若 { $userEmail } 出現在資料外洩事件中，我們會通知您。
 fxa-scan-another-email = 想要檢查另一個電子郵件地址嗎？
 # Search Firefox Monitor
 fxa-scan-submit = 搜尋 { -product-name }
@@ -188,40 +197,52 @@ manage-fxa = 管理 { -brand-fxa }
 fxa-download-firefox-bar-blurb = 由 { -brand-name } 提供給您。比起 { -brand-Chrome } 上網速度快上兩倍，記憶體使用量只要七折。
 fxa-download-firefox-bar-link = 立刻下載
 fxa-download-firefox-banner-blurb = 更好、更快的網頁載入速度，占用的記憶體也更少。
-user-fb-compromised-headline = { $userEmail } 有出現於 { $breachName } 的資料洩露事件中。
-guest-fb-compromised-headline = 此電子郵件地址有出現於 { $breachName } 的資料洩露事件中。
-user-zero-breaches-headline = { $userEmail } 未出現於任何資料洩露事件。
-guest-zero-breaches-headline = 此電子郵件地址未出現於任何資料洩露事件。
+user-fb-compromised-headline = { $userEmail } 有出現於 { $breachName } 的資料外洩事件中。
+guest-fb-compromised-headline = 此電子郵件地址有出現於 { $breachName } 的資料外洩事件中。
+user-zero-breaches-headline = { $userEmail } 未出現於任何資料外洩事件。
+guest-zero-breaches-headline = 此電子郵件地址未出現於任何資料外洩事件。
 user-scan-results-headline =
     { $breachCount ->
-       *[other] { $userEmail } 出現於 { $breachCount } 場資料洩露事件中。
+       *[other] { $userEmail } 出現於 { $breachCount } 場資料外洩事件中。
     }
 guest-scan-results-headline =
     { $breachCount ->
-       *[other] 此電子郵件地址出現於 { $breachCount } 場資料洩露事件中。
+       *[other] 此電子郵件地址出現於 { $breachCount } 場資料外洩事件中。
     }
-user-no-breaches-blurb = 若此電子郵件地址出現在新的資料洩漏事件中，我們會通知您。
+user-no-breaches-blurb = 若此電子郵件地址出現在新的資料外洩事件中，我們會通知您。
 guest-no-breaches-blurb =
-    若想知道此電子郵件地址是否出現在包含敏感資料的洩漏事件當中，請註冊 { -brand-fxa }。
-    我們也會在此信箱出現於新的資料洩露事件時通知您。
-user-one-breach-blurb = 此次資料洩漏事件包含下列個資。
+    若想知道此電子郵件地址是否出現在包含敏感資料的個資外洩事件當中，請註冊 { -brand-fxa }。
+    我們也會在此信箱出現於新的外洩事件時通知您。
+user-one-breach-blurb = 此次資料外洩事件包含下列個資。
 user-fb-compromised-blurb =
     { $breachCount ->
-       *[other] 您的電子郵件地址也出現於另 { $breachCount } 場資料洩露事件中。
+       *[other] 您的電子郵件地址也出現於另 { $breachCount } 場資料外洩事件中。
     }
 user-generic-fb-compromised-blurb =
     { $breachCount ->
-       *[other] 此電子郵件地址也出現於另 { $breachCount } 場資料洩露事件中。
+       *[other] 此電子郵件地址也出現於另 { $breachCount } 場資料外洩事件中。
     }
-user-fb-compromised-single = 此次資料洩漏事件包含下列個資。請盡快修改密碼。
-user-generic-fb-compromised-single = 此次資料洩漏事件包含下列個資。
+user-fb-compromised-single = 此次資料外洩事件包含下列個資。請盡快修改密碼。
+user-generic-fb-compromised-single = 此次資料外洩事件包含下列個資。
+guest-fb-compromised-single-v2 =
+    此事件外洩了下列個人資訊。
+    註冊免費的 { -brand-fxa } 即可收到關於您的資料外洩事件
+    的完整報告，及其他 { -brand-Mozilla } 服務的相關資訊。
+guest-fb-compromised-blurb-v2 =
+    { $breachCount ->
+       *[other] 此電子郵件地址也出現於另 { $breachCount } 場資料外洩事件中。註冊免費的 { -brand-fxa } 即可收到關於您的資料外洩事件的完整報告，及其他 { -brand-Mozilla } 服務的相關資訊。
+    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
-       *[other] 您未出現於 { $breachName } 洩露事件中，但我們在其他事件發現該電子郵件地址。
+       *[other] 您未出現於 { $breachName } 外洩事件中，但我們在其他事件發現該電子郵件地址。
     }
 user-generic-fb-not-compromised-blurb =
     { $breachCount ->
-       *[other] 此電子郵件地址未出現於 { $breachName } 洩露事件中，但我們在其他事件發現該地址。
+       *[other] 此電子郵件地址未出現於 { $breachName } 外洩事件中，但我們在其他事件發現該地址。
+    }
+guest-fb-not-compromised-blurb-v2 =
+    { $breachCount ->
+       *[other] 此電子郵件地址不在 { $breachName } 的資料外洩事件中，但有出現在其他事件。註冊免費的 { -brand-fxa } 即可收到關於您的資料洩漏事件的完整報告，及其他 { -brand-Mozilla } 服務的相關資訊。
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -250,3 +271,8 @@ fxa-what-to-do-blurb-4 = 諸如 1Password、LastPass、Dashlane、Bitwarden 等�
 fb-landing-headline = 您的資訊是否也出現在 { $breachName } 的資料洩露事件中？
 copyright = 本頁的部分內容著作權為 ©1999–{ $year } 由個別 mozilla.org 貢獻者所有。
 content-available = 使用創用 CC 授權條款授權大眾使用。
+# Alerts is a noun
+sign-up-for-alerts = 訂閱警報
+sign-up-for-fxa-alerts = 訂閱 { -product-name } 警報。
+create-free-account = 註冊免費的 { -brand-fxa } 即可收到關於您的資料洩漏事件的完整報告，及其他 { -brand-Mozilla } 服務的相關資訊。
+get-your-report-and-sign-up = 取得報告並訂閱警報通知。
