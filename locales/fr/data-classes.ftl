@@ -65,6 +65,7 @@ nationalities = nationalités
 net-worths = valeurs nettes
 nicknames = surnoms
 occupations = professions
+parenting-plans = ententes parentales
 partial-credit-card-data = données partielles de cartes bancaires
 passport-numbers = numéros de passeport
 password-hints = indices de mots de passe
