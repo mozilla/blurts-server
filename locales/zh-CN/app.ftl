@@ -163,6 +163,9 @@ unsub-headline = 退订 { -product-name-nowrap }
 unsub-blurb = 这将使您的电子邮件地址移出 { -product-name-nowrap } 列表，在发生新的数据外泄事件时，您将不再收到警报。
 unsub-button = 退订
 fxa-unsub-headline = 退订 { -product-name } 警报。
+fxa-unsub-blurb =
+    您将不再收到 { -product-name } 警报。
+    您的 { -brand-fxa }将保持活跃状态，并可能收到其他与账户有关的通讯。
 unsub-survey-form-label = 为什么您退订了 { -product-name-nowrap } 警报？
 unsub-reason-1 = 我觉得那些警报不会让我的数据更安全
 unsub-reason-2 = 我收到了太多的 { -product-name-nowrap } 的邮件
@@ -173,6 +176,10 @@ unsub-reason-6 = 以上皆非
 unsub-survey-thankyou = 感谢您的反馈。
 unsub-survey-error = 请选择一项。
 unsub-survey-headline-v2 = 您已成功退订。
+unsub-survey-blurb-v2 =
+    您将不再收到 { -product-name } 警报。
+    您愿意花点时间回答一则有关使用体验的问题吗？
+unsub-survey-button = 提交回答
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = 分享
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -305,3 +312,4 @@ content-available = 内容遵循知识共享许可协议进行授权。
 sign-up-for-alerts = 注册以获取警报。
 sign-up-for-fxa-alerts = 注册以获取 { -product-name } 警报。
 create-free-account = 创建一个免费的 { -brand-fxa }，用于获取过往外泄事件的完整报告，接收新外泄事件的警报及其他 { -brand-Mozilla } 服务的信息。
+get-your-report-and-sign-up = 获取您的报告并订阅警报通知。
