@@ -39,6 +39,7 @@ email-messages = messages électroniques
 employers = employeurs
 ethnicities = origines ethniques
 family-members-names = noms des membres de la famille
+family-plans = régimes familiaux
 family-structure = structure familiale
 financial-investments = investissements financiers
 financial-transactions = transactions financières
