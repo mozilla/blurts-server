@@ -269,6 +269,27 @@ guest-fb-compromised-single-v2 =
     Roedd y tor-data hwn yn amlygu'r wybodaeth bersonol ganlynol.
     Crëwch { -brand-fxa } am ddim ar gyfer eich adroddiad llawn o dor-data yn y gorffennol, rhybuddion tor-data newydd,
     a gwybodaeth am wasanaethau { -brand-Mozilla } eraill.
+guest-fb-compromised-blurb-v2 =
+    { $breachCount ->
+        [zero]
+            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall. Crëwch { -brand-fxa } am ddim ar gyfer eich adroddiad llawn o dor-data'r gorffennol, 
+            rhybuddion tor-data newydd, a gwybodaeth am wasanaethau { -brand-Mozilla } eraill.
+        [one]
+            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall. Crëwch { -brand-fxa } am ddim ar gyfer eich adroddiad llawn o dor-data'r gorffennol, 
+            rhybuddion tor-data newydd, a gwybodaeth am wasanaethau { -brand-Mozilla } eraill.
+        [two]
+            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall. Crëwch { -brand-fxa } am ddim ar gyfer eich adroddiad llawn o dor-data'r gorffennol, 
+            rhybuddion tor-data newydd, a gwybodaeth am wasanaethau { -brand-Mozilla } eraill.
+        [few]
+            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall. Crëwch { -brand-fxa } am ddim ar gyfer eich adroddiad llawn o dor-data'r gorffennol, 
+            rhybuddion tor-data newydd, a gwybodaeth am wasanaethau { -brand-Mozilla } eraill.
+        [many]
+            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall. Crëwch { -brand-fxa } am ddim ar gyfer eich adroddiad llawn o dor-data'r gorffennol, 
+            rhybuddion tor-data newydd, a gwybodaeth am wasanaethau { -brand-Mozilla } eraill.
+       *[other]
+            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall. Crëwch { -brand-fxa } am ddim ar gyfer eich adroddiad llawn o dor-data'r gorffennol, 
+            rhybuddion tor-data newydd, a gwybodaeth am wasanaethau { -brand-Mozilla } eraill.
+    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
         [zero] Nid oeddech ar dor-data { $breachName }, ond rydym wedi canfod y cyfeiriad e-bost mewn un arall.
@@ -286,6 +307,15 @@ user-generic-fb-not-compromised-blurb =
         [few] Nid oedd yr e-bost hwn yn y tor-data { $breachName }, ond fe'i cafwyd mewn rhai eraill.
         [many] Nid oedd yr e-bost hwn yn y tor-data { $breachName }, ond fe'i cafwyd mewn rhai eraill.
        *[other] Nid oedd yr e-bost hwn yn y tor-data { $breachName }, ond fe'i cafwyd mewn rhai eraill.
+    }
+guest-fb-not-compromised-blurb-v2 =
+    { $breachCount ->
+        [zero] Nid oedd yr e-bost hwn yn nhor-datar { $breachName }, ond fe'i canfuwyd mewn un arall. Crëwch { -brand-fxa } am ddim ar gyfer eich adroddiad llawn o dor-data'r gorffennol, rhybuddion tor-data newydd, a gwybodaeth am wasanaethau { -brand-Mozilla } eraill.
+        [one] Nid oedd yr e-bost hwn yn nhor-datar { $breachName }, ond fe'i canfuwyd mewn un arall. Crëwch { -brand-fxa } am ddim ar gyfer eich adroddiad llawn o dor-data'r gorffennol, rhybuddion tor-data newydd, a gwybodaeth am wasanaethau { -brand-Mozilla } eraill.
+        [two] Nid oedd yr e-bost hwn yn nhor-datar { $breachName }, ond fe'i canfuwyd mewn rhai eraill. Crëwch { -brand-fxa } am ddim ar gyfer eich adroddiad llawn o dor-data'r gorffennol, rhybuddion tor-data newydd, a gwybodaeth am wasanaethau { -brand-Mozilla } eraill.
+        [few] Nid oedd yr e-bost hwn yn nhor-datar { $breachName }, ond fe'i canfuwyd mewn rhai eraill. Crëwch { -brand-fxa } am ddim ar gyfer eich adroddiad llawn o dor-data'r gorffennol, rhybuddion tor-data newydd, a gwybodaeth am wasanaethau { -brand-Mozilla } eraill.
+        [many] Nid oedd yr e-bost hwn yn nhor-datar { $breachName }, ond fe'i canfuwyd mewn rhai eraill. Crëwch { -brand-fxa } am ddim ar gyfer eich adroddiad llawn o dor-data'r gorffennol, rhybuddion tor-data newydd, a gwybodaeth am wasanaethau { -brand-Mozilla } eraill.
+       *[other] Nid oedd yr e-bost hwn yn nhor-datar { $breachName }, ond fe'i canfuwyd mewn rhai eraill. Crëwch { -brand-fxa } am ddim ar gyfer eich adroddiad llawn o dor-data'r gorffennol, rhybuddion tor-data newydd, a gwybodaeth am wasanaethau { -brand-Mozilla } eraill.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
