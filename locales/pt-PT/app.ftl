@@ -164,13 +164,14 @@ compromised-data = Dados comprometidos:
 confirmed = Confirmado!<br />Está subscrito(a)!
 confirmed-blurb = O { -product-name-nowrap } irá enviar-lhe por email um relatório completo, e irá enviar um alerta por email se a sua conta aparecer numa nova brecha relatada.
 confirmed-social-blurb = Se tiver sido vítima de brechas, as chances dos seus amigos, familiares ou conexões online de o terem sido são grandes. Deixe-os saber acerca do { -product-name-nowrap }.
-unsub-headline = Cancelar a subscrição do { -product-name-nowrap }
+unsub-headline = Cancelar subscrição de { -product-name-nowrap }
 unsub-blurb = Isto irá remover o seu email da lista do { -product-name-nowrap } e não irá receber mais alertas quando novas brechas são anunciadas.
 unsub-button = Cancelar subscrição
-unsub-survey-headline = Já não está subscrito(a).
-unsub-survey-blurb =
-    O seu email foi cancelado da subscrição do { -product-name-nowrap }. Obrigado por uitilizar este serviço.
-    Tem um momento para responder a uma pergunta acerca da sua experiência?
+fxa-unsub-headline = Cancele a subscrição de alertas do { -product-name }.
+fxa-unsub-blurb =
+    Não irá receber mais alertas do { -product-name }.
+    A sua { -brand-fxa } irá permanecer ativa e poderá receber outras
+    comunicações relacionadas à conta.
 unsub-survey-form-label = Porque está a cancelar a sua subscrição de alertas do { -product-name-nowrap }?
 unsub-reason-1 = Acho que os alertas não tornam os meus dados mais seguros
 unsub-reason-2 = Recebo demasiados emails do { -product-name-nowrap }
@@ -180,6 +181,11 @@ unsub-reason-5 = Estou a utilizar outro serviço para monitorizar as minhas cont
 unsub-reason-6 = Nenhuma das acima
 unsub-survey-thankyou = Obrigado pelo seu feedback.
 unsub-survey-error = Por favor selecione uma.
+unsub-survey-headline-v2 = A sua subscrição foi cancelada.
+unsub-survey-blurb-v2 =
+    Não irá receber mais alertas do { -product-name }.
+    Poderia tirar um momento para responder a uma pergunta acerca da sua experiência?
+unsub-survey-button = Submeter resposta
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Partilhar
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -206,8 +212,6 @@ mozilla-security-blog = Blogue de segurança da { -brand-Mozilla }
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Social
 show-all = Mostrar todas
-fxa-signup-banner-headline = Monitorize ameaças às suas contas online.
-fxa-signup-banner-blurb = Registe uma { -brand-fxa } para obter o seu relatório detalhado e alertas acerca de novas brechas de dados.
 fxa-landing-blurb =
     Descubra o que os hackers já sabem acerca de si
     e aprenda como ficar um passo à frente deles.
@@ -260,17 +264,20 @@ user-fb-compromised-single =
     Esta brecha expôs a seguinte informação pessoal. Se ainda não
     alterou as suas palavras-passe, agora é o momento.
 user-generic-fb-compromised-single = Esta brecha expôs a seguinte informação pessoal.
-guest-fb-compromised-single =
-    Esta brecha expôs a seguinte informação pessoal. Registe uma { -brand-fxa }
-    para obter o seu relatório completo e alertas acerca de novas brechas.
-guest-fb-compromised-blurb =
+guest-fb-compromised-single-v2 =
+    Esta brecha expôs a seguinte informação pessoal.
+    Crie uma { -brand-fxa } gratuita para o seu relatório completo de brechas passadas, alertas de novas brechas,
+    e informação acerca de outros serviços da { -brand-Mozilla }.
+guest-fb-compromised-blurb-v2 =
     { $breachCount ->
         [one]
-            Este email também apareceu em { $breachCount } outra brecha. Registe uma
-            { -brand-fxa } para obter o seu relatório completo e alertas acerca de novas brechas.
+            Este email também apareceu em { $breachCount } outra brecha. Crie uma
+            { -brand-fxa } gratuita para o seu relatório completo de brechas passadas, alertas de novas brechas,
+            e informação acerca de outros serviços da { -brand-Mozilla }.
        *[other]
-            Este email também apareceu em { $breachCount } outras brechas. Registe uma
-            { -brand-fxa } para obter o seu relatório completo e alertas acerca de novas brechas.
+            Este email também apareceu em { $breachCount } outras brechas. Crie uma
+            { -brand-fxa } gratuita para o seu relatório completo de brechas passadas, alertas de novas brechas,
+            e informação acerca de outros serviços da { -brand-Mozilla }.
     }
 user-fb-not-compromised-blurb =
     { $breachCount ->
@@ -282,14 +289,16 @@ user-generic-fb-not-compromised-blurb =
         [one] Este email não estava na brecha { $breachName }, mas foi encontrado noutra.
        *[other] Este email não estava na brecha { $breachName }, mas foi encontrado noutras.
     }
-guest-fb-not-compromised-blurb =
+guest-fb-not-compromised-blurb-v2 =
     { $breachCount ->
         [one]
-            Este email não estava na brecha { $breachName }, mas foi encontrado noutra.
-            Registe uma { -brand-fxa } para receber o seu relatório completo e alertas acerca de novas brechas.
+            Este email não estava na brecha { $breachName }. mas foi encontrado noutra. Crie uma
+            { -brand-fxa } gratuita para o seu relatório completo de brechas passadas, alertas de novas brechas,
+            e informação acerca de outros serviços da { -brand-Mozilla }.
        *[other]
-            Este email não estava na brecha { $breachName }, mas foi encontrado noutras.
-            Registe uma { -brand-fxa } para receber o seu relatório completo e alertas acerca de novas brechas.
+            Este email não estava na brecha { $breachName }. mas foi encontrado noutras. Crie uma
+            { -brand-fxa } gratuita para o seu relatório completo de brechas passadas, alertas de novas brechas,
+            e informação acerca de outros serviços da { -brand-Mozilla }.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -304,17 +313,6 @@ user-generic-found-breaches-blurb =
     { $breachCount ->
         [one] Esta brecha expôs a seguinte informação pessoal.
        *[other] Esta brechas expuseram a seguinte informação pessoal.
-    }
-# While English doesn’t use the actual number of breaches in this sentence,
-# you can use {$breachCount} to display the number of breaches in your localization.
-guest-found-breaches-blurb =
-    { $breachCount ->
-        [one]
-            Esta brecha expôs a seguinte informação pessoal. Registe uma { -brand-fxa }
-            para obter o seu relatório completo e alertas acerca de novas brechas.
-       *[other]
-            Estas brechas expuseram a seguinte informação pessoal. Registe uma { -brand-fxa }
-            para obter o seu relatório completo e alertas acerca de novas brechas.
     }
 have-an-account = Já tem uma conta?
 signup-banner-sensitive-blurb =
@@ -357,3 +355,10 @@ fxa-what-to-do-blurb-4 =
 fb-landing-headline = A sua informação foi exposta na brecha de dados { $breachName }?
 copyright = Porções deste conteúdo são © 1999- { $year } por contribuidores individuais da mozilla.org.
 content-available = Conteúdo disponível sob uma licença Creative Commons.
+# Alerts is a noun
+sign-up-for-alerts = Registar-se para receber alertas
+sign-up-for-fxa-alerts = Registe-se para alertas do { -product-name }.
+create-free-account =
+    Crie uma { -brand-fxa } gratuita para o seu relatório completo de brechas passadas, alertas de
+    novas brechas e informação acerca de outros serviços da { -brand-Mozilla }.
+get-your-report-and-sign-up = Obtenha o seu relatório e registe-se para receber alertas.
