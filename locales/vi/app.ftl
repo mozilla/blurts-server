@@ -164,10 +164,11 @@ confirmed-social-blurb = Nếu tài khoản của bạn đã bị vi phạm, r�
 unsub-headline = Hủy đăng ký từ { -product-name-nowrap }
 unsub-blurb = Điều này sẽ xóa email của bạn khỏi danh sách { -product-name-nowrap } và bạn sẽ không còn nhận được thông báo khi vi phạm mới được công bố.
 unsub-button = Hủy đăng ký
-unsub-survey-headline = Bạn sẽ không còn đăng ký.
-unsub-survey-blurb =
-    Email của bạn đã hủy đăng ký từ { -product-name-nowrap }. Cảm ơn bạn đã sử dụng dịch vụ này.
-    Bạn sẽ dành một chút thời gian để trả lời một câu hỏi về kinh nghiệm của bạn?
+fxa-unsub-headline = Hủy đăng ký thông báo từ { -product-name }.
+fxa-unsub-blurb =
+    Bạn sẽ không còn nhận được thông báo từ { -product-name }.
+    { -brand-fxa } của bạn sẽ vẫn hoạt động và bạn có thể nhận được
+    các liên lạc khác liên quan đến tài khoản.
 unsub-survey-form-label = Tại sao bạn hủy đăng ký nhận thông báo { -product-name-nowrap }?
 unsub-reason-1 = Tôi nghĩ rằng cảnh báo đó không làm cho dữ liệu của tôi an toàn hơn
 unsub-reason-2 = Tôi nhận được quá nhiều email từ { -product-name-nowrap }
@@ -177,6 +178,11 @@ unsub-reason-5 = Tôi đang sử dụng dịch vụ khác để theo dõi tài k
 unsub-reason-6 = Không có cái nào ở trên
 unsub-survey-thankyou = Cảm ơn phản hồi của bạn.
 unsub-survey-error = Vui lòng chọn một.
+unsub-survey-headline-v2 = Bạn đã hủy đăng ký.
+unsub-survey-blurb-v2 =
+    Bạn sẽ không còn nhận được thông báo { -product-name } nữa.
+    Bạn có thể dành một chút thời gian để trả lời câu hỏi về kinh nghiệm của bạn không?
+unsub-survey-button = Gửi phiên bản
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Chia sẻ
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -203,8 +209,6 @@ mozilla-security-blog = Blog bảo mật { -brand-Mozilla }
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Xã hội
 show-all = Hiện tất cả
-fxa-signup-banner-headline = Theo dõi các mối đe dọa cho các tài khoản trực tuyến của bạn.
-fxa-signup-banner-blurb = Đăng ký { -brand-fxa } để nhận báo cáo chi tiết và cảnh báo về các vi phạm dữ liệu mới.
 fxa-landing-blurb =
     Tìm hiểu những gì tin tặc đã biết về bạn,
     và tìm hiểu cách để đi trước họ một bước.
@@ -253,14 +257,16 @@ user-fb-compromised-single =
     Vi phạm này đã tiết lộ thông tin cá nhân sau đây. Nếu bạn chưa có,
     thay đổi mật khẩu của bạn
 user-generic-fb-compromised-single = Vi phạm này đã tiết lộ thông tin cá nhân sau đây.
-guest-fb-compromised-single =
-    Vi phạm này đã tiết lộ thông tin cá nhân sau đây. Đăng ký { -brand-fxa }
-    để nhận được báo cáo đầy đủ của bạn và cảnh báo về các vi phạm mới.
-guest-fb-compromised-blurb =
+guest-fb-compromised-single-v2 =
+    Vi phạm này đã tiết lộ thông tin cá nhân sau đây.
+    Tạo { -brand-fxa } miễn phí cho báo cáo đầy đủ về các vi phạm trong quá khứ, cảnh báo vi phạm mới,
+    và thông tin về các dịch vụ { -brand-Mozilla } khác.
+guest-fb-compromised-blurb-v2 =
     { $breachCount ->
        *[other]
-            Email này cũng xuất hiện trong { $breachCount } vi phạm khác. Đăng ký
-            { -brand-fxa } để nhận báo cáo đầy đủ và cảnh báo về các vi phạm mới.
+            Email này cũng xuất hiện trong { $breachCount } vi phạm khác. Tạo một
+            { -brand-fxa } miễn phí cho báo cáo đầy đủ về các vi phạm trong quá khứ, cảnh báo vi phạm mới,
+            và thông tin về các dịch vụ khác của { -brand-Mozilla }.
     }
 user-fb-not-compromised-blurb =
     { $breachCount ->
@@ -270,9 +276,12 @@ user-generic-fb-not-compromised-blurb =
     { $breachCount ->
        *[other] Email này không nằm trong vi phạm { $breachName }, nhưng được tìm thấy ở những nơi khác.
     }
-guest-fb-not-compromised-blurb =
+guest-fb-not-compromised-blurb-v2 =
     { $breachCount ->
-       *[other] Email này không tìm thấy vi phạm ở { $breachName }, nhưng được tìm thấy ở những nơi khác. Đăng ký { -brand-fxa } để nhận báo cáo đầy đủ và thông báo về các vi phạm mới.
+       *[other]
+            Email này không nằm trong vi phạm ở { $breachName }, nhưng được tìm thấy ở những nơi khác.
+            Tạo { -brand-fxa } miễn phí cho báo cáo đầy đủ về các vi phạm trong quá khứ của bạn,
+            cảnh báo vi phạm mới và thông tin về các dịch vụ khác của { -brand-Mozilla }.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -285,12 +294,6 @@ user-found-breaches-blurb =
 user-generic-found-breaches-blurb =
     { $breachCount ->
        *[other] Những vi phạm tiếp xúc với thông tin cá nhân sau đây.
-    }
-# While English doesn’t use the actual number of breaches in this sentence,
-# you can use {$breachCount} to display the number of breaches in your localization.
-guest-found-breaches-blurb =
-    { $breachCount ->
-       *[other] Những vi phạm tiếp xúc với thông tin cá nhân sau đây. Đăng ký { -brand-fxa } để nhận được báo cáo đầy đủ của bạn và cảnh báo về các vi phạm mới.
     }
 have-an-account = Đã có một tài khoản?
 signup-banner-sensitive-blurb =
@@ -333,3 +336,10 @@ fxa-what-to-do-blurb-4 =
 fb-landing-headline = Thông tin của bạn có bị lộ trong vi phạm dữ liệu { $breachName } không?
 copyright = Các phần của nội dung này © 1999-{ $year } bởi những người đóng góp mozilla.org cá nhân.
 content-available = Nội dung có sẵn theo giấy phép Creative Commons.
+# Alerts is a noun
+sign-up-for-alerts = Đăng ký để nhận thông báo
+sign-up-for-fxa-alerts = Đăng ký thông báo { -product-name }.
+create-free-account =
+    Tạo { -brand-fxa } miễn phí cho báo cáo đầy đủ về các vi phạm trong quá khứ, thông báo
+    vi phạm mới và thông tin về các dịch vụ { -brand-Mozilla } khác.
+get-your-report-and-sign-up = Nhận báo cáo của bạn và đăng ký thông báo.
