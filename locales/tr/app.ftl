@@ -166,10 +166,11 @@ confirmed-social-blurb = Sizin verileriniz ele geçirildiyse arkadaşlarınızı
 unsub-headline = { -product-name-nowrap } aboneliğinden çık
 unsub-blurb = E-posta adresiniz { -product-name-nowrap } listesinden kaldırılacak ve bundan sonraki ihlallerle ilgili uyarı almayacaksınız.
 unsub-button = Abonelikten çık
-unsub-survey-headline = Artık abone değilsiniz.
-unsub-survey-blurb =
-    { -product-name-nowrap } aboneliğiniz iptal edildi. Hizmetimizi kullandığınız için teşekkür ederiz. 
-    Deneyiminizle ilgili kısa bir soruyu yanıtlamanızı rica ediyoruz.
+fxa-unsub-headline = { -product-name } uyarıları aboneliğinden ayrılma
+fxa-unsub-blurb =
+    Artık { -product-name } uyarılarını almayacaksınız.
+    { -brand-fxa }nız açık kalacak. Hesabınızla ilgili başka
+    mesajlar almaya devam edebilirsiniz.
 unsub-survey-form-label = { -product-name-nowrap } uyarıları aboneliğinizi neden iptal ediyorsunuz?
 unsub-reason-1 = Uyarıların verilerimi daha güvenli hale getirmediğini düşünüyorum
 unsub-reason-2 = { -product-name-nowrap }'den çok fazla e-posta alıyorum
@@ -179,6 +180,11 @@ unsub-reason-5 = Hesaplarımı izlemek için başka bir hizmet kullanıyorum
 unsub-reason-6 = Yukarıdakilerin hiçbiri
 unsub-survey-thankyou = Görüşleriniz için teşekkür ederiz.
 unsub-survey-error = Lütfen birini seçin.
+unsub-survey-headline-v2 = Abonelikten çıktınız.
+unsub-survey-blurb-v2 =
+    Artık { -product-name } uyarılarını almayacaksınız.
+    Deneyiminizle ilgili tek bir soru sormak istiyoruz. Bir dakikanızı ayırır mısınız?
+unsub-survey-button = Yanıtımı gönder
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Paylaş
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -205,8 +211,6 @@ mozilla-security-blog = { -brand-Mozilla } Güvenlik Blogu
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Sosyal
 show-all = Tümünü göster
-fxa-signup-banner-headline = Hesaplarınıza yönelik tehditleri takip edin.
-fxa-signup-banner-blurb = { -brand-fxa } açarak ayrıntılı raporunuzu edinebilir ve gelecekte bir veri ihlali yaşandığında uyarı alabilirsiniz.
 fxa-landing-blurb = Hacker’ların hakkınızda neler bildiğini öğrenin, onların bir adım önünde kalın.
 fxa-scan-label = Verilerinizin çalınıp çalınmadığını kontrol edin.
 fxa-welcome-headline = { -product-name }’e hoş geldiniz.
@@ -253,11 +257,14 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = Bu ihlal kapsamında aşağıdaki kişisel bilgiler ele geçirildi. Henüz parolanızı değiştirmediyseniz mutlaka değiştirin.
 user-generic-fb-compromised-single = Bu ihlal kapsamında aşağıdaki kişisel bilgiler ele geçirildi.
-guest-fb-compromised-single = Bu ihlal kapsamında aşağıdaki kişisel bilgiler ele geçirildi. Tam raporunuzu görmek ve yeni bir ihlal yaşandığında uyarılmak isterseniz { -brand-fxa } açabilirsiniz.
-guest-fb-compromised-blurb =
+guest-fb-compromised-single-v2 =
+    Bu ihlal kapsamında aşağıdaki kişisel bilgiler ele geçirildi.
+    Geçmiş ihlallere dair tam raporunuzu almak, yeni ihlaller yaşandığında uyarılmak ve diğer
+    { -brand-Mozilla } hizmetleri hakkında bilgi almak için ücretsiz bir { -brand-fxa } açın.
+guest-fb-compromised-blurb-v2 =
     { $breachCount ->
-        [one] Bu e-posta adresi { $breachCount } ihlalde daha yer alıyor. Tam raporunuzu görmek ve yeni bir ihlal yaşandığında uyarılmak isterseniz { -brand-fxa } açabilirsiniz.
-       *[other] Bu e-posta adresi { $breachCount } ihlalde daha yer alıyor. Tam raporunuzu görmek ve yeni bir ihlal yaşandığında uyarılmak isterseniz { -brand-fxa } açabilirsiniz.
+        [one] Bu e-posta adresi { $breachCount } ihlalde daha yer alıyor. Geçmiş ihlallere dair tam raporunuz, yeni ihlal uyarıları ve diğer { -brand-Mozilla } hizmetleri hakkında bilgi almak için ücretsiz bir { -brand-fxa } açın.
+       *[other] Bu e-posta adresi { $breachCount } ihlalde daha yer alıyor. Geçmiş ihlallere dair tam raporunuz, yeni ihlal uyarıları ve diğer { -brand-Mozilla } hizmetleri hakkında bilgi almak için ücretsiz bir { -brand-fxa } açın.
     }
 user-fb-not-compromised-blurb =
     { $breachCount ->
@@ -269,10 +276,10 @@ user-generic-fb-not-compromised-blurb =
         [one] Bu e-posta adresi { $breachName } ihlalinde yer almıyor ama başka bir ihlalde yer aldığını tespit ettik.
        *[other] Bu e-posta adresi { $breachName } ihlalinde yer almıyor ama başka ihlallerde yer aldığını tespit ettik.
     }
-guest-fb-not-compromised-blurb =
+guest-fb-not-compromised-blurb-v2 =
     { $breachCount ->
-        [one] Bu e-posta adresi { $breachName } ihlalinde yer almıyor ama başka bir ihlalde yer aldığını tespit ettik. Raporunuzun tamamını almak ve gelecekteki ihlal uyarılarına kaydolmak için { -brand-fxa } açın.
-       *[other] Bu e-posta adresi { $breachName } ihlalinde yer almıyor ama başka ihlallerde yer aldığını tespit ettik. Raporunuzun tamamını almak ve gelecekteki ihlal uyarılarına kaydolmak için { -brand-fxa } açın.
+        [one] Bu e-posta adresi { $breachName } ihlalinde yer almıyor başka bir ihlalde yer aldığını tespit ettik. Geçmiş ihlallere dair tam raporunuz, yeni ihlal uyarıları ve diğer { -brand-Mozilla } hizmetleri hakkında bilgi almak için ücretsiz bir { -brand-fxa } açın.
+       *[other] Bu e-posta adresi { $breachName } ihlalinde yer almıyor başka ihlallerde yer aldığını tespit ettik. Geçmiş ihlallere dair tam raporunuz, yeni ihlal uyarıları ve diğer { -brand-Mozilla } hizmetleri hakkında bilgi almak için ücretsiz bir { -brand-fxa } açın.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -287,13 +294,6 @@ user-generic-found-breaches-blurb =
     { $breachCount ->
         [one] Bu ihlalde aşağıdaki kişisel bilgiler ele geçirildi.
        *[other] Bu ihlallerde aşağıdaki kişisel bilgiler ele geçirildi.
-    }
-# While English doesn’t use the actual number of breaches in this sentence,
-# you can use {$breachCount} to display the number of breaches in your localization.
-guest-found-breaches-blurb =
-    { $breachCount ->
-        [one] Bu ihlal kapsamında aşağıdaki kişisel bilgiler ele geçirildi. Tam raporunuzu görmek ve yeni bir ihlal yaşandığında uyarılmak isterseniz { -brand-fxa } açabilirsiniz.
-       *[other] Bu ihlaller kapsamında aşağıdaki kişisel bilgiler ele geçirildi. Tam raporunuzu görmek ve yeni bir ihlal yaşandığında uyarılmak isterseniz { -brand-fxa } açabilirsiniz.
     }
 have-an-account = Zaten hesabınız var mı?
 signup-banner-sensitive-blurb = Hacker’ların hakkınızda neler bildiğini öğrenin, onların bir adım önünde kalın. Hesabınız yeni veri ihlallerinde yer alırsa sizi uyarabiliriz.
@@ -322,3 +322,10 @@ fxa-what-to-do-blurb-4 =
 fb-landing-headline = Verileriniz { $breachName } ihlali kapsamında ele geçirilmiş olabilir mi?
 copyright = Bu içeriğin bazı kısımları ©1999-{ $year } bireysel mozilla.org gönüllüleri.
 content-available = İçerik, Creative Commons lisansı ile sunulmaktadır.
+# Alerts is a noun
+sign-up-for-alerts = Uyarılara kaydolun
+sign-up-for-fxa-alerts = { -product-name } uyarılarına kaydolun.
+create-free-account =
+    Geçmiş ihlallere dair tam raporunuzu almak, yeni ihlaller yaşandığında uyarılmak ve diğer
+    { -brand-Mozilla } hizmetleri hakkında bilgi almak için ücretsiz bir { -brand-fxa } açın.
+get-your-report-and-sign-up = Raporunuzu alın ve uyarılara kaydolun.
