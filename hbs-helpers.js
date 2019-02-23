@@ -42,13 +42,27 @@ function localizedBreachDataClasses(supportedLocales, dataClasses, args) {
 
 
 function fluentNestedBold(supportedLocales, id, args) {
-  if (args.hash.breachName) {
-    args.hash.breachName = `<span class="medium">${args.hash.breachName}</span>`;
-  }
+  const saveArgs = JSON.parse(JSON.stringify(args.hash));
+  const stringIds = Object.keys(saveArgs).filter(key => key !== "breachCount");
+
+  const addMarkup = (word) => {
+    return `<span class="medium"> ${word} </span>`;
+  };
+
+  stringIds.forEach(stringId => {
+    args.hash[stringId] = stringId;
+  });
+
   let localizedStrings = LocaleUtils.fluentFormat(supportedLocales, id, args.hash);
+
   if (args.hash.breachCount) {
-    localizedStrings = localizedStrings.replace(/\d+/, `<span class="medium">${args.hash.breachCount}</span>`);
+    localizedStrings = localizedStrings.replace(/(\s[\d]+\s)/, addMarkup(args.hash.breachCount));
   }
+
+  stringIds.forEach(stringId => {
+    localizedStrings = localizedStrings.replace(stringId, addMarkup(saveArgs[stringId]));
+  });
+
   return localizedStrings;
 }
 
