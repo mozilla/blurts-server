@@ -200,3 +200,20 @@ og-site-description = Tawila' we xetz'iläx ri taq atzij rik'in { -product-name 
 mozilla-security-blog = { -brand-Mozilla } Jikomal Ichinya'l
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Winaqinem
+show-all = Tik'ut ronojel
+fxa-landing-blurb =
+    Tawila' ri ketaman chik ri ajjaker chawij,
+    chuqa' tawetamaj achike rub'eyal yanab'eyij chi kiwäch.
+fxa-scan-label = Tatz'eta' we at k'o pa jun rutz'ilanik tzij.
+fxa-welcome-headline = Ütz apetik pa { -product-name }.
+fxa-welcome-blurb = Yatikïr chi ye'ak'ül taq rutzijol k'ayewal we yawachin { $userEmail } pa jun rutz'ilaxik tzij.
+fxa-scan-another-email = ¿La nawajo' nanik'oj jun chik taqoya'l?
+# Search Firefox Monitor
+fxa-scan-submit = Tikanöx { -product-name }
+sign-up-to-check = Tatz'ib'aj ab'i' richin Yanik'on
+sign-in = Tatikirisaj molojri'ïl
+sign-out = Katel pa Molojri'ïl
+full-report-headline = Ri { -product-name } Atzijol
+see-full-report = Titz'et Tz'aqät Rutzijol
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Tinuk'samajïx { -brand-fxa }
