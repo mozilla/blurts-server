@@ -164,10 +164,10 @@ confirmed-social-blurb = Nëse jeni përfshirë në një shkelje, gjasat janë q
 unsub-headline = Shpajtohuni prej { -product-name-nowrap }
 unsub-blurb = Kjo do të shkaktojë heqjen e email-it tuaj nga lista { -product-name-nowrap } dhe s’do të merrni më sinjalizime kur ngjasin shkelje të reja.
 unsub-button = Shpajtomë
-unsub-survey-headline = S’jeni më i pajtuar.
-unsub-survey-blurb =
-    Email-i juaj është shpajtuar nga { -product-name-nowrap }. Faleminderit që e përdorët këtë shërbim. 
-    A do të ndaleshit një çast t’i përgjigjeni një pyetjeje rreth përvojës tuaj me të?
+fxa-unsub-headline = Shpajtohuni prej sinjalizimesh { -product-name }.
+fxa-unsub-blurb =
+    S’do të merrni më sinjalizime { -product-name }. 
+    { -brand-fxa } e juaj do të mbetet aktive, dhe mund të merrni njoftime të tjera të lidhura me llogarinë.
 unsub-survey-form-label = Pse po shpajtoheni nga sinjalizimet { -product-name-nowrap }?
 unsub-reason-1 = Mendoj se sinjalizimet s’i bëjnë më të parrezikuara të dhënat e mia
 unsub-reason-2 = Më vijnë shumë email-e nga { -product-name-nowrap }
@@ -177,6 +177,7 @@ unsub-reason-5 = Përdor një shërbim tjetër për mbikëqyrje të llogarive t�
 unsub-reason-6 = Asnjë prej sa më sipër
 unsub-survey-thankyou = Faleminderit për përshtypjet tuaja.
 unsub-survey-error = Ju lutemi, përzgjidhni një.
+unsub-survey-button = Patrashtrojeni Përgjigjen
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Ndajeni me të tjerët
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -203,8 +204,6 @@ mozilla-security-blog = Blogu i { -brand-Mozilla }-s Mbi Sigurinë
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Shoqërore
 show-all = Shfaqi krejt
-fxa-signup-banner-headline = Mbikëqyrni kërcënime ndaj llogarive tuaja internetore.
-fxa-signup-banner-blurb = Regjistrohuni për një { -brand-fxa } që të merrni raportin tuaj të hollësishëm dhe sinjalizime mbi shkelje të reja të të dhënave.
 fxa-landing-blurb =
     Shihni se ç’dinë tashmë mbi ju hacker-at,
     dhe mësoni se si të jeni përherë një hap para tyre.
@@ -255,12 +254,6 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = Kjo shkelje ekspozoi të dhënat personale vijuese. Nëse s’e keni bërë tashmë, ndryshoni fjalëkalimet tuaj.
 user-generic-fb-compromised-single = Kjo shkelje ekspozoi të dhënat personale vijuese.
-guest-fb-compromised-single = Kjo shkelje ekspozoi të dhënat personale vijuese. Që të merrni raportin e plotë për të dhe sinjalizime rreth shkeljesh të reja, regjistrohuni për një { -brand-fxa }.
-guest-fb-compromised-blurb =
-    { $breachCount ->
-        [one] Ky email u shfaq edhe në { $breachCount } shkelje tjetër. Që të merrni raportin e plotë për të dhe sinjalizime rreth shkeljesh të reja, regjistrohuni për një { -brand-fxa }.
-       *[other] Ky email u shfaq edhe në { $breachCount } shkelje të tjera. Që të merrni raportin e plotë për të dhe sinjalizime rreth shkeljesh të reja, regjistrohuni për një { -brand-fxa }.
-    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Nuk gjendeshit në shkeljen { $breachName }, por e gjetëm atë adresë email në një tjetër.
@@ -270,11 +263,6 @@ user-generic-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Ky email nuk gjendej në shkeljen { $breachName }, por e gjetëm në një tjetër.
        *[other] Ky email nuk gjendej në shkeljen { $breachName }, por e gjetëm në të tjera.
-    }
-guest-fb-not-compromised-blurb =
-    { $breachCount ->
-        [one] Ky email nuk gjendej në shkeljen { $breachName }, por e gjetëm në një tjetër. Që të merrni raportin e plotë për të dhe sinjalizime rreth shkeljesh të reja, regjistrohuni për një { -brand-fxa }.
-       *[other] Ky email nuk gjendej në shkeljen { $breachName }, por e gjetëm në të tjera. Që të merrni raportin e plotë për të dhe sinjalizime rreth shkeljesh të reja, regjistrohuni për një { -brand-fxa }.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -289,13 +277,6 @@ user-generic-found-breaches-blurb =
     { $breachCount ->
         [one] Kjo shkelje ekspozoi të dhënat personale vijuese.
        *[other] Këto shkelje ekspozuan të dhënat personale vijuese.
-    }
-# While English doesn’t use the actual number of breaches in this sentence,
-# you can use {$breachCount} to display the number of breaches in your localization.
-guest-found-breaches-blurb =
-    { $breachCount ->
-        [one] Kjo shkelje ekspozoi të dhënat personale vijuese. Që të merrni raportin e plotë për të dhe sinjalizime rreth shkeljesh të reja, regjistrohuni për një { -brand-fxa }.
-       *[other] Këto shkelje ekspozuan të dhënat personale vijuese. Që të merrni raportin e plotë për të dhe sinjalizime rreth shkeljesh të reja, regjistrohuni për një { -brand-fxa }.
     }
 have-an-account = Keni tashmë një llogari?
 signup-banner-sensitive-blurb = Shihni se ç’dinë tashmë rreth jush hacker-at, dhe mësoni se si të jeni përherë një hap përpara tyre. Sinjalizohuni, nëse llogaria juaj shfaqet në shkelje të reja të dhënash.
@@ -322,3 +303,6 @@ fxa-what-to-do-blurb-4 = Përgjegjës fjalëkalimesh të tillë si 1Password, La
 fb-landing-headline = Qenë ekspozuar të dhënat tuaja te shkelja { $breachName } e të dhënave?
 copyright = Pjesë të kësaj lënde janë © 1999-{ $year } e kontribuesish individualë te mozilla.org.
 content-available = Lëndë e përdorshme sipas një licence Creative Commons.
+# Alerts is a noun
+sign-up-for-alerts = Regjistrohuni për Sinjalizime
+sign-up-for-fxa-alerts = Regjistrohuni për sinjalizime { -product-name }.
