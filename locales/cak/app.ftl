@@ -175,6 +175,10 @@ unsub-reason-6 = Majun chi ke ri yesik'ïx
 unsub-survey-thankyou = Matyox ruma ri atzij.
 unsub-survey-error = Tab'ana' utzil, tacha' jun.
 unsub-survey-headline-v2 = Xaq'ät ri rutz'ib'axik ab'i'.
+unsub-survey-blurb-v2 =
+    Man xke'ak'ül ta chik { -product-name } taq rutzijol ruk'ayewal.
+    ¿La naya' jub'a' aramaj richin natzolij tzij chi rij jun k'utunïk chi ri awetamab'al?
+unsub-survey-button = Titaq Tzolin Tzij
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Tikomonïx
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
