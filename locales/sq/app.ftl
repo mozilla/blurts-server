@@ -177,6 +177,10 @@ unsub-reason-5 = Përdor një shërbim tjetër për mbikëqyrje të llogarive t�
 unsub-reason-6 = Asnjë prej sa më sipër
 unsub-survey-thankyou = Faleminderit për përshtypjet tuaja.
 unsub-survey-error = Ju lutemi, përzgjidhni një.
+unsub-survey-headline-v2 = Jeni shpajtuar.
+unsub-survey-blurb-v2 =
+    S’do të merrni më sinjalizime nga { -product-name }. 
+    A do të ndaleshit një çast t’i përgjigjeni një pyetjeje lidhur me përvojën tuaj?
 unsub-survey-button = Patrashtrojeni Përgjigjen
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Ndajeni me të tjerët
@@ -254,6 +258,14 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = Kjo shkelje ekspozoi të dhënat personale vijuese. Nëse s’e keni bërë tashmë, ndryshoni fjalëkalimet tuaj.
 user-generic-fb-compromised-single = Kjo shkelje ekspozoi të dhënat personale vijuese.
+guest-fb-compromised-single-v2 =
+    Kjo shkelje ka ekspozuar të dhënat personale vijuese. 
+    Krijoni një { -brand-fxa } falas që të merrni raport të plotë mbi shkelje të dikurshme, sinjalizime shkeljesh të reja, dhe informacione mbi shërbime të tjera { -brand-Mozilla }.
+guest-fb-compromised-blurb-v2 =
+    { $breachCount ->
+        [one] Ky email është parë edhe në { $breachCount } tjetër shkelje. Krijoni një { -brand-fxa } falas që të merrni raport të plotë mbi shkelje të dikurshme, sinjalizime shkeljesh të reja, dhe informacione mbi shërbime të tjera { -brand-Mozilla }.
+       *[other] Ky email është parë edhe në { $breachCount } shkelje të tjera. Krijoni një { -brand-fxa } falas që të merrni raport të plotë mbi shkelje të dikurshme, sinjalizime shkeljesh të reja, dhe informacione mbi shërbime të tjera { -brand-Mozilla }.
+    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Nuk gjendeshit në shkeljen { $breachName }, por e gjetëm atë adresë email në një tjetër.
@@ -263,6 +275,11 @@ user-generic-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Ky email nuk gjendej në shkeljen { $breachName }, por e gjetëm në një tjetër.
        *[other] Ky email nuk gjendej në shkeljen { $breachName }, por e gjetëm në të tjera.
+    }
+guest-fb-not-compromised-blurb-v2 =
+    { $breachCount ->
+        [one] Ky email s’ka qenë pjesë e shkeljes { $breachCount }, por është parë në një tjetër. Krijoni një { -brand-fxa } falas që të merrni raport të plotë mbi shkelje të dikurshme, sinjalizime shkeljesh të reja, dhe informacione mbi shërbime të tjera { -brand-Mozilla }.
+       *[other] Ky email s’ka qenë pjesë e shkeljes { $breachCount }, por është parë në të tjera. Krijoni një { -brand-fxa } falas që të merrni raport të plotë mbi shkelje të dikurshme, sinjalizime shkeljesh të reja, dhe informacione mbi shërbime të tjera { -brand-Mozilla }.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -306,3 +323,5 @@ content-available = Lëndë e përdorshme sipas një licence Creative Commons.
 # Alerts is a noun
 sign-up-for-alerts = Regjistrohuni për Sinjalizime
 sign-up-for-fxa-alerts = Regjistrohuni për sinjalizime { -product-name }.
+create-free-account = Krijoni një { -brand-fxa } falas që të merrni raport të plotë mbi shkelje të dikurshme, sinjalizime shkeljesh të reja, dhe informacione mbi shërbime të tjera { -brand-Mozilla }.
+get-your-report-and-sign-up = Merrni raportin tuaj dhe regjistrohuni për sinjalizime.
