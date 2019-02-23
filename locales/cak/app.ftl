@@ -224,3 +224,5 @@ manage-fxa = Tinuk'samajïx { -brand-fxa }
 fxa-download-firefox-bar-blurb = Xya' chawe ruma { -brand-name }. 2mul aninäq. 30% rupam rujolom ri man nrokisaj ta { -brand-Chrome }.
 fxa-download-firefox-bar-link = Tiqasäx wakami
 fxa-download-firefox-banner-blurb = Jun jeb'ël chuqa' aninäq kisamajib'exik taq ruxaq, ri nrokisaj jub'a' rutzatzqob'al kematz'ib'.
+user-fb-compromised-headline = { $userEmail } xwachin pa ri { $breachName } rutz'ilanik tzij.
+guest-fb-compromised-headline = Re taqoya'l re' xwachin pa ri { $breachName } rutzilanik tzij.
