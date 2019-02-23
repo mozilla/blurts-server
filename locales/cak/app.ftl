@@ -222,3 +222,5 @@ see-full-report = Titz'et Tz'aqät Rutzijol
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Tinuk'samajïx { -brand-fxa }
 fxa-download-firefox-bar-blurb = Xya' chawe ruma { -brand-name }. 2mul aninäq. 30% rupam rujolom ri man nrokisaj ta { -brand-Chrome }.
+fxa-download-firefox-bar-link = Tiqasäx wakami
+fxa-download-firefox-banner-blurb = Jun jeb'ël chuqa' aninäq kisamajib'exik taq ruxaq, ri nrokisaj jub'a' rutzatzqob'al kematz'ib'.
