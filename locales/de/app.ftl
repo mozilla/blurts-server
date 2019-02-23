@@ -156,8 +156,11 @@ confirmed-social-blurb = Wenn Sie von einem Datenleck betroffen sind, sind Ihre 
 unsub-headline = Abonnement von { -product-name-nowrap } löschen
 unsub-blurb = Dadurch wird Ihre E-Mail-Adresse aus der Liste { -product-name-nowrap } entfernt und Sie erhalten keine Benachrichtigungen mehr, wenn neue Datenlecks gemeldet werden.
 unsub-button = Abonnement entfernen
-unsub-survey-headline = Ihr Abonnement wurde gelöscht.
-unsub-survey-blurb = Ihre E-Mail-Adresse wurde aus dem Abonnement von { -product-name-nowrap } entfernt. Danke, dass Sie diesen Dienst verwendet haben. Nehmen Sie sich einen Moment Zeit, um uns eine Frage zu Ihrem Erlebnis zu beantworten?
+fxa-unsub-headline = Warnmeldungen von { -product-name } abbestellen.
+fxa-unsub-blurb =
+    Sie erhalten keine Warnmeldungen von { -product-name } mehr.
+    Ihr { -brand-fxa } bleibt aber aktiv und Sie können andere Informationen
+    mit Bezug zu Ihrem Konto erhalten.
 unsub-survey-form-label = Warum melden Sie sich von Warnungen zu { -product-name-nowrap } ab?
 unsub-reason-1 = Ich glaube nicht, dass Warnungen meine Daten sicherer machen
 unsub-reason-2 = Ich erhalten zu viele E-Mails von { -product-name-nowrap }
@@ -167,6 +170,11 @@ unsub-reason-5 = Ich verwende einen anderen Dienst, um meine Konten zu überwach
 unsub-reason-6 = Nichts davon
 unsub-survey-thankyou = Vielen Dank für Ihre Rückmeldung.
 unsub-survey-error = Bitte wählen Sie einen Punkt aus.
+unsub-survey-headline-v2 = Ihr Abonnement wurde entfernt.
+unsub-survey-blurb-v2 =
+    Sie erhalten  keine Warnmeldungen von { -product-name } mehr.
+    Beantworten Sie uns kurz eine Frage über Ihre Erfahrung?
+unsub-survey-button = Antwort absenden
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Teilen
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -193,8 +201,6 @@ mozilla-security-blog = { -brand-Mozilla } Sicherheitsblog
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Soziale Medien
 show-all = Alle anzeigen
-fxa-signup-banner-headline = Überwachen Sie Bedrohungen für Ihre Online-Konten.
-fxa-signup-banner-blurb = Holen Sie sich ein { -brand-fxa }, um einen detaillierten Bericht und Benachrichtigungen zu neuen Datenlecks zu erhalten.
 fxa-landing-blurb =
     Finden Sie heraus, was Hacker bereits über Sie wissen
     und erfahren Sie, wie Sie ihnen einen Schritt voraus sein können.
@@ -247,13 +253,14 @@ user-fb-compromised-single =
     Dieses Datenleck enthielt die folgenden persönlichen Daten. Ändern Sie Ihre Passwörter,
     wenn nicht bereits geschehen.
 user-generic-fb-compromised-single = Dieses Datenleck enthielt die folgenden persönlichen Daten.
-guest-fb-compromised-single =
-    Dieses Datenleck enthielt die folgenden persönlichen Daten. Holen Sie sich ein { -brand-fxa },
-    um den vollständigen Bericht und Meldungen über neue Datenlecks zu erhalten.
-guest-fb-compromised-blurb =
+guest-fb-compromised-single-v2 =
+    Dieses Datenleck enthielt die folgenden persönlichen Daten.
+    Erstellen Sie ein kostenloses { -brand-fxa }, um einen vollständigen Bericht über vergangene Datenlecks, Warnungen über neue Datenlecks
+    und Informationen über andere { -brand-Mozilla }-Dienste zu erhalten.
+guest-fb-compromised-blurb-v2 =
     { $breachCount ->
-        [one] Diese E-Mail-Adresse ist auch von { $breachCount } anderem Datenleck betroffen. Holen Sie sich ein { -brand-fxa }, um den vollständigen Bericht und Meldungen über neue Datenlecks zu erhalten.
-       *[other] Diese E-Mail-Adresse ist auch von { $breachCount } anderen Datenlecks betroffen. Holen Sie sich ein { -brand-fxa }, um den vollständigen Bericht und Meldungen über neue Datenlecks zu erhalten.
+        [one] Diese E-Mail-Adresse ist auch von { $breachCount } anderem Datenleck betroffen. Erstellen Sie ein kostenloses { -brand-fxa }, um einen vollständigen Bericht über vergangene Datenlecks, Warnungen über neue Datenlecks und Informationen über andere { -brand-Mozilla }-Dienste zu erhalten.
+       *[other] Diese E-Mail-Adresse ist auch von { $breachCount } anderen Datenlecks betroffen. Erstellen Sie ein kostenloses { -brand-fxa }, um einen vollständigen Bericht über vergangene Datenlecks, Warnungen über neue Datenlecks und Informationen über andere { -brand-Mozilla }-Dienste zu erhalten.
     }
 user-fb-not-compromised-blurb =
     { $breachCount ->
@@ -265,10 +272,14 @@ user-generic-fb-not-compromised-blurb =
         [one] Diese E-Mail-Adresse ist nicht vom Datenleck { $breachName } betroffen, aber von einem anderen.
        *[other] Diese E-Mail-Adresse ist nicht vom Datenleck { $breachName } betroffen, aber von mehreren anderen.
     }
-guest-fb-not-compromised-blurb =
+guest-fb-not-compromised-blurb-v2 =
     { $breachCount ->
-        [one] Diese E-Mail-Adresse ist nicht vom Datenleck { $breachName } betroffen, aber von einem anderen. Holen Sie sich ein { -brand-fxa }, um den vollständigen Bericht und Meldungen über neue Datenlecks zu erhalten.
-       *[other] Diese E-Mail-Adresse ist nicht vom Datenleck { $breachName } betroffen, aber von mehreren anderen. Holen Sie sich ein { -brand-fxa }, um den vollständigen Bericht und Meldungen über neue Datenlecks zu erhalten.
+        [one]
+            Diese E-Mail-Adresse ist nicht vom Datenleck { $breachName } betroffen, aber von einem anderen.
+            Erstellen Sie ein kostenloses { -brand-fxa }, um einen vollständigen Bericht über vergangene Datenlecks, Warnungen über neue Datenlecks und Informationen über andere { -brand-Mozilla }-Dienste zu erhalten.
+       *[other]
+            Diese E-Mail-Adresse ist nicht vom Datenleck { $breachName } betroffen, aber von mehreren anderen.
+            Erstellen Sie ein kostenloses { -brand-fxa }, um einen vollständigen Bericht über vergangene Datenlecks, Warnungen über neue Datenlecks und Informationen über andere { -brand-Mozilla }-Dienste zu erhalten.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -283,13 +294,6 @@ user-generic-found-breaches-blurb =
     { $breachCount ->
         [one] Dieses Datenleck enthielt die folgenden persönlichen Daten.
        *[other] Diese Datenlecks enthielten die folgenden persönlichen Daten.
-    }
-# While English doesn’t use the actual number of breaches in this sentence,
-# you can use {$breachCount} to display the number of breaches in your localization.
-guest-found-breaches-blurb =
-    { $breachCount ->
-        [one] Dieses Datenleck enthielt die folgenden persönlichen Daten. Holen Sie sich ein { -brand-fxa }, um den vollständigen Bericht und Meldungen über neue Datenlecks zu erhalten.
-       *[other] Diese Datenlecks enthielten die folgenden persönlichen Daten. Holen Sie sich ein { -brand-fxa }, um den vollständigen Bericht und Meldungen über neue Datenlecks zu erhalten.
     }
 have-an-account = Haben Sie schon ein Konto?
 signup-banner-sensitive-blurb =
@@ -329,3 +333,10 @@ fxa-what-to-do-blurb-4 =
 fb-landing-headline = Waren Ihre Daten vom Datenleck { $breachName } betroffen?
 copyright = Teile dieses Inhalts stehen unter einem ©1999–%(current_year)s von einzelnen Mitwirkenden an mozilla.org.
 content-available = Der Inhalt steht unter einer Creative-Commons-Lizenz.
+# Alerts is a noun
+sign-up-for-alerts = Warnmeldungen abonnieren
+sign-up-for-fxa-alerts = Abonnieren Sie Warnmeldungen von { -product-name }.
+create-free-account =
+    Erstellen Sie ein kostenloses { -brand-fxa }, um einen vollständigen Bericht über vergangene Datenlecks, Warnungen über neue Datenlecks
+    und Informationen über andere { -brand-Mozilla }-Dienste zu erhalten.
+get-your-report-and-sign-up = Holen Sie sich Ihren Bericht und abonnieren Sie Warnmeldungen.
