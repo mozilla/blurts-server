@@ -152,8 +152,11 @@ confirmed-social-blurb = Os ydych wedi cael tor-data, mae'n bosib fod eich ffrin
 unsub-headline = Dad-danysgrifio o { -product-name-nowrap }
 unsub-blurb = Bydd hyn yn dileu'ch e-bost o'r rhestr { -product-name-nowrap } ac ni fyddwch yn derbyn rhybuddion pan fydd achosion o tor-data'n cael eu cyhoeddi.
 unsub-button = Dad-danysgrifio
-unsub-survey-headline = Nid ydych yn tanysgrifio bellach.
-unsub-survey-blurb = Mae eich e-bost wedi'i ddad-danysgrifio { -product-name-nowrap }. Diolch am ddefnyddio'r gwasanaeth hwn. A wnewch chi gymryd munud i ateb un cwestiwn am eich profiad?
+fxa-unsub-headline = Dad-danysgrifio o rybuddion { -product-name }.
+fxa-unsub-blurb =
+    Fyddwch chi ddim yn derbyn rhybuddion { -product-name } mwyach.
+    Bydd eich { -brand-fxa } yn parhau i fod yn weithredol, ac efallai y byddwch
+    yn derbyn negeseuon sy'n gysylltiedig â'r cyfrif.
 unsub-survey-form-label = Pam ydych chi'n dad-danysgrifio rhag rybuddion { -product-name-nowrap }?
 unsub-reason-1 = Rwy'n credu nad yw rhybuddion yn gwneud fy data yn fwy diogel
 unsub-reason-2 = Rwy'n cael gormod o negeseuon e-bost gan { -product-name-nowrap }
@@ -163,6 +166,11 @@ unsub-reason-5 = Rwy'n defnyddio gwasanaeth arall i fonitro fy nghyfrifon
 unsub-reason-6 = Dim un o'r uchod
 unsub-survey-thankyou = Diolch am eich adborth.
 unsub-survey-error = Dewiswch un.
+unsub-survey-headline-v2 = Rydych wedi eich dad-danysgrifio.
+unsub-survey-blurb-v2 =
+    Fyddwch chi ddim yn derbyn rhybuddion { -product-name } mwyach.
+    A wnewch chi gymryd munud i ateb un cwestiwn am eich profiad?
+unsub-survey-button = Cyflwyno Ymateb
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Rhannu
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -189,8 +197,6 @@ mozilla-security-blog = Blog Diogelwch { -brand-Mozilla }
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Cymdeithasol
 show-all = Dangos y cyfan
-fxa-signup-banner-headline = Monitro bygythiadau i'ch cyfrifon ar-lein.
-fxa-signup-banner-blurb = Cofrestru i gael { -brand-fxa } a derbyn eich adroddiad manwl a rhybuddion am dor-data newydd.
 fxa-landing-blurb =
     Darganfod beth mae hacwyr eisoes yn ei wybod amdanoch chi,
     a dysgu sut i gadw un cam ar y blaen.
@@ -259,30 +265,10 @@ user-fb-compromised-single =
     Amlygodd y tor-data'r manylion personol canlynol. Os nad ydych eisoes wedi gwneud,
     newidiwch eich cyfrineiriau.
 user-generic-fb-compromised-single = Amlygodd y tor-data'r manylion personol canlyno.
-guest-fb-compromised-single =
-    Amlygodd y tor-data'r manylion personol canlynol. Cofrestrwch am { -brand-fxa }
-    i gael eich adroddiad llawn a rhybuddion am dor-data newydd.
-guest-fb-compromised-blurb =
-    { $breachCount ->
-        [zero]
-            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall. Cofrestrwch am
-            { -brand-fxa } i gael eich adroddiad llawn a rhybuddion am dordata newydd.
-        [one]
-            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall. Cofrestrwch am
-            { -brand-fxa } i gael eich adroddiad llawn a rhybuddion am dordata newydd.
-        [two]
-            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall. Cofrestrwch am
-            { -brand-fxa } i gael eich adroddiad llawn a rhybuddion am dordata newydd.
-        [few]
-            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall. Cofrestrwch am
-            { -brand-fxa } i gael eich adroddiad llawn a rhybuddion am dordata newydd.
-        [many]
-            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall. Cofrestrwch am
-            { -brand-fxa } i gael eich adroddiad llawn a rhybuddion am dordata newydd.
-       *[other]
-            Ymddangosodd yr e-bost hwn hefyd mewn { $breachCount } tor-data arall. Cofrestrwch am
-            { -brand-fxa } i gael eich adroddiad llawn a rhybuddion am dordata newydd.
-    }
+guest-fb-compromised-single-v2 =
+    Roedd y tor-data hwn yn amlygu'r wybodaeth bersonol ganlynol.
+    Crëwch { -brand-fxa } am ddim ar gyfer eich adroddiad llawn o dor-data yn y gorffennol, rhybuddion tor-data newydd,
+    a gwybodaeth am wasanaethau { -brand-Mozilla } eraill.
 user-fb-not-compromised-blurb =
     { $breachCount ->
         [zero] Nid oeddech ar dor-data { $breachName }, ond rydym wedi canfod y cyfeiriad e-bost mewn un arall.
@@ -300,12 +286,6 @@ user-generic-fb-not-compromised-blurb =
         [few] Nid oedd yr e-bost hwn yn y tor-data { $breachName }, ond fe'i cafwyd mewn rhai eraill.
         [many] Nid oedd yr e-bost hwn yn y tor-data { $breachName }, ond fe'i cafwyd mewn rhai eraill.
        *[other] Nid oedd yr e-bost hwn yn y tor-data { $breachName }, ond fe'i cafwyd mewn rhai eraill.
-    }
-guest-fb-not-compromised-blurb =
-    { $breachCount ->
-       *[other]
-            { -brand-fxa }Nid oedd yr e-bost hwn yn nhordata { $breachName }, ond fe'i welwyd mewn un arall.
-            Cofrestrwch am { -brand-fxa } i gael eich adroddiad llawn a rhybuddion am unrhyw dordata newydd.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -328,17 +308,6 @@ user-generic-found-breaches-blurb =
         [few] Mae'r tor-data wedi amlygu'r manylion personol canlynol.
         [many] Mae'r tor-data wedi amlygu'r manylion personol canlynol.
        *[other] Mae'r tor-data wedi amlygu'r manylion personol canlynol.
-    }
-# While English doesn’t use the actual number of breaches in this sentence,
-# you can use {$breachCount} to display the number of breaches in your localization.
-guest-found-breaches-blurb =
-    { $breachCount ->
-        [zero] Mae'r tor-data wedi amlygu'r manylion personol canlynol. Cofrestrwch am { -brand-fxa } i gael adroddiad llawn a rhybuddion am dor-data newydd.
-        [one] Mae'r tor-data wedi amlygu'r manylion personol canlynol. Cofrestrwch am { -brand-fxa } i gael adroddiad llawn a rhybuddion am dor-data newydd.
-        [two] Mae'r tor-data wedi amlygu'r manylion personol canlynol. Cofrestrwch am { -brand-fxa } i gael adroddiad llawn a rhybuddion am dor-data newydd.
-        [few] Mae'r tor-data wedi amlygu'r manylion personol canlynol. Cofrestrwch am { -brand-fxa } i gael adroddiad llawn a rhybuddion am dor-data newydd.
-        [many] Mae'r tor-data wedi amlygu'r manylion personol canlynol. Cofrestrwch am { -brand-fxa } i gael adroddiad llawn a rhybuddion am dor-data newydd.
-       *[other] Mae'r tor-data wedi amlygu'r manylion personol canlynol. Cofrestrwch am { -brand-fxa } i gael adroddiad llawn a rhybuddion am dor-data newydd.
     }
 have-an-account = Oes gennych chi gyfrif yn barod?
 signup-banner-sensitive-blurb =
@@ -375,3 +344,10 @@ fxa-what-to-do-blurb-4 =
 fb-landing-headline = A gafodd eich manylion eu hamlygu yn nhor-data { $breachName }?
 copyright = Mae darnau o'r cynnwys hwn yn © 1999-{ $year } gan gyfranwyr mozilla.org unigol.
 content-available = Cynnwys ar gael o dan drwydded Creative Commons.
+# Alerts is a noun
+sign-up-for-alerts = Cofrestrwch am Rybuddion
+sign-up-for-fxa-alerts = Cofrestrwch am rybuddion { -product-name }.
+create-free-account =
+    Crëwch { -brand-fxa } am ddim ar gyfer eich adroddiad llawn o dor-data'r gorffennol,
+    rhybuddion tor-data newydd, a gwybodaeth am wasanaethau { -brand-Mozilla } eraill.
+get-your-report-and-sign-up = Estynnwch eich adroddiad a chofrestru am rybuddion.
