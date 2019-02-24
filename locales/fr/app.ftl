@@ -228,6 +228,14 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = Cette fuite de données a compromis les informations personnelles suivantes. Si ce n’est pas déjà fait, changez vos mots de passe.
 user-generic-fb-compromised-single = Cette fuite de données a compromis les informations personnelles suivantes.
+guest-fb-compromised-single-v2 =
+    Cette fuite de données a compromis les informations personnelles suivantes.
+    Créez un { -brand-fxa } gratuit pour recevoir un rapport complet sur les fuites de données passées, des alertes pour les nouvelles fuites et des informations à propos des autres services { -brand-Mozilla }.
+guest-fb-compromised-blurb-v2 =
+    { $breachCount ->
+        [one] Cette adresse électronique apparaît dans une autre fuite de données. Créez un { -brand-fxa } gratuit pour recevoir un rapport complet sur les fuites de données passées, des alertes pour les nouvelles fuites et des informations à propos des autres services { -brand-Mozilla }.
+       *[other] Cette adresse électronique apparaît dans { $breachCount } autres fuites de données. Créez un { -brand-fxa } gratuit pour recevoir un rapport complet sur les fuites de données passées, des alertes pour les nouvelles fuites et des informations à propos des autres services { -brand-Mozilla }.
+    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Vous n’apparaissez pas dans la fuite de données { $breachName }, mais nous avons détecté cette adresse électronique dans une autre fuite.
