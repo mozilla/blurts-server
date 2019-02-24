@@ -154,6 +154,8 @@ unsub-reason-5 = J’utilise un autre service pour surveiller mes comptes
 unsub-reason-6 = Aucune de ces propositions
 unsub-survey-thankyou = Merci de votre retour.
 unsub-survey-error = Veuillez choisir une proposition.
+unsub-survey-headline-v2 = Votre désinscription est effectuée.
+unsub-survey-button = Envoyer la réponse
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Partager
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
