@@ -141,8 +141,10 @@ confirmed-social-blurb = Si vos données ont été compromises, il y a de fortes
 unsub-headline = Se désabonner de { -product-name-nowrap }
 unsub-blurb = Cela supprimera votre adresse électronique de la liste { -product-name-nowrap } et vous ne recevrez plus d’alertes lorsque de nouvelles fuites de données seront annoncées.
 unsub-button = Se désabonner
-unsub-survey-headline = Vous n’êtes plus abonné⋅e.
-unsub-survey-blurb = Votre courriel a été retiré de la liste de { -product-name-nowrap }. Nous vous remercions d’avoir utilisé ce service. Pourriez-vous prendre un instant afin de répondre à une question concernant votre expérience d’utilisation ?
+fxa-unsub-headline = Se désabonner des alertes { -product-name }.
+fxa-unsub-blurb =
+    Vous ne recevrez plus d’alertes { -product-name }.
+    Votre { -brand-fxa } restera actif et vous pourrez recevoir des informations liées au compte.
 unsub-survey-form-label = Pourquoi vous désinscrivez-vous des alertes de { -product-name-nowrap } ?
 unsub-reason-1 = Je pense que les alertes ne me permettent pas de protéger mes données de façon plus sûre
 unsub-reason-2 = Je reçois trop de messages de { -product-name-nowrap }
@@ -178,8 +180,6 @@ mozilla-security-blog = Blog { -brand-Mozilla } sur la sécurité
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Réseaux sociaux
 show-all = Tout afficher
-fxa-signup-banner-headline = Surveillez les menaces qui pèsent sur vos comptes en ligne.
-fxa-signup-banner-blurb = Créez un { -brand-fxa } afin d’obtenir un rapport détaillé et des alertes lors de nouvelles fuites de données.
 fxa-landing-blurb =
     Découvrez ce que les pirates informatiques savent déjà de vous,
     et apprenez à garder une longueur d’avance sur eux.
@@ -228,12 +228,6 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = Cette fuite de données a compromis les informations personnelles suivantes. Si ce n’est pas déjà fait, changez vos mots de passe.
 user-generic-fb-compromised-single = Cette fuite de données a compromis les informations personnelles suivantes.
-guest-fb-compromised-single = Cette fuite de données a compromis les informations personnelles suivantes. Créez un { -brand-fxa } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
-guest-fb-compromised-blurb =
-    { $breachCount ->
-        [one] Cette adresse électronique apparaît également dans une autre fuite de données. Créez un { -brand-fxa } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
-       *[other] Cette adresse électronique apparaît également dans { $breachCount } autres fuites de données. Créez un { -brand-fxa } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
-    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Vous n’apparaissez pas dans la fuite de données { $breachName }, mais nous avons détecté cette adresse électronique dans une autre fuite.
@@ -243,11 +237,6 @@ user-generic-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Cette adresse électronique n’apparaît pas dans la fuite de données { $breachName }, mais a été détectée dans une autre fuite de données.
        *[other] Cette adresse électronique n’apparaît pas dans la fuite de données { $breachName }, mais a été détectée dans d’autres fuite sde données.
-    }
-guest-fb-not-compromised-blurb =
-    { $breachCount ->
-        [one] Cette adresse électronique n’apparaît pas dans la fuite de données { $breachName }, mais a été détectée dans une autre fuite de données. Créez un { -brand-fxa } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
-       *[other] Cette adresse électronique n’apparaît pas dans la fuite de données { $breachName }, mais a été détectée dans d’autres fuites de données. Créez un { -brand-fxa } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -262,13 +251,6 @@ user-generic-found-breaches-blurb =
     { $breachCount ->
         [one] Cette fuite de données a compromis les informations personnelles suivantes.
        *[other] Ces fuites de données ont compromis les informations personnelles suivantes.
-    }
-# While English doesn’t use the actual number of breaches in this sentence,
-# you can use {$breachCount} to display the number of breaches in your localization.
-guest-found-breaches-blurb =
-    { $breachCount ->
-        [one] Cette fuite de données a compromis les informations personnelles suivantes. Créez un { -brand-fxa } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
-       *[other] Ces fuites de données ont compromis les informations personnelles suivantes. Créez un { -brand-fxa } pour recevoir un rapport complet et des alertes en cas de nouvelles fuites de données.
     }
 have-an-account = Vous possédez déjà un compte ?
 signup-banner-sensitive-blurb = Découvrez ce que les pirates informatiques savent déjà de vous, et apprenez à garder une longueur d’avance sur eux. Recevez des alertes si votre compte apparaît dans de nouvelles fuites de données.
@@ -289,3 +271,8 @@ fxa-what-to-do-blurb-4 = Les gestionnaires de mots de passe tels que 1Password, 
 fb-landing-headline = Vos informations ont-elles été compromises dans la fuite de données { $breachName } ?
 copyright = Certaines parties de ce contenu sont © 1999-{ $year } par les contributeurs individuels de mozilla.org.
 content-available = Le contenu est disponible sous licence Creative Commons.
+# Alerts is a noun
+sign-up-for-alerts = Abonnez-vous aux alertes
+sign-up-for-fxa-alerts = Abonnez-vous aux alertes { -product-name }.
+create-free-account = Créez un { -brand-fxa } gratuit pour recevoir un rapport complet sur les fuites de données passées, des alertes pour les nouvelles fuites et des informations à propos des autres services { -brand-Mozilla }.
+get-your-report-and-sign-up = Recevez votre rapport et inscrivez-vous aux alertes.
