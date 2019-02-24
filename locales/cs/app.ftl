@@ -163,10 +163,10 @@ confirmed-social-blurb = Pokud unikla vaše data, je velká šance, že se tak s
 unsub-headline = Odhlásit odběr ze služby { -product-name-nowrap }
 unsub-blurb = Tímto smažete svou e-mailovou adresu ze seznamu služby { -product-name-nowrap } a nebudete nadále dostávat upozornění na nově oznámené úniky dat.
 unsub-button = Odhlásit
-unsub-survey-headline = Již nejste přihlášeni.
-unsub-survey-blurb =
-    Vaše e-mailová adresa byly odhlášena. Děkujeme vám za využití služby { -product-name-nowrap }.
-    Máte prosím okamžik pro odpověď na jednu otázku, jak se vám naše služba používala?
+fxa-unsub-headline = Zrušit zasílání upozornění ze služby { -product-name }.
+fxa-unsub-blurb =
+    { -product-name } vám přestane posílat další upozornění.
+    Váš { -brand-fxa } zůstane aktivní a můžete dostávat další informace z něj.
 unsub-survey-form-label = Z jakého důvodu ohlašujete zasílání upozornění ze služby { -product-name-nowrap }?
 unsub-reason-1 = Nemyslím si, že upozornění pomáhají zabezpečit má data
 unsub-reason-2 = Dostávám ze služby { -product-name-nowrap } příliš mnoho e-mailů
@@ -176,6 +176,11 @@ unsub-reason-5 = Pro sledování svých účtů používám jinou službu
 unsub-reason-6 = Nic z výše uvedeného
 unsub-survey-thankyou = Děkujeme za vaši zpětnou vazbu.
 unsub-survey-error = Vyberte prosím jednu z možností.
+unsub-survey-headline-v2 = Odběr zpravodaje byl odhlášen.
+unsub-survey-blurb-v2 =
+    { -product-name } vám přestane posílat další upozornění.
+    Věnujete prosím pár chvilek na otázku, jak se vám { -product-name } líbil?
+unsub-survey-button = Odeslat odpověď
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Sdílet
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -202,8 +207,6 @@ mozilla-security-blog = Bezpečnostní blog Mozilly
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Sociální sítě
 show-all = Zobrazit vše
-fxa-signup-banner-headline = Sledujte hrozby pro vaše online účty.
-fxa-signup-banner-blurb = Založte si { -brand-fxa } a nechte si posílat podrobná hlášení o nových únicích dat.
 fxa-landing-blurb = Odhalte, co už o vás hackeři vědí, a zůstaňte o krok před nimi.
 fxa-scan-label = Podívejte se, jestli byl váš e-mail součástí nějakého úniku dat.
 fxa-welcome-headline = Vítá vás { -product-name }.
@@ -254,12 +257,12 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = Tento únik obsahoval následující osobní informace. Pokud jste tak ještě neučinili, doporučujeme si změnit heslo.
 user-generic-fb-compromised-single = Tento únik obsahoval následující osobní informace.
-guest-fb-compromised-single = Tento únik obsahoval následující osobní informace. Zaregistrujte si { -brand-fxa } a nechce si poslat podrobné hlášení a upozornění na případné nové úniky.
-guest-fb-compromised-blurb =
+guest-fb-compromised-single-v2 = Tento únik obsahoval následující osobní informace. Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách Mozilly.
+guest-fb-compromised-blurb-v2 =
     { $breachCount ->
-        [one] Tato e-mailová adresa byla součástí také jednoho dalšího úniku. Zaregistrujte si { -brand-fxa } a nechce si poslat podrobné hlášení a upozornění na případné nové úniky.
-        [few] Tato e-mailová adresa byla součástí také { $breachCount } dalších úniků. Zaregistrujte si { -brand-fxa } a nechce si poslat podrobné hlášení a upozornění na případné nové úniky.
-       *[other] Tato e-mailová adresa byla součástí také { $breachCount } dalších úniků. Zaregistrujte si { -brand-fxa } a nechce si poslat podrobné hlášení a upozornění na případné nové úniky.
+        [one] Tato e-mailová adresa byla součástí také jednoho dalšího úniku. Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách Mozilly.
+        [few] Tato e-mailová adresa byla součástí také { $breachCount } dalších úniků. Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách Mozilly.
+       *[other] Tato e-mailová adresa byla součástí také { $breachCount } dalších úniků. Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách Mozilly.
     }
 user-fb-not-compromised-blurb =
     { $breachCount ->
@@ -273,11 +276,11 @@ user-generic-fb-not-compromised-blurb =
         [few] Tato e-mailová adresa nebyla součástí úniku dat { $breachName }, ale našli jsme ji v jiných.
        *[other] Tato e-mailová adresa nebyla součástí úniku dat { $breachName }, ale našli jsme ji v jiných.
     }
-guest-fb-not-compromised-blurb =
+guest-fb-not-compromised-blurb-v2 =
     { $breachCount ->
-        [one] Tato e-mailová adresa nebyla součástí úniku dat { $breachName }, ale našli jsme ji v jiném. Zaregistrujte si { -brand-fxa } a nechce si poslat podrobné hlášení a upozornění na případné nové úniky.
-        [few] Tato e-mailová adresa nebyla součástí úniku dat { $breachName }, ale našli jsme ji v jiných. Zaregistrujte si { -brand-fxa } a nechce si poslat podrobné hlášení a upozornění na případné nové úniky.
-       *[other] Tato e-mailová adresa nebyla součástí úniku dat { $breachName }, ale našli jsme ji v jiných. Zaregistrujte si { -brand-fxa } a nechce si poslat podrobné hlášení a upozornění na případné nové úniky.
+        [one] Tato e-mailová adresa nebyla součástí úniku dat { $breachName }, ale našli jsme ji v jiném. Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách Mozilly.
+        [few] Tato e-mailová adresa nebyla součástí úniku dat { $breachName }, ale našli jsme ji v jiných. Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách Mozilly.
+       *[other] Tato e-mailová adresa nebyla součástí úniku dat { $breachName }, ale našli jsme ji v jiných. Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách Mozilly.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -294,14 +297,6 @@ user-generic-found-breaches-blurb =
         [one] Tento únik obsahoval následující osobní informace.
         [few] Tyto úniky obsahovaly následující osobní informace.
        *[other] Tyto úniky obsahovaly následující osobní informace.
-    }
-# While English doesn’t use the actual number of breaches in this sentence,
-# you can use {$breachCount} to display the number of breaches in your localization.
-guest-found-breaches-blurb =
-    { $breachCount ->
-        [one] Tento únik obsahoval následující osobní informace. Zaregistrujte si { -brand-fxa } a nechce si poslat podrobné hlášení a upozornění na případné nové úniky.
-        [few] Tyto úniky obsahovaly následující osobní informace. Zaregistrujte si { -brand-fxa } a nechce si poslat podrobné hlášení a upozornění na případné nové úniky.
-       *[other] Tyto úniky obsahovaly následující osobní informace. Zaregistrujte si { -brand-fxa } a nechce si poslat podrobné hlášení a upozornění na případné nové úniky.
     }
 have-an-account = Už máte účet?
 signup-banner-sensitive-blurb =
@@ -326,3 +321,8 @@ fxa-what-to-do-blurb-4 = Správci hesel jako 1Password, LastPass, Dashlane a Bit
 fb-landing-headline = Byly vaše údaje součástí úniku dat - { $breachName }?
 copyright = Části tohoto obsahu jsou © 1999-{ $year } jednotlivými přispěvateli mozilla.org.
 content-available = Obsah je dostupný pod licencí Creative Commons.
+# Alerts is a noun
+sign-up-for-alerts = Posílat upozornění
+sign-up-for-fxa-alerts = Přihlásit se k posílání upozornění od služby { -product-name }.
+create-free-account = Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách Mozilly.
+get-your-report-and-sign-up = Získejte hlášení a přihlaste se k odběru upozornění.
