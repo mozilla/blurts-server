@@ -155,6 +155,9 @@ unsub-reason-6 = Aucune de ces propositions
 unsub-survey-thankyou = Merci de votre retour.
 unsub-survey-error = Veuillez choisir une proposition.
 unsub-survey-headline-v2 = Votre désinscription est effectuée.
+unsub-survey-blurb-v2 =
+    Vous ne recevrez plus d’alertes { -product-name }.
+    Acceptez-vous de prendre un instant pour répondre à une question sur votre expérience ?
 unsub-survey-button = Envoyer la réponse
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Partager
