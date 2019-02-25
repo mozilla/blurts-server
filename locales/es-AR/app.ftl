@@ -135,8 +135,8 @@ confirmed-social-blurb = Si tuviste un problema de seguridad, es probable que tu
 unsub-headline = Cancelar la suscripción de { -product-name-nowrap }
 unsub-blurb = Esto eliminará tu dirección de correo electrónico de la lista { -product-name-nowrap } y ya no recibirás alertas cuando se anuncien nuevas violaciones.
 unsub-button = Cancelar suscripción
-unsub-survey-headline = Ya no estás suscripto.
-unsub-survey-blurb = Tu dirección de correo electrónico se eliminó de la suscripción a { -product-name-nowrap }. Gracias por utilizar este servicio. ¿Podrás tomarte un momento para responder una pregunta sobre tu experiencia?
+fxa-unsub-headline = Cancelar las alertas de { -product-name }.
+fxa-unsub-blurb = Ya no recibirás las alertas de { -product-name }. Tu { -brand-fxa } permanecerá activa, y podrías recibir otras comunicaciones relacionadas con la cuenta.
 unsub-survey-form-label = ¿Por qué cancelás la suscripción de las alertas de { -product-name-nowrap }?
 unsub-reason-1 = Creo que las alertas no hacen que mis datos estén más seguros.
 unsub-reason-2 = Recibo demasiados correos electrónicos de { -product-name-nowrap }
@@ -146,6 +146,11 @@ unsub-reason-5 = Estoy usando otro servicio para monitorear mis cuentas
 unsub-reason-6 = Ninguna de las mencionadas
 unsub-survey-thankyou = Gracias por tu opinión.
 unsub-survey-error = Por favor seleccioná uno.
+unsub-survey-headline-v2 = Cancelaste tu suscripción.
+unsub-survey-blurb-v2 =
+    Ya no recibirás las alertas de { -product-name }.
+    ¿Podrías tomarte un momento para responder una pregunta sobre tu experiencia?
+unsub-survey-button = Enviar la Respuesta
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Compartir
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -172,8 +177,6 @@ mozilla-security-blog = Blog de seguridad de { -brand-Mozilla }
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Social
 show-all = Mostrar todo
-fxa-signup-banner-headline = Monitorea las amenazas a tus cuentas en línea.
-fxa-signup-banner-blurb = Registrate en { -brand-fxa } para obtener un informe detallado y alertas sobre nuevas violaciones de datos.
 fxa-landing-blurb =
     Descubrí lo que los piratas ya saben acerca tuyo,
     y aprendé cómo estar un paso adelante de ellos.
@@ -224,18 +227,6 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = Esta violación expuso la siguiente información personal. Si todavía no cambiaste las contraseñas, hacelo ya.
 user-generic-fb-compromised-single = Esta violación expuso la siguiente información personal.
-guest-fb-compromised-single =
-    Esta violación expuso la siguiente información personal. Registrate en { -brand-fxa }
-    para obtener un informe completo y alertas sobre nuevas violaciones.
-guest-fb-compromised-blurb =
-    { $breachCount ->
-        [one]
-            Este correo electrónico también apareció en { $breachCount } otra violación. Registrate en
-            { -brand-fxa } para obtener un informe completo y alertas sobre nuevas violaciones.
-       *[other]
-            Este correo electrónico también apareció en { $breachCount } otras violaciones. Registrate 
-            { -brand-fxa } para obtener un informe completo y alertas sobre nuevas violaciones .
-    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
         [one] No estabas en la violación { $breachName }, pero encontramos esa dirección de correo electrónico en otra.
@@ -245,15 +236,6 @@ user-generic-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Este correo electrónico no estaba en la violación { $breachName }, pero se encontró en otra.
        *[other] Este correo electrónico no estaba en la violación { $breachName }, pero se encontró en otras.
-    }
-guest-fb-not-compromised-blurb =
-    { $breachCount ->
-        [one]
-            Este correo electrónico no estaba en la violación { $breachName }, pero se encontró en otra.
-            Registratepara tener { -brand-fxa } para obtener un informe completo y alertas sobre nuevas violaciones.
-       *[other]
-            Este correo electrónico no estaba en la violación { $breachName }, pero se encontró en otras.
-            Registrate para tener { -brand-fxa } para obtener tu informe completo y alertas sobre nuevas violaciones.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -268,13 +250,6 @@ user-generic-found-breaches-blurb =
     { $breachCount ->
         [one] Esta violación expuso la siguiente información personal.
        *[other] Estas violaciones expusieron la siguiente información personal.
-    }
-# While English doesn’t use the actual number of breaches in this sentence,
-# you can use {$breachCount} to display the number of breaches in your localization.
-guest-found-breaches-blurb =
-    { $breachCount ->
-        [one] Esta violación expuso la siguiente información personal. Registrate en { -brand-fxa } para obtener un informe completo y alertas sobre nuevas violaciones.
-       *[other] Estas violaciones expusieron la siguiente información personal. Registrate { -brand-fxa } para obtener un informe completo y alertas sobre nuevas violaciones.
     }
 have-an-account = ¿Ya tenés una cuenta?
 signup-banner-sensitive-blurb =
