@@ -35,16 +35,20 @@ const FxAOAuthClient = new ClientOAuth2({
   scopes: ["profile"],
 });
 
+
 function init(req, res, next, client = FxAOAuthClient) {
   // Set a random state string in a cookie so that we can verify
   // the user when they're redirected back to us after auth.
   const state = crypto.randomBytes(40).toString("hex");
   req.session.state = state;
   const url = new URL(client.code.getUri({state}));
+  const fxaParams = new URL(req.url, AppConstants.SERVER_URL);
+
   url.searchParams.append("access_type", "offline");
   url.searchParams.append("action", "email");
-  if (req.query.scanned) {
-    url.searchParams.append("email", req.query.scanned);
+
+  for (const param of fxaParams.searchParams.keys()) {
+    url.searchParams.append(param, fxaParams.searchParams.get(param));
   }
   res.redirect(url);
 }

@@ -2,6 +2,7 @@
 /* global ga */
 /* global libpolycrypt */
 /* global sendPing */
+/* global getFxaUtms */
 
 
 if (typeof TextEncoder === "undefined") {
@@ -127,14 +128,18 @@ function removeInvalidMessage(e) {
   thisForm.classList.remove("invalid");
 }
 
-function doOauth() {
+function doOauth(el) {
+  let url = new URL("/oauth/init", document.body.dataset.serverUrl);
+  url = getFxaUtms(url);
+  ["flowId", "flowBeginTime", "entrypoint"].forEach(key => {
+    url.searchParams.append(key, encodeURIComponent(el.dataset[key]));
+  });
   if (localStorage.getItem("scanned")) {
-    const scannedEmail = localStorage.getItem("scanned");
-    window.location.assign(`/oauth/init/?scanned=${encodeURIComponent(scannedEmail)}`);
+    const lastScannedEmail = localStorage.getItem("scanned");
     localStorage.removeItem("scanned");
-  } else {
-    window.location.assign("/oauth/init");
+    url.searchParams.append("email", encodeURIComponent(lastScannedEmail));
   }
+  window.location.assign(url);
 }
 
 // restricts tabbing to modal elements when modal is open.
@@ -426,7 +431,7 @@ function handleFormSubmits(formEvent) {
 async function doButtonRouting(event) {
   if (document.body.dataset.fxaEnabled === "fxa-enabled") {
     if (event.target.classList.contains("sign-up-button") || event.target.id === "login-btn" || event.target.classList.contains("open-oauth")) {
-      return doOauth();
+      return doOauth(event.target);
     }
   } else {
     if (event.target.id === "sign-up") {
