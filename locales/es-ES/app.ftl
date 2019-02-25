@@ -156,10 +156,7 @@ confirmed-social-blurb = Si tus datos han sido filtrados es probable que los de 
 unsub-headline = Cancelar la suscripción de  { -product-name-nowrap }.
 unsub-blurb = Esto eliminará tu correo electrónico de la lista de { -product-name-nowrap } y ya no recibirás alertas cuando se anuncien nuevas filtraciones.
 unsub-button = Cancelar suscripción
-unsub-survey-headline = Ya no estás suscrito.
-unsub-survey-blurb =
-    Se ha cancelado la suscripción de tu correo electrónico a { -product-name-nowrap }. Gracias por utilizar este servicio.
-    ¿Podrías dedicar un momento para responder una pregunta sobre tu experiencia?
+fxa-unsub-headline = Cancelar suscripción a las alertas de { -product-name }.
 unsub-survey-form-label = ¿Por qué cancelas la suscripción a las alertas de { -product-name-nowrap }?
 unsub-reason-1 = Creo que las alertas no hacen que mis datos estén más seguros
 unsub-reason-2 = Recibo muchos correos electrónicos de { -product-name-nowrap }
@@ -169,6 +166,9 @@ unsub-reason-5 = Estoy usando otro servicio para vigilar mis cuentas
 unsub-reason-6 = Ninguno de las anteriores
 unsub-survey-thankyou = Gracias por tu opinión.
 unsub-survey-error = Por favor selecciona uno.
+unsub-survey-headline-v2 = Se ha cancelado tu suscripción.
+unsub-survey-blurb-v2 = Ya no recibirás alertas de { -product-name }. ¿Tienes un momento para responder a una pregunta sobre tu experiencia?
+unsub-survey-button = Enviar respuesta
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Compartir
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -195,8 +195,8 @@ mozilla-security-blog = Blog de seguridad de { -brand-Mozilla }
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Social
 show-all = Mostrar todo
-fxa-signup-banner-headline = Monitorea las amenazas a tus cuentas en línea.
 fxa-welcome-headline = Bienvenido a { -product-name }.
+fxa-scan-another-email = ¿Quieres comprobar otra dirección de correo?
 # Search Firefox Monitor
 fxa-scan-submit = Buscar { -product-name }
 sign-in = Iniciar sesión
@@ -206,4 +206,56 @@ see-full-report = Ver informe completo
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Gestionar { -brand-fxa }
 fxa-download-firefox-bar-link = Descargar ahora
+user-fb-compromised-headline = { $userEmail } apareció en la filtración de datos de { $breachName }.
+guest-fb-compromised-headline = Esta dirección de correo apareció en la filtración de datos de { $breachName }.
+user-zero-breaches-headline = { $userEmail } no apareció en ninguna filtración de datos.
+guest-zero-breaches-headline = Esta dirección de correo no apareció en ninguna filtración de datos.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } apareció en 1 filtración de datos.
+       *[other] { $userEmail } apareció en { $breachCount } filtraciones de datos.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Esta dirección de correo apareció en 1 filtración de datos.
+       *[other] Esta dirección de correo apareció en { $breachCount } filtraciones de datos.
+    }
+user-no-breaches-blurb = Te informaremos si esta dirección de correo aparece en una nueva filtración de datos.
+user-one-breach-blurb = Esta filtración expuso la siguiente información personal.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Tu dirección de correo también apareció en otra filtración.
+       *[other] Tu dirección de correo también apareció en otras { $breachCount } filtraciones.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Esta dirección de correo también apareció en otra filtración.
+       *[other] Esta dirección de correo también apareció en otras { $breachCount } filtraciones.
+    }
+user-fb-compromised-single = Esta filtración expuso la siguiente información personal. Si no lo has hecho aún, cambia tus contraseñas.
+user-generic-fb-compromised-single = Esta filtración expuso la siguiente información personal.
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] No se expuso tu información en la filtración de { $breachName }, pero encontramos esa dirección de correo en otra filtración.
+       *[other] No se expuso tu información en la filtración de { $breachName }, pero encontramos esa dirección de correo en otras filtraciones.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Esta dirección de correo no se expuso en la filtración de { $breachName }, pero sí en otra.
+       *[other] Esta dirección de correo no se expuso en la filtración de { $breachName }, pero sí en otras.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] Esta filtración expuso la siguiente información personal. Si no lo has hecho aún, cambia tus contraseñas.
+       *[other] Estas filtraciones expusieron la siguiente información personal. Si no lo has hecho aún, cambia tus contraseñas.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Esta filtración expuso la siguiente información personal.
+       *[other] Estas filtraciones expusieron la siguiente información personal.
+    }
 have-an-account = ¿Ya tienes una cuenta?
