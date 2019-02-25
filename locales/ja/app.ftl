@@ -152,10 +152,6 @@ confirmed-social-blurb = あなたのアカウントが侵害された場合、�
 unsub-headline = { -product-name-nowrap } の登録を解除
 unsub-blurb = 登録を解除すると、あなたのメールアドレスを { -product-name-nowrap } のリストから削除し、新たなデータ侵害があっても通知を受け取れなくなります。
 unsub-button = 登録解除
-unsub-survey-headline = 登録を解除しました。
-unsub-survey-blurb =
-    あなたのメールアドレスは { -product-name-nowrap } の登録を解除されました。サービスをご利用いただきありがとうございました。
-    よろしければ、サービス利用についての質問にお答えください。
 unsub-survey-form-label = { -product-name-nowrap } からの通知を登録解除した理由をお聞かせください。
 unsub-reason-1 = 通知はデータの安全を守るのに役立っていない
 unsub-reason-2 = { -product-name-nowrap } からのメールが多すぎる
@@ -165,6 +161,7 @@ unsub-reason-5 = アカウントの監視に別のサービスを利用してい
 unsub-reason-6 = 上記のいずれにも当てはまらない
 unsub-survey-thankyou = フィードバックをありがとうございます。
 unsub-survey-error = いずれか一つを選んでください。
+unsub-survey-headline-v2 = 購読を解除しました。
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = 共有
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -182,12 +179,18 @@ confirmation-blurb = データ侵害は他の人にも影響を及ぼす可能�
 share-email = メールアドレス
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = その他
+mozilla-security-blog = { -brand-Mozilla } セキュリティブログ
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = ソーシャル
+show-all = すべて表示
 fxa-scan-label = データが侵害されていないか確認してください。
+fxa-welcome-headline = { -product-name } へようこそ。
 # Search Firefox Monitor
 fxa-scan-submit = { -product-name } で検索する
 sign-up-to-check = アカウント登録してチェックする
 sign-in = ログイン
 sign-out = ログアウト
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = { -brand-fxa }の管理
+fxa-download-firefox-bar-link = 今すぐダウンロード
 have-an-account = 既にアカウントをお持ちですか？
