@@ -227,6 +227,14 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = Esta violación expuso la siguiente información personal. Si todavía no cambiaste las contraseñas, hacelo ya.
 user-generic-fb-compromised-single = Esta violación expuso la siguiente información personal.
+guest-fb-compromised-single-v2 =
+    Esta violacación expuso la siguiente información personal.
+    Creá una { -brand-fxa } gratuita para recibir un informe completo de violaciones anteriores, alertas sobre nuevas violaciones e información acerca de otros servicios de { -brand-Mozilla }.
+guest-fb-compromised-blurb-v2 =
+    { $breachCount ->
+        [one] Este correo electrónico apareció también en { $breachCount } otra violación. Creá una { -brand-fxa } gratuita para recibir un informe completo de violaciones anteriores, alertas sobre nuevas violaciones e información acerca de otros servicios de { -brand-Mozilla }.
+       *[other] Este correo electrónico apareció también en { $breachCount } otras violaciones. Creá una { -brand-fxa } gratuita para recibir un informe completo de violaciones anteriores, alertas sobre nuevas violaciones e información acerca de otros servicios de { -brand-Mozilla }.
+    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
         [one] No estabas en la violación { $breachName }, pero encontramos esa dirección de correo electrónico en otra.
