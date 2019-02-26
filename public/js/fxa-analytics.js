@@ -54,6 +54,7 @@ const getFxaUtms = (url) => {
   const utmSource = encodeURIComponent(document.body.dataset.serverUrl.replace(/(^\w+:|^)\/\//g, ""));
   url.searchParams.append("utm_source", utmSource);
   url.searchParams.append("utm_campaign", document.body.dataset.utmCampaign);
+  url.searchParams.append("form_type", "email");
   return url;
 };
 
