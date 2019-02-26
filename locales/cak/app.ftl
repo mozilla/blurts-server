@@ -331,3 +331,15 @@ fxa-what-to-do-blurb-3 =
     K'ïy chi ke ri taq tz'ilanïk xa xe yekik'üt ri taq taqoya'l chuqa' ri ewan taq tzij, po k'o ri nikik'üt retamab'al pwaqil.
     We ri rajilab'al rub'i' rutaqoya'l apwaqb'al o t'impwäq xek'ut, taya' rutzijol ri k'ayewal chi re ri apwaqb'al chi rik'in jub'a' xke'eleq'.
     Tachajij xab'achike tojïk ri man awetaman ta chi xab'än.
+fxa-what-to-do-subhead-4 = Tak'ulu' ato'ik richin ye'anataj ronojel ri ewan taq atzij chuqa' richin junelïk kejike'.
+fxa-what-to-do-blurb-4 =
+    Nuk'samajel ewan taq tzij achi'el 1Password, LastPass, Dashlane chuqa' Bitwarden yeruyäk ri 
+    ewan taq atzij chuqa' ke'awokisaj pa ri ajk'amaya'l taq ruxaq. Tawokisaj jun kinuk'samajel ewan taq tzij pan awoyonib'al chuqa' kematz'ib' richin chi man k'atzinel ta ye'anataj konojel.
+fb-landing-headline = ¿La xk'ut ri ichinan awetamab'al pa { $breachName } kitz'ilanik taq tzij?
+copyright = Jun peraj chi re re rupam etamab'äl re' e © 1999-{ $year } ruma juyonil taq kito'onela' mozilla.org.
+content-available = Rupam etamab'äl wachel achi'el richin jun Creative Commons ya'oj q'ij.
+# Alerts is a noun
+sign-up-for-alerts = Tatz'ib'aj ab'i' richin Ye'ak'üt Kitzijol K'ayewal
+sign-up-for-fxa-alerts = Tatz'ib'aj ab'i' richin nak'ül kitzijol kik'ayewal { -product-name }.
+create-free-account = Tatz'uku' jun sipan { -brand-fxa } richin jun tz'aqät kitzijol tz'ilanïk xek'ulwachitäj yan, k'ak'a' taq tz'ilanïk chuqa' kitzijol taq k'ayewal chuqa' etamab'äl chi kij ch'aqa' chik taq kisamaj { -brand-Mozilla }.
+get-your-report-and-sign-up = Tak'ulu' atzijol chuqa' tatz'ib'aj ab'i' richin ye'ak'ül kitzijol k'ayewal.
