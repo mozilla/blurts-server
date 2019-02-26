@@ -226,3 +226,36 @@ fxa-download-firefox-bar-link = Tiqasäx wakami
 fxa-download-firefox-banner-blurb = Jun jeb'ël chuqa' aninäq kisamajib'exik taq ruxaq, ri nrokisaj jub'a' rutzatzqob'al kematz'ib'.
 user-fb-compromised-headline = { $userEmail } xwachin pa ri { $breachName } rutz'ilanik tzij.
 guest-fb-compromised-headline = Re taqoya'l re' xwachin pa ri { $breachName } rutzilanik tzij.
+user-zero-breaches-headline = { $userEmail } xwachin pa majun kitz'ilanik tzij.
+guest-zero-breaches-headline = Re taqoya'l re' xwachin pa majun kitz'ilanik tzij.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } xwachin pa 1 rutz'ilanik tzij.
+       *[other] { $userEmail } xwachin pa { $breachCount } kitz'ilanik tzij.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Re taqoya'l re' xwachin pa 1 rutz'ilanik tzij.
+       *[other] Re taqoya'l re' xwachin pa { $breachCount } kitz'ilanik tzij.
+    }
+user-no-breaches-blurb = Xtiqaya' rutzijol chawe we re rochochib'al taqoya'l re' xtiwachin pa jun k'ak'a' kitz'ilanik tzij.
+guest-no-breaches-blurb =
+    Richin nitz'et we re taqoya'l re' niwachin pan ichinan taq tz'ilanïk, tatz'uku' jun { -brand-fxa }.
+    Chuqa' xtiqaya' rutzijol chawe we re ochochib'äl re' niwachin pa k'ak'a' kitz'ilanik tzij.
+user-one-breach-blurb = Re kitz'ilanik tzij re' nuq'alajisaj re ichinan etamab'äl re'.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Ri ataqoya'l xwachin pa { $breachCount } jun chik rutz'ilanik tzij.
+       *[other] Ri ataqoya'l xwachin pa { $breachCount } ch'aqa' chik kitz'ilanik tzij.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Re ataqoya'l re' xwachin pa { $breachCount } jun chik rutz'ilanik tzij.
+       *[other] Re ataqoya'l re' xwachin pa { $breachCount } ch'aqa' kitz'ilanik tzij.
+    }
+user-fb-compromised-single = Re tz'ilanïk tzij re' nuk'üt re ichinan etamab'äl re'. We k'a man ajalon ta ri ewan atzij, utziläj ramaj richin najäl.
+user-generic-fb-compromised-single = Re tz'ilanïk re' nuk'üt re ichinan etamab'äl re'.
+guest-fb-compromised-single-v2 =
+    Re tz'ilanïk re' xuk'üt re ichinan etamab'äl re'.
+    Tatz'uku' jun sipan { -brand-fxa } richin nak'ül jun tz'aqät kitzijol tz'ilanïk xek'ulwachitäj yan, kitzijol k'ayewal k'ak'a' taq tz'ilanïk 
+    chuqa' etamab'äl chi kij ch'aqa' chik taq kisamaj { -brand-Mozilla }.
