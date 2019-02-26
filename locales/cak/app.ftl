@@ -309,3 +309,25 @@ signup-banner-sensitive-blurb =
 fxa-pwt-section-blurb =
     Ri ewan taq tzij nikichajij ronojel ri ichinan awetamab'al pa kib'i' ataqoya'l pa k'amab'ey. Chuqa'
     ri ajjaker kikuqub'an kik'u'x chi rij ri itzel taq na'oj, achi'el toq nawokisaj ri ewan atzij pa ronojel k'ojlib'äl o nawokisaj ri jutaqil taq pajtzij (@ p @ ssw0rd, ¿jun winäq?) richin nikib'än jakyar jun rub'i' taqoya'l.
+fxa-pwt-summary-2 =
+    Ko'öl ewan taq tzij chuqa' xa jun kitzij man k'ayew ta nub'än chi kiwäch ri ajjaköy richin nikïl.
+    Tawokisaj ka'i' tzij chuqa' jun tunuj tz'ib', ajilab'äl chuqa' nïm taq tz'ib'.
+fxa-pwt-summary-4 =
+    Nuk'samajel ewan taq tzij achi'el 1Password, LastPass, Dashlane chuqa' Bitwarden yeruyäk ri 
+    ewan taq atzij chuqa' ke'awokisaj pa ri ajk'amaya'l taq ruxaq. Xkatkito' richin ye'atz'ük nïm ewan taq atzij.
+fxa-pwt-summary-6 =
+    Yek'ïr ri kitz'ilanik taq tzij. We ri awetamab'al xtiwachin pa jun k'ak'a' kitz'ilanik tzij,
+    { -product-name } nutäj jun rutzijol k'ayewal chawe richin nachajij awi' chuqa' ye'achajij ri kib'i' taq ataqoya'l.
+fxa-what-to-do-blurb-1 =
+    We man yatikïr ta natikirisaj molojri'ïl, katzijon rik'in ajk'amaya'l ruxaq richin nak'utuj achike rub'eyal nak'ëx.
+    ¿La natz'ët jun rub'i' taqoya'l ri man awetaman ta ruwäch? Rik'in jub'a' yek'ayïx ri taq atzij
+    o xetalüx. Re re' chuqa' rik'in jub'a' jun rub'i' taqoya'l amestan chi xatz'ük o o jun rub'i' ajk'ayij ri xujäl rub'i'.
+fxa-what-to-do-subhead-2 = Man tawokisaj chik ri ewan tzij xk'ut, chuqa' tajala' pa ronojel k'ojlib'äl akuchi' xawokisaj.
+fxa-wtd-blurb-2 =
+    Ri ajjaköy rik'in jub'a' xtikitojtob'ej xtikokisaj chik ri ewan atzij xk'ut richin ye'ok pa ch'aqa' chik kib'i' taq taqoya'l.
+    Tatz'uku' jun chuqa' jalan ewan tzij richin jun ajk'amaya'l ruxaq, achi'el pa rub'i' ataqoya'l richin pwaqb'äl,
+    ataqoya'l chuqa' ch'aqa' chik ajk'amaya'l taq ruxaq akuchi' ye'ayäk ichinan awetamab'al.
+fxa-what-to-do-blurb-3 =
+    K'ïy chi ke ri taq tz'ilanïk xa xe yekik'üt ri taq taqoya'l chuqa' ri ewan taq tzij, po k'o ri nikik'üt retamab'al pwaqil.
+    We ri rajilab'al rub'i' rutaqoya'l apwaqb'al o t'impwäq xek'ut, taya' rutzijol ri k'ayewal chi re ri apwaqb'al chi rik'in jub'a' xke'eleq'.
+    Tachajij xab'achike tojïk ri man awetaman ta chi xab'än.
