@@ -111,3 +111,7 @@ user-website-urls = URLs richin ri ajk'amaya'l ruxaq okisanel
 usernames = Kib'i' okisanela'
 utility-bills = Rurut' chanpomanil samaj
 vehicle-details = Rub'anikil ch'ich'
+website-activity = Rusamaj ajk'amaya'l ruxaq
+work-habits = Kik'ulunem samaj
+years-of-birth = Taq rujuna' alaxinem
+years-of-professional-experience = Taq rujuna' retamab'al ajtij
