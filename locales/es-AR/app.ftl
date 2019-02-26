@@ -245,6 +245,11 @@ user-generic-fb-not-compromised-blurb =
         [one] Este correo electrónico no estaba en la violación { $breachName }, pero se encontró en otra.
        *[other] Este correo electrónico no estaba en la violación { $breachName }, pero se encontró en otras.
     }
+guest-fb-not-compromised-blurb-v2 =
+    { $breachCount ->
+        [one] Este correo no estaba en la violación { $breachName }, pero se encontró en otra. Creá una { -brand-fxa } gratuita para recibir un informe completo de violaciones anteriores, alertas sobre nuevas  violaciones e información acerca de otros servicios de { -brand-Mozilla }.
+       *[other] Este correo no estaba en la violación { $breachName }, pero se encontró en otras. Creá una { -brand-fxa } gratuita para recibir un informe completo de violaciones anteriores, alertas sobre nuevas  violaciones e información acerca de otros servicios de { -brand-Mozilla }.
+    }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
 user-found-breaches-blurb =
@@ -285,3 +290,8 @@ fxa-what-to-do-blurb-4 = Los administradores de contraseñas como 1Password, Las
 fb-landing-headline = ¿Tu información fue expuesta en la violación de datos de { $breachName }?
 copyright = Partes de este contenido son © 1999- { $year } por los contribuyentes individuales de mozilla.org.
 content-available = Contenido disponible bajo licencia de Creative Commons.
+# Alerts is a noun
+sign-up-for-alerts = Registrate para recibir alertas
+sign-up-for-fxa-alerts = Registrate para recibir alertas de { -product-name }.
+create-free-account = Creá una { -brand-fxa } gratuita para tu informe completo de violaciones pasadas, nuevas violaciones y alertas e información sobre otros servicios de { -brand-Mozilla }.
+get-your-report-and-sign-up = Conseguí tu informe y registrate para recibir alertas.
