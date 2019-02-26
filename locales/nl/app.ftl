@@ -152,6 +152,11 @@ confirmed-social-blurb = Als uw account is gelekt, bestaat de kans dat uw vriend
 unsub-headline = Uitschrijven van { -product-name-nowrap }
 unsub-blurb = Dit verwijdert uw e-mailadres uit de lijst van { -product-name-nowrap } en u ontvangt geen waarschuwingen meer wanneer nieuwe lekken worden bekendgemaakt.
 unsub-button = Uitschrijven
+fxa-unsub-headline = Uitschrijven voor { -product-name }-waarschuwingen.
+fxa-unsub-blurb =
+    U ontvangt geen { -product-name }- waarschuwingen meer. 
+    Uw { -brand-fxa } blijft actief, en u ontvangt mogelijk andere 
+    account-gerelateerde berichten.
 unsub-survey-form-label = Waarom schrijft u zich uit voor waarschuwingen van { -product-name-nowrap }?
 unsub-reason-1 = Ik denk niet dat waarschuwingen mijn gegevens veiliger maken
 unsub-reason-2 = Ik krijg te veel e-mailberichten van { -product-name-nowrap }
@@ -161,6 +166,11 @@ unsub-reason-5 = Ik gebruik een andere service om mijn accounts te bewaken
 unsub-reason-6 = Geen van bovenstaande
 unsub-survey-thankyou = Bedankt voor uw feedback.
 unsub-survey-error = Selecteer er één.
+unsub-survey-headline-v2 = U bent uitgeschreven.
+unsub-survey-blurb-v2 =
+    U ontvangt geen { -product-name }-waarschuwingen meer. 
+    Hebt u een ogenblik om een vraag over uw ervaring te beantwoorden?
+unsub-survey-button = Antwoord indienen
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Delen
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -237,6 +247,15 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = Dit lek heeft de volgende persoonlijke gegevens gelekt. Wijzig uw wachtwoorden, als u dit nog niet hebt gedaan.
 user-generic-fb-compromised-single = Dit lek heeft de volgende persoonlijke gegevens gelekt.
+guest-fb-compromised-single-v2 =
+    Bij dit lek zijn de volgende persoonlijke gegevens gelekt. 
+    Maak een gratis { -brand-fxa } voor uw volledige rapport over eerdere lekken, waarschuwingen voor nieuwe lekken 
+    en informatie over andere services van { -brand-Mozilla }.
+guest-fb-compromised-blurb-v2 =
+    { $breachCount ->
+        [one] Dit e-mailadres komt ook voor in { $breachCount } ander lek. Maak een gratis { -brand-fxa } voor uw volledige rapport over eerdere lekken, waarschuwingen voor nieuwe lekken en informatie over andere services van { -brand-Mozilla }.
+       *[other] Dit e-mailadres komt ook voor in { $breachCount } andere lekken. Maak een gratis { -brand-fxa } voor uw volledige rapport over eerdere lekken, waarschuwingen voor nieuwe lekken en informatie over andere services van { -brand-Mozilla }.
+    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
         [one] U bent niet getroffen door het { $breachName }-lek, maar we hebben dat e-mailadres in een ander lek gevonden.
@@ -249,8 +268,8 @@ user-generic-fb-not-compromised-blurb =
     }
 guest-fb-not-compromised-blurb-v2 =
     { $breachCount ->
-        [one] Dit e-mailadres staat niet in het { $breachName }-lek, maar wel in een ander. Maak een gratis { -brand-fxa } voor uw volledige rapport over eerdere lekken, waarschuwingen voor nieuwe lekken en informatie over andere services van { -brand-Mozilla }.
-       *[other] Dit e-mailadres staat niet in het { $breachName }-lek, maar wel in andere. Maak een gratis { -brand-fxa } voor uw volledige rapport over eerdere lekken, waarschuwingen voor nieuwe lekken en informatie over andere services van { -brand-Mozilla }.
+        [one] Dit e-mailadres komt niet voor in het { $breachName }-lek, maar wel in een ander. Maak een gratis { -brand-fxa } voor uw volledige rapport over eerdere lekken, waarschuwingen voor nieuwe lekken en informatie over andere services van { -brand-Mozilla }.
+       *[other] Dit e-mailadres komt niet voor in het { $breachName }-lek, maar wel in andere. Maak een gratis { -brand-fxa } voor uw volledige rapport over eerdere lekken, waarschuwingen voor nieuwe lekken en informatie over andere services van { -brand-Mozilla }.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -299,4 +318,7 @@ content-available = Inhoud is beschikbaar onder een Creative Commons-licentie.
 # Alerts is a noun
 sign-up-for-alerts = Inschrijven voor waarschuwingen
 sign-up-for-fxa-alerts = Schrijf u in voor { -product-name }-waarschuwingen.
+create-free-account =
+    Maak een gratis { -brand-fxa } voor uw volledige rapport over eerdere lekken, waarschuwingen voor 
+    nieuwe lekken en informatie over andere services van { -brand-Mozilla }.
 get-your-report-and-sign-up = Haal uw rapport op en schrijf u in voor waarschuwingen.
