@@ -259,3 +259,53 @@ guest-fb-compromised-single-v2 =
     Re tz'ilanïk re' xuk'üt re ichinan etamab'äl re'.
     Tatz'uku' jun sipan { -brand-fxa } richin nak'ül jun tz'aqät kitzijol tz'ilanïk xek'ulwachitäj yan, kitzijol k'ayewal k'ak'a' taq tz'ilanïk 
     chuqa' etamab'äl chi kij ch'aqa' chik taq kisamaj { -brand-Mozilla }.
+guest-fb-compromised-blurb-v2 =
+    { $breachCount ->
+        [one]
+            Re taqoya'l re' xwachin pa { $breachCount } jun chik tz'ilanïk. Tatz'uku' jun
+            sipan { -brand-fxa } richin nak'ül jun tz'aqät rutzijol tz'ilanïk xek'ulwachitäj yan, kitzijol taq k'ayewal chi kij k'ak'a' taq tz'ilanïk chuqa' taq etamab'äl chi kij ch'aqa' chik taq rusamaj{ -brand-Mozilla }.
+       *[other]
+            Re taqoya'l re' xwachin pa { $breachCount } jun chik tz'ilanïk. Tatz'uku' jun
+            sipan { -brand-fxa } richin nak'ül tz'aqät taq kitzijol tz'ilanïk xek'ulwachitäj yan, kitzijol taq k'ayewal chi kij k'ak'a' taq tz'ilanïk chuqa' taq etamab'äl chi kij ch'aqa' chik taq rusamaj{ -brand-Mozilla }.
+    }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Man at k'o ta pa ri { $breachName } tz'ilanïk, xa xe chi xqïl ri rochochib'al taqoya'l ri' pa jun chik.
+       *[other] Man at k'o ta pa ri { $breachName } tz'ilanïk, xa xe chi xqïl ri rochochib'al taqoya'l ri' pa ch'aqa' chik.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Man at k'o ta pa ri { $breachName } tz'ilanïk, xa xe chi xqïl ri rochochib'al taqoya'l ri' pa jun chik.
+       *[other] Man at k'o ta pa ri { $breachName } tz'ilanïk, xa xe chi xqïl ri rochochib'al taqoya'l ri' pa ch'aqa' chik.
+    }
+guest-fb-not-compromised-blurb-v2 =
+    { $breachCount ->
+        [one]
+            Man at k'o ta pa ri { $breachName } tz'ilanïk, xa xe chi xqïl ri rochochib'al taqoya'l ri' pa jun chik.
+            Tatz'uku' jun sipan { -brand-fxa } richin nak'ül jun tz'aqät kitzijol taq tz'ilanïk xek'ulwachitäj yan, kitzijol k'ayewal k'ak'a' taq tz'ilanïk chuqa' etamab'äl chi kij ch'aqa' chik taq rusamaj { -brand-Mozilla }.
+       *[other]
+            Man at k'o ta pa ri { $breachName } tz'ilanïk, xa xe chi xqïl ri rochochib'al taqoya'l ri' pa ch'aqa' chik.
+            Tatz'uku' jun sipan { -brand-fxa } richin nak'ül jun tz'aqät kitzijol taq tz'ilanïk xek'ulwachitäj yan, kitzijol k'ayewal k'ak'a' taq tz'ilanïk chuqa' etamab'äl chi kij ch'aqa' chik taq rusamaj { -brand-Mozilla }.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] Re tz'ilanïk re' xuk'üt re ichinan etamab'äl re'. We man ajalon ta ri ewan atzij, niqachilab'ej chawe chi tajala'.
+       *[other] Re taq tz'ilanïk re' xekik'üt re ichinan taq etamab'äl re'. We man e'ajalon ta ri ewan taq atzij, niqachilab'ej chawe chi ke'ajala'.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Re tz'ilanïk re' xuk'üt re ichinan etamab'äl re'.
+       *[other] Re taq tz'ilanïk re' xkik'üt re ichinan taq etamab'äl re'.
+    }
+have-an-account = ¿La k'o chik jun rub'i' ataqoya'l?
+signup-banner-sensitive-blurb =
+    Tawila' ri ketaman chik chawij ri ajjaker chuqa' tawetamaj achike rub'eyal
+    yanab'eyij chi kiwäch. Tak'ulu' kitzijol k'ayewal we k'o ri rub'i' ataqoya'l
+    pa k'aka' kitz'ilanik taq tzij.
+fxa-pwt-section-blurb =
+    Ri ewan taq tzij nikichajij ronojel ri ichinan awetamab'al pa kib'i' ataqoya'l pa k'amab'ey. Chuqa'
+    ri ajjaker kikuqub'an kik'u'x chi rij ri itzel taq na'oj, achi'el toq nawokisaj ri ewan atzij pa ronojel k'ojlib'äl o nawokisaj ri jutaqil taq pajtzij (@ p @ ssw0rd, ¿jun winäq?) richin nikib'än jakyar jun rub'i' taqoya'l.
