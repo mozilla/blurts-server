@@ -60,7 +60,7 @@ pwt-summary-4 =
     Wachtwoordbeheerders zoals 1Password, LastPass, Dashlane en Bitwarden genereren sterke, unieke wachtwoorden. 
     Ook slaan ze wachtwoorden beveiligd op en vullen ze deze voor u in op websites.
 pwt-headline-5 = Voeg extra beveiliging toe met authenticatie in twee stappen
-pwt-summary-5 = 2FA vereist wat extra informatie (zoals een eenmalige code die via sms wordt toegezonden) om u aan te melden bij uw account. Zelfs als iemand uw wachtwoord heeft, komt hij of zij er niet in.
+pwt-summary-5 = 2FA vereist wat extra informatie (zoals een eenmalige code die via sms wordt toegezonden) om u bij uw account aan te melden. Zelfs als iemand over uw wachtwoord beschikt, krijgt hij of zij geen toegang.
 pwt-headline-6 = Schrijf u in voor { -product-name-nowrap }-waarschuwingen
 pwt-summary-6 = We zien een toename in datalekken van websites. Zodra een nieuw lek aan onze database wordt toegevoegd, stuurt { -product-name-nowrap } u een waarschuwing - zodat u actie kunt ondernemen en uw account kunt beschermen.
 landing-headline = Uw recht om veilig voor hackers te zijn begint hier.
@@ -152,10 +152,6 @@ confirmed-social-blurb = Als uw account is gelekt, bestaat de kans dat uw vriend
 unsub-headline = Uitschrijven van { -product-name-nowrap }
 unsub-blurb = Dit verwijdert uw e-mailadres uit de lijst van { -product-name-nowrap } en u ontvangt geen waarschuwingen meer wanneer nieuwe lekken worden bekendgemaakt.
 unsub-button = Uitschrijven
-unsub-survey-headline = U bent niet langer ingeschreven.
-unsub-survey-blurb =
-    Uw e-mailadres is uitgeschreven van { -product-name-nowrap }. Bedankt voor het gebruik van deze service. 
-    Hebt u een momentje voor een vraag over uw ervaring?
 unsub-survey-form-label = Waarom schrijft u zich uit voor waarschuwingen van { -product-name-nowrap }?
 unsub-reason-1 = Ik denk niet dat waarschuwingen mijn gegevens veiliger maken
 unsub-reason-2 = Ik krijg te veel e-mailberichten van { -product-name-nowrap }
@@ -191,8 +187,6 @@ mozilla-security-blog = { -brand-Mozilla }-beveiligingsblog
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Sociaal
 show-all = Alles tonen
-fxa-signup-banner-headline = Volg bedreigingen van uw online accounts.
-fxa-signup-banner-blurb = Schrijf u in voor een { -brand-fxa } om uw gedetailleerde rapport en waarschuwingen over nieuwe datalekken te ontvangen.
 fxa-landing-blurb =
     Ontdek wat hackers al over u weten,
     en leer hoe u ze een stap voor kunt blijven.
@@ -243,12 +237,6 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = Dit lek heeft de volgende persoonlijke gegevens gelekt. Wijzig uw wachtwoorden, als u dit nog niet hebt gedaan.
 user-generic-fb-compromised-single = Dit lek heeft de volgende persoonlijke gegevens gelekt.
-guest-fb-compromised-single = Dit lek heeft de volgende persoonlijke gegevens gelekt. Schrijf u in voor een { -brand-fxa } om uw volledige rapport en waarschuwingen voor nieuwe lekken te ontvangen.
-guest-fb-compromised-blurb =
-    { $breachCount ->
-        [one] Dit e-mailadres is door nog { $breachCount } ander lek getroffen. Schrijf u in voor een { -brand-fxa } om uw volledige rapport en waarschuwingen voor nieuwe lekken te ontvangen.
-       *[other] Dit e-mailadres is door nog { $breachCount } andere lekken getroffen. Schrijf u in voor een { -brand-fxa } om uw volledige rapport en waarschuwingen voor nieuwe lekken te ontvangen.
-    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
         [one] U bent niet getroffen door het { $breachName }-lek, maar we hebben dat e-mailadres in een ander lek gevonden.
@@ -259,10 +247,10 @@ user-generic-fb-not-compromised-blurb =
         [one] Dit e-mailadres is niet getroffen door het { $breachName }-lek, maar we hebben het in een ander lek gevonden.
        *[other] Dit e-mailadres is niet getroffen door het { $breachName }-lek, maar we hebben het in andere lekken gevonden.
     }
-guest-fb-not-compromised-blurb =
+guest-fb-not-compromised-blurb-v2 =
     { $breachCount ->
-        [one] Dit e-mailadres is niet getroffen door het { $breachName }-lek, maar we hebben het in een ander lek gevonden. Schrijf u in voor een { -brand-fxa } om uw volledige rapport en waarschuwingen voor nieuwe lekken te ontvangen.
-       *[other] Dit e-mailadres is niet getroffen door het { $breachName }-lek, maar we hebben het in andere lekken gevonden. Schrijf u in voor een { -brand-fxa } om uw volledige rapport en waarschuwingen voor nieuwe lekken te ontvangen.
+        [one] Dit e-mailadres staat niet in het { $breachName }-lek, maar wel in een ander. Maak een gratis { -brand-fxa } voor uw volledige rapport over eerdere lekken, waarschuwingen voor nieuwe lekken en informatie over andere services van { -brand-Mozilla }.
+       *[other] Dit e-mailadres staat niet in het { $breachName }-lek, maar wel in andere. Maak een gratis { -brand-fxa } voor uw volledige rapport over eerdere lekken, waarschuwingen voor nieuwe lekken en informatie over andere services van { -brand-Mozilla }.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -278,16 +266,9 @@ user-generic-found-breaches-blurb =
         [one] Dit lek heeft de volgende persoonlijke gegevens gelekt.
        *[other] Deze lekken hebben de volgende persoonlijke gegevens gelekt.
     }
-# While English doesn’t use the actual number of breaches in this sentence,
-# you can use {$breachCount} to display the number of breaches in your localization.
-guest-found-breaches-blurb =
-    { $breachCount ->
-        [one] Dit lek heeft de volgende persoonlijke gegevens gelekt. Schrijf u in voor een { -brand-fxa } om uw volledige rapport en waarschuwingen voor nieuwe lekken te ontvangen.
-       *[other] Deze lekken hebben de volgende persoonlijke gegevens gelekt. Schrijf u in voor een { -brand-fxa } om uw volledige rapport en waarschuwingen voor nieuwe lekken te ontvangen.
-    }
 have-an-account = Hebt u al een account?
 signup-banner-sensitive-blurb = Ontdek wat hackers al over u weten, en leer hoe u ze een stap voor kunt blijven. Ontvang een waarschuwing wanneer uw account door nieuwe datalekken is getroffen.
-fxa-pwt-section-blurb = Wachtwoorden beschermen alle persoonlijke gegevens in uw online accounts. En hackers vertrouwen op slechte gewoonten, zoals overal hetzelfde wachtwoord gebruiken of het gebruik van veelvoorkomende zinnen (gebruikt er iemand @p@ssw0rd?), zodat als ze één account hacken, ze er meteen veel hacken.
+fxa-pwt-section-blurb = Wachtwoorden beschermen alle persoonlijke gegevens in uw online accounts. En hackers vertrouwen op slechte gewoonten, zoals overal hetzelfde wachtwoord gebruiken of het gebruik van veelvoorkomende zinnen (gebruikt er iemand @p@ssw0rd?), zodat als ze één account hacken, ze er meteen veel kunnen hacken.
 fxa-pwt-summary-2 =
     Korte uit één woord bestaande wachtwoorden zijn voor hackers eenvoudig te raden. 
     Gebruik ten minste twee woorden en een combinatie van letters, cijfers en speciale tekens.
@@ -315,3 +296,7 @@ fxa-what-to-do-blurb-4 =
 fb-landing-headline = Zijn uw gegevens gelekt in het { $breachName }-datalek?
 copyright = Onderdelen van deze inhoud zijn © 1999-{ $year } door individuele medewerkers van mozilla.org.
 content-available = Inhoud is beschikbaar onder een Creative Commons-licentie.
+# Alerts is a noun
+sign-up-for-alerts = Inschrijven voor waarschuwingen
+sign-up-for-fxa-alerts = Schrijf u in voor { -product-name }-waarschuwingen.
+get-your-report-and-sign-up = Haal uw rapport op en schrijf u in voor waarschuwingen.
