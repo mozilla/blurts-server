@@ -157,10 +157,8 @@ confirmed-social-blurb = Si tus datos fueron filtrados es que probable de que lo
 unsub-headline = Eliminar suscripción de { -product-name-nowrap }
 unsub-blurb = Esto eliminará tu correo de la lista de { -product-name-nowrap } y no recibirás alertas cuando se anuncie alguna filtración.
 unsub-button = Cancelar suscripción
-unsub-survey-headline = Ya no estás suscrito.
-unsub-survey-blurb =
-    Tu correo se ha eliminado de la suscripción a { -product-name-nowrap }. Gracias por usar este servicio.
-    ¿Te tomarías un momento para responder una pregunta acerca de tu experiencia?
+fxa-unsub-headline = Eliminar suscripción a las alertas de { -product-name }.
+fxa-unsub-blurb = Ya no recibirás alertas de { -product-name }. Tu { -brand-fxa } permanecerá activa, y puede que recibas otras comunicaciones relacionadas con la cuenta.
 unsub-survey-form-label = ¿Por qué estás eliminando tu suscripción de las alertas de { -product-name-nowrap }?
 unsub-reason-1 = Creo que las alertas no hacen que mis datos estén más seguros.
 unsub-reason-2 = Recibo demasiados correos electrónicos de { -product-name-nowrap }
@@ -170,6 +168,11 @@ unsub-reason-5 = Estoy usando otro servicio para monitorear mis cuentas
 unsub-reason-6 = Ninguna de las mencionadas
 unsub-survey-thankyou = Gracias por tus comentarios.
 unsub-survey-error = Por favor, selecciona uno.
+unsub-survey-headline-v2 = Has cancelado tu suscripción.
+unsub-survey-blurb-v2 =
+    Ya no recibirás las alertas de { -product-name }.
+    ¿Podrías tomar un momento para responder a una pregunta sobre tu experiencia?
+unsub-survey-button = Enviar respuesta
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Compartir
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -196,8 +199,6 @@ mozilla-security-blog = Blog de seguridad de { -brand-Mozilla }
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Social
 show-all = Mostrar todo
-fxa-signup-banner-headline = Monitorea las amenazas a tus cuentas en línea.
-fxa-signup-banner-blurb = Regístrate en { -brand-fxa } para obtener un informe detallado y alertas sobre nuevas violaciones de datos.
 fxa-landing-blurb =
     Descubre lo que los piratas ya saben acerca de ti,
     y aprende cómo estar un paso adelante de ellos.
@@ -248,12 +249,6 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = Esta filtración muestra la siguiente información personal. Si aún no has cambiado tus contraseñas, es un buen momento.
 user-generic-fb-compromised-single = Esta filtración muestra la siguiente información personal.
-guest-fb-compromised-single = Esta filtración muestra la siguiente información personal. Regístrate a { -brand-fxa } para obtener un reporte completo y alertas acerca de nuevas filtraciones de datos.
-guest-fb-compromised-blurb =
-    { $breachCount ->
-        [one] Este correo electrónico apareció en { $breachCount } otra filtración. Regístrate a { -brand-fxa } para obtener un reporte completo y alertas acerca de nuevas filtraciones.
-       *[other] Este correo electrónico apareció en { $breachCount } otras filtraciones. Regístrate a { -brand-fxa } para obtener un reporte completo y alertas acerca de nuevas filtraciones.
-    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
         [one] No estabas en la violación { $breachName }, pero encontramos esa dirección de correo electrónico en otra.
