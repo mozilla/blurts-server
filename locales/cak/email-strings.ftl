@@ -58,3 +58,10 @@ report-pwt-summary-4 =
 legal = Taqanel rutzijol
 # Share Firefox Monitor by email subject line
 share-by-email-subject = Tatz'eta' we xtz'iläx ri atzij.
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    Achike ab'anon,
+    { -brand-name } k'o jun sipan rusamaj akuchi' yatikïr nanik'oj we xtz'iläx ri atzij. Ke re' nisamäj:
+    1. Jät pa { "https://monitor.firefox.com" } richin nakanoj ri ataqoya'l.
+    2. Tatz'eta' we ri rub'i' ataqoya'l pa k'amab'ey xkik'ulwachij jun tz'ilanïk kitzij.
+    3. Nak'ül taq runa'oj { -product-name } chi rij ri k'o chi nab'än.
