@@ -1,10 +1,21 @@
 "use strict";
 
+const DEBUG = true;
+
 const got = require("got");
 
 const SERVER = "https://settings-writer.prod.mozaws.net/v1";
 const CID = "fxmonitor-breaches";
-const DEBUG = true;
+/* eslint-disable-next-line no-process-env */
+const USERNAME = process.env.KINTO_USERNAME;
+/* eslint-disable-next-line no-process-env */
+const PASSWORD = process.env.KINTO_PASSWORD;
+if (!USERNAME || !PASSWORD) {
+  console.error("Please set credentials in the environment.");
+  return;
+}
+
+const AUTH = Buffer.from(`${USERNAME}:${PASSWORD}`).toString("base64");
 
 async function run() {
   const RemoteSettingsBreachesSet = new Set((await got(
@@ -48,7 +59,7 @@ async function run() {
       await got.post(`${SERVER}/buckets/main-workspace/collections/${CID}/records`, {
         headers: {
           "Content-Type": "application/json",
-          "authorization": "Bearer <insert token here>",
+          "authorization": `Basic ${AUTH}`,
         },
         body: JSON.stringify({data: data}),
       });
