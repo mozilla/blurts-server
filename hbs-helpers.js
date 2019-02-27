@@ -43,13 +43,13 @@ function localizedBreachDataClasses(supportedLocales, dataClasses, args) {
 
 function fluentNestedBold(supportedLocales, id, args) {
   const saveArgs = JSON.parse(JSON.stringify(args.hash));
-  const stringIds = Object.keys(saveArgs).filter(key => key !== "breachCount");
+  const nonNumericStringIds = Object.keys(saveArgs).filter(key => key !== "breachCount");
 
   const addMarkup = (word) => {
-    return `<span class="medium"> ${word} </span>`;
+    return ` <span class="medium">${word}</span> `;
   };
 
-  stringIds.forEach(stringId => {
+  nonNumericStringIds.forEach(stringId => {
     args.hash[stringId] = stringId;
   });
 
@@ -59,7 +59,7 @@ function fluentNestedBold(supportedLocales, id, args) {
     localizedStrings = localizedStrings.replace(/(\s[\d]+\s)/, addMarkup(args.hash.breachCount));
   }
 
-  stringIds.forEach(stringId => {
+  nonNumericStringIds.forEach(stringId => {
     localizedStrings = localizedStrings.replace(stringId, addMarkup(saveArgs[stringId]));
   });
 
