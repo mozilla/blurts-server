@@ -155,8 +155,6 @@ confirmed-social-blurb = Če so bili vaši podatki ukradeni, obstaja možnost, d
 unsub-headline = Odjava iz { -product-name-nowrap }ja
 unsub-blurb = S tem boste odstranili vaš e-poštni naslov iz seznama { -product-name-nowrap } in ob pojavu novih kraj podatkov ne boste več prejemali opozoril.
 unsub-button = Odjavi se
-unsub-survey-headline = Niste več naročeni.
-unsub-survey-blurb = Vaš e-poštni naslov je odjavljen iz { -product-name-nowrap }. Hvala za uporabo. Bi si vzeli trenutek in nam odgovorili na eno vprašanje o svoji izkušnji?
 unsub-survey-form-label = Zakaj ste se odjavili od opozoril { -product-name-nowrap }?
 unsub-reason-1 = Menim, da mi opozorila ne zagotavljajo varnejših podatkov
 unsub-reason-2 = Od { -product-name-nowrap } prejemam preveč e-pošte
@@ -166,6 +164,8 @@ unsub-reason-5 = Za spremljanje računov uporabljam drugo storitev
 unsub-reason-6 = Nič od naštetega
 unsub-survey-thankyou = Hvala za vaše povratne informacije.
 unsub-survey-error = Izberite enega.
+unsub-survey-headline-v2 = Zdaj ste odjavljeni.
+unsub-survey-button = Pošlji odgovor
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Deli
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -188,15 +188,19 @@ share-twitter = Večina ljudi ima približno 100 spletnih računov. Je bil kater
 share-facebook-headline = Preverite, ali ste bili žrtev kraje podatkov
 share-facebook-blurb = Ali so bili vaši spletni računi izpostavljeni v kraji podatkov?
 og-site-description = S { -product-name }jem preverite, ali ste bili žrtev kraje podatkov. Prijavite se za opozorila o prihodnjih krajah in preberite nasvete, kako ohraniti svoje račune varne.
+mozilla-security-blog = Varnostni blog { -brand-Mozilla }
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Družabno
 show-all = Prikaži vse
-fxa-signup-banner-headline = Spremljajte grožnje vašim spletnim računom.
-fxa-signup-banner-blurb = Prijavite se na { -brand-fxa }, za prejem podrobnega poročila in opozoril o novih krajah podatkov.
 fxa-landing-blurb =
     Ugotovite, kaj o vas hekerji že vedo,
     in se naučite, kako ostati korak pred njimi.
+fxa-scan-label = Preverite, ali ste bili vpleteni v krajo podatkov.
 fxa-welcome-headline = Dobrodošli v { -product-name }.
+fxa-welcome-blurb = Vključili ste opozorila, če se v kraji podatkov pojavi { $userEmail }.
+fxa-scan-another-email = Ali želite priključiti še kakšen račun?
+# Search Firefox Monitor
+fxa-scan-submit = Poišči s { -product-name }jem
 sign-in = Prijava
 sign-out = Odjava
 full-report-headline = Vaše poročilo { -product-name }
@@ -225,7 +229,27 @@ guest-scan-results-headline =
        *[other] Ta e-poštni naslov se je pojavil v { $breachCount } krajah podatkov.
     }
 user-no-breaches-blurb = Opozorili vas bomo, v kolikor se bo ta e-poštni naslov pojavil v novi kraji podatkov.
+guest-no-breaches-blurb =
+    Če želite preveriti, ali se ta e-pošta pojavlja v občutljivih krajah, ustvarite { -brand-fxa }.
+    Opozorili vas bomo tudi, če se ta naslov pojavi v novih krajah podatkov.
 user-one-breach-blurb = Ta kraja podatkov je razkrila naslednje osebne podatke.
+user-fb-compromised-single = Kraja je izpostavila naslednje osebne podatke. Če jih še niste, zamenjajte svoja gesla.
+user-generic-fb-compromised-single = Kraja je izpostavila naslednje osebne podatke.
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Kraja je izpostavila naslednje osebne podatke.
+        [two] Kraji sta izpostavili naslednje osebne podatke.
+        [few] Kraje so izpostavile naslednje osebne podatke.
+       *[other] Kraje so izpostavile naslednje osebne podatke.
+    }
 have-an-account = Že imate račun?
+fxa-pwt-summary-4 = Upravitelji gesel kot so 1Password, LastPass, Dashlane in Bitwarden shranjujejo vaša gesla in jih namesto vas izpolnjujejo na spletnih mestih. Pomagali vam bodo tudi pri ustvarjanju močnih gesel.
+fxa-pwt-summary-6 = Število kraj podatkov se povečuje. Če se vaši osebni podatki pojavijo v novi kraji podatkov, vam { -product-name } pošlje opozorilo. Tako lahko hitro ukrepate in zaščitite svoje račune.
+fxa-what-to-do-subhead-2 = Ne uporabljajte izpostavljenega gesla in ga spremenite povsod, kjer ste ga uporabili.
+fxa-what-to-do-subhead-4 = Pomagajte si pri pomnjenju gesel in njihovem varovanju.
 fb-landing-headline = Ali so bili vaši podatki izpostavljeni v kraji podatkov { $breachName }?
 content-available = Vsebina je na voljo pod licenco Creative Commons.
+# Alerts is a noun
+sign-up-for-alerts = Prijavite se na opozorila
