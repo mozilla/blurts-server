@@ -158,10 +158,6 @@ confirmed-social-blurb = Jika data Anda bocor, kemungkinan data teman, keluarga,
 unsub-headline = Berhenti berlangganan { -product-name-nowrap }
 unsub-blurb = Ini akan menghapus surel Anda dari daftar { -product-name-nowrap } dan Anda tidak akan menerima peringatan lagi ketika ada pengumuman kebocoran yang baru.
 unsub-button = Berhenti Berlangganan
-unsub-survey-headline = Anda telah berhenti berlangganan.
-unsub-survey-blurb =
-    Surel Anda telah berhenti berlangganan { -product-name-nowrap }. Terima kasih telah menggunakan layanan ini. 
-    Anda bersedia untuk sejenak menjawab satu pertanyaan tentang pengalaman Anda?
 unsub-survey-form-label = Mengapa Anda berhenti berlangganan peringatan { -product-name-nowrap }?
 unsub-reason-1 = Saya rasa peringatannya tidak membuat data saya semakin aman
 unsub-reason-2 = Saya menerima terlalu banyak surel dari { -product-name-nowrap }
@@ -197,4 +193,5 @@ mozilla-security-blog = Blog Keamanan { -brand-Mozilla }
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Media Sosial
 show-all = Tampilkan Semua
-fxa-signup-banner-headline = Pantau ancaman terhadap akun daring Anda.
+sign-in = Masuk
+sign-out = Keluar
