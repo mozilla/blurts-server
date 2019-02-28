@@ -274,6 +274,10 @@ user-generic-found-breaches-blurb =
        *[other] Estas violaciones de datos muestran la siguiente información personal.
     }
 have-an-account = ¿Ya tienes una cuenta?
+fxa-pwt-section-blurb =
+    Las contraseñas protegen toda la información personal en tus cuentas en línea. Y
+    los hackers confían en los malos hábitos, como usar la misma contraseña en todas partes o usar frases comunes (como "contraseña"), para que si logran piratear una cuenta,
+    pueden piratear muchas.
 fxa-pwt-summary-2 =
     Contraseñas cortas y de una sola palabra son fáciles para que adivinen los hackers.
     Usa al menos dos palabras y una combinación de letras, números y caracteres especiales.
