@@ -19,6 +19,7 @@ about-firefox-alerts = Oer Firefox-warskôgingen
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Kommentaar jaan
 terms-and-privacy = Betingsten en privacy
+error-scan-page-token = Jo hawwe te folle e-mailadressen yn in koart tiidrek probearre te skannen. Om befeiligingsredenen hawwe wy jo sykmooglikheid tydlik blokkearre. Jo kinne it letter wer probearje.
 error-could-not-add-email = Koe e-mailadres net oan database tafoegje.
 error-not-subscribed = Dit e-mailadres is net abonnearre op { -product-name }.
 error-hibp-throttled = Te folle ferbiningen mei { -brand-HIBP }.
@@ -151,10 +152,11 @@ confirmed-social-blurb = As jo account lekt is, bestiet de kâns dat jo freonen,
 unsub-headline = Utskriuwe fan { -product-name-nowrap }
 unsub-blurb = Dit smyt jo e-mailadres fuort út de list fan { -product-name-nowrap } en jo ûntfange gjin warskôgingen mear wannear't nije lekken bekendmakke wurde.
 unsub-button = Utskriuwe
-unsub-survey-headline = Jo binne net langer ynskreaun.
-unsub-survey-blurb =
-    Jo e-mailadres is útskreaun fan { -product-name-nowrap }. Tank foar it brûken fan dizze tsjinst. 
-    Hawwe jo in momint foar in fraach oer jo ûnderfining?
+fxa-unsub-headline = Utskriuwe foar { -product-name }-warskôgingen.
+fxa-unsub-blurb =
+    Jo ûntfange gjin { -product-name }- warskôgingen mear. 
+    Jo { -brand-fxa } bliuwt aktyf, en jo ûntfange mooglik oare 
+    account-relatearre berjochten.
 unsub-survey-form-label = Wêrom skriuwe jo jo út foar warskôgingen fan { -product-name-nowrap }?
 unsub-reason-1 = Ik tink net dat warskôgingen myn gegevens feiliger meitsje
 unsub-reason-2 = Ik krij tefolle e-maiberjochten fan { -product-name-nowrap }
@@ -164,6 +166,7 @@ unsub-reason-5 = Ik brûk in oare tsjinst om myn accounts te beweitsjen
 unsub-reason-6 = Gjin fan boppesteande
 unsub-survey-thankyou = Tank foar jo kommentaar.
 unsub-survey-error = Selektearje der ien.
+unsub-survey-headline-v2 = Jo binne útskreaun.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Diele
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -190,8 +193,6 @@ mozilla-security-blog = { -brand-Mozilla }-befeiligingsblog
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Sosjaal
 show-all = Alles toane
-fxa-signup-banner-headline = Folgje bedrigingen fan jo online accounts.
-fxa-signup-banner-blurb = Skriuw jo yn foar in { -brand-fxa } om jo detaillearre rapport en warskôgingen oer nije datalekken te ûntfangen.
 fxa-landing-blurb =
     Untdek wat hackers al oer jo witte,
     en lear hoe't jo se in stap foar bliuwe kinne.
