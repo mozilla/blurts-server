@@ -167,6 +167,10 @@ unsub-reason-6 = Gjin fan boppesteande
 unsub-survey-thankyou = Tank foar jo kommentaar.
 unsub-survey-error = Selektearje der ien.
 unsub-survey-headline-v2 = Jo binne útskreaun.
+unsub-survey-blurb-v2 =
+    Jo ûntfange gjin { -product-name }-warskôgingen mear. 
+    Hawwe jo in momint om in fraach oer jo ûnderfining te beäntwurdzjen?
+unsub-survey-button = Antwurd yntsjinje
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Diele
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -227,3 +231,38 @@ guest-scan-results-headline =
        *[other] Dit e-mailadres is troch { $breachCount } datalekken troffen.
     }
 user-no-breaches-blurb = Wy stjoere jo in warskôging as dit e-mailadres troch in nij lek troffen is.
+guest-no-breaches-blurb =
+    Meitsje in { -brand-fxa } oan om te sjen oft dit e-mailadres troch gefoelige lekken troffen is. 
+    Wy stjoere jo ek in warskôging as dit adres troch nije datalekken troffen is.
+user-one-breach-blurb = Dit lek hat de folgjende persoanlike gegevens lekt.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Jo e-mailadres is troch noch { $breachCount } oar lek troffen.
+       *[other] Jo e-mailadres is troch noch { $breachCount } oare lekken troffen.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Dit e-mailadres is troch noch { $breachCount } oar lek troffen.
+       *[other] Dit e-mailadres is troch noch { $breachCount } oare lekken troffen.
+    }
+user-fb-compromised-single = Dit lek hat de folgjende persoanlike gegevens lekt. Wizigje jo wachtwurden, as jo dit al noch net dien hawwe.
+user-generic-fb-compromised-single = Dit lek hat de folgjende persoanlike gegevens lekt.
+guest-fb-compromised-single-v2 =
+    By dit lek binne de folgjende persoanlike gegevens lekt. 
+    Meitsje in fergees { -brand-fxa } foar jo folsleine rapport oer eardere lekken, warskôgingen foar nije lekken 
+    en ynformaasje oer oare tsjinsten fan { -brand-Mozilla }.
+guest-fb-compromised-blurb-v2 =
+    { $breachCount ->
+        [one] Dit e-mailadres komt ek foar yn { $breachCount } oar lek. Meitsje in fergees { -brand-fxa } foar jo folsleine rapport oer eardere lekken, warskôgingen foar nije lekken en ynformaasje oer oare tsjinsten fan { -brand-Mozilla }.
+       *[other] Dit e-mailadres komt ek foar yn { $breachCount } oare lekken. Meitsje in fergees { -brand-fxa } foar jo folsleine rapport oer eardere lekken, warskôgingen foar nije lekken en ynformaasje oer oare tsjinsten fan { -brand-Mozilla }.
+    }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Jo binne net troffen troch it { $breachName }-lek, mar wy hawwe dat e-mailadres yn in oar lek fûn.
+       *[other] Jo binne net troffen troch it { $breachName }-lek, mar wy hawwe dat e-mailadres yn in oare lekken fûn.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Dit e-mailadres is net troffen troch it { $breachName }-lek, mar wy hawwe it yn in oar lek fûn.
+       *[other] Dit e-mailadres is net troffen troch it { $breachName }-lek, mar wy hawwe it yn in oare lekken fûn.
+    }
