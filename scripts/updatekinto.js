@@ -1,17 +1,21 @@
 "use strict";
 
-const DEBUG = true;
+
+/* eslint-disable no-process-env */
+
+const DEBUG = !process.env.PUSH_TO_KINTO;
 
 const got = require("got");
 
-const SERVER = "https://settings-writer.prod.mozaws.net/v1";
-const CID = "fxmonitor-breaches";
-/* eslint-disable-next-line no-process-env */
+const KINTO_UPDATE_ENDPOINT = "https://settings-writer.prod.mozaws.net/v1/buckets/main-workspace/collections/fxmonitor-breaches/records";
+const PROD_RECORDS_ENDPOINT = "https://firefox.settings.services.mozilla.com/v1/buckets/main/collections/fxmonitor-breaches/records";
+
 const USERNAME = process.env.KINTO_USERNAME;
-/* eslint-disable-next-line no-process-env */
 const PASSWORD = process.env.KINTO_PASSWORD;
-if (!USERNAME || !PASSWORD) {
+
+if (!DEBUG && (!USERNAME || !PASSWORD)) {
   console.error("Please set credentials in the environment.");
+  process.exitCode = 1;
   return;
 }
 
@@ -19,7 +23,7 @@ const AUTH = Buffer.from(`${USERNAME}:${PASSWORD}`).toString("base64");
 
 async function run() {
   const RemoteSettingsBreachesSet = new Set((await got(
-    "https://firefox.settings.services.mozilla.com/v1/buckets/main/collections/fxmonitor-breaches/records",
+    PROD_RECORDS_ENDPOINT,
     { json: true }
   )).body.data.map(b => b.Name));
 
@@ -41,6 +45,9 @@ async function run() {
 
     new_breaches.push(breach);
   }
+
+  console.log(`${new_breaches.length} new breach(es) found.`);
+
   for (const breach of new_breaches) {
     const data = {
       Name: breach.Name,
@@ -56,7 +63,7 @@ async function run() {
     }
 
     try {
-      await got.post(`${SERVER}/buckets/main-workspace/collections/${CID}/records`, {
+      await got.post(KINTO_UPDATE_ENDPOINT, {
         headers: {
           "Content-Type": "application/json",
           "authorization": `Basic ${AUTH}`,
@@ -64,7 +71,8 @@ async function run() {
         body: JSON.stringify({data: data}),
       });
     } catch (e) {
-      console.log(e);
+      console.error(e);
+      process.exitCode = 1;
       return;
     }
   }
