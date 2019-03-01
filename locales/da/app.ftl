@@ -159,10 +159,11 @@ confirmed-social-blurb = Hvis din konto har været involveret i en datalæk, så
 unsub-headline = Afmeld { -product-name-nowrap }
 unsub-blurb = Dette vil fjerne din mailadresse fra { -product-name-nowrap }s database, og du vil ikke længere modtage advarsler, når nye datalæk opdages.
 unsub-button = Stop abonnement
-unsub-survey-headline = Du er ikke længere tilmeldt.
-unsub-survey-blurb =
-    Din mailadresse er nu frameldt { -product-name-nowrap }. Mange tak for at du brugte tjenesten. 
-    Har du tid og lyst til at besvare et enkelt spørgsmål om din oplevelse?
+fxa-unsub-headline = Stop abonnement på { -product-name }-advarsler.
+fxa-unsub-blurb =
+    Du vil ikke længere modtage { -product-name }-advarsler. 
+    Din { -brand-fxa } vil fortsat være aktiv, og du vil muligvis
+    modtage andre meddelelser vedrørende din konto.
 unsub-survey-form-label = Hvorfor har du frameldt dig advarsler fra { -product-name-nowrap }?
 unsub-reason-1 = Jeg tror ikke, at advarslerne gør mine data sikrere
 unsub-reason-2 = Jeg får for mange mails fra { -product-name-nowrap }
@@ -172,6 +173,8 @@ unsub-reason-5 = Jeg bruger en anden tjeneste til at holde øje med mine konti
 unsub-reason-6 = Intet af det ovenstående
 unsub-survey-thankyou = Tak for din feedback
 unsub-survey-error = Vælg venligst en.
+unsub-survey-headline-v2 = Du er blevet afmeldt.
+unsub-survey-button = Indsend svar
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Del
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -198,8 +201,6 @@ mozilla-security-blog = { -brand-Mozilla }s sikkerhedsblog
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Sociale medier
 show-all = Vis alle
-fxa-signup-banner-headline = Overvåg trusler mod dine online-konti.
-fxa-signup-banner-blurb = Tilmeld dig en { -brand-fxa } for at få din detaljerede rapport og advarsler om nye datalæk.
 fxa-landing-blurb =
     Find ud af, hvor meget hackerne allerede ved om dig, 
     og lær hvordan du kan komme et skridt foran dem.
@@ -250,18 +251,6 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = Denne datalæk kompromitterede følgende personlige oplysninger. Skift dine adgangskoder, hvis du ikke allerede har gjort det.
 user-generic-fb-compromised-single = Denne datalæk kompromitterede følgende personlige oplysninger.
-guest-fb-compromised-single =
-    Denne datalæk kompromitterede følgende personlige oplysninger. Tilmeld dig en { -brand-fxa } 
-    for at få din fulde rapport og advarsler om nye datalæk.
-guest-fb-compromised-blurb =
-    { $breachCount ->
-        [one]
-            Denne mailadresse er også ramt af { $breachCount } anden datalæk. Tilmeld
-            dig en { -brand-fxa } for at få din fulde rapport og advarsler om nye datalæk.
-       *[other]
-            Denne mailadresse er også ramt af { $breachCount } andre datalæk. Tilmeld
-            dig en { -brand-fxa } for at få din fulde rapport og advarsler om nye datalæk.
-    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Du er ikke blevet ramt af datalækken { $breachName }, men vi har fundet mailadressen i en anden datalæk.
@@ -271,11 +260,6 @@ user-generic-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Denne mailadresse optræder ikke i datalækken { $breachName }, men findes i en anden datalæk.
        *[other] Denne mailadresse optræder ikke i datalækken { $breachName }, men findes i andre datalæk.
-    }
-guest-fb-not-compromised-blurb =
-    { $breachCount ->
-        [one] Mailadressen optrådte ikke i datalækken { $breachName }, men vi har fundet den i en anden datalæk. Tilmeld dig en { -brand-fxa } for at få fulde rapporter og advarsler om nye datalæk.
-       *[other] Mailadressen optrådte ikke i datalækken { $breachName }, men vi har fundet den i andre datalæk. Tilmeld dig en { -brand-fxa } for at få fulde rapporter og advarsler om nye datalæk.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -290,13 +274,6 @@ user-generic-found-breaches-blurb =
     { $breachCount ->
         [one] Denne datalæk kompromitterede følgende personlige oplysninger.
        *[other] Disse { $breachCount } datalæk kompromitterede følgende personlige oplysninger.
-    }
-# While English doesn’t use the actual number of breaches in this sentence,
-# you can use {$breachCount} to display the number of breaches in your localization.
-guest-found-breaches-blurb =
-    { $breachCount ->
-        [one] Denne datalæk kompromitterede følgende personlige data. Tilmeld dig en { -brand-fxa } for at få din fulde rapport og advarsler om nye datalæk.
-       *[other] Disse datalæk kompromitterede følgende personlige data. Tilmeld dig en { -brand-fxa } for at få din fulde rapport og advarsler om nye datalæk.
     }
 have-an-account = Har du allerede en konto?
 signup-banner-sensitive-blurb =
