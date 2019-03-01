@@ -3,7 +3,7 @@
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
 click-to-verify =
-    Potvrďte svoje prihlásenie ku službe Firefox Monitor do 24 hodín od odoslania tohoto e-mailu. 
+    Potvrďte svoje prihlásenie ku službe Firefox Monitor do 24 hodín od odoslania tohto e-mailu. 
     Správu o vašich účtoch vám pošleme čo najskôr.
 verify-my-email = Overiť e-mailovú adresu
 report-scan-another-email = Vyhľadajte ďalšiu e-mailovú adresu v službe { -product-name }

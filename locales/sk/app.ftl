@@ -71,7 +71,7 @@ pwt-summary-4 =
 pwt-headline-5 = Využívajte dvojstupňové overenie
 pwt-summary-5 =
     Dvojstupňové overenie vyžaduje pre úspešné prihlásenie zadať nejakú dodatočnú informáciu (napríklad jednorázový kód poslaný cez SMS).
-    Aj ak niekto pozná vaše heslo, bez tohoto overenia prístup ku vášmu účtu nezíska.
+    Aj ak niekto pozná vaše heslo, bez tohto overenia prístup ku vášmu účtu nezíska.
 pwt-headline-6 = Prihláste sa na odber upozornení zo služby { -product-name-nowrap }
 pwt-summary-6 =
     Počet únikov dát z webových stránok stúpa. Kedykoľvek je nový únik pridaný do našej databázy,
@@ -109,7 +109,7 @@ signup-modal-sent = Odoslané!
 signup-with-fxa = Prihláste sa pomocou účtu { -brand-name }
 form-signup-placeholder = Zadajte e-mailovú adresu
 form-signup-checkbox = Nechajte si posielať najnovšie informácie o organizácii { -brand-Mozilla } a o aplikácii { -brand-name }.
-sign-up = Prihlásiť sa
+sign-up = Zaregistrujte sa
 form-signup-error = Zadaná e-mailová adresa nie je platná.
 no-breaches-headline = Zatiaľ je všetko v poriadku.
 found-breaches-headline = Vaše informácie boli súčasťou úniku dát.
@@ -169,10 +169,11 @@ confirmed-social-blurb = Ak unikli vaše údaje, je veľká šanca, že sa to st
 unsub-headline = Odhlásiť odber zo služby { -product-name-nowrap }
 unsub-blurb = Týmto odstránite svoju e-mailovú adresu zo zoznamu služby { -product-name-nowrap } a nebudete naďalej dostávať upozornenia na novo oznámené úniky dát.
 unsub-button = Odhlásiť sa
-unsub-survey-headline = Už nie ste prihlásení na odber.
-unsub-survey-blurb =
-    Vaša e-mailová adresa bola odhlásená. Ďakujeme vám za využitie služby { -product-name-nowrap }.
-    Nájdete si chvíľku pre odpoveď na jednu otázku o našej službe?
+fxa-unsub-headline = Zrušiť odosielanie upozornení zo služby { -product-name }.
+fxa-unsub-blurb =
+    Už nebudete dostávať upozornenia zo služby { -product-name }. 
+    Váš { -brand-fxa } zostane aktívny a môžete aj naďalej dostávať 
+    informácie, súvisiace s ním.
 unsub-survey-form-label = Z akého dôvodu sa odhlasujete zo zasielania upozornení zo služby { -product-name-nowrap }?
 unsub-reason-1 = Nemyslím si, že upozornenia pomáhajú zabezpečiť moje údaje
 unsub-reason-2 = Zo služby { -product-name-nowrap } dostávam príliš veľa e-mailov
@@ -182,6 +183,8 @@ unsub-reason-5 = Pre sledovanie svojich účtov používam inú službu
 unsub-reason-6 = Nič z vyššie uvedeného
 unsub-survey-thankyou = Ďakujeme za vašu spätnú väzbu.
 unsub-survey-error = Prosím, vyberte jednu možnosť.
+unsub-survey-headline-v2 = Boli ste odhlásení.
+unsub-survey-button = Odoslať odpoveď
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Zdieľať
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -209,7 +212,7 @@ mozilla-security-blog = Bezpečnostný blog organizácie { -brand-Mozilla }
 layout-social = Sociálne siete
 show-all = Zobraziť všetko
 fxa-welcome-headline = Víta vás { -product-name }.
-sign-in = Prihlásiť sa
+sign-in = Prihláste sa
 sign-out = Odhlásiť sa
 full-report-headline = Vaša správa zo služby { -product-name }
 see-full-report = Zobraziť kompletnú správu
@@ -218,3 +221,6 @@ fxa-download-firefox-banner-blurb = Lepšie a rýchlejšie načítavanie stráno
 have-an-account = Už ho máte?
 copyright = Časť tohto obsahu bola v rokoch © 1999 - { $year } vytvorená individuálnymi prispievateľmi mozilla.org.
 content-available = Obsah je dostupný v rámci licencie Creative Commons.
+# Alerts is a noun
+sign-up-for-alerts = Prihláste sa na odber upozornení
+sign-up-for-fxa-alerts = Prihláste sa na odber upozornení zo služby { -product-name }.
