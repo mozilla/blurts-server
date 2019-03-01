@@ -174,6 +174,9 @@ unsub-reason-6 = Intet af det ovenstående
 unsub-survey-thankyou = Tak for din feedback
 unsub-survey-error = Vælg venligst en.
 unsub-survey-headline-v2 = Du er blevet afmeldt.
+unsub-survey-blurb-v2 =
+    Du vil ikke længere modtage { -product-name }-advarsler. 
+    Har du tid til at besvare et enkelt spørgsmål om din oplevelse?
 unsub-survey-button = Indsend svar
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Del
