@@ -184,6 +184,9 @@ unsub-reason-6 = Nič z vyššie uvedeného
 unsub-survey-thankyou = Ďakujeme za vašu spätnú väzbu.
 unsub-survey-error = Prosím, vyberte jednu možnosť.
 unsub-survey-headline-v2 = Boli ste odhlásení.
+unsub-survey-blurb-v2 =
+    Už nebudete dostávať upozornenia zo služby { -product-name }. 
+    Nájdete si chvíľu na otázku o vašej skúsenosti s našou službou?
 unsub-survey-button = Odoslať odpoveď
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Zdieľať
@@ -211,16 +214,52 @@ mozilla-security-blog = Bezpečnostný blog organizácie { -brand-Mozilla }
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Sociálne siete
 show-all = Zobraziť všetko
+fxa-landing-blurb = Zistite, čo o vás hackeri už vedia a zostaňte o krok pred nimi.
+fxa-scan-label = Pozrite sa, či bol váš e-mail súčasťou nejakého úniku.
 fxa-welcome-headline = Víta vás { -product-name }.
+fxa-welcome-blurb = Všetko je nastavené, a ak sa { $userEmail } objaví v nejakom úniku, dostanete upozornenie.
+fxa-scan-another-email = Chcete skontrolovať ďalšiu e-mailovú adresu?
+# Search Firefox Monitor
+fxa-scan-submit = Hľadať v službe { -product-name }
+sign-up-to-check = Pre kontrolu sa zaregistrujte
 sign-in = Prihláste sa
 sign-out = Odhlásiť sa
 full-report-headline = Vaša správa zo služby { -product-name }
 see-full-report = Zobraziť kompletnú správu
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Spravovať { -brand-fxa }
+fxa-download-firefox-bar-blurb = Službu zaisťuje { -brand-name }. 2x rýchlejší. Používa o 30 % menej pamäte než { -brand-Chrome }.
 fxa-download-firefox-bar-link = Prevziať
 fxa-download-firefox-banner-blurb = Lepšie a rýchlejšie načítavanie stránok, ktoré zaberá menej pamäte počítača.
+user-fb-compromised-headline = E-mailová adresa { $userEmail } bola súčasťou úniku dát - { $breachName }.
+guest-fb-compromised-headline = Táto e-mailová adresa bola súčasťou úniku dát - { $breachName }.
+user-zero-breaches-headline = E-mailová adresa { $userEmail } nebola súčasťou žiadneho úniku dát.
+guest-zero-breaches-headline = Táto e-mailová adresa nebola súčasťou žiadneho úniku dát.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] E-mailová adresa { $userEmail } bola súčasťou 1 úniku dát.
+        [few] E-mailová adresa { $userEmail } bola súčasťou { $breachCount } únikov dát.
+       *[other] E-mailová adresa { $userEmail } bola súčasťou { $breachCount } únikov dát.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Táto e-mailová adresa bola súčasťou 1 úniku dát.
+        [few] Táto e-mailová adresa bola súčasťou { $breachCount } únikov dát.
+       *[other] Táto e-mailová adresa bola súčasťou { $breachCount } únikov dát.
+    }
+user-no-breaches-blurb = Ak sa táto e-mailová adresa objaví v nejakom úniku dát, dostanete upozornenie.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Vaša e-mailová adresa bola taktiež súčasťou { $breachCount } ďalšieho úniku.
+        [few] Vaša e-mailová adresa bola taktiež súčasťou { $breachCount } ďalších únikov.
+       *[other] Vaša e-mailová adresa bola taktiež súčasťou { $breachCount } ďalších únikov.
+    }
 have-an-account = Už ho máte?
+fxa-what-to-do-subhead-2 = Prestaňte používať uniknuté heslo a zmeňte ho všade, kde ste ho použili.
+fxa-what-to-do-subhead-4 = Nemusíte si sami pamätať všetky svoje heslá.
 copyright = Časť tohto obsahu bola v rokoch © 1999 - { $year } vytvorená individuálnymi prispievateľmi mozilla.org.
 content-available = Obsah je dostupný v rámci licencie Creative Commons.
 # Alerts is a noun
 sign-up-for-alerts = Prihláste sa na odber upozornení
 sign-up-for-fxa-alerts = Prihláste sa na odber upozornení zo služby { -product-name }.
+get-your-report-and-sign-up = Získajte správu a prihláste sa na odber upozornení.
