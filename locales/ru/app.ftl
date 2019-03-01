@@ -31,7 +31,7 @@ terms-and-privacy = Условия и конфиденциальность
 error-could-not-add-email = Не удалось добавить адрес электронной почты в базу данных.
 error-not-subscribed = Этот адрес электронной почты не подписан на { -product-name }.
 error-hibp-throttled = Слишком много попыток соединения с { -brand-HIBP(case: "genitive") }.
-error-hibp-connect = Слишком много попыток соединения с { -brand-HIBP(case: "dative") }.
+error-hibp-connect = Ошибка подключения к { -brand-HIBP(case: "dative") }.
 error-hibp-load-breaches = Не удалось загрузить информацию по угрозам.
 hibp-notify-email-subject = Предупреждение { -product-name }: Ваш аккаунт под угрозой.
 home-title = { -product-name }
@@ -203,6 +203,8 @@ share-facebook-headline = Узнайте, не стали ли вы жертво
 share-facebook-blurb = Затронули ли какой-то из ваших аккаунтов утечки данных?
 og-site-description = Узнайте, не стали ли вы жертвой утечки данных с помощью { -product-name }. Подпишитесь на уведомления о будущих угрозах и получайте советы по безопасности.
 mozilla-security-blog = Блог безопасности { -brand-Mozilla }
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Социальные сети
 show-all = Показать все
 fxa-scan-label = Узнайте, стали ли вы жертвой утечки данных.
 fxa-welcome-headline = Добро пожаловать в { -product-name }.
