@@ -316,3 +316,7 @@ fxa-what-to-do-blurb-4 =
 fb-landing-headline = Er dine oplysninger blevet kompromitteret i datalækken { $breachName }?
 copyright = Dele af dette indhold er © 1999-{ $year } af individuelle bidragsydere til mozilla.org.
 content-available = Indholdet er tilgængeligt under en Creative Commons-licens.
+# Alerts is a noun
+sign-up-for-alerts = Tilmeld dig advarsler
+sign-up-for-fxa-alerts = Tilmeld dig { -product-name }-advarsler
+get-your-report-and-sign-up = Få din rapport og tilmeld dig advarsler
