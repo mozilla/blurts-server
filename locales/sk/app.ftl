@@ -248,15 +248,34 @@ guest-scan-results-headline =
        *[other] Táto e-mailová adresa bola súčasťou { $breachCount } únikov dát.
     }
 user-no-breaches-blurb = Ak sa táto e-mailová adresa objaví v nejakom úniku dát, dostanete upozornenie.
+user-one-breach-blurb = Tento únik obsahoval nasledujúce údaje.
 user-fb-compromised-blurb =
     { $breachCount ->
         [one] Vaša e-mailová adresa bola taktiež súčasťou { $breachCount } ďalšieho úniku.
         [few] Vaša e-mailová adresa bola taktiež súčasťou { $breachCount } ďalších únikov.
        *[other] Vaša e-mailová adresa bola taktiež súčasťou { $breachCount } ďalších únikov.
     }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Táto e-mailová adresa bola taktiež súčasťou { $breachCount } ďalšieho úniku.
+        [few] Táto e-mailová adresa bola taktiež súčasťou { $breachCount } ďalších únikov.
+       *[other] Táto e-mailová adresa bola taktiež súčasťou { $breachCount } ďalších únikov.
+    }
+user-fb-compromised-single =
+    Tento únik obsahoval nasledujúce údaje. Odporúčame vám 
+    zmeniť si svoje heslo.
+user-generic-fb-compromised-single = Tento únik obsahoval nasledujúce údaje.
 have-an-account = Už ho máte?
+fxa-pwt-summary-4 =
+    Správcovia hesiel, ako je 1Password, LastPass, Dashlane a Bitwarden vedia vaše heslá bezpečne uložiť
+    a automaticky ich pre vás na webových stránkach vyplniť. Pomôžu vám as s vytvorením silného hesla.
 fxa-what-to-do-subhead-2 = Prestaňte používať uniknuté heslo a zmeňte ho všade, kde ste ho použili.
 fxa-what-to-do-subhead-4 = Nemusíte si sami pamätať všetky svoje heslá.
+fxa-what-to-do-blurb-4 =
+    Správcovia hesiel, ako je 1Password, LastPass, Dashlane a Bitwarden vedia vaše heslá bezpečne uložiť
+    a automaticky ich pre vás na webových stránkach vyplniť. Používajte správcu hesiel na mobile aj počítači
+    a svoje heslá si už nebudete musieť pamätať.
+fb-landing-headline = Boli vaše údaje súčasťou úniku dát - { $breachName }?
 copyright = Časť tohto obsahu bola v rokoch © 1999 - { $year } vytvorená individuálnymi prispievateľmi mozilla.org.
 content-available = Obsah je dostupný v rámci licencie Creative Commons.
 # Alerts is a noun
