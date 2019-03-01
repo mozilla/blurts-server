@@ -254,6 +254,22 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = Denne datalæk kompromitterede følgende personlige oplysninger. Skift dine adgangskoder, hvis du ikke allerede har gjort det.
 user-generic-fb-compromised-single = Denne datalæk kompromitterede følgende personlige oplysninger.
+guest-fb-compromised-single-v2 =
+    Denne datalæk kompromitterede følgende personlige oplysninger.
+    Opret en gratis { -brand-fxa } og få adgang til din fulde rapport
+    med tidligere datalæk, advarsler om nye læk samt info om andre
+    { -brand-Mozilla }-tjenester.
+guest-fb-compromised-blurb-v2 =
+    { $breachCount ->
+        [one]
+            Denne mailadresse optrådte også i { $breachCount } anden datalæk. Opret en 
+            gratis { -brand-fxa } og få adgang til din fulde rapport med tidligere datalæk, 
+            advarsler om nye læk samt info om andre { -brand-Mozilla }-tjenester.
+       *[other]
+            Denne mailadresse optrådte også i { $breachCount } andre datalæk. Opret en 
+            gratis { -brand-fxa } og få adgang til din fulde rapport med tidligere datalæk, 
+            advarsler om nye læk samt info om andre { -brand-Mozilla }-tjenester.
+    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Du er ikke blevet ramt af datalækken { $breachName }, men vi har fundet mailadressen i en anden datalæk.
@@ -263,6 +279,15 @@ user-generic-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Denne mailadresse optræder ikke i datalækken { $breachName }, men findes i en anden datalæk.
        *[other] Denne mailadresse optræder ikke i datalækken { $breachName }, men findes i andre datalæk.
+    }
+guest-fb-not-compromised-blurb-v2 =
+    { $breachCount ->
+        [one]
+            Denne mailadresse optræder ikke i datalækken { $breachName }, men findes i en anden datalæk. Opret en gratis { -brand-fxa } og få adgang til din fulde rapport 
+            med tidligere datalæk, advarsler om nye læk samt info om andre { -brand-Mozilla }-tjenester.
+       *[other]
+            Denne mailadresse optræder ikke i datalækken { $breachName }, men findes i andre datalæk. Opret en gratis { -brand-fxa } og få adgang til din fulde rapport 
+            med tidligere datalæk, advarsler om nye læk samt info om andre { -brand-Mozilla }-tjenester.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -322,4 +347,7 @@ content-available = Indholdet er tilgængeligt under en Creative Commons-licens.
 # Alerts is a noun
 sign-up-for-alerts = Tilmeld dig advarsler
 sign-up-for-fxa-alerts = Tilmeld dig { -product-name }-advarsler
+create-free-account =
+    Opret en gratis { -brand-fxa } og få adgang til din fulde rapport med tidligere datalæk, 
+    advarsler om nye læk samt info om andre { -brand-Mozilla }-tjenester.
 get-your-report-and-sign-up = Få din rapport og tilmeld dig advarsler
