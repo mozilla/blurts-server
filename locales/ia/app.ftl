@@ -161,10 +161,6 @@ confirmed-social-blurb = Si tu ha essite violate, il ha riscos que tu amicos, fa
 unsub-headline = Remover le subscription de { -product-name-nowrap }
 unsub-blurb = Isto removera tu email ab le lista de { -product-name-nowrap } e tu non recipera plus alertas quando nove violationes es annunciate.
 unsub-button = Remover le subscription
-unsub-survey-headline = Tu non es plus subscribite.
-unsub-survey-blurb =
-    Tu email es removite ex le inscription a { -product-name-nowrap }. Gratias pro usar iste servicio. 
-    Prendera tu un momento pro responder a un question re tu experientia?
 unsub-survey-form-label = Proque tu remove tu subscription del avisos de { -product-name-nowrap }?
 unsub-reason-1 = Io crede que le avisos non rende mi datos plus secur
 unsub-reason-2 = Io recipe trop emails de { -product-name-nowrap }
@@ -174,6 +170,7 @@ unsub-reason-5 = Io usa un altere servicio pro controlar mi contos
 unsub-reason-6 = Nihil del previe unos
 unsub-survey-thankyou = Gratias pro tu commentario.
 unsub-survey-error = Per favor elige uno.
+unsub-survey-headline-v2 = Tu abonamento ha essite annullate.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Compartir
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -200,8 +197,6 @@ mozilla-security-blog = Blog re le securitate de { -brand-Mozilla }
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Social
 show-all = Monstrar toto
-fxa-signup-banner-headline = Controla attentemente le attaccos a tu contos online.
-fxa-signup-banner-blurb = Registra te a un { -brand-fxa } pro obtener tu reporto detaliate e le avisos re nove violationes de datos.
 fxa-landing-blurb = Discoperi lo que hackers jam sape re te e apprende como star un grado supra illes.
 fxa-scan-label = Vide si tu ha essite implicate in un violation de datos.
 fxa-welcome-headline = Benvenite a { -product-name }.
@@ -252,18 +247,6 @@ user-fb-compromised-single =
     Iste violation ha exponite le sequente info personal. Si tu non lo ha jam facite,
     cambia tu contrasignos.
 user-generic-fb-compromised-single = Iste violation ha exponite le sequente info personal.
-guest-fb-compromised-single =
-    Iste violation ha exponite le sequente info personal. Registration a un { -brand-fxa }
-    pro procurar te tu reporto complete e avisos re nove violationes.
-guest-fb-compromised-blurb =
-    { $breachCount ->
-        [one]
-            Iste adresse email alsi esseva implicate in { $breachCount } altere violation. Inscribe te a un 
-            { -brand-fxa } pro te procurar tu reporto complete e avisos re nove violationes.
-       *[other]
-            Iste adresse email alsi esseva implicate in { $breachCount } altere violationes. Inscribe te a un 
-            { -brand-fxa } pro te procurar tu reporto complete e avisos re nove violationes.
-    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Tu non era in le violation { $breachName }, ma nos trovava ille adresse email in un altero.
@@ -273,15 +256,6 @@ user-generic-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Iste adresse email non esseva in le violation { $breachName }, ma esseva trovate in un altero
        *[other] Iste adresse email non esseva in le violation { $breachName }, ma esseva trovate in alteros
-    }
-guest-fb-not-compromised-blurb =
-    { $breachCount ->
-        [one]
-            Iste adresse email non esseva in le viuolation { $breachName }, ma esseva trovate in un altero.
-            Inscribe te pro un { -brand-fxa } pro obtener le reporto complete e avisos re nove violationes
-       *[other]
-            Iste adresse email non esseva in le viuolation { $breachName }, ma esseva trovate in alteros.
-            Inscribe te pro un { -brand-fxa } pro obtener le reporto complete e avisos re nove violationes
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -296,13 +270,6 @@ user-generic-found-breaches-blurb =
     { $breachCount ->
         [one] Iste violation de datos ha exponite le sequente informationes personal.
        *[other] Iste violationes de datos ha exponite le sequente informationes personal.
-    }
-# While English doesn’t use the actual number of breaches in this sentence,
-# you can use {$breachCount} to display the number of breaches in your localization.
-guest-found-breaches-blurb =
-    { $breachCount ->
-        [one] Iste violation de datos ha exponite le sequente informationes personal. Inscribe te pro un { -brand-fxa } pro procurar te tu reporto complete e avisos re nove violationes.
-       *[other] Iste violationes de datos ha exponite le sequente informationes personal. Inscribe te pro un { -brand-fxa } pro procurar te tu reporto complete e avisos re nove violationes.
     }
 have-an-account = Ha tu ja un conto?
 signup-banner-sensitive-blurb = Discoperi lo que hackers jam sape re te e apprende como star un grado supra illes. Mantene te allertate si tu conto es implicate in nove violationes de datos.
