@@ -155,6 +155,7 @@ confirmed-social-blurb = Če so bili vaši podatki ukradeni, obstaja možnost, d
 unsub-headline = Odjava iz { -product-name-nowrap }ja
 unsub-blurb = S tem boste odstranili vaš e-poštni naslov iz seznama { -product-name-nowrap } in ob pojavu novih kraj podatkov ne boste več prejemali opozoril.
 unsub-button = Odjavi se
+fxa-unsub-headline = Odjavite se od opozoril { -product-name }ja
 unsub-survey-form-label = Zakaj ste se odjavili od opozoril { -product-name-nowrap }?
 unsub-reason-1 = Menim, da mi opozorila ne zagotavljajo varnejših podatkov
 unsub-reason-2 = Od { -product-name-nowrap } prejemam preveč e-pošte
@@ -233,6 +234,20 @@ guest-no-breaches-blurb =
     Če želite preveriti, ali se ta e-pošta pojavlja v občutljivih krajah, ustvarite { -brand-fxa }.
     Opozorili vas bomo tudi, če se ta naslov pojavi v novih krajah podatkov.
 user-one-breach-blurb = Ta kraja podatkov je razkrila naslednje osebne podatke.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Vaš e-poštni naslov se je pojavil še v { $breachCount } kraji podatkov.
+        [two] Vaš e-poštni naslov se je pojavil še v { $breachCount } krajah podatkov.
+        [few] Vaš e-poštni naslov se je pojavil še v { $breachCount } krajah podatkov.
+       *[other] Vaš e-poštni naslov se je pojavil še v { $breachCount } krajah podatkov.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Ta e-poštni naslov se je pojavil še v { $breachCount } kraji podatkov.
+        [two] Ta e-poštni naslov se je pojavil še v { $breachCount } krajah podatkov.
+        [few] Ta e-poštni naslov se je pojavil še v { $breachCount } krajah podatkov.
+       *[other] Ta e-poštni naslov se je pojavil še v { $breachCount } krajah podatkov.
+    }
 user-fb-compromised-single = Kraja je izpostavila naslednje osebne podatke. Če jih še niste, zamenjajte svoja gesla.
 user-generic-fb-compromised-single = Kraja je izpostavila naslednje osebne podatke.
 # While English doesn’t use the actual number of breaches in this sentence,
@@ -250,6 +265,8 @@ fxa-pwt-summary-6 = Število kraj podatkov se povečuje. Če se vaši osebni pod
 fxa-what-to-do-subhead-2 = Ne uporabljajte izpostavljenega gesla in ga spremenite povsod, kjer ste ga uporabili.
 fxa-what-to-do-subhead-4 = Pomagajte si pri pomnjenju gesel in njihovem varovanju.
 fb-landing-headline = Ali so bili vaši podatki izpostavljeni v kraji podatkov { $breachName }?
+copyright = Deli vsebine so avtorsko zaščiteni ©1998–{ $year } s strani sodelavcev mozilla.org.
 content-available = Vsebina je na voljo pod licenco Creative Commons.
 # Alerts is a noun
 sign-up-for-alerts = Prijavite se na opozorila
+sign-up-for-fxa-alerts = Naročite se na opozorila { -product-name }ja.
