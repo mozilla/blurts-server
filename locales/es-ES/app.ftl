@@ -309,3 +309,8 @@ fxa-what-to-do-blurb-4 = Administradores de contraseñas como 1Password, LastPas
 fb-landing-headline = ¿Tu información fue expuesta en la filtración de datos de { $breachName }?
 copyright = Partes de este contenido son © 1999-{ $year } por colaboradores individuales de mozilla.org.
 content-available = Contenido disponible bajo una licencia Creative Commons.
+# Alerts is a noun
+sign-up-for-alerts = Regístrate para recibir alertas
+sign-up-for-fxa-alerts = Regístrate para recibir alertas de { -product-name }.
+create-free-account = Crea una { -brand-fxa } gratuita para recibir un informe completo de filtraciones anteriores, alertas sobre nuevas filtraciones e información acerca de otros servicios de { -brand-Mozilla }.
+get-your-report-and-sign-up = Obtén tu informe y regístrate para recibir alertas.
