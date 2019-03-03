@@ -271,3 +271,54 @@ guest-fb-not-compromised-blurb-v2 =
         [one] Dit e-mailadres komt net foar yn it { $breachName }-lek, mar wol yn in oar. Meitsje in fergees { -brand-fxa } foar jo folsleine rapport oer eardere lekken, warskôgingen foar nije lekken en ynformaasje oer oare tsjinsten fan { -brand-Mozilla }.
        *[other] Dit e-mailadres komt net foar yn it { $breachName }-lek, mar wol yn in oare. Meitsje in fergees { -brand-fxa } foar jo folsleine rapport oer eardere lekken, warskôgingen foar nije lekken en ynformaasje oer oare tsjinsten fan { -brand-Mozilla }.
     }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] Dit lek hat de folgjende persoanlike gegevens lekt. Wizigje jo wachtwurd, as jo dit noch net dien hawwe.
+       *[other] Dit lek hat de folgjende persoanlike gegevens lekt. Wizigje jo wachtwurden, as jo dit noch net dien hawwe.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Dit lek hat de folgjende persoanlike gegevens lekt.
+       *[other] Dizze lekken hawwe de folgjende persoanlike gegevens lekt.
+    }
+have-an-account = Hawwe jo al in account?
+signup-banner-sensitive-blurb = Untdek wat hackers al oer jo witte, en lear hoe't jo se in stap yn it foar bliuwe kinne. ûntfang in warskôging wannear't jo account troch nije datalekken troffen is.
+fxa-pwt-section-blurb = Wachtwurden beskermje alle persoanlike gegevens yn jo online accounts. En hackers fertrouwe op minne gewoanten, lykas oeral itselde wachtwurd brûke of it gebrûk fan faaks foarkommende sinnen (brûkt der ien @p@ssw0rd?), sadat as se ien account hacke, se der daliks in protte hacke kinne.
+fxa-pwt-summary-2 =
+    Koarte út ien wurd besteande wachtwurden binne foar hackers ienfâldich te rieden. 
+    Brûk op syn minst twa wurden en in kombinaasje fan letters, sifers en spesjale tekens.
+fxa-pwt-summary-4 =
+    Wachtwurdbehearders as 1Password, LastPass, Dashlane en Bitwarden bewarje jo wachtwurden 
+    en folje se foar jo yn op websites. Se helpe jo sels by iet oanmeitsjen fan sterke wachtwurden.
+fxa-pwt-summary-6 =
+    Datalekken komme hieltyd faker foar. As jo persoanlike gegevens yn in nij datalek ferskine,
+    stjoert { -product-name } jo in warskôging - sadat jo yn aksje komme kinne en jo accounts beskermje kinne.
+fxa-what-to-do-blurb-1 = As jo jo net oanmelde kinne, nim dan kontakt op mei de website en freegje hoe't jo it bywurkje kinne. Sjogge jo in account dy't jo net werkenne? Mooglik binne jo gegevens dan ferkocht of opnij ferdield. Dit kin ek in ferjitten account wêze, of in bedriuw dat fan namme feroare is.
+fxa-what-to-do-subhead-2 = Stop mei it gebrûk fan it lekte wachtwurd, en wizigje it op de plakken wêr't jo it brûkt hawwe.
+fxa-wtd-blurb-2 =
+    Hackers kinne probearje itselde wachtwurd en jo e-mailadres te brûken foar tagong ta oare accounts.  
+    Meitsje foar elk account in oar en unyk wachtwurd oan, foaral foar jo bankrekkening, 
+    e-mailaccount en oare websites wêr't jo persoanlike gegevens bewarje.
+fxa-what-to-do-blurb-3 =
+    De measte lekken omfetsje allinnich e-mailadressen en wachtwurden, mar guon befetsje ek gefoelige finansjele ynformaasje. 
+    As jo bankrekkening of creditcardnûmers lekt binne, warskôgje dan jo bank foar mooglike fraude. 
+    Let op ôfskriuwingen dy't jo net werkenne.
+fxa-what-to-do-subhead-4 = Brûk help by it ûnthâlden fan al jo wachtwurden en it feilich hâlden derfan.
+fxa-what-to-do-blurb-4 =
+    Wachtwurdbehearders as 1Password, LastPass, Dashlane en Bitwarden bewarje jo 
+    wachtwurden feilich en folje se foar jo op websites yn. Brûk in wachtwurdbehearder 
+    op jo telefoan en jo kompjûter, sadat jo se net allegearre hoege te ûnthâlden.
+fb-landing-headline = Binne jo gegevens lekt yn it { $breachName }-datalek?
+copyright = Underdielen fan dizze ynhâld binne © 1999-{ $year } troch yndividuele meiwurkers fan mozilla.org.
+content-available = Ynhâld is beskikber ûnder in Creative Commons-lisinsje.
+# Alerts is a noun
+sign-up-for-alerts = Ynskriuwe foar warskôgingen
+sign-up-for-fxa-alerts = Skriuw jo yn foar { -product-name }-warskôgingen.
+create-free-account =
+    Meitsje in fergees { -brand-fxa } foar jo folsleine rapport oer eardere lekken, warskôgingen foar 
+    nije lekken en ynformaasje oer oare tsjinsten fan { -brand-Mozilla }.
+get-your-report-and-sign-up = Helje jo rapport op en skriuw jo yn foar warskôgingen.
