@@ -264,9 +264,14 @@ fxa-pwt-summary-4 = Upravitelji gesel kot so 1Password, LastPass, Dashlane in Bi
 fxa-pwt-summary-6 = Število kraj podatkov se povečuje. Če se vaši osebni podatki pojavijo v novi kraji podatkov, vam { -product-name } pošlje opozorilo. Tako lahko hitro ukrepate in zaščitite svoje račune.
 fxa-what-to-do-subhead-2 = Ne uporabljajte izpostavljenega gesla in ga spremenite povsod, kjer ste ga uporabili.
 fxa-what-to-do-subhead-4 = Pomagajte si pri pomnjenju gesel in njihovem varovanju.
+fxa-what-to-do-blurb-4 =
+    Upravitelji gesel, kot so 1Password, LastPass, Dashlane in Bitwarden, varno shranjujejo 
+    vaša gesla in jih za vas izpolnjujejo na spletnih straneh. Na telefonu in računalniku 
+    uporabljajte upravitelja gesel, da si vam jih ne bo potrebno vseh zapomniti.
 fb-landing-headline = Ali so bili vaši podatki izpostavljeni v kraji podatkov { $breachName }?
 copyright = Deli vsebine so avtorsko zaščiteni ©1998–{ $year } s strani sodelavcev mozilla.org.
 content-available = Vsebina je na voljo pod licenco Creative Commons.
 # Alerts is a noun
 sign-up-for-alerts = Prijavite se na opozorila
 sign-up-for-fxa-alerts = Naročite se na opozorila { -product-name }ja.
+get-your-report-and-sign-up = Prejmite poročilo in se naročite na opozorila.
