@@ -248,6 +248,9 @@ guest-scan-results-headline =
        *[other] Táto e-mailová adresa bola súčasťou { $breachCount } únikov dát.
     }
 user-no-breaches-blurb = Ak sa táto e-mailová adresa objaví v nejakom úniku dát, dostanete upozornenie.
+guest-no-breaches-blurb =
+    Ak chcete zistiť, či bola táto e-mailová adresa súčasťou nejakého úniku dát, vytvorte si, prosím, { -brand-fxa }.
+    Ak sa vaša e-mailová adresa objaví v nejakom úniku dát v budúcnosti, upozorníme vás na to.
 user-one-breach-blurb = Tento únik obsahoval nasledujúce údaje.
 user-fb-compromised-blurb =
     { $breachCount ->
@@ -265,10 +268,32 @@ user-fb-compromised-single =
     Tento únik obsahoval nasledujúce údaje. Odporúčame vám 
     zmeniť si svoje heslo.
 user-generic-fb-compromised-single = Tento únik obsahoval nasledujúce údaje.
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] Tento únik obsahoval nasledujúce údaje. Odporúčame vám zmeniť si svoje heslo.
+        [few] Tieto úniky obsahovali nasledujúce údaje. Odporúčame vám zmeniť si svoje heslo.
+       *[other] Tieto úniky obsahovali nasledujúce údaje. Odporúčame vám zmeniť si svoje heslo.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Tento únik obsahoval nasledujúce údaje.
+        [few] Tieto úniky obsahovali nasledujúce údaje.
+       *[other] Tieto úniky obsahovali nasledujúce údaje.
+    }
 have-an-account = Už ho máte?
+fxa-pwt-summary-2 =
+    Krátke, jednoslovné heslá možno ľahko uhádnuť.
+    Používajte aspoň dvojslovné heslá s kombináciou malých a veľkých písmen, čísel a špeciálnych znakov.
 fxa-pwt-summary-4 =
     Správcovia hesiel, ako je 1Password, LastPass, Dashlane a Bitwarden vedia vaše heslá bezpečne uložiť
     a automaticky ich pre vás na webových stránkach vyplniť. Pomôžu vám as s vytvorením silného hesla.
+fxa-pwt-summary-6 =
+    Počet únikov dát stúpa. Kedykoľvek sa vaše údaje objavia v novom úniku,
+    { -product-name } vám pošle upozornenie, aby ste mohli čo najrýchlejšie zareagovať.
 fxa-what-to-do-subhead-2 = Prestaňte používať uniknuté heslo a zmeňte ho všade, kde ste ho použili.
 fxa-what-to-do-subhead-4 = Nemusíte si sami pamätať všetky svoje heslá.
 fxa-what-to-do-blurb-4 =
