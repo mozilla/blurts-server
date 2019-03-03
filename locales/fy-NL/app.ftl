@@ -266,3 +266,8 @@ user-generic-fb-not-compromised-blurb =
         [one] Dit e-mailadres is net troffen troch it { $breachName }-lek, mar wy hawwe it yn in oar lek fûn.
        *[other] Dit e-mailadres is net troffen troch it { $breachName }-lek, mar wy hawwe it yn in oare lekken fûn.
     }
+guest-fb-not-compromised-blurb-v2 =
+    { $breachCount ->
+        [one] Dit e-mailadres komt net foar yn it { $breachName }-lek, mar wol yn in oar. Meitsje in fergees { -brand-fxa } foar jo folsleine rapport oer eardere lekken, warskôgingen foar nije lekken en ynformaasje oer oare tsjinsten fan { -brand-Mozilla }.
+       *[other] Dit e-mailadres komt net foar yn it { $breachName }-lek, mar wol yn in oare. Meitsje in fergees { -brand-fxa } foar jo folsleine rapport oer eardere lekken, warskôgingen foar nije lekken en ynformaasje oer oare tsjinsten fan { -brand-Mozilla }.
+    }
