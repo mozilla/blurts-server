@@ -199,7 +199,7 @@ fxa-landing-blurb =
 fxa-scan-label = Preverite, ali ste bili vpleteni v krajo podatkov.
 fxa-welcome-headline = Dobrodošli v { -product-name }.
 fxa-welcome-blurb = Vključili ste opozorila, če se v kraji podatkov pojavi { $userEmail }.
-fxa-scan-another-email = Ali želite priključiti še kakšen račun?
+fxa-scan-another-email = Ali želite preveriti še kakšen račun?
 # Search Firefox Monitor
 fxa-scan-submit = Poišči s { -product-name }jem
 sign-in = Prijava
