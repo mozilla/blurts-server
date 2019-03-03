@@ -268,6 +268,34 @@ user-fb-compromised-single =
     Tento únik obsahoval nasledujúce údaje. Odporúčame vám 
     zmeniť si svoje heslo.
 user-generic-fb-compromised-single = Tento únik obsahoval nasledujúce údaje.
+guest-fb-compromised-single-v2 =
+    Tento únik obsahoval nasledujúce osobné údaje.
+    Vytvorte si bezplatný { -brand-fxa } a získajte kompletnú správu o predchádzajúcich únikoch.
+    Dostanete taktiež informácie o nových únikoch a informácie o ďalších službách organizácie { -brand-Mozilla }.
+guest-fb-compromised-blurb-v2 =
+    { $breachCount ->
+        [one] Táto e-mailová adresa bola taktiež súčasťou { $breachCount } ďalšieho úniku. Vytvorte si bezplatný { -brand-fxa } a dostanete kompletnú správu o predošlých únikoch dát. Dostanete taktiež informácie o nových únikoch a ďalších službách organizácie { -brand-Mozilla }.
+        [few] Táto e-mailová adresa bola taktiež súčasťou { $breachCount } ďalších únikov. Vytvorte si bezplatný { -brand-fxa } a dostanete kompletnú správu o predošlých únikoch dát. Dostanete taktiež informácie o nových únikoch a ďalších službách organizácie { -brand-Mozilla }.
+       *[other] Táto e-mailová adresa bola taktiež súčasťou { $breachCount } ďalších únikov. Vytvorte si bezplatný { -brand-fxa } a dostanete kompletnú správu o predošlých únikoch dát. Dostanete taktiež informácie o nových únikoch a ďalších službách organizácie { -brand-Mozilla }.
+    }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Vaša e-mailová adresa nebola súčasťou úniku dát { $breachName }, no našli sme ju v inom.
+        [few] Vaša e-mailová adresa nebola súčasťou úniku dát { $breachName }, no našli sme ju v iných.
+       *[other] Vaša e-mailová adresa nebola súčasťou úniku dát { $breachName }, no našli sme ju v iných.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Táto e-mailová adresa nebola súčasťou úniku dát { $breachName }, no našli sme ju v inom.
+        [few] Táto e-mailová adresa nebola súčasťou úniku dát { $breachName }, no našli sme ju v iných.
+       *[other] Táto e-mailová adresa nebola súčasťou úniku dát { $breachName }, no našli sme ju v iných.
+    }
+guest-fb-not-compromised-blurb-v2 =
+    { $breachCount ->
+        [one] Táto e-mailová adresa nebola súčasťou úniku dát - { $breachName }, no našli sme ju v inom. Vytvorte si bezplatný { -brand-fxa } a dostanete kompletnú správu o predošlých únikoch dát. Dostanete taktiež informácie o nových únikoch a ďalších službách organizácie { -brand-Mozilla }.
+        [few] Táto e-mailová adresa nebola súčasťou úniku dát - { $breachName }, no našli sme ju v iných. Vytvorte si bezplatný { -brand-fxa } a dostanete kompletnú správu o predošlých únikoch dát. Dostanete taktiež informácie o nových únikoch a ďalších službách organizácie { -brand-Mozilla }.
+       *[other] Táto e-mailová adresa nebola súčasťou úniku dát - { $breachName }, no našli sme ju v iných. Vytvorte si bezplatný { -brand-fxa } a dostanete kompletnú správu o predošlých únikoch dát. Dostanete taktiež informácie o nových únikoch a ďalších službách organizácie { -brand-Mozilla }.
+    }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
 user-found-breaches-blurb =
@@ -285,6 +313,14 @@ user-generic-found-breaches-blurb =
        *[other] Tieto úniky obsahovali nasledujúce údaje.
     }
 have-an-account = Už ho máte?
+signup-banner-sensitive-blurb =
+    Zistite, čo o vás hackeri vedia a zostaňte krok pred nimi. 
+    Nechajte si posielať upozornenia, ak sa váš účet objaví v novom úniku.
+fxa-pwt-section-blurb =
+    Heslá chránia všetky osobné údaje vo vašich online účtoch.
+    Hackeri sa spoliehajú na zlé zvyky, ako je napríklad používanie rovnakého hesla
+    na viacerých miestach alebo používanie príliš jednoduchého hesla (h3slo). Takže 
+    ak sa im podarí prelomiť jeden váš účet, dostanú sa veľmi rýchlo aj k tým ostatným.
 fxa-pwt-summary-2 =
     Krátke, jednoslovné heslá možno ľahko uhádnuť.
     Používajte aspoň dvojslovné heslá s kombináciou malých a veľkých písmen, čísel a špeciálnych znakov.
@@ -294,7 +330,19 @@ fxa-pwt-summary-4 =
 fxa-pwt-summary-6 =
     Počet únikov dát stúpa. Kedykoľvek sa vaše údaje objavia v novom úniku,
     { -product-name } vám pošle upozornenie, aby ste mohli čo najrýchlejšie zareagovať.
+fxa-what-to-do-blurb-1 =
+    Ak sa nemôžete prihlásiť, kontaktujte webovú stránku a spýtajte sa, ako môžete svoje heslo zmeniť.
+    Vidíte účet, o ktorom vôbec neviete? Stránka mohla zmeniť svoj názov alebo majiteľa.
+    Takisto ste na daný účet mohli len zabudnúť.
 fxa-what-to-do-subhead-2 = Prestaňte používať uniknuté heslo a zmeňte ho všade, kde ste ho použili.
+fxa-wtd-blurb-2 =
+    Hackeri môžu použiť rovnaké heslo a e-mailovú adresu a dostať sa aj do vašich ďalších účtov.
+    Pre každý účet používajte iné heslo, obzvlášť pre internetové bankovníctvo, e-mailovú schránku 
+    a ďalšie webové stránky, ktoré majú vaše citlivé údaje.
+fxa-what-to-do-blurb-3 =
+    Väčšina únikov obsahuje len e-mailové adresy a heslá, no niektoré obsahujú aj citlivé údaje finančného charakteru.
+    Ak uniklo číslo vášho účtu alebo platobnej karty, okamžite informujte svoju banku.
+    Sledujte taktiež stav svojho účtu, či na ňom nedošlo k zmenám.
 fxa-what-to-do-subhead-4 = Nemusíte si sami pamätať všetky svoje heslá.
 fxa-what-to-do-blurb-4 =
     Správcovia hesiel, ako je 1Password, LastPass, Dashlane a Bitwarden vedia vaše heslá bezpečne uložiť
@@ -306,4 +354,7 @@ content-available = Obsah je dostupný v rámci licencie Creative Commons.
 # Alerts is a noun
 sign-up-for-alerts = Prihláste sa na odber upozornení
 sign-up-for-fxa-alerts = Prihláste sa na odber upozornení zo služby { -product-name }.
+create-free-account =
+    Vytvorte si bezplatný { -brand-fxa } a dostanete kompletnú správu o predošlých únikoch dát.
+    Dostanete taktiež informácie o nových únikoch a ďalších službách organizácie { -brand-Mozilla }.
 get-your-report-and-sign-up = Získajte správu a prihláste sa na odber upozornení.
