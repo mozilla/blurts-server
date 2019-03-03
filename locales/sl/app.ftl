@@ -260,6 +260,9 @@ user-generic-found-breaches-blurb =
        *[other] Kraje so izpostavile naslednje osebne podatke.
     }
 have-an-account = Že imate račun?
+fxa-pwt-summary-2 =
+    Kratka, enobesedna gesla so lahek plen za napadalce.
+    Uporabite vsaj dve besedi ter kombinacijo črk, številk in posebnih znakov.
 fxa-pwt-summary-4 = Upravitelji gesel kot so 1Password, LastPass, Dashlane in Bitwarden shranjujejo vaša gesla in jih namesto vas izpolnjujejo na spletnih mestih. Pomagali vam bodo tudi pri ustvarjanju močnih gesel.
 fxa-pwt-summary-6 = Število kraj podatkov se povečuje. Če se vaši osebni podatki pojavijo v novi kraji podatkov, vam { -product-name } pošlje opozorilo. Tako lahko hitro ukrepate in zaščitite svoje račune.
 fxa-what-to-do-subhead-2 = Ne uporabljajte izpostavljenega gesla in ga spremenite povsod, kjer ste ga uporabili.
