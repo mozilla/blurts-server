@@ -157,6 +157,7 @@ unsub-headline = Cancelar la suscripción de  { -product-name-nowrap }.
 unsub-blurb = Esto eliminará tu correo electrónico de la lista de { -product-name-nowrap } y ya no recibirás alertas cuando se anuncien nuevas filtraciones.
 unsub-button = Cancelar suscripción
 fxa-unsub-headline = Cancelar suscripción a las alertas de { -product-name }.
+fxa-unsub-blurb = Ya no recibirás alertas de { -product-name }. Tu { -brand-fxa } permanecerá activa, y puede que recibas otras comunicaciones relacionadas con la cuenta.
 unsub-survey-form-label = ¿Por qué cancelas la suscripción a las alertas de { -product-name-nowrap }?
 unsub-reason-1 = Creo que las alertas no hacen que mis datos estén más seguros
 unsub-reason-2 = Recibo muchos correos electrónicos de { -product-name-nowrap }
@@ -195,17 +196,25 @@ mozilla-security-blog = Blog de seguridad de { -brand-Mozilla }
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Social
 show-all = Mostrar todo
+fxa-landing-blurb =
+    Descubre qué saben de ti los piratas informáticos,
+    y aprende cómo estar un paso por delante de ellos.
+fxa-scan-label = Comprueba si has aparecido en una filtración de datos.
 fxa-welcome-headline = Bienvenido a { -product-name }.
+fxa-welcome-blurb = Estás listo para recibir alertas si { $userEmail } aparece en una filtración de datos.
 fxa-scan-another-email = ¿Quieres comprobar otra dirección de correo?
 # Search Firefox Monitor
 fxa-scan-submit = Buscar { -product-name }
+sign-up-to-check = Regístrate para verificar
 sign-in = Iniciar sesión
 sign-out = Cerrar sesión
 full-report-headline = Tu informe de { -product-name }
 see-full-report = Ver informe completo
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Gestionar { -brand-fxa }
+fxa-download-firefox-bar-blurb = Brindado por { -brand-name }. 2 veces más rápido. Usa un 30% menos de memoria que { -brand-Chrome }.
 fxa-download-firefox-bar-link = Descargar ahora
+fxa-download-firefox-banner-blurb = Una carga de páginas mejor y más rápida que usa menos memoria del ordenador.
 user-fb-compromised-headline = { $userEmail } apareció en la filtración de datos de { $breachName }.
 guest-fb-compromised-headline = Esta dirección de correo apareció en la filtración de datos de { $breachName }.
 user-zero-breaches-headline = { $userEmail } no apareció en ninguna filtración de datos.
@@ -221,6 +230,9 @@ guest-scan-results-headline =
        *[other] Esta dirección de correo apareció en { $breachCount } filtraciones de datos.
     }
 user-no-breaches-blurb = Te informaremos si esta dirección de correo aparece en una nueva filtración de datos.
+guest-no-breaches-blurb =
+    Para ver si este correo electrónico aparece en filtraciones importantes, crea una { -brand-fxa }.
+    También te avisaremos si esta dirección aparece en nuevas filtraciones de datos.
 user-one-breach-blurb = Esta filtración expuso la siguiente información personal.
 user-fb-compromised-blurb =
     { $breachCount ->
@@ -234,6 +246,14 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = Esta filtración expuso la siguiente información personal. Si no lo has hecho aún, cambia tus contraseñas.
 user-generic-fb-compromised-single = Esta filtración expuso la siguiente información personal.
+guest-fb-compromised-single-v2 =
+    Esta filtración expuso la siguiente información personal.
+    Crea una { -brand-fxa } gratuita para recibir un informe completo de filtraciones anteriores, alertas sobre nuevas filtraciones e información acerca de otros servicios de { -brand-Mozilla }.
+guest-fb-compromised-blurb-v2 =
+    { $breachCount ->
+        [one] Este correo apareció también en { $breachCount } filtración más. Crea una { -brand-fxa } gratuita para recibir un informe completo de filtraciones anteriores, alertas sobre nuevas filtraciones e información acerca de otros servicios de { -brand-Mozilla }.
+       *[other] Este correo apareció también en otras { $breachCount } filtraciones. Crea una { -brand-fxa } gratuita para recibir un informe completo de filtraciones anteriores, alertas sobre nuevas filtraciones e información acerca de otros servicios de { -brand-Mozilla }.
+    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
         [one] No se expuso tu información en la filtración de { $breachName }, pero encontramos esa dirección de correo en otra filtración.
@@ -243,6 +263,11 @@ user-generic-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Esta dirección de correo no se expuso en la filtración de { $breachName }, pero sí en otra.
        *[other] Esta dirección de correo no se expuso en la filtración de { $breachName }, pero sí en otras.
+    }
+guest-fb-not-compromised-blurb-v2 =
+    { $breachCount ->
+        [one] Este correo no estaba en la filtración { $breachName }, pero fue encontrado en otra. Crea una { -brand-fxa } gratuita para recibir un informe completo de filtraciones anteriores, alertas sobre nuevas filtraciones e información acerca de otros servicios de { -brand-Mozilla }.
+       *[other] Este correo no estaba en la filtración { $breachName }, pero fue encontrado en otras. Crea una { -brand-fxa } gratuita para recibir un informe completo de filtraciones anteriores, alertas sobre nuevas filtraciones e información acerca de otros servicios de { -brand-Mozilla }.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -259,3 +284,28 @@ user-generic-found-breaches-blurb =
        *[other] Estas filtraciones expusieron la siguiente información personal.
     }
 have-an-account = ¿Ya tienes una cuenta?
+signup-banner-sensitive-blurb =
+    Descubre lo que saben de ti los piratas informáticos y aprende cómo
+    estar un paso por delante de ellos. Recibe alertas si aparece tu cuenta
+    en nuevas filtraciones de datos.
+fxa-pwt-section-blurb =
+    Las contraseñas protegen toda la información personal en tus cuentas en línea. Y
+    los piratas informáticos confían en los malos hábitos, como usar la misma contraseña en todas partes o usar frases comunes (como "contraseña"), por lo que si logran entrar una cuenta,
+    pueden entrar en muchas.
+fxa-pwt-summary-2 =
+    Las contraseñas cortas de una sola palabra son fáciles de adivinar para los piratas informáticos.
+    Usa al menos dos palabras y una combinación de letras, dígitos y caracteres especiales.
+fxa-pwt-summary-4 = Administradores de contraseñas como 1Password, LastPass, Dashlane y Bitwarden almacenan tus contraseñas y las escriben en tus sitios web. Incluso te ayudarán a crear contraseñas robustas.
+fxa-pwt-summary-6 = Las filtraciones de datos van en aumento. Si tu información personal aparece en una nueva filtración de datos, { -product-name } te envía una alerta para que puedas tomar medidas y proteger tus cuentas.
+fxa-what-to-do-blurb-1 =
+    Si no puedes iniciar sesión, ponte en contacto con el sitio web para preguntar cómo actualizarlo.
+    ¿Ves una cuenta que no reconoces? Tus datos podrían haber sido vendidos
+    o redistribuidos. Esta también podría ser una cuenta que olvidaste haber creado o una empresa que cambió de nombre.
+fxa-what-to-do-subhead-2 = Deja de usar la contraseña expuesta, y cámbiala en todos los lugares donde la usaste.
+fxa-wtd-blurb-2 = Los piratas informáticos pueden intentar reutilizar tu contraseña expuesta para acceder a otras cuentas. Crea una contraseña diferente y única para cada cuenta, especialmente para tu cuenta bancaria, tu correo electrónico y otros sitios web en los que guardas información personal.
+fxa-what-to-do-blurb-3 = La mayoría de las filtraciones solo exponen correos electrónicos y contraseñas, pero algunas incluyen información financiera confidencial. Si tu cuenta bancaria o los números de tu tarjeta de crédito se incluyeron en una filtración, avisa a tu banco sobre posibles fraudes y revisa los movimientos de tu cuenta por si hay cargos que no reconozcas.
+fxa-what-to-do-subhead-4 = Consigue ayuda para recordar todas tus contraseñas y mantenerlas seguras.
+fxa-what-to-do-blurb-4 = Administradores de contraseñas como 1Password, LastPass, Dashlane y Bitwarden almacenan tus contraseñas de forma segura y las escriben por ti en los sitios web. Usa un administrador de contraseñas en tu móvil y ordenador para que to tengas que recordarlas todas.
+fb-landing-headline = ¿Tu información fue expuesta en la filtración de datos de { $breachName }?
+copyright = Partes de este contenido son © 1999-{ $year } por colaboradores individuales de mozilla.org.
+content-available = Contenido disponible bajo una licencia Creative Commons.
