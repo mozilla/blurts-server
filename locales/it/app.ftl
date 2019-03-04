@@ -165,10 +165,8 @@ confirmed-social-blurb = Se sei stato vittima di una violazione di dati, è poss
 unsub-headline = Annulla iscrizione a { -product-name-nowrap }
 unsub-blurb = Questa operazione rimuoverà la tua email dall’elenco di { -product-name-nowrap } e non riceverai più avvisi quando verranno annunciate nuove violazioni di dati.
 unsub-button = Annulla iscrizione
-unsub-survey-headline = Hai annullato la tua iscrizione.
-unsub-survey-blurb =
-    La tua iscrizione a { -product-name-nowrap } è stata annullata. Grazie per aver utilizzato questo servizio.
-    Puoi dedicarci ancora un momento per rispondere a una domanda sulla tua esperienza?
+fxa-unsub-headline = Annulla l’iscrizione agli avvisi di { -product-name }.
+fxa-unsub-blurb = Non riceverai più avvisi di sicurezza da { -product-name }. Il tuo { -brand-fxa } rimarrà attivo e potresti ricevere ulteriori comunicazioni relative all’account.
 unsub-survey-form-label = Perché stai annullando la tua iscrizione agli avvisi di { -product-name-nowrap }?
 unsub-reason-1 = Non credo che gli avvisi contribuiscano a rendere i miei dati più sicuri
 unsub-reason-2 = Ricevo troppe email da { -product-name-nowrap }
@@ -178,6 +176,9 @@ unsub-reason-5 = Sto usando un altro servizio per tenere sotto controllo i miei 
 unsub-reason-6 = Nessuna delle precedenti
 unsub-survey-thankyou = Grazie per aver condiviso la tua opinione.
 unsub-survey-error = Seleziona un’opzione.
+unsub-survey-headline-v2 = Hai annullato l’iscrizione.
+unsub-survey-blurb-v2 = Non riceverai più avvisi di sicurezza da { -product-name }. Ti chiediamo di dedicarci ancora un minuto per rispondere a una domanda sulla tua esperienza con il servizio.
+unsub-survey-button = Invia risposta
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Condividi
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -204,8 +205,6 @@ mozilla-security-blog = Blog sulla sicurezza di { -brand-Mozilla }
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Social
 show-all = Mostra tutto
-fxa-signup-banner-headline = Tieni sotto controllo le minacce ai tuoi account online.
-fxa-signup-banner-blurb = Registra un { -brand-fxa } per ricevere il rapporto completo e avvisi sulle nuove violazioni di dati.
 fxa-landing-blurb = Scopri che cosa gli hacker già sanno su di te e apprendi come mantenerti sempre un passo avanti a loro.
 fxa-scan-label = Scopri se sei stato coinvolto in una violazione di dati.
 fxa-welcome-headline = Benvenuto in { -product-name }.
@@ -252,11 +251,11 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = Questa violazione di dati ha coinvolto le seguenti informazioni personali. Se non l’hai fatto, cambia le password.
 user-generic-fb-compromised-single = Questa violazione di dati ha coinvolto le seguenti informazioni personali.
-guest-fb-compromised-single = Questa violazione di dati ha esposto le seguenti informazioni personali. Registra un { -brand-fxa } per ottenere il rapporto completo e avvisi su nuove violazioni.
-guest-fb-compromised-blurb =
+guest-fb-compromised-single-v2 = La violazione ha coinvolto le seguenti informazioni personali. Crea gratuitamente un { -brand-fxa } per ottenere il rapporto completo sulle violazioni passate, avvisi di violazioni future e informazioni sugli altri servizi { -brand-Mozilla }.
+guest-fb-compromised-blurb-v2 =
     { $breachCount ->
-        [one] Questo indirizzo email è stato coinvolto anche in { $breachCount } altra violazione di dati. Registra un { -brand-fxa } per ricevere il rapporto completo e avvisi di nuove violazioni.
-       *[other] Questo indirizzo email è stato coinvolto anche in altre { $breachCount } violazioni di dati. Registra un { -brand-fxa } per ricevere il rapporto completo e avvisi di nuove violazioni.
+        [one] Questo indirizzo email è stato coinvolto in un'altra violazione. Crea gratuitamente un { -brand-fxa } per ottenere il rapporto completo sulle violazioni passate, avvisi di nuove violazioni e informazioni sugli altri servizi { -brand-Mozilla }.
+       *[other] Questo indirizzo email è stato coinvolto in { $breachCount } altre violazioni. Crea gratuitamente un { -brand-fxa } per ottenere il rapporto completo sulle violazioni passate, avvisi di nuove violazioni e informazioni sugli altri servizi { -brand-Mozilla }.
     }
 user-fb-not-compromised-blurb =
     { $breachCount ->
@@ -268,10 +267,10 @@ user-generic-fb-not-compromised-blurb =
         [one] Questa email non era nella violazione di { $breachName } ma è stata coinvolta in un’altra violazione.
        *[other] Questa email non era nella violazione di { $breachName } ma è stata coinvolta in altre violazioni.
     }
-guest-fb-not-compromised-blurb =
+guest-fb-not-compromised-blurb-v2 =
     { $breachCount ->
-        [one] Questa email non è stata coinvolta nella violazione { $breachName }, ma è stata trovata in un’altra violazione. Registra un { -brand-fxa } per ricevere il rapporto completo e avvisi di nuove violazioni.
-       *[other] Questa email non è stata coinvolta nella violazione { $breachName }, ma è stata trovata in altre violazioni. Registra un { -brand-fxa } per ricevere il rapporto completo e avvisi di nuove violazioni.
+        [one] Questo indirizzo email non è stato coinvolto nella violazione { $breachName }, ma è stato rilevato in un’altra violazione. Crea gratuitamente un { -brand-fxa } per ottenere il rapporto completo sulle violazioni passate, avvisi di nuove violazioni e informazioni sugli altri servizi { -brand-Mozilla }.
+       *[other] Questo indirizzo email non è stato coinvolto nella violazione { $breachName }, ma è stato rilevato in diverse altre violazioni. Crea gratuitamente un { -brand-fxa } per ottenere il rapporto completo sulle violazioni passate, avvisi di nuove violazioni e informazioni sugli altri servizi { -brand-Mozilla }.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -286,13 +285,6 @@ user-generic-found-breaches-blurb =
     { $breachCount ->
         [one] Questa violazione di dati ha esposto le seguenti informazioni personali.
        *[other] Queste violazioni di dati hanno esposto le seguenti informazioni personali.
-    }
-# While English doesn’t use the actual number of breaches in this sentence,
-# you can use {$breachCount} to display the number of breaches in your localization.
-guest-found-breaches-blurb =
-    { $breachCount ->
-        [one] Questa violazione di dati ha esposto le seguenti informazioni personali. Registra un { -brand-fxa } per ricevere il rapporto completo e avvisi di nuove violazioni.
-       *[other] Queste violazioni di dati hanno esposto le seguenti informazioni personali. Registra un { -brand-fxa } per ricevere il rapporto completo e avvisi di nuove violazioni.
     }
 have-an-account = Hai già un account?
 signup-banner-sensitive-blurb = Scopri ciò che gli hacker già sanno su di te e impara come stare un passo avanti a loro. Ricevi un avviso se il tuo account viene coinvolto in nuove violazioni di dati.
@@ -309,3 +301,8 @@ fxa-what-to-do-blurb-4 = I gestori di password come 1Password, LastPass, Dashlan
 fb-landing-headline = I tuoi dati sono stati esposti nella violazione di { $breachName }?
 copyright = Parti di questo contenuto sono protette da © 1999-{ $year } dei singoli collaboratori di mozilla.org.
 content-available = Contenuto disponibile sotto licenza Creative Commons.
+# Alerts is a noun
+sign-up-for-alerts = Iscriviti per ricevere gli avvisi
+sign-up-for-fxa-alerts = Iscriviti per ricevere gli avvisi di { -product-name }.
+create-free-account = Crea gratuitamente un { -brand-fxa } per ottenere il rapporto completo sulle violazioni passate, avvisi di nuove violazioni e informazioni sugli altri servizi { -brand-Mozilla }.
+get-your-report-and-sign-up = Ottieni un rapporto personalizzato e iscriviti per ricevere nuovi avvisi.
