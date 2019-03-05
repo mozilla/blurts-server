@@ -106,6 +106,7 @@ unsub-reason-6 = Ingen av dei ovanfor
 unsub-survey-thankyou = Takk for tilbakemeldinga di.
 unsub-survey-error = Ver snill og velein.
 unsub-survey-headline-v2 = Abonnentet er avslutta.
+unsub-survey-button = Send inn svar
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Del
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -118,6 +119,7 @@ features = Funksjonar
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Informasjonen om datalekkasjen kjem frå { $hibp-link }
+confirmation-headline = Din rapport frå { -product-name } er på veg.
 share-email = E-postadresse
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Andre
