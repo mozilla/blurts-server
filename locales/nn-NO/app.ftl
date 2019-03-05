@@ -97,7 +97,6 @@ compromised-data = Kompromiterte data:
 confirmed = Stadfesta!<br />Du abonnerer!
 unsub-headline = Avslutt abonnementet på { -product-name-nowrap }
 unsub-button = Avslutt abonnementet
-unsub-survey-headline = Du abonnerer ikkje lenger.
 unsub-reason-1 = Eg trur ikkje at åtvaringane gjer mine data sikrare
 unsub-reason-2 = Eg får for mange e-postar frå { -product-name-nowrap }
 unsub-reason-3 = Eg synest ikkje at tenesta er nyttig
@@ -105,6 +104,8 @@ unsub-reason-4 = Eg har allereie gjort noko for å verne kontoane mine
 unsub-reason-5 = Eg brukar ei anna teneste til å halde auge med kontoane mine
 unsub-reason-6 = Ingen av dei ovanfor
 unsub-survey-thankyou = Takk for tilbakemeldinga di.
+unsub-survey-error = Ver snill og velein.
+unsub-survey-headline-v2 = Abonnentet er avslutta.
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Del
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -124,7 +125,6 @@ mozilla-security-blog = { -brand-Mozilla } sikkerheitsblogg
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Sosialt
 show-all = Vis alle
-fxa-signup-banner-headline = Overvakar truslar mot online-kontoane dine.
 fxa-landing-blurb =
     Finn ut kva hackarar allereie veit om deg,
     og lær deg korleis du kan vere eitt steg framom dei.
@@ -157,3 +157,6 @@ guest-scan-results-headline =
     }
 user-no-breaches-blurb = Vi vil involvere deg om denne adressa er involvert i ein datalekkasje.
 user-one-breach-blurb = Denne datalekkasjen avslørte følgjande personleg informasjon.
+# Alerts is a noun
+sign-up-for-alerts = Registrer deg for varsel
+sign-up-for-fxa-alerts = Registrer deg på { -product-name } for varsel.
