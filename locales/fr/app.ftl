@@ -251,6 +251,11 @@ user-generic-fb-not-compromised-blurb =
         [one] Cette adresse électronique n’apparaît pas dans la fuite de données { $breachName }, mais a été détectée dans une autre fuite de données.
        *[other] Cette adresse électronique n’apparaît pas dans la fuite de données { $breachName }, mais a été détectée dans d’autres fuite sde données.
     }
+guest-fb-not-compromised-blurb-v2 =
+    { $breachCount ->
+        [one] Cette adresse électronique n’apparaît pas dans la fuite de données { $breachName }, mais a été détectée dans une autre fuite de données. Créez un { -brand-fxa } gratuit pour recevoir un rapport complet sur les fuites de données passées, des alertes pour les nouvelles fuites et des informations à propos des autres services { -brand-Mozilla }.
+       *[other] Cette adresse électronique n’apparaît pas dans la fuite de données { $breachName }, mais a été détectée dans d’autres fuites de données. Créez un { -brand-fxa } gratuit pour recevoir un rapport complet sur les fuites de données passées, des alertes pour les nouvelles fuites et des informations à propos des autres services { -brand-Mozilla }.
+    }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
 user-found-breaches-blurb =
