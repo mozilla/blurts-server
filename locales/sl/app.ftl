@@ -166,6 +166,9 @@ unsub-reason-6 = Nič od naštetega
 unsub-survey-thankyou = Hvala za vaše povratne informacije.
 unsub-survey-error = Izberite enega.
 unsub-survey-headline-v2 = Zdaj ste odjavljeni.
+unsub-survey-blurb-v2 =
+    Opozoril { -product-name }ja ne boste več prejemali.
+    Bi si vzeli trenutek in nam sporočili vašo izkušnjo?
 unsub-survey-button = Pošlji odgovor
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Deli
@@ -202,6 +205,7 @@ fxa-welcome-blurb = Vključili ste opozorila, če se v kraji podatkov pojavi { $
 fxa-scan-another-email = Ali želite preveriti še kakšen račun?
 # Search Firefox Monitor
 fxa-scan-submit = Poišči s { -product-name }jem
+sign-up-to-check = Prijavite se za preverjanje
 sign-in = Prijava
 sign-out = Odjava
 full-report-headline = Vaše poročilo { -product-name }
