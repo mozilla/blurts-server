@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Cont Firefox
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Suport
@@ -135,8 +137,6 @@ confirmed-social-blurb = Dacă ți-au fost compromise datele într-o breșă, ex
 unsub-headline = Dezabonează-te de la { -product-name-nowrap }
 unsub-blurb = Prin dezabonare, adresa ta de e-mail va fi eliminată din lista { -product-name-nowrap } și nu vei mai primi alerte când sunt anunțate breșe noi.
 unsub-button = Dezabonează-te
-unsub-survey-headline = Nu mai ești abonat.
-unsub-survey-blurb = Adresa ta de e-mail este dezabonată de la { -product-name-nowrap }. Îți mulțumim pentru folosirea serviciului. Ești dispus(ă) să ne acorzi un minut ca să ne răspunzi la o întrebare despre experiența ta?
 unsub-survey-form-label = De ce te dezabonezi de la alertele { -product-name-nowrap }?
 unsub-reason-1 = Consider că alertele nu îmi fac datele mai sigure
 unsub-reason-2 = Primesc prea multe e-mailuri de la { -product-name-nowrap }
@@ -146,6 +146,7 @@ unsub-reason-5 = Folosesc un alt serviciu pentru monitorizarea conturilor
 unsub-reason-6 = Niciuna dintre cele de mai sus
 unsub-survey-thankyou = Îți mulțumim pentru feedback.
 unsub-survey-error = Te rugăm să selectezi o opțiune.
+unsub-survey-button = Trimite răspunsul
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Distribuie
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -156,11 +157,6 @@ download-firefox-mobile = Descarcă { -brand-name } pentru dispozitive mobile
 features = Funcționalități
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
-# The following string contains HTML markup which should not be translated. 
-# Without HTML markup: copyright-info = Portions of this content are 1998-2018 by individual mozilla.org contributors. Content available under a Creative Commons license.
-copyright-info =
-    Porțiuni din acest conținut sunt scrise între &#x24B8; 1998-2018 de colaboratori individuali mozilla.org. <br />
-    Conținut disponibil sub o <a href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">licență Creative Commons</a>.
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Datele despre breșe sunt furnizate de { $hibp-link }
 site-description = Ți-au fost compromise sau furate conturile într-o breșă de date? Află la { -product-name }. Caută în baza noastră de date și înregistrează-te pentru alerte.
@@ -173,3 +169,34 @@ share-twitter = Majoritatea persoanelor au aproximativ 100 de conturi online. A 
 share-facebook-headline = Află dacă ai fost parte a unei breșe de date
 share-facebook-blurb = Au fost expuse conturile tale online într-o breșă de date?
 og-site-description = Află dacă ai fost parte a unei breșe de date cu { -product-name }. Înregistrează-te pentru alerte despre viitoare breșe și obține ponturi pentru a-ți menține în siguranță conturile.
+mozilla-security-blog = Blog de securitate { -brand-Mozilla }
+show-all = Afișează toate
+see-full-report = Vezi raportul complet
+fxa-download-firefox-bar-link = Descarcă acum
+user-one-breach-blurb = Această breșă a expus următoarele informații cu caracter personal.
+user-fb-compromised-single =
+    Această breșă a expus următoarele informații cu caracter personal. Dacă 
+    nu ai făcut-o deja, schimbă-ți parola.
+user-generic-fb-compromised-single = Această breșă a expus următoarele informații cu caracter personal.
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] Această breșă a expus următoarele informații cu caracter personal. Dacă nu ai făcut-o deja, schimbă-ți parola.
+        [few] Aceste breșe au expus următoarele informații cu caracter personal. Dacă nu ai făcut-o deja, schimbă-ți parolele.
+       *[other] Aceste breșe au expus următoarele informații cu caracter personal. Dacă nu ai făcut-o deja, schimbă-ți parolele.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Această breșă a expus următoarele informații cu caracter personal.
+        [few] Aceste breșe au expus următoarele informații cu caracter personal.
+       *[other] Aceste breșe au expus următoarele informații cu caracter personal.
+    }
+have-an-account = Ai deja un cont?
+fxa-pwt-summary-6 = Breșele de date sunt în creștere. Dacă informațiile tale cu caracter personal apar într-o breșă de date nouă, { -product-name } îți va trimite o alertă — astfel încât să iei măsuri și să îți protejezi conturile.
+# Alerts is a noun
+sign-up-for-alerts = Înregistrează-te pentru alerte
+sign-up-for-fxa-alerts = Înregistrează-te pentru alerte { -product-name }.
+get-your-report-and-sign-up = Obține raportul tău și înregistrează-te pentru alerte.
