@@ -340,3 +340,5 @@ create-free-account =
     Erstellen Sie ein kostenloses { -brand-fxa }, um einen vollständigen Bericht über vergangene Datenlecks, Warnungen über neue Datenlecks
     und Informationen über andere { -brand-Mozilla }-Dienste zu erhalten.
 get-your-report-and-sign-up = Holen Sie sich Ihren Bericht und abonnieren Sie Warnmeldungen.
+# Link title
+frequently-asked-questions = Häufig gestellte Fragen
