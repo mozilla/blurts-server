@@ -362,3 +362,5 @@ create-free-account =
     Crie uma { -brand-fxa } gratuita para o seu relatório completo de brechas passadas, alertas de
     novas brechas e informação acerca de outros serviços da { -brand-Mozilla }.
 get-your-report-and-sign-up = Obtenha o seu relatório e registe-se para receber alertas.
+# Link title
+frequently-asked-questions = Perguntas frequentes
