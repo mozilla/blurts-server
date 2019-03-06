@@ -457,3 +457,5 @@ create-free-account=
   alerts, and info about other {-brand-Mozilla} services.
 get-your-report-and-sign-up= Get your report and sign up for alerts.
 
+# Link title
+frequently-asked-questions=Frequently Asked Questions
