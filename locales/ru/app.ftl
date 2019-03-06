@@ -364,3 +364,5 @@ create-free-account =
     Создайте бесплатный { -brand-fxa }, чтобы получить полный отчёт о прошлых утечках,
     уведомления о новых, а также информацию о других службах { -brand-Mozilla }.
 get-your-report-and-sign-up = Получите ваш отчет и подпишитесь на уведомления.
+# Link title
+frequently-asked-questions = Часто задаваемые вопросы
