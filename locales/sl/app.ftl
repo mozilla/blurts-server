@@ -285,3 +285,5 @@ content-available = Vsebina je na voljo pod licenco Creative Commons.
 sign-up-for-alerts = Prijavite se na opozorila
 sign-up-for-fxa-alerts = Naročite se na opozorila { -product-name }ja.
 get-your-report-and-sign-up = Prejmite poročilo in se naročite na opozorila.
+# Link title
+frequently-asked-questions = Pogosto zastavljena vprašanja
