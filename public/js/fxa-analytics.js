@@ -48,8 +48,6 @@ const sendPing = async(el, eventAction, eventLabel = null) => {
   }
 };
 
-const pageLocation = getLocation();
-
 const getFxaUtms = (url) => {
   const utmSource = encodeURIComponent(document.body.dataset.serverUrl.replace(/(^\w+:|^)\/\//g, ""));
   url.searchParams.append("utm_source", utmSource);
@@ -59,18 +57,6 @@ const getFxaUtms = (url) => {
 };
 
 (() => {
-  // Elements for which we send Google Analytics "View" pings...
-  const eventTriggers = [
-    "#scan-user-email",
-    "#dl-fx-bar",
-    "#dl-fx-banner",
-    "#fxa-new-user-bar",
-    "#show-additional-breaches",
-    ".see-full-report-button",
-    ".open-oauth",
-    ".sign-up-button", // legacy sign up button, can be removed post-fxa
-  ];
-
   // Update data-event-category and data-fxa-entrypoint if the element
   // is nested inside a sign up banner.
   document.querySelectorAll("#scan-user-email, .open-oauth").forEach(el => {
@@ -91,24 +77,48 @@ const getFxaUtms = (url) => {
     }
   });
 
-  // Send "View" pings and add event listeners.
-  document.querySelectorAll(eventTriggers).forEach(el => {
-    sendPing(el, "View", pageLocation);
-    if (["BUTTON", "A"].includes(el.tagName)) {
-      el.addEventListener("click", async(e) => {
-        await sendPing(el, "Engage", pageLocation);
-      });
-    }
-  });
+  if (typeof(ga) !== "undefined") {
+    const pageLocation = getLocation();
 
-  // Add event listeners to event triggering elements
-  // for which we do not send "View" pings.
-  document.querySelectorAll("[data-ga-link]").forEach((el) => {
-    el.addEventListener("click", async(e) => {
-      const linkId = `Link ID: ${e.target.dataset.eventLabel}`;
-      await sendPing(el, "Click", `${linkId} // ${pageLocation}`);
+    // Elements for which we send Google Analytics "View" pings...
+    const eventTriggers = [
+      "#scan-user-email",
+      "#dl-fx-bar",
+      "#dl-fx-banner",
+      "#fxa-new-user-bar",
+      "#show-additional-breaches",
+      ".see-full-report-button",
+      ".open-oauth",
+      ".sign-up-button", // legacy sign up button, can be removed post-fxa
+    ];
+
+    // Send number of foundBreaches on Scan, Full Report, and User Dashboard pageviews
+    ["Scan", "Full Report", "User Dashboard"].forEach(word => {
+      if (pageLocation.includes(word)) {
+        const breaches = document.querySelectorAll(".listings");
+        ga("send", "event", "Breach Count", "Returned Breaches", `${pageLocation}`, breaches.length);
+      }
     });
-  });
+
+    // Send "View" pings and add event listeners.
+    document.querySelectorAll(eventTriggers).forEach(el => {
+      sendPing(el, "View", pageLocation);
+      if (["BUTTON", "A"].includes(el.tagName)) {
+        el.addEventListener("click", async(e) => {
+          await sendPing(el, "Engage", pageLocation);
+        });
+      }
+    });
+
+    // Add event listeners to event triggering elements
+    // for which we do not send "View" pings.
+    document.querySelectorAll("[data-ga-link]").forEach((el) => {
+      el.addEventListener("click", async(e) => {
+        const linkId = `Link ID: ${e.target.dataset.eventLabel}`;
+        await sendPing(el, "Click", `${linkId} // ${pageLocation}`);
+      });
+    });
+  }
 })();
 
 
