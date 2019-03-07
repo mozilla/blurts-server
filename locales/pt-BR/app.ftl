@@ -350,3 +350,5 @@ create-free-account =
     Crie uma { -brand-fxa } gratuita para receber seu relatório completo de vazamentos anteriores,
     alertas de novos vazamentos e informações sobre outros serviços da { -brand-Mozilla }.
 get-your-report-and-sign-up = Receba seu relatório e cadastre-se para receber alertas.
+# Link title
+frequently-asked-questions = Perguntas frequentes
