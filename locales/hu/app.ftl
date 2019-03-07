@@ -163,9 +163,9 @@ confirmed-social-blurb = Ha adatszegés áldozata lett, akkor lehetséges, hogy 
 unsub-headline = Leiratkozás a { -product-name-nowrap }ról
 unsub-blurb = Ez eltávolítja az e-mail címét a { -product-name-nowrap } listáról, és nem fog több figyelmeztetést kapni, ha új adatszegéseket jelentenek be.
 unsub-button = Leiratkozás
-fxa-unsub-headline = Leiratkozás a { -product-name } értesítésekről.
+fxa-unsub-headline = Leiratkozás a { -product-name } figyelmeztetésekről.
 fxa-unsub-blurb =
-    Többé nem kap { -product-name } értesítéseket.
+    Többé nem kap { -product-name } figyelmeztetéseket.
     A { -brand-fxa } fiókja aktív marad, így más fiókkal kapcsolatos
     értesítéseket még kaphat.
 unsub-survey-form-label = Miért iratkozik le a { -product-name-nowrap } figyelmeztetésekről?
@@ -177,6 +177,11 @@ unsub-reason-5 = Egy másik szolgáltatást használok a fiókjaim ellenőrzés�
 unsub-reason-6 = A fentiek egyike sem
 unsub-survey-thankyou = Köszönjük visszajelzését.
 unsub-survey-error = Válasszon egyet.
+unsub-survey-headline-v2 = Leiratkozott.
+unsub-survey-blurb-v2 =
+    Többé nem kap { -product-name } figyelmeztetéseket.
+    Rászán egy pillanatot, és válaszol egy kérdésre a tapasztalataival kapcsolatban?
+unsub-survey-button = Válasz beküldése
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Megosztás
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -203,6 +208,9 @@ mozilla-security-blog = { -brand-Mozilla } biztonsági blog
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Közösségi média
 show-all = Összes megjelenítése
+fxa-landing-blurb =
+    Tudja meg, hogy a hackerek mit tudnak már Önről,
+    és hogyan lehet egy lépéssel előttük.
 fxa-scan-label = Nézze meg, hogy szerepelt-e adatszegésben.
 fxa-welcome-headline = Üdvözli a { -product-name }.
 fxa-welcome-blurb = Minden kész, hogy értesítést kapjon, ha a(z) { $userEmail } megjelenik egy adatszegésben.
@@ -245,5 +253,9 @@ user-generic-fb-compromised-blurb =
         [one] Ez az e-mail cím { $breachCount } további adatszegésben volt érintett.
        *[other] Ez az e-mail cím { $breachCount } további adatszegésben volt érintett.
     }
+user-fb-compromised-single =
+    Ez az adatszegés a következő személyes adatait tárta fel. Ha még nem tette,
+    akkor módosítsa a jelszavait.
+user-generic-fb-compromised-single = Ez az adatszegés a következő személyes adatait tárta fel.
 have-an-account = Már van fiókja?
 content-available = A tartalom Creative Commons licenc alatt érhető el.
