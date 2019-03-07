@@ -381,3 +381,5 @@ create-free-account =
     Crëwch { -brand-fxa } am ddim ar gyfer eich adroddiad llawn o dor-data'r gorffennol,
     rhybuddion tor-data newydd, a gwybodaeth am wasanaethau { -brand-Mozilla } eraill.
 get-your-report-and-sign-up = Estynnwch eich adroddiad a chofrestru am rybuddion.
+# Link title
+frequently-asked-questions = Cwestiynau Cyffredin
