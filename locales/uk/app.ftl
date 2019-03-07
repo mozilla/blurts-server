@@ -354,3 +354,5 @@ create-free-account =
     Створіть безкоштовний { -brand-fxa }, щоб отримати повний звіт про останні та нові
     витоки даних, а також інформацію про інші послуги { -brand-Mozilla }.
 get-your-report-and-sign-up = Отримайте свій звіт і підпишіться на отримання попереджень.
+# Link title
+frequently-asked-questions = Часті питання
