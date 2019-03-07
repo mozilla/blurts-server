@@ -294,3 +294,5 @@ sign-up-for-alerts = Abonnez-vous aux alertes
 sign-up-for-fxa-alerts = Abonnez-vous aux alertes { -product-name }.
 create-free-account = Créez un { -brand-fxa } gratuit pour recevoir un rapport complet sur les fuites de données passées, des alertes pour les nouvelles fuites et des informations à propos des autres services { -brand-Mozilla }.
 get-your-report-and-sign-up = Recevez votre rapport et inscrivez-vous aux alertes.
+# Link title
+frequently-asked-questions = Foire aux questions
