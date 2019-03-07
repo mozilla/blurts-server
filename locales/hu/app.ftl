@@ -257,5 +257,55 @@ user-fb-compromised-single =
     Ez az adatszegés a következő személyes adatait tárta fel. Ha még nem tette,
     akkor módosítsa a jelszavait.
 user-generic-fb-compromised-single = Ez az adatszegés a következő személyes adatait tárta fel.
+guest-fb-compromised-single-v2 =
+    Ez az adatszegés a következő személyes adatait tárta fel.
+    Hozzon létre egy ingyenes { -brand-fxa } fiókot a múltbeli adatszegésekről szóló
+    teljes jelentéséért, az új adatszegési figyelmeztetésekért, és a többi { -brand-Mozilla }
+    szolgáltatással kapcsolatos információért.
+guest-fb-compromised-blurb-v2 =
+    { $breachCount ->
+        [one]
+            Ez az e-mail cím { $breachCount } egyéb adatszegésben szerepelt.
+            Hozzon létre egy ingyenes { -brand-fxa } fiókot a múltbeli adatszegésekről szóló
+            teljes jelentéséért, az új adatszegési figyelmeztetésekért, és a többi { -brand-Mozilla }
+            szolgáltatással kapcsolatos információért.
+       *[other]
+            Ez az e-mail cím { $breachCount } egyéb adatszegésben szerepelt.
+            Hozzon létre egy ingyenes { -brand-fxa } fiókot a múltbeli adatszegésekről szóló
+            teljes jelentéséért, az új adatszegési figyelmeztetésekért, és a többi { -brand-Mozilla }
+            szolgáltatással kapcsolatos információért.
+    }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] A(z) { $breachName } adatszegésben nem szerepelt, de egy másikban megtaláltuk az e-mail címét.
+       *[other] A(z) { $breachName } adatszegésben nem szerepelt, de másokban megtaláltuk az e-mail címét.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Ez az e-mail cím nem szerepelt a(z) { $breachName } adatszegésben, de egy másikban megtalálható.
+       *[other] Ez az e-mail cím nem szerepelt a(z) { $breachName } adatszegésben, de másokban megtalálható.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] Ez az adatszegés a következő személyes adatait tárta fel. Ha még nem tette, cserélje le a jelszavát.
+       *[other] Ez az adatszegés a következő személyes adatait tárta fel. Ha még nem tette, cserélje le a jelszavait.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Ez az adatszegés a következő személyes adatokat tárta fel.
+       *[other] Ezek az adatszegések a következő személyes adatokat tárták fel.
+    }
 have-an-account = Már van fiókja?
+fb-landing-headline = Nyilvánosságra kerültek-e az adatai a(z) { $breachName } adatszegésben?
+copyright = A tartalom egyes részeire a következő vonatkozik: © 1999-{ $year } egyéni mozilla.org közreműködők.
 content-available = A tartalom Creative Commons licenc alatt érhető el.
+# Alerts is a noun
+sign-up-for-alerts = Regisztráció a figyelmeztetésekért
+sign-up-for-fxa-alerts = Regisztráció a { -product-name } figyelmeztetésekért
+get-your-report-and-sign-up = Kapja meg a jelentését, és regisztráljon a figyelmeztetésekért.
+# Link title
+frequently-asked-questions = Gyakran Ismételt Kérdések
