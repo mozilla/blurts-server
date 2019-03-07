@@ -158,6 +158,11 @@ confirmed-social-blurb = Jika data Anda bocor, kemungkinan data teman, keluarga,
 unsub-headline = Berhenti berlangganan { -product-name-nowrap }
 unsub-blurb = Ini akan menghapus surel Anda dari daftar { -product-name-nowrap } dan Anda tidak akan menerima peringatan lagi ketika ada pengumuman kebocoran yang baru.
 unsub-button = Berhenti Berlangganan
+fxa-unsub-headline = Berhenti berlangganan dari peringatan { -product-name }.
+fxa-unsub-blurb =
+    Anda tidak akan lagi menerima peringatan { -product-name }.
+    { -brand-fxa } Anda akan tetap aktif, dan Anda dapat menerima komunikasi
+    lainnya terkait akun.
 unsub-survey-form-label = Mengapa Anda berhenti berlangganan peringatan { -product-name-nowrap }?
 unsub-reason-1 = Saya rasa peringatannya tidak membuat data saya semakin aman
 unsub-reason-2 = Saya menerima terlalu banyak surel dari { -product-name-nowrap }
@@ -167,6 +172,10 @@ unsub-reason-5 = Saya menggunakan layanan lain untuk mengawasi akun saya
 unsub-reason-6 = Bukan dari salah satu di atas
 unsub-survey-thankyou = Terima kasih atas umpan balik Anda.
 unsub-survey-error = Silakan pilih satu.
+unsub-survey-headline-v2 = Anda telah berhenti berlangganan.
+unsub-survey-blurb-v2 =
+    Anda tidak akan lagi menerima peringatan { -product-name }.
+    Apakah Anda bersedia meluangkan waktu sejenak untuk menjawab satu pertanyaan tentang pengalaman Anda?
 unsub-survey-button = Kirim Tanggapan
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Bagikan
@@ -197,5 +206,24 @@ show-all = Tampilkan Semua
 fxa-landing-blurb =
     Cari tahu apa saja yang telah peretas ketahui tentang Anda,
     dan pelajari bagaimana untuk tetap selangkah di depan mereka.
+fxa-welcome-headline = Selamat datang di { -product-name }.
+fxa-scan-another-email = Ingin memeriksa surel lainnya?
+# Search Firefox Monitor
+fxa-scan-submit = Cari { -product-name }
+sign-up-to-check = Mendaftar untuk Memeriksa
 sign-in = Masuk
 sign-out = Keluar
+full-report-headline = Laporan { -product-name } Anda
+see-full-report = Lihat Laporan Lengkap
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Kelola { -brand-fxa }
+fxa-download-firefox-bar-blurb = Dipersembahkan oleh { -brand-name }. 2x lebih cepat. Menggunakan 30% lebih sedikit memori daripada { -brand-Chrome }.
+fxa-download-firefox-bar-link = Unduh sekarang
+user-scan-results-headline =
+    { $breachCount ->
+       *[other] { $userEmail } muncul pada { $breachCount } kebocoran data.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+       *[other] Surel ini muncul pada { $breachCount } kebocoran data.
+    }
