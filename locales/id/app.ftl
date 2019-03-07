@@ -227,3 +227,13 @@ guest-scan-results-headline =
     { $breachCount ->
        *[other] Surel ini muncul pada { $breachCount } kebocoran data.
     }
+user-no-breaches-blurb = Kami akan mengingatkan Anda ketika jika alamat surel ini muncul dalam kebocoran yang baru.
+user-fb-compromised-blurb =
+    { $breachCount ->
+       *[other] Surel Anda juga muncul dalam { $breachCount } kebocoran lain.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+       *[other] Surel ini juga muncul dalam { $breachCount } kebocoran lain.
+    }
+have-an-account = Sudah memiliki akun?
