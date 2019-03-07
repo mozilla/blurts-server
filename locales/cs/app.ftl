@@ -326,3 +326,5 @@ sign-up-for-alerts = Posílat upozornění
 sign-up-for-fxa-alerts = Přihlásit se k posílání upozornění od služby { -product-name }.
 create-free-account = Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách Mozilly.
 get-your-report-and-sign-up = Získejte hlášení a přihlaste se k odběru upozornění.
+# Link title
+frequently-asked-questions = Často kladené otázky
