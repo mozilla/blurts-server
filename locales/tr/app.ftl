@@ -329,3 +329,5 @@ create-free-account =
     Geçmiş ihlallere dair tam raporunuzu almak, yeni ihlaller yaşandığında uyarılmak ve diğer
     { -brand-Mozilla } hizmetleri hakkında bilgi almak için ücretsiz bir { -brand-fxa } açın.
 get-your-report-and-sign-up = Raporunuzu alın ve uyarılara kaydolun.
+# Link title
+frequently-asked-questions = Sıkça sorulan sorular
