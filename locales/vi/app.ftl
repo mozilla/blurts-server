@@ -343,3 +343,5 @@ create-free-account =
     Tạo { -brand-fxa } miễn phí cho báo cáo đầy đủ về các vi phạm trong quá khứ, thông báo
     vi phạm mới và thông tin về các dịch vụ { -brand-Mozilla } khác.
 get-your-report-and-sign-up = Nhận báo cáo của bạn và đăng ký thông báo.
+# Link title
+frequently-asked-questions = Các câu hỏi thường gặp
