@@ -249,6 +249,12 @@ signup-banner-sensitive-blurb =
     Cari tahu apa yang telah peretas ketahui tentang Anda, dan pelajari bagaimana agar 
     tetap selangkah di depan mereka. Dapatkan pemberitahuan ketika akun Anda muncul 
     dalam kebocoran data yang baru.
+fxa-pwt-summary-2 =
+    Sandi satu kata yang pendek akan mudah ditebak oleh peretas. 
+    Gunakan minimal dua kata dan kombinasi huruf, angka, dan karakter khusus.
+fxa-pwt-summary-4 =
+    Pengelola sandi seperti 1Password, LastPass, Dashlane, dan Bitwarden menyimpan 
+    sandi Anda dan mengisikannya pada situs web untuk Anda. Semuanya bahkan membantu Anda membuat sandi yang kuat.
 fxa-what-to-do-subhead-2 = Berhenti menggunakan kata sandi yang telah terbuka, dan ubah di mana saja Anda telah menggunakannya.
 fxa-what-to-do-blurb-3 =
     Kebanyakan kebocoran hanya membeberkan surel dan sandi, tetapi beberapa juga mencakup informasi keuangan yang sensitif. 
