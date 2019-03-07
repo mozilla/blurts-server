@@ -313,3 +313,5 @@ sign-up-for-alerts = 注册以获取警报。
 sign-up-for-fxa-alerts = 注册以获取 { -product-name } 警报。
 create-free-account = 创建一个免费的 { -brand-fxa }，用于获取过往外泄事件的完整报告，接收新外泄事件的警报及其他 { -brand-Mozilla } 服务的信息。
 get-your-report-and-sign-up = 获取您的报告并订阅警报通知。
+# Link title
+frequently-asked-questions = 常见问题
