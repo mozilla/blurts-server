@@ -351,3 +351,5 @@ create-free-account =
     Opret en gratis { -brand-fxa } og få adgang til din fulde rapport med tidligere datalæk, 
     advarsler om nye læk samt info om andre { -brand-Mozilla }-tjenester.
 get-your-report-and-sign-up = Få din rapport og tilmeld dig advarsler
+# Link title
+frequently-asked-questions = Ofte stillede spørgsmål
