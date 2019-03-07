@@ -228,6 +228,7 @@ guest-scan-results-headline =
        *[other] Surel ini muncul pada { $breachCount } kebocoran data.
     }
 user-no-breaches-blurb = Kami akan mengingatkan Anda ketika jika alamat surel ini muncul dalam kebocoran yang baru.
+user-one-breach-blurb = Kebocoran ini telah membuka informasi pribadi berikut.
 user-fb-compromised-blurb =
     { $breachCount ->
        *[other] Surel Anda juga muncul dalam { $breachCount } kebocoran lain.
@@ -236,4 +237,22 @@ user-generic-fb-compromised-blurb =
     { $breachCount ->
        *[other] Surel ini juga muncul dalam { $breachCount } kebocoran lain.
     }
+user-generic-fb-compromised-single = Kebocoran ini telah membuka informasi pribadi berikut.
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+       *[other] Kebocoran ini telah membuka informasi pribadi berikut.
+    }
 have-an-account = Sudah memiliki akun?
+fxa-what-to-do-subhead-2 = Berhenti menggunakan kata sandi yang telah terbuka, dan ubah di mana saja Anda telah menggunakannya.
+fxa-what-to-do-blurb-3 =
+    Kebanyakan kebocoran hanya membeberkan surel dan sandi, tetapi beberapa juga mencakup informasi keuangan yang sensitif. 
+    Jika rekening bank atau nomor kartu kredit Anda terekspos, beri tahu bank Anda tentang adanya kemungkinan penyalahgunaan. 
+    Pantau laporan biaya yang tidak Anda kenali.
+fxa-what-to-do-subhead-4 = Dapatkan bantuan untuk mengingat semua kata sandi Anda dan menjaganya tetap aman.
+fxa-what-to-do-blurb-4 =
+    Pengelola sandi seperti 1Password, LastPass, Dashlane, dan Bitwarden menyimpan 
+    sandi dengan aman dan mengisikannya pada situs web untuk Anda. Gunakan pengelola sandi 
+    pada telepon dan komputer agar Anda tak perlu lagi menghafal semuanya.
+content-available = Konten tersedia di bawah lisensi Creative Commons.
