@@ -163,10 +163,11 @@ confirmed-social-blurb = Ha adatszegés áldozata lett, akkor lehetséges, hogy 
 unsub-headline = Leiratkozás a { -product-name-nowrap }ról
 unsub-blurb = Ez eltávolítja az e-mail címét a { -product-name-nowrap } listáról, és nem fog több figyelmeztetést kapni, ha új adatszegéseket jelentenek be.
 unsub-button = Leiratkozás
-unsub-survey-headline = Ön már nincs feliratkozva.
-unsub-survey-blurb =
-    Az e-mail címe leiratkozott a { -product-name-nowrap }ról. Köszönjük hogy használta a szolgáltatást.
-    Szán egy kis időt arra, hogy válaszoljon néhány kérdésre a tapasztalatairól?
+fxa-unsub-headline = Leiratkozás a { -product-name } értesítésekről.
+fxa-unsub-blurb =
+    Többé nem kap { -product-name } értesítéseket.
+    A { -brand-fxa } fiókja aktív marad, így más fiókkal kapcsolatos
+    értesítéseket még kaphat.
 unsub-survey-form-label = Miért iratkozik le a { -product-name-nowrap } figyelmeztetésekről?
 unsub-reason-1 = Úgy gondolom, hogy a figyelmeztetések nem teszik biztonságosabbá az adataimat
 unsub-reason-2 = Túl sok e-mailt kapok a { -product-name-nowrap }tól
@@ -202,8 +203,6 @@ mozilla-security-blog = { -brand-Mozilla } biztonsági blog
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Közösségi média
 show-all = Összes megjelenítése
-fxa-signup-banner-headline = Kísérje figyelemmel az online fiókjait érintő fenyegetéseket.
-fxa-signup-banner-blurb = Regisztráljon egy { -brand-fxa }ot, hogy megkapja a részletes jelentését, és értesüljön az új adatszegésekről.
 fxa-scan-label = Nézze meg, hogy szerepelt-e adatszegésben.
 fxa-welcome-headline = Üdvözli a { -product-name }.
 fxa-welcome-blurb = Minden kész, hogy értesítést kapjon, ha a(z) { $userEmail } megjelenik egy adatszegésben.
