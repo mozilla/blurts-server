@@ -276,3 +276,5 @@ sign-up-for-alerts = 訂閱警報
 sign-up-for-fxa-alerts = 訂閱 { -product-name } 警報。
 create-free-account = 註冊免費的 { -brand-fxa } 即可收到關於您的資料外洩事件的完整報告，及其他 { -brand-Mozilla } 服務的相關資訊。
 get-your-report-and-sign-up = 取得報告並訂閱警報通知。
+# Link title
+frequently-asked-questions = 常見問題
