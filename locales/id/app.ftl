@@ -245,6 +245,10 @@ user-generic-found-breaches-blurb =
        *[other] Kebocoran ini telah membuka informasi pribadi berikut.
     }
 have-an-account = Sudah memiliki akun?
+signup-banner-sensitive-blurb =
+    Cari tahu apa yang telah peretas ketahui tentang Anda, dan pelajari bagaimana agar 
+    tetap selangkah di depan mereka. Dapatkan pemberitahuan ketika akun Anda muncul 
+    dalam kebocoran data yang baru.
 fxa-what-to-do-subhead-2 = Berhenti menggunakan kata sandi yang telah terbuka, dan ubah di mana saja Anda telah menggunakannya.
 fxa-what-to-do-blurb-3 =
     Kebanyakan kebocoran hanya membeberkan surel dan sandi, tetapi beberapa juga mencakup informasi keuangan yang sensitif. 
