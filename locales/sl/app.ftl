@@ -264,6 +264,7 @@ user-generic-found-breaches-blurb =
        *[other] Kraje so izpostavile naslednje osebne podatke.
     }
 have-an-account = Že imate račun?
+signup-banner-sensitive-blurb = Ugotovite, kaj napadalci že vedo o vas, in se naučite, kako ostati korak pred njimi. Prejmite opozorilo, če se vaš račun pojavi v novih krajah podatkov.
 fxa-pwt-summary-2 =
     Kratka, enobesedna gesla so lahek plen za napadalce.
     Uporabite vsaj dve besedi ter kombinacijo črk, številk in posebnih znakov.
