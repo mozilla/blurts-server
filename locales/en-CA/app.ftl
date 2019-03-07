@@ -362,3 +362,5 @@ create-free-account =
     Create a free { -brand-fxa } for your full report of past breaches, new breach 
     alerts, and info about other { -brand-Mozilla } services.
 get-your-report-and-sign-up = Get your report and sign up for alerts.
+# Link title
+frequently-asked-questions = Frequently Asked Questions
