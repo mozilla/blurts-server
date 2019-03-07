@@ -306,3 +306,5 @@ sign-up-for-alerts = Iscriviti per ricevere gli avvisi
 sign-up-for-fxa-alerts = Iscriviti per ricevere gli avvisi di { -product-name }.
 create-free-account = Crea gratuitamente un { -brand-fxa } per ottenere il rapporto completo sulle violazioni passate, avvisi di nuove violazioni e informazioni sugli altri servizi { -brand-Mozilla }.
 get-your-report-and-sign-up = Ottieni un rapporto personalizzato e iscriviti per ricevere nuovi avvisi.
+# Link title
+frequently-asked-questions = Domande più frequenti
