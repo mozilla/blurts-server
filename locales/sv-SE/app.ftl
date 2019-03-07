@@ -341,3 +341,5 @@ create-free-account =
     Skapa ett gratis { -brand-fxa } för din fullständiga rapport om tidigare intrång, nya intrångsvarningar
     och information om andra { -brand-Mozilla }-tjänster.
 get-your-report-and-sign-up = Få din rapport och registrera dig för varningar.
+# Link title
+frequently-asked-questions = Vanliga frågor
