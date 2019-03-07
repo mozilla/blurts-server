@@ -343,3 +343,5 @@ sign-up-for-alerts = Tatz'ib'aj ab'i' richin Ye'ak'üt Kitzijol K'ayewal
 sign-up-for-fxa-alerts = Tatz'ib'aj ab'i' richin nak'ül kitzijol kik'ayewal { -product-name }.
 create-free-account = Tatz'uku' jun sipan { -brand-fxa } richin jun tz'aqät kitzijol tz'ilanïk xek'ulwachitäj yan, k'ak'a' taq tz'ilanïk chuqa' kitzijol taq k'ayewal chuqa' etamab'äl chi kij ch'aqa' chik taq kisamaj { -brand-Mozilla }.
 get-your-report-and-sign-up = Tak'ulu' atzijol chuqa' tatz'ib'aj ab'i' richin ye'ak'ül kitzijol k'ayewal.
+# Link title
+frequently-asked-questions = Jutaqil Taq K'utunïk
