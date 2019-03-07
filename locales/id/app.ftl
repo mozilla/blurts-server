@@ -167,6 +167,7 @@ unsub-reason-5 = Saya menggunakan layanan lain untuk mengawasi akun saya
 unsub-reason-6 = Bukan dari salah satu di atas
 unsub-survey-thankyou = Terima kasih atas umpan balik Anda.
 unsub-survey-error = Silakan pilih satu.
+unsub-survey-button = Kirim Tanggapan
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Bagikan
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -193,5 +194,8 @@ mozilla-security-blog = Blog Keamanan { -brand-Mozilla }
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Media Sosial
 show-all = Tampilkan Semua
+fxa-landing-blurb =
+    Cari tahu apa saja yang telah peretas ketahui tentang Anda,
+    dan pelajari bagaimana untuk tetap selangkah di depan mereka.
 sign-in = Masuk
 sign-out = Keluar
