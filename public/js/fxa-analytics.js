@@ -96,7 +96,7 @@ const getFxaUtms = (url) => {
     ["Scan", "Full Report", "User Dashboard"].forEach(word => {
       if (pageLocation.includes(word)) {
         const breaches = document.querySelectorAll(".listings");
-        ga("send", "event", "Breach Count", "Returned Breaches", `${pageLocation}`, breaches.length);
+        ga("send", "event", "[v2] Breach Count", "Returned Breaches", `${pageLocation}`, breaches.length);
       }
     });
 
