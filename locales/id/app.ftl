@@ -206,7 +206,9 @@ show-all = Tampilkan Semua
 fxa-landing-blurb =
     Cari tahu apa saja yang telah peretas ketahui tentang Anda,
     dan pelajari bagaimana untuk tetap selangkah di depan mereka.
+fxa-scan-label = Lihat apakah Anda muncul dalam data yang telah bocor.
 fxa-welcome-headline = Selamat datang di { -product-name }.
+fxa-welcome-blurb = Anda siap untuk mendapatkan peringatan ketika { $userEmail } muncul dalam data yang telah bocor.
 fxa-scan-another-email = Ingin memeriksa surel lainnya?
 # Search Firefox Monitor
 fxa-scan-submit = Cari { -product-name }
@@ -219,6 +221,11 @@ see-full-report = Lihat Laporan Lengkap
 manage-fxa = Kelola { -brand-fxa }
 fxa-download-firefox-bar-blurb = Dipersembahkan oleh { -brand-name }. 2x lebih cepat. Menggunakan 30% lebih sedikit memori daripada { -brand-Chrome }.
 fxa-download-firefox-bar-link = Unduh sekarang
+fxa-download-firefox-banner-blurb = Pemuatan laman yang lebih cepat dan lebih baik, menggunakan lebih sedikit memori komputer.
+user-fb-compromised-headline = { $userEmail } muncul pada data { $breachName } yang telah bocor.
+guest-fb-compromised-headline = Surel ini muncul pada data { $breachName } yang telah bocor.
+user-zero-breaches-headline = { $userEmail } muncul dalam nol pelanggaran data.
+guest-zero-breaches-headline = Surel ini tidak muncul pada data yang telah bocor.
 user-scan-results-headline =
     { $breachCount ->
        *[other] { $userEmail } muncul pada { $breachCount } kebocoran data.
@@ -256,6 +263,10 @@ fxa-pwt-summary-4 =
     Pengelola sandi seperti 1Password, LastPass, Dashlane, dan Bitwarden menyimpan 
     sandi Anda dan mengisikannya pada situs web untuk Anda. Semuanya bahkan membantu Anda membuat sandi yang kuat.
 fxa-what-to-do-subhead-2 = Berhenti menggunakan kata sandi yang telah terbuka, dan ubah di mana saja Anda telah menggunakannya.
+fxa-wtd-blurb-2 =
+    Peretas dapat coba menggunakan ulang kata sandi Anda yang terdedah untuk masuk ke dalam akun lainnya.
+    Buat kata sandi yang berbeda dan unik untuk setiap situs web, khususnya untuk akun bank Anda,
+    surel, dan situs web lainnya yang menyimpan informasi pribadi Anda.
 fxa-what-to-do-blurb-3 =
     Kebanyakan kebocoran hanya membeberkan surel dan sandi, tetapi beberapa juga mencakup informasi keuangan yang sensitif. 
     Jika rekening bank atau nomor kartu kredit Anda terekspos, beri tahu bank Anda tentang adanya kemungkinan penyalahgunaan. 
@@ -265,4 +276,15 @@ fxa-what-to-do-blurb-4 =
     Pengelola sandi seperti 1Password, LastPass, Dashlane, dan Bitwarden menyimpan 
     sandi dengan aman dan mengisikannya pada situs web untuk Anda. Gunakan pengelola sandi 
     pada telepon dan komputer agar Anda tak perlu lagi menghafal semuanya.
+fb-landing-headline = Apakah informasi anda terpapar pada data { $breachName } yang telah bocor?
+copyright = Sebagian dari konten ini adalah © 1999-{ $year } oleh kontributor individu mozilla.org.
 content-available = Konten tersedia di bawah lisensi Creative Commons.
+# Alerts is a noun
+sign-up-for-alerts = Mendaftar untuk Alerts
+sign-up-for-fxa-alerts = Mendaftar untuk peringatan { -product-name }.
+create-free-account =
+    Buat { -brand-fxa } gratis untuk laporan lengkap Anda tentang kebocoran di masa lalu, kebocoran baru
+    peringatan, dan info tentang layanan { -brand-Mozilla } lainnya.
+get-your-report-and-sign-up = Dapatkan laporan Anda dan mendaftar untuk mendapatkan peringatan
+# Link title
+frequently-asked-questions = Pertanyaan yang Sering Diajukan (FAQ)
