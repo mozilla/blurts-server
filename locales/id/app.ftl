@@ -235,6 +235,7 @@ guest-scan-results-headline =
        *[other] Surel ini muncul pada { $breachCount } kebocoran data.
     }
 user-no-breaches-blurb = Kami akan mengingatkan Anda ketika jika alamat surel ini muncul dalam kebocoran yang baru.
+guest-no-breaches-blurb = Untuk mengetahui apakah surel ini muncul dalam kebocoran yang sensitif, buat { -brand-fxa }. Kami juga akan mengingatkan Anda ketika alamat ini muncul dalam kebocoran data yang baru.
 user-one-breach-blurb = Kebocoran ini telah membuka informasi pribadi berikut.
 user-fb-compromised-blurb =
     { $breachCount ->
@@ -244,7 +245,19 @@ user-generic-fb-compromised-blurb =
     { $breachCount ->
        *[other] Surel ini juga muncul dalam { $breachCount } kebocoran lain.
     }
+user-fb-compromised-single = Kebocoran ini telah membeberkan informasi pribadi berikut. Silakan ubah sandi jika Anda belum melakukannya.
 user-generic-fb-compromised-single = Kebocoran ini telah membuka informasi pribadi berikut.
+guest-fb-compromised-single-v2 =
+    Kebocoran ini membeberkan informasi pribadi berikut.
+    Buat { -brand-fxa } gratis untuk laporan lengkap Anda tentang kebocoran-kebocoran sebelumnya, peringatan kebocoran yang baru,
+    dan informasi mengenai layanan { -brand-Mozilla } yang lain.
+guest-fb-compromised-blurb-v2 =
+    { $breachCount ->
+       *[other]
+            Surel ini juga muncul dalam { $breachCount } kebocoran lainnya. Buat 
+            { -brand-fxa } gratis untuk laporan lengkap Anda tentang kebocoran-kebocoran sebelumnya, peringatan kebocoran yang baru, 
+            dan informasi mengenai layanan { -brand-Mozilla } yang lain.
+    }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
 user-generic-found-breaches-blurb =
