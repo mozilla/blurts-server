@@ -297,6 +297,7 @@ fxa-pwt-summary-2 =
 fxa-pwt-summary-4 =
     Pengelola sandi seperti 1Password, LastPass, Dashlane, dan Bitwarden menyimpan 
     sandi Anda dan mengisikannya pada situs web untuk Anda. Semuanya bahkan membantu Anda membuat sandi yang kuat.
+fxa-pwt-summary-6 = Kebocoran data terus meningkat. Ketika informasi pribadi Anda muncul dalam kebocoran data yang baru, { -product-name } akan segera memberi Anda peringatan — sehingga Anda dapat mengambil tindakan dan melindungi akun Anda.
 fxa-what-to-do-subhead-2 = Berhenti menggunakan kata sandi yang telah terbuka, dan ubah di mana saja Anda telah menggunakannya.
 fxa-wtd-blurb-2 =
     Peretas dapat coba menggunakan ulang kata sandi Anda yang terdedah untuk masuk ke dalam akun lainnya.
