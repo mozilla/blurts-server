@@ -258,6 +258,27 @@ guest-fb-compromised-blurb-v2 =
             { -brand-fxa } gratis untuk laporan lengkap Anda tentang kebocoran-kebocoran sebelumnya, peringatan kebocoran yang baru, 
             dan informasi mengenai layanan { -brand-Mozilla } yang lain.
     }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+       *[other] Anda tidak tersangkut dalam kebocoran { $breachName }, tetapi kami menemukan surel tersebut dalam kebocoran lainnya.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+       *[other] Surel ini tidak ditemukan dalam kebocoran { $breachName }, tetapi ditemukan dalam kebocoran lain.
+    }
+guest-fb-not-compromised-blurb-v2 =
+    { $breachCount ->
+       *[other]
+            Surel ini tidak ditemukan dalam kebocoran { $breachName }, tetapi ditemukan dalam kebocoran lainnya. 
+            Buat { -brand-fxa } gratis untuk laporan lengkap Anda tentang kebocoran-kebocoran sebelumnya, 
+            peringatan kebocoran baru, dan informasi mengenai layanan { -brand-Mozilla } yang lain.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+       *[other] Kebocoran ini membeberkan informasi pribadi berikut. Silakan ubah sandi jika Anda belum melakukannya.
+    }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
 user-generic-found-breaches-blurb =
@@ -269,6 +290,7 @@ signup-banner-sensitive-blurb =
     Cari tahu apa yang telah peretas ketahui tentang Anda, dan pelajari bagaimana agar 
     tetap selangkah di depan mereka. Dapatkan pemberitahuan ketika akun Anda muncul 
     dalam kebocoran data yang baru.
+fxa-pwt-section-blurb = Sandi melindungi seluruh informasi pribadi dalam akun daring Anda. Dan peretas mengandalkan kebiasaan buruk, seperti menggunakan sandi yang sama atau menggunakan frasa umum (@p@ssw0rd, misalnya?) di mana-mana sehingga ketika mereka berhasil meretas satu akun, mereka juga bisa meretas yang lainnya.
 fxa-pwt-summary-2 =
     Sandi satu kata yang pendek akan mudah ditebak oleh peretas. 
     Gunakan minimal dua kata dan kombinasi huruf, angka, dan karakter khusus.
