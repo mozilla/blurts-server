@@ -322,3 +322,5 @@ create-free-account =
     Maak een gratis { -brand-fxa } voor uw volledige rapport over eerdere lekken, waarschuwingen voor 
     nieuwe lekken en informatie over andere services van { -brand-Mozilla }.
 get-your-report-and-sign-up = Haal uw rapport op en schrijf u in voor waarschuwingen.
+# Link title
+frequently-asked-questions = Veelgestelde vragen
