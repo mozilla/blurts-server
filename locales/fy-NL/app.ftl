@@ -322,3 +322,5 @@ create-free-account =
     Meitsje in fergees { -brand-fxa } foar jo folsleine rapport oer eardere lekken, warskôgingen foar 
     nije lekken en ynformaasje oer oare tsjinsten fan { -brand-Mozilla }.
 get-your-report-and-sign-up = Helje jo rapport op en skriuw jo yn foar warskôgingen.
+# Link title
+frequently-asked-questions = Faak stelde fragen
