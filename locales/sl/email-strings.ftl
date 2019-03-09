@@ -58,3 +58,10 @@ report-pwt-summary-4 = Storitve, kot so 1Password, LastPass, Dashlane in Bitward
 legal = Pravno obvestilo
 # Share Firefox Monitor by email subject line
 share-by-email-subject = Preverite, ali ste bili žrtev kraje podatkov.
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    Živjo,
+    { -brand-name } ponuja brezplačno storitev, kjer lahko preveriš, ali si bil/a del kraje podatkov. Kako deluje:
+    1. Obišči { "https://monitor.firefox.com" } in preveri svoj e-poštni naslov.
+    2. Preveri, ali so bili tvoji spletni računi izpostavljeni v kraji podatkov.
+    3. Prejmi nasvete { -product-name }ja o tem, kako ukrepati.

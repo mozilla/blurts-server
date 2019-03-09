@@ -5,11 +5,29 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
--brand-name = Firefox
+-brand-name =
+    { $sklon ->
+        [rodilnik] Firefoxa
+        [dajalnik] Firefoxu
+        [orodnik] Firefoxom
+       *[imenovalnik] Firefox
+    }
 -brand-Quantum = Firefox Quantum
--brand-Mozilla = Mozilla
+-brand-Mozilla =
+    { $sklon ->
+        [imenovalnik] Mozilla
+        [rodilnik] Mozille
+        [dajalnik] Mozilli
+       *[tozilnik] Mozillo
+    }
 -brand-HIBP = Have I Been Pwned
--brand-fxa = Firefox Račun
+-brand-fxa =
+    { $sklon ->
+        [imenovalnik] Firefox Račun
+        [rodilnik] Firefox Računa
+        [dajalnik] Firefox Računu
+       *[orodnik] Firefox Račun
+    }
 -brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
@@ -108,7 +126,7 @@ signup-modal-verify-resend = Ni med prejeto ali vsiljeno pošto? Pošlji znova.
 signup-modal-sent = Poslano!
 signup-with-fxa = Prijavite se s { -brand-name } Računom
 form-signup-placeholder = Vnesite e-poštni naslov
-form-signup-checkbox = Prejemajte najnovejše novice { -brand-Mozilla } { -brand-name }.
+form-signup-checkbox = Prejemajte novice iz sveta { -brand-Mozilla(sklon: "rodilnik") } in { -brand-name(sklon: "rodilnik") }.
 sign-up = Prijava
 form-signup-error = E-poštni naslov mora biti veljaven
 no-breaches-headline = Zaenkrat vse lepo in prav.
@@ -265,6 +283,7 @@ user-generic-found-breaches-blurb =
     }
 have-an-account = Že imate račun?
 signup-banner-sensitive-blurb = Ugotovite, kaj napadalci že vedo o vas, in se naučite, kako ostati korak pred njimi. Prejmite opozorilo, če se vaš račun pojavi v novih krajah podatkov.
+fxa-pwt-section-blurb = Gesla ščitijo vse osebne podatke v vaših spletnih računih. Napadalci se zanašajo na slabe navade uporabnikov, kot je uporaba istega gesla na vseh mestih ali pogostih gesel (npr. 123456), zato imajo po vdoru v en račun lahko dostop do mnogih.
 fxa-pwt-summary-2 =
     Kratka, enobesedna gesla so lahek plen za napadalce.
     Uporabite vsaj dve besedi ter kombinacijo črk, številk in posebnih znakov.
