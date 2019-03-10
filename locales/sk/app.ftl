@@ -358,3 +358,5 @@ create-free-account =
     Vytvorte si bezplatný { -brand-fxa } a dostanete kompletnú správu o predošlých únikoch dát.
     Dostanete taktiež informácie o nových únikoch a ďalších službách organizácie { -brand-Mozilla }.
 get-your-report-and-sign-up = Získajte správu a prihláste sa na odber upozornení.
+# Link title
+frequently-asked-questions = Často kladené otázky
