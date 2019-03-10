@@ -15,8 +15,7 @@ matrix:
         - name: "tests"
           language: node_js
           node_js:
-              - "node"
-              - "lts/*"
+              - "11.10.1"
           env:
               - NODE_ENV=tests
           install:
