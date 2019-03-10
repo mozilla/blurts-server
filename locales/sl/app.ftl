@@ -15,18 +15,18 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla =
     { $sklon ->
-        [imenovalnik] Mozilla
+       *[imenovalnik] Mozilla
         [rodilnik] Mozille
         [dajalnik] Mozilli
-       *[tozilnik] Mozillo
+        [tozilnik] Mozillo
     }
 -brand-HIBP = Have I Been Pwned
 -brand-fxa =
     { $sklon ->
-        [imenovalnik] Firefox Račun
+       *[imenovalnik] Firefox Račun
         [rodilnik] Firefox Računa
         [dajalnik] Firefox Računu
-       *[orodnik] Firefox Račun
+        [orodnik] Firefox Računom
     }
 -brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
