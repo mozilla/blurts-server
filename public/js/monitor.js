@@ -137,7 +137,7 @@ function doOauth(el) {
   if (localStorage.getItem("scanned")) {
     const lastScannedEmail = localStorage.getItem("scanned");
     localStorage.removeItem("scanned");
-    url.searchParams.append("email", encodeURIComponent(lastScannedEmail));
+    url.searchParams.append("email", lastScannedEmail);
   }
   window.location.assign(url);
 }
