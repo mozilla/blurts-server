@@ -92,21 +92,25 @@ const imgSrc = [
   "'self'",
   "https://www.google-analytics.com",
 ];
+
+const connectSrc = [
+  "'self'",
+  "https://code.cdn.mozilla.net/fonts/",
+  "https://www.google-analytics.com",
+];
+
 if (AppConstants.FXA_ENABLED) {
-  const fxaProfileImgSrc = new URL(AppConstants.OAUTH_PROFILE_URI).origin;
-  imgSrc.push(fxaProfileImgSrc);
+  const fxaSrc = new URL(AppConstants.OAUTH_PROFILE_URI).origin;
+  [imgSrc, connectSrc].forEach(arr => {
+    arr.push(fxaSrc);
+  });
 }
 
 app.use(helmet.contentSecurityPolicy({
   directives: {
     baseUri: ["'none'"],
     defaultSrc: ["'self'"],
-    connectSrc: [
-      "'self'",
-      "https://code.cdn.mozilla.net/fonts/",
-      "https://www.google-analytics.com",
-      "https://stats.g.doubleclick.net/",
-    ],
+    connectSrc: connectSrc,
     fontSrc: [
       "'self'",
       "https://fonts.gstatic.com/",

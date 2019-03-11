@@ -18,9 +18,9 @@ const setMetricsIds = (el) => {
   if (hasParent(el, "scan-another-email")) {
     el.dataset.eventCategory = "Scan Another Email Form";
   }
-  if (el.dataset.fxaEntrypoint && hasParent(el, "sign-up-banner")) {
+  if (el.dataset.entrypoint && hasParent(el, "sign-up-banner")) {
     el.dataset.eventCategory = `${el.dataset.eventCategory} - Banner`;
-    el.dataset.fxaEntrypoint = `${el.dataset.fxaEntrypoint}-banner`;
+    el.dataset.entrypoint = `${el.dataset.entrypoint}-banner`;
   }
   return;
 };
@@ -48,54 +48,77 @@ const sendPing = async(el, eventAction, eventLabel = null) => {
   }
 };
 
-// Elements for which we send Google Analytics "View" pings...
-let eventTriggers = [
-  "#scan-user-email",
-  "#dl-fx-bar",
-  "#dl-fx-banner",
-  "#fxa-new-user-bar",
-  "#show-additional-breaches",
-  ".see-full-report-button",
-  ".open-oauth",
-  ".sign-up-button", // legacy sign up button, can be removed post-fxa
-];
+const getFxaUtms = (url) => {
+  const utmSource = encodeURIComponent(document.body.dataset.serverUrl.replace(/(^\w+:|^)\/\//g, ""));
+  url.searchParams.append("utm_source", utmSource);
+  url.searchParams.append("utm_campaign", document.body.dataset.utmCampaign);
+  url.searchParams.append("form_type", "email");
+  return url;
+};
 
-eventTriggers = document.querySelectorAll(eventTriggers);
+(() => {
+  // Update data-event-category and data-fxa-entrypoint if the element
+  // is nested inside a sign up banner.
+  document.querySelectorAll("#scan-user-email, .open-oauth").forEach(el => {
+    setMetricsIds(el);
+  });
 
-// Reset data-event-category and data-fxa-entrypoint if necessary when
-// the entrypoint is nested inside Sign Up Banner.
-// TODO: send top of funnel ping to FxA for each data-fxa-entrypoint element.
-document.querySelectorAll("#scan-user-email, .open-oauth").forEach(el => {
-  setMetricsIds(el);
-});
+  let fxaUrl = new URL("/metrics-flow?", document.body.dataset.fxaAddress);
+  fxaUrl = getFxaUtms(fxaUrl);
 
-const pageLocation = getLocation();
+  document.querySelectorAll(".open-oauth").forEach( async(el) => {
+    fxaUrl.searchParams.append("entrypoint", encodeURIComponent(el.dataset.entrypoint));
+    const response = await fetch(fxaUrl, {credentials: "omit"});
 
-// Send "View" pings and add event listeners.
-eventTriggers.forEach(el => {
-  sendPing(el, "View", pageLocation);
-  if (["BUTTON", "A"].includes(el.tagName)) {
-    el.addEventListener("click", async(e) => {
-      await sendPing(el, "Engage", pageLocation);
+    if (response.status === 200) {
+      const {flowId, flowBeginTime} = await response.json();
+      el.dataset.flowId = flowId;
+      el.dataset.flowBeginTime = flowBeginTime;
+    }
+  });
+
+  if (typeof(ga) !== "undefined") {
+    const pageLocation = getLocation();
+
+    // Elements for which we send Google Analytics "View" pings...
+    const eventTriggers = [
+      "#scan-user-email",
+      "#dl-fx-bar",
+      "#dl-fx-banner",
+      "#fxa-new-user-bar",
+      "#show-additional-breaches",
+      ".see-full-report-button",
+      ".open-oauth",
+      ".sign-up-button", // legacy sign up button, can be removed post-fxa
+    ];
+
+    // Send number of foundBreaches on Scan, Full Report, and User Dashboard pageviews
+    ["Scan", "Full Report", "User Dashboard"].forEach(word => {
+      if (pageLocation.includes(word)) {
+        const breaches = document.querySelectorAll(".listings");
+        ga("send", "event", "[v2] Breach Count", "Returned Breaches", `${pageLocation}`, breaches.length);
+      }
+    });
+
+    // Send "View" pings and add event listeners.
+    document.querySelectorAll(eventTriggers).forEach(el => {
+      sendPing(el, "View", pageLocation);
+      if (["BUTTON", "A"].includes(el.tagName)) {
+        el.addEventListener("click", async(e) => {
+          await sendPing(el, "Engage", pageLocation);
+        });
+      }
+    });
+
+    // Add event listeners to event triggering elements
+    // for which we do not send "View" pings.
+    document.querySelectorAll("[data-ga-link]").forEach((el) => {
+      el.addEventListener("click", async(e) => {
+        const linkId = `Link ID: ${e.target.dataset.eventLabel}`;
+        await sendPing(el, "Click", `${linkId} // ${pageLocation}`);
+      });
     });
   }
-});
+})();
 
-// Add event listeners to event triggering elements
-// for which we do not send "View" pings.
-if (document.body.dataset.fxaEnabled) {
-  document.querySelectorAll("[data-ga-link]").forEach((el) => {
-    el.addEventListener("click", async(e) => {
-      const linkId = `Link ID: ${e.target.dataset.eventLabel}`;
-      await sendPing(el, "Click", `${linkId} // ${pageLocation}`);
-    });
-  });
-}
-
-/*
-    REMAINING TODO
-    1. Send top of funnel "View" pings to FxA for FxA entrypoint elements.
-    2. Bundle entrypoint ID and other utm params in oauth url.
-    3. Figure out snazzy way to bundle all of these pings up in one Http Response (Google says this is no longer possible but idk)
-*/
 
