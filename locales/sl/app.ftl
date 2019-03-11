@@ -284,6 +284,15 @@ guest-fb-compromised-blurb-v2 =
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] Ta kraja je razkrila naslednje osebne podatke. Če še niste, spremenite svoje geslo.
+        [two] Ti kraji sta razkrili naslednje osebne podatke. Če še niste, spremenite svoja gesla.
+        [few] Te kraje so razkrile naslednje osebne podatke. Če še niste, spremenite svoja gesla.
+       *[other] Te kraje so razkrile naslednje osebne podatke. Če še niste, spremenite svoja gesla.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
 user-generic-found-breaches-blurb =
     { $breachCount ->
         [one] Kraja je izpostavila naslednje osebne podatke.
