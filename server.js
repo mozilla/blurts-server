@@ -91,14 +91,12 @@ if (AppConstants.NODE_ENV === "heroku") {
 const imgSrc = [
   "'self'",
   "https://www.google-analytics.com",
-  "https://stats.g.doubleclick.net/",
 ];
 
 const connectSrc = [
   "'self'",
   "https://code.cdn.mozilla.net/fonts/",
   "https://www.google-analytics.com",
-  "https://stats.g.doubleclick.net/",
 ];
 
 if (AppConstants.FXA_ENABLED) {
