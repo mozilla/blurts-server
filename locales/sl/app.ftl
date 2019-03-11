@@ -272,6 +272,16 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = Kraja je izpostavila naslednje osebne podatke. Če jih še niste, zamenjajte svoja gesla.
 user-generic-fb-compromised-single = Kraja je izpostavila naslednje osebne podatke.
+guest-fb-compromised-single-v2 =
+    Ta kraja je razkrila naslednje osebne podatke.
+    Ustvarite brezplačen { -brand-fxa } in prejmite celotno poročilo o preteklih krajah podatkov, opozorila o novih krajah in informacije o drugih storitvah { -brand-Mozilla(sklon: "rodilnik") }.
+guest-fb-compromised-blurb-v2 =
+    { $breachCount ->
+        [one] Ta e-poštni naslov se je pojavil tudi v drugi kraji podatkov. Ustvarite brezplačen { -brand-fxa } in prejmite popolno poročilo o preteklih krajah podatkov, opozorila o novih krajah in informacije o drugih storitvah { -brand-Mozilla(sklon: "rodilnik") }.
+        [two] Ta e-poštni naslov se je pojavil tudi v { $breachCount } drugih krajah podatkov. Ustvarite brezplačen { -brand-fxa } in prejmite popolno poročilo o preteklih krajah podatkov, opozorila o novih krajah in informacije o drugih storitvah { -brand-Mozilla(sklon: "rodilnik") }.
+        [few] Ta e-poštni naslov se je pojavil tudi v { $breachCount } drugih krajah podatkov. Ustvarite brezplačen { -brand-fxa } in prejmite popolno poročilo o preteklih krajah podatkov, opozorila o novih krajah in informacije o drugih storitvah { -brand-Mozilla(sklon: "rodilnik") }.
+       *[other] Ta e-poštni naslov se je pojavil tudi v { $breachCount } drugih krajah podatkov. Ustvarite brezplačen { -brand-fxa } in prejmite popolno poročilo o preteklih krajah podatkov, opozorila o novih krajah in informacije o drugih storitvah { -brand-Mozilla(sklon: "rodilnik") }.
+    }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
 user-generic-found-breaches-blurb =
@@ -304,6 +314,7 @@ content-available = Vsebina je na voljo pod licenco Creative Commons.
 # Alerts is a noun
 sign-up-for-alerts = Prijavite se na opozorila
 sign-up-for-fxa-alerts = Naročite se na opozorila { -product-name }ja.
+create-free-account = Ustvarite brezplačen { -brand-fxa } in prejmite popolno poročilo o preteklih krajah podatkov, opozorila o novih krajah in informacije o drugih storitvah { -brand-Mozilla(sklon: "rodilnik") }.
 get-your-report-and-sign-up = Prejmite poročilo in se naročite na opozorila.
 # Link title
 frequently-asked-questions = Pogosto zastavljena vprašanja
