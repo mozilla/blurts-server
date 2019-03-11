@@ -3,20 +3,20 @@
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
 click-to-verify =
-    Potvrďte své přihlášení ke službě Firefox Monitor do 24 hodin od odeslání tohoto e-mailu.
+    Potvrďte své přihlášení k Firefox Monitoru do 24 hodin od odeslání tohoto e-mailu.
     Hlášení o vašich účtech vám pak pošleme co nejdříve.
 verify-my-email = Ověřit e-mailovou adresu
-report-scan-another-email = Vyhledat další e-mailovou adresu ve službě { -product-name }
+report-scan-another-email = Vyhledat další e-mailovou adresu ve { -product-name(case: "loc") }
 automated-message = Toto je automaticky zaslaný e-mail - pokud jste si ho nevyžádali, můžete ho ignorovat.
 # Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
-we-sent-this-alert = Tuto zprávu jsme poslali na adresu { $userEmail }, protože jste ji vy nebo někdo jiný přihlásil k zasílání upozornění ze služby { -product-name }.
-unsubscribe-email-link = Pokud už nechcete upozornění ze služby { -product-name } dostávat, odhlaste se.
+we-sent-this-alert = Tuto zprávu jsme poslali na adresu { $userEmail }, protože jste ji vy nebo někdo jiný přihlásil k zasílání upozornění z { -product-name(case: "gen") }.
+unsubscribe-email-link = Pokud už nechcete upozornění z { -product-name(case: "gen") } dostávat, odhlaste se.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
-firefox-monitor-report = Hlášení { -product-name }
+firefox-monitor-report = Hlášení { -product-name(case: "gen") }
 report-date = Datum nahlášení:
 email-address = E-mailová adresa:
 # "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Toto je kompletní hlášení ze služby { -product-name }, které obsahuje všechny známé úniky dat s touto e-mailovou adresou.
+your-full-report = Toto je kompletní hlášení z { -product-name(case: "gen") }, které obsahuje všechny známé úniky dat s touto e-mailovou adresou.
 report-no-breaches =
     Vaše e-mailová adresa není v naší databázi známých úniků dat.
     K dalšímu úniku dat ale může dojít kdykoliv. Zabezpečte svá osobní data na internetu.
@@ -33,7 +33,7 @@ report-subhead-no-breaches =
     Váš účet nebyl součástí naší databáze úniků dat.
     To je dobrá zpráva, ale pořád ještě můžete něco zlepšovat.
     K dalšímu úniku dat může dojít kdykoliv. Přečtěte si, jak můžete ochránit svá hesla.
-report-subhead-found-breaches = Toto je vaše kompletní hlášení ze služby Firefox Monitor, které obsahuje všechny známé úniky dat s touto e-mailovou adresou.
+report-subhead-found-breaches = Toto je vaše kompletní hlášení z Firefox Monitoru, které obsahuje všechny známé úniky dat s touto e-mailovou adresou.
 breach-alert-headline = Váš účet byl součástí úniku dat.
 breach-alert-subhead = Nedávno nahlášený únik dat obsahuje vaši e-mailovou adresu a následující data
 report-pwt-blurb =

@@ -3,14 +3,77 @@
 # - Declined to adapt to grammatical case.
 # - Transliterated.
 # - Translated.
--product-name = Firefox Monitor
--product-name-nowrap = <span class="nowrap">{ -product-name }</span>
--brand-name = Firefox
--brand-Quantum = Firefox Quantum
--brand-Mozilla = Mozilla
+-product-name =
+    { $case ->
+       *[nom] Firefox Monitor
+        [gen] Firefox Monitoru
+        [dat] Firefox Monitoru
+        [acc] Firefox Monitor
+        [voc] Firefox Monitore
+        [loc] Firefox Monitoru
+        [ins] Firefox Monitorem
+    }
+-product-name-nowrap =
+    { $case ->
+       *[nom] <span class="nowrap">{ -product-name(case: "nom") }</span>
+        [gen] <span class="nowrap">{ -product-name(case: "gen") }</span>
+        [dat] <span class="nowrap">{ -product-name(case: "dat") }</span>
+        [acc] <span class="nowrap">{ -product-name(case: "acc") }</span>
+        [voc] <span class="nowrap">{ -product-name(case: "voc") }</span>
+        [loc] <span class="nowrap">{ -product-name(case: "loc") }</span>
+        [ins] <span class="nowrap">{ -product-name(case: "ins") }</span>
+    }
+-brand-name =
+    { $case ->
+       *[nom] Firefox
+        [gen] Firefoxu
+        [dat] Firefoxu
+        [acc] Firefox
+        [voc] Firefoxe
+        [loc] Firefoxu
+        [ins] Firefoxem
+    }
+-brand-Quantum =
+    { $case ->
+       *[nom] Firefox Quantum
+        [gen] Firefoxu Quantum
+        [dat] Firefoxu Quantum
+        [acc] Firefox Quantum
+        [voc] Firefoxe Quantum
+        [loc] Firefoxu Quantum
+        [ins] Firefoxem Quantum
+    }
+-brand-Mozilla =
+    { $case ->
+       *[nom] Mozilla
+        [gen] Mozilly
+        [dat] Mozille
+        [acc] Mozillu
+        [voc] Mozillo
+        [loc] Mozille
+        [ins] Mozillou
+    }
 -brand-HIBP = Have I Been Pwned
--brand-fxa = Účet Firefoxu
--brand-Chrome = Chrome
+-brand-fxa =
+    { $case ->
+       *[nom] Účet Firefoxu
+        [gen] Účtu Firefoxu
+        [dat] Účtu Firefoxu
+        [acc] Účet Firefoxu
+        [voc] Účte Firefoxu
+        [loc] Účtu Firefoxu
+        [ins] Účtem Firefoxu
+    }
+-brand-Chrome =
+    { $case ->
+       *[nom] Chrome
+        [gen] Chromu
+        [dat] Chromu
+        [acc] Chrome
+        [voc] Chrome
+        [loc] Chromu
+        [ins] Chromem
+    }
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Podpora
@@ -21,7 +84,7 @@ give-feedback = Poskytnout zpětnou vazbu
 terms-and-privacy = Podmínky a ochrana soukromí
 error-scan-page-token = Pokusili jste se zkontrolovat příliš mnoho e-mailových adres ve velmi krátkém čase. Z bezpečnostních důvodů jsme další vyhledávání dočasně zablokovali. Zkuste to prosím znovu později.
 error-could-not-add-email = E-mailovou adresu se nepodařilo přidat do databáze.
-error-not-subscribed = Tato e-mailová adresa není přihlášena k odběru ze služby { -product-name }.
+error-not-subscribed = Tato e-mailová adresa není přihlášena k odběru zpráv z { -product-name(case: "gen") }.
 error-hibp-throttled = Příliš mnoho spojení ke službě { -brand-HIBP }.
 error-hibp-connect = Chyba při připojování k { -brand-HIBP }.
 error-hibp-load-breaches = Nepodařilo se načíst informace o únicích.
@@ -32,11 +95,11 @@ oauth-invalid-session = Neplatná relace
 oauth-confirmed-title = { -product-name } - přihlášení k odběru
 scan-title = { -product-name } - výsledky skenu
 user-add-invalid-email = Neplatný e-mail
-user-add-email-verify-subject = Potvrďte své přihlášení k odběru ze služby { -product-name }.
+user-add-email-verify-subject = Potvrďte své přihlášení k odběru zpráv z { -product-name(case: "gen") }.
 user-add-title = { -product-name } - potvrzovací e-mail
 error-headline = Chyba
 user-verify-token-error = Je vyžadován ověřovací token.
-user-verify-email-report-subject = Vaše hlášení ze služby { -product-name }
+user-verify-email-report-subject = Vaše hlášení z { -product-name(case: "gen") }
 user-verify-title = { -product-name } - přihlášení dokončeno
 user-unsubscribe-token-error = Pro odhlášení je vyžadován token.
 user-unsubscribe-token-email-error = Pro odhlášení je vyžadován token a emailHash.
@@ -70,7 +133,7 @@ pwt-headline-5 = Využívejte přidaného zabezpečení pomocí dvoufázového o
 pwt-summary-5 =
     Dvoufázové ověřování vyžaduje pro úspěšné přihlášení zadat nějakou dodatečnou informaci (většinou jednorázový kód poslaný přes SMS).
     I pokud někdo bude znát vaše heslo, bez tohoto ověření přístup k vašemu účtu nezíská.
-pwt-headline-6 = Přihlásit se k odběru oznámení ze služby { -product-name-nowrap }
+pwt-headline-6 = Přihlásit se k odběru oznámení zpráv z { -product-name-nowrap(case: "gen") }
 pwt-summary-6 = Počet úniků dat z webových stránek stoupá. Kdykoliv je nový únik přidán do databáze, { -product-name-nowrap } vám pošle upozornění, abyste mohli co nejrychleji zareagovat a ochránit svůj účet.
 landing-headline = Každý má právo na bezpečí před hackery.
 landing-blurb =
@@ -86,14 +149,14 @@ sensitive-breach-email-required = Únik obsahuje citlivé informace. Ověřte sv
 scan-error = Zadaná e-mailová adresa není platná.
 signup-banner-headline = { -product-name-nowrap } zjišťuje hrozby pro vaše účty registrované na internetu.
 signup-banner-blurb =
-    Podrobné hlášení ze služby { -product-name-nowrap } vám ukáže, jestli byly vaše účty na internetu součástí nějakého úniku nebo krádeže dat.
+    Podrobné hlášení z { -product-name-nowrap(case: "gen") } vám ukáže, jestli byly vaše účty na internetu součástí nějakého úniku nebo krádeže dat.
     Upozorníme vás také kdykoliv se váš účet objeví jako součást nově zjištěného úniku dat.
 download-firefox-bar-blurb = Službu { -product-name-nowrap } zajišťuje <span class="nowrap">{ -brand-name }</span>.
-download-firefox-bar-link = Stáhněte si { -brand-name }
+download-firefox-bar-link = Stáhněte si { -brand-name(case: "acc") }
 download-firefox-banner-blurb = Převezměte kontrolu nad svým prohlížečem
-download-firefox-banner-button = Stáhnout { -brand-name }
-signup-modal-headline = Přihlášení ke službě { -product-name-nowrap }
-signup-modal-blurb = Přihlaste se k zaslání kompletního hlášení, upozornění na nové úniky a bezpečnostních tipů od služby { -product-name-nowrap }.
+download-firefox-banner-button = Stáhnout { -brand-name(case: "acc") }
+signup-modal-headline = Přihlášení k { -product-name-nowrap(case: "dat") }
+signup-modal-blurb = Přihlaste se k zaslání kompletního hlášení, upozornění na nové úniky a bezpečnostních tipů od { -product-name-nowrap(case: "gen") }.
 signup-modal-close = Zavřít
 get-your-report = Dostávejte hlášení o svém účtu
 signup-modal-verify-headline = Potvrďte své přihlášení k odběru
@@ -102,9 +165,9 @@ signup-modal-verify-expiration = Platnost odkazu vyprší za 24 hodin.
 signup-modal-verify-resend = Nenašli jste e-mail ve schránce ani ve spamu? Poslat znovu.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Odesláno!
-signup-with-fxa = Přihlaste se účtem Firefoxu
+signup-with-fxa = Přihlaste se { -brand-fxa(case: "ins") }
 form-signup-placeholder = Zadejte e-mailovou adresu
-form-signup-checkbox = Nechte si posílat nejnovější informace o společnosti { -brand-Mozilla } a aplikaci { -brand-name }.
+form-signup-checkbox = Nechte si posílat nejnovější informace o { -brand-Mozilla(case: "loc") } a { -brand-name(case: "loc") }.
 sign-up = Zaregistrovat
 form-signup-error = Neplatná e-mailová adresa
 no-breaches-headline = Zatím jde všechno dobře.
@@ -112,7 +175,7 @@ found-breaches-headline = Vaše informace byly součástí úniku dat.
 no-breaches =
     Základní sken vaši e-mailovou adresu nenašel.
     To je dobrá zpráva, ale k úniku dat může dojít kdykoliv a pořád ještě můžete něco zlepšovat.
-    Přihlaste se k odběru informací ze služby { -product-name-nowrap } pro kompletní hlášení, upozornění na nové úniky a tipy pro ochranu vašich hesel.
+    Přihlaste se k odběru informací z { -product-name-nowrap(case: "gen") } pro kompletní hlášení, upozornění na nové úniky a tipy pro ochranu vašich hesel.
 featured-breach-results =
     { $breachCount ->
         [0] Váš účet byl nalezen jen v úniku dat <span class="bold">{ $featuredBreach }</span>.
@@ -159,17 +222,17 @@ compromised-accounts = Počet kompromitovaných účtů:
 compromised-data = Kompromitovaná data:
 confirmed = Potvrzeno!<br />Jste přihlášeni k odběru.
 confirmed-blurb = { -product-name-nowrap } vám za chvíli pošle e-mail s kompletním hlášením a také vám bude posílat upozornění, kdykoliv se váš účet objeví v nějakém nově nahlášeném úniku.
-confirmed-social-blurb = Pokud unikla vaše data, je velká šance, že se tak stalo i u někoho z vaší rodiny, přátel nebo lidí, se kterými se znáte na internetu. Řekněte jim o službě { -product-name-nowrap }.
+confirmed-social-blurb = Pokud unikla vaše data, je velká šance, že se tak stalo i u někoho z vaší rodiny, přátel nebo lidí, se kterými se znáte na internetu. Řekněte jim o { -product-name-nowrap(case: "loc") }.
 unsub-headline = Odhlásit odběr ze služby { -product-name-nowrap }
-unsub-blurb = Tímto smažete svou e-mailovou adresu ze seznamu služby { -product-name-nowrap } a nebudete nadále dostávat upozornění na nově oznámené úniky dat.
+unsub-blurb = Tímto smažete svou e-mailovou adresu ze seznamu { -product-name-nowrap(case: "gen") } a nebudete nadále dostávat upozornění na nově oznámené úniky dat.
 unsub-button = Odhlásit
-fxa-unsub-headline = Zrušit zasílání upozornění ze služby { -product-name }.
+fxa-unsub-headline = Zrušit zasílání upozornění z { -product-name(case: "gen") }.
 fxa-unsub-blurb =
     { -product-name } vám přestane posílat další upozornění.
     Váš { -brand-fxa } zůstane aktivní a můžete dostávat další informace z něj.
-unsub-survey-form-label = Z jakého důvodu ohlašujete zasílání upozornění ze služby { -product-name-nowrap }?
+unsub-survey-form-label = Z jakého důvodu ohlašujete zasílání upozornění z { -product-name-nowrap(case: "gen") }?
 unsub-reason-1 = Nemyslím si, že upozornění pomáhají zabezpečit má data
-unsub-reason-2 = Dostávám ze služby { -product-name-nowrap } příliš mnoho e-mailů
+unsub-reason-2 = Dostávám z { -product-name-nowrap(case: "gen") } příliš mnoho e-mailů
 unsub-reason-3 = Služba mi nijak nepomáhá
 unsub-reason-4 = Své účty jsem již zabezpečil(a)
 unsub-reason-5 = Pro sledování svých účtů používám jinou službu
@@ -185,8 +248,8 @@ unsub-survey-button = Odeslat odpověď
 share = Sdílet
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
 tweet = Tweetnout
-download-firefox-quantum = Stáhnout { -brand-Quantum }
-download-firefox-mobile = Stáhnout { -brand-name } pro mobil
+download-firefox-quantum = Stáhnout { -brand-Quantum(case: "acc") }
+download-firefox-mobile = Stáhnout { -brand-name(case: "acc") } pro mobil
 # Features here refers to Firefox browser features. 
 features = Funkce
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
@@ -194,7 +257,7 @@ beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Data o únicích poskytuje { $hibp-link }
 site-description = Byly vaše účty součástí úniku, nebo přímo ukradeny? { -product-name } to zjistí. Prohledejte databázi a přihlaste se k odběru upozornění.
-confirmation-headline = Vaše hlášení od { -product-name } už je na cestě.
+confirmation-headline = Vaše hlášení od { -product-name(case: "gen") } už je na cestě.
 confirmation-blurb = Únik dat může postihnout kohokoliv. Dejte vědět svým přátelům a rodině aby si taky zkontrolovali své účty.
 share-email = E-mail
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
@@ -203,7 +266,7 @@ share-twitter = Většina lidí má na internetu okolo stovky účtů. Zjistěte
 share-facebook-headline = Zjistěte, zda byla vaše data součástí nějakého úniku
 share-facebook-blurb = Byl některý z vašich účtů součástí nějakého úniku dat?
 og-site-description = { -product-name } zjistí, jestli byla vaše data součástí nějakého úniku. Pro větší bezpečí se také přihlaste k zasílání výstrah o budoucích únicích.
-mozilla-security-blog = Bezpečnostní blog Mozilly
+mozilla-security-blog = Bezpečnostní blog { -brand-Mozilla(case: "gen") }
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Sociální sítě
 show-all = Zobrazit vše
@@ -213,14 +276,14 @@ fxa-welcome-headline = Vítá vás { -product-name }.
 fxa-welcome-blurb = Vše je nastaveno a pokud se { $userEmail } objeví v nějakém úniku dat, dostanete upozornění.
 fxa-scan-another-email = Chcete zkontrolovat další e-mail?
 # Search Firefox Monitor
-fxa-scan-submit = Prohledat { -product-name }
+fxa-scan-submit = Prohledat { -product-name(case: "acc") }
 sign-up-to-check = Pro kontrolu se zaregistrujte
 sign-in = Přihlásit se
 sign-out = Odhlášení
-full-report-headline = Hlášení služby { -product-name }
+full-report-headline = Hlášení od { -product-name(case: "gen") }
 see-full-report = Zobrazit úplné hlášení
 # Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Správa účtu Firefoxu
+manage-fxa = Správa { -brand-fxa(case: "gen") }
 fxa-download-firefox-bar-blurb = Službu zajišťuje { -brand-name }. 2x rychlejší a o 30 % úspornější na paměť než { -brand-Chrome }.
 fxa-download-firefox-bar-link = Stáhnout
 fxa-download-firefox-banner-blurb = Lepší, rychlejší načítání stránek, které snižuje používání operační paměti.
@@ -241,7 +304,7 @@ guest-scan-results-headline =
        *[other] Tato adresa byla součástí { $breachCount } úniků dat.
     }
 user-no-breaches-blurb = Pokud se tento e-mail objeví v nějakém úniku dat, dostanete upozornění.
-guest-no-breaches-blurb = Pro nahlédnutí, jestli byl tento e-mail součástí nějakého úniku dat, si prosím vytvořte { -brand-fxa }. Pokud se tento e-mail objeví v nějakém úniku dat v budoucnu, dostanete upozornění.
+guest-no-breaches-blurb = Pro nahlédnutí, jestli byl tento e-mail součástí nějakého úniku dat, si prosím vytvořte { -brand-fxa(case: "acc") }. Pokud se tento e-mail objeví v nějakém úniku dat v budoucnu, dostanete upozornění.
 user-one-breach-blurb = Tento únik obsahoval následující osobní informace.
 user-fb-compromised-blurb =
     { $breachCount ->
@@ -257,12 +320,12 @@ user-generic-fb-compromised-blurb =
     }
 user-fb-compromised-single = Tento únik obsahoval následující osobní informace. Pokud jste tak ještě neučinili, doporučujeme si změnit heslo.
 user-generic-fb-compromised-single = Tento únik obsahoval následující osobní informace.
-guest-fb-compromised-single-v2 = Tento únik obsahoval následující osobní informace. Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách Mozilly.
+guest-fb-compromised-single-v2 = Tento únik obsahoval následující osobní informace. Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa(case: "acc") }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách { -brand-Mozilla(case: "gen") }.
 guest-fb-compromised-blurb-v2 =
     { $breachCount ->
-        [one] Tato e-mailová adresa byla součástí také jednoho dalšího úniku. Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách Mozilly.
-        [few] Tato e-mailová adresa byla součástí také { $breachCount } dalších úniků. Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách Mozilly.
-       *[other] Tato e-mailová adresa byla součástí také { $breachCount } dalších úniků. Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách Mozilly.
+        [one] Tato e-mailová adresa byla součástí také jednoho dalšího úniku. Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa(case: "acc") }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách { -brand-Mozilla(case: "gen") }.
+        [few] Tato e-mailová adresa byla součástí také { $breachCount } dalších úniků. Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa(case: "acc") }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách { -brand-Mozilla(case: "gen") }.
+       *[other] Tato e-mailová adresa byla součástí také { $breachCount } dalších úniků. Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa(case: "acc") }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách { -brand-Mozilla(case: "gen") }.
     }
 user-fb-not-compromised-blurb =
     { $breachCount ->
@@ -278,9 +341,9 @@ user-generic-fb-not-compromised-blurb =
     }
 guest-fb-not-compromised-blurb-v2 =
     { $breachCount ->
-        [one] Tato e-mailová adresa nebyla součástí úniku dat { $breachName }, ale našli jsme ji v jiném. Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách Mozilly.
-        [few] Tato e-mailová adresa nebyla součástí úniku dat { $breachName }, ale našli jsme ji v jiných. Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách Mozilly.
-       *[other] Tato e-mailová adresa nebyla součástí úniku dat { $breachName }, ale našli jsme ji v jiných. Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách Mozilly.
+        [one] Tato e-mailová adresa nebyla součástí úniku dat { $breachName }, ale našli jsme ji v jiném. Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa(case: "acc") }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách { -brand-Mozilla(case: "gen") }.
+        [few] Tato e-mailová adresa nebyla součástí úniku dat { $breachName }, ale našli jsme ji v jiných. Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa(case: "acc") }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách { -brand-Mozilla(case: "gen") }.
+       *[other] Tato e-mailová adresa nebyla součástí úniku dat { $breachName }, ale našli jsme ji v jiných. Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa(case: "acc") }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách { -brand-Mozilla(case: "gen") }.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -323,8 +386,8 @@ copyright = Části tohoto obsahu jsou © 1999-{ $year } jednotlivými přispěv
 content-available = Obsah je dostupný pod licencí Creative Commons.
 # Alerts is a noun
 sign-up-for-alerts = Posílat upozornění
-sign-up-for-fxa-alerts = Přihlásit se k posílání upozornění od služby { -product-name }.
-create-free-account = Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách Mozilly.
+sign-up-for-fxa-alerts = Přihlásit se k posílání upozornění od { -product-name(case: "gen") }.
+create-free-account = Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa(case: "acc") }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách { -brand-Mozilla(case: "gen") }.
 get-your-report-and-sign-up = Získejte hlášení a přihlaste se k odběru upozornění.
 # Link title
 frequently-asked-questions = Často kladené otázky
