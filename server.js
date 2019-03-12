@@ -98,6 +98,7 @@ const connectSrc = [
   "'self'",
   "https://code.cdn.mozilla.net/fonts/",
   "https://www.google-analytics.com",
+  "https://accounts.firefox.com",
 ];
 
 if (AppConstants.FXA_ENABLED) {
