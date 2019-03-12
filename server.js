@@ -91,6 +91,7 @@ if (AppConstants.NODE_ENV === "heroku") {
 const imgSrc = [
   "'self'",
   "https://www.google-analytics.com",
+  "https://firefoxusercontent.com",
 ];
 
 const connectSrc = [
