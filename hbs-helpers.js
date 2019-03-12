@@ -1,5 +1,4 @@
 "use strict";
-const { URL } = require("url");
 
 const AppConstants = require("./app-constants");
 const { LocaleUtils } = require("./locale-utils");
@@ -81,7 +80,7 @@ function localeString(supportedLocales, numericInput) {
 }
 
 function getFxaUrl() {
-  return new URL(AppConstants.OAUTH_PROFILE_URI).origin;
+  return AppConstants.FXA_SETTINGS_URL;
 }
 
 
