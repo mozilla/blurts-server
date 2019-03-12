@@ -314,3 +314,5 @@ sign-up-for-alerts = Regístrate para recibir alertas
 sign-up-for-fxa-alerts = Regístrate para recibir alertas de { -product-name }.
 create-free-account = Crea una { -brand-fxa } gratuita para recibir un informe completo de filtraciones anteriores, alertas sobre nuevas filtraciones e información acerca de otros servicios de { -brand-Mozilla }.
 get-your-report-and-sign-up = Obtén tu informe y regístrate para recibir alertas.
+# Link title
+frequently-asked-questions = Preguntas más frecuentes
