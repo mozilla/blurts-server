@@ -165,7 +165,7 @@ signup-modal-verify-expiration = Platnost odkazu vyprší za 24 hodin.
 signup-modal-verify-resend = Nenašli jste e-mail ve schránce ani ve spamu? Poslat znovu.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Odesláno!
-signup-with-fxa = Přihlaste se { -brand-fxa(case: "ins") }
+signup-with-fxa = Přihlaste se účtem { -brand-name(case: "gen") }
 form-signup-placeholder = Zadejte e-mailovou adresu
 form-signup-checkbox = Nechte si posílat nejnovější informace o { -brand-Mozilla(case: "loc") } a { -brand-name(case: "loc") }.
 sign-up = Zaregistrovat
