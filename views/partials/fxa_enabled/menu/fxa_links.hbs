@@ -1,9 +1,7 @@
       <nav class="{{ class }}">
         <div class="fxa-links">
           <a href="/" class="show-mobile">
-            <div class="avatar-wrapper show-mobile">
-              <img class="avatar show-mobile" src="{{ req.session.user.avatar }}"/>
-            </div>
+            {{> fxa_enabled/menu/fxa_avatar addClass="show-mobile"}}
             <span class="show-mobile bold">{{ req.session.user.email }}</span>
           </a>
           <a href="/scan/full_report" {{>analytics/internal_link eventLabel="See Full Report"}}><span>{{fluentFormat req.supportedLocales "see-full-report"}}</span></a>
