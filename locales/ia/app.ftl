@@ -248,6 +248,17 @@ user-fb-compromised-single =
     Iste violation ha exponite le sequente info personal. Si tu non lo ha jam facite,
     cambia tu contrasignos.
 user-generic-fb-compromised-single = Iste violation ha exponite le sequente info personal.
+guest-fb-compromised-blurb-v2 =
+    { $breachCount ->
+        [one]
+            This email also appeared in { $breachCount } other breach. Create a 
+            free { -brand-fxa } for your full report of past breaches, new breach alerts, 
+            and info about other { -brand-Mozilla } services.
+       *[other]
+            otherThis email also appeared in { $breachCount } other breaches. Create a 
+            free { -brand-fxa } for your full report of past breaches, new breach alerts, 
+            and info about other { -brand-Mozilla } services.
+    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Tu non era in le violation { $breachName }, ma nos trovava ille adresse email in un altero.
@@ -257,6 +268,17 @@ user-generic-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Iste adresse email non esseva in le violation { $breachName }, ma esseva trovate in un altero
        *[other] Iste adresse email non esseva in le violation { $breachName }, ma esseva trovate in alteros
+    }
+guest-fb-not-compromised-blurb-v2 =
+    { $breachCount ->
+        [one]
+            This email was not in the { $breachName } breach, but was found in another. 
+            Create a free { -brand-fxa } for your full report of past breaches, new breach 
+            alerts, and info about other { -brand-Mozilla } services.
+       *[other]
+            This email was not in the { $breachName } breach, but was found in another. 
+            Create a free { -brand-fxa } for your full report of past breaches, new breach 
+            alerts, and info about other { -brand-Mozilla } services.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
