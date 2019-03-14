@@ -171,6 +171,7 @@ unsub-reason-6 = Nihil del previe unos
 unsub-survey-thankyou = Gratias pro tu commentario.
 unsub-survey-error = Per favor elige uno.
 unsub-survey-headline-v2 = Tu abonamento ha essite annullate.
+unsub-survey-button = Inviar responsa
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Compartir
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
