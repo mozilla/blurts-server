@@ -286,3 +286,7 @@ fxa-what-to-do-blurb-4 = Le gestores de contrasignos, como 1Password, LastPass, 
 fb-landing-headline = Ha essite tu info exponite in le violation de datos { $breachName }?
 copyright = Partes de iste contento es © 1999-{ $year } per collaboratores individual de mozilla.org.
 content-available = Contento disponibile sub licentia Creative Commons.
+# Alerts is a noun
+sign-up-for-alerts = Inscribe te al avisos
+# Link title
+frequently-asked-questions = Demandas frequente
