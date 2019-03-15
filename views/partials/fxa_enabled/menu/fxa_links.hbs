@@ -1,13 +1,11 @@
       <nav class="{{ class }}">
         <div class="fxa-links">
           <a href="/" class="show-mobile">
-            <div class="avatar-wrapper show-mobile">
-              <img class="avatar show-mobile" src="{{ req.session.user.avatar }}"/>
-            </div>
+            {{> fxa_enabled/menu/fxa_avatar addClass="show-mobile"}}
             <span class="show-mobile bold">{{ req.session.user.email }}</span>
           </a>
           <a href="/scan/full_report" {{>analytics/internal_link eventLabel="See Full Report"}}><span>{{fluentFormat req.supportedLocales "see-full-report"}}</span></a>
-          <a href="{{getFxaUrl}}" target="_blank" rel="noopener" {{>analytics/internal_link eventLabel="Manage Firefox Account"}}><span>{{fluentFormat req.supportedLocales "manage-fxa"}}</span>{{> sprite symID="open-new-window"}}</a>
+          <a href="{{getFxaUrl}}" target="_blank" rel="noopener" {{>analytics/internal_link eventLabel="Manage Firefox Account"}}><span>{{fluentFormat req.supportedLocales "manage-fxa"}}</span>{{>fxa_enabled/menu/open_new_window_icon}}</a>
           <a href="/user/logout" {{>analytics/internal_link eventLabel="Sign Out"}}><span>{{fluentFormat req.supportedLocales "sign-out"}}</span></a>
         </div>
       </nav>

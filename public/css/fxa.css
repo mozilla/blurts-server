@@ -811,17 +811,17 @@ span.user-email {
   margin-right: calc(var(--gap) / 2);
 }
 
-svg#open-new-window {
+svg.open-new-window {
   max-width: 23px;
   max-height: 24px;
   transform: scale(0.725);
 }
 
-.fxa-user-info svg#open-new-window {
+.fxa-user-info svg.open-new-window {
   opacity: 0;
 }
 
-.fxa-user-info:hover svg#open-new-window {
+.fxa-user-info:hover svg.open-new-window {
   opacity: 1;
 }
 
@@ -922,8 +922,8 @@ svg#open-new-window {
 .fxa-user-info:hover .fxa-menu a:hover,
 .fxa-user-info .fxa-links::before,
 .fxa-user-info:hover .fxa-links::before,
-.fxa-user-info svg#open-new-window,
-.fxa-user-info:hover svg#open-new-window {
+.fxa-user-info svg.open-new-window,
+.fxa-user-info:hover svg.open-new-window {
   transition: all 0.2s ease;
 }
 
@@ -1696,7 +1696,7 @@ svg#menu-icon path {
 .menu-closed .firefox-monitor-brand,
 .menu-closed .bg-screen,
 .menu-closed svg#menu-icon,
-.menu-closed svg#open-new-window,
+.menu-closed svg.open-new-window,
 .menu-open .avatar,
 .menu-open .fxa-links a,
 .menu-open .fxa-links a span,
@@ -1704,7 +1704,7 @@ svg#menu-icon path {
 .menu-open .bg-screen,
 .menu-open svg#menu-icon,
 .menu-open svg#menu-icon path,
-.menu-open svg#open-new-window,
+.menu-open svg.open-new-window,
 .menu-open .firefox-monitor-brand,
 .menu-open .mobile-menu {
   transition: all 0.15s ease-in-out;
