@@ -159,6 +159,7 @@ guest-scan-results-headline =
     }
 user-no-breaches-blurb = Vi vil involvere deg om denne adressa er involvert i ein datalekkasje.
 user-one-breach-blurb = Denne datalekkasjen avslørte følgjande personleg informasjon.
+have-an-account = Har du allereie ein konto?
 # Alerts is a noun
 sign-up-for-alerts = Registrer deg for varsel
 sign-up-for-fxa-alerts = Registrer deg på { -product-name } for varsel.
