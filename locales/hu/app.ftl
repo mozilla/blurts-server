@@ -19,6 +19,7 @@ about-firefox-alerts = A Firefox figyelmeztetéseiről
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Adjon visszajelzést
 terms-and-privacy = Feltételek és adatvédelem
+error-scan-page-token = Túl sok e-mail címet próbált ellenőrizni rövid idő alatt. Biztonsági okokból ideiglenesen letiltottuk az új kereséseket. Később újra próbálkozhat.
 error-could-not-add-email = Nem sikerült hozzáadni az e-mail címet az adatbázishoz.
 error-not-subscribed = Ez az e-mail cím nincs feliratkozva a { -product-name }ra.
 error-hibp-throttled = Túl sok kapcsolat a { -brand-HIBP } felé.
@@ -242,6 +243,9 @@ guest-scan-results-headline =
        *[other] Ez az e-mail cím { $breachCount } adatszegésben volt érintett.
     }
 user-no-breaches-blurb = Értesítjük, ha ez az e-mail cím egy új adatszegésben jelenik meg.
+guest-no-breaches-blurb =
+    Hogy megnézze, hogy szerepel-e az e-mail cím érzékeny betörésekben, hozzon létre egy { -brand-fxa }ot.
+    Értesíteni fogjuk, ha ez a cím új adatszegésekben jelenik meg.
 user-one-breach-blurb = Ez az adatszegés a következő személyes adatok kikerülését eredményezte.
 user-fb-compromised-blurb =
     { $breachCount ->
