@@ -289,6 +289,19 @@ user-generic-fb-not-compromised-blurb =
         [one] Ez az e-mail cím nem szerepelt a(z) { $breachName } adatszegésben, de egy másikban megtalálható.
        *[other] Ez az e-mail cím nem szerepelt a(z) { $breachName } adatszegésben, de másokban megtalálható.
     }
+guest-fb-not-compromised-blurb-v2 =
+    { $breachCount ->
+        [one]
+            Ez az e-mail cím nem szerepelt a(z) { $breachName } adatszegésben,
+            de egy másikban megtalálható. Hozzon létre egy ingyenes { -brand-fxa }ot
+            a múltbeli adatszegésekről szóló jelentéséért, az új adatszegések értesítéseiért,
+            és más { -brand-Mozilla } szolgáltatásokról szóló információkért.
+       *[other]
+            Ez az e-mail cím nem szerepelt a(z) { $breachName } adatszegésben,
+            de másokban megtalálható. Hozzon létre egy ingyenes { -brand-fxa }ot
+            a múltbeli adatszegésekről szóló jelentéséért, az új adatszegések értesítéseiért,
+            és más { -brand-Mozilla } szolgáltatásokról szóló információkért.
+    }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
 user-found-breaches-blurb =
@@ -304,6 +317,31 @@ user-generic-found-breaches-blurb =
        *[other] Ezek az adatszegések a következő személyes adatokat tárták fel.
     }
 have-an-account = Már van fiókja?
+signup-banner-sensitive-blurb =
+    Tudja meg, hogy a hackerek mit tudnak már Önről, és tanulja meg,
+    hogyan legyen egy lépéssel előttük. Kapjon figyelmeztetést, ha a fiókja
+    egy új adatszegésben jelenik meg.
+fxa-pwt-section-blurb =
+    A jelszavak védik a személyes információit az online fiókjaiban. A hackerek
+    a rossz szokásokra támaszkodnak, például arra, hogy mindenhol ugyanazt a jelszót használja,
+    vagy gyakori kifejezéseket használ (@p@ssw0rd, valaki?), így ha egy fiókot feltörnek,
+    akkor többet is fel tudnak.
+fxa-pwt-summary-2 =
+    A rövid, egyszavas jelszavak könnyen kitalálhatóak a hackerek számára.
+    Használjon legalább két szót, valamint betűk, számok és különleges karakterek kombinációját.
+fxa-pwt-summary-4 =
+    A jelszókezelők, mint a 1Password, a LastPass, a Dashlane és a Bitwarden tárolják a
+    jelszavait, és kitöltik azokat Önnnek a weboldalakon. Még az erős jelszavak létrehozásában is segítenek.
+fxa-pwt-summary-6 =
+    Az adatszegések száma nő. Ha a személyes adatai megjelennek egy új adatszegésben,
+    akkor a { -product-name } figyelmeztetést küld – így lépéseket tehet, és megvédheti a fiókjait.
+fxa-what-to-do-blurb-1 =
+    Ha nem tud bejelentkezni, lépjen kapcsolatba a weboldallal, és
+    kérdezze meg hogyan változtathatja meg. Olyan fiókot lát, melyet nem ismer?
+    Az adatait eladhatták vagy továbbadhatták. De olyan fiók is lehet, melyet
+    elfelejtett, vagy a cég nevet is változtathatott.
+fxa-what-to-do-subhead-2 = Ne használja többet a kikerült jelszavát, módosítsa mindenütt, ahol használta.
+fxa-what-to-do-subhead-4 = Szerezzen segítséget, hogy megjegyezze az összes jelszavát, és biztonságban tartsa azokat.
 fb-landing-headline = Nyilvánosságra kerültek-e az adatai a(z) { $breachName } adatszegésben?
 copyright = A tartalom egyes részeire a következő vonatkozik: © 1999-{ $year } egyéni mozilla.org közreműködők.
 content-available = A tartalom Creative Commons licenc alatt érhető el.
