@@ -151,7 +151,7 @@ signup-banner-headline = { -product-name-nowrap } zjišťuje hrozby pro vaše ú
 signup-banner-blurb =
     Podrobné hlášení z { -product-name-nowrap(case: "gen") } vám ukáže, jestli byly vaše účty na internetu součástí nějakého úniku nebo krádeže dat.
     Upozorníme vás také kdykoliv se váš účet objeví jako součást nově zjištěného úniku dat.
-download-firefox-bar-blurb = Službu { -product-name-nowrap } zajišťuje <span class="nowrap">{ -brand-name }</span>.
+download-firefox-bar-blurb = { -product-name-nowrap } zajišťuje <span class="nowrap">{ -brand-name }</span>.
 download-firefox-bar-link = Stáhněte si { -brand-name(case: "acc") }
 download-firefox-banner-blurb = Převezměte kontrolu nad svým prohlížečem
 download-firefox-banner-button = Stáhnout { -brand-name(case: "acc") }
@@ -223,7 +223,7 @@ compromised-data = Kompromitovaná data:
 confirmed = Potvrzeno!<br />Jste přihlášeni k odběru.
 confirmed-blurb = { -product-name-nowrap } vám za chvíli pošle e-mail s kompletním hlášením a také vám bude posílat upozornění, kdykoliv se váš účet objeví v nějakém nově nahlášeném úniku.
 confirmed-social-blurb = Pokud unikla vaše data, je velká šance, že se tak stalo i u někoho z vaší rodiny, přátel nebo lidí, se kterými se znáte na internetu. Řekněte jim o { -product-name-nowrap(case: "loc") }.
-unsub-headline = Odhlásit odběr ze služby { -product-name-nowrap }
+unsub-headline = Odhlásit odběr zpráv z { -product-name-nowrap(case: "gen") }
 unsub-blurb = Tímto smažete svou e-mailovou adresu ze seznamu { -product-name-nowrap(case: "gen") } a nebudete nadále dostávat upozornění na nově oznámené úniky dat.
 unsub-button = Odhlásit
 fxa-unsub-headline = Zrušit zasílání upozornění z { -product-name(case: "gen") }.
