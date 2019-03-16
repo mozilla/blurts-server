@@ -19,6 +19,7 @@ about-firefox-alerts = Om Firefox-varsel
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Tilbakemelding
 terms-and-privacy = Vilkår og personvern
+error-scan-page-token = Du freista å skanne for mange e-postadresser på kort tid. Av tryggingsårsaker har vi mellombels blokkert deg frå nye søk. Du vil kunne gjere nye søk seinare.
 error-could-not-add-email = Klarte ikkje å leggje til e-postadressa i databasen.
 error-not-subscribed = Denne e-postadressa abonnerer ikkje på { -product-name }.
 error-hibp-throttled = For mange tilkoplingar til { -brand-HIBP }.
