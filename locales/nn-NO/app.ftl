@@ -48,7 +48,9 @@ user-unsubscribed-title = { -product-name }: Avslutta
 
 pwt-section-headline = Sterkare passord = betre vern
 pwt-section-subhead = Dei private opplysningane dine er berre so sikre som passorda dine er.
+pwt-section-blurb = Passorda dine beskyttar meir enn kontoane dine. Dei vernar alle personlege opplysningar som finst i dei. Hackarar stolar på dårlege vanar, som når du brukar same passord overalt, eller brukar vanlege frasar (kor mange har til dømes brukt ‹‹123456››?) Brukar du passord fleire gongar, treng hackaren berre å skaffe seg tilgang til ein konto for å få tilgang til fleire kontoar. Men det er fleire ting du kan gjere for å beskytte kontoen din.
 pwt-headline-1 = Bruk aldri same passordet på fleire kontoar
+pwt-summary-1 = Brukar du same passord fleire gongar, lèt du døra stå open for identitetstjuveri. Alle som har dette passordet kan logge inn på alle kontoane dine.
 pwt-headline-2 = Lag sterke passord som er vanskelege å gjette seg fram til
 pwt-headline-3 = Sjå på tryggingsspørsmål som ekstra passord
 pwt-headline-4 = Få hjelp til å hugse passorda dine
