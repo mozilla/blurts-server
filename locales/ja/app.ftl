@@ -19,6 +19,7 @@ about-firefox-alerts = Firefox の通知について
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = フィードバックを提供
 terms-and-privacy = 利用規約と個人情報保護方針
+error-scan-page-token = 短期間に多くのメールアドレスを検索しようとしています。セキュリティ上の理由から、一時的に新たな検索をブロックしました。後ほどまた試してください。
 error-could-not-add-email = メールアドレスをデータベースに追加できませんでした。
 error-not-subscribed = このメールアドレスは { -product-name } に登録されていません。
 error-hibp-throttled = { -brand-HIBP } への接続数が多すぎます
@@ -185,12 +186,30 @@ layout-social = ソーシャル
 show-all = すべて表示
 fxa-scan-label = データが侵害されていないか確認してください。
 fxa-welcome-headline = { -product-name } へようこそ。
+fxa-scan-another-email = 他のメールアドレスをチェックしますか？
 # Search Firefox Monitor
 fxa-scan-submit = { -product-name } で検索する
 sign-up-to-check = アカウント登録してチェックする
 sign-in = ログイン
 sign-out = ログアウト
+full-report-headline = { -product-name } レポート
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = { -brand-fxa }の管理
 fxa-download-firefox-bar-link = 今すぐダウンロード
+user-fb-compromised-headline = { $userEmail } は、{ $breachName } のデータ侵害に含まれています。
+guest-fb-compromised-headline = このメールアドレスは、{ $breachName } のデータ侵害に含まれています。
+user-scan-results-headline =
+    { $breachCount ->
+       *[other] { $userEmail } は、{ $breachCount } 個のデータ侵害が見つかりました。
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+       *[other] このメールアドレスは、{ $breachCount } 個のデータ侵害が見つかりました。
+    }
+user-no-breaches-blurb = このメールアドレスが新たな侵害に含まれた場合、通知します。
 have-an-account = 既にアカウントをお持ちですか？
+# Alerts is a noun
+sign-up-for-alerts = 登録して通知を受け取る
+sign-up-for-fxa-alerts = 登録して { -product-name } の通知を受け取る。
+# Link title
+frequently-asked-questions = よくある質問
