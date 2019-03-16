@@ -111,9 +111,15 @@ compromised-accounts = Kompromiterte kontoar:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Kompromiterte data:
 confirmed = Stadfesta!<br />Du abonnerer!
+confirmed-blurb = { -product-name-nowrap } sender deg snart ein e-post med ein fullstendig rapport. Du får også tilsendt ein e-post om kontoen din er innblanda i nye datalekkasjar.
 unsub-headline = Avslutt abonnementet på { -product-name-nowrap }
 unsub-button = Avslutt abonnementet
 fxa-unsub-headline = Stopp abonnement på { -product-name }-åtvaringar.
+fxa-unsub-blurb =
+    Du vil ikkje lenger få åtvaringar frå { -product-name }.
+    { -brand-fxa } vil framleis vere aktivt, og du kan få annan
+    kontorelatert kommunikasjon.
+unsub-survey-form-label = Kvifor har du meldt deg av åtvartingar frå { -product-name-nowrap }?
 unsub-reason-1 = Eg trur ikkje at åtvaringane gjer mine data sikrare
 unsub-reason-2 = Eg får for mange e-postar frå { -product-name-nowrap }
 unsub-reason-3 = Eg synest ikkje at tenesta er nyttig
@@ -123,6 +129,9 @@ unsub-reason-6 = Ingen av dei ovanfor
 unsub-survey-thankyou = Takk for tilbakemeldinga di.
 unsub-survey-error = Ver snill og velein.
 unsub-survey-headline-v2 = Abonnentet er avslutta.
+unsub-survey-blurb-v2 =
+    Du vil ikkje lenger få åtvaringar frå { -product-name }.
+    Har du tid til å svare på enkelte spørsmål om opplevinga di?
 unsub-survey-button = Send inn svar
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Del
@@ -140,6 +149,8 @@ confirmation-headline = Din rapport frå { -product-name } er på veg.
 share-email = E-postadresse
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Andre
+share-facebook-headline = Finn ut om du har vore utsett for ein datalekkasje.
+share-facebook-blurb = Har kontoane dine på nettet blitt utsett for datalekkasje?
 mozilla-security-blog = { -brand-Mozilla } sikkerheitsblogg
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Sosialt
@@ -147,7 +158,9 @@ show-all = Vis alle
 fxa-landing-blurb =
     Finn ut kva hackarar allereie veit om deg,
     og lær deg korleis du kan vere eitt steg framom dei.
+fxa-scan-label = Sjå om du har vore involvert i ein datalekkasje.
 fxa-welcome-headline = Velkomen til { -product-name }.
+fxa-welcome-blurb = Du vil no få åtvaringar om { $userEmail } er involvert i ein datalekkasje.
 fxa-scan-another-email = Vil du kontrollere ei anna e-postadresse?
 # Search Firefox Monitor
 fxa-scan-submit = Sök { -product-name }
@@ -160,6 +173,7 @@ see-full-report = Vis fullstendig rapport
 manage-fxa = Handter { -brand-fxa }
 fxa-download-firefox-bar-blurb = Presentert av  { -brand-name }. 2x raskare. Brukar 30% mindre minne enn { -brand-Chrome }.
 fxa-download-firefox-bar-link = Last ned no
+fxa-download-firefox-banner-blurb = Betre og raskare innlasting av sider og mindre bruk av datamaskinminne.
 user-fb-compromised-headline = { $userEmail } har vore utsett for datalekkasjen { $breachName }.
 guest-fb-compromised-headline = Denne e-postadressa var involvert i datalekkasjen { $breachName }.
 user-zero-breaches-headline = { $userEmail } har ikkje vore involvert nokon datalekkasje.
@@ -184,6 +198,10 @@ user-generic-found-breaches-blurb =
        *[other] Desse { $breachCount } datalekkasjane kompromitterte følgjande personlege opplysningar.
     }
 have-an-account = Har du allereie ein konto?
+content-available = Innhaldet er tilgjengeleg under ein Creative Commons-lisens.
 # Alerts is a noun
 sign-up-for-alerts = Registrer deg for varsel
 sign-up-for-fxa-alerts = Registrer deg på { -product-name } for varsel.
+get-your-report-and-sign-up = Få din rapport og registrer deg for åtvaringar.
+# Link title
+frequently-asked-questions = Vanlege spørsmål
