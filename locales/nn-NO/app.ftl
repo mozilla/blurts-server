@@ -52,8 +52,17 @@ pwt-section-blurb = Passorda dine beskyttar meir enn kontoane dine. Dei vernar a
 pwt-headline-1 = Bruk aldri same passordet på fleire kontoar
 pwt-summary-1 = Brukar du same passord fleire gongar, lèt du døra stå open for identitetstjuveri. Alle som har dette passordet kan logge inn på alle kontoane dine.
 pwt-headline-2 = Lag sterke passord som er vanskelege å gjette seg fram til
+pwt-summary-2 =
+    Hackarar brukar tusenvis av vanlege passord for å gjette passordet ditt.
+    Dess lenger og meir tilfeldig passordet ditt er, dess vanskelegare vert det å gjette det.
 pwt-headline-3 = Sjå på tryggingsspørsmål som ekstra passord
+pwt-summary-3 =
+    Nettstadar kontrollerer ikkje at svara dine er korrekte, berre at dei matchar kvar gong.
+    Lag lange og tilfeldige svar og lagre dei på ein trygg stad.
 pwt-headline-4 = Få hjelp til å hugse passorda dine
+pwt-summary-4 =
+    Passordhandterarar som 1Password, LastPass, Dashlane og Bitwarden genererer starke, unike passord. 
+    Dei lagrar også passord trygt og fyller dei ut på nettsider for deg
 pwt-headline-5 = Legg til ekstra sikkerheit med tofaktor-godkjenning
 pwt-summary-5 = To faktor-godkjenning krev tilleggsinformasjon (t.d. ein eingangskode sendt via SMS) for å logge inn på kontoen din. Sjølv om nokon har passordet ditt, kan dei ikkje kome seg inn.
 pwt-headline-6 = Registrer deg for { -product-name-nowrap }-åtvaringar
@@ -67,10 +76,12 @@ scan-featuredbreach-label = Finn ut om <span class="bold"> { $featuredBreach } <
 sensitive-breach-email-required = Datalekkasjen inneheld kjenslevare opplysningar. E-poststadfesting påkravd.
 scan-error = E-postadressa må vere gyldig.
 signup-banner-headline = { -product-name-nowrap } oppdagar truslar mot kontoane dine på nettet.
+download-firefox-bar-blurb = { -product-name-nowrap } vert presentert av den <span class="nowrap">heilt nye { -brand-name }</span>.
 download-firefox-bar-link = Last ned { -brand-name } no
 download-firefox-banner-blurb = Ta kontroll over nettlesaren din
 download-firefox-banner-button = LAst ned { -brand-name }
 signup-modal-headline = Registrer deg for { -product-name-nowrap }
+signup-modal-blurb = Registrer deg for å sjå heile rapporten, få åtvaringar om nye datalekkasjar og sikkerheitstips frå { -product-name-nowrap }.
 signup-modal-close = Lat att
 get-your-report = Få din rapport.
 signup-modal-verify-headline = Stadfest abonnementet ditt.
@@ -89,8 +100,10 @@ found-breaches-headline = Din informasjon var ein del av ein datalekkasje.
 show-more-breaches = Vis fleire
 what-to-do-headline = Kva du skal gjere når informasjon din er utsett for ein datalekkasje
 what-to-do-subhead-1 = Endre passorda dine, sjølv for gamle kontoar
+what-to-do-subhead-2 = Om du brukar eit eksponert passord på nytt, endre det.
 what-to-do-subhead-3 = Ta ekstra forholdsreglar for å sikre bankkontoane dine
 what-to-do-subhead-4 = Få hjelp til å lage gode passord og å oppebaver dei trygt.
+what-to-do-blurb-4 = Passordhandterarar som 1Password, LastPass, Dashlane og Bitwarden genererer sterke passnord, lagrar dei sikkert og fyller dei ut på nettsider for deg.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Dato for datalekkasje:
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -100,6 +113,7 @@ compromised-data = Kompromiterte data:
 confirmed = Stadfesta!<br />Du abonnerer!
 unsub-headline = Avslutt abonnementet på { -product-name-nowrap }
 unsub-button = Avslutt abonnementet
+fxa-unsub-headline = Stopp abonnement på { -product-name }-åtvaringar.
 unsub-reason-1 = Eg trur ikkje at åtvaringane gjer mine data sikrare
 unsub-reason-2 = Eg får for mange e-postar frå { -product-name-nowrap }
 unsub-reason-3 = Eg synest ikkje at tenesta er nyttig
@@ -162,6 +176,13 @@ guest-scan-results-headline =
     }
 user-no-breaches-blurb = Vi vil involvere deg om denne adressa er involvert i ein datalekkasje.
 user-one-breach-blurb = Denne datalekkasjen avslørte følgjande personleg informasjon.
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Denne datalekkasjen kompromitterte følgjande personlege opplysningar.
+       *[other] Desse { $breachCount } datalekkasjane kompromitterte følgjande personlege opplysningar.
+    }
 have-an-account = Har du allereie ein konto?
 # Alerts is a noun
 sign-up-for-alerts = Registrer deg for varsel
