@@ -208,7 +208,7 @@ fxa-landing-blurb =
     Descubra o que hackers já sabem sobre você,
     e saiba como estar um passo à frente deles.
 fxa-scan-label = Veja se você apareceu em um vazamento de dados.
-fxa-welcome-headline = Bem-vindo ao { -product-name }.
+fxa-welcome-headline = Boas-vindas ao { -product-name }.
 fxa-welcome-blurb = Tudo pronto para você receber alertas se { $userEmail } aparecer em um vazamento de dados.
 fxa-scan-another-email = Quer verificar outro e-mail?
 # Search Firefox Monitor
