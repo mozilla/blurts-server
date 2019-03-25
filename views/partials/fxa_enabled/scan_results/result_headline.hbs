@@ -8,15 +8,15 @@
     <h3 id="scan-results-headline" class="section-headline scan-results-headline">
       {{#if userCompromised}}
         {{#if selfScan}}
-          {{{fluentNestedBold req.supportedLocales "user-fb-compromised-headline" breachName=specificBreach.Title userEmail=signedInUser.email}}}
+          {{{fluentNestedBold "user-fb-compromised-headline" breachName=specificBreach.Title userEmail=signedInUser.email}}}
         {{else}}
-          {{{fluentNestedBold req.supportedLocales "guest-fb-compromised-headline" breachName=specificBreach.Title}}}
+          {{{fluentNestedBold "guest-fb-compromised-headline" breachName=specificBreach.Title}}}
         {{/if}}
       {{else}}
         {{#if selfScan}}
-          {{{fluentNestedBold req.supportedLocales "user-scan-results-headline" breachCount=foundBreaches.length userEmail=signedInUser.email}}}
+          {{{fluentNestedBold "user-scan-results-headline" breachCount=foundBreaches.length userEmail=signedInUser.email}}}
         {{else}}
-          {{{fluentNestedBold req.supportedLocales "guest-scan-results-headline" breachCount=foundBreaches.length}}}
+          {{{fluentNestedBold "guest-scan-results-headline" breachCount=foundBreaches.length}}}
         {{/if}}
       {{/if}}
     </h3>

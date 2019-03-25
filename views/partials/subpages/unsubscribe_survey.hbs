@@ -4,9 +4,9 @@
       <span class="secondary-title" tabindex="1">{{{getString "unsub-survey-form-label"}}}</span>
       {{#loop 1 6 1}}
         <div class="radio-button-group" tabindex="1">
-          <input id="reason{{ this }}" type="radio" name="unsubscribe-reason" data-analytics-label="unsub-reason-{{ this }}" value="{{getStringID ../req.supportedLocales "unsub-reason-" this}}" />
+          <input id="reason{{ this }}" type="radio" name="unsubscribe-reason" data-analytics-label="unsub-reason-{{ this }}" value="{{getStringID "unsub-reason-" this}}" />
           <span class="radio-dot"></span>
-          <label for="reason{{ this }}">{{{getStringID ../req.supportedLocales "unsub-reason-" this}}}</label>
+          <label for="reason{{ this }}">{{{getStringID "unsub-reason-" this}}}</label>
         </div>
       {{/loop}}
       <div class="input-group-button">

@@ -5,10 +5,10 @@
       </div>
     <div class="breach-info-wrap">
       <span class="breach-headline medium">{{ featuredBreach.Title }}</span>
-      <span class="breach-info breach-date"><span class="medium">{{getString "breach-date"}}</span>{{prettyDate req.supportedLocales featuredBreach.BreachDate }}</span>
-      <span class="breach-info"><span class="medium">{{getString "compromised-accounts"}}</span>{{localeString req.supportedLocales featuredBreach.PwnCount }}</span>
+      <span class="breach-info breach-date"><span class="medium">{{getString "breach-date"}}</span>{{prettyDate featuredBreach.BreachDate }}</span>
+      <span class="breach-info"><span class="medium">{{getString "compromised-accounts"}}</span>{{localeString featuredBreach.PwnCount }}</span>
       {{#if featuredBreach.DataClasses }}
-        <span class="breach-info"><span class="medium">{{getString "compromised-data"}}</span>{{localizedBreachDataClasses req.supportedLocales featuredBreach.DataClasses }}</span>
+        <span class="breach-info"><span class="medium">{{getString "compromised-data"}}</span>{{localizedBreachDataClasses featuredBreach.DataClasses }}</span>
       {{/if}}
     </div>
   </div>

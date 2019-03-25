@@ -15,7 +15,8 @@ function getString (id, args) {
 }
 
 
-function fluentFxa (supportedLocales, id, args) {
+function fluentFxa (id, args) {
+  const supportedLocales = args.data.root.req.supportedLocales;
   if (AppConstants.FXA_ENABLED) {
     id = `fxa-${id}`;
   }
@@ -23,7 +24,8 @@ function fluentFxa (supportedLocales, id, args) {
 }
 
 
-function getStringID (supportedLocales, id, number) {
+function getStringID (id, number, args) {
+  const supportedLocales = args.data.root.req.supportedLocales;
   id = `${id}${number}`;
   if (modifiedStringMap[id]) {
     id = modifiedStringMap[id];
@@ -32,16 +34,18 @@ function getStringID (supportedLocales, id, number) {
 }
 
 
-function localizedBreachDataClasses(supportedLocales, dataClasses, args) {
-    const localizedDataClasses = [];
-    dataClasses.forEach(dataClass => {
-      localizedDataClasses.push(LocaleUtils.fluentFormat(supportedLocales, dataClass, args));
-    });
-    return localizedDataClasses.join(", ");
+function localizedBreachDataClasses(dataClasses, args) {
+  const supportedLocales = args.data.root.req.supportedLocales;
+  const localizedDataClasses = [];
+  dataClasses.forEach(dataClass => {
+    localizedDataClasses.push(LocaleUtils.fluentFormat(supportedLocales, dataClass, args));
+  });
+  return localizedDataClasses.join(", ");
 }
 
 
-function fluentNestedBold(supportedLocales, id, args) {
+function fluentNestedBold(id, args) {
+  const supportedLocales = args.data.root.req.supportedLocales;
   const saveArgs = JSON.parse(JSON.stringify(args.hash));
   const nonNumericStringIds = Object.keys(saveArgs).filter(key => key !== "breachCount");
 
@@ -67,7 +71,8 @@ function fluentNestedBold(supportedLocales, id, args) {
 }
 
 
-function prettyDate(supportedLocales, date) {
+function prettyDate(date, args) {
+  const supportedLocales = args.data.root.req.supportedLocales;
   const jsDate = new Date(date);
   const options = {year: "numeric", month: "long", day: "numeric"};
   const intlDateTimeFormatter = new Intl.DateTimeFormat(supportedLocales, options);
@@ -75,7 +80,8 @@ function prettyDate(supportedLocales, date) {
 }
 
 
-function localeString(supportedLocales, numericInput) {
+function localeString(numericInput, args) {
+  const supportedLocales = args.data.root.req.supportedLocales;
   const intlNumberFormatter = new Intl.NumberFormat(supportedLocales);
   return intlNumberFormatter.format(numericInput);
 }
