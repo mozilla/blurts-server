@@ -193,7 +193,7 @@ confirmation-blurb = Datenlecks können jeden betreffen. Erzählen Sie anderen d
 share-email = E-Mail
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Andere
-share-twitter = Die meisten Leute haben ungefähr 100 Online-Konten. Wurde einer von Ihnen bei einem Datenleck geknackt? Finden Sie es heraus.
+share-twitter = Die meisten Leute haben ungefähr 100 Online-Konten. Wurde eines von Ihnen bei einem Datenleck geknackt? Finden Sie es heraus.
 share-facebook-headline = Erfahren Sie, ob Sie von einem Datenleck betroffen sind
 share-facebook-blurb = Wurden Ihre Online-Konten bei einem Datenleck geknackt?
 og-site-description = Erfahren Sie mit { -product-name }, ob Sie von einem Datenleck betroffen sind. Abonnieren Sie Warnungen zu zukünftigen Lecks und erhalten Sie Tipps zum Schutz Ihrer Konten.
