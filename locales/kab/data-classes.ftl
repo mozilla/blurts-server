@@ -23,3 +23,6 @@ ip-addresses = Tansiwin IP
 names = Ismawen
 passwords = Awalen uffiren
 photos = Tiwlafin
+sms-messages = Iznan SMS
+usernames = Isemawen n useqdac
+years-of-birth = Aseggas n tlalit
