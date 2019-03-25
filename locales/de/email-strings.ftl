@@ -42,7 +42,7 @@ report-pwt-summary-1 =
     Hacker können dieses Passwort verwenden, um sich bei Ihren anderen Konten anzumelden.
 report-pwt-headline-2 = Erstellen Sie starke, einzigartige Passwörter
 report-pwt-summary-2 =
-    Hacker verwenden Listen gewöhnliche Passwörter, um zu versuchen, Ihre zu erraten.
+    Hacker verwenden Listen gewöhnlicher Passwörter, um zu versuchen, Ihre zu erraten.
     Je länger und zufälliger Ihr Passwort ist, desto schwieriger ist es zu stehlen.
 report-pwt-headline-3 = Behandeln Sie Sicherheitsfragen wie zusätzliche Passwörter
 report-pwt-summary-3 =
