@@ -46,11 +46,11 @@ report-pwt-summary-2 =
     Je länger und zufälliger Ihr Passwort ist, desto schwieriger ist es zu stehlen.
 report-pwt-headline-3 = Behandeln Sie Sicherheitsfragen wie zusätzliche Passwörter
 report-pwt-summary-3 =
-    Websites überprüfen nicht die Richtigkeit Ihrer Antworten, sondern nur, ob sie gleich sind.
+    Websites überprüfen nicht die Richtigkeit Ihrer Antworten, sondern nur, ob sie jedes Mal übereinstimmen..
     Erstellen Sie lange, zufällige Antworten und speichern Sie diese an einem sicheren Ort.
 report-pwt-headline-4 = Verwenden Sie einen Passwort-Manager
 report-pwt-summary-4 =
-    Passwort-Manager wie 1Password, LastPass, Dashlane und Bitwarden generieren starke, eindeutige Passwörter, speichern Sie Passwörter sicher
+    Passwort-Manager wie 1Password, LastPass, Dashlane und Bitwarden generieren starke, eindeutige Passwörter, speichern die Passwörter sicher
     und tragen sie für Sie auf Websites ein, damit Sie sich nicht alle Passwörter merken müssen.
 # A link to legal information about mozilla products.
 legal = Rechtliches
@@ -58,8 +58,8 @@ legal = Rechtliches
 share-by-email-subject = Sehen Sie, ob Sie von einem Datenleck betroffen sind.
 # Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
 share-by-email-message =
-    Hallo
-    { -brand-name } bietet einen kostenlosen Dienst, um zu testen, ob Sie voneinem Datenleck betroffen sind. So funktioniert es:
+    Hallo,
+    { -brand-name } bietet einen kostenlosen Dienst, um zu testen, ob Sie von einem Datenleck betroffen sind. So funktioniert es:
     1. Besuchen Sie { "https://monitor.firefox.com" } und suchen Sie nach Ihrer E-Mail-Adresse.
     2. Sehen Sie, ob Ihre Online-Konten bei einem Datenleck geknackt wurden.
     3. Holen Sie sich Tipps von { -product-name } für die nächsten Schritte.
