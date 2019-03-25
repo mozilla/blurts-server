@@ -8,7 +8,7 @@ const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const { FluentError } = require("../locale-utils");
 const FXA = require("../lib/fxa");
-const HBSHelpers = require("../hbs-helpers");
+const HBSHelpers = require("../template-helpers/hbs-helpers");
 const HIBP = require("../hibp");
 const sha1 = require("../sha1-utils");
 

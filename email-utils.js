@@ -6,7 +6,7 @@ const AppConstants = require("./app-constants");
 const nodemailer = require("nodemailer");
 const hbs = require("nodemailer-express-handlebars");
 
-const HBSHelpers = require("./hbs-helpers");
+const HBSHelpers = require("./template-helpers/hbs-helpers");
 const mozlog = require("./log");
 
 

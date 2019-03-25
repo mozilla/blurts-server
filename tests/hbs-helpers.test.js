@@ -1,6 +1,6 @@
 "use strict";
 
-const HBSHelpers = require("../hbs-helpers");
+const HBSHelpers = require("../template-helpers/hbs-helpers");
 const { LocaleUtils } = require("../locale-utils");
 
 

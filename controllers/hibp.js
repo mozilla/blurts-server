@@ -7,7 +7,7 @@ const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const HIBP = require("../hibp");
 const { LocaleUtils } = require ("../locale-utils");
-const HBSHelpers = require("../hbs-helpers");
+const HBSHelpers = require("../template-helpers/hbs-helpers");
 const mozlog = require("../log");
 
 

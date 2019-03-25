@@ -15,7 +15,7 @@ const sessions = require("client-sessions");
 const { URL } = require("url");
 
 const EmailUtils = require("./email-utils");
-const HBSHelpers = require("./hbs-helpers");
+const HBSHelpers = require("./template-helpers/");
 const HIBP = require("./hibp");
 const {addRequestToResponse, pickLanguage, logErrors, localizeErrorMessages, clientErrorHandler, errorHandler} = require("./middleware");
 const { LocaleUtils } = require("./locale-utils");
@@ -138,7 +138,7 @@ const hbs = exphbs.create({
   layoutsDir: __dirname + "/views/layouts",
   defaultLayout: "default",
   partialsDir: __dirname + "/views/partials",
-  helpers: HBSHelpers,
+  helpers: HBSHelpers.helpers,
 });
 app.engine("hbs", hbs.engine);
 app.set("view engine", "hbs");

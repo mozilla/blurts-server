@@ -1,12 +1,12 @@
 "use strict";
 
-const AppConstants = require("./app-constants");
-const { LocaleUtils } = require("./locale-utils");
-const modifiedStringMap = require("./modified-strings");
-const mozlog = require("./log");
+const AppConstants = require("./../app-constants");
+const { LocaleUtils } = require("./../locale-utils");
+const modifiedStringMap = require("./../modified-strings");
+const mozlog = require("./../log");
 
 
-const log = mozlog("hbs-helpers");
+const log = mozlog("template-helpers/hbs-helpers");
 
 
 function fluentFormat (supportedLocales, id, args) {
