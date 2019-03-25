@@ -315,9 +315,9 @@ fxa-pwt-summary-6 =
     Datenlecks nehmen zu. Wenn Ihre persönlichen Daten von einem neuen Datenleck betroffen sind,
     benachrichtigt { -product-name } Sie – damit Sie Maßnahmen ergreifen und Ihre Konten schützen können.
 fxa-what-to-do-blurb-1 =
-    Wenn Sie sich nicht anmelden können, wenden sich sich an die Website und fragen Sie nach.
+    Wenn Sie sich nicht anmelden können, wenden Sie sich an die Website und fragen Sie nach.
     Fällt Ihnen ein unbekanntes Konto auf? Vielleicht wurden Ihre Daten verkauft oder weitergegeben.
-    Vielleicht haben Sie das Konto auch vergessen oder das Unternehmen hat seinen Namen geändert.
+    Vielleicht haben Sie das Konto auch nur vergessen oder das Unternehmen hat seinen Namen geändert.
 fxa-what-to-do-subhead-2 = Verwenden Sie das offengelegte Passwörter nicht mehr und ändern Sie es überall, wo Sie es verwenden.
 fxa-wtd-blurb-2 =
     Hacker versuchen möglicherweise, dasselbe Passwort und Ihre E-Mail-Adresse zum Zugriff auf andere Konten zu verwenden.
