@@ -318,7 +318,7 @@ fxa-what-to-do-blurb-1 =
     Wenn Sie sich nicht anmelden können, wenden Sie sich an die Website und fragen Sie nach.
     Fällt Ihnen ein unbekanntes Konto auf? Vielleicht wurden Ihre Daten verkauft oder weitergegeben.
     Vielleicht haben Sie das Konto auch nur vergessen oder das Unternehmen hat seinen Namen geändert.
-fxa-what-to-do-subhead-2 = Verwenden Sie das offengelegte Passwörter nicht mehr und ändern Sie es überall, wo Sie es verwenden.
+fxa-what-to-do-subhead-2 = Benutzen Sie das offengelegte Passwort nicht mehr und ändern Sie es überall, wo Sie es verwendet haben.
 fxa-wtd-blurb-2 =
     Hacker versuchen möglicherweise, dasselbe Passwort und Ihre E-Mail-Adresse zum Zugriff auf andere Konten zu verwenden.
     Erstellen Sie für jedes Konto ein anderes und einzigartiges Passwort, insbesondere für Ihr Bankkonto, Ihre E-Mail-Adresse und andere Websites, auf denen Sie persönliche Daten speichern.

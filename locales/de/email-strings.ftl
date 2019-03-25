@@ -38,7 +38,7 @@ report-pwt-blurb =
     Stärkere Passwörter schützen Ihre Konten und alle persönlichen Informationen, die sich darin befinden.
 report-pwt-headline-1 = Verwenden Sie für jedes Konto ein anderes Passwort
 report-pwt-summary-1 =
-    Das gleiche Passwort überall zu verwenden, öffnet Hackern Tür und Tor.
+    Dasselbe Passwort überall zu verwenden, öffnet Hackern Tür und Tor.
     Hacker können dieses Passwort verwenden, um sich bei Ihren anderen Konten anzumelden.
 report-pwt-headline-2 = Erstellen Sie starke, einzigartige Passwörter
 report-pwt-summary-2 =
