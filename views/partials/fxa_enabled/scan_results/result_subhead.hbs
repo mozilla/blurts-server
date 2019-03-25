@@ -1,12 +1,12 @@
     {{#ifCompare foundBreaches.length "===" 0}}
       {{#if signedInUser}}
         {{#if selfScan}}
-          <p>{{fluentFormat req.supportedLocales "user-no-breaches-blurb"}}</p>
+          <p>{{getString "user-no-breaches-blurb"}}</p>
         {{else}}
-          <p>{{fluentFormat req.supportedLocales "no-breaches-headline"}}</p><!-- legacy stringID, is no longer a headline-->
+          <p>{{getString "no-breaches-headline"}}</p><!-- legacy stringID, is no longer a headline-->
         {{/if}}
       {{else}}
-        <p>{{fluentFormat req.supportedLocales "guest-no-breaches-blurb"}}</p>
+        <p>{{getString "guest-no-breaches-blurb"}}</p>
       {{/if}}
     {{else}}
       {{#if specificBreach}}
@@ -14,7 +14,7 @@
           {{#if userCompromised}}
             {{#if signedInUser}}
               {{#if selfScan}}
-                <p>{{fluentFormat req.supportedLocales "user-fb-compromised-single"}}</p>
+                <p>{{getString "user-fb-compromised-single"}}</p>
               {{else}}
                 <p>{{{fluentNestedBold req.supportedLocales "user-generic-fb-compromised-single" breachCount=foundBreaches.length}}}</p>
               {{/if}}

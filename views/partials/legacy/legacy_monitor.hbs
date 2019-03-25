@@ -3,23 +3,23 @@
     <div class="half {{#if featuredBreach}} featured {{/if}}">
       <h2 data-location="landing-page" class="section-headline">
         {{#if featuredBreach }}
-          {{{fluentFormat req.supportedLocales "scan-featuredbreach-label" featuredBreach=featuredBreach.Title}}}
+          {{{getString "scan-featuredbreach-label" featuredBreach=featuredBreach.Title}}}
         {{else}}
-          {{{fluentFormat req.supportedLocales "landing-headline"}}}
+          {{{getString "landing-headline"}}}
         {{/if}}
       </h2>
       {{#if featuredBreach }}
 
         {{#if featuredBreach.IsSensitive}}
           {{> sign_up_button}}
-          <span id="sensitive-featured-breach" class="sensitive-breach-email-required">{{fluentFormat req.supportedLocales "sensitive-breach-email-required"}}</span>
+          <span id="sensitive-featured-breach" class="sensitive-breach-email-required">{{getString "sensitive-breach-email-required"}}</span>
         {{else}}
           {{> scan_form}}
         {{/if}}
 
       {{else}}
         <p class="landing-blurb">
-          {{{fluentFormat req.supportedLocales "landing-blurb"}}}
+          {{{getString "landing-blurb"}}}
         </p>
       {{/if}}
     </div>
@@ -27,7 +27,7 @@
       {{#if featuredBreach}}
         {{> featured_breach }}
       {{else}}
-        <span class="demi form-desc">{{fluentFormat req.supportedLocales "scan-label"}}</span>
+        <span class="demi form-desc">{{getString "scan-label"}}</span>
         {{> scan_form}}
       {{/if}}
     </div>

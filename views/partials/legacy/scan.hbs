@@ -3,19 +3,19 @@
     <section class="half scan-results-message">
 
       {{#ifCompare foundBreaches.length "===" 0}}
-        <h3 id="no-breaches" class="section-headline">{{fluentFormat req.supportedLocales "no-breaches-headline"}}</h3>
+        <h3 id="no-breaches" class="section-headline">{{getString "no-breaches-headline"}}</h3>
       {{else}}
-        <h3 id="found-breaches" class="section-headline">{{fluentFormat req.supportedLocales "found-breaches-headline"}}</h3>
+        <h3 id="found-breaches" class="section-headline">{{getString "found-breaches-headline"}}</h3>
       {{/ifCompare}}
 
       {{#if specificBreach}}
         {{#if userAccountCompromised}}
-          <p>{{{fluentFormat req.supportedLocales "featured-breach-results" featuredBreach=specificBreach.Title breachCount=(breachMath foundBreaches.length "-" 1)}}}</p>
+          <p>{{{getString "featured-breach-results" featuredBreach=specificBreach.Title breachCount=(breachMath foundBreaches.length "-" 1)}}}</p>
         {{else}}
-          <p>{{{fluentFormat req.supportedLocales "featured-breach-not-compromised" featuredBreach=specificBreach.Title breachCount=foundBreaches.length}}}</p>
+          <p>{{{getString "featured-breach-not-compromised" featuredBreach=specificBreach.Title breachCount=foundBreaches.length}}}</p>
         {{/if}}
       {{else}}
-        <p>{{{fluentFormat req.supportedLocales "scan-results" breachCount=foundBreaches.length}}}</p>
+        <p>{{{getString "scan-results" breachCount=foundBreaches.length}}}</p>
       {{/if}}
     </section>
 

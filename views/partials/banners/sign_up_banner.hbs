@@ -9,11 +9,11 @@
         </div>
         <div class="{{#if featuredBreach.IsSensitive }} three-fourths {{else}} half {{/if}}">
           {{#if featuredBreach.IsSensitive}}
-            <h2 class="medium secondary-title">{{fluentFormat req.supportedLocales "get-your-report"}}</h2>
+            <h2 class="medium secondary-title">{{getString "get-your-report"}}</h2>
           {{else}}
-            <h2 class="medium secondary-title">{{fluentFormat req.supportedLocales "sign-up-for-fxa-alerts"}}</h2>
+            <h2 class="medium secondary-title">{{getString "sign-up-for-fxa-alerts"}}</h2>
           {{/if}}
-          <p class="demi">{{{fluentFormat req.supportedLocales "signup-banner-blurb"}}}</p>
+          <p class="demi">{{{getString "signup-banner-blurb"}}}</p>
         </div>
         {{#unless featuredBreach.IsSensitive}}
           <div class="fourth">

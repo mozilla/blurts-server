@@ -3,7 +3,7 @@
     <li class="show-email-options">
       <a target="_blank" {{> analytics/share_by_email eventLabel=emailLinks.default-email.client}} rel="noopener noreferrer" href="{{ emailLinks.default-email.href }}">
         <span class="sharing-option email">
-          {{{fluentFormat req.supportedLocales "share-email"}}}
+          {{{getString "share-email"}}}
         </span>
       </a>
       <div class="email-options">
@@ -17,14 +17,14 @@
     <li>
       <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ SERVER_URL }}" target="_blank" rel="noopener noreferrer" {{> analytics/social_event eventLabel="Facebook"}}>
         <span class="sharing-option facebook">
-          {{{fluentFormat req.supportedLocales "share"}}}
+          {{{getString "share"}}}
         </span>
       </a>
     </li>
     <li>
       <a class="twitter" href="https://twitter.com/intent/tweet?url={{ SERVER_URL }}" target="_blank" rel="noopener noreferrer" {{> analytics/social_event eventLabel="Twitter"}}>
         <span class="sharing-option twitter">
-          {{{fluentFormat req.supportedLocales "tweet"}}}
+          {{{getString "tweet"}}}
         </span>
       </a>
     </li>

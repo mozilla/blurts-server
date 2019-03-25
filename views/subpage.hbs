@@ -3,11 +3,11 @@
 <section id="subpage" class="subpage" data-analytics-id="{{ analyticsID }}">
   <section class="section-wrapper">
     {{#ifCompare hash "&&" FXA_ENABLED}}
-        <h2 class="section-headline whole" >{{fluentFormat req.supportedLocales "fxa-unsub-headline"}}</h2>
+        <h2 class="section-headline whole" >{{getString "fxa-unsub-headline"}}</h2>
         <p class="sub-head whole">
-          {{fluentFormat req.supportedLocales "fxa-unsub-blurb"}}
+          {{getString "fxa-unsub-blurb"}}
           <a class="manage-fxa" href="{{getFxaUrl}}" target="_blank" rel="noopener">
-            {{fluentFormat req.supportedLocales "manage-fxa"}}
+            {{getString "manage-fxa"}}
           </a>
         </p>
     {{else}}

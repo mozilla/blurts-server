@@ -8,7 +8,7 @@
     </div> 
   {{else}}
     <button id="login-btn" class="login-btn open-oauth transparent-button" data-event-category="Sign In Button" {{>analytics/fxa id="fx-monitor-sign-in-button"}}>
-      {{fluentFormat req.supportedLocales "sign-in"}}
+      {{getString "sign-in"}}
     </button>
   {{/if}}
 </nav>

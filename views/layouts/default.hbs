@@ -9,15 +9,15 @@
     {{/if}}
     <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="description" content="{{fluentFormat req.supportedLocales "og-site-description"}}" />
+    <meta name="description" content="{{getString "og-site-description"}}" />
     <meta name="theme-color" content="#002275" />
-    <meta property="og:title" content="{{fluentFormat req.supportedLocales "share-facebook-headline"}}" />
-    <meta property="og:description" content="{{fluentFormat req.supportedLocales "share-facebook-blurb"}}" />
+    <meta property="og:title" content="{{getString "share-facebook-headline"}}" />
+    <meta property="og:description" content="{{getString "share-facebook-blurb"}}" />
     <meta property="og:url" content="{{ SERVER_URL }}" />
     <meta property="og:image" content="{{ SERVER_URL }}/img/firefox-monitor.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Firefox Monitor" />
-    <meta name="twitter:description" content="{{fluentFormat req.supportedLocales "share-twitter"}}" />
+    <meta name="twitter:description" content="{{getString "share-twitter"}}" />
     <title>{{ title }}</title>
     <script type="text/javascript" src="/dist/app.min.js" defer></script>
     {{#if ENABLE_PONTOON_JS}}

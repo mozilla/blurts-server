@@ -5,7 +5,7 @@
         {{#if featuredBreach }}
           {{{fluentNestedBold req.supportedLocales "fb-landing-headline" breachName=featuredBreach.Title}}}
         {{else}}
-          {{fluentFormat req.supportedLocales "landing-headline"}}
+          {{getString "landing-headline"}}
         {{/if}}
       </h2>
       {{#if featuredBreach }}
@@ -13,14 +13,14 @@
           {{#if req.session.user}}
             {{> fxa_enabled/see_full_report_button}}
           {{else}}
-            <button class="button sign-up-button" data-event-category="Sign Up To Check Button" {{>analytics/fxa id="fx-monitor-sign-in-to-check-button"}}>{{fluentFormat req.supportedLocales "sign-up-to-check"}}</button>
+            <button class="button sign-up-button" data-event-category="Sign Up To Check Button" {{>analytics/fxa id="fx-monitor-sign-in-to-check-button"}}>{{getString "sign-up-to-check"}}</button>
           {{/if}}
         {{else}}
           {{> scan_form}}
         {{/if}}
       {{else}}
         <p class="landing-blurb">
-          {{fluentFormat req.supportedLocales "fxa-landing-blurb"}}
+          {{getString "fxa-landing-blurb"}}
         </p>
       {{/if}}
     </div>

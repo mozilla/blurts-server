@@ -9,7 +9,8 @@ const mozlog = require("./../log");
 const log = mozlog("template-helpers/hbs-helpers");
 
 
-function fluentFormat (supportedLocales, id, args) {
+function getString (id, args) {
+  const supportedLocales = args.data.root.req.supportedLocales;
   return LocaleUtils.fluentFormat(supportedLocales, id, args.hash);
 }
 
@@ -150,7 +151,7 @@ function breachMath(lValue, operator = null, rValue = null) {
 
 
 module.exports = {
-  fluentFormat,
+  getString,
   fluentFxa,
   getStringID,
   fluentNestedBold,

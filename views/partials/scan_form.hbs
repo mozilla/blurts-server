@@ -2,8 +2,8 @@
   <input type="hidden" name="_csrf" value="{{csrfToken}}">
   <input type="hidden" name="pageToken" value="{{pageToken}}">
   <div class="input-group">
-    <input id="scan-email" class="input-group-field email-to-hash" type="email" name="email" placeholder="{{fluentFormat req.supportedLocales "scan-placeholder"}}" aria-label="{{fluentFormat req.supportedLocales "scan-placeholder"}}" tabindex="0" autocomplete="off" />
-    <span id="invalid-email-message" class="error-message">{{fluentFormat req.supportedLocales "scan-error"}}</span>
+    <input id="scan-email" class="input-group-field email-to-hash" type="email" name="email" placeholder="{{getString "scan-placeholder"}}" aria-label="{{getString "scan-placeholder"}}" tabindex="0" autocomplete="off" />
+    <span id="invalid-email-message" class="error-message">{{getString "scan-error"}}</span>
   </div>
   <input type="hidden" name="emailHash" />
   {{#if scanFeaturedBreach}}
@@ -15,5 +15,5 @@
   </div>
 </form>
 {{#unless FXA_ENABLED}}
-  <span class="privacy-policy">{{fluentFormat req.supportedLocales "scan-privacy"}}</span>
+  <span class="privacy-policy">{{getString "scan-privacy"}}</span>
 {{/unless}}
