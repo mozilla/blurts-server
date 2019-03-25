@@ -50,7 +50,7 @@ pwt-section-headline = Stärkere Passwörter = besserer Schutz
 pwt-section-subhead = Ihre persönlichen Daten sind nur so sicher wie Ihre Passwörter.
 pwt-section-blurb =
     Ihre Passwörter schützen mehr als nur Ihre Konten. Sie schützen alle Ihre persönlichen Daten, die sich darin befinden.
-    Und Hacker verlassen sich auf schlechte Angewohnheiten, wie die Nutzung des selben Passworts auf allen Seiten oder häufigen Passwörtern (wie 12345),
+    Und Hacker verlassen sich auf schlechte Angewohnheiten, wie die Nutzung desselben Passworts auf allen Seiten oder häufig verwendeten Passwörtern (wie 12345),
     was bedeutet, dass sie nicht nur eines, sondern mehrere Konten auf einmal hacken können. Sie können Sie Ihre Konten besser schützen.
 pwt-headline-1 = Verwenden Sie für jedes Konto ein anderes Passwort
 pwt-summary-1 =
@@ -86,7 +86,7 @@ sensitive-breach-email-required = Leck enthält sensible Daten. E-Mail-Verifikat
 scan-error = Muss eine gültige E-Mail-Adresse sein.
 signup-banner-headline = { -product-name-nowrap } erkennt Bedrohungen für Ihre Online-Konten.
 signup-banner-blurb =
-    Ihr detaillierter Bericht zu { -product-name-nowrap } zeigt an, ob Informationen aus Ihren Online-Konten durchgesickert oder gestohlen wurden.
+    Ihr detaillierter Bericht zu { -product-name-nowrap } zeigt an, ob Informationen aus Ihren Online-Konten durchgesickert sind oder gestohlen wurden.
     Wir warnen Sie auch, wenn Ihre Konten bei neuen Website-Verstößen angezeigt werden.
 download-firefox-bar-blurb = { -product-name-nowrap } wird präsentiert vom <span class="nowrap">brandneuen { -brand-name }</span>.
 download-firefox-bar-link = Laden Sie jetzt { -brand-name } herunter
@@ -143,7 +143,7 @@ what-to-do-blurb-3 =
     Bei den meisten Verstößen werden nur E-Mails und Passwörter erbeutet, bei einigen jedoch auch vertrauliche Bankdaten.
     Wenn Ihre Bankkonto- oder Kreditkartennummern von einem Datenleck betroffen sind, warnen Sie Ihre Bank vor möglichen Betrugsfällen und überwachen Sie die Kontoauszüge auf Transaktionen, die Sie nicht kennen.
 what-to-do-subhead-4 = Erfahren Sie, wie man gute Passwörter erstellt und sie sicher aufbewahrt.
-what-to-do-blurb-4 = Passwort-Manager wie 1Password, LastPass, Dashlane und Bitwarden generieren starke, eindeutige Passwörter, speichern Sie Passwörter sicher und tragen sie für Sie auf Websites ein.
+what-to-do-blurb-4 = Passwort-Manager wie 1Password, LastPass, Dashlane und Bitwarden generieren starke, eindeutige Passwörter, speichern die Passwörter sicher und tragen sie für Sie auf Websites ein.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Datum des Lecks:
 # compromised accounts = the total number of user accounts exposed in data breach
