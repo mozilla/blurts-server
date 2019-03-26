@@ -1,0 +1,104 @@
+
+
+.breach-listing {
+  border: 1px solid #eee;
+  overflow: hidden;
+  border-radius: 4px;
+  flex: 1 1 100%;
+}
+
+.found-breaches .listing-wrapper {
+  display: inline-flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.found-breaches .listing-wrapper .breach-listing {
+  max-width: calc(50% - 1rem);
+  flex: 1 1 calc(50% - 1rem);
+}
+
+.breach-listing .breach-logo-title {
+  width: 100%;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.breach-info-wrap {
+  padding: 1rem 2rem 2rem 2rem;
+}
+
+.breach-listing .logo-wrapper {
+  display: inline-block;
+}
+
+.breach-listing .logo-wrapper {
+  min-width: 1rem;
+  max-width: 1rem;
+  width: 1rem;
+  height: 1rem;
+  margin-right: .25rem;
+} 
+
+img.breach-logo {
+  max-height: 1rem;
+  max-width: 1rem;
+}
+
+h4.breach-title.key {
+  font-size: .9rem;
+}
+
+.breach-listing a,
+.breach-info {
+  display: block;
+  font-size: .9rem;
+}
+
+.breach-info {
+  line-height: 1.65rem;
+}
+
+h4.breach-title,
+.breach-info .key {
+  font-weight: 600;
+}
+
+.breach-info .key {
+  margin-right: .25rem;
+}
+
+.breach-logo-title,
+.breach-info {
+  margin-bottom: .5rem;
+}
+
+.breach-listing a {
+  margin-top: 1rem;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 800px) {
+
+  .found-breaches .row {
+    flex-wrap: wrap;
+  }
+
+  .found-breaches .breach-listing {
+    margin-bottom: var(--padding);
+    flex: 1 1 100%;
+    max-width: 100%;
+    margin-bottom: var(--padding);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .breach-info-wrap {
+    padding: 1rem 1rem 2rem 1rem;
+  }
+
+  .breach-logo-title.logo-title-wrapper {
+    padding: 1rem;
+  }
+}

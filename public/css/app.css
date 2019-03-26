@@ -17,19 +17,17 @@ body {
   padding: 0;
   background-color: rgba(249, 249, 250, 1);
   color: var(--color);
+  display: flex;
+  flex-direction: column;
   font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 0.9rem;
   line-height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
-  min-height: 85vh;
+  min-height: 100vh;
   height: 100%;
   width: 100vw;
   -webkit-overflow-scrolling: touch;
-}
-
-.body-wrapper {
-  min-height: 85vh;
 }
 
 a {
@@ -126,8 +124,15 @@ ul li {
 }
 
 .col-6 {
+  padding: var(--padding);
   flex: 1 1 50%;
   max-width: 500px;
+}
+
+.col-8 {
+  padding: var(--padding);
+  flex: 1 1 66.66666667%;
+  max-width: 66.66666667%;
 }
 
 .col-12 {
@@ -138,11 +143,19 @@ ul li {
 
 /* SPRITES */
 div.sprite {
-  min-width: 40px;
-  height: 40px;
   background-repeat: no-repeat !important;
   background-size: cover !important;
-  transform: scale(calc(100% + 1vw));
+}
+
+.title-wrapper {
+  display: inline-block;
+}
+
+.logo-wrapper {
+  width: 1.5rem;
+  min-height: 10px;
+  margin-right: .5rem;
+  display: inline-flex;
 }
 
 @media screen and (max-width: 1000px) {
@@ -153,7 +166,7 @@ div.sprite {
 
 @media screen and (max-width: 800px) {
   body {
-    --maxWidth: 550px;
+    --maxWidth: 700px;
   }
 
   .hide-mobile {
@@ -164,6 +177,10 @@ div.sprite {
   .show-mobile {
     display: flex;
     visibility: visible;
+  }
+
+  .col-8 {
+    max-width: 100%;
   }
 }
 

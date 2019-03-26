@@ -1,15 +1,17 @@
-<div class="half listings">
-  <div class="account wrap-row">
-    <div class="image-wrap">
+
+  <div class="breach-logo-title logo-title-wrapper">
+    <div class="logo-wrapper">
       <img alt="" class="breach-logo" src="/img/logos/{{ LogoPath }}" />
     </div>
-    <div class="breach-info-wrap">
-      <h4 class="medium">{{ Title }}</h4>
-      <span class="breach-info"><span class="medium">{{getString "breach-date"}}</span>{{prettyDate BreachDate }}</span>
-      <span class="breach-info"><span class="medium">{{getString "compromised-accounts"}}</span>{{localeString PwnCount }}</span>
-      {{#if DataClasses }}
-        <span class="breach-info"><span class="medium">{{getString "compromised-data"}}</span>{{localizedBreachDataClasses DataClasses }}</span>
-      {{/if}}
+    <div class="title-wrapper">
+      <h4 class="breach-title key">{{ Title }}</h4>
     </div>
   </div>
-</div>
+  <div class="breach-info-wrap">
+    <span class="breach-info"><span class="key">{{getString "breach-added"}}</span>{{prettyDate AddedDate }}</span>
+    <span class="breach-info"><span class="key">{{getString "compromised-accounts"}}</span>{{localeString PwnCount}}</span>
+    {{#if DataClasses }}
+      <span class="breach-info"><span class="key">{{getString "compromised-data"}}</span>{{localizedBreachDataClasses DataClasses }}</span>
+    {{/if}}
+     <a href="/?breach={{Name}}" class="">{{getString "more-about-this-breach"}} &#8594;</a>
+  </div>

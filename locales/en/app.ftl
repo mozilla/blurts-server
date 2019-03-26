@@ -472,3 +472,9 @@ home= Home
 breaches= Breaches
 security-tips= Security Tips
 fxa-account= {-brand-fxa}
+
+open-fxa-menu=Open {-brand-fxa} navigation
+
+latest-breach= Latest breach added to {-product-name}
+breach-added= Added
+more-about-this-breach= More about this breach

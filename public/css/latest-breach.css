@@ -1,0 +1,20 @@
+
+.latest-breach .col-8 {
+  flex-direction: column;
+  margin: auto;
+}
+
+.latest-breach.container {
+  background-color: rgba(255, 255, 255, 1);
+  border-bottom: 1px solid #eee;
+}
+
+.latest-breach .desc {
+  text-align: center;
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.latest-breach .content-row {
+  flex-direction: column;
+}
