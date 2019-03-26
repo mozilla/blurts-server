@@ -1,0 +1,172 @@
+header {
+  border-bottom: 1px solid rgba(238, 238, 238, 1);
+}
+
+header button {
+  height: 32px;
+  border: 1px solid rgba(223, 0, 255, 0.24);
+}
+
+header section {
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+header h1 {
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.5px;
+  display: inline-flex;
+  transition: all 0.3s ease;
+}
+
+/* Fx-Monitor logo */
+header .sprite {
+  background: url("/img/gradient-sprites.png") -209px 0;
+  min-width: 30px;
+  height: 30px;
+}
+
+header h1 span {
+  font-weight: 300;
+  margin: auto 3px auto 5px;
+}
+
+/* navigation */
+header nav {
+  flex: 1;
+  justify-content: flex-end;
+}
+
+header a.nav-link {
+  padding-right: calc(1rem + 1vw);
+  padding-left: calc(1rem + 1vw);
+}
+
+a.nav-link {
+  text-align: center;
+  justify-content: center;
+}
+
+/* sign-in button */
+button.sign-in {
+  background-color: var(--color);
+  border: 1px solid var(--color);
+  border-radius: 2px;
+  color: rgba(255, 255, 255, 1);
+  margin-left: 1rem;
+  min-height: 2rem;
+  padding: 0 0.5rem;
+}
+
+button.sign-in:hover {
+  background-color: rgba(255, 255, 255, 0);
+  color: var(--color);
+}
+
+/* mobile-menu */
+nav.mobile-menu {
+  padding: 0 1rem;
+}
+
+nav.mobile-menu a {
+  background-color: rgba(255, 255, 255, 0);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  width: 100%;
+}
+
+nav.mobile-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* signed-in user avatar */
+.avatar-wrapper {
+  border: 1px solid rgba(255, 255, 255, 0);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1.25px rgba(255, 255, 255, 1);
+  display: inline-flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.fxa-menu-wrapper {
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.avatar-wrapper,
+img.avatar {
+  height: 30px;
+  width: 30px;
+}
+
+/* signed-in user menu */
+.fxa-menu {
+  padding-top: 3rem;
+  height: 10rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.fxa-menu-wrapper {
+  position: relative;
+}
+
+.fxa-menu-links {
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 3px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+  display: none;
+  flex-direction: column;
+  min-width: calc(10rem + 1vw);
+  opacity: 0;
+  padding: 1rem 1.5rem;
+  visibility: hidden;
+}
+
+.fxa-menu-wrapper:hover .fxa-menu-links,
+.fxa-menu:hover .fxa-menu-links,
+.fxa-menu.open .fxa-menu-links {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+}
+
+.fxa-menu-links a {
+  padding: 0.5rem 0;
+}
+
+@media screen and (max-width: 800px) {
+  header h1 {
+    font-size: 1.4rem;
+  }
+
+  nav.desktop-menu .nav-link {
+    display: none;
+  }
+
+  .mobile-nav {
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: var(--color);
+  }
+
+  nav.mobile-menu a {
+    color: rgba(255, 255, 255, 1);
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  nav.mobile-menu a:first-of-type {
+    border-right: 0;
+  }
+
+  nav.mobile-menu a:last-of-type {
+    border-left: 0;
+  }
+}

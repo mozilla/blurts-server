@@ -1,10 +1,22 @@
-{{#if FXA_ENABLED}}
-  <header class ="section-wrapper">
-    <div class="whole">
-      {{> firefox_monitor_logo}}
-      {{> fxa_enabled/menu/fxa_navigation}}
-    </div>
-  </header>
-{{else}}
-  {{> legacy/legacy_header}}
-{{/if}}
+    <header>
+      <section class="content-box">
+        <a class="flx-cntr" href="/" {{>analytics/internal_link eventLabel="Fx-Monitor-Logo"}}>
+          <div class="sprite"><!--Firefox Monitor logo--></div>
+          <h1 class="fx-monitor"><span>Firefox</span> Monitor</h1>
+        </a>
+        <nav class="desktop-menu flx-cntr">
+          {{> nav-links }}
+          {{#if req.session.user}}
+            {{> fxa-menu }}
+          {{else}}
+            <button class="open-oauth sign-in">Sign In</button>
+          {{/if}}
+        </nav>
+      </section>
+      <!--mobile navigation-->
+      <section class="mobile-nav show-mobile">
+        <nav class="mobile-menu content-row flx-cntr">
+          {{> nav-links }}
+        </nav>
+      </section>
+    </header>

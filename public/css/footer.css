@@ -1,0 +1,27 @@
+footer {
+  border-top: 1px solid #eee;
+}
+
+svg.Mozilla-logo {
+  min-width: 7rem;
+  max-width: 7rem;
+}
+
+@media screen and (max-width: 800px) {
+  footer ul.content-box {
+    flex-direction: column;
+  }
+
+  footer ul.content-box li,
+  footer ul.content-box a {
+    width: 100%;
+  }
+
+  footer a {
+    padding: calc(var(--padding) / 2) 0;
+  }
+
+  footer span.arrow-icon.show-mobile {
+    display: inline;
+  }
+}

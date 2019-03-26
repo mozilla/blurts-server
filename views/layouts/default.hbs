@@ -26,18 +26,11 @@
   <body {{>analytics/default_dataset}}>
     {{#if newUser}}
       {{> fxa_enabled/fxa_new_user_bar}}
-    {{else}}
-      {{> banners/download_firefox_bar}}
     {{/if}}
-     <div id="content-wrap" class="content-wrap">
-      {{#if FXA_ENABLED}}
-        {{> fxa_enabled/menu/fxa_mobile_menu}}
-      {{else}}
-        {{> subscribe_modal/subscribe_modal_wrapper}}
-      {{/if}}
       {{> header }}
-      {{{ body }}}
-    </div>
+      <div id="body-wrapper" class="body-wrapper">
+        {{{ body }}}
+      </div>
     {{> footer}}
   </body>
 </html>

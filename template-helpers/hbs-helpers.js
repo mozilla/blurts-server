@@ -14,6 +14,14 @@ function getString (id, args) {
   return LocaleUtils.fluentFormat(supportedLocales, id, args.hash);
 }
 
+const getStrings = (stringArr, locales) => {
+  stringArr.forEach(string => {
+    const stringId = string.stringId;
+    string.stringId =LocaleUtils.fluentFormat(locales, stringId);
+  });
+  return stringArr;
+};
+
 
 function fluentFxa (id, args) {
   const supportedLocales = args.data.root.req.supportedLocales;
@@ -158,6 +166,7 @@ function breachMath(lValue, operator = null, rValue = null) {
 
 module.exports = {
   getString,
+  getStrings,
   fluentFxa,
   getStringID,
   fluentNestedBold,

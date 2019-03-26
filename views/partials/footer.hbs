@@ -1,48 +1,16 @@
-    {{#if FXA_ENABLED}}
-      <footer id="footer" class="footer">
-        <div class="row-wrapper">
-          <div class="wrap-row footer-links">
-            <a {{> analytics/link_event eventLabel="Mozilla Logo"}} class="fourth footer-logo-wrapper" href="https://www.mozilla.org/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener" aria-label="Mozilla">{{> sprite symID="Mozilla" }}</a>
-            <ul class="fourth">
-              <li>{{getString "layout-social"}}</li>
-              <li>
-                <a {{> analytics/social_event eventLabel="Facebook"}} class="facebook social-link" href="https://www.facebook.com/sharer/sharer.php?u={{ SERVER_URL }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                  {{> sprite symID="fxa-facebook"}}
-                  <span>{{getString "share"}}</span>
-                </a>
-              </li>
-              <li>
-                <a {{> analytics/social_event eventLabel="Twitter"}} class="twitter social-link" href="https://twitter.com/intent/tweet?url={{ SERVER_URL }}" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                  {{> sprite symID="fxa-twitter"}}
-                  <span>{{getString "tweet"}}</span>
-                </a>
-              </li>
-            </ul>
-            <ul class="fourth">
-              <li>{{getString "layout-support" }}</li>
-              <li><a {{> analytics/link_event eventLabel="Frequently Asked Questions"}} href="https://support.mozilla.org/kb/firefox-monitor-faq" target="_blank" rel="noopener">{{getString "frequently-asked-questions"}}</a></li>
-              <li><a {{> analytics/link_event eventLabel="Mozilla Security Blog"}} href="https://blog.mozilla.org/security/2018/11/14/when-does-firefox-alert-for-breached-sites" target="_blank" rel="noopener">{{getString "mozilla-security-blog"}}</a></li>
-              <li><a {{> analytics/link_event eventLabel="Give Feedback"}} href="https://qsurvey.mozilla.com/s3/Firefox-Monitor-Feedback" target="_blank" rel="noopener">{{getString "give-feedback"}}</a></li>
-              <li><a {{> analytics/link_event eventLabel="Terms & Privacy"}} href="https://www.mozilla.org/privacy/firefox-monitor/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">{{getString "terms-and-privacy"}}</a></li>
-              <li><a {{> analytics/link_event eventLabel="GitHub"}} href="https://github.com/mozilla/blurts-server/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">{{> sprite symID="GitHub"}}</a></li>
-            </ul>
-            <ul class="fourth">
-              <li>{{getString "layout-Firefox"}}</li>
-              <li><a {{> analytics/download_event eventLabel="Quantum"}} href="https://www.mozilla.org/firefox/new/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">{{getString "download-firefox-banner-button"}}</a></li>
-              <li><a {{> analytics/link_event eventLabel="Features"}} href="https://www.mozilla.org/firefox/features/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">{{getString "features"}}</a></li>
-              <li><a {{> analytics/download_event eventLabel="Beta, Nightly, Developer Edition"}} href="https://www.mozilla.org/firefox/channel/desktop/{{> analytics/utm_site_footer }}" target="_blank" rel="noopener">{{getString "beta-nightly-developer-edition"}}</a></li>
-            </ul>
-          </div>
-          <div class="row legal">
-            <p class="half copyright-info">
-              {{getString "copyright" year="2019"}}
-              <a {{> analytics/link_event eventLabel="Copyright"}} href="https://www.mozilla.org/foundation/licensing/website-content/" target="_blank" rel="noopener">
-                {{getString "content-available"}}
-              </a>
-            </p>
-          </div>
-        </div>
-      </footer>
-    {{else}}
-      {{> legacy/legacy_footer }}
-    {{/if}}
+  <footer>
+    <ul class="content-box">
+      <li>
+        <a href="https://www.mozilla.org" {{>analytics/link_event eventLabel="Mozilla.org"}} {{>open-new-window}} aria-label="Open Mozilla.org in new window">
+          {{> svg/Mozilla }}
+        </a>
+      </li>
+      {{#each (getFooterLinks)}}
+      <li>
+        <a href="{{this.href}}" {{>analytics/link_event eventLabel=this.title}} {{#if openNewWindow}}{{> open-new-window }}{{/if}}>
+          {{this.stringId}} <span aria-hidden="true" class="arrow-icon show-mobile">&#8594;</span>
+        </a>
+      </li>
+      {{/each}}
+    </ul>
+  </footer>

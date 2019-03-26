@@ -19,7 +19,6 @@ layout-support = Support
 about-firefox-alerts = About Firefox Alerts
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Give Feedback
-terms-and-privacy = Terms and Privacy
 
 error-scan-page-token = You tried to scan too many email addresses in a short time period. For security reasons, we’ve temporarily blocked you from new searches. You’ll be able to try again later.
 error-could-not-add-email = Could not add email address to database.
@@ -459,3 +458,17 @@ get-your-report-and-sign-up= Get your report and sign up for alerts.
 
 # Link title
 frequently-asked-questions=Frequently Asked Questions
+
+
+faq= Frequently Asked Questions
+about-firefox-monitor= About {-product-name}
+mozilla-dot-org= Mozilla.org
+terms-and-privacy = Terms & Privacy
+
+preferences= Preferences
+
+
+home= Home
+breaches= Breaches
+security-tips= Security Tips
+fxa-account= {-brand-fxa}

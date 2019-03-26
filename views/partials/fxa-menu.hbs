@@ -1,0 +1,12 @@
+<div class="fxa-menu-wrapper">
+  <div id="avatar-wrapper" class="avatar-wrapper {{ addClass }}" tabindex="0" aria-label="{{getString "open-fxa-menu"}}">
+    <img alt="{{ req.session.user.email }}" class="avatar" src="{{ req.session.user.avatar }}"/>
+  </div>
+  <div id="fxa-menu" class="fxa-menu">
+    <div class="fxa-menu-links">
+      {{#each (fxaMenuLinks)}}
+        <a class="fxa-menu-link" href="{{ this.href }}">{{ this.stringId }}</a>
+      {{/each}}
+    </div>
+  </div>
+</div>
