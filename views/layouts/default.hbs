@@ -2,11 +2,7 @@
 <html lang="{{ locale }}">
   <head>
     <meta charset="utf-8" />
-    {{#if FXA_ENABLED}}
-      <link rel="stylesheet" href="/dist/fxa.min.css">
-    {{else}}
-      <link rel="stylesheet" href="/dist/app.min.css">
-    {{/if}}
+    {{>styles}}
     <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content="{{getString "og-site-description"}}" />

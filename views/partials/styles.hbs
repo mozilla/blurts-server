@@ -1,0 +1,5 @@
+{{#ifCompare UTM_SOURCE "===" "localhost"}}
+  <link rel="stylesheet" href="/css/app.css">
+{{else}}
+  <link rel="stylesheet" href="/dist/app.min.css">
+{{/ifCompare}}
