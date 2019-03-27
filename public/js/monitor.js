@@ -1,8 +1,8 @@
 "use strict";
 /* global ga */
-/* global libpolycrypt */
 /* global sendPing */
 /* global getFxaUtms */
+/* global hashEmailAndSend */
 
 
 if (typeof TextEncoder === "undefined") {
@@ -134,9 +134,8 @@ function doOauth(el) {
   ["flowId", "flowBeginTime", "entrypoint"].forEach(key => {
     url.searchParams.append(key, encodeURIComponent(el.dataset[key]));
   });
-  if (localStorage.getItem("scanned")) {
-    const lastScannedEmail = localStorage.getItem("scanned");
-    localStorage.removeItem("scanned");
+  if (sessionStorage.length > 0) {
+    const lastScannedEmail = sessionStorage.getItem(`scanned_${sessionStorage.length}`);
     url.searchParams.append("email", lastScannedEmail);
   }
   window.location.assign(url);
@@ -239,31 +238,31 @@ function checkBoxStates(checkBoxEvent) {
   checkBox.checked = !checkBox.checked;
 }
 
-async function sha1(message) {
-  message = message.toLowerCase();
-  const msgBuffer = new TextEncoder("utf-8").encode(message);
-  let hashBuffer;
-  if (/edge/i.test(navigator.userAgent)) {
-    hashBuffer = libpolycrypt.sha1(msgBuffer);
-  } else {
-    hashBuffer = await crypto.subtle.digest("SHA-1", msgBuffer);
-  }
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  const hashHex = hashArray.map(b => ("00" + b.toString(16)).slice(-2)).join("");
-  return hashHex.toUpperCase();
-}
+// async function sha1(message) {
+//   message = message.toLowerCase();
+//   const msgBuffer = new TextEncoder("utf-8").encode(message);
+//   let hashBuffer;
+//   if (/edge/i.test(navigator.userAgent)) {
+//     hashBuffer = libpolycrypt.sha1(msgBuffer);
+//   } else {
+//     hashBuffer = await crypto.subtle.digest("SHA-1", msgBuffer);
+//   }
+//   const hashArray = Array.from(new Uint8Array(hashBuffer));
+//   const hashHex = hashArray.map(b => ("00" + b.toString(16)).slice(-2)).join("");
+//   return hashHex.toUpperCase();
+// }
 
-async function hashEmailAndSend(emailFormSubmitEvent) {
-  const emailForm = emailFormSubmitEvent.target;
-  ga_sendLegacyPing("Scan", false);
-  emailForm.classList.add("loading-data");
-  const emailInput = document.getElementById("scan-email");
-  emailForm.querySelector("input[name=emailHash]").value = await sha1(emailInput.value);
-  localStorage.setItem("scanned", emailInput.value);
-  emailInput.value = "";
-  sendPing(emailForm, "Success");
-  emailForm.submit();
-}
+// async function hashEmailAndSend(emailFormSubmitEvent) {
+//   const emailForm = emailFormSubmitEvent.target;
+//   ga_sendLegacyPing("Scan", false);
+//   emailForm.classList.add("loading-data");
+//   const emailInput = document.getElementById("scan-email");
+//   emailForm.querySelector("input[name=emailHash]").value = await sha1(emailInput.value);
+//   localStorage.setItem("scanned", emailInput.value);
+//   emailInput.value = "";
+//   sendPing(emailForm, "Success");
+//   emailForm.submit();
+// }
 
 const resendSubscribeData = function() {
   ga_sendLegacyPing("Resend", false);
@@ -412,7 +411,7 @@ function handleFormSubmits(formEvent) {
     thisForm.classList.add("invalid");
     return;
   }
-  if (thisForm.classList.contains("email-scan")) {
+  if (thisForm.id === ("scan-user-email")) {
     hashEmailAndSend(formEvent);
     return;
   }
