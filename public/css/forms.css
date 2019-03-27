@@ -1,0 +1,131 @@
+/* FORMS */
+
+button.internal-link,
+input.transparent-button,
+input[type="submit"],
+input::placeholder {
+  font-size: 15px;
+}
+
+/* prevents zoom on ios devices */
+input[type="email"] {
+  font-size: 17px;
+}
+
+input[type="submit"],
+input[type="email"] {
+  height: 4rem;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-family: inherit;
+  border-radius: 3px;
+}
+
+input[type="email"] {
+  text-indent: .5rem;
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(0, 0, 0, 0.13);
+  margin-bottom: var(--margin);
+}
+
+input[type="submit"] {
+  background-color: rgb(36, 34, 45);
+  color: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(0, 0, 0, 1);
+}
+
+input:focus,
+button:focus,
+.button:focus,
+.radio-button-group:focus {
+  border: 1px solid var(--blue50);
+  border: 1px solid rgb(40, 97, 205);
+  box-shadow: 0 0 0 1px rgb(63, 97, 217), 0 0 0 4px rgba(63, 97, 217, .3);
+  outline: none;
+}
+
+.input-group {
+  position: relative;
+}
+
+.form-group .error-message {
+  display: block;
+  background: rgba(215, 0, 34, 1);
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 1);
+  padding: 5px 12px;
+  position: absolute;
+  bottom: -29px;
+  left: -1px;
+  z-index: 1;
+  font-size: 13px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.form-group .error-message::before {
+  opacity: 0;
+  background: rgba(215, 0, 34, 1);
+  top: -7px;
+  content: '.';
+  height: 16px;
+  position: absolute;
+  text-indent: -999px;
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  white-space: nowrap;
+  width: 16px;
+  z-index: -1;
+}
+
+/* INVALID FORM STYLING */
+
+.input-group-button {
+  position: relative;
+}
+
+.form-group.invalid .error-message,
+.form-group.invalid .error-message::before {
+  opacity: 1;
+}
+
+.form-group.invalid input[type="email"] {
+  border: 1px solid var(--red50);
+  box-shadow: 0 0 0 1px rgba(255, 0, 55, 0.514), 0 0 0 4px rgba(255, 0, 55, 0.3);
+}
+
+.loader {
+  z-index: 1;
+  position: absolute;
+  visibility: hidden;
+  margin: auto;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.form-group.loading-data .button,
+.form-group.loading-data input::placeholder,
+.form-group.loading-data input {
+  color: rgba(0, 0, 0, 0) !important;
+}
+
+.form-group.loading-data .loader {
+  display: block;
+  opacity: 0.58;
+  width: 25px;
+  height: auto;
+  visibility: visible;
+}
+
+.form-desc {
+  font-size: .8rem;
+  font-weight: 300;
+  color: rgba(36, 34, 45, 0.6);
+  max-width: 300px;
+  margin: var(--margin) auto 0 auto;
+}
