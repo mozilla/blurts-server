@@ -1,0 +1,10 @@
+.homepage-scan-form {
+  border: 1px solid #eee;
+  border-radius: 3px;
+}
+
+@media screen and (max-width: 800px) {
+  .monitor-homepage .row {
+    flex-direction: column;
+  }
+}

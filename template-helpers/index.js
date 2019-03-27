@@ -5,6 +5,7 @@ const breaches = require("./breaches");
 const footer = require("./footer");
 const header = require("./header");
 const legacyHelpers = require("./hbs-helpers");
+const monitorFeatures = require("./monitor-features");
 
 
 module.exports = {
@@ -14,5 +15,6 @@ module.exports = {
     footer,
     header,
     legacyHelpers,
+    monitorFeatures,
   ),
 };

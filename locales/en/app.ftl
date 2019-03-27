@@ -486,3 +486,11 @@ create-strong-passwords= How to Create Strong Passwords
 take-control= Take back control of your personal data.
 cant-stop-hackers= You can't stop hackers from hacking. But you can avoid bad habits that make their work easy.
 see-more-articles= See more articles
+
+monitor-your-online-accounts = Monitor your online accounts for threats
+stay-alert= Stay alert to new breaches
+if-your-info= If your information surfaces in a new data breach, we'll send you an alert.
+search-all-emails= Search all your email addresses for breaches and get alerts about new threats.
+keep-your-data-safe= Find out what you need to do to keep your data safe from cyber criminals.
+monitor-several-emails= Monitor several emails
+get-expert-advice= Get ongoing expert advice
