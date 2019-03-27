@@ -1,5 +1,6 @@
 footer {
   border-top: 1px solid #eee;
+  width:100%;
 }
 
 svg.Mozilla-logo {
@@ -23,5 +24,11 @@ svg.Mozilla-logo {
 
   footer span.arrow-icon.show-mobile {
     display: inline;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  footer {
+    padding: .75rem 0;
   }
 }

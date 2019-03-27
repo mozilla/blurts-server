@@ -18,7 +18,6 @@ header h1 {
   margin: 0;
   letter-spacing: -0.5px;
   display: inline-flex;
-  transition: all 0.3s ease;
 }
 
 /* Fx-Monitor logo */
@@ -40,7 +39,7 @@ header nav {
 }
 
 header a.nav-link {
-  padding-right: calc(1rem + 1vw);
+  padding-right: calc(1rem + 1vw); 
   padding-left: calc(1rem + 1vw);
 }
 
@@ -57,7 +56,7 @@ button.sign-in {
   color: rgba(255, 255, 255, 1);
   margin-left: 1rem;
   min-height: 2rem;
-  padding: 0 0.5rem;
+  padding: 0 1rem;
 }
 
 button.sign-in:hover {

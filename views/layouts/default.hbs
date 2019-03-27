@@ -24,13 +24,8 @@
     <link rel="icon" href="/img/favicons/favicon-256.png" sizes="256x256" />
   </head>
   <body {{>analytics/default_dataset}}>
-    {{#if newUser}}
-      {{> fxa_enabled/fxa_new_user_bar}}
-    {{/if}}
-      {{> header }}
-      <div id="body-wrapper" class="body-wrapper">
-        {{{ body }}}
-      </div>
+    {{> header }}
+      {{{ body }}}
     {{> footer}}
   </body>
 </html>
