@@ -2,17 +2,12 @@ header {
   border-bottom: 1px solid rgba(238, 238, 238, 1);
 }
 
-header button {
+button.sign-in {
   height: 32px;
   border: 1px solid rgba(223, 0, 255, 0.24);
 }
 
-header section {
-  justify-content: space-between;
-  flex-wrap: nowrap;
-}
-
-header h1 {
+h1.fx-monitor {
   font-size: 1.7rem;
   font-weight: 600;
   margin: 0;
@@ -21,24 +16,24 @@ header h1 {
 }
 
 /* Fx-Monitor logo */
-header .sprite {
+.sprite.fx-monitor-logo {
   background: url("/img/gradient-sprites.png") -209px 0;
   min-width: 30px;
   height: 30px;
 }
 
-header h1 span {
+h1.fx-monitor span {
   font-weight: 300;
   margin: auto 3px auto 5px;
 }
 
 /* navigation */
-header nav {
+nav {
   flex: 1;
   justify-content: flex-end;
 }
 
-header a.nav-link {
+a.nav-link {
   padding-right: calc(1rem + 1vw); 
   padding-left: calc(1rem + 1vw);
 }
@@ -108,6 +103,7 @@ img.avatar {
   position: absolute;
   top: 0;
   right: 0;
+  z-index: 2;
 }
 
 .fxa-menu-wrapper {
@@ -126,9 +122,19 @@ img.avatar {
   visibility: hidden;
 }
 
+.menu-open .close-menu {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+}
+
 .fxa-menu-wrapper:hover .fxa-menu-links,
 .fxa-menu:hover .fxa-menu-links,
-.fxa-menu.open .fxa-menu-links {
+.menu-open .fxa-menu-links,
+.fxa-menu-links:hover {
   display: flex;
   opacity: 1;
   visibility: visible;
@@ -148,8 +154,6 @@ img.avatar {
   }
 
   .mobile-nav {
-    padding-top: 0;
-    padding-bottom: 0;
     background-color: var(--color);
   }
 
@@ -161,7 +165,7 @@ img.avatar {
     padding-right: 0;
   }
 
-  nav.mobile-menu a:first-of-type {
+  nav.mobile-menu a.nav-link:first-of-type {
     border-right: 0;
   }
 
