@@ -478,3 +478,11 @@ open-fxa-menu=Open {-brand-fxa} navigation
 latest-breach= Latest breach added to {-product-name}
 breach-added= Added
 more-about-this-breach= More about this breach
+
+how-hackers-work= Understand How Hackers Work
+after-data-breach= What to Do After a Data Breach
+create-strong-passwords= How to Create Strong Passwords
+
+take-control= Take back control of your personal data.
+cant-stop-hackers= You can't stop hackers from hacking. But you can avoid bad habits that make their work easy.
+see-more-articles= See more articles

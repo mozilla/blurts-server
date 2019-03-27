@@ -1,0 +1,40 @@
+.articles {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.article-list > * {
+  margin-bottom: 1.5rem;
+}
+
+.article-list {
+  margin-top: 1.5rem;
+}
+
+.more-articles {
+  display: inline-flex;
+  justify-content: flex-start;
+  margin-left: 1.5rem;
+  margin-bottom: 0px;
+}
+
+.article-list .logo-wrapper {
+  background-color: rgba(36, 34, 45, 0);
+  border: 1px solid rgba(36, 34, 45, .2);
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.article-list a {
+  font-weight: 500;
+  padding-top: 1px;
+}
+
+.article-list .logo-wrapper {
+  height: 1rem;
+  width: 1rem;
+}
+
+.article-list .logo-title-wrapper:hover .logo-wrapper {
+  background-color: rgba(36, 34, 45, .1);
+  transition: all 0.2s ease;
+}
