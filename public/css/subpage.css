@@ -1,0 +1,8 @@
+.subpage {
+  margin: auto;
+}
+
+.subpage .content-box {
+  flex-direction: column;
+  justify-content: center;
+}

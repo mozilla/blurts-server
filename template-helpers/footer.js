@@ -13,12 +13,12 @@ const getFooterLinks = (args) => {
     {
       title: "Frequently Asked Questions",
       stringId: "faq",
-      href: "/faq",
+      href: "https://support.mozilla.org/kb/firefox-monitor-faq",
     },
     {
       title: "Terms & Privacy",
       stringId: "terms-and-privacy",
-      href: "/termsandprivacy",
+      href: "https://www.mozilla.org/privacy/firefox-monitor/?utm_campaign=fx_monitor_downloads&utm_content=site-footer-link&utm_medium=referral&utm_source=monitor.firefox.com",
     },
     {
       title: "Mozilla.org",

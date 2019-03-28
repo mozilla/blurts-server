@@ -1,7 +1,7 @@
 {{!< default }}
 
-<section id="subpage" class="subpage" data-analytics-id="{{ analyticsID }}">
-  <section class="section-wrapper">
+<section id="subpage" class="subpage container" data-analytics-id="{{ analyticsID }}">
+  <section class="content-box">
     {{#ifCompare hash "&&" FXA_ENABLED}}
         <h2 class="section-headline whole" >{{getString "fxa-unsub-headline"}}</h2>
         <p class="sub-head whole">
@@ -11,8 +11,8 @@
           </a>
         </p>
     {{else}}
-      <h2 class="section-headline whole" >{{{ headline }}}</h2>
-      <p class="sub-head whole">{{{ subhead }}}</p>
+      <h2 class="subpage-headline" >{{{ headline }}}</h2>
+      <p class="subpage-subhead">{{{ subhead }}}</p>
     {{/ifCompare}}
     {{#if whichPartial}}
       {{> (lookup . 'whichPartial') }}

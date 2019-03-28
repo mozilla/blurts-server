@@ -476,7 +476,7 @@ fxa-account= {-brand-fxa}
 open-fxa-menu=Open {-brand-fxa} navigation
 
 latest-breach= Latest breach added to {-product-name}
-breach-added= Added
+breach-added= Added:
 more-about-this-breach= More about this breach
 
 how-hackers-work= Understand How Hackers Work
@@ -494,3 +494,12 @@ search-all-emails= Search all your email addresses for breaches and get alerts a
 keep-your-data-safe= Find out what you need to do to keep your data safe from cyber criminals.
 monitor-several-emails= Monitor several emails
 get-expert-advice= Get ongoing expert advice
+
+
+email-addresses= Email Addresses
+being-monitored= being monitored
+data-breaches= Data Breaches
+exposed-your-info= have exposed your information
+passwords-exposed= Passwords Exposed
+across-all-breaches= across all breaches
+

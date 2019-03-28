@@ -1,0 +1,13 @@
+      <section class="breach-stats">
+        {{#each (breachStats)}}
+          <div class="breach-stat-row flx">
+            <div class="breach-stat-number flx al-cntr bold">
+              {{ this.count }}
+            </div>
+            <div class="breach-stat-label flx">
+              <span class="stat-headline bold">{{ this.headline }}</span>
+              <span class="stat-subhead">{{ this.subhead }}</span>
+            </div>
+          </div>
+        {{/each}}
+      </section>

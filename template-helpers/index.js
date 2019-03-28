@@ -6,6 +6,7 @@ const footer = require("./footer");
 const header = require("./header");
 const legacyHelpers = require("./hbs-helpers");
 const monitorFeatures = require("./monitor-features");
+const scanResults = require("./scan-results");
 
 
 module.exports = {
@@ -16,5 +17,6 @@ module.exports = {
     header,
     legacyHelpers,
     monitorFeatures,
+    scanResults,
   ),
 };

@@ -1,0 +1,26 @@
+.found-breaches .breach-listing {
+  border: 1px solid #eee;
+  overflow: hidden;
+  border-radius: 4px;
+  flex: 1 1 40%;
+  margin: 2.5rem;
+}
+
+.found-breaches {
+  display: inline-flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.show-additional-breaches {
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 800px) {
+  .found-breaches .breach-listing {
+    margin-bottom: var(--padding);
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}

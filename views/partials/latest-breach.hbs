@@ -1,10 +1,10 @@
 <section class="latest-breach container">
-  <section class="row">
+  <section class="row bg-white">
     <div class="col-8">
-      <span class="desc">{{getString "latest-breach"}}</span>
+      <h3 class="subhead">{{getString "latest-breach"}}</h3>
         <div class="breach-listing">
           {{#lastAddedBreach}}
-            {{> breach_listing}}
+            {{> breach_listing this=./../this}}
           {{/lastAddedBreach}}
         </div>
     </div>

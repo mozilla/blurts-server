@@ -2,11 +2,6 @@ header {
   border-bottom: 1px solid rgba(238, 238, 238, 1);
 }
 
-button.sign-in {
-  height: 32px;
-  border: 1px solid rgba(223, 0, 255, 0.24);
-}
-
 h1.fx-monitor {
   font-size: 1.7rem;
   font-weight: 600;
@@ -34,11 +29,8 @@ nav {
 }
 
 a.nav-link {
-  padding-right: calc(1rem + 1vw); 
+  padding-right: calc(1rem + 1vw);
   padding-left: calc(1rem + 1vw);
-}
-
-a.nav-link {
   text-align: center;
   justify-content: center;
 }
@@ -88,6 +80,7 @@ nav.mobile-menu a:hover {
 .fxa-menu-wrapper {
   cursor: pointer;
   margin-left: 1rem;
+  position: relative;
 }
 
 .avatar-wrapper,
@@ -104,10 +97,6 @@ img.avatar {
   top: 0;
   right: 0;
   z-index: 2;
-}
-
-.fxa-menu-wrapper {
-  position: relative;
 }
 
 .fxa-menu-links {

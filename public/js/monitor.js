@@ -238,32 +238,6 @@ function checkBoxStates(checkBoxEvent) {
   checkBox.checked = !checkBox.checked;
 }
 
-// async function sha1(message) {
-//   message = message.toLowerCase();
-//   const msgBuffer = new TextEncoder("utf-8").encode(message);
-//   let hashBuffer;
-//   if (/edge/i.test(navigator.userAgent)) {
-//     hashBuffer = libpolycrypt.sha1(msgBuffer);
-//   } else {
-//     hashBuffer = await crypto.subtle.digest("SHA-1", msgBuffer);
-//   }
-//   const hashArray = Array.from(new Uint8Array(hashBuffer));
-//   const hashHex = hashArray.map(b => ("00" + b.toString(16)).slice(-2)).join("");
-//   return hashHex.toUpperCase();
-// }
-
-// async function hashEmailAndSend(emailFormSubmitEvent) {
-//   const emailForm = emailFormSubmitEvent.target;
-//   ga_sendLegacyPing("Scan", false);
-//   emailForm.classList.add("loading-data");
-//   const emailInput = document.getElementById("scan-email");
-//   emailForm.querySelector("input[name=emailHash]").value = await sha1(emailInput.value);
-//   localStorage.setItem("scanned", emailInput.value);
-//   emailInput.value = "";
-//   sendPing(emailForm, "Success");
-//   emailForm.submit();
-// }
-
 const resendSubscribeData = function() {
   ga_sendLegacyPing("Resend", false);
   document.getElementById("confirm-your-account").classList.add("sending");
@@ -320,11 +294,19 @@ const postData = (url, data = {}) => {
   .catch(error => console.error(error));
 };
 
-function showAdditionalBreaches(){
-  document.getElementById("show-additional-breaches").classList.toggle("hide");
+const toggleClasses = (classesToToggle, el) => {
+  classesToToggle.forEach(clss => {
+    el.classList.toggle(clss);
+  });
+};
+
+const showAdditionalBreaches = () => {
+  const showBreachesButton = document.getElementById("show-additional-breaches-wrapper");
   const additionalBreaches = document.getElementById("additional-breaches");
-  additionalBreaches.classList.toggle("show-breaches");
-}
+  [showBreachesButton, additionalBreaches].forEach(el => {
+    toggleClasses(["show", "hide"], el);
+  });
+};
 
 const handleRadioButtons = function(form) {
   const inputFields = Array.from(form.querySelectorAll(".radio-button-group, .button"));

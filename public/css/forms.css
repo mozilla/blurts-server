@@ -7,11 +7,6 @@ input::placeholder {
   font-size: 15px;
 }
 
-/* prevents zoom on ios devices */
-input[type="email"] {
-  font-size: 17px;
-}
-
 input[type="submit"],
 input[type="email"] {
   height: 4rem;
@@ -23,8 +18,10 @@ input[type="email"] {
 }
 
 input[type="email"] {
-  text-indent: .5rem;
-  background-color: rgba(255, 255, 255, 1);
+  /* prevents zoom on ios devices */
+  font-size: 17px;
+  text-indent: 0.5rem;
+  background-color: rgba(255, 255, 255, 0);
   border: 1px solid rgba(0, 0, 0, 0.13);
   margin-bottom: var(--margin);
 }
@@ -41,7 +38,7 @@ button:focus,
 .radio-button-group:focus {
   border: 1px solid var(--blue50);
   border: 1px solid rgb(40, 97, 205);
-  box-shadow: 0 0 0 1px rgb(63, 97, 217), 0 0 0 4px rgba(63, 97, 217, .3);
+  box-shadow: 0 0 0 1px rgb(63, 97, 217), 0 0 0 4px rgba(63, 97, 217, 0.3);
   outline: none;
 }
 
@@ -123,7 +120,7 @@ button:focus,
 }
 
 .form-desc {
-  font-size: .8rem;
+  font-size: 0.8rem;
   font-weight: 300;
   color: rgba(36, 34, 45, 0.6);
   max-width: 300px;

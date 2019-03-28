@@ -8,11 +8,22 @@ const mozlog = require("./../log");
 
 const log = mozlog("template-helpers/hbs-helpers");
 
+const getSupportedLocales = (args) => {
+  if (args.data) {
+    return args.data.root.req.supportedLocales;
+  }
+  if (args.this) {
+    return args.this.req.supportedLocales;
+  }
+  return null;
+};
+
 
 function getString (id, args) {
-  const supportedLocales = args.data.root.req.supportedLocales;
+  const supportedLocales = getSupportedLocales(args);
   return LocaleUtils.fluentFormat(supportedLocales, id, args.hash);
 }
+
 
 const getStrings = (stringArr, locales) => {
   stringArr.forEach(string => {
@@ -43,7 +54,7 @@ function getStringID (id, number, args) {
 
 
 function localizedBreachDataClasses(dataClasses, args) {
-  const supportedLocales = args.data.root.req.supportedLocales;
+  const supportedLocales = getSupportedLocales(args);
   const localizedDataClasses = [];
   dataClasses.forEach(dataClass => {
     localizedDataClasses.push(LocaleUtils.fluentFormat(supportedLocales, dataClass, args));
@@ -80,7 +91,7 @@ function fluentNestedBold(id, args) {
 
 
 function prettyDate(date, args) {
-  const supportedLocales = args.data.root.req.supportedLocales;
+  const supportedLocales = getSupportedLocales(args);
   const jsDate = new Date(date);
   const options = {year: "numeric", month: "long", day: "numeric"};
   const intlDateTimeFormatter = new Intl.DateTimeFormat(supportedLocales, options);
@@ -89,7 +100,7 @@ function prettyDate(date, args) {
 
 
 function localeString(numericInput, args) {
-  const supportedLocales = args.data.root.req.supportedLocales;
+  const supportedLocales = getSupportedLocales(args);
   const intlNumberFormatter = new Intl.NumberFormat(supportedLocales);
   return intlNumberFormatter.format(numericInput);
 }

@@ -4,17 +4,18 @@
   margin: auto;
 }
 
-.latest-breach.container {
-  background-color: rgba(255, 255, 255, 1);
-  border-bottom: 1px solid #eee;
-}
-
-.latest-breach .desc {
+.latest-breach h3.subhead {
+  padding: 0 0 0 0;
   text-align: center;
   display: block;
-  margin-bottom: 2rem;
+  margin: auto auto 2rem auto;
 }
 
 .latest-breach .row {
   flex-direction: column;
+  box-shadow: 1px 1px 10px #eeeeee4d;
+}
+
+.latest-breach {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 50%, white 50%, white 100%); /* W3C */
 }

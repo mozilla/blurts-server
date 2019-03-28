@@ -1,6 +1,7 @@
 footer {
   border-top: 1px solid #eee;
-  width:100%;
+  width: 100%;
+  margin: auto auto 0 auto;
 }
 
 svg.Mozilla-logo {
@@ -29,6 +30,6 @@ svg.Mozilla-logo {
 
 @media screen and (max-width: 500px) {
   footer {
-    padding: .75rem 0;
+    padding: 0.75rem 0;
   }
 }

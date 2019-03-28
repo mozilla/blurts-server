@@ -8,10 +8,10 @@
     </div>
   </div>
   <div class="breach-info-wrap">
-    <span class="breach-info"><span class="key">{{getString "breach-added"}}</span>{{prettyDate AddedDate }}</span>
-    <span class="breach-info"><span class="key">{{getString "compromised-accounts"}}</span>{{localeString PwnCount}}</span>
+    <span class="breach-info"><span class="key">{{getString "breach-added" this}}</span>{{prettyDate AddedDate this}}</span>
+    <span class="breach-info"><span class="key">{{getString "compromised-accounts" this}}</span>{{localeString PwnCount this}}</span>
     {{#if DataClasses }}
-      <span class="breach-info"><span class="key">{{getString "compromised-data"}}</span>{{localizedBreachDataClasses DataClasses }}</span>
+      <span class="breach-info"><span class="key">{{getString "compromised-data" this}}</span>{{localizedBreachDataClasses DataClasses this}}</span>
     {{/if}}
-     <a href="/?breach={{Name}}" class="">{{getString "more-about-this-breach"}} &#8594;</a>
+     <a href="/?breach={{Name}}" class="">{{getString "more-about-this-breach" this}} &#8594;</a>
   </div>

@@ -1,0 +1,47 @@
+.breach-stat-number {
+  align-items: center;
+  font-size: 2rem;
+  width: 3rem;
+  height: 3rem;
+  justify-content: center;
+  border-right: 1px solid rgba(219, 219, 219, 0.9);
+  margin: 0.15rem;
+}
+
+.stat-subhead {
+  font-size: 0.7rem;
+}
+
+.stat-headline {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.8rem;
+}
+
+.breach-stats {
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid rgba(219, 219, 219, 0.9);
+  border-radius: 2px;
+  overflow: hidden;
+  flex-direction: column-reverse;
+  margin-top: 2rem;
+}
+
+.breach-stats > * {
+  margin-bottom: 0;
+}
+
+.breach-stat-row {
+  width: 100%;
+  border-bottom: 1px solid rgba(219, 219, 219, 0.9);
+}
+
+.breach-stats:last-child {
+  border-bottom: 0;
+}
+
+.breach-stat-label {
+  padding-left: 1rem;
+  justify-content: center;
+  flex-direction: column;
+}

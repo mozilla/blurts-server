@@ -18,6 +18,8 @@ body {
   --subhead: 1.1rem;
   --lineHeight: 180%;
 
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   background-color: rgba(249, 249, 250, 1);
@@ -27,7 +29,6 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
   min-height: 100vh;
-  height: 100%;
   width: 100vw;
   -webkit-overflow-scrolling: touch;
 }
@@ -36,10 +37,14 @@ p {
   line-height: var(--lineHeight);
 }
 
+.bold {
+  font-weight: 600;
+}
+
 h1,
 h2,
 h3 {
-  margin-top: 0px;
+  margin-top: 0;
 }
 
 .big-headline {
@@ -88,7 +93,7 @@ button:focus,
 div:focus,
 input:focus {
   border: 1px solid rgb(40, 97, 205);
-  box-shadow: 0 0 0 1px rgb(63, 97, 217), 0 0 0 4px rgba(63, 97, 217, .3);
+  box-shadow: 0 0 0 1px rgb(63, 97, 217), 0 0 0 4px rgba(63, 97, 217, 0.3);
   outline: none;
 }
 
@@ -100,6 +105,16 @@ button {
   cursor: pointer;
   justify-content: center;
   text-align: center;
+  border-radius: 3px;
+}
+
+.utility-button {
+  border: 1px solid var(--color);
+  padding: 2rem 0;
+  width: 100%;
+  margin: auto;
+  max-width: 300px;
+  background-color: rgba(255, 255, 255, 0);
 }
 
 ul {
@@ -120,6 +135,7 @@ ul li {
 }
 
 .row {
+  justify-content: space-between;
   padding: 0.75rem;
 }
 
@@ -142,7 +158,6 @@ ul li {
 .col-12 {
   width: 100%;
 }
-
 
 .container,
 .content-box,
@@ -183,6 +198,7 @@ ul li {
 
 .col-8 {
   flex: 1 1 66.66666667%;
+  min-width: 66.66666667%;
   max-width: 66.66666667%;
 }
 
@@ -212,6 +228,11 @@ ul li {
   text-align: center;
 }
 
+.al-cntr {
+  align-items: center;
+  align-content: center;
+}
+
 .bg-white {
   background-color: white;
 }
@@ -229,8 +250,38 @@ div.sprite {
 .logo-wrapper {
   width: 1.5rem;
   min-height: 10px;
-  margin-right: .5rem;
+  margin-right: 0.5rem;
   display: inline-flex;
+}
+
+.brdr {
+  border: 1px solid #eee;
+  border-radius: 3px;
+}
+
+.pad-0 {
+  padding: 0;
+}
+
+.show {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.1s ease, visibility 0.1s ease 0.2s, max-height 0.1s ease 0.2s, padding 0.1s ease 0.2s;
+}
+
+.hide {
+  padding: 0;
+  opacity: 0;
+  max-height: 0;
+  visibility: hidden;
+  transition: opacity 0.1s ease, visibility 0.1s ease 0.2s, max-height 0.1s ease 0.2s, padding 0.1s ease 0.2s;
+}
+
+.hide > * {
+  padding: 0;
+  max-height: 0;
+  visibility: hidden;
+  margin: 0 auto !important;
 }
 
 @media screen and (max-width: 1000px) {

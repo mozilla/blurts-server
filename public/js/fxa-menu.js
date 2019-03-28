@@ -1,18 +1,24 @@
 "use strict";
 
 // open/close signed-in user fxa menu and set tabbing
-const toggleMenu = (otherFocusableEls) => {
+const toggleMenu = (otherFocusableEls, fxaMenuLinks) => {
   document.body.classList.toggle("menu-open");
   if (document.body.classList.contains("menu-open")) {
     document.getElementById("close-menu").addEventListener("click", (e) => {
-      toggleMenu(otherFocusableEls);
+      toggleMenu(otherFocusableEls, fxaMenuLinks);
     });
     otherFocusableEls.forEach(el => {
       el.tabIndex = -1;
     });
+    fxaMenuLinks.forEach(link => {
+      link.tabIndex = 0;
+    });
   } else {
     otherFocusableEls.forEach(el => {
       el.tabIndex = 0;
+    });
+    fxaMenuLinks.forEach(link => {
+      link.tabIndex = -1;
     });
   }
 };
@@ -20,6 +26,7 @@ const toggleMenu = (otherFocusableEls) => {
 if (document.querySelector("#avatar-wrapper")) {
   const avatar = document.getElementById("avatar-wrapper");
   const otherFocusableEls = document.querySelectorAll("button, a:not(.fxa-menu-link), input");
+  const fxaMenuLinks = document.querySelectorAll(".fxa-menu-link");
 
   avatar.addEventListener("focus", () => {
     avatar.addEventListener("keydown", (e) => {
@@ -27,23 +34,24 @@ if (document.querySelector("#avatar-wrapper")) {
       if ([32, 13].includes(e.keyCode)) {
         e.preventDefault(); // prevents page from jumping or scrolling down
         e.stopImmediatePropagation();
-        return toggleMenu(otherFocusableEls);
+        return toggleMenu(otherFocusableEls, fxaMenuLinks);
       }
       // close menu on escape (keyCode:27) clicks
       if (e.keyCode === 27 && document.body.classList.contains("menu-open")) {
-        return toggleMenu(otherFocusableEls);
+        return toggleMenu(otherFocusableEls, fxaMenuLinks);
       }
     });
   });
 
-  const fxaMenuLinks = document.querySelectorAll(".fxa-menu-link");
   fxaMenuLinks.forEach(link => {
     link.addEventListener("focus", (e) => {
-      link.addEventListener("keydown", (e) => {
+      link.addEventListener("keyup", (e) => {
         if (e.keyCode === 27) {
-          toggleMenu(otherFocusableEls);
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          toggleMenu(otherFocusableEls, fxaMenuLinks);
         }
       });
     });
   });
-};
+}
