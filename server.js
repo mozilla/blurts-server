@@ -145,6 +145,9 @@ app.set("view engine", "hbs");
 
 const cookie = {httpOnly: true, sameSite: "lax"};
 
+// TODO: refactor all templates to use constants.VAR
+// instead of assigning these 1-by-1 to app.locales
+app.locals.constants = AppConstants;
 app.locals.FXA_ENABLED = AppConstants.FXA_ENABLED;
 app.locals.SERVER_URL = AppConstants.SERVER_URL;
 app.locals.UTM_SOURCE = new URL(AppConstants.SERVER_URL).hostname;

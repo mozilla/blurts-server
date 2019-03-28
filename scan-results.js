@@ -56,7 +56,7 @@ const scanResult = async(req, selfScan=false) => {
   userDash = url.pathname === "/user_dashboard";
 
   if (selfScan) {
-    scannedEmail = sha1(signedInUser.email);
+    scannedEmail = sha1(signedInUser.primary_email);
   }
 
   if (scannedEmail) {

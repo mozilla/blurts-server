@@ -370,6 +370,10 @@ function addFormListeners() {
 }
 
 function handleFormSubmits(formEvent) {
+  if (formEvent.target.id === "email-add-form") {
+    formEvent.target.submit();
+    return;
+  }
   if (formEvent.target.id === "unsubscribe-form") {
     ga_sendLegacyPing("Unsubscribe", false);
     return;
