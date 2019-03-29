@@ -1,10 +1,13 @@
 <section class="latest-breach container">
-  <section class="row bg-white">
-    <div class="col-8">
-      <h3 class="subhead">{{getString "latest-breach"}}</h3>
-        <div class="breach-listing">
+  <section class="row">
+    <div class="col-8 latest-breach-wrapper bg-white">
+      <h3 class="latest-breach-headline">{{getString "latest-breach"}}</h3>
+        <div class="latest-breach-info">
           {{#lastAddedBreach}}
             {{> breach_listing this=./../this}}
+            <div class="find-out-if flx txt-cntr">
+              <a href="/?breach={{this.Name}}" class="button" >Find out if your account was compromised  &#8594</a>
+            </div>
           {{/lastAddedBreach}}
         </div>
     </div>

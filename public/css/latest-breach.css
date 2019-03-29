@@ -1,21 +1,73 @@
 
-.latest-breach .col-8 {
+.latest-breach-wrapper {
   flex-direction: column;
   margin: auto;
-}
-
-.latest-breach h3.subhead {
-  padding: 0 0 0 0;
-  text-align: center;
-  display: block;
-  margin: auto auto 2rem auto;
-}
-
-.latest-breach .row {
-  flex-direction: column;
-  box-shadow: 1px 1px 10px #eeeeee4d;
+  box-shadow: 1px 1px 10px #eeeeeee6;
+  border-radius: var(--radius);
 }
 
 .latest-breach {
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 50%, white 50%, white 100%); /* W3C */
+}
+
+.latest-breach-headline {
+  text-align: center;
+  margin-bottom: var(--margin);
+  font-weight: 600;
+}
+
+.latest-breach .breach-info-wrap {
+  padding: 0;
+}
+
+.latest-breach-info {
+  padding: 0 var(--padding) var(--padding) var(--padding);
+}
+
+.latest-breach .logo-title-wrapper,
+.latest-breach .breach-info {
+  margin-bottom: 1rem;
+}
+
+.latest-breach .more-about-this-breach {
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .latest-breach-wrapper {
+    margin: auto 0.5rem auto;
+  }
+
+  .latest-breach-info {
+    padding: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .latest-breach.container {
+    padding: 1rem 0;
+  }
+
+  .latest-breach .col-8 {
+    box-shadow: none;
+    border: 1px solid #eee;
+    padding: 2rem 1rem;
+  }
+
+  .latest-breach .logo-wrapper {
+    margin-right: 0;
+  }
+
+  .latest-breach-headline {
+    margin-bottom: 0;
+  }
+
+  .latest-breach .logo-title-wrapper {
+    margin-bottom: 0;
+    padding: 1rem 0;
+  }
+
+  .latest-breach .breach-info {
+    margin-bottom: 0.75rem;
+  }
 }

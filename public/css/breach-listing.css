@@ -1,6 +1,6 @@
 .breach-listing .breach-logo-title {
   width: 100%;
-  padding: 0.5rem 2rem;
+  padding: 1rem 2rem;
   border-bottom: 1px solid #eee;
 }
 
@@ -17,12 +17,12 @@
   margin-right: 0.25rem;
 }
 
-img.breach-logo {
+img.breach-listing-logo {
   max-height: 1rem;
   max-width: 1rem;
 }
 
-h4.breach-title.key,
+.breach-title.key,
 .breach-listing a,
 .breach-info {
   display: block;
@@ -31,20 +31,17 @@ h4.breach-title.key,
 
 .breach-info {
   line-height: 150%;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
 }
 
-h4.breach-title,
+.breach-title,
 .breach-info .key {
   font-weight: 600;
 }
 
 .breach-info .key {
   margin-right: 0.25rem;
-}
-
-.breach-logo-title,
-.breach-info {
-  margin-bottom: 0.5rem;
 }
 
 .breach-listing a {
@@ -58,6 +55,6 @@ h4.breach-title,
   }
 
   .breach-logo-title.logo-title-wrapper {
-    padding: 0 1rem;
+    padding: 1rem;
   }
 }

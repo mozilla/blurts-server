@@ -7,7 +7,7 @@
       </li>
       {{#each (getFooterLinks)}}
       <li>
-        <a href="{{this.href}}" {{>analytics/link_event eventLabel=this.title}} {{#if openNewWindow}}{{> open-new-window }}{{/if}}>
+        <a class="footer-link no-underline" href="{{this.href}}" {{>analytics/link_event eventLabel=this.title}} {{#if openNewWindow}}{{> open-new-window }}{{/if}}>
           {{this.stringId}} <span aria-hidden="true" class="arrow-icon show-mobile">&#8594;</span>
         </a>
       </li>

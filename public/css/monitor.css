@@ -4,7 +4,7 @@ main.container.monitor-homepage {
 
 .homepage-scan-form {
   border: 1px solid #eee;
-  border-radius: 3px;
+  border-radius: var(--radius);
 }
 
 @media screen and (max-width: 800px) {

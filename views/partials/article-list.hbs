@@ -3,15 +3,17 @@
     <div class="col-12">
       <h2 class="headline">{{getString "take-control"}}</h2>
       <h3 class="subhead">{{getString "cant-stop-hackers"}}</h3>
-      <section class="article-list">
+      <ul class="article-list">
         {{#each (articleLinks)}}
-          <div class="logo-title-wrapper flx">
-            <div class="logo-wrapper"></div>
+          <li class="logo-title-wrapper flx">
+            <div class="bullet"></div>
             <a href="" class="article-link">{{ this.title }} &#8594;</a>
-          </div>
+          </li>
         {{/each}}
+        <li>
         <a href="" class="more-articles">{{getString "see-more-articles"}} &#8594;</a>
-      </section>
+        </li>
+      </ul>
     </div>
   </section>
 </section>

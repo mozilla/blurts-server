@@ -7,7 +7,7 @@ const header = require("./header");
 const legacyHelpers = require("./hbs-helpers");
 const monitorFeatures = require("./monitor-features");
 const scanResults = require("./scan-results");
-
+const breachDetail = require("./breach-detail");
 
 module.exports = {
   helpers: Object.assign(
@@ -18,5 +18,6 @@ module.exports = {
     legacyHelpers,
     monitorFeatures,
     scanResults,
+    breachDetail,
   ),
 };

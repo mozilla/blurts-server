@@ -1,10 +1,10 @@
 
-  <div class="breach-logo-title logo-title-wrapper">
+  <div class="breach-logo-title logo-title-wrapper flx">
     <div class="logo-wrapper">
-      <img alt="" class="breach-logo" src="/img/logos/{{ LogoPath }}" />
+      <img alt="" class="breach-logo breach-listing-logo" src="/img/logos/{{ LogoPath }}" />
     </div>
     <div class="title-wrapper">
-      <h4 class="breach-title key">{{ Title }}</h4>
+      <span class="breach-title key">{{ Title }}</span>
     </div>
   </div>
   <div class="breach-info-wrap">
@@ -13,5 +13,5 @@
     {{#if DataClasses }}
       <span class="breach-info"><span class="key">{{getString "compromised-data" this}}</span>{{localizedBreachDataClasses DataClasses this}}</span>
     {{/if}}
-     <a href="/?breach={{Name}}" class="">{{getString "more-about-this-breach" this}} &#8594;</a>
+     <a href="/?breach={{Name}}" class="more-about-this-breach">{{getString "more-about-this-breach" this}} &#8594;</a>
   </div>

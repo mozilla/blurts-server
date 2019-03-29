@@ -42,7 +42,10 @@ for (const stat in scanStats) {
       scanStats.passwords.count++;
     }
   });
-  // return (args.fn(scanStats));
+  if (args.data.root.req.session.user) {
+    return scanStats;
+  }
+  delete scanStats.monitoredEmails;
   return scanStats;
 };
 

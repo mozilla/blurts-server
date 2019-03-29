@@ -39,7 +39,7 @@ a.nav-link {
 button.sign-in {
   background-color: var(--color);
   border: 1px solid var(--color);
-  border-radius: 2px;
+  border-radius: 3px;
   color: rgba(255, 255, 255, 1);
   margin-left: 1rem;
   min-height: 2rem;

@@ -1,9 +1,14 @@
+.scan-results.container {
+  padding-top: 0;
+}
+
 .found-breaches .breach-listing {
   border: 1px solid #eee;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: var(--radius);
   flex: 1 1 40%;
-  margin: 2.5rem;
+  margin: var(--margin);
+  max-width: calc(50% - var(--padding));
 }
 
 .found-breaches {
@@ -11,15 +16,20 @@
   justify-content: space-between;
   flex-wrap: wrap;
   flex-direction: row;
+  padding: 0 var(--padding);
 }
 
 .show-additional-breaches {
   flex-wrap: wrap;
 }
 
+.scan-results-headline {
+  margin: 3rem 0 0 0;
+}
+
 @media screen and (max-width: 800px) {
   .found-breaches .breach-listing {
-    margin-bottom: var(--padding);
+    margin: 1.5rem;
     flex: 1 1 100%;
     max-width: 100%;
   }
