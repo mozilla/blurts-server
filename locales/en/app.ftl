@@ -503,3 +503,38 @@ exposed-your-info= have exposed your information
 passwords-exposed= Passwords Exposed
 across-all-breaches= across all breaches
 
+website-breach= Website Breach
+sensitive-breach= Sensitive Breach
+data-aggregator-breach= Data Aggregator Breach
+unverified-breach= Unverified Breach
+spam-list-breach= Spam List Breach
+
+what-data= What data was compromised:
+overview= Overview:
+
+
+sensitive-sites= How does Firefox Monitor treat sensitive sites?
+sensitive-sites-copy= Firefox Monitor reveals accounts associated with these 
+  types of breaches after an email address has been verified. This means you're 
+  the only person who can see if your information was in this breach.
+
+delayed-reporting-headline= Why did it take so long to report this breach?
+delayed-reporting-copy= It sometimes takes months or years for credentials exposed in a data breach to surface on the dark web.
+  Breaches get added to our database as soon as they have been discovered and verified.
+
+
+## What to do after data breach tips
+
+what-to-do-after= What to do after a data breach
+
+change-pw= Change your password
+even-for-old= Even for old accounts, it's important to update your password.
+
+stop-using= Stop using exposed passwords
+get-help-managing= Get help managing and remembering all your logins with a password manager.
+why-password-managers= Why password managers are more secure
+
+create-pw= Create a new, strong password
+strength-of-your= The strength of your passwords directly impacts your online security.
+how-to-create= How to create strong passwords
+show-all-breaches= Show All Breaches
