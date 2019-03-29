@@ -341,13 +341,28 @@ fxa-what-to-do-blurb-1 =
     Az adatait eladhatták vagy továbbadhatták. De olyan fiók is lehet, melyet
     elfelejtett, vagy a cég nevet is változtathatott.
 fxa-what-to-do-subhead-2 = Ne használja többet a kikerült jelszavát, módosítsa mindenütt, ahol használta.
+fxa-wtd-blurb-2 =
+    A hackerek megpróbálhatják újra felhasználni ugyanazt a jelszavát és e-mail címét, hogy más 
+    fiókokba jussanak be. Hozzon létre különböző jelszót minden fiókhoz, különösen a bankszámlájához,
+    e-mail fiókjához és más weboldalakon, ahol személyes adatokat ment el.
+fxa-what-to-do-blurb-3 =
+    A legtöbb adatszegés csak e-mail címek és jelszavak kikerülését okozza, de néhány érzékeny pénzügyi adatokat is tartalmaz.
+    Ha kikerült a bankszámlaszáma vagy hitelkártyaszáma, akkor értesítse a bankját a lehetséges csalásról.
+    Kövesse azokat a levonásokat, melyeket nem ismer fel.
 fxa-what-to-do-subhead-4 = Szerezzen segítséget, hogy megjegyezze az összes jelszavát, és biztonságban tartsa azokat.
+fxa-what-to-do-blurb-4 =
+    A jelszókezelők mint a 1Password, a LastPass, a Dashlane és a Bitwarden biztonságosan
+    tárolják a jelszavait, és beírják a weboldalakon Ön helyett. Használjon jelszókezelőt
+    a telefonján és számítógépén, így nem kell megjegyeznie az összeset.
 fb-landing-headline = Nyilvánosságra kerültek-e az adatai a(z) { $breachName } adatszegésben?
 copyright = A tartalom egyes részeire a következő vonatkozik: © 1999-{ $year } egyéni mozilla.org közreműködők.
 content-available = A tartalom Creative Commons licenc alatt érhető el.
 # Alerts is a noun
 sign-up-for-alerts = Regisztráció a figyelmeztetésekért
 sign-up-for-fxa-alerts = Regisztráció a { -product-name } figyelmeztetésekért
+create-free-account =
+    Hozzon létre egy ingyenes { -brand-fxa }ot a múltbeli adatszegésekről szóló teljes jelentésért, az új adatszegések
+    figyelmeztetéseiért, valamint az egyéb { -brand-Mozilla } szolgáltatásokról szóló információkért.
 get-your-report-and-sign-up = Kapja meg a jelentését, és regisztráljon a figyelmeztetésekért.
 # Link title
 frequently-asked-questions = Gyakran Ismételt Kérdések
