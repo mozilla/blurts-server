@@ -301,7 +301,7 @@ const toggleClasses = (classesToToggle, el) => {
 };
 
 const showAdditionalBreaches = () => {
-  const showBreachesButton = document.getElementById("show-additional-breaches-wrapper");
+  const showBreachesButton = document.getElementById("show-all-breaches-wrapper");
   const additionalBreaches = document.getElementById("additional-breaches");
   [showBreachesButton, additionalBreaches].forEach(el => {
     toggleClasses(["show", "hide"], el);
@@ -421,7 +421,7 @@ async function doButtonRouting(event) {
       return;
     }
   }
-  if (event.target.id === "show-additional-breaches") {
+  if (event.target.id === "show-all-breaches") {
     ga_sendLegacyPing("ShowAdditional", false);
     return showAdditionalBreaches();
   }

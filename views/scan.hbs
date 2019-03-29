@@ -4,12 +4,12 @@
       {{#if scannedEmailId }}
         <p id="scanned-email-address">Results for <span id="scannedEmail" data-scanned-email-id={{ scannedEmailId }} class="bold"></span></p>
       {{/if}}
-      <h2 id="scan-result-headline">{{{fluentNestedBold "guest-scan-results-headline" breachCount=foundBreaches.length}}}</h2>
       {{> breach-stats }}
+      <h2 class="headline scan-results-headline">{{{fluentNestedBold "guest-scan-results-headline" breachCount=foundBreaches.length}}}</h2>
     </div>
   </div>
-</main>
-<section class="container bg-white">
+
+
   <div class="row found-breaches">
     {{#eachFromTo foundBreaches 0 4}}
       <div class="breach-listing">
@@ -17,8 +17,9 @@
       </div>
     {{/eachFromTo}}
     {{#ifCompare foundBreaches.length ">" 4}}
-    <div id="show-additional-breaches-wrapper" class="col-12 show">
-      <button id="show-additional-breaches" class="utility-button" data-event-category="Show All Breaches Button">{{getString "show-all"}}</button>
+    <div id="show-all-breaches-wrapper" class="col-12 show">
+      <p class="txt-cntr">Currently showing <span class="bold">4</span> of <span class="bold">{{ foundBreaches.length }}</span> breaches.</p>
+      <button id="show-all-breaches" class="utility-button" data-event-category="Show All Breaches">{{getString "show-all-breaches"}}</button>
     </div>
     <div id="additional-breaches" class="show-additional-breaches hide flx">
       {{#eachFromTo foundBreaches 4 foundBreaches.length}}
@@ -29,4 +30,7 @@
     </div>
     {{/ifCompare}}
   </div>
-</section>
+</main>
+
+
+{{> scan-another-email }}
