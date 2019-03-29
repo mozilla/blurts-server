@@ -2,7 +2,7 @@
 <html lang="{{ locale }}">
   <head>
     <meta charset="utf-8" />
-    {{>styles}}
+    {{> imports }}
     <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content="{{getString "og-site-description"}}" />
@@ -15,7 +15,6 @@
     <meta name="twitter:title" content="Firefox Monitor" />
     <meta name="twitter:description" content="{{getString "share-twitter"}}" />
     <title>{{ title }}</title>
-    <script type="text/javascript" src="/dist/app.min.js" defer></script>
     {{#if ENABLE_PONTOON_JS}}
       <script src="https://pontoon.mozilla.org/pontoon.js"></script>
     {{/if}}
@@ -23,10 +22,10 @@
     <link rel="icon" href="/img/favicons/favicon-128.png" sizes="128x128" />
     <link rel="icon" href="/img/favicons/favicon-256.png" sizes="256x256" />
   </head>
-  <body {{>analytics/default_dataset}}>
+  <body {{> analytics/default_dataset }}>
     <div id="close-menu" class="close-menu"></div>
     {{> header }}
       {{{ body }}}
-    {{> footer}}
+    {{> footer }}
   </body>
 </html>

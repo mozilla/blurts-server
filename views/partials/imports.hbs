@@ -1,4 +1,5 @@
 {{#ifCompare UTM_SOURCE "===" "localhost"}}
+
   <link rel="stylesheet" href="/css/app.css">
   <link rel="stylesheet" href="/css/articles.css">
   <link rel="stylesheet" href="/css/breach-detail.css">
@@ -12,6 +13,18 @@
   <link rel="stylesheet" href="/css/monitor.css">
   <link rel="stylesheet" href="/css/scan-results.css">
   <link rel="stylesheet" href="/css/subpage.css">
+
+
+
+  <script type="text/javascript" src="/js/analytics_dnt-helper.js" defer></script>
+  <script type="text/javascript" src="/js/analytics_tracking-protection.js" defer></script>
+  <script type="text/javascript" src="/js/fxa-analytics.js" defer></script>
+  <script type="text/javascript" src="/js/fxa-menu.js" defer></script>
+  <script type="text/javascript" src="/js/monitor.js" defer></script>
+  <script type="text/javascript" src="/js/scan-email.js" defer></script>
+  <script type="text/javascript" src="/js/scan-results.js" defer></script>
+
 {{else}}
   <link rel="stylesheet" href="/dist/app.min.css">
+  <script type="text/javascript" src="/dist/app.min.js" defer></script>
 {{/ifCompare}}
