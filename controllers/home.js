@@ -33,6 +33,14 @@ async function home(req, res) {
       return res.render("scan", Object.assign(scanRes, formTokens));
     }
     scanFeaturedBreach = true;
+
+    return res.render("breach-detail", {
+      title: req.fluentFormat("home-title"),
+      featuredBreach: featuredBreach,
+      scanFeaturedBreach,
+      pageToken: formTokens.pageToken,
+      csrfToken: formTokens.csrfToken,
+    });
   }
 
   res.render("monitor", {

@@ -1,0 +1,68 @@
+<main id="breach-detail" class="breach-detail container">
+  <div class="row">
+    <div class="col-12 flx-cntr">
+      <div class="breach-detail-logo-wrapper">
+        <img class="breach-detail-logo breach-logo" alt="{{ featuredBreach.Name }} logo" src="/img/logos/{{ featuredBreach.LogoPath }}" />
+      </div>
+      <h2 class="headline">{{featuredBreach.Name}}</h2>
+      <h3 class="breach-type">{{breachType}}</h3>
+    </div>
+  </div>
+</main>
+{{#getBreachDetail}}
+  <section class="bg-white container">
+
+    {{#if overview}}
+      <div class="row">
+        <div class="col-12">
+          {{> breach-detail-content-group overview}}
+          {{#if delayedReporting }}
+            <a class="text-link" href="#{{delayedReporting.href}}">
+              {{delayedReporting.headline}}
+            </a>
+          {{/if}}
+        </div>
+      </div>
+    {{/if}}
+
+    {{#if dataClasses }}
+      <div class="row">
+        <div class="col-12">
+          {{> breach-detail-content-group dataClasses}}
+          {{> hibp-attribution}}
+        </div>
+      </div>
+    {{/if}}
+  </section>
+
+  <section class="bg-dark container">
+    {{#if whatToDoTips }}
+      <div class="row bg-dark txt-cntr">
+        <div class="col-12">
+          {{> breach-detail-content-group whatToDoTips}}
+        </div>
+      </div>
+    {{/if}}
+  </section>
+
+
+  <section class="container">
+    {{#if sensitiveBreach }}
+      <div class="row">
+        <div class="col-12">
+          {{> breach-detail-content-group sensitiveBreach}}
+        </div>
+      </div>
+    {{/if}}
+
+    {{#if delayedReporting }}
+      <div id="{{ delayedReporting.href }}" class="row">
+        <div class="col-12">
+          {{> breach-detail-content-group delayedReporting}}
+        </div>
+      </div>
+    {{/if}}
+  </section>
+
+{{/getBreachDetail}}
+

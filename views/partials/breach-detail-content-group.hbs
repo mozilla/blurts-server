@@ -1,0 +1,27 @@
+              <h2 class="skinny-headline">{{ this.headline }}</h2>
+
+              {{#if this.copy }}
+                <p class="data-type">{{ this.copy }}</p>
+              {{/if}}
+
+              {{#if this.tips }}
+                <div class="flx feature-tip-group">
+                  {{#each tips}}
+                    {{> feature-tip-group this}}
+                  {{/each}}
+                </div>
+              {{/if}}
+              
+              {{#if dataTypes}}
+                <ul class="priority-data-classes-list">
+                  {{#each dataTypes }}
+                    <li>
+                      <div class="bullet"></div>
+                      <p class="data-type {{ this.priority }}">{{ this.dataType }}</p>
+                      {{#each this.actions }} <!--possible feature for later? -->
+                        <p class="data-action">[ <span class="data-class-action">{{ this }} </span>]</p>
+                      {{/each}}
+                    </li>
+                  {{/each}}
+                </ul>
+              {{/if}}

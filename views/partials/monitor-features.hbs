@@ -1,16 +1,13 @@
-<section class="container monitor-features">
+<section class="container monitor-features bg-dark">
   <div class="row">
     <div class="col-12 flx-cntr txt-cntr">
       <h2 class="headline">{{getString "monitor-your-online-accounts"}}</h2>
-      <div class="flx">
+      <div class="flx feature-tip-group">
         {{#each (monitorFeaturesList)}}
-          <div class="content col">
-            <div class="feat-img"></div>
-            <h3 class="feature-title">{{ this.titleId }}</h3>
-            <h4 class="feature-subhead">{{ this.subheadId }}</h4>
-          </div>
+          {{> feature-tip-group }}
         {{/each}}
       </div>
+      {{> sign-up-button }}
     </div>
   </div>
 </section>
