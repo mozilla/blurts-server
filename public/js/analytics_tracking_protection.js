@@ -46,8 +46,9 @@ if (!_dntEnabled()) {
 }
 
 if(typeof(ga) !== "undefined") {
-	ga("create", "UA-77033033-16");
-	ga("set", "anonymizeIp", true);
+  ga("create", "UA-77033033-16");
+  ga("set", "anonymizeIp", true);
+  ga("set", "transport", "beacon");
 
 
   // Strip token and hash values from pings sent to GA
