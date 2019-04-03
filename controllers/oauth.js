@@ -72,11 +72,12 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
   log.debug("fxa-confirmed-profile-data", data.body);
   const email = JSON.parse(data.body).email;
 
-  const existingUser = await DB.getSubscribersByEmail(email);
+  const existingUser = await DB.getSubscriberByEmail(email);
+  req.session.user = existingUser;
 
   // Check if user is signing up or signing in,
   // then add new users to db and send email.
-  if (existingUser.length === 0 || existingUser[0].fxa_refresh_token === null) {
+  if (!existingUser || existingUser.fxa_refresh_token === null) {
     // req.session.newUser determines whether or not we show "fxa_new_user_bar" in template
     req.session.newUser = true;
     const signupLanguage = req.headers["accept-language"];
@@ -93,6 +94,7 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
 
     const utmID = "report";
 
+    /* TODO: restore this when email templates are fixed
     await EmailUtils.sendEmail(
       email,
       req.fluentFormat("user-verify-email-report-subject"),
@@ -108,9 +110,10 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
         whichView: "email_partials/report",
       }
     );
+    */
+    req.session.user = verifiedSubscriber;
   }
 
-  req.session.user = JSON.parse(data.body);
   res.redirect("/scan/user_dashboard");
 }
 

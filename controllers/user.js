@@ -13,7 +13,15 @@ const HIBP = require("../hibp");
 const sha1 = require("../sha1-utils");
 
 
+function _requireSessionUser(req) {
+  if (!req.session.user) {
+    throw new FluentError("must-be-signed-in");
+  }
+  return req.session.user;
+}
+
 async function add(req, res) {
+  _requireSessionUser(req);
   const email = req.body.email;
 
   if (!email || !isemail.validate(email)) {
@@ -21,8 +29,11 @@ async function add(req, res) {
   }
   const fxNewsletter = Boolean(req.body.additionalEmails);
   const signupLanguage = req.headers["accept-language"];
-  const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(email, fxNewsletter, signupLanguage);
+  const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(
+    req.session.user, email, fxNewsletter, signupLanguage
+  );
 
+  /* TODO: restore when email templates are working
   await EmailUtils.sendEmail(
     email,
     req.fluentFormat("user-add-email-verify-subject"),
@@ -32,7 +43,9 @@ async function add(req, res) {
       verificationHref: EmailUtils.getVerificationUrl(unverifiedSubscriber),
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(unverifiedSubscriber, "account-verification-email"),
       whichView: "email_partials/email_verify",
-    });
+    }
+  );
+  */
 
   res.send({
     title: req.fluentFormat("user-add-title"),
@@ -70,6 +83,7 @@ async function _verify(req) {
 
 
 async function verify(req, res) {
+  _requireSessionUser(req);
   if (!req.query.token) {
     throw new FluentError("user-verify-token-error");
   }
@@ -133,6 +147,17 @@ async function postUnsubscribe(req, res) {
 }
 
 
+function getPreferences(req, res) {
+  _requireSessionUser(req);
+  res.render("subpage", {
+    title: req.fluentFormat("email-add-title"),
+    headline: req.fluentFormat("email-add-headline"),
+    subhead: req.fluentFormat("email-add-blurb-v2"),
+    whichPartial: "subpages/preferences",
+  });
+}
+
+
 function getUnsubSurvey(req, res) {
   //throws error if user refreshes unsubscribe survey page after they have submitted an answer
   if(!req.session.unsub) {
@@ -162,6 +187,7 @@ function logout(req, res) {
 
 
 module.exports = {
+  getPreferences,
   add,
   verify,
   getUnsubscribe,

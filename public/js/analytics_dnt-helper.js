@@ -1,3 +1,5 @@
+"use strict";
+
 /*eslint-disable no-var */
 /*eslint-disable no-unused-vars */
 
@@ -12,8 +14,6 @@
  */
 
 function _dntEnabled(dnt, userAgent) {
-
-    "use strict";
 
     // for old version of IE we need to use the msDoNotTrack property of navigator
     // on newer versions, and newer platforms, this is doNotTrack but, on the window object
