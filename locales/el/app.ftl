@@ -122,13 +122,14 @@ breach-date = Ημερομηνία παραβίασης:
 unsub-headline = Κατάργησης εγγραφής από το { -product-name-nowrap }
 unsub-blurb = Το email σας θα αφαιρεθεί από τη λίστα του { -product-name-nowrap } και δεν θα λαμβάνετε πλέον ειδοποιήσεις όταν ανακοινώνονται νέες παραβιάσεις.
 unsub-button = Κατάργηση εγγραφής
-unsub-survey-headline = Δεν είστε πλέον εγγεγραμμένοι.
 unsub-reason-2 = Λαμβάνω πάρα πολλά emails από το { -product-name-nowrap }
 unsub-reason-3 = Δεν βρίσκω χρήσιμη αυτή την υπηρεσία
+unsub-reason-4 = Έχω ήδη λάβει μέτρα για να προστατεύσω τους λογαριασμούς μου
 unsub-reason-5 = Χρησιμοποιώ άλλη υπηρεσία για την εποπτεία των λογαριασμών μου
 unsub-reason-6 = Κανένα από τα παραπάνω
 unsub-survey-thankyou = Ευχαριστούμε για τα σχόλιά σας.
 unsub-survey-error = Παρακαλούμε επιλέξτε ένα.
+unsub-survey-button = Υποβολή απάντησης
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Κοινοποίηση
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
@@ -146,6 +147,8 @@ confirmation-blurb = Οι παραβιάσεις δεδομένων μπορού
 share-email = Email
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Άλλο
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Κοινωνικά δίκτυα
 show-all = Προβολή όλων
 fxa-welcome-headline = Καλώς ορίσατε στο { -product-name }.
 fxa-scan-another-email = Θέλετε να ελέγξετε άλλο email;
@@ -189,3 +192,9 @@ user-generic-fb-compromised-blurb =
     }
 user-generic-fb-compromised-single = Αυτή η παραβίαση εξέθεσε τις εξής προσωπικές πληροφορίες.
 have-an-account = Έχετε ήδη λογαριασμό;
+fb-landing-headline = Εκτέθηκαν οι πληροφορίες σας στη διαρροή δεδομένων { $breachName };
+# Alerts is a noun
+sign-up-for-alerts = Εγγραφή για ειδοποιήσεις
+sign-up-for-fxa-alerts = Εγγραφή για ειδοποιήσεις του { -product-name }.
+# Link title
+frequently-asked-questions = Συχνές ερωτήσεις
