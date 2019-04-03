@@ -16,7 +16,7 @@ async function home(req, res) {
   let scanFeaturedBreach = false;
 
   if (req.session.user && !req.query.breach) {
-    return res.redirect("/scan/user_dashboard");
+    return res.redirect("/user/dashboard");
   }
 
   if (req.query.breach) {

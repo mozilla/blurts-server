@@ -73,43 +73,9 @@ async function post (req, res) {
   };
 
   if (req.session.user && scanRes.selfScan && !req.body.featuredBreach) {
-    return res.redirect("/scan/user_dashboard");
+    return res.redirect("/user/dashboard");
   }
   res.render("scan", Object.assign(scanRes, formTokens));
-}
-
-
-async function getFullReport(req, res) {
-  if (!req.session.user) {
-    return res.redirect("/");
-  }
-
-  const scanRes = await scanResult(req, true);
-  res.render("scan", scanRes);
-}
-
-
-
-async function getUserDashboard(req, res) {
-
-  if (!req.session.user) {
-    return res.redirect("/");
-  }
-
-  const formTokens = {
-    pageToken: AppConstants.PAGE_TOKEN_TIMER > 0 ? generatePageToken(req) : "",
-    csrfToken: req.csrfToken(),
-  };
-
-  const scanRes = await scanResult(req, true);
-  scanRes.newUser = false;
-
-  if (req.session.newUser === true) {
-    scanRes.newUser = true;
-    req.session.newUser = false;
-  }
-
-  return res.render("scan", Object.assign(scanRes, formTokens));
 }
 
 
@@ -117,9 +83,8 @@ function get (req, res) {
   res.redirect("/");
 }
 
+
 module.exports = {
   post,
   get,
-  getFullReport,
-  getUserDashboard,
 };

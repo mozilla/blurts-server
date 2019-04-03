@@ -69,7 +69,7 @@ test("confirmed request checks session cookie, calls FXA for token and email, ad
   expect(subscribers[0].signup_language).toBe(userAddLanguages);
 
   const mockRedirectCallArgs = mockResponse.redirect.mock.calls[0];
-  expect(mockRedirectCallArgs[0]).toBe("/scan/user_dashboard");
+  expect(mockRedirectCallArgs[0]).toBe("/user/dashboard");
 });
 
 
