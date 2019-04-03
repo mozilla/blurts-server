@@ -2,21 +2,12 @@
   padding-top: 0;
 }
 
-.found-breaches .breach-listing {
-  border: 1px solid #eee;
-  overflow: hidden;
-  border-radius: var(--radius);
-  flex: 1 1 40%;
-  margin: var(--margin);
-  max-width: calc(50% - var(--padding));
-}
-
 .found-breaches {
   display: inline-flex;
   justify-content: space-between;
   flex-wrap: wrap;
   flex-direction: row;
-  padding: 0 var(--padding);
+  padding: 0;
 }
 
 .show-additional-breaches {
@@ -24,13 +15,39 @@
 }
 
 .scan-results-headline {
-  margin: 3rem 0 0 0;
+  margin: 0;
+}
+
+.found-breaches .breach-logo-title.logo-title-wrapper.flx {
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.found-breaches .breach-listing .logo-wrapper {
+  width: auto;
+  max-width: 3rem;
+  max-height: 1.25rem;
+  margin: auto 0 auto auto;
+}
+
+.found-breaches img.breach-listing-logo {
+  max-width: 4rem;
+  max-width: 3rem;
+  max-height: 1.25rem;
 }
 
 @media screen and (max-width: 800px) {
-  .found-breaches .breach-listing {
-    margin: 1.5rem;
+  .breach-listing {
+    margin: 1.5rem 1rem;
     flex: 1 1 100%;
     max-width: 100%;
+  }
+
+  .found-breaches {
+    padding: 0 var(--padding);
+  }
+
+  .scan-results .breach-stats {
+    margin: auto auto auto 0;
   }
 }

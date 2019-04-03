@@ -4,14 +4,12 @@
   <section class="row spc-btwn">
     <div class="col-6">
       <h2 class="big-headline">{{getString "landing-headline"}}</h2>
-    </div>
-    <div class="col-5 brdr">
-      <h3 class="main-subhead">{{getString "fxa-landing-blurb"}}</h3>
-      {{> scan-form }}
+        <h3 class="subhead">{{getString "fxa-landing-blurb"}}</h3>
+        {{> forms/scan-email-form addClasses="inline" }}
     </div>
   </section>
 </main>
 
 {{> latest-breach }}
 {{> article-list }}
-{{> monitor-features }}
+{{> sign-up-banners/monitor-features }}

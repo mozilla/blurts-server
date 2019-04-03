@@ -1,24 +1,20 @@
-header {
-  border-bottom: 1px solid rgba(238, 238, 238, 1);
-}
-
 h1.fx-monitor {
-  font-size: 1.7rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 500;
   margin: 0;
-  letter-spacing: -0.5px;
+  letter-spacing: 0.5px;
   display: inline-flex;
 }
 
 /* Fx-Monitor logo */
 .sprite.fx-monitor-logo {
-  background: url("/img/gradient-sprites.png") -209px 0;
+  background: url("/img/gradient-sprites.png") -211px 0;
   min-width: 30px;
   height: 30px;
 }
 
 h1.fx-monitor span {
-  font-weight: 300;
+  font-weight: 700;
   margin: auto 3px auto 5px;
 }
 
@@ -33,17 +29,18 @@ a.nav-link {
   padding-left: calc(1rem + 1vw);
   text-align: center;
   justify-content: center;
+  font-size: 0.85rem;
 }
 
 /* sign-in button */
 button.sign-in {
-  background-color: var(--color);
-  border: 1px solid var(--color);
-  border-radius: 3px;
-  color: rgba(255, 255, 255, 1);
+  background-color: transparent;
+  border-width: 2px;
+  border-radius: 4rem;
+  color: var(--color);
   margin-left: 1rem;
   min-height: 2rem;
-  padding: 0 1rem;
+  padding: 0.75rem 2rem;
 }
 
 button.sign-in:hover {
@@ -60,7 +57,7 @@ nav.mobile-menu a {
   background-color: rgba(255, 255, 255, 0);
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
-  width: 100%;
+  flex: 1 1 auto;
 }
 
 nav.mobile-menu a:hover {
@@ -134,7 +131,7 @@ img.avatar {
 }
 
 @media screen and (max-width: 800px) {
-  header h1 {
+  h1.fx-monitor {
     font-size: 1.4rem;
   }
 
@@ -143,13 +140,13 @@ img.avatar {
   }
 
   .mobile-nav {
-    background-color: var(--color);
+    background-color: rgba(155, 155, 165, 0.04);
   }
 
   nav.mobile-menu a {
-    color: rgba(255, 255, 255, 1);
-    border-left: 1px solid rgba(255, 255, 255, 0.05);
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--color);
+    border-left: 1px solid rgba(53, 53, 49, 0.035);
+    border-right: 1px solid rgba(53, 53, 49, 0.035);
     padding-left: 0;
     padding-right: 0;
   }
@@ -160,5 +157,27 @@ img.avatar {
 
   nav.mobile-menu a:last-of-type {
     border-left: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  h1.fx-monitor {
+    font-size: 1.25rem;
+  }
+
+  h1.fx-monitor span {
+    margin-left: 1px;
+  }
+
+  .sprite.fx-monitor-logo {
+    transform: scale(0.9);
+  }
+
+  button.sign-in {
+    padding: 0.5rem 1.25rem;
+  }
+
+  nav.mobile-menu {
+    padding: 0;
   }
 }

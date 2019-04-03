@@ -24,6 +24,10 @@
   transition: all 0.3s ease;
 }
 
+.bg-white .feat-img {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 .feature-tip-content-wrapper:hover .feat-img,
 .feat-img:hover {
   background-color: rgba(255, 255, 255, 0.08);
@@ -55,13 +59,13 @@ h3.feature-title {
   .feature-tip-content-wrapper {
     flex-direction: row;
     max-width: 600px;
-    margin: 2rem auto;
+    margin: var(--padding) auto;
   }
 
   .feature-tip-content {
     text-align: left;
     max-width: 350px;
-    margin-left: 2rem;
+    margin-left: var(--padding);
   }
 
   .feat-img {
@@ -72,7 +76,7 @@ h3.feature-title {
 @media screen and (max-width: 800px) {
   .feature-tip-content-wrapper {
     max-width: 300px;
-    margin-bottom: 2rem;
+    margin-bottom: var(--padding);
     flex-direction: column;
   }
 

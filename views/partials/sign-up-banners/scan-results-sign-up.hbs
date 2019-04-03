@@ -1,0 +1,16 @@
+<section class="container bg-dark">
+  <div class="row">
+    <div class="col-12 cntr">
+      <h2 class="skinny-headline txt-cntr">Monitor all of your emails for data breaches.</h2>
+      <ul class="feature-list">
+        {{#bulletedList (monitorFeatures)}}
+          <li>
+            <div class="bullet light-bullet small-bullet"></div>
+            <p class="sign-up-feature">{{ stringId }}</p>
+          </li>
+        {{/bulletedList}}
+      </ul>
+      {{> sign-up-button buttonValue="sign-up-for-fxa"}}
+    </div>
+  </div>
+</section>

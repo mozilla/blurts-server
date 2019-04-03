@@ -10,17 +10,18 @@ svg.Mozilla-logo {
 }
 
 @media screen and (max-width: 800px) {
-  footer ul.content-box {
+  footer ul.row-full-width {
     flex-direction: column;
+    padding: 3.25rem;
   }
 
-  footer ul.content-box li,
-  footer ul.content-box a {
+  footer ul.row-full-width li,
+  footer ul.row-full-width a {
     width: 100%;
   }
 
-  footer a {
-    padding: calc(var(--padding) / 2) 0;
+  .footer-link {
+    padding: 0.75rem 0;
   }
 
   footer span.arrow-icon.show-mobile {
@@ -28,8 +29,8 @@ svg.Mozilla-logo {
   }
 }
 
-@media screen and (max-width: 500px) {
-  footer {
-    padding: 0.75rem 0;
+@media screen and (max-width: 600px) {
+  footer ul.row-full-width {
+    padding: 2.25rem;
   }
 }

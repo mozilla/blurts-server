@@ -10,7 +10,7 @@
   </div>
 </main>
 {{#getBreachDetail}}
-  <section class="bg-white container">
+  <section class="container">
 
     {{#if overview}}
       <div class="row">
@@ -35,16 +35,15 @@
     {{/if}}
   </section>
 
-  <section class="bg-dark container">
+  <section class="bg-white container wtd-tips">
     {{#if whatToDoTips }}
-      <div class="row bg-dark txt-cntr">
+      <div class="row txt-cntr">
         <div class="col-12">
           {{> breach-detail-content-group whatToDoTips}}
         </div>
       </div>
     {{/if}}
   </section>
-
 
   <section class="container">
     {{#if sensitiveBreach }}
@@ -66,3 +65,4 @@
 
 {{/getBreachDetail}}
 
+{{> sign-up-banners/breach-detail-sign-up-banner }}

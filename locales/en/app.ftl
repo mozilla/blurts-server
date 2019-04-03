@@ -475,7 +475,7 @@ fxa-account= {-brand-fxa}
 
 open-fxa-menu=Open {-brand-fxa} navigation
 
-latest-breach= Latest breach added to {-product-name}
+latest-breach= Latest breach added to { $brandName }
 breach-added= Added:
 more-about-this-breach= More about this breach
 
@@ -538,3 +538,12 @@ create-pw= Create a new, strong password
 strength-of-your= The strength of your passwords directly impacts your online security.
 how-to-create= How to create strong passwords
 show-all-breaches= Show All Breaches
+
+create-a-fxa= Create a {-brand-fxa} for your full report of breaches and to get alerts.
+
+feat-full-report= Full reports of past breaches
+feat-security-tips= Security tips to protect your accounts
+feat-email-alerts= Email alerts for new breaches
+feat-info-about= Info about other {-brand-Mozilla} services
+
+sign-up-for-fxa= Sign up for a {-brand-fxa}

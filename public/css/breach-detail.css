@@ -46,3 +46,7 @@ main.breach-detail {
   align-content: flex-end;
   align-items: flex-end;
 }
+
+.wtd-tips h2.skinny-headline {
+  margin-bottom: calc(var(--padding) * 2);
+}

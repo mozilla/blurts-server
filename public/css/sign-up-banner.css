@@ -1,0 +1,22 @@
+.bullet.light-bullet {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.small-bullet {
+  height: 1rem;
+  width: 1rem;
+}
+
+.sign-up-banner-button {
+  margin-top: var(--padding);
+}
+
+.sign-up-feature {
+  margin: 0.75rem 0;
+  font-weight: 300;
+  color: #b8b8be;
+}
+
+.sign-up-banner .feature-tip-group {
+  margin-bottom: calc(var(--padding) * 2);
+}

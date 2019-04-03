@@ -393,7 +393,7 @@ function handleFormSubmits(formEvent) {
     thisForm.classList.add("invalid");
     return;
   }
-  if (thisForm.id === ("scan-user-email")) {
+  if (thisForm.classList.contains("email-scan")) {
     hashEmailAndSend(formEvent);
     return;
   }
@@ -405,7 +405,6 @@ function handleFormSubmits(formEvent) {
     ga_sendLegacyPing("SignUp_Complete", false);
     return;
   }
-  formEvent.submit();
   return;
 }
 

@@ -13,5 +13,5 @@
     {{#if DataClasses }}
       <span class="breach-info"><span class="key">{{getString "compromised-data" this}}</span>{{localizedBreachDataClasses DataClasses this}}</span>
     {{/if}}
-     <a href="/?breach={{Name}}" class="more-about-this-breach">{{getString "more-about-this-breach" this}} &#8594;</a>
   </div>
+  <a href="/?breach={{this.Name}}" class="more-about-this-breach">{{getString "more-about-this-breach" this}}<span class="arrow">&#8594;</span></a>

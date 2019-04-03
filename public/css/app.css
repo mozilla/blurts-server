@@ -13,16 +13,19 @@ html {
 
 html,
 body {
-  --color: rgba(47, 43, 55, 1);
+  --color: rgba(21, 20, 23, 0.92);
   --padding: 2rem;
   --maxWidth: 1100px;
   --margin: 1rem;
-  --bigHeadline: 2.8rem;
+  --bigHeadline: 2.3rem;
   --headline: 2.1rem;
   --skinnyHeadline: 1.9rem;
   --subhead: 1.1rem;
+  --smallText: 0.85rem;
   --lineHeight: 180%;
   --radius: 1rem;
+  --blue: #4f42ff;
+  --borderColors: var(--blue) #c78d20 #ff7e88 #ac3eff;
 
   display: flex;
   flex-direction: column;
@@ -30,7 +33,7 @@ body {
   padding: 0;
   background-color: rgba(249, 249, 250, 1);
   color: var(--color);
-  font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: "SF Pro Text", "Inter UI", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 0.9rem;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -39,12 +42,34 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
+.fxm {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
 p {
   line-height: var(--lineHeight);
 }
 
-.bold {
+.demi {
   font-weight: 600;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.desc {
+  max-width: 320px;
+  font-weight: 300;
+}
+
+h1,
+h2,
+.nav-link,
+button,
+input[type="submit"] {
+  font-family: "FirefoxSharpSans", --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 h1,
@@ -53,9 +78,15 @@ h3 {
   margin-top: 0;
 }
 
+.nav-link,
+.footer-link,
+.article-list a {
+  border: 2px solid rgba(255, 255, 255, 0);
+}
+
 .big-headline {
   font-size: var(--bigHeadline);
-  font-weight: 300;
+  font-weight: 500;
   margin: auto;
 }
 
@@ -92,19 +123,9 @@ h4.feature {
 }
 
 a {
-  color: var(--color);
-  border: 1px solid rgba(255, 255, 255, 0);
-  opacity: 1;
-}
-
-.no-underline {
-  font-size: 0.85rem;
   text-decoration: none;
-}
-
-.text-link {
-  text-decoration: underline;
-  font-weight: 500;
+  color: var(--color);
+  opacity: 1;
 }
 
 a:hover {
@@ -113,9 +134,10 @@ a:hover {
 
 a:focus,
 button:focus,
+button:hover,
 div:focus,
 input:focus {
-  border: 1px solid rgb(40, 97, 205);
+  border: 2px solid rgb(40, 97, 205);
   box-shadow: 0 0 0 1px rgb(63, 97, 217), 0 0 0 4px rgba(63, 97, 217, 0.3);
   outline: none;
 }
@@ -128,30 +150,29 @@ button {
   cursor: pointer;
   justify-content: center;
   text-align: center;
-  border-radius: 3px;
+  background-color: transparent;
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--borderColors);
+  color: var(--color);
+  padding: 0.75rem 2rem;
+  font-size: var(--smallText);
 }
 
-button#sign-up {
-  background-color: rgba(255, 255, 255, 0.03);
-  padding: 1rem 4rem;
-  color: white;
-  margin-top: 4rem;
-  border: 1px solid #fff0;
-  box-shadow: 0 0 0 1px #0000005e, 0 0 0 2px #ffffff0d;
+.blue {
+  color: var(--blue);
 }
 
-.utility-button {
-  border: 1px solid var(--color);
-  color: rgba(255, 255, 255, 1);
-  padding: 1rem 0;
+.util-btn {
   width: 100%;
   margin: auto;
-  max-width: 300px;
-  background-color: var(--color);
-  border-radius: 2rem;
+  max-width: 450px;
+  color: rgba(255, 255, 255, 1);
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
 
-.utility-button:hover {
+.util-btn:hover {
   background-color: rgba(47, 43, 55, 0.88);
 }
 
@@ -177,31 +198,32 @@ ul li {
 .row {
   justify-content: space-between;
   padding: 0.75rem;
+  max-width: var(--maxWidth);
 }
 
-.content-box {
+.row-full-width {
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
   padding: 1.5rem 3.25rem;
+  max-width: 1600px;
 }
 
 .row,
-.content-box {
-  max-width: var(--maxWidth);
+.row-full-width {
   margin: auto;
 }
 
 .container,
-.content-box,
-.row,
-.col-12 {
+.row-full-width,
+.row {
   width: 100%;
 }
 
 .container,
-.content-box,
+.row-full-width,
 .row,
+.col-4,
 .col-5,
 .col-6,
 .col-7,
@@ -212,12 +234,26 @@ ul li {
   display: flex;
 }
 
+.cntr {
+  align-content: center;
+  align-items: center;
+}
+
 .flx-cntr {
   align-items: center;
 }
 
+.flx-col {
+  flex-direction: column;
+}
+
 .spc-btwn {
   justify-content: space-between;
+}
+
+.col-4 {
+  flex: 1 1 33.333%;
+  max-width: 366px;
 }
 
 .col-5 {
@@ -243,10 +279,11 @@ ul li {
 }
 
 .col-12 {
-  flex: 1 1 100%;
+  flex: 1 1 calc(100% - var(--padding));
   flex-direction: column;
 }
 
+.col-4,
 .col-5,
 .col-6,
 .col-7,
@@ -277,7 +314,12 @@ ul li {
 }
 
 .bg-dark {
-  background: rgb(27, 26, 29);
+  background: var(--color);
+  color: rgba(255, 255, 255, 1);
+}
+
+.bg-blue {
+  background: var(--blue);
   color: rgba(255, 255, 255, 1);
 }
 
@@ -301,16 +343,29 @@ div.sprite {
 
 .bullet {
   background-color: rgba(36, 34, 45, 0);
-  border: 1px solid rgba(36, 34, 45, 0.2);
+  border-width: 2px;
   border-radius: 50%;
-  height: 1rem;
-  width: 1rem;
-  transition: all 0.2s ease;
+  height: 1.25rem;
+  width: 1.25rem;
+  transition: all 0.1s ease-in;
+  border-style: inset;
+  border-color: var(--borderColors);
+  margin-right: calc(var(--padding) / 2);
+}
+
+.arrow {
+  padding-left: calc(var(--padding) / 2);
+  transition: all 0.1s ease-in;
 }
 
 li:hover .bullet {
-  background-color: rgba(36, 34, 45, 0.1);
-  transition: all 0.2s ease;
+  border-width: 3px;
+  transition: all 0.1s ease-in;
+}
+
+li:hover .arrow {
+  padding-left: 1.25rem;
+  transition: all 0.1s ease-in;
 }
 
 .brdr {
@@ -343,6 +398,12 @@ li:hover .bullet {
   margin: 0 auto !important;
 }
 
+@media screen and (max-width: 1200px) {
+  body {
+    --maxWidth: 1000px;
+  }
+}
+
 @media screen and (max-width: 1000px) {
   body {
     --maxWidth: 800px;
@@ -358,6 +419,10 @@ li:hover .bullet {
   .hide-mobile {
     display: none;
     visibility: hidden;
+  }
+
+  .headline-col {
+    padding-bottom: 0;
   }
 
   .show-mobile {
@@ -379,21 +444,21 @@ li:hover .bullet {
 @media screen and (max-width: 500px) {
   body {
     --padding: 1rem;
+    --bigHeadline: 2rem;
+    --skinnyHeadline: 1.4rem;
+    --subhead: 1.1rem;
   }
 
-  .content-box {
-    padding: 1rem 2.25rem;
+  .row-full-width {
+    padding: 1rem 2rem;
   }
 
   h2.headline {
-    font-size: 2rem;
-    line-height: 2.1rem;
     margin-bottom: 1rem;
   }
 
   h3.subhead {
-    font-size: 1rem;
-    line-height: 1.5rem;
+    padding-right: 3%;
   }
 }
 

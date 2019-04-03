@@ -25,7 +25,8 @@
   overflow: hidden;
   display: flex;
   flex-direction: column-reverse;
-  margin-bottom: 2rem;
+  margin: auto;
+  width: 100%;
   max-width: 360px;
 }
 

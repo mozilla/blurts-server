@@ -1,11 +1,30 @@
+.breach-listing {
+  border: 1px solid rgba(238, 238, 238, 1);
+  background-color: rgba(255, 255, 255, 0);
+  overflow: hidden;
+  border-radius: var(--radius);
+  flex: 1 1 40%;
+  margin: var(--margin);
+  max-width: calc(50% - var(--padding));
+  transition: all 0.2s ease;
+}
+
+.breach-listing:hover {
+  border: 1px solid rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 1);
+  transition: all 0.2s ease;
+}
+
 .breach-listing .breach-logo-title {
   width: 100%;
   padding: 1rem 2rem;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid rgba(238, 238, 238, 1);
+  background-color: var(--color);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .breach-info-wrap {
-  padding: 1rem 2rem 2rem 2rem;
+  padding: 1rem 2rem;
 }
 
 .breach-listing .logo-wrapper {
@@ -37,24 +56,25 @@ img.breach-listing-logo {
 
 .breach-title,
 .breach-info .key {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .breach-info .key {
-  margin-right: 0.25rem;
+  margin-right: 0.5rem;
 }
 
 .breach-listing a {
-  margin-top: 1rem;
-  text-decoration: underline;
+  padding: 0 var(--padding) var(--padding) var(--padding);
+  margin: auto auto 0 0;
 }
 
 @media screen and (max-width: 500px) {
-  .breach-info-wrap {
-    padding: 1rem 1rem 2rem 1rem;
+  .breach-info-wrap,
+  .breach-logo-title.logo-title-wrapper {
+    padding: var(--padding);
   }
 
-  .breach-logo-title.logo-title-wrapper {
-    padding: 1rem;
+  .breach-listing a {
+    padding-bottom: 1.5rem;
   }
 }

@@ -1,5 +1,10 @@
 main.container.monitor-homepage {
-  min-height: 65vh;
+  min-height: 75vh;
+  padding: 0;
+}
+
+.monitor-homepage h3 {
+  margin-top: var(--margin);
 }
 
 .homepage-scan-form {

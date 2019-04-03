@@ -7,11 +7,11 @@
         {{#each (articleLinks)}}
           <li class="logo-title-wrapper flx">
             <div class="bullet"></div>
-            <a href="" class="article-link">{{ this.title }} &#8594;</a>
+            <a href="" class="article-link">{{ this.title }}<span class="arrow">&#8594;</span></a>
           </li>
         {{/each}}
         <li>
-        <a href="" class="more-articles">{{getString "see-more-articles"}} &#8594;</a>
+        <a href="" class="more-articles">{{getString "see-more-articles"}}<span class="arrow">&#8594;</span></a>
         </li>
       </ul>
     </div>

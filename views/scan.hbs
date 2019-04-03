@@ -1,18 +1,20 @@
-<main class="container scan-results">
-  <div class="row">
-    <div class="col-6">
+<main class="container">
+  <div class="row scan-results">
+    <div class="col-6 headline-col">
       {{#if scannedEmailId }}
         <p id="scanned-email-address">Results for <span id="scannedEmail" data-scanned-email-id={{ scannedEmailId }} class="bold"></span></p>
       {{/if}}
-      {{> breach-stats }}
       <h2 class="headline scan-results-headline">{{{fluentNestedBold "guest-scan-results-headline" breachCount=foundBreaches.length}}}</h2>
+    </div>
+
+    <div class="col-6 cntr">
+      {{> breach-stats }}
     </div>
   </div>
 
-
   <div class="row found-breaches">
     {{#eachFromTo foundBreaches 0 4}}
-      <div class="breach-listing">
+      <div class="breach-listing flx flx-col">
         {{> breach_listing this= ./../this}}
       </div>
     {{/eachFromTo}}
@@ -23,7 +25,7 @@
     </div>
     <div id="additional-breaches" class="show-additional-breaches hide flx">
       {{#eachFromTo foundBreaches 4 foundBreaches.length}}
-        <div class="breach-listing">
+        <div class="breach-listing flx flx-col">
           {{> breach_listing this= ./../this}}
         </div>
       {{/eachFromTo}}
@@ -32,5 +34,6 @@
   </div>
 </main>
 
+{{> sign-up-banners/scan-results-sign-up }}
 
-{{> scan-another-email }}
+{{> scan-another-email addClass="stacked"}}

@@ -1,0 +1,19 @@
+<section class="container bg-dark">
+  <div class="row flx-col jst-cntr sign-up-banner">
+    <div class="col-12 flx-cntr txt-cntr">
+      <h2 class="skinny-headline">{{getString "monitor-your-online-accounts"}}</h2>
+    </div>
+    <div class="col-12 flx-cntr txt-cntr">
+      <div class="flx feature-tip-group">
+        {{#each (monitorFeaturesList)}}
+          {{> feature-tip-group }}
+        {{/each}}
+      </div>
+      <div class="features-sign-up">
+        {{> sign-up-button buttonValue="sign-up-for-alerts"}}
+        <p class="desc">{{getString "create-a-fxa"}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+ 

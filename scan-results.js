@@ -31,7 +31,7 @@ const scanResult = async(req, selfScan=false) => {
   if (req.body && req.body.emailHash) {
     scannedEmail = req.body.emailHash;
 
-    if (req.body.scannedEmailId.length > 0) {
+    if (req.body.scannedEmailId) {
       scannedEmailId = req.body.scannedEmailId;
     }
 
