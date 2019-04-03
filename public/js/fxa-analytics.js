@@ -63,10 +63,10 @@ const getFxaUtms = (url) => {
     setMetricsIds(el);
   });
 
-  let fxaUrl = new URL("/metrics-flow?", document.body.dataset.fxaAddress);
-  fxaUrl = getFxaUtms(fxaUrl);
 
   document.querySelectorAll(".open-oauth").forEach( async(el) => {
+    let fxaUrl = new URL("/metrics-flow?", document.body.dataset.fxaAddress);
+    fxaUrl = getFxaUtms(fxaUrl);
     fxaUrl.searchParams.append("entrypoint", encodeURIComponent(el.dataset.entrypoint));
     const response = await fetch(fxaUrl, {credentials: "omit"});
 
