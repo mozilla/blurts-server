@@ -2,18 +2,8 @@
 
 <section id="subpage" class="subpage container" data-analytics-id="{{ analyticsID }}">
   <section class="row-full-width flx-col">
-    {{#ifCompare hash "&&" FXA_ENABLED}}
-        <h2 class="section-headline whole" >{{getString "fxa-unsub-headline"}}</h2>
-        <p class="sub-head whole">
-          {{getString "fxa-unsub-blurb"}}
-          <a class="manage-fxa" href="{{getFxaUrl}}" target="_blank" rel="noopener">
-            {{getString "manage-fxa"}}
-          </a>
-        </p>
-    {{else}}
-      <h2 class="subpage-headline" >{{{ headline }}}</h2>
-      <p class="subpage-subhead">{{{ subhead }}}</p>
-    {{/ifCompare}}
+    <h2 class="subpage-headline" >{{{ headline }}}</h2>
+    <p class="subpage-subhead">{{{ subhead }}}</p>
     {{#if whichPartial}}
       {{> (lookup . 'whichPartial') }}
     {{/if}}

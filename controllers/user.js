@@ -8,7 +8,7 @@ const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const { FluentError } = require("../locale-utils");
 const FXA = require("../lib/fxa");
-const HBSHelpers = require("../template-helpers/hbs-helpers");
+const HBSHelpers = require("../template-helpers/");
 const HIBP = require("../hibp");
 const sha1 = require("../sha1-utils");
 
@@ -33,7 +33,7 @@ async function add(req, res) {
     req.session.user, email, fxNewsletter, signupLanguage
   );
 
-  /* TODO: restore when email templates are working
+
   await EmailUtils.sendEmail(
     email,
     req.fluentFormat("user-add-email-verify-subject"),
@@ -45,17 +45,22 @@ async function add(req, res) {
       whichView: "email_partials/email_verify",
     }
   );
-  */
+
 
   res.send({
     title: req.fluentFormat("user-add-title"),
   });
 }
 
+const getDashboard = (req, res) => {
+  res.render("dashboard", {
+    title: req.fluentFormat("user-dash"),
+  });
+};
+
 
 async function _verify(req) {
   const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
-
   let unsafeBreachesForEmail = [];
   unsafeBreachesForEmail = await HIBP.getBreachesForEmail(
     sha1(verifiedEmailHash.email),
@@ -72,7 +77,7 @@ async function _verify(req) {
     {
       email: verifiedEmailHash.email,
       supportedLocales: req.supportedLocales,
-      date: HBSHelpers.prettyDate(req.supportedLocales, new Date()),
+      date: HBSHelpers.e_prettyDate(req.supportedLocales, new Date()),
       unsafeBreachesForEmail: unsafeBreachesForEmail,
       scanAnotherEmailHref: EmailUtils.getScanAnotherEmailUrl(utmID),
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(verifiedEmailHash, utmID),
@@ -87,11 +92,12 @@ async function verify(req, res) {
   if (!req.query.token) {
     throw new FluentError("user-verify-token-error");
   }
-  const existingSubscriber = await DB.getSubscriberByToken(req.query.token);
-  if (!existingSubscriber) {
+  const existingEmail = await DB.getEmailByToken(req.query.token);
+
+  if (!existingEmail) {
     throw new FluentError("error-not-subscribed");
   }
-  if (!existingSubscriber.verified) {
+  if (!existingEmail.verified) {
     await _verify(req);
   }
 
@@ -188,6 +194,7 @@ function logout(req, res) {
 
 module.exports = {
   getPreferences,
+  getDashboard,
   add,
   verify,
   getUnsubscribe,

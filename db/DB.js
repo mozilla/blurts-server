@@ -26,6 +26,13 @@ const DB = {
     return res[0];
   },
 
+  async getEmailByToken(token) {
+    const res = await knex("email_addresses")
+      .where("verification_token", "=", token);
+
+    return res[0];
+  },
+
   async getSubscriberByTokenAndHash(token, emailSha1) {
     const res = await knex.table("subscribers")
       .first()
@@ -56,12 +63,12 @@ const DB = {
   },
 
   async verifyEmailHash(token) {
-    const unverifiedSubscriber = await this.getSubscriberByToken(token);
-    if (!unverifiedSubscriber) {
-      throw new FluentError("error-not-subscribed");
+    const unverifiedEmail = await this.getEmailByToken(token);
+    if (!unverifiedEmail) {
+      throw new FluentError("Error message for this verification email timed out or something went wrong.");
     }
-    const verifiedSubscriber = await this._verifySubscriber(unverifiedSubscriber);
-    return verifiedSubscriber[0];
+    const verifiedEmail = await this._verifyNewEmail(unverifiedEmail);
+    return verifiedEmail[0];
   },
 
   // TODO: refactor into an upsert? https://jaketrent.com/post/upsert-knexjs/
@@ -158,6 +165,20 @@ const DB = {
     }
 
     return verifiedSubscriber;
+  },
+
+  // Verifies new emails added by existing users
+  async _verifyNewEmail(emailHash) {
+    await HIBP.subscribeHash(emailHash.sha1);
+
+    const verifiedEmail = await knex("email_addresses")
+      .where("email", "=", emailHash.email)
+      .update({
+        verified: true,
+      })
+      .returning("*");
+
+  return verifiedEmail;
   },
 
   /**
