@@ -79,7 +79,7 @@ signup-banner-headline = { -product-name-nowrap } oppdagar truslar mot kontoane 
 download-firefox-bar-blurb = { -product-name-nowrap } vert presentert av den <span class="nowrap">heilt nye { -brand-name }</span>.
 download-firefox-bar-link = Last ned { -brand-name } no
 download-firefox-banner-blurb = Ta kontroll over nettlesaren din
-download-firefox-banner-button = LAst ned { -brand-name }
+download-firefox-banner-button = Last ned { -brand-name }
 signup-modal-headline = Registrer deg for { -product-name-nowrap }
 signup-modal-blurb = Registrer deg for å sjå heile rapporten, få åtvaringar om nye datalekkasjar og sikkerheitstips frå { -product-name-nowrap }.
 signup-modal-close = Lat att
