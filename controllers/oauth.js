@@ -9,7 +9,6 @@ const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const { FluentError } = require("../locale-utils");
-const HBSHelpers = require("../template-helpers/hbs-helpers");
 const HIBP = require("../hibp");
 const mozlog = require("../log");
 const sha1 = require("../sha1-utils");
@@ -94,7 +93,7 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
 
     const utmID = "report";
 
-    /* TODO: restore this when email templates are fixed
+
     await EmailUtils.sendEmail(
       email,
       req.fluentFormat("user-verify-email-report-subject"),
@@ -102,7 +101,7 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
       {
         supportedLocales: req.supportedLocales,
         email: email,
-        date: HBSHelpers.prettyDate(req.supportedLocales, new Date()),
+        date: req.fluentFormat(new Date()),
         unsafeBreachesForEmail: unsafeBreachesForEmail,
         scanAnotherEmailHref: EmailUtils.getScanAnotherEmailUrl(utmID),
         unsubscribeUrl: EmailUtils.getUnsubscribeUrl(verifiedSubscriber, utmID),
@@ -110,11 +109,9 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
         whichView: "email_partials/report",
       }
     );
-    */
     req.session.user = verifiedSubscriber;
   }
-
-  res.redirect("/scan/user_dashboard");
+  res.redirect("/user/dashboard");
 }
 
 module.exports = {

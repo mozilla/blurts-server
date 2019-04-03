@@ -1,26 +1,26 @@
 
 <h2 class="body-copy" style="color: #333333; font-size: 22px; font-weight: 300;">
   {{#if breachAlert}}
-    {{fluentFormat supportedLocales "breach-alert-headline"}}
+    {{getEmailString supportedLocales "breach-alert-headline"}}
   {{else}}
-    {{fluentFormat supportedLocales "report-headline" breachCount=unsafeBreachesForEmail.length}}
+    {{getEmailString supportedLocales "report-headline" breachCount=unsafeBreachesForEmail.length}}
   {{/if}}
 </h2>
  <p class="body-copy" style="color: #333333; font-size: 15px; font-weight: 300;">
   {{#if breachAlert}}
-      {{fluentFormat supportedLocales "breach-alert-subhead"}}
+      {{getEmailString supportedLocales "breach-alert-subhead"}}
   {{else}}
     {{#ifCompare unsafeBreachesForEmail.length "===" 0}}
-      {{fluentFormat supportedLocales "report-subhead-no-breaches"}}
+      {{getEmailString supportedLocales "report-subhead-no-breaches"}}
     {{else}}
-      {{fluentFormat supportedLocales "report-subhead-found-breaches" breachCount=unsafeBreachesForEmail.length}}
+      {{getEmailString supportedLocales "report-subhead-found-breaches" breachCount=unsafeBreachesForEmail.length}}
     {{/ifCompare}}
   </p>
   {{#ifCompare unsafeBreachesForEmail.length "===" 0}}
     <h2 class="body-copy" style="color: #333333; font-size: 22px; font-weight: 300;">
-      {{fluentFormat supportedLocales "pwt-section-headline"}}
+      {{getEmailString supportedLocales "pwt-section-headline"}}
     </h2>
-    <p class="body-copy" style="color: #333333; font-size: 15px; font-weight: 300;">{{fluentFormat supportedLocales "report-pwt-blurb"}}</p>
+    <p class="body-copy" style="color: #333333; font-size: 15px; font-weight: 300;">{{getEmailString supportedLocales "report-pwt-blurb"}}</p>
   {{/ifCompare}}
 {{/if}} <!--breachAlert-->
 

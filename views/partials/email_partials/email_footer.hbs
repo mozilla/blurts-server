@@ -2,14 +2,14 @@
   <tr>
     <td>
       <p class="footer-copy legal-copy" style="margin-top: 0px; font-weight: 300; color: #738597;">
-        {{fluentFormat supportedLocales "automated-message"}}
+        {{getEmailString supportedLocales "automated-message"}}
       </p>
       <p class="footer-copy" style="margin-top: 0px; font-weight: 300; color: #738597;">
-        {{{fluentFormat supportedLocales "we-sent-this-alert" userEmail=email}}}
+        {{{getEmailString supportedLocales "we-sent-this-alert" userEmail=email}}}
       </p>
       <p class="footer-copy" style="padding: 0px 0px 3px 0px; margin: 0px; font-weight: 300; color: #738597 ;">
         <a class="footer-link" style="color: #0060df;" href="{{ unsubscribeUrl }}" rel="noreferrer noopener">
-          {{fluentFormat supportedLocales "unsubscribe-email-link"}}
+          {{getEmailString supportedLocales "unsubscribe-email-link"}}
         </a>
       </p>
     </td>
@@ -26,7 +26,7 @@
       <p class="footer-copy" style="padding: 0px 0px 3px 0px; margin: 0px; font-weight: 300; color: #738597;">Mozilla</p>
       <p class="footer-copy" style="padding: 0px 0px 3px 0px; margin: 0px; font-weight: 300; color: #738597 ;">331 E. Evelyn Avenue Mountain View CA 94041</p>
       <p class="footer-copy" style="padding: 0px; margin: 0px;">
-        <a class="footer-link" href="https://www.mozilla.org/about/legal/{{> email_partials/utm_email_footer }}" rel="noopener" style="color: #0060df;">{{fluentFormat supportedLocales "legal"}}</a><span style="color:#738597;"> &#8226;</span> <a class="footer-link" href="https://www.mozilla.org/privacy/firefox-monitor/{{> email_partials/utm_email_footer }}" rel="noopener" style="color: #0060df;">{{fluentFormat supportedLocales "terms-and-privacy"}}</a>
+        <a class="footer-link" href="https://www.mozilla.org/about/legal/{{> email_partials/utm_email_footer }}" rel="noopener" style="color: #0060df;">{{getEmailString supportedLocales "legal"}}</a><span style="color:#738597;"> &#8226;</span> <a class="footer-link" href="https://www.mozilla.org/privacy/firefox-monitor/{{> email_partials/utm_email_footer }}" rel="noopener" style="color: #0060df;">{{getEmailString supportedLocales "terms-and-privacy"}}</a>
       </p>
     </td>
   </tr>

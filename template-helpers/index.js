@@ -2,6 +2,7 @@
 
 const articles = require("./articles");
 const breaches = require("./breaches");
+const emails = require("./emails");
 const footer = require("./footer");
 const header = require("./header");
 const legacyHelpers = require("./hbs-helpers");
@@ -13,6 +14,7 @@ module.exports = {
   helpers: Object.assign(
     articles,
     breaches,
+    emails,
     footer,
     header,
     legacyHelpers,

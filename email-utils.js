@@ -6,7 +6,7 @@ const AppConstants = require("./app-constants");
 const nodemailer = require("nodemailer");
 const hbs = require("nodemailer-express-handlebars");
 
-const HBSHelpers = require("./template-helpers/hbs-helpers");
+const HBSHelpers = require("./template-helpers/");
 const mozlog = require("./log");
 
 
@@ -18,7 +18,7 @@ const hbsOptions = {
     layoutsDir: __dirname + "/views/layouts",
     defaultLayout: "default_email",
     partialsDir: __dirname + "/views/partials",
-    helpers: HBSHelpers,
+    helpers: HBSHelpers.helpers,
   },
   viewPath: __dirname + "/views/layouts",
   extName: ".hbs",
