@@ -61,7 +61,7 @@ nav.mobile-menu a {
 }
 
 nav.mobile-menu a:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 /* signed-in user avatar */
@@ -98,14 +98,15 @@ img.avatar {
 
 .fxa-menu-links {
   background-color: rgba(255, 255, 255, 1);
-  border-radius: 3px;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
   display: none;
   flex-direction: column;
-  min-width: calc(10rem + 1vw);
+  min-width: calc(12rem + 1vw);
   opacity: 0;
-  padding: 1rem 1.5rem;
+  padding: 0;
   visibility: hidden;
+  border-radius: var(--radius);
+  overflow: hidden;
 }
 
 .menu-open .close-menu {
@@ -127,7 +128,14 @@ img.avatar {
 }
 
 .fxa-menu-links a {
-  padding: 0.5rem 0;
+  padding: 1rem 2rem 1rem 1rem;
+  border-bottom: 1px solid rgba(238, 238, 238, 0.502);
+  color: rgba(21, 20, 23, 0.77);
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.fxa-menu-links a:hover {
+  background-color: rgba(155, 155, 165, 0.06);
 }
 
 @media screen and (max-width: 800px) {

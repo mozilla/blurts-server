@@ -80,21 +80,17 @@
     line-height: 150%;
   }
 
+  .latest-breach .fxm {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 500px) {
   .latest-breach .logo-title-wrapper {
     padding: 0.5rem 0;
     margin-bottom: 0;
   }
 
-  .latest-breach .fxm {
-    display: block;
-  }
-
-  .latest-breach-info {
-    padding: 1.5rem;
-  }
-}
-
-@media screen and (max-width: 500px) {
   .latest-breach-wrapper {
     margin: 0;
     border-radius: 0;
@@ -115,6 +111,8 @@
   .latest-breach-info {
     border-top: none;
     padding-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     border: 1px dashed rgba(238, 238, 238, 0.2);
     border-bottom-right-radius: 1rem;
     border-bottom-left-radius: 1rem;

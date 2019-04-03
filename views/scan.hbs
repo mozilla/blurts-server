@@ -21,7 +21,7 @@
     {{#ifCompare foundBreaches.length ">" 4}}
     <div id="show-all-breaches-wrapper" class="col-12 show">
       <p class="txt-cntr">Currently showing <span class="bold">4</span> of <span class="bold">{{ foundBreaches.length }}</span> breaches.</p>
-      <button id="show-all-breaches" class="utility-button" data-event-category="Show All Breaches">{{getString "show-all-breaches"}}</button>
+      <button id="show-all-breaches" class="util-btn light-btn" data-event-category="Show All Breaches">{{getString "show-all-breaches"}}</button>
     </div>
     <div id="additional-breaches" class="show-additional-breaches hide flx">
       {{#eachFromTo foundBreaches 4 foundBreaches.length}}
