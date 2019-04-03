@@ -44,12 +44,12 @@ function fluentFxa (id, args) {
 
 
 function getStringID (id, number, args) {
-  const supportedLocales = args.data.root.req.supportedLocales;
-  id = `${id}${number}`;
-  if (modifiedStringMap[id]) {
-    id = modifiedStringMap[id];
-  }
-  return LocaleUtils.fluentFormat(supportedLocales, id);
+  // const supportedLocales = args.data.root.req.supportedLocales;
+  // id = `${id}${number}`;
+  // if (modifiedStringMap[id]) {
+  //   id = modifiedStringMap[id];
+  // }
+  // return LocaleUtils.fluentFormat(supportedLocales, id);
 }
 
 
