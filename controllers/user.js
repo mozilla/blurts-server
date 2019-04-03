@@ -8,7 +8,7 @@ const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const { FluentError } = require("../locale-utils");
 const FXA = require("../lib/fxa");
-const HBSHelpers = require("../template-helpers/");
+const HBSHelpers = require("../template-helpers/emails");
 const HIBP = require("../hibp");
 const sha1 = require("../sha1-utils");
 
@@ -52,7 +52,10 @@ async function add(req, res) {
   });
 }
 
-const getDashboard = (req, res) => {
+const getDashboard = async(req, res) => {
+  const user = req.session.user;
+  const userEmails = await DB.getUserEmails(user.id);
+  console.log(userEmails);
   res.render("dashboard", {
     title: req.fluentFormat("user-dash"),
   });

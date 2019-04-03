@@ -177,8 +177,17 @@ const DB = {
         verified: true,
       })
       .returning("*");
-
+      
   return verifiedEmail;
+  },
+
+  async getUserEmails(userId) {
+
+    const userEmails = await knex("email_addresses")
+      .where("subscriber_id", "=", userId)
+      .returning("*");
+
+    return userEmails;
   },
 
   /**
