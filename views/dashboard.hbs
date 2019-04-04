@@ -1,8 +1,65 @@
-<main class="container dash">
+
+<main id="dashboard" class="dashboard">
   <div class="row">
-    <div class="col-6">
+    <div class="col-8">
       <p class="welcome-back">Welcome back <span class="bold">{{ req.session.user.fxa_profile_json.email }}</span></p>
-      <h2 class="skinny-headline">Breach Summary</h2>
     </div>
   </div>
+  <div class="row dashboard-wrap-reverse">
+
+    <!-- verified emails table -->
+    <div class="flx-col">
+      <div class="col-12 email-table">
+        <h2 class="skinny-headline">Email Addresses</h2>
+          {{#each verifiedEmails }}
+          <div class="email-card flx flx-col toggle-parent inactive">
+            <div class="e-toggle-info-wrapper">
+              <div class="e-info">
+                <span class="e-address">{{ email }}</span>
+                <span class="e-num-breaches">appears in {{ breaches.length }} breaches</span>
+              </div>
+              <div class="toggle">
+                {{> svg/toggle-down }}
+              </div>
+            </div>
+            <div class="e-breach-list">
+              {{#each breaches}}
+                <div class="breach-listing">
+                  {{> breach_listing this=./../../this}}
+                </div>
+              {{/each }}
+            </div>
+          </div>
+          {{/each}}
+      </div>
+
+
+      <!-- unverified emails table -->
+      <div class="col-12 unverified email-table">
+        <h2 class="skinny-headline">Pending Verification</h2>
+        {{#each unverifiedEmails}}
+          <div class="unverified email-card">
+            <div class="unverified e-toggle-info-wrapper">
+              <span class="unverified-e-address">{{ this.email }}</span>
+              {{!-- <form action="/user/resend-email" class="resend-email-form">
+                <input type="hidden" name="email" value="{{ this.email }}">
+                <input type="submit" class="resend-email" value="Resend Verification Email" />
+              </form> --}}
+              <button class="resend-email">Resend Verification Email</button>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div> <!--closes flx-col -->
+
+
+    <!-- sidebar -->
+    <div class="col-4 dash-stats">
+      <h2 class="skinny-headline breach-summary">Breach Summary</h2>
+      {{> breach-stats addClasses="user-stats"}}
+    </div>
+
+
+
+  </div><!--closes row-->
 </main>

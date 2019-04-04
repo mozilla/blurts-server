@@ -2,7 +2,6 @@
 
 const AppConstants = require("./../app-constants");
 const { LocaleUtils } = require("./../locale-utils");
-const modifiedStringMap = require("./../modified-strings");
 const mozlog = require("./../log");
 
 

@@ -96,6 +96,7 @@ input[type="email"] {
   font-weight: 300;
   border-color: var(--borderColors);
   text-indent: var(--margin);
+  background-color: transparent;
   transition: all 0.1s ease-out;
 }
 

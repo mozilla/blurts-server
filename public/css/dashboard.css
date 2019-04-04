@@ -1,0 +1,132 @@
+/* User breach stats */
+main.dashboard {
+  border-top: 1px dashed var(--borderColor);
+}
+
+main.dashboard .row {
+  flex-wrap: wrap;
+  max-width: 1400px;
+}
+
+.breach-stats.user-stats {
+  margin: 0 0 var(--margin) 0;
+}
+
+/* table of monitored email addresses */
+.email-table {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+/* email cards */
+.e-toggle-info-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--margin) 0;
+  border-bottom: 1px solid#eee;
+}
+
+.e-info { /* wraps email address info */
+  display: inline-flex;
+  flex-direction: column;
+}
+
+/* email card styling */
+.e-address {
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.e-num-breaches {
+  font-style: italic;
+  font-weight: 300;
+  color: #666;
+}
+
+/* email card breaches */
+.email-card .e-breach-list {
+  visibility: hidden;
+  opacity: 0;
+  max-height: 0;
+  transition: all 0.3s ease;
+}
+
+.email-card.inactive .e-breach-list > * {
+  max-height: 0;
+  transition: all 0.3s ease;
+}
+
+.email-card.active .e-breach-list > * {
+  max-height: 10000px;
+  transition: all 0.3s ease;
+}
+
+.email-card.active .e-breach-list {
+  visibility: visible;
+  opacity: 1;
+  max-height: 20000px;
+  transition: all 0.3s ease;
+}
+
+/* unverified emails */
+button.resend-email {
+  border-width: 0;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+}
+
+button.resend-email:hover {
+  outline: none;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.05);
+  box-shadow: none;
+}
+
+/* toggle transition on card open */
+.email-card .toggle {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1 1 50%;
+  position: relative;
+  transition: all 0.1s ease;
+}
+
+svg.toggle-down {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: var(--padding);
+}
+
+.email-card.active .toggle-down {
+  transform: rotate(180deg);
+  transition: all 0.1s ease;
+}
+
+/* sidebar */
+.skinny-headline.breach-summary {
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 800px) {
+  main.dashboard {
+    border-top: none;
+  }
+
+  .dash-stats,
+  .breach-stats {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .row.dashboard-wrap-reverse {
+    flex-direction: column-reverse;
+  }
+}

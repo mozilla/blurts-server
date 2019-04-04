@@ -20,7 +20,13 @@ function _requireSessionUser(req) {
   return req.session.user;
 }
 
+async function resend(req, res) {
+  return res.json("Resend the email");
+}
+
 async function add(req, res) {
+  // need to decide how to handle resends
+
   _requireSessionUser(req);
   const email = req.body.email;
 
@@ -52,14 +58,42 @@ async function add(req, res) {
   });
 }
 
-const getDashboard = async(req, res) => {
+const bundleVerifiedEmails = async(email, emailSha1, ifPrimary, allBreaches) => {
+  const foundBreaches = await HIBP.getBreachesForEmail(emailSha1, allBreaches, true);
+
+  const emailEntry = {
+    "email": email,
+    "breaches": foundBreaches,
+    "primary": ifPrimary,
+  };
+  return emailEntry;
+};
+
+async function getDashboard(req, res) {
+  const allBreaches = req.app.locals.breaches;
   const user = req.session.user;
-  const userEmails = await DB.getUserEmails(user.id);
-  console.log(userEmails);
+  const monitoredEmails = await DB.getUserEmails(user.id);
+
+  const verifiedEmails = [];
+  const unverifiedEmails = [];
+
+  verifiedEmails.push(await bundleVerifiedEmails(user.primary_email, user.primary_sha1, true, allBreaches));
+
+  for (const email of monitoredEmails) {
+    if (email.verified) {
+      const formattedEmail = await bundleVerifiedEmails(email.email, email.sha1, email.verified, allBreaches);
+      verifiedEmails.push(formattedEmail);
+    } else {
+      unverifiedEmails.push(email);
+    }
+  }
+
+  // console.log(verifiedEmails);
   res.render("dashboard", {
     title: req.fluentFormat("user-dash"),
+    verifiedEmails, unverifiedEmails,
   });
-};
+}
 
 
 async function _verify(req) {
@@ -205,4 +239,5 @@ module.exports = {
   getUnsubSurvey,
   postUnsubSurvey,
   logout,
+  resend,
 };

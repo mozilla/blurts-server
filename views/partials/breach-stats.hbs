@@ -1,5 +1,5 @@
-      <section class="breach-stats">
-        {{#each (breachStats)}}
+      <section class="breach-stats {{ addClasses }}">
+        {{#each (getBreachStats)}}
           <div class="breach-stat-row flx">
             <div class="breach-stat-number flx flx-cntr bold">
               {{ this.count }}

@@ -3,6 +3,7 @@
 /* global sendPing */
 /* global getFxaUtms */
 /* global hashEmailAndSend */
+/* global resendEmail */
 
 
 if (typeof TextEncoder === "undefined") {
@@ -239,8 +240,7 @@ function checkBoxStates(checkBoxEvent) {
 }
 
 const resendSubscribeData = function() {
-  ga_sendLegacyPing("Resend", false);
-  document.getElementById("confirm-your-account").classList.add("sending");
+  // document.getElementById("confirm-your-account").classList.add("sending");
   const userEmail = {
     "email": document.getElementById("submitted-email").textContent,
   };
@@ -413,6 +413,9 @@ function handleFormSubmits(formEvent) {
 }
 
 async function doButtonRouting(event) {
+  if (event.target.id === "resend-email") {
+    return resendEmail(event);
+  }
   if (document.body.dataset.fxaEnabled === "fxa-enabled") {
     if (event.target.classList.contains("sign-up-button") || event.target.id === "login-btn" || event.target.classList.contains("open-oauth")) {
       return doOauth(event.target);

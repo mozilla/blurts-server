@@ -547,3 +547,10 @@ feat-email-alerts= Email alerts for new breaches
 feat-info-about= Info about other {-brand-Mozilla} services
 
 sign-up-for-fxa= Sign up for a {-brand-fxa}
+
+
+appears-in-x-breaches =
+  { $breachCount ->
+        [one] Appears in { $breachCount } breach.
+       *[other] appears in { $breachCount } breaches.
+  }

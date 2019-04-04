@@ -6,7 +6,10 @@
   box-shadow: 1px 1px 10px #8181810e;
   border-radius: var(--radius);
   padding: 0;
-  background-color: rgba(249, 249, 250, 1);
+
+  /* background-color: rgba(249, 249, 250, 1); */
+  color: rgba(255, 255, 255, 0.8);
+  background-color: var(--darkBlue);
 }
 
 .latest-breach {
@@ -20,7 +23,7 @@
   font-weight: 200;
   text-transform: uppercase;
   letter-spacing: 2px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .latest-breach .logo-wrapper {
@@ -43,7 +46,7 @@
 
 .latest-breach-info {
   padding: var(--padding) calc(var(--padding) * 2) calc(var(--padding) * 2) calc(var(--padding) * 2);
-  background-color: rgba(249, 249, 250, 1);
+  background-color: rgba(249, 249, 250, 0.15);
   border-top: 1px solid #7cdfff0d;
 }
 
@@ -102,7 +105,7 @@
 
   .latest-breach-headline {
     padding: 1rem 1rem 1rem 1rem;
-    border: 1px dashed rgba(238, 238, 238, 0.2);
+    border: 1px dashed var(--borderColor);
     border-bottom: none;
     border-top-right-radius: 1rem;
     border-top-left-radius: 1rem;
@@ -113,7 +116,7 @@
     padding-bottom: 2rem;
     padding-left: 1rem;
     padding-right: 1rem;
-    border: 1px dashed rgba(238, 238, 238, 0.2);
+    border: 1px dashed var(--borderColor);
     border-bottom-right-radius: 1rem;
     border-bottom-left-radius: 1rem;
   }
