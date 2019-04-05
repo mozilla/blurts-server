@@ -15,27 +15,9 @@
       <div class="col-12 email-table">
         <h2 class="skinny-headline">Email Addresses</h2>
           {{#each verifiedEmails }}
-          <div class="verified email-card flx flx-col toggle-parent inactive">
-            <div class="e-toggle-info-wrapper">
-              <div class="e-info">
-                <span class="e-address">{{ email }}</span>
-                <span class="e-num-breaches">appears in {{ breaches.length }} breaches</span>
-              </div>
-              <div class="toggle">
-                {{> svg/toggle-down }}
-              </div>
-            </div>
-            <div class="e-breach-list">
-              {{#each breaches}}
-                <div class="breach-listing">
-                  {{> breach_listing this=./../../this}}
-                </div>
-              {{/each }}
-            </div>
-          </div>
+            {{> email-card }}
           {{/each}}
       </div>
-
 
       <!-- unverified emails table -->
       <div class="col-12 unverified email-table">
@@ -44,17 +26,11 @@
           <div class="unverified email-card">
             <div class="unverified e-toggle-info-wrapper">
               <span class="unverified-e-address">{{ this.email }}</span>
-              {{!-- <form action="/user/resend-email" class="resend-email-form">
-                <input type="hidden" name="email" value="{{ this.email }}">
-                <input type="submit" class="resend-email" value="Resend Verification Email" />
-              </form> --}}
               <button class="resend-email">Resend Verification Email</button>
             </div>
           </div>
         {{/each}}
       </div>
-
-
 
   </div><!--closes row-->
 </main>
