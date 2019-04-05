@@ -113,12 +113,12 @@ function eachFromTo(ary, min, max, options) {
   if(!ary || ary.length === 0)
       return options.inverse(this);
 
-  const result = [];
+  let result = "";
 
   for (let i = min; i < max && i < ary.length; i++) {
-    result.push(options.fn(ary[i], { data : { itemIndex : i } } ));
+    result = result + options.fn(ary[i]);
   }
-  return result.join("");
+  return result;
 }
 
 function loop(from, to, inc, block) {
