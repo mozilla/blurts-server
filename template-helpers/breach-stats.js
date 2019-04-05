@@ -34,6 +34,7 @@ for (const stat in breachStats) {
     breachStats[stat][stringId] = translatedString;
   }
 }
+
   // tally up found breaches
   if (args.data.root.foundBreaches) {
     // stats are for generic scan
@@ -49,7 +50,7 @@ for (const stat in breachStats) {
     // combine the breaches for each account, breach duplicates are ok
     // since the user may have multiple accounts with different emails
     verifiedEmails.forEach(email => {
-      foundBreaches = foundBreaches.concat(foundBreaches, email.breaches);
+      foundBreaches = [...foundBreaches, ...email.breaches];
     });
   }
 
