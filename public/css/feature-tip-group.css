@@ -23,13 +23,12 @@
   border-color: var(--borderColors);
   border-width: 36px;
   border-style: double;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
-.feature-tip-content-wrapper:hover .feat-img,
-.feat-img:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-  transition: all 0.3s ease;
+.feature-tip-content-wrapper.col.txt-cntr:hover .feat-img {
+  transform: scale(1.10);
+  transition: all 0.2s ease-in-out;
 }
 
 .feature-tip-link,

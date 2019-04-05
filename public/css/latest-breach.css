@@ -8,6 +8,14 @@
   padding: 0;
   color: rgba(255, 255, 255, 0.8);
   background-color: var(--darkBlue);
+  transform: scale(1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.latest-breach-wrapper:hover {
+  transform: scale(1.01);
+  box-shadow: 1px 1px 10px #818181;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .latest-breach {
