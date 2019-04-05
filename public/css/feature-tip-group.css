@@ -15,17 +15,15 @@
 }
 
 .feat-img {
-  height: 4rem;
-  width: 4rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  height: 5rem;
+  width: 5rem;
   border-radius: 50%;
   margin: var(--padding) auto;
   background-color: rgba(255, 255, 255, 0);
+  border-color: var(--borderColors);
+  border-width: 36px;
+  border-style: double;
   transition: all 0.3s ease;
-}
-
-.bg-white .feat-img {
-  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .feature-tip-content-wrapper:hover .feat-img,

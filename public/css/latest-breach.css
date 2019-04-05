@@ -6,8 +6,6 @@
   box-shadow: 1px 1px 10px #8181810e;
   border-radius: var(--radius);
   padding: 0;
-
-  /* background-color: rgba(249, 249, 250, 1); */
   color: rgba(255, 255, 255, 0.8);
   background-color: var(--darkBlue);
 }
@@ -17,6 +15,7 @@
 }
 
 .latest-breach-headline {
+  font-size: 1rem;
   text-align: center;
   margin-bottom: 0;
   padding: 1.5rem;
@@ -40,12 +39,30 @@
   font-size: 0.9rem;
 }
 
-.latest-breach a {
-  font-weight: 500;
+span.fxm,
+.latest-breach .key,
+.latest-breach a.button {
+  color: rgba(255, 255, 255, 1);
+}
+
+.latest-breach a.button {
+  margin-top: 1rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+  background-color: rgb(76, 28, 223);
+  width: 100%;
+  padding: 1.5rem 1rem;
+  border: 1px solid #ffc0cb4d;
+  border-radius: 0.5rem;
+}
+
+.latest-breach a.button:hover {
+  border: 1px solid transparent;
+  background-color: rgb(71, 25, 207);
 }
 
 .latest-breach-info {
-  padding: var(--padding) calc(var(--padding) * 2) calc(var(--padding) * 2) calc(var(--padding) * 2);
+  padding: calc(var(--padding) + 1rem) calc(var(--padding) * 2) calc(var(--padding) * 2) calc(var(--padding) * 2);
   background-color: rgba(249, 249, 250, 0.15);
   border-top: 1px solid #7cdfff0d;
 }
@@ -97,15 +114,17 @@
   .latest-breach-wrapper {
     margin: 0;
     border-radius: 0;
-    background-color: var(--color);
+
+    /* background-color: var(--color); */
     color: rgba(255, 255, 255, 1);
-    padding: 2rem !important;
+
+    /* padding: 2rem !important; */
     box-shadow: none;
   }
 
   .latest-breach-headline {
     padding: 1rem 1rem 1rem 1rem;
-    border: 1px dashed var(--borderColor);
+    border: 1px dashed rgba(255, 255, 255, 0.1);
     border-bottom: none;
     border-top-right-radius: 1rem;
     border-top-left-radius: 1rem;
@@ -114,16 +133,11 @@
   .latest-breach-info {
     border-top: none;
     padding-bottom: 2rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    border: 1px dashed var(--borderColor);
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
     border-bottom-right-radius: 1rem;
     border-bottom-left-radius: 1rem;
-  }
-
-  .latest-breach-headline,
-  .latest-breach-info {
-    background-color: transparent;
   }
 
   .latest-breach.container {
@@ -133,14 +147,5 @@
   .latest-breach .breach-info {
     margin-bottom: 0.5rem;
     color: rgba(255, 255, 255, 0.6);
-  }
-
-  .latest-breach .key {
-    color: rgba(255, 255, 255, 1);
-  }
-
-  .latest-breach a {
-    margin-top: 1rem;
-    color: rgba(255, 255, 255, 0.9);
   }
 }

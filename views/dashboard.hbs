@@ -8,11 +8,14 @@
   <div class="row dashboard-wrap-reverse">
 
     <!-- verified emails table -->
-    <div class="flx-col">
+    <div class="col-12 dash-stats">
+      <h2 class="skinny-headline breach-summary">Breach Summary</h2>
+      {{> breach-stats addClasses="user-stats"}}
+    </div>
       <div class="col-12 email-table">
         <h2 class="skinny-headline">Email Addresses</h2>
           {{#each verifiedEmails }}
-          <div class="email-card flx flx-col toggle-parent inactive">
+          <div class="verified email-card flx flx-col toggle-parent inactive">
             <div class="e-toggle-info-wrapper">
               <div class="e-info">
                 <span class="e-address">{{ email }}</span>
@@ -50,14 +53,6 @@
           </div>
         {{/each}}
       </div>
-    </div> <!--closes flx-col -->
-
-
-    <!-- sidebar -->
-    <div class="col-4 dash-stats">
-      <h2 class="skinny-headline breach-summary">Breach Summary</h2>
-      {{> breach-stats addClasses="user-stats"}}
-    </div>
 
 
 

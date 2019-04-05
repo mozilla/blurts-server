@@ -1,5 +1,5 @@
 footer {
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--borderColor);
   width: 100%;
   margin: auto auto 0 auto;
 }

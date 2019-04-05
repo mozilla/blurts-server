@@ -21,6 +21,9 @@ function _requireSessionUser(req) {
 }
 
 async function resend(req, res) {
+  // Resend verification email
+  // Delete the unverified email if it appears anywhere else (under the user's id);
+  // Reset the verification clock
   return res.json("Resend the email");
 }
 
@@ -87,8 +90,6 @@ async function getDashboard(req, res) {
       unverifiedEmails.push(email);
     }
   }
-
-  // console.log(verifiedEmails);
   res.render("dashboard", {
     title: req.fluentFormat("user-dash"),
     verifiedEmails, unverifiedEmails,

@@ -8,7 +8,7 @@ main.container.monitor-homepage {
 }
 
 .homepage-scan-form {
-  border: 1px solid #eee;
+  border: 1px dashed var(--borderColor);
   border-radius: var(--radius);
 }
 

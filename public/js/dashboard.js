@@ -1,16 +1,16 @@
 "use strict";
 
-const findAncestor = (el, cls) => {
-  while ((el = el.parentElement) && !el.classList.contains(cls));
-  return el;
-};
 
 const toggleEl = (e) => {
-  const toggleElem = e.target;
-  const toggleParent = findAncestor(toggleElem, "toggle-parent");
+  const toggleParent = e.target;
   ["inactive", "active"].forEach(className => {
     toggleParent.classList.toggle(className);
   });
+};
+
+const findAncestor = (el, cls) => {
+  while ((el = el.parentElement) && !el.classList.contains(cls));
+  return el;
 };
 
 const resendEmail = async(e) => {
@@ -30,8 +30,8 @@ const resendEmail = async(e) => {
   });
 };
 
-if (document.querySelector(".toggle")) {
-  const toggles = document.querySelectorAll(".toggle");
+if (document.querySelector(".toggle-parent")) {
+  const toggles = document.querySelectorAll(".toggle-parent");
   toggles.forEach(el => {
     el.addEventListener("click", toggleEl);
   });

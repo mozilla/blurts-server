@@ -1,11 +1,7 @@
 /* User breach stats */
-main.dashboard {
-  border-top: 1px dashed var(--borderColor);
-}
-
 main.dashboard .row {
   flex-wrap: wrap;
-  max-width: 1400px;
+  max-width: 800px;
 }
 
 .breach-stats.user-stats {
@@ -16,6 +12,7 @@ main.dashboard .row {
 .email-table {
   border-radius: 1rem;
   overflow: hidden;
+  cursor: pointer;
 }
 
 /* email cards */
@@ -26,6 +23,7 @@ main.dashboard .row {
   align-items: center;
   padding: var(--margin) 0;
   border-bottom: 1px solid#eee;
+  pointer-events: none;
 }
 
 .e-info { /* wraps email address info */
@@ -71,11 +69,16 @@ main.dashboard .row {
   transition: all 0.3s ease;
 }
 
+.email-card.verified {
+  cursor: pointer;
+}
+
 /* unverified emails */
 button.resend-email {
   border-width: 0;
   border-radius: 0.25rem;
   padding: 0.5rem;
+  pointer-events: all;
 }
 
 button.resend-email:hover {
@@ -91,17 +94,31 @@ button.resend-email:hover {
   justify-content: flex-end;
   flex: 1 1 50%;
   position: relative;
+  height: 100%;
   transition: all 0.1s ease;
 }
 
 svg.toggle-down {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   position: absolute;
   top: 0;
   bottom: 0;
   margin: auto;
   right: var(--padding);
+  background-color: lightblue;
+  border-radius: 50%;
+  padding: 6px;
+  transition: all 0.2s ease;
+}
+
+svg.toggle-down path {
+  fill: rgba(255, 255, 255, 1);
+}
+
+.email-card:hover svg.toggle-down {
+  background-color: rgba(147, 194, 209, 0.767);
+  transition: all 0.2s ease;
 }
 
 .email-card.active .toggle-down {
@@ -109,7 +126,6 @@ svg.toggle-down {
   transition: all 0.1s ease;
 }
 
-/* sidebar */
 .skinny-headline.breach-summary {
   font-size: 1rem;
 }
@@ -123,10 +139,38 @@ svg.toggle-down {
   .breach-stats {
     max-width: 100%;
   }
+
+  .dash-stats,
+  .email-table {
+    margin-bottom: 3rem;
+  }
+
+  .skinny-headline.breach-summary {
+    font-size: var(--skinnyHeadline);
+  }
 }
 
 @media screen and (max-width: 600px) {
-  .row.dashboard-wrap-reverse {
-    flex-direction: column-reverse;
+  .e-address {
+    font-size: 1rem;
+  }
+
+  .dashboard .col-12 {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
+  .unverified.e-toggle-info-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  button.resend-email {
+    padding: 0.5rem 0;
+  }
+
+  button.resend-email:hover {
+    background-color: transparent;
   }
 }
