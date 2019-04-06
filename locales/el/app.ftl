@@ -19,6 +19,7 @@ about-firefox-alerts = Σχετικά με τις ειδοποιήσεις το�
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Αποστολή σχολίων
 terms-and-privacy = Όροι και απόρρητο
+error-could-not-add-email = Αδυναμία προσθήκης διεύθυνσης email στη βάση δεδομένων.
 error-not-subscribed = Αυτή η διεύθυνση email δεν έχει εγγραφεί στο { -product-name }.
 error-hibp-throttled = Πάρα πολλές συνδέσεις στο { -brand-HIBP }.
 error-hibp-connect = Σφάλμα σύνδεσης στο { -brand-HIBP }.
@@ -119,6 +120,7 @@ what-to-do-subhead-3 = Λάβετε επιπρόσθετα μέτρα ασφάλ
 what-to-do-subhead-4 = Λάβετε βοήθεια για τη δημιουργία και την προστασία καλών κωδικών πρόσβασης.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Ημερομηνία παραβίασης:
+confirmed = Επιβεβαιώθηκε!<br />Έχετε εγγραφεί!
 unsub-headline = Κατάργησης εγγραφής από το { -product-name-nowrap }
 unsub-blurb = Το email σας θα αφαιρεθεί από τη λίστα του { -product-name-nowrap } και δεν θα λαμβάνετε πλέον ειδοποιήσεις όταν ανακοινώνονται νέες παραβιάσεις.
 unsub-button = Κατάργηση εγγραφής
@@ -129,6 +131,7 @@ unsub-reason-5 = Χρησιμοποιώ άλλη υπηρεσία για την 
 unsub-reason-6 = Κανένα από τα παραπάνω
 unsub-survey-thankyou = Ευχαριστούμε για τα σχόλιά σας.
 unsub-survey-error = Παρακαλούμε επιλέξτε ένα.
+unsub-survey-headline-v2 = Έχετε καταργήσει την εγγραφή σας.
 unsub-survey-button = Υποβολή απάντησης
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Κοινοποίηση
@@ -150,6 +153,7 @@ share-other = Άλλο
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Κοινωνικά δίκτυα
 show-all = Προβολή όλων
+fxa-scan-label = Δείτε αν έχετε εμφανιστεί σε κάποια διαρροή δεδομένων.
 fxa-welcome-headline = Καλώς ορίσατε στο { -product-name }.
 fxa-scan-another-email = Θέλετε να ελέγξετε άλλο email;
 # Search Firefox Monitor
