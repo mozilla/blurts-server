@@ -87,6 +87,7 @@ professional-skills = Profesjonelle ferdigheiter
 profile-photos = Profilbilde
 purchases = Innkjøp
 purchasing-habits = Innkjøpsvanar
+races = Tevlingar
 recovery-email-addresses = E-postadresser for tilbakestilling
 relationship-statuses = Forholdsstatusar
 religions = Religionar
