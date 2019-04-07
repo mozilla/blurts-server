@@ -200,5 +200,6 @@ fb-landing-headline = Εκτέθηκαν οι πληροφορίες σας στ
 # Alerts is a noun
 sign-up-for-alerts = Εγγραφή για ειδοποιήσεις
 sign-up-for-fxa-alerts = Εγγραφή για ειδοποιήσεις του { -product-name }.
+get-your-report-and-sign-up = Λάβετε την αναφορά σας και εγγραφείτε για ειδοποιήσεις.
 # Link title
 frequently-asked-questions = Συχνές ερωτήσεις
