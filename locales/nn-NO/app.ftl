@@ -203,6 +203,15 @@ fxa-pwt-section-blurb =
     Hackarar er avhengig av dei dårlege vanane dine - som det at du brukar same passord
     overalt eller brukar vanlege passord (t.d. minkode1234) - slik at dei kan hacke 
     mange kontoar, viss dei berre hackar éin.
+fxa-pwt-summary-2 =
+    Korte passord med berre eitt ord er enkle for hackarar å gjette.
+    Bruk minst to ord og ein kombinasjon av bokstavar, tal og spesialteikn.
+fxa-pwt-summary-4 =
+    Program for passordhandtering som 1Password, LastPass, Dashlane og Bitwarden lagrar passorda dine
+    og fyller dei ut på nettsider for deg. Dei hjelper deg til og med med å lage eit sterkt passord.
+fxa-pwt-summary-6 =
+    Datalekkasjar aukar. Om din personlege informasjon vert avslørt i ein datalekkasje, 
+    vil { -product-name } sende deg ei åtvaring - slik at du kan ta forholdsreglar og verne kontoane dine.
 content-available = Innhaldet er tilgjengeleg under ein Creative Commons-lisens.
 # Alerts is a noun
 sign-up-for-alerts = Registrer deg for varsel
