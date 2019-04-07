@@ -198,10 +198,18 @@ user-generic-found-breaches-blurb =
        *[other] Desse { $breachCount } datalekkasjane kompromitterte følgjande personlege opplysningar.
     }
 have-an-account = Har du allereie ein konto?
+fxa-pwt-section-blurb =
+    Passord beskyttar all personleg informasjon på online-kontoane dine. 
+    Hackarar er avhengig av dei dårlege vanane dine - som det at du brukar same passord
+    overalt eller brukar vanlege passord (t.d. minkode1234) - slik at dei kan hacke 
+    mange kontoar, viss dei berre hackar éin.
 content-available = Innhaldet er tilgjengeleg under ein Creative Commons-lisens.
 # Alerts is a noun
 sign-up-for-alerts = Registrer deg for varsel
 sign-up-for-fxa-alerts = Registrer deg på { -product-name } for varsel.
+create-free-account =
+    Oprett ein gratis { -brand-fxa } og få tilgang til heile rapporten om tidlegare datalekkasjar, 
+    åtvaringar om nye lekkasjar i tillegg til info om andre { -brand-Mozilla }-tenester.
 get-your-report-and-sign-up = Få din rapport og registrer deg for åtvaringar.
 # Link title
 frequently-asked-questions = Vanlege spørsmål
