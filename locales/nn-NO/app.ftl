@@ -212,6 +212,7 @@ fxa-pwt-summary-4 =
 fxa-pwt-summary-6 =
     Datalekkasjar aukar. Om din personlege informasjon vert avslørt i ein datalekkasje, 
     vil { -product-name } sende deg ei åtvaring - slik at du kan ta forholdsreglar og verne kontoane dine.
+copyright = Delar av dette innhaldet er © 1999-{ $year } av einskilde mozilla.org-bidragsytarar.
 content-available = Innhaldet er tilgjengeleg under ein Creative Commons-lisens.
 # Alerts is a noun
 sign-up-for-alerts = Registrer deg for varsel
