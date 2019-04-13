@@ -311,5 +311,6 @@ copyright = Partes de iste contento es © 1999-{ $year } per collaboratores indi
 content-available = Contento disponibile sub licentia Creative Commons.
 # Alerts is a noun
 sign-up-for-alerts = Inscribe te al avisos
+sign-up-for-fxa-alerts = Inscribe te pro le avisos de { -product-name }.
 # Link title
 frequently-asked-questions = Demandas frequente
