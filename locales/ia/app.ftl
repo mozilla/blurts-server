@@ -70,7 +70,7 @@ pwt-summary-4 =
     Illos alsi reserva le contrasignos con securitate e stipa los in sitos web pro te
 pwt-headline-5 = Adder extra securitate con le authentication a duo factores
 pwt-summary-5 =
-    Le Le authentication a duo factores require un altere pecia de informationes (inviate, como le codification a un-vice, via message de texto) pro acceder a tu conto.
+    Le authentication a duo factores require un altere pecia de information (p.ex. un codice a uso unic inviate in un message de texto) pro acceder a tu conto.
     Mesmo si alcuno ha tu contrasigno, ille non potera acceder.
 pwt-headline-6 = Registra te pro le alertas de { -product-name-nowrap }
 pwt-summary-6 =
