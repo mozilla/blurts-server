@@ -19,6 +19,7 @@ report-headline =
        *[other] Οι λογαριασμοί σας εμφανίστηκαν σε { $breachCount } παραβιάσεις.
     }
 breach-alert-headline = Ο λογαριασμός σας ενεπλάκη σε παραβίαση δεδομένων.
+breach-alert-subhead = Μια παραβίαση δεδομένων, που αναφέρθηκε πρόσφατα, περιέχει το email σας και τα εξής δεδομένα
 report-pwt-headline-1 = Χρήση διαφορετικού κωδικού για κάθε λογαριασμό
 report-pwt-headline-2 = Δημιουργία ισχυρών, μοναδικών κωδικών
 report-pwt-summary-2 =
@@ -33,3 +34,10 @@ report-pwt-headline-4 = Χρήση εφαρμογής διαχείρισης κ�
 legal = Νομικά
 # Share Firefox Monitor by email subject line
 share-by-email-subject = Δείτε αν έχετε επηρεαστεί από τη διαρροή δεδομένων.
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    Γεια,
+    Το { -brand-name } παρέχει μια δωρεάν υπηρεσία, όπου μπορείς να ελέγξεις αν έχεις επηρεαστεί από κάποια διαρροή δεδομένων. Ορίστε πώς λειτουργεί:
+    1. Πήγαινε στο { "https://monitor.firefox.com" } και αναζήτησε το email σου.
+    2. Δες αν οι διαδικτυακοί σου λογαριασμοί έχουν εκτεθεί σε κάποια παραβίαση δεδομένων.
+    3. Λάβε συμβουλές από το { -product-name } σχετικά με το τι να κάνεις μετά.
