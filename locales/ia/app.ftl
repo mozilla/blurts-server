@@ -173,6 +173,7 @@ unsub-reason-6 = Nihil del previe unos
 unsub-survey-thankyou = Gratias pro tu commentario.
 unsub-survey-error = Per favor elige uno.
 unsub-survey-headline-v2 = Tu abonamento ha essite annullate.
+unsub-survey-blurb-v2 = Tu non recipera plus avisos de { -product-name }. Vole tu prender un momento pro responder a un question re tu experientia?
 unsub-survey-button = Inviar responsa
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Compartir
@@ -250,6 +251,7 @@ user-fb-compromised-single =
     Iste violation ha exponite le sequente info personal. Si tu non lo ha jam facite,
     cambia tu contrasignos.
 user-generic-fb-compromised-single = Iste violation ha exponite le sequente info personal.
+guest-fb-compromised-single-v2 = Iste violation ha exponite le sequente info personal. Crea gratuitemente un { -brand-fxa } pro obtener un reporto complete del passate violationes, le avisos de nove violationes e information re altere servicios de { -brand-Mozilla }.
 guest-fb-compromised-blurb-v2 =
     { $breachCount ->
         [one]
@@ -314,5 +316,7 @@ content-available = Contento disponibile sub licentia Creative Commons.
 # Alerts is a noun
 sign-up-for-alerts = Inscribe te al avisos
 sign-up-for-fxa-alerts = Inscribe te pro le avisos de { -product-name }.
+create-free-account = Crea gratuitemente un { -brand-fxa } pro obtener un reporto complete del passate violationes, le avisos de nove violationes e information re altere servicios de { -brand-Mozilla }.
+get-your-report-and-sign-up = Obtene tu reporto e inscribe te al avisos.
 # Link title
 frequently-asked-questions = Demandas frequente
