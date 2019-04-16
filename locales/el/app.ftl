@@ -37,6 +37,7 @@ user-verify-token-error = Απαιτείται διακριτικό επαλήθ
 user-verify-email-report-subject = Η αναφορά σας για το { -product-name }
 user-verify-title = { -product-name } : Έχετε εγγραφεί
 user-unsubscribe-title = { -product-name } : Κατάργηση εγγραφής
+user-unsubscribe-survey-title = { -product-name }: Έρευνα κατάργησης εγγραφής
 
 ## Password Tips
 
@@ -197,6 +198,7 @@ user-generic-fb-compromised-blurb =
 user-generic-fb-compromised-single = Αυτή η παραβίαση εξέθεσε τις εξής προσωπικές πληροφορίες.
 have-an-account = Έχετε ήδη λογαριασμό;
 fb-landing-headline = Εκτέθηκαν οι πληροφορίες σας στη διαρροή δεδομένων { $breachName };
+content-available = Περιεχόμενο διαθέσιμο υπό την άδεια Creative Commons.
 # Alerts is a noun
 sign-up-for-alerts = Εγγραφή για ειδοποιήσεις
 sign-up-for-fxa-alerts = Εγγραφή για ειδοποιήσεις του { -product-name }.
