@@ -497,10 +497,22 @@ const toggleMobileFeatures = function() {
 document.addEventListener("touchstart", function(){}, true);
 
 window.addEventListener("pageshow", function() {
-  ga_sendLegacyPing("Pageview", false);
+  const previousActiveLink = document.querySelector(".active-link");
+  if (previousActiveLink) {
+    previousActiveLink.classList.remove("active-link");
+  }
 
-  if (window.location.search.includes("utm_") && window.history.replaceState) {
-    window.history.replaceState({}, "", window.location.toString().replace(/[?&]utm_.*/g, ""));
+  const win = window;
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  navLinks.forEach(link => {
+    if (link.href === win.location.href) {
+      link.classList.add("active-link");
+    }
+  });
+
+  if (win.location.search.includes("utm_") && win.history.replaceState) {
+    win.history.replaceState({}, "", win.location.toString().replace(/[?&]utm_.*/g, ""));
   }
   toggleMobileFeatures();
   document.forms ? (restoreInputs(), addFormListeners()) : null;
@@ -515,8 +527,8 @@ if (document.body.dataset.fxaEnabled === "fxa-enabled") {
     });
   }
   // capitalize the sign in button for en-US only.
-  if (window.navigator.language.includes("en") && document.getElementById("login-btn")) {
-    document.getElementById("login-btn").classList.add("capitalize");
+  if (window.navigator.language.includes("en") && document.getElementById("sign-in-btn")) {
+    document.getElementById("sign-in-btn").classList.add("capitalize");
   }
 }
 

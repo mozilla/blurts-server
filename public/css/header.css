@@ -32,6 +32,10 @@ a.nav-link {
   font-size: 0.85rem;
 }
 
+a.nav-link.active-link {
+  font-weight: 700;
+}
+
 /* sign-in button */
 button.sign-in {
   background-color: transparent;
