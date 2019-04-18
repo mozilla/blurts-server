@@ -1,0 +1,20 @@
+          <div class="filter-border-top">
+            <span>FILTER BY: Breach Category</span>
+            <div class="breach-filters flx">
+              {{#each this.breachCategories}}
+              <div class="filter-wrapper ">
+                <div class="breach-filter {{ category }}" data-breach-category="{{ category }}">
+                  <span>{{ categoryPlural }}</span>
+                  {{> plus }}
+                </div>
+              </div>        
+              {{/each}}
+
+              <!-- 'show all breaches' one-off-->
+              <div class="filter-wrapper">
+                <div class="breach-filter show-all-breaches" data-breach-category="show-all-breaches">
+                  <span>{{getString "show-all-breaches"}}</span>
+                </div>
+              </div>
+            </div>
+          </div>

@@ -15,7 +15,7 @@
 
   <div class="row found-breaches">
     <!-- foundBreaches 1-4 -->
-    {{#eachFromTo foundBreaches 0 4}}
+    {{#eachFromTo (getFoundBreaches) 0 4}}
       <div class="breach-listing flx flx-col">
         {{> breach_listing }}
       </div>
@@ -30,7 +30,7 @@
 
     <!-- foundBreaches 4-foundBreaches.length -->
       <div id="additional-breaches" class="show-additional-breaches hide flx">
-        {{#eachFromTo foundBreaches 4 foundBreaches.length}}
+        {{#eachFromTo (getFoundBreaches) 4 foundBreaches.length}}
           <div class="breach-listing flx flx-col">
             {{> breach_listing }}
           </div>

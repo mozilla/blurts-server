@@ -52,12 +52,11 @@ function getStringID (id, number, args) {
 }
 
 
-function localizedBreachDataClasses(dataClasses, args) {
-  const supportedLocales = getSupportedLocales(args);
+function localizedBreachDataClasses(dataClasses, locales) {
   const localizedDataClasses = [];
-  dataClasses.forEach(dataClass => {
-    localizedDataClasses.push(LocaleUtils.fluentFormat(supportedLocales, dataClass, args));
-  });
+  for (const dataClass of dataClasses) {
+    localizedDataClasses.push(LocaleUtils.fluentFormat(locales, dataClass));
+  }
   return localizedDataClasses.join(", ");
 }
 
@@ -89,18 +88,16 @@ function fluentNestedBold(id, args) {
 }
 
 
-function prettyDate(date, args) {
-  const supportedLocales = getSupportedLocales(args);
+function prettyDate(date, locales) {
   const jsDate = new Date(date);
   const options = {year: "numeric", month: "long", day: "numeric"};
-  const intlDateTimeFormatter = new Intl.DateTimeFormat(supportedLocales, options);
+  const intlDateTimeFormatter = new Intl.DateTimeFormat(locales, options);
   return intlDateTimeFormatter.format(jsDate);
 }
 
 
-function localeString(numericInput, args) {
-  const supportedLocales = getSupportedLocales(args);
-  const intlNumberFormatter = new Intl.NumberFormat(supportedLocales);
+function localeString(numericInput, locales) {
+  const intlNumberFormatter = new Intl.NumberFormat(locales);
   return intlNumberFormatter.format(numericInput);
 }
 
@@ -179,6 +176,7 @@ module.exports = {
   getStrings,
   fluentFxa,
   getStringID,
+  getSupportedLocales,
   fluentNestedBold,
   localizedBreachDataClasses,
   prettyDate,

@@ -415,11 +415,18 @@ exposed-your-info= have exposed your information
 passwords-exposed= Passwords Exposed
 across-all-breaches= across all breaches
 
+
 website-breach= Website Breach
 sensitive-breach= Sensitive Breach
 data-aggregator-breach= Data Aggregator Breach
 unverified-breach= Unverified Breach
 spam-list-breach= Spam List Breach
+
+website-breach-plural = Website Breaches
+sensitive-breach-plural= Sensitive Breaches
+data-aggregator-breach-plural= Data Aggregator Breaches
+unverified-breach-plural= Unverified Breaches
+spam-list-breach-plural= Spam List Breaches
 
 what-data= What data was compromised:
 overview= Overview:
@@ -472,3 +479,5 @@ see-if-breached= See if you’ve been in an online data breach.
 check-for-breaches= Check for breaches.
 find-out-what-hackers-know= Find out what hackers already know about you. Learn how to stay a step ahead of them.
 search-for-your-email= Search for your email address in public data breaches back to 2007.
+
+back-to-top= Back to Top

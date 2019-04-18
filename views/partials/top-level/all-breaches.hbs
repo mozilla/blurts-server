@@ -1,0 +1,38 @@
+{{#allBreaches req.app.locals.breaches }}
+<div id="breaches-loader" class="breaches-loader"></div>
+  <main class="all-breaches-main">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="big-headline">All The Breaches.<span class="needscopy">Needs Headline</span></h2>
+        <p>TO DO && TO CONSIDER: Improve lazy loading. Reduce filtering-induced jigs and lags. How should we visually communicate the different breach categories? What kind of filtering is meaningful and actually useful to a user? Can we speed this up and make this less laggy? Is there a way to sanely present this page on mobile?</p>
+      </div>
+    </div>
+  </main>
+  <section class="all-breaches-wrapper">
+    <div id="fixed-filters" class="fixed-filters">
+      {{> breach-filters }}
+      <button id="back-to-top" class="back-to-top">
+        {{> svg/arrow-right }}
+        {{getString "back-to-top"}}
+      </button>
+    </div>
+    <div class="row">
+        <!-- breach card filters -->
+        <div class="col-12 filters">
+          {{> breach-filters }}
+        </div>
+    </div>
+
+    <div class="row flx-col">
+
+      <!-- breach cards -->
+      <div id="all-breaches" class="all-breaches flx">
+        {{#each this.breachCards}}
+          <a href="/?breach={{Name}}" class="breach-card three-up flx flx-col {{ Category }}" data-breach-category="{{ Category }}">
+            {{> breach-card }}
+          </a>
+        {{/each}}
+      </div>
+    </div>
+  </section>
+{{/allBreaches}}

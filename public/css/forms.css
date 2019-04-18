@@ -119,7 +119,7 @@ input[type="email"] {
 }
 
 .inline input {
-  border-radius: calc(var(--radius) * 2);
+  border-radius: 4rem;
 }
 
 form.inline {

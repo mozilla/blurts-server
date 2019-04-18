@@ -9,25 +9,33 @@ const getVars = (args) => {
   return { locales, breach };
 };
 
-const breachType = (args) => {
-  const { locales, breach } = getVars(args);
+// REMAINING QUESTIONS:
+// How to actually categorize these?
+// How to dynamically detect Data Aggregator breaches?
 
-  // Determine the type of breach
+const getBreachCategory = (breach) => {
   if (["Exactis"].includes(breach.Name)) {
-    return LocaleUtils.fluentFormat(locales, "data-aggregator-breach", args.hash);
+    return "data-aggregator-breach";
   }
   if (!breach.IsVerified) {
-    return LocaleUtils.fluentFormat(locales, "unverified-breach", args.hash);
+    return "unverified-breach";
   }
   if (breach.IsSensitive) {
-    return LocaleUtils.fluentFormat(locales, "sensitive-breach", args.hash);
+    return "sensitive-breach";
   }
   if (breach.IsSpamList) {
-    return LocaleUtils.fluentFormat(locales, "spam-list-breach", args.hash);
+    return  "spam-list-breach";
   }
   if (breach.Domain !== "") {
-    return LocaleUtils.fluentFormat(locales, "website-breach", args.hash);
+    return "website-breach";
   }
+  return "data-aggregator-breach";
+};
+
+const breachCategory = (args) => {
+  const { locales, breach } = getVars(args);
+  const breachCategory = getBreachCategory(breach);
+  return LocaleUtils.fluentFormat(locales, breachCategory, args.hash);
 };
 
 
@@ -156,6 +164,7 @@ const soupedUpDataClasses = (locales, breach) => {
 };
 
 module.exports = {
-  breachType,
+  breachCategory,
   getBreachDetail,
+  getBreachCategory,
 };

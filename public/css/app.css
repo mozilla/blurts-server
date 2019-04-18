@@ -23,7 +23,7 @@ body {
   --subhead: 1.1rem;
   --smallText: 0.85rem;
   --lineHeight: 180%;
-  --radius: 1rem;
+  --radius: 0.25rem;
   --blue: #4f42ff;
   --borderColors: var(--blue) #c78d20 #ff7e88 #ac3eff;
   --borderColor: rgba(219, 219, 219, 0.81);
@@ -66,6 +66,13 @@ p {
 .desc {
   max-width: 320px;
   font-weight: 300;
+}
+
+span.needscopy {
+  font-weight: 300;
+  font-size: 1rem;
+  opacity: 0.6;
+  margin-left: 1rem;
 }
 
 h1,

@@ -549,12 +549,15 @@ document.querySelectorAll("[data-analytics-event]").forEach(el => {
   });
 });
 
-// listen for missing breach logo images and replace them with default icon
-document.querySelectorAll(".breach-logo").forEach(logo => {
-  logo.addEventListener("error", (missingLogo) => {
-    missingLogo.target.src = "/img/logos/missing-logo-icon.png";
-  });
-});
+// disabled until it can work with lazy load...
+
+// document.querySelectorAll(".breach-logo").forEach(logo => {
+//   logo.addEventListener("error", (missingLogo) => {
+//     if (logo.classList.contains("lazy-img")) {
+//       missingLogo.target.src = "/img/logos/missing-logo-icon.png";
+//     }
+//   });
+// });
 
 document.querySelectorAll("button, .open-oauth").forEach(button => {
   button.addEventListener("click", (e) => doButtonRouting(e));
