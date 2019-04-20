@@ -5,11 +5,18 @@
 verify-my-email = Επαλήθευση email
 report-scan-another-email = Σάρωση άλλου email στο { -product-name }
 automated-message = Αυτό είναι ένα αυτοματοποιημένο email· αν το λάβατε κατά λάθος, δεν απαιτείται καμία ενέργεια.
+# Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
+we-sent-this-alert = Στείλαμε αυτό το μήνυμα στο { $userEmail }, επειδή έγινε εγγραφή της διεύθυνσης email στις ειδοποιήσεις από το { -product-name }.
 unsubscribe-email-link = Αν δεν επιθυμείτε πλέον ειδοποιήσεις από το { -product-name }, καταργήστε την εγγραφή σας.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Αναφορά { -product-name }
 report-date = Ημερομηνία αναφοράς:
 email-address = Διεύθυνση email:
+# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
+your-full-report = Ορίστε η πλήρης αναφορά { -product-name } σας, η οποία περιλαμβάνει όλες τις γνωστές παραβιάσεις δεδομένων που περιέχουν αυτή τη διεύθυνση email.
+report-no-breaches =
+    Η διεύθυνση email σας δεν εμφανίστηκε στη βάση δεδομένων μας με γνωστές παραβιάσεις. 
+    Αλλά παραβιάσεις μπορούν να συμβούν ανά πάσα στιγμή. Λάβετε αυτά τα μέτρα για να προστατέψετε τα προσωπικά σας δεδομένα στο διαδίκτυο.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Τι να κάνετε μετά
 report-headline =

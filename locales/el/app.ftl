@@ -167,16 +167,21 @@ features = Χαρακτηριστικά
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Δεδομένα παραβίασης από το { $hibp-link }
+site-description = Έχουν διαρρεύσει ή κλαπεί οι λογαριασμοί σας σε κάποια παραβίαση δεδομένων; Μάθετε στο { -product-name }. Αναζητήστε τη βάση δεδομένων μας και εγγραφείτε για ειδοποιήσεις.
 confirmation-headline = Η αναφορά σας από το { -product-name } έρχεται.
 confirmation-blurb = Οι παραβιάσεις δεδομένων μπορούν να επηρεάσουν οποιονδήποτε. Διαδώστε τα νέα, ώστε οι φίλοι και οι συγγενείς σας να μπορέσουν να ελέγξουν αν είναι ασφαλείς οι διαδικτυακοί τους λογαριασμοί.
 share-email = Email
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Άλλο
+share-facebook-headline = Μάθετε αν υπήρξατε θύμα της παραβίασης δεδομένων
+share-facebook-blurb = Έχουν εκτεθεί οι διαδικτυακοί σας λογαριασμοί σε παραβίαση δεδομένων;
+mozilla-security-blog = Ιστολόγιο ασφαλείας { -brand-Mozilla }
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Κοινωνικά δίκτυα
 show-all = Προβολή όλων
 fxa-scan-label = Δείτε αν έχετε εμφανιστεί σε κάποια διαρροή δεδομένων.
 fxa-welcome-headline = Καλώς ορίσατε στο { -product-name }.
+fxa-welcome-blurb = Όλα έτοιμα. Θα λάβετε ειδοποιήσεις αν το { $userEmail } εμφανιστεί σε παραβίαση δεδομένων.
 fxa-scan-another-email = Θέλετε να ελέγξετε άλλο email;
 # Search Firefox Monitor
 fxa-scan-submit = Αναζήτηση { -product-name }
@@ -216,9 +221,25 @@ user-generic-fb-compromised-blurb =
         [one] Αυτό το email εμφανίστηκε επίσης σε { $breachCount } ακόμη παραβίαση.
        *[other] Αυτό το email εμφανίστηκε επίσης σε { $breachCount } ακόμη παραβιάσεις.
     }
+user-fb-compromised-single =
+    Αυτή η παραβίαση εξέθεσε τις εξής προσωπικές πληροφορίες. Αν δεν το έχετε κάνει ήδη, 
+    αλλάξτε τους κωδικούς πρόσβασής σας.
 user-generic-fb-compromised-single = Αυτή η παραβίαση εξέθεσε τις εξής προσωπικές πληροφορίες.
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Αυτό το email δεν ήταν στην παραβίαση { $breachName }, αλλά βρέθηκε σε μια άλλη.
+       *[other] Αυτό το email δεν ήταν στην παραβίαση { $breachName }, αλλά βρέθηκε σε άλλες.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Αυτή η παραβίαση εξέθεσε τις εξής προσωπικές πληροφορίες.
+       *[other] Αυτές οι παραβιάσεις εξέθεσαν τις εξής προσωπικές πληροφορίες.
+    }
 have-an-account = Έχετε ήδη λογαριασμό;
 fb-landing-headline = Εκτέθηκαν οι πληροφορίες σας στη διαρροή δεδομένων { $breachName };
+copyright = Μέρη αυτού του περιεχομένου υπόκεινται σε πνευματικά δικαιώματα © 1999-{ $year } από εθελοντές του mozilla.org.
 content-available = Περιεχόμενο διαθέσιμο υπό την άδεια Creative Commons.
 # Alerts is a noun
 sign-up-for-alerts = Εγγραφή για ειδοποιήσεις
