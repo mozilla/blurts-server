@@ -141,6 +141,10 @@ unsub-headline = Κατάργησης εγγραφής από το { -product-na
 unsub-blurb = Το email σας θα αφαιρεθεί από τη λίστα του { -product-name-nowrap } και δεν θα λαμβάνετε πλέον ειδοποιήσεις όταν ανακοινώνονται νέες παραβιάσεις.
 unsub-button = Κατάργηση εγγραφής
 fxa-unsub-headline = Κατάργηση εγγραφής από τις ειδοποιήσεις του { -product-name }.
+fxa-unsub-blurb =
+    Δεν θα λαμβάνετε πλέον ειδοποιήσεις του { -product-name }. 
+    Ο { -brand-fxa } σας θα παραμείνει ενεργός και θα λαμβάνετε άλλα 
+    μηνύματα σχετικά με το λογαριασμό σας.
 unsub-survey-form-label = Γιατί κάνετε κατάργηση εγγραφής από τις ειδοποιήσεις του { -product-name-nowrap };
 unsub-reason-1 = Νομίζω ότι οι ειδοποιήσεις δεν κάνουν τα δεδομένα μου πιο ασφαλή
 unsub-reason-2 = Λαμβάνω πάρα πολλά emails από το { -product-name-nowrap }
@@ -173,12 +177,17 @@ confirmation-blurb = Οι παραβιάσεις δεδομένων μπορού
 share-email = Email
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Άλλο
+share-twitter = Οι περισσότεροι άνθρωποι έχουν περίπου 100 διαδικτυακούς λογαριασμούς. Έχει εκτεθεί κάποιος από τους δικούς σας σε παραβίαση δεδομένων; Μάθετε.
 share-facebook-headline = Μάθετε αν υπήρξατε θύμα της παραβίασης δεδομένων
 share-facebook-blurb = Έχουν εκτεθεί οι διαδικτυακοί σας λογαριασμοί σε παραβίαση δεδομένων;
+og-site-description = Μάθετε αν υπήρξατε θύμα παραβίασης δεδομένων με το { -product-name }. Εγγραφείτε για ειδοποιήσεις σχετικά με μελλοντικές παραβιάσεις και λάβετε συμβουλές για να προστατέψετε τους λογαριασμούς σας.
 mozilla-security-blog = Ιστολόγιο ασφαλείας { -brand-Mozilla }
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Κοινωνικά δίκτυα
 show-all = Προβολή όλων
+fxa-landing-blurb =
+    Ανακαλύψτε τι γνωρίζουν ήδη οι hackers για εσάς
+    και μάθετε πώς να είστε πάντα ένα βήμα μπροστά τους.
 fxa-scan-label = Δείτε αν έχετε εμφανιστεί σε κάποια διαρροή δεδομένων.
 fxa-welcome-headline = Καλώς ορίσατε στο { -product-name }.
 fxa-welcome-blurb = Όλα έτοιμα. Θα λάβετε ειδοποιήσεις αν το { $userEmail } εμφανιστεί σε παραβίαση δεδομένων.
@@ -210,6 +219,9 @@ guest-scan-results-headline =
        *[other] Αυτό το email εμφανίστηκε σε { $breachCount } παραβιάσεις δεδομένων.
     }
 user-no-breaches-blurb = Θα σάς ειδοποιήσουμε αν αυτή η διεύθυνση email εμφανιστεί σε νέα διαρροή.
+guest-no-breaches-blurb =
+    Για να δείτε αν αυτό το email εμφανίζεται σε ευαίσθητες παραβιάσεις, δημιουργήστε ένα { -brand-fxa }.
+    Θα σάς ειδοποιήσουμε αν αυτή η διεύθυνση εμφανιστεί σε νέες παραβιάσεις δεδομένων.
 user-one-breach-blurb = Αυτή η παραβίαση εξέθεσε τις εξής προσωπικές πληροφορίες.
 user-fb-compromised-blurb =
     { $breachCount ->
