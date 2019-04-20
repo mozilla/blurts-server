@@ -25,6 +25,7 @@ error-not-subscribed = Αυτή η διεύθυνση email δεν έχει εγ
 error-hibp-throttled = Πάρα πολλές συνδέσεις στο { -brand-HIBP }.
 error-hibp-connect = Σφάλμα σύνδεσης στο { -brand-HIBP }.
 error-hibp-load-breaches = Αδυναμία φόρτωσης διαρροών.
+hibp-notify-email-subject = Ειδοποίηση { -product-name }: Ο λογαριασμός σας έχει εμπλακεί σε παραβίαση.
 home-title = { -product-name }
 home-not-found = Η σελίδα δεν βρέθηκε.
 oauth-invalid-session = Άκυρη συνεδρία
@@ -37,13 +38,20 @@ error-headline = Σφάλμα
 user-verify-token-error = Απαιτείται διακριτικό επαλήθευσης.
 user-verify-email-report-subject = Η αναφορά σας για το { -product-name }
 user-verify-title = { -product-name } : Έχετε εγγραφεί
+user-unsubscribe-token-error = Η κατάργηση εγγραφής απαιτεί token.
+user-unsubscribe-token-email-error = Η κατάργηση εγγραφής απαιτεί token και emailHash.
 user-unsubscribe-title = { -product-name } : Κατάργηση εγγραφής
 user-unsubscribe-survey-title = { -product-name }: Έρευνα κατάργησης εγγραφής
+user-unsubscribed-title = { -product-name } : Έγινε κατάργηση εγγραφής
 
 ## Password Tips
 
 pwt-section-headline = Ισχυρότεροι κωδικοί πρόσβασης = Καλύτερη προστασία
 pwt-section-subhead = Οι ιδιωτικές σας πληροφορίες είναι ασφαλείς όσο και ο κωδικός πρόσβασής σας.
+pwt-section-blurb =
+    Οι κωδικοί πρόσβασής σας προστατεύουν περισσότερα πέρα από τους λογαριασμούς σας. Προστατεύουν κάθε bit προσωπικής πληροφορίας μέσα σε αυτούς. 
+    Και οι hackers βασίζονται σε κακές συνήθειες, όπως η χρήση του ίδιου κωδικού πρόσβασης παντού ή η χρήση κοινών φράσεων (όπως kwd!k0$) έτσι, 
+    ώστε να παραβιάσουν περισσότερους λογαριασμούς, αν τυχόν διαρρήξουν έναν. Ορίστε πώς να προστατέψετε καλύτερα τους λογαριασμούς σας.
 pwt-headline-1 = Χρήση διαφορετικού κωδικού για κάθε λογαριασμό
 pwt-summary-1 =
     Η χρήση του ίδιου κωδικού παντού, αφήνει ανοικτή την πόρτα στην κλοπή ταυτότητας. 
@@ -75,6 +83,8 @@ scan-placeholder = Εισάγετε διεύθυνση email
 scan-privacy = Το email σας δεν θα αποθηκευτεί.
 scan-submit = Αναζήτηση email
 scan-another-email = Σάρωση άλλης διεύθυνσης email
+scan-featuredbreach-label = Μάθετε αν ο λογαριασμός <span class="bold"> { $featuredBreach } </span> σας έχει παραβιαστεί.
+sensitive-breach-email-required = Η παραβίαση περιέχει ευαίσθητες πληροφορίες. Απαιτείται επαλήθευση email.
 scan-error = Πρέπει να είναι ένα έγκυρο email.
 signup-banner-headline = Το { -product-name-nowrap } ανιχνεύει απειλές ενάντια στους διαδικτυακούς σας λογαριασμούς.
 signup-banner-blurb =
@@ -122,10 +132,17 @@ what-to-do-subhead-3 = Λάβετε επιπρόσθετα μέτρα ασφάλ
 what-to-do-subhead-4 = Λάβετε βοήθεια για τη δημιουργία και την προστασία καλών κωδικών πρόσβασης.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Ημερομηνία παραβίασης:
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Παραβιασμένοι λογαριασμοί:
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Παραβιασμένα δεδομένα:
 confirmed = Επιβεβαιώθηκε!<br />Έχετε εγγραφεί!
 unsub-headline = Κατάργησης εγγραφής από το { -product-name-nowrap }
 unsub-blurb = Το email σας θα αφαιρεθεί από τη λίστα του { -product-name-nowrap } και δεν θα λαμβάνετε πλέον ειδοποιήσεις όταν ανακοινώνονται νέες παραβιάσεις.
 unsub-button = Κατάργηση εγγραφής
+fxa-unsub-headline = Κατάργηση εγγραφής από τις ειδοποιήσεις του { -product-name }.
+unsub-survey-form-label = Γιατί κάνετε κατάργηση εγγραφής από τις ειδοποιήσεις του { -product-name-nowrap };
+unsub-reason-1 = Νομίζω ότι οι ειδοποιήσεις δεν κάνουν τα δεδομένα μου πιο ασφαλή
 unsub-reason-2 = Λαμβάνω πάρα πολλά emails από το { -product-name-nowrap }
 unsub-reason-3 = Δεν βρίσκω χρήσιμη αυτή την υπηρεσία
 unsub-reason-4 = Έχω ήδη λάβει μέτρα για να προστατεύσω τους λογαριασμούς μου
@@ -134,6 +151,9 @@ unsub-reason-6 = Κανένα από τα παραπάνω
 unsub-survey-thankyou = Ευχαριστούμε για τα σχόλιά σας.
 unsub-survey-error = Παρακαλούμε επιλέξτε ένα.
 unsub-survey-headline-v2 = Έχετε καταργήσει την εγγραφή σας.
+unsub-survey-blurb-v2 =
+    Δεν θα λαμβάνετε πλέον ειδοποιήσεις του { -product-name }. 
+    Θα αφιερώσετε λίγο χρόνο για να απαντήσετε μια ερώτηση σχετικά με την εμπειρία σας;
 unsub-survey-button = Υποβολή απάντησης
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Κοινοποίηση
