@@ -19,6 +19,7 @@ about-firefox-alerts = Σχετικά με τις ειδοποιήσεις το�
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Αποστολή σχολίων
 terms-and-privacy = Όροι και απόρρητο
+error-scan-page-token = Προσπαθήσατε να σαρώσετε πάρα πολλές διευθύνσεις email σε μικρό χρονικό διάστημα. Για λόγους ασφαλείας, σάς έχουμε αποκλείσει προσωρινά από νέες αναζητήσεις. Θα μπορέσετε να δοκιμάσετε ξανά αργότερα.
 error-could-not-add-email = Αδυναμία προσθήκης διεύθυνσης email στη βάση δεδομένων.
 error-not-subscribed = Αυτή η διεύθυνση email δεν έχει εγγραφεί στο { -product-name }.
 error-hibp-throttled = Πάρα πολλές συνδέσεις στο { -brand-HIBP }.
