@@ -5,12 +5,36 @@ form,
   width: 100%;
 }
 
-input {
+.form-group.loading-data .loader {
+  display: block;
+  opacity: 0.58;
+  width: 25px;
+  height: auto;
+  visibility: visible;
+}
+
+.form-desc {
+  text-align: center;
+  display: flex;
+  font-weight: 300;
+  color: rgba(36, 34, 45, 0.6);
+  margin: 0 auto;
+  font-size: 0.9rem;
+  max-width: 355px;
+}
+
+input[type="submit"],
+input[type="email"] {
   height: 4rem;
   width: 100%;
   border-style: solid;
+  border-width: 1px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: var(--radius);
 }
 
+input[type="radio"]:focus ~ .checkmark,
 input:focus,
 button:focus,
 .button:focus,
@@ -20,11 +44,18 @@ button:focus,
   outline: none;
 }
 
+form {
+  flex-direction: column;
+}
+
 .input-group,
 .input-group-button {
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
   margin-bottom: 0.75rem;
-  flex: 1;
 }
 
 .form-group .error-message {
@@ -94,72 +125,17 @@ input::placeholder {
 input[type="email"] {
   font-size: 17px;
   font-weight: 300;
-  border-color: var(--borderColors);
   text-indent: var(--margin);
   background-color: transparent;
+  border-color: rgba(0, 0, 0, 0.13);
   transition: all 0.1s ease-out;
 }
 
-/* Stacked Form Styling */
-
-.stacked input {
-  border-radius: 1rem;
-  border-width: 1px;
-}
-
-.stacked input[type="submit"] {
-  background-color: var(--color);
-  border-color: var(--color);
+input[type="submit"] {
+  background-color: var(--blue);
+  border-color: var(--blue);
   color: rgba(255, 255, 255, 1);
   font-size: 1rem;
-}
-
-.stacked svg {
-  display: none;
-}
-
-.inline input {
-  border-radius: 4rem;
-}
-
-form.inline {
-  display: inline-flex;
-}
-
-.inline .input-group-button {
-  max-width: 4rem;
-  height: 4rem;
-  margin-left: var(--margin);
-  min-width: var(--margin);
-}
-
-.inline input[type="email"] {
-  border-width: 3px;
-}
-
-.inline input[type="submit"] {
-  border-width: 3px;
-  color: rgba(255, 255, 255, 0);
-  border-color: var(--borderColors);
-  background-color: transparent;
-  border-style: solid;
-  transition: all 0.1s ease-out;
-}
-
-.inline .input-group-button:hover input {
-  border-width: 8px;
-  border-style: inset;
-  transition: all 0.1s ease-out;
-}
-
-.input-group:hover input[type="email"] {
-  border-style: inset;
-  transition: all 0.1s ease-out;
-}
-
-.input-group-button:hover svg {
-  opacity: 0.7;
-  transition: all 0.1s ease-out;
 }
 
 form.invalid input[type="submit"]:focus {
@@ -167,104 +143,54 @@ form.invalid input[type="submit"]:focus {
   box-shadow: 0 0 0 1px rgba(255, 0, 55, 0.514), 0 0 0 4px rgba(255, 0, 55, 0.3);
 }
 
-.form-desc {
-  font-size: 0.9rem;
-  max-width: 355px;
-  display: none;
+/* radio buttons */
+
+input[type="radio"] {
+  opacity: 0;
 }
 
-svg.search-icon {
+.checkmark {
+  background-color: rgba(255, 255, 255, 0);
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: var(--radius);
+  display: block;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
+  top: 2px;
+  border: 1px solid rgba(79, 66, 255, 0.4);
+  transition: background-color 0.15s ease-in-out;
 }
 
-svg.search-icon path {
-  fill: var(--blue);
+.radio-container:hover .checkmark {
+  background-color: rgba(79, 66, 255, 0.05);
+  transition: background-color 0.15s ease-in-out;
+}
+
+input[type="radio"]:checked ~ .checkmark {
+  background-color: var(--blue);
+  transition: background-color 0.15s ease-in-out;
+}
+
+.add-new-email-form {
+  margin: var(--margin) 0;
+}
+
+.radio-container {
+  display: flex;
+  position: relative;
+  min-height: 1.6rem;
+  align-items: center;
+}
+
+.radio-label {
+  margin-left: var(--margin);
 }
 
 @media screen and (max-width: 800px) {
-  form {
-    flex-direction: column;
-  }
-
-  .inline .input-group,
-  .inline .input-group-button {
-    width: 100%;
-    max-width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .inline input[type="email"],
-  .inline input[type="submit"] {
-    border-width: 1px;
-    border-style: solid;
-    width: 100%;
-  }
-
-  .input-group-button {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .inline input[type="submit"] {
-    background-color: var(--color);
-    color: rgba(255, 255, 255, 1);
-    border-color: var(--color);
-  }
-
-  .form-group.loading-data .loader {
-    display: block;
-    opacity: 0.58;
-    width: 25px;
-    height: auto;
-    visibility: visible;
-  }
-
-  .form-desc {
-    text-align: center;
-    display: flex;
-    font-size: 0.8rem;
-    font-weight: 300;
-    color: rgba(36, 34, 45, 0.6);
-    max-width: 300px;
-    margin: 0 auto;
-  }
-
-  .form-wrap {
-    flex-direction: column;
-  }
-
   button.internal-link,
   input.transparent-button,
   input[type="submit"],
   input::placeholder {
     font-size: 15px;
-  }
-
-  input[type="submit"],
-  input[type="email"] {
-    width: 100%;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    border-radius: var(--radius);
-  }
-
-  input[type="email"] {
-    /* prevents zoom on ios devices */
-    font-size: 17px;
-    text-indent: 0.5rem;
-    background-color: rgba(255, 255, 255, 0);
-    border: 1px solid rgba(0, 0, 0, 0.13);
-  }
-
-  input[type="submit"] {
-    background-color: var(--color);
-    color: rgba(255, 255, 255, 1);
-    border: 1px solid var(--color);
   }
 }

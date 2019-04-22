@@ -12,9 +12,8 @@
     <input id="featured" type="hidden" name="featuredBreach" value="{{ featuredBreach.Name }}"/>
   {{/if}}
   <div class="input-group-button">
-    <input type="submit" class="button submit" value="{{getString "check-for-breaches"}}"/>
-    {{> svg/search-icon addClasses="hide-mobile"}}
-    <img class="loader" src="/img/loader.gif" alt="" />
+    <input type="submit" value="{{getString "check-for-breaches"}}"/>
+    {{> forms/loader }}
   </div>
 </form>
 <p class="desc form-desc txt-cntr">{{getString "search-for-your-email"}}</p>

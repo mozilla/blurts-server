@@ -1,0 +1,23 @@
+
+<main id="dashboard" class="dashboard">
+  <div class="row jst-cntr">
+    <div class="col-8">
+      <p class="welcome-back">Welcome back <span class="bold">{{ req.session.user.fxa_profile_json.email }}</span></p>
+    </div>
+  </div>
+  <div class="row jst-cntr">
+    <div class="col-8 dash-stats">
+      <h2 class="skinny-headline breach-summary">Breach Summary</h2>
+      {{> breach-stats addClasses="user-stats"}}
+    </div>
+  </div>
+  <div class="row jst-cntr">
+    <div class="col-8 email-table">
+      <h2 class="skinny-headline">Email Addresses</h2>
+      {{#each (getBreachesForEachEmail) }}
+        {{> email-card }}
+      {{/each}}
+      <a href="/user/preferences" class="button manage-your-account">{{getString "manage-email-addresses"}}</a>
+    </div>
+  </div>
+</main>

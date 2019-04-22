@@ -4,7 +4,7 @@
   width: 4rem;
   height: 3rem;
   justify-content: center;
-  border-right: 1px dashed var(--borderColor);
+  border-right: 1px solid var(--borderColor);
   margin: 0.15rem;
 }
 
@@ -20,7 +20,7 @@
 
 .breach-stats {
   background-color: rgba(255, 255, 255, 0);
-  border: 1px dashed var(--borderColor);
+  border: 1px solid var(--borderColor);
   border-radius: var(--radius);
   overflow: hidden;
   display: flex;
@@ -36,7 +36,7 @@
 
 .breach-stat-row {
   width: 100%;
-  border-bottom: 1px dashed var(--borderColor);
+  border-bottom: 1px solid var(--borderColor);
 }
 
 .breach-stat-row.flx:first-of-type {

@@ -1,18 +1,42 @@
-          <div class="verified email-card flx flx-col toggle-parent inactive">
+          <div class="{{#unless primary}}{{#if verified}} verified {{/if}}{{/unless}} email-card flx flx-col toggle-parent inactive">
             <div class="e-toggle-info-wrapper">
               <div class="e-info">
                 <span class="e-address">{{ email }}</span>
-                <span class="e-num-breaches">appears in {{ breaches.length }} breaches</span>
+                {{#if verified}}
+                  <!-- show breach count for verified emails -->
+                  <span class="e-num-breaches">{{getString "appears-in-x-breaches" breachCount=breaches.length}}</span>
+                {{else}}
+                  <!-- show resend-email link for unverified emails -->
+                  <button class="resend-email" data-email-id="{{id}}" data-form-action="/resend-email">Resend Verification Email</button>
+                {{/if}}
               </div>
-              <div class="toggle">
-                {{> svg/toggle-down }}
+
+              {{#if prefs}} <!--user preferences dashboard / show trashcan to delete email-->
+                {{#if primary}}
+                  <a href="{{ getFxaUrl }}" class="change-primary-email">{{getString "link-change-primary"}}</a>
+                {{else}}
+                <button class="remove-email svg-wrap" data-email-id="{{id}}" data-form-action="/remove-email"  aria-label="{{getString "stop-monitor-this"}}">
+                  {{> svg/x-close }}
+                </button>
+                {{/if}}
+              {{else}} <!-- user breaches dashboard / show toggle -->
+                {{#ifCompare breaches.length ">" 0}}
+                  <button class="toggle svg-wrap" aria-label="{{getString "show-breaches-for-this-email"}}">
+                    {{> svg/toggle-down }}
+                  </button>
+                {{/ifCompare}}
+              {{/if}}
+            </div>
+
+            {{#unless prefs}} <!-- user breaches dashboard, show breaches for each email on toggle click-->
+              <div class="e-breach-list">
+                {{#each this.breaches}}
+                  <div class="e-breach-list">
+                    <div class="email-card-breach-wrapper">
+                      {{> breach-card addClass="ec"}}
+                    </div>
+                  </div>
+                {{/each}}
               </div>
-            </div>
-            <div class="e-breach-list">
-              {{#each this.breaches }}
-                <div class="breach-listing">
-                  {{> breach_listing }}
-                </div>
-              {{/each }}
-            </div>
+            {{/unless}}
           </div>

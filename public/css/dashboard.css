@@ -1,8 +1,3 @@
-/* User breach stats */
-main.dashboard .row {
-  flex-wrap: wrap;
-  max-width: 800px;
-}
 
 .breach-stats.user-stats {
   margin: 0 0 var(--margin) 0;
@@ -10,9 +5,9 @@ main.dashboard .row {
 
 /* table of monitored email addresses */
 .email-table {
+  display: block;
   border-radius: 1rem;
   overflow: hidden;
-  cursor: pointer;
 }
 
 /* email cards */
@@ -22,8 +17,8 @@ main.dashboard .row {
   justify-content: space-between;
   align-items: center;
   padding: var(--margin) 0;
-  border-bottom: 1px solid#eee;
   pointer-events: none;
+  position: relative;
 }
 
 .e-info { /* wraps email address info */
@@ -34,7 +29,6 @@ main.dashboard .row {
 /* email card styling */
 .e-address {
   font-weight: 400;
-  margin-bottom: 0.5rem;
   font-size: 1.2rem;
 }
 
@@ -42,23 +36,14 @@ main.dashboard .row {
   font-style: italic;
   font-weight: 300;
   color: #666;
+  margin-top: 0.5rem;
 }
 
 /* email card breaches */
-.email-card .e-breach-list {
+.e-breach-list {
   visibility: hidden;
   opacity: 0;
   max-height: 0;
-  transition: all 0.3s ease;
-}
-
-.email-card.inactive .e-breach-list > * {
-  max-height: 0;
-  transition: all 0.3s ease;
-}
-
-.email-card.active .e-breach-list > * {
-  max-height: 10000px;
   transition: all 0.3s ease;
 }
 
@@ -69,56 +54,62 @@ main.dashboard .row {
   transition: all 0.3s ease;
 }
 
-.email-card.verified {
-  cursor: pointer;
+.email-card.active .e-breach-list > * {
+  max-height: 10000px;
+  transition: all 0.3s ease;
 }
 
-/* unverified emails */
-button.resend-email {
+.svg-wrap {
   border-width: 0;
   border-radius: 0.25rem;
-  padding: 0.5rem;
+  padding: 0.5rem 0 0 0;
   pointer-events: all;
+  text-align: left;
 }
 
-button.resend-email:hover {
+.resend-email {
+  padding: 0.5rem 0;
+}
+
+.remove-fxm:hover,
+.remove-fxm:focus,
+.toggle.svg-wrap:focus,
+.toggle.svg-wrap:hover,
+.resend-email:hover,
+.resend-email:focus {
   outline: none;
   border: none;
-  background-color: rgba(0, 0, 0, 0.05);
+  text-decoration: underline;
   box-shadow: none;
+  text-align: left;
+  pointer-events: all;
 }
 
 /* toggle transition on card open */
 .email-card .toggle {
-  display: flex;
-  justify-content: flex-end;
-  flex: 1 1 50%;
-  position: relative;
   height: 100%;
   transition: all 0.1s ease;
+  position: absolute;
+  width: 100%;
 }
 
 svg.toggle-down {
-  width: 25px;
-  height: 25px;
+  border-radius: 50%;
+  margin: auto;
+  right: 0;
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+.email-card .toggle,
+svg.toggle-down {
   position: absolute;
   top: 0;
   bottom: 0;
-  margin: auto;
-  right: var(--padding);
-  background-color: lightblue;
-  border-radius: 50%;
-  padding: 6px;
-  transition: all 0.2s ease;
 }
 
 svg.toggle-down path {
-  fill: rgba(255, 255, 255, 1);
-}
-
-.email-card:hover svg.toggle-down {
-  background-color: rgba(147, 194, 209, 0.767);
-  transition: all 0.2s ease;
+  fill: var(--color);
 }
 
 .email-card.active .toggle-down {
@@ -130,8 +121,80 @@ svg.toggle-down path {
   font-size: 1rem;
 }
 
+/* preferences dashbord */
+
+.pref-section {
+  margin: calc(var(--padding) * 2) 0;
+}
+
+.email-pref {
+  font-size: 1rem;
+  margin: var(--padding) var(--padding) 0 var(--padding);
+}
+
+.email-card {
+  padding: 0 var(--padding);
+  border: 1px solid #ececec;
+  margin: var(--margin) 0;
+  border-radius: var(--radius);
+}
+
+fieldset {
+  border: 1px solid #eee;
+  border-radius: var(--radius);
+}
+
+legend.skinny-headline {
+  padding: 0 var(--padding);
+  margin-bottom: 0;
+}
+
+.change-primary-email,
+.remove-fxm,
+.resend-email {
+  pointer-events: all;
+}
+
+.remove-email {
+  border: none;
+  padding: 0.5rem;
+  border-radius: 50%;
+  height: 1.5rem;
+  width: 1.5rem;
+  position: relative;
+}
+
+.remove-email .x-close {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  pointer-events: none;
+}
+
+.remove-email .x-close path {
+  fill: var(--color);
+}
+
+.remove-fxm,
+.resend-email {
+  text-align: left;
+  padding: 0;
+  margin-top: 0.5rem;
+  border-width: 0;
+}
+
+.remove-fxm:hover,
+.remove-fxm:focus,
+.resend-email:hover,
+.resend-email:focus {
+  border-width: 0;
+}
+
 @media screen and (max-width: 800px) {
-  main.dashboard {
+  .dashboard {
     border-top: none;
   }
 
@@ -151,26 +214,27 @@ svg.toggle-down path {
 }
 
 @media screen and (max-width: 600px) {
-  .e-address {
-    font-size: 1rem;
+  .e-address,
+  .radio-label {
+    font-size: 0.9rem;
   }
 
-  .dashboard .col-12 {
-    margin-left: auto;
-    margin-right: auto;
+  .e-num-breaches,
+  .resend-email,
+  .change-primary-email {
+    font-size: 0.8rem;
+  }
+
+  .e-toggle-info-wrapper {
+    flex-wrap: wrap;
+  }
+
+  .change-primary-email {
     width: 100%;
+    margin: var(--padding) 0 0 0;
   }
 
-  .unverified.e-toggle-info-wrapper {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  button.resend-email {
-    padding: 0.5rem 0;
-  }
-
-  button.resend-email:hover {
+  .resend-email:hover {
     background-color: transparent;
   }
 }

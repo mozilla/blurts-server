@@ -1,7 +1,11 @@
   <div class="breach-card-title-wrapper flx {{ Category }}">
-    <span class="breach-title demi">{{ Title }}</span>
+    <span class="breach-title demi {{ addClass }}">{{ Title }}</span>
     <div class="breach-logo-wrapper">
-      <img alt="" class="breach-logo lazy-img" data-srcset="/img/logos/{{ LogoPath }}" src="/img/logos/missing-logo-icon.png" />
+      {{#if lazyLoad}}
+        <img alt="" class="breach-logo lazy-img" data-srcset="/img/logos/{{ LogoPath }}" src="/img/logos/missing-logo-icon.png" />
+      {{else}}
+        <img alt="" class="breach-logo" src="/img/logos/{{ LogoPath }}" />
+      {{/if}}
     </div>
   </div>
   <div class="breach-info-wrapper flx flx-col">

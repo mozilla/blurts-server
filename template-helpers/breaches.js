@@ -96,4 +96,5 @@ module.exports = {
   allBreaches,
   lastAddedBreach,
   getFoundBreaches,
+  makeBreachCards,
 };

@@ -481,3 +481,27 @@ find-out-what-hackers-know= Find out what hackers already know about you. Learn 
 search-for-your-email= Search for your email address in public data breaches back to 2007.
 
 back-to-top= Back to Top
+
+comm-opt-0= Email me if one of my email addreseses below appears in a data breach.
+comm-opt-1= Send all breach alerts to { $primaryEmail }.
+
+
+stop-monitoring-this= Stop monitoring this email.
+resend-verification = Resend verification email
+
+add-new-email= Add a new email address
+send-verification= Send Verification Link
+monitor-preferences= Monitor Preferences
+global-communication= Global communication
+email-addresses= Email Addresses
+
+show-breaches-for-this-email= Show all breaches for this email.
+
+link-change-primary= Change primary email address
+
+remove-fxm= Remove {-product-name}
+remove-fxm-blurb= Turn off {-product-name} alerts. Your {-brand-fxa} will remain active, and you may receive 
+  other account-related communications.
+
+
+manage-email-addresses= Manage Email Addresses

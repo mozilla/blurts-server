@@ -29,7 +29,7 @@
       <div id="all-breaches" class="all-breaches flx">
         {{#each this.breachCards}}
           <a href="/?breach={{Name}}" class="breach-card three-up flx flx-col {{ Category }}" data-breach-category="{{ Category }}">
-            {{> breach-card }}
+            {{> breach-card lazyLoad=true}}
           </a>
         {{/each}}
       </div>

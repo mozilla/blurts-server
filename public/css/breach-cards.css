@@ -1,0 +1,14 @@
+/* breach card inside email card */
+.email-card-breach-wrapper {
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: var(--margin) 0;
+}
+
+.email-card-breach-wrapper .breach-card-title-wrapper {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.breach-title.demi.ec {
+  color: var(--color);
+}
