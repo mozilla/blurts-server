@@ -177,7 +177,7 @@ const DB = {
         verified: true,
       })
       .returning("*");
-      
+
   return verifiedEmail;
   },
 
@@ -206,6 +206,19 @@ const DB = {
       fxa_uid: fxaUID,
       fxa_refresh_token: fxaRefreshToken,
       fxa_profile_json: fxaProfileData,
+    })
+    .returning("*");
+    const updatedSubscriber = Array.isArray(updated) ? updated[0] : null;
+    return updatedSubscriber;
+  },
+
+  async setBreachesLastShownNow(subscriber) {
+    const nowDateTime = new Date(Date.now());
+    const nowTimeStamp = nowDateTime.toISOString();
+    const updated = await knex("subscribers")
+    .where("id", "=", subscriber.id)
+    .update({
+      breaches_last_shown: nowTimeStamp,
     })
     .returning("*");
     const updatedSubscriber = Array.isArray(updated) ? updated[0] : null;
