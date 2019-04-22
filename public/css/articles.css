@@ -1,5 +1,5 @@
 .article-list-container {
-  padding: 1rem 0 2rem;
+  padding: calc(var(--padding) * 2) 0 calc(var(--padding) * 3) 0;
   color: rgba(255, 255, 255, 1);
 }
 

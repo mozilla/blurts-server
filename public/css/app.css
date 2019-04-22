@@ -103,7 +103,7 @@ h3 {
 
 .big-headline {
   font-size: var(--bigHeadline);
-  font-weight: 500;
+  font-weight: 700;
   margin: auto;
 }
 
@@ -354,6 +354,18 @@ ul li {
 .bg-blue {
   background: var(--blue);
   color: rgba(255, 255, 255, 1);
+}
+
+.drop-shadow {
+  transform: scale(1);
+  box-shadow: 1px 1px 10px #4444440e;
+  transition: box-shadow 0.15s ease-in-out, transform 0.15s ease-in-out;
+}
+
+.drop-shadow:hover {
+  transform: scale(1.01);
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.15s ease-in-out, transform 0.15s ease-in-out;
 }
 
 /* SPRITES */

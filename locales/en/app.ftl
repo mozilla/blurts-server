@@ -505,3 +505,5 @@ remove-fxm-blurb= Turn off {-product-name} alerts. Your {-brand-fxa} will remain
 
 
 manage-email-addresses= Manage Email Addresses
+
+latest-breach-link= See if you were in this breach

@@ -9,31 +9,29 @@
     </div>
   </div>
 
-  <div class="row found-breaches">
-    <!-- foundBreaches 1-4 -->
-    {{#eachFromTo (getFoundBreaches) 0 4}}
-      <div class="breach-listing flx flx-col">
-        {{> breach_listing }}
-      </div>
-    {{/eachFromTo}}
+  <div class="row">
+    <div class="found-breaches">
+      <!-- foundBreaches 1-4 -->
+      {{#eachFromTo (getFoundBreaches) 0 4}}
+        {{> breach-card cardClass="two-up drop-shadow"}}
+      {{/eachFromTo}}
 
-    {{#ifCompare foundBreaches.length ">" 4}}
-      <!-- show all breaches button -->
-      <div id="show-all-breaches-wrapper" class="col-12 show">
-        <p class="txt-cntr">Currently showing <span class="bold">4</span> of <span class="bold">{{ foundBreaches.length }}</span> breaches.</p>
-        <button id="show-all-breaches" class="util-btn light-btn" data-event-category="Show All Breaches">{{getString "show-all-breaches"}}</button>
-      </div>
+      {{#ifCompare foundBreaches.length ">" 4}}
+        <!-- show all breaches button -->
+        <div id="show-all-breaches-wrapper" class="col-12 show">
+          <p class="txt-cntr">Currently showing <span class="bold">4</span> of <span class="bold">{{ foundBreaches.length }}</span> breaches.</p>
+          <button id="show-all-breaches" class="util-btn light-btn" data-event-category="Show All Breaches">{{getString "show-all-breaches"}}</button>
+        </div>
 
-    <!-- foundBreaches 4-foundBreaches.length -->
-      <div id="additional-breaches" class="show-additional-breaches hide flx">
-        {{#eachFromTo (getFoundBreaches) 4 foundBreaches.length}}
-          <div class="breach-listing flx flx-col">
-            {{> breach_listing }}
-          </div>
-        {{/eachFromTo}}
-      </div>
+      <!-- foundBreaches 4-foundBreaches.length -->
+        <div id="additional-breaches" class="show-additional-breaches hide flx">
+          {{#eachFromTo (getFoundBreaches) 4 foundBreaches.length}}
+            {{> breach-card cardClass="two-up drop-shadow"}}
+          {{/eachFromTo}}
+        </div>
 
-    {{/ifCompare}}
+      {{/ifCompare}}
+    </div>
   </div>
 </main>
 

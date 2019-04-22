@@ -28,9 +28,7 @@
       <!-- breach cards -->
       <div id="all-breaches" class="all-breaches flx">
         {{#each this.breachCards}}
-          <a href="/?breach={{Name}}" class="breach-card three-up flx flx-col {{ Category }}" data-breach-category="{{ Category }}">
-            {{> breach-card lazyLoad=true}}
-          </a>
+          {{> breach-card lazyLoad=true cardClass="three-up drop-shadow"}}
         {{/each}}
       </div>
     </div>
