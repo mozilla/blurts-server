@@ -46,8 +46,4 @@
   .found-breaches {
     padding: 0 var(--padding);
   }
-
-  .scan-results .breach-stats {
-    margin: auto auto auto 0;
-  }
 }

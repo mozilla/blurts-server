@@ -12,11 +12,11 @@ svg.Mozilla-logo {
 @media screen and (max-width: 800px) {
   footer ul.row-full-width {
     flex-direction: column;
-    padding: 3.25rem;
+    padding: 1.75rem;
   }
 
-  footer ul.row-full-width li,
-  footer ul.row-full-width a {
+  .footer-link-wrapper,
+  .footer-link {
     width: 100%;
   }
 
@@ -24,13 +24,13 @@ svg.Mozilla-logo {
     padding: 0.75rem 0;
   }
 
-  footer span.arrow-icon.show-mobile {
-    display: inline;
+  .mozilla-logo-wrapper {
+    padding: 0;
   }
 }
 
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
   footer ul.row-full-width {
     padding: 2.25rem;
   }
-}
+} */

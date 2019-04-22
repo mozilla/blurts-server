@@ -1,4 +1,4 @@
-<section class="latest-breach container">
+<section class="latest-breach">
   <section class="row">
     <div class="col-8 latest-breach-wrapper">
       <h3 class="latest-breach-headline">{{{getString "latest-breach" brandName="<span class='fxm'>Firefox Monitor</span>"}}}</h3>
@@ -6,7 +6,7 @@
           {{#each (lastAddedBreach)}}
             {{> breach_listing}}
             <div class="find-out-if flx txt-cntr">
-              <a href="/?breach={{this.Name}}" class="button" >Find out if your account was compromised<span class="arrow">&#8594</span></a>
+              <a href="/?breach={{this.Name}}" class="latest-breach-link">See if you were in this breach</a>
             </div>
           {{/each}}
         </div>

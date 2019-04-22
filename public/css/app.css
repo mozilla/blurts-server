@@ -47,7 +47,7 @@ body {
 }
 
 .gradient-background {
-  background: linear-gradient(to right, #9937a7, var(--blue), var(--deepBlue));
+  background: linear-gradient(130deg, #9937a7, var(--blue), var(--deepBlue) 150%);
 }
 
 .fxm {
