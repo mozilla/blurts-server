@@ -61,85 +61,81 @@ pwt-summary-2 =
 pwt-headline-3 = Behandele Sicherheitsfragen wie zusätzliche Passwörter
 pwt-summary-3 = Websites überprüfen nicht den Wahrheitsgehalt deiner Antworten, sondern nur, ob sie immer gleich sind. Erstelle lange, beliebige Antworten und speichere sie an einem sicheren Ort ab.
 pwt-headline-4 = Hol dir Hilfe beim Merken deiner Passwörter
-pwt-summary-4 =
-    Passwort-Manager wie 1Password, LastPass, Dashlane und Bitwarden generieren starke, eindeutige Passwörter.
-    Sie speichern Passwörter auch sicher und tragen sie für Sie auf Websites ein.
-pwt-headline-5 = Mit Zwei-Faktor-Authentifizierung haben Sie zusätzliche Sicherheit
-pwt-summary-5 =
-    2FA benötigt eine zusätzliche Information (wie einen einmaligen Code, der per SMS gesendet wird), um sich bei Ihrem Konto anzumelden.
-    Selbst wenn jemand Ihr Passwort hat, bekommt er keinen Zugang.
-pwt-headline-6 = Abonnieren Sie Warnmeldungen für { -product-name-nowrap }
-pwt-summary-6 = Datenlecks auf Websites werden immer häufiger. Sobald eine neue Sicherheitsverletzung in unsere Datenbank aufgenommen wird, sendet Ihnen { -product-name-nowrap } eine Warnung – damit Sie Maßnahmen ergreifen und Ihr Konto schützen können.
-landing-headline = Ihr Recht auf Schutz vor Hackern beginnt hier.
-landing-blurb = { -product-name-nowrap } versorgt Sie mit Werkzeugen, mit denen Sie Ihre persönlichen Daten schützen können. Finden Sie heraus, was Hacker bereits über Sie wissen, und lernen Sie, ihnen einen Schritt voraus zu sein.
-scan-label = Überprüfen Sie, ob ein Datenleck Sie betrifft.
+pwt-summary-4 = Passwort-Manager wie 1Password, LastPass, Dashlane und Bitwarden generieren starke, eindeutige Passwörter, speichern sie sicher und tragen sie für dich auf Websites ein.
+pwt-headline-5 = Sorge mit Zwei-Faktor-Authentifizierung (2FA) für mehr Sicherheit
+pwt-summary-5 = 2FA benötigt eine zusätzliche Information (z. B. einen einmaligen Code, der per SMS gesendet wird), um sich bei deinem Konto anzumelden. Selbst wenn also jemand dein Passwort hat, bekommt er so keinen Zugang zu deinem Konto.
+pwt-headline-6 = Erhalte Warnmeldungen von { -product-name-nowrap }
+pwt-summary-6 = Datenlecks kommen immer häufiger vor. Wenn deine persönlichen Daten von einem neuen Datenleak oder Hackerangriff betroffen sind, warnt dich { -product-name-nowrap } , damit du sofort Maßnahmen ergreifen und deine Konten schützen kannst.
+landing-headline = Dein Schutz vor Hackern beginnt hier
+landing-blurb = { -product-name-nowrap } versorgt dich mit Werkzeugen, die deine persönlichen Daten schützen können. Finde heraus, was Hacker bereits über dich wissen und erfahre, wie du ihnen in Zukunft einen Schritt voraus sein kannst.
+scan-label = Überprüfe, ob du von einem Datenleck betroffen bist.
 scan-placeholder = E-Mail-Adresse eingeben
-scan-privacy = Ihre E-Mail-Adresse wird nicht gespeichert.
-scan-submit = Nach Ihrer E-Mail-Adresse suchen
+scan-privacy = Deine E-Mail-Adresse wird nicht gespeichert.
+scan-submit = Nach deiner E-Mail-Adresse suchen
 scan-another-email = Eine andere E-Mail-Adresse scannen
-scan-featuredbreach-label = Finden Sie heraus, ob Ihr Konto auf <span class="bold">{ $featuredBreach }</span> kompromittiert wurde.
-sensitive-breach-email-required = Leck enthält sensible Daten. E-Mail-Verifikation erforderlich.
+scan-featuredbreach-label = Finde heraus, ob dein Konto auf <span class="bold">{ $featuredBreach }</span> kompromittiert wurde.
+sensitive-breach-email-required = Datenleck enthält sensible Daten. E-Mail-Verifikation erforderlich.
 scan-error = Muss eine gültige E-Mail-Adresse sein.
-signup-banner-headline = { -product-name-nowrap } erkennt Bedrohungen für Ihre Online-Konten.
+signup-banner-headline = { -product-name-nowrap } erkennt Bedrohungen für deine Online-Konten.
 signup-banner-blurb =
-    Ihr detaillierter Bericht zu { -product-name-nowrap } zeigt an, ob Informationen aus Ihren Online-Konten durchgesickert sind oder gestohlen wurden.
-    Wir warnen Sie auch, wenn Ihre Konten bei neuen Website-Verstößen angezeigt werden.
+    Dein detaillierter Bericht zu { -product-name-nowrap } zeigt an, ob Informationen aus deinen Online-Konten durchgesickert sind oder gestohlen wurden.
+    Wir warnen dich auch, wenn deine Konten bei neuen Website-Verstößen angezeigt werden.
 download-firefox-bar-blurb = { -product-name-nowrap } wird präsentiert vom <span class="nowrap">brandneuen { -brand-name }</span>.
-download-firefox-bar-link = Laden Sie jetzt { -brand-name } herunter
-download-firefox-banner-blurb = Übernehmen Sie die Kontrolle über Ihren Browser
-download-firefox-banner-button = Laden Sie { -brand-name } herunter
-signup-modal-headline = Abonnieren Sie { -product-name-nowrap }
-signup-modal-blurb = Mit dem Abonnement erhalten Sie Ihren vollständigen Bericht, Warnmeldungen bei Datenlecks und Sicherheitstipps von { -product-name-nowrap }.
+download-firefox-bar-link = Download { -brand-name }
+download-firefox-banner-blurb = Übernimm die Kontrolle über deinen Browser
+download-firefox-banner-button = Download { -brand-name }
+signup-modal-headline = Melde dich für { -product-name-nowrap } an
+signup-modal-blurb = Wenn du dich mit deinem Firefox-Konto anmeldest, erhältst du einen vollständigen Bericht, zukünftige Warnmeldungen bei Datenlecks und Sicherheitstipps von { -product-name-nowrap }.
 signup-modal-close = Schließen
-get-your-report = Holen Sie sich Ihren Bericht
-signup-modal-verify-headline = Bestätigen Sie Ihr Abonnement
+get-your-report = Holen dir sich deinen Bericht
+signup-modal-verify-headline = Bestätige dein Abonnement
 signup-modal-verify-blurb = Wir haben einen Bestätigungslink an <span id="submitted-email" class="medium"></span> geschickt.
 signup-modal-verify-expiration = Dieser Link läuft in 24 Stunden ab.
-signup-modal-verify-resend = Weder in Ihrem Posteingang noch im Spam-Ordner? Erneut senden.
+signup-modal-verify-resend = Weder in deinem Posteingang noch im Spam-Ordner? Erneut senden.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Gesendet!
-signup-with-fxa = Abonnieren mit { -brand-name }-Konto
+signup-with-fxa = Melde dich mit { -brand-name }-Konto an
 form-signup-placeholder = E-Mail-Adresse eingeben
-form-signup-checkbox = Holen Sie sich das Neueste von { -brand-Mozilla } und { -brand-name }.
-sign-up = Abonnieren
+form-signup-checkbox = Hol dir das Neueste von { -brand-Mozilla } und { -brand-name }.
+sign-up = Anmelden
 form-signup-error = Muss eine gültige E-Mail-Adresse sein
 no-breaches-headline = So weit, so gut.
-found-breaches-headline = Ihre Daten sind von einem Datenleck betroffen.
+found-breaches-headline = Deine Daten sind von einem Datenleck betroffen.
 no-breaches =
-    Ihre E-Mail-Adresse wurde in unserem Basis-Scan nicht angezeigt.
-    Das sind gute Nachrichten, aber Datenlecks können jederzeit passieren und es gibt noch mehr, was Sie tun können. Abonnieren Sie { -product-name-nowrap } und erhalten Sie einen vollständigen Bericht, Warnungen bei neuen Sicherheitsverletzungen und Tipps zum Schutz Ihrer Passwörter.
+    Deine E-Mail-Adresse wurde in unserem Basis-Scan nicht angezeigt.
+    Das sind gute Nachrichten, aber Datenlecks können jederzeit passieren und es gibt noch mehr, was du tun kannst. Melde dich für { -product-name-nowrap } an und erhalte einen vollständigen Bericht, zukünftige Warnungen bei neuen Sicherheitsverletzungen und Tipps zum Schutz deiner Passwörter.
 featured-breach-results =
     { $breachCount ->
-        [0] Ihr Konto ist vom Datenleck bei <span class="bold">{ $featuredBreach }</span> betroffen, nicht aber von anderen bekannten Datenlecks.
-        [one] Ihr Konto ist vom Datenleck bei <span class="bold">{ $featuredBreach }</span> betroffen, sowie von einem anderen Datenleck.
-       *[other] Ihr Konto ist vom Datenleck bei <span class="bold">{ $featuredBreach }</span> betroffen, sowie von { $breachCount } anderen Datenlecks.
+        [0] Dein Konto ist vom Datenleck bei <span class="bold">{ $featuredBreach }</span> betroffen, nicht aber von anderen bekannten Datenlecks.
+        [one] Dein Konto ist vom Datenleck bei <span class="bold">{ $featuredBreach }</span> betroffen, sowie von einem anderen Datenleck.
+       *[other] Dein Konto ist vom Datenleck bei <span class="bold">{ $featuredBreach }</span> betroffen, sowie von { $breachCount } anderen Datenlecks.
     }
 featured-breach-not-compromised =
     { $breachCount ->
         [0] { no-breaches }
-        [one] Ihr Konto ist nicht vom Datenleck bei <span class="bold">{ $featuredBreach }</span> betroffen, aber von einem anderen Datenleck.
-       *[other] Ihr Konto ist nicht vom Datenleck bei <span class="bold">{ $featuredBreach }</span> betroffen, aber von { $breachCount } anderen Datenlecks.
+        [one] Dein Konto ist nicht vom Datenleck bei <span class="bold">{ $featuredBreach }</span> betroffen, aber von einem anderen Datenleck.
+       *[other] Dein Konto ist nicht vom Datenleck bei <span class="bold">{ $featuredBreach }</span> betroffen, aber von { $breachCount } anderen Datenlecks.
     }
 scan-results =
     { $breachCount ->
         [0] { no-breaches }
-        [one] Ihr Konto ist von { $breachCount } Datenleck betroffen.
-       *[other] Von den folgenden { $breachCount } Datenlecks sind Konten mit Ihren E-Mail-Adressen betroffen.
+        [one] Dein Konto ist von { $breachCount } Datenleck betroffen.
+       *[other] Von den folgenden { $breachCount } Datenlecks sind Konten mit deinen E-Mail-Adressen betroffen.
     }
 show-more-breaches = Mehr anzeigen
-what-to-do-headline = Was zu tun ist, wenn Ihre Informationen von einem Datenleck betroffen sind
-what-to-do-subhead-1 = Ändern Sie Ihre Passwörter, auch für alte Konten
-what-to-do-blurb-1 = Wenn Sie sich nicht anmelden können, wenden Sie sich an die Website, um zu erfahren, wie Sie das Konto wiederherstellen oder schließen können. Das Konto kommt Ihnen nicht bekannt vor? Die Website hat möglicherweise Namen geändert oder jemand hat ein Konto für Sie erstellt.
-what-to-do-subhead-2 = Wenn Sie ein kompromittiertes Passwort mehrfach nutzen, ändern Sie es
+what-to-do-headline = Was zu tun ist, wenn deine Informationen von einem Datenleck betroffen sind:
+what-to-do-subhead-1 = Ändere deine Passwörter, auch für alte Konten.
+what-to-do-blurb-1 = Wenn du dich nicht anmelden kannst, wende dich an die Website, um zu erfahren, wie du das Konto wiederherstellen oder schließen kannst. Das Konto kommt dir nicht bekannt vor? Die Website hat möglicherweise Namen geändert oder jemand hat ein Konto für dich erstellt.
+what-to-do-subhead-2 = Wenn du ein kompromittiertes Passwort mehrfach nutzt, ändere es.
 what-to-do-blurb-2 =
-    Hacker versuchen möglicherweise, Ihr verfügbares Passwort für andere Konten wiederzuverwenden.
-    Erstellen Sie für jede Website ein anderes Passwort, insbesondere für Ihr Bankkonto, Ihre E-Mail-Adresse und andere Websites, auf denen Sie persönliche Daten speichern.
-what-to-do-subhead-3 = Ergreifen Sie zusätzliche Schritte zum Schutz Ihrer Bankkonten
+    Hacker versuchen möglicherweise, dein verfügbares Passwort für andere Konten wiederzuverwenden.
+    Erstelle für jede Website ein anderes Passwort, insbesondere für dein Bankkonto, deine E-Mail-Adresse und andere Websites, auf denen du persönliche Daten speicherst.
+what-to-do-subhead-3 = Ergreife zusätzliche Schritte zum Schutz deiner Bankkonten.
 what-to-do-blurb-3 =
     Bei den meisten Verstößen werden nur E-Mails und Passwörter erbeutet, bei einigen jedoch auch vertrauliche Bankdaten.
-    Wenn Ihre Bankkonto- oder Kreditkartennummern von einem Datenleck betroffen sind, warnen Sie Ihre Bank vor möglichen Betrugsfällen und überwachen Sie die Kontoauszüge auf Transaktionen, die Sie nicht kennen.
-what-to-do-subhead-4 = Erfahren Sie, wie man gute Passwörter erstellt und sie sicher aufbewahrt.
-what-to-do-blurb-4 = Passwort-Manager wie 1Password, LastPass, Dashlane und Bitwarden generieren starke, eindeutige Passwörter, speichern die Passwörter sicher und tragen sie für Sie auf Websites ein.
+    Wenn deine Bankkonto- oder Kreditkartennummern von einem Datenleck betroffen sind, warne deine Bank vor möglichen Betrugsfällen und überwache deine Kontoauszüge auf Transaktionen, die du nicht kennst.
+what-to-do-subhead-4 = Hol dir Hilfe beim Erstellen guter Passwörter und ihrer sicheren Aufbewahrung.
+what-to-do-blurb-4 = Passwort-Manager wie 1Password, LastPass, Dashlane und Bitwarden generieren starke, eindeutige Passwörter, speichern sie sicher und tragen sie für dich auf Websites ein.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Datum des Lecks:
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -147,7 +143,7 @@ compromised-accounts = Kompromittierte Konten:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Kompromittierte Daten:
 confirmed = Es hat geklappt!<br />Abonnement erfolgreich!
-confirmed-blurb = { -product-name-nowrap } sendet Ihnen in Kürze eine E-Mail mit einem vollständigen Bericht und sendet eine E-Mail-Benachrichtigung, wenn Ihr Konto von einem neuen gemeldeten Datenleck betroffen ist.
+confirmed-blurb = { -product-name-nowrap } sendet dir in Kürze eine E-Mail mit einem vollständigen Bericht und eine E-Mail-Benachrichtigung, wenn dein Konto von einem neuen gemeldeten Datenleck betroffen ist.
 confirmed-social-blurb = Wenn Sie von einem Datenleck betroffen sind, sind Ihre Freunde, Ihre Familie oder Ihre Online-Kontakte es wahrscheinlich auch. Erzählen Sie ihnen von { -product-name-nowrap }.
 unsub-headline = Abonnement von { -product-name-nowrap } löschen
 unsub-blurb = Dadurch wird Ihre E-Mail-Adresse aus der Liste { -product-name-nowrap } entfernt und Sie erhalten keine Benachrichtigungen mehr, wenn neue Datenlecks gemeldet werden.
