@@ -1,14 +1,14 @@
   <footer>
     <ul class="row-full-width">
-      <li>
-        <a class="footer-link" href="https://www.mozilla.org" {{>analytics/outbound-link eventLabel="Mozilla.org"}} {{>open-new-window}} aria-label="Open Mozilla.org in new window">
+      <li class="footer-link-wrapper">
+        <a class="footer-link mozilla-logo-wrapper" href="https://www.mozilla.org" {{>analytics/outbound-link eventLabel="Mozilla.org"}} target="_blank" aria-label="Open Mozilla.org in new window">
           {{> svg/Mozilla }}
         </a>
       </li>
       {{#each (getFooterLinks)}}
-      <li>
-        <a class="footer-link" href="{{this.href}}" {{>analytics/outbound-link eventLabel=this.title}} {{#if openNewWindow}}{{> open-new-window }}{{/if}}>
-          {{this.stringId}}<span aria-hidden="true" class="arrow-icon show-mobile arrow">&#8594;</span>
+      <li class="footer-link-wrapper">
+        <a class="footer-link" href="{{ this.href }}" {{> analytics/outbound-link eventLabel=this.title }} {{#if openNewWindow}} target="_blank" {{/if}}>
+          {{ this.stringId }}
         </a>
       </li>
       {{/each}}

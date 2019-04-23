@@ -26,16 +26,16 @@
 //   return;
 // };
 
-const getLocation = () => {
+function getLocation() {
   const eventLocation = document.querySelectorAll("[data-page-label]");
   if (eventLocation.length > 0) {
     return `Page ID: ${eventLocation[0].dataset.pageLabel}`;
   } else {
     return `Page ID: ${ga_getLocation()}`;
   }
-};
+}
 
-const sendPing = async(el, eventAction, eventLabel = null) => {
+async function sendPing(el, eventAction, eventLabel = null) {
   if (typeof(ga) !== "undefined" && !el.classList.contains("hide")) {
     if (!eventLabel) {
       eventLabel = `${getLocation()}`;
@@ -47,15 +47,15 @@ const sendPing = async(el, eventAction, eventLabel = null) => {
     }
     return ga("send", "event", eventCategory, eventAction, eventLabel);
   }
-};
+}
 
-const getFxaUtms = (url) => {
+function getFxaUtms(url) {
   const utmSource = encodeURIComponent(document.body.dataset.serverUrl.replace(/(^\w+:|^)\/\//g, ""));
   url.searchParams.append("utm_source", utmSource);
   url.searchParams.append("utm_campaign", document.body.dataset.utmCampaign);
   url.searchParams.append("form_type", "email");
   return url;
-};
+}
 
 // (() => {
 //   // Update data-event-category and data-fxa-entrypoint if the element

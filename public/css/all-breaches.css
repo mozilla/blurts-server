@@ -18,32 +18,8 @@
   margin: auto auto var(--margin) 0;
 }
 
-.breach-card {
-  display: flex;
-  border-radius: var(--radius);
-  color: var(--color);
-  overflow: hidden;
-  margin: 0.5rem;
-  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0);
-  transform: scale(1);
-}
-
-.breach-card:hover {
-  box-shadow: 0 0 10px 1px rgba(144, 140, 167, 0.349);
-  transform: scale(1.01);
-}
-
-.breach-card,
-.breach-card:hover {
-  transition: all 0.1s ease-in-out;
-}
-
 .breach-filter span {
   pointer-events: none;
-}
-
-a.breach-card:hover {
-  opacity: 1;
 }
 
 /* fixed-filters */
@@ -202,41 +178,10 @@ svg.plus-sign path,
   justify-content: space-between;
 }
 
-.breach-card-title-wrapper {
-  padding: var(--margin) var(--padding);
-  justify-content: space-between;
-  align-content: center;
-}
-
-.breach-info-wrapper {
-  height: 100%;
-  justify-content: space-between;
-  padding: var(--margin) var(--padding) var(--padding) var(--padding);
-  background-color: rgba(255, 255, 255, 1);
-}
-
-img.breach-logo {
-  max-height: 1.15rem;
-  max-width: 3rem;
-}
-
-.demi.key {
-  color: var(--color);
-  font-size: 0.9rem;
-}
-
-.breach-title {
-  color: rgba(255, 255, 255, 1);
-  margin: auto auto auto 0;
-}
-
-.breach-card-link-wrap {
-  padding-top: 1rem;
-}
-
 /* breach-card colors */
 
-.all-breaches-wrapper {
+.all-breaches-wrapper,
+.found-breaches {
   --website: var(--blue);
   --websiteDark: #4439dd;
   --dataAggregator: goldenrod;
@@ -345,13 +290,6 @@ img.breach-logo {
   background-color: var(--unverifiedDark) !important;
 }
 
-/* three-up */
-
-.three-up {
-  flex: 1 1 30%;
-  min-width: 260px;
-}
-
 .breach-card.hide {
   width: 0;
   max-width: 0;
@@ -362,19 +300,7 @@ img.breach-logo {
   animation: hide 0.15s ease-in-out forwards;
 }
 
-@media screen and (max-width: 1000px) {
-  .three-up {
-    max-width: 48%;
-    flex: 1 1 48%;
-  }
-}
-
 @media screen and (max-width: 800px) {
-  .three-up {
-    max-width: 100%;
-    flex: 1 1 100%;
-  }
-
   .fixed-filters {
     flex-direction: column;
     padding: var(--padding);

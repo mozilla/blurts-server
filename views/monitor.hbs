@@ -2,14 +2,19 @@
 
 <main class="container monitor-homepage">
   <section class="row spc-btwn">
-    <div class="col-6">
-      <h2 class="big-headline">{{getString "see-if-breached"}}</h2>
-        <h3 class="subhead">{{getString "find-out-what-hackers-know"}}</h3>
-        {{> forms/scan-email-form addClasses="inline" }}
+    <div class="col-7">
+      <h2 class="big-headline">{{ getString "see-if-breached" }}</h2>
+    </div>
+    <div class="col-5">
+      <h3 class="subhead">{{ getString "find-out-what-hackers-know" }}</h3>
+      {{> forms/scan-email-form }}
     </div>
   </section>
 </main>
 
-{{> latest-breach }}
-{{> article-list }}
+<div class="gradient-styling gradient-background">
+  {{> latest-breach }}
+  {{> article-list }}
+</div>
+
 {{> sign-up-banners/monitor-features }}

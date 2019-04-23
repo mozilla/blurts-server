@@ -20,11 +20,29 @@ function _requireSessionUser(req) {
   return req.session.user;
 }
 
-async function resend(req, res) {
+function removeEmail(req, res) {
+  // console.log(req.body.emailId);
+
+  // Remove secondary email
+  return res.json("Email is removed");
+}
+
+function resendEmail(req, res) {
+  // console.log(req.body.emailId);
+
   // Resend verification email
   // Delete the unverified email if it appears anywhere else (under the user's id);
   // Reset the verification clock
   return res.json("Resend the email");
+}
+
+function updateCommunicationOptions(req, res) {
+  // console.log(req.body.communicationOption);
+
+  // 0 = Send breach alerts to the email address found in brew breach.
+  // 1 = Send all breach alerts to user's primary email address.
+
+  return res.json("Comm options updated");
 }
 
 async function add(req, res) {
@@ -61,38 +79,47 @@ async function add(req, res) {
   });
 }
 
-const bundleVerifiedEmails = async(email, emailSha1, ifPrimary, allBreaches) => {
+async function bundleVerifiedEmails(email, emailSha1, ifPrimary, id, verificationStatus, allBreaches) {
   const foundBreaches = await HIBP.getBreachesForEmail(emailSha1, allBreaches, true);
 
   const emailEntry = {
     "email": email,
     "breaches": foundBreaches,
     "primary": ifPrimary,
+    "id": id,
+    "verified": verificationStatus,
   };
+
   return emailEntry;
-};
+}
 
-async function getDashboard(req, res) {
-  const allBreaches = req.app.locals.breaches;
-  const user = req.session.user;
+async function getAllEmailsAndBreaches(user, allBreaches) {
   const monitoredEmails = await DB.getUserEmails(user.id);
-
   const verifiedEmails = [];
   const unverifiedEmails = [];
-
-  verifiedEmails.push(await bundleVerifiedEmails(user.primary_email, user.primary_sha1, true, allBreaches));
-
+  verifiedEmails.push(await bundleVerifiedEmails(user.primary_email, user.primary_sha1, true, user.id, user.primary_verified, allBreaches));
   for (const email of monitoredEmails) {
     if (email.verified) {
-      const formattedEmail = await bundleVerifiedEmails(email.email, email.sha1, email.verified, allBreaches);
+      const formattedEmail = await bundleVerifiedEmails(email.email, email.sha1, false, email.id, email.verified, allBreaches);
       verifiedEmails.push(formattedEmail);
     } else {
       unverifiedEmails.push(email);
     }
   }
-  res.render("dashboard", {
+  return { verifiedEmails, unverifiedEmails };
+}
+
+
+async function getDashboard(req, res) {
+  const allBreaches = req.app.locals.breaches;
+  const user = req.session.user;
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
+
+  res.render("dashboards", {
     title: req.fluentFormat("user-dash"),
-    verifiedEmails, unverifiedEmails,
+    verifiedEmails,
+    unverifiedEmails,
+    whichPartial: "dashboards/breaches-dash",
   });
 }
 
@@ -191,13 +218,16 @@ async function postUnsubscribe(req, res) {
 }
 
 
-function getPreferences(req, res) {
+async function getPreferences(req, res) {
+  const allBreaches = req.app.locals.breaches;
+  const user = req.session.user;
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
+
   _requireSessionUser(req);
-  res.render("subpage", {
+  res.render("dashboards", {
     title: req.fluentFormat("email-add-title"),
-    headline: req.fluentFormat("email-add-headline"),
-    subhead: req.fluentFormat("email-add-blurb-v2"),
-    whichPartial: "subpages/preferences",
+    whichPartial: "dashboards/preferences",
+    verifiedEmails, unverifiedEmails,
   });
 }
 
@@ -240,5 +270,7 @@ module.exports = {
   getUnsubSurvey,
   postUnsubSurvey,
   logout,
-  resend,
+  removeEmail,
+  resendEmail,
+  updateCommunicationOptions,
 };

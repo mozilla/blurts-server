@@ -1,27 +1,16 @@
-.articles {
-  background-color: rgba(255, 255, 255, 1);
+.article-list-container {
+  padding: calc(var(--padding) * 2) 0 calc(var(--padding) * 3) 0;
+  color: rgba(255, 255, 255, 1);
 }
 
-.article-list > * {
+.article {
   margin-bottom: 1.5rem;
 }
 
-.more-articles {
-  display: inline-flex;
-  justify-content: flex-start;
-  margin-left: 2.25rem;
-  margin-bottom: 0;
-}
-
-.article-list a {
+.article-link {
   font-weight: 400;
   font-size: 1.1rem;
   text-decoration: none;
   letter-spacing: 0.5px;
-}
-
-@media screen and (max-width: 500px) {
-  .more-articles {
-    margin-left: 1.75rem;
-  }
+  color: rgba(255, 255, 255, 1);
 }

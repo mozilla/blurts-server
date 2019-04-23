@@ -1,8 +1,9 @@
 "use strict";
 
-const { getStrings } = require("./hbs-helpers");
+const { getStrings, getFxaUrl } = require("./hbs-helpers");
 
-const navLinks = (args) => {
+
+function navLinks(args) {
   const locales = args.data.root.req.supportedLocales;
   const links = [
     {
@@ -23,9 +24,9 @@ const navLinks = (args) => {
   ];
 
   return getStrings(links, locales);
-};
+}
 
-const fxaMenuLinks = (args) => {
+function fxaMenuLinks(args) {
   const locales = args.data.root.req.supportedLocales;
   const fxaLinks = [
     {
@@ -36,7 +37,7 @@ const fxaMenuLinks = (args) => {
     {
       title: "Firefox Account",
       stringId: "fxa-account",
-      href: "/", //get app locals and just import the link from here.
+      href: getFxaUrl(),
     },
     {
       title: "Sign Out",
@@ -46,7 +47,7 @@ const fxaMenuLinks = (args) => {
   ];
 
   return getStrings(fxaLinks, locales);
-};
+}
 
 module.exports = {
   navLinks,

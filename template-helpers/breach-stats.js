@@ -3,7 +3,7 @@
 const { LocaleUtils } = require("./../locale-utils");
 
 
-const getBreachStats = (args) => {
+function getBreachStats(args) {
   let foundBreaches = [];
 
   const breachStats = {
@@ -72,7 +72,7 @@ for (const stat in breachStats) {
   // else remove "monited emails" and send remaining stats to scan-results page.
   delete breachStats.monitoredEmails;
   return breachStats;
-};
+}
 
 module.exports = {
   getBreachStats,

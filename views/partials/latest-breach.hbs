@@ -1,15 +1,15 @@
-<section class="latest-breach container">
-  <section class="row">
-    <div class="col-8 latest-breach-wrapper">
-      <h3 class="latest-breach-headline">{{{getString "latest-breach" brandName="<span class='fxm'>Firefox Monitor</span>"}}}</h3>
+<section class="latest-breach-container">
+  <section class="row jst-cntr">
+    <div class="col-8">
+      <div class="gradient-background latest-breach-wrapper drop-shadow">
+        <h3 class="latest-breach-headline">{{{ getString "latest-breach" brandName="<span class='fxm'>Firefox Monitor</span>" }}}</h3>
         <div class="latest-breach-info">
           {{#each (lastAddedBreach)}}
-            {{> breach_listing}}
-            <div class="find-out-if flx txt-cntr">
-              <a href="/?breach={{this.Name}}" class="button" >Find out if your account was compromised<span class="arrow">&#8594</span></a>
-            </div>
+            {{> breach-card cardClass="latest-breach"}}
+            <a href="/?breach={{ this.Name }}" class="latest-breach-link">{{ getString "latest-breach-link" }}<span class="arrow">&#8594;</span></a>
           {{/each}}
         </div>
+      </div>
     </div>
   </section>
 </section>

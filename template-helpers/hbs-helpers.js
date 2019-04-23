@@ -7,7 +7,7 @@ const mozlog = require("./../log");
 
 const log = mozlog("template-helpers/hbs-helpers");
 
-const getSupportedLocales = (args) => {
+function getSupportedLocales(args) {
   if (args.data) {
     return args.data.root.req.supportedLocales;
   }
@@ -15,7 +15,7 @@ const getSupportedLocales = (args) => {
     return args.this.req.supportedLocales;
   }
   return null;
-};
+}
 
 
 function getString (id, args) {
@@ -24,13 +24,13 @@ function getString (id, args) {
 }
 
 
-const getStrings = (stringArr, locales) => {
+function getStrings(stringArr, locales) {
   stringArr.forEach(string => {
     const stringId = string.stringId;
     string.stringId =LocaleUtils.fluentFormat(locales, stringId);
   });
   return stringArr;
-};
+}
 
 
 function fluentFxa (id, args) {
@@ -75,7 +75,6 @@ function fluentNestedBold(id, args) {
   });
 
   let localizedStrings = LocaleUtils.fluentFormat(supportedLocales, id, args.hash);
-
   if (args.hash.breachCount) {
     localizedStrings = localizedStrings.replace(/(\s[\d]+\s)/, addMarkup(args.hash.breachCount));
   }

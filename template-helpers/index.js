@@ -3,6 +3,7 @@
 const articles = require("./articles");
 const breaches = require("./breaches");
 const breachStats = require("./breach-stats");
+const dashboard = require("./dashboard");
 const emails = require("./emails");
 const footer = require("./footer");
 const header = require("./header");
@@ -15,6 +16,7 @@ module.exports = {
     articles,
     breaches,
     breachStats,
+    dashboard,
     emails,
     footer,
     header,

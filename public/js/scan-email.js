@@ -4,7 +4,7 @@
 /* global libpolycrypt */
 /* global sendPing */
 
-const sha1 = async(message) => {
+async function sha1(message) {
   message = message.toLowerCase();
   const msgBuffer = new TextEncoder("utf-8").encode(message);
   let hashBuffer;
@@ -16,9 +16,9 @@ const sha1 = async(message) => {
   const hashArray = Array.from(new Uint8Array(hashBuffer));
   const hashHex = hashArray.map(b => ("00" + b.toString(16)).slice(-2)).join("");
   return hashHex.toUpperCase();
-};
+}
 
-const hashEmailAndSend = async(emailFormSubmitEvent) => {
+async function hashEmailAndSend(emailFormSubmitEvent) {
   emailFormSubmitEvent.preventDefault();
   const emailForm = emailFormSubmitEvent.target;
   const emailInput = document.getElementById("scan-email");
@@ -38,4 +38,4 @@ const hashEmailAndSend = async(emailFormSubmitEvent) => {
   emailInput.value = "";
   sendPing(emailForm, "Success");
   emailForm.submit();
-};
+}

@@ -3,17 +3,17 @@
 const { LocaleUtils } = require("./../locale-utils");
 const { prettyDate } = require("./hbs-helpers");
 
-const getVars = (args) => {
+function getVars(args) {
   const locales = args.data.root.req.supportedLocales;
   const breach = args.data.root.featuredBreach;
   return { locales, breach };
-};
+}
 
 // REMAINING QUESTIONS:
 // How to actually categorize these?
 // How to dynamically detect Data Aggregator breaches?
 
-const getBreachCategory = (breach) => {
+function getBreachCategory(breach) {
   if (["Exactis"].includes(breach.Name)) {
     return "data-aggregator-breach";
   }
@@ -30,13 +30,13 @@ const getBreachCategory = (breach) => {
     return "website-breach";
   }
   return "data-aggregator-breach";
-};
+}
 
-const breachCategory = (args) => {
+function breachCategory(args) {
   const { locales, breach } = getVars(args);
   const breachCategory = getBreachCategory(breach);
   return LocaleUtils.fluentFormat(locales, breachCategory, args.hash);
-};
+}
 
 
 // Big TODO : How should we assign weight to these data types?
@@ -55,7 +55,7 @@ const priorityDataClasses = {
 };
 
 
-const compareBreachDates = (breach) => {
+function compareBreachDates(breach) {
   const breachDate = new Date(breach.BreachDate);
   const addedDate = new Date(breach.AddedDate);
   const timeDiff = Math.abs(breachDate.getTime() - addedDate.getTime());
@@ -64,15 +64,15 @@ const compareBreachDates = (breach) => {
     return true;
   }
   return false;
-};
+}
 
-const tempOverview = (breach, args) => {
+function tempOverview(breach, args) {
   return `This is a make-believe breach overview for the ${breach.Title} breach, which occurred 
   on ${prettyDate(breach.BreachDate, args)} and was added to our database on ${prettyDate(breach.AddedDate, args)}. 
   I am waiting for an epiphany as to how these should be localized.`;
-};
+}
 
-const getSensitiveBreachContent = (locales, breach) => {
+function getSensitiveBreachContent(locales, breach) {
   if (!breach.IsSensitive) {
     return null;
   }
@@ -80,9 +80,9 @@ const getSensitiveBreachContent = (locales, breach) => {
     headline: LocaleUtils.fluentFormat(locales, "sensitive-sites"),
     copy: LocaleUtils.fluentFormat(locales, "sensitive-sites-copy"),
   };
-};
+}
 
-const getTips = (locales, breach) => {
+function getTips(locales, breach) {
   const tips = [
     {
       title: "create-pw",
@@ -111,10 +111,10 @@ const getTips = (locales, breach) => {
     }
   });
   return tips;
-};
+}
 
 
-const getBreachDetail = (args) => {
+function getBreachDetail(args) {
   const { locales, breach } = getVars(args);
 
   const breachDetail = {
@@ -141,10 +141,10 @@ const getBreachDetail = (args) => {
     };
   }
   return args.fn(breachDetail);
-};
+}
 
 
-const soupedUpDataClasses = (locales, breach) => {
+function soupedUpDataClasses(locales, breach) {
   const localizedDataClasses = [];
   breach.DataClasses.forEach(dataClass => {
 
@@ -161,7 +161,7 @@ const soupedUpDataClasses = (locales, breach) => {
   });
   localizedDataClasses.sort((a,b) => (a.weight < b.weight) ? 1 : ((b.weight < a.weight) ? -1 : 0));
   return localizedDataClasses;
-};
+}
 
 module.exports = {
   breachCategory,

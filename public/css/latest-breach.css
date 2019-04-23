@@ -1,25 +1,14 @@
+.latest-breach {
+  margin: auto;
+}
 
 .latest-breach-wrapper {
   overflow: hidden;
-  flex-direction: column;
-  margin: auto;
-  box-shadow: 1px 1px 10px #8181810e;
-  border-radius: var(--radius);
-  padding: 0;
-  color: rgba(255, 255, 255, 0.8);
-  background-color: var(--darkBlue);
-  transform: scale(1);
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  border-radius: 1rem;
 }
 
-.latest-breach-wrapper:hover {
-  transform: scale(1.01);
-  box-shadow: 1px 1px 10px #818181;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-
-.latest-breach {
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 50%, white 50%, white 100%); /* W3C */
+.latest-breach-container {
+  background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 50%, rgba(249, 249, 250, 1) 50%, rgba(249, 249, 250, 1) 100%); /* W3C */
 }
 
 .latest-breach-headline {
@@ -30,77 +19,44 @@
   font-weight: 200;
   text-transform: uppercase;
   letter-spacing: 2px;
-  background-color: rgba(255, 255, 255, 0.1);
 }
 
-.latest-breach .logo-wrapper {
-  margin-right: 0.25rem;
+.latest-breach .breach-card-title-wrapper {
+  margin-bottom: 0.5rem;
 }
 
-.latest-breach .breach-info-wrap {
+.latest-breach .breach-card-link-wrap {
+  display: none;
+}
+
+.latest-breach .breach-info-wrapper,
+.latest-breach .breach-card-title-wrapper {
   padding: 0;
-}
-
-.latest-breach .breach-title.key,
-.latest-breach a,
-.latest-breach .breach-info {
-  font-size: 0.9rem;
-}
-
-span.fxm,
-.latest-breach .key,
-.latest-breach a.button {
+  background-color: rgba(255, 255, 255, 0);
   color: rgba(255, 255, 255, 1);
-}
-
-.latest-breach a.button {
-  margin-top: 1rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.9);
-  background-color: rgb(76, 28, 223);
-  width: 100%;
-  padding: 1.5rem 1rem;
-  border: 1px solid #ffc0cb4d;
-  border-radius: 0.5rem;
-}
-
-.latest-breach a.button:hover {
-  border: 1px solid transparent;
-  background-color: rgb(71, 25, 207);
 }
 
 .latest-breach-info {
   padding: calc(var(--padding) + 1rem) calc(var(--padding) * 2) calc(var(--padding) * 2) calc(var(--padding) * 2);
-  background-color: rgba(249, 249, 250, 0.15);
+  background-color: rgba(249, 249, 250, 0.07);
   border-top: 1px solid #7cdfff0d;
 }
 
-.latest-breach .logo-title-wrapper,
-.latest-breach .breach-info {
-  margin-bottom: 1rem;
+.latest-breach-container,
+.latest-breach-link,
+.latest-breach .breach-title,
+.latest-breach .breach-info,
+.latest-breach .demi.key {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 1);
 }
 
-.latest-breach .more-about-this-breach {
-  display: none;
-}
-
-@media screen and (max-width: 800px) {
-  .latest-breach-wrapper {
-    margin: auto 2rem auto;
-  }
-
-  .latest-breach .breach-title.key,
-  .latest-breach a,
-  .latest-breach .breach-info {
-    font-size: 0.85rem;
-  }
+.latest-breach-link {
+  margin-top: var(--padding);
+  display: block;
 }
 
 @media screen and (max-width: 600px) {
-  .latest-breach .row {
-    padding: 0;
-  }
-
   .latest-breach-headline {
     margin-bottom: 0;
     padding: 1rem;
@@ -108,31 +64,18 @@ span.fxm,
     line-height: 150%;
   }
 
-  .latest-breach .fxm {
+  .fxm {
     display: block;
   }
 }
 
 @media screen and (max-width: 500px) {
-  .latest-breach .logo-title-wrapper {
-    padding: 0.5rem 0;
-    margin-bottom: 0;
-  }
-
   .latest-breach-wrapper {
-    margin: 0;
-    border-radius: 0;
-
-    /* background-color: var(--color); */
-    color: rgba(255, 255, 255, 1);
-
-    /* padding: 2rem !important; */
-    box-shadow: none;
+    margin: auto;
   }
 
   .latest-breach-headline {
-    padding: 1rem 1rem 1rem 1rem;
-    border: 1px dashed rgba(255, 255, 255, 0.1);
+    padding: 1rem;
     border-bottom: none;
     border-top-right-radius: 1rem;
     border-top-left-radius: 1rem;
@@ -140,20 +83,8 @@ span.fxm,
 
   .latest-breach-info {
     border-top: none;
-    padding-bottom: 2rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    border: 1px dashed rgba(255, 255, 255, 0.1);
+    padding: 1.5rem 2rem 2rem 2rem;
     border-bottom-right-radius: 1rem;
     border-bottom-left-radius: 1rem;
-  }
-
-  .latest-breach.container {
-    padding: 1rem 0;
-  }
-
-  .latest-breach .breach-info {
-    margin-bottom: 0.5rem;
-    color: rgba(255, 255, 255, 0.6);
   }
 }
