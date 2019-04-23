@@ -262,6 +262,19 @@ user-fb-compromised-single =
     Αυτή η παραβίαση εξέθεσε τις εξής προσωπικές πληροφορίες. Αν δεν το έχετε κάνει ήδη, 
     αλλάξτε τους κωδικούς πρόσβασής σας.
 user-generic-fb-compromised-single = Αυτή η παραβίαση εξέθεσε τις εξής προσωπικές πληροφορίες.
+guest-fb-compromised-single-v2 =
+    Αυτή η παραβίαση εξέθεσε τις εξής προσωπικές πληροφορίες. 
+    Δημιουργήστε ένα δωρεάν { -brand-fxa } για μια πλήρη αναφορά προηγούμενων παραβιάσεων, ειδοποιήσεις νέων παραβιάσεων 
+    και πληροφορίες σχετικά με άλλες υπηρεσίες της { -brand-Mozilla }.
+guest-fb-compromised-blurb-v2 =
+    { $breachCount ->
+        [one]
+            Αυτό το email εμφανίστηκε επίσης σε άλλη { $breachCount } παραβίαση. Δημιουργήστε ένα δωρεάν { -brand-fxa } για μια πλήρη αναφορά προηγούμενων παραβιάσεων, ειδοποιήσεις νέων παραβιάσεων 
+            και πληροφορίες σχετικά με άλλες υπηρεσίες της { -brand-Mozilla }.
+       *[other]
+            Αυτό το email εμφανίστηκε επίσης σε άλλες { $breachCount } παραβιάσεις. Δημιουργήστε ένα δωρεάν { -brand-fxa } για μια πλήρη αναφορά προηγούμενων παραβιάσεων, ειδοποιήσεις νέων παραβιάσεων 
+            και πληροφορίες σχετικά με άλλες υπηρεσίες της { -brand-Mozilla }.
+    }
 user-fb-not-compromised-blurb =
     { $breachCount ->
         [one] Δεν ήσασταν στην παραβίαση { $breachName }, αλλά βρήκαμε αυτή τη διεύθυνση email σε κάποια άλλη.
@@ -272,6 +285,24 @@ user-generic-fb-not-compromised-blurb =
         [one] Αυτό το email δεν ήταν στην παραβίαση { $breachName }, αλλά βρέθηκε σε μια άλλη.
        *[other] Αυτό το email δεν ήταν στην παραβίαση { $breachName }, αλλά βρέθηκε σε άλλες.
     }
+guest-fb-not-compromised-blurb-v2 =
+    { $breachCount ->
+        [one]
+            Αυτό το email δεν ήταν στην παραβίαση { $breachName }, αλλά βρέθηκε σε κάποια άλλη. 
+            Δημιουργήστε ένα δωρεάν { -brand-fxa } για μια πλήρη αναφορά προηγούμενων παραβιάσεων, ειδοποιήσεις νέων 
+            παραβιάσεων και πληροφορίες σχετικά με άλλες υπηρεσίες της { -brand-Mozilla }.
+       *[other]
+            Αυτό το email δεν ήταν στην παραβίαση { $breachName }, αλλά βρέθηκε σε άλλες. 
+            Δημιουργήστε ένα δωρεάν { -brand-fxa } για μια πλήρη αναφορά προηγούμενων παραβιάσεων, ειδοποιήσεις νέων 
+            παραβιάσεων και πληροφορίες σχετικά με άλλες υπηρεσίες της { -brand-Mozilla }.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] Αυτή η παραβίαση εξέθεσε τις εξής προσωπικές πληροφορίες. Αν δεν το έχετε κάνει ήδη, αλλάξτε τον κωδικό πρόσβασής σας.
+       *[other] Αυτές οι παραβιάσεις εξέθεσαν τις εξής προσωπικές πληροφορίες. Αν δεν το έχετε κάνει ήδη, αλλάξτε τους κωδικούς πρόσβασής σας.
+    }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
 user-generic-found-breaches-blurb =
@@ -280,12 +311,24 @@ user-generic-found-breaches-blurb =
        *[other] Αυτές οι παραβιάσεις εξέθεσαν τις εξής προσωπικές πληροφορίες.
     }
 have-an-account = Έχετε ήδη λογαριασμό;
+signup-banner-sensitive-blurb =
+    Μάθετε τι γνωρίζουν ήδη οι hackers για εσάς και μάθετε πώς να 
+    βρίσκεστε πάντα ένα βήμα μπροστά τους. Ειδοποιηθείτε αν ο λογαριασμός σας εμφανίζεται 
+    σε νέες παραβιάσεις δεδομένων.
+fxa-what-to-do-subhead-4 = Λάβετε βοήθεια με την απομνημόνευση και την προστασία όλων των κωδικών πρόσβασής σας.
+fxa-what-to-do-blurb-4 =
+    Οι εφαρμογές διαχείρισης κωδικών πρόσβασης, όπως τα 1Password, LastPass, Dashlane και Bitwarden αποθηκεύουν τους 
+    κωδικούς πρόσβασής σας με ασφάλεια και τους συμπληρώνουν στις ιστοσελίδες. Χρησιμοποιήστε μια εφαρμογή διαχείρισης κωδικών πρόσβασης 
+    στο τηλέφωνο και τον υπολογιστή σας έτσι, ώστε να μην χρειάζεται να τους θυμάστε όλους.
 fb-landing-headline = Εκτέθηκαν οι πληροφορίες σας στη διαρροή δεδομένων { $breachName };
 copyright = Μέρη αυτού του περιεχομένου υπόκεινται σε πνευματικά δικαιώματα © 1999-{ $year } από εθελοντές του mozilla.org.
 content-available = Περιεχόμενο διαθέσιμο υπό την άδεια Creative Commons.
 # Alerts is a noun
 sign-up-for-alerts = Εγγραφή για ειδοποιήσεις
 sign-up-for-fxa-alerts = Εγγραφή για ειδοποιήσεις του { -product-name }.
+create-free-account =
+    Δημιουργήστε ένα δωρεάν { -brand-fxa } για μια πλήρη αναφορά προηγούμενων παραβιάσεων, ειδοποιήσεις νέων 
+    παραβιάσεων και πληροφορίες σχετικά με άλλες υπηρεσίες της { -brand-Mozilla }.
 get-your-report-and-sign-up = Λάβετε την αναφορά σας και εγγραφείτε για ειδοποιήσεις.
 # Link title
 frequently-asked-questions = Συχνές ερωτήσεις
