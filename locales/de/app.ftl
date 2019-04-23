@@ -85,16 +85,16 @@ download-firefox-bar-link = Download { -brand-name }
 download-firefox-banner-blurb = Übernimm die Kontrolle über deinen Browser
 download-firefox-banner-button = Download { -brand-name }
 signup-modal-headline = Melde dich für { -product-name-nowrap } an
-signup-modal-blurb = Wenn du dich mit deinem Firefox-Konto anmeldest, erhältst du einen vollständigen Bericht, zukünftige Warnmeldungen bei Datenlecks und Sicherheitstipps von { -product-name-nowrap }.
+signup-modal-blurb = Melde dich mit einem Firefox-Konto an, um einen vollständigen Bericht, zukünftige Warnmeldungen bei Datenlecks und Sicherheitstipps von { -product-name-nowrap } zu erhalten.
 signup-modal-close = Schließen
-get-your-report = Holen dir sich deinen Bericht
-signup-modal-verify-headline = Bestätige dein Abonnement
+get-your-report = Hole dir deinen Bericht
+signup-modal-verify-headline = Bestätige deine Anmeldung
 signup-modal-verify-blurb = Wir haben einen Bestätigungslink an <span id="submitted-email" class="medium"></span> geschickt.
 signup-modal-verify-expiration = Dieser Link läuft in 24 Stunden ab.
 signup-modal-verify-resend = Weder in deinem Posteingang noch im Spam-Ordner? Erneut senden.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Gesendet!
-signup-with-fxa = Melde dich mit { -brand-name }-Konto an
+signup-with-fxa = Melde dich mit einem { -brand-name }-Konto an
 form-signup-placeholder = E-Mail-Adresse eingeben
 form-signup-checkbox = Hol dir das Neueste von { -brand-Mozilla } und { -brand-name }.
 sign-up = Anmelden
@@ -201,8 +201,8 @@ fxa-scan-another-email = Soll noch eine andere E-Mail-Adresse überprüft werden
 # Search Firefox Monitor
 fxa-scan-submit = { -product-name } durchsuchen
 sign-up-to-check = Registriere dich, um die Überprüfung durchzuführen
-sign-in = Anmelden
-sign-out = Abmelden
+sign-in = Einloggen
+sign-out = Ausloggen
 full-report-headline = Dein Bericht von { -product-name }
 see-full-report = Vollständigen Bericht anzeigen
 # Manage Firefox Account, link to page where account holders can change their account settings.
