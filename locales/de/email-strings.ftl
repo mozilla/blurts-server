@@ -23,43 +23,41 @@ what-to-do-next = Nächste Schritte
 report-headline =
     { $breachCount ->
         [0] So weit, so gut.
-        [one] Ihr Konto ist von { $breachCount } Datenleck betroffen.
-       *[other] Ihr Konto ist von { $breachCount } Datenlecks betroffen.
+        [one] Dein Konto ist von { $breachCount } Datenleck betroffen.
+       *[other] Dein Konto ist von { $breachCount } Datenlecks betroffen.
     }
 report-subhead-no-breaches =
-    Ihr Konto erscheint nicht in unserem vollständigen Bericht über Datenlecks.
-    Das sind gute Nachrichten, aber Sie können noch mehr tun.
-    Datenschutzverletzungen passieren jederzeit. Lesen Sie weiter, um zu erfahren, wie Sie Ihre Passwörter schützen können.
-report-subhead-found-breaches = Hier ist Ihr vollständiger Bericht von Firefox Monitor, der alle bekannten Datenlecks enthält, die diese E-Mail-Adresse betreffen.
-breach-alert-headline = Ihr Konto ist von einem Datenleck betroffen.
-breach-alert-subhead = Ein kürzlich gemeldetes Datenleck enthält Ihre E-Mail-Adresse und folgende Daten
+    Dein Konto erscheint nicht in unserem vollständigen Bericht über Datenlecks.
+    Das sind gute Nachrichten, aber du kannst noch mehr tun.
+    Datenschutzverletzungen passieren jederzeit. Lies weiter, um zu erfahren, wie du deine Passwörter schützen kannst.
+report-subhead-found-breaches = Hier ist dein vollständiger Bericht von Firefox Monitor, der alle bekannten Datenlecks enthält, in dem diese E-Mail-Adresse vorkommt.
+breach-alert-headline = Dein Konto ist von einem Datenleck betroffen.
+breach-alert-subhead = Ein kürzlich gemeldetes Datenleck enthält deine E-Mail-Adresse und folgende Daten
 report-pwt-blurb =
     Passwörter sind so wertvoll, dass Tausende von ihnen jeden Tag gestohlen und auf dem Schwarzmarkt gehandelt oder verkauft werden.
-    Stärkere Passwörter schützen Ihre Konten und alle persönlichen Informationen, die sich darin befinden.
-report-pwt-headline-1 = Verwenden Sie für jedes Konto ein anderes Passwort
+    Stärkere Passwörter schützen deine Konten und alle persönlichen Informationen, die sich darin befinden.
+report-pwt-headline-1 = Verwende für jedes Konto ein anderes Passwort
 report-pwt-summary-1 =
     Dasselbe Passwort überall zu verwenden, öffnet Hackern Tür und Tor.
-    Hacker können dieses Passwort verwenden, um sich bei Ihren anderen Konten anzumelden.
-report-pwt-headline-2 = Erstellen Sie starke, einzigartige Passwörter
+    Hacker können dieses Passwort verwenden, um sich auch bei deinen anderen Konten anzumelden.
+report-pwt-headline-2 = Erstelle starke, einzigartige Passwörter
 report-pwt-summary-2 =
-    Hacker verwenden Listen gewöhnlicher Passwörter, um zu versuchen, Ihre zu erraten.
-    Je länger und zufälliger Ihr Passwort ist, desto schwieriger ist es zu stehlen.
-report-pwt-headline-3 = Behandeln Sie Sicherheitsfragen wie zusätzliche Passwörter
-report-pwt-summary-3 =
-    Websites überprüfen nicht die Richtigkeit Ihrer Antworten, sondern nur, ob sie jedes Mal übereinstimmen..
-    Erstellen Sie lange, zufällige Antworten und speichern Sie diese an einem sicheren Ort.
-report-pwt-headline-4 = Verwenden Sie einen Passwort-Manager
+    Hacker verwenden Listen gewöhnlicher Passwörter, um zu versuchen, auch deine zu erraten.
+    Je länger und zufälliger dein Passwort ist, desto schwieriger lässt es sich stehlen.
+report-pwt-headline-3 = Behandele Sicherheitsfragen wie zusätzliche Passwörter
+report-pwt-summary-3 = Websites überprüfen nicht den Wahrheitsgehalt deiner Antworten, sondern nur, ob sie immer gleich sind. Erstelle lange, beliebige Antworten und speichere sie an einem sicheren Ort ab.
+report-pwt-headline-4 = Verwende einen Passwort-Manager
 report-pwt-summary-4 =
-    Passwort-Manager wie 1Password, LastPass, Dashlane und Bitwarden generieren starke, eindeutige Passwörter, speichern die Passwörter sicher
-    und tragen sie für Sie auf Websites ein, damit Sie sich nicht alle Passwörter merken müssen.
+    Passwort-Manager wie 1Password, LastPass, Dashlane und Bitwarden speichern deine Passwörter und tragen sie auf Websites für dich ein.
+    Sie helfen dir sogar dabei, sichere Passwörter zu erstellen.
 # A link to legal information about mozilla products.
 legal = Rechtliches
 # Share Firefox Monitor by email subject line
-share-by-email-subject = Sehen Sie, ob Sie von einem Datenleck betroffen sind.
+share-by-email-subject = Überprüfe, ob du von einem Datenleck betroffen bist.
 # Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
 share-by-email-message =
     Hallo,
-    { -brand-name } bietet einen kostenlosen Dienst, um zu testen, ob Sie von einem Datenleck betroffen sind. So funktioniert es:
-    1. Besuchen Sie { "https://monitor.firefox.com" } und suchen Sie nach Ihrer E-Mail-Adresse.
-    2. Sehen Sie, ob Ihre Online-Konten bei einem Datenleck geknackt wurden.
-    3. Holen Sie sich Tipps von { -product-name } für die nächsten Schritte.
+    { -brand-name } bietet einen kostenlosen Dienst, um zu testen, ob du von einem Datenleck betroffen bist. So funktioniert es:
+    1. Geh auf { "https://monitor.firefox.com" } und suche nach deiner E-Mail-Adresse.
+    2. Überprüfe, ob deine Online-Konten bei einem Datenleck geknackt wurden.
+    3. Hol dir Tipps von { -product-name } für die nächsten Schritte.
