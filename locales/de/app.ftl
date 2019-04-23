@@ -269,14 +269,14 @@ guest-fb-not-compromised-blurb-v2 =
             Erstelle ein kostenloses { -brand-fxa }, um einen vollständigen Bericht über vergangene Datenlecks, Warnungen über zukünftige Datenlecks und Informationen über andere { -brand-Mozilla }-Dienste zu erhalten.
        *[other]
             Diese E-Mail-Adresse ist nicht vom Datenleck { $breachName } betroffen, aber von mehreren anderen.
-            Erstellen Sie ein kostenloses { -brand-fxa }, um einen vollständigen Bericht über vergangene Datenlecks, Warnungen über neue Datenlecks und Informationen über andere { -brand-Mozilla }-Dienste zu erhalten.
+            Erstelle ein kostenloses { -brand-fxa }, um einen vollständigen Bericht über vergangene Datenlecks, Warnungen über zukünftige Datenlecks und Informationen über andere { -brand-Mozilla }-Dienste zu erhalten.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
 user-found-breaches-blurb =
     { $breachCount ->
-        [one] Dieses Datenleck enthielt die folgenden persönlichen Daten. Ändern Sie Ihr Passwort, wenn nicht bereits geschehen.
-       *[other] Dieses Datenleck enthielt die folgenden persönlichen Daten. Ändern Sie Ihre Passwörter, wenn nicht bereits geschehen.
+        [one] Dieses Datenleck enthielt die folgenden persönlichen Daten. Ändere dein Passwort, falls du es noch nicht getan hast.
+       *[other] Dieses Datenleck enthielt die folgenden persönlichen Daten. Ändere dein Passwort, falls du es noch nicht getan hast.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -285,50 +285,37 @@ user-generic-found-breaches-blurb =
         [one] Dieses Datenleck enthielt die folgenden persönlichen Daten.
        *[other] Diese Datenlecks enthielten die folgenden persönlichen Daten.
     }
-have-an-account = Haben Sie schon ein Konto?
-signup-banner-sensitive-blurb =
-    Finden Sie heraus, was Hacker bereits über Sie wissen
-    und erfahren Sie, wie Sie ihnen einen Schritt voraus sein können. Lassen Sie sich
-    benachrichtigen, wenn Ihr Konto von neuen Datenlecks betroffen ist.
-fxa-pwt-section-blurb =
-    Passwörter schützen alle persönlichen Daten in Ihren Online-Konten. Und
-    Hacker verlassen sich auf schlechte Angewohnheiten, wie die Wiederverwendung von Passwörtern
-    oder häufige Ausdrücke (wie @p@ssw0rt), sodass nicht nur ein Konto, sondern
-    mehrere geknackt werden.
-fxa-pwt-summary-2 =
-    Kurze, aus einem Wort bestehende Passwörter sind für Hacker leicht zu erraten.
-    Verwenden Sie mindestens zwei Wörter und eine Kombination aus Buchstaben, Ziffern und Sonderzeichen.
-fxa-pwt-summary-4 =
-    Passwort-Manager wie 1Password, LastPass, Dashlane und Bitwarden speichern Ihre
-    Passwörter und tragen diese auf Websites für Sie ein. Sie helfen Ihnen sogar dabei, sichere Passwörter zu erstellen.
-fxa-pwt-summary-6 =
-    Datenlecks nehmen zu. Wenn Ihre persönlichen Daten von einem neuen Datenleck betroffen sind,
-    benachrichtigt { -product-name } Sie – damit Sie Maßnahmen ergreifen und Ihre Konten schützen können.
+have-an-account = Du hast schon ein Konto?
+signup-banner-sensitive-blurb = Finde heraus, was Hacker bereits über dich wissen und erfahre, wie du ihnen in Zukunft einen Schritt voraus sein kannst. Lass dich benachrichtigen, wenn dein Konto von neuen Datenlecks betroffen ist.
+fxa-pwt-section-blurb = Passwörter schützen alle persönlichen Daten in deinen Online-Konten. Hacker verlassen sich auf schlechte Angewohnheiten, wie die Wiederverwendung von Passwörtern oder häufig genutzte Begriffe (man denke nur an @p@ssw0rt). So können sie nicht nur eines, sondern gleich mehrere Konten knacken.
+fxa-pwt-summary-2 = Verwende mindestens zwei Wörter und eine Kombination aus Buchstaben, Ziffern und Sonderzeichen. Kurze Passwörter, die nur aus einem einzigen Wort bestehen, sind für Hacker leicht zu erraten.
+fxa-pwt-summary-4 = Passwort-Manager wie 1Password, LastPass, Dashlane und Bitwarden speichern deine Passwörter und tragen sie auf Websites für dich ein. Sie helfen dir sogar dabei, sichere Passwörter zu erstellen.
+fxa-pwt-summary-6 = Datenlecks kommen immer häufiger vor. Wenn deine persönlichen Daten von einem neuen Datenleak oder Hackerangriff betroffen sind, warnt dich { -product-name }, damit du sofort Maßnahmen ergreifen und deine Konten schützen kannst.
 fxa-what-to-do-blurb-1 =
-    Wenn Sie sich nicht anmelden können, wenden Sie sich an die Website und fragen Sie nach.
-    Fällt Ihnen ein unbekanntes Konto auf? Vielleicht wurden Ihre Daten verkauft oder weitergegeben.
-    Vielleicht haben Sie das Konto auch nur vergessen oder das Unternehmen hat seinen Namen geändert.
-fxa-what-to-do-subhead-2 = Benutzen Sie das offengelegte Passwort nicht mehr und ändern Sie es überall, wo Sie es verwendet haben.
+    Wenn du dich nicht anmelden kannst, wende dich an die Website und finde heraus, wie du deine Zugangsdaten erneuern kannst.
+    Fällt dir ein unbekanntes Konto auf? Vielleicht wurden deine Daten verkauft oder weitergegeben.
+    Vielleicht hast du das Konto aber auch nur vergessen oder das Unternehmen hat seinen Namen geändert.
+fxa-what-to-do-subhead-2 = Benutze das offengelegte Passwort nicht mehr und ändere es überall dort, wo du es verwendet hast.
 fxa-wtd-blurb-2 =
-    Hacker versuchen möglicherweise, dasselbe Passwort und Ihre E-Mail-Adresse zum Zugriff auf andere Konten zu verwenden.
-    Erstellen Sie für jedes Konto ein anderes und einzigartiges Passwort, insbesondere für Ihr Bankkonto, Ihre E-Mail-Adresse und andere Websites, auf denen Sie persönliche Daten speichern.
+    Hacker versuchen möglicherweise, dasselbe Passwort und deine E-Mail-Adresse zum Zugriff auf andere Konten zu verwenden.
+    Erstelle für jedes Konto ein anderes und einzigartiges Passwort, insbesondere für dein Bankkonto, deine E-Mail-Adresse und andere Websites, auf denen du persönliche Daten speicherst.
 fxa-what-to-do-blurb-3 =
     Bei den meisten Verstößen werden nur E-Mails und Passwörter erbeutet, bei einigen jedoch auch vertrauliche Bankdaten.
-    Wenn Ihre Bankkonto- oder Kreditkartennummern von einem Datenleck offengelegt wurden, warnen Sie Ihre Bank vor möglichen Betrugsfällen und überwachen Sie die Kontoauszüge auf Transaktionen, die Sie nicht kennen.
-fxa-what-to-do-subhead-4 = Holen Sie sich Hilfe, wenn Sie sich Ihre Passwörter merken und sie schützen müssen.
+    Wenn deine Bankkonto- oder Kreditkartennummern bei einem Datenleck offengelegt wurden, warne deine Bank vor möglichen Betrugsfällen und überwache deine Kontoauszüge auf Transaktionen, die du nicht kennst.
+fxa-what-to-do-subhead-4 = Hol dir Hilfe beim Merken und sicheren Speichern deiner Passwörter.
 fxa-what-to-do-blurb-4 =
-    Passwort-Manager wie 1Password, LastPass, Dashlane und Bitwarden speichern Ihre
-    Passwörter sicher und tragen diese auf Websites für Sie ein. Nutzen Sie einen Passwort-Manager
-    auf Ihrem Handy und Ihrem Computer, damit Sie sich nicht alle merken müssen.
-fb-landing-headline = Waren Ihre Daten vom Datenleck { $breachName } betroffen?
+    Passwort-Manager wie 1Password, LastPass, Dashlane und Bitwarden speichern deine
+    Passwörter sicher und tragen sie für dich auf Websites ein. Nutze einen Passwort-Manager
+    auf deinem Handy und deinem Computer, damit du dir nicht alle merken musst.
+fb-landing-headline = Waren deine Daten vom Datenleck { $breachName } betroffen?
 copyright = Teile dieses Inhalts stehen unter einem ©1999–%(current_year)s von einzelnen Mitwirkenden an mozilla.org.
 content-available = Der Inhalt steht unter einer Creative-Commons-Lizenz.
 # Alerts is a noun
-sign-up-for-alerts = Warnmeldungen abonnieren
-sign-up-for-fxa-alerts = Abonnieren Sie Warnmeldungen von { -product-name }.
+sign-up-for-alerts = Warnmeldungen erhalten
+sign-up-for-fxa-alerts = Melde dich für Warnmeldungen von { -product-name } an.
 create-free-account =
-    Erstellen Sie ein kostenloses { -brand-fxa }, um einen vollständigen Bericht über vergangene Datenlecks, Warnungen über neue Datenlecks
+    Erstelle ein kostenloses { -brand-fxa }, um einen vollständigen Bericht über vergangene Datenlecks, Warnungen bei neuen Datenlecks
     und Informationen über andere { -brand-Mozilla }-Dienste zu erhalten.
-get-your-report-and-sign-up = Holen Sie sich Ihren Bericht und abonnieren Sie Warnmeldungen.
+get-your-report-and-sign-up = Hol dir deinen Bericht und melde dich für Warnmeldungen an.
 # Link title
 frequently-asked-questions = Häufig gestellte Fragen
