@@ -32,11 +32,11 @@ oauth-invalid-session = Ungültige Sitzung
 oauth-confirmed-title = { -product-name }: Abonniert
 scan-title = { -product-name }: Scan-Ergebnisse
 user-add-invalid-email = Ungültige E-Mail-Adresse
-user-add-email-verify-subject = Bestätigen Sie Ihr Abonnement für { -product-name }.
+user-add-email-verify-subject = Bestätige dein Abonnement für { -product-name }.
 user-add-title = { -product-name }: E-Mail-Adresse bestätigen
 error-headline = Fehler
 user-verify-token-error = Verifikations-Token wird benötigt.
-user-verify-email-report-subject = Ihr Bericht für { -product-name }
+user-verify-email-report-subject = Dein Bericht für { -product-name }
 user-verify-title = { -product-name }: Abonniert
 user-unsubscribe-token-error = Das Abbestellen erfordert ein Token.
 user-unsubscribe-token-email-error = Das Abbestellen erfordert ein Token und emailHash.
@@ -47,24 +47,20 @@ user-unsubscribed-title = { -product-name }: Abbestellt
 ## Password Tips
 
 pwt-section-headline = Stärkere Passwörter = besserer Schutz
-pwt-section-subhead = Ihre persönlichen Daten sind nur so sicher wie Ihre Passwörter.
+pwt-section-subhead = Deine persönlichen Daten sind nur so sicher wie deine Passwörter
 pwt-section-blurb =
-    Ihre Passwörter schützen mehr als nur Ihre Konten. Sie schützen alle Ihre persönlichen Daten, die sich darin befinden.
+    Deine Passwörter schützen mehr als nur deine Konten. Sie schützen alle deine persönlichen Daten, die sich darin befinden.
     Und Hacker verlassen sich auf schlechte Angewohnheiten, wie die Nutzung desselben Passworts auf allen Seiten oder häufig verwendeten Passwörtern (wie 12345),
-    was bedeutet, dass sie nicht nur eines, sondern mehrere Konten auf einmal hacken können. Sie können Sie Ihre Konten besser schützen.
-pwt-headline-1 = Verwenden Sie für jedes Konto ein anderes Passwort
-pwt-summary-1 =
-    Wird überall dasselbe Passwort verwendet, ist die Tür für Identitätsdiebstahl weit geöffnet.
-    Jeder mit diesem Passwort kann sich bei allen Ihren Konten anmelden.
-pwt-headline-2 = Erstellen Sie starke, schwer zu erratende Passwörter
+    was bedeutet, dass sie nicht nur eines, sondern mehrere Konten auf einmal hacken können. So kannst du deine Konten besser schützen.
+pwt-headline-1 = Verwende für jedes Konto ein anderes Passwort
+pwt-summary-1 = Überall dasselbe Passwort zu nutzen, macht Identitätsdiebstahl zum Kinderspiel. Denn wer ein Passwort knackt, hat gleich Zugriff zu all deinen Konten.
+pwt-headline-2 = Erstelle starke und schwer zu erratende Passwörter
 pwt-summary-2 =
-    Hacker verwenden tausende gewöhnliche Passwörter, um zu versuchen, Ihre zu erraten.
-    Je länger und zufälliger Ihr Passwort ist, desto schwieriger ist es zu erraten.
-pwt-headline-3 = Behandeln Sie Sicherheitsfragen wie zusätzliche Passwörter
-pwt-summary-3 =
-    Websites überprüfen nicht die Richtigkeit Ihrer Antworten, sondern nur, ob sie gleich sind.
-    Erstellen Sie lange, zufällige Antworten und speichern Sie diese an einem sicheren Ort.
-pwt-headline-4 = Holen Sie sich Hilfe beim Merken Ihrer Passwörter
+    Hacker verwenden tausende gewöhnliche Passwörter, um zu versuchen, deine zu erraten.
+    Je länger und beliebiger dein Passwort ist, desto schwieriger lässt es sich erraten.
+pwt-headline-3 = Behandele Sicherheitsfragen wie zusätzliche Passwörter
+pwt-summary-3 = Websites überprüfen nicht den Wahrheitsgehalt deiner Antworten, sondern nur, ob sie immer gleich sind. Erstelle lange, beliebige Antworten und speichere sie an einem sicheren Ort ab.
+pwt-headline-4 = Hol dir Hilfe beim Merken deiner Passwörter
 pwt-summary-4 =
     Passwort-Manager wie 1Password, LastPass, Dashlane und Bitwarden generieren starke, eindeutige Passwörter.
     Sie speichern Passwörter auch sicher und tragen sie für Sie auf Websites ein.
