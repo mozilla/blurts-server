@@ -2,6 +2,9 @@
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
+click-to-verify =
+    Επιλέξτε το κουμπί "Επαλήθευση email" μέσα σε 24 ώρες για επιβεβαίωση του λογαριασμού σας στο Firefox Monitor. 
+    Τότε, θα ετοιμαστεί και θα αποσταλεί η αναφορά σας.
 verify-my-email = Επαλήθευση email
 report-scan-another-email = Σάρωση άλλου email στο { -product-name }
 automated-message = Αυτό είναι ένα αυτοματοποιημένο email· αν το λάβατε κατά λάθος, δεν απαιτείται καμία ενέργεια.
@@ -25,6 +28,7 @@ report-headline =
         [one] Ο λογαριασμός σας εμφανίστηκε σε { $breachCount } παραβίαση.
        *[other] Οι λογαριασμοί σας εμφανίστηκαν σε { $breachCount } παραβιάσεις.
     }
+report-subhead-found-breaches = Ορίστε η πλήρης αναφορά σας από το Firefox Monitor, η οποία συμπεριλαμβάνει όλες τις γνωστές παραβιάσεις δεδομένων που περιέχουν αυτή τη διεύθυνση email.
 breach-alert-headline = Ο λογαριασμός σας ενεπλάκη σε παραβίαση δεδομένων.
 breach-alert-subhead = Μια παραβίαση δεδομένων, που αναφέρθηκε πρόσφατα, περιέχει το email σας και τα εξής δεδομένα
 report-pwt-headline-1 = Χρήση διαφορετικού κωδικού για κάθε λογαριασμό
