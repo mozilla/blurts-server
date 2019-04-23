@@ -3,7 +3,7 @@
 const { LocaleUtils } = require("./../locale-utils");
 const { makeBreachCards } = require("./breaches");
 
-const getBreachesForEachEmail = (args) => {
+function getBreachesForEachEmail(args) {
   const verifiedEmails = args.data.root.verifiedEmails;
   const locales = args.data.root.req.supportedLocales;
 
@@ -12,10 +12,10 @@ const getBreachesForEachEmail = (args) => {
     email.breaches = breachCards;
   });
   return verifiedEmails;
-};
+}
 
 
-const getUserPreferences = (args) => {
+function getUserPreferences(args) {
   const unverifiedEmails = args.data.root.unverifiedEmails;
   const verifiedEmails = args.data.root.verifiedEmails;
   const primaryEmail = verifiedEmails.shift();
@@ -40,12 +40,12 @@ const getUserPreferences = (args) => {
 
   const communicationOptions = [
     {
-      optionLabel: "Email me if one of my email addreseses below appears in a data breach.",
+      optionDescription: "Send breach alerts to the affected email address.",
       labelString: LocaleUtils.fluentFormat(locales, "comm-opt-0", {primaryEmail: primaryEmail.email}),
       optionId: "0",
     },
     {
-      optionLabel: "Send all breach alerts to ${primary email}",
+      optionDescription: "Send all breach alerts to subscriber's primary email address.",
       labelString: LocaleUtils.fluentFormat(locales, "comm-opt-1", {primaryEmail: primaryEmail.email}),
       optionId: "1",
     },
@@ -58,7 +58,7 @@ const getUserPreferences = (args) => {
   };
 
   return args.fn(user);
-};
+}
 
 module.exports = {
   getUserPreferences,

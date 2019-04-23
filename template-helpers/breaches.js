@@ -4,7 +4,7 @@ const { getBreachCategory } = require("./breach-detail");
 const { prettyDate, localeString, localizedBreachDataClasses } = require("./hbs-helpers");
 const { LocaleUtils } = require("./../locale-utils");
 
-const getLocalizedBreachCardStrings = (locales) => {
+function getLocalizedBreachCardStrings(locales) {
   // casing to reflect HIBP
   return {
     "AddedDate": LocaleUtils.fluentFormat(locales, "breach-added"),
@@ -12,9 +12,9 @@ const getLocalizedBreachCardStrings = (locales) => {
     "CompromisedData": LocaleUtils.fluentFormat(locales, "compromised-data"),
     "MoreInfoLink": LocaleUtils.fluentFormat(locales, "more-about-this-breach"),
   };
-};
+}
 
-const makeBreachCards = (breaches, locales) => {
+function makeBreachCards(breaches, locales) {
   const breachCardStrings = getLocalizedBreachCardStrings(locales);
   const formattedBreaches = [];
 
@@ -39,9 +39,9 @@ const makeBreachCards = (breaches, locales) => {
     formattedBreaches.push(breachCard);
   }
   return formattedBreaches;
-};
+}
 
-const getBreachCategories = (locales) => {
+function getBreachCategories(locales) {
   const categories = [
     "website-breach",
     "sensitive-breach",
@@ -61,9 +61,9 @@ const getBreachCategories = (locales) => {
   });
 
   return breachCategories;
-};
+}
 
-const allBreaches = (allBreaches, options) => {
+function allBreaches(allBreaches, options) {
   const locales = options.data.root.req.supportedLocales;
 
   const allBreachesModule = {
@@ -72,24 +72,24 @@ const allBreaches = (allBreaches, options) => {
   };
 
   return options.fn(allBreachesModule);
-};
+}
 
 
-const lastAddedBreach = (options) => {
+function lastAddedBreach(options) {
   const locales = options.data.root.req.supportedLocales;
   let latestBreach = [options.data.root.latestBreach];
 
   latestBreach = makeBreachCards(latestBreach, locales);
   return latestBreach;
-};
+}
 
-const getFoundBreaches = (args) => {
+function getFoundBreaches(args) {
   const locales = args.data.root.req.supportedLocales;
   let foundBreaches = args.data.root.foundBreaches;
 
   foundBreaches = makeBreachCards(foundBreaches, locales);
   return foundBreaches;
-};
+}
 
 
 module.exports = {

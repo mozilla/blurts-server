@@ -1,20 +1,20 @@
 "use strict";
 
 
-const toggleEl = (e) => {
+function toggleEl(e) {
   const toggleButton = e.target;
   const toggleParent = findAncestor(toggleButton, "toggle-parent");
   ["inactive", "active"].forEach(className => {
     toggleParent.classList.toggle(className);
   });
-};
+}
 
-const findAncestor = (el, cls) => {
+function findAncestor(el, cls) {
   while ((el = el.parentElement) && !el.classList.contains(cls));
   return el;
-};
+}
 
-const sendForm = async(action, formBody={}) => {
+async function sendForm(action, formBody={}) {
   const response = await fetch(`/user/${action}`, {
     headers: {
       "Content-Type": "application/json; charset=utf-8",
@@ -25,18 +25,18 @@ const sendForm = async(action, formBody={}) => {
   });
 
   return await response.json();
-};
+}
 
-const sendCommunicationOption = async(e) => {
+async function sendCommunicationOption(e) {
   const radioButton = e.target;
   const formAction = radioButton.dataset.formAction;
   const option = radioButton.dataset.commOption;
   sendForm(formAction, { communicationOption: option })
     .then(data => {}) /*decide what to do with data */
     .catch(e => {})/* decide how to handle errors */;
-  };
+}
 
-const removeOrResendEmail = async(e) => {
+async function removeOrResendEmail(e) {
   // handles remove email and resend verification link buttons
   const emailOptionButton = e.target;
   const emailId =  emailOptionButton.dataset.emailId;
@@ -45,7 +45,7 @@ const removeOrResendEmail = async(e) => {
   sendForm(formAction, { emailId: emailId })
   .then(data => {}) /*decide what to do with data */
   .catch(e => {})/* decide how to handle errors */;
-};
+}
 
 if (document.querySelector(".email-card")) {
   const toggles = document.querySelectorAll(".toggle");

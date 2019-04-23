@@ -2,7 +2,7 @@
 
 const { getStrings } = require("./hbs-helpers");
 
-const articleLinks = (args) => {
+function articleLinks(args) {
   const locales = args.data.root.req.supportedLocales;
   const articleLinks = [
     {
@@ -23,7 +23,7 @@ const articleLinks = (args) => {
   ];
 
   return getStrings(articleLinks, locales);
-};
+}
 
 module.exports = {
   articleLinks,

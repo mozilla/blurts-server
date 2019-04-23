@@ -2,13 +2,13 @@
   <section class="container">
     <div class="row jst-cntr">
       <div class="col-8">
-        <h2 class="skinny-headline">{{getString "monitor-preferences"}}</h2>
+        <h2 class="skinny-headline">{{ getString "monitor-preferences" }}</h2>
       </div>
     </div>
     <div class="row jst-cntr">
       <div class="col-8">
         <fieldset>
-          <legend class="skinny-headline">{{getString "global-communication"}}</legend>
+          <legend class="skinny-headline">{{ getString "global-communication" }}</legend>
           <section class="pref-section">
             {{#each communicationOptions}}
               <label class="radio-container email-pref">
@@ -24,17 +24,17 @@
     <div class="row jst-cntr">
       <div class="col-8">
         <fieldset>
-          <legend class="skinny-headline">{{getString "email-addresses"}}</legend>
+          <legend class="skinny-headline">{{ getString "email-addresses" }}</legend>
           {{#each emails }}
             <section class="pref-section">
-              <h4 class="email-pref">{{this.subhead}}</h4>
+              <h4 class="email-pref">{{ this.subhead }}</h4>
               {{#each this.email_addresses }}
                 {{> email-card prefs=./../../../preferences}}
               {{/each}}
             </section>
           {{/each}}
           <section class="pref-section">
-            <h4 class="email-pref">{{getString "add-new-email"}}</h4>
+            <h4 class="email-pref">{{ getString "add-new-email" }}</h4>
               {{> forms/add-another-email-form }}
           </section>
         </fieldset>
@@ -42,9 +42,9 @@
     </div>
     <div class="row jst-cntr">
       <div class="col-8">
-        <h2 class="skinny-headline">{{getString "remove-fxm"}}</h2>
-        <h3 class="subhead">{{getString "remove-fxm-blurb"}}</h3>
-        <button class="remove-fxm subhead" href="/">{{getString "remove-fxm" }}</button>
+        <h2 class="skinny-headline">{{ getString "remove-fxm" }}</h2>
+        <h3 class="subhead">{{ getString "remove-fxm-blurb" }}</h3>
+        <button class="remove-fxm subhead" href="/">{{ getString "remove-fxm" }}</button>
       </div>
     </div>
   </section>

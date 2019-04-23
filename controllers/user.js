@@ -20,14 +20,14 @@ function _requireSessionUser(req) {
   return req.session.user;
 }
 
-async function removeEmail(req, res) {
+function removeEmail(req, res) {
   // console.log(req.body.emailId);
 
   // Remove secondary email
   return res.json("Email is removed");
 }
 
-async function resendEmail(req, res) {
+function resendEmail(req, res) {
   // console.log(req.body.emailId);
 
   // Resend verification email
@@ -36,7 +36,7 @@ async function resendEmail(req, res) {
   return res.json("Resend the email");
 }
 
-async function updateCommunicationOptions(req, res) {
+function updateCommunicationOptions(req, res) {
   // console.log(req.body.communicationOption);
 
   // 0 = Send breach alerts to the email address found in brew breach.
@@ -79,7 +79,7 @@ async function add(req, res) {
   });
 }
 
-const bundleVerifiedEmails = async(email, emailSha1, ifPrimary, id, verificationStatus, allBreaches) => {
+async function bundleVerifiedEmails(email, emailSha1, ifPrimary, id, verificationStatus, allBreaches) {
   const foundBreaches = await HIBP.getBreachesForEmail(emailSha1, allBreaches, true);
 
   const emailEntry = {
@@ -91,9 +91,9 @@ const bundleVerifiedEmails = async(email, emailSha1, ifPrimary, id, verification
   };
 
   return emailEntry;
-};
+}
 
-const getAllEmailsAndBreaches = async(user, allBreaches) => {
+async function getAllEmailsAndBreaches(user, allBreaches) {
   const monitoredEmails = await DB.getUserEmails(user.id);
   const verifiedEmails = [];
   const unverifiedEmails = [];
@@ -107,7 +107,7 @@ const getAllEmailsAndBreaches = async(user, allBreaches) => {
     }
   }
   return { verifiedEmails, unverifiedEmails };
-};
+}
 
 
 async function getDashboard(req, res) {

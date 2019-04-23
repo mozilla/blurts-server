@@ -52,19 +52,19 @@ async function home(req, res) {
   });
 }
 
-const getAllBreaches = (req, res) => {
+function getAllBreaches(req, res) {
   return res.render("top-level-page", {
     title: "All the breaches",
     whichPartial: "top-level/all-breaches",
   });
-};
+}
 
-const getSecurityTips = (req, res) => {
+function getSecurityTips(req, res) {
   return res.render("top-level-page", {
     title: "Security Tip Page Title Needed",
     whichPartial: "top-level/security-tips",
   });
-};
+}
 
 function notFound(req, res) {
   res.status(404);

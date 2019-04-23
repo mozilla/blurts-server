@@ -4,24 +4,24 @@
                 <span class="e-address">{{ email }}</span>
                 {{#if verified}}
                   <!-- show breach count for verified emails -->
-                  <span class="e-num-breaches">{{getString "appears-in-x-breaches" breachCount=breaches.length}}</span>
+                  <span class="e-num-breaches">{{ getString "appears-in-x-breaches" breachCount=breaches.length }}</span>
                 {{else}}
                   <!-- show resend-email link for unverified emails -->
-                  <button class="resend-email" data-email-id="{{id}}" data-form-action="/resend-email">Resend Verification Email</button>
+                  <button class="resend-email" data-email-id="{{ id }}" data-form-action="/resend-email">{{ getString "resend-verification" }}</button>
                 {{/if}}
               </div>
 
               {{#if prefs}} <!--user preferences dashboard / show trashcan to delete email-->
                 {{#if primary}}
-                  <a href="{{ getFxaUrl }}" class="change-primary-email">{{getString "link-change-primary"}}</a>
+                  <a href="{{ getFxaUrl }}" class="change-primary-email">{{ getString "link-change-primary" }}</a>
                 {{else}}
-                <button class="remove-email svg-wrap" data-email-id="{{id}}" data-form-action="/remove-email"  aria-label="{{getString "stop-monitor-this"}}">
+                <button class="remove-email svg-wrap" data-email-id="{{ id }}" data-form-action="/remove-email"  aria-label="{{ getString "stop-monitor-this" }}">
                   {{> svg/x-close }}
                 </button>
                 {{/if}}
               {{else}} <!-- user breaches dashboard / show toggle -->
                 {{#ifCompare breaches.length ">" 0}}
-                  <button class="toggle svg-wrap" aria-label="{{getString "show-breaches-for-this-email"}}">
+                  <button class="toggle svg-wrap" aria-label="{{ getString "show-breaches-for-this-email" }}">
                     {{> svg/toggle-down }}
                   </button>
                 {{/ifCompare}}
@@ -31,10 +31,8 @@
             {{#unless prefs}} <!-- user breaches dashboard, show breaches for each email on toggle click-->
               <div class="e-breach-list">
                 {{#each this.breaches}}
-                  <div class="e-breach-list">
-                    <div class="email-card-breach-wrapper">
-                      {{> breach-card addClass="ec"}}
-                    </div>
+                  <div class="email-card-breach-wrapper">
+                    {{> breach-card addClass="ec"}}
                   </div>
                 {{/each}}
               </div>

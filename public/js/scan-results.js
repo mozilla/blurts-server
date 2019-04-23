@@ -2,7 +2,7 @@
 
 (() => {
 
-  const showAdditionalBreaches = () => {
+  function showAdditionalBreaches() {
     const showBreachesButton = document.getElementById("show-all-breaches-wrapper");
     const additionalBreaches = document.getElementById("additional-breaches");
     [showBreachesButton, additionalBreaches].forEach(el => {
@@ -10,7 +10,7 @@
         el.classList.toggle(className);
       });
     });
-  };
+  }
 
   const showAllBreaches = document.getElementById("show-all-breaches");
 

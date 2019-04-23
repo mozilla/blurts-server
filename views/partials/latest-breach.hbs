@@ -2,11 +2,11 @@
   <section class="row jst-cntr">
     <div class="col-8">
       <div class="gradient-background latest-breach-wrapper drop-shadow">
-        <h3 class="latest-breach-headline">{{{getString "latest-breach" brandName="<span class='fxm'>Firefox Monitor</span>"}}}</h3>
+        <h3 class="latest-breach-headline">{{{ getString "latest-breach" brandName="<span class='fxm'>Firefox Monitor</span>" }}}</h3>
         <div class="latest-breach-info">
           {{#each (lastAddedBreach)}}
             {{> breach-card cardClass="latest-breach"}}
-            <a href="/?breach={{ this.Name }}" class="latest-breach-link">{{getString "latest-breach-link"}}<span class="arrow">&#8594;</span></a>
+            <a href="/?breach={{ this.Name }}" class="latest-breach-link">{{ getString "latest-breach-link" }}<span class="arrow">&#8594;</span></a>
           {{/each}}
         </div>
       </div>

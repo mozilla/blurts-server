@@ -493,7 +493,7 @@ add-new-email= Add a new email address
 send-verification= Send Verification Link
 monitor-preferences= Monitor Preferences
 global-communication= Global communication
-email-addresses= Email Addresses
+breach-summary = Breach Summary
 
 show-breaches-for-this-email= Show all breaches for this email.
 
@@ -507,3 +507,5 @@ remove-fxm-blurb= Turn off {-product-name} alerts. Your {-brand-fxa} will remain
 manage-email-addresses= Manage Email Addresses
 
 latest-breach-link= See if you were in this breach
+
+welcome-back= Welcome back { $userName }!

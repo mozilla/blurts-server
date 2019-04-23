@@ -2,7 +2,7 @@
 
 const { getStrings } = require("./hbs-helpers");
 
-const getFooterLinks = (args) => {
+function getFooterLinks(args) {
   const locales = args.data.root.req.supportedLocales;
   const footerLinks = [
     {
@@ -29,7 +29,7 @@ const getFooterLinks = (args) => {
   ];
 
   return getStrings(footerLinks, locales);
-};
+}
 
 module.exports = {
   getFooterLinks,

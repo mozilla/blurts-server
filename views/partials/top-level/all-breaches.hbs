@@ -13,7 +13,7 @@
       {{> breach-filters }}
       <button id="back-to-top" class="back-to-top">
         {{> svg/arrow-right }}
-        {{getString "back-to-top"}}
+        {{ getString "back-to-top" }}
       </button>
     </div>
     <div class="row">
@@ -28,7 +28,7 @@
       <!-- breach cards -->
       <div id="all-breaches" class="all-breaches flx">
         {{#each this.breachCards}}
-          {{> breach-card lazyLoad=true cardClass="three-up drop-shadow"}}
+          {{> breach-card lazyLoad=true cardClass="three-up drop-shadow" }}
         {{/each}}
       </div>
     </div>

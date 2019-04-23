@@ -136,14 +136,14 @@ function restoreInputs() {
 // };
 
 
-const toggleMobileMenu = () => {
+function toggleMobileMenu() {
   document.body.classList.toggle("menu-open");
   document.body.classList.toggle("menu-closed");
   // animateMobileMenuIcon();
-};
+}
 
 
-const toggleMobileFeatures = function() {
+function toggleMobileFeatures() {
   const page = document.body;
   if (window.innerWidth > 575) {
     if (document.body.classList.contains("menu-open")) {
@@ -160,7 +160,7 @@ const toggleMobileFeatures = function() {
     document.getElementById("menu-icon-wrapper").addEventListener("click", toggleMobileMenu);
     document.getElementById("bg-screen").addEventListener("click", toggleMobileMenu);
   }
-};
+}
 
 
 document.addEventListener("touchstart", function(){}, true);

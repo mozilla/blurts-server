@@ -1,7 +1,7 @@
 "use strict";
 
 // open/close signed-in user fxa menu and set tabbing
-const toggleMenu = (otherFocusableEls, fxaMenuLinks) => {
+function toggleMenu (otherFocusableEls, fxaMenuLinks) {
   document.body.classList.toggle("menu-open");
   if (document.body.classList.contains("menu-open")) {
     document.getElementById("close-menu").addEventListener("click", (e) => {
@@ -21,7 +21,7 @@ const toggleMenu = (otherFocusableEls, fxaMenuLinks) => {
       link.tabIndex = -1;
     });
   }
-};
+}
 
 if (document.querySelector("#avatar-wrapper")) {
   const avatar = document.getElementById("avatar-wrapper");

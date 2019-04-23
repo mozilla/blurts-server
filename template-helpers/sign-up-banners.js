@@ -23,7 +23,7 @@ const monitorFeatures = [
   },
 ];
 
-const bulletedList = (list, args) => {
+function bulletedList(list, args) {
   const locales = args.data.root.req.supportedLocales;
 
   let ret= "";
@@ -34,9 +34,9 @@ const bulletedList = (list, args) => {
     ret = ret + args.fn(list[i]);
   }
   return ret;
-};
+}
 
-const monitorFeaturesList = (args) => {
+function monitorFeaturesList(args) {
   const locales = args.data.root.req.supportedLocales;
   const features = [
     {
@@ -64,7 +64,7 @@ const monitorFeaturesList = (args) => {
     feature.subtitle = LocaleUtils.fluentFormat(locales, feature.subtitleId);
   });
   return features;
-};
+}
 
 module.exports = {
   monitorFeaturesList,

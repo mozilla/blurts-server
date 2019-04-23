@@ -54,11 +54,6 @@
   transition: all 0.3s ease;
 }
 
-.email-card.active .e-breach-list > * {
-  max-height: 10000px;
-  transition: all 0.3s ease;
-}
-
 .svg-wrap {
   border-width: 0;
   border-radius: 0.25rem;
