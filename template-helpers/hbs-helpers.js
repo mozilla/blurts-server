@@ -9,6 +9,9 @@ const log = mozlog("template-helpers/hbs-helpers");
 
 function getSupportedLocales(args) {
   if (args.data) {
+    if (args.data.root.supportedLocales) {
+      return args.data.root.supportedLocales;
+    }
     return args.data.root.req.supportedLocales;
   }
   if (args.this) {

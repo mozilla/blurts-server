@@ -27,8 +27,6 @@ error-hibp-throttled = Too many connections to {-brand-HIBP}.
 error-hibp-connect = Error connecting to {-brand-HIBP}.
 error-hibp-load-breaches = Could not load breaches.
 
-hibp-notify-email-subject = {-product-name} Alert: Your account was involved in a breach.
-
 home-title = {-product-name}
 home-not-found = Page not found.
 
@@ -509,3 +507,35 @@ manage-email-addresses= Manage Email Addresses
 latest-breach-link= See if you were in this breach
 
 welcome-back= Welcome back { $userName }!
+
+
+breach-alert-subject= {-product-name} found your email in a new data breach.
+
+your-info-was-discovered-headline=Your information was discovered in a new data breach.
+
+your-info-was-discovered-blurb=You’re signed up to receive Firefox Monitor alerts 
+  when your email appears in a data breach. Here’s what we know about this breach.
+
+what-to-do-after-breach=What to do after a data breach
+
+ba-next-step-1= Change your password to a strong, unique password.
+ba-next-step-blurb-1=
+  A strong password uses a combination of upper and lowercase letters, 
+  special characters, and numbers. It doesn’t contain personal info like 
+  your address, birthday, or family names.
+
+ba-next-step-2= Stop using that exposed password entirely.
+ba-next-step-blurb-2= Stop using that exposed password entirely.
+  Cyber criminals could find your password on the dark web and use it 
+  to log in to your other accounts. The best way to protect your accounts 
+  is to use unique passwords for each one.
+
+
+ba-next-step-3= Get help creating better passwords and keeping them safe.
+ba-next-step-blurb-3=
+  Use a password manager to create strong, unique passwords. Password managers securely store all your 
+  logins so you can access them across all your devices.
+
+faq1= I don’t recognize this company or website. Why am I in this breach?
+faq2= Why did it take so long to notify me of this breach?
+faq3= How do I know this is a legitimate email from Firefox Monitor?

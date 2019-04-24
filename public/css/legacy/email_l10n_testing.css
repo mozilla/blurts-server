@@ -175,3 +175,25 @@ p.body-copy.medium span,
 p.body-copy.medium a {
   font-weight: 300;
 }
+
+.email-faq-link a {
+  color: var(--blue60);
+  font-size: 14px;
+}
+
+.email-faq-link a:hover {
+  color: var(--blue70);
+  text-decoration: underline;
+}
+
+tr.email-faq-link {
+  margin-top: 10px !important;
+}
+
+tr.email-faq {
+  padding-top: 30px;
+}
+
+p.body-copy {
+  padding-top: 10px;
+}

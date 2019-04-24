@@ -1,35 +1,38 @@
-{{!-- {{!< default_email}}
+{{!< default_email}}
 
 
 <div style="width: 100%; max-width: 603px;">
   <table border="0" cellpadding="0" cellspacing="0" style="text-align: left; width: 100%;">
     <tr>
-      <td>
-        {{> email_partials/report_header_details}}
+      <td style="font-family: sans-serif">
+        {{> email_partials/report_header_details }}
       </td>
     </tr>
   </table>
   <table class="email-headline-copy" border="0" cellpadding="0" cellspacing="0" style="text-align: left; padding-top: 10px; width: 100%;">
     <tr>
       <td>
-        {{> email_partials/report_list_headline}}
+        {{> email_partials/report_list_headline }}
       </td>
     </tr>
   </table>
   <table class="email-main-copy" border="0" cellpadding="0" cellspacing="0" style="text-align: left; padding-top: 10px;">
     {{#if breachAlert}}
-      {{> email_partials/breach_alert supportedLocales=supportedLocales}}
-      {{> email_partials/email_hibp_attribution}}
-      {{> email_partials/report_what_to_do_next}}
+      {{#getBreachAlert}}
+        {{> email_partials/email_single_breach SERVER_URL=../SERVER_URL}}
+      {{/getBreachAlert}}
+      {{> email_partials/email_hibp_attribution }}
+      {{> email_partials/email_faqs}}
+      {{> email_partials/report_what_to_do_next }}
     {{else}}
       {{#ifCompare unsafeBreachesForEmail.length ">" 0}}
-        {{#each unsafeBreachesForEmail}}
-          {{> email_partials/email_single_breach SERVER_URL=../SERVER_URL supportedLocales=../supportedLocales}}
+        {{#each (getUnsafeBreachesForEmailReport)}}
+          {{> email_partials/email_single_breach SERVER_URL=../SERVER_URL}}
         {{/each}}
-        {{> email_partials/email_hibp_attribution}}
-        {{> email_partials/report_what_to_do_next}}
+        {{> email_partials/email_hibp_attribution }}
+        {{> email_partials/report_what_to_do_next }}
       {{else}}
-        {{> email_partials/report_password_tips}}
+        {{> email_partials/report_password_tips }}
       {{/ifCompare}}
 
     {{/if}}<!--breachAlert-->
@@ -37,8 +40,8 @@
   <table class="table-button" border="0" cellpadding="0" cellspacing="0" width="100%" style="padding-top: 20px; padding-bottom: 20px; margin: 0px;">
     <tr>
       <td>
-        {{> email_partials/email_button href=scanAnotherEmailHref fluentStringID="report-scan-another-email"}}
+        {{> email_partials/email_button href=scanAnotherEmailHref fluentStringID="report-scan-another-email" }}
       </td>
     </tr>
   </table>
-</div> --}}
+</div>
