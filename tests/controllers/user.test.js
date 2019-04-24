@@ -21,40 +21,43 @@ const mockRequest = { fluentFormat: jest.fn() };
 
 
 test("user add POST with email adds unverified subscriber and sends verification email", async () => {
-    // Set up test context
-    const userAddEmail = "userAdd@test.com";
-    const userAddLanguages = "en-US,en;q=0.5";
-    let subscribers = await DB.getSubscribersByEmail(userAddEmail);
-    expect(subscribers.length).toEqual(0);
+  const testSubscriberEmail = "firefoxaccount@test.com";
+  const testUserAddEmail = "addingNewEmail@test.com";
+  const testSubscriber = await DB.getSubscriberByEmail(testSubscriberEmail);
 
-    // Set up mocks
-    const req = httpMocks.createRequest({
-      method: "POST",
-      url: "/user/add",
-      headers: { "accept-language": userAddLanguages },
-      body: {email:userAddEmail},
-      fluentFormat: jest.fn(),
-    });
-    const resp = httpMocks.createResponse();
-    EmailUtils.sendEmail.mockResolvedValue(true);
+  // Set up mocks
+  const req = httpMocks.createRequest({
+    method: "POST",
+    url: "/user/add",
+    body: { email: testUserAddEmail },
+    session: { user: testSubscriber },
+    fluentFormat: jest.fn(),
+  });
+  const resp = httpMocks.createResponse();
+  EmailUtils.sendEmail.mockResolvedValue(true);
 
-    // Call code-under-test
-    await user.add(req, resp);
+  // Call code-under-test
+  await user.add(req, resp);
 
-    // Check expectations
-    expect(resp.statusCode).toEqual(200);
-    subscribers = await DB.getSubscribersByEmail(userAddEmail);
-    expect(subscribers.length).toEqual(1);
-    const userAdded = subscribers[0];
-    expect(userAdded.email).toEqual(userAddEmail);
-    expect(userAdded.verified).toBeFalsy();
-    expect(userAdded.signup_language).toEqual(userAddLanguages);
+  // Check expectations
+  expect(resp.statusCode).toEqual(200);
 
-    const mockCalls = EmailUtils.sendEmail.mock.calls;
-    expect(mockCalls.length).toEqual(1);
-    const mockCallArgs = mockCalls[0];
-    expect(mockCallArgs).toContain(userAddEmail);
-    expect(mockCallArgs).toContain("default_email");
+  expect(testSubscriber.primary_email).toEqual(testSubscriberEmail);
+
+  const testSubscriberEmailAddressRecords = await DB.getUserEmails(testSubscriber.id);
+  const testSubscriberEmailAddresses = testSubscriberEmailAddressRecords.map(record => record.email);
+  expect(testSubscriberEmailAddresses.includes(testUserAddEmail)).toBeTruthy();
+  for (const testSubscriberEmailAddress of testSubscriberEmailAddresses) {
+    if (testSubscriberEmailAddress.email === testUserAddEmail) {
+      expect(testSubscriberEmailAddress.verified).toBeFalsy();
+    }
+  }
+
+  const mockCalls = EmailUtils.sendEmail.mock.calls;
+  expect(mockCalls.length).toEqual(1);
+  const mockCallArgs = mockCalls[0];
+  expect(mockCallArgs).toContain(testUserAddEmail);
+  expect(mockCallArgs).toContain("default_email");
 });
 
 

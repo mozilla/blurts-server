@@ -53,10 +53,8 @@ async function add(req, res) {
   if (!email || !isemail.validate(email)) {
     throw new FluentError("user-add-invalid-email");
   }
-  const fxNewsletter = Boolean(req.body.additionalEmails);
-  const signupLanguage = req.headers["accept-language"];
   const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(
-    req.session.user, email, fxNewsletter, signupLanguage
+    req.session.user, email
   );
 
 
