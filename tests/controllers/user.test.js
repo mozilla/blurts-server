@@ -62,11 +62,15 @@ test("user add POST with email adds unverified subscriber and sends verification
 
 
 test("user add request with invalid email throws error", async () => {
+    const testSubscriberEmail = "firefoxaccount@test.com";
+    const testSubscriber = await DB.getSubscriberByEmail(testSubscriberEmail);
+
     // Set up mocks
     const req = httpMocks.createRequest({
       method: "POST",
       url: "/user/add",
-      body: {email:"a"},
+      body: { email: "a" },
+      session: { user: testSubscriber },
       fluentFormat: jest.fn(),
     });
     const resp = httpMocks.createResponse();
