@@ -51,7 +51,7 @@ const DB = {
     return subscriber;
   },
 
-  async addSubscriberUnverifiedEmailHash(user, email, fxNewsletter = false, signupLanguage="en") {
+  async addSubscriberUnverifiedEmailHash(user, email) {
     const res = await knex("email_addresses").insert({
       subscriber_id: user.id,
       email: email,
