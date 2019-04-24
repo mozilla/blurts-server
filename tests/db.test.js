@@ -1,6 +1,5 @@
 "use strict";
 
-const Basket = require("../basket");
 const HIBP = require("../hibp");
 const DB = require("../db/DB");
 const getSha1 = require("../sha1-utils");
@@ -101,6 +100,17 @@ test("addSubscriber with existing email updates updated_at", async () => {
   expect(verifiedSubscriber.primary_verified).toBeTruthy();
   expect(verifiedSubscriber.primary_sha1).toBe(getSha1(testEmail));
   expect(verifiedSubscriber.updated_at).not.toBe(updatedAt);
+});
+
+
+test("setBreachesLastShown updates column and returns subscriber", async() => {
+  const startingSubscriber = await DB.getSubscriberByEmail("firefoxaccount@test.com");
+
+  await sleep(1000);
+  await DB.setBreachesLastShownNow(startingSubscriber);
+
+  const updatedSubscriber = await DB.getSubscriberByEmail(startingSubscriber.primary_email);
+  expect (new Date(updatedSubscriber.breaches_last_shown).getTime()).toBeGreaterThan(new Date(startingSubscriber.breaches_last_shown).getTime());
 });
 
 

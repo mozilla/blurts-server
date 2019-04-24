@@ -18,7 +18,7 @@ beforeEach(async () => {
   const knex = Knex(knexConfig);
   await knex("email_addresses").del();
   await knex("subscribers").del();
-  await knex("subscribers").insert(Object.values(TEST_DATA))
+  await knex("subscribers").insert(Object.values(TEST_DATA));
   knex.destroy();
 });
 

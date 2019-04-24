@@ -213,7 +213,7 @@ const DB = {
   },
 
   async setBreachesLastShownNow(subscriber) {
-    const nowDateTime = new Date(Date.now());
+    const nowDateTime = new Date();
     const nowTimeStamp = nowDateTime.toISOString();
     const updated = await knex("subscribers")
     .where("id", "=", subscriber.id)

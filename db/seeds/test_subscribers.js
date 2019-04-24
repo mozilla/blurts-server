@@ -10,6 +10,7 @@ exports.TEST_DATA = {
     primary_verification_token: "0e2cb147-2041-4e5b-8ca9-494e773b2cf1",
     primary_verified: true,
     fxa_refresh_token: "4a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc1",
+    breaches_last_shown: "2019-04-24 13:27:08.421-05",
   },
   unverified_email: {
     primary_sha1: getSha1("unverifiedemail@test.com"),
