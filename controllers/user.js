@@ -111,14 +111,19 @@ async function getAllEmailsAndBreaches(user, allBreaches) {
 
 
 async function getDashboard(req, res) {
+  _requireSessionUser(req);
   const allBreaches = req.app.locals.breaches;
   const user = req.session.user;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
+
+  const newBreachesFound = allBreaches.filter(breach => breach.AddedDate >= user.breaches_last_shown);
+  await DB.setBreachesLastShownNow(user);
 
   res.render("dashboards", {
     title: req.fluentFormat("user-dash"),
     verifiedEmails,
     unverifiedEmails,
+    newBreachesFound,
     whichPartial: "dashboards/breaches-dash",
   });
 }
@@ -219,11 +224,11 @@ async function postUnsubscribe(req, res) {
 
 
 async function getPreferences(req, res) {
+  _requireSessionUser(req);
   const allBreaches = req.app.locals.breaches;
   const user = req.session.user;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
 
-  _requireSessionUser(req);
   res.render("dashboards", {
     title: req.fluentFormat("email-add-title"),
     whichPartial: "dashboards/preferences",
