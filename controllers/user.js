@@ -110,15 +110,33 @@ async function getAllEmailsAndBreaches(user, allBreaches) {
 }
 
 
+function getNewBreachesForEmailEntriesSinceDate(emailEntries, date) {
+  const breaches = new Set();
+  for (const emailEntry of emailEntries) {
+    const newBreachesForEmail = emailEntry.breaches.filter(breach => breach.AddedDate >= date);
+    for (const newBreachForEmail of newBreachesForEmail) {
+      breaches.add(newBreachForEmail);
+    }
+  }
+  return breaches;
+}
+
+
 async function getDashboard(req, res) {
+  _requireSessionUser(req);
   const allBreaches = req.app.locals.breaches;
   const user = req.session.user;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
+
+  const newBreachesFound = getNewBreachesForEmailEntriesSinceDate(verifiedEmails, user.breaches_last_shown);
+
+  req.session.user = await DB.setBreachesLastShownNow(user);
 
   res.render("dashboards", {
     title: req.fluentFormat("user-dash"),
     verifiedEmails,
     unverifiedEmails,
+    newBreachesFound,
     whichPartial: "dashboards/breaches-dash",
   });
 }
@@ -219,11 +237,11 @@ async function postUnsubscribe(req, res) {
 
 
 async function getPreferences(req, res) {
+  _requireSessionUser(req);
   const allBreaches = req.app.locals.breaches;
   const user = req.session.user;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
 
-  _requireSessionUser(req);
   res.render("dashboards", {
     title: req.fluentFormat("email-add-title"),
     whichPartial: "dashboards/preferences",

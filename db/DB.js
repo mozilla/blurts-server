@@ -21,7 +21,7 @@ const log = mozlog("DB");
 const DB = {
   async getSubscriberByToken(token) {
     const res = await knex("subscribers")
-      .where("verification_token", "=", token);
+      .where("primary_verification_token", "=", token);
 
     return res[0];
   },
@@ -51,7 +51,7 @@ const DB = {
     return subscriber;
   },
 
-  async addSubscriberUnverifiedEmailHash(user, email, fxNewsletter = false, signupLanguage="en") {
+  async addSubscriberUnverifiedEmailHash(user, email) {
     const res = await knex("email_addresses").insert({
       subscriber_id: user.id,
       email: email,
@@ -177,7 +177,7 @@ const DB = {
         verified: true,
       })
       .returning("*");
-      
+
   return verifiedEmail;
   },
 
@@ -206,6 +206,19 @@ const DB = {
       fxa_uid: fxaUID,
       fxa_refresh_token: fxaRefreshToken,
       fxa_profile_json: fxaProfileData,
+    })
+    .returning("*");
+    const updatedSubscriber = Array.isArray(updated) ? updated[0] : null;
+    return updatedSubscriber;
+  },
+
+  async setBreachesLastShownNow(subscriber) {
+    const nowDateTime = new Date();
+    const nowTimeStamp = nowDateTime.toISOString();
+    const updated = await knex("subscribers")
+    .where("id", "=", subscriber.id)
+    .update({
+      breaches_last_shown: nowTimeStamp,
     })
     .returning("*");
     const updatedSubscriber = Array.isArray(updated) ? updated[0] : null;
