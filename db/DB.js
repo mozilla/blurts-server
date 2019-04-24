@@ -21,7 +21,7 @@ const log = mozlog("DB");
 const DB = {
   async getSubscriberByToken(token) {
     const res = await knex("subscribers")
-      .where("verification_token", "=", token);
+      .where("primary_verification_token", "=", token);
 
     return res[0];
   },
