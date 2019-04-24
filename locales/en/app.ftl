@@ -430,8 +430,8 @@ what-data= What data was compromised:
 overview= Overview:
 
 
-sensitive-sites= How does Firefox Monitor treat sensitive sites?
-sensitive-sites-copy= Firefox Monitor reveals accounts associated with these 
+sensitive-sites= How does {-product-name} treat sensitive sites?
+sensitive-sites-copy= {-product-name} reveals accounts associated with these 
   types of breaches after an email address has been verified. This means you're 
   the only person who can see if your information was in this breach.
 
@@ -513,7 +513,7 @@ breach-alert-subject= {-product-name} found your email in a new data breach.
 
 your-info-was-discovered-headline=Your information was discovered in a new data breach.
 
-your-info-was-discovered-blurb=You’re signed up to receive Firefox Monitor alerts 
+your-info-was-discovered-blurb=You’re signed up to receive {-product-name} alerts 
   when your email appears in a data breach. Here’s what we know about this breach.
 
 what-to-do-after-breach=What to do after a data breach
@@ -525,7 +525,7 @@ ba-next-step-blurb-1=
   your address, birthday, or family names.
 
 ba-next-step-2= Stop using that exposed password entirely.
-ba-next-step-blurb-2= Stop using that exposed password entirely.
+ba-next-step-blurb-2=
   Cyber criminals could find your password on the dark web and use it 
   to log in to your other accounts. The best way to protect your accounts 
   is to use unique passwords for each one.
@@ -538,4 +538,4 @@ ba-next-step-blurb-3=
 
 faq1= I don’t recognize this company or website. Why am I in this breach?
 faq2= Why did it take so long to notify me of this breach?
-faq3= How do I know this is a legitimate email from Firefox Monitor?
+faq3= How do I know this is a legitimate email from {-product-name}?

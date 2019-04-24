@@ -25,9 +25,7 @@ const modifiedStrings = {
 function getUnsafeBreachesForEmailReport(args) {
   const locales = args.data.root.supportedLocales;
   const foundBreaches = args.data.root.unsafeBreachesForEmail;
-
-  const breachCards = makeBreachCards(foundBreaches, locales);
-  return breachCards;
+  return makeBreachCards(foundBreaches, locales);
 }
 
 
@@ -50,30 +48,24 @@ function getBreachAlertFaqs(args) {
   const supportedLocales = args.data.root.supportedLocales;
   const faqs = [
     {
-      "stringId" : "faq1",
+      "linkTitle" : LocaleUtils.fluentFormat(supportedLocales, "faq1", args),
       "stringDescription": "I don't recognize this website. Why am I in this breach?",
       "href": makeFaqLink("#w_i-donaot-recognize-this-company-or-website-why-am-i-receiving-notifications-about-this-breach", "faq1"),
     },
     {
-      "stringId" : "faq2",
+      "linkTitle" : LocaleUtils.fluentFormat(supportedLocales, "faq2", args),
       "stringDescription": "Why did it take so long to notify me of this breach?",
       "href": makeFaqLink("#w_why-did-it-take-so-long-to-notify-me-of-this-breach", "faq2"),
     },
     {
-      "stringId" : "faq3",
+      "linkTitle" : LocaleUtils.fluentFormat(supportedLocales, "faq3", args),
       "stringDescription": "How do I know this is a legitimate email from Firefox Monitor?",
       "href": makeFaqLink("#w_how-do-i-know-these-emails-are-really-from-firefox-and-not-from-a-hacker", "faq3"),
     },
   ];
-  faqs.forEach(faq => {
-    faq.linkTitle = LocaleUtils.fluentFormat(supportedLocales, faq.stringId, args);
-  });
 
-  let result = "";
-  for (let i = 0; i < faqs.length; i++) {
-    result = result + args.fn(faqs[i]);
-  }
-  return result;
+  const functionedFaqs = faqs.map(faq => args.fn(faq));
+  return "".concat(...functionedFaqs);
 }
 
 function getReportHeader(args) {
@@ -98,15 +90,15 @@ function getWhatToDos(args) {
   const locales = args.data.root.supportedLocales;
 
   let headlineId = "what-to-do-next";
-  let subheadId = "what-to-do-subhead-";
-  let blurbId = "what-to-do-blurb-";
+  let subheadId = "what-to-do-subhead";
+  let blurbId = "what-to-do-blurb";
   let numTips = 4;
 
   // grab different strings for breach alert emails
   if (args.data.root.breachAlert) {
     headlineId = "what-to-do-after";
-    subheadId = "ba-next-step-";
-    blurbId = "ba-next-step-blurb-";
+    subheadId = "ba-next-step";
+    blurbId = "ba-next-step-blurb";
     numTips = 3;
   }
 
@@ -120,7 +112,7 @@ function getWhatToDos(args) {
 
 function getPasswordTips(args) {
   const locales = args.data.root.supportedLocales;
-  const passwordTips = createTips(4, "report-pwt-headline-", "report-pwt-summary-", locales);
+  const passwordTips = createTips(4, "report-pwt-headline", "report-pwt-summary", locales);
   return passwordTips;
 }
 
@@ -139,8 +131,8 @@ function createTips(numTips, subheadIdPrefix, blurbIdPrefix, locales) {
   while (x < numTips) {
     tips.push({
       idx: x + 1,
-      subhead: checkForNewStringId(locales, `${subheadIdPrefix}${x+1}`),
-      blurb: checkForNewStringId(locales, `${blurbIdPrefix}${x+1}`),
+      subhead: checkForNewStringId(locales, `${subheadIdPrefix}-${x+1}`),
+      blurb: checkForNewStringId(locales, `${blurbIdPrefix}-${x+1}`),
     });
     x++;
   }
