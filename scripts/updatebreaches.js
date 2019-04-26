@@ -6,10 +6,11 @@ const RemoteSettings = require("../lib/remote-settings");
 
 
 if (
-  !AppConstants.FX_REMOTE_SETTINGS_BEARER_TOKEN ||
+  !AppConstants.FX_REMOTE_SETTINGS_WRITER_USER ||
+  !AppConstants.FX_REMOTE_SETTINGS_WRITER_PASS ||
   !AppConstants.FX_REMOTE_SETTINGS_WRITER_SERVER
 ) {
-  console.error("updatebreaches requires FX_RS_BEARER_TOKEN.");
+  console.error("updatebreaches requires FX_REMOTE_SETTINGS_WRITER_SERVER, FX_REMOTE_SETTINGS_WRITER_USER, FX_REMOTE_SETTINGS_WRITER_PASS.");
   process.exit(1);
 }
 
