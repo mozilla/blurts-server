@@ -7,7 +7,6 @@ const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const HIBP = require("../hibp");
 const { LocaleUtils } = require ("../locale-utils");
-const HBSHelpers = require("../template-helpers/hbs-helpers");
 const mozlog = require("../log");
 
 
@@ -74,7 +73,6 @@ async function notify (req, res) {
         {
           email,
           supportedLocales,
-          date: HBSHelpers.prettyDate(supportedLocales, new Date()),
           breachAlert,
           SERVER_URL: req.app.locals.SERVER_URL,
           scanAnotherEmailHref: scanAnotherEmailHref,

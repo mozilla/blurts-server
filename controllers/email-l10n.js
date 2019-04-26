@@ -1,7 +1,5 @@
 "use strict";
 
-const HBSHelpers = require("../template-helpers/hbs-helpers");
-
 
 function getEmailMockUps(req, res) {
   const unsafeBreachesForEmail = [];
@@ -44,7 +42,6 @@ function getEmailMockUps(req, res) {
     unsafeBreachesForEmail: unsafeBreachesForEmail,
     supportedLocales: req.supportedLocales,
     whichPartial: `email_partials/${req.query.partial}`,
-    date: HBSHelpers.prettyDate(req.supportedLocales, new Date()),
     buttonValue,
     breachAlert,
     emailSubject,

@@ -8,7 +8,6 @@ const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const { FluentError } = require("../locale-utils");
 const FXA = require("../lib/fxa");
-const HBSHelpers = require("../template-helpers/emails");
 const HIBP = require("../hibp");
 const sha1 = require("../sha1-utils");
 
@@ -160,7 +159,6 @@ async function _verify(req) {
     {
       email: verifiedEmailHash.email,
       supportedLocales: req.supportedLocales,
-      date: HBSHelpers.e_prettyDate(req.supportedLocales, new Date()),
       unsafeBreachesForEmail: unsafeBreachesForEmail,
       scanAnotherEmailHref: EmailUtils.getScanAnotherEmailUrl(utmID),
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(verifiedEmailHash, utmID),
