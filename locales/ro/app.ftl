@@ -216,11 +216,49 @@ guest-scan-results-headline =
        *[other] Această adresă de e-mail a apărut în { $breachCount } de breșe de date.
     }
 user-no-breaches-blurb = Te vom avertiza dacă adresa de e-mail apare în breșe noi.
+guest-no-breaches-blurb = Pentru a vedea dacă adresa de e-mail apare în breșe de date sensibile, creează un { -brand-fxa }. Te vom avertiza și dacă această adresă apare în breșe noi de date.
 user-one-breach-blurb = Această breșă a expus următoarele informații cu caracter personal.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Adresa ta de e-mail a apărut și într-o altă breșă.
+        [few] Adresa ta de e-mail a apărut și în alte { $breachCount } breșe.
+       *[other] Adresa ta de e-mail a apărut și în alte { $breachCount } de breșe.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Această adresă de e-mail a apărut și într-o altă breșă.
+        [few] Această adresă de e-mail a apărut și în alte { $breachCount } breșe.
+       *[other] Această adresă de e-mail a apărut și în alte { $breachCount } de breșe.
+    }
 user-fb-compromised-single =
     Această breșă a expus următoarele informații cu caracter personal. Dacă 
     nu ai făcut-o deja, schimbă-ți parola.
 user-generic-fb-compromised-single = Această breșă a expus următoarele informații cu caracter personal.
+guest-fb-compromised-single-v2 = Această breșă a expus următoarele date cu caracter personal. Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
+guest-fb-compromised-blurb-v2 =
+    { $breachCount ->
+        [one] Această adresă de e-mail a apărut și într-o altă breșă. Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
+        [few] Această adresă de e-mail a apărut și în alte { $breachCount } breșe. Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
+       *[other] Această adresă de e-mail a apărut și în alte { $breachCount } de breșe. Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
+    }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Nu ai apărut în breșa { $breachName }, dar am găsit adresa de e-mail în altă breșă.
+        [few] Nu ai apărut în breșa { $breachName }, dar am găsit adresa de e-mail în alte breșe.
+       *[other] Nu ai apărut în breșa { $breachName }, dar am găsit adresa de e-mail în alte breșe.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Această adresă de e-mail nu a apărut în breșa { $breachName }, dar am găsit-o în altă breșă.
+        [few] Această adresă de e-mail nu a apărut în breșa { $breachName }, dar am găsit-o în alte breșe.
+       *[other] Această adresă de e-mail nu a apărut în breșa { $breachName }, dar am găsit-o în alte breșe.
+    }
+guest-fb-not-compromised-blurb-v2 =
+    { $breachCount ->
+        [one] Această adresă de e-mail nu a apărut în breșa { $breachName }, dar am găsit-o în altă breșă. Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
+        [few] Această adresă de e-mail nu a apărut în breșa { $breachName }, dar am găsit-o în alte breșe. Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
+       *[other] Această adresă de e-mail nu a apărut în breșa { $breachName }, dar am găsit-o în alte breșe. Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
+    }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
 user-found-breaches-blurb =
@@ -239,6 +277,15 @@ user-generic-found-breaches-blurb =
     }
 have-an-account = Ai deja un cont?
 signup-banner-sensitive-blurb = Află ce știu deja hackerii despre tine și cum să fii cu un pas înaintea lor. Primește avertismente în cazul în care contul tău apare în breșe noi de date.
+fxa-pwt-section-blurb =
+    Parolele protejează toate datele cu caracter personal din conturile tale online. Și
+    hackerii se bazează pe obiceiuri proaste, cum ar fi folosirea aceleiași parole peste tot sau folosirea de fraze comune (@p@ssw0rd, oricine?), astfel încât, dacă sparg un cont, le sparg pe toate (sau mai multe).
+fxa-pwt-summary-2 =
+    Parolele scurte, formate dintr-un singur cuvânt, sunt ușor de ghicit pentru hackeri.
+    Folosește cel puțin două cuvinte și o combinație de litere, cifre și caractere speciale.
+fxa-pwt-summary-4 =
+    Managerii de parole, cum ar fi 1Password, LastPass, Dashlane și Bitwarden îți stochează
+    parolele și le completează pe site-uri pentru tine. Te vor ajuta chiar să creezi parole puternice.
 fxa-pwt-summary-6 = Breșele de date sunt în creștere. Dacă informațiile tale cu caracter personal apar într-o breșă de date nouă, { -product-name } îți va trimite o alertă — astfel încât să iei măsuri și să îți protejezi conturile.
 # Alerts is a noun
 sign-up-for-alerts = Înregistrează-te pentru alerte
