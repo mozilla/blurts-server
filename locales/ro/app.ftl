@@ -19,6 +19,7 @@ about-firefox-alerts = Despre alertele Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Oferă feedback
 terms-and-privacy = Termeni și confidențialitate
+error-scan-page-token = Ai încercat să scanezi prea multe adrese de e-mail într-un timp prea scurt. Din motive de securitate, ți-am blocat accesul la căutări noi. Poți încerca mai târziu.
 error-could-not-add-email = Adresa de e-mail nu a putut fi adăugată în baza de date.
 error-not-subscribed = Această adresă de e-mail nu este abonată la { -product-name }.
 error-hibp-throttled = Prea multe conexiuni la { -brand-HIBP }.
@@ -137,6 +138,10 @@ confirmed-social-blurb = Dacă ți-au fost compromise datele într-o breșă, ex
 unsub-headline = Dezabonează-te de la { -product-name-nowrap }
 unsub-blurb = Prin dezabonare, adresa ta de e-mail va fi eliminată din lista { -product-name-nowrap } și nu vei mai primi alerte când sunt anunțate breșe noi.
 unsub-button = Dezabonează-te
+fxa-unsub-headline = Dezabonare de la alerte { -product-name }.
+fxa-unsub-blurb =
+    Nu vei mai primi alerte { -product-name }. 
+    { -brand-fxa } va rămâne activ și vei putea primi alte comunicări legate de cont.
 unsub-survey-form-label = De ce te dezabonezi de la alertele { -product-name-nowrap }?
 unsub-reason-1 = Consider că alertele nu îmi fac datele mai sigure
 unsub-reason-2 = Primesc prea multe e-mailuri de la { -product-name-nowrap }
@@ -146,6 +151,10 @@ unsub-reason-5 = Folosesc un alt serviciu pentru monitorizarea conturilor
 unsub-reason-6 = Niciuna dintre cele de mai sus
 unsub-survey-thankyou = Îți mulțumim pentru feedback.
 unsub-survey-error = Te rugăm să selectezi o opțiune.
+unsub-survey-headline-v2 = Te-ai dezabonat.
+unsub-survey-blurb-v2 =
+    Nu vei mai primi alerte { -product-name }. 
+    Vrei să ne acorzi un minut și să ne răspunzi la o întrebare despre experiența ta?
 unsub-survey-button = Trimite răspunsul
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Distribuie
@@ -170,9 +179,43 @@ share-facebook-headline = Află dacă ai fost parte a unei breșe de date
 share-facebook-blurb = Au fost expuse conturile tale online într-o breșă de date?
 og-site-description = Află dacă ai fost parte a unei breșe de date cu { -product-name }. Înregistrează-te pentru alerte despre viitoare breșe și obține ponturi pentru a-ți menține în siguranță conturile.
 mozilla-security-blog = Blog de securitate { -brand-Mozilla }
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Social
 show-all = Afișează toate
+fxa-landing-blurb = Află ce știu deja hackerii despre tine și cum să fii cu un pas înaintea lor.
+fxa-scan-label = Vezi dacă apari într-o breșă de date.
+fxa-welcome-headline = Bine ai venit la { -product-name }.
+fxa-welcome-blurb = Te-ai înregistrat ca să primești alerte în cazul în care { $userEmail } apare într-o breșă de date.
+fxa-scan-another-email = Vrei să verifici altă adresă de e-mail?
+# Search Firefox Monitor
+fxa-scan-submit = Caută { -product-name }
+sign-up-to-check = Înscrie-te ca să poți verifica
+sign-in = Autentificare
+sign-out = Deconectare
+full-report-headline = Raportul tău { -product-name }
 see-full-report = Vezi raportul complet
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Gestionează { -brand-fxa }
+fxa-download-firefox-bar-blurb = Oferit de { -brand-name }. De 2 ori mai rapid. Folosește cu 30% mai puțină memorie decât { -brand-Chrome }.
 fxa-download-firefox-bar-link = Descarcă acum
+fxa-download-firefox-banner-blurb = Încărcare mai rapidă și mai bună a paginilor, utilizând mai puțină memorie.
+user-fb-compromised-headline = { $userEmail } a apărut în breșa de date { $breachName }.
+guest-fb-compromised-headline = Această adresă de e-mail a apărut în breșa de date { $breachName }.
+user-zero-breaches-headline = { $userEmail } nu a apărut în nicio breșă de date.
+guest-zero-breaches-headline = Această adresă de e-mail nu a apărut în nicio breșă de date.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } a apărut într-o breșă de date.
+        [few] { $userEmail } a apărut în { $breachCount } breșe de date.
+       *[other] { $userEmail } a apărut în { $breachCount } de breșe de date.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Această adresă de e-mail a apărut într-o breșă de date.
+        [few] Această adresă de e-mail a apărut în { $breachCount } breșe de date.
+       *[other] Această adresă de e-mail a apărut în { $breachCount } de breșe de date.
+    }
+user-no-breaches-blurb = Te vom avertiza dacă adresa de e-mail apare în breșe noi.
 user-one-breach-blurb = Această breșă a expus următoarele informații cu caracter personal.
 user-fb-compromised-single =
     Această breșă a expus următoarele informații cu caracter personal. Dacă 
@@ -195,8 +238,11 @@ user-generic-found-breaches-blurb =
        *[other] Aceste breșe au expus următoarele informații cu caracter personal.
     }
 have-an-account = Ai deja un cont?
+signup-banner-sensitive-blurb = Află ce știu deja hackerii despre tine și cum să fii cu un pas înaintea lor. Primește avertismente în cazul în care contul tău apare în breșe noi de date.
 fxa-pwt-summary-6 = Breșele de date sunt în creștere. Dacă informațiile tale cu caracter personal apar într-o breșă de date nouă, { -product-name } îți va trimite o alertă — astfel încât să iei măsuri și să îți protejezi conturile.
 # Alerts is a noun
 sign-up-for-alerts = Înregistrează-te pentru alerte
 sign-up-for-fxa-alerts = Înregistrează-te pentru alerte { -product-name }.
 get-your-report-and-sign-up = Obține raportul tău și înregistrează-te pentru alerte.
+# Link title
+frequently-asked-questions = Întrebări adresate frecvent
