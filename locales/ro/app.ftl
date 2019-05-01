@@ -287,9 +287,25 @@ fxa-pwt-summary-4 =
     Managerii de parole, cum ar fi 1Password, LastPass, Dashlane și Bitwarden îți stochează
     parolele și le completează pe site-uri pentru tine. Te vor ajuta chiar să creezi parole puternice.
 fxa-pwt-summary-6 = Breșele de date sunt în creștere. Dacă informațiile tale cu caracter personal apar într-o breșă de date nouă, { -product-name } îți va trimite o alertă — astfel încât să iei măsuri și să îți protejezi conturile.
+fxa-what-to-do-blurb-1 =
+    Dacă nu te poți autentifica, contactează site-ul web și întreabă-i cum să îți actualizezi datele de identificare.
+    Vezi un cont necunoscut? Este posibil ca datele tale să fi fost vândute
+    sau redistribuite. Ar putea fi și un cont de care ai uitat sau o companie care și-a schimbat denumirea.
+fxa-what-to-do-subhead-2 = Nu mai folosi parola expusă și schimb-o peste tot pe unde ai folosit-o.
+fxa-wtd-blurb-2 = Hackerii pot încerca să reutilizeze parola și adresa ta de e-mail ca să intre în alte conturi. Creează o parolă diferită și unică pentru fiecare cont, în special pentru contul bancar, e-mail și alte site-uri web pe care salvezi date cu caracter personal.
+fxa-what-to-do-blurb-3 = Cele mai multe breșe expun numai adrese de e-mail și parole, dar unele includ și date financiare sensibile. În cazul în care ți-au fost expuse contul bancar sau numerele cardurilor de credit, alertează banca asupra unei posibilități de fraudă. Monitorizează-ți extrasele de cont pentru plăți pe care nu le recunoști.
+fxa-what-to-do-subhead-4 = Obține ajutor pentru a ține minte toate parolele și pentru a le păstra în siguranță.
+fxa-what-to-do-blurb-4 =
+    Managerii de parole, cum ar fi 1Password, LastPass, Dashlane și Bitwarden îți stochează
+    parolele în siguranță și le completează pe site-uri pentru tine. Utilizează un manager de parole
+    pe telefon și pe calculator, astfel încât să nu trebuiască să le ții minte pe toate.
+fb-landing-headline = Ți-au fost expuse datele în breșa { $breachName }?
+copyright = Părți din acest conținut sunt © 1999-{ $year } de colaboratori individuali mozilla.org.
+content-available = Conținut disponibil sub o licență Creative Commons.
 # Alerts is a noun
 sign-up-for-alerts = Înregistrează-te pentru alerte
 sign-up-for-fxa-alerts = Înregistrează-te pentru alerte { -product-name }.
+create-free-account = Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
 get-your-report-and-sign-up = Obține raportul tău și înregistrează-te pentru alerte.
 # Link title
 frequently-asked-questions = Întrebări adresate frecvent
