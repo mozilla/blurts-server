@@ -7,8 +7,10 @@
 -brand-name = ഫയർഫോക്സ്
 -brand-Quantum = ഫയർഫോക്സ് ക്വാണ്ടം
 -brand-Mozilla = മോസില്ല
+-brand-HIBP = ഹാവ് ഐ ബീൻ പൗൺഡ്
 -brand-fxa = ഫയർഫോക്സ് അക്കൗണ്ട്
 -brand-Chrome = ക്രോം
+layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = സപ്പോർട്ട്
 # Link that takes the user to a blog post on blog.mozilla.org about the alerts
@@ -66,3 +68,15 @@ signup-banner-headline = { -product-name-nowrap } താങ്കളുടെ �
 download-firefox-bar-link = { -brand-name } ഇപ്പോൾ ഡൗൺലോഡ് ചെയ്യുക
 download-firefox-banner-blurb = ബ്രൗസറിന്റെ നിയന്ത്രണം ഏറ്റെടുക്കുക
 download-firefox-banner-button = { -brand-name } ഡൗൺലോഡ് ചെയ്യുക
+signup-modal-close = അടക്കുക
+get-your-report = നിങ്ങളുടെ റിപ്പോർട്ട് വാങ്ങുക
+signup-modal-verify-expiration = ഈ ലിങ്ക് ഇരുപത്തിനാലു മണിക്കൂറിനു ശേഷം അസാധുവാകുന്നതാണ്
+signup-modal-verify-resend = ഇൻബോക്സിലോ സ്പാം ഫോൾഡറിലോ കാണുന്നില്ല? വീണ്ടും അയക്കുക
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = അയച്ചു!
+signup-with-fxa = { -brand-name } അക്കൗണ്ട് ഉപയോഗിച്ച് പ്രവേശിക്കുക
+form-signup-placeholder = ഇമെയിൽ നൽകുക
+sign-up = പ്രവേശിക്കു
+form-signup-error = സാധുവായ ഇമെയിൽ ആയിരിക്കണം
+no-breaches-headline = ഇതുവരെ കൊള്ളാം.
+show-more-breaches = കൂടുതൽ കാണിക്കുക
