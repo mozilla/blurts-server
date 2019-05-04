@@ -188,7 +188,7 @@ guest-scan-results-headline =
         [one] Denne e-postadressa har vore involvert i ein datalekkasje.
        *[other] Denne e-postadressa har vore involvert i { $breachCount } datalekkasjar.
     }
-user-no-breaches-blurb = Vi vil involvere deg om denne adressa er involvert i ein datalekkasje.
+user-no-breaches-blurb = Vi vil varsle deg om denne adressa er involvert i ein datalekkasje.
 user-one-breach-blurb = Denne datalekkasjen avslørte følgjande personleg informasjon.
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
