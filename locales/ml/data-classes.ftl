@@ -1,0 +1,31 @@
+## Breach Data Classes
+
+account-balances = അക്കൗണ്ട് ബാലൻസുകൾ
+ages = പ്രായങ്ങള്‍
+audio-recordings = ശബ്ദ റെക്കോർഡിംഗുകൾ
+biometric-data = ബയോമെട്രിക്ക് ഡാറ്റ
+browser-user-agent-details = ബ്രൗസർ ഉപയോക്തൃ ഏജന്റ് വിശദാംശങ്ങൾ
+browsing-histories = ബ്രൗസിംഗ് നാൾവഴി
+buying-preferences = വാങ്ങല്‍ മുന്‍ഗണനകള്‍
+career-levels = തൊഴിൽ നില
+cellular-network-names = സെല്ലുലാർ നെറ്റ്‍വര്‍ക്ക് പേരുകൾ
+charitable-donations = ചാരിറ്റബിൾ സംഭാവനകൾ
+chat-logs = ചാറ്റ് ലോഗുകൾ
+credit-card-cvv = ക്രെഡിറ്റ് കാർഡ് സിവിവി
+credit-cards = ക്രെഡിറ്റ് കാര്‍ഡുകള്‍
+credit-status-information = ക്രെഡിറ്റ് സ്റ്റാറ്റസ് വിവരം
+device-information = ഉപകരണ വിവരം
+drinking-habits = മദ്യപാന ശീലങ്ങൾ
+drug-habits = മയക്കുമരുന്ന് ശീലങ്ങൾ
+eating-habits = ഭക്ഷണശീലങ്ങള്‍
+education-levels = വിദ്യാഭ്യാസ നില
+email-addresses = ഇമെയില്‍ വിലാസങ്ങള്‍
+email-messages = ഇമെയിൽ സന്ദേശങ്ങൾ
+family-members-names = കുടുംബാംഗങ്ങളുടെ പേരുകൾ
+family-structure = കുടുംബ ഘടന
+financial-investments = സാമ്പത്തിക നിക്ഷേങ്ങള്‍
+financial-transactions = സാമ്പത്തിക ഇടപാടുകൾ
+genders = ലിംഗഭേദങ്ങള്‍
+government-issued-ids = ഗവൺമെന്റ് ഐഡികൾ
+health-insurance-information = ആരോഗ്യ ഇൻഷ്വറൻസ് വിവരങ്ങൾ
+historical-passwords = പഴയ രഹസ്യവാക്കുകള്‍
