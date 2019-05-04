@@ -66,6 +66,7 @@ pwt-summary-4 =
 pwt-headline-5 = Legg til ekstra sikkerheit med tofaktor-godkjenning
 pwt-summary-5 = To faktor-godkjenning krev tilleggsinformasjon (t.d. ein eingangskode sendt via SMS) for å logge inn på kontoen din. Sjølv om nokon har passordet ditt, kan dei ikkje kome seg inn.
 pwt-headline-6 = Registrer deg for { -product-name-nowrap }-åtvaringar
+pwt-summary-6 = Nettstadlekkasjar aukar. Så snart ein ny lekkasje vert lagt til i databasen i vår, sender { -product-name-nowrap } deg ei åtvaring  — slik at du kan ta affære og beskytte kontoen din.
 landing-headline = Ditt vern mot hackarar startar her.
 scan-label = Sjå om du har vore innblanda i ein datalekkasje.
 scan-placeholder = Skriv inn e-postadresse
