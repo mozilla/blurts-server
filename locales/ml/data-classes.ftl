@@ -3,12 +3,14 @@
 account-balances = അക്കൗണ്ട് ബാലൻസുകൾ
 ages = പ്രായങ്ങള്‍
 apps-installed-on-devices = ഉപകരണങ്ങളിൽ ഇൻസ്റ്റാൾ ചെയ്തിട്ടുള്ള ആപ്പുകൾ
+astrological-signs = ജ്യോതിഷ ചിഹ്നങ്ങൾ
 audio-recordings = ശബ്ദ റെക്കോർഡിംഗുകൾ
 bank-account-numbers = ബാങ്ക് അക്കൗണ്ട് നമ്പറുകൾ
 biometric-data = ബയോമെട്രിക്ക് ഡാറ്റ
 browser-user-agent-details = ബ്രൗസർ ഉപയോക്തൃ ഏജന്റ് വിശദാംശങ്ങൾ
 browsing-histories = ബ്രൗസിംഗ് നാൾവഴി
 buying-preferences = വാങ്ങല്‍ മുന്‍ഗണനകള്‍
+car-ownership-statuses = കാർ ഉടമസ്ഥാവകാശ നിലകൾ
 career-levels = തൊഴിൽ നില
 cellular-network-names = സെല്ലുലാർ നെറ്റ്‍വര്‍ക്ക് പേരുകൾ
 charitable-donations = ചാരിറ്റബിൾ സംഭാവനകൾ
