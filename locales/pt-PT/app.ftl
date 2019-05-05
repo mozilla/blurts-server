@@ -41,7 +41,7 @@ user-verify-title = { -product-name } : Subscrito
 user-unsubscribe-token-error = Cancelar a subscrição requer um token.
 user-unsubscribe-token-email-error = Cancelar a subscrição requer um token e emailHash.
 user-unsubscribe-title = { -product-name } : Cancelar subscrição
-user-unsubscribe-survey-title = { -product-name } : Pesquisa de subscrição cancelada
+user-unsubscribe-survey-title = { -product-name } : Cancelar subscrição de pesquisa
 user-unsubscribed-title = { -product-name } : Subscrição cancelada
 
 ## Password Tips
