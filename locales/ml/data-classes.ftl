@@ -80,5 +80,6 @@ survey-results = സർവേ ഫലങ്ങൾ
 time-zones = സമയമേഖലകള്‍
 travel-habits = യാത്ര ശീലങ്ങൾ
 usernames = ഉപയോക്തൃനാമങ്ങള്‍
+website-activity = വെബ്‌സൈറ്റിലെ പ്രവർത്തനങ്ങൾ
 work-habits = ജോലി ശീലങ്ങൾ
 years-of-professional-experience = പ്രൊഫഷണൽ അനുഭവ വർഷങ്ങൾ
