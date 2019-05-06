@@ -2,10 +2,21 @@
   display: flex;
   flex-direction: column;
   border-radius: var(--radius);
-  color: var(--color);
+
+  /* color: var(--color); */
   overflow: hidden;
   margin: 0.5rem;
   transform: scale(1);
+}
+
+.scan-res.breach-card {
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.scan-res .breach-card-title-wrapper {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 a.breach-card:focus,
@@ -15,17 +26,23 @@ a.latest-breach-link {
   box-shadow: none;
 }
 
+.latest-breach-link {
+  color: var(--blue4);
+}
+
 .breach-card-title-wrapper {
-  padding: var(--margin) var(--padding);
+  padding: var(--margin);
   justify-content: space-between;
   align-content: center;
+  width: 100%;
 }
 
 .breach-info-wrapper {
   height: 100%;
   justify-content: space-between;
-  padding: var(--margin) var(--padding) var(--padding) var(--padding);
-  background-color: rgba(255, 255, 255, 1);
+  padding: var(--margin);
+
+  /* background-color: rgba(255, 255, 255, 1); */
 }
 
 .breach-logo {
@@ -34,13 +51,7 @@ a.latest-breach-link {
 }
 
 .demi.key {
-  color: var(--color);
   font-size: 0.9rem;
-}
-
-.breach-title {
-  color: rgba(255, 255, 255, 1);
-  margin: auto auto auto 0;
 }
 
 .breach-card-link-wrap {
@@ -72,15 +83,6 @@ a.latest-breach-link {
 .email-card-breach-wrapper {
   border-radius: var(--radius);
   overflow: hidden;
-  margin: var(--margin) 0;
-}
-
-.email-card-breach-wrapper .breach-card-title-wrapper {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
-.breach-title.demi.ec {
-  color: var(--color);
 }
 
 a.breach-card:hover {
@@ -88,8 +90,8 @@ a.breach-card:hover {
 }
 
 .two-up {
-  flex: 0 1 47%;
-  margin: 1rem 0.5rem;
+  flex: 1 1 45%;
+  margin: 1rem;
 }
 
 .three-up {
@@ -102,16 +104,26 @@ a.breach-card:hover {
     max-width: 48%;
     flex: 1 1 48%;
   }
+
+  .breach-card.ec.two-up {
+    flex: 1 1 100%;
+  }
 }
 
 @media screen and (max-width: 800px) {
   .breach-card {
-    margin: 1rem auto;
+    margin: 0.5rem var(--margin);
   }
 
   .two-up,
   .three-up {
     max-width: 100%;
     flex: 1 1 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .breach-card {
+    margin: 0.5rem 0;
   }
 }

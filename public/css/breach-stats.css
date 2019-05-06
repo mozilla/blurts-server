@@ -1,50 +1,141 @@
 .breach-stat-number {
+  font-size: 1.35rem;
+  margin-right: 0.15rem;
+  min-width: 2rem;
+}
+
+.dash-stats {
+  background-color: rgba(255, 255, 255, 0);
+  overflow: hidden;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.breach-stat-span-wrapper {
+  min-height: 1.65rem;
+  display: flex;
   align-items: center;
-  font-size: 1.75rem;
-  width: 4rem;
-  height: 3rem;
-  justify-content: center;
-  border-right: 1px solid var(--borderColor);
-  margin: 0.15rem;
-}
-
-.stat-subhead {
-  font-size: 0.7rem;
-}
-
-.stat-headline {
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-size: 0.8rem;
+  margin: auto auto auto 0;
 }
 
 .breach-stats {
-  background-color: rgba(255, 255, 255, 0);
-  border: 1px solid var(--borderColor);
-  border-radius: var(--radius);
-  overflow: hidden;
   display: flex;
-  flex-direction: column-reverse;
-  margin: auto;
-  width: 100%;
-  max-width: 360px;
-}
-
-.breach-stats > * {
-  margin-bottom: 0;
+  flex-direction: row-reverse;
+  align-items: stretch;
 }
 
 .breach-stat-row {
-  width: 100%;
-  border-bottom: 1px solid var(--borderColor);
-}
-
-.breach-stat-row.flx:first-of-type {
-  border-bottom: 0;
-}
-
-.breach-stat-label {
-  padding-left: 1rem;
-  justify-content: center;
   flex-direction: column;
+  padding: 0.5rem var(--padding);
+}
+
+.stat-row-title-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  position: relative;
+}
+
+.toggle.breach-stat-toggle {
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0;
+  width: 100%;
+  height: 1.5rem;
+  margin: 0;
+}
+
+.breach-stat-toggle svg.toggle-down {
+  position: relative;
+  margin: 0;
+}
+
+.breach-stat-number.passwords {
+  color: var(--orange6);
+}
+
+.breach-stat-number.numBreaches {
+  color: var(--blue5);
+}
+
+.breach-stat-number.monitoredEmails {
+  color: var(--violet5);
+}
+
+.stat-headline-list-wrapper {
+  margin-left: 0.5rem;
+  color: var(--paragraphColor);
+  font-weight: 500;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.email-affected,
+.stat-headline {
+  color: var(--color);
+}
+
+.stat-list-info {
+  width: 100%;
+  visibility: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.1s ease-in-out;
+}
+
+.breach-stat-row.active .stat-list-info {
+  padding-top: 0.25rem;
+  opacity: 1;
+  visibility: visible;
+  max-height: 1000px;
+  overflow: scroll;
+  transition: all 0.1s ease-in-out;
+}
+
+.breach-stat-row.inactive:hover {
+  background-color: rgba(238, 238, 238, 0.8);
+  transition: background-color 0.15s ease-in-out;
+}
+
+svg.breach-stat.plus-sign {
+  transform: scale(1) rotate(0deg);
+  transition: transform 0.15s ease-in-out;
+}
+
+svg.breach-stat.plus-sign path {
+  fill: var(--paragrahColor);
+}
+
+.breach-stat-row.active svg {
+  transform: rotate(45deg);
+  transition: transform 0.15s ease-in-out;
+}
+
+button.numBreaches {
+  display: none !important;
+}
+
+p.affected-account-breach-title,
+p.verified-email-list {
+  font-weight: 400;
+  margin: 0.25rem 0;
+  color: #5f6168;
+}
+
+p.email-affected {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+@media screen and (max-width: 600px) {
+  .welcome-back {
+    font-size: 1.25rem;
+  }
+
+  .dash-stats {
+    font-size: 0.85rem;
+  }
 }

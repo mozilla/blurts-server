@@ -12,18 +12,18 @@ const HIBP = require("../hibp");
 const sha1 = require("../sha1-utils");
 
 
-function _requireSessionUser(req) {
+function _requireSessionUser(req,res) {
   if (!req.session.user) {
-    throw new FluentError("must-be-signed-in");
+    return res.redirect("https://accounts.firefox.com/");
   }
   return req.session.user;
 }
 
 function removeEmail(req, res) {
-  // console.log(req.body.emailId);
+  const emailId = req.body.emailId;
 
-  // Remove secondary email
-  return res.json("Email is removed");
+  DB.removeOneSecondaryEmail(emailId);
+  res.redirect("/user/preferences");
 }
 
 function resendEmail(req, res) {
@@ -72,10 +72,7 @@ async function add(req, res) {
     }
   );
 
-
-  res.send({
-    title: req.fluentFormat("user-add-title"),
-  });
+  res.redirect("/user/preferences");
 }
 
 async function bundleVerifiedEmails(email, emailSha1, ifPrimary, id, verificationStatus, allBreaches) {
@@ -94,7 +91,7 @@ async function bundleVerifiedEmails(email, emailSha1, ifPrimary, id, verificatio
 
 async function getAllEmailsAndBreaches(user, allBreaches) {
   const monitoredEmails = await DB.getUserEmails(user.id);
-  const verifiedEmails = [];
+  let verifiedEmails = [];
   const unverifiedEmails = [];
   verifiedEmails.push(await bundleVerifiedEmails(user.primary_email, user.primary_sha1, true, user.id, user.primary_verified, allBreaches));
   for (const email of monitoredEmails) {
@@ -105,29 +102,29 @@ async function getAllEmailsAndBreaches(user, allBreaches) {
       unverifiedEmails.push(email);
     }
   }
+  verifiedEmails = getNewBreachesForEmailEntriesSinceDate(verifiedEmails, user.breaches_last_shown);
   return { verifiedEmails, unverifiedEmails };
 }
 
 
 function getNewBreachesForEmailEntriesSinceDate(emailEntries, date) {
-  const breaches = new Set();
   for (const emailEntry of emailEntries) {
     const newBreachesForEmail = emailEntry.breaches.filter(breach => breach.AddedDate >= date);
+
     for (const newBreachForEmail of newBreachesForEmail) {
-      breaches.add(newBreachForEmail);
+      newBreachForEmail["NewBreach"] = true; // add "NewBreach" property to the new breach.
+      emailEntry["hasNewBreaches"] = newBreachesForEmail.length; // add the number of new breaches to the email
     }
   }
-  return breaches;
+  return emailEntries;
 }
 
 
 async function getDashboard(req, res) {
-  _requireSessionUser(req);
+  _requireSessionUser(req, res);
   const allBreaches = req.app.locals.breaches;
   const user = req.session.user;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
-
-  const newBreachesFound = getNewBreachesForEmailEntriesSinceDate(verifiedEmails, user.breaches_last_shown);
 
   req.session.user = await DB.setBreachesLastShownNow(user);
 
@@ -135,7 +132,6 @@ async function getDashboard(req, res) {
     title: req.fluentFormat("user-dash"),
     verifiedEmails,
     unverifiedEmails,
-    newBreachesFound,
     whichPartial: "dashboards/breaches-dash",
   });
 }
@@ -169,7 +165,7 @@ async function _verify(req) {
 
 
 async function verify(req, res) {
-  _requireSessionUser(req);
+  _requireSessionUser(req, res);
   if (!req.query.token) {
     throw new FluentError("user-verify-token-error");
   }

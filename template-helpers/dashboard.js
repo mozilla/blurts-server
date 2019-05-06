@@ -9,7 +9,14 @@ function getBreachesForEachEmail(args) {
 
   verifiedEmails.forEach(email => {
     const breachCards = makeBreachCards(email.breaches, locales);
+    email.foundBreaches = {};
+    email.foundBreaches.firstFourBreaches = breachCards.slice(0, 4);
+    email.foundBreaches.remainingBreaches = breachCards.slice(5, breachCards.length);
+    email.foundBreaches.cardType = "two-up ec";
     email.breaches = breachCards;
+    if (email.hasNewBreaches) {
+      email.newBreachMessage = LocaleUtils.fluentFormat(locales, "new-breaches-found", { breachCount: email.hasNewBreaches });
+    }
   });
   return verifiedEmails;
 }

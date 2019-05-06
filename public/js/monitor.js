@@ -1,5 +1,4 @@
 "use strict";
-
 /* global sendPing */
 /* global getFxaUtms */
 /* global hashEmailAndSend */
@@ -94,11 +93,15 @@ function addFormListeners() {
 function handleFormSubmits(formEvent) {
   formEvent.preventDefault();
   const thisForm = formEvent.target;
-  const email = thisForm.email.value.trim();
-  thisForm.email.value = email;
+  let email = "";
 
   sendPing(thisForm, "Submit");
-  if (!email || !isValidEmail(email)) {
+
+  if (thisForm.email) {
+    email = thisForm.email.value.trim();
+    thisForm.email.value = email;
+  }
+  if (thisForm.email && !isValidEmail(email)) {
     sendPing(thisForm, "Failure");
     thisForm.classList.add("invalid");
     return;
@@ -107,11 +110,8 @@ function handleFormSubmits(formEvent) {
     hashEmailAndSend(formEvent);
     return;
   }
-  if (formEvent.target.id === "add-another-email-form") {
-    formEvent.target.submit();
-    return;
-  }
-  return;
+  thisForm.classList.add("loading-data");
+  return thisForm.submit();
 }
 
 //re-enables inputs and clears loader
@@ -136,31 +136,39 @@ function restoreInputs() {
 // };
 
 
-function toggleMobileMenu() {
-  document.body.classList.toggle("menu-open");
-  document.body.classList.toggle("menu-closed");
-  // animateMobileMenuIcon();
-}
+// function toggleMobileMenu() {
+//   document.body.classList.toggle("menu-open");
+//   document.body.classList.toggle("menu-closed");
+//   // animateMobileMenuIcon();
+// }
 
 
 function toggleMobileFeatures() {
-  const page = document.body;
-  if (window.innerWidth > 575) {
-    if (document.body.classList.contains("menu-open")) {
-      document.body.classList.remove("menu-open");
+  // const page = document.body;
+  if (window.innerWidth > 800) {
+    const emailCards = document.querySelectorAll(".col-8.email-card:not(.zero-breaches)");
+    // if (document.body.classList.contains("menu-open")) {
+    //   document.body.classList.remove("menu-open");
       // animateMobileMenuIcon();
+      emailCards.forEach(card => {
+        card.classList.add("active");
+      });
       return;
     }
-    document.body.classList.remove("enable-mobile");
-    return;
-  }
-  page.classList.add("enable-mobile");
-  if (document.getElementById("menu-icon-wrapper")) {
-    document.body.classList.add("menu-closed");
-    document.getElementById("menu-icon-wrapper").addEventListener("click", toggleMobileMenu);
-    document.getElementById("bg-screen").addEventListener("click", toggleMobileMenu);
-  }
-}
+
+    const closeActiveEmailCards = document.querySelectorAll(".col-8.email-card.active");
+      closeActiveEmailCards.forEach(card => {
+        card.classList.remove("active");
+      });
+    }
+    // document.body.classList.remove("enable-mobile");
+    // return;
+  // page.classList.add("enable-mobile");
+  // if (document.getElementById("menu-icon-wrapper")) {
+  //   document.body.classList.add("menu-closed");
+  //   document.getElementById("menu-icon-wrapper").addEventListener("click", toggleMobileMenu);
+  //   document.getElementById("bg-screen").addEventListener("click", toggleMobileMenu);
+  // }
 
 
 document.addEventListener("touchstart", function(){}, true);
@@ -184,7 +192,7 @@ window.addEventListener("pageshow", function() {
   if (win.location.search.includes("utm_") && win.history.replaceState) {
     win.history.replaceState({}, "", win.location.toString().replace(/[?&]utm_.*/g, ""));
   }
-  // toggleMobileFeatures();
+  toggleMobileFeatures();
   document.forms ? (restoreInputs(), addFormListeners()) : null;
 });
 

@@ -119,9 +119,7 @@ const HIBP = {
         foundBreaches = allBreaches.filter(breach => breachedAccount.websites.includes(breach.Name));
         foundBreaches = this.filterBreaches(foundBreaches);
         foundBreaches.sort( (a,b) => {
-          const oldestBreach = new Date(a.BreachDate);
-          const newestBreach = new Date(b.BreachDate);
-          return newestBreach-oldestBreach;
+          return new Date(b.AddedDate) - new Date(a.AddedDate);
         });
         break;
       }

@@ -1,0 +1,371 @@
+.col-8.email-card {
+  padding: var(--margin) 0;
+}
+
+.email-card.preferences {
+  padding: 0;
+}
+
+.email-card.zero-breaches {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.e-info { /* email address info */
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.e-address {
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin-right: 0.5rem;
+}
+
+.e-num-breaches {
+  font-weight: 400;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.e-num-breaches .bold {
+  color: var(--violet5);
+}
+
+.email-card-breach-wrapper {
+  padding: 0 var(--margin);
+  display: flex;
+  flex: 1 1 50%;
+  min-width: 250px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-items: stretch;
+}
+
+.email-card.active .email-card-breach-wrapper {
+  padding: var(--margin);
+}
+
+.breach-title-wrapper.ec {
+  border-bottom: 1px solid var(--borderColor);
+}
+
+/* email breach lists */
+
+.e-breach-list {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+  visibility: hidden;
+  opacity: 0;
+  max-height: 0;
+  transition: all 0.3s ease;
+}
+
+.e-breach-list .show-remaining-breaches:focus,
+.e-breach-list .show-remaining-breaches {
+  border-width: 0;
+}
+
+.show-remaining-breaches {
+  opacity: 1;
+  margin: 1rem auto;
+  display: flex;
+  padding: 0.5rem 1rem;
+  background-color: #eee;
+  border-radius: 0.25rem;
+  transform: scale(1);
+  transition: opacity 0.15s ease-in-out, transform 0.15s ease 0.2s;
+}
+
+.show-remaining-breaches.hide {
+  padding: 0;
+  opacity: 0;
+  margin: 0 auto;
+  transform: scale(0);
+}
+
+.email-card.active .e-breach-list {
+  visibility: visible;
+  opacity: 1;
+  max-height: 20000px;
+  transition: all 0.3s ease;
+}
+
+/* new breaches */
+.new-breach-message-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.new-breach-message-wrapper.hide-mobile {
+  margin-right: var(--margin);
+}
+
+.new-breach-icon {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+}
+
+.new-breach-message {
+  color: var(--alertRed);
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.breach-card.ec.new-breach {
+  border: 1px solid var(--alertRed);
+}
+
+.breach-card.ec {
+  border: 1px solid var(--borderColor);
+  background-color: rgba(255, 255, 255, 1);
+  color: var(--color);
+}
+
+.e-toggle-info-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--margin) var(--padding);
+  pointer-events: none;
+  position: relative;
+}
+
+.svg-wrap {
+  border-width: 0;
+  border-radius: 0.25rem;
+  padding: 0.5rem 0 0 0;
+  pointer-events: all;
+  text-align: left;
+}
+
+/* preferences buttons/options */
+.remove-email .x-close {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  pointer-events: none;
+}
+
+.remove-email .x-close path {
+  fill: var(--color);
+}
+
+.change-primary-email {
+  background-color: transparent;
+  color: var(--purple5);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(149, 43, 185, 0.27);
+}
+
+.change-primary-email:hover {
+  background-color: rgba(149, 43, 185, 0.1);
+}
+
+.button-resend-wrapper {
+  margin-top: 0.5rem;
+  align-items: center;
+}
+
+.change-primary-email,
+.remove-fxm,
+.resend-email {
+  pointer-events: all;
+}
+
+.resend-email {
+  padding: 0.5rem 0;
+  opacity: 1;
+  transition: opacity 0.15s ease-in-out;
+}
+
+.email-sent {
+  opacity: 0.5;
+  transition: opacity 0.15s ease-in-out;
+}
+
+.sending {
+  padding-left: 1rem;
+}
+
+.remove-fxm:hover,
+.remove-fxm:focus,
+.toggle.svg-wrap:focus,
+.toggle.svg-wrap:hover,
+.resend-email:hover,
+.resend-email:focus {
+  outline: none;
+  border: none;
+  text-decoration: underline;
+  box-shadow: none;
+  text-align: left;
+  pointer-events: all;
+}
+
+.remove-fxm,
+.resend-email {
+  text-align: left;
+  padding: 0;
+  border-width: 0;
+}
+
+.remove-fxm:hover,
+.remove-fxm:focus,
+.resend-email:hover,
+.resend-email:focus {
+  border-width: 0;
+}
+
+.toggle {
+  height: 100%;
+  transition: all 0.1s ease;
+  width: 100%;
+}
+
+.show-email-breaches.toggle {
+  pointer-events: none; /* prevent toggling on desktop */
+  display: none;
+  right: 0;
+  left: 0;
+}
+
+svg.toggle-down {
+  border-radius: 50%;
+  margin: auto;
+  right: var(--padding);
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+.email-card .toggle,
+svg.toggle-down {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+svg.toggle-down path {
+  fill: var(--color);
+}
+
+.email-card.active .toggle-down {
+  transform: rotate(180deg);
+  transition: all 0.1s ease;
+}
+
+form.remove-email {
+  pointer-events: all;
+  padding: 0;
+}
+
+form.remove-email,
+input.remove-email-submit {
+  border: none !important;
+  border-radius: 50% !important;
+  height: 1.5rem !important;
+  width: 1.5rem !important;
+  position: relative;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+input.remove-email-submit {
+  background-color: transparent !important;
+}
+
+@media screen and (max-width: 800px) {
+  .email-card {
+    margin: 0.5rem 0;
+  }
+
+  .email-card.new-breaches {
+    border: 1px solid #ff4f5e99;
+    transition: border 0.25s ease-in-out;
+  }
+
+  .email-card.active.new-breaches {
+    border: 1px solid var(--borderColor);
+    transition: border 0.25s ease-in-out;
+  }
+
+  .e-info {
+    flex-direction: column;
+  }
+
+  .e-num-breaches {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--textLight);
+  }
+
+  .toggle.show-email-breaches {
+    pointer-events: all;
+    display: flex;
+  }
+
+  .email-card-breach-wrapper {
+    padding: var(--margin) 0;
+    flex: 1 1 100%;
+  }
+
+  .ec.breach-card {
+    flex: 1 1 100%;
+  }
+
+  .email-card.active .email-card-breach-wrapper {
+    padding: var(--margin) 0;
+  }
+
+  .col-8.email-card {
+    padding: 0;
+  }
+
+  .new-breach-message-wrapper.show-mobile {
+    display: flex;
+    margin: 1rem 1rem 0 auto;
+  }
+
+  .email-card.active .e-breach-list {
+    padding: 0 1rem 1rem 1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .e-address,
+  .radio-label {
+    font-size: 0.9rem;
+  }
+
+  .e-num-breaches,
+  .resend-email,
+  .change-primary-email {
+    font-size: 0.8rem;
+  }
+
+  .e-toggle-info-wrapper {
+    flex-wrap: wrap;
+  }
+
+  .change-primary-email {
+    width: 100%;
+    margin: var(--margin) 0 0 0;
+    text-align: center;
+  }
+
+  .resend-email:hover {
+    background-color: transparent;
+  }
+}

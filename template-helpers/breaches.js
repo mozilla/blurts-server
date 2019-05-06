@@ -8,6 +8,7 @@ function getLocalizedBreachCardStrings(locales) {
   // casing to reflect HIBP
   return {
     "AddedDate": LocaleUtils.fluentFormat(locales, "breach-added"),
+    "BreachDate": LocaleUtils.fluentFormat(locales, "breach-discovered"),
     "CompromisedAccounts": LocaleUtils.fluentFormat(locales, "compromised-accounts"),
     "CompromisedData": LocaleUtils.fluentFormat(locales, "compromised-data"),
     "MoreInfoLink": LocaleUtils.fluentFormat(locales, "more-about-this-breach"),
@@ -17,14 +18,6 @@ function getLocalizedBreachCardStrings(locales) {
 function makeBreachCards(breaches, locales) {
   const breachCardStrings = getLocalizedBreachCardStrings(locales);
   const formattedBreaches = [];
-
-  if (breaches.length > 1) {
-    breaches.sort((a,b) => {
-      const oldestBreach = new Date(a.BreachDate);
-      const newestBreach = new Date(b.BreachDate);
-      return newestBreach-oldestBreach;
-    });
-  }
 
   for (const breach of breaches) {
     const breachCard = JSON.parse(JSON.stringify(breach));
@@ -78,17 +71,23 @@ function allBreaches(allBreaches, options) {
 function lastAddedBreach(options) {
   const locales = options.data.root.req.supportedLocales;
   let latestBreach = [options.data.root.latestBreach];
-
   latestBreach = makeBreachCards(latestBreach, locales);
+  latestBreach[0].DataClasses = "";
   return latestBreach;
 }
 
 function getFoundBreaches(args) {
+  const foundBreaches = {};
   const locales = args.data.root.req.supportedLocales;
-  let foundBreaches = args.data.root.foundBreaches;
+  let userBreaches = args.data.root.foundBreaches;
 
-  foundBreaches = makeBreachCards(foundBreaches, locales);
-  return foundBreaches;
+  userBreaches = makeBreachCards(userBreaches, locales);
+  foundBreaches.firstFourBreaches = userBreaches.slice(0, 4);
+  if (userBreaches.length > 4) {
+    foundBreaches.remainingBreaches = userBreaches.slice(5, foundBreaches.length);
+  }
+  foundBreaches.cardType = "two-up drop-shadow";
+  return args.fn(foundBreaches);
 }
 
 
