@@ -36,4 +36,11 @@ exports.TEST_EMAIL_ADDRESSES = {
     verification_token: "0e2cb147-2041-4e5b-8ca9-494e773b2cf2",
     verified: true,
   },
+  unverified_email_on_firefox_account: {
+    subscriber_id: 12345,
+    sha1: getSha1("firefoxaccount-tertiary@test.com"),
+    email: "firefoxaccount-tertiary@test.com",
+    verification_token: "0e2cb147-2041-4e5b-8ca9-494e773b2cf3",
+    verified: false,
+  },
 };

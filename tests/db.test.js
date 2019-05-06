@@ -37,6 +37,19 @@ test("getSubscribersByHashes accepts hashes and only returns verified subscriber
   }
 });
 
+
+test("getEmailAddressesByHashes accepts hashes and only returns verified email_addresses", async () => {
+  const testHashes = [
+    "firefoxaccount-secondary@test.com",
+    "firefoxaccount-tertiary@test.com",
+  ].map(email => getSha1(email));
+  const emailAddresses = await DB.getEmailAddressesByHashes(testHashes);
+  for (const emailAddress of emailAddresses) {
+    expect(emailAddress.verified).toBeTruthy();
+  }
+});
+
+
 test("addSubscriberUnverifiedEmailHash accepts user and email and returns unverified email_address with sha1 hash and verification token", async () => {
   const testEmail = "test@test.com";
   // https://stackoverflow.com/a/13653180
