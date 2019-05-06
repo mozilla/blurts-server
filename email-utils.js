@@ -109,7 +109,7 @@ const EmailUtils = {
     let url = new URL(`${AppConstants.SERVER_URL}/user/unsubscribe`);
     const token = (subscriber.hasOwnProperty("verification_token")) ? subscriber.verification_token : subscriber.primary_verification_token;
     const hash = (subscriber.hasOwnProperty("sha1")) ? subscriber.sha1 : subscriber.primary_sha1;
-    url.searchParams.append("token", encodeURIComponent(token))
+    url.searchParams.append("token", encodeURIComponent(token));
     url.searchParams.append("hash", encodeURIComponent(hash));
     url = this.appendUtmParams(url, "unsubscribe", emailType);
     return url;
