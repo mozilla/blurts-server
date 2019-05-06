@@ -1,10 +1,25 @@
-.found-breaches {
+.col-9.sign-up-wrapper,
+.col-9.found-breaches {
+  padding: 0;
+  flex-direction: row;
   display: inline-flex;
-  padding: 0 var(--padding);
 }
 
 .found-breaches,
 .show-additional-breaches {
   flex-wrap: wrap;
   justify-content: space-between;
+}
+
+.row.scan-results,
+.user-found-breaches {
+  margin: 0 auto;
+}
+
+.fb-res-headline {
+  max-width: 600px;
+}
+
+.scan-res-subhead {
+  margin: var(--margin) auto 0 0;
 }

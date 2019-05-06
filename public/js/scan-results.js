@@ -2,9 +2,10 @@
 
 (() => {
 
-  function showAdditionalBreaches() {
-    const showBreachesButton = document.getElementById("show-all-breaches-wrapper");
-    const additionalBreaches = document.getElementById("additional-breaches");
+  function showRemainingBreaches(e) {
+    const showBreachesButton = e.target;
+    const additionalBreaches = showBreachesButton.nextElementSibling;
+
     [showBreachesButton, additionalBreaches].forEach(el => {
       ["show", "hide"].forEach(className => {
         el.classList.toggle(className);
@@ -12,10 +13,10 @@
     });
   }
 
-  const showAllBreaches = document.getElementById("show-all-breaches");
+  const showHiddenBreaches = document.querySelectorAll(".show-remaining-breaches");
 
-  if (showAllBreaches) {
-    showAllBreaches.addEventListener("click", showAdditionalBreaches);
+  for (const btn of showHiddenBreaches) {
+    btn.addEventListener("click", showRemainingBreaches);
   }
 
   if (document.getElementById("scannedEmail")) {

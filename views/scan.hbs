@@ -1,36 +1,29 @@
-<main class="container">
-  <div class="row scan-results">
+<main class="container bg-ink-light clear-header">
+  <div class="row jst-cntr flx-col scan-results">
 
-    <div class="col-6 headline-col">
+    <div class="col-9 headline-col no-vertical-padding">
       {{#if scannedEmailId }} <!-- show the email address that was scanned -->
-        <p id="scanned-email-address">Results for <span id="scannedEmail" data-scanned-email-id={{ scannedEmailId }} class="bold"></span></p>
+        <p id="scanned-email-address" class="scanned-email-address">Results for <span id="scannedEmail" data-scanned-email-id={{ scannedEmailId }} class="bold"></span></p>
       {{/if}}
-      <h2 class="headline scan-results-headline">{{{ fluentNestedBold "guest-scan-results-headline" breachCount=foundBreaches.length }}}</h2>
+      {{#if specificBreach}}
+        {{#getScanResultsHeadline }}
+          <h2 class="skinny-headline scan-results-headline fb-res-headline">{{{ this.headline }}}</h2>
+          {{#if this.subhead }}
+            <h3 class="subhead scan-res-subhead">{{{ this.subhead }}}</h2>
+          {{/if}}
+        {{/getScanResultsHeadline}}
+      {{else}}
+        <h2 class="skinny-headline scan-results-headline">{{{ fluentNestedBold "guest-scan-results-headline" breachCount=foundBreaches.length }}}</h2>
+      {{/if}}
     </div>
   </div>
 
-  <div class="row">
-    <div class="found-breaches">
+  <div class="row jst-cntr user-found-breaches">
+    <div class="col-9 found-breaches">
       <!-- foundBreaches 1-4 -->
-      {{#eachFromTo (getFoundBreaches) 0 4}}
-        {{> breach-card cardClass="two-up drop-shadow"}}
-      {{/eachFromTo}}
-
-      {{#ifCompare foundBreaches.length ">" 4}}
-        <!-- show all breaches button -->
-        <div id="show-all-breaches-wrapper" class="col-12 show">
-          <p class="txt-cntr">Currently showing <span class="bold">4</span> of <span class="bold">{{ foundBreaches.length }}</span> breaches.</p>
-          <button id="show-all-breaches" class="util-btn light-btn" data-event-category="Show All Breaches">{{ getString "show-all-breaches" }}</button>
-        </div>
-
-      <!-- foundBreaches 4-foundBreaches.length -->
-        <div id="additional-breaches" class="show-additional-breaches hide flx">
-          {{#eachFromTo (getFoundBreaches) 4 foundBreaches.length}}
-            {{> breach-card cardClass="two-up drop-shadow"}}
-          {{/eachFromTo}}
-        </div>
-
-      {{/ifCompare}}
+      {{#getFoundBreaches}}
+        {{> breach-groups cardType="two-up drop-shadow scan-res"}}
+      {{/getFoundBreaches}}
     </div>
   </div>
 </main>
