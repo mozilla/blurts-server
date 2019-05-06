@@ -2,7 +2,7 @@
 
 const got = require("got");
 
-const { TEST_DATA } = require("../db/seeds/test_subscribers");
+const { TEST_SUBSCRIBERS } = require("../db/seeds/test_subscribers");
 const FXA = require("../lib/fxa");
 
 
@@ -10,7 +10,7 @@ jest.mock("got");
 
 
 test("revokeOAuthToken calls oauth destroy with fxa_refresh_token", async () => {
-  const token = TEST_DATA.firefoxaccount.fxa_refresh_token;
+  const token = TEST_SUBSCRIBERS.firefox_account.fxa_refresh_token;
 
   await FXA.revokeOAuthToken(token);
 

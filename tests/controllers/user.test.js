@@ -9,7 +9,7 @@ const getSha1 = require("../../sha1-utils");
 const user = require("../../controllers/user");
 
 const { testBreaches } = require ("../test-breaches");
-const { TEST_DATA } = require("../../db/seeds/test_subscribers");
+const { TEST_SUBSCRIBERS } = require("../../db/seeds/test_subscribers");
 
 require("../resetDB");
 
@@ -81,7 +81,7 @@ test("user add request with invalid email throws error", async () => {
 
 
 test("user verify request with valid token verifies user", async () => {
-    const validToken = TEST_DATA.unverified_email.primary_verification_token;
+    const validToken = TEST_SUBSCRIBERS.unverified_email.primary_verification_token;
     const testSubscriberEmail = "firefoxaccount@test.com";
     const testSubscriber = await DB.getSubscriberByEmail(testSubscriberEmail);
 
@@ -103,7 +103,7 @@ test("user verify request with valid token verifies user", async () => {
 
 
 test("user verify request for already verified user doesn't send extra email", async () => {
-  const alreadyVerifiedToken = TEST_DATA.verified_email.primary_verification_token;
+  const alreadyVerifiedToken = TEST_SUBSCRIBERS.verified_email.primary_verification_token;
   // Set up mocks
   EmailUtils.sendEmail = jest.fn();
   mockRequest.query = { token: alreadyVerifiedToken };
@@ -141,8 +141,8 @@ test("user verify request with invalid token returns error", async () => {
 
 test("user unsubscribe GET request with valid token and hash returns 200 without error", async () => {
   // from db/seeds/test_subscribers.js
-  const subscriberToken = TEST_DATA.firefox_account.primary_verification_token;
-  const subscriberHash = getSha1(TEST_DATA.firefox_account.primary_email);
+  const subscriberToken = TEST_SUBSCRIBERS.firefox_account.primary_verification_token;
+  const subscriberHash = getSha1(TEST_SUBSCRIBERS.firefox_account.primary_email);
 
   // Set up mocks
   const req = { fluentFormat: jest.fn(), query: { token: subscriberToken, hash: subscriberHash } };
@@ -170,8 +170,8 @@ test("user unsubscribe GET request with invalid token returns error", async () =
 
 
 test("user unsubscribe POST request with valid hash and token unsubscribes user and calls FXA.revokeOAuthToken", async () => {
-  const validToken = TEST_DATA.unverified_email.primary_verification_token;
-  const validHash = getSha1(TEST_DATA.unverified_email.primary_email);
+  const validToken = TEST_SUBSCRIBERS.unverified_email.primary_verification_token;
+  const validHash = getSha1(TEST_SUBSCRIBERS.unverified_email.primary_email);
 
   // Set up mocks
   const req = { fluentFormat: jest.fn(), body: { token: validToken, emailHash: validHash }, session: {}};
