@@ -38,17 +38,15 @@ test("notify POST with invalid token should throw error", async() => {
 });
 
 
-test("notify POST with breach, subscriber hash prefix and suffixes should call sendEmail and respond with 200", async () => {
+async function checkNotifyCallsEverythingItShould(testEmail) {
   jest.mock("../../email-utils");
   EmailUtils.sendEmail = jest.fn();
   LocaleUtils.fluentFormat = jest.fn();
-  const testEmail = "verifiedemail@test.com";
+  HIBPLib.getBreachesForEmail = jest.fn();
+
   const testHash = sha1(testEmail);
   const testPrefix = testHash.slice(0, 6).toUpperCase();
   const testSuffix = testHash.slice(6).toUpperCase();
-
-  HIBPLib.getBreachesForEmail = jest.fn();
-
   const mockRequest = { token: AppConstants.HIBP_NOTIFY_TOKEN, body: { hashPrefix: testPrefix, hashSuffixes: [testSuffix], breachName: "Test" }, app: { locals: { breaches: testBreaches, AVAILABLE_LANGUAGES: ["en"] } } };
   const mockResponse = { status: jest.fn(), json: jest.fn() };
 
@@ -69,8 +67,18 @@ test("notify POST with breach, subscriber hash prefix and suffixes should call s
   expect(mockStatusCallArgs[0]).toBe(200);
   const mockJsonCallArgs = mockResponse.json.mock.calls[0];
   expect(mockJsonCallArgs[0].info).toContain("Notified");
+}
+
+test("good notify POST with breach, subscriber hash prefix and suffixes should call sendEmail and respond with 200", async () => {
+  const testEmail = "verifiedemail@test.com";
+  await checkNotifyCallsEverythingItShould(testEmail);
 });
 
+
+test("good notify POST with breach, secondary email hash prefix and suffixes should call sendEmail and respond with 200", async () => {
+  const testSecondaryEmail = "firefoxaccount-secondary@test.com";
+  await checkNotifyCallsEverythingItShould(testSecondaryEmail);
+});
 
 // TODO: test("notify POST with unknown breach should successfully reload breaches")
 

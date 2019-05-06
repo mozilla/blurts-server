@@ -13,6 +13,18 @@ const mozlog = require("../log");
 const log = mozlog("controllers.hibp");
 
 
+// Get address and language from either subscribers or
+// email_addresses fields
+function getAddressAndLanguageForEmail(recipient) {
+  let email = recipient.email;
+  if (!recipient.hasOwnProperty("email")) {
+    // This is a recipient from subscribers table
+    email = recipient.primary_email;
+  }
+  const signupLanguage = recipient.signup_language;
+  return {email, signupLanguage};
+}
+
 async function notify (req, res) {
   if (!req.token || req.token !== AppConstants.HIBP_NOTIFY_TOKEN) {
     const errorMessage = "HIBP notify endpoint requires valid authorization token.";
@@ -45,45 +57,44 @@ async function notify (req, res) {
 
   const hashes = req.body.hashSuffixes.map(suffix=>reqHashPrefix + suffix.toLowerCase());
   const subscribers = await DB.getSubscribersByHashes(hashes);
+  const emailAddresses = await DB.getEmailAddressesByHashes(hashes);
+  const recipients = subscribers.concat(emailAddresses);
+  log.info("notification", { length: recipients.length, breachAlertName: breachAlert.Name });
 
   const utmID = "breach-alert";
   const scanAnotherEmailHref = EmailUtils.getScanAnotherEmailUrl(utmID);
+  const notifiedRecipients = [];
 
+  for (const recipient of recipients) {
+    log.info("notify", {recipient});
+    const { email, signupLanguage } = getAddressAndLanguageForEmail(recipient);
 
-  log.info("notification", { length: subscribers.length, breachAlertName: breachAlert.Name });
-
-  const notifiedSubscribers = [];
-
-  for (const subscriber of subscribers) {
-    log.info("notify", {subscriber});
-
-    const email = subscriber.email;
-    const requestedLanguage = subscriber.signup_language ? acceptedLanguages(subscriber.signup_language) : "";
+    const requestedLanguage = signupLanguage ? acceptedLanguages(signupLanguage) : "";
     const supportedLocales = negotiateLanguages(
       requestedLanguage,
       req.app.locals.AVAILABLE_LANGUAGES,
       {defaultLocale: "en"}
     );
 
-    if (!notifiedSubscribers.includes(email)) {
+    const subject = LocaleUtils.fluentFormat(supportedLocales, "hibp-notify-email-subject");
+    const template = "default_email";
+    if (!notifiedRecipients.includes(email)) {
       await EmailUtils.sendEmail(
-        email,
-        LocaleUtils.fluentFormat(supportedLocales, "hibp-notify-email-subject"),
-        "default_email",
+        email, subject, template,
         {
           email,
           supportedLocales,
           breachAlert,
           SERVER_URL: req.app.locals.SERVER_URL,
           scanAnotherEmailHref: scanAnotherEmailHref,
-          unsubscribeUrl: EmailUtils.getUnsubscribeUrl(subscriber, utmID),
+          unsubscribeUrl: EmailUtils.getUnsubscribeUrl(recipient, utmID),
           whichView: "email_partials/report",
         },
       );
-      notifiedSubscribers.push(email);
+      notifiedRecipients.push(email);
     }
   }
-  log.info("notified", { length: notifiedSubscribers.length });
+  log.info("notified", { length: notifiedRecipients.length });
   res.status(200);
   res.json(
     {info: "Notified subscribers of breach."}
