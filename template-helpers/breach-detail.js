@@ -85,22 +85,22 @@ function getSensitiveBreachContent(locales, breach) {
 function getTips(locales, breach) {
   const tips = [
     {
-      title: "create-pw",
-      subtitle: "strength-of-your",
-      linkTitle: "how-to-create",
-      href: "/create-strong-passwords",
+      title: "stop-reusing-pw",
+      subtitle: "create-unique-pw",
+      linkTitle: "five-myths",
+      href: "",
     },
     {
-      title: "stop-using",
-      subtitle: "get-help-managing",
-      linkTitle: "why-password-managers",
-      href: "/password-managers",
+      title: "make-new-pw-unique",
+      subtitle: "strength-of-your-pw",
+      linkTitle: "create-strong-passwords",
+      href: "",
     },
     {
       title: "change-pw",
       subtitle: "even-for-old",
-      linkTitle: "what-to-do-after",
-      href: "/what-to-do",
+      linkTitle: "what-to-do-after-breach",
+      href: "",
     },
   ];
   tips.forEach(tip => {

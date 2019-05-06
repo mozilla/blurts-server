@@ -29,6 +29,7 @@ const SesRoutes = require("./routes/ses");
 const OAuthRoutes = require("./routes/oauth");
 const UserRoutes = require("./routes/user");
 const EmailL10nRoutes= require("./routes/email-l10n");
+const BreachRoutes= require("./routes/breach-details");
 
 const log = mozlog("server");
 const app = express();
@@ -172,6 +173,7 @@ app.use("/scan", ScanRoutes);
 app.use("/ses", SesRoutes);
 app.use("/user", UserRoutes);
 (devOrHeroku ? app.use("/email-l10n", EmailL10nRoutes) : null);
+app.use("/breach-details", BreachRoutes);
 app.use("/", HomeRoutes);
 
 app.use(logErrors);
