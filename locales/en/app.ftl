@@ -464,7 +464,7 @@ frequently-asked-questions=Frequently Asked Questions
 
 about-firefox-monitor = About {-product-name}
 mozilla-dot-org = Mozilla.org
-terms-and-privacy = Terms & Privacy
+terms-and-privacy-v2 = Terms & Privacy
 
 preferences = Preferences
 
@@ -484,7 +484,7 @@ fxa-account = {-brand-fxa}
 open-fxa-menu = Open {-brand-fxa} navigation
 
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
-latest-breach= LATEST BREACH ADDED
+latest-breach = LATEST BREACH ADDED
 
 breach-added = Breach reported:
 breach-discovered = Breach discovered:
@@ -536,8 +536,8 @@ delayed-reporting-copy = It can sometimes take months or years for credentials e
 about-fxm-headline = About {-product-name}
 about-fxm-blurb = {-product-name} warns if your online accounts were involved in a 
   data breach. Find out if you’ve been in a data breach, get alerts about new breaches, 
-  and take steps to protect your online accounts. {-product-name} is a service 
-  is provided by {-brand-Mozilla}.
+  and take steps to protect your online accounts. {-product-name} is provided 
+  by {-brand-Mozilla}.
 
 fxm-warns-you = {-product-name} warns you if your email address has been exposed 
   in an online data breach. See if your information has been exposed, learn how 
@@ -545,7 +545,7 @@ fxm-warns-you = {-product-name} warns you if your email address has been exposed
   appears in a new breach.
 
 
-## How FXM Works
+# How Firefox Monitor works
 how-fxm-works = How {-product-name} works
 
 how-fxm-1-headline = Conduct a basic search
@@ -593,8 +593,6 @@ stop-reusing-pw = Stop reusing the same passwords
 create-unique-pw = Create unique passwords and save them somewhere safe, like a password manager.
 five-myths = 5 myths about password managers
 
-show-all-breaches = Show All Breaches
-
 create-a-fxa = Create a {-brand-fxa} for your full report of breaches and to get alerts.
 
 feat-security-tips = Security tips to protect your accounts
@@ -607,18 +605,18 @@ sign-up-for-fxa = Sign up for a {-brand-fxa}
 appears-in-x-breaches =
   { $breachCount ->
         [one] Appears in { $breachCount } known breach.
-       *[other] appears in { $breachCount } known breaches.
+       *[other] Appears in { $breachCount } known breaches.
   }
 
 
 see-if-breached = See if you’ve been in an online data breach.
-check-for-breaches = Check for breaches.
+check-for-breaches = Check for breaches
 find-out-what-hackers-know = Find out what hackers already know about you. Learn how to stay a step ahead of them.
 search-for-your-email = Search for your email address in public data breaches back to 2007.
 
 back-to-top = Back to Top
 
-comm-opt-0 = Email me if one of my email addreseses below appears in a data breach.
+comm-opt-0 = Email me if one of my email addresses below appears in a data breach.
 comm-opt-1 = Send all breach alerts to { $primaryEmail }.
 
 stop-monitoring-this = Stop monitoring this email.
@@ -685,7 +683,6 @@ new-breaches-found =
   }
 
 sign-up-headline-1 = Get ongoing alerts with a {-brand-fxa}.
-sign-up-for-alerts = Sign up for Alerts
 account-not-required = {-brand-name} browser not required for a {-brand-fxa}. You may receive info about {-brand-Mozilla} services.
 
 
@@ -695,13 +692,12 @@ was-your-info-exposed = Was your info exposed in the { $breachName } data breach
 find-out-if = Find out if your data was exposed in this breach.
 
 fb-not-comp = This email did not appear in the { $breachName } breach.
-fb-comp = This email appeared in { $breachCount } known data breaches, including { $breachName }. 
 fb-comp-only = This email appeared in the { $breachCount } breach.
 
-other-breaches-found = However, it did appear in 
+other-breaches-found =
   { $breachCount ->
-    [one] { $breachCount } other breach.
-   *[two] { $breachCount } other breaches. 
+    [one] However, it did appear in { $breachCount } other breach.
+   *[other] However, it did appear in { $breachCount } other breaches. 
   }
 
 fb-comp-and-others = This email appeared in { $breachCount } known data breaches, including { $breachName }.
@@ -711,9 +707,9 @@ no-results-blurb = Sorry, that breach is not in our database.
 all-breaches-headline = All breaches in {-product-name}
 search-breaches = Search Breaches
 
-# Tells the user which breach types are currently being displayed. In page, it would look like "Showing: All Breaches"
+# "Appears in-page as: Showing: All Breaches"
 currently-showing = Showing:
-all-breaches= All Breaches
+all-breaches = All Breaches
 
 
 ## Updated error messages
@@ -736,16 +732,18 @@ login-link-pre = Have an account?
 login-link = Log in
 
 
-# This string follows a large numeral that indicates the total number of email address a user has signed up for monitoring.
-# For instance, "7 Email addresses being monitored"
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
 email-addresses-being-monitored = 
   { $emails ->
    *[one] Email address being monitored
     [other] Email addresses being monitored
   }
 
-# This string follows a large numeral that indicates the total number of a breaches that included the user's information.
-# For instance, "1 Data breach has exposed your information"
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
 data-breaches-exposed =
   { $breaches ->
     [one] Data breach has exposed your information
@@ -753,11 +751,14 @@ data-breaches-exposed =
   }
 
 
-# This string appears after a large numeral indicating the user's total number of breached passwords.
-# For instance, "9 Passwords exposed across all breaches"
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
 passwords-exposed = 
   { $passwords ->
     [one] Password exposed across all breaches
    *[other] Passwords exposed across all breaches
   }
 
+# Button
+see-additional-breaches = See Additional Breaches
