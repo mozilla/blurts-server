@@ -3,6 +3,7 @@
 const { getBreachCategory } = require("./breach-detail");
 const { prettyDate, localeString, localizedBreachDataClasses } = require("./hbs-helpers");
 const { LocaleUtils } = require("./../locale-utils");
+const { filterBreaches } = require("./../hibp");
 
 function getLocalizedBreachCardStrings(locales) {
   // casing to reflect HIBP
@@ -19,6 +20,14 @@ function makeBreachCards(breaches, locales) {
   const breachCardStrings = getLocalizedBreachCardStrings(locales);
   const formattedBreaches = [];
 
+  if (breaches.length > 1) {
+    breaches.sort((a,b) => {
+      const oldestBreach = new Date(a.BreachDate);
+      const newestBreach = new Date(b.BreachDate);
+      return newestBreach-oldestBreach;
+    });
+  }
+
   for (const breach of breaches) {
     const breachCard = JSON.parse(JSON.stringify(breach));
     const breachCategory = getBreachCategory(breach);
@@ -34,14 +43,16 @@ function makeBreachCards(breaches, locales) {
   return formattedBreaches;
 }
 
-function getBreachCategories(locales) {
-  const categories = [
-    "website-breach",
-    "sensitive-breach",
-    "spam-list-breach",
-    "unverified-breach",
-    "data-aggregator-breach",
-  ];
+function getBreachCategories(locales, categories = null) {
+  if (!categories) {
+    categories = [
+      "website-breach",
+      "sensitive-breach",
+      "spam-list-breach",
+      "unverified-breach",
+      "data-aggregator-breach",
+    ];
+  }
 
   const breachCategories = {} ;
 
@@ -58,10 +69,11 @@ function getBreachCategories(locales) {
 
 function allBreaches(allBreaches, options) {
   const locales = options.data.root.req.supportedLocales;
-
+  allBreaches = filterBreaches(allBreaches);
+  const breachCategories = ["website-breach", "sensitive-breach", "data-aggregator-breach"];
   const allBreachesModule = {
     "breachCards": makeBreachCards(allBreaches, locales),
-    "breachCategories" : getBreachCategories(locales),
+    "breachCategories" : getBreachCategories(locales, breachCategories),
   };
 
   return options.fn(allBreachesModule);
@@ -90,10 +102,20 @@ function getFoundBreaches(args) {
   return args.fn(foundBreaches);
 }
 
+function getBreachArray(args) {
+  const locales = args.data.root.req.supportedLocales;
+  let allBreaches = args.data.root.breaches;
+
+  allBreaches = filterBreaches(allBreaches);
+  const breaches = makeBreachCards(allBreaches, locales);
+  return JSON.stringify(breaches);
+}
+
 
 module.exports = {
   allBreaches,
   lastAddedBreach,
   getFoundBreaches,
   makeBreachCards,
+  getBreachArray,
 };
