@@ -5,6 +5,10 @@ form,
   width: 100%;
 }
 
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
 .form-group.loading-data .loader {
   display: block;
   opacity: 0.58;
