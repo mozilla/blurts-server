@@ -579,6 +579,10 @@ li:hover .bullet {
     width: 100%;
   }
 
+  .row-full-width {
+    padding: 1.5rem 2rem;
+  }
+
   .card {
     padding-top: 2rem;
     padding-bottom: 2rem;

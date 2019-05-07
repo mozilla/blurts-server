@@ -130,8 +130,8 @@ nav {
 
 .avatar-wrapper,
 .avatar {
-  height: 30px;
-  width: 30px;
+  height: 36px;
+  width: 36px;
 }
 
 /* signed-in user menu */
@@ -190,10 +190,6 @@ nav {
 .fxa-menu-link:focus,
 .fxa-menu-link:active {
   background-color: rgba(238, 238, 238, 0.502);
-  border-bottom: 1px solid rgba(238, 238, 238, 0.502);
-  border-top: none;
-  border-left: none;
-  border-right: none;
   box-shadow: none;
 }
 
@@ -292,15 +288,26 @@ nav {
     display: block;
   }
 
+  .mobile-menu-open svg.toggle-down {
+    transform: rotate(180deg);
+    transition: transform .15s ease;
+  }
+
   .drop-down-menu {
-    display: flex;
-    padding: var(--margin);
+    -webkit-user-select: none;
+    display: block;
+    text-align: left;
+    padding: var(--margin) 2rem;
     pointer-events: none;
     background-color: var(--inkLight);
+    width: 100%;
     z-index: 1;
   }
 
-  .drop-down-menu,
+  .drop-down-menu .toggle-down path {
+    fill: rgba(255, 255, 255, 1);
+  }
+
   a.nav-link {
     border: none !important;
     padding-left: 1rem;
