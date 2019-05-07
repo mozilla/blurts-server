@@ -144,8 +144,8 @@ function restoreInputs() {
 
 
 function toggleMobileFeatures() {
-  // const page = document.body;
-  if (window.innerWidth > 800) {
+  const windowWidth = window.innerWidth;
+  if (windowWidth > 800) {
     const emailCards = document.querySelectorAll(".col-8.email-card:not(.zero-breaches)");
     // if (document.body.classList.contains("menu-open")) {
     //   document.body.classList.remove("menu-open");
@@ -156,11 +156,18 @@ function toggleMobileFeatures() {
       return;
     }
 
-    const closeActiveEmailCards = document.querySelectorAll(".col-8.email-card.active");
-      closeActiveEmailCards.forEach(card => {
-        card.classList.remove("active");
-      });
-    }
+  const closeActiveEmailCards = document.querySelectorAll(".col-8.email-card.active");
+    closeActiveEmailCards.forEach(card => {
+      card.classList.remove("active");
+    });
+
+  if ( windowWidth < 600 ) {
+    const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
+    dropDownMenu.addEventListener("click", ()=> {
+      dropDownMenu.classList.toggle("mobile-menu-open");
+    });
+  }
+}
     // document.body.classList.remove("enable-mobile");
     // return;
   // page.classList.add("enable-mobile");

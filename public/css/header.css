@@ -1,17 +1,26 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color);
+  z-index: 2;
+  box-shadow: 0 0 5px 0 #20123a1c;
+}
+
 .fx-monitor {
   font-size: 1.5rem;
   font-weight: 500;
   margin: 0;
   letter-spacing: 0.5px;
-  border: 2px solid transparent; /* prevents wiggling on focus */
   display: inline-flex;
 }
 
 /* Fx-Monitor logo */
 .sprite.fx-monitor-logo {
-  background: url("/img/gradient-sprites.png") -211px 0;
-  min-width: 30px;
-  height: 30px;
+  background: url("/img/gradient-sprites.png") -281px 0;
+  min-width: 40px;
+  height: 40px;
 }
 
 .fx-monitor span {
@@ -31,26 +40,52 @@ nav {
   text-align: center;
   justify-content: center;
   font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .nav-link.active-link {
   font-weight: 700;
 }
 
+.drop-down-menu {
+  display: none;
+}
+
 /* sign-in button */
 .sign-in {
   background-color: transparent;
-  border-width: 2px;
-  border-radius: 4rem;
-  color: var(--color);
+  border-color: rgba(255, 255, 255, 1);
+  border-width: 1px;
+  border-radius: 0.25rem;
+  color: rgba(255, 255, 255, 1);
   margin-left: 1rem;
   min-height: 2rem;
   padding: 0.75rem 2rem;
+  white-space: nowrap;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
 }
 
 .sign-in:hover {
-  background-color: rgba(255, 255, 255, 0);
+  border-color: var(--violet5);
+  background-color: var(--violet5);
+  color: rgba(255, 255, 255, 1);
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.signed-in-as {
+  border-bottom: 1px solid var(--grey2);
+  margin-bottom: 1rem;
+  padding: 1.25rem 1rem;
+  color: #9595a3;
+  font-size: 0.85rem;
+}
+
+.nav-user-email {
+  display: block;
   color: var(--color);
+  font-weight: 600;
+  padding-top: 2px;
+  font-size: 0.9rem;
 }
 
 /* mobile-menu */
@@ -98,6 +133,8 @@ nav {
   top: 0;
   right: 0;
   z-index: 2;
+  min-width: 250px;
+  pointer-events: none;
 }
 
 .fxa-menu-links {
@@ -107,7 +144,7 @@ nav {
   flex-direction: column;
   min-width: calc(12rem + 1vw);
   opacity: 0;
-  padding: 0;
+  padding-bottom: 1rem;
   visibility: hidden;
   border-radius: var(--radius);
   overflow: hidden;
@@ -131,9 +168,12 @@ nav {
   visibility: visible;
 }
 
+.fxa-menu-wrapper:hover .fxa-menu {
+  pointer-events: all;
+}
+
 .fxa-menu-link {
-  padding: 1rem 2rem 1rem 1rem;
-  border-bottom: 1px solid rgba(238, 238, 238, 0.502);
+  padding: 0.5rem 1rem;
   color: rgba(21, 20, 23, 0.77);
   background-color: rgba(255, 255, 255, 0);
 }
@@ -162,11 +202,11 @@ nav {
   }
 
   .mobile-nav {
-    background-color: rgba(155, 155, 165, 0.04);
+    background-color: #1c1033;
   }
 
   .mobile-menu a {
-    color: var(--color);
+    color: rgba(255, 255, 255, 0.9);
     border-left: 1px solid rgba(53, 53, 49, 0.035);
     border-right: 1px solid rgba(53, 53, 49, 0.035);
     padding-left: 0;
@@ -182,7 +222,7 @@ nav {
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .fx-monitor {
     font-size: 1.25rem;
   }
@@ -199,7 +239,65 @@ nav {
     padding: 0.5rem 1.25rem;
   }
 
-  .mobile-menu {
+  .mobile-nav {
     padding: 0;
+    flex-wrap: wrap;
+    flex-direction: column;
+    position: relative;
+    border-bottom: 1px solid var(--color);
+  }
+
+  .mobile-menu {
+    margin: auto;
+    border-radius: 0;
+    flex-direction: column;
+    flex-wrap: wrap;
+    visibility: hidden;
+    padding: 0 1rem;
+    max-height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--inkLight);
+    z-index: 0;
+    -webkit-user-select: none;
+    transition: all 0.15s ease;
+  }
+
+  .mobile-menu-open .mobile-menu {
+    top: 3rem;
+    max-height: 1000px;
+    visibility: visible;
+    display: block;
+    padding: 1rem;
+    box-shadow: inset 0 2px 5px #00000066;
+    transition: all 0.15s ease;
+  }
+
+  .mobile-menu-open a.nav-link {
+    display: block;
+  }
+
+  .mobile-menu a:hover {
+    background-color: var(--color);
+    transition: background-color .15s ease;
+  }
+
+  .drop-down-menu {
+    display: flex;
+    padding: var(--margin);
+    pointer-events: none;
+    background-color: var(--inkLight);
+    z-index: 1;
+  }
+
+  .drop-down-menu,
+  a.nav-link {
+    border: none !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: left;
+    width: 100%;
   }
 }

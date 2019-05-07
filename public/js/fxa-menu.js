@@ -2,8 +2,9 @@
 
 // open/close signed-in user fxa menu and set tabbing
 function toggleMenu (otherFocusableEls, fxaMenuLinks) {
-  document.body.classList.toggle("menu-open");
-  if (document.body.classList.contains("menu-open")) {
+  const page = document.body;
+  page.classList.toggle("menu-open");
+  if (page.classList.contains("menu-open")) {
     document.getElementById("close-menu").addEventListener("click", (e) => {
       toggleMenu(otherFocusableEls, fxaMenuLinks);
     });
@@ -27,6 +28,10 @@ if (document.querySelector("#avatar-wrapper")) {
   const avatar = document.getElementById("avatar-wrapper");
   const otherFocusableEls = document.querySelectorAll("button, a:not(.fxa-menu-link), input");
   const fxaMenuLinks = document.querySelectorAll(".fxa-menu-link");
+
+  avatar.addEventListener("click", () => {
+    toggleMenu(otherFocusableEls, fxaMenuLinks);
+  });
 
   avatar.addEventListener("focus", () => {
     avatar.addEventListener("keydown", (e) => {
