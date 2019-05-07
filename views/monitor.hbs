@@ -1,20 +1,46 @@
 {{!< default }}
 
 <main class="container monitor-homepage">
-  <section class="row spc-btwn">
-    <div class="col-7">
-      <h2 class="big-headline">{{ getString "see-if-breached" }}</h2>
-    </div>
-    <div class="col-5">
-      <h3 class="subhead">{{ getString "find-out-what-hackers-know" }}</h3>
-      {{> forms/scan-email-form }}
+  <section class="row jst-cntr">
+    <div class="col-7 al-cntr landing-content">
+      {{#if featuredBreach}}
+        <h2 class="headline landing-headline">{{{ fluentNestedBold "was-your-info-exposed" breachName=featuredBreach.Title }}}</h2>
+      {{else}}
+        <h2 class="headline landing-headline">{{ getString "see-if-breached" }}</h2>
+      {{/if}}
+      {{#if featuredBreach.IsSensitive }}
+        <h3 class="subhead landing-subhead">{{ getString "find-out-if" }}</h3>
+        {{> feature-list variableClass="landing-feat-list" }}
+        {{> sign-up-button buttonValue="sign-up-for-alerts" variableClasses="landing-sign-up-btn"}}
+      {{else}}
+        <h3 class="subhead landing-subhead">{{ getString "find-out-what-hackers-know" }}</h3>
+        {{> forms/scan-email-form }}
+      {{/if}}
     </div>
   </section>
 </main>
 
-<div class="gradient-styling gradient-background">
-  {{> latest-breach }}
-  {{> article-list }}
+
+<div class="landing-bottom-bar">
+  <section class="article-list-container container">
+    <section class="row">
+      <div class="col-4">
+        {{> latest-breach }}
+      </div>
+      <div class="col-8">
+        <h2 class="headline article-list-headline">{{ getString "take-control" }}</h2>
+        <h3 class="article-list-subhead">{{ getString "cant-stop-hackers" }}</h3>
+        <ul class="article-list">
+          {{#each (articleLinks)}}
+            <li class="logo-title-wrapper flx article">
+              <div class="icon-inline-wrapper">{{> (lookup . 'pathToPartial') }}</div>
+              <a href="" class="article-link">{{ this.stringId }}</a>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    </section>
+  </section>
 </div>
 
 {{> sign-up-banners/monitor-features }}

@@ -4,14 +4,7 @@
       <div class="sign-up-banner">
         <div class="sign-up-headline-list-wrapper flx flx-col">
           <h2 class="sign-up-headline">{{ getString "sign-up-headline-1" }}</h2>
-          <ul class="feature-list">
-            {{#bulletedList (monitorFeatures)}}
-              <li>
-                <div class="sign-up-bullet"></div>
-                <p class="sign-up-feature">{{ stringId }}</p>
-              </li>
-            {{/bulletedList}}
-          </ul>
+          {{> feature-list }}
         </div>
         <div class="flx flx-col sign-up-cta">
           {{> sign-up-button buttonValue="sign-up-for-alerts"}}

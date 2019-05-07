@@ -1,18 +1,100 @@
-main.container.monitor-homepage {
-  min-height: 65vh;
+.monitor-homepage {
+  min-height: 96vh;
+  background-color: var(--color);
+  background-image: url(/img/landing/background-noodle-top2.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom center;
 }
 
-.monitor-homepage h3 {
-  margin-top: var(--margin);
+.landing-bottom-bar {
+  background-image: url(/img/landing/background-noodle-middle.svg), var(--bluePurpleGradient);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: top center;
+  padding-top: 14vh;
+  min-height: 80vh;
 }
 
-.homepage-scan-form {
-  border: 1px dashed var(--borderColor);
-  border-radius: var(--radius);
+.landing-content {
+  text-align: center;
+}
+
+.landing-subhead {
+  padding: 0;
+  margin: .5rem auto var(--margin) auto;
+  max-width: 400px;
+}
+
+.landing-feat-list {
+  margin: 0 auto var(--padding) auto;
+}
+
+.landing-headline {
+  font-size: 2.6rem;
+  line-height: 130%;
+  margin: auto;
+  max-width: 500px;
+}
+
+.landing-content form {
+  max-width: 400px;
+  margin: auto;
+}
+
+.landing-headline .bold {
+  color: var(--accentLightBlue);
+}
+
+.landing-sign-up-btn {
+  max-width: 350px;
 }
 
 @media screen and (max-width: 800px) {
-  .monitor-homepage .row {
-    flex-direction: column;
+  .landing-content {
+    max-width: 520px;
+  }
+
+  .landing-headline {
+    font-size: var(--bigHeadline);
+  }
+
+  .landing-bottom-bar {
+    padding-top: 8vh;
+  }
+
+  h2.landing-headline,
+  .landing-subhead {
+    text-align: left !important;
+    margin: 0 auto 0.5rem 0;
+    max-width: 100%;
+  }
+
+  .landing-subhead {
+    padding-right: 10%;
+  }
+
+  .landing-feat-list {
+    margin: 1rem auto 2rem 0;
+  }
+
+  .landing-content form,
+  .landing-sign-up-btn {
+    margin-left: 0;
+    max-width: 100%;
+  }
+
+  .landing-content form {
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .monitor-homepage {
+    padding-top: 15vh;
+  }
+
+  .landing-bottom-bar {
+    padding-top: 6vh;
   }
 }
