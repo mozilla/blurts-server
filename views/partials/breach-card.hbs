@@ -1,12 +1,5 @@
-<!--
-
-    {{ cardClass }} is determined by which page the card is on 
-    {{ Category }} refers to the type of breach and is used primarily for card styling on the /breaches page 
-
--->
-
-<a class="breach-card {{ cardType }} {{#if NewBreach}} new-breach {{/if}}" href="/?breach={{ Name }}">
-  <div class="breach-card-title-wrapper flx {{ Category }} {{ cardClass }}">
+<a class="breach-card {{ Category }} {{ cardType }} {{#if NewBreach}} new-breach {{/if}}" href="/?breach={{ Name }}">
+  <div class="breach-card-title-wrapper flx {{ Category }}">
     <span class="breach-title demi">{{ Title }}</span>
     <div class="breach-logo-wrapper">
       <img alt="" class="breach-logo lazy-img" {{#if lazyLoad}} data-srcset="/img/logos/{{ LogoPath }}" src="/img/logos/missing-logo-icon.png" {{else}} src="/img/logos/{{ LogoPath }}" {{/if}} />

@@ -70,7 +70,7 @@ function fluentNestedBold(id, args) {
   const nonNumericStringIds = Object.keys(saveArgs).filter(key => key !== "breachCount");
 
   const addMarkup = (word) => {
-    return ` <span class="medium">${word}</span> `;
+    return ` <span class="bold">${word}</span> `;
   };
 
   nonNumericStringIds.forEach(stringId => {
@@ -78,7 +78,7 @@ function fluentNestedBold(id, args) {
   });
 
   let localizedStrings = LocaleUtils.fluentFormat(supportedLocales, id, args.hash);
-  if (args.hash.breachCount) {
+  if (args.hash.breachCount || args.hash.breachCount === 0) {
     localizedStrings = localizedStrings.replace(/(\s[\d]+\s)/, addMarkup(args.hash.breachCount));
   }
 

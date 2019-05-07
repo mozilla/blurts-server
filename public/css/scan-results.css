@@ -5,6 +5,13 @@
   display: inline-flex;
 }
 
+.scan-res-subhead,
+.scanned-email-address,
+.scan-results-headline {
+  text-align: center;
+  max-width: 100%;
+}
+
 .found-breaches,
 .show-additional-breaches {
   flex-wrap: wrap;
@@ -16,10 +23,35 @@
   margin: 0 auto;
 }
 
-.fb-res-headline {
-  max-width: 600px;
+.scan-res-subhead {
+  margin: var(--margin) auto auto auto;
 }
 
-.scan-res-subhead {
-  margin: var(--margin) auto 0 0;
+.scanned-email-address .bold,
+.scan-results-headline span.bold,
+.scan-res-subhead span.bold {
+  color: var(--violet1);
+}
+
+.found-breaches .show-remaining-breaches {
+  background-color: transparent;
+  border: 1px solid var(--violet1);
+  color: var(--violet1);
+  min-width: 200px;
+}
+
+.found-breaches .show-remaining-breaches:hover {
+  border: 1px solid var(--inkLight);
+  background-color: var(--inkLight);
+  transition: border 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+@media screen and (max-width: 800px) {
+  .scanned-email-address,
+  .scan-results-headline,
+  .scan-res-subhead {
+    text-align: left;
+    margin-left: 0;
+    max-width: 400px;
+  }
 }

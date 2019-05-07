@@ -17,14 +17,8 @@ function getFooterLinks(args) {
     },
     {
       title: "Terms & Privacy",
-      stringId: "terms-and-privacy",
+      stringId: "terms-and-privacy-v2",
       href: "https://www.mozilla.org/privacy/firefox-monitor/?utm_campaign=fx_monitor_downloads&utm_content=site-footer-link&utm_medium=referral&utm_source=monitor.firefox.com",
-    },
-    {
-      title: "Mozilla.org",
-      stringId: "mozilla-dot-org",
-      href: "https://www.mozilla.org",
-      openNewWindow: "",
     },
   ];
 

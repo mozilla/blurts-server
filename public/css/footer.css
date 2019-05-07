@@ -1,7 +1,20 @@
 footer {
+  background-color: rgba(255, 255, 255, 1);
   border-top: 1px solid var(--borderColor);
   width: 100%;
   margin: auto auto 0 auto;
+}
+
+ul.footer-links {
+  justify-content: flex-end;
+}
+
+.footer-link-wrapper {
+  margin-left: var(--padding);
+}
+
+.footer-link-wrapper.moz-link {
+  margin: auto auto auto 0;
 }
 
 svg.Mozilla-logo {
@@ -12,12 +25,12 @@ svg.Mozilla-logo {
 @media screen and (max-width: 800px) {
   footer ul.row-full-width {
     flex-direction: column;
-    padding: 1.75rem;
   }
 
   .footer-link-wrapper,
   .footer-link {
     width: 100%;
+    margin-left: 0;
   }
 
   .footer-link {
@@ -29,8 +42,8 @@ svg.Mozilla-logo {
   }
 }
 
-/* @media screen and (max-width: 600px) {
-  footer ul.row-full-width {
-    padding: 2.25rem;
+@media screen and (max-width: 800px) {
+  ul.row-full-width {
+    padding: 1.75rem;
   }
-} */
+}

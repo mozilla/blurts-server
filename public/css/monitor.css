@@ -22,7 +22,7 @@
 
 .landing-subhead {
   padding: 0;
-  margin: .5rem auto var(--margin) auto;
+  margin: 0.5rem auto var(--margin) auto;
   max-width: 400px;
 }
 
