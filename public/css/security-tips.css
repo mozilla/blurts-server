@@ -1,0 +1,93 @@
+.security-tip-list-item {
+  align-items: flex-start;
+  margin-bottom: var(--padding);
+  flex: 1 1 45%;
+  background-image: url("img/landing/background-noodle-top3.svg");
+}
+
+.security-tips-headline {
+  font-size: 2.8rem;
+  max-width: 600px;
+  margin-top: 10rem;
+  color: var(--color);
+}
+
+.security-tips {
+  color: var(--grey8);
+}
+
+.article-lead-in {
+  font-size: 1.2rem;
+  max-width: 700px;
+}
+
+.security-tip-list {
+  border-top: 1px solid var(--color);
+  border-bottom: 1px solid var(--color);
+  padding: calc(var(--padding) * 2) 0 var(--padding) 0;
+  margin-top: calc(var(--padding) * 2);
+}
+
+.security-tip-link {
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-family: "FirefoxSharpSans", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--color);
+}
+
+.security-tip-subhead {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  max-width: 380px;
+}
+
+.article-icon {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  margin-right: 1rem;
+}
+
+.article-icon.how-hackers-work {
+  background-color: var(--orange6);
+}
+
+.article-icon.strong-passwords {
+  background-color: var(--blue3);
+}
+
+.article-icon.after-breach {
+  background-color: var(--violet3);
+}
+
+.article-icon .icon-inline {
+  opacity: 0.7;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.article-wrapper {
+  padding-top: 10rem;
+}
+
+.article-headline {
+  font-size: 3rem;
+}
+
+.article-list-item,
+.article-paragraph {
+  font-size: 1.2rem;
+}
+
+.article-subhead {
+  font-size: 1.5rem;
+  margin-top: 3rem;
+  margin-bottom: 0;
+}
