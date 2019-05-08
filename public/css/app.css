@@ -29,7 +29,6 @@ body {
   --bigHeadline: 2.2rem;
   --skinnyHeadline: 1.9rem;
   --subhead: 1.1rem;
-  --smallText: 0.85rem;
   --lineHeight: 180%;
   --radius: 0.25rem;
   --blue: #4f42ff;
@@ -53,6 +52,8 @@ body {
   --blue3: #0060df;
   --blue4: #0250bb;
   --blue5: #073072;
+  --orange1: #ffa266;
+  --green1: #54ffbd;
   --orange5: #ff7139;
   --orange6: #e25920;
   --bgLight: rgba(249, 249, 250, 1);
@@ -231,13 +232,8 @@ button {
   justify-content: center;
   text-align: center;
   background-color: transparent;
-  border-width: 2px;
   border-style: solid;
-  border-color: var(--blue);
-
-  /* color: var(--color); */
   padding: 0.75rem 2rem;
-  font-size: var(--smallText);
 }
 
 .blue {

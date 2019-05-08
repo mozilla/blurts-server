@@ -6,7 +6,7 @@ form,
 }
 
 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  -webkit-box-shadow: 0 0 0 1000px white inset;
 }
 
 .form-group.loading-data .loader {
@@ -116,7 +116,6 @@ button:focus,
 }
 
 input::placeholder {
-  /* color: rgba(255, 255, 255, .7); */
   color: #f1f1f1;
   font-size: 1rem;
 }
@@ -134,6 +133,7 @@ input[type="email"] {
   text-indent: var(--margin);
   background-color: transparent;
   border-color: var(--blue3);
+  caret-color: var(--orange6);
   transition: all 0.1s ease-out;
 }
 
@@ -153,6 +153,8 @@ form.invalid input[type="submit"]:focus {
 
 input.email-add {
   border-color: var(--violet3);
+  color: var(--color);
+  caret-color: var(--violet5);
 }
 
 input.email-add-submit {
@@ -186,12 +188,16 @@ input[type="radio"] {
 }
 
 input[type="radio"]:checked ~ .checkmark {
-  background-color: var(--violet2);
+  background-color: var(--violet3);
   transition: background-color 0.15s ease-in-out;
 }
 
 .add-new-email-form {
   margin: var(--margin) 0;
+}
+
+.add-new-email-form input::placeholder {
+  color: var(--color);
 }
 
 .radio-container {

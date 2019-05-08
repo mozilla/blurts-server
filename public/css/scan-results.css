@@ -38,6 +38,7 @@
   border: 1px solid var(--violet1);
   color: var(--violet1);
   min-width: 200px;
+  min-height: 2.65rem;
 }
 
 .found-breaches .show-remaining-breaches:hover {

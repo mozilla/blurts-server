@@ -49,13 +49,22 @@
 }
 
 .col-8.card.global-comm {
-  background-color: rgba(255, 255, 255, 0);
   border: none;
 }
 
 .section-headline.breach-summary {
   margin-bottom: 0.5rem;
   padding-top: var(--padding);
+}
+
+.trash-can {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  pointer-events: none;
+  margin: auto;
 }
 
 @media screen and (max-width: 600px) {

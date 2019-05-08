@@ -71,21 +71,15 @@
 }
 
 .show-remaining-breaches {
-  opacity: 1;
   margin: 1rem auto;
   display: flex;
   padding: 0.5rem 1rem;
   background-color: #eee;
   border-radius: 0.25rem;
-  transform: scale(1);
-  transition: opacity 0.15s ease-in-out, transform 0.15s ease 0.2s;
 }
 
 .show-remaining-breaches.hide {
-  padding: 0;
-  opacity: 0;
-  margin: 0 auto;
-  transform: scale(0);
+  display: none;
 }
 
 .email-card.active .e-breach-list {
