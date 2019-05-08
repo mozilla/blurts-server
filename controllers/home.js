@@ -34,7 +34,7 @@ async function home(req, res) {
     }
     scanFeaturedBreach = true;
 
-    return res.render("breach-detail", {
+    return res.render("monitor", {
       title: req.fluentFormat("home-title"),
       featuredBreach: featuredBreach,
       scanFeaturedBreach,

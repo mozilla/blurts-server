@@ -253,6 +253,15 @@ const DB = {
     return subscriber;
   },
 
+  async removeOneSecondaryEmail(emailId) {
+    await knex("email_addresses")
+      .where({
+        "id": emailId,
+      })
+      .del();
+      return;
+  },
+
   async getSubscribersByHashes(hashes) {
     return await knex("subscribers").whereIn("primary_sha1", hashes).andWhere("primary_verified", "=", true);
   },

@@ -1,0 +1,15 @@
+        {{#each firstFourBreaches }}
+          {{> breach-card cardType=./../cardType}}
+        {{/each}}
+
+        {{#if remainingBreaches }}
+          <button class="show-remaining-breaches" data-event-category="Show All Breaches">
+            {{ getString "show-all-breaches" }}
+          </button>
+          <!-- foundBreaches 4-foundBreaches.length -->
+          <div id="additional-breaches" class="show-additional-breaches hide flx">
+            {{#each remainingBreaches }}
+              {{> breach-card cardType=./../cardType}}
+            {{/each}}
+          </div>  
+        {{/if}}

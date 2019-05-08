@@ -1,23 +1,29 @@
 
-<main id="dashboard" class="dashboard">
+<main id="dashboard" class="dashboard bg-white clear-header">
   <div class="row jst-cntr">
-    <div class="col-8">
-      <p class="welcome-back">{{{ fluentNestedBold "welcome-back" userName=req.session.user.fxa_profile_json.email }}}</p>
+    <div class="col-8 no-vertical-padding">
+      <span class="welcome-back">{{{fluentNestedBold "welcome-back" userName=req.session.user.fxa_profile_json.email }}}</span>
     </div>
   </div>
-  <div class="row jst-cntr">
-    <div class="col-8 dash-stats">
-      <h2 class="skinny-headline breach-summary">{{ getString "breach-summary" }}</h2>
+  <div class="row jst-cntr flx-col">
+    <div class="col-8 no-vertical-padding">
+      <h2 class="section-headline breach-summary dash">{{ getString "breach-summary" }}</h2>
+    </div>
+    <div class="col-8 card dash-stats">
+      {{!-- <h2 class="section-headline">{{ getString "breach-summary" }}</h2> --}}
       {{> breach-stats addClasses="user-stats"}}
     </div>
   </div>
-  <div class="row jst-cntr">
-    <div class="col-8 email-table">
-      <h2 class="skinny-headline">{{ getString "email-addresses" }}</h2>
+  <div class="row jst-cntr flx-col dash-row">
+    <div class="col-8 no-vertical-padding">
+      <div class="flx space-between cntr link-header-wrapper">
+        <h2 class="section-headline margin-zero dash">{{ getString "email-addresses" }}</h2>
+        {{> dashboards/manage-email-link variableClass="hide-mobile"}}
+      </div>
+    </div>
       {{#each (getBreachesForEachEmail) }}
         {{> email-card }}
       {{/each}}
-      <a href="/user/preferences" class="button manage-your-account">{{ getString "manage-email-addresses" }}</a>
-    </div>
+      {{> dashboards/manage-email-link }}
   </div>
 </main>

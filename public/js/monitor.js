@@ -1,5 +1,4 @@
 "use strict";
-
 /* global sendPing */
 /* global getFxaUtms */
 /* global hashEmailAndSend */
@@ -94,11 +93,15 @@ function addFormListeners() {
 function handleFormSubmits(formEvent) {
   formEvent.preventDefault();
   const thisForm = formEvent.target;
-  const email = thisForm.email.value.trim();
-  thisForm.email.value = email;
+  let email = "";
 
   sendPing(thisForm, "Submit");
-  if (!email || !isValidEmail(email)) {
+
+  if (thisForm.email) {
+    email = thisForm.email.value.trim();
+    thisForm.email.value = email;
+  }
+  if (thisForm.email && !isValidEmail(email)) {
     sendPing(thisForm, "Failure");
     thisForm.classList.add("invalid");
     return;
@@ -107,11 +110,8 @@ function handleFormSubmits(formEvent) {
     hashEmailAndSend(formEvent);
     return;
   }
-  if (formEvent.target.id === "add-another-email-form") {
-    formEvent.target.submit();
-    return;
-  }
-  return;
+  thisForm.classList.add("loading-data");
+  return thisForm.submit();
 }
 
 //re-enables inputs and clears loader
@@ -127,86 +127,73 @@ function restoreInputs() {
   });
 }
 
-// const animateMobileMenuIcon = () => {
-//   if (document.body.classList.contains("menu-open")) {
-//     document.getElementById("menu-path").setAttribute("d", "M5.293 6.707a1 1 0 1 1 1.414-1.414L12 10.586l5.293-5.293a1 1 0 1 1 1.414 1.414L13.414 12l5.293 5.293a1 1 0 0 1-1.414 1.414L12 13.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L10.586 12 5.293 6.707z");
-//   } else {
-//     document.getElementById("menu-path").setAttribute("d", "M4 7a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1zm0 5a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1zm1 4a1 1 0 1 0 0 2h14a1 1 0 1 0 0-2H5z");
-//   }
-// };
-
-
-function toggleMobileMenu() {
-  document.body.classList.toggle("menu-open");
-  document.body.classList.toggle("menu-closed");
-  // animateMobileMenuIcon();
+function toggleDropDownMenu(dropDownMenu) {
+  if (dropDownMenu.classList.contains("mobile-menu-open")) {
+    return dropDownMenu.classList.remove("mobile-menu-open");
+  }
+  return dropDownMenu.classList.add("mobile-menu-open");
 }
-
 
 function toggleMobileFeatures() {
-  const page = document.body;
-  if (window.innerWidth > 575) {
-    if (document.body.classList.contains("menu-open")) {
-      document.body.classList.remove("menu-open");
-      // animateMobileMenuIcon();
+  const windowWidth = window.innerWidth;
+  if (windowWidth > 800) {
+    const emailCards = document.querySelectorAll(".col-8.email-card:not(.zero-breaches)");
+      emailCards.forEach(card => {
+        card.classList.add("active");
+      });
       return;
     }
-    document.body.classList.remove("enable-mobile");
-    return;
-  }
-  page.classList.add("enable-mobile");
-  if (document.getElementById("menu-icon-wrapper")) {
-    document.body.classList.add("menu-closed");
-    document.getElementById("menu-icon-wrapper").addEventListener("click", toggleMobileMenu);
-    document.getElementById("bg-screen").addEventListener("click", toggleMobileMenu);
-  }
+
+  const closeActiveEmailCards = document.querySelectorAll(".col-8.email-card.active");
+    closeActiveEmailCards.forEach(card => {
+      card.classList.remove("active");
+    });
 }
 
-
-document.addEventListener("touchstart", function(){}, true);
-
-window.addEventListener("pageshow", function() {
-  const previousActiveLink = document.querySelector(".active-link");
-
-  if (previousActiveLink) {
-    previousActiveLink.classList.remove("active-link");
-  }
-
+( async() => {
+  document.addEventListener("touchstart", function(){}, true);
   const win = window;
-  const navLinks = document.querySelectorAll(".nav-link");
-
-  navLinks.forEach(link => {
-    if (link.href === win.location.href) {
-      link.classList.add("active-link");
+  win.addEventListener("pageshow", function() {
+    const previousActiveLink = document.querySelector(".active-link");
+    if (previousActiveLink) {
+      previousActiveLink.classList.remove("active-link");
     }
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    navLinks.forEach(link => {
+      if (link.href === win.location.href) {
+        link.classList.add("active-link");
+      }
+    });
+
+    if (win.location.search.includes("utm_") && win.history.replaceState) {
+      win.history.replaceState({}, "", win.location.toString().replace(/[?&]utm_.*/g, ""));
+    }
+    toggleMobileFeatures();
+    document.forms ? (restoreInputs(), addFormListeners()) : null;
   });
 
-  if (win.location.search.includes("utm_") && win.history.replaceState) {
-    win.history.replaceState({}, "", win.location.toString().replace(/[?&]utm_.*/g, ""));
-  }
   // toggleMobileFeatures();
-  document.forms ? (restoreInputs(), addFormListeners()) : null;
-});
-
-  // toggleMobileFeatures();
-  window.addEventListener("resize", toggleMobileFeatures);
+  win.addEventListener("resize", toggleMobileFeatures);
 
 
   // capitalize the sign in button for en-US only.
-  if (window.navigator.language.includes("en") && document.getElementById("sign-in-btn")) {
+  if (win.navigator.language.includes("en") && document.getElementById("sign-in-btn")) {
     document.getElementById("sign-in-btn").classList.add("capitalize");
   }
 
-// disabled until it can work with lazy load...
+  document.querySelectorAll(".breach-logo").forEach(logo => {
+    logo.addEventListener("error", (missingLogo) => {
+      if (logo.classList.contains("lazy-img")) {
+        missingLogo.target.src = "/img/logos/missing-logo-icon.png";
+      }
+    });
+  });
 
-// document.querySelectorAll(".breach-logo").forEach(logo => {
-//   logo.addEventListener("error", (missingLogo) => {
-//     if (logo.classList.contains("lazy-img")) {
-//       missingLogo.target.src = "/img/logos/missing-logo-icon.png";
-//     }
-//   });
-// });
+  document.querySelectorAll(".open-oauth").forEach(button => {
+    button.addEventListener("click", (e) => doOauth(e.target));
+  });
 
-document.querySelectorAll(".open-oauth").forEach(button => {
-  button.addEventListener("click", (e) => doOauth(e.target));
-});
+  const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
+  dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));
+})();

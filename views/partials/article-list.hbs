@@ -1,18 +1,12 @@
-<section class="article-list-container container">
-  <section class="row">
-    <div class="col-7">
-      <h2 class="headline">{{ getString "take-control" }}</h2>
-      <h3 class="subhead">{{ getString "cant-stop-hackers" }}</h3>
-    </div>
-    <div class="col-5">
+    <div class="col-8">
+      <h2 class="headline article-list-headline">{{ getString "take-control" }}</h2>
+      <h3 class="article-list-subhead">{{ getString "cant-stop-hackers" }}</h3>
       <ul class="article-list">
         {{#each (articleLinks)}}
           <li class="logo-title-wrapper flx article">
-            <div class="bullet"></div>
-            <a href="" class="article-link">{{ this.title }}<span class="arrow">&#8594;</span></a>
+            <div class="icon-inline-wrapper">{{> (lookup . 'pathToPartial') }}</div>
+            <a href="" class="article-link">{{ this.stringId }}</a>
           </li>
         {{/each}}
       </ul>
     </div>
-  </section>
-</section>

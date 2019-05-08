@@ -1,14 +1,14 @@
 {{#allBreaches req.app.locals.breaches }}
 <div id="breaches-loader" class="breaches-loader"></div>
-  <main class="all-breaches-main">
+  <main class="all-breaches-main clear-header bg-ink-light">
     <div class="row">
-      <div class="col-12">
-        <h2 class="big-headline">All The Breaches.<span class="needscopy">Needs Headline</span></h2>
-        <p>TO DO && TO CONSIDER: Improve lazy loading. Reduce filtering-induced jigs and lags. How should we visually communicate the different breach categories? What kind of filtering is meaningful and actually useful to a user? Can we speed this up and make this less laggy? Is there a way to sanely present this page on mobile?</p>
+      <div class="col-12 no-vertical-padding">
+        <h2 class="headline">{{ getString "all-breaches-headline" }}</h2>
+        {{!-- {{> fuzzy-find }} --}}
       </div>
     </div>
   </main>
-  <section class="all-breaches-wrapper">
+  <section class="all-breaches-wrapper bg-ink-light">
     <div id="fixed-filters" class="fixed-filters">
       {{> breach-filters }}
       <button id="back-to-top" class="back-to-top">
@@ -20,17 +20,19 @@
         <!-- breach card filters -->
         <div class="col-12 filters">
           {{> breach-filters }}
+          {{> fuzzy-find }}
         </div>
     </div>
 
     <div class="row flx-col">
-
       <!-- breach cards -->
       <div id="all-breaches" class="all-breaches flx">
-        {{#each this.breachCards}}
-          {{> breach-card lazyLoad=true cardClass="three-up drop-shadow" }}
-        {{/each}}
+        {{!-- {{#each this.breachCards}}
+          {{> breach-card lazyLoad=true cardType="three-up drop-shadow ab" showPwnCount=true }}
+        {{/each}} --}}
       </div>
     </div>
   </section>
 {{/allBreaches}}
+
+<div id="breach-array-json" hidden=true data-breach-array="{{ getBreachArray }}"></div>

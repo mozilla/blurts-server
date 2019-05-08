@@ -3,11 +3,13 @@
 const { getBreachCategory } = require("./breach-detail");
 const { prettyDate, localeString, localizedBreachDataClasses } = require("./hbs-helpers");
 const { LocaleUtils } = require("./../locale-utils");
+const { filterBreaches } = require("./../hibp");
 
 function getLocalizedBreachCardStrings(locales) {
   // casing to reflect HIBP
   return {
     "AddedDate": LocaleUtils.fluentFormat(locales, "breach-added"),
+    "BreachDate": LocaleUtils.fluentFormat(locales, "breach-discovered"),
     "CompromisedAccounts": LocaleUtils.fluentFormat(locales, "compromised-accounts"),
     "CompromisedData": LocaleUtils.fluentFormat(locales, "compromised-data"),
     "MoreInfoLink": LocaleUtils.fluentFormat(locales, "more-about-this-breach"),
@@ -41,14 +43,16 @@ function makeBreachCards(breaches, locales) {
   return formattedBreaches;
 }
 
-function getBreachCategories(locales) {
-  const categories = [
-    "website-breach",
-    "sensitive-breach",
-    "spam-list-breach",
-    "unverified-breach",
-    "data-aggregator-breach",
-  ];
+function getBreachCategories(locales, categories = null) {
+  if (!categories) {
+    categories = [
+      "website-breach",
+      "sensitive-breach",
+      "spam-list-breach",
+      "unverified-breach",
+      "data-aggregator-breach",
+    ];
+  }
 
   const breachCategories = {} ;
 
@@ -65,10 +69,11 @@ function getBreachCategories(locales) {
 
 function allBreaches(allBreaches, options) {
   const locales = options.data.root.req.supportedLocales;
-
+  allBreaches = filterBreaches(allBreaches);
+  const breachCategories = ["website-breach", "sensitive-breach", "data-aggregator-breach"];
   const allBreachesModule = {
     "breachCards": makeBreachCards(allBreaches, locales),
-    "breachCategories" : getBreachCategories(locales),
+    "breachCategories" : getBreachCategories(locales, breachCategories),
   };
 
   return options.fn(allBreachesModule);
@@ -78,17 +83,32 @@ function allBreaches(allBreaches, options) {
 function lastAddedBreach(options) {
   const locales = options.data.root.req.supportedLocales;
   let latestBreach = [options.data.root.latestBreach];
-
   latestBreach = makeBreachCards(latestBreach, locales);
+  latestBreach[0].DataClasses = "";
   return latestBreach;
 }
 
 function getFoundBreaches(args) {
+  const foundBreaches = {};
   const locales = args.data.root.req.supportedLocales;
-  let foundBreaches = args.data.root.foundBreaches;
+  let userBreaches = args.data.root.foundBreaches;
 
-  foundBreaches = makeBreachCards(foundBreaches, locales);
-  return foundBreaches;
+  userBreaches = makeBreachCards(userBreaches, locales);
+  foundBreaches.firstFourBreaches = userBreaches.slice(0, 4);
+  if (userBreaches.length > 4) {
+    foundBreaches.remainingBreaches = userBreaches.slice(5, foundBreaches.length);
+  }
+  foundBreaches.cardType = "two-up drop-shadow";
+  return args.fn(foundBreaches);
+}
+
+function getBreachArray(args) {
+  const locales = args.data.root.req.supportedLocales;
+  let allBreaches = args.data.root.breaches;
+
+  allBreaches = filterBreaches(allBreaches);
+  const breaches = makeBreachCards(allBreaches, locales);
+  return JSON.stringify(breaches);
 }
 
 
@@ -97,4 +117,5 @@ module.exports = {
   lastAddedBreach,
   getFoundBreaches,
   makeBreachCards,
+  getBreachArray,
 };

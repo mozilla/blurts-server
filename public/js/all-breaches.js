@@ -9,13 +9,13 @@ function breachImages() {
       const winHeight = window.innerHeight;
       lazyImages.forEach(lazyImage => {
         if ((lazyImage.getBoundingClientRect().top <= winHeight && lazyImage.getBoundingClientRect().bottom >= 0)) {
+          lazyImage.classList.add("lazy-loaded");
+          lazyImage.classList.remove("lazy-img");
           lazyImage.src = lazyImage.dataset.src;
           lazyImage.srcset = lazyImage.dataset.srcset;
-          lazyImage.classList.remove("lazy-img");
-
 
           lazyImages = lazyImages.filter(image => {
-          return image !== lazyImage;
+            return image !== lazyImage;
           });
           if (lazyImages.length === 0) {
             document.removeEventListener("scroll", this.lazyLoad);
@@ -56,7 +56,94 @@ function filterBreaches() {
   };
 }
 
+const makeBreachInfoSpans = (className, spanContent, wrapper) => {
+  const span = document.createElement("span");
+  span["classList"] = className;
+  span.textContent = spanContent;
+  wrapper.appendChild(span);
+  return span;
+};
+
+function makeDiv(className, wrapper) {
+  const div = document.createElement("div");
+  div["classList"] = className;
+  wrapper.appendChild(div);
+  return div;
+}
+
+function clearBreaches(wrapper) {
+  while (wrapper.firstChild) {
+    wrapper.removeChild(wrapper.firstChild);
+  }
+}
+
+function makeBreaches(breachArray, breachCardWrapper) {
+  clearBreaches(breachCardWrapper);
+
+  const fragment = document.createDocumentFragment();
+  fragment["id"] = "all-breaches";
+
+  for (const breach of breachArray) {
+    const card = document.createElement("a");
+    // create wrapping breach card link element
+    card["classList"] = `breach-card ${breach.Category} three-up ab`;
+    card["href"] = `/breach-details/${breach.Name}`;
+    card["data-breach-title"] = breach.Title;
+    fragment.appendChild(card);
+
+    let wrapper = makeDiv(`breach-card-title-wrapper flx ${breach.Category}`, card);
+    makeBreachInfoSpans("breach-title", breach.Title, wrapper);
+    const logoWrapper = makeDiv("breach-logo-wrapper", wrapper);
+
+    const breachLogo = document.createElement("img");
+    breachLogo["alt"] = "";
+    breachLogo["classList"] = "breach-logo lazy-img";
+    breachLogo.dataset.srcset = `/img/logos/${breach.LogoPath}`;
+    breachLogo.src = "/img/logos/missing-logo-icon.png";
+    logoWrapper.appendChild(breachLogo);
+
+    // make wrapper for the breach-info and link
+    const breachInfoWrapper = makeDiv("breach-info-wrapper flx flx-col", card);
+
+    // make wrapper for the Added Date, Compromised Accounts etc info...
+    wrapper = makeDiv("", breachInfoWrapper);
+
+    // added date
+    let wrappingSpan = makeBreachInfoSpans("breach-info demi key", breach.String.AddedDate, wrapper);
+    makeBreachInfoSpans("breach-info-value", breach.AddedDate, wrappingSpan);
+
+    // compromised accounts
+    wrappingSpan = makeBreachInfoSpans("breach-info", breach.String.CompromisedAccounts, wrapper);
+    makeBreachInfoSpans("breach-info-value", breach.PwnCount, wrappingSpan);
+
+    // compromised data
+    wrappingSpan = makeBreachInfoSpans("breach-info", breach.String.CompromisedData, wrapper);
+    makeBreachInfoSpans("breach-info-value", breach.DataClasses, wrappingSpan);
+
+    // add link at bottom of card
+    wrapper = makeDiv("breach-card-link-wrap", breachInfoWrapper);
+    makeBreachInfoSpans("more-about-this-breach", breach.String.MoreInfoLink, wrapper);
+  }
+
+  breachCardWrapper.appendChild(fragment);
+
+  const breachLogos = new breachImages();
+  breachLogos.lazyLoad();
+  document.addEventListener("scroll", breachLogos.lazyLoad);
+  window.addEventListener("resize", breachLogos.lazyLoad);
+  window.addEventListener("orientationchange", breachLogos.lazyLoad);
+
+  return breachArray;
+}
+
+(async() => {
+
 if (document.getElementById("all-breaches")) {
+  const breachCardWrapper = document.getElementById("all-breaches");
+  const breachWrapper = document.getElementById("breach-array-json");
+  const breachArray = JSON.parse(breachWrapper.dataset.breachArray);
+
+  makeBreaches(breachArray, breachCardWrapper);
 
   document.onreadystatechange = () => {
     if (document.readyState === "complete") {
@@ -65,15 +152,8 @@ if (document.getElementById("all-breaches")) {
     }
   };
 
-  const images = new breachImages();
   const breaches = new filterBreaches();
   let filtered = false;
-
-  images.lazyLoad();
-  document.addEventListener("scroll", images.lazyLoad);
-  window.addEventListener("resize", images.lazyLoad);
-  window.addEventListener("orientationchange", images.lazyLoad);
-
 
   const breachFilters = document.querySelectorAll(".breach-filter");
   breachFilters.forEach(filter => {
@@ -82,13 +162,16 @@ if (document.getElementById("all-breaches")) {
       const classToShow = filterBtn.dataset.breachCategory;
 
       if (classToShow === "show-all-breaches") {
+        if (filtered) {
+          makeBreaches(breachArray, breachCardWrapper);
+        }
         filtered = false;
         breaches.unhideAll();
         breachFilters.forEach(filter => {
           filter.classList.remove("hidden");
           filter.classList.remove("showing");
         });
-        return images.lazyLoad;
+        return;
       }
 
       if (!filtered) {
@@ -100,7 +183,6 @@ if (document.getElementById("all-breaches")) {
         });
         filtered = true;
         breaches.hideAllExcept(classToShow);
-        images.lazyLoad;
         return;
       }
 
@@ -114,14 +196,13 @@ if (document.getElementById("all-breaches")) {
       ["showing", "hidden"].forEach(className => {
         filterBtn.classList.toggle(className);
       });
-      return images.lazyLoad;
+      return;
     });
   });
 
   const win = window;
   const fixedFilters = document.getElementById("fixed-filters");
   win.onscroll = function(e) {
-
     if (win.pageYOffset < 400) {
       if (fixedFilters.classList.contains("show-filters")) {
         fixedFilters.classList.remove("show-filters");
@@ -139,9 +220,27 @@ if (document.getElementById("all-breaches")) {
     this.oldScroll = this.scrollY;
   };
 
-
   const backToTopButton = document.getElementById("back-to-top");
   backToTopButton.addEventListener("click", () => {
     window.scrollTo(0, 0);
   });
+
+  const fuzzyFindInput = document.getElementById("fuzzy-find-input");
+  const fuzzyFinder = document.getElementById("fuzzy-form");
+
+  fuzzyFinder.addEventListener("submit", (e) => {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    const breachSearchTerm = fuzzyFindInput.value.toLowerCase();
+
+    const filteredBreachArray = breachArray.filter(breach => {
+      return breach.Name.toLowerCase().startsWith(breachSearchTerm);
+    });
+    fuzzyFindInput.value = "";
+    makeBreaches(filteredBreachArray, breachCardWrapper);
+    filtered = true;
+  });
 }
+
+
+})();

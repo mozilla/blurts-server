@@ -21,21 +21,21 @@ async function sha1(message) {
 async function hashEmailAndSend(emailFormSubmitEvent) {
   emailFormSubmitEvent.preventDefault();
   const emailForm = emailFormSubmitEvent.target;
-  const emailInput = document.getElementById("scan-email");
+  let userEmail = document.getElementById("scan-email").value;
 
   // show loader and hash email
   emailForm.classList.add("loading-data");
-  emailForm.querySelector("input[name=emailHash]").value = await sha1(emailInput.value);
+  emailForm.querySelector("input[name=emailHash]").value = await sha1(userEmail);
 
   // set unhashed email in client's sessionStorage and send key to server
   // so we can pluck these out later in scan-results and not lose them on back clicks
   if (sessionStorage) {
-    sessionStorage.setItem(`scanned_${(sessionStorage.length + 1)}`, emailInput.value);
+    sessionStorage.setItem(`scanned_${(sessionStorage.length + 1)}`, userEmail);
     emailForm.querySelector("input[name=scannedEmailId]").value = sessionStorage.length;
   }
 
   // clear input, send ping, and submit
-  emailInput.value = "";
+  userEmail = "";
   sendPing(emailForm, "Success");
   emailForm.submit();
 }

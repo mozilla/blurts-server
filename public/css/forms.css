@@ -5,6 +5,10 @@ form,
   width: 100%;
 }
 
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+
 .form-group.loading-data .loader {
   display: block;
   opacity: 0.58;
@@ -15,12 +19,12 @@ form,
 
 .form-desc {
   text-align: center;
-  display: flex;
   font-weight: 300;
-  color: rgba(36, 34, 45, 0.6);
   margin: 0 auto;
-  font-size: 0.9rem;
+  color: var(--blue4);
   max-width: 355px;
+  z-index: 1;
+  display: none;
 }
 
 input[type="submit"],
@@ -44,7 +48,7 @@ button:focus,
   outline: none;
 }
 
-form {
+.email-scan {
   flex-direction: column;
 }
 
@@ -112,7 +116,7 @@ form {
 }
 
 input::placeholder {
-  color: var(--color);
+  color: #f1f1f1;
   font-size: 1rem;
 }
 
@@ -123,24 +127,41 @@ input::placeholder {
 }
 
 input[type="email"] {
+  color: var(--grey1);
   font-size: 17px;
   font-weight: 300;
   text-indent: var(--margin);
   background-color: transparent;
-  border-color: rgba(0, 0, 0, 0.13);
+  border-color: var(--blue3);
+  caret-color: var(--orange6);
   transition: all 0.1s ease-out;
 }
 
 input[type="submit"] {
-  background-color: var(--blue);
-  border-color: var(--blue);
-  color: rgba(255, 255, 255, 1);
   font-size: 1rem;
+  border-width: 2px;
+  background-color: var(--blue3);
+  color: rgba(255, 255, 255, 1);
+  font-weight: 700;
+  border-color: var(--blue3);
 }
 
 form.invalid input[type="submit"]:focus {
   border: 2px solid var(--red50);
   box-shadow: 0 0 0 1px rgba(255, 0, 55, 0.514), 0 0 0 4px rgba(255, 0, 55, 0.3);
+}
+
+input.email-add {
+  border-color: var(--violet3);
+  color: var(--color);
+  caret-color: var(--violet5);
+}
+
+input.email-add-submit {
+  background-color: var(--violet5);
+  color: white;
+  border-color: var(--violet5);
+  font-weight: 500;
 }
 
 /* radio buttons */
@@ -151,23 +172,23 @@ input[type="radio"] {
 
 .checkmark {
   background-color: rgba(255, 255, 255, 0);
-  height: 1.5rem;
-  width: 1.5rem;
-  border-radius: var(--radius);
+  height: 1.35rem;
+  width: 1.35rem;
+  border-radius: 0.1rem;
   display: block;
   position: absolute;
   top: 2px;
-  border: 1px solid rgba(79, 66, 255, 0.4);
+  border: 1px solid rgba(149, 43, 185, 0.4);
   transition: background-color 0.15s ease-in-out;
 }
 
 .radio-container:hover .checkmark {
-  background-color: rgba(79, 66, 255, 0.05);
+  background-color: rgba(149, 43, 185, 0.1);
   transition: background-color 0.15s ease-in-out;
 }
 
 input[type="radio"]:checked ~ .checkmark {
-  background-color: var(--blue);
+  background-color: var(--violet3);
   transition: background-color 0.15s ease-in-out;
 }
 
@@ -175,7 +196,12 @@ input[type="radio"]:checked ~ .checkmark {
   margin: var(--margin) 0;
 }
 
+.add-new-email-form input::placeholder {
+  color: var(--color);
+}
+
 .radio-container {
+  margin-bottom: 1rem;
   display: flex;
   position: relative;
   min-height: 1.6rem;
@@ -184,6 +210,9 @@ input[type="radio"]:checked ~ .checkmark {
 
 .radio-label {
   margin-left: var(--margin);
+  font-weight: 400;
+  color: var(--textLight);
+  font-size: 1rem;
 }
 
 @media screen and (max-width: 800px) {
@@ -192,5 +221,9 @@ input[type="radio"]:checked ~ .checkmark {
   input[type="submit"],
   input::placeholder {
     font-size: 15px;
+  }
+
+  .radio-label {
+    font-size: 0.9rem;
   }
 }

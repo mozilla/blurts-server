@@ -15,7 +15,7 @@ router.get("/dashboard", getDashboard);
 router.get("/preferences", getPreferences);
 router.get("/logout", logout);
 router.post("/email", urlEncodedParser, asyncMiddleware(add));
-router.post("/remove-email", jsonParser, asyncMiddleware(removeEmail));
+router.post("/remove-email", urlEncodedParser, asyncMiddleware(removeEmail));
 router.post("/resend-email", jsonParser, asyncMiddleware(resendEmail));
 router.post("/update-comm-option", jsonParser, asyncMiddleware(updateCommunicationOptions));
 router.get("/verify", jsonParser, asyncMiddleware(verify));

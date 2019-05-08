@@ -1,7 +1,7 @@
-<section class="container bg-white">
-  <div class="row flx-col jst-cntr sign-up-banner">
-    <div class="col-12 flx-cntr txt-cntr">
-      <h2 class="skinny-headline">{{getString "monitor-your-online-accounts"}}</h2>
+<section class="bg-white container">
+  <div class="row flx-col jst-cntr">
+    <div class="col-12 flx-cntr txt-cntr feat-headline-wrapper">
+      <h2 class="headline feature-tip-headline">{{getString "monitor-your-online-accounts"}}</h2>
     </div>
     <div class="col-12 flx-cntr txt-cntr">
       <div class="flx feature-tip-group">
@@ -9,11 +9,17 @@
           {{> feature-tip-group }}
         {{/each}}
       </div>
-      <div class="features-sign-up">
-        {{> sign-up-button buttonValue="sign-up-for-alerts"}}
-        <p class="desc">{{getString "create-a-fxa"}}</p>
+    </div>
+    <div class="col-8 sign-up-wrapper">
+      <div class="sign-up-banner warm-gradient">
+        <h2 class="sign-up-headline">{{ getString "get-alerted" }}</h2>
+        <div class="flx flx-col sign-up-cta wide">
+          {{> sign-up-button buttonValue="sign-up-for-alerts"}}
+          <span class="account-not-required">
+            {{ getString "account-not-required" }}
+          </span>
+        </div>
       </div>
     </div>
   </div>
 </section>
- 

@@ -6,20 +6,16 @@ const { getStrings } = require("./hbs-helpers");
 
 const monitorFeatures = [
   {
-    "title": "Full reports of past breaches",
-    "stringId": "feat-full-report",
+    "title": "Enroll multiple emails in breach monitoring",
+    "stringId": "feat-enroll-multiple",
   },
   {
-    "title": "Security tips to protect your accounts",
+    "title": "Advanced search in sensitive breaches",
+    "stringId": "feat-sensitive",
+  },
+  {
+    "string": "Security tips to protect your accounts",
     "stringId": "feat-security-tips",
-  },
-  {
-    "string": "Email alerts for new breaches",
-    "stringId": "feat-email-alerts",
-  },
-  {
-    "string": "Info about other {-brand-Mozilla} services",
-    "stringId": "feat-info-about",
   },
 ];
 
@@ -44,18 +40,21 @@ function monitorFeaturesList(args) {
       titleId: "stay-alert",
       subtitle: "If your information surfaces in a  new data breach, we'll send you an alert.",
       subtitleId: "if-your-info",
+      pictogramPath: "alert",
     },
     {
       title: "Monitor several emails",
       titleId: "monitor-several-emails",
       subtitle: "Search all your email addresses for breaches and get alerts about new threats.",
       subtitleId: "search-all-emails",
+      pictogramPath: "email",
     },
     {
-      title: "Get ongoing expert advice",
-      titleId: "get-expert-advice",
+      title: "Take action to protect your accounts",
+      titleId: "take-action",
       subtitle: "Find out what you need to do to keep your data safe from cyber criminals.",
       subtitleId: "keep-your-data-safe",
+      pictogramPath: "advice",
     },
   ];
 

@@ -36,14 +36,19 @@ async function sendCommunicationOption(e) {
     .catch(e => {})/* decide how to handle errors */;
 }
 
-async function removeOrResendEmail(e) {
-  // handles remove email and resend verification link buttons
-  const emailOptionButton = e.target;
-  const emailId =  emailOptionButton.dataset.emailId;
-  const formAction = emailOptionButton.dataset.formAction;
+async function resendEmail(e) {
+  const resendEmailBtn = e.target;
+  resendEmailBtn.classList.add("email-sent");
+  const emailId =  resendEmailBtn.dataset.emailId;
+  const formAction = resendEmailBtn.dataset.formAction;
 
   sendForm(formAction, { emailId: emailId })
-  .then(data => {}) /*decide what to do with data */
+  .then(data => {
+    setTimeout( ()=> {
+      const span = resendEmailBtn.nextElementSibling;
+      span.classList.remove("hide");
+    }, 1000);
+  }) /*decide what to do with data */
   .catch(e => {})/* decide how to handle errors */;
 }
 
@@ -53,17 +58,13 @@ if (document.querySelector(".email-card")) {
     el.addEventListener("click", toggleEl);
   });
 
-  if (document.querySelectorAll(".remove-email")) {
-    const removeEmailButtons = document.querySelectorAll(".remove-email, .resend-email");
-    removeEmailButtons.forEach(btn => {
-      btn.addEventListener("click", removeOrResendEmail);
-    });
-  }
+  const removeEmailButtons = document.querySelectorAll(".resend-email");
+  removeEmailButtons.forEach(btn => {
+    btn.addEventListener("click", resendEmail);
+  });
 
-  if (document.querySelector(".radio-comm-option")) {
-    const communicationRadioButtons = document.querySelectorAll(".radio-comm-option");
-    communicationRadioButtons.forEach(option => {
-      option.addEventListener("click", sendCommunicationOption);
-    });
-  }
+  const communicationRadioButtons = document.querySelectorAll(".radio-comm-option");
+  communicationRadioButtons.forEach(option => {
+    option.addEventListener("click", sendCommunicationOption);
+  });
 }

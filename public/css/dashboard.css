@@ -1,235 +1,79 @@
-
-.breach-stats.user-stats {
-  margin: 0 0 var(--margin) 0;
+.welcome-back {
+  font-size: 1.75rem;
+  font-family: "FirefoxSharpSans", Arial, Helvetica, sans-serif;
+  display: inline-block;
+  padding-top: 6rem;
 }
 
-/* table of monitored email addresses */
-.email-table {
-  display: block;
-  border-radius: 1rem;
-  overflow: hidden;
+.welcome-back span.bold::before {
+  content: "\A";
+  white-space: pre;
 }
 
-/* email cards */
-.e-toggle-info-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--margin) 0;
-  pointer-events: none;
-  position: relative;
+.dash-row {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
-.e-info { /* wraps email address info */
-  display: inline-flex;
-  flex-direction: column;
+.manage-emails {
+  font-weight: 600;
+  color: var(--violet5);
+  margin: var(--margin) 0;
+  background-color: #ededf0;
+  padding: 0.25rem;
+  border: 2px solid #ededf0;
+  transition: background-color 0.15s ease-in-out;
 }
 
-/* email card styling */
-.e-address {
-  font-weight: 400;
-  font-size: 1.2rem;
-}
-
-.e-num-breaches {
-  font-style: italic;
-  font-weight: 300;
-  color: #666;
-  margin-top: 0.5rem;
-}
-
-/* email card breaches */
-.e-breach-list {
-  visibility: hidden;
-  opacity: 0;
-  max-height: 0;
-  transition: all 0.3s ease;
-}
-
-.email-card.active .e-breach-list {
-  visibility: visible;
-  opacity: 1;
-  max-height: 20000px;
-  transition: all 0.3s ease;
-}
-
-.svg-wrap {
-  border-width: 0;
-  border-radius: 0.25rem;
-  padding: 0.5rem 0 0 0;
-  pointer-events: all;
-  text-align: left;
-}
-
-.resend-email {
-  padding: 0.5rem 0;
-}
-
-.remove-fxm:hover,
-.remove-fxm:focus,
-.toggle.svg-wrap:focus,
-.toggle.svg-wrap:hover,
-.resend-email:hover,
-.resend-email:focus {
-  outline: none;
-  border: none;
-  text-decoration: underline;
-  box-shadow: none;
-  text-align: left;
-  pointer-events: all;
-}
-
-/* toggle transition on card open */
-.email-card .toggle {
-  height: 100%;
-  transition: all 0.1s ease;
-  position: absolute;
-  width: 100%;
-}
-
-svg.toggle-down {
-  border-radius: 50%;
-  margin: auto;
-  right: 0;
-  transition: all 0.2s ease;
-  pointer-events: none;
-}
-
-.email-card .toggle,
-svg.toggle-down {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-}
-
-svg.toggle-down path {
-  fill: var(--color);
-}
-
-.email-card.active .toggle-down {
-  transform: rotate(180deg);
-  transition: all 0.1s ease;
-}
-
-.skinny-headline.breach-summary {
-  font-size: 1rem;
+.manage-emails:hover {
+  background-color: #cdcdd4;
+  transition: background-color 0.15s ease-in-out;
 }
 
 /* preferences dashbord */
 
 .pref-section {
-  margin: calc(var(--padding) * 2) 0;
+  display: flex;
+  flex-direction: column;
+  margin: var(--padding) 0;
 }
 
 .email-pref {
   font-size: 1rem;
-  margin: var(--padding) var(--padding) 0 var(--padding);
+  margin: var(--margin) 0 0.5rem 0;
+  font-weight: 500;
 }
 
-.email-card {
-  padding: 0 var(--padding);
-  border: 1px solid #ececec;
-  margin: var(--margin) 0;
-  border-radius: var(--radius);
+.pref-section.unverified {
+  margin-top: calc(var(--padding) * 3);
 }
 
-fieldset {
-  border: 1px solid #eee;
-  border-radius: var(--radius);
-}
-
-legend.skinny-headline {
-  padding: 0 var(--padding);
-  margin-bottom: 0;
-}
-
-.change-primary-email,
-.remove-fxm,
-.resend-email {
-  pointer-events: all;
-}
-
-.remove-email {
+.col-8.card.global-comm {
   border: none;
-  padding: 0.5rem;
-  border-radius: 50%;
-  height: 1.5rem;
-  width: 1.5rem;
-  position: relative;
 }
 
-.remove-email .x-close {
+.section-headline.breach-summary {
+  margin-bottom: 0.5rem;
+  padding-top: var(--padding);
+}
+
+.trash-can {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 0;
   right: 0;
-  margin: auto;
+  left: 0;
   pointer-events: none;
-}
-
-.remove-email .x-close path {
-  fill: var(--color);
-}
-
-.remove-fxm,
-.resend-email {
-  text-align: left;
-  padding: 0;
-  margin-top: 0.5rem;
-  border-width: 0;
-}
-
-.remove-fxm:hover,
-.remove-fxm:focus,
-.resend-email:hover,
-.resend-email:focus {
-  border-width: 0;
-}
-
-@media screen and (max-width: 800px) {
-  .dashboard {
-    border-top: none;
-  }
-
-  .dash-stats,
-  .breach-stats {
-    max-width: 100%;
-  }
-
-  .dash-stats,
-  .email-table {
-    margin-bottom: 3rem;
-  }
-
-  .skinny-headline.breach-summary {
-    font-size: var(--skinnyHeadline);
-  }
+  margin: auto;
 }
 
 @media screen and (max-width: 600px) {
-  .e-address,
-  .radio-label {
-    font-size: 0.9rem;
+  .welcome-back,
+  .section-headline.dash {
+    font-size: 1.25rem;
   }
 
-  .e-num-breaches,
-  .resend-email,
-  .change-primary-email {
-    font-size: 0.8rem;
-  }
-
-  .e-toggle-info-wrapper {
-    flex-wrap: wrap;
-  }
-
-  .change-primary-email {
-    width: 100%;
-    margin: var(--padding) 0 0 0;
-  }
-
-  .resend-email:hover {
-    background-color: transparent;
+  .welcome-back {
+    padding-top: 0;
   }
 }

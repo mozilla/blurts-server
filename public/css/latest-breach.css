@@ -1,28 +1,28 @@
 .latest-breach {
-  margin: auto;
+  margin: 0;
 }
 
 .latest-breach-wrapper {
   overflow: hidden;
   border-radius: 1rem;
+  background-color: #20123abf;
 }
 
-.latest-breach-container {
-  background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 50%, rgba(249, 249, 250, 1) 50%, rgba(249, 249, 250, 1) 100%); /* W3C */
+.breach-card.latest-breach {
+  color: rgba(255, 255, 255, 1);
 }
 
 .latest-breach-headline {
-  font-size: 1rem;
+  font-size: 0.85rem;
   text-align: center;
   margin-bottom: 0;
-  padding: 1.5rem;
+  padding: 1.5rem 1rem 1.25rem 1rem;
   font-weight: 200;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
 }
 
 .latest-breach .breach-card-title-wrapper {
-  margin-bottom: 0.5rem;
+  margin: 0 auto 0.5rem 0;
 }
 
 .latest-breach .breach-card-link-wrap {
@@ -33,13 +33,16 @@
 .latest-breach .breach-card-title-wrapper {
   padding: 0;
   background-color: rgba(255, 255, 255, 0);
-  color: rgba(255, 255, 255, 1);
 }
 
 .latest-breach-info {
-  padding: calc(var(--padding) + 1rem) calc(var(--padding) * 2) calc(var(--padding) * 2) calc(var(--padding) * 2);
-  background-color: rgba(249, 249, 250, 0.07);
-  border-top: 1px solid #7cdfff0d;
+  padding: var(--margin);
+  background-image: linear-gradient(to bottom, #07307226, var(--color));
+  border-top: 1px solid #0060df0f;
+}
+
+.latest-breach-info .breach-title {
+  color: rgba(255, 255, 255, 1);
 }
 
 .latest-breach-container,
@@ -48,12 +51,32 @@
 .latest-breach .breach-info,
 .latest-breach .demi.key {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 1);
 }
 
 .latest-breach-link {
-  margin-top: var(--padding);
+  margin-top: var(--margin);
   display: block;
+  color: #00b4f5;
+}
+
+@media screen and (max-width: 900px) {
+  .latest-breach .key {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .latest-breach-info {
+    padding: var(--padding);
+  }
+
+  .latest-breach-wrapper {
+    margin-bottom: 8vh;
+  }
+
+  .latest-breach .key {
+    display: inline-block;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -71,20 +94,6 @@
 
 @media screen and (max-width: 500px) {
   .latest-breach-wrapper {
-    margin: auto;
-  }
-
-  .latest-breach-headline {
-    padding: 1rem;
-    border-bottom: none;
-    border-top-right-radius: 1rem;
-    border-top-left-radius: 1rem;
-  }
-
-  .latest-breach-info {
-    border-top: none;
-    padding: 1.5rem 2rem 2rem 2rem;
-    border-bottom-right-radius: 1rem;
-    border-bottom-left-radius: 1rem;
+    margin-bottom: 6vh;
   }
 }
