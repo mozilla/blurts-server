@@ -114,7 +114,6 @@ function getBreachArray(args) {
     delete(breach.ModifiedDate);
     delete(breach.IsFabricated);
     delete(breach.Domain);
-    delete(breach.Name);
     delete(breach.IsRetired);
     delete(breach.IsSensitive);
     delete(breach.IsSpamList);
