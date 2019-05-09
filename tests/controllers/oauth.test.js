@@ -64,8 +64,8 @@ test("confirmed request checks session cookie, calls FXA for token and email, ad
   expect(mockGotCallArgs[1].headers.Authorization).toMatch("testToken");
 
   const subscribers = await DB.getSubscribersByHashes([getSha1(testFxAEmail)]);
-  expect(subscribers[0].verified).toBeTruthy();
-  expect(subscribers[0].email).toBe(testFxAEmail);
+  expect(subscribers[0].primary_verified).toBeTruthy();
+  expect(subscribers[0].primary_email).toBe(testFxAEmail);
   expect(subscribers[0].signup_language).toBe(userAddLanguages);
 
   const mockRedirectCallArgs = mockResponse.redirect.mock.calls[0];
