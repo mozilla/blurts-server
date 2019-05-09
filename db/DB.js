@@ -266,6 +266,13 @@ const DB = {
     return await knex("subscribers").whereIn("primary_sha1", hashes).andWhere("primary_verified", "=", true);
   },
 
+  async getEmailAddressesByHashes(hashes) {
+    return await knex("email_addresses")
+      .join("subscribers", "email_addresses.subscriber_id", "=", "subscribers.id")
+      .whereIn("email_addresses.sha1", hashes)
+      .andWhere("email_addresses.verified", "=", true);
+  },
+
   async deleteUnverifiedSubscribers() {
     const expiredDateTime = new Date(Date.now() - AppConstants.DELETE_UNVERIFIED_SUBSCRIBERS_TIMER * 1000);
     const expiredTimeStamp = expiredDateTime.toISOString();

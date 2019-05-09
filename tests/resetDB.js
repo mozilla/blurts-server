@@ -4,7 +4,7 @@ const Knex = require("knex");
 
 const DB = require("../db/DB");
 const knexConfig = require("../db/knexfile");
-const {TEST_DATA} = require("../db/seeds/test_subscribers");
+const test_data = require("../db/seeds/test_subscribers");
 
 
 // (Re-)create DB connection at the beginning of each test suite
@@ -18,7 +18,8 @@ beforeEach(async () => {
   const knex = Knex(knexConfig);
   await knex("email_addresses").del();
   await knex("subscribers").del();
-  await knex("subscribers").insert(Object.values(TEST_DATA));
+  await knex("subscribers").insert(Object.values(test_data.TEST_SUBSCRIBERS));
+  await knex("email_addresses").insert(Object.values(test_data.TEST_EMAIL_ADDRESSES));
   knex.destroy();
 });
 
