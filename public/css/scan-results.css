@@ -33,20 +33,6 @@
   color: var(--violet1);
 }
 
-.found-breaches .show-remaining-breaches {
-  background-color: transparent;
-  border: 1px solid var(--violet1);
-  color: var(--violet1);
-  min-width: 200px;
-  min-height: 2.65rem;
-}
-
-.found-breaches .show-remaining-breaches:hover {
-  border: 1px solid var(--inkLight);
-  background-color: var(--inkLight);
-  transition: border 0.15s ease-in-out, background-color 0.15s ease-in-out;
-}
-
 @media screen and (max-width: 800px) {
   .scanned-email-address,
   .scan-results-headline,

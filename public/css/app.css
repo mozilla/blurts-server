@@ -84,12 +84,10 @@ body {
   background: var(--warmGradient);
 }
 
-/* dark color group */
 .feature-title {
   color: var(--color);
 }
 
-/* light logotype */
 .fx-monitor {
   color: var(--grey1);
 }
@@ -207,15 +205,13 @@ a:hover {
 
 .button {
   width: 100%;
-  border: 2px solid transparent;
   text-align: center;
   padding: var(--padding);
   display: block;
   margin: var(--margin) 0;
-  background-color: #eee;
 }
 
-button:focus,
+/* button:focus, */
 div:focus,
 input:focus {
   border: 2px solid #4f42ff14;
@@ -223,41 +219,62 @@ input:focus {
   outline: none;
 }
 
+button:focus,
 a:focus {
   outline: none;
 }
 
-button {
+button,
+a.btn-light,
+a.btn-dark {
   cursor: pointer;
   justify-content: center;
   text-align: center;
   background-color: transparent;
-  border-style: solid;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 0.25rem;
+  min-height: 2rem;
   padding: 0.75rem 2rem;
+  transition: border 0.1s ease-in-out, background-color 0.1s ease-in-out;
 }
 
-.blue {
-  color: var(--blue);
-}
-
-.util-btn {
-  width: 100%;
-  margin: auto;
-  max-width: 450px;
+.btn-light {
+  border: 1px solid rgba(255, 255, 255, 0.5);
   color: rgba(255, 255, 255, 1);
-  padding: 1rem;
-  border-radius: 0.5rem;
 }
 
-.util-btn:hover {
-  background-color: rgba(47, 43, 55, 0.88);
+.btn-dark,
+.email-card .btn-light {
+  color: var(--grey8);
+  border: 1px solid var(--grey8);
 }
 
-.util-btn.light-btn {
-  color: var(--color);
-  border-color: var(--color);
+.btn-dark:hover,
+.email-card .btn-light:hover {
+  color: var(--grey8);
+  background-color: var(--grey2);
+  border: 1px solid var(--grey2);
+}
+
+.btn-light:hover,
+a.btn-light:hover {
+  background-color: var(--violet5);
+  border: 1px solid var(--violet5);
+  opacity: 1;
+  transition: border 0.1s ease-in-out, background-color 0.1s ease-in-out;
+}
+
+.btn-light:active,
+a.btn-light:active {
+  border: 1px solid var(-violet4);
+  background-color: var(--violet4);
+  transition: border 0.1s ease-in-out, background-color 0.1s ease-in-out;
+}
+
+.btn-light:focus,
+.btn-light:active {
   border-width: 1px;
-  max-width: 300px;
+  outline: none;
 }
 
 ul {

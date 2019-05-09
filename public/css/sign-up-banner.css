@@ -29,25 +29,6 @@
   margin: auto;
 }
 
-.sign-up-banner-button {
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 1);
-  color: rgba(255, 255, 255, 1);
-  font-size: 0.9rem;
-  margin: 0 auto;
-  min-width: 100px;
-  padding: 0.75rem;
-  width: 100%;
-  font-weight: 700;
-}
-
-.sign-up-banner-button:hover {
-  background-color: rgba(255, 255, 255, 0.4);
-  box-shadow: none;
-  outline: none;
-  border-color: transparent;
-}
-
 .sign-up-feature {
   font-weight: 300;
   color: rgba(255, 255, 255, 0.7);

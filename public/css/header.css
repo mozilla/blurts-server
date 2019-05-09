@@ -16,6 +16,10 @@ header {
   display: inline-flex;
 }
 
+.fx-monitor-logo-wrapper:hover {
+  opacity: 1;
+}
+
 /* Fx-Monitor logo */
 .sprite.fx-monitor-logo {
   background: url("/img/gradient-sprites.png") -281px 0;
@@ -52,26 +56,9 @@ nav {
   display: none;
 }
 
-/* sign-in button */
 .sign-in {
-  background-color: transparent;
-  border-color: rgba(255, 255, 255, 1);
-  border-width: 1px;
-  border-radius: 0.25rem;
-  color: rgba(255, 255, 255, 1);
   margin-left: 1rem;
-  min-height: 2rem;
-  padding: 0.75rem 2rem;
   white-space: nowrap;
-  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
-}
-
-.sign-in:hover {
-  border-color: var(--violet5);
-  border-width: 1px;
-  background-color: var(--violet5);
-  color: rgba(255, 255, 255, 1);
-  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
 
 .sign-in:focus,

@@ -65,17 +65,9 @@
   transition: all 0.3s ease;
 }
 
-.e-breach-list .show-remaining-breaches:focus,
-.e-breach-list .show-remaining-breaches {
-  border-width: 0;
-}
-
-.show-remaining-breaches {
+.show-remaining-breaches.btn-light {
   margin: 1rem auto;
   display: flex;
-  padding: 0.5rem 1rem;
-  background-color: #eee;
-  border-radius: 0.25rem;
 }
 
 .show-remaining-breaches.hide {

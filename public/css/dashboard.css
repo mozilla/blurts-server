@@ -16,18 +16,9 @@
 }
 
 .manage-emails {
-  font-weight: 600;
-  color: var(--violet5);
+  color: var(--var(--grey8));
+  border: 1px solid var(--grey8);
   margin: var(--margin) 0;
-  background-color: #ededf0;
-  padding: 0.25rem;
-  border: 2px solid #ededf0;
-  transition: background-color 0.15s ease-in-out;
-}
-
-.manage-emails:hover {
-  background-color: #cdcdd4;
-  transition: background-color 0.15s ease-in-out;
 }
 
 /* preferences dashbord */
