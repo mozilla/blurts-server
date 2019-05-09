@@ -31,7 +31,7 @@ matrix:
           install:
               - sudo pip install compare-locales
           script:
-              - compare-locales --validate l10n.toml .
+              - moz-l10n-lint l10n.toml
               - compare-locales l10n.toml . `ls locales`
 
 
