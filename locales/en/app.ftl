@@ -19,7 +19,7 @@ layout-support = Support
 about-firefox-alerts = About Firefox Alerts
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Give Feedback
-terms-and-privacy = Terms and Privacy
+terms-and-privacy = Terms & Privacy
 
 error-scan-page-token = You tried to scan too many email addresses in a short time period. For security reasons, we’ve temporarily blocked you from new searches. You’ll be able to try again later.
 error-could-not-add-email = Could not add email address to database.
@@ -464,7 +464,6 @@ frequently-asked-questions=Frequently Asked Questions
 
 about-firefox-monitor = About {-product-name}
 mozilla-dot-org = Mozilla.org
-terms-and-privacy-v2 = Terms & Privacy
 
 preferences = Preferences
 
@@ -601,7 +600,8 @@ feat-enroll-multiple = Enroll multiple emails in breach monitoring
 
 sign-up-for-fxa = Sign up for a {-brand-fxa}
 
-
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
 appears-in-x-breaches =
   { $breachCount ->
         [one] Appears in { $breachCount } known breach.
@@ -762,3 +762,18 @@ passwords-exposed =
 
 # Button
 see-additional-breaches = See Additional Breaches
+
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = See All Breaches
+
+scan-results-known-breaches =
+  { $breachCount ->
+      [one] This email appeared in 1 known data breach.
+     *[other] This email appeared in { $breachCount } known data breaches.
+  }
+
+
+# This string is shown at the top of the scan results page and indicates
+# the email that was searched.
+results-for-x = Results for { $userEmail }
