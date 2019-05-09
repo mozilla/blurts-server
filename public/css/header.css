@@ -278,17 +278,22 @@ nav {
     display: block;
   }
 
-  .drop-down-menu {
+  .nav-link.drop-down-menu {
     -webkit-user-select: none;
     display: block;
     text-align: left;
-    padding: var(--margin) 2rem;
+    padding: var(--margin) 1.75rem;
     pointer-events: none;
     background-color: var(--inkLight);
     width: 100%;
     z-index: 1;
     border-bottom: 1px solid var(--inkLight);
     transition: border-bottom 0.15s ease;
+  }
+
+  .drop-down-menu svg.toggle-down {
+    right: 1.9rem;
+    opacity: 0.7;
   }
 
   .mobile-menu-open .drop-down-menu {
@@ -306,8 +311,8 @@ nav {
   }
 
   .nav-link {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
     text-align: left;
     width: 100%;
   }
