@@ -9,16 +9,17 @@
   font-size: 2.8rem;
   max-width: 600px;
   margin-top: 10rem;
-  color: var(--color);
+  color: var(--grey1);
 }
 
 .security-tips {
-  color: var(--grey8);
+  color: var(--grey1);
 }
 
 .article-lead-in {
   font-size: 1.2rem;
   max-width: 700px;
+  opacity: .8;
 }
 
 .security-tip-list {
@@ -32,7 +33,7 @@
   font-size: 1.2rem;
   font-weight: 700;
   font-family: "FirefoxSharpSans", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: var(--color);
+  color: var(--grey1);
 }
 
 .security-tip-subhead {

@@ -27,18 +27,7 @@
       <div class="col-4">
         {{> latest-breach }}
       </div>
-      <div class="col-8">
-        <h2 class="headline article-list-headline">{{ getString "take-control" }}</h2>
-        <h3 class="article-list-subhead">{{ getString "cant-stop-hackers" }}</h3>
-        <ul class="article-list">
-          {{#each (articleLinks)}}
-            <li class="logo-title-wrapper flx article">
-              <div class="icon-inline-wrapper">{{> (lookup . 'pathToPartial') }}</div>
-              <a href="" class="article-link">{{ this.stringId }}</a>
-            </li>
-          {{/each}}
-        </ul>
-      </div>
+      {{> article-list }}
     </section>
   </section>
 </div>
