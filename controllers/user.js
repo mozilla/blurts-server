@@ -172,6 +172,11 @@ async function verify(req, res) {
   if (!existingEmail) {
     throw new FluentError("error-not-subscribed");
   }
+
+  if (existingEmail.subscriber_id !== req.session.user.id) {
+    throw new FluentError("user-verify-token-error");
+  }
+
   if (!existingEmail.verified) {
     await _verify(req);
   }
