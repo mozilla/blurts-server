@@ -53,10 +53,8 @@ async function add(req, res) {
   if (!email || !isemail.validate(email)) {
     throw new FluentError("user-add-invalid-email");
   }
-  const fxNewsletter = Boolean(req.body.additionalEmails);
-  const signupLanguage = req.headers["accept-language"];
   const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(
-    req.session.user, email, fxNewsletter, signupLanguage
+    req.session.user, email
   );
 
 
@@ -174,6 +172,11 @@ async function verify(req, res) {
   if (!existingEmail) {
     throw new FluentError("error-not-subscribed");
   }
+
+  if (existingEmail.subscriber_id !== req.session.user.id) {
+    throw new FluentError("user-verify-token-error");
+  }
+
   if (!existingEmail.verified) {
     await _verify(req);
   }
