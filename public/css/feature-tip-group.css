@@ -15,13 +15,13 @@
 }
 
 .feat-img {
-  height: 7rem;
-  width: 15rem;
+  height: 6rem;
+  width: 7rem;
   margin: var(--padding) auto;
   transition: all 0.2s ease;
-  background-position: center center;
+  background-position: bottom center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
 }
 
 .feature-tip-content-wrapper.col.txt-cntr:hover .feat-img {
