@@ -120,6 +120,14 @@ input::placeholder {
   font-size: 1rem;
 }
 
+.scan-another-email input::placeholder {
+  color: var(--color);
+}
+
+.scan-another-email input[type="email"] {
+  color: var(--color);
+}
+
 .form-group.loading-data .button,
 .form-group.loading-data input::placeholder,
 .form-group.loading-data input {
