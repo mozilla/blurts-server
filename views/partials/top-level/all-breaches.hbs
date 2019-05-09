@@ -4,33 +4,28 @@
     <div class="row">
       <div class="col-12 no-vertical-padding">
         <h2 class="headline">{{ getString "all-breaches-headline" }}</h2>
-        {{!-- {{> fuzzy-find }} --}}
       </div>
     </div>
   </main>
   <section class="all-breaches-wrapper bg-ink-light">
     <div id="fixed-filters" class="fixed-filters">
       {{> breach-filters }}
-      <button id="back-to-top" class="back-to-top">
+      <button id="back-to-top" class="back-to-top" aria-label="{{ getString "back-to-top" }}">
         {{> svg/arrow-right }}
         {{ getString "back-to-top" }}
       </button>
     </div>
     <div class="row">
-        <!-- breach card filters -->
-        <div class="col-12 filters">
-          {{> breach-filters }}
-          {{> fuzzy-find }}
-        </div>
+      <!-- breach card filters -->
+      <div class="col-12 filters">
+        {{> breach-filters }}
+        {{> fuzzy-find }}
+      </div>
     </div>
 
     <div class="row flx-col">
       <!-- breach cards -->
-      <div id="all-breaches" class="all-breaches flx">
-        {{!-- {{#each this.breachCards}}
-          {{> breach-card lazyLoad=true cardType="three-up drop-shadow ab" showPwnCount=true }}
-        {{/each}} --}}
-      </div>
+      <div id="all-breaches" class="all-breaches flx"></div>
     </div>
   </section>
 {{/allBreaches}}

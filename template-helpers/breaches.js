@@ -72,7 +72,6 @@ function allBreaches(allBreaches, options) {
   allBreaches = filterBreaches(allBreaches);
   const breachCategories = ["website-breach", "sensitive-breach", "data-aggregator-breach"];
   const allBreachesModule = {
-    "breachCards": makeBreachCards(allBreaches, locales),
     "breachCategories" : getBreachCategories(locales, breachCategories),
   };
 
@@ -108,6 +107,18 @@ function getBreachArray(args) {
 
   allBreaches = filterBreaches(allBreaches);
   const breaches = makeBreachCards(allBreaches, locales);
+  breaches.forEach(breach => {
+    // remove unused properties
+    delete(breach.Description);
+    delete(breach.IsVerified);
+    delete(breach.ModifiedDate);
+    delete(breach.IsFabricated);
+    delete(breach.Domain);
+    delete(breach.Name);
+    delete(breach.IsRetired);
+    delete(breach.IsSensitive);
+    delete(breach.IsSpamList);
+  });
   return JSON.stringify(breaches);
 }
 

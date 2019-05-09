@@ -138,109 +138,107 @@ function makeBreaches(breachArray, breachCardWrapper) {
 
 (async() => {
 
-if (document.getElementById("all-breaches")) {
-  const breachCardWrapper = document.getElementById("all-breaches");
-  const breachWrapper = document.getElementById("breach-array-json");
-  const breachArray = JSON.parse(breachWrapper.dataset.breachArray);
+  if (document.getElementById("all-breaches")) {
+    const breachCardWrapper = document.getElementById("all-breaches");
+    const breachWrapper = document.getElementById("breach-array-json");
+    const breachArray = JSON.parse(breachWrapper.dataset.breachArray);
 
-  makeBreaches(breachArray, breachCardWrapper);
+    makeBreaches(breachArray, breachCardWrapper);
 
-  document.onreadystatechange = () => {
-    if (document.readyState === "complete") {
-      const loader = document.getElementById("breaches-loader");
-      loader.classList.add("hide");
-    }
-  };
-
-  const breaches = new filterBreaches();
-  let filtered = false;
-
-  const breachFilters = document.querySelectorAll(".breach-filter");
-  breachFilters.forEach(filter => {
-    filter.addEventListener("click", (e) => {
-      const filterBtn = e.target;
-      const classToShow = filterBtn.dataset.breachCategory;
-
-      if (classToShow === "show-all-breaches") {
-        if (filtered) {
-          makeBreaches(breachArray, breachCardWrapper);
-        }
-        filtered = false;
-        breaches.unhideAll();
-        breachFilters.forEach(filter => {
-          filter.classList.remove("hidden");
-          filter.classList.remove("showing");
-        });
-        return;
+    document.onreadystatechange = () => {
+      if (document.readyState === "complete") {
+        const loader = document.getElementById("breaches-loader");
+        loader.classList.add("hide");
       }
+    };
 
-      if (!filtered) {
-        filterBtn.classList.add("showing");
-        breachFilters.forEach(filter => {
-          if (!filter.classList.contains("showing")) {
-            filter.classList.add("hidden");
+    const breaches = new filterBreaches();
+    let filtered = false;
+
+    const breachFilters = document.querySelectorAll(".breach-filter");
+    breachFilters.forEach(filter => {
+      filter.addEventListener("click", (e) => {
+        const filterBtn = e.target;
+        const classToShow = filterBtn.dataset.breachCategory;
+
+        if (classToShow === "show-all-breaches") {
+          if (filtered) {
+            makeBreaches(breachArray, breachCardWrapper);
           }
+          filtered = false;
+          breaches.unhideAll();
+          breachFilters.forEach(filter => {
+            filter.classList.remove("hidden");
+            filter.classList.remove("showing");
+          });
+          return;
+        }
+
+        if (!filtered) {
+          filterBtn.classList.add("showing");
+          breachFilters.forEach(filter => {
+            if (!filter.classList.contains("showing")) {
+              filter.classList.add("hidden");
+            }
+          });
+          filtered = true;
+          breaches.hideAllExcept(classToShow);
+          return;
+        }
+
+        if (filterBtn.classList.contains("hidden")) {
+          breaches.unhideOne(classToShow);
+        }
+
+        if (filterBtn.classList.contains("showing")) {
+          breaches.hideCategory(classToShow);
+        }
+        ["showing", "hidden"].forEach(className => {
+          filterBtn.classList.toggle(className);
         });
-        filtered = true;
-        breaches.hideAllExcept(classToShow);
+        return;
+      });
+    });
+
+    const win = window;
+    const fixedFilters = document.getElementById("fixed-filters");
+    win.onscroll = function(e) {
+      if (win.pageYOffset < 400) {
+        if (fixedFilters.classList.contains("show-filters")) {
+          fixedFilters.classList.remove("show-filters");
+        }
         return;
       }
-
-      if (filterBtn.classList.contains("hidden")) {
-        breaches.unhideOne(classToShow);
+      if ((this.oldScroll > this.scrollY + 50) && win.pageYOffset > 1000) {
+        if (!fixedFilters.classList.contains("show-filters") && !fixedFilters.classList.contains("to-top")) {
+          fixedFilters.classList.add("show-filters");
+        }
       }
-
-      if (filterBtn.classList.contains("showing")) {
-        breaches.hideCategory(classToShow);
-      }
-      ["showing", "hidden"].forEach(className => {
-        filterBtn.classList.toggle(className);
-      });
-      return;
-    });
-  });
-
-  const win = window;
-  const fixedFilters = document.getElementById("fixed-filters");
-  win.onscroll = function(e) {
-    if (win.pageYOffset < 400) {
-      if (fixedFilters.classList.contains("show-filters")) {
+      if (this.oldScroll < this.scrollY && fixedFilters.classList.contains("show-filters")) {
         fixedFilters.classList.remove("show-filters");
       }
-      return;
-    }
-    if ((this.oldScroll > this.scrollY + 50) && win.pageYOffset > 1000) {
-      if (!fixedFilters.classList.contains("show-filters") && !fixedFilters.classList.contains("to-top")) {
-        fixedFilters.classList.add("show-filters");
-      }
-    }
-    if (this.oldScroll < this.scrollY && fixedFilters.classList.contains("show-filters")) {
-      fixedFilters.classList.remove("show-filters");
-    }
-    this.oldScroll = this.scrollY;
-  };
+      this.oldScroll = this.scrollY;
+    };
 
-  const backToTopButton = document.getElementById("back-to-top");
-  backToTopButton.addEventListener("click", () => {
-    window.scrollTo(0, 0);
-  });
-
-  const fuzzyFindInput = document.getElementById("fuzzy-find-input");
-  const fuzzyFinder = document.getElementById("fuzzy-form");
-
-  fuzzyFinder.addEventListener("submit", (e) => {
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    const breachSearchTerm = fuzzyFindInput.value.toLowerCase();
-
-    const filteredBreachArray = breachArray.filter(breach => {
-      return breach.Name.toLowerCase().startsWith(breachSearchTerm);
+    const backToTopButton = document.getElementById("back-to-top");
+    backToTopButton.addEventListener("click", () => {
+      window.scrollTo(0, 0);
     });
-    fuzzyFindInput.value = "";
-    makeBreaches(filteredBreachArray, breachCardWrapper);
-    filtered = true;
-  });
-}
 
+    const fuzzyFindInput = document.getElementById("fuzzy-find-input");
+    const fuzzyFinder = document.getElementById("fuzzy-form");
 
+    fuzzyFinder.addEventListener("submit", (e) => {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      const breachSearchTerm = fuzzyFindInput.value.toLowerCase();
+
+      const filteredBreachArray = breachArray.filter(breach => {
+        return breach.Title.toLowerCase().startsWith(breachSearchTerm);
+      });
+      fuzzyFindInput.value = "";
+      makeBreaches(filteredBreachArray, breachCardWrapper);
+      filtered = true;
+    });
+  }
 })();

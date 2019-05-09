@@ -50,6 +50,10 @@ a.latest-breach-link {
   max-width: 3rem;
 }
 
+.breach-logo-wrapper { /* reduce jumping on lazyload */
+  height: 1.15rem;
+}
+
 .demi.key {
   font-size: 0.9rem;
 }
