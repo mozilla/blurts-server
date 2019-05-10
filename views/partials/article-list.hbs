@@ -2,12 +2,12 @@
       <h2 class="headline article-list-headline">{{ getString "take-control" }}</h2>
       <h3 class="article-list-subhead">{{ getString "cant-stop-hackers" }}</h3>
       <ul class="article-list">
-        {{#each (articleLinks)}}
+        {{#eachFromTo (articleLinks) 0 3}}
           <li class="logo-title-wrapper flx article">
             <div class="icon-inline-wrapper">{{> (lookup . 'pathToPartial') }}</div>
             <a href="" class="article-link">{{ this.stringId }}</a>
           </li>
-        {{/each}}
+        {{/eachFromTo}}
         <li class="logo-title-wrapper flx article">
           <a class="btn-light security-tips-link" href="/security-tips">{{ getString "read-more-tips" }}</a>
         </li>

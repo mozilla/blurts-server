@@ -1,4 +1,4 @@
-<main class="container clear-header security-tips bg-ink-light ">
+<main class="container clear-header security-tips bg-light">
   <div class="row jst-cntr">
     <div class="col-9">
       <h2 class="security-tips-headline">
@@ -13,7 +13,7 @@
       <ul class="security-tip-list flx">
         {{#each (articleLinks)}}
           <li class="security-tip-list-item flx">
-            <div class="article-icon {{ class }}">{{> (lookup . 'pathToPartial') }}</div>
+            {{!-- <div class="article-icon {{ class }}">{{> (lookup . 'pathToPartial') }}</div> --}}
             <div class="flx flx-col">
               <a class="security-tip-link {{ class }}" href="#{{ class }}">{{ stringId }}</a>
               <p class="security-tip-subhead">{{ subhead }}</p>
@@ -24,7 +24,7 @@
     </div>
   </div>
 </main>
-<section class="container bg-ink-light">
+<section class="container bg-light articles">
   <div class="row jst-cntr">
     <div class="col-9">
       {{#each (getArticleCopy)}}
