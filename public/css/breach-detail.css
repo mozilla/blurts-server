@@ -1,5 +1,51 @@
 main.breach-detail {
   min-height: 40vh;
+  color: var(--grey1);
+}
+
+.breach-type a {
+  color: var(--grey1);
+}
+
+.breach-type a:hover {
+  opacity: 1;
+  text-decoration: underline;
+  color: var(--grey2);
+}
+
+.detail-section {
+  padding: var(--padding) 0;
+}
+
+.feat-img.change-password {
+  background-image: url("/img/svg/change-password.svg");
+}
+
+.feat-img.stronger-password {
+  background-image: url("/img/svg/stronger-password.svg");
+}
+
+.feat-img.manage-password {
+  background-image: url("/img/svg/manage-password.svg");
+}
+
+.feat-img.data-compromised {
+  background-image: url("/img/svg/data-compromised.svg");
+  margin-top: 0 !important;
+}
+
+.feat-img.protect-personal-info {
+  background-image: url("/img/svg/protect-personal-info.svg");
+  margin-top: 0 !important;
+}
+
+.breach-detail-headline {
+  margin: auto auto 0.5rem auto;
+}
+
+.section-headline-light {
+  font-size: 1.3rem;
+  color: var(--grey8);
 }
 
 .breach-detail-logo-wrapper {
@@ -8,6 +54,24 @@ main.breach-detail {
 
 .breach-detail-logo {
   max-width: 10rem;
+}
+
+.glyph {
+  margin-right: 1rem;
+}
+
+.overview p {
+  font-size: 1.2rem;
+}
+
+.additional-data-types-wrapper {
+  margin: 2rem 0 3rem 0;
+  max-width: 450px;
+}
+
+.additional-data-types {
+  display: block;
+  margin-bottom: 1rem;
 }
 
 .breach-type {
@@ -19,21 +83,30 @@ main.breach-detail {
   flex-direction: column;
 }
 
+.low-weight-data-class {
+  border: 1px solid #c689ff69;
+  border-radius: var(--radius);
+  padding: 0.05rem 0.5rem;
+  margin: 0.5rem 0.25rem 0 0;
+  line-height: 200%;
+  white-space: nowrap;
+  display: inline-block;
+  font-size: 0.9rem;
+}
+
 .priority-data-class {
   font-weight: 600;
 }
 
-.data-action {
-  margin-left: var(--padding);
-}
-
-.data-class-action {
-  opacity: 0.7;
-  font-size: 0.75rem;
-}
-
 .data-type {
   max-width: 600px;
+}
+
+.data-type,
+.priority-data-class,
+.detail-section,
+.detail-section .feature-title {
+  color: var(--grey8);
 }
 
 .data-type,

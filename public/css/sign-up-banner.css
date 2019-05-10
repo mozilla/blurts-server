@@ -22,7 +22,6 @@
 }
 
 .sign-up-headline {
-  /* font-size: 1.5rem; */
   font-size: 2rem;
   color: rgba(255, 255, 255, 1);
   max-width: 350px;
@@ -48,6 +47,7 @@
 .sign-up-cta {
   max-width: 200px;
   justify-content: center;
+  margin-left: var(--margin);
 }
 
 .col-9 .sign-up-cta {
@@ -60,19 +60,25 @@
   padding-bottom: 0;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   .sign-up-banner {
     flex-wrap: wrap;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .sign-up-cta {
+    margin-left: 0;
+    max-width: 400px;
   }
 
   .sign-up-headline {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     font-size: 2rem;
   }
 
   .sign-up-headline,
   .sign-up-cta {
-    max-width: 100%;
     text-align: center;
   }
 

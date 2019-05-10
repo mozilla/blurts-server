@@ -89,7 +89,7 @@ function getReportHeader(args) {
 function getWhatToDos(args) {
   const locales = args.data.root.supportedLocales;
   const imgPath = args.data.root.SERVER_URL;
-  console.log(args);
+
   let headlineId = "what-to-do-next";
   let subheadId = "what-to-do-subhead";
   let blurbId = "what-to-do-blurb";

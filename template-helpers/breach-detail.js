@@ -44,13 +44,44 @@ function breachCategory(args) {
 const priorityDataClasses = {
   "passwords": {
     weight: 100,
-    actions: ["change your password on this site"],
+    pathToGlyph: "svg/glyphs/passwords",
+    actions: "", // future functionality?
   },
-  "account-balances": {
+  "bank-account-numbers": {
     weight: 99,
+    pathToGlyph: "svg/glyphs/bank-account-numbers",
   },
-  "health-insurance-information": {
+  "credit-cards": {
     weight: 98,
+    pathToGlyphs: "svg/glyphs/credit-cards",
+  },
+  "credit-card-cvv": {
+    weight: 97,
+    pathToGlyph: "svg/glyphs/credit-card-cvvs",
+  },
+  "partial-credit-card-data": {
+    weight: 96,
+    pathToGlyph: "svg/glyphs/partial-credit-card-data",
+  },
+  "ip-addresses": {
+    weight: 95,
+    pathToGlyph: "svg/glyphs/ip-addresses",
+  },
+  "historical-passwords": {
+    weight: 94,
+    pathToGlyph: "svg/glyphs/historical-passwords",
+  },
+  "security-questions-and-answers": {
+    weight: 93,
+    pathToGlyph: "svg/glyphs/security-questions-and-answers",
+  },
+  "phone-numbers": {
+    weight: 92,
+    pathToGlyph: "svg/glyphs/phone-numbers",
+  },
+  "email-addresses": {
+    weight: 91,
+    pathToGlyph: "svg/glyphs/email-addresses",
   },
 };
 
@@ -66,10 +97,8 @@ function compareBreachDates(breach) {
   return false;
 }
 
-function tempOverview(breach, args) {
-  return `This is a make-believe breach overview for the ${breach.Title} breach, which occurred 
-  on ${prettyDate(breach.BreachDate, args)} and was added to our database on ${prettyDate(breach.AddedDate, args)}. 
-  I am waiting for an epiphany as to how these should be localized.`;
+function tempOverview(breach, locales) {
+  return `On June 1, 2018, ${breach.Title} suffered a breach. Once the breach was discovered and verified it was added to our database on ${prettyDate(breach.AddedDate, locales)}.`;
 }
 
 function getSensitiveBreachContent(locales, breach) {
@@ -82,33 +111,55 @@ function getSensitiveBreachContent(locales, breach) {
   };
 }
 
-function getTips(locales, breach) {
-  const tips = [
-    {
-      title: "stop-reusing-pw",
-      subtitle: "create-unique-pw",
-      linkTitle: "five-myths",
-      href: "",
-    },
-    {
-      title: "make-new-pw-unique",
-      subtitle: "strength-of-your-pw",
-      linkTitle: "create-strong-passwords",
-      href: "",
-    },
-    {
-      title: "change-pw",
-      subtitle: "even-for-old",
-      linkTitle: "what-to-do-after-breach",
-      href: "",
-    },
-  ];
+function getTips(locales, breachType) {
+  let tips = [];
+  if (breachType === "website-breach") {
+    tips = [
+      {
+        title: "change-pw",
+        subtitle: "even-for-old",
+        linkTitle: "what-to-do-after-breach",
+        href: "/security-tips#after-breach",
+        svgClass: "change-password",
+      },
+      {
+        title: "make-new-pw-unique",
+        subtitle: "strength-of-your-pw",
+        linkTitle: "create-strong-passwords",
+        href: "/security-tips#strong-passwords",
+        svgClass: "stronger-password",
+      },
+      {
+        title: "stop-reusing-pw",
+        subtitle: "create-unique-pw",
+        linkTitle: "five-myths",
+        href: "/security-tips#myths",
+        svgClass: "manage-password",
+      },
+    ];
+  } else {
+    tips = [
+      {
+        title: "protect-your-privacy",
+        subtitle: "no-pw-to-change",
+        linkTitle: "link-steps-to-protect",
+        href: "/security-tips#steps-to-protect",
+        svgClass: "protect-personal-info",
+      },
+      {
+        title: "avoid-personal-info",
+        subtitle: "avoid-personal-info-blurb",
+        linkTitle: "create-strong-passwords",
+        href: "/security-tips#strong-passwords",
+        svgClass: "data-compromised",
+      },
+    ];
+  }
+
   tips.forEach(tip => {
-    for (const key in tip) {
-      if (key !== "href") {
-        tip[key] = LocaleUtils.fluentFormat(locales, tip[key]);
-      }
-    }
+    ["title", "subtitle", "linkTitle"].forEach(key =>{
+      tip[key] = LocaleUtils.fluentFormat(locales, tip[key]);
+    });
   });
   return tips;
 }
@@ -119,19 +170,38 @@ function getBreachDetail(args) {
 
   const breachDetail = {
     overview: {
-      headline: LocaleUtils.fluentFormat(locales, "overview"),
-      copy: tempOverview(breach, args),
+      copy: tempOverview(breach, locales),
     },
+    breach: breach,
+    categoryId: getBreachCategory(breach),
+    category: LocaleUtils.fluentFormat(locales, getBreachCategory(breach)),
     dataClasses: {
       headline: LocaleUtils.fluentFormat(locales, "what-data"),
       dataTypes: soupedUpDataClasses(locales, breach),
     },
     sensitiveBreach: getSensitiveBreachContent(locales, breach),
     whatToDoTips: {
-      headline: LocaleUtils.fluentFormat(locales, "what-to-do-after"),
-      tips: getTips(locales, breach),
+      headline: LocaleUtils.fluentFormat(locales, "what-to-do-after-breach"),
+      tips: getTips(locales, "website-breach"),
     },
   };
+
+  if (breachDetail.categoryId === "data-aggregator-breach") {
+    breachDetail.whatIsThisBreach = {
+      headline: LocaleUtils.fluentFormat(locales, "what-is-data-agg"),
+      copy: LocaleUtils.fluentFormat(locales, "what-is-data-agg-blurb"),
+    };
+    breachDetail.whatToDoTips = {
+      headline: LocaleUtils.fluentFormat(locales, "wtd-after-data-agg"),
+      tips: getTips(locales, "data-agg"),
+    };
+
+  } else {
+    breachDetail.whatIsThisBreach = {
+      headline: LocaleUtils.fluentFormat(locales, "what-is-a-website-breach"),
+      copy: LocaleUtils.fluentFormat(locales, "website-breach-blurb"),
+    };
+  }
 
   if (compareBreachDates(breach)) {
     breachDetail.delayedReporting = {
@@ -145,9 +215,11 @@ function getBreachDetail(args) {
 
 
 function soupedUpDataClasses(locales, breach) {
-  const localizedDataClasses = [];
+  const localizedDataClasses = {
+    priority: [],
+    dataClasses: [],
+  };
   breach.DataClasses.forEach(dataClass => {
-
     const dataClassObj = {
       dataType: LocaleUtils.fluentFormat(locales, dataClass),
       weight: 0,
@@ -155,11 +227,14 @@ function soupedUpDataClasses(locales, breach) {
     if (priorityDataClasses.hasOwnProperty(dataClass)) {
       dataClassObj.weight = priorityDataClasses[dataClass].weight;
       dataClassObj.actions = priorityDataClasses[dataClass].actions;
-      dataClassObj.priority = "priority-data-class";
+      dataClassObj.pathToGlyph = priorityDataClasses[dataClass].pathToGlyph;
+      localizedDataClasses.priority.push(dataClassObj);
+    } else {
+      localizedDataClasses.dataClasses.push(dataClassObj.dataType);
     }
-    localizedDataClasses.push(dataClassObj);
   });
-  localizedDataClasses.sort((a,b) => (a.weight < b.weight) ? 1 : ((b.weight < a.weight) ? -1 : 0));
+
+  localizedDataClasses.priority.sort((a,b) => (a.weight < b.weight) ? 1 : ((b.weight < a.weight) ? -1 : 0));
   return localizedDataClasses;
 }
 

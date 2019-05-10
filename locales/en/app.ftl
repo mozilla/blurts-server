@@ -538,8 +538,15 @@ passwords-exposed =
 
 
 security-tips-headline = Security tips to protect yourself from hackers.
-steps-to-take = Steps to take to protect your online identity
+steps-to-protect = Steps to take to protect your online identity
 take-further-steps = Take further steps to protect your identity
 
 
 see-additional-breaches = See Additional Breaches
+
+# This string is followed by a list of data classes that a particular breach exposed.
+additional-information-including = Additional information, including:
+
+
+what-is-a-website-breach = What is a website breach?
+website-breach-blurb = A website data breach happens when cyber criminals steal, copy, or expose personal information from online accounts. It’s usually a result of hackers finding a weak spot in the website’s security. Breaches can also happen when account information gets leaked by accident.

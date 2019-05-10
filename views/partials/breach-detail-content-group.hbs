@@ -1,7 +1,7 @@
-              <h2 class="section-headline">{{ this.headline }}</h2>
+              <h2 class="section-headline-light">{{ this.headline }}</h2>
 
               {{#if this.copy }}
-                <p class="data-type">{{ this.copy }}</p>
+                <p>{{ this.copy }}</p>
               {{/if}}
 
               {{#if this.tips }}
@@ -14,14 +14,19 @@
               
               {{#if dataTypes}}
                 <ul class="priority-data-classes-list">
-                  {{#each dataTypes }}
+                  {{#each dataTypes.priority}}
                     <li>
-                      <div class="bullet"></div>
-                      <p class="data-type {{ this.priority }}">{{ this.dataType }}</p>
-                      {{#each this.actions }} <!--possible feature for later? -->
-                        <p class="data-action">[ <span class="data-class-action">{{ this }} </span>]</p>
-                      {{/each}}
+                      <div class="glyph">{{>(lookup . 'pathToGlyph')}}</div>
+                      <p class="data-type">{{ this.dataType }}</p>
                     </li>
                   {{/each}}
                 </ul>
+                  {{#if dataTypes.dataClasses}}
+                    <div class="additional-data-types-wrapper">
+                      <span class="medium additional-data-types">{{ getString "additional-information-including" }}</span>
+                      {{#each dataTypes.dataClasses}}
+                        <span class="low-weight-data-class">{{ this }} </span>
+                      {{/each}}
+                    </div>
+                  {{/if}}
               {{/if}}

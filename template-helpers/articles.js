@@ -167,7 +167,7 @@ const articleCopy = {
   "steps-to-protect": {
     paragraphs: [
       {
-        lead: "Data breaches are one of many online threats. Using secure internet connections, updating your software, avoiding scam emails, and better password hygiene will help you stay safer while you browse."
+        lead: "Data breaches are one of many online threats. Using secure internet connections, updating your software, avoiding scam emails, and better password hygiene will help you stay safer while you browse.",
       },
       {
         subhead: "Be wary of public wifi networks. ",
@@ -178,7 +178,7 @@ const articleCopy = {
       },
       {
         subhead: "Run software and app updates as soon as they’re available.",
-        paragraph: "Updating software on your computer or phone can seem like a pain, but it’s a crucial step to keeping devices safe. These updates fix bugs, software vulnerabilities, and security problems. Regularly updating your smartphone apps and operating systems makes your devices more secure."
+        paragraph: "Updating software on your computer or phone can seem like a pain, but it’s a crucial step to keeping devices safe. These updates fix bugs, software vulnerabilities, and security problems. Regularly updating your smartphone apps and operating systems makes your devices more secure.",
       },
       {
         tipHeadline: "Security tip: Turn on automatic updates.",
@@ -228,7 +228,7 @@ const articleCopy = {
       },
       {
         subhead: "Use unique, strong passwords for every single account.",
-        paragraph: "One of the best ways to protect yourself online is to use different passwords across all your online accounts. This way hackers won’t have the keys to your entire digital life if they get their hands on that one password you use everywhere."
+        paragraph: "One of the best ways to protect yourself online is to use different passwords across all your online accounts. This way hackers won’t have the keys to your entire digital life if they get their hands on that one password you use everywhere.",
       },
       {
         paragraph: "Your passwords also need to be strong. Single words (like sunshine, monkey, or football) make for weak passwords. So do these top 100 most-commonly used passwords, which include password and 123456. Avoid pop culture references, sports teams, and personal info.. Do not use your address, birthday, names of family members, or pets’ names. The longer and more unique your passwords are, the harder they will be for hackers to guess.",
