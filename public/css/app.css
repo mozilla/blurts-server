@@ -65,7 +65,7 @@ body {
   flex-direction: column;
   margin: 0;
   padding: 0;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: var(--grey1);
   scroll-behavior: smooth;
   font-family: "Inter UI", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 300;
@@ -239,6 +239,8 @@ a.btn-dark {
   border-radius: 0.25rem;
   min-height: 2rem;
   padding: 0.75rem 2rem;
+  font-size: .9rem;
+  font-family: "FirefoxSharpSans", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   transition: border 0.1s ease-in-out, background-color 0.1s ease-in-out;
 }
 
@@ -603,7 +605,7 @@ li:hover .bullet {
   }
 
   .row-full-width {
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 1.5rem;
   }
 
   .card {
@@ -618,10 +620,6 @@ li:hover .bullet {
     --bigHeadline: 2rem;
     --skinnyHeadline: 1.4rem;
     --subhead: 1.1rem;
-  }
-
-  .row-full-width {
-    padding: 1rem 1.75rem;
   }
 
   .headline {

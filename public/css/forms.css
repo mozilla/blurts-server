@@ -6,7 +6,19 @@ form,
 }
 
 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px white inset;
+  -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0) inset;
+}
+
+.email-scan input[type="email"]::placeholder,
+.email-scan input[type="email"]::-moz-placeholder,
+.email-scan input[type="email"] {
+  opacity: 1;
+  color: var(--color);
+  font-weight: 400;
+}
+
+.email-scan input[type="email"] {
+  background-color: white;
 }
 
 .form-group.loading-data .loader {
@@ -116,7 +128,6 @@ button:focus,
 }
 
 input::placeholder {
-  color: #f1f1f1;
   font-size: 1rem;
 }
 
@@ -179,25 +190,37 @@ input[type="radio"] {
 }
 
 .checkmark {
-  background-color: rgba(255, 255, 255, 0);
-  height: 1.35rem;
-  width: 1.35rem;
-  border-radius: 0.1rem;
+  background-color: rgba(255, 255, 255, 1);
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 0.2rem;
   display: block;
   position: absolute;
   top: 2px;
-  border: 1px solid rgba(149, 43, 185, 0.4);
+  border: 1px solid rgba(12, 12, 13, 0.3);
   transition: background-color 0.15s ease-in-out;
 }
 
 .radio-container:hover .checkmark {
-  background-color: rgba(149, 43, 185, 0.1);
+  background-color:rgba(12, 12, 13, 0.04);;
   transition: background-color 0.15s ease-in-out;
 }
 
 input[type="radio"]:checked ~ .checkmark {
-  background-color: var(--violet3);
   transition: background-color 0.15s ease-in-out;
+  background-image: url(/img/checkbox-check.svg);
+  background-repeat: no-repeat;
+  background-size: 13px;
+  background-position: center center;
+}
+
+input[type="radio"]:checked:hover ~ .checkmark {
+  background-color: rgba(245, 245, 245, 1);
+}
+
+input[type="radio"]:focus ~ .checkmark {
+  border: 1px solid rgba(12, 12, 13, 0.3);
+  box-shadow: 0 0 0 1px rgba(12, 12, 13, 0), 0 0 0 3px rgba(12, 12, 13, 0.05);
 }
 
 .add-new-email-form {

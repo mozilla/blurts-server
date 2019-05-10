@@ -45,7 +45,6 @@ main.breach-detail {
 
 .section-headline-light {
   font-size: 1.3rem;
-  color: var(--grey8);
 }
 
 .breach-detail-logo-wrapper {
@@ -100,13 +99,6 @@ main.breach-detail {
 
 .data-type {
   max-width: 600px;
-}
-
-.data-type,
-.priority-data-class,
-.detail-section,
-.detail-section .feature-title {
-  color: var(--grey8);
 }
 
 .data-type,

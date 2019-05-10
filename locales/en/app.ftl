@@ -550,3 +550,8 @@ additional-information-including = Additional information, including:
 
 what-is-a-website-breach = What is a website breach?
 website-breach-blurb = A website data breach happens when cyber criminals steal, copy, or expose personal information from online accounts. It’s usually a result of hackers finding a weak spot in the website’s security. Breaches can also happen when account information gets leaked by accident.
+
+
+other-monitored-emails = Other Monitored Emails 
+email-verification-required = Email Verification Required 
+fxa-primary-email = {-brand-fxa} Email - Primary
