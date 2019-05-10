@@ -37,6 +37,7 @@ exports.TEST_EMAIL_ADDRESSES = {
     verified: true,
   },
   unverified_email_on_firefox_account: {
+    id: 98765,
     subscriber_id: 12345,
     sha1: getSha1("firefoxaccount-tertiary@test.com"),
     email: "firefoxaccount-tertiary@test.com",

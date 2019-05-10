@@ -33,6 +33,13 @@ const DB = {
     return res[0];
   },
 
+  async getEmailById(emailAddressId) {
+    const res = await knex("email_addresses")
+      .where("id", "=", emailAddressId);
+
+    return res[0];
+  },
+
   async getSubscriberByTokenAndHash(token, emailSha1) {
     const res = await knex.table("subscribers")
       .first()
@@ -59,6 +66,18 @@ const DB = {
       verification_token: uuidv4(),
       verified: false,
     }).returning("*");
+    return res[0];
+  },
+
+  async resetUnverifiedEmailAddress(emailAddressId) {
+    const newVerificationToken = uuidv4();
+    const res = await knex("email_addresses")
+      .update({
+        verification_token: newVerificationToken,
+        updated_at: knex.fn.now(),
+      })
+      .where("id", emailAddressId)
+      .returning("*");
     return res[0];
   },
 

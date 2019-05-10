@@ -61,6 +61,36 @@ test("user add POST with email adds unverified subscriber and sends verification
 });
 
 
+test("user resendEmail with valid session and email id resets email_address record and sends new verification email", async () => {
+  const testSubscriberEmail = TEST_SUBSCRIBERS.firefox_account.primary_email;
+  const testSubscriber = await DB.getSubscriberByEmail(testSubscriberEmail);
+  const testEmailAddressId = TEST_EMAIL_ADDRESSES.unverified_email_on_firefox_account.id;
+  const startingTestEmailAddress = await DB.getEmailById(testEmailAddressId);
+
+  // Set up mocks
+  const req = httpMocks.createRequest({
+    method: "POST",
+    url: "/user/resend-email",
+    body: { emailId: testEmailAddressId },
+    session: { user: testSubscriber },
+    fluentFormat: jest.fn(),
+  });
+  const resp = httpMocks.createResponse();
+  EmailUtils.sendEmail.mockResolvedValue(true);
+
+  // Call code-under-test
+  await user.resendEmail(req, resp);
+
+  // Check expectations
+  expect(resp.statusCode).toEqual(200);
+  const resetTestEmailAddress = await DB.getEmailById(testEmailAddressId);
+  expect(startingTestEmailAddress.verification_token).not.toEqual(resetTestEmailAddress.verification_token);
+});
+
+
+// TODO: more tests of resendEmail failure scenarios
+
+
 test("user add request with invalid email throws error", async () => {
     const testSubscriberEmail = "firefoxaccount@test.com";
     const testSubscriber = await DB.getSubscriberByEmail(testSubscriberEmail);

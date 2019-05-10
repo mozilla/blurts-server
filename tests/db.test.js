@@ -2,6 +2,7 @@
 
 const HIBP = require("../hibp");
 const DB = require("../db/DB");
+const { TEST_EMAIL_ADDRESSES } = require("../db/seeds/test_subscribers");
 const getSha1 = require("../sha1-utils");
 
 require("./resetDB");
@@ -47,6 +48,20 @@ test("getEmailAddressesByHashes accepts hashes and only returns verified email_a
   for (const emailAddress of emailAddresses) {
     expect(emailAddress.verified).toBeTruthy();
   }
+});
+
+
+test("getEmailByToken accepts token and returns email_addresses record", async () => {
+  const testEmailAddress = TEST_EMAIL_ADDRESSES.firefox_account;
+  const emailAddress = await DB.getEmailByToken(testEmailAddress.verification_token);
+  expect(emailAddress.email).toEqual(testEmailAddress.email);
+});
+
+
+test("getEmailById accepts id and returns email_addresses record", async () => {
+  const testEmailAddress = TEST_EMAIL_ADDRESSES.unverified_email_on_firefox_account;
+  const emailAddress = await DB.getEmailById(testEmailAddress.id);
+  expect(emailAddress.email).toEqual(testEmailAddress.email);
 });
 
 
