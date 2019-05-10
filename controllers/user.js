@@ -13,8 +13,8 @@ const sha1 = require("../sha1-utils");
 
 
 function _requireSessionUser(req,res) {
-  if (!req.session.user) {
-    return res.redirect("https://accounts.firefox.com/");
+  if (!req.session || !req.session.user) {
+    throw new FluentError("must-be-signed-in");
   }
   return req.session.user;
 }
