@@ -95,7 +95,7 @@ function getFoundBreaches(args) {
   userBreaches = makeBreachCards(userBreaches, locales);
   foundBreaches.firstFourBreaches = userBreaches.slice(0, 4);
   if (userBreaches.length > 4) {
-    foundBreaches.remainingBreaches = userBreaches.slice(5, foundBreaches.length);
+    foundBreaches.remainingBreaches = userBreaches.slice(4, foundBreaches.length);
   }
   foundBreaches.cardType = "two-up drop-shadow";
   return args.fn(foundBreaches);
