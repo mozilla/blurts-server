@@ -4,8 +4,6 @@
 
 basepath = "."
 
-locales = []
-
 [env]
     l = "{l10n_base}/locales/{locale}/"
 
