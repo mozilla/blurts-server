@@ -33,6 +33,10 @@
   color: var(--violet1);
 }
 
+.scan-res .more-about-this-breach svg.arrow-head-right path {
+  fill: rgba(255, 255, 255, 1);
+}
+
 @media screen and (max-width: 800px) {
   .scanned-email-address,
   .scan-results-headline,

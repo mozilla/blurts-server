@@ -60,6 +60,29 @@
   padding-bottom: 0;
 }
 
+@media screen and (max-width: 1100px) {
+  .scan-results-sign-up .sign-up-banner {
+    flex-direction: column;
+  }
+
+  .scan-results-sign-up .sign-up-headline {
+    text-align: center;
+    margin-bottom: 1rem;
+    max-width: 380px;
+  }
+
+  .scan-results-sign-up ul.feature-list {
+    display: flex;
+    align-items: flex-start;
+    margin: 1rem auto 2rem auto;
+  }
+
+  .scan-results-sign-up .sign-up-cta {
+    max-width: 380px;
+    margin: auto;
+  }
+}
+
 @media screen and (max-width: 800px) {
   .sign-up-banner {
     flex-wrap: wrap;

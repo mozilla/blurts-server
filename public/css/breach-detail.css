@@ -59,6 +59,7 @@ main.breach-detail {
   margin-right: 1rem;
 }
 
+.overview,
 .overview p {
   font-size: 1.2rem;
 }
@@ -70,7 +71,7 @@ main.breach-detail {
 
 .additional-data-types {
   display: block;
-  margin-bottom: 1rem;
+  margin: 0;
 }
 
 .breach-type {
@@ -79,7 +80,16 @@ main.breach-detail {
 
 .priority-data-classes-list {
   width: 100%;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.priority-data-type {
+  flex: 1 1 100%;
+}
+
+.lower-priority {
+  margin-top: 0.25rem;
 }
 
 .low-weight-data-class {
@@ -114,4 +124,16 @@ main.breach-detail {
 
 .wtd-tips h2.skinny-headline {
   margin-bottom: calc(var(--padding) * 2);
+}
+
+@media screen and (max-width: 600px) {
+  .col-8.breach-details {
+    margin-top: 2rem !important;
+  }
+
+  h2.section-headline-light {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

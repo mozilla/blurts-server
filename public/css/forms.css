@@ -18,7 +18,8 @@ input:-webkit-autofill {
 }
 
 .email-scan input[type="email"] {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 1);
+  border-color: rgba(255, 255, 255, 1);
 }
 
 .form-group.loading-data .loader {
@@ -55,7 +56,7 @@ input:focus,
 button:focus,
 .button:focus,
 .radio-button-group:focus {
-  border: 2px solid rgb(40, 97, 205);
+  border: 1px solid rgb(40, 97, 205);
   box-shadow: 0 0 0 1px rgb(63, 97, 217), 0 0 0 4px rgba(63, 97, 217, 0.3);
   outline: none;
 }
@@ -137,6 +138,7 @@ input::placeholder {
 
 .scan-another-email input[type="email"] {
   color: var(--color);
+  border: 1px solid var(--grey3);
 }
 
 .form-group.loading-data .button,
@@ -146,7 +148,6 @@ input::placeholder {
 }
 
 input[type="email"] {
-  color: var(--grey1);
   font-size: 17px;
   font-weight: 300;
   text-indent: var(--margin);
@@ -166,20 +167,21 @@ input[type="submit"] {
 }
 
 form.invalid input[type="submit"]:focus {
-  border: 2px solid var(--red50);
+  border: 1px solid var(--red50);
   box-shadow: 0 0 0 1px rgba(255, 0, 55, 0.514), 0 0 0 4px rgba(255, 0, 55, 0.3);
 }
 
 input.email-add {
-  border-color: var(--violet3);
   color: var(--color);
-  caret-color: var(--violet5);
+  border-color: var(--grey3);
+  background-color: rgba(255, 255, 255, 0.45);
 }
 
 input.email-add-submit {
-  background-color: var(--violet5);
+  border: 1px solid var(--blue3);
+  background-color: var(--blue3);
   color: white;
-  border-color: var(--violet5);
+  border-color: var(--blue3);
   font-weight: 500;
 }
 
@@ -202,7 +204,7 @@ input[type="radio"] {
 }
 
 .radio-container:hover .checkmark {
-  background-color:rgba(12, 12, 13, 0.04);;
+  background-color: rgba(12, 12, 13, 0.04);
   transition: background-color 0.15s ease-in-out;
 }
 
@@ -225,6 +227,17 @@ input[type="radio"]:focus ~ .checkmark {
 
 .add-new-email-form {
   margin: var(--margin) 0;
+  display: flex;
+}
+
+.add-new-email-form .input-group {
+  width: 100%;
+  margin-right: 1rem;
+}
+
+.add-new-email-form .input-group-button {
+  width: auto;
+  max-width: auto;
 }
 
 .add-new-email-form input::placeholder {
@@ -256,5 +269,9 @@ input[type="radio"]:focus ~ .checkmark {
 
   .radio-label {
     font-size: 0.9rem;
+  }
+
+  .add-new-email-form {
+    flex-direction: column;
   }
 }

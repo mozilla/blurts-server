@@ -15,7 +15,7 @@
 <!--dataClasses-->
   <section class="detail-section  bg-light">
     <div class="row jst-cntr flx-col">
-      <div class="col-8 no-vertical-padding overview">
+      <div class="col-8 overview">
         {{> breach-detail-content-group overview}}
         {{#if delayedReporting }}
           <a class="text-link" href="#{{delayedReporting.href}}">
@@ -23,7 +23,7 @@
           </a>
         {{/if}}
       </div>
-      <div class="col-8">
+      <div class="col-8 breach-details">
         {{> breach-detail-content-group dataClasses}}
         {{> hibp-attribution}}
       </div>
@@ -37,16 +37,16 @@
           {{> breach-detail-content-group whatToDoTips}}
         </div>
         {{> sign-up-banners/sign-up-warm-gradient }}
-        <div id="what-is-this-breach" class="col-8">
+        <div id="what-is-this-breach" class="col-8 breach-details">
           {{> breach-detail-content-group whatIsThisBreach}}
         </div>
         {{#if sensitiveBreach }}
-          <div class="col-8">
+          <div class="col-8 breach-details">
             {{> breach-detail-content-group sensitiveBreach}}
           </div>
         {{/if}}
         {{#if delayedReporting}}
-          <div class="col-8">
+          <div class="col-8 breach-details">
             {{> breach-detail-content-group delayedReporting}}
           </div>
         {{/if}}

@@ -2,7 +2,11 @@
 <main id="dashboard" class="dashboard clear-header">
   <div class="row jst-cntr">
     <div class="col-8 no-vertical-padding">
-      <span class="welcome-back">{{{fluentNestedBold "welcome-back" userName=req.session.user.fxa_profile_json.email }}}</span>
+      {{#if req.session.newUser}}
+        <span class="welcome-user">{{{fluentNestedBold "welcome-back" userName=req.session.user.fxa_profile_json.email }}}</span>
+      {{else}}
+        <span class="welcome-back">{{{fluentNestedBold "welcome-back" userName=req.session.user.fxa_profile_json.email }}}</span>
+      {{/if}}
     </div>
   </div>
   <div class="row jst-cntr flx-col">
@@ -24,8 +28,7 @@
     {{#each (getBreachesForEachEmail) }}
       {{> email-card }}
     {{/each}}
-    {{#ifCompare verifiedEmails.length ">" 2}}
-      {{> dashboards/manage-email-link }}
-    {{/ifCompare}}
+    {{> dashboards/manage-email-link variableClass="show-mobile"}}
+
   </div>
 </main>

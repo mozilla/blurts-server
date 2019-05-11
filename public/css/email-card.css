@@ -22,11 +22,18 @@
   margin-right: 0.5rem;
 }
 
+.e-address span.light {
+  font-weight: 300;
+  color: var(--grey6);
+  font-size: 0.75rem;
+}
+
 .e-num-breaches {
   font-weight: 400;
   font-size: 0.9rem;
   margin-top: 0.25rem;
   display: block;
+  color: var(--grey6);
 }
 
 .e-num-breaches .bold {
@@ -119,7 +126,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: var(--margin) var(--padding);
+  padding: 1.5rem var(--padding);
   pointer-events: none;
   position: relative;
 }
@@ -147,18 +154,6 @@
   fill: var(--color);
 }
 
-.change-primary-email {
-  background-color: transparent;
-  color: var(--purple5);
-  padding: 0.5rem;
-  border-radius: 0.25rem;
-  border: 1px solid rgba(149, 43, 185, 0.27);
-}
-
-.change-primary-email:hover {
-  background-color: rgba(149, 43, 185, 0.1);
-}
-
 .button-resend-wrapper {
   margin-top: 0.5rem;
   align-items: center;
@@ -168,6 +163,15 @@
 .remove-fxm,
 .resend-email {
   pointer-events: all;
+  transition: all 0.15s ease;
+}
+
+.change-primary-email:hover {
+  border: 1px solid var(--grey3) !important;
+  background-color: transparent;
+  color: var(--grey9);
+  opacity: 1;
+  transition: all 0.15s ease;
 }
 
 .resend-email {
@@ -180,6 +184,9 @@
   opacity: 0.5;
   transition: opacity 0.15s ease-in-out;
 }
+
+/*
+#686869 */
 
 .sending {
   padding-left: 1rem;
@@ -206,11 +213,16 @@
   border-width: 0;
 }
 
-.remove-fxm:hover,
-.remove-fxm:focus,
-.resend-email:hover,
-.resend-email:focus {
-  border-width: 0;
+.remove-fxm:hover {
+  text-decoration: none;
+  color: #cf434f;
+  transition: color 0.15s ease-in-out;
+}
+
+form.remove-email:hover svg path,
+.remove-fxm:hover svg path {
+  fill: #cf434f;
+  transition: fill 0.15s ease-in-out;
 }
 
 .toggle {
@@ -266,6 +278,11 @@ input.remove-email-submit {
   cursor: pointer;
 }
 
+form.remove-email svg path {
+  fill: var(--alertRed);
+  transition: fill 0.15s ease-in-out;
+}
+
 input.remove-email-submit {
   background-color: transparent !important;
 }
@@ -294,7 +311,6 @@ input.remove-email-submit {
     font-size: 0.8rem;
     font-style: italic;
     font-weight: 300;
-    color: var(--textLight);
   }
 
   .toggle.show-email-breaches {
@@ -332,17 +348,27 @@ input.remove-email-submit {
 @media screen and (max-width: 600px) {
   .e-address,
   .radio-label {
-    font-size: 0.9rem;
+    font-size: 1rem;
+  }
+
+  .email-pref {
+    margin-top: 2rem;
   }
 
   .e-num-breaches,
   .resend-email,
   .change-primary-email {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .button-resend-wrapper,
+  .e-num-breaches {
+    margin-top: 0.35rem;
   }
 
   .e-toggle-info-wrapper {
     flex-wrap: wrap;
+    padding: 1.4rem var(--padding);
   }
 
   .change-primary-email {

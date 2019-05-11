@@ -43,6 +43,30 @@ a.security-tips-link {
   margin-top: 1rem;
 }
 
+@media screen and (max-width: 1100px) {
+  .article-list-container .row {
+    flex-direction: column;
+    justify-content: center;
+    max-width: 700px;
+  }
+
+  .col-8.article-section-list-wrapper {
+    margin-top: 2rem;
+  }
+
+  .article-list-container {
+    padding: var(--padding) 0;
+  }
+
+  .article-list-container .col-4,
+  .article-list-container .col-8 {
+    flex: 1 1 100%;
+    min-width: 100%;
+    width: 100%;
+    margin: auto;
+  }
+}
+
 @media screen and (max-width: 800px) {
   .article-list-subhead {
     padding-right: 5%;

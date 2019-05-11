@@ -17,7 +17,7 @@
             ">
             <div class="e-toggle-info-wrapper">
               <div class="e-info">
-                <span class="e-address">{{ email }}</span>
+                <span class="e-address">{{{ email }}}</span>
                 {{#if verified}}
                   <!-- show breach count for verified emails -->
                   <span class="e-num-breaches">{{{ fluentNestedBold "appears-in-x-breaches" breachCount=breaches.length }}}</span>
@@ -31,7 +31,7 @@
 
               {{#if prefs}} <!--user preferences dashboard / show trashcan to delete email-->
                 {{#if primary}}
-                  <a href="{{ getFxaUrl }}" class="change-primary-email">{{ getString "link-change-primary" }}</a>
+                  <a href="{{ getFxaUrl }}" class="change-primary-email btn-dark arrow-head-btn flx hide-mobile">{{ getString "link-change-primary" }}{{> svg/arrow-head-right }}</a>
                 {{else}}
                   {{> forms/remove-email-form }}
                 {{/if}}

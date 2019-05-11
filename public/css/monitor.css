@@ -49,6 +49,12 @@
   max-width: 350px;
 }
 
+@media screen and (max-width: 1100px) {
+  .landing-bottom-bar {
+    padding-top: 4vh;
+  }
+}
+
 @media screen and (max-width: 800px) {
   .landing-content {
     max-width: 520px;
@@ -56,10 +62,6 @@
 
   .landing-headline {
     font-size: var(--bigHeadline);
-  }
-
-  .landing-bottom-bar {
-    padding-top: 8vh;
   }
 
   h2.landing-headline,

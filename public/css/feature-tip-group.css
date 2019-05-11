@@ -79,7 +79,7 @@
 .breach-detail .feat-img {
   margin: var(--margin) 0 0 0;
   height: 3rem;
-  max-width: 3rem;
+  max-width: 4rem;
 }
 
 .breach-detail .feature-title {
@@ -136,5 +136,23 @@
 
   .feat-img {
     margin: 1rem auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .detail-section .feature-tip-content-wrapper.col.txt-cntr {
+    flex-direction: column;
+  }
+
+  .breach-detail .feat-img {
+    margin: 1rem auto;
+  }
+
+  .breach-detail .feature-tip-content {
+    text-align: center;
+  }
+
+  .breach-detail .feature-tip-content-wrapper {
+    margin: var(--margin) auto;
   }
 }

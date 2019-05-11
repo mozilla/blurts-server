@@ -55,8 +55,13 @@
 
 .latest-breach-link {
   margin-top: var(--margin);
-  display: block;
   color: #00b4f5;
+  display: flex;
+  align-items: center;
+}
+
+.latest-breach-link svg path {
+  fill: #00b4f5;
 }
 
 @media screen and (max-width: 900px) {

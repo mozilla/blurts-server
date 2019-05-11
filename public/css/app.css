@@ -47,7 +47,7 @@ body {
   --purple5: #722291;
   --pink4: #e31587;
   --blue1: #0df;
-  --blue2: #0060df;
+  --blue2: #0090ed;
   --blue3: #0060df;
   --blue4: #0250bb;
   --blue5: #073072;
@@ -58,7 +58,11 @@ body {
   --bgLight: rgba(249, 249, 250, 1);
   --grey1: #f9f9fa;
   --grey2: #ededf0;
+  --grey3: #cdcdd4;
+  --grey6: #5e5e72;
+  --grey5: #7a7a8b;
   --grey8: #42425a;
+  --grey9: #202340;
   --monitorGradient: linear-gradient(-90deg, #ff9100 0%, #f10366 50%, #6173ff 100%);
 
   display: flex;
@@ -109,6 +113,7 @@ body {
 p,
 .paragraph {
   line-height: var(--lineHeight);
+  font-size: 1.1rem;
 }
 
 .medium {
@@ -149,14 +154,6 @@ h2,
 h3,
 .section-headline {
   margin-top: 0;
-}
-
-.nav-link,
-.footer-link,
-.article-link,
-.remove-email,
-.change-primary-email {
-  border: 2px solid rgba(255, 255, 255, 0);
 }
 
 .headline {
@@ -235,11 +232,9 @@ a.btn-dark {
   justify-content: center;
   text-align: center;
   background-color: transparent;
-  background-color: rgba(255, 255, 255, 0);
   border-radius: 0.25rem;
   min-height: 2rem;
-  padding: 0.75rem 2rem;
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-family: "FirefoxSharpSans", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   transition: border 0.1s ease-in-out, background-color 0.1s ease-in-out;
 }
@@ -247,18 +242,20 @@ a.btn-dark {
 .btn-light {
   border: 1px solid rgba(255, 255, 255, 0.5);
   color: rgba(255, 255, 255, 1);
+  padding: 0.75rem 2rem;
 }
 
 .btn-dark,
 .email-card .btn-light {
   color: var(--grey8);
-  border: 1px solid var(--grey8);
+  border: 1px solid #cdcdd482;
+  padding: 0.75rem 1rem;
 }
 
 .btn-dark:hover,
 .email-card .btn-light:hover {
   color: var(--grey8);
-  background-color: var(--grey2);
+  background-color: #ededf099;
   border: 1px solid var(--grey2);
 }
 
@@ -281,6 +278,10 @@ a.btn-light:active {
 .btn-light:active {
   border-width: 1px;
   outline: none;
+}
+
+.arrow-head-btn {
+  align-items: center;
 }
 
 ul {
@@ -417,6 +418,10 @@ ul li {
   padding-top: 0;
 }
 
+.padding-zero {
+  padding: 0;
+}
+
 .no-vertical-padding {
   padding-top: 0;
   padding-bottom: 0;
@@ -473,7 +478,7 @@ ul li {
 .card {
   border: 1px solid #eee;
   border-radius: 0.35rem;
-  background-color: rgba(255, 255, 255, 0.45);
+  background-color: rgba(255, 255, 255, 1);
   margin-bottom: var(--margin);
 }
 
@@ -514,7 +519,12 @@ div.sprite {
 }
 
 .arrow {
-  padding-left: calc(var(--padding) / 2);
+  padding-left: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.arrow-head-right {
+  margin-left: 0.35rem;
 }
 
 li:hover .bullet {

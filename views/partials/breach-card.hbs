@@ -7,16 +7,16 @@
   </div>
   <div class="breach-info-wrapper flx flx-col">
     <div class="flx flx-col">
-      <span class="breach-info"><span class="demi key">{{ String.AddedDate }}</span>{{ AddedDate }}</span>
+      <span class="breach-info"><span class="key">{{ String.AddedDate }}</span>{{ AddedDate }}</span>
       {{#if showPwnCount }}
-        <span class="breach-info"><span class="demi key">{{ String.CompromisedAccounts }}</span>{{ PwnCount }}</span>
+        <span class="breach-info"><span class="key">{{ String.CompromisedAccounts }}</span>{{ PwnCount }}</span>
       {{/if}}
       {{#if DataClasses }}
-        <span class="breach-info"><span class="demi key">{{ String.CompromisedData }}</span>{{ DataClasses }}</span>
+        <span class="breach-info"><span class="key">{{ String.CompromisedData }}</span>{{ DataClasses }}</span>
       {{/if}}
     </div>
     <div class="breach-card-link-wrap">
-      <span class="more-about-this-breach">{{ String.MoreInfoLink }}<span class="arrow">&#8594;</span></span>
+      <span class="more-about-this-breach">{{ String.MoreInfoLink }}{{> svg/arrow-head-right }}</span>
     </div>
   </div>
 </a>

@@ -1,7 +1,7 @@
 "use strict";
 
 const { LocaleUtils } = require("./../locale-utils");
-const { prettyDate } = require("./hbs-helpers");
+const { prettyDate, localizedBreachDataClasses } = require("./hbs-helpers");
 
 function getVars(args) {
   const locales = args.data.root.req.supportedLocales;
@@ -83,6 +83,18 @@ const priorityDataClasses = {
     weight: 91,
     pathToGlyph: "svg/glyphs/email-addresses",
   },
+  "dates-of-birth": {
+    weight: 90,
+    pathToGlyph: "svg/glyphs/dates-of-birth",
+  },
+  "pins": {
+    weight: 89,
+    pathToGlyph: "svg/glyphs/pins",
+  },
+  "phsyical-addresses": {
+    weight: 88,
+    pathToGlyph: "svg/glyphs/phsyical-addresses",
+  },
 };
 
 
@@ -98,7 +110,7 @@ function compareBreachDates(breach) {
 }
 
 function tempOverview(breach, locales) {
-  return `On June 1, 2018, ${breach.Title} suffered a breach. Once the breach was discovered and verified it was added to our database on ${prettyDate(breach.AddedDate, locales)}.`;
+  return `On ${prettyDate(breach.BreachDate, locales)}, <span class="bold">${breach.Title}</span> suffered a breach. Once the breach was discovered and verified it was added to our database on <span class="bold">${prettyDate(breach.AddedDate, locales)}</span>.`;
 }
 
 function getSensitiveBreachContent(locales, breach) {
@@ -217,9 +229,10 @@ function getBreachDetail(args) {
 function soupedUpDataClasses(locales, breach) {
   const localizedDataClasses = {
     priority: [],
-    dataClasses: [],
+    lowerPriority: [],
   };
-  breach.DataClasses.forEach(dataClass => {
+  for (const dataClass of breach.DataClasses) {
+
     const dataClassObj = {
       dataType: LocaleUtils.fluentFormat(locales, dataClass),
       weight: 0,
@@ -230,10 +243,10 @@ function soupedUpDataClasses(locales, breach) {
       dataClassObj.pathToGlyph = priorityDataClasses[dataClass].pathToGlyph;
       localizedDataClasses.priority.push(dataClassObj);
     } else {
-      localizedDataClasses.dataClasses.push(dataClassObj.dataType);
+      localizedDataClasses.lowerPriority.push(dataClass);
     }
-  });
-
+  }
+  localizedDataClasses.lowerPriority = localizedBreachDataClasses(localizedDataClasses.lowerPriority, locales);
   localizedDataClasses.priority.sort((a,b) => (a.weight < b.weight) ? 1 : ((b.weight < a.weight) ? -1 : 0));
   return localizedDataClasses;
 }
