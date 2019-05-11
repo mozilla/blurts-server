@@ -95,7 +95,7 @@ const articleCopy = {
       },
       {
         list: [
-          "Pet Nnames",
+          "Pet Names",
           "A notable date, such as a wedding anniversary",
           "A family member’s birthday",
           "Your child’s name",
@@ -174,7 +174,7 @@ const articleCopy = {
         paragraph: "You can get wifi almost anywhere. But these open networks are the most vulnerable and tend to be the least secure. This includes the free wifi at restaurants, libraries, airports, and other public spaces. If you can avoid it, don’t use public wifi. Especially don’t use these networks to log in to financial sites or shop online. It’s easy for anyone to see what you’re doing.",
       },
       {
-        paragraph: "Instead, we recommend using a Virtual Privacy Network (VPN), which lets you use public wifi more securely and keeps your online behavior private. A VPN routes your connection through a secure server that encrypts your data before you land on a web page.",
+        paragraph: "Instead, we recommend using a Virtual Private Network (VPN), which lets you use public wifi more securely and keeps your online behavior private. A VPN routes your connection through a secure server that encrypts your data before you land on a web page.",
       },
       {
         subhead: "Run software and app updates as soon as they’re available.",
@@ -196,7 +196,7 @@ const articleCopy = {
       },
       {
         subhead: "Be vigilant about emails that seem even a little bit strange.",
-        paragraph: "Phishing is a type of email scam that is becoming increasingly more common. In these emails, hackers impersonate as a service or company you trust. Thes emails can even come from one of your contacts. They look like the real deal because they mimic the design of authentic emails, like those from your bank or email provider.",
+        paragraph: "Phishing is a type of email scam that is becoming increasingly more common. In these emails, hackers impersonate as a service or company you trust. These emails can even come from one of your contacts. They look like the real deal because they mimic the design of authentic emails, like those from your bank or email provider.",
       },
       {
         paragraph: "The goal of these hackers is to get you to unknowingly enter your password or download a document that can infect your computer. Most online services won’t ask you to enter your login info directly from an email. If they do, you should go directly to their website to log in.",
@@ -231,7 +231,7 @@ const articleCopy = {
         paragraph: "One of the best ways to protect yourself online is to use different passwords across all your online accounts. This way hackers won’t have the keys to your entire digital life if they get their hands on that one password you use everywhere.",
       },
       {
-        paragraph: "Your passwords also need to be strong. Single words (like sunshine, monkey, or football) make for weak passwords. So do these top 100 most-commonly used passwords, which include password and 123456. Avoid pop culture references, sports teams, and personal info.. Do not use your address, birthday, names of family members, or pets’ names. The longer and more unique your passwords are, the harder they will be for hackers to guess.",
+        paragraph: "Your passwords also need to be strong. Single words (like sunshine, monkey, or football) make for weak passwords. So do these top 100 most-commonly used passwords, which include password and 123456. Avoid pop culture references, sports teams, and personal info... Do not use your address, birthday, names of family members, or pets’ names. The longer and more unique your passwords are, the harder they will be for hackers to guess.",
         tipHeadline: "Security tip: How to create strong passwords.",
         tipSubhead: "Include a combination of upper and lowercase letters, numbers, and characters. Combining a few unrelated words and changing the letters is a good method. Read the guide",
       },
