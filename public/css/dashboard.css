@@ -2,7 +2,6 @@
   font-size: 1.75rem;
   font-family: "FirefoxSharpSans", Arial, Helvetica, sans-serif;
   display: inline-block;
-  padding-top: 6rem;
 }
 
 .welcome-back span.bold::before {
@@ -15,10 +14,22 @@
   padding-bottom: 2rem;
 }
 
-.manage-emails {
-  color: var(--var(--grey8));
-  border: 1px solid var(--grey8);
+.manage-emails.btn-dark {
   margin: var(--margin) 0;
+}
+
+button.resend-email {
+  min-height: 0;
+}
+
+.remove-fxm {
+  color: var(--alertRed);
+  font-weight: 700;
+  align-items: center;
+}
+
+.remove-fxm .arrow-head-right path {
+  fill: var(--alertRed);
 }
 
 /* preferences dashbord */
@@ -30,22 +41,42 @@
 }
 
 .email-pref {
-  font-size: 1rem;
   margin: var(--margin) 0 0.5rem 0;
   font-weight: 500;
+}
+
+.email-verification-required {
+  color: var(--alertRed);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+.email-verification-required::before {
+  content: "";
+  background-image: url(/img/svg/data-compromised.svg);
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  margin-right: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+  display: inline-block;
 }
 
 .pref-section.unverified {
   margin-top: calc(var(--padding) * 3);
 }
 
+.radio-label span.bold {
+  color: var(--color);
+}
+
 .col-8.card.global-comm {
   border: none;
 }
 
-.section-headline.breach-summary {
-  margin-bottom: 0.5rem;
-  padding-top: var(--padding);
+.add-new-email {
+  margin-bottom: 0.25rem;
 }
 
 .trash-can {

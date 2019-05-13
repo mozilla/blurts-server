@@ -88,6 +88,7 @@ function getReportHeader(args) {
 
 function getWhatToDos(args) {
   const locales = args.data.root.supportedLocales;
+  const imgPath = args.data.root.SERVER_URL;
 
   let headlineId = "what-to-do-next";
   let subheadId = "what-to-do-subhead";
@@ -104,7 +105,7 @@ function getWhatToDos(args) {
 
   const whatToDoNext = {
     headline: LocaleUtils.fluentFormat(locales, headlineId),
-    steps: createTips(numTips, subheadId, blurbId, locales),
+    steps: createTips(numTips, subheadId, blurbId, locales, imgPath),
   };
   return args.fn(whatToDoNext);
 }
@@ -125,7 +126,7 @@ function checkForNewStringId(locales, stringId) {
 }
 
 
-function createTips(numTips, subheadIdPrefix, blurbIdPrefix, locales) {
+function createTips(numTips, subheadIdPrefix, blurbIdPrefix, locales, imgPath = null) {
   const tips = [];
   let x = 0;
   while (x < numTips) {
@@ -133,6 +134,7 @@ function createTips(numTips, subheadIdPrefix, blurbIdPrefix, locales) {
       idx: x + 1,
       subhead: checkForNewStringId(locales, `${subheadIdPrefix}-${x+1}`),
       blurb: checkForNewStringId(locales, `${blurbIdPrefix}-${x+1}`),
+      srcDomain: imgPath,
     });
     x++;
   }

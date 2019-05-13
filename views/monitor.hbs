@@ -1,8 +1,8 @@
 {{!< default }}
 
-<main class="container monitor-homepage">
+<main class="container monitor-homepage clear-header" data-page-label={{> analytics/landing_page_label }}>
   <section class="row jst-cntr">
-    <div class="col-7 flx-cntr landing-content">
+    <div class="col-12 flx-cntr landing-content">
       {{#if featuredBreach}}
         <h2 class="headline landing-headline">{{{ fluentNestedBold "was-your-info-exposed" breachName=featuredBreach.Title }}}</h2>
       {{else}}
@@ -27,7 +27,7 @@
       <div class="col-4">
         {{> latest-breach }}
       </div>
-      {{> article-list }}
+      {{> take-back-control/article-list }}
     </section>
   </section>
 </div>

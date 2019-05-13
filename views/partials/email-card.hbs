@@ -31,7 +31,7 @@
 
               {{#if prefs}} <!--user preferences dashboard / show trashcan to delete email-->
                 {{#if primary}}
-                  <a href="{{ getFxaUrl }}" class="change-primary-email">{{ getString "link-change-primary" }}</a>
+                  <a href="{{ getFxaUrl }}" class="change-primary-email btn-dark arrow-head-btn flx hide-mobile">{{ getString "link-change-primary" }}{{> svg/arrow-head-right }}</a>
                 {{else}}
                   {{> forms/remove-email-form }}
                 {{/if}}

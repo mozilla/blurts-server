@@ -7,8 +7,13 @@
   justify-content: space-between;
 }
 
-.scan-results-sign-up {
+.scan-res.sign-up-banner {
   background: var(--bluePurpleGradient);
+  margin-bottom: 4rem;
+}
+
+.scan-results-sign-up .col-9.sign-up-wrapper {
+  padding: 1rem;
 }
 
 .sign-up-bullet {
@@ -22,16 +27,15 @@
 }
 
 .sign-up-headline {
-  /* font-size: 1.5rem; */
   font-size: 2rem;
   color: rgba(255, 255, 255, 1);
   max-width: 350px;
-  margin: auto;
+  margin: auto auto auto 0;
 }
 
 .sign-up-feature {
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 1);
   margin: 0.25rem 0;
 }
 
@@ -41,13 +45,15 @@
 
 .account-not-required {
   margin-top: var(--margin);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.7);
+  text-align: center;
 }
 
 .sign-up-cta {
   max-width: 200px;
   justify-content: center;
+  margin-left: var(--margin);
 }
 
 .col-9 .sign-up-cta {
@@ -55,24 +61,48 @@
   text-align: center;
 }
 
-.feat-headline-wrapper {
-  padding-top: 0;
-  padding-bottom: 0;
+@media screen and (max-width: 1100px) {
+  .scan-results-sign-up .sign-up-banner {
+    flex-direction: column;
+  }
+
+  .scan-results-sign-up .sign-up-headline {
+    text-align: center;
+    margin: auto auto 1rem auto;
+    max-width: 380px;
+  }
+
+  .scan-results-sign-up ul.feature-list {
+    display: flex;
+    align-items: flex-start;
+    margin: 1rem auto 2rem auto;
+  }
+
+  .scan-results-sign-up .sign-up-cta {
+    max-width: 380px;
+    margin: auto;
+  }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   .sign-up-banner {
     flex-wrap: wrap;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .sign-up-cta {
+    margin-left: 0;
+    max-width: 400px;
   }
 
   .sign-up-headline {
-    margin-bottom: 2rem;
+    margin: auto auto 3rem auto;
     font-size: 2rem;
   }
 
   .sign-up-headline,
   .sign-up-cta {
-    max-width: 100%;
     text-align: center;
   }
 
@@ -80,5 +110,10 @@
   .sign-up-headline-list-wrapper {
     justify-content: center;
     align-items: center;
+  }
+
+  .col-12.feat-headline-wrapper {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }

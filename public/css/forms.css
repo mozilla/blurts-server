@@ -6,7 +6,20 @@ form,
 }
 
 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px white inset;
+  -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0) inset;
+}
+
+.email-scan input[type="email"]::placeholder,
+.email-scan input[type="email"]::-moz-placeholder,
+.email-scan input[type="email"] {
+  opacity: 1;
+  color: var(--color);
+  font-weight: 400;
+}
+
+.email-scan input[type="email"] {
+  background-color: rgba(255, 255, 255, 1);
+  border-color: rgba(255, 255, 255, 1);
 }
 
 .form-group.loading-data .loader {
@@ -21,10 +34,12 @@ input:-webkit-autofill {
   text-align: center;
   font-weight: 300;
   margin: 0 auto;
-  color: var(--blue4);
+  color: var(--grey8);
   max-width: 355px;
   z-index: 1;
-  display: none;
+  font-size: 0.9rem;
+
+  /* display: none; */
 }
 
 input[type="submit"],
@@ -43,7 +58,7 @@ input:focus,
 button:focus,
 .button:focus,
 .radio-button-group:focus {
-  border: 2px solid rgb(40, 97, 205);
+  border: 1px solid rgb(40, 97, 205);
   box-shadow: 0 0 0 1px rgb(63, 97, 217), 0 0 0 4px rgba(63, 97, 217, 0.3);
   outline: none;
 }
@@ -116,7 +131,6 @@ button:focus,
 }
 
 input::placeholder {
-  color: #f1f1f1;
   font-size: 1rem;
 }
 
@@ -126,6 +140,7 @@ input::placeholder {
 
 .scan-another-email input[type="email"] {
   color: var(--color);
+  border: 1px solid var(--grey3);
 }
 
 .form-group.loading-data .button,
@@ -135,7 +150,6 @@ input::placeholder {
 }
 
 input[type="email"] {
-  color: var(--grey1);
   font-size: 17px;
   font-weight: 300;
   text-indent: var(--margin);
@@ -155,20 +169,21 @@ input[type="submit"] {
 }
 
 form.invalid input[type="submit"]:focus {
-  border: 2px solid var(--red50);
+  border: 1px solid var(--red50);
   box-shadow: 0 0 0 1px rgba(255, 0, 55, 0.514), 0 0 0 4px rgba(255, 0, 55, 0.3);
 }
 
 input.email-add {
-  border-color: var(--violet3);
   color: var(--color);
-  caret-color: var(--violet5);
+  border-color: var(--grey3);
+  background-color: rgba(255, 255, 255, 0.45);
 }
 
 input.email-add-submit {
-  background-color: var(--violet5);
+  border: 1px solid var(--blue3);
+  background-color: var(--blue3);
   color: white;
-  border-color: var(--violet5);
+  border-color: var(--blue3);
   font-weight: 500;
 }
 
@@ -179,29 +194,52 @@ input[type="radio"] {
 }
 
 .checkmark {
-  background-color: rgba(255, 255, 255, 0);
-  height: 1.35rem;
-  width: 1.35rem;
-  border-radius: 0.1rem;
+  background-color: rgba(255, 255, 255, 1);
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 0.2rem;
   display: block;
   position: absolute;
   top: 2px;
-  border: 1px solid rgba(149, 43, 185, 0.4);
+  border: 1px solid rgba(12, 12, 13, 0.3);
   transition: background-color 0.15s ease-in-out;
 }
 
 .radio-container:hover .checkmark {
-  background-color: rgba(149, 43, 185, 0.1);
+  background-color: rgba(12, 12, 13, 0.04);
   transition: background-color 0.15s ease-in-out;
 }
 
 input[type="radio"]:checked ~ .checkmark {
-  background-color: var(--violet3);
   transition: background-color 0.15s ease-in-out;
+  background-image: url(/img/checkbox-check.svg);
+  background-repeat: no-repeat;
+  background-size: 13px;
+  background-position: center center;
+}
+
+input[type="radio"]:checked:hover ~ .checkmark {
+  background-color: rgba(245, 245, 245, 1);
+}
+
+input[type="radio"]:focus ~ .checkmark {
+  border: 1px solid rgba(12, 12, 13, 0.3);
+  box-shadow: 0 0 0 1px rgba(12, 12, 13, 0), 0 0 0 3px rgba(12, 12, 13, 0.05);
 }
 
 .add-new-email-form {
   margin: var(--margin) 0;
+  display: flex;
+}
+
+.add-new-email-form .input-group {
+  width: 100%;
+  margin-right: 1rem;
+}
+
+.add-new-email-form .input-group-button {
+  width: auto;
+  max-width: auto;
 }
 
 .add-new-email-form input::placeholder {
@@ -233,5 +271,9 @@ input[type="radio"]:checked ~ .checkmark {
 
   .radio-label {
     font-size: 0.9rem;
+  }
+
+  .add-new-email-form {
+    flex-direction: column;
   }
 }

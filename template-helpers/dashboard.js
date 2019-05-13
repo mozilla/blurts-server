@@ -23,6 +23,7 @@ function getBreachesForEachEmail(args) {
 
 
 function getUserPreferences(args) {
+
   const unverifiedEmails = args.data.root.unverifiedEmails;
   const verifiedEmails = args.data.root.verifiedEmails;
   const primaryEmail = verifiedEmails.shift();
@@ -32,15 +33,18 @@ function getUserPreferences(args) {
 
   const emailAddresses = {
     primary: {
-      subhead: "Firefox Account Email - Primary",
+      subhead: LocaleUtils.fluentFormat(locales, "fxa-primary-email"),
+      className: "fxa-primary-email",
       email_addresses: [ primaryEmail ], // put in array for template looping
     },
     secondary: {
-      subhead: "Other Monitored Emails",
+      subhead: LocaleUtils.fluentFormat(locales, "other-monitored-emails"),
+      className: "other-monitored-emails",
       email_addresses: verifiedEmails,
     },
     unverified: {
-      subhead: "Email Verification Required",
+      subhead: LocaleUtils.fluentFormat(locales, "email-verification-required"),
+      className: "email-verification-required",
       email_addresses: unverifiedEmails,
     },
   };
@@ -48,12 +52,12 @@ function getUserPreferences(args) {
   const communicationOptions = [
     {
       optionDescription: "Send breach alerts to the affected email address.",
-      labelString: LocaleUtils.fluentFormat(locales, "comm-opt-0", {primaryEmail: primaryEmail.email}),
+      labelString: LocaleUtils.fluentFormat(locales, "comm-opt-0", {primaryEmail: `<span class="bold">${primaryEmail.email}</span>`}),
       optionId: "0",
     },
     {
       optionDescription: "Send all breach alerts to subscriber's primary email address.",
-      labelString: LocaleUtils.fluentFormat(locales, "comm-opt-1", {primaryEmail: primaryEmail.email}),
+      labelString: LocaleUtils.fluentFormat(locales, "comm-opt-1", {primaryEmail: `<span class="bold">${primaryEmail.email}</span>`}),
       optionId: "1",
     },
   ];

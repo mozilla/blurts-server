@@ -1,68 +1,55 @@
-<main id="breach-detail" class="breach-detail container clear-header">
-  <div class="row jst-cntr">
-    <div class="col-9 flx-cntr">
-      <div class="breach-detail-logo-wrapper">
-        <img class="breach-detail-logo breach-logo" alt="{{ featuredBreach.Name }} logo" src="/img/logos/{{ featuredBreach.LogoPath }}" />
-      </div>
-      <h2 class="headline">{{featuredBreach.Name}}</h2>
-      <h3 class="breach-type">{{breachCategory}}</h3>
-    </div>
-  </div>
-</main>
 {{#getBreachDetail}}
-  <section class="bg-white">
 
-    {{#if overview}}
-      <div class="row jst-cntr">
-        <div class="col-9 padding-top-zero">
-          {{> breach-detail-content-group overview}}
-          {{#if delayedReporting }}
-            <a class="text-link" href="#{{delayedReporting.href}}">
-              {{delayedReporting.headline}}
-            </a>
-          {{/if}}
+  <main id="breach-detail" class="breach-detail container clear-header bg-dark">
+    <div class="row jst-cntr">
+      <div class="col-9 flx-cntr">
+        <div class="breach-detail-logo-wrapper">
+          <img class="breach-detail-logo breach-logo" alt="{{ breach.Name }} logo" src="/img/logos/{{ breach.LogoPath }}" />
         </div>
+        <h2 class="headline breach-detail-headline">{{ breach.Title }}</h2>
+        <h3 class="breach-type"><a href="#what-is-this-breach">{{ category }}</a></h3>
       </div>
-    {{/if}}
+    </div>
+  </main>
 
-    {{#if dataClasses }}
-      <div class="row jst-cntr">
-        <div class="col-9 padding-top-zero">
-          {{> breach-detail-content-group dataClasses}}
-          {{> hibp-attribution}}
-        </div>
+<!--dataClasses-->
+  <section class="detail-section  bg-light">
+    <div class="row jst-cntr flx-col">
+      <div class="col-8 overview">
+        {{> breach-detail-content-group overview}}
+        {{#if delayedReporting }}
+          <a class="text-link" href="#{{delayedReporting.href}}">
+            {{delayedReporting.headline}}
+          </a>
+        {{/if}}
       </div>
-    {{/if}}
+      <div class="col-8 breach-details">
+        {{> breach-detail-content-group dataClasses}}
+        {{> hibp-attribution}}
+      </div>
+    </div>
   </section>
 
-  <section class="bg-white wtd-tips">
-    {{#if whatToDoTips }}
-      <div class="row jst-cntr">
-        <div class="col-9">
+    <section class="detail-section bg-white">
+
+      <div class="row jst-cntr flx-col">
+        <div class="col-8 breach-detail what-to-do-tips">
           {{> breach-detail-content-group whatToDoTips}}
         </div>
-      </div>
-    {{/if}}
-  </section>
-
-  <section class="container bg-white">
-    {{#if sensitiveBreach }}
-      <div class="row jst-cntr">
-        <div class="col-9">
-          {{> breach-detail-content-group sensitiveBreach}}
+        {{> sign-up-banners/sign-up-warm-gradient }}
+        <div id="what-is-this-breach" class="col-8 breach-details">
+          {{> breach-detail-content-group whatIsThisBreach}}
         </div>
+        {{#if sensitiveBreach }}
+          <div class="col-8 breach-details">
+            {{> breach-detail-content-group sensitiveBreach}}
+          </div>
+        {{/if}}
+        {{#if delayedReporting}}
+          <div class="col-8 breach-details">
+            {{> breach-detail-content-group delayedReporting}}
+          </div>
+        {{/if}}
       </div>
-    {{/if}}
-
-    {{#if delayedReporting }}
-      <div id="{{ delayedReporting.href }}" class="row jst-cntr">
-        <div class="col-9">
-          {{> breach-detail-content-group delayedReporting}}
-        </div>
-      </div>
-    {{/if}}
-  </section>
-
+    </section>
 {{/getBreachDetail}}
-
-{{> sign-up-banners/scan-results-sign-up }}

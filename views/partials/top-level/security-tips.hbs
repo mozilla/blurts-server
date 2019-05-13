@@ -1,22 +1,17 @@
-<main class="container clear-header security-tips bg-ink-light ">
+
+<main class="container clear-header security-tips bg-dark" data-page-label="Security Tips">
   <div class="row jst-cntr">
-    <div class="col-9">
-      <h2 class="security-tips-headline">
+    <div class="col-12 no-vertical-padding">
+      <h2 class="headline wrap-headline">
         {{ getString "security-tips-headline" }}
       </h2>
-      <p class="article-lead-in subhead">
-        News about data breaches is becoming more common. We’re told millions of accounts were compromised. Passwords were exposed. Other sensitive data was leaked to the dark web.
-      </p>
-      <p class="article-lead-in subhead">
-        Finding out about a data breach only gets you so far. What does it mean for your internet safety? What should you do? Learn how to better protect yourself online so you can keep your devices, online accounts, and personal data safe.  
-      </p>
       <ul class="security-tip-list flx">
         {{#each (articleLinks)}}
           <li class="security-tip-list-item flx">
             <div class="article-icon {{ class }}">{{> (lookup . 'pathToPartial') }}</div>
             <div class="flx flx-col">
-              <a class="security-tip-link {{ class }}" href="#{{ class }}">{{ stringId }}</a>
-              <p class="security-tip-subhead">{{ subhead }}</p>
+              <a class="security-tip-link flx {{ class }}" href="#{{ class }}">{{ stringId }}{{> svg/arrow-head-right }}</a>
+              <p class="security-tip-link-subhead">{{ subhead }}</p>
             </div>
           </li>
         {{/each}}
@@ -24,50 +19,53 @@
     </div>
   </div>
 </main>
-<section class="container bg-ink-light">
-  <div class="row jst-cntr">
+<section class="container bg-light articles">
+  <div class="row">
     <div class="col-9">
+      <section class="st-intro-wrap">
+        {{#each (getSecurityTipsIntro)}}
+          <p class="st-intro">{{{ this }}}</p>
+        {{/each}}
+      </section>
+
       {{#each (getArticleCopy)}}
-        <div id="{{ class }}"class="article-wrapper">
+        <div id="{{ class }}" class="st-{{ class }} article-wrapper">
+          <div class="ico {{ class }}">{{> (lookup . 'pathToPartial')}}</div>
+          <span class="security-tip-subhead">{{subhead}}</span>
           <h2 class="article-headline {{ class }}">{{ title }}</h2>
           {{#each copy}}
 
-            {{#if lead}}
-              <p class="article-paragraph lead">{{ lead }}</p>
+            {{#each leads}}
+              <p class="article-paragraph lead">
+                <span class="drop-cap">
+                  {{ ./../dropCap }}
+                </span>
+                <span>{{ this }}</span>
+              </p>
+            {{/each}}
+
+            {{#if toggles}}
+              {{#each this.toggles}}
+                <div class="toggle-parent inactive st-toggle-wrapper">
+                  <div class="toggle-info-wrapper">
+                    <button class="toggle svg-wrap article-toggle" aria-label="{{ getString "show-content" }}">
+                      <span class="article-subhead toggle-subhead">{{{ subhead }}}</span>                    
+                      {{> svg/toggle-down }}
+                    </button>
+                  </div>
+                  <div class="toggle-child">
+                    {{> top-level/security-tips/tip-content }}
+                    {{> top-level/security-tips/security-tip-callout }}
+                  </div><!--closes toggle-child-->
+                </div>
+              {{/each}}
             {{/if}}
 
             {{#if subhead}}
-              <h3 class="article-subhead">{{ subhead }}</h3>
+              <h3 class="article-subhead">{{{ subhead }}}</h3>
             {{/if}}
-
-            {{#if paragraph}}
-              <p class="article-paragraph">{{ this.paragraph }}</p>
-            {{/if}}
-
-            {{#if list}}
-              <ul class = {{ ./../class }}-list>
-                {{#each list}}
-                  <li class="{{ ./../../class }}-list-item article-list-item">{{ this }}</li>
-                {{/each}}
-              </ul>
-            {{/if}}
-
-            {{#if passwordDosAndDonts }}
-              <h1> {{ passwordDosAndDonts.listHeadline }}</h1>
-              <div class="password-tip-list flx">
-                <ul class="do-list">
-                  {{#each passwordDosAndDonts.doList}}
-                    <li class="do-list-item">{{ this }}</li>
-                  {{/each}}
-                </ul>
-                <ul class="dont-list">
-                  {{#each passwordDosAndDonts.dontList}}
-                    <li>{{ this }}</li>
-                  {{/each}}
-                </ul>
-              </div>
-            {{/if}}
-
+            {{> top-level/security-tips/tip-content }}
+            {{> top-level/security-tips/dos-and-donts }}
           {{/each}}
         </div>
       {{/each}}

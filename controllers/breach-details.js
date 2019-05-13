@@ -10,7 +10,7 @@ function getBreachDetail(req, res) {
   const featuredBreach = HIBP.getBreachByName(allBreaches, breachName);
 
   if (!featuredBreach) {
-    res.redirect("/");
+    return res.redirect("/");
   }
 
   res.render("breach-detail", {

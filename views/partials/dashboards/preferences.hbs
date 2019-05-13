@@ -1,18 +1,18 @@
 {{#getUserPreferences}}
-  <section class="container clear-header">
+  <section class="container clear-header" data-page-label="Preferences">
     <div class="row jst-cntr">
       <div class="col-8">
         <h2 class="skinny-headline monitor-preferences-headline">Monitor <span class="bold">{{ getString "preferences" }}</span></h2>
       </div>
     </div>
     <div class="row jst-cntr">
-      <div class="col-8 card global-comm">
+      <div class="col-8 global-comm">
         <h2 class="section-headline">{{ getString "global-communication" }}</h2>
         <section>
           {{#each communicationOptions}}
             <label class="radio-container">
               <input class="radio-comm-option" data-comm-option="{{ optionId }}" data-form-action=" update-comm-option" type="radio" checked="checked" name="1">
-              <span class="radio-label">{{ labelString }}</span>
+              <span class="radio-label">{{{ labelString }}}</span>
               <span class="checkmark"></span>
             </label>
           {{/each}}
@@ -26,7 +26,7 @@
           {{#each emails }}
             {{#ifCompare email_addresses.length ">" 0}}
               <div class="col-8 no-vertical-padding">
-                <h4 class="email-pref">{{ this.subhead }}</h4>
+                <h4 class="email-pref {{ this.className }}">{{ this.subhead }}</h4>
               </div>
               {{#each this.email_addresses}}
                 {{> email-card prefs=./../../../preferences}}
@@ -35,18 +35,20 @@
           {{/each}}
       </div>
     </div>
-    <div class="row jst-cntr dash-row">
-      <div class="col-8 card">
-        <h2 class="section-headline">{{ getString "add-new-email" }}</h2>
-            {{> forms/add-another-email-form }}
+    <div class="row jst-cntr dash-row flx-col">
+      <div class="col-8 no-vertical-padding">
+        <h2 class="section-headline add-new-email">{{ getString "add-new-email" }}</h2>
+      </div>
+      <div class="col-8 padding-zero">
+        {{> forms/add-another-email-form }}
       </div>
     </div>
     <div class="row jst-cntr ">
-      <div class="col-8 card">
+      <div class="col-8">
         <div>
           <h2 class="section-headline">{{ getString "remove-fxm" }}</h2>
           <p class="subhead">{{ getString "remove-fxm-blurb" }}</p>
-          <button class="remove-fxm subhead" href="/">{{ getString "remove-fxm" }}</button>
+          <button class="remove-fxm subhead flx" href="/">{{ getString "remove-fxm" }}{{> svg/arrow-head-right }}</button>
         </div>
       </div>
     </div>

@@ -2,21 +2,21 @@
   <div class="breach-card-title-wrapper flx {{ Category }}">
     <span class="breach-title demi">{{ Title }}</span>
     <div class="breach-logo-wrapper">
-      <img alt="" class="breach-logo lazy-img" {{#if lazyLoad}} data-srcset="/img/logos/{{ LogoPath }}" src="/img/logos/missing-logo-icon.png" {{else}} src="/img/logos/{{ LogoPath }}" {{/if}} />
+      <img alt="" class="breach-logo" {{#if lazyLoad}} data-srcset="/img/logos/{{ LogoPath }}" src="/img/logos/missing-logo-icon.png" {{else}} src="/img/logos/{{ LogoPath }}" {{/if}} />
     </div>
   </div>
   <div class="breach-info-wrapper flx flx-col">
     <div class="flx flx-col">
-      <span class="breach-info"><span class="demi key">{{ String.AddedDate }}</span>{{ AddedDate }}</span>
+      <span class="breach-info"><span class="key">{{ String.AddedDate }}</span>{{ AddedDate }}</span>
       {{#if showPwnCount }}
-        <span class="breach-info"><span class="demi key">{{ String.CompromisedAccounts }}</span>{{ PwnCount }}</span>
+        <span class="breach-info"><span class="key">{{ String.CompromisedAccounts }}</span>{{ PwnCount }}</span>
       {{/if}}
       {{#if DataClasses }}
-        <span class="breach-info"><span class="demi key">{{ String.CompromisedData }}</span>{{ DataClasses }}</span>
+        <span class="breach-info"><span class="key">{{ String.CompromisedData }}</span>{{ DataClasses }}</span>
       {{/if}}
     </div>
     <div class="breach-card-link-wrap">
-      <span class="more-about-this-breach">{{ String.MoreInfoLink }}<span class="arrow">&#8594;</span></span>
+      <span class="more-about-this-breach">{{ String.MoreInfoLink }}</span>
     </div>
   </div>
 </a>

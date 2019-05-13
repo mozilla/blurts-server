@@ -2,7 +2,8 @@ data-server-url="{{ SERVER_URL }}"
 
 {{#if FXA_ENABLED}}
   data-fxa-enabled="fxa-enabled"
-  data-fxa-address={{getFxaUrl}}
+  data-fxa-address={{ getFxaUrl }}
+
   data-utm-campaign="fx-monitor-fxa-integration"
   
   {{#if req.session.user}}

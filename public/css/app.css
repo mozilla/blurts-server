@@ -7,23 +7,18 @@
   visibility: hidden;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 html,
 body {
   --accentLightBlue: #00b4f5;
-  --warmGradient: linear-gradient(134deg, #e22850 0%, #e31587 50%, #952bb9 100%);
-  --bluePurpleGradient: linear-gradient(135deg, var(--blue2) 0%, var(--violet5) 35%, var(--purple5) 90%);
+  --warmGradient: linear-gradient(200deg, #e22850 0%, #e31587 30%, #952bb9 100%);
+  --bluePurpleGradient: linear-gradient(220deg, var(--blue4) 0%, var(--violet5) 55%, var(--purple5) 100%);
   --borderColors: var(--blue) #c78d20 #ff7e88 #ac3eff;
   --inkLight: #2b1e44;
   --color: #20123a;
-
-  /* --paragraphColor: #42425a; */
+  --textLight: #686869;
   --paragraphColor: var(--grey1);
   --padding: 2rem;
-  --maxWidth: 1100px;
+  --maxWidth: 1200px;
   --margin: 1rem;
   --headline: 2.1rem;
   --bigHeadline: 2.2rem;
@@ -48,7 +43,7 @@ body {
   --purple5: #722291;
   --pink4: #e31587;
   --blue1: #0df;
-  --blue2: #0060df;
+  --blue2: #0090ed;
   --blue3: #0060df;
   --blue4: #0250bb;
   --blue5: #073072;
@@ -57,22 +52,27 @@ body {
   --orange5: #ff7139;
   --orange6: #e25920;
   --bgLight: rgba(249, 249, 250, 1);
+  --buttonFontSize: 0.9rem;
+  --paragraphFontSize: 1.1rem;
   --grey1: #f9f9fa;
   --grey2: #ededf0;
+  --grey3: #cdcdd4;
+  --grey6: #5e5e72;
+  --grey4: #9595a3;
+  --grey5: #7a7a8b;
   --grey8: #42425a;
+  --grey9: #202340;
   --monitorGradient: linear-gradient(-90deg, #ff9100 0%, #f10366 50%, #6173ff 100%);
 
   display: flex;
   flex-direction: column;
   margin: 0;
   padding: 0;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: var(--grey1);
   scroll-behavior: smooth;
-
-  /* color: var(--color); */
   font-family: "Inter UI", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 300;
-  font-size: 0.9rem;
+  font-size: 15px;
   overflow-y: scroll;
   overflow-x: hidden;
   min-height: 100vh;
@@ -82,6 +82,10 @@ body {
 
 .warm-gradient {
   background: var(--warmGradient);
+}
+
+.cool-gradient {
+  background: var(--bluePurpleGradient);
 }
 
 .feature-title {
@@ -112,8 +116,11 @@ body {
 p,
 .paragraph {
   line-height: var(--lineHeight);
+  font-size: var(--paragraphFontSize);
+}
 
-  /* color: var(--paragraphColor); */
+.medium {
+  font-weight: 500;
 }
 
 .demi {
@@ -127,13 +134,6 @@ p,
 .desc {
   max-width: 320px;
   font-weight: 300;
-}
-
-span.needscopy {
-  font-weight: 300;
-  font-size: 1rem;
-  opacity: 0.6;
-  margin-left: 1rem;
 }
 
 h1,
@@ -152,23 +152,19 @@ h3,
   margin-top: 0;
 }
 
-.nav-link,
-.footer-link,
-.article-link,
-.remove-email,
-.change-primary-email {
-  border: 2px solid rgba(255, 255, 255, 0);
-}
-
 .headline {
   font-size: var(--headline);
   font-weight: 700;
 }
 
+.wrap-headline {
+  max-width: 550px;
+}
+
 .skinny-headline {
   font-size: var(--headline);
   font-weight: 500;
-  max-width: 400px;
+  max-width: 480px;
 }
 
 .headline,
@@ -199,8 +195,22 @@ a:hover {
   opacity: 0.8;
 }
 
+button.text-link {
+  border: 0;
+  padding: 0;
+  text-align: left;
+  font-family: "Inter UI", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+}
+
+button.text-link,
+.text-link,
 .footer-link {
-  color: var(--blue4);
+  color: var(--blue3);
+}
+
+.text-link:hover {
+  text-decoration: underline;
 }
 
 .button {
@@ -231,35 +241,37 @@ a.btn-dark {
   justify-content: center;
   text-align: center;
   background-color: transparent;
-  background-color: rgba(255, 255, 255, 0);
   border-radius: 0.25rem;
   min-height: 2rem;
-  padding: 0.75rem 2rem;
+  font-size: var(--buttonFontSize);
+  font-family: "FirefoxSharpSans", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   transition: border 0.1s ease-in-out, background-color 0.1s ease-in-out;
 }
 
 .btn-light {
   border: 1px solid rgba(255, 255, 255, 0.5);
   color: rgba(255, 255, 255, 1);
+  padding: 0.75rem 2rem;
 }
 
 .btn-dark,
 .email-card .btn-light {
   color: var(--grey8);
-  border: 1px solid var(--grey8);
+  border: 1px solid #cdcdd482;
+  padding: 0.75rem 1rem;
 }
 
 .btn-dark:hover,
 .email-card .btn-light:hover {
   color: var(--grey8);
-  background-color: var(--grey2);
+  background-color: #ededf099;
   border: 1px solid var(--grey2);
 }
 
 .btn-light:hover,
 a.btn-light:hover {
-  background-color: var(--violet5);
-  border: 1px solid var(--violet5);
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0);
   opacity: 1;
   transition: border 0.1s ease-in-out, background-color 0.1s ease-in-out;
 }
@@ -275,6 +287,10 @@ a.btn-light:active {
 .btn-light:active {
   border-width: 1px;
   outline: none;
+}
+
+.arrow-head-btn {
+  align-items: center;
 }
 
 ul {
@@ -347,6 +363,10 @@ ul li {
   flex-direction: column;
 }
 
+.flx-row {
+  flex-direction: row;
+}
+
 .space-between {
   justify-content: space-between;
 }
@@ -411,6 +431,10 @@ ul li {
   padding-top: 0;
 }
 
+.padding-zero {
+  padding: 0;
+}
+
 .no-vertical-padding {
   padding-top: 0;
   padding-bottom: 0;
@@ -436,7 +460,7 @@ ul li {
 }
 
 .bg-light {
-  background-color: var(--grey2);
+  background-color: var(--grey1);
 }
 
 .bg-ink-light {
@@ -467,8 +491,14 @@ ul li {
 .card {
   border: 1px solid #eee;
   border-radius: 0.35rem;
-  background-color: rgba(255, 255, 255, 0.45);
+  background-color: rgba(255, 255, 255, 1);
   margin-bottom: var(--margin);
+}
+
+.source-info a,
+.source-info {
+  color: var(--grey8);
+  font-size: 0.9rem;
 }
 
 /* SPRITES */
@@ -501,8 +531,8 @@ div.sprite {
   margin-right: calc(var(--padding) / 2);
 }
 
-.arrow {
-  padding-left: calc(var(--padding) / 2);
+.arrow-head-right {
+  margin-left: 0.35rem;
 }
 
 li:hover .bullet {
@@ -534,6 +564,14 @@ li:hover .bullet {
 .clear-header {
   min-height: 90vh;
   padding-top: 12rem;
+}
+
+.toggle-parent.active .toggle svg {
+  transform: rotate(180deg);
+}
+
+.toggle-parent.inactive .toggle-child {
+  display: none;
 }
 
 @media screen and (max-width: 1200px) {
@@ -584,6 +622,10 @@ li:hover .bullet {
 }
 
 @media screen and (max-width: 600px) {
+  body {
+    --paragraphFontSize: 1rem;
+  }
+
   .col-5,
   .col-6,
   .col-7,
@@ -593,7 +635,7 @@ li:hover .bullet {
   }
 
   .row-full-width {
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 1.5rem;
   }
 
   .card {
@@ -608,10 +650,6 @@ li:hover .bullet {
     --bigHeadline: 2rem;
     --skinnyHeadline: 1.4rem;
     --subhead: 1.1rem;
-  }
-
-  .row-full-width {
-    padding: 1rem 1.75rem;
   }
 
   .headline {

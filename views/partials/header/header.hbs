@@ -1,4 +1,4 @@
-    <header>
+    <header id="header">
       <section class="row-full-width">
         <a class="flx-cntr fx-monitor-logo-wrapper" href="/" {{> analytics/internal-link eventLabel="Fx-Monitor-Logo" }}>
           <div class="sprite fx-monitor-logo"><!--Firefox Monitor logo--></div>
@@ -9,7 +9,7 @@
           {{#if req.session.user}}
             {{> header/fxa-menu }}
           {{else}}
-            <button id="sign-in-btn" class="open-oauth sign-in btn-light">{{ getString "sign-in" }}</button>
+            <button id="sign-in-btn" class="open-oauth sign-in btn-light" {{> analytics/fxa id="fx-monitor-sign-in-button" }} data-event-category="Sign In Button">{{ getString "sign-in" }}</button>
           {{/if}}
         </nav>
       </section>

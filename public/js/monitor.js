@@ -3,7 +3,6 @@
 /* global getFxaUtms */
 /* global hashEmailAndSend */
 
-
 if (typeof TextEncoder === "undefined") {
   const cryptoScript = document.createElement("script");
   const scripts = document.getElementsByTagName("script")[0];
@@ -11,34 +10,20 @@ if (typeof TextEncoder === "undefined") {
   scripts.parentNode.insertBefore(cryptoScript, scripts);
 }
 
-// may need for fxa-stuff later
-// function ga_getLocation() {
-//   if (document.querySelector(".landing-content")) {
-//     if (document.getElementById("sensitive-featured-breach")) {
-//       return "Sensitive Featured Breach Page";
-//     }
-//     if (document.getElementById("featured-breach")) {
-//       return "Featured Breach Page";
-//     }
-//     return "Landing Page";
-//   }
-//   if (document.getElementById("found-breaches")) {
-//       return "Scan Results - found breaches";
-//   }
-//   if (document.getElementById("no-breaches")) {
-//       return "Scan Results - no breaches";
-//   }
-//   if (document.getElementById("unsubscribe")) {
-//     return "Unsubscribe Page";
-//   }
-//   if (document.getElementById("unsubscribe-survey")) {
-//     return "Unsubscribe Survey";
-//   }
-//   if (document.getElementById("subpage") && document.getElementById("subpage").getAttribute("data-analytics-id") === "error" ) {
-//     return "Error";
-//   }
-//   return "Firefox Monitor";
-// }
+
+function findAncestor(el, cls) {
+  while ((el = el.parentElement) && !el.classList.contains(cls));
+  return el;
+}
+
+
+function toggleEl(e) {
+  const toggleButton = e.target;
+  const toggleParent = findAncestor(toggleButton, "toggle-parent");
+  ["inactive", "active"].forEach(className => {
+    toggleParent.classList.toggle(className);
+  });
+}
 
 
 function isValidEmail(val) {
@@ -46,6 +31,7 @@ function isValidEmail(val) {
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(val).toLowerCase());
 }
+
 
 function doOauth(el) {
   let url = new URL("/oauth/init", document.body.dataset.serverUrl);
@@ -134,6 +120,22 @@ function toggleDropDownMenu(dropDownMenu) {
   return dropDownMenu.classList.add("mobile-menu-open");
 }
 
+function toggleArticles() {
+  const windowWidth = window.innerWidth;
+  const articleToggles = document.querySelectorAll(".st-toggle-wrapper");
+  if (windowWidth > 600) {
+    articleToggles.forEach(toggle => {
+      toggle.classList.add("active");
+      toggle.classList.remove("inactive");
+    });
+    return;
+  }
+  articleToggles.forEach(toggle => {
+    toggle.classList.remove("active");
+    toggle.classList.add("inactive");
+  });
+}
+
 function toggleMobileFeatures() {
   const windowWidth = window.innerWidth;
   if (windowWidth > 800) {
@@ -150,9 +152,18 @@ function toggleMobileFeatures() {
     });
 }
 
+function toggleHeaderStates(header, win) {
+  if (win.pageYOffset > 400) {
+    header.classList.add("show-shadow");
+  } else {
+    header.classList.remove("show-shadow");
+  }
+}
+
 ( async() => {
   document.addEventListener("touchstart", function(){}, true);
   const win = window;
+  const header = document.getElementById("header");
   win.addEventListener("pageshow", function() {
     const previousActiveLink = document.querySelector(".active-link");
     if (previousActiveLink) {
@@ -170,11 +181,18 @@ function toggleMobileFeatures() {
       win.history.replaceState({}, "", win.location.toString().replace(/[?&]utm_.*/g, ""));
     }
     toggleMobileFeatures();
+    toggleArticles();
+    toggleHeaderStates(header, win);
     document.forms ? (restoreInputs(), addFormListeners()) : null;
   });
 
   // toggleMobileFeatures();
-  win.addEventListener("resize", toggleMobileFeatures);
+  win.addEventListener("resize", () => {
+    toggleMobileFeatures();
+    toggleArticles();
+  });
+
+  document.addEventListener("scroll", () => toggleHeaderStates(header, win));
 
 
   // capitalize the sign in button for en-US only.
@@ -188,6 +206,10 @@ function toggleMobileFeatures() {
         missingLogo.target.src = "/img/logos/missing-logo-icon.png";
       }
     });
+  });
+
+  document.querySelectorAll(".toggle").forEach(toggle => {
+    toggle.addEventListener("click", toggleEl);
   });
 
   document.querySelectorAll(".open-oauth").forEach(button => {

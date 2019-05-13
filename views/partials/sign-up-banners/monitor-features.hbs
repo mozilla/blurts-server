@@ -10,16 +10,6 @@
         {{/each}}
       </div>
     </div>
-    <div class="col-8 sign-up-wrapper">
-      <div class="sign-up-banner warm-gradient">
-        <h2 class="sign-up-headline">{{ getString "get-alerted" }}</h2>
-        <div class="flx flx-col sign-up-cta wide">
-          {{> sign-up-button buttonValue="sign-up-for-alerts"}}
-          <span class="account-not-required">
-            {{ getString "account-not-required" }}
-          </span>
-        </div>
-      </div>
-    </div>
+    {{> sign-up-banners/sign-up-warm-gradient}}
   </div>
 </section>

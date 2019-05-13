@@ -1,9 +1,9 @@
-<main class="container bg-dark clear-header">
+<main class="container bg-dark clear-header" {{> analytics/results_page_label }}>
   <div class="row jst-cntr scan-results">
 
     <div class="col-9 headline-col no-vertical-padding">
       {{#if scannedEmailId }} <!-- show the email address that was scanned -->
-        <p id="scanned-email-address" class="scanned-email-address">Results for <span id="scannedEmail" data-scanned-email-id={{ scannedEmailId }} class="bold"></span></p>
+        <p id="scanned-email-address" class="scanned-email-address">{{ getString "results-for" userEmail="" }} <span id="scannedEmail" data-scanned-email-id={{ scannedEmailId }} class="bold"></span></p>
       {{/if}}
       {{#if specificBreach}}
         {{#getScanResultsHeadline }}
@@ -13,7 +13,10 @@
           {{/if}}
         {{/getScanResultsHeadline}}
       {{else}}
-        <h2 class="skinny-headline scan-results-headline">{{{ fluentNestedBold "guest-scan-results-headline" breachCount=foundBreaches.length }}}</h2>
+        <h2 class="skinny-headline scan-results-headline">{{{ fluentNestedBold "scan-results-known-breaches" breachCount=foundBreaches.length }}}</h2>
+        <button class="alert-me open-oauth flx jst-cntr"  {{> analytics/fxa id="fx-monitor-alert-me-btn" }} data-event-category="Alert me about new breaches">
+          {{ getString "alert-about-new-breaches" }}{{> svg/arrow-head-right }}
+        </button>
       {{/if}}
     </div>
   </div>
@@ -26,8 +29,11 @@
       {{/getFoundBreaches}}
     </div>
   </div>
+  {{> hibp-attribution variableClasses="scan-res"}}
 </main>
-
-{{> sign-up-banners/scan-results-sign-up }}
-
-{{> scan-another-email addClass="stacked"}}
+<section class="container scan-results-sign-up">
+  <div class="row jst-cntr flx-col">
+    {{> sign-up-banners/scan-results-sign-up }}
+    {{> scan-another-email addClass="stacked"}}
+  </div>
+</section>
