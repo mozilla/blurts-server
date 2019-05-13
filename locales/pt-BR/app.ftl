@@ -374,12 +374,20 @@ stay-alert = Receba alertas sobre novos vazamentos
 how-fxm-3-headline = Receba notificações em seu navegador
 what-is-data-agg = O que é um agregador de dados?
 protect-your-privacy = Proteja sua privacidade online
+no-pw-to-change = Diferente de um vazamento de site, não há senha a alterar.
+avoid-personal-info = Evite usar informações pessoais em senhas
 
 ## What to do after data breach tips
 
 change-pw = Mude sua senha
 create-strong-passwords = Como criar senhas fortes
 stop-reusing-pw = Pare de reusar as mesmas senhas
+comm-opt-0 = Enviar e-mail para mim se um de meus endereços de e-mail abaixo aparecer em um vazamento de dados.
+comm-opt-1 = Enviar todos os alertas de vazamento para { $primaryEmail }.
+stop-monitoring-this = Parar de monitorar este e-mail.
+resend-verification = Enviar e-mail de verificação novamente
+add-new-email = Adicionar um novo endereço de e-mail
+send-verification = Enviar link de confirmação
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
@@ -387,6 +395,25 @@ stop-reusing-pw = Pare de reusar as mesmas senhas
 # email address.
 global-communication = Comunicação global
 breach-summary = Resumo do vazamento
+show-breaches-for-this-email = Mostrar todos os vazamentos deste e-mail.
+link-change-primary = Alterar endereço de e-mail principal
+remove-fxm = Remover o { -product-name }
+remove-fxm-blurb =
+    Desativar alertas do { -product-name }. Sua { -brand-fxa } continuará ativa e você pode receber
+    outras comunicações relacionadas à conta.
+manage-email-addresses = Gerenciar endereços de e-mail
+breach-alert-subject = O { -product-name } encontrou seu e-mail em um novo vazamento de dados.
+your-info-was-discovered-headline = Suas informações foram descobertas em um novo vazamento de dados.
+your-info-was-discovered-blurb =
+    Você se cadastrou para receber alertas do { -product-name }
+    quando seu e-mail aparecer em um vazamento de dados. Veja o que sabemos sobre este vazamento.
+what-to-do-after-breach = O que fazer após um vazamento de dados
+ba-next-step-1 = Mude sua senha para uma senha forte e única.
+ba-next-step-blurb-1 =
+    Uma senha forte usa uma combinação de letras maiúsculas e minúsculas, 
+    caracteres especiais e números. Ela não contém informações pessoais como 
+    seu endereço, aniversário ou nomes da família.
+ba-next-step-2 = Pare completamente de usar aquela senha exposta.
 
 ## Updated error messages
 
