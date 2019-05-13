@@ -154,7 +154,7 @@ function getTips(locales, breachType) {
       {
         title: "protect-your-privacy",
         subtitle: "no-pw-to-change",
-        linkTitle: "link-steps-to-protect",
+        linkTitle: "steps-to-protect",
         href: "/security-tips#steps-to-protect",
         svgClass: "protect-personal-info",
       },
