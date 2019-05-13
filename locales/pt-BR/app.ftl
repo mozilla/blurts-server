@@ -370,7 +370,20 @@ breach-discovered = Vazamento descoberto:
 more-about-this-breach = Mais sobre este vazamento
 take-control = Assuma de volta o controle sobre seus dados pessoais.
 read-more-tips = Leia mais dicas de segurança
+how-hackers-work = Entenda como os hackers trabalham
 stay-alert = Receba alertas sobre novos vazamentos
+website-breach = Vazamento de site
+data-aggregator-breach = Vazamento de agregador de dados
+unverified-breach = Vazamento não verificado
+spam-list-breach = Vazamento de lista de spam
+website-breach-plural = Vazamentos de sites
+sensitive-breach-plural = Vazamentos sensíveis
+data-aggregator-breach-plural = Vazamentos de agregadores de dados
+unverified-breach-plural = Vazamentos não verificados
+spam-list-breach-plural = Vazamentos de listas de spam
+what-data = Que dados foram comprometidos:
+sensitive-sites = Com o { -product-name } trata sites sensíveis?
+delayed-reporting-headline = Por que demorou tanto para reportar este vazamento?
 how-fxm-3-headline = Receba notificações em seu navegador
 what-is-data-agg = O que é um agregador de dados?
 protect-your-privacy = Proteja sua privacidade online
@@ -414,6 +427,64 @@ ba-next-step-blurb-1 =
     caracteres especiais e números. Ela não contém informações pessoais como 
     seu endereço, aniversário ou nomes da família.
 ba-next-step-2 = Pare completamente de usar aquela senha exposta.
+ba-next-step-blurb-2 =
+    Criminosos cibernéticos podem encontrar sua senha na dark web e usar 
+    para acessar suas outras contas. A melhor maneira de proteger suas contas 
+    é usar uma senha única em cada conta.
+new-breaches-found =
+    { $breachCount ->
+        [one] { $breachCount } NOVO VAZAMENTO ENCONTRADO
+       *[other] { $breachCount } NOVOS VAZAMENTOS ENCONTRADOS
+    }
+all-breaches-headline = Todos os vazamentos no { -product-name }
+search-breaches = Pesquisar vazamentos
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Exibindo:
+all-breaches = Todos os vazamentos
 
 ## Updated error messages
 
+error-bot-headline = Pesquisas temporariamente suspensas
+login-link-pre = Já tem uma conta?
+login-link = Entre
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] Endereço de e-mail sendo monitorado
+       *[other] Endereços de e-mail sendo monitorados
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] Vazamento de dados expôs suas informações
+       *[other] Vazamentos de dados expuseram suas informações
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Senha exposta em todos os vazamentos
+       *[other] Senhas expostas em todos os vazamentos
+    }
+# Button
+see-additional-breaches = Ver vazamentos adicionais
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Ver todos os vazamentos
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Este e-mail apareceu em 1 vazamento de dados conhecido.
+       *[other] Este e-mail apareceu em { $breachCount } vazamentos de dados conhecidos.
+    }
+other-monitored-emails = Outros e-mails monitorados
+fxa-primary-email = E-mail da { -brand-fxa } - Principal
+what-is-a-website-breach = O que é um vazamento de site?
+security-tips-headline = Dicas de segurança para se proteger de hackers
+steps-to-protect = Medidas a tomar para proteger sua identidade online
+take-further-steps = Tome medidas adicionais para proteger sua identidade
+alert-about-new-breaches = Me alertar sobre novos vazamentos
