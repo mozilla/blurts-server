@@ -4,10 +4,15 @@
 
 .article-list-subhead {
   font-weight: 500;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   padding-right: 20%;
   margin-bottom: 1.5rem;
   line-height: 175%;
+}
+
+.article-list-subhead.dash {
+  padding-right: 0;
+  margin-bottom: 0;
 }
 
 .article {
@@ -16,7 +21,7 @@
 
 .article-link {
   font-weight: 400;
-  font-size: 1.1rem;
+  font-size: var(--paragraphFontSize);
   text-decoration: none;
   letter-spacing: 0.5px;
   color: rgba(255, 255, 255, 1);
@@ -26,21 +31,6 @@
   font-size: 2.8rem;
   line-height: 115%;
   margin-bottom: 1rem;
-}
-
-.icon-inline-wrapper {
-  display: flex;
-  align-items: center;
-  margin-right: 1.5rem;
-}
-
-.icon-inline {
-  width: 1.5rem;
-  opacity: 0.9;
-}
-
-a.security-tips-link {
-  margin-top: 1rem;
 }
 
 @media screen and (max-width: 1100px) {
@@ -65,9 +55,19 @@ a.security-tips-link {
     width: 100%;
     margin: auto;
   }
+
+  .latest-breach-wrapper {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .article-list-content-wrap {
+    padding: 0 0.5rem;
+  }
 }
 
 @media screen and (max-width: 800px) {
+  .article-list-subhead.dash,
   .article-list-subhead {
     padding-right: 5%;
   }
@@ -76,8 +76,20 @@ a.security-tips-link {
     padding: 0;
   }
 
+  .article-list-container .row {
+    max-width: var(--maxWidth);
+  }
+
   a.security-tips-link {
     width: 100%;
+  }
+
+  .articles {
+    margin-bottom: 1.25rem;
+  }
+
+  .icon-inline-wrapper {
+    margin-right: 1.15rem;
   }
 }
 
@@ -86,7 +98,12 @@ a.security-tips-link {
     font-size: var(--headline);
   }
 
+  .article-list-subhead.dash,
   .article-list-subhead {
     font-size: var(--subhead);
+  }
+
+  li.article {
+    margin-bottom: 1rem;
   }
 }

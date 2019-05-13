@@ -1,6 +1,10 @@
+.security-tips.clear-header {
+  min-height: auto;
+}
+
 .security-tip-list-item {
   align-items: flex-start;
-  margin-bottom: 2rem;
+  margin-bottom: 1.75rem;
   flex: 1 1 45%;
   background-image: url("img/landing/background-noodle-top3.svg");
 }
@@ -9,42 +13,42 @@
   color: var(--grey8);
 }
 
-.security-tips-headline {
-  font-size: 2.8rem;
-  max-width: 600px;
-  margin-top: 10vh;
-  color: var(--grey8);
-}
-
 .security-tips {
-  color: var(--grey8);
-}
-
-.article-lead-in {
-  font-size: 1.2rem;
-  max-width: 700px;
-  opacity: 0.8;
+  color: var(--grey1);
 }
 
 .security-tip-list {
-  border-top: 1px solid var(--borderColor);
-  border-bottom: 1px solid var(--borderColor);
-  padding: calc(var(--padding) * 2) 0 var(--padding) 0;
-  margin-top: calc(var(--padding) * 2);
+  margin-top: var(--padding);
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.st-intro-wrap {
+  padding: 0 var(--padding);
+  border-left: 0.5rem solid var(--grey2);
+}
+
+.st-intro {
+  font-size: 1.2rem;
+  font-style: italic;
+  line-height: 220%;
 }
 
 .security-tip-link {
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--grey1);
+  align-items: center;
+  margin-bottom: 0.5rem;
   font-family: "FirefoxSharpSans", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: var(--grey8);
 }
 
-.security-tip-subhead {
+.security-tip-link-subhead {
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 0.9rem;
-  max-width: 380px;
+  font-size: 1rem;
+  max-width: 400px;
+  opacity: 0.9;
 }
 
 .article-icon {
@@ -56,32 +60,87 @@
   margin-right: 1rem;
 }
 
-/* .how-hackers-work {
-  color: var(--orange6);
+.ico {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-width: 4px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom-style: solid;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+
+.security-tip-subhead {
+  max-width: 230px;
+  margin-bottom: 6rem;
+  display: block;
+  font-family: "FirefoxSharpSans", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.ico svg.icon-inline path {
+  fill: var(--grey8);
+}
+
+body {
+  --howHackersWork: var(--orange6);
+  --strongerPasswords: var(--blue2);
+  --stepsToProtect: var(--purple1);
+  --fiveMyths: var(--violet1);
+  --nextSteps: #e31587;
+  --afterBreach: #3fe1b0;
+}
+
+.how-hackers-work {
+  border-bottom-color: var(--howHackersWork);
+  color: var(--howHackersWork);
 }
 
 .strong-passwords {
-  color: var(--blue3);
+  border-bottom-color: var(--strongerPasswords);
+  color: var(--strongerPasswords);
 }
 
 .after-breach {
-  color: var(--violet3);
+  border-bottom-color: var(--afterBreach);
+  color: var(--afterBreach);
 }
 
 .steps-to-protect {
-  color: #008787;
+  border-bottom-color: var(--stepsToProtect);
+  color: var(--stepsToProtect);
 }
 
 .five-myths {
-  color: var(--purple3);
+  border-bottom-color: var(--fiveMyths);
+  color: var(--fiveMyths);
 }
 
 .next-steps {
-  color: #e31587;
-} */
+  border-bottom-color: var(--nextSteps);
+  color: var(--nextSteps);
+}
+
+.security-tip-link svg path {
+  fill: rgba(255, 255, 255, 1);
+}
+
+.how-hackers-work-list {
+  margin-top: calc(var(--padding) + var(--margin));
+}
+
+.myth {
+  color: var(--violet3);
+  display: block;
+  margin-right: 1rem;
+}
 
 .article-icon .icon-inline {
-  opacity: 0.7;
+  opacity: 1;
   position: absolute;
   top: 0;
   left: 0;
@@ -92,38 +151,302 @@
 
 .article-wrapper {
   padding-top: 10rem;
+  padding-bottom: 0;
 }
 
 .article-headline {
+  color: var(--color);
   font-size: 3rem;
+  max-width: 500px;
+  font-weight: 700;
 }
 
 .article-list-item,
 .article-paragraph {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  line-height: 200%;
+  opacity: 0.9;
+}
+
+.article-paragraph a {
+  color: var(--blue3);
+}
+
+.article-paragraph .bold {
+  color: var(--color);
+}
+
+.article-paragraph a:hover,
+a.st-link:hover {
+  text-decoration: underline;
+}
+
+.st-list-header {
+  margin-top: 2rem;
+  color: var(--color);
+  font-size: 1.1rem;
+}
+
+.article-list-item {
+  margin-bottom: 0.5rem;
+}
+
+.article-list-item::before {
+  content: "\2022";
+  display: inline-block;
+  margin-right: 1rem;
+  font-size: 1.5rem;
+  color: var(--color);
+  align-self: flex-start;
 }
 
 .article-subhead {
   font-size: 1.5rem;
-  margin-top: 3rem;
-  margin-bottom: 0;
+  display: inline-block;
+  font-weight: 500;
+}
+
+h3.article-subhead,
+.toggle-subhead {
+  margin: 2.5rem auto 0 auto;
+  font-weight: 700;
+  color: var(--color);
+}
+
+.steps-to-protect::before {
+  background-color: var(--blue3);
+}
+
+.icon-inline-wrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 1.5rem;
+}
+
+.icon-inline {
+  width: 1.5rem;
+  opacity: 0.9;
+}
+
+a.security-tips-link {
+  margin-top: 1rem;
+}
+
+.st-headline {
+  margin: 0;
+  line-height: 200%;
+  display: inline;
+}
+
+.st-list,
+.st-subhead {
+  margin: 0;
+  padding: var(--margin) calc(30px + 2rem) 0;
+}
+
+.st-list-item {
+  margin: 0.75rem 0;
+  position: relative;
+}
+
+.st-list-item::before {
+  content: "\2022";
+  display: inline-block;
+  margin-right: 0.75rem;
+}
+
+a.st-link {
+  color: var(--blue3);
+  display: block;
+  margin-top: 1rem;
+}
+
+.st-icon {
+  margin-right: 2rem;
+}
+
+.st-headline .bold {
+  display: block;
+  text-transform: uppercase;
+}
+
+.st-call-out {
+  margin: calc(var(--padding) * 2) auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--grey3);
+  padding: var(--padding);
+}
+
+/* password dos and don't list */
+
+.password-tip-list-wrapper {
+  display: none; /* figure out how to make this work this week */
+  border-radius: var(--radius);
+  border: 1px solid var(--borderColor);
+}
+
+.password-tip-list-headline {
+  text-align: center;
+  padding: var(--padding) var(--padding) 0 var(--padding);
+  font-weight: 800;
+  color: var(--color);
+  letter-spacing: 1px;
+}
+
+.do-list-item,
+.dont-list-item {
+  padding: var(--margin);
+  display: flex;
+  align-items: center;
+  min-height: 70px;
+}
+
+.article-toggle {
+  padding: 0;
+  position: relative;
+  width: 5rem;
+  min-width: 100%;
+  pointer-events: none;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.article-toggle:hover {
+  background-color: var(--grey2);
+  transition: background-color 0.15s ease-in-out;
+}
+
+li.do-list-item:first-of-type,
+li.dont-list-item:first-of-type {
+  text-align: center;
+  justify-content: center;
+  border-top: 1px solid var(--borderColor);
+  font-family: "FirefoxSharpSans", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+li.dont-list-item,
+li.do-list-item {
+  border-bottom: 1px solid #eee;
+}
+
+li.do-list-item:first-of-type {
+  border-bottom: 3px solid green;
+  border-right: 1px solid var(--borderColor);
+}
+
+li.dont-list-item:first-of-type {
+  border-bottom: 3px solid var(--alertRed);
+  background-color: var(--color);
+  color: white;
+}
+
+.article-toggle svg.toggle-down {
+  display: none;
+}
+
+.drop-cap {
+  font-size: 40px;
+  color: var(--orange6);
+  font-weight: 700;
+  display: block;
+  float: left;
+  padding-top: 5px;
+  margin-bottom: -10px;
+  padding-right: 3px;
+}
+
+@media screen and (max-width: 950px) {
+  .security-tip-list-item .article-icon,
+  .security-tip-link-subhead {
+    display: none;
+  }
+
+  .security-tip-list-item {
+    margin-bottom: 1.25rem;
+    flex: 1 1 100%;
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 800px) {
-  .security-tips-headline,
-  .article-headline {
+  .security-tips-headline {
     font-size: var(--headline);
   }
 
   .security-tip-link {
     font-size: 1rem;
   }
+}
 
-  .article-subhead {
-    font-size: 1.5rem;
+@media screen and (max-width: 600px) { /* some articles become toggled closed */
+  .st-intro {
+    font-size: 1rem;
   }
 
-  .article-lead-in {
-    display: none;
+  .st-intro-wrap {
+    padding: 0;
+    border-left: none;
+  }
+
+  .article-headline {
+    font-size: var(--headline);
+  }
+
+  .article-list-item,
+  .article-paragraph {
+    font-size: 1rem;
+  }
+
+  .drop-cap {
+    font-size: 28px;
+    padding-right: 1px;
+    margin-bottom: -6px;
+  }
+
+  .article-list-item::before {
+    margin-right: 0.75rem;
+  }
+
+  .article-list-item {
+    line-height: 180%;
+  }
+
+  .st-toggle {
+    margin-bottom: var(--padding);
+  }
+
+  .toggle.article-toggle {
+    pointer-events: all;
+    margin-bottom: 0;
+  }
+
+  .st-toggle-wrapper {
+    border-bottom: 1px solid var(--grey3);
+    border-radius: 0;
+    padding: var(--margin) 0;
+    margin: 1rem 0;
+  }
+
+  .st-next-steps .st-toggle-wrapper {
+    border: 1px solid var(--grey8);
+    border-radius: 0.25rem;
+    padding: var(--margin);
+  }
+
+  .article-toggle svg.toggle-down {
+    right: var(--margin);
+    display: inline-block;
+  }
+
+  .toggle-subhead {
+    font-weight: 500;
+    font-size: 1rem;
+    padding-right: calc(var(--padding) * 3);
+    margin: auto;
+  }
+
+  .myth {
+    display: block;
   }
 }
