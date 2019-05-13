@@ -13,7 +13,7 @@ function getFooterLinks(args) {
     },
     {
       title: "Frequently Asked Questions",
-      stringId: "faq",
+      stringId: "frequently-asked-questions",
       href: "https://support.mozilla.org/kb/firefox-monitor-faq",
     },
     {

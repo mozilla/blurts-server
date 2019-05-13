@@ -1,9 +1,10 @@
-  {{#if featuredBreach}}
-    {{#if featuredBreach.IsSensitive}}
-      "Sensitive Breach Detail Page"
-    {{else}}
-      "Breach Detail Page"
+  {{#if scanFeaturedBreach }}
+    "Breach Landing Page"
+    {{#if featuredBreach.IsSensitive }}
+      "Sensitive Breach Landing Page"
     {{/if}}
   {{else}}
     "Homepage"
   {{/if}}
+
+
