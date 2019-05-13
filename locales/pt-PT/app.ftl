@@ -382,6 +382,7 @@ breach-added = Brecha reportada:
 breach-discovered = Brecha descoberta:
 # Link title
 more-about-this-breach = Mais acerca desta brecha
+take-control = Retome o controlo dos seus dados pessoais.
 website-breach = Brecha de website
 sensitive-breach = Brechas de websites sensíveis
 data-aggregator-breach = Brecha agregadora de dados
