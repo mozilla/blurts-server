@@ -320,3 +320,15 @@ create-free-account = Crea gratuitemente un { -brand-fxa } pro obtener un report
 get-your-report-and-sign-up = Obtene tu reporto e inscribe te al avisos.
 # Link title
 frequently-asked-questions = Demandas frequente
+about-firefox-monitor = A proposito de { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Preferentias
+# Link title.
+home = Initio
+fxa-account = { -brand-fxa }
+
+## What to do after data breach tips
+
+
+## Updated error messages
+
