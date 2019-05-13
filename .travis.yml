@@ -6,12 +6,24 @@ addons:
 
 matrix:
     include:
-        - name: "lint"
+        - name: "js lint"
           language: node_js
           node_js:
               - "node"
               - "lts/*"
-          script: "npm-run-all lint:*"
+          script: "npm run lint:js"
+        - name: "css lint"
+          language: node_js
+          node_js:
+              - "node"
+              - "lts/*"
+          script: "npm run lint:css"
+        - name: "npm audit"
+          language: node_js
+          node_js:
+              - "node"
+              - "lts/*"
+          script: "npm run lint:audit"
         - name: "tests"
           language: node_js
           node_js:
@@ -31,7 +43,7 @@ matrix:
           install:
               - sudo pip install compare-locales
           script:
-              - compare-locales --validate l10n.toml .
+              - moz-l10n-lint l10n.toml
               - compare-locales l10n.toml . `ls locales`
 
 

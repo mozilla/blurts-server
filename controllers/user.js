@@ -8,20 +8,79 @@ const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const { FluentError } = require("../locale-utils");
 const FXA = require("../lib/fxa");
-const HBSHelpers = require("../hbs-helpers");
 const HIBP = require("../hibp");
 const sha1 = require("../sha1-utils");
 
 
+function _requireSessionUser(req,res) {
+  if (!req.session || !req.session.user) {
+    throw new FluentError("must-be-signed-in");
+  }
+  return req.session.user;
+}
+
+function removeEmail(req, res) {
+  const emailId = req.body.emailId;
+
+  DB.removeOneSecondaryEmail(emailId);
+  res.redirect("/user/preferences");
+}
+
+async function resendEmail(req, res) {
+  const emailId = req.body.emailId;
+  const sessionUser = _requireSessionUser(req);
+  const existingEmail = await DB.getEmailById(emailId);
+
+  if (!existingEmail || !existingEmail.subscriber_id) {
+    throw new FluentError("user-verify-token-error");
+  }
+
+  if (existingEmail.subscriber_id !== sessionUser.id) {
+    // TODO: more specific error message?
+    throw new FluentError("user-verify-token-error");
+  }
+
+  const unverifiedEmailAddressRecord = await DB.resetUnverifiedEmailAddress(emailId);
+
+  const email = unverifiedEmailAddressRecord.email;
+  await EmailUtils.sendEmail(
+    email,
+    req.fluentFormat("user-add-email-verify-subject"),
+    "default_email",
+    { email,
+      supportedLocales: req.supportedLocales,
+      verificationHref: EmailUtils.getVerificationUrl(unverifiedEmailAddressRecord),
+      unsubscribeUrl: EmailUtils.getUnsubscribeUrl(unverifiedEmailAddressRecord, "account-verification-email"),
+      whichView: "email_partials/email_verify",
+    }
+  );
+
+  // TODO: what should we return to the client?
+  return res.json("Resent the email");
+}
+
+function updateCommunicationOptions(req, res) {
+  // console.log(req.body.communicationOption);
+
+  // 0 = Send breach alerts to the email address found in brew breach.
+  // 1 = Send all breach alerts to user's primary email address.
+
+  return res.json("Comm options updated");
+}
+
 async function add(req, res) {
+  // need to decide how to handle resends
+
+  _requireSessionUser(req);
   const email = req.body.email;
 
   if (!email || !isemail.validate(email)) {
     throw new FluentError("user-add-invalid-email");
   }
-  const fxNewsletter = Boolean(req.body.additionalEmails);
-  const signupLanguage = req.headers["accept-language"];
-  const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(email, fxNewsletter, signupLanguage);
+  const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(
+    req.session.user, email
+  );
+
 
   await EmailUtils.sendEmail(
     email,
@@ -32,17 +91,76 @@ async function add(req, res) {
       verificationHref: EmailUtils.getVerificationUrl(unverifiedSubscriber),
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(unverifiedSubscriber, "account-verification-email"),
       whichView: "email_partials/email_verify",
-    });
+    }
+  );
 
-  res.send({
-    title: req.fluentFormat("user-add-title"),
+  res.redirect("/user/preferences");
+}
+
+async function bundleVerifiedEmails(email, emailSha1, ifPrimary, id, verificationStatus, allBreaches) {
+  const foundBreaches = await HIBP.getBreachesForEmail(emailSha1, allBreaches, true);
+
+  const emailEntry = {
+    "email": email,
+    "breaches": foundBreaches,
+    "primary": ifPrimary,
+    "id": id,
+    "verified": verificationStatus,
+  };
+
+  return emailEntry;
+}
+
+async function getAllEmailsAndBreaches(user, allBreaches) {
+  const monitoredEmails = await DB.getUserEmails(user.id);
+  let verifiedEmails = [];
+  const unverifiedEmails = [];
+  verifiedEmails.push(await bundleVerifiedEmails(user.primary_email, user.primary_sha1, true, user.id, user.primary_verified, allBreaches));
+  for (const email of monitoredEmails) {
+    if (email.verified) {
+      const formattedEmail = await bundleVerifiedEmails(email.email, email.sha1, false, email.id, email.verified, allBreaches);
+      verifiedEmails.push(formattedEmail);
+    } else {
+      unverifiedEmails.push(email);
+    }
+  }
+  verifiedEmails = getNewBreachesForEmailEntriesSinceDate(verifiedEmails, user.breaches_last_shown);
+  return { verifiedEmails, unverifiedEmails };
+}
+
+
+function getNewBreachesForEmailEntriesSinceDate(emailEntries, date) {
+  for (const emailEntry of emailEntries) {
+    const newBreachesForEmail = emailEntry.breaches.filter(breach => breach.AddedDate >= date);
+
+    for (const newBreachForEmail of newBreachesForEmail) {
+      newBreachForEmail["NewBreach"] = true; // add "NewBreach" property to the new breach.
+      emailEntry["hasNewBreaches"] = newBreachesForEmail.length; // add the number of new breaches to the email
+    }
+  }
+  return emailEntries;
+}
+
+
+async function getDashboard(req, res) {
+  _requireSessionUser(req, res);
+  const allBreaches = req.app.locals.breaches;
+  const user = req.session.user;
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
+
+  req.session.user = await DB.setBreachesLastShownNow(user);
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    verifiedEmails,
+    unverifiedEmails,
+    whichPartial: "dashboards/breaches-dash",
   });
 }
 
 
 async function _verify(req) {
   const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
-
   let unsafeBreachesForEmail = [];
   unsafeBreachesForEmail = await HIBP.getBreachesForEmail(
     sha1(verifiedEmailHash.email),
@@ -59,7 +177,6 @@ async function _verify(req) {
     {
       email: verifiedEmailHash.email,
       supportedLocales: req.supportedLocales,
-      date: HBSHelpers.prettyDate(req.supportedLocales, new Date()),
       unsafeBreachesForEmail: unsafeBreachesForEmail,
       scanAnotherEmailHref: EmailUtils.getScanAnotherEmailUrl(utmID),
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(verifiedEmailHash, utmID),
@@ -70,14 +187,22 @@ async function _verify(req) {
 
 
 async function verify(req, res) {
+  const sessionUser = _requireSessionUser(req, res);
   if (!req.query.token) {
     throw new FluentError("user-verify-token-error");
   }
-  const existingSubscriber = await DB.getSubscriberByToken(req.query.token);
-  if (!existingSubscriber) {
+  const existingEmail = await DB.getEmailByToken(req.query.token);
+
+  if (!existingEmail) {
     throw new FluentError("error-not-subscribed");
   }
-  if (!existingSubscriber.verified) {
+
+  if (existingEmail.subscriber_id !== sessionUser.id) {
+    // TODO: more specific error message?
+    throw new FluentError("user-verify-token-error");
+  }
+
+  if (!existingEmail.verified) {
     await _verify(req);
   }
 
@@ -133,6 +258,20 @@ async function postUnsubscribe(req, res) {
 }
 
 
+async function getPreferences(req, res) {
+  _requireSessionUser(req);
+  const allBreaches = req.app.locals.breaches;
+  const user = req.session.user;
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
+
+  res.render("dashboards", {
+    title: "Firefox Monitor",
+    whichPartial: "dashboards/preferences",
+    verifiedEmails, unverifiedEmails,
+  });
+}
+
+
 function getUnsubSurvey(req, res) {
   //throws error if user refreshes unsubscribe survey page after they have submitted an answer
   if(!req.session.unsub) {
@@ -162,6 +301,8 @@ function logout(req, res) {
 
 
 module.exports = {
+  getPreferences,
+  getDashboard,
   add,
   verify,
   getUnsubscribe,
@@ -169,4 +310,7 @@ module.exports = {
   getUnsubSurvey,
   postUnsubSurvey,
   logout,
+  removeEmail,
+  resendEmail,
+  updateCommunicationOptions,
 };

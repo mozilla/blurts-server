@@ -1,0 +1,159 @@
+.breach-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin: 0.5rem;
+  transform: scale(1);
+  transition: all 0.15s ease-in-out;
+}
+
+.breach-card:hover {
+  transform: scale(1.01);
+  transition: all 0.15s ease-in-out;
+}
+
+.ab.breach-card,
+.scan-res.breach-card {
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+a.breach-card:focus,
+a.latest-breach-link {
+  border: 1px solid rgba(255, 255, 255, 0);
+  outline: none;
+  box-shadow: none;
+  transition: all 0.15s ease-in-out;
+}
+
+.more-about-this-breach {
+  display: flex;
+  align-items: center;
+  color: var(--blue3);
+  opacity: 1;
+  transition: opacity 0.15s ease-in-out;
+}
+
+.scan-res.breach-card .more-about-this-breach,
+.ab.breach-card .more-about-this-breach {
+  color: #00b4f5;
+}
+
+.more-about-this-breach:hover {
+  opacity: 0.7;
+  transition: opacity 0.15s ease-in-out;
+}
+
+.latest-breach-link {
+  color: var(--blue4);
+}
+
+.breach-card-title-wrapper {
+  padding: var(--margin);
+  justify-content: space-between;
+  align-content: center;
+  width: 100%;
+}
+
+.breach-info-wrapper {
+  height: 100%;
+  justify-content: space-between;
+  padding: var(--margin);
+
+  /* background-color: rgba(255, 255, 255, 1); */
+}
+
+.breach-logo {
+  max-height: 1.15rem;
+  max-width: 3rem;
+}
+
+.breach-logo-wrapper { /* reduce jumping on lazyload */
+  height: 1.15rem;
+}
+
+.breach-card-link-wrap {
+  padding-top: 1rem;
+}
+
+.breach-title.demi,
+.breach-info,
+.breach-info .key {
+  display: block;
+}
+
+.breach-info {
+  line-height: 150%;
+  font-weight: 300;
+  margin-bottom: 0.65rem;
+  font-size: 1rem;
+}
+
+.ab .breach-info {
+  font-weight: 500;
+}
+
+.breach-title,
+.breach-info .key {
+  font-weight: 600;
+}
+
+.breach-info .key {
+  margin-right: 0.5rem;
+}
+
+/* breach card inside email card */
+.email-card-breach-wrapper {
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+a.breach-card:hover {
+  opacity: 1;
+}
+
+.two-up {
+  flex: 1 1 45%;
+  margin: 1rem;
+  max-width: 46%; /* prevent stretching in scan results */
+}
+
+.email-card .two-up {
+  max-width: 100%;
+}
+
+.three-up {
+  flex: 1 1 30%;
+  min-width: 260px;
+}
+
+@media screen and (max-width: 1000px) {
+  .three-up {
+    max-width: 48%;
+    flex: 1 1 48%;
+  }
+
+  .breach-card.ec.two-up {
+    flex: 1 1 100%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .breach-card {
+    margin: 0.5rem var(--margin);
+  }
+
+  .two-up,
+  .three-up {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .breach-card {
+    margin: 0.5rem 0;
+  }
+}

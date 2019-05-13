@@ -1,7 +1,7 @@
 /* eslint-env browser */
+/* eslint-disable no-unused-vars */
 "use strict";
 /* global ga */
-/* global ga_getLocation  */
 
 
 
@@ -25,16 +25,17 @@ const setMetricsIds = (el) => {
   return;
 };
 
-const getLocation = () => {
+
+function getLocation() {
   const eventLocation = document.querySelectorAll("[data-page-label]");
   if (eventLocation.length > 0) {
     return `Page ID: ${eventLocation[0].dataset.pageLabel}`;
   } else {
-    return `Page ID: ${ga_getLocation()}`;
+    return "Page ID: Undefined Page";
   }
-};
+}
 
-const sendPing = async(el, eventAction, eventLabel = null) => {
+async function sendPing(el, eventAction, eventLabel = null) {
   if (typeof(ga) !== "undefined" && !el.classList.contains("hide")) {
     if (!eventLabel) {
       eventLabel = `${getLocation()}`;
@@ -46,17 +47,28 @@ const sendPing = async(el, eventAction, eventLabel = null) => {
     }
     return ga("send", "event", eventCategory, eventAction, eventLabel);
   }
-};
+}
 
-const getFxaUtms = (url) => {
+function getFxaUtms(url) {
   const utmSource = encodeURIComponent(document.body.dataset.serverUrl.replace(/(^\w+:|^)\/\//g, ""));
   url.searchParams.append("utm_source", utmSource);
   url.searchParams.append("utm_campaign", document.body.dataset.utmCampaign);
   url.searchParams.append("form_type", "email");
   return url;
-};
+}
 
 (() => {
+
+  const setMetricsIds = (el) => {
+    if (hasParent(el, "scan-another-email")) {
+      el.dataset.eventCategory = "Scan Another Email Form";
+    }
+    if (el.dataset.entrypoint && hasParent(el, "sign-up-banner")) {
+      el.dataset.eventCategory = `${el.dataset.eventCategory} - Banner`;
+      el.dataset.entrypoint = `${el.dataset.entrypoint}-banner`;
+    }
+    return;
+  };
   // Update data-event-category and data-fxa-entrypoint if the element
   // is nested inside a sign up banner.
   document.querySelectorAll("#scan-user-email, .open-oauth").forEach(el => {
@@ -65,11 +77,11 @@ const getFxaUtms = (url) => {
 
 
   document.querySelectorAll(".open-oauth").forEach( async(el) => {
-    let fxaUrl = new URL("/metrics-flow?", document.body.dataset.fxaAddress);
-    fxaUrl = getFxaUtms(fxaUrl);
-    fxaUrl.searchParams.append("entrypoint", encodeURIComponent(el.dataset.entrypoint));
+    const fxaUrl = new URL("/metrics-flow?", document.body.dataset.fxaAddress);
+
     const response = await fetch(fxaUrl, {credentials: "omit"});
 
+    fxaUrl.searchParams.append("entrypoint", encodeURIComponent(el.dataset.entrypoint));
     if (response.status === 200) {
       const {flowId, flowBeginTime} = await response.json();
       el.dataset.flowId = flowId;
@@ -83,22 +95,16 @@ const getFxaUtms = (url) => {
     // Elements for which we send Google Analytics "View" pings...
     const eventTriggers = [
       "#scan-user-email",
-      "#dl-fx-bar",
-      "#dl-fx-banner",
-      "#fxa-new-user-bar",
-      "#show-additional-breaches",
-      ".see-full-report-button",
+      "#add-another-email-form",
+      ".scan-res .show-remaining-breaches",
       ".open-oauth",
-      ".sign-up-button", // legacy sign up button, can be removed post-fxa
     ];
 
     // Send number of foundBreaches on Scan, Full Report, and User Dashboard pageviews
-    ["Scan", "Full Report", "User Dashboard"].forEach(word => {
-      if (pageLocation.includes(word)) {
-        const breaches = document.querySelectorAll(".listings");
-        ga("send", "event", "[v2] Breach Count", "Returned Breaches", `${pageLocation}`, breaches.length);
-      }
-    });
+    if (pageLocation === ("Scan Results")) {
+      const breaches = document.querySelectorAll(".breach-card");
+      ga("send", "event", "[v2] Breach Count", "Returned Breaches", `${pageLocation}`, breaches.length);
+    }
 
     // Send "View" pings and add event listeners.
     document.querySelectorAll(eventTriggers).forEach(el => {

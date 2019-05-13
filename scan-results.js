@@ -19,15 +19,22 @@ const scanResult = async(req, selfScan=false) => {
   let signedInUser = null;
   let fullReport = false;
   let userDash = false;
+  let scannedEmailId = null;
 
 
   if (req.session.user) {
     signedInUser = req.session.user;
   }
 
+
   // Checks if the user scanning their own verified email.
   if (req.body && req.body.emailHash) {
     scannedEmail = req.body.emailHash;
+
+    if (req.body.scannedEmailId) {
+      scannedEmailId = req.body.scannedEmailId;
+    }
+
     if (!selfScan && signedInUser && sha1(signedInUser.email) === req.body.emailHash) {
       selfScan = true;
     }
@@ -49,7 +56,7 @@ const scanResult = async(req, selfScan=false) => {
   userDash = url.pathname === "/user_dashboard";
 
   if (selfScan) {
-    scannedEmail = sha1(signedInUser.email);
+    scannedEmail = sha1(signedInUser.primary_email);
   }
 
   if (scannedEmail) {
@@ -84,6 +91,7 @@ const scanResult = async(req, selfScan=false) => {
     selfScan,
     fullReport,
     userDash,
+    scannedEmailId,
   };
 };
 

@@ -1,0 +1,38 @@
+{{#ifCompare UTM_SOURCE "===" "localhost"}}
+
+  <link rel="stylesheet" href="/css/all-breaches.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/articles.css">
+  <link rel="stylesheet" href="/css/breach-cards.css">
+  <link rel="stylesheet" href="/css/breach-detail.css">
+  <link rel="stylesheet" href="/css/breach-stats.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <link rel="stylesheet" href="/css/email-card.css">
+  <link rel="stylesheet" href="/css/feature-tip-group.css">
+  <link rel="stylesheet" href="/css/firefox-sharp-sans.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="/css/footer-about.css">
+  <link rel="stylesheet" href="/css/forms.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/latest-breach.css">
+  <link rel="stylesheet" href="/css/monitor.css">
+  <link rel="stylesheet" href="/css/scan-results.css">
+  <link rel="stylesheet" href="/css/security-tips.css">
+  <link rel="stylesheet" href="/css/sign-up-banner.css">
+  <link rel="stylesheet" href="/css/subpage.css">
+
+
+  <script type="text/javascript" src="/js/all-breaches.js" defer></script>
+  <script type="text/javascript" src="/js/analytics_dnt-helper.js" defer></script>
+  <script type="text/javascript" src="/js/analytics_tracking_protection.js" defer></script>
+  <script type="text/javascript" src="/js/fxa-analytics.js" defer></script>
+  <script type="text/javascript" src="/js/fxa-menu.js" defer></script>
+  <script type="text/javascript" src="/js/dashboard.js" defer></script>
+  <script type="text/javascript" src="/js/monitor.js" defer></script>
+  <script type="text/javascript" src="/js/scan-email.js" defer></script>
+  <script type="text/javascript" src="/js/scan-results.js" defer></script>
+
+{{else}}
+  <link rel="stylesheet" href="/dist/app.min.css">
+  <script type="text/javascript" src="/dist/app.min.js" defer></script>
+{{/ifCompare}}

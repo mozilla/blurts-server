@@ -1,0 +1,15 @@
+<section class="bg-white container">
+  <div class="row flx-col jst-cntr">
+    <div class="col-12 flx-cntr txt-cntr feat-headline-wrapper">
+      <h2 class="headline feature-tip-headline">{{getString "monitor-your-online-accounts"}}</h2>
+    </div>
+    <div class="col-12 flx-cntr txt-cntr">
+      <div class="flx feature-tip-group">
+        {{#each (monitorFeaturesList)}}
+          {{> feature-tip-group }}
+        {{/each}}
+      </div>
+    </div>
+    {{> sign-up-banners/sign-up-warm-gradient}}
+  </div>
+</section>

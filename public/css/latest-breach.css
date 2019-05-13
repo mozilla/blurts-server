@@ -1,0 +1,68 @@
+.latest-breach {
+  margin: 0;
+}
+
+.latest-breach-wrapper {
+  overflow: hidden;
+  border-radius: 1rem;
+  background-color: #20123abf;
+  transition: transform 0.15s ease-in-out;
+}
+
+.breach-card.latest-breach {
+  color: rgba(255, 255, 255, 1);
+  pointer-events: none;
+}
+
+.latest-breach-headline {
+  text-align: center;
+  margin-bottom: 0;
+  padding: 1.5rem 1rem 1.25rem 1rem;
+  font-weight: 200;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.latest-breach .breach-card-title-wrapper {
+  margin: 0 auto 0.5rem 0;
+}
+
+.latest-breach .breach-card-link-wrap {
+  display: none;
+}
+
+.latest-breach-info {
+  background-image: linear-gradient(to bottom, #07307226, var(--color));
+  border-top: 1px solid #0060df0f;
+}
+
+.latest-breach-link {
+  padding: var(--margin);
+  color: #00b4f5;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 1100px) {
+  .latest-breach-wrapper {
+    margin-bottom: 4vh;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .latest-breach-headline {
+    margin-bottom: 0;
+    padding: 1rem;
+    line-height: 150%;
+  }
+
+  .latest-breach-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
+  .fxm {
+    display: block;
+  }
+}

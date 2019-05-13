@@ -3,6 +3,7 @@
 const nodemailer = require("nodemailer");
 
 const EmailUtils = require("../email-utils");
+const { TEST_SUBSCRIBERS, TEST_EMAIL_ADDRESSES } = require("../db/seeds/test_subscribers");
 
 
 jest.mock("nodemailer");
@@ -40,4 +41,25 @@ test("EmailUtils.sendEmail with recipient, subject, template, context calls gTra
   EmailUtils.sendEmail(...sendMailArgs);
 
   // TODO: find a way to expect gTransporter.sendMail
+});
+
+
+test("EmailUtils.getUnsubscribeUrl works with subscriber record", () => {
+  const subscriberRecord = TEST_SUBSCRIBERS.firefox_account;
+
+  const unsubUrl = EmailUtils.getUnsubscribeUrl(subscriberRecord).toString();
+
+  expect(unsubUrl).toMatch(subscriberRecord.primary_sha1);
+  expect(unsubUrl).toMatch(subscriberRecord.primary_verification_token);
+
+});
+
+
+test("EmailUtils.getUnsubscribeUrl works with email_address record", () => {
+  const emailAddressRecord = TEST_EMAIL_ADDRESSES.firefox_account;
+
+  const unsubUrl = EmailUtils.getUnsubscribeUrl(emailAddressRecord).toString();
+
+  expect(unsubUrl).toMatch(emailAddressRecord.sha1);
+  expect(unsubUrl).toMatch(emailAddressRecord.verification_token);
 });

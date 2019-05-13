@@ -1,0 +1,17 @@
+            {{#if passwordDosAndDonts }}
+              <div class="password-tip-list-wrapper">
+                <h3 class="password-tip-list-headline"> {{ passwordDosAndDonts.listHeadline }}</h3>
+                <div class="password-tip-list flx">
+                  <ul class="do-list">
+                    {{#each passwordDosAndDonts.doList}}
+                      <li class="do-list-item">{{ this }}</li>
+                    {{/each}}
+                  </ul>
+                  <ul class="dont-list">
+                    {{#each passwordDosAndDonts.dontList}}
+                      <li class="dont-list-item">{{ this }}</li>
+                    {{/each}}
+                  </ul>
+                </div>
+              </div>
+            {{/if}}

@@ -15,7 +15,7 @@ const sessions = require("client-sessions");
 const { URL } = require("url");
 
 const EmailUtils = require("./email-utils");
-const HBSHelpers = require("./hbs-helpers");
+const HBSHelpers = require("./template-helpers/");
 const HIBP = require("./hibp");
 const {addRequestToResponse, pickLanguage, logErrors, localizeErrorMessages, clientErrorHandler, errorHandler} = require("./middleware");
 const { LocaleUtils } = require("./locale-utils");
@@ -29,6 +29,7 @@ const SesRoutes = require("./routes/ses");
 const OAuthRoutes = require("./routes/oauth");
 const UserRoutes = require("./routes/user");
 const EmailL10nRoutes= require("./routes/email-l10n");
+const BreachRoutes= require("./routes/breach-details");
 
 const log = mozlog("server");
 const app = express();
@@ -138,13 +139,16 @@ const hbs = exphbs.create({
   layoutsDir: __dirname + "/views/layouts",
   defaultLayout: "default",
   partialsDir: __dirname + "/views/partials",
-  helpers: HBSHelpers,
+  helpers: HBSHelpers.helpers,
 });
 app.engine("hbs", hbs.engine);
 app.set("view engine", "hbs");
 
 const cookie = {httpOnly: true, sameSite: "lax"};
 
+// TODO: refactor all templates to use constants.VAR
+// instead of assigning these 1-by-1 to app.locales
+app.locals.constants = AppConstants;
 app.locals.FXA_ENABLED = AppConstants.FXA_ENABLED;
 app.locals.SERVER_URL = AppConstants.SERVER_URL;
 app.locals.UTM_SOURCE = new URL(AppConstants.SERVER_URL).hostname;
@@ -169,6 +173,7 @@ app.use("/scan", ScanRoutes);
 app.use("/ses", SesRoutes);
 app.use("/user", UserRoutes);
 (devOrHeroku ? app.use("/email-l10n", EmailL10nRoutes) : null);
+app.use("/breach-details", BreachRoutes);
 app.use("/", HomeRoutes);
 
 app.use(logErrors);

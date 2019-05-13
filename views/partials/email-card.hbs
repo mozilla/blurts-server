@@ -1,0 +1,56 @@
+          {{> dashboards/new-breach-message variableClass="show-mobile"}}
+          <div class="
+            email-card
+            toggle-parent
+            inactive
+            card
+            col-8
+            {{#ifCompare breaches.length "===" 0}} zero-breaches {{/ifCompare}}
+            {{#unless primary}}{{#if verified}} verified {{/if}}{{/unless}} 
+            {{#if prefs}} 
+              preferences
+            {{else}}
+            {{/if}}
+              {{#if hasNewBreaches}}
+                new-breaches
+              {{/if}}
+            ">
+            <div class="e-toggle-info-wrapper">
+              <div class="e-info">
+                <span class="e-address">{{ email }}</span>
+                {{#if verified}}
+                  <!-- show breach count for verified emails -->
+                  <span class="e-num-breaches">{{{ fluentNestedBold "appears-in-x-breaches" breachCount=breaches.length }}}</span>
+                {{else}}
+                  <!-- show resend-email link for unverified emails -->
+                  <div class="button-resend-wrapper flx">
+                    <button class="resend-email" data-email-id="{{ id }}" data-form-action="/resend-email">{{ getString "resend-verification" }}</button><span class="sending hide"> {{getString "signup-modal-sent"}}</span>
+                  </div>
+                {{/if}}
+              </div>
+
+              {{#if prefs}} <!--user preferences dashboard / show trashcan to delete email-->
+                {{#if primary}}
+                  <a href="{{ getFxaUrl }}" class="change-primary-email btn-dark arrow-head-btn flx hide-mobile">{{ getString "link-change-primary" }}{{> svg/arrow-head-right }}</a>
+                {{else}}
+                  {{> forms/remove-email-form }}
+                {{/if}}
+              {{else}} <!-- user breaches dashboard / show toggle -->
+                {{#ifCompare breaches.length ">" 0}}
+                  <button class="toggle svg-wrap show-email-breaches" aria-label="{{ getString "show-breaches-for-this-email" }}">
+                    {{> svg/toggle-down }}
+                  </button>
+                  {{> dashboards/new-breach-message variableClass="hide-mobile"}}
+                {{/ifCompare}}
+              {{/if}}
+            </div>
+
+            {{#unless prefs}} <!-- user breaches dashboard, show breaches for each email on toggle click-->
+              <div class="e-breach-list">
+      
+                {{#if this.foundBreaches}}
+                  {{> breach-groups foundBreaches variableClasses="two-up ec" }}
+                {{/if}}
+              </div>
+            {{/unless}}
+          </div>

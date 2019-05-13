@@ -21,7 +21,21 @@ const log = mozlog("DB");
 const DB = {
   async getSubscriberByToken(token) {
     const res = await knex("subscribers")
+      .where("primary_verification_token", "=", token);
+
+    return res[0];
+  },
+
+  async getEmailByToken(token) {
+    const res = await knex("email_addresses")
       .where("verification_token", "=", token);
+
+    return res[0];
+  },
+
+  async getEmailById(emailAddressId) {
+    const res = await knex("email_addresses")
+      .where("id", "=", emailAddressId);
 
     return res[0];
   },
@@ -30,43 +44,57 @@ const DB = {
     const res = await knex.table("subscribers")
       .first()
       .where({
-        "verification_token": token,
-        "sha1": emailSha1,
+        "primary_verification_token": token,
+        "primary_sha1": emailSha1,
       });
     return res;
   },
 
-  async getSubscribersByEmail(email) {
-    return await knex("subscribers")
-      .where("email", "=", email);
+  async getSubscriberByEmail(email) {
+    const [subscriber] = await knex("subscribers").where({
+      "primary_email": email,
+      "primary_verified": true,
+    });
+    return subscriber;
   },
 
-  async addSubscriberUnverifiedEmailHash(email, fxNewsletter = false, signupLanguage="en") {
-    const res = await knex("subscribers").insert({
+  async addSubscriberUnverifiedEmailHash(user, email) {
+    const res = await knex("email_addresses").insert({
+      subscriber_id: user.id,
       email: email,
       sha1: getSha1(email),
       verification_token: uuidv4(),
       verified: false,
-      fx_newsletter: fxNewsletter,
-      signup_language: signupLanguage,
     }).returning("*");
     return res[0];
   },
 
+  async resetUnverifiedEmailAddress(emailAddressId) {
+    const newVerificationToken = uuidv4();
+    const res = await knex("email_addresses")
+      .update({
+        verification_token: newVerificationToken,
+        updated_at: knex.fn.now(),
+      })
+      .where("id", emailAddressId)
+      .returning("*");
+    return res[0];
+  },
+
   async verifyEmailHash(token) {
-    const unverifiedSubscriber = await this.getSubscriberByToken(token);
-    if (!unverifiedSubscriber) {
-      throw new FluentError("error-not-subscribed");
+    const unverifiedEmail = await this.getEmailByToken(token);
+    if (!unverifiedEmail) {
+      throw new FluentError("Error message for this verification email timed out or something went wrong.");
     }
-    const verifiedSubscriber = await this._verifySubscriber(unverifiedSubscriber);
-    return verifiedSubscriber[0];
+    const verifiedEmail = await this._verifyNewEmail(unverifiedEmail);
+    return verifiedEmail[0];
   },
 
   // TODO: refactor into an upsert? https://jaketrent.com/post/upsert-knexjs/
   // Used internally, ideally should not be called by consumers.
   async _getSha1EntryAndDo(sha1, aFoundCallback, aNotFoundCallback) {
     const existingEntries = await knex("subscribers")
-      .where("sha1", sha1);
+      .where("primary_sha1", sha1);
 
     if (existingEntries.length && aFoundCallback) {
       return await aFoundCallback(existingEntries[0]);
@@ -85,8 +113,8 @@ const DB = {
         if (email) {
           const res = await knex("subscribers")
             .update({
-              email,
-              verified,
+              primary_email: email,
+              primary_verified: verified,
               updated_at: knex.fn.now(),
             })
             .where("id", "=", aEntry.id)
@@ -99,7 +127,7 @@ const DB = {
         // Always add a verification_token value
         const verification_token = uuidv4();
         const res = await knex("subscribers")
-          .insert({ sha1, email, signup_language, verification_token, verified })
+          .insert({ primary_sha1: sha1, primary_email: email, signup_language, primary_verification_token: verification_token, primary_verified: verified })
           .returning("*");
         return res[0];
       });
@@ -140,22 +168,45 @@ const DB = {
    */
   async _verifySubscriber(emailHash) {
     // TODO: move this "up" into controllers/users ?
-    await HIBP.subscribeHash(emailHash.sha1);
+    await HIBP.subscribeHash(emailHash.primary_sha1);
 
     const verifiedSubscriber = await knex("subscribers")
-      .where("email", "=", emailHash.email)
+      .where("primary_email", "=", emailHash.primary_email)
       .update({
-        verified: true,
+        primary_verified: true,
         updated_at: knex.fn.now(),
       })
       .returning("*");
 
     // TODO: move this "up" into controllers/users ?
     if (emailHash.fx_newsletter) {
-      Basket.subscribe(emailHash.email);
+      Basket.subscribe(emailHash.primary_email);
     }
 
     return verifiedSubscriber;
+  },
+
+  // Verifies new emails added by existing users
+  async _verifyNewEmail(emailHash) {
+    await HIBP.subscribeHash(emailHash.sha1);
+
+    const verifiedEmail = await knex("email_addresses")
+      .where("email", "=", emailHash.email)
+      .update({
+        verified: true,
+      })
+      .returning("*");
+
+  return verifiedEmail;
+  },
+
+  async getUserEmails(userId) {
+
+    const userEmails = await knex("email_addresses")
+      .where("subscriber_id", "=", userId)
+      .returning("*");
+
+    return userEmails;
   },
 
   /**
@@ -174,6 +225,19 @@ const DB = {
       fxa_uid: fxaUID,
       fxa_refresh_token: fxaRefreshToken,
       fxa_profile_json: fxaProfileData,
+    })
+    .returning("*");
+    const updatedSubscriber = Array.isArray(updated) ? updated[0] : null;
+    return updatedSubscriber;
+  },
+
+  async setBreachesLastShownNow(subscriber) {
+    const nowDateTime = new Date();
+    const nowTimeStamp = nowDateTime.toISOString();
+    const updated = await knex("subscribers")
+    .where("id", "=", subscriber.id)
+    .update({
+      breaches_last_shown: nowTimeStamp,
     })
     .returning("*");
     const updatedSubscriber = Array.isArray(updated) ? updated[0] : null;
@@ -201,22 +265,38 @@ const DB = {
     }
     await knex("subscribers")
       .where({
-        "verification_token": subscriber.verification_token,
-        "sha1": subscriber.sha1,
+        "primary_verification_token": subscriber.primary_verification_token,
+        "primary_sha1": subscriber.primary_sha1,
       })
       .del();
     return subscriber;
   },
 
+  async removeOneSecondaryEmail(emailId) {
+    await knex("email_addresses")
+      .where({
+        "id": emailId,
+      })
+      .del();
+      return;
+  },
+
   async getSubscribersByHashes(hashes) {
-    return await knex("subscribers").whereIn("sha1", hashes).andWhere("verified", "=", true);
+    return await knex("subscribers").whereIn("primary_sha1", hashes).andWhere("primary_verified", "=", true);
+  },
+
+  async getEmailAddressesByHashes(hashes) {
+    return await knex("email_addresses")
+      .join("subscribers", "email_addresses.subscriber_id", "=", "subscribers.id")
+      .whereIn("email_addresses.sha1", hashes)
+      .andWhere("email_addresses.verified", "=", true);
   },
 
   async deleteUnverifiedSubscribers() {
     const expiredDateTime = new Date(Date.now() - AppConstants.DELETE_UNVERIFIED_SUBSCRIBERS_TIMER * 1000);
     const expiredTimeStamp = expiredDateTime.toISOString();
     await knex("subscribers")
-      .where("verified", false)
+      .where("primary_verified", false)
       .andWhere("created_at", "<", expiredTimeStamp)
       .del();
   },

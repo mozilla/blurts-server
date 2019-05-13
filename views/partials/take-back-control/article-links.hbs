@@ -1,0 +1,11 @@
+        <ul class="article-list {{ variableClasses }}">
+          {{#eachFromTo (articleLinks) 0 3}}
+            <li class="logo-title-wrapper flx article">
+              <div class="icon-inline-wrapper">{{> (lookup . 'pathToPartial') }}</div>
+              <a href="/security-tips#{{ this.class }}" class="article-link">{{ this.stringId }}</a>
+            </li>
+          {{/eachFromTo}}
+          <li class="logo-title-wrapper flx">
+            <a class="btn-light security-tips-link" href="/security-tips">{{ getString "read-more-tips" }}</a>
+          </li>
+        </ul>

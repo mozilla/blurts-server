@@ -1,0 +1,279 @@
+/* FORMS */
+
+form,
+.form-wrap {
+  width: 100%;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0) inset;
+}
+
+.email-scan input[type="email"]::placeholder,
+.email-scan input[type="email"]::-moz-placeholder,
+.email-scan input[type="email"] {
+  opacity: 1;
+  color: var(--color);
+  font-weight: 400;
+}
+
+.email-scan input[type="email"] {
+  background-color: rgba(255, 255, 255, 1);
+  border-color: rgba(255, 255, 255, 1);
+}
+
+.form-group.loading-data .loader {
+  display: block;
+  opacity: 0.58;
+  width: 25px;
+  height: auto;
+  visibility: visible;
+}
+
+.form-desc {
+  text-align: center;
+  font-weight: 300;
+  margin: 0 auto;
+  color: var(--grey8);
+  max-width: 355px;
+  z-index: 1;
+  font-size: 0.9rem;
+
+  /* display: none; */
+}
+
+input[type="submit"],
+input[type="email"] {
+  height: 4rem;
+  width: 100%;
+  border-style: solid;
+  border-width: 1px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: var(--radius);
+}
+
+input[type="radio"]:focus ~ .checkmark,
+input:focus,
+button:focus,
+.button:focus,
+.radio-button-group:focus {
+  border: 1px solid rgb(40, 97, 205);
+  box-shadow: 0 0 0 1px rgb(63, 97, 217), 0 0 0 4px rgba(63, 97, 217, 0.3);
+  outline: none;
+}
+
+.email-scan {
+  flex-direction: column;
+}
+
+.input-group,
+.input-group-button {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0.75rem;
+}
+
+.form-group .error-message {
+  display: block;
+  background: rgba(215, 0, 34, 1);
+  border-radius: 3px;
+  color: rgba(255, 255, 255, 1);
+  padding: 5px 12px;
+  position: absolute;
+  bottom: -29px;
+  left: -1px;
+  z-index: 1;
+  font-size: 13px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.form-group .error-message::before {
+  opacity: 0;
+  background: rgba(215, 0, 34, 1);
+  top: -7px;
+  content: '.';
+  height: 16px;
+  position: absolute;
+  text-indent: -999px;
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  white-space: nowrap;
+  width: 16px;
+  z-index: -1;
+}
+
+.form-group.invalid .error-message,
+.form-group.invalid .error-message::before {
+  opacity: 1;
+}
+
+.form-group.invalid input[type="email"] {
+  border: 1px solid var(--red50);
+  box-shadow: 0 0 0 1px rgba(255, 0, 55, 0.514), 0 0 0 4px rgba(255, 0, 55, 0.3);
+}
+
+.loader {
+  z-index: 1;
+  position: absolute;
+  visibility: hidden;
+  margin: auto;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 1;
+  pointer-events: none;
+}
+
+input::placeholder {
+  font-size: 1rem;
+}
+
+.scan-another-email input::placeholder {
+  color: var(--color);
+}
+
+.scan-another-email input[type="email"] {
+  color: var(--color);
+  border: 1px solid var(--grey3);
+}
+
+.form-group.loading-data .button,
+.form-group.loading-data input::placeholder,
+.form-group.loading-data input {
+  color: rgba(0, 0, 0, 0) !important;
+}
+
+input[type="email"] {
+  font-size: 17px;
+  font-weight: 300;
+  text-indent: var(--margin);
+  background-color: transparent;
+  border-color: var(--blue3);
+  caret-color: var(--orange6);
+  transition: all 0.1s ease-out;
+}
+
+input[type="submit"] {
+  font-size: 1rem;
+  border-width: 2px;
+  background-color: var(--blue3);
+  color: rgba(255, 255, 255, 1);
+  font-weight: 700;
+  border-color: var(--blue3);
+}
+
+form.invalid input[type="submit"]:focus {
+  border: 1px solid var(--red50);
+  box-shadow: 0 0 0 1px rgba(255, 0, 55, 0.514), 0 0 0 4px rgba(255, 0, 55, 0.3);
+}
+
+input.email-add {
+  color: var(--color);
+  border-color: var(--grey3);
+  background-color: rgba(255, 255, 255, 0.45);
+}
+
+input.email-add-submit {
+  border: 1px solid var(--blue3);
+  background-color: var(--blue3);
+  color: white;
+  border-color: var(--blue3);
+  font-weight: 500;
+}
+
+/* radio buttons */
+
+input[type="radio"] {
+  opacity: 0;
+}
+
+.checkmark {
+  background-color: rgba(255, 255, 255, 1);
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 0.2rem;
+  display: block;
+  position: absolute;
+  top: 2px;
+  border: 1px solid rgba(12, 12, 13, 0.3);
+  transition: background-color 0.15s ease-in-out;
+}
+
+.radio-container:hover .checkmark {
+  background-color: rgba(12, 12, 13, 0.04);
+  transition: background-color 0.15s ease-in-out;
+}
+
+input[type="radio"]:checked ~ .checkmark {
+  transition: background-color 0.15s ease-in-out;
+  background-image: url(/img/checkbox-check.svg);
+  background-repeat: no-repeat;
+  background-size: 13px;
+  background-position: center center;
+}
+
+input[type="radio"]:checked:hover ~ .checkmark {
+  background-color: rgba(245, 245, 245, 1);
+}
+
+input[type="radio"]:focus ~ .checkmark {
+  border: 1px solid rgba(12, 12, 13, 0.3);
+  box-shadow: 0 0 0 1px rgba(12, 12, 13, 0), 0 0 0 3px rgba(12, 12, 13, 0.05);
+}
+
+.add-new-email-form {
+  margin: var(--margin) 0;
+  display: flex;
+}
+
+.add-new-email-form .input-group {
+  width: 100%;
+  margin-right: 1rem;
+}
+
+.add-new-email-form .input-group-button {
+  width: auto;
+  max-width: auto;
+}
+
+.add-new-email-form input::placeholder {
+  color: var(--color);
+}
+
+.radio-container {
+  margin-bottom: 1rem;
+  display: flex;
+  position: relative;
+  min-height: 1.6rem;
+  align-items: center;
+}
+
+.radio-label {
+  margin-left: var(--margin);
+  font-weight: 400;
+  color: var(--textLight);
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 800px) {
+  button.internal-link,
+  input.transparent-button,
+  input[type="submit"],
+  input::placeholder {
+    font-size: 15px;
+  }
+
+  .radio-label {
+    font-size: 0.9rem;
+  }
+
+  .add-new-email-form {
+    flex-direction: column;
+  }
+}

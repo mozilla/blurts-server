@@ -1,7 +1,35 @@
 {{!< default }}
 
-{{#if FXA_ENABLED}}
-  {{> fxa_enabled/fxa_monitor}}
-{{else}}
-  {{> legacy/legacy_monitor}}
-{{/if}}
+<main class="container monitor-homepage clear-header" data-page-label={{> analytics/landing_page_label }}>
+  <section class="row jst-cntr">
+    <div class="col-12 flx-cntr landing-content">
+      {{#if featuredBreach}}
+        <h2 class="headline landing-headline">{{{ fluentNestedBold "was-your-info-exposed" breachName=featuredBreach.Title }}}</h2>
+      {{else}}
+        <h2 class="headline landing-headline">{{ getString "see-if-breached" }}</h2>
+      {{/if}}
+      {{#if featuredBreach.IsSensitive }}
+        <h3 class="subhead landing-subhead">{{ getString "find-out-if" }}</h3>
+        {{> feature-list variableClass="landing-feat-list" }}
+        {{> sign-up-button buttonValue="sign-up-for-alerts" variableClasses="landing-sign-up-btn"}}
+      {{else}}
+        <h3 class="subhead landing-subhead">{{ getString "find-out-what-hackers-know" }}</h3>
+        {{> forms/scan-email-form }}
+      {{/if}}
+    </div>
+  </section>
+</main>
+
+
+<div class="landing-bottom-bar">
+  <section class="article-list-container container">
+    <section class="row">
+      <div class="col-4">
+        {{> latest-breach }}
+      </div>
+      {{> take-back-control/article-list }}
+    </section>
+  </section>
+</div>
+
+{{> sign-up-banners/monitor-features }}

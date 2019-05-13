@@ -36,7 +36,8 @@ test("loadBreachesIntoApp adds app.locals.breaches|breachesLoadedDateTime|mostRe
   const gotCallArgs = gotCalls[0];
   expect(gotCallArgs[0]).toContain(`${AppConstants.HIBP_API_ROOT}/breaches`);
   expect(app.locals.breaches).toEqual(testBreaches);
-  expect(app.locals.mostRecentBreachDateTime).toEqual(hibp.getLatestBreachDateTime(testBreaches));
+  const latestBreach = hibp.getLatestBreach(testBreaches);
+  expect(app.locals.mostRecentBreachDateTime).toEqual(latestBreach.AddedDate);
 });
 
 

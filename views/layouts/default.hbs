@@ -2,24 +2,18 @@
 <html lang="{{ locale }}">
   <head>
     <meta charset="utf-8" />
-    {{#if FXA_ENABLED}}
-      <link rel="stylesheet" href="/dist/fxa.min.css">
-    {{else}}
-      <link rel="stylesheet" href="/dist/app.min.css">
-    {{/if}}
-    <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
+    {{> imports }}
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="description" content="{{fluentFormat req.supportedLocales "og-site-description"}}" />
+    <meta name="description" content="{{getString "og-site-description"}}" />
     <meta name="theme-color" content="#002275" />
-    <meta property="og:title" content="{{fluentFormat req.supportedLocales "share-facebook-headline"}}" />
-    <meta property="og:description" content="{{fluentFormat req.supportedLocales "share-facebook-blurb"}}" />
+    <meta property="og:title" content="{{getString "share-facebook-headline"}}" />
+    <meta property="og:description" content="{{getString "share-facebook-blurb"}}" />
     <meta property="og:url" content="{{ SERVER_URL }}" />
     <meta property="og:image" content="{{ SERVER_URL }}/img/firefox-monitor.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Firefox Monitor" />
-    <meta name="twitter:description" content="{{fluentFormat req.supportedLocales "share-twitter"}}" />
+    <meta name="twitter:description" content="{{getString "share-twitter"}}" />
     <title>{{ title }}</title>
-    <script type="text/javascript" src="/dist/app.min.js" defer></script>
     {{#if ENABLE_PONTOON_JS}}
       <script src="https://pontoon.mozilla.org/pontoon.js"></script>
     {{/if}}
@@ -27,21 +21,10 @@
     <link rel="icon" href="/img/favicons/favicon-128.png" sizes="128x128" />
     <link rel="icon" href="/img/favicons/favicon-256.png" sizes="256x256" />
   </head>
-  <body {{>analytics/default_dataset}}>
-    {{#if newUser}}
-      {{> fxa_enabled/fxa_new_user_bar}}
-    {{else}}
-      {{> banners/download_firefox_bar}}
-    {{/if}}
-     <div id="content-wrap" class="content-wrap">
-      {{#if FXA_ENABLED}}
-        {{> fxa_enabled/menu/fxa_mobile_menu}}
-      {{else}}
-        {{> subscribe_modal/subscribe_modal_wrapper}}
-      {{/if}}
-      {{> header }}
+  <body {{> analytics/default_dataset }}>
+    <div id="close-menu" class="close-menu"></div>
+    {{> header/header }}
       {{{ body }}}
-    </div>
-    {{> footer}}
+    {{> footer }}
   </body>
 </html>

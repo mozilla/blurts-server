@@ -1,0 +1,36 @@
+
+        {{#each (getBreachStats)}}
+          <div class="breach-stat-row flx {{ @key }} toggle-parent inactive">
+            <div class="stat-row-title-wrap">
+              <div class="breach-stat-number flx bold {{ @key }}">
+                {{ this.count }}
+              </div>
+              <div class="stat-headline-list-wrapper">
+                <div class="breach-stat-span-wrapper">
+                  <span class="stat-headline">{{ this.subhead }}</span>
+                </div>
+                <div class="stat-list-info">
+                    {{#each affectedAccounts }}
+                      <div class="account-affected">
+                        <p class="email-affected">{{ affectedEmailAddress }}</p>
+                        {{#each this.breaches}}
+                          <p class="affected-account-breach-title"> {{ this }}</p>
+                        {{/each}}
+                        </p>
+                      </div>
+                    {{/each}}
+                  {{#if allVerifiedEmails }}
+                    {{#each allVerifiedEmails }}
+                      <p class="verified-email-list">{{ email }}</p>
+                    {{/each}}
+                  {{/if}}
+                </div>
+              </div>
+              {{#ifCompare this.count ">" 0}}
+                <button class="toggle svg-wrap breach-stat-toggle {{ @key }}" aria-label="{{ getString "toggle-down-content" }}">
+                  {{> svg/plus variableClass="breach-stat" }}
+                </button>
+              {{/ifCompare}}
+              </div>
+          </div>
+        {{/each}}

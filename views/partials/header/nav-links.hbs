@@ -1,0 +1,3 @@
+{{#each (navLinks)}}
+  <a class="nav-link" {{> analytics/internal-link eventLabel=this.title }} href="{{ this.href }}">{{ this.stringId }}</a>
+{{/each}}

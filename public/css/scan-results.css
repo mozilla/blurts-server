@@ -1,0 +1,96 @@
+.col-9.scan-results-sign-up,
+.col-9.found-breaches {
+  padding: 0;
+  flex-direction: row;
+  display: inline-flex;
+}
+
+.scanned-email-address {
+  font-size: 1.5rem;
+  font-family: "FirefoxSharpSans", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+button.alert-me {
+  border: none;
+  margin: 2rem auto calc(var(--margin) + 0.5rem) auto;
+  color: var(--grey1);
+  font-size: 1.2rem;
+  transition: opacity 0.15s ease-in-out;
+}
+
+button.alert-me:hover {
+  opacity: 0.8;
+  transition: opacity 0.15 ease-in-out;
+}
+
+button.alert-me:active,
+button.alert-me:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  color: var(--violet1);
+  transition: color 0.15s ease-in-out;
+}
+
+.alert-me svg path {
+  fill: rgba(255, 255, 255, 1);
+}
+
+.scan-res-subhead,
+.scanned-email-address,
+.scan-results-headline {
+  text-align: center;
+  max-width: 100%;
+}
+
+.found-breaches,
+.show-additional-breaches {
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.row.scan-results,
+.user-found-breaches {
+  margin: 0 auto;
+}
+
+.scan-res-subhead {
+  margin: var(--margin) auto auto auto;
+}
+
+.scanned-email-address .bold,
+.scan-results-headline span.bold,
+.scan-res-subhead span.bold {
+  color: var(--violet1);
+}
+
+.skinny-headline.scan-another-email-headline {
+  font-size: 1.7rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.source-info.scan-res {
+  margin: 1rem auto 0 auto;
+  color: var(--grey1);
+}
+
+.source-info.scan-res a {
+  color: var(--grey1);
+}
+
+@media screen and (max-width: 800px) {
+  button.alert-me,
+  .scanned-email-address,
+  .scan-results-headline,
+  .scan-res-subhead {
+    text-align: left;
+    margin-left: 0;
+    max-width: 400px;
+    padding-left: 0;
+  }
+
+  .scanned-email-address {
+    font-size: 1.2rem;
+  }
+}

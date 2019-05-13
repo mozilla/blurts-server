@@ -91,7 +91,8 @@ const HIBP = {
       }
       app.locals.breaches = breaches;
       app.locals.breachesLoadedDateTime = Date.now();
-      app.locals.mostRecentBreachDateTime = this.getLatestBreachDateTime(breaches);
+      app.locals.latestBreach = this.getLatestBreach(breaches);
+      app.locals.mostRecentBreachDateTime = app.locals.latestBreach.AddedDate;
     } catch (error) {
       throw new FluentError("error-hibp-load-breaches");
     }
@@ -118,9 +119,7 @@ const HIBP = {
         foundBreaches = allBreaches.filter(breach => breachedAccount.websites.includes(breach.Name));
         foundBreaches = this.filterBreaches(foundBreaches);
         foundBreaches.sort( (a,b) => {
-          const oldestBreach = new Date(a.BreachDate);
-          const newestBreach = new Date(b.BreachDate);
-          return newestBreach-oldestBreach;
+          return new Date(b.AddedDate) - new Date(a.AddedDate);
         });
         break;
       }
@@ -151,15 +150,17 @@ const HIBP = {
   },
 
 
-  getLatestBreachDateTime(breaches) {
+  getLatestBreach(breaches) {
+    let latestBreach = {};
     let latestBreachDateTime = new Date(0);
     for (const breach of breaches) {
       const breachAddedDate = new Date(breach.AddedDate);
       if (breachAddedDate > latestBreachDateTime) {
         latestBreachDateTime = breachAddedDate;
+        latestBreach = breach;
       }
     }
-    return latestBreachDateTime;
+    return latestBreach;
   },
 
 

@@ -1,0 +1,140 @@
+main.breach-detail {
+  min-height: 40vh;
+  color: var(--grey1);
+}
+
+.breach-type a {
+  color: var(--grey1);
+}
+
+.breach-type a:hover {
+  opacity: 1;
+  text-decoration: underline;
+  color: var(--grey2);
+}
+
+.detail-section {
+  padding: var(--padding) 0;
+}
+
+.feat-img.change-password {
+  background-image: url("/img/svg/change-password.svg");
+}
+
+.feat-img.stronger-password {
+  background-image: url("/img/svg/stronger-password.svg");
+}
+
+.feat-img.manage-password {
+  background-image: url("/img/svg/manage-password.svg");
+}
+
+.feat-img.data-compromised {
+  background-image: url("/img/svg/data-compromised.svg");
+  margin-top: 0 !important;
+}
+
+.feat-img.protect-personal-info {
+  background-image: url("/img/svg/protect-personal-info.svg");
+  margin-top: 0 !important;
+}
+
+.breach-detail-headline {
+  margin: auto auto 0.5rem auto;
+}
+
+.section-headline-light {
+  font-size: 1.3rem;
+}
+
+.breach-detail-logo-wrapper {
+  margin-bottom: var(--margin);
+}
+
+.breach-detail-logo.breach-logo {
+  max-width: 10rem;
+  max-height: 10rem;
+}
+
+.glyph {
+  margin-right: 1rem;
+}
+
+.overview,
+.overview p {
+  font-size: 1.2rem;
+}
+
+.additional-data-types-wrapper {
+  margin: 2rem 0 3rem 0;
+  max-width: 450px;
+}
+
+.additional-data-types {
+  display: block;
+  margin: 0;
+}
+
+.breach-type {
+  font-size: 0.9rem;
+}
+
+.priority-data-classes-list {
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.priority-data-type {
+  flex: 1 1 100%;
+}
+
+.lower-priority {
+  margin-top: 0.25rem;
+}
+
+.low-weight-data-class {
+  border: 1px solid #c689ff69;
+  border-radius: var(--radius);
+  padding: 0.05rem 0.5rem;
+  margin: 0.5rem 0.25rem 0 0;
+  line-height: 200%;
+  white-space: nowrap;
+  display: inline-block;
+  font-size: 0.9rem;
+}
+
+.priority-data-class {
+  font-weight: 600;
+}
+
+.data-type {
+  max-width: 600px;
+}
+
+.data-type,
+.data-action {
+  margin-block-end: 0;
+  margin-block-start: 0;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-content: flex-end;
+  align-items: flex-end;
+}
+
+.wtd-tips h2.skinny-headline {
+  margin-bottom: calc(var(--padding) * 2);
+}
+
+@media screen and (max-width: 600px) {
+  .col-8.breach-details {
+    margin-top: 2rem !important;
+  }
+
+  .what-to-do-tips h2.section-headline-light {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

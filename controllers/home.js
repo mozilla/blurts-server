@@ -16,7 +16,7 @@ async function home(req, res) {
   let scanFeaturedBreach = false;
 
   if (req.session.user && !req.query.breach) {
-    return res.redirect("/scan/user_dashboard");
+    return res.redirect("/user/dashboard");
   }
 
   if (req.query.breach) {
@@ -33,6 +33,14 @@ async function home(req, res) {
       return res.render("scan", Object.assign(scanRes, formTokens));
     }
     scanFeaturedBreach = true;
+
+    return res.render("monitor", {
+      title: req.fluentFormat("home-title"),
+      featuredBreach: featuredBreach,
+      scanFeaturedBreach,
+      pageToken: formTokens.pageToken,
+      csrfToken: formTokens.csrfToken,
+    });
   }
 
   res.render("monitor", {
@@ -41,6 +49,26 @@ async function home(req, res) {
     scanFeaturedBreach,
     pageToken: formTokens.pageToken,
     csrfToken: formTokens.csrfToken,
+  });
+}
+
+function getAllBreaches(req, res) {
+  return res.render("top-level-page", {
+    title: "Firefox Monitor",
+    whichPartial: "top-level/all-breaches",
+  });
+}
+
+function getSecurityTips(req, res) {
+  return res.render("top-level-page", {
+    title: req.fluentFormat("home-title"),
+    whichPartial: "top-level/security-tips",
+  });
+}
+
+function getAboutPage(req, res) {
+  return res.render("about",{
+    title: req.fluentFormat("about-firefox-monitor"),
   });
 }
 
@@ -54,5 +82,8 @@ function notFound(req, res) {
 
 module.exports = {
   home,
+  getAboutPage,
+  getAllBreaches,
+  getSecurityTips,
   notFound,
 };

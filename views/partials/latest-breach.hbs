@@ -1,0 +1,10 @@
+
+      <div class="latest-breach-wrapper drop-shadow">
+        <h3 class="latest-breach-headline">{{{ getString "latest-breach" brandName="<span class='fxm'>Firefox Monitor</span>" }}}</h3>
+        <div class="latest-breach-info">
+          {{#each (lastAddedBreach)}}
+            {{> breach-card cardType="latest-breach" showPwnCount=true}}
+            <a href="/?breach={{ this.Name }}" class="latest-breach-link">{{ getString "latest-breach-link" }}</a>
+          {{/each}}
+        </div>
+      </div>

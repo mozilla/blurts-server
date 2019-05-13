@@ -1,23 +1,25 @@
+  {{#getWhatToDos}}    
     <tr class="email-wtd">
-      <td colspan="2" valign="top" style="padding-top: 10px;">
+      <td colspan="2" valign="top" style="padding-top: 10px; font-family: sans-serif;">
         <p class="body-copy email-sub-head" style="color: #333333; font-weight: 300; font-size: 22px; padding-top: 30px; margin: 0px; ">
-          {{fluentFormat supportedLocales "what-to-do-next"}}
+          {{ headline }}
         </p>
       </td>
     </tr>
 
-    {{#loop 1 4 1}}
+    {{#each steps}}
       <tr class="email-wtd">
         <td valign="top" width="60" style="width: 60px; padding-top: 15px;">
-          <img width="45" src="{{ ../SERVER_URL }}/img/email_images/wtd-{{ this }}.png" alt="{{ this }}" />
+          <img width="45" src="{{ srcDomain }}/img/email_images/wtd-{{ idx }}.png" alt="{{ idx }}" />
         </td>
-        <td valign="top" style="padding-top: 10px;">
+        <td valign="top" style="padding-top: 10px; font-family: sans-serif;">
           <p class="body-copy medium" style="color: #333333; font-weight: 400; font-size: 16px; padding: 0px; margin: 0px; ">
-            {{getStringID ../supportedLocales "what-to-do-subhead-" this}}
+            {{ subhead }}
           </p>
           <p class="body-copy" style="color: #333333; font-weight: 300; font-size: 14px; padding: 3px 0px 10px 0px; margin-top: 0px; ">
-            {{getStringID ../supportedLocales "what-to-do-blurb-" this}}
+            {{ blurb }} 
           </p>
         </td>
       </tr>
-    {{/loop}}
+    {{/each}}
+  {{/getWhatToDos}}

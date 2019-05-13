@@ -1,0 +1,46 @@
+footer {
+  width: 100%;
+  margin: auto auto 0 auto;
+}
+
+.footer-link {
+  font-size: 0.85rem;
+}
+
+.footer-link-wrapper {
+  margin-left: var(--padding);
+}
+
+.footer-link-wrapper.moz-link {
+  margin: auto auto auto 0;
+}
+
+svg.Mozilla-logo {
+  min-width: 7rem;
+  max-width: 7rem;
+}
+
+@media screen and (max-width: 800px) {
+  footer ul.row-full-width {
+    flex-direction: column;
+  }
+
+  .footer-link-wrapper,
+  .footer-link {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .footer-link {
+    padding: 0.75rem 0;
+  }
+
+  .mozilla-logo-wrapper {
+    padding: 0;
+  }
+
+  ul.row-full-width {
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+}
