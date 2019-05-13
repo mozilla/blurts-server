@@ -395,9 +395,45 @@ website-breach = Weboldalon történt adatszegés
 sensitive-breach = Érzékeny weboldalon történt adatszegés
 data-aggregator-breach = Adatgyűjtőben történt adatszegés
 unverified-breach = Nem megerősített adatszegés
+spam-list-breach = Levélszemét-lista adatszegés
 
 ## What to do after data breach tips
 
+stop-monitoring-this = Az e-mail cím figyelésének leállítása.
+resend-verification = Ellenőrző e-mail újraküldése
+add-new-email = Új e-mail cím hozzáadása
+send-verification = Ellenőrző e-mail küldése
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Globális kommunikáció
+breach-summary = Adatszegés összefoglalója
+manage-email-addresses = E-mail címek kezelése
+latest-breach-link = Nézze meg, hogy szerepel-e ebben az adatszegésben
+welcome-back = Üdvözöljük újra, { $userName }!
+welcome-user = Üdvözöljük, { $userName }!
 
 ## Updated error messages
 
+login-link-pre = Van már fiókja?
+login-link = Bejelentkezés
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] Figyelt e-mail cím
+       *[other] Figyelt e-mail címek
+    }
+# Button
+see-additional-breaches = További adatszegések megtekintése
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Összes adatszegés megtekintése
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Találatok erre: { $userEmail }
+email-verification-required = E-mail ellenőrzés szükséges
