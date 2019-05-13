@@ -371,6 +371,9 @@ more-about-this-breach = Mais sobre este vazamento
 take-control = Assuma de volta o controle sobre seus dados pessoais.
 read-more-tips = Leia mais dicas de segurança
 stay-alert = Receba alertas sobre novos vazamentos
+how-fxm-3-headline = Receba notificações em seu navegador
+what-is-data-agg = O que é um agregador de dados?
+protect-your-privacy = Proteja sua privacidade online
 
 ## What to do after data breach tips
 
