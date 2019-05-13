@@ -327,3 +327,14 @@ create-free-account = Ustvarite brezplačen { -brand-fxa } in prejmite popolno p
 get-your-report-and-sign-up = Prejmite poročilo in se naročite na opozorila.
 # Link title
 frequently-asked-questions = Pogosto zastavljena vprašanja
+mozilla-dot-org = Mozilla.org
+preferences = Nastavitve
+# Link title.
+home = Domov
+fxa-account = { -brand-fxa }
+
+## What to do after data breach tips
+
+
+## Updated error messages
+
