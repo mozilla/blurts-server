@@ -366,3 +366,38 @@ create-free-account =
 get-your-report-and-sign-up = Kapja meg a jelentését, és regisztráljon a figyelmeztetésekért.
 # Link title
 frequently-asked-questions = Gyakran Ismételt Kérdések
+about-firefox-monitor = A { -product-name } névjegye
+mozilla-dot-org = Mozilla.org
+preferences = Beállítások
+# Link title.
+home = Kezdőlap
+# Link title
+breaches = Adatszegések
+# Link title
+security-tips = Biztonsági tippek
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = A { -brand-fxa } navigáció megnyitása
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = LEGUTÓBB HOZZÁADOTT ADATSZEGÉS
+breach-added = Adatszegés bejelentve:
+breach-discovered = Adatszegés felfedezve:
+# Link title
+more-about-this-breach = További tudnivalók erről az adatszegésről
+take-control = Szerezze vissza a személyes adatai feletti ellenőrzést.
+cant-stop-hackers = A hackereket nem tudja megállítani. De elkerülheti a rossz szokásokat, amelyek megkönnyítik a dolgukat.
+read-more-tips = Olvasson további biztonsági tippeket
+how-hackers-work = Értse meg, hogyan dolgoznak a hackerek
+stay-alert = Figyeljen az új adatszegésekre
+monitor-several-emails = Több e-mail cím figyelése
+take-action = Tegyen lépéseket a fiókjai védelmére
+website-breach = Weboldalon történt adatszegés
+sensitive-breach = Érzékeny weboldalon történt adatszegés
+data-aggregator-breach = Adatgyűjtőben történt adatszegés
+unverified-breach = Nem megerősített adatszegés
+
+## What to do after data breach tips
+
+
+## Updated error messages
+
