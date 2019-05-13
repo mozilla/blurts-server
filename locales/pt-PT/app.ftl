@@ -364,3 +364,90 @@ create-free-account =
 get-your-report-and-sign-up = Obtenha o seu relatório e registe-se para receber alertas.
 # Link title
 frequently-asked-questions = Perguntas frequentes
+about-firefox-monitor = Acerca do { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Preferências
+# Link title.
+home = Início
+# Link title
+breaches = Brechas
+# Link title
+security-tips = Dicas de segurança
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Abrir navegação do { -brand-fxa }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = ÚLTIMA BRECHA ADICIONADA
+breach-added = Brecha reportada:
+breach-discovered = Brecha descoberta:
+# Link title
+more-about-this-breach = Mais acerca desta brecha
+website-breach = Brecha de website
+sensitive-breach = Brechas de websites sensíveis
+data-aggregator-breach = Brecha agregadora de dados
+unverified-breach = Brecha não verificada
+spam-list-breach = Brecha de listas de spam
+website-breach-plural = Brechas de websites
+sensitive-breach-plural = Brechas sensíveis
+data-aggregator-breach-plural = Brechas agregadoras de dados
+unverified-breach-plural = Brechas não verificadas
+spam-list-breach-plural = Brechas de listas de spam
+what-data = Que dados foram comprometidos:
+sensitive-sites = Como é que o { -product-name } trata sites sensíveis?
+about-fxm-headline = Acerca do { -product-name }
+# How Firefox Monitor works
+how-fxm-works = Como é que o { -product-name } funciona
+protect-your-privacy = Proteja a sua privacidade online
+
+## What to do after data breach tips
+
+change-pw = Altere a sua palavra-passe
+welcome-back = Bem-vindo(a) de volta, { $userName }!
+welcome-user = Bem-vindo(a), { $userName }!
+
+## Updated error messages
+
+login-link-pre = Tem uma conta?
+login-link = Iniciar sessão
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] Endereço de email a ser monitorizado
+       *[other] Endereços de email a serem monitorizados
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] Brecha de dados expôs a sua informação
+       *[other] Brechas de dados expuseram a sua informação
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Palavra-passe exposta em todas as brechas
+       *[other] Palavras-passe expostas em todas as brechas
+    }
+# Button
+see-additional-breaches = Ver brechas adicionais
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Ver todas as brechas
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Este email apareceu numa brecha de dados conhecida.
+       *[other] Este email apareceu em { $breachCount } brechas de dados conhecidas.
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Resultados para: { $userEmail }
+other-monitored-emails = Outros emails monitorizados
+email-verification-required = Verificação de email requerida
+fxa-primary-email = Email do { -brand-fxa } - Primário
+alert-about-new-breaches = Alertar-me acerca de novas brechas
