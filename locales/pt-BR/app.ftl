@@ -373,6 +373,7 @@ read-more-tips = Leia mais dicas de segurança
 how-hackers-work = Entenda como os hackers trabalham
 stay-alert = Receba alertas sobre novos vazamentos
 website-breach = Vazamento de site
+sensitive-breach = Vazamento de site sensível
 data-aggregator-breach = Vazamento de agregador de dados
 unverified-breach = Vazamento não verificado
 spam-list-breach = Vazamento de lista de spam
@@ -383,8 +384,18 @@ unverified-breach-plural = Vazamentos não verificados
 spam-list-breach-plural = Vazamentos de listas de spam
 what-data = Que dados foram comprometidos:
 sensitive-sites = Com o { -product-name } trata sites sensíveis?
+sensitive-sites-copy =
+    O { -product-name } só revela contas associadas a esses 
+    tipos de vazamento após um endereço de e-mail ter sido validado. Significa que você é 
+    a única pessoa que pode ver se suas informações apareceram em um vazamento (a menos que
+    mais alguém tenha acesso à sua conta de e-mail).
 delayed-reporting-headline = Por que demorou tanto para reportar este vazamento?
+about-fxm-headline = Sobre o { -product-name }
+# How Firefox Monitor works
+how-fxm-works = Como o { -product-name } funciona
 how-fxm-3-headline = Receba notificações em seu navegador
+wtd-after-website = O que fazer após um vazamento de site
+wtd-after-data-agg = O que fazer após um vazamento de agregador de dados
 what-is-data-agg = O que é um agregador de dados?
 protect-your-privacy = Proteja sua privacidade online
 no-pw-to-change = Diferente de um vazamento de site, não há senha a alterar.
@@ -395,6 +406,7 @@ avoid-personal-info = Evite usar informações pessoais em senhas
 change-pw = Mude sua senha
 create-strong-passwords = Como criar senhas fortes
 stop-reusing-pw = Pare de reusar as mesmas senhas
+five-myths = 5 mitos sobre gerenciadores de senhas
 comm-opt-0 = Enviar e-mail para mim se um de meus endereços de e-mail abaixo aparecer em um vazamento de dados.
 comm-opt-1 = Enviar todos os alertas de vazamento para { $primaryEmail }.
 stop-monitoring-this = Parar de monitorar este e-mail.
