@@ -345,3 +345,17 @@ create-free-account = Tatz'uku' jun sipan { -brand-fxa } richin jun tz'aqät kit
 get-your-report-and-sign-up = Tak'ulu' atzijol chuqa' tatz'ib'aj ab'i' richin ye'ak'ül kitzijol k'ayewal.
 # Link title
 frequently-asked-questions = Jutaqil Taq K'utunïk
+about-firefox-monitor = Chi rij { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Taq ajowab'äl
+# Link title.
+home = Tikirib'äl
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Tijaq { -brand-fxa } okem pa k'amaya'l
+
+## What to do after data breach tips
+
+
+## Updated error messages
+
