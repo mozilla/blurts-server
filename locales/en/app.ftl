@@ -11,6 +11,7 @@
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox Account
 -brand-Chrome = Chrome
+-brand-team-email = breach-alerts@mozilla.com
 
 layout-Firefox = {-brand-name}
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
@@ -449,7 +450,7 @@ copyright =
 content-available= Content available under a Creative Commons license.
 
 # Alerts is a noun
-sign-up-for-alerts=Sign up for Alerts
+sign-up-for-alerts = Sign up for Alerts
 
 sign-up-for-fxa-alerts= Sign up for {-product-name} alerts.
 create-free-account=
@@ -458,7 +459,7 @@ create-free-account=
 get-your-report-and-sign-up= Get your report and sign up for alerts.
 
 # Link title
-frequently-asked-questions=Frequently Asked Questions
+frequently-asked-questions = Frequently Asked Questions
 
 
 
@@ -574,7 +575,6 @@ what-is-data-agg-blurb = Data aggregators, or data brokers, collect information 
 
 protect-your-privacy = Protect your online privacy
 no-pw-to-change = Unlike a website breach, there’s no password to change.
-link-steps-to-protect = Steps to take to protect your identity online
 
 avoid-personal-info = Avoid using personal info in passwords
 avoid-personal-info-blurb = It’s easy to find birthdays, addresses, and family member names online. Keep it out of your passwords.
@@ -773,7 +773,20 @@ scan-results-known-breaches =
      *[other] This email appeared in { $breachCount } known data breaches.
   }
 
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Results for
 
-# This string is shown at the top of the scan results page and indicates
-# the email that was searched.
-results-for-x = Results for { $userEmail }
+other-monitored-emails = Other Monitored Emails 
+email-verification-required = Email Verification Required 
+fxa-primary-email = {-brand-fxa} Email - Primary
+
+what-is-a-website-breach = What is a website breach?
+website-breach-blurb = A website data breach happens when cyber criminals steal, copy, or expose personal information from online accounts. It’s usually a result of hackers finding a weak spot in the website’s security. Breaches can also happen when account information gets leaked by accident.
+
+security-tips-headline = Security tips to protect yourself from hackers
+steps-to-protect = Steps to take to protect your online identity
+take-further-steps = Take further steps to protect your identity
+
+alert-about-new-breaches = Alert me about new breaches
