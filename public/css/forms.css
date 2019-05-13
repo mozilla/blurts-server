@@ -34,10 +34,12 @@ input:-webkit-autofill {
   text-align: center;
   font-weight: 300;
   margin: 0 auto;
-  color: var(--blue4);
+  color: var(--grey8);
   max-width: 355px;
   z-index: 1;
-  display: none;
+  font-size: 0.9rem;
+
+  /* display: none; */
 }
 
 input[type="submit"],

@@ -2,7 +2,6 @@
   font-size: 1.75rem;
   font-family: "FirefoxSharpSans", Arial, Helvetica, sans-serif;
   display: inline-block;
-  padding-top: 6rem;
 }
 
 .welcome-back span.bold::before {
@@ -42,10 +41,8 @@ button.resend-email {
 }
 
 .email-pref {
-  font-size: 1rem;
   margin: var(--margin) 0 0.5rem 0;
   font-weight: 500;
-  font-family: "FirefoxSharpSans", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .email-verification-required {
@@ -76,11 +73,6 @@ button.resend-email {
 
 .col-8.card.global-comm {
   border: none;
-}
-
-.section-headline.breach-summary {
-  margin-bottom: 0.5rem;
-  padding-top: var(--padding);
 }
 
 .add-new-email {

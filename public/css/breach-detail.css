@@ -51,8 +51,9 @@ main.breach-detail {
   margin-bottom: var(--margin);
 }
 
-.breach-detail-logo {
+.breach-detail-logo.breach-logo {
   max-width: 10rem;
+  max-height: 10rem;
 }
 
 .glyph {

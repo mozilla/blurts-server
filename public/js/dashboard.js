@@ -1,19 +1,6 @@
 "use strict";
 
 
-function toggleEl(e) {
-  const toggleButton = e.target;
-  const toggleParent = findAncestor(toggleButton, "toggle-parent");
-  ["inactive", "active"].forEach(className => {
-    toggleParent.classList.toggle(className);
-  });
-}
-
-function findAncestor(el, cls) {
-  while ((el = el.parentElement) && !el.classList.contains(cls));
-  return el;
-}
-
 async function sendForm(action, formBody={}) {
   const response = await fetch(`/user/${action}`, {
     headers: {
@@ -53,10 +40,6 @@ async function resendEmail(e) {
 }
 
 if (document.querySelector(".email-card")) {
-  const toggles = document.querySelectorAll(".toggle");
-  toggles.forEach(el => {
-    el.addEventListener("click", toggleEl);
-  });
 
   const removeEmailButtons = document.querySelectorAll(".resend-email");
   removeEmailButtons.forEach(btn => {

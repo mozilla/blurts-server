@@ -54,15 +54,21 @@ async function home(req, res) {
 
 function getAllBreaches(req, res) {
   return res.render("top-level-page", {
-    title: "All the breaches",
+    title: "Firefox Monitor",
     whichPartial: "top-level/all-breaches",
   });
 }
 
 function getSecurityTips(req, res) {
   return res.render("top-level-page", {
-    title: "Security Tip Page Title Needed",
+    title: req.fluentFormat("home-title"),
     whichPartial: "top-level/security-tips",
+  });
+}
+
+function getAboutPage(req, res) {
+  return res.render("about",{
+    title: req.fluentFormat("about-firefox-monitor"),
   });
 }
 
@@ -76,6 +82,7 @@ function notFound(req, res) {
 
 module.exports = {
   home,
+  getAboutPage,
   getAllBreaches,
   getSecurityTips,
   notFound,

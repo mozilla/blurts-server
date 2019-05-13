@@ -7,22 +7,18 @@
   visibility: hidden;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 html,
 body {
   --accentLightBlue: #00b4f5;
-  --warmGradient: linear-gradient(134deg, #e22850 0%, #e31587 50%, #952bb9 100%);
-  --bluePurpleGradient: linear-gradient(135deg, var(--blue2) 0%, var(--violet5) 35%, var(--purple5) 90%);
+  --warmGradient: linear-gradient(200deg, #e22850 0%, #e31587 30%, #952bb9 100%);
+  --bluePurpleGradient: linear-gradient(220deg, var(--blue4) 0%, var(--violet5) 55%, var(--purple5) 100%);
   --borderColors: var(--blue) #c78d20 #ff7e88 #ac3eff;
   --inkLight: #2b1e44;
   --color: #20123a;
   --textLight: #686869;
   --paragraphColor: var(--grey1);
   --padding: 2rem;
-  --maxWidth: 1100px;
+  --maxWidth: 1200px;
   --margin: 1rem;
   --headline: 2.1rem;
   --bigHeadline: 2.2rem;
@@ -56,10 +52,13 @@ body {
   --orange5: #ff7139;
   --orange6: #e25920;
   --bgLight: rgba(249, 249, 250, 1);
+  --buttonFontSize: 0.9rem;
+  --paragraphFontSize: 1.1rem;
   --grey1: #f9f9fa;
   --grey2: #ededf0;
   --grey3: #cdcdd4;
   --grey6: #5e5e72;
+  --grey4: #9595a3;
   --grey5: #7a7a8b;
   --grey8: #42425a;
   --grey9: #202340;
@@ -83,6 +82,10 @@ body {
 
 .warm-gradient {
   background: var(--warmGradient);
+}
+
+.cool-gradient {
+  background: var(--bluePurpleGradient);
 }
 
 .feature-title {
@@ -113,7 +116,7 @@ body {
 p,
 .paragraph {
   line-height: var(--lineHeight);
-  font-size: 1.1rem;
+  font-size: var(--paragraphFontSize);
 }
 
 .medium {
@@ -131,13 +134,6 @@ p,
 .desc {
   max-width: 320px;
   font-weight: 300;
-}
-
-span.needscopy {
-  font-weight: 300;
-  font-size: 1rem;
-  opacity: 0.6;
-  margin-left: 1rem;
 }
 
 h1,
@@ -161,10 +157,14 @@ h3,
   font-weight: 700;
 }
 
+.wrap-headline {
+  max-width: 550px;
+}
+
 .skinny-headline {
   font-size: var(--headline);
   font-weight: 500;
-  max-width: 400px;
+  max-width: 480px;
 }
 
 .headline,
@@ -195,6 +195,15 @@ a:hover {
   opacity: 0.8;
 }
 
+button.text-link {
+  border: 0;
+  padding: 0;
+  text-align: left;
+  font-family: "Inter UI", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+}
+
+button.text-link,
 .text-link,
 .footer-link {
   color: var(--blue3);
@@ -234,7 +243,7 @@ a.btn-dark {
   background-color: transparent;
   border-radius: 0.25rem;
   min-height: 2rem;
-  font-size: 0.9rem;
+  font-size: var(--buttonFontSize);
   font-family: "FirefoxSharpSans", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   transition: border 0.1s ease-in-out, background-color 0.1s ease-in-out;
 }
@@ -261,8 +270,8 @@ a.btn-dark {
 
 .btn-light:hover,
 a.btn-light:hover {
-  background-color: var(--violet5);
-  border: 1px solid var(--violet5);
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0);
   opacity: 1;
   transition: border 0.1s ease-in-out, background-color 0.1s ease-in-out;
 }
@@ -352,6 +361,10 @@ ul li {
 
 .flx-col {
   flex-direction: column;
+}
+
+.flx-row {
+  flex-direction: row;
 }
 
 .space-between {
@@ -518,11 +531,6 @@ div.sprite {
   margin-right: calc(var(--padding) / 2);
 }
 
-.arrow {
-  padding-left: 0.5rem;
-  font-size: 0.9rem;
-}
-
 .arrow-head-right {
   margin-left: 0.35rem;
 }
@@ -556,6 +564,14 @@ li:hover .bullet {
 .clear-header {
   min-height: 90vh;
   padding-top: 12rem;
+}
+
+.toggle-parent.active .toggle svg {
+  transform: rotate(180deg);
+}
+
+.toggle-parent.inactive .toggle-child {
+  display: none;
 }
 
 @media screen and (max-width: 1200px) {
@@ -606,6 +622,10 @@ li:hover .bullet {
 }
 
 @media screen and (max-width: 600px) {
+  body {
+    --paragraphFontSize: 1rem;
+  }
+
   .col-5,
   .col-6,
   .col-7,

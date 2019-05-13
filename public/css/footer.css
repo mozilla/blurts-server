@@ -1,12 +1,10 @@
 footer {
-  background-color: rgba(255, 255, 255, 1);
-  border-top: 1px solid var(--borderColor);
   width: 100%;
   margin: auto auto 0 auto;
 }
 
-ul.footer-links {
-  justify-content: flex-end;
+.footer-link {
+  font-size: 0.85rem;
 }
 
 .footer-link-wrapper {
@@ -40,10 +38,9 @@ svg.Mozilla-logo {
   .mozilla-logo-wrapper {
     padding: 0;
   }
-}
 
-@media screen and (max-width: 800px) {
   ul.row-full-width {
-    padding: 1.75rem;
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
   }
 }

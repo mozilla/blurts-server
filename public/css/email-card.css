@@ -69,7 +69,17 @@
   visibility: hidden;
   opacity: 0;
   max-height: 0;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+}
+
+.e-breach-list .breach-card {
+  max-height: 0;
+  transition: all 0.2s ease;
+}
+
+.active .e-breach-list .breach-card {
+  max-height: 10000px;
+  transition: all 0.2s ease;
 }
 
 .show-remaining-breaches.btn-light {
@@ -86,6 +96,11 @@
   opacity: 1;
   max-height: 20000px;
   transition: all 0.3s ease;
+}
+
+.email-card.active .show-additional-breaches.hide .breach-card,
+.email-card.inactive .show-additinal-breaches.hide .breach-card {
+  display: none !important;
 }
 
 /* new breaches */

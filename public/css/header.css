@@ -6,6 +6,12 @@ header {
   background-color: var(--color);
   z-index: 2;
   box-shadow: 0 0 5px 0 #20123a1c;
+  transition: box-shadow 0.2s ease;
+}
+
+header.show-shadow {
+  box-shadow: 2px 2px 10px rgba(24, 24, 24, 0.75);
+  transition: box-shadow 0.2s ease;
 }
 
 .fx-monitor {
@@ -59,6 +65,16 @@ nav {
 .sign-in {
   margin-left: 1rem;
   white-space: nowrap;
+}
+
+.sign-in:hover {
+  background-color: var(--blue4);
+  border: 1px solid var(--blue4);
+}
+
+.sign-in:active {
+  background-color: var(--blue5);
+  border: 1px solid var(--blue5);
 }
 
 .sign-in:focus,

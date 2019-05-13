@@ -4,7 +4,7 @@
         <div class="latest-breach-info">
           {{#each (lastAddedBreach)}}
             {{> breach-card cardType="latest-breach" showPwnCount=true}}
-            <a href="/?breach={{ this.Name }}" class="latest-breach-link">{{ getString "latest-breach-link" }}{{> svg/arrow-head-right }}</a>
+            <a href="/?breach={{ this.Name }}" class="latest-breach-link">{{ getString "latest-breach-link" }}</a>
           {{/each}}
         </div>
       </div>

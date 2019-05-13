@@ -2,15 +2,23 @@
   font-size: 1.35rem;
   margin-right: 0.15rem;
   min-width: 2rem;
+  padding-right: var(--margin);
+  transition: text-decoration 0.15s ease-in-out;
+}
+
+.breach-stat-number:hover {
+  text-decoration: underline;
+  transition: text-decoration 0.15s ease-in-out;
 }
 
 .dash-stats {
   overflow: hidden;
-  padding: 0.5rem 0;
+  padding: 0;
   font-size: 1rem;
 }
 
 .breach-stat-span-wrapper {
+  padding-right: 1.5rem;
   min-height: 1.65rem;
   display: flex;
   align-items: center;
@@ -25,7 +33,7 @@
 
 .breach-stat-row {
   flex-direction: column;
-  padding: 0.5rem var(--padding);
+  padding: 0.75rem var(--padding);
 }
 
 .stat-row-title-wrap {
@@ -124,6 +132,7 @@ p.verified-email-list {
   font-weight: 400;
   margin: 0.25rem 0;
   color: #5f6168;
+  font-size: 1rem;
 }
 
 p.email-affected {

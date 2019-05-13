@@ -1,9 +1,9 @@
 
-<main id="dashboard" class="dashboard clear-header">
+<main id="dashboard" class="dashboard clear-header" data-page-label="User Dashboard">
   <div class="row jst-cntr">
-    <div class="col-8 no-vertical-padding">
+    <div class="col-8">
       {{#if req.session.newUser}}
-        <span class="welcome-user">{{{fluentNestedBold "welcome-back" userName=req.session.user.fxa_profile_json.email }}}</span>
+        <span class="welcome-user">{{{fluentNestedBold "welcome-user" userName=req.session.user.fxa_profile_json.email }}}</span>
       {{else}}
         <span class="welcome-back">{{{fluentNestedBold "welcome-back" userName=req.session.user.fxa_profile_json.email }}}</span>
       {{/if}}
@@ -14,7 +14,6 @@
       <h2 class="section-headline breach-summary dash">{{ getString "breach-summary" }}</h2>
     </div>
     <div class="col-8 card dash-stats">
-      {{!-- <h2 class="section-headline">{{ getString "breach-summary" }}</h2> --}}
       {{> breach-stats addClasses="user-stats"}}
     </div>
   </div>
@@ -29,6 +28,15 @@
       {{> email-card }}
     {{/each}}
     {{> dashboards/manage-email-link variableClass="show-mobile"}}
-
   </div>
 </main>
+<section class="container cool-gradient">
+  <div class="row">
+    <div class="col-6 jst-cntr">
+      {{> take-back-control/headlines variableClasses="dash"}}
+    </div>
+    <div class="col-6">
+      {{> take-back-control/article-links }}
+    </div>
+  </div>
+</section>

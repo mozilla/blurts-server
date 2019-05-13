@@ -127,7 +127,7 @@ async function getDashboard(req, res) {
   req.session.user = await DB.setBreachesLastShownNow(user);
 
   res.render("dashboards", {
-    title: req.fluentFormat("user-dash"),
+    title: req.fluentFormat("Firefox Monitor"),
     verifiedEmails,
     unverifiedEmails,
     whichPartial: "dashboards/breaches-dash",
@@ -240,7 +240,7 @@ async function getPreferences(req, res) {
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
 
   res.render("dashboards", {
-    title: req.fluentFormat("email-add-title"),
+    title: "Firefox Monitor",
     whichPartial: "dashboards/preferences",
     verifiedEmails, unverifiedEmails,
   });
