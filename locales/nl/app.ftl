@@ -324,3 +324,110 @@ create-free-account =
 get-your-report-and-sign-up = Haal uw rapport op en schrijf u in voor waarschuwingen.
 # Link title
 frequently-asked-questions = Veelgestelde vragen
+about-firefox-monitor = Over { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Voorkeuren
+# Link title.
+home = Start
+# Link title
+breaches = Datalekken
+# Link title
+security-tips = Beveiligingstips
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = { -brand-fxa }-navigatie openen
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = LAATST TOEGEVOEGDE DATALEK
+breach-added = Datalek gemeld:
+breach-discovered = Datalek ontdekt:
+# Link title
+more-about-this-breach = Meer over dit datalek
+take-control = Neem uw persoonlijke gegevens weer onder controle.
+cant-stop-hackers = U kunt hackers niet stoppen om te hacken. Maar u kunt slechte gewoonten die hun werk gemakkelijk maken vermijden.
+read-more-tips = Meer beveiligingstips
+how-hackers-work = Begrijp hoe hackers te werk gaan
+monitor-your-online-accounts = Meld u aan voor datalekken met een { -brand-fxa }
+stay-alert = Blijf alert op nieuwe datalekken
+if-your-info = Als uw gegevens voorkomen in een nieuw datalek, sturen we u een melding.
+search-all-emails = Controleer al uw e-mailadressen op datalekken en ontvang meldingen over nieuwe bedreigingen.
+monitor-several-emails = Houd verschillende e-mailadressen in de gaten
+take-action = Onderneem actie om uw accounts te beschermen
+keep-your-data-safe = Ontdek wat u moet doen om uw gegevens te beschermen tegen cybercriminelen.
+website-breach = Websitedatalek
+sensitive-breach = Gevoelig websitedatalek
+data-aggregator-breach = Datalek gegevensverzameling
+unverified-breach = Niet-geverifieerd datalek
+spam-list-breach = Spamlijstdatalek
+website-breach-plural = Websitedatalek
+sensitive-breach-plural = Gevoelige datalekken
+data-aggregator-breach-plural = Datalekken gegevensverzameling
+unverified-breach-plural = Niet-geverifieerde datalekken
+spam-list-breach-plural = Spamlijstdatalekken
+what-data = Welke gegevens zijn gecompromitteerd:
+sensitive-sites = Hoe behandelt { -product-name } gevoelige websites?
+about-fxm-headline = Over { -product-name }
+# How Firefox Monitor works
+how-fxm-works = Hoe { -product-name } werkt
+
+## What to do after data breach tips
+
+five-myths = 5 mythes over wachtwoordbeheerders
+create-a-fxa = Maak een { -brand-fxa } voor uw volledige rapport van datalekken en om meldingen te ontvangen.
+feat-security-tips = Beveiligingstips om uw accounts te beschermen
+feat-sensitive = Geavanceerd zoeken in gevoelige datalekken
+feat-enroll-multiple = Registreer meerdere e-mailadressen voor controle op datalekken
+sign-up-for-fxa = Meld u aan voor een { -brand-fxa }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Komt voor in { $breachCount } bekend datalek.
+       *[other] Komt voor in { $breachCount } bekende datalekken.
+    }
+see-if-breached = Kijk of u in een online datalek voorgekomen bent.
+check-for-breaches = Controleer op datalekken
+find-out-what-hackers-know = Ontdek wat hackers al over u weten. Leer hoe u hen een stap voor kunt blijven.
+search-for-your-email = Zoek terug tot 2007 naar uw e-mailadres in openbare datalekken.
+back-to-top = Terug naar boven
+comm-opt-0 = Stuur mij een e-mailbericht als een van mijn e-mailadressen hieronder in een datalek verschijnt.
+comm-opt-1 = Stuur alle datalekwaarschuwingen naar { $primaryEmail }.
+stop-monitoring-this = Stop met het controleren van dit e-mailadres.
+resend-verification = Verificatie-e-mailbericht opnieuw versturen
+add-new-email = Een nieuw e-mailadres toevoegen
+send-verification = Verificatiekoppeling versturen
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Algemene communicatie
+breach-summary = Samenvatting datalek
+welcome-back = Welkom terug, { $userName }!
+welcome-user = Welkom, { $userName }!
+breach-alert-subject = { -product-name } heeft uw e-mailadres gevonden in een nieuw datalek.
+your-info-was-discovered-headline = Uw gegevens zijn ontdekt in een nieuw datalek.
+your-info-was-discovered-blurb =
+    U bent aangemeld om { -product-name }-meldingen te ontvangen
+    wanneer uw e-mailadres verschijnt in een datalek. Dit is wat we weten over dit datalek.
+what-to-do-after-breach = Wat te doen na een datalek
+ba-next-step-1 = Wijzig uw wachtwoord in een sterk, uniek wachtwoord.
+new-breaches-found =
+    { $breachCount ->
+        [one] { $breachCount } NIEUW DATALEK GEVONDEN
+       *[other] { $breachCount } NIEUWE DATALEKKEN GEVONDEN
+    }
+search-breaches = Datalekken zoeken
+all-breaches = Alle datalekken
+
+## Updated error messages
+
+login-link-pre = Hebt u een account?
+login-link = Aanmelden
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] E-mailadres wordt gecontroleerd
+       *[other] E-mailadressen worden gecontroleerd
+    }

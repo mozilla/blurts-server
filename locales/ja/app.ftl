@@ -198,6 +198,8 @@ manage-fxa = { -brand-fxa }の管理
 fxa-download-firefox-bar-link = 今すぐダウンロード
 user-fb-compromised-headline = { $userEmail } は、{ $breachName } のデータ侵害に含まれています。
 guest-fb-compromised-headline = このメールアドレスは、{ $breachName } のデータ侵害に含まれています。
+user-zero-breaches-headline = { $userEmail } はデータ侵害されていません。
+guest-zero-breaches-headline = このメールアドレスはデータ侵害されていません。
 user-scan-results-headline =
     { $breachCount ->
        *[other] { $userEmail } は、{ $breachCount } 個のデータ侵害が見つかりました。

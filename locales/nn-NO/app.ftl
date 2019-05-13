@@ -66,6 +66,7 @@ pwt-summary-4 =
 pwt-headline-5 = Legg til ekstra sikkerheit med tofaktor-godkjenning
 pwt-summary-5 = To faktor-godkjenning krev tilleggsinformasjon (t.d. ein eingangskode sendt via SMS) for å logge inn på kontoen din. Sjølv om nokon har passordet ditt, kan dei ikkje kome seg inn.
 pwt-headline-6 = Registrer deg for { -product-name-nowrap }-åtvaringar
+pwt-summary-6 = Nettstadlekkasjar aukar. Så snart ein ny lekkasje vert lagt til i databasen i vår, sender { -product-name-nowrap } deg ei åtvaring  — slik at du kan ta affære og beskytte kontoen din.
 landing-headline = Ditt vern mot hackarar startar her.
 scan-label = Sjå om du har vore innblanda i ein datalekkasje.
 scan-placeholder = Skriv inn e-postadresse
@@ -79,7 +80,7 @@ signup-banner-headline = { -product-name-nowrap } oppdagar truslar mot kontoane 
 download-firefox-bar-blurb = { -product-name-nowrap } vert presentert av den <span class="nowrap">heilt nye { -brand-name }</span>.
 download-firefox-bar-link = Last ned { -brand-name } no
 download-firefox-banner-blurb = Ta kontroll over nettlesaren din
-download-firefox-banner-button = LAst ned { -brand-name }
+download-firefox-banner-button = Last ned { -brand-name }
 signup-modal-headline = Registrer deg for { -product-name-nowrap }
 signup-modal-blurb = Registrer deg for å sjå heile rapporten, få åtvaringar om nye datalekkasjar og sikkerheitstips frå { -product-name-nowrap }.
 signup-modal-close = Lat att
@@ -188,7 +189,7 @@ guest-scan-results-headline =
         [one] Denne e-postadressa har vore involvert i ein datalekkasje.
        *[other] Denne e-postadressa har vore involvert i { $breachCount } datalekkasjar.
     }
-user-no-breaches-blurb = Vi vil involvere deg om denne adressa er involvert i ein datalekkasje.
+user-no-breaches-blurb = Vi vil varsle deg om denne adressa er involvert i ein datalekkasje.
 user-one-breach-blurb = Denne datalekkasjen avslørte følgjande personleg informasjon.
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -198,10 +199,28 @@ user-generic-found-breaches-blurb =
        *[other] Desse { $breachCount } datalekkasjane kompromitterte følgjande personlege opplysningar.
     }
 have-an-account = Har du allereie ein konto?
+fxa-pwt-section-blurb =
+    Passord beskyttar all personleg informasjon på online-kontoane dine. 
+    Hackarar er avhengig av dei dårlege vanane dine - som det at du brukar same passord
+    overalt eller brukar vanlege passord (t.d. minkode1234) - slik at dei kan hacke 
+    mange kontoar, viss dei berre hackar éin.
+fxa-pwt-summary-2 =
+    Korte passord med berre eitt ord er enkle for hackarar å gjette.
+    Bruk minst to ord og ein kombinasjon av bokstavar, tal og spesialteikn.
+fxa-pwt-summary-4 =
+    Program for passordhandtering som 1Password, LastPass, Dashlane og Bitwarden lagrar passorda dine
+    og fyller dei ut på nettsider for deg. Dei hjelper deg til og med med å lage eit sterkt passord.
+fxa-pwt-summary-6 =
+    Datalekkasjar aukar. Om din personlege informasjon vert avslørt i ein datalekkasje, 
+    vil { -product-name } sende deg ei åtvaring - slik at du kan ta forholdsreglar og verne kontoane dine.
+copyright = Delar av dette innhaldet er © 1999-{ $year } av einskilde mozilla.org-bidragsytarar.
 content-available = Innhaldet er tilgjengeleg under ein Creative Commons-lisens.
 # Alerts is a noun
 sign-up-for-alerts = Registrer deg for varsel
 sign-up-for-fxa-alerts = Registrer deg på { -product-name } for varsel.
+create-free-account =
+    Oprett ein gratis { -brand-fxa } og få tilgang til heile rapporten om tidlegare datalekkasjar, 
+    åtvaringar om nye lekkasjar i tillegg til info om andre { -brand-Mozilla }-tenester.
 get-your-report-and-sign-up = Få din rapport og registrer deg for åtvaringar.
 # Link title
 frequently-asked-questions = Vanlege spørsmål

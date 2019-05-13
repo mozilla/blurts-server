@@ -343,3 +343,25 @@ create-free-account =
 get-your-report-and-sign-up = Få din rapport och registrera dig för varningar.
 # Link title
 frequently-asked-questions = Vanliga frågor
+about-firefox-monitor = Om { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Inställningar
+# Link title.
+home = Hem
+# Link title
+breaches = Intrång
+# Link title
+security-tips = Säkerhetstips
+fxa-account = { -brand-fxa }
+about-fxm-headline = Om { -product-name }
+
+## What to do after data breach tips
+
+manage-email-addresses = Hantera e-postadresser
+welcome-back = Välkommen tillbaka, { $userName }!
+welcome-user = Välkommen, { $userName }!
+
+## Updated error messages
+
+login-link-pre = Har du ett konto?
+login-link = Logga in

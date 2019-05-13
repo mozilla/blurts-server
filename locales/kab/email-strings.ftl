@@ -1,8 +1,11 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 click-to-verify = Fren taqeffalt senqed tansa-iw deg 24 n yisragen akken ad tessentemeḍ amiḍan-ik Firefox Monitor. Aneqqis-ik ad d-yeddu akken kan.
 verify-my-email = Senqed imayl-iw
 report-scan-another-email = Sleḍ imayl-nniḍen deg { -product-name }
+automated-message = Wagi d iymayl awurman; ma yella d tuccḍa, ulac ayen ara txedmeḍ.
 unsubscribe-email-link = Ma yella ur tezgiḍ tebɣiḍ ilɣa n { -product-name }, ffeɣ seg ujerred.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Aneqqis { -product-name }

@@ -325,3 +325,5 @@ sign-up-for-alerts = Regjistrohuni për Sinjalizime
 sign-up-for-fxa-alerts = Regjistrohuni për sinjalizime { -product-name }.
 create-free-account = Krijoni një { -brand-fxa } falas që të merrni raport të plotë mbi shkelje të dikurshme, sinjalizime shkeljesh të reja, dhe informacione mbi shërbime të tjera { -brand-Mozilla }.
 get-your-report-and-sign-up = Merrni raportin tuaj dhe regjistrohuni për sinjalizime.
+# Link title
+frequently-asked-questions = Pyetje të Bëra Shpesh

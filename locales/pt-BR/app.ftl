@@ -352,3 +352,38 @@ create-free-account =
 get-your-report-and-sign-up = Receba seu relatório e cadastre-se para receber alertas.
 # Link title
 frequently-asked-questions = Perguntas frequentes
+about-firefox-monitor = Sobre o { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Preferências
+# Link title.
+home = Início
+# Link title
+breaches = Vazamentos
+# Link title
+security-tips = Dicas de segurança
+fxa-account = { -brand-fxa }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = ÚLTIMO VAZAMENTO ADICIONADO
+breach-added = Vazamento reportado:
+breach-discovered = Vazamento descoberto:
+# Link title
+more-about-this-breach = Mais sobre este vazamento
+take-control = Assuma de volta o controle sobre seus dados pessoais.
+read-more-tips = Leia mais dicas de segurança
+stay-alert = Receba alertas sobre novos vazamentos
+
+## What to do after data breach tips
+
+change-pw = Mude sua senha
+create-strong-passwords = Como criar senhas fortes
+stop-reusing-pw = Pare de reusar as mesmas senhas
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Comunicação global
+breach-summary = Resumo do vazamento
+
+## Updated error messages
+

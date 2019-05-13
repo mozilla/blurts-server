@@ -278,3 +278,22 @@ create-free-account = 註冊免費的 { -brand-fxa } 即可收到關於您的資
 get-your-report-and-sign-up = 取得報告並訂閱警報通知。
 # Link title
 frequently-asked-questions = 常見問題
+about-firefox-monitor = 關於 { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = 偏好設定
+# Link title.
+home = 首頁
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = 開啟 { -brand-fxa } 導航列
+about-fxm-headline = 關於 { -product-name }
+# How Firefox Monitor works
+how-fxm-works = { -product-name } 的運作原理
+
+## What to do after data breach tips
+
+back-to-top = 回到頁面頂端
+
+## Updated error messages
+
+login-link = 登入

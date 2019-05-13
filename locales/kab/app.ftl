@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Amiḍan Firefox
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Tallelt
@@ -30,6 +32,7 @@ scan-title = { -product-name } : Agmuḍ n tesleḍt
 user-add-invalid-email = Yir imayl
 user-add-email-verify-subject = Senqed ajerred-ik { -product-name }.
 user-add-title = { -product-name } : Sentem Imayl-ik
+error-headline = Tuccḍa
 user-verify-token-error = Ajiṭun n usentem ilaq.
 user-verify-email-report-subject = Aneqqis-ik { -product-name }
 user-verify-title = { -product-name } : Ajerred yedda
@@ -100,7 +103,6 @@ compromised-data = Isefka yettwakren:
 confirmed = Yentem!<br />Tettwajerdeḍ!
 unsub-headline = Ffeɣ seg ujerred si { -product-name-nowrap }
 unsub-button = Ffeɣ seg ujerred
-unsub-survey-headline = Ur tezgiḍ tettwajerrdeḍ.
 unsub-reason-3 = Ur walaɣ ara ameẓlu ilaq
 unsub-reason-4 = Egiɣ yakan ayen ilaqen akken ad ḥerzeɣ imiḍanen-iw.
 unsub-reason-6 = Ula d yiwen seg yisumar-a
@@ -116,3 +118,12 @@ download-firefox-mobile = Sider { -brand-name } aziraz
 features = Timahilin
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+share-email = Imayl
+# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
+share-other = Wiyaḍ
+show-all = Sken akk
+sign-in = Kcem
+sign-out = Ffeɣ
+fxa-download-firefox-bar-link = Sider tura
+fxa-download-firefox-banner-blurb = Asali n yisebtar d amellil ugar, d arurad, s useqdec n drus n tkatut.
+have-an-account = Ɣur-k yakan amiḍan?

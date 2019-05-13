@@ -9,6 +9,8 @@
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
+-brand-fxa = Firefox اکاؤنٹ
+-brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = سپورٹ
@@ -77,7 +79,6 @@ compromised-accounts = سمجھوتہ اکاؤنٹس:
 compromised-data = سمجھوتہ ہوا ڈیٹا:
 unsub-headline = { -product-name-nowrap } سے ان سبسکرائب کریں
 unsub-button = رکنیت ختم کریں
-unsub-survey-headline = آپ اب سبسکرائب نہی ہیں۔
 unsub-reason-6 = اوپر سے کوئی بھی نہیں
 unsub-survey-thankyou = آپ کے رائے کا شکریہ.
 unsub-survey-error = کوئی ایک منتخب کریں۔

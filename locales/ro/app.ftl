@@ -19,6 +19,7 @@ about-firefox-alerts = Despre alertele Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Oferă feedback
 terms-and-privacy = Termeni și confidențialitate
+error-scan-page-token = Ai încercat să scanezi prea multe adrese de e-mail într-un timp prea scurt. Din motive de securitate, ți-am blocat accesul la căutări noi. Poți încerca mai târziu.
 error-could-not-add-email = Adresa de e-mail nu a putut fi adăugată în baza de date.
 error-not-subscribed = Această adresă de e-mail nu este abonată la { -product-name }.
 error-hibp-throttled = Prea multe conexiuni la { -brand-HIBP }.
@@ -137,6 +138,10 @@ confirmed-social-blurb = Dacă ți-au fost compromise datele într-o breșă, ex
 unsub-headline = Dezabonează-te de la { -product-name-nowrap }
 unsub-blurb = Prin dezabonare, adresa ta de e-mail va fi eliminată din lista { -product-name-nowrap } și nu vei mai primi alerte când sunt anunțate breșe noi.
 unsub-button = Dezabonează-te
+fxa-unsub-headline = Dezabonare de la alerte { -product-name }.
+fxa-unsub-blurb =
+    Nu vei mai primi alerte { -product-name }. 
+    { -brand-fxa } va rămâne activ și vei putea primi alte comunicări legate de cont.
 unsub-survey-form-label = De ce te dezabonezi de la alertele { -product-name-nowrap }?
 unsub-reason-1 = Consider că alertele nu îmi fac datele mai sigure
 unsub-reason-2 = Primesc prea multe e-mailuri de la { -product-name-nowrap }
@@ -146,6 +151,10 @@ unsub-reason-5 = Folosesc un alt serviciu pentru monitorizarea conturilor
 unsub-reason-6 = Niciuna dintre cele de mai sus
 unsub-survey-thankyou = Îți mulțumim pentru feedback.
 unsub-survey-error = Te rugăm să selectezi o opțiune.
+unsub-survey-headline-v2 = Te-ai dezabonat.
+unsub-survey-blurb-v2 =
+    Nu vei mai primi alerte { -product-name }. 
+    Vrei să ne acorzi un minut și să ne răspunzi la o întrebare despre experiența ta?
 unsub-survey-button = Trimite răspunsul
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Distribuie
@@ -170,14 +179,86 @@ share-facebook-headline = Află dacă ai fost parte a unei breșe de date
 share-facebook-blurb = Au fost expuse conturile tale online într-o breșă de date?
 og-site-description = Află dacă ai fost parte a unei breșe de date cu { -product-name }. Înregistrează-te pentru alerte despre viitoare breșe și obține ponturi pentru a-ți menține în siguranță conturile.
 mozilla-security-blog = Blog de securitate { -brand-Mozilla }
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Social
 show-all = Afișează toate
+fxa-landing-blurb = Află ce știu deja hackerii despre tine și cum să fii cu un pas înaintea lor.
+fxa-scan-label = Vezi dacă apari într-o breșă de date.
+fxa-welcome-headline = Bine ai venit la { -product-name }.
+fxa-welcome-blurb = Te-ai înregistrat ca să primești alerte în cazul în care { $userEmail } apare într-o breșă de date.
+fxa-scan-another-email = Vrei să verifici altă adresă de e-mail?
+# Search Firefox Monitor
+fxa-scan-submit = Caută { -product-name }
+sign-up-to-check = Înscrie-te ca să poți verifica
+sign-in = Autentificare
+sign-out = Deconectare
+full-report-headline = Raportul tău { -product-name }
 see-full-report = Vezi raportul complet
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Gestionează { -brand-fxa }
+fxa-download-firefox-bar-blurb = Oferit de { -brand-name }. De 2 ori mai rapid. Folosește cu 30% mai puțină memorie decât { -brand-Chrome }.
 fxa-download-firefox-bar-link = Descarcă acum
+fxa-download-firefox-banner-blurb = Încărcare mai rapidă și mai bună a paginilor, utilizând mai puțină memorie.
+user-fb-compromised-headline = { $userEmail } a apărut în breșa de date { $breachName }.
+guest-fb-compromised-headline = Această adresă de e-mail a apărut în breșa de date { $breachName }.
+user-zero-breaches-headline = { $userEmail } nu a apărut în nicio breșă de date.
+guest-zero-breaches-headline = Această adresă de e-mail nu a apărut în nicio breșă de date.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } a apărut într-o breșă de date.
+        [few] { $userEmail } a apărut în { $breachCount } breșe de date.
+       *[other] { $userEmail } a apărut în { $breachCount } de breșe de date.
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Această adresă de e-mail a apărut într-o breșă de date.
+        [few] Această adresă de e-mail a apărut în { $breachCount } breșe de date.
+       *[other] Această adresă de e-mail a apărut în { $breachCount } de breșe de date.
+    }
+user-no-breaches-blurb = Te vom avertiza dacă adresa de e-mail apare în breșe noi.
+guest-no-breaches-blurb = Pentru a vedea dacă adresa de e-mail apare în breșe de date sensibile, creează un { -brand-fxa }. Te vom avertiza și dacă această adresă apare în breșe noi de date.
 user-one-breach-blurb = Această breșă a expus următoarele informații cu caracter personal.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Adresa ta de e-mail a apărut și într-o altă breșă.
+        [few] Adresa ta de e-mail a apărut și în alte { $breachCount } breșe.
+       *[other] Adresa ta de e-mail a apărut și în alte { $breachCount } de breșe.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Această adresă de e-mail a apărut și într-o altă breșă.
+        [few] Această adresă de e-mail a apărut și în alte { $breachCount } breșe.
+       *[other] Această adresă de e-mail a apărut și în alte { $breachCount } de breșe.
+    }
 user-fb-compromised-single =
     Această breșă a expus următoarele informații cu caracter personal. Dacă 
     nu ai făcut-o deja, schimbă-ți parola.
 user-generic-fb-compromised-single = Această breșă a expus următoarele informații cu caracter personal.
+guest-fb-compromised-single-v2 = Această breșă a expus următoarele date cu caracter personal. Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
+guest-fb-compromised-blurb-v2 =
+    { $breachCount ->
+        [one] Această adresă de e-mail a apărut și într-o altă breșă. Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
+        [few] Această adresă de e-mail a apărut și în alte { $breachCount } breșe. Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
+       *[other] Această adresă de e-mail a apărut și în alte { $breachCount } de breșe. Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
+    }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Nu ai apărut în breșa { $breachName }, dar am găsit adresa de e-mail în altă breșă.
+        [few] Nu ai apărut în breșa { $breachName }, dar am găsit adresa de e-mail în alte breșe.
+       *[other] Nu ai apărut în breșa { $breachName }, dar am găsit adresa de e-mail în alte breșe.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Această adresă de e-mail nu a apărut în breșa { $breachName }, dar am găsit-o în altă breșă.
+        [few] Această adresă de e-mail nu a apărut în breșa { $breachName }, dar am găsit-o în alte breșe.
+       *[other] Această adresă de e-mail nu a apărut în breșa { $breachName }, dar am găsit-o în alte breșe.
+    }
+guest-fb-not-compromised-blurb-v2 =
+    { $breachCount ->
+        [one] Această adresă de e-mail nu a apărut în breșa { $breachName }, dar am găsit-o în altă breșă. Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
+        [few] Această adresă de e-mail nu a apărut în breșa { $breachName }, dar am găsit-o în alte breșe. Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
+       *[other] Această adresă de e-mail nu a apărut în breșa { $breachName }, dar am găsit-o în alte breșe. Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
+    }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
 user-found-breaches-blurb =
@@ -195,8 +276,36 @@ user-generic-found-breaches-blurb =
        *[other] Aceste breșe au expus următoarele informații cu caracter personal.
     }
 have-an-account = Ai deja un cont?
+signup-banner-sensitive-blurb = Află ce știu deja hackerii despre tine și cum să fii cu un pas înaintea lor. Primește avertismente în cazul în care contul tău apare în breșe noi de date.
+fxa-pwt-section-blurb =
+    Parolele protejează toate datele cu caracter personal din conturile tale online. Și
+    hackerii se bazează pe obiceiuri proaste, cum ar fi folosirea aceleiași parole peste tot sau folosirea de fraze comune (@p@ssw0rd, oricine?), astfel încât, dacă sparg un cont, le sparg pe toate (sau mai multe).
+fxa-pwt-summary-2 =
+    Parolele scurte, formate dintr-un singur cuvânt, sunt ușor de ghicit pentru hackeri.
+    Folosește cel puțin două cuvinte și o combinație de litere, cifre și caractere speciale.
+fxa-pwt-summary-4 =
+    Managerii de parole, cum ar fi 1Password, LastPass, Dashlane și Bitwarden îți stochează
+    parolele și le completează pe site-uri pentru tine. Te vor ajuta chiar să creezi parole puternice.
 fxa-pwt-summary-6 = Breșele de date sunt în creștere. Dacă informațiile tale cu caracter personal apar într-o breșă de date nouă, { -product-name } îți va trimite o alertă — astfel încât să iei măsuri și să îți protejezi conturile.
+fxa-what-to-do-blurb-1 =
+    Dacă nu te poți autentifica, contactează site-ul web și întreabă-i cum să îți actualizezi datele de identificare.
+    Vezi un cont necunoscut? Este posibil ca datele tale să fi fost vândute
+    sau redistribuite. Ar putea fi și un cont de care ai uitat sau o companie care și-a schimbat denumirea.
+fxa-what-to-do-subhead-2 = Nu mai folosi parola expusă și schimb-o peste tot pe unde ai folosit-o.
+fxa-wtd-blurb-2 = Hackerii pot încerca să reutilizeze parola și adresa ta de e-mail ca să intre în alte conturi. Creează o parolă diferită și unică pentru fiecare cont, în special pentru contul bancar, e-mail și alte site-uri web pe care salvezi date cu caracter personal.
+fxa-what-to-do-blurb-3 = Cele mai multe breșe expun numai adrese de e-mail și parole, dar unele includ și date financiare sensibile. În cazul în care ți-au fost expuse contul bancar sau numerele cardurilor de credit, alertează banca asupra unei posibilități de fraudă. Monitorizează-ți extrasele de cont pentru plăți pe care nu le recunoști.
+fxa-what-to-do-subhead-4 = Obține ajutor pentru a ține minte toate parolele și pentru a le păstra în siguranță.
+fxa-what-to-do-blurb-4 =
+    Managerii de parole, cum ar fi 1Password, LastPass, Dashlane și Bitwarden îți stochează
+    parolele în siguranță și le completează pe site-uri pentru tine. Utilizează un manager de parole
+    pe telefon și pe calculator, astfel încât să nu trebuiască să le ții minte pe toate.
+fb-landing-headline = Ți-au fost expuse datele în breșa { $breachName }?
+copyright = Părți din acest conținut sunt © 1999-{ $year } de colaboratori individuali mozilla.org.
+content-available = Conținut disponibil sub o licență Creative Commons.
 # Alerts is a noun
 sign-up-for-alerts = Înregistrează-te pentru alerte
 sign-up-for-fxa-alerts = Înregistrează-te pentru alerte { -product-name }.
+create-free-account = Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
 get-your-report-and-sign-up = Obține raportul tău și înregistrează-te pentru alerte.
+# Link title
+frequently-asked-questions = Întrebări adresate frecvent

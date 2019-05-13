@@ -70,7 +70,7 @@ pwt-summary-4 =
     Illos alsi reserva le contrasignos con securitate e stipa los in sitos web pro te
 pwt-headline-5 = Adder extra securitate con le authentication a duo factores
 pwt-summary-5 =
-    Le Le authentication a duo factores require un altere pecia de informationes (inviate, como le codification a un-vice, via message de texto) pro acceder a tu conto.
+    Le authentication a duo factores require un altere pecia de information (p.ex. un codice a uso unic inviate in un message de texto) pro acceder a tu conto.
     Mesmo si alcuno ha tu contrasigno, ille non potera acceder.
 pwt-headline-6 = Registra te pro le alertas de { -product-name-nowrap }
 pwt-summary-6 =
@@ -161,6 +161,8 @@ confirmed-social-blurb = Si tu ha essite violate, il ha riscos que tu amicos, fa
 unsub-headline = Remover le subscription de { -product-name-nowrap }
 unsub-blurb = Isto removera tu email ab le lista de { -product-name-nowrap } e tu non recipera plus alertas quando nove violationes es annunciate.
 unsub-button = Remover le subscription
+fxa-unsub-headline = Remover le inscription al avisos de { -product-name }.
+fxa-unsub-blurb = Tu non recipera plus avisos de { -product-name }. Tu { -brand-fxa } remanera active, e tu pote reciper altere communicationes pertinente.
 unsub-survey-form-label = Proque tu remove tu subscription del avisos de { -product-name-nowrap }?
 unsub-reason-1 = Io crede que le avisos non rende mi datos plus secur
 unsub-reason-2 = Io recipe trop emails de { -product-name-nowrap }
@@ -171,6 +173,7 @@ unsub-reason-6 = Nihil del previe unos
 unsub-survey-thankyou = Gratias pro tu commentario.
 unsub-survey-error = Per favor elige uno.
 unsub-survey-headline-v2 = Tu abonamento ha essite annullate.
+unsub-survey-blurb-v2 = Tu non recipera plus avisos de { -product-name }. Vole tu prender un momento pro responder a un question re tu experientia?
 unsub-survey-button = Inviar responsa
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Compartir
@@ -248,6 +251,7 @@ user-fb-compromised-single =
     Iste violation ha exponite le sequente info personal. Si tu non lo ha jam facite,
     cambia tu contrasignos.
 user-generic-fb-compromised-single = Iste violation ha exponite le sequente info personal.
+guest-fb-compromised-single-v2 = Iste violation ha exponite le sequente info personal. Crea gratuitemente un { -brand-fxa } pro obtener un reporto complete del passate violationes, le avisos de nove violationes e information re altere servicios de { -brand-Mozilla }.
 guest-fb-compromised-blurb-v2 =
     { $breachCount ->
         [one]
@@ -311,5 +315,8 @@ copyright = Partes de iste contento es © 1999-{ $year } per collaboratores indi
 content-available = Contento disponibile sub licentia Creative Commons.
 # Alerts is a noun
 sign-up-for-alerts = Inscribe te al avisos
+sign-up-for-fxa-alerts = Inscribe te pro le avisos de { -product-name }.
+create-free-account = Crea gratuitemente un { -brand-fxa } pro obtener un reporto complete del passate violationes, le avisos de nove violationes e information re altere servicios de { -brand-Mozilla }.
+get-your-report-and-sign-up = Obtene tu reporto e inscribe te al avisos.
 # Link title
 frequently-asked-questions = Demandas frequente

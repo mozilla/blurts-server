@@ -327,3 +327,23 @@ create-free-account = Ustvarite brezplačen { -brand-fxa } in prejmite popolno p
 get-your-report-and-sign-up = Prejmite poročilo in se naročite na opozorila.
 # Link title
 frequently-asked-questions = Pogosto zastavljena vprašanja
+mozilla-dot-org = Mozilla.org
+preferences = Nastavitve
+# Link title.
+home = Domov
+fxa-account = { -brand-fxa }
+take-control = Prevzemite nadzor nad svojimi osebnimi podatki.
+# How Firefox Monitor works
+how-fxm-works = Kako deluje { -product-name }
+how-fxm-3-headline = Prejemajte obvestila v brskalniku
+protect-your-privacy = Zaščitite svojo spletno zasebnost
+
+## What to do after data breach tips
+
+change-pw = Spremenite svoje geslo
+back-to-top = Nazaj na vrh
+
+## Updated error messages
+
+error-csrf-headline = Seja je potekla
+login-link-pre = Imate račun?

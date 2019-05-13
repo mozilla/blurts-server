@@ -341,13 +341,99 @@ fxa-what-to-do-blurb-1 =
     Az adatait eladhatták vagy továbbadhatták. De olyan fiók is lehet, melyet
     elfelejtett, vagy a cég nevet is változtathatott.
 fxa-what-to-do-subhead-2 = Ne használja többet a kikerült jelszavát, módosítsa mindenütt, ahol használta.
+fxa-wtd-blurb-2 =
+    A hackerek megpróbálhatják újra felhasználni ugyanazt a jelszavát és e-mail címét, hogy más 
+    fiókokba jussanak be. Hozzon létre különböző jelszót minden fiókhoz, különösen a bankszámlájához,
+    e-mail fiókjához és más weboldalakon, ahol személyes adatokat ment el.
+fxa-what-to-do-blurb-3 =
+    A legtöbb adatszegés csak e-mail címek és jelszavak kikerülését okozza, de néhány érzékeny pénzügyi adatokat is tartalmaz.
+    Ha kikerült a bankszámlaszáma vagy hitelkártyaszáma, akkor értesítse a bankját a lehetséges csalásról.
+    Kövesse azokat a levonásokat, melyeket nem ismer fel.
 fxa-what-to-do-subhead-4 = Szerezzen segítséget, hogy megjegyezze az összes jelszavát, és biztonságban tartsa azokat.
+fxa-what-to-do-blurb-4 =
+    A jelszókezelők mint a 1Password, a LastPass, a Dashlane és a Bitwarden biztonságosan
+    tárolják a jelszavait, és beírják a weboldalakon Ön helyett. Használjon jelszókezelőt
+    a telefonján és számítógépén, így nem kell megjegyeznie az összeset.
 fb-landing-headline = Nyilvánosságra kerültek-e az adatai a(z) { $breachName } adatszegésben?
 copyright = A tartalom egyes részeire a következő vonatkozik: © 1999-{ $year } egyéni mozilla.org közreműködők.
 content-available = A tartalom Creative Commons licenc alatt érhető el.
 # Alerts is a noun
 sign-up-for-alerts = Regisztráció a figyelmeztetésekért
 sign-up-for-fxa-alerts = Regisztráció a { -product-name } figyelmeztetésekért
+create-free-account =
+    Hozzon létre egy ingyenes { -brand-fxa }ot a múltbeli adatszegésekről szóló teljes jelentésért, az új adatszegések
+    figyelmeztetéseiért, valamint az egyéb { -brand-Mozilla } szolgáltatásokról szóló információkért.
 get-your-report-and-sign-up = Kapja meg a jelentését, és regisztráljon a figyelmeztetésekért.
 # Link title
 frequently-asked-questions = Gyakran Ismételt Kérdések
+about-firefox-monitor = A { -product-name } névjegye
+mozilla-dot-org = Mozilla.org
+preferences = Beállítások
+# Link title.
+home = Kezdőlap
+# Link title
+breaches = Adatszegések
+# Link title
+security-tips = Biztonsági tippek
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = A { -brand-fxa } navigáció megnyitása
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = LEGUTÓBB HOZZÁADOTT ADATSZEGÉS
+breach-added = Adatszegés bejelentve:
+breach-discovered = Adatszegés felfedezve:
+# Link title
+more-about-this-breach = További tudnivalók erről az adatszegésről
+take-control = Szerezze vissza a személyes adatai feletti ellenőrzést.
+cant-stop-hackers = A hackereket nem tudja megállítani. De elkerülheti a rossz szokásokat, amelyek megkönnyítik a dolgukat.
+read-more-tips = Olvasson további biztonsági tippeket
+how-hackers-work = Értse meg, hogyan dolgoznak a hackerek
+stay-alert = Figyeljen az új adatszegésekre
+monitor-several-emails = Több e-mail cím figyelése
+take-action = Tegyen lépéseket a fiókjai védelmére
+website-breach = Weboldalon történt adatszegés
+sensitive-breach = Érzékeny weboldalon történt adatszegés
+data-aggregator-breach = Adatgyűjtőben történt adatszegés
+unverified-breach = Nem megerősített adatszegés
+spam-list-breach = Levélszemét-lista adatszegés
+
+## What to do after data breach tips
+
+stop-monitoring-this = Az e-mail cím figyelésének leállítása.
+resend-verification = Ellenőrző e-mail újraküldése
+add-new-email = Új e-mail cím hozzáadása
+send-verification = Ellenőrző e-mail küldése
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Globális kommunikáció
+breach-summary = Adatszegés összefoglalója
+manage-email-addresses = E-mail címek kezelése
+latest-breach-link = Nézze meg, hogy szerepel-e ebben az adatszegésben
+welcome-back = Üdvözöljük újra, { $userName }!
+welcome-user = Üdvözöljük, { $userName }!
+
+## Updated error messages
+
+login-link-pre = Van már fiókja?
+login-link = Bejelentkezés
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] Figyelt e-mail cím
+       *[other] Figyelt e-mail címek
+    }
+# Button
+see-additional-breaches = További adatszegések megtekintése
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Összes adatszegés megtekintése
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Találatok erre: { $userEmail }
+email-verification-required = E-mail ellenőrzés szükséges
