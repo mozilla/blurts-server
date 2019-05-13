@@ -315,3 +315,39 @@ create-free-account = 创建一个免费的 { -brand-fxa }，用于获取过往�
 get-your-report-and-sign-up = 获取您的报告并订阅警报通知。
 # Link title
 frequently-asked-questions = 常见问题
+about-firefox-monitor = 关于 { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = 偏好设置
+# Link title.
+home = 主页
+# Link title
+security-tips = 安全提示
+about-fxm-headline = 关于 { -product-name }
+# How Firefox Monitor works
+how-fxm-works = { -product-name } 工作原理
+how-fxm-1-headline = 进行基本搜索
+how-fxm-3-headline = 在浏览器中收到通知
+protect-your-privacy = 保护您的在线隐私
+
+## What to do after data breach tips
+
+change-pw = 更改您的密码
+create-strong-passwords = 如何创建高强度密码
+stop-reusing-pw = 停止重复使用相同密码
+back-to-top = 回到顶端
+stop-monitoring-this = 停止监控此电子邮件地址。
+resend-verification = 重发验证邮件
+add-new-email = 添加新电子邮件地址
+send-verification = 发送验证邮件
+link-change-primary = 更改主邮箱地址
+remove-fxm = 移除 { -product-name }
+welcome-back = 欢迎回来，{ $userName }！
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = 显示：
+
+## Updated error messages
+
+error-csrf-headline = 会话超时
+login-link-pre = 已有账户？
+login-link = 登录
+email-verification-required = 需要验证邮箱地址
