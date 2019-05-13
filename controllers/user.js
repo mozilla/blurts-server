@@ -26,13 +26,37 @@ function removeEmail(req, res) {
   res.redirect("/user/preferences");
 }
 
-function resendEmail(req, res) {
-  // console.log(req.body.emailId);
+async function resendEmail(req, res) {
+  const emailId = req.body.emailId;
+  const sessionUser = _requireSessionUser(req);
+  const existingEmail = await DB.getEmailById(emailId);
 
-  // Resend verification email
-  // Delete the unverified email if it appears anywhere else (under the user's id);
-  // Reset the verification clock
-  return res.json("Resend the email");
+  if (!existingEmail || !existingEmail.subscriber_id) {
+    throw new FluentError("user-verify-token-error");
+  }
+
+  if (existingEmail.subscriber_id !== sessionUser.id) {
+    // TODO: more specific error message?
+    throw new FluentError("user-verify-token-error");
+  }
+
+  const unverifiedEmailAddressRecord = await DB.resetUnverifiedEmailAddress(emailId);
+
+  const email = unverifiedEmailAddressRecord.email;
+  await EmailUtils.sendEmail(
+    email,
+    req.fluentFormat("user-add-email-verify-subject"),
+    "default_email",
+    { email,
+      supportedLocales: req.supportedLocales,
+      verificationHref: EmailUtils.getVerificationUrl(unverifiedEmailAddressRecord),
+      unsubscribeUrl: EmailUtils.getUnsubscribeUrl(unverifiedEmailAddressRecord, "account-verification-email"),
+      whichView: "email_partials/email_verify",
+    }
+  );
+
+  // TODO: what should we return to the client?
+  return res.json("Resent the email");
 }
 
 function updateCommunicationOptions(req, res) {
@@ -163,7 +187,7 @@ async function _verify(req) {
 
 
 async function verify(req, res) {
-  _requireSessionUser(req, res);
+  const sessionUser = _requireSessionUser(req, res);
   if (!req.query.token) {
     throw new FluentError("user-verify-token-error");
   }
@@ -173,7 +197,8 @@ async function verify(req, res) {
     throw new FluentError("error-not-subscribed");
   }
 
-  if (existingEmail.subscriber_id !== req.session.user.id) {
+  if (existingEmail.subscriber_id !== sessionUser.id) {
+    // TODO: more specific error message?
     throw new FluentError("user-verify-token-error");
   }
 
