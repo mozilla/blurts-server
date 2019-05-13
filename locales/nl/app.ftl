@@ -324,3 +324,55 @@ create-free-account =
 get-your-report-and-sign-up = Haal uw rapport op en schrijf u in voor waarschuwingen.
 # Link title
 frequently-asked-questions = Veelgestelde vragen
+about-firefox-monitor = Over { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Voorkeuren
+# Link title.
+home = Start
+# Link title
+breaches = Datalekken
+# Link title
+security-tips = Beveiligingstips
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = { -brand-fxa }-navigatie openen
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = LAATST TOEGEVOEGDE DATALEK
+breach-added = Datalek gemeld:
+breach-discovered = Datalek ontdekt:
+# Link title
+more-about-this-breach = Meer over dit datalek
+take-control = Neem uw persoonlijke gegevens weer onder controle.
+cant-stop-hackers = U kunt hackers niet stoppen om te hacken. Maar u kunt slechte gewoonten die hun werk gemakkelijk maken vermijden.
+read-more-tips = Meer beveiligingstips
+how-hackers-work = Begrijp hoe hackers te werk gaan
+monitor-your-online-accounts = Meld u aan voor datalekken met een { -brand-fxa }
+stay-alert = Blijf alert op nieuwe datalekken
+if-your-info = Als uw gegevens voorkomen in een nieuw datalek, sturen we u een melding.
+search-all-emails = Controleer al uw e-mailadressen op datalekken en ontvang meldingen over nieuwe bedreigingen.
+monitor-several-emails = Houd verschillende e-mailadressen in de gaten
+take-action = Onderneem actie om uw accounts te beschermen
+keep-your-data-safe = Ontdek wat u moet doen om uw gegevens te beschermen tegen cybercriminelen.
+website-breach = Websitedatalek
+sensitive-breach = Gevoelig websitedatalek
+data-aggregator-breach = Datalek gegevensverzameling
+unverified-breach = Niet-geverifieerd datalek
+spam-list-breach = Spamlijstdatalek
+website-breach-plural = Websitedatalek
+sensitive-breach-plural = Gevoelige datalekken
+data-aggregator-breach-plural = Datalekken gegevensverzameling
+unverified-breach-plural = Niet-geverifieerde datalekken
+spam-list-breach-plural = Spamlijstdatalekken
+what-data = Welke gegevens zijn gecompromitteerd:
+sensitive-sites = Hoe behandelt { -product-name } gevoelige websites?
+about-fxm-headline = Over { -product-name }
+# How Firefox Monitor works
+how-fxm-works = Hoe { -product-name } werkt
+
+## What to do after data breach tips
+
+search-breaches = Datalekken zoeken
+all-breaches = Alle datalekken
+
+## Updated error messages
+
