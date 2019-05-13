@@ -698,7 +698,6 @@ was-your-info-exposed = Was your info exposed in the { $breachName } data breach
 find-out-if = Find out if your data was exposed in this breach.
 
 fb-not-comp = This email did not appear in the { $breachName } breach.
-fb-comp-only = This email appeared in the { $breachName } breach.
 
 other-breaches-found =
   { $breachCount ->
@@ -706,7 +705,13 @@ other-breaches-found =
    *[other] However, it did appear in { $breachCount } other breaches. 
   }
 
-fb-comp-and-others = This email appeared in { $breachCount } known data breaches, including { $breachName }.
+
+fb-comp-only = This email appeared in the { $breachName } breach.
+fb-comp-and-others = 
+  { $breachCount ->
+   *[other] = This email appeared in { $breachCount } known data breaches, including { $breachName }.
+  }
+
 no-other-breaches-found = No other breaches found from a basic search.
 
 no-results-blurb = Sorry, that breach is not in our database.
