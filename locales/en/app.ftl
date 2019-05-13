@@ -11,7 +11,7 @@
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox Account
 -brand-Chrome = Chrome
--brand-team-email = breach-alerts@mozilla.com
+
 
 layout-Firefox = {-brand-name}
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
@@ -624,7 +624,13 @@ resend-verification = Resend verification email
 
 add-new-email = Add a new email address
 send-verification = Send Verification Link
-global-communication = Global communication
+
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Global Communication
 breach-summary = Breach Summary
 
 show-breaches-for-this-email = Show all breaches for this email.
@@ -692,7 +698,7 @@ was-your-info-exposed = Was your info exposed in the { $breachName } data breach
 find-out-if = Find out if your data was exposed in this breach.
 
 fb-not-comp = This email did not appear in the { $breachName } breach.
-fb-comp-only = This email appeared in the { $breachCount } breach.
+fb-comp-only = This email appeared in the { $breachName } breach.
 
 other-breaches-found =
   { $breachCount ->
@@ -776,7 +782,7 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
-results-for = Results for
+results-for = Results for: { $userEmail }
 
 other-monitored-emails = Other Monitored Emails 
 email-verification-required = Email Verification Required 
