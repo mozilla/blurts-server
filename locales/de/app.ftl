@@ -344,6 +344,12 @@ how-hackers-work = Verstehe, wie Hacker vorgehen
 monitor-your-online-accounts = Melde dich mit einem { -brand-fxa } an, um Datenschutzverletzungen überprüfen zu lassen
 stay-alert = Lass dich bei neuen Datenlecks warnen
 if-your-info = Sollten deine Daten in einem neuen Datenleck auftauchen, senden wir dir eine Warnmeldung.
+search-all-emails = Überprüfe alle deine E-Mails-Adressen auf Datenschutzverletzungen und lass dich bei neuen Bedrohungen warnen.
+monitor-several-emails = Überprüfe mehrere E-Mail-Adressen
+take-action = Schütze aktiv deine Accounts
+keep-your-data-safe = Finde heraus, was du tun solltest, um deine Daten vor Cyber-Kriminellen zu sichern.
+website-breach = Datenleck einer Website
+sensitive-breach = Heikles Datenleck einer Website
 
 ## What to do after data breach tips
 
