@@ -342,6 +342,7 @@ cant-stop-hackers = Du kannst Hacker nicht davon abhalten zu hacken. Aber du kan
 read-more-tips = Mehr Sicherheitstipps lesen
 how-hackers-work = Verstehe, wie Hacker vorgehen
 monitor-your-online-accounts = Melde dich mit einem { -brand-fxa } an, um Datenschutzverletzungen überprüfen zu lassen
+stay-alert = Lass dich bei neuen Datenlecks warnen
 
 ## What to do after data breach tips
 
