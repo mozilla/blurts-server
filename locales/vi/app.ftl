@@ -364,6 +364,7 @@ breach-discovered = Vi phạm đã phát hiện:
 # Link title
 more-about-this-breach = Thông tin thêm về vi phạm này
 take-control = Lấy lại quyền kiểm soát dữ liệu cá nhân của bạn.
+cant-stop-hackers = Bạn không thể ngăn chặn tin tặc đánh cắp. Nhưng bạn có thể tránh những thói quen xấu khiến công việc của họ trở nên khó khăn hơn.
 read-more-tips = Đọc thêm về mẹo bảo mật
 how-hackers-work = Hiểu cách thức hoạt động của tin tặc
 monitor-your-online-accounts = Đăng ký để theo dõi vi phạm với { -brand-fxa }
@@ -375,8 +376,14 @@ take-action = Hãy hành động để bảo vệ tài khoản của bạn
 keep-your-data-safe = Tìm hiểu những gì bạn cần làm để giữ an toàn cho dữ liệu của bạn khỏi tội phạm mạng.
 website-breach = Trang web vi phạm
 sensitive-breach = Trang web vi phạm nhạy cảm
-data-aggregator-breach = Tập hợp dữ liệu vi phạm
+data-aggregator-breach = Vi phạm tập hợp dữ liệu
 unverified-breach = Vi phạm chưa được xác minh
+spam-list-breach = Vi phạm danh sách thư rác
+website-breach-plural = Vi phạm trang web
+sensitive-breach-plural = Vi phạm nhạy cảm
+data-aggregator-breach-plural = Vi phạm tập hợp dữ liệu
+unverified-breach-plural = Vi phạm chưa được xác minh
+spam-list-breach-plural = Vi phạm danh sách thư rác
 what-data = Dữ liệu nào đã bị xâm phạm:
 sensitive-sites = Làm thế nào để { -product-name } xử lý các trang web nhạy cảm?
 sensitive-sites-copy =
@@ -390,12 +397,41 @@ delayed-reporting-copy =
     vi phạm dữ liệu để xuất hiện trên web tối. Vi phạm sẽ được thêm vào cơ sở
     dữ liệu của chúng tôi ngay khi chúng được phát hiện và xác minh.
 about-fxm-headline = Giới thiệu về { -product-name }
+about-fxm-blurb =
+    { -product-name } cảnh báo nếu tài khoản trực tuyến của bạn có liên quan đến vi phạm
+    dữ liệu. Tìm hiểu xem bạn đã vi phạm dữ liệu chưa, nhận thông báo về các vi phạm mới,
+    và thực hiện các bước để bảo vệ tài khoản trực tuyến của bạn. { -product-name } được
+    cung cấp bởi { -brand-Mozilla }.
+fxm-warns-you =
+    { -product-name } cảnh báo bạn nếu địa chỉ email của bạn bị lộ trong một
+    vi phạm dữ liệu trực tuyến. Xem thông tin của bạn đã được tiết lộ, tìm hiểu
+    làm thế nào để bảo vệ tốt hơn các tài khoản trực tuyến của bạn và được
+    cảnh báo nếu địa chỉ email của bạn xuất hiện trong một vi phạm mới.
 # How Firefox Monitor works
 how-fxm-works = Cách { -product-name } hoạt động
 how-fxm-1-headline = Tiến hành tìm kiếm cơ bản
+how-fxm-1-blurb =
+    Tìm kiếm địa chỉ email của bạn trong các vi phạm dữ liệu công khai trở lại
+    năm 2007. Tìm kiếm cơ bản này sẽ hiển thị hầu hết các vi phạm dữ liệu,
+    nhưng không phải là các địa chỉ có chứa thông tin cá nhân nhạy cảm.
 how-fxm-2-headline = Đăng ký giám sát vi phạm
+how-fxm-2-blurb =
+    Tạo { -brand-fxa } để theo dõi email của bạn đối với các vi phạm đang diễn ra.
+    Sau khi bạn xác minh email của mình, bạn cũng sẽ nhận được báo cáo đầy đủ
+    về các vi phạm trong quá khứ bao gồm các vi phạm nhạy cảm.
 how-fxm-3-headline = Nhận thông báo trong trình duyệt của bạn
+how-fxm-3-blurb =
+    Nếu bạn sử dụng { -brand-name }, bạn sẽ nhận được thông báo nếu bạn
+    truy cập vào trang web mà bị vi phạm. Tìm ra ngay lập tức nếu bạn đã
+    vi phạm và những gì bạn có thể làm về nó.
+wtd-after-website = Phải làm gì sau khi phát hiện vi phạm trang web
+wtd-after-data-agg = Phải làm gì sau khi phát hiện vi phạm tổng hợp dữ liệu
 what-is-data-agg = Tập hợp dữ liệu là gì?
+what-is-data-agg-blurb =
+    Tập hợp dữ liệu hoặc môi giới dữ liệu, thu thập thông tin từ hồ sơ công chúng và mua
+    nó từ các công ty khác. Họ biên dịch dữ liệu này để bán cho các công ty cho mục đích
+    tiếp thị. Nạn nhân của những vi phạm này ít có khả năng gặp phải vấn đề tài chính
+    lừa đảo, nhưng tin tặc có thể sử dụng dữ liệu này để mạo danh hồ sơ.
 protect-your-privacy = Bảo vệ quyền riêng tư trực tuyến của bạn
 no-pw-to-change = Không giống như vi phạm trang web, không có mật khẩu để thay đổi.
 avoid-personal-info = Tránh sử dụng thông tin cá nhân trong mật khẩu
@@ -410,6 +446,7 @@ strength-of-your-pw = Độ mạnh của mật khẩu của bạn ảnh hưởng
 create-strong-passwords = Cách tạo mật khẩu mạnh
 stop-reusing-pw = Ngừng sử dụng lại mật khẩu cũ
 create-unique-pw = Tạo mật khẩu độc đáo và lưu chúng ở nơi an toàn, như trình quản lý mật khẩu.
+five-myths = 5 huyền thoại về trình quản lý mật khẩu
 create-a-fxa = Tạo { -brand-fxa } để được báo cáo đầy đủ về các vi phạm của bạn và để nhận thông báo.
 feat-security-tips = Mẹo về bảo mật để bảo vệ tài khoản của bạn
 feat-sensitive = Tìm kiếm nâng cao trong các vi phạm nhạy cảm
@@ -444,6 +481,109 @@ link-change-primary = Thay đổi địa chỉ email chính
 remove-fxm = Xóa { -product-name }
 manage-email-addresses = Quản lý địa chỉ email
 latest-breach-link = Hãy xem nếu bạn đã bị vi phạm
+welcome-back = Chào mừng trở lại, { $userName }!
+welcome-user = Chào mừng, { $userName }!
+breach-alert-subject = { -product-name } đã tìm thấy email của bạn trong một vi phạm dữ liệu mới.
+your-info-was-discovered-headline = Thông tin của bạn đã được phát hiện trong một vi phạm dữ liệu mới.
+your-info-was-discovered-blurb =
+    Bạn đã đăng ký để nhận thông báo { -product-name } khi
+    email của bạn xuất hiện vi phạm dữ liệu. Đây là những gì chúng ta biết về vi phạm này.
+what-to-do-after-breach = Phải làm gì sau khi bị vi phạm dữ liệu
+ba-next-step-1 = Thay đổi mật khẩu của bạn thành một mật khẩu mạnh, độc đáo.
+ba-next-step-blurb-1 =
+    Mật khẩu mạnh sử dụng kết hợp chữ hoa và chữ thường,
+    ký tự đặc biệt, và số. Nó không chứa thông tin cá nhân
+    như địa chỉ, ngày sinh hoặc tên gia đình của bạn.
+ba-next-step-blurb-2 =
+    Tội phạm mạng có thể tìm thấy mật khẩu của bạn trên web tối và sử dụng
+    nó để đăng nhập vào tài khoản khác của bạn. Cách tốt nhất để bảo vệ
+    tài khoản của bạn là sử dụng mật khẩu duy nhất cho mỗi người.
+ba-next-step-3 = Nhận trợ giúp tạo mật khẩu tốt hơn và giữ chúng an toàn.
+ba-next-step-blurb-3 =
+    Sử dụng trình quản lý mật khẩu để tạo mật khẩu mạnh, độc đáo. Quản lý mật khẩu lưu trữ an toàn
+    tất cả các đăng nhập của bạn để bạn có thể truy cập chúng trên tất cả các thiết bị của bạn.
+faq1 = Tôi không nhận ra công ty hoặc trang web này. Tại sao tôi ở trong vi phạm?
+faq2 = Tại sao phải mất quá lâu để thông báo cho tôi về vi phạm này?
+faq3 = Làm cách nào để biết đây là một email hợp pháp từ { -product-name }?
+new-breaches-found =
+    { $breachCount ->
+       *[other] ĐÃ TÌM THẤY { $breachCount } VI PHẠM MỚI
+    }
+sign-up-headline-1 = Nhận thông báo liên tục với { -brand-fxa }.
+account-not-required = Không yêu cầu trình duyệt { -brand-name } cho { -brand-fxa }. Bạn có thể nhận thông tin về các dịch vụ { -brand-Mozilla }.
+get-alerted = Nhận thông báo về các vi phạm mới.
+was-your-info-exposed = Thông tin của bạn có bị lộ trong vi phạm dữ liệu { $breachName } không?
+find-out-if = Tìm hiểu xem nếu dữ liệu của bạn đã bị lộ trong vi phạm này.
+fb-not-comp = Email này không xuất hiện trong vi phạm { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+       *[other] Tuy nhiên, nó đã xuất hiện trong { $breachCount } vi phạm khác.
+    }
+fb-comp-only = Email này đã xuất hiện trong vi phạm { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+       *[other] = Email này xuất hiện trong { $breachCount } vi phạm dữ liệu đã biết, bao gồm { $breachName }.
+    }
+no-other-breaches-found = Không có vi phạm khác được tìm thấy từ tìm kiếm cơ bản.
+no-results-blurb = Xin lỗi, vi phạm đó không có trong cơ sở dữ liệu của chúng tôi.
+all-breaches-headline = Tất cả các vi phạm trong { -product-name }
+search-breaches = Tìm kiếm vi phạm
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Hiển thị:
+all-breaches = Tất cả vi phạm
 
 ## Updated error messages
 
+error-bot-headline = Tìm kiếm đã tạm thời hoãn
+error-bot-blurb =
+    Chúng tôi lo lắng bạn có thể là một rô-bốt vì bạn đã tìm kiếm
+    một số địa chỉ email trong một khoảng thời gian ngắn. Hiện tại,
+    bạn đã bị chặn từ các tìm kiếm mới. Bạn có thể thử lại sau.
+error-csrf-headline = Phiên đã kết thúc
+error-csrf-blurb = Chọn nút quay lại trình duyệt của bạn, tải lại trang và thử lại.
+error-invalid-unsub = Cách hủy đăng ký thông báo { -product-name }
+login-link-pre = Đã có một tài khoản?
+login-link = Đăng nhập
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+       *[other] Địa chỉ email đang được giám sát
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+       *[other] Vi phạm dữ liệu đã tiết lộ thông tin của bạn
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+       *[other] Mật khẩu được phơi bày trên tất cả các vi phạm
+    }
+# Button
+see-additional-breaches = Xem các vi phạm bổ sung
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Xem tất cả vi phạm
+scan-results-known-breaches =
+    { $breachCount ->
+       *[other] Email này xuất hiện trong { $breachCount } vi phạm dữ liệu đã biết.
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Kết quả cho: { $userEmail }
+other-monitored-emails = Email được giám sát khác
+email-verification-required = Yêu cầu xác minh email
+fxa-primary-email = { -brand-fxa } Email - Chính
+what-is-a-website-breach = Trang web vi phạm là gì?
+website-breach-blurb = Vi phạm dữ liệu trang web xảy ra khi tội phạm mạng ăn cắp, sao chép hoặc tiết lộ thông tin cá nhân từ tài khoản trực tuyến. Nó thường là kết quả của tin tặc tìm thấy một điểm yếu trong bảo mật của trang web. Vi phạm cũng có thể xảy ra khi thông tin tài khoản bị rò rỉ do lỗi kỹ thuật.
+security-tips-headline = Mẹo về bảo mật để bảo vệ bạn khỏi tin tặc
+steps-to-protect = Các bước cần thực hiện để bảo vệ danh tính trực tuyến của bạn
+take-further-steps = Thực hiện các bước tiếp theo để bảo vệ danh tính của bạn
+alert-about-new-breaches = Thông báo cho tôi về những vi phạm mới
