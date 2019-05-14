@@ -327,12 +327,19 @@ home = Startseite
 # Link title
 breaches = Datenlecks
 # Link title
-security-tips = Tipps für mehr Sicherheit
+security-tips = Sicherheitstipps
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = { -brand-fxa } Navigation öffnen
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = Zuletzt hinzugefügtes Datenleck
+breach-added = Gemeldetes Datenleck
+breach-discovered = Entdecktes Datenleck
+# Link title
+more-about-this-breach = Mehr zu diesem Datenleck
+take-control = Hol dir die Kontrolle über deine persönlichen Daten zurück.
+cant-stop-hackers = Du kannst Hacker nicht davon abhalten zu hacken. Aber du kannst einiges tun, um ihnen die Arbeit zu erschweren.
+read-more-tips = Erhalte mehr Sicherheitstipps
 
 ## What to do after data breach tips
 
