@@ -341,9 +341,13 @@ take-control = Hol dir die Kontrolle über deine persönlichen Daten zurück.
 cant-stop-hackers = Du kannst Hacker nicht davon abhalten zu hacken. Aber du kannst einiges tun, um ihnen die Arbeit zu erschweren.
 read-more-tips = Mehr Sicherheitstipps lesen
 how-hackers-work = Verstehe, wie Hacker vorgehen
+monitor-your-online-accounts = Melde dich mit einem { -brand-fxa } an, um Datenschutzverletzungen überprüfen zu lassen
 
 ## What to do after data breach tips
 
 
 ## Updated error messages
 
+steps-to-protect = Das kannst du tun, um deine Online-Identität zu schützen
+take-further-steps = Weitere Schritte, um deine Identität zu schützen
+alert-about-new-breaches = Ich möchte bei neuen Datenlecks gewarnt werden
