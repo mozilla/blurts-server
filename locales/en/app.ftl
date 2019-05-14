@@ -270,7 +270,7 @@ og-site-description = Find out if you’ve been part of a data breach with {-pro
 mozilla-security-blog = {-brand-Mozilla} Security Blog
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Social
-show-all = Show all
+show-all = Show All
 
 fxa-landing-blurb = 
   Find out what hackers already know about you,
@@ -394,7 +394,7 @@ user-generic-found-breaches-blurb =
        *[other] These breaches exposed the following personal info.
   }
 
-have-an-account = Already have an account?
+have-an-account = Have an account?
 
 signup-banner-sensitive-blurb = 
   Find out what hackers already know about you, and learn how to 
@@ -498,7 +498,7 @@ read-more-tips = Read More Security Tips
 
 how-hackers-work = Understand how hackers work
 
-monitor-your-online-accounts = Sign up for breach monitoring with a {-brand-fxa}
+monitor-your-online-accounts = Sign up for breach monitoring with a {-brand-fxa}.
 stay-alert = Stay alert to new breaches
 if-your-info = If your information surfaces in a new data breach, we’ll send you an alert.
 search-all-emails = Search all your email addresses for breaches and get alerts about new threats.
@@ -525,7 +525,7 @@ sensitive-sites = How does {-product-name} treat sensitive sites?
 sensitive-sites-copy = {-product-name} only reveals accounts associated with these 
   types of breaches after an email address has been verified. This means you’re the 
   only person who can see if your information was in this breach (unless someone 
-  else has access to your email account.)
+  else has access to your email account).
 
 delayed-reporting-headline = Why did it take so long to report this breach?
 delayed-reporting-copy = It can sometimes take months or years for credentials exposed 
@@ -555,13 +555,13 @@ how-fxm-1-blurb = Search for your email address in public data breaches going
 
 how-fxm-2-headline = Sign up for breach monitoring
 how-fxm-2-blurb = Create a {-brand-fxa} to monitor your email for ongoing breaches. 
-  Once you’ve verified your email, you’ll also receive a full report of past breaches 
+  Once you’ve verified your email, you’ll also receive a full report of past breaches, 
   including sensitive breaches. 
 
 how-fxm-3-headline = Get notifications in your browser
 how-fxm-3-blurb = If you use {-brand-name}, you’ll receive a notification if you visit a 
-  site that’s been breached. Find out right away if you’ve been in the breach and 
-  what you can do about it.
+  site that’s been breached. Find out right away if you were part of that breach 
+  and what you can do about it.
 
 
 wtd-after-website = What to do after a website breach
@@ -577,7 +577,7 @@ protect-your-privacy = Protect your online privacy
 no-pw-to-change = Unlike a website breach, there’s no password to change.
 
 avoid-personal-info = Avoid using personal info in passwords
-avoid-personal-info-blurb = It’s easy to find birthdays, addresses, and family member names online. Keep it out of your passwords.
+avoid-personal-info-blurb = It’s easy to find birthdays, addresses, and family member names online. Keep these words out of your passwords. .
 
 ## What to do after data breach tips
 
@@ -610,9 +610,9 @@ appears-in-x-breaches =
 
 
 see-if-breached = See if you’ve been in an online data breach.
-check-for-breaches = Check for breaches
+check-for-breaches = Check for Breaches
 find-out-what-hackers-know = Find out what hackers already know about you. Learn how to stay a step ahead of them.
-search-for-your-email = Search for your email address in public data breaches back to 2007.
+search-for-your-email = Search for your email address in public data breaches going back to 2007.
 
 back-to-top = Back to Top
 
@@ -635,7 +635,7 @@ breach-summary = Breach Summary
 
 show-breaches-for-this-email = Show all breaches for this email.
 
-link-change-primary = Change primary email address
+link-change-primary = Change Primary Email Address
 
 remove-fxm = Remove {-product-name}
 remove-fxm-blurb = Turn off {-product-name} alerts. Your {-brand-fxa} will remain active, and you may receive 
@@ -801,3 +801,18 @@ steps-to-protect = Steps to take to protect your online identity
 take-further-steps = Take further steps to protect your identity
 
 alert-about-new-breaches = Alert me about new breaches
+see-if-youve-been-part = See if you’ve been part of an online data breach.
+
+
+get-ongoing-breach-monitoring = Get ongoing breach monitoring for multiple email addresses.
+
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Find Out 
+
+new-unsub-error = You’ll need to unsubscribe from one of the emails {-product-name} sent.
+
+other-known-breaches-found =
+  { $breachCount ->
+    [one] However, it did appear in { $breachCount } other known breach.
+   *[other] However, it did appear in { $breachCount } other known breaches. 
+  }
