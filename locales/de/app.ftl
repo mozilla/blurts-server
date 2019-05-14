@@ -19,20 +19,20 @@ about-firefox-alerts = Über Firefox-Warnmeldungen
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Feedback geben
 terms-and-privacy = Nutzungsbedingungen und Datenschutzerklärung
-error-scan-page-token = Sie haben versucht, zu viele E-Mail-Adressen in kurzer Zeit zu überprüfen. Aus Sicherheitsgründen haben wir Sie vorübergehend für neue Suchanfragen gesperrt. Sie können es später erneut versuchen.
+error-scan-page-token = Du hast versucht, zu viele E-Mail-Adressen in kurzer Zeit zu überprüfen. Aus Sicherheitsgründen haben wir dich vorübergehend für neue Suchanfragen gesperrt. Du kannst es später erneut versuchen.
 error-could-not-add-email = E-Mail-Adresse konnte nicht zur Datenbank hinzugefügt werden.
 error-not-subscribed = Diese E-Mail-Adresse hat { -product-name } nicht abonniert.
 error-hibp-throttled = Zu viele Verbindungen mit { -brand-HIBP }.
 error-hibp-connect = Fehler beim Verbinden mit { -brand-HIBP }.
 error-hibp-load-breaches = Sicherheitslecks konnten nicht geladen werden.
-hibp-notify-email-subject = { -product-name }: Warnung: Ihr Konto war von einem Sicherheitsleck betroffen.
+hibp-notify-email-subject = { -product-name }: Warnung: Dein Konto war von einem Datenleck betroffen.
 home-title = { -product-name }
 home-not-found = Seite nicht gefunden.
 oauth-invalid-session = Ungültige Sitzung
 oauth-confirmed-title = { -product-name }: Abonniert
 scan-title = { -product-name }: Scan-Ergebnisse
 user-add-invalid-email = Ungültige E-Mail-Adresse
-user-add-email-verify-subject = Bestätige dein Abonnement für { -product-name }.
+user-add-email-verify-subject = Bestätige deine Anmeldung für { -product-name }.
 user-add-title = { -product-name }: E-Mail-Adresse bestätigen
 error-headline = Fehler
 user-verify-token-error = Verifikations-Token wird benötigt.
@@ -319,3 +319,23 @@ create-free-account =
 get-your-report-and-sign-up = Hol dir deinen Bericht und melde dich für Warnmeldungen an.
 # Link title
 frequently-asked-questions = Häufig gestellte Fragen
+about-firefox-monitor = Über { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Einstellungen
+# Link title.
+home = Startseite
+# Link title
+breaches = Datenlecks
+# Link title
+security-tips = Tipps für mehr Sicherheit
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = { -brand-fxa } Navigation öffnen
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = Zuletzt hinzugefügtes Datenleck
+
+## What to do after data breach tips
+
+
+## Updated error messages
+
