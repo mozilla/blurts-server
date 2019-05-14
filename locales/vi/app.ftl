@@ -365,9 +365,85 @@ breach-discovered = Vi phạm đã phát hiện:
 more-about-this-breach = Thông tin thêm về vi phạm này
 take-control = Lấy lại quyền kiểm soát dữ liệu cá nhân của bạn.
 read-more-tips = Đọc thêm về mẹo bảo mật
+how-hackers-work = Hiểu cách thức hoạt động của tin tặc
+monitor-your-online-accounts = Đăng ký để theo dõi vi phạm với { -brand-fxa }
+stay-alert = Cảnh giác với những vi phạm mới
+if-your-info = Nếu thông tin của bạn xuất hiện trong một vi phạm dữ liệu mới, chúng tôi sẽ gửi cho bạn một thông báo.
+search-all-emails = Tìm kiếm tất cả các địa chỉ email của bạn có trong vi phạm và nhận thông báo về các mối đe dọa mới.
+monitor-several-emails = Giám sát một số email
+take-action = Hãy hành động để bảo vệ tài khoản của bạn
+keep-your-data-safe = Tìm hiểu những gì bạn cần làm để giữ an toàn cho dữ liệu của bạn khỏi tội phạm mạng.
+website-breach = Trang web vi phạm
+sensitive-breach = Trang web vi phạm nhạy cảm
+data-aggregator-breach = Tập hợp dữ liệu vi phạm
+unverified-breach = Vi phạm chưa được xác minh
+what-data = Dữ liệu nào đã bị xâm phạm:
+sensitive-sites = Làm thế nào để { -product-name } xử lý các trang web nhạy cảm?
+sensitive-sites-copy =
+    { -product-name } chỉ tiết lộ các tài khoản được liên kết với những
+    các loại vi phạm sau khi một địa chỉ email đã được xác minh. Điều này có nghĩa là
+    chỉ bạn có thể xem thông tin của bạn có vi phạm hay không (trừ khi có ai đó
+    có quyền truy cập vào tài khoản email của bạn.)
+delayed-reporting-headline = Tại sao phải mất quá lâu để báo cáo vi phạm này?
+delayed-reporting-copy =
+    Đôi khi có thể mất vài tháng hoặc nhiều năm để thông tin đăng nhập trong một
+    vi phạm dữ liệu để xuất hiện trên web tối. Vi phạm sẽ được thêm vào cơ sở
+    dữ liệu của chúng tôi ngay khi chúng được phát hiện và xác minh.
+about-fxm-headline = Giới thiệu về { -product-name }
+# How Firefox Monitor works
+how-fxm-works = Cách { -product-name } hoạt động
+how-fxm-1-headline = Tiến hành tìm kiếm cơ bản
+how-fxm-2-headline = Đăng ký giám sát vi phạm
+how-fxm-3-headline = Nhận thông báo trong trình duyệt của bạn
+what-is-data-agg = Tập hợp dữ liệu là gì?
+protect-your-privacy = Bảo vệ quyền riêng tư trực tuyến của bạn
+no-pw-to-change = Không giống như vi phạm trang web, không có mật khẩu để thay đổi.
+avoid-personal-info = Tránh sử dụng thông tin cá nhân trong mật khẩu
+avoid-personal-info-blurb = Nó dễ dàng tìm thấy ngày sinh nhật, địa chỉ và tên thành viên gia đình trực tuyến. Giữ nó ra khỏi mật khẩu của bạn.
 
 ## What to do after data breach tips
 
+change-pw = Thay đổi mật khẩu của bạn
+even-for-old = Ngay cả đối với các tài khoản cũ, điều quan trọng là cập nhật mật khẩu của bạn.
+make-new-pw-unique = Làm cho mật khẩu mới khác biệt
+strength-of-your-pw = Độ mạnh của mật khẩu của bạn ảnh hưởng trực tiếp đến bảo mật trực tuyến của bạn.
+create-strong-passwords = Cách tạo mật khẩu mạnh
+stop-reusing-pw = Ngừng sử dụng lại mật khẩu cũ
+create-unique-pw = Tạo mật khẩu độc đáo và lưu chúng ở nơi an toàn, như trình quản lý mật khẩu.
+create-a-fxa = Tạo { -brand-fxa } để được báo cáo đầy đủ về các vi phạm của bạn và để nhận thông báo.
+feat-security-tips = Mẹo về bảo mật để bảo vệ tài khoản của bạn
+feat-sensitive = Tìm kiếm nâng cao trong các vi phạm nhạy cảm
+feat-enroll-multiple = Đăng ký nhiều email theo dõi vi phạm
+sign-up-for-fxa = Đăng ký { -brand-fxa }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+       *[other] Xuất hiện trong { $breachCount } vi phạm đã biết.
+    }
+see-if-breached = Hãy xem nếu bạn đã bị vi phạm dữ liệu trực tuyến.
+check-for-breaches = Kiểm tra vi phạm
+find-out-what-hackers-know = Tìm hiểu những gì tin tặc đã biết về bạn. Tìm hiểu làm thế nào để đi trước họ một bước.
+search-for-your-email = Tìm kiếm địa chỉ email của bạn trong các vi phạm dữ liệu công khai từ năm 2007.
+back-to-top = Về đầu trang
+comm-opt-0 = Gửi email cho tôi nếu một trong những địa chỉ email của tôi dưới đây xuất hiện vi phạm dữ liệu.
+comm-opt-1 = Gửi tất cả các thông báo vi phạm đến { $primaryEmail }.
+stop-monitoring-this = Dừng theo dõi email này.
+resend-verification = Gửi lại email xác minh
+add-new-email = Thêm một địa chỉ email mới
+send-verification = Gửi liên kết xác minh
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Truyền thông toàn cầu
+breach-summary = Tóm tắt vi phạm
+show-breaches-for-this-email = Hiển thị tất cả các vi phạm cho email này.
+link-change-primary = Thay đổi địa chỉ email chính
+remove-fxm = Xóa { -product-name }
+manage-email-addresses = Quản lý địa chỉ email
+latest-breach-link = Hãy xem nếu bạn đã bị vi phạm
 
 ## Updated error messages
 
