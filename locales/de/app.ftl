@@ -339,7 +339,8 @@ breach-discovered = Entdecktes Datenleck
 more-about-this-breach = Mehr zu diesem Datenleck
 take-control = Hol dir die Kontrolle über deine persönlichen Daten zurück.
 cant-stop-hackers = Du kannst Hacker nicht davon abhalten zu hacken. Aber du kannst einiges tun, um ihnen die Arbeit zu erschweren.
-read-more-tips = Erhalte mehr Sicherheitstipps
+read-more-tips = Mehr Sicherheitstipps lesen
+how-hackers-work = Verstehe, wie Hacker vorgehen
 
 ## What to do after data breach tips
 
