@@ -353,15 +353,45 @@ breaches = Intrång
 # Link title
 security-tips = Säkerhetstips
 fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = { -brand-fxa } öppna navigering
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = Senaste tillagda intrång
+breach-added = Intrång rapporterad:
+breach-discovered = Intrång upptäckt:
+# Link title
+more-about-this-breach = Mer om detta intrång
+take-control = Ta tillbaka kontrollen över dina personuppgifter.
+cant-stop-hackers = Du kan inte stoppa hackare från att hacka. Men du kan undvika dåliga vanor som gör deras jobb enkelt.
+read-more-tips = Läs fler säkerhetstips
+how-hackers-work = Förstå hur hackare arbetar
+stay-alert = Var uppmärksam på nya intrång
+if-your-info = Om din information kommer upp i ett nytt dataintrång, skickar vi dig en varning.
+search-all-emails = Sök igenom alla dina e-postadresser för intrång och få varningar om nya hot.
+monitor-several-emails = Övervaka flera e-postadresser
+take-action = Vidta åtgärder för att skydda dina konton
+keep-your-data-safe = Ta reda på vad du behöver göra för att hålla din data säker från cyberkriminella.
+website-breach = Webbplatsintrång
+sensitive-breach = Känsligt webbplatsintrång
 about-fxm-headline = Om { -product-name }
 
 ## What to do after data breach tips
 
+breach-summary = Intrångssammanfattning
+show-breaches-for-this-email = Visa alla intrång för denna e-post.
 manage-email-addresses = Hantera e-postadresser
 welcome-back = Välkommen tillbaka, { $userName }!
 welcome-user = Välkommen, { $userName }!
+get-alerted = Bli varnad om nya intrång.
+all-breaches-headline = Alla intrång  i { -product-name }
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Visar:
+all-breaches = Alla intrång
 
 ## Updated error messages
 
 login-link-pre = Har du ett konto?
 login-link = Logga in
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Se alla intrång
