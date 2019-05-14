@@ -321,7 +321,19 @@ preferences = 偏好设置
 # Link title.
 home = 主页
 # Link title
+breaches = 外泄事件
+# Link title
 security-tips = 安全提示
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = 打开 { -brand-fxa } 导航栏
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = 最新公开的外泄事件
+breach-added = 事件报告日期：
+breach-discovered = 事件发现日期：
+# Link title
+more-about-this-breach = 关于此数据外泄事件的更多信息
+take-control = 收回个人数据的控制权。
 about-fxm-headline = 关于 { -product-name }
 # How Firefox Monitor works
 how-fxm-works = { -product-name } 工作原理
