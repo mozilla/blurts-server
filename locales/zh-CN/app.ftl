@@ -336,7 +336,7 @@ more-about-this-breach = 关于此数据外泄事件的更多信息
 take-control = 收回个人数据的控制权。
 read-more-tips = 阅读更多安全提示
 how-hackers-work = 了解黑客的手段
-monitor-your-online-accounts = 使用 { -brand-fxa } 账号订阅数据外泄警报
+monitor-your-online-accounts = 使用 { -brand-fxa } 订阅数据外泄警报
 monitor-several-emails = 监控多个电子邮件地址
 website-breach = 网站信息外泄
 sensitive-breach = 网站敏感信息外泄
@@ -359,13 +359,18 @@ how-fxm-2-headline = 订阅数据外泄事件警报
 how-fxm-3-headline = 在浏览器中收到通知
 wtd-after-data-agg = 数据聚合商发生信息泄露后，该做哪些事？
 what-is-data-agg = “数据聚合商”是什么？
+what-is-data-agg-blurb = 数据聚合商或数据代理商从公众记录收集信息并从其他公司购买，然后把这些数据汇总起来卖给许多公司用于市场营销。这些外泄事件的受害者不太可能遇到金融欺诈，但黑客可以用这些数据来冒充或分析他们。
 protect-your-privacy = 保护您的在线隐私
+avoid-personal-info = 避免在密码中使用个人信息
 
 ## What to do after data breach tips
 
 change-pw = 更改您的密码
 create-strong-passwords = 如何创建高强度密码
 stop-reusing-pw = 停止重复使用相同密码
+five-myths = 关于密码管理器的 5 个误解
+sign-up-for-fxa = 注册 { -brand-fxa }
+check-for-breaches = 检查是否有外泄事件
 back-to-top = 回到顶端
 stop-monitoring-this = 停止监控此电子邮件地址。
 resend-verification = 重发验证邮件
