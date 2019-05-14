@@ -334,11 +334,31 @@ breach-discovered = 事件发现日期：
 # Link title
 more-about-this-breach = 关于此数据外泄事件的更多信息
 take-control = 收回个人数据的控制权。
+read-more-tips = 阅读更多安全提示
+how-hackers-work = 了解黑客的手段
+monitor-your-online-accounts = 使用 { -brand-fxa } 账号订阅数据外泄警报
+monitor-several-emails = 监控多个电子邮件地址
+website-breach = 网站信息外泄
+sensitive-breach = 网站敏感信息外泄
+data-aggregator-breach = 数据聚合商信息外泄
+unverified-breach = 未经证实的信息外泄
+spam-list-breach = 垃圾邮件列表信息外泄
+website-breach-plural = 网站信息外泄
+sensitive-breach-plural = 敏感信息外泄
+data-aggregator-breach-plural = 数据聚合商信息外泄
+unverified-breach-plural = 未经证实的信息外泄
+spam-list-breach-plural = 垃圾邮件列表信息外泄
+what-data = 泄露了哪些数据：
+sensitive-sites = { -product-name } 如何处理这些敏感网站？
+delayed-reporting-headline = 为什么要这么久才公开这些事件？
 about-fxm-headline = 关于 { -product-name }
 # How Firefox Monitor works
 how-fxm-works = { -product-name } 工作原理
 how-fxm-1-headline = 进行基本搜索
+how-fxm-2-headline = 订阅数据外泄事件警报
 how-fxm-3-headline = 在浏览器中收到通知
+wtd-after-data-agg = 数据聚合商发生信息泄露后，该做哪些事？
+what-is-data-agg = “数据聚合商”是什么？
 protect-your-privacy = 保护您的在线隐私
 
 ## What to do after data breach tips
