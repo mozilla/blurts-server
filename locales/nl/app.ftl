@@ -399,9 +399,24 @@ how-fxm-2-blurb =
     Na verificatie van uw e-mailadres, ontvangt u ook een volledig rapport over eerdere datalekken,
     inclusief gevoelige datalekken.
 how-fxm-3-headline = Ontvang meldingen in uw browser
+how-fxm-3-blurb =
+    Als u { -brand-name } gebruikt, ontvangt u een melding als u een bezoek brengt aan een
+    site die is geschonden. Ontdek het meteen als u in het datalek voor komt en
+    wat u er aan kunt doen.
+wtd-after-website = Wat te doen na een datalek van de website
+wtd-after-data-agg = Wat te doen na een datalek van een gegevensverzamelaar
+what-is-data-agg = Wat is een gegevensverzamelaar?
+protect-your-privacy = Uw online privacy beschermen
 
 ## What to do after data breach tips
 
+change-pw = Wijzig uw wachtwoord
+even-for-old = Zelfs voor oude accounts is het belangrijk om uw wachtwoord bij te werken.
+make-new-pw-unique = Maak het nieuwe wachtwoord anders en uniek
+strength-of-your-pw = De kracht van uw wachtwoorden heeft direct invloed op uw online veiligheid.
+create-strong-passwords = Hoe maakt u sterke wachtwoorden
+stop-reusing-pw = Stop met het opnieuw gebruiken van dezelfde wachtwoorden
+create-unique-pw = Maak unieke wachtwoorden en bewaar ze op een veilige plek, zoals een wachtwoordbeheerder.
 five-myths = 5 mythes over wachtwoordbeheerders
 create-a-fxa = Maak een { -brand-fxa } voor uw volledige rapport van datalekken en om meldingen te ontvangen.
 feat-security-tips = Beveiligingstips om uw accounts te beschermen
@@ -433,6 +448,11 @@ send-verification = Verificatiekoppeling versturen
 # email address.
 global-communication = Algemene communicatie
 breach-summary = Samenvatting datalek
+show-breaches-for-this-email = Toon alle datalekken voor dit e-mailadres.
+link-change-primary = Primaire e-mailadres wijzigen
+remove-fxm = { -product-name } verwijderen
+manage-email-addresses = E-mailadressen beheren
+latest-breach-link = Kijk of u in dit datalek voor komt
 welcome-back = Welkom terug, { $userName }!
 welcome-user = Welkom, { $userName }!
 breach-alert-subject = { -product-name } heeft uw e-mailadres gevonden in een nieuw datalek.
