@@ -296,3 +296,10 @@ create-free-account = Créez un { -brand-fxa } gratuit pour recevoir un rapport 
 get-your-report-and-sign-up = Recevez votre rapport et inscrivez-vous aux alertes.
 # Link title
 frequently-asked-questions = Foire aux questions
+fxa-account = { -brand-fxa(case: "uppercase") }
+
+## What to do after data breach tips
+
+
+## Updated error messages
+
