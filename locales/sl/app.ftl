@@ -332,8 +332,11 @@ mozilla-dot-org = Mozilla.org
 preferences = Nastavitve
 # Link title.
 home = Domov
+# Link title
+security-tips = Varnostni nasveti
 fxa-account = { -brand-fxa }
 take-control = Prevzemite nadzor nad svojimi osebnimi podatki.
+about-fxm-headline = O { -product-name }ju
 # How Firefox Monitor works
 how-fxm-works = Kako deluje { -product-name }
 how-fxm-3-headline = Prejemajte obvestila v brskalniku
@@ -344,8 +347,10 @@ protect-your-privacy = Zaščitite svojo spletno zasebnost
 change-pw = Spremenite svoje geslo
 create-strong-passwords = Kako ustvariti zapletena gesla
 five-myths = 5 zmot o upraviteljih gesel
+sign-up-for-fxa = Ustvarite si { -brand-fxa }
 see-if-breached = Preverite, ali ste bili vpleteni v spletno krajo podatkov.
 back-to-top = Nazaj na vrh
+remove-fxm = Odstrani { -product-name }
 
 ## Updated error messages
 
