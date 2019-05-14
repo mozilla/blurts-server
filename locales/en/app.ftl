@@ -577,7 +577,7 @@ protect-your-privacy = Protect your online privacy
 no-pw-to-change = Unlike a website breach, there’s no password to change.
 
 avoid-personal-info = Avoid using personal info in passwords
-avoid-personal-info-blurb = It’s easy to find birthdays, addresses, and family member names online. Keep these words out of your passwords. .
+avoid-personal-info-blurb = It’s easy to find birthdays, addresses, and family member names online. Keep these words out of your passwords.
 
 ## What to do after data breach tips
 
