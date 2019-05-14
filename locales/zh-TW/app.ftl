@@ -331,7 +331,9 @@ avoid-personal-info = 不要在密碼中使用個人資訊
 
 change-pw = 更改密碼
 make-new-pw-unique = 使用不同且獨特的新密碼
-stop-reusing-pw = 停止重複使用同樣的密碼
+create-strong-passwords = 如何建立高強度的密碼
+stop-reusing-pw = 停止重複使用密碼
+create-unique-pw = 在每個網站使用不同密碼，並將其儲存於安全的地方（例如密碼管理員）。
 five-myths = 關於密碼管理員的 5 個迷思
 sign-up-for-fxa = 註冊 { -brand-fxa }
 check-for-breaches = 檢查是否有外洩事件
