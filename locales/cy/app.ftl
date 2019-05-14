@@ -383,3 +383,36 @@ create-free-account =
 get-your-report-and-sign-up = Estynnwch eich adroddiad a chofrestru am rybuddion.
 # Link title
 frequently-asked-questions = Cwestiynau Cyffredin
+about-firefox-monitor = Ynghylch { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Dewisiadau
+# Link title.
+home = Cartref
+# Link title
+breaches = Tor-data
+# Link title
+security-tips = Cynghorion Diogelwch
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Agor llywio { -brand-fxa }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = YCHWANEGWYD Y TOR-DATA DIWEDDARAF
+breach-added = Adroddwyd ar dor-data:
+breach-discovered = Darganfwyd tor-data:
+# Link title
+more-about-this-breach = Rhagor am y tor-data hwn
+take-control = Rheolwch eich data personol eich hun.
+cant-stop-hackers = Does dim modd rhwystro hacwyr rhag hacio. Ond gallwch osgoi arferion drwg sy'n gwneud eu gwaith yn haws.
+read-more-tips = Darllen Rhagor o Awgrymiadau Diogelwch
+how-hackers-work = Deall sut mae hacwyr yn gweithio
+monitor-your-online-accounts = Cofrestrwch ar gyfer monitro tor-data gyda { -brand-fxa }
+stay-alert = Aros yn effro i dor-data newydd
+if-your-info = Os bydd eich manylion yn ymddangos mewn tor-data newydd, byddwn yn anfon rhybudd atoch.
+search-all-emails = Chwiliwch am eich holl gyfeiriadau e-bost am dor-data a chael rhybudd am fygythiadau newydd.
+monitor-several-emails = Monitro sawl cyfrif e-bost
+
+## What to do after data breach tips
+
+
+## Updated error messages
+
