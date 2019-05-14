@@ -301,7 +301,9 @@ read-more-tips = 閱讀更多安全性小秘訣
 how-hackers-work = 了解駭客都怎麼作
 monitor-your-online-accounts = 使用 { -brand-fxa } 帳號訂閱帳號外洩資訊
 stay-alert = 隨時注意最新的資料外洩事件
+search-all-emails = 搜尋您所有使用的信箱，檢查是否有資料外洩事件，也在有新威脅時收到通知。
 monitor-several-emails = 監控多個電子郵件信箱
+take-action = 採取行動，保護帳號
 website-breach = 網站資訊外洩
 sensitive-breach = 網站敏感性資訊外洩
 data-aggregator-breach = 資料收集器資訊外洩
@@ -318,6 +320,7 @@ delayed-reporting-headline = 為什麼要這麼久才公開這些事件？
 about-fxm-headline = 關於 { -product-name }
 # How Firefox Monitor works
 how-fxm-works = { -product-name } 的運作原理
+how-fxm-1-headline = 進行基礎搜尋
 how-fxm-2-headline = 訂閱資料外洩事件警報
 wtd-after-data-agg = 資料收集器發生資訊外洩後，要作什麼事？
 what-is-data-agg = 「資料收集器」是什麼？
@@ -328,6 +331,7 @@ avoid-personal-info = 不要在密碼中使用個人資訊
 
 change-pw = 更改密碼
 make-new-pw-unique = 使用不同且獨特的新密碼
+stop-reusing-pw = 停止重複使用同樣的密碼
 five-myths = 關於密碼管理員的 5 個迷思
 sign-up-for-fxa = 註冊 { -brand-fxa }
 check-for-breaches = 檢查是否有外洩事件
