@@ -350,6 +350,16 @@ take-action = Schütze aktiv deine Accounts
 keep-your-data-safe = Finde heraus, was du tun solltest, um deine Daten vor Cyber-Kriminellen zu sichern.
 website-breach = Datenleck einer Website
 sensitive-breach = Heikles Datenleck einer Website
+data-aggregator-breach = Leck eines Daten-Aggregators
+unverified-breach = Unbestätigtes Datenleck
+spam-list-breach = Datenleck einer Spam-Liste
+website-breach-plural = Datenlecks von Websites
+sensitive-breach-plural = Heikle Datenlecks
+data-aggregator-breach-plural = Lecks von Daten-Aggregatoren
+unverified-breach-plural = Unbestätigte Datenlecks
+spam-list-breach-plural = Datenlecks von Spam-Listen
+what-data = Welche Daten wurden kompromittiert:
+sensitive-sites = Wie geht { -product-name } mit sensiblen Websites um?
 
 ## What to do after data breach tips
 
