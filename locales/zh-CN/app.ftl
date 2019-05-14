@@ -371,6 +371,7 @@ stop-reusing-pw = 停止重复使用相同密码
 five-myths = 关于密码管理器的 5 个误解
 sign-up-for-fxa = 注册 { -brand-fxa }
 check-for-breaches = 检查是否有外泄事件
+find-out-what-hackers-know = 看看黑客已经掌握了您哪些资料，并了解如何先发制人。
 back-to-top = 回到顶端
 stop-monitoring-this = 停止监控此电子邮件地址。
 resend-verification = 重发验证邮件
