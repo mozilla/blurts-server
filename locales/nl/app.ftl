@@ -346,11 +346,11 @@ take-control = Neem uw persoonlijke gegevens weer onder controle.
 cant-stop-hackers = U kunt hackers niet stoppen om te hacken. Maar u kunt slechte gewoonten die hun werk gemakkelijk maken vermijden.
 read-more-tips = Meer beveiligingstips
 how-hackers-work = Begrijp hoe hackers te werk gaan
-monitor-your-online-accounts = Meld u aan voor datalekken met een { -brand-fxa }
+monitor-your-online-accounts = Meld u aan voor bewaken van datalekken met een { -brand-fxa }
 stay-alert = Blijf alert op nieuwe datalekken
 if-your-info = Als uw gegevens voorkomen in een nieuw datalek, sturen we u een melding.
 search-all-emails = Controleer al uw e-mailadressen op datalekken en ontvang meldingen over nieuwe bedreigingen.
-monitor-several-emails = Houd verschillende e-mailadressen in de gaten
+monitor-several-emails = Bewaak verschillende e-mailadressen
 take-action = Onderneem actie om uw accounts te beschermen
 keep-your-data-safe = Ontdek wat u moet doen om uw gegevens te beschermen tegen cybercriminelen.
 website-breach = Websitedatalek
@@ -365,9 +365,40 @@ unverified-breach-plural = Niet-geverifieerde datalekken
 spam-list-breach-plural = Spamlijstdatalekken
 what-data = Welke gegevens zijn gecompromitteerd:
 sensitive-sites = Hoe behandelt { -product-name } gevoelige websites?
+sensitive-sites-copy =
+    { -product-name } onthult alleen accounts die zijn getroffen door dit
+    soort lekken na verificatie van een e-mailadres. Dit betekent dat u de
+    enige persoon bent die kan zien of uw informatie in dit lek voor komt
+    (tenzij iemand anders toegang tot uw e-mailaccount heeft).
+delayed-reporting-headline = Waarom duurde het zo lang voordat dit datalek werd gemeld?
+delayed-reporting-copy =
+    Het kan soms maanden of jaren duren voordat de aanmeldgegevens die in een datalek
+    voor komen op het dark web verschijnen. Datalekken worden, zodra ze zijn ontdekt en
+    geverifieerd, aan onze database toegevoegd.
 about-fxm-headline = Over { -product-name }
+about-fxm-blurb =
+    { -product-name } waarschuwt als uw online accounts betrokken zijn bij een
+    datalek. Ontdek of u getroffen bent door een datalek, ontvang meldingen over nieuwe datalekken,
+    en onderneem stappen om uw online accounts te beschermen. { -product-name } wordt aangeboden
+    door { -brand-Mozilla }.
+fxm-warns-you =
+    { -product-name } waarschuwt u als uw e-mailadres voor komt
+    in een online datalek. Kijk of uw informatie is gelekt, lees hoe
+    u uw online accounts beter kunt beschermen en ontvang een waarschuwing
+    als uw e-mailadres voor komt in een nieuw datalek.
 # How Firefox Monitor works
 how-fxm-works = Hoe { -product-name } werkt
+how-fxm-1-headline = Een eenvoudige zoekopdracht uitvoeren
+how-fxm-1-blurb =
+    Zoek naar uw e-mailadres in bekende datalekken teruggaand
+    tot 2007. Deze eenvoudige zoekopdracht zal de meeste datalekken weergeven, maar niet
+    de datalekken die gevoelige persoonlijke informatie bevatten.
+how-fxm-2-headline = Schrijf u in voor het bewaken van datalekken
+how-fxm-2-blurb =
+    Maak een { -brand-fxa } om uw e-mailadres doorlopend te controleren op datalekken.
+    Na verificatie van uw e-mailadres, ontvangt u ook een volledig rapport over eerdere datalekken,
+    inclusief gevoelige datalekken.
+how-fxm-3-headline = Ontvang meldingen in uw browser
 
 ## What to do after data breach tips
 
@@ -375,7 +406,7 @@ five-myths = 5 mythes over wachtwoordbeheerders
 create-a-fxa = Maak een { -brand-fxa } voor uw volledige rapport van datalekken en om meldingen te ontvangen.
 feat-security-tips = Beveiligingstips om uw accounts te beschermen
 feat-sensitive = Geavanceerd zoeken in gevoelige datalekken
-feat-enroll-multiple = Registreer meerdere e-mailadressen voor controle op datalekken
+feat-enroll-multiple = Registreer meerdere e-mailadressen voor bewaking van datalekken
 sign-up-for-fxa = Meld u aan voor een { -brand-fxa }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
@@ -428,6 +459,11 @@ login-link = Aanmelden
 # your localization, because it would result in the number showing twice.
 email-addresses-being-monitored =
     { $emails ->
-        [one] E-mailadres wordt gecontroleerd
-       *[other] E-mailadressen worden gecontroleerd
+        [one] E-mailadres wordt bewaakt
+       *[other] E-mailadressen worden bewaakt
     }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Resultaten voor: { $userEmail }
+other-monitored-emails = Andere bewaakte e-mailadressen
