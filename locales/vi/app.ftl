@@ -345,3 +345,29 @@ create-free-account =
 get-your-report-and-sign-up = Nhận báo cáo của bạn và đăng ký thông báo.
 # Link title
 frequently-asked-questions = Các câu hỏi thường gặp
+about-firefox-monitor = Giới thiệu về { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Tùy chỉnh
+# Link title.
+home = Trang chủ
+# Link title
+breaches = Vi phạm
+# Link title
+security-tips = Mẹo về bảo mật
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Mở điều hướng { -brand-fxa }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = VI PHẠM MỚI NHẤT ĐƯỢC THÊM
+breach-added = Vi phạm đã báo cáo:
+breach-discovered = Vi phạm đã phát hiện:
+# Link title
+more-about-this-breach = Thông tin thêm về vi phạm này
+take-control = Lấy lại quyền kiểm soát dữ liệu cá nhân của bạn.
+read-more-tips = Đọc thêm về mẹo bảo mật
+
+## What to do after data breach tips
+
+
+## Updated error messages
+
