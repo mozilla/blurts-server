@@ -343,6 +343,7 @@ read-more-tips = Mehr Sicherheitstipps lesen
 how-hackers-work = Verstehe, wie Hacker vorgehen
 monitor-your-online-accounts = Melde dich mit einem { -brand-fxa } an, um Datenschutzverletzungen überprüfen zu lassen
 stay-alert = Lass dich bei neuen Datenlecks warnen
+if-your-info = Sollten deine Daten in einem neuen Datenleck auftauchen, senden wir dir eine Warnmeldung.
 
 ## What to do after data breach tips
 
