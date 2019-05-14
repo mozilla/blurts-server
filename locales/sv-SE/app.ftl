@@ -373,17 +373,41 @@ take-action = Vidta åtgärder för att skydda dina konton
 keep-your-data-safe = Ta reda på vad du behöver göra för att hålla din data säker från cyberkriminella.
 website-breach = Webbplatsintrång
 sensitive-breach = Känsligt webbplatsintrång
+website-breach-plural = Webbplatsintrång
+sensitive-breach-plural = Känsliga intrång
+what-data = Vilka data har äventyrats:
+delayed-reporting-headline = Varför tog det så lång tid att anmäla detta intrång?
 about-fxm-headline = Om { -product-name }
+# How Firefox Monitor works
+how-fxm-works = Hur { -product-name } fungerar
+how-fxm-1-headline = Gör en grundläggande sökning
 
 ## What to do after data breach tips
 
+change-pw = Ändra ditt lösenord
+even-for-old = Även för gamla konton är det viktigt att uppdatera ditt lösenord.
+make-new-pw-unique = Gör det nya lösenordet annorlunda och unikt
+strength-of-your-pw = Styrkan på dina lösenord påverkar direkt din säkerhet online.
+create-strong-passwords = Så här skapar du starka lösenord
+stop-reusing-pw = Sluta återanvända samma lösenord
+create-unique-pw = Skapa unika lösenord och spara dem någonstans säkert, som en lösenordshanterare.
+five-myths = 5 myter om lösenordshanterare
+stop-monitoring-this = Sluta övervaka denna e-postadress.
+resend-verification = Skicka e-postbekräftelse igen
+add-new-email = Lägg till en ny e-postadress
+send-verification = Skicka verifieringslänk
 breach-summary = Intrångssammanfattning
 show-breaches-for-this-email = Visa alla intrång för denna e-post.
+link-change-primary = Ändra primär e-postadress
+remove-fxm = Ta bort { -product-name }
 manage-email-addresses = Hantera e-postadresser
 welcome-back = Välkommen tillbaka, { $userName }!
 welcome-user = Välkommen, { $userName }!
 get-alerted = Bli varnad om nya intrång.
+no-other-breaches-found = Inga andra intrång hittades från en grundläggande sökning.
+no-results-blurb = Tyvärr, intrånget finns inte i vår databas.
 all-breaches-headline = Alla intrång  i { -product-name }
+search-breaches = Sök intrång
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Visar:
 all-breaches = Alla intrång
