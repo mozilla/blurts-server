@@ -349,6 +349,7 @@ stay-alert = Lass dich bei neuen Datenlecks warnen
 
 ## Updated error messages
 
+security-tips-headline = Sicherheitstipps, die dich vor Hackern schützen
 steps-to-protect = Das kannst du tun, um deine Online-Identität zu schützen
 take-further-steps = Weitere Schritte, um deine Identität zu schützen
 alert-about-new-breaches = Ich möchte bei neuen Datenlecks gewarnt werden
