@@ -283,9 +283,22 @@ mozilla-dot-org = Mozilla.org
 preferences = 偏好設定
 # Link title.
 home = 首頁
+# Link title
+breaches = 洩漏事件
+# Link title
+security-tips = 安全小秘訣
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = 開啟 { -brand-fxa } 導航列
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = 最新公開的洩漏事件
+breach-added = 事件回報日期:
+breach-discovered = 事件發現日期:
+# Link title
+more-about-this-breach = 關於此資料洩漏事件的更多資訊
+take-control = 搶回個人資料的控制權
+read-more-tips = 閱讀更多安全性小秘訣
+how-hackers-work = 了解駭客都怎麼作
 about-fxm-headline = 關於 { -product-name }
 # How Firefox Monitor works
 how-fxm-works = { -product-name } 的運作原理
