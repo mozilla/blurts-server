@@ -410,6 +410,10 @@ stay-alert = Aros yn effro i dor-data newydd
 if-your-info = Os bydd eich manylion yn ymddangos mewn tor-data newydd, byddwn yn anfon rhybudd atoch.
 search-all-emails = Chwiliwch am eich holl gyfeiriadau e-bost am dor-data a chael rhybudd am fygythiadau newydd.
 monitor-several-emails = Monitro sawl cyfrif e-bost
+take-action = Cymerwch gamau i ddiogelu eich cyfrifon
+keep-your-data-safe = Darganfyddwch beth sydd angen i chi ei wneud i gadw'ch data yn ddiogel rhag seiber-droseddwyr.
+website-breach = Tor-data Gwefan
+sensitive-breach = Tor-data Gwefan Sensitif
 
 ## What to do after data breach tips
 
