@@ -284,29 +284,70 @@ preferences = 偏好設定
 # Link title.
 home = 首頁
 # Link title
-breaches = 洩漏事件
+breaches = 外洩事件
 # Link title
 security-tips = 安全小秘訣
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = 開啟 { -brand-fxa } 導航列
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
-latest-breach = 最新公開的洩漏事件
+latest-breach = 最新公開的外洩事件
 breach-added = 事件回報日期:
 breach-discovered = 事件發現日期:
 # Link title
-more-about-this-breach = 關於此資料洩漏事件的更多資訊
+more-about-this-breach = 關於此資料外洩事件的更多資訊
 take-control = 搶回個人資料的控制權
 read-more-tips = 閱讀更多安全性小秘訣
 how-hackers-work = 了解駭客都怎麼作
+monitor-your-online-accounts = 使用 { -brand-fxa } 帳號訂閱帳號外洩資訊
+monitor-several-emails = 監控多個電子郵件信箱
+website-breach = 網站資訊外洩
+sensitive-breach = 網站敏感性資訊外洩
+data-aggregator-breach = 資料收集器資訊外洩
+unverified-breach = 未經查證的資料外洩
+spam-list-breach = 垃圾郵件清單資料外洩
+website-breach-plural = 網站資料外洩
+sensitive-breach-plural = 敏感性資料外洩
+data-aggregator-breach-plural = 資料收集器資訊外洩
+unverified-breach-plural = 未經查證的資料外洩
+spam-list-breach-plural = 垃圾郵件清單資料外洩
+what-data = 洩漏了哪些資料:
+sensitive-sites = { -product-name } 如何對待這些敏感性網站？
+delayed-reporting-headline = 為什麼要這麼久才公開這些事件？
 about-fxm-headline = 關於 { -product-name }
 # How Firefox Monitor works
 how-fxm-works = { -product-name } 的運作原理
+how-fxm-2-headline = 訂閱資料外洩事件警報
+wtd-after-data-agg = 資料收集器發生資訊外洩後，要作什麼事？
+what-is-data-agg = 「資料收集器」是什麼？
+protect-your-privacy = 保護您的線上隱私權
+avoid-personal-info = 不要在密碼中使用個人資訊
 
 ## What to do after data breach tips
 
+change-pw = 更改密碼
+make-new-pw-unique = 使用不同且獨特的新密碼
+five-myths = 關於密碼管理員的 5 個迷思
+sign-up-for-fxa = 註冊 { -brand-fxa }
+check-for-breaches = 檢查是否有外洩事件
 back-to-top = 回到頁面頂端
+stop-monitoring-this = 停止監控此信箱。
+resend-verification = 重寄驗證信
+add-new-email = 新增電子郵件信箱
+send-verification = 寄送驗證鏈結
+remove-fxm = 移除 { -product-name }
+manage-email-addresses = 管理電子郵件地址
+welcome-back = { $userName }，歡迎回來！
+welcome-user = { $userName }，歡迎！
+search-breaches = 搜尋資料外洩事件
+all-breaches = 所有資料外洩事件
 
 ## Updated error messages
 
+error-bot-headline = 暫時無法搜尋
+login-link-pre = 已經有帳號了？
 login-link = 登入
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = { $userEmail } 的搜尋結果:
