@@ -230,8 +230,8 @@ fxa-download-firefox-bar-link = Tải xuống ngay
 fxa-download-firefox-banner-blurb = Tải trang tốt hơn, nhanh hơn, sử dụng bộ nhớ máy tính ít hơn.
 user-fb-compromised-headline = { $userEmail } đã xuất hiện trong vi phạm dữ liệu { $breachName }.
 guest-fb-compromised-headline = Email này đã xuất hiện trong vi phạm dữ liệu { $breachName }.
-user-zero-breaches-headline = { $userEmail } xuất hiện trong các vi phạm dữ liệu bằng không.
-guest-zero-breaches-headline = Email này xuất hiện trong các vi phạm dữ liệu bằng không.
+user-zero-breaches-headline = { $userEmail } không xuất hiện trong các vi phạm dữ liệu.
+guest-zero-breaches-headline = Email này không xuất hiện trong các vi phạm dữ liệu.
 user-scan-results-headline =
     { $breachCount ->
        *[other] { $userEmail } đã xuất hiện trong { $breachCount } vi phạm dữ liệu.
@@ -479,6 +479,9 @@ breach-summary = Tóm tắt vi phạm
 show-breaches-for-this-email = Hiển thị tất cả các vi phạm cho email này.
 link-change-primary = Thay đổi địa chỉ email chính
 remove-fxm = Xóa { -product-name }
+remove-fxm-blurb =
+    Tắt cảnh báo { -product-name }. { -brand-fxa } của bạn sẽ vẫn hoạt động và bạn có thể nhận được
+    thông tin liên lạc liên quan đến tài khoản khác.
 manage-email-addresses = Quản lý địa chỉ email
 latest-breach-link = Hãy xem nếu bạn đã bị vi phạm
 welcome-back = Chào mừng trở lại, { $userName }!
@@ -494,6 +497,7 @@ ba-next-step-blurb-1 =
     Mật khẩu mạnh sử dụng kết hợp chữ hoa và chữ thường,
     ký tự đặc biệt, và số. Nó không chứa thông tin cá nhân
     như địa chỉ, ngày sinh hoặc tên gia đình của bạn.
+ba-next-step-2 = Ngừng sử dụng mật khẩu đã bị lộ hoàn toàn.
 ba-next-step-blurb-2 =
     Tội phạm mạng có thể tìm thấy mật khẩu của bạn trên web tối và sử dụng
     nó để đăng nhập vào tài khoản khác của bạn. Cách tốt nhất để bảo vệ
@@ -542,6 +546,10 @@ error-bot-blurb =
 error-csrf-headline = Phiên đã kết thúc
 error-csrf-blurb = Chọn nút quay lại trình duyệt của bạn, tải lại trang và thử lại.
 error-invalid-unsub = Cách hủy đăng ký thông báo { -product-name }
+error-invalid-unsub-blurb =
+    Bạn cần hủy đăng ký từ một trong những email mà { -product-name }
+    đã gửi cho bạn. Kiểm tra hộp thư đến của bạn để tìm thư được gửi từ
+    { -brand-team-email }. Chọn liên kết hủy đăng ký ở dưới cùng của email.
 login-link-pre = Đã có một tài khoản?
 login-link = Đăng nhập
 # This string is displayed under a large numeral that indicates the total number
