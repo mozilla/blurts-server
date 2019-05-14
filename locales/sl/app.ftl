@@ -327,6 +327,7 @@ create-free-account = Ustvarite brezplačen { -brand-fxa } in prejmite popolno p
 get-your-report-and-sign-up = Prejmite poročilo in se naročite na opozorila.
 # Link title
 frequently-asked-questions = Pogosto zastavljena vprašanja
+about-firefox-monitor = O { -product-name }ju
 mozilla-dot-org = Mozilla.org
 preferences = Nastavitve
 # Link title.
@@ -341,9 +342,17 @@ protect-your-privacy = Zaščitite svojo spletno zasebnost
 ## What to do after data breach tips
 
 change-pw = Spremenite svoje geslo
+create-strong-passwords = Kako ustvariti zapletena gesla
+five-myths = 5 zmot o upraviteljih gesel
+see-if-breached = Preverite, ali ste bili vpleteni v spletno krajo podatkov.
 back-to-top = Nazaj na vrh
 
 ## Updated error messages
 
 error-csrf-headline = Seja je potekla
 login-link-pre = Imate račun?
+login-link = Prijava
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Rezultati za: { $userEmail }
