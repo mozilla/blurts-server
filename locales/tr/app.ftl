@@ -331,3 +331,31 @@ create-free-account =
 get-your-report-and-sign-up = Raporunuzu alın ve uyarılara kaydolun.
 # Link title
 frequently-asked-questions = Sıkça sorulan sorular
+about-firefox-monitor = { -product-name } hakkında
+mozilla-dot-org = Mozilla.org
+preferences = Tercihler
+# Link title.
+home = Ana sayfa
+# Link title
+breaches = İhlaller
+# Link title
+security-tips = Güvenlik ipuçları
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = { -brand-fxa } menüsünü aç
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = EKLENEN SON İHLAL
+
+## What to do after data breach tips
+
+change-pw = Parolanızı değiştirin
+new-breaches-found =
+    { $breachCount ->
+        [one] { $breachCount } YENİ İHLAL BULUNDU
+       *[other] { $breachCount } YENİ İHLAL BULUNDU
+    }
+all-breaches = Tüm ihlaller
+
+## Updated error messages
+
+login-link-pre = Hesabınız var var?
