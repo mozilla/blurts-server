@@ -300,6 +300,7 @@ take-control = 搶回個人資料的控制權
 read-more-tips = 閱讀更多安全性小秘訣
 how-hackers-work = 了解駭客都怎麼作
 monitor-your-online-accounts = 使用 { -brand-fxa } 帳號訂閱帳號外洩資訊
+stay-alert = 隨時注意最新的資料外洩事件
 monitor-several-emails = 監控多個電子郵件信箱
 website-breach = 網站資訊外洩
 sensitive-breach = 網站敏感性資訊外洩
