@@ -308,3 +308,37 @@ create-free-account = Crea gratuitamente un { -brand-fxa } per ottenere il rappo
 get-your-report-and-sign-up = Ottieni un rapporto personalizzato e iscriviti per ricevere nuovi avvisi.
 # Link title
 frequently-asked-questions = Domande più frequenti
+about-firefox-monitor = Informazioni su { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Preferenze
+# Link title.
+home = Home
+# Link title
+breaches = Violazioni
+# Link title
+security-tips = Consigli per la sicurezza
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Apri la navigazione di { -brand-fxa }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = ULTIMA VIOLAZIONE AGGIUNTA
+breach-discovered = Violazione scoperta:
+# Link title
+more-about-this-breach = Altro su questa violazione
+take-control = Riprendi il controllo dei tuoi dati personali.
+cant-stop-hackers = Non puoi fermare gli hacker, ma puoi evitare le cattive abitudini che gli semplificano il lavoro.
+how-hackers-work = Capire come gli hacker lavorano
+if-your-info = Se le tue informazioni compaiono in una nuova violazione, ti invieremo un avviso.
+search-all-emails = Cerca tutti i tuoi indirizzi email tra le violazioni e ricevi avvisi sulle nuove minacce.
+take-action = Agisci per proteggere i tuoi account
+keep-your-data-safe = Scopri cosa devi fare per proteggere i tuoi dati dai criminali informatici.
+unverified-breach = Violazione non verificata
+unverified-breach-plural = Violazioni non verificate
+what-data = Quali dati sono stati compromessi:
+about-fxm-headline = Informazioni su { -product-name }
+
+## What to do after data breach tips
+
+
+## Updated error messages
+
