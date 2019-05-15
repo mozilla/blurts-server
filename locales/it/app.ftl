@@ -347,9 +347,12 @@ data-aggregator-breach-plural = Violazioni di aggregatori dati
 unverified-breach-plural = Violazioni non verificate
 spam-list-breach-plural = Violazioni di liste di spam
 what-data = Quali dati sono stati compromessi:
+sensitive-sites-copy = { -product-name } rivela gli account associati con questo tipo di violazioni solo dopo la verifica dell’indirizzo email. Questo significa che sei l’unica persona in grado di vedere se i tuoi dati sono presenti nella violazione (a meno che qualcun altro abbia accesso alla tua email).
 delayed-reporting-headline = Perché ci è voluto così tanto tempo per segnalare questa violazione?
 delayed-reporting-copy = A volte possono volerci mesi o anni prima che le credenziali esposte in una violazione di dati compaiano nel “dark web”. Le violazioni sono aggiunte al nostro database appena vengono scoperte e verificate.
 about-fxm-headline = Informazioni su { -product-name }
+about-fxm-blurb = { -product-name } ti avvisa se i tuoi account online sono coinvolti in una violazione di dati. Scopri se sei stato coinvolto in una violazione, ricevi avvisi sulle nuove violazioni e inizia a proteggere i tuoi account online. { -product-name } è realizzato da { -brand-Mozilla }.
+fxm-warns-you = { -product-name } ti avvisa se il tuo indirizzo email è stato esposto in una violazione di dati online. Controlla se i tuoi dati sono esposti, impara come proteggere meglio i tuoi account online e ricevi un avviso se la tua email compare in una nuova violazione.
 # How Firefox Monitor works
 how-fxm-works = Come funziona { -product-name }
 
