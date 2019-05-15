@@ -326,8 +326,14 @@ how-fxm-works = Fonctionnement de { -product-name }
 
 change-pw = Changez votre mot de passe
 even-for-old = Même pour les anciens comptes, il est important de mettre à jour votre mot de passe.
+strength-of-your-pw = La force de vos mots de passe a un impact direct sur votre sécurité en ligne.
 create-strong-passwords = Comment créer des mots de passe robustes
 stop-reusing-pw = Arrêtez de réutiliser les mêmes mots de passe
+create-unique-pw = Créez des mots de passe uniques et conservez-les en lieu sûr, par exemple dans un gestionnaire de mots de passe.
+five-myths = 5 idées reçues sur les gestionnaires de mots de passe
+create-a-fxa = Créez un { -brand-fxa } pour recevoir votre rapport complet sur les fuites de données et pour recevoir des alertes.
+feat-security-tips = Conseils de sécurité pour protéger vos comptes
+feat-sensitive = Recherche avancée dans les fuites de données sensibles
 back-to-top = Haut de la page
 comm-opt-0 = M’envoyer un courriel si l’une de mes adresses électroniques ci-dessous apparaît dans une fuite de données.
 comm-opt-1 = Envoyer toutes les alertes de fuites de données à { $primaryEmail }.
