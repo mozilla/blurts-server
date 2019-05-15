@@ -526,7 +526,7 @@ other-breaches-found =
 fb-comp-only = Email này đã xuất hiện trong vi phạm { $breachName }.
 fb-comp-and-others =
     { $breachCount ->
-       *[other] = Email này xuất hiện trong { $breachCount } vi phạm dữ liệu đã biết, bao gồm { $breachName }.
+       *[other] Email này xuất hiện trong { $breachCount } vi phạm dữ liệu đã biết, bao gồm { $breachName }.
     }
 no-other-breaches-found = Không có vi phạm khác được tìm thấy từ tìm kiếm cơ bản.
 no-results-blurb = Xin lỗi, vi phạm đó không có trong cơ sở dữ liệu của chúng tôi.
