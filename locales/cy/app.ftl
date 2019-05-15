@@ -424,6 +424,13 @@ unverified-breach-plural = Tor-data heb eu Gwirio
 spam-list-breach-plural = Tor-data Rhestr Sbam
 what-data = Pa ddata a gyfaddawdwyd:
 sensitive-sites = Sut mae { -product-name } yn trin gwefannau sensitif?
+sensitive-sites-copy = Dim ond ar ôl gwirio cyfeiriad e-bost y mae { -product-name } yn datgelu cyfrifon sy'n gysylltiedig â'r mathau yma o dor-data. Mae hyn yn golygu mai chi yw'r unig berson a all weld a oedd eich manylion yn y tor-data hwn (oni bai bod gan rywun arall fynediad arall i'ch cyfrif e-bost.)
+delayed-reporting-headline = Pam y cymerodd gymaint o amser i adrodd ar y tor-data hwn?
+delayed-reporting-copy =
+    Weithiau gall gymryd rhai misoedd neu flynyddoedd i fanylion gafodd eu datgelu mewn tor-data i ymddangos ar y we dywyll. Caiff tori-data eu hychwanegu at ein cronfa ddata 
+    cyn gynted ag y byddant yn cael eu darganfod a'u dilysu.
+about-fxm-headline = Ynghylch { -product-name }
+about-fxm-blurb = Mae { -product-name } yn rhybuddio os yw eich cyfrifon ar-lein wedi eu cysylltu â thor-data. Gallwch ddarganfod os ydych wedi bod mewn tor-data, derbyn rhybuddion am dor-data newydd a chymryd camau i ddiogelu eich cyfrifon ar-lein. Mae { -product-name }yn cael ei ddarparu gan { -brand-Mozilla }
 
 ## What to do after data breach tips
 
