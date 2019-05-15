@@ -334,11 +334,13 @@ breach-discovered = 事件发现日期：
 # Link title
 more-about-this-breach = 关于此数据外泄事件的更多信息
 take-control = 收回个人数据的控制权。
+cant-stop-hackers = 您无法阻止黑客入侵，但可以通过改变习惯，让他们更难得手。
 read-more-tips = 阅读更多安全提示
 how-hackers-work = 了解黑客的手段
 monitor-your-online-accounts = 使用 { -brand-fxa }订阅数据外泄警报
 stay-alert = 警惕新的数据外泄事件
 if-your-info = 如果您的信息出现于新的数据外泄事件中，我们会向您发送警报。
+search-all-emails = 搜索您在使用的所有邮箱地址，检查是否有数据外泄事件，也在有新威胁时收到警报。
 monitor-several-emails = 监控多个电子邮件地址
 take-action = 采取措施保护您的账号
 keep-your-data-safe = 了解您需要做些什么来保护您的数据免受网络犯罪的影响。
@@ -361,28 +363,41 @@ how-fxm-works = { -product-name } 工作原理
 how-fxm-1-headline = 进行基本搜索
 how-fxm-2-headline = 订阅数据外泄事件警报
 how-fxm-3-headline = 在浏览器中收到通知
+wtd-after-website = 网站信息外泄后该怎么办
 wtd-after-data-agg = 数据聚合商发生信息泄露后，该做哪些事？
 what-is-data-agg = “数据聚合商”是什么？
 what-is-data-agg-blurb = 数据聚合商或数据代理商从公众记录收集信息并从其他公司购买，然后把这些数据汇总起来卖给许多公司用于市场营销。这些外泄事件的受害者不太可能遇到金融欺诈，但黑客可以用这些数据来冒充或分析他们。
 protect-your-privacy = 保护您的在线隐私
+no-pw-to-change = 与网站信息外泄不一样的是，没有密码可以更改。
 avoid-personal-info = 避免在密码中使用个人信息
 avoid-personal-info-blurb = 在网络上很容易查找到生日、地址、和家庭成员名称等信息。避免在密码中使用个人信息。
 
 ## What to do after data breach tips
 
 change-pw = 更改您的密码
+even-for-old = 就算是旧账号，改密码也很重要。
 create-strong-passwords = 如何创建高强度密码
 stop-reusing-pw = 停止重复使用相同密码
 five-myths = 关于密码管理器的 5 个误解
+feat-security-tips = 保护账号的安全提示
+feat-sensitive = 高级搜索敏感信息外泄事件
 sign-up-for-fxa = 注册 { -brand-fxa }
 check-for-breaches = 检查是否有外泄事件
 find-out-what-hackers-know = 看看黑客已经掌握了您哪些资料，并了解如何先发制人。
 back-to-top = 回到顶端
+comm-opt-1 = 将所有外泄警报发送到 { $primaryEmail }。
 stop-monitoring-this = 停止监控此电子邮件地址。
 resend-verification = 重发验证邮件
 add-new-email = 添加新电子邮件地址
 send-verification = 发送验证邮件
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = 全球沟通
 breach-summary = 外泄事件概要
+show-breaches-for-this-email = 显示所有与此邮箱地址相关的数据外泄事件。
 link-change-primary = 更改主邮箱地址
 remove-fxm = 移除 { -product-name }
 manage-email-addresses = 管理电子邮件地址
@@ -390,6 +405,8 @@ latest-breach-link = 看看您是否也在这次外泄事件中
 welcome-back = 欢迎回来，{ $userName }！
 welcome-user = { $userName }，欢迎！
 what-to-do-after-breach = 数据外泄后该怎么办
+no-other-breaches-found = 在基本搜索中未找到其他外泄事件。
+no-results-blurb = 很抱歉，我们的数据库中没有该外泄事件相关信息。
 all-breaches-headline = { -product-name } 的所有数据外泄事件
 search-breaches = 搜索数据外泄事件
 # "Appears in-page as: Showing: All Breaches"
@@ -400,6 +417,35 @@ all-breaches = 所有数据外泄事件
 
 error-bot-headline = 暂时无法搜索
 error-csrf-headline = 会话超时
+error-invalid-unsub = 如何取消订阅来自 { -product-name } 的警报
+error-invalid-unsub-blurb = 您可以从任何 { -product-name } 发送的邮件中进行退订。请到收件箱搜索来自 { -brand-team-email } 的邮件，然后点击邮件底部的“取消订阅”链接。
 login-link-pre = 已有账户？
 login-link = 登录
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+       *[other] 正在监控的电子邮件地址
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+       *[other] 泄露您信息的数据外泄事件
+    }
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = 查看所有外泄事件
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = { $userEmail } 的搜索结果：
+other-monitored-emails = 其他监控的邮箱地址
 email-verification-required = 需要验证邮箱地址
+fxa-primary-email = { -brand-fxa } 邮件 - 主账号
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = 找找看
+# Title
+email-addresses-title = 电子邮件地址
