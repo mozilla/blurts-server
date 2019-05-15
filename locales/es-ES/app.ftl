@@ -336,9 +336,77 @@ take-control = Recupera el control de tu información personal.
 cant-stop-hackers = No puedes evitar que te hackeen, pero sí puedes evitar malas prácticas que le facilitan el trabajo a los hackeadores.
 read-more-tips = Leer más sobre consejos de seguridad
 how-hackers-work = Descubre cómo trabajan los hackers
+stay-alert = Mantente al día de las nuevas filtraciones
+if-your-info = Si tu información aparece en una nueva filtración de datos, te enviaremos una alerta.
+search-all-emails = Averigua si tus direcciones de correo han aparecido en filtraciones y recibe alertas sobre nuevas amenazas.
+monitor-several-emails = Monitorea varias direcciones de correo
+keep-your-data-safe = Descubre lo que necesitas para mantener a salvo tu información frente a criminales cibernéticos.
+website-breach = Filtración de sitios web
+sensitive-breach = Filtración de sitios web sensibles
+unverified-breach = Filtración no verificada
+website-breach-plural = Filtraciones de sitios web
+sensitive-breach-plural = Filtraciones delicadas
+unverified-breach-plural = Filtraciones no verificadas
+what-data = Qué información se filtró:
+# How Firefox Monitor works
+how-fxm-works = Cómo funciona { -product-name }
+how-fxm-1-headline = Hacer una búsqueda básica
 
 ## What to do after data breach tips
 
+change-pw = Cambia tu contraseña
+even-for-old = Incluso en las cuentas antiguas: es importante que la actualices.
+make-new-pw-unique = Consigue que la nueva contraseña sea diferente y única
+strength-of-your-pw = La seguridad de tus contraseñas tiene un impacto directo en tu seguridad en línea.
+create-strong-passwords = Cómo crear contraseñas seguras
+stop-reusing-pw = No uses siempre las mismas contraseñas
+create-unique-pw = Crea contraseñas únicas y guárdalas en algún lugar seguro, como un administrador de contraseñas.
+five-myths = 5 mitos sobre los administradores de contraseñas
+feat-security-tips = Consejos de seguridad para proteger tus cuentas
+feat-sensitive = Búsqueda avanzada de filtraciones sensibles
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Aparece en { $breachCount } filtración conocida.
+       *[other] Aparece en { $breachCount } filtraciones conocidas.
+    }
+see-if-breached = Comprueba si tus datos se han filtrado en línea.
+check-for-breaches = Busca filtraciones
+find-out-what-hackers-know = Averigua qué saben de ti los hackeadores. Descubre cómo ir siempre un paso por delante.
+search-for-your-email = Busca tu dirección de correo en filtraciones de datos públicas hasta 2007.
+back-to-top = Volver al inicio
+comm-opt-0 = Avísame si mi dirección de correo aparece en una filtración de datos.
+comm-opt-1 = Enviar todas las alertas de filtraciones a { $primaryEmail }.
+resend-verification = Reenviar correo de verificación
+add-new-email = Agregar una nueva dirección de correo
+send-verification = Enviar enlace de verificación
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Comunicación global
+breach-summary = Resumen de filtraciones
+show-breaches-for-this-email = Mostrar todas las filtraciones de esta dirección.
+link-change-primary = Cambiar dirección de correo principal
+remove-fxm = Eliminar { -product-name }
+remove-fxm-blurb = Desactivar las alertas de { -product-name }. Tu { -brand-fxa } seguirá activo y puede que recibas otras comunicaciones relacionadas con tu cuenta.
+manage-email-addresses = Gestionar direcciones de correo
+latest-breach-link = Descubre si se filtraron tus datos
+welcome-back = ¡Te damos otra vez la bienvenida, { $userName }!
+welcome-user = ¡Te damos la bienvenida, { $userName }!
+breach-alert-subject = { -product-name } encontró tu dirección de correo en una nueva filtración de datos.
+your-info-was-discovered-headline = Se descubrió información tuya en una nueva filtración de datos.
+your-info-was-discovered-blurb =
+    Te has suscrito para recibir alertas de { -product-name }
+    cuando tu dirección de correo aparezca en una filtración de datos. Esto es lo que sabemos al respecto.
+what-to-do-after-breach = Qué hacer tras una filtración de datos
+ba-next-step-1 = Cambia tu contraseña por otra segura y única.
+ba-next-step-blurb-1 =
+    Una contraseña segura es aquella que incluye mayúsculas y minúsculas,
+    símbolos y números. No debería incluir información personal como
+    dirección, cumpleaños o nombres de familiares.
 
 ## Updated error messages
 
