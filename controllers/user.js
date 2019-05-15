@@ -207,13 +207,7 @@ async function verify(req, res) {
     await _verify(req);
   }
 
-  res.render("subpage", {
-    headline: req.fluentFormat("confirmation-headline"),
-    subhead: req.fluentFormat("confirmation-blurb"),
-    title: req.fluentFormat("user-verify-title"),
-    whichPartial: "subpages/confirm",
-    emailLinks: EmailUtils.getShareByEmail(req),
-  });
+  res.redirect("/user/dashboard");
 }
 
 
