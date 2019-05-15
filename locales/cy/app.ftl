@@ -414,6 +414,16 @@ take-action = Cymerwch gamau i ddiogelu eich cyfrifon
 keep-your-data-safe = Darganfyddwch beth sydd angen i chi ei wneud i gadw'ch data yn ddiogel rhag seiber-droseddwyr.
 website-breach = Tor-data Gwefan
 sensitive-breach = Tor-data Gwefan Sensitif
+data-aggregator-breach = Tor-data Casglwr Data
+unverified-breach = Tor-Data Heb ei Gwirio
+spam-list-breach = Tor-data Rhestr Sbam
+website-breach-plural = Tor-data Gwefan
+sensitive-breach-plural = Tor-data Sensitif
+data-aggregator-breach-plural = Tor-data Casglwr Data
+unverified-breach-plural = Tor-data heb eu Gwirio
+spam-list-breach-plural = Tor-data Rhestr Sbam
+what-data = Pa ddata a gyfaddawdwyd:
+sensitive-sites = Sut mae { -product-name } yn trin gwefannau sensitif?
 
 ## What to do after data breach tips
 
