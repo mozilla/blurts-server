@@ -621,3 +621,18 @@ security-tips-headline = Security tips to protect yourself from hackers
 steps-to-protect = Steps to take to protect your online identity
 take-further-steps = Take further steps to protect your identity
 alert-about-new-breaches = Alert me about new breaches
+see-if-youve-been-part = See if you’ve been part of an online data breach.
+get-ongoing-breach-monitoring = Get ongoing breach monitoring for multiple email addresses.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Find Out
+new-unsub-error = You’ll need to unsubscribe from one of the emails { -product-name } sent.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] However, it did appear in { $breachCount } other known breach.
+       *[other] However, it did appear in { $breachCount } other known breaches.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Additional information, including:
+# Title
+email-addresses-title = Email Addresses
