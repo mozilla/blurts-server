@@ -324,6 +324,7 @@ delayed-reporting-headline = 為什麼要這麼久才公開這些事件？
 delayed-reporting-copy = 有的時候，資料外洩後可能要花幾個月甚至幾年，您的登入資訊才會出現在暗網上。當我們發現外洩的資料並確認無誤後，就會加入資料庫。
 about-fxm-headline = 關於 { -product-name }
 about-fxm-blurb = { -product-name } 會在您的帳號出現於資料外洩事件時警告您。您可以在此看看帳號是否出現於某場資料外洩事件、在有新的外洩事件時收到警報，並採取行動保護您的線上帳號。{ -product-name } 是由 { -brand-Mozilla } 所提供。
+fxm-warns-you = { -product-name } 會在您的電子郵件地址出現於線上資料外洩事件時警告您。可以在此看看有哪些資料已遭外洩、了解如何保護線上帳號，並在您新的信箱出現於新的外洩事件時接收警報。
 # How Firefox Monitor works
 how-fxm-works = { -product-name } 的運作原理
 how-fxm-1-headline = 進行基礎搜尋
@@ -441,15 +442,30 @@ passwords-exposed =
     { $passwords ->
        *[other] 在所有事件中洩漏出的密碼
     }
+# Button
+see-additional-breaches = 看其它外洩事件
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = 看所有外洩事件
+scan-results-known-breaches =
+    { $breachCount ->
+       *[other] 此信箱出現於 { $breachCount } 場已知的資料外洩事件中。
+    }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = { $userEmail } 的搜尋結果:
+other-monitored-emails = 其他監控的信箱
 email-verification-required = 需要驗證信箱
 fxa-primary-email = { -brand-fxa } 郵件 - 主要帳號
+what-is-a-website-breach = 網站資料外洩事件是什麼？
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = 找找看
 new-unsub-error = 您可以從任何一封 { -product-name } 寄出的郵件取消訂閱。
+other-known-breaches-found =
+    { $breachCount ->
+       *[other] 但它還出現於其他 { $breachCount } 場已知的外洩事件。
+    }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = 其他資訊，包含:
