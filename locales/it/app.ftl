@@ -331,6 +331,7 @@ cant-stop-hackers = Non puoi fermare gli hacker, ma puoi evitare le cattive abit
 read-more-tips = Leggi altri consigli sulla sicurezza
 how-hackers-work = Capire come gli hacker lavorano
 monitor-your-online-accounts = Iscriviti con un { -brand-fxa } per tenere sotto controllo le violazioni
+stay-alert = Rimani sempre aggiornato sulle nuove violazioni
 if-your-info = Se le tue informazioni compaiono in una nuova violazione, ti invieremo un avviso.
 search-all-emails = Cerca tutti i tuoi indirizzi email tra le violazioni e ricevi avvisi sulle nuove minacce.
 monitor-several-emails = Tieni sotto controllo più email
@@ -384,6 +385,7 @@ five-myths = 5 miti sui gestori di password
 create-a-fxa = Crea un { -brand-fxa } per ottenere un rapporto completo delle violazioni e ricevere avvisi.
 feat-security-tips = Suggerimenti sulla sicurezza per proteggere i tuoi account
 feat-sensitive = Ricerca avanzata nelle violazioni di dati sensibili
+feat-enroll-multiple = Registra più indirizzi email per il monitoraggio delle violazioni
 sign-up-for-fxa = Registra un { -brand-fxa }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
@@ -392,7 +394,9 @@ appears-in-x-breaches =
         [one] È coinvolto in { $breachCount } violazione conosciuta.
        *[other] È coinvolto in { $breachCount } violazioni conosciute.
     }
+see-if-breached = Scopri se sei stato coinvolto in una violazione di dati online.
 check-for-breaches = Controlla violazioni
+find-out-what-hackers-know = Scopri quello che gli hacker già conoscono di te. Impara come rimanere sempre un passo avanti.
 search-for-your-email = Cerca il tuo indirizzo email nelle violazioni di dati di pubblico dominio a partire dal 2007.
 back-to-top = Torna in alto
 comm-opt-0 = Inviami un’email se uno degli indirizzi indicati di seguito appare in una violazione di dati.
@@ -420,6 +424,42 @@ welcome-back = Bentornata/o, { $userName }.
 welcome-user = Benvenuta/o, { $userName }.
 breach-alert-subject = { -product-name } ha trovato la tua email in una nuova violazione di dati.
 your-info-was-discovered-headline = I tuoi dati sono stati rilevati in una nuova violazione di dati.
+your-info-was-discovered-blurb = Ti sei registrato per ricevere gli avvisi di { -product-name } quando la tua email appare in una violazione di dati. Ecco che cosa sappiamo di questa violazione.
+what-to-do-after-breach = Che cosa fare dopo una violazione di dati
+ba-next-step-1 = Sostituisci la tua password con una password complessa e unica.
+ba-next-step-blurb-1 = Una password complessa utilizza una combinazione di lettere maiuscole e minuscole, caratteri speciali e numeri. Non contiene informazioni personali come il tuo indirizzo, compleanno o nomi dei componenti della tua famiglia.
+ba-next-step-2 = Smetti completamente di usare questa password compromessa.
+ba-next-step-blurb-2 = I criminali informatici potrebbero trovare la tua password sul “dark web” e usarla per accedere ad altri account. Il modo migliore per proteggere i tuoi account è quello di utilizzare password uniche per ciascuno di essi.
+ba-next-step-3 = Scopri come creare password migliori e conservarle al sicuro.
+ba-next-step-blurb-3 = Utilizza un gestore di password per creare password complesse e uniche. I gestori di password memorizzano in modo sicuro tutte le tue credenziali e ti permettono di utilizzarle su tutti i tuoi dispositivi.
+faq1 = Non riconosco questa azienda o sito web. Perché sono in questa violazione?
+faq2 = Perché ci è voluto così tanto tempo per informarmi di questa violazione?
+faq3 = Come faccio a essere sicuro che si tratti di una email legittima da { -product-name }?
+new-breaches-found =
+    { $breachCount ->
+        [one] { $breachCount } NUOVA VIOLAZIONE RILEVATA
+       *[other] { $breachCount } NUOVE VIOLAZIONI RILEVATE
+    }
+sign-up-headline-1 = Ricevi avvisi per le violazioni future con un { -brand-fxa }.
+account-not-required = Non è necessario utilizzare il browser { -brand-name } per avere un { -brand-fxa }. Potresti ricevere informazioni relative ai servizi offerti da { -brand-Mozilla }.
+get-alerted = Ricevi avvisi per nuove violazioni.
+was-your-info-exposed = Le tue informazioni sono state esposte nella violazione di dati di { $breachName }?
+find-out-if = Scopri se i tuoi dati sono stati esposti in questa violazione.
+fb-not-comp = Questa email non è stata coinvolta nella violazione di { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Tuttavia, è stata coinvolta in un’altra violazione.
+       *[other] Tuttavia, è stata coinvolta in { $breachCount } altre violazioni.
+    }
+fb-comp-only = Questa email è stata coinvolta nella violazione di { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Questa email è stata coinvolta in una violazione di dati conosciuta, inclusa { $breachName }.
+       *[other] Questa email è stata coinvolta in { $breachCount } violazioni di dati conosciute, inclusa { $breachName }.
+    }
+no-other-breaches-found = Nessun’altra violazione trovata con la ricerca di base.
+no-results-blurb = Siamo spiacenti, questa violazione non si trova nel nostro database.
+all-breaches-headline = Tutte le violazioni in { -product-name }
 search-breaches = Cerca nelle violazioni
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Visualizzati:
@@ -432,6 +472,7 @@ error-bot-blurb = Crediamo che tu possa essere un bot perché hai cercato divers
 error-csrf-headline = La sessione è scaduta
 error-csrf-blurb = Seleziona il pulsante Indietro del browser, ricarica la pagina e riprova.
 error-invalid-unsub = Come annullare l’iscrizione agli avvisi di { -product-name }
+error-invalid-unsub-blurb = Dovrai annullare l'iscrizione utilizzando una delle email inviate da { -product-name }. Controlla la tua casella di posta per i messaggi da { -brand-team-email }. Seleziona il link per annullare l’iscrizione nella parte finale dell'email.
 login-link-pre = Hai un account?
 login-link = Accedi
 # This string is displayed under a large numeral that indicates the total number
@@ -442,11 +483,32 @@ email-addresses-being-monitored =
         [one] Indirizzo email monitorato
        *[other] Indirizzi email monitorati
     }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] Violazione di dati che ha esposto le tue informazioni
+       *[other] Violazioni di dati che hanno esposto le tue informazioni
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Password esposta da tutte le violazioni
+       *[other] Password esposte da tutte le violazioni
+    }
 # Button
 see-additional-breaches = Vedi ulteriori violazioni
 # A button on the All Breaches page that restores all of the breaches
 # back to the page if the user has filtered some of them out.
 see-all-breaches = Vedi tutte le violazioni
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Questa email è stata coinvolta in una violazione di dati conosciuta.
+       *[other] Questa email è stata coinvolta in { $breachCount } violazioni di dati conosciute.
+    }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
@@ -455,6 +517,23 @@ other-monitored-emails = Altri indirizzi email monitorati
 email-verification-required = Richiesta verifica email
 fxa-primary-email = Email { -brand-fxa } - Principale
 what-is-a-website-breach = Che cos’è una violazione di dati?
+website-breach-blurb = La violazione di dati di un sito web si verifica quando criminali informatici rubano, copiano o espongono informazioni personali dagli account online. Di solito è il risultato del lavoro di hacker che riescono a individuare un punto debole nella sicurezza del sito web. Una violazione può verificarsi anche quando le informazioni sull’account vengono lasciate trapelare per errore.
 security-tips-headline = Suggerimenti sulla sicurezza per proteggersi dagli hacker
+steps-to-protect = Passi da intraprendere per proteggere la tua identità online
 take-further-steps = Adotta altre misure per proteggere la tua identità
 alert-about-new-breaches = Avvisami in caso di nuove violazioni
+see-if-youve-been-part = Scopri se sei stato coinvolto in una violazione di dati online.
+get-ongoing-breach-monitoring = Tieni traccia delle violazioni in corso per più indirizzi email.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Scopri
+new-unsub-error = Dovrai annullare l'iscrizione utilizzando una delle email inviate da { -product-name }.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Tuttavia, è stato coinvolta in un’altra violazione conosciuta.
+       *[other] Tuttavia, è stato coinvolta in { $breachCount } altre violazioni conosciute.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Informazioni aggiuntive, tra cui:
+# Title
+email-addresses-title = Indirizzi email
