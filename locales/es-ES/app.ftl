@@ -316,3 +316,29 @@ create-free-account = Crea una { -brand-fxa } gratuita para recibir un informe c
 get-your-report-and-sign-up = Obtén tu informe y regístrate para recibir alertas.
 # Link title
 frequently-asked-questions = Preguntas más frecuentes
+about-firefox-monitor = Sobre { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Preferencias
+# Link title.
+home = Inicio
+# Link title
+breaches = Filtraciones
+# Link title
+security-tips = Consejos de seguridad
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Abrir navegación { -brand-fxa }
+breach-added = Filtración documentada:
+breach-discovered = Filtración descubierta:
+# Link title
+more-about-this-breach = Más sobre esta filtración
+take-control = Recupera el control de tu información personal.
+cant-stop-hackers = No puedes evitar que te hackeen, pero sí puedes evitar malas prácticas que le facilitan el trabajo a los hackeadores.
+read-more-tips = Leer más sobre consejos de seguridad
+how-hackers-work = Descubre cómo trabajan los hackers
+
+## What to do after data breach tips
+
+
+## Updated error messages
+
