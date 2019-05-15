@@ -55,6 +55,11 @@ const DB = {
       "primary_email": email,
       "primary_verified": true,
     });
+    if (subscriber) {
+      subscriber.email_addresses = await knex("email_addresses").where({
+        "subscriber_id": subscriber.id,
+      });
+    }
     return subscriber;
   },
 
@@ -232,16 +237,15 @@ const DB = {
   },
 
   async setBreachesLastShownNow(subscriber) {
+    // TODO: turn 2 db queries into a single query (also see #942)
     const nowDateTime = new Date();
     const nowTimeStamp = nowDateTime.toISOString();
-    const updated = await knex("subscribers")
+    await knex("subscribers")
     .where("id", "=", subscriber.id)
     .update({
       breaches_last_shown: nowTimeStamp,
-    })
-    .returning("*");
-    const updatedSubscriber = Array.isArray(updated) ? updated[0] : null;
-    return updatedSubscriber;
+    });
+    return this.getSubscriberByEmail(subscriber.primary_email);
   },
 
   async setAllEmailsToPrimary(subscriber, allEmailsToPrimary) {
