@@ -391,6 +391,41 @@ make-new-pw-unique = Das neue Passwort sollte anders und einzigartig sein.
 strength-of-your-pw = Die Stärke deines Passworts hat direkte Auswirkungen auf deine Online-Sicherheit.
 create-strong-passwords = So erstellst du starke Passwörter
 stop-reusing-pw = Benutze nie dieselben Passwörter für unterschiedlich Accounts
+create-unique-pw = Erstelle einzigartige Passwörter und speichere sie an einem sicheren Ort. Zum Beispiel in einem Passwort-Manager.
+five-myths = 5 Mythen über Passwort-Manager
+create-a-fxa = Erstelle ein { -brand-fxa }, um deinen kompletten Bericht zu Datenlecks und zukünftige Warnmeldungen zu erhalten.
+feat-security-tips = Sicherheitstipps, die deine Konten schützen
+feat-sensitive = Erweiterte Suche in sensiblen Datenlecks
+feat-enroll-multiple = Lass mehrere E-Mail-Adressen überprüfen
+sign-up-for-fxa = Erstelle ein { -brand-fxa }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Erscheint in { $breachCount } bekannten Datenleck.
+       *[other] Erscheint in { $breachCount } bekannten Datenlecks.
+    }
+see-if-breached = Überprüfe, ob du von einem Datenleck betroffen bist.
+check-for-breaches = Auf Datenlecks überprüfen
+find-out-what-hackers-know = Finde heraus, was Hacker bereits über dich wissen und erfahre, wie du ihnen in Zukunft einen Schritt voraus sein kannst.
+search-for-your-email = Suche in bekannten gewordenen Datenlecks seit 2007 nach deiner E-Mail-Adresse.
+back-to-top = Zurück zum Anfang
+comm-opt-0 = Sende mir eine E-Mail, sobald eine der folgenden E-Mail-Adressen in einem Datenleck auftaucht.
+comm-opt-1 = Sende alle Warnmeldungen an { $primaryEmail }.
+stop-monitoring-this = Diese E-Mail-Adresse nicht mehr überprüfen.
+resend-verification = Bestätigungs-Mail erneut versenden
+add-new-email = Neue E-Mail-Adresse hinzufügen
+send-verification = Link zum Bestätigen senden
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Globale Kommunikation
+breach-summary = Zusammenfassung der Datenlecks
+show-breaches-for-this-email = Zeige alle Datenlecks für diese E-Mail-Adresse.
+link-change-primary = Primäre E-Mail-Adresse ändern
+remove-fxm = { -product-name } entfernen
 
 ## Updated error messages
 
