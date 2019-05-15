@@ -323,6 +323,7 @@ sensitive-sites-copy = { -product-name } 僅會在電子郵件信箱驗證後，
 delayed-reporting-headline = 為什麼要這麼久才公開這些事件？
 delayed-reporting-copy = 有的時候，資料外洩後可能要花幾個月甚至幾年，您的登入資訊才會出現在暗網上。當我們發現外洩的資料並確認無誤後，就會加入資料庫。
 about-fxm-headline = 關於 { -product-name }
+about-fxm-blurb = { -product-name } 會在您的帳號出現於資料外洩事件時警告您。您可以在此看看帳號是否出現於某場資料外洩事件、在有新的外洩事件時收到警報，並採取行動保護您的線上帳號。{ -product-name } 是由 { -brand-Mozilla } 所提供。
 # How Firefox Monitor works
 how-fxm-works = { -product-name } 的運作原理
 how-fxm-1-headline = 進行基礎搜尋
@@ -345,6 +346,10 @@ create-strong-passwords = 如何建立高強度的密碼
 stop-reusing-pw = 停止重複使用密碼
 create-unique-pw = 在每個網站使用不同密碼，並將其儲存於安全的地方（例如密碼管理員）。
 five-myths = 關於密碼管理員的 5 個迷思
+create-a-fxa = 註冊 { -brand-fxa } 即可取得關於資料外洩事件的完整報告，並接收警報。
+feat-security-tips = 保護資料的安全小秘訣
+feat-sensitive = 進階搜尋敏感資料外洩事件
+feat-enroll-multiple = 註冊多組 E-Mail 信箱，來監控外洩事件
 sign-up-for-fxa = 註冊 { -brand-fxa }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
@@ -366,6 +371,7 @@ send-verification = 寄送驗證鏈結
 # alerts for all of their monitored email addresses to a single 
 # email address.
 global-communication = 全球通訊
+breach-summary = 外洩事件摘要
 show-breaches-for-this-email = 顯示所有與這個信箱相關的資料外洩事件。
 link-change-primary = 更改主要電子郵件信箱地址
 remove-fxm = 移除 { -product-name }
@@ -399,6 +405,7 @@ fb-comp-and-others =
        *[other] 這個信箱出現在 { $breachCount } 場外洩事件中，包含 { $breachName } 事件。
     }
 no-other-breaches-found = 在基礎搜尋中沒有找到其他外洩事件。
+no-results-blurb = 很抱歉，我們的資料庫中沒有該外洩事件相關資料。
 all-breaches-headline = { -product-name } 的所有資料外洩事件
 search-breaches = 搜尋資料外洩事件
 # "Appears in-page as: Showing: All Breaches"
@@ -408,9 +415,43 @@ all-breaches = 所有資料外洩事件
 ## Updated error messages
 
 error-bot-headline = 暫時無法搜尋
+error-csrf-headline = 使用階段已逾時
+error-invalid-unsub = 如何取消訂閱來自 { -product-name } 的警報
+error-invalid-unsub-blurb = 您可以從任何 { -product-name } 寄發的郵件中進行退訂。請到信箱搜尋來自 { -brand-team-email } 的郵件，然後點擊郵件尾巴的「取消訂閱」鏈結。
 login-link-pre = 已經有帳號了？
 login-link = 登入
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+       *[other] 監控中的電子郵件信箱地址
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+       *[other] 洩漏出與您有關資訊的資料外洩事件
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+       *[other] 在所有事件中洩漏出的密碼
+    }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = { $userEmail } 的搜尋結果:
+email-verification-required = 需要驗證信箱
+fxa-primary-email = { -brand-fxa } 郵件 - 主要帳號
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = 找找看
+new-unsub-error = 您可以從任何一封 { -product-name } 寄出的郵件取消訂閱。
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = 其他資訊，包含:
+# Title
+email-addresses-title = 電子郵件地址
