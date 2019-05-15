@@ -12,6 +12,8 @@ avatars = Avatars
 bank-account-numbers = Bank account numbers
 beauty-ratings = Beauty ratings
 biometric-data = Biometric data
+# This string is the shortened version of "Biographies", and 
+# refers to biographical data about a user.
 bios = Bios
 browser-user-agent-details = Browser user agent details
 browsing-histories = Browsing histories
