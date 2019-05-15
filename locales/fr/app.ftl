@@ -302,7 +302,7 @@ preferences = Préférences
 home = Accueil
 # Link title
 breaches = Fuites de données
-fxa-account = { -brand-fxa(case: "uppercase") }
+fxa-account = { -brand-fxa(capitalization: "uppercase") }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = DERNIÈRE FUITE DE DONNÉES AJOUTÉE
 take-control = Reprenez le contrôle de vos données personnelles.
