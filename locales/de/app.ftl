@@ -426,6 +426,20 @@ breach-summary = Zusammenfassung der Datenlecks
 show-breaches-for-this-email = Zeige alle Datenlecks für diese E-Mail-Adresse.
 link-change-primary = Primäre E-Mail-Adresse ändern
 remove-fxm = { -product-name } entfernen
+remove-fxm-blurb = Warnmeldungen für { -product-name } abbestellen. Dein { -brand-fxa } bleibt aktiv und du erhältst diesbezüglich weiterhin Benachrichtigungen.
+manage-email-addresses = E-Mail-Adressen verwalten
+latest-breach-link = Überprüfe, ob du von diesem Datenleck betroffen warst
+welcome-back = Willkommen zurück, { $userName }
+welcome-user = Willkommen, { $userName }
+breach-alert-subject = { -product-name } hat deine E-Mail-Adresse in einem neuen Datenleck entdeckt.
+your-info-was-discovered-headline = Deine Daten wurden in einem neuen Datenleck entdeckt.
+your-info-was-discovered-blurb = Du hast dich für Warnmeldungen von { -product-name } angemeldet, sollte deine E-Mail-Adresse in einem Datenleck auftauchen. Folgendes wissen wir über dieses Leck.
+what-to-do-after-breach = Was ist nach einem Datenleck zu tun?
+ba-next-step-1 = Ändere deine Passwort. Das neue Passwort sollte stark und einzigartig sein.
+ba-next-step-blurb-1 = Ein starkes Passwort besteht aus einer Kombination aus Groß- und Kleinbuchstaben, Sonderzeichen und Zahlen. Es enthält keine persönlichen Informationen wie Adressen, Geburtstage oder Familiennamen.
+ba-next-step-2 = Das offengelegte Passwort solltest du gar nicht mehr benutzen.
+ba-next-step-blurb-2 = Cyber-Kriminelle könnten dein Passwort im Dark Web finden und sich damit bei deinen anderen Konten anmelden. Der beste Weg, deine Konten zu schützen, ist die Verwendung unterschiedlicher Passwörter für jedes einzelne Konto.
+ba-next-step-3 = Hol dir Unterstützung beim Erstellen und Sichern deiner Passwörter.
 
 ## Updated error messages
 
