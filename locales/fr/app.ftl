@@ -296,23 +296,47 @@ create-free-account = Créez un { -brand-fxa } gratuit pour recevoir un rapport 
 get-your-report-and-sign-up = Recevez votre rapport et inscrivez-vous aux alertes.
 # Link title
 frequently-asked-questions = Foire aux questions
+about-firefox-monitor = À propos de { -product-name }
 mozilla-dot-org = Mozilla.org
 preferences = Préférences
 # Link title.
 home = Accueil
 # Link title
 breaches = Fuites de données
+# Link title
+security-tips = Conseils de sécurité
 fxa-account = { -brand-fxa(capitalization: "uppercase") }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = DERNIÈRE FUITE DE DONNÉES AJOUTÉE
+breach-added = Fuite de données signalée le :
+breach-discovered = Fuite de données découverte le :
 take-control = Reprenez le contrôle de vos données personnelles.
+about-fxm-headline = À propos de { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Fonctionnement de { -product-name }
 
 ## What to do after data breach tips
 
+back-to-top = Haut de la page
+comm-opt-0 = M’envoyer un courriel si l’une de mes adresses électroniques ci-dessous apparaît dans une fuite de données.
+comm-opt-1 = Envoyer toutes les alertes de fuites de données à { $primaryEmail }.
 welcome-back = Heureux de vous revoir, { $userName } !
 welcome-user = Bienvenue, { $UserName } !
 
 ## Updated error messages
 
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Afficher toutes les fuites de données
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Cette adresse électronique apparaît dans une fuite de données connue.
+       *[other] Cette adresse électronique apparaît dans { $breachCount } fuites de données connues.
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Résultats pour : { $userEmail }
+other-monitored-emails = Autres adresses électroniques surveillées
+email-verification-required = Vérification de l’adresse électronique nécessaire
+fxa-primary-email = Adresse électronique du { -brand-fxa } (principale)
