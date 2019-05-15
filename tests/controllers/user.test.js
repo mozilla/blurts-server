@@ -88,6 +88,37 @@ test("user resendEmail with valid session and email id resets email_address reco
 });
 
 
+test("user updateCommunicationOptions request with valid session updates DB", async () => {
+  const testSubscriberEmail = TEST_SUBSCRIBERS.firefox_account.primary_email;
+  const testSubscriber = await DB.getSubscriberByEmail(testSubscriberEmail);
+  const req = httpMocks.createRequest({
+    method: "POST",
+    url: "/user/update-comm-option",
+    body: { communicationOption: 0 },
+    session: { user: testSubscriber },
+  });
+  const resp = httpMocks.createResponse();
+
+  // Call code-under-test
+  await user.updateCommunicationOptions(req, resp);
+
+  // Check expectations
+  expect(resp.statusCode).toEqual(200);
+  const updatedTestSubscriber = await DB.getSubscriberByEmail(testSubscriberEmail);
+  expect(updatedTestSubscriber.all_emails_to_primary).toBeFalsy();
+
+
+  req.body = { communicationOption: 1 };
+
+  // Call code-under-test
+  await user.updateCommunicationOptions(req, resp);
+
+  expect(resp.statusCode).toEqual(200);
+  const againUpdatedTestSubscriber = await DB.getSubscriberByEmail(testSubscriberEmail);
+  expect(againUpdatedTestSubscriber.all_emails_to_primary).toBeTruthy();
+});
+
+
 // TODO: more tests of resendEmail failure scenarios
 
 

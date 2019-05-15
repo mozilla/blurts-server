@@ -17,8 +17,7 @@ const log = mozlog("controllers.hibp");
 // email_addresses fields
 function getAddressAndLanguageForEmail(recipient) {
   let email = recipient.email;
-  if (!recipient.hasOwnProperty("email")) {
-    // This is a recipient from subscribers table
+  if (!recipient.hasOwnProperty("email") || recipient.all_emails_to_primary) {
     email = recipient.primary_email;
   }
   const signupLanguage = recipient.signup_language;

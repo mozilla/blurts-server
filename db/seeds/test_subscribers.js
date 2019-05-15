@@ -13,6 +13,16 @@ exports.TEST_SUBSCRIBERS = {
     fxa_refresh_token: "4a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc1",
     breaches_last_shown: "2019-04-24 13:27:08.421-05",
   },
+  all_emails_to_primary: {
+    id: 67890,
+    primary_sha1: getSha1("all_emails_to_primary@test.com"),
+    primary_email: "all_emails_to_primary@test.com",
+    primary_verification_token: "0e2cb147-2041-4e5b-8ca9-494e773b2ca7",
+    primary_verified: true,
+    fxa_refresh_token: "4a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc2",
+    breaches_last_shown: "2019-04-24 13:27:08.421-05",
+    all_emails_to_primary: true,
+  },
   unverified_email: {
     primary_sha1: getSha1("unverifiedemail@test.com"),
     primary_email: "unverifiedemail@test.com",
@@ -43,5 +53,12 @@ exports.TEST_EMAIL_ADDRESSES = {
     email: "firefoxaccount-tertiary@test.com",
     verification_token: "0e2cb147-2041-4e5b-8ca9-494e773b2cf3",
     verified: false,
+  },
+  all_emails_to_primary: {
+    subscriber_id: 67890,
+    sha1: getSha1("secondary_sending_to_primary@test.com"),
+    email: "secondary_sending_to_primary@test.com",
+    verification_token: "0e2cb147-2041-4e5b-8ca9-494e773b2cf4",
+    verified: true,
   },
 };

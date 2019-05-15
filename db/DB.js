@@ -244,6 +244,17 @@ const DB = {
     return updatedSubscriber;
   },
 
+  async setAllEmailsToPrimary(subscriber, allEmailsToPrimary) {
+    const updated = await knex("subscribers")
+    .where("id", subscriber.id)
+    .update({
+      all_emails_to_primary: allEmailsToPrimary,
+    })
+    .returning("*");
+    const updatedSubscriber = Array.isArray(updated) ? updated[0] : null;
+    return updatedSubscriber;
+  },
+
   async removeSubscriberByEmail(email) {
     const sha1 = getSha1(email);
     return await this._getSha1EntryAndDo(sha1, async aEntry => {

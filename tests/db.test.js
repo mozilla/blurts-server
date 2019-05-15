@@ -142,6 +142,16 @@ test("setBreachesLastShown updates column and returns subscriber", async() => {
 });
 
 
+test("setAllEmailsToPrimary updates column and returns subscriber", async() => {
+  const startingSubscriber = await DB.getSubscriberByEmail("firefoxaccount@test.com");
+
+  await DB.setAllEmailsToPrimary(startingSubscriber, false);
+
+  const updatedSubscriber = await DB.getSubscriberByEmail(startingSubscriber.primary_email);
+  expect (updatedSubscriber.all_emails_to_primary).toBeFalsy();
+});
+
+
 test("removeSubscriber accepts email and removes the email address", async () => {
   const testEmail = "removingFirefoxAccount@test.com";
 
