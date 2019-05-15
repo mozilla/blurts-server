@@ -64,7 +64,8 @@ async function updateCommunicationOptions(req, res) {
   // 0 = Send breach alerts to the email address found in brew breach.
   // 1 = Send all breach alerts to user's primary email address.
   const allEmailsToPrimary = (Number(req.body.communicationOption) === 1) ? true : false;
-  await DB.setAllEmailsToPrimary(sessionUser, allEmailsToPrimary);
+  const updatedSubscriber = await DB.setAllEmailsToPrimary(sessionUser, allEmailsToPrimary);
+  req.session.user = updatedSubscriber;
 
   return res.json("Comm options updated");
 }
