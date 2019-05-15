@@ -477,6 +477,55 @@ all-breaches = Alle Datenlecks
 ## Updated error messages
 
 error-bot-headline = Suchen vorübergehend eingestellt
+error-bot-blurb = Wir befürchten, dass du ein Bot bist, weil du in sehr kurzer Zeit mehrere E-Mail-Adressen durchsucht hast. Im Moment bist du für neue Suchanfragen gesperrt. Du kannst es später noch einmal versuchen.
+error-csrf-headline = Zeitüberschreitung der Sitzung
+error-csrf-blurb = Klicke in deinem Browser auf "Zurück", lade die Seite neu und versuche es noch einmal.
+error-invalid-unsub = So meldest du dich für Warnmeldungen von { -product-name } ab
+error-invalid-unsub-blurb = Melde dich über eine der E-Mails, die du von { -product-name } erhalten hast ab. Suche in deinem Posteingang nach Mails von { -brand-team-email } und klicke anschließend auf den Link zum Abmelden am Ende der E-Mail.
+login-link-pre = Du hast ein Konto?
+login-link = Einloggen
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] E-Mail-Adresse wird überprüft
+       *[other] E-Mail-Adressen werden überprüft
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] Datenleck hat Informationen von dir offengelegt
+       *[other] Datenlecks haben Informationen von dir offengelegt
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Passwort wurde in allen Datenlecks offengelegt
+       *[other] Passwörter wurden in allen Datenlecks offengelegt
+    }
+# Button
+see-additional-breaches = Zeige weitere Datenlecks
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Zeige alle Datenlecks
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Diese E-Mail-Adresse ist in 1 bekannt gewordenen Datenleck aufgetaucht.
+       *[other] Diese E-Mail-Adresse ist in { $breachCount } bekannt gewordenen Datenlecks aufgetaucht.
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Ergebnisse für: { $userEmail }
+other-monitored-emails = Weitere überprüfte E-Mails-Adressen
+email-verification-required = E-Mail-Verifizierung erforderlich
+fxa-primary-email = { -brand-fxa } E-Mail-Adresse - Primär
+what-is-a-website-breach = Was ist eine Website-Datenleck?
 security-tips-headline = Sicherheitstipps, die dich vor Hackern schützen
 steps-to-protect = Das kannst du tun, um deine Online-Identität zu schützen
 take-further-steps = Weitere Schritte, um deine Identität zu schützen
