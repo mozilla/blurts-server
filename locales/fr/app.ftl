@@ -310,13 +310,24 @@ fxa-account = { -brand-fxa(capitalization: "uppercase") }
 latest-breach = DERNIÈRE FUITE DE DONNÉES AJOUTÉE
 breach-added = Fuite de données signalée le :
 breach-discovered = Fuite de données découverte le :
+# Link title
+more-about-this-breach = Plus d’informations sur cette fuite
 take-control = Reprenez le contrôle de vos données personnelles.
+cant-stop-hackers = Vous n’empêcherez pas les pirates de pirater. Mais vous pouvez éviter les mauvaises pratiques qui leur facilitent la tâche.
+read-more-tips = Découvrir davantage de conseils pour votre sécurité
+how-hackers-work = Comprendre le mode opératoire des pirates
+stay-alert = Tenez-vous au courant des dernières fuites de données
+if-your-info = Si vos informations apparaissent dans une nouvelle fuite de données, nous vous enverrons une alerte.
 about-fxm-headline = À propos de { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Fonctionnement de { -product-name }
 
 ## What to do after data breach tips
 
+change-pw = Changez votre mot de passe
+even-for-old = Même pour les anciens comptes, il est important de mettre à jour votre mot de passe.
+create-strong-passwords = Comment créer des mots de passe robustes
+stop-reusing-pw = Arrêtez de réutiliser les mêmes mots de passe
 back-to-top = Haut de la page
 comm-opt-0 = M’envoyer un courriel si l’une de mes adresses électroniques ci-dessous apparaît dans une fuite de données.
 comm-opt-1 = Envoyer toutes les alertes de fuites de données à { $primaryEmail }.
