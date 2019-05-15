@@ -360,6 +360,16 @@ unverified-breach-plural = Unbestätigte Datenlecks
 spam-list-breach-plural = Datenlecks von Spam-Listen
 what-data = Welche Daten wurden kompromittiert:
 sensitive-sites = Wie geht { -product-name } mit sensiblen Websites um?
+sensitive-sites-copy = { -product-name } zeigt die von dem Datenleck betroffenen Konten nur an, nachdem eine E-Mail-Adresse verifiziert wurde. Das bedeutet, dass auch nur du sehen kannst, ob deine Daten Teil eines Leaks wurden. (Es sei denn, jemand anderes hat Zugang zu deinem E-Mail-Konto.)
+delayed-reporting-headline = Warum hat es so lange gedauert, bis dieses Leck gemeldet wurde.
+delayed-reporting-copy = Es kann manchmal Monate oder Jahre dauern bis offengelegte Daten aus einem Datenleck im Dark Web auftauchen. Lecks werden, sobald sie entdeckt und verifiziert wurden, zu unserer Datenbank hinzugefügt.
+about-fxm-headline = Über { -product-name }
+about-fxm-blurb = { -product-name } warnt dich, wenn deine Online-Konten von einem Datenleck betroffen sind. Finde heraus, ob du Teil eines Datenleaks geworden bist, lass dich bei neuen Leaks warnen und unternimm die wichtigsten Schritte, um deine Online-Konten zu schützen. { -product-name } wird von { -brand-Mozilla } zur Verfügung gestellt.
+fxm-warns-you = { -product-name } warnt dich, wenn deine E-Mail-Adresse bei einem Datenleck offengelegt wurde. Finde heraus, ob Informationen von dir geleakt wurden, lerne wie du deine Online-Konten besser schützen kannst und lass dich warnen, sobald deine E-Mail-Adresse in einem neuen Datenleck auftaucht.
+# How Firefox Monitor works
+how-fxm-works = So funktioniert { -product-name }
+how-fxm-1-headline = Führe eine einfach Suche durch
+how-fxm-1-blurb = Suche in öffentlich gewordenen Datenlecks bis 2007 nach deiner E-Mail-Adresse. Hierbei werden die meisten Datenlecks angezeigt, allerdings nicht solche, die sensible persönliche Informationen enthalten.
 
 ## What to do after data breach tips
 
