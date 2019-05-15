@@ -404,6 +404,8 @@ avoid-personal-info = Evite usar informações pessoais em senhas
 ## What to do after data breach tips
 
 change-pw = Mude sua senha
+make-new-pw-unique = Torne a nova senha diferente e única
+strength-of-your-pw = A força de suas senhas impacta diretamente sua segurança online.
 create-strong-passwords = Como criar senhas fortes
 stop-reusing-pw = Pare de reusar as mesmas senhas
 five-myths = 5 mitos sobre gerenciadores de senhas
