@@ -532,3 +532,17 @@ steps-to-protect = Das kannst du tun, um deine Online-Identität zu schützen
 take-further-steps = Weitere Schritte, um deine Identität zu schützen
 alert-about-new-breaches = Ich möchte bei neuen Datenlecks gewarnt werden
 see-if-youve-been-part = Überprüfe, ob du schon einmal von einem Datenleck betroffen warst.
+get-ongoing-breach-monitoring = Lass mehrere E-Mail-Adressen kontinuierlich überprüfen.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Jetzt überprüfen
+new-unsub-error = Melde dich über eine der E-Mails von { -product-name } ab.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Sie erschien jedoch in { $breachCount } anderen Datenleck.
+       *[other] Sie erschien jedoch in { $breachCount } anderen Datenlecks.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Zusätzliche Information, einschließlich:
+# Title
+email-addresses-title = E-Mail-Adressen
