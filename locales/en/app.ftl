@@ -828,4 +828,7 @@ email-addresses-title = Email Addresses
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-On { $breachDate }, { $breachTitle } suffered a breach. Once the breach was discovered and verified it was added to our database on { $addedDate }.
+breach-overview = On { $breachDate }, { $breachTitle } suffered a breach. Once the breach was discovered and verified it was added to our database on { $addedDate }.
+
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = {-brand-monitor} Preferences
