@@ -145,7 +145,7 @@ function getTips(locales, breachType) {
         title: "stop-reusing-pw",
         subtitle: "create-unique-pw",
         linkTitle: "five-myths",
-        href: "/security-tips#myths",
+        href: "/security-tips#five-myths",
         svgClass: "manage-password",
       },
     ];
