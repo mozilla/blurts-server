@@ -407,7 +407,7 @@ send-verification = Invia link di verifica
 # alerts for all of their monitored email addresses to a single 
 # email address.
 global-communication = Impostazioni comunicazioni
-breach-summary = Riepilogo della violazione
+breach-summary = Riepilogo delle violazioni
 show-breaches-for-this-email = Visualizza tutte le violazioni che coinvolgono questa email.
 link-change-primary = Cambia l’indirizzo email principale
 remove-fxm = Rimuovi { -product-name }
