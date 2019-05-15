@@ -337,7 +337,11 @@ take-control = 收回个人数据的控制权。
 read-more-tips = 阅读更多安全提示
 how-hackers-work = 了解黑客的手段
 monitor-your-online-accounts = 使用 { -brand-fxa }订阅数据外泄警报
+stay-alert = 警惕新的数据外泄事件
+if-your-info = 如果您的信息出现于新的数据外泄事件中，我们会向您发送警报。
 monitor-several-emails = 监控多个电子邮件地址
+take-action = 采取措施保护您的账号
+keep-your-data-safe = 了解您需要做些什么来保护您的数据免受网络犯罪的影响。
 website-breach = 网站信息外泄
 sensitive-breach = 网站敏感信息外泄
 data-aggregator-breach = 数据聚合商信息外泄
@@ -362,6 +366,7 @@ what-is-data-agg = “数据聚合商”是什么？
 what-is-data-agg-blurb = 数据聚合商或数据代理商从公众记录收集信息并从其他公司购买，然后把这些数据汇总起来卖给许多公司用于市场营销。这些外泄事件的受害者不太可能遇到金融欺诈，但黑客可以用这些数据来冒充或分析他们。
 protect-your-privacy = 保护您的在线隐私
 avoid-personal-info = 避免在密码中使用个人信息
+avoid-personal-info-blurb = 在网络上很容易查找到生日、地址、和家庭成员名称等信息。避免在密码中使用个人信息。
 
 ## What to do after data breach tips
 
@@ -377,14 +382,23 @@ stop-monitoring-this = 停止监控此电子邮件地址。
 resend-verification = 重发验证邮件
 add-new-email = 添加新电子邮件地址
 send-verification = 发送验证邮件
+breach-summary = 外泄事件概要
 link-change-primary = 更改主邮箱地址
 remove-fxm = 移除 { -product-name }
+manage-email-addresses = 管理电子邮件地址
+latest-breach-link = 看看您是否也在这次外泄事件中
 welcome-back = 欢迎回来，{ $userName }！
+welcome-user = { $userName }，欢迎！
+what-to-do-after-breach = 数据外泄后该怎么办
+all-breaches-headline = { -product-name } 的所有数据外泄事件
+search-breaches = 搜索数据外泄事件
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = 显示：
+all-breaches = 所有数据外泄事件
 
 ## Updated error messages
 
+error-bot-headline = 暂时无法搜索
 error-csrf-headline = 会话超时
 login-link-pre = 已有账户？
 login-link = 登录
