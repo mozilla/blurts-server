@@ -336,8 +336,12 @@ home = Domov
 security-tips = Varnostni nasveti
 fxa-account = { -brand-fxa }
 take-control = Prevzemite nadzor nad svojimi osebnimi podatki.
+cant-stop-hackers = Delovanja hekerjev ne morete ustaviti. Lahko pa se znebite slabih navad, ki jim olajšujejo delo.
 read-more-tips = Preberite več varnostnih nasvetov
+how-hackers-work = Razumite, kako hekerji delujejo
 take-action = Ukrepajte in zaščitite svoje račune
+what-data = Kateri podatki so bili ogroženi:
+sensitive-sites = Kako { -product-name } obravnava občutljiva spletna mesta?
 about-fxm-headline = O { -product-name }ju
 # How Firefox Monitor works
 how-fxm-works = Kako deluje { -product-name }

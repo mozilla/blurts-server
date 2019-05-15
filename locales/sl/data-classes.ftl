@@ -12,6 +12,9 @@ avatars = avatarji
 bank-account-numbers = številke bančnih računov
 beauty-ratings = lepotne ocene
 biometric-data = biometrični podatki
+# This string is the shortened version of "Biographies", and 
+# refers to biographical data about a user.
+bios = življenjepisi
 browser-user-agent-details = podrobnosti o uporabniškem agentu brskalnika
 browsing-histories = zgodovina brskanj
 buying-preferences = nakupovalne navade
@@ -37,6 +40,7 @@ education-levels = stopnje izobrazbe
 email-addresses = e-poštni naslovi
 email-messages = e-poštna sporočila
 employers = delodajalci
+employment-statuses = stanja zaposlitve
 ethnicities = etnične pripadnosti
 family-members-names = imena družinskih članov
 family-plans = načrti za družino
