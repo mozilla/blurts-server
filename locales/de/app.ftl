@@ -193,7 +193,7 @@ mozilla-security-blog = { -brand-Mozilla } Sicherheitsblog
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Soziale Medien
 show-all = Alle anzeigen
-fxa-landing-blurb = Finde heraus, was Hacker bereits über dich wissen und erfahre, wie du ihnen in Zukunft einen Schritt voraus sein kannst.
+fxa-landing-blurb = Finde heraus, was Hacker bereits über dich wissen und wie du ihnen in Zukunft einen Schritt voraus sein kannst.
 fxa-scan-label = Überprüfe, ob du von einem Datenleck betroffen bist.
 fxa-welcome-headline = Willkommen bei { -product-name }.
 fxa-welcome-blurb = Ab jetzt wirst du benachrichtigt, wenn { $userEmail } von einem bekannten Datenleck betroffen bist.
