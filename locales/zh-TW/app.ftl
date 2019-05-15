@@ -306,6 +306,7 @@ if-your-info = 若您的資訊出現在新的資料外洩事件中，我們會�
 search-all-emails = 搜尋您所有使用的信箱，檢查是否有資料外洩事件，也在有新威脅時收到通知。
 monitor-several-emails = 監控多個電子郵件信箱
 take-action = 採取行動，保護帳號
+keep-your-data-safe = 看看做哪些事情，就能保護您的資料不受網路犯罪影響。
 website-breach = 網站資訊外洩
 sensitive-breach = 網站敏感性資訊外洩
 data-aggregator-breach = 資料收集器資訊外洩
@@ -318,37 +319,90 @@ unverified-breach-plural = 未經查證的資料外洩
 spam-list-breach-plural = 垃圾郵件清單資料外洩
 what-data = 洩漏了哪些資料:
 sensitive-sites = { -product-name } 如何對待這些敏感性網站？
+sensitive-sites-copy = { -product-name } 僅會在電子郵件信箱驗證後，才顯示與這些資料外洩事件相關聯的帳號。也就是說只有您能看到您的帳號是否與此事件有關（除非有別人也能使用使用您的信箱帳號。）
 delayed-reporting-headline = 為什麼要這麼久才公開這些事件？
+delayed-reporting-copy = 有的時候，資料外洩後可能要花幾個月甚至幾年，您的登入資訊才會出現在暗網上。當我們發現外洩的資料並確認無誤後，就會加入資料庫。
 about-fxm-headline = 關於 { -product-name }
 # How Firefox Monitor works
 how-fxm-works = { -product-name } 的運作原理
 how-fxm-1-headline = 進行基礎搜尋
 how-fxm-2-headline = 訂閱資料外洩事件警報
+how-fxm-3-headline = 在瀏覽器中接收通知
+wtd-after-website = 發生網站資料外洩事件後該做什麼
 wtd-after-data-agg = 資料收集器發生資訊外洩後，要作什麼事？
 what-is-data-agg = 「資料收集器」是什麼？
 protect-your-privacy = 保護您的線上隱私權
+no-pw-to-change = 跟網站資料外洩不一樣的是，沒有密碼可以更改。
 avoid-personal-info = 不要在密碼中使用個人資訊
+avoid-personal-info-blurb = 很簡單就能在網路上找到生日、地址、家人的名字等資料。絕對不要把相關資料放在密碼當中。
 
 ## What to do after data breach tips
 
 change-pw = 更改密碼
+even-for-old = 就算是舊帳號，改密碼也很重要。
 make-new-pw-unique = 使用不同且獨特的新密碼
 create-strong-passwords = 如何建立高強度的密碼
 stop-reusing-pw = 停止重複使用密碼
 create-unique-pw = 在每個網站使用不同密碼，並將其儲存於安全的地方（例如密碼管理員）。
 five-myths = 關於密碼管理員的 5 個迷思
 sign-up-for-fxa = 註冊 { -brand-fxa }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+       *[other] 出現在 { $breachCount } 場已知的外洩事件中。
+    }
+see-if-breached = 看看您是否也出現在資料外洩事件中。
 check-for-breaches = 檢查是否有外洩事件
 back-to-top = 回到頁面頂端
+comm-opt-1 = 將所有外洩警報發送到 { $primaryEmail }。
 stop-monitoring-this = 停止監控此信箱。
 resend-verification = 重寄驗證信
 add-new-email = 新增電子郵件信箱
 send-verification = 寄送驗證鏈結
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = 全球通訊
+show-breaches-for-this-email = 顯示所有與這個信箱相關的資料外洩事件。
+link-change-primary = 更改主要電子郵件信箱地址
 remove-fxm = 移除 { -product-name }
 manage-email-addresses = 管理電子郵件地址
+latest-breach-link = 看看您是不是也在這場資料外洩事件當中
 welcome-back = { $userName }，歡迎回來！
 welcome-user = { $userName }，歡迎！
+breach-alert-subject = { -product-name } 發現您的信箱出現在新的資料外洩事件中。
+your-info-was-discovered-headline = 在新的資料外洩事件中發現了您的資訊。
+your-info-was-discovered-blurb = 您註冊過在 E-Mail 出現在新的資料外洩事件時，要接收 { -product-name } 警報。以下是我們關於這場事件所了解的資訊。
+what-to-do-after-breach = 發生資料外洩事件後該做什麼？
+ba-next-step-1 = 更改密碼，使用強而獨特的密碼。
+ba-next-step-2 = 在所有網站，停止使用該組遭洩漏的密碼。
+faq2 = 為什麼花了這麼久才通知我有資料外洩事件？
+faq3 = 我怎麼知道這封信是真的來自 { -product-name }？
+new-breaches-found =
+    { $breachCount ->
+       *[other] 找到 { $breachCount } 場新的資料外洩事件
+    }
+get-alerted = 在有新的外洩事件時，接收警報。
+was-your-info-exposed = 您的資訊是否出現在 { $breachName } 的資料外洩事件？
+find-out-if = 看看您的資料是否出現在這場外洩事件中。
+fb-not-comp = 這個信箱沒有出現在 { $breachName } 外洩事件。
+other-breaches-found =
+    { $breachCount ->
+       *[other] 但出現在其他 { $breachCount } 場外洩事件中。
+    }
+fb-comp-only = 這個信箱出現在 { $breachName } 外洩事件。
+fb-comp-and-others =
+    { $breachCount ->
+       *[other] 這個信箱出現在 { $breachCount } 場外洩事件中，包含 { $breachName } 事件。
+    }
+no-other-breaches-found = 在基礎搜尋中沒有找到其他外洩事件。
+all-breaches-headline = { -product-name } 的所有資料外洩事件
 search-breaches = 搜尋資料外洩事件
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = 列出:
 all-breaches = 所有資料外洩事件
 
 ## Updated error messages
