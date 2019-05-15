@@ -709,7 +709,7 @@ other-breaches-found =
 fb-comp-only = This email appeared in the { $breachName } breach.
 fb-comp-and-others = 
   { $breachCount ->
-   *[other] = This email appeared in { $breachCount } known data breaches, including { $breachName }.
+   *[other] This email appeared in { $breachCount } known data breaches, including { $breachName }.
   }
 
 no-other-breaches-found = No other breaches found from a basic search.
