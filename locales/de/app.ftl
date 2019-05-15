@@ -370,9 +370,27 @@ fxm-warns-you = { -product-name } warnt dich, wenn deine E-Mail-Adresse bei eine
 how-fxm-works = So funktioniert { -product-name }
 how-fxm-1-headline = Führe eine einfach Suche durch
 how-fxm-1-blurb = Suche in öffentlich gewordenen Datenlecks bis 2007 nach deiner E-Mail-Adresse. Hierbei werden die meisten Datenlecks angezeigt, allerdings nicht solche, die sensible persönliche Informationen enthalten.
+how-fxm-2-headline = Melde dich für die Überprüfung von Datenlecks an
+how-fxm-2-blurb = Erstelle ein { -brand-fxa }, um deine E-Mail-Adresse auf weitere Leaks überprüfen zu lassen.
+how-fxm-3-headline = Erhalte Benachrichtigungen direkt im Browser
+how-fxm-3-blurb = Wenn du { -brand-name } nutzt, erhältst du eine Mitteilung, sobald du dich auf einer Website befindest, die von einem Datenleck betroffen war. Finde sofort heraus, ob du von einem Leak betroffen bist und was du tun kannst.
+wtd-after-website = Was nach einem Datenleck einer Website zu tun ist
+wtd-after-data-agg = Was nach einem Leck eines Daten-Aggregators zu tun ist
+what-is-data-agg = Was ist ein Daten-Aggregator?
+what-is-data-agg-blurb = Daten-Aggregatoren oder auch Daten-Broker sammeln Informationen aus öffentlichen Unterlagen und kaufen sie von anderen Unternehmen. Sie erheben diese Daten, um sie zu Marketingzwecken an Unternehmen zu verkaufen. Opfer solcher Datenlecks sind zwar weniger anfällig für Finanzbetrug, aber Hacker könnten diese Daten verwenden, um sich als jemand anderes auszugeben oder Profile zu erstellen.
+protect-your-privacy = Schütze deine Online-Privatsphäre
+no-pw-to-change = Im Gegensatz zu einem Website-Leak gibt es hier kein Password, das geändert werden kann.
+avoid-personal-info = Nutze keine persönlichen Infos in Passwörtern
+avoid-personal-info-blurb = Geburtstage, Adressen und Namen von Familienmitgliedern lassen sich online schnell finden. Nutze solche Infos nicht als Teil deiner Passwörter.
 
 ## What to do after data breach tips
 
+change-pw = Ändere dein Passwort
+even-for-old = Auch für ältere Accounts sollten Passwörter erneuert werden.
+make-new-pw-unique = Das neue Passwort sollte anders und einzigartig sein.
+strength-of-your-pw = Die Stärke deines Passworts hat direkte Auswirkungen auf deine Online-Sicherheit.
+create-strong-passwords = So erstellst du starke Passwörter
+stop-reusing-pw = Benutze nie dieselben Passwörter für unterschiedlich Accounts
 
 ## Updated error messages
 
