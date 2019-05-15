@@ -120,7 +120,7 @@ scan-results =
        *[other] Les comptes associés à votre adresse électronique apparaissent dans ces { $breachCount } fuites de données.
     }
 show-more-breaches = Afficher davantage
-what-to-do-headline = Que faire lorsque vos informations sont exposées à une fuite de données
+what-to-do-headline = Que faire lorsque vos informations sont compromises dans une fuite de données
 what-to-do-subhead-1 = Changez de mots de passe, même pour des comptes anciens.
 what-to-do-blurb-1 = Si vous ne pouvez pas vous connecter, contactez le site web pour savoir comment vous pouvez récupérer ou fermer le compte. Vous ne reconnaissez pas l’un des comptes ? Le site peut avoir changé de nom ou quelqu’un peut avoir créé un compte à votre place.
 what-to-do-subhead-2 = Si vous réutilisez un mot de passe qui a été compromis, changez-le.
