@@ -365,6 +365,7 @@ take-control = Ta tillbaka kontrollen över dina personuppgifter.
 cant-stop-hackers = Du kan inte stoppa hackare från att hacka. Men du kan undvika dåliga vanor som gör deras jobb enkelt.
 read-more-tips = Läs fler säkerhetstips
 how-hackers-work = Förstå hur hackare arbetar
+monitor-your-online-accounts = Registrera dig för övervakning av intrång med { -brand-fxa }.
 stay-alert = Var uppmärksam på nya intrång
 if-your-info = Om din information kommer upp i ett nytt dataintrång, skickar vi dig en varning.
 search-all-emails = Sök igenom alla dina e-postadresser för intrång och få varningar om nya hot.
@@ -373,14 +374,20 @@ take-action = Vidta åtgärder för att skydda dina konton
 keep-your-data-safe = Ta reda på vad du behöver göra för att hålla din data säker från cyberkriminella.
 website-breach = Webbplatsintrång
 sensitive-breach = Känsligt webbplatsintrång
+unverified-breach = Overifierat intrång
 website-breach-plural = Webbplatsintrång
 sensitive-breach-plural = Känsliga intrång
+data-aggregator-breach-plural = Datainsamlingsintrång
+unverified-breach-plural = Overifierade intrång
+spam-list-breach-plural = Spamlistintrång
 what-data = Vilka data har äventyrats:
+sensitive-sites = Hur behandlar { -product-name } känsliga webbplatser?
 delayed-reporting-headline = Varför tog det så lång tid att anmäla detta intrång?
 about-fxm-headline = Om { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Hur { -product-name } fungerar
 how-fxm-1-headline = Gör en grundläggande sökning
+how-fxm-2-headline = Registrera dig för intrångsövervakning
 
 ## What to do after data breach tips
 
