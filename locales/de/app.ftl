@@ -365,10 +365,10 @@ delayed-reporting-headline = Warum hat es so lange gedauert, bis dieses Leck gem
 delayed-reporting-copy = Es kann manchmal Monate oder Jahre dauern bis offengelegte Daten aus einem Datenleck im Dark Web auftauchen. Lecks werden, sobald sie entdeckt und verifiziert wurden, zu unserer Datenbank hinzugefügt.
 about-fxm-headline = Über { -product-name }
 about-fxm-blurb = { -product-name } warnt dich, wenn deine Online-Konten von einem Datenleck betroffen sind. Finde heraus, ob du Teil eines Datenleaks geworden bist, lass dich bei neuen Leaks warnen und unternimm die wichtigsten Schritte, um deine Online-Konten zu schützen. { -product-name } wird von { -brand-Mozilla } zur Verfügung gestellt.
-fxm-warns-you = { -product-name } warnt dich, wenn deine E-Mail-Adresse bei einem Datenleck offengelegt wurde. Finde heraus, ob Informationen von dir geleakt wurden, lerne wie du deine Online-Konten besser schützen kannst und lass dich warnen, sobald deine E-Mail-Adresse in einem neuen Datenleck auftaucht.
+fxm-warns-you = { -product-name } warnt dich, wenn deine E-Mail-Adresse bei einem Datenleck offengelegt wurde. Finde heraus, ob Informationen von dir geleakt wurden, lerne, wie du deine Online-Konten besser schützen kannst und lass dich warnen, sobald deine E-Mail-Adresse in einem neuen Datenleck auftaucht.
 # How Firefox Monitor works
 how-fxm-works = So funktioniert { -product-name }
-how-fxm-1-headline = Führe eine einfach Suche durch
+how-fxm-1-headline = Führe eine einfache Suche durch
 how-fxm-1-blurb = Suche in öffentlich gewordenen Datenlecks bis 2007 nach deiner E-Mail-Adresse. Hierbei werden die meisten Datenlecks angezeigt, allerdings nicht solche, die sensible persönliche Informationen enthalten.
 how-fxm-2-headline = Melde dich für die Überprüfung von Datenlecks an
 how-fxm-2-blurb = Erstelle ein { -brand-fxa }, um deine E-Mail-Adresse auf weitere Leaks überprüfen zu lassen.
