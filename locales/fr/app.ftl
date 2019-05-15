@@ -296,10 +296,23 @@ create-free-account = Créez un { -brand-fxa } gratuit pour recevoir un rapport 
 get-your-report-and-sign-up = Recevez votre rapport et inscrivez-vous aux alertes.
 # Link title
 frequently-asked-questions = Foire aux questions
+mozilla-dot-org = Mozilla.org
+preferences = Préférences
+# Link title.
+home = Accueil
+# Link title
+breaches = Fuites de données
 fxa-account = { -brand-fxa(case: "uppercase") }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = DERNIÈRE FUITE DE DONNÉES AJOUTÉE
+take-control = Reprenez le contrôle de vos données personnelles.
+# How Firefox Monitor works
+how-fxm-works = Fonctionnement de { -product-name }
 
 ## What to do after data breach tips
 
+welcome-back = Heureux de vous revoir, { $userName } !
+welcome-user = Bienvenue, { $UserName } !
 
 ## Updated error messages
 
