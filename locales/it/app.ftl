@@ -317,7 +317,7 @@ home = Home
 breaches = Violazioni
 # Link title
 security-tips = Consigli per la sicurezza
-fxa-account = { -brand-fxa }
+fxa-account = { -brand-fxa(capitalization: "uppercase") }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Apri la navigazione di { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
