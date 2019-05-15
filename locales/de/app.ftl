@@ -408,7 +408,7 @@ appears-in-x-breaches =
 see-if-breached = Überprüfe, ob du von einem Datenleck betroffen bist.
 check-for-breaches = Auf Datenlecks überprüfen
 find-out-what-hackers-know = Finde heraus, was Hacker bereits über dich wissen und erfahre, wie du ihnen in Zukunft einen Schritt voraus sein kannst.
-search-for-your-email = Suche in bekannten gewordenen Datenlecks seit 2007 nach deiner E-Mail-Adresse.
+search-for-your-email = Suche in bekannt gewordenen Datenlecks seit 2007 nach deiner E-Mail-Adresse.
 back-to-top = Zurück zum Anfang
 comm-opt-0 = Sende mir eine E-Mail, sobald eine der folgenden E-Mail-Adressen in einem Datenleck auftaucht.
 comm-opt-1 = Sende alle Warnmeldungen an { $primaryEmail }.
@@ -522,7 +522,7 @@ scan-results-known-breaches =
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Ergebnisse für: { $userEmail }
-other-monitored-emails = Weitere überprüfte E-Mails-Adressen
+other-monitored-emails = Weitere überprüfte E-Mail-Adressen
 email-verification-required = E-Mail-Verifizierung erforderlich
 fxa-primary-email = { -brand-fxa } E-Mail-Adresse - Primär
 what-is-a-website-breach = Was ist eine Website-Datenleck?
