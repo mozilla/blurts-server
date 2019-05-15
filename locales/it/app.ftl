@@ -347,6 +347,7 @@ data-aggregator-breach-plural = Violazioni di aggregatori dati
 unverified-breach-plural = Violazioni non verificate
 spam-list-breach-plural = Violazioni di liste di spam
 what-data = Quali dati sono stati compromessi:
+sensitive-sites = In che modo vengono gestiti i dati sensibili in { -product-name }?
 sensitive-sites-copy = { -product-name } rivela gli account associati con questo tipo di violazioni solo dopo la verifica dell’indirizzo email. Questo significa che sei l’unica persona in grado di vedere se i tuoi dati sono presenti nella violazione (a meno che qualcun altro abbia accesso alla tua email).
 delayed-reporting-headline = Perché ci è voluto così tanto tempo per segnalare questa violazione?
 delayed-reporting-copy = A volte possono volerci mesi o anni prima che le credenziali esposte in una violazione di dati compaiano nel “dark web”. Le violazioni sono aggiunte al nostro database appena vengono scoperte e verificate.
@@ -355,9 +356,105 @@ about-fxm-blurb = { -product-name } ti avvisa se i tuoi account online sono coin
 fxm-warns-you = { -product-name } ti avvisa se il tuo indirizzo email è stato esposto in una violazione di dati online. Controlla se i tuoi dati sono esposti, impara come proteggere meglio i tuoi account online e ricevi un avviso se la tua email compare in una nuova violazione.
 # How Firefox Monitor works
 how-fxm-works = Come funziona { -product-name }
+how-fxm-1-headline = Effettua una ricerca di base
+how-fxm-1-blurb = Cerca il tuo indirizzo email in violazioni di dati di pubblico dominio a partire dal 2007. Questa ricerca di base identificherà la maggior parte delle violazioni di dati, ma non quelle che contengono informazioni personali sensibili.
+how-fxm-2-headline = Iscriviti per monitorare le violazioni
+how-fxm-2-blurb = Crea un { -brand-fxa } per tenere sotto controllo la tua email in caso di nuove violazioni. Una volta verificato il tuo indirizzo, riceverai anche un rapporto completo sulle violazioni passate, incluse quelle che coinvolgono dati sensibili.
+how-fxm-3-headline = Ricevi notifiche nel browser
+how-fxm-3-blurb = Se utilizzi { -brand-name }, riceverai una notifica ogni volta che visiti un sito che è stato violato. Scopri immediatamente se sei stato coinvolto e cosa fare per proteggerti.
+wtd-after-website = Che cosa fare quando si verifica la violazione di un sito web
+wtd-after-data-agg = Che cosa fare quando si verifica la violazione di un aggregatore di dati
+what-is-data-agg = Che cos’è un aggregatore di dati?
+what-is-data-agg-blurb = Gli aggregatori di dati, o ”data broker”, raccolgono informazioni di pubblico dominio e acquistano dati da altre società, per poi venderli alle aziende con finalità di marketing. Il rischio di truffa per le vittime di queste violazioni è limitato, ma gli hacker possono comunque utilizzare queste informazioni per impersonarle o creare un loro profilo.
+protect-your-privacy = Proteggi la tua privacy online
+no-pw-to-change = A differenza di una violazione di un sito web, non c’è alcuna password da cambiare.
+avoid-personal-info = Non utilizzare informazioni personali nelle password
+avoid-personal-info-blurb = È facile trovare online informazioni su compleanni, indirizzi e nomi dei componenti della famiglia. Non includere questi dati nelle tue password.
 
 ## What to do after data breach tips
 
+change-pw = Cambia la tua password
+even-for-old = È importante aggiornare la password anche per account vecchi.
+make-new-pw-unique = Rendi la nuova password diversa e unica
+strength-of-your-pw = La complessità delle tue password influisce direttamente sulla tua sicurezza online.
+create-strong-passwords = Come creare password complesse
+stop-reusing-pw = Non riutilizzare le stesse password
+create-unique-pw = Crea password uniche e salvale in un posto sicuro, come un gestore di password.
+five-myths = 5 miti sui gestori di password
+create-a-fxa = Crea un { -brand-fxa } per ottenere un rapporto completo delle violazioni e ricevere avvisi.
+feat-security-tips = Suggerimenti sulla sicurezza per proteggere i tuoi account
+feat-sensitive = Ricerca avanzata nelle violazioni di dati sensibili
+sign-up-for-fxa = Registra un { -brand-fxa }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] È coinvolto in { $breachCount } violazione conosciuta.
+       *[other] È coinvolto in { $breachCount } violazioni conosciute.
+    }
+check-for-breaches = Controlla violazioni
+search-for-your-email = Cerca il tuo indirizzo email nelle violazioni di dati di pubblico dominio a partire dal 2007.
+back-to-top = Torna in alto
+comm-opt-0 = Inviami un’email se uno degli indirizzi indicati di seguito appare in una violazione di dati.
+comm-opt-1 = Invia tutti gli avvisi a { $primaryEmail }.
+stop-monitoring-this = Interrompi il monitoraggio di questa email.
+resend-verification = Invia nuovamente l’email di conferma
+add-new-email = Aggiungi un altro indirizzo email
+send-verification = Invia link di verifica
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Impostazioni comunicazioni
+breach-summary = Riepilogo della violazione
+show-breaches-for-this-email = Visualizza tutte le violazioni che coinvolgono questa email.
+link-change-primary = Cambia l’indirizzo email principale
+remove-fxm = Rimuovi { -product-name }
+remove-fxm-blurb =
+    Disattiva gli avvisi di { -product-name }. Il tuo { -brand-fxa } rimarrà attivo e potresti ricevere
+    ulteriori comunicazioni relative all’account.
+manage-email-addresses = Gestisci indirizzi email
+latest-breach-link = Controlla se sei stato coinvolto in questa violazione
+welcome-back = Bentornata/o, { $userName }.
+welcome-user = Benvenuta/o, { $userName }.
+breach-alert-subject = { -product-name } ha trovato la tua email in una nuova violazione di dati.
+your-info-was-discovered-headline = I tuoi dati sono stati rilevati in una nuova violazione di dati.
+search-breaches = Cerca nelle violazioni
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Visualizzati:
+all-breaches = Tutte le violazioni
 
 ## Updated error messages
 
+error-bot-headline = Ricerca temporaneamente sospesa
+error-bot-blurb = Crediamo che tu possa essere un bot perché hai cercato diversi indirizzi email in un breve periodo di tempo. Per ora, non potrai effettuare nuove ricerche. Puoi riprovare più tardi.
+error-csrf-headline = La sessione è scaduta
+error-csrf-blurb = Seleziona il pulsante Indietro del browser, ricarica la pagina e riprova.
+error-invalid-unsub = Come annullare l’iscrizione agli avvisi di { -product-name }
+login-link-pre = Hai un account?
+login-link = Accedi
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] Indirizzo email monitorato
+       *[other] Indirizzi email monitorati
+    }
+# Button
+see-additional-breaches = Vedi ulteriori violazioni
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Vedi tutte le violazioni
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Risultati per: { $userEmail }
+other-monitored-emails = Altri indirizzi email monitorati
+email-verification-required = Richiesta verifica email
+fxa-primary-email = Email { -brand-fxa } - Principale
+what-is-a-website-breach = Che cos’è una violazione di dati?
+security-tips-headline = Suggerimenti sulla sicurezza per proteggersi dagli hacker
+take-further-steps = Adotta altre misure per proteggere la tua identità
+alert-about-new-breaches = Avvisami in caso di nuove violazioni
