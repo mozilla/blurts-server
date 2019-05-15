@@ -816,3 +816,7 @@ other-known-breaches-found =
     [one] However, it did appear in { $breachCount } other known breach.
    *[other] However, it did appear in { $breachCount } other known breaches. 
   }
+
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Additional information, including:
