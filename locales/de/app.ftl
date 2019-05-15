@@ -440,9 +440,43 @@ ba-next-step-blurb-1 = Ein starkes Passwort besteht aus einer Kombination aus Gr
 ba-next-step-2 = Das offengelegte Passwort solltest du gar nicht mehr benutzen.
 ba-next-step-blurb-2 = Cyber-Kriminelle könnten dein Passwort im Dark Web finden und sich damit bei deinen anderen Konten anmelden. Der beste Weg, deine Konten zu schützen, ist die Verwendung unterschiedlicher Passwörter für jedes einzelne Konto.
 ba-next-step-3 = Hol dir Unterstützung beim Erstellen und Sichern deiner Passwörter.
+ba-next-step-blurb-3 = Ein Passwort-Manager hilft dir, einzigartige Passwörter zu erstellen. Er speichert alle deine Zugangsdaten sicher ab, sodass du von allen deinen Geräte aus darauf zugreifen kannst.
+faq1 = Ich kenne dieses Unternehmen oder die Website nicht. Warum bin ich von dem Datenleck betroffen?
+faq2 = Warum hat es so lange gedauert, mich über dieses Datenleck zu informieren?
+faq3 = Woher weiß ich, dass diese E-Mail auch wirklich von { -product-name } stammt?
+new-breaches-found =
+    { $breachCount ->
+        [one] { $breachCount } NEUES DATENLECK GEFUNDEN
+       *[other] { $breachCount } NEUE DATENLECKS GEFUNDEN
+    }
+sign-up-headline-1 = Erhalte zukünftige Warnmeldungen mit einem { -brand-fxa }.
+account-not-required = Der { -brand-name } Browser ist für ein { -brand-fxa } nicht erforderlich. Du erhältst eventuell Informationen zu { -brand-Mozilla } Diensten.
+get-alerted = Erhalte Warnmeldungen zu neuen Datenlecks.
+was-your-info-exposed = Wurden Informationen von dir im { $breachName } Datenleck offengelegt?
+find-out-if = Finder heraus, ob deine Daten in diesem Datenleck gefährdet wurden.
+fb-not-comp = Diese E-Mail-Adresse erschien nicht im { $breachName } Datenleck.
+other-breaches-found =
+    { $breachCount ->
+        [one] Sie erschien jedoch in { $breachCount } anderen Datenleck.
+       *[other] Sie erschien jedoch in { $breachCount } anderen Datenlecks.
+    }
+fb-comp-only = Diese E-Mail-Adresse wurde im { $breachName } Datenleck gefunden.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Diese E-Mail-Adresse wurde in { $breachCount } bekannt gewordenen Datenlecks gefunden, einschließlich { $breachName }.
+       *[other] Diese E-Mail-Adresse wurde in { $breachCount } bekannt gewordenen Datenlecks gefunden, einschließlich { $breachName }.
+    }
+no-other-breaches-found = Es wurden keine weiteren Datenlecks in der einfachen Suche gefunden.
+no-results-blurb = Sorry, dieses Datenleck ist nicht in unserer Datenbank.
+all-breaches-headline = Alle Datenlecks in { -product-name }
+search-breaches = Datenlecks suchen
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Angezeigt:
+all-breaches = Alle Datenlecks
 
 ## Updated error messages
 
+error-bot-headline = Suchen vorübergehend eingestellt
 security-tips-headline = Sicherheitstipps, die dich vor Hackern schützen
 steps-to-protect = Das kannst du tun, um deine Online-Identität zu schützen
 take-further-steps = Weitere Schritte, um deine Identität zu schützen
