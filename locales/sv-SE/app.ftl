@@ -335,8 +335,8 @@ fb-landing-headline = Var din information utsatt för dataintrång { $breachName
 copyright = Delar av detta innehåll är © 1999-{ $year } av enskilda mozilla.org-bidragsgivare.
 content-available = Innehåll tillgängligt under en Creative Commons-licens.
 # Alerts is a noun
-sign-up-for-alerts = Anmäl dig för varningar
-sign-up-for-fxa-alerts = Anmäl dig till { -product-name } för varningar.
+sign-up-for-alerts = Registrera dig för varningar
+sign-up-for-fxa-alerts = Registrera dig för varningar från { -product-name }.
 create-free-account =
     Skapa ett gratis { -brand-fxa } för din fullständiga rapport om tidigare intrång, nya intrångsvarningar
     och information om andra { -brand-Mozilla }-tjänster.
