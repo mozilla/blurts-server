@@ -322,17 +322,22 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = Apri la navigazione di { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ULTIMA VIOLAZIONE AGGIUNTA
+breach-added = Violazione segnalata:
 breach-discovered = Violazione scoperta:
 # Link title
 more-about-this-breach = Altro su questa violazione
 take-control = Riprendi il controllo dei tuoi dati personali.
 cant-stop-hackers = Non puoi fermare gli hacker, ma puoi evitare le cattive abitudini che gli semplificano il lavoro.
+read-more-tips = Leggi altri consigli sulla sicurezza
 how-hackers-work = Capire come gli hacker lavorano
+monitor-your-online-accounts = Iscriviti con un { -brand-fxa } per tenere sotto controllo le violazioni
 if-your-info = Se le tue informazioni compaiono in una nuova violazione, ti invieremo un avviso.
 search-all-emails = Cerca tutti i tuoi indirizzi email tra le violazioni e ricevi avvisi sulle nuove minacce.
+monitor-several-emails = Tieni sotto controllo più email
 take-action = Agisci per proteggere i tuoi account
 keep-your-data-safe = Scopri cosa devi fare per proteggere i tuoi dati dai criminali informatici.
 website-breach = Violazione sito web
+sensitive-breach = Violazione di dati sensibili
 data-aggregator-breach = Violazione aggregatore dati
 unverified-breach = Violazione non verificata
 spam-list-breach = Violazione lista di spam
