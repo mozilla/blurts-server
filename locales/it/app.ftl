@@ -332,10 +332,21 @@ if-your-info = Se le tue informazioni compaiono in una nuova violazione, ti invi
 search-all-emails = Cerca tutti i tuoi indirizzi email tra le violazioni e ricevi avvisi sulle nuove minacce.
 take-action = Agisci per proteggere i tuoi account
 keep-your-data-safe = Scopri cosa devi fare per proteggere i tuoi dati dai criminali informatici.
+website-breach = Violazione sito web
+data-aggregator-breach = Violazione aggregatore dati
 unverified-breach = Violazione non verificata
+spam-list-breach = Violazione lista di spam
+website-breach-plural = Violazioni di siti web
+sensitive-breach-plural = Violazioni di dati sensibili
+data-aggregator-breach-plural = Violazioni di aggregatori dati
 unverified-breach-plural = Violazioni non verificate
+spam-list-breach-plural = Violazioni di liste di spam
 what-data = Quali dati sono stati compromessi:
+delayed-reporting-headline = Perché ci è voluto così tanto tempo per segnalare questa violazione?
+delayed-reporting-copy = A volte possono volerci mesi o anni prima che le credenziali esposte in una violazione di dati compaiano nel “dark web”. Le violazioni sono aggiunte al nostro database appena vengono scoperte e verificate.
 about-fxm-headline = Informazioni su { -product-name }
+# How Firefox Monitor works
+how-fxm-works = Come funziona { -product-name }
 
 ## What to do after data breach tips
 
