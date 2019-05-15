@@ -297,10 +297,12 @@ breach-discovered = 事件發現日期:
 # Link title
 more-about-this-breach = 關於此資料外洩事件的更多資訊
 take-control = 搶回個人資料的控制權
+cant-stop-hackers = 您無法防止駭客入侵，但可以透過改變習慣，讓他們更難侵入您的帳號。
 read-more-tips = 閱讀更多安全性小秘訣
 how-hackers-work = 了解駭客都怎麼作
 monitor-your-online-accounts = 使用 { -brand-fxa } 帳號訂閱帳號外洩資訊
 stay-alert = 隨時注意最新的資料外洩事件
+if-your-info = 若您的資訊出現在新的資料外洩事件中，我們會通知您。
 search-all-emails = 搜尋您所有使用的信箱，檢查是否有資料外洩事件，也在有新威脅時收到通知。
 monitor-several-emails = 監控多個電子郵件信箱
 take-action = 採取行動，保護帳號
