@@ -399,6 +399,8 @@ create-strong-passwords = Så här skapar du starka lösenord
 stop-reusing-pw = Sluta återanvända samma lösenord
 create-unique-pw = Skapa unika lösenord och spara dem någonstans säkert, som en lösenordshanterare.
 five-myths = 5 myter om lösenordshanterare
+search-for-your-email = Sök efter din e-postadress i offentliga dataintrång som går tillbaka till 2007.
+back-to-top = Tillbaka till toppen
 stop-monitoring-this = Sluta övervaka denna e-postadress.
 resend-verification = Skicka e-postbekräftelse igen
 add-new-email = Lägg till en ny e-postadress
@@ -410,6 +412,8 @@ remove-fxm = Ta bort { -product-name }
 manage-email-addresses = Hantera e-postadresser
 welcome-back = Välkommen tillbaka, { $userName }!
 welcome-user = Välkommen, { $userName }!
+what-to-do-after-breach = Vad ska man göra efter ett dataintrång
+ba-next-step-1 = Ändra ditt lösenord till ett starkt, unikt lösenord.
 get-alerted = Bli varnad om nya intrång.
 no-other-breaches-found = Inga andra intrång hittades från en grundläggande sökning.
 no-results-blurb = Tyvärr, intrånget finns inte i vår databas.
@@ -421,8 +425,29 @@ all-breaches = Alla intrång
 
 ## Updated error messages
 
+error-csrf-headline = Sessionen avbröts
 login-link-pre = Har du ett konto?
 login-link = Logga in
+# Button
+see-additional-breaches = Se ytterligare intrång
 # A button on the All Breaches page that restores all of the breaches
 # back to the page if the user has filtered some of them out.
 see-all-breaches = Se alla intrång
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Resultat för: { $userEmail }
+email-verification-required = E-postbekräftelse krävs
+what-is-a-website-breach = Vad är ett webbplatsintrång?
+security-tips-headline = Säkerhetstips för att skydda dig från hackare
+steps-to-protect = Åtgärder för att skydda din onlineidentitet
+take-further-steps = Ta ytterligare steg för att skydda din identitet
+alert-about-new-breaches = Varna mig om nya intrång
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Ta reda på
+new-unsub-error = Du måste avbryta prenumerationen från ett av de e-postmeddelanden som { -product-name } skickade.
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Ytterligare information, inklusive:
+# Title
+email-addresses-title = E-postadresser
