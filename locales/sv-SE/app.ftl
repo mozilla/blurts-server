@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -413,14 +414,25 @@ how-fxm-1-blurb =
     går tillbaka till 2007. Denna grundläggande sökning kommer att nudda vid de flesta dataintrång, men inte
     sådana som innehåller känslig personlig information.
 how-fxm-2-headline = Registrera dig för intrångsövervakning
+how-fxm-2-blurb =
+    Skapa ett { -brand-fxa } för att övervaka din e-postadress för pågående intrång.
+    När du har verifierat din e-postadress får du också en fullständig rapport om tidigare intrång,
+    inklusive känsliga intrång.
 how-fxm-3-headline = Få meddelanden i din webbläsare
 how-fxm-3-blurb =
     Om du använder { -brand-name } får du ett meddelande om du besöker en
     webbplats som har haft intrång. Ta reda på om du är en del av detta intrång
     och vad du kan göra åt det.
 wtd-after-website = Vad man ska göra efter ett webbplatsintrång
+wtd-after-data-agg = Vad ska man göra efter ett datainsamlingsintrång
 what-is-data-agg = Vad är en datainsamlare?
+what-is-data-agg-blurb =
+    Datainsamlare, eller datamäklare, samlar information från offentliga
+    register och köper det från andra företag. De sammanställer dessa data för att sälja den till företag
+    för marknadsföring. Offren för dessa intrång är mindre benägna att uppleva ekonomiska
+    bedrägerier, men hackare skulle kunna använda dessa uppgifter för att efterlikna eller profilera dem.
 protect-your-privacy = Skydda ditt privatliv på Internet
+no-pw-to-change = Till skillnad från en webbplatsintrång finns det inget lösenord att ändra.
 avoid-personal-info = Undvik att använda personlig information i lösenord
 avoid-personal-info-blurb = Det är enkelt att hitta födelsedagar, adresser och familjemedlemmar på nätet. Unvik dessa ord i dina lösenord.
 
@@ -439,6 +451,14 @@ feat-security-tips = Säkerhetstips för att skydda dina konton
 feat-sensitive = Avancerad sökning i känsliga intrång
 feat-enroll-multiple = Anmäl flera e-postadresser vid intrångsövervakning
 sign-up-for-fxa = Registrera dig för ett { -brand-fxa }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Förekommer i { $breachCount } känt intrång.
+       *[other] Förekommer i { $breachCount } kända intrång.
+    }
+see-if-breached = Se ifall du har förkommit i ett dataintrång på nätet.
 check-for-breaches = Sök efter intrång
 find-out-what-hackers-know = Ta reda på vad hackare redan vet om dig. Lär dig hur du kan vara ett steg före dem.
 search-for-your-email = Sök efter din e-postadress i offentliga dataintrång som går tillbaka till 2007.
@@ -459,9 +479,14 @@ breach-summary = Intrångssammanfattning
 show-breaches-for-this-email = Visa alla intrång för denna e-post.
 link-change-primary = Ändra primär e-postadress
 remove-fxm = Ta bort { -product-name }
+remove-fxm-blurb =
+    Stäng av  { -product-name }-varningar. Ditt { -brand-fxa } kommer att förbli aktiv, och du kan få
+    annan kontorelaterad kommunikation.
 manage-email-addresses = Hantera e-postadresser
+latest-breach-link = Se om du förekom i detta intrång
 welcome-back = Välkommen tillbaka, { $userName }!
 welcome-user = Välkommen, { $userName }!
+breach-alert-subject = { -product-name } hittade din e-postadress i ett nytt dataintrång.
 your-info-was-discovered-headline = Dina uppgifter upptäcktes i ett nytt dataintrång.
 your-info-was-discovered-blurb =
     Du är registrerad för att ta emot { -product-name }-varningar
@@ -484,6 +509,13 @@ ba-next-step-blurb-3 =
 faq1 = Jag känner inte igen detta företag eller webbplats. Varför finns jag med i detta intrång?
 faq2 = Varför tog det så lång tid att meddela mig om detta intrång?
 faq3 = Hur vet jag att detta är ett legitimt e-postmeddelande från { -product-name }?
+new-breaches-found =
+    { $breachCount ->
+        [one] { $breachCount } NYTT INTRÅNG HITTADES
+       *[other] { $breachCount } NYA INTRÅNG HITTADES
+    }
+sign-up-headline-1 = Få pågående varningar med { -brand-fxa }.
+account-not-required = { -brand-name } webbläsare krävs inte för ett { -brand-fxa }. Du kan få information om { -brand-Mozilla }-tjänster.
 get-alerted = Bli varnad om nya intrång.
 was-your-info-exposed = Var dina uppgifter utsatt för dataintrång { $breachName }?
 find-out-if = Ta reda på om dina uppgifter har exponerats i detta intrång.
@@ -499,14 +531,28 @@ all-breaches = Alla intrång
 
 ## Updated error messages
 
+error-bot-headline = Sökningar tillfälligt avstängda
 error-bot-blurb =
     Vi misstänker att du kan vara en bot eftersom du sökte
     flera e-postadresser inom en kort tidsperiod. För tillfället är du blockerad
     från nya sökningar. Du kan försöka igen senare.
 error-csrf-headline = Sessionen avbröts
+error-csrf-blurb = Välj webbläsarens tillbaka-knapp, ladda om sidan och försök igen.
 error-invalid-unsub = Hur man avregistrerar från { -product-name }-varningar
+error-invalid-unsub-blurb =
+    Du måste avregistrera dig från en av
+    e-postmeddelanden { -product-name } skickade dig. Kontrollera din inkorg för meddelanden från
+    { -brand-team-email }. Välj avregistreringslänken längst ner i e-postmeddelandet.
 login-link-pre = Har du ett konto?
 login-link = Logga in
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] E-postadress som övervakas
+       *[other] E-postadresser som övervakas
+    }
 # Button
 see-additional-breaches = Se ytterligare intrång
 # A button on the All Breaches page that restores all of the breaches
@@ -533,3 +579,11 @@ new-unsub-error = Du måste avbryta prenumerationen från ett av de e-postmeddel
 additional-information-including = Ytterligare information, inklusive:
 # Title
 email-addresses-title = E-postadresser
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Inloggad som: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Filtrera efter kategori:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Meny
