@@ -325,7 +325,20 @@ mozilla-dot-org = Mozilla.org
 preferences = Preferentias
 # Link title.
 home = Initio
+# Link title
+breaches = Violationes
+# Link title
+security-tips = Consilios de securitate
 fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Aperi le navigation de { -brand-fxa }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = ULTIME VIOLATION ADDITE
+breach-added = Violation signalate:
+breach-discovered = Violation discoperite:
+# Link title
+more-about-this-breach = Altero re iste violation
+take-control = Reprende le controlo de tu datos personal.
 
 ## What to do after data breach tips
 
