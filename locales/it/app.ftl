@@ -391,8 +391,8 @@ sign-up-for-fxa = Registra un { -brand-fxa }
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
     { $breachCount ->
-        [one] È coinvolto in { $breachCount } violazione conosciuta.
-       *[other] È coinvolto in { $breachCount } violazioni conosciute.
+        [one] È stato coinvolto in { $breachCount } violazione conosciuta.
+       *[other] È stato coinvolto in { $breachCount } violazioni conosciute.
     }
 see-if-breached = Verifica se sei stato coinvolto in una violazione di dati online.
 check-for-breaches = Cerca nelle violazioni
@@ -515,7 +515,7 @@ scan-results-known-breaches =
 results-for = Risultati per: { $userEmail }
 other-monitored-emails = Altri indirizzi email monitorati
 email-verification-required = Richiesta verifica email
-fxa-primary-email = Email { -brand-fxa } - Principale
+fxa-primary-email = Email dell’{ -brand-fxa } - Principale
 what-is-a-website-breach = Che cos’è una violazione di dati?
 website-breach-blurb = La violazione di dati di un sito web si verifica quando criminali informatici rubano, copiano o espongono informazioni personali dagli account online. Di solito è il risultato del lavoro di hacker che riescono a individuare un punto debole nella sicurezza del sito web. Una violazione può verificarsi anche quando le informazioni sull’account vengono lasciate trapelare per errore.
 security-tips-headline = Suggerimenti sulla sicurezza per proteggersi dagli hacker
