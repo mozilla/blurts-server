@@ -390,7 +390,21 @@ sensitive-sites-copy =
     den enda person som kan se om din information förkom i detta intrång (om inte någon
     annan har tillgång till ditt e-postkonto).
 delayed-reporting-headline = Varför tog det så lång tid att anmäla detta intrång?
+delayed-reporting-copy =
+    Det kan ibland ta några månader eller år för uppgifter
+    i ett dataintrång att synas på dark web. Intrång läggs till i vår databas så
+    snart som de har upptäckts och verifierats.
 about-fxm-headline = Om { -product-name }
+about-fxm-blurb =
+    { -product-name } varnar om dina onlinekonton var inblandade i ett
+    dataintrång. Ta reda på om du har förekommit i ett dataintrång, få varningar om nya intrång,
+    och vidta åtgärder för att skydda dina onlinekonton. { -product-name } tillhandahålls
+    av { -brand-Mozilla }.
+fxm-warns-you =
+    { -product-name } varnar dig om din e-postadress har blivit utsatt
+    i ett dataintrång på nätet. Se om din information har blivit utsatt, lär dig hur
+    du bättre kan skydda dina onlinekonton och bli varnad om din e-postadress
+    visas i ett nytt intrång.
 # How Firefox Monitor works
 how-fxm-works = Hur { -product-name } fungerar
 how-fxm-1-headline = Gör en grundläggande sökning
