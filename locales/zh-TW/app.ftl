@@ -332,6 +332,7 @@ how-fxm-1-blurb = 搜尋您的電子郵件地址，是否出現於 2007 年起�
 how-fxm-2-headline = 訂閱資料外洩事件警報
 how-fxm-2-blurb = 註冊 { -brand-fxa } 來監控您的信箱是否出現於各種資料外洩事件中。確認帳號後，也會收到包含外洩的敏感資料等過去事件的相關完整報告。
 how-fxm-3-headline = 在瀏覽器中接收通知
+how-fxm-3-blurb = 使用 { -brand-name } 的時候，當您開啟曾發生外洩事故的網站時將會收到通知。可以立即了解您是否也身處資料外洩事件之中，可以採取哪些行動。
 wtd-after-website = 發生網站資料外洩事件後該做什麼
 wtd-after-data-agg = 資料收集器發生資訊外洩後，要作什麼事？
 what-is-data-agg = 「資料收集器」是什麼？
@@ -346,6 +347,7 @@ avoid-personal-info-blurb = 很簡單就能在網路上找到生日、地址、�
 change-pw = 更改密碼
 even-for-old = 就算是舊帳號，改密碼也很重要。
 make-new-pw-unique = 使用不同且獨特的新密碼
+strength-of-your-pw = 密碼的強度，會與您在網路上的安全有直接關聯。
 create-strong-passwords = 如何建立高強度的密碼
 stop-reusing-pw = 停止重複使用密碼
 create-unique-pw = 在每個網站使用不同密碼，並將其儲存於安全的地方（例如密碼管理員）。
@@ -363,6 +365,7 @@ appears-in-x-breaches =
     }
 see-if-breached = 看看您是否也出現在資料外洩事件中。
 check-for-breaches = 檢查是否有外洩事件
+find-out-what-hackers-know = 看看駭客已經知道你的哪些事情，也了解如何搶先一步遠離他們。
 search-for-your-email = 搜尋自 2007 年起的公開資料外洩事故當中，是否包含您的電子郵件帳號。
 back-to-top = 回到頁面頂端
 comm-opt-0 = 當下列我的任一個電子郵件信箱地址出現在資料外洩事故時，發信通知我。
@@ -391,13 +394,17 @@ your-info-was-discovered-headline = 在新的資料外洩事件中發現了您�
 your-info-was-discovered-blurb = 您註冊過在 E-Mail 出現在新的資料外洩事件時，要接收 { -product-name } 警報。以下是我們關於這場事件所了解的資訊。
 what-to-do-after-breach = 發生資料外洩事件後該做什麼？
 ba-next-step-1 = 更改密碼，使用強而獨特的密碼。
+ba-next-step-blurb-1 = 高強度的密碼，須包含大寫字母、小寫字母、特殊符號、數字的組合。請勿在密碼中包含地址、生日、姓名等個人資料。
 ba-next-step-2 = 在所有網站，停止使用該組遭洩漏的密碼。
+ba-next-step-3 = 獲得建立更好密碼的幫助，並且確保密碼安全。
 faq2 = 為什麼花了這麼久才通知我有資料外洩事件？
 faq3 = 我怎麼知道這封信是真的來自 { -product-name }？
 new-breaches-found =
     { $breachCount ->
        *[other] 找到 { $breachCount } 場新的資料外洩事件
     }
+sign-up-headline-1 = 註冊 { -brand-fxa }，取得資料外洩警報。
+account-not-required = 不需要註冊 { -brand-fxa } 也能使用 { -brand-name } 瀏覽器。您可能會收到有關 { -brand-Mozilla } 相關服務的資訊。
 get-alerted = 在有新的外洩事件時，接收警報。
 was-your-info-exposed = 您的資訊是否出現在 { $breachName } 的資料外洩事件？
 find-out-if = 看看您的資料是否出現在這場外洩事件中。
