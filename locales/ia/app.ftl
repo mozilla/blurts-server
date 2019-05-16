@@ -339,6 +339,12 @@ breach-discovered = Violation discoperite:
 # Link title
 more-about-this-breach = Altero re iste violation
 take-control = Reprende le controlo de tu datos personal.
+cant-stop-hackers = Tu non pote stoppar le hackers. Salvo a te pote evitar le mal habitudes que rende facile lor labor.
+read-more-tips = Lege altere consilios pro le securitate
+how-hackers-work = Comprende como le hackers labora
+monitor-your-online-accounts = Inscribe te con un { -brand-fxa } al controlo del violationes.
+stay-alert = Sta alerte a nove violationes
+if-your-info = Si tu informationes emerge in un nove violation de datos, nos te inviara un aviso.
 
 ## What to do after data breach tips
 
