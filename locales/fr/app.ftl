@@ -327,14 +327,17 @@ website-breach = Fuite de site web
 sensitive-breach = Fuite de site web sensible
 data-aggregator-breach = Fuite d’agrégateur de données
 unverified-breach = Fuite non vérifiée
+spam-list-breach = Fuite de liste de courriers indésirables
 website-breach-plural = Fuites de sites web
 sensitive-breach-plural = Fuites de données sensibles
 data-aggregator-breach-plural = Fuites d’agrégateurs de données
 unverified-breach-plural = Fuites non vérifiées
+spam-list-breach-plural = Fuites de listes de courriers indésirables
 what-data = Quelles données ont été compromises :
 sensitive-sites = Comment { -product-name } traite-t-il les sites sensibles ?
 sensitive-sites-copy = { -product-name } signale les comptes associés à ce type de fuite seulement si une adresse électronique a été vérifiée. Cela signifie que vous êtes la seule personne qui puisse savoir si vos données étaient impactées par la fuite (sauf si quelqu’un d’autre a accès à votre compte de courrier électronique).
 delayed-reporting-headline = Pourquoi a-t-il fallu autant de temps pour signaler cette fuite de données ?
+delayed-reporting-copy = Cela peut parfois prendre des mois ou des années pour que des identifiants compromis dans une fuite de données apparaissent sur le darkweb. Les fuites sont ajoutées à notre base de données dès qu’elles ont été découvertes et vérifiées.
 about-fxm-headline = À propos de { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Fonctionnement de { -product-name }
