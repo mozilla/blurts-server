@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -345,11 +346,20 @@ fxm-warns-you = { -product-name } vous avertit si votre adresse électronique a 
 how-fxm-works = Fonctionnement de { -product-name }
 how-fxm-1-blurb = Recherchez votre adresse électronique parmi les fuites de données publiques remontant jusqu’à 2007. Une recherche basique fera apparaître la plupart des fuites de données, à l’exception de celles qui contiennent des données personnelles sensibles.
 how-fxm-3-headline = Recevez des notifications dans votre navigateur
+how-fxm-3-blurb = Si vous utilisez { -brand-name }, vous recevrez une notification lorsque vous visiterez un site qui a été victime d’une fuite de données. Découvrez immédiatement si cette fuite vous concerne et ce que vous pouvez faire.
+wtd-after-website = Que faire après une fuite de données de site web
+wtd-after-data-agg = Que faire après une fuite de données d’un agrégateur de données
+what-is-data-agg = Qu’est-ce qu’un agrégateur de données ?
+protect-your-privacy = Protégez votre vie privée en ligne
+no-pw-to-change = Contrairement à une fuite de données de site web, il n’y a pas de mot de passe à changer.
+avoid-personal-info = Évitez d’utiliser des informations personnelles dans les mots de passe
+avoid-personal-info-blurb = Il est facile de trouver en ligne les dates d’anniversaire, les adresses et les noms des membres de la famille. N’utilisez pas ces informations dans vos mots de passe.
 
 ## What to do after data breach tips
 
 change-pw = Changez votre mot de passe
 even-for-old = Même pour les anciens comptes, il est important de mettre à jour votre mot de passe.
+make-new-pw-unique = Choisissez un mot de passe différent et unique
 strength-of-your-pw = La force de vos mots de passe a un impact direct sur votre sécurité en ligne.
 create-strong-passwords = Comment créer des mots de passe robustes
 stop-reusing-pw = Arrêtez de réutiliser les mêmes mots de passe
@@ -358,11 +368,36 @@ five-myths = 5 idées reçues sur les gestionnaires de mots de passe
 create-a-fxa = Créez un { -brand-fxa } pour recevoir votre rapport complet sur les fuites de données et pour recevoir des alertes.
 feat-security-tips = Conseils de sécurité pour protéger vos comptes
 feat-sensitive = Recherche avancée dans les fuites de données sensibles
+feat-enroll-multiple = Surveillance des fuites de données pour plusieurs adresses électroniques
 sign-up-for-fxa = Créez un { -brand-fxa }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Apparaît dans { $breachCount } fuite de données connue.
+       *[other] Apparaît dans { $breachCount } fuites de données connues.
+    }
+see-if-breached = Vérifiez si une fuite de données en ligne vous concerne.
 check-for-breaches = Vérifier les fuites de données
+find-out-what-hackers-know = Découvrez ce que les pirates informatiques savent déjà de vous, et apprenez à garder une longueur d’avance sur eux.
+search-for-your-email = Recherchez votre adresse électronique parmi les fuites de données publiques remontant à jusqu’à 2007.
 back-to-top = Haut de la page
 comm-opt-0 = M’envoyer un courriel si l’une de mes adresses électroniques ci-dessous apparaît dans une fuite de données.
 comm-opt-1 = Envoyer toutes les alertes de fuites de données à { $primaryEmail }.
+stop-monitoring-this = Arrêter de surveiller cette adresse électronique.
+resend-verification = Renvoyer le courriel de vérification
+add-new-email = Ajouter une nouvelle adresse électronique
+send-verification = Envoyer le lien de vérification
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Communication globale
+breach-summary = Récapitulatif des fuites de données
+show-breaches-for-this-email = Afficher toutes les fuites de données pour cette adresse électronique.
+link-change-primary = Modifier l’adresse électronique principale
+remove-fxm = Supprimer { -product-name }
 welcome-back = Heureux de vous revoir, { $userName } !
 welcome-user = Bienvenue, { $UserName } !
 all-breaches = Toutes les violations
