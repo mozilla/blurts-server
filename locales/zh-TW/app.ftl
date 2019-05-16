@@ -397,6 +397,8 @@ ba-next-step-1 = 更改密碼，使用強而獨特的密碼。
 ba-next-step-blurb-1 = 高強度的密碼，須包含大寫字母、小寫字母、特殊符號、數字的組合。請勿在密碼中包含地址、生日、姓名等個人資料。
 ba-next-step-2 = 在所有網站，停止使用該組遭洩漏的密碼。
 ba-next-step-3 = 獲得建立更好密碼的幫助，並且確保密碼安全。
+ba-next-step-blurb-3 = 使用密碼管理員來建立強而獨特的密碼，並安全地儲存登入資訊，這樣就可以同步到您的所有裝置中使用。
+faq1 = 我不認識這家公司或網站，為什麼我跟這個外洩事件還有關係？
 faq2 = 為什麼花了這麼久才通知我有資料外洩事件？
 faq3 = 我怎麼知道這封信是真的來自 { -product-name }？
 new-breaches-found =
@@ -429,6 +431,7 @@ all-breaches = 所有資料外洩事件
 ## Updated error messages
 
 error-bot-headline = 暫時無法搜尋
+error-bot-blurb = 您在短時間內搜尋了太多 E-Mail 信箱，我們有點擔心您是不是機器人。您將暫時無法進行搜尋，請稍等一陣子再回來。
 error-csrf-headline = 使用階段已逾時
 error-csrf-blurb = 點擊瀏覽器的返回按鈕或重新載入頁面，再試一次。
 error-invalid-unsub = 如何取消訂閱來自 { -product-name } 的警報
@@ -477,6 +480,8 @@ security-tips-headline = 保護您不受駭客騷擾的安全性秘訣
 steps-to-protect = 採取行動來保護線上身分
 take-further-steps = 採取更多行動來保護身分資料
 alert-about-new-breaches = 有新的外洩事件時通知我
+see-if-youve-been-part = 看看您是否也處於線上資料外洩事件之中。
+get-ongoing-breach-monitoring = 持續針對多個電子郵件信箱，監控資料外洩事件。
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = 找找看
 new-unsub-error = 您可以從任何一封 { -product-name } 寄出的郵件取消訂閱。
