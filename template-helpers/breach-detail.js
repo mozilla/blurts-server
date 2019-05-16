@@ -219,7 +219,6 @@ function getBreachDetail(args) {
     breachDetail.delayedReporting = {
       headline: LocaleUtils.fluentFormat(locales, "delayed-reporting-headline"),
       copy: LocaleUtils.fluentFormat(locales, "delayed-reporting-copy"),
-      href:  "delayedReporting",
     };
   }
   return args.fn(breachDetail);
