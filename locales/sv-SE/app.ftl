@@ -526,6 +526,11 @@ other-breaches-found =
        *[other] Men det förekommer i  { $breachCount } andra intrång.
     }
 fb-comp-only = Denna e-postadress förekom i intrång{ $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Denna e-postadress förekom i { $breachCount } känt dataintrång, inklusive { $breachName }.
+       *[other] Denna e-postadress förekom i { $breachCount } kända dataintrång, inklusive { $breachName }.
+    }
 no-other-breaches-found = Inga andra intrång hittades från en grundläggande sökning.
 no-results-blurb = Tyvärr, intrånget finns inte i vår databas.
 all-breaches-headline = Alla intrång  i { -product-name }
@@ -558,18 +563,41 @@ email-addresses-being-monitored =
         [one] E-postadress som övervakas
        *[other] E-postadresser som övervakas
     }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] Dataintrång har avslöjat dina uppgifter
+       *[other] Dataintrång har avslöjat dina uppgifter
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Lösenord exponerades i alla intrång
+       *[other] Lösenord exponerades i alla intrång
+    }
 # Button
 see-additional-breaches = Se ytterligare intrång
 # A button on the All Breaches page that restores all of the breaches
 # back to the page if the user has filtered some of them out.
 see-all-breaches = Se alla intrång
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Denna e-postadress förekom i 1 känt dataintrång.
+       *[other] Denna e-postadress förekom i { $breachCount } kända dataintrång.
+    }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Resultat för: { $userEmail }
+other-monitored-emails = Andra övervakade e-postadresser
 email-verification-required = E-postbekräftelse krävs
 fxa-primary-email = { -brand-fxa } E-post - Primär
 what-is-a-website-breach = Vad är ett webbplatsintrång?
+website-breach-blurb = Ett intrång mot webbplatsen händer när cyberkriminella stjäl, kopierar eller avslöjar personuppgifter från onlinekonton. Det är oftast ett resultat av att hackare hittar en svag punkt i webbplatsens säkerhet. Intrånget kan också hända när kontouppgifter läckas av misstag.
 security-tips-headline = Säkerhetstips för att skydda dig från hackare
 steps-to-protect = Åtgärder för att skydda din onlineidentitet
 take-further-steps = Ta ytterligare steg för att skydda din identitet
@@ -579,11 +607,22 @@ get-ongoing-breach-monitoring = Få kontinuerlig intrångsövervakning för fler
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Ta reda på
 new-unsub-error = Du måste avbryta prenumerationen från ett av de e-postmeddelanden som { -product-name } skickade.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Men det förekom i { $breachCount } annat känt intrång.
+       *[other] Men det förekom i { $breachCount } andra kända intrång.
+    }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = Ytterligare information, inklusive:
 # Title
 email-addresses-title = E-postadresser
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = Den { $breachDate }, hade { $breachTitle } ett intrång. När intrånget upptäcktes och verifierades lades det till vår databas den { $addedDate }.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = { -product-short-name } Inställningar
 # When a user is signed in, this appears in the drop down menu 
 # and is followed by the user's primary Firefox Account email. 
 signed-in-as = Inloggad som: { $userEmail }
