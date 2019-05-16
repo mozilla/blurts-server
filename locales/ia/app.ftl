@@ -408,6 +408,27 @@ appears-in-x-breaches =
     }
 see-if-breached = Vide si tu ha essite implicate in un violation de datos online.
 check-for-breaches = Controla pro violationes
+find-out-what-hackers-know = Discoperi lo que hackers jam sape re te. Apprende a star un grado ante illes.
+search-for-your-email = Cerca retro, usque al 2007, tu adresse email in public violationes de datos.
+back-to-top = Receder al apice
+comm-opt-0 = Adverti me per email, si un de mi adresses email infra appare in un violation de datos.
+comm-opt-1 = Invia tote le avisos de violation a { $primaryEmail }.
+stop-monitoring-this = Cessa de controlar iste email.
+resend-verification = Reinviar email de verification
+add-new-email = Adder un nove adresse email
+send-verification = Inviar ligamine de verification
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Communication global
+breach-summary = Summario del violationes
+show-breaches-for-this-email = Monstrar tote le violationes pro iste email.
+link-change-primary = Modificar adresse de email primari
+remove-fxm = Remover { -product-name }
+remove-fxm-blurb = Disactivar le avisos de { -product-name }. Tu { -brand-fxa } remanera active, e tu pote reciper altere communicationes pertinente tu conto.
+manage-email-addresses = Gerer adresses email
 
 ## Updated error messages
 
