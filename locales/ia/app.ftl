@@ -369,6 +369,13 @@ about-fxm-blurb = { -product-name } adverti si tu contos online era implicate in
 fxm-warns-you = { -product-name } te adverti si tu adresse email ha essite exponite in un violation de datos online. Vide si tu informationes ha essite exponite, apprende a proteger melio tu contos online e mantene te allertate si tu adresse email appare in un nove violation.
 # How Firefox Monitor works
 how-fxm-works = Como functiona { -product-name }
+how-fxm-1-headline = Conduce un recerca de base
+how-fxm-1-blurb = Cerca tu adresse email in public violationes de datos usque retro al 2007. Iste recerca de base facera emerger le major parte del violationes de datos, ma non illos que contine informationes personal sensibile.
+how-fxm-2-headline = Inscribe te al controlo del violationes
+how-fxm-2-blurb = Crea un { -brand-fxa } pro controlar tu email pro violationes in corso. Un vice que tu ha verificate tu email, tu recipera alsi un reporto complete de violationes passate, complete de violationes de datos sensibile.
+how-fxm-3-headline = Recipe avisos in tu navigator
+how-fxm-3-blurb = Si tu usa { -brand-name }, tu recipera un aviso si tu visita un sito que ha essite violate. Discoperi immediatemente si tu era parte de ille violation e que tu pote facer re illo.
+wtd-after-website = Que facer post un violation de sito web
 
 ## What to do after data breach tips
 
