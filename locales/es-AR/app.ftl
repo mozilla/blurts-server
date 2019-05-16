@@ -319,6 +319,9 @@ take-control = Recuperá el control de tu información personal.
 cant-stop-hackers = No podés evitar que te pirateen los piratas, pero sí podés evitar la malas prácticas que les facilitan el trabajo.
 read-more-tips = Leer más acerca de consejos de seguridad
 how-hackers-work = Entender cómo trabajan los piratas
+monitor-your-online-accounts = Registrate para el control de violaciones con { -brand-fxa }.
+stay-alert = Mantenete alerta a las nuevas violaciones
+if-your-info = Si tu información aparece en una nueva violación de datos, te enviaremos una alerta.
 
 ## What to do after data breach tips
 
