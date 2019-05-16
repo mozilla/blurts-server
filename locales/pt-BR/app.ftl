@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -423,6 +424,7 @@ appears-in-x-breaches =
         [one] Aparece em { $breachCount } vazamento conhecido.
        *[other] Aparece em { $breachCount } vazamentos conhecidos.
     }
+check-for-breaches = Verificar se há vazamentos
 back-to-top = Voltar ao início
 comm-opt-0 = Enviar e-mail para mim se um de meus endereços de e-mail abaixo aparecer em um vazamento de dados.
 comm-opt-1 = Enviar todos os alertas de vazamento para { $primaryEmail }.
@@ -444,6 +446,7 @@ remove-fxm-blurb =
     Desativar alertas do { -product-name }. Sua { -brand-fxa } continuará ativa e você pode receber
     outras comunicações relacionadas à conta.
 manage-email-addresses = Gerenciar endereços de e-mail
+latest-breach-link = Ver se você estava neste vazamento
 welcome-back = Bom ver você de volta, { $userName }!
 welcome-user = Boas-vindas, { $userName }!
 breach-alert-subject = O { -product-name } encontrou seu e-mail em um novo vazamento de dados.
@@ -528,3 +531,21 @@ security-tips-headline = Dicas de segurança para se proteger de hackers
 steps-to-protect = Medidas a tomar para proteger sua identidade online
 take-further-steps = Tome medidas adicionais para proteger sua identidade
 alert-about-new-breaches = Me alertar sobre novos vazamentos
+other-known-breaches-found =
+    { $breachCount ->
+        [one] No entanto, apareceu em { $breachCount } outro vazamento conhecido.
+       *[other] No entanto, apareceu em { $breachCount } outros vazamentos conhecidos.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Informações adicionais, incluindo:
+# Title
+email-addresses-title = Endereços de e-mail
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = Em { $breachDate }, { $breachTitle } sofreu um vazamento. Uma vez que o vazamento foi descoberto e confirmado, ele foi adicionado à nossa base de dados em { $addedDate }.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = Preferências do { -product-short-name }
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menu
