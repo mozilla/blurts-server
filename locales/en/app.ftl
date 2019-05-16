@@ -5,13 +5,13 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{-product-name}</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox Account
 -brand-Chrome = Chrome
--product-short-name = Monitor
 
 
 layout-Firefox = {-brand-name}
