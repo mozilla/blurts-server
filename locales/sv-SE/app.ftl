@@ -399,7 +399,14 @@ how-fxm-1-blurb =
     går tillbaka till 2007. Denna grundläggande sökning kommer att nudda vid de flesta dataintrång, men inte
     sådana som innehåller känslig personlig information.
 how-fxm-2-headline = Registrera dig för intrångsövervakning
+how-fxm-3-headline = Få meddelanden i din webbläsare
+how-fxm-3-blurb =
+    Om du använder { -brand-name } får du ett meddelande om du besöker en
+    webbplats som har haft intrång. Ta reda på om du är en del av detta intrång
+    och vad du kan göra åt det.
+wtd-after-website = Vad man ska göra efter ett webbplatsintrång
 what-is-data-agg = Vad är en datainsamlare?
+protect-your-privacy = Skydda ditt privatliv på Internet
 avoid-personal-info = Undvik att använda personlig information i lösenord
 avoid-personal-info-blurb = Det är enkelt att hitta födelsedagar, adresser och familjemedlemmar på nätet. Unvik dessa ord i dina lösenord.
 
@@ -478,7 +485,12 @@ all-breaches = Alla intrång
 
 ## Updated error messages
 
+error-bot-blurb =
+    Vi misstänker att du kan vara en bot eftersom du sökte
+    flera e-postadresser inom en kort tidsperiod. För tillfället är du blockerad
+    från nya sökningar. Du kan försöka igen senare.
 error-csrf-headline = Sessionen avbröts
+error-invalid-unsub = Hur man avregistrerar från { -product-name }-varningar
 login-link-pre = Har du ett konto?
 login-link = Logga in
 # Button
@@ -497,6 +509,8 @@ security-tips-headline = Säkerhetstips för att skydda dig från hackare
 steps-to-protect = Åtgärder för att skydda din onlineidentitet
 take-further-steps = Ta ytterligare steg för att skydda din identitet
 alert-about-new-breaches = Varna mig om nya intrång
+see-if-youve-been-part = Se om du har varit en del av ett dataintrång på nätet.
+get-ongoing-breach-monitoring = Få kontinuerlig intrångsövervakning för flera e-postadresser.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Ta reda på
 new-unsub-error = Du måste avbryta prenumerationen från ett av de e-postmeddelanden som { -product-name } skickade.
