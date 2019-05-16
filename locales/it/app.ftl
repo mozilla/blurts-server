@@ -394,7 +394,7 @@ appears-in-x-breaches =
         [one] È stato coinvolto in { $breachCount } violazione conosciuta.
        *[other] È stato coinvolto in { $breachCount } violazioni conosciute.
     }
-see-if-breached = Verifica se sei stato coinvolto in una violazione di dati online.
+see-if-breached = Verifica se sei stato coinvolto in una violazione di dati online
 check-for-breaches = Cerca nelle violazioni
 find-out-what-hackers-know = Scopri quello che gli hacker già sanno di te. Impara come rimanere sempre un passo avanti.
 search-for-your-email = Cerca il tuo indirizzo email nelle violazioni di dati di pubblico dominio a partire dal 2007.
@@ -410,7 +410,7 @@ send-verification = Invia link di verifica
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-global-communication = Impostazioni comunicazioni
+global-communication = Impostazioni notifiche
 breach-summary = Riepilogo delle violazioni
 show-breaches-for-this-email = Visualizza tutte le violazioni che coinvolgono questa email.
 link-change-primary = Cambia l’indirizzo email principale
