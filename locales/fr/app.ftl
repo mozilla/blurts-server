@@ -361,6 +361,18 @@ all-breaches = Toutes les violations
 
 ## Updated error messages
 
+error-bot-headline = Recherches temporairement suspendues
+error-csrf-headline = Session expirée
+login-link-pre = Vous avez déjà un compte ?
+login-link = Connectez-vous
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] Adresse électronique surveillée
+       *[other] Adresses électroniques surveillées
+    }
 # A button on the All Breaches page that restores all of the breaches
 # back to the page if the user has filtered some of them out.
 see-all-breaches = Afficher toutes les fuites de données
