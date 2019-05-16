@@ -343,7 +343,7 @@ about-fxm-blurb = { -product-name } vous avertit si vos comptes en ligne ont ét
 fxm-warns-you = { -product-name } vous avertit si votre adresse électronique a été compromise dans une fuite de données. Découvrez si vous en êtes victime, apprenez comment mieux protéger vos comptes et recevez une alerte si votre adresse électronique apparaît dans une nouvelle fuite de données.
 # How Firefox Monitor works
 how-fxm-works = Fonctionnement de { -product-name }
-how-fxm-1-blurb = Recherchez votre adresse électronique parmi les fuites de données publiques remontant jusqu’à 2007. Cette recherche simple fera apparaître la plupart des fuites de données, à l’exception de celles qui contiennent des données personnelles sensibles.
+how-fxm-1-blurb = Recherchez votre adresse électronique parmi les fuites de données publiques remontant jusqu’à 2007. Une recherche basique fera apparaître la plupart des fuites de données, à l’exception de celles qui contiennent des données personnelles sensibles.
 how-fxm-3-headline = Recevez des notifications dans votre navigateur
 
 ## What to do after data breach tips
