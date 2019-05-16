@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -537,3 +538,17 @@ other-known-breaches-found =
 additional-information-including = Informazioni aggiuntive, tra cui:
 # Title
 email-addresses-title = Indirizzi email
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = { $breachTitle } è stato oggetto di una violazione di dati il { $breachDate }. Una volta che la violazione è stata scoperta e verificata, è stata aggiunta al nostro database il { $addedDate }.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = Preferenze di { -product-short-name }
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Accesso effettuato come:
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Filtra per categoria:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menu
