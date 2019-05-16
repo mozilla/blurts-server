@@ -374,7 +374,9 @@ take-action = Vidta åtgärder för att skydda dina konton
 keep-your-data-safe = Ta reda på vad du behöver göra för att hålla din data säker från cyberkriminella.
 website-breach = Webbplatsintrång
 sensitive-breach = Känsligt webbplatsintrång
+data-aggregator-breach = Datainsamlingsintrång
 unverified-breach = Overifierat intrång
+spam-list-breach = Spamlistintrång
 website-breach-plural = Webbplatsintrång
 sensitive-breach-plural = Känsliga intrång
 data-aggregator-breach-plural = Datainsamlingsintrång
@@ -382,12 +384,24 @@ unverified-breach-plural = Overifierade intrång
 spam-list-breach-plural = Spamlistintrång
 what-data = Vilka data har äventyrats:
 sensitive-sites = Hur behandlar { -product-name } känsliga webbplatser?
+sensitive-sites-copy =
+    { -product-name } avslöjar bara konton som är kopplade till dessa
+    typer av intrång efter att en e-postadress har verifierats. Det betyder att du är
+    den enda person som kan se om din information förkom i detta intrång (om inte någon
+    annan har tillgång till ditt e-postkonto).
 delayed-reporting-headline = Varför tog det så lång tid att anmäla detta intrång?
 about-fxm-headline = Om { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Hur { -product-name } fungerar
 how-fxm-1-headline = Gör en grundläggande sökning
+how-fxm-1-blurb =
+    Sök efter din e-postadress i offentliga dataintrång som
+    går tillbaka till 2007. Denna grundläggande sökning kommer att nudda vid de flesta dataintrång, men inte
+    sådana som innehåller känslig personlig information.
 how-fxm-2-headline = Registrera dig för intrångsövervakning
+what-is-data-agg = Vad är en datainsamlare?
+avoid-personal-info = Undvik att använda personlig information i lösenord
+avoid-personal-info-blurb = Det är enkelt att hitta födelsedagar, adresser och familjemedlemmar på nätet. Unvik dessa ord i dina lösenord.
 
 ## What to do after data breach tips
 
@@ -399,12 +413,27 @@ create-strong-passwords = Så här skapar du starka lösenord
 stop-reusing-pw = Sluta återanvända samma lösenord
 create-unique-pw = Skapa unika lösenord och spara dem någonstans säkert, som en lösenordshanterare.
 five-myths = 5 myter om lösenordshanterare
+create-a-fxa = Skapa ett { -brand-fxa } för din fullständiga rapport om intrång och för att få varningar.
+feat-security-tips = Säkerhetstips för att skydda dina konton
+feat-sensitive = Avancerad sökning i känsliga intrång
+feat-enroll-multiple = Anmäl flera e-postadresser vid intrångsövervakning
+sign-up-for-fxa = Registrera dig för ett { -brand-fxa }
+check-for-breaches = Sök efter intrång
+find-out-what-hackers-know = Ta reda på vad hackare redan vet om dig. Lär dig hur du kan vara ett steg före dem.
 search-for-your-email = Sök efter din e-postadress i offentliga dataintrång som går tillbaka till 2007.
 back-to-top = Tillbaka till toppen
+comm-opt-0 = Mejla mig om en av mina e-postadresser nedan förekommer i ett dataintrång.
+comm-opt-1 = Skicka alla intrångsvarningar till { $primaryEmail }.
 stop-monitoring-this = Sluta övervaka denna e-postadress.
 resend-verification = Skicka e-postbekräftelse igen
 add-new-email = Lägg till en ny e-postadress
 send-verification = Skicka verifieringslänk
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Global kommunikation
 breach-summary = Intrångssammanfattning
 show-breaches-for-this-email = Visa alla intrång för denna e-post.
 link-change-primary = Ändra primär e-postadress
@@ -412,9 +441,33 @@ remove-fxm = Ta bort { -product-name }
 manage-email-addresses = Hantera e-postadresser
 welcome-back = Välkommen tillbaka, { $userName }!
 welcome-user = Välkommen, { $userName }!
+your-info-was-discovered-headline = Dina uppgifter upptäcktes i ett nytt dataintrång.
+your-info-was-discovered-blurb =
+    Du är registrerad för att ta emot { -product-name }-varningar
+    när din e-post förekommer i ett dataintrång. Här är vad vi vet om detta intrång.
 what-to-do-after-breach = Vad ska man göra efter ett dataintrång
 ba-next-step-1 = Ändra ditt lösenord till ett starkt, unikt lösenord.
+ba-next-step-blurb-1 =
+    Ett starkt lösenord använder en kombination av stora och små bokstäver,
+    specialtecken och siffror. Det innehåller inte personlig information som
+    din adress, födelsedag eller familjenamn.
+ba-next-step-2 = Sluta använda det exponerade lösenordet helt.
+ba-next-step-blurb-2 =
+    Cyberkriminella kan hitta ditt lösenord på dark web och använda den
+    för att logga in på dina andra konton. Det bästa sättet att skydda dina konton
+    är att använda unika lösenord för var och ett.
+ba-next-step-3 = Få hjälp med att skapa bättre lösenord och hålla dem säkra.
+ba-next-step-blurb-3 =
+    Använd en lösenordshanterare för att skapa starka, unika lösenord. Lösenordshanterare lagrar säkert alla dina
+    inloggningar så att du kan komma åt dem på alla dina enheter.
+faq1 = Jag känner inte igen detta företag eller webbplats. Varför finns jag med i detta intrång?
+faq2 = Varför tog det så lång tid att meddela mig om detta intrång?
+faq3 = Hur vet jag att detta är ett legitimt e-postmeddelande från { -product-name }?
 get-alerted = Bli varnad om nya intrång.
+was-your-info-exposed = Var dina uppgifter utsatt för dataintrång { $breachName }?
+find-out-if = Ta reda på om dina uppgifter har exponerats i detta intrång.
+fb-not-comp = Denna e-postadress förekom inte i intrång { $breachName }.
+fb-comp-only = Denna e-postadress förekom i intrång{ $breachName }.
 no-other-breaches-found = Inga andra intrång hittades från en grundläggande sökning.
 no-results-blurb = Tyvärr, intrånget finns inte i vår databas.
 all-breaches-headline = Alla intrång  i { -product-name }
@@ -438,6 +491,7 @@ see-all-breaches = Se alla intrång
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Resultat för: { $userEmail }
 email-verification-required = E-postbekräftelse krävs
+fxa-primary-email = { -brand-fxa } E-post - Primär
 what-is-a-website-breach = Vad är ett webbplatsintrång?
 security-tips-headline = Säkerhetstips för att skydda dig från hackare
 steps-to-protect = Åtgärder för att skydda din onlineidentitet
