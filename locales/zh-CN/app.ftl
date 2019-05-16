@@ -356,8 +356,12 @@ unverified-breach-plural = 未经证实的信息外泄
 spam-list-breach-plural = 垃圾邮件列表信息外泄
 what-data = 泄露了哪些数据：
 sensitive-sites = { -product-name } 如何处理这些敏感网站？
+sensitive-sites-copy = { -product-name } 仅会在电子邮件地址验证后，才显示与这些数据外泄事件相关联的账号。也就是说只有您能看到您的账号是否与此事件有关（除非有他人也能使用使用您的邮箱账号。）
 delayed-reporting-headline = 为什么要这么久才公开这些事件？
+delayed-reporting-copy = 有的时候，数据外泄后可能要几个月甚至几年，您的登录信息才会出现在暗网上。当我们发现外泄的数据并确认无误后，就会加入数据库。
 about-fxm-headline = 关于 { -product-name }
+about-fxm-blurb = { -product-name } 会在您的账号出现于数据外泄事件时警告您。您可以在此看看账号是否出现于某次数据外泄事件、在有新的外泄事件时收到警报，并采取行动保护您的在线账号。{ -product-name } 由 { -brand-Mozilla } 提供。
+fxm-warns-you = { -product-name } 会在您的电子邮件地址出现于数据外泄事件时警告您。可以在此看看有哪些信息已遭外泄、了解如何保护在线账号，并在您的邮箱地址出现于新的外泄事件时接收警报。
 # How Firefox Monitor works
 how-fxm-works = { -product-name } 工作原理
 how-fxm-1-headline = 进行基本搜索
