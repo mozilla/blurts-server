@@ -395,6 +395,7 @@ passwords-exposed =
 see-all-breaches = Afficher toutes les fuites de données
 scan-results-known-breaches =
     { $breachCount ->
+        [zero] Cette adresse électronique n’apparaît dans aucune fuite de données connue.
         [one] Cette adresse électronique apparaît dans une fuite de données connue.
        *[other] Cette adresse électronique apparaît dans { $breachCount } fuites de données connues.
     }
