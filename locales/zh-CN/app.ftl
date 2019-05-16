@@ -365,8 +365,11 @@ fxm-warns-you = { -product-name } 会在您的电子邮件地址出现于数据�
 # How Firefox Monitor works
 how-fxm-works = { -product-name } 工作原理
 how-fxm-1-headline = 进行基本搜索
+how-fxm-1-blurb = 搜索您的电子邮件地址，是否出现于2007年起，已公开的数据外泄事件数据库中。基本搜索可找出大部分数据外泄事件，但不会列出包含个人敏感信息的事件。
 how-fxm-2-headline = 订阅数据外泄事件警报
+how-fxm-2-blurb = 注册 { -brand-fxa }来监控您的邮箱是否出现于各种数据外泄事件中。确认账号后，也会收到包含外泄的敏感信息等过去事件的相关完整报告。
 how-fxm-3-headline = 在浏览器中收到通知
+how-fxm-3-blurb = 使用 { -brand-name } 的时候，当您打开曾发生外泄事件的网站时将会收到通知。可以立即了解您是否也身处数据外泄事件之中，及可以采取哪些行动。
 wtd-after-website = 网站信息外泄后该怎么办
 wtd-after-data-agg = 数据聚合商发生信息泄露后，该做哪些事？
 what-is-data-agg = “数据聚合商”是什么？
@@ -400,6 +403,7 @@ appears-in-x-breaches =
 see-if-breached = 看看您是否也出现在数据外泄事件中。
 check-for-breaches = 检查是否有外泄事件
 find-out-what-hackers-know = 看看黑客已经掌握了您哪些资料，并了解如何先发制人。
+search-for-your-email = 搜索自2007年起的公开数据外泄事件当中，是否包含您的电子邮件地址。
 back-to-top = 回到顶端
 comm-opt-1 = 将所有外泄警报发送到 { $primaryEmail }。
 stop-monitoring-this = 停止监控此电子邮件地址。
@@ -423,11 +427,14 @@ welcome-user = { $userName }，欢迎！
 breach-alert-subject = { -product-name } 发现您的邮箱出现在新的数据外泄事件中。
 your-info-was-discovered-headline = 在新的数据外泄事件中发现了您的信息。
 what-to-do-after-breach = 数据外泄后该怎么办
+ba-next-step-2 = 全面停止使用已泄露的密码。
+faq2 = 为什么过了这么久才通知我有数据外泄事件？
 faq3 = 我怎么知道这封信是真的来自 { -product-name }？
 new-breaches-found =
     { $breachCount ->
        *[other] 找到 { $breachCount } 次新的数据外泄事件
     }
+sign-up-headline-1 = 注册 { -brand-fxa }，获取数据外泄警报。
 get-alerted = 在有新的外泄事件时，接收警报。
 was-your-info-exposed = 您的信息是否出现在 { $breachName } 的数据外泄事件？
 find-out-if = 看看您的数据是否出现在这次外泄事件中。
