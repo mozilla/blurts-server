@@ -399,6 +399,7 @@ spam-list-breach = Levélszemét-lista adatszegés
 
 ## What to do after data breach tips
 
+back-to-top = Vissza a tetejére
 stop-monitoring-this = Az e-mail cím figyelésének leállítása.
 resend-verification = Ellenőrző e-mail újraküldése
 add-new-email = Új e-mail cím hozzáadása
