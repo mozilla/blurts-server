@@ -333,6 +333,7 @@ data-aggregator-breach-plural = Fuites d’agrégateurs de données
 unverified-breach-plural = Fuites non vérifiées
 what-data = Quelles données ont été compromises :
 sensitive-sites = Comment { -product-name } traite-t-il les sites sensibles ?
+delayed-reporting-headline = Pourquoi a-t-il fallu autant de temps pour signaler cette fuite de données ?
 about-fxm-headline = À propos de { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Fonctionnement de { -product-name }
@@ -349,11 +350,14 @@ five-myths = 5 idées reçues sur les gestionnaires de mots de passe
 create-a-fxa = Créez un { -brand-fxa } pour recevoir votre rapport complet sur les fuites de données et pour recevoir des alertes.
 feat-security-tips = Conseils de sécurité pour protéger vos comptes
 feat-sensitive = Recherche avancée dans les fuites de données sensibles
+sign-up-for-fxa = Créez un { -brand-fxa }
+check-for-breaches = Vérifier les fuites de données
 back-to-top = Haut de la page
 comm-opt-0 = M’envoyer un courriel si l’une de mes adresses électroniques ci-dessous apparaît dans une fuite de données.
 comm-opt-1 = Envoyer toutes les alertes de fuites de données à { $primaryEmail }.
 welcome-back = Heureux de vous revoir, { $userName } !
 welcome-user = Bienvenue, { $UserName } !
+all-breaches = Toutes les violations
 
 ## Updated error messages
 
