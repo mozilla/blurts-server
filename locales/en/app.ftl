@@ -841,3 +841,6 @@ signed-in-as = Signed in as: { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
 filter-by = Filter By: 
+
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menu
