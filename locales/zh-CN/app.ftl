@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -469,6 +470,8 @@ data-breaches-exposed =
     { $breaches ->
        *[other] 泄露您信息的数据外泄事件
     }
+# Button
+see-additional-breaches = 查看其他外泄事件
 # A button on the All Breaches page that restores all of the breaches
 # back to the page if the user has filtered some of them out.
 see-all-breaches = 查看所有外泄事件
@@ -485,6 +488,8 @@ email-verification-required = 需要验证邮箱地址
 fxa-primary-email = { -brand-fxa } 邮件 - 主账号
 what-is-a-website-breach = 网站信息外泄事件是什么？
 steps-to-protect = 采取措施保护您的在线身份
+take-further-steps = 采取更多措施保护身份信息
+alert-about-new-breaches = 有新的外泄事件时通知我
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = 找找看
 new-unsub-error = 您可以从任何一封 { -product-name } 发送的邮件取消订阅。
@@ -497,3 +502,13 @@ other-known-breaches-found =
 additional-information-including = 其他信息，包含：
 # Title
 email-addresses-title = 电子邮件地址
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = { -product-short-name } 偏好设置
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = 已登录为：{ $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = 按分类筛选：
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = 菜单
