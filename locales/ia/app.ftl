@@ -378,6 +378,8 @@ how-fxm-3-blurb = Si tu usa { -brand-name }, tu recipera un aviso si tu visita u
 wtd-after-website = Que facer post un violation de sito web
 wtd-after-data-agg = Que facer post un violation de aggregator de datos
 what-is-data-agg = Que es un aggregator de datos?
+what-is-data-agg-blurb = La aggregatores de datos o mediatores de datos, collige informationes ex registrationes public e los compra ex altere companias. Illes compila iste datos pro vender los a companias pro propositos de marketing. Le victimas de iste violationes ha minor riscos de fraudes financiari, ma le hackers poterea usar iste datos pro finger se illes o profilar se pro illes.
+protect-your-privacy = Protege tu confidentialitate online
 
 ## What to do after data breach tips
 
