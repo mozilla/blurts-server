@@ -312,3 +312,28 @@ create-free-account = Crea una { -brand-fxa } gratuita para recibir un reporte c
 get-your-report-and-sign-up = Obtén tu reporte y suscríbete para recibir alertas.
 # Link title
 frequently-asked-questions = Preguntas frecuentes
+about-firefox-monitor = Acerca de { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Preferencias
+# Link title.
+home = Inicio
+# Link title
+breaches = Filtraciones
+# Link title
+security-tips = Consejos de seguridad
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Abrir la navegación de { -brand-fxa }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = ÚLTIMA FILTRACIÓN AGREGADA
+breach-added = Filtración reportada:
+breach-discovered = Filtración descubierta:
+# Link title
+more-about-this-breach = Más acerca de esta filtración
+take-control = Recupera el control de tu información personal.
+
+## What to do after data breach tips
+
+
+## Updated error messages
+
