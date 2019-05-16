@@ -366,6 +366,9 @@ delayed-reporting-headline = Perque il ha requirite assi longe tempore pro signa
 delayed-reporting-copy = Il pote aliquando prender menses o annos proque le credentiales exponite in un violation de datos appare sur le web obscur. Violationes es addite a nostre base de datos a pena illos ha essite discoperite e verificate.
 about-fxm-headline = A proposito de { -product-name }
 about-fxm-blurb = { -product-name } adverti si tu contos online era implicate in un violation de datos. Discoperi si tu ha essite implicate in un violation de datos, recipe avisos re nove violationes, e prende mesuras pro proteger tu contos online. { -product-name } es fornite per { -brand-Mozilla }.
+fxm-warns-you = { -product-name } te adverti si tu adresse email ha essite exponite in un violation de datos online. Vide si tu informationes ha essite exponite, apprende a proteger melio tu contos online e mantene te allertate si tu adresse email appare in un nove violation.
+# How Firefox Monitor works
+how-fxm-works = Como functiona { -product-name }
 
 ## What to do after data breach tips
 
