@@ -11,6 +11,7 @@
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox Account
 -brand-Chrome = Chrome
+-product-short-name = Monitor
 
 
 layout-Firefox = {-brand-name}
@@ -831,4 +832,4 @@ email-addresses-title = Email Addresses
 breach-overview = On { $breachDate }, { $breachTitle } suffered a breach. Once the breach was discovered and verified it was added to our database on { $addedDate }.
 
 # Title appearing on the Preferences dashboard. 
-monitor-preferences = {-brand-monitor} Preferences
+monitor-preferences = {-product-short-name} Preferences
