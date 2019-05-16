@@ -355,6 +355,17 @@ data-aggregator-breach = Violation de aggregator de datos
 unverified-breach = Violation non verificate
 spam-list-breach = Violation de lista de spam
 website-breach-plural = Violation de sitos web
+sensitive-breach-plural = Violationes de datos sensibile
+data-aggregator-breach-plural = Violation de aggregator de datos
+unverified-breach-plural = Violationes non verificate
+spam-list-breach-plural = Violationes de lista de spam
+what-data = Que datos ha essite compromittite:
+sensitive-sites = Como { -product-name } tracta le sitos sensibile?
+sensitive-sites-copy = { -product-name } revela solo le contos associate con iste typos de violationes post que un adresse email ha essite verificate. Isto significa tu es le sol persona qui pote vider si tu informationes era in iste violation (a minus que alcuno altere ha accesso a tu conto email).
+delayed-reporting-headline = Perque il ha requirite assi longe tempore pro signalar iste violation?
+delayed-reporting-copy = Il pote aliquando prender menses o annos proque le credentiales exponite in un violation de datos appare sur le web obscur. Violationes es addite a nostre base de datos a pena illos ha essite discoperite e verificate.
+about-fxm-headline = A proposito de { -product-name }
+about-fxm-blurb = { -product-name } adverti si tu contos online era implicate in un violation de datos. Discoperi si tu ha essite implicate in un violation de datos, recipe avisos re nove violationes, e prende mesuras pro proteger tu contos online. { -product-name } es fornite per { -brand-Mozilla }.
 
 ## What to do after data breach tips
 
