@@ -376,6 +376,8 @@ how-fxm-2-blurb = Crea un { -brand-fxa } pro controlar tu email pro violationes 
 how-fxm-3-headline = Recipe avisos in tu navigator
 how-fxm-3-blurb = Si tu usa { -brand-name }, tu recipera un aviso si tu visita un sito que ha essite violate. Discoperi immediatemente si tu era parte de ille violation e que tu pote facer re illo.
 wtd-after-website = Que facer post un violation de sito web
+wtd-after-data-agg = Que facer post un violation de aggregator de datos
+what-is-data-agg = Que es un aggregator de datos?
 
 ## What to do after data breach tips
 
