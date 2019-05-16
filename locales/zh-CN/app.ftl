@@ -380,12 +380,24 @@ avoid-personal-info-blurb = 在网络上很容易查找到生日、地址、和�
 
 change-pw = 更改您的密码
 even-for-old = 就算是旧账号，改密码也很重要。
+make-new-pw-unique = 让新密码不同且唯一
+strength-of-your-pw = 密码的强度直接影响您的在线安全。
 create-strong-passwords = 如何创建高强度密码
 stop-reusing-pw = 停止重复使用相同密码
+create-unique-pw = 为每个网站使用不同密码，并将其保存在安全的地方（如密码管理器）。
 five-myths = 关于密码管理器的 5 个误解
+create-a-fxa = 注册 { -brand-fxa } 即可获取数据外泄事件的完整报告，并接收警报。
 feat-security-tips = 保护账号的安全提示
 feat-sensitive = 高级搜索敏感信息外泄事件
+feat-enroll-multiple = 注册多组邮箱地址，以监控外泄事件
 sign-up-for-fxa = 注册 { -brand-fxa }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+       *[other] 出现在 { $breachCount } 次已知的外泄事件中。
+    }
+see-if-breached = 看看您是否也出现在数据外泄事件中。
 check-for-breaches = 检查是否有外泄事件
 find-out-what-hackers-know = 看看黑客已经掌握了您哪些资料，并了解如何先发制人。
 back-to-top = 回到顶端
@@ -408,7 +420,18 @@ manage-email-addresses = 管理电子邮件地址
 latest-breach-link = 看看您是否也在这次外泄事件中
 welcome-back = 欢迎回来，{ $userName }！
 welcome-user = { $userName }，欢迎！
+breach-alert-subject = { -product-name } 发现您的邮箱出现在新的数据外泄事件中。
+your-info-was-discovered-headline = 在新的数据外泄事件中发现了您的信息。
 what-to-do-after-breach = 数据外泄后该怎么办
+faq3 = 我怎么知道这封信是真的来自 { -product-name }？
+new-breaches-found =
+    { $breachCount ->
+       *[other] 找到 { $breachCount } 次新的数据外泄事件
+    }
+get-alerted = 在有新的外泄事件时，接收警报。
+was-your-info-exposed = 您的信息是否出现在 { $breachName } 的数据外泄事件？
+find-out-if = 看看您的数据是否出现在这次外泄事件中。
+fb-not-comp = 这个邮箱没有出现在 { $breachName } 外泄事件。
 no-other-breaches-found = 在基本搜索中未找到其他外泄事件。
 no-results-blurb = 很抱歉，我们的数据库中没有该外泄事件相关信息。
 all-breaches-headline = { -product-name } 的所有数据外泄事件
@@ -442,6 +465,10 @@ data-breaches-exposed =
 # A button on the All Breaches page that restores all of the breaches
 # back to the page if the user has filtered some of them out.
 see-all-breaches = 查看所有外泄事件
+scan-results-known-breaches =
+    { $breachCount ->
+       *[other] 此电子邮件地址出现在 { $breachCount } 次已知数据外泄事件中。
+    }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
@@ -449,7 +476,17 @@ results-for = { $userEmail } 的搜索结果：
 other-monitored-emails = 其他监控的邮箱地址
 email-verification-required = 需要验证邮箱地址
 fxa-primary-email = { -brand-fxa } 邮件 - 主账号
+what-is-a-website-breach = 网站信息外泄事件是什么？
+steps-to-protect = 采取措施保护您的在线身份
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = 找找看
+new-unsub-error = 您可以从任何一封 { -product-name } 发送的邮件取消订阅。
+other-known-breaches-found =
+    { $breachCount ->
+       *[other] 但它还出现在其他 { $breachCount } 次已知数据外泄事件中。
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = 其他信息，包含：
 # Title
 email-addresses-title = 电子邮件地址

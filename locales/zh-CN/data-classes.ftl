@@ -12,6 +12,9 @@ avatars = 头像
 bank-account-numbers = 银行账号
 beauty-ratings = 颜值
 biometric-data = 生物特征数据
+# This string is the shortened version of "Biographies", and 
+# refers to biographical data about a user.
+bios = 自传
 browser-user-agent-details = 浏览器 User Agent 详细信息
 browsing-histories = 浏览历史记录
 buying-preferences = 购物偏好

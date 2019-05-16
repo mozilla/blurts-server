@@ -61,7 +61,7 @@ share-by-email-subject = 看看您是否受到数据外泄事件影响。
 # Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
 share-by-email-message =
     嗨！
-    { -brand-name } 有一项免费服务，让您可以检查自己在各个网站注册的帐号，是否出现在过去的数据外泄事件中。以下是检查方式：
+    { -brand-name } 有一项免费服务，让您可以检查自己在各个网站注册的账号，是否出现在过去的数据外泄事件中。以下是检查方式：
     1. 转到 { "https://monitor.firefox.com" } 并搜索您的电子邮件地址。
     2. 看看您的在线账号是出现在数据外泄事件中。
     3. 从 { -product-name } 获取有关如何处理这些问题的小贴士。
