@@ -383,6 +383,9 @@ breach-discovered = Brecha descoberta:
 # Link title
 more-about-this-breach = Mais acerca desta brecha
 take-control = Retome o controlo dos seus dados pessoais.
+read-more-tips = Ler mais dicas de segurança
+how-hackers-work = Compreender como é que os hackers funcionam
+stay-alert = Mantenha-se atento(a) a novas brechas
 website-breach = Brecha de website
 sensitive-breach = Brechas de websites sensíveis
 data-aggregator-breach = Brecha agregadora de dados
