@@ -363,7 +363,9 @@ appears-in-x-breaches =
     }
 see-if-breached = 看看您是否也出現在資料外洩事件中。
 check-for-breaches = 檢查是否有外洩事件
+search-for-your-email = 搜尋自 2007 年起的公開資料外洩事故當中，是否包含您的電子郵件帳號。
 back-to-top = 回到頁面頂端
+comm-opt-0 = 當下列我的任一個電子郵件信箱地址出現在資料外洩事故時，發信通知我。
 comm-opt-1 = 將所有外洩警報發送到 { $primaryEmail }。
 stop-monitoring-this = 停止監控此信箱。
 resend-verification = 重寄驗證信
@@ -379,6 +381,7 @@ breach-summary = 外洩事件摘要
 show-breaches-for-this-email = 顯示所有與這個信箱相關的資料外洩事件。
 link-change-primary = 更改主要電子郵件信箱地址
 remove-fxm = 移除 { -product-name }
+remove-fxm-blurb = 關閉 { -product-name } 的警報。您的 { -brand-fxa } 仍然有效，還是會收到其它與帳號相關的電子報。
 manage-email-addresses = 管理電子郵件地址
 latest-breach-link = 看看您是不是也在這場資料外洩事件當中
 welcome-back = { $userName }，歡迎回來！
