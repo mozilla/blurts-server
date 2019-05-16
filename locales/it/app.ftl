@@ -322,20 +322,20 @@ fxa-account = { -brand-fxa(capitalization: "uppercase") }
 open-fxa-menu = Apri la navigazione di { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ULTIMA VIOLAZIONE AGGIUNTA
-breach-added = Violazione segnalata:
+breach-added = Data segnalazione:
 breach-discovered = Violazione scoperta:
 # Link title
 more-about-this-breach = Altro su questa violazione
-take-control = Riprendi il controllo dei tuoi dati personali.
+take-control = Riprendi il controllo dei tuoi dati personali
 cant-stop-hackers = Non puoi fermare gli hacker, ma puoi evitare le cattive abitudini che gli semplificano il lavoro.
 read-more-tips = Leggi altri consigli sulla sicurezza
 how-hackers-work = Capire come gli hacker lavorano
 monitor-your-online-accounts = Iscriviti con un { -brand-fxa } per tenere sotto controllo le violazioni
 stay-alert = Rimani sempre aggiornato sulle nuove violazioni
-if-your-info = Se le tue informazioni compaiono in una nuova violazione, ti invieremo un avviso.
+if-your-info = Ti invieremo un avviso se le tue informazioni compaiono in una nuova violazione.
 search-all-emails = Cerca tutti i tuoi indirizzi email tra le violazioni e ricevi avvisi sulle nuove minacce.
-monitor-several-emails = Tieni sotto controllo più email
-take-action = Agisci per proteggere i tuoi account
+monitor-several-emails = Tieni sotto controllo più indirizzi email
+take-action = Prendi misure per proteggere i tuoi account
 keep-your-data-safe = Scopri cosa devi fare per proteggere i tuoi dati dai criminali informatici.
 website-breach = Violazione sito web
 sensitive-breach = Violazione di dati sensibili
@@ -394,9 +394,9 @@ appears-in-x-breaches =
         [one] È coinvolto in { $breachCount } violazione conosciuta.
        *[other] È coinvolto in { $breachCount } violazioni conosciute.
     }
-see-if-breached = Scopri se sei stato coinvolto in una violazione di dati online.
-check-for-breaches = Controlla violazioni
-find-out-what-hackers-know = Scopri quello che gli hacker già conoscono di te. Impara come rimanere sempre un passo avanti.
+see-if-breached = Verifica se sei stato coinvolto in una violazione di dati online.
+check-for-breaches = Cerca nelle violazioni
+find-out-what-hackers-know = Scopri quello che gli hacker già sanno di te. Impara come rimanere sempre un passo avanti.
 search-for-your-email = Cerca il tuo indirizzo email nelle violazioni di dati di pubblico dominio a partire dal 2007.
 back-to-top = Torna in alto
 comm-opt-0 = Inviami un’email se uno degli indirizzi indicati di seguito appare in una violazione di dati.
@@ -419,7 +419,7 @@ remove-fxm-blurb =
     Disattiva gli avvisi di { -product-name }. Il tuo { -brand-fxa } rimarrà attivo e potresti ricevere
     ulteriori comunicazioni relative all’account.
 manage-email-addresses = Gestisci indirizzi email
-latest-breach-link = Controlla se sei stato coinvolto in questa violazione
+latest-breach-link = Verifica se sei stato coinvolto in questa violazione
 welcome-back = Bentornata/o, { $userName }.
 welcome-user = Benvenuta/o, { $userName }.
 breach-alert-subject = { -product-name } ha trovato la tua email in una nuova violazione di dati.
@@ -520,9 +520,9 @@ what-is-a-website-breach = Che cos’è una violazione di dati?
 website-breach-blurb = La violazione di dati di un sito web si verifica quando criminali informatici rubano, copiano o espongono informazioni personali dagli account online. Di solito è il risultato del lavoro di hacker che riescono a individuare un punto debole nella sicurezza del sito web. Una violazione può verificarsi anche quando le informazioni sull’account vengono lasciate trapelare per errore.
 security-tips-headline = Suggerimenti sulla sicurezza per proteggersi dagli hacker
 steps-to-protect = Passi da intraprendere per proteggere la tua identità online
-take-further-steps = Adotta altre misure per proteggere la tua identità
+take-further-steps = Ulteriori misure per proteggere la tua identità
 alert-about-new-breaches = Avvisami in caso di nuove violazioni
-see-if-youve-been-part = Scopri se sei stato coinvolto in una violazione di dati online.
+see-if-youve-been-part = Verifica se sei stato coinvolto in una violazione di dati online
 get-ongoing-breach-monitoring = Tieni traccia delle violazioni in corso per più indirizzi email.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Scopri
