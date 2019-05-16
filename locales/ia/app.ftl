@@ -429,6 +429,28 @@ link-change-primary = Modificar adresse de email primari
 remove-fxm = Remover { -product-name }
 remove-fxm-blurb = Disactivar le avisos de { -product-name }. Tu { -brand-fxa } remanera active, e tu pote reciper altere communicationes pertinente tu conto.
 manage-email-addresses = Gerer adresses email
+latest-breach-link = Vide si tu era in iste violation
+welcome-back = Benvenite retro, { $userName }!
+welcome-user = Benvenite, { $userName }!
+breach-alert-subject = { -product-name } ha trovate tu email in un nove violation de datos.
+your-info-was-discovered-headline = Tu informationes ha essite discoperite in un nove violation de datos.
+your-info-was-discovered-blurb = Tu es authenticate pro reciper avisos de { -product-name } quando tu adresse email appare in un violation de datos. Ecce que nos sape re iste violation.
+what-to-do-after-breach = Que facer post un violation de datos
+ba-next-step-1 = Cambia tu contrasigno a un forte, unic contrasigno.
+ba-next-step-blurb-1 = Un forte contrasigno usa un combination de majusculas e minusculas, special characteres e numeros. Il non contine informationes personal como tu adresse, anniversario o nomines de familia.
+ba-next-step-2 = Cessa integremente de usar le contrasigno exponite.
+ba-next-step-blurb-2 = Cybercriminales poterea trovar tu contrasigno sur le web obscur e lo usa pro te authenticar a tu altere contos. Le melior maniera de proteger tu contos es usar unic contrasignos pro cata un.
+ba-next-step-3 = Recipe adjuta pro le creation de melior contrasignos e mantener los secur.
+ba-next-step-blurb-3 = Usa un gestor de contrasigno pro crear contrasignos forte e unic. Le gestores de contrasignos reserva con securitate tote tu authenticationes, assi que tu pote acceder los inter tote tu apparatos.
+faq1 = Io non recognosce iste compania o sito web. Perque es io in iste violation?
+faq2 = Perque il ha requirite assi longe tempore pro notificar me de iste violation?
+faq3 = Como sape io si isto es un email legitime de { -product-name }?
+new-breaches-found =
+    { $breachCount ->
+        [one] { $breachCount } NOVE VIOLATION TROVATE
+       *[other] { $breachCount } NOVE VIOLATIONES TROVATE
+    }
+sign-up-headline-1 = Recipe avisos in corso con un { -brand-fxa }.
 
 ## Updated error messages
 
