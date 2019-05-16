@@ -338,6 +338,7 @@ delayed-reporting-headline = Pourquoi a-t-il fallu autant de temps pour signaler
 about-fxm-headline = À propos de { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Fonctionnement de { -product-name }
+how-fxm-1-blurb = Recherchez votre adresse électronique parmi les fuites de données publiques remontant à jusqu’à 2007. Cette recherche simple fera apparaître la plupart des fuites de données, à l’exception de celles qui contiennent des données personnelles sensibles.
 
 ## What to do after data breach tips
 
