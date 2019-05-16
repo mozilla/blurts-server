@@ -345,6 +345,16 @@ how-hackers-work = Comprende como le hackers labora
 monitor-your-online-accounts = Inscribe te con un { -brand-fxa } al controlo del violationes.
 stay-alert = Sta alerte a nove violationes
 if-your-info = Si tu informationes emerge in un nove violation de datos, nos te inviara un aviso.
+search-all-emails = Cercar pro violationes de tote tu adresses de email e recipe avisos re nove menacias.
+monitor-several-emails = Controla plure emails
+take-action = Activa te pro proteger tu contos
+keep-your-data-safe = Discoperi que tu debe facer pro mantener tu datos secur ab le cyber criminales.
+website-breach = Violation de sitos web
+sensitive-breach = Violation de sitos web sensibile
+data-aggregator-breach = Violation de aggregator de datos
+unverified-breach = Violation non verificate
+spam-list-breach = Violation de lista de spam
+website-breach-plural = Violation de sitos web
 
 ## What to do after data breach tips
 
