@@ -380,9 +380,34 @@ wtd-after-data-agg = Que facer post un violation de aggregator de datos
 what-is-data-agg = Que es un aggregator de datos?
 what-is-data-agg-blurb = La aggregatores de datos o mediatores de datos, collige informationes ex registrationes public e los compra ex altere companias. Illes compila iste datos pro vender los a companias pro propositos de marketing. Le victimas de iste violationes ha minor riscos de fraudes financiari, ma le hackers poterea usar iste datos pro finger se illes o profilar se pro illes.
 protect-your-privacy = Protege tu confidentialitate online
+no-pw-to-change = Diversemente de un violation de sito web, il ha nulle contrasigno a cambiar.
+avoid-personal-info = Evitar de usar informationes personal in le contrasignos
+avoid-personal-info-blurb = Il es facile trovar anniversarios, adresses e familiares online. Tener iste parolas foras de tu contrasignos.
 
 ## What to do after data breach tips
 
+change-pw = Cambia tu contrasigno.
+even-for-old = Mesmo pro vetere contos, il es importante actualisar tu contrasigno.
+make-new-pw-unique = Crea le nove contrasigno differente e unic
+strength-of-your-pw = Le fortia de tu contrasignos impinge directemente tu securitate online.
+create-strong-passwords = Como crear contrasignos forte
+stop-reusing-pw = Cessa de reusar contrasignos identic
+create-unique-pw = Crea contrasignos unic e salva los in un loco secur, como un gestor de contrasignos.
+five-myths = 5 mythos re le gestores de contrasignos
+create-a-fxa = Crea un { -brand-fxa } pro reciper tu reporto complete e le avisos de violationes.
+feat-security-tips = Consilios de securitate pro proteger tu contos
+feat-sensitive = Recerca avantiate in le violationes de datos sensibile
+feat-enroll-multiple = Inscribe plure emails in le controlo del violationes
+sign-up-for-fxa = Registra un { -brand-fxa }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Es implicate in { $breachCount } note violation.
+       *[other] Es implicate in { $breachCount } note violationes.
+    }
+see-if-breached = Vide si tu ha essite implicate in un violation de datos online.
+check-for-breaches = Controla pro violationes
 
 ## Updated error messages
 
