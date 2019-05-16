@@ -520,6 +520,11 @@ get-alerted = Bli varnad om nya intrång.
 was-your-info-exposed = Var dina uppgifter utsatt för dataintrång { $breachName }?
 find-out-if = Ta reda på om dina uppgifter har exponerats i detta intrång.
 fb-not-comp = Denna e-postadress förekom inte i intrång { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Men det förekommer i { $breachCount } annat intrång.
+       *[other] Men det förekommer i  { $breachCount } andra intrång.
+    }
 fb-comp-only = Denna e-postadress förekom i intrång{ $breachName }.
 no-other-breaches-found = Inga andra intrång hittades från en grundläggande sökning.
 no-results-blurb = Tyvärr, intrånget finns inte i vår databas.
