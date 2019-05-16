@@ -333,6 +333,7 @@ data-aggregator-breach-plural = Fuites d’agrégateurs de données
 unverified-breach-plural = Fuites non vérifiées
 what-data = Quelles données ont été compromises :
 sensitive-sites = Comment { -product-name } traite-t-il les sites sensibles ?
+sensitive-sites-copy = { -product-name } signale les comptes associés à ce type de fuite seulement si une adresse électronique a été vérifiée. Cela signifie que vous êtes la seule personne qui puisse savoir si vos données étaient impactées par la fuite (sauf si quelqu’un d’autre a accès à votre compte de courrier électronique).
 delayed-reporting-headline = Pourquoi a-t-il fallu autant de temps pour signaler cette fuite de données ?
 about-fxm-headline = À propos de { -product-name }
 # How Firefox Monitor works
@@ -370,8 +371,24 @@ login-link = Connectez-vous
 # your localization, because it would result in the number showing twice.
 email-addresses-being-monitored =
     { $emails ->
-        [one] Adresse électronique surveillée
-       *[other] Adresses électroniques surveillées
+        [one] adresse électronique surveillée
+       *[other] adresses électroniques surveillées
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] fuite de données a compromis vos informations
+       *[other] fuites de données ont compromis vos informations
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] mot de passe compromis parmi toutes les fuites de données
+       *[other] mots de passe compromis parmi toutes les fuites de données
     }
 # A button on the All Breaches page that restores all of the breaches
 # back to the page if the user has filtered some of them out.
