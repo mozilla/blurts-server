@@ -328,6 +328,7 @@ fxm-warns-you = { -product-name } 會在您的電子郵件地址出現於線上�
 # How Firefox Monitor works
 how-fxm-works = { -product-name } 的運作原理
 how-fxm-1-headline = 進行基礎搜尋
+how-fxm-1-blurb = 搜尋您的電子郵件地址，是否出現於 2007 年起，已公開的資訊外洩事件資料庫中。基礎搜尋可找出大部分資料外洩事件，但不會列出包含個人敏感資料的事件。
 how-fxm-2-headline = 訂閱資料外洩事件警報
 how-fxm-3-headline = 在瀏覽器中接收通知
 wtd-after-website = 發生網站資料外洩事件後該做什麼
