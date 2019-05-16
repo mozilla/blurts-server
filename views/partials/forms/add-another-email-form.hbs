@@ -1,6 +1,6 @@
             <form action="/user/email" method="post" id="add-another-email-form" class="form-group add-new-email-form" data-event-category="Add Another Email Form">
               <div class="input-group">
-                <input id="email-add" class="input-group-field email-add" type="email" name="email" placeholder="Enter Email Address" aria-label="Enter Email Address" autocomplete="off">
+                <input id="email-add" class="input-group-field email-add" type="email" name="email" placeholder="{{ getString "scan-placeholder"}}" aria-label="{{ getString "scan-placeholder"}}" autocomplete="off">
                 {{> forms/error-message }}
               </div>
               <div class="input-group-button inline">
