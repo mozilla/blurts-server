@@ -328,11 +328,16 @@ monitor-several-emails = Controlá varias direcciones de correo
 take-action = Actuá para proteger tus cuentas.
 keep-your-data-safe = Averiguá qué tenés que hacer para mantener tus datos a salvo de los delincuentes cibernéticos.
 website-breach = Violación del sitio web
-sensitive-breach = Violación del sitio web sensible
+sensitive-breach = Violación delicada del sitio web
 data-aggregator-breach = Violación del agregador de datos
 unverified-breach = Violación no verificada
 spam-list-breach = Violación del listado de correo no deseado
 website-breach-plural = Violaciones de sitios web
+sensitive-breach-plural = Violaciones delicadas
+data-aggregator-breach-plural = Violaciones de agregadores de datos
+unverified-breach-plural = Violaciones no verificadas
+spam-list-breach-plural = Violaciones del listado de correos no deseados
+what-data = Qué datos fueron comprometidos:
 
 ## What to do after data breach tips
 
