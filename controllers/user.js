@@ -70,15 +70,29 @@ async function updateCommunicationOptions(req, res) {
   return res.json("Comm options updated");
 }
 
-async function add(req, res) {
-  // need to decide how to handle resends
 
-  _requireSessionUser(req);
+function _checkForDuplicateEmail(sessionUser, email) {
+  if (email === sessionUser.primary_email) {
+    throw new FluentError("user-add-duplicate-email");
+  }
+  for (const secondaryEmail of sessionUser.email_addresses) {
+    if (email === secondaryEmail.email) {
+      throw new FluentError("user-add-duplicate-email");
+    }
+  }
+}
+
+
+async function add(req, res) {
+  const sessionUser = _requireSessionUser(req);
   const email = req.body.email;
 
   if (!email || !isemail.validate(email)) {
     throw new FluentError("user-add-invalid-email");
   }
+
+  _checkForDuplicateEmail(sessionUser, email);
+
   const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(
     req.session.user, email
   );
