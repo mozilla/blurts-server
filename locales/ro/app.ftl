@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -309,3 +310,54 @@ create-free-account = Creează un { -brand-fxa } gratuit pentru raportul complet
 get-your-report-and-sign-up = Obține raportul tău și înregistrează-te pentru alerte.
 # Link title
 frequently-asked-questions = Întrebări adresate frecvent
+about-firefox-monitor = Despre { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Preferințe
+# Link title.
+home = Acasă
+# Link title
+breaches = Breșe
+# Link title
+security-tips = Ponturi pentru securitate
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Deschide navigarea { -brand-fxa }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = ULTIMA BREȘĂ ADĂUGATĂ
+breach-added = Breșă raportată:
+breach-discovered = Breșă descoperită:
+# Link title
+more-about-this-breach = Mai multe despre această breșă
+take-control = Reia controlul asupra datelor tale personale.
+cant-stop-hackers = Nu poți opri hackerii să facă ceea ce fac, dar poți evita obiceiurile proaste care le ușurează munca.
+read-more-tips = Citește mai multe ponturi pentru securitate
+how-hackers-work = Înțelege modul de operare al hackerilor
+monitor-your-online-accounts = Înscrie-te pentru monitorizarea breșelor cu un { -brand-fxa }.
+stay-alert = Fii la curent cu ultimele breșe
+if-your-info = Dacă informațiile tale apar într-o nouă breșă de date, îți vom trimite o alertă.
+search-all-emails = Caută toate adresele tale de e-mail pentru breșe și primește alerte despre noi amenințări.
+monitor-several-emails = Monitorizează mai multe adrese de e-mail
+take-action = Ia măsuri pentru a-ți proteja conturile
+keep-your-data-safe = Află ce trebuie să faci ca să îți păstrezi datele în siguranță împotriva infractorilor cibernetici.
+website-breach = Breșă a site-ului web
+sensitive-breach = Breșă de date sensibile a site-ului
+data-aggregator-breach = Breșă a agregatoarelor de date
+unverified-breach = Breșă neverificată
+spam-list-breach = Breșă a listei de mesaje nedorite
+website-breach-plural = Breșe de site-uri web
+sensitive-breach-plural = Breșe de date sensibile
+data-aggregator-breach-plural = Breșe ale agregatoarelor de date
+unverified-breach-plural = Breșe neverificate
+spam-list-breach-plural = Breșe ale listelor de mesaje nedorite
+what-data = Ce date au fost compromise:
+sensitive-sites = Cum tratează { -product-name } site-urile cu date sensibile?
+sensitive-sites-copy = { -product-name } divulgă conturile asociate cu aceste tipuri de breșe numai după ce a fost verificată o adresă de e-mail. Înseamnă că ești singura persoană care poate vedea dacă informațiile tale au fost implicate în această breșă (dacă nu cumva și altcineva are acces la contul tău de e-mail).
+delayed-reporting-headline = De ce a durat atât de mult raportarea acestei breșe?
+delayed-reporting-copy = Poate dura câteva luni sau câțiva ani pentru ca datele de autentificare expuse într-o breșă de date să apară în dark web. Breșele vin adăugate în baza noastră de date imediat ce au fost descoperite și verificate.
+about-fxm-headline = Despre { -product-name }
+
+## What to do after data breach tips
+
+
+## Updated error messages
+
