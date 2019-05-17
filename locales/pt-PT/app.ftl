@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -230,7 +231,7 @@ see-full-report = Ver relatório completo
 manage-fxa = Gerir { -brand-fxa }
 fxa-download-firefox-bar-blurb = Trazido a si pelo { -brand-name }. 2x mais rápido. Utiliza 30% menos memória do que o { -brand-Chrome }.
 fxa-download-firefox-bar-link = Transferir agora
-fxa-download-firefox-banner-blurb = Um carregamento de páginas melhor e mais rápido que utiliza menos memória computacional.
+fxa-download-firefox-banner-blurb = Um carregamento de páginas melhor e mais rápido que utiliza menos memória do computador.
 user-fb-compromised-headline = { $userEmail } apareceu na brecha de dados { $breachName }.
 guest-fb-compromised-headline = Este email apareceu na brecha de dados { $breachName }.
 user-zero-breaches-headline = { $userEmail } apareceu em zero brechas de dados.
@@ -245,7 +246,7 @@ guest-scan-results-headline =
         [one] Este email apareceu em 1 brecha de dados.
        *[other] Este email apareceu em { $breachCount } brechas de dados.
     }
-user-no-breaches-blurb = Alertaremos-lhe se este endereço de email aparecer numa nova brecha.
+user-no-breaches-blurb = Iremos alertar-lhe se este endereço de email aparecer numa nova brecha.
 guest-no-breaches-blurb =
     Para ver se este email aparece em brechas sensíveis, crie uma { -brand-fxa }.
     Também lhe alertaremos se este endereço aparecer em novas brechas de dados.
@@ -383,9 +384,11 @@ breach-discovered = Brecha descoberta:
 # Link title
 more-about-this-breach = Mais acerca desta brecha
 take-control = Retome o controlo dos seus dados pessoais.
+cant-stop-hackers = Não pode impedir que os hackers invadam. Mas pode evitar maus hábitos que lhes facilitam o trabalho.
 read-more-tips = Ler mais dicas de segurança
 how-hackers-work = Compreender como é que os hackers funcionam
 stay-alert = Mantenha-se atento(a) a novas brechas
+monitor-several-emails = Monitorize vários emails
 website-breach = Brecha de website
 sensitive-breach = Brechas de websites sensíveis
 data-aggregator-breach = Brecha agregadora de dados
@@ -401,6 +404,8 @@ sensitive-sites = Como é que o { -product-name } trata sites sensíveis?
 about-fxm-headline = Acerca do { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Como é que o { -product-name } funciona
+wtd-after-website = O que fazer depois de uma brecha de website
+wtd-after-data-agg = O que fazer depois de uma brecha de agregador de dados
 protect-your-privacy = Proteja a sua privacidade online
 
 ## What to do after data breach tips
@@ -454,4 +459,5 @@ results-for = Resultados para: { $userEmail }
 other-monitored-emails = Outros emails monitorizados
 email-verification-required = Verificação de email requerida
 fxa-primary-email = Email do { -brand-fxa } - Primário
+security-tips-headline = Dicas de segurança para se proteger contra hackers
 alert-about-new-breaches = Alertar-me acerca de novas brechas
