@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -595,3 +596,31 @@ security-tips-headline = Mẹo về bảo mật để bảo vệ bạn khỏi ti
 steps-to-protect = Các bước cần thực hiện để bảo vệ danh tính trực tuyến của bạn
 take-further-steps = Thực hiện các bước tiếp theo để bảo vệ danh tính của bạn
 alert-about-new-breaches = Thông báo cho tôi về những vi phạm mới
+see-if-youve-been-part = Hãy xem nếu bạn đã từng là một phần của vi phạm dữ liệu trực tuyến.
+get-ongoing-breach-monitoring = Nhận giám sát các vi phạm liên tục cho nhiều địa chỉ email.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Kiểm tra
+new-unsub-error = Bạn cần hủy đăng ký một trong những email mà { -product-name } đã gửi.
+other-known-breaches-found =
+    { $breachCount ->
+       *[other] Tuy nhiên, nó đã xuất hiện trong { $breachCount } vi phạm đã biết khác.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Thông tin bổ sung, bao gồm:
+# Title
+email-addresses-title = Địa chỉ email
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = Vào lúc { $breachDate }, { $breachTitle } đã vi phạm. Khi vi phạm được phát hiện và xác minh, nó đã được thêm vào cơ sở dữ liệu của chúng tôi vào { $addedDate }.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = Tùy chỉnh { -product-short-name }
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Đã đăng nhập với: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Lọc theo danh mục:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menu
