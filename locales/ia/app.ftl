@@ -526,5 +526,27 @@ scan-results-known-breaches =
 results-for = Resultatos pro: { $userEmail }
 other-monitored-emails = Altere emails spiate
 email-verification-required = Verification del email obligatori.
+fxa-primary-email = Email de { -brand-fxa }:  primari
+what-is-a-website-breach = Qual es un violation de sito web?
+website-breach-blurb = Un violation de datos de sito web eveni quando le cybercriminales roba, copia o expone informationes personal de contos online. Illo sole esser un resultato de hackers que trova un puncto debile in le securitate del sito web. Violationes pote alsi evenir quando informationes del conto es revelate per accidente.
+security-tips-headline = Consilios pro le securitate pro proteger te mesme ab hackers
+steps-to-protect = Mesuras a prender pro proteger tu identitate online
+take-further-steps = Prende altere mesuras pro proteger tu identitate
+alert-about-new-breaches = Avisar me re nove violationes
+see-if-youve-been-part = Vide si tu ha essite parte de un violation de datos online.
+get-ongoing-breach-monitoring = Reciper controlo del violationes in corso pro plure adresses email.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Discoperir.
+new-unsub-error = Tu debera remover te del inscription per un del emails inviate ab { -product-name }.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Comocunque, illo appareva in { $breachCount } altere note violation.
+       *[other] Comocunque, illo appareva in { $breachCount } altere note violationes.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Altere informationes, includite:
+# Title
+email-addresses-title = Adresses email
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
