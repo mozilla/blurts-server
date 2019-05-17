@@ -366,7 +366,7 @@ fxm-warns-you = { -product-name } 会在您的电子邮件地址出现于数据�
 # How Firefox Monitor works
 how-fxm-works = { -product-name } 工作原理
 how-fxm-1-headline = 进行基本搜索
-how-fxm-1-blurb = 搜索您的电子邮件地址，是否出现于2007年起，已公开的数据外泄事件数据库中。基本搜索可找出大部分数据外泄事件，但不会列出包含个人敏感信息的事件。
+how-fxm-1-blurb = 搜索您的电子邮件地址，是否出现于 2007 年起，已公开的数据外泄事件数据库中。基本搜索可找出大部分数据外泄事件，但不会列出包含个人敏感信息的事件。
 how-fxm-2-headline = 订阅数据外泄事件警报
 how-fxm-2-blurb = 注册 { -brand-fxa }来监控您的邮箱是否出现于各种数据外泄事件中。确认账号后，也会收到包含外泄的敏感信息等过去事件的相关完整报告。
 how-fxm-3-headline = 在浏览器中收到通知
@@ -470,6 +470,7 @@ all-breaches = 所有数据外泄事件
 ## Updated error messages
 
 error-bot-headline = 暂时无法搜索
+error-bot-blurb = 您在短时间内搜索了太多邮箱地址，我们担心您可能是机器人。您将暂时无法进行搜索，请稍后再试。
 error-csrf-headline = 会话超时
 error-csrf-blurb = 点击浏览器的后退按钮或重新加载页面，再试一次。
 error-invalid-unsub = 如何取消订阅来自 { -product-name } 的警报
@@ -519,6 +520,7 @@ security-tips-headline = 保护您不受黑客侵扰的安全提示
 steps-to-protect = 采取措施保护您的在线身份
 take-further-steps = 采取更多措施保护身份信息
 alert-about-new-breaches = 有新的外泄事件时通知我
+see-if-youve-been-part = 看看您是否也处于数据外泄事件之中。
 get-ongoing-breach-monitoring = 持续针对多个电子邮件地址，监控数据外泄事件。
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = 找找看
@@ -532,6 +534,10 @@ other-known-breaches-found =
 additional-information-including = 其他信息，包含：
 # Title
 email-addresses-title = 电子邮件地址
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = { $breachTitle } 在 { $breachDate } 发生了数据外泄。我们发现和确认了该外泄事件，并于 { $addedDate } 将其添加到数据库中。
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } 偏好设置
 # When a user is signed in, this appears in the drop down menu 
