@@ -481,5 +481,50 @@ all-breaches = Tote le violationes
 error-bot-headline = Recercas temporarimente suspendite
 error-bot-blurb = Nos es preoccupate que tu pote ser un robot perque tu recercava plure adresses email in un breve periodo de tempore. Momentaneemente, tu es blocate de facer nove recercas. Tu pote provar de novo plus tarde.
 error-csrf-headline = Session foras tempore limite
+error-csrf-blurb = Selige le button Receder de tu navigator, recarga le pagina e prova de novo.
+error-invalid-unsub = Como remover le inscription al avisos de { -product-name }
+error-invalid-unsub-blurb = Tu debera remover te del inscription per un del emails que { -product-name } te ha inviate. Controlar tu cassa de ingresso pro messages de { -brand-team-email }. Selige le ligamine de remotion ex inrolamento, al fundo del email.
+login-link-pre = Ha tu un conto?
+login-link = Acceder
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] Adresse email a controlar
+       *[other] Adresses email a controlar
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] violation de datos ha exponite tu informationes
+       *[other] violationes de datos ha exponite tu informationes
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] contrasigno exponite tra tote le violationes
+       *[other] contrasignos exponite tra tote le violationes
+    }
+# Button
+see-additional-breaches = Vider altere violationes
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Vider tote le violationes
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Iste email appareva in 1 violation de datos note.
+       *[other] Iste email appareva in { $breachCount } violationes de datos note.
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Resultatos pro: { $userEmail }
+other-monitored-emails = Altere emails spiate
+email-verification-required = Verification del email obligatori.
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
