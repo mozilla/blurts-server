@@ -462,8 +462,24 @@ other-breaches-found =
         [one] Comocunque, illo appareva in { $breachCount } altere violation.
        *[other] Comocunque, illo appareva in { $breachCount } altere violationes.
     }
+fb-comp-only = Iste email appareva in le violation de datos { $breachName }.Iste email appareva in le violation { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Iste email appareva in { $breachCount } note violation de datos, includite { $breachName }.
+       *[other] Iste email appareva in { $breachCount } note violationes de datos, includite { $breachName }.
+    }
+no-other-breaches-found = Nulle altere violationes trovate ex un recerca de base.
+no-results-blurb = Nos lo regretta, ille violation non es in nostre base de datos.
+all-breaches-headline = Tote le violationes in { -product-name }
+search-breaches = Cercar violationes
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Monstrate:
+all-breaches = Tote le violationes
 
 ## Updated error messages
 
+error-bot-headline = Recercas temporarimente suspendite
+error-bot-blurb = Nos es preoccupate que tu pote ser un robot perque tu recercava plure adresses email in un breve periodo de tempore. Momentaneemente, tu es blocate de facer nove recercas. Tu pote provar de novo plus tarde.
+error-csrf-headline = Session foras tempore limite
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
