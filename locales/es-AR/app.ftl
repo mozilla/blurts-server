@@ -324,6 +324,15 @@ monitor-your-online-accounts = Registrate para el control de violaciones con { -
 stay-alert = Mantenete alerta a las nuevas violaciones
 if-your-info = Si tu información aparece en una nueva violación de datos, te enviaremos una alerta.
 search-all-emails = Averiguá si tus direcciones de correo aparecieron en violaciones y recibí alertas sobre nuevas amenazas.
+monitor-several-emails = Controlá varias direcciones de correo
+take-action = Actuá para proteger tus cuentas.
+keep-your-data-safe = Averiguá qué tenés que hacer para mantener tus datos a salvo de los delincuentes cibernéticos.
+website-breach = Violación del sitio web
+sensitive-breach = Violación del sitio web sensible
+data-aggregator-breach = Violación del agregador de datos
+unverified-breach = Violación no verificada
+spam-list-breach = Violación del listado de correo no deseado
+website-breach-plural = Violaciones de sitios web
 
 ## What to do after data breach tips
 
