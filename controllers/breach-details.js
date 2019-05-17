@@ -14,6 +14,7 @@ function getBreachDetail(req, res) {
   }
 
   res.render("breach-detail", {
+    title: req.fluentFormat("home-title"),
     featuredBreach,
   });
 }

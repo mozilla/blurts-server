@@ -4,7 +4,7 @@ main.breach-detail {
 }
 
 .breach-type a {
-  color: var(--grey1);
+  color: var(--blue3);
 }
 
 .breach-type a:hover {
@@ -41,6 +41,7 @@ main.breach-detail {
 
 .breach-detail-headline {
   margin: auto auto 0.5rem auto;
+  color: var(--color);
 }
 
 .section-headline-light {
@@ -86,7 +87,7 @@ main.breach-detail {
 }
 
 .priority-data-type {
-  flex: 1 1 100%;
+  flex: 1 1 50%;
 }
 
 .lower-priority {
@@ -125,6 +126,12 @@ main.breach-detail {
 
 .wtd-tips h2.skinny-headline {
   margin-bottom: calc(var(--padding) * 2);
+}
+
+@media screen and (max-width: 800px) {
+  .priority-data-type {
+    flex: 1 1 100%;
+  }
 }
 
 @media screen and (max-width: 600px) {

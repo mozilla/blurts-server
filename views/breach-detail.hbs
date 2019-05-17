@@ -1,6 +1,6 @@
 {{#getBreachDetail}}
 
-  <main id="breach-detail" class="breach-detail container clear-header bg-dark">
+  <main id="breach-detail" class="breach-detail container clear-header bg-white">
     <div class="row jst-cntr">
       <div class="col-9 flx-cntr">
         <div class="breach-detail-logo-wrapper">
@@ -13,7 +13,7 @@
   </main>
 
 <!--dataClasses-->
-  <section class="detail-section  bg-light">
+  <section class="bg-light">
     <div class="row jst-cntr flx-col">
       <div class="col-8 overview">
         {{> breach-detail-content-group overview}}
@@ -23,6 +23,10 @@
           </a>
         {{/if}}
       </div>
+    </div>
+  </section>
+  <section class="detail-section bg-white">
+    <div class="row jst-cntr flx-col">
       <div class="col-8 breach-details">
         {{> breach-detail-content-group dataClasses}}
         {{> hibp-attribution}}
@@ -30,26 +34,29 @@
     </div>
   </section>
 
-    <section class="detail-section bg-white">
-
-      <div class="row jst-cntr flx-col">
-        <div class="col-8 breach-detail what-to-do-tips">
-          {{> breach-detail-content-group whatToDoTips}}
-        </div>
-        {{> sign-up-banners/sign-up-warm-gradient }}
-        <div id="what-is-this-breach" class="col-8 breach-details">
-          {{> breach-detail-content-group whatIsThisBreach}}
-        </div>
-        {{#if sensitiveBreach }}
-          <div class="col-8 breach-details">
-            {{> breach-detail-content-group sensitiveBreach}}
-          </div>
-        {{/if}}
-        {{#if delayedReporting}}
-          <div class="col-8 breach-details">
-            {{> breach-detail-content-group delayedReporting}}
-          </div>
-        {{/if}}
+  <section class="detail-section bg-light">
+    <div class="row jst-cntr flx-col">
+      <div class="col-8 breach-detail what-to-do-tips">
+        {{> breach-detail-content-group whatToDoTips}}
       </div>
-    </section>
+    </div>
+  </section>
+  <section class="detail-section bg-white">
+    <div class="row jst-cntr flx-col">
+      {{> sign-up-banners/scan-results-sign-up }}
+      <div id="what-is-this-breach" class="col-8 breach-details">
+        {{> breach-detail-content-group whatIsThisBreach}}
+      </div>
+      {{#if sensitiveBreach }}
+        <div class="col-8 breach-details">
+          {{> breach-detail-content-group sensitiveBreach}}
+        </div>
+      {{/if}}
+      {{#if delayedReporting}}
+        <div class="col-8 breach-details">
+          {{> breach-detail-content-group delayedReporting}}
+        </div>
+      {{/if}}
+    </div>
+  </section>
 {{/getBreachDetail}}
