@@ -368,3 +368,7 @@ login-link = Prijava
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Rezultati za: { $userEmail }
+# Title
+email-addresses-title = E-poštni naslovi
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Meni
