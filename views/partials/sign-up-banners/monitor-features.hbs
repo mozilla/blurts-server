@@ -1,15 +1,37 @@
-<section class="bg-white container">
-  <div class="row flx-col jst-cntr">
-    <div class="col-12 flx-cntr txt-cntr feat-headline-wrapper">
-      <h2 class="headline feature-tip-headline">{{getString "monitor-your-online-accounts"}}</h2>
-    </div>
-    <div class="col-12 flx-cntr txt-cntr">
-      <div class="flx feature-tip-group">
-        {{#each (monitorFeaturesList)}}
-          {{> feature-tip-group }}
-        {{/each}}
+<section class="container gradient-container {{ variableClasses }}">
+  <div class="row flx-col jst-cntr {{ variableClasses }}">
+    <div class="bg-white gradient-inset">
+      <div class="col-12 flx-cntr txt-cntr feat-headline-wrapper">
+        <h2 class="headline feature-tip-headline">
+          {{#if featuredBreach }}
+            {{ getString "find-out-if" }}
+          {{else}}
+            {{ getString "monitor-your-online-accounts"  }}
+          {{/if}}
+        </h2>
+      </div>
+      <div class="col-12 flx-cntr txt-cntr">
+        <div class="flx feature-tip-group">
+          {{#each (monitorFeaturesList)}}
+            {{> feature-tip-group }}
+          {{/each}}
+        </div>
+        <div class="feature-tip-content-wrapper feature-button">
+          <div class="feature-tip-content txt-cntr">
+            {{#if featuredBreach.IsSensitive}}
+              <button class="violet-btn open-oauth" data-event-category="Sign Up Button" {{>analytics/fxa id="fx-monitor-sign-up-button"}}>
+                {{ getString "sign-up" }}
+              </button>
+            {{else}}
+              <button class="violet-btn open-oauth" data-event-category="Sign Up Button" {{>analytics/fxa id="fx-monitor-sign-up-for-alerts"}}>
+                {{ getString "sign-up-for-alerts" }}
+              </button>
+            {{/if}}
+            <span class="browser-not-required txt-cntr">{{ getString "account-not-required" }}</span>
+            {{> sign-up-banners/login-link }}
+          </div>
+        </div>
       </div>
     </div>
-    {{> sign-up-banners/sign-up-warm-gradient}}
   </div>
 </section>

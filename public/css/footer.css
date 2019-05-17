@@ -37,6 +37,7 @@ svg.Mozilla-logo {
 
   .mozilla-logo-wrapper {
     padding: 0;
+    margin-bottom: 0.5rem;
   }
 
   ul.row-full-width {

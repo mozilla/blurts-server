@@ -4,11 +4,13 @@
   </div>
   <div id="fxa-menu" class="fxa-menu">
     <div class="fxa-menu-links">
-      <span class="signed-in-as">Signed in as:
-        <span class="nav-user-email">
-          {{ req.session.user.primary_email }}
+      <div class="signed-in-as-wrap flx">
+        <span class="signed-in-as">{{{ getSignedInAs }}}
+          <span class="nav-user-email">
+            {{!-- {{ req.session.user.primary_email }} --}}
+          </span>
         </span>
-      </span>
+      </div>
       {{#each (fxaMenuLinks)}}
         <a class="fxa-menu-link" {{> analytics/internal-link eventLabel=this.title }} href="{{ this.href }}">{{ this.stringId }}</a>
       {{/each}}

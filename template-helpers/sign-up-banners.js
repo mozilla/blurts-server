@@ -50,8 +50,8 @@ function monitorFeaturesList(args) {
       pictogramPath: "email",
     },
     {
-      title: "Take action to protect your accounts",
-      titleId: "take-action",
+      title: "Protect your privacy",
+      titleId: "protect-your-privacy",
       subtitle: "Find out what you need to do to keep your data safe from cyber criminals.",
       subtitleId: "keep-your-data-safe",
       pictogramPath: "advice",

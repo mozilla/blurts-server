@@ -50,9 +50,10 @@ input[type="email"] {
   border-width: 1px;
   -webkit-appearance: none;
   -moz-appearance: none;
-  border-radius: var(--radius);
+  border-radius: 4px;
 }
 
+input[type="text"]:focus,
 input[type="radio"]:focus ~ .checkmark,
 input:focus,
 button:focus,

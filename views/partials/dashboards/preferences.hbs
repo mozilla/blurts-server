@@ -1,13 +1,14 @@
 {{#getUserPreferences}}
-  <section class="container clear-header" data-page-label="Preferences">
+  <section class="container clear-header preferences sr" data-page-label="Preferences">
     <div class="row jst-cntr">
-      <div class="col-8">
-        <h2 class="skinny-headline monitor-preferences-headline">Monitor <span class="bold">{{ getString "preferences" }}</span></h2>
+      <div class="col-9 padding-zero">
+        <h2 class="skinny-headline monitor-preferences-headline">{{ getString "monitor-preferences" }}</span></h2>
       </div>
     </div>
-    <div class="row jst-cntr">
-      <div class="col-8 global-comm">
-        <h2 class="section-headline">{{ getString "global-communication" }}</h2>
+  <div class="container bg-light">
+  <div class="row jst-cntr">
+      <div class="col-9 global-comm padding-zero">
+        <h2 class="section-headline global-comm-headline">{{ getString "global-communication" }}</h2>
         <section>
           {{#each communicationOptions}}
             <label class="radio-container">
@@ -20,12 +21,12 @@
       </div>
     </div>
     <div class="row jst-cntr flx-col">
-      <div class="col-8 no-vertical-padding">
-        <h2 class="section-headline">{{ getString "email-addresses" }}</h2>
+      <div class="col-9 padding-zero">
+        <h2 class="section-headline">{{ getString "email-addresses-title" }}</h2>
       </div>
           {{#each emails }}
             {{#ifCompare email_addresses.length ">" 0}}
-              <div class="col-8 no-vertical-padding">
+              <div class="col-9 padding-zero">
                 <h4 class="email-pref {{ this.className }}">{{ this.subhead }}</h4>
               </div>
               {{#each this.email_addresses}}
@@ -35,22 +36,26 @@
           {{/each}}
       </div>
     </div>
-    <div class="row jst-cntr dash-row flx-col">
-      <div class="col-8 no-vertical-padding">
-        <h2 class="section-headline add-new-email">{{ getString "add-new-email" }}</h2>
+    <section class="bg-light">
+      <div class="row jst-cntr dash-row flx-col">
+        <div class="col-9 padding-zero">
+          <h2 class="section-headline add-new-email padding-zero">{{ getString "add-new-email" }}</h2>
+        </div>
+        <div class="col-9 padding-zero">
+          {{> forms/add-another-email-form }}
+        </div>
       </div>
-      <div class="col-8 padding-zero">
-        {{> forms/add-another-email-form }}
-      </div>
-    </div>
-    <div class="row jst-cntr ">
-      <div class="col-8">
-        <div>
-          <h2 class="section-headline">{{ getString "remove-fxm" }}</h2>
-          <p class="subhead">{{ getString "remove-fxm-blurb" }}</p>
-          <button class="remove-fxm subhead flx" href="/">{{ getString "remove-fxm" }}{{> svg/arrow-head-right }}</button>
+      <div class="row jst-cntr bg-light">
+        <div class="col-9 padding-zero">
+          <div>
+            <h2 class="section-headline">{{ getString "remove-fxm" }}</h2>
+            <p class="subhead">{{ getString "remove-fxm-blurb" }}</p>
+            <button class="remove-fxm subhead flx" href="/">{{ getString "remove-fxm" }}{{> svg/arrow-head-right }}</button>
+          </div>
         </div>
       </div>
     </div>
   </section>
+</section>
+    
 {{/getUserPreferences}}

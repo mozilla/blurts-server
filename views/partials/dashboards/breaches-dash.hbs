@@ -1,42 +1,49 @@
-
-<main id="dashboard" class="dashboard clear-header" data-page-label="User Dashboard">
-  <div class="row jst-cntr">
-    <div class="col-8">
-      {{#if req.session.newUser}}
-        <span class="welcome-user">{{{fluentNestedBold "welcome-user" userName=req.session.user.fxa_profile_json.email }}}</span>
-      {{else}}
-        <span class="welcome-back">{{{fluentNestedBold "welcome-back" userName=req.session.user.fxa_profile_json.email }}}</span>
-      {{/if}}
-    </div>
-  </div>
-  <div class="row jst-cntr flx-col">
-    <div class="col-8 no-vertical-padding">
-      <h2 class="section-headline breach-summary dash">{{ getString "breach-summary" }}</h2>
-    </div>
-    <div class="col-8 card dash-stats">
-      {{> breach-stats addClasses="user-stats"}}
-    </div>
-  </div>
-  <div class="row jst-cntr flx-col dash-row">
-    <div class="col-8 no-vertical-padding">
-      <div class="flx space-between cntr link-header-wrapper">
-        <h2 class="section-headline margin-zero dash">{{ getString "email-addresses" }}</h2>
-        {{> dashboards/manage-email-link variableClass="hide-mobile"}}
+<div class="ab-br sr">
+  <main id="dashboard" class="dashboard clear-header" data-page-label="User Dashboard">
+    <div class="row jst-cntr">
+      <div class="col-9 txt-cntr">
+        {{#if req.session.newUser}}
+          <span class="welcome-user">{{{fluentNestedBold "welcome-user" userName=req.session.user.fxa_profile_json.email }}}</span>
+        {{else}}
+          <span class="welcome-back">{{{fluentNestedBold "welcome-back" userName=req.session.user.fxa_profile_json.email }}}</span>
+        {{/if}}
       </div>
     </div>
-    {{#each (getBreachesForEachEmail) }}
-      {{> email-card }}
-    {{/each}}
-    {{> dashboards/manage-email-link variableClass="show-mobile"}}
+    <div class="container">
+      <div class="row jst-cntr flx-col">
+        <div class="col-9 no-vertical-padding">
+          <h2 class="section-headline breach-summary dash">{{ getString "breach-summary" }}</h2>
+        </div>
+        <div class="col-9 card dash-stats no-vertical-padding">
+          {{> breach-stats addClasses="user-stats"}}
+        </div>
+      </div>
   </div>
-</main>
-<section class="container cool-gradient">
-  <div class="row">
-    <div class="col-6 jst-cntr">
-      {{> take-back-control/headlines variableClasses="dash"}}
+    <section class="bg-light container">
+      <div class="row jst-cntr flx-col dash-row">
+        <div class="col-9 no-vertical-padding">
+          <div class="flx space-between cntr link-header-wrapper">
+            <h2 class="section-headline margin-zero dash">{{ getString "email-addresses" }}</h2>
+            {{> dashboards/manage-email-link variableClass="hide-mobile"}}
+          </div>
+        </div>
+        {{#getBreachesForEachEmail}}
+          {{#each this.verifiedEmails}}
+            {{> email-card }}
+          {{/each}}
+        {{/getBreachesForEachEmail}}
+        {{> dashboards/manage-email-link variableClass="show-mobile"}}
+      </div>
+    </section>
+  </main>
+</div>
+  <section class="container cool-gradient">
+    <div class="row">
+      <div class="col-6 jst-cntr">
+        {{> take-back-control/headlines variableClasses="dash"}}
+      </div>
+      <div class="col-6">
+        {{> take-back-control/article-links }}
+      </div>
     </div>
-    <div class="col-6">
-      {{> take-back-control/article-links }}
-    </div>
-  </div>
-</section>
+  </section>

@@ -5,25 +5,93 @@
   width: 100%;
   padding: var(--padding);
   justify-content: space-between;
+  background: var(--warmGradient);
+  margin-bottom: 4rem;
+  padding-left: 3rem;
 }
 
-.scan-res.sign-up-banner {
-  background: var(--bluePurpleGradient);
-  margin-bottom: 4rem;
+button.violet-btn {
+  background-color: var(--violet4);
+  border: 1px solid var(--violet4);
+  padding: 0.75rem 1rem;
+  width: 100%;
+  color: var(--grey1);
+  font-weight: 500;
+  margin-top: calc(var(--padding) * 1.5);
+}
+
+.sign-up-feature::before {
+  content: "\2022";
+  display: inline-block;
+  width: 1.5rem;
+  height: 1rem;
+  color: rgba(255, 255, 255, 1);
+}
+
+.sign-up-cta p,
+.sign-up-cta .text-link {
+  color: rgba(255, 255, 255, 1);
+}
+
+.sign-up-cta .btn-light.open-oauth {
+  margin-top: 3rem;
+  background-color: rgba(255, 255, 255, 1);
+  color: var(--violet4);
+}
+
+.have-an-account,
+.open-oauth.text-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.have-an-account svg.arrow-head-right {
+  max-height: 14px;
+  margin-left: 0.2rem;
+  padding-top: 1px;
+}
+
+.sign-up-cta .have-an-account svg path {
+  fill: rgba(255, 255, 255, 1);
+}
+
+.scan-res ul.feature-list {
+  margin-left: 0.25rem !important;
+}
+
+.monitor-gradient .feature-tip-content {
+  width: 100%;
 }
 
 .scan-results-sign-up .col-9.sign-up-wrapper {
   padding: 1rem;
 }
 
-.sign-up-bullet {
-  height: 0.5rem;
-  width: 0.5rem;
+.browser-not-required {
+  font-size: 10px;
+  max-width: 240px;
+  margin: auto;
+  color: #5b5b66;
+  line-height: 1.4;
+  margin-top: 0.5rem;
+}
+
+p.have-an-account {
+  font-size: 0.9rem;
+}
+
+.have-an-account button.text-link {
+  margin-left: 0.25rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.feature-tip-content span.browser-not-required {
+  font-size: 8px;
   display: inline-block;
-  content: "";
-  background-color: rgba(255, 255, 255, 1);
-  border-radius: 50%;
-  margin-right: var(--margin);
+  text-align: center;
+  line-height: 150%;
+  margin-left: auto;
 }
 
 .sign-up-headline {
@@ -34,9 +102,12 @@
 }
 
 .sign-up-feature {
+  line-height: 1.4;
+  font-size: 1rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 1);
   margin: 0.25rem 0;
+  display: flex;
 }
 
 .sign-up-banner .feature-tip-group {
@@ -53,34 +124,51 @@
 .sign-up-cta {
   max-width: 200px;
   justify-content: center;
-  margin-left: var(--margin);
+  margin-left: var(--padding);
 }
 
 .col-9 .sign-up-cta {
   max-width: 300px;
   text-align: center;
+  align-items: center;
+}
+
+.gradient-inset .feature-tip-content span.browser-not-required,
+.gradient-inset .feature-tip-content p.have-an-account {
+  display: flex;
+  align-self: center;
+  justify-content: center;
 }
 
 @media screen and (max-width: 1100px) {
-  .scan-results-sign-up .sign-up-banner {
+  .sign-up-banner {
     flex-direction: column;
+    padding-left: var(--padding);
   }
 
-  .scan-results-sign-up .sign-up-headline {
+  .sign-up-headline {
     text-align: center;
     margin: auto auto 1rem auto;
     max-width: 380px;
   }
 
-  .scan-results-sign-up ul.feature-list {
+  ul.feature-list {
     display: flex;
     align-items: flex-start;
-    margin: 1rem auto 2rem auto;
+    margin: 1rem inherit;
+    align-self: center;
   }
 
-  .scan-results-sign-up .sign-up-cta {
+  .col-9 .sign-up-cta,
+  .sign-up-cta {
     max-width: 380px;
     margin: auto;
+    display: flex;
+  }
+
+  .sign-up-cta .btn-light.open-oauth {
+    margin: var(--margin);
+    width: 100%;
   }
 }
 
@@ -89,6 +177,14 @@
     flex-wrap: wrap;
     padding-top: 3rem;
     padding-bottom: 3rem;
+  }
+
+  .sign-up-cta .account-not-required {
+    margin-top: 0;
+  }
+
+  .sign-up-cta .have-an-account {
+    margin: 2rem auto 0 auto;
   }
 
   .sign-up-cta {
@@ -113,7 +209,6 @@
   }
 
   .col-12.feat-headline-wrapper {
-    padding-top: 0;
     padding-bottom: 0;
   }
 }
