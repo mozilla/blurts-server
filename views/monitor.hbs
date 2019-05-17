@@ -1,35 +1,62 @@
 {{!< default }}
-
-<main class="container monitor-homepage clear-header" data-page-label={{> analytics/landing_page_label }}>
-  <section class="row jst-cntr">
+<main class="container monitor-homepage clear-header {{#if featuredBreach}} featured-breach {{/if}} {{#if featuredBreach.IsSensitive}} sensitive-landing {{/if}}" data-page-label={{> analytics/landing_page_label }}>
+  <section class="row jst-cntr monitor-landing">
     <div class="col-12 flx-cntr landing-content">
-      {{#if featuredBreach}}
-        <h2 class="headline landing-headline">{{{ fluentNestedBold "was-your-info-exposed" breachName=featuredBreach.Title }}}</h2>
-      {{else}}
-        <h2 class="headline landing-headline">{{ getString "see-if-breached" }}</h2>
-      {{/if}}
-      {{#if featuredBreach.IsSensitive }}
-        <h3 class="subhead landing-subhead">{{ getString "find-out-if" }}</h3>
-        {{> feature-list variableClass="landing-feat-list" }}
-        {{> sign-up-button buttonValue="sign-up-for-alerts" variableClasses="landing-sign-up-btn"}}
-      {{else}}
-        <h3 class="subhead landing-subhead">{{ getString "find-out-what-hackers-know" }}</h3>
-        {{> forms/scan-email-form }}
-      {{/if}}
-    </div>
-  </section>
-</main>
-
-
-<div class="landing-bottom-bar">
-  <section class="article-list-container container">
-    <section class="row">
-      <div class="col-4">
-        {{> latest-breach }}
+      {{#makeLanding}}
+          <h2 class="headline landing-headline">{{{ headline }}}</h2>
+          <h3 class="subhead landing-subhead">{{ subhead }}</h3>
+      {{/makeLanding}}
+          {{#unless featuredBreach.IsSensitive}}
+            {{> forms/scan-email-form }}
+          {{/unless}}
+      {{#makeLanding}}
+          {{#if info}}
+            <section class="landing-sensitive-info">
+              {{#each info}}
+                <h3 class="sb-callout">{{ subhead }}</h3>
+                <p class="sb-callout-body">{{ body }}</p>
+              {{/each}}
+            </section>
+          {{/if}}
+      {{/makeLanding}}
       </div>
-      {{> take-back-control/article-list }}
     </section>
-  </section>
-</div>
 
-{{> sign-up-banners/monitor-features }}
+  {{#if featuredBreach}}
+    {{#if featuredBreach.IsSensitive}}
+    <div class="sb-top-container">
+      <div class="row no-vertical-padding sb-top-wrapper">
+        <div class="sb-top"><!--top of sign up call out--></div>
+      </div>
+    </div>
+     {{/if}}
+  {{else}}
+    <div class="latest-breach-headline-wrapper">
+      <h3 class="latest-breach-headline">{{{ getString "latest-breach" brandName="<span class='fxm'>Firefox Monitor</span>" }}}</h3>
+    </div>
+  {{/if}}
+</main>
+  {{#if featuredBreach.IsSensitive}}
+    <section class="landing-bottom-bar sensitive-breach">
+      {{> sign-up-banners/monitor-features variableClasses="sensitive-breach"}}
+    </section>
+  {{else}}
+    {{#unless featuredBreach}}
+      <section class="landing-bottom-bar">
+        <div class="latest-breach-info">
+          {{#each (lastAddedBreach)}}
+            {{> breach-card cardType="latest-breach" showPwnCount=true latestBreach = true}}
+          {{/each}}
+        </div>
+        <div class="row article-row">
+          <div class="col-6 jst-cntr">
+            {{> take-back-control/headlines variableClasses="dash"}}
+          </div>
+          <div class="col-6">
+            {{> take-back-control/article-links }}
+          </div>
+        </div>
+      {{> sign-up-banners/monitor-features }}
+      </section>
+    {{/unless}}
+  {{/if}}
