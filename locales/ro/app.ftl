@@ -355,6 +355,7 @@ sensitive-sites-copy = { -product-name } divulgă conturile asociate cu aceste t
 delayed-reporting-headline = De ce a durat atât de mult raportarea acestei breșe?
 delayed-reporting-copy = Poate dura câteva luni sau câțiva ani pentru ca datele de autentificare expuse într-o breșă de date să apară în dark web. Breșele vin adăugate în baza noastră de date imediat ce au fost descoperite și verificate.
 about-fxm-headline = Despre { -product-name }
+about-fxm-blurb = { -product-name } te avertizează în cazul în care conturile tale online au fost implicate într-o breșă de date. Află dacă  ai fost implicat(ă) într-o breșă de date, primește alerte despre breșe noi de date și ia măsuri pentru protejarea conturilor tale online. { -product-name } este furnizat de { -brand-Mozilla }.
 
 ## What to do after data breach tips
 
