@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -317,11 +318,12 @@ breach-discovered = Violación descubierta:
 more-about-this-breach = Más acerca de esta violación
 take-control = Recuperá el control de tu información personal.
 cant-stop-hackers = No podés evitar que te pirateen los piratas, pero sí podés evitar la malas prácticas que les facilitan el trabajo.
-read-more-tips = Leer más acerca de consejos de seguridad
+read-more-tips = Leer consejos de seguridad
 how-hackers-work = Entender cómo trabajan los piratas
 monitor-your-online-accounts = Registrate para el control de violaciones con { -brand-fxa }.
 stay-alert = Mantenete alerta a las nuevas violaciones
 if-your-info = Si tu información aparece en una nueva violación de datos, te enviaremos una alerta.
+search-all-emails = Averiguá si tus direcciones de correo aparecieron en violaciones y recibí alertas sobre nuevas amenazas.
 
 ## What to do after data breach tips
 
