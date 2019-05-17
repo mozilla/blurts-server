@@ -327,7 +327,7 @@ breaches = 外泄事件
 security-tips = 安全提示
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
-open-fxa-menu = 打开 { -brand-fxa } 导航栏
+open-fxa-menu = 打开 { -brand-fxa }导航栏
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = 最新公开的外泄事件
 breach-added = 事件报告日期：
@@ -390,7 +390,7 @@ create-strong-passwords = 如何创建高强度密码
 stop-reusing-pw = 停止重复使用相同密码
 create-unique-pw = 为每个网站使用不同密码，并将其保存在安全的地方（如密码管理器）。
 five-myths = 关于密码管理器的 5 个误解
-create-a-fxa = 注册 { -brand-fxa } 即可获取数据外泄事件的完整报告，并接收警报。
+create-a-fxa = 注册 { -brand-fxa }即可获取数据外泄事件的完整报告，并接收警报。
 feat-security-tips = 保护账号的安全提示
 feat-sensitive = 高级搜索敏感信息外泄事件
 feat-enroll-multiple = 注册多组邮箱地址，以监控外泄事件
@@ -406,6 +406,7 @@ check-for-breaches = 检查是否有外泄事件
 find-out-what-hackers-know = 看看黑客已经掌握了您哪些资料，并了解如何先发制人。
 search-for-your-email = 搜索自2007年起的公开数据外泄事件当中，是否包含您的电子邮件地址。
 back-to-top = 回到顶端
+comm-opt-0 = 如果我的某个电子邮件地址出现在数据外泄事件中，请发邮件通知我。
 comm-opt-1 = 将所有外泄警报发送到 { $primaryEmail }。
 stop-monitoring-this = 停止监控此电子邮件地址。
 resend-verification = 重发验证邮件
@@ -421,14 +422,22 @@ breach-summary = 外泄事件概要
 show-breaches-for-this-email = 显示所有与此邮箱地址相关的数据外泄事件。
 link-change-primary = 更改主邮箱地址
 remove-fxm = 移除 { -product-name }
+remove-fxm-blurb = 关闭 { -product-name } 的警报。您的 { -brand-fxa }仍然有效，您可能会收到其他与账户有关的通讯。
 manage-email-addresses = 管理电子邮件地址
 latest-breach-link = 看看您是否也在这次外泄事件中
 welcome-back = 欢迎回来，{ $userName }！
 welcome-user = { $userName }，欢迎！
 breach-alert-subject = { -product-name } 发现您的邮箱出现在新的数据外泄事件中。
 your-info-was-discovered-headline = 在新的数据外泄事件中发现了您的信息。
+your-info-was-discovered-blurb = 您已注册在邮箱地址出现于新的数据外泄事件时，要接收 { -product-name } 警报。以下是我们关于这次事件所了解的信息。
 what-to-do-after-breach = 数据外泄后该怎么办
+ba-next-step-1 = 更改密码，使用高强度、唯一的密码。
+ba-next-step-blurb-1 = 高强度的密码，须包含大写字母、小写字母、特殊符号、数字的组合。请勿在密码中包含地址、生日、姓名等个人信息。
 ba-next-step-2 = 全面停止使用已泄露的密码。
+ba-next-step-blurb-2 = 网络罪犯可能会在暗网上找到您的密码，并用来登录您的其他账号。最好的保护方式就是为每个网站都使用不同密码。
+ba-next-step-3 = 获取创建更好密码的帮助，并确保密码安全。
+ba-next-step-blurb-3 = 使用密码管理器创建高强度、唯一的密码，并安全地保存登录信息，这样就可以同步到您的所有设备中使用。
+faq1 = 我不认识这家公司或网站，为什么我与该外泄事件有关？
 faq2 = 为什么过了这么久才通知我有数据外泄事件？
 faq3 = 我怎么知道这封信是真的来自 { -product-name }？
 new-breaches-found =
@@ -436,10 +445,20 @@ new-breaches-found =
        *[other] 找到 { $breachCount } 次新的数据外泄事件
     }
 sign-up-headline-1 = 注册 { -brand-fxa }，获取数据外泄警报。
+account-not-required = 不需注册 { -brand-fxa } 也能使用 { -brand-name } 浏览器。您可能会收到有关 { -brand-Mozilla } 服务的信息。
 get-alerted = 在有新的外泄事件时，接收警报。
 was-your-info-exposed = 您的信息是否出现在 { $breachName } 的数据外泄事件？
 find-out-if = 看看您的数据是否出现在这次外泄事件中。
 fb-not-comp = 这个邮箱没有出现在 { $breachName } 外泄事件。
+other-breaches-found =
+    { $breachCount ->
+       *[other] 但出现在其他 { $breachCount } 次外泄事件中。
+    }
+fb-comp-only = 此电子邮件地址出现在 { $breachName } 外泄事件中。
+fb-comp-and-others =
+    { $breachCount ->
+       *[other] 此电子邮件地址出现在 { $breachCount } 次外泄事件中，包括 { $breachName } 事件。
+    }
 no-other-breaches-found = 在基本搜索中未找到其他外泄事件。
 no-results-blurb = 很抱歉，我们的数据库中没有该外泄事件相关信息。
 all-breaches-headline = { -product-name } 的所有数据外泄事件
@@ -452,6 +471,7 @@ all-breaches = 所有数据外泄事件
 
 error-bot-headline = 暂时无法搜索
 error-csrf-headline = 会话超时
+error-csrf-blurb = 点击浏览器的后退按钮或重新加载页面，再试一次。
 error-invalid-unsub = 如何取消订阅来自 { -product-name } 的警报
 error-invalid-unsub-blurb = 您可以从任何 { -product-name } 发送的邮件中进行退订。请到收件箱搜索来自 { -brand-team-email } 的邮件，然后点击邮件底部的“取消订阅”链接。
 login-link-pre = 已有账户？
@@ -470,6 +490,13 @@ data-breaches-exposed =
     { $breaches ->
        *[other] 泄露您信息的数据外泄事件
     }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+       *[other] 在所有事件中泄露的密码
+    }
 # Button
 see-additional-breaches = 查看其他外泄事件
 # A button on the All Breaches page that restores all of the breaches
@@ -485,11 +512,14 @@ scan-results-known-breaches =
 results-for = { $userEmail } 的搜索结果：
 other-monitored-emails = 其他监控的邮箱地址
 email-verification-required = 需要验证邮箱地址
-fxa-primary-email = { -brand-fxa } 邮件 - 主账号
+fxa-primary-email = { -brand-fxa }邮件 - 主账号
 what-is-a-website-breach = 网站信息外泄事件是什么？
+website-breach-blurb = 当网络罪犯从网上账户窃取、复制或公开个人信息时，就会发生网站数据泄露。这通常是黑客发现网站安全薄弱环节的结果，也可能是账户信息意外泄露。
+security-tips-headline = 保护您不受黑客侵扰的安全提示
 steps-to-protect = 采取措施保护您的在线身份
 take-further-steps = 采取更多措施保护身份信息
 alert-about-new-breaches = 有新的外泄事件时通知我
+get-ongoing-breach-monitoring = 持续针对多个电子邮件地址，监控数据外泄事件。
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = 找找看
 new-unsub-error = 您可以从任何一封 { -product-name } 发送的邮件取消订阅。
