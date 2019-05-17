@@ -452,6 +452,16 @@ new-breaches-found =
        *[other] { $breachCount } NOVE VIOLATIONES TROVATE
     }
 sign-up-headline-1 = Recipe avisos in corso con un { -brand-fxa }.
+account-not-required = { -brand-name } navigator non necessari a un { -brand-fxa }. Tu pote reciper information re le servicios de { -brand-Mozilla }.
+get-alerted = Recipe avisos re nove violationes.
+was-your-info-exposed = Era tu information exponite in le violation de datos { $breachName }?
+find-out-if = Discoperi si tu datos era exponite in iste violation.
+fb-not-comp = Iste email non appareva in le violation { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Comocunque, illo appareva in { $breachCount } altere violation.
+       *[other] Comocunque, illo appareva in { $breachCount } altere violationes.
+    }
 
 ## Updated error messages
 
