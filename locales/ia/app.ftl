@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -454,3 +455,5 @@ sign-up-headline-1 = Recipe avisos in corso con un { -brand-fxa }.
 
 ## Updated error messages
 
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menu
