@@ -496,3 +496,28 @@ see-if-youve-been-part = Vérifiez si une fuite de données en ligne vous concer
 get-ongoing-breach-monitoring = Surveillez en continu les fuites de données pour plusieurs adresses électroniques.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Vérifier
+new-unsub-error = Vous devrez vous désabonner depuis l’un des courriels envoyés par { -product-name }.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Cependant, elle apparaît dans une autre fuite connue.
+       *[other] Cependant, elle apparaît dans { $breachCount } autres fuites connues.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Informations supplémentaires, notamment :
+# Title
+email-addresses-title = Adresses électroniques
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = Le { $breachDate }, { $breachTitle } a été victime d’une fuite de données. Une fois cette fuite découverte et vérifiée, elle a été ajoutée à notre base de données le { $addedDate }.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = Préférences de { -product-short-name }
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Connecté·e en tant que : { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Filtrer par catégorie :
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menu
