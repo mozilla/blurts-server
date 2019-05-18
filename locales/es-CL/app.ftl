@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -331,9 +332,102 @@ breach-discovered = Filtración descubierta:
 # Link title
 more-about-this-breach = Más acerca de esta filtración
 take-control = Recupera el control de tu información personal.
+website-breach = Filtración de sitio
+sensitive-breach = Filtración de sitio sensible
+data-aggregator-breach = Filtración de agregador de datos
+unverified-breach = Filtración no verificada
+spam-list-breach = Filtración de lista de spam
+website-breach-plural = Filtraciones de sitios
+sensitive-breach-plural = Filtraciones sensibles
+data-aggregator-breach-plural = Filtraciones de agregadores de datos
+unverified-breach-plural = Filtraciones no verificadas
+spam-list-breach-plural = Filtraciones de listas de spam
+what-data = Qué datos fueron comprometidos:
+sensitive-sites = ¿Cómo trata { -product-name } los sitios sensibles?
+delayed-reporting-headline = ¿Por qué tardó tanto reportar esta filtración?
+about-fxm-headline = Acerca de { -product-name }
+# How Firefox Monitor works
+how-fxm-works = Cómo funciona { -product-name }
+how-fxm-1-headline = Realizar una búsqueda básica
+what-is-data-agg = ¿Qué es un agregador de datos?
+protect-your-privacy = Protege tu privacidad en línea
+avoid-personal-info = Evita usar información personal en contraseñas
 
 ## What to do after data breach tips
 
+change-pw = Cambia tu contraseña
+remove-fxm = Eliminar { -product-name }
+manage-email-addresses = Gestionar direcciones de correo
+latest-breach-link = Revisa si estás en esta filtración
+welcome-back = ¡Bienvenido nuevamente { $userName }!
+welcome-user = ¡Bienvenido { $userName }!
+new-breaches-found =
+    { $breachCount ->
+        [one] { $breachCount } NUEVA FILTRACIÓN ENCONTRADA
+       *[other] { $breachCount } NUEVAS FILTRACIONES ENCONTRADAS
+    }
+no-other-breaches-found = No se encontraron otras filtraciones en la búsqueda básica.
+no-results-blurb = Lo sentimos, esa filtración no está en nuestra base de datos.
+all-breaches-headline = Todas las filtraciones en { -product-name }
+search-breaches = Buscar filtraciones
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Mostrando:
+all-breaches = Todas las filtraciones
 
 ## Updated error messages
 
+error-bot-headline = Búsquedas temporalmente suspendidas
+error-csrf-headline = Sesión expirada
+login-link-pre = ¿Tienes una cuenta?
+login-link = Conectarse
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] Dirección de correo monitorizada
+       *[other] Direcciones de correo monitorizadas
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] Una filtración de datos ha expuesto tu información
+       *[other] Varias filtraciones de datos han expuesto tu información
+    }
+# Button
+see-additional-breaches = Ver filtraciones adicionales
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Ver todas las filtraciones
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Este correo apareció en 1 filtración de datos conocida.
+       *[other] Este correo apareció en { $breachCount } filtraciones de datos conocidas.
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Resultados para: { $userEmail }
+other-monitored-emails = Otros correos monitorizados
+email-verification-required = Verificación de correo requerida
+fxa-primary-email = Correo de { -brand-fxa } - Primario
+what-is-a-website-breach = ¿Qué es una filtración de sitio?
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Averiguar
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Información adicional, incluyendo:
+# Title
+email-addresses-title = Direcciones de correo
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = Preferencias de { -product-short-name }
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Conectado cómo: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Filtrar por categoría:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menú
