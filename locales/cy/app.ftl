@@ -468,6 +468,65 @@ create-strong-passwords = Dewis cyfrineiriau cryf
 stop-reusing-pw = Peidiwch ailddefnyddio'r un cyfrineiriau
 create-unique-pw = Crëwch gyfrineiriau unigryw a'u cadw yn rhywle diogel, mewn rheolwr cyfrinair.
 five-myths = 5 coel am reolwyr cyfrinair
+create-a-fxa = Crëwch { -brand-fxa } ar gyfer eich adroddiad llawn o tor-data ac i dderbyn rhybuddion.
+feat-security-tips = Awgrymiadau diogelwch i ddiogelu eich cyfrifon
+feat-sensitive = Chwilio uwch mewn tor-data sensitif
+feat-enroll-multiple = Cofrestru nifer o e-byst ar gyfer monitro tor-data
+sign-up-for-fxa = Cofrestrwch ar gyfer { -brand-fxa }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [zero] Nid yw'n ymddangos mewn unrhyw dor-data.
+        [one] Yn ymddangos mewn { $breachCount } tor-data.
+        [two] Yn ymddangos mewn { $breachCount } tor-data.
+        [few] Yn ymddangos mewn { $breachCount } tor-data.
+        [many] Yn ymddangos mewn { $breachCount } tor-data.
+       *[other] Yn ymddangos mewn { $breachCount } tor-data.
+    }
+see-if-breached = Gweld os ydych wedi bod yn rhan o dor-data ar-lein.
+check-for-breaches = Gwirio am Dor-data
+find-out-what-hackers-know = Canfod beth mae hacwyr eisoes yn ei wybod amdanoch chi. Dysgwch sut i aros un cam o'u blaen.
+search-for-your-email = Chwiliwch am eich cyfeiriad e-bost mewn tor-data cyhoeddus sy'n mynd yn ôl i 2007.
+back-to-top = Nôl i'r Brig
+comm-opt-0 = E-bostiwch fi os yw un o'm cyfeiriadau e-bost isod yn ymddangos mewn achos o dor-data.
+comm-opt-1 = Anfonwch yr holl rybuddion tor-data i { $primaryEmail }.
+stop-monitoring-this = Peidio monitro'r e-bost hwn.
+resend-verification = Ail-anfon yr e-bost dilysu
+add-new-email = Ychwanegu cyfeiriad e-bost newydd
+send-verification = Anfon Dolen Dilysu
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Cyfathrebu Byd-eang
+breach-summary = Crynodeb o'r Tor-data
+show-breaches-for-this-email = Dangos bob achos o dor-data'r e-bost hwn.
+link-change-primary = Newid Cyfeiriad yr E-bost Cynradd
+remove-fxm = Tynnu { -product-name }
+remove-fxm-blurb = Diffodd rybuddion { -product-name }. Bydd eich { -brand-fxa } yn parhau i fod yn weithredol, ac efallai y cewch chi gyfathrebiadau eraill sy'n gysylltiedig â'ch cyfrifon.
+manage-email-addresses = Rheoli Cyfeiriadau E-bost
+latest-breach-link = Gweld os oeddech yn rhan o'r tor-data hyn
+welcome-back = Croeso nôl, { $userName }!
+welcome-user = Croeso, { $userName }!
+breach-alert-subject = Mae { -product-name } wedi canfod eich e-bost mewn tor-data newydd.
+your-info-was-discovered-headline = Cafodd eich manylion eu darganfod mewn tor-data newydd.
+your-info-was-discovered-blurb =
+    Rydych wedi cofrestru i dderbyn rhybuddion { -product-name }
+    pan fydd eich e-bost yn ymddangos mewn achos o dor-data. Dyma beth rydym yn ei wybod am y tor-data hwn.
+what-to-do-after-breach = Beth i'w wneud ar ôl tor-data
+ba-next-step-1 = Newidiwch eich cyfrinair i gyfrinair cryf, unigryw.
+ba-next-step-blurb-1 =
+    Mae cyfrinair cryf yn defnyddio cyfuniad o lythrennau mawr a bach,
+    nodau arbennig, a rhifau. Nid yw'n cynnwys manylion personol fel
+    eich cyfeiriad, pen-blwydd neu enw teuluol.
+ba-next-step-2 = Peidiwch a defnyddio'r cyfrinair hwn o gwbl.
+ba-next-step-blurb-2 =
+    Bydd troseddwyr seibr yn gallu ddod o hyd i'ch cyfrinair ar y we dywyll a'i ddefnyddio
+    i fewngofnodi i'ch cyfrifon eraill. Y ffordd orau o ddiogelu eich cyfrifon
+    yw defnyddio cyfrineiriau unigryw ar gyfer pob un.
+ba-next-step-3 = Derbyniwch gymorth i greu gwell cyfrineiriau a'u cadw'n ddiogel.
 
 ## Updated error messages
 
