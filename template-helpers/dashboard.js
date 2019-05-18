@@ -12,7 +12,7 @@ function getBreachesForEachEmail(args) {
     const breachCards = makeBreachCards(email.breaches, locales);
     email.foundBreaches = {};
     email.foundBreaches.firstFourBreaches = breachCards.slice(0, 4);
-    email.foundBreaches.remainingBreaches = breachCards.slice(5, breachCards.length);
+    email.foundBreaches.remainingBreaches = breachCards.slice(4, breachCards.length);
     email.foundBreaches.cardType = "two-up ec drop-shadow";
     email.breaches = breachCards;
     if (email.breaches.length > 0) {

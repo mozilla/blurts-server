@@ -34,16 +34,18 @@ function dataClassesforCards(breach, locales) {
   return localizedBreachDataClasses(topTwoClasses.slice(0, 2), locales);
 }
 
-function makeBreachCards(breaches, locales) {
+function makeBreachCards(breaches, locales, filter=true) {
   const breachCardStrings = getLocalizedBreachCardStrings(locales);
   const formattedBreaches = [];
 
-  if (breaches.length > 1) {
-    breaches.sort((a,b) => {
-      const oldestBreach = new Date(a.BreachDate);
-      const newestBreach = new Date(b.BreachDate);
-      return newestBreach-oldestBreach;
-    });
+  if (filter) {
+    if (breaches.length > 1) {
+      breaches.sort((a,b) => {
+        const oldestBreach = new Date(a.BreachDate);
+        const newestBreach = new Date(b.BreachDate);
+        return newestBreach-oldestBreach;
+      });
+    }
   }
 
   for (const breach of breaches) {
@@ -105,17 +107,13 @@ function lastAddedBreach(options) {
 }
 
 function getFoundBreaches(args) {
-  const foundBreaches = {};
   const locales = args.data.root.req.supportedLocales;
   let userBreaches = args.data.root.foundBreaches;
-  userBreaches = makeBreachCards(userBreaches, locales);
 
-  foundBreaches.firstFourBreaches = userBreaches.slice(0, 4);
-  if (userBreaches.length > 4) {
-    foundBreaches.remainingBreaches = userBreaches.slice(4, foundBreaches.length);
-  }
-  foundBreaches.cardType = "two-up drop-shadow";
-  return args.fn(foundBreaches);
+  userBreaches = makeBreachCards(userBreaches, locales, false);
+
+  userBreaches.cardType = "two-up drop-shadow";
+  return userBreaches;
 }
 
 function getBreachArray(args) {

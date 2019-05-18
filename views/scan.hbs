@@ -24,9 +24,10 @@
   <div class="row jst-cntr user-found-breaches flx-col">
     <div class="col-9 found-breaches">
       <!-- foundBreaches 1-4 -->
-      {{#getFoundBreaches}}
-        {{> breach-groups cardType="two-up drop-shadow scan-res"}}
-      {{/getFoundBreaches}}
+
+        {{#each (getFoundBreaches)}}
+          {{> breach-card cardType="two-up drop-shadow"}}
+        {{/each}}
     </div>
     {{#ifCompare foundBreaches.length ">" "0"}}
       <div class="col-9 txt-cntr source-info-wrap">
