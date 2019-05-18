@@ -50,17 +50,20 @@ a.latest-breach-link {
   transition: all 0.15s ease-in-out;
 }
 
+.latest-breach-link,
 .more-about-this-breach {
   display: flex;
   align-items: center;
-  color: var(--blue3);
+  color: var(--blue4);
+  font-weight: 500;
   opacity: 1;
-  transition: opacity 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
 }
 
+.latest-breach-link:hover,
 .more-about-this-breach:hover {
-  opacity: 0.7;
-  transition: opacity 0.15s ease-in-out;
+  text-decoration: underline;
+  transition: all 0.15s ease-in-out;
 }
 
 a.latest-breach-link {
