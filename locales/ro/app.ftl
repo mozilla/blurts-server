@@ -357,6 +357,17 @@ delayed-reporting-copy = Poate dura câteva luni sau câțiva ani pentru ca date
 about-fxm-headline = Despre { -product-name }
 about-fxm-blurb = { -product-name } te avertizează în cazul în care conturile tale online au fost implicate într-o breșă de date. Află dacă  ai fost implicat(ă) într-o breșă de date, primește alerte despre breșe noi de date și ia măsuri pentru protejarea conturilor tale online. { -product-name } este furnizat de { -brand-Mozilla }.
 fxm-warns-you = { -product-name } te avertizează dacă adresa ta de e-mail a fost expusă într-o breșă de date online. Vezi dacă ți-au fost expuse informațiile, afli cum să-ți protejezi mai bine conturile online și primești alerte în cazul în care adresa ta de e-mail apare în breșe noi de date.
+# How Firefox Monitor works
+how-fxm-works = Cum funcționează { -product-name }
+how-fxm-1-headline = Efectuează o căutare de bază
+how-fxm-1-blurb = Caută-ți adresa de e-mail în breșele publice de date încă din anul 2007. Această căutare de bază va accesa majoritatea breșelor de date, dar nu și pe cele care conține informații personale sensibile.
+how-fxm-2-headline = Înregistrează-te pentru monitorizarea breșelor
+how-fxm-2-blurb = Creează un { -brand-fxa } ca să îți monitorizezi adresa de e-mail pentru breșe curente. Odată ce ți-ai verificat adresa de e-mail, vei primi și un raport complet cu breșele anterioare, inclusiv breșe de date sensibile.
+how-fxm-3-headline = Primește notificări în browser
+how-fxm-3-blurb = Dacă folosești { -brand-name }, vei primi o notificare când intri pe un site care a fost spart. Afli imediat dacă ai fost implicat(ă) în breșa respectivă și ce măsuri poți lua.
+wtd-after-website = Ce să faci după o breșă pe un site web
+wtd-after-data-agg = Ce să faci după o breșă a unui agregator de date
+what-is-data-agg = Ce sunt agregatoarele de date?
 
 ## What to do after data breach tips
 
