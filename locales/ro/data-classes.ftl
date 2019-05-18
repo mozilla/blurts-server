@@ -12,6 +12,9 @@ avatars = avataruri
 bank-account-numbers = numere de conturi bancare
 beauty-ratings = evaluări de frumusețe
 biometric-data = date biometrice
+# This string is the shortened version of "Biographies", and 
+# refers to biographical data about a user.
+bios = Date biografice
 browser-user-agent-details = detalii privind agentul utilizator din browser
 browsing-histories = istoricuri de navigare
 buying-preferences = preferințe de cumpărare
@@ -37,6 +40,7 @@ education-levels = nivel de educație
 email-addresses = adrese de e-mail
 email-messages = mesaje de e-mail
 employers = angajatori
+employment-statuses = Stare profesională
 ethnicities = etnii
 family-members-names = nume ale membrilor de familie
 family-plans = planuri familiale
@@ -101,6 +105,7 @@ smoking-habits = obiceiuri de fumat
 sms-messages = mesaje SMS
 social-connections = contacte pe rețele sociale
 social-media-profiles = profiluri pe rețelele sociale
+social-security-numbers = Coduri numerice personale
 spoken-languages = limbi vorbite
 support-tickets = tichete de asistență tehnică
 survey-results = rezultate ale sondajelor

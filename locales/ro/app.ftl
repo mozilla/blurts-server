@@ -476,6 +476,87 @@ error-bot-blurb = Suntem îngrijorați că ai putea fi robot pentru că ai căut
 error-csrf-headline = Sesiune expirată
 error-csrf-blurb = Selectează butonul Înapoi din browser, reîncarcă pagina și încearcă din nou.
 error-invalid-unsub = Cum să te dezabonezi de la alertele { -product-name }
-error-invalid-unsub-blurb = Va trebui să te dezabonezi dintr-unul dintre mesajele e-mail trimise de { -product-name }. Verifică-ți căsuța poștală pentru mesaje de la { -brand-team-email }. Selectează linkul de dezabonare din partea de jos a mesajului.
+error-invalid-unsub-blurb = Va trebui să te dezabonezi folosind unul dintre mesajele de e-mail trimise de { -product-name }. Verifică-ți căsuța poștală pentru mesaje de la { -brand-team-email }. Selectează linkul de dezabonare din partea de jos a mesajului.
 login-link-pre = Ai un cont?
 login-link = Autentifică-te
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] adresă de e-mail monitorizată
+        [few] adrese de e-mail monitorizate
+       *[other] de adrese de e-mail monitorizate
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] breșă de date ți-a expus informațiile
+        [few] breșe de date ți-au expus informațiile
+       *[other] de breșe de date ți-au expus informațiile
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] parolă expusă în toate breșele
+        [few] parole expuse în toate breșele
+       *[other] de parole expuse în toate breșele
+    }
+# Button
+see-additional-breaches = Afișează și alte breșe
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Afișează toate breșele
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Această adresă de e-mail a apărut în 1 breșă cunoscută de date.
+        [few] Această adresă de e-mail a apărut în { $breachCount } breșe cunoscute.
+       *[other] Această adresă de e-mail a apărut în { $breachCount } de breșe cunoscute.
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Rezultate pentru: { $userEmail }
+other-monitored-emails = Alte adrese de e-mail monitorizate
+email-verification-required = Este necesară verificarea adresei de e-mail
+fxa-primary-email = Adresă de e-mail { -brand-fxa } - primară
+what-is-a-website-breach = Ce sunt breșele de site-uri web?
+website-breach-blurb = Breșele de site-uri web apar când infractorii cibernetici fură, copiază sau expun date cu caracter personal din conturi online. Apar de obicei ca rezultat al faptului că hackerii au identificat un punct slab în securitatea site-ului.Breșele pot apărea și la „scurgerea” accidentală a informațiilor din conturi.
+security-tips-headline = Ponturi de securitate pentru a te proteja de hackeri
+steps-to-protect = Pași de luat pentru a-ți proteja identitatea online
+take-further-steps = Ia măsuri suplimentare pentru a-ți proteja identitatea
+alert-about-new-breaches = Trimite-mi alerte pentru breșe noi
+see-if-youve-been-part = Vezi dacă ai fost implicat(ă) într-o breșă de date online.
+get-ongoing-breach-monitoring = Obține monitorizare curentă pentru breșe pentru mai multe adrese de e-mail.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Află
+new-unsub-error = Va trebui să te dezabonezi prin intermediul unuia dintre mesajele primite pe e-mail de la { -product-name },
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Însă a apărut în { $breachCount } altă breșă cunoscută.
+        [few] Însă a apărut în { $breachCount } alte breșe cunoscute.
+       *[other] Însă a apărut în { $breachCount } de alte breșe cunoscute.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Informații suplimentare, inclusiv:
+# Title
+email-addresses-title = Adrese de e-mail
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = La { $breachDate }, { $breachTitle } a avut o breșă. Odată ce breșa a fost descoperită și verificată, a fost adăugată în baza noastră de date la { $addedDate }.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = Preferințe { -product-short-name }
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Autentificat ca: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Filtrează pe categorii:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Meniu
