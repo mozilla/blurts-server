@@ -578,3 +578,104 @@ all-breaches = Pob Tor-data
 error-bot-headline = Chwilio wedi'u hatal dros dro
 error-bot-blurb = Rydym yn poeni y gallech chi fod yn bot oherwydd i chi chwilio sawl cyfeiriad e-bost mewn cyfnod byr. Am nawr, rydych wedi eich rhwystro rhag chwilio o'r newydd. Gallwch geisio eto yn nes ymlaen.
 error-csrf-headline = Daeth y sesiwn i ben
+error-csrf-blurb = Dewiswch fotwm nól eich porwr, ail-lwytho'r dudalen, a cheisio eto.
+error-invalid-unsub = Sut i ddad-danysgrifio o rybuddion { -product-name }
+error-invalid-unsub-blurb = Bydd angen i chi ddad-danysgrifio o un o'r e-byst anfonodd { -product-name } atoch chi. Gwiriwch eich blwch derbyn am negeseuon o { -brand-team-email }. Dewiswch y ddolen dad-danysgrifio ar waelod yr e-bost.
+login-link-pre = Oes gennych gyfrif?
+login-link = Mewngofnodi
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [zero] Cyfeiriadau e-byst yn cael eu monitro
+        [one] Cyfeiriad e-bost yn cael ei fonitro
+        [two] Cyfeiriad e-bost yn cael eu monitro
+        [few] Cyfeiriad e-bost yn cael eu monitro
+        [many] Cyfeiriad e-bost yn cael eu monitro
+       *[other] Cyfeiriad e-bost yn cael eu monitro
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [zero] Dim tor-data
+        [one] Mae tor-data wedi datgelu eich manylion
+        [two] Mae tor-data wedi datgelu eich manylion
+        [few] Mae tor-data wedi datgelu eich manylion
+        [many] Mae tor-data wedi datgelu eich manylion
+       *[other] Mae tor-data wedi datgelu eich manylion
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [zero] Cyfrineiriau'n ddiogel
+        [one] Cyfrineiriau wedi'i amlygu ym mhob tor-data
+        [two] Cyfrineiriau wedi'u hamlygu ym mhob tor-data
+        [few] Cyfrineiriau wedi'u hamlygu ym mhob tor-data
+        [many] Cyfrineiriau wedi'u hamlygu ym mhob tor-data
+       *[other] Cyfrineiriau wedi'u hamlygu ym mhob tor-data
+    }
+# Button
+see-additional-breaches = Gweld Tor-data Ychwanegol
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Gweld Pob Tor-data
+scan-results-known-breaches =
+    { $breachCount ->
+        [zero] Nid yw'r e-bost wedi ymddangos mewn tor-data.
+        [one] Ymddangosodd yr e-bost mewn 1 tor-data.
+        [two] Ymddangosodd yr e-bost mewn { $breachCount } tor-data.
+        [few] Ymddangosodd yr e-bost mewn { $breachCount } tor-data.
+        [many] Ymddangosodd yr e-bost mewn { $breachCount } tor-data.
+       *[other] Ymddangosodd yr e-bost mewn { $breachCount } tor-data.
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Canlyniadau ar gyfer:{ $userEmail }
+other-monitored-emails = E-byst eraill sy'n Cael eu Monitro
+email-verification-required = Mae Angen Dilysu
+fxa-primary-email = E-bost { -brand-fxa } - Cynradd
+what-is-a-website-breach = Beth yw tor-data gwefan?
+website-breach-blurb = Mae tor-data gwefan yn digwydd pan fydd troseddwyr seibr yn dwyn, copïo neu ddatgelu manylion personol o gyfrifon ar-lein. Mae fel arfer yn ganlyniad i hacwyr yn dod o hyd i fan gwan ym maes diogelwch y wefan. Gall achosion o dor-data ddigwydd hefyd pan fydd manylion cyfrifon yn cael eu datgelu'n ddamweiniol.
+security-tips-headline = Awgrymiadau diogelwch i ddiogelu eich hun rhag hacwyr
+steps-to-protect = Camau i'w cymryd i ddiogelu eich hunaniaeth ar-lein
+take-further-steps = Cymrwch gamau pellach i ddiogelu eich hunaniaeth
+alert-about-new-breaches = Rhowch wybod i mi am dor-data newydd
+see-if-youve-been-part = Gweld os ydych wedi bod yn rhan o dor-data ar-lein.
+get-ongoing-breach-monitoring = Derbyn monitro tor-data parhaus ar gyfeiriadau e-bost lluosog.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Canfod
+new-unsub-error = Bydd angen i chi ddad-danysgrifio o un o'r e-byst { -product-name } a anfonwyd.
+other-known-breaches-found =
+    { $breachCount ->
+        [zero] Nid yw wedi ymddangos mewn unrhyw dor-data hysbys.
+        [one] Fodd bynnag, ymddangosodd mewn toriadau hysbys eraill yn $ $ torriCount.
+        [two] Fodd bynnag, ymddangosodd mewn tor-data hysbys eraill yn { $breachCount }
+        [few] Fodd bynnag, ymddangosodd mewn tor-data hysbys eraill yn { $breachCount }
+        [many] Fodd bynnag, ymddangosodd mewn tor-data hysbys eraill yn { $breachCount }
+       *[other] Fodd bynnag, ymddangosodd mewn tor-data hysbys eraill yn { $breachCount }
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Gwybodaeth ychwanegol, gan gynnwys:
+# Title
+email-addresses-title = Cyfeiriadau E-bost
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = Ar { $breachDate }, profodd { $breachTitle } dor-data. Unwaith y cafodd y tor-data ei ddarganfod a'i ddilysu, cafodd ei ychwanegu at ein cronfa ddata ar { $addedDate }.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = Dewisiadau { -product-short-name }
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Mewngofnodwyd fel: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Hidlo yn ôl Categori:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Dewislen
