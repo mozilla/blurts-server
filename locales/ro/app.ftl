@@ -368,9 +368,66 @@ how-fxm-3-blurb = Dacă folosești { -brand-name }, vei primi o notificare când
 wtd-after-website = Ce să faci după o breșă pe un site web
 wtd-after-data-agg = Ce să faci după o breșă a unui agregator de date
 what-is-data-agg = Ce sunt agregatoarele de date?
+what-is-data-agg-blurb = Agregatoarele de date, cunoscute și sub denumirea de brokeri de date, colectează informații din înregistrări publice și cumpără date de la alte companii. Ele compilează aceste date pentru a le vinde altor companii în scopuri de marketing. Victimele acestor breșe prezintă o probabilitate mai mică de fraude financiare, dar hackerii pot folosi aceste date pentru a le uzurpa identitatea sau pentru profilare.
+protect-your-privacy = Protejează-ți confidențialitatea online
+no-pw-to-change = Spre deosebire  de breșele site-urilor web, nu există nicio parolă de schimbat.
+avoid-personal-info = Evită folosirea de informații personale în parole
+avoid-personal-info-blurb = Datele de naștere, adresele și numele membrilor familiei sunt ușor de găsit online. Nu introdu asemenea cuvinte în parole.
 
 ## What to do after data breach tips
 
+change-pw = Schimbă-ți parola
+even-for-old = Actualizarea parolelor este importantă, chiar și pentru conturile vechi.
+make-new-pw-unique = Parola nouă trebuie să fie diferită și unică
+strength-of-your-pw = Puterea parolelor are un impact direct asupra securității tale online.
+create-strong-passwords = Cum să creezi parole puternice
+stop-reusing-pw = Nu refolosi parolele
+create-unique-pw = Creează parole unice și salvează-le într-un loc sigur, cum ar fi un manager de parole.
+five-myths = 5 mituri despre managerii de parole
+create-a-fxa = Creează { -brand-fxa } pentru un raport complet despre breșe și ca să primești alerte.
+feat-security-tips = Ponturi de securitate pentru protejarea conturilor
+feat-sensitive = Căutare avansată în breșe de date sensibile
+feat-enroll-multiple = Înregistrează mai multe adrese de e-mail pentru monitorizarea breșelor
+sign-up-for-fxa = Înregistrează-te pentru un { -brand-fxa }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Apare în { $breachCount } breșă cunoscută
+        [few] Apare în { $breachCount } breșe cunoscute
+       *[other] Apare în { $breachCount } de breșe cunoscute
+    }
+see-if-breached = Vezi dacă apari într-o breșă de date online.
+check-for-breaches = Verifică pentru breșe
+find-out-what-hackers-know = Află ce știu hackerii despre tine. Află cum să fii cu un pas înaintea lor.
+search-for-your-email = Caută-ți adresa de e-mail în breșe de date publice datând încă din 2007.
+back-to-top = Înapoi sus
+comm-opt-0 = Trimite-mi un mesaj pe e-mail dacă adresele mele de e-mail de mai jos apar într-o breșă de date.
+comm-opt-1 = Trimite toate alertele de breșe la { $primaryEmail }.
+stop-monitoring-this = Nu mai monitoriza acest e-mail.
+resend-verification = Retrimite  mesajul e-mail de verificare
+add-new-email = Adaugă o adresă nouă de e-mail
+send-verification = Trimite linkul de verificare
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Comunicații globale
+breach-summary = Rezumat breșă
+show-breaches-for-this-email = Arată toate breșele pentru acest e-mail.
+link-change-primary = Schimbă adresa de e-mail primară
+remove-fxm = Elimină { -product-name }
+remove-fxm-blurb = Dezactivează alertele { -product-name }. { -brand-fxa } tău va rămâne activ și poți primi alte comunicări legate de cont.
+manage-email-addresses = Gestionează adresele de e-mail
+latest-breach-link = Vezi dacă ai fost implicat(ă) în această breșă
+welcome-back = Bine ai revenit, { $userName }!
+welcome-user = Bine ai venit, { $userName }!
+breach-alert-subject = { -product-name } ți-a găsit adresa de e-mail într-o breșă nouă de date.
+your-info-was-discovered-headline = Informațiile tale au fost găsite într-o breșă nouă de date.
+your-info-was-discovered-blurb = Te-ai înscris ca să primești alerte { -product-name } în cazul în care adresa ta de e-mail apare într-o breșă de date. Iată ce știm despre această breșă.
+what-to-do-after-breach = Ce să faci după o breșă de date
+ba-next-step-1 = Schimbă parola cu una puternică și unică.
 
 ## Updated error messages
 
