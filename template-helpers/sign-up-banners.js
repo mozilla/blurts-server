@@ -37,30 +37,30 @@ function monitorFeaturesList(args) {
   const features = [
     {
       title: "Stay alert to new breaches",
-      titleId: "stay-alert",
+      titleStringId: "stay-alert",
       subtitle: "If your information surfaces in a  new data breach, we'll send you an alert.",
-      subtitleId: "if-your-info",
+      subtitleStringId: "if-your-info",
       pictogramPath: "alert",
     },
     {
       title: "Monitor several emails",
-      titleId: "monitor-several-emails",
+      titleStringId: "monitor-several-emails",
       subtitle: "Search all your email addresses for breaches and get alerts about new threats.",
-      subtitleId: "search-all-emails",
+      subtitleStringId: "search-all-emails",
       pictogramPath: "email",
     },
     {
       title: "Protect your privacy",
-      titleId: "protect-your-privacy",
+      titleStringId: "protect-your-privacy",
       subtitle: "Find out what you need to do to keep your data safe from cyber criminals.",
-      subtitleId: "keep-your-data-safe",
+      subtitleStringId: "keep-your-data-safe",
       pictogramPath: "advice",
     },
   ];
 
   features.forEach(feature => {
-    feature.title = LocaleUtils.fluentFormat(locales, feature.titleId);
-    feature.subtitle = LocaleUtils.fluentFormat(locales, feature.subtitleId);
+    feature.title = LocaleUtils.fluentFormat(locales, feature.titleStringId);
+    feature.subtitle = LocaleUtils.fluentFormat(locales, feature.subtitleStringId);
   });
   return features;
 }
