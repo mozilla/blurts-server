@@ -398,14 +398,50 @@ breach-summary = Récapitulatif des fuites de données
 show-breaches-for-this-email = Afficher toutes les fuites de données pour cette adresse électronique.
 link-change-primary = Modifier l’adresse électronique principale
 remove-fxm = Supprimer { -product-name }
+remove-fxm-blurb = Désactive les alertes { -product-name }. Votre { -brand-fxa } restera actif, et vous pourrez recevoir d’autres messages liés à votre compte.
+manage-email-addresses = Gérer les adresses électroniques
+latest-breach-link = Vérifiez si cette fuite de données vous concerne
 welcome-back = Heureux de vous revoir, { $userName } !
 welcome-user = Bienvenue, { $UserName } !
+breach-alert-subject = { -product-name } a détecté votre adresse électronique dans une nouvelle fuite de données.
+your-info-was-discovered-headline = Vos données ont été découvertes dans une nouvelle fuite.
+what-to-do-after-breach = Que faire après une fuite de données ?
+ba-next-step-1 = Remplacez votre mot de passe par un mot de passe unique et robuste.
+ba-next-step-2 = Arrêtez d’utiliser ce mot de passe compromis.
+ba-next-step-blurb-3 = Utilisez un gestionnaire de mots de passe pour créer des mots de passe forts et uniques. Les gestionnaires de mots de passe conservent en toute sécurité l’ensemble de vos identifiants afin que vous puissiez y accéder sur tous vos appareils.
+faq1 = Je ne reconnais pas cette société ou ce site web. Pourquoi cette fuite me concerne-t-elle ?
+faq2 = Pourquoi a-t-il fallu si longtemps pour me prévenir de cette fuite de données ?
+faq3 = Comment puis-je savoir si ce courriel de { -product-name } est authentique ?
+new-breaches-found =
+    { $breachCount ->
+        [one] { $breachCount } NOUVELLE FUITE DE DONNÉES DÉCOUVERTE
+       *[other] { $breachCount } NOUVELLES FUITES DE DONNÉES DÉCOUVERTES
+    }
+sign-up-headline-1 = Recevez des alertes en continu avec un { -brand-fxa }.
+account-not-required = Le navigateur { -brand-name } n’est pas requis pour créer un { -brand-fxa }. Vous pourrez recevoir des informations à propos des services de { -brand-Mozilla }.
+get-alerted = Recevez des alertes lors de nouvelles fuites de données.
+was-your-info-exposed = Vos informations ont-elles été compromises dans la fuite de données { $breachName } ?
+find-out-if = Vérifiez si vos données ont été compromises dans cette fuite de données.
+fb-not-comp = Cette adresse électronique n’apparaît pas dans la fuite de données { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Cependant, elle apparaît dans une autre fuite.
+       *[other] Cependant, elle apparaît dans { $breachCount } autres fuites.
+    }
+fb-comp-only = Cette adresse électronique apparaît dans la fuite de données { $breachName }.
+fb-comp-and-others = Cette adresse électronique apparaît dans { $breachCount } fuites de données connues, fuite { $breachName } comprise.
+no-results-blurb = Désolé, cette fuite ne figure pas dans notre base de données.
+all-breaches-headline = Toutes les fuites de données dans { -product-name }
+search-breaches = Rechercher des fuites de données
 all-breaches = Toutes les violations
 
 ## Updated error messages
 
 error-bot-headline = Recherches temporairement suspendues
 error-csrf-headline = Session expirée
+error-csrf-blurb = Cliquez sur le bouton Précédent de votre navigateur, actualisez la page et réessayez.
+error-invalid-unsub = Comment se désabonner des alertes de { -product-name }
+error-invalid-unsub-blurb = Vous devrez vous désabonner depuis l’un des messages { -product-name } qui vous ont été envoyés. Recherchez les messages de { -brand-team-email } dans votre boîte de réception. Cliquez sur le lien de désabonnement en bas du message.
 login-link-pre = Vous avez déjà un compte ?
 login-link = Connectez-vous
 # This string is displayed under a large numeral that indicates the total number
@@ -432,6 +468,8 @@ passwords-exposed =
         [one] mot de passe compromis parmi toutes les fuites de données
        *[other] mots de passe compromis parmi toutes les fuites de données
     }
+# Button
+see-additional-breaches = Voir les fuites supplémentaires
 # A button on the All Breaches page that restores all of the breaches
 # back to the page if the user has filtered some of them out.
 see-all-breaches = Afficher toutes les fuites de données
@@ -448,3 +486,13 @@ results-for = Résultats pour : { $userEmail }
 other-monitored-emails = Autres adresses électroniques surveillées
 email-verification-required = Vérification de l’adresse électronique nécessaire
 fxa-primary-email = Adresse électronique du { -brand-fxa } (principale)
+what-is-a-website-breach = Qu’est-ce qu’une fuite de données de site web ?
+website-breach-blurb = Une fuite de données de site web se produit lorsque des cybercriminels volent, copient ou compromettent des informations à caractère personnel de comptes en ligne. Cela arrive généralement lorsque des pirates informatiques trouvent une faille dans la sécurité du site web. Des fuites peuvent également se produire lorsque des informations de compte sont divulguées par accident.
+security-tips-headline = Conseils de sécurité pour vous protéger des pirates informatiques
+steps-to-protect = Mesures à prendre pour protéger votre identité en ligne
+take-further-steps = Prenez des mesures supplémentaires pour protéger votre identité
+alert-about-new-breaches = M’alerter lors de nouvelles fuites de données
+see-if-youve-been-part = Vérifiez si une fuite de données en ligne vous concerne.
+get-ongoing-breach-monitoring = Surveillez en continu les fuites de données pour plusieurs adresses électroniques.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Vérifier
