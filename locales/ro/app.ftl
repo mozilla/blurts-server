@@ -428,6 +428,54 @@ your-info-was-discovered-headline = Informațiile tale au fost găsite într-o b
 your-info-was-discovered-blurb = Te-ai înscris ca să primești alerte { -product-name } în cazul în care adresa ta de e-mail apare într-o breșă de date. Iată ce știm despre această breșă.
 what-to-do-after-breach = Ce să faci după o breșă de date
 ba-next-step-1 = Schimbă parola cu una puternică și unică.
+ba-next-step-blurb-1 = Parolele puternice folosesc o combinație de litere mari și  mici, caractere speciale și cifre. Nu conțin informații personale, cum ar fi date de naștere, adrese sau nume ale membrilor de familie.
+ba-next-step-2 = Nu mai folosi deloc parola expusă.
+ba-next-step-blurb-2 = Infractorii cibernetici îți pot găsi parola pe dark web și o pot folosi pentru a intra în celelalte conturi pe care le deții. Cea mai bună cale de a-ți proteja conturile este să folosești parole unice pentru fiecare în parte.
+ba-next-step-3 = Obține ajutor pentru a crea parole mai bune și pentru a le păstra în siguranță.
+ba-next-step-blurb-3 = Folosește un manager de parole pentru a crea parole puternice și unice. Managerii de parole stochează în siguranță toate sesiunile deschise și le poți accesa pe toate dispozitivele tale.
+faq1 = Nu recunosc această companie sau site web. De ce apar în această breșă?
+faq2 = De ce a durat atât de mult să fiu informat(ă) despre această breșă?
+faq3 = Cum știu că acesta este un mesaj legitim de e-mail de la { -product-name }?
+new-breaches-found =
+    { $breachCount ->
+        [one] BREȘĂ NOUĂ DESCOPERITĂ
+        [few] BREȘE NOI DESCOPERITE
+       *[other] DE BREȘE NOI DESCOPERITE
+    }
+sign-up-headline-1 = Primește alerte curente cu un { -brand-fxa }.
+account-not-required = Browserul { -brand-name } nu este necesar pentru un { -brand-fxa }. Poți primi informații despre serviciile { -brand-Mozilla }.
+get-alerted = Primește alerte despre breșe noi.
+was-your-info-exposed = Ți-au fost expuse informațiile în breșa de date { $breachName }?
+find-out-if = Află dacă datele tale au fost expuse în această breșă.
+fb-not-comp = Această adresă de e-mail nu apare în breșa { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Însă apare în { $breachCount } altă breșă.
+        [few] Însă apare în { $breachCount } alte breșe.
+       *[other] Însă apare în { $breachCount } de alte breșe.
+    }
+fb-comp-only = Această adresă de e-mail a apărut în breșa { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Această adresă de e-mail a apărut în { $breachCount } breșă cunoscută de date, inclusiv { $breachName }.
+        [few] Această adresă de e-mail a apărut în { $breachCount } breșe cunoscute de date, inclusiv { $breachName }.
+       *[other] Această adresă de e-mail a apărut în { $breachCount } de breșe cunoscute de date, inclusiv { $breachName }.
+    }
+no-other-breaches-found = Nicio altă breșă identificată la căutarea de bază.
+no-results-blurb = Ne pare rău, dar breșa aceea nu este în baza noastră de date.
+all-breaches-headline = Toate breșele din { -product-name }
+search-breaches = Caută breșe
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Afișate:
+all-breaches = Toate breșele
 
 ## Updated error messages
 
+error-bot-headline = Căutări suspendate temporar
+error-bot-blurb = Suntem îngrijorați că ai putea fi robot pentru că ai căutat mai multe adrese de e-mail într-un timp foarte scurt. Deocamdată, ai accesul blocat la căutări noi. Poți încerca mai târziu.
+error-csrf-headline = Sesiune expirată
+error-csrf-blurb = Selectează butonul Înapoi din browser, reîncarcă pagina și încearcă din nou.
+error-invalid-unsub = Cum să te dezabonezi de la alertele { -product-name }
+error-invalid-unsub-blurb = Va trebui să te dezabonezi dintr-unul dintre mesajele e-mail trimise de { -product-name }. Verifică-ți căsuța poștală pentru mesaje de la { -brand-team-email }. Selectează linkul de dezabonare din partea de jos a mesajului.
+login-link-pre = Ai un cont?
+login-link = Autentifică-te
