@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -431,9 +432,42 @@ delayed-reporting-copy =
     cyn gynted ag y byddant yn cael eu darganfod a'u dilysu.
 about-fxm-headline = Ynghylch { -product-name }
 about-fxm-blurb = Mae { -product-name } yn rhybuddio os yw eich cyfrifon ar-lein wedi eu cysylltu â thor-data. Gallwch ddarganfod os ydych wedi bod mewn tor-data, derbyn rhybuddion am dor-data newydd a chymryd camau i ddiogelu eich cyfrifon ar-lein. Mae { -product-name }yn cael ei ddarparu gan { -brand-Mozilla }
+fxm-warns-you =
+    Mae { -product-name } yn eich rhybuddio os yw eich cyfeiriad e-bost wedi'i ddatgelu
+    mewn tor-data ar-lein. Edrychwch a yw eich manylion wedi cael eu datgelu, dysgwch sut
+    i ddiogelu eich cyfrifon ar-lein yn well, a chael gwybod os yw eich cyfeiriad e-bost
+    yn ymddangos mewn tor-data newydd.
+# How Firefox Monitor works
+how-fxm-works = Sut mae { -product-name } yn gweithio
+how-fxm-1-headline = Chwilio cychwynnol
+how-fxm-1-blurb =
+    Chwiliwch am eich cyfeiriad e-bost mewn achosion o dor-data cyhoeddus
+    yn ôl i 2007. Bydd y chwiliad cychwynnol hwn yn chwilio'r rhan fwyaf o achosion o dor-data, ond nid rhai sy'n cynnwys gwybodaeth bersonol sensitif.
+how-fxm-2-headline = Cofrestrwch ar gyfer monitro toriadau
+how-fxm-2-blurb =
+    Creu { -brand-fxa } i fonitro eich e-bost am dor-data parhaus.
+    Unwaith y byddwch wedi dilysu eich e-bost, byddwch yn derbyn adroddiad llawn o dor-data'r gorffennol, gan gynnwys tor-data sensitif.
+how-fxm-3-headline = Derbyn hysbysiadau i'ch porwr
+how-fxm-3-blurb = Os ydych yn defnyddio { -brand-name }, byddwch yn derbyn hysbysiad os byddwch yn ymweld â gwefan wedi ei thorri. Gallwch ganfod ar unwaith os oeddech chi'n rhan o'r tor-data hwnnw a'r hyn gallwch ei wneud yn ei gylch.
+wtd-after-website = Beth i'w wneud ar ôl tor-data gwefan
+wtd-after-data-agg = Beth i'w wneud ar ôl tor-data casglwr data
+what-is-data-agg = Beth yw gasglwr data?
+what-is-data-agg-blurb = Mae casglwyr data, neu froceriaid data, yn casglu gwybodaeth o gofnodion cyhoeddus ac y ei brynu gan gwmnïau eraill. Maen nhw'n crynhoi'r data hwn i'w werthu i gwmnïau at ddibenion marchnata. Mae dioddefwyr yr achosion hyn o tor-data yn llai tebygol o brofi twyll ariannol, ond gall hacwyr ddefnyddio'r data hwn i'w dynwared neu'u proffilio.
+protect-your-privacy = Diogelu eich preifatrwydd ar-lein
+no-pw-to-change = Yn wahanol i dor-data gwefan, nid oes cyfrinair i'w newid.
+avoid-personal-info = Peidiwch â defnyddio gwybodaeth bersonol mewn cyfrineiriau
+avoid-personal-info-blurb = Mae'n hawdd dod o hyd i ben-blwyddi, cyfeiriadau ac enwau aelodau'r teulu ar-lein. Cadwch y geiriau hyn allan o'ch cyfrineiriau.
 
 ## What to do after data breach tips
 
+change-pw = Newidiwch eich cyfrinair
+even-for-old = Hyd yn oed ar gyfer hen gyfrifon, mae'n bwysig diweddaru eich cyfrinair.
+make-new-pw-unique = Gwnewch y cyfrinair newydd yn wahanol ac yn unigryw
+strength-of-your-pw = Mae cryfder eich cyfrineiriau yn effeithio'n uniongyrchol ar eich diogelwch ar-lein.
+create-strong-passwords = Dewis cyfrineiriau cryf
+stop-reusing-pw = Peidiwch ailddefnyddio'r un cyfrineiriau
+create-unique-pw = Crëwch gyfrineiriau unigryw a'u cadw yn rhywle diogel, mewn rheolwr cyfrinair.
+five-myths = 5 coel am reolwyr cyfrinair
 
 ## Updated error messages
 
