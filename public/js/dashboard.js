@@ -29,7 +29,7 @@ async function resendEmail(e) {
   const emailId =  resendEmailBtn.dataset.emailId;
   const formAction = resendEmailBtn.dataset.formAction;
 
-  sendForm(formAction, { emailId: emailId })
+  await sendForm(formAction, { emailId: emailId })
   .then(data => {
     setTimeout( ()=> {
       const span = resendEmailBtn.nextElementSibling;

@@ -177,13 +177,13 @@ form.invalid input[type="submit"]:focus {
 input.email-add {
   color: var(--color);
   border-color: var(--grey3);
-  background-color: rgba(255, 255, 255, 0.45);
+  background-color: rgba(255, 255, 255, 1);
 }
 
 input.email-add-submit {
   border: 1px solid var(--blue3);
   background-color: var(--blue3);
-  color: white;
+  color: rgba(255, 255, 255, 1);
   border-color: var(--blue3);
   font-weight: 500;
 }
@@ -229,7 +229,6 @@ input[type="radio"]:focus ~ .checkmark {
 }
 
 .add-new-email-form {
-  margin: var(--margin) 0;
   display: flex;
 }
 

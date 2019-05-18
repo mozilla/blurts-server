@@ -75,6 +75,10 @@
     align-items: center;
   }
 
+  .stat-headline {
+    text-align: left;
+  }
+
   .breach-stat-number {
     width: auto;
     font-size: 30px;

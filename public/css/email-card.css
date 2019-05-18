@@ -15,8 +15,7 @@
 .email-card.preferences {
   background-color: rgba(255, 255, 255, 1);
   border: 1px solid #e8e8e8;
-  margin-right: 2.5rem;
-  margin-left: 2.5rem;
+  margin: 0 0 1rem 0;
 }
 
 .e-info { /* email address info */
@@ -389,17 +388,16 @@ input.remove-email-submit {
     font-size: 1rem;
   }
 
-  .email-card.preferences,
   .email-card {
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 1.25rem;
-    padding-bottom: 1.25rem;
+    padding: 0.5rem 0 1.25rem 0;
+    border-bottom: 1px solid var(--grey3);
+    border-radius: 0;
   }
 
   .email-card.preferences.zero-breaches,
   .email-card.preferences {
     padding: 1rem 0;
+    border-radius: 4px;
   }
 
   .email-pref {
@@ -419,6 +417,10 @@ input.remove-email-submit {
 
   .e-toggle-info-wrapper {
     padding: 0.5rem var(--padding);
+  }
+
+  .preferences .e-toggle-info-wrapper {
+    padding: 0 1rem;
   }
 
   .change-primary-email {

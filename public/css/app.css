@@ -615,6 +615,13 @@ div.sprite {
   .row {
     flex-direction: column;
   }
+
+  .row-9 {
+    max-width: 75%;
+    width: 75%;
+    display: flex;
+    padding: 0 var(--padding);
+  }
 }
 
 @media screen and (max-width: 600px) {

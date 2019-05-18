@@ -24,7 +24,8 @@
                 {{else}}
                   <!-- show resend-email link for unverified emails -->
                   <div class="button-resend-wrapper flx">
-                    <button class="resend-email" data-email-id="{{ id }}" data-form-action="/resend-email">{{ getString "resend-verification" }}</button><span class="sending hide"> {{getString "signup-modal-sent"}}</span>
+                    <button class="resend-email" data-email-id="{{ id }}" data-form-action="resend-email">{{ getString "resend-verification" }}</button>
+                    <span class="sending hide"> {{getString "signup-modal-sent"}}</span>
                   </div>
                 {{/if}}
               </div>

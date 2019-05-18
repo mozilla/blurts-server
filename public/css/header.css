@@ -195,7 +195,7 @@ nav {
 }
 
 .fxa-menu::before {
-  max-height: 0.5rem;
+  max-height: 0.75rem;
   content: "";
   display: block;
   position: absolute;

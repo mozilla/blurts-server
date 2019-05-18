@@ -4,21 +4,45 @@
   display: inline-block;
 }
 
-h2.skinny-headline.monitor-preferences-headline {
-  margin-bottom: calc(var(--padding) + var(--margin));
+h2.pref-headline {
+  font-weight: 700;
+  font-size: 32px;
+  margin-bottom: 0;
+  letter-spacing: 0.02em;
 }
 
-h2.section-headline.global-comm-headline {
-  margin-bottom: var(--padding);
+h3.pref-section-headline {
+  color: #332869;
+  font-size: 24px;
+  margin: calc(var(--padding) + var(--margin)) 0 var(--padding) 0;
+}
+
+h3.pref-section-headline.remove {
+  margin-bottom: 1rem;
+}
+
+.pref {
+  width: 100%;
+  max-width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-self: center;
+  padding: 0;
+}
+
+.pref.remove {
+  margin-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+.pref .col-9 {
+  width: 100%;
+  max-width: 100%;
 }
 
 .container.preferences {
   background-size: auto;
-}
-
-.dash-row {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
 }
 
 .manage-emails.btn-dark {
@@ -39,18 +63,14 @@ button.resend-email {
   fill: var(--alertRed);
 }
 
-/* preferences dashbord */
-
-.pref-section {
-  display: flex;
-  flex-direction: column;
-  margin: var(--padding) 0;
-}
-
 .email-pref {
-  margin: var(--margin) 0 0.5rem 0;
+  margin: 3rem 0 0.75rem 0;
   font-weight: 500;
   color: #686869;
+}
+
+.email-pref.fxa-primary-email {
+  margin-top: 0;
 }
 
 .email-verification-required {
@@ -71,24 +91,8 @@ button.resend-email {
   display: inline-block;
 }
 
-.preferences .bg-light {
-  height: 100%;
-}
-
-.global-comm {
-  margin-bottom: var(--padding);
-}
-
-.pref-section.unverified {
-  margin-top: calc(var(--padding) * 3);
-}
-
 .radio-label span.bold {
   color: var(--color);
-}
-
-.add-new-email {
-  margin-bottom: 0.25rem;
 }
 
 .trash-can {
@@ -110,11 +114,14 @@ button.resend-email {
   margin: var(--padding) 0;
 }
 
-@media screen and (max-width: 700px) {
-  .padding-zero {
+@media screen and (max-width: 900px) {
+  .pref {
+    max-width: 100%;
     padding: 0 var(--padding);
   }
+}
 
+@media screen and (max-width: 700px) {
   .link-header-wrapper {
     margin-top: var(--padding);
   }
@@ -128,5 +135,13 @@ button.resend-email {
 
   .welcome-back {
     padding-top: 0;
+  }
+
+  .pref {
+    padding: 0 0.5rem;
+  }
+
+  h3.pref-section-headline {
+    margin: 3rem 0 2rem 0;
   }
 }
