@@ -575,3 +575,6 @@ all-breaches = Pob Tor-data
 
 ## Updated error messages
 
+error-bot-headline = Chwilio wedi'u hatal dros dro
+error-bot-blurb = Rydym yn poeni y gallech chi fod yn bot oherwydd i chi chwilio sawl cyfeiriad e-bost mewn cyfnod byr. Am nawr, rydych wedi eich rhwystro rhag chwilio o'r newydd. Gallwch geisio eto yn nes ymlaen.
+error-csrf-headline = Daeth y sesiwn i ben
