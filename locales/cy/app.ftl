@@ -527,6 +527,51 @@ ba-next-step-blurb-2 =
     i fewngofnodi i'ch cyfrifon eraill. Y ffordd orau o ddiogelu eich cyfrifon
     yw defnyddio cyfrineiriau unigryw ar gyfer pob un.
 ba-next-step-3 = Derbyniwch gymorth i greu gwell cyfrineiriau a'u cadw'n ddiogel.
+ba-next-step-blurb-3 = Defnyddiwch reolwr cyfrinair i greu cyfrineiriau cryf ac unigryw. Mae rheolwyr cyfrineiriau yn cadw'ch holl fewngofnodion  yn ddiogel fel y gallwch eu cyrchu ar draws eich holl ddyfeisiau.
+faq1 = Dw i ddim yn adnabod y cwmni neu'r wefan hon. Pam ydw i yn y tor-data hwn?
+faq2 = Pam y cymerodd gymaint o amser i mi gael gwybod am y tor-data hwn?
+faq3 = Sut ydw i'n gwybod bod hwn yn e-bost dilys o { -product-name }?
+new-breaches-found =
+    { $breachCount ->
+        [zero] HEB GANFOD UNRHYW DOR-DATA
+        [one] WEDI CANFOD { $breachCount } TOR-DATA NEWYDD
+        [two] WEDI CANFOD { $breachCount } TOR-DATA NEWYDD
+        [few] WEDI CANFOD { $breachCount } TOR-DATA NEWYDD
+        [many] WEDI CANFOD { $breachCount } TOR-DATA NEWYDD
+       *[other] WEDI CANFOD { $breachCount } TOR-DATA NEWYDD
+    }
+sign-up-headline-1 = Derbyn rhybuddion parhaus gyda { -brand-fxa }.
+account-not-required = Nid oes ange porwr { -brand-name } ar gyfer { -brand-fxa }. Efallai y cewch wybodaeth am wasanaethau { -brand-Mozilla }.
+get-alerted = Derbyniwch wybodaeth am achosion newydd o dor-data.
+was-your-info-exposed = A oedd eich manylion wedi'i datgelu yn y tor-data { $breachName }
+find-out-if = Gweld a oedd eich data wedi'i ddatgelu yn y tor-data hwn.
+fb-not-comp = Nid yw'r e-bost hwn wedi ymddangos yn y tor-data { $breachName }
+other-breaches-found =
+    { $breachCount ->
+        [zero] Nid yw wedi ymddangos mewn unrhyw dor-data.
+        [one] Er hynny, mae wedi ymddangos mewn { $breachCount } tor-data arall.
+        [two] Er hynny, mae wedi ymddangos mewn { $breachCount } tor-data arall.
+        [few] Er hynny, mae wedi ymddangos mewn { $breachCount } tor-data arall.
+        [many] Er hynny, mae wedi ymddangos mewn { $breachCount } tor-data arall.
+       *[other] Er hynny, mae wedi ymddangos mewn { $breachCount } tor-data arall.
+    }
+fb-comp-only = Ymddangosodd yr e-bost hwn yn y tor-data { $breachName }
+fb-comp-and-others =
+    { $breachCount ->
+        [zero] Nid yw'r e-bost wedi ymddangos mewn unrhyw dor-data.
+        [one] Ymddangosodd yr e-bost mewn { $breachCount } tor-data hysbys, gan gynnwys { $breachName }.
+        [two] Ymddangosodd yr e-bost mewn { $breachCount } tor-data hysbys, gan gynnwys { $breachName }.
+        [few] Ymddangosodd yr e-bost mewn { $breachCount } tor-data hysbys, gan gynnwys { $breachName }.
+        [many] Ymddangosodd yr e-bost mewn { $breachCount } tor-data hysbys, gan gynnwys { $breachName }.
+       *[other] Ymddangosodd yr e-bost mewn { $breachCount } tor-data hysbys, gan gynnwys { $breachName }.
+    }
+no-other-breaches-found = Heb ddarganfod  unrhyw dor-data arall o'r chwilio cychwynnol.
+no-results-blurb = Ymddiheuriadau, nid yw'r tor-data hwnnw yn ein cronfa ddata.
+all-breaches-headline = Pob tor-data yn { -product-name }
+search-breaches = Chwilio am Dor-data
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Yn dangos:
+all-breaches = Pob Tor-data
 
 ## Updated error messages
 
