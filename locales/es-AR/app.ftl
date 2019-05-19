@@ -338,6 +338,11 @@ data-aggregator-breach-plural = Violaciones de agregadores de datos
 unverified-breach-plural = Violaciones no verificadas
 spam-list-breach-plural = Violaciones del listado de correos no deseados
 what-data = Qué datos fueron comprometidos:
+sensitive-sites = ¿Cómo trata { -product-name } a los sitios sensibles?
+about-fxm-headline = Acerca de { -product-name }
+# How Firefox Monitor works
+how-fxm-works = Cómo funcionar { -product-name }
+how-fxm-3-headline = Obtener notificaciones en el navegador
 
 ## What to do after data breach tips
 
