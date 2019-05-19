@@ -398,6 +398,18 @@ sensitive-breach = Érzékeny weboldalon történt adatszegés
 data-aggregator-breach = Adatgyűjtőben történt adatszegés
 unverified-breach = Nem megerősített adatszegés
 spam-list-breach = Levélszemét-lista adatszegés
+website-breach-plural = Webhely adatszegések
+sensitive-breach-plural = Érzékeny adatszegések
+data-aggregator-breach-plural = Adatgyűjtő adatszegések
+unverified-breach-plural = Nem megerősített adatszegések
+spam-list-breach-plural = Levélszemétlista adatszegések
+what-data = Milyen adatok kerültek veszélybe:
+sensitive-sites = Hogyan kezeli a { -product-name } az érzékeny webhelyeket?
+delayed-reporting-headline = Miért tartott ilyan sokáig az adatszegés jelentése?
+about-fxm-headline = A { -product-name } névjegye
+# How Firefox Monitor works
+how-fxm-works = Hogyan működik a { -product-name }
+how-fxm-1-headline = Végezzen egy alapvető keresést
 how-fxm-2-blurb =
     Hozzon létre egy { -brand-fxa }ot, és figyelje az e-mail címét az adatszegésekben.
     Ha megerősíti az e-mail címét, akkor teljes jelentést kap a múltbeli adatszegésekről is,
