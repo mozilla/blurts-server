@@ -406,7 +406,15 @@ how-fxm-3-blurb =
 wtd-after-website = Wat te doen na een datalek van de website
 wtd-after-data-agg = Wat te doen na een datalek van een gegevensverzamelaar
 what-is-data-agg = Wat is een gegevensverzamelaar?
+what-is-data-agg-blurb =
+    Data-verzamelaars of gegevenshandelaars verzamelen informatie uit openbare
+    bronnen en kopen deze van andere bedrijven. Ze vatten deze gegevens samen om ze voor marketingdoeleinden
+    aan bedrijven te verkopen. Slachtoffers van deze lekken hebben minder kans om door financiële fraude te
+    worden getroffen, maar hackers zouden deze gegevens kunnen gebruiken om zich als hen voor te doen of hen te profileren.
 protect-your-privacy = Uw online privacy beschermen
+no-pw-to-change = In tegenstelling tot een websitedatalek, is er geen wachtwoord dat moet worden gewijzigd.
+avoid-personal-info = Vermijd het gebruik van persoonlijke gegevens in wachtwoorden
+avoid-personal-info-blurb = Het is gemakkelijk om verjaardagen, adressen en namen van familieleden online te vinden. Vermijd gebruik van deze woorden in uw wachtwoorden.
 
 ## What to do after data breach tips
 
@@ -451,6 +459,9 @@ breach-summary = Samenvatting datalek
 show-breaches-for-this-email = Toon alle datalekken voor dit e-mailadres.
 link-change-primary = Primaire e-mailadres wijzigen
 remove-fxm = { -product-name } verwijderen
+remove-fxm-blurb =
+    Schakel waarschuwingen van { -product-name } uit. Uw { -brand-fxa } blijft actief en u ontvangt
+    mogelijk andere accountgerelateerde communicatie.
 manage-email-addresses = E-mailadressen beheren
 latest-breach-link = Kijk of u in dit datalek voor komt
 welcome-back = Welkom terug, { $userName }!
@@ -462,16 +473,59 @@ your-info-was-discovered-blurb =
     wanneer uw e-mailadres verschijnt in een datalek. Dit is wat we weten over dit datalek.
 what-to-do-after-breach = Wat te doen na een datalek
 ba-next-step-1 = Wijzig uw wachtwoord in een sterk, uniek wachtwoord.
+ba-next-step-blurb-1 =
+    Een sterk wachtwoord gebruikt een combinatie van hoofdletters en kleine letters,
+    speciale tekens en cijfers. Het bevat geen persoonlijke informatie zoals
+    uw adres, geboortedatum of familienamen.
+ba-next-step-2 = Stop het gebruik van dat gelekte wachtwoord volledig.
+ba-next-step-blurb-2 =
+    Cybercriminelen kunnen uw wachtwoord op het dark web vinden en het gebruiken
+    om zich aan te melden bij uw andere accounts. De beste manier om uw accounts te beschermen
+    is het gebruik van unieke wachtwoorden voor elk ervan.
+ba-next-step-3 = Laat u helpen bij het maken van betere wachtwoorden en ze veilig houden.
+ba-next-step-blurb-3 =
+    Gebruik een wachtwoordbeheerder om sterke, unieke wachtwoorden te maken. Wachtwoordbeheerders slaan al
+    uw aanmeldgegevens veilig op, zodat u ze op al uw apparaten kunt openen.
+faq1 = Ik herken dit bedrijf of deze website niet. Waarom kom ik voor in dit lek?
+faq2 = Waarom duurde het zo lang om me van dit lek op de hoogte te stellen?
+faq3 = Hoe weet ik dat dit een legitiem e-mailbericht van { -product-name } is?
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } NIEUW DATALEK GEVONDEN
        *[other] { $breachCount } NIEUWE DATALEKKEN GEVONDEN
     }
+sign-up-headline-1 = Ontvang doorlopende waarschuwingen met een { -brand-fxa }.
+account-not-required = De { -brand-name }-browser is niet vereist voor een { -brand-fxa }. U ontvangt mogelijk informatie over services van { -brand-Mozilla }.
+get-alerted = Ontvang meldingen over nieuwe datalekken.
+was-your-info-exposed = Zijn uw gegevens gelekt in het datalek { $breachName }?
+find-out-if = Ontdek of uw gegevens zijn gelekt in dit datalek.
+fb-not-comp = Dit e-mailadres komt niet voor in het datalek { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Het komt echter wel voor in { $breachCount } ander datalek.
+       *[other] Het komt echter wel voor in { $breachCount } andere datalekken.
+    }
+fb-comp-only = Dit e-mailadres komt voor in het datalek { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Dit e-mailadres komt voor in { $breachCount } bekend datalek, inclusief { $breachName }.
+       *[other] Dit e-mailadres komt voor in { $breachCount } bekende datalekken, inclusief { $breachName }.
+    }
+no-other-breaches-found = Geen andere datalekken gevonden in een basiszoekopdracht.
+no-results-blurb = Sorry, dat datalek staat niet in onze database.
+all-breaches-headline = Alle datalekken in { -product-name }
 search-breaches = Datalekken zoeken
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Resultaat:
 all-breaches = Alle datalekken
 
 ## Updated error messages
 
+error-bot-headline = Zoekopdrachten tijdelijk opgeschort
+error-bot-blurb =
+    We zijn bang dat u misschien een bot bent, omdat u in een korte tijdsperiode
+    hebt gezocht naar verschillende e-mailadressen. Nieuwe zoekopdrachten zijn
+    voorlopig geblokkeerd. U kunt het later opnieuw proberen.
 login-link-pre = Hebt u een account?
 login-link = Aanmelden
 # This string is displayed under a large numeral that indicates the total number
