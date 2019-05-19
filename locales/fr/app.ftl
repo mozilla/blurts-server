@@ -344,6 +344,7 @@ about-fxm-blurb = { -product-name } vous avertit si vos comptes en ligne ont ét
 fxm-warns-you = { -product-name } vous avertit si votre adresse électronique a été compromise dans une fuite de données. Découvrez si vous en êtes victime, apprenez comment mieux protéger vos comptes et recevez une alerte si votre adresse électronique apparaît dans une nouvelle fuite de données.
 # How Firefox Monitor works
 how-fxm-works = Fonctionnement de { -product-name }
+how-fxm-1-headline = Effectuez une recherche basique
 how-fxm-1-blurb = Recherchez votre adresse électronique parmi les fuites de données publiques remontant jusqu’à 2007. Une recherche basique fera apparaître la plupart des fuites de données, à l’exception de celles qui contiennent des données personnelles sensibles.
 how-fxm-3-headline = Recevez des notifications dans votre navigateur
 how-fxm-3-blurb = Si vous utilisez { -brand-name }, vous recevrez une notification lorsque vous visiterez un site qui a été victime d’une fuite de données. Découvrez immédiatement si cette fuite vous concerne et ce que vous pouvez faire.
@@ -408,6 +409,7 @@ your-info-was-discovered-headline = Vos données ont été découvertes dans une
 what-to-do-after-breach = Que faire après une fuite de données ?
 ba-next-step-1 = Remplacez votre mot de passe par un mot de passe unique et robuste.
 ba-next-step-2 = Arrêtez d’utiliser ce mot de passe compromis.
+ba-next-step-3 = Obtenez de l’aide pour créer de meilleurs mots de passe et les protéger.
 ba-next-step-blurb-3 = Utilisez un gestionnaire de mots de passe pour créer des mots de passe forts et uniques. Les gestionnaires de mots de passe conservent en toute sécurité l’ensemble de vos identifiants afin que vous puissiez y accéder sur tous vos appareils.
 faq1 = Je ne reconnais pas cette société ou ce site web. Pourquoi cette fuite me concerne-t-elle ?
 faq2 = Pourquoi a-t-il fallu si longtemps pour me prévenir de cette fuite de données ?
