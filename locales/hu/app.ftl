@@ -391,10 +391,13 @@ read-more-tips = Olvasson további biztonsági tippeket
 how-hackers-work = Értse meg, hogyan dolgoznak a hackerek
 monitor-your-online-accounts = Iratkozzon fel az adatszegések figyelésére egy { -brand-fxa }kal.
 stay-alert = Figyeljen az új adatszegésekre
+if-your-info = Ha az Ön információi megjelennek egy új adatszegésben, akkor figyelmeztetést küldünk Önnek.
+search-all-emails = Keresse meg az összes e-mail címét az adatszegésekben, és kapjon figyelmeztetéseket az új fenyegetésekről.
 monitor-several-emails = Több e-mail cím figyelése
 take-action = Tegyen lépéseket a fiókjai védelmére
+keep-your-data-safe = Tudja meg, mit kell tennie, hogy az adatait biztonságban tudja tartani a számítógépes bűnözőktől.
 website-breach = Weboldalon történt adatszegés
-sensitive-breach = Érzékeny weboldalon történt adatszegés
+sensitive-breach = Weboldalon történt érzékeny adatszegés
 data-aggregator-breach = Adatgyűjtőben történt adatszegés
 unverified-breach = Nem megerősített adatszegés
 spam-list-breach = Levélszemét-lista adatszegés
@@ -405,11 +408,21 @@ unverified-breach-plural = Nem megerősített adatszegések
 spam-list-breach-plural = Levélszemétlista adatszegések
 what-data = Milyen adatok kerültek veszélybe:
 sensitive-sites = Hogyan kezeli a { -product-name } az érzékeny webhelyeket?
+sensitive-sites-copy =
+    A { -product-name } csak akkor fedi fel az ezekkel az adatszegésekkel kapcsolatos
+    fiókokat, ha az e-mail cím megerősítésre került. Ez azt jelenti, hogy csak Ön
+    láthatja, hogy szerepelt-e ebben az adatszegésben (hacsak valaki más nem fér
+    hozzá az e-mail fiókjához).
 delayed-reporting-headline = Miért tartott ilyan sokáig az adatszegés jelentése?
+delayed-reporting-copy =
+    Néha hónapokra vagy évekre is szükség lehet, amíg az adatszegésben 
+    kikerült adatok megjelennek a sötét weben. Az adatszegések akkor kerülnek az adatbázisunkba ,
+    ha felfedezték és megerősítették őket.
 about-fxm-headline = A { -product-name } névjegye
 # How Firefox Monitor works
 how-fxm-works = Hogyan működik a { -product-name }
 how-fxm-1-headline = Végezzen egy alapvető keresést
+how-fxm-2-headline = Iratkozzon fel az adatszegések figyelésére
 how-fxm-2-blurb =
     Hozzon létre egy { -brand-fxa }ot, és figyelje az e-mail címét az adatszegésekben.
     Ha megerősíti az e-mail címét, akkor teljes jelentést kap a múltbeli adatszegésekről is,
@@ -448,6 +461,10 @@ all-breaches = Összes adatszegés
 ## Updated error messages
 
 error-bot-headline = Keresések ideiglenesen felfüggesztve
+error-bot-blurb =
+    Attól tartunk, hogy Ön egy bot lehet, mert több e-mail
+    címre is keresett rövid idő alatt. Egyelőre blokkoltuk az újabb
+    kereséseket. Később megpróbálhatja újra.
 error-csrf-headline = A munkamenet lejárt
 error-csrf-blurb = Nyomja meg a böngésző vissza gombját, töltse újra az oldalt és próbálja újra.
 error-invalid-unsub = Hogyan iratkozhat le a { -product-name } figyelmeztetésekről
@@ -498,8 +515,12 @@ results-for = Találatok erre: { $userEmail }
 other-monitored-emails = Egyéb megfigyelt e-mail címek
 email-verification-required = E-mail ellenőrzés szükséges
 fxa-primary-email = { -brand-fxa } e-mail cím – Elsődleges
+alert-about-new-breaches = Értesítsen a jövőbeli adatszegésekre
+see-if-youve-been-part = Nézze meg, hogy szerepel-e online adatszegésben.
+get-ongoing-breach-monitoring = Kapjon rendszeres adatszegési jelentéseket több e-mail címről.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Tudja meg
+new-unsub-error = Le kell iratkoznia egy a { -product-name }tól érkezett e-mailen.
 other-known-breaches-found =
     { $breachCount ->
         [one] Azonban { $breachCount } egyéb ismert adatszegésben is megjelent.
