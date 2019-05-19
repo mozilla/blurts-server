@@ -427,6 +427,16 @@ how-fxm-2-blurb =
     Hozzon létre egy { -brand-fxa }ot, és figyelje az e-mail címét az adatszegésekben.
     Ha megerősíti az e-mail címét, akkor teljes jelentést kap a múltbeli adatszegésekről is,
     beleértve az érzékeny adatszegéseket is.
+how-fxm-3-headline = Kapjon értesítéseket a böngészőjében
+wtd-after-website = Mi a teendő egy webhelyen történő adatszegés után
+wtd-after-data-agg = Mi a teendő egy adatgyűjtő adatszegés után
+what-is-data-agg = Mi egy adatgyűjtő?
+what-is-data-agg-blurb =
+    Az adatgyűjtők vagy adatbrókerek információkat gyűjtenek nyilvános rekordokból,
+    és megveszik őket más cégektől. Összeválogatják ezeket az adatokat, és más cégeknek
+    adják el, marketing célokra. Az ilyen adatszegések ritkán eredményeznek pénzügyi csalást,
+    de a hackerek profilozásra és megszemélyesítésre használhatják az adatokat.
+protect-your-privacy = Védje meg az online magánszféráját
 
 ## What to do after data breach tips
 
