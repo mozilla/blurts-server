@@ -440,9 +440,21 @@ welcome-back = Üdvözöljük újra, { $userName }!
 welcome-user = Üdvözöljük, { $userName }!
 sign-up-headline-1 = Kapjon folyamatos figyelmeztetéseket a { -brand-fxa }jával.
 account-not-required = A { -brand-name } böngésző sem szükséges a { -brand-fxa }hoz. Információkat kaphat a { -brand-Mozilla } szolgáltatásokról.
+search-breaches = Adatszegések keresése
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Megjelenítés:
+all-breaches = Összes adatszegés
 
 ## Updated error messages
 
+error-bot-headline = Keresések ideiglenesen felfüggesztve
+error-csrf-headline = A munkamenet lejárt
+error-csrf-blurb = Nyomja meg a böngésző vissza gombját, töltse újra az oldalt és próbálja újra.
+error-invalid-unsub = Hogyan iratkozhat le a { -product-name } figyelmeztetésekről
+error-invalid-unsub-blurb =
+    Le kell iratkoznia az egyik Önnek
+    küldött { -product-name } e-mailről. Nézze meg a bejövő leveleit a
+    { -brand-team-email } címtől. Válassza az e-mail alján lévő leiratkozási hivatkozást.
 login-link-pre = Van már fiókja?
 login-link = Bejelentkezés
 # This string is displayed under a large numeral that indicates the total number
@@ -453,14 +465,62 @@ email-addresses-being-monitored =
         [one] Figyelt e-mail cím
        *[other] Figyelt e-mail címek
     }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] adatszegés miatt kerültek ki az adatai
+       *[other] adatszegés miatt kerültek ki az adatai
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] jelszó került ki adatszegés miatt
+       *[other] jelszó került ki adatszegés miatt
+    }
 # Button
 see-additional-breaches = További adatszegések megtekintése
 # A button on the All Breaches page that restores all of the breaches
 # back to the page if the user has filtered some of them out.
 see-all-breaches = Összes adatszegés megtekintése
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Ez az e-mail cím 1 ismert adatszegésben jelent meg.
+       *[other] Ez az e-mail cím { $breachCount } ismert adatszegésben jelent meg.
+    }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Találatok erre: { $userEmail }
+other-monitored-emails = Egyéb megfigyelt e-mail címek
 email-verification-required = E-mail ellenőrzés szükséges
 fxa-primary-email = { -brand-fxa } e-mail cím – Elsődleges
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Tudja meg
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Azonban { $breachCount } egyéb ismert adatszegésben is megjelent.
+       *[other] Azonban { $breachCount } egyéb ismert adatszegésben is megjelent.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = További információk, beleértve:
+# Title
+email-addresses-title = E-mail címek
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = A(z) { $breachTitle } adatszegés áldozata lett ekkor: { $breachDate }. Amint az adatszegés felfedezésre és megerősítésre került, hozzáadásra került az adatbázisunkhoz, ekkor: { $addedDate }.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = { -product-short-name } beállítások
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Bejelentkezett, mint { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Szűrés kategória szerint:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menü

@@ -12,6 +12,9 @@ avatars = Avatárok
 bank-account-numbers = Bankszámlaszámok
 beauty-ratings = Szépség értékelések
 biometric-data = Biometrikus adatok
+# This string is the shortened version of "Biographies", and 
+# refers to biographical data about a user.
+bios = Bemutatkozások
 browser-user-agent-details = Böngésző felhasználói ügynök részletei
 browsing-histories = Böngészési előzmények
 buying-preferences = Vásárlási szokások
@@ -37,6 +40,7 @@ education-levels = Oktatási szintek
 email-addresses = E-mail címek
 email-messages = E-mail üzenetek
 employers = Munkáltatók
+employment-statuses = Foglalkoztatási állapotok
 ethnicities = Etnikai hovatartozások
 family-members-names = Családtagok nevei
 family-plans = Családi tervek
@@ -101,6 +105,7 @@ smoking-habits = Dohányzási szokások
 sms-messages = SMS üzenetek
 social-connections = Közösségi kapcsolatok
 social-media-profiles = Közösségi média profilok
+social-security-numbers = Társadalombiztosítási azonosítók
 spoken-languages = Beszélt nyelvek
 support-tickets = Támogatási jegyek
 survey-results = Felmérési eredmények
