@@ -1,7 +1,7 @@
 <div class="ab-br sr">
   <main id="dashboard" class="dashboard clear-header" data-page-label="User Dashboard">
     <div class="row jst-cntr">
-      <div class="col-9 txt-cntr">
+      <div class="col-9 txt-cntr padding-top-zero">
         {{#if req.session.newUser}}
           <span class="welcome-user">{{{fluentNestedBold "welcome-user" userName=req.session.user.fxa_profile_json.email }}}</span>
         {{else}}
@@ -12,7 +12,7 @@
     <div class="container">
       <div class="row jst-cntr flx-col">
         <div class="col-9 no-vertical-padding">
-          <h2 class="section-headline breach-summary dash">{{ getString "breach-summary" }}</h2>
+          <h2 class="pref-headline breach-summary">{{ getString "breach-summary" }}</h2>
         </div>
         <div class="col-9 card dash-stats no-vertical-padding">
           {{> breach-stats addClasses="user-stats"}}
@@ -25,16 +25,18 @@
   <div class="row jst-cntr flx-col dash-row">
     <div class="col-9 no-vertical-padding">
       <div class="flx space-between cntr link-header-wrapper">
-        <h2 class="section-headline margin-zero dash">{{ getString "email-addresses" }}</h2>
+        <h2 class="pref-headline">{{ getString "email-addresses-title" }}</h2>
         {{> dashboards/manage-email-link variableClass="hide-mobile"}}
       </div>
     </div>
-    {{#getBreachesForEachEmail}}
-      {{#each this.verifiedEmails}}
-        {{> email-card }}
-      {{/each}}
-    {{/getBreachesForEachEmail}}
-    {{> dashboards/manage-email-link variableClass="show-mobile"}}
+    <div class="email-cards flx flx-col jst-cntr">
+      {{#getBreachesForEachEmail}}
+        {{#each this.verifiedEmails}}
+          {{> email-card }}
+        {{/each}}
+      {{/getBreachesForEachEmail}}
+      {{> dashboards/manage-email-link variableClass="show-mobile"}}
+    </div>
   </div>
 </section>
 <section class="container cool-gradient">

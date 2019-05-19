@@ -21,7 +21,6 @@
 .breach-stat-number {
   font-size: 50px;
   min-width: 2rem;
-  margin-top: 0.25rem;
 }
 
 .breach-stats {
@@ -54,8 +53,6 @@
 .dash-stats {
   display: flex;
   flex-direction: row;
-  overflow: hidden;
-  font-size: 1rem;
   justify-content: space-between;
 }
 
@@ -83,7 +80,6 @@
     width: auto;
     font-size: 30px;
     min-width: 6rem;
-    margin-top: 0;
   }
 }
 

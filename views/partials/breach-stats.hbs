@@ -1,6 +1,6 @@
 
         {{#each (getBreachStats)}}
-          <div class="breach-stat-row flx {{ @key }} toggle-parent inactive">
+          <div class="breach-stat-row {{ @key }}">
             <div class="stat-row-title-wrap">
               <div class="breach-stat-number flx bold {{ @key }}">
                 {{ this.count }}

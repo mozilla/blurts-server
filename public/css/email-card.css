@@ -6,12 +6,6 @@
   width: auto;
 }
 
-.email-card.preferences,
-.email-card.preferences.zero-breaches {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
 .email-card.preferences {
   background-color: rgba(255, 255, 255, 1);
   border: 1px solid #e8e8e8;
@@ -20,10 +14,19 @@
 
 .e-info { /* email address info */
   display: inline-flex;
+  align-items: center;
   flex-direction: row;
   border-bottom: 2px solid #e8e8e8;
   padding-bottom: 10px;
   width: 100%;
+}
+
+.preferences .e-info {
+  align-items: flex-start;
+}
+
+.preferences .e-num-breaches {
+  margin-top: 0.25rem;
 }
 
 .e-address {
@@ -43,7 +46,6 @@
 .e-num-breaches {
   font-weight: 400;
   font-size: 0.9rem;
-  margin-top: 0.25rem;
   display: block;
   color: var(--grey6);
   font-family: "FirefoxSharpSans", Arial, Helvetica, sans-serif;
@@ -123,8 +125,13 @@
   justify-content: flex-end;
 }
 
+.preferences .new-breach-message-wrapper {
+  display: none;
+}
+
 .new-breach-message-wrapper.hide-mobile {
-  margin-right: var(--margin);
+  position: absolute;
+  right: 0;
 }
 
 .new-breach-icon {
@@ -316,32 +323,18 @@ input.remove-email-submit {
     margin: 0.5rem 0;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-  }
-
-  .dashboard .email-card {
-    border-bottom: 1px solid #eee;
-    border-radius: 0;
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid #e8e8e8;
   }
 
   .e-info {
     border-bottom: none;
     padding-bottom: 0;
-    flex-direction: column;
-  }
-
-  .email-card.new-breaches {
-    border: 1px solid #ff4f5e99;
-    transition: border 0.25s ease-in-out;
-  }
-
-  .email-card.active.new-breaches {
-    border: 1px solid var(--borderColor);
-    transition: border 0.25s ease-in-out;
   }
 
   .e-num-breaches {
     margin-top: 0.5rem;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-style: italic;
     font-weight: 300;
   }
@@ -369,6 +362,10 @@ input.remove-email-submit {
     margin: 1rem 1rem 0 auto;
   }
 
+  .pref .new-breach-message-wrapper.show-mobile {
+    display: none !important;
+  }
+
   .e-breach-list {
     padding: 0 1rem;
   }
@@ -389,15 +386,7 @@ input.remove-email-submit {
   }
 
   .email-card {
-    padding: 0.5rem 0 1.25rem 0;
-    border-bottom: 1px solid var(--grey3);
-    border-radius: 0;
-  }
-
-  .email-card.preferences.zero-breaches,
-  .email-card.preferences {
     padding: 1rem 0;
-    border-radius: 4px;
   }
 
   .email-pref {
@@ -416,10 +405,6 @@ input.remove-email-submit {
   }
 
   .e-toggle-info-wrapper {
-    padding: 0.5rem var(--padding);
-  }
-
-  .preferences .e-toggle-info-wrapper {
     padding: 0 1rem;
   }
 
