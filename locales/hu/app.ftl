@@ -437,11 +437,35 @@ what-is-data-agg-blurb =
     adják el, marketing célokra. Az ilyen adatszegések ritkán eredményeznek pénzügyi csalást,
     de a hackerek profilozásra és megszemélyesítésre használhatják az adatokat.
 protect-your-privacy = Védje meg az online magánszféráját
+no-pw-to-change = A webhelyen történő adatszegésekkel ellentétben, itt nincs jelszó amit megváltoztathatna.
+avoid-personal-info = Ne használjon személyes információkat a jelszavakban
+avoid-personal-info-blurb = A születésnapok, a címek és a családtagok nevei könnyen megtalálhatók online. Ne használja ezeket a szavakat a jelszavakban.
 
 ## What to do after data breach tips
 
+change-pw = Változtassa meg a jelszavát
+even-for-old = Még a régi fiókok esetén is fontos a jelszavak frissítése.
+make-new-pw-unique = Az új jelszó legyen különböző és egyedi
+strength-of-your-pw = A jelszavak erőssége közvetlenül befolyásolja az online biztonságát.
+create-strong-passwords = Hogyan hozzon létre erős jelszavakat
+stop-reusing-pw = Ne használja újra ugyanazt a jelszót
+create-unique-pw = Hozzon létre egyedi jelszavakat, és mentse el őket biztonságosan, például egy jelszókezelőben.
+five-myths = 5 mítosz a jelszókezelőkről
 create-a-fxa = Hozzon létre egy { -brand-fxa }ot a teljes adatszegési jelentésért, és hogy figyelmeztetéseket kapjon.
-sign-up-for-fxa = Egy { -brand-fxa } létrehozása
+feat-security-tips = Biztonsági tippek a fiókjai védelméhez
+feat-sensitive = Speciális keresés az érzékeny adatszegésekben
+feat-enroll-multiple = Több e-mail cím beállítása az adatszegés-figyelésnél
+sign-up-for-fxa = Hozzon létre egy { -brand-fxa }ot
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] { $breachCount } ismert adatszegésben szerepel.
+       *[other] { $breachCount } ismert adatszegésben szerepel.
+    }
+see-if-breached = Nézze meg, hogy szerepelt-e online adatszegésben.
+check-for-breaches = Adatszegések keresése
+find-out-what-hackers-know = Tudja meg, hogy a hackerek mit tudnak már Önről. Ismerje meg, hogyan tarthat egy lépéssel előttük.
 back-to-top = Vissza a tetejére
 stop-monitoring-this = Az e-mail cím figyelésének leállítása.
 resend-verification = Ellenőrző e-mail újraküldése
