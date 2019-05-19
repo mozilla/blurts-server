@@ -5,11 +5,12 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
--brand-fxa = Firefox fiók
+-brand-fxa = Firefox-fiók
 -brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
@@ -167,7 +168,7 @@ unsub-button = Leiratkozás
 fxa-unsub-headline = Leiratkozás a { -product-name } figyelmeztetésekről.
 fxa-unsub-blurb =
     Többé nem kap { -product-name } figyelmeztetéseket.
-    A { -brand-fxa } fiókja aktív marad, így más fiókkal kapcsolatos
+    A { -brand-fxa }ja aktív marad, így más fiókkal kapcsolatos
     értesítéseket még kaphat.
 unsub-survey-form-label = Miért iratkozik le a { -product-name-nowrap } figyelmeztetésekről?
 unsub-reason-1 = Úgy gondolom, hogy a figyelmeztetések nem teszik biztonságosabbá az adataimat
@@ -263,19 +264,19 @@ user-fb-compromised-single =
 user-generic-fb-compromised-single = Ez az adatszegés a következő személyes adatait tárta fel.
 guest-fb-compromised-single-v2 =
     Ez az adatszegés a következő személyes adatait tárta fel.
-    Hozzon létre egy ingyenes { -brand-fxa } fiókot a múltbeli adatszegésekről szóló
+    Hozzon létre egy ingyenes { -brand-fxa }ot a múltbeli adatszegésekről szóló
     teljes jelentéséért, az új adatszegési figyelmeztetésekért, és a többi { -brand-Mozilla }
     szolgáltatással kapcsolatos információért.
 guest-fb-compromised-blurb-v2 =
     { $breachCount ->
         [one]
             Ez az e-mail cím { $breachCount } egyéb adatszegésben szerepelt.
-            Hozzon létre egy ingyenes { -brand-fxa } fiókot a múltbeli adatszegésekről szóló
+            Hozzon létre egy ingyenes { -brand-fxa }ot a múltbeli adatszegésekről szóló
             teljes jelentéséért, az új adatszegési figyelmeztetésekért, és a többi { -brand-Mozilla }
             szolgáltatással kapcsolatos információért.
        *[other]
             Ez az e-mail cím { $breachCount } egyéb adatszegésben szerepelt.
-            Hozzon létre egy ingyenes { -brand-fxa } fiókot a múltbeli adatszegésekről szóló
+            Hozzon létre egy ingyenes { -brand-fxa }ot a múltbeli adatszegésekről szóló
             teljes jelentéséért, az új adatszegési figyelmeztetésekért, és a többi { -brand-Mozilla }
             szolgáltatással kapcsolatos információért.
     }
@@ -388,6 +389,7 @@ take-control = Szerezze vissza a személyes adatai feletti ellenőrzést.
 cant-stop-hackers = A hackereket nem tudja megállítani. De elkerülheti a rossz szokásokat, amelyek megkönnyítik a dolgukat.
 read-more-tips = Olvasson további biztonsági tippeket
 how-hackers-work = Értse meg, hogyan dolgoznak a hackerek
+monitor-your-online-accounts = Iratkozzon fel az adatszegések figyelésére egy { -brand-fxa }kal.
 stay-alert = Figyeljen az új adatszegésekre
 monitor-several-emails = Több e-mail cím figyelése
 take-action = Tegyen lépéseket a fiókjai védelmére
@@ -396,9 +398,15 @@ sensitive-breach = Érzékeny weboldalon történt adatszegés
 data-aggregator-breach = Adatgyűjtőben történt adatszegés
 unverified-breach = Nem megerősített adatszegés
 spam-list-breach = Levélszemét-lista adatszegés
+how-fxm-2-blurb =
+    Hozzon létre egy { -brand-fxa }ot, és figyelje az e-mail címét az adatszegésekben.
+    Ha megerősíti az e-mail címét, akkor teljes jelentést kap a múltbeli adatszegésekről is,
+    beleértve az érzékeny adatszegéseket is.
 
 ## What to do after data breach tips
 
+create-a-fxa = Hozzon létre egy { -brand-fxa }ot a teljes adatszegési jelentésért, és hogy figyelmeztetéseket kapjon.
+sign-up-for-fxa = Egy { -brand-fxa } létrehozása
 back-to-top = Vissza a tetejére
 stop-monitoring-this = Az e-mail cím figyelésének leállítása.
 resend-verification = Ellenőrző e-mail újraküldése
@@ -411,10 +419,15 @@ send-verification = Ellenőrző e-mail küldése
 # email address.
 global-communication = Globális kommunikáció
 breach-summary = Adatszegés összefoglalója
+remove-fxm-blurb =
+    A { -product-name } figyelmeztetések kikapcsolása. A { -brand-fxa }ja aktív marad, és más
+    a fiókjával kapcsolatos üzeneteket még kaphat.
 manage-email-addresses = E-mail címek kezelése
 latest-breach-link = Nézze meg, hogy szerepel-e ebben az adatszegésben
 welcome-back = Üdvözöljük újra, { $userName }!
 welcome-user = Üdvözöljük, { $userName }!
+sign-up-headline-1 = Kapjon folyamatos figyelmeztetéseket a { -brand-fxa }jával.
+account-not-required = A { -brand-name } böngésző sem szükséges a { -brand-fxa }hoz. Információkat kaphat a { -brand-Mozilla } szolgáltatásokról.
 
 ## Updated error messages
 
@@ -438,3 +451,4 @@ see-all-breaches = Összes adatszegés megtekintése
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Találatok erre: { $userEmail }
 email-verification-required = E-mail ellenőrzés szükséges
+fxa-primary-email = { -brand-fxa } e-mail cím – Elsődleges
