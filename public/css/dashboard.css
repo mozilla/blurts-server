@@ -1,17 +1,52 @@
 .welcome-back {
-  font-size: 1.75rem;
+  font-size: 1.1rem;
   font-family: "FirefoxSharpSans", Arial, Helvetica, sans-serif;
   display: inline-block;
 }
 
-.welcome-back span.bold::before {
-  content: "\A";
-  white-space: pre;
+h2.pref-headline {
+  font-weight: 700;
+  font-size: 32px;
+  margin-bottom: 0;
+  letter-spacing: 0.02em;
 }
 
-.dash-row {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+h3.pref-section-headline {
+  color: #332869;
+  font-size: 24px;
+  margin: calc(var(--padding) + var(--margin)) 0 var(--padding) 0;
+}
+
+h3.pref-section-headline.remove {
+  margin-bottom: 1rem;
+}
+
+h2.pref-headline.breach-summary {
+  margin-bottom: calc(var(--padding) + var(--margin));
+}
+
+.pref {
+  width: 100%;
+  max-width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-self: center;
+  padding: 0;
+}
+
+.pref.remove {
+  margin-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+.pref .col-9 {
+  width: 100%;
+  max-width: 100%;
+}
+
+.container.preferences {
+  background-size: auto;
 }
 
 .manage-emails.btn-dark {
@@ -32,22 +67,19 @@ button.resend-email {
   fill: var(--alertRed);
 }
 
-/* preferences dashbord */
-
-.pref-section {
-  display: flex;
-  flex-direction: column;
-  margin: var(--padding) 0;
+.email-pref {
+  margin: 3rem 0 0.75rem 0;
+  font-weight: 500;
+  color: #686869;
 }
 
-.email-pref {
-  margin: var(--margin) 0 0.5rem 0;
-  font-weight: 500;
+.email-pref.fxa-primary-email {
+  margin-top: 0;
 }
 
 .email-verification-required {
   color: var(--alertRed);
-  font-weight: 700;
+  font-weight: 500;
   display: flex;
   align-items: center;
 }
@@ -63,20 +95,8 @@ button.resend-email {
   display: inline-block;
 }
 
-.pref-section.unverified {
-  margin-top: calc(var(--padding) * 3);
-}
-
 .radio-label span.bold {
   color: var(--color);
-}
-
-.col-8.card.global-comm {
-  border: none;
-}
-
-.add-new-email {
-  margin-bottom: 0.25rem;
 }
 
 .trash-can {
@@ -89,6 +109,41 @@ button.resend-email {
   margin: auto;
 }
 
+.link-header-wrapper {
+  margin: var(--padding) 0;
+}
+
+.email-cards {
+  width: 100%;
+}
+
+@media screen and (max-width: 1100px) {
+  .email-cards .e-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .pref {
+    max-width: 100%;
+    padding: 0 var(--padding);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .email-cards,
+  .col-9.no-vertical-padding {
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .link-header-wrapper {
+    margin-top: var(--padding);
+  }
+}
+
 @media screen and (max-width: 600px) {
   .welcome-back,
   .section-headline.dash {
@@ -97,5 +152,18 @@ button.resend-email {
 
   .welcome-back {
     padding-top: 0;
+  }
+
+  .pref {
+    padding: 0 0.5rem;
+  }
+
+  h3.pref-section-headline {
+    margin: 3rem 0 2rem 0;
+  }
+
+  .email-cards,
+  .col-9.no-vertical-padding {
+    padding: 0.5rem;
   }
 }

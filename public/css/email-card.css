@@ -1,25 +1,40 @@
-.col-8.email-card {
-  padding: var(--margin) 0;
+
+.email-card.preferences .e-info {
+  border-bottom: none;
+  padding-bottom: 0;
+  flex-direction: column;
+  width: auto;
 }
 
 .email-card.preferences {
-  padding: 0;
-}
-
-.email-card.zero-breaches {
-  padding-top: 0;
-  padding-bottom: 0;
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid #e8e8e8;
+  margin: 0 0 1rem 0;
 }
 
 .e-info { /* email address info */
   display: inline-flex;
-  flex-direction: column;
+  align-items: center;
+  flex-direction: row;
+  border-bottom: 2px solid #e8e8e8;
+  padding-bottom: 10px;
+  width: 100%;
+}
+
+.preferences .e-info {
+  align-items: flex-start;
+}
+
+.preferences .e-num-breaches {
+  margin-top: 0.25rem;
 }
 
 .e-address {
-  font-weight: 500;
   font-size: 1.1rem;
   margin-right: 0.5rem;
+  font-family: "FirefoxSharpSans", Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  color: var(--purple6);
 }
 
 .e-address span.light {
@@ -31,13 +46,13 @@
 .e-num-breaches {
   font-weight: 400;
   font-size: 0.9rem;
-  margin-top: 0.25rem;
   display: block;
   color: var(--grey6);
+  font-family: "FirefoxSharpSans", Arial, Helvetica, sans-serif;
 }
 
 .e-num-breaches .bold {
-  color: var(--violet5);
+  color: var(--violet4);
 }
 
 .email-card-breach-wrapper {
@@ -65,7 +80,6 @@
   justify-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 0 1rem;
   visibility: hidden;
   opacity: 0;
   max-height: 0;
@@ -82,7 +96,7 @@
   transition: all 0.2s ease;
 }
 
-.show-remaining-breaches.btn-light {
+.show-remaining-breaches.btn-grey {
   margin: 1rem auto;
   display: flex;
 }
@@ -95,6 +109,7 @@
   visibility: visible;
   opacity: 1;
   max-height: 20000px;
+  padding-top: 1rem;
   transition: all 0.3s ease;
 }
 
@@ -110,8 +125,13 @@
   justify-content: flex-end;
 }
 
+.preferences .new-breach-message-wrapper {
+  display: none;
+}
+
 .new-breach-message-wrapper.hide-mobile {
-  margin-right: var(--margin);
+  position: absolute;
+  right: 0;
 }
 
 .new-breach-icon {
@@ -131,7 +151,7 @@
 }
 
 .breach-card.ec {
-  border: 1px solid var(--borderColor);
+  border: 1px solid rgba(0, 0, 0, 0);
   background-color: rgba(255, 255, 255, 1);
   color: var(--color);
 }
@@ -141,7 +161,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem var(--padding);
   pointer-events: none;
   position: relative;
 }
@@ -199,9 +218,6 @@
   opacity: 0.5;
   transition: opacity 0.15s ease-in-out;
 }
-
-/*
-#686869 */
 
 .sending {
   padding-left: 1rem;
@@ -269,7 +285,7 @@ svg.toggle-down {
 }
 
 svg.toggle-down path {
-  fill: var(--color);
+  fill: var(--grey6);
 }
 
 .email-card.active .toggle-down {
@@ -305,25 +321,20 @@ input.remove-email-submit {
 @media screen and (max-width: 800px) {
   .email-card {
     margin: 0.5rem 0;
-  }
-
-  .email-card.new-breaches {
-    border: 1px solid #ff4f5e99;
-    transition: border 0.25s ease-in-out;
-  }
-
-  .email-card.active.new-breaches {
-    border: 1px solid var(--borderColor);
-    transition: border 0.25s ease-in-out;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid #e8e8e8;
   }
 
   .e-info {
-    flex-direction: column;
+    border-bottom: none;
+    padding-bottom: 0;
   }
 
   .e-num-breaches {
     margin-top: 0.5rem;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-style: italic;
     font-weight: 300;
   }
@@ -346,17 +357,25 @@ input.remove-email-submit {
     padding: var(--margin) 0;
   }
 
-  .col-8.email-card {
-    padding: 0;
-  }
-
   .new-breach-message-wrapper.show-mobile {
     display: flex;
     margin: 1rem 1rem 0 auto;
   }
 
+  .pref .new-breach-message-wrapper.show-mobile {
+    display: none !important;
+  }
+
+  .e-breach-list {
+    padding: 0 1rem;
+  }
+
   .email-card.active .e-breach-list {
-    padding: 0 1rem 1rem 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .manage-emails.show-mobile {
+    margin-top: 2rem;
   }
 }
 
@@ -364,6 +383,10 @@ input.remove-email-submit {
   .e-address,
   .radio-label {
     font-size: 1rem;
+  }
+
+  .email-card {
+    padding: 1rem 0;
   }
 
   .email-pref {
@@ -382,8 +405,7 @@ input.remove-email-submit {
   }
 
   .e-toggle-info-wrapper {
-    flex-wrap: wrap;
-    padding: 1.4rem var(--padding);
+    padding: 0 1rem;
   }
 
   .change-primary-email {

@@ -56,6 +56,21 @@ nav {
 
 .nav-link.active-link {
   font-weight: 700;
+  position: relative;
+}
+
+.nav-link.active-link::after {
+  width: 50%;
+  height: 0.15rem;
+  background-image: var(--monitorGradient);
+  max-width: 6rem;
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 .drop-down-menu {
@@ -84,12 +99,27 @@ nav {
   box-shadow: none;
 }
 
-.signed-in-as {
-  border-bottom: 1px solid var(--grey2);
+.signed-in-as-wrap {
+  display: flex;
+  position: relative;
   margin-bottom: 1rem;
-  padding: 1.25rem 1rem;
+  padding: 0.5rem 0;
+}
+
+.signed-in-as-wrap::after {
+  content: "";
+  height: 1.5px;
+  background: var(--monitorGradient);
+  width: 100%;
+  display: block;
+  position: absolute;
+  bottom: 0;
+}
+
+.signed-in-as {
+  padding: 0.75rem 2rem;
   color: #9595a3;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
 }
 
 .nav-user-email {
@@ -97,7 +127,7 @@ nav {
   color: var(--color);
   font-weight: 600;
   padding-top: 2px;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
 }
 
 /* mobile-menu */
@@ -139,27 +169,51 @@ nav {
 
 /* signed-in user menu */
 .fxa-menu {
-  padding-top: 3rem;
+  padding-top: 3.25rem;
   height: 10rem;
   position: absolute;
   top: 0;
   right: 0;
   z-index: 2;
-  min-width: 250px;
+  max-width: 400px;
+  min-width: 230px;
+  width: 30vw;
   pointer-events: none;
+  transition: all 0.15s ease-in-out;
 }
 
 .fxa-menu-links {
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgb(249, 247, 253);
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
   display: none;
   flex-direction: column;
-  min-width: calc(12rem + 1vw);
   padding-bottom: 1rem;
   visibility: hidden;
   border-radius: var(--radius);
   overflow: hidden;
   transition: visibility 0.15s ease;
+}
+
+.fxa-menu::before {
+  max-height: 0.75rem;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 44px;
+  right: 12px;
+  height: 0.75rem;
+  width: 0.75rem;
+  background-color: rgb(249, 247, 253);
+  opacity: 1;
+  margin: auto;
+  z-index: 2;
+  transform: rotateX;
+  transform: rotate(45deg);
+  visibility: hidden;
+}
+
+.fxa-menu-wrapper:hover .fxa-menu::before {
+  visibility: visible;
 }
 
 .menu-open .close-menu {
@@ -185,10 +239,10 @@ nav {
 }
 
 .fxa-menu-link {
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 2rem;
   color: rgba(21, 20, 23, 0.77);
   background-color: rgba(255, 255, 255, 0);
-  transition: background-color 0.15s ease;
+  transition: all 0.15s ease;
 }
 
 .fxa-menu-link:focus,
@@ -199,7 +253,7 @@ nav {
 
 .fxa-menu-link:hover {
   background-color: rgba(155, 155, 165, 0.06);
-  transition: background-color 0.15s ease;
+  transition: all 0.15s ease;
 }
 
 @media screen and (max-width: 800px) {
@@ -208,6 +262,10 @@ nav {
   }
 
   .desktop-menu .nav-link {
+    display: none;
+  }
+
+  .nav-link.active-link::after {
     display: none;
   }
 

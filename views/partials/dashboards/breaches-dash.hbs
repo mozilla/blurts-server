@@ -1,35 +1,44 @@
-
-<main id="dashboard" class="dashboard clear-header" data-page-label="User Dashboard">
-  <div class="row jst-cntr">
-    <div class="col-8">
-      {{#if req.session.newUser}}
-        <span class="welcome-user">{{{fluentNestedBold "welcome-user" userName=req.session.user.fxa_profile_json.email }}}</span>
-      {{else}}
-        <span class="welcome-back">{{{fluentNestedBold "welcome-back" userName=req.session.user.fxa_profile_json.email }}}</span>
-      {{/if}}
+<div class="ab-br sr">
+  <main id="dashboard" class="dashboard clear-header" data-page-label="User Dashboard">
+    <div class="row jst-cntr">
+      <div class="col-9 txt-cntr padding-top-zero">
+        {{#if req.session.newUser}}
+          <span class="welcome-user">{{{fluentNestedBold "welcome-user" userName=req.session.user.fxa_profile_json.email }}}</span>
+        {{else}}
+          <span class="welcome-back">{{{fluentNestedBold "welcome-back" userName=req.session.user.fxa_profile_json.email }}}</span>
+        {{/if}}
+      </div>
     </div>
-  </div>
-  <div class="row jst-cntr flx-col">
-    <div class="col-8 no-vertical-padding">
-      <h2 class="section-headline breach-summary dash">{{ getString "breach-summary" }}</h2>
+    <div class="container">
+      <div class="row jst-cntr flx-col">
+        <div class="col-9 no-vertical-padding">
+          <h2 class="pref-headline breach-summary">{{ getString "breach-summary" }}</h2>
+        </div>
+        <div class="col-9 card dash-stats no-vertical-padding">
+          {{> breach-stats addClasses="user-stats"}}
+        </div>
+      </div>
     </div>
-    <div class="col-8 card dash-stats">
-      {{> breach-stats addClasses="user-stats"}}
-    </div>
-  </div>
+  </main>
+</div>
+<section class="bg-light container">
   <div class="row jst-cntr flx-col dash-row">
-    <div class="col-8 no-vertical-padding">
+    <div class="col-9 no-vertical-padding">
       <div class="flx space-between cntr link-header-wrapper">
-        <h2 class="section-headline margin-zero dash">{{ getString "email-addresses-title" }}</h2>
+        <h2 class="pref-headline">{{ getString "email-addresses-title" }}</h2>
         {{> dashboards/manage-email-link variableClass="hide-mobile"}}
       </div>
     </div>
-    {{#each (getBreachesForEachEmail) }}
-      {{> email-card }}
-    {{/each}}
-    {{> dashboards/manage-email-link variableClass="show-mobile"}}
+    <div class="email-cards flx flx-col jst-cntr">
+      {{#getBreachesForEachEmail}}
+        {{#each this.verifiedEmails}}
+          {{> email-card }}
+        {{/each}}
+      {{/getBreachesForEachEmail}}
+      {{> dashboards/manage-email-link variableClass="show-mobile"}}
+    </div>
   </div>
-</main>
+</section>
 <section class="container cool-gradient">
   <div class="row">
     <div class="col-6 jst-cntr">

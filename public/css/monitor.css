@@ -6,14 +6,89 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-position: bottom center;
+  position: relative;
+}
+
+.monitor-homepage.featured-breach {
+  min-height: 97vh;
+}
+
+.monitor-homepage.sensitive-landing {
+  min-height: 70vh;
+}
+
+.monitor-homepage.featured-breach h2.landing-headline {
+  font-size: 40px;
 }
 
 .landing-bottom-bar {
-  background-image: url(/img/landing/background-noodle-middle.svg), var(--bluePurpleGradient);
+  background-image: url(/img/landing/background-noodle-middle.svg), var(--bluePurpleGradient), linear-gradient(to bottom, rgba(144, 89, 255, 0.24), rgba(144, 89, 255, 0));
   background-repeat: no-repeat;
   background-size: 100% auto;
   background-position: top center;
-  padding-top: 8vh;
+  padding-top: 16rem;
+  position: relative;
+}
+
+/* sensitive featured breach */
+
+.landing-bottom-bar.sensitive-breach,
+.gradient-container.sensitive-breach,
+.row.sensitive-breach {
+  padding-top: 0;
+}
+
+.sb-top-container {
+  position: absolute;
+  bottom: -1px;
+  z-index: 2;
+  padding: 0 var(--padding);
+  width: 100%;
+}
+
+.sb-top-wrapper.row {
+  content: "";
+  width: 100%;
+  max-width: var(--maxWidth);
+
+  /* position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto; */
+}
+
+.sb-top {
+  background-color: rgba(255, 255, 255, 1);
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  min-height: 4rem;
+  width: 100%;
+}
+
+.sensitive-breach .gradient-inset {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.landing-sensitive-info {
+  color: var(--grey1);
+  text-align: left;
+  max-width: 800px;
+}
+
+.sb-callout-body {
+  font-size: 1.2rem;
+}
+
+.sensitive-breach .feat-headline-wrapper {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+h3.sb-callout {
+  font-size: 24px;
+  margin: 3rem auto 0 auto;
 }
 
 .landing-content {
@@ -31,12 +106,17 @@
   font-size: 1.25rem;
 }
 
+.landing-headline,
+.landing-subhead {
+  color: var(--grey1);
+}
+
 .landing-feat-list {
   margin: 0 auto var(--padding) auto;
 }
 
 .landing-headline {
-  font-size: 3.5rem;
+  font-size: 3.25rem;
   line-height: 130%;
   margin: auto;
   max-width: 700px;
@@ -48,7 +128,7 @@
 }
 
 .landing-headline .bold {
-  color: var(--accentLightBlue);
+  color: var(--violet2);
 }
 
 .landing-sign-up-btn {
@@ -62,11 +142,24 @@
 }
 
 @media screen and (max-width: 900px) {
+  .landing-content {
+    max-width: 700px;
+  }
+
   h2.landing-headline,
   .landing-subhead {
     text-align: left !important;
     margin: 0 auto 0.5rem 0;
     max-width: 100%;
+  }
+
+  .landing-sensitive-info {
+    max-width: var(--maxWidth);
+    margin-bottom: 4rem;
+  }
+
+  .sb-callout-body {
+    font-size: 1rem;
   }
 
   .headline.landing-headline {
@@ -87,16 +180,16 @@
     max-width: 100%;
   }
 
-  .monitor-homepage .row {
-    max-width: 700px;
-  }
-
   .landing-content form {
     margin-top: 1rem;
   }
 }
 
 @media screen and (max-width: 600px) {
+  .monitor-homepage {
+    min-height: 96vh;
+  }
+
   .headline.landing-headline {
     font-size: 2.35rem;
   }

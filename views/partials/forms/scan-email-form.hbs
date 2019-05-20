@@ -12,8 +12,12 @@
     <input id="featured" type="hidden" name="featuredBreach" value="{{ featuredBreach.Name }}"/>
   {{/if}}
   <div class="input-group-button">
-    <input type="submit" value="{{ getString "check-for-breaches" }}"/>
-    {{> forms/loader }}
+    {{#if featuredBreach}}
+      <input type="submit" value="{{ getString "check-for-breaches" }}"/>
+    {{else}}
+      <input type="submit" value="{{ getString "find-out" }}"/>
+    {{/if}}
+      {{> forms/loader }}
   </div>
 </form>
 <p class="paragraph form-desc txt-cntr">{{ getString "search-for-your-email" }}</p>

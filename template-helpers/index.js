@@ -8,6 +8,7 @@ const dashboard = require("./dashboard");
 const emails = require("./emails");
 const footer = require("./footer");
 const header = require("./header");
+const homepage = require("./homepage");
 const legacyHelpers = require("./hbs-helpers");
 const scanResults = require("./scan-results");
 const signUpBanners = require("./sign-up-banners");
@@ -22,6 +23,7 @@ module.exports = {
     emails,
     footer,
     header,
+    homepage,
     legacyHelpers,
     scanResults,
     signUpBanners,

@@ -4,9 +4,30 @@
   justify-content: space-between;
 }
 
+.gradient-container {
+  padding-left: var(--padding);
+  padding-right: var(--padding);
+}
+
+.monitor-gradient {
+  padding: 0.2rem;
+  border-radius: 0.7rem;
+}
+
+.monitor-gradient .feature-tip-content-wrapper {
+  width: 100%;
+  justify-content: center;
+}
+
+.gradient-inset {
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: var(--padding) 0;
+}
+
 .feature-tip-content-wrapper {
   border-radius: 3px;
-  max-width: 260px;
+  max-width: 320px;
   display: inline-flex;
 }
 
@@ -88,6 +109,10 @@
 
 .breach-detail .feature-subhead {
   margin-bottom: 0.5rem;
+}
+
+.gradient-container .feature-button .feature-tip-content {
+  margin: auto;
 }
 
 @media screen and (max-width: 1000px) {

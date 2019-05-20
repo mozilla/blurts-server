@@ -1,7 +1,15 @@
 "use strict";
 
 const { getStrings, getFxaUrl } = require("./hbs-helpers");
+const { LocaleUtils } = require("./../locale-utils");
 
+function getSignedInAs(args) {
+  const locales = args.data.root.req.supportedLocales;
+  const userEmail = args.data.root.req.session.user.primary_email;
+  const signedInAs = LocaleUtils.fluentFormat(locales, "signed-in-as", {
+    userEmail: `<span class="nav-user-email">${userEmail}</span>`});
+  return signedInAs;
+}
 
 function navLinks(args) {
   const locales = args.data.root.req.supportedLocales;
@@ -52,4 +60,5 @@ function fxaMenuLinks(args) {
 module.exports = {
   navLinks,
   fxaMenuLinks,
+  getSignedInAs,
 };

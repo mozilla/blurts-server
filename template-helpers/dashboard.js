@@ -6,19 +6,27 @@ const { makeBreachCards } = require("./breaches");
 function getBreachesForEachEmail(args) {
   const verifiedEmails = args.data.root.verifiedEmails;
   const locales = args.data.root.req.supportedLocales;
+  let breachesFound = false;
 
   verifiedEmails.forEach(email => {
     const breachCards = makeBreachCards(email.breaches, locales);
     email.foundBreaches = {};
     email.foundBreaches.firstFourBreaches = breachCards.slice(0, 4);
-    email.foundBreaches.remainingBreaches = breachCards.slice(5, breachCards.length);
-    email.foundBreaches.cardType = "two-up ec";
+    email.foundBreaches.remainingBreaches = breachCards.slice(4, breachCards.length);
+    email.foundBreaches.cardType = "two-up ec drop-shadow";
     email.breaches = breachCards;
+    if (email.breaches.length > 0) {
+      breachesFound = true;
+    }
     if (email.hasNewBreaches) {
       email.newBreachMessage = LocaleUtils.fluentFormat(locales, "new-breaches-found", { breachCount: email.hasNewBreaches });
     }
   });
-  return verifiedEmails;
+  const emailCards = {
+    verifiedEmails: verifiedEmails,
+    breachesFound: breachesFound,
+  };
+  return args.fn(emailCards);
 }
 
 

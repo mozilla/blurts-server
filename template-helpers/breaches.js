@@ -1,6 +1,6 @@
 "use strict";
 
-const { getBreachCategory } = require("./breach-detail");
+const { getBreachCategory, localizeAndPrioritizeDataClasses } = require("./breach-detail");
 const { prettyDate, localeString, localizedBreachDataClasses } = require("./hbs-helpers");
 const { LocaleUtils } = require("./../locale-utils");
 const { filterBreaches } = require("./../hibp");
@@ -16,11 +16,28 @@ function getLocalizedBreachCardStrings(locales) {
   };
 }
 
-function makeBreachCards(breaches, locales) {
+function dataClassesforCards(breach, locales) {
+  const topTwoClasses = [];
+  const dataClasses = localizeAndPrioritizeDataClasses(locales, breach, true);
+
+  dataClasses.priority.forEach(dataType => {
+    topTwoClasses.push(dataType.dataType);
+  });
+
+  if (topTwoClasses.length >= 2) {
+    return localizedBreachDataClasses(topTwoClasses.slice(0, 2), locales);
+  }
+
+  topTwoClasses.concat(dataClasses.lowerPriority);
+  return localizedBreachDataClasses(topTwoClasses.slice(0, 2), locales);
+}
+
+function makeBreachCards(breaches, locales, filter=true) {
   const breachCardStrings = getLocalizedBreachCardStrings(locales);
   const formattedBreaches = [];
 
-  if (breaches.length > 1) {
+
+  if (filter && breaches.length > 1) {
     breaches.sort((a,b) => {
       const oldestBreach = new Date(a.BreachDate);
       const newestBreach = new Date(b.BreachDate);
@@ -34,7 +51,7 @@ function makeBreachCards(breaches, locales) {
 
     breachCard.AddedDate = prettyDate(breach.AddedDate, locales);
     breachCard.PwnCount = localeString(breach.PwnCount,locales);
-    breachCard.DataClasses = localizedBreachDataClasses(breach.DataClasses, locales);
+    breachCard.DataClasses = dataClassesforCards(breach, locales);
 
     breachCard.Category = breachCategory; // "unverified-breach", etc. for styling cards
     breachCard.String = breachCardStrings; // "Compromised Data: , Compromised Accounts: ..."
@@ -83,22 +100,17 @@ function lastAddedBreach(options) {
   const locales = options.data.root.req.supportedLocales;
   let latestBreach = [options.data.root.latestBreach];
   latestBreach = makeBreachCards(latestBreach, locales);
-  latestBreach[0].DataClasses = "";
   return latestBreach;
 }
 
 function getFoundBreaches(args) {
-  const foundBreaches = {};
   const locales = args.data.root.req.supportedLocales;
   let userBreaches = args.data.root.foundBreaches;
 
-  userBreaches = makeBreachCards(userBreaches, locales);
-  foundBreaches.firstFourBreaches = userBreaches.slice(0, 4);
-  if (userBreaches.length > 4) {
-    foundBreaches.remainingBreaches = userBreaches.slice(4, foundBreaches.length);
-  }
-  foundBreaches.cardType = "two-up drop-shadow";
-  return args.fn(foundBreaches);
+  userBreaches = makeBreachCards(userBreaches, locales, false);
+
+  userBreaches.cardType = "two-up drop-shadow";
+  return userBreaches;
 }
 
 function getBreachArray(args) {

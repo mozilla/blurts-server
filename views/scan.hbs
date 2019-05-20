@@ -1,4 +1,4 @@
-<main class="container bg-dark clear-header" {{> analytics/results_page_label }}>
+<main class="container bg-light clear-header" {{> analytics/results_page_label }}>
   <div class="row jst-cntr scan-results">
 
     <div class="col-9 headline-col no-vertical-padding">
@@ -7,13 +7,13 @@
       {{/if}}
       {{#if specificBreach}}
         {{#getScanResultsHeadline }}
-          <h2 class="skinny-headline scan-results-headline fb-res-headline">{{{ this.headline }}}</h2>
+          <h2 class="headline scan-results-headline fb-res-headline">{{{ this.headline }}}</h2>
           {{#if this.subhead }}
             <h3 class="subhead scan-res-subhead">{{{ this.subhead }}}</h2>
           {{/if}}
         {{/getScanResultsHeadline}}
       {{else}}
-        <h2 class="skinny-headline scan-results-headline">{{{ fluentNestedBold "scan-results-known-breaches" breachCount=foundBreaches.length }}}</h2>
+        <h2 class="headline  scan-results-headline">{{{ fluentNestedBold "scan-results-known-breaches" breachCount=foundBreaches.length }}}</h2>
         <button class="alert-me open-oauth flx jst-cntr"  {{> analytics/fxa id="fx-monitor-alert-me-btn" }} data-event-category="Alert me about new breaches">
           {{ getString "alert-about-new-breaches" }}{{> svg/arrow-head-right }}
         </button>
@@ -21,15 +21,20 @@
     </div>
   </div>
 
-  <div class="row jst-cntr user-found-breaches">
+  <div class="row jst-cntr user-found-breaches flx-col">
     <div class="col-9 found-breaches">
       <!-- foundBreaches 1-4 -->
-      {{#getFoundBreaches}}
-        {{> breach-groups cardType="two-up drop-shadow scan-res"}}
-      {{/getFoundBreaches}}
+
+        {{#each (getFoundBreaches)}}
+          {{> breach-card cardType="two-up drop-shadow"}}
+        {{/each}}
     </div>
+    {{#ifCompare foundBreaches.length ">" "0"}}
+      <div class="col-9 txt-cntr source-info-wrap">
+        {{> hibp-attribution}}
+      </div>
+    {{/ifCompare}}
   </div>
-  {{> hibp-attribution variableClasses="scan-res"}}
 </main>
 <section class="container scan-results-sign-up">
   <div class="row jst-cntr flx-col">

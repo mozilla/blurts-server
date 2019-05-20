@@ -97,7 +97,6 @@ const priorityDataClasses = {
   },
 };
 
-
 function compareBreachDates(breach) {
   const breachDate = new Date(breach.BreachDate);
   const addedDate = new Date(breach.AddedDate);
@@ -107,10 +106,6 @@ function compareBreachDates(breach) {
     return true;
   }
   return false;
-}
-
-function tempOverview(breach, locales) {
-  return `On ${prettyDate(breach.BreachDate, locales)}, <span class="bold">${breach.Title}</span> suffered a breach. Once the breach was discovered and verified it was added to our database on <span class="bold">${prettyDate(breach.AddedDate, locales)}</span>.`;
 }
 
 function getSensitiveBreachContent(locales, breach) {
@@ -182,14 +177,18 @@ function getBreachDetail(args) {
 
   const breachDetail = {
     overview: {
-      copy: tempOverview(breach, locales),
+      copy: LocaleUtils.fluentFormat(locales, "breach-overview", {
+        addedDate: `<span class='bold'>${prettyDate(breach.AddedDate, locales)}</span>`,
+        breachDate: `<span class='bold'>${prettyDate(breach.BreachDate, locales)}</span>`,
+        breachTitle: breach.Title,
+      }),
     },
     breach: breach,
     categoryId: getBreachCategory(breach),
     category: LocaleUtils.fluentFormat(locales, getBreachCategory(breach)),
     dataClasses: {
       headline: LocaleUtils.fluentFormat(locales, "what-data"),
-      dataTypes: soupedUpDataClasses(locales, breach),
+      dataTypes: localizeAndPrioritizeDataClasses(locales, breach),
     },
     sensitiveBreach: getSensitiveBreachContent(locales, breach),
     whatToDoTips: {
@@ -225,7 +224,7 @@ function getBreachDetail(args) {
 }
 
 
-function soupedUpDataClasses(locales, breach) {
+function localizeAndPrioritizeDataClasses(locales, breach, forBreachCard = false) {
   const localizedDataClasses = {
     priority: [],
     lowerPriority: [],
@@ -245,7 +244,9 @@ function soupedUpDataClasses(locales, breach) {
       localizedDataClasses.lowerPriority.push(dataClass);
     }
   }
-  localizedDataClasses.lowerPriority = localizedBreachDataClasses(localizedDataClasses.lowerPriority, locales);
+  if (!forBreachCard) {
+    localizedDataClasses.lowerPriority = localizedBreachDataClasses(localizedDataClasses.lowerPriority, locales);
+  }
   localizedDataClasses.priority.sort((a,b) => (a.weight < b.weight) ? 1 : ((b.weight < a.weight) ? -1 : 0));
   return localizedDataClasses;
 }
@@ -254,4 +255,5 @@ module.exports = {
   breachCategory,
   getBreachDetail,
   getBreachCategory,
+  localizeAndPrioritizeDataClasses,
 };

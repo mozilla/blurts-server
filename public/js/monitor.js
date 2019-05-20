@@ -139,14 +139,14 @@ function toggleArticles() {
 function toggleMobileFeatures() {
   const windowWidth = window.innerWidth;
   if (windowWidth > 800) {
-    const emailCards = document.querySelectorAll(".col-8.email-card:not(.zero-breaches)");
+    const emailCards = document.querySelectorAll(".col-9.email-card:not(.zero-breaches)");
       emailCards.forEach(card => {
         card.classList.add("active");
       });
       return;
     }
 
-  const closeActiveEmailCards = document.querySelectorAll(".col-8.email-card.active");
+  const closeActiveEmailCards = document.querySelectorAll(".col-9.email-card.active");
     closeActiveEmailCards.forEach(card => {
       card.classList.remove("active");
     });
@@ -200,11 +200,9 @@ function toggleHeaderStates(header, win) {
     document.getElementById("sign-in-btn").classList.add("capitalize");
   }
 
-  document.querySelectorAll(".breach-logo").forEach(logo => {
+  document.querySelectorAll(".breach-img").forEach(logo => {
     logo.addEventListener("error", (missingLogo) => {
-      if (logo.classList.contains("lazy-img")) {
-        missingLogo.target.src = "/img/logos/missing-logo-icon.png";
-      }
+      missingLogo.target.src = "/img/logos/missing-logo-icon.png";
     });
   });
 
