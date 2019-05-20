@@ -487,6 +487,75 @@ new-breaches-found =
        *[many] ОБНАРУЖЕНО { $breachCount } НОВЫХ УТЕЧЕК
     }
 sign-up-headline-1 = Получайте быстрые уведомления с помощью { -brand-fxa(case: "genitive") }.
+account-not-required = Браузер { -brand-name } не обязателен для создания { -brand-fxa(case: "genitive") }. Вы можете получать информацию о других службах { -brand-Mozilla }.
+get-alerted = Получать уведомления о новых утечках.
+was-your-info-exposed = Были ли ваши данные затронуты утечкой данных { $breachName }?
+find-out-if = Узнайте, были ли ваши данные затронуты этой утечкой данных.
+fb-not-comp = Этот адрес электронной почты не обнаружен в утечке данных { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Однако, он затронут { $breachCount } другой атакой.
+        [few] Однако, он затронут { $breachCount } другими атаками.
+       *[many] Однако, он затронут { $breachCount } другими атаками.
+    }
+fb-comp-only = Этот адрес электронной почты затронут утечкой { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Этот адрес электронной почты затронут { $breachCount } известной утечкой данных, включая { $breachName }.
+        [few] Этот адрес электронной почты затронут { $breachCount } известными утечками данных, включая { $breachName }.
+       *[many] Этот адрес электронной почты затронут { $breachCount } известными утечками данных, включая { $breachName }.
+    }
+no-other-breaches-found = Простой поиск не нашёл новых утечек.
+no-results-blurb = Извините, этой утечки нет в нашей базе данных.
+all-breaches-headline = Все утечки в { -product-name }
+search-breaches = Поиск утечек
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Показаны:
+all-breaches = Все утечки
 
 ## Updated error messages
 
+error-bot-headline = Поиск временно остановлен
+error-invalid-unsub = Как отписаться от уведомлений { -product-name }
+login-link-pre = Уже есть аккаунт?
+login-link = Войти
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] Адрес электронной почты отслеживается
+        [few] Адреса электронной почты отслеживаются
+       *[many] Адреса электронной почты отслеживаются
+    }
+# Button
+see-additional-breaches = Посмотреть дополнительные утечки
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Посмотреть все утечки
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Этот адрес электронной почты затронут { $breachCount } известной утечкой данных.
+        [few] Этот адрес электронной почты затронут { $breachCount } известными утечками данных.
+       *[many] Этот адрес электронной почты затронут { $breachCount } известными утечками данных.
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Результаты для: { $userEmail }
+other-monitored-emails = Другие отслеживаемые адреса электронной почты
+email-verification-required = Требуется верификация электронной почты
+what-is-a-website-breach = Что такое утечка данных веб-сайта?
+alert-about-new-breaches = Уведомляйте меня о новых утечках
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Узнать
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Дополнительная информация, включая:
+# Title
+email-addresses-title = Адреса электронной почты
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Фильтр по категориям:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Меню
