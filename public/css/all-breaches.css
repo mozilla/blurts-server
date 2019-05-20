@@ -3,12 +3,19 @@ main.all-breaches-main {
   color: var(--grey1);
 }
 
-.ab .breach-logo {
+.hide-breaches,
+.lazy-img {
   opacity: 0;
 }
 
-.ab .breach-logo.lazy-loaded {
+.breach-logo.lazy-loaded {
   opacity: 1;
+}
+
+.hide-breaches,
+.lazy-img,
+.lazy-img.lazy-loaded {
+  transition: opacity 0.15s ease;
 }
 
 .fuzzy-wrapper {

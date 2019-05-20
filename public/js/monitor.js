@@ -200,11 +200,9 @@ function toggleHeaderStates(header, win) {
     document.getElementById("sign-in-btn").classList.add("capitalize");
   }
 
-  document.querySelectorAll(".breach-logo").forEach(logo => {
+  document.querySelectorAll(".breach-img").forEach(logo => {
     logo.addEventListener("error", (missingLogo) => {
-      if (!logo.classList.contains("lazy-img")) {
-        missingLogo.target.src = "/img/logos/missing-logo-icon.png";
-      }
+      missingLogo.target.src = "/img/logos/missing-logo-icon.png";
     });
   });
 

@@ -188,7 +188,7 @@ function getBreachDetail(args) {
     category: LocaleUtils.fluentFormat(locales, getBreachCategory(breach)),
     dataClasses: {
       headline: LocaleUtils.fluentFormat(locales, "what-data"),
-      dataTypes: soupedUpDataClasses(locales, breach),
+      dataTypes: localizeAndPrioritizeDataClasses(locales, breach),
     },
     sensitiveBreach: getSensitiveBreachContent(locales, breach),
     whatToDoTips: {
@@ -224,7 +224,7 @@ function getBreachDetail(args) {
 }
 
 
-function soupedUpDataClasses(locales, breach, forBreachCard = false) {
+function localizeAndPrioritizeDataClasses(locales, breach, forBreachCard = false) {
   const localizedDataClasses = {
     priority: [],
     lowerPriority: [],
@@ -255,5 +255,5 @@ module.exports = {
   breachCategory,
   getBreachDetail,
   getBreachCategory,
-  soupedUpDataClasses,
+  localizeAndPrioritizeDataClasses,
 };

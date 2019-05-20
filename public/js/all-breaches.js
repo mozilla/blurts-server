@@ -52,7 +52,7 @@ function clearBreaches(wrapper) {
 }
 
 function makeBreaches(breachArray, breachCardWrapper) {
-  breachCardWrapper.style.opacity = "0";
+  breachCardWrapper.classList.toggle("hide-breaches");
   clearBreaches(breachCardWrapper);
 
   const fragment = document.createDocumentFragment();
@@ -101,7 +101,7 @@ function makeBreaches(breachArray, breachCardWrapper) {
   }
 
   breachCardWrapper.appendChild(fragment);
-  breachCardWrapper.style.opacity = 1;
+  breachCardWrapper.classList.toggle("hide-breaches");
   const breachLogos = new breachImages();
   breachLogos.lazyLoad();
   document.addEventListener("scroll", breachLogos.lazyLoad);

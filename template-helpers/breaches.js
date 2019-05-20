@@ -1,6 +1,6 @@
 "use strict";
 
-const { getBreachCategory, soupedUpDataClasses } = require("./breach-detail");
+const { getBreachCategory, localizeAndPrioritizeDataClasses } = require("./breach-detail");
 const { prettyDate, localeString, localizedBreachDataClasses } = require("./hbs-helpers");
 const { LocaleUtils } = require("./../locale-utils");
 const { filterBreaches } = require("./../hibp");
@@ -18,10 +18,8 @@ function getLocalizedBreachCardStrings(locales) {
 
 function dataClassesforCards(breach, locales) {
   const topTwoClasses = [];
-  const dataClasses = soupedUpDataClasses(locales, breach, true);
-  // dataClasses = dataClasses.priority.concat(dataClasses.lowerPriority);
+  const dataClasses = localizeAndPrioritizeDataClasses(locales, breach, true);
 
-  // console.log(dataClasses);
   dataClasses.priority.forEach(dataType => {
     topTwoClasses.push(dataType.dataType);
   });
@@ -38,14 +36,13 @@ function makeBreachCards(breaches, locales, filter=true) {
   const breachCardStrings = getLocalizedBreachCardStrings(locales);
   const formattedBreaches = [];
 
-  if (filter) {
-    if (breaches.length > 1) {
-      breaches.sort((a,b) => {
-        const oldestBreach = new Date(a.BreachDate);
-        const newestBreach = new Date(b.BreachDate);
-        return newestBreach-oldestBreach;
-      });
-    }
+
+  if (filter && breaches.length > 1) {
+    breaches.sort((a,b) => {
+      const oldestBreach = new Date(a.BreachDate);
+      const newestBreach = new Date(b.BreachDate);
+      return newestBreach-oldestBreach;
+    });
   }
 
   for (const breach of breaches) {
