@@ -394,10 +394,99 @@ monitor-your-online-accounts = Подпишитесь на мониторинг 
 stay-alert = Будьте в курсе новых утечек
 if-your-info = Если ваша информация будет обнаружена в новой утечке данных, мы отправим вам уведомление.
 search-all-emails = Проверьте все свои адреса электронной почты на утечки и получайте уведомления о новых.
+monitor-several-emails = Отслеживайте несколько адресов электронной почты
+take-action = Примите меры для защиты ваших аккаунтов
+keep-your-data-safe = Узнайте, что вам необходимо сделать, чтобы защитить ваши данные от киберпреступников.
+website-breach = Утечка на сайте
+sensitive-breach = Утечка конфиденциальной информации
+data-aggregator-breach = Утечка на агрегаторе данных
+unverified-breach = Непроверенная утечка
+spam-list-breach = Утечка списка рассылки спама
+website-breach-plural = Утечки на сайте
+sensitive-breach-plural = Утечки конфиденциальной информации
+data-aggregator-breach-plural = Утечки на агрегаторе данных
+unverified-breach-plural = Непроверенные утечки
+spam-list-breach-plural = Утечки списка рассылки спама
+what-data = Какие данные скомпрометированы:
+sensitive-sites = Как { -product-name } обращается с сайтами с конфиденциальной информацией?
+delayed-reporting-headline = Почему об утечке было сообщено так поздно?
 about-fxm-headline = О { -product-name }
+# How Firefox Monitor works
+how-fxm-works = Как работает { -product-name }
+how-fxm-1-headline = Провести базовый поиск
+how-fxm-2-headline = Подписаться на отслеживание утечек
+how-fxm-3-headline = Получайте уведомления в браузере
+how-fxm-3-blurb = Если вы используете { -brand-name }, вы получите уведомление при посещении сайта, где произошла утечка. Так вы сразу узнаете, стали ли ваши данные частью утечки, и что следует делать в таком случае.
+wtd-after-website = Что делать после утечки данных веб-сайта
+wtd-after-data-agg = Что делать после утечки данных агрегатора данных
+what-is-data-agg = Что такое агрегатор данных?
+protect-your-privacy = Защитите свою приватность в Интернете
+no-pw-to-change = В отличие от ситуации со взломом сайта, здесь нет пароля, который можно было бы сменить.
+avoid-personal-info = Избегайте использования личной информации в паролях
+avoid-personal-info-blurb = Найти дату рождения, адрес или имена членов семьи не составляет труда. Не используйте подобные слова в ваших паролях.
 
 ## What to do after data breach tips
 
+change-pw = Смените свои пароли
+even-for-old = Даже для старых аккаунтов, важно обновить свои пароли.
+make-new-pw-unique = Придумывайте различные и уникальные пароли
+strength-of-your-pw = Сложность ваших паролей напрямую влияет на вашу онлайн-безопасность.
+create-strong-passwords = Как создавать сложные пароли
+stop-reusing-pw = Перестаньте повторно использовать одни и те же пароли
+create-unique-pw = Создавайте уникальные пароли и сохраняйте их где-то в безопасном месте, например, в менеджере паролей.
+five-myths = 5 мифов о менеджерах паролей
+create-a-fxa = Создайте { -brand-fxa }, чтобы получить ваш полный отчёт об утечках, и получать уведомления.
+feat-security-tips = Советы по безопасности для защиты ваших аккаунтов
+feat-sensitive = Продвинутый поиск по важным взломам
+feat-enroll-multiple = Укажите несколько адресов электронной почты для отслеживания взломов
+sign-up-for-fxa = Создайте { -brand-fxa }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Найден в { $breachCount } известной утечке.
+        [few] Найден в { $breachCount } известных утечках.
+       *[many] Найден в { $breachCount } известных утечках.
+    }
+see-if-breached = Посмотрите, были ли вы затронуты какой-либо из утечек данных.
+check-for-breaches = Проверить на утечки
+find-out-what-hackers-know = Узнайте, что хакеры уже знают о вас. Будьте на шаг впереди.
+search-for-your-email = Поищите свой адрес электронной почты в утечках, ставших публичными, начиная с 2007 года.
+back-to-top = Вернуться наверх
+comm-opt-0 = Отправлять мне письмо, если один из этих адресов попадёт в утечку.
+comm-opt-1 = Отправлять уведомления обо всех утечках на { $primaryEmail }.
+stop-monitoring-this = Перестать отслеживать эту электронную почту.
+resend-verification = Отправить письмо подтверждения заново
+add-new-email = Добавить новый адрес электронной почты
+send-verification = Отправить ссылку для подтверждения
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Глобальное общение
+breach-summary = Сводка об утечке
+show-breaches-for-this-email = Показать все утечки для этого адреса электронной почты.
+link-change-primary = Сменить основной адрес электронной почты
+remove-fxm = Удалить { -product-name }
+remove-fxm-blurb = Выключить предупреждения { -product-name }. Ваш { -brand-fxa } останется активным, и вы будете получать уведомления о других относящихся к нему событиях.
+manage-email-addresses = Управление адресами электронной почты
+latest-breach-link = Узнайте, были ли вы затронуты этой утечкой
+welcome-back = С возвращением, { $userName }!
+welcome-user = Добро пожаловать, { $userName }!
+breach-alert-subject = { -product-name } обнаружил ваш адрес электронной почты в новой утечке данных.
+your-info-was-discovered-headline = Ваша информация была раскрыта новой утечкой данных.
+what-to-do-after-breach = Что делать после утечки данных
+ba-next-step-1 = Смените пароль на уникальный и более надёжный.
+ba-next-step-2 = Перестаньте использовать пароль, который попал в общий доступ.
+faq2 = Почему уведомление об утечке заняло так много времени?
+new-breaches-found =
+    { $breachCount ->
+        [one] ОБНАРУЖЕНА { $breachCount } НОВАЯ УТЕЧКА
+        [few] ОБНАРУЖЕНО { $breachCount } НОВЫЕ УТЕЧКИ
+       *[many] ОБНАРУЖЕНО { $breachCount } НОВЫХ УТЕЧЕК
+    }
+sign-up-headline-1 = Получайте быстрые уведомления с помощью { -brand-fxa(case: "genitive") }.
 
 ## Updated error messages
 
