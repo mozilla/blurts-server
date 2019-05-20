@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name =
     { $sklon ->
         [rodilnik] Firefoxa
@@ -347,10 +348,14 @@ about-fxm-headline = O { -product-name }ju
 how-fxm-works = Kako deluje { -product-name }
 how-fxm-3-headline = Prejemajte obvestila v brskalniku
 protect-your-privacy = Zaščitite svojo spletno zasebnost
+avoid-personal-info = Izogibajte se uporabi osebnih podatkov v geslih
+avoid-personal-info-blurb = Na spletu lahko preprosto najdete rojstne dneve, naslove in imena družinskih članov. Izogibajte se uporabi teh besed v geslih.
 
 ## What to do after data breach tips
 
 change-pw = Spremenite svoje geslo
+even-for-old = Tudi za starejše račune je pomembno redno posodabljanje gesel.
+make-new-pw-unique = Novo geslo naj bo drugačno in edinstveno
 create-strong-passwords = Kako ustvariti zapletena gesla
 five-myths = 5 zmot o upraviteljih gesel
 feat-security-tips = Varnostni nasveti za zaščito vaših računov
@@ -368,6 +373,8 @@ login-link = Prijava
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Rezultati za: { $userEmail }
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Preverite
 # Title
 email-addresses-title = E-poštni naslovi
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
