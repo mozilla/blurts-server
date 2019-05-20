@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -297,3 +298,54 @@ create-free-account = Creá una { -brand-fxa } gratuita para tu informe completo
 get-your-report-and-sign-up = Conseguí tu informe y registrate para recibir alertas.
 # Link title
 frequently-asked-questions = Preguntas frecuentes
+about-firefox-monitor = Acerca de { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Preferencias
+# Link title.
+home = Inicio
+# Link title
+breaches = Violaciones
+# Link title
+security-tips = Consejos de seguridad
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Abrir la navegación de { -brand-fxa }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = ÚLTIMA VIOLACIÓN AGREGADA
+breach-added = Violación informada:
+breach-discovered = Violación descubierta:
+# Link title
+more-about-this-breach = Más acerca de esta violación
+take-control = Recuperá el control de tu información personal.
+cant-stop-hackers = No podés evitar que te pirateen los piratas, pero sí podés evitar la malas prácticas que les facilitan el trabajo.
+read-more-tips = Leer consejos de seguridad
+how-hackers-work = Entender cómo trabajan los piratas
+monitor-your-online-accounts = Registrate para el control de violaciones con { -brand-fxa }.
+stay-alert = Mantenete alerta a las nuevas violaciones
+if-your-info = Si tu información aparece en una nueva violación de datos, te enviaremos una alerta.
+search-all-emails = Averiguá si tus direcciones de correo aparecieron en violaciones y recibí alertas sobre nuevas amenazas.
+monitor-several-emails = Controlá varias direcciones de correo
+take-action = Actuá para proteger tus cuentas.
+keep-your-data-safe = Averiguá qué tenés que hacer para mantener tus datos a salvo de los delincuentes cibernéticos.
+website-breach = Violación del sitio web
+sensitive-breach = Violación delicada del sitio web
+data-aggregator-breach = Violación del agregador de datos
+unverified-breach = Violación no verificada
+spam-list-breach = Violación del listado de correo no deseado
+website-breach-plural = Violaciones de sitios web
+sensitive-breach-plural = Violaciones delicadas
+data-aggregator-breach-plural = Violaciones de agregadores de datos
+unverified-breach-plural = Violaciones no verificadas
+spam-list-breach-plural = Violaciones del listado de correos no deseados
+what-data = Qué datos fueron comprometidos:
+sensitive-sites = ¿Cómo trata { -product-name } a los sitios sensibles?
+about-fxm-headline = Acerca de { -product-name }
+# How Firefox Monitor works
+how-fxm-works = Cómo funcionar { -product-name }
+how-fxm-3-headline = Obtener notificaciones en el navegador
+
+## What to do after data breach tips
+
+
+## Updated error messages
+

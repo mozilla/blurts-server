@@ -12,6 +12,9 @@ avatars = Ảnh đại diện
 bank-account-numbers = Số tài khoản ngân hàng
 beauty-ratings = Xếp hạng sắc đẹp
 biometric-data = Dữ liệu sinh trắc học
+# This string is the shortened version of "Biographies", and 
+# refers to biographical data about a user.
+bios = Tiểu sử
 browser-user-agent-details = Chi tiết chuỗi nhận dạng trình duyệt
 browsing-histories = Lịch sử duyệt
 buying-preferences = Ưu đãi mua hàng
@@ -37,6 +40,7 @@ education-levels = Trình độ học vấn
 email-addresses = Địa chỉ email
 email-messages = Tin nhắn email
 employers = Nhà tuyển dụng
+employment-statuses = Tình trạng việc làm
 ethnicities = Dân tộc
 family-members-names = Tên của các thành viên trong gia đình
 family-plans = Kế hoạch gia đình
@@ -101,6 +105,7 @@ smoking-habits = Thói quen hút thuốc
 sms-messages = Tin nhắn SMS
 social-connections = Kết nối xã hội
 social-media-profiles = Hồ sơ truyền thông xã hội
+social-security-numbers = Số an sinh xã hội
 spoken-languages = Ngôn ngữ nói
 support-tickets = Vé hỗ trợ
 survey-results = Kết quả khảo sát

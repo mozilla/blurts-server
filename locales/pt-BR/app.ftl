@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -372,6 +373,7 @@ take-control = Assuma de volta o controle sobre seus dados pessoais.
 read-more-tips = Leia mais dicas de segurança
 how-hackers-work = Entenda como os hackers trabalham
 stay-alert = Receba alertas sobre novos vazamentos
+monitor-several-emails = Monitore vários e-mails
 website-breach = Vazamento de site
 sensitive-breach = Vazamento de site sensível
 data-aggregator-breach = Vazamento de agregador de dados
@@ -404,9 +406,26 @@ avoid-personal-info = Evite usar informações pessoais em senhas
 ## What to do after data breach tips
 
 change-pw = Mude sua senha
+make-new-pw-unique = Torne a nova senha diferente e única
+strength-of-your-pw = A força de suas senhas impacta diretamente sua segurança online.
 create-strong-passwords = Como criar senhas fortes
 stop-reusing-pw = Pare de reusar as mesmas senhas
+create-unique-pw = Crie senhas únicas e as salve em algum lugar seguro, como um gerenciador de senhas.
 five-myths = 5 mitos sobre gerenciadores de senhas
+create-a-fxa = Crie uma { -brand-fxa } para obter seu relatório completo de vazamentos e receber alertas.
+feat-security-tips = Dicas de segurança para proteger suas contas
+feat-sensitive = Pesquisa avançada em vazamentos sensíveis
+feat-enroll-multiple = Inscreva vários e-mails na monitoração de vazamentos
+sign-up-for-fxa = Crie uma { -brand-fxa }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Aparece em { $breachCount } vazamento conhecido.
+       *[other] Aparece em { $breachCount } vazamentos conhecidos.
+    }
+check-for-breaches = Verificar se há vazamentos
+back-to-top = Voltar ao início
 comm-opt-0 = Enviar e-mail para mim se um de meus endereços de e-mail abaixo aparecer em um vazamento de dados.
 comm-opt-1 = Enviar todos os alertas de vazamento para { $primaryEmail }.
 stop-monitoring-this = Parar de monitorar este e-mail.
@@ -427,6 +446,9 @@ remove-fxm-blurb =
     Desativar alertas do { -product-name }. Sua { -brand-fxa } continuará ativa e você pode receber
     outras comunicações relacionadas à conta.
 manage-email-addresses = Gerenciar endereços de e-mail
+latest-breach-link = Ver se você estava neste vazamento
+welcome-back = Bom ver você de volta, { $userName }!
+welcome-user = Boas-vindas, { $userName }!
 breach-alert-subject = O { -product-name } encontrou seu e-mail em um novo vazamento de dados.
 your-info-was-discovered-headline = Suas informações foram descobertas em um novo vazamento de dados.
 your-info-was-discovered-blurb =
@@ -443,11 +465,15 @@ ba-next-step-blurb-2 =
     Criminosos cibernéticos podem encontrar sua senha na dark web e usar 
     para acessar suas outras contas. A melhor maneira de proteger suas contas 
     é usar uma senha única em cada conta.
+faq2 = Por que demorou tanto para me notificar deste vazamento?
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } NOVO VAZAMENTO ENCONTRADO
        *[other] { $breachCount } NOVOS VAZAMENTOS ENCONTRADOS
     }
+get-alerted = Seja alertado sobre novos vazamentos.
+find-out-if = Descubra se seus dados foram expostos neste vazamento.
+fb-comp-only = Este e-mail apareceu no vazamento { $breachName }
 all-breaches-headline = Todos os vazamentos no { -product-name }
 search-breaches = Pesquisar vazamentos
 # "Appears in-page as: Showing: All Breaches"
@@ -457,6 +483,7 @@ all-breaches = Todos os vazamentos
 ## Updated error messages
 
 error-bot-headline = Pesquisas temporariamente suspensas
+error-csrf-headline = A sessão expirou
 login-link-pre = Já tem uma conta?
 login-link = Entre
 # This string is displayed under a large numeral that indicates the total number
@@ -493,6 +520,10 @@ scan-results-known-breaches =
         [one] Este e-mail apareceu em 1 vazamento de dados conhecido.
        *[other] Este e-mail apareceu em { $breachCount } vazamentos de dados conhecidos.
     }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Resultados de: { $userEmail }
 other-monitored-emails = Outros e-mails monitorados
 fxa-primary-email = E-mail da { -brand-fxa } - Principal
 what-is-a-website-breach = O que é um vazamento de site?
@@ -500,3 +531,21 @@ security-tips-headline = Dicas de segurança para se proteger de hackers
 steps-to-protect = Medidas a tomar para proteger sua identidade online
 take-further-steps = Tome medidas adicionais para proteger sua identidade
 alert-about-new-breaches = Me alertar sobre novos vazamentos
+other-known-breaches-found =
+    { $breachCount ->
+        [one] No entanto, apareceu em { $breachCount } outro vazamento conhecido.
+       *[other] No entanto, apareceu em { $breachCount } outros vazamentos conhecidos.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Informações adicionais, incluindo:
+# Title
+email-addresses-title = Endereços de e-mail
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = Em { $breachDate }, { $breachTitle } sofreu um vazamento. Uma vez que o vazamento foi descoberto e confirmado, ele foi adicionado à nossa base de dados em { $addedDate }.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = Preferências do { -product-short-name }
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menu

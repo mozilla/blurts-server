@@ -12,6 +12,9 @@ avatars = Afatarau
 bank-account-numbers = Rhifau cyfrif banc
 beauty-ratings = Graddfeydd harddwch
 biometric-data = Data biometreg
+# This string is the shortened version of "Biographies", and 
+# refers to biographical data about a user.
+bios = Hanes
 browser-user-agent-details = Manylion asiant defnyddiwr porwr
 browsing-histories = Hanes pori
 buying-preferences = Dewisiadau prynu
@@ -37,6 +40,7 @@ education-levels = Lefelau addysg
 email-addresses = Cyfeiriadau e-bost
 email-messages = Negeseuon e-bost
 employers = Cyflogwyr
+employment-statuses = Statws cyflogaeth
 ethnicities = Ethnigrwydd
 family-members-names = Enwau aelodau'r teulu
 family-plans = Cynlluniau teuluol
@@ -101,6 +105,7 @@ smoking-habits = Arferion ysmygu
 sms-messages = Negeseuon SMS
 social-connections = Cysylltiadau cymdeithasol
 social-media-profiles = Proffiliau cyfryngau cymdeithasol
+social-security-numbers = Rhifau nawdd cymdeithasol
 spoken-languages = Siarad Ieithoedd
 support-tickets = Tocynnau cymorth
 survey-results = Canlyniadau arolwg

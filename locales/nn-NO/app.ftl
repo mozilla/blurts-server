@@ -224,3 +224,33 @@ create-free-account =
 get-your-report-and-sign-up = Få din rapport og registrer deg for åtvaringar.
 # Link title
 frequently-asked-questions = Vanlege spørsmål
+about-firefox-monitor = Om { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Innstillingar
+# Link title.
+home = Heim
+fxa-account = { -brand-fxa }
+
+## What to do after data breach tips
+
+change-pw = Endre passordet ditt
+create-strong-passwords = Slik lagar du sterke passord
+welcome-back = Velkomen tilbake, { $userName }!
+welcome-user = Velkomen, { $userName }!
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Viser:
+
+## Updated error messages
+
+login-link-pre = Har du ein konto?
+login-link = Logg inn
+# Title
+email-addresses-title = E-postadresser
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Innlogga som: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Filtrer etter kategori:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Meny

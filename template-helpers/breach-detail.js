@@ -140,7 +140,7 @@ function getTips(locales, breachType) {
         title: "stop-reusing-pw",
         subtitle: "create-unique-pw",
         linkTitle: "five-myths",
-        href: "/security-tips#myths",
+        href: "/security-tips#five-myths",
         svgClass: "manage-password",
       },
     ];
@@ -218,7 +218,6 @@ function getBreachDetail(args) {
     breachDetail.delayedReporting = {
       headline: LocaleUtils.fluentFormat(locales, "delayed-reporting-headline"),
       copy: LocaleUtils.fluentFormat(locales, "delayed-reporting-copy"),
-      href:  "delayedReporting",
     };
   }
   return args.fn(breachDetail);

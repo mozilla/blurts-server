@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -365,6 +366,7 @@ take-control = Ta tillbaka kontrollen över dina personuppgifter.
 cant-stop-hackers = Du kan inte stoppa hackare från att hacka. Men du kan undvika dåliga vanor som gör deras jobb enkelt.
 read-more-tips = Läs fler säkerhetstips
 how-hackers-work = Förstå hur hackare arbetar
+monitor-your-online-accounts = Registrera dig för övervakning av intrång med { -brand-fxa }.
 stay-alert = Var uppmärksam på nya intrång
 if-your-info = Om din information kommer upp i ett nytt dataintrång, skickar vi dig en varning.
 search-all-emails = Sök igenom alla dina e-postadresser för intrång och få varningar om nya hot.
@@ -373,14 +375,66 @@ take-action = Vidta åtgärder för att skydda dina konton
 keep-your-data-safe = Ta reda på vad du behöver göra för att hålla din data säker från cyberkriminella.
 website-breach = Webbplatsintrång
 sensitive-breach = Känsligt webbplatsintrång
+data-aggregator-breach = Datainsamlingsintrång
+unverified-breach = Overifierat intrång
+spam-list-breach = Spamlistintrång
 website-breach-plural = Webbplatsintrång
 sensitive-breach-plural = Känsliga intrång
+data-aggregator-breach-plural = Datainsamlingsintrång
+unverified-breach-plural = Overifierade intrång
+spam-list-breach-plural = Spamlistintrång
 what-data = Vilka data har äventyrats:
+sensitive-sites = Hur behandlar { -product-name } känsliga webbplatser?
+sensitive-sites-copy =
+    { -product-name } avslöjar bara konton som är kopplade till dessa
+    typer av intrång efter att en e-postadress har verifierats. Det betyder att du är
+    den enda person som kan se om din information förkom i detta intrång (om inte någon
+    annan har tillgång till ditt e-postkonto).
 delayed-reporting-headline = Varför tog det så lång tid att anmäla detta intrång?
+delayed-reporting-copy =
+    Det kan ibland ta några månader eller år för uppgifter
+    i ett dataintrång att synas på dark web. Intrång läggs till i vår databas så
+    snart som de har upptäckts och verifierats.
 about-fxm-headline = Om { -product-name }
+about-fxm-blurb =
+    { -product-name } varnar om dina onlinekonton var inblandade i ett
+    dataintrång. Ta reda på om du har förekommit i ett dataintrång, få varningar om nya intrång,
+    och vidta åtgärder för att skydda dina onlinekonton. { -product-name } tillhandahålls
+    av { -brand-Mozilla }.
+fxm-warns-you =
+    { -product-name } varnar dig om din e-postadress har blivit utsatt
+    i ett dataintrång på nätet. Se om din information har blivit utsatt, lär dig hur
+    du bättre kan skydda dina onlinekonton och bli varnad om din e-postadress
+    visas i ett nytt intrång.
 # How Firefox Monitor works
 how-fxm-works = Hur { -product-name } fungerar
 how-fxm-1-headline = Gör en grundläggande sökning
+how-fxm-1-blurb =
+    Sök efter din e-postadress i offentliga dataintrång som
+    går tillbaka till 2007. Denna grundläggande sökning kommer att nudda vid de flesta dataintrång, men inte
+    sådana som innehåller känslig personlig information.
+how-fxm-2-headline = Registrera dig för intrångsövervakning
+how-fxm-2-blurb =
+    Skapa ett { -brand-fxa } för att övervaka din e-postadress för pågående intrång.
+    När du har verifierat din e-postadress får du också en fullständig rapport om tidigare intrång,
+    inklusive känsliga intrång.
+how-fxm-3-headline = Få meddelanden i din webbläsare
+how-fxm-3-blurb =
+    Om du använder { -brand-name } får du ett meddelande om du besöker en
+    webbplats som har haft intrång. Ta reda på om du är en del av detta intrång
+    och vad du kan göra åt det.
+wtd-after-website = Vad man ska göra efter ett webbplatsintrång
+wtd-after-data-agg = Vad ska man göra efter ett datainsamlingsintrång
+what-is-data-agg = Vad är en datainsamlare?
+what-is-data-agg-blurb =
+    Datainsamlare, eller datamäklare, samlar information från offentliga
+    register och köper det från andra företag. De sammanställer dessa data för att sälja den till företag
+    för marknadsföring. Offren för dessa intrång är mindre benägna att uppleva ekonomiska
+    bedrägerier, men hackare skulle kunna använda dessa uppgifter för att efterlikna eller profilera dem.
+protect-your-privacy = Skydda ditt privatliv på Internet
+no-pw-to-change = Till skillnad från en webbplatsintrång finns det inget lösenord att ändra.
+avoid-personal-info = Undvik att använda personlig information i lösenord
+avoid-personal-info-blurb = Det är enkelt att hitta födelsedagar, adresser och familjemedlemmar på nätet. Unvik dessa ord i dina lösenord.
 
 ## What to do after data breach tips
 
@@ -392,18 +446,91 @@ create-strong-passwords = Så här skapar du starka lösenord
 stop-reusing-pw = Sluta återanvända samma lösenord
 create-unique-pw = Skapa unika lösenord och spara dem någonstans säkert, som en lösenordshanterare.
 five-myths = 5 myter om lösenordshanterare
+create-a-fxa = Skapa ett { -brand-fxa } för din fullständiga rapport om intrång och för att få varningar.
+feat-security-tips = Säkerhetstips för att skydda dina konton
+feat-sensitive = Avancerad sökning i känsliga intrång
+feat-enroll-multiple = Anmäl flera e-postadresser vid intrångsövervakning
+sign-up-for-fxa = Registrera dig för ett { -brand-fxa }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Förekommer i { $breachCount } känt intrång.
+       *[other] Förekommer i { $breachCount } kända intrång.
+    }
+see-if-breached = Se ifall du har förkommit i ett dataintrång på nätet.
+check-for-breaches = Sök efter intrång
+find-out-what-hackers-know = Ta reda på vad hackare redan vet om dig. Lär dig hur du kan vara ett steg före dem.
+search-for-your-email = Sök efter din e-postadress i offentliga dataintrång som går tillbaka till 2007.
+back-to-top = Tillbaka till toppen
+comm-opt-0 = Mejla mig om en av mina e-postadresser nedan förekommer i ett dataintrång.
+comm-opt-1 = Skicka alla intrångsvarningar till { $primaryEmail }.
 stop-monitoring-this = Sluta övervaka denna e-postadress.
 resend-verification = Skicka e-postbekräftelse igen
 add-new-email = Lägg till en ny e-postadress
 send-verification = Skicka verifieringslänk
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Global kommunikation
 breach-summary = Intrångssammanfattning
 show-breaches-for-this-email = Visa alla intrång för denna e-post.
 link-change-primary = Ändra primär e-postadress
 remove-fxm = Ta bort { -product-name }
+remove-fxm-blurb =
+    Stäng av  { -product-name }-varningar. Ditt { -brand-fxa } kommer att förbli aktiv, och du kan få
+    annan kontorelaterad kommunikation.
 manage-email-addresses = Hantera e-postadresser
+latest-breach-link = Se om du förekom i detta intrång
 welcome-back = Välkommen tillbaka, { $userName }!
 welcome-user = Välkommen, { $userName }!
+breach-alert-subject = { -product-name } hittade din e-postadress i ett nytt dataintrång.
+your-info-was-discovered-headline = Dina uppgifter upptäcktes i ett nytt dataintrång.
+your-info-was-discovered-blurb =
+    Du är registrerad för att ta emot { -product-name }-varningar
+    när din e-post förekommer i ett dataintrång. Här är vad vi vet om detta intrång.
+what-to-do-after-breach = Vad ska man göra efter ett dataintrång
+ba-next-step-1 = Ändra ditt lösenord till ett starkt, unikt lösenord.
+ba-next-step-blurb-1 =
+    Ett starkt lösenord använder en kombination av stora och små bokstäver,
+    specialtecken och siffror. Det innehåller inte personlig information som
+    din adress, födelsedag eller familjenamn.
+ba-next-step-2 = Sluta använda det exponerade lösenordet helt.
+ba-next-step-blurb-2 =
+    Cyberkriminella kan hitta ditt lösenord på dark web och använda den
+    för att logga in på dina andra konton. Det bästa sättet att skydda dina konton
+    är att använda unika lösenord för var och ett.
+ba-next-step-3 = Få hjälp med att skapa bättre lösenord och hålla dem säkra.
+ba-next-step-blurb-3 =
+    Använd en lösenordshanterare för att skapa starka, unika lösenord. Lösenordshanterare lagrar säkert alla dina
+    inloggningar så att du kan komma åt dem på alla dina enheter.
+faq1 = Jag känner inte igen detta företag eller webbplats. Varför finns jag med i detta intrång?
+faq2 = Varför tog det så lång tid att meddela mig om detta intrång?
+faq3 = Hur vet jag att detta är ett legitimt e-postmeddelande från { -product-name }?
+new-breaches-found =
+    { $breachCount ->
+        [one] { $breachCount } NYTT INTRÅNG HITTADES
+       *[other] { $breachCount } NYA INTRÅNG HITTADES
+    }
+sign-up-headline-1 = Få pågående varningar med { -brand-fxa }.
+account-not-required = { -brand-name } webbläsare krävs inte för ett { -brand-fxa }. Du kan få information om { -brand-Mozilla }-tjänster.
 get-alerted = Bli varnad om nya intrång.
+was-your-info-exposed = Var dina uppgifter utsatt för dataintrång { $breachName }?
+find-out-if = Ta reda på om dina uppgifter har exponerats i detta intrång.
+fb-not-comp = Denna e-postadress förekom inte i intrång { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Men det förekommer i { $breachCount } annat intrång.
+       *[other] Men det förekommer i  { $breachCount } andra intrång.
+    }
+fb-comp-only = Denna e-postadress förekom i intrång{ $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Denna e-postadress förekom i { $breachCount } känt dataintrång, inklusive { $breachName }.
+       *[other] Denna e-postadress förekom i { $breachCount } kända dataintrång, inklusive { $breachName }.
+    }
 no-other-breaches-found = Inga andra intrång hittades från en grundläggande sökning.
 no-results-blurb = Tyvärr, intrånget finns inte i vår databas.
 all-breaches-headline = Alla intrång  i { -product-name }
@@ -414,8 +541,93 @@ all-breaches = Alla intrång
 
 ## Updated error messages
 
+error-bot-headline = Sökningar tillfälligt avstängda
+error-bot-blurb =
+    Vi misstänker att du kan vara en bot eftersom du sökte
+    flera e-postadresser inom en kort tidsperiod. För tillfället är du blockerad
+    från nya sökningar. Du kan försöka igen senare.
+error-csrf-headline = Sessionen avbröts
+error-csrf-blurb = Välj webbläsarens tillbaka-knapp, ladda om sidan och försök igen.
+error-invalid-unsub = Hur man avregistrerar från { -product-name }-varningar
+error-invalid-unsub-blurb =
+    Du måste avregistrera dig från en av
+    e-postmeddelanden { -product-name } skickade dig. Kontrollera din inkorg för meddelanden från
+    { -brand-team-email }. Välj avregistreringslänken längst ner i e-postmeddelandet.
 login-link-pre = Har du ett konto?
 login-link = Logga in
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] E-postadress som övervakas
+       *[other] E-postadresser som övervakas
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] Dataintrång har avslöjat dina uppgifter
+       *[other] Dataintrång har avslöjat dina uppgifter
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Lösenord exponerades i alla intrång
+       *[other] Lösenord exponerades i alla intrång
+    }
+# Button
+see-additional-breaches = Se ytterligare intrång
 # A button on the All Breaches page that restores all of the breaches
 # back to the page if the user has filtered some of them out.
 see-all-breaches = Se alla intrång
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Denna e-postadress förekom i 1 känt dataintrång.
+       *[other] Denna e-postadress förekom i { $breachCount } kända dataintrång.
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Resultat för: { $userEmail }
+other-monitored-emails = Andra övervakade e-postadresser
+email-verification-required = E-postbekräftelse krävs
+fxa-primary-email = { -brand-fxa } E-post - Primär
+what-is-a-website-breach = Vad är ett webbplatsintrång?
+website-breach-blurb = Ett intrång mot webbplatsen händer när cyberkriminella stjäl, kopierar eller avslöjar personuppgifter från onlinekonton. Det är oftast ett resultat av att hackare hittar en svag punkt i webbplatsens säkerhet. Intrånget kan också hända när kontouppgifter läckas av misstag.
+security-tips-headline = Säkerhetstips för att skydda dig från hackare
+steps-to-protect = Åtgärder för att skydda din onlineidentitet
+take-further-steps = Ta ytterligare steg för att skydda din identitet
+alert-about-new-breaches = Varna mig om nya intrång
+see-if-youve-been-part = Se om du har varit en del av ett dataintrång på nätet.
+get-ongoing-breach-monitoring = Få kontinuerlig intrångsövervakning för flera e-postadresser.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Ta reda på
+new-unsub-error = Du måste avbryta prenumerationen från ett av de e-postmeddelanden som { -product-name } skickade.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Men det förekom i { $breachCount } annat känt intrång.
+       *[other] Men det förekom i { $breachCount } andra kända intrång.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Ytterligare information, inklusive:
+# Title
+email-addresses-title = E-postadresser
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = Den { $breachDate }, hade { $breachTitle } ett intrång. När intrånget upptäcktes och verifierades lades det till vår databas den { $addedDate }.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = { -product-short-name } Inställningar
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Inloggad som: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Filtrera efter kategori:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Meny

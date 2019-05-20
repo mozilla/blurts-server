@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -344,7 +345,7 @@ how-hackers-work = Verstehe, wie Hacker vorgehen
 monitor-your-online-accounts = Melde dich mit einem { -brand-fxa } an, um Datenschutzverletzungen überprüfen zu lassen
 stay-alert = Lass dich bei neuen Datenlecks warnen
 if-your-info = Sollten deine Daten in einem neuen Datenleck auftauchen, senden wir dir eine Warnmeldung.
-search-all-emails = Überprüfe alle deine E-Mails-Adressen auf Datenschutzverletzungen und lass dich bei neuen Bedrohungen warnen.
+search-all-emails = Überprüfe alle deine E-Mail-Adressen auf Datenschutzverletzungen und lass dich bei neuen Bedrohungen warnen.
 monitor-several-emails = Überprüfe mehrere E-Mail-Adressen
 take-action = Schütze aktiv deine Accounts
 keep-your-data-safe = Finde heraus, was du tun solltest, um deine Daten vor Cyber-Kriminellen zu sichern.
@@ -365,10 +366,10 @@ delayed-reporting-headline = Warum hat es so lange gedauert, bis dieses Leck gem
 delayed-reporting-copy = Es kann manchmal Monate oder Jahre dauern bis offengelegte Daten aus einem Datenleck im Dark Web auftauchen. Lecks werden, sobald sie entdeckt und verifiziert wurden, zu unserer Datenbank hinzugefügt.
 about-fxm-headline = Über { -product-name }
 about-fxm-blurb = { -product-name } warnt dich, wenn deine Online-Konten von einem Datenleck betroffen sind. Finde heraus, ob du Teil eines Datenleaks geworden bist, lass dich bei neuen Leaks warnen und unternimm die wichtigsten Schritte, um deine Online-Konten zu schützen. { -product-name } wird von { -brand-Mozilla } zur Verfügung gestellt.
-fxm-warns-you = { -product-name } warnt dich, wenn deine E-Mail-Adresse bei einem Datenleck offengelegt wurde. Finde heraus, ob Informationen von dir geleakt wurden, lerne wie du deine Online-Konten besser schützen kannst und lass dich warnen, sobald deine E-Mail-Adresse in einem neuen Datenleck auftaucht.
+fxm-warns-you = { -product-name } warnt dich, wenn deine E-Mail-Adresse bei einem Datenleck offengelegt wurde. Finde heraus, ob Informationen von dir geleakt wurden, lerne, wie du deine Online-Konten besser schützen kannst und lass dich warnen, sobald deine E-Mail-Adresse in einem neuen Datenleck auftaucht.
 # How Firefox Monitor works
 how-fxm-works = So funktioniert { -product-name }
-how-fxm-1-headline = Führe eine einfach Suche durch
+how-fxm-1-headline = Führe eine einfache Suche durch
 how-fxm-1-blurb = Suche in öffentlich gewordenen Datenlecks bis 2007 nach deiner E-Mail-Adresse. Hierbei werden die meisten Datenlecks angezeigt, allerdings nicht solche, die sensible persönliche Informationen enthalten.
 how-fxm-2-headline = Melde dich für die Überprüfung von Datenlecks an
 how-fxm-2-blurb = Erstelle ein { -brand-fxa }, um deine E-Mail-Adresse auf weitere Leaks überprüfen zu lassen.
@@ -408,7 +409,7 @@ appears-in-x-breaches =
 see-if-breached = Überprüfe, ob du von einem Datenleck betroffen bist.
 check-for-breaches = Auf Datenlecks überprüfen
 find-out-what-hackers-know = Finde heraus, was Hacker bereits über dich wissen und erfahre, wie du ihnen in Zukunft einen Schritt voraus sein kannst.
-search-for-your-email = Suche in bekannten gewordenen Datenlecks seit 2007 nach deiner E-Mail-Adresse.
+search-for-your-email = Suche in bekannt gewordenen Datenlecks seit 2007 nach deiner E-Mail-Adresse.
 back-to-top = Zurück zum Anfang
 comm-opt-0 = Sende mir eine E-Mail, sobald eine der folgenden E-Mail-Adressen in einem Datenleck auftaucht.
 comm-opt-1 = Sende alle Warnmeldungen an { $primaryEmail }.
@@ -522,7 +523,7 @@ scan-results-known-breaches =
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Ergebnisse für: { $userEmail }
-other-monitored-emails = Weitere überprüfte E-Mails-Adressen
+other-monitored-emails = Weitere überprüfte E-Mail-Adressen
 email-verification-required = E-Mail-Verifizierung erforderlich
 fxa-primary-email = { -brand-fxa } E-Mail-Adresse - Primär
 what-is-a-website-breach = Was ist eine Website-Datenleck?
@@ -531,3 +532,18 @@ security-tips-headline = Sicherheitstipps, die dich vor Hackern schützen
 steps-to-protect = Das kannst du tun, um deine Online-Identität zu schützen
 take-further-steps = Weitere Schritte, um deine Identität zu schützen
 alert-about-new-breaches = Ich möchte bei neuen Datenlecks gewarnt werden
+see-if-youve-been-part = Überprüfe, ob du schon einmal von einem Datenleck betroffen warst.
+get-ongoing-breach-monitoring = Lass mehrere E-Mail-Adressen kontinuierlich überprüfen.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Jetzt überprüfen
+new-unsub-error = Melde dich über eine der E-Mails von { -product-name } ab.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Sie erschien jedoch in { $breachCount } anderen Datenleck.
+       *[other] Sie erschien jedoch in { $breachCount } anderen Datenlecks.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Zusätzliche Information, einschließlich:
+# Title
+email-addresses-title = E-Mail-Adressen

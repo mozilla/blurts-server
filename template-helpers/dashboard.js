@@ -31,10 +31,11 @@ function getBreachesForEachEmail(args) {
 
 
 function getUserPreferences(args) {
-
   const unverifiedEmails = args.data.root.unverifiedEmails;
   const verifiedEmails = args.data.root.verifiedEmails;
   const primaryEmail = verifiedEmails.shift();
+  const sessionUser = args.data.root.req.session.user;
+  const communicationOption = (sessionUser.all_emails_to_primary) ? 1 : 0;
 
   const locales = args.data.root.req.supportedLocales;
   args.data.root.preferences = true;
@@ -62,11 +63,13 @@ function getUserPreferences(args) {
       optionDescription: "Send breach alerts to the affected email address.",
       labelString: LocaleUtils.fluentFormat(locales, "comm-opt-0", {primaryEmail: `<span class="bold">${primaryEmail.email}</span>`}),
       optionId: "0",
+      optionChecked: (communicationOption === 0) ? "checked" : "",
     },
     {
       optionDescription: "Send all breach alerts to subscriber's primary email address.",
       labelString: LocaleUtils.fluentFormat(locales, "comm-opt-1", {primaryEmail: `<span class="bold">${primaryEmail.email}</span>`}),
       optionId: "1",
+      optionChecked: (communicationOption === 1) ? "checked" : "",
     },
   ];
 

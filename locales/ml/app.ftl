@@ -4,6 +4,7 @@
 # - Transliterated.
 # - Translated.
 -product-name = ഫയർഫോക്സ് മോണിറ്റർ
+-product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -brand-name = ഫയർഫോക്സ്
 -brand-Quantum = ഫയർഫോക്സ് ക്വാണ്ടം
 -brand-Mozilla = മോസില്ല
@@ -149,3 +150,9 @@ sign-up-for-fxa-alerts = { -product-name } അറിയിപ്പുകൾക�
 get-your-report-and-sign-up = റിപ്പോർട് എടുക്കുകയും അറിയിപ്പുകൾക്കായി സൈൻ അപ് ചെയ്യുകയും ചെയ്യുക.
 # Link title
 frequently-asked-questions = പതിവു ചോദ്യങ്ങള്‍
+
+## What to do after data breach tips
+
+
+## Updated error messages
+

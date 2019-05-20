@@ -18,7 +18,7 @@
       <div class="col-8 overview">
         {{> breach-detail-content-group overview}}
         {{#if delayedReporting }}
-          <a class="text-link" href="#{{delayedReporting.href}}">
+          <a class="text-link" href="#delayed-reporting">
             {{delayedReporting.headline}}
           </a>
         {{/if}}
@@ -53,7 +53,7 @@
         </div>
       {{/if}}
       {{#if delayedReporting}}
-        <div class="col-8 breach-details">
+        <div id="delayed-reporting" class="col-8 breach-details">
           {{> breach-detail-content-group delayedReporting}}
         </div>
       {{/if}}

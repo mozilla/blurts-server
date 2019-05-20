@@ -12,6 +12,9 @@ avatars = 头像
 bank-account-numbers = 银行账号
 beauty-ratings = 颜值
 biometric-data = 生物特征数据
+# This string is the shortened version of "Biographies", and 
+# refers to biographical data about a user.
+bios = 自传
 browser-user-agent-details = 浏览器 User Agent 详细信息
 browsing-histories = 浏览历史记录
 buying-preferences = 购物偏好
@@ -37,6 +40,7 @@ education-levels = 教育水平
 email-addresses = 电子邮件地址
 email-messages = 电子邮件消息
 employers = 雇主
+employment-statuses = 就业状况
 ethnicities = 民族
 family-members-names = 家庭成员姓名
 family-plans = 家庭计划
@@ -101,6 +105,7 @@ smoking-habits = 吸烟习惯
 sms-messages = 短信内容
 social-connections = 社交关系
 social-media-profiles = 社交媒体资料
+social-security-numbers = 社会安全号码
 spoken-languages = 会讲的语言
 support-tickets = 技术支持请求
 survey-results = 问卷结果

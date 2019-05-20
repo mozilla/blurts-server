@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -28,10 +29,10 @@ error-hibp-load-breaches = Nu s-au putut încărca breșele.
 hibp-notify-email-subject = Alertă { -product-name }: Contul tău a fost implicat într-o breșă.
 home-title = { -product-name }
 home-not-found = Pagină negăsită.
-oauth-invalid-session = Sesiune nevalidă
+oauth-invalid-session = Sesiune invalidă
 oauth-confirmed-title = { -product-name } : Abonat
 scan-title = { -product-name } : Rezultatele scanării
-user-add-invalid-email = E-mail nevalid
+user-add-invalid-email = E-mail invalid
 user-add-email-verify-subject = Verifică-ți abonamentul la { -product-name }.
 user-add-title = { -product-name } : Confirmă adresa de e-mail
 error-headline = Eroare
@@ -309,3 +310,253 @@ create-free-account = Creează un { -brand-fxa } gratuit pentru raportul complet
 get-your-report-and-sign-up = Obține raportul tău și înregistrează-te pentru alerte.
 # Link title
 frequently-asked-questions = Întrebări adresate frecvent
+about-firefox-monitor = Despre { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Preferințe
+# Link title.
+home = Acasă
+# Link title
+breaches = Breșe
+# Link title
+security-tips = Ponturi pentru securitate
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Deschide navigarea { -brand-fxa }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = ULTIMA BREȘĂ ADĂUGATĂ
+breach-added = Breșă raportată:
+breach-discovered = Breșă descoperită:
+# Link title
+more-about-this-breach = Mai multe despre această breșă
+take-control = Reia controlul asupra datelor tale personale.
+cant-stop-hackers = Nu poți opri hackerii să facă ceea ce fac, dar poți evita obiceiurile proaste care le ușurează munca.
+read-more-tips = Citește mai multe ponturi pentru securitate
+how-hackers-work = Înțelege modul de operare al hackerilor
+monitor-your-online-accounts = Înscrie-te pentru monitorizarea breșelor cu un { -brand-fxa }.
+stay-alert = Fii la curent cu ultimele breșe
+if-your-info = Dacă informațiile tale apar într-o nouă breșă de date, îți vom trimite o alertă.
+search-all-emails = Caută toate adresele tale de e-mail pentru breșe și primește alerte despre noi amenințări.
+monitor-several-emails = Monitorizează mai multe adrese de e-mail
+take-action = Ia măsuri pentru a-ți proteja conturile
+keep-your-data-safe = Află ce trebuie să faci ca să îți păstrezi datele în siguranță împotriva infractorilor cibernetici.
+website-breach = Breșă a site-ului web
+sensitive-breach = Breșă de date sensibile a site-ului
+data-aggregator-breach = Breșă a agregatoarelor de date
+unverified-breach = Breșă neverificată
+spam-list-breach = Breșă a listei de mesaje nedorite
+website-breach-plural = Breșe de site-uri web
+sensitive-breach-plural = Breșe de date sensibile
+data-aggregator-breach-plural = Breșe ale agregatoarelor de date
+unverified-breach-plural = Breșe neverificate
+spam-list-breach-plural = Breșe ale listelor de mesaje nedorite
+what-data = Ce date au fost compromise:
+sensitive-sites = Cum tratează { -product-name } site-urile cu date sensibile?
+sensitive-sites-copy = { -product-name } divulgă conturile asociate cu aceste tipuri de breșe numai după ce a fost verificată o adresă de e-mail. Înseamnă că ești singura persoană care poate vedea dacă informațiile tale au fost implicate în această breșă (dacă nu cumva și altcineva are acces la contul tău de e-mail).
+delayed-reporting-headline = De ce a durat atât de mult raportarea acestei breșe?
+delayed-reporting-copy = Poate dura câteva luni sau câțiva ani pentru ca datele de autentificare expuse într-o breșă de date să apară în dark web. Breșele vin adăugate în baza noastră de date imediat ce au fost descoperite și verificate.
+about-fxm-headline = Despre { -product-name }
+about-fxm-blurb = { -product-name } te avertizează în cazul în care conturile tale online au fost implicate într-o breșă de date. Află dacă  ai fost implicat(ă) într-o breșă de date, primește alerte despre breșe noi de date și ia măsuri pentru protejarea conturilor tale online. { -product-name } este furnizat de { -brand-Mozilla }.
+fxm-warns-you = { -product-name } te avertizează dacă adresa ta de e-mail a fost expusă într-o breșă de date online. Vezi dacă ți-au fost expuse informațiile, afli cum să-ți protejezi mai bine conturile online și primești alerte în cazul în care adresa ta de e-mail apare în breșe noi de date.
+# How Firefox Monitor works
+how-fxm-works = Cum funcționează { -product-name }
+how-fxm-1-headline = Efectuează o căutare de bază
+how-fxm-1-blurb = Caută-ți adresa de e-mail în breșele publice de date încă din anul 2007. Această căutare de bază va accesa majoritatea breșelor de date, dar nu și pe cele care conține informații personale sensibile.
+how-fxm-2-headline = Înregistrează-te pentru monitorizarea breșelor
+how-fxm-2-blurb = Creează un { -brand-fxa } ca să îți monitorizezi adresa de e-mail pentru breșe curente. Odată ce ți-ai verificat adresa de e-mail, vei primi și un raport complet cu breșele anterioare, inclusiv breșe de date sensibile.
+how-fxm-3-headline = Primește notificări în browser
+how-fxm-3-blurb = Dacă folosești { -brand-name }, vei primi o notificare când intri pe un site care a fost spart. Afli imediat dacă ai fost implicat(ă) în breșa respectivă și ce măsuri poți lua.
+wtd-after-website = Ce să faci după o breșă pe un site web
+wtd-after-data-agg = Ce să faci după o breșă a unui agregator de date
+what-is-data-agg = Ce sunt agregatoarele de date?
+what-is-data-agg-blurb = Agregatoarele de date, cunoscute și sub denumirea de brokeri de date, colectează informații din înregistrări publice și cumpără date de la alte companii. Ele compilează aceste date pentru a le vinde altor companii în scopuri de marketing. Victimele acestor breșe prezintă o probabilitate mai mică de fraude financiare, dar hackerii pot folosi aceste date pentru a le uzurpa identitatea sau pentru profilare.
+protect-your-privacy = Protejează-ți confidențialitatea online
+no-pw-to-change = Spre deosebire  de breșele site-urilor web, nu există nicio parolă de schimbat.
+avoid-personal-info = Evită folosirea de informații personale în parole
+avoid-personal-info-blurb = Datele de naștere, adresele și numele membrilor familiei sunt ușor de găsit online. Nu introdu asemenea cuvinte în parole.
+
+## What to do after data breach tips
+
+change-pw = Schimbă-ți parola
+even-for-old = Actualizarea parolelor este importantă, chiar și pentru conturile vechi.
+make-new-pw-unique = Parola nouă trebuie să fie diferită și unică
+strength-of-your-pw = Puterea parolelor are un impact direct asupra securității tale online.
+create-strong-passwords = Cum să creezi parole puternice
+stop-reusing-pw = Nu refolosi parolele
+create-unique-pw = Creează parole unice și salvează-le într-un loc sigur, cum ar fi un manager de parole.
+five-myths = 5 mituri despre managerii de parole
+create-a-fxa = Creează { -brand-fxa } pentru un raport complet despre breșe și ca să primești alerte.
+feat-security-tips = Ponturi de securitate pentru protejarea conturilor
+feat-sensitive = Căutare avansată în breșe de date sensibile
+feat-enroll-multiple = Înregistrează mai multe adrese de e-mail pentru monitorizarea breșelor
+sign-up-for-fxa = Înregistrează-te pentru un { -brand-fxa }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Apare în { $breachCount } breșă cunoscută
+        [few] Apare în { $breachCount } breșe cunoscute
+       *[other] Apare în { $breachCount } de breșe cunoscute
+    }
+see-if-breached = Vezi dacă apari într-o breșă de date online.
+check-for-breaches = Verifică pentru breșe
+find-out-what-hackers-know = Află ce știu hackerii despre tine. Află cum să fii cu un pas înaintea lor.
+search-for-your-email = Caută-ți adresa de e-mail în breșe de date publice datând încă din 2007.
+back-to-top = Înapoi sus
+comm-opt-0 = Trimite-mi un mesaj pe e-mail dacă adresele mele de e-mail de mai jos apar într-o breșă de date.
+comm-opt-1 = Trimite toate alertele de breșe la { $primaryEmail }.
+stop-monitoring-this = Nu mai monitoriza acest e-mail.
+resend-verification = Retrimite  mesajul e-mail de verificare
+add-new-email = Adaugă o adresă nouă de e-mail
+send-verification = Trimite linkul de verificare
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Comunicații globale
+breach-summary = Rezumat breșă
+show-breaches-for-this-email = Arată toate breșele pentru acest e-mail.
+link-change-primary = Schimbă adresa de e-mail primară
+remove-fxm = Elimină { -product-name }
+remove-fxm-blurb = Dezactivează alertele { -product-name }. { -brand-fxa } tău va rămâne activ și poți primi alte comunicări legate de cont.
+manage-email-addresses = Gestionează adresele de e-mail
+latest-breach-link = Vezi dacă ai fost implicat(ă) în această breșă
+welcome-back = Bine ai revenit, { $userName }!
+welcome-user = Bine ai venit, { $userName }!
+breach-alert-subject = { -product-name } ți-a găsit adresa de e-mail într-o breșă nouă de date.
+your-info-was-discovered-headline = Informațiile tale au fost găsite într-o breșă nouă de date.
+your-info-was-discovered-blurb = Te-ai înscris ca să primești alerte { -product-name } în cazul în care adresa ta de e-mail apare într-o breșă de date. Iată ce știm despre această breșă.
+what-to-do-after-breach = Ce să faci după o breșă de date
+ba-next-step-1 = Schimbă parola cu una puternică și unică.
+ba-next-step-blurb-1 = Parolele puternice folosesc o combinație de litere mari și  mici, caractere speciale și cifre. Nu conțin informații personale, cum ar fi date de naștere, adrese sau nume ale membrilor de familie.
+ba-next-step-2 = Nu mai folosi deloc parola expusă.
+ba-next-step-blurb-2 = Infractorii cibernetici îți pot găsi parola pe dark web și o pot folosi pentru a intra în celelalte conturi pe care le deții. Cea mai bună cale de a-ți proteja conturile este să folosești parole unice pentru fiecare în parte.
+ba-next-step-3 = Obține ajutor pentru a crea parole mai bune și pentru a le păstra în siguranță.
+ba-next-step-blurb-3 = Folosește un manager de parole pentru a crea parole puternice și unice. Managerii de parole stochează în siguranță toate sesiunile deschise și le poți accesa pe toate dispozitivele tale.
+faq1 = Nu recunosc această companie sau site web. De ce apar în această breșă?
+faq2 = De ce a durat atât de mult să fiu informat(ă) despre această breșă?
+faq3 = Cum știu că acesta este un mesaj legitim de e-mail de la { -product-name }?
+new-breaches-found =
+    { $breachCount ->
+        [one] BREȘĂ NOUĂ DESCOPERITĂ
+        [few] BREȘE NOI DESCOPERITE
+       *[other] DE BREȘE NOI DESCOPERITE
+    }
+sign-up-headline-1 = Primește alerte curente cu un { -brand-fxa }.
+account-not-required = Browserul { -brand-name } nu este necesar pentru un { -brand-fxa }. Poți primi informații despre serviciile { -brand-Mozilla }.
+get-alerted = Primește alerte despre breșe noi.
+was-your-info-exposed = Ți-au fost expuse informațiile în breșa de date { $breachName }?
+find-out-if = Află dacă datele tale au fost expuse în această breșă.
+fb-not-comp = Această adresă de e-mail nu apare în breșa { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Însă apare în { $breachCount } altă breșă.
+        [few] Însă apare în { $breachCount } alte breșe.
+       *[other] Însă apare în { $breachCount } de alte breșe.
+    }
+fb-comp-only = Această adresă de e-mail a apărut în breșa { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Această adresă de e-mail a apărut în { $breachCount } breșă cunoscută de date, inclusiv { $breachName }.
+        [few] Această adresă de e-mail a apărut în { $breachCount } breșe cunoscute de date, inclusiv { $breachName }.
+       *[other] Această adresă de e-mail a apărut în { $breachCount } de breșe cunoscute de date, inclusiv { $breachName }.
+    }
+no-other-breaches-found = Nicio altă breșă identificată la căutarea de bază.
+no-results-blurb = Ne pare rău, dar breșa aceea nu este în baza noastră de date.
+all-breaches-headline = Toate breșele din { -product-name }
+search-breaches = Caută breșe
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Afișate:
+all-breaches = Toate breșele
+
+## Updated error messages
+
+error-bot-headline = Căutări suspendate temporar
+error-bot-blurb = Suntem îngrijorați că ai putea fi robot pentru că ai căutat mai multe adrese de e-mail într-un timp foarte scurt. Deocamdată, ai accesul blocat la căutări noi. Poți încerca mai târziu.
+error-csrf-headline = Sesiune expirată
+error-csrf-blurb = Selectează butonul Înapoi din browser, reîncarcă pagina și încearcă din nou.
+error-invalid-unsub = Cum să te dezabonezi de la alertele { -product-name }
+error-invalid-unsub-blurb = Va trebui să te dezabonezi folosind unul dintre mesajele de e-mail trimise de { -product-name }. Verifică-ți căsuța poștală pentru mesaje de la { -brand-team-email }. Selectează linkul de dezabonare din partea de jos a mesajului.
+login-link-pre = Ai un cont?
+login-link = Autentifică-te
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] adresă de e-mail monitorizată
+        [few] adrese de e-mail monitorizate
+       *[other] de adrese de e-mail monitorizate
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] breșă de date ți-a expus informațiile
+        [few] breșe de date ți-au expus informațiile
+       *[other] de breșe de date ți-au expus informațiile
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] parolă expusă în toate breșele
+        [few] parole expuse în toate breșele
+       *[other] de parole expuse în toate breșele
+    }
+# Button
+see-additional-breaches = Afișează și alte breșe
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Afișează toate breșele
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Această adresă de e-mail a apărut în 1 breșă cunoscută de date.
+        [few] Această adresă de e-mail a apărut în { $breachCount } breșe cunoscute.
+       *[other] Această adresă de e-mail a apărut în { $breachCount } de breșe cunoscute.
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Rezultate pentru: { $userEmail }
+other-monitored-emails = Alte adrese de e-mail monitorizate
+email-verification-required = Este necesară verificarea adresei de e-mail
+fxa-primary-email = Adresă de e-mail { -brand-fxa } - primară
+what-is-a-website-breach = Ce sunt breșele de site-uri web?
+website-breach-blurb = Breșele de site-uri web apar când infractorii cibernetici fură, copiază sau expun date cu caracter personal din conturi online. Apar de obicei ca rezultat al faptului că hackerii au identificat un punct slab în securitatea site-ului.Breșele pot apărea și la „scurgerea” accidentală a informațiilor din conturi.
+security-tips-headline = Ponturi de securitate pentru a te proteja de hackeri
+steps-to-protect = Pași de luat pentru a-ți proteja identitatea online
+take-further-steps = Ia măsuri suplimentare pentru a-ți proteja identitatea
+alert-about-new-breaches = Trimite-mi alerte pentru breșe noi
+see-if-youve-been-part = Vezi dacă ai fost implicat(ă) într-o breșă de date online.
+get-ongoing-breach-monitoring = Obține monitorizare curentă pentru breșe pentru mai multe adrese de e-mail.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Află
+new-unsub-error = Va trebui să te dezabonezi prin intermediul unuia dintre mesajele primite pe e-mail de la { -product-name },
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Însă a apărut în { $breachCount } altă breșă cunoscută.
+        [few] Însă a apărut în { $breachCount } alte breșe cunoscute.
+       *[other] Însă a apărut în { $breachCount } de alte breșe cunoscute.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Informații suplimentare, inclusiv:
+# Title
+email-addresses-title = Adrese de e-mail
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = La { $breachDate }, { $breachTitle } a avut o breșă. Odată ce breșa a fost descoperită și verificată, a fost adăugată în baza noastră de date la { $addedDate }.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = Preferințe { -product-short-name }
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Autentificat ca: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Filtrează pe categorii:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Meniu

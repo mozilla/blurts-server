@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -621,3 +622,32 @@ security-tips-headline = Security tips to protect yourself from hackers
 steps-to-protect = Steps to take to protect your online identity
 take-further-steps = Take further steps to protect your identity
 alert-about-new-breaches = Alert me about new breaches
+see-if-youve-been-part = See if you’ve been part of an online data breach.
+get-ongoing-breach-monitoring = Get ongoing breach monitoring for multiple email addresses.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Find Out
+new-unsub-error = You’ll need to unsubscribe from one of the emails { -product-name } sent.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] However, it did appear in { $breachCount } other known breach.
+       *[other] However, it did appear in { $breachCount } other known breaches.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Additional information, including:
+# Title
+email-addresses-title = Email Addresses
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = On { $breachDate }, { $breachTitle } suffered a breach. Once the breach was discovered and verified it was added to our database on { $addedDate }.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = { -product-short-name } Preferences
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Signed in as: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Filter by Category:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menu

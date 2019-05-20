@@ -64,20 +64,35 @@ async function updateCommunicationOptions(req, res) {
   // 0 = Send breach alerts to the email address found in brew breach.
   // 1 = Send all breach alerts to user's primary email address.
   const allEmailsToPrimary = (Number(req.body.communicationOption) === 1) ? true : false;
-  await DB.setAllEmailsToPrimary(sessionUser, allEmailsToPrimary);
+  const updatedSubscriber = await DB.setAllEmailsToPrimary(sessionUser, allEmailsToPrimary);
+  req.session.user = updatedSubscriber;
 
   return res.json("Comm options updated");
 }
 
-async function add(req, res) {
-  // need to decide how to handle resends
 
-  _requireSessionUser(req);
+function _checkForDuplicateEmail(sessionUser, email) {
+  if (email === sessionUser.primary_email) {
+    throw new FluentError("user-add-duplicate-email");
+  }
+  for (const secondaryEmail of sessionUser.email_addresses) {
+    if (email === secondaryEmail.email) {
+      throw new FluentError("user-add-duplicate-email");
+    }
+  }
+}
+
+
+async function add(req, res) {
+  const sessionUser = _requireSessionUser(req);
   const email = req.body.email;
 
   if (!email || !isemail.validate(email)) {
     throw new FluentError("user-add-invalid-email");
   }
+
+  _checkForDuplicateEmail(sessionUser, email);
+
   const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(
     req.session.user, email
   );
@@ -207,13 +222,7 @@ async function verify(req, res) {
     await _verify(req);
   }
 
-  res.render("subpage", {
-    headline: req.fluentFormat("confirmation-headline"),
-    subhead: req.fluentFormat("confirmation-blurb"),
-    title: req.fluentFormat("user-verify-title"),
-    whichPartial: "subpages/confirm",
-    emailLinks: EmailUtils.getShareByEmail(req),
-  });
+  res.redirect("/user/dashboard");
 }
 
 

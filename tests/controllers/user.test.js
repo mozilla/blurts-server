@@ -177,7 +177,7 @@ test("user verify request with valid token verifies user", async () => {
   // Call code-under-test
   await user.verify(req, resp);
 
-  expect(resp.statusCode).toEqual(200);
+  expect(resp.statusCode).toEqual(302);
   const emailAddress = await DB.getEmailByToken(validToken);
   expect(emailAddress.verified).toBeTruthy();
 });
@@ -220,7 +220,7 @@ test("user verify request for already verified user doesn't send extra email", a
   // Call code-under-test
   await user.verify(mockRequest, resp);
 
-  expect(resp.statusCode).toEqual(200);
+  expect(resp.statusCode).toEqual(302);
   const emailAddress = await DB.getEmailByToken(alreadyVerifiedToken);
   expect(emailAddress.verified).toBeTruthy();
   expect(EmailUtils.sendEmail).not.toHaveBeenCalled();

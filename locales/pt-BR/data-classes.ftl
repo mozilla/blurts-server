@@ -101,6 +101,7 @@ smoking-habits = Hábitos de fumo
 sms-messages = Mensagens de texto
 social-connections = Conexões sociais
 social-media-profiles = Perfis de redes sociais
+social-security-numbers = Números de segurança social
 spoken-languages = Idiomas falados
 support-tickets = Tickets de suporte
 survey-results = Resultados de pesquisas

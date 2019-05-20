@@ -17,7 +17,8 @@
 -brand-fxa =
     { $case ->
        *[nominative] Аккаунт Firefox
-        [genitive] Аккаунтом Firefox
+        [genitive] Аккаунта Firefox
+        [instrumental] Аккаунтом Firefox
     }
 -brand-Chrome = Chrome
 layout-Firefox = { -brand-name }
@@ -232,7 +233,7 @@ sign-out = Выйти
 full-report-headline = Ваш отчёт { -product-name }
 see-full-report = Посмотреть полный отчёт
 # Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Управление { -brand-fxa(case: "genitive") }
+manage-fxa = Управление { -brand-fxa(case: "instrumental") }
 fxa-download-firefox-bar-blurb = Разработан командой, создавшей { -brand-name }. В 2 раза быстрее. Использует на 30% меньше памяти, чем { -brand-Chrome }.
 fxa-download-firefox-bar-link = Загрузить сейчас
 fxa-download-firefox-banner-blurb = Более быстрая загрузка страниц с меньшим расходом памяти.
@@ -366,3 +367,13 @@ create-free-account =
 get-your-report-and-sign-up = Получите ваш отчет и подпишитесь на уведомления.
 # Link title
 frequently-asked-questions = Часто задаваемые вопросы
+about-firefox-monitor = О { -product-name }
+mozilla-dot-org = Mozilla.org
+fxa-account = { -brand-fxa }
+about-fxm-headline = О { -product-name }
+
+## What to do after data breach tips
+
+
+## Updated error messages
+

@@ -12,6 +12,9 @@ avatars = Avatarer
 bank-account-numbers = Bankkontonummer
 beauty-ratings = Skönhetsbetyg
 biometric-data = Biometriska data
+# This string is the shortened version of "Biographies", and 
+# refers to biographical data about a user.
+bios = Personuppgifter
 browser-user-agent-details = Information om webbläsarens användaragent
 browsing-histories = Webbläsarhistorik
 buying-preferences = Köppreferenser
@@ -37,6 +40,7 @@ education-levels = Utbildningsnivåer
 email-addresses = E-postadresser
 email-messages = E-postmeddelanden
 employers = Arbetsgivare
+employment-statuses = Anställningsförhållanden
 ethnicities = Etniciteter
 family-members-names = Familjemedlemmarnas namn
 family-plans = Familjeplaner
@@ -101,6 +105,7 @@ smoking-habits = Rökvanor
 sms-messages = SMS-meddelanden
 social-connections = Sociala förbindelser
 social-media-profiles = Sociala medieprofiler
+social-security-numbers = Personnummer
 spoken-languages = Talade språk
 support-tickets = Support-biljetter
 survey-results = Undersökningsresultat
