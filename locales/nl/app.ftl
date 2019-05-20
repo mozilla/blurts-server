@@ -578,3 +578,36 @@ other-monitored-emails = Andere bewaakte e-mailadressen
 email-verification-required = E-mailverificatie vereist
 fxa-primary-email = { -brand-fxa } E-mailadres – Primair
 what-is-a-website-breach = Wat is een websitedatalek?
+security-tips-headline = Beveiligingstips om uzelf te beschermen tegen hackers
+steps-to-protect = Te nemen stappen om uw online identiteit te beschermen
+take-further-steps = Onderneem verdere stappen om uw identiteit te beschermen
+alert-about-new-breaches = Waarschuw mij over nieuwe datalekken
+see-if-youve-been-part = Kijk of u onderdeel bent van een online datalek.
+get-ongoing-breach-monitoring = Krijg continue monitoring voor meerdere e-mailadressen.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Nu uitproberen
+new-unsub-error = U moet u afmelden vanuit een van de door verzonden { -product-name } e-mailberichten.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Het is echter wel verschenen in { $breachCount } ander bekende schending.
+       *[other] Het is echter wel verschenen in { $breachCount } andere bekende schendingen.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Aanvullende informatie, waaronder:
+# Title
+email-addresses-title = E-mailadressen
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = Op { $breachDate }, was { $breachTitle } slachtoffer van een datalek. Zodra het datalek werd ontdekt en geverifieerd, werd deze op { $addedDate } toegevoegd aan onze database.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = { -product-short-name }-voorkeuren
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Aangemeld als: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Filteren op categorie:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menu
