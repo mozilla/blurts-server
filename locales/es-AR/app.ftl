@@ -339,6 +339,9 @@ unverified-breach-plural = Violaciones no verificadas
 spam-list-breach-plural = Violaciones del listado de correos no deseados
 what-data = Qué datos fueron comprometidos:
 sensitive-sites = ¿Cómo trata { -product-name } a los sitios sensibles?
+sensitive-sites-copy =
+    { -product-name } solo revela las cuentas asociadas con estos
+    tipos de violaciones después de que se verificó una dirección de correo electrónico. Esto significa que sos el único que puede ver si tu información estaba en esta violación (a menos que alguien más tenga acceso a tu cuenta de correo electrónico).
 about-fxm-headline = Acerca de { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Cómo funcionar { -product-name }
