@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -369,7 +370,30 @@ get-your-report-and-sign-up = Получите ваш отчет и подпиш
 frequently-asked-questions = Часто задаваемые вопросы
 about-firefox-monitor = О { -product-name }
 mozilla-dot-org = Mozilla.org
+preferences = Настройки
+# Link title.
+home = Домой
+# Link title
+breaches = Утечки
+# Link title
+security-tips = Советы по безопасности
 fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Открыть { -brand-fxa }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = ПОСЛЕДНЯЯ УТЕЧКА ДОБАВЛЕНА
+breach-added = Об утечке сообщено:
+breach-discovered = Утечка обнаружена:
+# Link title
+more-about-this-breach = Больше об этой утечке
+take-control = Возьмите свои личные данные под свой контроль.
+cant-stop-hackers = Вы не можете отучить хакеров от взломов. Но вы можете избегать плохих привычек, которые облегчают их работу.
+read-more-tips = Прочитать больше советов по безопасности
+how-hackers-work = Поймите, как работают хакеры
+monitor-your-online-accounts = Подпишитесь на мониторинг утечек с помощью { -brand-fxa(case: "genitive") }
+stay-alert = Будьте в курсе новых утечек
+if-your-info = Если ваша информация будет обнаружена в новой утечке данных, мы отправим вам уведомление.
+search-all-emails = Проверьте все свои адреса электронной почты на утечки и получайте уведомления о новых.
 about-fxm-headline = О { -product-name }
 
 ## What to do after data breach tips

@@ -12,6 +12,9 @@ avatars = Аватары
 bank-account-numbers = Номера банковских счетов
 beauty-ratings = Оценки красоты
 biometric-data = Биометрические данные
+# This string is the shortened version of "Biographies", and 
+# refers to biographical data about a user.
+bios = Биографии
 browser-user-agent-details = User agent браузеров
 browsing-histories = История посещений
 buying-preferences = Предпочтения при шоппинге
@@ -37,6 +40,7 @@ education-levels = Уровни образования
 email-addresses = Адреса электронной почты
 email-messages = Почтовые сообщения
 employers = Работодатели
+employment-statuses = Статусы занятости
 ethnicities = Этнические принадлежности
 family-members-names = Имена членов семьи
 family-plans = Семейные планы
@@ -101,6 +105,7 @@ smoking-habits = Зависимости от курения
 sms-messages = SMS-сообщения
 social-connections = Социальные связи
 social-media-profiles = Профили социальных сетей
+social-security-numbers = Номера социального страхования
 spoken-languages = Языки общения
 support-tickets = Заявки в службы поддержки
 survey-results = Результаты опросов
