@@ -12,6 +12,9 @@ avatars = Avatare
 bank-account-numbers = Kontonummern
 beauty-ratings = Schönheitsbewertungen
 biometric-data = Biometrische Daten
+# This string is the shortened version of "Biographies", and 
+# refers to biographical data about a user.
+bios = Kurzprofil
 browser-user-agent-details = Details zum User Agent des Browsers
 browsing-histories = Surf-Chronik
 buying-preferences = Kauf-Vorlieben
@@ -37,6 +40,7 @@ education-levels = Bildungsstufen
 email-addresses = E-Mail-Adressen
 email-messages = E-Mail-Nachrichten
 employers = Arbeitgeber
+employment-statuses = Beschäftigungsstatus
 ethnicities = Ethnien
 family-members-names = Namen von Familienmitgliedern
 family-plans = Familienpläne
@@ -101,6 +105,7 @@ smoking-habits = Rauchgewohnheiten
 sms-messages = SMS-Nachrichten
 social-connections = Soziale Verbindungen
 social-media-profiles = Social-Media-Profile
+social-security-numbers = Sozialversicherungsnummern
 spoken-languages = Sprachkenntnisse
 support-tickets = Hilfe-Tickets
 survey-results = Umfrageergebnisse
