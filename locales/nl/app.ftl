@@ -578,6 +578,7 @@ other-monitored-emails = Andere bewaakte e-mailadressen
 email-verification-required = E-mailverificatie vereist
 fxa-primary-email = { -brand-fxa } E-mailadres – Primair
 what-is-a-website-breach = Wat is een websitedatalek?
+website-breach-blurb = Een datalek van een website gebeurt, wanneer cybercriminelen persoonlijke gegevens uit online-accounts stelen, kopiëren of blootleggen. Dat gebeurt het meest, wanneer hackers een zwakke plek in de beveiliging van de website vinden. Het kan echter ook voor komen, dat accountinformatie per ongeluk gelekt wordt.
 security-tips-headline = Beveiligingstips om uzelf te beschermen tegen hackers
 steps-to-protect = Te nemen stappen om uw online identiteit te beschermen
 take-further-steps = Onderneem verdere stappen om uw identiteit te beschermen
