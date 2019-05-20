@@ -327,6 +327,10 @@ input.remove-email-submit {
     border: 1px solid #e8e8e8;
   }
 
+  .dash-attribution {
+    margin-top: 1.5rem;
+  }
+
   .e-info {
     border-bottom: none;
     padding-bottom: 0;
