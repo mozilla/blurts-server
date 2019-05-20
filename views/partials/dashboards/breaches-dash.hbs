@@ -34,6 +34,9 @@
         {{#each this.verifiedEmails}}
           {{> email-card }}
         {{/each}}
+        {{#if breachesFound }}
+          {{> hibp-attribution variableClasses="dash-attribution"}}
+        {{/if}}
       {{/getBreachesForEachEmail}}
       {{> dashboards/manage-email-link variableClass="show-mobile"}}
     </div>
