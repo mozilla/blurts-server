@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -526,6 +527,13 @@ error-bot-blurb =
     We zijn bang dat u misschien een bot bent, omdat u in een korte tijdsperiode
     hebt gezocht naar verschillende e-mailadressen. Nieuwe zoekopdrachten zijn
     voorlopig geblokkeerd. U kunt het later opnieuw proberen.
+error-csrf-headline = Sessie verlopen
+error-csrf-blurb = Selecteer de knop Terug van uw browser, laad de pagina opnieuw en probeer het nog eens.
+error-invalid-unsub = Hoe af te melden van waarschuwingen van { -product-name }
+error-invalid-unsub-blurb =
+    U moet zich afmelden vanuit een van de
+    e-mailberichten die { -product-name } u is gestuurd. Kijk in uw Postvak IN voor berichten
+    van { -brand-team-email }. Selecteer onderaan het e-mailbericht de koppeling voor afmelden.
 login-link-pre = Hebt u een account?
 login-link = Aanmelden
 # This string is displayed under a large numeral that indicates the total number
@@ -536,8 +544,37 @@ email-addresses-being-monitored =
         [one] E-mailadres wordt bewaakt
        *[other] E-mailadressen worden bewaakt
     }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] Datalek heeft uw gegevens gelekt
+       *[other] Datalekken hebben uw gegevens gelekt
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Wachtwoord gelekt in alle datalekken
+       *[other] Wachtwoorden gelekt in alle datalekken
+    }
+# Button
+see-additional-breaches = Meer datalekken bekijken
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Alle datalekken bekijken
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Dit e-mailadres komt voor in een bekend datalek
+       *[other] Dit e-mailadres komt voor in { $breachCount } bekende datalekken
+    }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Resultaten voor: { $userEmail }
 other-monitored-emails = Andere bewaakte e-mailadressen
+email-verification-required = E-mailverificatie vereist
+fxa-primary-email = { -brand-fxa } E-mailadres – Primair
+what-is-a-website-breach = Wat is een websitedatalek?
