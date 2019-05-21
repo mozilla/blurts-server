@@ -20,18 +20,18 @@ about-firefox-alerts = A proposito del avisos de Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Inviar opinion
 terms-and-privacy = Conditiones de uso e confidentialitate
-error-scan-page-token = Tu probava a scander trop adresses de email in un breve periodo de tempore. Pro rationes de securitate, nos te ha temporarimente blocate pro nove recercas. Tu potera provar de novo plus tarde.
-error-could-not-add-email = impossibile adder le adresse email al base de datos
-error-not-subscribed = Iste adresse email non es inscribite a { -product-name }
-error-hibp-throttled = Trop connexiones a { -brand-HIBP }.
+error-scan-page-token = Tu ha probate a analysar troppo de adresses de e-mail in un curte periodo de tempore. Pro rationes de securitate, nos te ha temporarimente blocate pro nove recercas. Tu potera provar de novo plus tarde.
+error-could-not-add-email = Impossibile adder le adresse de e-mail al base de datos.
+error-not-subscribed = Iste adresse de e-mail non es inscribite a { -product-name }.
+error-hibp-throttled = Troppo de connexiones a { -brand-HIBP }.
 error-hibp-connect = Error durante le connexion a { -brand-HIBP }.
-error-hibp-load-breaches = Impossibile cargar datos ex violationes.
+error-hibp-load-breaches = Impossibile cargar informationes sur le violationes de datos.
 hibp-notify-email-subject = Alerta de { -product-name }: tu conto ha essite compromittite per un violation de securitate.
 home-title = { -product-name }
 home-not-found = Pagina non trovate.
 oauth-invalid-session = Session non valide
 oauth-confirmed-title = { -product-name } : Subscribite
-scan-title = { -product-name } : Resultatos del scansion
+scan-title = { -product-name } : Resultatos del analyse
 user-add-invalid-email = Email non valide
 user-add-email-verify-subject = Verifica tu subscription a { -product-name }.
 user-add-title = { -product-name } : Confirmar le adresse email
@@ -548,6 +548,10 @@ other-known-breaches-found =
 additional-information-including = Altere informationes, includite:
 # Title
 email-addresses-title = Adresses email
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = Le { $breachDate }, { $breachTitle } ha suffrite un violation de datos. Post le discoperta e verification de iste violation, nos lo ha addite a nostre base de datos le { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } Preferentias
 # When a user is signed in, this appears in the drop down menu 
