@@ -419,15 +419,33 @@ delayed-reporting-copy =
     kikerült adatok megjelennek a sötét weben. Az adatszegések akkor kerülnek az adatbázisunkba ,
     ha felfedezték és megerősítették őket.
 about-fxm-headline = A { -product-name } névjegye
+about-fxm-blurb =
+    A { -product-name } figyelmezteti, ha az online fiókja szerepelnek egy adatszegésben.
+    Tudja meg, hogy adatszivárgás áldozata lett-e, kapjon figyelmeztetéseket az 
+    új adatszegésekről, és tegyen lépéseket az online fiókjai védelmére.
+    A { -product-name }t a { -brand-Mozilla } szolgáltatja.
+fxm-warns-you =
+    A { -product-name } figyelmezteti, ha az e-mail címe kikerült egy online
+    adatszegésnél. Lássa a kikerült adatait, és tudja meg, hogyan védheti meg jobban
+    az online fiókjait, és kapjon figyelmeztetést, ha az e-mail címe egy új
+    adatszegésben jelenik meg.
 # How Firefox Monitor works
 how-fxm-works = Hogyan működik a { -product-name }
 how-fxm-1-headline = Végezzen egy alapvető keresést
+how-fxm-1-blurb =
+    Keresse ki az e-mail címét a nyilvánosságra került adatszegésekben
+    egészen 2007-ig. Az alapvető keresés felfedi a legtöbb adatszegést, de
+    azokat nem, melyek érzékeny adatokat tartalmaznak.
 how-fxm-2-headline = Iratkozzon fel az adatszegések figyelésére
 how-fxm-2-blurb =
     Hozzon létre egy { -brand-fxa }ot, és figyelje az e-mail címét az adatszegésekben.
     Ha megerősíti az e-mail címét, akkor teljes jelentést kap a múltbeli adatszegésekről is,
     beleértve az érzékeny adatszegéseket is.
 how-fxm-3-headline = Kapjon értesítéseket a böngészőjében
+how-fxm-3-blurb =
+    Ha a { -brand-name }t használja, akkor figyelmeztetést fog kapni, ha
+    egy adatszegésben érintett webhelyet keres fel. Tudja meg, hogy részese volt-e
+    az adatszegésnek, és hogy mit tehet emiatt.
 wtd-after-website = Mi a teendő egy webhelyen történő adatszegés után
 wtd-after-data-agg = Mi a teendő egy adatgyűjtő adatszegés után
 what-is-data-agg = Mi egy adatgyűjtő?
@@ -493,8 +511,52 @@ welcome-back = Üdvözöljük újra, { $userName }!
 welcome-user = Üdvözöljük, { $userName }!
 breach-alert-subject = A { -product-name } megtalálta az e-mail címét egy új adatszegésben.
 your-info-was-discovered-headline = Felfedezték az Ön adatait egy új adatszegés során.
+your-info-was-discovered-blurb =
+    Ön feliratkozott a { -product-name } figyelmeztetéseire,
+    ha megjelenik az e-mail címe egy adatszegésben. Itt van amit erről az esetről tudunk.
+what-to-do-after-breach = Mi a teendő egy adatszegés után
+ba-next-step-1 = Cserélje le jelszavát egy erős, egyedi jelszóra.
+ba-next-step-blurb-1 =
+    Egy erős jelszó kis- és nagybetűk kombinációját használja,
+    speciális karakterekkel és számokkal. Nem tartalmaz személyes adatokat,
+    például a címét, születésnapját vagy családnevét.
+ba-next-step-2 = Többé ne használja a kikerült jelszót.
+ba-next-step-blurb-2 =
+    A számítógépes bűnözők megtalálhatják a jelszavát a sötét weben, és
+    más fiókokba is bejelentkezhetnek vele. A fiókjai védelmének legjobb módja,
+    ha mindegyikhez egyedi jelszót használ.
+ba-next-step-3 = Kapjon segítséget a jobb jelszavak létrehozásához és azok biztonságos tárolásához.
+ba-next-step-blurb-3 =
+    Használjon egy jelszókezelőt, hogy erős, egyedi jelszavakat hozzon létre. A jelszókezelők biztonságosan tárolják
+    a bejelentkezéseit, így elérheti azokat az összes eszközén.
+faq1 = Nem ismerem ezt a céget vagy weboldalt? Miért szerepelek ebben az adatszegésben?
+faq2 = Miért tartott ilyen sokáig, hogy értesüljek erről az adatszegésről?
+faq3 = Honnan tudom, hogy ez az e-mail valóban a { -product-name }tól érkezett?
+new-breaches-found =
+    { $breachCount ->
+        [one] { $breachCount } ÚJ ADATSZEGÉS TALÁLHATÓ
+       *[other] { $breachCount } ÚJ ADATSZEGÉS TALÁLHATÓ
+    }
 sign-up-headline-1 = Kapjon folyamatos figyelmeztetéseket a { -brand-fxa }jával.
 account-not-required = A { -brand-name } böngésző sem szükséges a { -brand-fxa }hoz. Információkat kaphat a { -brand-Mozilla } szolgáltatásokról.
+get-alerted = Kapjon figyelmeztetéseket az új adatszegésekről.
+was-your-info-exposed = Kikerültek-e az adatai a(z) { $breachName } adatszegésben?
+find-out-if = Tudja meg, hogy kikerültek-e az adatai ebben az adatszegésben.
+fb-not-comp = Ez az e-mail cím nem szerepelt a(z) { $breachName } adatszegésben.
+other-breaches-found =
+    { $breachCount ->
+        [one] Azonban { $breachCount } másik adatszegésben szerepelt.
+       *[other] Azonban { $breachCount } másik adatszegésben szerepelt.
+    }
+fb-comp-only = Ez az e-mail cím megjelent a(z) { $breachName } adatszegésben.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Ez az e-mail cím { $breachCount } adatszegésben jelent meg, köztük ebben is: { $breachName }.
+       *[other] Ez az e-mail cím { $breachCount } adatszegésben jelent meg, köztük ebben is: { $breachName }.
+    }
+no-other-breaches-found = Az alapvető keresés nem talált más adatszegést.
+no-results-blurb = Sajnáljuk, ez az adatszegés nem szerepel az adatbázisunkban.
+all-breaches-headline = Az összes adatszegés a { -product-name }ban
 search-breaches = Adatszegések keresése
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Megjelenítés:
