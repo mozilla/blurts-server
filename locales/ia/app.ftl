@@ -79,8 +79,8 @@ pwt-summary-6 =
     { -product-name-nowrap } te inviara un alerta — assi que tu pote interprender actiones e proteger tu conto.
 landing-headline = Tu derecto de esser secur contra hackers comencia ci.
 landing-blurb =
-    { -product-name-nowrap } te muni con applicationes pro mantener tu informationes personal secur.
-    Discoperi lo que hackers jam sape re te e apprende como star un grado supra illes.
+    { -product-name-nowrap } te arma con instrumentos pro mantener tu informationes personal secur.
+    Discoperi lo que le hackers jam sape de te, e apprende como esser sempre un passo avante a illes.
 scan-label = Vide si tu ha essite implicate in un violation de datos.
 scan-placeholder = Insere le adresse email
 scan-privacy = Tu adresse email non essera reservate.
@@ -202,7 +202,9 @@ mozilla-security-blog = Blog re le securitate de { -brand-Mozilla }
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Social
 show-all = Monstrar toto
-fxa-landing-blurb = Discoperi lo que hackers jam sape re te e apprende como star un grado supra illes.
+fxa-landing-blurb =
+    Discoperi lo que le hackers jam sape de te,
+    e apprende como esser sempre un passo avante a illes.
 fxa-scan-label = Vide si tu ha essite implicate in un violation de datos.
 fxa-welcome-headline = Benvenite a { -product-name }.
 fxa-welcome-blurb = Tu es preste pro obtener avisos si { $userEmail } es implicate in un violation de datos.
@@ -300,7 +302,10 @@ user-generic-found-breaches-blurb =
        *[other] Iste violationes de datos ha exponite le sequente informationes personal.
     }
 have-an-account = Ha tu ja un conto?
-signup-banner-sensitive-blurb = Discoperi lo que hackers jam sape re te e apprende como star un grado supra illes. Mantene te allertate si tu conto es implicate in nove violationes de datos.
+signup-banner-sensitive-blurb =
+    Discoperi lo que le hackers jam sape de te, e apprende como esser
+    sempre un passo avante a illes. Sia alertate si tu conto es implicate
+    in nove violationes de datos.
 fxa-pwt-section-blurb = Protege per contrasigno tote le informationes personal in tu contos online. E le hackers fide sur le mal habitos, como usar un identic contrasigno ubique o phrases commun (p@ssw0rd, es un exemplo?) assi que si illes viola un conto, illes pote violar multos.
 fxa-pwt-summary-2 = Contrasignos breve, de singule parola, es facile a divinar pro hackers. Usa al minus duo parolas e un combination de litteras, digitos e characteres special.
 fxa-pwt-summary-4 = Le gestores de contrasignos, como 1Password, LastPass, Dashlane e Bitwarden, reserva tu contrasignos e stipa los in sitos web pro te. Illos te adjutara mesmo a facer contrasignos forte.
@@ -409,7 +414,7 @@ appears-in-x-breaches =
     }
 see-if-breached = Vide si tu ha essite implicate in un violation de datos online.
 check-for-breaches = Controla pro violationes
-find-out-what-hackers-know = Discoperi lo que hackers jam sape re te. Apprende a star un grado ante illes.
+find-out-what-hackers-know = Discoperi lo que le hackers jam sape de te. Apprende como esser sempre un passo avante a illes.
 search-for-your-email = Cerca retro, usque al 2007, tu adresse email in public violationes de datos.
 back-to-top = Receder al apice
 comm-opt-0 = Adverti me per email, si un de mi adresses email infra appare in un violation de datos.
