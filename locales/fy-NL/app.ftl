@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -324,3 +325,28 @@ create-free-account =
 get-your-report-and-sign-up = Helje jo rapport op en skriuw jo yn foar warskôgingen.
 # Link title
 frequently-asked-questions = Faak stelde fragen
+about-firefox-monitor = Oer { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Foarkarren
+# Link title.
+home = Startside
+# Link title
+breaches = Datalekken
+# Link title
+security-tips = Befeiligingstips
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = { -brand-fxa }-navigaasje iepenje
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = LÊST TAFOEGE DATALEK
+breach-added = Datalek meld:
+breach-discovered = Datalek ûntdekt:
+# Link title
+more-about-this-breach = Mear oer dit datalek
+take-control = Nim jo persoanlike gegevens wer ûnder kontrôle.
+
+## What to do after data breach tips
+
+
+## Updated error messages
+
