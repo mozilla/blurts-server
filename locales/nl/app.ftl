@@ -532,7 +532,7 @@ error-csrf-blurb = Selecteer de knop Terug van uw browser, laad de pagina opnieu
 error-invalid-unsub = Hoe af te melden van waarschuwingen van { -product-name }
 error-invalid-unsub-blurb =
     U moet zich afmelden vanuit een van de
-    e-mailberichten die { -product-name } u is gestuurd. Kijk in uw Postvak IN voor berichten
+    e-mailberichten die { -product-name } u heeft gestuurd. Kijk in uw Postvak IN voor berichten
     van { -brand-team-email }. Selecteer onderaan het e-mailbericht de koppeling voor afmelden.
 login-link-pre = Hebt u een account?
 login-link = Aanmelden
@@ -587,11 +587,11 @@ see-if-youve-been-part = Kijk of u onderdeel bent van een online datalek.
 get-ongoing-breach-monitoring = Krijg continue monitoring voor meerdere e-mailadressen.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Nu uitproberen
-new-unsub-error = U moet u afmelden vanuit een van de door verzonden { -product-name } e-mailberichten.
+new-unsub-error = U moet u afmelden vanuit een van de door { -product-name } verzonden e-mailberichten.
 other-known-breaches-found =
     { $breachCount ->
-        [one] Het is echter wel verschenen in { $breachCount } ander bekende schending.
-       *[other] Het is echter wel verschenen in { $breachCount } andere bekende schendingen.
+        [one] Het is echter wel verschenen in { $breachCount } ander bekend lek.
+       *[other] Het is echter wel verschenen in { $breachCount } andere bekende lekken.
     }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
