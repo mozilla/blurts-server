@@ -366,6 +366,10 @@ unverified-breach-plural = Net-ferifiearre datalekken
 spam-list-breach-plural = Spamlistdatalekken
 what-data = Hokker gegevens binne kompromittearre:
 sensitive-sites = Hoe behannelet { -product-name } gefoelige websites?
+about-fxm-headline = Oer { -product-name }
+# How Firefox Monitor works
+how-fxm-works = Hoe { -product-name } wurket
+how-fxm-1-headline = In ienfâldige sykopdracht útfiere
 
 ## What to do after data breach tips
 
