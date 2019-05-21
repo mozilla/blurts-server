@@ -346,6 +346,9 @@ fxm-warns-you = { -product-name } vous avertit si votre adresse électronique a 
 how-fxm-works = Fonctionnement de { -product-name }
 how-fxm-1-headline = Effectuez une recherche basique
 how-fxm-1-blurb = Recherchez votre adresse électronique parmi les fuites de données publiques remontant jusqu’à 2007. Une recherche basique fera apparaître la plupart des fuites de données, à l’exception de celles qui contiennent des données personnelles sensibles.
+how-fxm-2-blurb =
+    Créez un { -brand-fxa } pour surveiller en continu les fuites de données qui concernent votre adresse électronique.
+    Après avoir confirmé votre adresse électronique, vous recevrez un rapport complet des précédentes fuites, y compris les fuites de données sensibles.
 how-fxm-3-headline = Recevez des notifications dans votre navigateur
 how-fxm-3-blurb = Si vous utilisez { -brand-name }, vous recevrez une notification lorsque vous visiterez un site qui a été victime d’une fuite de données. Découvrez immédiatement si cette fuite vous concerne et ce que vous pouvez faire.
 wtd-after-website = Que faire après une fuite de données de site web
@@ -406,9 +409,18 @@ welcome-back = Heureux de vous revoir, { $userName } !
 welcome-user = Bienvenue, { $UserName } !
 breach-alert-subject = { -product-name } a détecté votre adresse électronique dans une nouvelle fuite de données.
 your-info-was-discovered-headline = Vos données ont été découvertes dans une nouvelle fuite.
+your-info-was-discovered-blurb = Vous êtes abonné·e aux alertes { -product-name } et en recevez lorsque votre adresse électronique apparaît dans des fuites de données. Voici ce que nous savons de cette fuite.
 what-to-do-after-breach = Que faire après une fuite de données ?
 ba-next-step-1 = Remplacez votre mot de passe par un mot de passe unique et robuste.
+ba-next-step-blurb-1 =
+    Un mot de passe fort utilise une combinaison de lettres majuscules et minuscules,
+    de caractères spéciaux et de chiffres. Il ne contient pas d’informations personnelles telles que
+    votre adresse, votre anniversaire ou les noms des membres de votre famille.
 ba-next-step-2 = Arrêtez d’utiliser ce mot de passe compromis.
+ba-next-step-blurb-2 =
+    Les cybercriminels pourraient trouver votre mot de passe sur le darkweb et l’utiliser
+    pour se connecter à vos autres comptes. Le meilleur moyen de protéger vos comptes
+    est d’utiliser des mots de passe uniques pour chacun.
 ba-next-step-3 = Obtenez de l’aide pour créer de meilleurs mots de passe et les protéger.
 ba-next-step-blurb-3 = Utilisez un gestionnaire de mots de passe pour créer des mots de passe forts et uniques. Les gestionnaires de mots de passe conservent en toute sécurité l’ensemble de vos identifiants afin que vous puissiez y accéder sur tous vos appareils.
 faq1 = Je ne reconnais pas cette société ou ce site web. Pourquoi cette fuite me concerne-t-elle ?
