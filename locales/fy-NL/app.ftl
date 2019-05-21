@@ -344,6 +344,28 @@ breach-discovered = Datalek ûntdekt:
 # Link title
 more-about-this-breach = Mear oer dit datalek
 take-control = Nim jo persoanlike gegevens wer ûnder kontrôle.
+cant-stop-hackers = Jo kinne hackers net stopje om te hacken. Mar jo kinne minne gewoanten dy't harren wurk maklik meitsje mije.
+read-more-tips = Mear befeiligingstips
+how-hackers-work = Begryp hoe't hackers te wurk gean
+monitor-your-online-accounts = Meld jo oan foar beweitsjen fan datalekken mei in { -brand-fxa }
+stay-alert = Bliuw alert op nije datalekken
+if-your-info = As jo gegevens foarkomme yn in nij datalek, stjoere wy jo in melding.
+search-all-emails = Kontrolearje al jo e-mailadressen op datalekken en ûntfang meldingen oer nije bedrigingen.
+monitor-several-emails = Beweitsje ferskate e-mailadressen
+take-action = Undernim aksje om jo accounts te beskermjen
+keep-your-data-safe = Untdek wat jo dwaan moatte om jo gegevens te beskermjen tsjin cyberkriminelen.
+website-breach = Websitedatalek
+sensitive-breach = Gefoelich websitedatalek
+data-aggregator-breach = Datalek gegevenssamling
+unverified-breach = Net-ferifiearre datalek
+spam-list-breach = Spamlistdatalek
+website-breach-plural = Websitedatalek
+sensitive-breach-plural = Gefoelige datalekken
+data-aggregator-breach-plural = Datalekken gegevenssamling
+unverified-breach-plural = Net-ferifiearre datalekken
+spam-list-breach-plural = Spamlistdatalekken
+what-data = Hokker gegevens binne kompromittearre:
+sensitive-sites = Hoe behannelet { -product-name } gefoelige websites?
 
 ## What to do after data breach tips
 
