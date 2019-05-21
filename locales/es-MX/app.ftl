@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -319,3 +320,39 @@ create-free-account = Crea una { -brand-fxa } gratuita para tu informe completo 
 get-your-report-and-sign-up = Obtén tu informe y regístrate para recibir alertas.
 # Link title
 frequently-asked-questions = Preguntas frecuentemente hechas
+about-firefox-monitor = Acerca de { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Preferencias
+# Link title.
+home = Inicio
+# Link title
+breaches = Infracciones
+# Link title
+security-tips = Consejos de seguridad
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Abrir la navegación de { -brand-fxa }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = ÚLTIMO INCUMPLIMIENTO AGREGADO
+breach-added = Violación de seguridad reportada:
+breach-discovered = Violación de seguridad descubierta:
+# Link title
+more-about-this-breach = Más acerca de esta violación de seguridad
+take-control = Toma el control de tu información.
+cant-stop-hackers = No puedes detener a los hackers. Pero puedes evitar malos hábitos que hagan su trabajo más sencillo.
+read-more-tips = Lee más sobre consejos de seguridad
+how-hackers-work = Entender cómo los hackers trabajan
+monitor-your-online-accounts = Regístrate para monitorear las violaciones de seguridad con { -brand-fxa }.
+stay-alert = Mantente alerta para nuevas violaciones de seguridad
+if-your-info = Si tu información aparece en una nueva violación de seguridad, te enviaremos una alerta.
+search-all-emails = Busca violaciones de seguridad en todas tus direcciones de correo electrónico y recibe alertas sobre nuevas amenazas.
+monitor-several-emails = Monitorea varios corres electrónicos
+take-action = Actúa para proteger tus cuentas
+keep-your-data-safe = Descubre lo que necesitas hacer para mantener tu información segura de los criminales cibrenéticos.
+website-breach = Violación del sitio web
+
+## What to do after data breach tips
+
+
+## Updated error messages
+
