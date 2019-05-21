@@ -77,7 +77,7 @@ pwt-headline-6 = Registra te pro le alertas de { -product-name-nowrap }
 pwt-summary-6 =
     Le violationes de datos del sitos web es in accrescimento. A pena un nove brecha es addite a nostre base de datos, 
     { -product-name-nowrap } te inviara un alerta — assi que tu pote interprender actiones e proteger tu conto.
-landing-headline = Tu derecto de ser secur del hackers initia ci.
+landing-headline = Tu derecto de esser secur contra hackers comencia ci.
 landing-blurb =
     { -product-name-nowrap } te muni con applicationes pro mantener tu informationes personal secur.
     Discoperi lo que hackers jam sape re te e apprende como star un grado supra illes.
