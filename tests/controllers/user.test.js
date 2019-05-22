@@ -246,7 +246,7 @@ test("user verify request with invalid token returns error", async () => {
 });
 
 
-test("user unsubscribe GET request with valid token and hash returns 200 without error", async () => {
+test("user unsubscribe GET request with valid token and hash for primary/subscriber record returns 302 to preferences", async () => {
   // from db/seeds/test_subscribers.js
   const subscriberToken = TEST_SUBSCRIBERS.firefox_account.primary_verification_token;
   const subscriberHash = getSha1(TEST_SUBSCRIBERS.firefox_account.primary_email);
@@ -258,8 +258,14 @@ test("user unsubscribe GET request with valid token and hash returns 200 without
   // Call code-under-test
   await user.getUnsubscribe(req, resp);
 
-  expect(resp.statusCode).toEqual(200);
+  expect(resp.statusCode).toEqual(302);
+  expect(resp._getRedirectUrl()).toEqual("/user/preferences");
 });
+
+
+// TODO: test("remove-email POST");
+// TODO: test("remove-fxm get");
+// TODO: test("remove-fxm POST");
 
 
 test("user unsubscribe GET request with invalid token returns error", async () => {
@@ -276,23 +282,21 @@ test("user unsubscribe GET request with invalid token returns error", async () =
 });
 
 
-test("user unsubscribe POST request with valid hash and token unsubscribes user and calls FXA.revokeOAuthToken", async () => {
-  const validToken = TEST_SUBSCRIBERS.unverified_email.primary_verification_token;
-  const validHash = getSha1(TEST_SUBSCRIBERS.unverified_email.primary_email);
+test("user unsubscribe POST request with valid hash and token for email_address removes from DB", async () => {
+  const validToken = TEST_EMAIL_ADDRESSES.firefox_account.verification_token;
+  const validHash = TEST_EMAIL_ADDRESSES.firefox_account.sha1;
 
   // Set up mocks
   const req = { fluentFormat: jest.fn(), body: { token: validToken, emailHash: validHash }, session: {}};
   const resp = httpMocks.createResponse();
-  FXA.revokeOAuthToken = jest.fn();
 
   // Call code-under-test
   await user.postUnsubscribe(req, resp);
 
   expect(resp.statusCode).toEqual(302);
-  const subscriber = await DB.getSubscriberByToken(validToken);
-  expect(subscriber).toBeUndefined();
-  const mockCalls = FXA.revokeOAuthToken.mock.calls;
-  expect(mockCalls.length).toEqual(1);
+  expect(resp._getRedirectUrl()).toEqual("/user/preferences");
+  const emailAddress = await DB.getEmailByToken(validToken);
+  expect(emailAddress).toBeUndefined();
 });
 
 
