@@ -263,9 +263,90 @@ test("user unsubscribe GET request with valid token and hash for primary/subscri
 });
 
 
-// TODO: test("remove-email POST");
-// TODO: test("remove-fxm get");
-// TODO: test("remove-fxm POST");
+test("user unsubscribe POST request with valid session and emailId for email_address removes from DB", async () => {
+  const validToken = TEST_EMAIL_ADDRESSES.firefox_account.verification_token;
+  const validHash = TEST_EMAIL_ADDRESSES.firefox_account.sha1;
+
+  // Set up mocks
+  const req = { fluentFormat: jest.fn(), body: { token: validToken, emailHash: validHash }, session: { user: TEST_SUBSCRIBERS.firefox_account }};
+  const resp = httpMocks.createResponse();
+
+  // Call code-under-test
+  await user.postUnsubscribe(req, resp);
+
+  expect(resp.statusCode).toEqual(302);
+  expect(resp._getRedirectUrl()).toEqual("/user/preferences");
+  const emailAddress = await DB.getEmailByToken(validToken);
+  expect(emailAddress).toBeUndefined();
+});
+
+
+test("user removeEmail POST request with valid session but wrong emailId for email_address throws error and doesnt remove email", async () => {
+  const testEmailAddress = TEST_EMAIL_ADDRESSES.all_emails_to_primary;
+  const testEmailId = testEmailAddress.id;
+  const req = { fluentFormat: jest.fn(), body: { emailId: testEmailId }, session: { user: TEST_SUBSCRIBERS.firefox_account }};
+  const resp = httpMocks.createResponse();
+
+  await expect(user.removeEmail(req, resp)).rejects.toThrow("error-not-subscribed");
+
+  const emailAddress = await DB.getEmailByToken(testEmailAddress.verification_token);
+  expect(emailAddress.id).toEqual(testEmailId);
+});
+
+
+test("user/remove-fxm GET request with invalid session returns error", async () => {
+  const req = httpMocks.createRequest({
+    method: "GET",
+    url: "/user/remove-fxm",
+    fluentFormat: jest.fn(),
+  });
+  const resp = httpMocks.createResponse();
+
+  await expect(user.getRemoveFxm(req, resp)).rejects.toThrow("must-be-signed-in");
+});
+
+
+test("user/remove-fxm GET request with valid session returns 200 and renders remove_fxm", async () => {
+  // Set up mocks
+  const req = { fluentFormat: jest.fn(), session: { user: TEST_SUBSCRIBERS.firefox_account }};
+  const resp = httpMocks.createResponse();
+  resp.render = jest.fn();
+
+  // Call code-under-test
+  await user.getRemoveFxm(req, resp);
+
+  expect(resp.statusCode).toEqual(200);
+  expect(resp.render).toHaveBeenCalledTimes(1);
+  const renderCallArgs = resp.render.mock.calls[0];
+  expect(renderCallArgs[0]).toEqual("subpage");
+  expect(renderCallArgs[1].whichPartial).toEqual("subpages/remove_fxm");
+});
+
+
+test("user/remove-fxm POST request with invalid session returns error", async () => {
+  // Set up mocks
+  const req = { fluentFormat: jest.fn(), session: {} };
+  const resp = httpMocks.createResponse();
+
+  // Call code-under-test
+  await expect(user.postRemoveFxm(req, resp)).rejects.toThrow("must-be-signed-in");
+});
+
+
+test("user remove-fxm POST request with valid session removes from DB and revokes FXA OAuth token", async () => {
+  const req = { fluentFormat: jest.fn(), session: { user: TEST_SUBSCRIBERS.firefox_account, reset: jest.fn() }};
+  const resp = httpMocks.createResponse();
+  FXA.revokeOAuthToken = jest.fn();
+
+  await user.postRemoveFxm(req, resp);
+
+  expect(resp.statusCode).toEqual(302);
+  expect(resp._getRedirectUrl()).toEqual("/");
+  const subscriber = await DB.getEmailByToken(TEST_SUBSCRIBERS.firefox_account.primary_verification_token);
+  expect(subscriber).toBeUndefined();
+  expect(FXA.revokeOAuthToken).toHaveBeenCalledTimes(1);
+  expect(req.session.reset).toHaveBeenCalledTimes(1);
+});
 
 
 test("user unsubscribe GET request with invalid token returns error", async () => {

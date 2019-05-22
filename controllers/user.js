@@ -18,8 +18,13 @@ function _requireSessionUser(req,res) {
   return req.session.user;
 }
 
-function removeEmail(req, res) {
+async function removeEmail(req, res) {
   const emailId = req.body.emailId;
+  const sessionUser = _requireSessionUser(req);
+  const existingEmail = await DB.getEmailById(emailId);
+  if (existingEmail.subscriber_id !== sessionUser.id) {
+    throw new FluentError("error-not-subscribed");
+  }
 
   DB.removeOneSecondaryEmail(emailId);
   res.redirect("/user/preferences");
@@ -266,6 +271,7 @@ async function getRemoveFxm(req, res) {
 async function postRemoveFxm(req, res) {
   const sessionUser = _requireSessionUser(req);
   await DB.removeSubscriber(sessionUser);
+  await FXA.revokeOAuthToken(sessionUser.fxa_refresh_token);
 
   req.session.reset();
   res.redirect("/");

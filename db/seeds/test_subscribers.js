@@ -55,6 +55,7 @@ exports.TEST_EMAIL_ADDRESSES = {
     verified: false,
   },
   all_emails_to_primary: {
+    id: 99999,
     subscriber_id: 67890,
     sha1: getSha1("secondary_sending_to_primary@test.com"),
     email: "secondary_sending_to_primary@test.com",
