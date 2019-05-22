@@ -578,8 +578,8 @@ other-monitored-emails = Andere bewaakte e-mailadressen
 email-verification-required = E-mailverificatie vereist
 fxa-primary-email = { -brand-fxa } E-mailadres – Primair
 what-is-a-website-breach = Wat is een websitedatalek?
-website-breach-blurb = Een datalek van een website gebeurt, wanneer cybercriminelen persoonlijke gegevens uit online-accounts stelen, kopiëren of blootleggen. Dat gebeurt het meest, wanneer hackers een zwakke plek in de beveiliging van de website vinden. Het kan echter ook voor komen, dat accountinformatie per ongeluk gelekt wordt.
-security-tips-headline = Beveiligingstips om uzelf te beschermen tegen hackers
+website-breach-blurb = Een datalek van een website treedt op, wanneer cybercriminelen persoonlijke gegevens uit online-accounts stelen, kopiëren of blootleggen. Dat gebeurt het meest, wanneer hackers een zwakke plek in de beveiliging van de website vinden. Het kan echter ook optreden als accountinformatie per ongeluk wordt gelekt.
+security-tips-headline = Beveiligingstips om uzelf tegen hackers te beschermen
 steps-to-protect = Te nemen stappen om uw online identiteit te beschermen
 take-further-steps = Onderneem verdere stappen om uw identiteit te beschermen
 alert-about-new-breaches = Waarschuw mij over nieuwe datalekken
@@ -601,7 +601,7 @@ email-addresses-title = E-mailadressen
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview = Op { $breachDate }, was { $breachTitle } slachtoffer van een datalek. Zodra het datalek werd ontdekt en geverifieerd, werd deze op { $addedDate } toegevoegd aan onze database.
+breach-overview = Op { $breachDate }, was { $breachTitle } slachtoffer van een datalek. Nadat het datalek werd ontdekt en geverifieerd, werd dit op { $addedDate } aan onze database toegevoegd.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name }-voorkeuren
 # When a user is signed in, this appears in the drop down menu 
