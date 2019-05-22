@@ -534,3 +534,47 @@ error-invalid-unsub-blurb =
     Jo moatte jo ôfmelde fan ien fan de
     e-mailberichten út dy't { -product-name } jo stjoerd hat. Sjoch yn jo Postfek YN foar berjochten
     fan { -brand-team-email }. Selektear ûnderoan it e-mailberjocht de keppeling foar ôfmelden.
+login-link-pre = Hawwe jo in account?
+login-link = Oanmelde
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] E-mailadres wurdt yn 'e gaten holden
+       *[other] E-mailadressen wurde yn 'e gaten holden
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] Datalek hat jo gegevens lekt
+       *[other] Datalekken hawwe jo gegevens lekt
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Wachtwurd lekt yn alle datalekken
+       *[other] Wachtwurden lekt yn alle datalekken
+    }
+# Button
+see-additional-breaches = Mear datalekken besjen
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Alle datalekken besjen
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Dit e-mailadres komt foar yn in bekend datalek
+       *[other] Dit e-mailadres komt foar yn { $breachCount } bekende datalekken
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Resultaten foar: { $userEmail }
+other-monitored-emails = Oare yn 'e gaten holden e-mailadressen
+email-verification-required = E-mailferifikaasje fereaske
+fxa-primary-email = { -brand-fxa } E-mailadres – Primêr
+what-is-a-website-breach = Wat is in websitedatalek?
