@@ -348,6 +348,8 @@ website-breach-plural = Filtraciones de sitios web
 sensitive-breach-plural = Filtraciones delicadas
 unverified-breach-plural = Filtraciones no verificadas
 what-data = Qué información se filtró:
+delayed-reporting-headline = ¿Por qué se tardó tanto en informar de esta filtración?
+about-fxm-headline = Sobre { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Cómo funciona { -product-name }
 how-fxm-1-headline = Hacer una búsqueda básica
@@ -407,6 +409,66 @@ ba-next-step-blurb-1 =
     Una contraseña segura es aquella que incluye mayúsculas y minúsculas,
     símbolos y números. No debería incluir información personal como
     dirección, cumpleaños o nombres de familiares.
+all-breaches-headline = Todas las filtraciones de { -product-name }
+search-breaches = Buscar filtraciones
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Se muestran:
+all-breaches = Todas las filtraciones
 
 ## Updated error messages
 
+error-bot-headline = Búsquedas suspendidas de forma temporal
+error-csrf-headline = Expiró la sesión
+error-csrf-blurb = Selecciona el botón Atrás de tu navegador, recarga la página y vuelve a intentarlo.
+error-invalid-unsub = Cómo cancelar la suscripción a las alertas de { -product-name }
+error-invalid-unsub-blurb =
+    Tendrás que cancelar la suscripción desde uno de los correos
+    que te envió { -product-name }. Busca correos de { -brand-team-email }
+    en tu bandeja de entrada. Al final del correo, selecciona el enlace Cancelar suscripción.
+login-link-pre = ¿Tienes una cuenta?
+login-link = Inicia sesión
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Contraseña expuesta en todas las filtraciones
+       *[other] Contraseñas expuestas en todas las filtraciones
+    }
+# Button
+see-additional-breaches = Ver filtraciones adicionales
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Ver todas las filtraciones
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Esta dirección de correo aparece en 1 filtración de datos conocida.
+       *[other] Esta dirección de correo aparece en { $breachCount } filtraciones de datos conocidas.
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Resultados para: { $userEmail }
+security-tips-headline = Consejos de seguridad para protegerte frente a hackers
+steps-to-protect = Sigue estos pasos para proteger tu identidad en línea
+take-further-steps = Sigue estos consejos para proteger tu identidad
+alert-about-new-breaches = Avisarme cuando haya nuevas filtraciones
+see-if-youve-been-part = Comprueba si formaste parte de una filtración de datos en línea.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Descubrir
+new-unsub-error = Tendrás que cancelar la suscripción desde uno de los correos que te envió { -product-name }.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Pero aparecía en otra filtración conocida.
+       *[other] Pero aparecía en otras { $breachCount } filtraciones conocidas.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Información adicional:
+# Title
+email-addresses-title = Direcciones de correo
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Filtrar por categoría:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menú
