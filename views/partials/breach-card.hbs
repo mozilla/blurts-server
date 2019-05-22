@@ -1,4 +1,4 @@
-<a class="breach-card {{ Category }} {{ cardType }} {{#if NewBreach}} new-breach {{/if}}" href="/breach-details/{{ Name }}">
+<a class="breach-card {{ Category }} {{ cardType }} {{#if NewBreach}} new-breach {{/if}}" {{#if latestBreach }} href="/?breach={{ Name }}" {{ else }} href="/breach-details/{{ Name }}" {{/if}}>
   <div class="breach-logo-wrapper flx">
     <img alt="" class="breach-logo breach-img" src="/img/logos/{{ LogoPath }}" />
   </div>
