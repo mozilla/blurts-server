@@ -4,8 +4,7 @@ const { getStrings } = require("./hbs-helpers");
 
 function getSecurityTipsIntro() {
   return [
-      "News about data breaches is becoming more common. We’re told millions of accounts were compromised. Passwords were exposed. Other sensitive data was leaked to the dark web.",
-      "Finding out about a data breach only gets you so far. What does it mean for your internet safety? What should you do? Learn how to better protect yourself online so you can keep your devices, online accounts, and personal data safe.",
+      "Data breaches are becoming more common. Finding out you were part of one usually includes a laundry list compromised information, such as your password, username, and email address. What does that mean for your internet safety? What should you do? Learn how you can take control after a data breach and better protect your devices, online accounts, and personal data from cyber criminals.",
     ];
 }
 
@@ -15,7 +14,7 @@ const articleCopy = {
       {
         dropCap: "F",
         leads : [
-          "orget about those hackers in movies trying to crack the code on someone’s computer to get their top-secret files. The hackers responsible for data breaches start by targeting companies, not specific individuals. They want to get as much people’s data as possible so they can use, resell, or leverage it to make money. It all starts with getting your password.",
+          "orget about those hackers in movies trying to crack the code on someone’s computer to get their top-secret files. The hackers responsible for data breaches start by targeting companies, not specific individuals. They want to get data from as many people as possible so they can use, resell, or leverage it to make money. It all starts with getting your password.",
         ],
       },
       {
@@ -34,7 +33,7 @@ const articleCopy = {
       {
         subhead: "What makes a password easy to guess.",
         paragraphs: [
-          "If hackers can get a list of email addresses from a data breach, they already have a good start. All they have to do is pick their website of choice and try these emails with the most-commonly used passwords. Chances are, they’ll be able to get in to quite a few accounts. So don’t use any of these <a href='https://www.teamsid.com/splashdatas-top-100-worst-passwords-of-2018/' class='worst-passwords' rel='noopener noreferrer'>100 Worst Passwords of 2018.</a>",
+          "If hackers can get a list of email addresses from a data breach, they already have a good start. All they have to do is pick their website of choice and try these emails with the most popular passwords. Chances are, they’ll be able to get into quite a few accounts. So don’t use any of these <a href='https://www.teamsid.com/splashdatas-top-100-worst-passwords-of-2018/' class='worst-passwords' rel='noopener noreferrer'>100 Worst Passwords of 2018.</a>",
         ],
         list: [
           "123456 and password are the most commonly used passwords. Don’t use them.",
@@ -42,14 +41,14 @@ const articleCopy = {
           "Avoid favorite sports teams or pop culture references. Use something more obscure.",
           "Don’t use a single word like sunshine, monkey, or football. Using a phrase or sentence as your password is stronger.",
           "Don’t use common number patterns like 111111, abc123, or 654321.",
-          "Adding a number of piece of punctuation at the end doesn’t make your password stronger.",
+          "Adding a number or piece of punctuation at the end doesn’t make your password stronger.",
         ],
       },
       {
         subhead: "One exposed password can unlock many accounts.",
         paragraphs: [
           "Hackers know people reuse the same passwords. If your banking password is the same as your email password is the same as your Amazon password, a single vulnerability in one site can put the others at risk.",
-          "It’s why you should use different passwords for every single account. The average person has 90 accounts, and that’s a lot of passwords remember. Security experts recommend using a password manager to safely store unique passwords for every site.",
+          "It’s why you should use different passwords for every single account. The average person has 90 accounts, and that’s a lot of passwords to remember. Security experts recommend using a password manager to safely store unique passwords for every site.",
           ],
         },
       {
@@ -125,25 +124,25 @@ const articleCopy = {
           {
             subhead: "Use different passwords for every account.",
             paragraphs: [
-              "To keep your accounts as secure as possible, it’s best that every single one has a unique password. If one account gets breached, then hackers can’t use those login credentials to gain access to any other accounts.",
+              "To keep your accounts as secure as possible, it’s best that every single one has a unique password. If one account gets breached, then hackers can’t use those login credentials to gain access to other accounts.",
               "While no one can stop hackers from hacking, you can stop reusing the same password everywhere. It makes it far too easy for cyber criminals to attack one site and get your password for others.",
             ],
           },
           {
             subhead: "Use a password manager to remember all your passwords.",
             paragraphs: [
-              "Do you really need to remember 100 passwords? Not at all. A password manager is a piece of software that keeps all your password safe, encrypted, and protected. It can even generate strong passwords for you and automatically them in to websites and apps.",
+              "Do you really need to remember 100 passwords? Not at all. A password manager is a piece of software that keeps all your password safe, encrypted, and protected. It can even generate strong passwords for you and automatically enter them in to websites and apps.",
               "Password managers act like a digital safe-deposit box for all your online accounts. You just need one key to get into your accounts: A single, easy-to-remember but hard-to-guess password. That password unlocks the safe.",
-              "But what if your password manager gets hacked? A good one keeps your passwords encrypted behind a password they don’t know (only you do). They don’t store any of your credentials on their servers. While no single too can guarantee total online safety, security experts agree that using a password manager is far more secure than using the same password everywhere.",
+              "But what if your password manager gets hacked? A good one keeps your passwords encrypted behind a password they don’t know (only you do). They don’t store any of your credentials on their servers. While no single tool can guarantee total online safety, security experts agree that using a password manager is far more secure than using the same password everywhere.",
               ],
             },
             {
               subhead: "Add an extra layer of security with two-factor authentication.",
               paragraphs: [
-                "Many websites offer two-factor authentication, also known as 2FA or multi-factor authentication. On top of your username and password, 2FA requires another piece of information to verify yourself. So even if someone has your password, they can’t get in.",
-                "Withdrawing money from an ATM is an example of 2FA. It requires your pin code and your bank card. You need these two pieces to complete the transaction.",
+                "Many websites offer two-factor authentication, also known as 2FA or multi-factor authentication. On top of your username and password, 2FA requires another piece of information to verify yourself. So, even if someone has your password, they can’t get in.",
+                "Withdrawing money from an ATM is an example of 2FA. It requires your PIN code and your bank card. You need these two pieces to complete the transaction.",
                 "Many websites support 2FA, including Google and Amazon. The site will text you a code to your phone to enter after your password. YubiKeys are USB ports that verify your accounts. Security apps like DUO allow you to verify your accounts through your phone.",
-                "When you set up 2FA, many sites will give you a list of backup codes to verify your account. A password manager is a great place to store these.",
+                "When you set up 2FA, many sites will give you a list of backup codes to verify your account. A password manager is a great place to store these codes.",
               ],
             },
           ],
@@ -155,16 +154,16 @@ const articleCopy = {
             "Do's",
             "Do combine two or more unrelated words. Change letters to numbers or special characters.",
             "Do make your passwords at least 8 characters long. Aim for 12-15 characters.",
-            "Do use a combination of upper and lower case letters, numbers, and symbols.",
+            "Do use a combination of upper- and lower-case letters, numbers, and symbols.",
             "Do include unusual words only you would know. It should seem nonsensical to other people.",
             "Do keep your passwords protected and safe, like encrypted in a password manager.",
             "Do spread various numbers and characters throughout your password.",
             "Do create unique and complex passwords for every site.",
-            "Do an extra layer of security with two-factor authentication (2FA).",
+            "Do use an extra layer of security with two-factor authentication (2FA).",
           ],
           dontList: [
             "Dont's",
-            "Don’t use the word password, or any combination of it. P@ssword! is just as easy for hackers to guess.",
+            "Don’t use the word “password,” or any combination of it. “P@ssword!” is just as easy for hackers to guess.",
             "Use short, one-word passwords, like sunshine, monkey, or football.",
             "Don’t place special characters (@, !, 0, etc.) only at the beginning or the end.",
             "Don’t include personal information like your birthdate, address, or family members’ names.",
@@ -181,7 +180,7 @@ const articleCopy = {
     paragraphs: [
       {
         leads: [
-          "Data breaches are one of many online threats. Using secure internet connections, updating your software, avoiding scam emails, and better password hygiene will help you stay safer while you browse.",
+          "Data breaches are one of many online threats. Using secure internet connections, updating your software, avoiding scam emails, and employing better password hygiene will help you stay safer while you browse.",
         ],
       },
       {
@@ -189,8 +188,8 @@ const articleCopy = {
           {
             subhead: "Be wary of public wifi networks. ",
             paragraphs: [
-              "You can get wifi almost anywhere. But these open networks are the most vulnerable and tend to be the least secure. This includes the free wifi at restaurants, libraries, airports, and other public spaces. If you can avoid it, don’t use public wifi. Especially don’t use these networks to log in to financial sites or shop online. It’s easy for anyone to see what you’re doing.",
-              "Instead, we recommend using a Virtual Private Network (VPN), which lets you use public wifi more securely and keeps your online behavior private. A VPN routes your connection through a secure server that encrypts your data before you land on a web page.",
+              "You can get Wi-Fi almost anywhere. But these open networks are the most vulnerable and tend to be the least secure. This includes the free Wi-Fi at restaurants, libraries, airports, and other public spaces. If you can avoid it, don’t use public Wi-Fi. Most importantly, don’t use these networks to log in to financial sites or shop online. It’s easy for anyone to see what you’re doing.",
+              "Instead, we recommend using a Virtual Private Network (VPN), which lets you use public Wi-Fi more securely and keeps your online behavior private. A VPN routes your connection through a secure server that encrypts your data before you land on a web page. ",
             ],
           },
           {
@@ -199,12 +198,12 @@ const articleCopy = {
               "Updating software on your computer or phone can seem like a pain, but it’s a crucial step to keeping devices safe. These updates fix bugs, software vulnerabilities, and security problems. Regularly updating your smartphone apps and operating systems makes your devices more secure.",
             ],
             securityTip: {
-              tipHeadline: "Tips for keeping all your online accounts secure",
+              tipHeadline: "Tips for keeping all your online accounts secure:",
               tipList : [
               "Use unique, strong passwords for every account",
               "Use a password manager to remember all your passwords for you",
               "Turn on two-factor authentication for an extra layer of security",
-              "Use a VPN (Virtual Private Network) when using public wifi",
+              "Use a VPN (Virtual Private Network) when using public Wi-Fi",
               "Update to the latest version of all software and apps",
               ],
             },
@@ -212,13 +211,13 @@ const articleCopy = {
           {
             subhead: "Be vigilant about emails that seem even a little bit strange.",
             paragraphs: [
-              "Phishing is a type of email scam that is becoming increasingly more common. In these emails, hackers impersonate as a service or company you trust. These emails can even come from one of your contacts. They look like the real deal because they mimic the design of authentic emails, like those from your bank or email provider.",
-              "The goal of these hackers is to get you to unknowingly enter your password or download a document that can infect your computer. Most online services won’t ask you to enter your login info directly from an email. If they do, you should go directly to their website to log in.",
+              "Phishing is a type of email scam that is becoming increasingly common. In these emails, hackers impersonate a service or company you trust. These emails can even come from one of your contacts. They look like the real thing because they mimic the design of authentic emails, like those from your bank or email provider.",
+              "The goal of these hackers is to get you to unknowingly enter your password or download a document that can infect your computer. Most online services won’t ask you to enter your login info directly from an email. If they do, you should instead go directly to their website to log in.",
               "Think before you fill anything out. Does this email seem out of the blue? Does something seem off about it? Are you being asked to log in to an account to update something? Don’t click, and don’t enter your password anywhere. Open your browser, and type in the address of the company website instead.",
             ],
             listHeadline: "Know the classic signs of a suspicious email.",
             list: [
-              "Grammar or spelling mistakes",
+              "Displays grammar or spelling mistakes",
               "Send address looks unusual",
               "Promises something that seems too good to be true",
               "Asks you to log in from the email itself",
@@ -227,7 +226,7 @@ const articleCopy = {
             warning: "Clicked on a phishing email? Contact your email administrator right away for next steps. Do this before sending or opening any other emails. The faster you report it, the faster the damage can be mitigated.",
           },
           {
-            subhead: "Be selective who you give your email address to. ",
+            subhead: "Be selective about who you give your email address to.",
             paragraphs: [
               "The more online accounts you create, the greater the risk is that you’ll be involved in a data breach. Many companies, services, apps, and websites ask for your email. But it’s not always required. Here are some ways to avoid giving out your email address:",
             ],
@@ -241,7 +240,7 @@ const articleCopy = {
             subhead: "Use unique, strong passwords for every single account.",
             paragraphs: [
               "One of the best ways to protect yourself online is to use different passwords across all your online accounts. This way hackers won’t have the keys to your entire digital life if they get their hands on that one password you use everywhere.",
-              "Your passwords also need to be strong. Single words (like sunshine, monkey, or football) make for weak passwords. So do these top 100 most-commonly used passwords, which include password and 123456. Avoid pop culture references, sports teams, and personal info... Do not use your address, birthday, names of family members, or pets’ names. The longer and more unique your passwords are, the harder they will be for hackers to guess.",
+              "Your passwords also need to be strong. Single words (like sunshine, monkey, or football) make for weak passwords. So do these 100 most-commonly used passwords, which include password and 123456. Avoid pop-culture references, sports teams, and personal info... Do not use your address, birthday, names of family members, or pets’ names. The longer and more unique your passwords are, the harder they will be for hackers to guess.",
             ],
             securityTip: {
               tipHeadline: "<span class='bold'>Security tip:</span> How to create strong passwords.",
@@ -252,7 +251,7 @@ const articleCopy = {
             subhead: "Remember all your passwords with a password manager.",
             paragraphs: [
               "Ever forgotten your password? It happens all the time. The average person has 90 online accounts. And we’re being asked to create new ones all the time.",
-              "The good news is you don’t have to recall all your passwords from memory. Password managers are secure, easy-to-use applications that do the remembering for you. They even fill your passwords into websites and apps when you need to log in. All you need to remember is a single password — the one you use to unlock your password manager. They can even generate hard-to-guess passwords to help make your accounts more secure. All your data is encrypted, making password managers pretty secure even if they get hacked.",
+              "The good news is you don’t have to recall all your passwords from memory. Password managers are secure, easy-to-use applications that do the remembering for you. They even fill your passwords into websites and apps when you need to log in. All you need to remember is a single password — the one you use to unlock your password manager. They can even generate hard-to-guess passwords to help make your accounts more secure. All your data is encrypted, making password managers pretty secure - even if they get hacked.",
               ],
             securityTip: {
               tipHeadline: "<span class='bold'>Security tip:</span> These are the best password managers. ",
@@ -274,7 +273,7 @@ const articleCopy = {
           subhead: "What is a password manager?",
           paragraphs: [
             "Think of it like a safe for your passwords. When you need something inside the safe, you unlock it. Password managers work the same for your online credentials.",
-            "You create a single, super-strong password, which acts like a key. Install the password manager app on your phone, computer, browser, and other devices. Your passwords are securely stored inside. Anytime you need to log in to an account, unlock your password manager and retrieve your login info.",
+            "You create a single, super-strong password, which acts like a key. Install the password manager app on your phone, computer, browser, and other devices. Your passwords are securely stored inside it. Anytime you need to log in to an account, unlock your password manager and retrieve your login info.",
           ],
         },
       {
@@ -300,15 +299,15 @@ const articleCopy = {
           {
             subhead: "<span class='myth'>Myth 2:</span> Password managers aren’t 100% secure, so I shouldn’t use one.",
             paragraphs: [
-              "No privacy tool can guarantee your complete safety. Even the most elaborate lock can be broken into. Yet we still lock our doors to our houses and our cars.",
-              "The alternative to using a password manager is to try to rely on your own memory to remember all your credentials. This inevitably leads to recycling passwords or using variations — a bad habit that hackers love.",
+              "No privacy tool can completely guarantee your online safety. Even the most elaborate lock can be broken into. Yet we still lock our doors to our houses and cars. ",
+              "The alternative to using a password manager is to rely on your own memory to remember all your credentials. This inevitably leads to recycling passwords or using variations — a bad habit that hackers love.",
               "A password managers can be such an effective security tool because it helps us improve bad habits. With a password manager installed on your computer and phone, it’s a lot easier to take your logins everywhere so you can use unique, strong passwords on every account.",
             ],
           },
           {
             subhead: "<span class='myth'>Myth 3:</span> Storing all my passwords in one place makes them vulnerable to hackers.",
             paragraphs: [
-              "Password managers don’t store all your credentials together in one place. Any data you store in a password manager — passwords, logins, security questions, and other sensitive info — is securely encrypted. Even if the password manager were to get hacked, cyber criminals would not be able to see your logins.",
+              "Password managers don’t store all your credentials together in one place. Any data you store in a password manager — passwords, logins, security questions, and other sensitive info — is securely encrypted. Even if the password manager gets hacked, cyber criminals would not be able to see your logins.",
               "The only way to access your data is with a single master password that only you know. You use this password to unlock the manager on your computer, phone, or other devices. Once it’s unlocked, a password manager can fill in your logins to websites and apps for you.",
             ],
           },
@@ -321,7 +320,7 @@ const articleCopy = {
           {
             subhead: "<span class='myth'>Myth 5:</span> It’s a huge pain to set up a password manager.",
             paragraphs: [
-              "Sure, it takes time to log all your credentials in a password manager. But you don’t need to do it all at once. You can always start small and change just a few passwords at a time. Try installing a password manager and creating new, unique passwords for the websites you visit most frequently. Over time as you log in to other sites, you can add others.",
+              "Sure, it takes time to log all your credentials in a password manager. But you don’t need to do it all at once. You can always start small and change just a few passwords at a time. Try installing a password manager and creating new, unique passwords for the websites you visit most frequently. Over time, as you log in to other sites, you can add others.",
             ],
           },
         ],
@@ -337,7 +336,7 @@ const articleCopy = {
         subhead: "What’s a credit report? Do I have one?",
         paragraphs: [
           "If you’ve ever rented an apartment, opened a bank account, or applied for a credit card or a loan, you likely have a credit report.",
-          "In fact, you have three credit reports. There are three credit reporting bureaus in the United States: Experian, TransUnion, and Equifax. Each one holds a report on you that contains personal information about your credit history. Your credit reports contain:",
+          "In fact, you have three credit reports. There are three credit-reporting bureaus in the United States: Experian, TransUnion, and Equifax. Each one holds a report on you that contains personal information about your credit history. Your credit reports contain:",
         ],
       },
       {
@@ -391,7 +390,7 @@ const articleCopy = {
         paragraphs: [
           "Placing a freeze on your credit report is the most effective method to stop identity thieves in their tracks. It’s completely free with all three bureaus and will not affect your credit cards, credit report, or credit score. You can continue using your cards as you were before.",
           "Freezing your credit report means only you can apply for new cards or loans. No one else will be able to do this in your name. It’s like putting a lock on your credit report, and only you have the key. You can unlock (or unfreeze) your credit report at any time. For example, you may want to open a new credit card. You can temporarily lift the freeze to do so, then refreeze your credit report again after.",
-          "Federal legislation requires credit-reporting agencies to offer free credit freezes and unfreezes. To freeze your credit report with Experian, TransUnion, and Equifax, call them directly or do it on their websites. You may be asked to create a pin code or they may generate one for you. Keep this code safe, because it’s the one you’ll use if you need to unlock your credit. A password manager is a great place to save your pin codes. ",
+          "Federal legislation requires credit-reporting agencies to offer free credit freezes and unfreezes. To freeze your credit report with Experian, TransUnion, and Equifax, call them directly or do it on their websites. You may be asked to create a PIN code or they may generate one for you. Keep this code safe, because it’s the one you’ll use if you need to unlock your credit. A password manager is a great place to save your PIN codes.",
         ],
       },
     ],
@@ -417,7 +416,7 @@ function articleLinks(args) {
       stringId: "how-hackers-work",
       class: "how-hackers-work",
       pathToPartial: "svg/icon-hackers",
-      subhead: "Today’s cyber criminals care most about getting your passwords.",
+      subhead: "Protect your passwords from cyber criminals, since that's what they care about most.",
 
     },
     {
@@ -425,7 +424,7 @@ function articleLinks(args) {
       stringId: "what-to-do-after-breach",
       class: "after-breach",
       pathToPartial: "svg/icon-at",
-      subhead: "How to lock down your accounts and keep your information out of the wrong hands",
+      subhead: "Lock down your accounts to keep your information out of the wrong hands.",
     },
     {
       title: "How to create strong passwords",
@@ -439,14 +438,14 @@ function articleLinks(args) {
       stringId: "steps-to-protect",
       class: "steps-to-protect",
       pathToPartial: "svg/icon-fingerprinters",
-      subhead: "Understand the common threats and know what to look out for.",
+      subhead: "Understand the most common threats and know what to look out for.",
     },
     {
       title: "5 myths about password managers",
       stringId: "five-myths",
       class: "five-myths",
       pathToPartial: "svg/icon-myths",
-      subhead: "If a hacker gets one password, which other accounts could they get in to?",
+      subhead: "Learn how to avoid bad password habits that make a hacker’s work easy.",
     },
     {
       title: "Take further steps to protect your identity",
