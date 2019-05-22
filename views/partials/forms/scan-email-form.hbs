@@ -13,9 +13,9 @@
   {{/if}}
   <div class="input-group-button">
     {{#if featuredBreach}}
-      <input type="submit" value="{{ getString "check-for-breaches" }}"/>
-    {{else}}
       <input type="submit" value="{{ getString "find-out" }}"/>
+    {{else}}
+      <input type="submit" value="{{ getString "check-for-breaches" }}"/>
     {{/if}}
       {{> forms/loader }}
   </div>
