@@ -374,6 +374,7 @@ read-more-tips = Leia mais dicas de segurança
 how-hackers-work = Entenda como os hackers trabalham
 stay-alert = Receba alertas sobre novos vazamentos
 monitor-several-emails = Monitore vários e-mails
+take-action = Tome atitude para proteger suas contas
 website-breach = Vazamento de site
 sensitive-breach = Vazamento de site sensível
 data-aggregator-breach = Vazamento de agregador de dados
@@ -395,6 +396,8 @@ delayed-reporting-headline = Por que demorou tanto para reportar este vazamento?
 about-fxm-headline = Sobre o { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Como o { -product-name } funciona
+how-fxm-1-headline = Faça uma pesquisa básica
+how-fxm-2-blurb = Crie uma { -brand-fxa } para monitorar seu e-mail em vazamentos futuros. Após confirmar seu e-mail, receberá também um relatório completo de vazamentos já detectados, incluindo vazamentos sensíveis.
 how-fxm-3-headline = Receba notificações em seu navegador
 wtd-after-website = O que fazer após um vazamento de site
 wtd-after-data-agg = O que fazer após um vazamento de agregador de dados
@@ -471,6 +474,7 @@ new-breaches-found =
         [one] { $breachCount } NOVO VAZAMENTO ENCONTRADO
        *[other] { $breachCount } NOVOS VAZAMENTOS ENCONTRADOS
     }
+sign-up-headline-1 = Receba alertas de violações futuras com uma { -brand-fxa }.
 get-alerted = Seja alertado sobre novos vazamentos.
 find-out-if = Descubra se seus dados foram expostos neste vazamento.
 fb-comp-only = Este e-mail apareceu no vazamento { $breachName }
@@ -531,6 +535,7 @@ security-tips-headline = Dicas de segurança para se proteger de hackers
 steps-to-protect = Medidas a tomar para proteger sua identidade online
 take-further-steps = Tome medidas adicionais para proteger sua identidade
 alert-about-new-breaches = Me alertar sobre novos vazamentos
+get-ongoing-breach-monitoring = Tenha monitoramento contínuo de vazamentos para vários endereços de e-mail.
 other-known-breaches-found =
     { $breachCount ->
         [one] No entanto, apareceu em { $breachCount } outro vazamento conhecido.
