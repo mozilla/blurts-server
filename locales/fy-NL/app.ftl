@@ -484,6 +484,53 @@ ba-next-step-blurb-2 =
     om harren oan te melden by jo oare accounts. De bêste manier om jo accounts te beskermjen
     is it gebrûk fan unike wachtwurden foar elk derfan.
 ba-next-step-3 = Lit jo helpe by it meitsjen fan bettere wachtwurden en se feilich te hâlden.
+ba-next-step-blurb-3 =
+    Brûk in wachtwurdbehearder om sterke, unike wachtwurden te meitsjen. Wachtwurdbehearders bewarje al
+    jo oanmeldgegevens feilich, sadat jo se op al jo apparaten iepenje kinne.
+faq1 = Ik werken dit bedriuw of dizze website net. Wêrom kom ik foar yn dit datalek?
+faq2 = Wêrom duorre it sa lang om my fan dit datalek op de hichte te stellen?
+faq3 = Hoe wit ik dat dit in legitym e-mailberjocht fan { -product-name } is?
+new-breaches-found =
+    { $breachCount ->
+        [one] { $breachCount } NIJ DATALEK FÛN
+       *[other] { $breachCount } NIJE DATALEKKEN FÛN
+    }
+sign-up-headline-1 = Untfang trochgeand warskôgingen mei in { -brand-fxa }.
+account-not-required = De { -brand-name }-browser is net fereaske foar in { -brand-fxa }. Jo ûntfange mooglik ynformaasje oer tsjinsten fan { -brand-Mozilla }.
+get-alerted = Untfang meldingen oer nije datalekken.
+was-your-info-exposed = Binne jo gegevens lekt yn it datalek { $breachName }?
+find-out-if = Untdek oft jo gegevens lekt binne yn dit datalek.
+fb-not-comp = Dit e-mailadres komt net foar yn it datalek { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] It komt lykwols wol foar yn { $breachCount } oar datalek.
+       *[other] It komt lykwols wol foar yn { $breachCount } oare datalekken.
+    }
+fb-comp-only = Dit e-mailadres komt foar yn it datalek { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Dit e-mailadres komt foar yn { $breachCount } bekend datalek, ynklusyf { $breachName }.
+       *[other] Dit e-mailadres komt foar yn { $breachCount } bekende datalekken, ynklusyf { $breachName }.
+    }
+no-other-breaches-found = Gjin oare datalekken fûn yn in basissykopdracht.
+no-results-blurb = Sorry, dat datalek stiet net yn ús database.
+all-breaches-headline = Alle datalekken yn { -product-name }
+search-breaches = Datalekken sykje
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Resultaat:
+all-breaches = Alle datalekken
 
 ## Updated error messages
 
+error-bot-headline = Sykopdrachten tydlik útsteld
+error-bot-blurb =
+    Wy binne bang dat jo miskien in bot binne, omdat jo yn in koart tiidsrek
+    socht hawwe nei ferskate e-mailadressen. Nije sykopdrachten binne
+    foarearst blokkearre. Jo kinne it letter opnij probearje.
+error-csrf-headline = Sesje ferrûn
+error-csrf-blurb = Selektearje de knop Tebek fan jo browser, laad de side opnij en probearje it nochris.
+error-invalid-unsub = Hoe ôf te melden fan warskôgingen fan { -product-name }
+error-invalid-unsub-blurb =
+    Jo moatte jo ôfmelde fan ien fan de
+    e-mailberichten út dy't { -product-name } jo stjoerd hat. Sjoch yn jo Postfek YN foar berjochten
+    fan { -brand-team-email }. Selektear ûnderoan it e-mailberjocht de keppeling foar ôfmelden.
