@@ -150,6 +150,8 @@ nav {
 .avatar-wrapper {
   border-radius: 50%;
   display: inline-flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   overflow: hidden;
   border: 2px solid rgba(0, 0, 0, 0);
