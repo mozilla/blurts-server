@@ -415,9 +415,75 @@ what-is-data-agg-blurb =
 protect-your-privacy = Jo online privacy beskermje
 no-pw-to-change = Yn tsjinstelling ta in websitedatalek, is der gjin wachtwurd dat wizige wurde moat.
 avoid-personal-info = Mij it gebrûk fan persoanlike gegevens yn wachtwurden
+avoid-personal-info-blurb = It is maklik om jierdagen, adressen en nammen fan famyljeleden online te finen. Mij gebrûk fan dizze wurden yn jo wachtwurden.
 
 ## What to do after data breach tips
 
+change-pw = Wizigje jo wachtwurd
+even-for-old = Sels foar âlde accounts is it wichtich om jo wachtwurd by te wurkjen.
+make-new-pw-unique = Meitsje it nije wachtwurd oars en unyk
+strength-of-your-pw = De krêft fan jo wachtwurden hat daliks ynfloed op jo online feilichheid.
+create-strong-passwords = Hoe meitsje jo sterke wachtwurden
+stop-reusing-pw = Stop mei it opnij brûken fan deselde wachtwurden
+create-unique-pw = Meitsje unike wachtwurden en bewarje se op in feilich plak, lykas in wachtwurdbehearder.
+five-myths = 5 myten oer wachtwurdbehearders
+create-a-fxa = Meitsje in { -brand-fxa } foar jo folsleine rapport fan datalekken en om meldingen te ûntfangen.
+feat-security-tips = Befeiligingstips om jo accounts te beskermjen
+feat-sensitive = Avansearre sykje yn gefoelige datalekken
+feat-enroll-multiple = Registrearje mear e-mailadressen foar beweitsjen fan datalekken
+sign-up-for-fxa = Meld jo oan foar in { -brand-fxa }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Komt foar yn { $breachCount } bekend datalek.
+       *[other] Komt foar yn { $breachCount } bekende datalekken.
+    }
+see-if-breached = Sjoch oft jo yn in online datalek foar kommen binne.
+check-for-breaches = Kontrolearje op datalekken
+find-out-what-hackers-know = Untdek wat hackers al oer jo witte. Lear hoe't jo harren in stap yn it foar bliuwe kinne.
+search-for-your-email = Sykje werom oant 2007 nei jo e-mailadres yn iepenbiere datalekken.
+back-to-top = Werom nei boppe
+comm-opt-0 = Stjoer my in e-mailberjocht as ien fan myn e-mailadressen hjirûnder yn in datalek ferskynt.
+comm-opt-1 = Stjoer alle datalekwarskôgingen nei { $primaryEmail }.
+stop-monitoring-this = Stop mei it kontrolearjen fan dit e-mailadres.
+resend-verification = Ferifikaasje-e-mailberjocht opnij ferstjoere
+add-new-email = In nij e-mailadres tafoegje
+send-verification = Ferifikaasjekeppeling ferstjoere
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Algemiene kommunikaasje
+breach-summary = Gearfetting datalek
+show-breaches-for-this-email = Toan alle datalekken foar dit e-mailadres.
+link-change-primary = Primêre e-mailadres wizigje
+remove-fxm = { -product-name } fuortsmite
+remove-fxm-blurb =
+    Skeakelje warskôgingen fan { -product-name } út. Jo { -brand-fxa } bliuwt aktyf en jo ûntfange
+    mooglik oare accountrelatearre kommunikaasje.
+manage-email-addresses = E-mailadressen beheare
+latest-breach-link = Sjoch oft jo yn dit datalek foar komme
+welcome-back = Wolkom werom, { $userName }!
+welcome-user = Wolkom, { $userName }!
+breach-alert-subject = { -product-name } hat jo e-mailadres fûn yn in nij datalek.
+your-info-was-discovered-headline = Jo gegevens binne ûntdekt yn in nij datalek.
+your-info-was-discovered-blurb =
+    Jo binne oanmeld om { -product-name }-meldingen te ûntfangen
+    wannear jo e-mailadres ferskynt yn in datalek. Dit is wat wy witte oer dit datalek.
+what-to-do-after-breach = Wat te dwaan nei in datalek
+ba-next-step-1 = Wizigje jo wachtwurd yn in sterk, unyk wachtwurd.
+ba-next-step-blurb-1 =
+    In sterk wachtwurd brûkt in kombinaasje fan haadletters en lytse letters,
+    spesjale tekens en sifers. It befettet gjin persoanlike ynformaasje lykas
+    jo adres, bertedatum of famyljenammen.
+ba-next-step-2 = Stop folslein it gebrûk fan dat lekte wachtwurd.
+ba-next-step-blurb-2 =
+    Cyberkriminelen kinne jo wachtwurd op it dark web fine en it brûke
+    om harren oan te melden by jo oare accounts. De bêste manier om jo accounts te beskermjen
+    is it gebrûk fan unike wachtwurden foar elk derfan.
+ba-next-step-3 = Lit jo helpe by it meitsjen fan bettere wachtwurden en se feilich te hâlden.
 
 ## Updated error messages
 
