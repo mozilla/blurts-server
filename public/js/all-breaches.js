@@ -84,7 +84,7 @@ function makeBreaches(breachArray, breachCardWrapper) {
     makeBreachInfoSpans("breach-title", breach.Title, wrapper);
 
     // added date
-    makeBreachInfoSpans("breach-key", breach.AddedDate, wrapper);
+    makeBreachInfoSpans("breach-key", breach.String.AddedDate, wrapper);
     makeBreachInfoSpans("breach-value", breach.AddedDate, wrapper);
 
     // compromised accounts
