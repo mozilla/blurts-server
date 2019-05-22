@@ -370,11 +370,16 @@ breach-discovered = Vazamento descoberto:
 # Link title
 more-about-this-breach = Mais sobre este vazamento
 take-control = Assuma de volta o controle sobre seus dados pessoais.
+cant-stop-hackers = Você não pode impedir hackers de hackear. Mas pode evitar hábitos ruins que facilitam o trabalho deles.
 read-more-tips = Leia mais dicas de segurança
 how-hackers-work = Entenda como os hackers trabalham
+monitor-your-online-accounts = Inscreva-se no monitoramento de violações com uma { -brand-fxa }.
 stay-alert = Receba alertas sobre novos vazamentos
+if-your-info = Se suas informações surgirem em uma nova violação de dados, enviaremos um alerta.
+search-all-emails = Pesquise vazamentos de todas as suas contas de e-mail e receba alertas de novas ameaças.
 monitor-several-emails = Monitore vários e-mails
 take-action = Tome atitude para proteger suas contas
+keep-your-data-safe = Descubra o que você precisa fazer para manter seus dados protegidos contra criminosos cibernéticos.
 website-breach = Vazamento de site
 sensitive-breach = Vazamento de site sensível
 data-aggregator-breach = Vazamento de agregador de dados
@@ -393,7 +398,9 @@ sensitive-sites-copy =
     a única pessoa que pode ver se suas informações apareceram em um vazamento (a menos que
     mais alguém tenha acesso à sua conta de e-mail).
 delayed-reporting-headline = Por que demorou tanto para reportar este vazamento?
+delayed-reporting-copy = Às vezes demora meses ou anos para que credenciais expostas em um vazamento de dados apareça na dark web. Vazamentos são adicionados ao nosso banco de dados assim que são descobertos e confirmados.
 about-fxm-headline = Sobre o { -product-name }
+about-fxm-blurb = O { -product-name } avisa se suas contas online estiveram envolvidas em um vazamento de dados. Descubra se você esteve em algum vazamento de dados, receba alertas sobre novos vazamentos e tome medidas para proteger suas contas online. O { -product-name } é fornecido pela { -brand-Mozilla }.
 # How Firefox Monitor works
 how-fxm-works = Como o { -product-name } funciona
 how-fxm-1-headline = Faça uma pesquisa básica
