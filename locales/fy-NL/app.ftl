@@ -366,10 +366,55 @@ unverified-breach-plural = Net-ferifiearre datalekken
 spam-list-breach-plural = Spamlistdatalekken
 what-data = Hokker gegevens binne kompromittearre:
 sensitive-sites = Hoe behannelet { -product-name } gefoelige websites?
+sensitive-sites-copy =
+    { -product-name } ûntbleatet allinnich accounts dy't troffen binne troch dit
+    soarte datalekken nei ferifikaasje fan in e-mailadres. Dit betsjut dat jo de
+    iennige persoan binne dy't sjen kin oft jo ynformaasje yn dit datalek foar komt
+    (útsein in oar tagong ta jo e-mailaccount hat).
+delayed-reporting-headline = Wêrom duorre it sa lang eardat dit datalek meld waard?
+delayed-reporting-copy =
+    It kin somtiden moannen of jierren duorje eardat de oanmeldgegevens dy't yn in datalek
+    foar komme op it dark web ferskine. Datalekken wurde, sa gau as se ûntdekt binne en
+    ferifiearre, oan ús database tafoege.
 about-fxm-headline = Oer { -product-name }
+about-fxm-blurb =
+    { -product-name } warskôget as jo online accounts belutsen binne by in
+    datalek. Untdek oft jo troffen binne troch in datalek, ûntfang meldingen oer nije datalekken,
+    en ûndernim stappen om jo online accounts te beskermjen. { -product-name } wurdt oanbean
+    troch { -brand-Mozilla }.
+fxm-warns-you =
+    { -product-name } warskôget jo as jo e-mailadres foar komt
+    yn in online datalek. Sjoch oft jo ynformaasje lekt is, lês hoe't
+    jo jo online accounts better beskermje kinne en ûntfang in warskôging
+    as jo e-mailadres foar komt yn in nij datalek.
 # How Firefox Monitor works
 how-fxm-works = Hoe { -product-name } wurket
 how-fxm-1-headline = In ienfâldige sykopdracht útfiere
+how-fxm-1-blurb =
+    Sykje nei jo e-mailadres yn bekende datalekken weromgeand
+    oant 2007. Dizze ienfâldige sykopdracht sil de measte datalekken werjaan, mar net
+    de datalekken dy't gefoelige persoanlike ynformaasje befetsje.
+how-fxm-2-headline = Skriuw jo yn foar it beweitsjen fan datalekken
+how-fxm-2-blurb =
+    Meitsje in { -brand-fxa } om jo e-mailadres trochgeand te kontrolearjen op datalekken.
+    Nei ferifikaasje fan jo e-mailadres, ûntfange jo ek in folslein rapport oer eardere datalekken,
+    ynklusyf gefoelige datalekken.
+how-fxm-3-headline = Untfang meldingen yn jo browser
+how-fxm-3-blurb =
+    As jo { -brand-name } brûke, ûntfange jo in melding as jo in besite bringe oan in
+    website dy't skeind is. Untdek it daliks as jo yn it datalek foar komme en
+    wat jo der oan dwaan kinne.
+wtd-after-website = Wat te dwaan nei in datalek fan de website
+wtd-after-data-agg = Wat te dwaan nei in datalek fan in gegevenssamler
+what-is-data-agg = Wat is in gegevenssamler?
+what-is-data-agg-blurb =
+    Data-samlers of gegevenshannelers sammelje ynformaasje út iepenbiere
+    boarnen en keapje dizze fan oare bedriuwen. Se fetsje dizze gegevens tegearre om se foar marketingdoeleinen
+    oan bedriuwen te ferkeapjen. Slachtoffers fan dizze lekken hawwe minder kâns om troch finansjele fraude troffen te
+    wurden, mar hackers soenen dizze gegevens brûke kinne om harren as har foar te dwaan of harren te profilearjen.
+protect-your-privacy = Jo online privacy beskermje
+no-pw-to-change = Yn tsjinstelling ta in websitedatalek, is der gjin wachtwurd dat wizige wurde moat.
+avoid-personal-info = Mij it gebrûk fan persoanlike gegevens yn wachtwurden
 
 ## What to do after data breach tips
 
