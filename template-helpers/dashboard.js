@@ -29,6 +29,16 @@ function getBreachesForEachEmail(args) {
   return args.fn(emailCards);
 }
 
+function welcomeMessage(args) {
+  const locales = args.data.root.req.supportedLocales;
+  const userEmail = `<span class="bold">${args.data.root.req.session.user.fxa_profile_json.email}</span>`;
+  if (args.data.root.req.session.newUser) {
+    return LocaleUtils.fluentFormat(locales, "welcome-user", { userName: userEmail });
+  }
+
+  return LocaleUtils.fluentFormat(locales, "welcome-back", { userName: userEmail});
+}
+
 
 function getUserPreferences(args) {
   const unverifiedEmails = args.data.root.unverifiedEmails;
@@ -85,4 +95,5 @@ function getUserPreferences(args) {
 module.exports = {
   getUserPreferences,
   getBreachesForEachEmail,
+  welcomeMessage,
 };
