@@ -97,7 +97,7 @@ button:focus,
   opacity: 0;
   background: rgba(215, 0, 34, 1);
   top: -7px;
-  content: '.';
+  content: '';
   height: 16px;
   position: absolute;
   text-indent: -999px;
