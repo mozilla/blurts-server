@@ -244,7 +244,7 @@ async function getUnsubscribe(req, res) {
   }
 
   const emailAddress = await DB.getEmailByToken(req.query.token);
-  if (!subscriber && !emailAddress) {
+  if (!emailAddress) {
     throw new FluentError("error-not-subscribed");
   }
 

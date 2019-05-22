@@ -53,8 +53,8 @@ if (document.querySelector(".email-card")) {
   });
 }
 
-if (document.querySelector(".remove-fxm")) {
-  const removeMonitorButton = document.querySelector(".remove-fxm");
+const removeMonitorButton = document.querySelector(".remove-fxm");
+if (removeMonitorButton) {
   removeMonitorButton.addEventListener("click", async (e) => {
     const {formAction, primaryToken, primaryHash} = e.target.dataset;
     await sendForm(formAction, {primaryToken, primaryHash});
