@@ -175,9 +175,6 @@ nav {
   top: 0;
   right: 0;
   z-index: 2;
-  max-width: 400px;
-  min-width: 230px;
-  width: 30vw;
   pointer-events: none;
   transition: all 0.15s ease-in-out;
 }
@@ -284,6 +281,10 @@ nav {
 @media screen and (max-width: 600px) {
   .fx-monitor {
     font-size: 1.25rem;
+  }
+
+  .nav-user-email {
+    font-size: 1rem;
   }
 
   .fx-monitor span {
