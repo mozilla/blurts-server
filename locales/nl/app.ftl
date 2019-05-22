@@ -439,7 +439,7 @@ appears-in-x-breaches =
         [one] Komt voor in { $breachCount } bekend datalek.
        *[other] Komt voor in { $breachCount } bekende datalekken.
     }
-see-if-breached = Kijk of u in een online datalek voorgekomen bent.
+see-if-breached = Kijk of u in een online datalek voor gekomen bent.
 check-for-breaches = Controleer op datalekken
 find-out-what-hackers-know = Ontdek wat hackers al over u weten. Leer hoe u hen een stap voor kunt blijven.
 search-for-your-email = Zoek terug tot 2007 naar uw e-mailadres in openbare datalekken.
@@ -483,7 +483,7 @@ ba-next-step-blurb-2 =
     Cybercriminelen kunnen uw wachtwoord op het dark web vinden en het gebruiken
     om zich aan te melden bij uw andere accounts. De beste manier om uw accounts te beschermen
     is het gebruik van unieke wachtwoorden voor elk ervan.
-ba-next-step-3 = Laat u helpen bij het maken van betere wachtwoorden en ze veilig houden.
+ba-next-step-3 = Laat u helpen bij het maken van betere wachtwoorden en ze veilig te houden.
 ba-next-step-blurb-3 =
     Gebruik een wachtwoordbeheerder om sterke, unieke wachtwoorden te maken. Wachtwoordbeheerders slaan al
     uw aanmeldgegevens veilig op, zodat u ze op al uw apparaten kunt openen.
