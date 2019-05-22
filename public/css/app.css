@@ -294,6 +294,10 @@ a.btn-light:active {
   align-items: center;
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 ul {
   padding: 0;
   display: flex;
