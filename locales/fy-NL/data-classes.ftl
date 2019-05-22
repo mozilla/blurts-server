@@ -12,6 +12,9 @@ avatars = Avatars
 bank-account-numbers = Bankrekkeningnûmers
 beauty-ratings = Skjintmewurdearringen
 biometric-data = Biometryske gegevens
+# This string is the shortened version of "Biographies", and 
+# refers to biographical data about a user.
+bios = Bio's
 browser-user-agent-details = Details oer de brûkte browser
 browsing-histories = Navigaasjeskiednis
 buying-preferences = Oankeapfoarkarren
@@ -37,6 +40,7 @@ education-levels = Opleidingsnivo's
 email-addresses = E-mailadressen
 email-messages = E-mailberjochten
 employers = Wurkjouwers
+employment-statuses = Aktiviteitssteat
 ethnicities = Etnyskiteiten
 family-members-names = Nammen fan famyljeleden
 family-plans = Famyljeplannen
@@ -101,6 +105,7 @@ smoking-habits = Smookgewoanten
 sms-messages = Sms-berjochten
 social-connections = Sosjale konneksjes
 social-media-profiles = Profilen op sosjale media
+social-security-numbers = Sofinûmers
 spoken-languages = Sprutsen talen
 support-tickets = Stipeoanfragen
 survey-results = Resultaten fan fragelisten

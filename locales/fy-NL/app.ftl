@@ -578,3 +578,37 @@ other-monitored-emails = Oare yn 'e gaten holden e-mailadressen
 email-verification-required = E-mailferifikaasje fereaske
 fxa-primary-email = { -brand-fxa } E-mailadres – Primêr
 what-is-a-website-breach = Wat is in websitedatalek?
+website-breach-blurb = In datalek fan in website bart, wannear cyberkriminelen persoanlike gegevens út online-accounts stelle, kopiearje of bleatlizze. Dat bart it meast, wannear hackers in swak plak yn de befeiliging fan de website fine. It kin lykwols ek barre as accountynformaasje by fersin lekt wurdt.
+security-tips-headline = Befeiligingstips om josels tsjin hackers te beskermjen
+steps-to-protect = Te nimmen stappen om jo online identiteit te beskermjen
+take-further-steps = Undernim fierdere stappen om jo identiteit te beskermjen
+alert-about-new-breaches = Warskôgje my oer nije datalekken
+see-if-youve-been-part = Sjoch oft jo ûnderdiel binne fan in online datalek.
+get-ongoing-breach-monitoring = Krij kontinue bewekking foar mear e-mailadressen.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = No útprobearje
+new-unsub-error = Jo moatte jo ôfmelde fan ien fan de troch { -product-name } ferstjoerde e-mailberjochten út.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] It is lykwols wol tefoaren kommen yn { $breachCount } oar bekend lek.
+       *[other] It is lykwols wol tefoaren kommen yn { $breachCount } oare bekende lekken.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Oanfoljende ynformaasje, wêrûnder:
+# Title
+email-addresses-title = E-mailadressen
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = Op { $breachDate }, wie { $breachTitle } slachtoffer fan in datalek. Nei dat it datalek ûntdekt en ferifiearre waard, waard dit op { $addedDate } oan ús database tafoege.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = { -product-short-name }-foarkarren
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Oanmeld as: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Filterje op kategory:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menu
