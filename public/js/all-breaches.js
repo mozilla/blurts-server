@@ -1,35 +1,5 @@
 "use strict";
 
-
-function breachImages() {
-  this.active = false;
-  this.lazyLoad = () => {
-    let lazyImages = [].slice.call(document.querySelectorAll(".lazy-img"));
-    if (this.active === false) {
-      this.active = true;
-      const winHeight = window.innerHeight;
-      lazyImages.forEach(lazyImage => {
-        if ((lazyImage.getBoundingClientRect().top <= winHeight && lazyImage.getBoundingClientRect().bottom >= 0)) {
-          lazyImage.classList.add("lazy-loaded");
-          lazyImage.classList.remove("lazy-img");
-          lazyImage.src = lazyImage.dataset.src;
-          lazyImage.srcset = lazyImage.dataset.srcset;
-
-          lazyImages = lazyImages.filter(image => {
-            return image !== lazyImage;
-          });
-          if (lazyImages.length === 0) {
-            document.removeEventListener("scroll", this.lazyLoad);
-            window.removeEventListener("resize", this.lazyLoad);
-            window.removeEventListener("orientationchange", this.lazyLoad);
-          }
-        }
-      }),
-      this.active = false;
-    }
-  };
-}
-
 const makeBreachInfoSpans = (className, spanContent, wrapper) => {
   const span = document.createElement("span");
   span["classList"] = className;
@@ -51,7 +21,7 @@ function clearBreaches(wrapper) {
   }
 }
 
-function makeBreaches(breachArray, breachCardWrapper) {
+function makeBreaches(breachArray, breachCardWrapper, observer) {
   breachCardWrapper.classList.toggle("hide-breaches");
   clearBreaches(breachCardWrapper);
 
@@ -84,7 +54,7 @@ function makeBreaches(breachArray, breachCardWrapper) {
     makeBreachInfoSpans("breach-title", breach.Title, wrapper);
 
     // added date
-    makeBreachInfoSpans("breach-key", breach.String.AddedDate, wrapper);
+    makeBreachInfoSpans("breach-key", breach.AddedDate, wrapper);
     makeBreachInfoSpans("breach-value", breach.AddedDate, wrapper);
 
     // compromised accounts
@@ -102,23 +72,40 @@ function makeBreaches(breachArray, breachCardWrapper) {
 
   breachCardWrapper.appendChild(fragment);
   breachCardWrapper.classList.toggle("hide-breaches");
-  const breachLogos = new breachImages();
-  breachLogos.lazyLoad();
-  document.addEventListener("scroll", breachLogos.lazyLoad);
-  window.addEventListener("resize", breachLogos.lazyLoad);
-  window.addEventListener("orientationchange", breachLogos.lazyLoad);
+
+  document.querySelectorAll(".breach-logo").forEach(image => {
+    observer.observe(image);
+  });
   return breachArray;
 }
 
+function lazyLoad(images, lazyLoader) {
+  images.forEach(observedImage => {
+    if (observedImage.isIntersecting) {
+      const image = observedImage.target;
+      image.classList.add("lazy-loaded");
+      image.src = image.dataset.srcset;
+      lazyLoader.unobserve(image);
+    }
+  });
+}
+
 (async() => {
+  const breachCardWrapper = document.querySelector("#all-breaches");
 
-  if (document.getElementById("all-breaches")) {
-    const breachCardWrapper = document.getElementById("all-breaches");
+  if (breachCardWrapper) {
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px 0px 0px 0px",
+      threshold: .1,
+    };
+
+    const lazyLoader = new IntersectionObserver(lazyLoad, observerOptions);
     const breachWrapper = document.getElementById("breach-array-json");
-
     const breachArray = JSON.parse(breachWrapper.dataset.breachArray);
 
-    makeBreaches(breachArray, breachCardWrapper);
+
+    makeBreaches(breachArray, breachCardWrapper, lazyLoader);
 
     document.onreadystatechange = () => {
       if (document.readyState === "complete") {
@@ -136,7 +123,7 @@ function makeBreaches(breachArray, breachCardWrapper) {
     showAllBreaches.addEventListener("click", (e) => {
       e.preventDefault();
       fuzzyFindInput.value = "";
-      makeBreaches(breachArray, breachCardWrapper);
+      makeBreaches(breachArray, breachCardWrapper, lazyLoader);
       showAllBreaches.classList = ["show-all-breaches"];
       noResultsBlurb.classList = "";
       return false;
@@ -164,7 +151,7 @@ function makeBreaches(breachArray, breachCardWrapper) {
 
     const backToTopButton = document.getElementById("back-to-top");
     backToTopButton.addEventListener("click", () => {
-      window.scrollTo(0, 0);
+      win.scrollTo(0, 0);
     });
 
     const searchBreaches = (e) => {
@@ -182,13 +169,13 @@ function makeBreaches(breachArray, breachCardWrapper) {
       // and clear out input
       if (e.keyCode === 13) {
         if (noResultsBlurb.classList.contains("show")) {
-          makeBreaches(breachArray, breachCardWrapper);
+          makeBreaches(breachArray, breachCardWrapper, lazyLoader);
           noResultsBlurb.classList = "";
           showAllBreaches.classList = ["show-all-breaches"];
           fuzzyFindInput.value = "";
           return false;
         }
-        makeBreaches(filteredBreachArray, breachCardWrapper);
+        makeBreaches(filteredBreachArray, breachCardWrapper, lazyLoader);
         return false;
       }
 
@@ -199,7 +186,7 @@ function makeBreaches(breachArray, breachCardWrapper) {
         noResultsBlurb.classList = "";
       }
 
-      makeBreaches(filteredBreachArray, breachCardWrapper);
+      makeBreaches(filteredBreachArray, breachCardWrapper, lazyLoader);
       return false;
     };
 

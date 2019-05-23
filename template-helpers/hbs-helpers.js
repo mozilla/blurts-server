@@ -162,6 +162,16 @@ function breachMath(lValue, operator = null, rValue = null) {
 }
 
 
+function IntersectionObserverPolyfill(args) {
+  const topLevel = (args.data.exphbs.view === "top-level-page");
+  if (topLevel) {
+    /* eslint-disable-next-line quotes */
+    return `<script type="text/javascript" src="/dist/intersection-observer.min.js"></script>`;
+  }
+}
+/* eslint-enable quotes */
+
+
 module.exports = {
   getString,
   getStrings,
@@ -177,4 +187,5 @@ module.exports = {
   ifCompare,
   breachMath,
   loop,
+  IntersectionObserverPolyfill,
 };
