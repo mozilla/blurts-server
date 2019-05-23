@@ -164,9 +164,8 @@ function getNewBreachesForEmailEntriesSinceDate(emailEntries, date) {
 
 
 async function getDashboard(req, res) {
-  _requireSessionUser(req, res);
+  const user = _requireSessionUser(req, res);
   const allBreaches = req.app.locals.breaches;
-  const user = req.session.user;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
 
   req.session.user = await DB.setBreachesLastShownNow(user);
@@ -307,9 +306,8 @@ async function postUnsubscribe(req, res) {
 
 
 async function getPreferences(req, res) {
-  _requireSessionUser(req);
+  const user = _requireSessionUser(req);
   const allBreaches = req.app.locals.breaches;
-  const user = req.session.user;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
 
   res.render("dashboards", {
