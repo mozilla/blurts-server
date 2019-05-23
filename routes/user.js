@@ -2,6 +2,7 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
+const csrf = require("csurf");
 
 const { asyncMiddleware } = require("../middleware");
 const {
@@ -13,20 +14,21 @@ const {
 const router = express.Router();
 const jsonParser = bodyParser.json();
 const urlEncodedParser = bodyParser.urlencoded({ extended: false });
+const csrfProtection = csrf();
 
 
 router.get("/dashboard", asyncMiddleware(getDashboard));
-router.get("/preferences", asyncMiddleware(getPreferences));
+router.get("/preferences", csrfProtection, asyncMiddleware(getPreferences));
 router.get("/logout", logout);
-router.post("/email", urlEncodedParser, asyncMiddleware(add));
-router.post("/remove-email", urlEncodedParser, asyncMiddleware(removeEmail));
-router.post("/resend-email", jsonParser, asyncMiddleware(resendEmail));
-router.post("/update-comm-option", jsonParser, asyncMiddleware(updateCommunicationOptions));
+router.post("/email", urlEncodedParser, csrfProtection, asyncMiddleware(add));
+router.post("/remove-email", urlEncodedParser, csrfProtection, asyncMiddleware(removeEmail));
+router.post("/resend-email", jsonParser, csrfProtection, asyncMiddleware(resendEmail));
+router.post("/update-comm-option", jsonParser, csrfProtection, asyncMiddleware(updateCommunicationOptions));
 router.get("/verify", jsonParser, asyncMiddleware(verify));
 router.use("/unsubscribe", urlEncodedParser);
 router.get("/unsubscribe", asyncMiddleware(getUnsubscribe));
-router.post("/unsubscribe", asyncMiddleware(postUnsubscribe));
-router.get("/remove-fxm", urlEncodedParser, asyncMiddleware(getRemoveFxm));
-router.post("/remove-fxm", jsonParser, asyncMiddleware(postRemoveFxm));
+router.post("/unsubscribe", csrfProtection, asyncMiddleware(postUnsubscribe));
+router.get("/remove-fxm", urlEncodedParser, csrfProtection, asyncMiddleware(getRemoveFxm));
+router.post("/remove-fxm", jsonParser, csrfProtection, asyncMiddleware(postRemoveFxm));
 
 module.exports = router;

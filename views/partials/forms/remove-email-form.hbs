@@ -1,4 +1,5 @@
                   <form action="/user/remove-email" method="POST" class="remove-email svg-wrap" aria-label="{{ getString "stop-monitor-this" }}">
                     <input type="hidden" name="emailId" value="{{ id }}" />
+                    <input type="hidden" name="_csrf" value="{{ csrfToken }}">
                     <input class="remove-email-submit" type="submit" value="" />{{> svg/trash-can}}
                   </form>
