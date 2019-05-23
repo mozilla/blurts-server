@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -345,6 +346,12 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = { -brand-fxa } menüsünü aç
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = EKLENEN SON İHLAL
+breach-added = İhlalin bildirilmesi:
+breach-discovered = İhlalin keşfedilmesi:
+# Link title
+more-about-this-breach = Bu ihlal hakkında daha fazla bilgi
+take-control = Kişisel verilerinizin kontrolünü geri alın.
+read-more-tips = Daha dazla güvenlik ipucu
 
 ## What to do after data breach tips
 
