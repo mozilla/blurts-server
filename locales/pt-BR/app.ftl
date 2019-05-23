@@ -457,6 +457,8 @@ appears-in-x-breaches =
     }
 see-if-breached = Veja se você esteve em um vazamento de dados online.
 check-for-breaches = Verificar se há vazamentos
+find-out-what-hackers-know = Descubra os que os hackers já sabem sobre você. Saiba como estar um passo à frente deles.
+search-for-your-email = Pesquise seu endereço de e-mail em vazamentos de dados públicos desde 2007.
 back-to-top = Voltar ao início
 comm-opt-0 = Enviar e-mail para mim se um de meus endereços de e-mail abaixo aparecer em um vazamento de dados.
 comm-opt-1 = Enviar todos os alertas de vazamento para { $primaryEmail }.
@@ -497,16 +499,35 @@ ba-next-step-blurb-2 =
     Criminosos cibernéticos podem encontrar sua senha na dark web e usar 
     para acessar suas outras contas. A melhor maneira de proteger suas contas 
     é usar uma senha única em cada conta.
+ba-next-step-3 = Obtenha ajuda para criar senhas melhores e mantê-las protegidas.
+ba-next-step-blurb-3 = Use um gerenciador de senhas para criar senhas fortes e únicas. Gerenciadores de senhas armazenam com segurança todas as suas contas, assim você pode acessá-las em todos os seus dispositivos.
+faq1 = Não reconheço essa empresa ou site. Por que estou neste vazamento?
 faq2 = Por que demorou tanto para me notificar deste vazamento?
+faq3 = Como saber se este é um e-mail legítimo do { -product-name }?
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } NOVO VAZAMENTO ENCONTRADO
        *[other] { $breachCount } NOVOS VAZAMENTOS ENCONTRADOS
     }
 sign-up-headline-1 = Receba alertas de violações futuras com uma { -brand-fxa }.
+account-not-required = O navegador { -brand-name } não é obrigatório para ter uma { -brand-fxa }. Você pode receber informações sobre serviços da { -brand-Mozilla }.
 get-alerted = Seja alertado sobre novos vazamentos.
+was-your-info-exposed = Suas informações foram expostas no vazamento de dados de { $breachName }?
 find-out-if = Descubra se seus dados foram expostos neste vazamento.
+fb-not-comp = Este e-mail não apareceu no vazamento de { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] No entanto, ele apareceu em { $breachCount } outro vazamento.
+       *[other] No entanto, ele apareceu em { $breachCount } outros vazamentos.
+    }
 fb-comp-only = Este e-mail apareceu no vazamento { $breachName }
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Este e-mail apareceu em { $breachCount } vazamento de dados conhecido, incluindo { $breachName }.
+       *[other] Este e-mail apareceu em { $breachCount } vazamentos de dados conhecidos, incluindo { $breachName }.
+    }
+no-other-breaches-found = Nenhum outro vazamento foi encontrado em uma pesquisa básica.
+no-results-blurb = Desculpe, aquele vazamento não está em nosso banco de dados.
 all-breaches-headline = Todos os vazamentos no { -product-name }
 search-breaches = Pesquisar vazamentos
 # "Appears in-page as: Showing: All Breaches"
