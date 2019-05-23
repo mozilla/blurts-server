@@ -351,7 +351,7 @@ test("user/remove-fxm GET request with invalid session returns error", async () 
 
 test("user/remove-fxm GET request with valid session returns 200 and renders remove_fxm", async () => {
   // Set up mocks
-  const req = { fluentFormat: jest.fn(), session: { user: TEST_SUBSCRIBERS.firefox_account }};
+  const req = { fluentFormat: jest.fn(), csrfToken: jest.fn(), session: { user: TEST_SUBSCRIBERS.firefox_account }};
   const resp = httpMocks.createResponse();
   resp.render = jest.fn();
 

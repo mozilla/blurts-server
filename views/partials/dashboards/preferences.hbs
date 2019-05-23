@@ -13,7 +13,7 @@
         <section>
           {{#each communicationOptions}}
             <label class="radio-container">
-              <input class="radio-comm-option" data-comm-option="{{ optionId }}" data-form-action="update-comm-option" type="radio" {{ optionChecked }} name="1">
+              <input class="radio-comm-option" data-comm-option="{{ optionId }}" data-form-action="update-comm-option" data-csrf-token="{{ ../csrfToken }}" type="radio" {{ optionChecked }} name="1">
               <span class="radio-label">{{{ labelString }}}</span>
               <span class="checkmark"></span>
             </label>
@@ -33,7 +33,7 @@
       </div>
       <div class="pref">
         <h4 class="email-pref add-new">{{ getString "add-new-email" }}</h4>
-        {{> forms/add-another-email-form }}
+        {{> forms/add-another-email-form csrfToken=../csrfToken}}
       </div>
       <div class="pref remove">
         <a href="/user/remove-fxm"><h3 class="remove-fxm subhead">{{ getString "remove-fxm" }}{{> svg/arrow-head-right }}</h3></a>

@@ -1,4 +1,5 @@
             <form action="/user/email" method="post" id="add-another-email-form" class="form-group add-new-email-form" data-event-category="Add Another Email Form">
+              <input type="hidden" name="_csrf" value="{{ csrfToken }}">
               <div class="input-group">
                 <input id="email-add" class="input-group-field email-add" type="email" name="email" placeholder="{{ getString "scan-placeholder"}}" aria-label="{{ getString "scan-placeholder"}}" autocomplete="off">
                 {{> forms/error-message }}
