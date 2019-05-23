@@ -36,8 +36,7 @@ h2.pref-headline.breach-summary {
 }
 
 .pref.remove {
-  margin-top: 2rem;
-  padding-bottom: 4rem;
+  margin: 6rem 0;
 }
 
 .pref .col-9 {
@@ -61,6 +60,7 @@ button.resend-email {
   color: var(--alertRed);
   font-weight: 700;
   align-items: center;
+  font-size: 1.3rem;
 }
 
 .remove-fxm .arrow-head-right path {

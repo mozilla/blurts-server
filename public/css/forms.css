@@ -167,6 +167,7 @@ input[type="submit"] {
   color: rgba(255, 255, 255, 1);
   font-weight: 700;
   border-color: var(--blue3);
+  letter-spacing: 0.03em;
 }
 
 form.invalid input[type="submit"]:focus {
@@ -186,6 +187,11 @@ input.email-add-submit {
   color: rgba(255, 255, 255, 1);
   border-color: var(--blue3);
   font-weight: 500;
+}
+
+input.unsub {
+  padding: 0;
+  cursor: pointer;
 }
 
 /* radio buttons */
