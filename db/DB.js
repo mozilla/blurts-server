@@ -259,6 +259,11 @@ const DB = {
     return updatedSubscriber;
   },
 
+  async removeSubscriber(subscriber) {
+    await knex("email_addresses").where({"subscriber_id": subscriber.id}).del();
+    await knex("subscribers").where({"id": subscriber.id}).del();
+  },
+
   async removeSubscriberByEmail(email) {
     const sha1 = getSha1(email);
     return await this._getSha1EntryAndDo(sha1, async aEntry => {

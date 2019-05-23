@@ -1,6 +1,5 @@
 "use strict";
 
-const crypto = require("crypto");
 const isemail = require("isemail");
 
 
@@ -19,8 +18,13 @@ function _requireSessionUser(req,res) {
   return req.session.user;
 }
 
-function removeEmail(req, res) {
+async function removeEmail(req, res) {
   const emailId = req.body.emailId;
+  const sessionUser = _requireSessionUser(req);
+  const existingEmail = await DB.getEmailById(emailId);
+  if (existingEmail.subscriber_id !== sessionUser.id) {
+    throw new FluentError("error-not-subscribed");
+  }
 
   DB.removeOneSecondaryEmail(emailId);
   res.redirect("/user/preferences");
@@ -226,22 +230,26 @@ async function verify(req, res) {
 }
 
 
+// legacy /user/unsubscribe controller for pre-FxA unsubscribe links
 async function getUnsubscribe(req, res) {
   if (!req.query.token) {
     throw new FluentError("user-unsubscribe-token-error");
   }
 
   const subscriber = await DB.getSubscriberByToken(req.query.token);
+  // Token is for a primary email address,
+  // redirect to preferences to remove Firefox Monitor
+  if (subscriber) {
+    return res.redirect("/user/preferences");
+  }
 
-  //throws error if user backs into and refreshes unsubscribe page
-  if (!subscriber) {
+  const emailAddress = await DB.getEmailByToken(req.query.token);
+  if (!emailAddress) {
     throw new FluentError("error-not-subscribed");
   }
 
   res.render("subpage", {
     title: req.fluentFormat("user-unsubscribe-title"),
-    headline: req.fluentFormat("unsub-headline"),
-    subhead: req.fluentFormat("unsub-blurb"),
     whichPartial: "subpages/unsubscribe",
     token: req.query.token,
     hash: req.query.hash,
@@ -249,22 +257,47 @@ async function getUnsubscribe(req, res) {
 }
 
 
+async function getRemoveFxm(req, res) {
+  const sessionUser = _requireSessionUser(req);
+
+  res.render("subpage", {
+    title: req.fluentFormat("remove-fxm"),
+    subscriber: sessionUser,
+    whichPartial: "subpages/remove_fxm",
+  });
+}
+
+
+async function postRemoveFxm(req, res) {
+  const sessionUser = _requireSessionUser(req);
+  await DB.removeSubscriber(sessionUser);
+  await FXA.revokeOAuthToken(sessionUser.fxa_refresh_token);
+
+  req.session.reset();
+  res.redirect("/");
+}
+
+
 async function postUnsubscribe(req, res) {
-  if (!req.body.token || !req.body.emailHash) {
+  const { token, emailHash } = req.body;
+
+  if (!token || !emailHash) {
     throw new FluentError("user-unsubscribe-token-email-error");
   }
-  const unsubscribedUser = await DB.removeSubscriberByToken(req.body.token, req.body.emailHash);
-  await FXA.revokeOAuthToken(unsubscribedUser.fxa_refresh_token);
 
-  // if user backs into unsubscribe page and clicks "unsubscribe" again
+  // legacy unsubscribe link page uses removeSubscriberByToken
+  const unsubscribedUser = await DB.removeSubscriberByToken(token, emailHash);
   if (!unsubscribedUser) {
-    throw new FluentError("error-not-subscribed");
+    const emailAddress = await DB.getEmailByToken(token);
+    if (!emailAddress) {
+      throw new FluentError("error-not-subscribed");
+    }
+    await DB.removeOneSecondaryEmail(emailAddress.id);
+    return res.redirect("/user/preferences");
   }
-
-  const surveyTicket = crypto.randomBytes(40).toString("hex");
-  req.session.unsub = surveyTicket;
-
-  res.redirect("unsubscribe_survey");
+  await FXA.revokeOAuthToken(unsubscribedUser.fxa_refresh_token);
+  req.session.reset();
+  res.redirect("/");
 }
 
 
@@ -282,28 +315,6 @@ async function getPreferences(req, res) {
 }
 
 
-function getUnsubSurvey(req, res) {
-  //throws error if user refreshes unsubscribe survey page after they have submitted an answer
-  if(!req.session.unsub) {
-    throw new FluentError("error-not-subscribed");
-  }
-  res.render("subpage", {
-    title: req.fluentFormat("user-unsubscribe-survey-title"),
-    headline: req.fluentFormat("unsub-survey-headline-v2"),
-    subhead: req.fluentFormat("unsub-survey-blurb-v2"),
-    whichPartial: "subpages/unsubscribe_survey",
-  });
-}
-
-
-function postUnsubSurvey(req, res) {
-  //clear session in case a user subscribes / unsubscribes multiple times or with multiple email addresses.
-  req.session.reset();
-  res.send({
-    title: req.fluentFormat("user-unsubscribed-title"),
-  });
-}
-
 function logout(req, res) {
   req.session.reset();
   res.redirect("/");
@@ -317,8 +328,8 @@ module.exports = {
   verify,
   getUnsubscribe,
   postUnsubscribe,
-  getUnsubSurvey,
-  postUnsubSurvey,
+  getRemoveFxm,
+  postRemoveFxm,
   logout,
   removeEmail,
   resendEmail,

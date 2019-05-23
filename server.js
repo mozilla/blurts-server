@@ -156,8 +156,8 @@ app.locals.UTM_SOURCE = new URL(AppConstants.SERVER_URL).hostname;
 app.use(sessions({
   cookieName: "session",
   secret: AppConstants.COOKIE_SECRET,
-  duration: 15 * 60 * 1000, // 15 minutes
-  activeDuration: 5 * 60 * 1000, // 5 minutes
+  duration: 60 * 60 * 1000, // 60 minutes
+  activeDuration: 15 * 60 * 1000, // 15 minutes
   cookie: cookie,
 }));
 

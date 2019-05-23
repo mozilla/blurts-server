@@ -6,28 +6,29 @@ async function sendForm(action, formBody={}) {
     headers: {
       "Content-Type": "application/json; charset=utf-8",
     },
-    mode: "cors",
+    mode: "same-origin",
     method: "POST",
     body: JSON.stringify(formBody),
   });
 
+  if (response.redirected) {
+    window.location = response.url;
+    return;
+  }
   return await response.json();
 }
 
 async function sendCommunicationOption(e) {
-  const radioButton = e.target;
-  const formAction = radioButton.dataset.formAction;
-  const option = radioButton.dataset.commOption;
-  sendForm(formAction, { communicationOption: option })
+  const { formAction, commOption } = e.target.dataset;
+  sendForm(formAction, { communicationOption: commOption })
     .then(data => {}) /*decide what to do with data */
     .catch(e => {})/* decide how to handle errors */;
 }
 
 async function resendEmail(e) {
   const resendEmailBtn = e.target;
+  const { formAction, emailId } = resendEmailBtn.dataset;
   resendEmailBtn.classList.add("email-sent");
-  const emailId =  resendEmailBtn.dataset.emailId;
-  const formAction = resendEmailBtn.dataset.formAction;
 
   await sendForm(formAction, { emailId: emailId })
   .then(data => {
@@ -49,5 +50,13 @@ if (document.querySelector(".email-card")) {
   const communicationRadioButtons = document.querySelectorAll(".radio-comm-option");
   communicationRadioButtons.forEach(option => {
     option.addEventListener("click", sendCommunicationOption);
+  });
+}
+
+const removeMonitorButton = document.querySelector(".remove-fxm");
+if (removeMonitorButton) {
+  removeMonitorButton.addEventListener("click", async (e) => {
+    const {formAction, primaryToken, primaryHash} = e.target.dataset;
+    await sendForm(formAction, {primaryToken, primaryHash});
   });
 }
