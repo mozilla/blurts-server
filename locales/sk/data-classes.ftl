@@ -12,6 +12,9 @@ avatars = Avatary
 bank-account-numbers = Čísla bankových účtov
 beauty-ratings = Hodnotenia krásy
 biometric-data = Biometrické údaje
+# This string is the shortened version of "Biographies", and 
+# refers to biographical data about a user.
+bios = Biografické údaje
 browser-user-agent-details = Podrobnosti o user agentoch používateľov
 browsing-histories = História prehliadania
 buying-preferences = Preferencie pri nakupovaní
@@ -37,6 +40,7 @@ education-levels = Úrovne vzdelania
 email-addresses = E-mailové adresy
 email-messages = E-mailové správy
 employers = Zamestnávatelia
+employment-statuses = Stav zamestnania
 ethnicities = Informácie o príslušnosti k etniku
 family-members-names = Mená rodinných príslušníkov
 family-plans = Rodinné plány
@@ -101,6 +105,7 @@ smoking-habits = Fajčiarske návyky
 sms-messages = SMS správy
 social-connections = Spoločenské spojenia
 social-media-profiles = Profily zo sociálnych sietí
+social-security-numbers = Čísla sociálneho zabezpečenia
 spoken-languages = Hovorené jazyky
 support-tickets = Tikety zo stránky podpory
 survey-results = Výsledky prieskumov
