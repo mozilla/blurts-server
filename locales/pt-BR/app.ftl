@@ -416,6 +416,10 @@ how-fxm-1-blurb =
 how-fxm-2-headline = Cadastre-se para ter monitoramento de vazamentos
 how-fxm-2-blurb = Crie uma { -brand-fxa } para monitorar seu e-mail em vazamentos futuros. Após confirmar seu e-mail, receberá também um relatório completo de vazamentos já detectados, incluindo vazamentos sensíveis.
 how-fxm-3-headline = Receba notificações em seu navegador
+how-fxm-3-blurb =
+    Se você usar o { -brand-name }, receberá uma notificação se visitar 
+    um site que foi vazado. Descubra imediatamente se fez parte desse 
+    vazamento e o que você pode fazer a respeito.
 wtd-after-website = O que fazer após um vazamento de site
 wtd-after-data-agg = O que fazer após um vazamento de agregador de dados
 what-is-data-agg = O que é um agregador de dados?
