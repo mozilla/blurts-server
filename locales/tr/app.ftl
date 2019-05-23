@@ -351,7 +351,11 @@ breach-discovered = İhlalin keşfedilmesi:
 # Link title
 more-about-this-breach = Bu ihlal hakkında daha fazla bilgi
 take-control = Kişisel verilerinizin kontrolünü geri alın.
+cant-stop-hackers = Hacker’ları tamamen durduramazsınız, ama onların işini kolaylaştıran kötü alışkanlardan vazgeçebilirsiniz.
 read-more-tips = Daha dazla güvenlik ipucu
+how-hackers-work = Hacker’ların nasıl çalıştığını anlayın
+monitor-your-online-accounts = { -brand-fxa } ile ihlal uyarılarına kaydolun.
+stay-alert = Yeni ihlallere karşı tetikte kalın
 
 ## What to do after data breach tips
 
