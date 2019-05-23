@@ -401,9 +401,19 @@ delayed-reporting-headline = Por que demorou tanto para reportar este vazamento?
 delayed-reporting-copy = Às vezes demora meses ou anos para que credenciais expostas em um vazamento de dados apareça na dark web. Vazamentos são adicionados ao nosso banco de dados assim que são descobertos e confirmados.
 about-fxm-headline = Sobre o { -product-name }
 about-fxm-blurb = O { -product-name } avisa se suas contas online estiveram envolvidas em um vazamento de dados. Descubra se você esteve em algum vazamento de dados, receba alertas sobre novos vazamentos e tome medidas para proteger suas contas online. O { -product-name } é fornecido pela { -brand-Mozilla }.
+fxm-warns-you =
+    O { -product-name } avisa se seu endereço de e-mail foi exposto em um
+    vazamento de dados online. Veja se suas informações foram expostas,
+    aprenda como proteger melhor suas contas online e receba alertas
+    caso seu endereço de e-mail apareça em um novo vazamento.
 # How Firefox Monitor works
 how-fxm-works = Como o { -product-name } funciona
 how-fxm-1-headline = Faça uma pesquisa básica
+how-fxm-1-blurb =
+    Pesquise seu endereço de e-mail em vazamentos de dados públicos desde 2007.
+    Esta pesquisa básica traz à tona a maioria dos vazamentos de dados,
+    mas não os que contêm informações pessoais sensíveis.
+how-fxm-2-headline = Cadastre-se para ter monitoramento de vazamentos
 how-fxm-2-blurb = Crie uma { -brand-fxa } para monitorar seu e-mail em vazamentos futuros. Após confirmar seu e-mail, receberá também um relatório completo de vazamentos já detectados, incluindo vazamentos sensíveis.
 how-fxm-3-headline = Receba notificações em seu navegador
 wtd-after-website = O que fazer após um vazamento de site
