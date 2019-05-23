@@ -1,29 +1,29 @@
 {{#allBreaches req.app.locals.breaches }}
-<div id="breaches-loader" class="ab-bg breaches-loader"></div>
-<div class="ab-bg top-level">
-  <main class="all-breaches-main clear-header" data-page-label="All Breaches">
-    <div class="row">
-      <div class="col-12 no-vertical-padding">
-        <h2 class="headline all-breaches-headline">{{ getString "all-breaches-headline" }}</h2>
+  <div id="breaches-loader" class="ab-bg breaches-loader"></div>
+  <div class="ab-bg top-level">
+    <main class="all-breaches-main clear-header" data-page-label="All Breaches">
+      <div class="row">
+        <div class="col-12 no-vertical-padding">
+          <h2 class="headline all-breaches-headline">{{ getString "all-breaches-headline" }}</h2>
+        </div>
       </div>
-    </div>
-  </main>
-  <section class="all-breaches-wrapper">
-    {{> back-to-top-button }}
-    <div class="row flx-col">
-      <div class="col-12 txt-cntr no-vertical-padding">
-        {{> fuzzy-find }}
-        <span id="no-results-blurb" class="no-results-blurb">{{ getString "no-results-blurb" }}</span>
-        {{> hibp-attribution }}
+    </main>
+    <section class="all-breaches-wrapper">
+      {{> back-to-top-button }}
+      <div class="row flx-col">
+        <div class="col-12 txt-cntr no-vertical-padding">
+          {{> fuzzy-find }}
+          <span id="no-results-blurb" class="no-results-blurb">{{ getString "no-results-blurb" }}</span>
+          {{> hibp-attribution }}
+        </div>
       </div>
-    </div>
-    <div class="row flx-col">
-      <!-- breach cards -->
-      <div id="all-breaches" class="all-breaches flx">
+      <div class="row flx-col">
+        <!-- breach cards -->
+        <div id="all-breaches" class="all-breaches flx">
+        </div>
       </div>
-    </div>
-  </section>
-</div>
+    </section>
+  </div>
 {{/allBreaches}}
 
 <div id="breach-array-json" hidden=true data-breach-array="{{ getBreachArray }}"></div>

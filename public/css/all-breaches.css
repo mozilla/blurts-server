@@ -14,7 +14,7 @@ main.all-breaches-main {
 
 .hide-breaches,
 .lazy-img,
-.lazy-img.lazy-loaded {
+.lazy-loaded {
   transition: opacity 0.15s ease;
 }
 
@@ -170,16 +170,6 @@ input#fuzzy-find-input {
   pointer-events: none;
 }
 
-.lazy-img {
-  opacity: 0;
-  transition: all 0.2s ease;
-}
-
-.lazy-loaded {
-  opacity: 1;
-  transition: all 0.2s ease;
-}
-
 .breaches-loader {
   position: absolute;
   z-index: 101;
@@ -189,10 +179,6 @@ input#fuzzy-find-input {
   right: 0;
   background-color: rgba(255, 255, 255, 1);
   transition: all 0.1s ease;
-}
-
-.breach-filter span {
-  pointer-events: none;
 }
 
 .ab.breach-card {
@@ -252,17 +238,6 @@ button.back-to-top:hover {
   transform: translateY(0);
   padding: 4rem;
   transition: transform 0.3s ease, box-shadow 0.15s ease;
-}
-
-.plus-sign-wrap {
-  display: flex;
-  background-color: rgba(0, 0, 0, 0.07);
-  border-radius: 50%;
-  margin-left: 0.5rem;
-  padding: 4px;
-  pointer-events: none;
-  transform: scale(0.7);
-  transition: background-color 0.15s ease-in-out, transform 0.15s ease-in-out;
 }
 
 /* breach-cards */
