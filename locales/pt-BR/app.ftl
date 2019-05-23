@@ -363,6 +363,8 @@ breaches = Vazamentos
 # Link title
 security-tips = Dicas de segurança
 fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Abrir navegação na { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ÚLTIMO VAZAMENTO ADICIONADO
 breach-added = Vazamento reportado:
@@ -418,7 +420,7 @@ how-fxm-2-blurb = Crie uma { -brand-fxa } para monitorar seu e-mail em vazamento
 how-fxm-3-headline = Receba notificações em seu navegador
 how-fxm-3-blurb =
     Se você usar o { -brand-name }, receberá uma notificação se visitar 
-    um site que foi vazado. Descubra imediatamente se fez parte desse 
+    um site que foi vazado. Descubra imediatamente se foi vítima desse 
     vazamento e o que você pode fazer a respeito.
 wtd-after-website = O que fazer após um vazamento de site
 wtd-after-data-agg = O que fazer após um vazamento de agregador de dados
@@ -537,7 +539,17 @@ all-breaches = Todos os vazamentos
 ## Updated error messages
 
 error-bot-headline = Pesquisas temporariamente suspensas
+error-bot-blurb =
+    Estamos preocupados, você pode ser um 'bot' porque pesquisou vários 
+    endereços de e-mail em um curto período de tempo. No momento você está 
+    bloqueado de fazer novas pesquisas. Você pode tentar novamente mais tarde.
 error-csrf-headline = A sessão expirou
+error-csrf-blurb = Selecione o botão de voltar do seu navegador, recarregue a página e tente novamente.
+error-invalid-unsub = Como cancelar a inscrição de alertas do { -product-name }
+error-invalid-unsub-blurb =
+    Você precisa cancelar a inscrição a partir de um dos e-mails que 
+    o { -product-name } enviou a você. Procure na sua caixa de entrada mensagens 
+    de { -brand-team-email }. Selecione o link de cancelar inscrição no final do e-mail.
 login-link-pre = Já tem uma conta?
 login-link = Entre
 # This string is displayed under a large numeral that indicates the total number
@@ -581,11 +593,16 @@ results-for = Resultados de: { $userEmail }
 other-monitored-emails = Outros e-mails monitorados
 fxa-primary-email = E-mail da { -brand-fxa } - Principal
 what-is-a-website-breach = O que é um vazamento de site?
+website-breach-blurb = Um vazamento de dados de site acontece quando criminosos cibernéticos roubam, copiam ou expõem informações pessoais de contas online. Geralmente é resultado de hackers procurando um ponto fraco na segurança do site. Vazamentos também podem acontecer quando informações de contas são vazados por acidente.
 security-tips-headline = Dicas de segurança para se proteger de hackers
 steps-to-protect = Medidas a tomar para proteger sua identidade online
 take-further-steps = Tome medidas adicionais para proteger sua identidade
 alert-about-new-breaches = Me alertar sobre novos vazamentos
+see-if-youve-been-part = Veja se você foi vítima de um vazamento de dados online.
 get-ongoing-breach-monitoring = Tenha monitoramento contínuo de vazamentos para vários endereços de e-mail.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Descobrir
+new-unsub-error = Você precisa cancelar a inscrição a partir de um dos e-mails que o { -product-name } enviou.
 other-known-breaches-found =
     { $breachCount ->
         [one] No entanto, apareceu em { $breachCount } outro vazamento conhecido.
@@ -602,5 +619,8 @@ email-addresses-title = Endereços de e-mail
 breach-overview = Em { $breachDate }, { $breachTitle } sofreu um vazamento. Uma vez que o vazamento foi descoberto e confirmado, ele foi adicionado à nossa base de dados em { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Preferências do { -product-short-name }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Filtrar por categoria:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
