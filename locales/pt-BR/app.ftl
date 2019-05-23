@@ -591,6 +591,7 @@ scan-results-known-breaches =
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Resultados de: { $userEmail }
 other-monitored-emails = Outros e-mails monitorados
+email-verification-required = Verificação de email é necessária
 fxa-primary-email = E-mail da { -brand-fxa } - Principal
 what-is-a-website-breach = O que é um vazamento de site?
 website-breach-blurb = Um vazamento de dados de site acontece quando criminosos cibernéticos roubam, copiam ou expõem informações pessoais de contas online. Geralmente é resultado de hackers procurando um ponto fraco na segurança do site. Vazamentos também podem acontecer quando informações de contas são vazados por acidente.
@@ -619,6 +620,9 @@ email-addresses-title = Endereços de e-mail
 breach-overview = Em { $breachDate }, { $breachTitle } sofreu um vazamento. Uma vez que o vazamento foi descoberto e confirmado, ele foi adicionado à nossa base de dados em { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Preferências do { -product-short-name }
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Acessando como: { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
 filter-by = Filtrar por categoria:
