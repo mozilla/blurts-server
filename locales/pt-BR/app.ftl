@@ -628,3 +628,4 @@ signed-in-as = Acessando como: { $userEmail }
 filter-by = Filtrar por categoria:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
+to-affected-email = Enviar alertas de vazamento para os endereços de e-mail afetados
