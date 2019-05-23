@@ -651,3 +651,4 @@ signed-in-as = Signed in as: { $userEmail }
 filter-by = Filter by Category:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
+to-affected-email = Send breach alerts to the affected email address
