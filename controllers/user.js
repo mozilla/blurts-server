@@ -13,6 +13,7 @@ const sha1 = require("../sha1-utils");
 
 function _requireSessionUser(req,res) {
   if (!req.session || !req.session.user) {
+    // TODO: can we do a nice redirect to sign in instead of an error?
     throw new FluentError("must-be-signed-in");
   }
   return req.session.user;
@@ -237,17 +238,21 @@ async function getUnsubscribe(req, res) {
   }
 
   const subscriber = await DB.getSubscriberByToken(req.query.token);
-  // Token is for a primary email address,
-  // redirect to preferences to remove Firefox Monitor
-  if (subscriber) {
+  if (subscriber && subscriber.fxa_profile_json !== null) {
+    // Token is for a primary email address of an FxA subscriber:
+    // redirect to preferences to remove Firefox Monitor
     return res.redirect("/user/preferences");
   }
 
   const emailAddress = await DB.getEmailByToken(req.query.token);
-  if (!emailAddress) {
+  if (!subscriber && !emailAddress) {
+    // Unknown token:
+    // throw error
     throw new FluentError("error-not-subscribed");
   }
 
+  // Token is for an old pre-FxA subscriber, or a secondary email address:
+  // render the unsubscribe page
   res.render("subpage", {
     title: req.fluentFormat("user-unsubscribe-title"),
     whichPartial: "subpages/unsubscribe",

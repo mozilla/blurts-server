@@ -20,6 +20,15 @@ jest.mock("../../hibp");
 const mockRequest = { fluentFormat: jest.fn() };
 
 
+function expectResponseRenderedSubpagePartial(resp, partial) {
+  expect(resp.statusCode).toEqual(200);
+  expect(resp.render).toHaveBeenCalledTimes(1);
+  const renderCallArgs = resp.render.mock.calls[0];
+  expect(renderCallArgs[0]).toEqual("subpage");
+  expect(renderCallArgs[1].whichPartial).toEqual(partial);
+}
+
+
 test("user add POST with email adds unverified subscriber and sends verification email", async () => {
   const testUserAddEmail = "addingNewEmail@test.com";
   const testSubscriberEmail = "firefoxaccount@test.com";
@@ -263,6 +272,40 @@ test("user unsubscribe GET request with valid token and hash for primary/subscri
 });
 
 
+test("user unsubscribe GET request with valid token and hash for a secondary email_addresses record renders unsubscribe", async () => {
+  // from db/seeds/test_subscribers.js
+  const subscriberToken = TEST_EMAIL_ADDRESSES.firefox_account.verification_token;
+  const subscriberHash = getSha1(TEST_EMAIL_ADDRESSES.firefox_account.email);
+
+  // Set up mocks
+  const req = { fluentFormat: jest.fn(), query: { token: subscriberToken, hash: subscriberHash } };
+  const resp = httpMocks.createResponse();
+  resp.render = jest.fn();
+
+  // Call code-under-test
+  await user.getUnsubscribe(req, resp);
+
+  expectResponseRenderedSubpagePartial(resp, "subpages/unsubscribe");
+});
+
+
+test("user unsubscribe GET request with valid token and hash for an old pre-FxA subscriber record renders unsubscribe", async () => {
+  // from db/seeds/test_subscribers.js
+  const subscriberToken = TEST_SUBSCRIBERS.verified_email.primary_verification_token;
+  const subscriberHash = getSha1(TEST_SUBSCRIBERS.firefox_account.primary_email);
+
+  // Set up mocks
+  const req = { fluentFormat: jest.fn(), query: { token: subscriberToken, hash: subscriberHash } };
+  const resp = httpMocks.createResponse();
+  resp.render = jest.fn();
+
+  // Call code-under-test
+  await user.getUnsubscribe(req, resp);
+
+  expectResponseRenderedSubpagePartial(resp, "subpages/unsubscribe");
+});
+
+
 test("user unsubscribe POST request with valid session and emailId for email_address removes from DB", async () => {
   const validToken = TEST_EMAIL_ADDRESSES.firefox_account.verification_token;
   const validHash = TEST_EMAIL_ADDRESSES.firefox_account.sha1;
@@ -315,11 +358,7 @@ test("user/remove-fxm GET request with valid session returns 200 and renders rem
   // Call code-under-test
   await user.getRemoveFxm(req, resp);
 
-  expect(resp.statusCode).toEqual(200);
-  expect(resp.render).toHaveBeenCalledTimes(1);
-  const renderCallArgs = resp.render.mock.calls[0];
-  expect(renderCallArgs[0]).toEqual("subpage");
-  expect(renderCallArgs[1].whichPartial).toEqual("subpages/remove_fxm");
+  expectResponseRenderedSubpagePartial(resp, "subpages/remove_fxm");
 });
 
 
