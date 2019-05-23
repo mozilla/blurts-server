@@ -19,18 +19,18 @@ async function sendForm(action, formBody={}) {
 }
 
 async function sendCommunicationOption(e) {
-  const { formAction, commOption } = e.target.dataset;
-  sendForm(formAction, { communicationOption: commOption })
+  const { formAction, commOption, csrfToken } = e.target.dataset;
+  sendForm(formAction, { communicationOption: commOption, _csrf: csrfToken })
     .then(data => {}) /*decide what to do with data */
     .catch(e => {})/* decide how to handle errors */;
 }
 
 async function resendEmail(e) {
   const resendEmailBtn = e.target;
-  const { formAction, emailId } = resendEmailBtn.dataset;
+  const { formAction, csrfToken, emailId } = resendEmailBtn.dataset;
   resendEmailBtn.classList.add("email-sent");
 
-  await sendForm(formAction, { emailId: emailId })
+  await sendForm(formAction, { _csrf: csrfToken, emailId })
   .then(data => {
     setTimeout( ()=> {
       const span = resendEmailBtn.nextElementSibling;
@@ -56,7 +56,7 @@ if (document.querySelector(".email-card")) {
 const removeMonitorButton = document.querySelector(".remove-fxm");
 if (removeMonitorButton) {
   removeMonitorButton.addEventListener("click", async (e) => {
-    const {formAction, primaryToken, primaryHash} = e.target.dataset;
-    await sendForm(formAction, {primaryToken, primaryHash});
+    const {formAction, csrfToken, primaryToken, primaryHash} = e.target.dataset;
+    await sendForm(formAction, {_csrf: csrfToken, primaryToken, primaryHash});
   });
 }
