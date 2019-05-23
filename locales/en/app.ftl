@@ -286,7 +286,7 @@ fxa-scan-another-email = Want to check another email?
 fxa-scan-submit = Search {-product-name}
 
 sign-up-to-check = Sign up to Check
-sign-in = Sign in
+sign-in = Sign In
 sign-out = Sign Out
 
 full-report-headline = Your {-product-name} Report
