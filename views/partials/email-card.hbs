@@ -34,7 +34,7 @@
                 {{#if primary}}
                   <a href="{{ getFxaUrl }}" class="change-primary-email flx hide-mobile">{{ getString "link-change-primary" }}</a>
                 {{else}}
-                  {{> forms/remove-email-form }}
+                  {{> forms/remove-email-form csrfToken=../../../csrfToken }}
                 {{/if}}
               {{else}} <!-- user breaches dashboard / show toggle -->
                 {{#ifCompare breaches.length ">" 0}}
