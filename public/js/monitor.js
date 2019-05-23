@@ -194,12 +194,6 @@ function toggleHeaderStates(header, win) {
 
   document.addEventListener("scroll", () => toggleHeaderStates(header, win));
 
-
-  // capitalize the sign in button for en-US only.
-  if (win.navigator.language.includes("en") && document.getElementById("sign-in-btn")) {
-    document.getElementById("sign-in-btn").classList.add("capitalize");
-  }
-
   document.querySelectorAll(".breach-img").forEach(logo => {
     logo.addEventListener("error", (missingLogo) => {
       missingLogo.target.src = "/img/logos/missing-logo-icon.png";
