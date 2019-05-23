@@ -13,7 +13,7 @@
         <section>
           {{#each communicationOptions}}
             <label class="radio-container">
-              <input class="radio-comm-option" data-comm-option="{{ optionId }}" data-form-action="update-comm-option" data-csrf-token="{{ ../csrfToken }}" type="radio" {{ optionChecked }} name="1">
+              <input class="radio-comm-option" data-comm-option="{{ optionId }}" data-form-action="update-comm-option" data-csrf-token="{{ ./../../csrfToken }}" type="radio" {{ optionChecked }} name="1">
               <span class="radio-label">{{{ labelString }}}</span>
               <span class="checkmark"></span>
             </label>
@@ -22,11 +22,11 @@
       </div>
       <div class="pref">
         <h3 class="pref-section-headline">{{ getString "email-addresses-title" }}</h3>
-        {{#each emails }}
+        {{#each emails}}
           {{#ifCompare email_addresses.length ">" 0}}
             <h4 class="email-pref {{ this.className }}">{{ this.subhead }}</h4>
             {{#each this.email_addresses}}
-              {{> email-card prefs=./../../../preferences}}
+              {{> email-card prefs=./../../../preferences csrfToken=./../../csrfToken}}
             {{/each}}
           {{/ifCompare}}
         {{/each}}

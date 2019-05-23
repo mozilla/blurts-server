@@ -41,6 +41,7 @@ function welcomeMessage(args) {
 
 
 function getUserPreferences(args) {
+  const csrfToken = args.data.root.csrfToken;
   const unverifiedEmails = args.data.root.unverifiedEmails;
   const verifiedEmails = args.data.root.verifiedEmails;
   const primaryEmail = verifiedEmails.shift();
@@ -87,10 +88,12 @@ function getUserPreferences(args) {
     primaryEmail: primaryEmail.email,
     emails : emailAddresses,
     communicationOptions: communicationOptions,
+    csrfToken: csrfToken,
   };
 
   return args.fn(user);
 }
+
 
 module.exports = {
   getUserPreferences,
