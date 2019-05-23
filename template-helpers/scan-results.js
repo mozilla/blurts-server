@@ -15,7 +15,7 @@ function getScanResultsHeadline(args) {
   };
 
   args.hash = {
-    breachName: featuredBreach.Title,
+    breachName: `<span class="bold">${featuredBreach.Title}</span>`,
     breachCount: foundBreaches.length,
   };
 
