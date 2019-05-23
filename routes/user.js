@@ -15,8 +15,8 @@ const jsonParser = bodyParser.json();
 const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 
 
-router.get("/dashboard", getDashboard);
-router.get("/preferences", getPreferences);
+router.get("/dashboard", asyncMiddleware(getDashboard));
+router.get("/preferences", asyncMiddleware(getPreferences));
 router.get("/logout", logout);
 router.post("/email", urlEncodedParser, asyncMiddleware(add));
 router.post("/remove-email", urlEncodedParser, asyncMiddleware(removeEmail));
