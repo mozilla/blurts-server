@@ -423,13 +423,20 @@ how-fxm-3-blurb =
 wtd-after-website = O que fazer após um vazamento de site
 wtd-after-data-agg = O que fazer após um vazamento de agregador de dados
 what-is-data-agg = O que é um agregador de dados?
+what-is-data-agg-blurb =
+    Agregadores de dados, ou negociadores de dados, coletam informações de registros públicos e 
+    também compram de outras empresas. Eles reúnem esses dados para vender para empresas com 
+    propósito de marketing. As vítimas desses vazamentos têm menor probabilidade de sofrer fraudes 
+    financeiras, mas hackers podem usar esses dados para se fazer passar por elas ou traçar seu perfil.
 protect-your-privacy = Proteja sua privacidade online
 no-pw-to-change = Diferente de um vazamento de site, não há senha a alterar.
 avoid-personal-info = Evite usar informações pessoais em senhas
+avoid-personal-info-blurb = É fácil encontrar online datas de aniversários, endereços e nomes de membros da família. Deixe essas palavras de fora das suas senhas.
 
 ## What to do after data breach tips
 
 change-pw = Mude sua senha
+even-for-old = Mesmo em contas antigas, é importante atualizar suas senhas.
 make-new-pw-unique = Torne a nova senha diferente e única
 strength-of-your-pw = A força de suas senhas impacta diretamente sua segurança online.
 create-strong-passwords = Como criar senhas fortes
@@ -448,6 +455,7 @@ appears-in-x-breaches =
         [one] Aparece em { $breachCount } vazamento conhecido.
        *[other] Aparece em { $breachCount } vazamentos conhecidos.
     }
+see-if-breached = Veja se você esteve em um vazamento de dados online.
 check-for-breaches = Verificar se há vazamentos
 back-to-top = Voltar ao início
 comm-opt-0 = Enviar e-mail para mim se um de meus endereços de e-mail abaixo aparecer em um vazamento de dados.
