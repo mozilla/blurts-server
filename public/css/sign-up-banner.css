@@ -68,30 +68,22 @@ button.violet-btn {
 }
 
 .browser-not-required {
-  font-size: 10px;
-  max-width: 240px;
-  margin: auto;
-  color: #5b5b66;
+  text-align: center;
+  font-size: 12px;
+  max-width: 300px;
+  margin: 1rem auto auto auto;
+  color: rgba(91, 91, 102, 1);
   line-height: 1.4;
-  margin-top: 0.5rem;
 }
 
+p.have-an-account button.text-link,
 p.have-an-account {
-  font-size: 0.9rem;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .have-an-account button.text-link {
   margin-left: 0.25rem;
-  font-weight: 500;
-  font-size: 0.9rem;
-}
-
-.feature-tip-content span.browser-not-required {
-  font-size: 8px;
-  display: inline-block;
-  text-align: center;
-  line-height: 150%;
-  margin-left: auto;
 }
 
 .sign-up-headline {
@@ -114,17 +106,15 @@ p.have-an-account {
   margin-bottom: calc(var(--padding) * 2);
 }
 
-.account-not-required {
-  margin-top: var(--margin);
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.7);
-  text-align: center;
+.sign-up-cta .browser-not-required {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .sign-up-cta {
   max-width: 200px;
   justify-content: center;
   margin-left: var(--padding);
+  flex: 1;
 }
 
 .col-9 .sign-up-cta {
@@ -133,8 +123,8 @@ p.have-an-account {
   align-items: center;
 }
 
-.gradient-inset .feature-tip-content span.browser-not-required,
-.gradient-inset .feature-tip-content p.have-an-account {
+.browser-not-required,
+p.have-an-account {
   display: flex;
   align-self: center;
   justify-content: center;
@@ -179,7 +169,7 @@ p.have-an-account {
     padding-bottom: 3rem;
   }
 
-  .sign-up-cta .account-not-required {
+  .sign-up-cta .browser-not-required {
     margin-top: 0;
   }
 
