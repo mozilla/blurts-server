@@ -275,7 +275,7 @@ async function getRemoveFxm(req, res) {
 async function postRemoveFxm(req, res) {
   const sessionUser = _requireSessionUser(req);
   await DB.removeSubscriber(sessionUser);
-  await FXA.revokeOAuthToken(sessionUser.fxa_refresh_token);
+  await FXA.revokeOAuthTokens(sessionUser);
 
   req.session.reset();
   res.redirect("/");
@@ -299,7 +299,7 @@ async function postUnsubscribe(req, res) {
     await DB.removeOneSecondaryEmail(emailAddress.id);
     return res.redirect("/user/preferences");
   }
-  await FXA.revokeOAuthToken(unsubscribedUser.fxa_refresh_token);
+  await FXA.revokeOAuthTokens(unsubscribedUser);
   req.session.reset();
   res.redirect("/");
 }

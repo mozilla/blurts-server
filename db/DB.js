@@ -148,16 +148,18 @@ const DB = {
    * 3. For FxA subscriber, add refresh token and profile data
    *
    * @param {string} email to add
+   * @param {string} signupLanguage from Accept-Language
+   * @param {string} fxaAccessToken from Firefox Account Oauth
    * @param {string} fxaRefreshToken from Firefox Account Oauth
    * @param {string} fxaProfileData from Firefox Account
    * @returns {object} subscriber knex object added to DB
    */
-  async addSubscriber(email, signupLanguage, fxaRefreshToken=null, fxaProfileData=null) {
+  async addSubscriber(email, signupLanguage, fxaAccessToken=null, fxaRefreshToken=null, fxaProfileData=null) {
     const emailHash = await this._addEmailHash(getSha1(email), email, signupLanguage, true);
     const verified = await this._verifySubscriber(emailHash);
     const verifiedSubscriber = Array.isArray(verified) ? verified[0] : null;
     if (fxaRefreshToken || fxaProfileData) {
-      return this._updateFxAData(verifiedSubscriber, fxaRefreshToken, fxaProfileData);
+      return this._updateFxAData(verifiedSubscriber, fxaAccessToken, fxaRefreshToken, fxaProfileData);
     }
     return verifiedSubscriber;
   },
@@ -218,16 +220,18 @@ const DB = {
    * Update fxa_refresh_token and fxa_profile_json for subscriber
    *
    * @param {object} subscriber knex object in DB
+   * @param {string} fxaAccessToken from Firefox Account Oauth
    * @param {string} fxaRefreshToken from Firefox Account Oauth
    * @param {string} fxaProfileData from Firefox Account
    * @returns {object} updated subscriber knex object in DB
    */
-  async _updateFxAData(subscriber, fxaRefreshToken, fxaProfileData) {
+  async _updateFxAData(subscriber, fxaAccessToken, fxaRefreshToken, fxaProfileData) {
     const fxaUID = JSON.parse(fxaProfileData).uid;
     const updated = await knex("subscribers")
     .where("id", "=", subscriber.id)
     .update({
       fxa_uid: fxaUID,
+      fxa_access_token: fxaAccessToken,
       fxa_refresh_token: fxaRefreshToken,
       fxa_profile_json: fxaProfileData,
     })
