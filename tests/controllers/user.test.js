@@ -375,7 +375,7 @@ test("user/remove-fxm POST request with invalid session returns error", async ()
 test("user remove-fxm POST request with valid session removes from DB and revokes FXA OAuth token", async () => {
   const req = { fluentFormat: jest.fn(), session: { user: TEST_SUBSCRIBERS.firefox_account, reset: jest.fn() }};
   const resp = httpMocks.createResponse();
-  FXA.revokeOAuthToken = jest.fn();
+  FXA.revokeOAuthTokens = jest.fn();
 
   await user.postRemoveFxm(req, resp);
 
@@ -383,7 +383,7 @@ test("user remove-fxm POST request with valid session removes from DB and revoke
   expect(resp._getRedirectUrl()).toEqual("/");
   const subscriber = await DB.getEmailByToken(TEST_SUBSCRIBERS.firefox_account.primary_verification_token);
   expect(subscriber).toBeUndefined();
-  expect(FXA.revokeOAuthToken).toHaveBeenCalledTimes(1);
+  expect(FXA.revokeOAuthTokens).toHaveBeenCalledTimes(1);
   expect(req.session.reset).toHaveBeenCalledTimes(1);
 });
 

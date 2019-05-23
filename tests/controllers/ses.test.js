@@ -94,10 +94,11 @@ test("ses notification with invalid signature responds with error and doesn't ch
 test("sns notification for FxA account delete deletes monitor subscriber record", async () => {
   const testEmail = "fxa-deleter@mailinator.com";
   const testSignupLanguage = "en";
+  const testFxaAccessToken = "abcdef123456789";
   const testFxaRefreshToken = "abcdef123456789";
   const testFxaUID = "3b1a9d27f85b4a4c977f3a84838f9116";
   const testFxaProfileData = JSON.stringify({uid: testFxaUID});
-  await DB.addSubscriber(testEmail, testSignupLanguage, testFxaRefreshToken, testFxaProfileData);
+  await DB.addSubscriber(testEmail, testSignupLanguage, testFxaAccessToken, testFxaRefreshToken, testFxaProfileData);
 
   let subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
   expect(subscribers.length).toEqual(1);
