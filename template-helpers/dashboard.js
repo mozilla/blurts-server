@@ -71,7 +71,7 @@ function getUserPreferences(args) {
   const communicationOptions = [
     {
       optionDescription: "Send breach alerts to the affected email address.",
-      labelString: LocaleUtils.fluentFormat(locales, "comm-opt-0", {primaryEmail: `<span class="bold">${primaryEmail.email}</span>`}),
+      labelString: LocaleUtils.fluentFormat(locales, "to-affected-email", {primaryEmail: `<span class="bold">${primaryEmail.email}</span>`}),
       optionId: "0",
       optionChecked: (communicationOption === 0) ? "checked" : "",
     },
