@@ -268,6 +268,7 @@ async function getRemoveFxm(req, res) {
     title: req.fluentFormat("remove-fxm"),
     subscriber: sessionUser,
     whichPartial: "subpages/remove_fxm",
+    csrfToken: req.csrfToken(),
   });
 }
 
@@ -313,6 +314,7 @@ async function getPreferences(req, res) {
   res.render("dashboards", {
     title: "Firefox Monitor",
     whichPartial: "dashboards/preferences",
+    csrfToken: req.csrfToken(),
     verifiedEmails, unverifiedEmails,
   });
 }

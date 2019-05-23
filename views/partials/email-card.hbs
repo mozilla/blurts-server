@@ -24,7 +24,7 @@
                 {{else}}
                   <!-- show resend-email link for unverified emails -->
                   <div class="button-resend-wrapper flx">
-                    <button class="resend-email" data-email-id="{{ id }}" data-form-action="resend-email">{{ getString "resend-verification" }}</button>
+                    <button class="resend-email" data-email-id="{{ id }}" data-form-action="resend-email" data-csrf-token="{{ csrfToken }}">{{ getString "resend-verification" }}</button>
                     <span class="sending hide"> {{getString "signup-modal-sent"}}</span>
                   </div>
                 {{/if}}
@@ -34,7 +34,7 @@
                 {{#if primary}}
                   <a href="{{ getFxaUrl }}" class="change-primary-email flx hide-mobile">{{ getString "link-change-primary" }}</a>
                 {{else}}
-                  {{> forms/remove-email-form }}
+                  {{> forms/remove-email-form csrfToken=../../../csrfToken }}
                 {{/if}}
               {{else}} <!-- user breaches dashboard / show toggle -->
                 {{#ifCompare breaches.length ">" 0}}
