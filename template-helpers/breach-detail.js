@@ -42,6 +42,10 @@ function breachCategory(args) {
 // Big TODO : How should we assign weight to these data types?
 
 const priorityDataClasses = {
+  "social-security-numbers" : {
+    weight: 101,
+    pathToGlyph: "svg/glyphs/social-security-numbers",
+  },
   "passwords": {
     weight: 100,
     pathToGlyph: "svg/glyphs/passwords",
