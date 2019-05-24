@@ -548,3 +548,4 @@ signed-in-as = 已登录为：{ $userEmail }
 filter-by = 按分类筛选：
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = 菜单
+to-affected-email = 向受影响的电子邮件地址发送外泄警报
