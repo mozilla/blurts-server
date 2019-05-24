@@ -360,6 +360,20 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = Tijaq { -brand-fxa } okem pa k'amaya'l
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = RUK'ISIB'ÄL TZ'ILANEM XTZ'AQATISÄX
+breach-added = Tz'ilanem xya' rutzijol:
+breach-discovered = Tz'ilanem xilitäj:
+# Link title
+more-about-this-breach = Ch'aqa' chik chi rij re tz'ilanem re'
+take-control = Tik'oje' pan aq'a' ri awetamab'al.
+cant-stop-hackers = Man yatikïr ta ye'aq'ät ri ajjak. Po yatikïr naq'ät itzel taq na'oj richin anin nikib'än ri kisamaj.
+read-more-tips = Tawetamaj ch'aqa' chik chi kij Jikomal taq Na'oj
+how-hackers-work = Tetamäx rub'eyal yesamäj ri ajjak
+monitor-your-online-accounts = Tatz'ib'aj ab'i' richin nanik'oj ri kitz'ilanem jikomal rik'in { -brand-fxa }.
+stay-alert = Kak'ase' chi kiwäch k'ak'a' taq tz'ilanem
+if-your-info = We ri awetamab'al nik'oje' pa jun k'ak'a' tz'ilanem, niqatäq jun rutzijol chawe.
+search-all-emails = Ke'ak'anoj kitz'ilanem ri kochochib'al ataqoya'l chuqa' tak'ulu' kitzijol k'ak'a' taq tz'ilanem.
+monitor-several-emails = Ke'anik'oj k'ïy taq taqoya'l
+take-action = Kasamäj richin nachajij rub'i' ataqoya'l
 
 ## What to do after data breach tips
 
