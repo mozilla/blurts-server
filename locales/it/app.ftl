@@ -552,3 +552,4 @@ signed-in-as = Accesso effettuato come:
 filter-by = Filtra per categoria:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
+to-affected-email = Invia avvisi relativi alle violazioni all’indirizzo email coinvolto
