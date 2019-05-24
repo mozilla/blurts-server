@@ -631,3 +631,4 @@ signed-in-as = Inloggad som: { $userEmail }
 filter-by = Filtrera efter kategori:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Meny
+to-affected-email = Skicka intrångsvarningar till den drabbade e-postadressen
