@@ -291,7 +291,7 @@ fb-landing-headline = Vos informations ont-elles été compromises dans la fuite
 copyright = Certaines parties de ce contenu sont © 1999-{ $year } par les contributeurs individuels de mozilla.org.
 content-available = Le contenu est disponible sous licence Creative Commons.
 # Alerts is a noun
-sign-up-for-alerts = Abonnez-vous aux alertes
+sign-up-for-alerts = S’abonner aux alertes
 sign-up-for-fxa-alerts = Abonnez-vous aux alertes { -product-name }.
 create-free-account = Créez un { -brand-fxa } gratuit pour recevoir un rapport complet sur les fuites de données passées, des alertes pour les nouvelles fuites et des informations à propos des autres services { -brand-Mozilla }.
 get-your-report-and-sign-up = Recevez votre rapport et inscrivez-vous aux alertes.
