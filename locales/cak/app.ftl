@@ -374,6 +374,7 @@ if-your-info = We ri awetamab'al nik'oje' pa jun k'ak'a' tz'ilanem, niqatäq jun
 search-all-emails = Ke'ak'anoj kitz'ilanem ri kochochib'al ataqoya'l chuqa' tak'ulu' kitzijol k'ak'a' taq tz'ilanem.
 monitor-several-emails = Ke'anik'oj k'ïy taq taqoya'l
 take-action = Kasamäj richin nachajij rub'i' ataqoya'l
+keep-your-data-safe = Tawila' ri k'o chi nab'än richin nachajij ri awetamab'al chi kiwäch ri ajk'amil eleq'oma'.
 
 ## What to do after data breach tips
 
