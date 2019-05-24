@@ -654,3 +654,4 @@ signed-in-as = Bejelentkezett, mint { $userEmail }
 filter-by = Szűrés kategória szerint:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menü
+to-affected-email = Adatsértési figyelmeztetések elküldése az érintett e-mail címre
