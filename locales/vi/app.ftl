@@ -624,3 +624,4 @@ signed-in-as = Đã đăng nhập với: { $userEmail }
 filter-by = Lọc theo danh mục:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
+to-affected-email = Gửi thông báo vi phạm đến địa chỉ email bị ảnh hưởng
