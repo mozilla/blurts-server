@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -328,6 +329,8 @@ security-tips = Consejos de seguridad
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Abrir navegación { -brand-fxa }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = ÚLTIMA FILTRACIÓN AÑADIDA
 breach-added = Filtración documentada:
 breach-discovered = Filtración descubierta:
 # Link title
@@ -336,23 +339,45 @@ take-control = Recupera el control de tu información personal.
 cant-stop-hackers = No puedes evitar que te hackeen, pero sí puedes evitar malas prácticas que le facilitan el trabajo a los hackeadores.
 read-more-tips = Leer más sobre consejos de seguridad
 how-hackers-work = Descubre cómo trabajan los hackers
+monitor-your-online-accounts = Regístrate para monitorear filtraciones con un { -brand-fxa }.
 stay-alert = Mantente al día de las nuevas filtraciones
 if-your-info = Si tu información aparece en una nueva filtración de datos, te enviaremos una alerta.
 search-all-emails = Averigua si tus direcciones de correo han aparecido en filtraciones y recibe alertas sobre nuevas amenazas.
 monitor-several-emails = Monitorea varias direcciones de correo
+take-action = Actúa para proteger tus cuentas
 keep-your-data-safe = Descubre lo que necesitas para mantener a salvo tu información frente a criminales cibernéticos.
 website-breach = Filtración de sitios web
 sensitive-breach = Filtración de sitios web sensibles
+data-aggregator-breach = Filtración del recopilador de datos
 unverified-breach = Filtración no verificada
+spam-list-breach = Lista de filtración no deseada
 website-breach-plural = Filtraciones de sitios web
 sensitive-breach-plural = Filtraciones delicadas
+data-aggregator-breach-plural = Filtraciones de recopiladores de datos
 unverified-breach-plural = Filtraciones no verificadas
+spam-list-breach-plural = Listas de filtraciones no deseadas
 what-data = Qué información se filtró:
+sensitive-sites = ¿Cómo trata { -product-name } los sitios sensibles?
+sensitive-sites-copy =
+    { -product-name } solo revela las cuentas asociadas con estos
+    tipos de filtraciones una vez que se ha verificado la dirección de correo electrónico. Esto significa que eres la
+    única persona que puede ver si tu información estaba expuesta (a menos que alguien
+    más también tenga acceso a tu cuenta de correo electrónico).
 delayed-reporting-headline = ¿Por qué se tardó tanto en informar de esta filtración?
-about-fxm-headline = Sobre { -product-name }
+delayed-reporting-copy =
+    A veces pueden pasar meses o años antes de que las credenciales que se expusieron
+    en una filtración de datos aparezcan en la web oscura. Las filtraciones se añaden a nuestra base de datos en cuanto se descubren y verifican.
+about-fxm-headline = Acerca de{ -product-name }
+about-fxm-blurb = { -product-name } te advierte si tus cuentas en línea estuvieron involucradas en un filtración de datos. Averigua si se han expuesto tus datos, recibe alertas sobre nuevas filtraciones y toma medidas para proteger tus cuentas en línea. { -brand-Mozilla } patrocina { -product-name }.
+fxm-warns-you = { -product-name } te advierte si tus cuentas en línea estuvieron involucradas en un filtración de datos. Verifica si tu información ha sido expuesta, aprende cómo proteger mejor tus cuentas en línea y recibe alertas si tu dirección de correo se encuentra nuevamente en riesgo.
 # How Firefox Monitor works
 how-fxm-works = Cómo funciona { -product-name }
 how-fxm-1-headline = Hacer una búsqueda básica
+how-fxm-3-headline = Obtener notificaciones en el navegador
+how-fxm-3-blurb = Si usas { -brand-name }, recibirás una notificación si visitas un sitio que ha sido vulnerado. Averigüa si formaste parte de esta vulnerabilidad y qué puedes hacer al respecto.
+wtd-after-website = Qué hacer tras una filtración de una página web
+what-is-data-agg = ¿Qué es un recopilador de datos?
+protect-your-privacy = Protege tu privacidad en línea.
 
 ## What to do after data breach tips
 
