@@ -63,6 +63,21 @@ const DB = {
     return subscriber;
   },
 
+  async getEmailAddressRecordByEmail(email) {
+    const emailAddresses = await knex("email_addresses").where({
+      "email": email, verified: true,
+    });
+    if (!emailAddresses) {
+      return null;
+    }
+    if (emailAddresses.length > 1) {
+      // TODO: handle multiple emails in separate(?) subscriber accounts?
+      log.warn("getEmailAddressRecordByEmail found the same email multiple times");
+    }
+    return emailAddresses[0];
+  },
+
+
   async addSubscriberUnverifiedEmailHash(user, email) {
     const res = await knex("email_addresses").insert({
       subscriber_id: user.id,
@@ -264,18 +279,35 @@ const DB = {
     await knex("subscribers").where({"id": subscriber.id}).del();
   },
 
-  async removeSubscriberByEmail(email) {
-    const sha1 = getSha1(email);
-    return await this._getSha1EntryAndDo(sha1, async aEntry => {
-      await knex("subscribers")
-        .where("id", "=", aEntry.id)
+  // This is used by SES callbacks to remove email addresses when recipients
+  // perma-bounce or mark our emails as spam
+  // Removes from either subscribers or email_addresses as necessary
+  async removeEmail(email) {
+    const subscriber = await this.getSubscriberByEmail(email);
+    if (!subscriber) {
+      const emailAddress = await this.getEmailAddressRecordByEmail(email);
+      if (!emailAddress) {
+        log.warn("removed-subscriber-not-found");
+        return;
+      }
+      await knex("email_addresses")
+        .where({
+          "email": email,
+          "verified": true,
+        })
         .del();
-      log.info("removed-subscriber", { id: aEntry.id });
-      return aEntry;
-    }, async () => {
-      log.warn("removed-subscriber-not-found");
       return;
-    });
+    }
+    // This can fail if a subscriber has more email_addresses and marks
+    // a primary email as spam, but we should let it fail so we can see it
+    // in the logs
+    await knex("subscribers")
+      .where({
+        "primary_verification_token": subscriber.primary_verification_token,
+        "primary_sha1": subscriber.primary_sha1,
+      })
+      .del();
+    return;
   },
 
   async removeSubscriberByToken(token, emailSha1) {
