@@ -351,9 +351,15 @@ mozilla-dot-org = Mozilla.org
 preferences = Taq ajowab'äl
 # Link title.
 home = Tikirib'äl
+# Link title
+breaches = Taq tz'ilanem
+# Link title
+security-tips = Jikomal taq Na'oj
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Tijaq { -brand-fxa } okem pa k'amaya'l
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = RUK'ISIB'ÄL TZ'ILANEM XTZ'AQATISÄX
 
 ## What to do after data breach tips
 
