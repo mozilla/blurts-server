@@ -97,7 +97,7 @@ function getWhatToDos(args) {
 
   // grab different strings for breach alert emails
   if (args.data.root.breachAlert) {
-    headlineId = "what-to-do-after";
+    headlineId = "what-to-do-after-breach";
     subheadId = "ba-next-step";
     blurbId = "ba-next-step-blurb";
     numTips = 3;
