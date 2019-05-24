@@ -511,3 +511,4 @@ signed-in-as = 已登入為: { $userEmail }
 filter-by = 依照分類過濾:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = 選單
+to-affected-email = 傳送資料外洩警報到受影響的電子郵件信箱
