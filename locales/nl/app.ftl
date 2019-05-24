@@ -612,3 +612,4 @@ signed-in-as = Aangemeld als: { $userEmail }
 filter-by = Filteren op categorie:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
+to-affected-email = Waarschuwingen over datalekken naar het getroffen e-mailadres sturen
