@@ -42,6 +42,14 @@ function breachCategory(args) {
 // Big TODO : How should we assign weight to these data types?
 
 const priorityDataClasses = {
+  "government-issued-ids" : {
+    weight: 101,
+    pathToGlyph: "svg/glyphs/social-security-numbers",
+  },
+  "social-security-numbers" : {
+    weight: 101,
+    pathToGlyph: "svg/glyphs/social-security-numbers",
+  },
   "passwords": {
     weight: 100,
     pathToGlyph: "svg/glyphs/passwords",
@@ -53,7 +61,7 @@ const priorityDataClasses = {
   },
   "credit-cards": {
     weight: 98,
-    pathToGlyphs: "svg/glyphs/credit-cards",
+    pathToGlyph: "svg/glyphs/credit-cards",
   },
   "credit-card-cvv": {
     weight: 97,
@@ -93,7 +101,7 @@ const priorityDataClasses = {
   },
   "phsyical-addresses": {
     weight: 88,
-    pathToGlyph: "svg/glyphs/phsyical-addresses",
+    pathToGlyph: "svg/glyphs/physical-addresses",
   },
 };
 
