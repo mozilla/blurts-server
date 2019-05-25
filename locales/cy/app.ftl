@@ -679,3 +679,4 @@ signed-in-as = Mewngofnodwyd fel: { $userEmail }
 filter-by = Hidlo yn ôl Categori:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Dewislen
+to-affected-email = Anfon rhybuddion tor-data at y cyfeiriadau e-bost sydd wedi'i effeithio
