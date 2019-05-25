@@ -375,6 +375,33 @@ search-all-emails = Ke'ak'anoj kitz'ilanem ri kochochib'al ataqoya'l chuqa' tak'
 monitor-several-emails = Ke'anik'oj k'ïy taq taqoya'l
 take-action = Kasamäj richin nachajij rub'i' ataqoya'l
 keep-your-data-safe = Tawila' ri k'o chi nab'än richin nachajij ri awetamab'al chi kiwäch ri ajk'amil eleq'oma'.
+website-breach = Rutz'ilanem Ajk'amaya'l Ruxaq
+sensitive-breach = K'ayewl Rutz'ilanem Ajk'amaya'l Ruxaq
+data-aggregator-breach = Rutz'ilanem Kitz'aqatisaxik Tzij
+unverified-breach = Man Xnik'öx ta Tzilanem
+spam-list-breach = Kitz'ilanem Rucholajem Espam
+website-breach-plural = Kitz'ilanem Ajk'amaya'l Ruxaq
+sensitive-breach-plural = K'ayew Tz'ilanem
+data-aggregator-breach-plural = Kitz'ilanem Tz'aqatisanel taq Tzij
+unverified-breach-plural = Man Xenik'öx ta taq Tz'ilanem
+spam-list-breach-plural = Kitz'ilanem Kicholb'al taq Espam
+what-data = Achike taq tzij xetz'iläx:
+sensitive-sites = ¿Achike rub'anikil nub'än { -product-name } chi ke ri k'ayew taq ruxaq?
+sensitive-sites-copy =
+    { -product-name } xa xe yeruk'üt pe ri kib'i' taq taqoya'l kiximon ki' kik'in re
+    ruwäch taq tz'ilanem chi rij nijikib'äx jun rochochib'al taqoya'l. Re re' nub'ij chi ja chi xa xe
+    rat yatz'eto' we ri awetamab'al xtz'iläx (man ke ta ri' we k'o jun chik ri nitikïr noka pa ri rub'i' ataqoya'l).
+delayed-reporting-headline = ¿Achike ruma yalan xyoke' richin xuya' rutzijol re tz'ilanem re'?
+delayed-reporting-copy =
+    K'o re' nik'o k'ïy ik' o juna' chuwäch ri wujil xek'ut
+    pa jun kitz'ilanem tzij niwachin pa jun q'equ'm ajk'amaya'l. Yetz'aqatisäx ri taq tz'ilanem pan rucholxe'el qatzij
+    toq ye'ilitäj chuqa' yenik'öx.
+about-fxm-headline = Chi rij { -product-name }
+about-fxm-blurb =
+    { -product-name } nuya' rutzijol chawe we ri rub'i' ataqoya'l pa k'amab'ey xetz'iläx pa jun
+    kichayuxik tzij.  Tawila' we xtz'iläx ri taq atzij, tak'ulu' kitzijol chi kij k'ak'a' taq tz'ilanem,
+    chuqa' tachajij awi' richin ye'achajij ri kib'i' ataqoya'l pa k'amab'ey. { -product-name } sujun
+    ruma { -brand-Mozilla }.
 
 ## What to do after data breach tips
 
