@@ -490,3 +490,13 @@ all-breaches = Ronojel taq Tz'ilanem
 
 ## Updated error messages
 
+error-bot-headline = Kanoxïk echamäl jub'a'
+error-csrf-headline = Xk'is ruq'ijul moloj
+error-csrf-blurb = Tacha' rupitz'b'al chi rij pan awokik'amaya'l, tasamajib'ej chik ri ruxaq richin natojtob'ej chik.
+error-invalid-unsub = Achike rub'eyal niq'at ri tz'ib'anïk b'i'aj pa { -product-name } rutz'ijol k'ayewal
+error-invalid-unsub-blurb =
+    K'o chi naq'ät ri rutz'ib'axik b'i'aj pa jun chi ke
+    taq taqoya'l xutäq chawe ri { -product-name }. Takanoj pan ataqob'al rutzijol ri 
+    { -brand-team-email }. Tacha' ruximonel tiyuj tz'ib'anïk b'i'aj richin niq'at ri tz'ib'anïk b'i'aj.
+login-link-pre = ¿La k'o jun rub'i' ataqoya'l?
+login-link = Titikirisäx molojri'ïl
