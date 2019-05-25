@@ -429,6 +429,33 @@ strength-of-your-pw = Ri kijomal ewan taq atzij k'o nub'än pa ruwi' ri ajikomal
 create-strong-passwords = Achike rub'eya'l ye'atz'ük' ütz ewan taq tzij
 stop-reusing-pw = Man ke'awokisaj junam ewan taq tzij
 create-unique-pw = Ke'atz'uk'u' man jun ta chik ewan taq tzij chuqa' tayaka' pa jun ütz k'ojlib'äl, achi'el jun kinuk'samajel ewan taq tzij.
+five-myths = 5 tz'ukun taq na'oj chi kij ri kinuk'samajel ewan tzij
+feat-security-tips = Taq pixa' pa ruwi' jikomal richin ye'achajij ri kib'i' ataqoya'l
+feat-sensitive = Q'axinäq kikanoxik k'ayew taq tz'ilanem
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Q'aläj pa { $breachCount } tz'ilanem etaman ruwäch.
+       *[other] Q'aläj pa { $breachCount } taq tz'ilanem etaman kiwäch.
+    }
+see-if-breached = Tatz'eta' we xetz'iläx pa k'amab'ey ri taq atzij.
+check-for-breaches = Ke'akanoj taq Tz'ilanem
+find-out-what-hackers-know = Tawila' achike ketaman ri ajjak chawij. Tawila' achike rub'eyal nab'eyij chi kiwäch.
+search-for-your-email = Takanoj ri rochochib'al ataqoya'l pa kitz'ilanem aj winäq taq tzij k'a 2007.
+back-to-top = Titzolin Ajsik
+comm-opt-0 = Tiya' rutzijol chwe we ri rochochib'al nutaqoya'l k'o pa jun kitz'ilanem tzij.
+comm-opt-1 = Titaq ronojel rutzijol tz'ilanem chi re { $primaryEmail }.
+resend-verification = Titaq chik jikib'an taqoya'l
+add-new-email = Tatz'aqatisaj jun k'ak'a' rochochib'al taqoya'l
+send-verification = Titaq Ruximonel Jikib'anïk
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Chijun Tzijob'äl
+breach-summary = Ruch'utitzijol Tz'ilanem
 
 ## Updated error messages
 
