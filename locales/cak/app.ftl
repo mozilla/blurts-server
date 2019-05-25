@@ -402,9 +402,33 @@ about-fxm-blurb =
     kichayuxik tzij.  Tawila' we xtz'iläx ri taq atzij, tak'ulu' kitzijol chi kij k'ak'a' taq tz'ilanem,
     chuqa' tachajij awi' richin ye'achajij ri kib'i' ataqoya'l pa k'amab'ey. { -product-name } sujun
     ruma { -brand-Mozilla }.
+fxm-warns-you =
+    { -product-name } nuya' rutzijol chawe we ri rub'i' ataqoya'l pa k'amab'ey xetz'iläx pa jun
+    kichayuxik tzij.  Tawila' we xtz'iläx ri taq atzij, Tawetamaj 
+    ye'achajij ri kib'i' ataqoya'l pa k'amab'ey, chuqa' tak'ulu' rutzijol we ri rochochib'al ataqoya'l
+    niwachin pa jun k'ak'a' tz'ilanem.
+# How Firefox Monitor works
+how-fxm-works = Achike rub'eyal nisamäj { -product-name }
+how-fxm-1-headline = Tab'ana' jun anin kanoxïk
+how-fxm-3-headline = Tik'ul rutzijol pa wokik'amaya'l
+how-fxm-3-blurb =
+    We nawokisaj { -brand-name }, xtak'ül jun rutzijol we natz'ët jun
+    ruxaq ri xtz'iläx. Tawila' we xatz'iläx
+    achuqa' achike ütz nab'än.
+wtd-after-website = Achike nib'an chuwäch jun rutz'ilaxik ajk'amaya'l ruxaq
+what-is-data-agg = ¿Achike ri jun tz'aqatisanel tzij?
+protect-your-privacy = Tachajij ri awichinanem pa k'amab'ey
+avoid-personal-info = Man tawokisaj awetamab'al pa ewan taq tzij
 
 ## What to do after data breach tips
 
+change-pw = Tajala' ri ewan atzij
+even-for-old = Chuqa' pa ri ojer rub'i' ataqoya'l, k'atzinel ye'ak'ëx ri ewan atzij.
+make-new-pw-unique = Tab'ana' chi ri k'ak'a' ewan tzij jun wi chuqa' man jun ta chik
+strength-of-your-pw = Ri kijomal ewan taq atzij k'o nub'än pa ruwi' ri ajikomal pan k'amab'ey.
+create-strong-passwords = Achike rub'eya'l ye'atz'ük' ütz ewan taq tzij
+stop-reusing-pw = Man ke'awokisaj junam ewan taq tzij
+create-unique-pw = Ke'atz'uk'u' man jun ta chik ewan taq tzij chuqa' tayaka' pa jun ütz k'ojlib'äl, achi'el jun kinuk'samajel ewan taq tzij.
 
 ## Updated error messages
 
