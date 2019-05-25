@@ -456,6 +456,37 @@ send-verification = Titaq Ruximonel Jikib'anïk
 # email address.
 global-communication = Chijun Tzijob'äl
 breach-summary = Ruch'utitzijol Tz'ilanem
+show-breaches-for-this-email = Kek'ut ronojel rutz'ilanem re taqoya'l re'.
+link-change-primary = Tijal Nab'ey Rochochib'al Taqoya'l
+remove-fxm = Tiyuj { -product-name }
+remove-fxm-blurb = Tichup kitz'ijl ruk'ayewal { -product-name }. Ri { -brand-fxa } k'a xtitzije' na chuqa' rik'in jub'a' xke'akül ch'aqa' chik taq tzijob'äl chi rij ri rub'i' ataqoya'l.
+manage-email-addresses = Kenuk'samajïx Kochochib'al Taqoya'l
+latest-breach-link = Tatz'eta' we at k'o pa re tz'ilanem re'
+welcome-back = ¡Ütz apetik jub'ey chik, { $userName }!
+welcome-user = ¡Ütz apetik, { $userName }!
+breach-alert-subject = { -product-name } xrïl rochochib'al ataqoya'l pa jun k'ak'a' kitz'ilanem tzij.
+your-info-was-discovered-headline = Xilitäj awetamab'al pa jun k'ak'a' rutz'ilanem tzij.
+your-info-was-discovered-blurb =
+    Xatz'ib'aj ab'i' richin ye'ak'ül kitz'ijol k'ayewal { -product-name }
+    toq ri ataqoya'l k'o pa jun rutz'ilanem tzij. Ja re' ri qetaman wakami.
+what-to-do-after-breach = Achike ütz nab'än chi rij jun rutz'ilanem tzij:
+ba-next-step-1 = Tajala' ri ewan atzij rik'in jun chik ütz chuqa' man jun ta chik.
+ba-next-step-blurb-1 =
+    Jun ütz ewan tzij ja ri ruk'wan taq nimatz'ib' chuqa' ko'öl taq tz'ib',
+    taq etal chuqa' taq ajilab'äl. Man ta ye'atz'ib'aj taq awetamab'al achi'el
+    awochochib'al, rajilab'al aq'ij, o kib'i' awach'alal.
+new-breaches-found =
+    { $breachCount ->
+        [one] { $breachCount } K'AK'A' TZ'ILANEM XILITÄJ
+       *[other] { $breachCount } K'AK'A' TAQ TZ'ILANEM XE'ILITÄJ
+    }
+no-other-breaches-found = Majun chik tz'ilanem xilitäj pa ri nab'ey kanoxïk.
+no-results-blurb = Kojakuyu', ri tz'ilanem ri' man k'o ta pan rucholxe'el qatzij.
+all-breaches-headline = Ronojel taq tz'ilanem pa { -product-name }
+search-breaches = Kekanöx taq Tz'ilanem
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Nik'ut:
+all-breaches = Ronojel taq Tz'ilanem
 
 ## Updated error messages
 
