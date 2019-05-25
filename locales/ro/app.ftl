@@ -560,3 +560,4 @@ signed-in-as = Autentificat ca: { $userEmail }
 filter-by = Filtrează pe categorii:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Meniu
+to-affected-email = Trimite alerte pentru breșe de date către adresele de e-mail afectate
