@@ -199,7 +199,7 @@ see-full-report = Vezi raportul complet
 manage-fxa = Gestionează { -brand-fxa }
 fxa-download-firefox-bar-blurb = Oferit de { -brand-name }. De 2 ori mai rapid. Folosește cu 30% mai puțină memorie decât { -brand-Chrome }.
 fxa-download-firefox-bar-link = Descarcă acum
-fxa-download-firefox-banner-blurb = Încărcare mai rapidă și mai bună a paginilor, utilizând mai puțină memorie.
+fxa-download-firefox-banner-blurb = Încărcare mai rapidă și mai bună a paginilor, cu un consum mai mic de memorie.
 user-fb-compromised-headline = { $userEmail } a apărut în breșa de date { $breachName }.
 guest-fb-compromised-headline = Această adresă de e-mail a apărut în breșa de date { $breachName }.
 user-zero-breaches-headline = { $userEmail } nu a apărut în nicio breșă de date.
@@ -301,7 +301,7 @@ fxa-what-to-do-blurb-4 =
     parolele în siguranță și le completează pe site-uri pentru tine. Utilizează un manager de parole
     pe telefon și pe calculator, astfel încât să nu trebuiască să le ții minte pe toate.
 fb-landing-headline = Ți-au fost expuse datele în breșa { $breachName }?
-copyright = Părți din acest conținut sunt © 1999-{ $year } de colaboratori individuali mozilla.org.
+copyright = Porțiuni din acest conținut sunt © 1999-{ $year } de colaboratori individuali mozilla.org
 content-available = Conținut disponibil sub o licență Creative Commons.
 # Alerts is a noun
 sign-up-for-alerts = Înregistrează-te pentru alerte
