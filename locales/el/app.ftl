@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -359,3 +360,22 @@ create-free-account =
 get-your-report-and-sign-up = Λάβετε την αναφορά σας και εγγραφείτε για ειδοποιήσεις.
 # Link title
 frequently-asked-questions = Συχνές ερωτήσεις
+about-firefox-monitor = Σχετικά με το { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Προτιμήσεις
+# Link title.
+home = Αρχική
+# Link title
+breaches = Παραβιάσεις
+# Link title
+security-tips = Συμβουλές ασφαλείας
+fxa-account = { -brand-fxa }
+
+## What to do after data breach tips
+
+
+## Updated error messages
+
+login-link = Σύνδεση
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Μενού
