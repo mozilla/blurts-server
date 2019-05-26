@@ -356,17 +356,67 @@ read-more-tips = Daha dazla güvenlik ipucu
 how-hackers-work = Hacker’ların nasıl çalıştığını anlayın
 monitor-your-online-accounts = { -brand-fxa } ile ihlal uyarılarına kaydolun.
 stay-alert = Yeni ihlallere karşı tetikte kalın
+take-action = Hesaplarınızı korumak için harekete geçin
+website-breach = Web sitesi ihlali
+sensitive-breach = Hassas web sitesi ihlali
+data-aggregator-breach = Veri toplayıcı ihlali
+unverified-breach = Doğrulanmamış ihlal
+spam-list-breach = Spam listesi ihlali
+website-breach-plural = Web sitesi ihlalleri
+sensitive-breach-plural = Hassas ihlaller
+data-aggregator-breach-plural = Veri toplayıcı ihlalleri
+unverified-breach-plural = Doğrulanmamış ihlaller
+spam-list-breach-plural = Spam listesi ihlalleri
+about-fxm-headline = { -product-name } hakkında
+# How Firefox Monitor works
+how-fxm-works = { -product-name } nasıl çalışır?
+what-is-data-agg = Veri toplayıcı nedir?
+protect-your-privacy = Çevrimiçi gizliliğinizi koruyun
+avoid-personal-info = Parolalarda kişisel bilgilerinizi kullanmaktan kaçının
 
 ## What to do after data breach tips
 
 change-pw = Parolanızı değiştirin
+resend-verification = Doğrulama e-postasını yeniden gönder
+add-new-email = Yeni e-posta adresi ekle
+send-verification = Doğrulama bağlantısını gönder
+breach-summary = İhlal özeti
+show-breaches-for-this-email = Bu e-postayı içeren tüm ihlalleri göster.
+link-change-primary = Ana e-posta adresini değiştir
+manage-email-addresses = E-posta adreslerini yönet
+welcome-back = Yeniden hoş geldin { $userName }!
+welcome-user = Hoş geldin { $userName }!
+breach-alert-subject = { -product-name } yeni bir veri ihlalinde e-posta adresinizi tespit etti.
+your-info-was-discovered-headline = Bilgileriniz yeni bir veri ihlalinde tespit edildi.
+what-to-do-after-breach = Veri ihlalinden sonra ne yapılmalı?
+ba-next-step-1 = Parolanızı güçlü ve benzersiz bir parolayla değiştirin.
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } YENİ İHLAL BULUNDU
        *[other] { $breachCount } YENİ İHLAL BULUNDU
     }
+get-alerted = Yeni ihlallerden haberdar olun.
+no-other-breaches-found = Temel aramada başka bir ihlal bulunamadı.
+no-results-blurb = Üzgünüz, bu ihlal veritabanımızda yok.
+all-breaches-headline = { -product-name }’deki tüm ihlaller
+search-breaches = İhlalerde ara
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Gösterilen:
 all-breaches = Tüm ihlaller
 
 ## Updated error messages
 
+error-bot-headline = Arama geçici olarak kullanılamıyor
+error-csrf-headline = Oturum zaman aşımına uğradı
 login-link-pre = Hesabınız var var?
+login-link = Giriş yap
+email-verification-required = E-posta doğrulaması gerekiyor
+# Title
+email-addresses-title = E-posta adresi
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = { -product-short-name } tercihleri
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Kategoriye göre filtrele:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menü
