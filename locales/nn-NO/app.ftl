@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -229,7 +230,11 @@ mozilla-dot-org = Mozilla.org
 preferences = Innstillingar
 # Link title.
 home = Heim
+# Link title
+breaches = Datalekkasjar
 fxa-account = { -brand-fxa }
+website-breach-plural = Nettstadlekkasjar
+sensitive-breach-plural = Sensitive lekkasjar
 
 ## What to do after data breach tips
 
