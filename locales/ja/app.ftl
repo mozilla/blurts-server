@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -215,3 +216,26 @@ sign-up-for-alerts = 登録して通知を受け取る
 sign-up-for-fxa-alerts = 登録して { -product-name } の通知を受け取る。
 # Link title
 frequently-asked-questions = よくある質問
+about-firefox-monitor = { -product-name } について
+# Link title.
+home = ホーム
+# Link title
+breaches = データ侵害
+# Link title
+security-tips = セキュリティの秘訣
+fxa-account = { -brand-fxa }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = 最近追加されたデータ侵害
+breach-added = 侵害の報告日:
+# Link title
+more-about-this-breach = この侵害について詳しく見る
+about-fxm-headline = { -product-name } について
+
+## What to do after data breach tips
+
+back-to-top = トップに戻る
+resend-verification = 認証メールを再送する
+
+## Updated error messages
+
+login-link = ログイン

@@ -37,6 +37,7 @@ education-levels = 教育レベル
 email-addresses = メールアドレス
 email-messages = メールメッセージ
 employers = 雇用主
+employment-statuses = 雇用状態
 ethnicities = 民族
 family-members-names = 家族の名前
 family-plans = 家族計画

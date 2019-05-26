@@ -51,3 +51,10 @@ report-pwt-summary-4 = 1Password や LastPass, Dashlane, Bitwarden などのサ�
 legal = 法的通知
 # Share Firefox Monitor by email subject line
 share-by-email-subject = データ侵害されているか確認してください。
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    こんにちは。
+    { -brand-name } は無料のサービスで、データ侵害があるか確認できます。以下のように動作します:
+    1. { "https://monitor.firefox.com" } を開いてあなたのメールアドレスを検索します。
+    2. オンインアカウントがデータ侵害にさらされているか確認します。
+    3. 次に取るべき行動について { -product-name } から、ヒントを得ます。
