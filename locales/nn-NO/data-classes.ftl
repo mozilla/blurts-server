@@ -40,6 +40,7 @@ education-levels = Utdanningsnivå
 email-addresses = E-postadresser
 email-messages = E-postmeldingar
 employers = Arbeidsgjevarar
+employment-statuses = Sysselsettingsstatus
 ethnicities = Etnisitetar
 family-members-names = Namn på familiemedlemmar
 family-plans = Familieplanar
