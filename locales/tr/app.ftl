@@ -373,10 +373,16 @@ how-fxm-works = { -product-name } nasıl çalışır?
 what-is-data-agg = Veri toplayıcı nedir?
 protect-your-privacy = Çevrimiçi gizliliğinizi koruyun
 avoid-personal-info = Parolalarda kişisel bilgilerinizi kullanmaktan kaçının
+avoid-personal-info-blurb = Doğum günleri, adresler ve akrabalarınızın adları internette bulunabilir. Bu gibi kelime ve sayıları parolanızda kullanmayın.
 
 ## What to do after data breach tips
 
 change-pw = Parolanızı değiştirin
+even-for-old = Eski hesaplarınızın bile parolalarınızı güncellemeniz önemli.
+make-new-pw-unique = Yeni parolanız eskisinden ve tüm parolalarınızdan farklı olsun
+strength-of-your-pw = Parolalarınızın kalitesi, internetteki güvenliğinizi doğrudan etkiler.
+create-strong-passwords = Güçlü parolalar nasıl oluşturulur?
+stop-reusing-pw = Aynı parolaları kullanmayın
 resend-verification = Doğrulama e-postasını yeniden gönder
 add-new-email = Yeni e-posta adresi ekle
 send-verification = Doğrulama bağlantısını gönder
