@@ -40,6 +40,7 @@ education-levels = Niveles de educación
 email-addresses = Direcciones de correo
 email-messages = Mensajes de correo electrónico
 employers = Empresas
+employment-statuses = Estados de empleo
 ethnicities = Etnias
 family-members-names = Nombres de familiares
 family-plans = Planes familiares
