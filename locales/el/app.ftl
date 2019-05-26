@@ -377,5 +377,7 @@ fxa-account = { -brand-fxa }
 ## Updated error messages
 
 login-link = Σύνδεση
+# Title
+email-addresses-title = Διευθύνσεις email
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Μενού
