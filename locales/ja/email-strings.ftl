@@ -49,3 +49,5 @@ report-pwt-headline-4 = パスワード管理ツールを使いましょう
 report-pwt-summary-4 = 1Password や LastPass, Dashlane, Bitwarden などのサービスは強度の高いパスワードを生成するだけでなく、それらを安全に保管し、ウェブサイトへの入力も助けるため、サイトごとに憶えておく必要はありません。
 # A link to legal information about mozilla products.
 legal = 法的通知
+# Share Firefox Monitor by email subject line
+share-by-email-subject = データ侵害されているか確認してください。
