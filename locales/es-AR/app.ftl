@@ -449,6 +449,7 @@ new-breaches-found =
         [one] { $breachCount } NUEVA FILTRACIÓN ENCONTRADA
        *[other] { $breachCount } NUEVAS FILTRACIONES ENCONTRADAS
     }
+get-alerted = Obtener alertas sobre nuevas filtraciones.
 was-your-info-exposed = ¿Estuvo tu información expuesta en la filtración de datos { $breachName }?
 fb-not-comp = Este correo electrónico no apareció en la filtración { $breachName }..
 other-breaches-found =
