@@ -225,7 +225,7 @@ fxa-scan-another-email = Ali želite preveriti še kakšen račun?
 # Search Firefox Monitor
 fxa-scan-submit = Poišči s { -product-name }jem
 sign-up-to-check = Prijavite se za preverjanje
-sign-in = Prijava
+sign-in = Prijavite se
 sign-out = Odjava
 full-report-headline = Vaše poročilo { -product-name }
 see-full-report = Prikaži celotno poročilo
@@ -361,13 +361,17 @@ avoid-personal-info-blurb = Na spletu lahko preprosto najdete rojstne dneve, nas
 change-pw = Spremenite svoje geslo
 even-for-old = Tudi za starejše račune je pomembno redno posodabljanje gesel.
 make-new-pw-unique = Novo geslo naj bo drugačno in edinstveno
+strength-of-your-pw = Moč vaših gesel neposredno vpliva na vašo spletno varnost.
 create-strong-passwords = Kako ustvariti zapletena gesla
+create-unique-pw = Ustvarite edinstvena gesla in jih shranite na varnem mestu, kot je upravitelj gesel.
 five-myths = 5 zmot o upraviteljih gesel
 feat-security-tips = Varnostni nasveti za zaščito vaših računov
 sign-up-for-fxa = Ustvarite si { -brand-fxa }
 see-if-breached = Preverite, ali ste bili vpleteni v spletno krajo podatkov.
+find-out-what-hackers-know = Ugotovite, kaj o vas hekerji že vedo. Naučite se, kako ostati korak pred njimi.
 back-to-top = Nazaj na vrh
 remove-fxm = Odstrani { -product-name }
+faq2 = Zakaj je trajalo tako dolgo, da sem bil obveščen o tej kraji podatkov?
 
 ## Updated error messages
 
@@ -380,6 +384,9 @@ login-link = Prijava
 results-for = Rezultati za: { $userEmail }
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Preverite
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Dodatne informacije, vključno z:
 # Title
 email-addresses-title = E-poštni naslovi
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
