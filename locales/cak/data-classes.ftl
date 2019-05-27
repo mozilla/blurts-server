@@ -12,6 +12,9 @@ avatars = Taq Awatar
 bank-account-numbers = Kajilab'al kib'i' kitaqoya'l pwaqb'äl
 beauty-ratings = Chawon taq cha'onem
 biometric-data = Yometrik tzij
+# This string is the shortened version of "Biographies", and 
+# refers to biographical data about a user.
+bios = Kimujalil winäq
 browser-user-agent-details = Kib'anikil kib'anel rokisanel okik'amaya'l
 browsing-histories = Kinatab'al okem pa k'amaya'l
 buying-preferences = Rajowab'al loq'oj
@@ -37,6 +40,7 @@ education-levels = Rupalb'al tijonïk
 email-addresses = Kochochib'al taqoya'l
 email-messages = Rutzijol Taqoya'l
 employers = Samajela'
+employment-statuses = Kib'anikil samaj
 ethnicities = Winaqil
 family-members-names = Kib'i' ach'alalri'ïl
 family-plans = Kinuk'samaj ach'alalri'ïl
@@ -101,6 +105,7 @@ smoking-habits = Ruk'ulunem sik'aj
 sms-messages = SMS taq tzijol
 social-connections = Winaqilal taq okem
 social-media-profiles = Ruwäch kib'i' kik'amab'ey winaqi'
+social-security-numbers = Rajilab'al Rujikomal winäq
 spoken-languages = Ch'ab'en taq ch'ab'äl
 support-tickets = Chilab'enïk taq to'ïk
 survey-results = Kiq'i'oj taq molna'oj

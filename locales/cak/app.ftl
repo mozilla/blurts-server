@@ -501,6 +501,7 @@ ba-next-step-blurb-2 =
     Ri ajkematz'ib' eleq'oma' nitikïr nrïl ri ewan atzij pa dark ajk'amaya'l chuqa' nrokisaj
     richin nok pa ri ch'aqa' chik taq ataqoya'l. Jun ütz rub'eyal richin nachaji ri ataqoya'l
     ja ri rokisaxik xa juyonil ewan rutzij.
+ba-next-step-3 = Tak'ulu' ato'ik richin ye'atz'ük ütz ewan taq tzij chuqa' ye'ajikib'a'.
 ba-next-step-blurb-3 =
     Tokisäx jun nuk'samajel ewan tzij richin nitz'uk jun jikïl chuqa' juyonil ewan tzaq tzij. Ri nuk'samajel ewan taq tzij ütz yekiyäk
     ronojel ri kitikirib'al molojri'ïl richin yatok pa ronojel taq awokisab'al.
@@ -512,6 +513,7 @@ new-breaches-found =
         [one] { $breachCount } K'AK'A' TZ'ILANEM XILITÄJ
        *[other] { $breachCount } K'AK'A' TAQ TZ'ILANEM XE'ILITÄJ
     }
+sign-up-headline-1 = Tak'ulu' jutaqil rutzijol taq k'ayewal rik'in jun { -brand-fxa }.
 was-your-info-exposed = ¿La xk'ut ri awetamaj pa kitz'ilanem tzij { $breachName }?
 fb-not-comp = Man k'o ta pa { $breachName } tz'ilanem re taqoya'l re'.
 other-breaches-found =
@@ -598,3 +600,20 @@ other-known-breaches-found =
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = Ruwi' etamab'äl, nitz'aqatisäx:
+# Title
+email-addresses-title = Kochochib'al Taqoya'l
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = Ri { $breachDate }, { $breachTitle } xuk'ulwachij jun tz'ilanem. Toq xilitäj chuqa' xjikib'äx ri tz'ilanem, xtz'aqatisäx pa qacholxe'el richin { $addedDate }.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = Taq rajowab'al { -product-short-name }
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Okinäq achi'el: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Tichayüx achi'el Ruwäch:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = K'utsamaj
+to-affected-email = Ketaq taq kitzijol tz'ilanem pa ri taqoya'l xtz'iläx
