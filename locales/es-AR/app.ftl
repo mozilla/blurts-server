@@ -423,8 +423,38 @@ welcome-user = ¡Bienvenido, { $userName }!
 breach-alert-subject = { -product-name } encontró tu correo electrónico en una nueva filtración de datos.
 your-info-was-discovered-headline = Tu información fue descubierta en una nueva filtración de datos.
 what-to-do-after-breach = Qué hacer después de una filtración de datos:
-ba-next-step-blurb-1 = Una contraseña segura usa una combinación de letras mayúsculas y minúsculas,
+ba-next-step-1 = Cambiar la contraseña por una segura y única.
+ba-next-step-blurb-1 =
+    Una contraseña segura usa una combinación de letras mayúsculas y minúsculas,
+    caracteres especiales y números. No contiene información personal como
+    dirección, cumpleaños o fechas familiares.
+ba-next-step-2 = Dejar de usar la contraseña expuesta por completo.
+ba-next-step-blurb-2 =
+    Los cibercriminales pueden encontrar tu contraseña en la dark web y usarla 
+    para ingresar en tus otras cuentas. La mejor forma de proteger tus cuentas 
+    es usar contraseñas únicas para cada una.
+ba-next-step-blurb-3 =
+    Usar un administrador de contraseñas para crear contraseñas seguras y únicas. 
+    Los administradores de contraseñas guardan de forma segura 
+    todos los inicios de sesión para podás accederlos en todos tus dispositivos.
+faq1 = No reconozco esta empresa o sitio web. ¿Por qué estoy en esta filtración?
+faq2 = ¿Por qué tomó tanto tiempo notificarme esta filtración?
 faq3 = ¿Cómo sé que este es un correo electrónico legítimo de { -product-name }?
+new-breaches-found =
+    { $breachCount ->
+        [one] { $breachCount } NUEVA FILTRACIÓN ENCONTRADA
+       *[other] { $breachCount } NUEVAS FILTRACIONES ENCONTRADAS
+    }
+fb-not-comp = Este correo electrónico no apareció en la filtración { $breachName }..
+other-breaches-found =
+    { $breachCount ->
+        [one] Sin embargo, apareció en { $breachCount } filtración.
+       *[other] Sin embargo, apareció en { $breachCount } otras filtraciones.
+    }
+fb-comp-only = Este correo electrónico apareció en la filtración { $breachName }.
+no-other-breaches-found = No se han encontrado otras filtraciones en una búsqueda básica.
+no-results-blurb = Lo sentimos, ese filtración no está en nuestra base de datos.
+all-breaches-headline = Todas las filtraciones en { -product-name }
 search-breaches = Buscar filtraciones
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Mostrar:
@@ -433,6 +463,9 @@ all-breaches = Todas las filtraciones
 ## Updated error messages
 
 error-bot-headline = Búsquedas suspendidas temporalmente
+error-csrf-blurb = Seleccioná el botón atrás del navegador, recargá la página e intentá nuevamente.
+error-invalid-unsub = Cómo anular la suscripción de las alertas de { -product-name }
+login-link-pre = ¿Tenés una cuenta?
 login-link = Ingresar
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
@@ -463,13 +496,31 @@ see-additional-breaches = Ver filtraciones adicionales
 # A button on the All Breaches page that restores all of the breaches
 # back to the page if the user has filtered some of them out.
 see-all-breaches = Ver todas las filtraciones
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] El correo electrónico apareció en 1 filtración de datos conocida.
+       *[other] El correo electrónico apareció en { $breachCount } filtraciones de datos conocidas.
+    }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Resultados para: { $userEmail }
 other-monitored-emails = Otros correos electrónicos monitoreados
 email-verification-required = Verificación de correo electrónico requerida
+security-tips-headline = Consejos de seguridad para protegerte de los hackers.
+steps-to-protect = Pasos a seguir para proteger tu identidad en línea
+take-further-steps = Tomá medidas adicionales para proteger tu identidad
 alert-about-new-breaches = Alertarme sobre nuevas filtraciones.
+see-if-youve-been-part = Vea si has sido parte de una filtración de datos en línea.
+new-unsub-error = Necesitás darte de baja de uno de los correos electrónicos enviados por { -product-name }.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Sin embargo, apareció en { $breachCount } filtración conocida.
+       *[other] Sin embargo, apareció en { $breachCount } filtraciones conocidas.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Información adicional, incluyendo:
 # Title
 email-addresses-title = Direcciones de correo electrónico
 # Title appearing on the Preferences dashboard. 
