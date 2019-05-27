@@ -192,6 +192,12 @@ guest-scan-results-headline =
     }
 user-no-breaches-blurb = Vi vil varsle deg om denne adressa er involvert i ein datalekkasje.
 user-one-breach-blurb = Denne datalekkasjen avslørte følgjande personleg informasjon.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] E-postadressa di er også involvert i { $breachCount } annan datalekkasje.
+       *[other] E-postadressa di er også involvert i { $breachCount } andre datalekkasjar.
+    }
+user-generic-fb-compromised-single = Denne datalekkasjen avslørde følgjande personlege informasjon.
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
 user-generic-found-breaches-blurb =
@@ -249,12 +255,21 @@ how-hackers-work = Forstå korleis hackarar jobbar
 monitor-your-online-accounts = Registrer deg for overvaking av datalekkasjar med { -brand-fxa }.
 stay-alert = Ver på vakt for nye datalekkasjar
 monitor-several-emails = Overvak fleire e-postadresser
-website-breach = Nettstadslekkasje
+website-breach = Nettstadlekkasje
+sensitive-breach = Sensitiv nettstadlekkasje
+data-aggregator-breach = Datainnsamlingslekkasje
+unverified-breach = Ubekrefta datalekkasje
+spam-list-breach = Spamlistelekkasje
 website-breach-plural = Nettstadlekkasjar
 sensitive-breach-plural = Sensitive lekkasjar
+data-aggregator-breach-plural = Datainnsamlingslekkasjar
+unverified-breach-plural = Ubekrefta datalekkasjar
+spam-list-breach-plural = Spamlistelekkasjar
+what-data = Kva for nokre data er kompromitterte:
 about-fxm-headline = Om { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Korleis { -product-name } fungerer
+how-fxm-1-headline = Utfør eit enkelt søk
 protect-your-privacy = Ta vare på personvernet ditt på nettet
 
 ## What to do after data breach tips
