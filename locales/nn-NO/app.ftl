@@ -232,17 +232,35 @@ preferences = Innstillingar
 home = Heim
 # Link title
 breaches = Datalekkasjar
+# Link title
+security-tips = Tryggingstips
 fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Opne navigering for { -brand-fxa }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = SISTE DATALEKASJE SOM ER LAGT TIL
+breach-added = Rapporterte datalekkasjar:
+breach-discovered = Oppdaga datalekkasjar:
+# Link title
+more-about-this-breach = Meir om denne datalekkasjen
+take-control = Ta tilbake kontrollen over personopplysningane dine.
 read-more-tips = Les fleire sikkerheitstips
 how-hackers-work = Forstå korleis hackarar jobbar
 monitor-your-online-accounts = Registrer deg for overvaking av datalekkasjar med { -brand-fxa }.
+stay-alert = Ver på vakt for nye datalekkasjar
+monitor-several-emails = Overvak fleire e-postadresser
 website-breach-plural = Nettstadlekkasjar
 sensitive-breach-plural = Sensitive lekkasjar
+about-fxm-headline = Om { -product-name }
+# How Firefox Monitor works
+how-fxm-works = Korleis { -product-name } fungerer
+protect-your-privacy = Ta vare på personvernet ditt på nettet
 
 ## What to do after data breach tips
 
 change-pw = Endre passordet ditt
 create-strong-passwords = Slik lagar du sterke passord
+sign-up-for-fxa = Opprett ein { -brand-fxa }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
@@ -251,8 +269,23 @@ appears-in-x-breaches =
        *[other] Er involvert i { $breachCount } kjende datalekkasjar.
     }
 check-for-breaches = Sjå etter datalekkasjar
+add-new-email = Legg til ei ny e-postadresse
+send-verification = Send stadfestingslenke
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Global kommun ikasjon
+breach-summary = Datalekkasjeoppsummering
+show-breaches-for-this-email = Vis alle datalekkasjar for denne e-postadressa.
+link-change-primary = Endre primær e-postadresse
+remove-fxm = Fjern { -product-name }
+manage-email-addresses = Handter e-postadresser
+latest-breach-link = Sjå om du har vore involvert i ein datalekkasje
 welcome-back = Velkomen tilbake, { $userName }!
 welcome-user = Velkomen, { $userName }!
+breach-alert-subject = { -product-name } fann e-postadressa di i ein ny datalekkasje.
 new-breaches-found =
     { $breachCount ->
         [one] FANN { $breachCount } NY DATALEKKASJE
