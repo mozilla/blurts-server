@@ -375,7 +375,7 @@ if-your-info = Vi sender dig en advarsel, hvis dine informationer dukker op i ny
 search-all-emails = Gennemsøg alle din mailadresser for datalæk - og få advarsler om nye trusler.
 monitor-several-emails = Overvåg flere mailadresser
 keep-your-data-safe = Find ud af hvad du skal gøre for at sikre dine data mod cyber-kriminelle.
-website-breach = Websteds-læk
+website-breach = Websteds-datalæk
 what-data = Hvilke data blev kompromitteret:
 
 ## What to do after data breach tips
