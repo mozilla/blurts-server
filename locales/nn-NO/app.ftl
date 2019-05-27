@@ -255,6 +255,8 @@ how-hackers-work = Forstå korleis hackarar jobbar
 monitor-your-online-accounts = Registrer deg for overvaking av datalekkasjar med { -brand-fxa }.
 stay-alert = Ver på vakt for nye datalekkasjar
 monitor-several-emails = Overvak fleire e-postadresser
+take-action = Beskytt kontoane dine aktivt
+keep-your-data-safe = Finn ut kva du må gjere for å beskytte dataa dine frå cyberkriminelle.
 website-breach = Nettstadlekkasje
 sensitive-breach = Sensitiv nettstadlekkasje
 data-aggregator-breach = Datainnsamlingslekkasje
@@ -266,6 +268,8 @@ data-aggregator-breach-plural = Datainnsamlingslekkasjar
 unverified-breach-plural = Ubekrefta datalekkasjar
 spam-list-breach-plural = Spamlistelekkasjar
 what-data = Kva for nokre data er kompromitterte:
+sensitive-sites = Korleis behandlar { -product-name } sensitive nettstadar?
+delayed-reporting-headline = Kvifor tok det så lang tid å rapportere denne datalekkasjen?
 about-fxm-headline = Om { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Korleis { -product-name } fungerer
@@ -274,13 +278,20 @@ how-fxm-1-blurb =
     Søk etter e-postadressa di i offentlege datalekkasjar som
     går tilbake til 2007. Dette enkle søket  vil vise dei fleste datalekkasjar, men ikkje
     dei som inneheld kjenslevar, personleg informasjon.
+how-fxm-2-headline = Registrer deg for datalekkasjeovervaking
+how-fxm-3-headline = Få meldingar i nettlesaren din
+wtd-after-website = Kva ein skal gjere gjere etter ein nettstadlekkasje
+wtd-after-data-agg = Kva ein skal gjere etter ein datainnsamlingslekkasje
 what-is-data-agg = Kva er ein datainnsamlar?
 protect-your-privacy = Ta vare på personvernet ditt på nettet
+avoid-personal-info = Unngå å bruke personleg informasjon i passord
 
 ## What to do after data breach tips
 
 change-pw = Endre passordet ditt
 create-strong-passwords = Slik lagar du sterke passord
+stop-reusing-pw = Slutt med å bruke dei same passorda
+five-myths = 5 myter om passordhandterarar
 sign-up-for-fxa = Opprett ein { -brand-fxa }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
@@ -308,12 +319,14 @@ latest-breach-link = Sjå om du har vore involvert i ein datalekkasje
 welcome-back = Velkomen tilbake, { $userName }!
 welcome-user = Velkomen, { $userName }!
 breach-alert-subject = { -product-name } fann e-postadressa di i ein ny datalekkasje.
+ba-next-step-2 = Slutt heilt med å bruke det eksponerte passordet.
 new-breaches-found =
     { $breachCount ->
         [one] FANN { $breachCount } NY DATALEKKASJE
        *[other] FANN { $breachCount } NYE DATALEKKASJAR
     }
 get-alerted = Få melding om nye datalekkasjar.
+find-out-if = Finn ut om dine opplysningar vart eksponerte i denne datalekkasjen.
 no-other-breaches-found = Ingen andre datalekkasjar vart funne i dette grunnleggjande søket.
 all-breaches-headline = Alle datalekkasjar i { -product-name }
 search-breaches = Søk etter datalekkasjar
@@ -325,6 +338,14 @@ all-breaches = Alle datalekkasjar
 
 login-link-pre = Har du ein konto?
 login-link = Logg inn
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Passord eksponert i alle datalekkasjane
+       *[other] Passorda eksponerte i alle datalekkasjane
+    }
 # A button on the All Breaches page that restores all of the breaches
 # back to the page if the user has filtered some of them out.
 see-all-breaches = Vis alle datalekkasjar
@@ -344,6 +365,9 @@ what-is-a-website-breach = Kva er ein nettstadlekkasje?
 alert-about-new-breaches = Varsle meg om nye datalekkasjar
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Sjekk no
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Tilleggsinformasjon, inkludert:
 # Title
 email-addresses-title = E-postadresser
 # Title appearing on the Preferences dashboard. 
