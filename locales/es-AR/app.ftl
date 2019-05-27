@@ -418,10 +418,14 @@ link-change-primary = Cambiar dirección primaria de correo electrónico
 remove-fxm = Eliminar { -product-name }
 remove-fxm-blurb = Desactivar alertas de { -product-name }. { -brand-fxa } seguirá activo y se podrán recibir otras comunicaciones relacionadas con la cuenta.
 manage-email-addresses = Administrar direcciones de correo electrónico
+latest-breach-link = Ver si estás en esta filtración
 welcome-back = ¡Bienvenido de nuevo, { $userName }!
 welcome-user = ¡Bienvenido, { $userName }!
 breach-alert-subject = { -product-name } encontró tu correo electrónico en una nueva filtración de datos.
 your-info-was-discovered-headline = Tu información fue descubierta en una nueva filtración de datos.
+your-info-was-discovered-blurb =
+    Te registraste para recibir alertas de { -product-name }
+    cuando tu correo electrónico aparezca en una filtración de datos. Acá está lo que conocemos sobre esta filtración.
 what-to-do-after-breach = Qué hacer después de una filtración de datos:
 ba-next-step-1 = Cambiar la contraseña por una segura y única.
 ba-next-step-blurb-1 =
@@ -445,6 +449,7 @@ new-breaches-found =
         [one] { $breachCount } NUEVA FILTRACIÓN ENCONTRADA
        *[other] { $breachCount } NUEVAS FILTRACIONES ENCONTRADAS
     }
+was-your-info-exposed = ¿Estuvo tu información expuesta en la filtración de datos { $breachName }?
 fb-not-comp = Este correo electrónico no apareció en la filtración { $breachName }..
 other-breaches-found =
     { $breachCount ->
@@ -523,6 +528,10 @@ other-known-breaches-found =
 additional-information-including = Información adicional, incluyendo:
 # Title
 email-addresses-title = Direcciones de correo electrónico
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = El { $breachDate }, { $breachTitle } sufrió una filtración. Una vez que se descubrió y verificó la filtración, se agregó a nuestra base de datos el { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Preferencias de { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
