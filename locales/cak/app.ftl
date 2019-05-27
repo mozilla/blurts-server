@@ -547,3 +547,14 @@ steps-to-protect = Ke'awojqaj re taq xak re' richin nachajij ri ab'anikil pa k'a
 take-further-steps = Ke'awojqaj re taq pixa' re' richin nachajij ri ab'anikil
 alert-about-new-breaches = Tiya' pe rutzijol chwe toq k'o k'ak'a' taq tz'ilanem
 see-if-youve-been-part = Tanik'oj we xak'oje' pa jun kitz'ilanem tzij pa k'amab'ey.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Tikanöx
+new-unsub-error = K'o chi naq'ät ri rutz'ib'axik b'i'aj chupam jun chi ke ri taq taqoya'l xutäq ri { -product-name } chawe.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Chuqa' xk'oje' pa { $breachCount } juley tz'ilanem tzij.
+       *[other] Chuqa' xk'oje' pa { $breachCount } juley tz'ilanem taq tzij.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Ruwi' etamab'äl, nitz'aqatisäx:
