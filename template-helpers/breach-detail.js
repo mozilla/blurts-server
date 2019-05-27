@@ -116,16 +116,6 @@ function compareBreachDates(breach) {
   return false;
 }
 
-function getSensitiveBreachContent(locales, breach) {
-  if (!breach.IsSensitive) {
-    return null;
-  }
-  return {
-    headline: LocaleUtils.fluentFormat(locales, "sensitive-sites"),
-    copy: LocaleUtils.fluentFormat(locales, "sensitive-sites-copy"),
-  };
-}
-
 function getTips(locales, breachType) {
   let tips = [];
   if (breachType === "website-breach") {
@@ -198,7 +188,6 @@ function getBreachDetail(args) {
       headline: LocaleUtils.fluentFormat(locales, "what-data"),
       dataTypes: localizeAndPrioritizeDataClasses(locales, breach),
     },
-    sensitiveBreach: getSensitiveBreachContent(locales, breach),
     whatToDoTips: {
       headline: LocaleUtils.fluentFormat(locales, "what-to-do-after-breach"),
       tips: getTips(locales, "website-breach"),
@@ -214,8 +203,14 @@ function getBreachDetail(args) {
       headline: LocaleUtils.fluentFormat(locales, "wtd-after-data-agg"),
       tips: getTips(locales, "data-agg"),
     };
-
-  } else {
+  }
+  if (breachDetail.categoryId === "sensitive-breach") {
+    breachDetail.whatIsThisBreach = {
+      headline: LocaleUtils.fluentFormat(locales, "sensitive-sites"),
+      copy: LocaleUtils.fluentFormat(locales, "sensitive-sites-copy"),
+    };
+  }
+  else {
     breachDetail.whatIsThisBreach = {
       headline: LocaleUtils.fluentFormat(locales, "what-is-a-website-breach"),
       copy: LocaleUtils.fluentFormat(locales, "website-breach-blurb"),
