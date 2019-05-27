@@ -11,6 +11,12 @@ report-date = Rapportdato:
 email-address = E-postadresse:
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Neste steg
+report-headline =
+    { $breachCount ->
+        [0] Så langt er alt bra.
+        [one] Kontoen din er involvert i { $breachCount } datalekkasje.
+       *[other] Kontoane dine er involvert i { $breachCount } datalekkasjar.
+    }
 breach-alert-headline = Kontoen din har vore involvert i ein datalekkasje.
 report-pwt-headline-1 = Bruk ulike passord for kvar konto
 report-pwt-headline-2 = Lag sterke, unike passord
