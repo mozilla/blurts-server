@@ -514,7 +514,10 @@ new-breaches-found =
        *[other] { $breachCount } K'AK'A' TAQ TZ'ILANEM XE'ILITÄJ
     }
 sign-up-headline-1 = Tak'ulu' jutaqil rutzijol taq k'ayewal rik'in jun { -brand-fxa }.
+account-not-required = { -brand-name } man ajowan ta okik'amaya'l richin jun { -brand-fxa }. Yatikïr nak'ül etamab'äl chi kij { -brand-Mozilla } taq samaj.
+get-alerted = Tak'ulu' taq kitzijol k'ayewal chi kij k'ak'a' taq tz'ilanem.
 was-your-info-exposed = ¿La xk'ut ri awetamaj pa kitz'ilanem tzij { $breachName }?
+find-out-if = Tawila' we ri taq atzij xk'ut pa re tz'ilanem re'.
 fb-not-comp = Man k'o ta pa { $breachName } tz'ilanem re taqoya'l re'.
 other-breaches-found =
     { $breachCount ->
@@ -522,6 +525,11 @@ other-breaches-found =
        *[other] xa xe chi k'o pa { $breachCount } juyley taq tz'ilanem.
     }
 fb-comp-only = Re taqoya'l re' k'o pa ri { $breachName } tz'ilanem.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Re taqoya'l re' k'o pa jun { $breachCount } etaman kitz'ilanem tzij, achi'el { $breachName }.
+       *[other] Re taqoya'l re' k'o pa jun { $breachCount } etaman kitz'ilanem taq tzij, achi'el { $breachName }.
+    }
 no-other-breaches-found = Majun chik tz'ilanem xilitäj pa ri nab'ey kanoxïk.
 no-results-blurb = Kojakuyu', ri tz'ilanem ri' man k'o ta pan rucholxe'el qatzij.
 all-breaches-headline = Ronojel taq tz'ilanem pa { -product-name }
@@ -533,6 +541,10 @@ all-breaches = Ronojel taq Tz'ilanem
 ## Updated error messages
 
 error-bot-headline = Kanoxïk echamäl jub'a'
+error-bot-blurb =
+    Niqamäy chi rik'in jub'a' at jun ch'ich' ala's ruma xe'akanoj
+    k'ïy kochochib'al taqoya'l pa jun ch'uti ramaj. Wakami xe'aq'ät
+    k'ak'a' taq kanoxïk. Yatikïr natojtob'ej chik.
 error-csrf-headline = Xk'is ruq'ijul moloj
 error-csrf-blurb = Tacha' rupitz'b'al chi rij pan awokik'amaya'l, tasamajib'ej chik ri ruxaq richin natojtob'ej chik.
 error-invalid-unsub = Achike rub'eyal niq'at ri tz'ib'anïk b'i'aj pa { -product-name } rutz'ijol k'ayewal
@@ -584,11 +596,16 @@ other-monitored-emails = Juley taq Taqoya'l Enik'on
 email-verification-required = Runik'oxik Taqoya'l Xajowäx
 fxa-primary-email = { -brand-fxa } Nab'ey - Taqoya'l
 what-is-a-website-breach = ¿Achike ri jun rutz'ilanem ajk'amaya'l ruxaq?
+website-breach-blurb =
+    Jun ajk'amaya'l ruxaq xtz'iläx toq ri ajk'amaya'l eleq'oma' ye'eleq', yewachib'en o yek'ut
+    ketamab'al kib'i' taqoya'l pa k'amab'ey. Re re' nuk'üt chi ri ajk'amaya'l eleq'oma' nikïl jun lawalïk rujikomal
+    ri ajk'amaya'l. Ri taq tz'ilanem chuqa' yek'ulwachitäj toq ri retamab'al rub'i' taqoya'l yetz'iläx ruma jun sachoj.
 security-tips-headline = Taq pixa' richin jikomal richin nachajij awi' chi kiwäch taq ajjak
 steps-to-protect = Ke'awojqaj re taq xak re' richin nachajij ri ab'anikil pa k'amab'ey
 take-further-steps = Ke'awojqaj re taq pixa' re' richin nachajij ri ab'anikil
 alert-about-new-breaches = Tiya' pe rutzijol chwe toq k'o k'ak'a' taq tz'ilanem
 see-if-youve-been-part = Tanik'oj we xak'oje' pa jun kitz'ilanem tzij pa k'amab'ey.
+get-ongoing-breach-monitoring = Tak'ulu' jun jutaqil kinik'oxik ri kitz'ilanem jalajöj kochochib'al taqoya'l.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Tikanöx
 new-unsub-error = K'o chi naq'ät ri rutz'ib'axik b'i'aj chupam jun chi ke ri taq taqoya'l xutäq ri { -product-name } chawe.
