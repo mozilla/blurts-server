@@ -497,11 +497,29 @@ ba-next-step-blurb-1 =
     taq etal chuqa' taq ajilab'äl. Man ta ye'atz'ib'aj taq awetamab'al achi'el
     awochochib'al, rajilab'al aq'ij, o kib'i' awach'alal.
 ba-next-step-2 = Man tokisäx chik ri ewan tzij xk'ut.
+ba-next-step-blurb-2 =
+    Ri ajkematz'ib' eleq'oma' nitikïr nrïl ri ewan atzij pa dark ajk'amaya'l chuqa' nrokisaj
+    richin nok pa ri ch'aqa' chik taq ataqoya'l. Jun ütz rub'eyal richin nachaji ri ataqoya'l
+    ja ri rokisaxik xa juyonil ewan rutzij.
+ba-next-step-blurb-3 =
+    Tokisäx jun nuk'samajel ewan tzij richin nitz'uk jun jikïl chuqa' juyonil ewan tzaq tzij. Ri nuk'samajel ewan taq tzij ütz yekiyäk
+    ronojel ri kitikirib'al molojri'ïl richin yatok pa ronojel taq awokisab'al.
+faq1 = Man wetaman ta ruwäch re ajk'ayij moloj o re ajk'amaya'l ruxaq. ¿Achike ruma in k'o pa re tz'ilanem re'?
+faq2 = ¿Achike ruma yalan xyoke' chi xapon rutzijol re tz'ilanem wik'in?
+faq3 = ¿Achike rub'eyal ninwetamaj chi qitzij re taqoya'l re' pa { -product-name }?
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } K'AK'A' TZ'ILANEM XILITÄJ
        *[other] { $breachCount } K'AK'A' TAQ TZ'ILANEM XE'ILITÄJ
     }
+was-your-info-exposed = ¿La xk'ut ri awetamaj pa kitz'ilanem tzij { $breachName }?
+fb-not-comp = Man k'o ta pa { $breachName } tz'ilanem re taqoya'l re'.
+other-breaches-found =
+    { $breachCount ->
+        [one] xa xe chi k'o pa { $breachCount } juyley tz'ilanem.
+       *[other] xa xe chi k'o pa { $breachCount } juyley taq tz'ilanem.
+    }
+fb-comp-only = Re taqoya'l re' k'o pa ri { $breachName } tz'ilanem.
 no-other-breaches-found = Majun chik tz'ilanem xilitäj pa ri nab'ey kanoxïk.
 no-results-blurb = Kojakuyu', ri tz'ilanem ri' man k'o ta pan rucholxe'el qatzij.
 all-breaches-headline = Ronojel taq tz'ilanem pa { -product-name }
