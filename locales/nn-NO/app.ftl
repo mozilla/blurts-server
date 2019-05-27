@@ -270,6 +270,11 @@ about-fxm-headline = Om { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Korleis { -product-name } fungerer
 how-fxm-1-headline = Utfør eit enkelt søk
+how-fxm-1-blurb =
+    Søk etter e-postadressa di i offentlege datalekkasjar som
+    går tilbake til 2007. Dette enkle søket  vil vise dei fleste datalekkasjar, men ikkje
+    dei som inneheld kjenslevar, personleg informasjon.
+what-is-data-agg = Kva er ein datainnsamlar?
 protect-your-privacy = Ta vare på personvernet ditt på nettet
 
 ## What to do after data breach tips
@@ -285,6 +290,7 @@ appears-in-x-breaches =
        *[other] Er involvert i { $breachCount } kjende datalekkasjar.
     }
 check-for-breaches = Sjå etter datalekkasjar
+back-to-top = Tilbake til toppen
 add-new-email = Legg til ei ny e-postadresse
 send-verification = Send stadfestingslenke
 # This string is a header on the user preferences page and
@@ -322,8 +328,25 @@ login-link = Logg inn
 # A button on the All Breaches page that restores all of the breaches
 # back to the page if the user has filtered some of them out.
 see-all-breaches = Vis alle datalekkasjar
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Denne e-postadressa er involvert i 1 kjend datalekkasje.
+       *[other] Denne e-postadressa er involvert i { $breachCount } kjende datalekkasjar.
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Resultat for: { $userEmail }
+other-monitored-emails = Andre overvaka e-postadresser
+email-verification-required = E-poststadfesting påkravd
+fxa-primary-email = { -brand-fxa } E-post - Primær
+what-is-a-website-breach = Kva er ein nettstadlekkasje?
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Sjekk no
 # Title
 email-addresses-title = E-postadresser
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = { -product-short-name }-innstillingar
 # When a user is signed in, this appears in the drop down menu 
 # and is followed by the user's primary Firefox Account email. 
 signed-in-as = Innlogga som: { $userEmail }
