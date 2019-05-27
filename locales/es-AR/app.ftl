@@ -367,11 +367,43 @@ how-fxm-3-blurb =
 wtd-after-website = Qué hacer después de una violación de una página web
 wtd-after-data-agg = Qué hacer después de una violación de un agregador de datos
 what-is-data-agg = ¿Qué es un agregador de datos?
+what-is-data-agg-blurb = Los agregadores de datos, o los intermediarios de datos, recopilan información de registros públicos  y los compran de otras empresas. Compilan estos datos para venderlos a las empresas con fines de comercialización. Las víctimas de estas violaciones tienen menos probabilidades de experimentar fraudes financieros,  pero los piratas informáticos podrían usar estos datos para hacerse pasar por ellos o perfilarlos.
 protect-your-privacy = Proteger la privacidad en línea
 no-pw-to-change = A diferencia de una filtración de un sitio web, no hay contraseña que cambiar.
+avoid-personal-info = Evitar el uso de información personal en las contraseñas
+avoid-personal-info-blurb = Resulta fácil encontrar cumpleaños, direcciones y nombres de familiares en línea. Mantené estas palabras fuera de tus contraseñas.
 
 ## What to do after data breach tips
 
+change-pw = Cambiá la contraseña
+even-for-old = Incluso para cuentas antiguas, es importante actualizar tu contraseña.
+make-new-pw-unique = Hacé que la nueva contraseña sea diferente y única
+strength-of-your-pw = La fortaleza de tus contraseñas tiene un impacto directo en tu seguridad en línea.
+create-strong-passwords = Cómo crear contraseñas seguras
+stop-reusing-pw = Dejá de usar siempre las mismas contraseñas
+create-unique-pw = Creá contraseñas únicas y guardalas en algún lugar seguro, como un administrador de contraseñas.
+five-myths = 5 mitos sobre los administradores de contraseñas
+create-a-fxa = Creá una { -brand-fxa } para tener un informe completo de las violaciones y para recibir alertas.
+feat-security-tips = Consejos de seguridad para proteger tus cuentas
+feat-sensitive = Búsqueda avanzada de violaciones privadas
+feat-enroll-multiple = Inscribí múltiples correos electrónicos en el control de violaciones
+sign-up-for-fxa = Registrate en una { -brand-fxa }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Aparece en { $breachCount } violación conocida.
+       *[other] Aparece en { $breachCount } violaciones conocidas.
+    }
+see-if-breached = Fijate si estuviste en una violación de datos en línea.
+check-for-breaches = Buscar violaciones
+find-out-what-hackers-know = Averiguá lo que los piratas informáticos saben acerca tuyo. Descubrí cómo estar siempre un paso adelante de ellos.
+search-for-your-email = Buscá tu dirección de correo en violaciones de datos públicos yendo hasta 2007.
+back-to-top = Volver al inicio
+comm-opt-0 = Enviame un correo electrónico si alguna de mis direcciones de correo electrónico de las que están a continuación aparece en una violación de datos.
+comm-opt-1 = Enviar todas las alertas de violaciones a { $primaryEmail }.
+stop-monitoring-this = Dejar de controlar esta dirección correo electrónico.
+resend-verification = Reenviar correo electrónico de verificación
 
 ## Updated error messages
 
