@@ -404,6 +404,82 @@ comm-opt-0 = Enviame un correo electrónico si alguna de mis direcciones de corr
 comm-opt-1 = Enviar todas las alertas de violaciones a { $primaryEmail }.
 stop-monitoring-this = Dejar de controlar esta dirección correo electrónico.
 resend-verification = Reenviar correo electrónico de verificación
+add-new-email = Agregar una nueva dirección de correo electrónico
+send-verification = Enviar enlace de verificación
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Comunicación global
+breach-summary = Resumen de filtraciones
+show-breaches-for-this-email = Mostrar todas las filtraciones de este correo electrónico.
+link-change-primary = Cambiar dirección primaria de correo electrónico
+remove-fxm = Eliminar { -product-name }
+remove-fxm-blurb = Desactivar alertas de { -product-name }. { -brand-fxa } seguirá activo y se podrán recibir otras comunicaciones relacionadas con la cuenta.
+manage-email-addresses = Administrar direcciones de correo electrónico
+welcome-back = ¡Bienvenido de nuevo, { $userName }!
+welcome-user = ¡Bienvenido, { $userName }!
+breach-alert-subject = { -product-name } encontró tu correo electrónico en una nueva filtración de datos.
+your-info-was-discovered-headline = Tu información fue descubierta en una nueva filtración de datos.
+what-to-do-after-breach = Qué hacer después de una filtración de datos:
+ba-next-step-blurb-1 = Una contraseña segura usa una combinación de letras mayúsculas y minúsculas,
+faq3 = ¿Cómo sé que este es un correo electrónico legítimo de { -product-name }?
+search-breaches = Buscar filtraciones
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Mostrar:
+all-breaches = Todas las filtraciones
 
 ## Updated error messages
 
+error-bot-headline = Búsquedas suspendidas temporalmente
+login-link = Ingresar
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] Dirección de correo electrónico siendo monitoreada
+       *[other] Direcciones de correo electrónico siendo monitoreadas
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] Una filtración de datos ha expuesto tu información
+       *[other] Algunas filtraciones de datos han expuesto tu información
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Contraseña expuesta a través de todas las filtraciones
+       *[other] Contraseñas expuestas a través de todas las filtraciones
+    }
+# Button
+see-additional-breaches = Ver filtraciones adicionales
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Ver todas las filtraciones
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Resultados para: { $userEmail }
+other-monitored-emails = Otros correos electrónicos monitoreados
+email-verification-required = Verificación de correo electrónico requerida
+alert-about-new-breaches = Alertarme sobre nuevas filtraciones.
+# Title
+email-addresses-title = Direcciones de correo electrónico
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = Preferencias de { -product-short-name }
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Conectado como: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Filtrar por categoría:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menú
+to-affected-email = Enviar alertas de filtración a la dirección de correo electrónico afectada
