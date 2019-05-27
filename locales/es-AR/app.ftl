@@ -437,6 +437,7 @@ ba-next-step-blurb-2 =
     Los cibercriminales pueden encontrar tu contraseña en la dark web y usarla 
     para ingresar en tus otras cuentas. La mejor forma de proteger tus cuentas 
     es usar contraseñas únicas para cada una.
+ba-next-step-3 = Obtener ayuda para crear mejores contraseñas y mantenerlas seguras.
 ba-next-step-blurb-3 =
     Usar un administrador de contraseñas para crear contraseñas seguras y únicas. 
     Los administradores de contraseñas guardan de forma segura 
@@ -449,8 +450,11 @@ new-breaches-found =
         [one] { $breachCount } NUEVA FILTRACIÓN ENCONTRADA
        *[other] { $breachCount } NUEVAS FILTRACIONES ENCONTRADAS
     }
+sign-up-headline-1 = Obtener alertas continuas con { -brand-fxa }.
+account-not-required = El navegador { -brand-name } no es necesario para { -brand-fxa }. Podés recibir información sobre los servicios de { -brand-Mozilla }.
 get-alerted = Obtener alertas sobre nuevas filtraciones.
 was-your-info-exposed = ¿Estuvo tu información expuesta en la filtración de datos { $breachName }?
+find-out-if = Averiguar si tus datos fueron expuestos en esta filtración.
 fb-not-comp = Este correo electrónico no apareció en la filtración { $breachName }..
 other-breaches-found =
     { $breachCount ->
@@ -469,8 +473,14 @@ all-breaches = Todas las filtraciones
 ## Updated error messages
 
 error-bot-headline = Búsquedas suspendidas temporalmente
+error-bot-blurb =
+    Nos preocupa que podás ser un bot porque buscaste 
+    varias direcciones de correo electrónico en un período corto de tiempo. 
+    Por ahora estás bloqueado para nuevas búsquedas. Podés intentar de nuevo más tarde.
+error-csrf-headline = Sesión caducada
 error-csrf-blurb = Seleccioná el botón atrás del navegador, recargá la página e intentá nuevamente.
 error-invalid-unsub = Cómo anular la suscripción de las alertas de { -product-name }
+error-invalid-unsub-blurb = Necesitarás darte de baja desde uno de los correos electrónicos que { -product-name } te envió. Buscá en tu bandeja de entrada los mensajes de { -brand-team-email }. Seleccioná el enlace para darse de baja en el final del mensaje.
 login-link-pre = ¿Tenés una cuenta?
 login-link = Ingresar
 # This string is displayed under a large numeral that indicates the total number
@@ -513,11 +523,16 @@ scan-results-known-breaches =
 results-for = Resultados para: { $userEmail }
 other-monitored-emails = Otros correos electrónicos monitoreados
 email-verification-required = Verificación de correo electrónico requerida
+what-is-a-website-breach = ¿Qué es una filtración de un sitio web?
+website-breach-blurb = Una filtración de datos de un sitio web sucede cuando los cibercriminales roban, copian o exponen información personal de cuentas en línea. Es usualmente el resultado de hackers buscando puntos débiles en la seguridad de los sitios. Las filtraciones también suceden cuando la información de las cuentas se filtra por accidente.
 security-tips-headline = Consejos de seguridad para protegerte de los hackers.
 steps-to-protect = Pasos a seguir para proteger tu identidad en línea
 take-further-steps = Tomá medidas adicionales para proteger tu identidad
 alert-about-new-breaches = Alertarme sobre nuevas filtraciones.
 see-if-youve-been-part = Vea si has sido parte de una filtración de datos en línea.
+get-ongoing-breach-monitoring = Obtener monitoreo contínuo de filtraciones para múltiples direcciones de correo electrónico.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Averiguar
 new-unsub-error = Necesitás darte de baja de uno de los correos electrónicos enviados por { -product-name }.
 other-known-breaches-found =
     { $breachCount ->
