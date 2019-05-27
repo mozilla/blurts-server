@@ -500,3 +500,32 @@ error-invalid-unsub-blurb =
     { -brand-team-email }. Tacha' ruximonel tiyuj tz'ib'anïk b'i'aj richin niq'at ri tz'ib'anïk b'i'aj.
 login-link-pre = ¿La k'o jun rub'i' ataqoya'l?
 login-link = Titikirisäx molojri'ïl
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] Kochochib'al taq taqoya'l nik'on
+       *[other] Kochochib'al taq taqaya'l enik'on
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] Rutz'ilanem tzij ruk'utun ri awetamab'al
+       *[other] E k'ïy kitz'ilanem tzij kik'utun ri awetamab'al
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Ewan tzij k'utun pa ronojel taq  tz'ilanem
+       *[other] Ewan taq tzij ek'utun pa ronojel taq tz'ilanem
+    }
+# Button
+see-additional-breaches = Ketz'et Kitz'aqat taq Tz'ilanem
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Ketz'et Ronojel taq Tz'ilanem
