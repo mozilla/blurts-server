@@ -410,15 +410,32 @@ fxm-warns-you =
 # How Firefox Monitor works
 how-fxm-works = Achike rub'eyal nisamäj { -product-name }
 how-fxm-1-headline = Tab'ana' jun anin kanoxïk
+how-fxm-1-blurb =
+    Takanoj ri rochochib'al ataqoya'l pa taq aj winäq kitz'ilanem tzij eb'enäq chi rij
+    pa 2007. Re nab'ey kanoxïk re' xtuk'üt pe jarupe' taq kitz'ilanem tzij, xa xe chi man
+    ri k'o ta ichinan awetmab'al chi kipam.
+how-fxm-2-headline = Tatz'ib'aj ab'i' richin ye'anik'oj ri taq tz'ilanem
+how-fxm-2-blurb =
+    Tatz'uku' jun { -brand-fxa } richin nanik'oj ri ataqoya'l richin nakanoj taq tz'ilanem.
+    Toq xanik'oj yan ri ataqoya'l, chuqa' xtak'ül jun tz'aqät kitzijol
+    taq tz'ilanem xek'ulwachitäj yan, achi'el richin ri ichinanem.
 how-fxm-3-headline = Tik'ul rutzijol pa wokik'amaya'l
 how-fxm-3-blurb =
     We nawokisaj { -brand-name }, xtak'ül jun rutzijol we natz'ët jun
     ruxaq ri xtz'iläx. Tawila' we xatz'iläx
     achuqa' achike ütz nab'än.
 wtd-after-website = Achike nib'an chuwäch jun rutz'ilaxik ajk'amaya'l ruxaq
+wtd-after-data-agg = Achike ütz nab'än chi rij jun rutz'ilanem jun tz'aqatisanel tzij
 what-is-data-agg = ¿Achike ri jun tz'aqatisanel tzij?
+what-is-data-agg-blurb =
+    Ri tz'aqatisanel taq tzij o ri yesamajin taq tzij, yekikanoj taq na'oj aj winäq
+    kitz'ib'anik chuqa' yekilöq' chi ke ri ajk'ayij moloj. Yekimöl ri taq tzij ri' richin yekik'ayij chi ke taq moloj
+    nikib'än ch'akoj chi kij. Ri yetz'iläx jub'a' xtikina' xkeq'ol rik'in ri kipwaq,
+    xa xe chi ri ajjak pa ruwi' kematz'ib' yetikïr yekokisaj ri taq tzij ri' richin nikipo' ki' rik'in ri' o chuqa' yewachin rik'in ri b'i'aj ri'.
 protect-your-privacy = Tachajij ri awichinanem pa k'amab'ey
+no-pw-to-change = Jun rutz'ilanem ajk'amaya'l ruxaq k'o rukojol ruma ma jun ewan tzij k'o chi nijal.
 avoid-personal-info = Man tawokisaj awetamab'al pa ewan taq tzij
+avoid-personal-info-blurb = Man k'ayew ta nikïl ruq'ijul ajuna', awochochib'al chuqa' kib'i' ach'alalri'ïl pa k'amab'ey. Man ke'atz'ib'aj re taq tzij re' pa ewan taq atzij.
 
 ## What to do after data breach tips
 
@@ -430,8 +447,11 @@ create-strong-passwords = Achike rub'eya'l ye'atz'ük' ütz ewan taq tzij
 stop-reusing-pw = Man ke'awokisaj junam ewan taq tzij
 create-unique-pw = Ke'atz'uk'u' man jun ta chik ewan taq tzij chuqa' tayaka' pa jun ütz k'ojlib'äl, achi'el jun kinuk'samajel ewan taq tzij.
 five-myths = 5 tz'ukun taq na'oj chi kij ri kinuk'samajel ewan tzij
+create-a-fxa = Tatz'uku' jun { -brand-fxa } richin jun tz'aqät atzijol chi kij taq tz'ilanem chuqa' richin ye'ak'ül taq rutzijol k'ayewal.
 feat-security-tips = Taq pixa' pa ruwi' jikomal richin ye'achajij ri kib'i' ataqoya'l
 feat-sensitive = Q'axinäq kikanoxik k'ayew taq tz'ilanem
+feat-enroll-multiple = Ke'atz'ib'aj jalajöj taq taqoya'l pa kitz'etik tz'ilanem
+sign-up-for-fxa = Tatz'ib'aj awi' pa jun { -brand-fxa }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
@@ -446,6 +466,7 @@ search-for-your-email = Takanoj ri rochochib'al ataqoya'l pa kitz'ilanem aj win�
 back-to-top = Titzolin Ajsik
 comm-opt-0 = Tiya' rutzijol chwe we ri rochochib'al nutaqoya'l k'o pa jun kitz'ilanem tzij.
 comm-opt-1 = Titaq ronojel rutzijol tz'ilanem chi re { $primaryEmail }.
+stop-monitoring-this = Man tinik'öx chik re taqoya'l re'.
 resend-verification = Titaq chik jikib'an taqoya'l
 add-new-email = Tatz'aqatisaj jun k'ak'a' rochochib'al taqoya'l
 send-verification = Titaq Ruximonel Jikib'anïk
@@ -475,6 +496,7 @@ ba-next-step-blurb-1 =
     Jun ütz ewan tzij ja ri ruk'wan taq nimatz'ib' chuqa' ko'öl taq tz'ib',
     taq etal chuqa' taq ajilab'äl. Man ta ye'atz'ib'aj taq awetamab'al achi'el
     awochochib'al, rajilab'al aq'ij, o kib'i' awach'alal.
+ba-next-step-2 = Man tokisäx chik ri ewan tzij xk'ut.
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } K'AK'A' TZ'ILANEM XILITÄJ
