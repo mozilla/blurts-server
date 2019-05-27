@@ -341,6 +341,7 @@ other-monitored-emails = Andre overvaka e-postadresser
 email-verification-required = E-poststadfesting påkravd
 fxa-primary-email = { -brand-fxa } E-post - Primær
 what-is-a-website-breach = Kva er ein nettstadlekkasje?
+alert-about-new-breaches = Varsle meg om nye datalekkasjar
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Sjekk no
 # Title
