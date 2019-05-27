@@ -249,6 +249,7 @@ how-hackers-work = Forstå korleis hackarar jobbar
 monitor-your-online-accounts = Registrer deg for overvaking av datalekkasjar med { -brand-fxa }.
 stay-alert = Ver på vakt for nye datalekkasjar
 monitor-several-emails = Overvak fleire e-postadresser
+website-breach = Nettstadslekkasje
 website-breach-plural = Nettstadlekkasjar
 sensitive-breach-plural = Sensitive lekkasjar
 about-fxm-headline = Om { -product-name }
