@@ -356,7 +356,17 @@ how-fxm-1-blurb =
     Buscá tu dirección de correo electrónico en las violaciones de datos públicos yendo hacia atrás
     a 2007. Esta búsqueda básica mostrará la mayoría de las violaciones de datos, pero no
     las que contienen información personal privada.
+how-fxm-2-headline = Registrate para controlar las violaciones
+how-fxm-2-blurb =
+    Creá una { -brand-fxa } para controlar tu correo electrónico en busca de violaciones continuas.
+    Una vez que hayas verificado tu correo electrónico, también recibirás un informe completo de las infracciones anteriores, incluyendo las violaciones de la privacidad.
 how-fxm-3-headline = Obtener notificaciones en el navegador
+how-fxm-3-blurb =
+    Si usás { -brand-name }, recibirás una notificación si vas a un
+    sitio violado. Averiguá de inmediato si fuiste parte de esa violación y lo que podés hacer al respecto.
+wtd-after-website = Qué hacer después de una violación de una página web
+wtd-after-data-agg = Qué hacer después de una violación de un agregador de datos
+what-is-data-agg = ¿Qué es un agregador de datos?
 protect-your-privacy = Proteger la privacidad en línea
 no-pw-to-change = A diferencia de una filtración de un sitio web, no hay contraseña que cambiar.
 
