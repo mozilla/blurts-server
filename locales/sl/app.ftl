@@ -339,14 +339,22 @@ breaches = Kraje podatkov
 # Link title
 security-tips = Varnostni nasveti
 fxa-account = { -brand-fxa }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = ZADNJA DODANA KRAJA PODATKOV
+breach-added = Prijava kraje podatkov:
 # Link title
 more-about-this-breach = Več o tej kraji podatkov
 take-control = Prevzemite nadzor nad svojimi osebnimi podatki.
 cant-stop-hackers = Delovanja hekerjev ne morete ustaviti. Lahko pa se znebite slabih navad, ki jim olajšujejo delo.
 read-more-tips = Preberite več varnostnih nasvetov
 how-hackers-work = Razumite, kako hekerji delujejo
+monitor-your-online-accounts = Prijavite se s { -brand-fxa }jem za nadzor kraj podatkov.
+if-your-info = Če se vaši podatki pojavijo v novih krajah, vam bomo poslali opozorilo.
+search-all-emails = Preverite, če so se e-poštni naslovi pojavili v krajah podatkov in prejmite opozorila o novih grožnjah.
 monitor-several-emails = Spremljajte več e-poštnih naslovov
 take-action = Ukrepajte in zaščitite svoje račune
+keep-your-data-safe = Ugotovite, kaj morate storiti, da bodo vaši podatki ostali varni pred spletnimi napadalci.
+website-breach = Kraja podatkov spletne strani
 unverified-breach = Nepotrjena kraja podatkov
 sensitive-breach-plural = Občutljive kraje podatkov
 what-data = Kateri podatki so bili ogroženi:
@@ -362,6 +370,7 @@ how-fxm-1-blurb =
     tistih, ki vključujejo občutljive osebne podatke.
 how-fxm-2-headline = Prijavite se za nadzor kraj podatkov
 how-fxm-3-headline = Prejemajte obvestila v brskalniku
+wtd-after-website = Kaj storiti po kraji podatkov spletne strani
 what-is-data-agg = Kaj je zbiralnik podatkov?
 protect-your-privacy = Zaščitite svojo spletno zasebnost
 avoid-personal-info = Izogibajte se uporabi osebnih podatkov v geslih
@@ -378,13 +387,16 @@ stop-reusing-pw = Ne uporabljajte istih gesel na več mestih
 create-unique-pw = Ustvarite edinstvena gesla in jih shranite na varnem mestu, kot je upravitelj gesel.
 five-myths = 5 zmot o upraviteljih gesel
 feat-security-tips = Varnostni nasveti za zaščito vaših računov
+feat-enroll-multiple = Vključite več e-poštnih naslovov v nadzor kraj podatkov
 sign-up-for-fxa = Ustvarite si { -brand-fxa }
 see-if-breached = Preverite, ali ste bili vpleteni v spletno krajo podatkov.
 find-out-what-hackers-know = Ugotovite, kaj o vas hekerji že vedo. Naučite se, kako ostati korak pred njimi.
 back-to-top = Nazaj na vrh
 comm-opt-0 = Obvesti me po e-pošti, če se kateri od spodnjih e-poštnih naslovov pojavi v kraji podatkov.
+comm-opt-1 = Vsa opozorila o krajah podatkov pošljite na { $primaryEmail }.
 stop-monitoring-this = Ne nadzoruj več tega naslova.
 resend-verification = Ponovno pošlji potrditveno e-pošto
+add-new-email = Dodajte nov e-poštni naslov
 send-verification = Pošlji potrditveno povezavo
 breach-summary = Povzetek kraje podatkov
 link-change-primary = Spremeni glavni e-poštni naslov
@@ -392,6 +404,9 @@ remove-fxm = Odstrani { -product-name }
 manage-email-addresses = Upravljanje e-poštnih naslovov
 welcome-back = Dobrodošli nazaj, { $userName }!
 welcome-user = Dobrodošli, { $userName }!
+your-info-was-discovered-blurb =
+    Prijavili ste se na prejemanje opozoril { -product-name }ja,
+    ko se vaš e-poštni naslov znajde med ukradenimi podatki. Do sedaj o tej kraji podatkov vemo sledeče.
 ba-next-step-2 = Popolnoma prenehajte uporabljati izpostavljeno geslo.
 faq2 = Zakaj je trajalo tako dolgo, da sem bil obveščen o tej kraji podatkov?
 new-breaches-found =
@@ -401,6 +416,7 @@ new-breaches-found =
         [few] NAJDENE { $breachCount } NOVE KRAJE PODATKOV
        *[other] NAJDENIH { $breachCount } NOVIH KRAJ PODATKOV
     }
+account-not-required = Za { -brand-fxa } brskalnik { -brand-name } ni potreben. Morda boste prejeli informacije o storitvah { -brand-Mozilla }.
 was-your-info-exposed = Ali so bili vaši podatki izpostavljeni v kraji podatkov { $breachName }?
 fb-not-comp = Ta e-poštni naslov se ni pojavil v kraji podatkov { $breachName }.
 all-breaches-headline = Vse kraje podatkov v { -product-name }ju
@@ -409,6 +425,7 @@ all-breaches = Vse kraje podatkov
 ## Updated error messages
 
 error-csrf-headline = Seja je potekla
+error-csrf-blurb = V brskalniku izberite gumb Nazaj, ponovno naložite stran in poskusite znova.
 login-link-pre = Imate račun?
 login-link = Prijava
 # This string is shown at the top of the scan results page and is followed
