@@ -415,7 +415,7 @@ send-verification = Trimite linkul de verificare
 # email address.
 global-communication = Comunicații globale
 breach-summary = Rezumat breșă
-show-breaches-for-this-email = Arată toate breșele pentru acest e-mail.
+show-breaches-for-this-email = Afișează toate breșele pentru acest e-mail.
 link-change-primary = Schimbă adresa de e-mail primară
 remove-fxm = Elimină { -product-name }
 remove-fxm-blurb = Dezactivează alertele { -product-name }. { -brand-fxa } tău va rămâne activ și poți primi alte comunicări legate de cont.
