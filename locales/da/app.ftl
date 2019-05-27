@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -353,3 +354,32 @@ create-free-account =
 get-your-report-and-sign-up = Få din rapport og tilmeld dig advarsler
 # Link title
 frequently-asked-questions = Ofte stillede spørgsmål
+about-firefox-monitor = Om { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Indstillinger
+# Link title
+breaches = Datalæk
+# Link title
+security-tips = Sikkerhedstips
+fxa-account = { -brand-fxa }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = SENEST TILFØJEDE DATALÆK
+breach-added = Datalæk rapporteret:
+breach-discovered = Datalæk opdaget:
+take-control = Tag kontrollen over dine personlige data tilbage.
+cant-stop-hackers = Du kan ikke forhindre hackere i at hacke. Men du kan undgå dårlige vaner, der gør det nemt for dem.
+read-more-tips = Læs flere sikkerhedstips
+how-hackers-work = Forstå hvordan hackere arbejder
+monitor-your-online-accounts = Tilmeld dig overvågning af datalæk med en { -brand-fxa }.
+if-your-info = Vi sender dig en advarsel, hvis dine informationer dukker op i nye datalæk.
+search-all-emails = Gennemsøg alle din mailadresser for datalæk - og få advarsler om nye trusler.
+monitor-several-emails = Overvåg flere mailadresser
+keep-your-data-safe = Find ud af hvad du skal gøre for at sikre dine data mod cyber-kriminelle.
+website-breach = Websteds-læk
+what-data = Hvilke data blev kompromitteret:
+
+## What to do after data breach tips
+
+
+## Updated error messages
+
