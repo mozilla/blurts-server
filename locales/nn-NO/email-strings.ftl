@@ -19,8 +19,12 @@ report-headline =
        *[other] Kontoane dine er involvert i { $breachCount } datalekkasjar.
     }
 breach-alert-headline = Kontoen din har vore involvert i ein datalekkasje.
+breach-alert-subhead = Ein nyleg rapportert datalekkasje inneheld di e-postadresse og følgjande opplysningar
 report-pwt-headline-1 = Bruk ulike passord for kvar konto
 report-pwt-headline-2 = Lag sterke, unike passord
+report-pwt-summary-2 =
+    Hackerar brukar lister med vanlege passord for å prøve å gjette ditt.
+    Dess lenger og meir tilfeldig passordet ditt er, dess vanskelegare er det å stele det.
 report-pwt-headline-3 = Behandle tryggingsspørsmål som ekstra passord
 report-pwt-headline-4 = Bruk ein passordhandterar
 report-pwt-summary-4 =
