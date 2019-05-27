@@ -343,11 +343,19 @@ sensitive-sites-copy =
     { -product-name } solo revela las cuentas asociadas con estos
     tipos de violaciones después de que se verificó una dirección de correo electrónico. Esto significa que sos el único que puede ver si tu información estaba en esta violación (a menos que alguien más tenga acceso a tu cuenta de correo electrónico).
 delayed-reporting-headline = ¿Por qué se tardó tanto en informar esta filtración?
+delayed-reporting-copy =
+    A veces pueden pasar meses o años antes de que las credenciales que se expusieron
+    en una violación de datos aparezcan en la web oscura. Las violaciones se añaden a nuestra base de datos en cuanto se descubren y verifican.
 about-fxm-headline = Acerca de { -product-name }
 about-fxm-blurb = { -product-name } avisa si las cuentas en línea estuvieron involucradas en una filtración de datos. Buscá si estuviste en una filtracón, recibí alertas sobre nuevas filtraciones y seguí los pasos necesarios para proteger tus cuentas en línea. { -product-name } es provisto por { -brand-Mozilla }.
 fxm-warns-you = { -product-name } te advierte si tu dirección de correo electrónico ha estado expuesta a una filtración de datos en línea. Mirá si tu información ha estado expuesta, conocé como proteger mejor tus cuentas en línea y recibí alertas si tu correo electrónico aparece en una nueva filtración.
 # How Firefox Monitor works
 how-fxm-works = Cómo funcionar { -product-name }
+how-fxm-1-headline = Hacer una búsqueda básica
+how-fxm-1-blurb =
+    Buscá tu dirección de correo electrónico en las violaciones de datos públicos yendo hacia atrás
+    a 2007. Esta búsqueda básica mostrará la mayoría de las violaciones de datos, pero no
+    las que contienen información personal privada.
 how-fxm-3-headline = Obtener notificaciones en el navegador
 protect-your-privacy = Proteger la privacidad en línea
 no-pw-to-change = A diferencia de una filtración de un sitio web, no hay contraseña que cambiar.
