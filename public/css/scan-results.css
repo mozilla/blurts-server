@@ -59,8 +59,6 @@ button.alert-me:focus {
   max-width: 650px;
   margin-left: auto;
   margin-right: auto;
-  font-size: 2.5rem;
-  letter-spacing: 0.02em;
 }
 
 .found-breaches,
@@ -116,12 +114,16 @@ button.alert-me:focus {
     padding-left: 0;
   }
 
+  button.alert-me {
+    margin: .5rem 0 0 0;
+  }
+
   .headline-col {
     text-align: left;
   }
 
   .scanned-email-address {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .found-breaches.scan-res-breaches,

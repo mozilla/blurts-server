@@ -14,7 +14,7 @@
         {{/getScanResultsHeadline}}
       {{else}}
         <h2 class="headline  scan-results-headline">{{{ fluentNestedBold "scan-results-known-breaches" breachCount=foundBreaches.length }}}</h2>
-        <button class="alert-me open-oauth flx jst-cntr"  {{> analytics/fxa id="fx-monitor-alert-me-btn" }} data-event-category="Alert me about new breaches">
+        <button class="alert-me open-oauth"  {{> analytics/fxa id="fx-monitor-alert-me-btn" }} data-event-category="Alert me about new breaches">
           {{ getString "alert-about-new-breaches" }}{{> svg/arrow-head-right }}
         </button>
       {{/if}}
