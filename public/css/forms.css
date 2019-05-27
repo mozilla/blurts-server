@@ -168,10 +168,24 @@ input[type="submit"] {
   font-weight: 700;
   border-color: var(--blue3);
   letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all .15s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: var(--blue4);
+  border-color: var(--blue4);
+  transition: all .15s ease;
+}
+
+input[type="submit"]:active {
+  background-color: var(--blue5);
+  border-color: var(--blue5);
+  transition: all .15s ease;
 }
 
 form.invalid input[type="submit"]:focus {
-  border: 1px solid var(--red50);
+  border: 2px solid var(--red50);
   box-shadow: 0 0 0 1px rgba(255, 0, 55, 0.514), 0 0 0 4px rgba(255, 0, 55, 0.3);
 }
 
