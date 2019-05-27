@@ -233,6 +233,9 @@ home = Heim
 # Link title
 breaches = Datalekkasjar
 fxa-account = { -brand-fxa }
+read-more-tips = Les fleire sikkerheitstips
+how-hackers-work = Forstå korleis hackarar jobbar
+monitor-your-online-accounts = Registrer deg for overvaking av datalekkasjar med { -brand-fxa }.
 website-breach-plural = Nettstadlekkasjar
 sensitive-breach-plural = Sensitive lekkasjar
 
@@ -240,15 +243,36 @@ sensitive-breach-plural = Sensitive lekkasjar
 
 change-pw = Endre passordet ditt
 create-strong-passwords = Slik lagar du sterke passord
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Er involvert i { $breachCount } kjend datalekkasje.
+       *[other] Er involvert i { $breachCount } kjende datalekkasjar.
+    }
+check-for-breaches = Sjå etter datalekkasjar
 welcome-back = Velkomen tilbake, { $userName }!
 welcome-user = Velkomen, { $userName }!
+new-breaches-found =
+    { $breachCount ->
+        [one] FANN { $breachCount } NY DATALEKKASJE
+       *[other] FANN { $breachCount } NYE DATALEKKASJAR
+    }
+get-alerted = Få melding om nye datalekkasjar.
+no-other-breaches-found = Ingen andre datalekkasjar vart funne i dette grunnleggjande søket.
+all-breaches-headline = Alle datalekkasjar i { -product-name }
+search-breaches = Søk etter datalekkasjar
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Viser:
+all-breaches = Alle datalekkasjar
 
 ## Updated error messages
 
 login-link-pre = Har du ein konto?
 login-link = Logg inn
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Vis alle datalekkasjar
 # Title
 email-addresses-title = E-postadresser
 # When a user is signed in, this appears in the drop down menu 

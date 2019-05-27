@@ -4,6 +4,7 @@
 -brand-name = Firefox
 verify-my-email = Stadfest e-postadressa mi
 report-scan-another-email = Skann ei anna e-postadresse i { -product-name }
+automated-message = Dette er ei automatisert e-postmelding. Om du har fått henne ved ein feil, treng du ikkje å gjere noko.
 unsubscribe-email-link = Om du ikkje lenger vil ha åtvaringar frå { -product-name }, avbryt abonnementet.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = { -product-name }-rapport
