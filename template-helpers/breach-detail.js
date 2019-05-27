@@ -193,28 +193,28 @@ function getBreachDetail(args) {
       tips: getTips(locales, "website-breach"),
     },
   };
-
-  if (breachDetail.categoryId === "data-aggregator-breach") {
-    breachDetail.whatIsThisBreach = {
-      headline: LocaleUtils.fluentFormat(locales, "what-is-data-agg"),
-      copy: LocaleUtils.fluentFormat(locales, "what-is-data-agg-blurb"),
-    };
-    breachDetail.whatToDoTips = {
-      headline: LocaleUtils.fluentFormat(locales, "wtd-after-data-agg"),
-      tips: getTips(locales, "data-agg"),
-    };
-  }
-  if (breachDetail.categoryId === "sensitive-breach") {
-    breachDetail.whatIsThisBreach = {
-      headline: LocaleUtils.fluentFormat(locales, "sensitive-sites"),
-      copy: LocaleUtils.fluentFormat(locales, "sensitive-sites-copy"),
-    };
-  }
-  else {
-    breachDetail.whatIsThisBreach = {
-      headline: LocaleUtils.fluentFormat(locales, "what-is-a-website-breach"),
-      copy: LocaleUtils.fluentFormat(locales, "website-breach-blurb"),
-    };
+  switch (breachDetail.categoryId) {
+    case "data-aggregator-breach":
+      breachDetail.whatIsThisBreach = {
+        headline: LocaleUtils.fluentFormat(locales, "what-is-data-agg"),
+        copy: LocaleUtils.fluentFormat(locales, "what-is-data-agg-blurb"),
+      };
+      breachDetail.whatToDoTips = {
+        headline: LocaleUtils.fluentFormat(locales, "wtd-after-data-agg"),
+        tips: getTips(locales, "data-agg"),
+      };
+      break;
+    case "sensitive-breach":
+      breachDetail.whatIsThisBreach = {
+        headline: LocaleUtils.fluentFormat(locales, "sensitive-sites"),
+        copy: LocaleUtils.fluentFormat(locales, "sensitive-sites-copy"),
+      };
+      break;
+    default:
+      breachDetail.whatIsThisBreach = {
+        headline: LocaleUtils.fluentFormat(locales, "what-is-a-website-breach"),
+        copy: LocaleUtils.fluentFormat(locales, "website-breach-blurb"),
+      };
   }
 
   if (compareBreachDates(breach)) {
