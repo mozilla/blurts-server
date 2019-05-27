@@ -163,7 +163,7 @@ what-to-do-blurb-4 =
     Upravitelji gesel, kot so 1Password, LastPass, Dashlane in Bitwarden, ustvarjajo močna gesla, 
     jih varno shranjujejo in namesto vas izpolnjujejo na spletnih straneh.
 # breach-date = the calendar date a particular data theft occurred. 
-breach-date = Datum kršitve:
+breach-date = Datum kraje:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Ogroženi računi:
 # compromised-data = the kind of user data exposed to hackers in data breach.
@@ -310,6 +310,7 @@ fxa-pwt-summary-2 =
 fxa-pwt-summary-4 = Upravitelji gesel kot so 1Password, LastPass, Dashlane in Bitwarden shranjujejo vaša gesla in jih namesto vas izpolnjujejo na spletnih mestih. Pomagali vam bodo tudi pri ustvarjanju močnih gesel.
 fxa-pwt-summary-6 = Število kraj podatkov se povečuje. Če se vaši osebni podatki pojavijo v novi kraji podatkov, vam { -product-name } pošlje opozorilo. Tako lahko hitro ukrepate in zaščitite svoje račune.
 fxa-what-to-do-subhead-2 = Ne uporabljajte izpostavljenega gesla in ga spremenite povsod, kjer ste ga uporabili.
+fxa-wtd-blurb-2 = Hekerji lahko vaše geslo in e-poštni naslov poskusijo znova uporabiti za dostop do drugih računov. Za vsak račun ustvarite edinstveno geslo, še posebej za svoj bančni račun, e-pošto in druga spletna mesta, kjer shranjujete osebne podatke.
 fxa-what-to-do-blurb-3 =
     V večini kraj podatkov so izpostavljeni samo e-poštni naslovi in gesla, nekatere pa vključujejo tudi občutljive finančne podatke.
     Če je bil vaš bančni račun ali številka kreditne kartice izpostavljen, obvestite svojo banko o morebitni goljufiji in spremljajte podrobnosti stroškov, ki jih ne prepoznate.
@@ -344,14 +345,24 @@ take-control = Prevzemite nadzor nad svojimi osebnimi podatki.
 cant-stop-hackers = Delovanja hekerjev ne morete ustaviti. Lahko pa se znebite slabih navad, ki jim olajšujejo delo.
 read-more-tips = Preberite več varnostnih nasvetov
 how-hackers-work = Razumite, kako hekerji delujejo
+monitor-several-emails = Spremljajte več e-poštnih naslovov
 take-action = Ukrepajte in zaščitite svoje račune
+unverified-breach = Nepotrjena kraja podatkov
+sensitive-breach-plural = Občutljive kraje podatkov
 what-data = Kateri podatki so bili ogroženi:
 sensitive-sites = Kako { -product-name } obravnava občutljiva spletna mesta?
+delayed-reporting-headline = Zakaj je trajalo toliko časa, da je bila kraja podatkov prijavljena?
 about-fxm-headline = O { -product-name }ju
 # How Firefox Monitor works
 how-fxm-works = Kako deluje { -product-name }
+how-fxm-1-headline = Opravite osnovno preverjanje
+how-fxm-1-blurb =
+    Poiščite svoj e-poštni naslov med javnimi krajami podatkov do
+    leta 2007. To osnovno iskanje bo razkrilo večino kraj podatkov, vendar ne 
+    tistih, ki vključujejo občutljive osebne podatke.
 how-fxm-2-headline = Prijavite se za nadzor kraj podatkov
 how-fxm-3-headline = Prejemajte obvestila v brskalniku
+what-is-data-agg = Kaj je zbiralnik podatkov?
 protect-your-privacy = Zaščitite svojo spletno zasebnost
 avoid-personal-info = Izogibajte se uporabi osebnih podatkov v geslih
 avoid-personal-info-blurb = Na spletu lahko preprosto najdete rojstne dneve, naslove in imena družinskih članov. Izogibajte se uporabi teh besed v geslih.
@@ -363,6 +374,7 @@ even-for-old = Tudi za starejše račune je pomembno redno posodabljanje gesel.
 make-new-pw-unique = Novo geslo naj bo drugačno in edinstveno
 strength-of-your-pw = Moč vaših gesel neposredno vpliva na vašo spletno varnost.
 create-strong-passwords = Kako ustvariti zapletena gesla
+stop-reusing-pw = Ne uporabljajte istih gesel na več mestih
 create-unique-pw = Ustvarite edinstvena gesla in jih shranite na varnem mestu, kot je upravitelj gesel.
 five-myths = 5 zmot o upraviteljih gesel
 feat-security-tips = Varnostni nasveti za zaščito vaših računov
@@ -370,10 +382,29 @@ sign-up-for-fxa = Ustvarite si { -brand-fxa }
 see-if-breached = Preverite, ali ste bili vpleteni v spletno krajo podatkov.
 find-out-what-hackers-know = Ugotovite, kaj o vas hekerji že vedo. Naučite se, kako ostati korak pred njimi.
 back-to-top = Nazaj na vrh
+comm-opt-0 = Obvesti me po e-pošti, če se kateri od spodnjih e-poštnih naslovov pojavi v kraji podatkov.
+stop-monitoring-this = Ne nadzoruj več tega naslova.
+resend-verification = Ponovno pošlji potrditveno e-pošto
+send-verification = Pošlji potrditveno povezavo
+breach-summary = Povzetek kraje podatkov
+link-change-primary = Spremeni glavni e-poštni naslov
 remove-fxm = Odstrani { -product-name }
+manage-email-addresses = Upravljanje e-poštnih naslovov
+welcome-back = Dobrodošli nazaj, { $userName }!
+welcome-user = Dobrodošli, { $userName }!
+ba-next-step-2 = Popolnoma prenehajte uporabljati izpostavljeno geslo.
 faq2 = Zakaj je trajalo tako dolgo, da sem bil obveščen o tej kraji podatkov?
+new-breaches-found =
+    { $breachCount ->
+        [one] NAJDENA NOVA KRAJA PODATKOV
+        [two] NAJDENI { $breachCount } NOVI KRAJI PODATKOV
+        [few] NAJDENE { $breachCount } NOVE KRAJE PODATKOV
+       *[other] NAJDENIH { $breachCount } NOVIH KRAJ PODATKOV
+    }
 was-your-info-exposed = Ali so bili vaši podatki izpostavljeni v kraji podatkov { $breachName }?
 fb-not-comp = Ta e-poštni naslov se ni pojavil v kraji podatkov { $breachName }.
+all-breaches-headline = Vse kraje podatkov v { -product-name }ju
+all-breaches = Vse kraje podatkov
 
 ## Updated error messages
 
@@ -384,6 +415,8 @@ login-link = Prijava
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Rezultati za: { $userEmail }
+email-verification-required = Zahtevana je potrditev e-poštnega naslova
+alert-about-new-breaches = Opozori me na nove kraje podatkov
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Preverite
 # This string appears on breach detail pages and is followed by a list
@@ -391,5 +424,11 @@ find-out = Preverite
 additional-information-including = Dodatne informacije, vključno z:
 # Title
 email-addresses-title = E-poštni naslovi
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Prijavljeni kot: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Filtriraj po kategoriji:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Meni
