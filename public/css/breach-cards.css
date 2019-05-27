@@ -132,6 +132,12 @@ a.latest-breach-link {
   max-width: 46%; /* prevent stretching in scan results */
 }
 
+.scan-res-breaches .two-up {
+  flex: 1 1 47%;
+  margin: 1rem 0;
+  max-width: 47%;
+}
+
 .email-card .two-up {
   max-width: 100%;
 }
@@ -159,10 +165,11 @@ a.latest-breach-link {
 
 @media screen and (max-width: 800px) {
   .breach-card {
-    margin: 0.5rem var(--margin);
+    margin: 0.75rem 0;
   }
 
   .two-up,
+  .scan-res-breaches .two-up,
   .three-up {
     max-width: 100%;
     flex: 1 1 100%;

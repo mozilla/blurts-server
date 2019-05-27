@@ -21,7 +21,8 @@
 
 .gradient-inset {
   width: 100%;
-  border-radius: 0.5rem;
+  border-radius: 0.7rem;
+  box-shadow: 0 0 12px -3px #1c1c1d80;
   padding: var(--padding) 0;
 }
 

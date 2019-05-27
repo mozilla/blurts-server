@@ -371,11 +371,11 @@ input.remove-email-submit {
   }
 
   .e-breach-list {
-    padding: 0 1rem;
+    padding: 0;
   }
 
   .email-card.active .e-breach-list {
-    padding: 0.5rem 1rem;
+    padding: 1rem 0;
   }
 
   .manage-emails.show-mobile {
