@@ -491,7 +491,10 @@ ba-next-step-blurb-1 = Надежный пароль использует ком
 ba-next-step-2 = Перестаньте использовать пароль, который попал в общий доступ.
 ba-next-step-blurb-2 = Киберпреступники могут найти ваш пароль в темном интернете и использовать его для входа в другие ваши аккаунты. Лучший способ защитить ваши аккаунты — использовать уникальные пароли для каждого из них.
 ba-next-step-3 = Получите помощь в создании более надежных паролей и обеспечении их сохранности.
-faq2 = Почему уведомление об утечке заняло так много времени?
+ba-next-step-blurb-3 = Используйте менеджер паролей для создания надежных, уникальных паролей. Менеджеры паролей безопасно хранят все ваши логины и пароли, чтобы вы могли получить доступ к ним на всех ваших устройствах.
+faq1 = Я не узнаю эту компанию или веб-сайт. Почему я появился в этой утечке?
+faq2 = Почему потребовалось так много времени, чтобы уведомить меня об этой утечке?
+faq3 = Как я узнаю, что это письмо действительно пришло от { -product-name }?
 new-breaches-found =
     { $breachCount ->
         [one] ОБНАРУЖЕНА { $breachCount } НОВАЯ УТЕЧКА
@@ -528,7 +531,11 @@ all-breaches = Все утечки
 ## Updated error messages
 
 error-bot-headline = Поиск временно остановлен
+error-bot-blurb = Мы обеспокоены, что вы можете быть ботом, потому что вы произвели поиск нескольких адресов электронной почты за короткий промежуток времени. На данный момент новые поиски для вас заблокированы. Вы можете попробовать позже.
+error-csrf-headline = Время сеанса истекло
+error-csrf-blurb = Нажмите на кнопку «Назад» вашего браузера, перезагрузите страницу и попробуйте снова.
 error-invalid-unsub = Как отписаться от уведомлений { -product-name }
+error-invalid-unsub-blurb = Вам нужно отписаться через одно из электронных писем, которое отправил вам { -product-name }. Проверьте свой почтовый ящик на наличие сообщений от { -brand-team-email }. Выберите ссылку для отмены подписки внизу письма.
 login-link-pre = Уже есть аккаунт?
 login-link = Войти
 # This string is displayed under a large numeral that indicates the total number
@@ -539,6 +546,24 @@ email-addresses-being-monitored =
         [one] Адрес электронной почты отслеживается
         [few] Адреса электронной почты отслеживаются
        *[many] Адреса электронной почты отслеживаются
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] Утечка данных раскрыла вашу информацию
+        [few] Утечки данных раскрыли вашу информацию
+       *[many] Утечки данных раскрыли вашу информацию
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Раскрытых паролей во всех утечках
+        [few] Раскрытых паролей во всех утечках
+       *[many] Раскрытых паролей во всех утечках
     }
 # Button
 see-additional-breaches = Посмотреть дополнительные утечки
@@ -557,15 +582,38 @@ scan-results-known-breaches =
 results-for = Результаты для: { $userEmail }
 other-monitored-emails = Другие отслеживаемые адреса электронной почты
 email-verification-required = Требуется верификация электронной почты
+fxa-primary-email = Адрес электронной почты { -brand-fxa } - Основной
 what-is-a-website-breach = Что такое утечка данных веб-сайта?
+website-breach-blurb = Утечка данных на веб-сайте происходит, когда киберпреступники крадут, копируют или раскрывают личную информацию из его аккаунтов. Обычно это происходит когда хакеры находят в безопасности сайта уязвимое место. Утечки также могут произойти, когда информация аккаунта становится раскрыта случайно.
+security-tips-headline = Советы по безопасности, чтобы защитить себя от хакеров
+steps-to-protect = Шаги, которые нужно предпринять, чтобы защитить свою личность в Интернете
+take-further-steps = Примите дальнейшие меры по защите своей личности
 alert-about-new-breaches = Уведомляйте меня о новых утечках
+see-if-youve-been-part = Узнайте, были ли вы частью утечки данных в Интернете.
+get-ongoing-breach-monitoring = Постоянно следите за появлением в утечках нескольких адресов электронной почты.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Узнать
+new-unsub-error = Вам нужно отписаться через одно из писем, отправленных вам { -product-name }.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Тем не менее, оно появилось в { $breachCount } другой известной утечке.
+        [few] Тем не менее, оно появилось в { $breachCount } других известных утечках.
+       *[many] Тем не менее, оно появилось в { $breachCount } других известных утечках.
+    }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = Дополнительная информация, включая:
 # Title
 email-addresses-title = Адреса электронной почты
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = { $breachDate }, в { $breachTitle } произошла утечка данных. Как только утечка была обнаружена и подтверждена, она была добавлена в нашу базу данных { $addedDate }.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = Настройки { -product-short-name }
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Вы вошли как: { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
 filter-by = Фильтр по категориям:
