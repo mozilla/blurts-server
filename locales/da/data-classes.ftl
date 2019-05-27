@@ -101,6 +101,7 @@ smoking-habits = Rygevaner
 sms-messages = SMS-beskeder
 social-connections = Sociale forbindelser
 social-media-profiles = Profiler på sociale medier
+social-security-numbers = Personnummer
 spoken-languages = Talte sprog
 support-tickets = Support-spørgsmål
 survey-results = Undersøgelses-resultater
