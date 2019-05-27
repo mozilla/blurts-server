@@ -307,6 +307,8 @@ breaches = Fuites de données
 # Link title
 security-tips = Conseils de sécurité
 fxa-account = { -brand-fxa(capitalization: "uppercase") }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Naviguer sur { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = DERNIÈRE FUITE DE DONNÉES AJOUTÉE
 breach-added = Fuite de données signalée le :
@@ -346,6 +348,7 @@ fxm-warns-you = { -product-name } vous avertit si votre adresse électronique a 
 how-fxm-works = Fonctionnement de { -product-name }
 how-fxm-1-headline = Effectuez une recherche basique
 how-fxm-1-blurb = Recherchez votre adresse électronique parmi les fuites de données publiques remontant jusqu’à 2007. Une recherche basique fera apparaître la plupart des fuites de données, à l’exception de celles qui contiennent des données personnelles sensibles.
+how-fxm-2-headline = Inscrivez-vous pour surveiller les fuites de données
 how-fxm-2-blurb =
     Créez un { -brand-fxa } pour surveiller en continu les fuites de données qui concernent votre adresse électronique.
     Après avoir confirmé votre adresse électronique, vous recevrez un rapport complet des précédentes fuites, y compris les fuites de données sensibles.
@@ -354,6 +357,7 @@ how-fxm-3-blurb = Si vous utilisez { -brand-name }, vous recevrez une notificati
 wtd-after-website = Que faire après une fuite de données de site web
 wtd-after-data-agg = Que faire après une fuite de données d’un agrégateur de données
 what-is-data-agg = Qu’est-ce qu’un agrégateur de données ?
+what-is-data-agg-blurb = Les agrégateurs de données, ou courtiers en données, collectent des données publiques ou en achètent auprès d’entreprises. Ils compilent ces données pour les revendre à des entreprises dans le but de les utiliser à des fins marketing. Les victimes de ces fuites de données sont moins susceptibles d’être victimes d’escroqueries financières, mais les pirates pourraient utiliser ces données pour usurper leur identité ou les profiler.
 protect-your-privacy = Protégez votre vie privée en ligne
 no-pw-to-change = Contrairement à une fuite de données de site web, il n’y a pas de mot de passe à changer.
 avoid-personal-info = Évitez d’utiliser des informations personnelles dans les mots de passe
@@ -444,14 +448,21 @@ other-breaches-found =
     }
 fb-comp-only = Cette adresse électronique apparaît dans la fuite de données { $breachName }.
 fb-comp-and-others = Cette adresse électronique apparaît dans { $breachCount } fuites de données connues, fuite { $breachName } comprise.
+no-other-breaches-found = Aucune autre fuite trouvée via une recherche basique.
 no-results-blurb = Désolé, cette fuite ne figure pas dans notre base de données.
 all-breaches-headline = Toutes les fuites de données dans { -product-name }
 search-breaches = Rechercher des fuites de données
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Fuites visibles :
 all-breaches = Toutes les violations
 
 ## Updated error messages
 
 error-bot-headline = Recherches temporairement suspendues
+error-bot-blurb =
+    Nous pensons que vous pourriez être un robot parce que vous avez recherché
+    plusieurs adresses électroniques dans un court laps de temps. Pour l’instant, vous ne pouvez plus effectuer
+    de nouvelles recherches. Vous pourrez réessayer plus tard.
 error-csrf-headline = Session expirée
 error-csrf-blurb = Cliquez sur le bouton Précédent de votre navigateur, actualisez la page et réessayez.
 error-invalid-unsub = Comment se désabonner des alertes de { -product-name }
@@ -535,3 +546,4 @@ signed-in-as = Connecté·e en tant que : { $userEmail }
 filter-by = Filtrer par catégorie :
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
+to-affected-email = Envoyer les alertes à l’adresse électronique concernée
