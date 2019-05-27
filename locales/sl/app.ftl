@@ -372,6 +372,8 @@ find-out-what-hackers-know = Ugotovite, kaj o vas hekerji že vedo. Naučite se,
 back-to-top = Nazaj na vrh
 remove-fxm = Odstrani { -product-name }
 faq2 = Zakaj je trajalo tako dolgo, da sem bil obveščen o tej kraji podatkov?
+was-your-info-exposed = Ali so bili vaši podatki izpostavljeni v kraji podatkov { $breachName }?
+fb-not-comp = Ta e-poštni naslov se ni pojavil v kraji podatkov { $breachName }.
 
 ## Updated error messages
 
