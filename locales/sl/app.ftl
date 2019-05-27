@@ -334,8 +334,12 @@ preferences = Nastavitve
 # Link title.
 home = Domov
 # Link title
+breaches = Kraje podatkov
+# Link title
 security-tips = Varnostni nasveti
 fxa-account = { -brand-fxa }
+# Link title
+more-about-this-breach = Več o tej kraji podatkov
 take-control = Prevzemite nadzor nad svojimi osebnimi podatki.
 cant-stop-hackers = Delovanja hekerjev ne morete ustaviti. Lahko pa se znebite slabih navad, ki jim olajšujejo delo.
 read-more-tips = Preberite več varnostnih nasvetov
@@ -346,6 +350,7 @@ sensitive-sites = Kako { -product-name } obravnava občutljiva spletna mesta?
 about-fxm-headline = O { -product-name }ju
 # How Firefox Monitor works
 how-fxm-works = Kako deluje { -product-name }
+how-fxm-2-headline = Prijavite se za nadzor kraj podatkov
 how-fxm-3-headline = Prejemajte obvestila v brskalniku
 protect-your-privacy = Zaščitite svojo spletno zasebnost
 avoid-personal-info = Izogibajte se uporabi osebnih podatkov v geslih
