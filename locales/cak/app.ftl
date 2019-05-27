@@ -529,3 +529,16 @@ see-additional-breaches = Ketz'et Kitz'aqat taq Tz'ilanem
 # A button on the All Breaches page that restores all of the breaches
 # back to the page if the user has filtered some of them out.
 see-all-breaches = Ketz'et Ronojel taq Tz'ilanem
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Re taqoya'al re' xwachin pa 1 rutz'ilanem tzij etaman ruwäch.
+       *[other] Re taqoya'al re' xwachin pa { $breachCount } taq kitz'ilanem tzij etaman kiwäch.
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = E'ilon richin: { $userEmail }
+other-monitored-emails = Juley taq Taqoya'l Enik'on
+email-verification-required = Runik'oxik Taqoya'l Xajowäx
+fxa-primary-email = { -brand-fxa } Nab'ey - Taqoya'l
+what-is-a-website-breach = ¿Achike ri jun rutz'ilanem ajk'amaya'l ruxaq?
