@@ -1,35 +1,28 @@
 "use strict";
 
 const { LocaleUtils } = require("./../locale-utils");
-const { getStrings } = require("./hbs-helpers");
 
 
-const monitorFeatures = [
-  {
-    "title": "Enroll multiple emails in breach monitoring",
-    "stringId": "feat-enroll-multiple",
-  },
-  {
-    "title": "Advanced search in sensitive breaches",
-    "stringId": "feat-sensitive",
-  },
-  {
-    "string": "Security tips to protect your accounts",
-    "stringId": "feat-security-tips",
-  },
-];
-
-function bulletedList(list, args) {
+function signUpBannerBulletPoints(args) {
   const locales = args.data.root.req.supportedLocales;
-
-  let ret= "";
-  list = monitorFeatures;
-  list = getStrings(list, locales);
-
-  for(let i=0, j=list.length; i<j; i++) {
-    ret = ret + args.fn(list[i]);
-  }
-  return ret;
+  const bulletPoints = [
+    {
+      "title": "Enroll multiple emails in breach monitoring",
+      "stringId": "feat-enroll-multiple",
+    },
+    {
+      "title": "Advanced search in sensitive breaches",
+      "stringId": "feat-sensitive",
+    },
+    {
+      "string": "Security tips to protect your accounts",
+      "stringId": "feat-security-tips",
+    },
+  ];
+  bulletPoints.forEach(bulletPoint => {
+    bulletPoint["translatedString"] = LocaleUtils.fluentFormat(locales, bulletPoint["stringId"]);
+  });
+  return bulletPoints;
 }
 
 function monitorFeaturesList(args) {
@@ -67,5 +60,5 @@ function monitorFeaturesList(args) {
 
 module.exports = {
   monitorFeaturesList,
-  bulletedList,
+  signUpBannerBulletPoints,
 };
