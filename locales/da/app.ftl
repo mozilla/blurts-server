@@ -370,6 +370,8 @@ open-fxa-menu = Åbn { -brand-fxa }-navigation
 latest-breach = SENEST TILFØJEDE DATALÆK
 breach-added = Datalæk rapporteret:
 breach-discovered = Datalæk opdaget:
+# Link title
+more-about-this-breach = Mere om denne datalæk
 take-control = Tag kontrollen over dine personlige data tilbage.
 cant-stop-hackers = Du kan ikke forhindre hackere i at hacke. Men du kan undgå dårlige vaner, der gør det nemt for dem.
 read-more-tips = Læs flere sikkerhedstips
@@ -393,6 +395,12 @@ unverified-breach-plural = Ubekræftede datalæk
 spam-list-breach-plural = Datalæk for spam-lister
 what-data = Hvilke data blev kompromitteret:
 sensitive-sites = Hvordan behandler { -product-name } følsomme websteder?
+sensitive-sites-copy =
+    { -product-name } viser kun konti associeret med denne type af læk, 
+    når en mailadresse er bekræftet. Det betyder, at du er den eneste, der kan se, 
+    om dine informationer er en del af denne læk (medmindre andre har adgang 
+    til din mailkonto).
+delayed-reporting-headline = Hvorfor tog det så lang tid at rapportere denne datalæk?
 delayed-reporting-copy =
     Det kan nogle gange tage måneder eller år, før data involveret 
     i datalæk dukker op på websteder, der bruges af kriminelle. Datalæk bliver føjet til
