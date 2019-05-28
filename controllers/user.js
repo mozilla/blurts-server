@@ -107,7 +107,7 @@ async function add(req, res) {
     email,
     req.fluentFormat("user-add-email-verify-subject"),
     "default_email",
-    { email,
+    { breachedEmail: email,
       supportedLocales: req.supportedLocales,
       verificationHref: EmailUtils.getVerificationUrl(unverifiedSubscriber),
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(unverifiedSubscriber, "account-verification-email"),
@@ -195,7 +195,7 @@ async function _verify(req) {
     req.fluentFormat("user-verify-email-report-subject"),
     "default_email",
     {
-      email: verifiedEmailHash.email,
+      breachedEmail: verifiedEmailHash.email,
       supportedLocales: req.supportedLocales,
       unsafeBreachesForEmail: unsafeBreachesForEmail,
       scanAnotherEmailHref: EmailUtils.getScanAnotherEmailUrl(utmID),
