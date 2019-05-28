@@ -462,6 +462,10 @@ other-breaches-found =
        *[other] Sin embargo, apareció en { $breachCount } otras filtraciones.
     }
 fb-comp-only = Este correo electrónico apareció en la filtración { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+       *[other] Este correo electrónico aparece en { $breachCount } filtraciones de datos conocidas, incluyendo { $breachName }.
+    }
 no-other-breaches-found = No se han encontrado otras filtraciones en una búsqueda básica.
 no-results-blurb = Lo sentimos, ese filtración no está en nuestra base de datos.
 all-breaches-headline = Todas las filtraciones en { -product-name }
@@ -523,6 +527,7 @@ scan-results-known-breaches =
 results-for = Resultados para: { $userEmail }
 other-monitored-emails = Otros correos electrónicos monitoreados
 email-verification-required = Verificación de correo electrónico requerida
+fxa-primary-email = Correo electrónico de { -brand-fxa } - Primario
 what-is-a-website-breach = ¿Qué es una filtración de un sitio web?
 website-breach-blurb = Una filtración de datos de un sitio web sucede cuando los cibercriminales roban, copian o exponen información personal de cuentas en línea. Es usualmente el resultado de hackers buscando puntos débiles en la seguridad de los sitios. Las filtraciones también suceden cuando la información de las cuentas se filtra por accidente.
 security-tips-headline = Consejos de seguridad para protegerte de los hackers.
