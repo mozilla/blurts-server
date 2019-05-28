@@ -406,6 +406,16 @@ delayed-reporting-copy =
     i datalæk dukker op på websteder, der bruges af kriminelle. Datalæk bliver føjet til
     vores database, så snart de opdages og er blevet verificeret.
 about-fxm-headline = Om { -product-name }
+about-fxm-blurb =
+    { -product-name } advarer dig, hvis dine online-konti har været involveret 
+    i en datalæk. Find ud af, om du er blevet ramt af en datalæk, få advarsler om nye
+    datalæk, og tag forholdsregler for at beskytte dine konti. { -product-name } er lavet 
+    af { -brand-Mozilla }.
+fxm-warns-you =
+    { -product-name } advarer dig, hvis din mailadresse har været involveret 
+    i en datalæk. Find ud af, om dine informationer er blevet lækket, lær at tage
+    forholdsregler for at beskytte dine konti og få en advarsel, hvis din 
+    mailadresse optræder i en ny datalæk.
 # How Firefox Monitor works
 how-fxm-works = Sådan virker { -product-name }
 how-fxm-1-headline = Foretag en grundlæggende søgning
@@ -423,6 +433,7 @@ how-fxm-3-blurb =
     et websted, der er blevet udsat for datalæk. Se med det samme, om du 
     er ramt af datalækken - og hvad du kan gøre ved det.
 wtd-after-website = Hvad skal jeg gøre efter datalæk på et websted?
+wtd-after-data-agg = Hvad skal du gøre efter en datalæk for en data-aggregator?
 what-is-data-agg = Hvad er en data-aggregator?
 what-is-data-agg-blurb =
     Data-aggregatorer (også kaldet datamæglere) indsamler information fra  
@@ -457,10 +468,12 @@ appears-in-x-breaches =
         [one] Optræder i { $breachCount } kendt datalæk.
        *[other] Optræder i { $breachCount } kendte datalæk.
     }
+see-if-breached = Se om du har været ramt af en datalæk.
 check-for-breaches = Undersøg for datalæk
 find-out-what-hackers-know = Find ud af, hvad hackerne allerede ved om dig. Lær, hvordan du kan være et skridt foran dem.
 search-for-your-email = Søg efter din mailadresse i offentlige datalæk helt tilbage fra 2007.
 back-to-top = Tilbage til toppen
+comm-opt-0 = Send mig en mail, hvis en af mine nedenstående mailadresser optræder i en datalæk.
 comm-opt-1 = Send alle advarsler om datalæk til { $primaryEmail }.
 stop-monitoring-this = Stop med at overvåge denne mailadresse.
 resend-verification = Send bekræftelsesmail igen
@@ -478,8 +491,15 @@ link-change-primary = Skift primær mailadresse
 remove-fxm = Fjern { -product-name }
 remove-fxm-blurb = Slå { -product-name }-advarsler fra. Din { -brand-fxa } vil fortsat være aktiv, og du vil muligvis modtage andre meddelelser vedrørende din konto.
 manage-email-addresses = Håndter mailadresser
+latest-breach-link = Se, om du er ramt af denne datalæk
 welcome-back = Velkommen tilbage, { $userName }!
 welcome-user = Velkommen { $userName }!
+breach-alert-subject = { -product-name } fandt din mailadresse i en ny datalæk.
+your-info-was-discovered-headline = Dine informationer er blevet fundet i en ny datalæk.
+your-info-was-discovered-blurb =
+    Du har tilmeldt dig advarsler fra { -product-name },
+    når din mailadresse optræder i en datalæk. Her er, hvad vi ved om denne datalæk.
+what-to-do-after-breach = Hvad du skal gøre efter en datalæk:
 ba-next-step-1 = Skift din adgangskode, så den bliver stærk og unik.
 ba-next-step-blurb-1 =
     En stærk adgangskode består af en kombination af store og små bogstaver,
@@ -495,11 +515,33 @@ ba-next-step-3 = Få hjælp til at lave bedre adgangskoder og til at opbevare de
 ba-next-step-blurb-3 =
     Brug et program til at oprette stærke, unikke adgangskoder. Programmer til håndtering af adgangskoder 
     gemmer dine logins på en sikker måde, så du kan anvende dem på alle dine enheder.
+faq1 = Jeg genkender ikke dette firma eller websted. Hvorfor er jeg i denne datalæk?
+faq2 = Hvorfor tog det så lang tid at give mig besked om denne datalæk?
 faq3 = Hvordan ved jeg, at dette er en legitim mail fra { -product-name }?
+new-breaches-found =
+    { $breachCount ->
+        [one] { $breachCount } NY DATALÆK FUNDET
+       *[other] { $breachCount } NYE DATALÆK FUNDET
+    }
 sign-up-headline-1 = Få de nyeste advarsler med en { -brand-fxa }.
 account-not-required = Du behøver ikke at have { -brand-name } for at bruge en { -brand-fxa }. Ved at tilmelde dig kan du modtage information om tjenester fra { -brand-Mozilla }.
 get-alerted = Bliv advaret om nye datalæk.
+was-your-info-exposed = Er dine oplysninger blevet kompromitteret i datalækken { $breachName }?
+find-out-if = Find ud af, om dine data er blevet kompromitteret i denne datalæk.
+fb-not-comp = Denne mailadresse optrådte ikke i datalækken { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Men den optrådte i { $breachCount } anden datalæk.
+       *[other] Men den optrådte i { $breachCount } andre datalæk.
+    }
+fb-comp-only = Denne mailadresse optrådte i datalækken { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Denne mailadresse optrådte i { $breachCount } kendt datalæk, herunder { $breachName }.
+       *[other] Denne mailadresse optrådte i { $breachCount } kendte datalæk, herunder { $breachName }.
+    }
 no-other-breaches-found = Den grundlæggende søgning fandt ikke andre datalæk.
+no-results-blurb = Beklager, men den datalæk er ikke i vores database.
 all-breaches-headline = Alle datalæk i { -product-name }
 search-breaches = Søg efter datalæk
 # "Appears in-page as: Showing: All Breaches"
@@ -535,8 +577,8 @@ email-addresses-being-monitored =
 # your localization, because it would result in the number showing twice.
 data-breaches-exposed =
     { $breaches ->
-        [one] datalæk har kompromitteret dine oplysninger.
-       *[other] datalæk har kompromitteret dine oplysninger.
+        [one] datalæk har kompromitteret dine oplysninger
+       *[other] datalæk har kompromitteret dine oplysninger
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -564,18 +606,30 @@ other-monitored-emails = Andre overvågede mailadresser
 email-verification-required = Bekræftelse af mailadresse påkrævet
 fxa-primary-email = Primær mailadresse til { -brand-fxa }
 what-is-a-website-breach = Hvad er et websteds-læk?
+website-breach-blurb = En datalæk på et websted kan skyldes cyber-kriminelle, der stjæler, kopier eller eksponerer personlig information fra online-konti. Det er som regel resultatet af, at hackere har fundet et svagt punkt i webstedets sikkerhedsforanstaltninger. Datalæk kan også finde sted, når konto-information lækkes ved et uheld.
 security-tips-headline = Sikkerhedstips til at beskytte dig mod hackere
 steps-to-protect = Hvad du kan gøre for at beskytte din identitet på nettet
 take-further-steps = Tag yderligere forholdsregler for at beskytte din identitet
 alert-about-new-breaches = Advar mig om nye datalæk
 see-if-youve-been-part = Se, om du er omfattet af en datalæk på nettet.
 get-ongoing-breach-monitoring = Få løbende overvågning af flere mailadresser for datalæk.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Undersøg
 new-unsub-error = Du skal framelde dig i én af de mails, { -product-name } har sendt dig.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Men den optrådte i { $breachCount } anden kendt datalæk.
+       *[other] Men den optrådte i { $breachCount } andre kendte datalæk.
+    }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = Yderligere information, inklusive:
 # Title
 email-addresses-title = Mailadresser
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = Den { $breachDate } blev { $breachTitle } udsat for en datalæk. Da datalækken blev opdaget og bekræftet, blev det tilføjet til vores database på { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name }-indstillinger
 # When a user is signed in, this appears in the drop down menu 
