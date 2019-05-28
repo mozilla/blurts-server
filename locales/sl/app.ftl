@@ -393,22 +393,26 @@ feat-enroll-multiple = Vključite več e-poštnih naslovov v nadzor kraj podatko
 sign-up-for-fxa = Ustvarite si { -brand-fxa }
 see-if-breached = Preverite, ali ste bili vpleteni v spletno krajo podatkov.
 find-out-what-hackers-know = Ugotovite, kaj o vas hekerji že vedo. Naučite se, kako ostati korak pred njimi.
+search-for-your-email = Poiščite svoj e-poštni naslov med javnimi krajami podatkov do leta 2007.
 back-to-top = Nazaj na vrh
 comm-opt-0 = Obvesti me po e-pošti, če se kateri od spodnjih e-poštnih naslovov pojavi v kraji podatkov.
-comm-opt-1 = Vsa opozorila o krajah podatkov pošljite na { $primaryEmail }.
+comm-opt-1 = Vsa opozorila o krajah podatkov pošlji na { $primaryEmail }.
 stop-monitoring-this = Ne nadzoruj več tega naslova.
 resend-verification = Ponovno pošlji potrditveno e-pošto
 add-new-email = Dodajte nov e-poštni naslov
 send-verification = Pošlji potrditveno povezavo
-breach-summary = Povzetek kraje podatkov
+breach-summary = Povzetek kraj podatkov
 link-change-primary = Spremeni glavni e-poštni naslov
 remove-fxm = Odstrani { -product-name }
 manage-email-addresses = Upravljanje e-poštnih naslovov
 welcome-back = Dobrodošli nazaj, { $userName }!
 welcome-user = Dobrodošli, { $userName }!
+breach-alert-subject = { -product-name } je našel vaš e-poštni naslov v novi kraji podatkov.
+your-info-was-discovered-headline = Vaši podatki so bili odkriti v novi kraji podatkov.
 your-info-was-discovered-blurb =
     Prijavili ste se na prejemanje opozoril { -product-name }ja,
     ko se vaš e-poštni naslov znajde med ukradenimi podatki. Do sedaj o tej kraji podatkov vemo sledeče.
+what-to-do-after-breach = Kaj storiti po kraji podatkov:
 ba-next-step-2 = Popolnoma prenehajte uporabljati izpostavljeno geslo.
 faq2 = Zakaj je trajalo tako dolgo, da sem bil obveščen o tej kraji podatkov?
 new-breaches-found =
@@ -435,7 +439,12 @@ login-link = Prijava
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Rezultati za: { $userEmail }
 email-verification-required = Zahtevana je potrditev e-poštnega naslova
+what-is-a-website-breach = Kaj je kraja podatkov spletne strani?
+security-tips-headline = Varnostni nasveti za zaščito pred hekerji
+steps-to-protect = Ukrepi za zaščito vaše spletne identitete
+take-further-steps = Nadaljnji koraki za zaščito vaše identitete
 alert-about-new-breaches = Opozori me na nove kraje podatkov
+see-if-youve-been-part = Preverite, ali ste bili žrtev spletne kraje podatkov.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Preverite
 # This string appears on breach detail pages and is followed by a list
