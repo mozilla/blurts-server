@@ -410,9 +410,47 @@ how-fxm-2-blurb =
     Opret en { -brand-fxa } for at se, om din mailadresse bliver ramt af nye datalæk. 
     Så snart du har bekræftet din mailadresse, modtager du en fuld rapport over  
     tidligere datalæk, inklusive læk af følsomme data.
+how-fxm-3-blurb =
+    Når du bruger { -brand-name }, får du vist en advarsel, når du besøger 
+    et websted, der er blevet udsat for datalæk. Se med det samme, om du 
+    er ramt af datalækken - og hvad du kan gøre ved det.
+wtd-after-website = Hvad skal jeg gøre efter datalæk på et websted?
+what-is-data-agg = Hvad er en data-aggregator?
+what-is-data-agg-blurb =
+    Data-aggregatorer (også kaldet datamæglere) indsamler information fra  
+    registre og køber information fra andre virksomheder. De sammenstiller disse data for 
+    at sælge dem til virksomheder, der bruger dem i forbindelse med markedsføring. 
+    Ofre for disse datalæk er mindre udsatte for økonomisk bedrageri, men 
+    hackere kan anvende informationerne til at udgive sig for at være dig, eller de kan profilere dig.
+protect-your-privacy = Beskyt dit privatliv på nettet
+no-pw-to-change = I modsætning til et websteds-læk, er der ikke nogen adgangskode at ændre.
+avoid-personal-info = Undgå at bruge personlige informationer i adgangskoder
+avoid-personal-info-blurb = Det er nemt at finde fødselsdatoer, adresser og navne på familiemedlemmer på nettet. Brug ikke disse ord i dine adgangskoder.
 
 ## What to do after data breach tips
 
+change-pw = Skift din adgangskode
+even-for-old = Selv for gamle konti er det vigtigt at opdatere dine adgangskoder.
+make-new-pw-unique = Gør den nye adgangskode forskellig og unik
+strength-of-your-pw = Hvor sikker du er på nettet afhænger af, hvor sikre dine adgangskoder er.
+create-strong-passwords = Sådan opretter du stærke adgangskoder
+stop-reusing-pw = Stop med at genbruge den samme adgangskode
+create-unique-pw = Opret unikke adgangskoder og gem dem et sikkert sted, som fx i et program til håndtering af adgangskoder.
+five-myths = 5 myter om programmer til håndtering af adgangskoder
+create-a-fxa = Opret en { -brand-fxa } for at modtage din fuldstændige rapport over datalæk og fremtidige advarsler.
+feat-security-tips = Sikkerhedstips til at beskytte dine konti
+feat-sensitive = Avanceret søgning i datalæk af følsomme data
+feat-enroll-multiple = Få overvåget flere mailadresser for datalæk
+sign-up-for-fxa = Opret en { -brand-fxa }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Optræder i { $breachCount } kendt datalæk.
+       *[other] Optræder i { $breachCount } kendte datalæk.
+    }
+check-for-breaches = Undersøg for datalæk
+find-out-what-hackers-know = Find ud af, hvad hackerne allerede ved om dig. Lær, hvordan du kan være et skridt foran dem.
 
 ## Updated error messages
 
