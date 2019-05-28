@@ -428,6 +428,7 @@ how-fxm-2-blurb =
     Opret en { -brand-fxa } for at se, om din mailadresse bliver ramt af nye datalæk. 
     Så snart du har bekræftet din mailadresse, modtager du en fuld rapport over  
     tidligere datalæk, inklusive læk af følsomme data.
+how-fxm-3-headline = Få besked i din browser
 how-fxm-3-blurb =
     Når du bruger { -brand-name }, får du vist en advarsel, når du besøger 
     et websted, der er blevet udsat for datalæk. Se med det samme, om du 
@@ -629,7 +630,7 @@ email-addresses-title = Mailadresser
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview = Den { $breachDate } blev { $breachTitle } udsat for en datalæk. Da datalækken blev opdaget og bekræftet, blev det tilføjet til vores database på { $addedDate }.
+breach-overview = Den { $breachDate } blev { $breachTitle } udsat for en datalæk. Da datalækken blev opdaget og bekræftet, blev den tilføjet til vores database den { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name }-indstillinger
 # When a user is signed in, this appears in the drop down menu 
