@@ -451,6 +451,114 @@ appears-in-x-breaches =
     }
 check-for-breaches = Undersøg for datalæk
 find-out-what-hackers-know = Find ud af, hvad hackerne allerede ved om dig. Lær, hvordan du kan være et skridt foran dem.
+search-for-your-email = Søg efter din mailadresse i offentlige datalæk helt tilbage fra 2007.
+back-to-top = Tilbage til toppen
+comm-opt-1 = Send alle advarsler om datalæk til { $primaryEmail }.
+stop-monitoring-this = Stop med at overvåge denne mailadresse.
+resend-verification = Send bekræftelsesmail igen
+add-new-email = Tilføj en ny mailadresse
+send-verification = Send bekræftelseslink
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Overordnet kommunikation
+breach-summary = Opsummering af datalæk
+show-breaches-for-this-email = Vis alle datalæk for denne mailadresse.
+link-change-primary = Skift primær mailadresse
+remove-fxm = Fjern { -product-name }
+remove-fxm-blurb = Slå { -product-name }-advarsler fra. Din { -brand-fxa } vil fortsat være aktiv, og du vil muligvis modtage andre meddelelser vedrørende din konto.
+manage-email-addresses = Håndter mailadresser
+welcome-back = Velkommen tilbage, { $userName }!
+welcome-user = Velkommen { $userName }!
+ba-next-step-1 = Skift din adgangskode, så den bliver stærk og unik.
+ba-next-step-blurb-1 =
+    En stærk adgangskode består af en kombination af store og små bogstaver,
+    specialtegn og tal. Den indeholder ikke personlig information såsom din
+    adresse, din fødselsdag eller navne på familiemedlemmer.
+ba-next-step-2 = Stop helt med at anvende den kompromitterede adgangskode.
+ba-next-step-blurb-2 =
+    Cyber-kriminelle kan finde din adgangskode på svært tilgængelige dele af 
+    internettet (det såkaldte "dark web") og bruge din kode til at logge ind på
+    dine andre konti. Den bedste måde at beskytte dine konti på er ved at 
+    bruge forskellige adgangskoder for alle dine konti.
+ba-next-step-3 = Få hjælp til at lave bedre adgangskoder og til at opbevare dem sikkert.
+ba-next-step-blurb-3 =
+    Brug et program til at oprette stærke, unikke adgangskoder. Programmer til håndtering af adgangskoder 
+    gemmer dine logins på en sikker måde, så du kan anvende dem på alle dine enheder.
+faq3 = Hvordan ved jeg, at dette er en legitim mail fra { -product-name }?
+sign-up-headline-1 = Få de nyeste advarsler med en { -brand-fxa }.
+account-not-required = Du behøver ikke at have { -brand-name } for at bruge en { -brand-fxa }. Ved at tilmelde dig kan du modtage information om tjenester fra { -brand-Mozilla }.
+get-alerted = Bliv advaret om nye datalæk.
+no-other-breaches-found = Den grundlæggende søgning fandt ikke andre datalæk.
+all-breaches-headline = Alle datalæk i { -product-name }
+search-breaches = Søg efter datalæk
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Viser:
+all-breaches = Alla datalæk
 
 ## Updated error messages
 
+error-bot-headline = Søgninger er midlertidigt suspenderet
+error-bot-blurb =
+    Du har søgt efter adskillige mailadresser på meget kort tid.
+    Så vores kode er bekymret for, om du kan være et computer-program.
+    Indtil videre er du blokeret fra at søge. Prøv igen senere.
+error-csrf-headline = Sessionens tidsfrist udløb
+error-csrf-blurb = Brug din browsers Tilbage-knap, genindlæs siden og prøv igen.
+error-invalid-unsub = Sådan framelder du advarsler fra { -product-name }
+error-invalid-unsub-blurb =
+    Du kan afmelde dig i én af de mails, som
+    du har fået fra { -product-name }. Kig i din indbakke, og find en mail fra
+    { -brand-team-email }. Klik så på linket i bunden af mailen for at afmelde.
+login-link-pre = Har du en konto?
+login-link = Log ind
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] mailadresse overvåges
+       *[other] mailadresser overvåges
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] datalæk har kompromitteret dine oplysninger.
+       *[other] datalæk har kompromitteret dine oplysninger.
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] adgangskode kompromitteret i alle datalæk
+       *[other] adgangskoder kompromitteret i alle datalæk
+    }
+# Button
+see-additional-breaches = Se yderligere datalæk
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Se alle datalæk
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Denne mailadresse optrådte i 1 kendt datalæk.
+       *[other] Denne mailadresse optrådte i { $breachCount } kendte datalæk.
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Resultater for: { $userEmail }
+other-monitored-emails = Andre overvågede mailadresser
+email-verification-required = Bekræftelse af mailadresse påkrævet
+fxa-primary-email = Primær mailadresse til { -brand-fxa }
+what-is-a-website-breach = Hvad er et websteds-læk?
+security-tips-headline = Sikkerhedstips til at beskytte dig mod hackere
+steps-to-protect = Hvad du kan gøre for at beskytte din identitet på nettet
+take-further-steps = Tag yderligere forholdsregler for at beskytte din identitet
+alert-about-new-breaches = Advar mig om nye datalæk
+see-if-youve-been-part = Se, om du er omfattet af en datalæk på nettet.
+get-ongoing-breach-monitoring = Få løbende overvågning af flere mailadresser for datalæk.
