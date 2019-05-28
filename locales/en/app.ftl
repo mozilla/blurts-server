@@ -845,3 +845,9 @@ filter-by = Filter by Category:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
 to-affected-email = Send breach alerts to the affected email address
+
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = There is a way to protect your privacy. Join {-brand-name}.
+
+# Link title
+learn-more-link = Learn more.
