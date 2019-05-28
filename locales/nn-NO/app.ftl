@@ -292,6 +292,7 @@ change-pw = Endre passordet ditt
 create-strong-passwords = Slik lagar du sterke passord
 stop-reusing-pw = Slutt med å bruke dei same passorda
 five-myths = 5 myter om passordhandterarar
+feat-sensitive = Avansert søk i sensitive datalekkasjar
 sign-up-for-fxa = Opprett ein { -brand-fxa }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
