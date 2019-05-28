@@ -1,8 +1,8 @@
         <ul class="feature-list {{ variableClass }}">
-          {{#bulletedList (monitorFeatures)}}
+          {{#each (signUpBannerBulletPoints)}}
             <li>
               <div class="sign-up-bullet"></div>
               <p class="sign-up-feature">{{ stringId }}</p>
             </li>
-          {{/bulletedList}}
+          {{/each}}
         </ul>
