@@ -109,10 +109,9 @@ button#show-all-breaches.show {
   min-height: 98vh;
 }
 
-.headline.all-breaches-headline {
+.all-breaches-headline {
   color: var(--color);
   max-width: 500px;
-  font-size: 56px;
   text-align: center;
   margin: auto;
 }
@@ -273,11 +272,6 @@ button.back-to-top:hover {
   justify-content: flex-start;
 }
 
-.breach-info-value {
-  display: block;
-  font-weight: 300;
-}
-
 @media screen and (max-width: 1000px) {
   .ab.breach-card.three-up {
     flex: 1 1 45%;
@@ -286,6 +280,10 @@ button.back-to-top:hover {
 }
 
 @media screen and (max-width: 800px) {
+  .all-breaches {
+    padding: var(--padding);
+  }
+
   .back-to-top-bar {
     flex-direction: column;
   }

@@ -35,11 +35,11 @@
 }
 
 .security-tip-link {
+  display: inline;
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--grey1);
   align-items: center;
-  margin-bottom: 0.5rem;
   font-family: "FirefoxSharpSans", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -224,7 +224,9 @@ h3.article-subhead,
 }
 
 .icon-inline {
-  width: 1.5rem;
+  min-width: 1.5rem;
+  max-width: 1.5rem;
+  max-height: 1.5rem;
   opacity: 0.9;
 }
 
@@ -448,5 +450,27 @@ li.dont-list-item:first-of-type {
 
   .myth {
     display: block;
+  }
+
+  .icon-inline {
+    min-width: 1.15rem;
+    max-width: 1.15rem;
+    max-height: 1.15rem;
+  }
+
+  .icon-inline-wrapper {
+    margin-right: 1rem;
+  }
+
+  .security-tips-link {
+    margin-left: 2.25rem;
+  }
+
+  .security-tip-list-item {
+    padding-right: 13%;
+  }
+
+  .logo-title-wrapper .arrow-head-right {
+    margin-left: 0;
   }
 }

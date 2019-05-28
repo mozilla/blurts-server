@@ -138,16 +138,27 @@ button.resend-email {
   }
 }
 
-@media screen and (max-width: 700px) {
-  .link-header-wrapper {
-    margin-top: var(--padding);
-  }
-}
-
 @media screen and (max-width: 600px) {
+  h2.pref-headline {
+    font-size: 2rem;
+  }
+
+  h2.pref-headline.breach-summary {
+    margin-bottom: var(--margin);
+  }
+
+  .link-header-wrapper {
+    margin-bottom: 0;
+  }
+
+  .dashboard.clear-header {
+    padding-top: 12rem;
+  }
+
   .welcome-back,
   .section-headline.dash {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
+    text-align: left;
   }
 
   .welcome-back {

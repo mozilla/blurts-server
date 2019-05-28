@@ -1,5 +1,5 @@
 .sign-up-banner {
-  border-radius: var(--radius);
+  border-radius: 0.7rem;
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -17,15 +17,36 @@ button.violet-btn {
   width: 100%;
   color: var(--grey1);
   font-weight: 500;
-  margin-top: calc(var(--padding) * 1.5);
+}
+
+.violet-btn:hover {
+  background-color: var(--violet5);
+  border: 1px solid var(--violet5);
+}
+
+.violet-btn:active {
+  background-color: #572cb6;
+  border: 1px solid #572cb6;
+}
+
+.feature-button {
+  margin-top: calc(var(--padding) * 2);
+}
+
+.feature-button .feature-tip-content {
+  text-align: center;
 }
 
 .sign-up-feature::before {
   content: "\2022";
   display: inline-block;
-  width: 1.5rem;
   height: 1rem;
   color: rgba(255, 255, 255, 1);
+  flex: 1;
+  margin-right: 0.5rem;
+  width: 1rem;
+  min-width: 1rem;
+  max-width: 1rem;
 }
 
 .sign-up-cta p,
@@ -34,62 +55,65 @@ button.violet-btn {
 }
 
 .sign-up-cta .btn-light.open-oauth {
+  width: 100%;
   margin-top: 3rem;
   background-color: rgba(255, 255, 255, 1);
   color: var(--violet4);
 }
 
-.have-an-account,
-.open-oauth.text-link {
-  display: inline-flex;
-  align-items: center;
+.sign-up-cta .btn-light.open-oauth:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 1);
+  transition: all 0.15s ease-in-out;
 }
 
-.have-an-account svg.arrow-head-right {
-  max-height: 14px;
-  margin-left: 0.2rem;
-  padding-top: 1px;
+.sign-up-cta .btn-light.open-oauth:active {
+  background-color: rgba(0, 0, 0, 0.05);
+  transition: all 0.15s ease-in-out;
 }
 
 .sign-up-cta .have-an-account svg path {
   fill: rgba(255, 255, 255, 1);
 }
 
-.scan-res ul.feature-list {
+.feature-list {
   margin-left: 0.25rem !important;
-}
-
-.monitor-gradient .feature-tip-content {
-  width: 100%;
-}
-
-.scan-results-sign-up .col-9.sign-up-wrapper {
-  padding: 1rem;
+  max-width: 400px;
 }
 
 .browser-not-required {
+  display: flex;
   text-align: center;
   font-size: 12px;
-  max-width: 300px;
-  margin: 1rem auto auto auto;
+  margin: 1rem auto;
   color: rgba(91, 91, 102, 1);
   line-height: 1.4;
+  align-self: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 p.have-an-account button.text-link,
 p.have-an-account {
   font-size: 1rem;
   font-weight: 500;
+  min-height: 0;
+}
+
+p.have-an-account {
+  display: inline-block;
+  margin: auto;
 }
 
 .have-an-account button.text-link {
-  margin-left: 0.25rem;
+  margin: 0 0.5rem;
+  display: inline;
 }
 
 .sign-up-headline {
   font-size: 2rem;
   color: rgba(255, 255, 255, 1);
-  max-width: 350px;
+  max-width: 400px;
   margin: auto auto auto 0;
 }
 
@@ -98,7 +122,7 @@ p.have-an-account {
   font-size: 1rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 1);
-  margin: 0.25rem 0;
+  margin: 0.5rem 0;
   display: flex;
 }
 
@@ -111,91 +135,55 @@ p.have-an-account {
 }
 
 .sign-up-cta {
-  max-width: 200px;
-  justify-content: center;
-  margin-left: var(--padding);
-  flex: 1;
-}
-
-.col-9 .sign-up-cta {
   max-width: 300px;
   text-align: center;
   align-items: center;
-}
-
-.browser-not-required,
-p.have-an-account {
-  display: flex;
-  align-self: center;
+  margin: auto 0;
+  flex: 1;
   justify-content: center;
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1200px) {
   .sign-up-banner {
     flex-direction: column;
-    padding-left: var(--padding);
+    padding: calc(var(--margin) + var(--padding)) var(--padding);
   }
 
-  .sign-up-headline {
+  h2.sign-up-headline {
     text-align: center;
-    margin: auto auto 1rem auto;
-    max-width: 380px;
+    margin: auto;
+    max-width: 450px;
   }
 
-  ul.feature-list {
-    display: flex;
+  .feature-list {
     align-items: flex-start;
     margin: 1rem inherit;
     align-self: center;
   }
 
-  .col-9 .sign-up-cta,
+  .feature-list,
+  .sign-up-feature,
+  .sign-up-cta p.have-an-account {
+    max-width: 360px;
+  }
+
   .sign-up-cta {
-    max-width: 380px;
+    max-width: 400px;
     margin: auto;
-    display: flex;
+  }
+
+  .sign-up-cta .browser-not-required {
+    margin: 0 auto 0.75rem auto;
   }
 
   .sign-up-cta .btn-light.open-oauth {
-    margin: var(--margin);
-    width: 100%;
+    margin: var(--margin) auto;
   }
 }
 
 @media screen and (max-width: 800px) {
-  .sign-up-banner {
-    flex-wrap: wrap;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-  }
-
-  .sign-up-cta .browser-not-required {
-    margin-top: 0;
-  }
-
-  .sign-up-cta .have-an-account {
-    margin: 2rem auto 0 auto;
-  }
-
-  .sign-up-cta {
-    margin-left: 0;
-    max-width: 400px;
-  }
-
   .sign-up-headline {
-    margin: auto auto 3rem auto;
-    font-size: 2rem;
-  }
-
-  .sign-up-headline,
-  .sign-up-cta {
-    text-align: center;
-  }
-
-  .sign-up-banner,
-  .sign-up-headline-list-wrapper {
-    justify-content: center;
-    align-items: center;
+    font-size: var(--headline);
   }
 
   .col-12.feat-headline-wrapper {

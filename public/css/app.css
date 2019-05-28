@@ -14,12 +14,11 @@ body {
   --inkLight: #2b1e44;
   --color: #20123a;
   --textLight: #686869;
-  --paragraphColor: var(--grey1);
   --padding: 2rem;
   --maxWidth: 1200px;
   --margin: 1rem;
-  --headline: 2.1rem;
-  --bigHeadline: 2.2rem;
+  --headline: 2.5rem;
+  --topHeadline: 3.25rem;
   --skinnyHeadline: 1.9rem;
   --subhead: 1.1rem;
   --lineHeight: 180%;
@@ -34,9 +33,6 @@ body {
   --violet4: #7542e5;
   --violet5: #592acb;
   --purple1: #f565ff;
-  --purple2: #d74cf0;
-  --purple3: #b833e1;
-  --purple4: #952bb9;
   --purple5: #722291;
   --purple6: #332869;
   --pink4: #e31587;
@@ -56,8 +52,6 @@ body {
   --grey2: #ededf0;
   --grey3: #cdcdd4;
   --grey6: #5e5e72;
-  --grey4: #9595a3;
-  --grey5: #7a7a8b;
   --grey8: #42425a;
   --grey9: #202340;
   --monitorGradient: linear-gradient(-90deg, #ff9100 0%, #f10366 50%, #6173ff 100%);
@@ -76,10 +70,6 @@ body {
   min-height: 100vh;
   width: 100vw;
   -webkit-overflow-scrolling: touch;
-}
-
-.warm-gradient {
-  background: var(--warmGradient);
 }
 
 .cool-gradient {
@@ -142,9 +132,10 @@ h3,
   font-size: 24px;
 }
 
-.headline {
-  font-size: var(--headline);
+.top-headline {
+  font-size: var(--topHeadline);
   font-weight: 700;
+  line-height: 130%;
 }
 
 .wrap-headline {
@@ -152,14 +143,13 @@ h3,
 }
 
 .skinny-headline {
-  font-size: var(--headline);
   font-weight: 500;
   max-width: 480px;
 }
 
 .headline,
 .skinny-headline {
-  line-height: 115%;
+  font-size: var(--headline);
   margin: 0 auto 0.55rem 0;
 }
 
@@ -241,7 +231,7 @@ a.btn-dark {
 .btn-light {
   border: 1px solid rgba(255, 255, 255, 0.5);
   color: rgba(255, 255, 255, 1);
-  padding: 0.75rem 2rem;
+  padding: 0.75rem 1rem;
 }
 
 .btn-dark,
@@ -288,6 +278,20 @@ a.btn-light:active {
   font-size: 14px;
   border-radius: 4px;
   font-family: "FirefoxSharpSans", Arial, Helvetica, sans-serif;
+  transition: all 0.15s ease;
+}
+
+.btn-grey:hover {
+  opacity: 1;
+  background-color: #dbdbdf;
+  border: 1px solid #dbdbdf;
+  transition: all 0.15s ease;
+}
+
+.btn-grey:active {
+  background-color: #d0d0d4;
+  border: 1px solid #d0d0d4;
+  color: var(--grey8);
 }
 
 .arrow-head-btn {
@@ -340,8 +344,6 @@ ul li {
 .container,
 .row-full-width,
 .row,
-.col-4,
-.col-5,
 .col-6,
 .col-12,
 .flx,
@@ -375,16 +377,6 @@ ul li {
   margin: 0;
 }
 
-.col-4 {
-  flex: 1 1 33.333%;
-  max-width: 366px;
-}
-
-.col-5 {
-  flex: 1 1 41.66666667%;
-  max-width: 41.66666667%;
-}
-
 .col-6 {
   flex: 1 1 50%;
   max-width: 500px;
@@ -412,8 +404,6 @@ ul li {
   margin-left: auto;
 }
 
-.col-4,
-.col-5,
 .col-6,
 .col-8,
 .col-9 {
@@ -475,16 +465,8 @@ ul li {
   background-color: #f9f7fd;
 }
 
-.bg-ink-light {
-  background-color: var(--inkLight);
-}
-
 .bg-dark {
   background-color: var(--color);
-}
-
-.card.bg-dark {
-  background: var(--color);
   color: rgba(255, 255, 255, 1);
 }
 
@@ -498,11 +480,6 @@ ul li {
   transform: scale(1.01);
   box-shadow: 1px 1px 10px #4341573a;
   transition: box-shadow 0.15s ease-in-out, transform 0.15s ease-in-out;
-}
-
-.card {
-  border-radius: 0.35rem;
-  margin-bottom: var(--margin);
 }
 
 .source-info a,
@@ -530,8 +507,7 @@ div.sprite {
 
 .arrow-head-right {
   margin-left: 0.25rem;
-  width: 1rem;
-  height: 1rem;
+  vertical-align: middle;
 }
 
 .show {
@@ -576,7 +552,8 @@ div.sprite {
 @media screen and (max-width: 800px) {
   body {
     --maxWidth: 600px;
-    --bigHeadline: 2.5rem;
+    --topHeadline: 2.8rem;
+    --headline: 2.4rem;
   }
 
   .clear-header {
@@ -588,23 +565,16 @@ div.sprite {
     visibility: hidden;
   }
 
-  .headline-col {
-    padding-bottom: 0;
-  }
-
   .show-mobile {
     display: flex;
     visibility: visible;
   }
 
-  .col-4,
-  .col-5,
   .col-6 {
     max-width: 100%;
     padding: 0 var(--padding);
   }
 
-  .col-4,
   .col-8,
   .col-9 {
     max-width: 100%;
@@ -627,9 +597,10 @@ div.sprite {
 @media screen and (max-width: 600px) {
   body {
     --paragraphFontSize: 1rem;
+    --topHeadline: 2.3rem;
+    --headline: 2.2rem;
   }
 
-  .col-5,
   .col-6,
   .col-12 {
     margin: auto;
@@ -637,19 +608,17 @@ div.sprite {
   }
 
   .row-full-width {
-    padding: 1.5rem 1.5rem;
+    padding: 1.5rem 1.75rem;
   }
 
-  .card {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+  .arrow-head-right {
+    margin-left: 0.15rem;
   }
 }
 
 @media screen and (max-width: 500px) {
   body {
     --padding: 1rem;
-    --bigHeadline: 2rem;
     --skinnyHeadline: 1.4rem;
     --subhead: 1.1rem;
   }
