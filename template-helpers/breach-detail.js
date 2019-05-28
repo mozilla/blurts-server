@@ -116,16 +116,6 @@ function compareBreachDates(breach) {
   return false;
 }
 
-function getSensitiveBreachContent(locales, breach) {
-  if (!breach.IsSensitive) {
-    return null;
-  }
-  return {
-    headline: LocaleUtils.fluentFormat(locales, "sensitive-sites"),
-    copy: LocaleUtils.fluentFormat(locales, "sensitive-sites-copy"),
-  };
-}
-
 function getTips(locales, breachType) {
   let tips = [];
   if (breachType === "website-breach") {
@@ -198,28 +188,33 @@ function getBreachDetail(args) {
       headline: LocaleUtils.fluentFormat(locales, "what-data"),
       dataTypes: localizeAndPrioritizeDataClasses(locales, breach),
     },
-    sensitiveBreach: getSensitiveBreachContent(locales, breach),
     whatToDoTips: {
       headline: LocaleUtils.fluentFormat(locales, "what-to-do-after-breach"),
       tips: getTips(locales, "website-breach"),
     },
   };
-
-  if (breachDetail.categoryId === "data-aggregator-breach") {
-    breachDetail.whatIsThisBreach = {
-      headline: LocaleUtils.fluentFormat(locales, "what-is-data-agg"),
-      copy: LocaleUtils.fluentFormat(locales, "what-is-data-agg-blurb"),
-    };
-    breachDetail.whatToDoTips = {
-      headline: LocaleUtils.fluentFormat(locales, "wtd-after-data-agg"),
-      tips: getTips(locales, "data-agg"),
-    };
-
-  } else {
-    breachDetail.whatIsThisBreach = {
-      headline: LocaleUtils.fluentFormat(locales, "what-is-a-website-breach"),
-      copy: LocaleUtils.fluentFormat(locales, "website-breach-blurb"),
-    };
+  switch (breachDetail.categoryId) {
+    case "data-aggregator-breach":
+      breachDetail.whatIsThisBreach = {
+        headline: LocaleUtils.fluentFormat(locales, "what-is-data-agg"),
+        copy: LocaleUtils.fluentFormat(locales, "what-is-data-agg-blurb"),
+      };
+      breachDetail.whatToDoTips = {
+        headline: LocaleUtils.fluentFormat(locales, "wtd-after-data-agg"),
+        tips: getTips(locales, "data-agg"),
+      };
+      break;
+    case "sensitive-breach":
+      breachDetail.whatIsThisBreach = {
+        headline: LocaleUtils.fluentFormat(locales, "sensitive-sites"),
+        copy: LocaleUtils.fluentFormat(locales, "sensitive-sites-copy"),
+      };
+      break;
+    default:
+      breachDetail.whatIsThisBreach = {
+        headline: LocaleUtils.fluentFormat(locales, "what-is-a-website-breach"),
+        copy: LocaleUtils.fluentFormat(locales, "website-breach-blurb"),
+      };
   }
 
   if (compareBreachDates(breach)) {

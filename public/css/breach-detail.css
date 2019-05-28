@@ -10,7 +10,6 @@ main.breach-detail {
 .breach-type a:hover {
   opacity: 1;
   text-decoration: underline;
-  color: var(--grey2);
 }
 
 .detail-section {
