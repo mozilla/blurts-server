@@ -357,11 +357,15 @@ frequently-asked-questions = Ofte stillede spørgsmål
 about-firefox-monitor = Om { -product-name }
 mozilla-dot-org = Mozilla.org
 preferences = Indstillinger
+# Link title.
+home = Hjem
 # Link title
 breaches = Datalæk
 # Link title
 security-tips = Sikkerhedstips
 fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Åbn { -brand-fxa }-navigation
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = SENEST TILFØJEDE DATALÆK
 breach-added = Datalæk rapporteret:
@@ -371,12 +375,28 @@ cant-stop-hackers = Du kan ikke forhindre hackere i at hacke. Men du kan undgå 
 read-more-tips = Læs flere sikkerhedstips
 how-hackers-work = Forstå hvordan hackere arbejder
 monitor-your-online-accounts = Tilmeld dig overvågning af datalæk med en { -brand-fxa }.
+stay-alert = Få advarsler om nye datalæk
 if-your-info = Vi sender dig en advarsel, hvis dine informationer dukker op i nye datalæk.
 search-all-emails = Gennemsøg alle din mailadresser for datalæk - og få advarsler om nye trusler.
 monitor-several-emails = Overvåg flere mailadresser
+take-action = Beskyt dine konti
 keep-your-data-safe = Find ud af hvad du skal gøre for at sikre dine data mod cyber-kriminelle.
 website-breach = Websteds-datalæk
+sensitive-breach = Datalæk på websted med følsomme data
+data-aggregator-breach = Datalæk for data-aggregator
+unverified-breach = Ubekræftet datalæk
+spam-list-breach = Datalæk for spam-liste
+website-breach-plural = Websteds-datalæk
+sensitive-breach-plural = Datalæk af følsomme data
+data-aggregator-breach-plural = Datalæk for data-aggregator
+unverified-breach-plural = Ubekræftede datalæk
+spam-list-breach-plural = Datalæk for spam-lister
 what-data = Hvilke data blev kompromitteret:
+sensitive-sites = Hvordan behandler { -product-name } følsomme websteder?
+delayed-reporting-copy =
+    Det kan nogle gange tage måneder eller år, før data involveret 
+    i datalæk dukker op på websteder, der bruges af kriminelle. Datalæk bliver føjet til
+    vores database, så snart de opdages og er blevet verificeret.
 
 ## What to do after data breach tips
 
