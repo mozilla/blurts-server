@@ -13,15 +13,30 @@ const mozlog = require("../log");
 const log = mozlog("controllers.hibp");
 
 
-// Get address and language from either subscribers or
+// Get addresses and language from either subscribers or
 // email_addresses fields
-function getAddressAndLanguageForEmail(recipient) {
-  let email = recipient.email;
-  if (!recipient.hasOwnProperty("email") || recipient.all_emails_to_primary) {
-    email = recipient.primary_email;
-  }
+function getAddressesAndLanguageForEmail(recipient) {
   const signupLanguage = recipient.signup_language;
-  return {email, signupLanguage};
+  if (recipient.hasOwnProperty("email") && recipient.email) {
+    // email_addresses record, check all_emails_to_primary
+    if (recipient.all_emails_to_primary) {
+      return {
+        recipientEmail: recipient.primary_email,
+        breachedEmail: recipient.email,
+        signupLanguage,
+      };
+    }
+    return {
+      recipientEmail: recipient.email,
+      breachedEmail: recipient.email,
+      signupLanguage,
+    };
+  }
+  return {
+    recipientEmail: recipient.primary_email,
+    breachedEmail: recipient.primary_email,
+    signupLanguage,
+  };
 }
 
 async function notify (req, res) {
@@ -66,7 +81,7 @@ async function notify (req, res) {
 
   for (const recipient of recipients) {
     log.info("notify", {recipient});
-    const { email, signupLanguage } = getAddressAndLanguageForEmail(recipient);
+    const { recipientEmail, breachedEmail, signupLanguage } = getAddressesAndLanguageForEmail(recipient);
 
     const requestedLanguage = signupLanguage ? acceptedLanguages(signupLanguage) : "";
     const supportedLocales = negotiateLanguages(
@@ -77,11 +92,11 @@ async function notify (req, res) {
 
     const subject = LocaleUtils.fluentFormat(supportedLocales, "hibp-notify-email-subject");
     const template = "default_email";
-    if (!notifiedRecipients.includes(email)) {
+    if (!notifiedRecipients.includes(breachedEmail)) {
       await EmailUtils.sendEmail(
-        email, subject, template,
+        recipientEmail, subject, template,
         {
-          email,
+          breachedEmail,
           supportedLocales,
           breachAlert,
           SERVER_URL: req.app.locals.SERVER_URL,
@@ -90,7 +105,7 @@ async function notify (req, res) {
           whichView: "email_partials/report",
         },
       );
-      notifiedRecipients.push(email);
+      notifiedRecipients.push(breachedEmail);
     }
   }
   log.info("notified", { length: notifiedRecipients.length });
