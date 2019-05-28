@@ -20,7 +20,7 @@ function signUpBannerBulletPoints(args) {
     },
   ];
   bulletPoints.forEach(bulletPoint => {
-    bulletPoint["stringId"] = LocaleUtils.fluentFormat(locales, bulletPoint["stringId"]);
+    bulletPoint["translatedString"] = LocaleUtils.fluentFormat(locales, bulletPoint["stringId"]);
   });
   return bulletPoints;
 }
