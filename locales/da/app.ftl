@@ -562,3 +562,20 @@ take-further-steps = Tag yderligere forholdsregler for at beskytte din identitet
 alert-about-new-breaches = Advar mig om nye datalæk
 see-if-youve-been-part = Se, om du er omfattet af en datalæk på nettet.
 get-ongoing-breach-monitoring = Få løbende overvågning af flere mailadresser for datalæk.
+new-unsub-error = Du skal framelde dig i én af de mails, { -product-name } har sendt dig.
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Yderligere information, inklusive:
+# Title
+email-addresses-title = Mailadresser
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = { -product-short-name }-indstillinger
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Logget ind som: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Filtrer efter kategori:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menu
+to-affected-email = Send alle advarsler om datalæk til den berørte mailadresse

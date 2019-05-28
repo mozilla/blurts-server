@@ -12,6 +12,9 @@ avatars = Avatarer
 bank-account-numbers = Bankkontonumre
 beauty-ratings = Skønheds-vurderinger
 biometric-data = Biometriske data
+# This string is the shortened version of "Biographies", and 
+# refers to biographical data about a user.
+bios = Personoplysninger
 browser-user-agent-details = Information om browserens user agent
 browsing-histories = Browserhistorik
 buying-preferences = Købs-præferencer
@@ -37,6 +40,7 @@ education-levels = Uddannelsesniveauer
 email-addresses = Mailadresser
 email-messages = Mails
 employers = Arbejdsgivere
+employment-statuses = Beskæftigelsesstatus
 ethnicities = Etnicitet
 family-members-names = Familiemedlemmers navne
 family-plans = Familie-planer
