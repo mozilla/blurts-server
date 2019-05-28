@@ -397,6 +397,19 @@ delayed-reporting-copy =
     Det kan nogle gange tage måneder eller år, før data involveret 
     i datalæk dukker op på websteder, der bruges af kriminelle. Datalæk bliver føjet til
     vores database, så snart de opdages og er blevet verificeret.
+about-fxm-headline = Om { -product-name }
+# How Firefox Monitor works
+how-fxm-works = Sådan virker { -product-name }
+how-fxm-1-headline = Foretag en grundlæggende søgning
+how-fxm-1-blurb =
+    Søg efter din mailadresse i offentlige datalæk helt tilbage 
+    fra 2007. Denne grundlæggende søgning vil afsløre de fleste datalæk, 
+    men ikke dem, der indeholder følsomme personlige informationer.
+how-fxm-2-headline = Tilmeld dig overvågning af datalæk
+how-fxm-2-blurb =
+    Opret en { -brand-fxa } for at se, om din mailadresse bliver ramt af nye datalæk. 
+    Så snart du har bekræftet din mailadresse, modtager du en fuld rapport over  
+    tidligere datalæk, inklusive læk af følsomme data.
 
 ## What to do after data breach tips
 
