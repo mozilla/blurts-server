@@ -2,10 +2,6 @@
   padding: var(--padding) 0 calc(var(--padding) * 3) 0;
 }
 
-.row.article-row {
-  justify-content: center;
-}
-
 a.security-tips-link.article-link {
   margin-top: 0;
 }
@@ -97,10 +93,6 @@ li.logo-title-wrapper.flx.article {
   .article-list-content-wrap {
     padding: 0 0.5rem;
   }
-
-  .row.article-row {
-    margin-top: 16rem;
-  }
 }
 
 @media screen and (max-width: 800px) {
@@ -138,5 +130,9 @@ li.logo-title-wrapper.flx.article {
   .article-list-subhead.dash,
   .article-list-subhead {
     font-size: var(--subhead);
+  }
+
+  li.logo-title-wrapper.flx.article {
+    margin-left: 0;
   }
 }

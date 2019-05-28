@@ -151,7 +151,7 @@ p.have-an-account {
 
   h2.sign-up-headline {
     text-align: center;
-    margin: auto auto 1rem auto;
+    margin: auto;
     max-width: 450px;
   }
 
@@ -172,20 +172,16 @@ p.have-an-account {
     margin: auto;
   }
 
+  .sign-up-cta .browser-not-required {
+    margin: 0 auto 0.75rem auto;
+  }
+
   .sign-up-cta .btn-light.open-oauth {
-    margin: var(--margin);
+    margin: var(--margin) auto;
   }
 }
 
 @media screen and (max-width: 800px) {
-  .sign-up-cta .browser-not-required {
-    margin: 0 auto;
-  }
-
-  .sign-up-cta .have-an-account {
-    margin: var(--padding) auto 0 auto;
-  }
-
   .sign-up-headline {
     font-size: var(--headline);
   }

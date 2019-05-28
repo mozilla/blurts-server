@@ -10,6 +10,7 @@
   background-color: rgba(255, 255, 255, 1);
   border: 1px solid #e8e8e8;
   margin: 0 0 1rem 0;
+  border-radius: 0.25rem;
 }
 
 .e-info { /* email address info */
@@ -324,6 +325,7 @@ input.remove-email-submit {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     background-color: rgba(255, 255, 255, 1);
+    border-radius: 0.25rem;
     border: 1px solid #e8e8e8;
   }
 
@@ -371,11 +373,11 @@ input.remove-email-submit {
   }
 
   .e-breach-list {
-    padding: 0;
+    padding: 0 1rem;
   }
 
   .email-card.active .e-breach-list {
-    padding: 1rem 0;
+    padding: 1rem;
   }
 
   .manage-emails.show-mobile {

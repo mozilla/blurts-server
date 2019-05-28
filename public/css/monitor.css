@@ -26,8 +26,8 @@
   background-repeat: no-repeat;
   background-size: 100% auto;
   background-position: top center;
-  padding-top: 16rem;
   position: relative;
+  padding-top: 0;
 }
 
 /* sensitive featured breach */
@@ -41,7 +41,7 @@
 .sb-top-container {
   position: absolute;
   bottom: -1px;
-  z-index: 2;
+  z-index: 1;
   padding: 0 var(--padding);
   width: 100%;
 }
@@ -130,9 +130,9 @@ h3.sb-callout {
 }
 
 @media screen and (max-width: 1100px) {
-  .landing-bottom-bar {
+  /* .landing-bottom-bar {
     padding-top: 4vh;
-  }
+  } */
 }
 
 @media screen and (max-width: 900px) {
@@ -181,7 +181,7 @@ h3.sb-callout {
     min-height: 96vh;
   }
 
-  .landing-bottom-bar {
+  /* .landing-bottom-bar {
     padding-top: 6vh;
-  }
+  } */
 }

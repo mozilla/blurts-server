@@ -610,6 +610,10 @@ div.sprite {
   .row-full-width {
     padding: 1.5rem 1.75rem;
   }
+
+  .arrow-head-right {
+    margin-left: 0.15rem;
+  }
 }
 
 @media screen and (max-width: 500px) {
