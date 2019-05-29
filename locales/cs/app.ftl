@@ -88,7 +88,7 @@ layout-Firefox = { -brand-name }
 # Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
 layout-support = Podpora
 # Link that takes the user to a blog post on blog.mozilla.org about the alerts
-about-firefox-alerts = O oznámeních od Firefoxu
+about-firefox-alerts = O upozorněních ve Firefoxu
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Poskytnout zpětnou vazbu
 terms-and-privacy = Podmínky a ochrana soukromí
@@ -105,11 +105,11 @@ oauth-invalid-session = Neplatná relace
 oauth-confirmed-title = { -product-name } - přihlášení k odběru
 scan-title = { -product-name } - výsledky skenu
 user-add-invalid-email = Neplatný e-mail
-user-add-email-verify-subject = Potvrďte své přihlášení k odběru zpráv z { -product-name(case: "gen") }.
+user-add-email-verify-subject = Potvrďte své přihlášení k odběru zpráv od { -product-name(case: "gen") }.
 user-add-title = { -product-name } - potvrzovací e-mail
 error-headline = Chyba
 user-verify-token-error = Je vyžadován ověřovací token.
-user-verify-email-report-subject = Vaše hlášení z { -product-name(case: "gen") }
+user-verify-email-report-subject = Vaše hlášení od { -product-name(case: "gen") }
 user-verify-title = { -product-name } - přihlášení dokončeno
 user-unsubscribe-token-error = Pro odhlášení je vyžadován token.
 user-unsubscribe-token-email-error = Pro odhlášení je vyžadován token a emailHash.
@@ -120,30 +120,30 @@ user-unsubscribed-title = { -product-name } - odhlášení dokončeno
 ## Password Tips
 
 pwt-section-headline = Silnější hesla = lepší ochrana
-pwt-section-subhead = Vaše osobní informace jsou jen tak v bezpečí jak bezpečná jsou vaše hesla.
+pwt-section-subhead = Vaše osobní údaje jsou jen tak v bezpečí, jak bezpečná jsou vaše hesla.
 pwt-section-blurb =
     Vaše hesla chrání víc než jen samotné přihlášení k účtu. Chrání všechna vaše data, která jsou skrze něj dostupná.
     Hackeři spoléhají na špatné zvyky jako je používání stejného hesla na více místech, nebo příliš běžného a lehce uhodnutého hesla (h3sl0).
-    Takže pokud se jim podaří prolomit jeden váš účet, dostanou se velmi rychle dostat i k ostatním. Jak se můžete chránit?
-pwt-headline-1 = Používejte rozdílná hesla pro každý účet
+    Takže pokud se jim podaří prolomit jeden váš účet, mohou se velmi rychle dostat i k ostatním. Jak se můžete chránit?
+pwt-headline-1 = Používejte u každého účtu jiné heslo.
 pwt-summary-1 =
     Používání stejného hesla pro všechny účty nechává otevřené dveře pro krádež vaší identity.
     Kdokoliv uhodne vaše heslo získá přístup ke všem vašim účtům najednou.
 pwt-headline-2 = Vytvářejte silná a těžko uhodnutelná hesla.
 pwt-summary-2 = Hackeři používají tisíce běžně používaných hesel, aby se pokusili uhodnout to vaše. Čím delší a náhodnější je vaše heslo, tím těžší ho bude uhádnout.
-pwt-headline-3 = Považujte bezpečnostní otázky jako hesla
+pwt-headline-3 = Berte bezpečnostní otázky jako přídavná hesla.
 pwt-summary-3 =
-    Webové stránky nekontrolují, jestli jsou vaše odpovědi správně, jenom jestli jsou pokaždé stejné.
+    Webové stránky nekontrolují, jestli jsou vaše odpovědi správně, nýbrž jenom jestli jsou pokaždé stejné.
     Připravte si dlouhé a náhodné odpovědi a někam si je bezpečně uložte.
-pwt-headline-4 = Získejte pomoc při pamatování vašich hesel
+pwt-headline-4 = Získejte pomoc s pamatováním si svých hesel.
 pwt-summary-4 =
     Správci hesel jako 1Password, LastPass, Dashlane a Bitwarden umí vygenerovat silná a unikátní hesla. 
-    Navíc umí hesla bezpečně uložit a automaticky je pro vás na webových stránkách vyplnit.
+    Navíc umí hesla bezpečně uložit a automaticky je za vás na webových stránkách vyplnit.
 pwt-headline-5 = Využívejte přidaného zabezpečení pomocí dvoufázového ověřování
 pwt-summary-5 =
     Dvoufázové ověřování vyžaduje pro úspěšné přihlášení zadat nějakou dodatečnou informaci (většinou jednorázový kód poslaný přes SMS).
     I pokud někdo bude znát vaše heslo, bez tohoto ověření přístup k vašemu účtu nezíská.
-pwt-headline-6 = Přihlásit se k odběru oznámení zpráv z { -product-name-nowrap(case: "gen") }
+pwt-headline-6 = Přihlaste se k dostávání upozornění od { -product-name-nowrap(case: "gen") }.
 pwt-summary-6 = Počet úniků dat z webových stránek stoupá. Kdykoliv je nový únik přidán do databáze, { -product-name-nowrap } vám pošle upozornění, abyste mohli co nejrychleji zareagovat a ochránit svůj účet.
 landing-headline = Každý má právo na bezpečí před hackery.
 landing-blurb =
@@ -157,10 +157,10 @@ scan-another-email = Vyhledat další e-mailovou adresu
 scan-featuredbreach-label = Zjistěte, jestli byl váš účet z <span class="bold">{ $featuredBreach }</span> kompromitován.
 sensitive-breach-email-required = Únik obsahuje citlivé informace. Ověřte svou e-mailovou adresu.
 scan-error = Zadaná e-mailová adresa není platná.
-signup-banner-headline = { -product-name-nowrap } zjišťuje hrozby pro vaše účty registrované na internetu.
+signup-banner-headline = { -product-name-nowrap } zjišťuje ohrožení vašich internetových účtů.
 signup-banner-blurb =
-    Podrobné hlášení z { -product-name-nowrap(case: "gen") } vám ukáže, jestli byly vaše účty na internetu součástí nějakého úniku nebo krádeže dat.
-    Upozorníme vás také kdykoliv se váš účet objeví jako součást nově zjištěného úniku dat.
+    Podrobné hlášení od { -product-name-nowrap(case: "gen") } vám ukáže, jestli byly údaje z vašich internetových účtů součástí nějakého úniku nebo krádeže dat.
+    Upozorníme vás také, kdykoliv se váš účet objeví v novém úniku dat.
 download-firefox-bar-blurb = { -product-name-nowrap } zajišťuje <span class="nowrap">{ -brand-name }</span>.
 download-firefox-bar-link = Stáhněte si { -brand-name(case: "acc") }
 download-firefox-banner-blurb = Převezměte kontrolu nad svým prohlížečem
@@ -181,7 +181,7 @@ form-signup-checkbox = Nechte si posílat nejnovější informace o { -brand-Moz
 sign-up = Zaregistrovat
 form-signup-error = Neplatná e-mailová adresa
 no-breaches-headline = Zatím jde všechno dobře.
-found-breaches-headline = Vaše informace byly součástí úniku dat.
+found-breaches-headline = Vaše údaje byly součástí úniku dat.
 no-breaches =
     Základní sken vaši e-mailovou adresu nenašel.
     To je dobrá zpráva, ale k úniku dat může dojít kdykoliv a pořád ještě můžete něco zlepšovat.
@@ -371,7 +371,7 @@ user-generic-found-breaches-blurb =
         [few] Tyto úniky obsahovaly následující osobní informace.
        *[other] Tyto úniky obsahovaly následující osobní informace.
     }
-have-an-account = Už máte účet?
+have-an-account = Již máte účet?
 signup-banner-sensitive-blurb =
     Odhalte, co už o vás hackeři vědí, a zůstaňte o krok před nimi.
     Nechte si posílat upozornění, pokud se váš účet objeví v novém úniku.
@@ -395,7 +395,7 @@ fb-landing-headline = Byly vaše údaje součástí úniku dat - { $breachName }
 copyright = Části tohoto obsahu jsou © 1999-{ $year } jednotlivými přispěvateli mozilla.org.
 content-available = Obsah je dostupný pod licencí Creative Commons.
 # Alerts is a noun
-sign-up-for-alerts = Posílat upozornění
+sign-up-for-alerts = Zaregistrovat se
 sign-up-for-fxa-alerts = Přihlásit se k posílání upozornění od { -product-name(case: "gen") }.
 create-free-account = Pro zaslání úplného hlášení o proběhlých únicích dat si prosím vytvořte { -brand-fxa(case: "acc") }, který je zdarma. Dostanete také informace o nových únicích a informace o dalších službách { -brand-Mozilla(case: "gen") }.
 get-your-report-and-sign-up = Získejte hlášení a přihlaste se k odběru upozornění.
@@ -410,6 +410,9 @@ home = Domů
 breaches = Úniky
 # Link title
 security-tips = Bezpečnostní tipy
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Otevřít nabídku { -brand-fxa(case: "gen") }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = NAPOSLEDY PŘIDANÝ ÚNIK
 breach-added = Datum nahlášení:
@@ -663,3 +666,7 @@ filter-by = Filtrovat podle kategorie:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Nabídka
 to-affected-email = Poslat upozornění na únik na postiženou e-mailovou adresu
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Existuje způsob, jak ochránit vaše soukromí. Přihlaste se do { -brand-name(case: "gen") }.
+# Link title
+learn-more-link = Zjistit více.
