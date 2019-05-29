@@ -17,7 +17,7 @@ function makeLanding(args) {
       },
     ];
   } else {
-    landingCopy.headline = LocaleUtils.fluentFormat(locales, "see-if-breached");
+    landingCopy.headline = LocaleUtils.fluentFormat(locales, "see-if-youve-been-part");
     landingCopy.subhead = LocaleUtils.fluentFormat(locales, "find-out-what-hackers-know");
   }
   if (featuredBreach && featuredBreach.IsSensitive) {
