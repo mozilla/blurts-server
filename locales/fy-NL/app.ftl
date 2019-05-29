@@ -613,3 +613,7 @@ filter-by = Filterje op kategory:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
 to-affected-email = Warskôgingen oer datalekken nei it troffen e-mailadres stjoere
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Der is in manier om jo privacy te beskermjen. Doch mei mei { -brand-name }.
+# Link title
+learn-more-link = Mear ynfo.
