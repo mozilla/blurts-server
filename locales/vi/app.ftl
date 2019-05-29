@@ -625,3 +625,7 @@ filter-by = Lọc theo danh mục:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
 to-affected-email = Gửi thông báo vi phạm đến địa chỉ email bị ảnh hưởng
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Đây là một cách để bảo vệ sự riêng tư của bạn. Tham gia { -brand-name }.
+# Link title
+learn-more-link = Tìm hiểu thêm.
