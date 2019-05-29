@@ -441,6 +441,15 @@ how-fxm-works = Jak { -product-name } funguje
 how-fxm-1-headline = Proveďte základní vyhledávání
 how-fxm-1-blurb = Vyhledejte svou e-mailovou adresu ve veřejně dostupných únicích dat sahajících zpět do roku 2007. Toto základní vyhledávání zobrazí všechny úniky dat kromě těch, které obsahují citlivé osobní údaje.
 how-fxm-2-headline = Zaregistrujte se k monitorování úniků
+how-fxm-2-blurb = Vytvořte si { -brand-fxa }, abyste mohli monitorovat svou e-mailovou adresu pro případ probíhajících úniků. Ihned po ověření své e-mailové adresy rovněž obdržíte kompletní hlášení o předchozích únicích včetně úniků citlivých údajů.
+how-fxm-3-headline = Dostávejte oznámení ve svém prohlížeči
+how-fxm-3-blurb = Pokud používáte { -brand-name }, obdržíte oznámení, jestliže navštívíte web, u něhož došlo k úniku dat. Hned si pak ověřte, jestli jste byli součástí tohoto úniku a co s tím můžete dělat.
+wtd-after-website = Co dělat po úniku z webových stránek
+wtd-after-data-agg = Co dělat po úniku z agregátoru dat
+what-is-data-agg = Co je to agregátor dat?
+what-is-data-agg-blurb =
+    Agregátory dat či zprostředkovatelé údajů sbírají údaje z veřejných
+    záznamů a rovněž je kupují od jiných společností. Tyto údaje shromažďují za účelem jejich prodeje různým společnostem, jimž slouží k marketingovým účelům. U obětí těchto úniků sice existuje menší pravděpodobnost, že na nich bude spáchán finanční podvod, ale hackeři by mohli tyto údaje použít k vydávání se za ně nebo k vytvoření jejich profilu.
 
 ## What to do after data breach tips
 
