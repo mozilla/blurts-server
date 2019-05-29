@@ -102,7 +102,7 @@ signup-modal-verify-expiration = Este link irá expirar em 24 horas.
 signup-modal-verify-resend = Não apareceu na caixa de entrada nem no spam? Reenviar.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Enviado!
-signup-with-fxa = Cadastre-se com um Conta { -brand-name }
+signup-with-fxa = Cadastre-se com uma Conta { -brand-name }
 form-signup-placeholder = Digite o endereço de e-mail
 form-signup-checkbox = Fique informado sobre a { -brand-Mozilla } e o { -brand-name }.
 sign-up = Cadastre-se
