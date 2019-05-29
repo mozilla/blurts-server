@@ -655,3 +655,7 @@ filter-by = Szűrés kategória szerint:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menü
 to-affected-email = Adatsértési figyelmeztetések elküldése az érintett e-mail címre
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Megvédheti a magánszféráját. Csatlakozzon a { -brand-name }hoz.
+# Link title
+learn-more-link = További információk.
