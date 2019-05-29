@@ -484,7 +484,66 @@ find-out-what-hackers-know = Odhalte, co už o vás hackeři vědí. Zjistěte, 
 search-for-your-email = Vyhledejte svou e-mailovou adresu ve veřejně dostupných únicích dat sahajících zpět do roku 2007.
 back-to-top = Zpět na začátek
 comm-opt-0 = Poslat mi e-mail, pokud se jedna z mých níže uvedených e-mailových adres objeví v nějakém úniku dat.
+comm-opt-1 = Posílat všechna upozornění na úniky dat na { $primaryEmail }.
+stop-monitoring-this = Přestat monitorovat tuto e-mailovou adresu.
+resend-verification = Znovu poslat ověřovací e-mail
+add-new-email = Přidání nové e-mailové adresy
+send-verification = Poslat ověřovací odkaz
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Globální komunikace
+breach-summary = Souhrnné informace
+show-breaches-for-this-email = Zobrazit všechny úniky pro tuto adresu.
+link-change-primary = Změnit primární e-mailovou adresu
+remove-fxm = Odhlásit se z { -product-name(case: "gen") }
+remove-fxm-blurb = Zrušte zasílání upozornění od { -product-name(case: "gen") }. Váš { -brand-fxa } zůstane aktivní a můžete dostávat jiné zprávy týkající se účtu.
+manage-email-addresses = Spravovat e-mailové adresy
+latest-breach-link = Zjistit, jestli jste byli součástí tohoto úniku
 welcome-back = Vítejte zpět, { $userName }!
+welcome-user = Vítejte, { $userName }!
+breach-alert-subject = { -product-name } našel vaši e-mailovou adresu v novém úniku dat.
+your-info-was-discovered-headline = Vaše údaje byly nalezeny v novém úniku dat.
+your-info-was-discovered-blurb =
+    Jste přihlášeni k dostávání upozornění od služby { -product-name },
+    jestliže se vaše e-mailová adresa objeví v nějakém úniku dat. Zde je vše, co o tomto úniku víme.
+what-to-do-after-breach = Co dělat po úniku dat:
+ba-next-step-1 = Změňte heslo a nové vytvořte silné a jedinečné.
+ba-next-step-blurb-1 =
+    Silné heslo používá kombinaci velkých a malých písmen,
+    speciálních znaků a čísel. Neobsahuje osobní údaje jako např.
+    adresu, datum narození či příjmení.
+ba-next-step-2 = Přestaňte toto vyzrazené heslo úplně používat.
+ba-next-step-blurb-2 =
+    Kyberzločinci by mohli vaše heslo najít na temném Webu a použít ho
+    k přihlášení se do jiných vašich účtů. Nejlepší způsob, jak ochránit své účty,
+    je používat u každého z nich jedinečné heslo.
+ba-next-step-3 = Získejte pomoc s tvorbou lepších hesel a jejich uchováváním v bezpečí.
+ba-next-step-blurb-3 = Pro vytváření silných a jedinečných hesel používejte správce hesel. Správci hesel bezpečně uchovávají všechny vaše přihlašovací údaje, takže k nim máte přístup ve všech svých zařízeních.
+faq1 = Tato společnost či web mi nic neříká. Proč jsem součástí tohoto úniku?
+faq2 = Proč trvalo tak dlouho, než jsem byl o tomto úniku informován?
+faq3 = Jak poznám, že tato e-mailová zpráva opravdu pochází od služby { -product-name }?
+new-breaches-found =
+    { $breachCount ->
+        [one] NALEZEN { $breachCount } NOVÝ ÚNIK DAT
+        [few] NALEZENY { $breachCount } NOVÉ ÚNIKY DAT
+       *[other] NALEZENO { $breachCount } NOVÝCH ÚNIKŮ DAT
+    }
+sign-up-headline-1 = Dostávejte průběžně upozornění pomocí { -brand-fxa(case: "gen") }.
+account-not-required = Pro vytvoření { -brand-fxa(case: "gen") } není nutné mít prohlížeč { -brand-name }. Můžete dostávat informace o službách { -brand-Mozilla(case: "gen") }.
+get-alerted = Nechte se upozorňovat na nové úniky dat.
+was-your-info-exposed = Byly vaše údaje vyzrazeny v úniku { $breachName }?
+find-out-if = Zjistěte, jestli byly vaše údaje vyzrazeny v tomto úniku.
+fb-not-comp = Tato e-mailová adresa se nevyskytuje v úniku { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Vyskytuje se však v { $breachCount } dalším úniku dat.
+        [few] Vyskytuje se však ve { $breachCount } dalších únicích dat.
+       *[other] Vyskytuje se však v { $breachCount } dalších únicích dat.
+    }
+fb-comp-only = Tato e-mailová adresa se objevila v úniku { $breachName }.
 
 ## Updated error messages
 
