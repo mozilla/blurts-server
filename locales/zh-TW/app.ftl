@@ -512,3 +512,7 @@ filter-by = 依照分類過濾:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = 選單
 to-affected-email = 傳送資料外洩警報到受影響的電子郵件信箱
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = 有種方法可以保護您的隱私，加入 { -brand-name }。
+# Link title
+learn-more-link = 了解更多。
