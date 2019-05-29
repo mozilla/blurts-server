@@ -561,3 +561,7 @@ filter-by = Filtrează pe categorii:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Meniu
 to-affected-email = Trimite alerte pentru breșe de date către adresele de e-mail afectate
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Există o modalitate de a-ți proteja confidențialitatea. Alătură-te { -brand-name }.
+# Link title
+learn-more-link = Află mai multe.
