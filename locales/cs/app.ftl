@@ -23,6 +23,16 @@
         [loc] <span class="nowrap">{ -product-name(case: "loc") }</span>
         [ins] <span class="nowrap">{ -product-name(case: "ins") }</span>
     }
+-product-short-name =
+    { $case ->
+        [nom] Monitor
+        [gen] Monitoru
+        [dat] Monitoru
+        [acc] Monitor
+        [voc] Monitore
+        [loc] Monitoru
+       *[ins] Monitorem
+    }
 -brand-name =
     { $case ->
        *[nom] Firefox
@@ -391,11 +401,45 @@ create-free-account = Pro zaslání úplného hlášení o proběhlých únicíc
 get-your-report-and-sign-up = Získejte hlášení a přihlaste se k odběru upozornění.
 # Link title
 frequently-asked-questions = Často kladené otázky
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = NAPOSLEDY PŘIDANÝ ÚNIK
+breach-added = Datum nahlášení:
+breach-discovered = Datum odhalení:
+# Link title
+more-about-this-breach = Další informace o tomto úniku
+take-control = Získejte opět kontrolu nad svými osobními údaji.
+cant-stop-hackers = Nemůžete zabránit hackerům v nabourávání se do počítačů. Ale můžete se vyvarovat špatných zvyků, které jim usnadňují práci.
+read-more-tips = Další bezpečnostní tipy
 how-hackers-work = Porozumějte tomu, jak hackeři pracují
+monitor-your-online-accounts = Zaregistrujte se k monitorování úniků pomocí { -brand-fxa(case: "gen") }.
+stay-alert = Buďte informováni o nových únicích
+if-your-info = Jestliže budou vaše údaje součástí nového úniku dat, zašleme vám upozornění.
+search-all-emails = Vyhledejte všechny své e-mailové adresy v únicích dat a dostávejte upozornění na nové úniky.
+monitor-several-emails = Monitorujte několik e-mailových adres
+take-action = Podnikněte kroky k ochraně svých účtů
+keep-your-data-safe = Zjistěte, co musíte udělat, aby byly vaše údaje před kyberzločinci stále v bezpečí.
+website-breach = Únik z webových stránek
+sensitive-breach = Únik citlivých údajů z webových stránek
+data-aggregator-breach = Únik z agregátoru dat
+unverified-breach = Nepotvrzený únik
+spam-list-breach = Únik ze spamerského seznamu adres
+website-breach-plural = Úniky z webových stránek
+sensitive-breach-plural = Úniky citlivých údajů
+data-aggregator-breach-plural = Úniky z agregátorů dat
+unverified-breach-plural = Nepotvrzené úniky
+spam-list-breach-plural = Úniky ze spamerských seznamů adres
+what-data = Jaké údaje byly vyzrazeny:
+sensitive-sites = Jak se { -product-name } chová v případě webů obsahující citlivé údaje?
+sensitive-sites-copy = Účty, které jsou spojené s těmito typy úniků, { -product-name } prozradí až po ověření e-mailové adresy. To znamená, že vy jste jediná osoba, která může zjistit, jestli byly vaše údaje součástí tohoto úniku (pokud nemá do vašeho poštovního účtu přístup ještě někdo jiný).
+delayed-reporting-headline = Proč nahlášení tohoto úniku trvalo tak dlouho?
+delayed-reporting-copy = Občas to může trvat měsíce či roky, než se přihlašovací údaje vyzrazené v úniku dat objeví na temném Webu. Úniky jsou přidány do naší databáze, jakmile byly odhaleny a potvrzeny.
+about-fxm-headline = O { -product-name(case: "gen") }.
 
 ## What to do after data breach tips
 
 feat-security-tips = Bezpečnostní tipy, jak zabezpečit své účty
+back-to-top = Zpět na začátek
+welcome-back = Vítejte zpět, { $userName }!
 
 ## Updated error messages
 
