@@ -772,6 +772,18 @@ passwords-exposed =
    *[other] Passwords exposed across all breaches
   }
 
+
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+  { $breaches ->
+    [one] Known data breach has exposed your information
+   *[other] Known data breaches have exposed your information
+  }
+
+
+
 # Button
 see-additional-breaches = See Additional Breaches
 
@@ -851,3 +863,26 @@ join-firefox = There is a way to protect your privacy. Join {-brand-name}.
 
 # Link title
 learn-more-link = Learn more.
+
+
+email-sent = Email Sent!
+
+# Form title
+want-to-add = Want to add another email?
+
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Verify the link sent to { $userEmail } to add it to Firefox Monitor.
+
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the {-preferences} string.
+manage-all-emails = Manage all email addresses in { $preferencesLink }.
+
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Breach Alert Notifications

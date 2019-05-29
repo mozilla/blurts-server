@@ -117,6 +117,32 @@ button.resend-email {
   width: 100%;
 }
 
+.dash-add-email-hl {
+  font-size: 28px;
+  margin: calc(var(--margin) + 0.5rem) auto;
+}
+
+span.dashboard-email-sent {
+  background-color: var(--green1);
+  color: #084036;
+  padding: 0.5rem 0.75rem;
+  margin: calc(var(--margin) + 0.5rem) auto 0.5rem auto;
+  font-size: 14px;
+}
+
+p.confirm-submit {
+  font-size: 1rem;
+  color: #686869;
+  font-size: 14px;
+  margin: 0 auto;
+  letter-spacing: 0.01em;
+}
+
+.dashboard-add-email {
+  width: 100%;
+  padding: var(--margin) var(--margin) calc(var(--padding) * 3) var(--margin);
+}
+
 @media screen and (max-width: 1100px) {
   .email-cards .e-info {
     flex-direction: column;

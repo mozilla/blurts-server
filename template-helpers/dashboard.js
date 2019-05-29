@@ -94,9 +94,25 @@ function getUserPreferences(args) {
   return args.fn(user);
 }
 
+function getLastAddedEmailStrings(args) {
+  const locales = args.data.root.req.supportedLocales;
+  let lastAddedEmail = args.data.root.lastAddedEmail;
+  lastAddedEmail = `<span class="bold">${lastAddedEmail}</span>`;
+
+  let preferencesLinkString = LocaleUtils.fluentFormat(locales, "preferences");
+  preferencesLinkString = `<a class="demi text-link" href="/user/preferences">${preferencesLinkString}</a>`;
+
+  const lastAddedEmailStrings = [
+    LocaleUtils.fluentFormat(locales, "verify-the-link", { userEmail: lastAddedEmail }),
+    LocaleUtils.fluentFormat(locales, "manage-all-emails", { preferencesLink: preferencesLinkString }),
+  ];
+  return lastAddedEmailStrings;
+}
+
 
 module.exports = {
   getUserPreferences,
   getBreachesForEachEmail,
   welcomeMessage,
+  getLastAddedEmailStrings,
 };

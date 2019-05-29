@@ -34,7 +34,20 @@
           {{> hibp-attribution variableClasses="dash-attribution"}}
         {{/if}}
       {{/getBreachesForEachEmail}}
-      {{> dashboards/manage-email-link variableClass="show-mobile"}}
+    </div>
+  </div>
+</section>
+<section class="">
+  <div class="row jst-cntr">
+    <div id="dashboard-add-email" class="dashboard-add-email flx flx-col">
+      <h2 class="skinny-headline dash-add-email-hl txt-cntr">{{getString "want-to-add" }}</h2>
+      {{> forms/add-another-email-form }}
+      {{#if lastAddedEmail}}
+        <span class="dashboard-email-sent bold"> {{ getString "email-sent" }}</span>
+        {{#each (getLastAddedEmailStrings)}}
+          <p class="confirm-submit txt-cntr">{{{ this }}}</p>
+        {{/each}}
+      {{/if}}
     </div>
   </div>
 </section>
