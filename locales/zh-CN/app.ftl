@@ -549,3 +549,7 @@ filter-by = 按分类筛选：
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = 菜单
 to-affected-email = 向受影响的电子邮件地址发送外泄警报
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = 有种方法可以保护您的隐私，加入 { -brand-name }。
+# Link title
+learn-more-link = 详细了解。
