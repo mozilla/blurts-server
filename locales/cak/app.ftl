@@ -634,3 +634,7 @@ filter-by = Tichayüx achi'el Ruwäch:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = K'utsamaj
 to-affected-email = Ketaq taq kitzijol tz'ilanem pa ri taqoya'l xtz'iläx
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = K'o jun rub'anikil richin nachajij awichinanem. Tatunu' awi' { -brand-name }.
+# Link title
+learn-more-link = Tetamäx ch'aqa' chik.
