@@ -350,6 +350,7 @@ monitor-several-emails = Monitorea varios corres electrónicos
 take-action = Actúa para proteger tus cuentas
 keep-your-data-safe = Descubre lo que necesitas hacer para mantener tu información segura de los criminales cibrenéticos.
 website-breach = Violación del sitio web
+sensitive-breach = Filtración de datos sensible del sitio web
 
 ## What to do after data breach tips
 
