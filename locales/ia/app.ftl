@@ -567,3 +567,5 @@ signed-in-as = Authenticate como: { $userEmail }
 filter-by = Filtrar per categoria:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
+# Link title
+learn-more-link = Saper plus.
