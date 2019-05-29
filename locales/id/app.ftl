@@ -348,10 +348,17 @@ breach-added = Pembobolan yang dilaporkan:
 breach-discovered = Pembobolan yang ditemukan:
 # Link title
 more-about-this-breach = Lebih lanjut tentang pembobolan ini
+take-control = Ambil alih kendali data pribadi Anda.
+cant-stop-hackers = Anda tidak dapat menghentikan peretas dari peretasan. Tetapi Anda dapat menghindari kebiasaan buruk yang membuat pekerjaan mereka menjadi mudah.
+read-more-tips = Baca Lebih Lanjut Tips Keamanan
+how-hackers-work = Memahami bagaimana para peretas bekerja
 monitor-your-online-accounts = Mendaftar untuk pemantauan pembobolan dengan { -brand-fxa }.
 stay-alert = Tetap waspada terhadap pembobolan baru
 if-your-info = Jika informasi Anda muncul dalam pembobolan data baru, kami akan mengirimkan peringatan kepada Anda.
 search-all-emails = Cari semua alamat surel Anda untuk pembobolan dan dapatkan peringatan tentang ancaman terbaru.
+monitor-several-emails = Pantau beberapa surel
+take-action = Ambil tindakan untuk melindungi akun Anda
+keep-your-data-safe = Cari tahu apa yang perlu Anda lakukan untuk menjaga data Anda aman dari penjahat siber.
 website-breach = Pembobolan Situs Web
 sensitive-breach = Pembobolan Situs Web Sensitif
 data-aggregator-breach = Pembobolan Agregator Data
@@ -363,19 +370,48 @@ data-aggregator-breach-plural = Pembobolan Agregator Data
 unverified-breach-plural = Pembobolan Belum Terverifikasi
 spam-list-breach-plural = Pembobolan Data Spam
 delayed-reporting-headline = Mengapa butuh waktu lama untuk melaporkan pembobolan ini?
+# How Firefox Monitor works
+how-fxm-works = Bagaimana { -product-name } bekerja
 how-fxm-2-headline = Mendaftar untuk pemantauan pembobolan
 wtd-after-website = Apa yang harus dilakukan setelah pembobolan situs web
 wtd-after-data-agg = Apa yang harus dilakukan setelah pembobolan agregator data
+protect-your-privacy = Lindungi privasi daring Anda
 no-pw-to-change = Tidak seperti pembobolan situs web, tidak ada kata sandi untuk diubah.
+avoid-personal-info = Hindari penggunaan informasi pribadi dalam kata sandi
+avoid-personal-info-blurb = Sangat mudah untuk menemukan tanggal lahir, alamat, dan nama anggota keluarga secara daring. Jauhkan kata-kata ini dari kata sandi Anda.
 
 ## What to do after data breach tips
 
 change-pw = Ubah kata sandi Anda
+even-for-old = Bahkan untuk akun lama, adalah penting untuk memperbarui kata sandi Anda.
+make-new-pw-unique = Buat kata sandi baru yang berbeda dan unik
 create-strong-passwords = Cara membuat kata sandi yang kuat
 stop-reusing-pw = Berhenti menggunakan kembali kata sandi yang sama
 five-myths = 5 mitos tentang pengelola kata sandi
 feat-security-tips = Tips keamanan untuk melindungi akun Anda
 feat-sensitive = Pencarian lanjutan dalam pembobolan sensitif
+back-to-top = Kembali ke Atas
+comm-opt-1 = Kirim semua peringatan pembobolan ke { $primaryEmail }.
+resend-verification = Kirim ulang verifikasi surel
+add-new-email = Tambah alamat surel baru
+send-verification = Kirim Tautan Verifikasi
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Komunikasi Global
+link-change-primary = Ubah Alamat Surel Utama
 
 ## Updated error messages
 
+what-is-a-website-breach = Apa itu pembobolan situs web?
+security-tips-headline = Kiat keamanan untuk melindungi diri Anda dari peretas
+# Title
+email-addresses-title = Alamat Surel
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menu
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Ada cara untuk melindungi privasi Anda. Bergabunglah dengan { -brand-name }.
+# Link title
+learn-more-link = Pelajari lebih lanjut.
