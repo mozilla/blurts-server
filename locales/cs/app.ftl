@@ -391,6 +391,7 @@ create-free-account = Pro zaslání úplného hlášení o proběhlých únicíc
 get-your-report-and-sign-up = Získejte hlášení a přihlaste se k odběru upozornění.
 # Link title
 frequently-asked-questions = Často kladené otázky
+how-hackers-work = Porozumějte tomu, jak hackeři pracují
 
 ## What to do after data breach tips
 
