@@ -233,6 +233,7 @@ about-fxm-headline = { -product-name } について
 
 ## What to do after data breach tips
 
+see-if-breached = オンラインのデータ侵害がないか確認しましょう。
 back-to-top = トップに戻る
 resend-verification = 認証メールを再送する
 
