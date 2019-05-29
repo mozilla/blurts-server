@@ -450,11 +450,40 @@ what-is-data-agg = Co je to agregátor dat?
 what-is-data-agg-blurb =
     Agregátory dat či zprostředkovatelé údajů sbírají údaje z veřejných
     záznamů a rovněž je kupují od jiných společností. Tyto údaje shromažďují za účelem jejich prodeje různým společnostem, jimž slouží k marketingovým účelům. U obětí těchto úniků sice existuje menší pravděpodobnost, že na nich bude spáchán finanční podvod, ale hackeři by mohli tyto údaje použít k vydávání se za ně nebo k vytvoření jejich profilu.
+protect-your-privacy = Chraňte své soukromí na internetu
+no-pw-to-change = Na rozdíl od úniků z webových stránek zde není žádné heslo, které by se mělo změnit.
+avoid-personal-info = Nepoužívejte v heslech osobní údaje
+avoid-personal-info-blurb = Je snadné na internetu najít datumy narození, adresy a jména členů rodiny. Tato slova určitě nevkládejte do hesel.
 
 ## What to do after data breach tips
 
+change-pw = Změňte si své heslo
+even-for-old = I pro staré účty platí, že je důležité vytvořit nové heslo.
+make-new-pw-unique = Dbejte na to, aby bylo nové heslo odlišné a jedinečné
+strength-of-your-pw = Síla vašich hesel má přímý vliv na vaší bezpečnost na internetu.
+create-strong-passwords = Jak vytvářet silná hesla
+stop-reusing-pw = Přestaňte používat hesla opakovaně
+create-unique-pw = Vytvořte si jedinečná hesla a uschovejte je na nějakém bezpečném místě, např. ve správci hesel.
+five-myths = 5 mýtů o správcích hesel
+create-a-fxa = Vytvořte si { -brand-fxa } pro dostávání upozornění na nové úniky a obdržení svého kompletního hlášení.
 feat-security-tips = Bezpečnostní tipy, jak zabezpečit své účty
+feat-sensitive = Pokročilé vyhledávání v únicích citlivých údajů
+feat-enroll-multiple = Nechte si monitorovat více e-mailových adres
+sign-up-for-fxa = Vytvořit si { -brand-fxa(case: "acc") }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Vyskytuje se v { $breachCount } známém úniku.
+        [few] Vyskytuje se ve { $breachCount } známých únicích.
+       *[other] Vyskytuje se v { $breachCount } známých únicích.
+    }
+see-if-breached = Ověřte si, jestli jste nebyli součástí nějakého internetového úniku dat.
+check-for-breaches = Prohledat úniky
+find-out-what-hackers-know = Odhalte, co už o vás hackeři vědí. Zjistěte, jak být stále o krok před nimi.
+search-for-your-email = Vyhledejte svou e-mailovou adresu ve veřejně dostupných únicích dat sahajících zpět do roku 2007.
 back-to-top = Zpět na začátek
+comm-opt-0 = Poslat mi e-mail, pokud se jedna z mých níže uvedených e-mailových adres objeví v nějakém úniku dat.
 welcome-back = Vítejte zpět, { $userName }!
 
 ## Updated error messages
