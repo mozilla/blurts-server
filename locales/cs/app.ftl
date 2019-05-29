@@ -401,6 +401,15 @@ create-free-account = Pro zaslání úplného hlášení o proběhlých únicíc
 get-your-report-and-sign-up = Získejte hlášení a přihlaste se k odběru upozornění.
 # Link title
 frequently-asked-questions = Často kladené otázky
+about-firefox-monitor = O { -product-name(case: "gen") }
+mozilla-dot-org = Mozilla.org
+preferences = Předvolby
+# Link title.
+home = Domů
+# Link title
+breaches = Úniky
+# Link title
+security-tips = Bezpečnostní tipy
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = NAPOSLEDY PŘIDANÝ ÚNIK
 breach-added = Datum nahlášení:
@@ -543,8 +552,114 @@ other-breaches-found =
         [few] Vyskytuje se však ve { $breachCount } dalších únicích dat.
        *[other] Vyskytuje se však v { $breachCount } dalších únicích dat.
     }
-fb-comp-only = Tato e-mailová adresa se objevila v úniku { $breachName }.
+fb-comp-only = Tato e-mailová adresa se vyskytovala v úniku { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Tato e-mailová adresa se vyskytovala v { $breachCount } známém úniku dat, včetně úniku { $breachName }.
+        [few] Tato e-mailová adresa se vyskytovala ve { $breachCount } známých únicích dat, včetně úniku { $breachName }.
+       *[other] Tato e-mailová adresa se vyskytovala v { $breachCount } známých únicích dat, včetně úniku { $breachName }.
+    }
+no-other-breaches-found = Základní vyhledávání nenalezlo žádné další úniky.
+no-results-blurb = Litujeme, ale tento únik se nenachází v naší databázi.
+all-breaches-headline = Všechny úniky obsažené ve { -product-name(case: "loc") }
+search-breaches = Prohledat úniky dat
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Zobrazeno:
+all-breaches = všechny úniky
 
 ## Updated error messages
 
+error-bot-headline = Vyhledávání bylo dočasně pozastaveno
+error-bot-blurb =
+    Máme obavy, že byste mohli být bot, protože jste v krátkém čase hledali
+    několik e-mailových adres . Pro teď máte další vyhledávání zablokováno. Můžete to opět zkusit později.
+error-csrf-headline = Vypršel časový limit relace
+error-csrf-blurb = Klepněte v prohlížeči na tlačítko Zpět, aktualizujte stránku a akci opakujte.
+error-invalid-unsub = Jak se odhlásit z dostávání upozornění od služby { -product-name }
+error-invalid-unsub-blurb =
+    Budete se muset odhlásit prostřednictvím jedné z e-mailových zpráv, kterou vám { -product-name } odeslal. Podívejte se do své e-mailové schránky po zprávách od
+    { -brand-team-email }. V dolní části zprávy pak klepněte na odhlašovací odkaz.
+login-link-pre = Již máte účet?
+login-link = Přihlásit se
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] e-mailová adresa je monitorována
+        [few] e-mailové adresy jsou monitorovány
+       *[other] e-mailových adres je monitorováno
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] únik dat vyzradil vaše údaje
+        [few] úniky dat vyzradily vaše údaje
+       *[other] úniků dat vyzradilo vaše údaje
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] heslo bylo vyzrazeno souhrnně ve všech únicích
+        [few] hesla byla vyzrazena souhrnně ve všech únicích
+       *[other] hesel bylo vyzrazeno souhrnně ve všech únicích
+    }
+# Button
+see-additional-breaches = Zobrazit další úniky
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Zobrazit všechny úniky
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Tato e-mailová adresa se objevila v 1 známém úniku dat.
+        [few] Tato e-mailová adresa se objevila ve { $breachCount } známých únicích dat.
+       *[other] Tato e-mailová adresa se objevila v { $breachCount } známých únicích dat.
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Výsledky pro: { $userEmail }
+other-monitored-emails = Další monitorované e-mailové adresy
+email-verification-required = Vyžadováno ověření e-mailové adresy
+fxa-primary-email = E-mailová adresa { -brand-fxa(case: "gen") } (primární)
+what-is-a-website-breach = Co je to únik dat z webových stránek?
+website-breach-blurb = Únik dat z webových stránek se odehraje, když kyberzločinci odcizí, zkopírují nebo zveřejní osobní údaje z internetových účtů. Zpravidla je to výsledkem činnosti hackerů, kteří nalezli slabé místo v zabezpečení webu. K úniku osobních údajů z účtu však také může dojít nedopatřením.
 security-tips-headline = Bezpečnostní tipy, jak se chránit před hackery
+steps-to-protect = Jaké kroky podniknout k ochraně své internetové identity
+take-further-steps = Podnikněte další kroky k ochraně své identity
+alert-about-new-breaches = Upozornit mě na nové úniky
+see-if-youve-been-part = Zjistěte, zda jste nebyli součástí internetového úniku dat.
+get-ongoing-breach-monitoring = Nechte si průběžně monitorovat více e-mailových adres.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Zjistit
+new-unsub-error = Budete se muset odhlásit prostřednictvím jedné z e-mailových zpráv, kterou vám { -product-name } odeslal.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Objevila se však v { $breachCount } dalším úniku.
+        [few] Objevila se však ve { $breachCount } dalších únicích.
+       *[other] Objevila se však v { $breachCount } dalších únicích.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Další informace, jmenovitě:
+# Title
+email-addresses-title = E-mailové adresy
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = Dne { $breachDate } došlo u subjektu { $breachTitle } k úniku dat. Ihned po odhalení a potvrzení úniku byl dne { $addedDate } přidán do naší databáze.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = Předvolby { -product-short-name(case: "gen") }
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Přihlášen(a) jako: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Filtrovat podle kategorie:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Nabídka
+to-affected-email = Poslat upozornění na únik na postiženou e-mailovou adresu
