@@ -632,3 +632,7 @@ filter-by = Filtrera efter kategori:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Meny
 to-affected-email = Skicka intrångsvarningar till den drabbade e-postadressen
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Det finns ett sätt att skydda din integritet. Gå med i { -brand-name }.
+# Link title
+learn-more-link = Läs mer.
