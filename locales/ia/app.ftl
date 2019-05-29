@@ -567,5 +567,8 @@ signed-in-as = Authenticate como: { $userEmail }
 filter-by = Filtrar per categoria:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
+to-affected-email = Invia avisos de violation al adresse email afficite
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Il ha un maniera de proteger tu confidentialitate. Junge te a { -brand-name }.
 # Link title
 learn-more-link = Saper plus.
