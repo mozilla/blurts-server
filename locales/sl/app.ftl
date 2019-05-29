@@ -460,3 +460,7 @@ signed-in-as = Prijavljeni kot: { $userEmail }
 filter-by = Filtriraj po kategoriji:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Meni
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Vašo zasebnost lahko zaščitite. Pridružite se { -brand-name }u.
+# Link title
+learn-more-link = Več o tem.
