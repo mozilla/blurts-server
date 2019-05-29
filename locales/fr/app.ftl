@@ -547,3 +547,7 @@ filter-by = Filtrer par catégorie :
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
 to-affected-email = Envoyer les alertes à l’adresse électronique concernée
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Il existe un moyen de protéger votre vie privée. Rejoignez { -brand-name }.
+# Link title
+learn-more-link = En savoir plus.
