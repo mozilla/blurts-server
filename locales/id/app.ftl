@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -329,3 +330,21 @@ create-free-account =
 get-your-report-and-sign-up = Dapatkan laporan Anda dan mendaftar untuk mendapatkan peringatan
 # Link title
 frequently-asked-questions = Pertanyaan yang Sering Diajukan (FAQ)
+about-firefox-monitor = Tentang { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Pengaturan
+# Link title.
+home = Beranda
+# Link title
+breaches = Pelanggaran
+# Link title
+security-tips = Tips Keamanan
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Buka navigasi { -brand-fxa }
+
+## What to do after data breach tips
+
+
+## Updated error messages
+
