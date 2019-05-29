@@ -12,6 +12,9 @@ avatars = Avatar
 bank-account-numbers = Nomor rekening bank
 beauty-ratings = Penilaian kecantikan
 biometric-data = Data biometrik
+# This string is the shortened version of "Biographies", and 
+# refers to biographical data about a user.
+bios = Bio
 browser-user-agent-details = Detail agen-pengguna peramban
 browsing-histories = Riwayat penjelajahan
 buying-preferences = Preferensi pembelian
@@ -37,6 +40,7 @@ education-levels = Tingkat pendidikan
 email-addresses = Alamat surel
 email-messages = Pesan surel
 employers = Pekerja
+employment-statuses = Status pekerjaan
 ethnicities = Etnik
 family-members-names = Nama anggota keluarga
 family-plans = Rencana keluarga
@@ -101,6 +105,7 @@ smoking-habits = Kebiasaan merokok
 sms-messages = Pesan SMS
 social-connections = Hubungan sosial
 social-media-profiles = Profil media sosial
+social-security-numbers = Nomor jaminan sosial
 spoken-languages = Bahasa lisan
 support-tickets = Tiket dukungan
 survey-results = Hasil survei

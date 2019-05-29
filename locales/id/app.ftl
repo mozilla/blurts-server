@@ -342,9 +342,40 @@ security-tips = Tips Keamanan
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Buka navigasi { -brand-fxa }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = PEMBOBOLAN TERBARU TELAH DITAMBAHKAN
+breach-added = Pembobolan yang dilaporkan:
+breach-discovered = Pembobolan yang ditemukan:
+# Link title
+more-about-this-breach = Lebih lanjut tentang pembobolan ini
+monitor-your-online-accounts = Mendaftar untuk pemantauan pembobolan dengan { -brand-fxa }.
+stay-alert = Tetap waspada terhadap pembobolan baru
+if-your-info = Jika informasi Anda muncul dalam pembobolan data baru, kami akan mengirimkan peringatan kepada Anda.
+search-all-emails = Cari semua alamat surel Anda untuk pembobolan dan dapatkan peringatan tentang ancaman terbaru.
+website-breach = Pembobolan Situs Web
+sensitive-breach = Pembobolan Situs Web Sensitif
+data-aggregator-breach = Pembobolan Agregator Data
+unverified-breach = Pembobolan Tidak Terverifikasi
+spam-list-breach = Daftar Spam Pembobolan
+website-breach-plural = Pembobolan Situs Web
+sensitive-breach-plural = Pembobolan Sensitif
+data-aggregator-breach-plural = Pembobolan Agregator Data
+unverified-breach-plural = Pembobolan Belum Terverifikasi
+spam-list-breach-plural = Pembobolan Data Spam
+delayed-reporting-headline = Mengapa butuh waktu lama untuk melaporkan pembobolan ini?
+how-fxm-2-headline = Mendaftar untuk pemantauan pembobolan
+wtd-after-website = Apa yang harus dilakukan setelah pembobolan situs web
+wtd-after-data-agg = Apa yang harus dilakukan setelah pembobolan agregator data
+no-pw-to-change = Tidak seperti pembobolan situs web, tidak ada kata sandi untuk diubah.
 
 ## What to do after data breach tips
 
+change-pw = Ubah kata sandi Anda
+create-strong-passwords = Cara membuat kata sandi yang kuat
+stop-reusing-pw = Berhenti menggunakan kembali kata sandi yang sama
+five-myths = 5 mitos tentang pengelola kata sandi
+feat-security-tips = Tips keamanan untuk melindungi akun Anda
+feat-sensitive = Pencarian lanjutan dalam pembobolan sensitif
 
 ## Updated error messages
 
