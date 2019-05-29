@@ -167,11 +167,11 @@ function styleActiveLink(locationHref) {
     return activeLink.classList.add("active-link");
   }
 
-  if (~locationHref.indexOf("/dashboard")) {
+  if (locationHref.indexOf("/dashboard") !== -1) {
     queryString = queryString.replace("user/dashboard", "");
     return document.querySelector(queryString).classList.add("active-link");
   }
-  if (~locationHref.indexOf("/security-tips")) {
+  if (locationHref.indexOf("/security-tips") !== -1) {
     return document.querySelector(".nav-link[href*='/security-tips']").classList.add("active-link");
   }
 }
