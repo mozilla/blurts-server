@@ -232,11 +232,17 @@ more-about-this-breach = この侵害について詳しく見る
 take-control = 個人情報の制御を取り戻してください。
 cant-stop-hackers = ハッカーのハッキングは止められません。しかし、ハッキングを容易にさせる悪習慣は避けられます。
 read-more-tips = セキュリティの秘訣をもっと読む
+monitor-your-online-accounts = { -brand-fxa }でデータ侵害の監視に登録しましょう。
+what-data = 漏洩したデータ:
+delayed-reporting-headline = なぜ、この侵害の報告に時間がかかったのですか？
 about-fxm-headline = { -product-name } について
 
 ## What to do after data breach tips
 
+change-pw = パスワードを変更する
+make-new-pw-unique = 新しいパスワードを他とは異なり一意にする
 create-strong-passwords = 強力なパスワードの作り方
+stop-reusing-pw = 同じパスワードの追加い回しをやめる
 see-if-breached = オンラインのデータ侵害がないか確認しましょう。
 check-for-breaches = データ侵害を確認する
 find-out-what-hackers-know = ハッカーが既にあなたについて知っていることを調査しましょう。一歩先に行く方法を学んでください。
@@ -245,7 +251,18 @@ back-to-top = トップに戻る
 resend-verification = 認証メールを再送する
 latest-breach-link = この侵害を受けているか確認する
 what-to-do-after-breach = データ侵害があった後にするべきこと:
+account-not-required = { -brand-name } ブラウザーは { -brand-fxa }には必要ありません。{ -brand-Mozilla } サービスについての情報を受け取るでしょう。
+no-results-blurb = データベース内に侵害は見つかりませんでした。
+all-breaches-headline = { -product-name } 内のすべてのデータ侵害
+search-breaches = データ侵害を検索
 
 ## Updated error messages
 
 login-link = ログイン
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = 侵害を受けたその他の情報:
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = { $breachDate }に、{ $breachTitle } は、データ侵害にさらされました。この侵害が発見され、確認されたため、{ $addedDate }にデータベースに追加されました。
