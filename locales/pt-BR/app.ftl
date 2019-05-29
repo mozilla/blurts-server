@@ -629,3 +629,7 @@ filter-by = Filtrar por categoria:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
 to-affected-email = Enviar alertas de vazamento para os endereços de e-mail afetados
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Existe um meio de proteger sua privacidade. Inscreva-se no { -brand-name }.
+# Link title
+learn-more-link = Saiba mais.
