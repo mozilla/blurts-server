@@ -680,3 +680,7 @@ filter-by = Hidlo yn ôl Categori:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Dewislen
 to-affected-email = Anfon rhybuddion tor-data at y cyfeiriadau e-bost sydd wedi'i effeithio
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Mae yna ffordd o ddiogelu eich preifatrwydd. Ymunwch â { -brand-name }.
+# Link title
+learn-more-link = Dysgu rhagor.
