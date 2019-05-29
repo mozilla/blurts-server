@@ -562,3 +562,7 @@ filter-by = Filtern nach Kategorie:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menü
 to-affected-email = Benachrichtigungen über Datenlecks an die betroffene E-Mail-Adresse schicken
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Es gibt einen Weg, deine Privatsphäre zu schützen. Komm zu { -brand-name }.
+# Link title
+learn-more-link = Mehr erfahren.
