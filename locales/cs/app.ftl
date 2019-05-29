@@ -391,3 +391,11 @@ create-free-account = Pro zaslání úplného hlášení o proběhlých únicíc
 get-your-report-and-sign-up = Získejte hlášení a přihlaste se k odběru upozornění.
 # Link title
 frequently-asked-questions = Často kladené otázky
+
+## What to do after data breach tips
+
+feat-security-tips = Bezpečnostní tipy, jak zabezpečit své účty
+
+## Updated error messages
+
+security-tips-headline = Bezpečnostní tipy, jak se chránit před hackery
