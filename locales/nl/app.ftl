@@ -616,4 +616,4 @@ to-affected-email = Waarschuwingen over datalekken naar het getroffen e-mailadre
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
 join-firefox = Er is een manier om uw privacy te beschermen. Doe mee met { -brand-name }.
 # Link title
-learn-more-link = Meer info
+learn-more-link = Meer info.
