@@ -229,13 +229,22 @@ latest-breach = 最近追加されたデータ侵害
 breach-added = 侵害の報告日:
 # Link title
 more-about-this-breach = この侵害について詳しく見る
+take-control = 個人情報の制御を取り戻してください。
+cant-stop-hackers = ハッカーのハッキングは止められません。しかし、ハッキングを容易にさせる悪習慣は避けられます。
+read-more-tips = セキュリティの秘訣をもっと読む
 about-fxm-headline = { -product-name } について
 
 ## What to do after data breach tips
 
+create-strong-passwords = 強力なパスワードの作り方
 see-if-breached = オンラインのデータ侵害がないか確認しましょう。
+check-for-breaches = データ侵害を確認する
+find-out-what-hackers-know = ハッカーが既にあなたについて知っていることを調査しましょう。一歩先に行く方法を学んでください。
+search-for-your-email = 2007 年までさかのぼって、メールアドレスがデータ侵害を受けているか検索します。
 back-to-top = トップに戻る
 resend-verification = 認証メールを再送する
+latest-breach-link = この侵害を受けているか確認する
+what-to-do-after-breach = データ侵害があった後にするべきこと:
 
 ## Updated error messages
 
