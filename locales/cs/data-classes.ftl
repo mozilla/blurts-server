@@ -1,22 +1,25 @@
 ## Breach Data Classes
 
-account-balances = Stavy účtů
+account-balances = Zůstatky na účtech
 address-book-contacts = Kontakty z adresáře
 age-groups = Věkové skupiny
 ages = Věk
 apps-installed-on-devices = Aplikace nainstalované na zařízení
-astrological-signs = Astrologické znamení
+astrological-signs = Znamení zvěrokruhu
 audio-recordings = Zvukové nahrávky
-auth-tokens = Auth tokeny
+auth-tokens = Ověřovací tokeny
 avatars = Avatary
 bank-account-numbers = Čísla bankovních účtů
 beauty-ratings = Hodnocení krásy
 biometric-data = Biometrické údaje
+# This string is the shortened version of "Biographies", and 
+# refers to biographical data about a user.
+bios = Biografické údaje
 browser-user-agent-details = Podrobnosti o user agentech uživatelů
 browsing-histories = Historie prohlížení
-buying-preferences = Preference při nakupování
+buying-preferences = Nákupní preference
 car-ownership-statuses = Stavy vlastnictví automobilů
-career-levels = Informace o kariérním postupu
+career-levels = Profesní úrovně
 cellular-network-names = Názvy mobilních sítí
 charitable-donations = Charitativní dary
 chat-logs = Historie chatů
