@@ -434,6 +434,8 @@ sensitive-sites-copy = Účty, které jsou spojené s těmito typy úniků, { -p
 delayed-reporting-headline = Proč nahlášení tohoto úniku trvalo tak dlouho?
 delayed-reporting-copy = Občas to může trvat měsíce či roky, než se přihlašovací údaje vyzrazené v úniku dat objeví na temném Webu. Úniky jsou přidány do naší databáze, jakmile byly odhaleny a potvrzeny.
 about-fxm-headline = O { -product-name(case: "gen") }.
+about-fxm-blurb = { -product-name } varuje, jestliže byly vaše internetové účty součástí úniku dat. Zjistěte, jestli se vaše osobní údaje nestaly součástí nějakého úniku dat, dostávejte upozornění na nové úniky a podnikněte kroky k ochraně svých internetových účtů. Službu { -product-name } zajišťuje organizace { -brand-Mozilla }.
+fxm-warns-you = { -product-name } vás upozorní, jestliže byla vaše e-mailová adresa vyzrazena v nějakém internetovém úniku dat. Ověřte si, jestli nebyly vaše osobní údaje vyzrazeny, zjistěte, jak lépe ochránit své internetové účty, a buďte upozorněni v případě, že se vaše e-mailová adresa objeví v novém úniku dat.
 
 ## What to do after data breach tips
 
