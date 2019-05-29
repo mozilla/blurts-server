@@ -43,7 +43,9 @@
   </section>
   <section class="detail-section bg-white">
     <div class="row jst-cntr flx-col">
-      {{> sign-up-banners/scan-results-sign-up }}
+      {{#unless ./../req.session.user}}
+        {{> sign-up-banners/scan-results-sign-up }}
+      {{/unless}}
       <div id="what-is-this-breach" class="col-8 breach-details">
         {{> breach-detail-content-group whatIsThisBreach}}
       </div>
