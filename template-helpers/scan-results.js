@@ -37,7 +37,7 @@ function getScanResultsHeadline(args) {
 
 
   headlineStrings.headline = fluentNestedBold("fb-not-comp", args);
-  headlineStrings.subhead = fluentNestedBold("other-breaches-found", args);
+  headlineStrings.subhead = fluentNestedBold("other-known-breaches-found", args);
   return args.fn(headlineStrings);
 }
 
