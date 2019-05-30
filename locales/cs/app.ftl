@@ -208,8 +208,8 @@ scan-results =
        *[other] Účty s vaší e-mailovou adresou byly nalezeny v { $breachCount } dalších únicích.
     }
 show-more-breaches = Zobrazit více
-what-to-do-headline = Co udělat když jsou vaše data součástí nějakého úniku
-what-to-do-subhead-1 = Změňte svá hesla i pro staré účty
+what-to-do-headline = Co dělat když jsou vaše údaje součástí nějakého úniku.
+what-to-do-subhead-1 = Změňte svá hesla i u starých účtů
 what-to-do-blurb-1 =
     Pokud se nemůžete přihlásit, kontaktujte správce webové stránky a zeptejte se, jak můžete obnovit přístup ke svému účtu, nebo účet zcela zrušit.
     Vidíte účet, o kterém vůbec nevíte? Stránka mohla změnit svůj název nebo účet někdo vytvořil za vás.
