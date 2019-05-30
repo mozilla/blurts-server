@@ -160,6 +160,22 @@ function toggleHeaderStates(header, win) {
   }
 }
 
+function styleActiveLink(locationHref) {
+  let queryString = `.nav-link[href='${locationHref}']`;
+  const activeLink = document.querySelector(queryString);
+  if (activeLink) {
+    return activeLink.classList.add("active-link");
+  }
+
+  if (locationHref.indexOf("/dashboard") !== -1) {
+    queryString = queryString.replace("user/dashboard", "");
+    return document.querySelector(queryString).classList.add("active-link");
+  }
+  if (locationHref.indexOf("/security-tips") !== -1) {
+    return document.querySelector(".nav-link[href*='/security-tips']").classList.add("active-link");
+  }
+}
+
 ( async() => {
   document.addEventListener("touchstart", function(){}, true);
   const win = window;
@@ -169,14 +185,7 @@ function toggleHeaderStates(header, win) {
     if (previousActiveLink) {
       previousActiveLink.classList.remove("active-link");
     }
-    const navLinks = document.querySelectorAll(".nav-link");
-
-    navLinks.forEach(link => {
-      if (link.href === win.location.href) {
-        link.classList.add("active-link");
-      }
-    });
-
+    styleActiveLink(win.location.href);
     if (win.location.search.includes("utm_") && win.history.replaceState) {
       win.history.replaceState({}, "", win.location.toString().replace(/[?&]utm_.*/g, ""));
     }
@@ -186,7 +195,6 @@ function toggleHeaderStates(header, win) {
     document.forms ? (restoreInputs(), addFormListeners()) : null;
   });
 
-  // toggleMobileFeatures();
   win.addEventListener("resize", () => {
     toggleMobileFeatures();
     toggleArticles();
