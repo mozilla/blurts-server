@@ -136,13 +136,37 @@ function toggleArticles() {
   });
 }
 
-function toggleMobileFeatures() {
-  const windowWidth = window.innerWidth;
+function hideShowNavBars(win, navBar) {
+  win.onscroll = function(e) {
+    if (win.pageYOffset < 100) {
+      navBar.classList = ["show-nav-bars"];
+      return;
+    }
+
+    if (this.oldScroll < this.scrollY) {
+      navBar.classList = ["hide-nav-bars"];
+      this.oldScroll = this.scrollY;
+      return;
+    }
+
+    if (this.oldScroll > this.scrollY + 50) {
+      navBar.classList = ["show-nav-bars"];
+      this.oldScroll = this.scrollY;
+      return;
+    }
+    this.oldScroll = this.scrollY;
+  };
+}
+
+function toggleMobileFeatures(topNavBar) {
+  const win = window;
+  const windowWidth = win.innerWidth;
   if (windowWidth > 800) {
     const emailCards = document.querySelectorAll(".col-9.email-card:not(.zero-breaches)");
       emailCards.forEach(card => {
         card.classList.add("active");
       });
+      win.removeEventListener("scroll", hideShowNavBars);
       return;
     }
 
@@ -150,6 +174,10 @@ function toggleMobileFeatures() {
     closeActiveEmailCards.forEach(card => {
       card.classList.remove("active");
     });
+
+    if (windowWidth < 600) {
+      win.addEventListener("scroll", hideShowNavBars(win, topNavBar));
+    }
 }
 
 function toggleHeaderStates(header, win) {
@@ -164,6 +192,7 @@ function toggleHeaderStates(header, win) {
   document.addEventListener("touchstart", function(){}, true);
   const win = window;
   const header = document.getElementById("header");
+  const topNavigation = document.querySelector("#navigation-wrapper");
   win.addEventListener("pageshow", function() {
     const previousActiveLink = document.querySelector(".active-link");
     if (previousActiveLink) {
@@ -180,15 +209,14 @@ function toggleHeaderStates(header, win) {
     if (win.location.search.includes("utm_") && win.history.replaceState) {
       win.history.replaceState({}, "", win.location.toString().replace(/[?&]utm_.*/g, ""));
     }
-    toggleMobileFeatures();
+    toggleMobileFeatures(topNavigation);
     toggleArticles();
     toggleHeaderStates(header, win);
     document.forms ? (restoreInputs(), addFormListeners()) : null;
   });
 
-  // toggleMobileFeatures();
   win.addEventListener("resize", () => {
-    toggleMobileFeatures();
+    toggleMobileFeatures(topNavigation);
     toggleArticles();
   });
 
