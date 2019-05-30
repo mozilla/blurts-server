@@ -321,6 +321,7 @@ latest-breach-link = Sjå om du har vore involvert i ein datalekkasje
 welcome-back = Velkomen tilbake, { $userName }!
 welcome-user = Velkomen, { $userName }!
 breach-alert-subject = { -product-name } fann e-postadressa di i ein ny datalekkasje.
+what-to-do-after-breach = Kva skal du gjere etter ein datalekkasje:
 ba-next-step-2 = Slutt heilt med å bruke det eksponerte passordet.
 new-breaches-found =
     { $breachCount ->
@@ -364,8 +365,10 @@ other-monitored-emails = Andre overvaka e-postadresser
 email-verification-required = E-poststadfesting påkravd
 fxa-primary-email = { -brand-fxa } E-post - Primær
 what-is-a-website-breach = Kva er ein nettstadlekkasje?
+security-tips-headline = Tryggingstips for å verne deg mot hackarar
+steps-to-protect = Kva du kan gjere for å beskytte identiteten din på nettet
 alert-about-new-breaches = Varsle meg om nye datalekkasjar
-see-if-youve-been-part = Sjå om du har vore omfatta i ein datalekkasje på nettet.
+see-if-youve-been-part = Sjå om du har vore omfatta av ein datalekkasje på nettet.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Sjekk no
 # This string appears on breach detail pages and is followed by a list
