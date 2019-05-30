@@ -872,7 +872,7 @@ want-to-add = Want to add another email?
 
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
-verify-the-link = Verify the link sent to { $userEmail } to add it to Firefox Monitor.
+verify-the-link = Verify the link sent to { $userEmail } to add it to {-product-name}.
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
