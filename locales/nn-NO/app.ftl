@@ -301,6 +301,7 @@ appears-in-x-breaches =
         [one] Er involvert i { $breachCount } kjend datalekkasje.
        *[other] Er involvert i { $breachCount } kjende datalekkasjar.
     }
+see-if-breached = Sjå om du har vore involvert i ein datalekkasje.
 check-for-breaches = Sjå etter datalekkasjar
 back-to-top = Tilbake til toppen
 add-new-email = Legg til ei ny e-postadresse
@@ -364,6 +365,7 @@ email-verification-required = E-poststadfesting påkravd
 fxa-primary-email = { -brand-fxa } E-post - Primær
 what-is-a-website-breach = Kva er ein nettstadlekkasje?
 alert-about-new-breaches = Varsle meg om nye datalekkasjar
+see-if-youve-been-part = Sjå om du har vore omfatta i ein datalekkasje på nettet.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Sjekk no
 # This string appears on breach detail pages and is followed by a list
