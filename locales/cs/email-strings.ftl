@@ -18,22 +18,22 @@ email-address = E-mailová adresa:
 # "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
 your-full-report = Toto je kompletní hlášení z { -product-name(case: "gen") }, které obsahuje všechny známé úniky dat, v nichž se vyskytuje tato e-mailová adresa.
 report-no-breaches =
-    Vaše e-mailová adresa není v naší databázi známých úniků dat.
-    K dalšímu úniku dat ale může dojít kdykoliv. Zabezpečte svá osobní data na internetu.
+    Vaše e-mailová adresa se nevyskytuje v naší databázi známých úniků dat.
+    K dalšímu úniku ale může dojít kdykoliv. Podnikněte tyto kroky, které vám pomohou ochránit své osobní údaje na internetu.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Co dál
 report-headline =
     { $breachCount ->
         [0] Zatím jde všechno dobře.
-        [one] Váš účet byl nalezen v jednom úniku dat.
-        [few] Váš účet byl nalezen ve { $breachCount } únicích dat.
-       *[other] Váš účet byl nalezen v { $breachCount } únicích dat.
+        [one] Váš účet se objevil v jednom úniku dat.
+        [few] Váš účet se objevil ve { $breachCount } únicích dat.
+       *[other] Váš účet se objevil v { $breachCount } únicích dat.
     }
 report-subhead-no-breaches =
-    Váš účet nebyl součástí naší databáze úniků dat.
+    Váš účet se nevyskytuje v našem kompletním hlášení o únicích dat.
     To je dobrá zpráva, ale pořád ještě můžete něco zlepšovat.
     K dalšímu úniku dat může dojít kdykoliv. Přečtěte si, jak můžete ochránit svá hesla.
-report-subhead-found-breaches = Toto je vaše kompletní hlášení z Firefox Monitoru, které obsahuje všechny známé úniky dat s touto e-mailovou adresou.
+report-subhead-found-breaches = Toto je vaše kompletní hlášení z Firefox Monitoru, které obsahuje všechny známé úniky dat, v nichž se vyskytuje tato e-mailová adresa.
 breach-alert-headline = Váš účet byl součástí úniku dat.
 breach-alert-subhead = Nedávno nahlášený únik dat obsahuje vaši e-mailovou adresu a následující data
 report-pwt-blurb =
