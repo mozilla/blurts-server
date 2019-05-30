@@ -303,6 +303,7 @@ appears-in-x-breaches =
     }
 see-if-breached = Sjå om du har vore involvert i ein datalekkasje.
 check-for-breaches = Sjå etter datalekkasjar
+search-for-your-email = Søk etter e-postadressa di i offentlege datalekkasjar som går tilbake til 2007.
 back-to-top = Tilbake til toppen
 add-new-email = Legg til ei ny e-postadresse
 send-verification = Send stadfestingslenke
