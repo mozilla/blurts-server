@@ -3,8 +3,8 @@
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
 click-to-verify =
-    Potvrďte své přihlášení k Firefox Monitoru do 24 hodin od odeslání tohoto e-mailu.
-    Hlášení o vašich účtech vám pak pošleme co nejdříve.
+    Potvrďte své přihlášení k zasílání upozornění od Firefox Monitoru klepnutím na tlačítko níže do 24 hodin od odeslání tohoto e-mailu.
+    Vaše hlášení vám pak pošleme co nejdříve.
 verify-my-email = Ověřit e-mailovou adresu
 report-scan-another-email = Vyhledat další e-mailovou adresu ve { -product-name(case: "loc") }
 automated-message = Toto je automaticky zaslaný e-mail - pokud jste si ho nevyžádali, můžete ho ignorovat.
