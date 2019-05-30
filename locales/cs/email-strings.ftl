@@ -21,7 +21,7 @@ report-no-breaches =
     Vaše e-mailová adresa se nevyskytuje v naší databázi známých úniků dat.
     K dalšímu úniku ale může dojít kdykoliv. Podnikněte tyto kroky, které vám pomohou ochránit své osobní údaje na internetu.
 # A list of next steps someone should take if their information has been involved in a data breach.
-what-to-do-next = Co dál
+what-to-do-next = Co teď dělat?
 report-headline =
     { $breachCount ->
         [0] Zatím jde všechno dobře.
@@ -37,9 +37,9 @@ report-subhead-found-breaches = Toto je vaše kompletní hlášení z Firefox Mo
 breach-alert-headline = Váš účet byl součástí úniku dat.
 breach-alert-subhead = Nedávno nahlášený únik dat obsahuje vaši e-mailovou adresu a následující data
 report-pwt-blurb =
-    Hesla jsou velmi cenná a proto jich jsou denně ukradeny tisíce a tisíce a směňovány nebo prodávány na černém trhu. 
+    Hesla jsou velmi cenná a proto jich jsou denně ukradeny tisíce, načež jsou pak směňovány nebo prodávány na černém trhu. 
     Silnější hesla lépe chrání vaše účty a všechna osobní data, která v nich máte uložena.
-report-pwt-headline-1 = Používejte rozdílná hesla pro každý účet
+report-pwt-headline-1 = Používejte u každého účtu jiné heslo
 report-pwt-summary-1 =
     Používáním stejného hesla necháváte hackerům otevřené dveře.
     I oni mohou použít stejné heslo pro přihlášení ke všem vašim účtům.
