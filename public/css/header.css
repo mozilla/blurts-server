@@ -266,7 +266,7 @@ nav {
   position: relative;
   background-color: #1d1133;
   padding: 1rem 1.75rem;
-  border-bottom: 1px solid #2b2156a8;
+  border-bottom: 1px solid #2b2156;
   color: rgba(255, 255, 255, 1);
   font-size: 16px;
 }
@@ -275,6 +275,7 @@ nav {
   margin-left: 0.5rem;
   color: rgba(255, 255, 255, 1);
   text-decoration: underline;
+  white-space: nowrap;
 }
 
 .join-fx-wrap {
