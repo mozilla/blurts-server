@@ -167,7 +167,7 @@ fxa-scan-another-email = Vil du kontrollere ei anna e-postadresse?
 # Search Firefox Monitor
 fxa-scan-submit = Sök { -product-name }
 sign-up-to-check = Registrer deg for å kontrollere
-sign-in = Logg in
+sign-in = Logg inn
 sign-out = Logg ut
 full-report-headline = Din { -product-name }-rapport
 see-full-report = Vis fullstendig rapport
