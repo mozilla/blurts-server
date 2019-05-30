@@ -10,6 +10,7 @@ exports.TEST_SUBSCRIBERS = {
     primary_email: "firefoxaccount@test.com",
     primary_verification_token: "0e2cb147-2041-4e5b-8ca9-494e773b2cf1",
     primary_verified: true,
+    fxa_access_token: "4a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc0",
     fxa_refresh_token: "4a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc1",
     fxa_uid: 12345,
     fxa_profile_json: {},
