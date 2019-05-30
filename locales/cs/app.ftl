@@ -211,9 +211,9 @@ show-more-breaches = Zobrazit více
 what-to-do-headline = Co dělat když jsou vaše údaje součástí nějakého úniku.
 what-to-do-subhead-1 = Změňte svá hesla i u starých účtů
 what-to-do-blurb-1 =
-    Pokud se nemůžete přihlásit, kontaktujte správce webové stránky a zeptejte se, jak můžete obnovit přístup ke svému účtu, nebo účet zcela zrušit.
-    Vidíte účet, o kterém vůbec nevíte? Stránka mohla změnit svůj název nebo účet někdo vytvořil za vás.
-what-to-do-subhead-2 = Pokud používáte stejné heslo, jako o uniklého účtu, změňte ho
+    Pokud se nemůžete přihlásit, kontaktujte správce webu a zeptejte se, jak můžete obnovit přístup do svého účtu, případně jak účet zcela zrušit.
+    Vidíte účet, který vám nic neříká? Web mohl změnit svůj název nebo někdo účet vytvořil za vás.
+what-to-do-subhead-2 = Pokud vyzrazené heslo používáte i u jiného účtu, změňte ho tam.
 what-to-do-blurb-2 =
     Hackeři mohou použít získaná hesla a dostat se s nimi do dalších vašich účtů.
     Používejte pro každou webovou stránku jiné heslo, hlavně pokud jde o internetové
@@ -376,15 +376,15 @@ signup-banner-sensitive-blurb =
     Odhalte, co už o vás hackeři vědí, a zůstaňte o krok před nimi.
     Nechte si posílat upozornění, pokud se váš účet objeví v novém úniku.
 fxa-pwt-section-blurb =
-    Hesla chrání všechny vaše osobní údaje a online účty. Hackeři spoléhají
+    Hesla chrání všechny vaše osobní údaje a internetové účty. Hackeři spoléhají
     na špatné zvyky jako je používání stejného hesla na více místech, nebo
     příliš běžného a lehce uhodnutého hesla (h3sl0). Takže pokud se jim podaří
-    prolomit jeden váš účet, dostanou se velmi rychle dostat i k ostatním.
+    prolomit jeden váš účet, mohou se velmi rychle dostat i k ostatním.
 fxa-pwt-summary-2 =
     Krátké jednoslovné heslo je velmi snadné uhodnout. Používejte alespoň
     dvouslovná hesla s kombinací malých a velkých písmen, čísel a speciálních znaků.
 fxa-pwt-summary-4 = Správci hesel jako 1Password, LastPass, Dashlane a Bitwarden si umí vaše hesla bezpečně uložit a automaticky je za vás na webových stránkách vyplnit. Pomohou vám i s vytvořením silného hesla.
-fxa-pwt-summary-6 = Počet úniků dat z webových stránek stoupá. Kdykoliv je nový únik přidán do databáze, { -product-name } vám pošle upozornění, abyste mohli co nejrychleji zareagovat a ochránit svůj účet.
+fxa-pwt-summary-6 = Počet úniků dat z webových stránek stoupá. Když se vaše osobní údaje objeví v novém úniku dat, { -product-name } vám pošle upozornění, abyste mohli co nejrychleji zareagovat a ochránit svůj účet.
 fxa-what-to-do-blurb-1 = Pokud se nemůžete přihlásit, kontaktujte správce webové stránky a zeptejte se, jak můžete své heslo změnit. Vidíte účet, o kterém vůbec nevíte? Stránka mohla změnit svůj název nebo jste na nepoužívaný účet už zapomněli.
 fxa-what-to-do-subhead-2 = Přestaňte používat uniklé heslo a změňte ho všude, kde jste ho použili.
 fxa-wtd-blurb-2 = Hackeři mohou použít stejné heslo a e-mail a dostat se i do dalších účtů. Pro každý účet používejte jiné heslo, zejména pro internetové bankovnictví a další stránky, které mají vaše citlivé osobní údaje.
