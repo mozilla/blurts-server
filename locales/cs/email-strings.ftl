@@ -7,16 +7,16 @@ click-to-verify =
     Vaše hlášení vám pak pošleme co nejdříve.
 verify-my-email = Ověřit e-mailovou adresu
 report-scan-another-email = Vyhledat další e-mailovou adresu ve { -product-name(case: "loc") }
-automated-message = Toto je automaticky zaslaný e-mail - pokud jste si ho nevyžádali, můžete ho ignorovat.
+automated-message = Toto je automaticky zaslaný e-mail – pokud jste si ho nevyžádali, můžete ho ignorovat.
 # Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
-we-sent-this-alert = Tuto zprávu jsme poslali na adresu { $userEmail }, protože jste ji vy nebo někdo jiný přihlásil k zasílání upozornění z { -product-name(case: "gen") }.
-unsubscribe-email-link = Pokud už nechcete upozornění z { -product-name(case: "gen") } dostávat, odhlaste se.
+we-sent-this-alert = Tuto zprávu jsme poslali na adresu { $userEmail }, protože byla přihlášena k dostávání upozornění od { -product-name(case: "gen") }.
+unsubscribe-email-link = Pokud již nechcete upozornění od { -product-name(case: "gen") } dostávat, odhlaste se.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Hlášení { -product-name(case: "gen") }
 report-date = Datum nahlášení:
 email-address = E-mailová adresa:
 # "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Toto je kompletní hlášení z { -product-name(case: "gen") }, které obsahuje všechny známé úniky dat s touto e-mailovou adresou.
+your-full-report = Toto je kompletní hlášení z { -product-name(case: "gen") }, které obsahuje všechny známé úniky dat, v nichž se vyskytuje tato e-mailová adresa.
 report-no-breaches =
     Vaše e-mailová adresa není v naší databázi známých úniků dat.
     K dalšímu úniku dat ale může dojít kdykoliv. Zabezpečte svá osobní data na internetu.
