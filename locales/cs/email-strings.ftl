@@ -41,16 +41,16 @@ report-pwt-blurb =
     Silnější hesla lépe chrání vaše účty a všechna osobní data, která v nich máte uložena.
 report-pwt-headline-1 = Používejte u každého účtu jiné heslo
 report-pwt-summary-1 =
-    Používáním stejného hesla necháváte hackerům otevřené dveře.
-    I oni mohou použít stejné heslo pro přihlášení ke všem vašim účtům.
+    Opakovaným používáním jednoho hesla necháváte hackerům otevřené dveře.
+    Mohou ho totiž použít k přihlášení se i do jiných vašich účtů.
 report-pwt-headline-2 = Vytvářejte silná a unikátní hesla
-report-pwt-summary-2 = Hackeři používají seznam běžně používaných hesel, aby se pokusili uhodnout to vaše. Čím delší a náhodnější je vaše heslo, tím těžší ho bude uhádnout.
-report-pwt-headline-3 = Považujte bezpečnostní otázky jako hesla
+report-pwt-summary-2 = Hackeři při pokusu o uhodnutí vašeho hesla užívají seznam běžně používaných hesel. Čím delší a náhodnější je vaše heslo, tím těžší ho bude uhádnout.
+report-pwt-headline-3 = Bezpečnostní otázky berte jako přídavná hesla
 report-pwt-summary-3 =
-    Webové stránky nekontrolují, jestli jsou vaše odpovědi správně, jenom jestli jsou pokaždé stejné.
+    Webové stránky nekontrolují, jestli jsou vaše odpovědi správně, nýbrž jenom jestli jsou pokaždé stejné.
     Připravte si dlouhé a náhodné odpovědi a někam si je bezpečně uložte.
 report-pwt-headline-4 = Používejte správce hesel
-report-pwt-summary-4 = Správci hesel jako 1Password, LastPass, Dashlane a Bitwarden umí vygenerovat silná, bezpečně je uložit a automaticky je pro vás na webových stránkách vyplnit, takže si nemusíte každé pamatovat.
+report-pwt-summary-4 = Správci hesel jako 1Password, LastPass, Dashlane a Bitwarden umí vygenerovat silná hesla, bezpečně si je uložit a automaticky je za vás na webových stránkách vyplnit, takže už si ani nemusíte každé pamatovat.
 # A link to legal information about mozilla products.
 legal = Právní informace
 # Share Firefox Monitor by email subject line
