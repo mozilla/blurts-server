@@ -391,8 +391,10 @@ avoid-personal-info-blurb = Sangat mudah untuk menemukan tanggal lahir, alamat, 
 change-pw = Ubah kata sandi Anda
 even-for-old = Bahkan untuk akun lama, adalah penting untuk memperbarui kata sandi Anda.
 make-new-pw-unique = Buat kata sandi baru yang berbeda dan unik
+strength-of-your-pw = Kekuatan kombinasi kata sandi Anda secara langsung berdampak pada keamanan daring Anda.
 create-strong-passwords = Cara membuat kata sandi yang kuat
 stop-reusing-pw = Berhenti menggunakan kembali kata sandi yang sama
+create-unique-pw = Buat kata sandi unik dan simpan di tempat yang aman, seperti pengelola kata sandi.
 five-myths = 5 mitos tentang pengelola kata sandi
 feat-security-tips = Tips keamanan untuk melindungi akun Anda
 feat-sensitive = Pencarian lanjutan dalam pembobolan sensitif
@@ -408,9 +410,16 @@ send-verification = Kirim Tautan Verifikasi
 # email address.
 global-communication = Komunikasi Global
 link-change-primary = Ubah Alamat Surel Utama
+manage-email-addresses = Kelola Alamat Surel
+welcome-user = Selamat datang, { $userName }!
 
 ## Updated error messages
 
+login-link = Masuk
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Hasil untuk: { $userEmail }
 what-is-a-website-breach = Apa itu pembobolan situs web?
 security-tips-headline = Kiat keamanan untuk melindungi diri Anda dari peretas
 # Title
