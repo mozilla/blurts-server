@@ -138,6 +138,13 @@ function toggleArticles() {
 
 function hideShowNavBars(win, navBar) {
   win.onscroll = function(e) {
+    // catch a window that has resized from less than 600px
+    // to greater than 600px and unhide navigation.
+    if (win.innerWidth > 600) {
+      navBar.classList = ["show-nav-bars"];
+      return;
+    }
+
     if (win.pageYOffset < 100) {
       navBar.classList = ["show-nav-bars"];
       return;
@@ -166,8 +173,6 @@ function toggleMobileFeatures(topNavBar) {
       emailCards.forEach(card => {
         card.classList.add("active");
       });
-      win.removeEventListener("scroll", hideShowNavBars);
-      return;
     }
 
   const closeActiveEmailCards = document.querySelectorAll(".col-9.email-card.active");
@@ -176,7 +181,7 @@ function toggleMobileFeatures(topNavBar) {
     });
 
     if (windowWidth < 600) {
-      win.addEventListener("scroll", hideShowNavBars(win, topNavBar));
+      hideShowNavBars(win, topNavBar);
     }
 }
 
