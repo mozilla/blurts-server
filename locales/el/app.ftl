@@ -370,9 +370,27 @@ breaches = Παραβιάσεις
 # Link title
 security-tips = Συμβουλές ασφαλείας
 fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Άνοιγμα πλοήγησης { -brand-fxa }
 
 ## What to do after data breach tips
 
+faq1 = Δεν αναγνωρίζω αυτή την εταιρεία ή ιστοσελίδα. Γιατί είμαι σε αυτή την παραβίαση;
+faq2 = Γιατί πέρασε τόσος καιρός μέχρι να ενημερωθώ για αυτή την παραβίαση;
+faq3 = Πώς ξέρω αν αυτό είναι ένα γνήσιο email από το { -product-name };
+new-breaches-found =
+    { $breachCount ->
+        [one] ΒΡΕΘΗΚΕ { $breachCount } ΝΕΑ ΠΑΡΑΒΙΑΣΗ
+       *[other] ΒΡΕΘΗΚΑΝ { $breachCount } ΝΕΕΣ ΠΑΡΑΒΙΑΣΕΙΣ
+    }
+fb-not-comp = Αυτό το email δεν εμφανίστηκε στην παραβίαση { $breachName }.
+fb-comp-only = Αυτό το email εμφανίστηκε στην παραβίαση { $breachName }.
+no-results-blurb = Λυπούμαστε, αυτή η παραβίαση δεν είναι στη βάση δεδομένων μας.
+all-breaches-headline = Όλες οι παραβιάσεις στο { -product-name }
+search-breaches = Αναζήτηση παραβιάσεων
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Εμφάνιση:
+all-breaches = Όλες οι παραβιάσεις
 
 ## Updated error messages
 
