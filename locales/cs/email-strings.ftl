@@ -13,7 +13,7 @@ we-sent-this-alert = Tuto zprávu jsme poslali na adresu { $userEmail }, protož
 unsubscribe-email-link = Pokud již nechcete upozornění od { -product-name(case: "gen") } dostávat, odhlaste se.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Hlášení { -product-name(case: "gen") }
-report-date = Datum nahlášení:
+report-date = Datum:
 email-address = E-mailová adresa:
 # "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
 your-full-report = Toto je kompletní hlášení z { -product-name(case: "gen") }, které obsahuje všechny známé úniky dat, v nichž se vyskytuje tato e-mailová adresa.
