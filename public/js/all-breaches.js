@@ -1,10 +1,15 @@
 "use strict";
 
+function replaceLogo(e) {
+  e.target.src = "/img/logos/missing-logo-icon.png";
+  e.target.removeEventListener("error", replaceLogo);
+  return true;
+}
 
 function breachImages() {
   this.active = false;
   this.lazyLoad = () => {
-    let lazyImages = [].slice.call(document.querySelectorAll(".lazy-img"));
+    const lazyImages = [].slice.call(document.querySelectorAll(".lazy-img"));
     if (this.active === false) {
       this.active = true;
       const winHeight = window.innerHeight;
@@ -13,11 +18,8 @@ function breachImages() {
           lazyImage.classList.add("lazy-loaded");
           lazyImage.classList.remove("lazy-img");
           lazyImage.src = lazyImage.dataset.src;
-          lazyImage.srcset = lazyImage.dataset.srcset;
+          lazyImage.addEventListener("error", replaceLogo);
 
-          lazyImages = lazyImages.filter(image => {
-            return image !== lazyImage;
-          });
           if (lazyImages.length === 0) {
             document.removeEventListener("scroll", this.lazyLoad);
             window.removeEventListener("resize", this.lazyLoad);
@@ -66,13 +68,12 @@ function makeBreaches(breachArray, breachCardWrapper) {
     card["data-breach-title"] = breach.Title;
     fragment.appendChild(card);
 
-
     const logoWrapper = makeDiv("breach-logo-wrapper", card);
 
     const breachLogo = document.createElement("img");
     breachLogo["alt"] = "";
     breachLogo["classList"] = "breach-logo lazy-img";
-    breachLogo.dataset.srcset = `/img/logos/${breach.LogoPath}`;
+    breachLogo.dataset.src = `/img/logos/${breach.LogoPath}`;
     breachLogo.src = "/img/logos/lazyPlaceHolder.png";
     logoWrapper.appendChild(breachLogo);
 
@@ -107,7 +108,17 @@ function makeBreaches(breachArray, breachCardWrapper) {
   document.addEventListener("scroll", breachLogos.lazyLoad);
   window.addEventListener("resize", breachLogos.lazyLoad);
   window.addEventListener("orientationchange", breachLogos.lazyLoad);
+  FOUCHotFix();
   return breachArray;
+}
+
+function FOUCHotFix() {
+  document.onreadystatechange = () => {
+    if (document.readyState === "complete") {
+      const loader = document.getElementById("breaches-loader");
+      loader.classList = ["hide"];
+    }
+  };
 }
 
 (async() => {
@@ -119,14 +130,6 @@ function makeBreaches(breachArray, breachCardWrapper) {
     const breachArray = JSON.parse(breachWrapper.dataset.breachArray);
 
     makeBreaches(breachArray, breachCardWrapper);
-
-    document.onreadystatechange = () => {
-      if (document.readyState === "complete") {
-        const loader = document.getElementById("breaches-loader");
-        loader.classList.add("hide");
-      }
-    };
-
     const showAllBreaches = document.getElementById("show-all-breaches");
     const noResultsBlurb = document.getElementById("no-results-blurb");
 

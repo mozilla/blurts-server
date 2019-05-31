@@ -236,7 +236,7 @@ function styleActiveLink(locationHref) {
 
   document.addEventListener("scroll", () => toggleHeaderStates(header, win));
 
-  document.querySelectorAll(".breach-img").forEach(logo => {
+  document.querySelectorAll(".breach-logo:not(.lazy-img)").forEach(logo => {
     logo.addEventListener("error", (missingLogo) => {
       missingLogo.target.src = "/img/logos/missing-logo-icon.png";
     });
