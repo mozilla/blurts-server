@@ -351,9 +351,29 @@ take-action = Actúa para proteger tus cuentas
 keep-your-data-safe = Descubre lo que necesitas hacer para mantener tu información segura de los criminales cibrenéticos.
 website-breach = Violación del sitio web
 sensitive-breach = Filtración de datos sensible del sitio web
+what-data = Qué datos fueron comprometidos:
+how-fxm-3-headline = Recibir notificaciones en el navegador
 
 ## What to do after data breach tips
 
+change-pw = Cambiar tu contraseña
+back-to-top = Volver al inicio
+resend-verification = Reenviar correo electrónico de verificación
+add-new-email = Agregar una nueva dirección de correo electrónico
+send-verification = Enviar enlace de verificación
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Comunicación global
+link-change-primary = Cambiar dirección de correo principal
+manage-email-addresses = Administrar direcciones de correo electrónico
+welcome-back = ¡Bienvenido de nuevo, { $userName }!
+welcome-user = ¡Bienvenido, { $userName }!
+what-to-do-after-breach = Qué hacer después de una filtración de datos:
+ba-next-step-1 = Cambiar tu contraseña por otra segura y única.
+ba-next-step-2 = Dejar de usar la contraseña expuesta por completo.
 
 ## Updated error messages
 
