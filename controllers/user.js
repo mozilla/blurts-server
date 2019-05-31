@@ -11,17 +11,19 @@ const HIBP = require("../hibp");
 const sha1 = require("../sha1-utils");
 
 
-function _requireSessionUser(req,res) {
+async function _requireSessionUser(req,res) {
   if (!req.session || !req.session.user) {
     // TODO: can we do a nice redirect to sign in instead of an error?
     throw new FluentError("must-be-signed-in");
   }
-  return req.session.user;
+  // make sure the user object has all subscribers and email_addresses properties
+  const sessionUser = await DB.getSubscriberById(req.session.user.id);
+  return sessionUser;
 }
 
 async function removeEmail(req, res) {
   const emailId = req.body.emailId;
-  const sessionUser = _requireSessionUser(req);
+  const sessionUser = await _requireSessionUser(req);
   const existingEmail = await DB.getEmailById(emailId);
   if (existingEmail.subscriber_id !== sessionUser.id) {
     throw new FluentError("error-not-subscribed");
@@ -33,7 +35,7 @@ async function removeEmail(req, res) {
 
 async function resendEmail(req, res) {
   const emailId = req.body.emailId;
-  const sessionUser = _requireSessionUser(req);
+  const sessionUser = await _requireSessionUser(req);
   const existingEmail = await DB.getEmailById(emailId);
 
   if (!existingEmail || !existingEmail.subscriber_id) {
@@ -65,7 +67,7 @@ async function resendEmail(req, res) {
 }
 
 async function updateCommunicationOptions(req, res) {
-  const sessionUser = _requireSessionUser(req);
+  const sessionUser = await _requireSessionUser(req);
   // 0 = Send breach alerts to the email address found in brew breach.
   // 1 = Send all breach alerts to user's primary email address.
   const allEmailsToPrimary = (Number(req.body.communicationOption) === 1) ? true : false;
@@ -89,7 +91,7 @@ function _checkForDuplicateEmail(sessionUser, email) {
 
 
 async function add(req, res) {
-  const sessionUser = _requireSessionUser(req);
+  const sessionUser = await _requireSessionUser(req);
   const email = req.body.email;
 
   if (!email || !isemail.validate(email)) {
@@ -164,7 +166,7 @@ function getNewBreachesForEmailEntriesSinceDate(emailEntries, date) {
 
 
 async function getDashboard(req, res) {
-  const user = _requireSessionUser(req, res);
+  const user = await _requireSessionUser(req);
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
 
@@ -207,7 +209,7 @@ async function _verify(req) {
 
 
 async function verify(req, res) {
-  const sessionUser = _requireSessionUser(req, res);
+  const sessionUser = await _requireSessionUser(req);
   if (!req.query.token) {
     throw new FluentError("user-verify-token-error");
   }
@@ -262,7 +264,7 @@ async function getUnsubscribe(req, res) {
 
 
 async function getRemoveFxm(req, res) {
-  const sessionUser = _requireSessionUser(req);
+  const sessionUser = await _requireSessionUser(req);
 
   res.render("subpage", {
     title: req.fluentFormat("remove-fxm"),
@@ -274,7 +276,7 @@ async function getRemoveFxm(req, res) {
 
 
 async function postRemoveFxm(req, res) {
-  const sessionUser = _requireSessionUser(req);
+  const sessionUser = await _requireSessionUser(req);
   await DB.removeSubscriber(sessionUser);
   await FXA.revokeOAuthTokens(sessionUser);
 
@@ -307,7 +309,7 @@ async function postUnsubscribe(req, res) {
 
 
 async function getPreferences(req, res) {
-  const user = _requireSessionUser(req);
+  const user = await _requireSessionUser(req);
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
 

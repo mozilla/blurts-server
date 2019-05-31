@@ -50,6 +50,18 @@ const DB = {
     return res;
   },
 
+  async getSubscriberById(id) {
+    const [subscriber] = await knex("subscribers").where({
+      "id": id,
+    });
+    if (subscriber) {
+      subscriber.email_addresses = await knex("email_addresses").where({
+        "subscriber_id": subscriber.id,
+      });
+    }
+    return subscriber;
+  },
+
   async getSubscriberByEmail(email) {
     const [subscriber] = await knex("subscribers").where({
       "primary_email": email,
