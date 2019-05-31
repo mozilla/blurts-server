@@ -34,7 +34,6 @@
           <span class="security-tip-subhead">{{subhead}}</span>
           <h2 class="article-headline {{ class }}">{{ title }}</h2>
           {{#each copy}}
-
             {{#each leads}}
               <p class="article-paragraph lead">
                 <span class="drop-cap">
@@ -46,25 +45,29 @@
 
             {{#if toggles}}
               {{#each this.toggles}}
-                <div class="toggle-parent inactive st-toggle-wrapper">
-                  <div class="toggle-info-wrapper">
-                    <button class="toggle svg-wrap article-toggle" aria-label="{{ getString "show-content" }}">
-                      <span class="article-subhead toggle-subhead">{{{ subhead }}}</span>                    
-                      {{> svg/toggle-down }}
-                    </button>
+                {{#if securityTip}}
+                  {{> top-level/security-tips/security-tip-callout }}
+                {{/if}}
+                {{#if subhead}}
+                  <div class="toggle-parent inactive st-toggle-wrapper">
+                    <div class="toggle-info-wrapper">
+                      <button class="toggle svg-wrap article-toggle" aria-label="{{ getString "show-content" }}">
+                        <span class="article-subhead toggle-subhead">{{{ subhead }}}</span>                    
+                        {{> svg/toggle-down }}
+                      </button>
+                    </div>
+                    <div class="toggle-child">
+                      {{> top-level/security-tips/tip-content }}
+                    </div><!--closes toggle-child-->
                   </div>
-                  <div class="toggle-child">
-                    {{> top-level/security-tips/tip-content }}
-                    {{> top-level/security-tips/security-tip-callout }}
-                  </div><!--closes toggle-child-->
-                </div>
+                {{/if}}
               {{/each}}
             {{/if}}
-
             {{#if subhead}}
               <h3 class="article-subhead">{{{ subhead }}}</h3>
             {{/if}}
             {{> top-level/security-tips/tip-content }}
+      
             {{> top-level/security-tips/dos-and-donts }}
           {{/each}}
         </div>
