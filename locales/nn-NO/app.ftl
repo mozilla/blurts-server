@@ -220,6 +220,7 @@ fxa-pwt-summary-4 =
 fxa-pwt-summary-6 =
     Datalekkasjar aukar. Om din personlege informasjon vert avslørt i ein datalekkasje, 
     vil { -product-name } sende deg ei åtvaring - slik at du kan ta forholdsreglar og verne kontoane dine.
+fb-landing-headline = Er opplysningane dine kompromitterte i datalekkasjen { $breachName }?
 copyright = Delar av dette innhaldet er © 1999-{ $year } av einskilde mozilla.org-bidragsytarar.
 content-available = Innhaldet er tilgjengeleg under ein Creative Commons-lisens.
 # Alerts is a noun
@@ -330,6 +331,7 @@ new-breaches-found =
        *[other] FANN { $breachCount } NYE DATALEKKASJAR
     }
 get-alerted = Få melding om nye datalekkasjar.
+was-your-info-exposed = Er opplysningane dine kompromitterte i datalekkasjen { $breachName }?
 find-out-if = Finn ut om dine opplysningar vart eksponerte i denne datalekkasjen.
 no-other-breaches-found = Ingen andre datalekkasjar vart funne i dette grunnleggjande søket.
 all-breaches-headline = Alle datalekkasjar i { -product-name }
