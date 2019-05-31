@@ -2,6 +2,12 @@
   min-height: auto;
 }
 
+.articles .col-9 {
+  width: 100%;
+  max-width: 100%;
+  justify-content: center;
+}
+
 .security-tip-list-item {
   align-items: flex-start;
   margin-bottom: 1.75rem;
@@ -150,8 +156,14 @@ body {
 }
 
 .article-wrapper {
-  padding-top: 10rem;
+  padding-top: 12rem;
   padding-bottom: 0;
+}
+
+.article-wrapper,
+.st-intro-wrap {
+  width: 75%;
+  margin: auto;
 }
 
 .article-headline {
@@ -168,7 +180,7 @@ body {
   opacity: 0.9;
 }
 
-.article-paragraph a {
+a.st-copy-link {
   color: var(--blue3);
 }
 
@@ -176,7 +188,7 @@ body {
   color: var(--color);
 }
 
-.article-paragraph a:hover,
+a.st-copy-link:hover,
 a.st-link:hover {
   text-decoration: underline;
 }
@@ -270,29 +282,116 @@ a.st-link {
 .st-headline .bold {
   display: block;
   text-transform: uppercase;
+  font-size: 1.3rem;
 }
 
 .st-call-out {
   margin: calc(var(--padding) * 2) auto;
-  border-radius: var(--radius);
-  border: 1px solid var(--grey3);
-  padding: var(--padding);
+  border-radius: 0.7rem;
+  background: var(--monitorGradient);
+  padding: 2px;
+  box-shadow: 0 0 10px 1px rgba(205, 205, 212, 0.78);
+}
+
+.inset {
+  background-color: var(--bgLight);
+  border-radius: 0.575rem;
+  padding: calc(var(--padding) * 2);
 }
 
 /* password dos and don't list */
 
-.password-tip-list-wrapper {
-  display: none; /* figure out how to make this work this week */
-  border-radius: var(--radius);
-  border: 1px solid var(--borderColor);
+.pw-tip-item {
+  width: 100%;
+}
+
+.pw-tip-item.flx:nth-child(odd) {
+  background-color: rgba(32, 18, 58, 0.031);
+}
+
+.pw-do-hl,
+.pw-do {
+  border-right: 1px solid var(--grey2);
+}
+
+.pw-tip-headlines {
+  position: relative;
+}
+
+.pw-tip-headlines::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  display: block;
+  content: "";
+  background: var(--monitorGradient);
+}
+
+.pw-tip-headlines,
+.do-dont-hl {
+  width: 100%;
+}
+
+.do-dont-hl {
+  padding: 2rem 1rem;
+  flex: 1 1 50%;
+}
+
+.do-dont-hl h4 {
+  align-items: center;
+  font-size: 1.5rem;
+  position: relative;
+  color: var(--blue5);
+}
+
+.icon-dont::before {
+  background-image: url("/img/svg/x-close-red.svg");
+}
+
+.icon-do::before {
+  background-image: url("/img/svg/green-check.svg");
+}
+
+.icon-do::before,
+.icon-dont::before {
+  left: -2.5rem;
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  background-size: contain;
+  background-position: center center;
+  display: inline-block;
+  position: absolute;
+}
+
+.do-dont-wrap {
+  padding: var(--padding);
+  flex: 1 1 50%;
+}
+
+.do-dont {
+  width: 80%;
+  line-height: 150%;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color);
+}
+
+.password-tip-list {
+  flex-wrap: wrap;
+}
+
+.pw-tip-table {
+  border-radius: 0.7rem;
+  box-shadow: 0 0 10px 1px rgba(205, 205, 212, 0.78);
 }
 
 .password-tip-list-headline {
-  text-align: center;
-  padding: var(--padding) var(--padding) 0 var(--padding);
-  font-weight: 800;
-  color: var(--color);
-  letter-spacing: 1px;
+  padding: calc(var(--padding) * 2) var(--padding);
+  margin-bottom: 0;
+  font-size: 2.25rem;
 }
 
 .do-list-item,
@@ -315,32 +414,6 @@ a.st-link {
 .article-toggle:hover {
   background-color: var(--grey2);
   transition: background-color 0.15s ease-in-out;
-}
-
-li.do-list-item:first-of-type,
-li.dont-list-item:first-of-type {
-  text-align: center;
-  justify-content: center;
-  border-top: 1px solid var(--borderColor);
-  font-family: "FirefoxSharpSans", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-li.dont-list-item,
-li.do-list-item {
-  border-bottom: 1px solid #eee;
-}
-
-li.do-list-item:first-of-type {
-  border-bottom: 3px solid green;
-  border-right: 1px solid var(--borderColor);
-}
-
-li.dont-list-item:first-of-type {
-  border-bottom: 3px solid var(--alertRed);
-  background-color: var(--color);
-  color: white;
 }
 
 .article-toggle svg.toggle-down {
@@ -372,6 +445,28 @@ li.dont-list-item:first-of-type {
 }
 
 @media screen and (max-width: 800px) {
+  .pw-tip-headlines::after {
+    display: none;
+  }
+
+  .do-dont-wrap {
+    flex: 1 1 100% !important;
+    border: none;
+  }
+
+  .pw-tip-table {
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: none;
+  }
+
+  .pw-tip-item {
+    flex-direction: column;
+    margin-bottom: 3rem;
+    border-radius: 0.7rem;
+    overflow: hidden;
+    border: none !important;
+  }
+
   .security-tips-headline {
     font-size: var(--headline);
   }
@@ -379,10 +474,62 @@ li.dont-list-item:first-of-type {
   .security-tip-link {
     font-size: 1rem;
   }
+
+  .article-wrapper,
+  .st-intro-wrap {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .do-dont-hl-mobile {
+    position: relative;
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+    color: var(--blue5);
+  }
+
+  .do-dont-hl-mobile::before {
+    width: 1.5rem;
+    height: 1.5rem;
+    left: -2.15rem;
+  }
+
+  .do-dont-hl {
+    display: none;
+  }
+
+  .do-dont {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pw-do {
+    background-color: rgba(255, 255, 255, 1);
+  }
+
+  .pw-dont {
+    position: relative;
+    background-color: rgba(32, 18, 58, 0.05);
+  }
+
+  .pw-dont::before {
+    width: 1.25rem;
+    height: 1.25rem;
+    background-color: white;
+    display: block;
+    content: "";
+    position: absolute;
+    top: -0.75rem;
+    transform: rotate(45deg);
+  }
 }
 
 @media screen and (max-width: 600px) { /* some articles become toggled closed */
-  .st-intro {
+  .st-intro,
+  .article-list-item,
+  .article-paragraph {
     font-size: 1rem;
   }
 
@@ -393,11 +540,6 @@ li.dont-list-item:first-of-type {
 
   .article-headline {
     font-size: var(--headline);
-  }
-
-  .article-list-item,
-  .article-paragraph {
-    font-size: 1rem;
   }
 
   .drop-cap {
@@ -428,6 +570,10 @@ li.dont-list-item:first-of-type {
     border-radius: 0;
     padding: var(--margin) 0;
     margin: 1rem 0;
+  }
+
+  .st-icon {
+    display: none;
   }
 
   .st-next-steps .st-toggle-wrapper {
@@ -472,5 +618,17 @@ li.dont-list-item:first-of-type {
 
   .logo-title-wrapper .arrow-head-right {
     margin-left: 0;
+  }
+
+  .do-dont-wrap {
+    padding: calc(var(--padding) * 2) var(--margin);
+  }
+
+  .st-subhead {
+    padding: 1rem 0;
+  }
+
+  .st-call-out {
+    margin: calc(var(--padding) * 3) auto;
   }
 }
