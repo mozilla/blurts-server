@@ -142,30 +142,6 @@ function makeBreaches(breachArray, breachCardWrapper) {
       return false;
     });
 
-    const win = window;
-    const backToTopBar = document.getElementById("back-to-top-bar");
-    win.onscroll = function(e) {
-      if (win.pageYOffset < 400) {
-        if (backToTopBar.classList.contains("show-bar")) {
-          backToTopBar.classList.remove("show-bar");
-        }
-        return;
-      }
-      if ((this.oldScroll > this.scrollY + 50) && win.pageYOffset > 1000) {
-        if (!backToTopBar.classList.contains("show-bar") && !backToTopBar.classList.contains("to-top")) {
-          backToTopBar.classList.add("show-bar");
-        }
-      }
-      if (this.oldScroll < this.scrollY && backToTopBar.classList.contains("show-bar")) {
-        backToTopBar.classList.remove("show-bar");
-      }
-      this.oldScroll = this.scrollY;
-    };
-
-    const backToTopButton = document.getElementById("back-to-top");
-    backToTopButton.addEventListener("click", () => {
-      window.scrollTo(0, 0);
-    });
 
     const searchBreaches = (e) => {
       e.preventDefault();

@@ -136,20 +136,53 @@ function toggleArticles() {
   });
 }
 
-function toggleMobileFeatures() {
-  const windowWidth = window.innerWidth;
+function hideShowNavBars(win, navBar) {
+  win.onscroll = function(e) {
+    // catch a window that has resized from less than 600px
+    // to greater than 600px and unhide navigation.
+    if (win.innerWidth > 600) {
+      navBar.classList = ["show-nav-bars"];
+      return;
+    }
+
+    if (win.pageYOffset < 100) {
+      navBar.classList = ["show-nav-bars"];
+      return;
+    }
+
+    if (this.oldScroll < this.scrollY) {
+      navBar.classList = ["hide-nav-bars"];
+      this.oldScroll = this.scrollY;
+      return;
+    }
+
+    if (this.oldScroll > this.scrollY + 50) {
+      navBar.classList = ["show-nav-bars"];
+      this.oldScroll = this.scrollY;
+      return;
+    }
+    this.oldScroll = this.scrollY;
+  };
+}
+
+function toggleMobileFeatures(topNavBar) {
+  const win = window;
+  const windowWidth = win.innerWidth;
   if (windowWidth > 800) {
     const emailCards = document.querySelectorAll(".col-9.email-card:not(.zero-breaches)");
       emailCards.forEach(card => {
         card.classList.add("active");
       });
-      return;
     }
 
   const closeActiveEmailCards = document.querySelectorAll(".col-9.email-card.active");
     closeActiveEmailCards.forEach(card => {
       card.classList.remove("active");
     });
+
+    if (windowWidth < 600) {
+      hideShowNavBars(win, topNavBar);
+    }
 }
 
 function toggleHeaderStates(header, win) {
@@ -180,6 +213,7 @@ function styleActiveLink(locationHref) {
   document.addEventListener("touchstart", function(){}, true);
   const win = window;
   const header = document.getElementById("header");
+  const topNavigation = document.querySelector("#navigation-wrapper");
   win.addEventListener("pageshow", function() {
     const previousActiveLink = document.querySelector(".active-link");
     if (previousActiveLink) {
@@ -189,14 +223,14 @@ function styleActiveLink(locationHref) {
     if (win.location.search.includes("utm_") && win.history.replaceState) {
       win.history.replaceState({}, "", win.location.toString().replace(/[?&]utm_.*/g, ""));
     }
-    toggleMobileFeatures();
+    toggleMobileFeatures(topNavigation);
     toggleArticles();
     toggleHeaderStates(header, win);
     document.forms ? (restoreInputs(), addFormListeners()) : null;
   });
 
   win.addEventListener("resize", () => {
-    toggleMobileFeatures();
+    toggleMobileFeatures(topNavigation);
     toggleArticles();
   });
 

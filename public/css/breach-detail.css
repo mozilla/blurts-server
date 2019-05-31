@@ -134,10 +134,6 @@ main.breach-detail {
 }
 
 @media screen and (max-width: 600px) {
-  .col-8.breach-details {
-    margin-top: 2rem !important;
-  }
-
   .what-to-do-tips h2.section-headline-light {
     text-align: center;
     margin-left: auto;

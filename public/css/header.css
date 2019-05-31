@@ -6,12 +6,34 @@ header {
   background-color: var(--color);
   z-index: 2;
   box-shadow: 0 0 5px 0 #20123a1c;
-  transition: box-shadow 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 header.show-shadow {
   box-shadow: 2px 2px 10px rgba(24, 24, 24, 0.75);
-  transition: box-shadow 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.show-nav-bars {
+  transform: translateY(0);
+  -webkit-transform: translateY(0);
+  transform-origin: top;
+  opacity: 1;
+  max-height: 200px;
+  transition: all 0.3s ease;
+}
+
+.hide-nav-bars {
+  transform: translateY(-60px);
+  -webkit-transform: translateY(-60px);
+  transform-origin: top;
+  opacity: 0;
+  max-height: 0;
+  transition: all 0.3s ease;
+}
+
+.fxm-branding {
+  position: relative;
 }
 
 .fx-monitor {
@@ -130,22 +152,6 @@ nav {
   font-size: 1.1rem;
 }
 
-/* mobile-menu */
-.mobile-menu {
-  padding: 0 1rem;
-}
-
-.mobile-menu .nav-link {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  flex: 1 1 auto;
-}
-
-.mobile-menu .nav-link:hover {
-  background-color: var(--color);
-  transition: background-color 0.15s ease-in-out;
-}
-
 /* signed-in user avatar */
 .avatar-wrapper {
   border-radius: 50%;
@@ -255,9 +261,41 @@ nav {
   transition: all 0.15s ease;
 }
 
+.top-bar {
+  z-index: 1;
+  position: relative;
+  background-color: #1d1133;
+  padding: 1rem 1.75rem;
+  border-bottom: 1px solid #2b2156;
+  color: rgba(255, 255, 255, 1);
+  font-size: 16px;
+}
+
+.learn-more {
+  margin-left: 0.5rem;
+  color: rgba(255, 255, 255, 1);
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+.join-fx-wrap {
+  align-items: center;
+}
+
+.join-fx-img {
+  content: "";
+  background-image: url("/img/firefox-master-logo.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  min-width: 24px;
+  height: 24px;
+  margin: auto 16px auto auto;
+}
+
 @media screen and (max-width: 800px) {
-  .fx-monitor {
-    font-size: 1.4rem;
+  .top-bar {
+    font-size: 14px;
   }
 
   .desktop-menu .nav-link {
@@ -269,20 +307,114 @@ nav {
   }
 
   .mobile-nav {
+    visibility: visible;
     background-color: #1c1033;
     box-shadow: 0 2px 2px -1px #0202024d;
+    transition: all 0.2s ease;
+    padding: 0;
+    flex-wrap: wrap;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
   }
 
-  .mobile-menu a {
+  .mobile-menu a.nav-link {
     color: rgba(255, 255, 255, 0.9);
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    transition: all 0.15s ease-in-out;
+  }
+
+  .mobile-menu .nav-link:hover {
+    background-color: var(--color);
+    opacity: 1;
+    transition: all 0.15s ease-in-out;
+  }
+
+  .mobile-menu {
+    margin: auto;
+    border-radius: 0;
+    flex-direction: column;
+    flex-wrap: wrap;
+    visibility: hidden;
+    padding: 0 1.75rem;
+    max-height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--inkLight);
+    z-index: 0;
+    color: rgba(255, 255, 255, 0);
+    -webkit-user-select: none;
+    transition: all 0.25s ease;
+  }
+
+  .mobile-menu-open .mobile-menu {
+    top: 3rem;
+    max-height: 1000px;
+    visibility: visible;
+    color: rgba(255, 255, 255, 1);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    transition: all 0.15s ease;
+  }
+
+  .nav-link.drop-down-menu,
+  .mobile-menu-open .nav-link {
+    display: block;
+  }
+
+  .nav-link.drop-down-menu {
+    -webkit-user-select: none;
+    pointer-events: none;
+    padding: 1rem 2.75rem;
+    background-color: var(--inkLight);
+    width: 100%;
+    z-index: 1;
+    border-bottom: 1px solid var(--inkLight);
+    transition: border-bottom 0.15s ease;
+  }
+
+  .mobile-menu-open .drop-down-menu {
+    border-bottom: 1px solid var(--color);
+    transition: border-bottom 0.15s ease;
+  }
+
+  .mobile-menu-open svg.toggle-down {
+    transform: rotate(180deg);
+    transition: transform 0.15s ease;
+  }
+
+  .drop-down-menu svg.toggle-down {
+    opacity: 0.7;
+    right: 2.75rem;
+  }
+
+  .drop-down-menu .toggle-down path {
+    fill: rgba(255, 255, 255, 1);
+  }
+
+  .nav-link {
+    padding-left: 2.75rem;
+    padding-right: 2.75rem;
+    text-align: left;
+    width: 100%;
   }
 }
 
 @media screen and (max-width: 600px) {
   .fx-monitor {
     font-size: 1.25rem;
+  }
+
+  .drop-down-menu svg.toggle-down {
+    right: 2rem;
+  }
+
+  .top-bar {
+    text-align: left;
+    font-size: 12px;
   }
 
   .nav-user-email {
@@ -301,39 +433,8 @@ nav {
     padding: 0.75rem 1.35rem;
   }
 
-  .mobile-nav {
-    padding: 0;
-    flex-wrap: wrap;
-    flex-direction: column;
-    position: relative;
-    cursor: pointer;
-  }
-
   .mobile-menu {
-    margin: auto;
-    border-radius: 0;
-    flex-direction: column;
-    flex-wrap: wrap;
-    visibility: hidden;
-    padding: 0 1.5rem;
-    max-height: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: var(--inkLight);
-    z-index: 0;
-    color: rgba(255, 255, 255, 0);
-    -webkit-user-select: none;
-    transition: all 0.25s ease;
-  }
-
-  .mobile-menu-open .mobile-menu {
-    top: 3rem;
-    max-height: 1000px;
-    visibility: visible;
-    color: rgba(255, 255, 255, 1);
-    transition: all 0.15s ease;
+    padding: 1rem 0.75rem;
   }
 
   .nav-link.drop-down-menu,
@@ -341,44 +442,7 @@ nav {
     display: block;
   }
 
-  .nav-link.drop-down-menu,
-  .mobile-menu-open .mobile-menu {
-    padding: 1rem 1.75rem;
-  }
-
   .nav-link.drop-down-menu {
-    -webkit-user-select: none;
-    pointer-events: none;
-    background-color: var(--inkLight);
-    width: 100%;
-    z-index: 1;
-    border-bottom: 1px solid var(--inkLight);
-    transition: border-bottom 0.15s ease;
-  }
-
-  .drop-down-menu svg.toggle-down {
-    opacity: 0.7;
-    right: 2.35rem;
-  }
-
-  .mobile-menu-open .drop-down-menu {
-    border-bottom: 1px solid var(--color);
-    transition: border-bottom 0.15s ease;
-  }
-
-  .mobile-menu-open svg.toggle-down {
-    transform: rotate(180deg);
-    transition: transform 0.15s ease;
-  }
-
-  .drop-down-menu .toggle-down path {
-    fill: rgba(255, 255, 255, 1);
-  }
-
-  .nav-link {
-    padding-left: 1.75rem;
-    padding-right: 1.75rem;
-    text-align: left;
-    width: 100%;
+    padding: 1rem 1.75rem;
   }
 }
