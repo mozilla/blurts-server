@@ -304,6 +304,7 @@ appears-in-x-breaches =
     }
 see-if-breached = Sjå om du har vore involvert i ein datalekkasje.
 check-for-breaches = Sjå etter datalekkasjar
+find-out-what-hackers-know = Finnut kva hackerar allereie veit om deg. Lær deg korleis du kan vere eitt steg framom dei.
 search-for-your-email = Søk etter e-postadressa di i offentlege datalekkasjar som går tilbake til 2007.
 back-to-top = Tilbake til toppen
 add-new-email = Legg til ei ny e-postadresse
