@@ -254,7 +254,8 @@ breach-discovered = Oppdaga datalekkasjar:
 # Link title
 more-about-this-breach = Meir om denne datalekkasjen
 take-control = Ta tilbake kontrollen over personopplysningane dine.
-read-more-tips = Les fleire sikkerheitstips
+cant-stop-hackers = Du kan ikkje hindre hackerar i å hacke. Men du kan unngå dårlega vanar som gjer det lett for dei.
+read-more-tips = Her er fleire tryggingstips
 how-hackers-work = Forstå korleis hackarar jobbar
 monitor-your-online-accounts = Registrer deg for overvaking av datalekkasjar med ein { -brand-fxa }.
 stay-alert = Ver på vakt for nye datalekkasjar
@@ -334,6 +335,7 @@ new-breaches-found =
         [one] FANN { $breachCount } NY DATALEKKASJE
        *[other] FANN { $breachCount } NYE DATALEKKASJAR
     }
+account-not-required = Du treng ikkje å ha ein { -brand-name }-nettlesar for å bruke ein { -brand-fxa }. Ved å melde deg på kan du få informasjon om tenester frå { -brand-Mozilla }.
 get-alerted = Få melding om nye datalekkasjar.
 was-your-info-exposed = Er opplysningane dine kompromitterte i datalekkasjen { $breachName }?
 find-out-if = Finn ut om dine opplysningar vart eksponerte i denne datalekkasjen.
@@ -376,6 +378,7 @@ security-tips-headline = Tryggingstips for å verne deg mot hackarar
 steps-to-protect = Kva du kan gjere for å beskytte identiteten din på nettet
 alert-about-new-breaches = Varsle meg om nye datalekkasjar
 see-if-youve-been-part = Sjå om du har vore omfatta av ein datalekkasje på nettet.
+get-ongoing-breach-monitoring = Få kontinuerleg datalekkasjeovervaking av fleire e-postadresser.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Sjekk no
 # This string appears on breach detail pages and is followed by a list
