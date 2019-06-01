@@ -259,6 +259,7 @@ read-more-tips = Her er fleire tryggingstips
 how-hackers-work = Forstå korleis hackarar jobbar
 monitor-your-online-accounts = Registrer deg for overvaking av datalekkasjar med ein { -brand-fxa }.
 stay-alert = Ver på vakt for nye datalekkasjar
+if-your-info = Om din informasjon dukkar opp i ein ny datalekkasje, sender vi deg ei åtvaring.
 monitor-several-emails = Overvak fleire e-postadresser
 take-action = Beskytt kontoane dine aktivt
 keep-your-data-safe = Finn ut kva du må gjere for å beskytte dataa dine frå cyberkriminelle.
@@ -378,7 +379,7 @@ security-tips-headline = Tryggingstips for å verne deg mot hackarar
 steps-to-protect = Kva du kan gjere for å beskytte identiteten din på nettet
 alert-about-new-breaches = Varsle meg om nye datalekkasjar
 see-if-youve-been-part = Sjå om du har vore omfatta av ein datalekkasje på nettet.
-get-ongoing-breach-monitoring = Få kontinuerleg datalekkasjeovervaking av fleire e-postadresser.
+get-ongoing-breach-monitoring = Få løpande datalekkasjeovervaking av fleire e-postadresser.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Sjekk no
 # This string appears on breach detail pages and is followed by a list
@@ -396,3 +397,5 @@ signed-in-as = Innlogga som: { $userEmail }
 filter-by = Filtrer etter kategori:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Meny
+# Link title
+learn-more-link = Les meir.
