@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -356,3 +357,29 @@ create-free-account =
 get-your-report-and-sign-up = Отримайте свій звіт і підпишіться на отримання попереджень.
 # Link title
 frequently-asked-questions = Часті питання
+about-firefox-monitor = Про { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Налаштування
+# Link title.
+home = Домівка
+# Link title
+breaches = Витік даних
+# Link title
+security-tips = Поради щодо безпеки
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Відкрийте { -brand-fxa }
+breach-added = Повідомлення про витік даних:
+breach-discovered = Виявлено витік даних:
+# Link title
+more-about-this-breach = Докладніше про цей витік даних
+take-control = Відновіть контроль над особистими даними.
+cant-stop-hackers = Ви не можете зупинити хакерів. Але ви можете позбутися шкідливих звичок, які полегшують їхню роботу.
+read-more-tips = Прочитайте більше порад щодо безпеки
+how-hackers-work = Зрозумійте, як працюють хакери
+
+## What to do after data breach tips
+
+
+## Updated error messages
+
