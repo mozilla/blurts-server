@@ -69,6 +69,9 @@ pwt-summary-5 = To faktor-godkjenning krev tilleggsinformasjon (t.d. ein eingang
 pwt-headline-6 = Registrer deg for { -product-name-nowrap }-åtvaringar
 pwt-summary-6 = Nettstadlekkasjar aukar. Så snart ein ny lekkasje vert lagt til i databasen i vår, sender { -product-name-nowrap } deg ei åtvaring  — slik at du kan ta affære og beskytte kontoen din.
 landing-headline = Ditt vern mot hackarar startar her.
+landing-blurb =
+    Med { -product-name-nowrap } får du ei rekkje verktøy, slik at du kan beskytte dei personlege opplysningane dine. 
+    Finn ut kor mykje hackerane allereie veit om deg, og korleis du kan vere eitt steg framom dei.
 scan-label = Sjå om du har vore innblanda i ein datalekkasje.
 scan-placeholder = Skriv inn e-postadresse
 scan-privacy = E-postadressa di vert ikkje lagra.
