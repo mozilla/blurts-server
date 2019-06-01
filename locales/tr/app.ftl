@@ -356,7 +356,11 @@ read-more-tips = Daha dazla güvenlik ipucu
 how-hackers-work = Hacker’ların nasıl çalıştığını anlayın
 monitor-your-online-accounts = { -brand-fxa } ile ihlal uyarılarına kaydolun.
 stay-alert = Yeni ihlallere karşı tetikte kalın
+if-your-info = Bilgileriniz yeni bir veri ihlalinde karşımıza çıkarsa size bir uyarı göndereceğiz.
+search-all-emails = İhallere dahil olabilecek tüm e-posta adreslerinizi arayın ve yeni tehditler hakkında uyarı alın.
+monitor-several-emails = Birden fazla e-postayı izleyin
 take-action = Hesaplarınızı korumak için harekete geçin
+keep-your-data-safe = Verilerinizi siber suçlulardan korumak için neler yapmanız gerektiğini öğrenin.
 website-breach = Web sitesi ihlali
 sensitive-breach = Hassas web sitesi ihlali
 data-aggregator-breach = Veri toplayıcı ihlali
@@ -367,6 +371,7 @@ sensitive-breach-plural = Hassas ihlaller
 data-aggregator-breach-plural = Veri toplayıcı ihlalleri
 unverified-breach-plural = Doğrulanmamış ihlaller
 spam-list-breach-plural = Spam listesi ihlalleri
+what-data = Ele geçirilen veriler:
 about-fxm-headline = { -product-name } hakkında
 # How Firefox Monitor works
 how-fxm-works = { -product-name } nasıl çalışır?
@@ -383,19 +388,41 @@ make-new-pw-unique = Yeni parolanız eskisinden ve tüm parolalarınızdan farkl
 strength-of-your-pw = Parolalarınızın kalitesi, internetteki güvenliğinizi doğrudan etkiler.
 create-strong-passwords = Güçlü parolalar nasıl oluşturulur?
 stop-reusing-pw = Aynı parolaları kullanmayın
+create-unique-pw = Benzersiz parolalar oluşturun ve bunları parola yöneticisi gibi güvenli bir yerde saklayın.
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Bilinen { $breachCount } ihlalde yer alıyor.
+       *[other] Bilinen { $breachCount } ihlalde yer alıyor.
+    }
+see-if-breached = Çevrimiçi veri ihlallerinde verilerinizin çalınmış olabilir mi?
+check-for-breaches = İhlalleri kontrol et
+find-out-what-hackers-know = Hacker’ların sizin hakkınızda neler bildiklerini öğrenin, onların bir adım önüne geçin.
+search-for-your-email = 2007’ye uzanan bilindik veri ihlallerinde e-posta adresinizi arayın.
+back-to-top = Başa dön
+stop-monitoring-this = Bu e-postayı izlemeyi durdur.
 resend-verification = Doğrulama e-postasını yeniden gönder
 add-new-email = Yeni e-posta adresi ekle
 send-verification = Doğrulama bağlantısını gönder
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = İletişim
 breach-summary = İhlal özeti
 show-breaches-for-this-email = Bu e-postayı içeren tüm ihlalleri göster.
 link-change-primary = Ana e-posta adresini değiştir
 manage-email-addresses = E-posta adreslerini yönet
+latest-breach-link = Bu ihlale dahil olup olmadığınızı öğrenin
 welcome-back = Yeniden hoş geldin { $userName }!
 welcome-user = Hoş geldin { $userName }!
 breach-alert-subject = { -product-name } yeni bir veri ihlalinde e-posta adresinizi tespit etti.
 your-info-was-discovered-headline = Bilgileriniz yeni bir veri ihlalinde tespit edildi.
 what-to-do-after-breach = Veri ihlalinden sonra ne yapılmalı?
 ba-next-step-1 = Parolanızı güçlü ve benzersiz bir parolayla değiştirin.
+faq2 = Bu ihlali bana bildirmeniz neden bu kadar uzun sürdü?
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } YENİ İHLAL BULUNDU
@@ -416,7 +443,37 @@ error-bot-headline = Arama geçici olarak kullanılamıyor
 error-csrf-headline = Oturum zaman aşımına uğradı
 login-link-pre = Hesabınız var var?
 login-link = Giriş yap
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] e-posta adresi izleniyor
+       *[other] e-posta adresi izleniyor
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] veri ihlalinde bilgileriniz ele geçirilmiş
+       *[other] veri ihlalinde bilgileriniz ele geçirilmiş
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] parolanız ihlallerde ele geçirilmiş
+       *[other] parolanız ihlallerde ele geçirilmiş
+    }
+# Button
+see-additional-breaches = Diğer ihlallere bakın
 email-verification-required = E-posta doğrulaması gerekiyor
+see-if-youve-been-part = Çevrimiçi veri ihlallerinde verilerinizin çalınmış olabilir mi?
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Ek bilgiler:
 # Title
 email-addresses-title = E-posta adresi
 # Title appearing on the Preferences dashboard. 
@@ -426,3 +483,5 @@ monitor-preferences = { -product-short-name } tercihleri
 filter-by = Kategoriye göre filtrele:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menü
+# Link title
+learn-more-link = Daha fazla bilgi alın.
