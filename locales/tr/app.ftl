@@ -401,6 +401,7 @@ check-for-breaches = İhlalleri kontrol et
 find-out-what-hackers-know = Hacker’ların sizin hakkınızda neler bildiklerini öğrenin, onların bir adım önüne geçin.
 search-for-your-email = 2007’ye uzanan bilindik veri ihlallerinde e-posta adresinizi arayın.
 back-to-top = Başa dön
+comm-opt-1 = Tüm ihlal uyarılarını { $primaryEmail } adresine gönder.
 stop-monitoring-this = Bu e-postayı izlemeyi durdur.
 resend-verification = Doğrulama e-postasını yeniden gönder
 add-new-email = Yeni e-posta adresi ekle
@@ -414,6 +415,7 @@ global-communication = İletişim
 breach-summary = İhlal özeti
 show-breaches-for-this-email = Bu e-postayı içeren tüm ihlalleri göster.
 link-change-primary = Ana e-posta adresini değiştir
+remove-fxm = { -product-name }’ü kaldır
 manage-email-addresses = E-posta adreslerini yönet
 latest-breach-link = Bu ihlale dahil olup olmadığınızı öğrenin
 welcome-back = Yeniden hoş geldin { $userName }!
@@ -428,6 +430,7 @@ new-breaches-found =
         [one] { $breachCount } YENİ İHLAL BULUNDU
        *[other] { $breachCount } YENİ İHLAL BULUNDU
     }
+account-not-required = { -brand-fxa } için { -brand-name } tarayıcısı gerekmez. Size { -brand-Mozilla } hizmetleri hakkında bilgi gönderebiliriz.
 get-alerted = Yeni ihlallerden haberdar olun.
 no-other-breaches-found = Temel aramada başka bir ihlal bulunamadı.
 no-results-blurb = Üzgünüz, bu ihlal veritabanımızda yok.
@@ -441,6 +444,7 @@ all-breaches = Tüm ihlaller
 
 error-bot-headline = Arama geçici olarak kullanılamıyor
 error-csrf-headline = Oturum zaman aşımına uğradı
+error-csrf-blurb = Tarayıcınızın geri düğmesine tıklayın, sayfayı tazeleyin ve tekrar deneyin.
 login-link-pre = Hesabınız var var?
 login-link = Giriş yap
 # This string is displayed under a large numeral that indicates the total number
@@ -483,5 +487,6 @@ monitor-preferences = { -product-short-name } tercihleri
 filter-by = Kategoriye göre filtrele:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menü
+to-affected-email = İhlal uyarılarını etkilenen e-posta adresine gönder
 # Link title
 learn-more-link = Daha fazla bilgi alın.
