@@ -249,6 +249,8 @@ find-out-what-hackers-know = ハッカーが既にあなたについて知って
 search-for-your-email = 2007 年までさかのぼって、メールアドレスがデータ侵害を受けているか検索します。
 back-to-top = トップに戻る
 resend-verification = 認証メールを再送する
+send-verification = 認証リンクを送信する
+manage-email-addresses = メールアドレスの管理
 latest-breach-link = この侵害を受けているか確認する
 what-to-do-after-breach = データ侵害があった後にするべきこと:
 account-not-required = { -brand-name } ブラウザーは { -brand-fxa }には必要ありません。{ -brand-Mozilla } サービスについての情報を受け取るでしょう。
@@ -266,3 +268,5 @@ additional-information-including = 侵害を受けたその他の情報:
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview = { $breachDate }に、{ $breachTitle } は、データ侵害にさらされました。この侵害が発見され、確認されたため、{ $addedDate }にデータベースに追加されました。
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = { -product-short-name } の設定
