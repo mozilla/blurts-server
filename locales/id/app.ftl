@@ -352,7 +352,7 @@ take-control = Ambil alih kendali data pribadi Anda.
 cant-stop-hackers = Anda tidak dapat menghentikan peretas dari peretasan. Tetapi Anda dapat menghindari kebiasaan buruk yang membuat pekerjaan mereka menjadi mudah.
 read-more-tips = Baca Lebih Lanjut Tips Keamanan
 how-hackers-work = Memahami bagaimana para peretas bekerja
-monitor-your-online-accounts = Mendaftar untuk pemantauan pembobolan dengan { -brand-fxa }.
+monitor-your-online-accounts = Daftar untuk memantau pelanggaran data dengan { -brand-fxa }.
 stay-alert = Tetap waspada terhadap pembobolan baru
 if-your-info = Jika informasi Anda muncul dalam pembobolan data baru, kami akan mengirimkan peringatan kepada Anda.
 search-all-emails = Cari semua alamat surel Anda untuk pembobolan dan dapatkan peringatan tentang ancaman terbaru.
@@ -398,6 +398,7 @@ create-unique-pw = Buat kata sandi unik dan simpan di tempat yang aman, seperti 
 five-myths = 5 mitos tentang pengelola kata sandi
 feat-security-tips = Tips keamanan untuk melindungi akun Anda
 feat-sensitive = Pencarian lanjutan dalam pembobolan sensitif
+sign-up-for-fxa = Daftar { -brand-fxa }
 back-to-top = Kembali ke Atas
 comm-opt-1 = Kirim semua peringatan pembobolan ke { $primaryEmail }.
 resend-verification = Kirim ulang verifikasi surel
@@ -412,6 +413,7 @@ global-communication = Komunikasi Global
 link-change-primary = Ubah Alamat Surel Utama
 manage-email-addresses = Kelola Alamat Surel
 welcome-user = Selamat datang, { $userName }!
+no-results-blurb = Maaf, kebocoran tersebut tidak ada dalam basis data kami.
 
 ## Updated error messages
 
