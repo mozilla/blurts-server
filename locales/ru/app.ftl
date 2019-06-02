@@ -621,3 +621,7 @@ filter-by = Фильтр по категориям:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Меню
 to-affected-email = Отправлять оповещения об утечках на затронутые ими адреса электронной почты
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Есть способ защитить вашу приватность. Присоединяйтесь к { -brand-name }.
+# Link title
+learn-more-link = Подробнее.
