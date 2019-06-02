@@ -343,8 +343,8 @@ fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Buka navigasi { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
-latest-breach = PEMBOBOLAN TERBARU TELAH DITAMBAHKAN
-breach-added = Pembobolan yang dilaporkan:
+latest-breach = KEBOCORAN TERBARU TELAH DITAMBAHKAN
+breach-added = Pelaporan kebocoran:
 breach-discovered = Pembobolan yang ditemukan:
 # Link title
 more-about-this-breach = Lebih lanjut tentang pembobolan ini
@@ -399,6 +399,7 @@ five-myths = 5 mitos tentang pengelola kata sandi
 feat-security-tips = Tips keamanan untuk melindungi akun Anda
 feat-sensitive = Pencarian lanjutan dalam pembobolan sensitif
 sign-up-for-fxa = Daftar { -brand-fxa }
+check-for-breaches = Periksa Pelanggaran Data
 back-to-top = Kembali ke Atas
 comm-opt-1 = Kirim semua peringatan pembobolan ke { $primaryEmail }.
 resend-verification = Kirim ulang verifikasi surel
