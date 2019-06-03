@@ -173,6 +173,7 @@ function toggleMobileFeatures(topNavBar) {
       emailCards.forEach(card => {
         card.classList.add("active");
       });
+      return;
     }
 
   const closeActiveEmailCards = document.querySelectorAll(".col-9.email-card.active");
