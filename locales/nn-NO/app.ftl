@@ -312,6 +312,9 @@ check-for-breaches = Sjå etter datalekkasjar
 find-out-what-hackers-know = Finnut kva hackerar allereie veit om deg. Lær deg korleis du kan vere eitt steg framom dei.
 search-for-your-email = Søk etter e-postadressa di i offentlege datalekkasjar som går tilbake til 2007.
 back-to-top = Tilbake til toppen
+comm-opt-1 = Send åtvaringar om datalekkasjar til { $primaryEmail }.
+stop-monitoring-this = Slutt å overvake denne e-postadressa.
+resend-verification = Send stadfestings e-posten på nytt
 add-new-email = Legg til ei ny e-postadresse
 send-verification = Send stadfestingslenke
 # This string is a header on the user preferences page and
@@ -349,8 +352,25 @@ all-breaches = Alle datalekkasjar
 
 ## Updated error messages
 
+error-csrf-headline = Tidsavbrot i økta
 login-link-pre = Har du ein konto?
 login-link = Logg inn
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] E-postadresser som er overvaka
+       *[other] E-postadresser som er overvaka
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] Dattalekkasje som har komprommitert opplysningane dine
+       *[other] Dattalekkasjar som har komprommitert opplysningane dine
+    }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
 # your localization, because it would result in the number showing twice.
