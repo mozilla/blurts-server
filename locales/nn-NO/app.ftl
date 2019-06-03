@@ -398,6 +398,6 @@ filter-by = Filtrer etter kategori:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Meny
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
-join-firefox = Det finst ein måte å ta vare på personvernet ditt. Ver med { -brand-name }, på ferda.
+join-firefox = Det finst ein måte å ta vare på personvernet ditt. Ver med { -brand-name } på ferda.
 # Link title
 learn-more-link = Les meir.
