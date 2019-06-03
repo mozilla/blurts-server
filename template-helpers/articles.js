@@ -33,7 +33,7 @@ const articleCopy = {
       {
         subhead: "What makes a password easy to guess.",
         paragraphs: [
-          "If hackers can get a list of email addresses from a data breach, they already have a good start. All they have to do is pick their website of choice and try these emails with the most popular passwords. Chances are, they’ll be able to get into quite a few accounts. So don’t use any of these <a href='https://www.teamsid.com/splashdatas-top-100-worst-passwords-of-2018/' class='worst-passwords' rel='noopener noreferrer'>100 Worst Passwords of 2018.</a>",
+          "If hackers can get a list of email addresses from a data breach, they already have a good start. All they have to do is pick their website of choice and try these emails with the most popular passwords. Chances are, they’ll be able to get into quite a few accounts. So don’t use any of these <a class='st-copy-link' href='https://www.teamsid.com/splashdatas-top-100-worst-passwords-of-2018/' class='worst-passwords' rel='noopener noreferrer'>100 Worst Passwords of 2018.</a>",
         ],
         list: [
           "123456 and password are the most commonly used passwords. Don’t use them.",
@@ -122,6 +122,29 @@ const articleCopy = {
             ],
           },
           {
+            subhead: "Certain words should be avoided in all passwords.",
+            paragraphs: [
+              "Many people use familiar people, places, or things in passwords because it makes their passwords easy to remember. This also makes your passwords easy for hackers to guess.",
+              "According to a study conducted by Google, <span class='demi'>passwords that contain the following information are considered insecure because they’re easy to figure out.</span> You can find much of this info after reviewing someone’s social media profiles.",
+            ],
+            list: [
+              "Pet names",
+              "A notable date, such as a wedding anniversary",
+              "A family member’s birthday",
+              "Your child’s name",
+              "Another family member’s name",
+              "Your birthplace",
+              "A favorite holiday",
+              "Something related to your favorite sports team",
+              "The name of a significant other",
+              "The word “Password”",
+            ],
+            securityTip: {
+              tipHeadline: "<span class='bold'>Security tip:</span> Steer clear of the 100 most-used passwords.",
+              tipSubhead: "Every year, SplashData evaluates millions of leaked passwords and compiles the <a class='st-copy-link' target='_blank' rel='noopener noreferer' href='https://www.teamsid.com/splashdatas-top-100-worst-passwords-of-2018/'>100 most common ones.</a> The most recent list includes password, 123456, and other passwords you shouldn’t use. ",
+            },
+          },
+          {
             subhead: "Use different passwords for every account.",
             paragraphs: [
               "To keep your accounts as secure as possible, it’s best that every single one has a unique password. If one account gets breached, then hackers can’t use those login credentials to gain access to other accounts.",
@@ -141,7 +164,7 @@ const articleCopy = {
               paragraphs: [
                 "Many websites offer two-factor authentication, also known as 2FA or multi-factor authentication. On top of your username and password, 2FA requires another piece of information to verify yourself. So, even if someone has your password, they can’t get in.",
                 "Withdrawing money from an ATM is an example of 2FA. It requires your PIN code and your bank card. You need these two pieces to complete the transaction.",
-                "Many websites support 2FA, including Google and Amazon. The site will text you a code to your phone to enter after your password. YubiKeys are USB ports that verify your accounts. Security apps like DUO allow you to verify your accounts through your phone.",
+                "<a class='st-copy-link' target='_blank' rel='noopener noreferer' href='https://twofactorauth.org/'>Websites that support 2FA</a> include Google and Amazon. When you have 2FA enabled, the site will text you a code to enter after your password. Other forms of 2FA include YubiKeys USB ports and security apps like DUO. ",
                 "When you set up 2FA, many sites will give you a list of backup codes to verify your account. A password manager is a great place to store these codes.",
               ],
             },
@@ -150,27 +173,39 @@ const articleCopy = {
         {
           passwordDosAndDonts: {
           listHeadline: "Password do’s and don’ts",
-          doList: [
-            "Do's",
-            "Do combine two or more unrelated words. Change letters to numbers or special characters.",
-            "Do make your passwords at least 8 characters long. Aim for 12-15 characters.",
-            "Do use a combination of upper- and lower-case letters, numbers, and symbols.",
-            "Do include unusual words only you would know. It should seem nonsensical to other people.",
-            "Do keep your passwords protected and safe, like encrypted in a password manager.",
-            "Do spread various numbers and characters throughout your password.",
-            "Do create unique and complex passwords for every site.",
-            "Do use an extra layer of security with two-factor authentication (2FA).",
-          ],
-          dontList: [
-            "Dont's",
-            "Don’t use the word “password,” or any combination of it. “P@ssword!” is just as easy for hackers to guess.",
-            "Use short, one-word passwords, like sunshine, monkey, or football.",
-            "Don’t place special characters (@, !, 0, etc.) only at the beginning or the end.",
-            "Don’t include personal information like your birthdate, address, or family members’ names.",
-            "Don’t share your passwords. Don’t put them on a piece of paper stuck to your computer.",
-            "Don’t use common patterns like 111111, abc123, or 654321.",
-            "Don’t use the same password everywhere.",
-            "Don’t think a weaker password is safer because you have 2FA.",
+          doDontList : [
+            {
+              do: "Do combine two or more unrelated words. Change letters to numbers or special characters.",
+              dont: "Don’t use the word “password,” or any combination of it. “P@ssword!” is just as easy for hackers to guess.",
+            },
+            {
+              do: "Do make your passwords at least 8 characters long. Aim for 12-15 characters.",
+              dont: "Use short, one-word passwords, like sunshine, monkey, or football.",
+            },
+            {
+              do: "Do use a combination of upper- and lower-case letters, numbers, and symbols.",
+              dont: "Don’t place special characters (@, !, 0, etc.) only at the beginning or the end.",
+            },
+            {
+              do: "Do include unusual words only you would know. It should seem nonsensical to other people.",
+              dont: "Don’t include personal information like your birthdate, address, or family members’ names.",
+            },
+            {
+              do: "Do keep your passwords protected and safe, like encrypted in a password manager.",
+              dont: "Don’t share your passwords. Don’t put them on a piece of paper stuck to your computer.",
+            },
+            {
+              do: "Do spread various numbers and characters throughout your password.",
+              dont: "Don’t use common patterns like 111111, abc123, or 654321.",
+            },
+            {
+              do: "Do create unique and complex passwords for every site.",
+              dont:  "Don’t use the same password everywhere.",
+            },
+            {
+              do: "Do use an extra layer of security with two-factor authentication (2FA).",
+              dont: "Don’t think a weaker password is safer because you have 2FA.",
+            },
           ],
         },
       },
@@ -186,7 +221,7 @@ const articleCopy = {
       {
         toggles: [
           {
-            subhead: "Be wary of public wifi networks. ",
+            subhead: "Be wary of public Wi-Fi networks.",
             paragraphs: [
               "You can get Wi-Fi almost anywhere. But these open networks are the most vulnerable and tend to be the least secure. This includes the free Wi-Fi at restaurants, libraries, airports, and other public spaces. If you can avoid it, don’t use public Wi-Fi. Most importantly, don’t use these networks to log in to financial sites or shop online. It’s easy for anyone to see what you’re doing.",
               "Instead, we recommend using a Virtual Private Network (VPN), which lets you use public Wi-Fi more securely and keeps your online behavior private. A VPN routes your connection through a secure server that encrypts your data before you land on a web page. ",
@@ -197,15 +232,19 @@ const articleCopy = {
             paragraphs: [
               "Updating software on your computer or phone can seem like a pain, but it’s a crucial step to keeping devices safe. These updates fix bugs, software vulnerabilities, and security problems. Regularly updating your smartphone apps and operating systems makes your devices more secure.",
             ],
-            securityTip: {
-              tipHeadline: "Tips for keeping all your online accounts secure:",
-              tipList : [
+            listHeadline: "Tips for keeping all your online accounts secure:",
+            list: [
               "Use unique, strong passwords for every account",
               "Use a password manager to remember all your passwords for you",
               "Turn on two-factor authentication for an extra layer of security",
               "Use a VPN (Virtual Private Network) when using public Wi-Fi",
               "Update to the latest version of all software and apps",
-              ],
+            ],
+          },
+          {
+            securityTip: {
+              tipHeadline: "<span class='bold'>Security tip:</span> Turn on automatic updates.",
+              tipSubhead: "You can set your computer, browser, apps, and phone to update automatically as soon as new updates become available. Set it and forget it!",
             },
           },
           {
@@ -228,7 +267,7 @@ const articleCopy = {
           {
             subhead: "Be selective about who you give your email address to.",
             paragraphs: [
-              "The more online accounts you create, the greater the risk is that you’ll be involved in a data breach. Many companies, services, apps, and websites ask for your email. But it’s not always required. Here are some ways to avoid giving out your email address:",
+              "The more online accounts you create, the greater the risk that you’ll be involved in a data breach. Many companies, services, apps, and websites ask for your email. But it’s not always required. Here are some ways to avoid giving out your email address:",
             ],
             list: [
               "Don’t create an account if it’s not required. For example, many online shopping portals allow you to check out as a guest.",
@@ -239,8 +278,8 @@ const articleCopy = {
           {
             subhead: "Use unique, strong passwords for every single account.",
             paragraphs: [
-              "One of the best ways to protect yourself online is to use different passwords across all your online accounts. This way hackers won’t have the keys to your entire digital life if they get their hands on that one password you use everywhere.",
-              "Your passwords also need to be strong. Single words (like sunshine, monkey, or football) make for weak passwords. So do these 100 most-commonly used passwords, which include password and 123456. Avoid pop-culture references, sports teams, and personal info... Do not use your address, birthday, names of family members, or pets’ names. The longer and more unique your passwords are, the harder they will be for hackers to guess.",
+              "One of the best ways to protect yourself online is to use different passwords across all your online accounts. This way, hackers won’t have the keys to your entire digital life if they get their hands on that one password you use everywhere.",
+              "Your passwords also need to be strong. Single words (like sunshine, monkey, or football) make for weak passwords. So do these 100 most-commonly used passwords, which include password and 123456. Avoid pop-culture references, sports teams, and personal info. Do not use your address, birthday, names of family members, or pets’ names. The longer and more unique your passwords are, the harder they will be for hackers to crack.",
             ],
             securityTip: {
               tipHeadline: "<span class='bold'>Security tip:</span> How to create strong passwords.",
@@ -251,11 +290,11 @@ const articleCopy = {
             subhead: "Remember all your passwords with a password manager.",
             paragraphs: [
               "Ever forgotten your password? It happens all the time. The average person has 90 online accounts. And we’re being asked to create new ones all the time.",
-              "The good news is you don’t have to recall all your passwords from memory. Password managers are secure, easy-to-use applications that do the remembering for you. They even fill your passwords into websites and apps when you need to log in. All you need to remember is a single password — the one you use to unlock your password manager. They can even generate hard-to-guess passwords to help make your accounts more secure. All your data is encrypted, making password managers pretty secure - even if they get hacked.",
+              "The good news is you don’t have to recall all your passwords from memory. Password managers are secure, easy-to-use applications that do the remembering for you. They even fill your passwords into websites and apps when you need to log in. All you need to remember is a single password — the one you use to unlock your password manager. They can even generate hard-to-guess passwords to help make your accounts more secure. All your data is encrypted, making password managers pretty secure — even if they get hacked.",
               ],
             securityTip: {
-              tipHeadline: "<span class='bold'>Security tip:</span> These are the best password managers. ",
-              tipSubhead: "Firefox Monitor recommends 1Password, LastPass, Dashlane, and Bitwarden for security and ease of use.",
+              tipHeadline: "<span class='bold'>Security tip:</span>",
+              tipSubhead: "Firefox recommends 1Password, LastPass, Dashlane, and Bitwarden for security and ease of use.",
             },
           },
         ],
@@ -301,14 +340,14 @@ const articleCopy = {
             paragraphs: [
               "No privacy tool can completely guarantee your online safety. Even the most elaborate lock can be broken into. Yet we still lock our doors to our houses and cars. ",
               "The alternative to using a password manager is to rely on your own memory to remember all your credentials. This inevitably leads to recycling passwords or using variations — a bad habit that hackers love.",
-              "A password managers can be such an effective security tool because it helps us improve bad habits. With a password manager installed on your computer and phone, it’s a lot easier to take your logins everywhere so you can use unique, strong passwords on every account.",
+              "Password managers can be such an effective security tool because they help us improve bad habits. With a password manager installed on your computer and phone, it’s a lot easier to take your logins everywhere so you can use unique, strong passwords on every account.",
             ],
           },
           {
             subhead: "<span class='myth'>Myth 3:</span> Storing all my passwords in one place makes them vulnerable to hackers.",
             paragraphs: [
               "Password managers don’t store all your credentials together in one place. Any data you store in a password manager — passwords, logins, security questions, and other sensitive info — is securely encrypted. Even if the password manager gets hacked, cyber criminals would not be able to see your logins.",
-              "The only way to access your data is with a single master password that only you know. You use this password to unlock the manager on your computer, phone, or other devices. Once it’s unlocked, a password manager can fill in your logins to websites and apps for you.",
+              "The only way to access your data is with a single master password that only you know. You use this password to unlock the manager on your computer, phone, or other devices. Once it’s unlocked, a password manager can fill in your logins to websites and apps.",
             ],
           },
           {
@@ -452,7 +491,7 @@ function articleLinks(args) {
       stringId: "take-further-steps",
       class: "next-steps",
       pathToPartial: "svg/icon-trackers",
-      subhead: "If financial data is exposed in a breach, identity theft is a potential risk.",
+      subhead: "Find out how to mitigate the risks of identity theft to prevent financial loss.",
     },
   ];
 
