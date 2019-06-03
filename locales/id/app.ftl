@@ -401,7 +401,7 @@ feat-sensitive = Pencarian lanjutan dalam pembobolan sensitif
 sign-up-for-fxa = Daftar { -brand-fxa }
 check-for-breaches = Periksa Pelanggaran Data
 back-to-top = Kembali ke Atas
-comm-opt-1 = Kirim semua peringatan pembobolan ke { $primaryEmail }.
+comm-opt-1 = Kirim semua peringatan kebocoran ke { $primaryEmail }.
 resend-verification = Kirim ulang verifikasi surel
 add-new-email = Tambah alamat surel baru
 send-verification = Kirim Tautan Verifikasi
@@ -427,8 +427,12 @@ what-is-a-website-breach = Apa itu pembobolan situs web?
 security-tips-headline = Kiat keamanan untuk melindungi diri Anda dari peretas
 # Title
 email-addresses-title = Alamat Surel
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Masuk sebagai: { $userEmail }
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
+to-affected-email = Kirim peringatan kebocoran ke alamat surel terkait
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
 join-firefox = Ada cara untuk melindungi privasi Anda. Bergabunglah dengan { -brand-name }.
 # Link title
