@@ -1,6 +1,12 @@
-main.all-breaches-main {
+.all-breaches-main {
   min-height: auto;
   color: var(--grey1);
+}
+
+span.x-close-bg,
+svg.x-close,
+.svg.x-close path {
+  pointer-events: none;
 }
 
 .hide-breaches,
@@ -28,7 +34,7 @@ main.all-breaches-main {
   flex-direction: column;
 }
 
-button#show-all-breaches {
+button.fuzzy-find-show-breaches {
   position: absolute;
   right: 1rem;
   bottom: 0;
@@ -43,6 +49,12 @@ button#show-all-breaches {
   padding: 0;
   opacity: 0;
   transition: opacity 0.15s ease-in-out;
+}
+
+.show-all-breaches.violet-btn {
+  align-items: center;
+  max-width: 260px;
+  margin: var(--padding) auto calc(var(--padding) * 3) auto;
 }
 
 #no-results-blurb {
@@ -85,7 +97,7 @@ button#show-all-breaches {
   transition: all 0.15s ease-in-out;
 }
 
-button#show-all-breaches.show {
+button.fuzzy-find-show-breaches.show {
   opacity: 1;
   transition: opacity 0.15s ease-in-out;
 }
@@ -221,7 +233,7 @@ input#fuzzy-find-input {
 @media screen and (max-width: 1000px) {
   .ab.breach-card.three-up {
     flex: 1 1 45%;
-    max-width: 460px;
+    max-width: 45%;
   }
 }
 

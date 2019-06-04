@@ -1,18 +1,16 @@
 "use strict";
 
-const { getBreachCategory, localizeAndPrioritizeDataClasses } = require("./breach-detail");
+const { localizeAndPrioritizeDataClasses } = require("./breach-detail");
 const { prettyDate, localeString, localizedBreachDataClasses } = require("./hbs-helpers");
 const { LocaleUtils } = require("./../locale-utils");
 const { filterBreaches } = require("./../hibp");
 
 function getLocalizedBreachCardStrings(locales) {
-  // casing to reflect HIBP
   return {
-    "AddedDate": LocaleUtils.fluentFormat(locales, "breach-added"),
-    "BreachDate": LocaleUtils.fluentFormat(locales, "breach-discovered"),
-    "CompromisedAccounts": LocaleUtils.fluentFormat(locales, "compromised-accounts"),
-    "CompromisedData": LocaleUtils.fluentFormat(locales, "compromised-data"),
-    "MoreInfoLink": LocaleUtils.fluentFormat(locales, "more-about-this-breach"),
+    BreachReported : LocaleUtils.fluentFormat(locales, "breach-added"),
+    CompromisedAccounts: LocaleUtils.fluentFormat(locales, "compromised-accounts"),
+    CompromisedData: LocaleUtils.fluentFormat(locales, "compromised-data"),
+    MoreInfoLink: LocaleUtils.fluentFormat(locales, "more-about-this-breach"),
   };
 }
 
@@ -32,69 +30,27 @@ function dataClassesforCards(breach, locales) {
   return localizedBreachDataClasses(topTwoClasses.slice(0, 2), locales);
 }
 
-function makeBreachCards(breaches, locales, filter=true) {
-  const breachCardStrings = getLocalizedBreachCardStrings(locales);
+function sortBreaches(breaches) {
+  breaches = breaches.sort((a,b) => {
+    const oldestBreach = new Date(a.BreachDate);
+    const newestBreach = new Date(b.BreachDate);
+    return newestBreach-oldestBreach;
+  });
+  return breaches;
+}
+
+function makeBreachCards(breaches, locales) {
   const formattedBreaches = [];
+  const breachCardStrings = getLocalizedBreachCardStrings(locales);
+  breaches = JSON.parse(JSON.stringify(breaches));
 
-
-  if (filter && breaches.length > 1) {
-    breaches.sort((a,b) => {
-      const oldestBreach = new Date(a.BreachDate);
-      const newestBreach = new Date(b.BreachDate);
-      return newestBreach-oldestBreach;
-    });
-  }
-
-  for (const breach of breaches) {
-    const breachCard = JSON.parse(JSON.stringify(breach));
-    const breachCategory = getBreachCategory(breach);
-
-    breachCard.AddedDate = prettyDate(breach.AddedDate, locales);
-    breachCard.PwnCount = localeString(breach.PwnCount,locales);
-    breachCard.DataClasses = dataClassesforCards(breach, locales);
-
-    breachCard.Category = breachCategory; // "unverified-breach", etc. for styling cards
-    breachCard.String = breachCardStrings; // "Compromised Data: , Compromised Accounts: ..."
+  for (const breachCard of breaches) {
+    getLocalizedBreachValues(locales, breachCard);
+    breachCard.LocalizedBreachCardStrings = breachCardStrings; // "Compromised Data: , Compromised Accounts: ..."
     formattedBreaches.push(breachCard);
   }
   return formattedBreaches;
 }
-
-function getBreachCategories(locales, categories = null) {
-  if (!categories) {
-    categories = [
-      "website-breach",
-      "sensitive-breach",
-      "spam-list-breach",
-      "unverified-breach",
-      "data-aggregator-breach",
-    ];
-  }
-
-  const breachCategories = {} ;
-
-  categories.forEach(category => {
-    breachCategories[category] = {
-      "category": category,
-      "string": LocaleUtils.fluentFormat(locales, category),
-      "categoryPlural": LocaleUtils.fluentFormat(locales, `${category}-plural`),
-    };
-  });
-
-  return breachCategories;
-}
-
-function allBreaches(allBreaches, options) {
-  const locales = options.data.root.req.supportedLocales;
-  allBreaches = filterBreaches(allBreaches);
-  const breachCategories = ["website-breach", "sensitive-breach", "data-aggregator-breach"];
-  const allBreachesModule = {
-    "breachCategories" : getBreachCategories(locales, breachCategories),
-  };
-
-  return options.fn(allBreachesModule);
-}
-
 
 function lastAddedBreach(options) {
   const locales = options.data.root.req.supportedLocales;
@@ -106,21 +62,28 @@ function lastAddedBreach(options) {
 function getFoundBreaches(args) {
   const locales = args.data.root.req.supportedLocales;
   let userBreaches = args.data.root.foundBreaches;
-
-  userBreaches = makeBreachCards(userBreaches, locales, false);
-
+  userBreaches = makeBreachCards(userBreaches, locales);
   userBreaches.cardType = "two-up drop-shadow";
   return userBreaches;
 }
 
-function getBreachArray(args) {
-  const locales = args.data.root.req.supportedLocales;
-  let allBreaches = args.data.root.breaches;
+function getLocalizedBreachValues(locales, breach) {
+  breach.AddedDate = prettyDate(breach.AddedDate, locales);
+  breach.PwnCount = localeString(breach.PwnCount,locales);
+  breach.DataClasses = dataClassesforCards(breach, locales);
+  return breach;
+}
 
-  allBreaches = filterBreaches(allBreaches);
-  const breaches = makeBreachCards(allBreaches, locales);
+function getBreachArray(breaches, args) {
+  const locales = args.data.root.req.supportedLocales;
+  breaches = JSON.parse(JSON.stringify(breaches));
+  // should we consider filtering the breaches when the app loads
+  // since we aren't ever showing them now anyway?
+  breaches = filterBreaches(breaches);
+  breaches = sortBreaches(breaches);
+
   breaches.forEach(breach => {
-    // remove unused properties
+    getLocalizedBreachValues(locales, breach);
     delete(breach.Description);
     delete(breach.IsVerified);
     delete(breach.ModifiedDate);
@@ -129,13 +92,18 @@ function getBreachArray(args) {
     delete(breach.IsRetired);
     delete(breach.IsSensitive);
     delete(breach.IsSpamList);
+    delete(breach.BreachDate);
   });
-  return JSON.stringify(breaches);
+
+  const allBreaches = {
+    LocalizedBreachCardStrings: getLocalizedBreachCardStrings(locales),
+    breaches: breaches,
+  };
+  return JSON.stringify(allBreaches);
 }
 
 
 module.exports = {
-  allBreaches,
   lastAddedBreach,
   getFoundBreaches,
   makeBreachCards,

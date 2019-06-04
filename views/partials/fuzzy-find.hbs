@@ -3,6 +3,6 @@
         <form id="fuzzy-form" class="fuzzy-form">
           <input tabindex="1" type="text" id="fuzzy-find-input" class="fuzzy-find-input" placeholder="{{ getString "search-breaches" }}" autocomplete="off" />          <button tabindex="3" id="fuzzy-find-submit" class="fuzzy-find-submit" aria-label="{{ getString "search-breaches" }}">{{> svg/search-icon }}</button>
         </form>
-        <button tabindex="2" id="show-all-breaches" class="show-all-breaches"><span class="x-close-bg">{{> svg/x-close }}</span></button>
+        <button tabindex="2" id="fuzzy-show-all" class="fuzzy-find-show-breaches show-all-breaches"><span class="x-close-bg">{{> svg/x-close }}</span></button>
         <span id="no-results-blurb" class="no-results-blurb">{{ getString "no-results-blurb" }}</span>
       </div> 

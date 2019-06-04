@@ -1,4 +1,4 @@
-<a class="breach-card {{ Category }} {{ cardType }} {{#if NewBreach}} new-breach {{/if}}" {{#if latestBreach }} href="/?breach={{ Name }}" {{ else }} href="/breach-details/{{ Name }}" {{/if}}>
+<a class="breach-card {{ cardType }} {{#if NewBreach}} new-breach {{/if}}" {{#if latestBreach }} href="/?breach={{ Name }}" {{ else }} href="/breach-details/{{ Name }}" {{/if}}>
   <div class="breach-logo-wrapper flx">
     <img alt="" class="breach-logo breach-img" src="/img/logos/{{ LogoPath }}" />
   </div>
@@ -16,7 +16,7 @@
       {{else}}
         {{> breach-cards/added-date }}
         {{#if showPwnCount }}
-          <span class="breach-key">{{ String.CompromisedAccounts }}</span>{{ PwnCount }}</span>
+          <span class="breach-key">{{ LocalizedBreachCardStrings.CompromisedAccounts }}</span>{{ PwnCount }}</span>
         {{/if}}
         {{> breach-cards/data-classes }}
       {{/if}}
@@ -25,7 +25,7 @@
       {{#if latestBreach}}
         <span class="latest-breach-link">{{ getString "latest-breach-link" }}</span>
       {{else}}
-        <span class="more-about-this-breach">{{ String.MoreInfoLink }}</span>
+        <span class="more-about-this-breach">{{ LocalizedBreachCardStrings.MoreInfoLink }}</span>
       {{/if}}
     </div>
   </div>

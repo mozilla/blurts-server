@@ -1,4 +1,3 @@
-{{#allBreaches req.app.locals.breaches }}
 <div id="breaches-loader" class="ab-bg breaches-loader"></div>
 <div class="ab-bg top-level">
   <main class="all-breaches-main clear-header" data-page-label="All Breaches">
@@ -18,11 +17,10 @@
     </div>
     <div class="row flx-col">
       <!-- breach cards -->
-      <div id="all-breaches" class="all-breaches flx">
-      </div>
+      <div id="all-breaches" class="all-breaches flx"></div>
+      <button id="show-hidden-breaches" class="col violet-btn show-all-breaches">{{ getString "show-all" }}</button>
     </div>
   </section>
 </div>
-{{/allBreaches}}
 
-<div id="breach-array-json" hidden=true data-breach-array="{{ getBreachArray }}"></div>
+<div id="breach-array-json" hidden=true data-breach-array="{{ getBreachArray req.app.locals.breaches }}"></div>
