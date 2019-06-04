@@ -500,11 +500,76 @@ remove-fxm-blurb =
     Desativar os alertas de { -product-name }. A sua { -brand-fxa } continuará ativa e poderá receber 
     outras comunicações relacionadas com a conta.
 manage-email-addresses = Gerir endereços de e-mail
+latest-breach-link = Veja se esteve nesta violação
 welcome-back = Bem-vindo(a) de volta, { $userName }!
 welcome-user = Bem-vindo(a), { $userName }!
+breach-alert-subject = { -product-name } encontrou o seu e-mail numa nova violação de dados.
+your-info-was-discovered-headline = Os seus dados foram descobertos numa nova violação de dados.
+your-info-was-discovered-blurb =
+    Registou-se para receber alertas do { -product-name } 
+    quando o seu e-mail aparecer numa violação de dados. Veja o que nós sabemos sobre esta violação.
+what-to-do-after-breach = O que fazer depois de uma violação de dados:
+ba-next-step-1 = Altere a sua palavra-passe para uma palavra-passe forte e única.
+ba-next-step-blurb-1 =
+    Uma palavra-passe forte utiliza uma combinação de letras maiúsculas e minúsculas, 
+    carateres especiais e números. Não contem informações pessoais tais como 
+    a sua morada, data de nascimento ou apelidos.
+ba-next-step-2 = Nunca mais volte a utilizar a palavra-se exposta.
+ba-next-step-blurb-2 =
+    Os cibercriminosos poderão encontrar a sua palavra-passe na "dark web" e utilizá-la 
+    para iniciar a sessão nas suas outras contas. O melhor modo para proteger as suas 
+    contas é utilizar palavras-passe únicas para cada uma.
+ba-next-step-3 = Obtenha ajuda para criar melhores palavras-passe e as manter seguras.
+ba-next-step-blurb-3 =
+    Utilize um gestor de palavras-passe para criar palavras-passe fortes e únicas. Os gestores de palavras-passe guardam 
+    com segurança todas as suas credenciais para que possa aceder às mesmas em todos os seus dispositivos.
+faq1 = Eu não reconheço esta empresa ou website. Por que é que eu estou nesta violação?
+faq2 = Porque é que demorou tanto para me notificarem desta violação?
+faq3 = Como é que eu sei que é um e-mail legitimo do { -product-name }?
+new-breaches-found =
+    { $breachCount ->
+        [one] ENCONTRADA { $breachCount } NOVA VIOLAÇÃO
+       *[other] ENCONTRADAS { $breachCount } NOVAS VIOLAÇÕES
+    }
+sign-up-headline-1 = Receba alertas atuais com uma { -brand-fxa }.
+account-not-required = O navegador { -brand-name } não é obrigatório para uma { -brand-fxa }. Poderá receber informações sobre os serviços da { -brand-Mozilla }.
+get-alerted = Receba alertas sobre novas violações.
+was-your-info-exposed = A sua informação foi exposta na violação de dados de { $breachName }?
+find-out-if = Saiba se os seus dados foram expostos nesta violação.
+fb-not-comp = Este e-mail não apareceu na violação { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Contudo, este apareceu em { $breachCount } outra violação.
+       *[other] Contudo, este apareceu em { $breachCount } outras violações
+    }
+fb-comp-only = Este e-mail apareceu na violação { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Este e-mail apareceu em { $breachCount } violação de dados conhecida, incluindo { $breachName }.
+       *[other] Este e-mail apareceu em { $breachCount } violações de dados conhecidas, incluindo { $breachName }.
+    }
+no-other-breaches-found = Nenhuma outra violação encontrada a partir de uma pesquisa básica.
+no-results-blurb = Desculpe, esta violação não está na nossa base de dados.
+all-breaches-headline = Todas as violações no { -product-name }
+search-breaches = Procurar por violações
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = A mostrar:
+all-breaches = Todas as violações
 
 ## Updated error messages
 
+error-bot-headline = Pesquisas temporariamente suspensas
+error-bot-blurb =
+    Nós estamos preocupados que seja um "bot" porque pesquisou 
+    vários endereços de e-mail num curto espaço de tempo. Por agora, as novas 
+    pesquisas estão bloqueadas. Pode tentar novamente mais tarde.
+error-csrf-headline = A sessão expirou
+error-csrf-blurb = Selecione o seu botão de retroceder do seu navegador, recarregue a página e tente novamente.
+error-invalid-unsub = Como cancelar a subscrição dos alertas do { -product-name }
+error-invalid-unsub-blurb =
+    Terá de cancelar a subscrição a partir de um dos 
+    e-mails que o { -product-name } lhe enviou. Procure na sua caixa de correio por mensagens 
+    de { -brand-team-email }. Selecione a ligação de cancelamento da subscrição no final da mensagem.
 login-link-pre = Tem uma conta?
 login-link = Iniciar sessão
 # This string is displayed under a large numeral that indicates the total number
@@ -548,5 +613,6 @@ results-for = Resultados para: { $userEmail }
 other-monitored-emails = Outros emails monitorizados
 email-verification-required = Verificação de email requerida
 fxa-primary-email = Email do { -brand-fxa } - Primário
+what-is-a-website-breach = O que é uma violação do website?
 security-tips-headline = Dicas de segurança para se proteger contra hackers
 alert-about-new-breaches = Alertar-me acerca de novas brechas
