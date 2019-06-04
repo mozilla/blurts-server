@@ -318,7 +318,7 @@ breach-discovered = Violación descubierta:
 more-about-this-breach = Más acerca de esta violación
 take-control = Recuperá el control de tu información personal.
 cant-stop-hackers = No podés evitar que te pirateen los piratas, pero sí podés evitar la malas prácticas que les facilitan el trabajo.
-read-more-tips = Leer consejos de seguridad
+read-more-tips = Ver más consejos de seguridad
 how-hackers-work = Entender cómo trabajan los piratas
 monitor-your-online-accounts = Registrate para el control de violaciones con { -brand-fxa }.
 stay-alert = Mantenete alerta a las nuevas violaciones
@@ -534,7 +534,7 @@ security-tips-headline = Consejos de seguridad para protegerte de los hackers.
 steps-to-protect = Pasos a seguir para proteger tu identidad en línea
 take-further-steps = Tomá medidas adicionales para proteger tu identidad
 alert-about-new-breaches = Alertarme sobre nuevas filtraciones.
-see-if-youve-been-part = Vea si has sido parte de una filtración de datos en línea.
+see-if-youve-been-part = Fijate si fuiste parte de una violación de datos en línea.
 get-ongoing-breach-monitoring = Obtener monitoreo contínuo de filtraciones para múltiples direcciones de correo electrónico.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Averiguar
