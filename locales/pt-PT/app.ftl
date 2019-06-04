@@ -443,11 +443,63 @@ how-fxm-3-blurb =
 wtd-after-website = O que fazer depois de uma brecha de website
 wtd-after-data-agg = O que fazer depois de uma brecha de agregador de dados
 what-is-data-agg = O que é um agregador de dados?
+what-is-data-agg-blurb =
+    Um agregador ou agente de dados, recolhe informações de registos 
+    públicos e adquire dados de outras empresas. Trabalham estes dados para os venderem a outras empresas 
+    para fins de marketing. As vítimas destas violações são uma probabilidade mais baixa de fraude financeira 
+    mas os piratas informáticos podem utilizar estes dados para se fazerem passar por essas pessoas ou as perfilar.
 protect-your-privacy = Proteja a sua privacidade online
+no-pw-to-change = Ao contrário de uma violação de website, não há uma palavra-passe para alterar.
+avoid-personal-info = Evite utilizar informação pessoal nas palavras-passe
+avoid-personal-info-blurb = É fácil encontrar aniversários, moradas e nomes de membros de família online. Mantenha estas palavras fora das suas palavras-passe.
 
 ## What to do after data breach tips
 
 change-pw = Altere a sua palavra-passe
+even-for-old = Mesmo para as contas antigas, é importante atualizar a sua palavra-passe.
+make-new-pw-unique = Torne a nova palavra-passe diferente e única
+strength-of-your-pw = A força das suas palavras-passe tem um impacto direto na sua segurança online.
+create-strong-passwords = Como criar palavras-passe fortes
+stop-reusing-pw = Pare de reutilizar as mesmas palavras-passe
+create-unique-pw = Crie palavras-passe únicas e guarde-as num lugar seguro, tal como um gestor de palavras-passe.
+five-myths = 5 mitos sobre os gestores de palavras-passe
+create-a-fxa = Crie uma { -brand-fxa } para o seu relatório completo das violações e para receber alertas.
+feat-security-tips = Dicas de segurança para proteger as suas contas
+feat-sensitive = Pesquisa avançada em violações sensíveis
+feat-enroll-multiple = Registar vários e-mails na monitorização de violações
+sign-up-for-fxa = Registe-se para uma { -brand-fxa }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Aparece em { $breachCount } violação conhecida.
+       *[other] Aparece em { $breachCount } violações conhecidas.
+    }
+see-if-breached = Consulte se esteve numa violação de dados online.
+check-for-breaches = Consultar violações
+find-out-what-hackers-know = Descubra o que os piratas informáticos já sabem sobre si. Saiba como ficar um passo à frente deles.
+search-for-your-email = Pesquise pelo seu endereço de e-mail em violações públicas de dados até 2007.
+back-to-top = Voltar ao topo
+comm-opt-0 = Enviar um e-mail para mim caso um dos meus endereços de e-mail abaixo aparecer numa violação de dados.
+comm-opt-1 = Enviar todos alertas de violações para { $primaryEmail }.
+stop-monitoring-this = Pare de monitorizar este e-mail.
+resend-verification = Reenviar e-mail de verificação
+add-new-email = Adicionar um novo endereço de e-mail
+send-verification = Enviar ligação de verificação
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Comunicação global
+breach-summary = Resumo da violação
+show-breaches-for-this-email = Mostrar todas as violações para este e-mail.
+link-change-primary = Alterar endereço de e-mail primário
+remove-fxm = Remover { -product-name }
+remove-fxm-blurb =
+    Desativar os alertas de { -product-name }. A sua { -brand-fxa } continuará ativa e poderá receber 
+    outras comunicações relacionadas com a conta.
+manage-email-addresses = Gerir endereços de e-mail
 welcome-back = Bem-vindo(a) de volta, { $userName }!
 welcome-user = Bem-vindo(a), { $userName }!
 
