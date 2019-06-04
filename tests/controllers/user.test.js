@@ -162,7 +162,7 @@ test("user verify request with valid token but no session throws error", async (
   const resp = httpMocks.createResponse();
 
   // Call code-under-test
-  await expect(user.verify(req, resp)).rejects.toThrow("must-be-signed-in");
+  await expect(user.verify(req, resp)).rejects.toThrow("error-must-be-signed-in");
 
   const emailAddress = await DB.getEmailByToken(validToken);
   expect(emailAddress.verified).toBeFalsy();
@@ -345,7 +345,7 @@ test("user/remove-fxm GET request with invalid session returns error", async () 
   });
   const resp = httpMocks.createResponse();
 
-  await expect(user.getRemoveFxm(req, resp)).rejects.toThrow("must-be-signed-in");
+  await expect(user.getRemoveFxm(req, resp)).rejects.toThrow("error-must-be-signed-in");
 });
 
 
@@ -368,7 +368,7 @@ test("user/remove-fxm POST request with invalid session returns error", async ()
   const resp = httpMocks.createResponse();
 
   // Call code-under-test
-  await expect(user.postRemoveFxm(req, resp)).rejects.toThrow("must-be-signed-in");
+  await expect(user.postRemoveFxm(req, resp)).rejects.toThrow("error-must-be-signed-in");
 });
 
 

@@ -14,7 +14,7 @@ const sha1 = require("../sha1-utils");
 async function _requireSessionUser(req,res) {
   if (!req.session || !req.session.user) {
     // TODO: can we do a nice redirect to sign in instead of an error?
-    throw new FluentError("must-be-signed-in");
+    throw new FluentError("error-must-be-signed-in");
   }
   // make sure the user object has all subscribers and email_addresses properties
   const sessionUser = await DB.getSubscriberById(req.session.user.id);
