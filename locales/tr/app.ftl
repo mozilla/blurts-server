@@ -372,6 +372,8 @@ data-aggregator-breach-plural = Veri toplayıcı ihlalleri
 unverified-breach-plural = Doğrulanmamış ihlaller
 spam-list-breach-plural = Spam listesi ihlalleri
 what-data = Ele geçirilen veriler:
+sensitive-sites = { -product-name } hassas siteleri nasıl ele alıyor?
+delayed-reporting-headline = Bu ihlalin bildirilmesi neden bu kadar uzun sürdü?
 about-fxm-headline = { -product-name } hakkında
 # How Firefox Monitor works
 how-fxm-works = { -product-name } nasıl çalışır?
@@ -389,6 +391,10 @@ strength-of-your-pw = Parolalarınızın kalitesi, internetteki güvenliğinizi 
 create-strong-passwords = Güçlü parolalar nasıl oluşturulur?
 stop-reusing-pw = Aynı parolaları kullanmayın
 create-unique-pw = Benzersiz parolalar oluşturun ve bunları parola yöneticisi gibi güvenli bir yerde saklayın.
+five-myths = Parola yöneticileri hakkında 5 şehir efsanesi
+create-a-fxa = Tam ihlal raporunuzu görmek ve ihlal uyarıları almak için { -brand-fxa } açın.
+feat-security-tips = Hesaplarınızı korumanız için güvenlik ipuçları
+sign-up-for-fxa = { -brand-fxa } açın
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
@@ -473,8 +479,16 @@ passwords-exposed =
     }
 # Button
 see-additional-breaches = Diğer ihlallere bakın
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = { $userEmail } sonuçları
+other-monitored-emails = İzlenen diğer e-postalar
 email-verification-required = E-posta doğrulaması gerekiyor
 see-if-youve-been-part = Çevrimiçi veri ihlallerinde verilerinizin çalınmış olabilir mi?
+get-ongoing-breach-monitoring = İstediğiniz sayıda e-posta adresinin ihlallerini sürekli olarak takip edin.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Öğrenin
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = Ek bilgiler:
@@ -488,5 +502,7 @@ filter-by = Kategoriye göre filtrele:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menü
 to-affected-email = İhlal uyarılarını etkilenen e-posta adresine gönder
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Gizliliğinizi korumanın bir yolu var. { -brand-name }’a katılın.
 # Link title
 learn-more-link = Daha fazla bilgi alın.
