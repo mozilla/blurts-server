@@ -82,10 +82,10 @@ landing-blurb =
     O { -product-name-nowrap } oferece-lhe ferramentas para manter a sua informação pessoal segura.
     Descubra o que os hackers já sabem acerca de si, e saiba como ficar um passo à frente dos mesmos.
 scan-label = Veja se foi envolvido(a) numa brecha de dados.
-scan-placeholder = Introduzir endereço de email
-scan-privacy = O seu email não será armazenado.
-scan-submit = Pesquisar o seu email
-scan-another-email = Verificar outro endereço de email
+scan-placeholder = Inserir endereço de e-mail
+scan-privacy = O seu e-mail não será guardado.
+scan-submit = Pesquisar pelo seu e-mail
+scan-another-email = Pesquisar outro endereço de e-mail
 scan-featuredbreach-label = Descubra se a sua conta <span class="bold"> { $featuredBreach } </span> foi comprometida.
 sensitive-breach-email-required = A brecha contém informação sensível. Verificação por email requerida.
 scan-error = Tem de ser um email válido.
@@ -108,7 +108,7 @@ signup-modal-verify-resend = Não está na caixa de entrada ou pasta de lixo? Re
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Enviado!
 signup-with-fxa = Registe-se com uma Conta { -brand-name }
-form-signup-placeholder = Introduzir email
+form-signup-placeholder = Inserir e-mail
 form-signup-checkbox = Obter as últimas da { -brand-Mozilla } e do { -brand-name }.
 sign-up = Registar
 form-signup-error = Tem de ser um email válido
@@ -388,7 +388,7 @@ cant-stop-hackers = Não pode impedir que os hackers invadam. Mas pode evitar ma
 read-more-tips = Ler mais dicas de segurança
 how-hackers-work = Compreender como é que os hackers funcionam
 monitor-your-online-accounts = Inscreva-se para uma monitorização de violações com { -brand-fxa }.
-stay-alert = Mantenha-se atento(a) a novas brechas
+stay-alert = Mantenha-se atento às novas violações
 if-your-info = Se a sua informação apareceu numa nova violação de dados, nós iremos enviar-lhe um alerta.
 search-all-emails = Procure por violações em todos os seus endereços de e-mail e receba alertas sobre novas ameaças.
 monitor-several-emails = Monitorize vários emails
@@ -614,5 +614,42 @@ other-monitored-emails = Outros emails monitorizados
 email-verification-required = Verificação de email requerida
 fxa-primary-email = Email do { -brand-fxa } - Primário
 what-is-a-website-breach = O que é uma violação do website?
+website-breach-blurb = Uma violação de dados do website ocorre quando os cibercriminosos roubam, copiam ou expõem a informação pessoal das contas online. Geralmente, é a consequência dos piratas informáticos encontrarem um ponto fraco na segurança do website. As violações também podem acontecer quando a informação de contas é divulgada acidentalmente.
 security-tips-headline = Dicas de segurança para se proteger contra hackers
+steps-to-protect = Passos a tomar para proteger a sua identidade online
+take-further-steps = Mais passos para proteger a sua identidade
 alert-about-new-breaches = Alertar-me acerca de novas brechas
+see-if-youve-been-part = Veja se fez parte de uma violação de dados online.
+get-ongoing-breach-monitoring = Obtenha a monitorização de violações atuais para múltiplos endereços de e-mail.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Descobrir
+new-unsub-error = Terá de cancelar a subscrição de um dos e-mails que o { -product-name } lhe enviou.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Contudo, este apareceu em { $breachCount } outra violação conhecida.
+       *[other] Contudo, este apareceu em { $breachCount } outras violações conhecidas.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Informação adicional, incluindo:
+# Title
+email-addresses-title = Endereços de e-mail
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = Em { $breachDate }, { $breachTitle } sofreu uma violação. Assim que a violação foi descoberta e confirmada, esta foi adicionada à nossa base de dados em { $addedDate }.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = { -product-short-name } - Preferências
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Sessão iniciada como: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Filtrar por categoria:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menu
+to-affected-email = Enviar alertas de violação para o endereço de e-mail afetado
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Existe um modo para proteger a sua privacidade. Registe-se em { -brand-name }.
+# Link title
+learn-more-link = Saber mais.
