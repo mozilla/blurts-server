@@ -402,7 +402,7 @@ appears-in-x-breaches =
         [one] Bilinen { $breachCount } ihlalde yer alıyor.
        *[other] Bilinen { $breachCount } ihlalde yer alıyor.
     }
-see-if-breached = Çevrimiçi veri ihlallerinde verilerinizin çalınmış olabilir mi?
+see-if-breached = Çevrimiçi veri ihlallerinde verilerinizin çalınmış olabilir mi? Hemen öğrenin.
 check-for-breaches = İhlalleri kontrol et
 find-out-what-hackers-know = Hacker’ların sizin hakkınızda neler bildiklerini öğrenin, onların bir adım önüne geçin.
 search-for-your-email = 2007’ye uzanan bilindik veri ihlallerinde e-posta adresinizi arayın.
@@ -420,7 +420,7 @@ send-verification = Doğrulama bağlantısını gönder
 global-communication = İletişim
 breach-summary = İhlal özeti
 show-breaches-for-this-email = Bu e-postayı içeren tüm ihlalleri göster.
-link-change-primary = Ana e-posta adresini değiştir
+link-change-primary = Birincil e-posta adresini değiştir
 remove-fxm = { -product-name }’ü kaldır
 manage-email-addresses = E-posta adreslerini yönet
 latest-breach-link = Bu ihlale dahil olup olmadığınızı öğrenin
@@ -485,7 +485,8 @@ see-additional-breaches = Diğer ihlallere bakın
 results-for = { $userEmail } sonuçları
 other-monitored-emails = İzlenen diğer e-postalar
 email-verification-required = E-posta doğrulaması gerekiyor
-see-if-youve-been-part = Çevrimiçi veri ihlallerinde verilerinizin çalınmış olabilir mi?
+fxa-primary-email = { -brand-fxa } e-postası - birincil
+see-if-youve-been-part = Çevrimiçi veri ihlallerinde verilerinizin çalınmış olabilir mi? Hemen öğrenin.
 get-ongoing-breach-monitoring = İstediğiniz sayıda e-posta adresinin ihlallerini sürekli olarak takip edin.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Öğrenin
@@ -494,8 +495,15 @@ find-out = Öğrenin
 additional-information-including = Ek bilgiler:
 # Title
 email-addresses-title = E-posta adresi
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = { $breachDate } tarihinde { $breachTitle } bir veri ihlaline uğradı. İhlal keşfedildikten ve doğrulandıktan sonra { $addedDate } tarihinde veritabanımıza eklendi.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } tercihleri
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = { $userEmail } olarak giriş yapıldı
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
 filter-by = Kategoriye göre filtrele:
