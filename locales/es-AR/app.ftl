@@ -85,13 +85,13 @@ get-your-report = Conseguí tu informe
 signup-modal-verify-headline = Verificá tu suscripción
 signup-modal-verify-blurb = Enviamos un enlace de verificación a <span id="submitted-email" class="medium"></span>.
 signup-modal-verify-expiration = Este enlace caduca en 24 horas.
-signup-modal-verify-resend = ¿No está en la bandeja de entrada o en el correo basura? Reenviar
+signup-modal-verify-resend = ¿No está en la bandeja de entrada o en el correo basura? Reenviar el mensaje.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = ¡Enviado!
-signup-with-fxa = Registrarse con la cuenta { -brand-name }
+signup-with-fxa = Registrate con la cuenta { -brand-name }
 form-signup-placeholder = Ingresar dirección de correo electrónico
 form-signup-checkbox = Obtené lo último de { -brand-Mozilla } y { -brand-name }.
-sign-up = Registrarse
+sign-up = Registrate
 form-signup-error = Debe ser una dirección de correo electrónico válida
 no-breaches-headline = Por ahora va todo bien.
 found-breaches-headline = Tu información fue parte de una violación de datos.
