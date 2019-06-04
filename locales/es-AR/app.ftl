@@ -535,7 +535,7 @@ steps-to-protect = Pasos a seguir para proteger tu identidad en línea
 take-further-steps = Tomá medidas adicionales para proteger tu identidad
 alert-about-new-breaches = Alertarme sobre nuevas filtraciones.
 see-if-youve-been-part = Fijate si fuiste parte de una violación de datos en línea.
-get-ongoing-breach-monitoring = Obtener monitoreo contínuo de filtraciones para múltiples direcciones de correo electrónico.
+get-ongoing-breach-monitoring = Obtené el monitoreo contínuo de las violaciones de datos para múltiples direcciones de correo electrónico.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Averiguar
 new-unsub-error = Necesitás darte de baja de uno de los correos electrónicos enviados por { -product-name }.
