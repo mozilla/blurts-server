@@ -387,8 +387,13 @@ take-control = Retome o controlo dos seus dados pessoais.
 cant-stop-hackers = Não pode impedir que os hackers invadam. Mas pode evitar maus hábitos que lhes facilitam o trabalho.
 read-more-tips = Ler mais dicas de segurança
 how-hackers-work = Compreender como é que os hackers funcionam
+monitor-your-online-accounts = Inscreva-se para uma monitorização de violações com { -brand-fxa }.
 stay-alert = Mantenha-se atento(a) a novas brechas
+if-your-info = Se a sua informação apareceu numa nova violação de dados, nós iremos enviar-lhe um alerta.
+search-all-emails = Procure por violações em todos os seus endereços de e-mail e receba alertas sobre novas ameaças.
 monitor-several-emails = Monitorize vários emails
+take-action = Tome medidas para proteger as suas contas
+keep-your-data-safe = Descubra o que precisa de fazer para manter os seus dados seguros de cibercriminosos.
 website-breach = Brecha de website
 sensitive-breach = Brechas de websites sensíveis
 data-aggregator-breach = Brecha agregadora de dados
@@ -401,12 +406,43 @@ unverified-breach-plural = Brechas não verificadas
 spam-list-breach-plural = Brechas de listas de spam
 what-data = Que dados foram comprometidos:
 sensitive-sites = Como é que o { -product-name } trata sites sensíveis?
+sensitive-sites-copy =
+    { -product-name } só revela as contas associadas com estes 
+    tipos de violações depois de um endereço de e-mail ter sido verificado. Isto significa que 
+    é a única pessoa que pode ver se a sua informação estava numa violação (a menos que 
+    alguém tenha acesso à sua conta de e-mail).
+delayed-reporting-headline = Porque demorou tanto tempo até esta violação ser reportada?
+delayed-reporting-copy =
+    Pode demorar meses ou até mesmo anos para as credenciais expostas 
+    numa violação de dados aparecerem na dark web. As violações são adicionadas à nossa base de dados 
+    assim que são descobertas e validadas.
 about-fxm-headline = Acerca do { -product-name }
 about-fxm-blurb = { -product-name } indica que as suas contas online estiveram envolvidas numa fuga de dados. Descubra se esteve numa fuga de dados, obtenha alertas sobre novas fugas e execute os procedimentos para proteger as suas contas onlines. { -product-name } é fornecido por { -brand-Mozilla }.
+fxm-warns-you =
+    { -product-name } indica se o seu endereço de e-mail foi exposto 
+    numa violação de dados online. Confirme se a sua informação foi exposta, aprenda a 
+    proteger melhor as suas contas online e receba alertas caso o seu endereço de e-mail 
+    apareça numa nova violação.
 # How Firefox Monitor works
 how-fxm-works = Como é que o { -product-name } funciona
+how-fxm-1-headline = Realizar uma pesquisa básica
+how-fxm-1-blurb =
+    Procure pelo seu endereço de e-mail em violações de dados públicas desde 
+    2007. Esta pesquisa básica vai apresentar a maior parte das violações de dados, mas não 
+    as que contenham dados pessoais sensíveis.
+how-fxm-2-headline = Registe-se para monitorizar violações
+how-fxm-2-blurb =
+    Crie uma { -brand-fxa } para monitorizar o seu e-mail sobre violações atuais. 
+    Assim que confirmar o seu e-mail, irá também receber um relatório completo sobre violações anteriores, 
+    incluindo violações sensíveis.
+how-fxm-3-headline = Receba notificações no seu navegador
+how-fxm-3-blurb =
+    Se utilizar { -brand-name }, irá receber uma notificação se visitar um 
+    site cujos dados tenham sido violados. Saiba imediatamente se faz parte dessa violação 
+    e o que pode fazer quanto a isso.
 wtd-after-website = O que fazer depois de uma brecha de website
 wtd-after-data-agg = O que fazer depois de uma brecha de agregador de dados
+what-is-data-agg = O que é um agregador de dados?
 protect-your-privacy = Proteja a sua privacidade online
 
 ## What to do after data breach tips
