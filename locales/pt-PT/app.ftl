@@ -402,6 +402,7 @@ spam-list-breach-plural = Brechas de listas de spam
 what-data = Que dados foram comprometidos:
 sensitive-sites = Como é que o { -product-name } trata sites sensíveis?
 about-fxm-headline = Acerca do { -product-name }
+about-fxm-blurb = { -product-name } indica que as suas contas online estiveram envolvidas numa fuga de dados. Descubra se esteve numa fuga de dados, obtenha alertas sobre novas fugas e execute os procedimentos para proteger as suas contas onlines. { -product-name } é fornecido por { -brand-Mozilla }.
 # How Firefox Monitor works
 how-fxm-works = Como é que o { -product-name } funciona
 wtd-after-website = O que fazer depois de uma brecha de website
