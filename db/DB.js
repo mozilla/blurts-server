@@ -72,7 +72,7 @@ const DB = {
     }
     if (emailAddresses.length > 1) {
       // TODO: handle multiple emails in separate(?) subscriber accounts?
-      log.warn("getEmailAddressRecordByEmail found the same email multiple times");
+      log.warn("getEmailAddressRecordByEmail", {msg: "found the same email multiple times"});
     }
     return emailAddresses[0];
   },
