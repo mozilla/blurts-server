@@ -232,10 +232,15 @@ more-about-this-breach = この侵害について詳しく見る
 take-control = 個人情報の制御を取り戻してください。
 cant-stop-hackers = ハッカーのハッキングは止められません。しかし、ハッキングを容易にさせる悪習慣は避けられます。
 read-more-tips = セキュリティの秘訣をもっと読む
+how-hackers-work = ハッカーの手段を理解する
 monitor-your-online-accounts = { -brand-fxa }でデータ侵害の監視に登録しましょう。
+stay-alert = 新しいデータ侵害の警告を受け取る
+if-your-info = あなたの情報が新しいデータ侵害にさらされた場合、警告を送信します。
+monitor-several-emails = 複数のメールアドレスを監視する
 what-data = 漏洩したデータ:
 delayed-reporting-headline = なぜ、この侵害の報告に時間がかかったのですか？
 about-fxm-headline = { -product-name } について
+protect-your-privacy = オンラインプライバシーを保護する
 
 ## What to do after data breach tips
 
@@ -261,6 +266,7 @@ search-breaches = データ侵害を検索
 ## Updated error messages
 
 login-link = ログイン
+see-if-youve-been-part = オンラインのデータ侵害に含まれていないか確認しましょう。
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = 侵害を受けたその他の情報:
@@ -270,3 +276,8 @@ additional-information-including = 侵害を受けたその他の情報:
 breach-overview = { $breachDate }に、{ $breachTitle } は、データ侵害にさらされました。この侵害が発見され、確認されたため、{ $addedDate }にデータベースに追加されました。
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } の設定
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = ログイン中: { $userEmail }
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = メニュー
