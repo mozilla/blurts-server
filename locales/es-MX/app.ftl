@@ -351,6 +351,12 @@ take-action = Actúa para proteger tus cuentas
 keep-your-data-safe = Descubre lo que necesitas hacer para mantener tu información segura de los criminales cibrenéticos.
 website-breach = Violación del sitio web
 sensitive-breach = Filtración de datos sensible del sitio web
+data-aggregator-breach = Filtración de recopilador de datos
+unverified-breach = Filtración no verificada
+spam-list-breach = Lista de filtración no deseada
+website-breach-plural = Filtraciones de sitios web
+sensitive-breach-plural = Filtraciones sensibles
+data-aggregator-breach-plural = Filtraciones de recopiladores de datos
 what-data = Qué datos fueron comprometidos:
 # How Firefox Monitor works
 how-fxm-works = Cómo funciona { -product-name }
