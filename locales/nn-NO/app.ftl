@@ -254,7 +254,7 @@ breach-discovered = Oppdaga datalekkasjar:
 # Link title
 more-about-this-breach = Meir om denne datalekkasjen
 take-control = Ta tilbake kontrollen over personopplysningane dine.
-cant-stop-hackers = Du kan ikkje hindre hackerar i å hacke. Men du kan unngå dårlega vanar som gjer det lett for dei.
+cant-stop-hackers = Du kan ikkje hindre hackarar i å hacke. Men du kan unngå dårlega vanar som gjer det lett for dei.
 read-more-tips = Her er fleire tryggingstips
 how-hackers-work = Forstå korleis hackarar jobbar
 monitor-your-online-accounts = Registrer deg for overvaking av datalekkasjar med ein { -brand-fxa }.
@@ -309,7 +309,7 @@ appears-in-x-breaches =
     }
 see-if-breached = Sjå om du har vore involvert i ein datalekkasje.
 check-for-breaches = Sjå etter datalekkasjar
-find-out-what-hackers-know = Finnut kva hackerar allereie veit om deg. Lær deg korleis du kan vere eitt steg framom dei.
+find-out-what-hackers-know = Finnut kva hackarar allereie veit om deg. Lær deg korleis du kan vere eitt steg framom dei.
 search-for-your-email = Søk etter e-postadressa di i offentlege datalekkasjar som går tilbake til 2007.
 back-to-top = Tilbake til toppen
 comm-opt-1 = Send åtvaringar om datalekkasjar til { $primaryEmail }.

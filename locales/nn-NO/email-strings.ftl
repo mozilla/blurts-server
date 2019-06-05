@@ -23,7 +23,7 @@ breach-alert-subhead = Ein nyleg rapportert datalekkasje inneheld di e-postadres
 report-pwt-headline-1 = Bruk ulike passord for kvar konto
 report-pwt-headline-2 = Lag sterke, unike passord
 report-pwt-summary-2 =
-    Hackerar brukar lister med vanlege passord for å prøve å gjette ditt.
+    Hackarar brukar lister med vanlege passord for å prøve å gjette ditt.
     Dess lenger og meir tilfeldig passordet ditt er, dess vanskelegare er det å stele det.
 report-pwt-headline-3 = Behandle tryggingsspørsmål som ekstra passord
 report-pwt-headline-4 = Bruk ein passordhandterar
