@@ -401,6 +401,7 @@ create-strong-passwords = Cara membuat kata sandi yang kuat
 stop-reusing-pw = Berhenti menggunakan kembali kata sandi yang sama
 create-unique-pw = Buat kata sandi unik dan simpan di tempat yang aman, seperti pengelola kata sandi.
 five-myths = 5 mitos tentang pengelola kata sandi
+create-a-fxa = Buat { -brand-fxa } untuk laporan lengkap pembobolan dan sekaligus mendapatkan peringatan.
 feat-security-tips = Tips keamanan untuk melindungi akun Anda
 feat-sensitive = Pencarian lanjutan dalam pembobolan sensitif
 feat-enroll-multiple = Daftarkan beberapa surel dalam pemantauan kebocoran
@@ -446,6 +447,20 @@ your-info-was-discovered-blurb =
     ketika surel Anda muncul dalam kebocoran data. Inilah yang kami ketahui tentang pembobolan ini.
 what-to-do-after-breach = Apa yang harus dilakukan setelah tersangkut kebocoran data:
 ba-next-step-1 = Ubah kata sandi Anda menjadi kata sandi yang kuat dan unik.
+new-breaches-found =
+    { $breachCount ->
+       *[other] { $breachCount } PEMBOBOLAN BARU DITEMUKAN
+    }
+sign-up-headline-1 = Dapatkan peringatan berkelanjutan dengan { -brand-fxa }.
+account-not-required = Peramban { -brand-name } tidak dibutuhkan untuk sebuah { -brand-fxa }. Anda dapat menerima info tentang layanan { -brand-Mozilla }.
+get-alerted = Dapatkan pemberitahuan tentang pembobolan baru.
+was-your-info-exposed = Apakah informasi Anda terungkap dalam kebocoran data { $breachName }?
+find-out-if = Cari tahu apakah data Anda terungkap dalam pembobolan ini.
+fb-not-comp = Surel ini tidak muncul dalam pembobolan { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+       *[other] Namun, itu muncul dalam { $breachCount } pembobolan lainnya yang diketahui.
+    }
 no-results-blurb = Maaf, kebocoran tersebut tidak ada dalam basis data kami.
 all-breaches-headline = Semua pembobolan di { -product-name }
 search-breaches = Cari Pembobolan
@@ -459,6 +474,13 @@ login-link = Masuk
 results-for = Hasil untuk: { $userEmail }
 what-is-a-website-breach = Apa itu pembobolan situs web?
 security-tips-headline = Kiat keamanan untuk melindungi diri Anda dari peretas
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Temukan
+new-unsub-error = Anda harus berhenti berlangganan dari salah satu surel { -product-name } yang dikirim.
+other-known-breaches-found =
+    { $breachCount ->
+       *[other] Namun, itu muncul dalam { $breachCount } pembobolan lainnya yang diketahui.
+    }
 # Title
 email-addresses-title = Alamat Surel
 # When a user is signed in, this appears in the drop down menu 
