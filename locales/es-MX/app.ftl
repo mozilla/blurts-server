@@ -398,9 +398,16 @@ avoid-personal-info-blurb = Es fácil encontrar cumpleaños, direcciones y nombr
 ## What to do after data breach tips
 
 change-pw = Cambiar tu contraseña
+even-for-old = Incluso para cuentas antiguas, es importante actualizar tu contraseña.
+make-new-pw-unique = Haz que la nueva contraseña sea diferente y única
+strength-of-your-pw = La fuerza de tus contraseñas impactan directamente a tu seguridad en línea.
 create-strong-passwords = Cómo crear contraseñas seguras
 stop-reusing-pw = Dejar de usar las mismas contraseñas
+create-unique-pw = Crea contraseñas únicas y guárdalas en algún lugar seguro, como un administrador de contraseñas.
 five-myths = 5 mitos sobre los administradores de contraseñas
+create-a-fxa = Crea una { -brand-fxa } para tener un informe completo de las filtraciones y para recibir alertas.
+feat-security-tips = Consejos de seguridad para proteger tus cuentas
+feat-sensitive = Búsqueda avanzada en filtraciones sensibles
 back-to-top = Volver al inicio
 resend-verification = Reenviar correo electrónico de verificación
 add-new-email = Agregar una nueva dirección de correo electrónico
