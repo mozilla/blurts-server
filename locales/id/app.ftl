@@ -387,14 +387,36 @@ about-fxm-blurb =
     kebocoran data. Cari tahu apakah Anda pernah tersangkut dalam kebocoran data, dapatkan peringatan tentang pembobolan terkini,
     dan mengambil langkah-langkah untuk melindungi akun online Anda. { -product-name } disediakan
     oleh { -brand-Mozilla }.
+fxm-warns-you =
+    { -product-name } memperingatkan Anda jika alamat surel Anda telah terungkap
+    dalam kebocoran data daring. Lihat apakah informasi Anda telah terungkap, pelajari cara
+    untuk melindungi akun daring Anda lebih baik, dan dapatkan pemberitahuan jika alamat surel Anda
+    muncul dalam pembobolan baru.
 # How Firefox Monitor works
 how-fxm-works = Bagaimana { -product-name } bekerja
 how-fxm-1-headline = Lakukan pencarian dasar
+how-fxm-1-blurb =
+    Cari alamat email Anda saat terjadi kebocoran data publik terjadi
+    sejak 2007. Pencarian dasar ini akan memunculkan sebagian besar kebocoran data, tetapi tidak
+    termasuk kebocoran yang berisi informasi pribadi yang sensitif.
 how-fxm-2-headline = Mendaftar untuk pemantauan pembobolan
+how-fxm-2-blurb =
+    Buat { -brand-fxa } untuk memantau surel Anda jika ada pembobolan.
+    Setelah memverifikasi email Anda, Anda juga akan menerima laporan lengkap tentang pembobolan di masa lalu,
+    termasuk kebocoran sensitif.
 how-fxm-3-headline = Dapatkan notifikasi di peramban Anda
+how-fxm-3-blurb =
+    Jika Anda menggunakan { -brand-name }, Anda akan menerima pemberitahuan jika Anda mengunjungi
+    situs yang telah dibobol. Cari tahu segera apakah Anda tersangkut dalam pembobolan tersebut
+    dan apa yang dapat Anda lakukan.
 wtd-after-website = Apa yang harus dilakukan setelah pembobolan situs web
 wtd-after-data-agg = Apa yang harus dilakukan setelah pembobolan agregator data
 what-is-data-agg = Apa itu agregator data?
+what-is-data-agg-blurb =
+    Pengumpul data, atau pialang data, mengumpulkan informasi dari rekaman
+    publik dan membelinya dari perusahaan lain. Mereka mengkompilasi data ini untuk menjualnya kepada perusahaan
+    untuk tujuan pemasaran. Korban pembobolan ini kecil kemungkinannya mengalami penipuan
+    finansial, tetapi peretas dapat menggunakan data ini untuk menyamar atau membuat profil mereka.
 protect-your-privacy = Lindungi privasi daring Anda
 no-pw-to-change = Tidak seperti pembobolan situs web, tidak ada kata sandi untuk diubah.
 avoid-personal-info = Hindari penggunaan informasi pribadi dalam kata sandi
@@ -456,6 +478,10 @@ your-info-was-discovered-blurb =
     ketika surel Anda muncul dalam kebocoran data. Inilah yang kami ketahui tentang pembobolan ini.
 what-to-do-after-breach = Apa yang harus dilakukan setelah tersangkut kebocoran data:
 ba-next-step-1 = Ubah kata sandi Anda menjadi kata sandi yang kuat dan unik.
+ba-next-step-blurb-1 =
+    Kata sandi yang kuat menggunakan kombinasi huruf besar dan kecil,
+    karakter khusus, dan angka. Kata sandi pun tidak mengandung info pribadi seperti
+    alamat, tanggal lahir, atau nama keluarga Anda.
 ba-next-step-2 = Hentikan penggunaan kata sandi yang terungkap sepenuhnya.
 ba-next-step-blurb-2 =
     Penjahat siber dapat menemukan kata sandi Anda di web gelap dan menggunakannya
