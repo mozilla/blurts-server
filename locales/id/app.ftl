@@ -377,7 +377,16 @@ sensitive-sites-copy =
     satu-satu orang yang dapat melihat jika informasi Anda termasuk di dalam kebocoran ini
     (kecuali seseorang telah mengakses ke akun surel Anda).
 delayed-reporting-headline = Mengapa butuh waktu lama untuk melaporkan pembobolan ini?
+delayed-reporting-copy =
+    Terkadang butuh waktu berbulan-bulan atau bertahun-tahun untuk identitas terungkap
+    dalam kebocoran data untuk muncul di web gelap. Pembobolan ditambahkan ke basis data kami
+    segera setelah ditemukan dan diverifikasi.
 about-fxm-headline = Tentang { -product-name }
+about-fxm-blurb =
+    { -product-name } memperingatkan jika akun daring Anda tersangkut dalam
+    kebocoran data. Cari tahu apakah Anda pernah tersangkut dalam kebocoran data, dapatkan peringatan tentang pembobolan terkini,
+    dan mengambil langkah-langkah untuk melindungi akun online Anda. { -product-name } disediakan
+    oleh { -brand-Mozilla }.
 # How Firefox Monitor works
 how-fxm-works = Bagaimana { -product-name } bekerja
 how-fxm-1-headline = Lakukan pencarian dasar
@@ -545,6 +554,8 @@ security-tips-headline = Kiat keamanan untuk melindungi diri Anda dari peretas
 steps-to-protect = Langkah-langkah yang harus diambil untuk melindungi identitas daring Anda
 take-further-steps = Ambil langkah lebih lanjut untuk melindungi identitas Anda
 alert-about-new-breaches = Beritahu saya tentang pembobolan baru
+see-if-youve-been-part = Lihat apakah Anda telah tersangkut kebocoran data online.
+get-ongoing-breach-monitoring = Dapatkan pemantauan yang sedang berlangsung atas kebocoran untuk beberapa alamat surel.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Temukan
 new-unsub-error = Anda harus berhenti berlangganan dari salah satu surel { -product-name } yang dikirim.
@@ -552,8 +563,17 @@ other-known-breaches-found =
     { $breachCount ->
        *[other] Namun, itu muncul dalam { $breachCount } pembobolan lainnya yang diketahui.
     }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Informasi tambahan, termasuk:
 # Title
 email-addresses-title = Alamat Surel
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = Pada { $breachDate }, { $breachTitle } mengalami pembobolan. Setelah pembobolan ditemukan dan diverifikasi, maka informasi ini ditambahkan ke basis data kami pada { $addedDate }.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = Pengaturan { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
 # and is followed by the user's primary Firefox Account email. 
 signed-in-as = Masuk sebagai: { $userEmail }
