@@ -447,6 +447,18 @@ your-info-was-discovered-blurb =
     ketika surel Anda muncul dalam kebocoran data. Inilah yang kami ketahui tentang pembobolan ini.
 what-to-do-after-breach = Apa yang harus dilakukan setelah tersangkut kebocoran data:
 ba-next-step-1 = Ubah kata sandi Anda menjadi kata sandi yang kuat dan unik.
+ba-next-step-2 = Hentikan penggunaan kata sandi yang terungkap sepenuhnya.
+ba-next-step-blurb-2 =
+    Penjahat siber dapat menemukan kata sandi Anda di web gelap dan menggunakannya
+    masuk ke akun Anda yang lain. Cara terbaik untuk melindungi akun Anda
+    adalah dengan menggunakan kata sandi unik untuk masing-masing akun.
+ba-next-step-3 = Dapatkan bantuan untuk membuat kata sandi yang lebih baik dan menjaganya tetap aman.
+ba-next-step-blurb-3 =
+    Gunakan pengelola kata sandi untuk membuat kata sandi yang kuat dan unik. Pengelola kata sandi menyimpan semua log masuk Anda dengan aman
+    sehingga Anda dapat mengaksesnya di semua perangkat Anda.
+faq1 = Saya tidak mengenali perusahaan atau situs web ini. Mengapa saya tersangkut pembobolan ini?
+faq2 = Mengapa butuh waktu lama untuk memberi tahu saya tentang pembobolan ini?
+faq3 = Bagaimana saya tahu ini adalah surel yang sah dari { -product-name }?
 new-breaches-found =
     { $breachCount ->
        *[other] { $breachCount } PEMBOBOLAN BARU DITEMUKAN
@@ -461,19 +473,78 @@ other-breaches-found =
     { $breachCount ->
        *[other] Namun, itu muncul dalam { $breachCount } pembobolan lainnya yang diketahui.
     }
+fb-comp-only = Surel ini muncul di pembobolan { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+       *[other] Surel ini muncul di { $breachCount } kebocoran data yang diketahui, termasuk { $breachName }.
+    }
+no-other-breaches-found = Tidak ada pembobolan lain yang ditemukan dari pencarian dasar.
 no-results-blurb = Maaf, kebocoran tersebut tidak ada dalam basis data kami.
 all-breaches-headline = Semua pembobolan di { -product-name }
 search-breaches = Cari Pembobolan
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Menampilkan:
+all-breaches = Semua Pembobolan
 
 ## Updated error messages
 
+error-bot-headline = Pencarian sementara ditangguhkan
+error-bot-blurb =
+    Kami khawatir Anda mungkin menjadi bot karena Anda mencari
+    beberapa alamat surel dalam waktu singkat. Untuk saat ini, Anda diblokir
+    dari pencarian baru. Anda bisa mencobanya lagi nanti.
+error-csrf-headline = Sesi habis
+error-csrf-blurb = Pilih tombol kembali pada peramban Anda, muat ulang laman, dan coba lagi.
+error-invalid-unsub = Cara berhenti berlangganan dari peringatan { -product-name }
+error-invalid-unsub-blurb =
+    Anda harus berhenti berlangganan dari salah satu dari
+    surel { -product-name } yang mengirimi Anda. Periksa kotak masuk Anda untuk pesan dari
+    { -brand-team-email }. Pilih tautan berhenti berlangganan di bagian bawah surel.
+login-link-pre = Punya akun?
 login-link = Masuk
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+       *[other] Alamat surel sedang dipantau
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+       *[other] Kebocoran data telah mengungkap informasi Anda
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+       *[other] Kata sandi terungkap di semua pembobolan
+    }
+# Button
+see-additional-breaches = Lihat Pembobolan Tambahan
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Lihat Semua Pembobolan
+scan-results-known-breaches =
+    { $breachCount ->
+       *[other] Surel ini muncul di { $breachCount } kebocoran data yang diketahui.
+    }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Hasil untuk: { $userEmail }
+other-monitored-emails = Surel Terpantau Lainnya
+email-verification-required = Verifikasi Surel Diperlukan
+fxa-primary-email = Surel Utama { -brand-fxa }
 what-is-a-website-breach = Apa itu pembobolan situs web?
+website-breach-blurb = Kebocoran data situs web terjadi ketika penjahat siber mencuri, menyalin, atau mengungkap informasi pribadi dari akun daring. Biasanya ini merupakan hasil peretas yang menemukan titik lemah dalam keamanan situs web. Pembobolan juga dapat terjadi ketika informasi akun bocor secara tidak sengaja.
 security-tips-headline = Kiat keamanan untuk melindungi diri Anda dari peretas
+steps-to-protect = Langkah-langkah yang harus diambil untuk melindungi identitas daring Anda
+take-further-steps = Ambil langkah lebih lanjut untuk melindungi identitas Anda
+alert-about-new-breaches = Beritahu saya tentang pembobolan baru
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Temukan
 new-unsub-error = Anda harus berhenti berlangganan dari salah satu surel { -product-name } yang dikirim.
