@@ -101,6 +101,7 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
       {
         supportedLocales: req.supportedLocales,
         breachedEmail: email,
+        recipientEmail: email,
         date: req.fluentFormat(new Date()),
         unsafeBreachesForEmail: unsafeBreachesForEmail,
         scanAnotherEmailHref: EmailUtils.getScanAnotherEmailUrl(utmID),
