@@ -26,6 +26,7 @@ error-not-subscribed = Este endereço de e-mail não está cadastrado no { -prod
 error-hibp-throttled = Conexões em excesso para o { -brand-HIBP }
 error-hibp-connect = Falha ao conectar com o { -brand-HIBP }.
 error-hibp-load-breaches = Não foi possível carregar os vazamentos.
+error-must-be-signed-in = Você precisa entrar na sua { -brand-fxa }.
 hibp-notify-email-subject = Alerta do { -product-name }: Sua conta foi envolvida em um vazamento.
 home-title = { -product-name }
 home-not-found = Página não encontrada.
