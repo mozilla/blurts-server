@@ -631,7 +631,6 @@ send-verification = Send Verification Link
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-global-communication = Global Communication
 breach-summary = Breach Summary
 
 show-breaches-for-this-email = Show all breaches for this email.
