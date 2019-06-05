@@ -26,6 +26,7 @@ error-not-subscribed = Esta dirección de correo electrónico no está suscrita 
 error-hibp-throttled = Demasiadas conexiones a { -brand-HIBP }.
 error-hibp-connect = Error al conectar con { -brand-HIBP }.
 error-hibp-load-breaches = No se pudieron cargar las violaciones de seguridad.
+error-must-be-signed-in = Tenés que iniciar la sesión en tu { -brand-fxa }.
 hibp-notify-email-subject = Alerta de { -product-name }: Tu cuenta estuvo involucrada en una violación de seguridad.
 home-title = { -product-name }
 home-not-found = Página no encontrada.

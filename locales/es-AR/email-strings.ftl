@@ -44,7 +44,7 @@ share-by-email-subject = Fijate si fuiste parte de una violación de datos.
 # Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
 share-by-email-message =
     Hola,
-    { -brand-name } tiene un servicio gratuito donde podés verificar si fuiste parte de una violación de datos. Así es como funciona:
+    { -brand-name } tiene un servicio gratuito donde podés verificar si fuiste parte de una violación de datos. Funciona así:
     1. Andá a { "https://monitor.firefox.com" } y buscá tu correo electrónico.
-    2. Fijate si tus cuentas en línea se expusieron a una violación de datos.
+    2. Fijate si tus cuentas en línea se expusieron en una violación de datos.
     3. Obtené consejos de { -product-name } sobre lo que hacer a continuación.
