@@ -211,6 +211,7 @@ guest-scan-results-headline =
     }
 user-no-breaches-blurb = このメールアドレスが新たな侵害に含まれた場合、通知します。
 have-an-account = 既にアカウントをお持ちですか？
+fb-landing-headline = { $breachName } のデータ侵害にさらされていますか？
 # Alerts is a noun
 sign-up-for-alerts = 登録して通知を受け取る
 sign-up-for-fxa-alerts = 登録して { -product-name } の通知を受け取る。
@@ -237,6 +238,7 @@ monitor-your-online-accounts = { -brand-fxa }でデータ侵害の監視に登�
 stay-alert = 新しいデータ侵害の警告を受け取る
 if-your-info = あなたの情報が新しいデータ侵害にさらされた場合、警告を送信します。
 monitor-several-emails = 複数のメールアドレスを監視する
+keep-your-data-safe = サイバー犯罪からデータを安全に保つために必要なことを見つけましょう。
 what-data = 漏洩したデータ:
 delayed-reporting-headline = なぜ、この侵害の報告に時間がかかったのですか？
 about-fxm-headline = { -product-name } について
@@ -259,6 +261,7 @@ manage-email-addresses = メールアドレスの管理
 latest-breach-link = この侵害を受けているか確認する
 what-to-do-after-breach = データ侵害があった後にするべきこと:
 account-not-required = { -brand-name } ブラウザーは { -brand-fxa }には必要ありません。{ -brand-Mozilla } サービスについての情報を受け取るでしょう。
+was-your-info-exposed = { $breachName } のデータ侵害にさらされていますか？
 no-results-blurb = データベース内に侵害は見つかりませんでした。
 all-breaches-headline = { -product-name } 内のすべてのデータ侵害
 search-breaches = データ侵害を検索
@@ -267,6 +270,9 @@ search-breaches = データ侵害を検索
 
 login-link = ログイン
 see-if-youve-been-part = オンラインのデータ侵害に含まれていないか確認しましょう。
+get-ongoing-breach-monitoring = 複数のメールアドレスに対してデータ侵害の監視をしましょう。
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = 調査する
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = 侵害を受けたその他の情報:
@@ -281,3 +287,7 @@ monitor-preferences = { -product-short-name } の設定
 signed-in-as = ログイン中: { $userEmail }
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = メニュー
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = あなたのプライバシーを守る方法があります。{ -brand-name } を使用しましょう。
+# Link title
+learn-more-link = 詳しくはこちら。
