@@ -352,11 +352,20 @@ keep-your-data-safe = Descubre lo que necesitas hacer para mantener tu informaci
 website-breach = Violación del sitio web
 sensitive-breach = Filtración de datos sensible del sitio web
 what-data = Qué datos fueron comprometidos:
+# How Firefox Monitor works
+how-fxm-works = Cómo funciona { -product-name }
+how-fxm-1-headline = Hacer una búsqueda básica
 how-fxm-3-headline = Recibir notificaciones en el navegador
+wtd-after-data-agg = Qué hacer después de una violación de un agregador de datos
+what-is-data-agg = ¿Qué es un agregador de datos?
+protect-your-privacy = Proteger tu privacidad en línea
 
 ## What to do after data breach tips
 
 change-pw = Cambiar tu contraseña
+create-strong-passwords = Cómo crear contraseñas seguras
+stop-reusing-pw = Dejar de usar las mismas contraseñas
+five-myths = 5 mitos sobre los administradores de contraseñas
 back-to-top = Volver al inicio
 resend-verification = Reenviar correo electrónico de verificación
 add-new-email = Agregar una nueva dirección de correo electrónico
@@ -377,3 +386,9 @@ ba-next-step-2 = Dejar de usar la contraseña expuesta por completo.
 
 ## Updated error messages
 
+login-link-pre = ¿Tienes una cuenta?
+login-link = Iniciar sesión
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Descubrir
+# Title
+email-addresses-title = Direcciones de correo electrónico
