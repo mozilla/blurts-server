@@ -97,14 +97,14 @@ function getUserPreferences(args) {
 function getLastAddedEmailStrings(args) {
   const locales = args.data.root.req.supportedLocales;
   const lastAddedEmail = args.data.root.lastAddedEmail;
-  lastAddedEmail = `<span class="bold">${lastAddedEmail}</span>`;
+  const lastAddedEmailSpan = `<span class="bold">${lastAddedEmail}</span>`;
 
-  let preferencesLinkString = LocaleUtils.fluentFormat(locales, "preferences");
-  preferencesLinkString = `<a class="demi text-link" href="/user/preferences">${preferencesLinkString}</a>`;
+  const preferencesLinkString = LocaleUtils.fluentFormat(locales, "preferences");
+  const preferencesLink = `<a class="demi text-link" href="/user/preferences">${preferencesLinkString}</a>`;
 
   const lastAddedEmailStrings = [
-    LocaleUtils.fluentFormat(locales, "verify-the-link", { userEmail: lastAddedEmail }),
-    LocaleUtils.fluentFormat(locales, "manage-all-emails", { preferencesLink: preferencesLinkString }),
+    LocaleUtils.fluentFormat(locales, "verify-the-link", { userEmail: lastAddedEmailSpan }),
+    LocaleUtils.fluentFormat(locales, "manage-all-emails", { preferencesLink }),
   ];
   return lastAddedEmailStrings;
 }
