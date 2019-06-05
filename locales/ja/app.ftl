@@ -181,6 +181,7 @@ confirmation-blurb = データ侵害は他の人にも影響を及ぼす可能�
 share-email = メールアドレス
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = その他
+share-twitter = 多くの人が約 100 個のオンラインアカウントを持っています。あなたのアカウントはデータ侵害にさらされていませんか？確認しましょう。
 mozilla-security-blog = { -brand-Mozilla } セキュリティブログ
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = ソーシャル
@@ -218,6 +219,7 @@ sign-up-for-fxa-alerts = 登録して { -product-name } の通知を受け取る
 # Link title
 frequently-asked-questions = よくある質問
 about-firefox-monitor = { -product-name } について
+preferences = 設定
 # Link title.
 home = ホーム
 # Link title
@@ -258,8 +260,11 @@ search-for-your-email = 2007 年までさかのぼって、メールアドレス
 back-to-top = トップに戻る
 resend-verification = 認証メールを再送する
 send-verification = 認証リンクを送信する
+breach-summary = データ侵害概要
 manage-email-addresses = メールアドレスの管理
 latest-breach-link = この侵害を受けているか確認する
+welcome-back = おかえりなさい、{ $userName } さん！
+welcome-user = ようこそ、{ $userName } さん！
 what-to-do-after-breach = データ侵害があった後にするべきこと:
 account-not-required = { -brand-name } ブラウザーは { -brand-fxa }には必要ありません。{ -brand-Mozilla } サービスについての情報を受け取るでしょう。
 was-your-info-exposed = { $breachName } のデータ侵害にさらされていますか？
@@ -269,7 +274,22 @@ search-breaches = データ侵害を検索
 
 ## Updated error messages
 
+error-csrf-headline = セッションがタイムアウトしました
+login-link-pre = アカウントをお持ちですか？
 login-link = ログイン
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = すべてのデータ侵害を見る
+scan-results-known-breaches =
+    { $breachCount ->
+       *[other] このメールアドレスは { $breachCount } 個の既知のデータ侵害があります。
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = { $userEmail } についての結果
+email-verification-required = メールアドレスの認証が必要です
+fxa-primary-email = { -brand-fxa } メールアドレス - 主要
 security-tips-headline = ハッカーからあなたを守るセキュリティの秘訣
 steps-to-protect = オンラインであなたを保護する手順
 take-further-steps = あなたを守るさらなる手順
