@@ -91,7 +91,7 @@ async function handleComplaintMessage(message) {
 
 async function removeSubscribersFromDB(recipients) {
   for (const recipient of recipients) {
-    await DB.removeSubscriberByEmail(recipient.emailAddress);
+    await DB.removeEmail(recipient.emailAddress);
   }
 }
 

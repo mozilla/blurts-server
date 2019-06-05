@@ -2,7 +2,7 @@
 
 const HIBP = require("../hibp");
 const DB = require("../db/DB");
-const { TEST_EMAIL_ADDRESSES } = require("../db/seeds/test_subscribers");
+const { TEST_SUBSCRIBERS, TEST_EMAIL_ADDRESSES } = require("../db/seeds/test_subscribers");
 const getSha1 = require("../sha1-utils");
 
 require("./resetDB");
@@ -152,14 +152,40 @@ test("setAllEmailsToPrimary updates column and returns subscriber", async() => {
 });
 
 
-test("removeSubscriber accepts email and removes the email address", async () => {
+test("removeSubscriber accepts subscriber and removes everything from subscribers and email_addresses tables", async () => {
+  const startingSubscriber = await DB.getSubscriberByEmail(TEST_SUBSCRIBERS.firefox_account.primary_email);
+  expect(startingSubscriber.id).toEqual(TEST_SUBSCRIBERS.firefox_account.id);
+  const startingEmailAddressRecord = await DB.getEmailById(TEST_EMAIL_ADDRESSES.firefox_account.id);
+  expect(startingEmailAddressRecord.id).toEqual(TEST_EMAIL_ADDRESSES.firefox_account.id);
+
+  await DB.removeSubscriber(startingSubscriber);
+
+  const noMoreSubscribers = await DB.getSubscriberByEmail(startingSubscriber.primary_email);
+  expect(noMoreSubscribers).toBeUndefined();
+  const noMoreEmailAddress = await DB.getEmailById(startingEmailAddressRecord.id);
+  expect(noMoreEmailAddress).toBeUndefined();
+});
+
+
+test("removeEmail accepts email and removes from subscribers table", async () => {
   const testEmail = "removingFirefoxAccount@test.com";
 
   const verifiedSubscriber = await DB.addSubscriber(testEmail);
-  let subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
+  const subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
   expect(subscribers.length).toEqual(1);
 
-  await DB.removeSubscriberByEmail(verifiedSubscriber.primary_email);
-  subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
-  expect(subscribers.length).toEqual(0);
+  await DB.removeEmail(verifiedSubscriber.primary_email);
+  const noMoreSubscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
+  expect(noMoreSubscribers.length).toEqual(0);
+});
+
+
+test("removeEmail accepts email and removes from email_addresses table", async () => {
+  const testEmailAddress = TEST_EMAIL_ADDRESSES.all_emails_to_primary;
+  const emailAddress = await DB.getEmailById(testEmailAddress.id);
+  expect(emailAddress.email).toEqual(testEmailAddress.email);
+
+  await DB.removeEmail(emailAddress.email);
+  const noMoreEmailAddress = await DB.getEmailById(testEmailAddress.id);
+  expect(noMoreEmailAddress).toBeUndefined();
 });
