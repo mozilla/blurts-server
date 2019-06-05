@@ -850,6 +850,3 @@ join-firefox = There is a way to protect your privacy. Join {-brand-name}.
 
 # Link title
 learn-more-link = Learn more.
-
-
-breach-alert-subject = {-product-name} found your email in a new data breach.
