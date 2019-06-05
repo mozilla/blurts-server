@@ -42,6 +42,7 @@ exports.TEST_SUBSCRIBERS = {
 
 exports.TEST_EMAIL_ADDRESSES = {
   firefox_account: {
+    id: 11111,
     subscriber_id: 12345,
     sha1: getSha1("firefoxaccount-secondary@test.com"),
     email: "firefoxaccount-secondary@test.com",
