@@ -26,6 +26,7 @@ error-not-subscribed = Den här e-postadressen prenumererar inte på { -product-
 error-hibp-throttled = För många anslutningar till { -brand-HIBP }.
 error-hibp-connect = Det gick inte att ansluta till { -brand-HIBP }.
 error-hibp-load-breaches = Kunde inte ladda intrång.
+error-must-be-signed-in = Du måste vara inloggad på ditt { -brand-fxa }.
 hibp-notify-email-subject = { -product-name } varning: Ditt konto var inblandat i ett intrång.
 home-title = { -product-name }
 home-not-found = Sidan hittades inte.
