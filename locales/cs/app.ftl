@@ -98,6 +98,7 @@ error-not-subscribed = Tato e-mailová adresa není přihlášena k odběru zpr�
 error-hibp-throttled = Příliš mnoho spojení ke službě { -brand-HIBP }.
 error-hibp-connect = Chyba při připojování k { -brand-HIBP }.
 error-hibp-load-breaches = Nepodařilo se načíst informace o únicích.
+error-must-be-signed-in = Musíte být přihlášeni do svého { -brand-fxa(case: "gen") }.
 hibp-notify-email-subject = { -product-name } - upozornění, váš účet byl součástí úniku dat.
 home-title = { -product-name }
 home-not-found = Stránka nenalezena.
