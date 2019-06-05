@@ -70,29 +70,30 @@ nav {
   background-color: rgba(255, 255, 255, 0);
   padding-right: calc(1rem + 1vw);
   padding-left: calc(1rem + 1vw);
-  text-align: center;
   justify-content: center;
-  font-size: 1rem;
   color: rgba(255, 255, 255, 0.9);
 }
 
-.nav-link.active-link {
+.active-link {
   font-weight: 700;
   position: relative;
 }
 
-.nav-link.active-link::after {
-  width: 50%;
+.active-link-underline::after {
   height: 0.15rem;
-  background-image: var(--monitorGradient);
-  max-width: 6rem;
+  background: var(--monitorGradient);
+  opacity: 0;
   display: block;
   content: "";
   position: absolute;
   bottom: -10px;
   left: 0;
   right: 0;
-  margin: auto;
+}
+
+.active-link-underline.active-link::after {
+  opacity: 1;
+  transition: opacity 0.15s ease-in-out;
 }
 
 .drop-down-menu {
@@ -257,7 +258,7 @@ nav {
 }
 
 .fxa-menu-link:hover {
-  background-color: rgba(155, 155, 165, 0.06);
+  background-color: rgba(155, 155, 165, 0.15);
   transition: all 0.15s ease;
 }
 
@@ -302,7 +303,7 @@ nav {
     display: none;
   }
 
-  .nav-link.active-link::after {
+  .active-link::after {
     display: none;
   }
 
