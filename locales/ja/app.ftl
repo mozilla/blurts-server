@@ -250,6 +250,7 @@ change-pw = パスワードを変更する
 make-new-pw-unique = 新しいパスワードを他とは異なり一意にする
 create-strong-passwords = 強力なパスワードの作り方
 stop-reusing-pw = 同じパスワードの追加い回しをやめる
+five-myths = パスワードマネージャーに関する 5 つの話題
 see-if-breached = オンラインのデータ侵害がないか確認しましょう。
 check-for-breaches = データ侵害を確認する
 find-out-what-hackers-know = ハッカーが既にあなたについて知っていることを調査しましょう。一歩先に行く方法を学んでください。
@@ -269,6 +270,9 @@ search-breaches = データ侵害を検索
 ## Updated error messages
 
 login-link = ログイン
+security-tips-headline = ハッカーからあなたを守るセキュリティの秘訣
+steps-to-protect = オンラインであなたを保護する手順
+take-further-steps = あなたを守るさらなる手順
 see-if-youve-been-part = オンラインのデータ侵害に含まれていないか確認しましょう。
 get-ongoing-breach-monitoring = 複数のメールアドレスに対してデータ侵害の監視をしましょう。
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
