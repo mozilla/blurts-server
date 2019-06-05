@@ -7,7 +7,7 @@ const { filterBreaches } = require("./../hibp");
 
 function getLocalizedBreachCardStrings(locales) {
   return {
-    BreachReported : LocaleUtils.fluentFormat(locales, "breach-added"),
+    BreachAdded : LocaleUtils.fluentFormat(locales, "breach-added-label"),
     CompromisedAccounts: LocaleUtils.fluentFormat(locales, "compromised-accounts"),
     CompromisedData: LocaleUtils.fluentFormat(locales, "compromised-data"),
     MoreInfoLink: LocaleUtils.fluentFormat(locales, "more-about-this-breach"),

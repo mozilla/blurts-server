@@ -86,7 +86,7 @@ function makeBreaches(breaches, LocalizedBreachCardStrings, breachCardWrapper, b
     makeBreachInfoSpans("breach-title", breach.Title, wrapper);
 
     // added date
-    makeBreachInfoSpans("breach-key", LocalizedBreachCardStrings.BreachReported, wrapper);
+    makeBreachInfoSpans("breach-key", LocalizedBreachCardStrings.BreachAdded, wrapper);
     makeBreachInfoSpans("breach-value", breach.AddedDate, wrapper);
 
     // compromised accounts
