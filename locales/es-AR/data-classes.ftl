@@ -2,7 +2,7 @@
 
 account-balances = Saldos de cuentas
 address-book-contacts = Contactos de la Libreta de direcciones
-age-groups = Grupos de edad
+age-groups = Grupos etarios
 ages = Edades
 apps-installed-on-devices = Aplicaciones instaladas en dispositivos
 astrological-signs = Signos astrológicos
@@ -72,7 +72,7 @@ occupations = Ocupaciones
 parenting-plans = Planes de crianza
 partial-credit-card-data = Datos parciales de la tarjeta de crédito
 passport-numbers = Números del pasaporte
-password-hints = Sugerencias de la contraseña
+password-hints = Sugerencias para la contraseña
 passwords = Contraseñas
 payment-histories = Historiales de pago
 payment-methods = Métodos de pago
