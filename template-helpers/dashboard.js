@@ -96,7 +96,7 @@ function getUserPreferences(args) {
 
 function getLastAddedEmailStrings(args) {
   const locales = args.data.root.req.supportedLocales;
-  let lastAddedEmail = args.data.root.lastAddedEmail;
+  const lastAddedEmail = args.data.root.lastAddedEmail;
   lastAddedEmail = `<span class="bold">${lastAddedEmail}</span>`;
 
   let preferencesLinkString = LocaleUtils.fluentFormat(locales, "preferences");
