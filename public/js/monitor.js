@@ -173,6 +173,7 @@ function toggleMobileFeatures(topNavBar) {
       emailCards.forEach(card => {
         card.classList.add("active");
       });
+      return;
     }
 
   const closeActiveEmailCards = document.querySelectorAll(".col-9.email-card.active");
@@ -197,15 +198,15 @@ function styleActiveLink(locationHref) {
   let queryString = `.nav-link[href='${locationHref}']`;
   const activeLink = document.querySelector(queryString);
   if (activeLink) {
-    return activeLink.classList.add("active-link");
+    return activeLink.firstChild.classList.add("active-link");
   }
 
   if (locationHref.indexOf("/dashboard") !== -1) {
     queryString = queryString.replace("user/dashboard", "");
-    return document.querySelector(queryString).classList.add("active-link");
+    return document.querySelector(queryString).firstChild.classList.add("active-link");
   }
   if (locationHref.indexOf("/security-tips") !== -1) {
-    return document.querySelector(".nav-link[href*='/security-tips']").classList.add("active-link");
+    return document.querySelector(".nav-link[href*='/security-tips']").firstChild.classList.add("active-link");
   }
 }
 
