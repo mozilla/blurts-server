@@ -25,8 +25,8 @@ error-could-not-add-email = Tidak dapat menambahkan alamat surel ke basis data.
 error-not-subscribed = Alamat surel ini tidak berlangganan { -product-name }.
 error-hibp-throttled = Terlalu banyak koneksi ke { -brand-HIBP }.
 error-hibp-connect = Gagal tersambung dengan { -brand-HIBP }.
-error-hibp-load-breaches = Tidak dapat memuat data penerobosan.
-hibp-notify-email-subject = Peringatan { -product-name }: Akun Anda telah terlibat dalam sebuah penerobosan.
+error-hibp-load-breaches = Tidak dapat memuat data pembobolan.
+hibp-notify-email-subject = Peringatan { -product-name }: Akun Anda telah terlibat dalam sebuah pembobolan.
 home-title = { -product-name }
 home-not-found = Laman tidak ditemukan.
 oauth-invalid-session = Sesi tidak valid
@@ -83,7 +83,7 @@ scan-privacy = Surel Anda tidak akan disimpan.
 scan-submit = Cari Surel Anda
 scan-another-email = Pindai Alamat Surel Lainnya
 scan-featuredbreach-label = Cari tahu apakah akun <span class="bold">{ $featuredBreach }</span> Anda telah diketahui orang lain.
-sensitive-breach-email-required = Penerobosan mengandung informasi yang sensitif. Verifikasi surel dibutuhkan.
+sensitive-breach-email-required = Pembobolan mengandung informasi yang sensitif. Verifikasi surel dibutuhkan.
 scan-error = Harus surel yang valid.
 signup-banner-headline = { -product-name-nowrap } mendeteksi ancaman terhadap akun daring Anda.
 signup-banner-blurb =
@@ -371,6 +371,11 @@ unverified-breach-plural = Pembobolan Belum Terverifikasi
 spam-list-breach-plural = Pembobolan Data Spam
 what-data = Data apa saja yang terkompromi:
 sensitive-sites = Bagaimana { -product-name } memperlakukan situs sensitif?
+sensitive-sites-copy =
+    { -product-name } hanya memunculkan akun yang diasosiasikan dengan
+    macam-macam kebocoran setelah sebuah alamat surel diverifikasi. Ini berarti Anda adalah
+    satu-satu orang yang dapat melihat jika informasi Anda termasuk di dalam kebocoran ini
+    (kecuali seseorang telah mengakses ke akun surel Anda).
 delayed-reporting-headline = Mengapa butuh waktu lama untuk melaporkan pembobolan ini?
 about-fxm-headline = Tentang { -product-name }
 # How Firefox Monitor works
@@ -398,10 +403,22 @@ create-unique-pw = Buat kata sandi unik dan simpan di tempat yang aman, seperti 
 five-myths = 5 mitos tentang pengelola kata sandi
 feat-security-tips = Tips keamanan untuk melindungi akun Anda
 feat-sensitive = Pencarian lanjutan dalam pembobolan sensitif
+feat-enroll-multiple = Daftarkan beberapa surel dalam pemantauan kebocoran
 sign-up-for-fxa = Daftar { -brand-fxa }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+       *[other] Muncul dalam { $breachCount } pembobolan yang diketahui.
+    }
+see-if-breached = Lihat apakah Anda pernah tersangkut kebocoran data daring.
 check-for-breaches = Periksa Pelanggaran Data
+find-out-what-hackers-know = Cari tahu apa yang sudah diketahui peretas tentang Anda. Pelajari cara agar selalu selangkah lebih depan dari mereka.
+search-for-your-email = Cari alamat surel Anda yang tersangkut kebocoran data publik sejak 2007.
 back-to-top = Kembali ke Atas
+comm-opt-0 = Kirim saya surel jika salah satu alamat surel saya di bawah ini tersangkut dalam kebocoran data.
 comm-opt-1 = Kirim semua peringatan kebocoran ke { $primaryEmail }.
+stop-monitoring-this = Hentikan pemantauan surel ini.
 resend-verification = Kirim ulang verifikasi surel
 add-new-email = Tambah alamat surel baru
 send-verification = Kirim Tautan Verifikasi
@@ -411,10 +428,27 @@ send-verification = Kirim Tautan Verifikasi
 # alerts for all of their monitored email addresses to a single 
 # email address.
 global-communication = Komunikasi Global
+breach-summary = Ringkasan Pembobolan
+show-breaches-for-this-email = Tampilkan semua pembobolan untuk surel ini.
 link-change-primary = Ubah Alamat Surel Utama
+remove-fxm = Hapus { -product-name }
+remove-fxm-blurb =
+    Matikan peringatan { -product-name }. { -brand-fxa } Anda akan tetap aktif, dan Anda mungkin menerima
+    komunikasi terkait akun lainnya.
 manage-email-addresses = Kelola Alamat Surel
+latest-breach-link = Lihat apakah Anda tersangkut dalam pembobolan ini.
+welcome-back = Selamat datang kembali, { $userName }!
 welcome-user = Selamat datang, { $userName }!
+breach-alert-subject = { -product-name } menemukan surel Anda dalam kebocoran data terkini.
+your-info-was-discovered-headline = Informasi Anda ditemukan dalam kebocoran data terkini.
+your-info-was-discovered-blurb =
+    Anda mendaftarkan diri untuk menerima peringatan { -product-name }
+    ketika surel Anda muncul dalam kebocoran data. Inilah yang kami ketahui tentang pembobolan ini.
+what-to-do-after-breach = Apa yang harus dilakukan setelah tersangkut kebocoran data:
+ba-next-step-1 = Ubah kata sandi Anda menjadi kata sandi yang kuat dan unik.
 no-results-blurb = Maaf, kebocoran tersebut tidak ada dalam basis data kami.
+all-breaches-headline = Semua pembobolan di { -product-name }
+search-breaches = Cari Pembobolan
 
 ## Updated error messages
 
@@ -430,6 +464,9 @@ email-addresses-title = Alamat Surel
 # When a user is signed in, this appears in the drop down menu 
 # and is followed by the user's primary Firefox Account email. 
 signed-in-as = Masuk sebagai: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Saring berdasarkan Kategori:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
 to-affected-email = Kirim peringatan kebocoran ke alamat surel terkait
