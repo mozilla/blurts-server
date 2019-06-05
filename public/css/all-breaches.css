@@ -4,8 +4,7 @@
 }
 
 span.x-close-bg,
-svg.x-close,
-.svg.x-close path {
+svg.x-close {
   pointer-events: none;
 }
 

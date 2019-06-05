@@ -73,7 +73,6 @@ function makeBreaches(breaches, LocalizedBreachCardStrings, breachCardWrapper, b
     const breachLogo = document.createElement("img");
     breachLogo["alt"] = "";
     breachLogo["classList"] = "breach-logo lazy-img";
-    /* eslint-disable-next-line quotes */
     breachLogo.dataset.src = `/img/logos/${breach.LogoPath}`;
     breachLogo.src = "/img/logos/lazyPlaceHolder.png";
     logoWrapper.appendChild(breachLogo);
