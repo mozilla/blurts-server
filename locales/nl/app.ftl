@@ -26,6 +26,7 @@ error-not-subscribed = Dit e-mailadres is niet geabonneerd op { -product-name }.
 error-hibp-throttled = Te veel verbindingen met { -brand-HIBP }.
 error-hibp-connect = Fout bij verbinden met { -brand-HIBP }.
 error-hibp-load-breaches = Kon datalekken niet laden.
+error-must-be-signed-in = U moet bij uw { -brand-fxa } zijn aangemeld.
 hibp-notify-email-subject = { -product-name } Waarschuwing: uw account is betrokken bij een datalek.
 home-title = { -product-name }
 home-not-found = Pagina niet gevonden.
