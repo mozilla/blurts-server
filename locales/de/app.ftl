@@ -27,7 +27,6 @@ error-hibp-throttled = Zu viele Verbindungen mit { -brand-HIBP }.
 error-hibp-connect = Fehler beim Verbinden mit { -brand-HIBP }.
 error-hibp-load-breaches = Sicherheitslecks konnten nicht geladen werden.
 error-must-be-signed-in = Sie müssen bei Ihrem { -brand-fxa } angemeldet sein.
-hibp-notify-email-subject = { -product-name }: Warnung: Dein Konto war von einem Datenleck betroffen.
 home-title = { -product-name }
 home-not-found = Seite nicht gefunden.
 oauth-invalid-session = Ungültige Sitzung
@@ -335,8 +334,6 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = { -brand-fxa } Navigation öffnen
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = Zuletzt hinzugefügtes Datenleck
-breach-added = Gemeldetes Datenleck
-breach-discovered = Entdecktes Datenleck
 # Link title
 more-about-this-breach = Mehr zu diesem Datenleck
 take-control = Hol dir die Kontrolle über deine persönlichen Daten zurück.
@@ -567,3 +564,6 @@ to-affected-email = Benachrichtigungen über Datenlecks an die betroffene E-Mail
 join-firefox = Es gibt einen Weg, deine Privatsphäre zu schützen. Komm zu { -brand-name }.
 # Link title
 learn-more-link = Mehr erfahren.
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Datenleck hinzugefügt:
