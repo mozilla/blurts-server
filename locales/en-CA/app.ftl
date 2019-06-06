@@ -27,7 +27,6 @@ error-hibp-throttled = Too many connections to { -brand-HIBP }.
 error-hibp-connect = Error connecting to { -brand-HIBP }.
 error-hibp-load-breaches = Could not load breaches.
 error-must-be-signed-in = You must be signed in to your { -brand-fxa }.
-hibp-notify-email-subject = { -product-name } Alert: Your account was involved in a breach.
 home-title = { -product-name }
 home-not-found = Page not found.
 oauth-invalid-session = Invalid session
@@ -380,8 +379,6 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = Open { -brand-fxa } navigation
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = LATEST BREACH ADDED
-breach-added = Breach reported:
-breach-discovered = Breach discovered:
 # Link title
 more-about-this-breach = More about this breach
 take-control = Take back control of your personal data.
@@ -657,3 +654,6 @@ to-affected-email = Send breach alerts to the affected email address
 join-firefox = There is a way to protect your privacy. Join { -brand-name }.
 # Link title
 learn-more-link = Learn more.
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Breach added:
