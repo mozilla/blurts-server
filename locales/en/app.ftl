@@ -860,7 +860,7 @@ verify-the-link = Verify the link sent to { $userEmail } to add it to {-product-
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
-# using the {-preferences} string.
+# using the { preferences } string.
 manage-all-emails = Manage all email addresses in { $preferencesLink }.
 
 # This string is a header on the user preferences page and
