@@ -26,6 +26,7 @@ error-not-subscribed = 此電子郵件地址未訂閱 { -product-name }。
 error-hibp-throttled = 與 { -brand-HIBP } 的連線太多。
 error-hibp-connect = 連線到 { -brand-HIBP } 時發生錯誤。
 error-hibp-load-breaches = 無法載入資料外洩資訊。
+error-must-be-signed-in = 您必須先登入 { -brand-fxa }。
 hibp-notify-email-subject = { -product-name } 警告: 您的帳號資料已遭外洩。
 home-title = { -product-name }
 home-not-found = 找不到頁面。
