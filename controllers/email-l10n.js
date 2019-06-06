@@ -27,7 +27,7 @@ function getEmailMockUps(req, res) {
       emailSubject = req.fluentFormat("user-verify-email-report-subject");
       if(emailType === "breachAlert") {
         breachAlert = unsafeBreachesForEmail[0];
-        emailSubject = req.fluentFormat("hibp-notify-email-subject");
+        emailSubject = req.fluentFormat("breach-alert-subject");
       }
     } else if (emailType === "multipleBreaches") {
       const breachArray = ["Experian", "Dropbox", "Apollo"];

@@ -31,8 +31,6 @@ error-hibp-connect = Error connecting to {-brand-HIBP}.
 error-hibp-load-breaches = Could not load breaches.
 error-must-be-signed-in = You must be signed in to your {-brand-fxa}.
 
-hibp-notify-email-subject = {-product-name} Alert: Your account was involved in a breach.
-
 home-title = {-product-name}
 home-not-found = Page not found.
 
