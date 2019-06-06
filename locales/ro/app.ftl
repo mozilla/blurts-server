@@ -26,6 +26,7 @@ error-not-subscribed = Această adresă de e-mail nu este abonată la { -product
 error-hibp-throttled = Prea multe conexiuni la { -brand-HIBP }.
 error-hibp-connect = Eroare de conectare la { -brand-HIBP }.
 error-hibp-load-breaches = Nu s-au putut încărca breșele.
+error-must-be-signed-in = Trebuie să fii autentificat(ă) la { -brand-fxa }.
 hibp-notify-email-subject = Alertă { -product-name }: Contul tău a fost implicat într-o breșă.
 home-title = { -product-name }
 home-not-found = Pagină negăsită.
