@@ -97,6 +97,7 @@ async function notify (req, res) {
         recipientEmail, subject, template,
         {
           breachedEmail,
+          recipientEmail,
           supportedLocales,
           breachAlert,
           SERVER_URL: req.app.locals.SERVER_URL,

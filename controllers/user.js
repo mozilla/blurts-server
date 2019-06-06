@@ -54,7 +54,7 @@ async function resendEmail(req, res) {
     email,
     req.fluentFormat("user-add-email-verify-subject"),
     "default_email",
-    { email,
+    { recipientEmail: email,
       supportedLocales: req.supportedLocales,
       verificationHref: EmailUtils.getVerificationUrl(unverifiedEmailAddressRecord),
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(unverifiedEmailAddressRecord, "account-verification-email"),
@@ -93,7 +93,6 @@ function _checkForDuplicateEmail(sessionUser, email) {
 async function add(req, res) {
   const sessionUser = await _requireSessionUser(req);
   const email = req.body.email;
-
   if (!email || !isemail.validate(email)) {
     throw new FluentError("user-add-invalid-email");
   }
@@ -110,13 +109,13 @@ async function add(req, res) {
     req.fluentFormat("user-add-email-verify-subject"),
     "default_email",
     { breachedEmail: email,
+      recipientEmail: email,
       supportedLocales: req.supportedLocales,
       verificationHref: EmailUtils.getVerificationUrl(unverifiedSubscriber),
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(unverifiedSubscriber, "account-verification-email"),
       whichView: "email_partials/email_verify",
     }
   );
-
   res.redirect("/user/preferences");
 }
 
@@ -198,6 +197,7 @@ async function _verify(req) {
     "default_email",
     {
       breachedEmail: verifiedEmailHash.email,
+      recipientEmail: verifiedEmailHash.email,
       supportedLocales: req.supportedLocales,
       unsafeBreachesForEmail: unsafeBreachesForEmail,
       scanAnotherEmailHref: EmailUtils.getScanAnotherEmailUrl(utmID),
