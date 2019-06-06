@@ -1,14 +1,13 @@
 .welcome-back {
   font-size: 1.1rem;
-  font-family: "FirefoxSharpSans", Arial, Helvetica, sans-serif;
+  font-family: "Metropolis", sans-serif;
   display: inline-block;
+  line-height: 130%;
 }
 
 h2.pref-headline {
-  font-weight: 700;
   font-size: 32px;
   margin-bottom: 0;
-  letter-spacing: 0.02em;
 }
 
 h3.pref-section-headline {
@@ -46,6 +45,7 @@ h2.pref-headline.breach-summary {
 
 .container.preferences {
   background-size: auto;
+  padding-top: 16rem;
 }
 
 .manage-emails.btn-dark {

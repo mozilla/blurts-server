@@ -165,9 +165,9 @@ input[type="submit"] {
   border-width: 2px;
   background-color: var(--blue3);
   color: rgba(255, 255, 255, 1);
-  font-weight: 700;
+  font-weight: 600;
   border-color: var(--blue3);
-  letter-spacing: 0.03em;
+  letter-spacing: 0.01em;
   cursor: pointer;
   transition: all 0.15s ease;
 }
@@ -200,7 +200,7 @@ input.email-add-submit {
   background-color: var(--blue3);
   color: rgba(255, 255, 255, 1);
   border-color: var(--blue3);
-  font-weight: 500;
+  padding: 0 0.75rem;
 }
 
 input.unsub {

@@ -36,12 +36,9 @@ header.show-shadow {
   position: relative;
 }
 
-.fx-monitor {
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin: 0;
-  letter-spacing: 0.5px;
-  display: inline-flex;
+.fx-monitor-logo-wrapper,
+.desktop-menu {
+  flex: 1 1 100%;
 }
 
 .fx-monitor-logo-wrapper:hover {
@@ -55,9 +52,14 @@ header.show-shadow {
   height: 40px;
 }
 
-.fx-monitor span {
-  font-weight: 700;
-  margin: auto 3px auto 5px;
+.fx-monitor-logotype {
+  background: url("/img/svg/fx-monitor-logotype.svg");
+  width: 100%;
+  margin-left: var(--margin);
+  background-position: left;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 28px;
 }
 
 /* navigation */
@@ -72,6 +74,7 @@ nav {
   padding-left: calc(1rem + 1vw);
   justify-content: center;
   color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
 }
 
 .active-link {
@@ -295,6 +298,15 @@ nav {
 }
 
 @media screen and (max-width: 800px) {
+  .desktop-menu {
+    flex: 1 1 auto;
+  }
+
+  .fx-monitor-logotype {
+    margin-left: 0.25rem;
+    height: 25px;
+  }
+
   .top-bar {
     font-size: 14px;
   }
@@ -405,10 +417,6 @@ nav {
 }
 
 @media screen and (max-width: 600px) {
-  .fx-monitor {
-    font-size: 1.25rem;
-  }
-
   .drop-down-menu svg.toggle-down {
     right: 2rem;
   }
@@ -422,16 +430,16 @@ nav {
     font-size: 1rem;
   }
 
-  .fx-monitor span {
-    margin-left: 1px;
-  }
-
   .sprite.fx-monitor-logo {
     transform: scale(0.9);
   }
 
+  .fx-monitor-logotype {
+    height: 18px;
+  }
+
   .sign-in {
-    padding: 0.75rem 1.35rem;
+    padding: 0.65rem 1.35rem;
   }
 
   .mobile-menu {
