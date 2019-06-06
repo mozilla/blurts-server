@@ -26,7 +26,6 @@ error-not-subscribed = Iste adresse de e-mail non es inscribite a { -product-nam
 error-hibp-throttled = Troppo de connexiones a { -brand-HIBP }.
 error-hibp-connect = Error durante le connexion a { -brand-HIBP }.
 error-hibp-load-breaches = Impossibile cargar informationes sur le violationes de datos.
-hibp-notify-email-subject = Alerta de { -product-name }: tu conto ha essite compromittite per un violation de securitate.
 home-title = { -product-name }
 home-not-found = Pagina non trovate.
 oauth-invalid-session = Session non valide
@@ -340,8 +339,6 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = Aperi le navigation de { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ULTIME VIOLATION ADDITE
-breach-added = Violation signalate:
-breach-discovered = Violation discoperite:
 # Link title
 more-about-this-breach = Altero re iste violation
 take-control = Reprende le controlo de tu datos personal.
@@ -572,3 +569,8 @@ to-affected-email = Invia avisos de violation al adresse email afficite
 join-firefox = Il ha un maniera de proteger tu confidentialitate. Junge te a { -brand-name }.
 # Link title
 learn-more-link = Saper plus.
+# Form title
+want-to-add = Vole adder un altere adresse de e-mail?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Verifica le ligamine inviate a { $userEmail } pro adder lo a { -product-name }.
