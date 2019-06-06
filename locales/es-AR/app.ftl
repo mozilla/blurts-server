@@ -27,7 +27,6 @@ error-hibp-throttled = Demasiadas conexiones a { -brand-HIBP }.
 error-hibp-connect = Error al conectar con { -brand-HIBP }.
 error-hibp-load-breaches = No se pudieron cargar las violaciones de seguridad.
 error-must-be-signed-in = Tenés que iniciar la sesión en tu { -brand-fxa }.
-hibp-notify-email-subject = Alerta de { -product-name }: Tu cuenta estuvo involucrada en una violación de seguridad.
 home-title = { -product-name }
 home-not-found = Página no encontrada.
 oauth-invalid-session = Sesión inválida
@@ -313,8 +312,6 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = Abrir la navegación de { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ÚLTIMA VIOLACIÓN AGREGADA
-breach-added = Violación informada:
-breach-discovered = Violación descubierta:
 # Link title
 more-about-this-breach = Más acerca de esta violación
 take-control = Recuperá el control de tu información personal.
@@ -569,3 +566,23 @@ to-affected-email = Enviar alertas de filtración a la dirección de correo elec
 join-firefox = Hay una manera de proteger tu privacidad. Unite a { -brand-name }.
 # Link title
 learn-more-link = Conocer más.
+email-sent = Correo electrónico enviado
+# Form title
+want-to-add = ¿Quieres añadir otro correo electrónico?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Verificar el enlace enviado a { $userEmail } para agregarlo a { -product-name }.
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Administra todas las direcciones de correo electrónico en { $preferencesLink }.
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Notificaciones de alerta de incumplimiento
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Incumplimiento añadido:
