@@ -620,7 +620,7 @@ email-sent = E-mailbericht verzonden!
 want-to-add = Wilt u nog een e-mailadres toevoegen?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
-verify-the-link = Verifieer de koppeling die verstuurd is naar { $userEmail } om die aan { -product-name } toe te voegen.
+verify-the-link = Verifieer de koppeling die naar { $userEmail } is verstuurd om die aan { -product-name } toe te voegen.
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
