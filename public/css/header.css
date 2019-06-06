@@ -53,7 +53,7 @@ header.show-shadow {
 }
 
 .fx-monitor-logotype {
-  background: url("/img/svg/fx-monitor-logo.svg");
+  background: url("/img/svg/fx-monitor-logotype.svg");
   width: 100%;
   margin-left: var(--margin);
   background-position: left;

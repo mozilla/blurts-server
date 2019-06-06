@@ -2,9 +2,9 @@
       {{> branding-strip }}
       <div id="navigation-wrapper">
         <section class="row-full-width fxm-branding">
-          <a class="flx-cntr fx-monitor-logo-wrapper" href="/" {{> analytics/internal-link eventLabel="Fx-Monitor-Logo" }}>
+          <a class="flx-cntr fx-monitor-logo-wrapper" href="/" aria-label="{{ getString 'home' }}" {{> analytics/internal-link eventLabel="Fx-Monitor-Logo" }}>
             <div class="sprite fx-monitor-logo"><!--Firefox Monitor logo--></div>
-            <h1 class="fx-monitor"><span>Firefox</span> Monitor</h1>
+            <div class="fx-monitor-logotype"></div>
           </a>
           <nav class="desktop-menu flx-cntr">
             {{> header/nav-links }}
