@@ -26,6 +26,7 @@ error-not-subscribed = Dit e-mailadres is net abonnearre op { -product-name }.
 error-hibp-throttled = Te folle ferbiningen mei { -brand-HIBP }.
 error-hibp-connect = Flater by ferbinen mei { -brand-HIBP }.
 error-hibp-load-breaches = Koe datalekken net lade.
+error-must-be-signed-in = Jo moatte by jo { -brand-fxa } oanmeld wêze.
 hibp-notify-email-subject = { -product-name } Warskôging: jo account is belutsen by in datalek.
 home-title = { -product-name }
 home-not-found = Side net fûn.
