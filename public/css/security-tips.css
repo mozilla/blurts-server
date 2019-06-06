@@ -46,7 +46,7 @@
   font-weight: 600;
   color: var(--grey1);
   align-items: center;
-  font-family: "FirefoxSharpSans", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Metropolis", sans-serif;
 }
 
 .security-tip-link-subhead {
@@ -85,7 +85,7 @@
   max-width: 230px;
   margin-bottom: 6rem;
   display: block;
-  font-family: "FirefoxSharpSans", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Metropolis", sans-serif;
 }
 
 .ico svg.icon-inline path {
