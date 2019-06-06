@@ -10,7 +10,7 @@ function breachImages() {
   this.active = false;
   this.lazyLoad = () => {
     const lazyImages = [].slice.call(document.querySelectorAll(".lazy-img"));
-    if (this.active === false) {
+    if (!this.active) {
       this.active = true;
       const winHeight = window.innerHeight;
       lazyImages.forEach(lazyImage => {
@@ -53,17 +53,17 @@ function clearBreaches(wrapper) {
   }
 }
 
-function makeBreaches(breachArray, breachCardWrapper) {
+function makeBreaches(breaches, LocalizedBreachCardStrings, breachCardWrapper, breachLogos) {
   breachCardWrapper.classList.toggle("hide-breaches");
   clearBreaches(breachCardWrapper);
 
   const fragment = document.createDocumentFragment();
   fragment["id"] = "all-breaches";
 
-  for (const breach of breachArray) {
+  for (const breach of breaches) {
     const card = document.createElement("a");
 
-    card["classList"] = `breach-card ${breach.Category} three-up ab drop-shadow`;
+    card["classList"] = "breach-card three-up ab drop-shadow";
     card["href"] = `/breach-details/${breach.Name}`;
     card["data-breach-title"] = breach.Title;
     fragment.appendChild(card);
@@ -85,112 +85,113 @@ function makeBreaches(breachArray, breachCardWrapper) {
     makeBreachInfoSpans("breach-title", breach.Title, wrapper);
 
     // added date
-    makeBreachInfoSpans("breach-key", breach.String.AddedDate, wrapper);
+    makeBreachInfoSpans("breach-key", LocalizedBreachCardStrings.BreachAdded, wrapper);
     makeBreachInfoSpans("breach-value", breach.AddedDate, wrapper);
 
     // compromised accounts
-    makeBreachInfoSpans("breach-key", breach.String.CompromisedAccounts, wrapper);
+    makeBreachInfoSpans("breach-key", LocalizedBreachCardStrings.CompromisedAccounts, wrapper);
     makeBreachInfoSpans("breach-value", breach.PwnCount, wrapper);
 
     // compromised data
-    makeBreachInfoSpans("breach-key", breach.String.CompromisedData, wrapper);
+    makeBreachInfoSpans("breach-key", LocalizedBreachCardStrings.CompromisedData, wrapper);
     makeBreachInfoSpans("breach-value", breach.DataClasses, wrapper);
 
     // add link at bottom of card
     wrapper = makeDiv("breach-card-link-wrap", breachInfoWrapper);
-    makeBreachInfoSpans("more-about-this-breach", breach.String.MoreInfoLink, wrapper);
+    makeBreachInfoSpans("more-about-this-breach", LocalizedBreachCardStrings.MoreInfoLink, wrapper);
   }
 
   breachCardWrapper.appendChild(fragment);
   breachCardWrapper.classList.toggle("hide-breaches");
-  const breachLogos = new breachImages();
   breachLogos.lazyLoad();
-  document.addEventListener("scroll", breachLogos.lazyLoad);
-  window.addEventListener("resize", breachLogos.lazyLoad);
-  window.addEventListener("orientationchange", breachLogos.lazyLoad);
-  FOUCHotFix();
-  return breachArray;
+  const loader = document.getElementById("breaches-loader");
+
+  loader.classList = ["hide"];
+  return breaches;
 }
 
-function FOUCHotFix() {
-  document.onreadystatechange = () => {
-    if (document.readyState === "complete") {
-      const loader = document.getElementById("breaches-loader");
-      loader.classList = ["hide"];
-    }
-  };
-}
-
-(async() => {
-
-  if (document.getElementById("all-breaches")) {
-    const breachCardWrapper = document.getElementById("all-breaches");
+function initBreaches() {
+  const breachCardWrapper = document.querySelector("#all-breaches");
+  if (breachCardWrapper) {
     const breachWrapper = document.getElementById("breach-array-json");
+    const {LocalizedBreachCardStrings, breaches} = JSON.parse(breachWrapper.dataset.breachArray);
 
-    const breachArray = JSON.parse(breachWrapper.dataset.breachArray);
+    const breachLogos = new breachImages();
+    document.addEventListener("scroll", breachLogos.lazyLoad);
+    window.addEventListener("resize", breachLogos.lazyLoad);
+    window.addEventListener("orientationchange", breachLogos.lazyLoad);
 
-    makeBreaches(breachArray, breachCardWrapper);
-    const showAllBreaches = document.getElementById("show-all-breaches");
+    const doBreaches = (arr) => {
+      makeBreaches(arr, LocalizedBreachCardStrings, breachCardWrapper, breachLogos);
+    };
+
+    const firstFifteen = breaches.slice(0,15);
+    doBreaches(firstFifteen);
+
     const noResultsBlurb = document.getElementById("no-results-blurb");
 
     const fuzzyFindInput = document.getElementById("fuzzy-find-input");
     const fuzzyFinder = document.getElementById("fuzzy-form");
 
-    showAllBreaches.addEventListener("click", (e) => {
-      e.preventDefault();
-      fuzzyFindInput.value = "";
-      makeBreaches(breachArray, breachCardWrapper);
-      showAllBreaches.classList = ["show-all-breaches"];
-      noResultsBlurb.classList = "";
-      return false;
+    const [fuzzyShowAll, showHiddenBreaches] = document.querySelectorAll(".show-all-breaches");
+
+    showHiddenBreaches.addEventListener("click", (e) => {
+      doBreaches(breaches);
+      showHiddenBreaches.classList.add("hide");
     });
 
+    fuzzyShowAll.addEventListener("click", (e) => {
+      e.preventDefault();
+      fuzzyFindInput.value = "";
+      doBreaches(breaches);
+      noResultsBlurb.classList = [""];
+      fuzzyShowAll.classList = ["fuzzy-find-show-breaches"];
+    });
 
     const searchBreaches = (e) => {
       e.preventDefault();
       e.stopImmediatePropagation();
 
+      // hide purple "Show All" button
+      // show button to clear fuzzy input
+      showHiddenBreaches.classList = ["hide"];
+      fuzzyShowAll.classList = ["fuzzy-find-show-breaches show"];
+
       const breachSearchTerm = fuzzyFindInput.value.toLowerCase();
 
       // filter breach array by search term
-      const filteredBreachArray = breachArray.filter(breach => {
+      const filteredBreachArray = breaches.filter(breach => {
         return breach.Title.toLowerCase().startsWith(breachSearchTerm);
       });
 
       // if hitting enter off a zero results search, restore breaches
       // and clear out input
-      if (e.keyCode === 13) {
-        if (noResultsBlurb.classList.contains("show")) {
-          makeBreaches(breachArray, breachCardWrapper);
-          noResultsBlurb.classList = "";
-          showAllBreaches.classList = ["show-all-breaches"];
-          fuzzyFindInput.value = "";
-          return false;
-        }
-        makeBreaches(filteredBreachArray, breachCardWrapper);
+      if (e.keyCode === 13 && noResultsBlurb.classList.contains("show")) {
+        doBreaches(breaches);
+        noResultsBlurb.classList.remove("show");
+        fuzzyShowAll.classList.remove("show");
+        fuzzyFindInput.value = "";
         return false;
       }
 
       // if no results, show "no results message"
+      // otherwise make sure it isn't showing
       if (filteredBreachArray.length === 0) {
         noResultsBlurb.classList.add("show");
       } else {
-        noResultsBlurb.classList = "";
+        noResultsBlurb.classList = [""];
       }
-
-      makeBreaches(filteredBreachArray, breachCardWrapper);
+      doBreaches(filteredBreachArray);
       return false;
     };
 
-    fuzzyFinder.addEventListener("keydown", (e) => {
-      if (fuzzyFindInput.value.length !== 0 ) {
-        showAllBreaches.classList.add("show");
-      }
-      if (e.keyCode === 13) {
-        showAllBreaches.classList = ["show-all-breaches"];
-      }
-    });
     fuzzyFinder.addEventListener("keyup", searchBreaches);
     fuzzyFinder.addEventListener("submit", searchBreaches);
   }
-})();
+}
+
+document.onreadystatechange = () => {
+  if (document.readyState === "interactive") {
+    initBreaches();
+  }
+};

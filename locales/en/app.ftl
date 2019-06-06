@@ -488,9 +488,6 @@ open-fxa-menu = Open {-brand-fxa} navigation
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = LATEST BREACH ADDED
 
-breach-added = Breach reported:
-breach-discovered = Breach discovered:
-
 # Link title
 more-about-this-breach = More about this breach
 
@@ -852,3 +849,7 @@ join-firefox = There is a way to protect your privacy. Join {-brand-name}.
 
 # Link title
 learn-more-link = Learn more.
+
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Breach added:

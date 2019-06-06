@@ -91,10 +91,11 @@
   "scripts": {
     "js:minify": "minify public/dist/app.min.js -o public/dist/app.min.js",
     "js:concat": "concat -o public/dist/app.min.js public/js/*.js",
+    "js:allBreaches": "minify public/js/all-breaches/all-breaches.js -o public/dist/all-breaches.min.js",
     "css:minify": "cleancss -o public/dist/app.min.css public/dist/app.min.css",
     "css:concat": "concat -o public/dist/app.min.css public/css/*.css",
     "build:css": "run-s css:concat css:minify",
-    "build:js": "run-s js:concat js:minify",
+    "build:js": "run-s js:concat js:allBreaches js:minify",
     "build:polyfills": "minify public/js/polyfills/edge.js -o public/dist/edge.min.js",
     "watch:js": "onchange 'public/js/monitor.js' -- npm run build:js",
     "watch:css": "onchange 'public/css/*.css' -- npm run build:css",

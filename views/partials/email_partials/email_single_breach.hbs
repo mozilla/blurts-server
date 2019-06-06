@@ -4,10 +4,10 @@
       </td>
       <td valign="top" style="vertical-align: top; padding-top: 7px; padding-right: 20px; padding-bottom: 10px; font-family: sans-serif;">
         <p class="body-copy medium" style="padding: 0px; margin: 0px; color: #333333; margin: 0px; font-weight: 500; font-size: 16px;">{{ Title }}</p>
-        <p class="body-copy medium" style="padding: 2px 0px 2px 0px; margin: 0px; color: #333333; font-weight: 400; font-size: 14px;">{{ String.AddedDate }}<span class="body-copy" style="font-weight:300; padding-left: 6px; color: #333333">{{ AddedDate }}</span></p>
-        <p class="body-copy medium" style="padding: 2px 0px 2px 0px; margin: 0px; color: #333333; font-weight: 400; font-size: 14px;">{{ String.CompromisedAccounts }}<span class="body-copy" style="font-weight:300; padding-left: 6px; color: #333333">{{ PwnCount }}</span></p>
+        <p class="body-copy medium" style="padding: 2px 0px 2px 0px; margin: 0px; color: #333333; font-weight: 400; font-size: 14px;">{{ LocalizedBreachCardStrings.BreachAdded }}<span class="body-copy" style="font-weight:300; padding-left: 6px; color: #333333">{{ AddedDate }}</span></p>
+        <p class="body-copy medium" style="padding: 2px 0px 2px 0px; margin: 0px; color: #333333; font-weight: 400; font-size: 14px;">{{ LocalizedBreachCardStrings.CompromisedAccounts }}<span class="body-copy" style="font-weight:300; padding-left: 6px; color: #333333">{{ PwnCount }}</span></p>
         {{#if DataClasses }}
-          <p class="body-copy medium" style="padding: 2px 0px 2px 0px; margin: 0px; color: #333333; font-weight: 400; font-size: 14px;">{{ String.CompromisedData }}<span class="body-copy" style="font-weight:300; padding-left: 6px; color: #333333">{{ DataClasses }}</span></p>
+          <p class="body-copy medium" style="padding: 2px 0px 2px 0px; margin: 0px; color: #333333; font-weight: 400; font-size: 14px;">{{ LocalizedBreachCardStrings.CompromisedData }}<span class="body-copy" style="font-weight:300; padding-left: 6px; color: #333333">{{ DataClasses }}</span></p>
         {{/if}}
       </td>
     </tr>
