@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -25,6 +26,7 @@ error-not-subscribed = Táto e-mailová adresa nie je prihlásená na odber zo s
 error-hibp-throttled = Príliš mnoho spojení k službe { -brand-HIBP }.
 error-hibp-connect = Chyba pri pripájaní k { -brand-HIBP }.
 error-hibp-load-breaches = Nepodarilo sa načítať údaje o únikoch.
+error-must-be-signed-in = Musíte byť prihlásení do svojho { -brand-fxa(case: "gen") }.
 hibp-notify-email-subject = { -product-name } - upozornenie, váš účet bol súčasťou úniku dát.
 home-title = { -product-name }
 home-not-found = Stránka nebola nájdená.
@@ -360,3 +362,38 @@ create-free-account =
 get-your-report-and-sign-up = Získajte správu a prihláste sa na odber upozornení.
 # Link title
 frequently-asked-questions = Často kladené otázky
+about-firefox-monitor = O { -product-name(case: "gen") }
+mozilla-dot-org = Mozilla.org
+preferences = Možnosti
+# Link title.
+home = Domov
+# Link title
+breaches = Úniky
+# Link title
+security-tips = Bezpečnostné tipy
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Otvoriť ponuku { -brand-fxa(case: "gen") }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = NAPOSLEDY PRIDANÝ ÚNIK
+breach-added = Dátum nahlásenia:
+breach-discovered = Dátum odhalenia:
+# Link title
+more-about-this-breach = Ďalšie informácie o tomto úniku
+take-control = Získajte opäť kontrolu nad svojimi osobnými údajmi.
+cant-stop-hackers = Nemôžete zabrániť hackerom v hackovaní. No môžete sa vyvarovať zlých zvykov a sťažiť im prácu.
+read-more-tips = Ďalšie bezpečnostné tipy
+how-hackers-work = Porozumejte tomu, ako hackeri pracujú
+stay-alert = Buďte informovaní o nových únikoch
+monitor-several-emails = Monitorujte niekoľko e-mailových adries
+take-action = Podniknite kroky na ochranu svojich účtov
+
+## What to do after data breach tips
+
+
+## Updated error messages
+
+login-link-pre = Už ho máte?
+login-link = Prihláste sa
+# Link title
+learn-more-link = Ďalšie informácie

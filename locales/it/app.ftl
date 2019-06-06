@@ -30,6 +30,7 @@ error-not-subscribed = Questo indirizzo email non è iscritto a { -product-name 
 error-hibp-throttled = Troppe connessioni a { -brand-HIBP }.
 error-hibp-connect = Errore di connessione a { -brand-HIBP }.
 error-hibp-load-breaches = Non è possibile caricare informazioni relative alle violazioni di dati.
+error-must-be-signed-in = Devi effettuare l’accesso al tuo { -brand-fxa }.
 hibp-notify-email-subject = Avviso di { -product-name }: Il tuo account è stato coinvolto in una violazione di dati.
 home-title = { -product-name }
 home-not-found = Pagina non trovata.

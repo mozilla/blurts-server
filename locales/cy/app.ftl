@@ -26,6 +26,7 @@ error-not-subscribed = Nid yw'r cyfeiriad e-bost hwn wedi'i danysgrifio i { -pro
 error-hibp-throttled = Gormod o gysylltiadau i { -brand-HIBP }.
 error-hibp-connect = Gwall wrth gysylltu i { -brand-HIBP }.
 error-hibp-load-breaches = Methu llwytho'r tor-data.
+error-must-be-signed-in = Rhaid eich bod wedi eich mewngofnodi i'ch { -brand-fxa }.
 hibp-notify-email-subject = Rhybudd { -product-name }: Mae eich cyfrif wedi ei gynnwys mewn tor-data.
 home-title = { -product-name }
 home-not-found = Heb ganfod tudalen.

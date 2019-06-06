@@ -26,6 +26,7 @@ error-not-subscribed = Ez az e-mail cím nincs feliratkozva a { -product-name }r
 error-hibp-throttled = Túl sok kapcsolat a { -brand-HIBP } felé.
 error-hibp-connect = Hiba a { -brand-HIBP }hoz kapcsolódáskor.
 error-hibp-load-breaches = A adatsértések nem tölthetőek be.
+error-must-be-signed-in = Be kell jelentkeznie a { -brand-fxa }jába.
 hibp-notify-email-subject = { -product-name } figyelmeztetés: A fiókját érintette egy adatsértés.
 home-title = { -product-name }
 home-not-found = Az oldal nem található.

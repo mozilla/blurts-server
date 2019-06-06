@@ -26,6 +26,7 @@ error-not-subscribed = Esta dirección de correo electrónico no está suscrita 
 error-hibp-throttled = Demasiadas conexiones a { -brand-HIBP }.
 error-hibp-connect = Error al conectar con { -brand-HIBP }.
 error-hibp-load-breaches = No se pudieron cargar las violaciones de seguridad.
+error-must-be-signed-in = Tenés que iniciar la sesión en tu { -brand-fxa }.
 hibp-notify-email-subject = Alerta de { -product-name }: Tu cuenta estuvo involucrada en una violación de seguridad.
 home-title = { -product-name }
 home-not-found = Página no encontrada.
@@ -61,12 +62,12 @@ pwt-summary-4 = Los administradores de contraseñas como 1Password, LastPass, Da
 pwt-headline-5 = Agregá seguridad adicional con la autenticación de dos factores
 pwt-summary-5 = 2FA requiere información adicional (como un código de una sola vez enviado por mensaje de texto) para iniciar sesión en tu cuenta. Incluso si alguien tiene tu contraseña no puede entrar.
 pwt-headline-6 = Registrate para recibir las alertas de { -product-name-nowrap }
-pwt-summary-6 = Las violaciones de datos de sitios web están en aumento. Tan pronto como se agrega una nueva violación a nuestra base de datos, { -product-name-nowrap } te envía una alerta para que puedas tomar medidas y proteger tu cuenta.
+pwt-summary-6 = Las violaciones de datos de sitios web están en aumento. Así como se agrega una nueva violación a nuestra base de datos, { -product-name-nowrap } te envía una alerta para que puedas tomar medidas y proteger tu cuenta.
 landing-headline = Tu derecho a estar a salvo de los piratas comienza aquí.
 landing-blurb = { -product-name-nowrap } te brinda herramientas para mantener segura tu información personal. Descubrí lo que los piratas ya saben de vos y aprendé cómo mantenerte un paso adelante de ellos.
-scan-label = Mirá si te involucraste en una violación de datos.
+scan-label = Fijate si estás involucrado en alguna violación de datos.
 scan-placeholder = Ingresá la dirección de correo electrónico
-scan-privacy = Tu dirección de correo electrónico no será almacenado.
+scan-privacy = Tu dirección de correo electrónico no será almacenada.
 scan-submit = Buscá tu dirección de correo electrónico
 scan-another-email = Escanear otra dirección de correo electrónico
 scan-featuredbreach-label = Averigüá si tu cuenta <span class="bold"> { $featuredBreach } </span> fue comprometida.
@@ -78,20 +79,20 @@ download-firefox-bar-blurb = { -product-name-nowrap } es presentado por el <span
 download-firefox-bar-link = Descargar { -brand-name } ahora
 download-firefox-banner-blurb = Tomá el control de tu navegador
 download-firefox-banner-button = Descargar { -brand-name }
-signup-modal-headline = Registrarse para { -product-name-nowrap }
-signup-modal-blurb = Registrarse para obtener tu informe completo, alertas cuando ocurran nuevas violaciones y consejos de seguridad de { -product-name-nowrap }.
+signup-modal-headline = Registrate para obtener { -product-name-nowrap }
+signup-modal-blurb = Registrate para obtener un informe completo, alertas cuando ocurran nuevas violaciones y consejos de seguridad de { -product-name-nowrap }.
 signup-modal-close = Cerrar
 get-your-report = Conseguí tu informe
 signup-modal-verify-headline = Verificá tu suscripción
 signup-modal-verify-blurb = Enviamos un enlace de verificación a <span id="submitted-email" class="medium"></span>.
 signup-modal-verify-expiration = Este enlace caduca en 24 horas.
-signup-modal-verify-resend = ¿No está en la bandeja de entrada o en el correo basura? Reenviar
+signup-modal-verify-resend = ¿No está en la bandeja de entrada o en el correo basura? Reenviar el mensaje.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = ¡Enviado!
-signup-with-fxa = Registrarse con la cuenta { -brand-name }
+signup-with-fxa = Registrate con la cuenta { -brand-name }
 form-signup-placeholder = Ingresar dirección de correo electrónico
 form-signup-checkbox = Obtené lo último de { -brand-Mozilla } y { -brand-name }.
-sign-up = Registrarse
+sign-up = Registrate
 form-signup-error = Debe ser una dirección de correo electrónico válida
 no-breaches-headline = Por ahora va todo bien.
 found-breaches-headline = Tu información fue parte de una violación de datos.
@@ -318,7 +319,7 @@ breach-discovered = Violación descubierta:
 more-about-this-breach = Más acerca de esta violación
 take-control = Recuperá el control de tu información personal.
 cant-stop-hackers = No podés evitar que te pirateen los piratas, pero sí podés evitar la malas prácticas que les facilitan el trabajo.
-read-more-tips = Leer consejos de seguridad
+read-more-tips = Ver más consejos de seguridad
 how-hackers-work = Entender cómo trabajan los piratas
 monitor-your-online-accounts = Registrate para el control de violaciones con { -brand-fxa }.
 stay-alert = Mantenete alerta a las nuevas violaciones
@@ -534,8 +535,8 @@ security-tips-headline = Consejos de seguridad para protegerte de los hackers.
 steps-to-protect = Pasos a seguir para proteger tu identidad en línea
 take-further-steps = Tomá medidas adicionales para proteger tu identidad
 alert-about-new-breaches = Alertarme sobre nuevas filtraciones.
-see-if-youve-been-part = Vea si has sido parte de una filtración de datos en línea.
-get-ongoing-breach-monitoring = Obtener monitoreo contínuo de filtraciones para múltiples direcciones de correo electrónico.
+see-if-youve-been-part = Fijate si fuiste parte de una violación de datos en línea.
+get-ongoing-breach-monitoring = Obtené el monitoreo contínuo de las violaciones de datos para múltiples direcciones de correo electrónico.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Averiguar
 new-unsub-error = Necesitás darte de baja de uno de los correos electrónicos enviados por { -product-name }.
@@ -564,3 +565,7 @@ filter-by = Filtrar por categoría:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menú
 to-affected-email = Enviar alertas de filtración a la dirección de correo electrónico afectada
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Hay una manera de proteger tu privacidad. Unite a { -brand-name }.
+# Link title
+learn-more-link = Conocer más.

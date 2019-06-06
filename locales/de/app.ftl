@@ -26,6 +26,7 @@ error-not-subscribed = Diese E-Mail-Adresse hat { -product-name } nicht abonnier
 error-hibp-throttled = Zu viele Verbindungen mit { -brand-HIBP }.
 error-hibp-connect = Fehler beim Verbinden mit { -brand-HIBP }.
 error-hibp-load-breaches = Sicherheitslecks konnten nicht geladen werden.
+error-must-be-signed-in = Sie müssen bei Ihrem { -brand-fxa } angemeldet sein.
 hibp-notify-email-subject = { -product-name }: Warnung: Dein Konto war von einem Datenleck betroffen.
 home-title = { -product-name }
 home-not-found = Seite nicht gefunden.
@@ -189,7 +190,7 @@ share-other = Andere
 share-twitter = Die meisten Menschen haben circa 100 Online-Konten. Wurde eines deiner Konten bei einem Datenleck geknackt? Finde es heraus.
 share-facebook-headline = Überprüfe, ob du von einem Datenleck betroffen bist.
 share-facebook-blurb = Wurden deine Online-Konten bei einem Datenleck geknackt?
-og-site-description = Überprüfe mit { -product-name }, ob du von einem Datenleck betroffen bist. Melde dich für Warnungen zu zukünftigen Datenleaks an und erhalte Tipps zum Schutz deiner Online-Konten.
+og-site-description = Überprüfe mit { -product-name }, ob du von einem Datenleck betroffen bist. Melde dich für Warnungen zu zukünftigen Datenlecks an und erhalte Tipps zum Schutz deiner Online-Konten.
 mozilla-security-blog = { -brand-Mozilla } Sicherheitsblog
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Soziale Medien
@@ -277,7 +278,7 @@ guest-fb-not-compromised-blurb-v2 =
 user-found-breaches-blurb =
     { $breachCount ->
         [one] Dieses Datenleck enthielt die folgenden persönlichen Daten. Ändere dein Passwort, falls du es noch nicht getan hast.
-       *[other] Dieses Datenleck enthielt die folgenden persönlichen Daten. Ändere dein Passwort, falls du es noch nicht getan hast.
+       *[other] Diese Datenlecks enthielten die folgenden persönlichen Daten. Ändere deine Passwörter, falls du es noch nicht getan hast.
     }
 # While English doesn’t use the actual number of breaches in this sentence,
 # you can use {$breachCount} to display the number of breaches in your localization.
@@ -391,7 +392,7 @@ even-for-old = Auch für ältere Accounts sollten Passwörter erneuert werden.
 make-new-pw-unique = Das neue Passwort sollte anders und einzigartig sein.
 strength-of-your-pw = Die Stärke deines Passworts hat direkte Auswirkungen auf deine Online-Sicherheit.
 create-strong-passwords = So erstellst du starke Passwörter
-stop-reusing-pw = Benutze nie dieselben Passwörter für unterschiedlich Accounts
+stop-reusing-pw = Benutze nie dieselben Passwörter für unterschiedliche Accounts
 create-unique-pw = Erstelle einzigartige Passwörter und speichere sie an einem sicheren Ort. Zum Beispiel in einem Passwort-Manager.
 five-myths = 5 Mythen über Passwort-Manager
 create-a-fxa = Erstelle ein { -brand-fxa }, um deinen kompletten Bericht zu Datenlecks und zukünftige Warnmeldungen zu erhalten.

@@ -70,6 +70,8 @@ body {
   min-height: 100vh;
   width: 100vw;
   -webkit-overflow-scrolling: touch;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .cool-gradient {
@@ -556,7 +558,7 @@ div.sprite {
   }
 
   .clear-header {
-    padding-top: 14rem;
+    padding-top: 16rem;
   }
 
   .hide-mobile {

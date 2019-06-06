@@ -38,8 +38,8 @@ function monitorFeaturesList(args) {
     {
       title: "Monitor several emails",
       titleStringId: "monitor-several-emails",
-      subtitle: "Search all your email addresses for breaches and get alerts about new threats.",
-      subtitleStringId: "search-all-emails",
+      subtitle: "Get ongoing breach monitoring for multiple email addresses.",
+      subtitleStringId: "get-ongoing-breach-monitoring",
       pictogramPath: "email",
     },
     {

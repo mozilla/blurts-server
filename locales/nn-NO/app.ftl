@@ -69,6 +69,9 @@ pwt-summary-5 = To faktor-godkjenning krev tilleggsinformasjon (t.d. ein eingang
 pwt-headline-6 = Registrer deg for { -product-name-nowrap }-åtvaringar
 pwt-summary-6 = Nettstadlekkasjar aukar. Så snart ein ny lekkasje vert lagt til i databasen i vår, sender { -product-name-nowrap } deg ei åtvaring  — slik at du kan ta affære og beskytte kontoen din.
 landing-headline = Ditt vern mot hackarar startar her.
+landing-blurb =
+    Med { -product-name-nowrap } får du ei rekkje verktøy, slik at du kan beskytte dei personlege opplysningane dine. 
+    Finn ut kor mykje hackerane allereie veit om deg, og korleis du kan vere eitt steg framom dei.
 scan-label = Sjå om du har vore innblanda i ein datalekkasje.
 scan-placeholder = Skriv inn e-postadresse
 scan-privacy = E-postadressa di vert ikkje lagra.
@@ -167,7 +170,7 @@ fxa-scan-another-email = Vil du kontrollere ei anna e-postadresse?
 # Search Firefox Monitor
 fxa-scan-submit = Sök { -product-name }
 sign-up-to-check = Registrer deg for å kontrollere
-sign-in = Logg in
+sign-in = Logg inn
 sign-out = Logg ut
 full-report-headline = Din { -product-name }-rapport
 see-full-report = Vis fullstendig rapport
@@ -220,6 +223,7 @@ fxa-pwt-summary-4 =
 fxa-pwt-summary-6 =
     Datalekkasjar aukar. Om din personlege informasjon vert avslørt i ein datalekkasje, 
     vil { -product-name } sende deg ei åtvaring - slik at du kan ta forholdsreglar og verne kontoane dine.
+fb-landing-headline = Er opplysningane dine kompromitterte i datalekkasjen { $breachName }?
 copyright = Delar av dette innhaldet er © 1999-{ $year } av einskilde mozilla.org-bidragsytarar.
 content-available = Innhaldet er tilgjengeleg under ein Creative Commons-lisens.
 # Alerts is a noun
@@ -250,10 +254,12 @@ breach-discovered = Oppdaga datalekkasjar:
 # Link title
 more-about-this-breach = Meir om denne datalekkasjen
 take-control = Ta tilbake kontrollen over personopplysningane dine.
-read-more-tips = Les fleire sikkerheitstips
+cant-stop-hackers = Du kan ikkje hindre hackarar i å hacke. Men du kan unngå dårlega vanar som gjer det lett for dei.
+read-more-tips = Her er fleire tryggingstips
 how-hackers-work = Forstå korleis hackarar jobbar
-monitor-your-online-accounts = Registrer deg for overvaking av datalekkasjar med { -brand-fxa }.
+monitor-your-online-accounts = Registrer deg for overvaking av datalekkasjar med ein { -brand-fxa }.
 stay-alert = Ver på vakt for nye datalekkasjar
+if-your-info = Om din informasjon dukkar opp i ein ny datalekkasje, sender vi deg ei åtvaring.
 monitor-several-emails = Overvak fleire e-postadresser
 take-action = Beskytt kontoane dine aktivt
 keep-your-data-safe = Finn ut kva du må gjere for å beskytte dataa dine frå cyberkriminelle.
@@ -301,8 +307,14 @@ appears-in-x-breaches =
         [one] Er involvert i { $breachCount } kjend datalekkasje.
        *[other] Er involvert i { $breachCount } kjende datalekkasjar.
     }
+see-if-breached = Sjå om du har vore involvert i ein datalekkasje.
 check-for-breaches = Sjå etter datalekkasjar
+find-out-what-hackers-know = Finnut kva hackarar allereie veit om deg. Lær deg korleis du kan vere eitt steg framom dei.
+search-for-your-email = Søk etter e-postadressa di i offentlege datalekkasjar som går tilbake til 2007.
 back-to-top = Tilbake til toppen
+comm-opt-1 = Send åtvaringar om datalekkasjar til { $primaryEmail }.
+stop-monitoring-this = Slutt å overvake denne e-postadressa.
+resend-verification = Send stadfestings e-posten på nytt
 add-new-email = Legg til ei ny e-postadresse
 send-verification = Send stadfestingslenke
 # This string is a header on the user preferences page and
@@ -320,13 +332,16 @@ latest-breach-link = Sjå om du har vore involvert i ein datalekkasje
 welcome-back = Velkomen tilbake, { $userName }!
 welcome-user = Velkomen, { $userName }!
 breach-alert-subject = { -product-name } fann e-postadressa di i ein ny datalekkasje.
+what-to-do-after-breach = Kva skal du gjere etter ein datalekkasje:
 ba-next-step-2 = Slutt heilt med å bruke det eksponerte passordet.
 new-breaches-found =
     { $breachCount ->
         [one] FANN { $breachCount } NY DATALEKKASJE
        *[other] FANN { $breachCount } NYE DATALEKKASJAR
     }
+account-not-required = Du treng ikkje å ha ein { -brand-name }-nettlesar for å bruke ein { -brand-fxa }. Ved å melde deg på kan du få informasjon om tenester frå { -brand-Mozilla }.
 get-alerted = Få melding om nye datalekkasjar.
+was-your-info-exposed = Er opplysningane dine kompromitterte i datalekkasjen { $breachName }?
 find-out-if = Finn ut om dine opplysningar vart eksponerte i denne datalekkasjen.
 no-other-breaches-found = Ingen andre datalekkasjar vart funne i dette grunnleggjande søket.
 all-breaches-headline = Alle datalekkasjar i { -product-name }
@@ -337,8 +352,25 @@ all-breaches = Alle datalekkasjar
 
 ## Updated error messages
 
+error-csrf-headline = Tidsavbrot i økta
 login-link-pre = Har du ein konto?
 login-link = Logg inn
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] E-postadresser som er overvaka
+       *[other] E-postadresser som er overvaka
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] Dattalekkasje som har komprommitert opplysningane dine
+       *[other] Dattalekkasjar som har komprommitert opplysningane dine
+    }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
 # your localization, because it would result in the number showing twice.
@@ -363,7 +395,11 @@ other-monitored-emails = Andre overvaka e-postadresser
 email-verification-required = E-poststadfesting påkravd
 fxa-primary-email = { -brand-fxa } E-post - Primær
 what-is-a-website-breach = Kva er ein nettstadlekkasje?
+security-tips-headline = Tryggingstips for å verne deg mot hackarar
+steps-to-protect = Kva du kan gjere for å beskytte identiteten din på nettet
 alert-about-new-breaches = Varsle meg om nye datalekkasjar
+see-if-youve-been-part = Sjå om du har vore omfatta av ein datalekkasje på nettet.
+get-ongoing-breach-monitoring = Få løpande datalekkasjeovervaking av fleire e-postadresser.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Sjekk no
 # This string appears on breach detail pages and is followed by a list
@@ -381,3 +417,7 @@ signed-in-as = Innlogga som: { $userEmail }
 filter-by = Filtrer etter kategori:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Meny
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Det finst ein måte å ta vare på personvernet ditt. Ver med { -brand-name } på ferda.
+# Link title
+learn-more-link = Les meir.

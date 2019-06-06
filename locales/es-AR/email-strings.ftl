@@ -32,8 +32,8 @@ report-pwt-blurb = Las contraseñas son tan valiosas que miles de ellas son roba
 report-pwt-headline-1 = Usá una contraseña diferente para cada cuenta
 report-pwt-summary-1 = Reutilizar la misma contraseña en todas partes abre la puerta a los piratas. Pueden usar esa contraseña para iniciar sesión en tus otras cuentas.
 report-pwt-headline-2 = Creá contraseñas seguras y únicas.
-report-pwt-summary-2 = Los piratas usan miles de contraseñas comunes para tratar de adivinar la tuya. Cuanto más larga y aleatoria sea tu contraseña, más difícil será de adivinar.
-report-pwt-headline-3 = Tratá  las preguntas de seguridad como contraseñas adicionales
+report-pwt-summary-2 = Los piratas usan miles de contraseñas comunes para tratar de adivinar la tuya. Cuanto más larga y aleatoria sea tu contraseña, será más difícil de adivinar.
+report-pwt-headline-3 = Tratá las preguntas de seguridad como contraseñas adicionales
 report-pwt-summary-3 = Los sitios web no verifican que tus respuestas sean precisas, solo que coincidan cada vez. Creá respuestas largas y aleatorias y guardalas en un lugar seguro.
 report-pwt-headline-4 = Usá un administrador de contraseñas
 report-pwt-summary-4 = Los servicios como 1Password, LastPass, Dashlane y Bitwarden generan contraseñas seguras, las almacenan de forma segura y las rellenan en sitios web para que no tengas que recordar cada una de ellas.
@@ -44,7 +44,7 @@ share-by-email-subject = Fijate si fuiste parte de una violación de datos.
 # Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
 share-by-email-message =
     Hola,
-    { -brand-name } tiene un servicio gratuito donde podés verificar si fuiste parte de una violación de datos. Así es como funciona:
+    { -brand-name } tiene un servicio gratuito donde podés verificar si fuiste parte de una violación de datos. Funciona así:
     1. Andá a { "https://monitor.firefox.com" } y buscá tu correo electrónico.
-    2. Fijate si tus cuentas en línea se expusieron a una violación de datos.
+    2. Fijate si tus cuentas en línea se expusieron en una violación de datos.
     3. Obtené consejos de { -product-name } sobre lo que hacer a continuación.

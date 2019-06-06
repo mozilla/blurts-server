@@ -90,13 +90,14 @@ async function notify (req, res) {
       {defaultLocale: "en"}
     );
 
-    const subject = LocaleUtils.fluentFormat(supportedLocales, "hibp-notify-email-subject");
+    const subject = LocaleUtils.fluentFormat(supportedLocales, "breach-alert-subject");
     const template = "default_email";
     if (!notifiedRecipients.includes(breachedEmail)) {
       await EmailUtils.sendEmail(
         recipientEmail, subject, template,
         {
           breachedEmail,
+          recipientEmail,
           supportedLocales,
           breachAlert,
           SERVER_URL: req.app.locals.SERVER_URL,

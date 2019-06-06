@@ -80,7 +80,7 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
     // req.session.newUser determines whether or not we show "fxa_new_user_bar" in template
     req.session.newUser = true;
     const signupLanguage = req.headers["accept-language"];
-    const verifiedSubscriber = await DB.addSubscriber(email, signupLanguage, fxaUser.refreshToken, data.body);
+    const verifiedSubscriber = await DB.addSubscriber(email, signupLanguage, fxaUser.accessToken, fxaUser.refreshToken, data.body);
 
     // duping some of user/verify for now
     let unsafeBreachesForEmail = [];
@@ -101,6 +101,7 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
       {
         supportedLocales: req.supportedLocales,
         breachedEmail: email,
+        recipientEmail: email,
         date: req.fluentFormat(new Date()),
         unsafeBreachesForEmail: unsafeBreachesForEmail,
         scanAnotherEmailHref: EmailUtils.getScanAnotherEmailUrl(utmID),
@@ -110,7 +111,10 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
       }
     );
     req.session.user = verifiedSubscriber;
+    return res.redirect("/user/dashboard");
   }
+  // Update existing user's FxA data
+  await DB._updateFxAData(existingUser, fxaUser.accessToken, fxaUser.refreshToken, data.body);
   res.redirect("/user/dashboard");
 }
 

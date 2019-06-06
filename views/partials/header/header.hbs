@@ -1,23 +1,26 @@
     <header id="header">
-      <section class="row-full-width">
-        <a class="flx-cntr fx-monitor-logo-wrapper" href="/" {{> analytics/internal-link eventLabel="Fx-Monitor-Logo" }}>
-          <div class="sprite fx-monitor-logo"><!--Firefox Monitor logo--></div>
-          <h1 class="fx-monitor"><span>Firefox</span> Monitor</h1>
-        </a>
-        <nav class="desktop-menu flx-cntr">
-          {{> header/nav-links }}
-          {{#if req.session.user}}
-            {{> header/fxa-menu }}
-          {{else}}
-            <button id="sign-in-btn" class="open-oauth sign-in btn-light" {{> analytics/fxa id="fx-monitor-sign-in-button" }} data-event-category="Sign In Button">{{ getString "sign-in" }}</button>
-          {{/if}}
-        </nav>
-      </section>
-      <!--mobile navigation-->
-      <section class="mobile-nav show-mobile">
-        <span class="nav-link drop-down-menu">{{ getString "menu" }} {{> svg/toggle-down }}</span>
-        <nav class="mobile-menu flx-cntr row-full-width">
-          {{> header/nav-links }}
-        </nav>
-      </section>
+      {{> branding-strip }}
+      <div id="navigation-wrapper">
+        <section class="row-full-width fxm-branding">
+          <a class="flx-cntr fx-monitor-logo-wrapper" href="/" {{> analytics/internal-link eventLabel="Fx-Monitor-Logo" }}>
+            <div class="sprite fx-monitor-logo"><!--Firefox Monitor logo--></div>
+            <h1 class="fx-monitor"><span>Firefox</span> Monitor</h1>
+          </a>
+          <nav class="desktop-menu flx-cntr">
+            {{> header/nav-links }}
+            {{#if req.session.user}}
+              {{> header/fxa-menu }}
+            {{else}}
+              <button id="sign-in-btn" class="open-oauth sign-in btn-light" {{> analytics/fxa id="fx-monitor-sign-in-button" }} data-event-category="Sign In Button">{{ getString "sign-in" }}</button>
+            {{/if}}
+          </nav>
+        </section>
+        <!--mobile navigation-->
+        <section class="mobile-nav show-mobile">
+          <span class="nav-link drop-down-menu">{{ getString "menu" }} {{> svg/toggle-down }}</span>
+          <nav class="mobile-menu flx-cntr row-full-width">
+            {{> header/nav-links }}
+          </nav>
+        </section>
+      </div>
     </header>

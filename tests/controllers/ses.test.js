@@ -23,7 +23,7 @@ const createRequestBody = function(notificationType) {
 };
 
 
-test("ses notification with Permanent bounce unsubscribes recipient", async () => {
+test("ses notification with Permanent bounce unsubscribes recipient subscriber", async () => {
   // TODO: restore tests for ["General", "NoEmail", "Suppressed"] sub types
   const testEmail = "bounce@simulator.amazonses.com";
   const testHashes = [getSha1(testEmail)];
@@ -47,7 +47,7 @@ test("ses notification with Permanent bounce unsubscribes recipient", async () =
 });
 
 
-test("ses notification with Complaint unsubscribes recipient", async () => {
+test("ses notification with Complaint unsubscribes recipient subscriber", async () => {
   const testEmail = "complaint@simulator.amazonses.com";
 
   await DB.addSubscriber(testEmail);
@@ -66,6 +66,28 @@ test("ses notification with Complaint unsubscribes recipient", async () => {
 
   subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
   expect(subscribers.length).toEqual(0);
+});
+
+
+test("ses notification with Complaint unsubscribes recipient from email_addresses", async () => {
+  const testPrimaryEmail = "secondary-email-complainer@mailinator.com";
+  const testSignupLanguage = "en";
+  const testUser = await DB.addSubscriber(testPrimaryEmail, testSignupLanguage);
+  const testEmail = "complaint@simulator.amazonses.com";
+
+  await DB.addSubscriberUnverifiedEmailHash(testUser, testEmail);
+
+  const req = httpMocks.createRequest({
+    method: "POST",
+    url: "/ses/notification",
+    body: createRequestBody("complaint"),
+  });
+  const resp = httpMocks.createResponse();
+
+  await ses.notification(req, resp);
+  expect(resp.statusCode).toEqual(200);
+  const noMoreEmailAddressRecord = await DB.getEmailAddressRecordByEmail(testEmail);
+  expect(noMoreEmailAddressRecord).toBeUndefined();
 });
 
 
@@ -91,13 +113,14 @@ test("ses notification with invalid signature responds with error and doesn't ch
 });
 
 
-test("sns notification for FxA account delete deletes monitor subscriber record", async () => {
+test("sns notification for FxA account deletes monitor subscriber record", async () => {
   const testEmail = "fxa-deleter@mailinator.com";
   const testSignupLanguage = "en";
+  const testFxaAccessToken = "abcdef123456789";
   const testFxaRefreshToken = "abcdef123456789";
   const testFxaUID = "3b1a9d27f85b4a4c977f3a84838f9116";
   const testFxaProfileData = JSON.stringify({uid: testFxaUID});
-  await DB.addSubscriber(testEmail, testSignupLanguage, testFxaRefreshToken, testFxaProfileData);
+  await DB.addSubscriber(testEmail, testSignupLanguage, testFxaAccessToken, testFxaRefreshToken, testFxaProfileData);
 
   let subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
   expect(subscribers.length).toEqual(1);

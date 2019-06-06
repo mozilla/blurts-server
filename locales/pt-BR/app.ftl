@@ -26,6 +26,7 @@ error-not-subscribed = Este endereço de e-mail não está cadastrado no { -prod
 error-hibp-throttled = Conexões em excesso para o { -brand-HIBP }
 error-hibp-connect = Falha ao conectar com o { -brand-HIBP }.
 error-hibp-load-breaches = Não foi possível carregar os vazamentos.
+error-must-be-signed-in = Você precisa entrar na sua { -brand-fxa }.
 hibp-notify-email-subject = Alerta do { -product-name }: Sua conta foi envolvida em um vazamento.
 home-title = { -product-name }
 home-not-found = Página não encontrada.
@@ -630,6 +631,6 @@ filter-by = Filtrar por categoria:
 menu = Menu
 to-affected-email = Enviar alertas de vazamento para os endereços de e-mail afetados
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
-join-firefox = Existe um meio de proteger sua privacidade. Inscreva-se no { -brand-name }.
+join-firefox = Existe um meio de proteger sua privacidade. Cadastre-se no { -brand-name }.
 # Link title
 learn-more-link = Saiba mais.

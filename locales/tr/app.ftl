@@ -356,7 +356,11 @@ read-more-tips = Daha dazla güvenlik ipucu
 how-hackers-work = Hacker’ların nasıl çalıştığını anlayın
 monitor-your-online-accounts = { -brand-fxa } ile ihlal uyarılarına kaydolun.
 stay-alert = Yeni ihlallere karşı tetikte kalın
+if-your-info = Bilgileriniz yeni bir veri ihlalinde karşımıza çıkarsa size bir uyarı göndereceğiz.
+search-all-emails = İhallere dahil olabilecek tüm e-posta adreslerinizi arayın ve yeni tehditler hakkında uyarı alın.
+monitor-several-emails = Birden fazla e-postayı izleyin
 take-action = Hesaplarınızı korumak için harekete geçin
+keep-your-data-safe = Verilerinizi siber suçlulardan korumak için neler yapmanız gerektiğini öğrenin.
 website-breach = Web sitesi ihlali
 sensitive-breach = Hassas web sitesi ihlali
 data-aggregator-breach = Veri toplayıcı ihlali
@@ -367,6 +371,9 @@ sensitive-breach-plural = Hassas ihlaller
 data-aggregator-breach-plural = Veri toplayıcı ihlalleri
 unverified-breach-plural = Doğrulanmamış ihlaller
 spam-list-breach-plural = Spam listesi ihlalleri
+what-data = Ele geçirilen veriler:
+sensitive-sites = { -product-name } hassas siteleri nasıl ele alıyor?
+delayed-reporting-headline = Bu ihlalin bildirilmesi neden bu kadar uzun sürdü?
 about-fxm-headline = { -product-name } hakkında
 # How Firefox Monitor works
 how-fxm-works = { -product-name } nasıl çalışır?
@@ -383,24 +390,53 @@ make-new-pw-unique = Yeni parolanız eskisinden ve tüm parolalarınızdan farkl
 strength-of-your-pw = Parolalarınızın kalitesi, internetteki güvenliğinizi doğrudan etkiler.
 create-strong-passwords = Güçlü parolalar nasıl oluşturulur?
 stop-reusing-pw = Aynı parolaları kullanmayın
+create-unique-pw = Benzersiz parolalar oluşturun ve bunları parola yöneticisi gibi güvenli bir yerde saklayın.
+five-myths = Parola yöneticileri hakkında 5 şehir efsanesi
+create-a-fxa = Tam ihlal raporunuzu görmek ve ihlal uyarıları almak için { -brand-fxa } açın.
+feat-security-tips = Hesaplarınızı korumanız için güvenlik ipuçları
+sign-up-for-fxa = { -brand-fxa } açın
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Bilinen { $breachCount } ihlalde yer alıyor.
+       *[other] Bilinen { $breachCount } ihlalde yer alıyor.
+    }
+see-if-breached = Çevrimiçi veri ihlallerinde verilerinizin çalınmış olabilir mi? Hemen öğrenin.
+check-for-breaches = İhlalleri kontrol et
+find-out-what-hackers-know = Hacker’ların sizin hakkınızda neler bildiklerini öğrenin, onların bir adım önüne geçin.
+search-for-your-email = 2007’ye uzanan bilindik veri ihlallerinde e-posta adresinizi arayın.
+back-to-top = Başa dön
+comm-opt-1 = Tüm ihlal uyarılarını { $primaryEmail } adresine gönder.
+stop-monitoring-this = Bu e-postayı izlemeyi durdur.
 resend-verification = Doğrulama e-postasını yeniden gönder
 add-new-email = Yeni e-posta adresi ekle
 send-verification = Doğrulama bağlantısını gönder
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = İletişim
 breach-summary = İhlal özeti
 show-breaches-for-this-email = Bu e-postayı içeren tüm ihlalleri göster.
-link-change-primary = Ana e-posta adresini değiştir
+link-change-primary = Birincil e-posta adresini değiştir
+remove-fxm = { -product-name }’ü kaldır
 manage-email-addresses = E-posta adreslerini yönet
+latest-breach-link = Bu ihlale dahil olup olmadığınızı öğrenin
 welcome-back = Yeniden hoş geldin { $userName }!
 welcome-user = Hoş geldin { $userName }!
 breach-alert-subject = { -product-name } yeni bir veri ihlalinde e-posta adresinizi tespit etti.
 your-info-was-discovered-headline = Bilgileriniz yeni bir veri ihlalinde tespit edildi.
 what-to-do-after-breach = Veri ihlalinden sonra ne yapılmalı?
 ba-next-step-1 = Parolanızı güçlü ve benzersiz bir parolayla değiştirin.
+faq2 = Bu ihlali bana bildirmeniz neden bu kadar uzun sürdü?
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } YENİ İHLAL BULUNDU
        *[other] { $breachCount } YENİ İHLAL BULUNDU
     }
+account-not-required = { -brand-fxa } için { -brand-name } tarayıcısı gerekmez. Size { -brand-Mozilla } hizmetleri hakkında bilgi gönderebiliriz.
 get-alerted = Yeni ihlallerden haberdar olun.
 no-other-breaches-found = Temel aramada başka bir ihlal bulunamadı.
 no-results-blurb = Üzgünüz, bu ihlal veritabanımızda yok.
@@ -414,15 +450,67 @@ all-breaches = Tüm ihlaller
 
 error-bot-headline = Arama geçici olarak kullanılamıyor
 error-csrf-headline = Oturum zaman aşımına uğradı
+error-csrf-blurb = Tarayıcınızın geri düğmesine tıklayın, sayfayı tazeleyin ve tekrar deneyin.
 login-link-pre = Hesabınız var var?
 login-link = Giriş yap
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] e-posta adresi izleniyor
+       *[other] e-posta adresi izleniyor
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] veri ihlalinde bilgileriniz ele geçirilmiş
+       *[other] veri ihlalinde bilgileriniz ele geçirilmiş
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] parolanız ihlallerde ele geçirilmiş
+       *[other] parolanız ihlallerde ele geçirilmiş
+    }
+# Button
+see-additional-breaches = Diğer ihlallere bakın
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = { $userEmail } sonuçları
+other-monitored-emails = İzlenen diğer e-postalar
 email-verification-required = E-posta doğrulaması gerekiyor
+fxa-primary-email = { -brand-fxa } e-postası - birincil
+see-if-youve-been-part = Çevrimiçi veri ihlallerinde verilerinizin çalınmış olabilir mi? Hemen öğrenin.
+get-ongoing-breach-monitoring = İstediğiniz sayıda e-posta adresinin ihlallerini sürekli olarak takip edin.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Öğrenin
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Ek bilgiler:
 # Title
 email-addresses-title = E-posta adresi
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = { $breachDate } tarihinde { $breachTitle } bir veri ihlaline uğradı. İhlal keşfedildikten ve doğrulandıktan sonra { $addedDate } tarihinde veritabanımıza eklendi.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } tercihleri
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = { $userEmail } olarak giriş yapıldı
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
 filter-by = Kategoriye göre filtrele:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menü
+to-affected-email = İhlal uyarılarını etkilenen e-posta adresine gönder
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Gizliliğinizi korumanın bir yolu var. { -brand-name }’a katılın.
+# Link title
+learn-more-link = Daha fazla bilgi alın.

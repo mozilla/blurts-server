@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -356,3 +357,48 @@ create-free-account =
 get-your-report-and-sign-up = Отримайте свій звіт і підпишіться на отримання попереджень.
 # Link title
 frequently-asked-questions = Часті питання
+about-firefox-monitor = Про { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Налаштування
+# Link title.
+home = Домівка
+# Link title
+breaches = Витік даних
+# Link title
+security-tips = Поради щодо безпеки
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Відкрийте { -brand-fxa }
+breach-added = Повідомлення про витік даних:
+breach-discovered = Виявлено витік даних:
+# Link title
+more-about-this-breach = Докладніше про цей витік даних
+take-control = Відновіть контроль над особистими даними.
+cant-stop-hackers = Ви не можете зупинити хакерів. Але ви можете позбутися шкідливих звичок, які полегшують їхню роботу.
+read-more-tips = Прочитайте більше порад щодо безпеки
+how-hackers-work = Зрозумійте, як працюють хакери
+monitor-your-online-accounts = Підпишіться на повідомлення про витік даних за допомогою { -brand-fxa }.
+stay-alert = Дізнавайтеся про нові витоки даних
+if-your-info = Якщо ваша інформація опиниться в новому витоку даних, ми надішлемо вам повідомлення.
+search-all-emails = Перевірте всі ваші адреси електронної пошти та отримуйте повідомлення про нові загрози.
+monitor-several-emails = Відслідковуйте декілька адрес електронної пошти
+take-action = Вживайте заходів для захисту своїх облікових записів
+keep-your-data-safe = Дізнайтеся, що потрібно зробити для збереження ваших даних від кіберзлочинців.
+website-breach = Витік даних із сайту
+sensitive-breach = Витік конфіденційної інформації з сайту
+data-aggregator-breach = Витік даних з агрегатора
+unverified-breach = Непідтверджений витік даних
+spam-list-breach = Витік списку надсилання спаму
+website-breach-plural = Витоки даних із сайту
+sensitive-breach-plural = Витоки конфіденційної інформації
+data-aggregator-breach-plural = Витоки даних з агрегатора
+unverified-breach-plural = Непідтверджені витоки даних
+spam-list-breach-plural = Витоки списку надсилання спаму
+what-data = Які дані скомпрометовані:
+sensitive-sites = Як { -product-name } ставиться до сайтів з конфіденційною інформацією?
+
+## What to do after data breach tips
+
+
+## Updated error messages
+

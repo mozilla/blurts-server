@@ -181,6 +181,7 @@ confirmation-blurb = データ侵害は他の人にも影響を及ぼす可能�
 share-email = メールアドレス
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = その他
+share-twitter = 多くの人が約 100 個のオンラインアカウントを持っています。あなたのアカウントはデータ侵害にさらされていませんか？確認しましょう。
 mozilla-security-blog = { -brand-Mozilla } セキュリティブログ
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = ソーシャル
@@ -211,12 +212,14 @@ guest-scan-results-headline =
     }
 user-no-breaches-blurb = このメールアドレスが新たな侵害に含まれた場合、通知します。
 have-an-account = 既にアカウントをお持ちですか？
+fb-landing-headline = { $breachName } のデータ侵害にさらされていますか？
 # Alerts is a noun
 sign-up-for-alerts = 登録して通知を受け取る
 sign-up-for-fxa-alerts = 登録して { -product-name } の通知を受け取る。
 # Link title
 frequently-asked-questions = よくある質問
 about-firefox-monitor = { -product-name } について
+preferences = 設定
 # Link title.
 home = ホーム
 # Link title
@@ -229,14 +232,86 @@ latest-breach = 最近追加されたデータ侵害
 breach-added = 侵害の報告日:
 # Link title
 more-about-this-breach = この侵害について詳しく見る
+take-control = 個人情報の制御を取り戻してください。
+cant-stop-hackers = ハッカーのハッキングは止められません。しかし、ハッキングを容易にさせる悪習慣は避けられます。
+read-more-tips = セキュリティの秘訣をもっと読む
+how-hackers-work = ハッカーの手段を理解する
+monitor-your-online-accounts = { -brand-fxa }でデータ侵害の監視に登録しましょう。
+stay-alert = 新しいデータ侵害の警告を受け取る
+if-your-info = あなたの情報が新しいデータ侵害にさらされた場合、警告を送信します。
+monitor-several-emails = 複数のメールアドレスを監視する
+keep-your-data-safe = サイバー犯罪からデータを安全に保つために必要なことを見つけましょう。
+what-data = 漏洩したデータ:
+delayed-reporting-headline = なぜ、この侵害の報告に時間がかかったのですか？
 about-fxm-headline = { -product-name } について
+protect-your-privacy = オンラインプライバシーを保護する
 
 ## What to do after data breach tips
 
+change-pw = パスワードを変更する
+make-new-pw-unique = 新しいパスワードを他とは異なり一意にする
+create-strong-passwords = 強力なパスワードの作り方
+stop-reusing-pw = 同じパスワードの追加い回しをやめる
+five-myths = パスワードマネージャーに関する 5 つの話題
 see-if-breached = オンラインのデータ侵害がないか確認しましょう。
+check-for-breaches = データ侵害を確認する
+find-out-what-hackers-know = ハッカーが既にあなたについて知っていることを調査しましょう。一歩先に行く方法を学んでください。
+search-for-your-email = 2007 年までさかのぼって、メールアドレスがデータ侵害を受けているか検索します。
 back-to-top = トップに戻る
 resend-verification = 認証メールを再送する
+send-verification = 認証リンクを送信する
+breach-summary = データ侵害概要
+manage-email-addresses = メールアドレスの管理
+latest-breach-link = この侵害を受けているか確認する
+welcome-back = おかえりなさい、{ $userName } さん！
+welcome-user = ようこそ、{ $userName } さん！
+what-to-do-after-breach = データ侵害があった後にするべきこと:
+account-not-required = { -brand-name } ブラウザーは { -brand-fxa }には必要ありません。{ -brand-Mozilla } サービスについての情報を受け取るでしょう。
+was-your-info-exposed = { $breachName } のデータ侵害にさらされていますか？
+no-results-blurb = データベース内に侵害は見つかりませんでした。
+all-breaches-headline = { -product-name } 内のすべてのデータ侵害
+search-breaches = データ侵害を検索
 
 ## Updated error messages
 
+error-csrf-headline = セッションがタイムアウトしました
+login-link-pre = アカウントをお持ちですか？
 login-link = ログイン
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = すべてのデータ侵害を見る
+scan-results-known-breaches =
+    { $breachCount ->
+       *[other] このメールアドレスは { $breachCount } 個の既知のデータ侵害があります。
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = { $userEmail } についての結果
+email-verification-required = メールアドレスの認証が必要です
+fxa-primary-email = { -brand-fxa } メールアドレス - 主要
+security-tips-headline = ハッカーからあなたを守るセキュリティの秘訣
+steps-to-protect = オンラインであなたを保護する手順
+take-further-steps = あなたを守るさらなる手順
+see-if-youve-been-part = オンラインのデータ侵害に含まれていないか確認しましょう。
+get-ongoing-breach-monitoring = 複数のメールアドレスに対してデータ侵害の監視をしましょう。
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = 調査する
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = 侵害を受けたその他の情報:
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = { $breachDate }に、{ $breachTitle } は、データ侵害にさらされました。この侵害が発見され、確認されたため、{ $addedDate }にデータベースに追加されました。
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = { -product-short-name } の設定
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = ログイン中: { $userEmail }
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = メニュー
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = あなたのプライバシーを守る方法があります。{ -brand-name } を使用しましょう。
+# Link title
+learn-more-link = 詳しくはこちら。

@@ -1,5 +1,4 @@
 {{#ifCompare UTM_SOURCE "===" "localhost"}}
-
   <link rel="stylesheet" href="/css/all-breaches.css">
   <link rel="stylesheet" href="/css/app.css">
   <link rel="stylesheet" href="/css/articles.css">
@@ -22,7 +21,7 @@
   <link rel="stylesheet" href="/css/subpage.css">
 
 
-  <script type="text/javascript" src="/js/all-breaches.js" defer></script>
+  <script type="text/javascript" src="/js/all-breaches/all-breaches.js"></script>
   <script type="text/javascript" src="/js/analytics_dnt-helper.js" defer></script>
   <script type="text/javascript" src="/js/analytics_tracking_protection.js" defer></script>
   <script type="text/javascript" src="/js/fxa-analytics.js" defer></script>
@@ -34,5 +33,10 @@
 
 {{else}}
   <link rel="stylesheet" href="/dist/app.min.css">
+
+  {{#ifCompare whichPartial "===" "top-level/all-breaches"}}
+    <script type="text/javascript" src="/dist/all-breaches.min.js"></script>
+  {{/ifCompare}}
+
   <script type="text/javascript" src="/dist/app.min.js" defer></script>
 {{/ifCompare}}

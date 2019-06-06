@@ -26,6 +26,7 @@ error-not-subscribed = 此电子邮件地址未订阅 { -product-name }。
 error-hibp-throttled = 与 { -brand-HIBP } 的连接过多。
 error-hibp-connect = 连接 { -brand-HIBP } 时出错。
 error-hibp-load-breaches = 未能加载泄露信息。
+error-must-be-signed-in = 您必须先登录 { -brand-fxa }。
 hibp-notify-email-subject = { -product-name } 警报：您的账号信息已遭泄露。
 home-title = { -product-name }
 home-not-found = 找不到网页。

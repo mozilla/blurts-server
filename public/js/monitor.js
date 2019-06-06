@@ -136,8 +136,38 @@ function toggleArticles() {
   });
 }
 
-function toggleMobileFeatures() {
-  const windowWidth = window.innerWidth;
+function hideShowNavBars(win, navBar) {
+  win.onscroll = function(e) {
+    // catch a window that has resized from less than 600px
+    // to greater than 600px and unhide navigation.
+    if (win.innerWidth > 600) {
+      navBar.classList = ["show-nav-bars"];
+      return;
+    }
+
+    if (win.pageYOffset < 100) {
+      navBar.classList = ["show-nav-bars"];
+      return;
+    }
+
+    if (this.oldScroll < this.scrollY) {
+      navBar.classList = ["hide-nav-bars"];
+      this.oldScroll = this.scrollY;
+      return;
+    }
+
+    if (this.oldScroll > this.scrollY + 50) {
+      navBar.classList = ["show-nav-bars"];
+      this.oldScroll = this.scrollY;
+      return;
+    }
+    this.oldScroll = this.scrollY;
+  };
+}
+
+function toggleMobileFeatures(topNavBar) {
+  const win = window;
+  const windowWidth = win.innerWidth;
   if (windowWidth > 800) {
     const emailCards = document.querySelectorAll(".col-9.email-card:not(.zero-breaches)");
       emailCards.forEach(card => {
@@ -150,6 +180,10 @@ function toggleMobileFeatures() {
     closeActiveEmailCards.forEach(card => {
       card.classList.remove("active");
     });
+
+    if (windowWidth < 600) {
+      hideShowNavBars(win, topNavBar);
+    }
 }
 
 function toggleHeaderStates(header, win) {
@@ -160,41 +194,50 @@ function toggleHeaderStates(header, win) {
   }
 }
 
+function styleActiveLink(locationHref) {
+  let queryString = `.nav-link[href='${locationHref}']`;
+  const activeLink = document.querySelector(queryString);
+  if (activeLink) {
+    return activeLink.firstChild.classList.add("active-link");
+  }
+
+  if (locationHref.indexOf("/dashboard") !== -1) {
+    queryString = queryString.replace("user/dashboard", "");
+    return document.querySelector(queryString).firstChild.classList.add("active-link");
+  }
+  if (locationHref.indexOf("/security-tips") !== -1) {
+    return document.querySelector(".nav-link[href*='/security-tips']").firstChild.classList.add("active-link");
+  }
+}
+
 ( async() => {
   document.addEventListener("touchstart", function(){}, true);
   const win = window;
   const header = document.getElementById("header");
+  const topNavigation = document.querySelector("#navigation-wrapper");
   win.addEventListener("pageshow", function() {
     const previousActiveLink = document.querySelector(".active-link");
     if (previousActiveLink) {
       previousActiveLink.classList.remove("active-link");
     }
-    const navLinks = document.querySelectorAll(".nav-link");
-
-    navLinks.forEach(link => {
-      if (link.href === win.location.href) {
-        link.classList.add("active-link");
-      }
-    });
-
+    styleActiveLink(win.location.href);
     if (win.location.search.includes("utm_") && win.history.replaceState) {
       win.history.replaceState({}, "", win.location.toString().replace(/[?&]utm_.*/g, ""));
     }
-    toggleMobileFeatures();
+    toggleMobileFeatures(topNavigation);
     toggleArticles();
     toggleHeaderStates(header, win);
     document.forms ? (restoreInputs(), addFormListeners()) : null;
   });
 
-  // toggleMobileFeatures();
   win.addEventListener("resize", () => {
-    toggleMobileFeatures();
+    toggleMobileFeatures(topNavigation);
     toggleArticles();
   });
 
   document.addEventListener("scroll", () => toggleHeaderStates(header, win));
 
-  document.querySelectorAll(".breach-img").forEach(logo => {
+  document.querySelectorAll(".breach-logo:not(.lazy-img)").forEach(logo => {
     logo.addEventListener("error", (missingLogo) => {
       missingLogo.target.src = "/img/logos/missing-logo-icon.png";
     });

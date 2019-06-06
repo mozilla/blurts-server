@@ -350,9 +350,87 @@ monitor-several-emails = Monitorea varios corres electrónicos
 take-action = Actúa para proteger tus cuentas
 keep-your-data-safe = Descubre lo que necesitas hacer para mantener tu información segura de los criminales cibrenéticos.
 website-breach = Violación del sitio web
+sensitive-breach = Filtración de datos sensible del sitio web
+data-aggregator-breach = Filtración de recopilador de datos
+unverified-breach = Filtración no verificada
+spam-list-breach = Lista de filtración no deseada
+website-breach-plural = Filtraciones de sitios web
+sensitive-breach-plural = Filtraciones sensibles
+data-aggregator-breach-plural = Filtraciones de recopiladores de datos
+unverified-breach-plural = Filtraciones sin verificar
+spam-list-breach-plural = Listas de filtraciones no deseadas
+what-data = Qué datos fueron comprometidos:
+sensitive-sites = ¿Cómo trata { -product-name } los sitios sensibles?
+sensitive-sites-copy =
+    { -product-name } solo revela las cuentas asociadas con estos
+    tipos de filtraciones una vez que se ha verificado la dirección de correo electrónico. Esto significa que eres la
+    única persona que puede ver si tu información estaba expuesta (a menos que alguien
+    más también tenga acceso a tu cuenta de correo electrónico).
+delayed-reporting-headline = ¿Por qué se tardó tanto en informar de esta filtración?
+delayed-reporting-copy =
+    A veces pueden pasar meses o años antes de que las credenciales que se expusieron
+    en una filtración de datos aparezcan en la web oscura. Las filtraciones se añaden a nuestra base de datos en cuanto se descubren y verifican.
+about-fxm-headline = Acerca de { -product-name }
+about-fxm-blurb = { -product-name } te advierte si tus cuentas en línea estuvieron involucradas en un filtración de datos. Averigua si se han expuesto tus datos, recibe alertas sobre nuevas filtraciones y toma medidas para proteger tus cuentas en línea. { -brand-Mozilla } patrocina { -product-name }.
+fxm-warns-you = { -product-name } te advierte si tus cuentas en línea estuvieron involucradas en un filtración de datos. Verifica si tu información ha sido expuesta, aprende cómo proteger mejor tus cuentas en línea y recibe alertas si tu dirección de correo se encuentra nuevamente en riesgo.
+# How Firefox Monitor works
+how-fxm-works = Cómo funciona { -product-name }
+how-fxm-1-headline = Hacer una búsqueda básica
+how-fxm-1-blurb =
+    Busca tu dirección de correo electrónico en las filtraciones de datos públicos yendo hacia atrás
+    a 2007. Esta búsqueda básica mostrará la mayoría de las filtraciones de datos, pero no
+    las que contienen información personal privada.
+how-fxm-2-headline = Regístrate para monitorear las filtraciones
+how-fxm-2-blurb =
+    Crea una { -brand-fxa } para controlar tu correo electrónico en busca de filtraciones continuas.
+    Una vez que hayas verificado tu correo electrónico, también recibirás un informe completo de las infracciones anteriores, incluyendo las filtraciones de la privacidad.
+how-fxm-3-headline = Recibir notificaciones en el navegador
+how-fxm-3-blurb = Si usas { -brand-name }, recibirás una notificación si visitas un sitio que ha sido vulnerado. Averigua si formaste parte de esta vulnerabilidad y qué puedes hacer al respecto.
+wtd-after-website = Qué hacer tras una filtración de una página web
+wtd-after-data-agg = Qué hacer después de una violación de un agregador de datos
+what-is-data-agg = ¿Qué es un agregador de datos?
+what-is-data-agg-blurb = Los agregadores de datos, o los intermediarios de datos, recopilan información de registros públicos  y los compran de otras empresas. Compilan estos datos para venderlos a las empresas con fines de comercialización. Las víctimas de estas violaciones tienen menos probabilidades de experimentar fraudes financieros,  pero los piratas informáticos podrían usar estos datos para hacerse pasar por ellos o perfilarlos.
+protect-your-privacy = Proteger tu privacidad en línea
+no-pw-to-change = A diferencia de una filtración de un sitio web, no hay contraseña que cambiar.
+avoid-personal-info = Evita usar información personal en contraseñas
+avoid-personal-info-blurb = Es fácil encontrar cumpleaños, direcciones y nombres de los miembros de tu familia en línea. Mantén estas palabras fuera de tus contraseñas.
 
 ## What to do after data breach tips
 
+change-pw = Cambiar tu contraseña
+even-for-old = Incluso para cuentas antiguas, es importante actualizar tu contraseña.
+make-new-pw-unique = Haz que la nueva contraseña sea diferente y única
+strength-of-your-pw = La fuerza de tus contraseñas impactan directamente a tu seguridad en línea.
+create-strong-passwords = Cómo crear contraseñas seguras
+stop-reusing-pw = Dejar de usar las mismas contraseñas
+create-unique-pw = Crea contraseñas únicas y guárdalas en algún lugar seguro, como un administrador de contraseñas.
+five-myths = 5 mitos sobre los administradores de contraseñas
+create-a-fxa = Crea una { -brand-fxa } para tener un informe completo de las filtraciones y para recibir alertas.
+feat-security-tips = Consejos de seguridad para proteger tus cuentas
+feat-sensitive = Búsqueda avanzada en filtraciones sensibles
+back-to-top = Volver al inicio
+resend-verification = Reenviar correo electrónico de verificación
+add-new-email = Agregar una nueva dirección de correo electrónico
+send-verification = Enviar enlace de verificación
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Comunicación global
+link-change-primary = Cambiar dirección de correo principal
+manage-email-addresses = Administrar direcciones de correo electrónico
+welcome-back = ¡Bienvenido de nuevo, { $userName }!
+welcome-user = ¡Bienvenido, { $userName }!
+what-to-do-after-breach = Qué hacer después de una filtración de datos:
+ba-next-step-1 = Cambiar tu contraseña por otra segura y única.
+ba-next-step-2 = Dejar de usar la contraseña expuesta por completo.
 
 ## Updated error messages
 
+login-link-pre = ¿Tienes una cuenta?
+login-link = Iniciar sesión
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Descubrir
+# Title
+email-addresses-title = Direcciones de correo electrónico

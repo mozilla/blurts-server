@@ -59,7 +59,7 @@ async function checkNotifyCallsEverythingItShould(breachedEmail, recipientEmail)
   expect (mockFluentFormatCalls.length).toBe(1);
   const mockFluentFormatCallArgs = mockFluentFormatCalls[0];
   expect (mockFluentFormatCallArgs[0]).toEqual(["en"]);
-  expect (mockFluentFormatCallArgs[1]).toBe("hibp-notify-email-subject");
+  expect (mockFluentFormatCallArgs[1]).toBe("breach-alert-subject");
 
   const mockSendEmailCalls = EmailUtils.sendEmail.mock.calls;
   expect (mockSendEmailCalls.length).toBe(1);

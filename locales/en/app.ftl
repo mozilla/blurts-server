@@ -29,8 +29,7 @@ error-not-subscribed = This email address is not subscribed to {-product-name}.
 error-hibp-throttled = Too many connections to {-brand-HIBP}.
 error-hibp-connect = Error connecting to {-brand-HIBP}.
 error-hibp-load-breaches = Could not load breaches.
-
-hibp-notify-email-subject = {-product-name} Alert: Your account was involved in a breach.
+error-must-be-signed-in = You must be signed in to your {-brand-fxa}.
 
 home-title = {-product-name}
 home-not-found = Page not found.
@@ -487,9 +486,6 @@ open-fxa-menu = Open {-brand-fxa} navigation
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = LATEST BREACH ADDED
 
-breach-added = Breach reported:
-breach-discovered = Breach discovered:
-
 # Link title
 more-about-this-breach = More about this breach
 
@@ -863,7 +859,6 @@ join-firefox = There is a way to protect your privacy. Join {-brand-name}.
 # Link title
 learn-more-link = Learn more.
 
-
 email-sent = Email Sent!
 
 # Form title
@@ -885,3 +880,7 @@ manage-all-emails = Manage all email addresses in { $preferencesLink }.
 # alerts for all of their monitored email addresses to a single 
 # email address.
 breach-alert-notifications = Breach Alert Notifications
+
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Breach added:
