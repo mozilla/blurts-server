@@ -27,7 +27,6 @@ error-hibp-throttled = 與 { -brand-HIBP } 的連線太多。
 error-hibp-connect = 連線到 { -brand-HIBP } 時發生錯誤。
 error-hibp-load-breaches = 無法載入資料外洩資訊。
 error-must-be-signed-in = 您必須先登入 { -brand-fxa }。
-hibp-notify-email-subject = { -product-name } 警告: 您的帳號資料已遭外洩。
 home-title = { -product-name }
 home-not-found = 找不到頁面。
 oauth-invalid-session = Session 無效
@@ -294,8 +293,6 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = 開啟 { -brand-fxa } 導航列
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = 最新公開的外洩事件
-breach-added = 事件回報日期:
-breach-discovered = 事件發現日期:
 # Link title
 more-about-this-breach = 關於此資料外洩事件的更多資訊
 take-control = 搶回個人資料的控制權
@@ -517,3 +514,6 @@ to-affected-email = 傳送資料外洩警報到受影響的電子郵件信箱
 join-firefox = 有種方法可以保護您的隱私，加入 { -brand-name }。
 # Link title
 learn-more-link = 了解更多。
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = 事件紀錄時間:
