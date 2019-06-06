@@ -26,6 +26,7 @@ error-not-subscribed = Este endereço de email não está subscrito no { -produc
 error-hibp-throttled = Demasiadas ligações para { -brand-HIBP }.
 error-hibp-connect = Erro ao ligar a { -brand-HIBP }.
 error-hibp-load-breaches = Não foi possível carregar as brechas.
+error-must-be-signed-in = Deve estar autenticado na sua { -brand-fxa }.
 hibp-notify-email-subject = { -product-name } Alerta: A sua conta foi envolvida numa brecha.
 home-title = { -product-name }
 home-not-found = Página não encontrada.
