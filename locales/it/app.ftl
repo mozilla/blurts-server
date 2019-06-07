@@ -31,7 +31,6 @@ error-hibp-throttled = Troppe connessioni a { -brand-HIBP }.
 error-hibp-connect = Errore di connessione a { -brand-HIBP }.
 error-hibp-load-breaches = Non è possibile caricare informazioni relative alle violazioni di dati.
 error-must-be-signed-in = Devi effettuare l’accesso al tuo { -brand-fxa }.
-hibp-notify-email-subject = Avviso di { -product-name }: Il tuo account è stato coinvolto in una violazione di dati.
 home-title = { -product-name }
 home-not-found = Pagina non trovata.
 oauth-invalid-session = Sessione non valida
@@ -324,8 +323,6 @@ fxa-account = { -brand-fxa(capitalization: "uppercase") }
 open-fxa-menu = Apri la navigazione di { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ULTIMA VIOLAZIONE AGGIUNTA
-breach-added = Data segnalazione:
-breach-discovered = Violazione scoperta:
 # Link title
 more-about-this-breach = Altro su questa violazione
 take-control = Riprendi il controllo dei tuoi dati personali
@@ -558,3 +555,23 @@ to-affected-email = Invia avvisi relativi alle violazioni all’indirizzo email 
 join-firefox = C’è un modo per proteggere la tua privacy. Entra a far parte di { -brand-name }.
 # Link title
 learn-more-link = Ulteriori informazioni.
+email-sent = Email inviata.
+# Form title
+want-to-add = Vuoi aggiungere un’altra email?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Verifica il link inviato a { $userEmail } per aggiungere l’indirizzo a { -product-name }.
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Gestisci tutti gli indirizzi email in { $preferencesLink }.
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Notifiche per le violazioni
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Violazione aggiunta:
