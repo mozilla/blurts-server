@@ -27,7 +27,6 @@ error-hibp-throttled = Prea multe conexiuni la { -brand-HIBP }.
 error-hibp-connect = Eroare de conectare la { -brand-HIBP }.
 error-hibp-load-breaches = Nu s-au putut încărca breșele.
 error-must-be-signed-in = Trebuie să fii autentificat(ă) la { -brand-fxa }.
-hibp-notify-email-subject = Alertă { -product-name }: Contul tău a fost implicat într-o breșă.
 home-title = { -product-name }
 home-not-found = Pagină negăsită.
 oauth-invalid-session = Sesiune invalidă
@@ -325,8 +324,6 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = Deschide navigarea { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ULTIMA BREȘĂ ADĂUGATĂ
-breach-added = Breșă raportată:
-breach-discovered = Breșă descoperită:
 # Link title
 more-about-this-breach = Mai multe despre această breșă
 take-control = Reia controlul asupra datelor tale personale.
@@ -566,3 +563,23 @@ to-affected-email = Trimite alerte pentru breșe de date către adresele de e-ma
 join-firefox = Există o modalitate de a-ți proteja confidențialitatea. Alătură-te { -brand-name }.
 # Link title
 learn-more-link = Află mai multe.
+email-sent = Mesajul de e-mail a fost trimis!
+# Form title
+want-to-add = Vrei să adaugi încă o adresă de e-mail?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Verifică linkul trimis către { $userEmail } ca să îl adaugi în { -product-name }.
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Gestionează toate adresele de e-mail din { $preferencesLink }.
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Notificări alerte de breșe
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Breșă adăugată:
