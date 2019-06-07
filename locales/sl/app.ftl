@@ -44,7 +44,6 @@ error-not-subscribed = Ta e-poštni naslov ni naročen na { -product-name }.
 error-hibp-throttled = Preveč povezav na { -brand-HIBP }.
 error-hibp-connect = Napaka pri povezovanju na { -brand-HIBP }.
 error-hibp-load-breaches = Ni bilo mogoče naložiti podatkov o krajah.
-hibp-notify-email-subject = Opozorilo { -product-name }: vaš račun je bil vpleten v krajo podatkov
 home-title = { -product-name }
 home-not-found = Strani ni mogoče najti.
 oauth-invalid-session = Neveljavna seja
@@ -341,7 +340,6 @@ security-tips = Varnostni nasveti
 fxa-account = { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ZADNJA DODANA KRAJA PODATKOV
-breach-added = Prijava kraje podatkov:
 # Link title
 more-about-this-breach = Več o tej kraji podatkov
 take-control = Prevzemite nadzor nad svojimi osebnimi podatki.
@@ -464,3 +462,4 @@ menu = Meni
 join-firefox = Vašo zasebnost lahko zaščitite. Pridružite se { -brand-name }u.
 # Link title
 learn-more-link = Več o tem.
+email-sent = E-pošta poslana!
