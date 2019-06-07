@@ -660,6 +660,20 @@ learn-more-link = További információk.
 email-sent = E-mail elküldve!
 # Form title
 want-to-add = Hozzáad egy másik e-mail címet?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Erősítse meg a(z) { $userEmail } címre küldött hivatkozást, hogy hozzáadja a { -product-name }hoz.
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Az e-mail címeit a { $preferencesLink }ban kezelheti.
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Adatsértési riasztási értesítések
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Adatsértés hozzáadva:
