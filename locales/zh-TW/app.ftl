@@ -514,6 +514,23 @@ to-affected-email = 傳送資料外洩警報到受影響的電子郵件信箱
 join-firefox = 有種方法可以保護您的隱私，加入 { -brand-name }。
 # Link title
 learn-more-link = 了解更多。
+email-sent = 郵件已寄出！
+# Form title
+want-to-add = 想加入另一個信箱嗎？
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = 請到 { $userEmail } 收信，點擊當中的驗證連結，即可加入 { -product-name }。
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = 於 { $preferencesLink } 管理所有電子郵件地址。
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = 資料外洩警報通知
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = 事件紀錄時間:
