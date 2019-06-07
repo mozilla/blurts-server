@@ -657,6 +657,9 @@ to-affected-email = Adatsértési figyelmeztetések elküldése az érintett e-m
 join-firefox = Megvédheti a magánszféráját. Csatlakozzon a { -brand-name }hoz.
 # Link title
 learn-more-link = További információk.
+email-sent = E-mail elküldve!
+# Form title
+want-to-add = Hozzáad egy másik e-mail címet?
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Adatsértés hozzáadva:
