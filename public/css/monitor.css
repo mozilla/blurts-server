@@ -128,12 +128,6 @@ h3.sb-callout {
   max-width: 350px;
 }
 
-@media screen and (max-width: 1100px) {
-  /* .landing-bottom-bar {
-    padding-top: 4vh;
-  } */
-}
-
 @media screen and (max-width: 900px) {
   .landing-content {
     max-width: 700px;
@@ -141,7 +135,6 @@ h3.sb-callout {
 
   .monitor-homepage.featured-breach {
     min-height: 100vh;
-    padding-top: 14rem;
   }
 
   .featured-breach h2.landing-headline,
@@ -180,7 +173,7 @@ h3.sb-callout {
     min-height: 96vh;
   }
 
-  /* .landing-bottom-bar {
-    padding-top: 6vh;
-  } */
+  .landing-content .form-desc {
+    padding-bottom: 3rem;
+  }
 }
