@@ -105,6 +105,7 @@ show-more-breaches = Sken ugar
 what-to-do-headline = Acu ara txedmeḍ ticki talɣut-ik tban-d deg trewla n yisefka
 what-to-do-subhead-1 = Beddel awalen-ik uffiren, xas ma d imiḍanen iqbuṛen
 what-to-do-subhead-2 = Ma tulseḍ aseqdec n wawal uffir yettuḥazen, beddel-it
+what-to-do-subhead-3 = Xdem ayen-nniḍen akken ad tɣellseḍ imiḍanen-ik n tedrimt.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Azemz n trewla n yisefka:
 # compromised accounts = the total number of user accounts exposed in data breach
