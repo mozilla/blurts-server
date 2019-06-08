@@ -579,7 +579,7 @@ manage-all-emails = Gestionează toate adresele de e-mail din { $preferencesLink
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-breach-alert-notifications = Notificări alerte de breșe
+breach-alert-notifications = Notificări privind alertele de breșe
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Breșă adăugată:
