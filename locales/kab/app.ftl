@@ -238,9 +238,88 @@ your-info-was-discovered-headline = Talɣut-ik tettwaf-d deg trewla tamaynut n y
 what-to-do-after-breach = Acu ara txedmeḍ defiir n trewla n yisefka:
 ba-next-step-1 = Beddel awal-ik uffir s wayeḍ-nniḍen iǧehden ugar.
 ba-next-step-2 = Seḥbes aseqdec n wawal uffir yettwakren.
+all-breaches-headline = Meṛṛa tirewliwin deg { -product-name }
+search-breaches = Nadi tirewliwin n yisefka
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Tirewliwin ibanen:
+all-breaches = Meṛṛa tirewliwin
 
 ## Updated error messages
 
+error-bot-headline = Anadi yeḥbes kra n wakud
 error-csrf-headline = Tfuk tɣimit
+error-csrf-blurb = Sit ɣef tqeffalt Ɣer deffir deg yiminig-ik, smiren asebter sakin ɛreḍ tikkelt-nniḍen.
+error-invalid-unsub = Amek ara teffɣeḍ seg ujerred n yilɣa { -product-name }
 login-link-pre = Ɣur-k amiḍan?
 login-link = Qqen
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] Tansa n yimayl i d-yettwabedren
+       *[other] Tansiwin n yimayl i d-yettwabedren
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] Tarewla n yisefka i yezmren ad kecmen ɣer telɣut-ik.
+       *[other] Tirewliwin n yisefka i yezmren ad kecmen ɣer telɣut-ik.
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Awal uffir i ḥuzant trewliwin n yisefka
+       *[other] Awalen uffiren i ḥuzant trewliwin n yisefka
+    }
+# Button
+see-additional-breaches = Wali tirewliwin-nniḍen
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Wali meṛṛa tirewliwin n yisefka
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Imayl-a iban-d deg 1 trewla n yisefka.
+       *[other] Imayl-a iban-d deg { $breachCount } n trewliwin n yisefka.
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Agmmuḍ i: { $userEmail }
+other-monitored-emails = Imaylen-nniḍen yettuɛassen
+email-verification-required = iAsenqed n yimayl ilaq
+fxa-primary-email = Tansa imayl n { -brand-fxa } - Tagejdant
+what-is-a-website-breach = D acu-tt trewla n yisefka n usmel web?
+security-tips-headline = Iwellihen n tɣellist i ummesten-ik seg imakaren imsenselkamen
+steps-to-protect = Imecwaṛen ilaqen i ummesten n timagit-ik srid
+alert-about-new-breaches = Lɣu-yi-d ɣef trewliwin n yisefka timaynutin
+see-if-youve-been-part = Wali ma tella trewla n yisefka srid i k-iḥuzan.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Senqed
+# Title
+email-addresses-title = Tansiwin n yimayl
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = Ismenyifen n { -product-short-name }
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Y(T)eqqen s yisem: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Sizdeg s taggayt:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Umuɣ
+# Link title
+learn-more-link = Issin ugar.
+email-sent = Imayl yettwazen!
+# Form title
+want-to-add = Tebɣiḍ ad ternuḍ imayl-nniḍen?
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Ilɣa n trewla n yisefka
