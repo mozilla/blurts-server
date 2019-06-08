@@ -69,12 +69,16 @@ pwt-summary-5 =
 pwt-headline-6 = Jerred ar yilɣa { -product-name-nowrap }
 pwt-summary-6 = Tarewla n yisefka n yismal web nernant. Ticki tarewla tamaynut tettwarna ɣer taffa-nneɣ n yisefka, { -product-name-nowrap } ad d-yazen alɣu akken ad tizmireḍ ad tgeḍ kra daɣen ad tseḥbibreḍ ɣef umiḍan-ik.
 landing-headline = Azref-ik ad teqqimeḍ d aɣelsan seg yimakaren ad yebdu sya.
+landing-blurb =
+    { -product-name-nowrap } imudd-ak-d ifeka akken ad tḥerzeḍ talɣut-ik tudmawant. 
+    Af-d isefka udmawanen yettwakcamen i yimakaren imsenselkamen sakin issin ammesten-nsen.
 scan-label = Wali ma telliḍ seg wid tḥuza trewla n yisefka.
 scan-placeholder = Sekcem tansa imayl
 scan-privacy = Tansa-ik imayl ur tettwaseklas ara.
 scan-submit = Nadi imayl-ik
 scan-another-email = Sleḍ tansa-nniḍen imayl
 scan-featuredbreach-label = Wali ma yella amiḍan-ik <span class="bold">{ $featuredBreach }</span> yettwaker.
+sensitive-breach-email-required = Tarewla-a n yisefka tegber talɣut iweɛren. Ilaq yimayl n usenqed.
 scan-error = Yessefk ad tili d tansa tameɣtut.
 signup-banner-headline = { -product-name-nowrap } yettaf-d uguren ɣef yimiḍanen-ik srid.
 download-firefox-bar-blurb = { -product-name-nowrap } Iwwi-yak-t-id <span class="nowrap">amaynut { -brand-name }</span>.
@@ -172,6 +176,8 @@ guest-scan-results-headline =
     }
 user-no-breaches-blurb = Ad k-id-nelɣu ma yella tansa-a tban-d deg trewla tamaynut n yisefka.
 have-an-account = Ɣur-k yakan amiḍan?
+# Alerts is a noun
+sign-up-for-alerts = Jerred ɣer yilɣa
 sign-up-for-fxa-alerts = Jerred ɣer yilɣa { -product-name }.
 create-free-account = Rnu  { -brand-fxa } ilelli akken ad tremseḍ aneqqis ummid ɣef trewla n yisefka yezrin, ilɣa ɣef trewliwin i d-iteddun akked telqut ɣef yimeẓla-nniḍen n { -brand-Mozilla }.
 get-your-report-and-sign-up = Rmes aneqqis-ik daɣen jerred ɣer yilɣa.
@@ -193,10 +199,14 @@ open-fxa-menu = Inig deg { -brand-fxa }
 latest-breach = TIREWLIWIN N YISEFKA TINEGGURA YETTWARNAN
 # Link title
 more-about-this-breach = Ugar ɣer trewla-a
+take-control = Ṭṭef isefka-ik udmawanen gar ifassen-ik.
+cant-stop-hackers = Ur tezmireḍ ara ad tesḥebseḍ imakaṛen si takerḍa. Maca tzemreḍ ad tanfeḍ i yir tanumi i yettaran takerḍa fessuset.
 read-more-tips = Ɣer ugar ɣef iwellihen n tɣellist
 how-hackers-work = Gzu amek xeddmen imakaren imsenselkamen
 monitor-your-online-accounts = Rnu { -brand-fxa } akken ad tɣasseḍ tirewliwin n yisefka.
 stay-alert = Rmes talɣut ɣef tirewliwin n yisefka timaynutin
+if-your-info = Ma yella talɣut-ik tettban-d deg trewla n yisefka tamaynut, ad ak-d-nazen alɣu.
+monitor-several-emails = Ɛass ddeqs n tansiwin imayl
 website-breach = Tarewla n yismal web
 sensitive-breach = Tarewla n yismal web iweɛren
 data-aggregator-breach = Tarewla n yinegmaren n yisefka
@@ -214,6 +224,7 @@ about-fxm-headline = Ɣef { -product-name }
 how-fxm-works = Amek iteddu { -product-name }
 how-fxm-1-headline = Teg inadiyen fessusen
 how-fxm-2-headline = Jerred akken ad tɛasseḍ tarewla n yisefka
+how-fxm-3-headline = Rmes ilɣa deg iminig-ik
 wtd-after-website = Acu ara txedmeḍ deffir n trewla n yisefka
 wtd-after-data-agg = Acu ara txedmeḍ deffir n trewla n yisefka n ugemmar n yisefka
 what-is-data-agg = D acu-t ugemmar n yisefka?
@@ -268,6 +279,12 @@ your-info-was-discovered-headline = Talɣut-ik tettwaf-d deg trewla tamaynut n y
 what-to-do-after-breach = Acu ara txedmeḍ defiir n trewla n yisefka:
 ba-next-step-1 = Beddel awal-ik uffir s wayeḍ-nniḍen iǧehden ugar.
 ba-next-step-2 = Seḥbes aseqdec n wawal uffir yettwakren.
+new-breaches-found =
+    { $breachCount ->
+        [one] { $breachCount } N TREWLA N YISEFKA TAMAYNUT
+       *[other] { $breachCount } N TREWLIWIN N YISEFKA TIMAYNUTIN
+    }
+sign-up-headline-1 = Rmes ilɣa yettkemmilen s { -brand-fxa }.
 all-breaches-headline = Meṛṛa tirewliwin deg { -product-name }
 search-breaches = Nadi tirewliwin n yisefka
 # "Appears in-page as: Showing: All Breaches"
