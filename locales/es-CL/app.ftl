@@ -330,6 +330,7 @@ latest-breach = ÚLTIMA FILTRACIÓN AGREGADA
 # Link title
 more-about-this-breach = Más acerca de esta filtración
 take-control = Recupera el control de tu información personal.
+cant-stop-hackers = No puedes detener a los hackers. Pero puedes evitar malos hábitos que hagan su trabajo más sencillo.
 read-more-tips = Leer más consejos de seguridad
 how-hackers-work = Descubre cómo trabajan los hackers
 monitor-your-online-accounts = Regístrate para monitorear filtraciones con una { -brand-fxa }.
@@ -356,6 +357,8 @@ about-fxm-headline = Acerca de { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Cómo funciona { -product-name }
 how-fxm-1-headline = Realizar una búsqueda básica
+how-fxm-3-headline = Recibir notificaciones en el navegador
+wtd-after-website = Qué hacer tras una filtración de una página web
 what-is-data-agg = ¿Qué es un agregador de datos?
 protect-your-privacy = Protege tu privacidad en línea
 avoid-personal-info = Evita usar información personal en contraseñas
@@ -363,8 +366,14 @@ avoid-personal-info = Evita usar información personal en contraseñas
 ## What to do after data breach tips
 
 change-pw = Cambia tu contraseña
+create-strong-passwords = Cómo crear contraseñas seguras
+stop-reusing-pw = No uses siempre las mismas contraseñas
+feat-security-tips = Consejos de seguridad para proteger tus cuentas
+check-for-breaches = Busca filtraciones
+back-to-top = Volver al inicio
 comm-opt-1 = Enviar todas las alertas de filtraciones a { $primaryEmail }.
 stop-monitoring-this = Dejar de monitorear este correo.
+resend-verification = Reenviar correo de verificación
 add-new-email = Agregar una nueva dirección de correo
 send-verification = Enviar enlace de verificación
 # This string is a header on the user preferences page and
@@ -391,11 +400,13 @@ ba-next-step-blurb-1 =
     caracteres especiales y números. No contiene información personal como
     dirección, cumpleaños o nombres de familiares.
 ba-next-step-2 = Deja ya de usar la contraseña expuesta.
+faq2 = ¿Por qué tomó tanto tiempo notificarme sobre esta filtración?
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } NUEVA FILTRACIÓN ENCONTRADA
        *[other] { $breachCount } NUEVAS FILTRACIONES ENCONTRADAS
     }
+find-out-if = Averiguar si tus datos fueron expuestos en esta filtración.
 no-other-breaches-found = No se encontraron otras filtraciones en la búsqueda básica.
 no-results-blurb = Lo sentimos, esa filtración no está en nuestra base de datos.
 all-breaches-headline = Todas las filtraciones en { -product-name }
@@ -444,6 +455,7 @@ other-monitored-emails = Otros correos monitorizados
 email-verification-required = Verificación de correo requerida
 fxa-primary-email = Correo de { -brand-fxa } - Primario
 what-is-a-website-breach = ¿Qué es una filtración de sitio?
+alert-about-new-breaches = Avisarme cuando haya nuevas filtraciones
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Averiguar
 # This string appears on breach detail pages and is followed by a list
