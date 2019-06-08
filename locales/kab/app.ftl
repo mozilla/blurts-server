@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -19,11 +20,12 @@ about-firefox-alerts = Ɣef ilɣa n Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Mudd-d tikti
 terms-and-privacy = Tiwtilin akked tbaḍnit
+error-could-not-add-email = Ur izmir ara ad yernu tansa n yimayl ɣer taffa n yisefka.
 error-not-subscribed = Tansa-a imayl ur tettwajerred ara ar yilɣa { -product-name }.
 error-hibp-throttled = Ddeqs n tuqqniwin ar { -brand-HIBP }.
 error-hibp-connect = Tuccḍa deg tuqqna ar { -brand-HIBP }.
 error-hibp-load-breaches = Ur yezmir ara ad d-yessali uguren n tɣellist.
-hibp-notify-email-subject = Alɣu { -product-name }: Amiḍan-ik yezmer ad yesɛu ugur n tɣellist.
+error-must-be-signed-in = Yessefk ad teqqneḍ ɣer { -brand-fxa } yinek.
 home-title = { -product-name }
 home-not-found = Ulac asebter
 oauth-invalid-session = Yir tiɣimit
@@ -127,3 +129,9 @@ sign-out = Ffeɣ
 fxa-download-firefox-bar-link = Sider tura
 fxa-download-firefox-banner-blurb = Asali n yisebtar d amellil ugar, d arurad, s useqdec n drus n tkatut.
 have-an-account = Ɣur-k yakan amiḍan?
+
+## What to do after data breach tips
+
+
+## Updated error messages
+
