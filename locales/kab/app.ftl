@@ -176,6 +176,9 @@ guest-scan-results-headline =
     }
 user-no-breaches-blurb = Ad k-id-nelɣu ma yella tansa-a tban-d deg trewla tamaynut n yisefka.
 have-an-account = Ɣur-k yakan amiḍan?
+fb-landing-headline = Talɣut-ik tettuḥaz deg trewla n yisefka { $breachName }?
+copyright = Kra n yiḥricen n ugbur-a d  © 1999-{ $year }sɣur iwiziwen i yiman-nsen n mozilla.org.
+content-available = Agbru yella ddaw n turagt Creative Commons.
 # Alerts is a noun
 sign-up-for-alerts = Jerred ɣer yilɣa
 sign-up-for-fxa-alerts = Jerred ɣer yilɣa { -product-name }.
@@ -206,7 +209,10 @@ how-hackers-work = Gzu amek xeddmen imakaren imsenselkamen
 monitor-your-online-accounts = Rnu { -brand-fxa } akken ad tɣasseḍ tirewliwin n yisefka.
 stay-alert = Rmes talɣut ɣef tirewliwin n yisefka timaynutin
 if-your-info = Ma yella talɣut-ik tettban-d deg trewla n yisefka tamaynut, ad ak-d-nazen alɣu.
+search-all-emails = Wali ma yella tansiwin-ik imayl banent-d deg trewla n yisefka sakin rmes ilɣa ticki yella wugur ɣef waya.
 monitor-several-emails = Ɛass ddeqs n tansiwin imayl
+take-action = Eg kra akken ad temmesteneḍ imiḍanen-ik
+keep-your-data-safe = Issin ayen ara txedmeḍ i ummesten n yisefka-ik seg yimakaren imsenselkamen.
 website-breach = Tarewla n yismal web
 sensitive-breach = Tarewla n yismal web iweɛren
 data-aggregator-breach = Tarewla n yinegmaren n yisefka
@@ -279,13 +285,18 @@ your-info-was-discovered-headline = Talɣut-ik tettwaf-d deg trewla tamaynut n y
 what-to-do-after-breach = Acu ara txedmeḍ defiir n trewla n yisefka:
 ba-next-step-1 = Beddel awal-ik uffir s wayeḍ-nniḍen iǧehden ugar.
 ba-next-step-2 = Seḥbes aseqdec n wawal uffir yettwakren.
+faq2 = Acuɣer yewwi aṭas n wakud akken ad ẓreɣ tarewela-a n yisefka?
+faq3 = Amek zemreɣ ad ẓreɣ ma yella imayl-a n { -product-name } n tidet?
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } N TREWLA N YISEFKA TAMAYNUT
        *[other] { $breachCount } N TREWLIWIN N YISEFKA TIMAYNUTIN
     }
 sign-up-headline-1 = Rmes ilɣa yettkemmilen s { -brand-fxa }.
+account-not-required = Iminig { -brand-name } ur issefk ara ad yili kan d netta akken ad ternuḍ amiḍan { -brand-fxa }. Tzemreḍ ad tremseḍ talɣut ɣef yimeẓla n { -brand-Mozilla }.
+get-alerted = Rmes ilɣa ticki llant trewiliwin timaynutin.
 find-out-if = Wali ma yella isefka-ik tḥuza-tent trewla n yisefka.
+fb-not-comp = Tansa-a imayl ur d-tban ara deg trewla n yisefka { $breachName }.
 all-breaches-headline = Meṛṛa tirewliwin deg { -product-name }
 search-breaches = Nadi tirewliwin n yisefka
 # "Appears in-page as: Showing: All Breaches"

@@ -22,6 +22,15 @@ report-headline =
 breach-alert-headline = Amiḍan-ik iban-d deg trewla n yisefka.
 report-pwt-headline-1 = Seqdec awal uffir yemgaraden deg yal amiḍan
 report-pwt-headline-2 = Rnu awalen uffiren iǧehden yemgaraden
+report-pwt-headline-3 = Sesfer tilufa n tɣellist am wawalen uffiren-nniḍen
+report-pwt-summary-3 = Ismal web ur senqaden ara ma yella tiririyin-ik d tusdidin, maca ma mmentaḍent kan yal tikkelt. Rnu tiririyin ɣezzifen, tigacurenin sakin sekles-itent deg umḍiɣ n ṭmana.
 report-pwt-headline-4 = Seqdec amsefrak n wawalen uffiren
 # A link to legal information about mozilla products.
 legal = Usḍif
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message =
+    Azul,
+    { -brand-name } yessumur ameẓlu ilelli anida i tzemreḍ ad tesneqdeḍ ma yella tḥuza-k tkerda n yisefka. A-t-a amek iteddu:
+    1. Ddu ɣer { "https://monitor.firefox.com" } sakin nadi imayl-ik.
+    2. Wali ma yella imiḍanen-ik srid llan deg trewla n yisefka.
+    3. Wali iwellihen n { -product-name } ɣef wayen ilaqen ad t-tgeḍ.
