@@ -99,7 +99,6 @@ error-hibp-throttled = Příliš mnoho spojení ke službě { -brand-HIBP }.
 error-hibp-connect = Chyba při připojování k { -brand-HIBP }.
 error-hibp-load-breaches = Nepodařilo se načíst informace o únicích.
 error-must-be-signed-in = Musíte být přihlášeni do svého { -brand-fxa(case: "gen") }.
-hibp-notify-email-subject = { -product-name } - upozornění, váš účet byl součástí úniku dat.
 home-title = { -product-name }
 home-not-found = Stránka nenalezena.
 oauth-invalid-session = Neplatná relace
@@ -416,8 +415,6 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = Otevřít nabídku { -brand-fxa(case: "gen") }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = NAPOSLEDY PŘIDANÝ ÚNIK
-breach-added = Datum nahlášení:
-breach-discovered = Datum odhalení:
 # Link title
 more-about-this-breach = Další informace o tomto úniku
 take-control = Získejte opět kontrolu nad svými osobními údaji.
@@ -668,6 +665,12 @@ filter-by = Filtrovat podle kategorie:
 menu = Nabídka
 to-affected-email = Poslat upozornění na únik na postiženou e-mailovou adresu
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
-join-firefox = Existuje způsob, jak ochránit vaše soukromí. Přihlaste se do { -brand-name(case: "gen") }.
+join-firefox = Existuje způsob, jak ochránit své soukromí. Používejte { -brand-name }.
 # Link title
 learn-more-link = Zjistit více.
+email-sent = E-mail odeslán!
+# Form title
+want-to-add = Chcete přidat další e-mailovou adresu?
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Datum přidání:
