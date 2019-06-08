@@ -165,6 +165,11 @@ guest-scan-results-headline =
 user-no-breaches-blurb = Ad k-id-nelɣu ma yella tansa-a tban-d deg trewla tamaynut n yisefka.
 have-an-account = Ɣur-k yakan amiḍan?
 about-fxm-headline = Ɣef { -product-name }
+# How Firefox Monitor works
+how-fxm-works = Amek iteddu { -product-name }
+how-fxm-1-headline = Teg inadiyen fessusen
+how-fxm-2-headline = Jerred akken ad tɛasseḍ tarewla n yisefka
+wtd-after-website = Acu ara txedmeḍ deffir n trewla n yisefka
 
 ## What to do after data breach tips
 
