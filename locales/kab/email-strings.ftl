@@ -13,6 +13,12 @@ report-date = Azemz n tummla
 email-address = Imayl/Tansa:
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Acu-nniḍen ara txedmed
+report-headline =
+    { $breachCount ->
+        [0] Skud yettaẓ, igerrez.
+        [one] Amiḍan-ik iban-d deg { $breachCount } n trewla n yisefka.
+       *[other] Imiḍanen-ik banen-d deg { $breachCount } n trewla n yisefka.
+    }
 breach-alert-headline = Amiḍan-ik iban-d deg trewla n yisefka.
 report-pwt-headline-1 = Seqdec awal uffir yemgaraden deg yal amiḍan
 report-pwt-headline-2 = Rnu awalen uffiren iǧehden yemgaraden

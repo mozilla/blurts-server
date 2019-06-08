@@ -127,15 +127,44 @@ download-firefox-mobile = Sider { -brand-name } aziraz
 features = Timahilin
 # beta-nightly-developer-edition refers to additional versions of Firefox Browser
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Isefka seg trewliwin yemgaraden i d-yefka { $hibp-link }
 share-email = Imayl
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Wiyaḍ
 show-all = Sken akk
+fxa-welcome-headline = Anṣuf ɣer { -product-name }.
+fxa-welcome-blurb = Ad tremseḍ ilɣa ma yella { $userEmail } iban-d deg trewla n yisefka.
+fxa-scan-another-email = Tebɣiḍ ad twaliḍ tansa-nniḍen?
+# Search Firefox Monitor
+fxa-scan-submit = Nadi deg { -product-name }
+sign-up-to-check = Jerred akken ad twaliḍ
 sign-in = Kcem
 sign-out = Ffeɣ
+full-report-headline = Aneqqis-ik { -product-name }
+see-full-report = Wali akk aneqqis
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Sefrek { -brand-fxa }
+fxa-download-firefox-bar-blurb = Isumer-it-id { -brand-name }, 2.x n tikkal d arurad ugar. Yesseqdac 30% drus n tkatut ɣef { -brand-Chrome }.
 fxa-download-firefox-bar-link = Sider tura
 fxa-download-firefox-banner-blurb = Asali n yisebtar d amellil ugar, d arurad, s useqdec n drus n tkatut.
+user-fb-compromised-headline = { $userEmail } iban-d deg trewla n yisefka { $breachName }.
+guest-fb-compromised-headline = Imay-a iban-d deg trewla n yisefka { $breachName }.
+user-zero-breaches-headline = { $userEmail } ur d-iban ara deg trewla n yisefka.
+guest-zero-breaches-headline = Tansa-a n yimayl ur tettban ara deg trewla n yisefka.
+user-scan-results-headline =
+    { $breachCount ->
+        [one] { $userEmail } iban-d deg 1 n trewla n yisefka
+       *[other] { $userEmail } iban-d deg { $breachCount } n trewla n yisefka
+    }
+guest-scan-results-headline =
+    { $breachCount ->
+        [one] Tansa-a tban-d deg 1 n trewla n yisefka
+       *[other] Tansa-a tban-d deg { $breachCount } n trewla n yisefka
+    }
+user-no-breaches-blurb = Ad k-id-nelɣu ma yella tansa-a tban-d deg trewla tamaynut n yisefka.
 have-an-account = Ɣur-k yakan amiḍan?
+about-fxm-headline = Ɣef { -product-name }
 
 ## What to do after data breach tips
 
