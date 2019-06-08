@@ -671,6 +671,20 @@ learn-more-link = Zjistit více.
 email-sent = E-mail odeslán!
 # Form title
 want-to-add = Chcete přidat další e-mailovou adresu?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Pro přidání adresy { $userEmail } do { -product-name(case: "gen") } klepněte na odkaz zaslaný na tuto adresu.
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Spravovat všechny e-mailové adresy v { $preferencesLink }.
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Upozornění na úniky
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Datum přidání:
