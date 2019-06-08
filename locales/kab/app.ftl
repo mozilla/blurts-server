@@ -285,6 +285,7 @@ new-breaches-found =
        *[other] { $breachCount } N TREWLIWIN N YISEFKA TIMAYNUTIN
     }
 sign-up-headline-1 = Rmes ilɣa yettkemmilen s { -brand-fxa }.
+find-out-if = Wali ma yella isefka-ik tḥuza-tent trewla n yisefka.
 all-breaches-headline = Meṛṛa tirewliwin deg { -product-name }
 search-breaches = Nadi tirewliwin n yisefka
 # "Appears in-page as: Showing: All Breaches"
