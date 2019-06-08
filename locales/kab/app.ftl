@@ -167,6 +167,31 @@ guest-scan-results-headline =
     }
 user-no-breaches-blurb = Ad k-id-nelɣu ma yella tansa-a tban-d deg trewla tamaynut n yisefka.
 have-an-account = Ɣur-k yakan amiḍan?
+sign-up-for-fxa-alerts = Jerred ɣer yilɣa { -product-name }.
+create-free-account = Rnu  { -brand-fxa } ilelli akken ad tremseḍ aneqqis ummid ɣef trewla n yisefka yezrin, ilɣa ɣef trewliwin i d-iteddun akked telqut ɣef yimeẓla-nniḍen n { -brand-Mozilla }.
+get-your-report-and-sign-up = Rmes aneqqis-ik daɣen jerred ɣer yilɣa.
+# Link title
+frequently-asked-questions = Isteqsiyen itezzin ttuɣalen-d
+about-firefox-monitor = Ɣef { -product-name }
+mozilla-dot-org = Mozilla.org
+preferences = Ismenyifen
+# Link title.
+home = Asebter agejdan
+# Link title
+breaches = Tirewliwin n yisefka
+# Link title
+security-tips = Iwellihen ɣef tɣellist
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Inig deg { -brand-fxa }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = TIREWLIWIN N YISEFKA TINEGGURA YETTWARNAN
+# Link title
+more-about-this-breach = Ugar ɣer trewla-a
+read-more-tips = Ɣer ugar ɣef iwellihen n tɣellist
+how-hackers-work = Gzu amek xeddmen imakaren imsenselkamen
+monitor-your-online-accounts = Rnu { -brand-fxa } akken ad tɣasseḍ tirewliwin n yisefka.
+stay-alert = Rmes talɣut ɣef tirewliwin n yisefka timaynutin
 website-breach = Tarewla n yismal web
 sensitive-breach = Tarewla n yismal web iweɛren
 data-aggregator-breach = Tarewla n yinegmaren n yisefka
