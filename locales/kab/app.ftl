@@ -132,6 +132,9 @@ hibp-attribution = Isefka seg trewliwin yemgaraden i d-yefka { $hibp-link }
 share-email = Imayl
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Wiyaḍ
+mozilla-security-blog = Ablug { -brand-Mozilla } ɣef tɣellist
+# A header for a list of links to share Firefox Monitor on various social media platforms.
+layout-social = Iẓeḍwan inmettiyen
 show-all = Sken akk
 fxa-welcome-headline = Anṣuf ɣer { -product-name }.
 fxa-welcome-blurb = Ad tremseḍ ilɣa ma yella { $userEmail } iban-d deg trewla n yisefka.
@@ -164,15 +167,59 @@ guest-scan-results-headline =
     }
 user-no-breaches-blurb = Ad k-id-nelɣu ma yella tansa-a tban-d deg trewla tamaynut n yisefka.
 have-an-account = Ɣur-k yakan amiḍan?
+website-breach = Tarewla n yismal web
+sensitive-breach = Tarewla n yismal web iweɛren
+data-aggregator-breach = Tarewla n yinegmaren n yisefka
+unverified-breach = Tarewla ur nettwasenqed ara
+spam-list-breach = Tarewla n tebdarin n yimaylen ispamen
+website-breach-plural = Tarewla n yismal web
 about-fxm-headline = Ɣef { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Amek iteddu { -product-name }
 how-fxm-1-headline = Teg inadiyen fessusen
 how-fxm-2-headline = Jerred akken ad tɛasseḍ tarewla n yisefka
 wtd-after-website = Acu ara txedmeḍ deffir n trewla n yisefka
+wtd-after-data-agg = Acu ara txedmeḍ deffir n trewla n yisefka n ugemmar n yisefka
+what-is-data-agg = D acu-t ugemmar n yisefka?
+protect-your-privacy = Mmesten tabaḍnit-ik srid
+no-pw-to-change = Mgal n trewla n yisefka n usmel web, ulac awal uffir ara tbeddleḍ.
+avoid-personal-info = Ur seqdac ara talɣut tudmawant deg waalen uffiren
 
 ## What to do after data breach tips
 
+change-pw = Beddel awal-ik uffir
+even-for-old = Ula i yimiḍanen iqbuṛen, yelha ad tbeddleḍ awal-ik uffir.
+make-new-pw-unique = Fren awal uffir asuf yemgaraden
+strength-of-your-pw = Tazmert n wawalen-ik uffiren ad tḥaz srid taɣellist-ik deg Internet.
+create-strong-passwords = Amek ara ternuḍ awalen uffiren iǧehden
+stop-reusing-pw = Ur seqdac ara awalen uffiren i tesqedceḍ yakan
+five-myths = 5 n tiktiyin ur iṣeḥḥan ara ɣef imsefraken n wawalen uffiren
+feat-security-tips = Iwellihen n tɣellist i ummesten n yimiḍanen-ik
+feat-sensitive = Anadi leqqayen deg trewla n yisefka iweɛren
+feat-enroll-multiple = Taɣessast n trewla n yisefka i ddeqs n tansiwin imayl
+sign-up-for-fxa = Rnu { -brand-fxa }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Yettban-d deg { $breachCount } n trewla n yisefka yettwasnen
+       *[other] Yettban-d deg { $breachCount } n terewiliwin n yisefka yettwasnen
+    }
+see-if-breached = Wali ma tella trewla n yisefka i k-iḥuzan.
+check-for-breaches = Senqed tarewla n yisefka
+back-to-top = Uɣal d asawen
+comm-opt-1 = Azen meṛṛa ilɣa n trewla n yisefka ɣer { $primaryEmail }.
+stop-monitoring-this = Seḥbes taɛessast n tensa-a imayl.
+resend-verification = Ales tuzna n yimayl n usenqed
+add-new-email = Rnu tansa imayl tamaynut
+send-verification = Ales tuzna n useɣwen n usentem
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Taywalt tamatut
+breach-summary = Agzul ɣef trewla n yisefka
 
 ## Updated error messages
 
