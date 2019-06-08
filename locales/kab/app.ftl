@@ -105,11 +105,18 @@ compromised-data = Isefka yettwakren:
 confirmed = Yentem!<br />Tettwajerdeḍ!
 unsub-headline = Ffeɣ seg ujerred si { -product-name-nowrap }
 unsub-button = Ffeɣ seg ujerred
+fxa-unsub-headline = Ffeɣ seg ujerred n yilɣa n { -product-name }.
+unsub-survey-form-label = Acuɣer ad teffɣeḍ seg ujerred n yilɣa n { -product-name-nowrap }?
+unsub-reason-1 = Ɛuddeɣ ilɣa ur yittaǧǧan ara ad mmesteneɣ isefka-iw ugar
+unsub-reason-2 = Ddeqs n yiznan i yi-d-yettawden seg { -product-name-nowrap }
 unsub-reason-3 = Ur walaɣ ara ameẓlu ilaq
 unsub-reason-4 = Egiɣ yakan ayen ilaqen akken ad ḥerzeɣ imiḍanen-iw.
+unsub-reason-5 = Sseqdaceɣ ameẓlu-nniḍen i tɛessast n yimiḍanen-iw.
 unsub-reason-6 = Ula d yiwen seg yisumar-a
 unsub-survey-thankyou = Tanemmirt ɣef tekti-ik.
 unsub-survey-error = Ma ulac aɣilif, fren yiwen.
+unsub-survey-headline-v2 = Tuffɣa-ik seg ujerred temmed.
+unsub-survey-button = Azen tiririt
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Bḍu
 # Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
