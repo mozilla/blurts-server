@@ -20,6 +20,7 @@ about-firefox-alerts = Ɣef ilɣa n Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Mudd-d tikti
 terms-and-privacy = Tiwtilin akked tbaḍnit
+error-scan-page-token = Tɛeṛḍeḍ ad tgeḍ tasleḍt n ddeqs n tansiwin deg drus n wakud. Ɛef sebba n tɣellist, nessewḥel inadiyen imaynuten akka kra n wakud. Tzmereḍ ad tɛerḍḍ ticki.
 error-could-not-add-email = Ur izmir ara ad yernu tansa n yimayl ɣer taffa n yisefka.
 error-not-subscribed = Tansa-a imayl ur tettwajerred ara ar yilɣa { -product-name }.
 error-hibp-throttled = Ddeqs n tuqqniwin ar { -brand-HIBP }.
@@ -62,7 +63,11 @@ pwt-summary-4 =
     Imsefraken n wawalen uffiren am 1Password, LastPass, Dashlane, akked Bitwarden snulfuyen-d awalen uffiren isufen, iǧehden. 
     Seklasen daɣen s wudem aɣelsan awalen uffiren, ttaččren yes-sen ar yismal web i kečč.
 pwt-headline-5 = Rnu taɣellist-nniḍen s usesteb s snat n tarrayin
+pwt-summary-5 =
+    Asesteb s snat n tarrayin (2FA) yessutur talɣut-nniḍen (am tengalt n useqdec asuf s SMS) akken ad teqqneḍ ɣer umiḍan-ik.
+    Ɣas ma yella wambaɛḍ ɣur-s awal-ik uffir, ur yettizmir ara ad yeqqen.
 pwt-headline-6 = Jerred ar yilɣa { -product-name-nowrap }
+pwt-summary-6 = Tarewla n yisefka n yismal web nernant. Ticki tarewla tamaynut tettwarna ɣer taffa-nneɣ n yisefka, { -product-name-nowrap } ad d-yazen alɣu akken ad tizmireḍ ad tgeḍ kra daɣen ad tseḥbibreḍ ɣef umiḍan-ik.
 landing-headline = Azref-ik ad teqqimeḍ d aɣelsan seg yimakaren ad yebdu sya.
 scan-label = Wali ma telliḍ seg wid tḥuza trewla n yisefka.
 scan-placeholder = Sekcem tansa imayl
