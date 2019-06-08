@@ -135,6 +135,14 @@ no-breaches =
     Vaš e-poštni naslov ni bil prikazan v našem osnovnem pregledu.
     To je dobra novica, vendar pa lahko do kraje podatkov pride kadarkoli, zato bodite pozorni.
     Prijavite se na { -product-name-nowrap } za celotno poročilo, opozorila ob novih krajah podatkov in nasvete, kako zaščititi vaša gesla.
+featured-breach-not-compromised =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Vaš račun se ni pojavil v kraji podatkov <span class="bold">{ $featuredBreach }</span>, vendar se je pojavil v eni drugi.
+        [two] Vaš račuun se ni pojavil v kraji podatkov <span class="bold">{ $featuredBreach }</span>, vendar se je pojavil v dveh drugih.
+        [few] Vaš račun se ni pojavil v kraji podatkov <span class="bold">{ $featuredBreach }</span>, vendar se je pojavil v treh drugih.
+       *[other] Vaš račun se ni pojavil v kraji podatkov <span class="bold">{ $featuredBreach }</span>, vendar se je pojavil v { $breachCount } drugih.
+    }
 scan-results =
     { $breachCount ->
         [0] { no-breaches }
@@ -354,7 +362,10 @@ monitor-several-emails = Spremljajte več e-poštnih naslovov
 take-action = Ukrepajte in zaščitite svoje račune
 keep-your-data-safe = Ugotovite, kaj morate storiti, da bodo vaši podatki ostali varni pred spletnimi napadalci.
 website-breach = Kraja podatkov spletne strani
+sensitive-breach = Kraja podatkov občutljivih spletnih strani
+data-aggregator-breach = Kraja podatkov zbiralnika podatkov
 unverified-breach = Nepotrjena kraja podatkov
+spam-list-breach = Kraja podatkov neželene pošte
 sensitive-breach-plural = Občutljive kraje podatkov
 unverified-breach-plural = Nepotrjene kraje podatkov
 what-data = Kateri podatki so bili ogroženi:
@@ -387,9 +398,11 @@ stop-reusing-pw = Ne uporabljajte istih gesel na več mestih
 create-unique-pw = Ustvarite edinstvena gesla in jih shranite na varnem mestu, kot je upravitelj gesel.
 five-myths = 5 zmot o upraviteljih gesel
 feat-security-tips = Varnostni nasveti za zaščito vaših računov
+feat-sensitive = Napredno iskanje v občutljivih krajah podatkov
 feat-enroll-multiple = Vključite več e-poštnih naslovov v nadzor kraj podatkov
 sign-up-for-fxa = Ustvarite si { -brand-fxa }
 see-if-breached = Preverite, ali ste bili vpleteni v spletno krajo podatkov.
+check-for-breaches = Preverite kraje podatkov
 find-out-what-hackers-know = Ugotovite, kaj o vas hekerji že vedo. Naučite se, kako ostati korak pred njimi.
 search-for-your-email = Poiščite svoj e-poštni naslov med javnimi krajami podatkov do leta 2007.
 back-to-top = Nazaj na vrh
@@ -399,10 +412,18 @@ stop-monitoring-this = Ne nadzoruj več tega naslova.
 resend-verification = Ponovno pošlji potrditveno e-pošto
 add-new-email = Dodajte nov e-poštni naslov
 send-verification = Pošlji potrditveno povezavo
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Globalno obveščanje
 breach-summary = Povzetek kraj podatkov
+show-breaches-for-this-email = Pokaži vse kraje podatkov za ta e-poštni naslov.
 link-change-primary = Spremeni glavni e-poštni naslov
 remove-fxm = Odstrani { -product-name }
 manage-email-addresses = Upravljanje e-poštnih naslovov
+latest-breach-link = Preverite, če ste bili vpleteni v to krajo podatkov
 welcome-back = Dobrodošli nazaj, { $userName }!
 welcome-user = Dobrodošli, { $userName }!
 breach-alert-subject = { -product-name } je našel vaš e-poštni naslov v novi kraji podatkov.
@@ -411,8 +432,16 @@ your-info-was-discovered-blurb =
     Prijavili ste se na prejemanje opozoril { -product-name }ja,
     ko se vaš e-poštni naslov znajde med ukradenimi podatki. Do sedaj o tej kraji podatkov vemo sledeče.
 what-to-do-after-breach = Kaj storiti po kraji podatkov:
+ba-next-step-1 = Spremenite geslo v močno, edinstveno geslo.
+ba-next-step-blurb-1 =
+    Močno geslo uporablja kombinacijo velikih in malih črk, 
+    posebne znake in številke. Ne vsebuje osebnih podatkov, kot so 
+    naslov, rojstni dan ali družinska imena.
 ba-next-step-2 = Popolnoma prenehajte uporabljati izpostavljeno geslo.
+ba-next-step-3 = Pomagajte si pri ustvarjanju boljših gesel in njihovi zaščiti.
+faq1 = Tega podjetja ali spletne strani ne poznam. Zakaj sem del te kraje podatkov?
 faq2 = Zakaj je trajalo tako dolgo, da sem bil obveščen o tej kraji podatkov?
+faq3 = Kako vem, da je to sporočilo { -product-name }ja zaupanja vredno?
 new-breaches-found =
     { $breachCount ->
         [one] NAJDENA NOVA KRAJA PODATKOV
@@ -420,36 +449,79 @@ new-breaches-found =
         [few] NAJDENE { $breachCount } NOVE KRAJE PODATKOV
        *[other] NAJDENIH { $breachCount } NOVIH KRAJ PODATKOV
     }
+sign-up-headline-1 = Prejemajte opozorila s { -brand-fxa }om.
 account-not-required = Za { -brand-fxa } brskalnik { -brand-name } ni potreben. Morda boste prejeli informacije o storitvah { -brand-Mozilla }.
+get-alerted = Bodite obveščeni o novih krajah podatkov.
 was-your-info-exposed = Ali so bili vaši podatki izpostavljeni v kraji podatkov { $breachName }?
+find-out-if = Preverite, ali so bili vaši podatki izpostavljeni v tej kraji.
 fb-not-comp = Ta e-poštni naslov se ni pojavil v kraji podatkov { $breachName }.
+fb-comp-only = Ta e-poštni naslov se je pojavil v kraji podatkov { $breachName }.
+no-other-breaches-found = V osnovnem iskanju ni bilo drugih kraj podatkov
+no-results-blurb = Te kraje ni v naši bazi podatkov.
 all-breaches-headline = Vse kraje podatkov v { -product-name }ju
+search-breaches = Iskanje kraj podatkov
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Prikazano:
 all-breaches = Vse kraje podatkov
 
 ## Updated error messages
 
+error-bot-headline = Iskanja so začasno onemogočena
 error-csrf-headline = Seja je potekla
 error-csrf-blurb = V brskalniku izberite gumb Nazaj, ponovno naložite stran in poskusite znova.
+error-invalid-unsub = Kako se odjaviti od opozoril { -product-name }ja
 login-link-pre = Imate račun?
 login-link = Prijava
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] Kraja podatkov je razkrila vaše podatke
+        [two] Kraji podatkov sta razkrili vaše podatke
+        [few] Kraje podatkov so razkrile vaše podatke
+       *[other] Kraj podatkov je razkrilo vaše podatke
+    }
+# Button
+see-additional-breaches = Prikaži dodatne kraje podatkov
+# A button on the All Breaches page that restores all of the breaches
+# back to the page if the user has filtered some of them out.
+see-all-breaches = Prikaži vse kraje podatkov
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Ta e-poštni naslov se je pojavil v eni znani kraji podatkov.
+        [two] Ta e-poštni naslov se je pojavil v { $breachCount } znanih krajah podatkov.
+        [few] Ta e-poštni naslov se je pojavil v { $breachCount } znanih krajah podatkov.
+       *[other] Ta e-poštni naslov se je pojavil v { $breachCount } znanih krajah podatkov.
+    }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Rezultati za: { $userEmail }
+other-monitored-emails = Ostali nadzorovani e-poštni naslovi
 email-verification-required = Zahtevana je potrditev e-poštnega naslova
+fxa-primary-email = E-poštni naslov { -brand-fxa }a – Glavni
 what-is-a-website-breach = Kaj je kraja podatkov spletne strani?
 security-tips-headline = Varnostni nasveti za zaščito pred hekerji
 steps-to-protect = Ukrepi za zaščito vaše spletne identitete
 take-further-steps = Nadaljnji koraki za zaščito vaše identitete
 alert-about-new-breaches = Opozori me na nove kraje podatkov
 see-if-youve-been-part = Preverite, ali ste bili žrtev spletne kraje podatkov.
+get-ongoing-breach-monitoring = Spremljajte kraje podatkov za več e-poštnih naslovov.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Preverite
+new-unsub-error = Odjaviti se boste morali iz enega od poslanih e-poštnih sporočil { -product-name }ja.
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = Dodatne informacije, vključno z:
 # Title
 email-addresses-title = E-poštni naslovi
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = { $breachDate } je prišlo do kraje podatkov { $breachTitle }. Ko je bila kraja odkrita in preverjena, smo jo { $addedDate } dodali v našo bazo podatkov.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = Nastavitve { -product-short-name }ja
 # When a user is signed in, this appears in the drop down menu 
 # and is followed by the user's primary Firefox Account email. 
 signed-in-as = Prijavljeni kot: { $userEmail }
@@ -458,6 +530,7 @@ signed-in-as = Prijavljeni kot: { $userEmail }
 filter-by = Filtriraj po kategoriji:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Meni
+to-affected-email = Pošlji opozorila na ogrožen e-poštni naslov
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
 join-firefox = Vašo zasebnost lahko zaščitite. Pridružite se { -brand-name }u.
 # Link title
