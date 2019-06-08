@@ -179,6 +179,18 @@ guest-scan-results-headline =
        *[other] Tansa-a tban-d deg { $breachCount } n trewla n yisefka
     }
 user-no-breaches-blurb = Ad k-id-nelɣu ma yella tansa-a tban-d deg trewla tamaynut n yisefka.
+user-one-breach-blurb = Tarewla-a n yisefka tḥuza talɣut-a tudmawant.
+user-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Imayl-ik iban-d deg { $breachCount } n trewla-nniḍen n yisefka.
+       *[other] Imayl-ik iban-d deg { $breachCount } n trewliwin-nniḍen n yisefka.
+    }
+user-generic-fb-compromised-blurb =
+    { $breachCount ->
+        [one] Imayl-a yettban-d deg { $breachCount } n trewla n yisefka.
+       *[other] Imayl-a yettban-d deg { $breachCount } n trewliwin n yisefka.
+    }
+user-generic-fb-compromised-single = Tarewla-a n yisefka tḥuza talɣut-a tudmawant.
 have-an-account = Ɣur-k yakan amiḍan?
 fb-landing-headline = Talɣut-ik tettuḥaz deg trewla n yisefka { $breachName }?
 copyright = Kra n yiḥricen n ugbur-a d  © 1999-{ $year }sɣur iwiziwen i yiman-nsen n mozilla.org.
@@ -229,6 +241,7 @@ unverified-breach-plural = Tarewla ur nettwasenqed ara
 spam-list-breach-plural = Tarewla n tebdarin n yimaylen ispamen
 what-data = Acu-ten yisefka ittuḥazen:
 sensitive-sites = Amek isesfer { -product-name } ismal iweɛren?
+delayed-reporting-headline = Acuɣer yewwi aṭas n wakud akken ad tettwammel tarewela-a n yisefka?
 about-fxm-headline = Ɣef { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Amek iteddu { -product-name }
@@ -301,6 +314,12 @@ account-not-required = Iminig { -brand-name } ur issefk ara ad yili kan d netta 
 get-alerted = Rmes ilɣa ticki llant trewiliwin timaynutin.
 find-out-if = Wali ma yella isefka-ik tḥuza-tent trewla n yisefka.
 fb-not-comp = Tansa-a imayl ur d-tban ara deg trewla n yisefka { $breachName }.
+fb-comp-only = Imay-a iban-d deg trewla n yisefka { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Imay-a iban-d deg  { $breachCount } n trewla n yisefka, ula d { $breachName }.
+       *[other] Imay-a iban-d deg  { $breachCount } n trewliwin n yisefka, ula d { $breachName }.
+    }
 all-breaches-headline = Meṛṛa tirewliwin deg { -product-name }
 search-breaches = Nadi tirewliwin n yisefka
 # "Appears in-page as: Showing: All Breaches"
@@ -359,10 +378,18 @@ fxa-primary-email = Tansa imayl n { -brand-fxa } - Tagejdant
 what-is-a-website-breach = D acu-tt trewla n yisefka n usmel web?
 security-tips-headline = Iwellihen n tɣellist i ummesten-ik seg imakaren imsenselkamen
 steps-to-protect = Imecwaṛen ilaqen i ummesten n timagit-ik srid
+take-further-steps = Eg ugar i ummesten n timagit-ik.
 alert-about-new-breaches = Lɣu-yi-d ɣef trewliwin n yisefka timaynutin
 see-if-youve-been-part = Wali ma tella trewla n yisefka srid i k-iḥuzan.
+get-ongoing-breach-monitoring = Ɛass yal ass tirewliwin n yisefka n ddeqs n tansiwin imayl.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Senqed
+new-unsub-error = Tesriḍ ad teffɣeḍ seg ujerred seg yiwen n yimaylen-ik yettwaznen sɣur { -product-name }.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Maca, iban-d deg { $breachCount } n trewla n yisefka yettwassnen.
+       *[other] Maca, iban-d deg { $breachCount } n trewliwin n yisefka yettwassnen.
+    }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = Talɣut-nniḍen, gar-as:
