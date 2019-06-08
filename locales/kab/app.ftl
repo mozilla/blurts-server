@@ -173,6 +173,12 @@ data-aggregator-breach = Tarewla n yinegmaren n yisefka
 unverified-breach = Tarewla ur nettwasenqed ara
 spam-list-breach = Tarewla n tebdarin n yimaylen ispamen
 website-breach-plural = Tarewla n yismal web
+sensitive-breach-plural = Tarewla n yisefka iweɛren
+data-aggregator-breach-plural = Tarewla n yinegmaren n yisefka
+unverified-breach-plural = Tarewla ur nettwasenqed ara
+spam-list-breach-plural = Tarewla n tebdarin n yimaylen ispamen
+what-data = Acu-ten yisefka ittuḥazen:
+sensitive-sites = Amek isesfer { -product-name } ismal iweɛren?
 about-fxm-headline = Ɣef { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Amek iteddu { -product-name }
@@ -220,6 +226,21 @@ send-verification = Ales tuzna n useɣwen n usentem
 # email address.
 global-communication = Taywalt tamatut
 breach-summary = Agzul ɣef trewla n yisefka
+show-breaches-for-this-email = Sken meṛṛa tirewliwin n yisefka i tansa-a.
+link-change-primary = Beddel tansa imayl tagejdant
+remove-fxm = Kkes { -product-name }
+manage-email-addresses = Sekref tansiwin n yimayl
+latest-breach-link = Wali ma yella tarewla-a n yisefka tḥuza-k
+welcome-back = Anṣuf yes-k i tikkelt-nniḍen, { $userName }!
+welcome-user = Anṣuf, { $userName }!
+breach-alert-subject = { -product-name } yufa-d d akken tansa-ik tella deg trewla n yisefka tamaynut.
+your-info-was-discovered-headline = Talɣut-ik tettwaf-d deg trewla tamaynut n yisefka.
+what-to-do-after-breach = Acu ara txedmeḍ defiir n trewla n yisefka:
+ba-next-step-1 = Beddel awal-ik uffir s wayeḍ-nniḍen iǧehden ugar.
+ba-next-step-2 = Seḥbes aseqdec n wawal uffir yettwakren.
 
 ## Updated error messages
 
+error-csrf-headline = Tfuk tɣimit
+login-link-pre = Ɣur-k amiḍan?
+login-link = Qqen
