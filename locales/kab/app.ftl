@@ -142,10 +142,13 @@ hibp-attribution = Isefka seg trewliwin yemgaraden i d-yefka { $hibp-link }
 share-email = Imayl
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Wiyaḍ
+share-facebook-headline = Wali ma yella tḥuza-k trewla n yisefka.
+share-facebook-blurb = Imiḍanen-ik srid tḥuza-ten trewla n yisefka?
 mozilla-security-blog = Ablug { -brand-Mozilla } ɣef tɣellist
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Iẓeḍwan inmettiyen
 show-all = Sken akk
+fxa-scan-label = Wali ma yella tarewla n yisefka tḥuza-k.
 fxa-welcome-headline = Anṣuf ɣer { -product-name }.
 fxa-welcome-blurb = Ad tremseḍ ilɣa ma yella { $userEmail } iban-d deg trewla n yisefka.
 fxa-scan-another-email = Tebɣiḍ ad twaliḍ tansa-nniḍen?
@@ -360,8 +363,15 @@ alert-about-new-breaches = Lɣu-yi-d ɣef trewliwin n yisefka timaynutin
 see-if-youve-been-part = Wali ma tella trewla n yisefka srid i k-iḥuzan.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Senqed
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Talɣut-nniḍen, gar-as:
 # Title
 email-addresses-title = Tansiwin n yimayl
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = Deg { $breachDate }, { $breachTitle }, teḍra-d trewla n yisefka. Ticki tarewla tettwaf daɣen tetwasenqed, tettwarna ɣer taffa-nneɣ n yisefka deg { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Ismenyifen n { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
@@ -372,11 +382,22 @@ signed-in-as = Y(T)eqqen s yisem: { $userEmail }
 filter-by = Sizdeg s taggayt:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Umuɣ
+to-affected-email = Azen ilɣa ɣer tensa imayl yettwaɛnan.
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Yella wamek ara tettummesten tudert-ik tusligt. Ddu ɣer { -brand-name }.
 # Link title
 learn-more-link = Issin ugar.
 email-sent = Imayl yettwazen!
 # Form title
 want-to-add = Tebɣiḍ ad ternuḍ imayl-nniḍen?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Senqed aseɣwen yettwaznen ɣer { $userEmail } akken ad ternuḍ-t ɣef { -product-name }.
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Sefrek meṛṛa tansiwin n yimayl deg { $preferencesLink }.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach

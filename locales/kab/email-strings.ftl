@@ -26,9 +26,20 @@ report-headline =
         [one] Amiḍan-ik iban-d deg { $breachCount } n trewla n yisefka.
        *[other] Imiḍanen-ik banen-d deg { $breachCount } n trewla n yisefka.
     }
+report-subhead-no-breaches =
+    Amiḍan-ik ur d-yettban ara deg uneqqis ummid n trewla n yisefka.
+    D ayen igerrzen, maca ur ḥebbes ara deg uzgen n ubrid.
+    Tirewliwin n yisefka zemrent ad d-ḍrunt yal tikkelt, ihi kemmel taɣuri akken ad tegzuḍ ammesten n wawalen-ik uffiren.
+report-subhead-found-breaches = A-t-a uneqqis ummid n Firefox Monitor, i yegebren meṛṛa addaden yettwassnen n trewla n yisefka i yeḥuzan tansa-a n yimayl.
 breach-alert-headline = Amiḍan-ik iban-d deg trewla n yisefka.
+breach-alert-subhead = Tirewlisin n yisefka i d-yettwammlen tagara-a gebrent tansa-ik imayl akked isefka-a.
+report-pwt-blurb =
+    Awalen uffirne d ayen ɣlayen ɣef waya agimen seg-sen ttakeren-ten yal ass, sakin ttnuzin deg ulzuz.
+    Aseqdec n wawalen uffiren uǧhiden, ad yemmesten imiḍanen-ik akked telɣut tudmawant i gebren.
 report-pwt-headline-1 = Seqdec awal uffir yemgaraden deg yal amiḍan
+report-pwt-summary-1 = Tulsa n useqdec n wawalen uffiren yal amḍiq, ad d-yeldi abrid i yimakaren imsenselkamen. Zemren ad sqedcen awal-a uffir akken ad qqnen ɣer yimiḍanen-ik-nniḍen.
 report-pwt-headline-2 = Rnu awalen uffiren iǧehden yemgaraden
+report-pwt-summary-2 = Imakaren seqdacen tibdarin n wawalen uffiren yettwassnen akken ad ɛerḍen ad d-afen ayla-k. Skud awal-ik uffir meqqer, d agacuran, skud ad yettiwɛir i tifin.
 report-pwt-headline-3 = Sesfer tilufa n tɣellist am wawalen uffiren-nniḍen
 report-pwt-summary-3 = Ismal web ur senqaden ara ma yella tiririyin-ik d tusdidin, maca ma mmentaḍent kan yal tikkelt. Rnu tiririyin ɣezzifen, tigacurenin sakin sekles-itent deg umḍiɣ n ṭmana.
 report-pwt-headline-4 = Seqdec amsefrak n wawalen uffiren
