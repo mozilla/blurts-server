@@ -323,3 +323,6 @@ want-to-add = Tebɣiḍ ad ternuḍ imayl-nniḍen?
 # alerts for all of their monitored email addresses to a single 
 # email address.
 breach-alert-notifications = Ilɣa n trewla n yisefka
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Tarewla n yisefka tettwarna:
