@@ -89,6 +89,7 @@ download-firefox-bar-link = Sider { -brand-name } tura
 download-firefox-banner-blurb = Ṭṭef iminig-ik gar ifassen-ik
 download-firefox-banner-button = Sider { -brand-name }
 signup-modal-headline = Jerred ar { -product-name-nowrap }
+signup-modal-blurb = Jerred akken ad tremsed aneqqis-ik ummid, ilɣa ma llant trewliwin n yisefka timaynutin akked iwellihen ɣef tɣellist n { -product-name-nowrap }.
 signup-modal-close = Mdel
 get-your-report = Awi aneqqis-ik
 signup-modal-verify-headline = Senqed ajerred-ik
@@ -104,6 +105,22 @@ sign-up = Jerred
 form-signup-error = Yessefk ad yili d imayl ameɣtu
 no-breaches-headline = Ar da, igerrez.
 found-breaches-headline = Talɣut-ik tettwaker deg yiwet n trewla n yisefka.
+no-breaches =
+    Tansa-ik imayl ur d-tban ara deg tesleḍt fessusen.
+    D ayen yelhan, maca tirewliwin n yisefka zemrent ad d-ḍrunt yal tikkelt, daɣen tzemreḍ yal tikkelt ad txedmeḍ kra.
+    Jerred ɣer { -product-name-nowrap } akken ad tawiḍ aneqqis ummid d yilɣa ticki ḍrant-d trewliwin timaynutin, akked iwellihen ɣeg ummesten d wawalen uffiren.
+featured-breach-results =
+    { $breachCount ->
+        [0] Amiḍan-ik iban-d deg trewla n yisefka <span class="bold">{ $featuredBreach }</span>, maca ur d-tban ula deg yiwet n tebdert n yisefka yettuḥazen.
+        [one] Amiḍan-ik iban-d deg trewla n yisefka <span class="bold">{ $featuredBreach }</span>, akked yiwet-nniḍen n tebdert n yisefka yettuḥazen.
+       *[other] Amiḍan-ik iban-d deg trewla n yisefka <span class="bold">{ $featuredBreach }</span>, akked { $breachCount }  n tebdarin n yisefka yettuḥazen.
+    }
+featured-breach-not-compromised =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Amiḍan-ik ur d-iban ara deg trewla n yisefka <span class="bold">{ $featuredBreach }</span> , maca iban-d deg yiwet-nniḍen n trewla n yisefka.
+       *[other] Amiḍan-ik ur d-iban ara deg trewla <span class="bold">{ $featuredBreach }</span> , maca iban-d deg { $breachCount } n trewliwin-nniḍen n yisefka.
+    }
 show-more-breaches = Sken ugar
 what-to-do-headline = Acu ara txedmeḍ ticki talɣut-ik tban-d deg trewla n yisefka
 what-to-do-subhead-1 = Beddel awalen-ik uffiren, xas ma d imiḍanen iqbuṛen
@@ -317,6 +334,7 @@ new-breaches-found =
 sign-up-headline-1 = Rmes ilɣa yettkemmilen s { -brand-fxa }.
 account-not-required = Iminig { -brand-name } ur issefk ara ad yili kan d netta akken ad ternuḍ amiḍan { -brand-fxa }. Tzemreḍ ad tremseḍ talɣut ɣef yimeẓla n { -brand-Mozilla }.
 get-alerted = Rmes ilɣa ticki llant trewiliwin timaynutin.
+was-your-info-exposed = Talɣut-ik tḥuza-tt trewla n yisefka { $breachName }?
 find-out-if = Wali ma yella isefka-ik tḥuza-tent trewla n yisefka.
 fb-not-comp = Tansa-a imayl ur d-tban ara deg trewla n yisefka { $breachName }.
 fb-comp-only = Imay-a iban-d deg trewla n yisefka { $breachName }.
