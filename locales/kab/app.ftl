@@ -304,6 +304,7 @@ fxa-pwt-summary-2 =
     Seqdec xarṣum sin n wawalen akked usuddes gar isekkilen, iwzilen akked izamulen.
 fxa-pwt-summary-4 = Imsefraken n wawalen uffiren am 1Password, LastPass, Dashlane, akked Bitwarden seklasen awlen uffiren sakin ttaččaren yes-sen ismal web i kečč. Ad k-ɛiwnen akken ad k-d-xedmen awalen uffiren iǧehden.
 fxa-what-to-do-subhead-2 = Seḥbes aseqdec n waal uffir yeffɣen, daɣen beddel-it s kra n wanida i t-tesqedceḍ.
+fxa-what-to-do-subhead-4 = Awi tallelt ɣef ceffu n wawalen-ik uffiren meṛṛa daɣen sers-iten deg umḍiq aɣelsan.
 fxa-what-to-do-blurb-4 = Imsefraken n wawalen uffiren am 1Password, LastPass, Dashlane, akked Bitwarden seklasen s wudem aɣelsan awalen uffiren, ttaččaren yes-sen ismal web i kečč. Seqdec amsefrak n wawalen uffiren deg tiliɣri-ik akked uselkim-ik akken ur tceffuḍ ara fell-asen.
 fb-landing-headline = Talɣut-ik tettuḥaz deg trewla n yisefka { $breachName }?
 copyright = Kra n yiḥricen n ugbur-a d  © 1999-{ $year }sɣur iwiziwen i yiman-nsen n mozilla.org.
@@ -359,6 +360,9 @@ about-fxm-headline = Ɣef { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Amek iteddu { -product-name }
 how-fxm-1-headline = Teg inadiyen fessusen
+how-fxm-1-blurb =
+    Nadi tansa-ik deg trewliwin n yisefka izayazen 
+    seg 2007. Anadi-a afessas ad yaf tuget n trewiliwin n yisefka, maca mačči ticki gebren talɣut tudmawant i weɛren.
 how-fxm-2-headline = Jerred akken ad tɛasseḍ tarewla n yisefka
 how-fxm-3-headline = Rmes ilɣa deg iminig-ik
 how-fxm-3-blurb = Ma tseqdaceḍ { -brand-name }, ad tremseḍ alɣu ma terziḍ ɣer usmel anida rewlen isefka. Af-d ma yella tḥuza-k trewla n yisefka d wayen ilaqen ad t-tgeḍ iwaya.
