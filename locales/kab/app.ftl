@@ -147,9 +147,15 @@ compromised-accounts = Imiḍanene yettwakren:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Isefka yettwakren:
 confirmed = Yentem!<br />Tettwajerdeḍ!
+confirmed-blurb = { -product-name-nowrap } ad ak-d-yazen aneqqis ummid s yimayl daqen ad ak-d-yessiweḍ alqu ticki amiḍan-ik iban-d deg trewla n yisefka.
+confirmed-social-blurb = Ma yella isefka-ik tḥuza-ten tkerḍa, tagnit meqqret akken talɣut n yimeddukal-ik, uqṛiben-ik neɣ timussniwin-ik srid ad tettwaɣ daɣen. Mmeslay-asen ɣef { -product-name-nowrap }.
 unsub-headline = Ffeɣ seg ujerred si { -product-name-nowrap }
+unsub-blurb = Ayagi ad yekkes tansa-ik imayl seg tebdert { -product-name-nowrap } daɣen ur tettezziḍ ara ad tremseḍ ilɣa ticki tirewliwin-nniḍen n yisefka ḍrant-d.
 unsub-button = Ffeɣ seg ujerred
 fxa-unsub-headline = Ffeɣ seg ujerred n yilɣa n { -product-name }.
+fxa-unsub-blurb =
+    Ur tettezziḍ ara ad tremseḍ ilɣa { -product-name }.
+    { -brand-fxa } inek ad yeqqim yermed daɣen ad tizmireḍ ad tremseḍ talɣut icudden ɣer umiḍan-ik.
 unsub-survey-form-label = Acuɣer ad teffɣeḍ seg ujerred n yilɣa n { -product-name-nowrap }?
 unsub-reason-1 = Ɛuddeɣ ilɣa ur yittaǧǧan ara ad mmesteneɣ isefka-iw ugar
 unsub-reason-2 = Ddeqs n yiznan i yi-d-yettawden seg { -product-name-nowrap }
