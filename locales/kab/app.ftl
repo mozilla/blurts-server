@@ -279,6 +279,20 @@ guest-fb-not-compromised-blurb-v2 =
             Rnu { -brand-fxa } ilelli akken ad tremseḍ aneqqis ummid ɣef trewliwin yezrin, tarewla tamaynut
             ilɣa, akked telqut ɣef yimezla-nniḍen { -brand-Mozilla }.
     }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-found-breaches-blurb =
+    { $breachCount ->
+        [one] Tarewla-a n yisefka temmla-d talɣut-a tudmawant. Ma yella ur t-tgiḍ ara yakan, beddel awal-ik uffir.
+       *[other] Tirewliwin-a n yisefka mmlant-d talɣut-a tudmawant. Ma yella ur t-tgiḍ ara yakan, beddel awalen-ik uffiren.
+    }
+# While English doesn’t use the actual number of breaches in this sentence,
+# you can use {$breachCount} to display the number of breaches in your localization.
+user-generic-found-breaches-blurb =
+    { $breachCount ->
+        [one] Tarewla-a n yisefka temmla-d talɣut-a tudmawant.
+       *[other] Tirewliwin-a n yisefka mmlant-d talɣut-a tudmawant.
+    }
 have-an-account = Ɣur-k yakan amiḍan?
 signup-banner-sensitive-blurb =
     Wali ayen ẓran imakaren imsenselkamen fell-ak. daɣen issin 
@@ -289,6 +303,7 @@ fxa-pwt-summary-2 =
     Awalen uffiren iwezlanen, i igebren yiwen n wawal, fessus-it i tifin i yimakaren imsenselkamen.
     Seqdec xarṣum sin n wawalen akked usuddes gar isekkilen, iwzilen akked izamulen.
 fxa-pwt-summary-4 = Imsefraken n wawalen uffiren am 1Password, LastPass, Dashlane, akked Bitwarden seklasen awlen uffiren sakin ttaččaren yes-sen ismal web i kečč. Ad k-ɛiwnen akken ad k-d-xedmen awalen uffiren iǧehden.
+fxa-what-to-do-subhead-2 = Seḥbes aseqdec n waal uffir yeffɣen, daɣen beddel-it s kra n wanida i t-tesqedceḍ.
 fxa-what-to-do-blurb-4 = Imsefraken n wawalen uffiren am 1Password, LastPass, Dashlane, akked Bitwarden seklasen s wudem aɣelsan awalen uffiren, ttaččaren yes-sen ismal web i kečč. Seqdec amsefrak n wawalen uffiren deg tiliɣri-ik akked uselkim-ik akken ur tceffuḍ ara fell-asen.
 fb-landing-headline = Talɣut-ik tettuḥaz deg trewla n yisefka { $breachName }?
 copyright = Kra n yiḥricen n ugbur-a d  © 1999-{ $year }sɣur iwiziwen i yiman-nsen n mozilla.org.
@@ -346,12 +361,14 @@ how-fxm-works = Amek iteddu { -product-name }
 how-fxm-1-headline = Teg inadiyen fessusen
 how-fxm-2-headline = Jerred akken ad tɛasseḍ tarewla n yisefka
 how-fxm-3-headline = Rmes ilɣa deg iminig-ik
+how-fxm-3-blurb = Ma tseqdaceḍ { -brand-name }, ad tremseḍ alɣu ma terziḍ ɣer usmel anida rewlen isefka. Af-d ma yella tḥuza-k trewla n yisefka d wayen ilaqen ad t-tgeḍ iwaya.
 wtd-after-website = Acu ara txedmeḍ deffir n trewla n yisefka
 wtd-after-data-agg = Acu ara txedmeḍ deffir n trewla n yisefka n ugemmar n yisefka
 what-is-data-agg = D acu-t ugemmar n yisefka?
 protect-your-privacy = Mmesten tabaḍnit-ik srid
 no-pw-to-change = Mgal n trewla n yisefka n usmel web, ulac awal uffir ara tbeddleḍ.
 avoid-personal-info = Ur seqdac ara talɣut tudmawant deg waalen uffiren
+avoid-personal-info-blurb = Tifin n yizmaz n tlalit, tansiwin, akked yismawen n yiɛeggalen n twacult fessuset srid. Ur seqdac ara awalen-a deg wawalen uffiren.
 
 ## What to do after data breach tips
 
@@ -361,6 +378,7 @@ make-new-pw-unique = Fren awal uffir asuf yemgaraden
 strength-of-your-pw = Tazmert n wawalen-ik uffiren ad tḥaz srid taɣellist-ik deg Internet.
 create-strong-passwords = Amek ara ternuḍ awalen uffiren iǧehden
 stop-reusing-pw = Ur seqdac ara awalen uffiren i tesqedceḍ yakan
+create-unique-pw = Rnu awalen uffiren asufen sakin sekles-iten deg umḍiq aɛelsan, am umsefrak n wawal uffir.
 five-myths = 5 n tiktiyin ur iṣeḥḥan ara ɣef imsefraken n wawalen uffiren
 create-a-fxa = Rnu { -brand-fxa } akken ad tremseḍ aneqqis-ik ummid ɣef trewliwin n yisefka akked yilɣa.
 feat-security-tips = Iwellihen n tɣellist i ummesten n yimiḍanen-ik
