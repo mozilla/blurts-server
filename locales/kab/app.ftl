@@ -166,6 +166,9 @@ unsub-reason-6 = Ula d yiwen seg yisumar-a
 unsub-survey-thankyou = Tanemmirt ɣef tekti-ik.
 unsub-survey-error = Ma ulac aɣilif, fren yiwen.
 unsub-survey-headline-v2 = Tuffɣa-ik seg ujerred temmed.
+unsub-survey-blurb-v2 =
+    Ur tettezziḍ ara ad tremseḍ ilɣa { -product-name }.
+    Ad tqebleḍ ad terreḍ i usteqsi ɣer termit-ik?
 unsub-survey-button = Azen tiririt
 # Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
 share = Bḍu
@@ -179,15 +182,25 @@ features = Timahilin
 beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Isefka seg trewliwin yemgaraden i d-yefka { $hibp-link }
+site-description =
+    Imiḍanen-ik ffɣen neɣ ttwakren ɣef sebba n trewla n yisefka? Wali s { -product-name }.
+    Nadi deg taffa-nneɣ n yisefka sakin jerred akken ad tremseḍ ilɣa.
+confirmation-headline = Aneqqis-ik { -product-name } iteddu-d.
+confirmation-blurb = Tirewliwin n yisefka zemrent ad ḥazent yal yiwen. Siweḍ awal i yimeddukal-ik akked wuqṛiben-ik akken ad izmiren ad walin ma yella imiḍanen-nsen srid ttwaɣellsen.
 share-email = Imayl
 # Appears at the end of a list of email-clients and refers to any other unlisted email-client.
 share-other = Wiyaḍ
+share-twitter = Tuget n yimdanen ɣur-sen imrawen n yimiḍanen srid. Yiwen seg wayla-k tḥuza-t trewla n yisefka? Wali s timad-ik.
 share-facebook-headline = Wali ma yella tḥuza-k trewla n yisefka.
 share-facebook-blurb = Imiḍanen-ik srid tḥuza-ten trewla n yisefka?
+og-site-description = Wali s { -product-name } ma yella tḥuza-k trewla n yisefka. Jerred akken ad tremseḍ ilɣa deg trewiliwin timaynutin n yisefka akked iwellihen i useǧhed n tɣellist n yimiḍanen-ik.
 mozilla-security-blog = Ablug { -brand-Mozilla } ɣef tɣellist
 # A header for a list of links to share Firefox Monitor on various social media platforms.
 layout-social = Iẓeḍwan inmettiyen
 show-all = Sken akk
+fxa-landing-blurb =
+    Wali ayen ssnen imakaren imsenselkamen fell-ak.
+    daɣen issi ad ten-tizwireḍ.
 fxa-scan-label = Wali ma yella tarewla n yisefka tḥuza-k.
 fxa-welcome-headline = Anṣuf ɣer { -product-name }.
 fxa-welcome-blurb = Ad tremseḍ ilɣa ma yella { $userEmail } iban-d deg trewla n yisefka.
