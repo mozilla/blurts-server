@@ -26,7 +26,7 @@ error-not-subscribed = Esta dirección de correo electrónico no está suscrita 
 error-hibp-throttled = Demasiadas conexiones a { -brand-HIBP }.
 error-hibp-connect = Error al conectar con { -brand-HIBP }.
 error-hibp-load-breaches = No se han podido cargar los fallos de seguridad.
-hibp-notify-email-subject = Alerta de { -product-name }: Tu cuenta estuvo involucrada en un fallo de seguridad.
+error-must-be-signed-in = Debes iniciar sesión en tu { -brand-fxa }.
 home-title = { -product-name }
 home-not-found = Página no encontrada.
 oauth-invalid-session = La sesión no es válida
@@ -331,8 +331,6 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = Abrir navegación { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ÚLTIMA FILTRACIÓN AÑADIDA
-breach-added = Filtración documentada:
-breach-discovered = Filtración descubierta:
 # Link title
 more-about-this-breach = Más sobre esta filtración
 take-control = Recupera el control de tu información personal.
@@ -373,6 +371,11 @@ fxm-warns-you = { -product-name } te advierte si tus cuentas en línea estuviero
 # How Firefox Monitor works
 how-fxm-works = Cómo funciona { -product-name }
 how-fxm-1-headline = Hacer una búsqueda básica
+how-fxm-1-blurb =
+    Busca tu dirección de correo en las filtraciones de datos públicas desde 
+    2007. Esta búsqueda básica mostrará la mayoría de las filtraciones de datos, pero no
+    las que contienen información personal sensible.
+how-fxm-2-headline = Registrarse para mantenerse informado sobre las filtraciones
 how-fxm-3-headline = Obtener notificaciones en el navegador
 how-fxm-3-blurb = Si usas { -brand-name }, recibirás una notificación si visitas un sitio que ha sido vulnerado. Averigüa si formaste parte de esta vulnerabilidad y qué puedes hacer al respecto.
 wtd-after-website = Qué hacer tras una filtración de una página web
@@ -405,6 +408,7 @@ search-for-your-email = Busca tu dirección de correo en filtraciones de datos p
 back-to-top = Volver al inicio
 comm-opt-0 = Avísame si mi dirección de correo aparece en una filtración de datos.
 comm-opt-1 = Enviar todas las alertas de filtraciones a { $primaryEmail }.
+stop-monitoring-this = Dejar de monitorear esta dirección de correo.
 resend-verification = Reenviar correo de verificación
 add-new-email = Agregar una nueva dirección de correo
 send-verification = Enviar enlace de verificación
@@ -434,6 +438,10 @@ ba-next-step-blurb-1 =
     Una contraseña segura es aquella que incluye mayúsculas y minúsculas,
     símbolos y números. No debería incluir información personal como
     dirección, cumpleaños o nombres de familiares.
+faq2 = ¿Por qué tardaron tanto en informarme de esta filtración?
+faq3 = ¿Cómo sé que el correo de { -product-name } es legítimo?
+get-alerted = Recibe alertas sobre nuevas filtraciones.
+was-your-info-exposed = ¿Se expuso tu información en la filtración de datos de { $breachName }?
 all-breaches-headline = Todas las filtraciones de { -product-name }
 search-breaches = Buscar filtraciones
 # "Appears in-page as: Showing: All Breaches"
@@ -497,3 +505,25 @@ email-addresses-title = Direcciones de correo
 filter-by = Filtrar por categoría:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menú
+# Link title
+learn-more-link = Saber más.
+email-sent = ¡Correo enviado!
+# Form title
+want-to-add = ¿Quieres agregar otro correo?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Comprueba el enlace que se envió a { $userEmail } para agregarlo a { -product-name }.
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Gestiona todas las direcciones de correo en { $preferencesLink }.
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Notificaciones sobre filtraciones
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Filtración añadida:
