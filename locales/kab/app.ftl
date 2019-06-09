@@ -268,7 +268,23 @@ user-generic-fb-not-compromised-blurb =
         [one] Imayl-a ulac-it deg trewla { $breachName }, maca yettwaf deg wayeḍ.
        *[other] Imayl-a ulac-it deg trewla { $breachName }, maca yettwaf deg wiyaḍḍ.
     }
+guest-fb-not-compromised-blurb-v2 =
+    { $breachCount ->
+        [one]
+            Imayl-a yettwaf deg trewla { $breachName }, maca ur yettwaf ara deg tayeḍ.
+            Rnu { -brand-fxa } ilelli akken ad tremseḍ aneqqis ummid ɣef trewliwin yezrin, tarewla tamaynut
+            ilɣa, akked telqut ɣef yimezla-nniḍen { -brand-Mozilla }.
+       *[other]
+            Imayl-a yettwaf deg trewla { $breachName }, maca ur yettwaf ara deg tayeḍ.
+            Rnu { -brand-fxa } ilelli akken ad tremseḍ aneqqis ummid ɣef trewliwin yezrin, tarewla tamaynut
+            ilɣa, akked telqut ɣef yimezla-nniḍen { -brand-Mozilla }.
+    }
 have-an-account = Ɣur-k yakan amiḍan?
+signup-banner-sensitive-blurb =
+    Wali ayen ẓran imakaren imsenselkamen fell-ak. daɣen issin 
+    ad ten-tizwireḍ. Rmes ilɣa ma yella amiḍan-ik yettban-d 
+    deg trewliwin-nniḍen n yisefka.
+fxa-pwt-section-blurb = Awalen uffiren mmestanen meṛṛa talɣut-ik tudmawan deg yimiḍanen-ik srid. Daɣen, imakaren imsenselkamen ttfaṛasen seg yir tanumi-k, am useqdec n yiwen n wawal uffir yal amḍiq neɣ aseqdec n tinfaliyin yettwassnen (@waluffir, neɣ ala?) akken ad yedhem ddeqs n yimiḍanen.
 fxa-pwt-summary-4 = Imsefraken n wawalen uffiren am 1Password, LastPass, Dashlane, akked Bitwarden seklasen awlen uffiren sakin ttaččaren yes-sen ismal web i kečč. Ad k-ɛiwnen akken ad k-d-xedmen awalen uffiren iǧehden.
 fxa-what-to-do-blurb-4 = Imsefraken n wawalen uffiren am 1Password, LastPass, Dashlane, akked Bitwarden seklasen s wudem aɣelsan awalen uffiren, ttaččaren yes-sen ismal web i kečč. Seqdec amsefrak n wawalen uffiren deg tiliɣri-ik akked uselkim-ik akken ur tceffuḍ ara fell-asen.
 fb-landing-headline = Talɣut-ik tettuḥaz deg trewla n yisefka { $breachName }?
@@ -343,6 +359,7 @@ strength-of-your-pw = Tazmert n wawalen-ik uffiren ad tḥaz srid taɣellist-ik 
 create-strong-passwords = Amek ara ternuḍ awalen uffiren iǧehden
 stop-reusing-pw = Ur seqdac ara awalen uffiren i tesqedceḍ yakan
 five-myths = 5 n tiktiyin ur iṣeḥḥan ara ɣef imsefraken n wawalen uffiren
+create-a-fxa = Rnu { -brand-fxa } akken ad tremseḍ aneqqis-ik ummid ɣef trewliwin n yisefka akked yilɣa.
 feat-security-tips = Iwellihen n tɣellist i ummesten n yimiḍanen-ik
 feat-sensitive = Anadi leqqayen deg trewla n yisefka iweɛren
 feat-enroll-multiple = Taɣessast n trewla n yisefka i ddeqs n tansiwin imayl
@@ -356,7 +373,10 @@ appears-in-x-breaches =
     }
 see-if-breached = Wali ma tella trewla n yisefka i k-iḥuzan.
 check-for-breaches = Senqed tarewla n yisefka
+find-out-what-hackers-know = Wali ayen ẓran imakaren imsenselkamen fell-ak. daɣen issin ad ten-tizwireḍ.
+search-for-your-email = Nadi tansa-ik deg trewliwin n yisefka izayazen seg 2007.
 back-to-top = Uɣal d asawen
+comm-opt-0 = Azen-iyi-d imayl ma tella yiwet seg tawnsiwin-iw ddaw-a banent-d deg trewla n yisefka.
 comm-opt-1 = Azen meṛṛa ilɣa n trewla n yisefka ɣer { $primaryEmail }.
 stop-monitoring-this = Seḥbes taɛessast n tensa-a imayl.
 resend-verification = Ales tuzna n yimayl n usenqed
@@ -372,12 +392,16 @@ breach-summary = Agzul ɣef trewla n yisefka
 show-breaches-for-this-email = Sken meṛṛa tirewliwin n yisefka i tansa-a.
 link-change-primary = Beddel tansa imayl tagejdant
 remove-fxm = Kkes { -product-name }
+remove-fxm-blurb = Ssens ilɣa { -product-name }. { -brand-fxa } inek ad yeqqem yermed, daɣen ad tizmireḍ ad tremseḍ iznan-nniḍen icudden ɣer umiḍan-ik.
 manage-email-addresses = Sekref tansiwin n yimayl
 latest-breach-link = Wali ma yella tarewla-a n yisefka tḥuza-k
 welcome-back = Anṣuf yes-k i tikkelt-nniḍen, { $userName }!
 welcome-user = Anṣuf, { $userName }!
 breach-alert-subject = { -product-name } yufa-d d akken tansa-ik tella deg trewla n yisefka tamaynut.
 your-info-was-discovered-headline = Talɣut-ik tettwaf-d deg trewla tamaynut n yisefka.
+your-info-was-discovered-blurb =
+    Tjerrdeḍ ɣer yilɣa { -product-name } akken ad tremseḍ ilɣa
+    ticki imayl-ik iban-d deg trewla n yisefka. A-t-a wayen neẓra ɣef trewla-a.
 what-to-do-after-breach = Acu ara txedmeḍ defiir n trewla n yisefka:
 ba-next-step-1 = Beddel awal-ik uffir s wayeḍ-nniḍen iǧehden ugar.
 ba-next-step-2 = Seḥbes aseqdec n wawal uffir yettwakren.
