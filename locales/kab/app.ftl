@@ -285,6 +285,9 @@ signup-banner-sensitive-blurb =
     ad ten-tizwireḍ. Rmes ilɣa ma yella amiḍan-ik yettban-d 
     deg trewliwin-nniḍen n yisefka.
 fxa-pwt-section-blurb = Awalen uffiren mmestanen meṛṛa talɣut-ik tudmawan deg yimiḍanen-ik srid. Daɣen, imakaren imsenselkamen ttfaṛasen seg yir tanumi-k, am useqdec n yiwen n wawal uffir yal amḍiq neɣ aseqdec n tinfaliyin yettwassnen (@waluffir, neɣ ala?) akken ad yedhem ddeqs n yimiḍanen.
+fxa-pwt-summary-2 =
+    Awalen uffiren iwezlanen, i igebren yiwen n wawal, fessus-it i tifin i yimakaren imsenselkamen.
+    Seqdec xarṣum sin n wawalen akked usuddes gar isekkilen, iwzilen akked izamulen.
 fxa-pwt-summary-4 = Imsefraken n wawalen uffiren am 1Password, LastPass, Dashlane, akked Bitwarden seklasen awlen uffiren sakin ttaččaren yes-sen ismal web i kečč. Ad k-ɛiwnen akken ad k-d-xedmen awalen uffiren iǧehden.
 fxa-what-to-do-blurb-4 = Imsefraken n wawalen uffiren am 1Password, LastPass, Dashlane, akked Bitwarden seklasen s wudem aɣelsan awalen uffiren, ttaččaren yes-sen ismal web i kečč. Seqdec amsefrak n wawalen uffiren deg tiliɣri-ik akked uselkim-ik akken ur tceffuḍ ara fell-asen.
 fb-landing-headline = Talɣut-ik tettuḥaz deg trewla n yisefka { $breachName }?
