@@ -81,6 +81,9 @@ scan-featuredbreach-label = Wali ma yella amiḍan-ik <span class="bold">{ $feat
 sensitive-breach-email-required = Tarewla-a n yisefka tegber talɣut iweɛren. Ilaq yimayl n usenqed.
 scan-error = Yessefk ad tili d tansa tameɣtut.
 signup-banner-headline = { -product-name-nowrap } yettaf-d uguren ɣef yimiḍanen-ik srid.
+signup-banner-blurb =
+    Aneqqis leqqayen n { -product-name-nowrap } yemmal-d ma yella talɣut seg yimiḍanen-ik srid tettwammel neɣ tettwaker.
+    Ad k-id-nelɣu daɣen ma yella imiḍanen-ik banen-d deg trewliwin-nniḍen ntimaynutin n usmel web.
 download-firefox-bar-blurb = { -product-name-nowrap } Iwwi-yak-t-id <span class="nowrap">amaynut { -brand-name }</span>.
 download-firefox-bar-link = Sider { -brand-name } tura
 download-firefox-banner-blurb = Ṭṭef iminig-ik gar ifassen-ik
@@ -302,6 +305,8 @@ your-info-was-discovered-headline = Talɣut-ik tettwaf-d deg trewla tamaynut n y
 what-to-do-after-breach = Acu ara txedmeḍ defiir n trewla n yisefka:
 ba-next-step-1 = Beddel awal-ik uffir s wayeḍ-nniḍen iǧehden ugar.
 ba-next-step-2 = Seḥbes aseqdec n wawal uffir yettwakren.
+ba-next-step-3 = Awi tallelt i tmerna n wawalen uffiren ufrinen akken ummesten-nsen.
+faq1 = UR ssineɣ ara takebbanit-a neɣ asmel-a web. Acuɣer i yi-teɛna trewla-a?
 faq2 = Acuɣer yewwi aṭas n wakud akken ad ẓreɣ tarewela-a n yisefka?
 faq3 = Amek zemreɣ ad ẓreɣ ma yella imayl-a n { -product-name } n tidet?
 new-breaches-found =
@@ -320,6 +325,8 @@ fb-comp-and-others =
         [one] Imay-a iban-d deg  { $breachCount } n trewla n yisefka, ula d { $breachName }.
        *[other] Imay-a iban-d deg  { $breachCount } n trewliwin n yisefka, ula d { $breachName }.
     }
+no-other-breaches-found = Ula tarewla yettwafen s unadi afessas.
+no-results-blurb = Suref-aɣ, tarewla-a ur telli ara deg taffa-nneɣ n yisefka.
 all-breaches-headline = Meṛṛa tirewliwin deg { -product-name }
 search-breaches = Nadi tirewliwin n yisefka
 # "Appears in-page as: Showing: All Breaches"
