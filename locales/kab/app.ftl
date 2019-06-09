@@ -303,7 +303,12 @@ fxa-pwt-summary-2 =
     Awalen uffiren iwezlanen, i igebren yiwen n wawal, fessus-it i tifin i yimakaren imsenselkamen.
     Seqdec xarṣum sin n wawalen akked usuddes gar isekkilen, iwzilen akked izamulen.
 fxa-pwt-summary-4 = Imsefraken n wawalen uffiren am 1Password, LastPass, Dashlane, akked Bitwarden seklasen awlen uffiren sakin ttaččaren yes-sen ismal web i kečč. Ad k-ɛiwnen akken ad k-d-xedmen awalen uffiren iǧehden.
+fxa-pwt-summary-6 = Tirewliwin n yisefka ṭuqqtent taggara-a. MA yella talɣut-ik tudmawant tettban-d deg trewla n yisefka tamaynut, { -product-name } ad ak-d-yazen alɣu —  ihi ad tizmireḍ ad tgeḍ kra daɣen ad tseḥbibreḍ ɣef ummesten n yimiḍanen-ik.
+fxa-what-to-do-blurb-1 =
+    Ma yella ur tezmireḍ ara ad teqqneḍ, nermes asmel web akken ad teẓreḍ amek ara tbeddleḍ inekcumen-ik.
+    Tettwaliḍ amiḍan ur tessineḍ ara? Isefka-ik ahat nzan neɣ ttunefken. Ayagi yezmer daɣen d amiḍan i tettuḍ neɣ d takebbanit i yebeddlen isem.
 fxa-what-to-do-subhead-2 = Seḥbes aseqdec n waal uffir yeffɣen, daɣen beddel-it s kra n wanida i t-tesqedceḍ.
+fxa-wtd-blurb-2 = Imakaren imsenselkamen zemren ad ɛerḍen ad alsen aseqdec n wawalen uffiren akked tansa-ik imayl akken ad kecmen ɣer yimiḍanen-nniḍen. Rnu awal uffir-nniden deg yal asmel web, ladɣa i umiḍan-ik n lbanka, tirawt-ik srid d yismal-nniḍen web anida i teskelseḍ isefka-ik udmawanen.
 fxa-what-to-do-subhead-4 = Awi tallelt ɣef ceffu n wawalen-ik uffiren meṛṛa daɣen sers-iten deg umḍiq aɣelsan.
 fxa-what-to-do-blurb-4 = Imsefraken n wawalen uffiren am 1Password, LastPass, Dashlane, akked Bitwarden seklasen s wudem aɣelsan awalen uffiren, ttaččaren yes-sen ismal web i kečč. Seqdec amsefrak n wawalen uffiren deg tiliɣri-ik akked uselkim-ik akken ur tceffuḍ ara fell-asen.
 fb-landing-headline = Talɣut-ik tettuḥaz deg trewla n yisefka { $breachName }?
