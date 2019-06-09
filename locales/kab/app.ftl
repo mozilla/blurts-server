@@ -232,6 +232,7 @@ guest-scan-results-headline =
        *[other] Tansa-a tban-d deg { $breachCount } n trewla n yisefka
     }
 user-no-breaches-blurb = Ad k-id-nelɣu ma yella tansa-a tban-d deg trewla tamaynut n yisefka.
+guest-no-breaches-blurb = Akken ad tesneqdeḍ ma yella tansa-a tettban-d deg trewliwin n yisefka iweɣren, rnu { -brand-fxa }. Ad k-id-nelɣu daɣen ma yella tansa-a tettban-d deg trewliwin-nniḍen n yisefka.
 user-one-breach-blurb = Tarewla-a n yisefka tḥuza talɣut-a tudmawant.
 user-fb-compromised-blurb =
     { $breachCount ->
@@ -243,7 +244,30 @@ user-generic-fb-compromised-blurb =
         [one] Imayl-a yettban-d deg { $breachCount } n trewla n yisefka.
        *[other] Imayl-a yettban-d deg { $breachCount } n trewliwin n yisefka.
     }
+user-fb-compromised-single = Tarewla-a n yisefka tḥuza talɣut-a tudmawant. Ma yella ur t-tgiḍ ara, beddel ihi awal-ik uffir.
 user-generic-fb-compromised-single = Tarewla-a n yisefka tḥuza talɣut-a tudmawant.
+guest-fb-compromised-single-v2 =
+    Tarewla-a n yisefka tḥuza talɣut-a tudmawant. 
+    Rnu  { -brand-fxa } ilelli akken ad tremseḍ aneqqis ummid ɣef trewla n yisefka yezrin, ilɣa ɣef trewliwin i d-iteddun akked telɣut ɣef yimeẓla-nniḍen n { -brand-Mozilla }.
+guest-fb-compromised-blurb-v2 =
+    { $breachCount ->
+        [one]
+            Imayl-a yettban-d daɣen deg trewla n yisefka { $breachCount }. Rnu { -brand-fxa } ilelli akken ad tremseḍ aneqqis-ik ummid ɣef trewliwin yezrin, ilɣa n trewliwin timaynutin, 
+            akked telɣut ɣef imeẓla-nniḍen { -brand-Mozilla }.
+       *[other]
+            Imayl-a yettban-d daɣen deg trewliwin n yisefka { $breachCount }. Rnu { -brand-fxa } ilelli akken ad tremseḍ aneqqis-ik ummid ɣef trewliwin yezrin, ilɣa n trewliwin timaynutin, 
+            akked telɣut ɣef imeẓla-nniḍen { -brand-Mozilla }.
+    }
+user-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Ulac-ik deg trewla n yisefka { $breachName }, maca nufa-d tansa-ik imayl deg wayeḍ.
+       *[other] Ulac-ik deg trewla n yisefka { $breachName }, maca nufa-d tansa-ik imayl deg wiyaḍ.
+    }
+user-generic-fb-not-compromised-blurb =
+    { $breachCount ->
+        [one] Imayl-a ulac-it deg trewla { $breachName }, maca yettwaf deg wayeḍ.
+       *[other] Imayl-a ulac-it deg trewla { $breachName }, maca yettwaf deg wiyaḍḍ.
+    }
 have-an-account = Ɣur-k yakan amiḍan?
 fxa-pwt-summary-4 = Imsefraken n wawalen uffiren am 1Password, LastPass, Dashlane, akked Bitwarden seklasen awlen uffiren sakin ttaččaren yes-sen ismal web i kečč. Ad k-ɛiwnen akken ad k-d-xedmen awalen uffiren iǧehden.
 fxa-what-to-do-blurb-4 = Imsefraken n wawalen uffiren am 1Password, LastPass, Dashlane, akked Bitwarden seklasen s wudem aɣelsan awalen uffiren, ttaččaren yes-sen ismal web i kečč. Seqdec amsefrak n wawalen uffiren deg tiliɣri-ik akked uselkim-ik akken ur tceffuḍ ara fell-asen.
