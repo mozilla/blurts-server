@@ -121,11 +121,25 @@ featured-breach-not-compromised =
         [one] Amiḍan-ik ur d-iban ara deg trewla n yisefka <span class="bold">{ $featuredBreach }</span> , maca iban-d deg yiwet-nniḍen n trewla n yisefka.
        *[other] Amiḍan-ik ur d-iban ara deg trewla <span class="bold">{ $featuredBreach }</span> , maca iban-d deg { $breachCount } n trewliwin-nniḍen n yisefka.
     }
+scan-results =
+    { $breachCount ->
+        [0] { no-breaches }
+        [one] Amiḍan-ik iban-d deg trewla n yisefka { $breachCount }.
+       *[other] Imiḍanen icudden ɣer yimayl-ik banen-d deg trewliwin-a n yisefka { $breachCount }.
+    }
 show-more-breaches = Sken ugar
 what-to-do-headline = Acu ara txedmeḍ ticki talɣut-ik tban-d deg trewla n yisefka
 what-to-do-subhead-1 = Beddel awalen-ik uffiren, xas ma d imiḍanen iqbuṛen
+what-to-do-blurb-1 = Ma yella ur tezmireḍ ara ad teqqneḍ, nermes asmel web akken ad teẓreḍ amek ara tizmired ad terreḍ neɣ ad tmedleḍ amiḍan. Ur teɛqileḍ ara yiwen sef yimiḍanen? Asmel yezmer ahat ibeddel isem neɣ yiwen yerna amiḍan deg umḍiq-ik.
 what-to-do-subhead-2 = Ma tulseḍ aseqdec n wawal uffir yettuḥazen, beddel-it
+what-to-do-blurb-2 = Imakaren imsenselkamen zemren ad ɛerḍen ad alsen aseqdec n wawalen uffiren yettwakren akken ad kecmen ɣer yimiḍanen-nniḍen. Rnu awal uffir-nniden deg yal asmel web, ladɣa i umiḍan-ik n lbanka, tirawt-ik srid d yismal-nniḍen web anida i teskelseḍ isefka-ik udmawanen.
 what-to-do-subhead-3 = Xdem ayen-nniḍen akken ad tɣellseḍ imiḍanen-ik n tedrimt.
+what-to-do-blurb-3 =
+    Tuget n trewliwin n yisefka ɛnan-t kan imaylen d wawalen uffiren, maca wiyaḍ seddayen ula d isefka nɣef tedrimt.
+    MA yella amiḍan-ik n lbanka neɣ uṭṭunen n tkarḍa ddan deg trewla, lɣu lbanka-ik ɣef ukellex i i zemren ad d-yeḍru,
+    daɣen ḍmen d akken ula d yiwen n uxelleṣ ur yeḍri s usuter n wayen yeḍran akked umiḍan-ik.
+what-to-do-subhead-4 = Awi tallelt akken ad ternuḍ awalen uffiren iǧehden daɣen ad tent-ḥerzeḍ d iɣelsanen.
+what-to-do-blurb-4 = Imsefraken n wawalen uffiren am 1Password, LastPass, Dashlane, akked Bitwarden snulfuyen-d awalen uffiren isufen, iǧehden, seklasen daɣen s wudem aɣelsan awalen uffiren, ttaččaren yes-sen ismal web i kečč.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Azemz n trewla n yisefka:
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -212,6 +226,8 @@ user-generic-fb-compromised-blurb =
     }
 user-generic-fb-compromised-single = Tarewla-a n yisefka tḥuza talɣut-a tudmawant.
 have-an-account = Ɣur-k yakan amiḍan?
+fxa-pwt-summary-4 = Imsefraken n wawalen uffiren am 1Password, LastPass, Dashlane, akked Bitwarden seklasen awlen uffiren sakin ttaččaren yes-sen ismal web i kečč. Ad k-ɛiwnen akken ad k-d-xedmen awalen uffiren iǧehden.
+fxa-what-to-do-blurb-4 = Imsefraken n wawalen uffiren am 1Password, LastPass, Dashlane, akked Bitwarden seklasen s wudem aɣelsan awalen uffiren, ttaččaren yes-sen ismal web i kečč. Seqdec amsefrak n wawalen uffiren deg tiliɣri-ik akked uselkim-ik akken ur tceffuḍ ara fell-asen.
 fb-landing-headline = Talɣut-ik tettuḥaz deg trewla n yisefka { $breachName }?
 copyright = Kra n yiḥricen n ugbur-a d  © 1999-{ $year }sɣur iwiziwen i yiman-nsen n mozilla.org.
 content-available = Agbru yella ddaw n turagt Creative Commons.
@@ -337,6 +353,11 @@ get-alerted = Rmes ilɣa ticki llant trewiliwin timaynutin.
 was-your-info-exposed = Talɣut-ik tḥuza-tt trewla n yisefka { $breachName }?
 find-out-if = Wali ma yella isefka-ik tḥuza-tent trewla n yisefka.
 fb-not-comp = Tansa-a imayl ur d-tban ara deg trewla n yisefka { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Maca, iban-d deg trewla n yisefka { $breachCount } nniḍen.
+       *[other] Maca, iban-d deg trewliwin n yisefka { $breachCount } nniḍen.
+    }
 fb-comp-only = Imay-a iban-d deg trewla n yisefka { $breachName }.
 fb-comp-and-others =
     { $breachCount ->
@@ -354,9 +375,17 @@ all-breaches = Meṛṛa tirewliwin
 ## Updated error messages
 
 error-bot-headline = Anadi yeḥbes kra n wakud
+error-bot-blurb =
+    Nɣil  d akken kečč d aṛubut imi tettnadiḍ
+    ddeqs n yimaylen deg tenzagt wezzilen. Akka tura, tweḥleḍ 
+    seg unadi. Tzemreḍ ad tɛerḍeḍ ticki.
 error-csrf-headline = Tfuk tɣimit
 error-csrf-blurb = Sit ɣef tqeffalt Ɣer deffir deg yiminig-ik, smiren asebter sakin ɛreḍ tikkelt-nniḍen.
 error-invalid-unsub = Amek ara teffɣeḍ seg ujerred n yilɣa { -product-name }
+error-invalid-unsub-blurb =
+    Tesriḍ ad teffɣeḍ seg ujerred seg yiwen
+    n yimayel { -product-name } i ak-d-yettwaznen. Senqed iznan seg 
+    { -brand-team-email }. Sit ɣef useɣwen n tuffɣa seg ujerred ddaw n yizen.
 login-link-pre = Ɣur-k amiḍan?
 login-link = Qqen
 # This string is displayed under a large numeral that indicates the total number
