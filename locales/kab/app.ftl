@@ -309,6 +309,10 @@ fxa-what-to-do-blurb-1 =
     Tettwaliḍ amiḍan ur tessineḍ ara? Isefka-ik ahat nzan neɣ ttunefken. Ayagi yezmer daɣen d amiḍan i tettuḍ neɣ d takebbanit i yebeddlen isem.
 fxa-what-to-do-subhead-2 = Seḥbes aseqdec n waal uffir yeffɣen, daɣen beddel-it s kra n wanida i t-tesqedceḍ.
 fxa-wtd-blurb-2 = Imakaren imsenselkamen zemren ad ɛerḍen ad alsen aseqdec n wawalen uffiren akked tansa-ik imayl akken ad kecmen ɣer yimiḍanen-nniḍen. Rnu awal uffir-nniden deg yal asmel web, ladɣa i umiḍan-ik n lbanka, tirawt-ik srid d yismal-nniḍen web anida i teskelseḍ isefka-ik udmawanen.
+fxa-what-to-do-blurb-3 =
+    Tuget n trewliwin n yisefka ɛnan-t kan imaylen d wawalen uffiren, maca wiyaḍ seddayen ula d isefka nɣef tedrimt iweɛren. 
+    Ma yella amiḍan-ik n lbanka neɣ uṭṭunen n tkarḍa ddan deg trewla, lɣu lbanka-ik ɣef ukellex i izemren ad d-yeḍru,
+    Daɣen ḍmen d akken ula d yiwen n uxelleṣ ur yeḍri s usuter n wayen yeḍran akked umiḍan-ik.
 fxa-what-to-do-subhead-4 = Awi tallelt ɣef ceffu n wawalen-ik uffiren meṛṛa daɣen sers-iten deg umḍiq aɣelsan.
 fxa-what-to-do-blurb-4 = Imsefraken n wawalen uffiren am 1Password, LastPass, Dashlane, akked Bitwarden seklasen s wudem aɣelsan awalen uffiren, ttaččaren yes-sen ismal web i kečč. Seqdec amsefrak n wawalen uffiren deg tiliɣri-ik akked uselkim-ik akken ur tceffuḍ ara fell-asen.
 fb-landing-headline = Talɣut-ik tettuḥaz deg trewla n yisefka { $breachName }?
@@ -436,6 +440,7 @@ what-to-do-after-breach = Acu ara txedmeḍ defiir n trewla n yisefka:
 ba-next-step-1 = Beddel awal-ik uffir s wayeḍ-nniḍen iǧehden ugar.
 ba-next-step-2 = Seḥbes aseqdec n wawal uffir yettwakren.
 ba-next-step-3 = Awi tallelt i tmerna n wawalen uffiren ufrinen akken ummesten-nsen.
+ba-next-step-blurb-3 = Seqdec amsefrak n wawalen uffiren akken ad ternuḍ awalen uffiren iǧehden, asufen. Imsefraken n wawalen uffiren ḥerrzen taɣellist n yinekcam-ik meṛṛa akken ad tizmireḍ ad tkecmeḍ ɣer yibenkan-ik meṛṛa.
 faq1 = UR ssineɣ ara takebbanit-a neɣ asmel-a web. Acuɣer i yi-teɛna trewla-a?
 faq2 = Acuɣer yewwi aṭas n wakud akken ad ẓreɣ tarewela-a n yisefka?
 faq3 = Amek zemreɣ ad ẓreɣ ma yella imayl-a n { -product-name } n tidet?
