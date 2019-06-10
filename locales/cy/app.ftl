@@ -27,7 +27,6 @@ error-hibp-throttled = Gormod o gysylltiadau i { -brand-HIBP }.
 error-hibp-connect = Gwall wrth gysylltu i { -brand-HIBP }.
 error-hibp-load-breaches = Methu llwytho'r tor-data.
 error-must-be-signed-in = Rhaid eich bod wedi eich mewngofnodi i'ch { -brand-fxa }.
-hibp-notify-email-subject = Rhybudd { -product-name }: Mae eich cyfrif wedi ei gynnwys mewn tor-data.
 home-title = { -product-name }
 home-not-found = Heb ganfod tudalen.
 oauth-invalid-session = Sesiwn annilys
@@ -399,8 +398,6 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = Agor llywio { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = YCHWANEGWYD Y TOR-DATA DIWEDDARAF
-breach-added = Adroddwyd ar dor-data:
-breach-discovered = Darganfwyd tor-data:
 # Link title
 more-about-this-breach = Rhagor am y tor-data hwn
 take-control = Rheolwch eich data personol eich hun.
@@ -685,3 +682,14 @@ to-affected-email = Anfon rhybuddion tor-data at y cyfeiriadau e-bost sydd wedi'
 join-firefox = Mae yna ffordd o ddiogelu eich preifatrwydd. Ymunwch â { -brand-name }.
 # Link title
 learn-more-link = Dysgu rhagor.
+email-sent = E-bost wedi ei Anfon!
+# Form title
+want-to-add = Eisiau ychwanegu e-bost arall?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Gwiriwch y ddolen a anfonwyd at { $userEmail } i'w hychwanegu at { -product-name }.
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Rheoli pob cyfeiriad e-bost yn { $preferencesLink }.
