@@ -369,6 +369,7 @@ delayed-reporting-headline = Acuɣer yewwi aṭas n wakud akken ad tettwammel ta
 delayed-reporting-copy = Ayagi daɣen yezmer ad yawi ddeqs n wagguren neɣ iseggasen akken isulayen ittuḥazen deg trewla n yisefka ad banen deg darkweb. Tirewliwin ad ttwarnunt ɣer taffa-nneɣ n yisefka akken kan ad ttwafent daɣen ad ttwasneqdent.
 about-fxm-headline = Ɣef { -product-name }
 about-fxm-blurb = { -product-name } Ad k-id-yelɣu si imiḍanen-ik srid ttwaɣen deg trewla n yisefka. Wali ma ḥuzan-k, rmes-d ilɣa ɣef trewliwin-nniḍen n yisefka, daɣen issin ad tgeḍ ayen ilaqen i ummesten n yimiḍanen-ik srid. { -product-name } yettunefk-d sɣur { -brand-Mozilla }.
+fxm-warns-you = { -product-name } ad k-id-yelɣu ma yella tansa-ik imayl teddad-d deg trewla n yisefka. Wali ma yella tḥuza-k trewla, issin amek ara tḥ€rzeḍ imiḍanen-ik daɣen rmes alɣu ma yella tansa-ik tban-d deg trewla-nniden n yisefka.
 # How Firefox Monitor works
 how-fxm-works = Amek iteddu { -product-name }
 how-fxm-1-headline = Teg inadiyen fessusen
@@ -376,11 +377,15 @@ how-fxm-1-blurb =
     Nadi tansa-ik deg trewliwin n yisefka izayazen 
     seg 2007. Anadi-a afessas ad yaf tuget n trewiliwin n yisefka, maca mačči ticki gebren talɣut tudmawant i weɛren.
 how-fxm-2-headline = Jerred akken ad tɛasseḍ tarewla n yisefka
+how-fxm-2-blurb =
+    Rnu { -brand-fxa } akken ad tɛasseḍ dima tirewliwin n yisefka icudden ɣer tansa-ik imayl..
+    Deffir n usentem n tensa-ik imayl, ad remseḍ aneqqis ummid ɣef trewliwin n yisefka yezrin.
 how-fxm-3-headline = Rmes ilɣa deg iminig-ik
 how-fxm-3-blurb = Ma tseqdaceḍ { -brand-name }, ad tremseḍ alɣu ma terziḍ ɣer usmel anida rewlen isefka. Af-d ma yella tḥuza-k trewla n yisefka d wayen ilaqen ad t-tgeḍ iwaya.
 wtd-after-website = Acu ara txedmeḍ deffir n trewla n yisefka
 wtd-after-data-agg = Acu ara txedmeḍ deffir n trewla n yisefka n ugemmar n yisefka
 what-is-data-agg = D acu-t ugemmar n yisefka?
+what-is-data-agg-blurb = Inegmaren n yisefka, neɣ ileqqaḍen n yisefka, leqqḍen isefka izuyaz neɣ ttaɛen-d isefka ɣer tkebbaniyin. Jemɛen isefka akken ad ten-nzenzen i tkebbaniyin akken ad ten-sqedcent deg udellel. Wid ḥuzant trewliwin-a n yisefka, ur ten-teɛna ara akka s umata tkerḍa n yisefka icudden ɣer tedrimt, maca imakaren imsenselkamen n yisefka zemren ad sqedcen timagit-nsen neɣ ad nadin fell-asen.
 protect-your-privacy = Mmesten tabaḍnit-ik srid
 no-pw-to-change = Mgal n trewla n yisefka n usmel web, ulac awal uffir ara tbeddleḍ.
 avoid-personal-info = Ur seqdac ara talɣut tudmawant deg waalen uffiren
