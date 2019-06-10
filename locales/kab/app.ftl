@@ -364,8 +364,11 @@ unverified-breach-plural = Tarewla ur nettwasenqed ara
 spam-list-breach-plural = Tarewla n tebdarin n yimaylen ispamen
 what-data = Acu-ten yisefka ittuḥazen:
 sensitive-sites = Amek isesfer { -product-name } ismal iweɛren?
+sensitive-sites-copy = { -product-name } yemmal-d imiḍanen icudden ɣer wanaw-a n trewla n yisefka ma yella yiwet kan n tansa tettwasenqed. Ayagi yemmal-d d akken d kečč kan i yeẓran ma yella isefka-ik ttuḥuzan neɣ ala deg trewla-a (ala ma kan ɣur-s anekcum-nniḍen ɣer umiḍan-ik n yimayl).
 delayed-reporting-headline = Acuɣer yewwi aṭas n wakud akken ad tettwammel tarewela-a n yisefka?
+delayed-reporting-copy = Ayagi daɣen yezmer ad yawi ddeqs n wagguren neɣ iseggasen akken isulayen ittuḥazen deg trewla n yisefka ad banen deg darkweb. Tirewliwin ad ttwarnunt ɣer taffa-nneɣ n yisefka akken kan ad ttwafent daɣen ad ttwasneqdent.
 about-fxm-headline = Ɣef { -product-name }
+about-fxm-blurb = { -product-name } Ad k-id-yelɣu si imiḍanen-ik srid ttwaɣen deg trewla n yisefka. Wali ma ḥuzan-k, rmes-d ilɣa ɣef trewliwin-nniḍen n yisefka, daɣen issin ad tgeḍ ayen ilaqen i ummesten n yimiḍanen-ik srid. { -product-name } yettunefk-d sɣur { -brand-Mozilla }.
 # How Firefox Monitor works
 how-fxm-works = Amek iteddu { -product-name }
 how-fxm-1-headline = Teg inadiyen fessusen
