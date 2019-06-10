@@ -446,7 +446,9 @@ your-info-was-discovered-blurb =
     ticki imayl-ik iban-d deg trewla n yisefka. A-t-a wayen neẓra ɣef trewla-a.
 what-to-do-after-breach = Acu ara txedmeḍ defiir n trewla n yisefka:
 ba-next-step-1 = Beddel awal-ik uffir s wayeḍ-nniḍen iǧehden ugar.
+ba-next-step-blurb-1 = Awal uffir iǧehden yesseqdac asuddes n yisekkilen meqqren akked wid meẓẓiyen, izamulenakked yizwilen. Ur gbiren ara talɣut tudmawant am tansa-ik, amulli-ik neɣ ismawen n yiɛeggalen n twacult-ik.
 ba-next-step-2 = Seḥbes aseqdec n wawal uffir yettwakren.
+ba-next-step-blurb-2 = Imakaren imsenselkamen zemren ad d-afen awal-ik uffir deg darkweb daɣen ad -tsqedcen akken ad qqnen ɣer yimiḍanen-in-nniḍen. Allal ufrin akken ad tḥerzeḍ imiḍanen-ik d aseqdec n wawalen uffiren isufen deg yal amiḍan.
 ba-next-step-3 = Awi tallelt i tmerna n wawalen uffiren ufrinen akken ummesten-nsen.
 ba-next-step-blurb-3 = Seqdec amsefrak n wawalen uffiren akken ad ternuḍ awalen uffiren iǧehden, asufen. Imsefraken n wawalen uffiren ḥerrzen taɣellist n yinekcam-ik meṛṛa akken ad tizmireḍ ad tkecmeḍ ɣer yibenkan-ik meṛṛa.
 faq1 = UR ssineɣ ara takebbanit-a neɣ asmel-a web. Acuɣer i yi-teɛna trewla-a?
@@ -540,6 +542,7 @@ other-monitored-emails = Imaylen-nniḍen yettuɛassen
 email-verification-required = iAsenqed n yimayl ilaq
 fxa-primary-email = Tansa imayl n { -brand-fxa } - Tagejdant
 what-is-a-website-breach = D acu-tt trewla n yisefka n usmel web?
+website-breach-blurb = Tarewla n yisefka n usmel web tḍerru-d ticki imakaren imsenselkamen ttakren, neɣɣlen neɣ seqdacen talɣut tudmawant n yimiḍanen srid. Aya iḍerru-d s umata ticki imakaren ufan-d abrid akken ad ṛzen taɣellist n usmel web. Tirewliwin zemrent daɣen ad d-ḍrunt ticki talɣut n umiḍan teffeɣ-d s wudem azayez.
 security-tips-headline = Iwellihen n tɣellist i ummesten-ik seg imakaren imsenselkamen
 steps-to-protect = Imecwaṛen ilaqen i ummesten n timagit-ik srid
 take-further-steps = Eg ugar i ummesten n timagit-ik.
