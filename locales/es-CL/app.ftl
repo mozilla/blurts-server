@@ -437,6 +437,14 @@ data-breaches-exposed =
         [one] Una filtración de datos ha expuesto tu información
        *[other] Varias filtraciones de datos han expuesto tu información
     }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Contraseña expuesta en todas las filtraciones
+       *[other] Contraseñas expuestas en todas las filtraciones
+    }
 # Button
 see-additional-breaches = Ver filtraciones adicionales
 # A button on the All Breaches page that restores all of the breaches
