@@ -353,24 +353,48 @@ spam-list-breach-plural = Filtraciones de listas de spam
 what-data = Qué datos fueron comprometidos:
 sensitive-sites = ¿Cómo trata { -product-name } los sitios sensibles?
 delayed-reporting-headline = ¿Por qué tardó tanto reportar esta filtración?
+delayed-reporting-copy =
+    A veces pueden pasar meses o años antes de que las credenciales que se expusieron
+    en una filtración de datos aparezcan en la web oscura. Las filtraciones se añaden a nuestra base de datos en cuanto se descubren y verifican.
 about-fxm-headline = Acerca de { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Cómo funciona { -product-name }
 how-fxm-1-headline = Realizar una búsqueda básica
+how-fxm-1-blurb =
+    Busca tu dirección de correo en las filtraciones de datos públicas desde 
+    2007. Esta búsqueda básica mostrará la mayoría de las filtraciones de datos, pero no
+    las que contienen información personal sensible.
 how-fxm-3-headline = Recibir notificaciones en el navegador
 wtd-after-website = Qué hacer tras una filtración de una página web
+wtd-after-data-agg = Qué hacer tras una filtración de recopilador de datos
 what-is-data-agg = ¿Qué es un agregador de datos?
 protect-your-privacy = Protege tu privacidad en línea
+no-pw-to-change = A diferencia de una filtración de un sitio web, no hay contraseña que cambiar.
 avoid-personal-info = Evita usar información personal en contraseñas
 
 ## What to do after data breach tips
 
 change-pw = Cambia tu contraseña
+even-for-old = Incluso para cuentas antiguas, es importante actualizar tu contraseña.
+make-new-pw-unique = Haz que la nueva contraseña sea diferente y única
 create-strong-passwords = Cómo crear contraseñas seguras
 stop-reusing-pw = No uses siempre las mismas contraseñas
+five-myths = 5 mitos sobre los administradores de contraseñas
 feat-security-tips = Consejos de seguridad para proteger tus cuentas
+feat-enroll-multiple = Agrega varias direcciones de correo al control de filtraciones
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Aparece en { $breachCount } filtración conocida.
+       *[other] Aparece en { $breachCount } filtraciones conocidas.
+    }
+see-if-breached = Comprueba si tus datos se han filtrado en línea.
 check-for-breaches = Busca filtraciones
+find-out-what-hackers-know = Averigua qué saben de ti los hackers. Descubre cómo ir siempre un paso por delante.
+search-for-your-email = Busca tu dirección de correo en filtraciones de datos públicas yendo hasta 2007.
 back-to-top = Volver al inicio
+comm-opt-0 = Envíame un correo electrónico si alguna de mis direcciones de correo electrónico de las que están a continuación aparece en una filtración de datos.
 comm-opt-1 = Enviar todas las alertas de filtraciones a { $primaryEmail }.
 stop-monitoring-this = Dejar de monitorear este correo.
 resend-verification = Reenviar correo de verificación
@@ -393,6 +417,9 @@ welcome-back = ¡Bienvenido nuevamente { $userName }!
 welcome-user = ¡Bienvenido { $userName }!
 breach-alert-subject = { -product-name } encontró tu correo en una nueva filtración de datos.
 your-info-was-discovered-headline = Tu información fue descubierta en una nueva filtración de datos.
+your-info-was-discovered-blurb =
+    Te has suscrito para recibir alertas de { -product-name }
+    cuando tu dirección de correo aparezca en una filtración de datos. Esto es lo que sabemos al respecto.
 what-to-do-after-breach = Qué hacer después de una filtración de datos:
 ba-next-step-1 = Cambia tu contraseña por una que sea segura y única.
 ba-next-step-blurb-1 =
@@ -400,13 +427,40 @@ ba-next-step-blurb-1 =
     caracteres especiales y números. No contiene información personal como
     dirección, cumpleaños o nombres de familiares.
 ba-next-step-2 = Deja ya de usar la contraseña expuesta.
+ba-next-step-blurb-2 =
+    Los cibercriminales pueden encontrar tu contraseña en la dark web y usarla 
+    para ingresar en tus otras cuentas. La mejor forma de proteger tus cuentas 
+    es usar contraseñas únicas para cada una.
+ba-next-step-3 = Obtén ayuda para crear mejores contraseñas y mantenerlas seguras.
+ba-next-step-blurb-3 =
+    Usa un administrador de contraseñas para crear contraseñas seguras y únicas. 
+    Los administradores de contraseñas guardan de forma segura 
+    todas tus conexiones para que puedas acceder a ellas en todos tus dispositivos.
+faq1 = No reconozco esta empresa o sitio web. ¿Por qué aparezco en la filtración?
 faq2 = ¿Por qué tomó tanto tiempo notificarme sobre esta filtración?
+faq3 = ¿Cómo sé que este es un correo electrónico legítimo de { -product-name }?
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } NUEVA FILTRACIÓN ENCONTRADA
        *[other] { $breachCount } NUEVAS FILTRACIONES ENCONTRADAS
     }
+sign-up-headline-1 = Recibe alertas con { -brand-fxa }.
+account-not-required = No se necesita el navegador { -brand-name } para { -brand-fxa }. Puedes recibir información sobre los servicios de { -brand-Mozilla }.
+get-alerted = Recibe alertas sobre nuevas filtraciones.
+was-your-info-exposed = ¿Se expuso tu información en la filtración de datos de { $breachName }?
 find-out-if = Averiguar si tus datos fueron expuestos en esta filtración.
+fb-not-comp = Este correo electrónico no apareció en la filtración { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Sin embargo, apareció en { $breachCount } filtración.
+       *[other] Sin embargo, apareció en { $breachCount } otras filtraciones.
+    }
+fb-comp-only = Este correo electrónico apareció en la filtración { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Este correo apareció en { $breachCount } filtración conocida, incluyendo { $breachName }.
+       *[other] Este correo apareció en { $breachCount } filtraciones conocidas, incluyendo { $breachName }.
+    }
 no-other-breaches-found = No se encontraron otras filtraciones en la búsqueda básica.
 no-results-blurb = Lo sentimos, esa filtración no está en nuestra base de datos.
 all-breaches-headline = Todas las filtraciones en { -product-name }
@@ -418,7 +472,17 @@ all-breaches = Todas las filtraciones
 ## Updated error messages
 
 error-bot-headline = Búsquedas temporalmente suspendidas
+error-bot-blurb =
+    Nos preocupa que seas un robot porque has buscado varias
+    direcciones de correo en muy poco tiempo. Por ahora, hemos bloqueado
+    las búsquedas. Vuelve a intentarlo más tarde.
 error-csrf-headline = Sesión expirada
+error-csrf-blurb = Selecciona el botón Atrás de tu navegador, recarga la página y vuelve a intentarlo.
+error-invalid-unsub = Cómo cancelar la suscripción a las alertas de { -product-name }
+error-invalid-unsub-blurb =
+    Tendrás que cancelar la suscripción desde uno de los correos
+    que te envió { -product-name }. Busca correos de { -brand-team-email }
+    en tu bandeja de entrada. Al final del correo, selecciona el enlace para cancelar la suscripción.
 login-link-pre = ¿Tienes una cuenta?
 login-link = Conectarse
 # This string is displayed under a large numeral that indicates the total number
