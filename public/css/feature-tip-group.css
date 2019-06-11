@@ -59,14 +59,14 @@
 
 .feature-tip-link,
 .feature-subhead {
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.5rem;
   margin-top: 0;
 }
 
 .feature-title {
   margin-bottom: 0.5rem;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.3rem;
 }
 

@@ -27,7 +27,6 @@ error-hibp-throttled = Te veel verbindingen met { -brand-HIBP }.
 error-hibp-connect = Fout bij verbinden met { -brand-HIBP }.
 error-hibp-load-breaches = Kon datalekken niet laden.
 error-must-be-signed-in = U moet bij uw { -brand-fxa } zijn aangemeld.
-hibp-notify-email-subject = { -product-name } Waarschuwing: uw account is betrokken bij een datalek.
 home-title = { -product-name }
 home-not-found = Pagina niet gevonden.
 oauth-invalid-session = Ongeldige sessie
@@ -340,8 +339,6 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = { -brand-fxa }-navigatie openen
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = LAATST TOEGEVOEGDE DATALEK
-breach-added = Datalek gemeld:
-breach-discovered = Datalek ontdekt:
 # Link title
 more-about-this-breach = Meer over dit datalek
 take-control = Neem uw persoonlijke gegevens weer onder controle.
@@ -618,3 +615,23 @@ to-affected-email = Waarschuwingen over datalekken naar het getroffen e-mailadre
 join-firefox = Er is een manier om uw privacy te beschermen. Doe mee met { -brand-name }.
 # Link title
 learn-more-link = Meer info.
+email-sent = E-mailbericht verzonden!
+# Form title
+want-to-add = Wilt u nog een e-mailadres toevoegen?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Verifieer de koppeling die naar { $userEmail } is verstuurd om dit aan { -product-name } toe te voegen.
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Beheer alle e-mailadressen op { $preferencesLink }.
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Datalekmeldingen
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Datalek toegevoegd:

@@ -27,7 +27,6 @@ error-hibp-throttled = Too many connections to { -brand-HIBP }.
 error-hibp-connect = Error connecting to { -brand-HIBP }.
 error-hibp-load-breaches = Could not load breaches.
 error-must-be-signed-in = You must be signed in to your { -brand-fxa }.
-hibp-notify-email-subject = { -product-name } Alert: Your account was involved in a breach.
 home-title = { -product-name }
 home-not-found = Page not found.
 oauth-invalid-session = Invalid session
@@ -380,8 +379,6 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = Open { -brand-fxa } navigation
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = LATEST BREACH ADDED
-breach-added = Breach reported:
-breach-discovered = Breach discovered:
 # Link title
 more-about-this-breach = More about this breach
 take-control = Take back control of your personal data.
@@ -657,3 +654,23 @@ to-affected-email = Send breach alerts to the affected email address
 join-firefox = There is a way to protect your privacy. Join { -brand-name }.
 # Link title
 learn-more-link = Learn more.
+email-sent = Email Sent!
+# Form title
+want-to-add = Want to add another email?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Verify the link sent to { $userEmail } to add it to { -product-name }.
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Manage all email addresses in { $preferencesLink }.
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Breach Alert Notifications
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Breach added:

@@ -27,13 +27,13 @@
 }
 
 .preferences .e-num-breaches {
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
 }
 
 .e-address {
   font-size: 1.1rem;
   margin-right: 0.5rem;
-  font-family: "FirefoxSharpSans", Arial, Helvetica, sans-serif;
+  font-family: "Metropolis", sans-serif;
   font-weight: 700;
   color: var(--purple6);
 }
@@ -49,7 +49,7 @@
   font-size: 0.9rem;
   display: block;
   color: var(--grey6);
-  font-family: "FirefoxSharpSans", Arial, Helvetica, sans-serif;
+  font-family: "Metropolis", sans-serif;
 }
 
 .e-num-breaches .bold {

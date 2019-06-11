@@ -26,7 +26,7 @@ error-not-subscribed = Địa chỉ email này không được đăng ký với 
 error-hibp-throttled = Quá nhiều kết nối đến { -brand-HIBP }.
 error-hibp-connect = Lỗi kết nối đến { -brand-HIBP }.
 error-hibp-load-breaches = Không thể tải các vi phạm.
-hibp-notify-email-subject = { -product-name } Thông báo: Tài khoản của bạn có liên quan đến vi phạm.
+error-must-be-signed-in = Bạn phải đăng nhập vào { -brand-fxa } của bạn.
 home-title = { -product-name }
 home-not-found = Không tìm thấy trang.
 oauth-invalid-session = Phiên không hợp lệ
@@ -360,8 +360,6 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = Mở điều hướng { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = VI PHẠM MỚI NHẤT ĐƯỢC THÊM
-breach-added = Vi phạm đã báo cáo:
-breach-discovered = Vi phạm đã phát hiện:
 # Link title
 more-about-this-breach = Thông tin thêm về vi phạm này
 take-control = Lấy lại quyền kiểm soát dữ liệu cá nhân của bạn.
@@ -593,7 +591,7 @@ fxa-primary-email = { -brand-fxa } Email - Chính
 what-is-a-website-breach = Trang web vi phạm là gì?
 website-breach-blurb = Vi phạm dữ liệu trang web xảy ra khi tội phạm mạng ăn cắp, sao chép hoặc tiết lộ thông tin cá nhân từ tài khoản trực tuyến. Nó thường là kết quả của tin tặc tìm thấy một điểm yếu trong bảo mật của trang web. Vi phạm cũng có thể xảy ra khi thông tin tài khoản bị rò rỉ do lỗi kỹ thuật.
 security-tips-headline = Mẹo về bảo mật để bảo vệ bạn khỏi tin tặc
-steps-to-protect = Các bước cần thực hiện để bảo vệ danh tính trực tuyến của bạn
+steps-to-protect = Cách thực hiện để bảo vệ danh tính trực tuyến của bạn
 take-further-steps = Thực hiện các bước tiếp theo để bảo vệ danh tính của bạn
 alert-about-new-breaches = Thông báo cho tôi về những vi phạm mới
 see-if-youve-been-part = Hãy xem nếu bạn đã từng là một phần của vi phạm dữ liệu trực tuyến.
@@ -629,3 +627,23 @@ to-affected-email = Gửi thông báo vi phạm đến địa chỉ email bị �
 join-firefox = Đây là một cách để bảo vệ sự riêng tư của bạn. Tham gia { -brand-name }.
 # Link title
 learn-more-link = Tìm hiểu thêm.
+email-sent = Đã gửi email!
+# Form title
+want-to-add = Bạn muốn thêm một email khác?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Liên kết xác minh được gửi tới { $userEmail } để thêm liên kết vào { -product-name }.
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Quản lý tất cả các địa chỉ email trong { $preferencesLink }.
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Thông báo vi phạm
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Vi phạm đã được thêm:

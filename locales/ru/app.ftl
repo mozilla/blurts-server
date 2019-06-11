@@ -36,7 +36,7 @@ error-not-subscribed = Этот адрес электронной почты н�
 error-hibp-throttled = Слишком много попыток соединения с { -brand-HIBP(case: "genitive") }.
 error-hibp-connect = Ошибка подключения к { -brand-HIBP(case: "dative") }.
 error-hibp-load-breaches = Не удалось загрузить информацию по угрозам.
-hibp-notify-email-subject = Предупреждение { -product-name }: Ваш аккаунт под угрозой.
+error-must-be-signed-in = Вы должны войти в свой { -brand-fxa }.
 home-title = { -product-name }
 home-not-found = Страница не найдена.
 oauth-invalid-session = Недействительный идентификатор сессии
@@ -382,8 +382,6 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = Открыть { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ПОСЛЕДНЯЯ УТЕЧКА ДОБАВЛЕНА
-breach-added = Об утечке сообщено:
-breach-discovered = Утечка обнаружена:
 # Link title
 more-about-this-breach = Больше об этой утечке
 take-control = Возьмите свои личные данные под свой контроль.
@@ -625,3 +623,6 @@ to-affected-email = Отправлять оповещения об утечка�
 join-firefox = Есть способ защитить вашу приватность. Присоединяйтесь к { -brand-name }.
 # Link title
 learn-more-link = Подробнее.
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Утечка добавлена:

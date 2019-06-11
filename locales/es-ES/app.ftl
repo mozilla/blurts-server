@@ -26,7 +26,7 @@ error-not-subscribed = Esta dirección de correo electrónico no está suscrita 
 error-hibp-throttled = Demasiadas conexiones a { -brand-HIBP }.
 error-hibp-connect = Error al conectar con { -brand-HIBP }.
 error-hibp-load-breaches = No se han podido cargar los fallos de seguridad.
-hibp-notify-email-subject = Alerta de { -product-name }: Tu cuenta estuvo involucrada en un fallo de seguridad.
+error-must-be-signed-in = Debes iniciar sesión en tu { -brand-fxa }.
 home-title = { -product-name }
 home-not-found = Página no encontrada.
 oauth-invalid-session = La sesión no es válida
@@ -331,8 +331,6 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = Abrir navegación { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ÚLTIMA FILTRACIÓN AÑADIDA
-breach-added = Filtración documentada:
-breach-discovered = Filtración descubierta:
 # Link title
 more-about-this-breach = Más sobre esta filtración
 take-control = Recupera el control de tu información personal.
@@ -373,11 +371,29 @@ fxm-warns-you = { -product-name } te advierte si tus cuentas en línea estuviero
 # How Firefox Monitor works
 how-fxm-works = Cómo funciona { -product-name }
 how-fxm-1-headline = Hacer una búsqueda básica
+how-fxm-1-blurb =
+    Busca tu dirección de correo en las filtraciones de datos públicas desde 
+    2007. Esta búsqueda básica mostrará la mayoría de las filtraciones de datos, pero no
+    las que contienen información personal sensible.
+how-fxm-2-headline = Registrarse para mantenerse informado sobre las filtraciones
+how-fxm-2-blurb =
+    Crea una { -brand-fxa } para monitorear las filtraciones de datos de tu correo.
+    Cuando hayas comprobado tu dirección de correo, recibirás un informe completo de
+    filtraciones pasadas, incluidas las de información más sensible.
 how-fxm-3-headline = Obtener notificaciones en el navegador
 how-fxm-3-blurb = Si usas { -brand-name }, recibirás una notificación si visitas un sitio que ha sido vulnerado. Averigüa si formaste parte de esta vulnerabilidad y qué puedes hacer al respecto.
 wtd-after-website = Qué hacer tras una filtración de una página web
+wtd-after-data-agg = Qué hacer tras una filtración de recopilador de datos
 what-is-data-agg = ¿Qué es un recopilador de datos?
+what-is-data-agg-blurb =
+    Los recopiladores de datos recopilan información de fuentes públicas
+    y se las compran a otras empresas. Compilan la información para venderla a otras
+    empresas con fines de márketing. Las víctimas de estas filtraciones no suelen sufrir
+    fraudes financieros, pero los piratas informáticos pueden usar esa información para hacerse pasar por ellos.
 protect-your-privacy = Protege tu privacidad en línea.
+no-pw-to-change = A diferencia de una filtración web, no tienes que cambiar la contraseña.
+avoid-personal-info = Evita usar información personal en las contraseñas
+avoid-personal-info-blurb = Es muy fácil descubrir cumpleaños, direcciones y nombres familiares en línea. No uses esas palabras en tus contraseñas.
 
 ## What to do after data breach tips
 
@@ -389,8 +405,11 @@ create-strong-passwords = Cómo crear contraseñas seguras
 stop-reusing-pw = No uses siempre las mismas contraseñas
 create-unique-pw = Crea contraseñas únicas y guárdalas en algún lugar seguro, como un administrador de contraseñas.
 five-myths = 5 mitos sobre los administradores de contraseñas
+create-a-fxa = Crea un { -brand-fxa } para obtener un informe completo de filtraciones y recibir alertas.
 feat-security-tips = Consejos de seguridad para proteger tus cuentas
 feat-sensitive = Búsqueda avanzada de filtraciones sensibles
+feat-enroll-multiple = Agregar varias direcciones de correo a la monitorización de filtraciones
+sign-up-for-fxa = Regístrate para crear una { -brand-fxa }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
@@ -405,6 +424,7 @@ search-for-your-email = Busca tu dirección de correo en filtraciones de datos p
 back-to-top = Volver al inicio
 comm-opt-0 = Avísame si mi dirección de correo aparece en una filtración de datos.
 comm-opt-1 = Enviar todas las alertas de filtraciones a { $primaryEmail }.
+stop-monitoring-this = Dejar de monitorear esta dirección de correo.
 resend-verification = Reenviar correo de verificación
 add-new-email = Agregar una nueva dirección de correo
 send-verification = Enviar enlace de verificación
@@ -434,6 +454,40 @@ ba-next-step-blurb-1 =
     Una contraseña segura es aquella que incluye mayúsculas y minúsculas,
     símbolos y números. No debería incluir información personal como
     dirección, cumpleaños o nombres de familiares.
+ba-next-step-2 = Dejar de usar esa contraseña expuesta.
+ba-next-step-blurb-2 =
+    Los piratas informáticos podrían encontrar tu contraseña en la web oscura
+    y usarla para iniciar sesión en tus otras cuentas. La mejor forma de protegerlas
+    es usando contraseñas únicas para cada una.
+ba-next-step-3 = Te ayudamos a crear contraseñas seguras y a protegerlas.
+ba-next-step-blurb-3 = Usa un administrador de contraseñas para crear contraseñas seguras y única. Estos administradores almacenan todos tus usuarios de forma segura para que puedas acceder a ellos en todos tus dispositivos.
+faq1 = No reconozco esta empresa o sitio web. ¿Por qué aparezco en la filtración?
+faq2 = ¿Por qué tardaron tanto en informarme de esta filtración?
+faq3 = ¿Cómo sé que el correo de { -product-name } es legítimo?
+new-breaches-found =
+    { $breachCount ->
+        [one] { $breachCount } NUEVA FILTRACIÓN DETECTADA
+       *[other] { $breachCount } NUEVAS FILTRACIONES DETECTADAS
+    }
+sign-up-headline-1 = Recibe alertas con { -brand-fxa }.
+account-not-required = No se necesita el navegador { -brand-name } para { -brand-fxa }. Puedes recibir información sobre los servicios de { -brand-Mozilla }.
+get-alerted = Recibe alertas sobre nuevas filtraciones.
+was-your-info-exposed = ¿Se expuso tu información en la filtración de datos de { $breachName }?
+find-out-if = Comprueba si se expusieron tus datos en esta filtración.
+fb-not-comp = Este correo no aparece en la filtración de { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Sin embargo, sí aparece en otra filtración.
+       *[other] Sin embargo, sí aparece en otras { $breachCount } filtraciones.
+    }
+fb-comp-only = Este correo sí aparece en la filtración de { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Este correo apareció en una filtración conocida, la de { $breachName }.
+       *[other] Este correo apareció en { $breachCount } filtraciones conocidas, incluida la de { $breachName }.
+    }
+no-other-breaches-found = No se encontraron otras filtraciones en esta búsqueda rápida.
+no-results-blurb = Lo sentimos, esa filtración no está en nuestra base de datos.
 all-breaches-headline = Todas las filtraciones de { -product-name }
 search-breaches = Buscar filtraciones
 # "Appears in-page as: Showing: All Breaches"
@@ -443,6 +497,10 @@ all-breaches = Todas las filtraciones
 ## Updated error messages
 
 error-bot-headline = Búsquedas suspendidas de forma temporal
+error-bot-blurb =
+    Nos preocupa que seas un robot porque has buscado varias
+    direcciones de correo en muy poco tiempo. Por ahora, hemos bloqueado
+    las búsquedas. Inténtalo de nuevo más tarde.
 error-csrf-headline = Expiró la sesión
 error-csrf-blurb = Selecciona el botón Atrás de tu navegador, recarga la página y vuelve a intentarlo.
 error-invalid-unsub = Cómo cancelar la suscripción a las alertas de { -product-name }
@@ -452,6 +510,22 @@ error-invalid-unsub-blurb =
     en tu bandeja de entrada. Al final del correo, selecciona el enlace Cancelar suscripción.
 login-link-pre = ¿Tienes una cuenta?
 login-link = Inicia sesión
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] Dirección de correo monitoreada
+       *[other] Direcciones de correo monitoreadas
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] Una filtración de datos ha expuesto tu información
+       *[other] Filtraciones de datos han expuesto tu información
+    }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
 # your localization, because it would result in the number showing twice.
@@ -474,11 +548,17 @@ scan-results-known-breaches =
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Resultados para: { $userEmail }
+other-monitored-emails = Otros correos monitoreados
+email-verification-required = Tienes que verificar la dirección de correo
+fxa-primary-email = { -brand-fxa } correo - principal
+what-is-a-website-breach = ¿Qué es una filtración web?
+website-breach-blurb = Una filtración web se da cuando los criminales cibernéticos roban, copian o exponen información personal de cuentas digitales. Suelen ser el resultado de piratas informáticos que encuentran puntos débiles en la seguridad de esas páginas, aunque también puede ser que se filtre información de la cuenta por accidente.
 security-tips-headline = Consejos de seguridad para protegerte frente a hackers
 steps-to-protect = Sigue estos pasos para proteger tu identidad en línea
 take-further-steps = Sigue estos consejos para proteger tu identidad
 alert-about-new-breaches = Avisarme cuando haya nuevas filtraciones
 see-if-youve-been-part = Comprueba si formaste parte de una filtración de datos en línea.
+get-ongoing-breach-monitoring = Monitorear filtraciones para varias direcciones de correo.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Descubrir
 new-unsub-error = Tendrás que cancelar la suscripción desde uno de los correos que te envió { -product-name }.
@@ -492,8 +572,42 @@ other-known-breaches-found =
 additional-information-including = Información adicional:
 # Title
 email-addresses-title = Direcciones de correo
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = En { $breachDate }, { $breachTitle } tuvo una filtración. Cuando se descubrió y comprobó la filtración, se añadió a nuestra base de datos el { $addedDate }.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = Preferencias de { -product-short-name }
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Iniciase sesión como { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
 filter-by = Filtrar por categoría:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menú
+to-affected-email = Enviar alertas de filtraciones a las direcciones de correo afectadas
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Existe la forma de proteger tu privacidad. Únete a { -brand-name }.
+# Link title
+learn-more-link = Saber más.
+email-sent = ¡Correo enviado!
+# Form title
+want-to-add = ¿Quieres agregar otro correo?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Comprueba el enlace que se envió a { $userEmail } para agregarlo a { -product-name }.
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Gestiona todas las direcciones de correo en { $preferencesLink }.
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Notificaciones sobre filtraciones
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Filtración añadida:

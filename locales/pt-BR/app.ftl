@@ -27,7 +27,6 @@ error-hibp-throttled = Conexões em excesso para o { -brand-HIBP }
 error-hibp-connect = Falha ao conectar com o { -brand-HIBP }.
 error-hibp-load-breaches = Não foi possível carregar os vazamentos.
 error-must-be-signed-in = Você precisa entrar na sua { -brand-fxa }.
-hibp-notify-email-subject = Alerta do { -product-name }: Sua conta foi envolvida em um vazamento.
 home-title = { -product-name }
 home-not-found = Página não encontrada.
 oauth-invalid-session = Sessão inválida
@@ -368,8 +367,6 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = Abrir navegação na { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ÚLTIMO VAZAMENTO ADICIONADO
-breach-added = Vazamento reportado:
-breach-discovered = Vazamento descoberto:
 # Link title
 more-about-this-breach = Mais sobre este vazamento
 take-control = Assuma de volta o controle sobre seus dados pessoais.
@@ -634,3 +631,23 @@ to-affected-email = Enviar alertas de vazamento para os endereços de e-mail afe
 join-firefox = Existe um meio de proteger sua privacidade. Cadastre-se no { -brand-name }.
 # Link title
 learn-more-link = Saiba mais.
+email-sent = E-mail enviado!
+# Form title
+want-to-add = Quer adicionar outro e-mail?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Clique no link de confirmação enviado para { $userEmail } para adicionar ao { -product-name }.
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Gerencie todos os endereços de e-mail nas { $preferencesLink }.
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Notificações de alerta de vazamento
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Vazamento adicionado em:

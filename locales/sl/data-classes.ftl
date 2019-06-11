@@ -105,6 +105,7 @@ smoking-habits = kadilske navade
 sms-messages = sporočila SMS
 social-connections = družbene povezave
 social-media-profiles = profili družabnih medijev
+social-security-numbers = številke socialnih zavarovanj
 spoken-languages = govorjeni jeziki
 support-tickets = vstopnice za podporo
 survey-results = rezultati raziskav

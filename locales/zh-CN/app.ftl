@@ -27,7 +27,6 @@ error-hibp-throttled = 与 { -brand-HIBP } 的连接过多。
 error-hibp-connect = 连接 { -brand-HIBP } 时出错。
 error-hibp-load-breaches = 未能加载泄露信息。
 error-must-be-signed-in = 您必须先登录 { -brand-fxa }。
-hibp-notify-email-subject = { -product-name } 警报：您的账号信息已遭泄露。
 home-title = { -product-name }
 home-not-found = 找不到网页。
 oauth-invalid-session = 无效会话
@@ -331,8 +330,6 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = 打开 { -brand-fxa }导航栏
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = 最新公开的外泄事件
-breach-added = 事件报告日期：
-breach-discovered = 事件发现日期：
 # Link title
 more-about-this-breach = 关于此数据外泄事件的更多信息
 take-control = 收回个人数据的控制权。
@@ -554,3 +551,23 @@ to-affected-email = 向受影响的电子邮件地址发送外泄警报
 join-firefox = 有种方法可以保护您的隐私，加入 { -brand-name }。
 # Link title
 learn-more-link = 详细了解。
+email-sent = 邮件已发送！
+# Form title
+want-to-add = 要添加其他电子邮件地址吗？
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = 请验证发送到 { $userEmail } 的链接，将其添加到 { -product-name }。
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = 管理 { $preferencesLink } 中的所有电子邮件地址。
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = 外泄警报通知
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = 事件记录时间：

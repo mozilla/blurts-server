@@ -12,7 +12,7 @@ automated-message = Đây là một email tự động; nếu bạn nhận đư�
 we-sent-this-alert = Chúng tôi đã gửi tin nhắn này tới { $userEmail } vì địa chỉ email đã chọn tham gia nhận thông báo từ { -product-name }.
 unsubscribe-email-link = Nếu bạn không còn muốn nhận thông báo { -product-name } nữa, hãy hủy đăng ký.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
-firefox-monitor-report = { -product-name } Báo cáo
+firefox-monitor-report = Báo cáo { -product-name }
 report-date = Ngày báo cáo:
 email-address = Địa chỉ email:
 # "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 

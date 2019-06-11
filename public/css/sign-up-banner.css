@@ -16,7 +16,6 @@ button.violet-btn {
   padding: 0.75rem 1rem;
   width: 100%;
   color: var(--grey1);
-  font-weight: 500;
 }
 
 .violet-btn:hover {

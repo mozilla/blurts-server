@@ -20,13 +20,13 @@ about-firefox-alerts = A proposito del avisos de Firefox
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Inviar opinion
 terms-and-privacy = Conditiones de uso e confidentialitate
-error-scan-page-token = Tu ha probate a analysar troppo de adresses de e-mail in un curte periodo de tempore. Pro rationes de securitate, nos te ha temporarimente blocate pro nove recercas. Tu potera provar de novo plus tarde.
+error-scan-page-token = Tu ha probate a analysar troppo de adresses de e-mail in un curte periodo de tempore. Pro rationes de securitate, nos te ha temporarimente blocate pro nove recercas. Tu potera probar de novo plus tarde.
 error-could-not-add-email = Impossibile adder le adresse de e-mail al base de datos.
 error-not-subscribed = Iste adresse de e-mail non es inscribite a { -product-name }.
 error-hibp-throttled = Troppo de connexiones a { -brand-HIBP }.
 error-hibp-connect = Error durante le connexion a { -brand-HIBP }.
 error-hibp-load-breaches = Impossibile cargar informationes sur le violationes de datos.
-hibp-notify-email-subject = Alerta de { -product-name }: tu conto ha essite compromittite per un violation de securitate.
+error-must-be-signed-in = Tu debe esser authenticate in tu { -brand-fxa }.
 home-title = { -product-name }
 home-not-found = Pagina non trovate.
 oauth-invalid-session = Session non valide
@@ -340,8 +340,6 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = Aperi le navigation de { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ULTIME VIOLATION ADDITE
-breach-added = Violation signalate:
-breach-discovered = Violation discoperite:
 # Link title
 more-about-this-breach = Altero re iste violation
 take-control = Reprende le controlo de tu datos personal.
@@ -572,3 +570,23 @@ to-affected-email = Invia avisos de violation al adresse email afficite
 join-firefox = Il ha un maniera de proteger tu confidentialitate. Junge te a { -brand-name }.
 # Link title
 learn-more-link = Saper plus.
+email-sent = Message inviate!
+# Form title
+want-to-add = Vole adder un altere adresse de e-mail?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Verifica le ligamine inviate a { $userEmail } pro adder lo a { -product-name }.
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Gere tote le adresses de e-mail in { $preferencesLink }.
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Notificationes de alerta de violation
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Violation addite:
