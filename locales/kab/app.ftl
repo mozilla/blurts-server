@@ -143,7 +143,7 @@ what-to-do-blurb-4 = Imsefraken n wawalen uffiren am 1Password, LastPass, Dashla
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Azemz n trewla n yisefka:
 # compromised accounts = the total number of user accounts exposed in data breach
-compromised-accounts = Imiḍanene yettwakren:
+compromised-accounts = Imiḍanen yettwakren:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Isefka yettwakren:
 confirmed = Yentem!<br />Tettwajerdeḍ!
@@ -340,7 +340,7 @@ open-fxa-menu = Inig deg { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = TIREWLIWIN N YISEFKA TINEGGURA YETTWARNAN
 # Link title
-more-about-this-breach = Ugar ɣer trewla-a
+more-about-this-breach = Ugar ɣef trewla-a
 take-control = Ṭṭef isefka-ik udmawanen gar ifassen-ik.
 cant-stop-hackers = Ur tezmireḍ ara ad tesḥebseḍ imakaṛen si takerḍa. Maca tzemreḍ ad tanfeḍ i yir tanumi i yettaran takerḍa fessuset.
 read-more-tips = Ɣer ugar ɣef iwellihen n tɣellist
@@ -435,7 +435,7 @@ show-breaches-for-this-email = Sken meṛṛa tirewliwin n yisefka i tansa-a.
 link-change-primary = Beddel tansa imayl tagejdant
 remove-fxm = Kkes { -product-name }
 remove-fxm-blurb = Ssens ilɣa { -product-name }. { -brand-fxa } inek ad yeqqem yermed, daɣen ad tizmireḍ ad tremseḍ iznan-nniḍen icudden ɣer umiḍan-ik.
-manage-email-addresses = Sekref tansiwin n yimayl
+manage-email-addresses = Sefrek tansiwin n yimayl
 latest-breach-link = Wali ma yella tarewla-a n yisefka tḥuza-k
 welcome-back = Anṣuf yes-k i tikkelt-nniḍen, { $userName }!
 welcome-user = Anṣuf, { $userName }!
