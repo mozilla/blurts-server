@@ -352,11 +352,22 @@ unverified-breach-plural = Filtraciones no verificadas
 spam-list-breach-plural = Filtraciones de listas de spam
 what-data = Qué datos fueron comprometidos:
 sensitive-sites = ¿Cómo trata { -product-name } los sitios sensibles?
+sensitive-sites-copy =
+    { -product-name } solo revela las cuentas asociadas con estos
+    tipos de filtraciones una vez que se ha verificado la dirección de correo electrónico. Esto significa que eres la
+    única persona que puede ver si tu información estuvo expuesta (a menos que alguien
+    más también tenga acceso a tu cuenta de correo electrónico).
 delayed-reporting-headline = ¿Por qué tardó tanto reportar esta filtración?
 delayed-reporting-copy =
     A veces pueden pasar meses o años antes de que las credenciales que se expusieron
     en una filtración de datos aparezcan en la web oscura. Las filtraciones se añaden a nuestra base de datos en cuanto se descubren y verifican.
 about-fxm-headline = Acerca de { -product-name }
+about-fxm-blurb =
+    { -product-name } te advierte si tus cuentas en línea estuvieron involucradas
+     en un filtración de datos. Averigua si se han expuesto tus datos, recibe alertas sobre
+     nuevas filtraciones y toma medidas para proteger tus cuentas en línea. { -brand-Mozilla } patrocina
+    a { -product-name }.
+fxm-warns-you = { -product-name } te advierte si tus cuentas en línea estuvieron involucradas en un filtración de datos. Verifica si tu información ha sido expuesta, aprende cómo proteger mejor tus cuentas en línea y recibe alertas si tu dirección de correo se encuentra nuevamente en riesgo.
 # How Firefox Monitor works
 how-fxm-works = Cómo funciona { -product-name }
 how-fxm-1-headline = Realizar una búsqueda básica
@@ -364,24 +375,41 @@ how-fxm-1-blurb =
     Busca tu dirección de correo en las filtraciones de datos públicas desde 
     2007. Esta búsqueda básica mostrará la mayoría de las filtraciones de datos, pero no
     las que contienen información personal sensible.
+how-fxm-2-headline = Regístrate para mantenerte informado sobre las filtraciones
+how-fxm-2-blurb =
+    Crea una { -brand-fxa } para monitorear las filtraciones de datos de tu correo.
+    Cuando hayas comprobado tu dirección de correo, recibirás un informe completo de
+    filtraciones pasadas, incluidas las de información más sensible.
 how-fxm-3-headline = Recibir notificaciones en el navegador
+how-fxm-3-blurb = Si usas { -brand-name }, recibirás una notificación si visitas un sitio que ha sido vulnerado. Averigua si formaste parte de esta vulnerabilidad y qué puedes hacer al respecto.
 wtd-after-website = Qué hacer tras una filtración de una página web
 wtd-after-data-agg = Qué hacer tras una filtración de recopilador de datos
 what-is-data-agg = ¿Qué es un agregador de datos?
+what-is-data-agg-blurb =
+    Los recopiladores de datos recopilan información de fuentes públicas
+    y la compran a otras empresas. Compilan la información para venderla a otras
+    empresas con fines de marketing. Las víctimas de estas filtraciones tienen menos probabilidades de sufrir
+    fraudes financieros, pero los hackers pueden usar esa información para hacerse pasar por ellas.
 protect-your-privacy = Protege tu privacidad en línea
 no-pw-to-change = A diferencia de una filtración de un sitio web, no hay contraseña que cambiar.
 avoid-personal-info = Evita usar información personal en contraseñas
+avoid-personal-info-blurb = Resulta fácil encontrar cumpleaños, direcciones y nombres de familiares en línea. Mantén estas palabras fuera de tus contraseñas.
 
 ## What to do after data breach tips
 
 change-pw = Cambia tu contraseña
 even-for-old = Incluso para cuentas antiguas, es importante actualizar tu contraseña.
 make-new-pw-unique = Haz que la nueva contraseña sea diferente y única
+strength-of-your-pw = La fuerza de tus contraseñas impacta directamente en tu seguridad en línea.
 create-strong-passwords = Cómo crear contraseñas seguras
 stop-reusing-pw = No uses siempre las mismas contraseñas
+create-unique-pw = Crea contraseñas únicas y guárdalas en algún lugar seguro, como en un administrador de contraseñas.
 five-myths = 5 mitos sobre los administradores de contraseñas
+create-a-fxa = Crea una { -brand-fxa } para obtener un informe completo de filtraciones y recibir alertas.
 feat-security-tips = Consejos de seguridad para proteger tus cuentas
+feat-sensitive = Búsqueda avanzada de filtraciones sensibles
 feat-enroll-multiple = Agrega varias direcciones de correo al control de filtraciones
+sign-up-for-fxa = Regístrate para crear una { -brand-fxa }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
@@ -527,14 +555,30 @@ other-monitored-emails = Otros correos monitorizados
 email-verification-required = Verificación de correo requerida
 fxa-primary-email = Correo de { -brand-fxa } - Primario
 what-is-a-website-breach = ¿Qué es una filtración de sitio?
+website-breach-blurb = Una filtración de datos de un sitio web sucede cuando los cibercriminales roban, copian o exponen información personal de cuentas en línea. Es usualmente el resultado de hackers buscando puntos débiles en la seguridad de los sitios. Las filtraciones también suceden cuando la información de las cuentas se filtra por accidente.
+security-tips-headline = Consejos de seguridad para protegerte de los hackers
+steps-to-protect = Pasos a seguir para proteger tu identidad en línea
+take-further-steps = Toma medidas adicionales para proteger tu identidad
 alert-about-new-breaches = Avisarme cuando haya nuevas filtraciones
+see-if-youve-been-part = Comprueba si fuiste parte de una filtración de datos en línea.
+get-ongoing-breach-monitoring = Obtén monitoreo de filtraciones para varias direcciones de correo.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Averiguar
+new-unsub-error = Tendrás que cancelar la suscripción desde uno de los correos que te envió { -product-name }.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Sin embargo, apareció en { $breachCount } filtración conocida.
+       *[other] Sin embargo, apareció en { $breachCount } filtraciones conocidas.
+    }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = Información adicional, incluyendo:
 # Title
 email-addresses-title = Direcciones de correo
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = El { $breachDate }, { $breachTitle } sufrió una filtración. Una vez que se descubrió y verificó la filtración, se agregó a nuestra base de datos el { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Preferencias de { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
