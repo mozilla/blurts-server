@@ -354,7 +354,7 @@ take-control = Prevzemite nadzor nad svojimi osebnimi podatki.
 cant-stop-hackers = Delovanja hekerjev ne morete ustaviti. Lahko pa se znebite slabih navad, ki jim olajšujejo delo.
 read-more-tips = Preberite več varnostnih nasvetov
 how-hackers-work = Razumite, kako hekerji delujejo
-monitor-your-online-accounts = Prijavite se s { -brand-fxa }jem za nadzor kraj podatkov.
+monitor-your-online-accounts = Prijavite se s { -brand-fxa }om za nadzor kraj podatkov.
 stay-alert = Bodite pozorni na nove kraje podatkov
 if-your-info = Če se vaši podatki pojavijo v novih krajah, vam bomo poslali opozorilo.
 search-all-emails = Preverite, če so se e-poštni naslovi pojavili v krajah podatkov in prejmite opozorila o novih grožnjah.
@@ -477,10 +477,10 @@ login-link = Prijava
 # your localization, because it would result in the number showing twice.
 data-breaches-exposed =
     { $breaches ->
-        [one] Kraja podatkov je razkrila vaše podatke
-        [two] Kraji podatkov sta razkrili vaše podatke
-        [few] Kraje podatkov so razkrile vaše podatke
-       *[other] Kraj podatkov je razkrilo vaše podatke
+        [one] kraja podatkov je razkrila vaše podatke
+        [two] kraji podatkov sta razkrili vaše podatke
+        [few] kraje podatkov so razkrile vaše podatke
+       *[other] kraj podatkov je razkrilo vaše podatke
     }
 # Button
 see-additional-breaches = Prikaži dodatne kraje podatkov
