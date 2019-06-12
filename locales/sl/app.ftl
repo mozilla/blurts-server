@@ -536,3 +536,13 @@ join-firefox = Vašo zasebnost lahko zaščitite. Pridružite se { -brand-name }
 # Link title
 learn-more-link = Več o tem.
 email-sent = E-pošta poslana!
+# Form title
+want-to-add = Želite dodati še en e-poštni naslov?
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Upravljajte vse e-poštne naslove v { $preferencesLink }
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Kraja dodana:
