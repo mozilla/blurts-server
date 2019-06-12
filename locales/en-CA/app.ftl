@@ -493,7 +493,6 @@ send-verification = Send Verification Link
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-global-communication = Global Communication
 breach-summary = Breach Summary
 show-breaches-for-this-email = Show all breaches for this email.
 link-change-primary = Change primary email address
@@ -596,6 +595,14 @@ passwords-exposed =
     { $passwords ->
         [one] Password exposed across all breaches
        *[other] Passwords exposed across all breaches
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] Known data breach has exposed your information
+       *[other] Known data breaches have exposed your information
     }
 # Button
 see-additional-breaches = See Additional Breaches
