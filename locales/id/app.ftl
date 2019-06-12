@@ -26,7 +26,7 @@ error-not-subscribed = Alamat surel ini tidak berlangganan { -product-name }.
 error-hibp-throttled = Terlalu banyak koneksi ke { -brand-HIBP }.
 error-hibp-connect = Gagal tersambung dengan { -brand-HIBP }.
 error-hibp-load-breaches = Tidak dapat memuat data pembobolan.
-hibp-notify-email-subject = Peringatan { -product-name }: Akun Anda telah terlibat dalam sebuah pembobolan.
+error-must-be-signed-in = Anda harus masuk dengan { -brand-fxa } Anda.
 home-title = { -product-name }
 home-not-found = Laman tidak ditemukan.
 oauth-invalid-session = Sesi tidak valid
@@ -344,8 +344,6 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = Buka navigasi { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = KEBOCORAN TERBARU TELAH DITAMBAHKAN
-breach-added = Pelaporan kebocoran:
-breach-discovered = Pembobolan yang ditemukan:
 # Link title
 more-about-this-breach = Lebih lanjut tentang pembobolan ini
 take-control = Ambil alih kendali data pribadi Anda.
@@ -613,3 +611,23 @@ to-affected-email = Kirim peringatan kebocoran ke alamat surel terkait
 join-firefox = Ada cara untuk melindungi privasi Anda. Bergabunglah dengan { -brand-name }.
 # Link title
 learn-more-link = Pelajari lebih lanjut.
+email-sent = Surel Terkirim!
+# Form title
+want-to-add = Ingin tambahkan alamat surel lainnya?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Verifikasi tautan terkirim ke { $userEmail } untuk menambahkannya ke { -product-name }.
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Kelola semua alamat surel di { $preferencesLink }.
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Notifikasi Pemberitahuan Pembobolan
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Pembobolan ditambahkan pada:
