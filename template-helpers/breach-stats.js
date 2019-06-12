@@ -54,7 +54,7 @@ const locales = args.data.root.req.supportedLocales;
   breachStats.numBreaches.count = foundBreaches.length;
 
 // get localized string, send foundBreaches.length to get correct singular/plural version
-  breachStats.numBreaches.subhead = LocaleUtils.fluentFormat(locales, "data-breaches-exposed", { breaches: foundBreaches.length });
+  breachStats.numBreaches.subhead = LocaleUtils.fluentFormat(locales, "known-data-breaches-exposed", { breaches: foundBreaches.length });
 
   return breachStats;
 }

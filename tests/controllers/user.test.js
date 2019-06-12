@@ -41,6 +41,9 @@ test("user add POST with email adds unverified subscriber and sends verification
     body: { email: testUserAddEmail },
     session: { user: testSubscriber },
     fluentFormat: jest.fn(),
+    headers: {
+      referer: "",
+    },
   });
   const resp = httpMocks.createResponse();
   EmailUtils.sendEmail.mockResolvedValue(true);

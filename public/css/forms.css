@@ -266,6 +266,12 @@ input[type="radio"]:focus ~ .checkmark {
   color: var(--color);
 }
 
+.dashboard-add-email .add-new-email-form {
+  flex-direction: column;
+  max-width: 450px;
+  margin: auto;
+}
+
 .radio-container {
   margin-bottom: 1rem;
   display: flex;

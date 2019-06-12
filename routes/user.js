@@ -17,7 +17,7 @@ const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 const csrfProtection = csrf();
 
 
-router.get("/dashboard", asyncMiddleware(getDashboard));
+router.get("/dashboard", csrfProtection, asyncMiddleware(getDashboard));
 router.get("/preferences", csrfProtection, asyncMiddleware(getPreferences));
 router.get("/logout", logout);
 router.post("/email", urlEncodedParser, csrfProtection, asyncMiddleware(add));

@@ -380,7 +380,7 @@ ul li {
 
 .col-6 {
   flex: 1 1 50%;
-  max-width: 500px;
+  max-width: 50%;
   min-width: 300px;
 }
 

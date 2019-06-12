@@ -116,6 +116,14 @@ async function add(req, res) {
       whichView: "email_partials/email_verify",
     }
   );
+
+  // send users coming from the dashboard back to the dashboard
+  // and set req.session.lastAddedEmail to show a confirmation message.
+  if (req.headers.referer.endsWith("/dashboard")) {
+    req.session.lastAddedEmail = email;
+    return res.redirect("/user/dashboard");
+  }
+
   res.redirect("/user/preferences");
 }
 
@@ -168,11 +176,18 @@ async function getDashboard(req, res) {
   const user = await _requireSessionUser(req);
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
+  let lastAddedEmail = null;
 
   req.session.user = await DB.setBreachesLastShownNow(user);
+  if (req.session.lastAddedEmail) {
+    lastAddedEmail = req.session.lastAddedEmail;
+    req.session["lastAddedEmail"] = null;
+  }
 
   res.render("dashboards", {
     title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    lastAddedEmail,
     verifiedEmails,
     unverifiedEmails,
     whichPartial: "dashboards/breaches-dash",
