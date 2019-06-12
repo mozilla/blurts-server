@@ -411,7 +411,6 @@ send-verification = Trimite linkul de verificare
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-global-communication = Comunicații globale
 breach-summary = Rezumat breșă
 show-breaches-for-this-email = Afișează toate breșele pentru acest e-mail.
 link-change-primary = Schimbă adresa de e-mail primară
@@ -503,6 +502,15 @@ passwords-exposed =
         [one] parolă expusă în toate breșele
         [few] parole expuse în toate breșele
        *[other] de parole expuse în toate breșele
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] O breșă de date cunoscută ți-a expus informațiile
+        [few] Mai multe breșe de date cunoscute ți-au expus informațiile
+       *[other] Mai multe breșe de date cunoscute ți-au expus informațiile
     }
 # Button
 see-additional-breaches = Afișează și alte breșe
