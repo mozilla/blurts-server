@@ -26,7 +26,7 @@ error-not-subscribed = Αυτή η διεύθυνση email δεν έχει εγ
 error-hibp-throttled = Πάρα πολλές συνδέσεις στο { -brand-HIBP }.
 error-hibp-connect = Σφάλμα σύνδεσης στο { -brand-HIBP }.
 error-hibp-load-breaches = Αδυναμία φόρτωσης διαρροών.
-hibp-notify-email-subject = Ειδοποίηση { -product-name }: Ο λογαριασμός σας έχει εμπλακεί σε παραβίαση.
+error-must-be-signed-in = Πρέπει να συνδεθείτε στο { -brand-fxa } σας.
 home-title = { -product-name }
 home-not-found = Η σελίδα δεν βρέθηκε.
 oauth-invalid-session = Άκυρη συνεδρία
@@ -372,9 +372,43 @@ security-tips = Συμβουλές ασφαλείας
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Άνοιγμα πλοήγησης { -brand-fxa }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = ΠΡΟΣΤΕΘΗΚΕ Η ΤΕΛΕΥΤΑΙΑ ΔΙΑΡΡΟΗ
+# Link title
+more-about-this-breach = Σχετικά με αυτή τη διαρροή
+take-control = Ανακτήστε τον έλεγχο των προσωπικών σας δεδομένων.
+monitor-several-emails = Εποπτεία πολλών emails
+website-breach = Διαρροή ιστοσελίδας
+website-breach-plural = Διαρροές ιστοσελίδας
+sensitive-breach-plural = Ευαίσθητες διαρροές
+what-data = Ποια δεδομένα παραβιάστηκαν:
+sensitive-sites = Πώς αντιμετωπίζει το { -product-name } τις ευαίσθητες ιστοσελίδες;
+about-fxm-headline = Σχετικά με το { -product-name }
+# How Firefox Monitor works
+how-fxm-works = Πώς λειτουργεί το { -product-name }
 
 ## What to do after data breach tips
 
+change-pw = Αλλαγή κωδικού πρόσβασης
+sign-up-for-fxa = Δημιουργία { -brand-fxa }
+check-for-breaches = Έλεγχος για παραβιάσεις
+back-to-top = Πίσω στην κορυφή
+stop-monitoring-this = Διακοπή εποπτείας αυτού του email.
+add-new-email = Προσθήκη νέας διεύθυνσης email
+send-verification = Αποστολή συνδέσμου επαλήθευσης
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+global-communication = Παγκόσμια επικοινωνία
+breach-summary = Περίληψη παραβίασης
+link-change-primary = Αλλαγή πρωτεύουσας διεύθυνσης email
+remove-fxm = Αφαίρεση { -product-name }
+manage-email-addresses = Διαχείριση διευθύνσεων email
+latest-breach-link = Δείτε αν εμπλέκεστε σε αυτή τη διαρροή
+welcome-back = Καλώς ορίσατε και πάλι, { $userName }!
+welcome-user = Καλώς ορίσατε, { $userName }!
 faq1 = Δεν αναγνωρίζω αυτή την εταιρεία ή ιστοσελίδα. Γιατί είμαι σε αυτή την παραβίαση;
 faq2 = Γιατί πέρασε τόσος καιρός μέχρι να ενημερωθώ για αυτή την παραβίαση;
 faq3 = Πώς ξέρω αν αυτό είναι ένα γνήσιο email από το { -product-name };
@@ -394,8 +428,41 @@ all-breaches = Όλες οι παραβιάσεις
 
 ## Updated error messages
 
+login-link-pre = Έχετε λογαριασμό;
 login-link = Σύνδεση
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Αποτελέσματα για: { $userEmail }
+other-monitored-emails = Άλλα εποπτευμένα emails
+email-verification-required = Απαιτείται επαλήθευση email
+fxa-primary-email = Email του { -brand-fxa } - Πρωτεύον
+see-if-youve-been-part = Δείτε αν έχετε εμπλακεί σε διαρροή δεδομένων στο διαδίκτυο.
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Πρόσθετες πληροφορίες, όπως:
 # Title
 email-addresses-title = Διευθύνσεις email
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = Προτιμήσεις { -product-short-name }
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Σε σύνδεση ως: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Φιλτράρισμα κατά κατηγορία:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Μενού
+# Link title
+learn-more-link = Μάθετε περισσότερα.
+email-sent = Απεστάλη email!
+# Form title
+want-to-add = Θέλετε να προσθέσετε ένα άλλο email;
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Διαχείριση όλων των διευθύνσεων email στις { $preferencesLink }.
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Προστέθηκε διαρροή:

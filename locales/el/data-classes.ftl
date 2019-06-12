@@ -12,6 +12,9 @@ avatars = Εικόνες προφίλ
 bank-account-numbers = Αριθμοί τραπεζικών λογαριασμών
 beauty-ratings = Αξιολογήσεις ομορφιάς
 biometric-data = Βιομετρικά δεδομένα
+# This string is the shortened version of "Biographies", and 
+# refers to biographical data about a user.
+bios = Βιογραφικά
 browser-user-agent-details = Λεπτομέρειες προφίλ χρήστη προγράμματος περιήγησης
 browsing-histories = Ιστορικά περιήγησης
 buying-preferences = Προτιμήσεις αγορών
@@ -37,6 +40,7 @@ education-levels = Επίπεδα εκπαίδευσης
 email-addresses = Διευθύνσεις email
 email-messages = Μηνύματα email
 employers = Εργοδότες
+employment-statuses = Καταστάσεις απασχόλησης
 ethnicities = Εθνότητες
 family-members-names = Ονόματα μελών οικογένειας
 family-plans = Οικογενειακά σχέδια
@@ -101,6 +105,7 @@ smoking-habits = Καπνιστικές συνήθειες
 sms-messages = Μηνύματα SMS
 social-connections = Κοινωνικές συνδέσεις
 social-media-profiles = Προφίλ κοινωνικών δικτύων
+social-security-numbers = Αριθμοί κοινωνικής ασφάλισης
 spoken-languages = Ομιλούμενες γλώσσες
 support-tickets = Αιτήσεις υποστήριξης
 survey-results = Αποτελέσματα έρευνας
