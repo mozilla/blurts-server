@@ -489,7 +489,6 @@ send-verification = Enviar ligação de verificação
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-global-communication = Comunicação global
 breach-summary = Resumo da violação
 show-breaches-for-this-email = Mostrar todas as violações para este e-mail.
 link-change-primary = Alterar endereço de e-mail primário
@@ -593,6 +592,14 @@ passwords-exposed =
     { $passwords ->
         [one] Palavra-passe exposta em todas as brechas
        *[other] Palavras-passe expostas em todas as brechas
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] Brecha de dados conhecida expôs a sua informação
+       *[other] Brechas de dados conhecidas expuseram a sua informação
     }
 # Button
 see-additional-breaches = Ver brechas adicionais
