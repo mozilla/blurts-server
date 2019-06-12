@@ -453,7 +453,6 @@ send-verification = Verificatiekoppeling versturen
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-global-communication = Algemene communicatie
 breach-summary = Samenvatting datalek
 show-breaches-for-this-email = Toon alle datalekken voor dit e-mailadres.
 link-change-primary = Primaire e-mailadres wijzigen
@@ -557,6 +556,14 @@ passwords-exposed =
     { $passwords ->
         [one] Wachtwoord gelekt in alle datalekken
        *[other] Wachtwoorden gelekt in alle datalekken
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] Een bekend datalek heeft uw gegevens gelekt
+       *[other] Bekende datalekken hebben uw gegevens gelekt
     }
 # Button
 see-additional-breaches = Meer datalekken bekijken
