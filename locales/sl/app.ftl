@@ -471,7 +471,7 @@ ba-next-step-blurb-1 =
 ba-next-step-2 = Popolnoma prenehajte uporabljati izpostavljeno geslo.
 ba-next-step-3 = Pomagajte si pri ustvarjanju boljših gesel in njihovi zaščiti.
 ba-next-step-blurb-3 =
-    Uporabite upravitelja gesel za ustvarjanje močnih, edinstvenih gesel. Upravitelji gesel varno shranjuje vse vaše
+    Uporabite upravitelja gesel za ustvarjanje močnih, edinstvenih gesel. Upravitelji gesel varno shranjujejo vse vaše
     prijave, tako da lahko do njih dostopate na vseh napravah.
 faq1 = Tega podjetja ali spletne strani ne poznam. Zakaj sem del te kraje podatkov?
 faq2 = Zakaj je trajalo tako dolgo, da sem bil obveščen o tej kraji podatkov?
@@ -597,6 +597,12 @@ want-to-add = Želite dodati še en e-poštni naslov?
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
 manage-all-emails = Upravljajte vse e-poštne naslove v { $preferencesLink }
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Obvestila opozoril o krajah
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Kraja dodana:
