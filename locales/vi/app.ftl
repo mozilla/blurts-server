@@ -473,7 +473,6 @@ send-verification = Gửi liên kết xác minh
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-global-communication = Truyền thông toàn cầu
 breach-summary = Tóm tắt vi phạm
 show-breaches-for-this-email = Hiển thị tất cả các vi phạm cho email này.
 link-change-primary = Thay đổi địa chỉ email chính
@@ -571,6 +570,13 @@ data-breaches-exposed =
 passwords-exposed =
     { $passwords ->
        *[other] Mật khẩu được phơi bày trên tất cả các vi phạm
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+       *[other] Vi phạm dữ liệu đã biết đã tiết lộ thông tin của bạn
     }
 # Button
 see-additional-breaches = Xem các vi phạm bổ sung
