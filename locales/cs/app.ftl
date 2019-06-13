@@ -504,7 +504,6 @@ send-verification = Poslat ověřovací odkaz
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-global-communication = Globální komunikace
 breach-summary = Souhrnné informace
 show-breaches-for-this-email = Zobrazit všechny úniky pro tuto adresu.
 link-change-primary = Změnit primární e-mailovou adresu
@@ -608,6 +607,15 @@ passwords-exposed =
         [one] heslo bylo vyzrazeno souhrnně ve všech únicích
         [few] hesla byla vyzrazena souhrnně ve všech únicích
        *[other] hesel bylo vyzrazeno souhrnně ve všech únicích
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] známý únik dat vyzradil vaše údaje
+        [few] známé úniky dat vyzradily vaše údaje
+       *[other] známých úniků dat vyzradilo vaše údaje
     }
 # Button
 see-additional-breaches = Zobrazit další úniky
