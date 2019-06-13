@@ -135,6 +135,14 @@ no-breaches =
     Vaš e-poštni naslov ni bil prikazan v našem osnovnem pregledu.
     To je dobra novica, vendar pa lahko do kraje podatkov pride kadarkoli, zato bodite pozorni.
     Prijavite se na { -product-name-nowrap } za celotno poročilo, opozorila ob novih krajah podatkov in nasvete, kako zaščititi vaša gesla.
+featured-breach-results =
+    { $breachCount ->
+        [0] Vaš račun se je pojavil samo v kraji podatkov <span class="bold">{ $featuredBreach }</span>.
+        [one] Vaš račun se je pojavil v kraji podatkov <span class="bold">{ $featuredBreach }</span> in eni drugi.
+        [two] Vaš račun se je pojavil v kraji podatkov <span class="bold">{ $featuredBreach }</span> in dveh drugih.
+        [few] Vaš račun se je pojavil v kraji podatkov <span class="bold">{ $featuredBreach }</span> in treh drugih.
+       *[other] Vaš račun se je pojavil v kraji podatkov <span class="bold">{ $featuredBreach }</span> in { $breachCount } drugih.
+    }
 featured-breach-not-compromised =
     { $breachCount ->
         [0] { no-breaches }
@@ -182,6 +190,10 @@ unsub-headline = Odjava iz { -product-name-nowrap }ja
 unsub-blurb = S tem boste odstranili vaš e-poštni naslov iz seznama { -product-name-nowrap } in ob pojavu novih kraj podatkov ne boste več prejemali opozoril.
 unsub-button = Odjavi se
 fxa-unsub-headline = Odjavite se od opozoril { -product-name }ja
+fxa-unsub-blurb =
+    Opozoril { -product-name }ja ne boste več prejemali.
+    Vaš { -brand-fxa } bo ostal aktiven in morda boste prejeli druga
+    sporočila, povezana z računom.
 unsub-survey-form-label = Zakaj ste se odjavili od opozoril { -product-name-nowrap }?
 unsub-reason-1 = Menim, da mi opozorila ne zagotavljajo varnejših podatkov
 unsub-reason-2 = Od { -product-name-nowrap } prejemam preveč e-pošte
@@ -366,7 +378,9 @@ sensitive-breach = Kraja podatkov občutljivih spletnih strani
 data-aggregator-breach = Kraja podatkov zbiralnika podatkov
 unverified-breach = Nepotrjena kraja podatkov
 spam-list-breach = Kraja podatkov neželene pošte
+website-breach-plural = Kraje podatkov spletne strani
 sensitive-breach-plural = Občutljive kraje podatkov
+data-aggregator-breach-plural = Kraje podatkov zbiralnika podatkov
 unverified-breach-plural = Nepotrjene kraje podatkov
 what-data = Kateri podatki so bili ogroženi:
 sensitive-sites = Kako { -product-name } obravnava občutljiva spletna mesta?
@@ -381,7 +395,12 @@ how-fxm-1-blurb =
     tistih, ki vključujejo občutljive osebne podatke.
 how-fxm-2-headline = Prijavite se za nadzor kraj podatkov
 how-fxm-3-headline = Prejemajte obvestila v brskalniku
+how-fxm-3-blurb =
+    Če uporabljate { -brand-name }, boste ob obisku ogrožene strani
+    prejeli obvestilo. Tako lahko hitro ugotovite, če ste bili del te kraje
+    podatkov in kaj lahko storite.
 wtd-after-website = Kaj storiti po kraji podatkov spletne strani
+wtd-after-data-agg = Kaj storiti po kraji podatkov zbiralnika podatkov
 what-is-data-agg = Kaj je zbiralnik podatkov?
 protect-your-privacy = Zaščitite svojo spletno zasebnost
 avoid-personal-info = Izogibajte se uporabi osebnih podatkov v geslih
@@ -397,10 +416,20 @@ create-strong-passwords = Kako ustvariti zapletena gesla
 stop-reusing-pw = Ne uporabljajte istih gesel na več mestih
 create-unique-pw = Ustvarite edinstvena gesla in jih shranite na varnem mestu, kot je upravitelj gesel.
 five-myths = 5 zmot o upraviteljih gesel
+create-a-fxa = Ustvarite { -brand-fxa } in prejmite celotno poročilo o krajah in opozorila o prihodnjih krajah.
 feat-security-tips = Varnostni nasveti za zaščito vaših računov
 feat-sensitive = Napredno iskanje v občutljivih krajah podatkov
 feat-enroll-multiple = Vključite več e-poštnih naslovov v nadzor kraj podatkov
 sign-up-for-fxa = Ustvarite si { -brand-fxa }
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Pojavil se je v eni znani kraji.
+        [two] Pojavil se je v dveh znanih krajah.
+        [few] Pojavil se je v treh znanih krajah.
+       *[other] Pojavil se je v { $breachCount } znanih krajah.
+    }
 see-if-breached = Preverite, ali ste bili vpleteni v spletno krajo podatkov.
 check-for-breaches = Preverite kraje podatkov
 find-out-what-hackers-know = Ugotovite, kaj o vas hekerji že vedo. Naučite se, kako ostati korak pred njimi.
@@ -417,11 +446,13 @@ send-verification = Pošlji potrditveno povezavo
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-global-communication = Globalno obveščanje
 breach-summary = Povzetek kraj podatkov
 show-breaches-for-this-email = Pokaži vse kraje podatkov za ta e-poštni naslov.
 link-change-primary = Spremeni glavni e-poštni naslov
 remove-fxm = Odstrani { -product-name }
+remove-fxm-blurb =
+    Izklopite opozorila { -product-name }a. Vaš { -brand-fxa } bo ostal aktiven in morda
+    boste prejeli sporočila, povezana z računom.
 manage-email-addresses = Upravljanje e-poštnih naslovov
 latest-breach-link = Preverite, če ste bili vpleteni v to krajo podatkov
 welcome-back = Dobrodošli nazaj, { $userName }!
@@ -439,6 +470,9 @@ ba-next-step-blurb-1 =
     naslov, rojstni dan ali družinska imena.
 ba-next-step-2 = Popolnoma prenehajte uporabljati izpostavljeno geslo.
 ba-next-step-3 = Pomagajte si pri ustvarjanju boljših gesel in njihovi zaščiti.
+ba-next-step-blurb-3 =
+    Uporabite upravitelja gesel za ustvarjanje močnih, edinstvenih gesel. Upravitelji gesel varno shranjuje vse vaše
+    prijave, tako da lahko do njih dostopate na vseh napravah.
 faq1 = Tega podjetja ali spletne strani ne poznam. Zakaj sem del te kraje podatkov?
 faq2 = Zakaj je trajalo tako dolgo, da sem bil obveščen o tej kraji podatkov?
 faq3 = Kako vem, da je to sporočilo { -product-name }ja zaupanja vredno?
@@ -473,6 +507,16 @@ error-invalid-unsub = Kako se odjaviti od opozoril { -product-name }ja
 login-link-pre = Imate račun?
 login-link = Prijava
 # This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] nadzorovan e-poštni naslov
+        [two] nadzorovana e-poštna naslova
+        [few] nadzorovani e-poštni naslovi
+       *[other] nadzorovanih e-poštnih naslovov
+    }
+# This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
 # your localization, because it would result in the number showing twice.
 data-breaches-exposed =
@@ -481,6 +525,16 @@ data-breaches-exposed =
         [two] kraji podatkov sta razkrili vaše podatke
         [few] kraje podatkov so razkrile vaše podatke
        *[other] kraj podatkov je razkrilo vaše podatke
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] geslo je bilo izpostavljeno v vseh krajah
+        [two] gesli sta bili izpostavljeni v vseh krajah
+        [few] gesla so bila izpostavljena v vseh krajah
+       *[other] gesel je bilo izpostavljenih v vseh krajah
     }
 # Button
 see-additional-breaches = Prikaži dodatne kraje podatkov
