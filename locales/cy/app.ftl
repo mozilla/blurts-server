@@ -498,7 +498,6 @@ send-verification = Anfon Dolen Dilysu
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-global-communication = Cyfathrebu Byd-eang
 breach-summary = Crynodeb o'r Tor-data
 show-breaches-for-this-email = Dangos bob achos o dor-data'r e-bost hwn.
 link-change-primary = Newid Cyfeiriad yr E-bost Cynradd
@@ -616,6 +615,18 @@ passwords-exposed =
         [few] Cyfrineiriau wedi'u hamlygu ym mhob tor-data
         [many] Cyfrineiriau wedi'u hamlygu ym mhob tor-data
        *[other] Cyfrineiriau wedi'u hamlygu ym mhob tor-data
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [zero] Mae tor-data hysbys wedi datgelu eich manylion
+        [one] Mae tor-data hysbys wedi datgelu eich manylion
+        [two] Mae tor-data hysbys wedi datgelu eich manylion
+        [few] Mae tor-data hysbys wedi datgelu eich manylion
+        [many] Mae tor-data hysbys wedi datgelu eich manylion
+       *[other] Mae tor-data hysbys wedi datgelu eich manylion
     }
 # Button
 see-additional-breaches = Gweld Tor-data Ychwanegol
