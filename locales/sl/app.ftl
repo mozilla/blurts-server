@@ -536,6 +536,16 @@ passwords-exposed =
         [few] gesla so bila izpostavljena v vseh krajah
        *[other] gesel je bilo izpostavljenih v vseh krajah
     }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] znana kraja podatkov je izpostavila vaše podatke
+        [two] znani kraji podatkov sta izpostavili vaše podatke
+        [few] znane kraje podatkov so izpostavile vaše podatke
+       *[other] znanih kraj podatkov je izpostavilo vaše podatke
+    }
 # Button
 see-additional-breaches = Prikaži dodatne kraje podatkov
 # A button on the All Breaches page that restores all of the breaches
