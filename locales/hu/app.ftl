@@ -495,7 +495,6 @@ send-verification = Ellenőrző e-mail küldése
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-global-communication = Globális kommunikáció
 breach-summary = Adatsértés összefoglalója
 show-breaches-for-this-email = Az összes adatsértés megjelenítése ehhez az e-mail címhez.
 link-change-primary = Elsődleges e-mail cím módosítása
@@ -599,6 +598,14 @@ passwords-exposed =
     { $passwords ->
         [one] Jelszó került ki adatsértés miatt
        *[other] Jelszó került ki adatsértés miatt
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] Ismert adatsértésben kikerültek az információi
+       *[other] Ismert adatsértésekben kikerültek az információi
     }
 # Button
 see-additional-breaches = További adatsértések megtekintése
