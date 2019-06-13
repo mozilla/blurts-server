@@ -378,7 +378,6 @@ send-verification = 寄送驗證鏈結
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-global-communication = 全球通訊
 breach-summary = 外洩事件摘要
 show-breaches-for-this-email = 顯示所有與這個信箱相關的資料外洩事件。
 link-change-primary = 更改主要電子郵件信箱地址
@@ -458,6 +457,13 @@ data-breaches-exposed =
 passwords-exposed =
     { $passwords ->
        *[other] 在所有事件中洩漏出的密碼
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+       *[other] 有已知的資料外洩事件，洩漏了您的資訊
     }
 # Button
 see-additional-breaches = 看其它外洩事件
