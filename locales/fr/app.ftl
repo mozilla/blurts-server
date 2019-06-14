@@ -30,7 +30,7 @@ error-not-subscribed = Cette adresse électronique n’est pas inscrite aux aler
 error-hibp-throttled = Connexions trop nombreuses à { -brand-HIBP }.
 error-hibp-connect = Erreur de connexion à { -brand-HIBP }.
 error-hibp-load-breaches = Impossible de charger les failles de sécurité.
-hibp-notify-email-subject = Alerte { -product-name } : votre compte a été compromis par une faille de sécurité.
+error-must-be-signed-in = Vous devez vous connecter à votre { -brand-fxa }.
 home-title = { -product-name }
 home-not-found = Page non trouvée
 oauth-invalid-session = Session invalide
@@ -311,8 +311,6 @@ fxa-account = { -brand-fxa(capitalization: "uppercase") }
 open-fxa-menu = Naviguer sur { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = DERNIÈRE FUITE DE DONNÉES AJOUTÉE
-breach-added = Fuite de données signalée le :
-breach-discovered = Fuite de données découverte le :
 # Link title
 more-about-this-breach = Plus d’informations sur cette fuite
 take-control = Reprenez le contrôle de vos données personnelles.
@@ -401,7 +399,6 @@ send-verification = Envoyer le lien de vérification
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-global-communication = Communication globale
 breach-summary = Récapitulatif des fuites de données
 show-breaches-for-this-email = Afficher toutes les fuites de données pour cette adresse électronique.
 link-change-primary = Modifier l’adresse électronique principale
@@ -551,3 +548,7 @@ to-affected-email = Envoyer les alertes à l’adresse électronique concernée
 join-firefox = Il existe un moyen de protéger votre vie privée. Rejoignez { -brand-name }.
 # Link title
 learn-more-link = En savoir plus.
+email-sent = Courriel envoyé !
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Fuite ajoutée le :
