@@ -5,6 +5,7 @@
 # - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
+-product-short-name = Monitor
 -brand-name = Firefox
 -brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
@@ -25,7 +26,7 @@ error-not-subscribed = This email address is not subscribed to { -product-name }
 error-hibp-throttled = Too many connections to { -brand-HIBP }.
 error-hibp-connect = Error connecting to { -brand-HIBP }.
 error-hibp-load-breaches = Could not load breaches.
-hibp-notify-email-subject = { -product-name } Alert: Your account was involved in a breach.
+error-must-be-signed-in = You must be signed in to your { -brand-fxa }.
 home-title = { -product-name }
 home-not-found = Page not found.
 oauth-invalid-session = Invalid session
@@ -378,8 +379,6 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = Open { -brand-fxa } navigation
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = LATEST BREACH ADDED
-breach-added = Breach reported:
-breach-discovered = Breach discovered:
 # Link title
 more-about-this-breach = More about this breach
 take-control = Take back control of your personal data.
@@ -494,7 +493,6 @@ send-verification = Send Verification Link
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-global-communication = Global Communication
 breach-summary = Breach Summary
 show-breaches-for-this-email = Show all breaches for this email.
 link-change-primary = Change Primary Email Address
@@ -599,6 +597,14 @@ passwords-exposed =
         [one] Password exposed across all breaches
        *[other] Passwords exposed across all breaches
     }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] Known data breach has exposed your information
+       *[other] Known data breaches have exposed your information
+    }
 # Button
 see-additional-breaches = See Additional Breaches
 # A button on the All Breaches page that restores all of the breaches
@@ -637,3 +643,42 @@ other-known-breaches-found =
 additional-information-including = Additional information, including:
 # Title
 email-addresses-title = Email Addresses
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview = On { $breachDate }, { $breachTitle } suffered a breach. Once the breach was discovered and verified it was added to our database on { $addedDate }.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = { -product-short-name } Preferences
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Signed in as: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Filter by Category:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menu
+to-affected-email = Send breach alerts to the affected email address
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = There is a way to protect your privacy. Join { -brand-name }.
+# Link title
+learn-more-link = Learn more.
+email-sent = Email Sent!
+# Form title
+want-to-add = Want to add another email?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Verify the link sent to { $userEmail } to add it to { -product-name }.
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Manage all email addresses in { $preferencesLink }.
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Breach Alert Notifications
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Breach added:
