@@ -26,7 +26,7 @@ error-not-subscribed = Bu e-posta adresi { -product-name }’e abone değil.
 error-hibp-throttled = Çok fazla { -brand-HIBP } bağlantısı.
 error-hibp-connect = { -brand-HIBP } bağlantısı kurulamadı.
 error-hibp-load-breaches = İhlaller yüklenemedi.
-hibp-notify-email-subject = { -product-name } Uyarısı: Hesabınız bir veri ihlali kapsamında yer alıyor.
+error-must-be-signed-in = { -brand-fxa }nıza giriş yapmış olmalısınız.
 home-title = { -product-name }
 home-not-found = Sayfa bulunamadı.
 oauth-invalid-session = Geçersiz oturum
@@ -346,8 +346,6 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = { -brand-fxa } menüsünü aç
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = EKLENEN SON İHLAL
-breach-added = İhlalin bildirilmesi:
-breach-discovered = İhlalin keşfedilmesi:
 # Link title
 more-about-this-breach = Bu ihlal hakkında daha fazla bilgi
 take-control = Kişisel verilerinizin kontrolünü geri alın.
@@ -377,6 +375,7 @@ delayed-reporting-headline = Bu ihlalin bildirilmesi neden bu kadar uzun sürdü
 about-fxm-headline = { -product-name } hakkında
 # How Firefox Monitor works
 how-fxm-works = { -product-name } nasıl çalışır?
+how-fxm-3-headline = Tarayıcınızdan bildirim alın
 what-is-data-agg = Veri toplayıcı nedir?
 protect-your-privacy = Çevrimiçi gizliliğinizi koruyun
 avoid-personal-info = Parolalarda kişisel bilgilerinizi kullanmaktan kaçının
@@ -417,7 +416,6 @@ send-verification = Doğrulama bağlantısını gönder
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-global-communication = İletişim
 breach-summary = İhlal özeti
 show-breaches-for-this-email = Bu e-postayı içeren tüm ihlalleri göster.
 link-change-primary = Birincil e-posta adresini değiştir
@@ -486,6 +484,11 @@ results-for = { $userEmail } sonuçları
 other-monitored-emails = İzlenen diğer e-postalar
 email-verification-required = E-posta doğrulaması gerekiyor
 fxa-primary-email = { -brand-fxa } e-postası - birincil
+what-is-a-website-breach = Web sitesi ihlali nedir?
+security-tips-headline = Hacker’lardan korunmanız için güvenlik ipuçları
+steps-to-protect = Çevrimiçi kimliğinizi korumak için yapmanız gerekenler
+take-further-steps = Kimliğinizi korumak için birkaç adım daha atın
+alert-about-new-breaches = Yeni ihlaller yaşandığında beni uyar
 see-if-youve-been-part = Çevrimiçi veri ihlallerinde verilerinizin çalınmış olabilir mi? Hemen öğrenin.
 get-ongoing-breach-monitoring = İstediğiniz sayıda e-posta adresinin ihlallerini sürekli olarak takip edin.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
@@ -514,3 +517,15 @@ to-affected-email = İhlal uyarılarını etkilenen e-posta adresine gönder
 join-firefox = Gizliliğinizi korumanın bir yolu var. { -brand-name }’a katılın.
 # Link title
 learn-more-link = Daha fazla bilgi alın.
+email-sent = E-posta gönderildi!
+# Form title
+want-to-add = Başka bir e-posta eklemek ister misiniz?
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = İhlal uyarısı bildirimleri
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Eklenme tarihi:
