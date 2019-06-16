@@ -377,6 +377,7 @@ latest-breach = ΠΡΟΣΤΕΘΗΚΕ Η ΤΕΛΕΥΤΑΙΑ ΔΙΑΡΡΟΗ
 # Link title
 more-about-this-breach = Σχετικά με αυτή τη διαρροή
 take-control = Ανακτήστε τον έλεγχο των προσωπικών σας δεδομένων.
+read-more-tips = Διαβάστε περισσότερες συμβουλές ασφαλείας
 monitor-several-emails = Εποπτεία πολλών emails
 website-breach = Διαρροή ιστοσελίδας
 website-breach-plural = Διαρροές ιστοσελίδας
@@ -401,7 +402,6 @@ send-verification = Αποστολή συνδέσμου επαλήθευσης
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-global-communication = Παγκόσμια επικοινωνία
 breach-summary = Περίληψη παραβίασης
 link-change-primary = Αλλαγή πρωτεύουσας διεύθυνσης email
 remove-fxm = Αφαίρεση { -product-name }
