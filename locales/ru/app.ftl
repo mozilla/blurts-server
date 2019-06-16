@@ -471,7 +471,6 @@ send-verification = Отправить ссылку для подтвержде�
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-global-communication = Настройки уведомлений
 breach-summary = Сводка об утечке
 show-breaches-for-this-email = Показать все утечки для этого адреса электронной почты.
 link-change-primary = Сменить основной адрес электронной почты
@@ -563,6 +562,15 @@ passwords-exposed =
         [one] Раскрытых паролей во всех утечках
         [few] Раскрытых паролей во всех утечках
        *[many] Раскрытых паролей во всех утечках
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] Известная утечка данных раскрыла вашу информацию
+        [few] Известных утечек данных раскрыли вашу информацию
+       *[many] Известных утечек данных раскрыли вашу информацию
     }
 # Button
 see-additional-breaches = Посмотреть дополнительные утечки
