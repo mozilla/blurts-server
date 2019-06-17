@@ -635,7 +635,7 @@ filter-by = Filtrar por categoria:
 menu = Menu
 to-affected-email = Enviar alertas de vazamento para os endereços de e-mail afetados
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
-join-firefox = Existe um meio de proteger sua privacidade. Cadastre-se no { -brand-name }.
+join-firefox = Existe um meio de proteger sua privacidade. Use o { -brand-name }.
 # Link title
 learn-more-link = Saiba mais.
 email-sent = E-mail enviado!
