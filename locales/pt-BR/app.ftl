@@ -457,7 +457,7 @@ appears-in-x-breaches =
     }
 see-if-breached = Veja se você esteve em um vazamento de dados online.
 check-for-breaches = Verificar se há vazamentos
-find-out-what-hackers-know = Descubra os que os hackers já sabem sobre você. Saiba como estar um passo à frente deles.
+find-out-what-hackers-know = Descubra o que os hackers já sabem sobre você. Saiba como estar um passo à frente deles.
 search-for-your-email = Pesquise seu endereço de e-mail em vazamentos de dados públicos desde 2007.
 back-to-top = Voltar ao início
 comm-opt-0 = Enviar e-mail para mim se um de meus endereços de e-mail abaixo aparecer em um vazamento de dados.
@@ -479,7 +479,7 @@ remove-fxm-blurb =
     Desativar alertas do { -product-name }. Sua { -brand-fxa } continuará ativa e você pode receber
     outras comunicações relacionadas à conta.
 manage-email-addresses = Gerenciar endereços de e-mail
-latest-breach-link = Ver se você estava neste vazamento
+latest-breach-link = Veja se você estava neste vazamento
 welcome-back = Bom ver você de volta, { $userName }!
 welcome-user = Boas-vindas, { $userName }!
 breach-alert-subject = O { -product-name } encontrou seu e-mail em um novo vazamento de dados.
