@@ -591,8 +591,8 @@ passwords-exposed =
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
     { $breaches ->
-        [one] Kendt datalæk har kompromitteret dine oplysninger
-       *[other] Kendte datalæk har kompromitteret dine oplysninger
+        [one] kendt datalæk har kompromitteret dine oplysninger
+       *[other] kendte datalæk har kompromitteret dine oplysninger
     }
 # Button
 see-additional-breaches = Se yderligere datalæk
