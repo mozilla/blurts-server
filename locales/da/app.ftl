@@ -26,7 +26,7 @@ error-not-subscribed = Denne mailadresse er ikke tilmeldt { -product-name }.
 error-hibp-throttled = For mange forbindelser til { -brand-HIBP }.
 error-hibp-connect = Kan ikke forbinde til { -brand-HIBP }.
 error-hibp-load-breaches = Kunne ikke indlæse datalæk.
-hibp-notify-email-subject = { -product-name } advarsel: Din konto har været ramt af en datalæk.
+error-must-be-signed-in = Du skal være logget ind på din { -brand-fxa }.
 home-title = { -product-name }
 home-not-found = Side ikke fundet.
 oauth-invalid-session = Ugyldig session
@@ -368,8 +368,6 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = Åbn { -brand-fxa }-navigation
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = SENEST TILFØJEDE DATALÆK
-breach-added = Datalæk rapporteret:
-breach-discovered = Datalæk opdaget:
 # Link title
 more-about-this-breach = Mere om denne datalæk
 take-control = Tag kontrollen over dine personlige data tilbage.
@@ -485,7 +483,6 @@ send-verification = Send bekræftelseslink
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-global-communication = Overordnet kommunikation
 breach-summary = Opsummering af datalæk
 show-breaches-for-this-email = Vis alle datalæk for denne mailadresse.
 link-change-primary = Skift primær mailadresse
@@ -589,6 +586,14 @@ passwords-exposed =
         [one] adgangskode kompromitteret i alle datalæk
        *[other] adgangskoder kompromitteret i alle datalæk
     }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] Kendt datalæk har kompromitteret dine oplysninger
+       *[other] Kendte datalæk har kompromitteret dine oplysninger
+    }
 # Button
 see-additional-breaches = Se yderligere datalæk
 # A button on the All Breaches page that restores all of the breaches
@@ -646,3 +651,23 @@ to-affected-email = Send alle advarsler om datalæk til den berørte mailadresse
 join-firefox = Beskyt dit privatliv på nettet. Slut dig til { -brand-name }.
 # Link title
 learn-more-link = Læs mere.
+email-sent = Mailen blev sendt!
+# Form title
+want-to-add = Vil du tilføje en mailadresse mere?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Bekræft linket sendt til { $userEmail } for at føje mailadressen til { -product-name }.
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Håndter alle mailadresser i { $preferencesLink }.
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Advarsler om datalæk
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Datalæk tilføjet:
