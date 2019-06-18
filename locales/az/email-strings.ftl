@@ -1,12 +1,14 @@
 # Firefox Monitor is a product name and should not be translated.
 -product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
 click-to-verify = 24 saat ərzində E-poçtumu Təsdiqlə düyməsinə klikləyərək Firefox Monitor hesabınızı təsdiqləyə bilərsiz. Ondan sonra hesabatınız göndəriləcək.
 verify-my-email = E-poçtumu Təsdiqlə
 report-scan-another-email = Başqa bir e-poçtu { -product-name } üzərində yoxla
 automated-message = Bu avtomatik e-poçtdur; əgər bunu səhvən almısınızsa, bir şey etməyinizə ehtiyyac yoxdur.
 # Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
 we-sent-this-alert = { $userEmail } e-poçtu ilə { -product-name } xəbərdarlıqlarında qeydiyyat olunduğu üçün belə bir mesaj göndərdik.
-unsubscribe-link = Əgər artıq { -product-name } xəbərdarlıqları istəmirsinizsə, abunəliyi ləğv edin
+unsubscribe-email-link = Əgər artıq { -product-name } xəbərdarlıqları istəmirsinizsə, abunəliyi ləğv edin.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = { -product-name } Hesabatı
 report-date = Hesabat Tarixi:
