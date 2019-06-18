@@ -75,7 +75,7 @@ pwt-summary-6 = Vazamentos de dados de sites aumentam a cada dia. Assim que um n
 landing-headline = Seu direito de ficar seguro contra hackers começa aqui.
 landing-blurb =
     O { -product-name-nowrap } lhe equipa com ferramentas para manter suas informações pessoais seguras.
-    Descubra o que hackers já sabem sobre você e aprenda como estar sempre um passo à frente deles.
+    Descubra o que os hackers já sabem sobre você e aprenda como estar sempre um passo à frente deles.
 scan-label = Veja se você foi envolvido em um vazamento de dados.
 scan-placeholder = Digite um endereço de e-mail
 scan-privacy = Seu endereço de e-mail não será armazenado.
@@ -206,7 +206,7 @@ mozilla-security-blog = Blog de segurança do { -brand-Mozilla }
 layout-social = Social
 show-all = Mostrar tudo
 fxa-landing-blurb =
-    Descubra o que hackers já sabem sobre você,
+    Descubra o que os hackers já sabem sobre você,
     e saiba como estar um passo à frente deles.
 fxa-scan-label = Veja se você apareceu em um vazamento de dados.
 fxa-welcome-headline = Boas-vindas ao { -product-name }.
@@ -305,7 +305,7 @@ user-generic-found-breaches-blurb =
     }
 have-an-account = Já tem uma conta?
 signup-banner-sensitive-blurb =
-    Descubra os que hackers já sabem sobre você, e saiba como 
+    Descubra o que os hackers já sabem sobre você, e saiba como 
     estar um passo à frente deles. Receba um alerta caso sua conta 
     apareça em novos vazamentos de dados.
 fxa-pwt-section-blurb =
@@ -410,7 +410,7 @@ fxm-warns-you =
 how-fxm-works = Como o { -product-name } funciona
 how-fxm-1-headline = Faça uma pesquisa básica
 how-fxm-1-blurb =
-    Pesquise seu endereço de e-mail em vazamentos de dados públicos desde 2007.
+    Pesquise seu endereço de e-mail em vazamentos de dados tornados públicos desde 2007.
     Esta pesquisa básica traz à tona a maioria dos vazamentos de dados,
     mas não os que contêm informações pessoais sensíveis.
 how-fxm-2-headline = Cadastre-se para ter monitoramento de vazamentos
@@ -458,7 +458,7 @@ appears-in-x-breaches =
 see-if-breached = Veja se você esteve em um vazamento de dados online.
 check-for-breaches = Verificar se há vazamentos
 find-out-what-hackers-know = Descubra o que os hackers já sabem sobre você. Saiba como estar um passo à frente deles.
-search-for-your-email = Pesquise seu endereço de e-mail em vazamentos de dados públicos desde 2007.
+search-for-your-email = Pesquise seu endereço de e-mail em vazamentos de dados tornados públicos desde 2007.
 back-to-top = Voltar ao início
 comm-opt-0 = Enviar e-mail para mim se um de meus endereços de e-mail abaixo aparecer em um vazamento de dados.
 comm-opt-1 = Enviar todos os alertas de vazamento para { $primaryEmail }.
