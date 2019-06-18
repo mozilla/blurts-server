@@ -490,6 +490,14 @@ passwords-exposed =
         [one] mot de passe compromis parmi toutes les fuites de données
        *[other] mots de passe compromis parmi toutes les fuites de données
     }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] Une fuite de données connue a compromis vos informations.
+       *[other] Des fuites de données connues ont compromis vos informations.
+    }
 # Button
 see-additional-breaches = Voir les fuites supplémentaires
 # A button on the All Breaches page that restores all of the breaches
@@ -549,6 +557,22 @@ join-firefox = Il existe un moyen de protéger votre vie privée. Rejoignez { -b
 # Link title
 learn-more-link = En savoir plus.
 email-sent = Courriel envoyé !
+# Form title
+want-to-add = Voulez-vous ajouter une autre adresse électronique ?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Vérifiez le lien envoyé à { $userEmail } pour l’ajouter à { -product-name }.
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Gérez toutes les adresses électroniques dans les { $preferencesLink }.
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Notifications en cas de fuites de données
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Fuite ajoutée le :
