@@ -60,7 +60,7 @@ pwt-summary-2 =
     Quanto mais longa e aleatória for a sua senha, mais difícil ela será de ser adivinhada.
 pwt-headline-3 = Trate perguntas de segurança como senhas extras
 pwt-summary-3 =
-    Sites não verificam se suas respostas são reais, eles apenas verificam se elas coincidem com as respostas dadas no momento do cadastro.
+    Os sites não verificam se suas respostas são reais, verificam apenas se coincidem com as respostas dadas no momento do cadastro.
     Crie respostas longas e aleatórias e as armazene em algum lugar seguro.
 pwt-headline-4 = Tenha ajuda para lembrar de suas senhas
 pwt-summary-4 =
