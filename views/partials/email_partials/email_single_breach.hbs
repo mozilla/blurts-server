@@ -1,13 +1,17 @@
-    <tr class="email-breach-listing">
-      <td class="email-breach-image" valign="top" style="padding-top: 13px; padding-bottom: 10px; width: 55px;">
-        <img src="{{ SERVER_URL }}/img/logos/{{ LogoPath }}" width="40" style="width: 40px" />
+  <table alig="center" bgcolor="#ffffff" width="400px" class="email-breach-listing drop-shadow {{#if breachAlert}} alert-red-border {{/if}}" border-collapse="collapse" style="overflow: hidden; {{#if breachAlert}} border-color: #ff4f5e; border-style: solid; border-width: 2px; {{/if}} text-align: left; background-color: rgba(255, 255, 255, 1); padding: 20px; border-radius: 10px; box-shadow: 0 0 1px 1px rgba(96, 125, 139, 0.03), 1px 1px 10px rgba(67, 65, 87, 0.1); max-width: 400px;">
+    <tr>
+      <td class="email-breach-image" valign="top" style="padding-bottom: 10px; width: 40px;">
+        <img class="breach-logo" src="{{ SERVER_URL }}/img/logos/{{ LogoPath }}" width="25" style="width: 25px" />
       </td>
-      <td valign="top" style="vertical-align: top; padding-top: 7px; padding-right: 20px; padding-bottom: 10px; font-family: sans-serif;">
-        <p class="body-copy medium" style="padding: 0px; margin: 0px; color: #333333; margin: 0px; font-weight: 500; font-size: 16px;">{{ Title }}</p>
-        <p class="body-copy medium" style="padding: 2px 0px 2px 0px; margin: 0px; color: #333333; font-weight: 400; font-size: 14px;">{{ LocalizedBreachCardStrings.BreachAdded }}<span class="body-copy" style="font-weight:300; padding-left: 6px; color: #333333">{{ AddedDate }}</span></p>
-        <p class="body-copy medium" style="padding: 2px 0px 2px 0px; margin: 0px; color: #333333; font-weight: 400; font-size: 14px;">{{ LocalizedBreachCardStrings.CompromisedAccounts }}<span class="body-copy" style="font-weight:300; padding-left: 6px; color: #333333">{{ PwnCount }}</span></p>
+      <td valign="top" style="vertical-align: top; font-family: sans-serif; width: 100%; padding-left: 20px;">
+        <p class="text-bold" style="font-weight: 700; font-size: 17px; font-family: sans-serif; padding-bottom: 10px; margin: 0; color: #20123a;">{{ Title }}</p>
+        <p class="text-light" style="font-weight: 300; color: #5e5e72; font-size: 13px; font-family: sans-serif; margin: 0px; padding-bottom: 4px;">{{ LocalizedBreachCardStrings.BreachAdded }}</p>
+        <p class="text-medium" style="font-weight: 600; color: #20123a; font-size: 15px; padding-bottom: 15px; font-family: sans-serif; margin: 0px;">{{ AddedDate }}</p>
         {{#if DataClasses }}
-          <p class="body-copy medium" style="padding: 2px 0px 2px 0px; margin: 0px; color: #333333; font-weight: 400; font-size: 14px;">{{ LocalizedBreachCardStrings.CompromisedData }}<span class="body-copy" style="font-weight:300; padding-left: 6px; color: #333333">{{ DataClasses }}</span></p>
+          <p class="text-light" style="font-weight: 300; color: #5e5e72; font-size: 13px; font-family: sans-serif; margin: 0px; padding-bottom: 4px;">{{ LocalizedBreachCardStrings.CompromisedData }}</p>
+          <span class="text-medium" style="font-weight:600; font-size: 15px; font-family: sans-serif; margin: 0px; color: #20123a;">{{ DataClasses }}</span>
         {{/if}}
+        <p class="more-info-link-wrap" style="padding-top: 20px; margin: 0;"><a class="more-info-link" target="_blank" rel="noopener noreferer" style="color: #0060df; font-family: sans-serif; font-weight: 500; text-decoration: none;" href="https://monitor.firefox.com/breach-details/{{ Name }}?utm_source=fx-monitor-email&utm_medium=email&utm_campaign=more-about-this-breach-link">{{ LocalizedBreachCardStrings.MoreInfoLink }}</a></p>
       </td>
     </tr>
+  </table>

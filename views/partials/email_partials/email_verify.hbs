@@ -1,18 +1,9 @@
 {{!< default_email }}
 
-  <table align="center" class="verify-email" border="0" cellspacing="0" cellpadding="0" width="100%" style="text-align: center; margin: 0px; outline: none; border-width: 0px;">
+  <table align="center" class="verify-email" width="100%" style="max-width: 400px; text-align: center; padding-bottom: 30px;">
     <tr>
-      <td valign="top" style="padding-top: 30px; padding-bottom: 10px; font-family: sans-serif;">
-        <p class="body-copy" style="font-weight: 300; width: 100%; font-size: 17px; margin: 0px; color: #333333;">
-          {{ getString "click-to-verify" }}
-        </p>
+      <td align="center">
+        <p class="email-subhead" style="font-weight: 300; font-size: 17px; margin: 0px; color: #20123a; font-family: sans-serif; line-height: 1.5;">{{ getString "email-verify-blurb" }}</p>
       </td>
     </tr>
-  </table>
-  <table border="0" cellspacing="0" cellpadding="0" width="100%" style="width: 100%; padding-top: 30px; padding-bottom: 30px;">
-    <tr>
-      <td>
-        {{> email_partials/email_button href=verificationHref fluentStringID="verify-my-email" }}
-      </td>
-    </tr> 
   </table>
