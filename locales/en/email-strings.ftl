@@ -90,41 +90,41 @@ share-by-email-message =
     3. Get tips from {-product-name} about what to do next.
 
 
-#Unsubscribe link in email.
+# Unsubscribe link in email.
 email-unsub-link =  Unsubscribe
 
 email-unsub-blurb = You’re receiving this email because you signed up for {-product-name} 
   alerts. No longer want these emails? { $unsubLink }. This is an automated email. 
   We do not regularly monitor this email address.
 
-#Button text that takes the user to their signed in user dashboard.
+# Button text that takes the user to their signed in user dashboard.
 view-my-dashboard-cta = View My Dashboard
 
-#Button text
+# Button text
 verify-email-cta = Verify Email
 
 email-link-expires = This link expires in 24 hours
 email-verify-blurb = Verify your email to add it to {-product-name} and sign up for breach alerts.
 
-#Email headline
+# Email headline
 email-found-breaches-hl = Here's your summary of past data breaches.
 
-#Email headline
+# Email headline
 email-breach-summary-for-email = Breach summary for { $userEmail }
 
-#Email headline
+# Email headline
 email-no-breaches-hl = { $userEmail } appeared in 0 known data breaches.
 
-#Email headline
+# Email headline
 email-alert-hl = { $userEmail } appeared in a new data breach.
 
-#Subject line of email
+# Subject line of email
 email-subject-found-breaches = {-product-name} found your info in these breaches.
 
-#Subject line of email
+# Subject line of email
 email-subject-no-breaches = {-product-name} found no known breaches.
 
-#Subject line of email
+# Subject line of email
 email-subject-verify = Verify your email for {-product-name}
 
 learn-more-about-fxm = Learn more about { $fxmLink }.
@@ -140,14 +140,14 @@ email-breach-alert-blurb =
   {-product-name} warns you about data breaches involving your personal info. 
   We just received details about another company’s data breach.
 
-#Link Title
+# Link Title
 faq-v2-1 = I don’t recognize one of these companies or websites. Why am I in this breach?
 
-#Link Title
+# Link Title
 faq-v2-2 = Do I need to do anything if a breach happened years ago or this is an old account?
 
-#Link Title
+# Link Title
 faq-v2-3 = I just found out I’m in a data breach. What do I do next?
 
-#Link Title
+# Link Title
 faq-v2-4 = How does {-product-name} treat sensitive sites?
