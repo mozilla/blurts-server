@@ -2,7 +2,7 @@
 <html lang="{{ locale }}">
   <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="/css/legacy/app.css">
+    <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="/css/legacy/email_l10n_testing.css">
     <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
     <meta name="partialport" content="width=device-width, initial-scale=1.0, partialport-fit=cover" />
@@ -15,28 +15,40 @@
 
   </head>
   <body data-server-url="{{ SERVER_URL }}" class="email-locale-testing">
-    <section class="section-wrapper">
-      <section class="email-test-wrapper">
-          <p class="email-subject">
-            <span class="bold">Subject: </span>{{ emailSubject }}
-          </p>
-        <div class="email-content">
-            {{> email_partials/email_logo}}
-          <section class="email-body">
-            {{> (lookup . 'whichPartial')}}
+    <section class="container">
+      <div class="row jst-cntr">
+        <section class="email-test-wrapper">
+            <p class="email-subject">
+              <span class="bold">Subject: </span>{{ emailSubject }}
+            </p>
+          <div class="email-content">
+            <section class="email-body">
+              <img class="l10n-fxm-logo" src="/img/firefox-monitor-logo.png" alt="Firefox Monitor Logo" />
+              <img class="l10n-fxm-logotype" src="/img/email_images/fxm-lg-drk.png" alt="Firefox Monitor" />
+              <h2 class="email-hl">
+                {{{ getEmailHeader }}}
+              </h2>
+              {{> (lookup . 'whichPartial')}}
+              {{> email_partials/email_button }}
+            </section>
+            {{#showFaqs}}
+              <section class="faq-sumo-links">
+                {{> email_partials/email_faqs }}
+              </section>
+            {{/showFaqs}}
+          </div><!--email-content-->
+          <section class="email-footer">
+            {{> email_partials/email_footer }}
           </section>
-        </div><!--email-content-->
-        <section class="email-footer">
-          {{> email_partials/email_footer }}
         </section>
-      </section>
-      <nav>
-        <a href="/email-l10n">Verification Email</a>
-        <a href="/email-l10n/?partial=report&type=singleBreach">Report with Single Breach</a>
-        <a href="/email-l10n/?partial=report&type=multipleBreaches">Report with Multiple Breaches</a>
-        <a href="/email-l10n/?partial=report&type=noBreaches">Report with No Breaches</a>
-        <a href="/email-l10n/?partial=report&type=breachAlert">Breach Alert</a>
-      </nav>
+        <nav class="l10n-nav">
+          <a href="/email-l10n">Verification Email</a>
+          <a href="/email-l10n/?partial=report&type=singleBreach">Report with Single Breach</a>
+          <a href="/email-l10n/?partial=report&type=multipleBreaches">Report with Multiple Breaches</a>
+          <a href="/email-l10n/?partial=report&type=noBreaches">Report with No Breaches</a>
+          <a href="/email-l10n/?partial=report&type=breachAlert">Breach Alert</a>
+        </nav>
+      </div>
     </section>
   </body>
 </html>

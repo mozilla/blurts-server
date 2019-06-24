@@ -1,8 +1,5 @@
 body.email-locale-testing {
-  background: rgb(237, 237, 240);
   background-color: rgb(237, 237, 240);
-  background-image: none;
-  color: rgba(12, 12, 13, 0.7);
 }
 
 body.email-locale-testing .section-wrapper {
@@ -11,116 +8,123 @@ body.email-locale-testing .section-wrapper {
   flex-wrap: nowrap;
 }
 
+body.email-locale-testing p {
+  margin: 0;
+  line-height: 1.5 !important;
+}
+
+.text-light {
+  font-weight: 300;
+}
+
+.text-medium {
+  font-weight: 600;
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
+.email-breach-listing .text-bold {
+  padding-bottom: 15px;
+  font-size: 16px;
+}
+
+.email-breach-listing .text-medium {
+  font-size: 16px;
+  padding-bottom: 12px;
+}
+
+p.email-small-text {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--grey6);
+}
+
+.email-breach-listing .text-light {
+  color: var(--grey6);
+  font-size: 14px;
+}
+
+.email-subject {
+  margin: 30px auto 120px auto;
+}
+
+.email-breach-listing {
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 7px;
+  max-width: 400px;
+  text-align: left;
+}
+
 .email-test-wrapper {
-  width: 600px;
+  background-color: #fbfcfe;
+  padding: 4rem 6rem;
+}
+
+.email-content,
+.email-footer {
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
 }
 
 .email-locale-testing nav {
   margin: 30px;
+  align-self: flex-start;
 }
 
 .email-locale-testing nav a {
   color: rgb(0, 0, 0);
   display: block;
-  font-size: 13px;
   margin: 10px 0;
 }
 
 .email-logo,
-.email-body,
 .email-footer {
-  padding: 30px;
-}
-
-.email-content {
-  overflow: hidden;
-  border-radius: 3px;
-  box-shadow: 2px 2px 5px rgba(119, 136, 153, 0.361);
-}
-
-.email-test-wrapper .firefox-monitor-logo,
-.email-test-wrapper h1 {
-  display: inline-block;
-}
-
-.email-body {
-  background: rgb(255, 255, 255);
-  min-height: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.email-footer {
-  font-size: 13px;
-}
-
-.email-footer img {
-  height: 40px;
-  width: 40px;
-  margin-top: 20px;
+  padding: 0 20px;
 }
 
 .email-footer a {
   color: rgb(0, 96, 223);
 }
 
-.footer-copy {
-  margin: 10px 0;
-}
-
-.email-test-wrapper .firefox-monitor-logo {
-  max-width: auto;
-  width: auto;
+.l10n-fxm-logo {
+  display: block;
   height: 70px;
-  background: none;
+  margin: 40px auto 20px auto;
 }
 
-.verify-email,
-.email-footer {
-  text-align: center;
+.l10n-fxm-logotype {
+  display: block;
+  max-width: 200px;
+  margin: 0 auto 30px auto;
 }
 
 .email-button-wrapper {
   background-color: transparent !important;
 }
 
-.email-button-wrapper .email-button {
-  padding: 10px 30px !important;
+.email-button-table {
+  width: 100%;
+}
+
+.email-button {
+  padding: 20px 30px !important;
+  width: 100%;
   display: inline-block;
-  border-radius: 3px !important;
+  border-radius: 10px !important;
   background-color: rgb(0, 96, 223);
+  color: rgba(255, 255, 255, 1);
+  margin-bottom: 30px;
+  font-weight: 400;
+  font-size: 17px;
 }
 
-.email-headline-copy {
-  margin-top: 30px !important;
-}
-
-.email-footer tr,
-.email-body tr {
+.email-footer tr {
   display: flex;
   justify-content: center;
-}
-
-.email-footer,
-.email-headline-copy h2:last-of-type,
-.email-wtd {
-  margin-top: 15px;
-}
-
-td {
-  overflow: hidden;
-}
-
-td.logomark-wrapper {
-  width: 70px;
-}
-
-td h1.firefox-monitor-logotype {
-  font-size: 2rem;
-  font-weight: 400 !important;
-  color: rgb(255, 255, 255);
 }
 
 table.table-button tr {
@@ -130,70 +134,113 @@ table.table-button tr {
 
 .email-main-copy tr {
   justify-content: flex-start;
-  margin-top: 30px !important;
 }
 
-p.body-copy.email-sub-head {
-  font-size: 21px;
+.email-headline-copy,
+.email-main-copy tr,
+.footer-border-top {
+  margin-top: 30px;
 }
 
-.email-wtd-step td:last-of-type p:first-of-type,
-p.body-copy.medium {
-  font-weight: 500 !important;
+.faq-header {
+  text-align: left;
+  font-size: 19px;
+  border-top: 1px solid #eee;
+  padding: 30px 0 10px 0;
 }
 
-p.body-copy.medium span,
-p.body-copy.medium a {
-  margin-left: 6px;
-  color: rgba(12, 12, 13, 0.7);
+a.faq-link {
+  color: var(--blue4) !important;
+  text-align: left;
+  padding-top: 5px;
 }
 
-.email-wtd td,
-td.email-pwt-image,
-td.email-breach-image {
+td.email-faq-bullet {
+  width: 30px;
+}
+
+td.email-faq-link {
+  text-align: left;
+  padding-bottom: 10px;
+}
+
+.footer-border-top {
+  border-top: 1px solid #eee;
+  padding-top: 40px;
+}
+
+.email-hl .rec-email {
+  display: block;
+}
+
+.rec-email {
+  color: rgb(144, 89, 255);
+}
+
+.breach-summary-for {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  font-weight: 500;
+}
+
+.alert-red-border {
+  border: 2px solid rgba(255, 79, 94, 0.831);
+}
+
+.breach-stat-wrapper {
+  padding: 10px;
+}
+
+.breach-stat {
+  background-color: #f0f0f4;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.breach-stat-number-wrap {
   min-width: 60px;
+  text-align: right;
 }
 
-td.email-pwt-image img {
-  width: 50px;
-  min-width: 50px;
+.breach-stat-number {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.3;
 }
 
-.email-subject,
-.verify-email,
-.email-main-copy,
-table.table-button,
-.email-breach-listing {
-  margin-bottom: 30px;
+.breach-stat-number,
+.breach-stat-title {
+  padding: 0;
 }
 
-body.email-locale-testing,
-td h1.firefox-monitor-logotype span,
-.email-test-wrapper,
-.email-locale-testing nav a,
-p.body-copy.medium span,
-p.body-copy.medium a {
-  font-weight: 300;
+.breach-stat-title {
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 0 30px;
 }
 
-.email-faq-link a {
-  color: var(--blue60);
-  font-size: 14px;
+.email-hl,
+.l10n-link-expires {
+  font-size: 26px;
 }
 
-.email-faq-link a:hover {
-  color: var(--blue70);
-  text-decoration: underline;
-}
-
-tr.email-faq-link {
+p.more-info-link-wrap {
   margin-top: 10px !important;
+  font-weight: 500;
 }
 
-tr.email-faq {
-  padding-top: 30px;
+.email-breach-listing,
+.email-hl,
+table.breach-stats,
+.faq-sumo-links {
+  margin: 0 auto 20px auto;
 }
 
-p.body-copy {
-  padding-top: 10px;
+.source-info-wrap,
+.email-subhead {
+  padding-bottom: 20px;
+}
+
+p.email-subject {
+  padding-bottom: 4rem;
 }

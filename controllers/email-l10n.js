@@ -1,50 +1,67 @@
 "use strict";
 
 
-function getEmailMockUps(req, res) {
-  const unsafeBreachesForEmail = [];
+async function getEmailMockUps(req, res) {
   const email = "example@email.com";
-  let emailSubject = req.fluentFormat("user-add-email-verify-subject");
-  let breachAlert;
-  let buttonValue = req.fluentFormat("verify-my-email");
 
   if (!req.query.partial) {
     req.query.partial = "email_verify";
-  } else if (req.query.partial !== "report") {
-    res.redirect("/email-l10n");
+    req.query.type = "email_verify";
   }
 
-  if (req.query.type) {
-    const emailType = req.query.type;
-
-    if (["breachAlert", "singleBreach", "multipleBreaches", "noBreaches"].indexOf(emailType) === -1) {
-      res.redirect("/email-l10n");
-    }
-
-    buttonValue = req.fluentFormat("report-scan-another-email");
-    if(emailType === "singleBreach" || emailType === "breachAlert") {
-      unsafeBreachesForEmail.push(req.app.locals.breaches.filter(breach => breach.Name === "Experian")[0]);
-      emailSubject = req.fluentFormat("user-verify-email-report-subject");
-      if(emailType === "breachAlert") {
-        breachAlert = unsafeBreachesForEmail[0];
-        emailSubject = req.fluentFormat("breach-alert-subject");
-      }
-    } else if (emailType === "multipleBreaches") {
-      const breachArray = ["Experian", "Dropbox", "Apollo"];
-      breachArray.forEach(name => {
-        unsafeBreachesForEmail.push(req.app.locals.breaches.filter(breach => breach.Name === name)[0]);
-      });
-    }
+  if (["breachAlert", "singleBreach", "multipleBreaches", "noBreaches", "email_verify"].indexOf(req.query.type) === -1) {
+    return res.redirect("/email-l10n");
   }
+
+  const unsafeBreachesForEmail = [];
+  ["Dropbox", "Apollo", "Adobe"].forEach(name => {
+    unsafeBreachesForEmail.push(req.app.locals.breaches.filter(breach => breach.Name === name)[0]);
+  });
+
+  const emailContent = ((req) => {
+    switch(req.query.type) {
+      case "noBreaches":
+        return {
+          emailSubject: req.fluentFormat("email-subject-no-breaches"),
+          breachAlert: null,
+          unsafeBreachesForEmail: [],
+        };
+      case "breachAlert":
+        return {
+          emailSubject: req.fluentFormat("breach-alert-subject"),
+          breachAlert: req.app.locals.breaches.filter(breach => breach.Name === "LinkedIn")[0],
+          unsafeBreachesForEmail: null,
+        };
+      case "email_verify":
+        return {
+          emailSubject: req.fluentFormat("email-subject-verify"),
+          breachAlert: null,
+          unsafeBreachesForEmail: null,
+        };
+      case "multipleBreaches":
+        return {
+          emailSubject: req.fluentFormat("email-subject-found-breaches"),
+          unsafeBreachesForEmail: unsafeBreachesForEmail,
+          breachAlert: null,
+        };
+      default:
+        return {
+          emailSubject: req.fluentFormat("email-subject-found-breaches"),
+          unsafeBreachesForEmail: unsafeBreachesForEmail.slice(0, 1),
+          breachAlert: null,
+        };
+    }
+  })(req);
+
 
   res.render("email_l10n", {
     layout: "email_l10n_mockups.hbs",
-    unsafeBreachesForEmail: unsafeBreachesForEmail,
+    unsafeBreachesForEmail: emailContent.unsafeBreachesForEmail,
     supportedLocales: req.supportedLocales,
     whichPartial: `email_partials/${req.query.partial}`,
-    buttonValue,
-    breachAlert,
-    emailSubject,
+    recipientEmail: "pretendEmail@testing.com",
+    breachAlert: emailContent.breachAlert,
+    emailSubject: emailContent.emailSubject,
     email,
   });
 }

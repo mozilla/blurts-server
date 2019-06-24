@@ -170,7 +170,7 @@ function getEmailCTA(args) {
   }
 
   if (args.data.root.breachAlert) {
-    return LocaleUtils.fluentFormat(locales, "view-all-breaches-cta");
+    return LocaleUtils.fluentFormat(locales, "see-all-breaches");
   }
 
   return LocaleUtils.fluentFormat(locales, "view-my-dashboard-cta");
