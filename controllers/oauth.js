@@ -92,11 +92,12 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
     );
 
     const utmID = "report";
+    const reportSubject = EmailUtils.getReportSubject(unsafeBreachesForEmail, req);
 
 
     await EmailUtils.sendEmail(
       email,
-      req.fluentFormat("user-verify-email-report-subject"),
+      reportSubject,
       "default_email",
       {
         supportedLocales: req.supportedLocales,
@@ -104,10 +105,9 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
         recipientEmail: email,
         date: req.fluentFormat(new Date()),
         unsafeBreachesForEmail: unsafeBreachesForEmail,
-        scanAnotherEmailHref: EmailUtils.getScanAnotherEmailUrl(utmID),
+        ctaHref: EmailUtils.getViewMyDashboardHref(utmID),
         unsubscribeUrl: EmailUtils.getUnsubscribeUrl(verifiedSubscriber, utmID),
-        buttonValue: req.fluentFormat("report-scan-another-email"),
-        whichView: "email_partials/report",
+        whichPartial: "email_partials/report",
       }
     );
     req.session.user = verifiedSubscriber;

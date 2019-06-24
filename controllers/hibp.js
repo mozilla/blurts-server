@@ -76,7 +76,7 @@ async function notify (req, res) {
   log.info("notification", { length: recipients.length, breachAlertName: breachAlert.Name });
 
   const utmID = "breach-alert";
-  const scanAnotherEmailHref = EmailUtils.getScanAnotherEmailUrl(utmID);
+  const ctaHref = EmailUtils.getViewMyDashboardHref(utmID);
   const notifiedRecipients = [];
 
   for (const recipient of recipients) {
@@ -101,9 +101,9 @@ async function notify (req, res) {
           supportedLocales,
           breachAlert,
           SERVER_URL: req.app.locals.SERVER_URL,
-          scanAnotherEmailHref: scanAnotherEmailHref,
           unsubscribeUrl: EmailUtils.getUnsubscribeUrl(recipient, utmID),
-          whichView: "email_partials/report",
+          ctaHref: ctaHref,
+          whichPartial: "email_partials/report",
         },
       );
       notifiedRecipients.push(breachedEmail);

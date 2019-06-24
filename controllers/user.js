@@ -52,13 +52,13 @@ async function resendEmail(req, res) {
   const email = unverifiedEmailAddressRecord.email;
   await EmailUtils.sendEmail(
     email,
-    req.fluentFormat("user-add-email-verify-subject"),
+    req.fluentFormat("email-subject-verify"),
     "default_email",
     { recipientEmail: email,
       supportedLocales: req.supportedLocales,
-      verificationHref: EmailUtils.getVerificationUrl(unverifiedEmailAddressRecord),
+      ctaHref: EmailUtils.getVerificationUrl(unverifiedEmailAddressRecord),
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(unverifiedEmailAddressRecord, "account-verification-email"),
-      whichView: "email_partials/email_verify",
+      whichPartial: "email_partials/email_verify",
     }
   );
 
@@ -106,14 +106,14 @@ async function add(req, res) {
 
   await EmailUtils.sendEmail(
     email,
-    req.fluentFormat("user-add-email-verify-subject"),
+    req.fluentFormat("email-subject-verify"),
     "default_email",
     { breachedEmail: email,
       recipientEmail: email,
       supportedLocales: req.supportedLocales,
-      verificationHref: EmailUtils.getVerificationUrl(unverifiedSubscriber),
+      ctaHref: EmailUtils.getVerificationUrl(unverifiedSubscriber),
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(unverifiedSubscriber, "account-verification-email"),
-      whichView: "email_partials/email_verify",
+      whichPartial: "email_partials/email_verify",
     }
   );
 
@@ -205,19 +205,21 @@ async function _verify(req) {
   );
 
   const utmID = "report";
+  const emailSubject = EmailUtils.getReportSubject(unsafeBreachesForEmail, req);
+
 
   await EmailUtils.sendEmail(
     verifiedEmailHash.email,
-    req.fluentFormat("user-verify-email-report-subject"),
+    emailSubject,
     "default_email",
     {
       breachedEmail: verifiedEmailHash.email,
       recipientEmail: verifiedEmailHash.email,
       supportedLocales: req.supportedLocales,
       unsafeBreachesForEmail: unsafeBreachesForEmail,
-      scanAnotherEmailHref: EmailUtils.getScanAnotherEmailUrl(utmID),
+      ctaHref: EmailUtils.getViewMyDashboardHref(utmID),
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(verifiedEmailHash, utmID),
-      whichView: "email_partials/report",
+      whichPartial: "email_partials/report",
     }
   );
 }
