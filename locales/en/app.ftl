@@ -132,7 +132,7 @@ frequently-asked-questions = Frequently Asked Questions
 
 about-firefox-monitor = About {-product-name}
 
-#Link title
+# Link title
 preferences = Preferences
 
 # Link title
@@ -307,7 +307,6 @@ welcome-user = Welcome, { $userName }!
 breach-alert-subject = {-product-name} found your email in a new data breach.
 
 your-info-was-discovered-headline = Your information was discovered in a new data breach.
-
 your-info-was-discovered-blurb = You’re signed up to receive {-product-name} alerts 
   when your email appears in a data breach. Here’s what we know about this breach.
 
@@ -342,7 +341,6 @@ new-breaches-found =
 
 sign-up-headline-1 = Get ongoing alerts with a {-brand-fxa}.
 account-not-required = {-brand-name} browser not required for a {-brand-fxa}. You may receive info about {-brand-Mozilla} services.
-
 
 was-your-info-exposed = Was your info exposed in the { $breachName } data breach?
 find-out-if = Find out if your data was exposed in this breach.
@@ -405,7 +403,6 @@ data-breaches-exposed =
    *[other] Data breaches have exposed your information
   }
 
-
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
 # your localization, because it would result in the number showing twice.
@@ -415,7 +412,6 @@ passwords-exposed =
    *[other] Passwords exposed across all breaches
   }
 
-
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
 # your localization, because it would result in the number showing twice.
@@ -424,7 +420,6 @@ known-data-breaches-exposed =
     [one] Known data breach has exposed your information
    *[other] Known data breaches have exposed your information
   }
-
 
 # Button
 see-additional-breaches = See Additional Breaches
@@ -474,7 +469,6 @@ additional-information-including = Additional information, including:
 
 # Title
 email-addresses-title = Email Addresses
-
 
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
