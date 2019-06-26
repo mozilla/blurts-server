@@ -93,9 +93,11 @@ share-by-email-message =
 # Unsubscribe link in email.
 email-unsub-link =  Unsubscribe
 
-email-unsub-blurb = You’re receiving this email because you signed up for {-product-name} 
-  alerts. No longer want these emails? { $unsubLink }. This is an automated email. 
-  We do not regularly monitor this email address.
+email-footer-blurb = You’re receiving this email because you signed up for {-product-name} 
+  alerts. No longer want these emails? { $unsubLink }. This is an automated email. For support, visit { $faqLink }.
+
+email-verify-footer-copy = You’re receiving this email because you signed up for {-product-name} alerts. 
+  This is an automated email. For support, visit { $faqLink }.
 
 # Button text that takes the user to their signed in user dashboard.
 view-my-dashboard-cta = View My Dashboard
@@ -103,42 +105,47 @@ view-my-dashboard-cta = View My Dashboard
 # Button text
 verify-email-cta = Verify Email
 
+# Headline of verification email
 email-link-expires = This link expires in 24 hours
 email-verify-blurb = Verify your email to add it to {-product-name} and sign up for breach alerts.
 
 # Email headline
-email-found-breaches-hl = Here's your summary of past data breaches.
+email-found-breaches-hl = Here’s your summary of past data breaches
 
 # Email headline
 email-breach-summary-for-email = Breach summary for { $userEmail }
 
 # Email headline
-email-no-breaches-hl = { $userEmail } appeared in 0 known data breaches.
+email-no-breaches-hl = { $userEmail } appeared in 0 known data breaches
 
 # Email headline
-email-alert-hl = { $userEmail } appeared in a new data breach.
+email-alert-hl = { $userEmail } appeared in a new data breach
 
 # Subject line of email
-email-subject-found-breaches = {-product-name} found your info in these breaches.
+email-subject-found-breaches = {-product-name} found your info in these breaches
 
 # Subject line of email
-email-subject-no-breaches = {-product-name} found no known breaches.
+email-subject-no-breaches = {-product-name} found no known breaches
 
 # Subject line of email
 email-subject-verify = Verify your email for {-product-name}
 
-learn-more-about-fxm = Learn more about { $fxmLink }.
-email-sensitive-disclaimer = Due to the sensitive nature of this breach, emails involved are not publicly searchable.
+learn-more-about-fxm = Learn more about { $fxmLink }
+email-sensitive-disclaimer = Due to the sensitive nature of this breach, emails involved are not publicly discoverable. 
+  You’re receiving this alert because you’re the verified owner of this email address.
 
 fxm-warns-you-no-breaches = {-product-name} warns you about data breaches involving your personal info. 
-  So far, no breaches were found. We’ll send you an alert if this email appears in a new breach.
+  So far, no breaches were found. We’ll send you an alert if your email address appears in a new breach.
 
 fxm-warns-you-found-breaches = {-product-name} warns you about data breaches involving your personal info. 
-  You’re also signed up to receive alerts if this email appears in a new breach.
+  You’re also signed up to receive alerts if your email address appears in a new breach.
 
 email-breach-alert-blurb = 
   {-product-name} warns you about data breaches involving your personal info. 
   We just received details about another company’s data breach.
+
+# List headline
+faq-list-headline = Frequently asked questions
 
 # Link Title
 faq-v2-1 = I don’t recognize one of these companies or websites. Why am I in this breach?

@@ -145,15 +145,28 @@ function getReportHeader(args) {
   return args.fn(reportHeader);
 }
 
-function getEmailUnsubLink(args) {
+
+function getEmailFooterCopy(args) {
   const locales = args.data.root.supportedLocales;
+
+  let faqLink = LocaleUtils.fluentFormat(locales, "frequently-asked-questions");
+  faqLink = `<a href="https://support.mozilla.org/kb/firefox-monitor-faq">${faqLink}</a>`;
+
+  if (args.data.root.whichPartial === "email_partials/email_verify") {
+    return LocaleUtils.fluentFormat(locales, "email-verify-footer-copy", { faqLink: faqLink });
+  }
+
   const unsubUrl = args.data.root.unsubscribeUrl;
   let unsubLink = LocaleUtils.fluentFormat(locales, "email-unsub-link");
-  unsubLink = `<a href="${unsubUrl}" style="font-weight: 400; font-family: sans-serif; color: #0060df;">${unsubLink}</a>`;
+  unsubLink = `<a href="${unsubUrl}">${unsubLink}</a>`;
 
-  return LocaleUtils.fluentFormat(locales, "email-unsub-blurb", { unsubLink: unsubLink });
+  const localizedFooterCopy = LocaleUtils.fluentFormat(locales, "email-footer-blurb", {
+    unsubLink: unsubLink,
+    faqLink: faqLink,
+   });
+
+  return localizedFooterCopy;
 }
-
 
 
 function getEmailCTA(args) {
@@ -210,7 +223,7 @@ module.exports = {
   getBreachAlertFaqs,
   getBreachSummaryHeadline,
   getEmailHeader,
-  getEmailUnsubLink,
+  getEmailFooterCopy,
   getEmailCTA,
   getReportHeader,
   getUnsafeBreachesForEmailReport,
