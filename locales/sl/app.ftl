@@ -44,6 +44,7 @@ error-not-subscribed = Ta e-poštni naslov ni naročen na { -product-name }.
 error-hibp-throttled = Preveč povezav na { -brand-HIBP }.
 error-hibp-connect = Napaka pri povezovanju na { -brand-HIBP }.
 error-hibp-load-breaches = Ni bilo mogoče naložiti podatkov o krajah.
+error-must-be-signed-in = Prijaviti se morate v svoj { -brand-fxa }.
 home-title = { -product-name }
 home-not-found = Strani ni mogoče najti.
 oauth-invalid-session = Neveljavna seja
