@@ -93,9 +93,15 @@ share-by-email-message =
 # Unsubscribe link in email.
 email-unsub-link =  Unsubscribe
 
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-footer-blurb = You’re receiving this email because you signed up for {-product-name} 
   alerts. No longer want these emails? { $unsubLink }. This is an automated email. For support, visit { $faqLink }.
 
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-verify-footer-copy = You’re receiving this email because you signed up for {-product-name} alerts. 
   This is an automated email. For support, visit { $faqLink }.
 
@@ -130,7 +136,9 @@ email-subject-no-breaches = {-product-name} found no known breaches
 # Subject line of email
 email-subject-verify = Verify your email for {-product-name}
 
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Learn more about { $fxmLink }
+
 email-sensitive-disclaimer = Due to the sensitive nature of this breach, emails involved are not publicly discoverable. 
   You’re receiving this alert because you’re the verified owner of this email address.
 
