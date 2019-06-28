@@ -1,7 +1,7 @@
  
  
  <div class="about-noodles">
-  <main class="clear-header about-fxm" data-page-label="About Firefox Monitor">
+  <main class="clear-header about-fxm container" data-page-label="About Firefox Monitor">
       <div class="row about-row">
         <div class="col-8">
           <div class="fx-monitor-svg"></div>
@@ -17,23 +17,21 @@
         <div class="col-12">
           <h3>{{ getString "how-fxm-works" }}</h3>
         </div>
-        <div class="col-12 how-fxm-works no-vertical-padding">
+        <div class="col-12 how-fxm-works no-vertical-padding space-between">
           {{#each (getAboutPageStrings) }}
-            <div class="fxm-card-wrap">
-              <div class="fxm-card">
-                <h4 class="how-fxm-headline">{{ this.headline }}</h4>
-                <p class="how-fxm-works-blurb">{{ this.subhead }}</p>
-                {{#if this.scan }}
-                  <a class="text-link" href="/">{{ this.scan }}</a>    
-                {{/if}}
-                {{#if this.signUp }}
-                  <button {{> analytics/fxa id="fx-monitor-about-page-sign-up" }} data-event-category="About Page SignUp" class="text-link open-oauth">
-                    {{ this.signUp }}
-                  </button>    
-                {{/if}}
-                {{#if this.download }}
-                  <a class="text-link" target="_blank" href="https://www.mozilla.org/firefox">{{ this.download }}</a>  
-                {{/if}}
+            <div class="fxm-card-wrap flx">
+              <div class="fxm-card flx flx-col space-between">
+                <div>
+                  <h4 class="how-fxm-headline">{{ this.headline }}</h4>
+                  <p class="how-fxm-works-blurb">{{ this.subhead }}</p>
+                </div>
+                  {{#ifCompare this.ctaId "===" "signUp"}} 
+                    <button {{> analytics/fxa id="fx-monitor-about-page-sign-up" }} data-event-category="About Page SignUp" class="btn-grey open-oauth about-cta">
+                      {{ this.localizedCta }}
+                    </button>
+                  {{else}}
+                    <a class="btn-grey demi about-cta" target="_blank" href="{{ this.href }}">{{ this.localizedCta }}</a>
+                  {{/ifCompare}}
               </div>
             </div>
           {{/each}}
