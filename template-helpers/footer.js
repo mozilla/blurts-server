@@ -22,8 +22,8 @@ function getFooterLinks(args) {
       href: "https://www.mozilla.org/privacy/firefox-monitor/?utm_campaign=fx_monitor_downloads&utm_content=site-footer-link&utm_medium=referral&utm_source=monitor.firefox.com",
     },
     {
-      title: "Github",
-      stringId: "github-link-title",
+      title: "GitHub",
+      stringId: "GitHub-link-title",
       href: "https://github.com/mozilla/blurts-server",
     },
   ];
