@@ -12,6 +12,7 @@
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox Account
 -brand-Chrome = Chrome
+-github = Github
 
 
 layout-Firefox = {-brand-name}
@@ -22,6 +23,8 @@ about-firefox-alerts = About Firefox Alerts
 # Link that takes the user to a Firefox Monitor survey. 
 give-feedback = Give Feedback
 terms-and-privacy = Terms & Privacy
+
+github-link-title = {-github}
 
 error-scan-page-token = You tried to scan too many email addresses in a short time period. For security reasons, we’ve temporarily blocked you from new searches. You’ll be able to try again later.
 error-could-not-add-email = Could not add email address to database.
