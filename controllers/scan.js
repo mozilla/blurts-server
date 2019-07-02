@@ -6,7 +6,7 @@ const AppConstants = require("../app-constants");
 const { FluentError } = require("../locale-utils");
 // const { generatePageToken } = require("./utils");
 const mozlog = require("../log");
-const scanResult = require("../scan-results");
+const { scanResult } = require("../scan-results");
 const sha1 = require("../sha1-utils");
 
 const log = mozlog("controllers.scan");

@@ -50,10 +50,7 @@ const DB = {
     return res;
   },
 
-  async getSubscriberById(id) {
-    const [subscriber] = await knex("subscribers").where({
-      "id": id,
-    });
+  async joinEmailAddressesToSubscriber(subscriber) {
     if (subscriber) {
       subscriber.email_addresses = await knex("email_addresses").where({
         "subscriber_id": subscriber.id,
@@ -62,17 +59,29 @@ const DB = {
     return subscriber;
   },
 
+  async getSubscriberById(id) {
+    const [subscriber] = await knex("subscribers").where({
+      "id": id,
+    });
+    const subscriberAndEmails = await this.joinEmailAddressesToSubscriber(subscriber);
+    return subscriberAndEmails;
+  },
+
+  async getSubscriberByFxaUid(uid) {
+    const [subscriber] = await knex("subscribers").where({
+      "fxa_uid": uid,
+    });
+    const subscriberAndEmails = await this.joinEmailAddressesToSubscriber(subscriber);
+    return subscriberAndEmails;
+  },
+
   async getSubscriberByEmail(email) {
     const [subscriber] = await knex("subscribers").where({
       "primary_email": email,
       "primary_verified": true,
     });
-    if (subscriber) {
-      subscriber.email_addresses = await knex("email_addresses").where({
-        "subscriber_id": subscriber.id,
-      });
-    }
-    return subscriber;
+    const subscriberAndEmails = await this.joinEmailAddressesToSubscriber(subscriber);
+    return subscriberAndEmails;
   },
 
   async getEmailAddressRecordByEmail(email) {

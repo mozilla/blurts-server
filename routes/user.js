@@ -1,13 +1,15 @@
 "use strict";
 
 const express = require("express");
+const bearerToken = require("express-bearer-token");
 const bodyParser = require("body-parser");
 const csrf = require("csurf");
 
 const { asyncMiddleware } = require("../middleware");
 const {
   add, verify, logout,
-  getDashboard, getPreferences, removeEmail, resendEmail, updateCommunicationOptions,
+  getDashboard, getPreferences, getBreachStats,
+  removeEmail, resendEmail, updateCommunicationOptions,
   getUnsubscribe, postUnsubscribe, getRemoveFxm, postRemoveFxm,
 } = require("../controllers/user");
 
@@ -19,6 +21,8 @@ const csrfProtection = csrf();
 
 router.get("/dashboard", csrfProtection, asyncMiddleware(getDashboard));
 router.get("/preferences", csrfProtection, asyncMiddleware(getPreferences));
+router.use("/breach-stats", bearerToken());
+router.get("/breach-stats", urlEncodedParser, asyncMiddleware(getBreachStats));
 router.get("/logout", logout);
 router.post("/email", urlEncodedParser, csrfProtection, asyncMiddleware(add));
 router.post("/remove-email", urlEncodedParser, csrfProtection, asyncMiddleware(removeEmail));

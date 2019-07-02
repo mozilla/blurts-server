@@ -2,7 +2,7 @@
 
 const AppConstants = require("../../app-constants");
 const home = require("../../controllers/home");
-const scanResult = require("../../scan-results");
+const { scanResult } = require("../../scan-results");
 
 let mockRequest = { fluentFormat: jest.fn(), csrfToken: jest.fn() };
 
