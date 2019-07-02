@@ -114,35 +114,6 @@ const EmailUtils = {
     url = this.appendUtmParams(url, "unsubscribe", emailType);
     return url;
   },
-
-  getShareByEmail(req) {
-    const subject = encodeURIComponent(req.fluentFormat("share-by-email-subject"));
-    const body = encodeURIComponent(req.fluentFormat("share-by-email-message"));
-
-    return {
-      "gmail" : {
-        client: "Gmail",
-        class: "gmail",
-        href: `https://mail.google.com/mail/?view=cm&fs=1&su=${subject}&body=${body}`,
-      },
-      "yahoo" : {
-        client: "Yahoo",
-        class: "yahoo",
-        href: `https://compose.mail.yahoo.com/?subject=${subject}&body=${body}`,
-      },
-      "outlook" : {
-        client: "Outlook",
-        class: "outlook",
-        href: `https://outlook.live.com/owa/?path=/mail/action/compose&subject=${subject}&body=${body}`,
-      },
-      "default-email" : {
-        client: req.fluentFormat("share-other"),
-        class: "default-email-client",
-        href: `mailto:?subject=${subject}&body=${body}`,
-      },
-    };
-  },
-
 };
 
 module.exports = EmailUtils;
