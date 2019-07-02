@@ -14,6 +14,8 @@
 
 terms-and-privacy = Terms & Privacy
 
+GitHub-link-title = GitHub
+
 error-scan-page-token = You tried to scan too many email addresses in a short time period. For security reasons, we’ve temporarily blocked you from new searches. You’ll be able to try again later.
 error-could-not-add-email = Could not add email address to database.
 error-not-subscribed = This email address is not subscribed to {-product-name}.
