@@ -7,19 +7,11 @@
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
--brand-Quantum = Firefox Quantum
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Cont Firefox
--brand-Chrome = Chrome
-layout-Firefox = { -brand-name }
-# Descriptive headline for a column of links where users can give feedback, or get additional information about, Firefox Monitor.
-layout-support = Suport
-# Link that takes the user to a blog post on blog.mozilla.org about the alerts
-about-firefox-alerts = Despre alertele Firefox
-# Link that takes the user to a Firefox Monitor survey. 
-give-feedback = Oferă feedback
 terms-and-privacy = Termeni și confidențialitate
+GitHub-link-title = GitHub
 error-scan-page-token = Ai încercat să scanezi prea multe adrese de e-mail într-un timp prea scurt. Din motive de securitate, ți-am blocat accesul la căutări noi. Poți încerca mai târziu.
 error-could-not-add-email = Adresa de e-mail nu a putut fi adăugată în baza de date.
 error-not-subscribed = Această adresă de e-mail nu este abonată la { -product-name }.
@@ -30,257 +22,47 @@ error-must-be-signed-in = Trebuie să fii autentificat(ă) la { -brand-fxa }.
 home-title = { -product-name }
 home-not-found = Pagină negăsită.
 oauth-invalid-session = Sesiune nevalidă
-oauth-confirmed-title = { -product-name } : Abonat
 scan-title = { -product-name } : Rezultatele scanării
 user-add-invalid-email = E-mail invalid
 user-add-email-verify-subject = Verifică-ți abonamentul la { -product-name }.
-user-add-title = { -product-name } : Confirmă adresa de e-mail
 error-headline = Eroare
 user-verify-token-error = Este necesar un jeton de verificare.
 user-verify-email-report-subject = Raportul tău { -product-name }
-user-verify-title = { -product-name } : Abonat
 user-unsubscribe-token-error = Este necesar un jeton pentru dezabonare.
 user-unsubscribe-token-email-error = Este necesar un jeton și emailHash pentru dezabonare.
 user-unsubscribe-title = { -product-name } : Dezabonare
-user-unsubscribe-survey-title = { -product-name } : Chestionar la dezabonare
-user-unsubscribed-title = { -product-name } : Dezabonat
-
-## Password Tips
-
 pwt-section-headline = Parole mai puternice = Protecție mai bună
-pwt-section-subhead = Securitatea informațiilor tale personale depinde de siguranța parolelor.
-pwt-section-blurb = Parolele protejează mai mult decât conturile. Protejează fiecare bit de informații personale pe care le conțin. Hackerii se bazează pe obiceiuri proaste, cum ar fi utilizarea aceleiași parole peste tot sau folosirea de fraze obișnuite (de genul p@ssw0rd), astfel încât, dacă sparg un cont, pot sparge mai multe. Iată cum să îți protejezi mai bine conturile.
-pwt-headline-1 = Folosește o parolă diferită pentru fiecare cont
-pwt-summary-1 = Reutilizarea aceleiași parole peste tot lasă ușa larg deschisă pentru furtul de identitate. Oricine are parola se poate autentifica în toate conturile tale.
-pwt-headline-2 = Creează parole puternice, greu de ghicit
-pwt-summary-2 = Hackerii folosesc mii de parole frecvente când încearcă să o ghicească pe a ta. Cu cât parola este mai lungă și mai aleatorie, cu atât va fi mai greu de ghicit.
-pwt-headline-3 = Tratează întrebările de securitate ca și când ar fi parole suplimentare
-pwt-summary-3 = Site-urile web nu verifică dacă răspunsurile sunt exacte, ci dacă se potrivesc de fiecare dată. Creează răspunsuri lungi și aleatorii și păstrează-le undeva în siguranță.
-pwt-headline-4 = Obține ajutor pentru amintirea parolelor
-pwt-summary-4 = Managerii de parole, precum 1Password, LastPass, Dashlane și Bitwarden generează parole unice puternice, le stochează în siguranță și le completează pe site-uri pentru tine
-pwt-headline-5 = Adaugă un plus de securitate prin autentificarea cu doi factori
-pwt-summary-5 = 2FA necesită o informație suplimentară (cum ar fi coduri de unică folosință trimise prin mesaje text) pentru autentificarea în cont. Chiar dacă altcineva îți cunoaște parola, nu poate intra în cont.
-pwt-headline-6 = Înregistrează-te pentru alerte { -product-name-nowrap }
-pwt-summary-6 = Breșele de date de pe site-urile web sunt din ce în ce mai multe. Imediat ce informarea despre o breșă intră în baza noastră de date, { -product-name-nowrap } îți trimite o alertă — ca să poți lua măsuri pentru a-ți proteja contul.
 landing-headline = Dreptul tău de protecție împotriva hackerilor începe aici.
-landing-blurb = { -product-name-nowrap } te înarmează cu unelte care îți păstrează în siguranță informațiile personale. Află ce știu deja hackerii despre tine și cum să fii mereu cu un pas înaintea lor.
-scan-label = Vezi dacă ai fost implicat(ă) într-o breșă de date.
 scan-placeholder = Introdu adresa de e-mail
-scan-privacy = Adresa ta de e-mail nu va fi stocată.
 scan-submit = Caută-ți adresa de e-mail
-scan-another-email = Scanează altă adresă de e-mail
-scan-featuredbreach-label = Află dacă contul tău <span class="bold">{ $featuredBreach }</span> a fost compromis.
-sensitive-breach-email-required = Breșa conține informații sensibile. Este necesară verificarea adresei de e-mail.
 scan-error = Trebuie să fie o adresă de e-mail validă.
-signup-banner-headline = { -product-name-nowrap } detectează amenințările la care sunt supuse conturile tale online.
-signup-banner-blurb = Raportul tău { -product-name-nowrap } detaliat indică dacă informațiile din conturile tale online au fost compromise sau furate. Te vom alerta și dacă conturile tale apar în breșe noi de pe site-uri web.
-download-firefox-bar-blurb = { -product-name-nowrap } îți este oferit de <span class="nowrap">noul { -brand-name }</span>.
-download-firefox-bar-link = Descarcă { -brand-name } acum
-download-firefox-banner-blurb = Preia controlul asupra browserului tău
 download-firefox-banner-button = Descarcă { -brand-name }
-signup-modal-headline = Înregistrează-te pentru { -product-name-nowrap }
-signup-modal-blurb = Înregistrează-te pentru raportul tău complet, alerte când se produc breșe noi și ponturi de siguranță de la { -product-name-nowrap }.
-signup-modal-close = Închide
-get-your-report = Obține raportul
-signup-modal-verify-headline = Verifică-ți abonamentul
-signup-modal-verify-blurb = Am trimis un link de verificare la <span id="submitted-email" class="medium"></span>.
-signup-modal-verify-expiration = Acest link expiră în 24 de ore.
-signup-modal-verify-resend = Nu este nici în dosarul de mesaje primite, nici în dosarul spam? Retrimite.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Trimis!
-signup-with-fxa = Înregistrează-te cu contul { -brand-name }
-form-signup-placeholder = Introdu adresa de e-mail
-form-signup-checkbox = Primește cele mai recente știri despre { -brand-Mozilla } și { -brand-name }.
 sign-up = Înregistrează-te
 form-signup-error = Trebuie să fie o adresă de e-mail validă
-no-breaches-headline = Până acum totul este în regulă.
-found-breaches-headline = Informațiile tale au fost implicate într-o breșă de date.
-no-breaches = Adresa ta de e-mail nu apare în scanarea noastră de bază. E de bine, numai că breșele de date se pot petrece în orice moment și sunt încă multe măsuri pe care le poți lua. Abonează-te la { -product-name-nowrap } pentru un raport complet, alerte când au loc breșe de date și ponturi despre protejarea parolelor.
-featured-breach-results =
-    { $breachCount ->
-        [0] Contul tău apare în breșa <span class="bold">{ $featuredBreach }</span>, dar nu și în alte breșe cunoscute de date.
-        [one] Contul tău apare în breșa <span class="bold">{ $featuredBreach }</span> și într-o altă breșă.
-        [few] Contul tău apare în breșa <span class="bold">{ $featuredBreach }</span> și în alte { $breachCount } breșe.
-       *[other] Contul tău apare în breșa <span class="bold">{ $featuredBreach }</span> și în alte { $breachCount } de breșe.
-    }
-featured-breach-not-compromised =
-    { $breachCount ->
-        [0] { no-breaches }
-        [one] Contul tău nu a apărut în breșa <span class="bold">{ $featuredBreach }</span>, însă a apărut într-o altă breșă.
-        [few] Contul tău nu a apărut în breșa <span class="bold">{ $featuredBreach }</span>, însă a apărut în alte { $breachCount } breșe.
-       *[other] Contul tău nu a apărut în breșa <span class="bold">{ $featuredBreach }</span>, însă a apărut în alte { $breachCount } de breșe.
-    }
-scan-results =
-    { $breachCount ->
-        [0] { no-breaches }
-        [one] Contul tău a apărut într-o breșă.
-        [few] Conturi asociate cu adresa ta de e-mail au apărut în următoarele { $breachCount } breșe.
-       *[other] Conturi asociate cu adresa ta de e-mail au apărut în următoarele { $breachCount } de breșe.
-    }
-show-more-breaches = Afișează mai multe
-what-to-do-headline = Ce să faci când informațiile ți-au fost expuse într-o breșă de date
-what-to-do-subhead-1 = Schimbă-ți parolele, chiar și pentru conturile vechi
-what-to-do-blurb-1 = Dacă nu te poți autentifica, contactează site-ul web pentru informații despre recuperarea sau închiderea contului. Vezi un cont pe care nu-l recunoști? Este posibil ca site-ul să-și fi modificat denumirea sau ca cineva să fi creat un cont în numele tău.
-what-to-do-subhead-2 = Dacă refolosești o parolă expusă, schimb-o
-what-to-do-blurb-2 = Hackerii pot încerca să reutilizeze parole expuse pentru a intra în alte conturi. Creează o parolă diferită pentru fiecare site web, în special pentru contul bancar, e-mail și alte site-uri web pe care salvezi informații personale.
-what-to-do-subhead-3 = Ia măsuri suplimentare pentru securizarea conturilor financiare
-what-to-do-blurb-3 = Cele mai multe breșe expun e-mailuri și parole, dar unele includ și informații financiare sensibile. Dacă contul tău bancar sau numerele cardurilor de credit au fost implicate într-o breșă, alertează banca asupra unei posibilități de fraudă și monitorizează-ți extrasele de cont pentru plăți pe care nu le recunoști.
-what-to-do-subhead-4 = Obține ajutor pentru a crea parole bune și păstrarea lor în siguranță.
-what-to-do-blurb-4 = Managerii de parole, precum 1Password, LastPass, Dashlane și Bitwarden generează parole puternice, le stochează în siguranță și le completează pe site-uri pentru tine.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Data breșei:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Conturi compromise:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Date compromise:
-confirmed = Confirmat!<br />Te-ai abonat!
-confirmed-blurb = { -product-name-nowrap } îți va trimite în curând un e-mail cu raportul complet și va transmite o alertă pe e-mail în cazul în care contul tău va apărea în breșe raportate noi.
-confirmed-social-blurb = Dacă ți-au fost compromise datele într-o breșă, există posibilitatea să fi fost compromise și datele prietenilor, familiei sau ale contactelor tale online. Spune-le despre { -product-name-nowrap }.
 unsub-headline = Dezabonează-te de la { -product-name-nowrap }
 unsub-blurb = Prin dezabonare, adresa ta de e-mail va fi eliminată din lista { -product-name-nowrap } și nu vei mai primi alerte când sunt anunțate breșe noi.
 unsub-button = Dezabonează-te
-fxa-unsub-headline = Dezabonare de la alerte { -product-name }.
-fxa-unsub-blurb =
-    Nu vei mai primi alerte { -product-name }. 
-    { -brand-fxa } va rămâne activ și vei putea primi alte comunicări legate de cont.
-unsub-survey-form-label = De ce te dezabonezi de la alertele { -product-name-nowrap }?
-unsub-reason-1 = Consider că alertele nu îmi fac datele mai sigure
-unsub-reason-2 = Primesc prea multe e-mailuri de la { -product-name-nowrap }
-unsub-reason-3 = Nu consider că serviciul este util
-unsub-reason-4 = Am luat deja măsuri ca să-mi protejez conturile
-unsub-reason-5 = Folosesc un alt serviciu pentru monitorizarea conturilor
-unsub-reason-6 = Niciuna dintre cele de mai sus
-unsub-survey-thankyou = Îți mulțumim pentru feedback.
-unsub-survey-error = Te rugăm să selectezi o opțiune.
-unsub-survey-headline-v2 = Te-ai dezabonat.
-unsub-survey-blurb-v2 =
-    Nu vei mai primi alerte { -product-name }. 
-    Vrei să ne acorzi un minut și să ne răspunzi la o întrebare despre experiența ta?
-unsub-survey-button = Trimite răspunsul
-# Link to share Firefox Monitor on Facebook. Positioned next to Facebook logo.
-share = Distribuie
-# Link to share Firefox Monitor on Twitter. Positioned next to Twitter logo.
-tweet = Trimite un tweet
-download-firefox-quantum = Descarcă { -brand-Quantum }
-download-firefox-mobile = Descarcă { -brand-name } pentru dispozitive mobile
-# Features here refers to Firefox browser features. 
-features = Funcționalități
-# beta-nightly-developer-edition refers to additional versions of Firefox Browser
-beta-nightly-developer-edition = Beta, Nightly, Developer Edition
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Datele despre breșe sunt furnizate de { $hibp-link }
-site-description = Ți-au fost compromise sau furate conturile într-o breșă de date? Află la { -product-name }. Caută în baza noastră de date și înregistrează-te pentru alerte.
-confirmation-headline = Raportul tău { -product-name } este pe drum.
-confirmation-blurb = Breșele de date pot afecta pe oricine. Dă de veste astfel încât prietenii și familia să poată verifica dacă conturile lor online sunt în siguranță.
-share-email = E-mail
-# Appears at the end of a list of email-clients and refers to any other unlisted email-client.
-share-other = Altele
 share-twitter = Majoritatea persoanelor au aproximativ 100 de conturi online. A fost expus vreunul dintre conturile tale într-o breșă de date? Află.
 share-facebook-headline = Află dacă ai fost parte a unei breșe de date
 share-facebook-blurb = Au fost expuse conturile tale online într-o breșă de date?
 og-site-description = Află dacă ai fost parte a unei breșe de date cu { -product-name }. Înregistrează-te pentru alerte despre viitoare breșe și obține ponturi pentru a-ți menține în siguranță conturile.
-mozilla-security-blog = Blog de securitate { -brand-Mozilla }
-# A header for a list of links to share Firefox Monitor on various social media platforms.
-layout-social = Social
 show-all = Afișează toate
-fxa-landing-blurb = Află ce știu deja hackerii despre tine și cum să fii cu un pas înaintea lor.
-fxa-scan-label = Vezi dacă apari într-o breșă de date.
-fxa-welcome-headline = Bine ai venit la { -product-name }.
-fxa-welcome-blurb = Te-ai înregistrat ca să primești alerte în cazul în care { $userEmail } apare într-o breșă de date.
 fxa-scan-another-email = Vrei să verifici altă adresă de e-mail?
-# Search Firefox Monitor
-fxa-scan-submit = Caută { -product-name }
-sign-up-to-check = Înscrie-te ca să poți verifica
 sign-in = Autentificare
 sign-out = Deconectare
-full-report-headline = Raportul tău { -product-name }
-see-full-report = Vezi raportul complet
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Gestionează { -brand-fxa }
-fxa-download-firefox-bar-blurb = Oferit de { -brand-name }. De 2 ori mai rapid. Folosește cu 30% mai puțină memorie decât { -brand-Chrome }.
-fxa-download-firefox-bar-link = Descarcă acum
-fxa-download-firefox-banner-blurb = Încărcare mai rapidă și mai bună a paginilor, cu un consum mai mic de memorie.
-user-fb-compromised-headline = { $userEmail } a apărut în breșa de date { $breachName }.
-guest-fb-compromised-headline = Această adresă de e-mail a apărut în breșa de date { $breachName }.
-user-zero-breaches-headline = { $userEmail } nu a apărut în nicio breșă de date.
-guest-zero-breaches-headline = Această adresă de e-mail nu a apărut în nicio breșă de date.
-user-scan-results-headline =
-    { $breachCount ->
-        [one] { $userEmail } a apărut într-o breșă de date.
-        [few] { $userEmail } a apărut în { $breachCount } breșe de date.
-       *[other] { $userEmail } a apărut în { $breachCount } de breșe de date.
-    }
-guest-scan-results-headline =
-    { $breachCount ->
-        [one] Această adresă de e-mail a apărut într-o breșă de date.
-        [few] Această adresă de e-mail a apărut în { $breachCount } breșe de date.
-       *[other] Această adresă de e-mail a apărut în { $breachCount } de breșe de date.
-    }
-user-no-breaches-blurb = Te vom avertiza dacă adresa de e-mail apare în breșe noi.
-guest-no-breaches-blurb = Pentru a vedea dacă adresa de e-mail apare în breșe de date sensibile, creează un { -brand-fxa }. Te vom avertiza și dacă această adresă apare în breșe noi de date.
-user-one-breach-blurb = Această breșă a expus următoarele informații cu caracter personal.
-user-fb-compromised-blurb =
-    { $breachCount ->
-        [one] Adresa ta de e-mail a apărut și într-o altă breșă.
-        [few] Adresa ta de e-mail a apărut și în alte { $breachCount } breșe.
-       *[other] Adresa ta de e-mail a apărut și în alte { $breachCount } de breșe.
-    }
-user-generic-fb-compromised-blurb =
-    { $breachCount ->
-        [one] Această adresă de e-mail a apărut și într-o altă breșă.
-        [few] Această adresă de e-mail a apărut și în alte { $breachCount } breșe.
-       *[other] Această adresă de e-mail a apărut și în alte { $breachCount } de breșe.
-    }
-user-fb-compromised-single =
-    Această breșă a expus următoarele informații cu caracter personal. Dacă 
-    nu ai făcut-o deja, schimbă-ți parola.
-user-generic-fb-compromised-single = Această breșă a expus următoarele informații cu caracter personal.
-guest-fb-compromised-single-v2 = Această breșă a expus următoarele date cu caracter personal. Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
-guest-fb-compromised-blurb-v2 =
-    { $breachCount ->
-        [one] Această adresă de e-mail a apărut și într-o altă breșă. Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
-        [few] Această adresă de e-mail a apărut și în alte { $breachCount } breșe. Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
-       *[other] Această adresă de e-mail a apărut și în alte { $breachCount } de breșe. Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
-    }
-user-fb-not-compromised-blurb =
-    { $breachCount ->
-        [one] Nu ai apărut în breșa { $breachName }, dar am găsit adresa de e-mail în altă breșă.
-        [few] Nu ai apărut în breșa { $breachName }, dar am găsit adresa de e-mail în alte breșe.
-       *[other] Nu ai apărut în breșa { $breachName }, dar am găsit adresa de e-mail în alte breșe.
-    }
-user-generic-fb-not-compromised-blurb =
-    { $breachCount ->
-        [one] Această adresă de e-mail nu a apărut în breșa { $breachName }, dar am găsit-o în altă breșă.
-        [few] Această adresă de e-mail nu a apărut în breșa { $breachName }, dar am găsit-o în alte breșe.
-       *[other] Această adresă de e-mail nu a apărut în breșa { $breachName }, dar am găsit-o în alte breșe.
-    }
-guest-fb-not-compromised-blurb-v2 =
-    { $breachCount ->
-        [one] Această adresă de e-mail nu a apărut în breșa { $breachName }, dar am găsit-o în altă breșă. Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
-        [few] Această adresă de e-mail nu a apărut în breșa { $breachName }, dar am găsit-o în alte breșe. Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
-       *[other] Această adresă de e-mail nu a apărut în breșa { $breachName }, dar am găsit-o în alte breșe. Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
-    }
-# While English doesn’t use the actual number of breaches in this sentence,
-# you can use {$breachCount} to display the number of breaches in your localization.
-user-found-breaches-blurb =
-    { $breachCount ->
-        [one] Această breșă a expus următoarele informații cu caracter personal. Dacă nu ai făcut-o deja, schimbă-ți parola.
-        [few] Aceste breșe au expus următoarele informații cu caracter personal. Dacă nu ai făcut-o deja, schimbă-ți parolele.
-       *[other] Aceste breșe au expus următoarele informații cu caracter personal. Dacă nu ai făcut-o deja, schimbă-ți parolele.
-    }
-# While English doesn’t use the actual number of breaches in this sentence,
-# you can use {$breachCount} to display the number of breaches in your localization.
-user-generic-found-breaches-blurb =
-    { $breachCount ->
-        [one] Această breșă a expus următoarele informații cu caracter personal.
-        [few] Aceste breșe au expus următoarele informații cu caracter personal.
-       *[other] Aceste breșe au expus următoarele informații cu caracter personal.
-    }
 have-an-account = Ai deja un cont?
-signup-banner-sensitive-blurb = Află ce știu deja hackerii despre tine și cum să fii cu un pas înaintea lor. Primește avertismente în cazul în care contul tău apare în breșe noi de date.
-fxa-pwt-section-blurb =
-    Parolele protejează toate datele cu caracter personal din conturile tale online. Și
-    hackerii se bazează pe obiceiuri proaste, cum ar fi folosirea aceleiași parole peste tot sau folosirea de fraze comune (@p@ssw0rd, oricine?), astfel încât, dacă sparg un cont, le sparg pe toate (sau mai multe).
 fxa-pwt-summary-2 =
     Parolele scurte, formate dintr-un singur cuvânt, sunt ușor de ghicit pentru hackeri.
     Folosește cel puțin două cuvinte și o combinație de litere, cifre și caractere speciale.
@@ -300,20 +82,14 @@ fxa-what-to-do-blurb-4 =
     Managerii de parole, cum ar fi 1Password, LastPass, Dashlane și Bitwarden îți stochează
     parolele în siguranță și le completează pe site-uri pentru tine. Utilizează un manager de parole
     pe telefon și pe calculator, astfel încât să nu trebuiască să le ții minte pe toate.
-fb-landing-headline = Ți-au fost expuse datele în breșa { $breachName }?
-copyright = Porțiuni din acest conținut sunt © 1999-{ $year } de colaboratori individuali mozilla.org
-content-available = Conținut disponibil sub o licență Creative Commons.
 # Alerts is a noun
 sign-up-for-alerts = Înregistrează-te pentru alerte
-sign-up-for-fxa-alerts = Înregistrează-te pentru alerte { -product-name }.
-create-free-account = Creează un { -brand-fxa } gratuit pentru raportul complet cu breșele anterioare, avertizări pentru breșe noi și informații despre alte servicii { -brand-Mozilla }.
-get-your-report-and-sign-up = Obține raportul tău și înregistrează-te pentru alerte.
 # Link title
 frequently-asked-questions = Întrebări adresate frecvent
 about-firefox-monitor = Despre { -product-name }
-mozilla-dot-org = Mozilla.org
+# Link title
 preferences = Preferințe
-# Link title.
+# Link title
 home = Acasă
 # Link title
 breaches = Breșe
@@ -386,7 +162,6 @@ create-a-fxa = Creează { -brand-fxa } pentru un raport complet despre breșe ș
 feat-security-tips = Ponturi de securitate pentru protejarea conturilor
 feat-sensitive = Căutare avansată în breșe de date sensibile
 feat-enroll-multiple = Înregistrează mai multe adrese de e-mail pentru monitorizarea breșelor
-sign-up-for-fxa = Înregistrează-te pentru un { -brand-fxa }
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
@@ -395,7 +170,6 @@ appears-in-x-breaches =
         [few] Apare în { $breachCount } breșe cunoscute
        *[other] Apare în { $breachCount } de breșe cunoscute
     }
-see-if-breached = Vezi dacă apari într-o breșă de date online.
 check-for-breaches = Verifică pentru breșe
 find-out-what-hackers-know = Află ce știu hackerii despre tine. Află cum să fii cu un pas înaintea lor.
 search-for-your-email = Caută-ți adresa de e-mail în breșe de date publice datând încă din 2007.
@@ -416,7 +190,9 @@ show-breaches-for-this-email = Afișează toate breșele pentru acest e-mail.
 link-change-primary = Schimbă adresa de e-mail primară
 remove-fxm = Elimină { -product-name }
 remove-fxm-blurb = Dezactivează alertele { -product-name }. { -brand-fxa } tău va rămâne activ și poți primi alte comunicări legate de cont.
+# Button title
 manage-email-addresses = Gestionează adresele de e-mail
+# Link title
 latest-breach-link = Vezi dacă ai fost implicat(ă) în această breșă
 welcome-back = Bine ai revenit, { $userName }!
 welcome-user = Bine ai venit, { $userName }!
@@ -441,7 +217,6 @@ new-breaches-found =
     }
 sign-up-headline-1 = Primește alerte curente cu un { -brand-fxa }.
 account-not-required = Browserul { -brand-name } nu este necesar pentru un { -brand-fxa }. Poți primi informații despre serviciile { -brand-Mozilla }.
-get-alerted = Primește alerte despre breșe noi.
 was-your-info-exposed = Ți-au fost expuse informațiile în breșa de date { $breachName }?
 find-out-if = Află dacă datele tale au fost expuse în această breșă.
 fb-not-comp = Această adresă de e-mail nu apare în breșa { $breachName }.
@@ -464,7 +239,6 @@ all-breaches-headline = Toate breșele din { -product-name }
 search-breaches = Caută breșe
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Afișate:
-all-breaches = Toate breșele
 
 ## Updated error messages
 
@@ -474,7 +248,6 @@ error-csrf-headline = Sesiune expirată
 error-csrf-blurb = Selectează butonul Înapoi din browser, reîncarcă pagina și încearcă din nou.
 error-invalid-unsub = Cum să te dezabonezi de la alertele { -product-name }
 error-invalid-unsub-blurb = Va trebui să te dezabonezi folosind unul dintre mesajele de e-mail trimise de { -product-name }. Verifică-ți căsuța poștală pentru mesaje de la { -brand-team-email }. Selectează linkul de dezabonare din partea de jos a mesajului.
-login-link-pre = Ai un cont?
 login-link = Autentifică-te
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
@@ -514,9 +287,6 @@ known-data-breaches-exposed =
     }
 # Button
 see-additional-breaches = Afișează și alte breșe
-# A button on the All Breaches page that restores all of the breaches
-# back to the page if the user has filtered some of them out.
-see-all-breaches = Afișează toate breșele
 scan-results-known-breaches =
     { $breachCount ->
         [one] Această adresă de e-mail a apărut în 1 breșă cunoscută de date.
