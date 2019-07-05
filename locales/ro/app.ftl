@@ -29,7 +29,7 @@ error-hibp-load-breaches = Nu s-au putut încărca breșele.
 error-must-be-signed-in = Trebuie să fii autentificat(ă) la { -brand-fxa }.
 home-title = { -product-name }
 home-not-found = Pagină negăsită.
-oauth-invalid-session = Sesiune invalidă
+oauth-invalid-session = Sesiune nevalidă
 oauth-confirmed-title = { -product-name } : Abonat
 scan-title = { -product-name } : Rezultatele scanării
 user-add-invalid-email = E-mail invalid
@@ -568,7 +568,7 @@ filter-by = Filtrează pe categorii:
 menu = Meniu
 to-affected-email = Trimite alerte pentru breșe de date către adresele de e-mail afectate
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
-join-firefox = Există o modalitate de a-ți proteja confidențialitatea. Alătură-te { -brand-name }.
+join-firefox = Există o modalitate de a-ți proteja viața privată. Alătură-te { -brand-name }.
 # Link title
 learn-more-link = Află mai multe.
 email-sent = Mesajul de e-mail a fost trimis!

@@ -21,6 +21,11 @@ function getFooterLinks(args) {
       stringId: "terms-and-privacy",
       href: "https://www.mozilla.org/privacy/firefox-monitor/?utm_campaign=fx_monitor_downloads&utm_content=site-footer-link&utm_medium=referral&utm_source=monitor.firefox.com",
     },
+    {
+      title: "GitHub",
+      stringId: "GitHub-link-title",
+      href: "https://github.com/mozilla/blurts-server",
+    },
   ];
 
   return getStrings(footerLinks, locales);
@@ -32,24 +37,27 @@ function getAboutPageStrings(args) {
     {
       headline:"how-fxm-1-headline",
       subhead: "how-fxm-1-blurb",
-      scan: LocaleUtils.fluentFormat(locales, "scan-submit"),
+      localizedCta: LocaleUtils.fluentFormat(locales, "scan-submit"),
+      href: "/",
     },
     {
       headline:"how-fxm-2-headline",
       subhead: "how-fxm-2-blurb",
-      signUp: LocaleUtils.fluentFormat(locales, "sign-up-for-alerts"),
+      ctaId: "signUp",
+      localizedCta: LocaleUtils.fluentFormat(locales, "sign-up-for-alerts"),
     },
     {
       headline:"how-fxm-3-headline",
       subhead: "how-fxm-3-blurb",
-      download: LocaleUtils.fluentFormat(locales, "download-firefox-banner-button"),
+      localizedCta: LocaleUtils.fluentFormat(locales, "download-firefox-banner-button"),
+      href: "https://www.mozilla.org/firefox",
     },
   ];
 
-  aboutPageStrings.forEach(aboutBlurb => {
-    aboutBlurb.headline = LocaleUtils.fluentFormat(locales, aboutBlurb.headline);
-    aboutBlurb.subhead = LocaleUtils.fluentFormat(locales, aboutBlurb.subhead);
-    aboutBlurb.cta = LocaleUtils.fluentFormat(locales, aboutBlurb.cta);
+  aboutPageStrings.forEach(aboutBlock => {
+    aboutBlock.headline = LocaleUtils.fluentFormat(locales, aboutBlock.headline);
+    aboutBlock.subhead = LocaleUtils.fluentFormat(locales, aboutBlock.subhead);
+    aboutBlock.localizedCta = LocaleUtils.fluentFormat(locales, aboutBlock.localizedCta);
   });
   return aboutPageStrings;
 }

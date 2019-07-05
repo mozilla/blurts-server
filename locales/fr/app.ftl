@@ -495,8 +495,8 @@ passwords-exposed =
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
     { $breaches ->
-        [one] Une fuite de données connue a compromis vos informations.
-       *[other] Des fuites de données connues ont compromis vos informations.
+        [one] fuite de données connue a compromis vos informations
+       *[other] fuites de données connues ont compromis vos informations
     }
 # Button
 see-additional-breaches = Voir les fuites supplémentaires

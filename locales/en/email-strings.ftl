@@ -23,13 +23,6 @@ firefox-monitor-report = {-product-name} Report
 report-date = Report Date:
 email-address = Email Address:
 
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Here’s your full {-product-name} report, which includes all known data breaches that contain this email address.
-
-report-no-breaches = 
-  Your email address did not appear in our database of known breaches. 
-  But breaches can happen at anytime. Take these steps to keep your personal data safe online.
-
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = What To Do Next
 
@@ -47,9 +40,6 @@ report-subhead-no-breaches =
 
 report-subhead-found-breaches =
   Here’s your full Firefox Monitor report, which includes all known data breaches that contain this email address. 
-
-breach-alert-headline = Your account was involved in a data breach.
-breach-alert-subhead = A recently reported data breach contains your email and the following data
 
 report-pwt-blurb = 
   Passwords are so valuable, that thousands of them are stolen every day and traded or sold on the black market. 
@@ -77,6 +67,7 @@ report-pwt-summary-4 =
 
 # A link to legal information about mozilla products.
 legal = Legal
+
 
 # Share Firefox Monitor by email subject line
 share-by-email-subject = See if you’ve been part of a data breach.
