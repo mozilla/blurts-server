@@ -82,6 +82,16 @@ take-control = קבלת השליטה על הנתונים האישיים שלך �
 # Button title
 manage-email-addresses = ניהול כתובות דוא״ל
 what-to-do-after-breach = מה לעשות לאחר דליפת נתונים
+search-breaches = חיפוש בדליפות
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = מופיעות:
 
 ## Updated error messages
 
+error-bot-headline = החיפושים מושהים באופן זמני
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = סינון לפי קטגוריה:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = תפריט
+to-affected-email = שליחת התראות על דליפות לכתובת הדוא״ל המושפעת
