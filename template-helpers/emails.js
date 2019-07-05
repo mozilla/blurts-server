@@ -153,12 +153,12 @@ function getEmailFooterCopy(args) {
   faqLink = `<a href="https://support.mozilla.org/kb/firefox-monitor-faq">${faqLink}</a>`;
 
   if (args.data.root.whichPartial === "email_partials/email_verify") {
-    return LocaleUtils.fluentFormat(locales, "email-verify-footer-copy", { faqLink: faqLink });
+    return LocaleUtils.fluentFormat(locales, "email-verify-footer-copy", { faqLink });
   }
 
   const unsubUrl = args.data.root.unsubscribeUrl;
-  let unsubLink = LocaleUtils.fluentFormat(locales, "email-unsub-link");
-  unsubLink = `<a href="${unsubUrl}">${unsubLink}</a>`;
+  const unsubLinkText = LocaleUtils.fluentFormat(locales, "email-unsub-link");
+  const unsubLinkMarkup = `<a href="${unsubUrl}">${unsubLinkText}</a>`;
 
   const localizedFooterCopy = LocaleUtils.fluentFormat(locales, "email-footer-blurb", {
     unsubLink: unsubLink,
