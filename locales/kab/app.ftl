@@ -278,6 +278,14 @@ passwords-exposed =
         [one] Awal uffir i ḥuzant trewliwin n yisefka
        *[other] Awalen uffiren i ḥuzant trewliwin n yisefka
     }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] Tarewla n yisefka yettwassnen tḥuza talɣut-ik
+       *[other] tirewliwin n yisefka yettwassnen ḥuzant talɣut-ik
+    }
 # Button
 see-additional-breaches = Wali tirewliwin-nniḍen
 scan-results-known-breaches =
