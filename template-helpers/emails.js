@@ -158,7 +158,7 @@ function getEmailFooterCopy(args) {
 
   const unsubUrl = args.data.root.unsubscribeUrl;
   const unsubLinkText = LocaleUtils.fluentFormat(locales, "email-unsub-link");
-  const unsubLinkMarkup = `<a href="${unsubUrl}">${unsubLinkText}</a>`;
+  const unsubLink = `<a href="${unsubUrl}">${unsubLinkText}</a>`;
 
   const localizedFooterCopy = LocaleUtils.fluentFormat(locales, "email-footer-blurb", {
     unsubLink: unsubLink,
