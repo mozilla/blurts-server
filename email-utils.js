@@ -92,9 +92,16 @@ const EmailUtils = {
     return url;
   },
 
-  getScanAnotherEmailUrl(emailType) {
+  getReportSubject(breaches, req) {
+    if (breaches.length === 0) {
+      return req.fluentFormat("email-subject-no-breaches");
+    }
+    return req.fluentFormat("email-subject-found-breaches");
+  },
+
+  getViewMyDashboardHref(emailType) {
     let url = new URL(AppConstants.SERVER_URL);
-    url = this.appendUtmParams(url, "scan-another-email", emailType);
+    url = this.appendUtmParams(url, "view-my-dashboard", emailType);
     return url;
   },
 

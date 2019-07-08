@@ -1,0 +1,13 @@
+        <table class="source-info-wrap" style="text-align: center; width: 100%;" width="100%">
+          <tr>
+            <td align="center" style="font-family: sans-serif; text-align: center; padding-bottom: 20px;">
+              {{#if breachAlert.IsSensitive}}
+                <p class="source-info email-small-text" style="font-size: 15px; font-weight: 300; font-family: sans-serif; margin: 0; line-height: 1.5; padding-bottom: 10px;">
+                  {{ getString "email-sensitive-disclaimer" }}
+                </p>
+              {{/if}}
+              <p class="source-info email-small-text" style="color: #5e5e72; padding: 0; margin: 0; font-size: 13px; line-height: 1.5; font-weight: 300; font-family: sans-serif;">{{{ getString "learn-more-about-fxm" fxmLink='<a style="color: #0060df; font-weight: 400;" href="https://monitor.firefox.com?utm_source=fx-monitor-email&utm_medium=email&utm_campaign=learn-more-link" target="_blank" rel="noopener noreferer">Firefox Monitor</a>'}}}</p>
+              <p class="source-info email-small-text" style="color: #5e5e72; padding: 0; margin: 0; font-size: 13px; line-height: 1.5; font-weight: 300; font-family: sans-serif;">{{{ getString "hibp-attribution" hibp-link='<a id="hibp-link" style="color: #0060df; font-weight: 400;" href="https://www.haveibeenpwned.com" target="_blank" rel="noopener noreferrer">Have I Been Pwned</a>' }}}</p>
+            </td>
+          </tr>
+        </table>

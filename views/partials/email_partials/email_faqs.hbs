@@ -1,19 +1,21 @@
-<tr class="email-faq" style="padding-top: 15px; font-family: sans-serif;">
-  <td colspan="2" valign="top" style="padding-top: 10px;">
-    <p class="body-copy email-sub-head" style="color: #333333; font-weight: 300; font-size: 22px; padding-top: 30px; margin: 0px; ">
-      {{ getString "frequently-asked-questions" }}
-    </p>
-  </td>
-</tr>
- {{#getBreachAlertFaqs}}
-  <tr class="email-faq-link">
-    <td valign="top" style="width: 60px;">
-    </td>
-    <td valign="top" style="padding-top: 10px;">
-      <a href="{{ href }}" style="color: #0060df; font-weight: 400; font-size: 14px; padding: 0px; margin: 0px; ">
-        {{ linkTitle }}
-      </a>
+<table style="border-top: 1px solid #eee; padding: 30px 0 0 0;">
+  <tr class="email-faq">
+    <td colspan="2" valign="top" style="padding-bottom: 20px;">
+      <p class="faq-header" style="color: #20123a; font-family: sans-serif; font-weight: 400; font-size: 20px; margin: 0px; text-align: left;">
+        {{ getString "faq-list-headline" }}
+      </p>
     </td>
   </tr>
-{{/getBreachAlertFaqs}}
- <tr style="padding-top: 30px;"></tr>
+  {{#getBreachAlertFaqs}}
+    <tr>
+      <td class="email-faq-bullet" valign="top" width="10px" style="padding-bottom: 20px;">
+        <p style="margin: 0; padding: 0; font-size: 20px; font-weight: 700;  color: #20123a; font-family: sans-serif; line-height: 1;">&bull;</p>
+      </td>
+      <td class="email-faq-link" valign="top" align="center" style="text-align: left; padding-bottom: 20px;">
+        <a href="{{ href }}" class="faq-link body-copy" style="color: #0060df; font-family: sans-serif; font-weight: 400; font-size: 15px; display: inline-block; margin: 0px; text-decoration: none; line-height: 1.5;">
+          {{ linkTitle }}
+        </a>
+      </td>
+    </tr>
+  {{/getBreachAlertFaqs}}
+</table>

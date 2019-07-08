@@ -306,7 +306,10 @@ latest-breach-link = See if you were in this breach
 welcome-back = Welcome back, { $userName }!
 welcome-user = Welcome, { $userName }!
 
-breach-alert-subject = {-product-name} found your email in a new data breach.
+
+
+breach-alert-subject = {-product-name} found your email in a new data breach
+
 
 your-info-was-discovered-headline = Your information was discovered in a new data breach.
 your-info-was-discovered-blurb = You’re signed up to receive {-product-name} alerts 

@@ -8,24 +8,75 @@ const { makeBreachCards } = require("./breaches");
 const { prettyDate } = require("./hbs-helpers");
 
 
+function emailBreachStats(args) {
+  const locales = args.data.root.supportedLocales;
+  const userBreaches = args.data.root.unsafeBreachesForEmail;
+  let numPasswordsExposed = 0;
 
-const modifiedStrings = {
-  "pwt-summary-2" : "fxa-pwt-summary-2",
-  "pwt-summary-4" : "fxa-pwt-summary-4",
-  "pwt-summary-6" : "fxa-pwt-summary-6",
-  "what-to-do-subhead-2" : "fxa-what-to-do-subhead-2",
-  "what-to-do-subhead-4" : "fxa-what-to-do-subhead-4",
-  "what-to-do-blurb-1" : "fxa-what-to-do-blurb-1",
-  "what-to-do-blurb-2" : "fxa-wtd-blurb-2",
-  "what-to-do-blurb-3" : "fxa-what-to-do-blurb-3",
-  "what-to-do-blurb-4" : "fxa-what-to-do-blurb-4",
-};
+  userBreaches.forEach(breach => {
+    if (breach.DataClasses.includes("passwords")) {
+      numPasswordsExposed ++;
+    }
+  });
+
+  const emailBreachStats = {
+    numBreaches: {
+      statNumber: userBreaches.length,
+      statTitle: LocaleUtils.fluentFormat(locales, "known-data-breaches-exposed", {breaches: userBreaches.length}),
+    },
+    numPasswords: {
+      statNumber: numPasswordsExposed,
+      statTitle: LocaleUtils.fluentFormat(locales, "passwords-exposed", {passwords: numPasswordsExposed}),
+    },
+  };
+  return emailBreachStats;
+}
 
 
 function getUnsafeBreachesForEmailReport(args) {
   const locales = args.data.root.supportedLocales;
-  const foundBreaches = args.data.root.unsafeBreachesForEmail;
+  const foundBreaches = JSON.parse(JSON.stringify(args.data.root.unsafeBreachesForEmail));
+
+  if (foundBreaches.length > 4) {
+    foundBreaches.length = 4;
+  }
   return makeBreachCards(foundBreaches, locales);
+}
+
+
+function boldVioletText(recipientEmail, addBlockDisplayToEmail=false) {
+  let optionalDisplayProperty = "";
+
+  if (addBlockDisplayToEmail) {
+    optionalDisplayProperty = "display: block;";
+  }
+
+  // garble email address so that email clients won't turn it into a link
+  recipientEmail = recipientEmail.replace(/([@.:])/g, "<span>$1</span>");
+  return `<span class="rec-email text-bold" style=" ${optionalDisplayProperty} font-weight: 700; color: #9059ff; font-family: sans-serif; text-decoration: none;"> ${recipientEmail}</span>`;
+}
+
+
+function getEmailHeader(args) {
+  const locales = args.data.root.supportedLocales;
+  const emailType = args.data.root.whichPartial;
+  const recipientEmail = args.data.root.recipientEmail;
+
+  if (emailType === "email_partials/email_verify") {
+    return LocaleUtils.fluentFormat(locales, "email-link-expires");
+  }
+
+  if (args.data.root.breachAlert) {
+    return LocaleUtils.fluentFormat(locales, "email-alert-hl", { userEmail: boldVioletText(recipientEmail, true) });
+  }
+
+  const userBreaches = args.data.root.unsafeBreachesForEmail;
+
+  if (userBreaches.length === 0) {
+    return LocaleUtils.fluentFormat(locales, "email-no-breaches-hl", { userEmail: boldVioletText(recipientEmail, true)});
+  }
+
+  return LocaleUtils.fluentFormat(locales, "email-found-breaches-hl");
 }
 
 
@@ -48,25 +99,34 @@ function getBreachAlertFaqs(args) {
   const supportedLocales = args.data.root.supportedLocales;
   const faqs = [
     {
-      "linkTitle" : LocaleUtils.fluentFormat(supportedLocales, "faq1", args),
-      "stringDescription": "I don't recognize this website. Why am I in this breach?",
+      "linkTitle" : LocaleUtils.fluentFormat(supportedLocales, "faq-v2-1", args),
+      "stringDescription": "I don’t recognize one of these companies or websites. Why am I in this breach?",
       "href": makeFaqLink("#w_i-donaot-recognize-this-company-or-website-why-am-i-receiving-notifications-about-this-breach", "faq1"),
     },
     {
-      "linkTitle" : LocaleUtils.fluentFormat(supportedLocales, "faq2", args),
-      "stringDescription": "Why did it take so long to notify me of this breach?",
+      "linkTitle" : LocaleUtils.fluentFormat(supportedLocales, "faq-v2-2", args),
+      "stringDescription": "Do I need to do anything if a breach happened years ago or this is an old account?",
       "href": makeFaqLink("#w_why-did-it-take-so-long-to-notify-me-of-this-breach", "faq2"),
     },
     {
-      "linkTitle" : LocaleUtils.fluentFormat(supportedLocales, "faq3", args),
-      "stringDescription": "How do I know this is a legitimate email from Firefox Monitor?",
+      "linkTitle" : LocaleUtils.fluentFormat(supportedLocales, "faq-v2-3", args),
+      "stringDescription": "I just found out I’m in a data breach. What do I do next?",
       "href": makeFaqLink("#w_how-do-i-know-these-emails-are-really-from-firefox-and-not-from-a-hacker", "faq3"),
     },
   ];
 
+  if (args.data.root.breachAlert && args.data.root.breachAlert.IsSensitive) {
+    faqs.push({
+      "linkTitle" : LocaleUtils.fluentFormat(supportedLocales, "faq-v2-4", args),
+      "stringDescription": "How does Firefox Monitor treat sensitive sites?",
+      "href": makeFaqLink("#w_how-does-firefox-monitor-treat-sensitive-sites", "faq4"),
+    });
+  }
+
   const functionedFaqs = faqs.map(faq => args.fn(faq));
   return "".concat(...functionedFaqs);
 }
+
 
 function getReportHeader(args) {
   const locales = args.data.root.supportedLocales;
@@ -86,60 +146,56 @@ function getReportHeader(args) {
 }
 
 
-function getWhatToDos(args) {
+function getEmailFooterCopy(args) {
   const locales = args.data.root.supportedLocales;
-  const imgPath = args.data.root.SERVER_URL;
 
-  let headlineId = "what-to-do-next";
-  let subheadId = "what-to-do-subhead";
-  let blurbId = "what-to-do-blurb";
-  let numTips = 4;
+  let faqLink = LocaleUtils.fluentFormat(locales, "frequently-asked-questions");
+  faqLink = `<a href="https://support.mozilla.org/kb/firefox-monitor-faq">${faqLink}</a>`;
 
-  // grab different strings for breach alert emails
+  if (args.data.root.whichPartial === "email_partials/email_verify") {
+    return LocaleUtils.fluentFormat(locales, "email-verify-footer-copy", { faqLink });
+  }
+
+  const unsubUrl = args.data.root.unsubscribeUrl;
+  const unsubLinkText = LocaleUtils.fluentFormat(locales, "email-unsub-link");
+  const unsubLink = `<a href="${unsubUrl}">${unsubLinkText}</a>`;
+
+  const localizedFooterCopy = LocaleUtils.fluentFormat(locales, "email-footer-blurb", {
+    unsubLink: unsubLink,
+    faqLink: faqLink,
+   });
+
+  return localizedFooterCopy;
+}
+
+
+function getEmailCTA(args) {
+  const locales = args.data.root.supportedLocales;
+  const emailType = args.data.root.whichPartial;
+  const userBreaches = args.data.root.unsafeBreachesForEmail;
+
+  if (emailType === "email_partials/email_verify") {
+    return LocaleUtils.fluentFormat(locales, "verify-email-cta");
+  }
+
+  if (userBreaches && (userBreaches.length > 4)) {
+    return LocaleUtils.fluentFormat(locales, "see-additional-breaches");
+  }
+
   if (args.data.root.breachAlert) {
-    headlineId = "what-to-do-after-breach";
-    subheadId = "ba-next-step";
-    blurbId = "ba-next-step-blurb";
-    numTips = 3;
+    return LocaleUtils.fluentFormat(locales, "see-all-breaches");
   }
 
-  const whatToDoNext = {
-    headline: LocaleUtils.fluentFormat(locales, headlineId),
-    steps: createTips(numTips, subheadId, blurbId, locales, imgPath),
-  };
-  return args.fn(whatToDoNext);
+  return LocaleUtils.fluentFormat(locales, "view-my-dashboard-cta");
 }
 
 
-function getPasswordTips(args) {
+function getBreachSummaryHeadline(args) {
   const locales = args.data.root.supportedLocales;
-  const passwordTips = createTips(4, "report-pwt-headline", "report-pwt-summary", locales);
-  return passwordTips;
+  const recipientEmail = args.data.root.recipientEmail;
+  return LocaleUtils.fluentFormat(locales, "email-breach-summary-for-email", { userEmail: boldVioletText(recipientEmail) });
 }
 
-
-function checkForNewStringId(locales, stringId) {
-  if (modifiedStrings[stringId]) {
-    stringId = modifiedStrings[stringId];
-  }
- return LocaleUtils.fluentFormat(locales, stringId);
-}
-
-
-function createTips(numTips, subheadIdPrefix, blurbIdPrefix, locales, imgPath = null) {
-  const tips = [];
-  let x = 0;
-  while (x < numTips) {
-    tips.push({
-      idx: x + 1,
-      subhead: checkForNewStringId(locales, `${subheadIdPrefix}-${x+1}`),
-      blurb: checkForNewStringId(locales, `${blurbIdPrefix}-${x+1}`),
-      srcDomain: imgPath,
-    });
-    x++;
-  }
-  return tips;
-}
 
 function getBreachAlert(args) {
   const locales = args.data.root.supportedLocales;
@@ -149,11 +205,27 @@ function getBreachAlert(args) {
 }
 
 
+// Show FAQs if the email type is a report with breaches, or a breach alert.
+function showFaqs(args) {
+  if (args.data.root.whichPartial === "email_partials/email_verify") {
+    return;
+  }
+
+  if ( args.data.root.breachAlert || (args.data.root.unsafeBreachesForEmail && args.data.root.unsafeBreachesForEmail.length > 0)) {
+    return args.fn();
+  }
+}
+
+
 module.exports = {
+  emailBreachStats,
   getBreachAlert,
   getBreachAlertFaqs,
-  getPasswordTips,
+  getBreachSummaryHeadline,
+  getEmailHeader,
+  getEmailFooterCopy,
+  getEmailCTA,
   getReportHeader,
   getUnsafeBreachesForEmailReport,
-  getWhatToDos,
+  showFaqs,
 };

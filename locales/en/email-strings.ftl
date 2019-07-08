@@ -67,3 +67,93 @@ report-pwt-summary-4 =
 
 # A link to legal information about mozilla products.
 legal = Legal
+
+
+# Share Firefox Monitor by email subject line
+share-by-email-subject = See if you’ve been part of a data breach.
+
+# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
+share-by-email-message = 
+    Hi,
+    {-brand-name} has a free service where you can check to see if you’ve been part of a data breach. Here’s how it works:
+    1. Go to {"https://monitor.firefox.com"} and search your email.
+    2. See if your online accounts have been exposed in a data breach.
+    3. Get tips from {-product-name} about what to do next.
+
+
+# Unsubscribe link in email.
+email-unsub-link =  Unsubscribe
+
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb = You’re receiving this email because you signed up for {-product-name} 
+  alerts. No longer want these emails? { $unsubLink }. This is an automated email. For support, visit { $faqLink }.
+
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy = You’re receiving this email because you signed up for {-product-name} alerts. 
+  This is an automated email. For support, visit { $faqLink }.
+
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = View My Dashboard
+
+# Button text
+verify-email-cta = Verify Email
+
+# Headline of verification email
+email-link-expires = This link expires in 24 hours
+email-verify-blurb = Verify your email to add it to {-product-name} and sign up for breach alerts.
+
+# Email headline
+email-found-breaches-hl = Here’s your summary of past data breaches
+
+# Email headline
+email-breach-summary-for-email = Breach summary for { $userEmail }
+
+# Email headline
+email-no-breaches-hl = { $userEmail } appeared in 0 known data breaches
+
+# Email headline
+email-alert-hl = { $userEmail } appeared in a new data breach
+
+# Subject line of email
+email-subject-found-breaches = {-product-name} found your info in these breaches
+
+# Subject line of email
+email-subject-no-breaches = {-product-name} found no known breaches
+
+# Subject line of email
+email-subject-verify = Verify your email for {-product-name}
+
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Learn more about { $fxmLink }
+
+email-sensitive-disclaimer = Due to the sensitive nature of this breach, emails involved are not publicly discoverable. 
+  You’re receiving this alert because you’re the verified owner of this email address.
+
+fxm-warns-you-no-breaches = {-product-name} warns you about data breaches involving your personal info. 
+  So far, no breaches were found. We’ll send you an alert if your email address appears in a new breach.
+
+fxm-warns-you-found-breaches = {-product-name} warns you about data breaches involving your personal info. 
+  You’re also signed up to receive alerts if your email address appears in a new breach.
+
+email-breach-alert-blurb = 
+  {-product-name} warns you about data breaches involving your personal info. 
+  We just received details about another company’s data breach.
+
+# List headline
+faq-list-headline = Frequently asked questions
+
+# Link Title
+faq-v2-1 = I don’t recognize one of these companies or websites. Why am I in this breach?
+
+# Link Title
+faq-v2-2 = Do I need to do anything if a breach happened years ago or this is an old account?
+
+# Link Title
+faq-v2-3 = I just found out I’m in a data breach. What do I do next?
+
+# Link Title
+faq-v2-4 = How does {-product-name} treat sensitive sites?

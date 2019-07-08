@@ -6,19 +6,23 @@
     <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
     <title>Firefox Monitor</title>
     <style>
-
        body {
         text-align: center;
         font-family: sans-serif;
         font-weight: 400;
-        color: #333333;
-        background: #ededf0;
+        color: #20123a;
+        background: #fbfcfe;
       }
       
       a,
       .footer-copy a {
         color: #0060df;
         font-weight: 400;
+      }
+
+      p.more-info-link-wrap,
+      a.more-info-link {
+        font-size: 16px;
       }
 
       .button {
@@ -29,20 +33,8 @@
 
       .body-copy {
         text-decoration: none;
-        color: #333333;
-        font-weight: 400;
-      }
-
-      .h1 {
-        color: #363959;
-      }
-
-      .body-copy {
-        color: #333333 !important;
-      }
-
-      p {
-        line-height: 1.65em;
+        line-height: 1.5;
+        font-size: 15px;
       }
 
       .footer-copy {
@@ -54,51 +46,92 @@
         border-width: 0px;
       }
 
-      p, 
+      a[x-apple-data-detectors] {
+        color: inherit !important;
+        text-decoration: none !important;
+        font-size: inherit !important;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important;
+      }
+
+      .rec-email a {
+        color: #9059ff;
+        text-decoration: none !important;
+        font-weight: 700;
+      }
+
       a {
-        font-family: sans-serif;
+        transition: all .1s ease;
       }
 
-      @media screen and (max-width: 500px) {
-        br.break-line {
-          display: none;
-        }
-
-        td.logomark-wrapper {
-          width: 50px !important;
-        }
-
-        img.firefox-monitor-logomark {
-          width: 40px !important;
-        }
-
-        h1.firefox-monitor-logotype {
-          white-space: nowrap;
-          font-size: 25px !important;
-        }
+      a:hover {
+        text-decoration: underline !important;
+        transition: all .1s ease;
       }
 
+      @media screen and (max-width: 600px) {
+
+        .email-breach-listing {
+          border: 1px solid #eee;
+        }
+
+        .source-info-wrap {
+          width: 100% !important;
+        }
+      }
     </style>
   </head>
-  <body bgcolor="#ededf0" style="background-color: #ededf0; padding-left: 0px; padding-right: 0px; padding-top:30px; padding-bottom: 50px; margin: 0px; width: 100%; height: 100%; line-height: 22px; font-famly: 'Fira Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; color: #333333;" >
-    <table bgcolor="#ededf0" height="100%" width="100%" style="width: 100%; height: 100%; background-color: #ededf0; padding-bottom: 100px; padding-top: 50px;">
+  <body bgcolor="#fbfcfe" style="background-color: #fbfcfe; padding: 0px; margin: 0px; width: 100%; height: 100%; font-famly: sans-serif; color: #20123a;" >
+    <table bgcolor="#fbfcfe" height="100%" width="100%" style="width: 100%; height: 100%; background-color: #fbfcfe; padding: 50px 20px;">
       <tr>
-        <td width="603px" >
-          <table border="1" cellspacing="0" cellpadding="0" align="center" width="100%" style="padding: 0px; max-width: 603px; min-width: 200px; width: 100%; text-align: center; border-collapse: collapse; box-shadow: 1px 1px 2px #b1b1b3; border: 1px solid #b1b1b3;">
+        <td align="center" valign="top" width="460px" style="width: 460px; max-width: 460px;">
+          <table width="100%" cellspacing="0" cellpadding="0" align="center" style="text-align: center; border-collapse: collapse; max-width: 460px;">
+            
+            <!--Firefox Monitor Logo-->
             <tr>
-              <td border="0" cellpadding="0" cellspacing="0" style="border-width: 0px; border-collapse: collapse;">
-                {{> email_partials/email_logo}}
+              <td align="center" border="0" cellpadding="0" cellspacing="0" style="border-width: 0px; border-collapse: collapse; padding-bottom: 20px;">
+                <img align="center" src="https://monitor.firefox.com/img/firefox-monitor-logo.png" width="70px" style="width: 70px;">
+              </td>
+            </tr>
+
+            <!--Firefox Monitor Logotype-->
+            <tr>
+              <td align="center" border="0" cellpadding="0" cellspacing="0" style="border-width: 0px; border-collapse: collapse; padding-bottom: 20px;">
+                <img align="center" src="http://localhost:6060/img/email_images/fxm-lg-drk.png" style="width: 100%; min-width: 100px; max-width: 200px; display: block; margin: auto;" />
+              </td>
+            </tr>
+            
+            <!-- header -->
+            <tr>
+              <td align="center" width="100%" border="0" cellpadding="0" cellspacing="0" style="border-width: 0px; border-collapse: collapse; padding-bottom: 20px; width: 100%; text-align: center;">
+                <h2 class="email-hl" align="center" style="color: #20123a; font-size: 24px; text-align: center; line-height: 1.25; margin: auto; font-family: sans-serif;">
+                  {{{ getEmailHeader }}}
+                </h2>
+              </td>
+            </tr>
+
+            <!--email content-->
+            <tr>
+              <td border="0" cellpadding="0" cellspacing="0" style="border-width: 0px;">
+                {{> (lookup . 'whichPartial') }}
               </td>
             </tr>
             <tr>
-              <td bgcolor="#ffffff" style="padding: 30px" border="0" cellpadding="0" cellspacing="0" style="border-width: 0px;">
-                {{> (lookup . 'whichView')}}
+              <td style="padding-bottom: 20px" border="0" cellpadding="0" cellspacing="0" style="border-width: 0px;">
+                {{> email_partials/email_button href=ctaHref}}
               </td>
             </tr>
-          </table>
-          <table border="0" cellspacing="0" cellpadding="0" align="center" width="100%" style="width: 100%; max-width: 603px; min-width: 100px; padding-top: 30px;">
+            {{#showFaqs}}
+              <!--FAQs-->
+              <tr>
+                <td align="center" style="padding: 20px 0;">
+                  {{> email_partials/email_faqs }}
+                </td>
+              </tr>
+            {{/showFaqs}}
             <tr>
-              <td>
+              <td align="center" border="0" cellpadding="0" cellspacing="0" style="border-width: 0px; border-collapse: collapse; padding-bottom: 20px;">
                 {{> email_partials/email_footer}}
               </td>
             </tr>
