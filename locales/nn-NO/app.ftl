@@ -18,6 +18,7 @@ error-not-subscribed = Denne e-postadressa abonnerer ikkje på { -product-name }
 error-hibp-throttled = For mange tilkoplingar til { -brand-HIBP }.
 error-hibp-connect = Klarte ikkje å kople til { -brand-HIBP }.
 error-hibp-load-breaches = Klarte ikkje å laste datalekkasjar.
+error-must-be-signed-in = Du må vere innlogga på { -brand-fxa }.
 home-title = { -product-name }
 home-not-found = Fann ikkje sida.
 oauth-invalid-session = Ugyldig økt
