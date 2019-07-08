@@ -23,6 +23,7 @@ error-hibp-throttled = Too many connections to {-brand-HIBP}.
 error-hibp-connect = Error connecting to {-brand-HIBP}.
 error-hibp-load-breaches = Could not load breaches.
 error-must-be-signed-in = You must be signed in to your {-brand-fxa}.
+error-to-finish-verifying = To finish verifying this email for {-product-name}, you must be signed in under your primary account email.
 
 home-title = {-product-name}
 home-not-found = Page not found.
@@ -33,6 +34,8 @@ scan-title = {-product-name} : Scan Results
 
 user-add-invalid-email = Invalid Email
 user-add-email-verify-subject = Verify your subscription to {-product-name}.
+user-add-duplicate-email = This email has already been added to {-product-name}.
+user-add-duplicate-email-part-2 = Visit your { $preferencesLink } to check the status of { $userEmail }.
 
 error-headline = Error
 user-verify-token-error = Verification token is required.
@@ -225,8 +228,8 @@ how-fxm-3-blurb = If you use {-brand-name}, you’ll receive a notification if y
   site that’s been breached. Find out right away if you were part of that breach 
   and what you can do about it.
 
-wtd-after-website = What to do after a website breach
-wtd-after-data-agg = What to do after a data aggregator breach
+wtd-after-website = What to do after a website breach:
+wtd-after-data-agg = What to do after a data aggregator breach:
 
 what-is-data-agg = What is a data aggregator?
 what-is-data-agg-blurb = Data aggregators, or data brokers, collect information from public 
@@ -312,7 +315,7 @@ your-info-was-discovered-headline = Your information was discovered in a new dat
 your-info-was-discovered-blurb = You’re signed up to receive {-product-name} alerts 
   when your email appears in a data breach. Here’s what we know about this breach.
 
-what-to-do-after-breach = What to do after a data breach:
+what-to-do-after-breach = What to do after a data breach
 
 ba-next-step-1 = Change your password to a strong, unique password.
 ba-next-step-blurb-1 =
@@ -475,7 +478,7 @@ email-addresses-title = Email Addresses
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview = On { $breachDate }, { $breachTitle } suffered a breach. Once the breach was discovered and verified it was added to our database on { $addedDate }.
+breach-overview-new = On { $breachDate }, { $breachTitle } was breached. Once the breach was discovered and verified, it was added to our database on { $addedDate }.
 
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = {-product-short-name} Preferences
