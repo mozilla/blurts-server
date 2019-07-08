@@ -18,8 +18,6 @@ report-headline =
         [one] Kontoen din er involvert i { $breachCount } datalekkasje.
        *[other] Kontoane dine er involvert i { $breachCount } datalekkasjar.
     }
-breach-alert-headline = Kontoen din har vore involvert i ein datalekkasje.
-breach-alert-subhead = Ein nyleg rapportert datalekkasje inneheld di e-postadresse og følgjande opplysningar
 report-pwt-headline-1 = Bruk ulike passord for kvar konto
 report-pwt-headline-2 = Lag sterke, unike passord
 report-pwt-summary-2 =
@@ -34,3 +32,13 @@ report-pwt-summary-4 =
 legal = Juridisk informasjon
 # Share Firefox Monitor by email subject line
 share-by-email-subject = Sjå om du har blitt utsett for ein datalekkasje.
+# Button text
+verify-email-cta = Stadfest e-post
+# Headline of verification email
+email-link-expires = Denne lenka går ut om 24 timar
+# Subject line of email
+email-subject-verify = Stadfest e-posten din for { -product-name }
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Les meir om { $fxmLink }
+# List headline
+faq-list-headline = Vanlege spørsmål
