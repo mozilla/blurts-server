@@ -76,5 +76,17 @@ email-subject-no-breaches = { -product-name } 沒有找到相關資料外洩事�
 email-subject-verify = { -product-name }: 驗證您的電子郵件地址
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = 了解 { $fxmLink } 的更多資訊
+email-sensitive-disclaimer = 由於這場資料外洩事件的敏感性，相關的 E-Mail 信箱資料並未公開揭露。您會收到這封警報是因為您是此信箱帳號經驗證過的擁有者。
+fxm-warns-you-no-breaches = { -product-name } 會在有與您相關的個資外洩事件發生時警告您。目前為止，還沒有發生過類似事件。我們會在您的電子郵件地址出現於新事件中時通知您。
+fxm-warns-you-found-breaches = { -product-name } 會在有與您相關的個資外洩事件發生時警告您。您也已經訂閱，當您的電子郵件地址出現於新事件中時通知您。
+email-breach-alert-blurb = { -product-name } 會在有與您相關的個資外洩事件發生時警告您。我們剛收到其他公司的資料外洩事件。
 # List headline
 faq-list-headline = 常見問題
+# Link Title
+faq-v2-1 = 我不認識這些公司或網站，為什麼我跟這個外洩事件有關係？
+# Link Title
+faq-v2-2 = 如果這件事發生在好幾年前，或是已經是不用的帳號，我還需要做什麼嗎？
+# Link Title
+faq-v2-3 = 我剛發現某場資料外洩事件當中包含我的資料。接下來該怎麼做？
+# Link Title
+faq-v2-4 = { -product-name } 怎麼處理這些敏感性網站？
