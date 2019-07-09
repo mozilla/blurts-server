@@ -89,6 +89,8 @@ email-alert-hl = { $userEmail } apareceu em um novo vazamento de dados
 email-subject-found-breaches = O { -product-name } encontrou informações suas nesses vazamentos
 # Subject line of email
 email-subject-no-breaches = O { -product-name } não encontrou nenhum vazamento conhecido
+# Subject line of email
+email-subject-verify = Confirme seu e-mail no { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Saiba mais sobre o { $fxmLink }
 email-sensitive-disclaimer =
