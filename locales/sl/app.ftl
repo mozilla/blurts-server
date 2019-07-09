@@ -134,6 +134,7 @@ website-breach-plural = Kraje podatkov spletne strani
 sensitive-breach-plural = Občutljive kraje podatkov
 data-aggregator-breach-plural = Kraje podatkov zbiralnika podatkov
 unverified-breach-plural = Nepotrjene kraje podatkov
+spam-list-breach-plural = Kraje podatkov neželene pošte
 what-data = Kateri podatki so bili ogroženi:
 sensitive-sites = Kako { -product-name } obravnava občutljiva spletna mesta?
 delayed-reporting-headline = Zakaj je trajalo toliko časa, da je bila kraja podatkov prijavljena?

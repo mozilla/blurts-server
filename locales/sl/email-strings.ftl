@@ -58,7 +58,11 @@ share-by-email-message =
     1. Obišči { "https://monitor.firefox.com" } in preveri svoj e-poštni naslov.
     2. Preveri, ali so bili tvoji spletni računi izpostavljeni v kraji podatkov.
     3. Prejmi nasvete { -product-name }ja o tem, kako ukrepati.
+# Unsubscribe link in email.
+email-unsub-link = Odjavi se
 # Button text
 verify-email-cta = Potrdi e-poštni naslov
+# Email headline
+email-alert-hl = { $userEmail } se je pojavil v novi kraji podatkov
 # List headline
 faq-list-headline = Pogosto zastavljena vprašanja
