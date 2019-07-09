@@ -55,10 +55,20 @@ share-by-email-message =
     1. Přejděte na adresu { "https://monitor.firefox.com" } a vyhledejte svou e-mailovou adresu.
     2. Uvidíte, jestli byly vaše internetové účty součástí úniku dat.
     3. { -product-name } vám nabídne pár tipů, co dál a jak zůstat v bezpečí.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    Tento e-mail jste obdrželi, protože jste se zaregistrovali k dostávání upozornění od { -product-name(case: "gen") }.
+    Toto je automaticky zaslaný e-mail. Potřebujete-li pomoc, navštivte { $faqLink }.
 # Button text
 verify-email-cta = Ověřit e-mailovou adresu
 # Headline of verification email
 email-link-expires = Platnost tohoto odkazu vyprší za 24 hodin
 email-verify-blurb = Ověřte svou e-mailovou adresu, aby byla přidána do { -product-name(case: "gen") } a zaregistrována k dostávání upozornění na úniky dat.
 # Subject line of email
+email-subject-found-breaches = { -product-name } našel vaše údaje v těchto únicích dat
+# Subject line of email
 email-subject-verify = Ověření e-mailové adresy pro { -product-name }
+fxm-warns-you-found-breaches =
+    { -product-name } vás upozorňuje na úniky dat, jejichž součástí byly vaše osobní údaje.
+    Jste také zaregistrováni k obdržení upozornění, jestliže se vaše e-mailová adresa vyskytne v novém úniku dat.
