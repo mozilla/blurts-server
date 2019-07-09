@@ -65,10 +65,14 @@ verify-email-cta = Ověřit e-mailovou adresu
 # Headline of verification email
 email-link-expires = Platnost tohoto odkazu vyprší za 24 hodin
 email-verify-blurb = Ověřte svou e-mailovou adresu, aby byla přidána do { -product-name(case: "gen") } a zaregistrována k dostávání upozornění na úniky dat.
+# Email headline
+email-breach-summary-for-email = Souhrnné informace o únicích pro { $userEmail }
 # Subject line of email
 email-subject-found-breaches = { -product-name } našel vaše údaje v těchto únicích dat
 # Subject line of email
 email-subject-verify = Ověření e-mailové adresy pro { -product-name }
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Zjistit více o službě { $fxmLink }
 fxm-warns-you-found-breaches =
     { -product-name } vás upozorňuje na úniky dat, jejichž součástí byly vaše osobní údaje.
     Jste také zaregistrováni k obdržení upozornění, jestliže se vaše e-mailová adresa vyskytne v novém úniku dat.
