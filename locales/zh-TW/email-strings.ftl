@@ -13,9 +13,6 @@ unsubscribe-email-link = 如果您不想再收到 { -product-name } 警報，可
 firefox-monitor-report = { -product-name } 報告
 report-date = 報告日期:
 email-address = 電子郵件地址:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = 以下是您的 { -product-name } 完整報告，包含與此信箱有關的所有資料外洩事件。
-report-no-breaches = 您的電子郵件地址並未出現在我們的資料庫中，但資料外洩事件隨時都有可能發生，請按照下列步驟來確保您的個人資料安全。
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = 接下來可以做什麼
 report-headline =
@@ -26,8 +23,6 @@ report-headline =
     }
 report-subhead-no-breaches = 您的帳號並未出現在我們的資料外洩事故完整報告中。這是好消息，但您還可以做更多事來自保。資料外洩事件隨時都有可能發生，請繼續閱讀，以了解可如何保護密碼安全。
 report-subhead-found-breaches = 以下是您的 Firefox Monitor 完整報告，包含與此電子郵件地址有關的所有資料外洩事件。
-breach-alert-headline = 您的帳號受到資料外洩事件影響。
-breach-alert-subhead = 最近發生的資料外洩事件，包含您的電子郵件地址與下列資料
 report-pwt-blurb = 密碼很有價值，每天都有數以千組的密碼被偷走，並且在黑市上交易。強大的密碼可保護您的帳號，以及帳號當中的個人資訊。
 report-pwt-headline-1 = 為每個帳號使用不同密碼
 report-pwt-summary-1 = 在每個帳號中都重複使用相同的密碼，會讓您門戶大開，也讓駭客可在您的一組密碼外洩後，用來登入您的其他帳號。
@@ -48,3 +43,38 @@ share-by-email-message =
     1. 到 { "https://monitor.firefox.com" } 輸入你的電子郵件地址。
     2. 看看你的帳號是否出現在資料外洩事件中。
     3. 了解 { -product-name } 有什麼能夠處理這些問題的秘訣。
+# Unsubscribe link in email.
+email-unsub-link = 取消訂閱
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb = 您會收到這封信，是因為您曾經註冊過 { -product-name } 的警報。不想再收到這些信了嗎？{ $unsubLink }。這是系統自動發出的郵件，若需支援請洽 { $faqLink }。
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy = 您會收到這封信，是因為您曾經註冊過 { -product-name } 的警報。這是系統自動發出的郵件，若需支援請洽 { $faqLink }。
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = 檢視我的儀表板
+# Button text
+verify-email-cta = 驗證電子郵件地址
+# Headline of verification email
+email-link-expires = 此鏈結將於 24 小時後失效
+email-verify-blurb = 請驗證您的電子郵件地址，即可加入 { -product-name } 並訂閱資料外洩警報。
+# Email headline
+email-found-breaches-hl = 以下是您過去遭遇資料外洩事件的摘要
+# Email headline
+email-breach-summary-for-email = { $userEmail } 的資料外洩事件摘要
+# Email headline
+email-no-breaches-hl = { $userEmail } 出現在 0 場已知的資料外洩事件中
+# Email headline
+email-alert-hl = { $userEmail } 出現在新的資料外洩事件中
+# Subject line of email
+email-subject-found-breaches = { -product-name } 在下列資料外洩事件找到您的資訊
+# Subject line of email
+email-subject-no-breaches = { -product-name } 沒有找到相關資料外洩事件
+# Subject line of email
+email-subject-verify = { -product-name }: 驗證您的電子郵件地址
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = 了解 { $fxmLink } 的更多資訊
+# List headline
+faq-list-headline = 常見問題
