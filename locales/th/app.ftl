@@ -89,6 +89,8 @@ search-all-emails = ค้นหาที่อยู่อีเมลทั้
 monitor-several-emails = ตรวจสอบหลายอีเมล
 take-action = ดำเนินการเพื่อปกป้องบัญชีของคุณ
 keep-your-data-safe = ค้นหาสิ่งที่คุณต้องทำเพื่อปกป้องข้อมูลของคุณให้ปลอดภัยจากอาชญากรไซเบอร์
+website-breach = การรั่วไหลของเว็บไซต์
+website-breach-plural = การรั่วไหลของเว็บไซต์
 what-data = ชนิดข้อมูลที่ถูกบุกรุก:
 about-fxm-headline = เกี่ยวกับ { -product-name }
 # How Firefox Monitor works
