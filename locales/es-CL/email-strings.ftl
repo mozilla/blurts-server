@@ -13,9 +13,6 @@ unsubscribe-email-link = Si ya no quieres recibir alertas de { -product-name }, 
 firefox-monitor-report = Informe de { -product-name }
 report-date = Fecha del informe:
 email-address = Dirección de correo electrónico:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Aquí está tu informe de { -product-name } completo, el cual incluye todas las filtraciones de datos conocidas que contienen a esta dirección de correo.
-report-no-breaches = Tu dirección de correo no apareció en nuestra base de datos de filtraciones conocidas. Pero las filtraciones pueden ocurrir en cualquier momento. Toma estas medidas para proteger tus datos personales en línea.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Qué hacer a continuación
 report-headline =
@@ -29,8 +26,6 @@ report-subhead-no-breaches =
     Eso es bueno, pero hay mucho más que puedes hacer.
     Las filtraciones de datos pueden suceder en todo momento, así que lee sobre cómo puedes proteger tus contraseñas.
 report-subhead-found-breaches = Aquí está tu reporte de Firefox Monitor completo, el que incluye todas las filtraciones de datos conocidas que contienen esta dirección de correo.
-breach-alert-headline = Tu cuenta fue afectada por una filtración de datos.
-breach-alert-subhead = Una filtración de datos reportada recientemente contiene tu correo electrónico y los siguientes datos
 report-pwt-blurb =
     Las contraseñas son tan valiosas, que miles de ellas son robadas todos los días y comercializadas en el mercado negro.
     Las contraseñas más fuertes protegen tus cuentas y toda la información personal que reside en ellas.
@@ -58,3 +53,15 @@ share-by-email-message =
     1. Ve a { "https://monitor.firefox.com" } y revisa tu correo.
     2. Mira si tus cuentas en línea han sido expuestas en una filtración de datos.
     3. Recibe consejos de { -product-name } sobre que hacer a continuación.
+# Unsubscribe link in email.
+email-unsub-link = Desuscribirse
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy = Estás recibiendo este correo por que te registraste para recibir alertas de { -product-name }. Este es un correo automático. Para ayuda, visita { $faqLink }.
+# Button text
+verify-email-cta = Verificar correo
+# Headline of verification email
+email-link-expires = Este enlace expira en 24 horas.
+email-verify-blurb = Verifica tu correo para añadirlo a { -product-name } y registrarte para alertas de nuevas filtraciones.
+# Subject line of email
+email-subject-verify = Verifica tu correo para { -product-name }
