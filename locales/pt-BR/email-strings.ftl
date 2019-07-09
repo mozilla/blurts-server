@@ -15,11 +15,6 @@ unsubscribe-email-link = Se você não quer mais receber alertas do { -product-n
 firefox-monitor-report = Relatório do { -product-name }
 report-date = Data do relatório:
 email-address = Endereço de e-mail:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Aqui está o seu relatório completo do { -product-name }, que inclui todos os vazamentos de dados conhecidos em que este endereço de e-mail foi afetado.
-report-no-breaches =
-    Seu endereço de e-mail não aparece na nossa base de vazamentos conhecidos.
-    Porém vazamentos podem acontecer a qualquer momento. Tome estas medidas para manter seus dados pessoais seguros online.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = O que fazer agora
 report-headline =
@@ -33,8 +28,6 @@ report-subhead-no-breaches =
     Isso é uma boa notícia, mas você pode fazer mais para se proteger.
     Vazamentos de dados podem acontecer a qualquer hora, então continue lendo para saber como proteger suas senhas.
 report-subhead-found-breaches = Aqui está o seu relatório completo do Firefox Monitor, que inclui todos os vazamentos de dados conhecidos em que este endereço de e-mail foi afetado.
-breach-alert-headline = Sua conta foi afetada por um vazamento de dados.
-breach-alert-subhead = Um vazamento de dados que veio a público recentemente contém o seu endereço de e-mail e os seguintes dados
 report-pwt-blurb =
     Senhas são tão importantes que milhares delas são roubadas todos os dias e negociadas ou vendidas no mercado negro.
     Senhas mais fortes protegem suas contas e todas as informações pessoais que residem dentro delas.
@@ -63,3 +56,5 @@ share-by-email-message =
     1. Vá em { "https://monitor.firefox.com" } e pesquise seu endereço de email.
     2. Veja se suas contas online foram expostas em um vazamento de dados.
     3. Receba dicas do { -product-name } sobre o que fazer depois.
+# Unsubscribe link in email.
+email-unsub-link = Cancelar inscrição
