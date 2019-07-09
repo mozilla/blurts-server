@@ -28,9 +28,9 @@ user-add-email-verify-subject = Confirme seu cadastro no { -product-name }.
 error-headline = Erro
 user-verify-token-error = Token de verificação é necessário.
 user-verify-email-report-subject = Seu relatório do { -product-name }
-user-unsubscribe-token-error = Um token é necessário para se descadastrar.
-user-unsubscribe-token-email-error = Para se descadastrar são necessários um token e um hash de e-mail.
-user-unsubscribe-title = { -product-name }: Descadastrar
+user-unsubscribe-token-error = É necessário um token para cancelar a inscrição.
+user-unsubscribe-token-email-error = Para cancelar a inscrição são necessários um token e um hash de e-mail.
+user-unsubscribe-title = { -product-name }: Cancelar a inscrição
 pwt-section-headline = Senhas Fortes = Mais Proteção
 landing-headline = Seu direito de ficar seguro contra hackers começa aqui.
 scan-placeholder = Digite um endereço de e-mail
@@ -47,9 +47,9 @@ breach-date = Data do vazamento:
 compromised-accounts = Contas comprometidas:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Dados comprometidos:
-unsub-headline = Descadastrar do { -product-name-nowrap }
+unsub-headline = Cancelar a inscrição no { -product-name-nowrap }
 unsub-blurb = Isso irá remover seu endereço de e-mail da lista do { -product-name-nowrap } e você não irá mais receber alertas quando novos vazamentos forem anunciados.
-unsub-button = Descadastrar
+unsub-button = Cancelar a inscrição
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Dados de vazamentos fornecidos por { $hibp-link }
 share-twitter = A maioria das pessoas tem cerca de 100 contas online. Alguma das suas foi exposta em um vazamento de dados? Descubra.
