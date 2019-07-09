@@ -15,11 +15,6 @@ unsubscribe-email-link = 如果您不想再收到 { -product-name } 警报，可
 firefox-monitor-report = { -product-name } 报告
 report-date = 报告日期：
 email-address = 电子邮件地址：
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = 这是您的 { -product-name } 完整报告，其中包含此电子邮件地址的所有已知数据外泄信息。
-report-no-breaches =
-    您的电子邮件地址未出现在我们的数据库中。
-    但数据外泄事件可能随时发生，请遵照下列步骤来确保您的个人数据安全。
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = 接下来怎么做
 report-headline =
@@ -33,8 +28,6 @@ report-subhead-no-breaches =
     这是个好消息，但您还有更多事情可以做。
     数据外泄事件可能随时发生，请继续阅读，以了解如何保护您的密码。
 report-subhead-found-breaches = 以下是您的 Firefox Monitor 完整报告。包含与此电子邮件地址有关的所有数据外泄事件的信息。
-breach-alert-headline = 您的账号受到了数据外泄事件影响。
-breach-alert-subhead = 在最近发生的数据外泄事件中，包含您的电子邮件地址以及以下数据
 report-pwt-blurb =
     密码很有价值，每天都有数以千计的密码被窃取，并在黑市上被交易。
     强大的密码可以保护您的账号，以及账号中所含的个人信息。
@@ -65,3 +58,37 @@ share-by-email-message =
     1. 转到 { "https://monitor.firefox.com" } 并搜索您的电子邮件地址。
     2. 看看您的在线账号是出现在数据外泄事件中。
     3. 从 { -product-name } 获取有关如何处理这些问题的小贴士。
+# Unsubscribe link in email.
+email-unsub-link = 退订
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = 查看我的面板
+# Button text
+verify-email-cta = 验证邮箱
+# Headline of verification email
+email-link-expires = 此链接将在 24 小时后失效
+# Email headline
+email-found-breaches-hl = 以下是您过去数据外泄情况的概要
+# Email headline
+email-breach-summary-for-email = { $userEmail } 的数据外泄事件概要
+# Email headline
+email-no-breaches-hl = { $userEmail } 出现在 0 次已知的数据外泄事件中
+# Email headline
+email-alert-hl = { $userEmail } 出现在新的数据外泄事件中
+# Subject line of email
+email-subject-found-breaches = { -product-name } 在下列数据外泄事件找到您的信息
+# Subject line of email
+email-subject-no-breaches = { -product-name } 未找到相关数据外泄事件
+# Subject line of email
+email-subject-verify = { -product-name }：验证您的电子邮件地址
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = 详细了解有关“{ $fxmLink }”
+# List headline
+faq-list-headline = 常见问题
+# Link Title
+faq-v2-1 = 我不认识其中的一家公司或网站，为什么我与该外泄事件有关？
+# Link Title
+faq-v2-2 = 如果外泄事件发生在几年前，或是已经不用的账号，我还需要做什么吗？
+# Link Title
+faq-v2-3 = 我刚刚发现自己遭受了数据外泄。接下来我该怎么做？
+# Link Title
+faq-v2-4 = { -product-name } 如何处理这些敏感网站？
