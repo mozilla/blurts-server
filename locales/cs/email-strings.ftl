@@ -15,11 +15,6 @@ unsubscribe-email-link = Pokud již nechcete upozornění od { -product-name(cas
 firefox-monitor-report = Hlášení { -product-name(case: "gen") }
 report-date = Datum:
 email-address = E-mailová adresa:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Toto je kompletní hlášení z { -product-name(case: "gen") }, které obsahuje všechny známé úniky dat, v nichž se vyskytuje tato e-mailová adresa.
-report-no-breaches =
-    Vaše e-mailová adresa se nevyskytuje v naší databázi známých úniků dat.
-    K dalšímu úniku ale může dojít kdykoliv. Podnikněte tyto kroky, které vám pomohou ochránit své osobní údaje na internetu.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Co teď dělat?
 report-headline =
@@ -34,8 +29,6 @@ report-subhead-no-breaches =
     To je dobrá zpráva, ale pořád ještě můžete něco zlepšovat.
     K dalšímu úniku dat může dojít kdykoliv. Přečtěte si, jak můžete ochránit svá hesla.
 report-subhead-found-breaches = Toto je vaše kompletní hlášení z Firefox Monitoru, které obsahuje všechny známé úniky dat, v nichž se vyskytuje tato e-mailová adresa.
-breach-alert-headline = Váš účet byl součástí úniku dat.
-breach-alert-subhead = Nedávno nahlášený únik dat obsahuje vaši e-mailovou adresu a následující data
 report-pwt-blurb =
     Hesla jsou velmi cenná a proto jich jsou denně ukradeny tisíce, načež jsou pak směňovány nebo prodávány na černém trhu. 
     Silnější hesla lépe chrání vaše účty a všechna osobní data, která v nich máte uložena.
@@ -62,3 +55,10 @@ share-by-email-message =
     1. Přejděte na adresu { "https://monitor.firefox.com" } a vyhledejte svou e-mailovou adresu.
     2. Uvidíte, jestli byly vaše internetové účty součástí úniku dat.
     3. { -product-name } vám nabídne pár tipů, co dál a jak zůstat v bezpečí.
+# Button text
+verify-email-cta = Ověřit e-mailovou adresu
+# Headline of verification email
+email-link-expires = Platnost tohoto odkazu vyprší za 24 hodin
+email-verify-blurb = Ověřte svou e-mailovou adresu, aby byla přidána do { -product-name(case: "gen") } a zaregistrována k dostávání upozornění na úniky dat.
+# Subject line of email
+email-subject-verify = Ověření e-mailové adresy pro { -product-name }
