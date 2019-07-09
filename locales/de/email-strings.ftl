@@ -13,11 +13,6 @@ unsubscribe-email-link = Wenn du keine Warnungen von { -product-name } mehr erha
 firefox-monitor-report = Bericht zu { -product-name }
 report-date = Datum des Berichts:
 email-address = E-Mail-Adresse:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Hier ist dein vollständiger Bericht von { -product-name }, der alle bekannten Datenlecks enthält, in denen  E-Mail-Adresse vorkommt.
-report-no-breaches =
-    Deine E-Mail-Adresse ist in unserer Datenbank bekannter Datenlecks nicht enthalten.
-    Aber Datenlecks können jederzeit passieren. Führe diese Schritte aus, um deine persönlichen Daten im Internet zu schützen.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Nächste Schritte
 report-headline =
@@ -31,8 +26,6 @@ report-subhead-no-breaches =
     Das sind gute Nachrichten, aber du kannst noch mehr tun.
     Datenschutzverletzungen passieren jederzeit. Lies weiter, um zu erfahren, wie du deine Passwörter schützen kannst.
 report-subhead-found-breaches = Hier ist dein vollständiger Bericht von Firefox Monitor, der alle bekannten Datenlecks enthält, in dem diese E-Mail-Adresse vorkommt.
-breach-alert-headline = Dein Konto ist von einem Datenleck betroffen.
-breach-alert-subhead = Ein kürzlich gemeldetes Datenleck enthält deine E-Mail-Adresse und folgende Daten
 report-pwt-blurb =
     Passwörter sind so wertvoll, dass Tausende von ihnen jeden Tag gestohlen und auf dem Schwarzmarkt gehandelt oder verkauft werden.
     Stärkere Passwörter schützen deine Konten und alle persönlichen Informationen, die sich darin befinden.
@@ -61,3 +54,62 @@ share-by-email-message =
     1. Geh auf { "https://monitor.firefox.com" } und suche nach deiner E-Mail-Adresse.
     2. Überprüfe, ob deine Online-Konten bei einem Datenleck geknackt wurden.
     3. Hol dir Tipps von { -product-name } für die nächsten Schritte.
+# Unsubscribe link in email.
+email-unsub-link = Abonnement entfernen
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb =
+    Sie erhalten diese E-Mail, weil Sie Warnungen zu { -product-name } abonniert haben.
+    Möchten Sie diese E-Mails nicht mehr erhalten? { $unsubLink }. Dies ist eine automatisierte E-Mail. Besuchen Sie { $faqLink }, um Hilfe zu erhalten.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    Sie erhalten diese E-Mail, weil Sie Warnungen zu { -product-name } abonniert haben.
+    Dies ist eine automatisierte E-Mail. Besuchen Sie { $faqLink }, um Hilfe zu erhalten.
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Meine Übersicht anzeigen
+# Button text
+verify-email-cta = E-Mail-Adresse bestätigen
+# Headline of verification email
+email-link-expires = Dieser Link läuft in 24 Stunden ab
+email-verify-blurb = Bestätigen Sie Ihre E-Mail-Adresse, um sie zu { -product-name } hinzuzufügen, und Warnungen über Datenlecks zu abonnieren.
+# Email headline
+email-found-breaches-hl = Hier finden Sie eine Übersicht über vergangene Datenlecks
+# Email headline
+email-breach-summary-for-email = Datenleck-Zusammenfassung für { $userEmail }
+# Email headline
+email-no-breaches-hl = { $userEmail } ist in 0 bekannten Datenlecks aufgetaucht
+# Email headline
+email-alert-hl = { $userEmail } ist in einem neuen Datenleck aufgetaucht
+# Subject line of email
+email-subject-found-breaches = { -product-name } hat Ihre Daten in den folgenden Datenlecks gefunden
+# Subject line of email
+email-subject-no-breaches = { -product-name } hat keine bekannten Datenlecks gefunden
+# Subject line of email
+email-subject-verify = Bestätigen Sie Ihre E-Mail-Adresse für { -product-name }
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Weitere Informationen zu { $fxmLink }
+email-sensitive-disclaimer =
+    Aufgrund des vertraulichen Charakters dieses Datenlecks werden die E-Mail-Adressen nicht öffentlich angezeigt.
+    Sie erhalten diese Benachrichtigung, weil Sie der bestätigte Eigentümer dieser E-Mail-Adresse sind.
+fxm-warns-you-no-breaches =
+     { -product-name } warnt Sie vor Datenlecks, die Ihre persönlichen Daten betreffen.
+    Bisher wurden keine Datenlecks festgestellt. Wir senden Ihnen eine Benachrichtigung, wenn Ihre E-Mail-Adresse in einem neuen Datenleck auftaucht.
+fxm-warns-you-found-breaches =
+     { -product-name } warnt Sie vor Datenlecks, die Ihre persönlichen Daten betreffen.
+    Sie haben auch Warnungen für den Fall abonniert, dass Ihre E-Mail-Adresse in einem neuen Datenleck auftaucht.
+email-breach-alert-blurb =
+     { -product-name } warnt Sie vor Datenlecks, die Ihre persönlichen Daten betreffen.
+    Wir haben soeben Informationen über ein Datenleck bei einem anderen Unternehmen erhalten.
+# List headline
+faq-list-headline = Häufig gestellte Fragen
+# Link Title
+faq-v2-1 = Ich kenne dieses Unternehmen oder die Website nicht. Warum bin ich von dem Datenleck betroffen?
+# Link Title
+faq-v2-2 = Muss ich irgendetwas tun, wenn ein Datenleck schon Jahre alt ist oder es sich um ein altes Konto handelt?
+# Link Title
+faq-v2-3 = Ich habe gerade erfahren, dass ich von einem Datenleck betroffen bin. Was muss ich jetzt tun?
+# Link Title
+faq-v2-4 = Wie behandelt { -product-name } vertrauliche Websites?
