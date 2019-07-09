@@ -76,3 +76,7 @@ learn-more-about-fxm = Zjistit více o službě { $fxmLink }
 fxm-warns-you-found-breaches =
     { -product-name } vás upozorňuje na úniky dat, jejichž součástí byly vaše osobní údaje.
     Jste také zaregistrováni k obdržení upozornění, jestliže se vaše e-mailová adresa vyskytne v novém úniku dat.
+# List headline
+faq-list-headline = Často kladené otázky
+# Link Title
+faq-v2-1 = Tato společnost či web mi nic neříká. Proč dostávám oznámení o tomto úniku?
