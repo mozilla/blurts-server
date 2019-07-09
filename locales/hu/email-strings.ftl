@@ -60,12 +60,29 @@ share-by-email-message =
     3. Kapjon tippeket a { -product-name }tól arról, hogy mit tehet.
 # Unsubscribe link in email.
 email-unsub-link = Leiratkozás
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb =
+    Azért kapja ezt az e-mailt, mert feliratkozott a { -product-name } figyelmeztetéseire.
+    Már nem szeretné ezeket a leveleket? { $unsubLink }. Ez egy automatikus levél. Támogatásért keresse fel a { $faqLink } oldalt.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    Azért kapja ezt az e-mailt, mert feliratkozott a { -product-name } figyelmeztetéseire.
+    Ez egy automatikus levél. Támogatásért keresse fel a { $faqLink } oldalt.
 # Button text that takes the user to their signed in user dashboard.
 view-my-dashboard-cta = Saját vezérlőpult megtekintése
 # Button text
 verify-email-cta = E-mail cím megerősítése
 # Headline of verification email
 email-link-expires = Ez a hivatkozás 24 óra múlva lejár
+email-verify-blurb = Erősítse meg az e-mail címét a { -product-name }hoz hozzáadáshoz, és iratkozzon fel az adatsértési figyelmeztetésekre.
+# Email headline
+email-found-breaches-hl = Íme a múltbeli adatsértéseinek összefoglalása
+# Email headline
+email-breach-summary-for-email = A(z) { $userEmail } adatsértési összefoglalója
 # Email headline
 email-no-breaches-hl = A(z) { $userEmail } cím 0 ismert adatsértésben jelent meg
 # Email headline
