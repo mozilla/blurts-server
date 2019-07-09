@@ -97,6 +97,12 @@ email-sensitive-disclaimer =
 fxm-warns-you-no-breaches =
     O { -product-name } avisa sobre vazamentos de dados que envolvem suas informações pessoais. 
     Até agora, nenhum vazamento foi encontrado. Enviaremos a você um alerta caso seu endereço de e-mail apareça em um novo vazamento.
+fxm-warns-you-found-breaches =
+    O { -product-name } avisa sobre vazamentos de dados que envolvem suas informações pessoais. 
+    Você também se inscreveu para receber alertas caso seu endereço de e-mail apareça em um novo vazamento.
+email-breach-alert-blurb =
+    O { -product-name } avisa sobre vazamentos de dados que envolvem suas informações pessoais. 
+    Acabamos de receber detalhes sobre um vazamento de dados de outra empresa.
 # List headline
 faq-list-headline = Perguntas frequentes
 # Link Title
