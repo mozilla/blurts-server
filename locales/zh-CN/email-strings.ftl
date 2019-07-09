@@ -60,12 +60,21 @@ share-by-email-message =
     3. 从 { -product-name } 获取有关如何处理这些问题的小贴士。
 # Unsubscribe link in email.
 email-unsub-link = 退订
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb = 您收到此电子邮件，是因为您曾经注册过 { -product-name } 警报。不想再收到这些电子邮件？ { $unsubLink }。这是一封自动发送的邮件。如需帮助，请访问 { $faqLink }。
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy = 您收到此电子邮件，是因为您曾经注册过 { -product-name } 警报。这是一封自动发送的邮件。如需帮助，请访问 { $faqLink }。
 # Button text that takes the user to their signed in user dashboard.
 view-my-dashboard-cta = 查看我的面板
 # Button text
 verify-email-cta = 验证邮箱
 # Headline of verification email
 email-link-expires = 此链接将在 24 小时后失效
+email-verify-blurb = 请验证您的电子邮件地址，即可将其添加到 { -product-name } 并订阅数据外泄警报。
 # Email headline
 email-found-breaches-hl = 以下是您过去数据外泄情况的概要
 # Email headline
