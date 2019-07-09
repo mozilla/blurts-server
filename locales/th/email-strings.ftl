@@ -20,3 +20,9 @@ report-pwt-headline-3 = ปฏิบัติต่อคำถามควา�
 report-pwt-headline-4 = ใช้ตัวจัดการรหัสผ่าน
 # A link to legal information about mozilla products.
 legal = ข้อกฎหมาย
+# Unsubscribe link in email.
+email-unsub-link = เลิกบอกรับ
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = เรียนรู้เพิ่มเติมเกี่ยวกับ { $fxmLink }
+# List headline
+faq-list-headline = คำถามที่พบบ่อย
