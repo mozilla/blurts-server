@@ -15,11 +15,6 @@ unsubscribe-email-link = Če ne želite več prejemati opozoril { -product-name 
 firefox-monitor-report = Poročilo { -product-name }
 report-date = Datum poročila:
 email-address = E-poštni naslov:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Tukaj je vaše celotno poročilo { -product-name }ja, ki vključuje vse znane kraje podatkov, v katere je vključen ta e-poštni naslov.
-report-no-breaches =
-    Vaš e-poštni naslov ni prikazan v naši zbirki podatkov znanih kraj.
-    Do kraje podatkov lahko pride kadarkoli. Sledite tem korakom, da ohranite svoje osebne podatke na spletu varne.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Naslednji koraki
 report-headline =
@@ -35,8 +30,6 @@ report-subhead-no-breaches =
     To je dobra novica, vendar kljub temu bodite pozorni.
     Do kraje podatkov lahko pride kadarkoli, preberite si, kako zaščititi svoja gesla.
 report-subhead-found-breaches = Tukaj je vaše celotno poročilo Firefox Monitorja, ki vključuje vse znane kraje podatkov, v katere je vključen ta e-poštni naslov.
-breach-alert-headline = Vaš račun je bil vpleten v krajo podatkov.
-breach-alert-subhead = Nedavno objavljena kraja podatkov vsebuje vaš e-poštni naslov in naslednje podatke
 report-pwt-blurb =
     Gesla so tako dragocena, da jih je na tisoče ukradenih vsak dan, z njimi pa se tudi trguje na črnih trgih.
     Močna gesla ščitijo vaše račune in vse osebne podatke, ki se nahajajo v njih.
@@ -65,3 +58,7 @@ share-by-email-message =
     1. Obišči { "https://monitor.firefox.com" } in preveri svoj e-poštni naslov.
     2. Preveri, ali so bili tvoji spletni računi izpostavljeni v kraji podatkov.
     3. Prejmi nasvete { -product-name }ja o tem, kako ukrepati.
+# Button text
+verify-email-cta = Potrdi e-poštni naslov
+# List headline
+faq-list-headline = Pogosto zastavljena vprašanja
