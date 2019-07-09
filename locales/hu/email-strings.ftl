@@ -68,3 +68,35 @@ verify-email-cta = E-mail cím megerősítése
 email-link-expires = Ez a hivatkozás 24 óra múlva lejár
 # Email headline
 email-no-breaches-hl = A(z) { $userEmail } cím 0 ismert adatsértésben jelent meg
+# Email headline
+email-alert-hl = A(z) { $userEmail } cím egy adatsértésben jelent meg
+# Subject line of email
+email-subject-found-breaches = A { -product-name } ezekben az adatsértésekben találta meg az információit
+# Subject line of email
+email-subject-no-breaches = A { -product-name } nem talált ismert adatsértést
+# Subject line of email
+email-subject-verify = Erősítse meg a { -product-name }hoz használt e-mail címét
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Tudjon meg többet a { $fxmLink }ról
+email-sensitive-disclaimer =
+    Az adatsértés érzékeny jellege miatt, az érintett e-mail címek nem nyilvánosak.
+    Azért kapja ezt a figyelmeztetést, mert megerősítette, hogy Ön az e-mail cím tulajdonosa.
+fxm-warns-you-no-breaches =
+    A { -product-name } figyelmezteti az Ön személyes információit érintő adatsértésekről.
+    Eddig egyetlen adatsértés sem található. Figyelmeztetést küldünk Önnek, ha az e-mail címe új adatsértésben jelenik meg.
+fxm-warns-you-found-breaches =
+    A { -product-name } figyelmezteti az Ön személyes információit érintő adatsértésekről.
+    Arra is feliratkozott, hogy figyelmeztetést kapjon, ha az e-mail címe új adatsértésben jelenik meg.
+email-breach-alert-blurb =
+    A { -product-name } figyelmezteti az Ön személyes információit érintő adatsértésekről.
+    Épp most kaptunk részleteket egy másik céget érintő adatsértésről.
+# List headline
+faq-list-headline = Gyakran ismételt kérdések
+# Link Title
+faq-v2-1 = Nem ismerem ezeket a cégeket vagy weboldalakat? Miért szerepelek ebben az adatsértésben?
+# Link Title
+faq-v2-2 = Kell-e valamit tennem, ha ez az adatsértés évekkel ezelőtt történt vagy egy régi fiókomat érinti?
+# Link Title
+faq-v2-3 = Észrevettem, hogy szereplek egy adatsértésben. Mit legyen a következő lépésem?
+# Link Title
+faq-v2-4 = Hogyan kezeli a { -product-name } az érzékeny webhelyeket?
