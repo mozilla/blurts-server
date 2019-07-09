@@ -15,11 +15,6 @@ unsubscribe-email-link = Ha már nem szeretne { -product-name } figyelmeztetése
 firefox-monitor-report = { -product-name } jelentés
 report-date = Jelentés ideje:
 email-address = E-mail cím:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Itt van a teljes { -product-name } jelentés, amely tartalmazza az összes adatsértést, amely ezt az e-mail címet tartalmazza.
-report-no-breaches =
-    Az Ön e-mail címe nem szerepel az ismert adatsértések adatbázisában.
-    De adatsértések bármikor történhetnek. Tegye meg ezeket a lépéseket, hogy személyes adatait biztonságban tartsa online.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Mi legyen a következő teendő
 report-headline =
@@ -33,8 +28,6 @@ report-subhead-no-breaches =
     Ez jó hír, de többet is tehet.
     Adatsértések bármikor történhetnek, így olvasson arról, hogyan védheti meg jelszavait.
 report-subhead-found-breaches = Itt az Ön teljes Firefox Monitor jelentése, amely tartalmazza az összes ismert adatsértést, amely ezt az e-mail címet tartalmazza.
-breach-alert-headline = A fiókját érintette egy adatsértés.
-breach-alert-subhead = Egy nemrég bejelentett adatsértés tartalmazza az Ön e-mail címét és a következő adatait
 report-pwt-blurb =
     A jelszók olyan értékesek, hogy ezret lopnak el minden nap, és ezeket a fekete piacon adják el, és ott kereskednek velük.
     Az erősebb jelszavak védik a fiókjait, és az összes bennük található személyes adatot.
@@ -65,3 +58,13 @@ share-by-email-message =
     1. Lépjen a { "https://monitor.firefox.com" } weboldalra, és keresse meg az e-mail címét.
     2. Nézze meg, hogy az online fiókjai kikerültek-e egy adatsértéskor.
     3. Kapjon tippeket a { -product-name }tól arról, hogy mit tehet.
+# Unsubscribe link in email.
+email-unsub-link = Leiratkozás
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Saját vezérlőpult megtekintése
+# Button text
+verify-email-cta = E-mail cím megerősítése
+# Headline of verification email
+email-link-expires = Ez a hivatkozás 24 óra múlva lejár
+# Email headline
+email-no-breaches-hl = A(z) { $userEmail } cím 0 ismert adatsértésben jelent meg
