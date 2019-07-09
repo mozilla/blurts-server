@@ -91,6 +91,10 @@ email-subject-no-breaches = { -product-name } 未找到相关数据外泄事件
 email-subject-verify = { -product-name }：验证您的电子邮件地址
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = 详细了解有关“{ $fxmLink }”
+email-sensitive-disclaimer = 由于该数据外泄事件的敏感性，相关的电子邮件数据并未公开披露。您会收到此警报是因为您是此电子邮件地址经过验证的所有者。
+fxm-warns-you-no-breaches = { -product-name } 会在有与您相关的个人信息外泄事件发生时警告您。目前为止，未发生过外泄事件。我们会在您的电子邮件地址出现在新事件中时通知您。
+fxm-warns-you-found-breaches = { -product-name } 会在有与您相关的个人信息外泄事件发生时警告您。当您的电子邮件地址出现在新事件中时，您会收到订阅的警报。
+email-breach-alert-blurb = { -product-name } 会在有与您相关的个人信息外泄事件发生时警告您。我们刚收到其他公司的数据外泄事件。
 # List headline
 faq-list-headline = 常见问题
 # Link Title
