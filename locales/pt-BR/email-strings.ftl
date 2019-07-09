@@ -76,3 +76,34 @@ view-my-dashboard-cta = Ver meu painel
 verify-email-cta = Verificar e-mail
 # Headline of verification email
 email-link-expires = Este link expira em 24 horas
+email-verify-blurb = Confirme seu e-mail para adicionar ao { -product-name } se inscrever para receber alertas de vazamentos.
+# Email headline
+email-found-breaches-hl = Aqui está seu resumo de vazamentos de dados anteriores
+# Email headline
+email-breach-summary-for-email = Resumo de vazamentos de { $userEmail }
+# Email headline
+email-no-breaches-hl = { $userEmail } apareceu em 0 vazamentos conhecidos de dados
+# Email headline
+email-alert-hl = { $userEmail } apareceu em um novo vazamento de dados
+# Subject line of email
+email-subject-found-breaches = O { -product-name } encontrou informações suas nesses vazamentos
+# Subject line of email
+email-subject-no-breaches = O { -product-name } não encontrou nenhum vazamento conhecido
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Saiba mais sobre o { $fxmLink }
+email-sensitive-disclaimer =
+    Devido à natureza sensível deste vazamento, e-mails envolvidos não podem ser descobertos publicamente. 
+    Você está recebendo este alerta porque confirmou ser o dono deste endereço de e-mail.
+fxm-warns-you-no-breaches =
+    O { -product-name } avisa sobre vazamentos de dados que envolvem suas informações pessoais. 
+    Até agora, nenhum vazamento foi encontrado. Enviaremos a você um alerta caso seu endereço de e-mail apareça em um novo vazamento.
+# List headline
+faq-list-headline = Perguntas frequentes
+# Link Title
+faq-v2-1 = Não reconheço uma dessas empresas ou sites. Por que estou neste vazamento?
+# Link Title
+faq-v2-2 = Preciso fazer alguma coisa se um vazamento aconteceu anos atrás, ou esta é uma conta antiga?
+# Link Title
+faq-v2-3 = Acabei de descobrir que estou em um vazamento de dados. O que fazer agora?
+# Link Title
+faq-v2-4 = Como o { -product-name } lida com sites sensíveis?

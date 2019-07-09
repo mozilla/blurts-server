@@ -211,7 +211,7 @@ send-verification = Enviar link de confirmação
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-breach-summary = Resumo do vazamento
+breach-summary = Resumo de vazamentos
 show-breaches-for-this-email = Mostrar todos os vazamentos deste e-mail.
 link-change-primary = Alterar endereço de e-mail principal
 remove-fxm = Remover o { -product-name }
