@@ -2,9 +2,12 @@
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
+click-to-verify = Klikk på knappen ‹‹Stadfest e-postadressa mi›› innann 24 timar for å stadfeste Firefox Monitor-konten din. Rapporten vil deretter bli sendt til deg.
 verify-my-email = Stadfest e-postadressa mi
 report-scan-another-email = Skann ei anna e-postadresse i { -product-name }
 automated-message = Dette er ei automatisert e-postmelding. Om du har fått henne ved ein feil, treng du ikkje å gjere noko.
+# Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
+we-sent-this-alert = Vi har sendt denne meldinga til { $userEmail }, fordi e-postadressa er registrert for mottak av åtvaringar frå { -product-name }.
 unsubscribe-email-link = Om du ikkje lenger vil ha åtvaringar frå { -product-name }, avbryt abonnementet.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = { -product-name }-rapport
