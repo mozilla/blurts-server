@@ -80,3 +80,27 @@ email-breach-summary-for-email = Crynodeb o dor-data ar { $userEmail }
 email-no-breaches-hl = Ymddangosodd { $userEmail } mewn 0 tor-data hysbys
 # Email headline
 email-alert-hl = Ymddangosodd { $userEmail } mewn tor-data newydd
+# Subject line of email
+email-subject-found-breaches = Mae { -product-name } wedi canfod gwybodaeth amdanoch yn y tor-data yma
+# Subject line of email
+email-subject-no-breaches = Nid yw { -product-name } wedi canfod unrhyw dor-data hysbys
+# Subject line of email
+email-subject-verify = Gwirio eich e-bost ar gyfer { -product-name }
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Dysgu rhagor am { $fxmLink }
+email-sensitive-disclaimer =
+    Oherwydd natur sensitif y tor-data hwn, nid oes modd canfod yr e-byst hyn.
+    Rydych yn derbyn y rhybudd hwn oherwydd eich bod wedi eich gwirio fel perchennog y cyfeiriad e-bost hwn.
+fxm-warns-you-no-breaches = Mae { -product-name } yn eich rhybuddio am dor-data sy'n cynnwys eich manylion personol. Hyd yn hyn, nid ydym wedi darganfod unrhyw dor-data. Byddwn yn anfon rhybudd atoch os bydd eich cyfeiriad e-bost yn ymddangos mewn tor-data newydd.
+fxm-warns-you-found-breaches = Mae { -product-name } yn eich rhybuddio am dor-data sy'n cynnwys eich manylion personol. Rydych chi hefyd wedi cofrestru i dderbyn rhybuddion os bydd eich cyfeiriad e-bost yn ymddangos mewn tor-data newydd.
+email-breach-alert-blurb = Mae { -product-name } yn eich rhybuddio am dor-data sy'n cynnwys eich manylion personol. Rydym newydd dderbyn fanylion am dor-data cwmni arall.
+# List headline
+faq-list-headline = Cwestiynau cyffredin
+# Link Title
+faq-v2-1 = Nid wy'n adnabod y cwmni neu'r wefan hon. Pam ydw i yn y tor-data hwn?
+# Link Title
+faq-v2-2 = A oes angen i mi wneud unrhyw beth os digwydd tor-data flynyddoedd yn ôl neu os yw hwn yn hen gyfrif?
+# Link Title
+faq-v2-3 = Rwyf newydd ddeall fy mod i mewn tor-data. Beth ddylwn i ei wneud nesaf?
+# Link Title
+faq-v2-4 = Sut mae { -product-name } yn trin gwefannau sensitif?
