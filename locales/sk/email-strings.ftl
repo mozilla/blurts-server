@@ -15,11 +15,6 @@ unsubscribe-email-link = Ak už nechcete dostávať upozornenia zo služby { -pr
 firefox-monitor-report = Správa zo služby { -product-name }
 report-date = Dátum nahlásenia:
 email-address = E-mailová adresa:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Tu je kompletná správa zo služby { -product-name }, ktorá obsahuje všetky známe úniky dát s touto e-mailovou adresou.
-report-no-breaches =
-    Vaša e-mailová adresa nie je v našej databáze známych únikov dát. 
-    K úniku však môže dôjsť kedykoľvek. Zabezpečte svoje osobné údaje na internete.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Čo ďalej
 report-headline =
@@ -34,8 +29,6 @@ report-subhead-no-breaches =
     To je dobrá správa, no stále je čo zlepšovať. 
     K ďalšiemu úniku dát môže dôjsť kedykoľvek. Prečítajte si, ako môžete ochrániť svoje heslá.
 report-subhead-found-breaches = Tu je kompletná správa zo služby Firefox Monitor, ktorá obsahuje všetky známe úniky dát s touto e-mailovou adresou.
-breach-alert-headline = Váš účet bol súčasťou úniku dát.
-breach-alert-subhead = Nedávno nahlásený únik dát obsahuje vašu e-mailovú adresu a nasledujúce údaje
 report-pwt-blurb =
     Heslá sú veľmi cenné a preto sú ich denne odcudzené tisíce. Tie sú následne vymieňané alebo predávané na čiernom trhu.
     Silnejšie heslá lepšie chránia vaše účty a osobné údaje, ktoré v nich máte uložené.
@@ -64,3 +57,62 @@ share-by-email-message =
     1. Otvorte { "https://monitor.firefox.com" } a zadajte do vyhľadávacieho poľa svoju e-mailovú adresu.
     2. Pozrite sa, či bol váš účet súčasťou nejakého úniku dát.
     3. { -product-name } vám ponúkne pár tipov, ako ostať naďalej v bezpečí.
+# Unsubscribe link in email.
+email-unsub-link = Odhláste sa
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb =
+    Tento e-mail ste dostali, pretože ste sa prihlásili na odber upozornení zo služby { -product-name }.
+    Neželáte si už dostávať podobné e-maili? { $unsubLink }. Toto je automatický e-mail. Podporu nájdete na { $faqLink }.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    Tento e-mail ste dostali, pretože ste sa prihlásili na odber upozornení zo služby { -product-name }.
+    Toto je automatický e-mail. Podporu nájdete na { $faqLink }.
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Zobraziť moju nástenku
+# Button text
+verify-email-cta = Overiť e-mailovú adresu
+# Headline of verification email
+email-link-expires = Platnosť tohto odkazu vyprší o 24 hodín
+email-verify-blurb = Overte svoju e-mailovú adresu a prihláste sa tak v službe { -product-name } k odberu upozornení.
+# Email headline
+email-found-breaches-hl = Tu je váš súhrn predchádzajúcich únikov
+# Email headline
+email-breach-summary-for-email = Súhrn únikov pre { $userEmail }
+# Email headline
+email-no-breaches-hl = E-mailová adresa { $userEmail } sa neobjavila v žiadnom známom úniku
+# Email headline
+email-alert-hl = E-mailová adresa { $userEmail } sa objavila v novom úniku dát
+# Subject line of email
+email-subject-found-breaches = Služba { -product-name } odhalila vaše údaje v týchto únikoch
+# Subject line of email
+email-subject-no-breaches = { -product-name } nenašiel žiadne známe úniky
+# Subject line of email
+email-subject-verify = Overte svoju e-mailovú adresu pre { -product-name }
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Ďalšie informácie o { $fxmLink }
+email-sensitive-disclaimer =
+    Kvôli citlivej povahe tohto úniku nie sú uniknuté e-mailové adresy verejne dostupné.
+    Toto upozornenie ste dostali, pretože ste overeným majiteľom tejto e-mailovej adresy.
+fxm-warns-you-no-breaches =
+    Služba { -product-name } vás upozorňuje na úniky dát, ktorých súčasťou boli aj vaše údaje.
+    Zatiaľ ste sa neobjavili v žiadnom úniku. Ak sa vaša e-mailová adresa objaví v novom úniku, budeme vás o tom informovať.
+fxm-warns-you-found-breaches =
+    Služba { -product-name } vás upozorňuje na úniky dát, ktorých súčasťou boli aj vaše údaje.
+    Ste taktiež zaregistrovaní na odber upozornení v prípade, že sa vaša e-mailová adresa objaví v novom úniku.
+email-breach-alert-blurb =
+    Služba { -product-name } vás upozorňuje na úniky dát, ktorých súčasťou boli aj vaše údaje.
+    Práve sme dostali informácie o ďalšom úniku dát.
+# List headline
+faq-list-headline = Často kladené otázky
+# Link Title
+faq-v2-1 = Nepoznám niektorú z daných spoločností alebo webových stránok. Prečo som súčasťou tohto úniku dát?
+# Link Title
+faq-v2-2 = Musím niečo urobiť, ak sa únik odohral pred rokmi alebo ak ide o starý účet?
+# Link Title
+faq-v2-3 = Moje údaje boli súčasťou úniku dát. Čo teraz?
+# Link Title
+faq-v2-4 = Ako { -product-name } narába s chúlostivými stránkami?
