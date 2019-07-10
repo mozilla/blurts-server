@@ -111,3 +111,7 @@ faq-list-headline = Faak stelde fragen
 faq-v2-1 = Ik werken gjin fan dizze bedriuwen of websites. Wêrom kom ik foar yn dit datalek?
 # Link Title
 faq-v2-2 = Moat ik wat dwaan as in datalek jierren lyn bard is of as dit in âld account is?
+# Link Title
+faq-v2-3 = Ik kaam der krekt efter dat ik yn in datalek foar kom. Wat moat ik dwaan?
+# Link Title
+faq-v2-4 = Hoe behannelet { -product-name } gefoelige websites?
