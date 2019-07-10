@@ -15,11 +15,6 @@ unsubscribe-email-link = As jo gjin warskôgingen fan { -product-name } mear ûn
 firefox-monitor-report = { -product-name }-rapport
 report-date = Rapportdatum:
 email-address = E-mailadres:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Hjir is jo folsleine { -product-name }-rapport, mei alle bekende datalekken wêryn dit e-mailadres foarkomt.
-report-no-breaches =
-    Jo e-mailadres komt net foar yn ús database mei bekende lekken. 
-    Mar lekken kinne altyd barre. Nim de folgjende stappen om jo persoanlike gegevens online feilich te hâlden.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Folgjende stappen
 report-headline =
@@ -33,8 +28,6 @@ report-subhead-no-breaches =
     Dat is goed nijs, mar jo kinne mear dwaan. 
     Datalekken kinne altyd foarkomme, dus lês fierder om te sjen hoe't jo jo wachtwurden beskermje kinne.
 report-subhead-found-breaches = Hjir is jo folsleine Firefox Monitor-rapport, wêryn alle bekende datalekken stean wêryn dit e-mailadres foarkomt.
-breach-alert-headline = Jo account is belutsen by in datalek.
-breach-alert-subhead = In koartlyn meld datalek befettet jo e-mailadres en de folgjende gegevens
 report-pwt-blurb =
     Wachtwurden binne sa weardefol, dat der deistich tûzenen fan stellen en ferhannele of ferkocht wurde op de swarte merk. 
     Sterkere wachtwurden beskermje jo accounts en alle persoanlike gegevens dy't deryn bewarre wurde.
@@ -63,3 +56,54 @@ share-by-email-message =
     1. Gean nei { "https://monitor.firefox.com" } en sykje nei jo e-mailadres.
     2. Sjoch oft jo online accounts troffen binne troch in datalek.
     3. Untfang tips fan { -product-name } oer wat jo fierder dwaan kinne.
+# Unsubscribe link in email.
+email-unsub-link = Ofmelde
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb =
+    Jo ûntfange dit e-mailberjocht omdat jo jo oanmelden hawwe foar { -product-name }-warskôgingen.
+    Wolle jo dizze e-mailberjochten net mear ûntfange? { $unsubLink }. Dit is in automatisearre e-mailberjocht. Gean foar stipe nei { $faqLink }.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    Jo ûntfange dit e-mailberjocht omdat jo jo oanmelden hawwe foar { -product-name }-warskôgingen.
+    Dit is in automatisearre e-mailberjocht. Gean foar stipe nei { $faqLink }.
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Myn dashboerd besjen
+# Button text
+verify-email-cta = E-mailadres ferifiearje
+# Headline of verification email
+email-link-expires = Dizze keppeling ferrint oer 24 oer
+email-verify-blurb = Ferifiearje jo e-mailadres om dizze ta te foegjen oan { -product-name } en meld jo oan foar datalekmeldingen.
+# Email headline
+email-found-breaches-hl = Hjirby in oersjoch fan eardere datalekken
+# Email headline
+email-breach-summary-for-email = Datalekoersjoch foar { $userEmail }
+# Email headline
+email-no-breaches-hl = { $userEmail } is yn 0 bekende datalekken ferskynd
+# Email headline
+email-alert-hl = { $userEmail } is yn in bekend datalek ferskynd
+# Subject line of email
+email-subject-found-breaches = { -product-name } hat jo gegevens fûn yn dizze datalekken
+# Subject line of email
+email-subject-no-breaches = { -product-name } hat gjin bekende datalekken fûn
+# Subject line of email
+email-subject-verify = Ferifiearje jo e-mailadres foar { -product-name }
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Mear ynfo oer { $fxmLink }
+email-sensitive-disclaimer =
+    Fanwegen de gefoelige aard fan dit datalek, binne de e-mailberjochten dy't hjirby belutsen binne net publyklik te finen.
+    Jo ûntfange dizze melding omdat jo de ferifiearre eigener fan dit e-mailadres binne.
+fxm-warns-you-no-breaches =
+    { -product-name } warskôget jo foar datalekken mei betrekking ta jo persoanlike gegevens.
+    Oant no ta binne der gjin datalekken fûn. Wy stjoere jo in melding as jo e-mailadres werjûn wurdt yn in nij datalek.
+fxm-warns-you-found-breaches =
+    { -product-name } warskôget jo foar datalekken mei betrekking ta jo persoanlike gegevens.
+    Jo binne ek oanmeld om meldingen te ûntfangen as jo e-mailadres werjûn wurdt yn in nij datalek.
+email-breach-alert-blurb =
+    { -product-name } warskôget jo foar datalekken mei betrekking ta jo persoanlike gegevens.
+    Wy hawwe sakrekt ynformaasje ûntfongen oer in datalek fan in oar bedriuw.
+# List headline
+faq-list-headline = Faak stelde fragen
