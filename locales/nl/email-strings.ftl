@@ -58,3 +58,17 @@ share-by-email-message =
     3. Ontvang tips van { -product-name } over wat u verder kunt doen.
 # Unsubscribe link in email.
 email-unsub-link = Abonnement opzeggen
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Mijn dashboard bekijken
+# Button text
+verify-email-cta = E-mailadres verifiëren
+# Headline of verification email
+email-link-expires = Deze koppeling verloopt over 24 uur
+# Email headline
+email-breach-summary-for-email = Datalekoverzicht voor { $userEmail }
+# Subject line of email
+email-subject-verify = Verifieer uw e-mailadres voor { -product-name }
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Meer info over { $fxmLink }
+# List headline
+faq-list-headline = Veelgestelde vragen
