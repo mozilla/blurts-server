@@ -95,4 +95,33 @@ const scanResult = async(req, selfScan=false) => {
   };
 };
 
-module.exports = scanResult;
+function resultsSummary(verifiedEmails) {
+  const breachStats = {
+    monitoredEmails: { count: 0 },
+    numBreaches: { count: 0 },
+    passwords: { count: 0 },
+  };
+  let foundBreaches = [];
+
+  breachStats.monitoredEmails.count = verifiedEmails.length;
+
+  // combine the breaches for each account, breach duplicates are ok
+  // since the user may have multiple accounts with different emails
+  verifiedEmails.forEach(email => {
+    email.breaches.forEach(breach => {
+      const dataClasses = breach.DataClasses;
+      if (dataClasses.includes("passwords")) {
+        breachStats.passwords.count++;
+      }
+    });
+    foundBreaches = [...foundBreaches, ...email.breaches];
+  });
+  // tally up total number of breaches
+  breachStats.numBreaches.count = foundBreaches.length;
+  return breachStats;
+}
+
+module.exports = {
+  scanResult,
+  resultsSummary,
+};

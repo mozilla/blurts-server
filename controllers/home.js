@@ -1,7 +1,7 @@
 "use strict";
 
 const AppConstants = require("../app-constants");
-const scanResult = require("../scan-results");
+const { scanResult } = require("../scan-results");
 const { generatePageToken } = require("./utils");
 
 

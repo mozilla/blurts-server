@@ -8,6 +8,7 @@ const EmailUtils = require("../email-utils");
 const { FluentError } = require("../locale-utils");
 const FXA = require("../lib/fxa");
 const HIBP = require("../hibp");
+const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
 
 
@@ -339,6 +340,35 @@ async function getPreferences(req, res) {
 }
 
 
+async function getBreachStats(req, res) {
+  if (!req.token) {
+    return res.status(401).json({
+      errorMessage: "User breach stats requires an FXA OAuth token passed in the Authorization header.",
+    });
+  }
+  const fxaResponse = await FXA.verifyOAuthToken(req.token);
+  if (!fxaResponse) {
+    return res.status(404).json({
+      errorMessage: "Cannot find FXA for that OAuth token.",
+    });
+  }
+  const user = await DB.getSubscriberByFxaUid(fxaResponse.body.user);
+  if (!fxaResponse) {
+    return res.status(404).json({
+      errorMessage: "Cannot find Monitor subscriber for that FXA.",
+    });
+  }
+  const allBreaches = req.app.locals.breaches;
+  const { verifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
+  const breachStats = resultsSummary(verifiedEmails);
+  return res.json({
+    monitoredEmails: breachStats.monitoredEmails.count,
+    numBreaches: breachStats.numBreaches.count,
+    passwords: breachStats.passwords.count,
+  });
+}
+
+
 function logout(req, res) {
   req.session.reset();
   res.redirect("/");
@@ -348,6 +378,7 @@ function logout(req, res) {
 module.exports = {
   getPreferences,
   getDashboard,
+  getBreachStats,
   add,
   verify,
   getUnsubscribe,
