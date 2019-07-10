@@ -53,6 +53,13 @@ share-by-email-message =
     1. Gå til { "https://monitor.firefox.com" }, og søg efter din mailadresse.
     2. Se om dine online-konti er blevet ramt af en datalæk.
     3. Få tips fra { -product-name } om, hvad du nu skal gøre.
+# Unsubscribe link in email.
+email-unsub-link = Afslut abonnementet
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb = Du modtager denne mail, fordi du har tilmeldt dig alarmer fra { -product-name }. { $unsubLink }, hvis du ikke længere ønsker at modtage disse mails. Dette er en automatisk udsendt mail. Hvis du ønsker support, så besøg siden { $faqLink }.
 # This string appears in the footer of verification emails. { $faqLink } is a link
 # to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-verify-footer-copy = Du modtager denne mail, fordi du har tilmeldt dig alarmer fra { -product-name }. Dette er en automatisk udsendt mail. Hvis du ønsker support, så besøg siden { $faqLink }.
@@ -99,3 +106,5 @@ faq-v2-1 = Jeg genkender ikke nogle af disse firma eller websteder. Hvorfor er j
 faq-v2-2 = Behøver jeg at foretage mig noget, hvis en datalæk skete for år tilbage eller hvis det er en gammel konto?
 # Link Title
 faq-v2-3 = Jeg har lige fundet ud af, at jeg er omfattet af en datalæk. Hvad gør jeg nu?
+# Link Title
+faq-v2-4 = Hvordan behandler { -product-name } websteder, der har følsomme data om sine brugere?

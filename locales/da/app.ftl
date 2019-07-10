@@ -133,7 +133,7 @@ data-aggregator-breach-plural = Datalæk for data-aggregator
 unverified-breach-plural = Ubekræftede datalæk
 spam-list-breach-plural = Datalæk for spam-lister
 what-data = Hvilke data blev kompromitteret:
-sensitive-sites = Hvordan behandler { -product-name } følsomme websteder?
+sensitive-sites = Hvordan behandler { -product-name } websteder, der har følsomme data om sine brugere?
 sensitive-sites-copy =
     { -product-name } viser kun konti associeret med denne type af læk, 
     når en mailadresse er bekræftet. Det betyder, at du er den eneste, der kan se, 
