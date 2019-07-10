@@ -4,11 +4,17 @@ address-book-contacts = ผู้ติดต่อของสมุดรา�
 age-groups = กลุ่มอายุ
 ages = อายุ
 apps-installed-on-devices = แอปที่ติดตั้งในอุปกรณ์
+bank-account-numbers = หมายเลขบัญชีธนาคาร
 # This string is the shortened version of "Biographies", and 
 # refers to biographical data about a user.
 bios = ชีวประวัติ
 browsing-histories = ประวัติการเรียกดู
+career-levels = ระดับอาชีพ
 credit-cards = บัตรเครดิต
+credit-status-information = ข้อมูลสถานะเครดิต
+device-information = ข้อมูลอุปกรณ์
+education-levels = ระดับการศึกษา
+email-addresses = ที่อยู่อีเมล
 genders = เพศ
 mac-addresses = ที่อยู่ MAC
 names = ชื่อ
