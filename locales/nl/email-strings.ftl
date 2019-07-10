@@ -58,14 +58,37 @@ share-by-email-message =
     3. Ontvang tips van { -product-name } over wat u verder kunt doen.
 # Unsubscribe link in email.
 email-unsub-link = Abonnement opzeggen
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb =
+    U ontvangt dit e-mailbericht omdat u zich hebt aangemeld voor { -product-name }-waarschuwingen.
+    Wilt u deze e-mailberichten niet meer ontvangen? { $unsubLink }. Dit is een geautomatiseerd e-mailbericht. Ga voor ondersteuning naar { $faqLink }.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    U ontvangt dit e-mailbericht omdat u zich hebt aangemeld voor { -product-name }-waarschuwingen.
+    Dit is een geautomatiseerd e-mailbericht. Ga voor ondersteuning naar { $faqLink }.
 # Button text that takes the user to their signed in user dashboard.
 view-my-dashboard-cta = Mijn dashboard bekijken
 # Button text
 verify-email-cta = E-mailadres verifiëren
 # Headline of verification email
 email-link-expires = Deze koppeling verloopt over 24 uur
+email-verify-blurb = Verifieer uw e-mailadres om deze toe te voegen aan { -product-name } en meld u aan voor datalekmeldingen.
+# Email headline
+email-found-breaches-hl = Hierbij een overzicht van eerdere datalekken
 # Email headline
 email-breach-summary-for-email = Datalekoverzicht voor { $userEmail }
+# Email headline
+email-no-breaches-hl = { $userEmail } is in 0 bekende datalekken verschenen
+# Email headline
+email-alert-hl = { $userEmail } is in een bekend datalek verschenen
+# Subject line of email
+email-subject-found-breaches = { -product-name } heeft uw gegevens gevonden in deze datalekken
+# Subject line of email
+email-subject-no-breaches = { -product-name } heeft geen bekende datalekken gevonden
 # Subject line of email
 email-subject-verify = Verifieer uw e-mailadres voor { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
