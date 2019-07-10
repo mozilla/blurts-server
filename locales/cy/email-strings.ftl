@@ -13,9 +13,6 @@ unsubscribe-email-link = Os nad oes angen rhybuddion { -product-name } arnoch ch
 firefox-monitor-report = Adroddiad { -product-name }
 report-date = Dyddiad yr Adroddiad:
 email-address = Cyfeiriad E-bost:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Hwn yw eich adroddiad { -product-name } llawn, sy'n cynnwys yr holl dor-data sy'n hysbys am y cyfeiriad e-bost hwn.
-report-no-breaches = Nid yw eich cyfeiriad e-bost yn ymddangos yn ein cronfa ddata o dor-data hysbys. Ond gall tor-data ddigwydd ar unrhyw adeg. Cymrwch y camau hyn i gadw'ch data personol yn ddiogel ar-lein.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Beth i'w Wneud Nesaf
 report-headline =
@@ -32,8 +29,6 @@ report-subhead-no-breaches =
     Mae hynny'n newyddion da, ond mae mwy y gallwch chi ei wneud.
     Mae tor-data yn digwydd ar unrhyw adeg, felly parhewch i ddarllenwch i wybod sut y gallwch ddiogelu eich cyfrineiriau.
 report-subhead-found-breaches = Hwn yw eich adroddiad Firefox Monitor llawn, sy'n cynnwys yr holl dor-data sy'n hysbys am y cyfeiriad e-bost hwn.
-breach-alert-headline = Mae eich cyfrif wedi bod yn rhan o dor-data.
-breach-alert-subhead = Mae adroddiad diweddar ar dor-data yn cynnwys eich e-bost a'r data canlynol
 report-pwt-blurb =
     Mae cyfrineiriau mor werthfawr, mae miloedd ohonyn nhw'n cael eu dwyn bob dydd a'u masnachu neu eu gwerthu ar y farchnad ddu.
     Mae cyfrineiriau cryfach yn diogelu'ch cyfrifon a'r holl fanylion personol sy'n bodoli o'u mewn.
@@ -60,3 +55,28 @@ share-by-email-message =
     1. Ewch i { "https://monitor.firefox.com" } a chwiliwch am eich e-bost.
     2. Edrychwch i weld os yw eich cyfrifon ar-lein wedi'u datgelu mewn tor-data.
     3. Derbyn awgrymiadau gan { -product-name } am yr hyn i'w wneud nesaf.
+# Unsubscribe link in email.
+email-unsub-link = Dad-danysgrifio
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb = Rydych yn derbyn yr e-bost hwn oherwydd eich bod wedi cofrestru ar gyfer rhybuddion { -product-name }. Dim eisiau'r e-byst hyn bellach? { $unsubLink }. Mae hwn yn e-bost awtomataidd. Am gymorth, ewch i { $faqLink }.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy = Rydych yn derbyn yr e-bost hwn oherwydd eich bod wedi cofrestru ar gyfer rhybuddion { -product-name }. Mae hwn yn e-bost awtomataidd. Am gymorth, ewch i { $faqLink }.
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Gweld Fy Mwrdd Gwaith
+# Button text
+verify-email-cta = Dilysu E-bost
+# Headline of verification email
+email-link-expires = Daw'r ddolen hon i ben mewn 24 awr
+email-verify-blurb = Gwirio eich e-bost i'w ychwanegu at { -product-name } a chofrestru ar gyfer rhybuddion am dor-data.
+# Email headline
+email-found-breaches-hl = Dyma'ch crynodeb o achosion o dor-data yn y gorffennol
+# Email headline
+email-breach-summary-for-email = Crynodeb o dor-data ar { $userEmail }
+# Email headline
+email-no-breaches-hl = Ymddangosodd { $userEmail } mewn 0 tor-data hysbys
+# Email headline
+email-alert-hl = Ymddangosodd { $userEmail } mewn tor-data newydd
