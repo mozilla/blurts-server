@@ -15,11 +15,6 @@ unsubscribe-email-link = Nếu bạn không còn muốn nhận thông báo { -pr
 firefox-monitor-report = Báo cáo { -product-name }
 report-date = Ngày báo cáo:
 email-address = Địa chỉ email:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Tại đây là báo cáo đầy đủ { -product-name }, bao gồm tất cả các vi phạm dữ liệu đã biết có chứa địa chỉ email này.
-report-no-breaches =
-    Địa chỉ email của bạn không xuất hiện trong cơ sở dữ liệu của chúng tôi về các vi phạm đã biết.
-    Nhưng vi phạm có thể xảy ra bất cứ lúc nào. Thực hiện các bước này để giữ cho dữ liệu cá nhân của bạn an toàn trực tuyến.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Tôi phải làm gì tiếp theo
 report-headline =
@@ -32,8 +27,6 @@ report-subhead-no-breaches =
     Đó là tin tốt lành, nhưng có nhiều thứ bạn có thể làm.
     Vi phạm dữ liệu xảy ra bất cứ lúc nào, vì vậy hãy đọc tiếp để tìm hiểu cách bạn có thể bảo vệ mật khẩu của mình.
 report-subhead-found-breaches = Tại đây là bản báo cáo Firefox Monitor đầy đủ của bạn, bao gồm tất cả các vi phạm dữ liệu đã biết có chứa địa chỉ email này.
-breach-alert-headline = Thông tin tài khoản của bạn đã bị xâm phạm do vi phạm dữ liệu.
-breach-alert-subhead = Vi phạm dữ liệu được báo cáo gần đây có chứa email của bạn và dữ liệu sau
 report-pwt-blurb =
     Mật khẩu rất có giá trị, hàng ngàn trong số chúng bị đánh cắp mỗi ngày và được giao dịch hoặc bán trên thị trường chợ đen.
     Mật khẩu mạnh hơn là cách để bảo vệ tài khoản của bạn và tất cả thông tin cá nhân nằm trong đó.
@@ -64,3 +57,62 @@ share-by-email-message =
     1. Truy cập { "https://monitor.firefox.com" } và tìm kiếm email của bạn.
     2. Xem các tài khoản trực tuyến của bạn đã bị lộ do vi phạm dữ liệu.
     3. Nhận các mẹo từ { -product-name } về những việc cần làm tiếp theo.
+# Unsubscribe link in email.
+email-unsub-link = Hủy đăng ký
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb =
+    Bạn nhận được email này vì bạn đã đăng ký thông báo { -product-name }.
+    Không còn muốn những email này? { $unsubLink }. Đây là một email tự động. Để được hỗ trợ, hãy truy cập { $faqLink }.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    Bạn nhận được email này vì bạn đã đăng ký thông báo { -product-name }.
+    Đây là một email tự động. Để được hỗ trợ, hãy truy cập { $faqLink }.
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Xem bảng điều khiển của tôi
+# Button text
+verify-email-cta = Xác minh email
+# Headline of verification email
+email-link-expires = Liên kết này hết hạn sau 24 giờ
+email-verify-blurb = Xác minh email của bạn để thêm nó vào { -product-name } và đăng ký thông báo vi phạm.
+# Email headline
+email-found-breaches-hl = Đây là bản tóm tắt của bạn về các vi phạm dữ liệu trong quá khứ
+# Email headline
+email-breach-summary-for-email = Tóm tắt vi phạm cho { $userEmail }
+# Email headline
+email-no-breaches-hl = { $userEmail } xuất hiện trong 0 vi phạm dữ liệu đã biết
+# Email headline
+email-alert-hl = { $userEmail } đã xuất hiện trong vi phạm dữ liệu mới
+# Subject line of email
+email-subject-found-breaches = { -product-name } đã tìm thấy thông tin của bạn trong những vi phạm này
+# Subject line of email
+email-subject-no-breaches = { -product-name } không tìm thấy vi phạm đã biết
+# Subject line of email
+email-subject-verify = Xác minh email của bạn cho { -product-name }
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Tìm hiểu thêm về { $fxmLink }
+email-sensitive-disclaimer =
+    Do tính chất nhạy cảm của vi phạm này, các email liên quan không được phát hiện công khai.
+    Bạn có thể nhận được thông báo này vì bạn là chủ sở hữu đã xác minh của địa chỉ email này.
+fxm-warns-you-no-breaches =
+    { -product-name } cảnh báo bạn về các vi phạm dữ liệu liên quan đến thông tin cá nhân của bạn.
+    Cho đến nay, không có vi phạm đã được tìm thấy. Chúng tôi sẽ gửi cho bạn một cảnh báo nếu địa chỉ email của bạn xuất hiện trong vi phạm mới.
+fxm-warns-you-found-breaches =
+    { -product-name } cảnh báo bạn về các vi phạm dữ liệu liên quan đến thông tin cá nhân của bạn.
+    Bạn cũng đã đăng ký để nhận thông báo nếu địa chỉ email của bạn xuất hiện trong vi phạm mới.
+email-breach-alert-blurb =
+    { -product-name } cảnh báo bạn về các vi phạm dữ liệu liên quan đến thông tin cá nhân của bạn.
+    Chúng tôi vừa nhận được thông tin chi tiết về một công ty khác vi phạm dữ liệu.
+# List headline
+faq-list-headline = Câu hỏi thường gặp
+# Link Title
+faq-v2-1 = Tôi không nhận ra công ty hoặc trang web này. Tại sao tôi ở trong vi phạm?
+# Link Title
+faq-v2-2 = Tôi có cần phải làm bất cứ điều gì nếu vi phạm xảy ra nhiều năm trước hoặc đây là một tài khoản cũ?
+# Link Title
+faq-v2-3 = Tôi mới phát hiện ra tôi đã bị vi phạm dữ liệu. Tôi nên làm gì tiếp theo?
+# Link Title
+faq-v2-4 = { -product-name } xử lý các trang web nhạy cảm như thế nào?
