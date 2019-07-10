@@ -131,6 +131,7 @@ avoid-personal-info = Unngå å bruke personleg informasjon i passord
 ## What to do after data breach tips
 
 change-pw = Endre passordet ditt
+make-new-pw-unique = Lag det nye passordet annaleis og unikt
 create-strong-passwords = Slik lagar du sterke passord
 stop-reusing-pw = Slutt med å bruke dei same passorda
 five-myths = 5 myter om passordhandterarar
