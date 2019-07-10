@@ -107,3 +107,7 @@ email-breach-alert-blurb =
     Wy hawwe sakrekt ynformaasje ûntfongen oer in datalek fan in oar bedriuw.
 # List headline
 faq-list-headline = Faak stelde fragen
+# Link Title
+faq-v2-1 = Ik werken gjin fan dizze bedriuwen of websites. Wêrom kom ik foar yn dit datalek?
+# Link Title
+faq-v2-2 = Moat ik wat dwaan as in datalek jierren lyn bard is of as dit in âld account is?
