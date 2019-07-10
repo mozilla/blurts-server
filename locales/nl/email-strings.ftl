@@ -93,5 +93,25 @@ email-subject-no-breaches = { -product-name } heeft geen bekende datalekken gevo
 email-subject-verify = Verifieer uw e-mailadres voor { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Meer info over { $fxmLink }
+email-sensitive-disclaimer =
+    Vanwege de gevoelige aard van dit datalek, zijn de e-mailberichten die hierbij betrokken zijn niet publiekelijk vindbaar.
+    U ontvangt deze melding omdat u de geverifieerde eigenaar van dit e-mailadres bent.
+fxm-warns-you-no-breaches =
+    { -product-name } waarschuwt u voor datalekken met betrekking tot uw persoonlijke gegevens.
+    Tot nu toe zijn er geen datalekken gevonden. We sturen u een melding als uw e-mailadres wordt weergegeven in een nieuw datalek.
+fxm-warns-you-found-breaches =
+    { -product-name } waarschuwt u voor datalekken met betrekking tot uw persoonlijke gegevens.
+    U bent ook aangemeld om meldingen te ontvangen als uw e-mailadres wordt weergegeven in een nieuw datalek.
+email-breach-alert-blurb =
+    { -product-name } waarschuwt u voor datalekken met betrekking tot uw persoonlijke gegevens.
+    We hebben zojuist informatie ontvangen over een datalek van een ander bedrijf.
 # List headline
 faq-list-headline = Veelgestelde vragen
+# Link Title
+faq-v2-1 = Ik herken geen van deze bedrijven of websites. Waarom kom ik voor in dit lek?
+# Link Title
+faq-v2-2 = Moet ik iets doen als een datalek jaren geleden is gebeurd of als dit een oud account is?
+# Link Title
+faq-v2-3 = Ik kwam er net achter dat ik in een datalek voor kom. Wat moet ik doen?
+# Link Title
+faq-v2-4 = Hoe behandelt { -product-name } gevoelige websites?
