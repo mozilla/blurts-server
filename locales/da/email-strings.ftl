@@ -13,11 +13,6 @@ unsubscribe-email-link = Afslut abonnementet, hvis du ikke længere ønsker at m
 firefox-monitor-report = { -product-name }-rapport
 report-date = Dato for rapport:
 email-address = Mailadresse:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Her er din komplette { -product-name }-rapport. Den indeholder alle kendte datalæk, der indeholder denne mailadresse.
-report-no-breaches =
-    Din mailadresse optræder ikke i vores database over kendte læk af data. 
-    Men datalæk kan ske når som helst. Tag disse forholdsregler for at sikre, at dine personlige data er sikre på nettet.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Næste skridt
 report-headline =
@@ -30,8 +25,6 @@ report-subhead-no-breaches =
     Det er godt nyt, men der er mere, du kan gøre. 
     Datalæk kan ske når som helst, så læs videre for at lære, hvad du kan gøre for at beskytte dine adgangskoder.
 report-subhead-found-breaches = Her er din komplette Firefox Monitor-rapport. Den indeholder alle kendte datalæk, der indeholder denne mailadresse.
-breach-alert-headline = Din konto er blevet kompromitteret i en datalæk.
-breach-alert-subhead = En nylig rapporteret datalæk indeholder din mailadresse og følgende data
 report-pwt-blurb = Adgangskoder er så værdifulde, at tusindvis af adgangskoder stjæles hver dag og sælges eller byttes på det sorte marked. Stærkere adgangskoder beskytter dine konti og al personlig information, der findes i dem.
 report-pwt-headline-1 = Brug en ny adgangskode for hver konto
 report-pwt-summary-1 =
@@ -60,3 +53,49 @@ share-by-email-message =
     1. Gå til { "https://monitor.firefox.com" }, og søg efter din mailadresse.
     2. Se om dine online-konti er blevet ramt af en datalæk.
     3. Få tips fra { -product-name } om, hvad du nu skal gøre.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy = Du modtager denne mail, fordi du har tilmeldt dig alarmer fra { -product-name }. Dette er en automatisk udsendt mail. Hvis du ønsker support, så besøg siden { $faqLink }.
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Vis min oversigt
+# Button text
+verify-email-cta = Bekræft mailadresse
+# Headline of verification email
+email-link-expires = Dette link udløber om 24 timer
+email-verify-blurb = Bekræft din mailadresse for at føje den til { -product-name } og tilmelde dig advarsler om datalæk.
+# Email headline
+email-found-breaches-hl = Her er din oversigt over tidligere datalæk
+# Email headline
+email-breach-summary-for-email = Opsummering af datalæk for { $userEmail }
+# Email headline
+email-no-breaches-hl = { $userEmail } optrådte i 0 kendte datalæk
+# Email headline
+email-alert-hl = { $userEmail } optrådte i en ny datalæk
+# Subject line of email
+email-subject-found-breaches = { -product-name } fandt dine informationer i disse datalæk
+# Subject line of email
+email-subject-no-breaches = { -product-name } fandt ingen kendte datalæk
+# Subject line of email
+email-subject-verify = Bekræft din mailadresse for { -product-name }
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Læs mere om { $fxmLink }
+email-sensitive-disclaimer =
+    På grund af denne datalæks følsomme karakter er de involverede mailadresser ikke offentligt tilgængelige.
+    Du modtager denne advarsel, fordi du er den bekræftede ejer af denne mailadresse.
+fxm-warns-you-no-breaches =
+    { -product-name } advarer dig om datalæk, der omfatter dine personlige data.
+    Indtil videre er det ikke sket. Vi sender dig en advarsel, hvis din mailadresse optræder i en ny datalæk.
+fxm-warns-you-found-breaches =
+    { -product-name } advarer dig om datalæk, der omfatter dine personlige data.
+    Du har også tilmeldt dig advarsler, hvis din mailadresse optræder i en ny datalæk.
+email-breach-alert-blurb =
+    { -product-name } advarer dig om datalæk, der omfatter dine personlige data.
+    Vi har lige modtaget detaljer om et andet firmas datalæk.
+# List headline
+faq-list-headline = Ofte stillede spørgsmål
+# Link Title
+faq-v2-1 = Jeg genkender ikke nogle af disse firma eller websteder. Hvorfor er jeg i denne datalæk?
+# Link Title
+faq-v2-2 = Behøver jeg at foretage mig noget, hvis en datalæk skete for år tilbage eller hvis det er en gammel konto?
+# Link Title
+faq-v2-3 = Jeg har lige fundet ud af, at jeg er omfattet af en datalæk. Hvad gør jeg nu?
