@@ -13,9 +13,6 @@ unsubscribe-email-link = Om du inte längre vill ha varningar från { -product-n
 firefox-monitor-report = Rapport { -product-name }
 report-date = Rapportdatum:
 email-address = E-postadress:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Här är din fullständiga rapport från { -product-name }, som inkluderar alla kända dataöverträdelser som innehåller den här e-postadressen.
-report-no-breaches = Din e-postadress finns inte i vår databas med kända överträdelser. Men överträdelser kan hända när som helst. Använd dessa steg för att skydda dina personuppgifter på nätet.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Nästa steg
 report-headline =
@@ -29,8 +26,6 @@ report-subhead-no-breaches =
     Det är goda nyheter, men det finns mer du kan göra.
     Dataöverträdelser inträffar när som helst, så läs vidare för att lära dig hur du kan skydda dina lösenord.
 report-subhead-found-breaches = Här är din fullständiga Firefox Monitor rapport, som innehåller alla kända dataöverträdelser som innehåller den här e-postadressen.
-breach-alert-headline = Ditt konto var inblandat i en dataöverträdelse.
-breach-alert-subhead = En nyligen rapporterad dataöverträdelse innehåller din e-postadress och följande uppgifter
 report-pwt-blurb = Lösenord är så värdefulla att tusentals av dem stjäls varje dag och handlas eller säljs på den svarta marknaden. Starkare lösenord skyddar dina konton och all personlig information som finns inom dem.
 report-pwt-headline-1 = Använd olika lösenord för varje konto
 report-pwt-summary-1 =
@@ -57,3 +52,50 @@ share-by-email-message =
     1. Gå till { "https://monitor.firefox.com" } och sök på din e-postadress.
     2. Se om dina konton på nätet har blivit utsatta för ett dataintrång.
     3. Hämta tips från { -product-name } om vad du ska göra härnäst.
+# Unsubscribe link in email.
+email-unsub-link = Avsluta prenumeration
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb =
+    Du får detta meddelande eftersom du anmälde dig till { -product-name } för
+    varningar. Vill du inte längre ha dessa e-postmeddelanden? { $unsubLink }. Det här är ett automatiserat e-postmeddelande. För support, besök { $faqLink }.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    Du får detta meddelande eftersom du anmälde dig till { -product-name } för
+    varningar. Det här är ett automatiserat e-postmeddelande. För support, besök { $faqLink }.
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Visa min översikt
+# Button text
+verify-email-cta = Verifiera e-postadress
+# Headline of verification email
+email-link-expires = Den här länken upphör inom 24 timmar
+email-verify-blurb = Verifiera din e-postadress för att lägga till den i { -product-name } och registrera dig för intrångsvarningar.
+# Email headline
+email-found-breaches-hl = Här är din sammanfattning av tidigare dataintrång
+# Email headline
+email-breach-summary-for-email = Intrångssammanfattning för { $userEmail }
+# Email headline
+email-no-breaches-hl = { $userEmail } förekom i 0 kända dataintrång
+# Email headline
+email-alert-hl = { $userEmail } förekom i ett nytt dataintrång
+# Subject line of email
+email-subject-found-breaches = { -product-name } hittade din information i dessa intrång
+# Subject line of email
+email-subject-no-breaches = { -product-name } hittade inga kända intrång
+# Subject line of email
+email-subject-verify = Verifiera din e-postadress för { -product-name }
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Läs mer om { $fxmLink }
+# List headline
+faq-list-headline = Vanliga frågor
+# Link Title
+faq-v2-1 = Jag känner inte igen detta företag eller webbplats. Varför finns jag med i detta intrång?
+# Link Title
+faq-v2-2 = Behöver jag göra någonting om ett intrång inträffade för några år sedan eller om det är ett gammalt konto?
+# Link Title
+faq-v2-3 = Jag fick reda på att jag finns med i ett dataintrång. Vad ska jag göra nu?
+# Link Title
+faq-v2-4 = Hur behandlar { -product-name } känsliga webbplatser?
