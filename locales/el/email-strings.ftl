@@ -15,11 +15,6 @@ unsubscribe-email-link = Αν δεν επιθυμείτε πλέον ειδοπ�
 firefox-monitor-report = Αναφορά { -product-name }
 report-date = Ημερομηνία αναφοράς:
 email-address = Διεύθυνση email:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Ορίστε η πλήρης αναφορά { -product-name } σας, η οποία περιλαμβάνει όλες τις γνωστές παραβιάσεις δεδομένων που περιέχουν αυτή τη διεύθυνση email.
-report-no-breaches =
-    Η διεύθυνση email σας δεν εμφανίστηκε στη βάση δεδομένων μας με γνωστές παραβιάσεις. 
-    Αλλά παραβιάσεις μπορούν να συμβούν ανά πάσα στιγμή. Λάβετε αυτά τα μέτρα για να προστατέψετε τα προσωπικά σας δεδομένα στο διαδίκτυο.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Τι να κάνετε μετά
 report-headline =
@@ -33,8 +28,6 @@ report-subhead-no-breaches =
     Αυτά είναι καλά νέα, αλλά μπορείτε να κάνετε περισσότερα. 
     Παραβιάσεις δεδομένων μπορούν να συμβούν ανά πάσα στιγμή, γι' αυτό διαβάστε για να μάθετε πώς να προστατέψετε τους κωδικούς πρόσβασής σας.
 report-subhead-found-breaches = Ορίστε η πλήρης αναφορά σας από το Firefox Monitor, η οποία συμπεριλαμβάνει όλες τις γνωστές παραβιάσεις δεδομένων που περιέχουν αυτή τη διεύθυνση email.
-breach-alert-headline = Ο λογαριασμός σας ενεπλάκη σε παραβίαση δεδομένων.
-breach-alert-subhead = Μια παραβίαση δεδομένων, που αναφέρθηκε πρόσφατα, περιέχει το email σας και τα εξής δεδομένα
 report-pwt-blurb =
     Οι κωδικοί πρόσβασης είναι τόσο πολύτιμοι, που χιλιάδες υποκλέπτονται κάθε μέρα και ανταλλάσσονται ή πωλούνται στη μαύρη αγορά. 
     Οι ισχυρότεροι κωδικοί πρόσβασης προστατεύουν τους λογαριασμούς σας και όλες τις προσωπικές σας πληροφορίες που περιέχουν.
@@ -65,3 +58,5 @@ share-by-email-message =
     1. Πήγαινε στο { "https://monitor.firefox.com" } και αναζήτησε το email σου.
     2. Δες αν οι διαδικτυακοί σου λογαριασμοί έχουν εκτεθεί σε κάποια παραβίαση δεδομένων.
     3. Λάβε συμβουλές από το { -product-name } σχετικά με το τι να κάνεις μετά.
+# Unsubscribe link in email.
+email-unsub-link = Κατάργηση εγγραφής
