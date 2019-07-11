@@ -353,7 +353,7 @@ async function getBreachStats(req, res) {
     });
   }
   const user = await DB.getSubscriberByFxaUid(fxaResponse.body.user);
-  if (!fxaResponse) {
+  if (!user) {
     return res.status(404).json({
       errorMessage: "Cannot find Monitor subscriber for that FXA.",
     });
