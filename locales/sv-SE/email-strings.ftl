@@ -89,6 +89,18 @@ email-subject-no-breaches = { -product-name } hittade inga kända intrång
 email-subject-verify = Verifiera din e-postadress för { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Läs mer om { $fxmLink }
+email-sensitive-disclaimer =
+    På grund av den känsliga karaktären av detta intrång är inblandade e-postadresser inte offentligt tillgängliga.
+    Du tar emot den här varningen eftersom du är den verifierade ägaren till den här e-postadressen.
+fxm-warns-you-no-breaches =
+    { -product-name } varnar dig om intrång av uppgifter som involverar din personliga information.
+    Hittills har inga intrång hittats. Vi skickar en varning om din e-postadress visas i ett nytt intrång.
+fxm-warns-you-found-breaches =
+    { -product-name } varnar dig om intrång av uppgifter som involverar din personliga information.
+    Du är också registrerad för att få varningar om din e-postadress visas i ett nytt intrång.
+email-breach-alert-blurb =
+    { -product-name } varnar dig om intrång av uppgifter som involverar din personliga information.
+    Vi har precis fått uppgifter om ett dataintrång från ett annat företag.
 # List headline
 faq-list-headline = Vanliga frågor
 # Link Title
