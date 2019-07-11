@@ -61,6 +61,7 @@ To create the database tables ...
 
    ```sh
    createdb blurts
+   createdb test-blurts # for tests
    ```
 
 2. Update the `DATABASE_URL` value in your `.env` file with your local db
