@@ -81,7 +81,9 @@
       "!loadtests/**/**.js",
       "!.eslintrc.js"
     ],
-    "setupTestFrameworkScriptFile": "./tests/jest.setup.js"
+    "setupFilesAfterEnv": [
+      "./tests/jest.setup.js"
+    ]
   },
   "private": true,
   "repository": {
