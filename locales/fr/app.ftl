@@ -197,7 +197,7 @@ welcome-back = Heureux de vous revoir, { $userName } !
 welcome-user = Bienvenue, { $userName } !
 breach-alert-subject = { -product-name } a détecté votre adresse électronique dans une nouvelle fuite de données.
 your-info-was-discovered-headline = Vos données ont été découvertes dans une nouvelle fuite.
-your-info-was-discovered-blurb = Vous êtes abonné(e) aux alertes { -product-name } et en recevez lorsque votre adresse électronique apparaît dans des fuites de données. Voici ce que nous savons de cette fuite.
+your-info-was-discovered-blurb = Vous êtes abonné·e aux alertes { -product-name } et en recevez lorsque votre adresse électronique apparaît dans des fuites de données. Voici ce que nous savons de cette fuite.
 what-to-do-after-breach = Que faire après une fuite de données ?
 ba-next-step-1 = Remplacez votre mot de passe par un mot de passe unique et robuste.
 ba-next-step-blurb-1 =
@@ -326,7 +326,7 @@ breach-overview = Le { $breachDate }, { $breachTitle } a été victime d’une f
 monitor-preferences = Préférences de { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
 # and is followed by the user's primary Firefox Account email. 
-signed-in-as = Connecté(e) en tant que : { $userEmail }
+signed-in-as = Connecté·e en tant que : { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
 filter-by = Filtrer par catégorie :
