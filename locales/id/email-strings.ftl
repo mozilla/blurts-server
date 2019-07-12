@@ -59,6 +59,8 @@ share-by-email-message =
     3. Dapatkan kiat dari { -product-name } tentang apa yang selanjutnya perlu Anda lakukan.
 # Unsubscribe link in email.
 email-unsub-link = Berhenti berlangganan
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Lihat Dasbor Saya
 # Button text
 verify-email-cta = Verifikasi Surel
 # Headline of verification email
