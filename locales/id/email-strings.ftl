@@ -15,11 +15,6 @@ unsubscribe-email-link = Jika Anda tidak ingin menerima pemberitahuan { -product
 firefox-monitor-report = Laporan { -product-name }
 report-date = Tanggal Laporan:
 email-address = Alamat Surel:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Berikut adalah laporan lengkap { -product-name } Anda, yang mencakup seluruh kebocoran data yang diketahui memuat alamat surel ini.
-report-no-breaches =
-    Alamat surel Anda tidak muncul pada basis data kebocoran yang telah kami ketahui.
-    Namun kebocoran dapat terjadi kapan saja. Ambil langkah berikut untuk menjaga data pribadi Anda aman daring.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Yang Selanjutnya Perlu Dilakukan
 report-headline =
@@ -32,8 +27,6 @@ report-subhead-no-breaches =
     Ini adalah kabar baik, namun ada banyak hal yang Anda dapat lakukan.
     Kebocoran data dapat terjadi kapan saja, maka simak dan pelajari bagaimana Anda dapat melindungi kata sandi Anda.
 report-subhead-found-breaches = Berikut adalah laporan lengkap Firefox Monitor Anda, yang mencakup seluruh kebocoran data yang diketahui memuat alamat surel ini.
-breach-alert-headline = Akun Anda tersangkut dalam kebocoran data.
-breach-alert-subhead = Kebocoran data yang terlaporkan baru-baru ini memuat surel Anda dan data berikut ini
 report-pwt-blurb =
     Sandi begitu berarti, hingga ribuan darinya dicuri setiap hari dan diperjualbelikan di pasar gelap.
     Sandi yang lebih kuat akan melindungi akun Anda dan seluruh informasi pribadi yang ada di dalamnya.
@@ -64,3 +57,16 @@ share-by-email-message =
     1. Kunjungi { "https://monitor.firefox.com" } dan cari alamat surel Anda.
     2. Cek apakah akun daring Anda telah tersangkut dalam kebocoran data.
     3. Dapatkan kiat dari { -product-name } tentang apa yang selanjutnya perlu Anda lakukan.
+# Unsubscribe link in email.
+email-unsub-link = Berhenti berlangganan
+# Button text
+verify-email-cta = Verifikasi Surel
+# Headline of verification email
+email-link-expires = Tautan ini kedaluwarsa dalam 24 jam
+email-verify-blurb = Verifikasi surel Anda untuk menambahkannya ke { -product-name } dan mendaftar untuk peringatan kebocoran.
+# Subject line of email
+email-subject-verify = Verifikasi surel Anda untuk { -product-name }
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Pelajari lebih lanjut tentang { $fxmLink }
+# Link Title
+faq-v2-4 = Bagaimana { -product-name } memperlakukan situs sensitif?
