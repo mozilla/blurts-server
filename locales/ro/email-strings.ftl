@@ -13,11 +13,6 @@ unsubscribe-email-link = Dacă nu mai vrei să primești alerte { -product-name 
 firefox-monitor-report = Raport { -product-name }
 report-date = Data raportului:
 email-address = Adresă de e-mail:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Iată raportul complet { -product-name }, care include toate breșele cunoscute de date care conțin această adresă de e-mail.
-report-no-breaches =
-    Adresa ta de e-mail nu a apărut în baza noastră de date cu breșe cunoscute.
-    Însă breșele se pot întâmpla oricând. Ia aceste măsuri pentru a-ți păstra datele personale în siguranță.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Ce poți face de acum înainte
 report-headline =
@@ -32,8 +27,6 @@ report-subhead-no-breaches =
     Asta este o veste bună, dar poți face mai multe.
     Breșele de date se întâmplă în orice moment, așa că citește mai departe pentru a afla cum îți poți proteja parolele.
 report-subhead-found-breaches = Iată raportul complet Firefox Monitor, care include toate breșele cunoscute de date care conțin această adresă de e-mail.
-breach-alert-headline = Contul tău a fost implicat într-o breșă de date.
-breach-alert-subhead = O breșă de date raportată recent conține adresa ta de e-mail și următoarele date
 report-pwt-blurb =
     Parolele sunt atât de valoroase, încât mii dintre ele sunt furate în fiecare zi și tranzacționate sau vândute pe piața neagră.
     Parolele mai puternice îți protejează conturile și toate informațiile personale pe care le conțin.
@@ -60,3 +53,13 @@ share-by-email-message =
     1. Intră pe { "https://monitor.firefox.com" } și caută-ți adresa de e-mail.
     2. Vezi dacă ți-au fost expuse conturile online într-o breșă de date.
     3. Obține ponturi de la { -product-name } despre ce să faci în continuare.
+# Unsubscribe link in email.
+email-unsub-link = Dezabonează-te
+# Button text
+verify-email-cta = Verifică e-mailul
+# Headline of verification email
+email-link-expires = Acest link expiră în 24 de ore
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Află mai multe despre { $fxmLink }
+# List headline
+faq-list-headline = Întrebări adresate frecvent
