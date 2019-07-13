@@ -15,11 +15,6 @@ unsubscribe-email-link = Если вы больше не хотите получ
 firefox-monitor-report = Отчёт { -product-name }
 report-date = Дата отчёта:
 email-address = Адрес электронной почты:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Вот ваш полный отчёт { -product-name }, который включает в себя все известные утечки данных, содержащие этот адрес электронной почты.
-report-no-breaches =
-    Ваш адрес электронной почты не найден в нашей базе данных об известных утечках данных.
-    Но они могут произойти в любое время. Выполните следующие действия, чтобы защитить ваши личные данные в Интернете.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Что делать дальше
 report-headline =
@@ -34,8 +29,6 @@ report-subhead-no-breaches =
     Это хорошие новости, но вы можете сделать больше.
     Компрометация данных может произойти в любое время, поэтому прочитайте о том, как защитить свои пароли.
 report-subhead-found-breaches = Вот ваш полный отчёт Firefox Monitor, который включает в себя все известные утечки данных, в которых фигурирует этот адрес электронной почты.
-breach-alert-headline = Ваш аккаунт стал жертвой компрометации данных.
-breach-alert-subhead = Последний отчёт о скомпрометированных данных содержит вашу электронную почту и следующие данные
 report-pwt-blurb =
     Пароли настолько ценны, что тысячи украденных из них каждый день продаются на чёрном рынке.
     Более сложные пароли защищают ваши аккаунты и всю личную информацию, которая находится внутри них.
@@ -64,3 +57,62 @@ share-by-email-message =
     1. Зайдите на { "https://monitor.firefox.com" } и выполните поиск по адресу своей электронной почты.
     2. Посмотрите, не были ли ваши аккаунты затронуты утечками данных.
     3. Получите подсказки от { -product-name } о том, что делать дальше.
+# Unsubscribe link in email.
+email-unsub-link = Отписаться
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb =
+    Вы получили это письмо, потому что вы подписались на уведомления { -product-name }.
+    Больше не хотите получать такие письма? { $unsubLink }. Это автоматическое письмо. Для получения помощи, посетите { $faqLink }.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    Вы получили это письмо, потому что вы подписались на уведомления { -product-name }.
+    Это автоматическое письмо. Для получения помощи, посетите { $faqLink }.
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Посмотреть мою панель
+# Button text
+verify-email-cta = Подтвердить адрес эл. почты
+# Headline of verification email
+email-link-expires = Срок действия этой ссылки истекает через 24 часа
+email-verify-blurb = Подтвердите адрес электронной почты, чтобы добавить его в { -product-name } и подписаться на уведомления об утечках.
+# Email headline
+email-found-breaches-hl = Вот ваша сводка прошлых утечек данных
+# Email headline
+email-breach-summary-for-email = Сводка утечек для { $userEmail }
+# Email headline
+email-no-breaches-hl = { $userEmail } появлялся в 0 известных утечках данных
+# Email headline
+email-alert-hl = { $userEmail } появился в новой утечке данных
+# Subject line of email
+email-subject-found-breaches = { -product-name } нашел вашу информацию в этих утечках
+# Subject line of email
+email-subject-no-breaches = { -product-name } не обнаружил известных утечек
+# Subject line of email
+email-subject-verify = Подтвердите адрес электронной почты для { -product-name }
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Узнайте больше о { $fxmLink }
+email-sensitive-disclaimer =
+    Из-за чувствительного характера этой утечки соответствующие электронные адреса не раскрываются публично.
+    Вы получили это предупреждение, потому что являетесь подтвержденным владельцем этого адреса электронной почты.
+fxm-warns-you-no-breaches =
+    { -product-name } предупреждает вас об утечках данных, связанных с вашей личной информацией.
+    Пока никаких утечек не обнаружено. Мы отправим вам уведомление, если ваш адрес электронной почты появится в новой утечке.
+fxm-warns-you-found-breaches =
+    { -product-name } предупреждает вас об утечках данных, связанных с вашей личной информацией.
+    Вы также подписаны на получение уведомлений, если ваш адрес электронной почты появится в новой утечке.
+email-breach-alert-blurb =
+    { -product-name } предупреждает вас об утечках данных, связанных с вашей личной информацией.
+    Мы только что получили информацию об утечке данных другой компании.
+# List headline
+faq-list-headline = Часто задаваемые вопросы
+# Link Title
+faq-v2-1 = Я не узнаю одну из этих компаний или один из этих веб-сайтов. Почему эта утечка меня затронула?
+# Link Title
+faq-v2-2 = Нужно ли что-то делать, если утечка произошла несколько лет назад или это старый аккаунт?
+# Link Title
+faq-v2-3 = Я только что узнал(а), что меня затронула эта утечка данных. Что мне делать дальше?
+# Link Title
+faq-v2-4 = Как { -product-name } обращается с сайтами с конфиденциальной информацией?
