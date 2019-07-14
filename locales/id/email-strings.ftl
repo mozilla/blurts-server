@@ -70,5 +70,7 @@ email-verify-blurb = Verifikasi surel Anda untuk menambahkannya ke { -product-na
 email-subject-verify = Verifikasi surel Anda untuk { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Pelajari lebih lanjut tentang { $fxmLink }
+# List headline
+faq-list-headline = Pertanyaan umum
 # Link Title
 faq-v2-4 = Bagaimana { -product-name } memperlakukan situs sensitif?
