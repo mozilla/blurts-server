@@ -1,6 +1,6 @@
 "use strict";
 
-const { getStrings } = require("./hbs-helpers");
+const { LocaleUtils } = require("./../locale-utils");
 
 function getSecurityTipsIntro() {
   return [
@@ -452,50 +452,50 @@ function articleLinks(args) {
   const articleLinks = [
     {
       title: "Understand how hackers work",
-      stringId: "how-hackers-work",
+      stringId: LocaleUtils.fluentFormat(locales, "how-hackers-work"),
       class: "how-hackers-work",
       pathToPartial: "svg/icon-hackers",
-      subhead: "Protect your passwords from cyber criminals, since that's what they care about most.",
+      subhead: LocaleUtils.fluentFormat(locales, "how-hackers-work-desc"),
 
     },
     {
       title: "What to do after a data breach",
-      stringId: "what-to-do-after-breach",
+      stringId: LocaleUtils.fluentFormat(locales,"what-to-do-after-breach"),
       class: "after-breach",
       pathToPartial: "svg/icon-at",
-      subhead: "Lock down your accounts to keep your information out of the wrong hands.",
+      subhead: LocaleUtils.fluentFormat(locales,"what-to-do-after-breach-desc"),
     },
     {
       title: "How to create strong passwords",
-      stringId: "create-strong-passwords",
+      stringId: LocaleUtils.fluentFormat(locales,"create-strong-passwords"),
       class: "strong-passwords",
       pathToPartial: "svg/icon-password",
-      subhead: "Make your passwords strong, secure, and hard to guess.",
+      subhead: LocaleUtils.fluentFormat(locales,"create-strong-passwords-desc"),
     },
     {
       title: "Steps to take to protect your identity online",
-      stringId: "steps-to-protect",
+      stringId: LocaleUtils.fluentFormat(locales,"steps-to-protect"),
       class: "steps-to-protect",
       pathToPartial: "svg/icon-fingerprinters",
-      subhead: "Understand the most common threats and know what to look out for.",
+      subhead: LocaleUtils.fluentFormat(locales,"steps-to-protect-desc"),
     },
     {
       title: "5 myths about password managers",
-      stringId: "five-myths",
+      stringId: LocaleUtils.fluentFormat(locales,"five-myths"),
       class: "five-myths",
       pathToPartial: "svg/icon-myths",
-      subhead: "Learn how to avoid bad password habits that make a hacker’s work easy.",
+      subhead: LocaleUtils.fluentFormat(locales,"five-myths-desc"),
     },
     {
       title: "Take further steps to protect your identity",
-      stringId: "take-further-steps",
+      stringId: LocaleUtils.fluentFormat(locales,"take-further-steps"),
       class: "next-steps",
       pathToPartial: "svg/icon-trackers",
-      subhead: "Find out how to mitigate the risks of identity theft to prevent financial loss.",
+      subhead: LocaleUtils.fluentFormat(locales, "take-further-steps-desc"),
     },
   ];
 
-  return getStrings(articleLinks, locales);
+  return articleLinks;
 }
 
 module.exports = {
