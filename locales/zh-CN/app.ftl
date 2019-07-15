@@ -335,3 +335,9 @@ breach-alert-notifications = 外泄警报通知
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = 事件记录时间：
+how-hackers-work-desc = 保护您的密码不受网络犯罪侵害，这是他们最关心的议题。
+what-to-do-after-breach-desc = 锁定账号，让您的个人信息不落入坏人之手。
+create-strong-passwords-desc = 让您的密码更强大、更安全、更难猜测。
+steps-to-protect-desc = 了解最常见的威胁，并了解要注意哪些事项。
+five-myths-desc = 了解如何避免设置密码的坏习惯，让密码更难遭到黑客窃取。
+take-further-steps-desc = 了解如何降低身份遭窃的风险，防止经济损失。
