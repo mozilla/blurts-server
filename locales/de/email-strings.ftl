@@ -50,9 +50,9 @@ share-by-email-subject = Überprüfe, ob du von einem Datenleck betroffen bist.
 # Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
 share-by-email-message =
     Hallo,
-    { -brand-name } bietet einen kostenlosen Dienst, um zu testen, ob du von einem Datenleck betroffen bist. So funktioniert es:
+    { -brand-name } bietet einen kostenlosen Dienst, der für dich überprüft, ob du von einem Datenleck betroffen bist. So funktioniert es:
     1. Geh auf { "https://monitor.firefox.com" } und suche nach deiner E-Mail-Adresse.
-    2. Überprüfe, ob deine Online-Konten bei einem Datenleck geknackt wurden.
+    2. Überprüfe, ob deine Online-Konten schon einmal Teil eines Datenleck wurden.
     3. Hol dir Tipps von { -product-name } für die nächsten Schritte.
 # Unsubscribe link in email.
 email-unsub-link = Abonnement entfernen
@@ -61,22 +61,22 @@ email-unsub-link = Abonnement entfernen
 # and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
 # Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-footer-blurb =
-    Sie erhalten diese E-Mail, weil Sie Warnungen zu { -product-name } abonniert haben.
-    Möchten Sie diese E-Mails nicht mehr erhalten? { $unsubLink }. Dies ist eine automatisierte E-Mail. Besuchen Sie { $faqLink }, um Hilfe zu erhalten.
+    Du erhältst diese E-Mail, weil du Warnungen von { -product-name } abonniert hast.
+    Möchtest du diese E-Mails nicht mehr erhalten? { $unsubLink }. Dies ist eine automatisierte E-Mail. Wenn du Hilfe brauchst, gehe zu { $faqLink }.
 # This string appears in the footer of verification emails. { $faqLink } is a link
 # to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-verify-footer-copy =
-    Sie erhalten diese E-Mail, weil Sie Warnungen zu { -product-name } abonniert haben.
-    Dies ist eine automatisierte E-Mail. Besuchen Sie { $faqLink }, um Hilfe zu erhalten.
+    Du erhältst diese E-Mail, weil du Warnungen von { -product-name } abonniert hast.
+    Dies ist eine automatisierte E-Mail. Wenn du Hilfe brauchst, gehe zu { $faqLink }.
 # Button text that takes the user to their signed in user dashboard.
 view-my-dashboard-cta = Meine Übersicht anzeigen
 # Button text
 verify-email-cta = E-Mail-Adresse bestätigen
 # Headline of verification email
 email-link-expires = Dieser Link läuft in 24 Stunden ab
-email-verify-blurb = Bestätigen Sie Ihre E-Mail-Adresse, um sie zu { -product-name } hinzuzufügen, und Warnungen über Datenlecks zu abonnieren.
+email-verify-blurb = Bestätige deine E-Mail-Adresse, um sie zu { -product-name } hinzuzufügen, und Warnungen zu Datenlecks zu abonnieren.
 # Email headline
-email-found-breaches-hl = Hier finden Sie eine Übersicht über vergangene Datenlecks
+email-found-breaches-hl = Hier findest du eine Übersicht über vergangene Datenlecks
 # Email headline
 email-breach-summary-for-email = Datenleck-Zusammenfassung für { $userEmail }
 # Email headline
@@ -88,20 +88,20 @@ email-subject-found-breaches = { -product-name } hat Ihre Daten in den folgenden
 # Subject line of email
 email-subject-no-breaches = { -product-name } hat keine bekannten Datenlecks gefunden
 # Subject line of email
-email-subject-verify = Bestätigen Sie Ihre E-Mail-Adresse für { -product-name }
+email-subject-verify = Bestätige deine E-Mail-Adresse für { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Weitere Informationen zu { $fxmLink }
 email-sensitive-disclaimer =
-    Aufgrund des vertraulichen Charakters dieses Datenlecks werden die E-Mail-Adressen nicht öffentlich angezeigt.
-    Sie erhalten diese Benachrichtigung, weil Sie der bestätigte Eigentümer dieser E-Mail-Adresse sind.
+    Aufgrund des vertraulichen Charakters dieses Datenlecks werden die betroffenen E-Mail-Adressen nicht öffentlich angezeigt.
+    Du erhältst diese Benachrichtigung, weil du der bestätigte Eigentümer dieser E-Mail-Adresse bist.
 fxm-warns-you-no-breaches =
-     { -product-name } warnt Sie vor Datenlecks, die Ihre persönlichen Daten betreffen.
-    Bisher wurden keine Datenlecks festgestellt. Wir senden Ihnen eine Benachrichtigung, wenn Ihre E-Mail-Adresse in einem neuen Datenleck auftaucht.
+     { -product-name } warnt dich vor Datenlecks, die deine persönlichen Daten betreffen.
+    Bisher wurden keine Datenlecks festgestellt. Wir senden dir eine Benachrichtigung, wenn deine E-Mail-Adresse in einem neuen Datenleck auftaucht.
 fxm-warns-you-found-breaches =
-     { -product-name } warnt Sie vor Datenlecks, die Ihre persönlichen Daten betreffen.
-    Sie haben auch Warnungen für den Fall abonniert, dass Ihre E-Mail-Adresse in einem neuen Datenleck auftaucht.
+    { -product-name } warnt dich vor Datenlecks, die deine persönlichen Daten betreffen.
+    Du hast auch Warnungen für den Fall abonniert, dass deine E-Mail-Adresse in einem neuen Datenleck auftaucht.
 email-breach-alert-blurb =
-     { -product-name } warnt Sie vor Datenlecks, die Ihre persönlichen Daten betreffen.
+    { -product-name } warnt dich vor Datenlecks, die deine persönlichen Daten betreffen.
     Wir haben soeben Informationen über ein Datenleck bei einem anderen Unternehmen erhalten.
 # List headline
 faq-list-headline = Häufig gestellte Fragen
