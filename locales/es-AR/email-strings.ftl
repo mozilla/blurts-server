@@ -50,3 +50,29 @@ email-unsub-link = Cancelar suscripción
 # and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
 # Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-footer-blurb = Estás recibiendo este correo electrónico porque te registraste en alerteas de { -product-name } ¿No querés recibir más estos correos? { $unsubLink }. Este es un correo electrónico automatizado. Buscá ayuda en  { $faqLink }.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    Estás recibiendo este correo electrónico porque te registraste para recibir alertas de { -product-name }.
+    Este es un correo electrónico automatizado. Para recibir ayuda, visitá { $faqLink }.
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Ver mi Panel de control
+# Button text
+verify-email-cta = Verificar correo electrónico
+# Headline of verification email
+email-link-expires = Este enlace vence en 24 horas.
+email-verify-blurb = Verificá tu correo electrónico para agregarlo a { -product-name } e inscribite para recibir alertas de violaciones.
+# Email headline
+email-found-breaches-hl = Aquí está tu resumen de las violaciones de datos anteriores
+# Email headline
+email-breach-summary-for-email = Resumen de la violación para { $userEmail }
+# Email headline
+email-no-breaches-hl = { $userEmail } apareció en 0 violaciones de datos conocidas
+# Email headline
+email-alert-hl = { $userEmail } apareció en una nueva violación de datos
+# Subject line of email
+email-subject-found-breaches = { -product-name } encontró tu información en estas violaciones
+# Subject line of email
+email-subject-no-breaches = { -product-name } no encontró violaciones conocidas
+# Subject line of email
+email-subject-verify = Verificá tu correo electrónico para { -product-name }
