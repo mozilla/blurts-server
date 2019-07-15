@@ -394,3 +394,4 @@ breach-alert-notifications = Notificações de alerta de vazamento
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Vazamento adicionado em:
+how-hackers-work-desc = Proteja suas senhas de criminosos cibernéticos, já que isso é o que eles mais querem.
