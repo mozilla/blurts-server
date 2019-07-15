@@ -11,6 +11,7 @@
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox アカウント
 terms-and-privacy = 利用規約と個人情報保護方針
+GitHub-link-title = GitHub
 error-scan-page-token = 短期間に多くのメールアドレスを検索しようとしています。セキュリティ上の理由から、一時的に新たな検索をブロックしました。後ほどまた試してください。
 error-could-not-add-email = メールアドレスをデータベースに追加できませんでした。
 error-not-subscribed = このメールアドレスは { -product-name } に登録されていません。
