@@ -351,3 +351,9 @@ breach-alert-notifications = Datenleck-Warnmeldungen
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Datenleck hinzugefügt:
+how-hackers-work-desc = Schützen Sie Ihre Passwörter vor Cyberkriminellen – darauf haben sie es besonders abgesehen.
+what-to-do-after-breach-desc = Sichern Sie Ihre Konten, um zu verhindern, dass Ihre Daten in die falschen Hände gelangen.
+create-strong-passwords-desc = Machen Sie Ihre Passwörter stark, sicher und schwer zu erraten.
+steps-to-protect-desc = Verstehen Sie die häufigsten Bedrohungen und erfahren Sie, worauf Sie achten müssen.
+five-myths-desc = Erfahren Sie, wie Sie schlechte Passwortgewohnheiten vermeiden, die die Arbeit eines Hackers erleichtern.
+take-further-steps-desc = Erfahren Sie, wie Sie das Risiko eines Identitätsdiebstahls verringern, um finanzielle Verluste zu vermeiden.
