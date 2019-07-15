@@ -373,3 +373,6 @@ breach-added-label = Incumplimiento añadido:
 how-hackers-work-desc = Protejé tus contraseñas de los delincuentes cibernéticos, ya que eso es lo que más les importa.
 what-to-do-after-breach-desc = Bloqueá tus cuentas para mantener tu información fuera de las manos equivocadas.
 create-strong-passwords-desc = Hacé que tus contraseñas sean fuertes, seguras y difíciles de adivinar.
+steps-to-protect-desc = Comprendé las amenazas más comunes para que sepas qué es lo que tenés que buscar.
+five-myths-desc = Aprendé cómo evitar los malos hábitos de contraseñas que facilitan el trabajo del pirata informático.
+take-further-steps-desc = Descubrí cómo mitigar los riesgos del robo de identidad para evitar pérdidas financieras.
