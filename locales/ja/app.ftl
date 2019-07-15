@@ -95,10 +95,16 @@ protect-your-privacy = オンラインプライバシーを保護する
 ## What to do after data breach tips
 
 change-pw = パスワードを変更する
+even-for-old = 古いアカウントであっても、パスワードをアップデートすることは大切です。
 make-new-pw-unique = 新しいパスワードを他とは異なり一意にする
+strength-of-your-pw = パスワードの強度は、直接オンラインセキュリティに影響します。
 create-strong-passwords = 強力なパスワードの作り方
 stop-reusing-pw = 同じパスワードの追加い回しをやめる
+create-unique-pw = ユニークなパスワードを作成し、パスワードマネージャーのような安全な場所に保存してください。
 five-myths = パスワードマネージャーに関する 5 つの話題
+feat-security-tips = セキュリティの秘訣であなたのアカウントを保護しましょう
+feat-sensitive = 機密情報の侵害について詳しい検索をしましょう
+feat-enroll-multiple = 複数のメールアドレスを登録して侵害を監視しましょう
 check-for-breaches = データ侵害を確認する
 find-out-what-hackers-know = ハッカーが既にあなたについて知っていることを調査しましょう。一歩先に行く方法を学んでください。
 search-for-your-email = 2007 年までさかのぼって、メールアドレスがデータ侵害を受けているか検索します。
@@ -118,6 +124,7 @@ latest-breach-link = この侵害を受けているか確認する
 welcome-back = おかえりなさい、{ $userName } さん！
 welcome-user = ようこそ、{ $userName } さん！
 what-to-do-after-breach = データ侵害があった後にするべきこと:
+sign-up-headline-1 = { -brand-fxa } で継続して警告を受け取りましょう。
 account-not-required = { -brand-name } ブラウザーは { -brand-fxa }には必要ありません。{ -brand-Mozilla } サービスについての情報を受け取るでしょう。
 was-your-info-exposed = { $breachName } のデータ侵害にさらされていますか？
 no-results-blurb = データベース内に侵害は見つかりませんでした。
