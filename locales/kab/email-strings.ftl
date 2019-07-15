@@ -13,11 +13,6 @@ unsubscribe-email-link = Ma yella ur tezgiḍ tebɣiḍ ilɣa n { -product-name 
 firefox-monitor-report = Aneqqis { -product-name }
 report-date = Azemz n tummla
 email-address = Imayl/Tansa:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = A-t-an uneqqis-ik ummid n { -product-name }, yegber meṛṛa addaden yettwasnen deg trewla n yisefka i yeḥuzan tansa-a imayl.
-report-no-breaches =
-    Tansa-ik imayl ur d-tettban ara deg taffa n yisefka n trewla n yisefka yettwassnen.
-    Tirewliwin n yisefka zemrent ad d-ḍrunt yal tikkelt. Ḍfeṛ imecwaṛen-a akken ad tɣellseḍ isefka udmawanen srid.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Acu-nniḍen ara txedmed
 report-headline =
@@ -31,8 +26,6 @@ report-subhead-no-breaches =
     D ayen igerrzen, maca ur ḥebbes ara deg uzgen n ubrid.
     Tirewliwin n yisefka zemrent ad d-ḍrunt yal tikkelt, ihi kemmel taɣuri akken ad tegzuḍ ammesten n wawalen-ik uffiren.
 report-subhead-found-breaches = A-t-a uneqqis ummid n Firefox Monitor, i yegebren meṛṛa addaden yettwassnen n trewla n yisefka i yeḥuzan tansa-a n yimayl.
-breach-alert-headline = Amiḍan-ik iban-d deg trewla n yisefka.
-breach-alert-subhead = Tirewlisin n yisefka i d-yettwammlen tagara-a gebrent tansa-ik imayl akked isefka-a.
 report-pwt-blurb =
     Awalen ufrinen d ayen ɣlayen ɣef waya agimen seg-sen ttakeren-ten yal ass, sakin ttnuzin deg ulzuz.
     Aseqdec n wawalen uffiren uǧhiden, ad yemmesten imiḍanen-ik akked telɣut tudmawant i gebren.
@@ -55,3 +48,15 @@ share-by-email-message =
     1. Ddu ɣer { "https://monitor.firefox.com" } sakin nadi imayl-ik.
     2. Wali ma yella imiḍanen-ik srid llan deg trewla n yisefka.
     3. Wali iwellihen n { -product-name } ɣef wayen ilaqen ad t-tgeḍ.
+# Unsubscribe link in email.
+email-unsub-link = Ffeɣ seg ujerred
+# Button text
+verify-email-cta = Senqed tansa imayl
+# Subject line of email
+email-subject-verify = Senqed tansa imayl-ik/im i { -product-name }
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Issin ugar ɣef { $fxmLink }
+# List headline
+faq-list-headline = Isteqsiyen i d-yettuɣalen s waṭas
+# Link Title
+faq-v2-1 = Ur ssineɣ ara yiwet ger tkebbaniyin-agi neɣ ismal-agi. Acuɣer iyi-teɛna trewla-agi?
