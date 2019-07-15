@@ -13,9 +13,6 @@ unsubscribe-email-link = Si no querés más alertas de { -product-name }, cancel
 firefox-monitor-report = Informe  de { -product-name }
 report-date = Fecha del informe:
 email-address = Dirección de correo electrónico:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Aquí está tu informe completo de { -product-name }, que incluye todas las violaciones de datos conocidas que contienen esta dirección de correo electrónico.
-report-no-breaches = Tu dirección de correo electrónico no apareció en nuestra base de datos de violaciones. Pero las mismas pueden ocurrir en cualquier momento. Seguí estos pasos para mantener tus datos personales seguros en línea.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Qué hacer a continuación
 report-headline =
@@ -26,8 +23,6 @@ report-headline =
     }
 report-subhead-no-breaches = Tu cuenta no aparece en nuestro informe completo de violaciones. Son buenas noticias, pero hay más que podés hacer. Las violaciones de datos ocurren en cualquier momento, así que seguí leyendo para saber cómo podés proteger tus contraseñas.
 report-subhead-found-breaches = Aquí está tu informe completo de Firefox Monitor, que incluye todas las violaciones de datos conocidas que contienen esta dirección de correo electrónico.
-breach-alert-headline = Tu cuenta estuvo involucrada en una violación de datos.
-breach-alert-subhead = Una violación de datos informada recientemente contiene tu dirección de correo electrónico y los siguientes datos
 report-pwt-blurb = Las contraseñas son tan valiosas que miles de ellas son robadas cada día y negociadas o vendidas en el mercado negro. Las contraseñas más seguras protegen tus cuentas y toda la información personal incluida en ellas.
 report-pwt-headline-1 = Usá una contraseña diferente para cada cuenta
 report-pwt-summary-1 = Reutilizar la misma contraseña en todas partes abre la puerta a los piratas. Pueden usar esa contraseña para iniciar sesión en tus otras cuentas.
@@ -48,3 +43,5 @@ share-by-email-message =
     1. Andá a { "https://monitor.firefox.com" } y buscá tu correo electrónico.
     2. Fijate si tus cuentas en línea se expusieron en una violación de datos.
     3. Obtené consejos de { -product-name } sobre lo que hacer a continuación.
+# Unsubscribe link in email.
+email-unsub-link = Cancelar suscripción
