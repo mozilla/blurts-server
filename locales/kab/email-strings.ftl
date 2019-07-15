@@ -50,8 +50,12 @@ share-by-email-message =
     3. Wali iwellihen n { -product-name } ɣef wayen ilaqen ad t-tgeḍ.
 # Unsubscribe link in email.
 email-unsub-link = Ffeɣ seg ujerred
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Sken Tafelwit n usenqed-inu
 # Button text
 verify-email-cta = Senqed tansa imayl
+# Headline of verification email
+email-link-expires = Aseɣwen-agi ad yemmet akka 24 isragen
 # Subject line of email
 email-subject-verify = Senqed tansa imayl-ik/im i { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
@@ -60,3 +64,5 @@ learn-more-about-fxm = Issin ugar ɣef { $fxmLink }
 faq-list-headline = Isteqsiyen i d-yettuɣalen s waṭas
 # Link Title
 faq-v2-1 = Ur ssineɣ ara yiwet ger tkebbaniyin-agi neɣ ismal-agi. Acuɣer iyi-teɛna trewla-agi?
+# Link Title
+faq-v2-4 = Amek isesfar { -product-name } yismal web iweɛren?
