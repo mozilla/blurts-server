@@ -395,3 +395,8 @@ breach-alert-notifications = Notificações de alerta de vazamento
 # and is followed by that date. 
 breach-added-label = Vazamento adicionado em:
 how-hackers-work-desc = Proteja suas senhas de criminosos cibernéticos, já que isso é o que eles mais querem.
+what-to-do-after-breach-desc = Tranque suas contas para manter suas informações longe de mãos erradas.
+create-strong-passwords-desc = Use senhas fortes, seguras e difíceis de adivinhar.
+steps-to-protect-desc = Compreenda as ameaças mais comuns e saiba o que zelar.
+five-myths-desc = Saiba como evitar hábitos ruins com senhas, que facilitam o trabalho de um hacker.
+take-further-steps-desc = Descubra como atenuar os riscos de roubo de identidade para impedir perdas financeiras.
