@@ -76,3 +76,21 @@ email-subject-found-breaches = { -product-name } encontró tu información en es
 email-subject-no-breaches = { -product-name } no encontró violaciones conocidas
 # Subject line of email
 email-subject-verify = Verificá tu correo electrónico para { -product-name }
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Aprender más sobre { $fxmLink }
+email-sensitive-disclaimer =
+    Debido a la naturaleza privada de esta violación, los correos electrónicos involucrados no se ven de manera pública.
+    Estás recibiendo este alerta porque sos el propietario verificado de esta dirección de correo electrónico.
+fxm-warns-you-no-breaches =
+    { -product-name } te advierte sobre violaciones de datos relacionadas con tu información personal.
+    Hasta el momento, no se encontraron infracciones. Te enviaremos un alerta si tu dirección de correo electrónico aparece en una nueva violación.
+fxm-warns-you-found-breaches =
+    { -product-name } te advierte sobre violaciones de datos relacionadas con tu información personal.
+    También te registraste para recibir alertas si tu dirección de correo electrónico aparece en una nueva violación.
+email-breach-alert-blurb =
+    { -product-name } te advierte sobre violaciones de datos relacionadas con tu información personal.
+    Recién recibimos detalles sobre la violación de datos de otra empresa.
+# List headline
+faq-list-headline = Preguntas frecuentes
+# Link Title
+faq-v2-1 = No reconozco esta empresa o sitio web. ¿Por qué estoy en esta violación?
