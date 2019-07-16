@@ -402,3 +402,9 @@ breach-alert-notifications = Datalekmeldingen
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Datalek toegevoegd:
+how-hackers-work-desc = Bescherm uw wachtwoorden tegen cybercriminelen, want daar geven ze het meeste om.
+what-to-do-after-breach-desc = Vergrendel uw accounts om uw gegevens uit de verkeerde handen te houden.
+create-strong-passwords-desc = Maak uw wachtwoorden sterk, veilig en moeilijk te raden.
+steps-to-protect-desc = Maak uzelf wegwijs in de meest voorkomende bedreigingen en leer waar u op moet letten.
+five-myths-desc = Leer hoe u slechte wachtwoordgewoonten, die het werk van een hacker makkelijk maken, kunt vermijden.
+take-further-steps-desc = Ontdek hoe u de risico’s van identiteitsdiefstal kunt beperken om financieel verlies te vermijden.
