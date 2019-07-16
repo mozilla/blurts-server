@@ -396,3 +396,9 @@ breach-alert-notifications = Thông báo vi phạm
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Vi phạm đã được thêm:
+how-hackers-work-desc = Bảo vệ mật khẩu của bạn khỏi tội phạm mạng, vì đó là điều mà họ quan tâm nhất.
+what-to-do-after-breach-desc = Khóa tài khoản của bạn để giữ thông tin của bạn khỏi tay kẻ xấu.
+create-strong-passwords-desc = Làm cho mật khẩu của bạn mạnh mẽ, an toàn và khó đoán.
+steps-to-protect-desc = Hiểu các mối đe dọa phổ biến nhất và biết những gì cần chú ý.
+five-myths-desc = Tìm hiểu cách tránh các thói quen đặt mật khẩu xấu khiến kẻ xấu đánh cắp nó dễ dàng.
+take-further-steps-desc = Tìm hiểu làm thế nào để giảm thiểu rủi ro của hành vi trộm cắp danh tính để ngăn ngừa tổn thất tài chính.
