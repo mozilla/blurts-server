@@ -406,3 +406,9 @@ breach-alert-notifications = Adatsértési riasztási értesítések
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Adatsértés hozzáadva:
+how-hackers-work-desc = Védje a jelszavakat a számítógépes bűnözőktől, mert ez az, ami a legjobban érdekli őket.
+what-to-do-after-breach-desc = Zárolja a fiókjait, hogy ne kerüljenek rossz kezekbe az adatai.
+create-strong-passwords-desc = Válasszon erős, biztonságos és nehezen kitalálható jelszavakat.
+steps-to-protect-desc = Ismerje meg a leggyakoribb fenyegetéseket, és tudja meg, hogy mire kell figyelnie.
+five-myths-desc = Ismerje meg, hogyan kerülheti el azokat a rossz szokásokat a jelszavainál, amelyek megkönnyítik a hackerek munkáját.
+take-further-steps-desc = Tudja meg hogyan csökkentheti a személyazonosság-lopással kapcsolatos kockázatokat, hogy megakadályozza az anyagi veszteségeket.
