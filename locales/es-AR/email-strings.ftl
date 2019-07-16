@@ -94,3 +94,5 @@ email-breach-alert-blurb =
 faq-list-headline = Preguntas frecuentes
 # Link Title
 faq-v2-1 = No reconozco esta empresa o sitio web. ¿Por qué estoy en esta violación?
+# Link Title
+faq-v2-2 = ¿Tengo que hacer algo si ocurrió una violación hace años, o esta es una cuenta antigua?
