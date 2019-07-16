@@ -96,3 +96,7 @@ faq-list-headline = Preguntas frecuentes
 faq-v2-1 = No reconozco esta empresa o sitio web. ¿Por qué estoy en esta violación?
 # Link Title
 faq-v2-2 = ¿Tengo que hacer algo si ocurrió una violación hace años, o esta es una cuenta antigua?
+# Link Title
+faq-v2-3 = Recién de descubrí una violación de datos. ¿Qué tengo que hacer?
+# Link Title
+faq-v2-4 = ¿Cómo trata { -product-name } a los sitios con información privada?
