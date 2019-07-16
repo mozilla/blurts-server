@@ -15,11 +15,6 @@ unsubscribe-email-link = Artık { -product-name } uyarılarını almak istemiyor
 firefox-monitor-report = { -product-name } Raporu
 report-date = Rapor tarihi:
 email-address = E-posta adresi:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Bu e-posta adresini içerdiği bilinen tüm veri ihlallerini sıraladığımız tam { -product-name } raporunuz aşağıdadır.
-report-no-breaches =
-    E-posta adresiniz bilinen ihlaller veritabanımızda yer almıyor. 
-    Ancak her an yeni ihlaller yaşabilir. Kişisel verilerinizi güvende tutmak için aşağıdaki adımları atın.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Şimdi ne yapmalı?
 report-headline =
@@ -33,8 +28,6 @@ report-subhead-no-breaches =
     Bu iyi haber ama yapabileceğiniz birkaç şey daha var.
     Her an yeni veri ihlalleri yaşanabilir, o yüzden parolalarınızı korumayı öğrenmek için okumaya devam edin.
 report-subhead-found-breaches = Bu e-posta adresini içerdiği bilinen tüm veri ihlallerini sıraladığımız tam Firefox Monitor raporunuz aşağıdadır.
-breach-alert-headline = Hesabınız bir veri ihlali kapsamında yer alıyor.
-breach-alert-subhead = Yakın zamanda bildirilen bir veri ihlali, e-posta adresinizi ve aşağıdaki verileri içeriyor
 report-pwt-blurb =
     Parolalar o kadar değerlidir ki her gün binlerce çalınıp karaborsada işlem görür veya satılır. 
     Daha güçlü parolalar seçmeniz, hesaplarınızı ve hesaplarınızdaki tüm kişisel bilgileri korur.
@@ -65,3 +58,25 @@ share-by-email-message =
     1. { "https://monitor.firefox.com" } adresine girip e-posta adresini ara.
     2. İnternet hesaplarının veri ihlallerinde ele geçirip geçirilmediğini öğren.
     3. Daha sonra ne yapabileceğine dair { -product-name }'den ipuçları al.
+# Unsubscribe link in email.
+email-unsub-link = Abonelikten çık
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Kontrol panelimi göster
+# Button text
+verify-email-cta = E-postayı doğrula
+# Headline of verification email
+email-link-expires = Bu bağlantı 24 saat sonra geçersiz hale gelir
+# Email headline
+email-breach-summary-for-email = { $userEmail } ihlal özeti
+# Subject line of email
+email-subject-verify = { -product-name } e-postanızı doğrulayın
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = { $fxmLink } hakkında daha fazla bilgi alın
+# List headline
+faq-list-headline = Sıkça sorulan sorular
+# Link Title
+faq-v2-1 = Bu şirketlerden veya sitelerden birini tanımıyorum. Neden bu ihlalde yer alıyorum?
+# Link Title
+faq-v2-2 = Yıllar önce yaşanmış bir ihlalle veya eski bir hesabımla ilgili bir şey yapmam gerekir mi?
+# Link Title
+faq-v2-4 = { -product-name } hassas verileri nasıl işliyor?
