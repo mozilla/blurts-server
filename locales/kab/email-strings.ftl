@@ -50,12 +50,29 @@ share-by-email-message =
     3. Wali iwellihen n { -product-name } ɣef wayen ilaqen ad t-tgeḍ.
 # Unsubscribe link in email.
 email-unsub-link = Ffeɣ seg ujerred
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb =
+    Tremseḍ-d izen-a acku tjerrdeḍ ɣer yilɣa n { -product-name }
+    Ur tebɣiḍ ara ad tremseḍ iznan-a? { $unsubLink }. Wagi d izen awurman. I wugar n tallelt, rzu ɣer { $faqLink }-nneɣ.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    Tremseḍ-d izen-a acku tjerrdeḍ ɣer yilɣa n { -product-name }
+    Wagi d izen awurman. I wugar n tallelt, rzu ɣer { $faqLink }-nneɣ.
 # Button text that takes the user to their signed in user dashboard.
 view-my-dashboard-cta = Sken Tafelwit n usenqed-inu
 # Button text
 verify-email-cta = Senqed tansa imayl
 # Headline of verification email
 email-link-expires = Aseɣwen-agi ad yemmet akka 24 isragen
+email-verify-blurb = Sefqed tansa-ik imayl akked ad tt-ternuḍ ɣer { -product-name } sakin jerred ɣer yilɣa n trewliwin n yisefka.
+# Email headline
+email-found-breaches-hl = A-t-an ugzul ɣef trewliwin n yisefka i k-iḥuzan
+# Email headline
+email-breach-summary-for-email = Agzul ɣef trewliwin n yisefka i { $userEmail }
 # Email headline
 email-no-breaches-hl = { $userEmail } ur d-iban ara deg trewla n yisefka yettwassnen
 # Email headline
@@ -68,9 +85,25 @@ email-subject-no-breaches = { -product-name } ur d-yufi ara takerḍa n yisefka 
 email-subject-verify = Senqed tansa imayl-ik/im i { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Issin ugar ɣef { $fxmLink }
+email-sensitive-disclaimer =
+    Ɣef sebba n ṣṣifa iweɛren n trewla-a n yisefka, tansiwin imayl yettwaɣen ur d-ffiɣent ara s wudem azayez.
+    Tremseḍ-d alqu-a acku twekkdeḍ-d d akken tansa-a d ayla-k.
+fxm-warns-you-no-breaches =
+    { -product-name } ad d-id-yelɣu ɣef trewliwin n yisefka i yeḥuzan talɣut-ik tudmawant
+    Akka tura, ulac tarewla n yisefka yettwafen. Ad ak-d-nazen alɣu ma yella tansa-ik imayl tban-d deg trewla tamaynut n yisefka.
+fxm-warns-you-found-breaches =
+    { -product-name } ad d-id-yelɣu ɣef trewliwin n yisefka i yeḥuzan talɣut-ik tudmawant
+    Aql-ak daɣen tjerrdeḍ akken ad tremseḍ ilɣa ma yella tansa-ik tban-d deg trewla n yisefka.
+email-breach-alert-blurb =
+    { -product-name } ad d-id-yelɣu ɣef trewliwin n yisefka i yeḥuzan talɣut-ik tudmawant
+    Akken kan i d-nermes talqut ɣef trewla n yisefka i yeḥuzan takebbanit-nniḍen.
 # List headline
 faq-list-headline = Isteqsiyen i d-yettuɣalen s waṭas
 # Link Title
 faq-v2-1 = Ur ssineɣ ara yiwet ger tkebbaniyin-agi neɣ ismal-agi. Acuɣer iyi-teɛna trewla-agi?
+# Link Title
+faq-v2-2 = Ilaq ad t-xedmeɣ kra ma yella teḍra-d trewla n yisefka iseggasen aya neɣ d amiḍan aqbuṛ?
+# Link Title
+faq-v2-3 = Akken kan ufiɣ tarewla n yisefka n yi-iḥuzan. Acu ara xedmeɣ?
 # Link Title
 faq-v2-4 = Amek isesfar { -product-name } yismal web iweɛren?
