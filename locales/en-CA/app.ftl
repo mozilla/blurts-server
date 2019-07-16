@@ -405,3 +405,9 @@ breach-alert-notifications = Breach Alert Notifications
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Breach added:
+how-hackers-work-desc = Protect your passwords from cyber criminals, since that’s what they care about most.
+what-to-do-after-breach-desc = Lock down your accounts to keep your information out of the wrong hands.
+create-strong-passwords-desc = Make your passwords strong, secure, and hard to guess.
+steps-to-protect-desc = Understand the most common threats and know what to look out for.
+five-myths-desc = Learn how to avoid bad password habits that make a hacker’s work easy.
+take-further-steps-desc = Find out how to mitigate the risks of identity theft to prevent financial loss.
