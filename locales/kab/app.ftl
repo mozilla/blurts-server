@@ -360,3 +360,9 @@ breach-alert-notifications = Ilɣa n trewla n yisefka
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Tarewla n yisefka tettwarna:
+how-hackers-work-desc = Mmesten awalen-ik uffiren seg yimakaren imsenselkamen, acku tuget n wakud, ɣer waya i ttwalin.
+what-to-do-after-breach-desc = Sekkeṛ imiḍanen-ik akken talɣut-ik ur d-tɣelli ara deg yir ifassen.
+create-strong-passwords-desc = Rnu awalen uffiren iǧehden, iɣelsanen, iweɛren i tifin.
+steps-to-protect-desc = Gzu yir timsal yettwassnen daɣen issin ayen tettnadiḍ.
+five-myths-desc = Issin amek ara tettut yir tanumi n wawalen uffiren yessifsusen axeddim i yimakaren imsenselkamen.
+take-further-steps-desc = Wali amek ara tesneɣseḍ takerḍa n timagit akken ad theggiḍ ayen ilaqen i ṛwaḥ n tedrimt.

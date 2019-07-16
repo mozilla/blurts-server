@@ -56,6 +56,14 @@ view-my-dashboard-cta = Sken Tafelwit n usenqed-inu
 verify-email-cta = Senqed tansa imayl
 # Headline of verification email
 email-link-expires = Aseɣwen-agi ad yemmet akka 24 isragen
+# Email headline
+email-no-breaches-hl = { $userEmail } ur d-iban ara deg trewla n yisefka yettwassnen
+# Email headline
+email-alert-hl = { $userEmail } iban-d deg trewla n yisefka yettwassnen
+# Subject line of email
+email-subject-found-breaches = { -product-name } yufa-d talɣut-ik deg tkerḍiwin-a n yisefka
+# Subject line of email
+email-subject-no-breaches = { -product-name } ur d-yufi ara takerḍa n yisefka yettwassnen
 # Subject line of email
 email-subject-verify = Senqed tansa imayl-ik/im i { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
