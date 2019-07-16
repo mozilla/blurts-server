@@ -405,3 +405,6 @@ breach-added-label = Datalek tafoege:
 how-hackers-work-desc = Beskermje jo wachtwurden tsjin cyberkriminelen, want dêr jouwe se it meast om.
 what-to-do-after-breach-desc = Beskoattelje jo accounts om jo gegevens út de ferkearde hannen te hâlden.
 create-strong-passwords-desc = Meitsje jo wachtwurden sterk, feilich en swier te rieden.
+steps-to-protect-desc = Meitsje josels paadwiis yn de meast foarkommende bedriegingen en lear wêr't jo op lette moatte.
+five-myths-desc = Lear hoe't jo slimme wachtwurdgewoanten, dy't it wurk fan in hacker maklik meitsje, mije kinne.
+take-further-steps-desc = Untdek hoe't jo de risiko’s fan identiteitstellerij beheine kinne om finansjeel ferlies te mijen.
