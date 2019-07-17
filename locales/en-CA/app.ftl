@@ -172,8 +172,8 @@ how-fxm-3-blurb =
     If you use { -brand-name }, you’ll receive a notification if you visit a 
     site that’s been breached. Find out right away if you’ve been in the breach and 
     what you can do about it.
-wtd-after-website = What to do after a website breach
-wtd-after-data-agg = What to do after a data aggregator breach
+wtd-after-website = What to do after a website breach:
+wtd-after-data-agg = What to do after a data aggregator breach:
 what-is-data-agg = What is a data aggregator?
 what-is-data-agg-blurb =
     Data aggregators, or data brokers, collect information from public 
@@ -239,7 +239,7 @@ your-info-was-discovered-headline = Your information was discovered in a new dat
 your-info-was-discovered-blurb =
     You’re signed up to receive { -product-name } alerts 
     when your email appears in a data breach. Here’s what we know about this breach.
-what-to-do-after-breach = What to do after a data breach:
+what-to-do-after-breach = What to do after a data breach
 ba-next-step-1 = Change your password to a strong, unique password.
 ba-next-step-blurb-1 =
     A strong password uses a combination of upper and lowercase letters, 
