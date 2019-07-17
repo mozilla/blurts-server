@@ -376,3 +376,4 @@ breach-alert-notifications = Notificaciones sobre filtraciones
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Filtración añadida:
+create-strong-passwords-desc = Haz que tus contraseñas sean seguras y difíciles de adivinar.

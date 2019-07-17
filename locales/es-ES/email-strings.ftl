@@ -13,9 +13,6 @@ unsubscribe-email-link = Si ya no deseas recibir alertas de { -product-name }, c
 firefox-monitor-report = Informe de { -product-name }
 report-date = Fecha del informe:
 email-address = Dirección de correo electrónico:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Aquí está tu informe completo de { -product-name }, que incluye todas las filtraciones de datos conocidas que contienen tu dirección de correo electrónico.
-report-no-breaches = Tu dirección de correo electrónico no aparece en nuestra base de datos de filtraciones conocidas. Pero éstas pueden ocurrir en cualquier momento. Sigue estos pasos para mantener tu información personal segura.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Qué hacer a continuación
 report-headline =
@@ -29,8 +26,6 @@ report-subhead-no-breaches =
     Esas son buenas noticias, pero hay más cosas que puedes hacer. 
     Las filtraciones de datos ocurren en cualquier momento, así que sigue leyendo para saber cómo puedes proteger tus contraseñas.
 report-subhead-found-breaches = Aquí está tu informe completo de Firefox Monitor, que incluye todas las filtraciones de datos conocidas que contienen tu dirección de correo electrónico.
-breach-alert-headline = Tu cuenta se vio involucrada en una filtración de datos.
-breach-alert-subhead = Una filtración de datos conocida recientemente contiene tu correo electrónico y los siguientes datos
 report-pwt-blurb =
     Las contraseñas son tan valiosas que miles de ellas son robadas cada día y vendidas en el mercado negro.
     Usar contraseñas más seguras protege tus cuentas y toda la información personal que reside dentro de ellas.
@@ -59,3 +54,15 @@ share-by-email-message =
     1. Navega a { "https://monitor.firefox.com" } y busca tu correo electrónico.
     2. Comprueba si tus cuentas en línea resultaron expuestas en alguna filtración de datos.
     3. Obtén consejos de { -product-name } sobre qué más puedes hacer.
+# Unsubscribe link in email.
+email-unsub-link = Cancelar la suscripción
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Ver Mi panel de control
+# Button text
+verify-email-cta = Verificar correo electrónico
+# Headline of verification email
+email-link-expires = Este enlace caduca en 24 horas
+# Email headline
+email-found-breaches-hl = Este es tu resumen de las filtraciones de datos pasadas
+# Link Title
+faq-v2-1 = No reconozco alguna empresa o sitio web. ¿Por qué aparezco en la filtración?
