@@ -1,2 +1,5 @@
 # flod as main contact for string changes
 locales/en/*.ftl @flodolo
+
+# svcops helps us review db changes
+db/migrations/* @mozilla/svcops
