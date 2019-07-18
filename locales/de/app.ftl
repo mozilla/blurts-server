@@ -19,12 +19,15 @@ error-hibp-throttled = Zu viele Verbindungen mit { -brand-HIBP }.
 error-hibp-connect = Fehler beim Verbinden mit { -brand-HIBP }.
 error-hibp-load-breaches = Sicherheitslecks konnten nicht geladen werden.
 error-must-be-signed-in = Sie müssen bei Ihrem { -brand-fxa } angemeldet sein.
+error-to-finish-verifying = Um die Verifikation dieser E-Mail-Adresse für { -product-name } abzuschließen, müssen Sie mit Ihrem primären E-Mail-Konto eingeloggt sein.
 home-title = { -product-name }
 home-not-found = Seite nicht gefunden.
 oauth-invalid-session = Ungültige Sitzung
 scan-title = { -product-name }: Scan-Ergebnisse
 user-add-invalid-email = Ungültige E-Mail-Adresse
 user-add-email-verify-subject = Bestätige deine Anmeldung für { -product-name }.
+user-add-duplicate-email = Diese E-Mail-Adresse wurde schon zu { -product-name } hinzugefügt.
+user-add-duplicate-email-part-2 = Öffnen Sie Ihre { $preferencesLink }, um den Status der { $userEmail } zu überprüfen.
 error-headline = Fehler
 user-verify-token-error = Verifikations-Token wird benötigt.
 user-verify-email-report-subject = Dein Bericht für { -product-name }
@@ -315,7 +318,7 @@ email-addresses-title = E-Mail-Adressen
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview = Am { $breachDate } gab es bei { $breachTitle } ein Datenleck. Nachdem das Datenleck entdeckt und bestätigt wurde, wurde es am { $addedDate } unserer Datenbank hinzugefügt.
+breach-overview-new = Am { $breachDate } gab es bei { $breachTitle } ein Datenleck. Nachdem das Datenleck entdeckt und bestätigt wurde, wurde es am { $addedDate } unserer Datenbank hinzugefügt.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } Einstellungen
 # When a user is signed in, this appears in the drop down menu 
