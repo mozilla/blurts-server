@@ -26,6 +26,8 @@ oauth-invalid-session = Session 無效
 scan-title = { -product-name } : 掃描結果
 user-add-invalid-email = 無效的電子郵件地址
 user-add-email-verify-subject = { -product-name } 訂閱確認
+user-add-duplicate-email = 此帳號已經加入 { -product-name }。
+user-add-duplicate-email-part-2 = 請到您的 { $preferencesLink } 檢查 { $userEmail } 的目前狀態。
 error-headline = 錯誤
 user-verify-token-error = 缺少驗證 token。
 user-verify-email-report-subject = 您的 { -product-name } 掃描報告
@@ -293,6 +295,10 @@ other-known-breaches-found =
 additional-information-including = 其他資訊，包含:
 # Title
 email-addresses-title = 電子郵件地址
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = { $breachTitle } 於 { $breachDate } 發生了資料外洩事件。事件發生並經過驗證後，已於 { $addedDate } 列入我們的資料庫。
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } 偏好設定
 # When a user is signed in, this appears in the drop down menu 
