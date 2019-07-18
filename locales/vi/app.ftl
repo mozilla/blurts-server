@@ -19,12 +19,15 @@ error-hibp-throttled = Quá nhiều kết nối đến { -brand-HIBP }.
 error-hibp-connect = Lỗi kết nối đến { -brand-HIBP }.
 error-hibp-load-breaches = Không thể tải các vi phạm.
 error-must-be-signed-in = Bạn phải đăng nhập vào { -brand-fxa } của bạn.
+error-to-finish-verifying = Để hoàn tất xác minh email này cho { -product-name }, bạn phải đăng nhập dưới email tài khoản chính của mình.
 home-title = { -product-name }
 home-not-found = Không tìm thấy trang.
 oauth-invalid-session = Phiên không hợp lệ
 scan-title = { -product-name }: Kết quả quét
 user-add-invalid-email = Email không hợp lệ
 user-add-email-verify-subject = Xác nhận đăng ký của bạn với { -product-name }.
+user-add-duplicate-email = Email này đã được thêm vào { -product-name } trước đó.
+user-add-duplicate-email-part-2 = Truy cập { $preferencesLink } của bạn để kiểm tra trạng thái của { $userEmail }.
 error-headline = Lỗi
 user-verify-token-error = Token xác minh được yêu cầu.
 user-verify-email-report-subject = Báo cáo của { -product-name } gửi của bạn
@@ -360,7 +363,7 @@ email-addresses-title = Địa chỉ email
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview = Vào lúc { $breachDate }, { $breachTitle } đã vi phạm. Khi vi phạm được phát hiện và xác minh, nó đã được thêm vào cơ sở dữ liệu của chúng tôi vào { $addedDate }.
+breach-overview-new = Vào lúc { $breachDate }, { $breachTitle } đã vi phạm. Khi vi phạm được phát hiện và xác minh, nó đã được thêm vào cơ sở dữ liệu của chúng tôi trên { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Tùy chỉnh { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
