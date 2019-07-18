@@ -19,6 +19,7 @@ error-hibp-throttled = Príliš mnoho spojení k službe { -brand-HIBP }.
 error-hibp-connect = Chyba pri pripájaní k { -brand-HIBP }.
 error-hibp-load-breaches = Nepodarilo sa načítať údaje o únikoch.
 error-must-be-signed-in = Musíte byť prihlásení do svojho { -brand-fxa(case: "gen") }.
+error-to-finish-verifying = Na dokončenie overenia tejto e-mailovej adresy v službe { -product-name } musíte byť prihlásení pod svojim hlavným účtom.
 home-title = { -product-name }
 home-not-found = Stránka nebola nájdená.
 oauth-invalid-session = Neplatná relácia
@@ -26,6 +27,7 @@ scan-title = { -product-name } - výsledky skenu
 user-add-invalid-email = Neplatná e-mailová adresa
 user-add-email-verify-subject = Potvrďte svoje prihlásenie k odberu zo služby { -product-name }.
 user-add-duplicate-email = Táto e-mailová adresa už bola do služby { -product-name } pridaná.
+user-add-duplicate-email-part-2 = Ak chcete zistiť stav e-mailovej adresy { $userEmail }, prejdite do sekcie { $preferencesLink }.
 error-headline = Chyba
 user-verify-token-error = Vyžaduje sa overovací token.
 user-verify-email-report-subject = Vaša správa zo služby { -product-name }
@@ -95,7 +97,7 @@ fxa-what-to-do-blurb-4 =
 sign-up-for-alerts = Prihláste sa na odber upozornení
 # Link title
 frequently-asked-questions = Často kladené otázky
-about-firefox-monitor = O { -product-name(case: "gen") }
+about-firefox-monitor = O službe { -product-name }
 # Link title
 preferences = Nastavenia
 # Link title
@@ -135,7 +137,7 @@ spam-list-breach-plural = Úniky zo spamových zoznamov adries
 what-data = Aké údaje boli kompromitované:
 sensitive-sites = Ako sa { -product-name } chová v prípade webov obsahujúcich citlivé údaje?
 delayed-reporting-headline = Prečo nahlásenie tohto úniku trvalo tak dlho?
-about-fxm-headline = O { -product-name(case: "gen") }.
+about-fxm-headline = O službe { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Ako { -product-name } funguje
 wtd-after-website = Čo robiť po úniku z webovej stránky:
@@ -168,16 +170,27 @@ appears-in-x-breaches =
 back-to-top = Návrat hore
 stop-monitoring-this = Zastaviť monitorovanie tejto e-mailovej adresy.
 resend-verification = Znova poslať overovací e-mail
+add-new-email = Pridanie novej e-mailovej adresy
+send-verification = Poslať overovací odkaz
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
 breach-summary = Súhrnné informácie
+show-breaches-for-this-email = Zobraziť všetky úniky pre túto e-mailovú adresu.
+link-change-primary = Zmeniť primárnu e-mailovú adresu
+remove-fxm = Vypnúť { -product-name }
+# Button title
+manage-email-addresses = Správa e-mailových adries
 welcome-back = Vitajte späť, { $userName }!
 welcome-user = Vitajte, { $userName }!
 breach-alert-subject = { -product-name } našiel vašu e-mailovú adresu v novom úniku dát
+your-info-was-discovered-headline = Vaše údaje boli nájdené v novom úniku dát.
 what-to-do-after-breach = Čo robiť po úniku dát
+ba-next-step-1 = Zmeňte si heslo a nové vytvorte silné a jedinečné.
+ba-next-step-2 = Prestaňte s používaním uniknutého hesla.
+faq1 = Túto spoločnosť alebo webovú stránku nepoznám. Prečo som súčasťou tohto úniku?
 faq3 = Ako zistím, že táto e-mailová správa pochádza naozaj zo služby { -product-name }?
 new-breaches-found =
     { $breachCount ->
@@ -188,11 +201,16 @@ new-breaches-found =
 
 ## Updated error messages
 
+error-bot-headline = Vyhľadávanie bolo dočasne pozastavené
+error-csrf-headline = Vypršal časový limit relácie
 login-link = Prihlásiť sa
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Výsledky pre: { $userEmail }
+email-verification-required = Vyžaduje sa overenie e-mailovej adresy
+fxa-primary-email = E-mailová adresa { -brand-fxa(case: "gen") } (primárna)
+what-is-a-website-breach = Čo je únik dát z webovej stránky?
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Nastavenia { -product-short-name(case: "gen") }
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
