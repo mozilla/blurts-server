@@ -99,7 +99,7 @@ even-for-old = 古いアカウントであっても、パスワードをアッ�
 make-new-pw-unique = 新しいパスワードを他とは異なり一意にする
 strength-of-your-pw = パスワードの強度は、直接オンラインセキュリティに影響します。
 create-strong-passwords = 強力なパスワードの作り方
-stop-reusing-pw = 同じパスワードの追加い回しをやめる
+stop-reusing-pw = 同じパスワードの使い回しをやめる
 create-unique-pw = ユニークなパスワードを作成し、パスワードマネージャーのような安全な場所に保存してください。
 five-myths = パスワードマネージャーに関する 5 つの話題
 feat-security-tips = セキュリティの秘訣であなたのアカウントを保護しましょう
@@ -145,6 +145,7 @@ scan-results-known-breaches =
 results-for = { $userEmail } についての結果
 email-verification-required = メールアドレスの認証が必要です
 fxa-primary-email = { -brand-fxa } メールアドレス - 主要
+what-is-a-website-breach = ウェブサイト侵害とは何ですか？
 security-tips-headline = ハッカーからあなたを守るセキュリティの秘訣
 steps-to-protect = オンラインであなたを保護する手順
 take-further-steps = あなたを守るさらなる手順
@@ -155,10 +156,6 @@ find-out = 調査する
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = 侵害を受けたその他の情報:
-# This is a standardized breach overview blurb that appears on all breach detail pages.
-# $breachTitle is the name of the breached company or website.
-# $breachDate and $addedDate are calendar dates.
-breach-overview = { $breachDate }に、{ $breachTitle } は、データ侵害にさらされました。この侵害が発見され、確認されたため、{ $addedDate }にデータベースに追加されました。
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } の設定
 # When a user is signed in, this appears in the drop down menu 
