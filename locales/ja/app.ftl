@@ -96,7 +96,7 @@ protect-your-privacy = オンラインプライバシーを保護する
 
 change-pw = パスワードを変更する
 even-for-old = 古いアカウントであっても、パスワードをアップデートすることは大切です。
-make-new-pw-unique = 新しいパスワードを他とは異なり一意にする
+make-new-pw-unique = 新しいパスワードを他とは異なるユニークなものにする
 strength-of-your-pw = パスワードの強度は、直接オンラインセキュリティに影響します。
 create-strong-passwords = 強力なパスワードの作り方
 stop-reusing-pw = 同じパスワードの使い回しをやめる
