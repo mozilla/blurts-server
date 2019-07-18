@@ -25,6 +25,7 @@ oauth-invalid-session = Neplatná relácia
 scan-title = { -product-name } - výsledky skenu
 user-add-invalid-email = Neplatná e-mailová adresa
 user-add-email-verify-subject = Potvrďte svoje prihlásenie k odberu zo služby { -product-name }.
+user-add-duplicate-email = Táto e-mailová adresa už bola do služby { -product-name } pridaná.
 error-headline = Chyba
 user-verify-token-error = Vyžaduje sa overovací token.
 user-verify-email-report-subject = Vaša správa zo služby { -product-name }
@@ -137,14 +138,61 @@ delayed-reporting-headline = Prečo nahlásenie tohto úniku trvalo tak dlho?
 about-fxm-headline = O { -product-name(case: "gen") }.
 # How Firefox Monitor works
 how-fxm-works = Ako { -product-name } funguje
+wtd-after-website = Čo robiť po úniku z webovej stránky:
+wtd-after-data-agg = Čo robiť po úniku z agregátora dát:
 what-is-data-agg = Čo je agregátor dát?
+protect-your-privacy = Chráňte svoje súkromie na internete
+no-pw-to-change = Na rozdiel od únikov z webových stránok, tu nie je žiadne heslo, ktoré by sa dalo zmeniť.
+avoid-personal-info = Nepoužívajte v heslách osobné údaje
+avoid-personal-info-blurb = Na internete je jednoduché nájsť dátumy narodenia, adresy a mená členov rodiny. Takéto slová určite nepoužívajte ako heslá.
 
 ## What to do after data breach tips
 
+change-pw = Zmeňte svoje heslo
+even-for-old = Aj pre staré účty platí, že je dôležité vytvoriť si nové heslo.
+make-new-pw-unique = Dbajte na to, aby bolo nové heslo odlišné a jedinečné
+strength-of-your-pw = Sila vašich hesiel má priamy vplyv na vašu bezpečnosť na internete.
+create-strong-passwords = Ako si vytvoriť silné heslá
+stop-reusing-pw = Prestaňte používať rovnaké heslá
+create-unique-pw = Vytvorte si jedinečné heslá a uschovajte si ich na nejakom bezpečnom mieste, napríklad v správcovi hesiel.
+five-myths = 5 mýtov o správcoch hesiel
+feat-security-tips = Bezpečnostné tipy na zabezpečenie účtov
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Vyskytuje sa v { $breachCount } známom úniku.
+        [few] Vyskytuje sa v { $breachCount } známych únikoch.
+       *[other] Vyskytuje sa v { $breachCount } známych únikoch.
+    }
+back-to-top = Návrat hore
+stop-monitoring-this = Zastaviť monitorovanie tejto e-mailovej adresy.
+resend-verification = Znova poslať overovací e-mail
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-summary = Súhrnné informácie
+welcome-back = Vitajte späť, { $userName }!
+welcome-user = Vitajte, { $userName }!
+breach-alert-subject = { -product-name } našiel vašu e-mailovú adresu v novom úniku dát
+what-to-do-after-breach = Čo robiť po úniku dát
+faq3 = Ako zistím, že táto e-mailová správa pochádza naozaj zo služby { -product-name }?
+new-breaches-found =
+    { $breachCount ->
+        [one] BOL NÁJDENÝ { $breachCount } NOVÝ ÚNIK DÁT
+        [few] BOLI NÁJDENÉ { $breachCount } NOVÉ ÚNIKY DÁT
+       *[other] BOLO NÁJDENÝCH { $breachCount } NOVÝCH ÚNIKOV DÁT
+    }
 
 ## Updated error messages
 
 login-link = Prihlásiť sa
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Výsledky pre: { $userEmail }
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Nastavenia { -product-short-name(case: "gen") }
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
