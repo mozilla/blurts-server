@@ -19,12 +19,15 @@ error-hibp-throttled = 与 { -brand-HIBP } 的连接过多。
 error-hibp-connect = 连接 { -brand-HIBP } 时出错。
 error-hibp-load-breaches = 未能加载泄露信息。
 error-must-be-signed-in = 您必须先登录 { -brand-fxa }。
+error-to-finish-verifying = 您须使用主账户邮箱登录，才可完成此次 { -product-name } 的邮箱验证。
 home-title = { -product-name }
 home-not-found = 找不到网页。
 oauth-invalid-session = 无效会话
 scan-title = { -product-name }：扫描结果
 user-add-invalid-email = 无效的电子邮件地址
 user-add-email-verify-subject = 确认您要订阅 { -product-name }。
+user-add-duplicate-email = 此电子邮件地址已添加到 { -product-name }。
+user-add-duplicate-email-part-2 = 访问 { $preferencesLink } 以查看 { $userEmail } 的状态。
 error-headline = 错误
 user-verify-token-error = 必须持有验证令牌（Token）。
 user-verify-email-report-subject = 您的 { -product-name } 报告
@@ -299,7 +302,7 @@ email-addresses-title = 电子邮件地址
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview = { $breachTitle } 在 { $breachDate } 发生了数据外泄。我们发现和确认了该外泄事件，并于 { $addedDate } 将其添加到数据库中。
+breach-overview-new = { $breachTitle } 在 { $breachDate } 遭遇了数据外泄。我们发现和确认了该外泄事件，并于 { $addedDate } 将其添加到数据库中。
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } 偏好设置
 # When a user is signed in, this appears in the drop down menu 
