@@ -58,7 +58,7 @@ share-facebook-blurb = Bol niektorý z vašich účtov súčasťou nejakého ún
 og-site-description = { -product-name } zistí, či boli vaše dáta súčasťou nejakého úniku. Pre väčšiu bezpečnosť sa taktiež prihláste k zasielaniu výstrah o únikoch v budúcnosti.
 show-all = Zobraziť všetko
 fxa-scan-another-email = Chcete skontrolovať ďalšiu e-mailovú adresu?
-sign-in = Prihláste sa
+sign-in = Prihlásiť sa
 sign-out = Odhlásiť sa
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Spravovať { -brand-fxa }
@@ -96,7 +96,7 @@ sign-up-for-alerts = Prihláste sa na odber upozornení
 frequently-asked-questions = Často kladené otázky
 about-firefox-monitor = O { -product-name(case: "gen") }
 # Link title
-preferences = Možnosti
+preferences = Nastavenia
 # Link title
 home = Domov
 # Link title
@@ -120,17 +120,43 @@ if-your-info = Ak budú vaše údaje súčasťou nového úniku dát, pošleme v
 search-all-emails = Vyhľadajte všetky svoje e-mailové adresy v únikoch dát a dostávajte upozornenia na nové úniky.
 monitor-several-emails = Monitorujte niekoľko e-mailových adries
 take-action = Podniknite kroky na ochranu svojich účtov
+keep-your-data-safe = Pozrite sa, aké kroky musíte urobiť, aby ste boli v bezpečí pred kyberkriminálnikmi.
+website-breach = Únik z webových stránok
+sensitive-breach = Únik citlivých údajov z webových stránok
+data-aggregator-breach = Únik z agregátora dát
+unverified-breach = Nepotvrdený únik
+spam-list-breach = Únik zo spamového zoznamu adries
+website-breach-plural = Úniky z webových stránok
+sensitive-breach-plural = Úniky citlivých údajov
+data-aggregator-breach-plural = Úniky z agregátorov dát
+unverified-breach-plural = Nepotvrdené úniky
+spam-list-breach-plural = Úniky zo spamových zoznamov adries
+what-data = Aké údaje boli kompromitované:
+sensitive-sites = Ako sa { -product-name } chová v prípade webov obsahujúcich citlivé údaje?
+delayed-reporting-headline = Prečo nahlásenie tohto úniku trvalo tak dlho?
 about-fxm-headline = O { -product-name(case: "gen") }.
 # How Firefox Monitor works
 how-fxm-works = Ako { -product-name } funguje
+what-is-data-agg = Čo je agregátor dát?
 
 ## What to do after data breach tips
 
 
 ## Updated error messages
 
-login-link = Prihláste sa
+login-link = Prihlásiť sa
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = Nastavenia { -product-short-name(case: "gen") }
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Ponuka
 # Link title
 learn-more-link = Ďalšie informácie
+email-sent = E-mail bol odoslaný!
+# Form title
+want-to-add = Chcete pridať ďalšiu e-mailovú adresu?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Pre pridanie adresy { $userEmail } do služby { -product-name }, overte odkaz zaslaný na túto adresu.
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Dátum pridania:
