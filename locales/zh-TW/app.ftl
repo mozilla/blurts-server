@@ -19,6 +19,7 @@ error-hibp-throttled = 與 { -brand-HIBP } 的連線太多。
 error-hibp-connect = 連線到 { -brand-HIBP } 時發生錯誤。
 error-hibp-load-breaches = 無法載入資料外洩資訊。
 error-must-be-signed-in = 您必須先登入 { -brand-fxa }。
+error-to-finish-verifying = 您必須使用主帳號信箱登入，才能完成此信箱的 { -product-name } 驗證。
 home-title = { -product-name }
 home-not-found = 找不到頁面。
 oauth-invalid-session = Session 無效
@@ -292,10 +293,6 @@ other-known-breaches-found =
 additional-information-including = 其他資訊，包含:
 # Title
 email-addresses-title = 電子郵件地址
-# This is a standardized breach overview blurb that appears on all breach detail pages.
-# $breachTitle is the name of the breached company or website.
-# $breachDate and $addedDate are calendar dates.
-breach-overview = { $breachTitle } 於 { $breachDate } 發生了資料外洩事件。事件發生並經過驗證後，已於 { $addedDate } 列入我們的資料庫。
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } 偏好設定
 # When a user is signed in, this appears in the drop down menu 
