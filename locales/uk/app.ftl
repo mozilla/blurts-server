@@ -133,9 +133,11 @@ unverified-breach-plural = Непідтверджені витоки даних
 spam-list-breach-plural = Витоки списку надсилання спаму
 what-data = Які дані скомпрометовані:
 sensitive-sites = Як { -product-name } ставиться до сайтів з конфіденційною інформацією?
+protect-your-privacy = Захистіть своє особисте життя в Інтернеті
 
 ## What to do after data breach tips
 
+change-pw = Змініть свій пароль
 
 ## Updated error messages
 
