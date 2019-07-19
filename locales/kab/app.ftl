@@ -19,12 +19,15 @@ error-hibp-throttled = Ddeqs n tuqqniwin ar { -brand-HIBP }.
 error-hibp-connect = Tuccḍa deg tuqqna ar { -brand-HIBP }.
 error-hibp-load-breaches = Ur yezmir ara ad d-yessali uguren n tɣellist.
 error-must-be-signed-in = Yessefk ad teqqneḍ ɣer { -brand-fxa } yinek.
+error-to-finish-verifying = Akken ad tfakeḍ asefqed n yimay-a i { -product-name }, yessefk ad teqqneḍ s yimayl n umiḍan-ik agejdan.
 home-title = { -product-name }
 home-not-found = Ulac asebter
 oauth-invalid-session = Yir tiɣimit
 scan-title = { -product-name } : Agmuḍ n tesleḍt
 user-add-invalid-email = Yir imayl
 user-add-email-verify-subject = Senqed ajerred-ik { -product-name }.
+user-add-duplicate-email = Imayl-a yettwarna yakan ɣer { -product-name }.
+user-add-duplicate-email-part-2 = Rzu ɣer { $preferencesLink } akken ad twaliḍ addad n { $userEmail }.
 error-headline = Tuccḍa
 user-verify-token-error = Ajiṭun n usentem ilaq.
 user-verify-email-report-subject = Aneqqis-ik { -product-name }
@@ -324,7 +327,7 @@ email-addresses-title = Tansiwin n yimayl
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview = Deg { $breachDate }, { $breachTitle }, teḍra-d trewla n yisefka. Ticki tarewla tettwaf daɣen tetwasenqed, tettwarna ɣer taffa-nneɣ n yisefka deg { $addedDate }.
+breach-overview-new = Deg { $breachDate }, { $breachTitle } yerwel. Ticki tarewla tettwaf daɣen tettwasenqed, tettwasna ɣer taffa-nneɣ n yisefka deg { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Ismenyifen n { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
