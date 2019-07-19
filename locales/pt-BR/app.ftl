@@ -19,12 +19,15 @@ error-hibp-throttled = Conexões em excesso para o { -brand-HIBP }
 error-hibp-connect = Falha ao conectar com o { -brand-HIBP }.
 error-hibp-load-breaches = Não foi possível carregar os vazamentos.
 error-must-be-signed-in = Você precisa entrar na sua { -brand-fxa }.
+error-to-finish-verifying = Para concluir a verificação deste e-mail pelo { -product-name }, você precisa acessar com o e-mail principal da sua conta.
 home-title = { -product-name }
 home-not-found = Página não encontrada.
 oauth-invalid-session = Sessão inválida
 scan-title = { -product-name }: Resultados da Análise
 user-add-invalid-email = Endereço de e-mail inválido
 user-add-email-verify-subject = Confirme sua inscrição no { -product-name }.
+user-add-duplicate-email = Este e-mail já foi adicionado ao { -product-name }.
+user-add-duplicate-email-part-2 = Visite suas { $preferencesLink } para verificar o status de { $userEmail }.
 error-headline = Erro
 user-verify-token-error = Token de verificação é necessário.
 user-verify-email-report-subject = Seu relatório do { -product-name }
@@ -358,7 +361,7 @@ email-addresses-title = Endereços de e-mail
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview = Em { $breachDate }, { $breachTitle } sofreu um vazamento. Uma vez que o vazamento foi descoberto e confirmado, ele foi adicionado à nossa base de dados em { $addedDate }.
+breach-overview-new = Em { $breachDate }, { $breachTitle } foi vazado. Uma vez que o vazamento foi descoberto e confirmado, ele foi adicionado à nossa base de dados em { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Preferências do { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
