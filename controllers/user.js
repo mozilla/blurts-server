@@ -347,9 +347,9 @@ async function getBreachStats(req, res) {
     });
   }
   const fxaResponse = await FXA.verifyOAuthToken(req.token);
-  if (!fxaResponse) {
-    return res.status(404).json({
-      errorMessage: "Cannot find FXA for that OAuth token.",
+  if (fxaResponse.name === "HTTPError") {
+    return res.status(fxaResponse.statusCode).json({
+      errorMessage: "Could not verify FXA OAuth token. FXA returned message: " + fxaResponse.statusMessage,
     });
   }
   const user = await DB.getSubscriberByFxaUid(fxaResponse.body.user);
