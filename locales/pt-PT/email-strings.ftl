@@ -89,5 +89,29 @@ email-alert-hl = { $userEmail } apareceu numa nova intrusão de dados
 email-subject-found-breaches = { -product-name } encontrou a sua informação numa destas intrusões
 # Subject line of email
 email-subject-no-breaches = { -product-name } não encontrou intrusões conhecidas
+# Subject line of email
+email-subject-verify = Confirme o seu e-mail para { -product-name }
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Saiba mais sobre { $fxmLink }
+email-sensitive-disclaimer =
+    Devido à natureza sensível desta intrusão, os e-mails envolvidos não são pesquisáveis publicamente. 
+    Se está a receber este alerta, isto deve-se ao facto de ser o proprietário confirmado deste endereço de e-mail.
+fxm-warns-you-no-breaches =
+    { -product-name } alerta sobre intrusões de dados que envolvam os seus dados pessoais. 
+    Até ao momento, não foram encontradas intrusões. Nós iremos enviar-lhe um alerta se o seu endereço de e-mail aparecer numa nova intrusão.
+fxm-warns-you-found-breaches =
+    { -product-name } alerta sobre intrusões de dados que envolvam os seus dados pessoais. 
+    Está também subscrito ao envio de alertas se o seu endereço de e-mail for encontrado numa nova intrusão.
+email-breach-alert-blurb =
+    { -product-name } alerta sobre intrusões de dados que envolvam os seus dados pessoais. 
+    Acabámos de receber detalhes sobre uma intrusão nos dados de outra empresa.
 # List headline
 faq-list-headline = Perguntas frequentes
+# Link Title
+faq-v2-1 = Eu não reconheço nenhuma destas empresas ou sites. Porque estou envolvido nesta intrusão?
+# Link Title
+faq-v2-2 = Preciso de fazer alguma coisa se a intrusão aconteceu há vários anos ou se esta é uma conta antiga?
+# Link Title
+faq-v2-3 = Acabei de descobrir que estou numa intrusão de dados. O que preciso de fazer?
+# Link Title
+faq-v2-4 = Como é que { -product-name } trata sites sensíveis?
