@@ -23,12 +23,15 @@ error-hibp-throttled = Troppe connessioni a { -brand-HIBP }.
 error-hibp-connect = Errore di connessione a { -brand-HIBP }.
 error-hibp-load-breaches = Non è possibile caricare informazioni relative alle violazioni di dati.
 error-must-be-signed-in = Devi effettuare l’accesso al tuo { -brand-fxa }.
+error-to-finish-verifying = Per completare il processo di verifica di questo indirizzo email su { -product-name } devi essere autenticato con l’account email principale.
 home-title = { -product-name }
 home-not-found = Pagina non trovata.
 oauth-invalid-session = Sessione non valida
 scan-title = { -product-name } : Risultati scansione
 user-add-invalid-email = Email non valida
 user-add-email-verify-subject = Conferma la tua iscrizione a { -product-name }.
+user-add-duplicate-email = Questo indirizzo email è già stato aggiunto a { -product-name }.
+user-add-duplicate-email-part-2 = Vai su { $preferencesLink } per controllare lo stato di { $userEmail }.
 error-headline = Errore
 user-verify-token-error = È richiesto un token di verifica.
 user-verify-email-report-subject = Il tuo rapporto di { -product-name }
@@ -311,7 +314,7 @@ email-addresses-title = Indirizzi email
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview = { $breachTitle } è stato oggetto di una violazione di dati il { $breachDate }. Una volta che la violazione è stata scoperta e verificata, è stata aggiunta al nostro database il { $addedDate }.
+breach-overview-new = Il giorno { $breachDate }, { $breachTitle } è stato violato. La violazione è stata aggiunta al nostro database il giorno { $addedDate }, dopo essere stata scoperta e verificata.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Preferenze di { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
@@ -347,3 +350,9 @@ breach-alert-notifications = Notifiche di violazioni
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Violazione aggiunta:
+how-hackers-work-desc = Le tue password fanno gola ai criminali informatici: proteggile come si deve.
+what-to-do-after-breach-desc = Blinda i tuoi account per mantenere le informazioni personali lontane dalle mani sbagliate.
+create-strong-passwords-desc = Crea password complesse, sicure e difficili da indovinare.
+steps-to-protect-desc = Impara a conoscere le minacce più comuni per capire a cosa fare attenzione.
+five-myths-desc = Evita le cattive abitudini che servono le tue password agli hacker su un piatto d’argento.
+take-further-steps-desc = Scopri come mitigare i rischi di furto d’identità per scongiurare perdite finanziarie.
