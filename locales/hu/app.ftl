@@ -19,12 +19,15 @@ error-hibp-throttled = Túl sok kapcsolat a { -brand-HIBP } felé.
 error-hibp-connect = Hiba a { -brand-HIBP }hoz kapcsolódáskor.
 error-hibp-load-breaches = A adatsértések nem tölthetőek be.
 error-must-be-signed-in = Be kell jelentkeznie a { -brand-fxa }jába.
+error-to-finish-verifying = Az e-mail ellenőrzésének befejezéséhez a { -product-name }ban, be kell jelentkeznie az elsődleges e-mail címéhez tartozó fiókjába.
 home-title = { -product-name }
 home-not-found = Az oldal nem található.
 oauth-invalid-session = Érvénytelen munkamenet
 scan-title = { -product-name } : Szkennelési eredmények
 user-add-invalid-email = Érvénytelen e-mail cím
 user-add-email-verify-subject = A { -product-name } feliratkozásának megerősítése.
+user-add-duplicate-email = Ez az e-mail cím már hozzáadásra került a { -product-name }hoz.
+user-add-duplicate-email-part-2 = Keresse fel a { $preferencesLink } oldalt, és ellenőrizze a(z) { $userEmail } állapotát.
 error-headline = Hiba
 user-verify-token-error = Az ellenőrzési token lejárt.
 user-verify-email-report-subject = Az Ön { -product-name } jelentése
@@ -370,7 +373,7 @@ email-addresses-title = E-mail címek
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview = A(z) { $breachTitle } adatsértés áldozata lett ekkor: { $breachDate }. Amint az adatsértés felfedezésre és megerősítésre került, hozzáadásra került az adatbázisunkhoz, ekkor: { $addedDate }.
+breach-overview-new = A(z) { $breachTitle } adatsértés áldozata lett ekkor: { $breachDate }. Amint az adatsértés felfedezésre és megerősítésre került, hozzáadásra került az adatbázisunkhoz, ekkor: { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } beállítások
 # When a user is signed in, this appears in the drop down menu 
