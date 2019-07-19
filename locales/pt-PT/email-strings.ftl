@@ -15,11 +15,6 @@ unsubscribe-email-link = Se não quiser mais alertas do { -product-name }, cance
 firefox-monitor-report = Relatório do { -product-name }
 report-date = Data do relatório:
 email-address = Endereço de email:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Este é o seu relatório completo do { -product-name }, que inclui todas as brechas conhecidas que contêm este endereço de email.
-report-no-breaches =
-    O seu endereço de email não apareceu na nossa base de dados de brechas conhecidas.
-    Mas as brechas podem acontecer a qualquer momento. Siga estes passos para manter os seus dados pessoais seguros online.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = O que fazer a seguir
 report-headline =
@@ -33,8 +28,6 @@ report-subhead-no-breaches =
     Isto são boas notícias, mas há mais coisas que pode fazer.
     As brechas de dados acontecem a qualquer momento, então continue a ler para saber como pode proteger as suas palavras-passe.
 report-subhead-found-breaches = Este é o seu relatório completo do Firefox Monitor, que inclui todas as brechas de dados conhecidas que contêm este endereço de email.
-breach-alert-headline = A sua conta foi envolvida numa brecha de dados.
-breach-alert-subhead = Uma brecha de dados relatada recentemente contém o seu email e os seguintes dados
 report-pwt-blurb =
     As palavras-passe são tão valiosas, que milhares delas são roubadas todos os dias e comercializadas ou vendidas no mercado negro.
     Palavras-passe mais fortes protegem as suas contas e toda a informação pessoal que reside dentro das mesmas.
@@ -65,3 +58,5 @@ share-by-email-message =
     1. Vá a { "https://monitor.firefox.com" } e pesquise o seu email.
     2. Veja se suas contas online foram expostas numa brecha de dados.
     3. Obtenha dicas do { -product-name } acerca do que fazer a seguir.
+# List headline
+faq-list-headline = Perguntas frequentes
