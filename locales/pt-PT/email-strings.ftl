@@ -58,5 +58,36 @@ share-by-email-message =
     1. Vá a { "https://monitor.firefox.com" } e pesquise o seu email.
     2. Veja se suas contas online foram expostas numa brecha de dados.
     3. Obtenha dicas do { -product-name } acerca do que fazer a seguir.
+# Unsubscribe link in email.
+email-unsub-link = Anular a subscrição
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb = Está a receber este e-mail porque subscreveu a alertas de { -product-name }. Não está interessado em receber este e-mails? { $unsubLink }. Este é um e-mail automático. Para apoio, visite { $faqLink }.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    Está a receber este e-mail porque subscreveu a alertas de { -product-name }. 
+    Este é um e-mail automático. Para apoio, visite { $faqLink }.
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Ver o meu painel
+# Button text
+verify-email-cta = Confirmar e-mail
+# Headline of verification email
+email-link-expires = Esta ligação expira em 24 horas
+email-verify-blurb = Confirme o seu e-mail para o adicionar a { -product-name } e subscreva aos alertas de intrusões.
+# Email headline
+email-found-breaches-hl = Eis o seu resumo para intrusões anteriores de dados
+# Email headline
+email-breach-summary-for-email = Resumo de intrusões para { $userEmail }
+# Email headline
+email-no-breaches-hl = { $userEmail } apareceu em 0 intrusões de dados conhecidas
+# Email headline
+email-alert-hl = { $userEmail } apareceu numa nova intrusão de dados
+# Subject line of email
+email-subject-found-breaches = { -product-name } encontrou a sua informação numa destas intrusões
+# Subject line of email
+email-subject-no-breaches = { -product-name } não encontrou intrusões conhecidas
 # List headline
 faq-list-headline = Perguntas frequentes

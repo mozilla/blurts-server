@@ -19,12 +19,15 @@ error-hibp-throttled = Demasiadas ligações para { -brand-HIBP }.
 error-hibp-connect = Erro ao ligar a { -brand-HIBP }.
 error-hibp-load-breaches = Não foi possível carregar as brechas.
 error-must-be-signed-in = Deve estar autenticado na sua { -brand-fxa }.
+error-to-finish-verifying = Para concluir a confirmação deste e-mail para { -product-name }, deve estar autenticado com a sua conta de e-mail primária.
 home-title = { -product-name }
 home-not-found = Página não encontrada.
 oauth-invalid-session = Sessão inválida
 scan-title = { -product-name } : Resultados da verificação
 user-add-invalid-email = Email inválido
 user-add-email-verify-subject = Verifique a sua subscrição do { -product-name }.
+user-add-duplicate-email = Este e-mail já foi adicionado ao { -product-name }.
+user-add-duplicate-email-part-2 = Consulte as suas { $preferencesLink } para consultar o estado para { $userEmail }.
 error-headline = Erro
 user-verify-token-error = Um token de verificação é requerido.
 user-verify-email-report-subject = O seu relatório do { -product-name }
@@ -366,7 +369,7 @@ email-addresses-title = Endereços de e-mail
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview = Em { $breachDate }, { $breachTitle } sofreu uma violação. Assim que a violação foi descoberta e confirmada, esta foi adicionada à nossa base de dados em { $addedDate }.
+breach-overview-new = A { $breachDate }, { $breachTitle } foi comprometido. Assim que a intrusão foi descoberta e confirmada, foi adicionada à nossa base de dados a { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } - Preferências
 # When a user is signed in, this appears in the drop down menu 
@@ -402,3 +405,9 @@ breach-alert-notifications = Notificações de alerta de brecha
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Brecha adicionada:
+how-hackers-work-desc = Proteja as palavras-passe de cibercriminosos, dado que são o que mais lhes interessa.
+what-to-do-after-breach-desc = Protejas as suas contas para manter a sua informação fora das mãos erradas.
+create-strong-passwords-desc = Torne as suas palavras-passe fortes, seguras e difíceis de adivinhar.
+steps-to-protect-desc = Compreenda as ameaças mais comuns e saiba ao que deve estar atento.
+five-myths-desc = Saiba como evitar más práticas para palavras-passe que facilitam o trabalho aos piratas.
+take-further-steps-desc = Descubra como mitigar os riscos de roubo de identidade que levam a perdas financeiras.
