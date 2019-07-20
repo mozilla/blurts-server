@@ -66,6 +66,8 @@ verify-email-cta = Ověřit e-mailovou adresu
 email-link-expires = Platnost tohoto odkazu vyprší za 24 hodin
 email-verify-blurb = Ověřte svou e-mailovou adresu, aby byla přidána do { -product-name(case: "gen") } a zaregistrována k dostávání upozornění na úniky dat.
 # Email headline
+email-found-breaches-hl = Zde je váš souhrn předcházejících úniků
+# Email headline
 email-breach-summary-for-email = Souhrnné informace o únicích pro { $userEmail }
 # Subject line of email
 email-subject-found-breaches = { -product-name } našel vaše údaje v těchto únicích dat
