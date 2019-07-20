@@ -425,3 +425,4 @@ breach-alert-notifications = Upozornění na úniky
 # and is followed by that date. 
 breach-added-label = Datum přidání:
 how-hackers-work-desc = Chraňte svá hesla před kyberzločinci, protože o ně mají největší zájem.
+what-to-do-after-breach-desc = Uzavřete své účty, aby se vaše údaje nedostaly do cizích rukou.
