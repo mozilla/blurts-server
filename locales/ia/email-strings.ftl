@@ -56,6 +56,12 @@ share-by-email-message =
     1. Va a { "https://monitor.firefox.com" } e cerca tu email.
     2. Vide si tu contos online ha essite exponite in un violation de datos.
     3. Recipe le suggestiones ex { -product-name } re que facer successivemente.
+# Unsubscribe link in email.
+email-unsub-link = Remover le subscription
+# Button text
+verify-email-cta = Verificar le email
+# Headline of verification email
+email-link-expires = Iste ligamine expira in 24 horas
 # Subject line of email
 email-subject-found-breaches = { -product-name } trovava i tu informationes in le violationes sequente
 # Subject line of email
