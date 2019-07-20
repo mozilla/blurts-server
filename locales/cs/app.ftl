@@ -81,6 +81,7 @@ scan-title = { -product-name } - výsledky skenu
 user-add-invalid-email = Neplatná e-mailová adresa
 user-add-email-verify-subject = Potvrďte své přihlášení k odběru zpráv od { -product-name(case: "gen") }.
 user-add-duplicate-email = Tato e-mailová adresa již byla do { -product-name(case: "gen") } přidána.
+user-add-duplicate-email-part-2 = Chcete-li zkontrolovat stav e-mailové adresy { $userEmail }, navštivte své { $preferencesLink }.
 error-headline = Chyba
 user-verify-token-error = Je vyžadován ověřovací token.
 user-verify-email-report-subject = Vaše hlášení od { -product-name(case: "gen") }
@@ -136,16 +137,7 @@ sign-up-for-alerts = Zaregistrovat se
 frequently-asked-questions = Často kladené otázky
 about-firefox-monitor = O { -product-name(case: "gen") }
 # Link title
-preferences =
-    { $case ->
-        [nom] Předvolby
-        [gen] Předvoleb
-        [dat] Předvolbám
-        [acc] Předvolby
-        [voc] Předvolby
-        [loc] Předvolbách
-       *[ins] Předvolbami
-    }
+preferences = Předvolby
 # Link title
 home = Domů
 # Link title
