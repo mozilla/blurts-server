@@ -60,6 +60,8 @@ share-by-email-message =
 email-verify-footer-copy =
     Tento e-mail jste obdrželi, protože jste se zaregistrovali k dostávání upozornění od { -product-name(case: "gen") }.
     Toto je automaticky zaslaný e-mail. Potřebujete-li pomoc, navštivte { $faqLink }.
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Zobrazit mou nástěnku
 # Button text
 verify-email-cta = Ověřit e-mailovou adresu
 # Headline of verification email
@@ -82,3 +84,7 @@ fxm-warns-you-found-breaches =
 faq-list-headline = Často kladené otázky
 # Link Title
 faq-v2-1 = Tato společnost či web mi nic neříká. Proč dostávám oznámení o tomto úniku?
+# Link Title
+faq-v2-2 = Je třeba něco dělat, pokud se únik odehrál před lety nebo šlo o starý účet?
+# Link Title
+faq-v2-3 = Právě jsem zjistil, že byly mé údaje součástí úniku dat. Co mám dělat dál?
