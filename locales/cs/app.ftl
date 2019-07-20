@@ -77,7 +77,7 @@ home-title = { -product-name }
 home-not-found = Stránka nenalezena.
 oauth-invalid-session = Neplatná relace
 scan-title = { -product-name } - výsledky skenu
-user-add-invalid-email = Neplatný e-mail
+user-add-invalid-email = Neplatná e-mailová adresa
 user-add-email-verify-subject = Potvrďte své přihlášení k odběru zpráv od { -product-name(case: "gen") }.
 error-headline = Chyba
 user-verify-token-error = Je vyžadován ověřovací token.
@@ -382,10 +382,6 @@ other-known-breaches-found =
 additional-information-including = Další informace, jmenovitě:
 # Title
 email-addresses-title = E-mailové adresy
-# This is a standardized breach overview blurb that appears on all breach detail pages.
-# $breachTitle is the name of the breached company or website.
-# $breachDate and $addedDate are calendar dates.
-breach-overview = Dne { $breachDate } došlo u subjektu { $breachTitle } k úniku dat. Ihned po odhalení a potvrzení úniku byl dne { $addedDate } přidán do naší databáze.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Předvolby { -product-short-name(case: "gen") }
 # When a user is signed in, this appears in the drop down menu 

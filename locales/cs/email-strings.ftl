@@ -90,6 +90,9 @@ email-subject-no-breaches = { -product-name } nenašel žádné známé úniky d
 email-subject-verify = Ověření e-mailové adresy pro { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Zjistit více o službě { $fxmLink }
+email-sensitive-disclaimer =
+    Vzhledem k citlivé povaze tohoto úniku nejsou e-mailové adresy, které jsou jeho součástí, veřejně dohledatelné.
+    Toto upozornění jste dostali, protože jste ověřeným majitelem této e-mailové adresy.
 fxm-warns-you-no-breaches =
     { -product-name } vás upozorňuje na úniky dat, jejichž součástí byly vaše osobní údaje.
     Dosud jste nebyli součástí žádného úniku. Pošleme vám upozornění, jestliže se vaše e-mailová adresa vyskytne v novém úniku dat.
