@@ -10,7 +10,7 @@ report-scan-another-email = Vyhledat další e-mailovou adresu ve { -product-nam
 automated-message = Toto je automaticky zaslaný e-mail – pokud jste si ho nevyžádali, můžete ho ignorovat.
 # Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
 we-sent-this-alert = Tuto zprávu jsme poslali na adresu { $userEmail }, protože byla přihlášena k dostávání upozornění od { -product-name(case: "gen") }.
-unsubscribe-email-link = Pokud již nechcete upozornění od { -product-name(case: "gen") } dostávat, odhlaste se.
+unsubscribe-email-link = Pokud již nechcete upozornění od { -product-name(case: "gen") } dostávat, zrušte jejich odběr.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Hlášení { -product-name(case: "gen") }
 report-date = Datum:
@@ -61,11 +61,11 @@ email-unsub-link = Zrušte odběr
 # { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
 # and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
 # Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
-email-footer-blurb = Tento e-mail jste obdrželi, protože jste se zaregistrovali k dostávání upozornění od { -product-name(case: "gen") }. Nepřejete si už tyto e-maily dostávat? { $unsubLink }. Toto je automaticky zaslaný e-mail. Potřebujete-li pomoc, navštivte { $faqLink }.
+email-footer-blurb = Tento e-mail jste obdrželi, protože jste se zaregistrovali k příjmu upozornění od { -product-name(case: "gen") }. Nepřejete si už tyto e-maily dostávat? { $unsubLink }. Toto je automaticky zaslaný e-mail. Potřebujete-li pomoc, navštivte { $faqLink }.
 # This string appears in the footer of verification emails. { $faqLink } is a link
 # to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-verify-footer-copy =
-    Tento e-mail jste obdrželi, protože jste se zaregistrovali k dostávání upozornění od { -product-name(case: "gen") }.
+    Tento e-mail jste obdrželi, protože jste se zaregistrovali k příjmu upozornění od { -product-name(case: "gen") }.
     Toto je automaticky zaslaný e-mail. Potřebujete-li pomoc, navštivte { $faqLink }.
 # Button text that takes the user to their signed in user dashboard.
 view-my-dashboard-cta = Zobrazit mou nástěnku

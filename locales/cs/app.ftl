@@ -68,7 +68,7 @@ terms-and-privacy = Podmínky a ochrana soukromí
 GitHub-link-title = GitHub
 error-scan-page-token = Pokusili jste se zkontrolovat příliš mnoho e-mailových adres ve velmi krátkém čase. Z bezpečnostních důvodů jsme další vyhledávání dočasně zablokovali. Zkuste to prosím znovu později.
 error-could-not-add-email = E-mailovou adresu se nepodařilo přidat do databáze.
-error-not-subscribed = Tato e-mailová adresa není přihlášena k odběru zpráv z { -product-name(case: "gen") }.
+error-not-subscribed = Tato e-mailová adresa není zaregistrována k odběru upozornění od { -product-name(case: "gen") }.
 error-hibp-throttled = Příliš mnoho spojení ke službě { -brand-HIBP }.
 error-hibp-connect = Chyba při připojování k { -brand-HIBP }.
 error-hibp-load-breaches = Nepodařilo se načíst informace o únicích.
@@ -85,9 +85,9 @@ user-add-duplicate-email-part-2 = Chcete-li zkontrolovat stav e-mailové adresy 
 error-headline = Chyba
 user-verify-token-error = Je vyžadován ověřovací token.
 user-verify-email-report-subject = Vaše hlášení od { -product-name(case: "gen") }
-user-unsubscribe-token-error = Pro odhlášení je vyžadován token.
-user-unsubscribe-token-email-error = Pro odhlášení je vyžadován token a emailHash.
-user-unsubscribe-title = { -product-name } - odhlášení
+user-unsubscribe-token-error = Pro zrušení odběru je vyžadován token.
+user-unsubscribe-token-email-error = Pro zrušení odběru je vyžadován token a emailHash.
+user-unsubscribe-title = { -product-name } - zrušení odběru upozornění
 pwt-section-headline = Silnější hesla = lepší ochrana
 landing-headline = Každý má právo na bezpečí před hackery.
 scan-placeholder = Zadejte e-mailovou adresu
@@ -104,9 +104,9 @@ breach-date = Datum úniku:
 compromised-accounts = Počet kompromitovaných účtů:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Kompromitovaná data:
-unsub-headline = Odhlásit odběr zpráv z { -product-name-nowrap(case: "gen") }
+unsub-headline = Zrušit odběr upozornění od { -product-name-nowrap(case: "gen") }
 unsub-blurb = Tímto smažete svou e-mailovou adresu ze seznamu { -product-name-nowrap(case: "gen") } a nebudete nadále dostávat upozornění na nově oznámené úniky dat.
-unsub-button = Odhlásit
+unsub-button = Zrušit odběr
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Data o únicích poskytuje { $hibp-link }
 share-twitter = Většina lidí má na internetu okolo stovky účtů. Zjistěte, jestli nebyl některý z těch vašich součástí úniku dat.
@@ -250,7 +250,7 @@ welcome-user = Vítejte, { $userName }!
 breach-alert-subject = { -product-name } našel vaši e-mailovou adresu v novém úniku dat.
 your-info-was-discovered-headline = Vaše údaje byly nalezeny v novém úniku dat.
 your-info-was-discovered-blurb =
-    Jste přihlášeni k dostávání upozornění od služby { -product-name },
+    Jste zaregistrováni k obdržení upozornění od služby { -product-name },
     jestliže se vaše e-mailová adresa objeví v nějakém úniku dat. Zde je vše, co o tomto úniku víme.
 what-to-do-after-breach = Co dělat po úniku dat:
 ba-next-step-1 = Změňte heslo a nové vytvořte silné a jedinečné.
@@ -307,10 +307,10 @@ error-bot-blurb =
     několik e-mailových adres . Pro teď máte další vyhledávání zablokováno. Můžete to opět zkusit později.
 error-csrf-headline = Vypršel časový limit relace
 error-csrf-blurb = Klepněte v prohlížeči na tlačítko Zpět, aktualizujte stránku a akci opakujte.
-error-invalid-unsub = Jak se odhlásit z dostávání upozornění od služby { -product-name }
+error-invalid-unsub = Jak zrušit odběr upozornění od služby { -product-name }
 error-invalid-unsub-blurb =
-    Budete se muset odhlásit prostřednictvím jedné z e-mailových zpráv, kterou vám { -product-name } odeslal. Podívejte se do své e-mailové schránky po zprávách od
-    { -brand-team-email }. V dolní části zprávy pak klepněte na odhlašovací odkaz.
+    Zrušit odběr budete muset prostřednictvím jedné z e-mailových zpráv, kterou vám { -product-name } odeslal. Podívejte se do své e-mailové schránky po zprávách od
+    { -brand-team-email }. V dolní části zprávy pak klepněte na odkaz pro zrušení odběru.
 login-link = Přihlásit se
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
@@ -373,7 +373,7 @@ see-if-youve-been-part = Zjistěte, zda jste nebyli součástí internetového �
 get-ongoing-breach-monitoring = Nechte si průběžně monitorovat více e-mailových adres.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Zjistit
-new-unsub-error = Budete se muset odhlásit prostřednictvím jedné z e-mailových zpráv, kterou vám { -product-name } odeslal.
+new-unsub-error = Zrušit odběr budete muset prostřednictvím jedné z e-mailových zpráv, kterou vám { -product-name } odeslal.
 other-known-breaches-found =
     { $breachCount ->
         [one] Objevila se však v { $breachCount } dalším úniku.
@@ -429,3 +429,4 @@ what-to-do-after-breach-desc = Uzavřete své účty, aby se vaše údaje nedost
 create-strong-passwords-desc = Vytvářejte hesla silná, bezpečná a těžko uhodnutelná.
 steps-to-protect-desc = Porozumějte nejběžnějším hrozbám a poznejte, na co je třeba dávat pozor.
 five-myths-desc = Zjistěte, jak se vyvarovat špatných zvyků, které hackerům usnadňují práci.
+take-further-steps-desc = Zjistěte, jak snížit rizika krádeže identity, abyste předešli finanční ztrátě.
