@@ -385,6 +385,10 @@ other-known-breaches-found =
 additional-information-including = Další informace, jmenovitě:
 # Title
 email-addresses-title = E-mailové adresy
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = Dne { $breachDate } došlo u subjektu { $breachTitle } k úniku dat. Ihned po odhalení a potvrzení úniku byl dne { $addedDate } přidán do naší databáze.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Předvolby { -product-short-name(case: "gen") }
 # When a user is signed in, this appears in the drop down menu 
@@ -420,3 +424,4 @@ breach-alert-notifications = Upozornění na úniky
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Datum přidání:
+how-hackers-work-desc = Chraňte svá hesla před kyberzločinci, protože o ně mají největší zájem.
