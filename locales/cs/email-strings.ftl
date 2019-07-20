@@ -61,7 +61,7 @@ email-unsub-link = Zrušte odběr
 # { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
 # and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
 # Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
-email-footer-blurb = Tento e-mail jste obdrželi, protože jste se zaregistrovali k dostávání upozornění od { -product-name(case: "gen") }. Nepřejete si již tyto e-maily dostávat? { $unsubLink } Toto je automaticky zaslaný e-mail. Potřebujete-li pomoc, navštivte { $faqLink }.
+email-footer-blurb = Tento e-mail jste obdrželi, protože jste se zaregistrovali k dostávání upozornění od { -product-name(case: "gen") }. Nepřejete si už tyto e-maily dostávat? { $unsubLink }. Toto je automaticky zaslaný e-mail. Potřebujete-li pomoc, navštivte { $faqLink }.
 # This string appears in the footer of verification emails. { $faqLink } is a link
 # to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-verify-footer-copy =
@@ -79,13 +79,18 @@ email-found-breaches-hl = Zde je váš souhrn předcházejících úniků
 # Email headline
 email-breach-summary-for-email = Souhrnné informace o únicích pro { $userEmail }
 # Email headline
-email-no-breaches-hl = Adresa { $userEmail } se nevyskytuje v žádném známém úniku dat
+email-no-breaches-hl = { $userEmail } se nevyskytuje v žádném známém úniku dat
 # Subject line of email
 email-subject-found-breaches = { -product-name } našel vaše údaje v těchto únicích dat
+# Subject line of email
+email-subject-no-breaches = { -product-name } nenašel žádné známé úniky dat
 # Subject line of email
 email-subject-verify = Ověření e-mailové adresy pro { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Zjistit více o službě { $fxmLink }
+fxm-warns-you-no-breaches =
+    { -product-name } vás upozorňuje na úniky dat, jejichž součástí byly vaše osobní údaje.
+    Dosud jste nebyli součástí žádného úniku. Pošleme vám upozornění, jestliže se vaše e-mailová adresa vyskytne v novém úniku dat.
 fxm-warns-you-found-breaches =
     { -product-name } vás upozorňuje na úniky dat, jejichž součástí byly vaše osobní údaje.
     Jste také zaregistrováni k obdržení upozornění, jestliže se vaše e-mailová adresa vyskytne v novém úniku dat.
