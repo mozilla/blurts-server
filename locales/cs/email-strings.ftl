@@ -75,7 +75,7 @@ verify-email-cta = Ověřit e-mailovou adresu
 email-link-expires = Platnost tohoto odkazu vyprší za 24 hodin
 email-verify-blurb = Ověřte svou e-mailovou adresu, aby byla přidána do { -product-name(case: "gen") } a zaregistrována k dostávání upozornění na úniky dat.
 # Email headline
-email-found-breaches-hl = Zde je váš souhrn předcházejících úniků
+email-found-breaches-hl = Zde je váš souhrn dřívějších úniků
 # Email headline
 email-breach-summary-for-email = Souhrnné informace o únicích pro { $userEmail }
 # Email headline
@@ -96,6 +96,7 @@ fxm-warns-you-no-breaches =
 fxm-warns-you-found-breaches =
     { -product-name } vás upozorňuje na úniky dat, jejichž součástí byly vaše osobní údaje.
     Jste také zaregistrováni k obdržení upozornění, jestliže se vaše e-mailová adresa vyskytne v novém úniku dat.
+email-breach-alert-blurb = { -product-name } vás upozorňuje na úniky dat, jejichž součástí byly vaše osobní údaje. Právě jsme obdrželi informace o dalším úniku dat.
 # List headline
 faq-list-headline = Často kladené otázky
 # Link Title
@@ -104,3 +105,5 @@ faq-v2-1 = Tato společnost či web mi nic neříká. Proč dostávám oznámen�
 faq-v2-2 = Je třeba něco dělat, pokud se únik odehrál před lety nebo šlo o starý účet?
 # Link Title
 faq-v2-3 = Právě jsem zjistil, že byly mé údaje součástí úniku dat. Co mám dělat dál?
+# Link Title
+faq-v2-4 = Jak { -product-name } zachází s úniky citlivých dat?
