@@ -80,6 +80,8 @@ email-found-breaches-hl = Zde je váš souhrn předcházejících úniků
 email-breach-summary-for-email = Souhrnné informace o únicích pro { $userEmail }
 # Email headline
 email-no-breaches-hl = { $userEmail } se nevyskytuje v žádném známém úniku dat
+# Email headline
+email-alert-hl = { $userEmail } se objevila v novém úniku dat
 # Subject line of email
 email-subject-found-breaches = { -product-name } našel vaše údaje v těchto únicích dat
 # Subject line of email
