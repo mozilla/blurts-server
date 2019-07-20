@@ -13,9 +13,6 @@ unsubscribe-email-link = Si tu non vole plus alertas de { -product-name }, remov
 firefox-monitor-report = Reporto de { -product-name }
 report-date = data del reporto:
 email-address = Adresse email:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Ecce tu plen reporto de { -product-name }, que include tote le note violationes de datos que contine iste adresse de email.
-report-no-breaches = Tu adresse de email non appareva in nostre base de datos del violationes note. Ma le violationes pote evenir in ulle tempore. Prende iste grados pro mantener tu datos personal secur online.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Que facer postea
 report-headline =
@@ -29,8 +26,6 @@ report-subhead-no-breaches =
     Illo es bon novas, ma il ha plus que tu pote facer.
     Le violationes de datos eveni sempre, assi lege pro apprender como pote tu proteger tu contrasignos.
 report-subhead-found-breaches = Ecce tu reporto plen de Firefox Monitor, que include tote le note violationes de datos que contine iste adresse de email.
-breach-alert-headline = Tu conto ha essite implicate in un violation de datos.
-breach-alert-subhead = Un violation de datos recentemente reportate contine tu email e le sequente datos
 report-pwt-blurb =
     Contrasignos es assi preciose que milles de illos es robate cata die e excambiate o vendite sur le mercato nigre.
     Le contrasignos plus forte protege tu contos e tote le informationes personal que demora intra illos.
@@ -61,3 +56,13 @@ share-by-email-message =
     1. Va a { "https://monitor.firefox.com" } e cerca tu email.
     2. Vide si tu contos online ha essite exponite in un violation de datos.
     3. Recipe le suggestiones ex { -product-name } re que facer successivemente.
+# Subject line of email
+email-subject-found-breaches = { -product-name } trovava i tu informationes in le violationes sequente
+# Subject line of email
+email-subject-no-breaches = { -product-name } non trovava ulle violationes note
+# Subject line of email
+email-subject-verify = Verifica tu adresse email pro { -product-name }
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Apprender plus re { $fxmLink }
+# List headline
+faq-list-headline = Demandas frequente
