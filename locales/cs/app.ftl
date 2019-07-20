@@ -426,3 +426,4 @@ breach-alert-notifications = Upozornění na úniky
 breach-added-label = Datum přidání:
 how-hackers-work-desc = Chraňte svá hesla před kyberzločinci, protože o ně mají největší zájem.
 what-to-do-after-breach-desc = Uzavřete své účty, aby se vaše údaje nedostaly do cizích rukou.
+create-strong-passwords-desc = Vytvářejte hesla silná, bezpečná a těžko uhodnutelná.
