@@ -427,3 +427,5 @@ breach-added-label = Datum přidání:
 how-hackers-work-desc = Chraňte svá hesla před kyberzločinci, protože o ně mají největší zájem.
 what-to-do-after-breach-desc = Uzavřete své účty, aby se vaše údaje nedostaly do cizích rukou.
 create-strong-passwords-desc = Vytvářejte hesla silná, bezpečná a těžko uhodnutelná.
+steps-to-protect-desc = Porozumějte nejběžnějším hrozbám a poznejte, na co je třeba dávat pozor.
+five-myths-desc = Zjistěte, jak se vyvarovat špatných zvyků, které hackerům usnadňují práci.
