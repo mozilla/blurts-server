@@ -19,12 +19,15 @@ error-hibp-throttled = Gormod o gysylltiadau i { -brand-HIBP }.
 error-hibp-connect = Gwall wrth gysylltu i { -brand-HIBP }.
 error-hibp-load-breaches = Methu llwytho'r tor-data.
 error-must-be-signed-in = Rhaid eich bod wedi eich mewngofnodi i'ch { -brand-fxa }.
+error-to-finish-verifying = I orffen gwirio yr e-bost hwn ar gyfer { -product-name }, rhaid eich bod wedi eich mewngofnodi gyda'ch prif cyfrif e-bost.
 home-title = { -product-name }
 home-not-found = Heb ganfod tudalen.
 oauth-invalid-session = Sesiwn annilys
 scan-title = { -product-name } : Canlyniadau Sganio
 user-add-invalid-email = E-bost Annilys
 user-add-email-verify-subject = Dilysu eich tanysgrifiad i { -product-name }.
+user-add-duplicate-email = Mae'r e-bost hwn eisoes wedi'i ychwanegu at { -product-name }.
+user-add-duplicate-email-part-2 = Ewch i'ch { $preferencesLink } i wirio statws { $userEmail }.
 error-headline = Gwall
 user-verify-token-error = Mae angen tocyn dilysu.
 user-verify-email-report-subject = Eich adroddiad { -product-name }
@@ -377,7 +380,7 @@ email-addresses-title = Cyfeiriadau E-bost
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview = Ar { $breachDate }, profodd { $breachTitle } dor-data. Unwaith y cafodd y tor-data ei ddarganfod a'i ddilysu, cafodd ei ychwanegu at ein cronfa ddata ar { $addedDate }.
+breach-overview-new = Ar { $breachDate }, profodd { $breachTitle } dor-data. Unwaith y cafodd y tor-data ei ddarganfod a'i ddilysu, cafodd ei ychwanegu at ein cronfa ddata ar { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Dewisiadau { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
@@ -413,3 +416,9 @@ breach-alert-notifications = Hysbysiadau Rhybudd Tor-data
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Ychwanegwyd y tor-data:
+how-hackers-work-desc = Diogelwch eich cyfrineiriau gan seiber droseddwyr, gan mai dyna beth maen nhw'n poeni amdano fwyaf.
+what-to-do-after-breach-desc = Clowch eich cyfrifon i gadw'ch manylion allan o'r dwylo anghywir.
+create-strong-passwords-desc = Gwnewch eich cyfrineiriau'n gryf, yn ddiogel ac yn anodd eu dyfalu.
+steps-to-protect-desc = Deallwch y bygythiadau mwyaf cyffredin a gwybod beth i edrych amdano.
+five-myths-desc = Dysgwch sut i osgoi arferion cyfrinair gwael sy'n gwneud gwaith hacwyr yn hawdd.
+take-further-steps-desc = Darganfyddwch sut i leihau risgiau dwyn hunaniaeth er mwyn rhwystro colledion ariannol.
