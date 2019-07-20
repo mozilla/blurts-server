@@ -136,7 +136,16 @@ sign-up-for-alerts = Zaregistrovat se
 frequently-asked-questions = Často kladené otázky
 about-firefox-monitor = O { -product-name(case: "gen") }
 # Link title
-preferences = Předvolby
+preferences =
+    { $case ->
+        [nom] Předvolby
+        [gen] Předvoleb
+        [dat] Předvolbám
+        [acc] Předvolby
+        [voc] Předvolby
+        [loc] Předvolbách
+       *[ins] Předvolbami
+    }
 # Link title
 home = Domů
 # Link title
@@ -409,7 +418,7 @@ verify-the-link = Pro přidání adresy { $userEmail } do { -product-name(case: 
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
-manage-all-emails = Spravovat všechny e-mailové adresy v { $preferencesLink }.
+manage-all-emails = Pro správu všech e-mailových adres navštivte { $preferencesLink }.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
