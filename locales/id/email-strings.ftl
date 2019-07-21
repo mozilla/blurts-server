@@ -59,6 +59,18 @@ share-by-email-message =
     3. Dapatkan kiat dari { -product-name } tentang apa yang selanjutnya perlu Anda lakukan.
 # Unsubscribe link in email.
 email-unsub-link = Berhenti berlangganan
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb =
+    Anda menerima email ini karena Anda mendaftar untuk peringatan { -product-name }
+    Tidak lagi menginginkan surel ini? { $unsubLink }. Ini adalah surel otomatis. Untuk dukungan, kunjungi { $faqLink }.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    Anda menerima surel ini karena Anda mendaftar untuk dapatkan peringatan { -product-name }.
+    Ini adalah surel otomatis. Untuk dukungan, kunjungi { $faqLink }.
 # Button text that takes the user to their signed in user dashboard.
 view-my-dashboard-cta = Lihat Dasbor Saya
 # Button text
@@ -66,6 +78,10 @@ verify-email-cta = Verifikasi Surel
 # Headline of verification email
 email-link-expires = Tautan ini kedaluwarsa dalam 24 jam
 email-verify-blurb = Verifikasi surel Anda untuk menambahkannya ke { -product-name } dan mendaftar untuk peringatan kebocoran.
+# Email headline
+email-found-breaches-hl = Berikut ringkasan pembobolan data sebelumnya
+# Email headline
+email-breach-summary-for-email = Ringkasan pembobolan untuk { $userEmail }
 # Subject line of email
 email-subject-verify = Verifikasi surel Anda untuk { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.

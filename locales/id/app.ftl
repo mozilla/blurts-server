@@ -19,12 +19,15 @@ error-hibp-throttled = Terlalu banyak koneksi ke { -brand-HIBP }.
 error-hibp-connect = Gagal tersambung dengan { -brand-HIBP }.
 error-hibp-load-breaches = Tidak dapat memuat data pembobolan.
 error-must-be-signed-in = Anda harus masuk dengan { -brand-fxa } Anda.
+error-to-finish-verifying = Untuk menyelesaikan verifikasi surel ini untuk { -product-name }, Anda harus masuk menggunakan surel akun utama Anda.
 home-title = { -product-name }
 home-not-found = Laman tidak ditemukan.
 oauth-invalid-session = Sesi tidak valid
 scan-title = { -product-name }: Hasil Pindaian
 user-add-invalid-email = Surel Tidak Valid
 user-add-email-verify-subject = Verifikasi langganan { -product-name } Anda.
+user-add-duplicate-email = Surel ini telah ditambahkan ke { -product-name }.
+user-add-duplicate-email-part-2 = Kunjungi { $preferencesLink } Anda untuk memeriksa status { $userEmail }.
 error-headline = Masalah
 user-verify-token-error = Token verifikasi diperlukan.
 user-verify-email-report-subject = Laporan { -product-name } Anda
@@ -358,7 +361,7 @@ email-addresses-title = Alamat Surel
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview = Pada { $breachDate }, { $breachTitle } mengalami pembobolan. Setelah pembobolan ditemukan dan diverifikasi, maka informasi ini ditambahkan ke basis data kami pada { $addedDate }.
+breach-overview-new = Pada { $breachDate }, { $breachTitle } mengalami pembobolan. Setelah pembobolan ditemukan dan diverifikasi, maka informasi ini ditambahkan ke basis data kami pada { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Pengaturan { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
@@ -394,3 +397,9 @@ breach-alert-notifications = Notifikasi Pemberitahuan Pembobolan
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Pembobolan ditambahkan pada:
+how-hackers-work-desc = Lindungi kata sandi Anda dari penjahat dunia maya, karena itulah yang paling mereka pedulikan.
+what-to-do-after-breach-desc = Kunci akun Anda untuk menjaga informasi Anda dari tangan yang salah.
+create-strong-passwords-desc = Buat kata sandi Anda kuat, aman, dan sulit ditebak.
+steps-to-protect-desc = Pahami ancaman yang paling umum dan ketahui apa yang harus diwaspadai.
+five-myths-desc = Pelajari cara menghindari kebiasaan kata sandi buruk yang membuat peretas bekerja dengan mudah.
+take-further-steps-desc = Cari tahu cara mengurangi risiko pencurian identitas untuk mencegah kerugian finansial.
