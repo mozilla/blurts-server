@@ -410,3 +410,8 @@ breach-alert-notifications = Varningsmeddelande om intrång
 # and is followed by that date. 
 breach-added-label = Intrång tillagt:
 how-hackers-work-desc = Skydda dina lösenord från cyberkriminella, eftersom det är det som de bryr sig mest om.
+what-to-do-after-breach-desc = Säkra dina konton för att förhindra att dina data hamnar i orätta händer.
+create-strong-passwords-desc = Gör dina lösenord starka, säkra och svåra att gissa.
+steps-to-protect-desc = Förstå de vanligaste hoten och lär dig vad du ska leta efter.
+five-myths-desc = Lär dig hur du undviker dåliga lösenordsvanor som gör en hackars jobb enklare.
+take-further-steps-desc = Ta reda på hur man kan mildra riskerna för identitetsstöld för att förhindra ekonomisk förlust.
