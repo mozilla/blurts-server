@@ -29,12 +29,15 @@ error-hibp-throttled = Слишком много попыток соединен
 error-hibp-connect = Ошибка подключения к { -brand-HIBP(case: "dative") }.
 error-hibp-load-breaches = Не удалось загрузить информацию по угрозам.
 error-must-be-signed-in = Вы должны войти в свой { -brand-fxa }.
+error-to-finish-verifying = Чтобы завершить подтверждение этого адреса электронной почты для { -product-name }, вы должны войти, используя свой основной адрес электронной почты.
 home-title = { -product-name }
 home-not-found = Страница не найдена.
 oauth-invalid-session = Недействительный идентификатор сессии
 scan-title = { -product-name } : Результаты сканирования
 user-add-invalid-email = Некорректный адрес электронной почты
 user-add-email-verify-subject = Подтвердите вашу подписку на { -product-name }.
+user-add-duplicate-email = Этот адрес электронной почты уже был добавлен в { -product-name }.
+user-add-duplicate-email-part-2 = Посетите { $preferencesLink }, чтобы проверить статус { $userEmail }.
 error-headline = Ошибка
 user-verify-token-error = Требуется токен подтверждения.
 user-verify-email-report-subject = Ваш отчёт от { -product-name }
@@ -345,7 +348,7 @@ email-addresses-title = Адреса электронной почты
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview = { $breachDate } произошла утечка данных { $breachTitle }. Как только утечка была обнаружена и подтверждена, она была добавлена в нашу базу данных { $addedDate }.
+breach-overview-new = { $breachDate } произошла утечка данных { $breachTitle }. Как только утечка была обнаружена и подтверждена, она была добавлена в нашу базу данных { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Настройки { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
@@ -381,3 +384,9 @@ breach-alert-notifications = Уведомления о утечках данны
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Утечка добавлена:
+how-hackers-work-desc = Защитите свои пароли от киберпреступников, ведь это то, что волнует их больше всего.
+what-to-do-after-breach-desc = Заблокируйте доступ к своим аккаунтам, чтобы ваша информация не попала в чужие руки.
+create-strong-passwords-desc = Сделайте ваши пароли надёжными, безопасными и трудно угадываемыми.
+steps-to-protect-desc = Узнайте о наиболее распространённых угрозах и узнайте, на что обращать внимание.
+five-myths-desc = Узнайте, как избегать простых паролей, которые облегчают работу хакерам.
+take-further-steps-desc = Узнайте, как уменьшить риск кражи личных данных, чтобы предотвратить финансовые потери.
