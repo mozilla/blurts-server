@@ -52,6 +52,9 @@ unsub-button = 登録解除
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = 侵害データの提供 { $hibp-link }
 share-twitter = 多くの人が約 100 個のオンラインアカウントを持っています。あなたのアカウントはデータ侵害にさらされていませんか？確認しましょう。
+share-facebook-headline = データ侵害に巻き込まれていないか確認しましょう。
+share-facebook-blurb = あなたのオンラインアカウントはデータ侵害にさらされていますか？
+og-site-description = { -product-name } でデータ侵害に巻き込まれていないか確認しましょう。登録すると、新たな侵害についての警告やアカウントを安全に保つ秘訣を知ることができます。
 show-all = すべて表示
 fxa-scan-another-email = 他のメールアドレスをチェックしますか？
 sign-in = ログイン
