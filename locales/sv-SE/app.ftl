@@ -19,12 +19,15 @@ error-hibp-throttled = För många anslutningar till { -brand-HIBP }.
 error-hibp-connect = Det gick inte att ansluta till { -brand-HIBP }.
 error-hibp-load-breaches = Kunde inte ladda intrång.
 error-must-be-signed-in = Du måste vara inloggad på ditt { -brand-fxa }.
+error-to-finish-verifying = För att slutföra verifieringen av denna e-postadress för { -product-name }, måste du vara inloggad under din primära e-postadress.
 home-title = { -product-name }
 home-not-found = Sidan hittades inte.
 oauth-invalid-session = Ogiltig session
 scan-title = { -product-name }: Skanna resultat
 user-add-invalid-email = Ogiltig e-postadress
 user-add-email-verify-subject = Verifiera din prenumeration på { -product-name }.
+user-add-duplicate-email = Det här e-postadressen har redan lagts till i { -product-name }.
+user-add-duplicate-email-part-2 = Besök { $preferencesLink } för att kontrollera statusen för { $userEmail }.
 error-headline = Fel
 user-verify-token-error = Verifieringstecken är obligatoriskt.
 user-verify-email-report-subject = Ditt rapport för { -product-name }
@@ -370,7 +373,7 @@ email-addresses-title = E-postadresser
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview = Den { $breachDate }, hade { $breachTitle } ett intrång. När intrånget upptäcktes och verifierades lades det till vår databas den { $addedDate }.
+breach-overview-new = Den { $breachDate }, hade { $breachTitle } ett intrång. När intrånget upptäcktes och verifierades lades det till vår databas den { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } Inställningar
 # When a user is signed in, this appears in the drop down menu 
@@ -406,3 +409,4 @@ breach-alert-notifications = Varningsmeddelande om intrång
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Intrång tillagt:
+how-hackers-work-desc = Skydda dina lösenord från cyberkriminella, eftersom det är det som de bryr sig mest om.
