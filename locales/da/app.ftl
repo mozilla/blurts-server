@@ -25,6 +25,8 @@ oauth-invalid-session = Ugyldig session
 scan-title = { -product-name } : Skanningsresultater
 user-add-invalid-email = Ugyldig mailadresse
 user-add-email-verify-subject = Bekræft din tilmelding til { -product-name }.
+user-add-duplicate-email = Denne mailadresse er allerede føjet til { -product-name }.
+user-add-duplicate-email-part-2 = Besøg { $preferencesLink } for at kontrollere status af { $userEmail }.
 error-headline = Fejl
 user-verify-token-error = Der kræves et bekræftelses-token.
 user-verify-email-report-subject = Din { -product-name }-rapport
@@ -367,10 +369,6 @@ other-known-breaches-found =
 additional-information-including = Yderligere information, inklusive:
 # Title
 email-addresses-title = Mailadresser
-# This is a standardized breach overview blurb that appears on all breach detail pages.
-# $breachTitle is the name of the breached company or website.
-# $breachDate and $addedDate are calendar dates.
-breach-overview = Den { $breachDate } blev { $breachTitle } udsat for en datalæk. Da datalækken blev opdaget og bekræftet, blev den tilføjet til vores database den { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name }-indstillinger
 # When a user is signed in, this appears in the drop down menu 
@@ -406,3 +404,5 @@ breach-alert-notifications = Advarsler om datalæk
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Datalæk tilføjet:
+create-strong-passwords-desc = Gør dine adgangskoder stærke, sikre og svære at gætte.
+take-further-steps-desc = Find ud af, hvordan du mindsker riskoen for identitetstyveri og undgår økonomiske tab.
