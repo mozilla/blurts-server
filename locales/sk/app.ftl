@@ -215,7 +215,7 @@ new-breaches-found =
        *[other] BOLO NÁJDENÝCH { $breachCount } NOVÝCH ÚNIKOV DÁT
     }
 no-results-blurb = Ľutujeme, ale tento únik sa v našej databáze nenachádza.
-all-breaches-headline = Všetky úniky obsiahnuté vo { -product-name(case: "loc") }
+all-breaches-headline = Všetky úniky obsiahnuté v službe { -product-name }
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Zobrazené:
 
@@ -226,6 +226,50 @@ error-csrf-headline = Vypršal časový limit relácie
 error-csrf-blurb = Kliknite v prehliadači na tlačidlo Späť, obnovte stránku a skúste to znova.
 error-invalid-unsub = Ako zruším odber upozornení zo služby { -product-name }
 login-link = Prihlásiť sa
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] e-mailová adresa je monitorovaná
+        [few] e-mailové adresy sú monitorované
+       *[other] e-mailových adries je monitorovaných
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] únik dát vyzradil vaše údaje
+        [few] úniky dát vyzradili vaše údaje
+       *[other] únikov dát vyzradilo vaše údaje
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] heslo uniklo súhrnne vo všetkých únikoch
+        [few] heslá unikli súhrnne vo všetkých únikoch
+       *[other] hesiel uniklo súhrnne vo všetkých únikoch
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] známy únik dát vyzradil vaše údaje
+        [few] známe úniky dát vyzradili vaše údaje
+       *[other] známych únikov dát vyzradilo vaše údaje
+    }
+# Button
+see-additional-breaches = Zobraziť ďalšie úniky
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Táto e-mailová adresa sa objavila v 1 známom úniku dát.
+        [few] Táto e-mailová adresa sa objavila v { $breachCount } známych únikoch dát.
+       *[other] Táto e-mailová adresa sa objavila v { $breachCount } známych únikoch dát.
+    }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
@@ -240,6 +284,9 @@ monitor-preferences = Nastavenia { -product-short-name(case: "gen") }
 # When a user is signed in, this appears in the drop down menu 
 # and is followed by the user's primary Firefox Account email. 
 signed-in-as = Prihlásení ako: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Filtrovať podľa kategórie:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Ponuka
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
@@ -266,6 +313,7 @@ breach-alert-notifications = Upozornenia na úniky
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Dátum pridania:
+how-hackers-work-desc = Chráňte svoje heslá pred kybernetickými zločincami - zaujímajú ich totiž najviac.
 what-to-do-after-breach-desc = Uzavrite svoje účty, aby sa vaše údaje nedostali do cudzích rúk.
 create-strong-passwords-desc = Vytvárajte silné, bezpečné a ťažko uhádnuteľné heslá.
 steps-to-protect-desc = Porozumejte najbežnejším hrozbám a zistite, na čo si je treba dávať pozor.
