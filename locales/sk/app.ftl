@@ -54,6 +54,7 @@ terms-and-privacy = Podmienky a ochrana súkromia
 GitHub-link-title = GitHub
 error-scan-page-token = Vo veľmi krátkom čase ste sa pokúsili skontrolovať príliš mnoho e-mailových adries. Z bezpečnostných dôvodov sme vám ďalšie vyhľadávanie dočasne zablokovali. Skúste to, prosím, neskôr.
 error-could-not-add-email = E-mailovú adresu sa nepodarilo pridať do databázy.
+error-not-subscribed = Táto e-mailová adresa nie je prihlásená na odber upozornení { -product-name(case: "gen") }.
 error-hibp-throttled = Príliš mnoho spojení k službe { -brand-HIBP }.
 error-hibp-connect = Chyba pri pripájaní k { -brand-HIBP }.
 error-hibp-load-breaches = Nepodarilo sa načítať údaje o únikoch.
@@ -64,12 +65,12 @@ home-not-found = Stránka nebola nájdená.
 oauth-invalid-session = Neplatná relácia
 scan-title = { -product-name } - výsledky skenu
 user-add-invalid-email = Neplatná e-mailová adresa
-user-add-email-verify-subject = Potvrďte svoje prihlásenie k odberu zo služby { -product-name }.
-user-add-duplicate-email = Táto e-mailová adresa už bola do služby { -product-name } pridaná.
+user-add-email-verify-subject = Potvrďte svoje prihlásenie k odberu z { -product-name(case: "gen") }.
+user-add-duplicate-email = Táto e-mailová adresa už bola do { -product-name(case: "gen") } pridaná.
 user-add-duplicate-email-part-2 = Ak chcete zistiť stav e-mailovej adresy { $userEmail }, prejdite do sekcie { $preferencesLink }.
 error-headline = Chyba
 user-verify-token-error = Vyžaduje sa overovací token.
-user-verify-email-report-subject = Vaša správa zo služby { -product-name }
+user-verify-email-report-subject = Vaša správa z { -product-name(case: "gen") }.
 user-unsubscribe-token-error = Pre odhlásenie je vyžadovaný token.
 user-unsubscribe-token-email-error = Pre odhlásenie je vyžadovaný token a emailHash.
 user-unsubscribe-title = { -product-name } - odhlásenie
@@ -78,7 +79,7 @@ landing-headline = Každý má právo byť v bezpečí pred hackermi.
 scan-placeholder = Zadajte e-mailovú adresu
 scan-submit = Vyhľadajte svoju e-mailovú adresu
 scan-error = Zadaná e-mailová adresa nie je platná.
-download-firefox-banner-button = Prevziať { -brand-name }
+download-firefox-banner-button = Prevziať { -brand-name(case: "acc") }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Odoslané!
 sign-up = Zaregistrujte sa
@@ -89,21 +90,21 @@ breach-date = Dátum úniku:
 compromised-accounts = Počet kompromitovaných účtov:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Kompromitované údaje:
-unsub-headline = Odhlásiť odber zo služby { -product-name-nowrap }
-unsub-blurb = Týmto odstránite svoju e-mailovú adresu zo zoznamu služby { -product-name-nowrap } a nebudete naďalej dostávať upozornenia na novo oznámené úniky dát.
+unsub-headline = Zrušiť odber upozornení z { -product-name-nowrap(case: "gen") }
+unsub-blurb = Týmto odstránite svoju e-mailovú adresu zo zoznamu { -product-name-nowrap(case: "gen") } a nebudete naďalej dostávať upozornenia na novo oznámené úniky dát.
 unsub-button = Odhlásiť sa
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Údaje o únikoch poskytuje { $hibp-link }
 share-twitter = Väčšina ľudí má na internete okolo 100 účtov. Zistite, či nebol niektorý z tých vašich súčasťou úniku dát.
 share-facebook-headline = Zistite, či boli vaše údaje súčasťou nejakého úniku
 share-facebook-blurb = Bol niektorý z vašich účtov súčasťou nejakého úniku dát?
-og-site-description = { -product-name } zistí, či boli vaše dáta súčasťou nejakého úniku. Pre väčšiu bezpečnosť sa taktiež prihláste k zasielaniu výstrah o únikoch v budúcnosti.
+og-site-description = { -product-name(case: "nom") } zistí, či boli vaše dáta súčasťou nejakého úniku. Pre väčšiu bezpečnosť sa taktiež prihláste k zasielaniu výstrah o únikoch v budúcnosti.
 show-all = Zobraziť všetko
 fxa-scan-another-email = Chcete skontrolovať ďalšiu e-mailovú adresu?
 sign-in = Prihlásiť sa
 sign-out = Odhlásiť sa
 # Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Spravovať { -brand-fxa }
+manage-fxa = Spravovať { -brand-fxa(case: "acc") }
 have-an-account = Už ho máte?
 fxa-pwt-summary-2 =
     Krátke, jednoslovné heslá možno ľahko uhádnuť.
@@ -113,7 +114,7 @@ fxa-pwt-summary-4 =
     a automaticky ich pre vás na webových stránkach vyplniť. Pomôžu vám as s vytvorením silného hesla.
 fxa-pwt-summary-6 =
     Počet únikov dát stúpa. Kedykoľvek sa vaše údaje objavia v novom úniku,
-    { -product-name } vám pošle upozornenie, aby ste mohli čo najrýchlejšie zareagovať.
+    { -product-name(case: "nom") } vám pošle upozornenie, aby ste mohli čo najrýchlejšie zareagovať.
 fxa-what-to-do-blurb-1 =
     Ak sa nemôžete prihlásiť, kontaktujte webovú stránku a spýtajte sa, ako môžete svoje heslo zmeniť.
     Vidíte účet, o ktorom vôbec neviete? Stránka mohla zmeniť svoj názov alebo majiteľa.
@@ -136,7 +137,7 @@ fxa-what-to-do-blurb-4 =
 sign-up-for-alerts = Prihláste sa na odber upozornení
 # Link title
 frequently-asked-questions = Často kladené otázky
-about-firefox-monitor = O službe { -product-name }
+about-firefox-monitor = O { -product-name(case: "gen") }
 # Link title
 preferences = Nastavenia
 # Link title
@@ -174,11 +175,11 @@ data-aggregator-breach-plural = Úniky z agregátorov dát
 unverified-breach-plural = Nepotvrdené úniky
 spam-list-breach-plural = Úniky zo spamových zoznamov adries
 what-data = Aké údaje boli kompromitované:
-sensitive-sites = Ako sa { -product-name } chová v prípade webov obsahujúcich citlivé údaje?
+sensitive-sites = Ako sa { -product-name(case: "nom") } chová v prípade webov obsahujúcich citlivé údaje?
 delayed-reporting-headline = Prečo nahlásenie tohto úniku trvalo tak dlho?
-about-fxm-headline = O službe { -product-name }
+about-fxm-headline = O { -product-name(case: "gen") }.
 # How Firefox Monitor works
-how-fxm-works = Ako { -product-name } funguje
+how-fxm-works = Ako { -product-name(case: "nom") } funguje
 wtd-after-website = Čo robiť po úniku z webovej stránky:
 wtd-after-data-agg = Čo robiť po úniku z agregátora dát:
 what-is-data-agg = Čo je agregátor dát?
@@ -202,7 +203,7 @@ create-strong-passwords = Ako si vytvoriť silné heslá
 stop-reusing-pw = Prestaňte používať rovnaké heslá
 create-unique-pw = Vytvorte si jedinečné heslá a uschovajte si ich na nejakom bezpečnom mieste, napríklad v správcovi hesiel.
 five-myths = 5 mýtov o správcoch hesiel
-create-a-fxa = Vytvorte si { -brand-fxa } a dostávajte upozornenia na nové úniky. Dostanente taktiež kompletnú správu o únikoch.
+create-a-fxa = Vytvorte si { -brand-fxa(case: "nom") } a dostávajte upozornenia na nové úniky. Dostanete taktiež kompletnú správu o únikoch.
 feat-security-tips = Bezpečnostné tipy na zabezpečenie účtov
 feat-sensitive = Pokročilé vyhľadávanie v únikoch citlivých dát
 feat-enroll-multiple = Nechajte si monitorovať viacero e-mailových adries
@@ -230,15 +231,15 @@ send-verification = Poslať overovací odkaz
 breach-summary = Súhrnné informácie
 show-breaches-for-this-email = Zobraziť všetky úniky pre túto e-mailovú adresu.
 link-change-primary = Zmeniť primárnu e-mailovú adresu
-remove-fxm = Vypnúť { -product-name }
-remove-fxm-blurb = Týmto zrušíte odosielanie upozornení zo služby { -product-name }. Váš { -brand-fxa } zostane aktívny a môžete dostávať iné správy týkajúce sa vášho účtu.
+remove-fxm = Vypnúť { -product-name(case: "nom") }
+remove-fxm-blurb = Týmto zrušíte odosielanie upozornení z { -product-name(case: "gen") }. Váš { -brand-fxa(case: "nom") } zostane aktívny a môžete dostávať iné správy týkajúce sa vášho účtu.
 # Button title
 manage-email-addresses = Správa e-mailových adries
 # Link title
 latest-breach-link = Pozrite sa, či ste boli súčasťou tohto úniku
 welcome-back = Vitajte späť, { $userName }!
 welcome-user = Vitajte, { $userName }!
-breach-alert-subject = { -product-name } našiel vašu e-mailovú adresu v novom úniku dát
+breach-alert-subject = { -product-name(case: "nom") } našiel vašu e-mailovú adresu v novom úniku dát
 your-info-was-discovered-headline = Vaše údaje boli nájdené v novom úniku dát.
 what-to-do-after-breach = Čo robiť po úniku dát
 ba-next-step-1 = Zmeňte si heslo a nové vytvorte silné a jedinečné.
@@ -254,7 +255,7 @@ new-breaches-found =
        *[other] BOLO NÁJDENÝCH { $breachCount } NOVÝCH ÚNIKOV DÁT
     }
 no-results-blurb = Ľutujeme, ale tento únik sa v našej databáze nenachádza.
-all-breaches-headline = Všetky úniky obsiahnuté v službe { -product-name }
+all-breaches-headline = Všetky úniky obsiahnuté vo { -product-name(case: "loc") }
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Zobrazené:
 
@@ -263,7 +264,7 @@ currently-showing = Zobrazené:
 error-bot-headline = Vyhľadávanie bolo dočasne pozastavené
 error-csrf-headline = Vypršal časový limit relácie
 error-csrf-blurb = Kliknite v prehliadači na tlačidlo Späť, obnovte stránku a skúste to znova.
-error-invalid-unsub = Ako zruším odber upozornení zo služby { -product-name }
+error-invalid-unsub = Ako zruším odber upozornení z { -product-name(case: "gen") }
 login-link = Prihlásiť sa
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
@@ -329,7 +330,7 @@ filter-by = Filtrovať podľa kategórie:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Ponuka
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
-join-firefox = Existuje spôsob, ako chrániť svoje súkromie. Prihláste sa do aplikácie { -brand-name }.
+join-firefox = Existuje spôsob, ako chrániť svoje súkromie. Prihláste sa do { -brand-name(case: "gen") }.
 # Link title
 learn-more-link = Ďalšie informácie
 email-sent = E-mail bol odoslaný!
@@ -337,7 +338,7 @@ email-sent = E-mail bol odoslaný!
 want-to-add = Chcete pridať ďalšiu e-mailovú adresu?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
-verify-the-link = Pre pridanie adresy { $userEmail } do služby { -product-name }, overte odkaz zaslaný na túto adresu.
+verify-the-link = Pre pridanie e-mailovej adresy { $userEmail } do { -product-name(case: "gen") }, overte odkaz zaslaný na túto adresu.
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
