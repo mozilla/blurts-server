@@ -41,6 +41,15 @@
         [ins] Mozillou
     }
 -brand-HIBP = Have I Been Pwned
+-brand-fxa =
+    { $case ->
+       *[nom] Účet Firefox
+        [gen] Účtu Firefox
+        [dat] Účtu Firefox
+        [acc] Účet Firefox
+        [loc] Účte Firefox
+        [ins] Účtom Firefox
+    }
 terms-and-privacy = Podmienky a ochrana súkromia
 GitHub-link-title = GitHub
 error-scan-page-token = Vo veľmi krátkom čase ste sa pokúsili skontrolovať príliš mnoho e-mailových adries. Z bezpečnostných dôvodov sme vám ďalšie vyhľadávanie dočasne zablokovali. Skúste to, prosím, neskôr.
@@ -168,7 +177,7 @@ spam-list-breach-plural = Úniky zo spamových zoznamov adries
 what-data = Aké údaje boli kompromitované:
 sensitive-sites = Ako sa { -product-name(case: "nom") } chová v prípade webov obsahujúcich citlivé údaje?
 delayed-reporting-headline = Prečo nahlásenie tohto úniku trvalo tak dlho?
-about-fxm-headline = O { -product-name(case: "gen") }.
+about-fxm-headline = O { -product-name(case: "loc") }.
 # How Firefox Monitor works
 how-fxm-works = Ako { -product-name(case: "nom") } funguje
 wtd-after-website = Čo robiť po úniku z webovej stránky:
