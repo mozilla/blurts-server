@@ -219,6 +219,7 @@ check-for-breaches = Prehľadať úniky
 find-out-what-hackers-know = Odhaľte, čo o vás hackeri už vedia. Zistite, ako byť stále o krok pred nimi.
 search-for-your-email = Vyhľadajte svoju e-mailovú adresu vo verejne dostupných únikoch dát siahajúcich do roku 2007.
 back-to-top = Návrat hore
+comm-opt-0 = Poslať mi e-mail, ak sa jedna z mojich e-mailových adries objaví v nejakom úniku dát.
 stop-monitoring-this = Zastaviť monitorovanie tejto e-mailovej adresy.
 resend-verification = Znova poslať overovací e-mail
 add-new-email = Pridanie novej e-mailovej adresy
@@ -245,6 +246,7 @@ what-to-do-after-breach = Čo robiť po úniku dát
 ba-next-step-1 = Zmeňte si heslo a nové vytvorte silné a jedinečné.
 ba-next-step-2 = Prestaňte s používaním uniknutého hesla.
 ba-next-step-3 = Získajte pomoc s tvorbou lepších hesiel a ich uchovávaním v bezpečí.
+ba-next-step-blurb-3 = Pre vytvorenie silných a jedinečných hesiel používajte správcu hesiel. Správci hesiel bezpečne uchovávajú všetky vaše prihlasovacie údaje, takže k nim máte prístup na všetkých svojich zariadeniach.
 faq1 = Túto spoločnosť alebo webovú stránku nepoznám. Prečo som súčasťou tohto úniku?
 faq2 = Prečo trvalo tak dlho, než ste ma informovali o úniku?
 faq3 = Ako zistím, že táto e-mailová správa pochádza naozaj zo služby { -product-name }?
@@ -276,9 +278,17 @@ currently-showing = Zobrazené:
 ## Updated error messages
 
 error-bot-headline = Vyhľadávanie bolo dočasne pozastavené
+error-bot-blurb =
+    Obávame sa, že by ste mohli byť bot, pretože ste v krátkom čase 
+    hľadali niekoľko e-mailových adries. Na teraz máte ďalšie vyhľadávanie 
+    zakázané. Môžete to skúsiť opäť neskôr.
 error-csrf-headline = Vypršal časový limit relácie
 error-csrf-blurb = Kliknite v prehliadači na tlačidlo Späť, obnovte stránku a skúste to znova.
 error-invalid-unsub = Ako zruším odber upozornení z { -product-name(case: "gen") }
+error-invalid-unsub-blurb =
+    Zrušiť odber budete musieť prostredníctvom jednej z e-mailových správ, 
+    ktorú vám { -product-name } odoslal. Pohľadajte vo svojej schránke správu od 
+    { -brand-team-email }. V dolnej časti správy kliknite na odkaz pre zrušenie odberu.
 login-link = Prihlásiť sa
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
@@ -332,14 +342,25 @@ other-monitored-emails = Ďalšie monitorované e-mailové adresy
 email-verification-required = Vyžaduje sa overenie e-mailovej adresy
 fxa-primary-email = E-mailová adresa { -brand-fxa(case: "gen") } (primárna)
 what-is-a-website-breach = Čo je únik dát z webovej stránky?
+website-breach-blurb = Únik dát z webovej stránky sa odohrá, keď kybernetickí zločinci odcudzia, skopírujú alebo zverejnia osobné údaje z internetových účtov. Spravidla je to výsledkom činnosti hackerov, ktorí našli slabé miesto v zabezpečení webu. K úniku osobných údajov z účtov však môže dôjsť aj nedopatrením.
 security-tips-headline = Bezpečnostné tipy na ochranu pred hackermi
+steps-to-protect = Aké kroky podniknúť na ochranu svojej internetovej identity
+take-further-steps = Podniknite ďalšie kroky na ochranu svojej internetovej identity
+alert-about-new-breaches = Upozorniť ma na nové úniky
+see-if-youve-been-part = Pozrite sa, či ste neboli súčasťou internetového úniku dát.
+get-ongoing-breach-monitoring = Nechajte si priebežne monitorovať viacero e-mailových adries.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Zistiť
+new-unsub-error = Zrušiť odber budete musieť prostredníctvom jednej z e-mailových správ, ktorú vám { -product-name } poslal.
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = Ďalšie informácie, menovite:
 # Title
 email-addresses-title = E-mailové adresy
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = Dňa { $breachDate } došlo k úniku dát { $breachTitle }. Ihneď po odhalení a potvrdení bol dňa { $addedDate } pridaný do našej databázy.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Nastavenia { -product-short-name(case: "gen") }
 # When a user is signed in, this appears in the drop down menu 
@@ -350,6 +371,7 @@ signed-in-as = Prihlásení ako: { $userEmail }
 filter-by = Filtrovať podľa kategórie:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Ponuka
+to-affected-email = Poslať upozornenie na únik na danú e-mailovú adresu
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
 join-firefox = Existuje spôsob, ako chrániť svoje súkromie. Prihláste sa do { -brand-name(case: "gen") }.
 # Link title
