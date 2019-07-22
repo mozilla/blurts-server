@@ -6,8 +6,24 @@
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
--brand-name = Firefox
--brand-Mozilla = Mozilla
+-brand-name =
+    { $case ->
+       *[nom] Firefox
+        [gen] Firefoxu
+        [dat] Firefoxu
+        [acc] Firefox
+        [loc] Firefoxe
+        [ins] Firefoxom
+    }
+-brand-Mozilla =
+    { $case ->
+       *[nom] Mozilla
+        [gen] Mozilly
+        [dat] Mozille
+        [acc] Mozillu
+        [loc] Mozille
+        [ins] Mozillou
+    }
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Účet Firefox
 terms-and-privacy = Podmienky a ochrana súkromia
