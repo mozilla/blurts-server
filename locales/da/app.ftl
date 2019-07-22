@@ -19,6 +19,7 @@ error-hibp-throttled = For mange forbindelser til { -brand-HIBP }.
 error-hibp-connect = Kan ikke forbinde til { -brand-HIBP }.
 error-hibp-load-breaches = Kunne ikke indlæse datalæk.
 error-must-be-signed-in = Du skal være logget ind på din { -brand-fxa }.
+error-to-finish-verifying = For at afslutte bekræftelsen af denne mailadresse til { -product-name } skal du være logget ind med din primære mailadresse til din konto.
 home-title = { -product-name }
 home-not-found = Side ikke fundet.
 oauth-invalid-session = Ugyldig session
@@ -369,6 +370,10 @@ other-known-breaches-found =
 additional-information-including = Yderligere information, inklusive:
 # Title
 email-addresses-title = Mailadresser
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = Den { $breachDate } blev { $breachTitle } udsat for en datalæk. Da datalækken blev opdaget og bekræftet, blev den føjet til vores database den { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name }-indstillinger
 # When a user is signed in, this appears in the drop down menu 
@@ -404,5 +409,9 @@ breach-alert-notifications = Advarsler om datalæk
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Datalæk tilføjet:
+how-hackers-work-desc = Beskyt dine adgangskoder mod kriminelle på nettet – det er dem, de er mest interesserede i.
+what-to-do-after-breach-desc = Skift adgangskoder til dine konti, så dine informationer ikke falder i de forkerte hænder.
 create-strong-passwords-desc = Gør dine adgangskoder stærke, sikre og svære at gætte.
+steps-to-protect-desc = Forstå de mest almindelige trusler, og hvad du skal holde øje med.
+five-myths-desc = Undgå dårlige adgangskode-vaner, som gør det nemt for hackerne.
 take-further-steps-desc = Find ud af, hvordan du mindsker riskoen for identitetstyveri og undgår økonomiske tab.
