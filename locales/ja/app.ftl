@@ -18,6 +18,7 @@ error-not-subscribed = このメールアドレスは { -product-name } に登�
 error-hibp-throttled = { -brand-HIBP } への接続数が多すぎます
 error-hibp-connect = { -brand-HIBP } への接続でエラーが発生しました。
 error-hibp-load-breaches = 侵害データを読み込めませんでした。
+error-must-be-signed-in = { -brand-fxa } でログインしてください。
 home-title = { -product-name }
 home-not-found = ページが見つかりません。
 oauth-invalid-session = 不正なセッション
@@ -159,17 +160,25 @@ find-out = 調査する
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = 侵害を受けたその他の情報:
+# Title
+email-addresses-title = メールアドレス
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } の設定
 # When a user is signed in, this appears in the drop down menu 
 # and is followed by the user's primary Firefox Account email. 
 signed-in-as = ログイン中: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = カテゴリーで絞り込む:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = メニュー
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
 join-firefox = あなたのプライバシーを守る方法があります。{ -brand-name } を使用しましょう。
 # Link title
 learn-more-link = 詳しくはこちら。
+email-sent = メールが送信されました！
+# Form title
+want-to-add = 別のメールアドレスを追加しますか？
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = 侵害が追加された日:

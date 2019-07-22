@@ -15,9 +15,6 @@ unsubscribe-email-link = { -product-name } からの通知を受け取りたく�
 firefox-monitor-report = { -product-name } レポート
 report-date = レポート日:
 email-address = メールアドレス:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = この { -product-name } からの詳細レポートには、このメールアドレスが含まれるすべての既知のデータ侵害が含まれています。
-report-no-breaches = あなたのメールアドレスは既知の侵害情報のデータベースに見つかりませんでした。ただし、侵害はいつでも起こり得ます。以下の手順でオンライン上のあなたの個人情報を安全に保ちましょう。
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = 次に何をしたらよいか
 report-headline =
@@ -30,8 +27,6 @@ report-subhead-no-breaches =
     これは良い知らせです。ただし、個人情報を守るために、まだできることがあります。
     データ侵害はいつでも起こり得ます。以下をお読みになり、あなたのパスワードを保護する方法を学んでください。
 report-subhead-found-breaches = この Firefox Monitor からの詳細レポートには、このメールアドレスが含まれるすべての既知のデータ侵害が含まれています。
-breach-alert-headline = あなたのアカウント情報はデータ侵害により漏洩しています。
-breach-alert-subhead = 最近報告されたデータ侵害に、あなたのメールアドレスと次のデータが含まれています
 report-pwt-blurb =
     パスワードには価値があるため、毎日数千ものパスワードが盗まれ、ブラックマーケットで取り引きされたり売られたりしています。
     強度の高いパスワードはあなたのアカウントを保護するだけでなく、そこに属するすべての個人情報を保護します。
@@ -58,3 +53,13 @@ share-by-email-message =
     1. { "https://monitor.firefox.com" } を開いてあなたのメールアドレスを検索します。
     2. オンインアカウントがデータ侵害にさらされているか確認します。
     3. 次に取るべき行動について { -product-name } から、ヒントを得ます。
+# Unsubscribe link in email.
+email-unsub-link = 登録解除
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = マイダッシュボードを表示
+# Button text
+verify-email-cta = メールアドレスを確認
+# Headline of verification email
+email-link-expires = このリンクは 24 時間で有効期限が切れます
+# List headline
+faq-list-headline = よくある質問
