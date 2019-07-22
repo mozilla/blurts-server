@@ -86,11 +86,7 @@ sign-up-for-alerts = S’abonner aux alertes
 frequently-asked-questions = Foire aux questions
 about-firefox-monitor = À propos de { -product-name }
 # Link title
-preferences =
-    { $capitalization ->
-        [lowercase] préférences
-       *[uppercase] Préférences
-    }
+preferences = Préférences
 # Link title
 home = Accueil
 # Link title
