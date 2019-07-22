@@ -106,12 +106,12 @@ function getBreachAlertFaqs(args) {
     {
       "linkTitle" : LocaleUtils.fluentFormat(supportedLocales, "faq-v2-2", args),
       "stringDescription": "Do I need to do anything if a breach happened years ago or this is an old account?",
-      "href": makeFaqLink("#w_why-did-it-take-so-long-to-notify-me-of-this-breach", "faq2"),
+      "href": makeFaqLink("#w_do-i-need-to-do-anything-if-a-breach-happened-years-ago-or-in-an-old-account", "faq2"),
     },
     {
       "linkTitle" : LocaleUtils.fluentFormat(supportedLocales, "faq-v2-3", args),
       "stringDescription": "I just found out I’m in a data breach. What do I do next?",
-      "href": makeFaqLink("#w_how-do-i-know-these-emails-are-really-from-firefox-and-not-from-a-hacker", "faq3"),
+      "href": makeFaqLink("#w_i-just-found-out-im-in-a-data-breach-what-do-i-do-next", "faq3"),
     },
   ];
 
