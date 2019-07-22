@@ -254,8 +254,22 @@ new-breaches-found =
         [few] BOLI NÁJDENÉ { $breachCount } NOVÉ ÚNIKY DÁT
        *[other] BOLO NÁJDENÝCH { $breachCount } NOVÝCH ÚNIKOV DÁT
     }
+sign-up-headline-1 = Dostávajte priebežné upozornenia pomocou { -brand-fxa(case: "gen") }.
+account-not-required = Pre vytvorenie { -brand-fxa(case: "gen") } nie je nutné mať prehliadač { -brand-name }. Môžete dostávať informácie o službách { -brand-Mozilla(case: "gen") }.
+was-your-info-exposed = Boli vaše údaje súčasťou úniku { $breachName }?
+find-out-if = Zistite, či boli vaše údaje súčasťou nejakého úniku.
+fb-not-comp = Táto e-mailová adresa sa nevyskytuje v úniku { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Vyskytuje sa však v { $breachCount } ďalšom úniku dát.
+        [few] Vyskytuje sa však v { $breachCount } ďalších únikoch dát.
+       *[other] Vyskytuje sa však v { $breachCount } ďalších únikoch dát.
+    }
+fb-comp-only = Táto e-mailová adresa sa vyskytuje v úniku { $breachName }.
+no-other-breaches-found = Základné vyhľadávanie nenašlo žiadne ďalšie úniky.
 no-results-blurb = Ľutujeme, ale tento únik sa v našej databáze nenachádza.
 all-breaches-headline = Všetky úniky obsiahnuté vo { -product-name(case: "loc") }
+search-breaches = Hľadať
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Zobrazené:
 
@@ -319,6 +333,13 @@ email-verification-required = Vyžaduje sa overenie e-mailovej adresy
 fxa-primary-email = E-mailová adresa { -brand-fxa(case: "gen") } (primárna)
 what-is-a-website-breach = Čo je únik dát z webovej stránky?
 security-tips-headline = Bezpečnostné tipy na ochranu pred hackermi
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Zistiť
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Ďalšie informácie, menovite:
+# Title
+email-addresses-title = E-mailové adresy
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Nastavenia { -product-short-name(case: "gen") }
 # When a user is signed in, this appears in the drop down menu 
