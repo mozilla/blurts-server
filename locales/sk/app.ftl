@@ -143,6 +143,11 @@ how-fxm-works = Ako { -product-name } funguje
 wtd-after-website = Čo robiť po úniku z webovej stránky:
 wtd-after-data-agg = Čo robiť po úniku z agregátora dát:
 what-is-data-agg = Čo je agregátor dát?
+what-is-data-agg-blurb =
+    Agregátory dát či sprostredkovatelia údajov zbierajú údaje z verejných 
+    záznamov alebo ich kupujú od iných spoločností. Tieto údaje zhromažďujú za účelom ich 
+    predaja rôznym spoločnostiam na marketingové účely. U obetí týchto únikov síce existuje 
+    menšia pravdepodobnosť spáchania bankového podvodu, no hackeri by mohli tieto údaje použiť na ich profilovanie.
 protect-your-privacy = Chráňte svoje súkromie na internete
 no-pw-to-change = Na rozdiel od únikov z webových stránok, tu nie je žiadne heslo, ktoré by sa dalo zmeniť.
 avoid-personal-info = Nepoužívajte v heslách osobné údaje
@@ -158,7 +163,10 @@ create-strong-passwords = Ako si vytvoriť silné heslá
 stop-reusing-pw = Prestaňte používať rovnaké heslá
 create-unique-pw = Vytvorte si jedinečné heslá a uschovajte si ich na nejakom bezpečnom mieste, napríklad v správcovi hesiel.
 five-myths = 5 mýtov o správcoch hesiel
+create-a-fxa = Vytvorte si { -brand-fxa } a dostávajte upozornenia na nové úniky. Dostanente taktiež kompletnú správu o únikoch.
 feat-security-tips = Bezpečnostné tipy na zabezpečenie účtov
+feat-sensitive = Pokročilé vyhľadávanie v únikoch citlivých dát
+feat-enroll-multiple = Nechajte si monitorovať viacero e-mailových adries
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
@@ -167,6 +175,9 @@ appears-in-x-breaches =
         [few] Vyskytuje sa v { $breachCount } známych únikoch.
        *[other] Vyskytuje sa v { $breachCount } známych únikoch.
     }
+check-for-breaches = Prehľadať úniky
+find-out-what-hackers-know = Odhaľte, čo o vás hackeri už vedia. Zistite, ako byť stále o krok pred nimi.
+search-for-your-email = Vyhľadajte svoju e-mailovú adresu vo verejne dostupných únikoch dát siahajúcich do roku 2007.
 back-to-top = Návrat hore
 stop-monitoring-this = Zastaviť monitorovanie tejto e-mailovej adresy.
 resend-verification = Znova poslať overovací e-mail
@@ -181,8 +192,11 @@ breach-summary = Súhrnné informácie
 show-breaches-for-this-email = Zobraziť všetky úniky pre túto e-mailovú adresu.
 link-change-primary = Zmeniť primárnu e-mailovú adresu
 remove-fxm = Vypnúť { -product-name }
+remove-fxm-blurb = Týmto zrušíte odosielanie upozornení zo služby { -product-name }. Váš { -brand-fxa } zostane aktívny a môžete dostávať iné správy týkajúce sa vášho účtu.
 # Button title
 manage-email-addresses = Správa e-mailových adries
+# Link title
+latest-breach-link = Pozrite sa, či ste boli súčasťou tohto úniku
 welcome-back = Vitajte späť, { $userName }!
 welcome-user = Vitajte, { $userName }!
 breach-alert-subject = { -product-name } našiel vašu e-mailovú adresu v novom úniku dát
@@ -190,7 +204,9 @@ your-info-was-discovered-headline = Vaše údaje boli nájdené v novom úniku d
 what-to-do-after-breach = Čo robiť po úniku dát
 ba-next-step-1 = Zmeňte si heslo a nové vytvorte silné a jedinečné.
 ba-next-step-2 = Prestaňte s používaním uniknutého hesla.
+ba-next-step-3 = Získajte pomoc s tvorbou lepších hesiel a ich uchovávaním v bezpečí.
 faq1 = Túto spoločnosť alebo webovú stránku nepoznám. Prečo som súčasťou tohto úniku?
+faq2 = Prečo trvalo tak dlho, než ste ma informovali o úniku?
 faq3 = Ako zistím, že táto e-mailová správa pochádza naozaj zo služby { -product-name }?
 new-breaches-found =
     { $breachCount ->
@@ -198,23 +214,36 @@ new-breaches-found =
         [few] BOLI NÁJDENÉ { $breachCount } NOVÉ ÚNIKY DÁT
        *[other] BOLO NÁJDENÝCH { $breachCount } NOVÝCH ÚNIKOV DÁT
     }
+no-results-blurb = Ľutujeme, ale tento únik sa v našej databáze nenachádza.
+all-breaches-headline = Všetky úniky obsiahnuté vo { -product-name(case: "loc") }
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Zobrazené:
 
 ## Updated error messages
 
 error-bot-headline = Vyhľadávanie bolo dočasne pozastavené
 error-csrf-headline = Vypršal časový limit relácie
+error-csrf-blurb = Kliknite v prehliadači na tlačidlo Späť, obnovte stránku a skúste to znova.
+error-invalid-unsub = Ako zruším odber upozornení zo služby { -product-name }
 login-link = Prihlásiť sa
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Výsledky pre: { $userEmail }
+other-monitored-emails = Ďalšie monitorované e-mailové adresy
 email-verification-required = Vyžaduje sa overenie e-mailovej adresy
 fxa-primary-email = E-mailová adresa { -brand-fxa(case: "gen") } (primárna)
 what-is-a-website-breach = Čo je únik dát z webovej stránky?
+security-tips-headline = Bezpečnostné tipy na ochranu pred hackermi
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Nastavenia { -product-short-name(case: "gen") }
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Prihlásení ako: { $userEmail }
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Ponuka
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Existuje spôsob, ako chrániť svoje súkromie. Prihláste sa do aplikácie { -brand-name }.
 # Link title
 learn-more-link = Ďalšie informácie
 email-sent = E-mail bol odoslaný!
@@ -223,6 +252,22 @@ want-to-add = Chcete pridať ďalšiu e-mailovú adresu?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Pre pridanie adresy { $userEmail } do služby { -product-name }, overte odkaz zaslaný na túto adresu.
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Pre správu všetkých e-mailových adries navštívte { $preferencesLink }.
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Upozornenia na úniky
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Dátum pridania:
+what-to-do-after-breach-desc = Uzavrite svoje účty, aby sa vaše údaje nedostali do cudzích rúk.
+create-strong-passwords-desc = Vytvárajte silné, bezpečné a ťažko uhádnuteľné heslá.
+steps-to-protect-desc = Porozumejte najbežnejším hrozbám a zistite, na čo si je treba dávať pozor.
+five-myths-desc = Zistite, ako sa vyvarovať zlozvykom, ktoré hackerom uľahčujú prácu.
+take-further-steps-desc = Zistite, ako znížiť riziko krádeže identity a predísť tak finančnej strate.
