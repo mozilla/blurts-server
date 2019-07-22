@@ -3,9 +3,25 @@
 # - Declined to adapt to grammatical case.
 # - Transliterated.
 # - Translated.
--product-name = Firefox Monitor
+-product-name =
+    { $case ->
+       *[nom] Firefox Monitor
+        [gen] Firefox Monitora
+        [dat] Firefox Monitoru
+        [acc] Firefox Monitor
+        [loc] Firefox Monitore
+        [ins] Firefox Monitorom
+    }
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
--product-short-name = Monitor
+-product-short-name =
+    { $case ->
+       *[nom] Monitor
+        [gen] Monitora
+        [dat] Monitoru
+        [acc] Monitor
+        [loc] Monitore
+        [ins] Monitorom
+    }
 -brand-name =
     { $case ->
        *[nom] Firefox
@@ -25,12 +41,19 @@
         [ins] Mozillou
     }
 -brand-HIBP = Have I Been Pwned
--brand-fxa = Účet Firefox
+-brand-fxa =
+    { $case ->
+        [nom] Účet Firefox
+        [gen] Účtu Firefox
+        [dat] Účtu Firefox
+        [acc] Účet Firefox
+        [loc] Účte Firefox
+       *[ins] Účtom Firefox
+    }
 terms-and-privacy = Podmienky a ochrana súkromia
 GitHub-link-title = GitHub
 error-scan-page-token = Vo veľmi krátkom čase ste sa pokúsili skontrolovať príliš mnoho e-mailových adries. Z bezpečnostných dôvodov sme vám ďalšie vyhľadávanie dočasne zablokovali. Skúste to, prosím, neskôr.
 error-could-not-add-email = E-mailovú adresu sa nepodarilo pridať do databázy.
-error-not-subscribed = Táto e-mailová adresa nie je prihlásená na odber zo služby { -product-name }.
 error-hibp-throttled = Príliš mnoho spojení k službe { -brand-HIBP }.
 error-hibp-connect = Chyba pri pripájaní k { -brand-HIBP }.
 error-hibp-load-breaches = Nepodarilo sa načítať údaje o únikoch.
