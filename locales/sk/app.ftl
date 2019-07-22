@@ -41,15 +41,6 @@
         [ins] Mozillou
     }
 -brand-HIBP = Have I Been Pwned
--brand-fxa =
-    { $case ->
-        [nom] Účet Firefox
-        [gen] Účtu Firefox
-        [dat] Účtu Firefox
-        [acc] Účet Firefox
-        [loc] Účte Firefox
-       *[ins] Účtom Firefox
-    }
 terms-and-privacy = Podmienky a ochrana súkromia
 GitHub-link-title = GitHub
 error-scan-page-token = Vo veľmi krátkom čase ste sa pokúsili skontrolovať príliš mnoho e-mailových adries. Z bezpečnostných dôvodov sme vám ďalšie vyhľadávanie dočasne zablokovali. Skúste to, prosím, neskôr.
@@ -137,7 +128,7 @@ fxa-what-to-do-blurb-4 =
 sign-up-for-alerts = Prihláste sa na odber upozornení
 # Link title
 frequently-asked-questions = Často kladené otázky
-about-firefox-monitor = O { -product-name(case: "gen") }
+about-firefox-monitor = O { -product-name(case: "loc") }
 # Link title
 preferences = Nastavenia
 # Link title
