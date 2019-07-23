@@ -51,6 +51,7 @@ unsub-blurb = การดำเนินการนี้จะลบอีเ
 unsub-button = เลิกบอกรับ
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = ให้บริการข้อมูลการรั่วไหลโดย { $hibp-link }
+share-facebook-headline = ค้นหาว่าคุณเป็นส่วนหนึ่งของข้อมูลที่รั่วหรือไม่
 show-all = แสดงทั้งหมด
 fxa-scan-another-email = ต้องการตรวจสอบอีเมลอื่นหรือไม่?
 sign-in = ลงชื่อเข้า
