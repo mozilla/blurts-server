@@ -65,3 +65,7 @@ email-link-expires = Este enlace expira en 24 horas.
 email-verify-blurb = Verifica tu correo para añadirlo a { -product-name } y registrarte para alertas de nuevas filtraciones.
 # Subject line of email
 email-subject-verify = Verifica tu correo para { -product-name }
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Aprender más sobre { $fxmLink }
+# List headline
+faq-list-headline = Preguntas frecuentes
