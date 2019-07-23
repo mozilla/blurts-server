@@ -55,6 +55,8 @@ share-by-email-message =
     3. Obține ponturi de la { -product-name } despre ce să faci în continuare.
 # Unsubscribe link in email.
 email-unsub-link = Dezabonează-te
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Vezi panoul meu de control
 # Button text
 verify-email-cta = Verifică e-mailul
 # Headline of verification email
