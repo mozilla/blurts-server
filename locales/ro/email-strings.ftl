@@ -61,6 +61,8 @@ view-my-dashboard-cta = Vezi panoul meu de control
 verify-email-cta = Verifică e-mailul
 # Headline of verification email
 email-link-expires = Acest link expiră în 24 de ore
+# Email headline
+email-breach-summary-for-email = Rezumatul breșelor pentru { $userEmail }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Află mai multe despre { $fxmLink }
 # List headline
