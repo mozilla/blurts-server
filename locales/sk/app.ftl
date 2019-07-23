@@ -176,10 +176,39 @@ unverified-breach-plural = Nepotvrdené úniky
 spam-list-breach-plural = Úniky zo spamových zoznamov adries
 what-data = Aké údaje boli kompromitované:
 sensitive-sites = Ako sa { -product-name(case: "nom") } chová v prípade webov obsahujúcich citlivé údaje?
+sensitive-sites-copy =
+    { -product-name } zverejňuje tieto účty iba v prípade, že je e-mailová adresa overená. 
+    Znamená to, že vy ste jediná osoba, ktorá môže zistiť, či boli vaše údaje súčasťou tohto úniku 
+    (ak teda nemá do vášho počítača prístup niekto iný).
 delayed-reporting-headline = Prečo nahlásenie tohto úniku trvalo tak dlho?
+delayed-reporting-copy =
+    Niekedy môže trvať mesiace či roky, než sa prihlasovacie údaje vyzradené v úniku 
+    objavia na dark webe. Úniky sú pridávané do našej databázy hneď, akonáhle sú odhalené a potvrdené.
 about-fxm-headline = O { -product-name(case: "loc") }.
+about-fxm-blurb =
+    { -product-name } vás upozorní, keď boli vaše účty súčasťou úniku dát. 
+    Zistite, či ste boli súčasťou nejakého úniku dát, dostávajte upozornenia na nové úniky 
+    a podniknite kroky na ochranu svojich účtov. { -product-name } zaisťuje organizácia { -brand-Mozilla }.
+fxm-warns-you =
+    { -product-name } vás upozorní, keď bola vaša e-mailová adresa vyzradená v nejakom úniku dát 
+    Zistite, či boli vaše informácie súčasťou úniku dát, zistite, ako lepšie ochrániť svoje účty a 
+    dostávajte upozornenia v prípade, že sa vaša e-mailová adresa objaví v novom úniku.
 # How Firefox Monitor works
 how-fxm-works = Ako { -product-name(case: "nom") } funguje
+how-fxm-1-headline = Vykonajte základné vyhľadávanie
+how-fxm-1-blurb =
+    Vyhľadajte svoju e-mailovú adresu vo verejne dostupných únikoch dát 
+    siahajúcich do roku 2007. Toto základné vyhľadávanie zobrazí všetky úniky 
+    s výnimkou únikov citlivých údajov.
+how-fxm-2-headline = Prihláste sa na monitorovanie únikov
+how-fxm-2-blurb =
+    Vytvorte si { -brand-fxa }, aby ste mohli monitorovať svoju e-mailovú adresu pre prípad budúcich únikov. 
+    Akonáhle overíte svoju e-mailovú adresu, obdržíte taktiež kompletné hlásenie o predchádzajúcich únikoch, 
+    vrátane únikov citlivých údajov.
+how-fxm-3-headline = Dostávajte upozornenia vo svojom prehliadači
+how-fxm-3-blurb =
+    Ak používate { -brand-name }, uvidíte upozornenie vždy, keď navštívite stránku, 
+    na ktorej došlo k úniku dát. Hneď tak môžete zistiť, či ste boli súčasťou tohto úniku.
 wtd-after-website = Čo robiť po úniku z webovej stránky:
 wtd-after-data-agg = Čo robiť po úniku z agregátora dát:
 what-is-data-agg = Čo je agregátor dát?
@@ -220,6 +249,7 @@ find-out-what-hackers-know = Odhaľte, čo o vás hackeri už vedia. Zistite, ak
 search-for-your-email = Vyhľadajte svoju e-mailovú adresu vo verejne dostupných únikoch dát siahajúcich do roku 2007.
 back-to-top = Návrat hore
 comm-opt-0 = Poslať mi e-mail, ak sa jedna z mojich e-mailových adries objaví v nejakom úniku dát.
+comm-opt-1 = Posielať všetky upozornenia na úniky na { $primaryEmail }.
 stop-monitoring-this = Zastaviť monitorovanie tejto e-mailovej adresy.
 resend-verification = Znova poslať overovací e-mail
 add-new-email = Pridanie novej e-mailovej adresy
@@ -242,9 +272,20 @@ welcome-back = Vitajte späť, { $userName }!
 welcome-user = Vitajte, { $userName }!
 breach-alert-subject = { -product-name(case: "nom") } našiel vašu e-mailovú adresu v novom úniku dát
 your-info-was-discovered-headline = Vaše údaje boli nájdené v novom úniku dát.
+your-info-was-discovered-blurb =
+    Ste prihlásení na odber upozornení zo služby { -product-name }, 
+    v prípade ak sa vaša e-mailová adresa objaví v nejakom úniku dát. Tu je všetko, čo o tomto úniku vieme.
 what-to-do-after-breach = Čo robiť po úniku dát
 ba-next-step-1 = Zmeňte si heslo a nové vytvorte silné a jedinečné.
+ba-next-step-blurb-1 =
+    Silné heslo pozostáva z kombinácie veľkých a malých písmen, 
+    špeciálnych znakov a čísel. Neobsahuje osobné údaje, ako napríklad 
+    adresu, dátum narodenia či priezvisko.
 ba-next-step-2 = Prestaňte s používaním uniknutého hesla.
+ba-next-step-blurb-2 =
+    Kybernetickí zločinci môžu nájsť vaše heslo na dark webe a použiť ho 
+    na prihlásenie sa do iných vašich účtov. Najlepší spôsob, ako ochrániť svoje účty 
+    je používať pri každom z nich jedinečné heslo.
 ba-next-step-3 = Získajte pomoc s tvorbou lepších hesiel a ich uchovávaním v bezpečí.
 ba-next-step-blurb-3 = Pre vytvorenie silných a jedinečných hesiel používajte správcu hesiel. Správci hesiel bezpečne uchovávajú všetky vaše prihlasovacie údaje, takže k nim máte prístup na všetkých svojich zariadeniach.
 faq1 = Túto spoločnosť alebo webovú stránku nepoznám. Prečo som súčasťou tohto úniku?
@@ -268,6 +309,12 @@ other-breaches-found =
        *[other] Vyskytuje sa však v { $breachCount } ďalších únikoch dát.
     }
 fb-comp-only = Táto e-mailová adresa sa vyskytuje v úniku { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Táto e-mailová adresa sa vyskytuje v { $breachCount } známom úniku dát, vrátane úniku { $breachName }.
+        [few] Táto e-mailová adresa sa vyskytuje v { $breachCount } známych únikoch dát, vrátane úniku { $breachName }.
+       *[other] Táto e-mailová adresa sa vyskytuje v { $breachCount } známych únikoch dát, vrátane úniku { $breachName }.
+    }
 no-other-breaches-found = Základné vyhľadávanie nenašlo žiadne ďalšie úniky.
 no-results-blurb = Ľutujeme, ale tento únik sa v našej databáze nenachádza.
 all-breaches-headline = Všetky úniky obsiahnuté vo { -product-name(case: "loc") }
@@ -352,6 +399,12 @@ get-ongoing-breach-monitoring = Nechajte si priebežne monitorovať viacero e-ma
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Zistiť
 new-unsub-error = Zrušiť odber budete musieť prostredníctvom jednej z e-mailových správ, ktorú vám { -product-name } poslal.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Objavila sa však v { $breachCount } ďalšom úniku.
+        [few] Objavila sa však v { $breachCount } ďalších únikoch.
+       *[other] Objavila sa však v { $breachCount } ďalších únikoch.
+    }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = Ďalšie informácie, menovite:
