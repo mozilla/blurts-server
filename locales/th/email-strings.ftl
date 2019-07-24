@@ -22,6 +22,10 @@ report-pwt-headline-4 = ใช้ตัวจัดการรหัสผ่�
 legal = ข้อกฎหมาย
 # Unsubscribe link in email.
 email-unsub-link = เลิกบอกรับ
+# Button text
+verify-email-cta = ตรวจสอบอีเมล
+# Headline of verification email
+email-link-expires = ลิงก์นี้จะหมดอายุใน 24 ชั่วโมง
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = เรียนรู้เพิ่มเติมเกี่ยวกับ { $fxmLink }
 # List headline
