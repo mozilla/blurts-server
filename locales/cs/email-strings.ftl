@@ -10,7 +10,7 @@ report-scan-another-email = Vyhledat další e-mailovou adresu ve { -product-nam
 automated-message = Toto je automaticky zaslaný e-mail – pokud jste si ho nevyžádali, můžete ho ignorovat.
 # Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
 we-sent-this-alert = Tuto zprávu jsme poslali na adresu { $userEmail }, protože byla přihlášena k dostávání upozornění od { -product-name(case: "gen") }.
-unsubscribe-email-link = Pokud již nechcete upozornění od { -product-name(case: "gen") } dostávat, zrušte jejich odběr.
+unsubscribe-email-link = Pokud již nechcete upozornění od { -product-name(case: "gen") } dostávat, zrušte jejich příjem.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Hlášení { -product-name(case: "gen") }
 report-date = Datum:
@@ -56,7 +56,7 @@ share-by-email-message =
     2. Uvidíte, jestli byly vaše internetové účty součástí úniku dat.
     3. { -product-name } vám nabídne pár tipů, co dál a jak zůstat v bezpečí.
 # Unsubscribe link in email.
-email-unsub-link = Zrušte odběr
+email-unsub-link = Zrušte jejich příjem
 # This string appears in the footer of breach report and breach alert emails.
 # { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
 # and uses the text from { email-unsub-link }. { $faqLink } is a link to the 

@@ -106,7 +106,7 @@ compromised-accounts = Počet kompromitovaných účtů:
 compromised-data = Kompromitovaná data:
 unsub-headline = Zrušit příjem upozornění od { -product-name-nowrap(case: "gen") }
 unsub-blurb = Tímto smažete svou e-mailovou adresu ze seznamu { -product-name-nowrap(case: "gen") } a nebudete nadále dostávat upozornění na nově oznámené úniky dat.
-unsub-button = Zrušit odběr
+unsub-button = Zrušit zasílání
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Data o únicích poskytuje { $hibp-link }
 share-twitter = Většina lidí má na internetu okolo stovky účtů. Zjistěte, jestli nebyl některý z těch vašich součástí úniku dat.
@@ -307,10 +307,10 @@ error-bot-blurb =
     několik e-mailových adres . Pro teď máte další vyhledávání zablokováno. Můžete to opět zkusit později.
 error-csrf-headline = Vypršel časový limit relace
 error-csrf-blurb = Klepněte v prohlížeči na tlačítko Zpět, aktualizujte stránku a akci opakujte.
-error-invalid-unsub = Jak zrušit odběr upozornění od služby { -product-name }
+error-invalid-unsub = Jak zrušit příjem upozornění od služby { -product-name }
 error-invalid-unsub-blurb =
-    Zrušit odběr budete muset prostřednictvím jedné z e-mailových zpráv, kterou vám { -product-name } odeslal. Podívejte se do své e-mailové schránky po zprávách od
-    { -brand-team-email }. V dolní části zprávy pak klepněte na odkaz pro zrušení odběru.
+    Zrušit příjem budete muset prostřednictvím jedné z e-mailových zpráv, kterou vám { -product-name } odeslal. Podívejte se do své e-mailové schránky po zprávách od
+    { -brand-team-email }. V dolní části zprávy pak klepněte na odkaz pro zrušení příjmu.
 login-link = Přihlásit se
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
@@ -373,7 +373,7 @@ see-if-youve-been-part = Zjistěte, zda jste nebyli součástí internetového �
 get-ongoing-breach-monitoring = Nechte si průběžně monitorovat více e-mailových adres.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Zjistit
-new-unsub-error = Zrušit odběr budete muset prostřednictvím jedné z e-mailových zpráv, kterou vám { -product-name } odeslal.
+new-unsub-error = Zrušit příjem budete muset prostřednictvím jedné z e-mailových zpráv, kterou vám { -product-name } odeslal.
 other-known-breaches-found =
     { $breachCount ->
         [one] Objevila se však v { $breachCount } dalším úniku.
