@@ -68,7 +68,7 @@ terms-and-privacy = Podmínky a ochrana soukromí
 GitHub-link-title = GitHub
 error-scan-page-token = Pokusili jste se zkontrolovat příliš mnoho e-mailových adres ve velmi krátkém čase. Z bezpečnostních důvodů jsme další vyhledávání dočasně zablokovali. Zkuste to prosím znovu později.
 error-could-not-add-email = E-mailovou adresu se nepodařilo přidat do databáze.
-error-not-subscribed = Tato e-mailová adresa není zaregistrována k odběru upozornění od { -product-name(case: "gen") }.
+error-not-subscribed = Tato e-mailová adresa není zaregistrována k příjmu upozornění od { -product-name(case: "gen") }.
 error-hibp-throttled = Příliš mnoho spojení ke službě { -brand-HIBP }.
 error-hibp-connect = Chyba při připojování k { -brand-HIBP }.
 error-hibp-load-breaches = Nepodařilo se načíst informace o únicích.
@@ -240,7 +240,7 @@ breach-summary = Souhrnné informace
 show-breaches-for-this-email = Zobrazit všechny úniky pro tuto adresu.
 link-change-primary = Změnit primární e-mailovou adresu
 remove-fxm = Vypnout { -product-name }
-remove-fxm-blurb = Tímto zrušíte zasílání upozornění od { -product-name(case: "gen") }. Váš { -brand-fxa } zůstane aktivní a můžete dostávat jiné zprávy týkající se účtu.
+remove-fxm-blurb = Tímto zrušíte příjem upozornění od { -product-name(case: "gen") }. Váš { -brand-fxa } zůstane aktivní a můžete dostávat jiné zprávy týkající se účtu.
 # Button title
 manage-email-addresses = Spravovat e-mailové adresy
 # Link title
