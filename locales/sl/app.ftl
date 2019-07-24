@@ -330,7 +330,7 @@ email-addresses-title = E-poštni naslovi
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview = { $breachDate } je prišlo do kraje podatkov { $breachTitle }. Ko je bila kraja odkrita in preverjena, smo jo { $addedDate } dodali v našo bazo podatkov.
+breach-overview-new = { $breachDate } je prišlo do kraje podatkov { $breachTitle }. Ko je bila kraja odkrita in preverjena, smo jo { $addedDate } dodali v našo bazo podatkov.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Nastavitve { -product-short-name }ja
 # When a user is signed in, this appears in the drop down menu 
