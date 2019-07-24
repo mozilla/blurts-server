@@ -87,7 +87,7 @@ user-verify-token-error = Je vyžadován ověřovací token.
 user-verify-email-report-subject = Vaše hlášení od { -product-name(case: "gen") }
 user-unsubscribe-token-error = Pro zrušení odběru je vyžadován token.
 user-unsubscribe-token-email-error = Pro zrušení odběru je vyžadován token a emailHash.
-user-unsubscribe-title = { -product-name } - zrušení odběru upozornění
+user-unsubscribe-title = { -product-name } – zrušení příjmu upozornění
 pwt-section-headline = Silnější hesla = lepší ochrana
 landing-headline = Každý má právo na bezpečí před hackery.
 scan-placeholder = Zadejte e-mailovou adresu
@@ -104,7 +104,7 @@ breach-date = Datum úniku:
 compromised-accounts = Počet kompromitovaných účtů:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Kompromitovaná data:
-unsub-headline = Zrušit odběr upozornění od { -product-name-nowrap(case: "gen") }
+unsub-headline = Zrušit příjem upozornění od { -product-name-nowrap(case: "gen") }
 unsub-blurb = Tímto smažete svou e-mailovou adresu ze seznamu { -product-name-nowrap(case: "gen") } a nebudete nadále dostávat upozornění na nově oznámené úniky dat.
 unsub-button = Zrušit odběr
 # Breach data provided by Have I Been Pwned.
