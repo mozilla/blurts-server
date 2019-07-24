@@ -240,7 +240,7 @@ breach-summary = Souhrnné informace
 show-breaches-for-this-email = Zobrazit všechny úniky pro tuto adresu.
 link-change-primary = Změnit primární e-mailovou adresu
 remove-fxm = Vypnout { -product-name }
-remove-fxm-blurb = Tímto zrušíte zasílání upozornění od { -product-name(case: "gen") }. Váš { -brand-fxa } zůstane aktivní a můžete dostávat jiné zprávy týkající se účtu.
+remove-fxm-blurb = Tímto zrušíte zasílání upozornění { -product-name(case: "ins") }. Váš { -brand-fxa } zůstane aktivní a můžete dostávat jiné zprávy týkající se vašeho účtu.
 # Button title
 manage-email-addresses = Spravovat e-mailové adresy
 # Link title
