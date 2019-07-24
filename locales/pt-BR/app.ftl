@@ -217,7 +217,7 @@ send-verification = Enviar link de confirmação
 breach-summary = Resumo de vazamentos
 show-breaches-for-this-email = Mostrar todos os vazamentos deste e-mail.
 link-change-primary = Alterar endereço de e-mail principal
-remove-fxm = Remover o { -product-name }
+remove-fxm = Remover do { -product-name }
 remove-fxm-blurb =
     Desativar alertas do { -product-name }. Sua { -brand-fxa } continuará ativa e você pode receber
     outras comunicações relacionadas à conta.
