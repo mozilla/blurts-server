@@ -80,7 +80,7 @@ fxa-what-to-do-blurb-3 =
 fxa-what-to-do-subhead-4 = 获取能帮助您记住所有密码，并确保密码安全的建议。
 fxa-what-to-do-blurb-4 = 如 1Password、LastPass、Dashlane 和 Bitwarden 等密码管理器可以安全地存储密码，并为您自动填写到网站上。在您的手机与计算机上使用密码管理器，不必再记忆密码。
 # Alerts is a noun
-sign-up-for-alerts = 注册以获取警报。
+sign-up-for-alerts = 订阅警报
 # Link title
 frequently-asked-questions = 常见问题
 about-firefox-monitor = 关于 { -product-name }
@@ -209,7 +209,7 @@ new-breaches-found =
        *[other] 找到 { $breachCount } 次新的数据外泄事件
     }
 sign-up-headline-1 = 注册 { -brand-fxa }，获取数据外泄警报。
-account-not-required = 不需注册 { -brand-fxa } 也能使用 { -brand-name } 浏览器。您可能会收到有关 { -brand-Mozilla } 服务的信息。
+account-not-required = 不必注册 { -brand-fxa }即可使用 { -brand-name } 浏览器。您可能会收到 { -brand-Mozilla } 服务的相关信息。
 was-your-info-exposed = 您的信息是否出现在 { $breachName } 的数据外泄事件？
 find-out-if = 看看您的数据是否出现在这次外泄事件中。
 fb-not-comp = 这个邮箱没有出现在 { $breachName } 外泄事件。
