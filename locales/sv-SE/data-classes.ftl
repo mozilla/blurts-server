@@ -109,6 +109,7 @@ social-security-numbers = Personnummer
 spoken-languages = Talade språk
 support-tickets = Support-biljetter
 survey-results = Undersökningsresultat
+taxation-records = Skatteregister
 time-zones = Tidszoner
 travel-habits = Resevanor
 user-statuses = Användarstatusar
