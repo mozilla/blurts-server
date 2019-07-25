@@ -109,6 +109,7 @@ social-security-numbers = Sofinummers
 spoken-languages = Gesproken talen
 support-tickets = Ondersteuningsaanvragen
 survey-results = Resultaten van vragenlijsten
+taxation-records = Belastinggegevens
 time-zones = Tijdzones
 travel-habits = Reisgewoonten
 user-statuses = Gebruikersstatussen
