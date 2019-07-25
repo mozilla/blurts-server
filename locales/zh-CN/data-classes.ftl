@@ -109,6 +109,7 @@ social-security-numbers = 社会安全号码
 spoken-languages = 会讲的语言
 support-tickets = 技术支持请求
 survey-results = 问卷结果
+taxation-records = 税务记录
 time-zones = 时区
 travel-habits = 旅行习惯
 user-statuses = 用户状态
