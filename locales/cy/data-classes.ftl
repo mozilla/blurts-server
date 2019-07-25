@@ -109,6 +109,7 @@ social-security-numbers = Rhifau nawdd cymdeithasol
 spoken-languages = Siarad Ieithoedd
 support-tickets = Tocynnau cymorth
 survey-results = Canlyniadau arolwg
+taxation-records = Cofnodion trethiannol
 time-zones = Cylchoedd amser
 travel-habits = Arferion teithio
 user-statuses = Statws defnyddwyr
