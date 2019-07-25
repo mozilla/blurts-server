@@ -213,6 +213,14 @@ function styleActiveLink(locationHref) {
 ( async() => {
   document.addEventListener("touchstart", function(){}, true);
   const win = window;
+  if (win.navigator.language.startsWith("de")) {
+   const headlineElsToRestyle = document.querySelectorAll("[data-lang]");
+   if (headlineElsToRestyle) {
+    headlineElsToRestyle.forEach(el => {
+      el.dataset.lang = "de";
+    });
+   }
+  }
   const header = document.getElementById("header");
   const topNavigation = document.querySelector("#navigation-wrapper");
   win.addEventListener("pageshow", function() {

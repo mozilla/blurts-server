@@ -111,6 +111,10 @@
     max-width: 600px;
   }
 
+  .feature-tip-headline[data-lang="de"] {
+    word-break: break-word;
+  }
+
   .feature-tip-group {
     flex-direction: column;
   }
