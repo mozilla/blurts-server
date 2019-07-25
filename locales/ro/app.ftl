@@ -94,7 +94,7 @@ home = Acasă
 # Link title
 breaches = Breșe
 # Link title
-security-tips = Ponturi pentru securitate
+security-tips = Ponturi de securitate
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Deschide navigarea { -brand-fxa }
@@ -104,7 +104,7 @@ latest-breach = ULTIMA BREȘĂ ADĂUGATĂ
 more-about-this-breach = Mai multe despre această breșă
 take-control = Reia controlul asupra datelor tale personale.
 cant-stop-hackers = Nu poți opri hackerii să facă ceea ce fac, dar poți evita obiceiurile proaste care le ușurează munca.
-read-more-tips = Citește mai multe ponturi pentru securitate
+read-more-tips = Citește mai multe ponturi de securitate
 how-hackers-work = Înțelege modul de operare al hackerilor
 monitor-your-online-accounts = Înscrie-te pentru monitorizarea breșelor cu un { -brand-fxa }.
 stay-alert = Fii la curent cu ultimele breșe
@@ -138,7 +138,7 @@ how-fxm-1-blurb = Caută-ți adresa de e-mail în breșele publice de date înc�
 how-fxm-2-headline = Înregistrează-te pentru monitorizarea breșelor
 how-fxm-2-blurb = Creează un { -brand-fxa } ca să îți monitorizezi adresa de e-mail pentru breșe curente. Odată ce ți-ai verificat adresa de e-mail, vei primi și un raport complet cu breșele anterioare, inclusiv breșe de date sensibile.
 how-fxm-3-headline = Primește notificări în browser
-how-fxm-3-blurb = Dacă folosești { -brand-name }, vei primi o notificare când intri pe un site care a fost spart. Afli imediat dacă ai fost implicat(ă) în breșa respectivă și ce măsuri poți lua.
+how-fxm-3-blurb = Dacă folosești { -brand-name }, vei primi o notificare când intri pe un site care a fost expus unei breșe. Afli imediat dacă ai fost implicat(ă) în breșa respectivă și ce măsuri poți lua.
 wtd-after-website = Ce să faci după o breșă pe un site web
 wtd-after-data-agg = Ce să faci după o breșă a unui agregator de date
 what-is-data-agg = Ce sunt agregatoarele de date?
@@ -300,8 +300,8 @@ results-for = Rezultate pentru: { $userEmail }
 other-monitored-emails = Alte adrese de e-mail monitorizate
 email-verification-required = Este necesară verificarea adresei de e-mail
 fxa-primary-email = Adresă de e-mail { -brand-fxa } - primară
-what-is-a-website-breach = Ce sunt breșele de site-uri web?
-website-breach-blurb = Breșele de site-uri web apar când infractorii cibernetici fură, copiază sau expun date cu caracter personal din conturi online. Apar de obicei ca rezultat al faptului că hackerii au identificat un punct slab în securitatea site-ului.Breșele pot apărea și la „scurgerea” accidentală a informațiilor din conturi.
+what-is-a-website-breach = Ce este o breșă a unui site web?
+website-breach-blurb = O breșă a unui site web apare când infractorii cibernetici fură, copiază sau expun date cu caracter personal din conturi online. Apare de obicei ca rezultat al faptului că hackerii au identificat un punct slab în securitatea site-ului. Breșele pot apărea și la „scurgerea” accidentală a informațiilor din conturi.
 security-tips-headline = Ponturi de securitate pentru a te proteja de hackeri
 steps-to-protect = Pași de luat pentru a-ți proteja identitatea online
 take-further-steps = Ia măsuri suplimentare pentru a-ți proteja identitatea
@@ -322,6 +322,10 @@ other-known-breaches-found =
 additional-information-including = Informații suplimentare, inclusiv:
 # Title
 email-addresses-title = Adrese de e-mail
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = Pe { $breachDate }, { $breachTitle } a fost expus unei breșe. Odată ce breșa a fost descoperită și verificată, aceasta a fost adăugată în baza noastră de date în data de { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Preferințe { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
@@ -357,3 +361,9 @@ breach-alert-notifications = Notificări privind alertele de breșe
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Breșă adăugată:
+how-hackers-work-desc = Protejează-ți parolele de infractorii cibernetici, din moment ce acestea sunt cele mai importante pentru ei.
+what-to-do-after-breach-desc = Închide-ți conturile pentru ca informațiile tale să nu cadă în mâini necurate.
+create-strong-passwords-desc = Creează parole puternice, sigure și greu de ghicit.
+steps-to-protect-desc = Înțelege cele mai frecvente amenințări și află la ce să fii atent.
+five-myths-desc = Află cum să eviți parolele proaste care fac ușoară munca hackerilor.
+take-further-steps-desc = Află cum să reduci riscurile unui furt de identitate pentru a preveni pierderile financiare.
