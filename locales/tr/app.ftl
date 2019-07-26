@@ -25,6 +25,7 @@ oauth-invalid-session = Geçersiz oturum
 scan-title = { -product-name }: Tarama Sonuçları
 user-add-invalid-email = Geçersiz e-posta
 user-add-email-verify-subject = { -product-name } aboneliğinizi doğrulayın.
+user-add-duplicate-email-part-2 = { $userEmail } adresinin durumunu kontrol etmek için { $preferencesLink }inizi ziyaret edin.
 error-headline = Hata
 user-verify-token-error = Doğrulama jetonu gerekli.
 user-verify-email-report-subject = { -product-name } raporunuz
@@ -150,6 +151,7 @@ create-unique-pw = Benzersiz parolalar oluşturun ve bunları parola yöneticisi
 five-myths = Parola yöneticileri hakkında 5 şehir efsanesi
 create-a-fxa = Tam ihlal raporunuzu görmek ve ihlal uyarıları almak için { -brand-fxa } açın.
 feat-security-tips = Hesaplarınızı korumanız için güvenlik ipuçları
+feat-sensitive = Hassas veri ihlalerinde gelişmiş arama
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
@@ -196,6 +198,15 @@ new-breaches-found =
        *[other] { $breachCount } YENİ İHLAL BULUNDU
     }
 account-not-required = { -brand-fxa } için { -brand-name } tarayıcısı gerekmez. Size { -brand-Mozilla } hizmetleri hakkında bilgi gönderebiliriz.
+was-your-info-exposed = Bilgileriniz { $breachName } ihlalinde açığa çıktı mı?
+find-out-if = Bilgilerinizin bu veri ihlalinde açığa çıkıp çıkmadığını öğrenin.
+fb-not-comp = Bu e-posta { $breachName } ihlalinde yer almıyor.
+other-breaches-found =
+    { $breachCount ->
+        [one] Ancak başka { $breachCount } ihlalde yer alıyor.
+       *[other] Ancak başka { $breachCount } ihlalde yer alıyor.
+    }
+fb-comp-only = Bu e-posta adresi { $breachName } ihlalinde yer alıyor.
 no-other-breaches-found = Temel aramada başka bir ihlal bulunamadı.
 no-results-blurb = Üzgünüz, bu ihlal veritabanımızda yok.
 all-breaches-headline = { -product-name }’deki tüm ihlaller
@@ -208,6 +219,7 @@ currently-showing = Gösterilen:
 error-bot-headline = Arama geçici olarak kullanılamıyor
 error-csrf-headline = Oturum zaman aşımına uğradı
 error-csrf-blurb = Tarayıcınızın geri düğmesine tıklayın, sayfayı tazeleyin ve tekrar deneyin.
+error-invalid-unsub = { -product-name } uyarılarından ayrılma
 login-link = Giriş yap
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
@@ -235,6 +247,11 @@ passwords-exposed =
     }
 # Button
 see-additional-breaches = Diğer ihlallere bakın
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Bu e-posta, bilinen 1 veri ihlalinde yer alıyor.
+       *[other] Bu e-posta, bilinen { $breachCount } veri ihlalinde yer alıyor.
+    }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
@@ -251,15 +268,16 @@ see-if-youve-been-part = Çevrimiçi veri ihlallerinde verilerinizin çalınmı�
 get-ongoing-breach-monitoring = İstediğiniz sayıda e-posta adresinin ihlallerini sürekli olarak takip edin.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Öğrenin
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Ancak başka { $breachCount } ihlalde yer alıyor.
+       *[other] Ancak başka { $breachCount } ihlalde yer alıyor.
+    }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = Ek bilgiler:
 # Title
 email-addresses-title = E-posta adresi
-# This is a standardized breach overview blurb that appears on all breach detail pages.
-# $breachTitle is the name of the breached company or website.
-# $breachDate and $addedDate are calendar dates.
-breach-overview = { $breachDate } tarihinde { $breachTitle } bir veri ihlaline uğradı. İhlal keşfedildikten ve doğrulandıktan sonra { $addedDate } tarihinde veritabanımıza eklendi.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } tercihleri
 # When a user is signed in, this appears in the drop down menu 

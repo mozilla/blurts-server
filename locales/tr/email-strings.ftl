@@ -69,6 +69,10 @@ email-link-expires = Bu bağlantı 24 saat sonra geçersiz hale gelir
 # Email headline
 email-breach-summary-for-email = { $userEmail } ihlal özeti
 # Subject line of email
+email-subject-found-breaches = { -product-name } aşağıdaki veri ihlallerinde bilgilerinizi buldu
+# Subject line of email
+email-subject-no-breaches = { -product-name } bilinen veri ihlali bulamadı
+# Subject line of email
 email-subject-verify = { -product-name } e-postanızı doğrulayın
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = { $fxmLink } hakkında daha fazla bilgi alın
