@@ -19,9 +19,11 @@ error-hibp-throttled = Hi ha massa connexions a { -brand-HIBP }.
 error-hibp-connect = S'ha produït un error en connectar-se a { -brand-HIBP }.
 error-hibp-load-breaches = No s'han pogut carregar les filtracions.
 error-must-be-signed-in = Heu d'iniciar la sessió al vostre { -brand-fxa }.
+error-to-finish-verifying = Per acabar de verificar aquesta adreça electrònica del { -product-name }, heu d'haver iniciat la sessió en el vostre compte de correu principal.
 home-title = { -product-name }
 home-not-found = No s'ha trobat la pàgina.
 oauth-invalid-session = La sessió no és vàlida
+scan-title = { -product-name }: Resultats de l'anàlisi
 user-add-invalid-email = L'adreça electrònica no és vàlida
 error-headline = Error
 
