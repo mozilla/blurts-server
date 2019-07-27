@@ -109,9 +109,6 @@
 @media screen and (max-width: 1000px) {
   .feature-tip-headline {
     max-width: 600px;
-  }
-
-  .feature-tip-headline[data-lang="de"] {
     word-break: break-word;
   }
 
