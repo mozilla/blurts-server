@@ -24,6 +24,8 @@ oauth-invalid-session = วาระไม่ถูกต้อง
 scan-title = { -product-name }: ผลลัพธ์การสแกน
 user-add-invalid-email = อีเมลไม่ถูกต้อง
 user-add-email-verify-subject = ยืนยันการบอกรับ { -product-name } ของคุณ
+user-add-duplicate-email = อีเมลนี้ได้ถูกเพิ่มไปยัง { -product-name } แล้ว
+user-add-duplicate-email-part-2 = เยี่ยมชม { $preferencesLink } ของคุณเพื่อตรวจสอบสถานะของ { $userEmail }
 error-headline = ข้อผิดพลาด
 user-verify-token-error = จำเป็นต้องใช้โทเค็นการยืนยัน
 user-verify-email-report-subject = รายงาน { -product-name } ของคุณ
@@ -51,7 +53,9 @@ unsub-blurb = การดำเนินการนี้จะลบอีเ
 unsub-button = เลิกบอกรับ
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = ให้บริการข้อมูลการรั่วไหลโดย { $hibp-link }
+share-twitter = คนส่วนใหญ่มีบัญชีออนไลน์ประมาณ 100 บัญชี ค้นหาว่าคุณเป็นส่วนหนึ่งของข้อมูลที่รั่วหรือไม่
 share-facebook-headline = ค้นหาว่าคุณเป็นส่วนหนึ่งของข้อมูลที่รั่วหรือไม่
+share-facebook-blurb = บัญชีออนไลน์ของคุณเป็นส่วนหนึ่งของข้อมูลที่รั่วหรือไม่?
 show-all = แสดงทั้งหมด
 fxa-scan-another-email = ต้องการตรวจสอบอีเมลอื่นหรือไม่?
 sign-in = ลงชื่อเข้า
@@ -91,7 +95,15 @@ monitor-several-emails = ตรวจสอบหลายอีเมล
 take-action = ดำเนินการเพื่อปกป้องบัญชีของคุณ
 keep-your-data-safe = ค้นหาสิ่งที่คุณต้องทำเพื่อปกป้องข้อมูลของคุณให้ปลอดภัยจากอาชญากรไซเบอร์
 website-breach = การรั่วไหลของเว็บไซต์
+sensitive-breach = การรั่วไหลของเว็บไซต์ที่ละเอียดอ่อน
+data-aggregator-breach = การรั่วไหลของตัวรวบรวมข้อมูล
+unverified-breach = การรั่วไหลที่ไม่ได้รับการตรวจสอบความถูกต้อง
+spam-list-breach = การรั่วไหลของรายการสแปม
 website-breach-plural = การรั่วไหลของเว็บไซต์
+sensitive-breach-plural = การรั่วไหลที่ละเอียดอ่อน
+data-aggregator-breach-plural = การรั่วไหลของตัวรวบรวมข้อมูล
+unverified-breach-plural = การรั่วไหลที่ไม่ได้รับการตรวจสอบความถูกต้อง
+spam-list-breach-plural = การรั่วไหลของรายการสแปม
 what-data = ชนิดข้อมูลที่ถูกบุกรุก:
 about-fxm-headline = เกี่ยวกับ { -product-name }
 # How Firefox Monitor works
@@ -99,6 +111,7 @@ how-fxm-works = วิธีที่ { -product-name } ทำงาน
 how-fxm-1-headline = ทำการค้นหาพื้นฐาน
 how-fxm-2-headline = ลงทะเบียนเพื่อเฝ้าสังเกตการรั่วไหล
 how-fxm-3-headline = รับการแจ้งเตือนในเบราว์เซอร์ของคุณ
+what-is-data-agg = ตัวรวบรวมข้อมูลคืออะไร?
 protect-your-privacy = ปกป้องความเป็นส่วนตัวออนไลน์ของคุณ
 avoid-personal-info = หลีกเลี่ยงการใช้ข้อมูลส่วนตัวในรหัสผ่าน
 
@@ -108,6 +121,7 @@ change-pw = เปลี่ยนรหัสผ่านของคุณ
 make-new-pw-unique = ตั้งรหัสผ่านใหม่ไม่ให้ซ้ำกับรหัสผ่านเดิม
 create-strong-passwords = วิธีสร้างรหัสผ่านที่เดายาก
 stop-reusing-pw = หยุดนำรหัสผ่านเดิมมาใช้ซ้ำ
+five-myths = ตำนาน 5 เรื่องเกี่ยวกับตัวจัดการรหัสผ่าน
 feat-security-tips = เคล็ดลับความปลอดภัยเพื่อปกป้องบัญชีของคุณ
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
@@ -138,6 +152,8 @@ manage-email-addresses = จัดการที่อยู่อีเมล
 latest-breach-link = ดูว่าคุณอยู่ในการรั่วไหลนี้หรือไม่
 welcome-back = ยินดีต้อนรับกลับมา { $userName }!
 welcome-user = ยินดีต้อนรับ { $userName }!
+what-to-do-after-breach = สิ่งที่ควรทำหลังจากที่ข้อมูลถูกรั่วไหล
+ba-next-step-1 = เปลี่ยนรหัสผ่านของคุณเป็นรหัสผ่านที่เดายากและไม่ซ้ำใคร
 new-breaches-found =
     { $breachCount ->
        *[other] พบ { $breachCount } การรั่วไหลใหม่
