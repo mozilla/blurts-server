@@ -109,6 +109,7 @@ social-security-numbers = Társadalombiztosítási azonosítók
 spoken-languages = Beszélt nyelvek
 support-tickets = Támogatási jegyek
 survey-results = Felmérési eredmények
+taxation-records = Adózási nyilvántartások
 time-zones = Időzónák
 travel-habits = Utazási szokások
 user-statuses = Felhasználói állapotok
