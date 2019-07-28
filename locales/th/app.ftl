@@ -105,6 +105,7 @@ data-aggregator-breach-plural = การรั่วไหลของตัว
 unverified-breach-plural = การรั่วไหลที่ไม่ได้รับการตรวจสอบความถูกต้อง
 spam-list-breach-plural = การรั่วไหลของรายการสแปม
 what-data = ชนิดข้อมูลที่ถูกบุกรุก:
+sensitive-sites = { -product-name } จัดการกับไซต์ที่ละเอียดอ่อนอย่างไร?
 about-fxm-headline = เกี่ยวกับ { -product-name }
 # How Firefox Monitor works
 how-fxm-works = วิธีที่ { -product-name } ทำงาน
