@@ -52,9 +52,12 @@ const DB = {
 
   async joinEmailAddressesToSubscriber(subscriber) {
     if (subscriber) {
-      subscriber.email_addresses = await knex("email_addresses").where({
+      const emailAddressRecords = await knex("email_addresses").where({
         "subscriber_id": subscriber.id,
       });
+      subscriber.email_addresses = emailAddressRecords.map(
+        emailAddress=>({id: emailAddress.id, email: emailAddress.email})
+      );
     }
     return subscriber;
   },
