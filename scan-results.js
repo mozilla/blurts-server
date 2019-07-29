@@ -35,8 +35,13 @@ const scanResult = async(req, selfScan=false) => {
       scannedEmailId = req.body.scannedEmailId;
     }
 
-    if (!selfScan && signedInUser && sha1(signedInUser.email) === req.body.emailHash) {
-      selfScan = true;
+    if (signedInUser) {
+      for (const emailAddress of signedInUser.email_addresses) {
+        if (!selfScan && sha1(emailAddress.email) === req.body.emailHash) {
+          selfScan = true;
+          break;
+        }
+      }
     }
   }
 
