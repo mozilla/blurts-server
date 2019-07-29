@@ -109,6 +109,7 @@
 @media screen and (max-width: 1000px) {
   .feature-tip-headline {
     max-width: 600px;
+    word-break: break-word;
   }
 
   .feature-tip-group {
