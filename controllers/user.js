@@ -12,6 +12,9 @@ const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
 
 
+const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
+
+
 async function _requireSessionUser(req,res) {
   if (!req.session || !req.session.user) {
     // TODO: can we do a nice redirect to sign in instead of an error?
@@ -346,7 +349,7 @@ async function getBreachStats(req, res) {
       errorMessage: "User breach stats requires an FXA OAuth token passed in the Authorization header.",
     });
   }
-  const fxaResponse = await FXA.verifyOAuthToken(req.token);
+  const fxaResponse = await FXA.verifyOAuthToken(req.token, FXA_MONITOR_SCOPE);
   if (fxaResponse.name === "HTTPError") {
     return res.status(fxaResponse.statusCode).json({
       errorMessage: "Could not verify FXA OAuth token. FXA returned message: " + fxaResponse.statusMessage,
