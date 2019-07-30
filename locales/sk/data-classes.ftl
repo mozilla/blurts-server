@@ -109,6 +109,7 @@ social-security-numbers = Čísla sociálneho zabezpečenia
 spoken-languages = Hovorené jazyky
 support-tickets = Tikety zo stránky podpory
 survey-results = Výsledky prieskumov
+taxation-records = Daňové záznamy
 time-zones = Časové pásma
 travel-habits = Cestovateľské návyky
 user-statuses = Statusy používateľov
