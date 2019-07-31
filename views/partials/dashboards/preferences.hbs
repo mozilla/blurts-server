@@ -32,8 +32,14 @@
         {{/each}}
       </div>
       <div class="pref">
-        <h4 class="email-pref add-new">{{ getString "add-new-email" }}</h4>
-        {{> forms/add-another-email-form csrfToken=../csrfToken}}
+        {{!-- TODO: remove this when https://github.com/mozilla/blurts-server/issues/1148 is fixed --}}
+        {{#ifCompare emails.total ">=" 15}}
+          <h4 class="email-pef">{{ getString "user-add-too-many-emails" }}</h4>
+        {{/ifCompare}}
+        {{#ifCompare emails.total "<" 15}}
+          <h4 class="email-pref add-new">{{ getString "add-new-email" }}</h4>
+          {{> forms/add-another-email-form csrfToken=../csrfToken}}
+        {{/ifCompare}}
       </div>
       <div class="pref remove">
         <a href="/user/remove-fxm"><h3 class="remove-fxm subhead">{{ getString "remove-fxm" }}{{> svg/arrow-head-right }}</h3></a>

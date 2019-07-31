@@ -101,6 +101,10 @@ async function add(req, res) {
     throw new FluentError("user-add-invalid-email");
   }
 
+  // TODO: remove this when https://github.com/mozilla/blurts-server/issues/1148 is fixed
+  if (sessionUser.email_addresses.length >= 15) {
+    throw new FluentError("user-add-too-many-emails");
+  }
   _checkForDuplicateEmail(sessionUser, email);
 
   const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(

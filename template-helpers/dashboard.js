@@ -67,6 +67,7 @@ function getUserPreferences(args) {
       className: "email-verification-required",
       email_addresses: unverifiedEmails,
     },
+    total: [ primaryEmail ].length + verifiedEmails.length + unverifiedEmails.length,
   };
 
   const communicationOptions = [
