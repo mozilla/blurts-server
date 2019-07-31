@@ -109,6 +109,7 @@ social-security-numbers = uṭṭunen n tɣellist inmettiyen
 spoken-languages = tutlayin tettmeslayeḍ
 support-tickets = asuter n tallelt
 survey-results = igmaḍ n tefranin
+taxation-records = Ikalasen n tebzert
 time-zones = iẓdiyen usrigen
 travel-habits = tanumi n usikel
 user-statuses = addad n yiseqdacen
