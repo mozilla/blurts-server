@@ -25,6 +25,7 @@ home-not-found = Seite nicht gefunden.
 oauth-invalid-session = Ungültige Sitzung
 scan-title = { -product-name }: Scan-Ergebnisse
 user-add-invalid-email = Ungültige E-Mail-Adresse
+user-add-too-many-emails = Sie überwachen die maximale Anzahl von E-Mail-Adressen.
 user-add-email-verify-subject = Bestätige deine Anmeldung für { -product-name }.
 user-add-duplicate-email = Diese E-Mail-Adresse wurde schon zu { -product-name } hinzugefügt.
 user-add-duplicate-email-part-2 = Öffnen Sie Ihre { $preferencesLink }, um den Status der { $userEmail } zu überprüfen.
