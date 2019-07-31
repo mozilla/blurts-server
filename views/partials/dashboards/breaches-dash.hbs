@@ -37,6 +37,8 @@
     </div>
   </div>
 </section>
+{{!-- TODO: remove this when https://github.com/mozilla/blurts-server/issues/1148 is fixed --}}
+{{#ifCompare verifiedEmails.length "<" 15}}
 <section class="">
   <div class="row jst-cntr">
     <div id="dashboard-add-email" class="dashboard-add-email flx flx-col">
@@ -51,6 +53,7 @@
     </div>
   </div>
 </section>
+{{/ifCompare}}
 <section class="container cool-gradient">
   <div class="row">
     <div class="col-6 jst-cntr">

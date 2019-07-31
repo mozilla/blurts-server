@@ -33,6 +33,7 @@ oauth-invalid-session = Invalid session
 scan-title = {-product-name} : Scan Results
 
 user-add-invalid-email = Invalid Email
+user-add-too-many-emails = You are monitoring the maximum number of email addresses.
 user-add-email-verify-subject = Verify your subscription to {-product-name}.
 user-add-duplicate-email = This email has already been added to {-product-name}.
 user-add-duplicate-email-part-2 = Visit your { $preferencesLink } to check the status of { $userEmail }.
