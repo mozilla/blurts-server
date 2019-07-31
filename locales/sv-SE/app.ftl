@@ -25,6 +25,7 @@ home-not-found = Sidan hittades inte.
 oauth-invalid-session = Ogiltig session
 scan-title = { -product-name }: Skanna resultat
 user-add-invalid-email = Ogiltig e-postadress
+user-add-too-many-emails = Du övervakar det maximala antalet e-postadresser.
 user-add-email-verify-subject = Verifiera din prenumeration på { -product-name }.
 user-add-duplicate-email = Det här e-postadressen har redan lagts till i { -product-name }.
 user-add-duplicate-email-part-2 = Besök { $preferencesLink } för att kontrollera statusen för { $userEmail }.
