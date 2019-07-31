@@ -35,6 +35,7 @@ if (
       BreachDate: breach.BreachDate,
       PwnCount: breach.PwnCount,
       AddedDate: breach.AddedDate,
+      DataClasses: breach.DataClasses,
     };
 
     console.log("New breach detected: \n", data);
