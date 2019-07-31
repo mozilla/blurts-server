@@ -34,7 +34,7 @@
       <div class="pref">
         {{!-- TODO: remove this when https://github.com/mozilla/blurts-server/issues/1148 is fixed --}}
         {{#ifCompare emails.total ">=" 15}}
-          <h4 class="email-pef">{{ getString "user-add-too-many-emails" }}</h4>
+          <h4 class="email-pref">{{ getString "user-add-too-many-emails" }}</h4>
         {{/ifCompare}}
         {{#ifCompare emails.total "<" 15}}
           <h4 class="email-pref add-new">{{ getString "add-new-email" }}</h4>
