@@ -25,6 +25,7 @@ home-not-found = Az oldal nem található.
 oauth-invalid-session = Érvénytelen munkamenet
 scan-title = { -product-name } : Szkennelési eredmények
 user-add-invalid-email = Érvénytelen e-mail cím
+user-add-too-many-emails = A lehető legnagyobb számú e-mail címet figyeli.
 user-add-email-verify-subject = A { -product-name } feliratkozásának megerősítése.
 user-add-duplicate-email = Ez az e-mail cím már hozzáadásra került a { -product-name }hoz.
 user-add-duplicate-email-part-2 = Keresse fel a { $preferencesLink } oldalt, és ellenőrizze a(z) { $userEmail } állapotát.
