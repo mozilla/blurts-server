@@ -66,7 +66,7 @@ function saveReferringPageData(utmParams) {
   getUTMNames().forEach(param => {
     if (utmParams.has(param)) {
       const cleanParam = utmParams.get(param);
-      bodyDataset[param] = cleanParam.replace(/[&<>"',.`=\/]/g, "");
+      bodyDataset[param] = cleanParam.replace(/[&<>"',.`=:/]/g, "");
     }
   });
 }
@@ -101,16 +101,17 @@ function getUTMNames() {
 
   document.querySelectorAll(".open-oauth").forEach( async(el) => {
     const fxaUrl = new URL("/metrics-flow?", document.body.dataset.fxaAddress);
-    let response = {};
-    try {
-      response = await fetch(fxaUrl, {credentials: "omit"});
-    } catch(e) {}
 
-    fxaUrl.searchParams.append("entrypoint", encodeURIComponent(el.dataset.entrypoint));
-    if (response && response.status === 200) {
-      const {flowId, flowBeginTime} = await response.json();
-      el.dataset.flowId = flowId;
-      el.dataset.flowBeginTime = flowBeginTime;
+    try {
+      const response = await fetch(fxaUrl, {credentials: "omit"});
+      fxaUrl.searchParams.append("entrypoint", encodeURIComponent(el.dataset.entrypoint));
+      if (response && response.status === 200) {
+        const {flowId, flowBeginTime} = await response.json();
+        el.dataset.flowId = flowId;
+        el.dataset.flowBeginTime = flowBeginTime;
+      }
+    } catch(e) {
+      // should we do anything with this?
     }
   });
 
