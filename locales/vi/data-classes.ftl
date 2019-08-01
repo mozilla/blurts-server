@@ -109,6 +109,7 @@ social-security-numbers = Số an sinh xã hội
 spoken-languages = Ngôn ngữ nói
 support-tickets = Vé hỗ trợ
 survey-results = Kết quả khảo sát
+taxation-records = Hồ sơ thuế
 time-zones = Múi giờ
 travel-habits = Thói quen du lịch
 user-statuses = Trạng thái người dùng

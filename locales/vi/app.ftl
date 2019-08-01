@@ -25,6 +25,7 @@ home-not-found = Không tìm thấy trang.
 oauth-invalid-session = Phiên không hợp lệ
 scan-title = { -product-name }: Kết quả quét
 user-add-invalid-email = Email không hợp lệ
+user-add-too-many-emails = Bạn đã thêm tối đa số lượng địa chỉ email để theo dõi.
 user-add-email-verify-subject = Xác nhận đăng ký của bạn với { -product-name }.
 user-add-duplicate-email = Email này đã được thêm vào { -product-name } trước đó.
 user-add-duplicate-email-part-2 = Truy cập { $preferencesLink } của bạn để kiểm tra trạng thái của { $userEmail }.
