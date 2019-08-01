@@ -25,6 +25,7 @@ home-not-found = 找不到网页。
 oauth-invalid-session = 无效会话
 scan-title = { -product-name }：扫描结果
 user-add-invalid-email = 无效的电子邮件地址
+user-add-too-many-emails = 已达到监控电子邮件地址数量设定上限。
 user-add-email-verify-subject = 确认您要订阅 { -product-name }。
 user-add-duplicate-email = 此电子邮件地址已添加到 { -product-name }。
 user-add-duplicate-email-part-2 = 访问 { $preferencesLink } 以查看 { $userEmail } 的状态。
