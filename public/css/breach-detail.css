@@ -3,11 +3,15 @@ main.breach-detail {
   color: var(--grey1);
 }
 
-.breach-type a {
-  color: var(--blue3);
+.breach-type {
+  color: var(--grey6);
 }
 
-.breach-type a:hover {
+.breach-domain-link {
+  margin-block-end: .5rem;
+}
+
+.breach-type:hover {
   opacity: 1;
   text-decoration: underline;
 }
