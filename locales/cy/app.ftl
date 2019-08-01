@@ -25,6 +25,7 @@ home-not-found = Heb ganfod tudalen.
 oauth-invalid-session = Sesiwn annilys
 scan-title = { -product-name } : Canlyniadau Sganio
 user-add-invalid-email = E-bost Annilys
+user-add-too-many-emails = Rydych yn monitro'r nifer mwyaf o gyfeiriadau e-byst.
 user-add-email-verify-subject = Dilysu eich tanysgrifiad i { -product-name }.
 user-add-duplicate-email = Mae'r e-bost hwn eisoes wedi'i ychwanegu at { -product-name }.
 user-add-duplicate-email-part-2 = Ewch i'ch { $preferencesLink } i wirio statws { $userEmail }.
