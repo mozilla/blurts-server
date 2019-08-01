@@ -25,6 +25,7 @@ home-not-found = 找不到頁面。
 oauth-invalid-session = Session 無效
 scan-title = { -product-name } : 掃描結果
 user-add-invalid-email = 無效的電子郵件地址
+user-add-too-many-emails = 已達可監控的 E-Mail 信箱最大數量。
 user-add-email-verify-subject = { -product-name } 訂閱確認
 user-add-duplicate-email = 此帳號已經加入 { -product-name }。
 user-add-duplicate-email-part-2 = 請到您的 { $preferencesLink } 檢查 { $userEmail } 的目前狀態。
