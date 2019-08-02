@@ -68,6 +68,8 @@ verify-email-cta = E-postayı doğrula
 email-link-expires = Bu bağlantı 24 saat sonra geçersiz hale gelir
 # Email headline
 email-breach-summary-for-email = { $userEmail } ihlal özeti
+# Email headline
+email-no-breaches-hl = { $userEmail } bilinen 0 veri ihlalinde bulundu
 # Subject line of email
 email-subject-found-breaches = { -product-name } aşağıdaki veri ihlallerinde bilgilerinizi buldu
 # Subject line of email
@@ -82,5 +84,7 @@ faq-list-headline = Sıkça sorulan sorular
 faq-v2-1 = Bu şirketlerden veya sitelerden birini tanımıyorum. Neden bu ihlalde yer alıyorum?
 # Link Title
 faq-v2-2 = Yıllar önce yaşanmış bir ihlalle veya eski bir hesabımla ilgili bir şey yapmam gerekir mi?
+# Link Title
+faq-v2-3 = Bilgilerimin ele geçirildiğini öğrendim. Ne yapmalıyım?
 # Link Title
 faq-v2-4 = { -product-name } hassas verileri nasıl işliyor?

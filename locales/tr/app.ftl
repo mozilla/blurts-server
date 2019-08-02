@@ -134,6 +134,7 @@ about-fxm-headline = { -product-name } hakkında
 how-fxm-works = { -product-name } nasıl çalışır?
 how-fxm-2-headline = İhlal takibi için kaydolun
 how-fxm-3-headline = Tarayıcınızdan bildirim alın
+wtd-after-website = Veri ihlalinden sonra ne yapmalı:
 what-is-data-agg = Veri toplayıcı nedir?
 protect-your-privacy = Çevrimiçi gizliliğinizi koruyun
 avoid-personal-info = Parolalarda kişisel bilgilerinizi kullanmaktan kaçının
@@ -255,7 +256,7 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
-results-for = { $userEmail } sonuçları
+results-for = Sonuçlar: { $userEmail }
 other-monitored-emails = İzlenen diğer e-postalar
 email-verification-required = E-posta doğrulaması gerekiyor
 fxa-primary-email = { -brand-fxa } e-postası - birincil
@@ -305,3 +306,6 @@ breach-alert-notifications = İhlal uyarısı bildirimleri
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Eklenme tarihi:
+create-strong-passwords-desc = Güçlü, güvenli ve tahmin etmesi zor parolalar seçin.
+steps-to-protect-desc = Sık karşılaşılan tehditlerin farkında olun ve nelere dikkat etmeniz gerektiğini öğrenin.
+five-myths-desc = Hacker'ların işini kolaylaştıran kötü parola alışkanlıklarından kaçınmayı öğrenin.
