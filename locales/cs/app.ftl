@@ -218,6 +218,7 @@ feat-enroll-multiple = Nechte si monitorovat více e-mailových adres
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
     { $breachCount ->
+        [zero] Nevyskytuje se v žádném známém úniku dat.
         [one] Vyskytuje se v { $breachCount } známém úniku.
         [few] Vyskytuje se ve { $breachCount } známých únicích.
        *[other] Vyskytuje se v { $breachCount } známých únicích.
