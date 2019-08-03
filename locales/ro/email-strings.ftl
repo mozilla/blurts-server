@@ -63,6 +63,10 @@ verify-email-cta = Verifică e-mailul
 email-link-expires = Acest link expiră în 24 de ore
 # Email headline
 email-breach-summary-for-email = Rezumatul breșelor pentru { $userEmail }
+# Email headline
+email-no-breaches-hl = { $userEmail } a apărut în 0 breșe de securitate cunoscute
+# Email headline
+email-alert-hl = { $userEmail } a apărut într-o nouă breșă de securitate
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Află mai multe despre { $fxmLink }
 # List headline
