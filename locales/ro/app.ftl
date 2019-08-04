@@ -286,7 +286,7 @@ known-data-breaches-exposed =
        *[other] Mai multe breșe de date cunoscute ți-au expus informațiile
     }
 # Button
-see-additional-breaches = Afișează și alte breșe
+see-additional-breaches = Vezi și alte breșe
 scan-results-known-breaches =
     { $breachCount ->
         [one] Această adresă de e-mail a apărut în 1 breșă cunoscută de date.

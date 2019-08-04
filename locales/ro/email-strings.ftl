@@ -55,6 +55,16 @@ share-by-email-message =
     3. Obține ponturi de la { -product-name } despre ce să faci în continuare.
 # Unsubscribe link in email.
 email-unsub-link = Dezabonează-te
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb = Primești acest e-mail deoarece te-ai înscris pentru alertele { -product-name }. Nu mai vrei aceste e-mailuri? { $unsubLink }. Acesta este un e-mail automat. Pentru asistență, vizitează { $faqLink }.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    Primești acest e-mail deoarece te-ai înscris pentru alertele { -product-name }.
+    Acesta este un e-mail automat. Pentru asistență, vizitează { $faqLink }.
 # Button text that takes the user to their signed in user dashboard.
 view-my-dashboard-cta = Vezi panoul meu de control
 # Button text
@@ -62,12 +72,31 @@ verify-email-cta = Verifică e-mailul
 # Headline of verification email
 email-link-expires = Acest link expiră în 24 de ore
 # Email headline
+email-found-breaches-hl = Iată rezumatul tău privind breșele de date din trecut
+# Email headline
 email-breach-summary-for-email = Rezumatul breșelor pentru { $userEmail }
 # Email headline
 email-no-breaches-hl = { $userEmail } a apărut în 0 breșe de securitate cunoscute
 # Email headline
 email-alert-hl = { $userEmail } a apărut într-o nouă breșă de securitate
+# Subject line of email
+email-subject-found-breaches = { -product-name } ți-a găsit informații în aceste breșe
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Află mai multe despre { $fxmLink }
+fxm-warns-you-no-breaches =
+    { -product-name } te avertizează cu privire la breșele de date în care sunt implicate informațiile tale cu caracter personal.
+    Până în prezent, nu au fost găsite breșe. Îți vom trimite o alertă dacă adresa ta de e-mail apare într-o nouă breșă.
+fxm-warns-you-found-breaches =
+    { -product-name } te avertizează cu privire la breșele de date în care sunt implicate informațiile tale cu caracter personal.
+    De asemenea, te-ai înscris pentru a primi alerte dacă adresa ta de e-mail apare într-o nouă breșă.
+email-breach-alert-blurb =
+    { -product-name } te avertizează cu privire la breșele de date în care sunt implicate informațiile tale cu caracter personal.
+    Tocmai am primit detalii despre o altă breșă de date a unei companii.
 # List headline
 faq-list-headline = Întrebări adresate frecvent
+# Link Title
+faq-v2-1 = Nu recunosc una dintre aceste companii sau site-uri web. De ce mă aflu în această breșă?
+# Link Title
+faq-v2-2 = Trebuie să fac ceva dacă o breșă a avut loc cu ani în urmă sau dacă acesta este un cont vechi?
+# Link Title
+faq-v2-3 = Tocmai am aflat că mă aflu într-o breșă de date. Ce fac în continuare?
