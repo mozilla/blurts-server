@@ -25,6 +25,7 @@ home-not-found = Side ikke fundet.
 oauth-invalid-session = Ugyldig session
 scan-title = { -product-name } : Skanningsresultater
 user-add-invalid-email = Ugyldig mailadresse
+user-add-too-many-emails = Du overvåger det maksimale antal mailadresser.
 user-add-email-verify-subject = Bekræft din tilmelding til { -product-name }.
 user-add-duplicate-email = Denne mailadresse er allerede føjet til { -product-name }.
 user-add-duplicate-email-part-2 = Besøg { $preferencesLink } for at kontrollere status af { $userEmail }.
