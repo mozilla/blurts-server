@@ -35,6 +35,7 @@ home-not-found = Страница не найдена.
 oauth-invalid-session = Недействительный идентификатор сессии
 scan-title = { -product-name } : Результаты сканирования
 user-add-invalid-email = Некорректный адрес электронной почты
+user-add-too-many-emails = Вы отслеживаете максимальное количество адресов электронной почты.
 user-add-email-verify-subject = Подтвердите вашу подписку на { -product-name }.
 user-add-duplicate-email = Этот адрес электронной почты уже был добавлен в { -product-name }.
 user-add-duplicate-email-part-2 = Посетите { $preferencesLink }, чтобы проверить статус { $userEmail }.
