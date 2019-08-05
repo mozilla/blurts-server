@@ -102,6 +102,9 @@ view-my-dashboard-cta = View My Dashboard
 # Button text
 verify-email-cta = Verify Email
 
+# Button text
+see-all-breaches = See All Breaches
+
 # Headline of verification email
 email-link-expires = This link expires in 24 hours
 email-verify-blurb = Verify your email to add it to {-product-name} and sign up for breach alerts.
