@@ -72,6 +72,8 @@ email-verify-footer-copy =
 view-my-dashboard-cta = Meine Übersicht anzeigen
 # Button text
 verify-email-cta = E-Mail-Adresse bestätigen
+# Button text
+see-all-breaches = Alle Datenlecks anzeigen
 # Headline of verification email
 email-link-expires = Dieser Link läuft in 24 Stunden ab
 email-verify-blurb = Bestätige deine E-Mail-Adresse, um sie zu { -product-name } hinzuzufügen, und Warnungen zu Datenlecks zu abonnieren.
