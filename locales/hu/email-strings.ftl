@@ -76,6 +76,8 @@ email-verify-footer-copy =
 view-my-dashboard-cta = Saját vezérlőpult megtekintése
 # Button text
 verify-email-cta = E-mail cím megerősítése
+# Button text
+see-all-breaches = Az összes adatsértés megtekintése
 # Headline of verification email
 email-link-expires = Ez a hivatkozás 24 óra múlva lejár
 email-verify-blurb = Erősítse meg az e-mail címét a { -product-name }hoz hozzáadáshoz, és iratkozzon fel az adatsértési figyelmeztetésekre.
