@@ -65,6 +65,7 @@ home-not-found = Stránka nebola nájdená.
 oauth-invalid-session = Neplatná relácia
 scan-title = { -product-name } - výsledky skenu
 user-add-invalid-email = Neplatná e-mailová adresa
+user-add-too-many-emails = Monitorujete maximálny počet e-mailových adries.
 user-add-email-verify-subject = Potvrďte svoje prihlásenie k odberu z { -product-name(case: "gen") }.
 user-add-duplicate-email = Táto e-mailová adresa už bola do { -product-name(case: "gen") } pridaná.
 user-add-duplicate-email-part-2 = Ak chcete zistiť stav e-mailovej adresy { $userEmail }, prejdite do sekcie { $preferencesLink }.

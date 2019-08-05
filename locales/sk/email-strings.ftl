@@ -75,6 +75,8 @@ email-verify-footer-copy =
 view-my-dashboard-cta = Zobraziť moju nástenku
 # Button text
 verify-email-cta = Overiť e-mailovú adresu
+# Button text
+see-all-breaches = Zobraziť všetky úniky
 # Headline of verification email
 email-link-expires = Platnosť tohto odkazu vyprší o 24 hodín
 email-verify-blurb = Overte svoju e-mailovú adresu a prihláste sa tak v službe { -product-name } k odberu upozornení.
