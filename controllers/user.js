@@ -353,10 +353,15 @@ async function getBreachStats(req, res) {
       errorMessage: "User breach stats requires an FXA OAuth token passed in the Authorization header.",
     });
   }
-  const fxaResponse = await FXA.verifyOAuthToken(req.token, FXA_MONITOR_SCOPE);
+  const fxaResponse = await FXA.verifyOAuthToken(req.token);
   if (fxaResponse.name === "HTTPError") {
     return res.status(fxaResponse.statusCode).json({
       errorMessage: "Could not verify FXA OAuth token. FXA returned message: " + fxaResponse.statusMessage,
+    });
+  }
+  if (!fxaResponse.body.scope.includes(FXA_MONITOR_SCOPE)) {
+    return res.status(401).json({
+      errorMessage: "The provided token does not include Monitor scope.",
     });
   }
   const user = await DB.getSubscriberByFxaUid(fxaResponse.body.user);
