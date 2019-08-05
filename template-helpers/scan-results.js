@@ -21,8 +21,8 @@ function getScanResultsHeadline(args) {
 
   if (userCompromised) {
     if (foundBreaches.length === 1) {
-      headlineStrings.headline = LocaleUtils.fluentFormat("fb-comp-only", args);
-      headlineStrings.subhead = "no-other-breaches-found";
+      headlineStrings.headline = fluentNestedBold("fb-comp-only", args);
+      headlineStrings.subhead = LocaleUtils.fluentFormat(locales, "no-other-breaches-found");
       return args.fn(headlineStrings);
     }
     headlineStrings.headline = fluentNestedBold("fb-comp-and-others", args);
