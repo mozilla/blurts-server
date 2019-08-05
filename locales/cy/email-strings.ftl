@@ -69,6 +69,8 @@ email-verify-footer-copy = Rydych yn derbyn yr e-bost hwn oherwydd eich bod wedi
 view-my-dashboard-cta = Gweld Fy Mwrdd Gwaith
 # Button text
 verify-email-cta = Dilysu E-bost
+# Button text
+see-all-breaches = Gweld Pob Tor-data
 # Headline of verification email
 email-link-expires = Daw'r ddolen hon i ben mewn 24 awr
 email-verify-blurb = Gwirio eich e-bost i'w ychwanegu at { -product-name } a chofrestru ar gyfer rhybuddion am dor-data.
