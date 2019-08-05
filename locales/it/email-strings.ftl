@@ -68,6 +68,8 @@ email-verify-footer-copy = Ricevi questa email perché ti sei iscritto agli avvi
 view-my-dashboard-cta = Visualizza Pannello utente
 # Button text
 verify-email-cta = Verifica email
+# Button text
+see-all-breaches = Vedi tutte le violazioni
 # Headline of verification email
 email-link-expires = Questo link scadrà tra 24 ore
 email-verify-blurb = Verifica l’indirizzo email per aggiungerlo a { -product-name } e ricevere avvisi in caso di violazioni.
