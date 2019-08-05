@@ -70,6 +70,8 @@ email-verify-footer-copy =
 view-my-dashboard-cta = Visa min översikt
 # Button text
 verify-email-cta = Verifiera e-postadress
+# Button text
+see-all-breaches = Se alla intrång
 # Headline of verification email
 email-link-expires = Den här länken upphör inom 24 timmar
 email-verify-blurb = Verifiera din e-postadress för att lägga till den i { -product-name } och registrera dig för intrångsvarningar.
