@@ -57,6 +57,8 @@ email-verify-footer-copy = 您會收到這封信，是因為您曾經註冊過 {
 view-my-dashboard-cta = 檢視我的儀表板
 # Button text
 verify-email-cta = 驗證電子郵件地址
+# Button text
+see-all-breaches = 檢視所有資料外洩事件
 # Headline of verification email
 email-link-expires = 此鏈結將於 24 小時後失效
 email-verify-blurb = 請驗證您的電子郵件地址，即可加入 { -product-name } 並訂閱資料外洩警報。
