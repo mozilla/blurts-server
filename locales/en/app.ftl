@@ -433,6 +433,9 @@ known-data-breaches-exposed =
 # Button
 see-additional-breaches = See Additional Breaches
 
+# Button
+see-all-breaches = See All Breaches
+
 scan-results-known-breaches =
   { $breachCount ->
       [one] This email appeared in 1 known data breach.
