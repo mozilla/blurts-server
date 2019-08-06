@@ -74,6 +74,8 @@ email-verify-footer-copy =
 view-my-dashboard-cta = Ver o meu painel
 # Button text
 verify-email-cta = Confirmar e-mail
+# Button text
+see-all-breaches = Ver todas as brechas
 # Headline of verification email
 email-link-expires = Esta ligação expira em 24 horas
 email-verify-blurb = Confirme o seu e-mail para o adicionar a { -product-name } e subscreva aos alertas de intrusões.
