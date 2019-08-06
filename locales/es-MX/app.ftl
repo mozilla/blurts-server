@@ -19,12 +19,14 @@ error-hibp-throttled = Demasiadas conexiones para { -brand-HIBP }.
 error-hibp-connect = Error conectándose a { -brand-HIBP }.
 error-hibp-load-breaches = No se pudieron cargar las infracciones.
 error-must-be-signed-in = Debes iniciar sesión a tu { -brand-fxa }
+error-to-finish-verifying = Para finalizar la verificación de esta dirección con { -product-name }, debes acceder mediante el correo principal de tu cuenta.
 home-title = { -product-name }
 home-not-found = Página no encontrada.
 oauth-invalid-session = Sesión inválida
 scan-title = { -product-name } : Resultados del escaneo
 user-add-invalid-email = Correo electrónico inválido
 user-add-email-verify-subject = Verifica tu suscripción a { -product-name }.
+user-add-duplicate-email = Este correo ya se ha añadido a { -product-name }.
 error-headline = Error
 user-verify-token-error = Se requiere el token de verificación.
 user-verify-email-report-subject = Tu reporte de { -product-name }
@@ -332,10 +334,6 @@ other-known-breaches-found =
 additional-information-including = Información adicional, incluyendo:
 # Title
 email-addresses-title = Direcciones de correo electrónico
-# This is a standardized breach overview blurb that appears on all breach detail pages.
-# $breachTitle is the name of the breached company or website.
-# $breachDate and $addedDate are calendar dates.
-breach-overview = En { $breachDate }, { $breachTitle } tuvo una filtración. Cuando se descubrió y comprobó la filtración, se añadió a nuestra base de datos el { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Preferencias de { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
@@ -371,3 +369,9 @@ breach-alert-notifications = Notificaciones sobre filtraciones
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Filtración añadida:
+how-hackers-work-desc = Protege tus contraseñas de los criminales informáticos, dado que eso es lo que más les interesa.
+what-to-do-after-breach-desc = Blinda tus cuentas para evitar que tus datos caigan en las manos equivocadas.
+create-strong-passwords-desc = Haz que tus contraseñas sean potentes, seguras y difíciles de adivinar.
+steps-to-protect-desc = Comprende las amenazas más frecuentes y entérate de lo que no debes perder de vista.
+five-myths-desc = Aprende a evitar los malos hábitos que facilitan a los piratas informáticos robar contraseñas.
+take-further-steps-desc = Descubre cómo mitigar los riesgos del robo de identidad para evitar perder tu dinero.
