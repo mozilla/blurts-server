@@ -25,6 +25,7 @@ home-not-found = Pagina niet gevonden.
 oauth-invalid-session = Ongeldige sessie
 scan-title = { -product-name } : Scanresultaten
 user-add-invalid-email = Ongeldig e-mailadres
+user-add-too-many-emails = U bewaakt het maximale aantal e-mailadressen.
 user-add-email-verify-subject = Controleer uw abonnement op { -product-name }.
 user-add-duplicate-email = Dit e-mailadres is al aan { -product-name } toegevoegd.
 user-add-duplicate-email-part-2 = Bezoek uw { $preferencesLink } om de status van { $userEmail } te controleren.

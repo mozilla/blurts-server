@@ -74,6 +74,8 @@ email-verify-footer-copy =
 view-my-dashboard-cta = Mijn dashboard bekijken
 # Button text
 verify-email-cta = E-mailadres verifiëren
+# Button text
+see-all-breaches = Alle datalekken bekijken
 # Headline of verification email
 email-link-expires = Deze koppeling verloopt over 24 uur
 email-verify-blurb = Verifieer uw e-mailadres om deze toe te voegen aan { -product-name } en meld u aan voor datalekmeldingen.
