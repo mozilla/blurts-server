@@ -75,6 +75,8 @@ email-verify-footer-copy =
 view-my-dashboard-cta = Xem bảng điều khiển của tôi
 # Button text
 verify-email-cta = Xác minh email
+# Button text
+see-all-breaches = Xem tất cả các vi phạm
 # Headline of verification email
 email-link-expires = Liên kết này hết hạn sau 24 giờ
 email-verify-blurb = Xác minh email của bạn để thêm nó vào { -product-name } và đăng ký thông báo vi phạm.
