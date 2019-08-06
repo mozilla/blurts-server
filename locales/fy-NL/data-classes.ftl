@@ -109,6 +109,7 @@ social-security-numbers = Sofinûmers
 spoken-languages = Sprutsen talen
 support-tickets = Stipeoanfragen
 survey-results = Resultaten fan fragelisten
+taxation-records = Belestinggegevens
 time-zones = Tiidsônen
 travel-habits = Reisgewoanten
 user-statuses = Brûkerssteaten

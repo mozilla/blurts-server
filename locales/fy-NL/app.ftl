@@ -19,12 +19,16 @@ error-hibp-throttled = Te folle ferbiningen mei { -brand-HIBP }.
 error-hibp-connect = Flater by ferbinen mei { -brand-HIBP }.
 error-hibp-load-breaches = Koe datalekken net lade.
 error-must-be-signed-in = Jo moatte by jo { -brand-fxa } oanmeld wêze.
+error-to-finish-verifying = Om de ferifikaasje fan dit e-mailadres foar { -product-name } te foltôgjen, moatte jo ûnder jo primêre e-mailadres oanmeld wêze.
 home-title = { -product-name }
 home-not-found = Side net fûn.
 oauth-invalid-session = Unjildige sesje
 scan-title = { -product-name } : Skanresultaten
 user-add-invalid-email = Unjildich e-mailadres
+user-add-too-many-emails = Jo bewekje it maksimale oantal e-mailadressen.
 user-add-email-verify-subject = Ferifiearje jo abonnemint op { -product-name }.
+user-add-duplicate-email = Dit e-mailadres is al oan { -product-name } tafoege.
+user-add-duplicate-email-part-2 = Besykje jo { $preferencesLink } om de steat fan { $userEmail } te kontrolearjen.
 error-headline = Flater
 user-verify-token-error = Ferifikaasjetoken is fereaske.
 user-verify-email-report-subject = Jo { -product-name }-rapport
@@ -366,7 +370,7 @@ email-addresses-title = E-mailadressen
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview = Op { $breachDate }, wie { $breachTitle } slachtoffer fan in datalek. Nei dat it datalek ûntdekt en ferifiearre waard, waard dit op { $addedDate } oan ús database tafoege.
+breach-overview-new = Op { $breachDate } is in lek bard op { $breachTitle }. Nei ûntdutsing en ferifikaasje fan it lek, is it op { $addedDate } tafoege oan ús database.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name }-foarkarren
 # When a user is signed in, this appears in the drop down menu 

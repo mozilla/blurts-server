@@ -74,6 +74,8 @@ email-verify-footer-copy =
 view-my-dashboard-cta = Myn dashboerd besjen
 # Button text
 verify-email-cta = E-mailadres ferifiearje
+# Button text
+see-all-breaches = Alle datalekken besjen
 # Headline of verification email
 email-link-expires = Dizze keppeling ferrint oer 24 oer
 email-verify-blurb = Ferifiearje jo e-mailadres om dizze ta te foegjen oan { -product-name } en meld jo oan foar datalekmeldingen.
