@@ -58,8 +58,12 @@ share-by-email-message =
     3. Recipe le suggestiones ex { -product-name } re que facer successivemente.
 # Unsubscribe link in email.
 email-unsub-link = Remover le subscription
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Monstrar mi pannello
 # Button text
 verify-email-cta = Verificar le email
+# Button text
+see-all-breaches = Vide tote le violationes
 # Headline of verification email
 email-link-expires = Iste ligamine expira in 24 horas
 # Subject line of email
