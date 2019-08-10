@@ -67,6 +67,8 @@ email-verify-footer-copy = Du modtager denne mail, fordi du har tilmeldt dig ala
 view-my-dashboard-cta = Vis min oversigt
 # Button text
 verify-email-cta = Bekræft mailadresse
+# Button text
+see-all-breaches = Se alle datalæk
 # Headline of verification email
 email-link-expires = Dette link udløber om 24 timer
 email-verify-blurb = Bekræft din mailadresse for at føje den til { -product-name } og tilmelde dig advarsler om datalæk.
