@@ -64,12 +64,16 @@ email-unsub-link = Abonelikten çık
 view-my-dashboard-cta = Kontrol panelimi göster
 # Button text
 verify-email-cta = E-postayı doğrula
+# Button text
+see-all-breaches = Tüm veri ihlallerini gör
 # Headline of verification email
 email-link-expires = Bu bağlantı 24 saat sonra geçersiz hale gelir
 # Email headline
 email-breach-summary-for-email = { $userEmail } ihlal özeti
 # Email headline
 email-no-breaches-hl = { $userEmail } bilinen 0 veri ihlalinde bulundu
+# Email headline
+email-alert-hl = { $userEmail } yeni bir veri ihlalinde yer alıyor
 # Subject line of email
 email-subject-found-breaches = { -product-name } aşağıdaki veri ihlallerinde bilgilerinizi buldu
 # Subject line of email
@@ -78,6 +82,9 @@ email-subject-no-breaches = { -product-name } bilinen veri ihlali bulamadı
 email-subject-verify = { -product-name } e-postanızı doğrulayın
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = { $fxmLink } hakkında daha fazla bilgi alın
+fxm-warns-you-no-breaches = { -product-name } sizi kişisel bilgilerinizin dahil olduğu veri ihlalleri konusunda uyarır. Şimdilik herhangi bir veri ihlali bulunamadı. E-posta adresiniz yeni bir veri ihlalinde yer alırsa size bildirim göndereceğiz.
+fxm-warns-you-found-breaches = { -product-name } sizi kişisel bilgilerinizin dahil olduğu veri ihlalleri konusunda uyarır. E-posta adresinizin yeni bir veri ihlalinde bulunması durumunda bildirim almak için kaydoldunuz.
+email-breach-alert-blurb = { -product-name } sizi kişisel bilgilerinizin dahil olduğu veri ihlalleri konusunda uyarır. Bir şirketin yaşadığı veri ihlali konusunda bilgi aldık.
 # List headline
 faq-list-headline = Sıkça sorulan sorular
 # Link Title
