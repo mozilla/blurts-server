@@ -58,8 +58,12 @@ email-unsub-link = Desuscribirse
 # This string appears in the footer of verification emails. { $faqLink } is a link
 # to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-verify-footer-copy = Estás recibiendo este correo por que te registraste para recibir alertas de { -product-name }. Este es un correo automático. Para ayuda, visita { $faqLink }.
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Ver mi panel de control
 # Button text
 verify-email-cta = Verificar correo
+# Button text
+see-all-breaches = Ver todas las filtraciones
 # Headline of verification email
 email-link-expires = Este enlace expira en 24 horas.
 email-verify-blurb = Verifica tu correo para añadirlo a { -product-name } y registrarte para alertas de nuevas filtraciones.
