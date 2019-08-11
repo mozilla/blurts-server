@@ -75,6 +75,8 @@ email-verify-footer-copy =
 view-my-dashboard-cta = Посмотреть мою панель
 # Button text
 verify-email-cta = Подтвердить адрес эл. почты
+# Button text
+see-all-breaches = Посмотреть все утечки
 # Headline of verification email
 email-link-expires = Срок действия этой ссылки истекает через 24 часа
 email-verify-blurb = Подтвердите адрес электронной почты, чтобы добавить его в { -product-name } и подписаться на уведомления об утечках.
