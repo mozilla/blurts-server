@@ -34,7 +34,7 @@ report-pwt-blurb =
 report-pwt-headline-1 = Use a different password for every account
 report-pwt-summary-1 =
     Reusing the same password everywhere opens the door for hackers. 
-    They can use that password to log into your other accounts.
+    They can use that password to log in to your other accounts.
 report-pwt-headline-2 = Create strong, unique passwords
 report-pwt-summary-2 =
     Hackers use lists of common passwords to try to guess yours. 
