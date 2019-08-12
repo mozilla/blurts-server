@@ -221,9 +221,6 @@ function styleActiveLink(locationHref) {
       previousActiveLink.classList.remove("active-link");
     }
     styleActiveLink(win.location.href);
-    if (win.location.search.includes("utm_") && win.history.replaceState) {
-      win.history.replaceState({}, "", win.location.toString().replace(/[?&]utm_.*/g, ""));
-    }
     toggleMobileFeatures(topNavigation);
     toggleArticles();
     toggleHeaderStates(header, win);

@@ -49,15 +49,38 @@ async function sendPing(el, eventAction, eventLabel = null) {
   }
 }
 
+
 function getFxaUtms(url) {
-  const utmSource = encodeURIComponent(document.body.dataset.serverUrl.replace(/(^\w+:|^)\/\//g, ""));
-  url.searchParams.append("utm_source", utmSource);
-  url.searchParams.append("utm_campaign", document.body.dataset.utmCampaign);
+  const bodyDataset = document.body.dataset;
+  getUTMNames().forEach(param => {
+    if (bodyDataset[param]) {
+      url.searchParams.append(param, encodeURIComponent(bodyDataset[param]));
+    }
+  });
   url.searchParams.append("form_type", "email");
   return url;
 }
 
+function saveReferringPageData(utmParams) {
+  const bodyDataset = document.body.dataset;
+  getUTMNames().forEach(param => {
+    if (utmParams.has(param)) {
+      const cleanParam = utmParams.get(param);
+      bodyDataset[param] = cleanParam.replace(/[&<>"',.`=:/]/g, "");
+    }
+  });
+}
+
+function getUTMNames() {
+  return ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
+}
+
 (() => {
+  const win = window;
+  if (win.location.search.includes("utm_") && win.history.replaceState) {
+    saveReferringPageData(new URL(win.location).searchParams);
+    win.history.replaceState({}, "", win.location.toString().replace(/[?&]utm_.*/g, ""));
+  }
 
   const setMetricsIds = (el) => {
     if (hasParent(el, "scan-another-email")) {
@@ -79,13 +102,16 @@ function getFxaUtms(url) {
   document.querySelectorAll(".open-oauth").forEach( async(el) => {
     const fxaUrl = new URL("/metrics-flow?", document.body.dataset.fxaAddress);
 
-    const response = await fetch(fxaUrl, {credentials: "omit"});
-
-    fxaUrl.searchParams.append("entrypoint", encodeURIComponent(el.dataset.entrypoint));
-    if (response.status === 200) {
-      const {flowId, flowBeginTime} = await response.json();
-      el.dataset.flowId = flowId;
-      el.dataset.flowBeginTime = flowBeginTime;
+    try {
+      const response = await fetch(fxaUrl, {credentials: "omit"});
+      fxaUrl.searchParams.append("entrypoint", encodeURIComponent(el.dataset.entrypoint));
+      if (response && response.status === 200) {
+        const {flowId, flowBeginTime} = await response.json();
+        el.dataset.flowId = flowId;
+        el.dataset.flowBeginTime = flowBeginTime;
+      }
+    } catch(e) {
+      // should we do anything with this?
     }
   });
 
