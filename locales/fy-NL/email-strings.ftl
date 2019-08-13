@@ -52,7 +52,7 @@ share-by-email-subject = Untdek oft jo troffen binne troch in datalek.
 # Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
 share-by-email-message =
     Hallo,
-    { -brand-name } hat in fergese service wêrmei't jo kontrolearje kinne oft jo troffen binne troch in datalek. Sa wurket it:
+    { -brand-name } hat in fergeze tsjinst wêrmei't jo kontrolearje kinne oft jo troffen binne troch in datalek. Sa wurket it:
     1. Gean nei { "https://monitor.firefox.com" } en sykje nei jo e-mailadres.
     2. Sjoch oft jo online accounts troffen binne troch in datalek.
     3. Untfang tips fan { -product-name } oer wat jo fierder dwaan kinne.
