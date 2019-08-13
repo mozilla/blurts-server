@@ -194,7 +194,7 @@ avoid-personal-info-blurb = Det er nemt at finde fødselsdatoer, adresser og nav
 
 change-pw = Skift din adgangskode
 even-for-old = Selv for gamle konti er det vigtigt at opdatere dine adgangskoder.
-make-new-pw-unique = Gør den nye adgangskode forskellig og unik
+make-new-pw-unique = Gør den nye adgangskode anderledes og unik
 strength-of-your-pw = Hvor sikker du er på nettet afhænger af, hvor sikre dine adgangskoder er.
 create-strong-passwords = Sådan opretter du stærke adgangskoder
 stop-reusing-pw = Stop med at genbruge den samme adgangskode
