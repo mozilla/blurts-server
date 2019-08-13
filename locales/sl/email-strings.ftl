@@ -60,9 +60,34 @@ share-by-email-message =
     3. Prejmi nasvete { -product-name }ja o tem, kako ukrepati.
 # Unsubscribe link in email.
 email-unsub-link = Odjavi se
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Prikaži mojo nadzorno ploščo
 # Button text
 verify-email-cta = Potrdi e-poštni naslov
+# Headline of verification email
+email-link-expires = Ta povezava poteče v naslednjih 24 urah
+# Email headline
+email-found-breaches-hl = Tukaj je vaš povzetek preteklih kraj podatkov
+# Email headline
+email-breach-summary-for-email = Povzetek kraj podatkov za { $userEmail }
+# Email headline
+email-no-breaches-hl = { $userEmail } se ni pojavil v nobeni znani kraji podatkov
 # Email headline
 email-alert-hl = { $userEmail } se je pojavil v novi kraji podatkov
+# Subject line of email
+email-subject-found-breaches = { -product-name } je našel vaše podatke v teh krajah
+# Subject line of email
+email-subject-no-breaches = { -product-name } ni našel nobenih znanih kraj
+# Subject line of email
+email-subject-verify = Potrdite e-pošto za { -product-name }
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Več o storitvi { $fxmLink }
+email-breach-alert-blurb =
+    { -product-name } vas opozarja o krajah podatkov, ki vključujejo vaše osebne podatke.
+    Pravkar smo prejeli podrobnosti o novi kraji podatkov.
 # List headline
 faq-list-headline = Pogosto zastavljena vprašanja
+# Link Title
+faq-v2-3 = Pravkar sem ugotovil, da sem vpleten v krajo podatkov. Kaj naj storim?
+# Link Title
+faq-v2-4 = Kako { -product-name } obravnava občutljive strani?

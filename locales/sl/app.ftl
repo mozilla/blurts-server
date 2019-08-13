@@ -37,12 +37,15 @@ error-hibp-throttled = Preveč povezav na { -brand-HIBP }.
 error-hibp-connect = Napaka pri povezovanju na { -brand-HIBP }.
 error-hibp-load-breaches = Ni bilo mogoče naložiti podatkov o krajah.
 error-must-be-signed-in = Prijaviti se morate v svoj { -brand-fxa }.
+error-to-finish-verifying = Če želite dokončati preverjanje tega e-poštnega naslova za { -product-name }, morate biti prijavljeni z e-poštnim naslovom primarnega računa.
 home-title = { -product-name }
 home-not-found = Strani ni mogoče najti.
 oauth-invalid-session = Neveljavna seja
 scan-title = { -product-name }: Rezultati pregleda
 user-add-invalid-email = Neveljavna e-pošta
 user-add-email-verify-subject = Potrdite naročnino na { -product-name }.
+user-add-duplicate-email = Ta e-poštni naslov je že bil dodan v { -product-name }.
+user-add-duplicate-email-part-2 = Obiščite { $preferencesLink } in preverite stanje za { $userEmail }.
 error-headline = Napaka
 user-verify-token-error = Zahtevan je potrditveni žeton.
 user-verify-email-report-subject = Vaše poročilo { -product-name }
@@ -139,6 +142,16 @@ what-data = Kateri podatki so bili ogroženi:
 sensitive-sites = Kako { -product-name } obravnava občutljiva spletna mesta?
 delayed-reporting-headline = Zakaj je trajalo toliko časa, da je bila kraja podatkov prijavljena?
 about-fxm-headline = O { -product-name }ju
+about-fxm-blurb =
+    { -product-name } vas opozori, če so bili vaši spletni računi vključeni v krajo podatkov.  
+    Ugotovite, ali ste bili vpleteni v krajo podatkov, prejemajte opozorila o novih krajah
+    in ukrepajte za zaščito svojih spletnih računov. 
+    { -product-name } omogoča { -brand-Mozilla }.
+fxm-warns-you =
+    { -product-name } vas opozori, če je bil vaš e-poštni naslov izpostavljen
+    v spletni kraji podatkov. Preverite, ali so bili vaši podatki izpostavljeni, 
+    spoznajte kako bolje zaščititi svoje spletne račune in prejmite opozorilo,
+    če se vaš e-poštni naslov pojavi v novi kraji.
 # How Firefox Monitor works
 how-fxm-works = Kako deluje { -product-name }
 how-fxm-1-headline = Opravite osnovno preverjanje
@@ -147,6 +160,10 @@ how-fxm-1-blurb =
     leta 2007. To osnovno iskanje bo razkrilo večino kraj podatkov, vendar ne 
     tistih, ki vključujejo občutljive osebne podatke.
 how-fxm-2-headline = Prijavite se za nadzor kraj podatkov
+how-fxm-2-blurb =
+    Ustvarite { -brand-fxa } in spremljajte poročila o krajah za vaš e-poštni naslov.
+    Po potrditvi e-pošte boste prejeli celotno poročilo o preteklih krajah,
+    vključno z občutljivimi krajami.
 how-fxm-3-headline = Prejemajte obvestila v brskalniku
 how-fxm-3-blurb =
     Če uporabljate { -brand-name }, boste ob obisku ogrožene strani
@@ -241,6 +258,13 @@ account-not-required = Za { -brand-fxa } brskalnik { -brand-name } ni potreben. 
 was-your-info-exposed = Ali so bili vaši podatki izpostavljeni v kraji podatkov { $breachName }?
 find-out-if = Preverite, ali so bili vaši podatki izpostavljeni v tej kraji.
 fb-not-comp = Ta e-poštni naslov se ni pojavil v kraji podatkov { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Vendar se je pojavil v eni drugi kraji podatkov.
+        [two] Vendar se je pojavil v dveh drugih krajah podatkov.
+        [few] Vendar se je pojavil v treh drugih krajah podatkov.
+       *[other] Vendar se je pojavil v { $breachCount } drugih krajah podatkov.
+    }
 fb-comp-only = Ta e-poštni naslov se je pojavil v kraji podatkov { $breachName }.
 no-other-breaches-found = V osnovnem iskanju ni bilo drugih kraj podatkov
 no-results-blurb = Te kraje ni v naši bazi podatkov.
@@ -313,6 +337,7 @@ other-monitored-emails = Ostali nadzorovani e-poštni naslovi
 email-verification-required = Zahtevana je potrditev e-poštnega naslova
 fxa-primary-email = E-poštni naslov { -brand-fxa }a – Glavni
 what-is-a-website-breach = Kaj je kraja podatkov spletne strani?
+website-breach-blurb = Do kraje podatkov spletne strani pride, ko spletni napadalci ukradejo, kopirajo ali razkrijejo osebne podatke spletnih računov. Običajno je rezultat tega, da hekerji odkrijejo šibko točko varnosti spletne strani. Kraje se lahko zgodijo tudi, če se podatki o računu na spletu pojavijo po naključju.
 security-tips-headline = Varnostni nasveti za zaščito pred hekerji
 steps-to-protect = Ukrepi za zaščito vaše spletne identitete
 take-further-steps = Nadaljnji koraki za zaščito vaše identitete
@@ -349,6 +374,9 @@ learn-more-link = Več o tem.
 email-sent = E-pošta poslana!
 # Form title
 want-to-add = Želite dodati še en e-poštni naslov?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Potrdite povezavo poslano na { $userEmail }, da e-poštni naslov dodate v { -product-name }.
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
@@ -363,3 +391,7 @@ breach-alert-notifications = Obvestila opozoril o krajah
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Kraja dodana:
+what-to-do-after-breach-desc = Zaklenite svoje račune, in preprečite, da bi vaši podatki pristali v napačnih rokah.
+create-strong-passwords-desc = Gesla naj bodo močna, varna in težko uganljiva.
+five-myths-desc = Spoznajte, kako se izogniti slabim navadam pri ustvarjanju gesel, ki olajšajo delo hekerjev.
+take-further-steps-desc = Ugotovite, kako zmanjšati tveganje za krajo identitete, in se izognite morebitnim finančnim težavam.
