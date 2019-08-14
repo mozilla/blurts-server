@@ -139,6 +139,20 @@ search-breaches = データ侵害を検索
 
 error-csrf-headline = セッションがタイムアウトしました
 login-link = ログイン
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+       *[other] 監視中のメールアドレス
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+       *[other] 既知のデータ侵害を受けているあなたの情報
+    }
 scan-results-known-breaches =
     { $breachCount ->
        *[other] このメールアドレスは { $breachCount } 個の既知のデータ侵害があります。
