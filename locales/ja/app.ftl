@@ -109,11 +109,19 @@ five-myths = パスワードマネージャーに関する 5 つの話題
 feat-security-tips = セキュリティの秘訣であなたのアカウントを保護しましょう
 feat-sensitive = 機密情報の侵害について詳しい検索をしましょう
 feat-enroll-multiple = 複数のメールアドレスを登録して侵害を監視しましょう
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+       *[other] 既知のデータ侵害は { $breachCount } 件あります。
+    }
 check-for-breaches = データ侵害を確認する
 find-out-what-hackers-know = ハッカーが既にあなたについて知っていることを調査しましょう。一歩先に行く方法を学んでください。
 search-for-your-email = 2007 年までさかのぼって、メールアドレスがデータ侵害を受けているか検索します。
 back-to-top = トップに戻る
+comm-opt-1 = すべての通知を { $primaryEmail } に送る。
 resend-verification = 認証メールを再送する
+add-new-email = 新しいメールアドレスを追加
 send-verification = 認証リンクを送信する
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
@@ -121,6 +129,8 @@ send-verification = 認証リンクを送信する
 # alerts for all of their monitored email addresses to a single 
 # email address.
 breach-summary = データ侵害概要
+remove-fxm = { -product-name } の登録を解除する。
+remove-fxm-blurb = { -product-name } の警告をオフにします。{ -brand-fxa } は有効のまま残り、他の通知は受信を続けるでしょう。
 # Button title
 manage-email-addresses = メールアドレスの管理
 # Link title
@@ -147,6 +157,13 @@ email-addresses-being-monitored =
        *[other] 監視中のメールアドレス
     }
 # This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+       *[other] パスワードが漏洩しているデータ侵害の数
+    }
+# This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
@@ -167,6 +184,7 @@ what-is-a-website-breach = ウェブサイト侵害とは何ですか？
 security-tips-headline = ハッカーからあなたを守るセキュリティの秘訣
 steps-to-protect = オンラインであなたを保護する手順
 take-further-steps = あなたを守るさらなる手順
+alert-about-new-breaches = 新しい侵害があった場合に通知する。
 see-if-youve-been-part = オンラインのデータ侵害に含まれていないか確認しましょう。
 get-ongoing-breach-monitoring = 複数のメールアドレスに対してデータ侵害の監視をしましょう。
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
@@ -186,6 +204,7 @@ signed-in-as = ログイン中: { $userEmail }
 filter-by = カテゴリーで絞り込む:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = メニュー
+to-affected-email = 影響を受けたメールアドレスに通知を送る。
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
 join-firefox = あなたのプライバシーを守る方法があります。{ -brand-name } を使用しましょう。
 # Link title
@@ -193,6 +212,12 @@ learn-more-link = 詳しくはこちら。
 email-sent = メールが送信されました！
 # Form title
 want-to-add = 別のメールアドレスを追加しますか？
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = 侵害についての通知設定
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = 侵害が追加された日:

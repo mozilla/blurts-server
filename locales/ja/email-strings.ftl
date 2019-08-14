@@ -61,5 +61,7 @@ view-my-dashboard-cta = マイダッシュボードを表示
 verify-email-cta = メールアドレスを確認
 # Headline of verification email
 email-link-expires = このリンクは 24 時間で有効期限が切れます
+# Email headline
+email-alert-hl = { $userEmail } に新しいデータ侵害がありました
 # List headline
 faq-list-headline = よくある質問
