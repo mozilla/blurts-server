@@ -60,3 +60,7 @@ share-by-email-message =
     3. Λάβε συμβουλές από το { -product-name } σχετικά με το τι να κάνεις μετά.
 # Unsubscribe link in email.
 email-unsub-link = Κατάργηση εγγραφής
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Μάθετε περισσότερα σχετικά με το { $fxmLink }
+# List headline
+faq-list-headline = Συχνές ερωτήσεις
