@@ -67,9 +67,29 @@ see-all-breaches = Ver todas las filtraciones
 # Headline of verification email
 email-link-expires = Este enlace expira en 24 horas.
 email-verify-blurb = Verifica tu correo para añadirlo a { -product-name } y registrarte para alertas de nuevas filtraciones.
+# Email headline
+email-found-breaches-hl = Aquí tienes tu resumen sobre filtraciones anteriores
+# Email headline
+email-breach-summary-for-email = Resumen de filtraciones para { $userEmail }
+# Email headline
+email-no-breaches-hl = { $userEmail } apareció en 0 filtraciones de datos conocidas
+# Email headline
+email-alert-hl = { $userEmail } apareció en una nueva filtración de datos
+# Subject line of email
+email-subject-found-breaches = { -product-name } encontró tu información en las siguientes filtraciones
+# Subject line of email
+email-subject-no-breaches = { -product-name } no encontró filtraciones conocidas
 # Subject line of email
 email-subject-verify = Verifica tu correo para { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Aprender más sobre { $fxmLink }
 # List headline
 faq-list-headline = Preguntas frecuentes
+# Link Title
+faq-v2-1 = No reconozco una de estas compañías o sitios web. ¿Por qué estoy dentro de esta filtración?
+# Link Title
+faq-v2-2 = Tengo que hacer algo si una filtración sucedió hace años o se trata de una cuenta antigua?
+# Link Title
+faq-v2-3 = Acabo de enterarme de que estoy en una filtración de datos. ¿Qué hago ahora?
+# Link Title
+faq-v2-4 = ¿Cómo trata { -product-name } los datos sensibles?

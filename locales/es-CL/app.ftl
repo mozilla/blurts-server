@@ -25,6 +25,8 @@ oauth-invalid-session = Sesión inválida
 scan-title = { -product-name } : Resultados del escaneo
 user-add-invalid-email = Correo inválido
 user-add-email-verify-subject = Verifica tu suscripción a { -product-name }.
+user-add-duplicate-email = Este correo ya ha sido añadido a { -product-name }.
+user-add-duplicate-email-part-2 = Visita tus { $preferencesLink } para revisar el estado de { $userEmail }.
 error-headline = Error
 user-verify-token-error = Toquen de verificación requerido.
 user-verify-email-report-subject = Tu reporte de { -product-name }
@@ -379,3 +381,6 @@ breach-alert-notifications = Notificaciones de alerta de filtraciones
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Filtración añadida:
+how-hackers-work-desc = Protege tus contraseñas de los cibercriminales, ya que es lo que más les importa.
+what-to-do-after-breach-desc = Protege tus cuentas para mantener tu información lejos de las manos equivocadas.
+create-strong-passwords-desc = Haz que tus contraseñas sean fuertes, seguras y difíciles de adivinar.
