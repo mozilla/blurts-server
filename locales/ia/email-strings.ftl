@@ -68,6 +68,8 @@ see-all-breaches = Vide tote le violationes
 email-link-expires = Iste ligamine expira in 24 horas
 # Email headline
 email-found-breaches-hl = Ecce un summario del violationes de datos passate
+# Email headline
+email-breach-summary-for-email = Summario violationes pro { $userEmail }
 # Subject line of email
 email-subject-found-breaches = { -product-name } trovava i tu informationes in le violationes sequente
 # Subject line of email
@@ -78,3 +80,5 @@ email-subject-verify = Verifica tu adresse email pro { -product-name }
 learn-more-about-fxm = Apprender plus re { $fxmLink }
 # List headline
 faq-list-headline = Demandas frequente
+# Link Title
+faq-v2-4 = Como tracta { -product-name } le sitos sensibile?
