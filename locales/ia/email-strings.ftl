@@ -66,6 +66,8 @@ verify-email-cta = Verificar le email
 see-all-breaches = Vide tote le violationes
 # Headline of verification email
 email-link-expires = Iste ligamine expira in 24 horas
+# Email headline
+email-found-breaches-hl = Ecce un summario del violationes de datos passate
 # Subject line of email
 email-subject-found-breaches = { -product-name } trovava i tu informationes in le violationes sequente
 # Subject line of email
