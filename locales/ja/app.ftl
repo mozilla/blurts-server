@@ -90,10 +90,12 @@ stay-alert = 新しいデータ侵害の警告を受け取る
 if-your-info = あなたの情報が新しいデータ侵害にさらされた場合、警告を送信します。
 monitor-several-emails = 複数のメールアドレスを監視する
 keep-your-data-safe = サイバー犯罪からデータを安全に保つために必要なことを見つけましょう。
+website-breach = ウェブサイト侵害
 what-data = 漏洩したデータ:
 delayed-reporting-headline = なぜ、この侵害の報告に時間がかかったのですか？
 about-fxm-headline = { -product-name } について
 about-fxm-blurb = あなたのオンラインアカウントがデータ侵害に巻き込まれている場合、{ -product-name } が警告します。データ侵害を受けていないか確認し、新しい侵害についての警告を受け取り、オンラインアカウントを保護する措置を取りましょう。{ -product-name } は、{ -brand-Mozilla } によって提供されています。
+wtd-after-website = ウェブサイト侵害の後にするべきこと:
 protect-your-privacy = オンラインプライバシーを保護する
 
 ## What to do after data breach tips
@@ -181,6 +183,7 @@ results-for = { $userEmail } についての結果
 email-verification-required = メールアドレスの認証が必要です
 fxa-primary-email = { -brand-fxa } メールアドレス - 主要
 what-is-a-website-breach = ウェブサイト侵害とは何ですか？
+website-breach-blurb = ウェブサイトデータ侵害は、サイバー犯罪者が、個人情報を盗んだり、コピーしたり、オンラインアカウントを漏洩したりすると発生します。通常、ハッカーがウェブサイトのセキュリティの弱点を見つけた結果により、発生します。また、事故的にアカウント情報が漏洩して発生することもあります。
 security-tips-headline = ハッカーからあなたを守るセキュリティの秘訣
 steps-to-protect = オンラインであなたを保護する手順
 take-further-steps = あなたを守るさらなる手順
@@ -194,6 +197,10 @@ find-out = 調査する
 additional-information-including = 侵害を受けたその他の情報:
 # Title
 email-addresses-title = メールアドレス
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = { $breachDate } に、{ $breachTitle } は侵害にさらされました。侵害が発見され、確認されたため、{ $addedDate } にデータベースに追加されました。
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } の設定
 # When a user is signed in, this appears in the drop down menu 
