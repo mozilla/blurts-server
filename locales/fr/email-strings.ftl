@@ -66,6 +66,8 @@ email-verify-footer-copy =
 view-my-dashboard-cta = Consulter mon tableau de bord
 # Button text
 verify-email-cta = Vérifier l’adresse électronique
+# Button text
+see-all-breaches = Voir toutes les fuites de données
 # Headline of verification email
 email-link-expires = Ce lien expire dans 24 heures
 email-verify-blurb = Vérifiez votre adresse électronique pour l’ajouter à { -product-name } et vous inscrire aux alertes de fuites de données.

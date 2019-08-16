@@ -109,6 +109,7 @@ social-security-numbers = numéros de sécurité sociale
 spoken-languages = langues parlées
 support-tickets = demandes d’assistance
 survey-results = résultats de sondages
+taxation-records = documents d’imposition
 time-zones = fuseaux horaires
 travel-habits = habitudes de voyage
 user-statuses = statuts des utilisateurs et utilisatrices
