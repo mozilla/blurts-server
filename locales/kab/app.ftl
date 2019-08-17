@@ -25,6 +25,7 @@ home-not-found = Ulac asebter
 oauth-invalid-session = Yir tiɣimit
 scan-title = { -product-name } : Agmuḍ n tesleḍt
 user-add-invalid-email = Yir imayl
+user-add-too-many-emails = Aql-ak tessefrakeḍ amḍan afellay n tansiwin n yimayl.
 user-add-email-verify-subject = Senqed ajerred-ik { -product-name }.
 user-add-duplicate-email = Imayl-a yettwarna yakan ɣer { -product-name }.
 user-add-duplicate-email-part-2 = Rzu ɣer { $preferencesLink } akken ad twaliḍ addad n { $userEmail }.

@@ -66,6 +66,8 @@ email-verify-footer-copy =
 view-my-dashboard-cta = Sken Tafelwit n usenqed-inu
 # Button text
 verify-email-cta = Senqed tansa imayl
+# Button text
+see-all-breaches = Wali akk tirewliwin
 # Headline of verification email
 email-link-expires = Aseɣwen-agi ad yemmet akka 24 isragen
 email-verify-blurb = Sefqed tansa-ik imayl akked ad tt-ternuḍ ɣer { -product-name } sakin jerred ɣer yilɣa n trewliwin n yisefka.
