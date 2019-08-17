@@ -350,3 +350,4 @@ what-to-do-after-breach-desc = Bloca tu contos pro mantener tu informationes for
 create-strong-passwords-desc = Rende tu contrasignos forte, secur e difficile a divinar.
 steps-to-protect-desc = Comprende le plus commun menacias e sape que cercar.
 five-myths-desc = Apprende a evitar habitos de mal contrasigno que rende facile le labor de un hacker.
+take-further-steps-desc = Discoperi como mitigar le riscos de furto de identitate pro prevenir perdita financiari.

@@ -58,6 +58,16 @@ share-by-email-message =
     3. Recipe le suggestiones ex { -product-name } re que facer successivemente.
 # Unsubscribe link in email.
 email-unsub-link = Remover le subscription
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb = Tu recipe iste email perque tu es inscribite al avisos de { -product-name }. Non vole tu plus iste emails? { $unsubLink }. Iste email ha essite inviate automaticamente. Pro supporto, visita { $faqLink }.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    Tu recipe iste email perque tu es inscribite al avisos de { -product-name }.
+    Iste email ha essite inviate automaticamente. Pro supporto, visita { $faqLink }.
 # Button text that takes the user to their signed in user dashboard.
 view-my-dashboard-cta = Monstrar mi pannello
 # Button text
@@ -66,10 +76,15 @@ verify-email-cta = Verificar le email
 see-all-breaches = Vide tote le violationes
 # Headline of verification email
 email-link-expires = Iste ligamine expira in 24 horas
+email-verify-blurb = Verifica tu adresse email pro lo adder a { -product-name } e inscribe te al avisos de violation.
 # Email headline
 email-found-breaches-hl = Ecce un summario del violationes de datos passate
 # Email headline
 email-breach-summary-for-email = Summario violationes pro { $userEmail }
+# Email headline
+email-no-breaches-hl = { $userEmail } appareva in 0 note violationes de datos
+# Email headline
+email-alert-hl = { $userEmail } appareva in un nove violation de datos
 # Subject line of email
 email-subject-found-breaches = { -product-name } trovava i tu informationes in le violationes sequente
 # Subject line of email
