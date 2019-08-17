@@ -88,6 +88,16 @@ email-subject-no-breaches = { -product-name } no encontró filtraciones conocida
 email-subject-verify = Verifica tu correo para { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Aprender más sobre { $fxmLink }
+email-sensitive-disclaimer = Debido a la naturaleza sensible de esta filtración, los correos involucrados no son expuestos públicamente. Estás recibiendo esta alerta por que eres el dueño verificado de esta dirección de correo.
+fxm-warns-you-no-breaches =
+    { -product-name } te advierte sobre filtraciones de datos que involucren información personal tuya.
+    Hasta el momento, no se han encontrado filtraciones. Te enviaremos una alerta si tu correo aparece en una nueva filtración.
+fxm-warns-you-found-breaches =
+    { -product-name } te advierte sobre filtraciones de datos que involucren información personal tuya.
+    También estás registrado para recibir alertas si tu correo aparece en una nueva filtración.
+email-breach-alert-blurb =
+    { -product-name } te advierte sobre filtraciones de datos que involucren información personal tuya.
+    Acabamos de recibir detalles acerca de una filtración de datos de otra compañía.
 # List headline
 faq-list-headline = Preguntas frecuentes
 # Link Title

@@ -19,11 +19,13 @@ error-hibp-throttled = Demasiadas conexiones a { -brand-HIBP }.
 error-hibp-connect = Error al conectarse con { -brand-HIBP }.
 error-hibp-load-breaches = No se han podido cargar las filtraciones.
 error-must-be-signed-in = Debes estar conectado a tu { -brand-fxa }.
+error-to-finish-verifying = Para terminar de verificar este correo para { -product-name }, debes estar conectado al correo primario de tu cuenta.
 home-title = { -product-name }
 home-not-found = Página no encontrada.
 oauth-invalid-session = Sesión inválida
 scan-title = { -product-name } : Resultados del escaneo
 user-add-invalid-email = Correo inválido
+user-add-too-many-emails = Estás monitorizando el número máximo de correos posible.
 user-add-email-verify-subject = Verifica tu suscripción a { -product-name }.
 user-add-duplicate-email = Este correo ya ha sido añadido a { -product-name }.
 user-add-duplicate-email-part-2 = Visita tus { $preferencesLink } para revisar el estado de { $userEmail }.
@@ -346,6 +348,10 @@ other-known-breaches-found =
 additional-information-including = Información adicional, incluyendo:
 # Title
 email-addresses-title = Direcciones de correo
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = El { $breachDate }, { $breachTitle } fue vulnerado. Una vez que la filtración fue descubierta y verificada, ésta fue añadida a nuestra base de datos el { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Preferencias de { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
@@ -384,3 +390,6 @@ breach-added-label = Filtración añadida:
 how-hackers-work-desc = Protege tus contraseñas de los cibercriminales, ya que es lo que más les importa.
 what-to-do-after-breach-desc = Protege tus cuentas para mantener tu información lejos de las manos equivocadas.
 create-strong-passwords-desc = Haz que tus contraseñas sean fuertes, seguras y difíciles de adivinar.
+steps-to-protect-desc = Comprende las amenazas más comunes y aprende en qué fijarte.
+five-myths-desc = Aprende cómo evitar malos hábitos relacionados con las contraseñas para no facilitarle la pega a los hackers.
+take-further-steps-desc = Averigua cómo mitigar los riesgos de la suplantación de identidad para prevenir pérdidas financieras.
