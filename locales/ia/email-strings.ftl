@@ -97,7 +97,15 @@ email-sensitive-disclaimer = Per le natura sensibile de iste violation, emails i
 fxm-warns-you-no-breaches =
     { -product-name } te adverti re violationes de datos que involve tu informationes personal. 
     Adhuc, nulle violationes esseva trovate. Nos te inviara un aviso si tu adresse email apparera in un nove violation.
+fxm-warns-you-found-breaches = { -product-name } te adverti re violationes de datos que involve tu informationes personal. Tu es alsi inscribite a reciper avisos si tu adresse email appare in un nove violation.
+email-breach-alert-blurb = { -product-name } te adverti re violationes de datos que involve tu informationes personal. Nos ha justo recipite detalios re un altere violation de datos de un compania.
 # List headline
 faq-list-headline = Demandas frequente
+# Link Title
+faq-v2-1 = Io non recognosce ulle de iste compania o sito web. Perque es io in iste violation?
+# Link Title
+faq-v2-2 = Besonia io de facer alco si un violation eveniva annos retro o es solo un vetere conto?
+# Link Title
+faq-v2-3 = Io ha justo trovate que io es in un violation de datos. Que debe io facer?
 # Link Title
 faq-v2-4 = Como tracta { -product-name } le sitos sensibile?
