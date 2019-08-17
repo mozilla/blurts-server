@@ -19,12 +19,15 @@ error-hibp-throttled = Troppo de connexiones a { -brand-HIBP }.
 error-hibp-connect = Error durante le connexion a { -brand-HIBP }.
 error-hibp-load-breaches = Impossibile cargar informationes sur le violationes de datos.
 error-must-be-signed-in = Tu debe esser authenticate in tu { -brand-fxa }.
+error-to-finish-verifying = Pro finir de verificar iste email pro { -product-name }, tu debe esser connexe sub tu conto email primari.
 home-title = { -product-name }
 home-not-found = Pagina non trovate.
 oauth-invalid-session = Session non valide
 scan-title = { -product-name } : Resultatos del analyse
 user-add-invalid-email = Email non valide
+user-add-too-many-emails = Tu controla le maxime numero de adresses email.
 user-add-email-verify-subject = Verifica tu subscription a { -product-name }.
+user-add-duplicate-email = Iste email ha jam essite addite a { -product-name }.
 user-add-duplicate-email-part-2 = Vade sur { $preferencesLink } pro controlar le stato de { $userEmail }.
 error-headline = Error
 user-verify-token-error = Un jeton de verification es necesse.
@@ -303,6 +306,10 @@ other-known-breaches-found =
 additional-information-including = Altere informationes, includite:
 # Title
 email-addresses-title = Adresses email
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = Le { $breachDate }, { $breachTitle } ha essite violate. Post le discoperta e verification de iste violation, nos lo ha addite a nostre base de datos le { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } Preferentias
 # When a user is signed in, this appears in the drop down menu 
@@ -338,3 +345,8 @@ breach-alert-notifications = Notificationes de alerta de violation
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Violation addite:
+how-hackers-work-desc = Protege tu contrasignos ab cybercriminales, pois que es illos que illes desira plus.
+what-to-do-after-breach-desc = Bloca tu contos pro mantener tu informationes foras de manos errate.
+create-strong-passwords-desc = Rende tu contrasignos forte, secur e difficile a divinar.
+steps-to-protect-desc = Comprende le plus commun menacias e sape que cercar.
+five-myths-desc = Apprende a evitar habitos de mal contrasigno que rende facile le labor de un hacker.
