@@ -93,6 +93,10 @@ email-subject-no-breaches = { -product-name } non trovava ulle violationes note
 email-subject-verify = Verifica tu adresse email pro { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Apprender plus re { $fxmLink }
+email-sensitive-disclaimer = Per le natura sensibile de iste violation, emails implicate non es publicamente detectabile. Tu recipe iste aviso perque tu es le proprietario verificate de iste adresse email.
+fxm-warns-you-no-breaches =
+    { -product-name } te adverti re violationes de datos que involve tu informationes personal. 
+    Adhuc, nulle violationes esseva trovate. Nos te inviara un aviso si tu adresse email apparera in un nove violation.
 # List headline
 faq-list-headline = Demandas frequente
 # Link Title
