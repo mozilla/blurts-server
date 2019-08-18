@@ -280,7 +280,7 @@ email-addresses-being-monitored =
     { $emails ->
         [one] Адрес электронной почты отслеживается
         [few] Адреса электронной почты отслеживаются
-       *[many] Адреса электронной почты отслеживаются
+       *[many] Адресов электронной почты отслеживаются
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
@@ -296,8 +296,8 @@ data-breaches-exposed =
 # your localization, because it would result in the number showing twice.
 passwords-exposed =
     { $passwords ->
-        [one] Раскрытых паролей во всех утечках
-        [few] Раскрытых паролей во всех утечках
+        [one] Раскрытый пароль во всех утечках
+        [few] Раскрытых пароля во всех утечках
        *[many] Раскрытых паролей во всех утечках
     }
 # This string is displayed under a large numeral that indicates the total number
@@ -306,7 +306,7 @@ passwords-exposed =
 known-data-breaches-exposed =
     { $breaches ->
         [one] Известная утечка данных раскрыла вашу информацию
-        [few] Известных утечек данных раскрыли вашу информацию
+        [few] Известных утечки данных раскрыли вашу информацию
        *[many] Известных утечек данных раскрыли вашу информацию
     }
 # Button
