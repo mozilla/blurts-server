@@ -325,7 +325,7 @@ email-addresses-title = Adrese de e-mail
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview-new = Pe { $breachDate }, { $breachTitle } a fost expus unei breșe. Odată ce breșa a fost descoperită și verificată, aceasta a fost adăugată în baza noastră de date în data de { $addedDate }.
+breach-overview-new = Pe { $breachDate }, { $breachTitle } a suferit o breșă. Odată ce breșa a fost descoperită și verificată, aceasta a fost adăugată în baza noastră de date în data de { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Preferințe { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
