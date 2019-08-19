@@ -13,11 +13,6 @@ unsubscribe-email-link = Якщо ви більше не хочете отрим
 firefox-monitor-report = Звіт { -product-name }
 report-date = Дата звіту:
 email-address = Адреса електронної пошти:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Ось ваш повний звіт від { -product-name }, який містить усю відому скомпрометовану інформацію, пов'язану з цією адресою електронної пошти.
-report-no-breaches =
-    Ваша адреса електронної пошти не з'являлася в нашій базі даних відомих скомпрометованих даних. 
-    Але витік даних може статися в будь-який час. Виконайте ці кроки, щоб утримувати свої особисті дані в безпеці онлайн.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Що робити далі
 report-headline =
@@ -32,8 +27,6 @@ report-subhead-no-breaches =
     Це гарна новина, але ви можете зробити ще дещо.
     Викрадання даних може відбутися в будь-який момент, тож ознайомтеся, як ви можете захистити свою інформацію.
 report-subhead-found-breaches = Ось ваш повний звіт від Firefox Monitor, що містить усі відомі скомпрометовані дані, які стосуються цієї адреси електронної пошти.
-breach-alert-headline = Ваш обліковий запис було виявлено серед скомпрометованих даних.
-breach-alert-subhead = Нещодавно оновлений звіт про витік даних містить вашу адресу електронної пошти з такою інформацією
 report-pwt-blurb =
     Паролі є настільки цінними, що тисячі викрадаються щодня і потім продаються на чорному ринку. 
     Надійніші паролі захищають ваші облікові записи та всю особисту інформацію, пов'язану з ними.
@@ -64,3 +57,21 @@ share-by-email-message =
     1. Перейдіть до { "https://monitor.firefox.com" } і виконайте пошук за своєю адресою електронної пошти.
     2. Перевірте, чи ваші дані не було викрито зловмисниками.
     3. Отримайте поради від { -product-name } про подальші дії.
+# Unsubscribe link in email.
+email-unsub-link = Відписатися
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb =
+    Ви отримали цей лист, тому що ви підписалися на сповіщення від { -product-name }.
+    Більше не хочете отримувати такі повідомлення? { $unsubLink }. Це автоматичний електронний лист. Для отримання допомоги, відвідайте { $faqLink }.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    Ви отримали цей лист, тому що ви підписалися на сповіщення від { -product-name }.
+    Це автоматичний електронний лист. Для отримання допомоги, відвідайте { $faqLink }.
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Переглянути мою панель
+# Button text
+verify-email-cta = Підтвердити адресу е-пошти
