@@ -9,7 +9,34 @@
 -brand-name = Firefox
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
--brand-fxa = Обліковий запис Firefox
+-brand-fxa =
+    { $case ->
+       *[nom]
+            { $capitalization ->
+               *[upper] Обліковий запис Firefox
+                [lower] обліковий запис Firefox
+            }
+        [gen]
+            { $capitalization ->
+               *[upper] Облікового запису Firefox
+                [lower] облікового запису Firefox
+            }
+        [dat]
+            { $capitalization ->
+               *[upper] Обліковому записі Firefox
+                [lower] обліковому записі Firefox
+            }
+        [acc]
+            { $capitalization ->
+               *[upper] Обліковий запис Firefox
+                [lower] обліковий запис Firefox
+            }
+        [abl]
+            { $capitalization ->
+               *[upper] Обліковим записом Firefox
+                [lower] обліковим записом Firefox
+            }
+    }
 terms-and-privacy = Умови та конфіденційність
 GitHub-link-title = GitHub
 error-scan-page-token = Ви намагалися сканувати забагато адрес електронної пошти за короткий проміжок часу. З міркувань безпеки ми тимчасово заблокували вам доступ до нових пошуків. Ви зможете спробувати знову пізніше.
