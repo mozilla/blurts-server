@@ -61,7 +61,7 @@ unsub-button = Se désabonner
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Données des différentes fuites fournies par { $hibp-link }
 share-twitter = La plupart des gens possèdent des dizaines de comptes en ligne. L’un des vôtres a-t-il été compromis suite à une fuite de données ? Vérifiez par vous-même.
-share-facebook-headline = Vérifiez si vous êtes concerné⋅e par une fuite de données
+share-facebook-headline = Vérifiez si vous êtes concerné·e par une fuite de données
 share-facebook-blurb = Vos comptes en ligne ont-ils été compromis suite à une fuite de données ?
 og-site-description = Vérifiez avec { -product-name } si vous avez été victime d’une fuite de données. Inscrivez-vous pour recevoir des alertes lors de futures fuites de données et des conseils pour renforcer la sécurité de vos comptes.
 show-all = Tout afficher
