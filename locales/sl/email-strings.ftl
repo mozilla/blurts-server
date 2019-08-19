@@ -82,11 +82,21 @@ email-subject-no-breaches = { -product-name } ni našel nobenih znanih kraj
 email-subject-verify = Potrdite e-pošto za { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Več o storitvi { $fxmLink }
+fxm-warns-you-no-breaches =
+    { -product-name } vas opozori na kraje podatkov, ki vključujejo vaše osebne podatke.
+    Do zdaj ni bilo ugotovljenih nobenih kraj. Če se bo vaš e-poštni naslov pojavil v novi kraji, vas bomo opozorili.
+fxm-warns-you-found-breaches =
+    { -product-name } vas opozori na kraje podatkov, ki vključujejo vaše osebne podatke.
+    Prijavljeni ste na prejemanje opozoril, če se vaš e-poštni naslov pojavi v novi kraji.
 email-breach-alert-blurb =
     { -product-name } vas opozarja o krajah podatkov, ki vključujejo vaše osebne podatke.
     Pravkar smo prejeli podrobnosti o novi kraji podatkov.
 # List headline
 faq-list-headline = Pogosto zastavljena vprašanja
+# Link Title
+faq-v2-1 = Enega od teh podjetij ali spletne strani ne poznam. Zakaj sem del te kraje podatkov?
+# Link Title
+faq-v2-2 = Ali moram kaj storiti, če se je kraja zgodila pred leti, ali če je to stari račun?
 # Link Title
 faq-v2-3 = Pravkar sem ugotovil, da sem vpleten v krajo podatkov. Kaj naj storim?
 # Link Title

@@ -43,6 +43,7 @@ home-not-found = Strani ni mogoče najti.
 oauth-invalid-session = Neveljavna seja
 scan-title = { -product-name }: Rezultati pregleda
 user-add-invalid-email = Neveljavna e-pošta
+user-add-too-many-emails = Spremljate največje dovoljeno število e-poštnih naslovov.
 user-add-email-verify-subject = Potrdite naročnino na { -product-name }.
 user-add-duplicate-email = Ta e-poštni naslov je že bil dodan v { -product-name }.
 user-add-duplicate-email-part-2 = Obiščite { $preferencesLink } in preverite stanje za { $userEmail }.
