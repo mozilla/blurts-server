@@ -160,11 +160,20 @@ unverified-breach-plural = Непідтверджені витоки даних
 spam-list-breach-plural = Витоки списку надсилання спаму
 what-data = Які дані скомпрометовані:
 sensitive-sites = Як { -product-name } ставиться до сайтів з конфіденційною інформацією?
+how-fxm-2-blurb =
+    Створіть { -brand-fxa }, щоб відстежувати свою електронну пошту в майбутніх витоках даних. 
+    Одразу після підтвердження електронної пошти ви також отримаєте повний звіт про минулі витоки даних, 
+    включаючи вразливі витоки.
 protect-your-privacy = Захистіть своє особисте життя в Інтернеті
 
 ## What to do after data breach tips
 
 change-pw = Змініть свій пароль
+create-a-fxa = Створіть { -brand-fxa }, щоб отримати повний звіт про витоки даних та сповіщення.
+remove-fxm-blurb = Вимкнути сповіщення { -product-name }. Ваш { -brand-fxa } залишатиметься активним і ви можете отримувати інші повідомлення стосовно свого облікового запису.
+sign-up-headline-1 = Отримуйте сповіщення за допомогою { -brand-fxa(case: "gen") }.
+account-not-required = Браузер { -brand-name } не обов'язковий для { -brand-fxa(case: "gen") }. Ви можете отримувати інформацію про сервіси { -brand-Mozilla }.
 
 ## Updated error messages
 
+fxa-primary-email = Електронна пошта { -brand-fxa(case: "gen") } - Основна
