@@ -303,7 +303,7 @@ email-addresses-title = 电子邮件地址
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview-new = { $breachTitle } 在 { $breachDate } 遭遇了数据外泄。我们发现和确认了该外泄事件，并于 { $addedDate } 将其添加到数据库中。
+breach-overview-new = { $breachTitle } 在 { $breachDate } 发生了数据外泄。我们发现并确认了该外泄事件，并于 { $addedDate } 将其添加到数据库中。
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } 偏好设置
 # When a user is signed in, this appears in the drop down menu 
