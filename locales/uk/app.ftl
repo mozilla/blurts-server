@@ -46,12 +46,14 @@ error-hibp-throttled = Надто багато з'єднань з { -brand-HIBP 
 error-hibp-connect = Помилка з'єднання з { -brand-HIBP }.
 error-hibp-load-breaches = Не вдалося завантажити інформацію про загрози.
 error-must-be-signed-in = Ви повинні увійти в { -brand-fxa }.
+error-to-finish-verifying = Щоб завершити перевірку цієї електронної пошти для { -product-name }, ви повинні увійти, використовуючи свою основну адресу е-пошти облікового запису.
 home-title = { -product-name }
 home-not-found = Сторінку не знайдено.
 oauth-invalid-session = Недійсний ідентифікатор сеансу
 scan-title = { -product-name } : Результати сканування
 user-add-invalid-email = Неправильна адреса електронної пошти
 user-add-email-verify-subject = Підтвердьте вашу підписку на { -product-name }.
+user-add-duplicate-email-part-2 = Відвідайте { $preferencesLink }, щоб перевірити стан { $userEmail }.
 error-headline = Помилка
 user-verify-token-error = Необхідний токен підтвердження.
 user-verify-email-report-subject = Ваш звіт від { -product-name }
@@ -160,6 +162,11 @@ unverified-breach-plural = Непідтверджені витоки даних
 spam-list-breach-plural = Витоки списку надсилання спаму
 what-data = Які дані скомпрометовані:
 sensitive-sites = Як { -product-name } ставиться до сайтів з конфіденційною інформацією?
+sensitive-sites-copy =
+    { -product-name } розкриває лише облікові записи, пов'язані з цими 
+    типами витоків даних, після підтвердження адреси електронної пошти. Це означає, що ви 
+    єдина особа, яка може бачити чи ваші дані потрапили до цього витоку (доки хтось 
+    інший не матиме доступу до вашого облікового запису електронної пошти).
 how-fxm-2-blurb =
     Створіть { -brand-fxa }, щоб відстежувати свою електронну пошту в майбутніх витоках даних. 
     Одразу після підтвердження електронної пошти ви також отримаєте повний звіт про минулі витоки даних, 
