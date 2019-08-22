@@ -240,7 +240,30 @@ check-for-breaches = Перевірити на витік даних
 find-out-what-hackers-know = Довідайтеся, що хакери вже знають про вас. Навчіться, як бути на крок попереду них.
 search-for-your-email = Пошукайте свою адресу електронної пошти в загальнодоступних витоках даних, починаючи з 2007 року.
 back-to-top = Нагору
+comm-opt-0 = Надсилати мені лист, якщо одна з моїх адрес електронної пошти з'явиться у витоці даних.
+comm-opt-1 = Надсилати сповіщення про всі витоки на { $primaryEmail }.
+stop-monitoring-this = Припинити відстежувати цю е-пошту.
+resend-verification = Надіслати лист підтвердження ще раз
+add-new-email = Додати нову адресу е-пошти
+send-verification = Надіслати посилання для підтвердження
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-summary = Підсумок витоку даних
+show-breaches-for-this-email = Показати всі витоки даних для цієї е-пошти.
+link-change-primary = Змінити основну адресу е-пошти
+remove-fxm = Вилучити { -product-name }
 remove-fxm-blurb = Вимкнути сповіщення { -product-name }. Ваш { -brand-fxa } залишатиметься активним і ви можете отримувати інші повідомлення стосовно свого облікового запису.
+# Button title
+manage-email-addresses = Керувати адресами е-пошти
+# Link title
+latest-breach-link = Подивіться, чи ви потрапили до цього витоку даних
+welcome-back = З поверненням, { $userName }!
+welcome-user = Вітаємо, { $userName }!
+breach-alert-subject = { -product-name } знайшов вашу адресу е-пошти в новому витоці даних
+your-info-was-discovered-headline = Вашу інформацію виявлено в новому витоці даних.
 sign-up-headline-1 = Отримуйте сповіщення за допомогою { -brand-fxa(case: "gen") }.
 account-not-required = Браузер { -brand-name } не обов'язковий для { -brand-fxa(case: "gen") }. Ви можете отримувати інформацію про сервіси { -brand-Mozilla }.
 
