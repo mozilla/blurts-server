@@ -25,6 +25,7 @@ oauth-invalid-session = Geçersiz oturum
 scan-title = { -product-name }: Tarama Sonuçları
 user-add-invalid-email = Geçersiz e-posta
 user-add-email-verify-subject = { -product-name } aboneliğinizi doğrulayın.
+user-add-duplicate-email = Bu e-posta zaten { -product-name }'e eklenmiş.
 user-add-duplicate-email-part-2 = { $userEmail } adresinin durumunu kontrol etmek için { $preferencesLink }inizi ziyaret edin.
 error-headline = Hata
 user-verify-token-error = Doğrulama jetonu gerekli.
@@ -132,6 +133,8 @@ delayed-reporting-headline = Bu ihlalin bildirilmesi neden bu kadar uzun sürdü
 about-fxm-headline = { -product-name } hakkında
 # How Firefox Monitor works
 how-fxm-works = { -product-name } nasıl çalışır?
+how-fxm-1-headline = Temel sorgulama yap
+how-fxm-1-blurb = Bilgileriniz 2007'den beri gerçeklemiş veri ihlallerinde arayın. Temel sorgulama çoğu veri ihlalini tarar ancak hassas kişisel veri içerenleri hariç tutar.
 how-fxm-2-headline = İhlal takibi için kaydolun
 how-fxm-3-headline = Tarayıcınızdan bildirim alın
 wtd-after-website = Veri ihlalinden sonra ne yapmalı:
@@ -198,6 +201,7 @@ new-breaches-found =
         [one] { $breachCount } YENİ İHLAL BULUNDU
        *[other] { $breachCount } YENİ İHLAL BULUNDU
     }
+sign-up-headline-1 = { -brand-fxa } ile düzenli uyarılar alabilirsiniz.
 account-not-required = { -brand-fxa } için { -brand-name } tarayıcısı gerekmez. Size { -brand-Mozilla } hizmetleri hakkında bilgi gönderebiliriz.
 was-your-info-exposed = Bilgileriniz { $breachName } ihlalinde açığa çıktı mı?
 find-out-if = Bilgilerinizin bu veri ihlalinde açığa çıkıp çıkmadığını öğrenin.
@@ -208,6 +212,11 @@ other-breaches-found =
        *[other] Ancak başka { $breachCount } ihlalde yer alıyor.
     }
 fb-comp-only = Bu e-posta adresi { $breachName } ihlalinde yer alıyor.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Bu e-posta adresi { $breachName } dahil { $breachCount } başka bilinen ihlalde bulundu.
+       *[other] Bu e-posta adresi { $breachName } dahil { $breachCount } başka bilinen ihlalde bulundu.
+    }
 no-other-breaches-found = Temel aramada başka bir ihlal bulunamadı.
 no-results-blurb = Üzgünüz, bu ihlal veritabanımızda yok.
 all-breaches-headline = { -product-name }’deki tüm ihlaller
@@ -218,6 +227,7 @@ currently-showing = Gösterilen:
 ## Updated error messages
 
 error-bot-headline = Arama geçici olarak kullanılamıyor
+error-bot-blurb = Kısa süre içerisinde çok fazla e-posta adresi sorguladığınız için bot olabileceğinizden şüphelendik. Şimdilik yeni sorgulama yapmanız engellendi. Daha sonra tekrar deneyebilirsiniz.
 error-csrf-headline = Oturum zaman aşımına uğradı
 error-csrf-blurb = Tarayıcınızın geri düğmesine tıklayın, sayfayı tazeleyin ve tekrar deneyin.
 error-invalid-unsub = { -product-name } uyarılarından ayrılma
@@ -297,6 +307,14 @@ learn-more-link = Daha fazla bilgi alın.
 email-sent = E-posta gönderildi!
 # Form title
 want-to-add = Başka bir e-posta eklemek ister misiniz?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = { $userEmail } adresine gönderilen bağlantıyı onaylarak adresinizi { -product-name }'e ekleyin.
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = { $preferencesLink } üzerinden tüm e-postalarınızı yönetebilirsiniz.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
