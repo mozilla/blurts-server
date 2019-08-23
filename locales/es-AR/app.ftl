@@ -135,7 +135,7 @@ about-fxm-headline = Acerca de { -product-name }
 about-fxm-blurb = { -product-name } avisa si las cuentas en línea estuvieron involucradas en una filtración de datos. Buscá si estuviste en una filtracón, recibí alertas sobre nuevas filtraciones y seguí los pasos necesarios para proteger tus cuentas en línea. { -product-name } es provisto por { -brand-Mozilla }.
 fxm-warns-you = { -product-name } te advierte si tu dirección de correo electrónico ha estado expuesta a una filtración de datos en línea. Mirá si tu información ha estado expuesta, conocé como proteger mejor tus cuentas en línea y recibí alertas si tu correo electrónico aparece en una nueva filtración.
 # How Firefox Monitor works
-how-fxm-works = Cómo funcionar { -product-name }
+how-fxm-works = Cómo funciona { -product-name }
 how-fxm-1-headline = Hacer una búsqueda básica
 how-fxm-1-blurb =
     Buscá tu dirección de correo electrónico en las violaciones de datos públicos yendo hacia atrás
