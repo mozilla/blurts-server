@@ -326,4 +326,47 @@ error-bot-blurb =
 error-csrf-headline = Час сеансу завершився
 error-csrf-blurb = Використайте кнопку повернення в браузері, перезавантажте сторінку, і спробуйте знову.
 error-invalid-unsub = Як скасувати підписку на сповіщення від { -product-name }
+error-invalid-unsub-blurb =
+    Вам необхідно скасувати підписку в одному з надісланих вам листів від { -product-name }. 
+    Знайдіть у своїй скриньці вхідне повідомлення від { -brand-team-email }. 
+    Перейдіть за посиланням для скасування підписки в нижній частині повідомлення.
+login-link = Увійти
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] Адреса електронної пошти відстежується
+        [few] Адреси електронної пошти відстежуються
+       *[many] Адрес електронної пошти відстежуються
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] Витік даних викрив вашу інформацію
+        [few] Витоки даних викрили вашу інформацію
+       *[many] Витоків даних викрили вашу інформацію
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Викритий пароль серед усіх витоків даних
+        [few] Викритих паролі серед усіх витоків даних
+       *[many] Викритих паролів серед усіх витоків даних
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] Відомий витік даних викрив вашу інформацію
+        [few] Відомі витоки даних викрили вашу інформацію
+       *[many] Відомих витоків даних викрили вашу інформацію
+    }
+# Button
+see-additional-breaches = Переглянути додаткові витоки даних
 fxa-primary-email = Електронна пошта { -brand-fxa(case: "gen") } - Основна
