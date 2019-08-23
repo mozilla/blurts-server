@@ -293,7 +293,37 @@ new-breaches-found =
     }
 sign-up-headline-1 = Отримуйте сповіщення за допомогою { -brand-fxa(case: "gen") }.
 account-not-required = Браузер { -brand-name } не обов'язковий для { -brand-fxa(case: "gen") }. Ви можете отримувати інформацію про сервіси { -brand-Mozilla }.
+was-your-info-exposed = Чи була ваша інформація розкрита у витоці даних { $breachName }?
+find-out-if = Дізнайтеся, чи потрапили ваші дані до цього витоку.
+fb-not-comp = Ця адреса електронної пошти не з'являється у витоці даних { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Однак, вона з'являється в { $breachCount } іншому витоці даних.
+        [few] Однак, вона з'являється в { $breachCount } інших витоках даних.
+       *[many] Однак, вона з'являється в { $breachCount } інших витоках даних.
+    }
+fb-comp-only = Ця адреса електронної пошти з'являється у витоці даних { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Ця адреса електронної пошти з'явилася в { $breachCount } відомому витоці даних, включаючи { $breachName }.
+        [few] Ця адреса електронної пошти з'явилася в { $breachCount } відомих витоках даних, включаючи { $breachName }.
+       *[many] Ця адреса електронної пошти з'явилася в { $breachCount } відомих витоках даних, включаючи { $breachName }.
+    }
+no-other-breaches-found = Під час загального пошуку інших витоків не знайдено.
+no-results-blurb = На жаль, такого витоку даних немає в нашій базі даних.
+all-breaches-headline = Усі витоки даних в { -product-name }
+search-breaches = Пошук витоків
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Відображено:
 
 ## Updated error messages
 
+error-bot-headline = Пошуки тимчасово призупинені
+error-bot-blurb =
+    Нам необхідно пересвідчитися чи ви не є ботом, тому що ви виконували пошук 
+    декількох адрес електронної пошти за короткий проміжок часу. Поки що для вас 
+    заблоковано можливість нових пошуків. Спробуйте знову пізніше.
+error-csrf-headline = Час сеансу завершився
+error-csrf-blurb = Використайте кнопку повернення в браузері, перезавантажте сторінку, і спробуйте знову.
+error-invalid-unsub = Як скасувати підписку на сповіщення від { -product-name }
 fxa-primary-email = Електронна пошта { -brand-fxa(case: "gen") } - Основна
