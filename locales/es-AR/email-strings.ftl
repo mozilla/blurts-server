@@ -59,6 +59,8 @@ email-verify-footer-copy =
 view-my-dashboard-cta = Ver mi Panel de control
 # Button text
 verify-email-cta = Verificar correo electrónico
+# Button text
+see-all-breaches = Ver todas las violaciones
 # Headline of verification email
 email-link-expires = Este enlace vence en 24 horas.
 email-verify-blurb = Verificá tu correo electrónico para agregarlo a { -product-name } e inscribite para recibir alertas de violaciones.

@@ -25,6 +25,7 @@ home-not-found = Página no encontrada.
 oauth-invalid-session = Sesión inválida
 scan-title = Resultados del escaneo de: { -product-name }
 user-add-invalid-email = Dirección de correo electrónico inválida
+user-add-too-many-emails = Estás monitoreando el número máximo de correos electrónicos posible.
 user-add-email-verify-subject = Verificá tu suscripción a { -product-name }.
 user-add-duplicate-email = Este correo electrónico ya se agregó a { -product-name }.
 user-add-duplicate-email-part-2 = Andá a tu { $preferencesLink } para verificar el estado de { $userEmail }.
