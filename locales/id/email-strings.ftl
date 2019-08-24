@@ -75,6 +75,8 @@ email-verify-footer-copy =
 view-my-dashboard-cta = Lihat Dasbor Saya
 # Button text
 verify-email-cta = Verifikasi Surel
+# Button text
+see-all-breaches = Lihat Semua Pembobolan
 # Headline of verification email
 email-link-expires = Tautan ini kedaluwarsa dalam 24 jam
 email-verify-blurb = Verifikasi surel Anda untuk menambahkannya ke { -product-name } dan mendaftar untuk peringatan kebocoran.

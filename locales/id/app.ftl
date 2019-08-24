@@ -25,6 +25,7 @@ home-not-found = Laman tidak ditemukan.
 oauth-invalid-session = Sesi tidak valid
 scan-title = { -product-name }: Hasil Pindaian
 user-add-invalid-email = Surel Tidak Valid
+user-add-too-many-emails = Anda memantau alamat email dengan jumlah maksimum.
 user-add-email-verify-subject = Verifikasi langganan { -product-name } Anda.
 user-add-duplicate-email = Surel ini telah ditambahkan ke { -product-name }.
 user-add-duplicate-email-part-2 = Kunjungi { $preferencesLink } Anda untuk memeriksa status { $userEmail }.

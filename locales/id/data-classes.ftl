@@ -109,6 +109,7 @@ social-security-numbers = Nomor jaminan sosial
 spoken-languages = Bahasa lisan
 support-tickets = Tiket dukungan
 survey-results = Hasil survei
+taxation-records = Catatan perpajakan
 time-zones = Zona waktu
 travel-habits = Kebiasaan bepergian
 user-statuses = Status pengguna
