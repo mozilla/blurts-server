@@ -82,7 +82,7 @@ email-found-breaches-hl = Ecce un summario del violationes de datos passate
 # Email headline
 email-breach-summary-for-email = Summario violationes pro { $userEmail }
 # Email headline
-email-no-breaches-hl = { $userEmail } appareva in 0 note violationes de datos
+email-no-breaches-hl = { $userEmail } appareva in 0 violationes cognoscite de datos
 # Email headline
 email-alert-hl = { $userEmail } appareva in un nove violation de datos
 # Subject line of email
