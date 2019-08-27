@@ -31,7 +31,6 @@ error-headline = שגיאה
 user-verify-token-error = נדרש אסימון אימות.
 user-verify-email-report-subject = דוח { -product-name } שלך
 user-unsubscribe-token-error = ביטול הרשמה דורש אסימון.
-user-unsubscribe-token-email-error = ביטול הרשמה דורש אסימון ודוא"ל.
 user-unsubscribe-title = { -product-name } : ביטול הרשמה
 pwt-section-headline = ססמאות חזקות יותר = הגנה טובה יותר
 landing-headline = זכותך להגנה מפני פצחנים מתחילה כאן.
