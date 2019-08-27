@@ -11,16 +11,22 @@
 -brand-HIBP = האם עקצו אותי
 -brand-fxa = חשבון Firefox
 terms-and-privacy = תנאים ופרטיות
+GitHub-link-title = GitHub
 error-scan-page-token = ניסית לסרוק יותר מדי כתובות דוא"ל בפרק זמן קצר. משיקולי אבטחה, חסמנו את חיפושיך באופן זמני. יהיה ניתן לחפש שוב מאוחר יותר.
 error-could-not-add-email = לא ניתן להוסיף כתובת דוא״ל למסד הנתונים.
 error-not-subscribed = כתובת הדוא״ל הזו אינה רשומה ל־{ -product-name }.
 error-hibp-throttled = יותר מדי חיבורים אל { -brand-HIBP }.
 error-hibp-connect = שגיאה בהתחברות אל { -brand-HIBP }.
 error-hibp-load-breaches = לא ניתן לטעון פריצות.
+error-must-be-signed-in = עליך להיכנס לחשבון ה־{ -brand-fxa } שלך.
+error-to-finish-verifying = כדי להשלים את אימות הדוא״ל הזה עבור { -product-name }, עליך להתחבר באמצעות הדוא״ל הראשי שלך.
 home-title = { -product-name }
 home-not-found = הדף לא נמצא.
 scan-title = { -product-name } : תוצאות סריקה
 user-add-invalid-email = דוא״ל שגוי
+user-add-too-many-emails = הינך במעקב אחר המספר המירבי של כתובות דוא״ל.
+user-add-email-verify-subject = אימות המינוי שלך לֿ{ -product-name }.
+user-add-duplicate-email = דוא״ל זה כבר נוסף אל { -product-name }.
 error-headline = שגיאה
 user-verify-token-error = נדרש אסימון אימות.
 user-verify-email-report-subject = דוח { -product-name } שלך
@@ -59,6 +65,10 @@ sign-out = התנתקות
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = ניהול { -brand-fxa }
 have-an-account = כבר יש לך חשבון?
+# Alerts is a noun
+sign-up-for-alerts = הרשמה להתראות
+# Link title
+frequently-asked-questions = תשובות לשאלות נפוצות
 about-firefox-monitor = על אודות { -product-name }
 # Link title
 preferences = העדפות
@@ -76,6 +86,7 @@ latest-breach = הדליפה העדכנית ביותר שנוספה
 # Link title
 more-about-this-breach = עוד על הדליפה הזו
 take-control = קבלת השליטה על הנתונים האישיים שלך בחזרה.
+cant-stop-hackers = אי אפשר למנוע מהאקרים לפרוץ. אבל אפשר להימנע מהרגלים רעים שמקלים על עבודתם.
 
 ## What to do after data breach tips
 
