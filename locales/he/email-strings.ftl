@@ -30,3 +30,19 @@ report-pwt-headline-3 = יש להתייחס לשאלות אבטחה כאילו �
 report-pwt-headline-4 = להשתמש במנהל ססמאות
 # A link to legal information about mozilla products.
 legal = מידע משפטי
+# Unsubscribe link in email.
+email-unsub-link = ביטול מינוי
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = צפייה בלוח הבקרה שלי
+# Button text
+verify-email-cta = אימות דוא״ל
+# Headline of verification email
+email-link-expires = קישור זה יפוג תוך 24 שעות
+# Subject line of email
+email-subject-verify = אימות הדוא״ל שלך עבור { -product-name }
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = מידע נוסף על { $fxmLink }
+# List headline
+faq-list-headline = תשובות לשאלות נפוצות
+# Link Title
+faq-v2-4 = כיצד { -product-name } מתייחס לאתרים רגישים?

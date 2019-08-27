@@ -25,7 +25,7 @@ home-not-found = הדף לא נמצא.
 scan-title = { -product-name } : תוצאות סריקה
 user-add-invalid-email = דוא״ל שגוי
 user-add-too-many-emails = הינך במעקב אחר המספר המירבי של כתובות דוא״ל.
-user-add-email-verify-subject = אימות המינוי שלך לֿ{ -product-name }.
+user-add-email-verify-subject = אימות המינוי שלך אל { -product-name }.
 user-add-duplicate-email = דוא״ל זה כבר נוסף אל { -product-name }.
 error-headline = שגיאה
 user-verify-token-error = נדרש אסימון אימות.
@@ -87,6 +87,8 @@ latest-breach = הדליפה העדכנית ביותר שנוספה
 more-about-this-breach = עוד על הדליפה הזו
 take-control = קבלת השליטה על הנתונים האישיים שלך בחזרה.
 cant-stop-hackers = אי אפשר למנוע מהאקרים לפרוץ. אבל אפשר להימנע מהרגלים רעים שמקלים על עבודתם.
+monitor-several-emails = ניטור אחר מספר כתובות דוא״ל
+sensitive-sites = כיצד { -product-name } מתייחס לאתרים רגישים?
 
 ## What to do after data breach tips
 
