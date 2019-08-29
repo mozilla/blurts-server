@@ -64,6 +64,8 @@ email-unsub-link = Odjavi se
 view-my-dashboard-cta = Prikaži mojo nadzorno ploščo
 # Button text
 verify-email-cta = Potrdi e-poštni naslov
+# Button text
+see-all-breaches = Prikaži vse kraje podatkov
 # Headline of verification email
 email-link-expires = Ta povezava poteče v naslednjih 24 urah
 # Email headline
