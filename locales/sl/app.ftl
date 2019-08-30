@@ -267,6 +267,13 @@ other-breaches-found =
        *[other] Vendar se je pojavil v { $breachCount } drugih krajah podatkov.
     }
 fb-comp-only = Ta e-poštni naslov se je pojavil v kraji podatkov { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Ta e-poštni naslov se je pojavil v { $breachCount } znani kraji podatkov, vključno z { $breachName }.
+        [two] Ta e-poštni naslov se je pojavil v { $breachCount } znanih krajah podatkov, vključno z { $breachName }.
+        [few] Ta e-poštni naslov se je pojavil v { $breachCount } znanih krajah podatkov, vključno z { $breachName }.
+       *[other] Ta e-poštni naslov se je pojavil v { $breachCount } znanih krajah podatkov, vključno z { $breachName }.
+    }
 no-other-breaches-found = V osnovnem iskanju ni bilo drugih kraj podatkov
 no-results-blurb = Te kraje ni v naši bazi podatkov.
 all-breaches-headline = Vse kraje podatkov v { -product-name }ju
@@ -392,7 +399,9 @@ breach-alert-notifications = Obvestila opozoril o krajah
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Kraja dodana:
+how-hackers-work-desc = Zaščitite gesla pred spletnimi napadalci, saj jih gesla najbolj privlačijo.
 what-to-do-after-breach-desc = Zaklenite svoje račune, in preprečite, da bi vaši podatki pristali v napačnih rokah.
 create-strong-passwords-desc = Gesla naj bodo močna, varna in težko uganljiva.
+steps-to-protect-desc = Razumite najpogostejše grožnje in vedite, na kaj morate biti pozorni.
 five-myths-desc = Spoznajte, kako se izogniti slabim navadam pri ustvarjanju gesel, ki olajšajo delo hekerjev.
 take-further-steps-desc = Ugotovite, kako zmanjšati tveganje za krajo identitete, in se izognite morebitnim finančnim težavam.
