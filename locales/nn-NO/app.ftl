@@ -19,12 +19,16 @@ error-hibp-throttled = For mange tilkoplingar til { -brand-HIBP }.
 error-hibp-connect = Klarte ikkje å kople til { -brand-HIBP }.
 error-hibp-load-breaches = Klarte ikkje å laste datalekkasjar.
 error-must-be-signed-in = Du må vere innlogga på { -brand-fxa }.
+error-to-finish-verifying = For å avslutte stadfestinga av denne e-postadressa til { -product-name } må du vere innlogga med den primære e-postadressa for kontoen din.
 home-title = { -product-name }
 home-not-found = Fann ikkje sida.
 oauth-invalid-session = Ugyldig økt
 scan-title = { -product-name } : Skanningsresultat
 user-add-invalid-email = Ugyldig e-postadresse
+user-add-too-many-emails = Du overvakar maksimalt antal e-postadresser.
 user-add-email-verify-subject = Stadfest abonnementet ditt på { -product-name }.
+user-add-duplicate-email = Denne e-postadressa er allereie lagt til i { -product-name }.
+user-add-duplicate-email-part-2 = Besøk { $preferencesLink } for å kontrollere statusen for { $userEmail }.
 error-headline = Feil
 user-verify-token-error = Stadfestings-token er påkravd.
 user-verify-email-report-subject = Din { -product-name }-rapport
@@ -144,7 +148,7 @@ appears-in-x-breaches =
        *[other] Er involvert i { $breachCount } kjende datalekkasjar.
     }
 check-for-breaches = Sjå etter datalekkasjar
-find-out-what-hackers-know = Finnut kva hackarar allereie veit om deg. Lær deg korleis du kan vere eitt steg framom dei.
+find-out-what-hackers-know = Finn ut kva hackarar allereie veit om deg. Lær deg korleis du kan vere eitt steg framom dei.
 search-for-your-email = Søk etter e-postadressa di i offentlege datalekkasjar som går tilbake til 2007.
 back-to-top = Tilbake til toppen
 comm-opt-1 = Send åtvaringar om datalekkasjar til { $primaryEmail }.
@@ -251,3 +255,9 @@ menu = Meny
 join-firefox = Det finst ein måte å ta vare på personvernet ditt. Ver med { -brand-name } på ferda.
 # Link title
 learn-more-link = Les meir.
+email-sent = E-post er sendt!
+# Form title
+want-to-add = Vil du leggje til ei anna e-postadresse?
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Datalekkasje lagt til:
