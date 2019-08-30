@@ -68,6 +68,7 @@ verify-email-cta = Potrdi e-poštni naslov
 see-all-breaches = Prikaži vse kraje podatkov
 # Headline of verification email
 email-link-expires = Ta povezava poteče v naslednjih 24 urah
+email-verify-blurb = Potrdite svoj e-poštni naslov, da ga dodate v { -product-name } in se prijavite na opozorila o krajah.
 # Email headline
 email-found-breaches-hl = Tukaj je vaš povzetek preteklih kraj podatkov
 # Email headline
@@ -84,6 +85,9 @@ email-subject-no-breaches = { -product-name } ni našel nobenih znanih kraj
 email-subject-verify = Potrdite e-pošto za { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Več o storitvi { $fxmLink }
+email-sensitive-disclaimer =
+    Zaradi občutljive narave te kraje, vpletenih e-poštnih naslovov ni mogoče javno odkriti.
+    To opozorilo ste prejeli, ker ste preverjeni lastnik tega e-poštnega naslova.
 fxm-warns-you-no-breaches =
     { -product-name } vas opozori na kraje podatkov, ki vključujejo vaše osebne podatke.
     Do zdaj ni bilo ugotovljenih nobenih kraj. Če se bo vaš e-poštni naslov pojavil v novi kraji, vas bomo opozorili.
