@@ -261,7 +261,7 @@ passwords-exposed =
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
     { $breaches ->
-       *[other] 有已知的資料外洩事件，洩漏了您的資訊
+       *[other] 場資料外洩事件，流出了您的個資。
     }
 # Button
 see-additional-breaches = 看其它外洩事件
