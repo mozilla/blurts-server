@@ -69,6 +69,8 @@ email-verify-footer-copy =
 view-my-dashboard-cta = Vezi panoul meu de control
 # Button text
 verify-email-cta = Verifică e-mailul
+# Button text
+see-all-breaches = Vezi toate breșele
 # Headline of verification email
 email-link-expires = Acest link expiră în 24 de ore
 # Email headline
@@ -81,6 +83,10 @@ email-no-breaches-hl = { $userEmail } a apărut în 0 breșe de securitate cunos
 email-alert-hl = { $userEmail } a apărut într-o nouă breșă de securitate
 # Subject line of email
 email-subject-found-breaches = { -product-name } ți-a găsit informații în aceste breșe
+# Subject line of email
+email-subject-no-breaches = { -product-name } nu a găsit breșe cunoscute
+# Subject line of email
+email-subject-verify = Verifică-ți e-mailul pentru { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Află mai multe despre { $fxmLink }
 fxm-warns-you-no-breaches =
@@ -100,3 +106,5 @@ faq-v2-1 = Nu recunosc una dintre aceste companii sau site-uri web. De ce mă af
 faq-v2-2 = Trebuie să fac ceva dacă o breșă a avut loc cu ani în urmă sau dacă acesta este un cont vechi?
 # Link Title
 faq-v2-3 = Tocmai am aflat că mă aflu într-o breșă de date. Ce fac în continuare?
+# Link Title
+faq-v2-4 = Cum tratează { -product-name } site-urile sensibile?
