@@ -305,7 +305,7 @@ other-known-breaches-found =
 # of data classes that the breach exposed.
 additional-information-including = Altere informationes, includite:
 # Title
-email-addresses-title = Adresses email
+email-addresses-title = Adresses de e-mail
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
@@ -320,7 +320,7 @@ signed-in-as = Authenticate como: { $userEmail }
 filter-by = Filtrar per categoria:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
-to-affected-email = Invia avisos de violation al adresse email afficite
+to-affected-email = Inviar avisos de violation al adresse de e-mail afficite
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
 join-firefox = Il ha un maniera de proteger tu confidentialitate. Junge te a { -brand-name }.
 # Link title

@@ -7,12 +7,12 @@ verify-my-email = Verifica mi email
 report-scan-another-email = Scander un altere email in { -product-name }
 automated-message = Iste message ha essite inviate automaticamente. Si tu lo ha recipite per error, nulle action es necesse.
 # Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
-we-sent-this-alert = Nos inviava iste message a { $userEmail } perque le adresse de email optava in alertas ex { -product-name }.
+we-sent-this-alert = Nos ha inviate iste message a { $userEmail } perque iste adresse de e-mail ha essite registrate pro reciper alertas de { -product-name }.
 unsubscribe-email-link = Si tu non vole plus alertas de { -product-name }, remove te ab le inscription.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Reporto de { -product-name }
 report-date = data del reporto:
-email-address = Adresse email:
+email-address = Adresse de e-mail:
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Que facer postea
 report-headline =
@@ -25,7 +25,7 @@ report-subhead-no-breaches =
     Tu conto non appare in nostre reporto plen del violationes. 
     Illo es bon novas, ma il ha plus que tu pote facer.
     Le violationes de datos eveni sempre, assi lege pro apprender como pote tu proteger tu contrasignos.
-report-subhead-found-breaches = Ecce tu reporto plen de Firefox Monitor, que include tote le note violationes de datos que contine iste adresse de email.
+report-subhead-found-breaches = Ecce tu reporto complete de Firefox Monitor, que include tote le violationes de datos cognoscite que contine iste adresse de e-mail.
 report-pwt-blurb =
     Contrasignos es assi preciose que milles de illos es robate cata die e excambiate o vendite sur le mercato nigre.
     Le contrasignos plus forte protege tu contos e tote le informationes personal que demora intra illos.
@@ -76,7 +76,7 @@ verify-email-cta = Verificar le email
 see-all-breaches = Vide tote le violationes
 # Headline of verification email
 email-link-expires = Iste ligamine expira in 24 horas
-email-verify-blurb = Verifica tu adresse email pro lo adder a { -product-name } e inscribe te al avisos de violation.
+email-verify-blurb = Verifica tu adresse de e-mail pro adder lo a { -product-name } e inscriber te al avisos de violation.
 # Email headline
 email-found-breaches-hl = Ecce un summario del violationes de datos passate
 # Email headline
@@ -90,14 +90,14 @@ email-subject-found-breaches = { -product-name } trovava i tu informationes in l
 # Subject line of email
 email-subject-no-breaches = { -product-name } non trovava ulle violationes note
 # Subject line of email
-email-subject-verify = Verifica tu adresse email pro { -product-name }
+email-subject-verify = Verifica tu adresse de e-mail pro { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Apprender plus re { $fxmLink }
-email-sensitive-disclaimer = Per le natura sensibile de iste violation, emails implicate non es publicamente detectabile. Tu recipe iste aviso perque tu es le proprietario verificate de iste adresse email.
+email-sensitive-disclaimer = A causa del natura sensibile de iste violation, le messages implicate non es publicamente consultabile. Tu recipe iste aviso perque tu es le proprietario verificate de iste adresse de e-mail.
 fxm-warns-you-no-breaches =
-    { -product-name } te adverti re violationes de datos que involve tu informationes personal. 
-    Adhuc, nulle violationes esseva trovate. Nos te inviara un aviso si tu adresse email apparera in un nove violation.
-fxm-warns-you-found-breaches = { -product-name } te adverti re violationes de datos que involve tu informationes personal. Tu es alsi inscribite a reciper avisos si tu adresse email appare in un nove violation.
+    { -product-name } te adverti sur violationes de datos que implica tu informationes personal. 
+    Presentemente, nulle violationes ha essite trovate. Nos te inviara un aviso si tu adresse de e-mail appare in un nove violation.
+fxm-warns-you-found-breaches = { -product-name } te adverti sur violationes de datos que implica tu informationes personal. Tu es etiam inscribite pro reciper avisos si tu adresse de e-mail appare in un nove violation.
 email-breach-alert-blurb = { -product-name } te adverti re violationes de datos que involve tu informationes personal. Nos ha justo recipite detalios re un altere violation de datos de un compania.
 # List headline
 faq-list-headline = Demandas frequente
