@@ -25,7 +25,7 @@ home-not-found = Pagina non trovate.
 oauth-invalid-session = Session non valide
 scan-title = { -product-name } : Resultatos del analyse
 user-add-invalid-email = Email non valide
-user-add-too-many-emails = Tu controla le maxime numero de adresses email.
+user-add-too-many-emails = Tu jam survelia le maxime numero de adresses de e-mail.
 user-add-email-verify-subject = Verifica tu subscription a { -product-name }.
 user-add-duplicate-email = Iste email ha jam essite addite a { -product-name }.
 user-add-duplicate-email-part-2 = Vade sur { $preferencesLink } pro controlar le stato de { $userEmail }.
@@ -37,14 +37,14 @@ user-unsubscribe-token-email-error = Remover se del inscription require un jeton
 user-unsubscribe-title = { -product-name } : remover le inscription
 pwt-section-headline = Contrasignos plu forte = Melior protection
 landing-headline = Tu derecto de esser secur contra hackers comencia ci.
-scan-placeholder = Insere le adresse email
-scan-submit = Cerca tu adresse email
-scan-error = Debe ser un adresse email valide
+scan-placeholder = Insere le adresse de e-mail
+scan-submit = Cerca tu adresse de e-mail
+scan-error = Debe esser un adresse de e-mail valide.
 download-firefox-banner-button = Discarga { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Inviate!
 sign-up = Acceder
-form-signup-error = Debe esser un adresse email valide
+form-signup-error = Debe esser un adresse de e-mail valide
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Data del violation de securitate:
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -61,7 +61,7 @@ share-facebook-headline = Discoperi si tu ha essite parte de un violation de dat
 share-facebook-blurb = Ha tu contos online essite exponite a un violation de datos?
 og-site-description = Discoperi si tu ha essite parte de un violation de datos con { -product-name }. Registra te pro alertas re futur violationes e obtener suggestiones pro mantener tu contos secur.
 show-all = Monstrar toto
-fxa-scan-another-email = Vole tu verificar un altere adresse email?
+fxa-scan-another-email = Vole tu verificar un altere adresse de e-mail?
 sign-in = Authentica te
 sign-out = Disconnexion
 # Manage Firefox Account, link to page where account holders can change their account settings.
@@ -72,7 +72,7 @@ fxa-pwt-summary-4 = Le gestores de contrasignos, como 1Password, LastPass, Dashl
 fxa-pwt-summary-6 = Violationes de datos es in accrescimento. Si tu personal information es implicate in un nove violation de datos, { -product-name } te invia un aviso — assi que tu pote interprender action e proteger tu contos.
 fxa-what-to-do-blurb-1 = Si tu non pote acceder, contacta le sito web pro demandar como actualisar illo. Vide un conto que tu non recognosce? Tu datos poterea haber essite vendite o redistribuite. Iste poterea alsi ser un conto que tu oblidava haber create o un compania que ha cambiate nomines.
 fxa-what-to-do-subhead-2 = Cessa de usar le contrasigno exponite e cambia illo ubique tu ha usate illo.
-fxa-wtd-blurb-2 = Hackers pote provar ille mesme contrasigno e tu adresse email pro acceder in altere contos. Crea un differente e unic contrasigno pro cata conto, specialmente pro tu conto bancari, adresse email e altere sitos web ubi tu salva informationes personal.
+fxa-wtd-blurb-2 = Piratas pote tentar de usar iste contrasigno con tu adresse de e-mail pro acceder a altere contos. Crea un contrasigno differente e unic pro cata conto, particularmente pro tu conto bancari, conto de e-mail, e altere sitos web ubi tu registra informationes personal.
 fxa-what-to-do-blurb-3 = Le major parte del violationes expone solo emails e contrasignos, ma alcunos include sensibile informationes financiari. Si tu conto bancari o numeros de carta de credito ha essite exponite, avisa tu banca pro possibile fraude. Verifica le extractos conto bancari pro cargas que tu non recognosce.
 fxa-what-to-do-subhead-4 = Obtene adjuta a rememorar tote tu contrasignos e pro los retener secur.
 fxa-what-to-do-blurb-4 = Le gestores de contrasignos, como 1Password, LastPass, Dashlane e Bitwarden, reserva tu contrasignos securmente e stipa los in sitos web pro te. Usa un gestor de contrasigno sur tu telephono e computator assi tu non ha a rememorar los tote.
@@ -103,7 +103,7 @@ how-hackers-work = Comprende como le hackers labora
 monitor-your-online-accounts = Inscribe te con un { -brand-fxa } al controlo del violationes.
 stay-alert = Sta alerte a nove violationes
 if-your-info = Si tu informationes emerge in un nove violation de datos, nos te inviara un aviso.
-search-all-emails = Cercar pro violationes de tote tu adresses de email e recipe avisos re nove menacias.
+search-all-emails = Cerca tote tu adresses de e-mail inter le violationes e recipe avisos sur nove menacias.
 monitor-several-emails = Controla plure emails
 take-action = Activa te pro proteger tu contos
 keep-your-data-safe = Discoperi que tu debe facer pro mantener tu datos secur ab le cyber criminales.
@@ -119,16 +119,16 @@ unverified-breach-plural = Violationes non verificate
 spam-list-breach-plural = Violationes de lista de spam
 what-data = Que datos ha essite compromittite:
 sensitive-sites = Como { -product-name } tracta le sitos sensibile?
-sensitive-sites-copy = { -product-name } revela solo le contos associate con iste typos de violationes post que un adresse email ha essite verificate. Isto significa tu es le sol persona qui pote vider si tu informationes era in iste violation (a minus que alcuno altere ha accesso a tu conto email).
+sensitive-sites-copy = { -product-name } revela solmente le contos associate con iste typos de violationes post que un adresse de e-mail ha essite verificate. Isto significa tu es le sol persona qui pote vider si tu informationes es includite in iste violation (a minus que alcuno altere ha accesso a tu conto de e-mail).
 delayed-reporting-headline = Perque il ha requirite assi longe tempore pro signalar iste violation?
 delayed-reporting-copy = Il pote aliquando prender menses o annos proque le credentiales exponite in un violation de datos appare sur le web obscur. Violationes es addite a nostre base de datos a pena illos ha essite discoperite e verificate.
 about-fxm-headline = A proposito de { -product-name }
 about-fxm-blurb = { -product-name } adverti si tu contos online era implicate in un violation de datos. Discoperi si tu ha essite implicate in un violation de datos, recipe avisos re nove violationes, e prende mesuras pro proteger tu contos online. { -product-name } es fornite per { -brand-Mozilla }.
-fxm-warns-you = { -product-name } te adverti si tu adresse email ha essite exponite in un violation de datos online. Vide si tu informationes ha essite exponite, apprende a proteger melio tu contos online e mantene te allertate si tu adresse email appare in un nove violation.
+fxm-warns-you = { -product-name } te adverti si tu adresse de e-mail ha essite divulgate in un violation de datos in linea. Vide si tu informationes ha essite divulgate, apprende a proteger melio tu contos in linea, e recipe alertas si tu adresse de e-mail appare in un nove violation.
 # How Firefox Monitor works
 how-fxm-works = Como functiona { -product-name }
 how-fxm-1-headline = Conduce un recerca de base
-how-fxm-1-blurb = Cerca tu adresse email in public violationes de datos usque retro al 2007. Iste recerca de base facera emerger le major parte del violationes de datos, ma non illos que contine informationes personal sensibile.
+how-fxm-1-blurb = Cerca tu adresse de e-mail in violationes public de datos a partir de 2007. Iste recerca de base facera emerger le major parte del violationes de datos, ma non illos que contine informationes personal sensibile.
 how-fxm-2-headline = Inscribe te al controlo del violationes
 how-fxm-2-blurb = Crea un { -brand-fxa } pro controlar tu email pro violationes in corso. Un vice que tu ha verificate tu email, tu recipera alsi un reporto complete de violationes passate, complete de violationes de datos sensibile.
 how-fxm-3-headline = Recipe avisos in tu navigator
@@ -165,13 +165,13 @@ appears-in-x-breaches =
     }
 check-for-breaches = Controla pro violationes
 find-out-what-hackers-know = Discoperi lo que le hackers jam sape de te. Apprende como esser sempre un passo avante a illes.
-search-for-your-email = Cerca retro, usque al 2007, tu adresse email in public violationes de datos.
+search-for-your-email = Cerca tu adresse email in violationes public de datos a partir de 2007.
 back-to-top = Receder al apice
-comm-opt-0 = Adverti me per email, si un de mi adresses email infra appare in un violation de datos.
+comm-opt-0 = Adverti me per e-mail si un de mi adresses listate hic infra appare in un violation de datos.
 comm-opt-1 = Invia tote le avisos de violation a { $primaryEmail }.
 stop-monitoring-this = Cessa de controlar iste email.
 resend-verification = Reinviar email de verification
-add-new-email = Adder un nove adresse email
+add-new-email = Adder un nove adresse de e-mail
 send-verification = Inviar ligamine de verification
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
@@ -180,18 +180,18 @@ send-verification = Inviar ligamine de verification
 # email address.
 breach-summary = Summario del violationes
 show-breaches-for-this-email = Monstrar tote le violationes pro iste email.
-link-change-primary = Modificar adresse de email primari
+link-change-primary = Cambiar le adresse de e-mail primari
 remove-fxm = Remover { -product-name }
 remove-fxm-blurb = Disactivar le avisos de { -product-name }. Tu { -brand-fxa } remanera active, e tu pote reciper altere communicationes pertinente tu conto.
 # Button title
-manage-email-addresses = Gerer adresses email
+manage-email-addresses = Gerer adresses de e-mail
 # Link title
 latest-breach-link = Vide si tu era in iste violation
 welcome-back = Benvenite retro, { $userName }!
 welcome-user = Benvenite, { $userName }!
 breach-alert-subject = { -product-name } ha trovate tu email in un nove violation de datos.
 your-info-was-discovered-headline = Tu informationes ha essite discoperite in un nove violation de datos.
-your-info-was-discovered-blurb = Tu es authenticate pro reciper avisos de { -product-name } quando tu adresse email appare in un violation de datos. Ecce que nos sape re iste violation.
+your-info-was-discovered-blurb = Tu te ha registrate pro reciper avisos de { -product-name } quando tu adresse de e-mail appare in un violation de datos. Ecce lo que nos sape sur iste violation.
 what-to-do-after-breach = Que facer post un violation de datos
 ba-next-step-1 = Cambia tu contrasigno a un forte, unic contrasigno.
 ba-next-step-blurb-1 = Un forte contrasigno usa un combination de majusculas e minusculas, special characteres e numeros. Il non contine informationes personal como tu adresse, anniversario o nomines de familia.
@@ -233,7 +233,7 @@ currently-showing = Monstrate:
 ## Updated error messages
 
 error-bot-headline = Recercas temporarimente suspendite
-error-bot-blurb = Nos es preoccupate que tu pote ser un robot perque tu recercava plure adresses email in un breve periodo de tempore. Momentaneemente, tu es blocate de facer nove recercas. Tu pote provar de novo plus tarde.
+error-bot-blurb = Nos suspecta que tu poterea esser un robot perque tu ha cercate plure adresses de e-mail in un curte periodo de tempore. Pro le momento, tu es blocate de facer nove recercas. Tu pote provar de novo plus tarde.
 error-csrf-headline = Session foras tempore limite
 error-csrf-blurb = Selige le button Receder de tu navigator, recarga le pagina e prova de novo.
 error-invalid-unsub = Como remover le inscription al avisos de { -product-name }
@@ -244,8 +244,8 @@ login-link = Acceder
 # your localization, because it would result in the number showing twice.
 email-addresses-being-monitored =
     { $emails ->
-        [one] Adresse email a controlar
-       *[other] Adresses email a controlar
+        [one] Adresse de e-mail surveliate
+       *[other] Adresses de e-mail surveliate
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
@@ -292,7 +292,7 @@ steps-to-protect = Mesuras a prender pro proteger tu identitate online
 take-further-steps = Prende altere mesuras pro proteger tu identitate
 alert-about-new-breaches = Avisar me re nove violationes
 see-if-youve-been-part = Vide si tu ha essite parte de un violation de datos online.
-get-ongoing-breach-monitoring = Reciper controlo del violationes in corso pro plure adresses email.
+get-ongoing-breach-monitoring = Survelia continuemente le violationes de datos pro plure adresses de e-mail.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Discoperir.
 new-unsub-error = Tu debera remover te del inscription per un del emails inviate ab { -product-name }.
