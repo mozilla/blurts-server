@@ -370,4 +370,26 @@ known-data-breaches-exposed =
     }
 # Button
 see-additional-breaches = Переглянути додаткові витоки даних
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Ця електронна пошта з'явилася в 1 відомому витоці даних.
+        [few] Ця електронна пошта з'явилася в { $breachCount } відомих витоках даних.
+       *[many] Ця електронна пошта з'явилася в { $breachCount } відомих витоках даних.
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Результати для: { $userEmail }
+other-monitored-emails = Інші відстежувані адреси електронної пошти
+email-verification-required = Необхідне підтвердження електронної пошти
 fxa-primary-email = Електронна пошта { -brand-fxa(case: "gen") } - Основна
+what-is-a-website-breach = Що таке витік даних веб-сайту?
+website-breach-blurb = Витік даних веб-сайту відбувається, коли кібер-злочинці викрадають, копіюють, або розкривають особисту інформацію облікових записів інтернету. Зазвичай це результат роботи хакерів, які знаходять слабке місце в безпеці веб-сайту. Витоки даних також можуть траплятися внаслідок випадкового розкриття інформації про облікові записи.
+security-tips-headline = Поради щодо безпеки для захисту від хакерів
+steps-to-protect = Що необхідно зробити для захисту ваших облікових даних в Інтернеті
+take-further-steps = Виконайте такі кроки для захисту своїх облікових даних
+alert-about-new-breaches = Повідомляти мене про нові витоки даних
+see-if-youve-been-part = Перегляньте, чи потрапила ваша інформація до витоку даних онлайн.
+get-ongoing-breach-monitoring = Отримуйте постійне спостереження для декількох адрес електронної пошти.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Дізнатися
