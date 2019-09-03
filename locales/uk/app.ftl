@@ -389,7 +389,64 @@ security-tips-headline = Поради щодо безпеки для захис�
 steps-to-protect = Що необхідно зробити для захисту ваших облікових даних в Інтернеті
 take-further-steps = Виконайте такі кроки для захисту своїх облікових даних
 alert-about-new-breaches = Повідомляти мене про нові витоки даних
-see-if-youve-been-part = Перегляньте, чи потрапила ваша інформація до витоку даних онлайн.
+see-if-youve-been-part = Дізнайтеся, чи потрапила ваша інформація до витоку даних в Інтернеті.
 get-ongoing-breach-monitoring = Отримуйте постійне спостереження для декількох адрес електронної пошти.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Дізнатися
+new-unsub-error = Вам необхідно буде скасувати підписку в одному з листів, отриманих від { -product-name }.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Однак, вона з'являється в { $breachCount } іншому відомих витоці даних.
+        [few] Однак, вона з'являється в { $breachCount } інших відомих витоках даних.
+       *[many] Однак, вона з'являється в { $breachCount } інших відомих витоках даних.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Додаткова інформація, включаючи:
+# Title
+email-addresses-title = Адреси електронної пошти
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = { $breachDate }, відбувся витік даних { $breachTitle }. Одразу після виявлення і перевірки витоку даних, його було додано до нашої бази даних { $addedDate }.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = Налаштування { -product-short-name }
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Ви увійшли як: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Фільтр за категорією:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Меню
+to-affected-email = Надсилати сповіщення про витоки даних на відповідні адреси електронної пошти
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Існує спосіб захистити вашу приватність. Приєднуйтесь до { -brand-name }.
+# Link title
+learn-more-link = Докладніше.
+email-sent = Повідомлення надіслано!
+# Form title
+want-to-add = Хочете додати іншу адресу електронної пошти?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Перейдіть за посиланням, надісланим на { $userEmail } для додавання до { -product-name }.
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Керуйте всіма адресами електронної пошти: { $preferencesLink }
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Сповіщення про витоки даних
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Витік додано:
+how-hackers-work-desc = Захистіть свої паролі від кібер-злочинців, тому що це саме те, що їм найбільше потрібно.
+what-to-do-after-breach-desc = Заблокуйте доступ до своїх облікових записів, щоб захистити свою інформацію від сторонніх осіб.
+create-strong-passwords-desc = Створюйте надійні, безпечні та складні паролі.
+steps-to-protect-desc = Дізнайтеся про найбільш поширені загрози, а також на що необхідно звертати увагу.
+five-myths-desc = Навчіться, як позбутися поганих звичок поводження з паролями, що роблять вас легкою здобиччю для хакерів.
+take-further-steps-desc = Дізнайтеся, як зменшити ризики викрадення особистої інформації, щоб запобігти фінансовим збиткам.
