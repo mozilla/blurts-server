@@ -356,7 +356,7 @@ data-breaches-exposed =
 passwords-exposed =
     { $passwords ->
         [one] Викритий пароль серед усіх витоків даних
-        [few] Викритих паролі серед усіх витоків даних
+        [few] Викриті паролі серед усіх витоків даних
        *[many] Викритих паролів серед усіх витоків даних
     }
 # This string is displayed under a large numeral that indicates the total number
