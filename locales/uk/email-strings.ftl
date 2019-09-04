@@ -75,3 +75,46 @@ email-verify-footer-copy =
 view-my-dashboard-cta = Переглянути мою панель
 # Button text
 verify-email-cta = Підтвердити адресу е-пошти
+# Button text
+see-all-breaches = Переглянути всі витоки даних
+# Headline of verification email
+email-link-expires = Це посилання втратить дію через 24 години
+email-verify-blurb = Підтвердьте цю е-пошту, щоб додати її до { -product-name } і підписатися на сповіщення про витоки даних.
+# Email headline
+email-found-breaches-hl = Ось ваш підсумок про минулі витоки даних
+# Email headline
+email-breach-summary-for-email = Підсумок витоків даних для { $userEmail }
+# Email headline
+email-no-breaches-hl = { $userEmail } відсутня у відомих витоках даних.
+# Email headline
+email-alert-hl = { $userEmail } з'явилася в новому витоці даних
+# Subject line of email
+email-subject-found-breaches = { -product-name } знайшов вашу інформацію в цих витоках даних
+# Subject line of email
+email-subject-no-breaches = { -product-name } не знайшов відомих витоків даних
+# Subject line of email
+email-subject-verify = Підтвердьте свою е-пошту для { -product-name }
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Дізнайтеся більше про { $fxmLink }
+email-sensitive-disclaimer =
+    У зв'язку з вразливістю цього витоку даних, адреси електронної пошти не оприлюднюються. 
+    Ви отримуєте це попередження, тому що ви підтвердили власність цієї електронної адреси.
+fxm-warns-you-no-breaches =
+    { -product-name } попереджає вас про витоки даних, що містять вашу особисту інформацію. 
+    Поки що таких витоків не знайдено. Ми надішлемо вам сповіщення, якщо ваша е-пошта з'явиться в новому витоці даних.
+fxm-warns-you-found-breaches =
+    { -product-name } попереджає вас про витоки даних, що містять вашу особисту інформацію. 
+    Ви також підписалися на отримання повідомлень, якщо ваша е-пошта з'явиться в новому витоці даних.
+email-breach-alert-blurb =
+    { -product-name } попереджає вас про витоки даних, що містять вашу особисту інформацію. 
+    Ми щойно отримали подробиці про витік даних, що стався в іншій компанії.
+# List headline
+faq-list-headline = Часті питання
+# Link Title
+faq-v2-1 = Я не впізнаю цю компанію чи веб-сайт. Чому мої дані потрапили до цього витоку?
+# Link Title
+faq-v2-2 = Чи потрібно мені щось робити, якщо витік даних стався багато років тому або цей обліковий запис застарілий?
+# Link Title
+faq-v2-3 = Мені щойно стало відомо, що мої дані потрапили до витоку даних. Що мені робити?
+# Link Title
+faq-v2-4 = Як { -product-name } обробляє ці вразливі сайти?
