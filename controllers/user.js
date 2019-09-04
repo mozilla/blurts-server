@@ -96,7 +96,7 @@ function _checkForDuplicateEmail(sessionUser, email) {
 
 async function add(req, res) {
   const sessionUser = await _requireSessionUser(req);
-  const email = req.body.email;
+  const email = req.body.email.toLowerCase();
   if (!email || !isemail.validate(email)) {
     throw new FluentError("user-add-invalid-email");
   }
@@ -136,7 +136,8 @@ async function add(req, res) {
 }
 
 async function bundleVerifiedEmails(email, emailSha1, ifPrimary, id, verificationStatus, allBreaches) {
-  const foundBreaches = await HIBP.getBreachesForEmail(emailSha1, allBreaches, true);
+  const lowerCaseEmailSha = sha1(email.toLowerCase());
+  const foundBreaches = await HIBP.getBreachesForEmail(lowerCaseEmailSha, allBreaches, true);
 
   const emailEntry = {
     "email": email,
