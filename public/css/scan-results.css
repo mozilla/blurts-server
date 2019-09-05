@@ -65,6 +65,7 @@ button.alert-me:focus {
 .show-additional-breaches {
   flex-wrap: wrap;
   justify-content: space-between;
+  width: 100%;
 }
 
 .row.scan-results,
