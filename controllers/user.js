@@ -135,7 +135,7 @@ async function add(req, res) {
   res.redirect("/user/preferences");
 }
 
-async function bundleVerifiedEmails(email, emailSha1, ifPrimary, id, verificationStatus, allBreaches) {
+async function bundleVerifiedEmails(email, ifPrimary, id, verificationStatus, allBreaches) {
   const lowerCaseEmailSha = sha1(email.toLowerCase());
   const foundBreaches = await HIBP.getBreachesForEmail(lowerCaseEmailSha, allBreaches, true);
 
@@ -154,10 +154,10 @@ async function getAllEmailsAndBreaches(user, allBreaches) {
   const monitoredEmails = await DB.getUserEmails(user.id);
   let verifiedEmails = [];
   const unverifiedEmails = [];
-  verifiedEmails.push(await bundleVerifiedEmails(user.primary_email, user.primary_sha1, true, user.id, user.primary_verified, allBreaches));
+  verifiedEmails.push(await bundleVerifiedEmails(user.primary_email, true, user.id, user.primary_verified, allBreaches));
   for (const email of monitoredEmails) {
     if (email.verified) {
-      const formattedEmail = await bundleVerifiedEmails(email.email, email.sha1, false, email.id, email.verified, allBreaches);
+      const formattedEmail = await bundleVerifiedEmails(email.email, false, email.id, email.verified, allBreaches);
       verifiedEmails.push(formattedEmail);
     } else {
       unverifiedEmails.push(email);
