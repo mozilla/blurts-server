@@ -19,11 +19,13 @@ error-hibp-throttled = Çok fazla { -brand-HIBP } bağlantısı.
 error-hibp-connect = { -brand-HIBP } bağlantısı kurulamadı.
 error-hibp-load-breaches = İhlaller yüklenemedi.
 error-must-be-signed-in = { -brand-fxa }nıza giriş yapmış olmalısınız.
+error-to-finish-verifying = { -product-name } için bu e-postayı onaylamak üzere birincil e-posta adresinizle giriş yapmanız gerkeiyor.
 home-title = { -product-name }
 home-not-found = Sayfa bulunamadı.
 oauth-invalid-session = Geçersiz oturum
 scan-title = { -product-name }: Tarama Sonuçları
 user-add-invalid-email = Geçersiz e-posta
+user-add-too-many-emails = Azami sayıda e-posta adresini gözlemliyorsunuz.
 user-add-email-verify-subject = { -product-name } aboneliğinizi doğrulayın.
 user-add-duplicate-email = Bu e-posta zaten { -product-name }'e eklenmiş.
 user-add-duplicate-email-part-2 = { $userEmail } adresinin durumunu kontrol etmek için { $preferencesLink }inizi ziyaret edin.
@@ -131,6 +133,7 @@ what-data = Ele geçirilen veriler:
 sensitive-sites = { -product-name } hassas siteleri nasıl ele alıyor?
 delayed-reporting-headline = Bu ihlalin bildirilmesi neden bu kadar uzun sürdü?
 about-fxm-headline = { -product-name } hakkında
+about-fxm-blurb = Çevrimiçi hesaplarınızın veri ihlallerine dahil olduğunda { -product-name } sizi uyarır. Verilerinizin ele geçirilip geçirilmediğini öğrenin, yeni ihlaller yaşandığında bildirim alın ve çevrimiçi hesaplarınızı korumak için gereken adımları atın. { -product-name }, { -brand-Mozilla } tarafından sağlanmaktadır.
 # How Firefox Monitor works
 how-fxm-works = { -product-name } nasıl çalışır?
 how-fxm-1-headline = Temel sorgulama yap
@@ -156,6 +159,7 @@ five-myths = Parola yöneticileri hakkında 5 şehir efsanesi
 create-a-fxa = Tam ihlal raporunuzu görmek ve ihlal uyarıları almak için { -brand-fxa } açın.
 feat-security-tips = Hesaplarınızı korumanız için güvenlik ipuçları
 feat-sensitive = Hassas veri ihlalerinde gelişmiş arama
+feat-enroll-multiple = İhlal izlemesine birden fazla e-posta ekleyin
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
@@ -182,6 +186,7 @@ breach-summary = İhlal özeti
 show-breaches-for-this-email = Bu e-postayı içeren tüm ihlalleri göster.
 link-change-primary = Birincil e-posta adresini değiştir
 remove-fxm = { -product-name }’ü kaldır
+remove-fxm-blurb = { -product-name } bildirimlerini kapatın. { -brand-fxa } etkin kalacaktır ve diğer hesabınızla ilişkili durumlardan haberdar olabileceksiniz.
 # Button title
 manage-email-addresses = E-posta adreslerini yönet
 # Link title
@@ -196,6 +201,7 @@ ba-next-step-2 = Ele geçirilen parolayı kullanmayı tamamen bırakın.
 ba-next-step-3 = Daha iyi parolalar oluşturma ve onları güvende tutma konusunda yardım alın.
 faq1 = Bu şirketi veya web sitesini tanımıyorum. Neden bu ihlalde yer alıyorum?
 faq2 = Bu ihlali bana bildirmeniz neden bu kadar uzun sürdü?
+faq3 = Bu e-postanın gerçekten { -product-name } tarafından gönderildiğini nasıl anlayabilirim?
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } YENİ İHLAL BULUNDU
@@ -289,6 +295,10 @@ other-known-breaches-found =
 additional-information-including = Ek bilgiler:
 # Title
 email-addresses-title = E-posta adresi
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = { $breachDate } tarihinde { $breachTitle } bir veri ihlaline uğradı. İhlal keşfedildikten ve doğrulandıktan sonra { $addedDate } tarihinde veritabanımıza eklendi.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } tercihleri
 # When a user is signed in, this appears in the drop down menu 
@@ -324,6 +334,8 @@ breach-alert-notifications = İhlal uyarısı bildirimleri
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Eklenme tarihi:
+how-hackers-work-desc = Parolalarınızı siber suçlulardan koruyun çünkü bu onların en çok umursadığı şey.
 create-strong-passwords-desc = Güçlü, güvenli ve tahmin etmesi zor parolalar seçin.
 steps-to-protect-desc = Sık karşılaşılan tehditlerin farkında olun ve nelere dikkat etmeniz gerektiğini öğrenin.
 five-myths-desc = Hacker'ların işini kolaylaştıran kötü parola alışkanlıklarından kaçınmayı öğrenin.
+take-further-steps-desc = Mali kaybı önlemek üzere kimlik hırsızlığı risklerini nasıl azaltabileceğinizi öğrenin.

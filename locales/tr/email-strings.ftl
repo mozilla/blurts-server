@@ -60,6 +60,11 @@ share-by-email-message =
     3. Daha sonra ne yapabileceğine dair { -product-name }'den ipuçları al.
 # Unsubscribe link in email.
 email-unsub-link = Abonelikten çık
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb = Bu e-postayı { -product-name }'e üye olduğunuz için alıyorsunuz. Artık bu e-postaları istemiyor musunuz? { $unsubLink }. Bu otomatik bir e-postadır. Destek almak için { $faqLink } adresini ziyaret edebilirsiniz.
 # Button text that takes the user to their signed in user dashboard.
 view-my-dashboard-cta = Kontrol panelimi göster
 # Button text
@@ -68,6 +73,9 @@ verify-email-cta = E-postayı doğrula
 see-all-breaches = Tüm veri ihlallerini gör
 # Headline of verification email
 email-link-expires = Bu bağlantı 24 saat sonra geçersiz hale gelir
+email-verify-blurb = E-posta adresinizi onaylayarak { -product-name }'e katılın ve veri ihlali bildirimlerine kaydolun.
+# Email headline
+email-found-breaches-hl = Geçmiş veri ihlallerinizin özeti aşağıdadır
 # Email headline
 email-breach-summary-for-email = { $userEmail } ihlal özeti
 # Email headline
@@ -82,6 +90,7 @@ email-subject-no-breaches = { -product-name } bilinen veri ihlali bulamadı
 email-subject-verify = { -product-name } e-postanızı doğrulayın
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = { $fxmLink } hakkında daha fazla bilgi alın
+email-sensitive-disclaimer = Bu veri ihlalinin hassaslığından dolayı olaya dahil olan e-posta adreslerini herkes tarayamaz. Bu e-posta adresinin onaylanmış sahibi olduğunuz için bu bildirimi aldınız.
 fxm-warns-you-no-breaches = { -product-name } sizi kişisel bilgilerinizin dahil olduğu veri ihlalleri konusunda uyarır. Şimdilik herhangi bir veri ihlali bulunamadı. E-posta adresiniz yeni bir veri ihlalinde yer alırsa size bildirim göndereceğiz.
 fxm-warns-you-found-breaches = { -product-name } sizi kişisel bilgilerinizin dahil olduğu veri ihlalleri konusunda uyarır. E-posta adresinizin yeni bir veri ihlalinde bulunması durumunda bildirim almak için kaydoldunuz.
 email-breach-alert-blurb = { -product-name } sizi kişisel bilgilerinizin dahil olduğu veri ihlalleri konusunda uyarır. Bir şirketin yaşadığı veri ihlali konusunda bilgi aldık.
