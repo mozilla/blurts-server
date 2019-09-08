@@ -337,9 +337,9 @@ data-breaches-exposed =
 # your localization, because it would result in the number showing twice.
 passwords-exposed =
     { $passwords ->
-        [one] heslo bylo vyzrazeno souhrnně ve všech únicích
-        [few] hesla byla vyzrazena souhrnně ve všech únicích
-       *[other] hesel bylo vyzrazeno souhrnně ve všech únicích
+        [one] vašich heslo bylo vyzrazeno souhrnně ve všech únicích
+        [few] vaše hesla byla vyzrazena souhrnně ve všech únicích
+       *[other] vašich hesel bylo vyzrazeno souhrnně ve všech únicích
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
