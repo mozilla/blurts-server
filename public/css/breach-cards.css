@@ -138,10 +138,6 @@ a.latest-breach-link {
   max-width: 47%;
 }
 
-.email-card .two-up {
-  max-width: 100%;
-}
-
 .three-up {
   flex: 1 1 30%;
   min-width: 260px;
@@ -156,6 +152,7 @@ a.latest-breach-link {
   .breach-card.ec.two-up {
     flex: 1 1 100%;
     display: none;
+    max-width: 100%;
   }
 
   .email-card.active .breach-card.ec.two-up {
