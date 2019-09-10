@@ -27,6 +27,7 @@ scan-title = { -product-name } : Rezultatele scanării
 user-add-invalid-email = E-mail invalid
 user-add-email-verify-subject = Verifică-ți abonamentul la { -product-name }.
 user-add-duplicate-email = Acest e-mail a fost deja adăugat în { -product-name }.
+user-add-duplicate-email-part-2 = Intră pe { $preferencesLink } pentru a verifica starea { $userEmail }.
 error-headline = Eroare
 user-verify-token-error = Este necesar un jeton de verificare.
 user-verify-email-report-subject = Raportul tău { -product-name }

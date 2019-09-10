@@ -73,6 +73,7 @@ verify-email-cta = Verifică e-mailul
 see-all-breaches = Vezi toate breșele
 # Headline of verification email
 email-link-expires = Acest link expiră în 24 de ore
+email-verify-blurb = Verifică-ți e-mailul pentru a-l adăuga la { -product-name } și ca să te abonezi la alerte despre breșe de securitate.
 # Email headline
 email-found-breaches-hl = Iată rezumatul tău privind breșele de date din trecut
 # Email headline
@@ -89,6 +90,9 @@ email-subject-no-breaches = { -product-name } nu a găsit breșe cunoscute
 email-subject-verify = Verifică-ți e-mailul pentru { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Află mai multe despre { $fxmLink }
+email-sensitive-disclaimer =
+    Datorită caracterului sensibil al acestei breșe de securitate, e-mailurile implicate nu sunt dezvăluite public.
+    Primești această alertă deoarece ești deținătorul confirmat al acestei adrese de e-mail.
 fxm-warns-you-no-breaches =
     { -product-name } te avertizează cu privire la breșele de date în care sunt implicate informațiile tale cu caracter personal.
     Până în prezent, nu au fost găsite breșe. Îți vom trimite o alertă dacă adresa ta de e-mail apare într-o nouă breșă.
