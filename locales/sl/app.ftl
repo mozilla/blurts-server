@@ -355,6 +355,13 @@ get-ongoing-breach-monitoring = Spremljajte kraje podatkov za več e-poštnih na
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Preverite
 new-unsub-error = Odjaviti se boste morali iz enega od poslanih e-poštnih sporočil { -product-name }ja.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Vendar se je pojavil v { $breachCount } drugi znani kraji podatkov.
+        [two] Vendar se je pojavil v { $breachCount } drugih znanih krajah podatkov.
+        [few] Vendar se je pojavil v { $breachCount } drugih znanih krajah podatkov.
+       *[other] Vendar se je pojavil v { $breachCount } drugih znanih krajah podatkov.
+    }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = Dodatne informacije, vključno z:
