@@ -85,9 +85,33 @@ fxa-what-to-do-blurb-4 = Përgjegjës fjalëkalimesh të tillë si 1Password, La
 sign-up-for-alerts = Regjistrohuni për Sinjalizime
 # Link title
 frequently-asked-questions = Pyetje të Bëra Shpesh
+about-firefox-monitor = Mbi { -product-name }
+# Link title
+preferences = Parapëlqime
+# Link title
+home = Kreu
+# Link title
+breaches = Cenime
+# Link title
+security-tips = Ndihmëza Sigurie
+fxa-account = { -brand-fxa }
+# Link title
+more-about-this-breach = Më tepër rreth këtij cenimi
+take-control = Rimerrni kontrollin e të dhënave tuaja personale.
+read-more-tips = Lexoni Më Tepër Ndihmëza Sigurie
+how-hackers-work = Kuptoni se si punojnë hacker-at
+monitor-several-emails = Mbikëqyrni disa email-e
+take-action = Hidhuni në veprim për mbrojtjen e llogarive tuaja
+website-breach = Cenim Sajti
+unverified-breach = Cenim i Paverifikuar
+website-breach-plural = Cenime Sajtesh
+unverified-breach-plural = Cenime të Paverifikuara
+what-data = Ç’të dhëna u komprometuan:
 
 ## What to do after data breach tips
 
 
 ## Updated error messages
 
+# Form title
+want-to-add = Doni të shtoni tjetër email?
