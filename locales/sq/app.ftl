@@ -107,9 +107,57 @@ unverified-breach = Cenim i Paverifikuar
 website-breach-plural = Cenime Sajtesh
 unverified-breach-plural = Cenime të Paverifikuara
 what-data = Ç’të dhëna u komprometuan:
+delayed-reporting-headline = Pse u desh kaq shumë kohë për njoftimin e këtij cenimi?
+about-fxm-headline = Rreth { -product-name }
+# How Firefox Monitor works
+how-fxm-works = Si funksionon { -product-name }
+how-fxm-2-headline = Regjistrohuni për mbikëqyrje cenimesh
+how-fxm-3-headline = Merrni njoftime te shfletuesi juaj
+wtd-after-website = Ç’të bëhet pas një cenimi sajti:
+what-is-data-agg = Ç’është një grumbullues të dhënash?
+protect-your-privacy = Mbroni privatësinë tuaj internetore
+no-pw-to-change = Ndryshe nga cenimet e sajteve, s’ka fjalëkalim për ndryshim.
+avoid-personal-info = Shmangni përdorimin e të dhënave personale në fjalëkalime
 
 ## What to do after data breach tips
 
+change-pw = Ndryshoni fjalëkalimin tuaj
+even-for-old = Madje edhe për llogari të dikurshme, është e rëndësishme të përditësoni fjalëkalimin tuaj.
+make-new-pw-unique = Bëjeni fjalëkalimin e ri të ndryshëm dhe unik
+create-strong-passwords = Si të krijohen fjalëkalime të fuqishëm
+stop-reusing-pw = Reshtni së përdoruri të njëjtin fjalëkalim
+five-myths = 5 mite rreth përgjegjësish fjalëkalimesh
+feat-security-tips = Ndihmëza sigurie për mbrojtjen e llogarive tuaj
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Shfaqet në { $breachCount } cenim të ditur.
+       *[other] Shfaqet në { $breachCount } cenime të ditura.
+    }
+check-for-breaches = Kontrolloni për Cenime
+back-to-top = Mbrapsht te Kreu
+stop-monitoring-this = Ndal mbikëqyrjen e këtij email-i.
+resend-verification = Ridërgo email verifikimi
+add-new-email = Shtoni adresë email të re
+send-verification = Dërgo Lidhje Verifikimi
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-summary = Përmbledhje Cenimi
+show-breaches-for-this-email = Shfaq krejt cenimet për këtë email.
+remove-fxm = Hiqeni { -product-name }
+# Button title
+manage-email-addresses = Administroni Adresa Email
+# Link title
+latest-breach-link = Shihni nëse qetë pjesë e këtij cenimi
+welcome-back = Mirë se u rikthyet, { $userName }!
+welcome-user = Mirë se vini, { $userName }!
+breach-alert-subject = { -product-name } e gjeti email-in tuaj të ri në një cenim të dhënash
+what-to-do-after-breach = Ç’të bëhet pas një cenimi të dhënash
+faq2 = Pse u desh kaq shumë kohë për të më njoftuar këtë cenim?
 
 ## Updated error messages
 
