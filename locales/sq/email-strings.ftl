@@ -66,8 +66,21 @@ verify-email-cta = Verifikoni Email
 see-all-breaches = Shihni Krejt Cenimet
 # Headline of verification email
 email-link-expires = Kjo lidhje skadon pas 24 orësh
+email-verify-blurb = Verifikoni email-in tuaj që të shtohet te { -product-name } dhe të regjistroheni për sinjalizime cenimesh.
 # Email headline
 email-found-breaches-hl = Ja përmbledhja juaj e cenimeve të dikurshme të të dhënave
+# Email headline
+email-breach-summary-for-email = Përmbledhje cenimesh për { $userEmail }
+# Email headline
+email-no-breaches-hl = { $userEmail } u shfaq në zero shkelje të ditura të dhënash
+# Email headline
+email-alert-hl = { $userEmail } u shfaq në një shkelje të re të dhënash
+# Subject line of email
+email-subject-found-breaches = { -product-name } i gjeti të dhënat tuaja në këto cenime
+# Subject line of email
+email-subject-no-breaches = { -product-name } s’gjeti cenime të ditura
+# Subject line of email
+email-subject-verify = Verifikoni email-in tuaj për { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Mësoni më tepër mbi { $fxmLink }
 # List headline
