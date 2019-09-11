@@ -15,11 +15,6 @@ unsubscribe-email-link = Nëse s’doni më sinjalizim rreth { -product-name }, 
 firefox-monitor-report = Raport { -product-name }
 report-date = Datë Raporti:
 email-address = Adresë Email:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Ja raporti i plotë { -product-name } për ju, që përfshin krejt shkeljet e njohura të të dhënave që përmbajnë këtë adresë email.
-report-no-breaches =
-    Adresa juaj email nuk duket te baza jonë e të dhënave për shkeljet e ditura. 
-    Por shkeljet mund të ndodhin kurdo. Kryeni këto hapa që t’i mbani të parrezikuara në internet të dhënat tuaja personale.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Ç’të Bëhet Më Pas
 report-headline =
@@ -33,8 +28,6 @@ report-subhead-no-breaches =
     Kaq është mirë, por mund të bëni më tepër. 
     Shkeljet e të dhënave ndodhin kurdo, ndaj lexoni më tej që të mësoni se si mund mbroni fjalëkalimet tuaj.
 report-subhead-found-breaches = Ja raporti i plotë Firefox Monitor për ju, që përfshin krejt shkeljet e njohura të të dhënave që përmbajnë këtë adresë email.
-breach-alert-headline = Llogaria juaj qe përfshirë në shkelje të dhënash.
-breach-alert-subhead = Një shkelje të dhënash raportuar tani afër përmban email-in tuaj dhe të dhënat vijuese
 report-pwt-blurb =
     Fjalëkalimet janë kaq të vyer, saqë  përditë vidhen mijëra të tillë dhe shkëmbehen ose shiten në treg të zi. 
     Fjalëkalimet më të fuqishëm mbrojnë llogaritë tuaja dhe të dhënat personale brenda tyre.
@@ -63,3 +56,21 @@ share-by-email-message =
     1. Shkoni te { "https://monitor.firefox.com" } dhe kërkoni për email-in tuaj.
     2. Shihni nëse llogaritë tuaja internetore kanë qenë të ekspozuara në ndonjë shkelje të dhënash.
     3. Get tips from { -product-name } about what to do next.
+# Unsubscribe link in email.
+email-unsub-link = Shpajtohuni
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Parje e Pultit Tim
+# Button text
+verify-email-cta = Verifikoni Email
+# Button text
+see-all-breaches = Shihni Krejt Cenimet
+# Headline of verification email
+email-link-expires = Kjo lidhje skadon pas 24 orësh
+# Email headline
+email-found-breaches-hl = Ja përmbledhja juaj e cenimeve të dikurshme të të dhënave
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Mësoni më tepër mbi { $fxmLink }
+# List headline
+faq-list-headline = Pyetje të bëra shpesh
+# Link Title
+faq-v2-3 = Sapo pashë se jam pjesë e një cenimi të dhënash. Ç’të bëj më tej?
