@@ -96,7 +96,7 @@ function _checkForDuplicateEmail(sessionUser, email) {
 
 async function add(req, res) {
   const sessionUser = await _requireSessionUser(req);
-  const email = req.body.email.toLowerCase();
+  const email = req.body.email;
   if (!email || !isemail.validate(email)) {
     throw new FluentError("user-add-invalid-email");
   }

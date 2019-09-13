@@ -30,7 +30,7 @@ function expectResponseRenderedSubpagePartial(resp, partial) {
 
 
 test("user add POST with email adds unverified subscriber and sends verification email", async () => {
-  const testUserAddEmail = "addingNewEmail@test.com";
+  const testUserAddEmail = "addingnewemail@test.com";
   const testSubscriberEmail = "firefoxaccount@test.com";
   const testSubscriber = await DB.getSubscriberByEmail(testSubscriberEmail);
 
@@ -70,6 +70,40 @@ test("user add POST with email adds unverified subscriber and sends verification
   const mockCallArgs = mockCalls[0];
   expect(mockCallArgs).toContain(testUserAddEmail);
   expect(mockCallArgs).toContain("default_email");
+});
+
+
+test("user add POST with upperCaseAddress adds email_address record with lowercaseaddress sha1", async () => {
+  const testUserAddEmail = "addingUpperCaseEmail@test.com";
+  const testSubscriberEmail = "firefoxaccount@test.com";
+  const testSubscriber = await DB.getSubscriberByEmail(testSubscriberEmail);
+
+  // Set up mocks
+  const req = httpMocks.createRequest({
+    method: "POST",
+    url: "/user/add",
+    body: { email: testUserAddEmail },
+    session: { user: testSubscriber },
+    fluentFormat: jest.fn(),
+    headers: {
+      referer: "",
+    },
+  });
+  const resp = httpMocks.createResponse();
+  EmailUtils.sendEmail.mockResolvedValue(true);
+
+  // Call code-under-test
+  await user.add(req, resp);
+
+  // Check expectations
+  expect(resp.statusCode).toEqual(302);
+  expect(testSubscriber.primary_email).toEqual(testSubscriberEmail);
+
+  const testSubscriberEmailAddressRecords = await DB.getUserEmails(testSubscriber.id);
+  const testSubscriberEmailAddresses = testSubscriberEmailAddressRecords.map(record => record.email);
+  expect(testSubscriberEmailAddresses.includes(testUserAddEmail)).toBeTruthy();
+  const testSubscriberEmailAddressHashes = testSubscriberEmailAddressRecords.map(record => record.sha1);
+  expect(testSubscriberEmailAddressHashes.includes(getSha1(testUserAddEmail))).toBeTruthy();
 });
 
 
