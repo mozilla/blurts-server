@@ -116,7 +116,7 @@ test("notify POST for subscriber with no signup_language should default to en", 
   LocaleUtils.fluentFormat = jest.fn();
   HIBPLib.subscribeHash = jest.fn();
 
-  const testEmail = "subscriberWithoutLanguage@test.com";
+  const testEmail = "subscriberwithoutlanguage@test.com";
 
   await DB.addSubscriber(testEmail);
 

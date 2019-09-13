@@ -69,7 +69,7 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
     },
   });
   log.debug("fxa-confirmed-profile-data", data.body);
-  const email = JSON.parse(data.body).email;
+  const email = JSON.parse(data.body).email.toLowerCase();
 
   const existingUser = await DB.getSubscriberByEmail(email);
   req.session.user = existingUser;

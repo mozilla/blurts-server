@@ -100,7 +100,7 @@ test("addSubscriber invalid argument", async () => {
 
 
 test("addSubscriber accepts email, language and returns verified subscriber", async () => {
-  const testEmail = "newFirefoxAccount@test.com";
+  const testEmail = "newfirefoxaccount@test.com";
 
   const verifiedSubscriber = await DB.addSubscriber(testEmail);
 
@@ -111,7 +111,7 @@ test("addSubscriber accepts email, language and returns verified subscriber", as
 
 
 test("addSubscriber with existing email updates updated_at", async () => {
-  const testEmail = "newFirefoxAccount@test.com";
+  const testEmail = "newfirefoxaccount@test.com";
 
   let verifiedSubscriber = await DB.addSubscriber(testEmail);
 
@@ -128,6 +128,17 @@ test("addSubscriber with existing email updates updated_at", async () => {
   expect(verifiedSubscriber.primary_verified).toBeTruthy();
   expect(verifiedSubscriber.primary_sha1).toBe(getSha1(testEmail));
   expect(verifiedSubscriber.updated_at).not.toBe(updatedAt);
+});
+
+
+test("addSubscriber accepts upperCasedAddress, and returns verified subscriber with lowercase address.", async () => {
+  const testEmail = "upperCasedAddress@test.com";
+
+  const verifiedSubscriber = await DB.addSubscriber(testEmail);
+
+  expect(verifiedSubscriber.primary_email).toBe(testEmail.toLowerCase());
+  expect(verifiedSubscriber.primary_verified).toBeTruthy();
+  expect(verifiedSubscriber.primary_sha1).toBe(getSha1(testEmail));
 });
 
 

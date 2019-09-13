@@ -83,11 +83,11 @@ async function updateCommunicationOptions(req, res) {
 
 
 function _checkForDuplicateEmail(sessionUser, email) {
-  if (email === sessionUser.primary_email) {
+  if (email.toLowerCase() === sessionUser.primary_email.toLowerCase()) {
     throw new FluentError("user-add-duplicate-email");
   }
   for (const secondaryEmail of sessionUser.email_addresses) {
-    if (email === secondaryEmail.email) {
+    if (email.toLowerCase() === secondaryEmail.email.toLowerCase()) {
       throw new FluentError("user-add-duplicate-email");
     }
   }
