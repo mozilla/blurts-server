@@ -240,7 +240,7 @@ login-link = 登入
 # your localization, because it would result in the number showing twice.
 email-addresses-being-monitored =
     { $emails ->
-       *[other] 監控中的電子郵件信箱地址
+       *[other] 組監控中的電子郵件信箱地址
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
@@ -254,14 +254,14 @@ data-breaches-exposed =
 # your localization, because it would result in the number showing twice.
 passwords-exposed =
     { $passwords ->
-       *[other] 在所有事件中洩漏出的密碼
+       *[other] 所有事件中洩漏出的密碼組數
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
     { $breaches ->
-       *[other] 場資料外洩事件，流出了您的個資。
+       *[other] 場資料外洩事件，流出了您的個資
     }
 # Button
 see-additional-breaches = 看其它外洩事件
