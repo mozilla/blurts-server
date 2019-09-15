@@ -119,7 +119,7 @@ take-control = Assuma de volta o controle sobre seus dados pessoais.
 cant-stop-hackers = Você não pode impedir hackers de hackear. Mas pode evitar hábitos ruins que facilitam o trabalho deles.
 read-more-tips = Leia mais dicas de segurança
 how-hackers-work = Entenda como os hackers trabalham
-monitor-your-online-accounts = Inscreva-se no monitoramento de violações com uma { -brand-fxa }.
+monitor-your-online-accounts = Inscreva-se no monitoramento de vazamentos de dados com uma { -brand-fxa }.
 stay-alert = Receba alertas sobre novos vazamentos
 if-your-info = Se suas informações surgirem em uma nova violação de dados, enviaremos um alerta.
 search-all-emails = Pesquise vazamentos de todas as suas contas de e-mail e receba alertas de novas ameaças.
@@ -254,7 +254,7 @@ new-breaches-found =
         [one] { $breachCount } NOVO VAZAMENTO ENCONTRADO
        *[other] { $breachCount } NOVOS VAZAMENTOS ENCONTRADOS
     }
-sign-up-headline-1 = Receba alertas de violações futuras com uma { -brand-fxa }.
+sign-up-headline-1 = Receba alertas sobre novos vazamentos com uma { -brand-fxa }.
 account-not-required = O navegador { -brand-name } não é obrigatório para ter uma { -brand-fxa }. Você pode receber informações sobre serviços da { -brand-Mozilla }.
 was-your-info-exposed = Suas informações foram expostas no vazamento de dados de { $breachName }?
 find-out-if = Descubra se seus dados foram expostos neste vazamento.
