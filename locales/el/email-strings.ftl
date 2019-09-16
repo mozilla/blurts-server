@@ -60,7 +60,29 @@ share-by-email-message =
     3. Λάβε συμβουλές από το { -product-name } σχετικά με το τι να κάνεις μετά.
 # Unsubscribe link in email.
 email-unsub-link = Κατάργηση εγγραφής
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Προβολή πίνακα ελέγχου
+# Button text
+verify-email-cta = Επαλήθευση email
+# Button text
+see-all-breaches = Προβολή όλων των παραβιάσεων
+# Headline of verification email
+email-link-expires = Αυτός ο σύνδεσμος λήγει σε 24 ώρες
+# Email headline
+email-breach-summary-for-email = Περίληψη παραβίασης για το { $userEmail }
+# Email headline
+email-no-breaches-hl = Το { $userEmail } δεν εμφανίστηκε σε καμία παραβίαση δεδομένων
+# Email headline
+email-alert-hl = Το { $userEmail } εμφανίστηκε σε νέα παραβίαση δεδομένων
+# Subject line of email
+email-subject-found-breaches = Το { -product-name } βρήκε τις πληροφορίες σας σε αυτές τις παραβιάσεις
+# Subject line of email
+email-subject-no-breaches = Το { -product-name } δεν βρήκε γνωστές παραβιάσεις
+# Subject line of email
+email-subject-verify = Επαλήθευση email για το { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Μάθετε περισσότερα σχετικά με το { $fxmLink }
 # List headline
 faq-list-headline = Συχνές ερωτήσεις
+# Link Title
+faq-v2-4 = Πώς αντιμετωπίζει το { -product-name } τις ευαίσθητες ιστοσελίδες;

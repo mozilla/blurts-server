@@ -122,6 +122,7 @@ sensitive-sites = Πώς αντιμετωπίζει το { -product-name } τι�
 about-fxm-headline = Σχετικά με το { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Πώς λειτουργεί το { -product-name }
+how-fxm-2-headline = Εγγραφείτε για παρακολούθηση παραβιάσεων
 
 ## What to do after data breach tips
 
@@ -129,6 +130,7 @@ change-pw = Αλλαγή κωδικού πρόσβασης
 check-for-breaches = Έλεγχος για παραβιάσεις
 back-to-top = Πίσω στην κορυφή
 stop-monitoring-this = Διακοπή εποπτείας αυτού του email.
+resend-verification = Εκ νέου αποστολή email επαλήθευσης
 add-new-email = Προσθήκη νέας διεύθυνσης email
 send-verification = Αποστολή συνδέσμου επαλήθευσης
 # This string is a header on the user preferences page and
@@ -137,6 +139,7 @@ send-verification = Αποστολή συνδέσμου επαλήθευσης
 # alerts for all of their monitored email addresses to a single 
 # email address.
 breach-summary = Περίληψη παραβίασης
+show-breaches-for-this-email = Εμφάνιση όλων των παραβιάσεων για αυτό το email.
 link-change-primary = Αλλαγή πρωτεύουσας διεύθυνσης email
 remove-fxm = Αφαίρεση { -product-name }
 # Button title
@@ -145,6 +148,8 @@ manage-email-addresses = Διαχείριση διευθύνσεων email
 latest-breach-link = Δείτε αν εμπλέκεστε σε αυτή τη διαρροή
 welcome-back = Καλώς ορίσατε και πάλι, { $userName }!
 welcome-user = Καλώς ορίσατε, { $userName }!
+breach-alert-subject = Το { -product-name } βρήκε το email σας σε νέα παραβίαση δεδομένων
+your-info-was-discovered-headline = Οι πληροφορίες σας ανακαλύφθηκαν σε μια νέα παραβίαση δεδομένων.
 faq1 = Δεν αναγνωρίζω αυτή την εταιρεία ή ιστοσελίδα. Γιατί είμαι σε αυτή την παραβίαση;
 faq2 = Γιατί πέρασε τόσος καιρός μέχρι να ενημερωθώ για αυτή την παραβίαση;
 faq3 = Πώς ξέρω αν αυτό είναι ένα γνήσιο email από το { -product-name };
@@ -163,6 +168,7 @@ currently-showing = Εμφάνιση:
 
 ## Updated error messages
 
+error-csrf-headline = Ο χρόνος συνεδρίας έληξε
 login-link = Σύνδεση
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
@@ -171,6 +177,8 @@ results-for = Αποτελέσματα για: { $userEmail }
 other-monitored-emails = Άλλα εποπτευμένα emails
 email-verification-required = Απαιτείται επαλήθευση email
 fxa-primary-email = Email του { -brand-fxa } - Πρωτεύον
+what-is-a-website-breach = Τι είναι μια παραβίαση ιστοσελίδας;
+alert-about-new-breaches = Ειδοποίηση σχετικά με νέες παραβιάσεις
 see-if-youve-been-part = Δείτε αν έχετε εμπλακεί σε διαρροή δεδομένων στο διαδίκτυο.
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.

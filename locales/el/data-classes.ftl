@@ -109,6 +109,7 @@ social-security-numbers = Αριθμοί κοινωνικής ασφάλισης
 spoken-languages = Ομιλούμενες γλώσσες
 support-tickets = Αιτήσεις υποστήριξης
 survey-results = Αποτελέσματα έρευνας
+taxation-records = Φορολογικά αρχεία
 time-zones = Ζώνες ώρας
 travel-habits = Ταξιδιωτικές συνήθειες
 user-statuses = Καταστάσεις χρήστη
