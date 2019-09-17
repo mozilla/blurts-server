@@ -379,4 +379,9 @@ breach-alert-notifications = Notificaciones sobre filtraciones
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Filtración añadida:
+how-hackers-work-desc = Protege tus contraseñas de los criminales cibernéticos, porque eso es lo que más les importa.
+what-to-do-after-breach-desc = Bloquea tus cuentas para que tu información no caiga en las manos equivocadas.
 create-strong-passwords-desc = Haz que tus contraseñas sean seguras y difíciles de adivinar.
+steps-to-protect-desc = Te ayudamos a entender las amenazas más comunes y cómo saber qué buscar.
+five-myths-desc = Descubre cómo evitar que los malos hábitos al crear contraseñas les facilite el trabajo a los hackeadores.
+take-further-steps-desc = Descubre cómo mitigar los riesgos de robo de identidad para evitar pérdidas financieras.

@@ -56,6 +56,18 @@ share-by-email-message =
     3. Obtén consejos de { -product-name } sobre qué más puedes hacer.
 # Unsubscribe link in email.
 email-unsub-link = Cancelar la suscripción
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb =
+    Has recibido este correo porque te suscribiste a las alertas de { -product-name }.
+    ¿Ya no quieres recibirlos? { $unsubLink }. Este es un correo automático. Si necesitas ayuda, consulta la página { $faqLink }.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    Has recibido este correo porque te suscribiste a las alertas de { -product-name }.
+    Este es un correo automático. Si necesitas ayuda, consulta la página { $faqLink }.
 # Button text that takes the user to their signed in user dashboard.
 view-my-dashboard-cta = Ver Mi panel de control
 # Button text
@@ -64,6 +76,7 @@ verify-email-cta = Verificar correo electrónico
 see-all-breaches = Ver todas las filtraciones
 # Headline of verification email
 email-link-expires = Este enlace caduca en 24 horas
+email-verify-blurb = Verifica tu correo para agregarlo a { -product-name } y registrarte para recibir alertas de filtraciones.
 # Email headline
 email-found-breaches-hl = Este es tu resumen de las filtraciones de datos pasadas
 # Email headline
