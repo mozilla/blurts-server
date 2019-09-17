@@ -158,6 +158,7 @@ const DB = {
           const res = await knex("subscribers")
             .update({
               primary_email: email,
+              primary_sha1: getSha1(email.toLowerCase()),
               primary_verified: verified,
               updated_at: knex.fn.now(),
             })
@@ -171,7 +172,7 @@ const DB = {
         // Always add a verification_token value
         const verification_token = uuidv4();
         const res = await knex("subscribers")
-          .insert({ primary_sha1: sha1, primary_email: email, signup_language, primary_verification_token: verification_token, primary_verified: verified })
+          .insert({ primary_sha1: getSha1(email.toLowerCase()), primary_email: email, signup_language, primary_verification_token: verification_token, primary_verified: verified })
           .returning("*");
         return res[0];
       });
