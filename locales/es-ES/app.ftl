@@ -19,12 +19,15 @@ error-hibp-throttled = Demasiadas conexiones a { -brand-HIBP }.
 error-hibp-connect = Error al conectar con { -brand-HIBP }.
 error-hibp-load-breaches = No se han podido cargar los fallos de seguridad.
 error-must-be-signed-in = Debes iniciar sesión en tu { -brand-fxa }.
+error-to-finish-verifying = Para terminar de comprobar este correo para { -product-name }, tienes que iniciar sesión con tu dirección de correo principal.
 home-title = { -product-name }
 home-not-found = Página no encontrada.
 oauth-invalid-session = La sesión no es válida
 scan-title = { -product-name } : Resultados del análisis
 user-add-invalid-email = Correo electrónico no válido
 user-add-email-verify-subject = Verifica tu suscripción a { -product-name }.
+user-add-duplicate-email = Esta dirección de correo ya se ha agregado a { -product-name }.
+user-add-duplicate-email-part-2 = Visita tu { $preferencesLink } para comprobar el estado de { $userEmail }.
 error-headline = Error
 user-verify-token-error = Se requiere un token de verificación.
 user-verify-email-report-subject = Tu informe de { -product-name }
@@ -340,7 +343,7 @@ email-addresses-title = Direcciones de correo
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview = En { $breachDate }, { $breachTitle } tuvo una filtración. Cuando se descubrió y comprobó la filtración, se añadió a nuestra base de datos el { $addedDate }.
+breach-overview-new = El { $breachDate }, tuvo lugar la filtración { $breachTitle }. Una vez descubierta y verificada la filtración, la agregamos a nuestra base de datos el { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Preferencias de { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
