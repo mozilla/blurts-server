@@ -18,7 +18,7 @@ async function subscribeLowercaseHashToHIBP(emailAddress) {
 
 
 (async () => {
-  const subRecordsWithUpperChars = await knex("subscribers")
+  const subRecordsWithUpperChars = await knex.select("id", "primary_email").from("subscribers")
     .whereRaw("primary_email != lower(primary_email)");
   const subsWithUpperCount = subRecordsWithUpperChars.length;
   console.log(`found ${subsWithUpperCount} subscribers records with primary_email != lower(primary_email). fixing ...`);
@@ -32,7 +32,7 @@ async function subscribeLowercaseHashToHIBP(emailAddress) {
     console.log(`fixed subscribers record ID: ${subRecord.id}`);
   }
 
-  const emailRecordsWithUpperChars = await knex("email_addresses")
+  const emailRecordsWithUpperChars = await knex.select("id", "email").from("email_addresses")
     .whereRaw("email != lower(email)");
   const emailsWithUpperCount = emailRecordsWithUpperChars.length;
   console.log(`found ${emailsWithUpperCount} email_addresses records with email != lower(email)`);
