@@ -59,7 +59,7 @@
     "uglify-js": "^3.4.9"
   },
   "engines": {
-    "node": ">=8"
+    "node": "10"
   },
   "homepage": "https://github.com/mozilla/blurts-server",
   "license": "MPL-2.0",
