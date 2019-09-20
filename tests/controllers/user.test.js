@@ -187,7 +187,7 @@ test("user add request with invalid email throws error", async () => {
 });
 
 
-test("user verify request with valid token but no session throws error", async () => {
+test("user verify request with valid token but no session renders email verified page", async () => {
     const validToken = TEST_EMAIL_ADDRESSES.unverified_email_on_firefox_account.verification_token;
 
     const req = httpMocks.createRequest({
@@ -199,14 +199,15 @@ test("user verify request with valid token but no session throws error", async (
   const resp = httpMocks.createResponse();
 
   // Call code-under-test
-  await expect(user.verify(req, resp)).rejects.toThrow("error-must-be-signed-in");
+  await user.verify(req, resp);
 
+  expect(resp.statusCode).toEqual(200);
   const emailAddress = await DB.getEmailByToken(validToken);
-  expect(emailAddress.verified).toBeFalsy();
+  expect(emailAddress.verified).toBeTruthy();
 });
 
 
-test("user verify request with valid token verifies user", async () => {
+test("user verify request with valid token verifies user and redirects to dashboard", async () => {
     const validToken = TEST_EMAIL_ADDRESSES.unverified_email_on_firefox_account.verification_token;
     const testSubscriberEmail = "firefoxaccount@test.com";
     const testSubscriber = await DB.getSubscriberByEmail(testSubscriberEmail);
