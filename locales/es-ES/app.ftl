@@ -25,6 +25,7 @@ home-not-found = Página no encontrada.
 oauth-invalid-session = La sesión no es válida
 scan-title = { -product-name } : Resultados del análisis
 user-add-invalid-email = Correo electrónico no válido
+user-add-too-many-emails = Estás monitorizando el número máximo de direcciones de correo.
 user-add-email-verify-subject = Verifica tu suscripción a { -product-name }.
 user-add-duplicate-email = Esta dirección de correo ya se ha agregado a { -product-name }.
 user-add-duplicate-email-part-2 = Visita tu { $preferencesLink } para comprobar el estado de { $userEmail }.
@@ -104,11 +105,11 @@ take-control = Recupera el control de tu información personal.
 cant-stop-hackers = No puedes evitar que te hackeen, pero sí puedes evitar malas prácticas que le facilitan el trabajo a los hackeadores.
 read-more-tips = Leer más sobre consejos de seguridad
 how-hackers-work = Descubre cómo trabajan los hackers
-monitor-your-online-accounts = Regístrate para monitorear filtraciones con un { -brand-fxa }.
+monitor-your-online-accounts = Regístrate para monitorizar filtraciones con un { -brand-fxa }.
 stay-alert = Mantente al día de las nuevas filtraciones
 if-your-info = Si tu información aparece en una nueva filtración de datos, te enviaremos una alerta.
 search-all-emails = Averigua si tus direcciones de correo han aparecido en filtraciones y recibe alertas sobre nuevas amenazas.
-monitor-several-emails = Monitorea varias direcciones de correo
+monitor-several-emails = Monitoriza varias direcciones de correo
 take-action = Actúa para proteger tus cuentas
 keep-your-data-safe = Descubre lo que necesitas para mantener a salvo tu información frente a criminales cibernéticos.
 website-breach = Filtración de sitios web
@@ -144,7 +145,7 @@ how-fxm-1-blurb =
     las que contienen información personal sensible.
 how-fxm-2-headline = Registrarse para mantenerse informado sobre las filtraciones
 how-fxm-2-blurb =
-    Crea una { -brand-fxa } para monitorear las filtraciones de datos de tu correo.
+    Crea una { -brand-fxa } para monitorizar las filtraciones de datos de tu correo.
     Cuando hayas comprobado tu dirección de correo, recibirás un informe completo de
     filtraciones pasadas, incluidas las de información más sensible.
 how-fxm-3-headline = Obtener notificaciones en el navegador
@@ -189,7 +190,7 @@ search-for-your-email = Busca tu dirección de correo en filtraciones de datos p
 back-to-top = Volver al inicio
 comm-opt-0 = Avísame si mi dirección de correo aparece en una filtración de datos.
 comm-opt-1 = Enviar todas las alertas de filtraciones a { $primaryEmail }.
-stop-monitoring-this = Dejar de monitorear esta dirección de correo.
+stop-monitoring-this = Dejar de monitorizar esta dirección de correo.
 resend-verification = Reenviar correo de verificación
 add-new-email = Agregar una nueva dirección de correo
 send-verification = Enviar enlace de verificación
@@ -278,8 +279,8 @@ login-link = Inicia sesión
 # your localization, because it would result in the number showing twice.
 email-addresses-being-monitored =
     { $emails ->
-        [one] Dirección de correo monitoreada
-       *[other] Direcciones de correo monitoreadas
+        [one] Dirección de correo monitorizada
+       *[other] Direcciones de correo monitorizadas
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
@@ -316,7 +317,7 @@ scan-results-known-breaches =
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Resultados para: { $userEmail }
-other-monitored-emails = Otros correos monitoreados
+other-monitored-emails = Otros correos monitorizados
 email-verification-required = Tienes que verificar la dirección de correo
 fxa-primary-email = { -brand-fxa } correo - principal
 what-is-a-website-breach = ¿Qué es una filtración web?
@@ -326,7 +327,7 @@ steps-to-protect = Sigue estos pasos para proteger tu identidad en línea
 take-further-steps = Sigue estos consejos para proteger tu identidad
 alert-about-new-breaches = Avisarme cuando haya nuevas filtraciones
 see-if-youve-been-part = Comprueba si formaste parte de una filtración de datos en línea.
-get-ongoing-breach-monitoring = Monitorear filtraciones para varias direcciones de correo.
+get-ongoing-breach-monitoring = Monitorizar filtraciones para varias direcciones de correo.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Descubrir
 new-unsub-error = Tendrás que cancelar la suscripción desde uno de los correos que te envió { -product-name }.
