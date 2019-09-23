@@ -127,7 +127,6 @@ app.use(helmet.contentSecurityPolicy({
     styleSrc: STYLE_SOURCES,
     reportUri: "/__cspreport__",
   },
-  browserSniff: false,
 }));
 app.use(helmet.referrerPolicy({ policy: "strict-origin-when-cross-origin" }));
 app.use(express.static("public", {
