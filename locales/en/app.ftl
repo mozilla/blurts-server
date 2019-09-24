@@ -519,7 +519,10 @@ verify-the-link = Verify the link sent to { $userEmail } to add it to {-product-
 
 email-verified = Email Successfully Verified!
 email-added-to-subscription = We’ll alert you if { $email } appears in a data breach.
-email-verified-view-dashboard = To see and manage all emails you’ve signed up for breach monitoring, { $sign-in-link }.
+
+email-verified-view-dashboard = To see and manage all emails you’ve signed up for breach monitoring, { $nestedSignInLink }.
+sign-in-nested = sign in
+
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link

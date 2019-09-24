@@ -2,6 +2,13 @@
   margin: auto;
 }
 
+.subpage.email-confirmed {
+  background-image: url("/img/svg/scan-res-bg.svg");
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .subpage .content-box {
   flex-direction: column;
   justify-content: center;
