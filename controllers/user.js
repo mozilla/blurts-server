@@ -268,6 +268,7 @@ async function verify(req, res) {
   res.render("subpage", {
     title: "Email Verified",
     whichPartial: "subpages/confirm",
+    email: existingEmail.email,
   });
 }
 

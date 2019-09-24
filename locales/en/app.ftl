@@ -514,6 +514,13 @@ want-to-add = Want to add another email?
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Verify the link sent to { $userEmail } to add it to {-product-name}.
 
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+email-verified = Email Successfully Verified!
+email-added-to-subscription = We’ll alert you if { $email } appears in a data breach.
+email-verified-view-dashboard = To see and manage all emails you’ve signed up for breach monitoring, { $sign-in-link }.
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
