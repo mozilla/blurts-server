@@ -527,7 +527,7 @@ email-verified-view-dashboard = To see and manage all emails you’ve signed up 
 # This is the second part of the message that appears after the user has verified
 # their email address. It reads "To see and manage all emails you've signed up
 # for breach monitoring, sign in.
-sign-in-nested = sign in.
+sign-in-nested = sign in
 
 ##
 
