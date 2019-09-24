@@ -65,6 +65,11 @@ email-unsub-link = Abonelikten çık
 # and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
 # Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-footer-blurb = Bu e-postayı { -product-name }'e üye olduğunuz için alıyorsunuz. Artık bu e-postaları istemiyor musunuz? { $unsubLink }. Bu otomatik bir e-postadır. Destek almak için { $faqLink } adresini ziyaret edebilirsiniz.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    Bu e-postayı { -product-name } uyarılarına kaydolduğunuz için alıyorsunuz.
+    Bu otomatik bir e-postadır. Destek için { $faqLink } adresini ziyaret edebilirsiniz.
 # Button text that takes the user to their signed in user dashboard.
 view-my-dashboard-cta = Kontrol panelimi göster
 # Button text

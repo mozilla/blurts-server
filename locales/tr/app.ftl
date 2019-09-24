@@ -134,6 +134,7 @@ sensitive-sites = { -product-name } hassas siteleri nasıl ele alıyor?
 delayed-reporting-headline = Bu ihlalin bildirilmesi neden bu kadar uzun sürdü?
 about-fxm-headline = { -product-name } hakkında
 about-fxm-blurb = Çevrimiçi hesaplarınızın veri ihlallerine dahil olduğunda { -product-name } sizi uyarır. Verilerinizin ele geçirilip geçirilmediğini öğrenin, yeni ihlaller yaşandığında bildirim alın ve çevrimiçi hesaplarınızı korumak için gereken adımları atın. { -product-name }, { -brand-Mozilla } tarafından sağlanmaktadır.
+fxm-warns-you = E-posta adresiniz çevrimiçi bir veri ihlalinde yer alırsa { -product-name } sizi uyarır. Bilgilerinizin ele geçirilip geçirilmediğini görün, hesaplarınızı nasıl daha iyi koruyabileceğinizi öğrenin ve e-posta adresiniz yeni veri ihlallerine karışırsa bildirim alın.
 # How Firefox Monitor works
 how-fxm-works = { -product-name } nasıl çalışır?
 how-fxm-1-headline = Temel sorgulama yap
@@ -143,6 +144,7 @@ how-fxm-3-headline = Tarayıcınızdan bildirim alın
 wtd-after-website = Veri ihlalinden sonra ne yapmalı:
 what-is-data-agg = Veri toplayıcı nedir?
 protect-your-privacy = Çevrimiçi gizliliğinizi koruyun
+no-pw-to-change = Web sitesi ihlallerinin aksine, değiştirebileceğiniz bir parola yoktur.
 avoid-personal-info = Parolalarda kişisel bilgilerinizi kullanmaktan kaçının
 avoid-personal-info-blurb = Doğum günleri, adresler ve akrabalarınızın adları internette bulunabilir. Bu gibi kelime ve sayıları parolanızda kullanmayın.
 

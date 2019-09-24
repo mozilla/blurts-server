@@ -109,6 +109,7 @@ social-security-numbers = Sosyal güvenlik numaraları
 spoken-languages = Konuşulan diller
 support-tickets = Destek talepleri
 survey-results = Anket sonuçları
+taxation-records = Vergi kayıtları
 time-zones = Saat dilimleri
 travel-habits = Seyahat alışkanlıkları
 user-statuses = Kullanıcı durumları
