@@ -346,7 +346,7 @@ filter-by = Filtrar por categoría:
 menu = Menú
 to-affected-email = Enviar alertas de filtraciones a las direcciones de correo afectadas
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
-join-firefox = Existe la forma de proteger tu privacidad. Únete a { -brand-name }.
+join-firefox = Existe una forma de proteger tu privacidad. Únete a { -brand-name }.
 # Link title
 learn-more-link = Saber más.
 email-sent = ¡Correo envíado!
