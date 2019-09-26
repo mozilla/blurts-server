@@ -520,13 +520,10 @@ verify-the-link = Verify the link sent to { $userEmail } to add it to {-product-
 email-verified = Email Successfully Verified!
 email-added-to-subscription = We’ll alert you if { $email } appears in a data breach.
 
-# This is the first part of the message that appears after the user has verified
-# their email address. It reads "To see and manage all emails you've signed up
-# for breach monitoring, sign in.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
 email-verified-view-dashboard = To see and manage all emails you’ve signed up for breach monitoring, { $nestedSignInLink }.
-# This is the second part of the message that appears after the user has verified
-# their email address. It reads "To see and manage all emails you've signed up
-# for breach monitoring, sign in.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = sign in
 
 ##
