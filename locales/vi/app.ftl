@@ -10,7 +10,7 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Tài khoản Firefox
-terms-and-privacy = Điều khoản và chính sách riêng tư
+terms-and-privacy = Điều khoản & quyền riêng tư
 GitHub-link-title = GitHub
 error-scan-page-token = Bạn đang cố quét quá nhiều địa chỉ email trong một khoảng thời gian ngắn. Vì lý do bảo mật, chúng tôi đã tạm thời chặn bạn khỏi các tìm kiếm mới. Bạn có thể thử lại sau.
 error-could-not-add-email = Không thể thêm địa chỉ email vào cơ sở dữ liệu.
