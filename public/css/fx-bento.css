@@ -1,0 +1,329 @@
+firefox-apps {
+  --bentoButtonHeight: 36px;
+  --zIndex: 10000;
+  --appIconHeight: 16px;
+  --textColor: rgb(32, 18, 58);
+
+  display: flex;
+  justify-content: center;
+  margin: 0 32px;
+  position: relative;
+  text-align: center;
+  z-index: var(--zIndex);
+  font-size: 12px;
+  color: var(--textColor);
+}
+
+.fx-bento-content {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: calc(var(--bentoButtonHeight) + 10px);
+  background: rgb(249, 249, 250);
+  border-radius: 8px;
+  min-width: 260px;
+  z-index: calc(var(--zIndex) + 1);
+  padding: 24px 0;
+  box-shadow: 0 7px 12px -3px rgba(28, 28, 29, 0.502);
+}
+
+.fx-bento-content.active {
+  display: flex;
+  transform: translateY(5px);
+  animation: fxBentoAppear ease 0.3s;
+  -webkit-animation: fxBentoAppear ease 0.3s;
+  -moz-animation: fxBentoAppear ease 0.3s;
+}
+
+.fx-bento-content.active::after { /* tool tip top notch */
+  display: block;
+  content: "";
+  height: 12px;
+  width: 12px;
+  position: absolute;
+  top: -6px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform: rotate(45deg);
+  border-top-left-radius: 1px;
+  background-color: rgb(249, 249, 250);
+}
+
+.fx-bento-logo {
+  background: url("/img/fx-master-brand.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 40px;
+  width: 40px;
+  margin: auto auto 8px auto;
+}
+
+.fx-bento-headline {
+  font-size: 16px;
+  font-family: "Metropolis", sans-serif;
+  line-height: 20px;
+  font-weight: 600;
+  max-width: 280px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0 24px;
+}
+
+.fx-bento-bottom-link {
+  color: rgb(0, 96, 223);
+  text-decoration: underline;
+  margin: 16px 24px 0 24px;
+}
+
+a.fx-bento-app-link {
+  padding: 10px 16px 10px calc(var(--appIconHeight) + 32px);
+  background-color: rgba(255, 255, 255, 0);
+  box-shadow: 0 -1px 0 0 rgba(255, 255, 255, 0);
+  position: relative;
+  white-space: nowrap;
+  color: var(--textColor);
+  text-align: left;
+}
+
+.fx-bento-app-link::before {
+  display: block;
+  position: absolute;
+  left: 24px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: var(--appIconHeight);
+  width: var(--appIconHeight);
+  background: url("/img/fx-bento-sprites.png");
+  background-repeat: no-repeat;
+  background-size: cover !important;
+  content: "";
+}
+
+.fx-lockwise::before {
+  background-position-x: -54px;
+  width: calc(var(--appIconHeight) + 1px);
+}
+
+.fx-bento-app-link.pocket::before {
+  background-position-x: -18px;
+}
+
+.fx-bento-app-link.fx-send::before {
+  background-position-x: -71px;
+}
+
+.fx-bento-app-link.fx-monitor::before {
+  background-position-x: -88px;
+}
+
+.fx-bento-app-link.fx-mobile::before {
+  background-position-x: -104px;
+}
+
+.fx-bento-app-link:hover,
+.fx-bento-app-link:focus {
+  background-color: rgba(12, 12, 13, 0.1);
+  opacity: 1 !important;
+}
+
+.fx-bento-button {
+  background: url("/img/fx-bento-sprites.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-position-x: -322px;
+  background-size: cover;
+  width: 37px;
+  height: 36px;
+  max-height: 37px;
+  border: none;
+  border-radius: 1px;
+  padding: 0;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0);
+  pointer-events: all;
+}
+
+.fx-bento-button:hover,
+.fx-bento-button:focus {
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 0;
+  outline: 0;
+}
+
+.fx-bento-button:hover::-moz-focus-inner, /* hide dotted line */
+.fx-bento-button:focus::-moz-focus-inner {
+  border: 0;
+  outline: 0;
+}
+
+.fx-bento-close.active { /* transparent div that spans the entire background height/width of the browser window when the bento is open and captures clicks to close the bento */
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
+button.fx-bento-mobile-close {
+  display: none; /* button is only displayed on smaller screen sizes */
+  position: absolute;
+  right: var(--appIconHeight);
+  top: var(--appIconHeight);
+  height: calc(var(--appIconHeight) * 1.25);
+  min-height: calc(var(--appIconHeight) * 1.25);
+  width: calc(var(--appIconHeight) * 1.25);
+  max-width: calc(var(--appIconHeight) * 1.25);
+  min-width: calc(var(--appIconHeight) * 1.25);
+  background-color: rgb(55, 54, 111);
+  background-image: url("/img/fx-bento-sprites.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: -229px;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 50%;
+}
+
+.fx-bento-current-site {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.fx-bento-app-link:first-of-type {
+  margin-top: var(--appIconHeight);
+}
+
+.fx-bento-fade-out {
+  opacity: 0;
+  transform: translateY(0) !important;
+  pointer-events: none !important;
+}
+
+a.fx-bento-app-link,
+a.fx-bento-app-link:hover,
+a.fx-bento-app-link:focus,
+.fx-bento-button,
+.fx-bento-button:hover,
+.fx-bento-button:focus,
+.fx-bento-fade-out {
+  transition: 0.2s ease-in-out;
+}
+
+@media screen and (max-width: 900px) {
+  firefox-apps {
+    margin: 0 24px;
+  }
+
+  .fx-bento-button {
+    transform: scale(0.9);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  firefox-apps {
+    --appIconHeight: 24px;
+    --mobileClickableCloseArea: 12vh;
+
+    position: inherit;
+    margin: 0 16px;
+  }
+
+  button.fx-bento-mobile-close { /* Unhide purple "X" button */
+    display: block;
+  }
+
+  .fx-bento-mobile-close::after { /* create pseudo element to increase the clickable area of .fx-bento-mobile-close button */
+    content: "";
+    display: block;
+    position: fixed;
+    right: 0;
+    top: 0;
+    left: 0;
+    height: var(--mobileClickableCloseArea);
+  }
+
+  .fx-bento-content {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    border-radius: 0;
+    transform: translateY(0) !important;
+  }
+
+  .fx-bento-logo {
+    height: 48px;
+    width: 48px;
+    min-height: 48px;
+    margin-top: var(--mobileClickableCloseArea);
+  }
+
+  .fx-bento-headline {
+    font-size: 20px;
+    line-height: 24px;
+    padding: 0 12px;
+  }
+
+  .fx-bento-bottom-link {
+    margin-bottom: auto;
+    margin-top: 24px;
+  }
+
+  .fx-bento-bottom-link,
+  .fx-bento-app-link {
+    font-size: 16px;
+  }
+
+  .fx-bento-content.active {
+    transform: translateY(0) !important;
+    animation: none !important;
+    -webkit-animation: none !important;
+  }
+
+  .fx-bento-content.active::after {
+    display: none;
+  }
+
+  a.fx-bento-app-link {
+    line-height: 23px;
+    padding-left: calc(var(--appIconHeight) + 40px);
+  }
+
+  .fx-bento-app-link.pocket::before {
+    background-position-x: -26px;
+  }
+
+  .fx-bento-app-link.fx-send::before {
+    background-position-x: -107px;
+    width: calc(var(--appIconHeight) + 1px);
+  }
+
+  .fx-bento-app-link.fx-monitor::before {
+    background-position-x: -132px;
+  }
+
+  .fx-bento-app-link.fx-mobile::before {
+    background-position-x: -157px;
+    margin-left: 1px;
+  }
+
+  .fx-bento-app-link.fx-lockwise::before {
+    background-position-x: -79px;
+    width: calc(var(--appIconHeight) + 2px);
+  }
+}
+
+@keyframes fxBentoAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(5px);
+  }
+}
