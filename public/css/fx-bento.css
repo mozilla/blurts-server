@@ -51,12 +51,13 @@ firefox-apps {
 }
 
 .fx-bento-logo {
-  background: url("/img/fx-master-brand.svg");
+  background: url("/img/fx-bento-sprites.png");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   height: 40px;
   width: 40px;
   margin: auto auto 8px auto;
+  background-position-x: -90px;
 }
 
 .fx-bento-headline {
@@ -259,6 +260,7 @@ a.fx-bento-app-link:focus,
     width: 48px;
     min-height: 48px;
     margin-top: var(--mobileClickableCloseArea);
+    background-position-x: -108px;
   }
 
   .fx-bento-headline {
