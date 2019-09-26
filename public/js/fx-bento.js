@@ -1,7 +1,6 @@
 "use strict";
 
 /* global ga */
-/* eslint-disable selector-type-no-unknown */
 
 function getFxAppLinkInfo(localizedBentoStrings, referringSiteURL) {
     return [
@@ -113,14 +112,22 @@ class FirefoxApps extends HTMLElement {
 
     const clickTarget = event.target;
 
-    if (clickTarget.classList.contains("fx-bento-app-link")) {
-      const appToOpenId = clickTarget.dataset.bentoAppLinkId;
+    const MozLinkClick = (clickTarget.classList.contains("fx-bento-bottom-link"));
+
+    if (clickTarget.classList.contains("fx-bento-app-link") || MozLinkClick) {
       const url = new URL(clickTarget.href);  // add any additional UTM params - or whatever.
       url.searchParams.append("utm_source", this._currentSite);
       url.searchParams.append("utm_medium", "bento");
       url.searchParams.append("utm_campaign", "bento-skyline");
+      if (MozLinkClick) {
+        this.metricsSendEvent("bento-app-link-click", "Mozilla");
+        window.open(url, "_blank", "noopener");
+        return this.toggleClass("active");
+      }
+      const appToOpenId = clickTarget.dataset.bentoAppLinkId;
+      this.metricsSendEvent("bento-app-link-click", appToOpenId);
       window.open(url, "_blank", "noopener");
-      return this.metricsSendEvent("bento-app-link-click", appToOpenId);
+      return this.toggleClass("active");
     }
 
     if (!this._active) {
