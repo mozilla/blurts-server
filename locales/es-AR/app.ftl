@@ -365,6 +365,7 @@ verify-the-link = Verificar el enlace enviado a { $userEmail } para agregarlo a 
 ## an additional email to Firefox Monitor.
 
 email-verified = ¡Correo electrónico verificado correctamente!
+email-added-to-subscription = Te vamos a avisar si  { $email } aparece en una violación de datos.
 
 
 
