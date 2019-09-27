@@ -321,6 +321,20 @@ want-to-add = 想加入另一個信箱嗎？
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = 請到 { $userEmail } 收信，點擊當中的驗證連結，即可加入 { -product-name }。
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+email-verified = 成功驗證 E-Mail！
+email-added-to-subscription = 若 { $email } 未來出現在資料外洩事件中，我們會通知您。
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = 若要檢視或管理所有註冊檢查的信箱，{ $nestedSignInLink }。
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = 請登入
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
