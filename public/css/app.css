@@ -35,6 +35,7 @@ body {
   --purple1: #f565ff;
   --purple5: #722291;
   --purple6: #332869;
+  --purple7: #393473;
   --pink4: #e31587;
   --blue1: #0df;
   --blue2: #0090ed;
@@ -435,6 +436,10 @@ ul li {
 
 .txt-cntr {
   text-align: center;
+}
+
+.txt-purple7 {
+  color: var(--purple7);
 }
 
 .jst-cntr {

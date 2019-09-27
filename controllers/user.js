@@ -15,14 +15,20 @@ const sha1 = require("../sha1-utils");
 const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
 
 
+async function _getRequestSessionUser(req) {
+  if (req.session && req.session.user) {
+    // make sure the user object has all subscribers and email_addresses properties
+    return DB.getSubscriberById(req.session.user.id);
+  }
+  return null;
+}
+
 async function _requireSessionUser(req,res) {
   if (!req.session || !req.session.user) {
     // TODO: can we do a nice redirect to sign in instead of an error?
     throw new FluentError("error-must-be-signed-in");
   }
-  // make sure the user object has all subscribers and email_addresses properties
-  const sessionUser = await DB.getSubscriberById(req.session.user.id);
-  return sessionUser;
+  return _getRequestSessionUser(req);
 }
 
 async function removeEmail(req, res) {
@@ -235,7 +241,6 @@ async function _verify(req) {
 
 
 async function verify(req, res) {
-  const sessionUser = await _requireSessionUser(req);
   if (!req.query.token) {
     throw new FluentError("user-verify-token-error");
   }
@@ -245,8 +250,10 @@ async function verify(req, res) {
     throw new FluentError("error-not-subscribed");
   }
 
-  if (existingEmail.subscriber_id !== sessionUser.id) {
+  const sessionUser = await _getRequestSessionUser(req);
+  if (sessionUser && existingEmail.subscriber_id !== sessionUser.id) {
     // TODO: more specific error message?
+    // e.g., "This email verification token is not valid for this account"
     throw new FluentError("user-verify-token-error");
   }
 
@@ -254,7 +261,15 @@ async function verify(req, res) {
     await _verify(req);
   }
 
-  res.redirect("/user/dashboard");
+  if (sessionUser) {
+    res.redirect("/user/dashboard");
+    return;
+  }
+  res.render("subpage", {
+    title: "Email Verified",
+    whichPartial: "subpages/confirm",
+    email: existingEmail.email,
+  });
 }
 
 
