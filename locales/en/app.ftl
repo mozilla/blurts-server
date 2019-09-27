@@ -1,4 +1,5 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
+## String IDs beginning with "-product" and "-brand" should remain in English.
+
 # They should not be:
 # - Declined to adapt to grammatical case.
 # - Transliterated.
@@ -14,7 +15,7 @@
 -brand-lockwise = Firefox Lockwise
 -brand-firefox-browser = Firefox Browser
 -brand-send = Firefox Send
-
+##
 
 terms-and-privacy = Terms & Privacy
 

@@ -9,7 +9,7 @@ function getFxAppLinkInfo(localizedBentoStrings, referringSiteURL) {
     [localizedBentoStrings.pocket, "https://app.adjust.com/hr2n0yz?engagement_type=fallback_click&fallback=https%3A%2F%2Fgetpocket.com%2Ffirefox_learnmore%3Fsrc%3Dff_bento&fallback_lp=https%3A%2F%2Fapps.apple.com%2Fapp%2Fpocket-save-read-grow%2Fid309601447", "pocket"],
     [localizedBentoStrings.fxDesktop, `https://www.mozilla.org/firefox/new/?utm_source=${referringSiteURL}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`, "fx-desktop"],
     [localizedBentoStrings.fxMobile, `http://mozilla.org/firefox/mobile?utm_source=${referringSiteURL}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`, "fx-mobile"],
-    [localizedBentoStrings.fxLockwise, "https://lockwise.firefox.com", "fx-lockwise"],
+    [localizedBentoStrings.fxLockwise, "https://app.adjust.com/hj73k3x", "fx-lockwise"],
   ];
 }
 
@@ -87,8 +87,6 @@ class FirefoxApps extends HTMLElement {
     this._messageBottomLink.href = "https://www.mozilla.com/";
 
     this._frag.querySelectorAll("a").forEach(anchorEl => {
-      anchorEl.rel = "noopener noreferrer";
-      anchorEl.target = "_blank";
       anchorEl.addEventListener("click", this);
     });
 
@@ -138,6 +136,10 @@ class FirefoxApps extends HTMLElement {
       }
       const appToOpenId = clickTarget.dataset.bentoAppLinkId;
       this.metricsSendEvent("bento-app-link-click", appToOpenId);
+      if (clickTarget.classList.contains("fx-bento-current-site")) { // open index page in existing window
+        window.location = url;
+        return this.toggleClass("active");
+      }
       window.open(url, "_blank", "noopener");
       return this.toggleClass("active");
     }
@@ -191,8 +193,6 @@ class FirefoxApps extends HTMLElement {
       });
       if (newLink.dataset.bentoAppLinkId === this._currentSite) {
         newLink.classList.add("fx-bento-current-site");
-        this._bentoContent.insertBefore(newLink, this._bentoContent.querySelector(".fx-bento-app-link"));
-        return;
       }
       this._bentoContent.appendChild(newLink);
     });

@@ -188,11 +188,6 @@ button.fx-bento-mobile-close {
   border-radius: 50%;
 }
 
-.fx-bento-current-site {
-  pointer-events: none;
-  opacity: 0.7;
-}
-
 .fx-bento-app-link:first-of-type {
   margin-top: var(--appIconHeight);
 }
