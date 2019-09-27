@@ -350,6 +350,20 @@ want-to-add = Tebɣiḍ ad ternuḍ imayl-nniḍen?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Senqed aseɣwen yettwaznen ɣer { $userEmail } akken ad ternuḍ-t ɣef { -product-name }.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+email-verified = Imayl yettwaseqed akken iwata!
+email-added-to-subscription = Ad k-id-nelɣu ma yella tansa-a { $email } tban-d deg trewla n yisefka.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = Akken ad twaliḍ daɣen ad tesferkeḍ meṛṛa imaylen i terniḍ deg usefrek n trewla, { $nestedSignInLink }.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = Kcem
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
