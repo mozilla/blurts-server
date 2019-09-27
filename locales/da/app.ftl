@@ -396,6 +396,20 @@ want-to-add = Vil du tilføje en mailadresse mere?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Bekræft linket sendt til { $userEmail } for at føje mailadressen til { -product-name }.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+email-verified = Mailadresse bekræftet!
+email-added-to-subscription = Vi vil advare dig, hvis { $email } optræder i en datalæk.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = { $nestedSignInLink } for at se og håndtere alle de mailadresser, du har tilmeldt overvågning af datalæk.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = Log ind
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
