@@ -392,8 +392,6 @@ error-invalid-unsub-blurb = You’ll need to unsubscribe from one of the
   emails {-product-name} sent you. Check your inbox for messages from 
   {-brand-team-email}. Select the unsubscribe link at the bottom of the email.
 
-login-link = Log in
-
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
