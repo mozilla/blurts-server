@@ -335,7 +335,7 @@ email-added-to-subscription = 若 { $email } 出现在新的数据外泄事件�
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
 email-verified-view-dashboard = 要查看或管理您所有设为监控的电子邮件地址，请访问 { $nestedSignInLink }。
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
-sign-in-nested = 登录
+sign-in-nested = 请登录
 
 
 
