@@ -331,6 +331,17 @@ want-to-add = Vole adder un altere adresse de e-mail?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Verifica le ligamine inviate a { $userEmail } pro adder lo a { -product-name }.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+email-verified = Email verificate con successo!
+email-added-to-subscription = Nos te avisara si tu { $email } essera involvite in un nove violation de datos.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = authenticar se
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
