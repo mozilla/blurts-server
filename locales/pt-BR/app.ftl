@@ -389,6 +389,12 @@ verify-the-link = Clique no link de confirmação enviado para { $userEmail } pa
 ## an additional email to Firefox Monitor.
 
 email-verified = E-mail confirmado com sucesso!
+email-added-to-subscription = Alertaremos você, caso { $email } apareça em um vazamento de dados.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = Para ver e gerenciar todos os e-mails que você cadastrou para monitoramento de vazamentos, { $nestedSignInLink }.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = entre
 
 
 
