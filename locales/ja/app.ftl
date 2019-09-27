@@ -131,6 +131,7 @@ send-verification = 認証リンクを送信する
 # alerts for all of their monitored email addresses to a single 
 # email address.
 breach-summary = データ侵害概要
+link-change-primary = 主要メールアドレスを変更する
 remove-fxm = { -product-name } の登録を解除する。
 remove-fxm-blurb = { -product-name } の警告をオフにします。{ -brand-fxa } は有効のまま残り、他の通知は受信を続けるでしょう。
 # Button title
@@ -219,6 +220,13 @@ learn-more-link = 詳しくはこちら。
 email-sent = メールが送信されました！
 # Form title
 want-to-add = 別のメールアドレスを追加しますか？
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+
+
+
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
