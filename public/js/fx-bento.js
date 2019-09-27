@@ -3,12 +3,12 @@
 /* global ga */
 
 function getFxAppLinkInfo(localizedBentoStrings, referringSiteURL) {
-    return [
+  return [
     [localizedBentoStrings.fxSend, "https://send.firefox.com/", "fx-send"],
     [localizedBentoStrings.fxMonitor, "https://monitor.firefox.com/", "fx-monitor"],
     [localizedBentoStrings.pocket, "https://app.adjust.com/hr2n0yz?engagement_type=fallback_click&fallback=https%3A%2F%2Fgetpocket.com%2Ffirefox_learnmore%3Fsrc%3Dff_bento&fallback_lp=https%3A%2F%2Fapps.apple.com%2Fapp%2Fpocket-save-read-grow%2Fid309601447", "pocket"],
     [localizedBentoStrings.fxDesktop, `https://www.mozilla.org/firefox/new/?utm_source=${referringSiteURL}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`, "fx-desktop"],
-    [localizedBentoStrings.fxMobile, "https://www.firefox.com/", "fx-mobile"],
+    [localizedBentoStrings.fxMobile, `http://mozilla.org/firefox/mobile?utm_source=${referringSiteURL}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`, "fx-mobile"],
     [localizedBentoStrings.fxLockwise, "https://lockwise.firefox.com", "fx-lockwise"],
   ];
 }
@@ -25,8 +25,9 @@ function createAndAppendEl(wrapper, tagName, className = null) {
 async function getlocalizedBentoStrings() {
   let localizedBentoStrings;
   try {
+    const serverUrl = document.body.dataset.serverUrl;
     const res = await fetch(
-      "http://localhost:6060/getBentoStrings",
+      `${serverUrl}/getBentoStrings`,
       {
         mode: "cors",
       }
@@ -62,17 +63,20 @@ class FirefoxApps extends HTMLElement {
     this._active = false; // Becomes true when the bento is opened.
 
     this._frag = document.createDocumentFragment(); // Wrapping fragment for bento button and bento content.
+
     this._bentoButton = createAndAppendEl(this._frag, "button", "fx-bento-button toggle-bento"); // Button toggles dropdown.
-    this._bentoButton.title = this._localizedBentoStrings.bentoButtonTitle;
-    this._bentoButton.addEventListener("click", this);
+    this.addTitleAndAriaLabel(this._bentoButton, this._localizedBentoStrings.bentoButtonTitle);
 
     this._bentoContent = createAndAppendEl(this._frag, "div", "fx-bento-content");
+
     this._mobileCloseBentoButton = createAndAppendEl(this._bentoContent, "button", "fx-bento-mobile-close toggle-bento");
-    this._mobileCloseBentoButton.setAttribute("title", this._localizedBentoStrings.mobileCloseBentoButtonTitle);
-    this._mobileCloseBentoButton.addEventListener("click", this);
+    this.addTitleAndAriaLabel(this._mobileCloseBentoButton, this._localizedBentoStrings.mobileCloseBentoButtonTitle);
+
+    [this._bentoButton, this._mobileCloseBentoButton].forEach(btn => {
+      btn.addEventListener("click", this);
+    });
 
     this._firefoxLogo = createAndAppendEl(this._bentoContent, "div", "fx-bento-logo");
-
     this._messageTop = createAndAppendEl(this._bentoContent, "span", "fx-bento-headline");
     this._messageTop.textContent = this._localizedBentoStrings.bentoHeadline;
 
@@ -96,8 +100,16 @@ class FirefoxApps extends HTMLElement {
     this.appendChild(this._frag);
   }
 
+  addTitleAndAriaLabel(el, localizedCopy) {
+    ["title", "aria-label"].forEach(attrName => {
+      el.setAttribute(attrName, localizedCopy);
+    });
+  }
+
   metricsSendEvent(eventAction, eventLabel) {
-    return ga("send", "event", "bento", eventAction, eventLabel);
+    if (typeof(ga) !== "undefined") {
+      return ga("send", "event", "bento", eventAction, eventLabel);
+    }
   }
 
   toggleClass(whichClass) {
