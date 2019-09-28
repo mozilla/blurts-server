@@ -418,8 +418,11 @@ verify-the-link = Pro přidání adresy { $userEmail } do { -product-name(case: 
 
 email-verified = E-mailová adresa byla úspěšně ověřena.
 email-added-to-subscription = Pokud se adresa { $email } objeví v nějakém úniku dat, dostanete upozornění.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = Pro zobrazení a správu adres, které jste přihlásili k odběru informací o únicích dat, { $nestedSignInLink }.
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
-sign-in-nested = přihlásit se
+sign-in-nested = se přihlaste
 
 
 
