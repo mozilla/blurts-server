@@ -412,6 +412,17 @@ want-to-add = Chcete přidat další e-mailovou adresu?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Pro přidání adresy { $userEmail } do { -product-name(case: "gen") } klepněte na odkaz zaslaný na tuto adresu.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+email-verified = E-mailová adresa byla úspěšně ověřena.
+email-added-to-subscription = Pokud se adresa { $email } objeví v nějakém úniku dat, dostanete upozornění.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = přihlásit se
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
