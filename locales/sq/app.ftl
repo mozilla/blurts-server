@@ -18,12 +18,17 @@ error-not-subscribed = Kjo adresë email s’është e pajtuar te { -product-nam
 error-hibp-throttled = Shumë lidhje me { -brand-HIBP }.
 error-hibp-connect = Gabim në lidhjen me { -brand-HIBP }.
 error-hibp-load-breaches = S’u ngarkuan dot shkeljet.
+error-must-be-signed-in = Duhet të keni bërë hyrjen te { -brand-fxa } juaj.
+error-to-finish-verifying = Për të përfunduar verifikimin e këtij email-i për { -product-name }, duhet të keni bërë hyrjen me email-in parësor të llogarisë tuaj.
 home-title = { -product-name }
 home-not-found = S’u gjet faqe.
 oauth-invalid-session = Sesion i pavlefshëm
 scan-title = { -product-name } : Përfundime Skanimi
 user-add-invalid-email = Email i Pavlefshëm
+user-add-too-many-emails = Po mbikëqyret për ju numri maksimum i adresave email.
 user-add-email-verify-subject = Verifikoni pajtimin tuaj te { -product-name }.
+user-add-duplicate-email = Ky email është shtuar tashmë te { -product-name }.
+user-add-duplicate-email-part-2 = Shkoni te { $preferencesLink } tuaja që të shihni gjendjen e { $userEmail }.
 error-headline = Gabim
 user-verify-token-error = Token-i i verifikimit është i domosdoshëm.
 user-verify-email-report-subject = Raporti juaj { -product-name }
@@ -95,11 +100,14 @@ breaches = Cenime
 # Link title
 security-tips = Ndihmëza Sigurie
 fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Hapni lëvizjen nëpër { -brand-fxa }
 # Link title
 more-about-this-breach = Më tepër rreth këtij cenimi
 take-control = Rimerrni kontrollin e të dhënave tuaja personale.
 read-more-tips = Lexoni Më Tepër Ndihmëza Sigurie
 how-hackers-work = Kuptoni se si punojnë hacker-at
+monitor-your-online-accounts = Regjistrohuni për mbikëqyrje shkeljesh me një { -brand-fxa }.
 stay-alert = Jini i sinjalizuar rreth shkeljesh të reja
 if-your-info = Nëse të dhënat tuaja shfaqen në një shkelje të re të dhënash, do t’ju dërgojmë një sinjalizim.
 search-all-emails = Kërkoni për shkelje me krejt adresat tuaja email dhe merrni sinjalizime rreth kërcënimesh të reja.
@@ -129,6 +137,7 @@ how-fxm-2-blurb =
 how-fxm-3-headline = Merrni njoftime te shfletuesi juaj
 how-fxm-3-blurb = Nëse përdorni { -brand-name }, do të merrni një njoftim, nëse vizitoni një sajt që është cenuar. Mësoni pa humbur kohë nëse keni jeni prekur nga ajo shkelje dhe se ç’mund të bëni rreth kësaj.
 wtd-after-website = Ç’të bëhet pas një cenimi sajti:
+wtd-after-data-agg = Ç’të bëhet pas një cenimi të dhënash nga grubmullues:
 what-is-data-agg = Ç’është një grumbullues të dhënash?
 what-is-data-agg-blurb = Grumbulluesit e të dhënave, ose ndërmjetës tregtarë të dhënash, grumbullojnë të dhëna nga regjistra publikë dhe blejnë të tilla prej shoqërish të tjera. Këto të dhëna i përpilojnë për t’ua shitur shoqërie për synime marketingu. Pretë e këtyre shkeljeve ka më pak gjasa të përfshihen në mashtrime financiare, por hacker-at mund t’i përdorin këto të dhëna për t’u hequr ato apo për profilizim të tyre.
 protect-your-privacy = Mbroni privatësinë tuaj internetore
@@ -158,7 +167,11 @@ appears-in-x-breaches =
        *[other] Shfaqet në { $breachCount } cenime të ditura.
     }
 check-for-breaches = Kontrolloni për Cenime
+find-out-what-hackers-know = Shihni se ç’dinë tashmë mbi ju hacker-at. Mësoni se si të jeni përherë një hap para tyre.
+search-for-your-email = Kërkoni për adresën tuaj email te të dhëna publike shkeljesh që shkojnë pas deri në 2007-n.
 back-to-top = Mbrapsht te Kreu
+comm-opt-0 = Dërgomëni email,  nëse një nga adresat e mia email më poshtë shfaqet në një shkelje të dhënash.
+comm-opt-1 = Dërgoji krejt sinjalizimet mbi shkelje te { $primaryEmail }.
 stop-monitoring-this = Ndal mbikëqyrjen e këtij email-i.
 resend-verification = Ridërgo email verifikimi
 add-new-email = Shtoni adresë email të re
@@ -170,6 +183,7 @@ send-verification = Dërgo Lidhje Verifikimi
 # email address.
 breach-summary = Përmbledhje Cenimi
 show-breaches-for-this-email = Shfaq krejt cenimet për këtë email.
+link-change-primary = Ndryshoni Adresën Parësore Email
 remove-fxm = Hiqeni { -product-name }
 remove-fxm-blurb = Çaktivizoni sinjalizime { -product-name }. { -brand-fxa } e juaj do të mbetet aktive, dhe mund të merrni njoftime të tjera të lidhura me llogarinë.
 # Button title
@@ -308,21 +322,36 @@ signed-in-as = I futur si: { $userEmail }
 filter-by = Filtrojini sipas Kategorish:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
+to-affected-email = Dërgo sinjalizime shkeljesh te adresa email e prekur
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Ka një rrugë mbrojtjeje të privatësisë tuaj. Bëhuni pjesë e { -brand-name }.
 # Link title
 learn-more-link = Mësoni më tepër.
 email-sent = Email-i u Dërgua!
 # Form title
 want-to-add = Doni të shtoni tjetër email?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Verifikoni lidhjen e dërguar te { $userEmail } që të shtohet te { -product-name }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
 email-verified = Email-i u Verifikua Me Sukses!
+email-added-to-subscription = Do t’ju sinjalizojmë, nëse { $email } shfaqet te një shkelje të dhënash.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = Që të shihni dhe administroni krejt email-et për të cilët jeni regjistruar lidhur me mbikëqyrje shkeljesh, { $nestedSignInLink }.
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = hyni
 
 
 
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Administroni krejt adresat email te { $preferencesLink }.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
@@ -332,3 +361,5 @@ breach-alert-notifications = Njoftime Sinjalizimi Shkeljesh
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Shkelje e shtuar më:
+how-hackers-work-desc = Mbroni fjalëkalimet tuaja nga keqbërësit kibernetikë, ngaqë kjo është ajo që kanë më për zemër.
+what-to-do-after-breach-desc = Kyçini llogaritë tuaja për t’i mbajtur të dhënat tuaja larg duarsh ku s’duhet të bien.
