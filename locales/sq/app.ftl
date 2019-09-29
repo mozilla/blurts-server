@@ -130,19 +130,26 @@ how-fxm-3-headline = Merrni njoftime te shfletuesi juaj
 how-fxm-3-blurb = Nëse përdorni { -brand-name }, do të merrni një njoftim, nëse vizitoni një sajt që është cenuar. Mësoni pa humbur kohë nëse keni jeni prekur nga ajo shkelje dhe se ç’mund të bëni rreth kësaj.
 wtd-after-website = Ç’të bëhet pas një cenimi sajti:
 what-is-data-agg = Ç’është një grumbullues të dhënash?
+what-is-data-agg-blurb = Grumbulluesit e të dhënave, ose ndërmjetës tregtarë të dhënash, grumbullojnë të dhëna nga regjistra publikë dhe blejnë të tilla prej shoqërish të tjera. Këto të dhëna i përpilojnë për t’ua shitur shoqërie për synime marketingu. Pretë e këtyre shkeljeve ka më pak gjasa të përfshihen në mashtrime financiare, por hacker-at mund t’i përdorin këto të dhëna për t’u hequr ato apo për profilizim të tyre.
 protect-your-privacy = Mbroni privatësinë tuaj internetore
 no-pw-to-change = Ndryshe nga cenimet e sajteve, s’ka fjalëkalim për ndryshim.
 avoid-personal-info = Shmangni përdorimin e të dhënave personale në fjalëkalime
+avoid-personal-info-blurb = Është e lehtë të gjesh datëlindje, adresa dhe emra anëtarësh familjeje në internet. Mbajini këto fjalë jashtë fjalëkalimeve tuaja.
 
 ## What to do after data breach tips
 
 change-pw = Ndryshoni fjalëkalimin tuaj
 even-for-old = Madje edhe për llogari të dikurshme, është e rëndësishme të përditësoni fjalëkalimin tuaj.
 make-new-pw-unique = Bëjeni fjalëkalimin e ri të ndryshëm dhe unik
+strength-of-your-pw = Fortësia e fjalëkalimeve tuaj ka ndikim të drejtpërdrejt mbi sigurinë tuaj në internet.
 create-strong-passwords = Si të krijohen fjalëkalime të fuqishëm
 stop-reusing-pw = Reshtni së përdoruri të njëjtin fjalëkalim
+create-unique-pw = Krijoni fjalëkalime unikë dhe ruajini diku të parrezik, bie fjala në një përgjegjës fjalëkalimesh.
 five-myths = 5 mite rreth përgjegjësish fjalëkalimesh
+create-a-fxa = Për raportin e plotë të shkeljeve për ju dhe për të marrë sinjalizime, krijoni një { -brand-fxa }.
 feat-security-tips = Ndihmëza sigurie për mbrojtjen e llogarive tuaj
+feat-sensitive = Kërkim i thelluar te shkelje të dhënash rezervat.
+feat-enroll-multiple = Regjistroni disa email-e për mbikëqyrje shkeljesh
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
