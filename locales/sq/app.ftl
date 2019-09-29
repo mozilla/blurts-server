@@ -116,6 +116,8 @@ sensitive-sites-copy = { -product-name } vë në dukje llogaritë me këto lloje
 delayed-reporting-headline = Pse u desh kaq shumë kohë për njoftimin e këtij cenimi?
 delayed-reporting-copy = Ndonjëherë mund të hajë muaj ose vite që kredenciale të ekspozuara në një shkelje të dhënash të shfaqen në web-in e errët. Shkeljet shtohen te baza jonë e të dhënave sapo të jenë zbuluar dhe verifikuar.
 about-fxm-headline = Rreth { -product-name }
+about-fxm-blurb = { -product-name } ju sinjalizon nëse llogaritë tuaja internetore qenë përfshirë në një shkelje të dhënash. Shihni nëse jeni përfshirë nga një shkelje të dhënash, merrni sinjalizime rreth shkeljesh të rejag, dhe ndërmerrni hapa për të mbrojtur llogaritë tuaja internetore. { -product-name } jepet nga { -brand-Mozilla }.
+fxm-warns-you = { -product-name } ju sinjalizon nëse adresa juaj email qe ekspozuar në një shkelje internetore të dhënash. Shihni nëse janë ekspozuar të dhëna tuajat, mëson si të mbroni më mirë llogaritë tuaja internetore, dhe merrni sinjalizime, nëse adresa juaj email shfaqet në një shkelje të re.
 # How Firefox Monitor works
 how-fxm-works = Si funksionon { -product-name }
 how-fxm-2-headline = Regjistrohuni për mbikëqyrje cenimesh
