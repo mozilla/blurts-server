@@ -120,8 +120,14 @@ about-fxm-blurb = { -product-name } ju sinjalizon nëse llogaritë tuaja interne
 fxm-warns-you = { -product-name } ju sinjalizon nëse adresa juaj email qe ekspozuar në një shkelje internetore të dhënash. Shihni nëse janë ekspozuar të dhëna tuajat, mëson si të mbroni më mirë llogaritë tuaja internetore, dhe merrni sinjalizime, nëse adresa juaj email shfaqet në një shkelje të re.
 # How Firefox Monitor works
 how-fxm-works = Si funksionon { -product-name }
+how-fxm-1-headline = Kryeni një kërkim elementar
+how-fxm-1-blurb = Kërkoni për adresën tuaj email te të dhëna publike shkeljesh që shkojnë pas deri në 2007-n. Ky kërkim elementar do të prekë shumicën e shkeljeve të të dhënave, po jo ato që përmbajnë të dhëna personale rezervat.
 how-fxm-2-headline = Regjistrohuni për mbikëqyrje cenimesh
+how-fxm-2-blurb =
+    Krijoni një { -brand-fxa } për mbikëqyrje të email-it tuaj për shkelje të ardhshme. 
+    Pasi të jetë verifikuar email-i juaj, do të merrni edhe një raport të plotë të shkeljeve të dikurshme, përfshi shkelje të dhënash rezervat.
 how-fxm-3-headline = Merrni njoftime te shfletuesi juaj
+how-fxm-3-blurb = Nëse përdorni { -brand-name }, do të merrni një njoftim, nëse vizitoni një sajt që është cenuar. Mësoni pa humbur kohë nëse keni jeni prekur nga ajo shkelje dhe se ç’mund të bëni rreth kësaj.
 wtd-after-website = Ç’të bëhet pas një cenimi sajti:
 what-is-data-agg = Ç’është një grumbullues të dhënash?
 protect-your-privacy = Mbroni privatësinë tuaj internetore
