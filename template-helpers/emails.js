@@ -94,6 +94,12 @@ function makeFaqLink(target, campaign) {
   return url;
 }
 
+function makePreFxaSubscriberMessage(args) {
+  const locales = args.data.root.supportedLocales;
+  const nestedLink = `<a class="pre-fxa-nested-link" href="https://accounts.firefox.com/?utm=whatshouldthisbe?" style="color: #0060df; font-family: sans-serif; font-weight: 400; font-size: 16px; text-decoration: none;">${LocaleUtils.fluentFormat(locales, "create-a-free-fxa")}</a>`;
+  return LocaleUtils.fluentFormat(locales, "pre-fxa-message", {createFreeFxaLink: nestedLink});
+}
+
 
 function getBreachAlertFaqs(args) {
   const supportedLocales = args.data.root.supportedLocales;
@@ -216,6 +222,17 @@ function showFaqs(args) {
   }
 }
 
+function ifPreFxaSubscriber(args) {
+  if (args.data.root.preFxaSubscriber) {
+    return args.fn();
+  }
+  return;
+}
+
+function getServerUrlForNestedEmailPartial(args) {
+  return args.data.root.SERVER_URL;
+}
+
 
 module.exports = {
   emailBreachStats,
@@ -226,6 +243,9 @@ module.exports = {
   getEmailFooterCopy,
   getEmailCTA,
   getReportHeader,
+  getServerUrlForNestedEmailPartial,
   getUnsafeBreachesForEmailReport,
+  ifPreFxaSubscriber,
+  makePreFxaSubscriberMessage,
   showFaqs,
 };

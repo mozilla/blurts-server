@@ -24,18 +24,21 @@ function getAddressesAndLanguageForEmail(recipient) {
         recipientEmail: recipient.primary_email,
         breachedEmail: recipient.email,
         signupLanguage,
+        preFxaSubscriber: false,
       };
     }
     return {
       recipientEmail: recipient.email,
       breachedEmail: recipient.email,
       signupLanguage,
+      preFxaSubscriber: false,
     };
   }
   return {
     recipientEmail: recipient.primary_email,
     breachedEmail: recipient.primary_email,
     signupLanguage,
+    preFxaSubscriber: true,
   };
 }
 
@@ -81,7 +84,7 @@ async function notify (req, res) {
 
   for (const recipient of recipients) {
     log.info("notify", {recipient});
-    const { recipientEmail, breachedEmail, signupLanguage } = getAddressesAndLanguageForEmail(recipient);
+    const { recipientEmail, breachedEmail, signupLanguage, preFxaSubscriber } = getAddressesAndLanguageForEmail(recipient);
 
     const requestedLanguage = signupLanguage ? acceptedLanguages(signupLanguage) : "";
     const supportedLocales = negotiateLanguages(
@@ -104,6 +107,7 @@ async function notify (req, res) {
           unsubscribeUrl: EmailUtils.getUnsubscribeUrl(recipient, utmID),
           ctaHref: ctaHref,
           whichPartial: "email_partials/report",
+          preFxaSubscriber,
         },
       );
       notifiedRecipients.push(breachedEmail);
