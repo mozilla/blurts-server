@@ -102,9 +102,12 @@ security-tips = Ndihmëza Sigurie
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Hapni lëvizjen nëpër { -brand-fxa }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = SHKELJA MË E RE E SHTUAR
 # Link title
 more-about-this-breach = Më tepër rreth këtij cenimi
 take-control = Rimerrni kontrollin e të dhënave tuaja personale.
+cant-stop-hackers = S’i ndalni dot hacker-at të bëjnë ç’duan. Por mund të shmangni huqe të këqija që ua lehtësojnë punën.
 read-more-tips = Lexoni Më Tepër Ndihmëza Sigurie
 how-hackers-work = Kuptoni se si punojnë hacker-at
 monitor-your-online-accounts = Regjistrohuni për mbikëqyrje shkeljesh me një { -brand-fxa }.
@@ -115,8 +118,11 @@ monitor-several-emails = Mbikëqyrni disa email-e
 take-action = Hidhuni në veprim për mbrojtjen e llogarive tuaja
 keep-your-data-safe = Shihni se ç’ju duhet për t’i mbajtur të dhënat tuaja të parrezikuara nga keqbërës kibernetikë.
 website-breach = Cenim Sajti
+sensitive-breach = Shkelje Sajti Me të Dhëna Rezervat
+data-aggregator-breach = Shkelje të Dhënash Nga Grumbullues
 unverified-breach = Cenim i Paverifikuar
 website-breach-plural = Cenime Sajtesh
+data-aggregator-breach-plural = Shkelje të Dhënash Nga Grumbullues
 unverified-breach-plural = Cenime të Paverifikuara
 what-data = Ç’të dhëna u komprometuan:
 sensitive-sites = Si i trajton { -product-name } sajtet me të dhëna rezervat?
@@ -363,3 +369,7 @@ breach-alert-notifications = Njoftime Sinjalizimi Shkeljesh
 breach-added-label = Shkelje e shtuar më:
 how-hackers-work-desc = Mbroni fjalëkalimet tuaja nga keqbërësit kibernetikë, ngaqë kjo është ajo që kanë më për zemër.
 what-to-do-after-breach-desc = Kyçini llogaritë tuaja për t’i mbajtur të dhënat tuaja larg duarsh ku s’duhet të bien.
+create-strong-passwords-desc = Bëjini fjalëkalimet tuaj të fortë, të sigurt dhe të zorshëm për t’u hamendësuar.
+steps-to-protect-desc = Kuptoni kërcënimet më të rëndomta dhe dini se ç’duhet kërkuar.
+five-myths-desc = Mësoni si të shmangen huqe të këqija për fjalëkalimet që e bëjnë të lehtë punën e hacker-ave.
+take-further-steps-desc = Shihni se si të ulen rreziqet e vjedhjes së identitetit për të parandaluar humbje financiare.
