@@ -100,14 +100,21 @@ more-about-this-breach = Më tepër rreth këtij cenimi
 take-control = Rimerrni kontrollin e të dhënave tuaja personale.
 read-more-tips = Lexoni Më Tepër Ndihmëza Sigurie
 how-hackers-work = Kuptoni se si punojnë hacker-at
+stay-alert = Jini i sinjalizuar rreth shkeljesh të reja
+if-your-info = Nëse të dhënat tuaja shfaqen në një shkelje të re të dhënash, do t’ju dërgojmë një sinjalizim.
+search-all-emails = Kërkoni për shkelje me krejt adresat tuaja email dhe merrni sinjalizime rreth kërcënimesh të reja.
 monitor-several-emails = Mbikëqyrni disa email-e
 take-action = Hidhuni në veprim për mbrojtjen e llogarive tuaja
+keep-your-data-safe = Shihni se ç’ju duhet për t’i mbajtur të dhënat tuaja të parrezikuara nga keqbërës kibernetikë.
 website-breach = Cenim Sajti
 unverified-breach = Cenim i Paverifikuar
 website-breach-plural = Cenime Sajtesh
 unverified-breach-plural = Cenime të Paverifikuara
 what-data = Ç’të dhëna u komprometuan:
+sensitive-sites = Si i trajton { -product-name } sajtet me të dhëna rezervat?
+sensitive-sites-copy = { -product-name } vë në dukje llogaritë me këto lloje shkeljesh vetëm pasi të jetë verifikuar një adresë email. Kjo do thotë se jeni i vetmi person që mund të shohë nëse të dhënat tuaja qenë pjesë e kësaj shkeljeje (veç në pastë dikush tjetër hyrje te llogaria juaj email).
 delayed-reporting-headline = Pse u desh kaq shumë kohë për njoftimin e këtij cenimi?
+delayed-reporting-copy = Ndonjëherë mund të hajë muaj ose vite që kredenciale të ekspozuara në një shkelje të dhënash të shfaqen në web-in e errët. Shkeljet shtohen te baza jonë e të dhënave sapo të jenë zbuluar dhe verifikuar.
 about-fxm-headline = Rreth { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Si funksionon { -product-name }
@@ -295,8 +302,18 @@ want-to-add = Doni të shtoni tjetër email?
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+email-verified = Email-i u Verifikua Me Sukses!
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = hyni
 
 
 
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Njoftime Sinjalizimi Shkeljesh
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Shkelje e shtuar më:
