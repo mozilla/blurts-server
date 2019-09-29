@@ -149,6 +149,7 @@ send-verification = Dërgo Lidhje Verifikimi
 breach-summary = Përmbledhje Cenimi
 show-breaches-for-this-email = Shfaq krejt cenimet për këtë email.
 remove-fxm = Hiqeni { -product-name }
+remove-fxm-blurb = Çaktivizoni sinjalizime { -product-name }. { -brand-fxa } e juaj do të mbetet aktive, dhe mund të merrni njoftime të tjera të lidhura me llogarinë.
 # Button title
 manage-email-addresses = Administroni Adresa Email
 # Link title
@@ -156,10 +157,29 @@ latest-breach-link = Shihni nëse qetë pjesë e këtij cenimi
 welcome-back = Mirë se u rikthyet, { $userName }!
 welcome-user = Mirë se vini, { $userName }!
 breach-alert-subject = { -product-name } e gjeti email-in tuaj të ri në një cenim të dhënash
+your-info-was-discovered-headline = Të dhënat tuaja janë pikasur në një shkeljeje të re dhënash.
+your-info-was-discovered-blurb = Jeni regjistruar të merrni sinjalizime { -product-name }, kur email-i juaj duket në një shkelje të dhënash. Ja se ç’dimë rreth kësaj shkeljeje.
 what-to-do-after-breach = Ç’të bëhet pas një cenimi të dhënash
+ba-next-step-1 = Ndryshojeni fjalëkalimin tuaj me një fjalëkalim të fortë, unik.
+ba-next-step-blurb-1 =
+    Një fjalëkalim i fuqishëm përdor një ndërthurje shkronjash të mëdha dhe të vogla, 
+    shenja speciale dhe numra. Nuk përmban të dhëna personale, të tilla si adresa juaj, datëlindja apo emra të familjes.
+ba-next-step-2 = Reshtni krejtësisht së përdoruri atë fjalëkalim të ekspozuar.
+ba-next-step-blurb-2 = Keqbërësit kibernetikë mund ta gjejnë fjalëkalimin tuaj në web-in e errët dhe ta përdorin për të hyrë në llogari tuajat të tjera. Rruga më e mirë për të mbrojtur fjalëkalimet tuaj është të përdorni fjalëkalim unikë për secilën.
+ba-next-step-3 = Merrni ndihmë për krijim fjalëkalimesh më të mirë dhe për t’i mbajtur të parrezikuar.
+ba-next-step-blurb-3 = Përdorni një përgjegjës fjalëkalimesh, për krijim fjalëkalimesh të fuqishëm, unikë. Përgjegjësit e fjalëkalimeve i depozitojnë të parrezikuar krejt kredencialet tuaja të hyrjeve, që të mund t’i përdorni nëpër krejt pajisjet tuaja.
+faq1 = Nuk e njoh këtë shoqëri apo sajt. Çne unë në këtë shkelje?
 faq2 = Pse u desh kaq shumë kohë për të më njoftuar këtë cenim?
+faq3 = Nga ta di se ky është një email legjitim prej { -product-name }?
 
 ## Updated error messages
 
 # Form title
 want-to-add = Doni të shtoni tjetër email?
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+
+
+
