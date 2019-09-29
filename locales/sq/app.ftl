@@ -171,9 +171,97 @@ ba-next-step-blurb-3 = Përdorni një përgjegjës fjalëkalimesh, për krijim f
 faq1 = Nuk e njoh këtë shoqëri apo sajt. Çne unë në këtë shkelje?
 faq2 = Pse u desh kaq shumë kohë për të më njoftuar këtë cenim?
 faq3 = Nga ta di se ky është një email legjitim prej { -product-name }?
+new-breaches-found =
+    { $breachCount ->
+        [one] U GJET { $breachCount } SHKELJE E RE
+       *[other] U GJETËN { $breachCount } SHKELJE TË REJA
+    }
+sign-up-headline-1 = Merrni sinjalizime të vazhdueshëm me një { -brand-fxa }.
+account-not-required = Shfletuesi { -brand-name } s’është i domosdoshëm për një { -brand-fxa }. Mund të merrni të dhëna rreth shërbimeve { -brand-Mozilla }.
+was-your-info-exposed = A janë ekspozuar të dhënat tuaja në shkeljen e të dhënave { $breachName }?
+find-out-if = Shihni nëse janë ekspozuar të dhëna tuajat në këtë shkelje.
+fb-not-comp = Ky email nuk u shfaq në shkeljen e të dhënave { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Por, u shfaq në { $breachCount } shkelje tjetër.
+       *[other] Por, u shfaq në { $breachCount } shkelje të tjera.
+    }
+fb-comp-only = Ky email u pa te shkelja { $breachName }.
+no-other-breaches-found = S’u gjetën shkelje të tjera nga një kërkim elementar.
+no-results-blurb = Na ndjeni, ajo shkelje s’gjendet në bazën tonë të të dhënave.
+all-breaches-headline = Krejt shkeljet te { -product-name }
+search-breaches = Kërkoni Te Shkeljet
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Po shfaqen:
 
 ## Updated error messages
 
+error-bot-headline = Kërkimet janë pezulluar përkohësisht
+error-bot-blurb = Patëm frikë se mos qetë një robot, ngaqë kërkuar me disa adresa email brenda një periudhe të shkurtër kohore. Hëpërhë ju është bllokuar kryerja e kërkimeve të reja. Mund të riprovoni më vonë.
+error-csrf-headline = Sesionit i mbaroi koha
+error-csrf-blurb = Shtypni butonin Mbrapsht te shfletuesi juaj, ringarkoni faqen dhe riprovoni.
+error-invalid-unsub = Si të shpajtoheni prej sinjalizimesh { -product-name }
+error-invalid-unsub-blurb =
+    Do t’ju duhet të shpajtoheni prej një nga email-et që ju ka dërguar { -product-name }. Shihni te mesazhet tuaj për mesazhe nga 
+    { -brand-team-email }. Përzgjidhni lidhjen e shpajtimit në fund të email-it.
+login-link = Hyni
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] Adresë email që mbikëqyret
+       *[other] Adresa email që mbikëqyren
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+data-breaches-exposed =
+    { $breaches ->
+        [one] Shkelje të dhënash ka ekspozuar të dhëna tuajat
+       *[other] Shkelje të dhënash kanë ekspozuar të dhëna tuajat
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Fjalëkalim i ekspozuar nëpër krejt shkeljet
+       *[other] Fjalëkalime të ekspozuar nëpër krejt shkeljet
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] Shkelje e ditur të dhënash ka ekspozuar të dhëna tuajat
+       *[other] Shkelje të ditura të dhënash kanë ekspozuar të dhëna tuajat
+    }
+# Button
+see-additional-breaches = Shihni Shkelje të Tjera
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Ky email i shfaq në 1 shkelje të ditur të dhënash.
+       *[other] Ky email u shfaq në { $breachCount } shkelje të ditura të dhënash.
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Përfundime për: { $userEmail }
+other-monitored-emails = Email-e të Tjerë të Mbikëqyrur
+email-verification-required = Lypset Verifikim Email-i
+fxa-primary-email = Email { -brand-fxa } - Parësor
+what-is-a-website-breach = Ç’është një shkelje sajti?
+website-breach-blurb = Një shkelje të dhënash sajti ndodh kur keqbërës kibernetikë vjedhin, kopjojnë ose ekspozojnë të dhëna personale prej llogarish internetore. Zakonisht është rrjedhojë e gjetjes nga ana e hacker-ave të një pike të dobët në sigurinë e sajtit. Shkelje mund të ndodhin edhe kur të dhëna të një llogarie rrjedhin aksidentalisht.
+security-tips-headline = Ndihmëza sigurie për mbrojtjen e vetvetes nga hacker-at
+steps-to-protect = Hapa për t’u ndërmarrë për mbrojtjen e identitetit tuaj internetor
+take-further-steps = Ndërmerrni hapa të mëtejshëm për mbrojtjen e identitetit tuaj
+alert-about-new-breaches = Sinjalizomëni rreth shkeljesh të reja
+see-if-youve-been-part = Shihni nëse jeni prekur nga ndonjë shkelje e të dhënave në internet.
+get-ongoing-breach-monitoring = Përfitoni mbikëqyrje të vazhdueshme rreth shkeljesh, për shumë adresa email.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Shiheni
+new-unsub-error = Do t’ju duhet të shpajtoheni që prej një nga email-et e dërguar nga  { -product-name }.
 # Form title
 want-to-add = Doni të shtoni tjetër email?
 
