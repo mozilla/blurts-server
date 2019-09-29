@@ -430,6 +430,20 @@ want-to-add = Хочете додати іншу адресу електронн
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Перейдіть за посиланням, надісланим на { $userEmail } для додавання до { -product-name }.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+email-verified = Електронна пошта успішно перевірена!
+email-added-to-subscription = Ми повідомимо вас, якщо { $email } з'явиться в новому витоку даних.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = Щоб переглянути та керувати всіма електронними поштами, які ви зареєстрували для моніторингу порушень, { $nestedSignInLink }.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = Увійти
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
