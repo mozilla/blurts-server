@@ -117,9 +117,10 @@ p.email-small-text {
   border-radius: 10px !important;
   background-color: rgb(0, 96, 223);
   color: rgba(255, 255, 255, 1);
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   font-weight: 400;
   font-size: 17px;
+  max-width: 420px;
 }
 
 .email-footer tr {
@@ -142,17 +143,35 @@ table.table-button tr {
   margin-top: 30px;
 }
 
-.faq-header {
-  text-align: left;
-  font-size: 19px;
+.pre-fxa-subscriber-message td {
+  padding-top: 30px !important;
   border-top: 1px solid #eee;
-  padding: 30px 0 10px 0;
+}
+
+.pre-fxa-headline {
+  font-size: 20px;
+  font-weight: 800;
+  padding-top: 16px;
+}
+
+.pre-fxa-subhead {
+  max-width: 310px;
+}
+
+a.pre-fxa-nested-link,
+a.faq-link {
+  color: var(--blue4);
 }
 
 a.faq-link {
-  color: var(--blue4) !important;
   text-align: left;
   padding-top: 5px;
+}
+
+.faq-header {
+  text-align: left;
+  font-size: 19px;
+  padding: 30px 0 10px 0;
 }
 
 td.email-faq-bullet {

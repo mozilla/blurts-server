@@ -31,6 +31,7 @@ async function getEmailMockUps(req, res) {
           emailSubject: req.fluentFormat("breach-alert-subject"),
           breachAlert: req.app.locals.breaches.filter(breach => breach.Name === "LinkedIn")[0],
           unsafeBreachesForEmail: null,
+          preFxaSubscriber: true,
         };
       case "email_verify":
         return {
@@ -62,6 +63,7 @@ async function getEmailMockUps(req, res) {
     recipientEmail: "pretendEmail@testing.com",
     breachAlert: emailContent.breachAlert,
     emailSubject: emailContent.emailSubject,
+    preFxaSubscriber: emailContent.preFxaSubscriber,
     email,
   });
 }
