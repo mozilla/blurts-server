@@ -366,6 +366,11 @@ verify-the-link = Verificar el enlace enviado a { $userEmail } para agregarlo a 
 
 email-verified = ¡Correo electrónico verificado correctamente!
 email-added-to-subscription = Te vamos a avisar si  { $email } aparece en una violación de datos.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = Para ver y administrar todos los correos electrónicos que suscribiste para el monitoreo de violaciones, { $nestedSignInLink }.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = iniciar sesión
 
 
 
