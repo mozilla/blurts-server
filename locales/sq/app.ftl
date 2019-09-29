@@ -122,6 +122,7 @@ sensitive-breach = Shkelje Sajti Me të Dhëna Rezervat
 data-aggregator-breach = Shkelje të Dhënash Nga Grumbullues
 unverified-breach = Cenim i Paverifikuar
 website-breach-plural = Cenime Sajtesh
+sensitive-breach-plural = Shkelje Sajtesh Me të Dhëna Rezervat
 data-aggregator-breach-plural = Shkelje të Dhënash Nga Grumbullues
 unverified-breach-plural = Cenime të Paverifikuara
 what-data = Ç’të dhëna u komprometuan:
