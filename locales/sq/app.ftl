@@ -262,12 +262,41 @@ get-ongoing-breach-monitoring = Përfitoni mbikëqyrje të vazhdueshme rreth shk
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Shiheni
 new-unsub-error = Do t’ju duhet të shpajtoheni që prej një nga email-et e dërguar nga  { -product-name }.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Por u shfaq në { $breachCount } shkelje tjetër të ditur.
+       *[other] Por u shfaq në { $breachCount } shkelje të tjera të ditura.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Të dhëna shtesë, përfshi:
+# Title
+email-addresses-title = Adresa Email
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = Më { $breachDate } ndodhi { $breachTitle }. Pasi u zbulua dhe u verifikua shkelja, u shtua te baza jonë e të dhënave më { $addedDate }.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = Parapëlqime { -product-short-name }
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = I futur si: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Filtrojini sipas Kategorish:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menu
+# Link title
+learn-more-link = Mësoni më tepër.
+email-sent = Email-i u Dërgua!
 # Form title
 want-to-add = Doni të shtoni tjetër email?
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = hyni
 
 
 
