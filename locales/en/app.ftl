@@ -5,6 +5,7 @@
 -product-name-nowrap = <span class="nowrap">{-product-name}</span>
 -product-short-name = Monitor
 -brand-name = Firefox
+-brand-firefox-browser = Firefox Browser
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox Account
