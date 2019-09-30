@@ -303,7 +303,6 @@ error-invalid-unsub-blurb =
     You’ll need to unsubscribe from one of the 
     emails { -product-name } sent you. Check your inbox for messages from 
     { -brand-team-email }. Select the unsubscribe link at the bottom of the email.
-login-link = Log in
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -396,6 +395,20 @@ want-to-add = Want to add another email?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Verify the link sent to { $userEmail } to add it to { -product-name }.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+email-verified = Email Successfully Verified!
+email-added-to-subscription = We’ll alert you if { $email } appears in a data breach.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = To see and manage all emails you’ve signed up for breach monitoring, { $nestedSignInLink }.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = sign in
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
