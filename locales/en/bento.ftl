@@ -3,11 +3,11 @@ pocket = {-brand-pocket}
 fx-send = {-brand-send}
 fx-lockwise = {-brand-lockwise}
 
-# Title of link inside the Bento menu
-fx-desktop = {-brand-firefox-browser} for Desktop
+# "Firefox Browser" needs to remain in English, "for Desktop" can be localized
+fx-desktop = Firefox Browser for Desktop
 
-# Title of link inside the Bento menu
-fx-mobile = {-brand-firefox-browser} for Mobile
+# "Firefox Browser" needs to remain in English, "for Mobile" can be localized
+fx-mobile = Firefox Browser for Mobile
 
 # Aria label for the Bento button
 bento-button-title = {-brand-name} apps and services

@@ -1,9 +1,6 @@
-## String IDs beginning with "-product" and "-brand" should remain in English.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
 
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{-product-name}</span>
 -product-short-name = Monitor
@@ -13,7 +10,6 @@
 -brand-fxa = Firefox Account
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
--brand-firefox-browser = Firefox Browser
 -brand-send = Firefox Send
 ##
 
