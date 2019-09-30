@@ -403,6 +403,20 @@ want-to-add = Eisiau ychwanegu e-bost arall?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Gwiriwch y ddolen a anfonwyd at { $userEmail } i'w hychwanegu at { -product-name }.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+email-verified = E-bost Wedi'i Wirio'n Llwyddiannus!
+email-added-to-subscription = Byddwn yn eich hysbysu os yw { $email } yn ymddangos mewn tor-data newydd.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = I weld a rheoli pob e-bost rydych wedi cofrestru ar gyfer monitro tor-data, { $nestedSignInLink }.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = mewngofnodi
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
