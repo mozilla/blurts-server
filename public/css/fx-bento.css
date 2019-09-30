@@ -25,11 +25,12 @@ firefox-apps {
   z-index: calc(var(--zIndex) + 1);
   padding: 24px 0;
   box-shadow: 0 7px 12px -3px rgba(28, 28, 29, 0.502);
+  border: 1px solid transparent; /* creates outline of bento menu in high contrast mode */
 }
 
 .fx-bento-content.active {
   display: flex;
-  transform: translateY(5px);
+  transform: translateY(7px);
   animation: fxBentoAppear ease 0.3s;
   -webkit-animation: fxBentoAppear ease 0.3s;
   -moz-animation: fxBentoAppear ease 0.3s;
@@ -41,13 +42,15 @@ firefox-apps {
   height: 12px;
   width: 12px;
   position: absolute;
-  top: -6px;
+  top: -7px;
   left: 0;
   right: 0;
   margin: auto;
   transform: rotate(45deg);
   border-top-left-radius: 1px;
   background-color: rgb(249, 249, 250);
+  border-top: 1px solid transparent; /* creates outline in high-contrast mode */
+  border-left: 1px solid transparent; /* creates outline in high-contrast mode */
 }
 
 .fx-bento-logo {
@@ -85,6 +88,10 @@ a.fx-bento-app-link {
   white-space: nowrap;
   color: var(--textColor);
   text-align: left;
+}
+
+a.fx-bento-app-link:hover { /* Creates a hover state in high-contrast modes */
+  outline: 1px solid transparent;
 }
 
 .fx-bento-app-link::before {
@@ -138,7 +145,7 @@ a.fx-bento-app-link {
   width: 36px;
   height: 36px;
   max-height: 36px;
-  border: none;
+  border: 1px solid transparent; /* Creates outline in high-contrast modes */
   border-radius: 1px;
   padding: 0;
   box-shadow: 0 0 0 4px rgba(255, 255, 255, 0);
@@ -149,7 +156,7 @@ a.fx-bento-app-link {
 .fx-bento-button:focus {
   box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.2);
   background-color: rgba(255, 255, 255, 0.2);
-  border: 0;
+  border: 1px solid transparent; /* Creates outline in high-contrast modes */
   outline: 0;
 }
 
@@ -165,7 +172,7 @@ a.fx-bento-app-link {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: -1;
+  z-index: -1; /* Creates outline of bento menu in high-contrast mode */
 }
 
 button.fx-bento-mobile-close {
