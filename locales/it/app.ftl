@@ -244,7 +244,6 @@ error-csrf-headline = La sessione è scaduta
 error-csrf-blurb = Seleziona il pulsante Indietro del browser, ricarica la pagina e riprova.
 error-invalid-unsub = Come annullare l’iscrizione agli avvisi di { -product-name }
 error-invalid-unsub-blurb = Dovrai annullare l'iscrizione utilizzando una delle email inviate da { -product-name }. Controlla la tua casella di posta per i messaggi da { -brand-team-email }. Seleziona il link per annullare l’iscrizione nella parte finale dell'email.
-login-link = Accedi
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -337,6 +336,16 @@ want-to-add = Vuoi aggiungere un’altra email?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Verifica il link inviato a { $userEmail } per aggiungere l’indirizzo a { -product-name }.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+email-verified = Indirizzo email verificato correttamente.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = accedi
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
