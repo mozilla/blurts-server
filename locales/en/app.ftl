@@ -401,14 +401,6 @@ email-addresses-being-monitored =
     [other] Email addresses being monitored
   }
 
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-  { $breaches ->
-    [one] Data breach has exposed your information
-   *[other] Data breaches have exposed your information
-  }
 
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -424,8 +416,8 @@ passwords-exposed =
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
   { $breaches ->
-    [one] Known data breach has exposed your information
-   *[other] Known data breaches have exposed your information
+    [one] Known data breach has exposed your info
+   *[other] Known data breaches have exposed your info
   }
 
 # Button
