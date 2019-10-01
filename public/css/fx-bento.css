@@ -1,5 +1,5 @@
 firefox-apps {
-  --bentoButtonHeight: 36px;
+  --bentoButtonHeight: 25px;
   --zIndex: 10000;
   --appIconHeight: 16px;
   --textColor: rgb(32, 18, 58);
@@ -11,7 +11,13 @@ firefox-apps {
   text-align: center;
   z-index: var(--zIndex);
   font-size: 12px;
+  width: var(--bentoButtonHeight);
+  min-height: var(--bentoButtonHeight);
   color: var(--textColor);
+  background: url("/img/fx-bento-sprites.png");
+  background-position-x: -215.5px;
+  background-position-x: -224px;
+  background-size: auto var(--bentoButtonHeight);
 }
 
 .fx-bento-content {
@@ -83,15 +89,10 @@ firefox-apps {
 a.fx-bento-app-link {
   padding: 10px 16px 10px calc(var(--appIconHeight) + 32px);
   background-color: rgba(255, 255, 255, 0);
-  box-shadow: 0 -1px 0 0 rgba(255, 255, 255, 0);
   position: relative;
   white-space: nowrap;
   color: var(--textColor);
   text-align: left;
-}
-
-a.fx-bento-app-link:hover { /* Creates a hover state in high-contrast modes */
-  outline: 1px solid transparent;
 }
 
 .fx-bento-app-link::before {
@@ -104,8 +105,7 @@ a.fx-bento-app-link:hover { /* Creates a hover state in high-contrast modes */
   height: var(--appIconHeight);
   width: var(--appIconHeight);
   background: url("/img/fx-bento-sprites.png");
-  background-repeat: no-repeat;
-  background-size: cover !important;
+  background-size: auto var(--appIconHeight);
   content: "";
 }
 
@@ -137,18 +137,15 @@ a.fx-bento-app-link:hover { /* Creates a hover state in high-contrast modes */
 }
 
 .fx-bento-button {
-  background: url("/img/fx-bento-sprites.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-position-x: -305px;
-  background-size: cover;
-  width: 36px;
-  height: 36px;
-  max-height: 36px;
+  width: var(--bentoButtonHeight);
+  min-width: var(--bentoButtonHeight);
+  height: var(--bentoButtonHeight);
+  max-height: var(--bentoButtonHeight);
+  min-height: var(--bentoButtonHeight);
   border: 1px solid transparent; /* Creates outline in high-contrast modes */
   border-radius: 1px;
   padding: 0;
-  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0);
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0);
   pointer-events: all;
 }
 
@@ -168,6 +165,7 @@ a.fx-bento-app-link:hover { /* Creates a hover state in high-contrast modes */
 
 .fx-bento-close.active { /* transparent div that spans the entire background height/width of the browser window when the bento is open and captures clicks to close the bento */
   position: fixed;
+  min-height: 100vh;
   top: 0;
   bottom: 0;
   left: 0;

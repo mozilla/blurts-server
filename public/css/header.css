@@ -168,12 +168,11 @@ nav {
   align-items: center;
   position: relative;
   overflow: hidden;
-  border: 2px solid rgba(0, 0, 0, 0);
+  border: 2px solid rgba(255, 255, 255, 1);
 }
 
 .fxa-menu-wrapper {
   cursor: pointer;
-  margin-left: 1rem;
   position: relative;
 }
 
@@ -181,7 +180,6 @@ nav {
 .avatar {
   height: 42px;
   width: 42px;
-  border: 2px solid rgba(255, 255, 255, 1);
 }
 
 /* signed-in user menu */
