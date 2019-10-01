@@ -299,7 +299,6 @@ error-invalid-unsub-blurb =
     Jo moatte jo ôfmelde fan ien fan de
     e-mailberichten út dy't { -product-name } jo stjoerd hat. Sjoch yn jo Postfek YN foar berjochten
     fan { -brand-team-email }. Selektear ûnderoan it e-mailberjocht de keppeling foar ôfmelden.
-login-link = Oanmelde
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -392,6 +391,20 @@ want-to-add = Wolle jo noch in e-mailadres tafoegje?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Ferifiearje de keppeling dy't nei { $userEmail } ferstjoerd is om dy oan { -product-name } ta te foegjen.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+email-verified = E-mailadres mei sukses ferifiearre!
+email-added-to-subscription = Wy stjoere jo in warskôging as { $email } troch in datalek troffen is.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = { $nestedSignInLink } om alle e-mailadressen dy't jo oanmeld hawwe foar beweitsjen op lekken te besjen en te behearen.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = oanmelde
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
