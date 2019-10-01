@@ -95,9 +95,25 @@ function makeFaqLink(target, campaign) {
 }
 
 function makePreFxaSubscriberMessage(args) {
+  const serverUrl = args.data.root.SERVER_URL;
   const locales = args.data.root.supportedLocales;
-  const nestedLink = `<a class="pre-fxa-nested-link" href="https://accounts.firefox.com/?utm=whatshouldthisbe?" style="color: #0060df; font-family: sans-serif; font-weight: 400; font-size: 16px; text-decoration: none;">${LocaleUtils.fluentFormat(locales, "create-a-free-fxa")}</a>`;
-  return LocaleUtils.fluentFormat(locales, "pre-fxa-message", {createFreeFxaLink: nestedLink});
+  const url = new URL(`${serverUrl}/#fx-account-features`);
+
+  const utmParameters = {
+    utm_source : "fx-monitor-email",
+    utm_medium : "email",
+    utm_content : "breach-alert",
+    utm_campaign : "pre-fxa-subscribers",
+  };
+  for (const param in utmParameters) {
+    url.searchParams.append(param, utmParameters[param]);
+  }
+  let preFxaMessage = LocaleUtils.fluentFormat(locales, "pre-fxa-message");
+  if ((/<a>/).test(preFxaMessage) && (/<\/a>/).test(preFxaMessage)) {
+      const openingAnchorTag = `<a class="pre-fxa-nested-link" href="${url}" style="color: #0060df; font-family: sans-serif; font-weight: 400; font-size: 16px; text-decoration: none;">`;
+      preFxaMessage = preFxaMessage.replace("<a>", openingAnchorTag);
+    }
+  return preFxaMessage;
 }
 
 

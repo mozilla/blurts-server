@@ -161,18 +161,9 @@ faq-v2-3 = I just found out I’m in a data breach. What do I do next?
 # Link Title
 faq-v2-4 = How does {-product-name} treat sensitive sites?
 
-
-# This is the title of a link that is nested inside { pre-fxa-subhead }.
-# Together these strings read:
-# "Create a free Firefox Account, and you can add up to 15 email addresses."
-create-a-free-fxa = Create a free {-brand-fxa}
-
-# This string appears in breach alert emails to subribers who signed up before
-# a Firefox Account was required. Combined with { create-a-free-fxa }, the message
-# reads: "Create a free Firefox Account, and you can add up to 15 email addresses."
-# Variables:
-#    $createFreeFxaLink (String) = Create a free Firefox Account
-pre-fxa-message = { $createFreeFxaLink }, and you can add up to 15 email addresses.
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Create a free {-brand-fxa}</a>, and you can add up to 15 email addresses.
 
 # Section headline
 monitor-another-email = Want to monitor another email?

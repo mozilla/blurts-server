@@ -15,7 +15,9 @@ const log = mozlog("controllers.hibp");
 
 // Get addresses and language from either subscribers or
 // email_addresses fields
+
 function getAddressesAndLanguageForEmail(recipient) {
+  const preFxaSubscriber = recipient.fxa_uid ? true : false; 
   const signupLanguage = recipient.signup_language;
   if (recipient.hasOwnProperty("email") && recipient.email) {
     // email_addresses record, check all_emails_to_primary
@@ -24,21 +26,21 @@ function getAddressesAndLanguageForEmail(recipient) {
         recipientEmail: recipient.primary_email,
         breachedEmail: recipient.email,
         signupLanguage,
-        preFxaSubscriber: false,
+        preFxaSubscriber,
       };
     }
     return {
       recipientEmail: recipient.email,
       breachedEmail: recipient.email,
       signupLanguage,
-      preFxaSubscriber: false,
+      preFxaSubscriber,
     };
   }
   return {
     recipientEmail: recipient.primary_email,
     breachedEmail: recipient.primary_email,
     signupLanguage,
-    preFxaSubscriber: true,
+    preFxaSubscriber,
   };
 }
 
