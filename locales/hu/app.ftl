@@ -303,7 +303,6 @@ error-invalid-unsub-blurb =
     Le kell iratkoznia az egyik Önnek
     küldött { -product-name } e-mailről. Nézze meg a bejövő leveleit a
     { -brand-team-email } címtől. Válassza az e-mail alján lévő leiratkozási hivatkozást.
-login-link = Bejelentkezés
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -311,14 +310,6 @@ email-addresses-being-monitored =
     { $emails ->
         [one] Figyelt e-mail cím
        *[other] Figyelt e-mail címek
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-        [one] Adatsértés miatt kikerültek az adatai
-       *[other] Adatsértések miatt kikerültek az adatai
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -396,6 +387,20 @@ want-to-add = Hozzáad egy másik e-mail címet?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Erősítse meg a(z) { $userEmail } címre küldött hivatkozást, hogy hozzáadja a { -product-name }hoz.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+email-verified = E-mail cím sikeresen megerősítve.
+email-added-to-subscription = Értesítjük, ha a(z) { $email } megjelenik egy adatsértésben.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = Hogy megtekintse és kezelje az összes e-mail címet, amelynél figyelésre iratkozott fel, { $nestedSignInLink }.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = jelentkezzen be
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
