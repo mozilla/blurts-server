@@ -113,3 +113,8 @@ faq-v2-2 = Behöver jag göra någonting om ett intrång inträffade för några
 faq-v2-3 = Jag fick reda på att jag finns med i ett dataintrång. Vad ska jag göra nu?
 # Link Title
 faq-v2-4 = Hur behandlar { -product-name } känsliga webbplatser?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Skapa ett gratis { -brand-fxa }</a> och du kan lägga till upp till 15 e-postadresser.
+# Section headline
+monitor-another-email = Vill du övervaka en ny e-postadress?
