@@ -5,11 +5,11 @@ fx-lockwise = {-brand-lockwise}
 
 # If possible, keep "Firefox Browser" in English, but feel free 
 # to translate browser if that doesn't work for your language.
-fx-desktop = {-brand-firefox} Browser for Desktop
+fx-desktop = {-brand-name} Browser for Desktop
 
 # If possible, keep "Firefox Browser" in English, but feel free 
 # to translate browser if that doesn't work for your language.
-fx-mobile = {-brand-firefox} Browser for Mobile
+fx-mobile = {-brand-name} Browser for Mobile
 
 # Aria label for the Bento button
 bento-button-title = {-brand-name} apps and services
