@@ -49,26 +49,33 @@ async function sendPing(el, eventAction, eventLabel = null) {
   }
 }
 
-
-function getFxaUtms(url) {
-  const bodyDataset = document.body.dataset;
+function appendFxaParams(url, storageObject) {
   getUTMNames().forEach(param => {
-    if (bodyDataset[param]) {
-      url.searchParams.append(param, encodeURIComponent(bodyDataset[param]));
+    if (storageObject[param]) {
+      url.searchParams.append(param, encodeURIComponent(storageObject[param]));
     }
   });
-  url.searchParams.append("form_type", "email");
   return url;
+}
+
+function getFxaUtms(url) {
+  if (sessionStorage) {
+    return appendFxaParams(url, sessionStorage);
+    }
+
+  return appendFxaParams(url, document.body.dataset);
 }
 
 function saveReferringPageData(utmParams) {
   const bodyDataset = document.body.dataset;
-  getUTMNames().forEach(param => {
-    if (utmParams.has(param)) {
-      const cleanParam = utmParams.get(param);
-      bodyDataset[param] = cleanParam.replace(/[&<>"',.`=:/]/g, "");
-    }
-  });
+  if (sessionStorage) {
+    getUTMNames().forEach(param => {
+      if(!sessionStorage[param]) {
+        sessionStorage[param] = utmParams.get(param);
+      }
+    });
+    return;
+  }
 }
 
 function getUTMNames() {
