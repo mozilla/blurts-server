@@ -106,3 +106,8 @@ faq-v2-2 = A oes angen i mi wneud unrhyw beth os digwydd tor-data flynyddoedd yn
 faq-v2-3 = Rwyf newydd ddeall fy mod i mewn tor-data. Beth ddylwn i ei wneud nesaf?
 # Link Title
 faq-v2-4 = Sut mae { -product-name } yn trin gwefannau sensitif?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a> Crëwch { -brand-fxa } </a> am ddim, a gallwch ychwanegu hyd at 15 cyfeiriad e-bost.
+# Section headline
+monitor-another-email = Am fonitro e-bost arall?
