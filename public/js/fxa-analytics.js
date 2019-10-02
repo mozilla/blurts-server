@@ -61,7 +61,7 @@ function appendFxaParams(url, storageObject) {
 function getFxaUtms(url) {
   if (sessionStorage) {
     return appendFxaParams(url, sessionStorage);
-    }
+  }
 
   return appendFxaParams(url, document.body.dataset);
 }
