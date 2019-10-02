@@ -115,3 +115,8 @@ faq-v2-2 = Muss ich irgendetwas tun, wenn ein Datenleck schon Jahre alt ist oder
 faq-v2-3 = Ich habe gerade erfahren, dass ich von einem Datenleck betroffen bin. Was muss ich jetzt tun?
 # Link Title
 faq-v2-4 = Wie behandelt { -product-name } vertrauliche Websites?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Erstellen Sie ein kostenloses { -brand-fxa }</a>, dann können Sie bis zu 15 E-Mail-Adressen hinzufügen.
+# Section headline
+monitor-another-email = Sollen noch weitere E-Mail-Adressen überwacht werden?
