@@ -117,3 +117,8 @@ faq-v2-2 = Moat ik wat dwaan as in datalek jierren lyn bard is of as dit in âld
 faq-v2-3 = Ik kaam der krekt efter dat ik yn in datalek foar kom. Wat moat ik dwaan?
 # Link Title
 faq-v2-4 = Hoe behannelet { -product-name } gefoelige websites?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Meitsje in fergees { -brand-fxa }</a> en jo kinne maksimaal 15 e-mailadressen tafoegje.
+# Section headline
+monitor-another-email = Wolle jo in oar e-mailadres kontrolearje?
