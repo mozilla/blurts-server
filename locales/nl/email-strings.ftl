@@ -119,6 +119,6 @@ faq-v2-3 = Ik kwam er net achter dat ik in een datalek voor kom. Wat moet ik doe
 faq-v2-4 = Hoe behandelt { -product-name } gevoelige websites?
 # This string contains nested markup that becomes a link to Firefox Monitor
 # later in the code. Please do not modify or remove "<a>" and "</a>".
-pre-fxa-message = <a>Maak een gratis { -brand-fxa }</a> en u kunt maximaal 15 e-mailadressen toevoegen.
+pre-fxa-message = <a>Maak een gratis { -brand-fxa }</a> en u kunt tot 15 e-mailadressen toevoegen.
 # Section headline
-monitor-another-email = Wilt u een ander e-mailadres controleren?
+monitor-another-email = Wilt u een ander e-mailadres volgen?
