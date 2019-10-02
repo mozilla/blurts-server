@@ -17,7 +17,7 @@ const log = mozlog("controllers.hibp");
 // email_addresses fields
 
 function getAddressesAndLanguageForEmail(recipient) {
-  const preFxaSubscriber = recipient.fxa_uid ? true : false;
+  const preFxaSubscriber = !recipient.fxa_uid ? true : false;
   const signupLanguage = recipient.signup_language;
   if (recipient.hasOwnProperty("email") && recipient.email) {
     // email_addresses record, check all_emails_to_primary
