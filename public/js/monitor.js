@@ -39,7 +39,7 @@ function doOauth(el) {
   ["flowId", "flowBeginTime", "entrypoint"].forEach(key => {
     url.searchParams.append(key, encodeURIComponent(el.dataset[key]));
   });
-  if (sessionStorage.length > 0) {
+  if (sessionStorage && sessionStorage.length > 0) {
     const lastScannedEmail = sessionStorage.getItem(`scanned_${sessionStorage.length}`);
     url.searchParams.append("email", lastScannedEmail);
   }
