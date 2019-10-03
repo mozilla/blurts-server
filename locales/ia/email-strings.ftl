@@ -109,3 +109,5 @@ faq-v2-2 = Besonia io de facer alco si un violation eveniva annos retro o es sol
 faq-v2-3 = Io ha justo trovate que io es in un violation de datos. Que debe io facer?
 # Link Title
 faq-v2-4 = Como tracta { -product-name } le sitos sensibile?
+# Section headline
+monitor-another-email = Vole tu adder un altere adresse email?
