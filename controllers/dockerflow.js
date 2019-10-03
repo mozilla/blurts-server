@@ -27,6 +27,7 @@ if (!fs.existsSync(versionJsonPath)) {
     commit,
     source: homepage,
     version,
+    languages: AppConstants.SUPPORTED_LOCALES,
   };
 
   fs.writeFileSync(versionJsonPath, JSON.stringify(versionJson, null, 2) + "\n");
@@ -40,6 +41,7 @@ function vers (req, res) {
       commit: process.env.HEROKU_SLUG_COMMIT,
       version: process.env.HEROKU_SLUG_COMMIT,
       source: homepage,
+      languages: AppConstants.SUPPORTED_LOCALES,
     });
     /* eslint-enable no-process-env */
   }
