@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -10,6 +8,12 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox Account
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = Términos y privacidad
 GitHub-link-title = GitHub
 error-scan-page-token = Intentaste escanear demasiadas direcciones de correo electrónico en un corto período de tiempo. Por razones de seguridad, bloqueamos tus búsquedas temporariamente. Podés probar de nuevo dentro de un rato.
@@ -267,7 +271,6 @@ error-csrf-headline = Sesión caducada
 error-csrf-blurb = Seleccioná el botón atrás del navegador, recargá la página e intentá nuevamente.
 error-invalid-unsub = Cómo anular la suscripción de las alertas de { -product-name }
 error-invalid-unsub-blurb = Necesitarás darte de baja desde uno de los correos electrónicos que { -product-name } te envió. Buscá en tu bandeja de entrada los mensajes de { -brand-team-email }. Seleccioná el enlace para darse de baja en el final del mensaje.
-login-link = Ingresar
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -275,14 +278,6 @@ email-addresses-being-monitored =
     { $emails ->
         [one] Dirección de correo electrónico siendo monitoreada
        *[other] Direcciones de correo electrónico siendo monitoreadas
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-        [one] Una filtración de datos ha expuesto tu información
-       *[other] Algunas filtraciones de datos han expuesto tu información
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
