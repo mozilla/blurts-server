@@ -118,3 +118,8 @@ faq-v2-2 = Musím niečo urobiť, ak sa únik odohral pred rokmi alebo ak ide o 
 faq-v2-3 = Moje údaje boli súčasťou úniku dát. Čo teraz?
 # Link Title
 faq-v2-4 = Ako { -product-name } narába s chúlostivými stránkami?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Vytvorte si { -brand-fxa }</a> a môžete pridať až 15 e-mailových adries.
+# Section headline
+monitor-another-email = Chcete monitorovať ďalšiu e-mailovú adresu?
