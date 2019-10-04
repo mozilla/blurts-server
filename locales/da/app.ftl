@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -10,6 +8,12 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox-konto
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = Vilkår og beskyttelse af personlige oplysninger
 GitHub-link-title = GitHub
 error-scan-page-token = Du har forsøgt at skanne for mange mail-adresser inden for et kort tidsrum. Vi har af sikkerhedsgrunde blokeret din mulighed for at søge indtil videre. Du kan prøve igen senere.
@@ -303,7 +307,6 @@ error-invalid-unsub-blurb =
     Du kan afmelde dig i én af de mails, som
     du har fået fra { -product-name }. Kig i din indbakke, og find en mail fra
     { -brand-team-email }. Klik så på linket i bunden af mailen for at afmelde.
-login-link = Log ind
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -311,14 +314,6 @@ email-addresses-being-monitored =
     { $emails ->
         [one] mailadresse overvåges
        *[other] mailadresser overvåges
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-        [one] datalæk har kompromitteret dine oplysninger
-       *[other] datalæk har kompromitteret dine oplysninger
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
