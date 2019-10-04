@@ -261,8 +261,9 @@ class FirefoxApps extends HTMLElement {
     const appLinks = getFxAppLinkInfo(this._localizedBentoStrings, this._currentSite);
     appLinks.forEach(app => {
       const newLink = document.createElement("a");
+      const newLinkSpan = createAndAppendEl(newLink, "span", `fx-bento-app-link-span ${app[2]}`);
       newLink.setAttribute("class", `fx-bento-app-link fx-bento-link ${app[2]}`);
-      newLink["textContent"] = app[0];
+      newLinkSpan["textContent"] = app[0];
       ["href", "data-bento-app-link-id"].forEach((attributeName, index) => {
         newLink.setAttribute(attributeName, app[index + 1]);
       });
@@ -274,5 +275,11 @@ class FirefoxApps extends HTMLElement {
   }
 }
 
-customElements.define("firefox-apps", FirefoxApps);
+if (typeof(customElements) !== "undefined") {
+  customElements.define("firefox-apps", FirefoxApps);
+} else { // Hide on unsupportive browsers
+  document.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.add("hide-bento");
+  });
+}
 

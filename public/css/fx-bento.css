@@ -110,7 +110,7 @@ firefox-apps:focus-within {
   font-weight: 600;
   margin-right: auto;
   margin-left: auto;
-  max-width: 280px;
+  max-width: 270px;
   display: block;
   padding-left: 20px;
   padding-right: 20px;
@@ -125,15 +125,22 @@ firefox-apps:focus-within {
 }
 
 a.fx-bento-app-link {
-  padding: 10px var(--appIconHeight) 10px calc(var(--appIconHeight) + 32px);
   background-color: rgba(255, 255, 255, 0);
-  position: relative;
-  white-space: nowrap;
-  color: var(--textColor);
   text-align: left;
 }
 
-.fx-bento-app-link::before {
+.fx-bento-app-link-span {
+  display: block;
+  padding: 10px var(--appIconHeight) 10px calc(var(--appIconHeight) + 32px);
+  color: var(--textColor);
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 410px;
+  pointer-events: none;
+}
+
+.fx-bento-app-link-span::before {
   display: block;
   position: absolute;
   left: var(--bentoPadding);
@@ -141,30 +148,31 @@ a.fx-bento-app-link {
   bottom: 0;
   margin: auto;
   height: var(--appIconHeight);
+  min-height: var(--appIconHeight);
   width: var(--appIconHeight);
   background: url("/img/fx-bento-sprites.png");
   background-size: auto var(--appIconHeight);
   content: "";
 }
 
-.fx-lockwise::before {
+.fx-bento-app-link-span.fx-lockwise::before {
   background-position-x: -54px;
   width: calc(var(--appIconHeight) + 1px);
 }
 
-.fx-bento-app-link.pocket::before {
+.fx-bento-app-link-span.pocket::before {
   background-position-x: -18px;
 }
 
-.fx-bento-app-link.fx-send::before {
+.fx-bento-app-link-span.fx-send::before {
   background-position-x: -71px;
 }
 
-.fx-bento-app-link.fx-monitor::before {
+.fx-bento-app-link-span.fx-monitor::before {
   background-position-x: -88px;
 }
 
-.fx-bento-app-link.fx-mobile::before {
+.fx-bento-app-link-span.fx-mobile::before {
   background-position-x: -104px;
 }
 
@@ -254,6 +262,16 @@ firefox-apps:focus-within {
   transition: 0.2s ease-in-out;
 }
 
+body.hide-bento firefox-apps {
+  background: none !important;
+  visibility: hidden !important;
+  width: 0;
+}
+
+body.hide-bento firefox-apps > button {
+  visibility: hidden !important;
+}
+
 @media screen and (max-width: 900px) {
   firefox-apps {
     margin: 0 var(--bentoPadding);
@@ -319,7 +337,6 @@ firefox-apps:focus-within {
   .fx-bento-headline {
     font-size: 20px;
     line-height: var(--bentoPadding);
-    max-width: 280px;
     padding-left: 0;
     padding-right: 0;
   }
@@ -346,28 +363,33 @@ firefox-apps:focus-within {
 
   a.fx-bento-app-link {
     line-height: 23px;
+  }
+
+  .fx-bento-app-link-span {
+    max-width: 342px;
+    padding-left: calc(var(--appIconHeight) + 40px);
     padding-left: calc(var(--appIconHeight) + 40px);
   }
 
-  .fx-bento-app-link.pocket::before {
+  .fx-bento-app-link-span.pocket::before {
     background-position-x: -26px;
   }
 
-  .fx-bento-app-link.fx-send::before {
+  .fx-bento-app-link-span.fx-send::before {
     background-position-x: -107px;
     width: calc(var(--appIconHeight) + 1px);
   }
 
-  .fx-bento-app-link.fx-monitor::before {
+  .fx-bento-app-link-span.fx-monitor::before {
     background-position-x: -132px;
   }
 
-  .fx-bento-app-link.fx-mobile::before {
+  .fx-bento-app-link-span.fx-mobile::before {
     background-position-x: -157px;
     margin-left: 1px;
   }
 
-  .fx-bento-app-link.fx-lockwise::before {
+  .fx-bento-app-link-span.fx-lockwise::before {
     background-position-x: -79px;
     width: calc(var(--appIconHeight) + 2px);
   }
