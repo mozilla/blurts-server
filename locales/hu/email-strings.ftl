@@ -119,3 +119,8 @@ faq-v2-2 = Kell-e valamit tennem, ha ez az adatsértés évekkel ezelőtt tört�
 faq-v2-3 = Észrevettem, hogy szereplek egy adatsértésben. Mit legyen a következő lépésem?
 # Link Title
 faq-v2-4 = Hogyan kezeli a { -product-name } az érzékeny webhelyeket?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Hozzon létre egy ingyenes { -brand-fxa }ot</a>, és akár 15 e-mail címet is hozzáadhat.
+# Section headline
+monitor-another-email = Egy másik e-mail címet is figyelni szeretne?
