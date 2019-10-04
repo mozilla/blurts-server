@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name =
     { $case ->
        *[nom] Firefox Monitor
@@ -64,6 +62,12 @@
         [loc] Účtu Firefoxu
         [ins] Účtem Firefoxu
     }
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = Podmínky a ochrana soukromí
 GitHub-link-title = GitHub
 error-scan-page-token = Pokusili jste se zkontrolovat příliš mnoho e-mailových adres ve velmi krátkém čase. Z bezpečnostních důvodů jsme další vyhledávání dočasně zablokovali. Zkuste to prosím znovu později.
@@ -313,7 +317,6 @@ error-invalid-unsub = Jak zrušit příjem upozornění od služby { -product-na
 error-invalid-unsub-blurb =
     Zrušit příjem budete muset prostřednictvím jedné z e-mailových zpráv, kterou vám { -product-name } odeslal. Podívejte se do své e-mailové schránky po zprávách od
     { -brand-team-email }. V dolní části zprávy pak klepněte na odkaz pro zrušení příjmu.
-login-link = Přihlásit se
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -322,15 +325,6 @@ email-addresses-being-monitored =
         [one] e-mailová adresa je monitorována
         [few] e-mailové adresy jsou monitorovány
        *[other] e-mailových adres je monitorováno
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-        [one] únik dat vyzradil vaše údaje
-        [few] úniky dat vyzradily vaše údaje
-       *[other] úniků dat vyzradilo vaše údaje
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
