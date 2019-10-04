@@ -1,4 +1,5 @@
 "use strict";
+
 /* global sendPing */
 /* global getFxaUtms */
 /* global hashEmailAndSend */
@@ -136,7 +137,7 @@ function toggleArticles() {
   });
 }
 
-function hideShowNavBars(win, navBar) {
+function hideShowNavBars(win, navBar, bentoButton) {
   win.onscroll = function(e) {
     // catch a window that has resized from less than 600px
     // to greater than 600px and unhide navigation.
@@ -150,7 +151,11 @@ function hideShowNavBars(win, navBar) {
       return;
     }
 
-    if (this.oldScroll < this.scrollY) {
+    if (
+        this.oldScroll < this.scrollY &&
+        navBar.classList.contains("show-nav-bars") &&
+        !bentoButton.classList.contains("active")
+      ) {
       navBar.classList = ["hide-nav-bars"];
       this.oldScroll = this.scrollY;
       return;
@@ -176,13 +181,14 @@ function toggleMobileFeatures(topNavBar) {
       return;
     }
 
+  const bentoButton = document.querySelector(".fx-bento-content");
   const closeActiveEmailCards = document.querySelectorAll(".col-9.email-card.active");
     closeActiveEmailCards.forEach(card => {
       card.classList.remove("active");
     });
 
     if (windowWidth < 600) {
-      hideShowNavBars(win, topNavBar);
+      hideShowNavBars(win, topNavBar, bentoButton);
       addBentoObserver();
     }
 }
