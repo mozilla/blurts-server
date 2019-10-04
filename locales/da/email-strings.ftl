@@ -110,3 +110,8 @@ faq-v2-2 = Behøver jeg at foretage mig noget, hvis en datalæk skete for år ti
 faq-v2-3 = Jeg har lige fundet ud af, at jeg er omfattet af en datalæk. Hvad gør jeg nu?
 # Link Title
 faq-v2-4 = Hvordan behandler { -product-name } websteder, der har følsomme data om sine brugere?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Opret en gratis { -brand-fxa }</a> , så du kan tilføje op til 15 mailadresser.
+# Section headline
+monitor-another-email = Vil du overvåge en anden mailadresse?
