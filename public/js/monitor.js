@@ -183,6 +183,7 @@ function toggleMobileFeatures(topNavBar) {
 
     if (windowWidth < 600) {
       hideShowNavBars(win, topNavBar);
+      addBentoObserver();
     }
 }
 
@@ -208,6 +209,21 @@ function styleActiveLink(locationHref) {
   if (locationHref.indexOf("/security-tips") !== -1) {
     return document.querySelector(".nav-link[href*='/security-tips']").firstChild.classList.add("active-link");
   }
+}
+
+function addBentoObserver(){
+  const bodyClasses = document.body.classList;
+  const bentoButton = document.querySelector(".fx-bento-content");
+  const observerConfig = { attributes: true };
+  const watchBentoChanges = function(bentoEl, observer) {
+    for(const mutation of bentoEl) {
+      if (mutation.type === "attributes") {
+        bodyClasses.toggle("bento-open", bentoButton.classList.contains("active"));
+      }
+    }
+  };
+  const observer = new MutationObserver(watchBentoChanges);
+  observer.observe(bentoButton, observerConfig);
 }
 
 ( async() => {

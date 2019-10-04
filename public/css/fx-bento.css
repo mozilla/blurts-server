@@ -1,11 +1,13 @@
 firefox-apps {
+  --backgroundColor: rgb(249, 249, 250);
+  --bentoHoverBgColor: rgb(77, 65, 97);
   --bentoButtonHeight: 25px;
   --zIndex: 10000;
   --appIconHeight: 16px;
   --textColor: rgb(32, 18, 58);
+  --bentoPadding: 24px;
 
   display: flex;
-  justify-content: center;
   margin: 0 32px;
   position: relative;
   text-align: center;
@@ -18,45 +20,68 @@ firefox-apps {
   background-position-x: -215.5px;
   background-position-x: -224px;
   background-size: auto var(--bentoButtonHeight);
+  border-radius: 2px;
+}
+
+firefox-apps:hover {
+  box-shadow: 0 0 0 4px var(--bentoHoverBgColor);
+  background-color: var(--bentoHoverBgColor);
+}
+
+firefox-apps:focus-within {
+  box-shadow: 0 0 0 3px var(--bentoHoverBgColor), 0 0 0 4px #0a84ff, 0 0 0 6px rgba(10, 132, 255, 0.3);
+  background-color: var(--bentoHoverBgColor);
+}
+
+.fx-bento-content-wrapper {
+  position: absolute;
+  top: calc(var(--bentoButtonHeight) + 10px);
+  min-width: 260px;
+  z-index: calc(var(--zIndex) + 1);
+  box-shadow: 0 7px 12px -3px rgba(28, 28, 29, 0.502);
+  right: -18px;
+  background: var(--backgroundColor);
+  border-radius: 8px;
+  transform: translateY(0);
+  display: none;
+  border: 1px solid transparent;
 }
 
 .fx-bento-content {
   display: none;
   flex-direction: column;
-  position: absolute;
-  top: calc(var(--bentoButtonHeight) + 10px);
-  background: rgb(249, 249, 250);
-  border-radius: 8px;
-  min-width: 260px;
-  z-index: calc(var(--zIndex) + 1);
-  padding: 24px 0;
-  box-shadow: 0 7px 12px -3px rgba(28, 28, 29, 0.502);
-  border: 1px solid transparent; /* creates outline of bento menu in high contrast mode */
+  padding: var(--bentoPadding) 0 0 0;
+  overflow: scroll;
 }
 
 .fx-bento-content.active {
   display: flex;
-  transform: translateY(7px);
+}
+
+.fx-bento-content-wrapper.active {
+  display: block;
+  height: auto;
+  transform: translateY(12px);
   animation: fxBentoAppear ease 0.3s;
   -webkit-animation: fxBentoAppear ease 0.3s;
   -moz-animation: fxBentoAppear ease 0.3s;
 }
 
-.fx-bento-content.active::after { /* tool tip top notch */
+.fx-bento-content-wrapper.active::after { /* tool tip top notch */
   display: block;
   content: "";
   height: 12px;
   width: 12px;
   position: absolute;
   top: -7px;
-  left: 0;
-  right: 0;
+  right: 23px;
   margin: auto;
   transform: rotate(45deg);
   border-top-left-radius: 1px;
   background-color: rgb(249, 249, 250);
   border-top: 1px solid transparent; /* creates outline in high-contrast mode */
   border-left: 1px solid transparent; /* creates outline in high-contrast mode */
+  z-index: -1;
 }
 
 .fx-bento-logo {
@@ -74,20 +99,22 @@ firefox-apps {
   font-family: "Metropolis", sans-serif;
   line-height: 20px;
   font-weight: 600;
-  max-width: 280px;
   margin-right: auto;
   margin-left: auto;
-  padding: 0 24px;
+  max-width: 280px;
+  display: block;
 }
 
 .fx-bento-bottom-link {
   color: rgb(0, 96, 223);
   text-decoration: underline;
-  margin: 16px 24px 0 24px;
+  padding: 10px var(--bentoPadding);
+  margin: 14px auto;
+  width: 100%;
 }
 
 a.fx-bento-app-link {
-  padding: 10px 16px 10px calc(var(--appIconHeight) + 32px);
+  padding: 10px var(--appIconHeight) 10px calc(var(--appIconHeight) + 32px);
   background-color: rgba(255, 255, 255, 0);
   position: relative;
   white-space: nowrap;
@@ -98,7 +125,7 @@ a.fx-bento-app-link {
 .fx-bento-app-link::before {
   display: block;
   position: absolute;
-  left: 24px;
+  left: var(--bentoPadding);
   top: 0;
   bottom: 0;
   margin: auto;
@@ -130,8 +157,8 @@ a.fx-bento-app-link {
   background-position-x: -104px;
 }
 
-.fx-bento-app-link:hover,
-.fx-bento-app-link:focus {
+.fx-bento-link:hover,
+.fx-bento-link:focus {
   background-color: rgba(12, 12, 13, 0.1);
   opacity: 1 !important;
 }
@@ -151,10 +178,9 @@ a.fx-bento-app-link {
 
 .fx-bento-button:hover,
 .fx-bento-button:focus {
-  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.2);
-  background-color: rgba(255, 255, 255, 0.2);
-  border: 1px solid transparent; /* Creates outline in high-contrast modes */
   outline: 0;
+  box-shadow: none;
+  border: 1px solid transparent;
 }
 
 .fx-bento-button:hover::-moz-focus-inner, /* hide dotted line */
@@ -178,19 +204,20 @@ button.fx-bento-mobile-close {
   position: absolute;
   right: var(--appIconHeight);
   top: var(--appIconHeight);
-  height: calc(var(--appIconHeight) * 1.25);
-  min-height: calc(var(--appIconHeight) * 1.25);
-  width: calc(var(--appIconHeight) * 1.25);
-  max-width: calc(var(--appIconHeight) * 1.25);
-  min-width: calc(var(--appIconHeight) * 1.25);
+  height: var(--bentoPadding);
+  min-height: var(--bentoPadding);
+  width: var(--bentoPadding);
+  max-width: var(--bentoPadding);
+  min-width: var(--bentoPadding);
   background-color: rgb(55, 54, 111);
   background-image: url("/img/fx-bento-sprites.png");
-  background-size: cover;
+  background-size: auto 20px;
   background-repeat: no-repeat;
-  background-position-x: -229px;
+  background-position-x: -150.5px;
   padding: 0 !important;
   border: none !important;
   border-radius: 50%;
+  background-position-y: 2px;
 }
 
 .fx-bento-app-link:first-of-type {
@@ -203,19 +230,22 @@ button.fx-bento-mobile-close {
   pointer-events: none !important;
 }
 
-a.fx-bento-app-link,
-a.fx-bento-app-link:hover,
-a.fx-bento-app-link:focus,
+a.fx-bento-link,
+a.fx-bento-link:hover,
+a.fx-bento-link:focus,
 .fx-bento-button,
 .fx-bento-button:hover,
 .fx-bento-button:focus,
-.fx-bento-fade-out {
+.fx-bento-fade-out,
+firefox-apps,
+firefox-apps:hover,
+firefox-apps:focus-within {
   transition: 0.2s ease-in-out;
 }
 
 @media screen and (max-width: 900px) {
   firefox-apps {
-    margin: 0 24px;
+    margin: 0 var(--bentoPadding);
   }
 
   .fx-bento-button {
@@ -225,11 +255,11 @@ a.fx-bento-app-link:focus,
 
 @media screen and (max-width: 500px) {
   firefox-apps {
-    --appIconHeight: 24px;
+    --appIconHeight: var(--bentoPadding);
     --mobileClickableCloseArea: 12vh;
 
     position: inherit;
-    margin: 0 16px;
+    margin: 0 var(--appIconHeight);
   }
 
   button.fx-bento-mobile-close { /* Unhide purple "X" button */
@@ -246,13 +276,22 @@ a.fx-bento-app-link:focus,
     height: var(--mobileClickableCloseArea);
   }
 
-  .fx-bento-content {
+  .fx-bento-content-wrapper {
     top: 0;
-    left: 0;
     right: 0;
-    height: 100vh;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
     border-radius: 0;
     transform: translateY(0) !important;
+  }
+
+  .fx-bento-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
   }
 
   .fx-bento-logo {
@@ -265,13 +304,13 @@ a.fx-bento-app-link:focus,
 
   .fx-bento-headline {
     font-size: 20px;
-    line-height: 24px;
-    padding: 0 12px;
+    line-height: var(--bentoPadding);
+    max-width: 280px;
   }
 
   .fx-bento-bottom-link {
     margin-bottom: auto;
-    margin-top: 24px;
+    margin-top: var(--bentoPadding);
   }
 
   .fx-bento-bottom-link,
@@ -279,13 +318,13 @@ a.fx-bento-app-link:focus,
     font-size: 16px;
   }
 
-  .fx-bento-content.active {
+  .fx-bento-content-wrapper.active {
     transform: translateY(0) !important;
     animation: none !important;
     -webkit-animation: none !important;
   }
 
-  .fx-bento-content.active::after {
+  .fx-bento-content-wrapper.active::after {
     display: none;
   }
 
@@ -326,6 +365,6 @@ a.fx-bento-app-link:focus,
 
   100% {
     opacity: 1;
-    transform: translateY(5px);
+    transform: translateY(12px);
   }
 }

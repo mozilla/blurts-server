@@ -9,7 +9,7 @@ function getFxAppLinkInfo(localizedBentoStrings, referringSiteURL) {
     [localizedBentoStrings.pocket, "https://app.adjust.com/hr2n0yz?engagement_type=fallback_click&fallback=https%3A%2F%2Fgetpocket.com%2Ffirefox_learnmore%3Fsrc%3Dff_bento&fallback_lp=https%3A%2F%2Fapps.apple.com%2Fapp%2Fpocket-save-read-grow%2Fid309601447", "pocket"],
     [localizedBentoStrings.fxDesktop, `https://www.mozilla.org/firefox/new/?utm_source=${referringSiteURL}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`, "fx-desktop"],
     [localizedBentoStrings.fxMobile, `http://mozilla.org/firefox/mobile?utm_source=${referringSiteURL}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`, "fx-mobile"],
-    [localizedBentoStrings.fxLockwise, "https://app.adjust.com/hj73k3x", "fx-lockwise"],
+    [localizedBentoStrings.fxLockwise, "https://app.adjust.com/6tteyjo?&campaign=Skyline&adgroup=InProduct&creative=Bento&fallback=https%3A%2F%2Fwww.mozilla.org%2Ffirefox%2Flockwise", "fx-lockwise"],
   ];
 }
 
@@ -67,7 +67,9 @@ class FirefoxApps extends HTMLElement {
     this._bentoButton = createAndAppendEl(this._frag, "button", "fx-bento-button toggle-bento"); // Button toggles dropdown.
     this.addTitleAndAriaLabel(this._bentoButton, this._localizedBentoStrings.bentoButtonTitle);
 
-    this._bentoContent = createAndAppendEl(this._frag, "div", "fx-bento-content");
+    this._bentoWrapper = document.createElement("div");
+    this._bentoWrapper.classList = "fx-bento-content-wrapper";
+    this._bentoContent = createAndAppendEl(this._bentoWrapper, "div", "fx-bento-content");
 
     this._mobileCloseBentoButton = createAndAppendEl(this._bentoContent, "button", "fx-bento-mobile-close toggle-bento");
     this.addTitleAndAriaLabel(this._mobileCloseBentoButton, this._localizedBentoStrings.mobileCloseBentoButtonTitle);
@@ -76,21 +78,24 @@ class FirefoxApps extends HTMLElement {
       btn.addEventListener("click", this);
     });
 
-    this._firefoxLogo = createAndAppendEl(this._bentoContent, "div", "fx-bento-logo");
-    this._messageTop = createAndAppendEl(this._bentoContent, "span", "fx-bento-headline");
+    this._logoHeadlineWrapper = createAndAppendEl(this._bentoContent, "div", "fx-bento-headline-logo-wrapper");
+    this._firefoxLogo = createAndAppendEl( this._logoHeadlineWrapper, "div", "fx-bento-logo");
+    this._messageTop = createAndAppendEl( this._logoHeadlineWrapper, "span", "fx-bento-headline");
     this._messageTop.textContent = this._localizedBentoStrings.bentoHeadline;
 
     this._appList = this.makeAppList();
 
-    this._messageBottomLink = createAndAppendEl(this._bentoContent, "a", "fx-bento-bottom-link");
+    this._messageBottomLink = createAndAppendEl(this._bentoContent, "a", "fx-bento-bottom-link fx-bento-link");
     this._messageBottomLink.textContent = this._localizedBentoStrings.bentoBottomLink;
     this._messageBottomLink.href = "https://www.mozilla.com/";
 
-    this._frag.querySelectorAll("a").forEach(anchorEl => {
+    this._bentoContent.querySelectorAll("a").forEach( (anchorEl, idx) => {
+      anchorEl.dataset.bentoLinkOrder = idx;
       anchorEl.addEventListener("click", this);
+      anchorEl.tabIndex = "-1";
     });
 
-    this._frag.appendChild(this._bentoContent);
+    this._frag.appendChild(this._bentoWrapper);
 
     this._clickableBG = createAndAppendEl(this._frag, "div", "fx-bento-close");
     this._clickableBG.addEventListener("click", this);
@@ -111,24 +116,73 @@ class FirefoxApps extends HTMLElement {
   }
 
   toggleClass(whichClass) {
-    [this._bentoContent, this._clickableBG].forEach(el => {
+    [this._bentoContent, this._bentoWrapper, this._clickableBG].forEach(el => {
       el.classList.toggle(whichClass);
     });
   }
 
   handleEvent(event) {
+    const closeBento = () => {
+      this.handleBentoFocusTrap();
+      window.removeEventListener("resize", this.handleBentoHeight);
+      document.removeEventListener("keydown", this);
+      this.metricsSendEvent("bento-closed", this._currentSite);
+      this.toggleClass("fx-bento-fade-out"); // Set "fx-bento-fade-out" class to transition opacity smoothly since we can't transition smoothly to `display: none`.
+      setTimeout(() => {
+        this.toggleClass("fx-bento-fade-out");
+        this.toggleClass("active");
+      }, 1000);
+      return;
+    };
+
+    if (event.type === "keydown") {
+      if (![27, 40, 38].includes(event.keyCode)) { // 27 = escape, 40 = down arrow, 38 = up arrow
+        return;
+      }
+
+      event.preventDefault();
+      const moveFocusWithArrows = (whichKey) => {
+        const activeEl = document.activeElement;
+        const bentoLinks = this._bentoContent.querySelectorAll("a");
+        if (!activeEl.dataset.bentoLinkOrder) { // check if link in Bento has focus
+          bentoLinks[0].focus(); // focus first link in bento
+          return;
+        }
+        const activeElLinkNum = parseInt(activeEl.dataset.bentoLinkOrder);
+        const newLink = parseInt(activeElLinkNum + whichKey);
+        if (bentoLinks[newLink]) {
+          bentoLinks[newLink].focus();
+        }
+        return;
+      };
+
+      switch(event.keyCode) {
+        case 27: // escape
+          this._active = !this._active;
+          this.handleBentoFocusTrap();
+          closeBento();
+          return;
+        case 40 : // down arrow || up arrow
+          moveFocusWithArrows(1);
+          break;
+        case 38: // arrow up
+          moveFocusWithArrows(-1);
+          break;
+      }
+      return;
+    }
+
     event.preventDefault();
     this._active = !this._active;
 
     const clickTarget = event.target;
-
     const MozLinkClick = (clickTarget.classList.contains("fx-bento-bottom-link"));
 
     if (clickTarget.classList.contains("fx-bento-app-link") || MozLinkClick) {
       const url = new URL(clickTarget.href);  // add any additional UTM params - or whatever.
       url.searchParams.append("utm_source", this._currentSite);
-      url.searchParams.append("utm_medium", "bento");
-      url.searchParams.append("utm_campaign", "bento-skyline");
+      url.searchParams.append("utm_medium", "referral");
+      url.searchParams.append("utm_campaign", "bento");
       if (MozLinkClick) {
         this.metricsSendEvent("bento-app-link-click", "Mozilla");
         window.open(url, "_blank", "noopener");
@@ -145,30 +199,44 @@ class FirefoxApps extends HTMLElement {
     }
 
     if (!this._active) {
-      this.metricsSendEvent("bento-closed", this._currentSite);
-      this.toggleClass("fx-bento-fade-out"); // Set "fx-bento-fade-out" class to transition opacity smoothly since we can't transition smoothly to `display: none`.
-      setTimeout(() => {
-        this.toggleClass("fx-bento-fade-out");
-        this.toggleClass("active");
-      }, 1000);
-      return this.handleBentoFocusTrap();
+      closeBento();
+      return;
     }
 
     this.metricsSendEvent("bento-opened", this._currentSite);
+    this.handleBentoHeight();
+    document.addEventListener("keydown", this);
+    window.addEventListener("resize", this.handleBentoHeight);
+
     this.toggleClass("active");
     return this.handleBentoFocusTrap();
   }
 
+  handleBentoHeight() { // resize bento max-height if necessary
+    const bento = document.querySelector(".fx-bento-content");
+    const winHeight = window.innerHeight;
+    const newBentoHeight = winHeight - bento.offsetTop - 100;
+    if (winHeight < 500 && window.innerWidth > 500) {
+      bento.style.maxHeight = `${newBentoHeight}px`;
+    } else {
+      bento.style.maxHeight = "1000px";
+    }
+   }
+
   handleBentoFocusTrap() {
     const nonBentoPageElements = document.querySelectorAll(
-      "a:not(.fx-bento-app-link):not(.fx-bento-bottom-link), button:not(.toggle-bento ), input, select, option, textarea, radio, [tabindex]"
+      "a:not(.fx-bento-app-link):not(.fx-bento-bottom-link), button:not(.toggle-bento ), input, select, option, textarea, radio"
       );
+    const bentoLinks = this._bentoContent.querySelectorAll(".fx-bento-app-link, .fx-bento-bottom-link");
     if (this._active) {
       nonBentoPageElements.forEach(el => {
         if (el.tabIndex > -1) {
           el.dataset.oldTabIndex = el.tabIndex;
         }
         el.tabIndex = -1;
+      });
+      bentoLinks.forEach(el => {
+        el.tabIndex = 0;
       });
       return;
     }
@@ -180,13 +248,16 @@ class FirefoxApps extends HTMLElement {
       }
       el.tabIndex = 0;
     });
+    bentoLinks.forEach(el => {
+      el.tabIndex = -1;
+    });
   }
 
   makeAppList() {
-    const appLinks = getFxAppLinkInfo(this._localizedBentoStrings);
+    const appLinks = getFxAppLinkInfo(this._localizedBentoStrings, this._currentSite);
     appLinks.forEach(app => {
       const newLink = document.createElement("a");
-      newLink.setAttribute("class", `fx-bento-app-link ${app[2]}`);
+      newLink.setAttribute("class", `fx-bento-app-link fx-bento-link ${app[2]}`);
       newLink["textContent"] = app[0];
       ["href", "data-bento-app-link-id"].forEach((attributeName, index) => {
         newLink.setAttribute(attributeName, app[index + 1]);
@@ -199,4 +270,9 @@ class FirefoxApps extends HTMLElement {
   }
 }
 
+if (typeof(customElements) === "undefined") {
+  // pollyfill the thing for edge and ancients
+}
+
 customElements.define("firefox-apps", FirefoxApps);
+

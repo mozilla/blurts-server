@@ -628,6 +628,10 @@ div.sprite {
     --subhead: 1.1rem;
   }
 
+  body.bento-open {
+    position: fixed;
+  }
+
   .row-full-width {
     padding: 24px;
   }
