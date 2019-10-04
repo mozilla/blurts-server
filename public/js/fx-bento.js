@@ -69,7 +69,8 @@ class FirefoxApps extends HTMLElement {
 
     this._bentoWrapper = document.createElement("div");
     this._bentoWrapper.classList = "fx-bento-content-wrapper";
-    this._bentoContent = createAndAppendEl(this._bentoWrapper, "div", "fx-bento-content");
+    this._bentoHideOverflow = createAndAppendEl(this._bentoWrapper, "div", "fx-bento-hide-overflow");
+    this._bentoContent = createAndAppendEl(this._bentoHideOverflow, "div", "fx-bento-content");
 
     this._mobileCloseBentoButton = createAndAppendEl(this._bentoContent, "button", "fx-bento-mobile-close toggle-bento");
     this.addTitleAndAriaLabel(this._mobileCloseBentoButton, this._localizedBentoStrings.mobileCloseBentoButtonTitle);
@@ -216,11 +217,14 @@ class FirefoxApps extends HTMLElement {
     const bento = document.querySelector(".fx-bento-content");
     const winHeight = window.innerHeight;
     const newBentoHeight = winHeight - bento.offsetTop - 100;
-    if (winHeight < 500 && window.innerWidth > 500) {
+    const setMaxHeight = (winHeight < 500 && window.innerWidth > 500);
+    if (setMaxHeight) {
       bento.style.maxHeight = `${newBentoHeight}px`;
     } else {
       bento.style.maxHeight = "1000px";
     }
+
+    bento.classList.toggle("fx-bento-enable-scrolling", setMaxHeight);
    }
 
   handleBentoFocusTrap() {
@@ -268,10 +272,6 @@ class FirefoxApps extends HTMLElement {
       this._bentoContent.appendChild(newLink);
     });
   }
-}
-
-if (typeof(customElements) === "undefined") {
-  // pollyfill the thing for edge and ancients
 }
 
 customElements.define("firefox-apps", FirefoxApps);

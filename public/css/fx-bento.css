@@ -33,6 +33,12 @@ firefox-apps:focus-within {
   background-color: var(--bentoHoverBgColor);
 }
 
+.fx-bento-hide-overflow {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
 .fx-bento-content-wrapper {
   position: absolute;
   top: calc(var(--bentoButtonHeight) + 10px);
@@ -51,7 +57,10 @@ firefox-apps:focus-within {
   display: none;
   flex-direction: column;
   padding: var(--bentoPadding) 0 0 0;
-  overflow: scroll;
+}
+
+.fx-bento-enable-scrolling {
+  overflow-y: scroll;
 }
 
 .fx-bento-content.active {
@@ -103,6 +112,8 @@ firefox-apps:focus-within {
   margin-left: auto;
   max-width: 280px;
   display: block;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .fx-bento-bottom-link {
@@ -266,6 +277,17 @@ firefox-apps:focus-within {
     display: block;
   }
 
+  .fx-bento-hide-overflow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 100vh;
+    overflow-y: scroll;
+    overflow-x: scroll;
+  }
+
   .fx-bento-mobile-close::after { /* create pseudo element to increase the clickable area of .fx-bento-mobile-close button */
     content: "";
     display: block;
@@ -286,14 +308,6 @@ firefox-apps:focus-within {
     transform: translateY(0) !important;
   }
 
-  .fx-bento-content {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
-
   .fx-bento-logo {
     height: 48px;
     width: 48px;
@@ -306,6 +320,8 @@ firefox-apps:focus-within {
     font-size: 20px;
     line-height: var(--bentoPadding);
     max-width: 280px;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .fx-bento-bottom-link {
