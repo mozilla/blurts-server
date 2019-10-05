@@ -1,6 +1,7 @@
 firefox-apps {
   --backgroundColor: rgb(249, 249, 250);
-  --bentoHoverBgColor: rgb(77, 65, 97);
+  --bentoHoverBgColor: rgb(97, 90, 115);
+  --bentoClickBgColor: rgb(142, 137, 154);
   --bentoButtonHeight: 25px;
   --zIndex: 10000;
   --appIconHeight: 16px;
@@ -21,6 +22,7 @@ firefox-apps {
   background-position-x: -224px;
   background-size: auto var(--bentoButtonHeight);
   border-radius: 2px;
+  box-shadow: 0 0 0 4px transparent;
 }
 
 firefox-apps:hover {
@@ -31,6 +33,11 @@ firefox-apps:hover {
 firefox-apps:focus-within {
   box-shadow: 0 0 0 3px var(--bentoHoverBgColor), 0 0 0 4px #0a84ff, 0 0 0 6px rgba(10, 132, 255, 0.3);
   background-color: var(--bentoHoverBgColor);
+}
+
+firefox-apps:active {
+  background-color: var(--bentoClickBgColor);
+  box-shadow: 0 0 0 4px var(--bentoClickBgColor);
 }
 
 .fx-bento-hide-overflow {
@@ -178,7 +185,7 @@ a.fx-bento-app-link {
 
 .fx-bento-link:hover,
 .fx-bento-link:focus {
-  background-color: rgba(12, 12, 13, 0.1);
+  background-color: rgb(230, 230, 230);
   opacity: 1 !important;
 }
 
