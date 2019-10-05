@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -10,6 +8,12 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox Account
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = 使用條款及隱私權
 GitHub-link-title = GitHub
 error-scan-page-token = 您在短時間內嘗試搜尋太多電子郵件地址，由於安全因素，我們暫時無法讓您進行新搜尋。請稍候再試一次。
@@ -234,20 +238,12 @@ error-csrf-headline = 使用階段已逾時
 error-csrf-blurb = 點擊瀏覽器的返回按鈕或重新載入頁面，再試一次。
 error-invalid-unsub = 如何取消訂閱來自 { -product-name } 的警報
 error-invalid-unsub-blurb = 您可以從任何 { -product-name } 寄發的郵件中進行退訂。請到信箱搜尋來自 { -brand-team-email } 的郵件，然後點擊郵件尾巴的「取消訂閱」鏈結。
-login-link = 登入
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
 email-addresses-being-monitored =
     { $emails ->
        *[other] 組監控中的電子郵件信箱地址
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-       *[other] 洩漏出與您有關資訊的資料外洩事件
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
