@@ -13,6 +13,8 @@ fx-mobile = { -brand-name } Browser for mobilar
 
 # Aria label for the Bento button
 bento-button-title = { -brand-name } appar og tenester
+# Bento headline
+fx-makes-tech = { -brand-name } er teknikk som jobbar for ditt personvern på nettet.
 # A link at the bottom of the Bento menu
 made-by-mozilla = Laga av { -brand-Mozilla }
 # Aria label for button that closes the Bento menu

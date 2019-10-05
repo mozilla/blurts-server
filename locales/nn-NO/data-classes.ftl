@@ -109,6 +109,7 @@ social-security-numbers = Personnummer
 spoken-languages = Talte språk
 support-tickets = Support-spørsmål
 survey-results = Undersøkingsresultat
+taxation-records = Skateopplysningar
 time-zones = Tidssoner
 travel-habits = Reisevanar
 user-statuses = Brukarstatusar
