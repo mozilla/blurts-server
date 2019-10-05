@@ -14,7 +14,7 @@ fx-mobile = { -brand-name } Browser 行動版
 # Aria label for the Bento button
 bento-button-title = { -brand-name } 應用程式與服務
 # Bento headline
-fx-makes-tech = { -brand-name } 的各種技術，為您線上隱私而戰
+fx-makes-tech = { -brand-name } 的各種技術，為您的線上隱私而戰。
 # A link at the bottom of the Bento menu
 made-by-mozilla = 由 { -brand-Mozilla } 打造
 # Aria label for button that closes the Bento menu
