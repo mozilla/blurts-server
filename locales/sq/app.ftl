@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -10,7 +8,13 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Llogari Firefox
-terms-and-privacy = Kushte dhe Privatësi
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
+terms-and-privacy = Kushte & Privatësi
 GitHub-link-title = GitHub
 error-scan-page-token = Provuat të skanoni shumë adresa email brenda një kohe të shkurtër. Për arsye sigurie, kemi bllokuar përkohësisht kërkime të reja prej jush. Do të jeni në gjendje të riprovoni më vonë.
 error-could-not-add-email = S’u shtua dot adresë email te baza e të dhënave.
@@ -230,6 +234,11 @@ other-breaches-found =
        *[other] Por, u shfaq në { $breachCount } shkelje të tjera.
     }
 fb-comp-only = Ky email u pa te shkelja { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Ky email u shfaq te { $breachCount } shkelje e ditur të dhënash, përfshi { $breachName }.
+       *[other] Ky email u shfaq te { $breachCount } shkelje të ditura të dhënash, përfshi { $breachName }.
+    }
 no-other-breaches-found = S’u gjetën shkelje të tjera nga një kërkim elementar.
 no-results-blurb = Na ndjeni, ajo shkelje s’gjendet në bazën tonë të të dhënave.
 all-breaches-headline = Krejt shkeljet te { -product-name }
@@ -247,7 +256,6 @@ error-invalid-unsub = Si të shpajtoheni prej sinjalizimesh { -product-name }
 error-invalid-unsub-blurb =
     Do t’ju duhet të shpajtoheni prej një nga email-et që ju ka dërguar { -product-name }. Shihni te mesazhet tuaj për mesazhe nga 
     { -brand-team-email }. Përzgjidhni lidhjen e shpajtimit në fund të email-it.
-login-link = Hyni
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -255,14 +263,6 @@ email-addresses-being-monitored =
     { $emails ->
         [one] Adresë email që mbikëqyret
        *[other] Adresa email që mbikëqyren
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-        [one] Shkelje të dhënash ka ekspozuar të dhëna tuajat
-       *[other] Shkelje të dhënash kanë ekspozuar të dhëna tuajat
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to

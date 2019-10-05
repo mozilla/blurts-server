@@ -113,3 +113,8 @@ faq-v2-2 = Më duhet të bëj ndonjë gjë, nëse kjo shkelje ka ndodhur vite m�
 faq-v2-3 = Sapo pashë se jam pjesë e një cenimi të dhënash. Ç’të bëj më tej?
 # Link Title
 faq-v2-4 = Si i trajton { -product-name } sajtet me të dhëna rezervat?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Krijoni një { -brand-fxa } falas</a>, dhe mund të shtoni deri në 15 adresa email.
+# Section headline
+monitor-another-email = Doni të mbikëqyret tjetër email?
