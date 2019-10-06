@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -10,6 +8,12 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox-account
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = Voorwaarden en Privacy
 GitHub-link-title = GitHub
 error-scan-page-token = U hebt te veel e-mailadressen in een korte tijdsperiode geprobeerd te scannen. Om beveiligingsredenen hebben we uw zoekmogelijkheid tijdelijk geblokkeerd. U kunt het later weer proberen.
@@ -306,14 +310,6 @@ email-addresses-being-monitored =
     { $emails ->
         [one] E-mailadres wordt bewaakt
        *[other] E-mailadressen worden bewaakt
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-        [one] Datalek heeft uw gegevens gelekt
-       *[other] Datalekken hebben uw gegevens gelekt
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
