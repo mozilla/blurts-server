@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -20,6 +18,12 @@
         [genitive] Аккаунта Firefox
         [instrumental] Аккаунтом Firefox
     }
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = Условия и конфиденциальность
 GitHub-link-title = GitHub
 error-scan-page-token = Вы пытались проверить слишком много адресов электронной почты за короткий промежуток времени. По соображениям безопасности мы временно заблокировали вам доступ к этой функции. Вы сможете попробовать позже.
@@ -272,7 +276,6 @@ error-csrf-headline = Время сеанса истекло
 error-csrf-blurb = Нажмите на кнопку «Назад» вашего браузера, перезагрузите страницу и попробуйте снова.
 error-invalid-unsub = Как отписаться от уведомлений { -product-name }
 error-invalid-unsub-blurb = Вам нужно отписаться через одно из электронных писем, которое отправил вам { -product-name }. Проверьте свой почтовый ящик на наличие сообщений от { -brand-team-email }. Выберите ссылку для отмены подписки внизу письма.
-login-link = Войти
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -281,15 +284,6 @@ email-addresses-being-monitored =
         [one] Адрес электронной почты отслеживается
         [few] Адреса электронной почты отслеживаются
        *[many] Адресов электронной почты отслеживаются
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-        [one] Утечка данных раскрыла вашу информацию
-        [few] Утечки данных раскрыли вашу информацию
-       *[many] Утечек данных раскрыли вашу информацию
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
