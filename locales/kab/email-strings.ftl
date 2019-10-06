@@ -109,3 +109,8 @@ faq-v2-2 = Ilaq ad t-xedmeɣ kra ma yella teḍra-d trewla n yisefka iseggasen a
 faq-v2-3 = Akken kan ufiɣ tarewla n yisefka n yi-iḥuzan. Acu ara xedmeɣ?
 # Link Title
 faq-v2-4 = Amek isesfar { -product-name } yismal web iweɛren?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Rnu { -brand-fxa } baṭel</a>, sakin ad tizmireḍ ad ternuḍ arma d 15 n tansiwin imayl.
+# Section headline
+monitor-another-email = Tebɣiḍ ad tɛasseḍ imayl-nniḍen?
