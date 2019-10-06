@@ -12,7 +12,7 @@ fx-mobile = Navegador { -brand-name } para celular
 
 
 # Aria label for the Bento button
-bento-button-title = Aplicativos e serviços do { -brand-name }
+bento-button-title = Aplicativos e serviços { -brand-name }
 # Bento headline
 fx-makes-tech = { -brand-name } é uma empresa de tecnologia que luta por sua privacidade online.
 # A link at the bottom of the Bento menu
