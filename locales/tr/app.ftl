@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -10,6 +8,12 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox Hesabı
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = Şartlar ve gizlilik
 GitHub-link-title = GitHub
 error-scan-page-token = Kısa süre içinde çok fazla e-posta adresi taramaya çalıştınız. Güvenlik nedeniyle yeni aramalar yapmanızı geçici olarak engelledik. Daha sonra yeniden deneyebileceksiniz.
@@ -133,6 +137,9 @@ what-data = Ele geçirilen veriler:
 sensitive-sites = { -product-name } hassas siteleri nasıl ele alıyor?
 sensitive-sites-copy = { -product-name } bu tür veri ihlallerine dahil olan hesapları yalnızca e-posta adresinizi onaylandıktan gösterir. Yani bilgilerinizin bu veri ihlalinde ele geçirilip geçirilmediğini yalnızca siz görebilirsiniz (e-posta hesabınıza erişebilen başka birisi yoksa).
 delayed-reporting-headline = Bu ihlalin bildirilmesi neden bu kadar uzun sürdü?
+delayed-reporting-copy =
+    Ele geçirilen bilgilerin dark web'de gün yüzüne çıkması bazen aylar veya yıllar sürebilir. 
+    İhlaller keşfedildikten ve doğrulandıktan hemen sonra veritabanımıza eklenir.
 about-fxm-headline = { -product-name } hakkında
 about-fxm-blurb = Çevrimiçi hesaplarınızın veri ihlallerine dahil olduğunda { -product-name } sizi uyarır. Verilerinizin ele geçirilip geçirilmediğini öğrenin, yeni ihlaller yaşandığında bildirim alın ve çevrimiçi hesaplarınızı korumak için gereken adımları atın. { -product-name }, { -brand-Mozilla } tarafından sağlanmaktadır.
 fxm-warns-you = E-posta adresiniz çevrimiçi bir veri ihlalinde yer alırsa { -product-name } sizi uyarır. Bilgilerinizin ele geçirilip geçirilmediğini görün, hesaplarınızı nasıl daha iyi koruyabileceğinizi öğrenin ve e-posta adresiniz yeni veri ihlallerine karışırsa bildirim alın.
@@ -242,7 +249,6 @@ error-bot-blurb = Kısa süre içerisinde çok fazla e-posta adresi sorguladığ
 error-csrf-headline = Oturum zaman aşımına uğradı
 error-csrf-blurb = Tarayıcınızın geri düğmesine tıklayın, sayfayı tazeleyin ve tekrar deneyin.
 error-invalid-unsub = { -product-name } uyarılarından ayrılma
-login-link = Giriş yap
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -250,14 +256,6 @@ email-addresses-being-monitored =
     { $emails ->
         [one] e-posta adresi izleniyor
        *[other] e-posta adresi izleniyor
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-        [one] veri ihlalinde bilgileriniz ele geçirilmiş
-       *[other] veri ihlalinde bilgileriniz ele geçirilmiş
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -325,6 +323,14 @@ want-to-add = Başka bir e-posta eklemek ister misiniz?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = { $userEmail } adresine gönderilen bağlantıyı onaylarak adresinizi { -product-name }'e ekleyin.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+email-verified = E-posta başarıyla doğrulandı!
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
