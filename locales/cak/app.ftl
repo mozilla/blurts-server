@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -10,6 +8,12 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox Taqoya'l
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = Taq Ojqanem chuqa' Ichinanem
 GitHub-link-title = GitHub
 error-scan-page-token = Xatojtob'ej xatz'ajwachib'ej yalan k'ïy kochochib'al taqoya'l pa jun ti mej. Richin ajikomal xeqaq'ät ri k'a nimakoj xe'akanoj. Yatikïr natojtob'ej chik pa jun ti ramaj.
@@ -293,7 +297,6 @@ error-invalid-unsub-blurb =
     K'o chi naq'ät ri rutz'ib'axik b'i'aj pa jun chi ke
     taq taqoya'l xutäq chawe ri { -product-name }. Takanoj pan ataqob'al rutzijol ri 
     { -brand-team-email }. Tacha' ruximonel tiyuj tz'ib'anïk b'i'aj richin niq'at ri tz'ib'anïk b'i'aj.
-login-link = Titikirisäx molojri'ïl
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -301,14 +304,6 @@ email-addresses-being-monitored =
     { $emails ->
         [one] Kochochib'al taq taqoya'l nik'on
        *[other] Kochochib'al taq taqaya'l enik'on
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-        [one] Rutz'ilanem tzij ruk'utun ri awetamab'al
-       *[other] E k'ïy kitz'ilanem tzij kik'utun ri awetamab'al
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -372,3 +367,10 @@ join-firefox = K'o jun rub'anikil richin nachajij awichinanem. Tatunu' awi' { -b
 # Link title
 learn-more-link = Tetamäx ch'aqa' chik.
 email-sent = ¡Xtaq ri Taqoya'l!
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+
+
+
