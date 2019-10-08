@@ -11,6 +11,9 @@
           <a class="breach-domain-link demi text-link" href="https://www.{{ breach.Domain }}" rel="nofollow noopener noreferer" target="_blank">www.{{ breach.Domain }}</a>
         {{/if}}
         <a class="breach-type demi" href="#what-is-this-breach">{{ category }}</a>
+        {{#if changePWLink}}
+          <h1><a href="{{ changePWLink }}">Change your password!</a></h1>
+        {{/if}}
       </div>
     </div>
   </main>

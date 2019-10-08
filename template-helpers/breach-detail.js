@@ -6,7 +6,8 @@ const { prettyDate, localizedBreachDataClasses } = require("./hbs-helpers");
 function getVars(args) {
   const locales = args.data.root.req.supportedLocales;
   const breach = args.data.root.featuredBreach;
-  return { locales, breach };
+  const changePWLink = args.data.root.changePWLink;
+  return { locales, breach, changePWLink };
 }
 
 // REMAINING QUESTIONS:
@@ -171,7 +172,7 @@ function getTips(locales, breachType) {
 
 
 function getBreachDetail(args) {
-  const { locales, breach } = getVars(args);
+  const { locales, breach, changePWLink } = getVars(args);
 
   const breachDetail = {
     overview: {
@@ -184,6 +185,7 @@ function getBreachDetail(args) {
     breach: breach,
     categoryId: getBreachCategory(breach),
     category: LocaleUtils.fluentFormat(locales, getBreachCategory(breach)),
+    changePWLink: changePWLink,
     dataClasses: {
       headline: LocaleUtils.fluentFormat(locales, "what-data"),
       dataTypes: localizeAndPrioritizeDataClasses(locales, breach),
