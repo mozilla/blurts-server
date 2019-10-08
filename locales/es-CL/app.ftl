@@ -372,7 +372,13 @@ verify-the-link = Verifica el enlace enviado a { $userEmail } para añadirlo a {
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+email-verified = ¡Correo verificado exitosamente!
 email-added-to-subscription = Te avisaremos si { $email } aparece en una filtración de datos.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = Para ver y gestionar todos los correos que has registrado para que se realice una monitorización de filtraciones, { $nestedSignInLink }.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = conéctate
 
 
 
