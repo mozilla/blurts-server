@@ -12,6 +12,9 @@
        *[lowercase] compte Firefox
         [uppercase] Compte Firefox
     }
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
 
 
 
