@@ -103,5 +103,8 @@ faq-v2-2 = Devo prendere dei provvedimenti anche se la violazione è avvenuta an
 faq-v2-3 = Ho appena scoperto che il mio account è stato coinvolto in una violazione. Che cosa faccio adesso?
 # Link Title
 faq-v2-4 = In che modo vengono trattati i siti contenenti dati sensibili in { -product-name }?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Crea un { -brand-fxa }</a> gratuito, puoi aggiungere fino a 15 indirizzi email.
 # Section headline
 monitor-another-email = Vuoi monitorare un altro indirizzo email?
