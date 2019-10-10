@@ -116,4 +116,4 @@ faq-v2-4 = Jak { -product-name } zachází s úniky citlivých dat?
 # later in the code. Please do not modify or remove "<a>" and "</a>".
 pre-fxa-message = <a>Vytvořte si zdarma { -brand-fxa }</a> a můžete přidat až 15 e-mailových adres.
 # Section headline
-monitor-another-email = Chcete kontrolovat další e-mailovou adresou?
+monitor-another-email = Chcete monitorovat další e-mailovou adresu?
