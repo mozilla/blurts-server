@@ -331,7 +331,7 @@ email-addresses-being-monitored =
 # your localization, because it would result in the number showing twice.
 passwords-exposed =
     { $passwords ->
-        [one] vašich heslo bylo vyzrazeno souhrnně ve všech únicích
+        [one] vaše heslo bylo vyzrazeno souhrnně ve všech únicích
         [few] vaše hesla byla vyzrazena souhrnně ve všech únicích
        *[other] vašich hesel bylo vyzrazeno souhrnně ve všech únicích
     }
