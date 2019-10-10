@@ -209,8 +209,11 @@ breach-alert-subject = { -product-name } yeni bir veri ihlalinde e-posta adresin
 your-info-was-discovered-headline = Bilgileriniz yeni bir veri ihlalinde tespit edildi.
 what-to-do-after-breach = Veri ihlalinden sonra ne yapılmalı?
 ba-next-step-1 = Parolanızı güçlü ve benzersiz bir parolayla değiştirin.
+ba-next-step-blurb-1 = Güçlü bir parola büyük ve küçük harflerin, özel karakterlerin ve rakamların bileşiminden oluşur. Adresiniz, doğum tarihiz ve akrabalarınızın adları gibi kişisel bilgileri içermez.
 ba-next-step-2 = Ele geçirilen parolayı kullanmayı tamamen bırakın.
+ba-next-step-blurb-2 = Siber suçlular dark web'de parolanızı bulabilir ve bu parolayı diğer hesaplarınıza giriş yapmak için kullanabilirler. Hesaplarınızı korumanın en iyi yolu her biri için benzersiz parolalar kullanmaktır.
 ba-next-step-3 = Daha iyi parolalar oluşturma ve onları güvende tutma konusunda yardım alın.
+ba-next-step-blurb-3 = Güçlü ve benzersiz parolalar oluşturmak için bir parola yöneticisi kullanın. Parola yöneticileri tüm hesaplarını güvenli bir şekilde depolar, böylece tüm cihazlarınızda onlara erişebilirsiniz.
 faq1 = Bu şirketi veya web sitesini tanımıyorum. Neden bu ihlalde yer alıyorum?
 faq2 = Bu ihlali bana bildirmeniz neden bu kadar uzun sürdü?
 faq3 = Bu e-postanın gerçekten { -product-name } tarafından gönderildiğini nasıl anlayabilirim?
@@ -264,6 +267,14 @@ passwords-exposed =
     { $passwords ->
         [one] parolanız ihlallerde ele geçirilmiş
        *[other] parolanız ihlallerde ele geçirilmiş
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] veri ihlalinde bilgileriniz ele geçirildi
+       *[other] veri ihlalinde bilgileriniz ele geçirildi
     }
 # Button
 see-additional-breaches = Diğer ihlallere bakın
@@ -328,6 +339,12 @@ verify-the-link = { $userEmail } adresine gönderilen bağlantıyı onaylarak ad
 ## an additional email to Firefox Monitor.
 
 email-verified = E-posta başarıyla doğrulandı!
+email-added-to-subscription = Bir veri ihlalinde { $email } adresine rastlarsak sizi uyaracağız.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = İhlal izleme için kaydolduğunuz tüm e-postaları görmek ve yönetmek için { $nestedSignInLink }.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = giriş yapın
 
 
 
