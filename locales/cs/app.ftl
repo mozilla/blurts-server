@@ -414,7 +414,7 @@ email-verified = E-mailová adresa byla úspěšně ověřena.
 email-added-to-subscription = Pokud se adresa { $email } objeví v nějakém úniku dat, dostanete upozornění.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
-email-verified-view-dashboard = Pro zobrazení a správu adres, které jste přihlásili k odběru informací o únicích dat, { $nestedSignInLink }.
+email-verified-view-dashboard = Pro zobrazení a správu adres, které jste nechali monitorovat pro případ úniku dat, { $nestedSignInLink }.
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = se přihlaste
 
