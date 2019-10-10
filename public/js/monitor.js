@@ -41,7 +41,9 @@ function doOauth(el) {
   });
   if (sessionStorage && sessionStorage.length > 0) {
     const lastScannedEmail = sessionStorage.getItem(`scanned_${sessionStorage.length}`);
-    url.searchParams.append("email", lastScannedEmail);
+    if (lastScannedEmail) {
+      url.searchParams.append("email", lastScannedEmail);
+    }
   }
   window.location.assign(url);
 }
