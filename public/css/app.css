@@ -222,7 +222,7 @@ a.btn-dark {
   justify-content: center;
   text-align: center;
   background-color: transparent;
-  border-radius: 0.25rem;
+  border-radius: 8px;
   min-height: 2rem;
   font-size: var(--buttonFontSize);
   font-weight: 600;
@@ -369,6 +369,14 @@ ul li {
 
 .flx-row {
   flex-direction: row;
+}
+
+.flx-end {
+  justify-content: flex-end;
+}
+
+.flx-auto {
+  flex: 1 1 auto;
 }
 
 .space-between {
@@ -562,10 +570,6 @@ div.sprite {
     --headline: 2.4rem;
   }
 
-  .clear-header {
-    padding-top: 16rem;
-  }
-
   .hide-mobile {
     display: none !important;
     visibility: hidden;
@@ -627,6 +631,14 @@ div.sprite {
     --padding: 1rem;
     --skinnyHeadline: 1.4rem;
     --subhead: 1.1rem;
+  }
+
+  body.bento-open {
+    position: fixed;
+  }
+
+  .row-full-width {
+    padding: 24px;
   }
 
   .headline {

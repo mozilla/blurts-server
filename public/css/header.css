@@ -37,8 +37,8 @@ header.show-shadow {
 }
 
 .fx-monitor-logo-wrapper,
-.desktop-menu {
-  flex: 1 1 100%;
+.bento-sign-up {
+  flex: 1 1 30%;
 }
 
 .fx-monitor-logo-wrapper:hover {
@@ -55,7 +55,8 @@ header.show-shadow {
 .fx-monitor-logotype {
   background: url("/img/svg/fx-monitor-logotype.svg");
   width: 100%;
-  margin-left: var(--margin);
+  max-width: 212px;
+  margin-left: 8px;
   background-position: left;
   background-size: contain;
   background-repeat: no-repeat;
@@ -74,22 +75,24 @@ nav {
   padding-left: calc(1rem + 1vw);
   justify-content: center;
   color: rgba(255, 255, 255, 0.9);
-  font-weight: 500;
+  font-weight: 700;
+  font-size: 16px;
 }
 
 .active-link {
   font-weight: 700;
   position: relative;
+  display: block;
 }
 
 .active-link-underline::after {
-  height: 0.15rem;
+  height: 2px;
   background: var(--monitorGradient);
   opacity: 0;
   display: block;
   content: "";
   position: absolute;
-  bottom: -10px;
+  bottom: -8px;
   left: 0;
   right: 0;
 }
@@ -104,23 +107,24 @@ nav {
 }
 
 .sign-in {
-  margin-left: 1rem;
   white-space: nowrap;
+  border: 2px solid rgba(255, 255, 255, 1);
+  font-size: 16px;
 }
 
 .sign-in:hover {
   background-color: var(--blue4);
-  border: 1px solid var(--blue4);
+  border: 2px solid var(--blue4);
 }
 
 .sign-in:active {
   background-color: var(--blue5);
-  border: 1px solid var(--blue5);
+  border: 2px solid var(--blue5);
 }
 
 .sign-in:focus,
 .sign-in:active {
-  border-width: 1px;
+  border-width: 2px;
   outline: none;
   box-shadow: none;
 }
@@ -164,19 +168,18 @@ nav {
   align-items: center;
   position: relative;
   overflow: hidden;
-  border: 2px solid rgba(0, 0, 0, 0);
+  border: 2px solid rgba(255, 255, 255, 1);
 }
 
 .fxa-menu-wrapper {
   cursor: pointer;
-  margin-left: 1rem;
   position: relative;
 }
 
 .avatar-wrapper,
 .avatar {
-  height: 36px;
-  width: 36px;
+  height: 42px;
+  width: 42px;
 }
 
 /* signed-in user menu */
@@ -275,14 +278,14 @@ nav {
   font-size: 16px;
 }
 
-.learn-more {
+/* .learn-more {
   margin-left: 0.5rem;
   color: rgba(255, 255, 255, 1);
   text-decoration: underline;
   white-space: nowrap;
-}
+} */
 
-.join-fx-wrap {
+/* .join-fx-wrap {
   align-items: center;
 }
 
@@ -295,15 +298,33 @@ nav {
   min-width: 24px;
   height: 24px;
   margin: auto 16px auto auto;
+} */
+
+@media screen and (max-width: 1200px) {
+  .bento-sign-up {
+    flex: 0 1 auto;
+  }
+
+  .desktop-menu {
+    justify-content: flex-end;
+  }
+
+  .nav-link {
+    padding-right: 0;
+  }
 }
 
 @media screen and (max-width: 800px) {
+  .bento-sign-up {
+    margin-left: 0;
+  }
+
   .desktop-menu {
     flex: 1 1 auto;
   }
 
   .fx-monitor-logotype {
-    margin-left: 0.25rem;
+    margin-left: 4px;
     height: 25px;
   }
 
@@ -430,16 +451,12 @@ nav {
     font-size: 1rem;
   }
 
-  .sprite.fx-monitor-logo {
-    transform: scale(0.9);
-  }
-
-  .fx-monitor-logotype {
-    height: 18px;
+  .fx-monitor-logo-wrapper {
+    flex: 1 1 100%;
   }
 
   .sign-in {
-    padding: 0.65rem 1.35rem;
+    padding: 8px 16px;
   }
 
   .mobile-menu {
@@ -453,5 +470,21 @@ nav {
 
   .nav-link.drop-down-menu {
     padding: 1rem 1.75rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .sprite.fx-monitor-logo {
+    transform: scale(0.9);
+  }
+
+  .fx-monitor-logotype {
+    height: 18px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .fx-monitor-logotype {
+    display: none;
   }
 }
