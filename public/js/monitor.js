@@ -25,6 +25,14 @@ function toggleEl(e) {
   });
 }
 
+
+function isValidEmail(val) {
+  // https://stackoverflow.com/a/46181
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(val).toLowerCase());
+}
+
+
 function doOauth(el) {
   let url = new URL("/oauth/init", document.body.dataset.serverUrl);
   url = getFxaUtms(url);
@@ -81,7 +89,7 @@ function handleFormSubmits(formEvent) {
     email = thisForm.email.value.trim();
     thisForm.email.value = email;
   }
-  if (thisForm.email) {
+  if (thisForm.email && !isValidEmail(email)) {
     sendPing(thisForm, "Failure");
     thisForm.classList.add("invalid");
     return;
