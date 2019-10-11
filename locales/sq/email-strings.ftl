@@ -58,6 +58,14 @@ share-by-email-message =
     3. Get tips from { -product-name } about what to do next.
 # Unsubscribe link in email.
 email-unsub-link = Shpajtohuni
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb = Këtë email po e merrni ngaqë jeni regjistruar për sinjalizime { -product-name }. S’i doni më këto email-e? { $unsubLink }. Ky është një email i automatizuar. Për asistencë vizitoni { $faqLink }.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy = Këtë email po e merrni ngaqë jeni regjistruar për sinjalizime { -product-name }. Ky është një email i automatizuar. Për asistencë vizitoni { $faqLink }.
 # Button text that takes the user to their signed in user dashboard.
 view-my-dashboard-cta = Parje e Pultit Tim
 # Button text
@@ -83,7 +91,30 @@ email-subject-no-breaches = { -product-name } s’gjeti cenime të ditura
 email-subject-verify = Verifikoni email-in tuaj për { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Mësoni më tepër mbi { $fxmLink }
+email-sensitive-disclaimer =
+    Për shkak të natyrës rezervat të kësaj shkeljeje, email-et e përfshirë në të nuk mund të shihen publikisht. 
+    Këtë sinjalizim po e merrni ngaqë jeni i zoti i verifikuar i kësaj adrese email.
+fxm-warns-you-no-breaches =
+    { -product-name } ju sinjalizon rreth shkeljesh të dhënash që prekin të dhëna tuajat personale. 
+    Deri këtu, s’janë gjetur shkelje. Do t’ju dërgojmë një sinjalizim, nëse një adresat tuaja email shfaqet në një shkelje të re.
+fxm-warns-you-found-breaches =
+    { -product-name } ju sinjalizon rreth shkeljesh të dhënash që prekin të dhëna tuajat personale. 
+    Jeni regjistruar gjithashtu të merrni sinjalizime, nëse adresa juaj email shfaqet në një shkelje të re.
+email-breach-alert-blurb =
+    { -product-name } ju sinjalizon rreth shkeljesh të dhënash që prekin të dhëna tuajat personale. 
+    Sapo morëm hollësi rreth një shkelje tjetër të të dhënave të shoqërisë.
 # List headline
 faq-list-headline = Pyetje të bëra shpesh
 # Link Title
+faq-v2-1 = Nuk e njoh një prej këtyre shoqërive apo sajteve. Çne unë në këtë shkelje?
+# Link Title
+faq-v2-2 = Më duhet të bëj ndonjë gjë, nëse kjo shkelje ka ndodhur vite më parë ose nëse kjo është një llogari e dikurshme?
+# Link Title
 faq-v2-3 = Sapo pashë se jam pjesë e një cenimi të dhënash. Ç’të bëj më tej?
+# Link Title
+faq-v2-4 = Si i trajton { -product-name } sajtet me të dhëna rezervat?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Krijoni një { -brand-fxa } falas</a>, dhe mund të shtoni deri në 15 adresa email.
+# Section headline
+monitor-another-email = Doni të mbikëqyret tjetër email?

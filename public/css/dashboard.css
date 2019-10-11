@@ -137,6 +137,12 @@ p.confirm-submit {
   letter-spacing: 0.01em;
 }
 
+span.email-confirmed {
+  font-size: 18px;
+  margin: 0 auto 24px auto;
+  line-height: 1.5;
+}
+
 .dashboard-add-email {
   width: 100%;
   padding: var(--margin) var(--margin) calc(var(--padding) * 3) var(--margin);

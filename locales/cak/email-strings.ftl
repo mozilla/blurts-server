@@ -15,11 +15,6 @@ unsubscribe-email-link = We man nawajo' ta chik nak'ül { -product-name } kitzij
 firefox-monitor-report = { -product-name } Rutzijol
 report-date = Ruq'ijul Rutzijol:
 email-address = Rochochib'al Taqoya'l:
-# "full report" should be understood to mean the "complete report" or, the complete list of known data breaches that included the user’s information. 
-your-full-report = Ja tz'aqät atzijol richin { -product-name } re k'o wawe', ri nuk'üt ronojel ri tz'ilanïk taq tzij ruk'wan ri rochochib'al ataqoya'l.
-report-no-breaches =
-    Man k'o ta ri rochochib'al ataqoya'l pa rucholxe'el qatzij richin tz'ilanïk ri etaman kiwäch.
-    Xa xe chi ri taq tz'ilanïk xab'achike ramaj yek'ulwachitäj. Ke'awoqaj re taq xak re' richin jikïl ye'achajij ri taq awetamab'al.
 # A list of next steps someone should take if their information has been involved in a data breach.
 what-to-do-next = Achike Nib'an Wakami
 report-headline =
@@ -33,8 +28,6 @@ report-subhead-no-breaches =
     Yalan ütz rutzijol, chuqa' k'o yatikïr nab'än.
     Xab'achike ramaj yek'ulwachitäj ri taq tz'ilanïk, ruma ri' tasik'ij ronojel richin nawetamaj rub'eyal ye'achajij ri ewan taq atzij.
 report-subhead-found-breaches = Ja tz'aqät atzijol richin Firefox Monitor re k'o wawe', ri nuk'üt ronojel ri tz'ilanïk taq tzij ruk'wan ri rochochib'al ataqoya'l.
-breach-alert-headline = Xk'oje' pa jun tz'ilanïk tzij ri rub'i' ataqoya'l.
-breach-alert-subhead = Jun k'ak'a' tz'ilanïk tzij ri etaman ruwäch ruk'wan ri rub'i' ataqoya'l chuqa' re taq tzij re'
 report-pwt-blurb =
     Ri ewan taq tzij yalan kejqalem ruma ri' toq k'ïy ye'eleq'äx q'ij q'ij chuqa' yek'ayïx pa itzel k'ayb'äl.
     Ke'awokisaj jikïl ewan taq tzij richin ye'achajij ri rub'i' taq ataqoya'l chuqa' ri taq awetamab'al e k'o chi kipam.
@@ -65,3 +58,15 @@ share-by-email-message =
     1. Jät pa { "https://monitor.firefox.com" } richin nakanoj ri ataqoya'l.
     2. Tatz'eta' we ri rub'i' ataqoya'l pa k'amab'ey xkik'ulwachij jun tz'ilanïk kitzij.
     3. Nak'ül taq runa'oj { -product-name } chi rij ri k'o chi nab'än.
+# Unsubscribe link in email.
+email-unsub-link = Tiq'at rutz'ib'axik b'i'aj
+# Button text
+verify-email-cta = Tinik'öx Taqoya'l
+# Button text
+see-all-breaches = Ketz'et Ronojel taq Tz'ilanem
+# Headline of verification email
+email-link-expires = Re ximonel re' xtik'is pa 24 ramaj.
+# List headline
+faq-list-headline = Jutaqil taq k'utunïk
+# Link Title
+faq-v2-4 = ¿Achike rub'anikil nub'än { -product-name } chi ke ri k'ayew taq ruxaq?

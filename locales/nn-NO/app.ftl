@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -10,6 +8,12 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox-konto
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = Vilkår og personvern
 GitHub-link-title = GitHub
 error-scan-page-token = Du freista å skanne for mange e-postadresser på kort tid. Av tryggingsårsaker har vi mellombels blokkert deg frå nye søk. Du vil kunne gjere nye søk seinare.
@@ -191,7 +195,6 @@ currently-showing = Viser:
 ## Updated error messages
 
 error-csrf-headline = Tidsavbrot i økta
-login-link = Logg inn
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -199,14 +202,6 @@ email-addresses-being-monitored =
     { $emails ->
         [one] E-postadresser som er overvaka
        *[other] E-postadresser som er overvaka
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-        [one] Dattalekkasje som har komprommitert opplysningane dine
-       *[other] Dattalekkasjar som har komprommitert opplysningane dine
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -258,6 +253,15 @@ learn-more-link = Les meir.
 email-sent = E-post er sendt!
 # Form title
 want-to-add = Vil du leggje til ei anna e-postadresse?
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = logg inn
+
+
+
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Datalekkasje lagt til:

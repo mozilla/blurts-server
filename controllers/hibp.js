@@ -15,7 +15,9 @@ const log = mozlog("controllers.hibp");
 
 // Get addresses and language from either subscribers or
 // email_addresses fields
+
 function getAddressesAndLanguageForEmail(recipient) {
+  const preFxaSubscriber = !recipient.fxa_uid ? true : false;
   const signupLanguage = recipient.signup_language;
   if (recipient.hasOwnProperty("email") && recipient.email) {
     // email_addresses record, check all_emails_to_primary
@@ -24,18 +26,21 @@ function getAddressesAndLanguageForEmail(recipient) {
         recipientEmail: recipient.primary_email,
         breachedEmail: recipient.email,
         signupLanguage,
+        preFxaSubscriber,
       };
     }
     return {
       recipientEmail: recipient.email,
       breachedEmail: recipient.email,
       signupLanguage,
+      preFxaSubscriber,
     };
   }
   return {
     recipientEmail: recipient.primary_email,
     breachedEmail: recipient.primary_email,
     signupLanguage,
+    preFxaSubscriber,
   };
 }
 
@@ -81,7 +86,7 @@ async function notify (req, res) {
 
   for (const recipient of recipients) {
     log.info("notify", {recipient});
-    const { recipientEmail, breachedEmail, signupLanguage } = getAddressesAndLanguageForEmail(recipient);
+    const { recipientEmail, breachedEmail, signupLanguage, preFxaSubscriber } = getAddressesAndLanguageForEmail(recipient);
 
     const requestedLanguage = signupLanguage ? acceptedLanguages(signupLanguage) : "";
     const supportedLocales = negotiateLanguages(
@@ -104,6 +109,7 @@ async function notify (req, res) {
           unsubscribeUrl: EmailUtils.getUnsubscribeUrl(recipient, utmID),
           ctaHref: ctaHref,
           whichPartial: "email_partials/report",
+          preFxaSubscriber,
         },
       );
       notifiedRecipients.push(breachedEmail);

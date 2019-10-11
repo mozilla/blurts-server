@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -10,6 +8,12 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Conto Firefox
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = Conditiones de uso e confidentialitate
 GitHub-link-title = GitHub
 error-scan-page-token = Tu ha probate a analysar troppo de adresses de e-mail in un curte periodo de tempore. Pro rationes de securitate, nos te ha temporarimente blocate pro nove recercas. Tu potera probar de novo plus tarde.
@@ -43,8 +47,8 @@ scan-error = Debe esser un adresse de e-mail valide.
 download-firefox-banner-button = Discarga { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Inviate!
-sign-up = Acceder
-form-signup-error = Debe esser un adresse de e-mail valide
+sign-up = Registrar se
+form-signup-error = Debe esser un adresse de email valide
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Data del violation de securitate:
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -191,7 +195,7 @@ welcome-back = Benvenite retro, { $userName }!
 welcome-user = Benvenite, { $userName }!
 breach-alert-subject = { -product-name } ha trovate tu email in un nove violation de datos.
 your-info-was-discovered-headline = Tu informationes ha essite discoperite in un nove violation de datos.
-your-info-was-discovered-blurb = Tu te ha registrate pro reciper avisos de { -product-name } quando tu adresse de e-mail appare in un violation de datos. Ecce lo que nos sape sur iste violation.
+your-info-was-discovered-blurb = Tu te ha inscribite pro reciper avisos de { -product-name } quando tu adresse de e-mail appare in un violation de datos. Ecce lo que nos sape sur iste violation.
 what-to-do-after-breach = Que facer post un violation de datos
 ba-next-step-1 = Cambia tu contrasigno a un forte, unic contrasigno.
 ba-next-step-blurb-1 = Un forte contrasigno usa un combination de majusculas e minusculas, special characteres e numeros. Il non contine informationes personal como tu adresse, anniversario o nomines de familia.
@@ -238,7 +242,6 @@ error-csrf-headline = Session foras tempore limite
 error-csrf-blurb = Selige le button Receder de tu navigator, recarga le pagina e prova de novo.
 error-invalid-unsub = Como remover le inscription al avisos de { -product-name }
 error-invalid-unsub-blurb = Tu debera remover te del inscription per un del emails que { -product-name } te ha inviate. Controlar tu cassa de ingresso pro messages de { -brand-team-email }. Selige le ligamine de remotion ex inrolamento, al fundo del email.
-login-link = Acceder
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -246,14 +249,6 @@ email-addresses-being-monitored =
     { $emails ->
         [one] Adresse de e-mail surveliate
        *[other] Adresses de e-mail surveliate
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-        [one] violation de datos ha exponite tu informationes
-       *[other] violationes de datos ha exponite tu informationes
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -331,6 +326,20 @@ want-to-add = Vole adder un altere adresse de e-mail?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Verifica le ligamine inviate a { $userEmail } pro adder lo a { -product-name }.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+email-verified = Email verificate con successo!
+email-added-to-subscription = Nos te avisara si tu { $email } essera involvite in un nove violation de datos.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = { $nestedSignInLink } pro vider e tractar tote le adresse email que tu ha registrate pro esser controlate pro violationes.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = authenticar se
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere

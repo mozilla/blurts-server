@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -10,6 +8,12 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox 账户
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = 使用条款和隐私
 GitHub-link-title = GitHub
 error-scan-page-token = 您试图在短时间内扫描过多的电子邮件地址。出于安全原因，我们暂时阻止您进行新的搜索。请您稍后再试。
@@ -238,20 +242,12 @@ error-csrf-headline = 会话超时
 error-csrf-blurb = 点击浏览器的后退按钮或重新加载页面，再试一次。
 error-invalid-unsub = 如何取消订阅来自 { -product-name } 的警报
 error-invalid-unsub-blurb = 您可以从任何 { -product-name } 发送的邮件中进行退订。请到收件箱搜索来自 { -brand-team-email } 的邮件，然后点击邮件底部的“取消订阅”链接。
-login-link = 登录
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
 email-addresses-being-monitored =
     { $emails ->
        *[other] 正在监控的电子邮件地址
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-       *[other] 泄露您信息的数据外泄事件
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -325,6 +321,20 @@ want-to-add = 要添加其他电子邮件地址吗？
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = 请验证发送到 { $userEmail } 的链接，将其添加到 { -product-name }。
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+email-verified = 邮箱已通过验证！
+email-added-to-subscription = 若 { $email } 出现在新的数据外泄事件中，我们会通知您。
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = 要查看或管理您所有设为监控的电子邮件地址，请访问 { $nestedSignInLink }。
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = 请登录
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere

@@ -117,3 +117,8 @@ faq-v2-2 = Preciso fazer alguma coisa se um vazamento aconteceu anos atrás, ou 
 faq-v2-3 = Acabei de descobrir que estou em um vazamento de dados. O que fazer agora?
 # Link Title
 faq-v2-4 = Como o { -product-name } lida com sites sensíveis?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Crie uma { -brand-fxa } gratuita</a> e você poderá adicionar até 15 endereços de e-mail.
+# Section headline
+monitor-another-email = Quer monitorar outro e-mail?

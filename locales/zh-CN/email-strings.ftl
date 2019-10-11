@@ -107,3 +107,8 @@ faq-v2-2 = 如果外泄事件发生在几年前，或是已经不用的账号，
 faq-v2-3 = 我刚刚发现自己遭受了数据外泄。接下来我该怎么做？
 # Link Title
 faq-v2-4 = { -product-name } 如何处理这些敏感网站？
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>创建免费的 { -brand-fxa }，您最多可添加 15 个电子邮件地址。
+# Section headline
+monitor-another-email = 要监控其他电子邮件地址吗？

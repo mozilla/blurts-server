@@ -393,8 +393,6 @@ error-invalid-unsub-blurb = You’ll need to unsubscribe from one of the
   emails {-product-name} sent you. Check your inbox for messages from 
   {-brand-team-email}. Select the unsubscribe link at the bottom of the email.
 
-login-link = Log in
-
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -404,14 +402,6 @@ email-addresses-being-monitored =
     [other] Email addresses being monitored
   }
 
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-  { $breaches ->
-    [one] Data breach has exposed your information
-   *[other] Data breaches have exposed your information
-  }
 
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -427,8 +417,8 @@ passwords-exposed =
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
   { $breaches ->
-    [one] Known data breach has exposed your information
-   *[other] Known data breaches have exposed your information
+    [one] Known data breach has exposed your info
+   *[other] Known data breaches have exposed your info
   }
 
 # Button
@@ -514,6 +504,20 @@ want-to-add = Want to add another email?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Verify the link sent to { $userEmail } to add it to {-product-name}.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+email-verified = Email Successfully Verified!
+email-added-to-subscription = We’ll alert you if { $email } appears in a data breach.
+
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = To see and manage all emails you’ve signed up for breach monitoring, { $nestedSignInLink }.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = sign in
+
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link

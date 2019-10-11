@@ -108,3 +108,8 @@ faq-v2-2 = Tengo que hacer algo si una filtración sucedió hace años o se trat
 faq-v2-3 = Acabo de enterarme de que estoy en una filtración de datos. ¿Qué hago ahora?
 # Link Title
 faq-v2-4 = ¿Cómo trata { -product-name } los datos sensibles?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Crea una { -brand-fxa } gratuita</a>, y puedes sumar hasta 15 direcciones de correo.
+# Section headline
+monitor-another-email = ¿Quieres monitorizar otro correo?

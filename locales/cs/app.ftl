@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name =
     { $case ->
        *[nom] Firefox Monitor
@@ -64,6 +62,12 @@
         [loc] Účtu Firefoxu
         [ins] Účtem Firefoxu
     }
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = Podmínky a ochrana soukromí
 GitHub-link-title = GitHub
 error-scan-page-token = Pokusili jste se zkontrolovat příliš mnoho e-mailových adres ve velmi krátkém čase. Z bezpečnostních důvodů jsme další vyhledávání dočasně zablokovali. Zkuste to prosím znovu později.
@@ -228,7 +232,7 @@ find-out-what-hackers-know = Odhalte, co už o vás hackeři vědí. Zjistěte, 
 search-for-your-email = Vyhledejte svou e-mailovou adresu ve veřejně dostupných únicích dat sahajících zpět do roku 2007.
 back-to-top = Zpět na začátek
 comm-opt-0 = Poslat mi e-mail, pokud se jedna z mých níže uvedených e-mailových adres objeví v nějakém úniku dat.
-comm-opt-1 = Posílat všechna upozornění na úniky dat na { $primaryEmail }.
+comm-opt-1 = Posílat všechna upozornění na úniky dat na { $primaryEmail }
 stop-monitoring-this = Přestat monitorovat tuto e-mailovou adresu.
 resend-verification = Znovu poslat ověřovací e-mail
 add-new-email = Přidání nové e-mailové adresy
@@ -313,7 +317,6 @@ error-invalid-unsub = Jak zrušit příjem upozornění od služby { -product-na
 error-invalid-unsub-blurb =
     Zrušit příjem budete muset prostřednictvím jedné z e-mailových zpráv, kterou vám { -product-name } odeslal. Podívejte se do své e-mailové schránky po zprávách od
     { -brand-team-email }. V dolní části zprávy pak klepněte na odkaz pro zrušení příjmu.
-login-link = Přihlásit se
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -324,20 +327,11 @@ email-addresses-being-monitored =
        *[other] e-mailových adres je monitorováno
     }
 # This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-        [one] únik dat vyzradil vaše údaje
-        [few] úniky dat vyzradily vaše údaje
-       *[other] úniků dat vyzradilo vaše údaje
-    }
-# This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
 # your localization, because it would result in the number showing twice.
 passwords-exposed =
     { $passwords ->
-        [one] vašich heslo bylo vyzrazeno souhrnně ve všech únicích
+        [one] vaše heslo bylo vyzrazeno souhrnně ve všech únicích
         [few] vaše hesla byla vyzrazena souhrnně ve všech únicích
        *[other] vašich hesel bylo vyzrazeno souhrnně ve všech únicích
     }
@@ -412,6 +406,20 @@ want-to-add = Chcete přidat další e-mailovou adresu?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Pro přidání adresy { $userEmail } do { -product-name(case: "gen") } klepněte na odkaz zaslaný na tuto adresu.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+email-verified = E-mailová adresa byla úspěšně ověřena.
+email-added-to-subscription = Pokud se adresa { $email } objeví v nějakém úniku dat, dostanete upozornění.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = Pro zobrazení a správu adres, které jste nechali monitorovat pro případ úniku dat, { $nestedSignInLink }.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = se přihlaste
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere

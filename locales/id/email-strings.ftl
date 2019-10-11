@@ -118,3 +118,8 @@ faq-v2-2 = Apakah saya perlu melakukan sesuatu jika pembobolan terjadi bertahun-
 faq-v2-3 = Saya baru tahu saya termasuk korban pembobolan data. Apa yang harus saya lakukan selanjutnya?
 # Link Title
 faq-v2-4 = Bagaimana { -product-name } memperlakukan situs sensitif?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Buat { -brand-fxa } gratis</a>, dan Anda bisa menambahkan hingga 15 alamat surel.
+# Section headline
+monitor-another-email = Ingin memantau surel lainnya?

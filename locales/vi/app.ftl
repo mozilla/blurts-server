@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -10,6 +8,12 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Tài khoản Firefox
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = Điều khoản & quyền riêng tư
 GitHub-link-title = GitHub
 error-scan-page-token = Bạn đang cố quét quá nhiều địa chỉ email trong một khoảng thời gian ngắn. Vì lý do bảo mật, chúng tôi đã tạm thời chặn bạn khỏi các tìm kiếm mới. Bạn có thể thử lại sau.
@@ -299,20 +303,12 @@ error-invalid-unsub-blurb =
     Bạn cần hủy đăng ký từ một trong những email mà { -product-name }
     đã gửi cho bạn. Kiểm tra hộp thư đến của bạn để tìm thư được gửi từ
     { -brand-team-email }. Chọn liên kết hủy đăng ký ở dưới cùng của email.
-login-link = Đăng nhập
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
 email-addresses-being-monitored =
     { $emails ->
        *[other] Địa chỉ email đang được giám sát
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-       *[other] Vi phạm dữ liệu đã tiết lộ thông tin của bạn
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -386,6 +382,20 @@ want-to-add = Bạn muốn thêm một email khác?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Liên kết xác minh được gửi tới { $userEmail } để thêm liên kết vào { -product-name }.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+email-verified = Đã xác minh email thành công!
+email-added-to-subscription = Chúng tôi sẽ thông báo cho bạn nếu { $email } xuất hiện rò rỉ dữ liệu.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = Để xem và quản lý tất cả các email mà bạn đã đăng ký để theo dõi vụ rò rỉ, { $nestedSignInLink }.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = đăng nhập
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere

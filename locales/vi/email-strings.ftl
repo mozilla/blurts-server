@@ -118,3 +118,8 @@ faq-v2-2 = Tôi có cần phải làm bất cứ điều gì nếu vi phạm x�
 faq-v2-3 = Tôi mới phát hiện ra tôi đã bị vi phạm dữ liệu. Tôi nên làm gì tiếp theo?
 # Link Title
 faq-v2-4 = { -product-name } xử lý các trang web nhạy cảm như thế nào?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Tạo { -brand-fxa } miễn phí</a> và bạn có thể thêm tối đa 15 địa chỉ email.
+# Section headline
+monitor-another-email = Bạn muốn theo dõi một email khác?

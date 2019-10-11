@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -10,6 +8,12 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Amiḍan Firefox
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = Tiwtilin akked tbaḍnit
 GitHub-link-title = GitHub
 error-scan-page-token = Tɛeṛḍeḍ ad tgeḍ tasleḍt n ddeqs n tansiwin deg drus n wakud. Ɛef sebba n tɣellist, nessewḥel inadiyen imaynuten akka kra n wakud. Tzmereḍ ad tɛerḍḍ ticki.
@@ -257,7 +261,6 @@ error-invalid-unsub-blurb =
     Tesriḍ ad teffɣeḍ seg ujerred seg yiwen
     n yimayel { -product-name } i ak-d-yettwaznen. Senqed iznan seg 
     { -brand-team-email }. Sit ɣef useɣwen n tuffɣa seg ujerred ddaw n yizen.
-login-link = Qqen
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -265,14 +268,6 @@ email-addresses-being-monitored =
     { $emails ->
         [one] Tansa n yimayl i d-yettwabedren
        *[other] Tansiwin n yimayl i d-yettwabedren
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-        [one] Tarewla n yisefka i yezmren ad kecmen ɣer telɣut-ik.
-       *[other] Tirewliwin n yisefka i yezmren ad kecmen ɣer telɣut-ik.
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -350,6 +345,20 @@ want-to-add = Tebɣiḍ ad ternuḍ imayl-nniḍen?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Senqed aseɣwen yettwaznen ɣer { $userEmail } akken ad ternuḍ-t ɣef { -product-name }.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+email-verified = Imayl yettwaseqed akken iwata!
+email-added-to-subscription = Ad k-id-nelɣu ma yella tansa-a { $email } tban-d deg trewla n yisefka.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = Akken ad twaliḍ daɣen ad tesferkeḍ meṛṛa imaylen i terniḍ deg usefrek n trewla, { $nestedSignInLink }.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = Kcem
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere

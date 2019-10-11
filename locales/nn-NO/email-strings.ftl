@@ -35,13 +35,21 @@ report-pwt-summary-4 =
 legal = Juridisk informasjon
 # Share Firefox Monitor by email subject line
 share-by-email-subject = Sjå om du har blitt utsett for ein datalekkasje.
+# Unsubscribe link in email.
+email-unsub-link = Avslutt abonnementet
 # Button text
 verify-email-cta = Stadfest e-post
+# Button text
+see-all-breaches = Vis alle datalekkasjane
 # Headline of verification email
 email-link-expires = Denne lenka går ut om 24 timar
+# Email headline
+email-breach-summary-for-email = Datalekkasje-oppsummering for { $userEmail }
 # Subject line of email
 email-subject-verify = Stadfest e-posten din for { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Les meir om { $fxmLink }
 # List headline
 faq-list-headline = Vanlege spørsmål
+# Section headline
+monitor-another-email = Vil du overvake ei anna e-postadresse?

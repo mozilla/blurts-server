@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name =
     { $case ->
        *[nom] Firefox Monitor
@@ -50,6 +48,12 @@
         [loc] Účte Firefox
         [ins] Účtom Firefox
     }
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = Podmienky a ochrana súkromia
 GitHub-link-title = GitHub
 error-scan-page-token = Vo veľmi krátkom čase ste sa pokúsili skontrolovať príliš mnoho e-mailových adries. Z bezpečnostných dôvodov sme vám ďalšie vyhľadávanie dočasne zablokovali. Skúste to, prosím, neskôr.
@@ -337,7 +341,6 @@ error-invalid-unsub-blurb =
     Zrušiť odber budete musieť prostredníctvom jednej z e-mailových správ, 
     ktorú vám { -product-name } odoslal. Pohľadajte vo svojej schránke správu od 
     { -brand-team-email }. V dolnej časti správy kliknite na odkaz pre zrušenie odberu.
-login-link = Prihlásiť sa
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -346,15 +349,6 @@ email-addresses-being-monitored =
         [one] e-mailová adresa je monitorovaná
         [few] e-mailové adresy sú monitorované
        *[other] e-mailových adries je monitorovaných
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-        [one] únik dát vyzradil vaše údaje
-        [few] úniky dát vyzradili vaše údaje
-       *[other] únikov dát vyzradilo vaše údaje
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -436,6 +430,20 @@ want-to-add = Chcete pridať ďalšiu e-mailovú adresu?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Pre pridanie e-mailovej adresy { $userEmail } do { -product-name(case: "gen") }, overte odkaz zaslaný na túto adresu.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+email-verified = E-mailová adresa bola úspešne overená!
+email-added-to-subscription = Ak sa e-mailová adresa { $email } objaví v nejakom úniku dát, dostanete upozornenie.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = Pre zobrazenie a správu adries, ktoré ste prihlásili na odber informácií o únikoch dát, { $nestedSignInLink }.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = sa prihláste
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere

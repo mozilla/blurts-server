@@ -7,6 +7,7 @@ const Knex = require("knex");
 
 const { FluentError } = require("../locale-utils");
 const AppConstants = require("../app-constants");
+const FXA = require("../lib/fxa");
 const HIBP = require("../hibp");
 const Basket = require("../basket");
 const getSha1 = require("../sha1-utils");
@@ -277,6 +278,9 @@ const DB = {
     })
     .returning("*");
     const updatedSubscriber = Array.isArray(updated) ? updated[0] : null;
+    if (updatedSubscriber) {
+      FXA.destroyOAuthToken({refresh_token: subscriber.fxa_refresh_token});
+    }
     return updatedSubscriber;
   },
 

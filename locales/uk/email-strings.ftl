@@ -118,3 +118,8 @@ faq-v2-2 = Чи потрібно мені щось робити, якщо вит
 faq-v2-3 = Мені щойно стало відомо, що мої дані потрапили до витоку даних. Що мені робити?
 # Link Title
 faq-v2-4 = Як { -product-name } обробляє ці вразливі сайти?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Зареєструйтеся в { -brand-fxa(case: "dat") }</a> і ви зможете додати до 15 адрес електронної пошти.
+# Section headline
+monitor-another-email = Хочете контролювати іншу електронну пошту?

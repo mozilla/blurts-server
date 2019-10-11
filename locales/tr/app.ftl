@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -10,6 +8,12 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox Hesabı
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = Şartlar ve gizlilik
 GitHub-link-title = GitHub
 error-scan-page-token = Kısa süre içinde çok fazla e-posta adresi taramaya çalıştınız. Güvenlik nedeniyle yeni aramalar yapmanızı geçici olarak engelledik. Daha sonra yeniden deneyebileceksiniz.
@@ -131,7 +135,11 @@ unverified-breach-plural = Doğrulanmamış ihlaller
 spam-list-breach-plural = Spam listesi ihlalleri
 what-data = Ele geçirilen veriler:
 sensitive-sites = { -product-name } hassas siteleri nasıl ele alıyor?
+sensitive-sites-copy = { -product-name } bu tür veri ihlallerine dahil olan hesapları yalnızca e-posta adresinizi onaylandıktan gösterir. Yani bilgilerinizin bu veri ihlalinde ele geçirilip geçirilmediğini yalnızca siz görebilirsiniz (e-posta hesabınıza erişebilen başka birisi yoksa).
 delayed-reporting-headline = Bu ihlalin bildirilmesi neden bu kadar uzun sürdü?
+delayed-reporting-copy =
+    Ele geçirilen bilgilerin dark web'de gün yüzüne çıkması bazen aylar veya yıllar sürebilir. 
+    İhlaller keşfedildikten ve doğrulandıktan hemen sonra veritabanımıza eklenir.
 about-fxm-headline = { -product-name } hakkında
 about-fxm-blurb = Çevrimiçi hesaplarınızın veri ihlallerine dahil olduğunda { -product-name } sizi uyarır. Verilerinizin ele geçirilip geçirilmediğini öğrenin, yeni ihlaller yaşandığında bildirim alın ve çevrimiçi hesaplarınızı korumak için gereken adımları atın. { -product-name }, { -brand-Mozilla } tarafından sağlanmaktadır.
 fxm-warns-you = E-posta adresiniz çevrimiçi bir veri ihlalinde yer alırsa { -product-name } sizi uyarır. Bilgilerinizin ele geçirilip geçirilmediğini görün, hesaplarınızı nasıl daha iyi koruyabileceğinizi öğrenin ve e-posta adresiniz yeni veri ihlallerine karışırsa bildirim alın.
@@ -140,7 +148,9 @@ how-fxm-works = { -product-name } nasıl çalışır?
 how-fxm-1-headline = Temel sorgulama yap
 how-fxm-1-blurb = Bilgileriniz 2007'den beri gerçeklemiş veri ihlallerinde arayın. Temel sorgulama çoğu veri ihlalini tarar ancak hassas kişisel veri içerenleri hariç tutar.
 how-fxm-2-headline = İhlal takibi için kaydolun
+how-fxm-2-blurb = Yeni ihlallerden haberdar olmak için { -brand-fxa } açın. E-postanızı doğruladıktan sonra hassas ihlaller de dahil olmak üzere geçmiş veri ihlallerini içeren tam raporunuzu göndereceğiz.
 how-fxm-3-headline = Tarayıcınızdan bildirim alın
+how-fxm-3-blurb = { -brand-name } kullanıyorsanız veri ihlaline uğramış bir siteyi ziyaret ettiğinizde bildirim alacaksınız. İhlale dahil olup olmadığınızı ve ne yapabileceğinizi anında öğrenebilirsiniz.
 wtd-after-website = Veri ihlalinden sonra ne yapmalı:
 what-is-data-agg = Veri toplayıcı nedir?
 protect-your-privacy = Çevrimiçi gizliliğinizi koruyun
@@ -199,8 +209,11 @@ breach-alert-subject = { -product-name } yeni bir veri ihlalinde e-posta adresin
 your-info-was-discovered-headline = Bilgileriniz yeni bir veri ihlalinde tespit edildi.
 what-to-do-after-breach = Veri ihlalinden sonra ne yapılmalı?
 ba-next-step-1 = Parolanızı güçlü ve benzersiz bir parolayla değiştirin.
+ba-next-step-blurb-1 = Güçlü bir parola büyük ve küçük harflerin, özel karakterlerin ve rakamların bileşiminden oluşur. Adresiniz, doğum tarihiz ve akrabalarınızın adları gibi kişisel bilgileri içermez.
 ba-next-step-2 = Ele geçirilen parolayı kullanmayı tamamen bırakın.
+ba-next-step-blurb-2 = Siber suçlular dark web'de parolanızı bulabilir ve bu parolayı diğer hesaplarınıza giriş yapmak için kullanabilirler. Hesaplarınızı korumanın en iyi yolu her biri için benzersiz parolalar kullanmaktır.
 ba-next-step-3 = Daha iyi parolalar oluşturma ve onları güvende tutma konusunda yardım alın.
+ba-next-step-blurb-3 = Güçlü ve benzersiz parolalar oluşturmak için bir parola yöneticisi kullanın. Parola yöneticileri tüm hesaplarını güvenli bir şekilde depolar, böylece tüm cihazlarınızda onlara erişebilirsiniz.
 faq1 = Bu şirketi veya web sitesini tanımıyorum. Neden bu ihlalde yer alıyorum?
 faq2 = Bu ihlali bana bildirmeniz neden bu kadar uzun sürdü?
 faq3 = Bu e-postanın gerçekten { -product-name } tarafından gönderildiğini nasıl anlayabilirim?
@@ -239,7 +252,6 @@ error-bot-blurb = Kısa süre içerisinde çok fazla e-posta adresi sorguladığ
 error-csrf-headline = Oturum zaman aşımına uğradı
 error-csrf-blurb = Tarayıcınızın geri düğmesine tıklayın, sayfayı tazeleyin ve tekrar deneyin.
 error-invalid-unsub = { -product-name } uyarılarından ayrılma
-login-link = Giriş yap
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -249,20 +261,20 @@ email-addresses-being-monitored =
        *[other] e-posta adresi izleniyor
     }
 # This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-        [one] veri ihlalinde bilgileriniz ele geçirilmiş
-       *[other] veri ihlalinde bilgileriniz ele geçirilmiş
-    }
-# This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
 # your localization, because it would result in the number showing twice.
 passwords-exposed =
     { $passwords ->
         [one] parolanız ihlallerde ele geçirilmiş
        *[other] parolanız ihlallerde ele geçirilmiş
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] veri ihlalinde bilgileriniz ele geçirildi
+       *[other] veri ihlalinde bilgileriniz ele geçirildi
     }
 # Button
 see-additional-breaches = Diğer ihlallere bakın
@@ -283,7 +295,7 @@ security-tips-headline = Hacker’lardan korunmanız için güvenlik ipuçları
 steps-to-protect = Çevrimiçi kimliğinizi korumak için yapmanız gerekenler
 take-further-steps = Kimliğinizi korumak için birkaç adım daha atın
 alert-about-new-breaches = Yeni ihlaller yaşandığında beni uyar
-see-if-youve-been-part = Çevrimiçi veri ihlallerinde verilerinizin çalınmış olabilir mi? Hemen öğrenin.
+see-if-youve-been-part = Veri ihlallerinde verileriniz çalınmış olabilir mi? Öğrenin.
 get-ongoing-breach-monitoring = İstediğiniz sayıda e-posta adresinin ihlallerini sürekli olarak takip edin.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Öğrenin
@@ -322,6 +334,20 @@ want-to-add = Başka bir e-posta eklemek ister misiniz?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = { $userEmail } adresine gönderilen bağlantıyı onaylarak adresinizi { -product-name }'e ekleyin.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+email-verified = E-posta başarıyla doğrulandı!
+email-added-to-subscription = Bir veri ihlalinde { $email } adresine rastlarsak sizi uyaracağız.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = İhlal izleme için kaydolduğunuz tüm e-postaları görmek ve yönetmek için { $nestedSignInLink }.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = giriş yapın
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
@@ -337,6 +363,7 @@ breach-alert-notifications = İhlal uyarısı bildirimleri
 # and is followed by that date. 
 breach-added-label = Eklenme tarihi:
 how-hackers-work-desc = Parolalarınızı siber suçlulardan koruyun çünkü bu onların en çok umursadığı şey.
+what-to-do-after-breach-desc = Hesaplarınızı kilitleyerek bilgilerinizin yanlış kişilerin eline geçmesini önleyin.
 create-strong-passwords-desc = Güçlü, güvenli ve tahmin etmesi zor parolalar seçin.
 steps-to-protect-desc = Sık karşılaşılan tehditlerin farkında olun ve nelere dikkat etmeniz gerektiğini öğrenin.
 five-myths-desc = Hacker'ların işini kolaylaştıran kötü parola alışkanlıklarından kaçınmayı öğrenin.

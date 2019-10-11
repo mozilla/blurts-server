@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -10,6 +8,12 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Conta Firefox
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = Termos e Privacidade
 GitHub-link-title = GitHub
 error-scan-page-token = Você tentou analisar endereços de e-mail demais em um curto espaço de tempo. Por motivos de segurança, bloqueamos temporariamente novas buscas suas. Você poderá tentar novamente mais tarde.
@@ -291,7 +295,6 @@ error-invalid-unsub-blurb =
     Você precisa cancelar a inscrição a partir de um dos e-mails que 
     o { -product-name } enviou a você. Procure na sua caixa de entrada mensagens 
     de { -brand-team-email }. Selecione o link de cancelar inscrição no final do e-mail.
-login-link = Entre
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -299,14 +302,6 @@ email-addresses-being-monitored =
     { $emails ->
         [one] Endereço de e-mail sendo monitorado
        *[other] Endereços de e-mail sendo monitorados
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-        [one] Vazamento de dados expôs suas informações
-       *[other] Vazamentos de dados expuseram suas informações
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -384,6 +379,20 @@ want-to-add = Quer adicionar outro e-mail?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Clique no link de confirmação enviado para { $userEmail } para adicionar ao { -product-name }.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+email-verified = E-mail confirmado com sucesso!
+email-added-to-subscription = Alertaremos você, caso { $email } apareça em um vazamento de dados.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = Para ver e gerenciar todos os e-mails que você cadastrou para monitoramento de vazamentos, { $nestedSignInLink }.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = entre
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere

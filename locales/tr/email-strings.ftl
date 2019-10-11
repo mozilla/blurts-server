@@ -64,12 +64,12 @@ email-unsub-link = Abonelikten çık
 # { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
 # and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
 # Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
-email-footer-blurb = Bu e-postayı { -product-name }'e üye olduğunuz için alıyorsunuz. Artık bu e-postaları istemiyor musunuz? { $unsubLink }. Bu otomatik bir e-postadır. Destek almak için { $faqLink } adresini ziyaret edebilirsiniz.
+email-footer-blurb = Bu e-postayı { -product-name } uyarılarına kaydolduğunuz için alıyorsunuz. Artık bu e-postaları istemiyor musunuz? { $unsubLink }. Bu otomatik bir e-postadır. Destek için { $faqLink } sayfasını ziyaret edebilirsiniz.
 # This string appears in the footer of verification emails. { $faqLink } is a link
 # to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-verify-footer-copy =
     Bu e-postayı { -product-name } uyarılarına kaydolduğunuz için alıyorsunuz.
-    Bu otomatik bir e-postadır. Destek için { $faqLink } adresini ziyaret edebilirsiniz.
+    Bu otomatik bir e-postadır. Destek için { $faqLink } sayfasını ziyaret edebilirsiniz.
 # Button text that takes the user to their signed in user dashboard.
 view-my-dashboard-cta = Kontrol panelimi göster
 # Button text
@@ -109,3 +109,8 @@ faq-v2-2 = Yıllar önce yaşanmış bir ihlalle veya eski bir hesabımla ilgili
 faq-v2-3 = Bilgilerimin ele geçirildiğini öğrendim. Ne yapmalıyım?
 # Link Title
 faq-v2-4 = { -product-name } hassas verileri nasıl işliyor?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Ücretsiz bir { -brand-fxa } açarak</a> 15 ayrı e-posta adresi ekleyebilirsiniz.
+# Section headline
+monitor-another-email = Başka bir e-postayı izlemek ister misiniz?

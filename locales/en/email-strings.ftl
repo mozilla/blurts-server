@@ -160,3 +160,10 @@ faq-v2-3 = I just found out I’m in a data breach. What do I do next?
 
 # Link Title
 faq-v2-4 = How does {-product-name} treat sensitive sites?
+
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Create a free {-brand-fxa}</a>, and you can add up to 15 email addresses.
+
+# Section headline
+monitor-another-email = Want to monitor another email?
