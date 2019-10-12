@@ -47,6 +47,7 @@ compromised-accounts = Comptes afectats:
 compromised-data = Dades afectades:
 unsub-button = Cancel·la la subscripció
 show-all = Mostra-ho tot
+fxa-scan-another-email = Voleu comprovar una altra adreça?
 sign-in = Inicia la sessió
 sign-out = Tanca la sessió
 have-an-account = Ja teniu un compte?
@@ -64,12 +65,38 @@ security-tips = Consells de seguretat
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Obre la navegació del { -brand-fxa }
+take-control = Recupereu el control de les vostres dades personals.
+about-fxm-headline = Quant al { -product-name }
+# How Firefox Monitor works
+how-fxm-works = Com funciona el { -product-name }
 
 ## What to do after data breach tips
 
+create-strong-passwords = Com crear contrasenyes segures
+back-to-top = Torna a dalt
+welcome-user = Us donem la benvinguda, { $userName }.
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = S'està mostrant:
 
 ## Updated error messages
 
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Informació addicional, com ara:
+# Title
+email-addresses-title = Adreces electròniques
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Filtra per categoria:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menú
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Hi ha una manera de protegir la vostra privadesa. Uniu-vos al { -brand-name }.
+# Link title
+learn-more-link = Més informació.
+email-sent = S’ha enviat el missatge.
+# Form title
+want-to-add = Voleu afegir una altra adreça?
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
