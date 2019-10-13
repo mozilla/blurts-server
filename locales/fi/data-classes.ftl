@@ -11,6 +11,7 @@ avatars = Avatar-kuvat
 bank-account-numbers = Pankkitilinumerot
 beauty-ratings = Ulkonäköluokitukset
 biometric-data = Biometriset tiedot
+browser-user-agent-details = Selaimen user agent -tiedot
 browsing-histories = Selaushistoriat
 buying-preferences = Ostomieltymykset
 car-ownership-statuses = Auton omistussuhteen tilatiedot
