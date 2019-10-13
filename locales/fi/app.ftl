@@ -18,9 +18,28 @@ terms-and-privacy = Ehdot ja yksityisyys
 GitHub-link-title = GitHub
 error-scan-page-token = Yrität tarkistaa liian monta sähköpostiosoitetta todella lyhyessä ajassa. Turvallisuussyistä olemme väliaikaisesti estäneet sinut uusilta hauilta. Voit yrittää myöhemmin uudelleen.
 error-could-not-add-email = Sähköpostiosoitetta ei voitu lisätä tietokantaan.
+error-hibp-throttled = Liian monta yhteyttä tuotteeseen { -brand-HIBP }.
+error-hibp-connect = Virhe muodostettaessa yhteyttä tuotteeseen { -brand-HIBP }.
+error-hibp-load-breaches = Tietovuotoja ei voitu ladata.
+home-title = { -product-name }
+home-not-found = Sivua ei löydy.
+oauth-invalid-session = Virheellinen istunto
+user-add-invalid-email = Virheellinen sähköpostiosoite
+error-headline = Virhe
+pwt-section-headline = Vahvemmat salasanat = parempi suojaus
 scan-submit = Hae sähköpostiosoittettasi
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Lähetetty!
+sign-up = Rekisteröidy
+form-signup-error = On oltava kelvollinen sähköposti
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = Vuotopäivä:
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Paljastuneet tilit:
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Paljastuneet tiedot:
+unsub-button = Lopeta tilaus
+show-all = Näytä kaikki
 
 ## What to do after data breach tips
 
