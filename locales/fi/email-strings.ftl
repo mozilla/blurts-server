@@ -21,5 +21,7 @@ see-all-breaches = Näytä kaikki vuodot
 email-link-expires = Tämä linkki vanhenee 24 tunnissa
 # List headline
 faq-list-headline = Usein kysytyt kysymykset
+# Link Title
+faq-v2-4 = Kuinka { -product-name } kohtelee arkaluonteisia sivustoja?
 # Section headline
 monitor-another-email = Haluatko seurata myös muita sähköpostiosoitteita?
