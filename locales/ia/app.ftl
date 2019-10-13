@@ -99,7 +99,7 @@ open-fxa-menu = Aperi le navigation de { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ULTIME VIOLATION ADDITE
 # Link title
-more-about-this-breach = Altero re iste violation
+more-about-this-breach = Plus sur iste violation
 take-control = Reprende le controlo de tu datos personal.
 cant-stop-hackers = Tu non pote stoppar le hackers. Salvo a te pote evitar le mal habitudes que rende facile lor labor.
 read-more-tips = Lege altere consilios pro le securitate
@@ -127,7 +127,7 @@ sensitive-sites-copy = { -product-name } revela solmente le contos associate con
 delayed-reporting-headline = Perque il ha requirite assi longe tempore pro signalar iste violation?
 delayed-reporting-copy = Il pote aliquando prender menses o annos proque le credentiales exponite in un violation de datos appare sur le web obscur. Violationes es addite a nostre base de datos a pena illos ha essite discoperite e verificate.
 about-fxm-headline = A proposito de { -product-name }
-about-fxm-blurb = { -product-name } adverti si tu contos online era implicate in un violation de datos. Discoperi si tu ha essite implicate in un violation de datos, recipe avisos re nove violationes, e prende mesuras pro proteger tu contos online. { -product-name } es fornite per { -brand-Mozilla }.
+about-fxm-blurb = { -product-name } te adverti si tu contos in linea ha essite implicate in un violation de datos. Discoperi si tu es victima de un tal violation, recipe avisos sur nove violationes, e prende mesuras pro proteger tu contos in linea. { -product-name } es fornite per { -brand-Mozilla }.
 fxm-warns-you = { -product-name } te adverti si tu adresse de e-mail ha essite divulgate in un violation de datos in linea. Vide si tu informationes ha essite divulgate, apprende a proteger melio tu contos in linea, e recipe alertas si tu adresse de e-mail appare in un nove violation.
 # How Firefox Monitor works
 how-fxm-works = Como functiona { -product-name }
@@ -213,7 +213,7 @@ new-breaches-found =
     }
 sign-up-headline-1 = Recipe avisos in corso con un { -brand-fxa }.
 account-not-required = { -brand-name } navigator non necessari a un { -brand-fxa }. Tu pote reciper information re le servicios de { -brand-Mozilla }.
-was-your-info-exposed = Era tu information exponite in le violation de datos { $breachName }?
+was-your-info-exposed = Ha tu information essite exponite in le violation de datos de { $breachName }?
 find-out-if = Discoperi si tu datos era exponite in iste violation.
 fb-not-comp = Iste email non appareva in le violation { $breachName }.
 other-breaches-found =
