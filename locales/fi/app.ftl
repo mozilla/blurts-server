@@ -27,7 +27,9 @@ oauth-invalid-session = Virheellinen istunto
 user-add-invalid-email = Virheellinen sähköpostiosoite
 error-headline = Virhe
 pwt-section-headline = Vahvemmat salasanat = parempi suojaus
+scan-placeholder = Kirjoita sähköpostiosoite
 scan-submit = Hae sähköpostiosoittettasi
+scan-error = On oltava kelvollinen sähköposti.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Lähetetty!
 sign-up = Rekisteröidy
@@ -61,9 +63,38 @@ fxa-account = { -brand-fxa }
 latest-breach = VIIMEISIN LISÄTTY TIETOVUOTO
 # Link title
 more-about-this-breach = Lisätietoja tietovuodosta
+monitor-several-emails = Tarkkaile useita sähköposteja
+take-action = Toimi suojataksesi kaikki tilisi
+keep-your-data-safe = Selvitä, mitä sinun pitää tehdä pitääksesi tietosi turvassa kyberrikollisilta.
+what-data = Paljastuneet tiedot:
+delayed-reporting-headline = Miksi vuodosta ilmoittaminen kesti niin kauan?
+delayed-reporting-copy =
+    Vuotaneiden käyttäjätunnusten esiintulo voi kestää vuosia tai kuukausia
+    tietovuodosta pimeässä verkossa. Vuodot lisätään tietokantaamme heti, kun ne ovat löydetty ja vahvistettu.
+about-fxm-headline = Tietoja: { -product-name }
+# How Firefox Monitor works
+how-fxm-works = Miten { -product-name } toimii
+how-fxm-1-headline = Suorita perushaku
 
 ## What to do after data breach tips
 
+change-pw = Vaihda salasanasi
+five-myths = Viisi myyttiä salasanojen hallintasovelluksista
+check-for-breaches = Tarkista vuotojen varalta
+back-to-top = Takaisin ylös
+stop-monitoring-this = Lopeta tämän sähköpostiosoitteen seuraaminen.
+resend-verification = Lähetä uudelleen vahvistussähköposti
+add-new-email = Lisää uusi sähköpostiosoite
+send-verification = Lähetä vahvistuslinkki
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-summary = Vuotojen yhteenveto
+show-breaches-for-this-email = Näytä kaikki tätä sähköpostiosoitetta koskevat vuodot.
+link-change-primary = Vaihda ensisijainen sähköpostiosoite
+remove-fxm = Poista { -product-name }
 # Button title
 manage-email-addresses = Hallitse sähköpostiosoitteita
 # Link title
