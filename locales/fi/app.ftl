@@ -7,7 +7,15 @@
 -brand-name = Firefox
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
--brand-fxa = Firefox-tili
+-brand-fxa =
+    { $case ->
+        [adessive] Firefox-tilillä
+        [allative] Firefox-tilille
+        [genitive] Firefox-tilin
+        [illative] Firefox-tiliin
+        [partitive] Firefox-tiliä
+       *[nominative] Firefox-tili
+    }
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
