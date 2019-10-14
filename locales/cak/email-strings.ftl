@@ -83,6 +83,23 @@ email-link-expires = Re ximonel re' xtik'is pa 24 ramaj.
 email-verify-blurb = Tanik'oj ri ataqoya'l richin nitz'aqatisäx pa { -product-name } chuqa' tatz'ib'aj ab'i' richin rutzijol k'ak'a' taq tz'ilanem.
 # Email headline
 email-found-breaches-hl = Wawe' nuchöl kitz'ilanem tzij e k'ulwachitajinäq
+# Email headline
+email-breach-summary-for-email = Rucholajem rutz'ilanem { $userEmail }
+# Email headline
+email-no-breaches-hl = { $userEmail } xwachin pa 0 kitz'ilanik tzij etaman ruwäch.
+# Email headline
+email-alert-hl = { $userEmail } xwachin pa jun k'ak'a' kitz'ilanik tzij etaman ruwäch
+# Subject line of email
+email-subject-found-breaches = { -product-name } xrïl ri awetamab'al pa re taq tz'ilanem re'
+# Subject line of email
+email-subject-no-breaches = { -product-name } xe'ilitäj taq tz'ilanem etaman kiwäch
+# Subject line of email
+email-subject-verify = Tanik'oj ri ataqoya'l richin { -product-name }
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Tetamäx ch'aqa' chik chi rij { $fxmLink }
+email-sensitive-disclaimer =
+    Ruma ruk'ayewal re tz'ilanem re', man xkek'ut ta re taq ochochib'äl xetz'iläx. 
+    Xak'ül re rutzijol kayewal re' ruma xnik'öx chi at rajaw re rochochib'al taqoya'l re'.
 # List headline
 faq-list-headline = Jutaqil taq k'utunïk
 # Link Title
