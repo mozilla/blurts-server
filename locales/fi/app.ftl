@@ -130,8 +130,14 @@ take-action = Toimi suojataksesi kaikki tilisi
 keep-your-data-safe = Selvitä, mitä sinun pitää tehdä pitääksesi tietosi turvassa kyberrikollisilta.
 website-breach = Tietovuoto verkkosivustolta
 sensitive-breach = Tietovuoto arkaluonteiselta verkkosivulta
+data-aggregator-breach = Tietovuoto datakokoajalta
+unverified-breach = Vahvistamaton tietovuoto
+spam-list-breach = Tietovuoto roskapostilistasta
 website-breach-plural = Tietovuodot verkkosivuilta
 sensitive-breach-plural = Tietovuodot arkaluonteisilta sivuilta
+data-aggregator-breach-plural = Tietovuodot datakokoajilta
+unverified-breach-plural = Vahvistamattomat tietovuodot
+spam-list-breach-plural = Tietovuodot roskapostilistoilta
 what-data = Paljastuneet tiedot:
 sensitive-sites = Kuinka { -product-name } käsittelee arkaluonteisia sivustoja?
 delayed-reporting-headline = Miksi vuodosta ilmoittaminen kesti niin kauan?
@@ -139,9 +145,17 @@ delayed-reporting-copy =
     Vuotaneiden käyttäjätunnusten esiintulo voi kestää vuosia tai kuukausia
     tietovuodosta pimeässä verkossa. Vuodot lisätään tietokantaamme heti, kun ne ovat löydetty ja vahvistettu.
 about-fxm-headline = Tietoja: { -product-name }
+fxm-warns-you =
+    { -product-name } varoittaa, jos sähköpostiosoitteesi löytyy tietovuodosta.
+    Selvitä, onko tietojasi paljastunut, tutustu miten voit suojata verkkotilejäsi,
+    ja saa ilmoituksia tietovuodoista, joista sähköpostiosoitteesi löytyy.
 # How Firefox Monitor works
 how-fxm-works = Miten { -product-name } toimii
 how-fxm-1-headline = Suorita perushaku
+how-fxm-1-blurb =
+    Etsi sähköpostiosoitettasi vuoteen 2007 ulottuvista
+    julkisista tietovuodoista. Tämä perushaku kattaa useimmat tietovuodot
+    lukuun ottamatta arkaluonteisia tietoja sisältäviä vuotoja.
 how-fxm-2-headline = Tilaa vuotoseurannan ilmoitukset
 how-fxm-2-blurb =
     Luo { -brand-fxa } seurataksesi sähköpostiosoitettasi ilmenevissä tietovuodoissa. 
@@ -149,7 +163,10 @@ how-fxm-2-blurb =
     mukaan lukien arkaluonteisista vuodoista.
 how-fxm-3-headline = Vastaanota ilmoitukset selaimessasi
 wtd-after-website = Mitä tehdä sivustovuodon jälkeen:
+wtd-after-data-agg = Mitä tehdä datakokoajaan kohdistuvan vuodon jälkeen:
+what-is-data-agg = Mikä on datakokoaja?
 protect-your-privacy = Suojaa yksityisyyttäsi verkossa
+no-pw-to-change = Toisin kuin verkkosivustoihin kohdistuvissa vuodoissa, tässä tapauksessa ei ole salasanaa vaihdettavaksi.
 avoid-personal-info = Vältä henkilökohtaisten tietojen käyttöä salasanoissa
 avoid-personal-info-blurb = Verkosta on helppo löytää syntymäpäiviä, osoitteita ja perheenjäsenten nimiä. Älä käytä näitä salasanoissasi.
 
@@ -171,11 +188,14 @@ feat-enroll-multiple = Saata useita sähköpostiosoitteita vuotoseurantaan
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
     { $breachCount ->
-        [one] Ilmenee { $breachCount } tunnetussa vuodossa.
-       *[other] Ilmenee { $breachCount } tunnetussa vuodossa.
+        [one] ilmenee { $breachCount } tunnetussa vuodossa.
+       *[other] ilmenee { $breachCount } tunnetussa vuodossa.
     }
 check-for-breaches = Tarkista vuotojen varalta
+find-out-what-hackers-know = Ota selvää, mitä hakkerit tietävät sinusta jo nyt. Opi kuinka pysyä yksi askel edellä hakkereita.
+search-for-your-email = Etsi sähköpostiosoitettasi vuoteen 2007 ulottuvista julkisista tietovuodoista.
 back-to-top = Takaisin ylös
+comm-opt-0 = Lähetä minulle sähköpostia, jos jokin alla olevista sähköpostiosoitteistani on osallisena tietovuodossa.
 comm-opt-1 = Lähetä kaikki vuotoilmoitukset osoitteeseen { $primaryEmail }.
 stop-monitoring-this = Lopeta tämän sähköpostiosoitteen seuraaminen.
 resend-verification = Lähetä uudelleen vahvistussähköposti
@@ -291,10 +311,22 @@ scan-results-known-breaches =
 results-for = Tulokset haulla: { $userEmail }
 other-monitored-emails = Muut seurattavat sähköpostiosoitteet
 email-verification-required = Sähköpostiosoitteen vahvistus vaaditaan
+fxa-primary-email = { -brand-fxa(case: "genitive") } ensisijainen sähköpostiosoite
 what-is-a-website-breach = Mitä verkkosivuston vuodolla tarkoitetaan?
+security-tips-headline = Tietoturvavinkkejä itsensä suojaamiseen hakkereilta
+steps-to-protect = Verkkoidentiteettisi suojaamiseksi tarvittavat toimenpiteet
+take-further-steps = Lisätoimia suojellaksesi henkilöllisyyttäsi
 alert-about-new-breaches = Varoita minua uusista vuodoista
+see-if-youve-been-part = Ota selvää, oletko ollut osallisena verkossa tapahtuneessa tietovuodossa.
+get-ongoing-breach-monitoring = Aseta jatkuva vuotoseuranta useille sähköpostiosoitteille.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Selvitä
+new-unsub-error = Sinun on peruutettava tilauksesi yhdestä sähköpostiosoitteesta, johon { -product-name } lähetti viestiä.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Se esiintyi kuitenkin { $breachCount } muussa tunnetussa vuodossa.
+       *[other] Se esiintyi kuitenkin { $breachCount } muussa tunnetussa vuodossa.
+    }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = Lisätietoja, mukaan lukien:
@@ -334,8 +366,15 @@ sign-in-nested = Kirjaudu sisään
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
 manage-all-emails = Hallitse kaikkia sähköpostiosoitteita { $preferencesLink }-kohdassa.
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Tietovuotoilmoitukset
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Vuoto lisätty:
+how-hackers-work-desc = Suojaa salasanasi verkkorikollisilta, koska niistä he välittävät eniten.
 create-strong-passwords-desc = Tee salasanoistasi vahvoja, turvallisia ja vaikeasti arvattavia.
 steps-to-protect-desc = Ymmärrä useimmat yleisimmät uhat ja tiedä mihin varautua.
