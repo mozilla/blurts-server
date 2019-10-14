@@ -395,6 +395,25 @@ verify-the-link = Tanik'oj ri ximonel xtaq pa { $userEmail } richin nitz'aqatis�
 
 email-verified = ¡Ütz Xnik'öx ri Taqoya'l!
 email-added-to-subscription = Xtiqaya' rutzijol chawe we ri { $email } xtiq'alajin pa tz'ilanem tzij.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = Richin natz'ët chuqa' nanuk'samajij ronojel ri taq taqoya'l xe'atz'ib'aj richin nanik'oj kitz'ilanem, { $nestedSignInLink }.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = titikirisäx molojri'ïl
 
 
 
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Kitz'ijol Taq Tz'ilanem
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Xtz'aqatisäx tz'ilanem:
+how-hackers-work-desc = Ke'achajij ri ewan taq atzij chi kiwäch ri ajkematz'ib'il tz'ilanela', ruma ja ri' kan nikajo' rije'.
+what-to-do-after-breach-desc = Ke'apixa' ri kib'i' ataqoya'l richin man niqa ta pa itzel taq q'ab'aj ri taq atzij.
+create-strong-passwords-desc = Tab'ana' chi e köw, e jikïl chuqa' k'ayew richin ye'alitäj ri ewan taq atzij.
+steps-to-protect-desc = Tino pan awi' ri taq tz'ilanem e k'o q'ij q'ij chuqa' tawetamaj achike ri majub'ey namestaj.
+five-myths-desc = Tawetamaj nachajij awi' chi kiwäch ri itzel taq na'oj, ri yeruto' ri kematz'ib'il taq ajjak richin yekeleq'aj ri ewan taq atzij.
