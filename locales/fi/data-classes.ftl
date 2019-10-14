@@ -40,6 +40,7 @@ financial-investments = Taloudelliset sijoitukset
 financial-transactions = Rahansiirrot
 genders = Sukupuolet
 geographic-locations = Maantieteelliset sijainnit
+government-issued-ids = Viranomaisten myöntämät tunnisteet
 health-insurance-information = Terveysvakuutuksen tiedot
 home-loan-information = Asuntolainatiedot
 homepage-urls = Kotisivujen osoitteet

@@ -88,6 +88,10 @@ fxa-wtd-blurb-2 =
     Hakkerit voivat yrittää käyttää samaa salasanaa ja sähköpostiosoitetta päästäkseen muille tileillesi.
     Käytä erilaista ja yksilöllistä salasanaa jokaisella tilillä, erityisesti pankkitilillä,
     sähköpostissa ja muissa verkkosivustoissa, joihin tallennat henkilökohtaisia tietoja.
+fxa-what-to-do-blurb-3 =
+    Useimmat tietovuodot paljastavat vain sähköpostisi ja salasanasi, mutta jotkut sisältävät myös finanssitietojasi.
+    Jos pankkitilisi tai luottokorttisi numero paljastuu, ilmoita pankillesi mahdollisimman pian.
+    Seuraa tiliotteita tuntemattomien maksujen varalta.
 fxa-what-to-do-subhead-4 = Apua kaikkien salasanojen muistamiseen ja suojaamiseen.
 fxa-what-to-do-blurb-4 =
     Salasanan hallintasovellukset, kuten 1Password, LastPass, Dashlane ja Bitwarden, tallentavat
@@ -212,8 +216,12 @@ ba-next-step-blurb-2 =
     kirjautuakseen tileillesi. Paras tapa suojata tiliäsi
     on käyttää yksilöllisiä salasanoja jokaiselle tilille.
 ba-next-step-3 = Apua aiempaa parempien salasanojen luomiseen ja niiden suojaamiseen.
+ba-next-step-blurb-3 =
+    Luo vahvoja, yksilöllisiä salasanoja salasananhallintasovelluksella. Nämä sovellukset tallentavat turvallisesti 
+    kaikki kirjautumistietosi, ja voit käyttää niitä kaikilla laitteillasi.
 faq1 = En tunnista tätä yritystä tai verkkosivustoa. Miksi olen osallisena vuodossa?
 faq2 = Miksi minua huomautettiin vuodosta näin pitkän ajan jälkeen?
+faq3 = Kuinka tiedän, että tämä on aito sähköposti { -product-name }lta?
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } UUSI VUOTO LÖYTYNYT
@@ -223,6 +231,18 @@ sign-up-headline-1 = Vastaanota hälytyksiä { -brand-fxa(case: "adessive") }.
 account-not-required = { -brand-name }-selain ei ole pakollinen { -brand-fxa }n käyttämiseksi. Saatat saada tietoja { -brand-Mozilla }-palveluista.
 was-your-info-exposed = Paljastuiko sinun tietojasi ”{ $breachName }”-tietovuodossa?
 find-out-if = Ota selvää, paljastuiko tietojasi tässä vuodossa.
+fb-not-comp = Tämä sähköpostiosoite ei esiintynyt { $breachName }-vuodossa.
+other-breaches-found =
+    { $breachCount ->
+        [one] Kuitenkin se löytyy { $breachCount } tunnetusta vuodosta.
+       *[other] Kuitenkin se löytyy { $breachCount } tunnetusta vuodosta.
+    }
+fb-comp-only = Sähköposti löytyi { $breachName }-vuodosta.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Sähköposti löytyi { $breachCount } tunnetusta tietovuodosta, mukaan lukien { $breachName }.
+       *[other] Sähköposti löytyi { $breachCount } tunnetusta tietovuodosta, mukaan lukien { $breachName }.
+    }
 no-other-breaches-found = Muita vuotoja ei löytynyt perushaulla.
 no-results-blurb = Valitettavasti tästä vuodosta ei ole merkintää tietokannassamme.
 all-breaches-headline = Kaikki { -product-name }in tuntemat tietovuodot
@@ -317,3 +337,5 @@ manage-all-emails = Hallitse kaikkia sähköpostiosoitteita { $preferencesLink }
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Vuoto lisätty:
+create-strong-passwords-desc = Tee salasanoistasi vahvoja, turvallisia ja vaikeasti arvattavia.
+steps-to-protect-desc = Ymmärrä useimmat yleisimmät uhat ja tiedä mihin varautua.
