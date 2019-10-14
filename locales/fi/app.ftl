@@ -207,6 +207,10 @@ ba-next-step-blurb-1 =
     numeroita. Vahva salasana ei sisällä henkilökohtaisia tietoja kuten
     osoitteita, syntymäpäiviä tai perheenjäsenten nimiä.
 ba-next-step-2 = Lopeta paljastuneen salasanan käyttö.
+ba-next-step-blurb-2 =
+    Hakkerit voivat löytää salasanasi anonyymistä verkosta ja käyttää sitä
+    kirjautuakseen tileillesi. Paras tapa suojata tiliäsi
+    on käyttää yksilöllisiä salasanoja jokaiselle tilille.
 ba-next-step-3 = Apua aiempaa parempien salasanojen luomiseen ja niiden suojaamiseen.
 faq1 = En tunnista tätä yritystä tai verkkosivustoa. Miksi olen osallisena vuodossa?
 faq2 = Miksi minua huomautettiin vuodosta näin pitkän ajan jälkeen?
