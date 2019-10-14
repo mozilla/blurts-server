@@ -393,6 +393,8 @@ verify-the-link = Tanik'oj ri ximonel xtaq pa { $userEmail } richin nitz'aqatis�
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+email-verified = ¡Ütz Xnik'öx ri Taqoya'l!
+email-added-to-subscription = Xtiqaya' rutzijol chawe we ri { $email } xtiq'alajin pa tz'ilanem tzij.
 
 
 
