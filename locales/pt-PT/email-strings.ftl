@@ -117,3 +117,8 @@ faq-v2-2 = Preciso de fazer alguma coisa se a intrusão aconteceu há vários an
 faq-v2-3 = Acabei de descobrir que estou numa intrusão de dados. O que preciso de fazer?
 # Link Title
 faq-v2-4 = Como é que { -product-name } trata sites sensíveis?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Crie uma { -brand-fxa } gratuitamente</a> e pode adicionar até 15 endereços de e-mail.
+# Section headline
+monitor-another-email = Quer monitorizar outro e-mail?
