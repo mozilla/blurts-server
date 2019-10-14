@@ -389,6 +389,8 @@ verify-the-link = Potrdite povezavo poslano na { $userEmail }, da e-poštni nasl
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+email-verified = E-poštni naslov uspešno preverjen!
+email-added-to-subscription = Opozorili vas bomo, v kolikor se bo naslov { $email } pojavil v novi kraji podatkov.
 
 
 
