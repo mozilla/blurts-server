@@ -60,12 +60,29 @@ share-by-email-message =
     3. Nak'ül taq runa'oj { -product-name } chi rij ri k'o chi nab'än.
 # Unsubscribe link in email.
 email-unsub-link = Tiq'at rutz'ib'axik b'i'aj
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb =
+    Nak'ül re taqoya'l re' ruma atz'ib'an ab'i' richin ye'akül kitzijol ri { -product-name } taq  
+    rutz'ilanem. ¿La man ye'awajo' ta chik re taq taqoya'l re'? { $unsubLink }. Re re' ruyon nutäq rutzijol taqoya'l. Richin ato'ik, tatz'eta' { $faqLink }.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    Nak'ül re taqoya'l re' ruma atz'ib'an ab'i' richin ye'akül kitzijol ri { -product-name } taq rutz'ilanem. 
+    Re re' ruyon nutäq rutzijol taqoya'l. Richin ato'ik, tatz'eta' { $faqLink }.
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Titz'et ri Rupas Nuchajixik
 # Button text
 verify-email-cta = Tinik'öx Taqoya'l
 # Button text
 see-all-breaches = Ketz'et Ronojel taq Tz'ilanem
 # Headline of verification email
 email-link-expires = Re ximonel re' xtik'is pa 24 ramaj.
+email-verify-blurb = Tanik'oj ri ataqoya'l richin nitz'aqatisäx pa { -product-name } chuqa' tatz'ib'aj ab'i' richin rutzijol k'ak'a' taq tz'ilanem.
+# Email headline
+email-found-breaches-hl = Wawe' nuchöl kitz'ilanem tzij e k'ulwachitajinäq
 # List headline
 faq-list-headline = Jutaqil taq k'utunïk
 # Link Title

@@ -109,6 +109,7 @@ social-security-numbers = Rajilab'al Rujikomal winäq
 spoken-languages = Ch'ab'en taq ch'ab'äl
 support-tickets = Chilab'enïk taq to'ïk
 survey-results = Kiq'i'oj taq molna'oj
+taxation-records = Kitz'ib'axik tojoj
 time-zones = Ruq'ijul saqaset
 travel-habits = Kik'ulunem palaqinem
 user-statuses = Kib'anikil okisanel

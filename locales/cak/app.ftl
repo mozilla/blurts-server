@@ -417,3 +417,4 @@ what-to-do-after-breach-desc = Ke'apixa' ri kib'i' ataqoya'l richin man niqa ta 
 create-strong-passwords-desc = Tab'ana' chi e köw, e jikïl chuqa' k'ayew richin ye'alitäj ri ewan taq atzij.
 steps-to-protect-desc = Tino pan awi' ri taq tz'ilanem e k'o q'ij q'ij chuqa' tawetamaj achike ri majub'ey namestaj.
 five-myths-desc = Tawetamaj nachajij awi' chi kiwäch ri itzel taq na'oj, ri yeruto' ri kematz'ib'il taq ajjak richin yekeleq'aj ri ewan taq atzij.
+take-further-steps-desc = Tawila' rub'eyal nach'utinisaj ri k'ayewal rik'in ri releq'axik ab'anikil, richin man teleq'äx apwaq.
