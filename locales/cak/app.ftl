@@ -32,7 +32,7 @@ user-add-invalid-email = Man okel ta ri Taqoya'l
 user-add-too-many-emails = Nanik'oj ronojel ri taq taqoya'l ya'on q'ij.
 user-add-email-verify-subject = Tanik'oj ri rutz'ib'axik ab'i' pa { -product-name }.
 user-add-duplicate-email = Xtz'aqatisäx yan re taqoya'l re' { -product-name }.
-user-add-duplicate-email-part-2 = Tatz'eta' ri { $preferencesLink } richin nanik'oj ri rub'anikil { $userEmail }.
+user-add-duplicate-email-part-2 = Tatz'eta' ri { $preferencesLink } richin nanik'oj achike rub'anon ri { $userEmail }.
 error-headline = Sachoj
 user-verify-token-error = K'atzinel ri rutoken jikib'anïk.
 user-verify-email-report-subject = Ri { -product-name } atzijol
@@ -318,6 +318,14 @@ passwords-exposed =
         [one] Ewan tzij k'utun pa ronojel taq  tz'ilanem
        *[other] Ewan taq tzij ek'utun pa ronojel taq tz'ilanem
     }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] Tz'ilanem tzij etaman ruwäch, xkik'üt ri awetamab'al.
+       *[other] Taq tz'ilanem tzij etaman kiwäch, xkik'üt ri awetamab'al.
+    }
 # Button
 see-additional-breaches = Ketz'et Kitz'aqat taq Tz'ilanem
 scan-results-known-breaches =
@@ -356,6 +364,10 @@ other-known-breaches-found =
 additional-information-including = Ruwi' etamab'äl, nitz'aqatisäx:
 # Title
 email-addresses-title = Kochochib'al Taqoya'l
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = Ri { $breachDate }, { $breachTitle } xuk'ulwachij jun tz'ilanem. Toq xilitäj chuqa' toq xjikib'äx ri tz'ilanem, xtz'aqatisäx pa qacholxe'el richin { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Taq rajowab'al { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
