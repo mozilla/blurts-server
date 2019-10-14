@@ -30,6 +30,7 @@ error-not-subscribed = Tätä sähköpostiosoitetta ei ole tilattu { -product-na
 error-hibp-throttled = Liian monta yhteyttä tuotteeseen { -brand-HIBP }.
 error-hibp-connect = Virhe muodostettaessa yhteyttä tuotteeseen { -brand-HIBP }.
 error-hibp-load-breaches = Tietovuotoja ei voitu ladata.
+error-must-be-signed-in = Sinun on oltava kirjautuneena { -brand-fxa }llesi.
 home-title = { -product-name }
 home-not-found = Sivua ei löydy.
 oauth-invalid-session = Virheellinen istunto
@@ -65,14 +66,33 @@ hibp-attribution = Vuototiedot tarjoaa { $hibp-link }
 share-twitter = Useimmilla ihmisillä on noin 100 tiliä verkossa. Onko jokin tileistäsi paljastunut tietovuodoissa? Selvitä asia.
 share-facebook-headline = Selvitä nyt, oletko ollut osa tietovuotoa
 share-facebook-blurb = Ovatko tilisi tiedot paljastuneet tietovuodon yhteydessä?
+og-site-description = Selvitä nyt { -product-name }illa, oletko ollut osa tietovuotoa. Tilaa hälytyksiä tulevista tietovuodoista ja saa vinkkejä tilien suojaamiseksi.
 show-all = Näytä kaikki
 fxa-scan-another-email = Haluatko tarkistaa toisenkin sähköpostin?
 sign-in = Kirjaudu sisään
 sign-out = Kirjaudu ulos
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Hallinnoi { -brand-fxa(case: "partitive") }
 have-an-account = Onko sinulla jo tili?
 fxa-pwt-summary-2 =
     Hakkereiden on helppo arvata lyhyet, yhden sanan salasanat.
     Käytä vähintään kahta sanaa sekä kirjainten, numeroiden ja erikoismerkkien yhdistelmää.
+fxa-pwt-summary-4 =
+    Salasanan hallintasovellukset, kuten 1Password, LastPass, Dashlane ja Bitwarden, tallentavat
+    salasanasi ja täyttävät ne verkkosivustoille automaattisesti. Ne auttavat jopa luomaan vahvat salasanat.
+fxa-pwt-summary-6 =
+    Tietovuodot ovat kovassa nousussa. Jos henkilökohtaiset tietosi löytyvät uudessa tietovuodossa, 
+    { -product-name } lähettää sinulle hälytyksen jotta voit toimia heti ja suojata tilisi.
+fxa-what-to-do-subhead-2 = Lopeta paljastuneen salasanan käyttö ja vaihda se kaikkialla, missä olet sitä käyttänyt.
+fxa-wtd-blurb-2 =
+    Hakkerit voivat yrittää käyttää samaa salasanaa ja sähköpostiosoitetta päästäkseen muille tileillesi.
+    Käytä erilaista ja yksilöllistä salasanaa jokaisella tilillä, erityisesti pankkitilillä,
+    sähköpostissa ja muissa verkkosivustoissa, joihin tallennat henkilökohtaisia tietoja.
+fxa-what-to-do-subhead-4 = Apua kaikkien salasanojen muistamiseen ja suojaamiseen.
+fxa-what-to-do-blurb-4 =
+    Salasanan hallintasovellukset, kuten 1Password, LastPass, Dashlane ja Bitwarden, tallentavat
+    salasanasi turvallisesti ja täyttävät ne verkkosivustoille automaattisesti. Käytä salasanahallintasovellusta
+    puhelimellasi ja tietokoneellasi, jottei sinun täydy muistaa niitä kaikkia.
 # Alerts is a noun
 sign-up-for-alerts = Tilaa ilmoitukset
 # Link title
@@ -97,8 +117,10 @@ take-control = Ota henkilökohtaiset tietosi takaisin hallintaasi.
 cant-stop-hackers = Et voi estää pahoja tyyppejä hakkeroimasta. Voit kuitenkin välttää huonoja tapoja, jotka helpottavat heidän työtään.
 read-more-tips = Lue lisää tietoturvavinkkejä
 how-hackers-work = Ymmärrä, kuinka hakkerit toimivat
+monitor-your-online-accounts = Tilaa tietovuotoseuranta { -brand-fxa(case: "adessive") }.
 stay-alert = Ole perillä uusista tietovuodoista
 if-your-info = Jos tietosi ilmenevät uudessa tietovuodossa, lähetämme sinulle hälytyksen.
+search-all-emails = Etsi kaikki sähköpostisi tietovuotojen varalta ja vastaanota hälytyksiä uusista vuodoista.
 monitor-several-emails = Tarkkaile useita sähköposteja
 take-action = Toimi suojataksesi kaikki tilisi
 keep-your-data-safe = Selvitä, mitä sinun pitää tehdä pitääksesi tietosi turvassa kyberrikollisilta.
@@ -150,6 +172,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Tarkista vuotojen varalta
 back-to-top = Takaisin ylös
+comm-opt-1 = Lähetä kaikki vuotoilmoitukset osoitteeseen { $primaryEmail }.
 stop-monitoring-this = Lopeta tämän sähköpostiosoitteen seuraaminen.
 resend-verification = Lähetä uudelleen vahvistussähköposti
 add-new-email = Lisää uusi sähköpostiosoite
@@ -163,12 +186,20 @@ breach-summary = Vuotojen yhteenveto
 show-breaches-for-this-email = Näytä kaikki tätä sähköpostiosoitetta koskevat vuodot.
 link-change-primary = Vaihda ensisijainen sähköpostiosoite
 remove-fxm = Poista { -product-name }
+remove-fxm-blurb =
+    Lopeta { -product-name } -hälytykset. { -brand-fxa }si säilyy aktiivisena, ja saatat saada
+    muuta tiliin liittyvää viestintää.
 # Button title
 manage-email-addresses = Hallitse sähköpostiosoitteita
 # Link title
 latest-breach-link = Katso jouduitko osalliseksi tässä vuodossa
 welcome-back = Tervetuloa takaisin, { $userName }!
 welcome-user = Tervetuloa, { $userName }!
+breach-alert-subject = { -product-name } löysi sähköpostiosoitteesi uudesta tietovuodosta
+your-info-was-discovered-headline = Tietojasi paljastettiin uudessa tietovuodossa.
+your-info-was-discovered-blurb =
+    Olet tilannut { -product-name } -hälytykset, kun sähköpostiosoitteesi
+    ilmenee tietovuodossa. Tiedämme tästä vuodosta tällä hetkellä tämän.
 what-to-do-after-breach = Mitä tehdä tietovuodon jälkeen
 ba-next-step-1 = Vaihda salasanasi vahvaksi ja yksilölliseksi.
 ba-next-step-blurb-1 =
@@ -184,6 +215,7 @@ new-breaches-found =
         [one] { $breachCount } UUSI VUOTO LÖYTYNYT
        *[other] { $breachCount } UUTTA VUOTOA LÖYTYNYT
     }
+sign-up-headline-1 = Vastaanota hälytyksiä { -brand-fxa(case: "adessive") }.
 account-not-required = { -brand-name }-selain ei ole pakollinen { -brand-fxa }n käyttämiseksi. Saatat saada tietoja { -brand-Mozilla }-palveluista.
 was-your-info-exposed = Paljastuiko sinun tietojasi ”{ $breachName }”-tietovuodossa?
 find-out-if = Ota selvää, paljastuiko tietojasi tässä vuodossa.
