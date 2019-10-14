@@ -384,6 +384,11 @@ join-firefox = K'o jun rub'anikil richin nachajij awichinanem. Tatunu' awi' { -b
 # Link title
 learn-more-link = Tetamäx ch'aqa' chik.
 email-sent = ¡Xtaq ri Taqoya'l!
+# Form title
+want-to-add = ¿La nawajo' natz'aqatisaj jun chik taqoya'l?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Tanik'oj ri ximonel xtaq pa { $userEmail } richin nitz'aqatisäx pa { -product-name }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
