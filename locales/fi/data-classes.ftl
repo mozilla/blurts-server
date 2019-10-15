@@ -7,6 +7,7 @@ ages = Iät
 apps-installed-on-devices = Laitteelle asennetut sovellukset
 astrological-signs = Horoskooppimerkit
 audio-recordings = Äänitallenteet
+auth-tokens = Tunnistuspoletit
 avatars = Avatar-kuvat
 bank-account-numbers = Pankkitilinumerot
 beauty-ratings = Ulkonäköluokitukset

@@ -40,7 +40,10 @@ user-add-too-many-emails = Seuraat enimmäismäärää sähköpostiosoitteita.
 user-add-email-verify-subject = Varmista tilauksesi tuotteelle { -product-name }.
 user-add-duplicate-email = Tämä sähköposti on jo lisätty tuotteeseen { -product-name }.
 error-headline = Virhe
+user-verify-token-error = Vahvistuspoletti vaaditaan.
 user-verify-email-report-subject = { -product-name } -raporttisi
+user-unsubscribe-token-error = Tilauksen lopettaminen vaatii poletin.
+user-unsubscribe-token-email-error = Tilauksen lopettaminen vaatii poletin ja emailHash.
 user-unsubscribe-title = { -product-name } : Tilauksen lopettaminen
 pwt-section-headline = Vahvemmat salasanat = parempi suojaus
 landing-headline = Oikeutesi olla turvassa hakkereilta alkaa täältä.
