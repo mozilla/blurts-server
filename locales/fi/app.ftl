@@ -335,6 +335,10 @@ other-known-breaches-found =
 additional-information-including = Lisätietoja, mukaan lukien:
 # Title
 email-addresses-title = Sähköpostiosoitteet
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = { $breachTitle } vuodettiin { $breachDate }. Kun tietovuoto oli löydetty  ja vahvistettu, se lisättiin tietokantaamme { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name }-asetukset
 # When a user is signed in, this appears in the drop down menu 
@@ -353,6 +357,9 @@ learn-more-link = Lue lisää.
 email-sent = Sähköposti lähetetty!
 # Form title
 want-to-add = Haluatko lisätä toisen sähköpostiosoitteen?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Vahvista linkki, joka lähetettiin osoitteeseen { $userEmail }, lisätäksesi sen { -product-name }iin.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
