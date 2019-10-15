@@ -403,6 +403,11 @@ sign-in-nested = titikirisäx molojri'ïl
 
 
 
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Ke'anuk'samajij ronojel ri taq rochochib'al taqoya'l pa { $preferencesLink }.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
