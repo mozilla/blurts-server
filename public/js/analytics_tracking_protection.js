@@ -53,12 +53,12 @@ if(typeof(ga) !== "undefined") {
 
   // Strip token and hash values from pings sent to GA
   const loc = document.location;
-  let pageValue = loc.pathname + loc.search;
+  let pageValue = loc.href;
   if (loc.search && (loc.search.includes("token=") || loc.search.includes("hash="))) {
-    pageValue = loc.pathname;
-    ga("set", "location", pageValue);
-    ga("set", "page", pageValue);
+    pageValue = loc.href.replace(/token=\w+&?/, "").replace(/hash=\w+&?/, "");
   }
+  ga("set", "location", pageValue);
+  ga("set", "page", pageValue);
 
 	ga("send", "pageview");
 }
