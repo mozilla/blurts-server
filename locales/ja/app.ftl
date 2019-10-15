@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -10,6 +8,12 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox アカウント
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = 利用規約と個人情報保護方針
 GitHub-link-title = GitHub
 error-scan-page-token = 短期間に多くのメールアドレスを検索しようとしています。セキュリティ上の理由から、一時的に新たな検索をブロックしました。後ほどまた試してください。
@@ -151,7 +155,6 @@ search-breaches = データ侵害を検索
 ## Updated error messages
 
 error-csrf-headline = セッションがタイムアウトしました
-login-link = ログイン
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
