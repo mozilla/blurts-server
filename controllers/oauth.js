@@ -58,6 +58,10 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
     throw new FluentError("oauth-invalid-session");
   }
 
+  if (req.session.state !== req.query.state) {
+    throw new FluentError("oauth-invalid-session");
+  }
+
   const fxaUser = await client.code.getToken(req.originalUrl, { state: req.session.state });
   // Clear the session.state to clean up and avoid any replays
   req.session.state = null;
