@@ -86,6 +86,11 @@ fxa-pwt-summary-4 =
 fxa-pwt-summary-6 =
     Tietovuodot ovat kovassa nousussa. Jos henkilökohtaiset tietosi löytyvät uudessa tietovuodossa, 
     { -product-name } lähettää sinulle hälytyksen jotta voit toimia heti ja suojata tilisi.
+fxa-what-to-do-blurb-1 =
+    Jos et pysty kirjautumaan sisään, ota yhteyttä sivustoon 
+    kysyäksesi kuinka päivittää se. Näetkö tilin, jota et tunnista?
+    Tietosi ollaan voitu myydä tai jakaa eteenpäin. Saattaa myös olla,
+    että unohdit luoneesi tämän tilin tai yrityksen nimi on muuttunut.
 fxa-what-to-do-subhead-2 = Lopeta paljastuneen salasanan käyttö ja vaihda se kaikkialla, missä olet sitä käyttänyt.
 fxa-wtd-blurb-2 =
     Hakkerit voivat yrittää käyttää samaa salasanaa ja sähköpostiosoitetta päästäkseen muille tileillesi.
@@ -374,6 +379,9 @@ verify-the-link = Vahvista linkki, joka lähetettiin osoitteeseen { $userEmail }
 
 email-verified = Sähköposti vahvistettu onnistuneesti!
 email-added-to-subscription = Ilmoitamme sinulle, jos { $email } löytyy tietovuodoista.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = { $nestedSignInLink }, jotta voit nähdä ja hallita sähköpostisoitteita, joille olet asettanut tietovuotojen seurannan.
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = Kirjaudu sisään
 
@@ -394,5 +402,7 @@ breach-alert-notifications = Tietovuotoilmoitukset
 # and is followed by that date. 
 breach-added-label = Vuoto lisätty:
 how-hackers-work-desc = Suojaa salasanasi verkkorikollisilta, koska niistä he välittävät eniten.
+what-to-do-after-breach-desc = Lukitse tilisi ja pidä tietosi pois vääristä käsistä.
 create-strong-passwords-desc = Tee salasanoistasi vahvoja, turvallisia ja vaikeasti arvattavia.
 steps-to-protect-desc = Ymmärrä useimmat yleisimmät uhat ja tiedä mihin varautua.
+five-myths-desc = Opi, kuinka välttää huonot salasanakäytännöt.
