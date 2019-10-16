@@ -148,6 +148,10 @@ delayed-reporting-copy =
     Vuotaneiden käyttäjätunnusten esiintulo voi kestää vuosia tai kuukausia
     tietovuodosta pimeässä verkossa. Vuodot lisätään tietokantaamme heti, kun ne ovat löydetty ja vahvistettu.
 about-fxm-headline = Tietoja: { -product-name }
+about-fxm-blurb =
+    { -product-name } varoittaa, jos tunnuksesi löytyy tietovuodosta.
+    Selvitä, ovat tunnuksesi vaarantuneet, saa ilmoituksia uusista sinua koskevista tietovuodoista
+    ja suojaa elämäsi verkossa. Tuotteen { -product-name } tarjoaa { -brand-Mozilla }.
 fxm-warns-you =
     { -product-name } varoittaa, jos sähköpostiosoitteesi löytyy tietovuodosta.
     Selvitä, onko tietojasi paljastunut, tutustu miten voit suojata verkkotilejäsi,
@@ -165,6 +169,10 @@ how-fxm-2-blurb =
     Kun olet vahvistanut sähköpostiosoitteesi, saat kattavan raportin menneistä vuodoista, 
     mukaan lukien arkaluonteisista vuodoista.
 how-fxm-3-headline = Vastaanota ilmoitukset selaimessasi
+how-fxm-3-blurb =
+    Jos käytät { -brand-name }ia, ilmoitamme sinulle kun vierailet
+    sivustolla, jolla on tapahtunut tietovuoto. Saa heti selville, 
+    jos tunnuksesi vaarantui ja mitä voit tehdä asialle.
 wtd-after-website = Mitä tehdä sivustovuodon jälkeen:
 wtd-after-data-agg = Mitä tehdä datakokoajaan kohdistuvan vuodon jälkeen:
 what-is-data-agg = Mikä on datakokoaja?
