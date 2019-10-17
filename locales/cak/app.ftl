@@ -109,7 +109,7 @@ home = Tikirib'äl
 # Link title
 breaches = Taq tz'ilanem
 # Link title
-security-tips = Jikomal taq Na'oj
+security-tips = Jikom taq Na'oj
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Tijaq { -brand-fxa } okem pa k'amaya'l
@@ -117,9 +117,9 @@ open-fxa-menu = Tijaq { -brand-fxa } okem pa k'amaya'l
 latest-breach = RUK'ISIB'ÄL TZ'ILANEM XTZ'AQATISÄX
 # Link title
 more-about-this-breach = Ch'aqa' chik chi rij re tz'ilanem re'
-take-control = Tik'oje' pan aq'a' ri awetamab'al.
+take-control = Xa xe awik'in tik'oje' ri awetamab'al.
 cant-stop-hackers = Man yatikïr ta ye'aq'ät ri ajjak. Po yatikïr naq'ät itzel taq na'oj richin anin nikib'än ri kisamaj.
-read-more-tips = Tawetamaj ch'aqa' chik chi kij Jikomal taq Na'oj
+read-more-tips = Tawetamaj ch'aqa' chik chi kij Jikom taq Na'oj
 how-hackers-work = Tetamäx rub'eyal yesamäj ri ajjak
 monitor-your-online-accounts = Tatz'ib'aj ab'i' richin nanik'oj ri kitz'ilanem jikomal rik'in { -brand-fxa }.
 stay-alert = Kak'ase' chi kiwäch k'ak'a' taq tz'ilanem
@@ -385,7 +385,7 @@ join-firefox = K'o jun rub'anikil richin nachajij awichinanem. Tatunu' awi' { -b
 learn-more-link = Tetamäx ch'aqa' chik.
 email-sent = ¡Xtaq ri Taqoya'l!
 # Form title
-want-to-add = ¿La nawajo' natz'aqatisaj jun chik taqoya'l?
+want-to-add = ¿La nawajo' natz'aqatisaj chik jun taqoya'l?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Tanik'oj ri ximonel xtaq pa { $userEmail } richin nitz'aqatisäx pa { -product-name }.
@@ -418,8 +418,8 @@ breach-alert-notifications = Kitz'ijol Taq Tz'ilanem
 # and is followed by that date. 
 breach-added-label = Xtz'aqatisäx tz'ilanem:
 how-hackers-work-desc = Ke'achajij ri ewan taq atzij chi kiwäch ri ajkematz'ib'il tz'ilanela', ruma ja ri' kan nikajo' rije'.
-what-to-do-after-breach-desc = Ke'apixa' ri kib'i' ataqoya'l richin man niqa ta pa itzel taq q'ab'aj ri taq atzij.
-create-strong-passwords-desc = Tab'ana' chi e köw, e jikïl chuqa' k'ayew richin ye'alitäj ri ewan taq atzij.
+what-to-do-after-breach-desc = Ke'apisa' ri kib'i' ataqoya'l richin man yeqa ta pa taq itzel q'ab'aj ri taq atzij.
+create-strong-passwords-desc = Tab'ana' chi e köw, e jikïl chuqa' k'ayew richin ye'ilitäj ri ewan taq atzij.
 steps-to-protect-desc = Tino pan awi' ri taq tz'ilanem e k'o q'ij q'ij chuqa' tawetamaj achike ri majub'ey namestaj.
 five-myths-desc = Tawetamaj nachajij awi' chi kiwäch ri itzel taq na'oj, ri yeruto' ri kematz'ib'il taq ajjak richin yekeleq'aj ri ewan taq atzij.
 take-further-steps-desc = Tawila' rub'eyal nach'utinisaj ri k'ayewal rik'in ri releq'axik ab'anikil, richin man teleq'äx apwaq.
