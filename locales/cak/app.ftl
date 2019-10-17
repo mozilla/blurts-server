@@ -41,7 +41,7 @@ user-unsubscribe-token-email-error = Richin nayüj tz'ib'anïk b'i'aj rajowaxik 
 user-unsubscribe-title = { -product-name } : Tiyuj tz'ib'anïk b'i'aj
 pwt-section-headline = Ütz Ewan taq Tzij = Ütz Chajinïk
 landing-headline = Wawe' nitikïr ri ach'ojib'al richin at jikïl chi kiwäch ri ajjaker.
-scan-placeholder = Titz'ib'äx Rochochib'al Taqoya'l
+scan-placeholder = Tatz'ib'aj Rochochib'al Taqoya'l
 scan-submit = Takanoj ri Ataqoya'l
 scan-error = K'o chi jun okel taqoya'l.
 download-firefox-banner-button = Tiqasäx { -brand-name }
@@ -212,8 +212,8 @@ appears-in-x-breaches =
        *[other] Q'aläj pa { $breachCount } taq tz'ilanem etaman kiwäch.
     }
 check-for-breaches = Ke'akanoj taq Tz'ilanem
-find-out-what-hackers-know = Tawila' achike ketaman ri ajjak chawij. Tawila' achike rub'eyal nab'eyij chi kiwäch.
-search-for-your-email = Takanoj ri rochochib'al ataqoya'l pa kitz'ilanem aj winäq taq tzij k'a 2007.
+find-out-what-hackers-know = Tawila' achike ketaman ri ajjak chawij. Tawila' achike rub'eyal yanab'eyij chi kiwäch.
+search-for-your-email = Takanoj ri rochochib'al ataqoya'l pa aj winäq kitz'ilanem taq tzij k'a richin ri 2007.
 back-to-top = Titzolin Ajsik
 comm-opt-0 = Tiya' rutzijol chwe we ri rochochib'al nutaqoya'l k'o pa jun kitz'ilanem tzij.
 comm-opt-1 = Titaq ronojel rutzijol tz'ilanem chi re { $primaryEmail }.
