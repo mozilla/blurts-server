@@ -150,6 +150,11 @@ unverified-breach-plural = Vahvistamattomat tietovuodot
 spam-list-breach-plural = Tietovuodot roskapostilistoilta
 what-data = Paljastuneet tiedot:
 sensitive-sites = Kuinka { -product-name } käsittelee arkaluonteisia sivustoja?
+sensitive-sites-copy =
+    { -product-name } paljastaa tämänkaltaisten vuotojen tilit vasta, 
+    kun sähköpostiosoite ovat vahvistettu. Tämä tarkoittaa, että olet
+    ainoa henkilö, joka voi nähdä, ovatko tietosi vuotaneet (ellei jollain
+    muulla ole pääsyä sähköpostiisi).
 delayed-reporting-headline = Miksi vuodosta ilmoittaminen kesti niin kauan?
 delayed-reporting-copy =
     Vuotaneiden käyttäjätunnusten esiintulo voi kestää vuosia tai kuukausia
@@ -331,6 +336,7 @@ other-monitored-emails = Muut seurattavat sähköpostiosoitteet
 email-verification-required = Sähköpostiosoitteen vahvistus vaaditaan
 fxa-primary-email = { -brand-fxa(case: "genitive") } ensisijainen sähköpostiosoite
 what-is-a-website-breach = Mitä verkkosivuston vuodolla tarkoitetaan?
+website-breach-blurb = Tietovuoto verkkosivustolta tapahtuu, kun kyberrikolliset varastavat, kopioivat tai paljastavat verkkotilien henkilökohtaisia tietoja. Tämä on usein seurausta hakkereiden löytämästä heikkoudesta verkkosivuston tietoturvassa. Tiedot voivat vuotaa myös vahingossa.
 security-tips-headline = Tietoturvavinkkejä itsensä suojaamiseen hakkereilta
 steps-to-protect = Verkkoidentiteettisi suojaamiseksi tarvittavat toimenpiteet
 take-further-steps = Lisätoimia suojellaksesi henkilöllisyyttäsi
