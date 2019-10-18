@@ -188,6 +188,12 @@ how-fxm-3-blurb =
 wtd-after-website = Mitä tehdä sivustovuodon jälkeen:
 wtd-after-data-agg = Mitä tehdä datakokoajaan kohdistuvan vuodon jälkeen:
 what-is-data-agg = Mikä on datakokoaja?
+what-is-data-agg-blurb =
+    Datakokoajat keräävät tietoja julkisista rekistereistä ja ostavat niitä 
+    muilta yrityksiltä. Ne kokoavat nämä tiedot myydäkseen ne yrityksille
+    markkinointitarkoituksiin. Näiden tietovuotojen uhreille tästä aiheutuu 
+    harvemmin taloudellista vahinkoa, mutta hakkerit voivat käyttää tietoja 
+    esiintyäkseen heinä tai profiloidakseen heitä.
 protect-your-privacy = Suojaa yksityisyyttäsi verkossa
 no-pw-to-change = Toisin kuin verkkosivustoihin kohdistuvissa vuodoissa, tässä tapauksessa ei ole salasanaa vaihdettavaksi.
 avoid-personal-info = Vältä henkilökohtaisten tietojen käyttöä salasanoissa
