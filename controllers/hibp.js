@@ -81,12 +81,13 @@ async function notify (req, res) {
   log.info("notification", { length: recipients.length, breachAlertName: breachAlert.Name });
 
   const utmID = "breach-alert";
-  const ctaHref = EmailUtils.getViewMyDashboardHref(utmID);
   const notifiedRecipients = [];
 
   for (const recipient of recipients) {
     log.info("notify", {recipient});
     const { recipientEmail, breachedEmail, signupLanguage, preFxaSubscriber } = getAddressesAndLanguageForEmail(recipient);
+    const campaignId = (preFxaSubscriber) ? "preFXA-see-all-breaches" : "see-all-breaches";
+    const ctaHref = EmailUtils.getEmailCtaHref(utmId, campaignId, preFxaSubscriber);
 
     const requestedLanguage = signupLanguage ? acceptedLanguages(signupLanguage) : "";
     const supportedLocales = negotiateLanguages(
