@@ -302,7 +302,17 @@ currently-showing = Näytetään:
 ## Updated error messages
 
 error-bot-headline = Haut estetty väliaikaisesti
+error-bot-blurb =
+    Tekemäsi haut useilla sähköpostiosoitteilla lyhyessä ajassa aiheutti huolen,
+    että saatat olla botti. Sinut on toistaiseksi estetty tekemästä uusia hakuja.
+    Yritä myöhemmin uudelleen.
 error-csrf-headline = Istunto aikakatkaistiin
+error-csrf-blurb = Napsauta selaimen Takaisin-painiketta, päivitä sivu ja yritä uudelleen.
+error-invalid-unsub = Kuinka lopetan { -product-name } -hälytysten tilauksen
+error-invalid-unsub-blurb =
+    Voit lopettaa tilauksen { -product-name }in lähettämistä viesteistä.
+    Tarkista saapuneet viestisi ja etsi viestejä lähettäjältä { -brand-team-email }.
+    Napsauta tilauksen lopetuslinkkiä sähköpostiviestin lopusta.
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -420,3 +430,4 @@ what-to-do-after-breach-desc = Lukitse tilisi ja pidä tietosi pois vääristä 
 create-strong-passwords-desc = Tee salasanoistasi vahvoja, turvallisia ja vaikeasti arvattavia.
 steps-to-protect-desc = Ymmärrä useimmat yleisimmät uhat ja tiedä mihin varautua.
 five-myths-desc = Opi, kuinka välttää huonot salasanakäytännöt.
+take-further-steps-desc = Ota selvää, kuinka voit pienentää identiteettivarkauden riskejä estääksesi taloudellisia menetyksiä.
