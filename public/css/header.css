@@ -41,10 +41,6 @@ header.show-shadow {
   flex: 1 1 30%;
 }
 
-.fx-monitor-logo-wrapper:hover {
-  opacity: 1;
-}
-
 /* Fx-Monitor logo */
 .sprite.fx-monitor-logo {
   background: url("/img/gradient-sprites.png") -281px 0;
@@ -71,18 +67,20 @@ nav {
 
 .nav-link {
   background-color: rgba(255, 255, 255, 0);
-  padding-right: calc(1rem + 1vw);
-  padding-left: calc(1rem + 1vw);
+  padding-right: calc(16px + 1vw);
+  padding-left: calc(16px + 1vw);
   justify-content: center;
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 700;
+  color: rgba(255, 255, 255, 1);
   font-size: 16px;
 }
 
 .active-link {
   font-weight: 700;
-  position: relative;
   display: block;
+}
+
+.active-link-underline {
+  position: relative;
 }
 
 .active-link-underline::after {
@@ -95,14 +93,21 @@ nav {
   bottom: -8px;
   left: 0;
   right: 0;
+  width: 0;
+  margin: auto;
+  border-radius: 5px;
+  transition: all 0.2s ease;
 }
 
-.active-link-underline.active-link::after {
+.active-link::after {
+
+  width: 100%;
   opacity: 1;
-  transition: opacity 0.15s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 
-.drop-down-menu {
+.drop-down-menu,
+.mobile-menu .active-link-underline::after {
   display: none;
 }
 
@@ -132,8 +137,7 @@ nav {
 .signed-in-as-wrap {
   display: flex;
   position: relative;
-  margin-bottom: 1rem;
-  padding: 0.5rem 0;
+  margin-bottom: 8px;
 }
 
 .signed-in-as-wrap::after {
@@ -147,17 +151,18 @@ nav {
 }
 
 .signed-in-as {
-  padding: 0.75rem 2rem;
-  color: #9595a3;
-  font-size: 0.95rem;
+  padding: 20px;
+  color: rgb(32, 18, 58);
+  font-size: 12px;
+  line-height: 1;
 }
 
 .nav-user-email {
   display: block;
-  color: var(--color);
+  color: rgb(32, 18, 58);
   font-weight: 600;
-  padding-top: 2px;
-  font-size: 1.1rem;
+  padding-top: 8px;
+  font-size: 14px;
 }
 
 /* signed-in user avatar */
@@ -168,12 +173,32 @@ nav {
   align-items: center;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 0 0 1px #fff0, 0 0 0 3px #4f42ff00;
   border: 2px solid rgba(255, 255, 255, 1);
+  pointer-events: all;
+}
+
+.avatar-wrapper:hover {
+  box-shadow: 0 0 0 2px rgba(63, 96, 217, 0.8), 0 0 0 6px rgba(63, 97, 217, 0.2);
+  transition: all 0.2s ease;
+}
+
+.avatar-wrapper:focus,
+.avatar-wrapper:focus-within {
+  border: 2px solid rgba(255, 255, 255, 1);
+  box-shadow: 0 0 0 2px rgb(63, 97, 217), 0 0 0 4px rgba(63, 97, 217, 0.3);
+  outline: none;
 }
 
 .fxa-menu-wrapper {
   cursor: pointer;
   position: relative;
+}
+
+img.avatar,
+.fxa-menu-wrapper,
+.fxa-menu {
+  pointer-events: none !important;
 }
 
 .avatar-wrapper,
@@ -185,37 +210,36 @@ nav {
 /* signed-in user menu */
 .fxa-menu {
   padding-top: 3.25rem;
-  height: 10rem;
   position: absolute;
   top: 0;
-  right: 0;
+  right: -4px;
   z-index: 2;
-  pointer-events: none;
+  pointer-events: none !important;
   transition: all 0.15s ease-in-out;
 }
 
 .fxa-menu-links {
-  background-color: rgb(249, 247, 253);
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+  background-color: rgb(249, 249, 250);
+  box-shadow: 0 7px 12px -3px rgba(28, 28, 29, 0.502);
   display: none;
   flex-direction: column;
-  padding-bottom: 1rem;
+  padding-bottom: 8px;
   visibility: hidden;
-  border-radius: var(--radius);
-  overflow: hidden;
-  transition: visibility 0.15s ease;
+  border-radius: 8px;
+  transform: translateY(0);
+  transition: all 0.15s ease;
 }
 
-.fxa-menu::before {
-  max-height: 0.75rem;
+.fxa-menu-links::before {
+  border-top-left-radius: 1px;
   content: "";
   display: block;
   position: absolute;
-  top: 44px;
-  right: 12px;
-  height: 0.75rem;
-  width: 0.75rem;
-  background-color: rgb(249, 247, 253);
+  top: -5px;
+  right: 20px;
+  height: 12px;
+  width: 12px;
+  background-color: rgb(249, 249, 250);
   opacity: 1;
   margin: auto;
   z-index: 2;
@@ -224,35 +248,30 @@ nav {
   visibility: hidden;
 }
 
-.fxa-menu-wrapper:hover .fxa-menu::before {
+.menu-open .fxa-menu-links::before {
   visibility: visible;
 }
 
-.menu-open .close-menu {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  z-index: 2;
-}
-
-.fxa-menu-wrapper:hover .fxa-menu-links,
-.fxa-menu:hover .fxa-menu-links,
 .menu-open .fxa-menu-links,
-.fxa-menu-links:hover {
+.avatar-wrapper:hover .fxa-menu-links {
   display: flex;
   visibility: visible;
-  transition: visibility 0.15s ease;
+  transform: translateY(8px);
+  animation: fxaMenuAppear ease 0.3s;
+  -webkit-animation: fxaMenuAppear ease 0.3s;
+  -moz-animation: fxaMenuAppear ease 0.3s;
+  transition: all 0.25s ease;
 }
 
-.fxa-menu-wrapper:hover .fxa-menu {
+.menu-open .fxa-menu-links {
   pointer-events: all;
 }
 
 .fxa-menu-link {
-  padding: 0.75rem 2rem;
-  color: rgba(21, 20, 23, 0.77);
+  min-width: 280px;
+  padding: 10px 20px;
+  color: rgb(32, 18, 58);
+  font-size: 12px;
   background-color: rgba(255, 255, 255, 0);
   transition: all 0.15s ease;
 }
@@ -277,28 +296,6 @@ nav {
   color: rgba(255, 255, 255, 1);
   font-size: 16px;
 }
-
-/* .learn-more {
-  margin-left: 0.5rem;
-  color: rgba(255, 255, 255, 1);
-  text-decoration: underline;
-  white-space: nowrap;
-} */
-
-/* .join-fx-wrap {
-  align-items: center;
-}
-
-.join-fx-img {
-  content: "";
-  background-image: url("/img/firefox-master-logo.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
-  min-width: 24px;
-  height: 24px;
-  margin: auto 16px auto auto;
-} */
 
 @media screen and (max-width: 1200px) {
   .bento-sign-up {
@@ -332,17 +329,14 @@ nav {
     font-size: 14px;
   }
 
-  .desktop-menu .nav-link {
-    display: none;
-  }
-
+  .desktop-menu .nav-link,
   .active-link::after {
     display: none;
   }
 
   .mobile-nav {
     visibility: visible;
-    background-color: #1c1033;
+    background-color: var(-color);
     box-shadow: 0 2px 2px -1px #0202024d;
     transition: all 0.2s ease;
     padding: 0;
@@ -471,6 +465,10 @@ nav {
   .nav-link.drop-down-menu {
     padding: 1rem 1.75rem;
   }
+
+  .fxa-menu-link {
+    min-width: auto;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -486,5 +484,17 @@ nav {
 @media screen and (max-width: 450px) {
   .fx-monitor-logotype {
     display: none;
+  }
+}
+
+@keyframes fxaMenuAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(8px);
   }
 }

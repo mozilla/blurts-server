@@ -37,7 +37,7 @@ firefox-apps:focus-within {
 
 firefox-apps:active {
   background-color: var(--bentoClickBgColor);
-  box-shadow: 0 0 0 4px var(--bentoClickBgColor);
+  box-shadow: 0 0 0 3px var(--bentoHoverBgColor), 0 0 0 4px #0a84ff, 0 0 0 6px rgba(10, 132, 255, 0.3);
 }
 
 .fx-bento-hide-overflow {
@@ -213,16 +213,6 @@ a.fx-bento-app-link {
 .fx-bento-button:focus::-moz-focus-inner {
   border: 0;
   outline: 0;
-}
-
-.fx-bento-close.active { /* transparent div that spans the entire background height/width of the browser window when the bento is open and captures clicks to close the bento */
-  position: fixed;
-  min-height: 100vh;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: -1; /* Creates outline of bento menu in high-contrast mode */
 }
 
 button.fx-bento-mobile-close {
