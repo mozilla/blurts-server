@@ -244,6 +244,10 @@ ba-next-step-blurb-1 =
     posebne znake in številke. Ne vsebuje osebnih podatkov, kot so 
     naslov, rojstni dan ali družinska imena.
 ba-next-step-2 = Popolnoma prenehajte uporabljati izpostavljeno geslo.
+ba-next-step-blurb-2 =
+    Spletni napadalci bi lahko na temnem spletu našli vaše geslo in ga uporabili 
+    za prijavo v vaše druge račune. Najboljši način zaščite vaših računov 
+    je, da za vsakega uporabite edinstveno geslo.
 ba-next-step-3 = Pomagajte si pri ustvarjanju boljših gesel in njihovi zaščiti.
 ba-next-step-blurb-3 =
     Uporabite upravitelja gesel za ustvarjanje močnih, edinstvenih gesel. Upravitelji gesel varno shranjujejo vse vaše

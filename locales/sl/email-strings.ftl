@@ -57,3 +57,6 @@ faq-v2-2 = Ali moram kaj storiti, če se je kraja zgodila pred leti ali če je t
 faq-v2-3 = Pravkar sem ugotovil, da sem vpleten v krajo podatkov. Kaj naj storim?
 # Link Title
 faq-v2-4 = Kako { -product-name } obravnava občutljive strani?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Ustvarite brezplačen { -brand-fxa }</a> in dodajte do 15 e-poštnih naslovov.
