@@ -152,7 +152,13 @@ how-fxm-2-blurb = Yeni ihlallerden haberdar olmak için { -brand-fxa } açın. E
 how-fxm-3-headline = Tarayıcınızdan bildirim alın
 how-fxm-3-blurb = { -brand-name } kullanıyorsanız veri ihlaline uğramış bir siteyi ziyaret ettiğinizde bildirim alacaksınız. İhlale dahil olup olmadığınızı ve ne yapabileceğinizi anında öğrenebilirsiniz.
 wtd-after-website = Veri ihlalinden sonra ne yapmalı:
+wtd-after-data-agg = Veri toplayıcısı ihlalinden sonra ne yapılmalı?
 what-is-data-agg = Veri toplayıcı nedir?
+what-is-data-agg-blurb =
+    Veri toplayıcıları veya veri aracıları, halka açık kayıtlardan bilgi toplar 
+    ve diğer şirketlerden veri satın alır. Bu verileri pazarlama amacıyla başka şirketlere satmak için derlerler. 
+    Bu ihlallerin mağdurlarının finansal dolandırıcılık yaşama olasılığı daha düşüktür ama bilgisayar 
+    korsanları kimlik hırsızlığı veya profil çıkarma amacıyla bu verileri kullanabilirler.
 protect-your-privacy = Çevrimiçi gizliliğinizi koruyun
 no-pw-to-change = Web sitesi ihlallerinin aksine, değiştirebileceğiniz bir parola yoktur.
 avoid-personal-info = Parolalarda kişisel bilgilerinizi kullanmaktan kaçının
