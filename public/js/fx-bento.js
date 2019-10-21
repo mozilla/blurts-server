@@ -88,7 +88,7 @@ class FirefoxApps extends HTMLElement {
 
     this._messageBottomLink = createAndAppendEl(this._bentoContent, "a", "fx-bento-bottom-link fx-bento-link");
     this._messageBottomLink.textContent = this._localizedBentoStrings.bentoBottomLink;
-    this._messageBottomLink.href = "https://www.mozilla.com/";
+    this._messageBottomLink.href = "https://www.mozilla.org/";
 
     this._bentoContent.querySelectorAll("a").forEach( (anchorEl, idx) => {
       anchorEl.dataset.bentoLinkOrder = idx;
