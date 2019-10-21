@@ -1,14 +1,19 @@
 footer {
   width: 100%;
   margin: auto auto 0 auto;
+  background-color: var(--inkDark);
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
 
 .footer-link {
-  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 1);
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .footer-link-wrapper {
-  margin-left: var(--padding);
+  margin-left: 60px;
 }
 
 .footer-link-wrapper.moz-link {
@@ -16,11 +21,17 @@ footer {
 }
 
 svg.Mozilla-logo {
-  min-width: 7rem;
-  max-width: 7rem;
+  min-width: 124px;
+  max-width: 124px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 990px) {
+  .footer-link-wrapper {
+    margin-left: 20px;
+  }
+}
+
+@media screen and (max-width: 860px) {
   footer ul.row-full-width {
     flex-direction: column;
   }
@@ -38,10 +49,5 @@ svg.Mozilla-logo {
   .mozilla-logo-wrapper {
     padding: 0;
     margin-bottom: 0.5rem;
-  }
-
-  ul.row-full-width {
-    padding-top: 1.75rem;
-    padding-bottom: 1.75rem;
   }
 }

@@ -88,17 +88,13 @@ function makeBreaches(breaches, LocalizedBreachCardStrings, breachCardWrapper, b
     makeBreachInfoSpans("breach-key", LocalizedBreachCardStrings.BreachAdded, wrapper);
     makeBreachInfoSpans("breach-value", breach.AddedDate, wrapper);
 
-    // compromised accounts
-    makeBreachInfoSpans("breach-key", LocalizedBreachCardStrings.CompromisedAccounts, wrapper);
-    makeBreachInfoSpans("breach-value", breach.PwnCount, wrapper);
-
     // compromised data
     makeBreachInfoSpans("breach-key", LocalizedBreachCardStrings.CompromisedData, wrapper);
     makeBreachInfoSpans("breach-value", breach.DataClasses, wrapper);
 
     // add link at bottom of card
     wrapper = makeDiv("breach-card-link-wrap", breachInfoWrapper);
-    makeBreachInfoSpans("more-about-this-breach", LocalizedBreachCardStrings.MoreInfoLink, wrapper);
+    makeBreachInfoSpans("blue-link more-about-this-breach", LocalizedBreachCardStrings.MoreInfoLink, wrapper);
   }
 
   breachCardWrapper.appendChild(fragment);

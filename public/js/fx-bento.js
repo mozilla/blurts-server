@@ -97,11 +97,8 @@ class FirefoxApps extends HTMLElement {
     });
 
     this._frag.appendChild(this._bentoWrapper);
-
-    this._clickableBG = createAndAppendEl(this._frag, "div", "fx-bento-close");
-    this._clickableBG.addEventListener("click", this);
-
     this.appendChild(this._frag);
+    this.addEventListener("close-bento-menu", this);
   }
 
   addTitleAndAriaLabel(el, localizedCopy) {
@@ -117,7 +114,7 @@ class FirefoxApps extends HTMLElement {
   }
 
   toggleClass(whichClass) {
-    [this._bentoContent, this._bentoWrapper, this._clickableBG].forEach(el => {
+    [this._bentoContent, this._bentoWrapper].forEach(el => {
       el.classList.toggle(whichClass);
     });
   }
@@ -126,41 +123,66 @@ class FirefoxApps extends HTMLElement {
     const closeBento = () => {
       this.handleBentoFocusTrap();
       window.removeEventListener("resize", this.handleBentoHeight);
+      window.removeEventListener("click", this);
       document.removeEventListener("keydown", this);
       this.metricsSendEvent("bento-closed", this._currentSite);
       this.toggleClass("fx-bento-fade-out"); // Set "fx-bento-fade-out" class to transition opacity smoothly since we can't transition smoothly to `display: none`.
       setTimeout(() => {
         this.toggleClass("fx-bento-fade-out");
         this.toggleClass("active");
-      }, 1000);
+      }, 500);
       return;
     };
 
-    if (event.type === "keydown") {
-      if (![27, 40, 38].includes(event.keyCode)) { // 27 = escape, 40 = down arrow, 38 = up arrow
-        return;
-      }
+    const keydownEvent = (event.type === "keydown");
+    const eventTarget = event.target;
 
-      event.preventDefault();
-      const moveFocusWithArrows = (whichKey) => {
+    if (
+      // ignore mouse clicks inside the bento
+      (!keydownEvent && ["fx-bento-content active", "fx-bento-headline", "fx-bento-logo", "fx-bento-headline-logo-wrapper"].includes(eventTarget.className)) ||
+      // ignore and don't prevent default behavior on key clicks other than Escape, Down Arrow, and Up Arrow
+      (keydownEvent && ![27, 40, 38].includes(event.keyCode))
+      ) {
+      return;
+    }
+
+
+    const hasParent = (el, selector) => {
+      while (el.parentElement) {
+        el = el.parentElement;
+        if (el.tagName === selector)
+          return el;
+      }
+      return null;
+    };
+
+    // close Bento on mouse clicks outside the Bento menu
+    if (hasParent(event.target, "FIREFOX-APPS") === null) {
+      this._active = !this._active;
+      return closeBento();
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (keydownEvent) {
+      const moveFocusWithArrows = (whichDirection) => {
         const activeEl = document.activeElement;
         const bentoLinks = this._bentoContent.querySelectorAll("a");
         if (!activeEl.dataset.bentoLinkOrder) { // check if link in Bento has focus
           bentoLinks[0].focus(); // focus first link in bento
           return;
         }
-        const activeElLinkNum = parseInt(activeEl.dataset.bentoLinkOrder);
-        const newLink = parseInt(activeElLinkNum + whichKey);
-        if (bentoLinks[newLink]) {
-          bentoLinks[newLink].focus();
+        const activeLinkNum = parseInt(activeEl.dataset.bentoLinkOrder);
+        const newActiveLink = parseInt(activeLinkNum + whichDirection);
+        if (bentoLinks[newActiveLink]) {
+          bentoLinks[newActiveLink].focus();
         }
         return;
       };
-
       switch(event.keyCode) {
         case 27: // escape
           this._active = !this._active;
-          this.handleBentoFocusTrap();
           closeBento();
           return;
         case 40 : // down arrow || up arrow
@@ -173,14 +195,12 @@ class FirefoxApps extends HTMLElement {
       return;
     }
 
-    event.preventDefault();
     this._active = !this._active;
+    const eventTargetClassList = event.target.classList;
+    const MozLinkClick = (eventTargetClassList.contains("fx-bento-bottom-link"));
 
-    const clickTarget = event.target;
-    const MozLinkClick = (clickTarget.classList.contains("fx-bento-bottom-link"));
-
-    if (clickTarget.classList.contains("fx-bento-app-link") || MozLinkClick) {
-      const url = new URL(clickTarget.href);  // add any additional UTM params - or whatever.
+    if (eventTargetClassList.contains("fx-bento-app-link") || MozLinkClick) {
+      const url = new URL(eventTarget.href);  // add any additional UTM params - or whatever
       url.searchParams.append("utm_source", this._currentSite);
       url.searchParams.append("utm_medium", "referral");
       url.searchParams.append("utm_campaign", "bento");
@@ -189,9 +209,9 @@ class FirefoxApps extends HTMLElement {
         window.open(url, "_blank", "noopener");
         return this.toggleClass("active");
       }
-      const appToOpenId = clickTarget.dataset.bentoAppLinkId;
+      const appToOpenId = eventTarget.dataset.bentoAppLinkId;
       this.metricsSendEvent("bento-app-link-click", appToOpenId);
-      if (clickTarget.classList.contains("fx-bento-current-site")) { // open index page in existing window
+      if (eventTargetClassList.contains("fx-bento-current-site")) { // open index page in existing window
         window.location = url;
         return this.toggleClass("active");
       }
@@ -200,14 +220,17 @@ class FirefoxApps extends HTMLElement {
     }
 
     if (!this._active) {
-      closeBento();
-      return;
+      return closeBento();
     }
+
+    const sendEventOnBentoOpen = new Event("bento-was-opened");
+    document.dispatchEvent(sendEventOnBentoOpen);
 
     this.metricsSendEvent("bento-opened", this._currentSite);
     this.handleBentoHeight();
     document.addEventListener("keydown", this);
     window.addEventListener("resize", this.handleBentoHeight);
+    window.addEventListener("click", this);
 
     this.toggleClass("active");
     return this.handleBentoFocusTrap();
@@ -223,13 +246,12 @@ class FirefoxApps extends HTMLElement {
     } else {
       bento.style.maxHeight = "1000px";
     }
-
     bento.classList.toggle("fx-bento-enable-scrolling", setMaxHeight);
    }
 
   handleBentoFocusTrap() {
     const nonBentoPageElements = document.querySelectorAll(
-      "a:not(.fx-bento-app-link):not(.fx-bento-bottom-link), button:not(.toggle-bento ), input, select, option, textarea, radio"
+      "a:not(.fx-bento-app-link):not(.fx-bento-bottom-link), button:not(.toggle-bento ), input, select, option, [tabindex]"
       );
     const bentoLinks = this._bentoContent.querySelectorAll(".fx-bento-app-link, .fx-bento-bottom-link");
     if (this._active) {

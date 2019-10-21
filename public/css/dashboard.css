@@ -11,22 +11,20 @@ h2.pref-headline {
 }
 
 h3.pref-section-headline {
-  color: #332869;
-  font-size: 24px;
-  margin: calc(var(--padding) + var(--margin)) 0 var(--padding) 0;
+  margin: 60px 0 32px 0;
 }
 
 h3.pref-section-headline.remove {
-  margin-bottom: 1rem;
+  margin-bottom: 12px;
 }
 
 h2.pref-headline.breach-summary {
-  margin-bottom: calc(var(--padding) + var(--margin));
+  margin-bottom: var(--padding);
 }
 
 .pref {
   width: 100%;
-  max-width: 60%;
+  max-width: 620px;
   display: flex;
   flex-direction: column;
   align-self: center;
@@ -35,42 +33,25 @@ h2.pref-headline.breach-summary {
 }
 
 .pref.remove {
-  margin: 6rem 0;
-}
-
-.pref .col-9 {
-  width: 100%;
-  max-width: 100%;
+  margin-bottom: 60px;
+  display: block;
 }
 
 .container.preferences {
   background-size: auto;
   padding-top: 16rem;
-}
-
-.manage-emails.btn-dark {
-  margin: var(--margin) 0;
-}
-
-button.resend-email {
-  min-height: 0;
-}
-
-.remove-fxm {
-  color: var(--alertRed);
-  font-weight: 700;
-  align-items: center;
-  font-size: 1.3rem;
-}
-
-.remove-fxm .arrow-head-right path {
-  fill: var(--alertRed);
+  padding-bottom: 60px;
 }
 
 .email-pref {
-  margin: 3rem 0 0.75rem 0;
-  font-weight: 500;
+  font-size: 14px;
+  margin: 40px 0 12px 0;
+  font-weight: 600;
   color: #686869;
+}
+
+.email-pref.add-new {
+  margin-top: 60px;
 }
 
 .email-pref.fxa-primary-email {
@@ -79,7 +60,6 @@ button.resend-email {
 
 .email-verification-required {
   color: var(--alertRed);
-  font-weight: 500;
   display: flex;
   align-items: center;
 }
@@ -88,15 +68,15 @@ button.resend-email {
   content: "";
   background-image: url(/img/svg/data-compromised.svg);
   background-repeat: no-repeat;
-  background-position: bottom center;
-  margin-right: 0.5rem;
-  width: 1rem;
-  height: 1rem;
+  background-size: 100%;
+  margin-right: 8px;
+  width: 12px;
+  height: 12px;
   display: inline-block;
 }
 
 .radio-label span.bold {
-  color: var(--color);
+  color: var(--ink);
 }
 
 .trash-can {
@@ -117,16 +97,11 @@ button.resend-email {
   width: 100%;
 }
 
-.dash-add-email-hl {
-  font-size: 28px;
-  margin: calc(var(--margin) + 0.5rem) auto;
-}
-
 span.dashboard-email-sent {
   background-color: var(--green1);
   color: #084036;
   padding: 0.5rem 0.75rem;
-  margin: calc(var(--margin) + 0.5rem) auto 0.5rem auto;
+  margin: calc(var(--padding) + 0.5rem) auto 0.5rem auto;
   font-size: 14px;
 }
 
@@ -144,8 +119,15 @@ span.email-confirmed {
 }
 
 .dashboard-add-email {
-  width: 100%;
-  padding: var(--margin) var(--margin) calc(var(--padding) * 3) var(--margin);
+  padding: var(--padding) var(--padding) calc(var(--padding) * 3) var(--padding);
+}
+
+.pref input.email-add-submit {
+  font-size: 14px;
+}
+
+.dash-take-back-wrapper {
+  padding: 60px 0;
 }
 
 @media screen and (max-width: 1100px) {
@@ -157,14 +139,13 @@ span.email-confirmed {
 
 @media screen and (max-width: 900px) {
   .pref {
-    max-width: 100%;
     padding: 0 var(--padding);
   }
 }
 
 @media screen and (max-width: 800px) {
   .email-cards,
-  .col-9.no-vertical-padding {
+  .mw-750.no-vertical-padding {
     padding: 1rem;
   }
 }
@@ -175,7 +156,7 @@ span.email-confirmed {
   }
 
   h2.pref-headline.breach-summary {
-    margin-bottom: var(--margin);
+    margin-bottom: var(--padding);
   }
 
   .link-header-wrapper {
@@ -201,7 +182,7 @@ span.email-confirmed {
   }
 
   .email-cards,
-  .col-9.no-vertical-padding {
+  .mw-750.no-vertical-padding {
     padding: 0.5rem;
   }
 }

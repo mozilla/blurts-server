@@ -7,10 +7,11 @@
 }
 
 .email-card.preferences {
+  padding: 20px;
   background-color: rgba(255, 255, 255, 1);
   border: 1px solid #e8e8e8;
-  margin: 0 0 1rem 0;
-  border-radius: 0.25rem;
+  margin: 0 0 8px;
+  border-radius: 4px;
 }
 
 .e-info { /* email address info */
@@ -27,13 +28,12 @@
 }
 
 .preferences .e-num-breaches {
-  margin-top: 0.5rem;
+  margin-top: 4px;
 }
 
 .e-address {
-  font-size: 1.1rem;
+  font-size: 16px;
   margin-right: 0.5rem;
-  font-family: "Metropolis", sans-serif;
   font-weight: 700;
   color: var(--purple6);
 }
@@ -46,10 +46,9 @@
 
 .e-num-breaches {
   font-weight: 400;
-  font-size: 0.9rem;
+  font-size: 14px;
   display: block;
   color: var(--grey6);
-  font-family: "Metropolis", sans-serif;
 }
 
 .e-num-breaches .bold {
@@ -57,7 +56,7 @@
 }
 
 .email-card-breach-wrapper {
-  padding: 0 var(--margin);
+  padding: 0 var(--padding);
   display: flex;
   flex: 1 1 50%;
   min-width: 250px;
@@ -67,7 +66,7 @@
 }
 
 .email-card.active .email-card-breach-wrapper {
-  padding: var(--margin);
+  padding: var(--padding);
 }
 
 .breach-title-wrapper.ec {
@@ -97,9 +96,8 @@
   transition: all 0.2s ease;
 }
 
-.show-remaining-breaches.btn-grey {
+.show-remaining-breaches.btn-violet-secondary {
   margin: 1rem auto;
-  display: flex;
 }
 
 .show-remaining-breaches.hide {
@@ -154,7 +152,7 @@
 .breach-card.ec {
   border: 1px solid rgba(0, 0, 0, 0);
   background-color: rgba(255, 255, 255, 1);
-  color: var(--color);
+  color: var(--ink);
 }
 
 .e-toggle-info-wrapper {
@@ -186,7 +184,7 @@
 }
 
 .remove-email .x-close path {
-  fill: var(--color);
+  fill: var(--ink);
 }
 
 .button-resend-wrapper {
@@ -201,17 +199,16 @@
   transition: all 0.15s ease;
 }
 
-.change-primary-email:hover {
-  border: 1px solid var(--grey3) !important;
-  background-color: transparent;
-  color: var(--grey9);
-  opacity: 1;
-  transition: all 0.15s ease;
+.resend-email,
+.change-primary-email {
+  font-size: 14px;
 }
 
 .resend-email {
-  padding: 0.5rem 0;
-  opacity: 1;
+  min-height: 0;
+  text-align: left;
+  padding: 0;
+  border-width: 0;
   transition: opacity 0.15s ease-in-out;
 }
 
@@ -221,11 +218,17 @@
 }
 
 .sending {
-  padding-left: 1rem;
+  margin-left: 16px;
+  font-size: 12px;
+  background: #3fe1b0;
+  color: rgba(255, 255, 255, 1);
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-weight: 600;
 }
 
-.remove-fxm:hover,
-.remove-fxm:focus,
+.change-primary-email:hover,
+.change-primary-email:focus,
 .toggle.svg-wrap:focus,
 .toggle.svg-wrap:hover,
 .resend-email:hover,
@@ -238,21 +241,7 @@
   pointer-events: all;
 }
 
-.remove-fxm,
-.resend-email {
-  text-align: left;
-  padding: 0;
-  border-width: 0;
-}
-
-.remove-fxm:hover {
-  text-decoration: none;
-  color: #cf434f;
-  transition: color 0.15s ease-in-out;
-}
-
-form.remove-email:hover svg path,
-.remove-fxm:hover svg path {
+form.remove-email:hover svg path {
   fill: #cf434f;
   transition: fill 0.15s ease-in-out;
 }
@@ -325,7 +314,7 @@ input.remove-email-submit {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     background-color: rgba(255, 255, 255, 1);
-    border-radius: 0.25rem;
+    border-radius: 4px;
     border: 1px solid #e8e8e8;
   }
 
@@ -351,7 +340,7 @@ input.remove-email-submit {
   }
 
   .email-card-breach-wrapper {
-    padding: var(--margin) 0;
+    padding: var(--padding) 0;
     flex: 1 1 100%;
   }
 
@@ -360,7 +349,7 @@ input.remove-email-submit {
   }
 
   .email-card.active .email-card-breach-wrapper {
-    padding: var(--margin) 0;
+    padding: var(--padding) 0;
   }
 
   .new-breach-message-wrapper.show-mobile {
@@ -416,7 +405,7 @@ input.remove-email-submit {
 
   .change-primary-email {
     width: 100%;
-    margin: var(--margin) 0 0 0;
+    margin: var(--padding) 0 0 0;
     text-align: center;
   }
 

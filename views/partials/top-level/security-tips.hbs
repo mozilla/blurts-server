@@ -2,7 +2,7 @@
 <main class="container clear-header security-tips bg-dark" data-page-label="Security Tips">
   <div class="row jst-cntr">
     <div class="col-12 no-vertical-padding">
-      <h2 class="top-headline wrap-headline">
+      <h2 class="top-headline mw-550">
         {{ getString "security-tips-headline" }}
       </h2>
       <ul class="security-tip-list flx">
@@ -32,7 +32,7 @@
         <div id="{{ class }}" class="st-{{ class }} article-wrapper">
           <div class="ico {{ class }}">{{> (lookup . 'pathToPartial')}}</div>
           <span class="security-tip-subhead">{{subhead}}</span>
-          <h2 class="article-headline {{ class }}">{{ title }}</h2>
+          <h2 class="article-headline mw-500 {{ class }}">{{ title }}</h2>
           {{#each copy}}
             {{#each leads}}
               <p class="article-paragraph lead">

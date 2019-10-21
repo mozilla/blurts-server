@@ -1,37 +1,46 @@
 "use strict";
 
+
 // open/close signed-in user fxa menu and set tabbing
-function toggleMenu (otherFocusableEls, fxaMenuLinks) {
-  const page = document.body;
-  page.classList.toggle("menu-open");
-  if (page.classList.contains("menu-open")) {
-    document.getElementById("close-menu").addEventListener("click", (e) => {
-      toggleMenu(otherFocusableEls, fxaMenuLinks);
-    });
+function toggleMenu (evt) {
+  evt.stopPropagation();
+  const otherFocusableEls = document.querySelectorAll("button, a:not(.fxa-menu-link), input");
+  const fxaMenuLinks = document.querySelectorAll(".fxa-menu-link");
+
+  const bodyClassList = document.body.classList;
+  bodyClassList.toggle("menu-open");
+  if (bodyClassList.contains("menu-open")) {
+    const bento = document.querySelector("firefox-apps");
+    if (bento._active) {
+      const closeBentoEvent = new Event("close-bento-menu");
+      bento.dispatchEvent(closeBentoEvent);
+    }
+    document.addEventListener("bento-was-opened", toggleMenu);
+    window.addEventListener("click", toggleMenu);
+
     otherFocusableEls.forEach(el => {
       el.tabIndex = -1;
     });
     fxaMenuLinks.forEach(link => {
       link.tabIndex = 0;
     });
-  } else {
-    otherFocusableEls.forEach(el => {
-      el.tabIndex = 0;
-    });
-    fxaMenuLinks.forEach(link => {
-      link.tabIndex = -1;
-    });
+    return;
   }
+  otherFocusableEls.forEach(el => {
+    el.tabIndex = 0;
+  });
+  fxaMenuLinks.forEach(link => {
+    link.tabIndex = -1;
+  });
+
+  document.removeEventListener("bento-was-opened", toggleMenu);
+  window.removeEventListener("click", toggleMenu);
 }
 
-if (document.querySelector("#avatar-wrapper")) {
-  const avatar = document.getElementById("avatar-wrapper");
-  const otherFocusableEls = document.querySelectorAll("button, a:not(.fxa-menu-link), input");
+const avatar = document.querySelector(".avatar-wrapper");
+if (avatar) {
+  avatar.addEventListener("click", toggleMenu);
   const fxaMenuLinks = document.querySelectorAll(".fxa-menu-link");
-
-  avatar.addEventListener("click", () => {
-    toggleMenu(otherFocusableEls, fxaMenuLinks);
-  });
 
   avatar.addEventListener("focus", () => {
     avatar.addEventListener("keydown", (e) => {
@@ -39,11 +48,11 @@ if (document.querySelector("#avatar-wrapper")) {
       if ([32, 13].includes(e.keyCode)) {
         e.preventDefault(); // prevents page from jumping or scrolling down
         e.stopImmediatePropagation();
-        return toggleMenu(otherFocusableEls, fxaMenuLinks);
+        return toggleMenu(e);
       }
       // close menu on escape (keyCode:27) clicks
       if (e.keyCode === 27 && document.body.classList.contains("menu-open")) {
-        return toggleMenu(otherFocusableEls, fxaMenuLinks);
+        return toggleMenu(e);
       }
     });
   });
@@ -54,7 +63,7 @@ if (document.querySelector("#avatar-wrapper")) {
         if (e.keyCode === 27) {
           e.preventDefault();
           e.stopImmediatePropagation();
-          toggleMenu(otherFocusableEls, fxaMenuLinks);
+          toggleMenu(e);
         }
       });
     });

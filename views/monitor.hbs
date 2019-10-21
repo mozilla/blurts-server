@@ -45,14 +45,14 @@
       <section class="landing-bottom-bar">
         <div class="latest-breach-info">
           {{#each (lastAddedBreach)}}
-            {{> breach-card cardType="latest-breach" showPwnCount=true latestBreach = true}}
+            {{> breach-card cardType="latest-breach" latestBreach=true}}
           {{/each}}
         </div>
-        <div class="row article-row">
-          <div class="col-6 jst-cntr">
+        <div class="row take-back-control-banner">
+          <div class="article-list-headline-wrapper jst-cntr">
             {{> take-back-control/headlines variableClasses="dash"}}
           </div>
-          <div class="col-6">
+          <div>
             {{> take-back-control/article-links }}
           </div>
         </div>

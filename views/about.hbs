@@ -5,8 +5,8 @@
       <div class="row about-row">
         <div class="col-8">
           <div class="fx-monitor-svg"></div>
-          <h2 class="headline wrap-headline">{{ getString "landing-headline" }}</h2>
-          <p class="wrap-headline">{{ getString "fxm-warns-you" }}</p>
+          <h2 class="headline mw-550">{{ getString "landing-headline" }}</h2>
+          <p class="mw-550">{{ getString "fxm-warns-you" }}</p>
         </div>
       </div>
   </main>
@@ -26,11 +26,11 @@
                   <p class="how-fxm-works-blurb">{{ this.subhead }}</p>
                 </div>
                   {{#ifCompare this.ctaId "===" "signUp"}} 
-                    <button {{> analytics/fxa id="fx-monitor-about-page-sign-up" }} data-event-category="About Page SignUp" class="btn-grey open-oauth about-cta">
+                    <button {{> analytics/fxa id="fx-monitor-about-page-sign-up" }} data-event-category="About Page SignUp" class="btn-violet-secondary btn-small open-oauth about-cta">
                       {{ this.localizedCta }}
                     </button>
                   {{else}}
-                    <a class="btn-grey demi about-cta" target="_blank" href="{{ this.href }}">{{ this.localizedCta }}</a>
+                    <a class="btn-violet-secondary btn-small about-cta" target="_blank" href="{{ this.href }}">{{ this.localizedCta }}</a>
                   {{/ifCompare}}
               </div>
             </div>

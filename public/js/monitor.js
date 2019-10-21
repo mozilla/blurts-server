@@ -176,7 +176,7 @@ function toggleMobileFeatures(topNavBar) {
   const win = window;
   const windowWidth = win.innerWidth;
   if (windowWidth > 800) {
-    const emailCards = document.querySelectorAll(".col-9.email-card:not(.zero-breaches)");
+    const emailCards = document.querySelectorAll(".mw-750.email-card:not(.zero-breaches)");
       emailCards.forEach(card => {
         card.classList.add("active");
       });
@@ -184,7 +184,7 @@ function toggleMobileFeatures(topNavBar) {
     }
 
   const bentoButton = document.querySelector(".fx-bento-content");
-  const closeActiveEmailCards = document.querySelectorAll(".col-9.email-card.active");
+  const closeActiveEmailCards = document.querySelectorAll(".mw-750.email-card.active");
     closeActiveEmailCards.forEach(card => {
       card.classList.remove("active");
     });
@@ -260,7 +260,7 @@ function addBentoObserver(){
 
   document.querySelectorAll(".breach-logo:not(.lazy-img)").forEach(logo => {
     logo.addEventListener("error", (missingLogo) => {
-      missingLogo.target.src = "/img/logos/missing-logo-icon.png";
+      missingLogo.target.src = "/img/svg/placeholder.svg";
     });
   });
 

@@ -1,6 +1,6 @@
 .monitor-homepage {
-  min-height: 92vh;
-  background-color: var(--color);
+  min-height: 90vh;
+  background-color: var(--inkDark);
   background-image: url(/img/landing/background-noodle-top2.svg);
   background-repeat: no-repeat;
   background-size: contain;
@@ -8,25 +8,23 @@
   position: relative;
 }
 
-.monitor-homepage.featured-breach {
-  min-height: 97vh;
-}
-
-.monitor-homepage.sensitive-landing {
-  min-height: 70vh;
-}
-
 .featured-breach h2.landing-headline {
   font-size: 40px;
+  max-width: 600px;
+  margin-bottom: 0;
 }
 
 .landing-bottom-bar {
-  background-image: url(/img/landing/background-noodle-middle.svg), var(--bluePurpleGradient), linear-gradient(to bottom, rgba(144, 89, 255, 0.24), rgba(144, 89, 255, 0));
+  background-image: url(/img/landing/background-noodle-middle.svg), linear-gradient(224deg, #2150c8, #712291);
   background-repeat: no-repeat;
   background-size: 100% auto;
   background-position: top center;
   position: relative;
   padding-top: 0;
+}
+
+.landing-bottom-bar .take-back-control-banner {
+  margin: 88px auto 40px auto;
 }
 
 /* sensitive featured breach */
@@ -52,9 +50,9 @@
 }
 
 .sb-top {
-  background-color: rgba(255, 255, 255, 1);
-  border-top-right-radius: 0.5rem;
-  border-top-left-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
   min-height: 4rem;
   width: 100%;
 }
@@ -73,7 +71,9 @@
 }
 
 .sb-callout-body {
-  font-size: 1.2rem;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--grey2);
 }
 
 .sensitive-breach .feat-headline-wrapper {
@@ -84,6 +84,12 @@
 h3.sb-callout {
   font-size: 24px;
   margin: 3rem auto 0 auto;
+  font-weight: 700;
+}
+
+.sb-callout,
+.sb-callout-body {
+  max-width: 600px;
 }
 
 .landing-content {
@@ -92,13 +98,15 @@ h3.sb-callout {
 
 .landing-content .form-desc {
   color: var(--grey2);
+  margin-bottom: calc(var(--padding) * 3);
 }
 
 .landing-subhead {
   padding: 0;
-  margin: 0.5rem auto var(--margin) auto;
-  max-width: 450px;
-  font-size: 1.25rem;
+  margin: 0 auto calc(var(--padding) * 2) auto;
+  max-width: 560px;
+  font-size: 24px;
+  line-height: 1.17;
 }
 
 .landing-headline,
@@ -106,17 +114,13 @@ h3.sb-callout {
   color: var(--grey1);
 }
 
-.landing-feat-list {
-  margin: 0 auto var(--padding) auto;
-}
-
 .landing-headline {
-  margin: auto;
-  max-width: 700px;
+  margin: auto auto 22px auto;
+  max-width: 750px;
 }
 
 .landing-content form {
-  max-width: 400px;
+  max-width: 320px;
   margin: auto;
 }
 
@@ -124,13 +128,9 @@ h3.sb-callout {
   color: var(--violet2);
 }
 
-.landing-sign-up-btn {
-  max-width: 350px;
-}
-
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 800px) {
   .landing-content {
-    max-width: 700px;
+    max-width: 600px;
   }
 
   .monitor-homepage.featured-breach {
@@ -140,40 +140,50 @@ h3.sb-callout {
   .featured-breach h2.landing-headline,
   h2.landing-headline,
   .landing-subhead {
-    text-align: left !important;
-    margin: 0 auto 0.5rem 0;
-    max-width: 100%;
-  }
-
-  .sb-callout-body {
-    font-size: 1rem;
+    margin: 0 auto 12px auto;
   }
 
   .landing-subhead {
-    padding-right: 10%;
-  }
-
-  .landing-feat-list {
-    margin: 1rem auto 2rem 0;
-  }
-
-  .landing-content form,
-  .landing-sign-up-btn {
-    margin-left: 0;
-    max-width: 100%;
+    font-size: 20px;
+    max-width: 500px;
   }
 
   .landing-content form {
-    margin-top: 1rem;
+    margin-top: 8px;
   }
 }
 
 @media screen and (max-width: 600px) {
   .monitor-homepage {
-    min-height: 96vh;
+    min-height: 86vh;
   }
 
-  .landing-content .form-desc {
-    padding-bottom: 3rem;
+  .landing-bottom-bar .take-back-control-banner {
+    margin: 68px auto 20px auto;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .landing-content {
+    max-width: 400px;
+  }
+
+  .landing-content form {
+    max-width: 100%;
+  }
+
+  .landing-subhead {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .landing-subhead,
+  .landing-headline {
+    text-align: left;
+  }
+
+  .featured-breach h2.landing-headline {
+    text-align: center;
+    font-size: var(--topHeadline);
   }
 }

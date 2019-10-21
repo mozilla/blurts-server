@@ -30,7 +30,7 @@
 }
 
 .breach-stat-row {
-  padding: var(--padding);
+  padding: 32px var(--padding);
   flex-direction: column;
   max-width: 31.25%;
   border-radius: 8px;
