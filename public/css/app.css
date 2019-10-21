@@ -304,6 +304,10 @@ button.btn-violet-primary {
   align-items: center;
 }
 
+a.btn-transparent:hover {
+  text-decoration: none;
+}
+
 .btn-small {
   font-size: 14px;
   border-radius: 4px;
