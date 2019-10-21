@@ -5,27 +5,23 @@
   <div class="breach-info-wrapper flx flx-col">
     <div class="flx flx-col">
       <span class="breach-title">{{ Title }}</span>
-
       {{#if latestBreach}}
-        <div class="breach-info">
+        <div class="lb-info breach-info">
           {{> breach-cards/added-date }}
         </div>
-        <div class="breach-info">
+        <div class="lb-info breach-info">
           {{> breach-cards/data-classes }}
         </div>
       {{else}}
         {{> breach-cards/added-date }}
-        {{#if showPwnCount }}
-          <span class="breach-key">{{ LocalizedBreachCardStrings.CompromisedAccounts }}</span>{{ PwnCount }}</span>
-        {{/if}}
         {{> breach-cards/data-classes }}
       {{/if}}
     </div>
     <div class="breach-card-link-wrap">
       {{#if latestBreach}}
-        <span class="latest-breach-link">{{ getString "latest-breach-link" }}</span>
+        <span class="more-about-this-breach blue-link">{{ getString "latest-breach-link" }}</span>
       {{else}}
-        <span class="more-about-this-breach">{{ LocalizedBreachCardStrings.MoreInfoLink }}</span>
+        <span class="more-about-this-breach blue-link">{{ LocalizedBreachCardStrings.MoreInfoLink }}</span>
       {{/if}}
     </div>
   </div>

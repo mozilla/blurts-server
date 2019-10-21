@@ -12,7 +12,7 @@
 }
 
 .about-noodles {
-  background-color: var(--color);
+  background-color: var(--ink);
   background-image: url("/img/landing/background-noodle-right.svg");
   background-repeat: no-repeat;
   background-position: right;
@@ -35,6 +35,8 @@
 }
 
 .about-cta {
+  display: flex;
+  margin: 0 !important;
   align-self: flex-start;
 }
 

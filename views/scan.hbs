@@ -1,7 +1,7 @@
 <main class="container bg-light clear-header" {{> analytics/results_page_label }}>
   <div class="row jst-cntr scan-results">
 
-    <div class="col-9 headline-col">
+    <div class="mw-860 headline-col">
       {{#if scannedEmailId }} <!-- show the email address that was scanned -->
         <p id="scanned-email-address" class="scanned-email-address">{{ getString "results-for" userEmail="" }} <span id="scannedEmail" data-scanned-email-id={{ scannedEmailId }} class="bold"></span></p>
       {{/if}}
@@ -9,34 +9,38 @@
         {{#getScanResultsHeadline }}
           <h2 class="headline scan-results-headline fb-res-headline">{{{ this.headline }}}</h2>
           {{#if this.subhead }}
-            <h3 class="subhead scan-res-subhead">{{{ this.subhead }}}</h2>
+            <h3 class="scan-res-subhead">{{{ this.subhead }}}</h2>
           {{/if}}
         {{/getScanResultsHeadline}}
       {{else}}
-        <h2 class="headline  scan-results-headline">{{{ fluentNestedBold "scan-results-known-breaches" breachCount=foundBreaches.length }}}</h2>
-        <button class="alert-me open-oauth"  {{> analytics/fxa id="fx-monitor-alert-me-btn" }} data-event-category="Alert me about new breaches">
-          {{ getString "alert-about-new-breaches" }}{{> svg/arrow-head-right }}
+        <h2 class="headline scan-results-headline">{{{ fluentNestedBold "scan-results-known-breaches" breachCount=foundBreaches.length }}}</h2>
+        <button class="btn-violet-secondary open-oauth btn-small btn-transparent" {{> analytics/fxa id="fx-monitor-alert-me-btn" }} data-event-category="Alert me about new breaches">
+          {{ getString "alert-about-new-breaches" }}
         </button>
       {{/if}}
     </div>
   </div>
 
   <div class="row jst-cntr user-found-breaches flx-col">
-    <div class="col-9 found-breaches scan-res-breaches">
+    <div class="mw-860 found-breaches scan-res-breaches">
         {{#each (getFoundBreaches)}}
           {{> breach-card cardType="two-up drop-shadow"}}
         {{/each}}
     </div>
     {{#ifCompare foundBreaches.length ">" "0"}}
-      <div class="col-9 txt-cntr source-info-wrap">
+      <div class="mw-860 txt-cntr source-info-wrap">
         {{> hibp-attribution}}
       </div>
     {{/ifCompare}}
   </div>
 </main>
-<section class="container scan-results-sign-up">
+<section>
   <div class="row jst-cntr flx-col">
-    {{> sign-up-banners/scan-results-sign-up }}
     {{> scan-another-email addClass="stacked"}}
+  </div>
+  <div class="fxa-signup-gradient">
+    <div class="row fxa-signup-banner scan-res">
+    {{> sign-up-banners/scan-results-sign-up }}
+    </div>
   </div>
 </section>

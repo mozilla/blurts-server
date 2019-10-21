@@ -82,6 +82,7 @@
 
 .security-tip-subhead {
   max-width: 230px;
+  line-height: 1.3;
   margin-bottom: 6rem;
   display: block;
   font-family: "Metropolis", sans-serif;
@@ -135,7 +136,7 @@ body {
 }
 
 .how-hackers-work-list {
-  margin-top: calc(var(--padding) + var(--margin));
+  margin-top: calc(var(--padding) * 2);
 }
 
 .myth {
@@ -166,9 +167,8 @@ body {
 }
 
 .article-headline {
-  color: var(--color);
+  color: var(--ink);
   font-size: 3rem;
-  max-width: 500px;
   font-weight: 700;
 }
 
@@ -184,7 +184,7 @@ a.st-copy-link {
 }
 
 .article-paragraph .bold {
-  color: var(--color);
+  color: var(--ink);
 }
 
 a.st-copy-link:hover,
@@ -194,7 +194,7 @@ a.st-link:hover {
 
 .st-list-header {
   margin-top: 2rem;
-  color: var(--color);
+  color: var(--ink);
   font-size: 1.1rem;
 }
 
@@ -207,7 +207,7 @@ a.st-link:hover {
   display: inline-block;
   margin-right: 1rem;
   font-size: 1.5rem;
-  color: var(--color);
+  color: var(--ink);
   align-self: flex-start;
 }
 
@@ -221,7 +221,7 @@ h3.article-subhead,
 .toggle-subhead {
   margin: 2.5rem auto 0 auto;
   font-weight: 700;
-  color: var(--color);
+  color: var(--ink);
 }
 
 .steps-to-protect::before {
@@ -241,10 +241,6 @@ h3.article-subhead,
   opacity: 0.9;
 }
 
-a.security-tips-link {
-  margin-top: 1rem;
-}
-
 .st-headline {
   margin: 0;
   line-height: 200%;
@@ -254,7 +250,7 @@ a.security-tips-link {
 .st-list,
 .st-subhead {
   margin: 0;
-  padding: var(--margin) calc(30px + 2rem) 0;
+  padding: var(--padding) calc(30px + 2rem) 0;
 }
 
 .st-list-item {
@@ -375,7 +371,7 @@ a.st-link {
   line-height: 150%;
   font-size: 1.1rem;
   font-weight: 500;
-  color: var(--color);
+  color: var(--ink);
 }
 
 .password-tip-list {
@@ -395,7 +391,7 @@ a.st-link {
 
 .do-list-item,
 .dont-list-item {
-  padding: var(--margin);
+  padding: var(--padding);
   display: flex;
   align-items: center;
   min-height: 70px;
@@ -567,7 +563,7 @@ a.st-link {
   .st-toggle-wrapper {
     border-bottom: 1px solid var(--grey3);
     border-radius: 0;
-    padding: var(--margin) 0;
+    padding: var(--padding) 0;
     margin: 1rem 0;
   }
 
@@ -578,11 +574,11 @@ a.st-link {
   .st-next-steps .st-toggle-wrapper {
     border: 1px solid var(--grey8);
     border-radius: 0.25rem;
-    padding: var(--margin);
+    padding: var(--padding);
   }
 
   .article-toggle svg.toggle-down {
-    right: var(--margin);
+    right: var(--padding);
     display: inline-block;
   }
 
@@ -607,10 +603,6 @@ a.st-link {
     margin-right: 1rem;
   }
 
-  .security-tips-link {
-    margin-left: 2.25rem;
-  }
-
   .security-tip-list-item {
     padding-right: 13%;
   }
@@ -620,7 +612,7 @@ a.st-link {
   }
 
   .do-dont-wrap {
-    padding: calc(var(--padding) * 2) var(--margin);
+    padding: calc(var(--padding) * 2) var(--padding);
   }
 
   .st-subhead {

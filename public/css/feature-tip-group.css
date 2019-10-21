@@ -1,5 +1,5 @@
 .feature-tip-group {
-  min-width: 100%;
+  min-width: 96%;
   flex-direction: row;
   justify-content: space-between;
 }
@@ -11,13 +11,13 @@
 
 .gradient-inset {
   width: 100%;
-  border-radius: 0.7rem;
+  border-radius: 8px;
   box-shadow: 0 0 12px 0 rgba(28, 28, 29, 0.4);
-  padding: var(--padding) 0;
+  padding: calc(var(--padding) * 2) 0;
+  background-color: rgba(255, 255, 255, 0.95);
 }
 
 .feature-tip-content-wrapper {
-  border-radius: 3px;
   max-width: 320px;
   display: inline-flex;
 }
@@ -27,8 +27,8 @@
 }
 
 .feat-img {
-  height: 5rem;
-  width: 7rem;
+  height: 4rem;
+  width: 8rem;
   margin: var(--padding) auto;
   transition: all 0.2s ease;
   background-position: center center;
@@ -36,7 +36,7 @@
   background-size: contain;
 }
 
-.feature-tip-content-wrapper.col.txt-cntr:hover .feat-img {
+.breach-detail .feature-tip-content-wrapper:hover .feat-img {
   transform: scale(1.1);
   transition: all 0.2s ease-in-out;
 }
@@ -54,59 +54,69 @@
 }
 
 .feature-tip-headline {
-  margin: auto;
+  margin: auto auto var(--padding) auto;
+  font-size: 32px;
+  line-height: 1.13;
+  color: #393473;
 }
 
 .feature-tip-link,
 .feature-subhead {
-  font-weight: 400;
-  line-height: 1.5rem;
+  line-height: 1.5;
   margin-top: 0;
 }
 
 .feature-title {
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 24px;
+}
+
+.feature-subhead {
+  font-size: 18px;
+  font-weight: 300;
+  color: #42425a;
 }
 
 .breach-detail .feature-tip-group {
   flex-direction: column !important;
   align-items: center !important;
-  margin-bottom: var(--padding);
 }
 
 .breach-detail .feature-tip-content-wrapper {
   flex-direction: row;
   align-items: flex-start;
   max-width: 600px;
-  margin: var(--padding) auto auto 0;
+  margin: 20px auto 20px 0;
 }
 
 .breach-detail .feature-tip-content {
   text-align: left;
-  margin-left: var(--padding);
+  margin-left: 20px;
+  max-width: 100%;
 }
 
 .breach-detail .feat-img {
-  margin: var(--margin) 0 0 0;
-  height: 3rem;
-  max-width: 4rem;
+  margin: 0;
+  height: 56px;
+  max-width: 56px;
+  min-width: 56px;
 }
 
 .breach-detail .feature-title {
-  font-size: 1.2rem;
+  font-size: 18px;
 }
 
 .breach-detail .feature-subhead {
   margin-bottom: 0.5rem;
+  font-size: 16px;
 }
 
 .gradient-container .feature-button .feature-tip-content {
   margin: auto;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1100px) {
   .feature-tip-headline {
     max-width: 600px;
     word-break: break-word;
@@ -130,13 +140,13 @@
   }
 
   .feat-img {
+    width: 7rem;
     margin: 0 auto;
   }
 }
 
 @media screen and (max-width: 800px) {
   .feature-tip-content-wrapper {
-    max-width: 300px;
     margin-bottom: var(--padding);
     flex-direction: column;
   }
@@ -170,6 +180,6 @@
   }
 
   .breach-detail .feature-tip-content-wrapper {
-    margin: var(--margin) auto;
+    margin: var(--padding) auto;
   }
 }

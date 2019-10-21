@@ -9,19 +9,6 @@ input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0) inset;
 }
 
-.email-scan input[type="email"]::placeholder,
-.email-scan input[type="email"]::-moz-placeholder,
-.email-scan input[type="email"] {
-  opacity: 1;
-  color: var(--color);
-  font-weight: 400;
-}
-
-.email-scan input[type="email"] {
-  background-color: rgba(255, 255, 255, 1);
-  border-color: rgba(255, 255, 255, 1);
-}
-
 .form-group.loading-data .loader {
   display: block;
   opacity: 0.58;
@@ -31,20 +18,16 @@ input:-webkit-autofill {
 }
 
 .form-desc {
-  text-align: center;
-  font-weight: 300;
-  margin: 0 auto;
-  color: var(--grey8);
-  max-width: 355px;
+  max-width: 260px;
   z-index: 1;
-  font-size: 0.9rem;
-
-  /* display: none; */
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 12px auto;
 }
 
 input[type="submit"],
 input[type="email"] {
-  height: 4rem;
+  height: 48px;
   width: 100%;
   border-style: solid;
   border-width: 1px;
@@ -56,8 +39,6 @@ input[type="email"] {
 input[type="text"]:focus,
 input[type="radio"]:focus ~ .checkmark,
 input:focus,
-button:focus,
-.button:focus,
 .radio-button-group:focus {
   border: 1px solid rgb(40, 97, 205);
   box-shadow: 0 0 0 1px rgb(63, 97, 217), 0 0 0 4px rgba(63, 97, 217, 0.3);
@@ -66,6 +47,8 @@ button:focus,
 
 .email-scan {
   flex-direction: column;
+  max-width: 320px;
+  margin: auto;
 }
 
 .input-group,
@@ -75,7 +58,6 @@ button:focus,
   max-width: 100%;
   margin-left: 0;
   margin-right: 0;
-  margin-bottom: 0.75rem;
 }
 
 .form-group .error-message {
@@ -85,7 +67,7 @@ button:focus,
   color: rgba(255, 255, 255, 1);
   padding: 5px 12px;
   position: absolute;
-  bottom: -29px;
+  bottom: -22px;
   left: -1px;
   z-index: 1;
   font-size: 13px;
@@ -132,16 +114,7 @@ button:focus,
 }
 
 input::placeholder {
-  font-size: 1rem;
-}
-
-.scan-another-email input::placeholder {
-  color: var(--color);
-}
-
-.scan-another-email input[type="email"] {
-  color: var(--color);
-  border: 1px solid var(--grey3);
+  color: #737373;
 }
 
 .form-group.loading-data .button,
@@ -151,17 +124,17 @@ input::placeholder {
 }
 
 input[type="email"] {
-  font-size: 17px;
-  font-weight: 300;
-  text-indent: var(--margin);
-  background-color: transparent;
-  border-color: var(--blue3);
-  caret-color: var(--orange6);
+  font-size: 16px;
+  text-indent: var(--padding);
+  background-color: rgba(255, 255, 255, 1);
+  color: var(--ink);
+  border: 1px solid var(--grey90a3);
+  margin-bottom: 12px;
   transition: all 0.1s ease-out;
 }
 
 input[type="submit"] {
-  font-size: 1rem;
+  font-size: 16px;
   border-width: 2px;
   background-color: var(--blue3);
   color: rgba(255, 255, 255, 1);
@@ -190,17 +163,9 @@ form.invalid input[type="submit"]:focus {
 }
 
 input.email-add {
-  color: var(--color);
-  border-color: #e8e8e8;
+  color: var(--ink);
+  border-color: var(--grey90a3);
   background-color: rgba(255, 255, 255, 1);
-}
-
-input.email-add-submit {
-  border: 1px solid var(--blue3);
-  background-color: var(--blue3);
-  color: rgba(255, 255, 255, 1);
-  border-color: var(--blue3);
-  padding: 0 0.75rem;
 }
 
 input.unsub {
@@ -216,13 +181,15 @@ input[type="radio"] {
 
 .checkmark {
   background-color: rgba(255, 255, 255, 1);
-  height: 1.5rem;
-  width: 1.5rem;
-  border-radius: 0.2rem;
+  height: 32px;
+  width: 32px;
+  border-radius: 4px;
   display: block;
   position: absolute;
-  top: 2px;
-  border: 1px solid rgba(12, 12, 13, 0.3);
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 1px solid var(--grey90a3);
   transition: background-color 0.15s ease-in-out;
 }
 
@@ -244,7 +211,7 @@ input[type="radio"]:checked:hover ~ .checkmark {
 }
 
 input[type="radio"]:focus ~ .checkmark {
-  border: 1px solid rgba(12, 12, 13, 0.3);
+  border: 1px solid var(--grey90a3);
   box-shadow: 0 0 0 1px rgba(12, 12, 13, 0), 0 0 0 3px rgba(12, 12, 13, 0.05);
 }
 
@@ -263,28 +230,34 @@ input[type="radio"]:focus ~ .checkmark {
 }
 
 .add-new-email-form input::placeholder {
-  color: var(--color);
+  color: #737373;
 }
 
 .dashboard-add-email .add-new-email-form {
   flex-direction: column;
-  max-width: 450px;
+  max-width: 320px;
   margin: auto;
 }
 
+.radio-container input[type="radio"] {
+  width: 0;
+  margin: 0;
+}
+
 .radio-container {
-  margin-bottom: 1rem;
+  margin-bottom: 24px;
   display: flex;
   position: relative;
-  min-height: 1.6rem;
+  min-height: 32px;
   align-items: center;
 }
 
 .radio-label {
-  margin-left: var(--margin);
+  margin-left: 48px;
   font-weight: 400;
   color: var(--textLight);
-  font-size: 1rem;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 @media screen and (max-width: 800px) {

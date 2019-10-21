@@ -1,7 +1,7 @@
-              <h2 class="section-headline-light">{{ this.headline }}</h2>
+              <h2 class="section-headline txt-purple7">{{ this.headline }}</h2>
 
               {{#if this.copy }}
-                <p>{{{ this.copy }}}</p>
+                <p class="txt-light">{{{ this.copy }}}</p>
               {{/if}}
 
               {{#if this.tips }}
@@ -25,9 +25,10 @@
                     <div class="additional-data-types-wrapper">
                       <div class="flx glyph-string-wrapper">
                         <div class="glyph">{{> svg/glyphs/more }}</div>
-                        <div class="flx flx-col">
-                          <p class="demi additional-data-types">{{ getString "additional-information-including" }}</p>
-                          <p class="lower-priority">{{ dataTypes.lowerPriority }}</p>
+                        <div class="flx flx-col txt-light">
+                          <p class="additional-data-types">{{ getString "additional-information-including" }}</p>
+                          <p class="lower-priority-data-types">{{ dataTypes.lowerPriority }}</p>
+                          {{> hibp-attribution}}
                         </div>
                       </div>
                     </div>

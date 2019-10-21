@@ -1,5 +1,4 @@
     <header id="header">
-      {{!-- {{> branding-strip }} --}}
       <div id="navigation-wrapper">
         <section class="row-full-width fxm-branding">
           <a class="flx-cntr fx-monitor-logo-wrapper" href="/" aria-label="{{ getString 'home' }}" {{> analytics/internal-link eventLabel="Fx-Monitor-Logo" }}>
@@ -14,7 +13,7 @@
             {{#if req.session.user}}
               {{> header/fxa-menu }}
             {{else}}
-              <button id="sign-in-btn" class="open-oauth sign-in btn-light" {{> analytics/fxa id="fx-monitor-sign-in-button" }} data-event-category="Sign In Button">{{ getString "sign-in" }}</button>
+              <button id="sign-in-btn" class="open-oauth sign-in btn-white btn-big btn-transparent" {{> analytics/fxa id="fx-monitor-sign-in-button" }} data-event-category="Sign In Button">{{ getString "sign-in" }}</button>
             {{/if}}
           </div>
         </section>

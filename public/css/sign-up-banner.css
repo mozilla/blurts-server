@@ -1,31 +1,34 @@
 .sign-up-banner {
-  border-radius: 0.7rem;
   display: flex;
   flex-direction: row;
   width: 100%;
-  padding: var(--padding);
+  padding: 40px;
   justify-content: space-between;
-  background: var(--warmGradient);
-  margin-bottom: 4rem;
-  padding-left: 3rem;
+  color: rgba(255, 255, 255, 1);
 }
 
-button.violet-btn {
-  background-color: var(--violet4);
-  border: 1px solid var(--violet4);
-  padding: 0.75rem 1rem;
-  width: 100%;
-  color: var(--grey1);
+.breach-detail-sign-up {
+  border-radius: 16px;
+  margin-bottom: 20px;
+  padding: 40px;
+  margin-left: var(--padding);
+  margin-right: var(--padding);
+  box-shadow: 0 2px 12px -2px #1c1c1d80;
 }
 
-.violet-btn:hover {
-  background-color: var(--violet5);
-  border: 1px solid var(--violet5);
+.breach-detail-sign-up .sign-up-banner {
+  padding: 0;
 }
 
-.violet-btn:active {
-  background-color: #572cb6;
-  border: 1px solid #572cb6;
+.sign-up-feature-list {
+  max-width: 500px;
+  margin-bottom: 0;
+}
+
+.fxa-signup-banner {
+  padding-left: var(--padding);
+  padding-right: var(--padding);
+  justify-content: center;
 }
 
 .feature-button {
@@ -48,54 +51,40 @@ button.violet-btn {
   max-width: 1rem;
 }
 
+.sign-up-cta::before {
+  width: 80px;
+  height: 88px;
+  content: "";
+  display: block;
+  background-image: url(/img/svg/sign-up-banner-icon.svg);
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: contain;
+  margin-bottom: 20px;
+}
+
 .sign-up-cta p,
 .sign-up-cta .text-link {
   color: rgba(255, 255, 255, 1);
 }
 
-.sign-up-cta .btn-light.open-oauth {
-  width: 100%;
-  margin-top: 3rem;
-  background-color: rgba(255, 255, 255, 1);
-  color: var(--violet4);
-}
-
-.sign-up-cta .btn-light.open-oauth:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 1);
-  transition: all 0.15s ease-in-out;
-}
-
-.sign-up-cta .btn-light.open-oauth:active {
-  background-color: rgba(0, 0, 0, 0.05);
-  transition: all 0.15s ease-in-out;
-}
-
-.sign-up-cta .have-an-account svg path {
-  fill: rgba(255, 255, 255, 1);
-}
-
-.feature-list {
-  margin-left: 0.25rem !important;
-  max-width: 400px;
+.have-an-account path {
+  fill: var(--blue3);
 }
 
 .browser-not-required {
-  display: flex;
+  display: inline-block;
   text-align: center;
   font-size: 12px;
-  margin: 1rem auto;
+  margin: 12px auto;
   color: rgba(91, 91, 102, 1);
   line-height: 1.4;
-  align-self: center;
-  justify-content: center;
-  flex-wrap: wrap;
+  max-width: 288px;
 }
 
 p.have-an-account button.text-link,
 p.have-an-account {
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 16px;
   min-height: 0;
 }
 
@@ -106,21 +95,20 @@ p.have-an-account {
 
 .have-an-account button.text-link {
   margin: 0 0.5rem;
-  display: inline;
 }
 
 .sign-up-headline {
-  font-size: 2rem;
+  font-size: 32px;
+  line-height: 1.17;
   color: rgba(255, 255, 255, 1);
   max-width: 400px;
   margin: auto auto auto 0;
 }
 
 .sign-up-feature {
-  line-height: 1.4;
-  font-size: 1rem;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 1);
+  line-height: 1.5;
+  font-size: 16px;
+  font-weight: 500;
   margin: 0.5rem 0;
   display: flex;
 }
@@ -142,44 +130,6 @@ p.have-an-account {
   justify-content: center;
 }
 
-@media screen and (max-width: 1200px) {
-  .sign-up-banner {
-    flex-direction: column;
-    padding: calc(var(--margin) + var(--padding)) var(--padding);
-  }
-
-  h2.sign-up-headline {
-    text-align: center;
-    margin: auto;
-    max-width: 450px;
-  }
-
-  .feature-list {
-    align-items: flex-start;
-    margin: 1rem inherit;
-    align-self: center;
-  }
-
-  .feature-list,
-  .sign-up-feature,
-  .sign-up-cta p.have-an-account {
-    max-width: 360px;
-  }
-
-  .sign-up-cta {
-    max-width: 400px;
-    margin: auto;
-  }
-
-  .sign-up-cta .browser-not-required {
-    margin: 0 auto 0.75rem auto;
-  }
-
-  .sign-up-cta .btn-light.open-oauth {
-    margin: var(--margin) auto;
-  }
-}
-
 @media screen and (max-width: 800px) {
   .sign-up-headline {
     font-size: var(--headline);
@@ -187,5 +137,34 @@ p.have-an-account {
 
   .col-12.feat-headline-wrapper {
     padding-bottom: 0;
+  }
+
+  .sign-up-banner {
+    flex-direction: column;
+    padding: calc(var(--padding) + var(--padding)) var(--padding);
+  }
+
+  h2.sign-up-headline {
+    text-align: center;
+    margin: auto;
+    max-width: 420px;
+  }
+
+  .sign-up-cta,
+  .sign-up-feature-list {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: var(--padding);
+  }
+
+  .sign-up-cta {
+    margin-top: 16px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .sign-up-banner {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
