@@ -207,16 +207,16 @@ class FirefoxApps extends HTMLElement {
       if (MozLinkClick) {
         this.metricsSendEvent("bento-app-link-click", "Mozilla");
         window.open(url, "_blank", "noopener");
-        return this.toggleClass("active");
+        return closeBento();
       }
       const appToOpenId = eventTarget.dataset.bentoAppLinkId;
       this.metricsSendEvent("bento-app-link-click", appToOpenId);
       if (eventTargetClassList.contains("fx-bento-current-site")) { // open index page in existing window
         window.location = url;
-        return this.toggleClass("active");
+        return closeBento();
       }
       window.open(url, "_blank", "noopener");
-      return this.toggleClass("active");
+      return closeBento();
     }
 
     if (!this._active) {
