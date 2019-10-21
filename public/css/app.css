@@ -110,6 +110,10 @@ p,
   max-width: 320px;
 }
 
+.ff-Met {
+  font-family: "Metropolis", sans-serif;
+}
+
 h1,
 h2 {
   font-family: "Metropolis", sans-serif;
