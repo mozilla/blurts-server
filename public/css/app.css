@@ -312,14 +312,14 @@ a.btn-transparent:hover {
   font-size: 14px;
   border-radius: 4px;
   min-height: 32px;
-  padding: 4px 8px;
+  padding: 4px 12px;
 }
 
 .btn-big {
   font-size: 16px;
   border-radius: 8px;
   min-height: 40px;
-  padding: 8px 12px;
+  padding: 8px 16px;
 }
 
 a,
