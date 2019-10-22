@@ -142,7 +142,7 @@ wtd-after-data-agg = Que facer post un violation de aggregator de datos
 what-is-data-agg = Que es un aggregator de datos?
 what-is-data-agg-blurb = La aggregatores de datos o mediatores de datos, collige informationes ex registrationes public e los compra ex altere companias. Illes compila iste datos pro vender los a companias pro propositos de marketing. Le victimas de iste violationes ha minor riscos de fraudes financiari, ma le hackers poterea usar iste datos pro finger se illes o profilar se pro illes.
 protect-your-privacy = Protege tu confidentialitate online
-no-pw-to-change = Diversemente de un violation de sito web, il ha nulle contrasigno a cambiar.
+no-pw-to-change = Contrarimente a un violation de sito web, il non ha un contrasigno a cambiar.
 avoid-personal-info = Evitar de usar informationes personal in le contrasignos
 avoid-personal-info-blurb = Il es facile trovar anniversarios, adresses e familiares online. Tener iste parolas foras de tu contrasignos.
 
@@ -227,7 +227,7 @@ fb-comp-and-others =
         [one] Iste email appareva in { $breachCount } note violation de datos, includite { $breachName }.
        *[other] Iste email appareva in { $breachCount } note violationes de datos, includite { $breachName }.
     }
-no-other-breaches-found = Nulle altere violationes trovate ex un recerca de base.
+no-other-breaches-found = Nulle altere violation ha essite trovate in un recerca basic.
 no-results-blurb = Nos lo regretta, ille violation non es in nostre base de datos.
 all-breaches-headline = Tote le violationes in { -product-name }
 search-breaches = Cercar violationes
