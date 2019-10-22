@@ -202,7 +202,7 @@ ba-next-step-blurb-1 = Un forte contrasigno usa un combination de majusculas e m
 ba-next-step-2 = Cessa integremente de usar le contrasigno exponite.
 ba-next-step-blurb-2 = Cybercriminales poterea trovar tu contrasigno sur le web obscur e lo usa pro te authenticar a tu altere contos. Le melior maniera de proteger tu contos es usar unic contrasignos pro cata un.
 ba-next-step-3 = Recipe adjuta pro le creation de melior contrasignos e mantener los secur.
-ba-next-step-blurb-3 = Usa un gestor de contrasigno pro crear contrasignos forte e unic. Le gestores de contrasignos reserva con securitate tote tu authenticationes, assi que tu pote acceder los inter tote tu apparatos.
+ba-next-step-blurb-3 = Usa un gestor de contrasignos pro crear contrasignos forte e unic. Le gestores de contrasignos immagazina con securitate tote tu authenticationes, assi que tu pote acceder a illos sur tote tu apparatos.
 faq1 = Io non recognosce iste compania o sito web. Perque es io in iste violation?
 faq2 = Perque il ha requirite assi longe tempore pro notificar me de iste violation?
 faq3 = Como sape io si isto es un email legitime de { -product-name }?
@@ -255,8 +255,8 @@ email-addresses-being-monitored =
 # your localization, because it would result in the number showing twice.
 passwords-exposed =
     { $passwords ->
-        [one] contrasigno exponite tra tote le violationes
-       *[other] contrasignos exponite tra tote le violationes
+        [one] Contrasigno exponite inter tote le violationes
+       *[other] Contrasignos exponite inter tote le violationes
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
