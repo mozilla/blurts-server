@@ -164,8 +164,8 @@ feat-enroll-multiple = Inscribe plure emails in le controlo del violationes
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
     { $breachCount ->
-        [one] Es implicate in { $breachCount } note violation.
-       *[other] Es implicate in { $breachCount } note violationes.
+        [one] Appare in { $breachCount } violation cognoscite.
+       *[other] Appare in { $breachCount } violationes cognoscite.
     }
 check-for-breaches = Controla pro violationes
 find-out-what-hackers-know = Discoperi lo que le hackers jam sape de te. Apprende como esser sempre un passo avante a illes.
@@ -224,8 +224,8 @@ other-breaches-found =
 fb-comp-only = Iste email appareva in le violation de datos { $breachName }.Iste email appareva in le violation { $breachName }.
 fb-comp-and-others =
     { $breachCount ->
-        [one] Iste email appareva in { $breachCount } note violation de datos, includite { $breachName }.
-       *[other] Iste email appareva in { $breachCount } note violationes de datos, includite { $breachName }.
+        [one] Iste e-mail appareva in { $breachCount } violation cognoscite de datos, includite { $breachName }.
+       *[other] Iste e-mail appareva in { $breachCount } violationes cognoscite de datos, includite { $breachName }.
     }
 no-other-breaches-found = Nulle altere violation ha essite trovate in un recerca basic.
 no-results-blurb = Nos lo regretta, ille violation non es in nostre base de datos.
