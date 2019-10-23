@@ -247,7 +247,7 @@ fb-comp-and-others =
 no-other-breaches-found = Temel aramada başka bir ihlal bulunamadı.
 no-results-blurb = Üzgünüz, bu ihlal veritabanımızda yok.
 all-breaches-headline = { -product-name }’deki tüm ihlaller
-search-breaches = İhlalerde ara
+search-breaches = İhlallerde ara
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Gösterilen:
 
