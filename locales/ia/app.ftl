@@ -77,7 +77,7 @@ fxa-pwt-summary-6 = Violationes de datos es in accrescimento. Si tu personal inf
 fxa-what-to-do-blurb-1 = Si tu non pote acceder, contacta le sito web pro demandar como actualisar illo. Vide un conto que tu non recognosce? Tu datos poterea haber essite vendite o redistribuite. Iste poterea alsi ser un conto que tu oblidava haber create o un compania que ha cambiate nomines.
 fxa-what-to-do-subhead-2 = Cessa de usar le contrasigno exponite e cambia illo ubique tu ha usate illo.
 fxa-wtd-blurb-2 = Piratas pote tentar de usar iste contrasigno con tu adresse de e-mail pro acceder a altere contos. Crea un contrasigno differente e unic pro cata conto, particularmente pro tu conto bancari, conto de e-mail, e altere sitos web ubi tu registra informationes personal.
-fxa-what-to-do-blurb-3 = Le major parte del violationes expone solo emails e contrasignos, ma alcunos include sensibile informationes financiari. Si tu conto bancari o numeros de carta de credito ha essite exponite, avisa tu banca pro possibile fraude. Verifica le extractos conto bancari pro cargas que tu non recognosce.
+fxa-what-to-do-blurb-3 = Le major parte del violationes expone solmente adresses de e-mail e contrasignos, ma alcunes include sensibile informationes financiari. Si tu conto bancari o numeros de carta de credito ha essite exponite, alerta tu banca al possibilitate de fraude. Survelia le extractos de conto pro pagamentos que tu non recognosce.
 fxa-what-to-do-subhead-4 = Obtene adjuta a rememorar tote tu contrasignos e pro los retener secur.
 fxa-what-to-do-blurb-4 = Le gestores de contrasignos, como 1Password, LastPass, Dashlane e Bitwarden, reserva tu contrasignos securmente e stipa los in sitos web pro te. Usa un gestor de contrasigno sur tu telephono e computator assi tu non ha a rememorar los tote.
 # Alerts is a noun
@@ -203,7 +203,7 @@ ba-next-step-2 = Cessa integremente de usar le contrasigno exponite.
 ba-next-step-blurb-2 = Cybercriminales poterea trovar tu contrasigno sur le web obscur e lo usa pro te authenticar a tu altere contos. Le melior maniera de proteger tu contos es usar unic contrasignos pro cata un.
 ba-next-step-3 = Recipe adjuta pro le creation de melior contrasignos e mantener los secur.
 ba-next-step-blurb-3 = Usa un gestor de contrasignos pro crear contrasignos forte e unic. Le gestores de contrasignos immagazina con securitate tote tu authenticationes, assi que tu pote acceder a illos sur tote tu apparatos.
-faq1 = Io non recognosce iste compania o sito web. Perque es io in iste violation?
+faq1 = Io non recognosce iste compania o sito web. Proque me concerne iste violation?
 faq2 = Perque il ha requirite assi longe tempore pro notificar me de iste violation?
 faq3 = Como sape io si isto es un email legitime de { -product-name }?
 new-breaches-found =
@@ -263,15 +263,15 @@ passwords-exposed =
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
     { $breaches ->
-        [one] Violation de datos note que exponeva tu informationes
-       *[other] Violationes de datos note que exponeva tu informationes
+        [one] violation cognoscite de datos ha exponite tu info
+       *[other] violationes cognoscite de datos ha exponite tu info
     }
 # Button
 see-additional-breaches = Vider altere violationes
 scan-results-known-breaches =
     { $breachCount ->
-        [one] Iste email appareva in 1 violation de datos note.
-       *[other] Iste email appareva in { $breachCount } violationes de datos note.
+        [one] Iste e-mail appareva in 1 violation cognoscite de datos.
+       *[other] Iste e-mail appareva in { $breachCount } violationes cognoscite de datos.
     }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
@@ -293,8 +293,8 @@ find-out = Discoperir.
 new-unsub-error = Tu debera remover te del inscription per un del emails inviate ab { -product-name }.
 other-known-breaches-found =
     { $breachCount ->
-        [one] Comocunque, illo appareva in { $breachCount } altere note violation.
-       *[other] Comocunque, illo appareva in { $breachCount } altere note violationes.
+        [one] Nonobstante, illo appareva in { $breachCount } altere violation cognoscite.
+       *[other] Nonobstante, illo appareva in { $breachCount } altere violationes cognoscite.
     }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
