@@ -55,7 +55,7 @@ header.show-shadow {
 
 /* Fx-Monitor logo */
 .sprite.fx-monitor-logo {
-  background: url("/img/gradient-sprites.png") -281px 0;
+  background: url("/img/fx-bento-sprites.png") -220px 0;
   min-width: 40px;
   height: 40px;
 }
@@ -284,16 +284,6 @@ img.avatar,
   transition: all 0.15s ease;
 }
 
-.top-bar {
-  z-index: 1;
-  position: relative;
-  background-color: #1d1133;
-  padding: 1rem 1.75rem;
-  border-bottom: 1px solid #2b2156;
-  color: rgba(255, 255, 255, 1);
-  font-size: 16px;
-}
-
 @media screen and (max-width: 1200px) {
   .bento-sign-up {
     flex: 0 1 auto;
@@ -319,10 +309,6 @@ img.avatar,
 
   .fx-monitor-logotype {
     height: 25px;
-  }
-
-  .top-bar {
-    font-size: 14px;
   }
 
   .desktop-menu .nav-link,
@@ -429,11 +415,6 @@ img.avatar,
     right: 2rem;
   }
 
-  .top-bar {
-    text-align: left;
-    font-size: 12px;
-  }
-
   .fxa-menu-link,
   .nav-user-email {
     font-size: 16px;
@@ -458,16 +439,6 @@ img.avatar,
 
   .fxa-menu-link {
     min-width: auto;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .sprite.fx-monitor-logo {
-    transform: scale(0.95);
-  }
-
-  .fx-monitor-logotype {
-    height: 18px;
   }
 }
 
