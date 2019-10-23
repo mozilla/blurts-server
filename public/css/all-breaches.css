@@ -202,7 +202,7 @@ input#fuzzy-find-input {
   padding: var(--padding);
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 @media screen and (max-width: 1000px) {
