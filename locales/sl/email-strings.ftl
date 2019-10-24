@@ -10,6 +10,18 @@ email-address = E-poštni naslov:
 legal = Pravno obvestilo
 # Unsubscribe link in email.
 email-unsub-link = Odjavite se
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb =
+    To e-poštno sporočilo ste prejeli, ker ste se prijavili na { -product-name }. 
+    Ne želite več prejemati teh e-poštnih sporočil? { $unsubLink }. To je samodejno e-poštno sporočilo. Za dodatno pomoč obiščite { $faqLink }.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    To e-poštno sporočilo ste prejeli, ker ste se prijavili na opozorila { -product-name }ja. 
+    To je samodejno e-poštno sporočilo. Za dodatno pomoč obiščite { $faqLink }.
 # Button text that takes the user to their signed in user dashboard.
 view-my-dashboard-cta = Prikaži mojo nadzorno ploščo
 # Button text
@@ -60,3 +72,5 @@ faq-v2-4 = Kako { -product-name } obravnava občutljive strani?
 # This string contains nested markup that becomes a link to Firefox Monitor
 # later in the code. Please do not modify or remove "<a>" and "</a>".
 pre-fxa-message = <a>Ustvarite brezplačen { -brand-fxa }</a> in dodajte do 15 e-poštnih naslovov.
+# Section headline
+monitor-another-email = Želite spremljati še en e-poštni naslov?
