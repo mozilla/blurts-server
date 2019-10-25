@@ -6,8 +6,8 @@ fx-lockwise = { -brand-lockwise }
 ## If possible, keep "Firefox Browser" in English, but feel free 
 ## to translate browser if that doesn't work for your language.
 
-fx-desktop = { -brand-name } Shfletues për Desktop
-fx-mobile = { -brand-name } Shfletues për Celular
+fx-desktop = Shfletuesi { -brand-name } për Desktop
+fx-mobile = Shfletuesi { -brand-name } për Celular
 
 
 
