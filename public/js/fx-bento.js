@@ -113,12 +113,6 @@ class FirefoxApps extends HTMLElement {
     }
   }
 
-  toggleClass(whichClass) {
-    [this._bentoContent, this._bentoWrapper].forEach(el => {
-      el.classList.toggle(whichClass);
-    });
-  }
-
   handleEvent(event) {
     const closeBento = () => {
       this.handleBentoFocusTrap();
@@ -126,10 +120,12 @@ class FirefoxApps extends HTMLElement {
       window.removeEventListener("click", this);
       document.removeEventListener("keydown", this);
       this.metricsSendEvent("bento-closed", this._currentSite);
-      this.toggleClass("fx-bento-fade-out"); // Set "fx-bento-fade-out" class to transition opacity smoothly since we can't transition smoothly to `display: none`.
+      this.classList.remove("fx-bento-open");
+      this._bentoWrapper.classList.add("fx-bento-fade-out");
       setTimeout(() => {
-        this.toggleClass("fx-bento-fade-out");
-        this.toggleClass("active");
+        this._bentoWrapper.classList.remove("fx-bento-fade-out");
+        this._bentoButton.blur();
+        this.classList = [];
       }, 500);
       return;
     };
@@ -145,7 +141,6 @@ class FirefoxApps extends HTMLElement {
       ) {
       return;
     }
-
 
     const hasParent = (el, selector) => {
       while (el.parentElement) {
@@ -232,7 +227,8 @@ class FirefoxApps extends HTMLElement {
     window.addEventListener("resize", this.handleBentoHeight);
     window.addEventListener("click", this);
 
-    this.toggleClass("active");
+    this.classList = ["active fx-bento-open"];
+    this._bentoButton.focus();
     return this.handleBentoFocusTrap();
   }
 
