@@ -125,10 +125,12 @@ website-breach = Cenim Sajti
 sensitive-breach = Shkelje Sajti Me të Dhëna Rezervat
 data-aggregator-breach = Shkelje të Dhënash Nga Grumbullues
 unverified-breach = Cenim i Paverifikuar
+spam-list-breach = Përfshirje në Listë Spam-esh
 website-breach-plural = Cenime Sajtesh
 sensitive-breach-plural = Shkelje Sajtesh Me të Dhëna Rezervat
 data-aggregator-breach-plural = Shkelje të Dhënash Nga Grumbullues
 unverified-breach-plural = Cenime të Paverifikuara
+spam-list-breach-plural = Përfshirje në Lista Spam-esh
 what-data = Ç’të dhëna u komprometuan:
 sensitive-sites = Si i trajton { -product-name } sajtet me të dhëna rezervat?
 sensitive-sites-copy = { -product-name } vë në dukje llogaritë me këto lloje shkeljesh vetëm pasi të jetë verifikuar një adresë email. Kjo do thotë se jeni i vetmi person që mund të shohë nëse të dhënat tuaja qenë pjesë e kësaj shkeljeje (veç në pastë dikush tjetër hyrje te llogaria juaj email).
@@ -315,6 +317,9 @@ other-known-breaches-found =
 additional-information-including = Të dhëna shtesë, përfshi:
 # Title
 email-addresses-title = Adresa Email
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Përmbledhje
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
