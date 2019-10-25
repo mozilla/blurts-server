@@ -317,6 +317,9 @@ other-known-breaches-found =
 additional-information-including = Informations supplémentaires, notamment :
 # Title
 email-addresses-title = Adresses électroniques
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Vue d’ensemble
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
