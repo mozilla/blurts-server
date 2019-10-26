@@ -227,6 +227,8 @@ want-to-add = 別のメールアドレスを追加しますか？
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = ログイン
 
 
 
