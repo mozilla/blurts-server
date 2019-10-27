@@ -39,7 +39,7 @@ user-verify-email-report-subject = Tu reporto de { -product-name }
 user-unsubscribe-token-error = Remover se del inscription require un jeton.
 user-unsubscribe-token-email-error = Remover se del inscription require un jeton e un emailHash.
 user-unsubscribe-title = { -product-name } : remover le inscription
-pwt-section-headline = Contrasignos plu forte = Melior protection
+pwt-section-headline = Contrasignos plus forte = Melior protection
 landing-headline = Tu derecto de esser secur contra hackers comencia ci.
 scan-placeholder = Insere le adresse de e-mail
 scan-submit = Cerca tu adresse de e-mail
@@ -47,7 +47,7 @@ scan-error = Debe esser un adresse de e-mail valide.
 download-firefox-banner-button = Discarga { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Inviate!
-sign-up = Registrar se
+sign-up = Inscriber se
 form-signup-error = Debe esser un adresse de email valide
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Data del violation de securitate:
@@ -66,8 +66,8 @@ share-facebook-blurb = Ha tu contos online essite exponite a un violation de dat
 og-site-description = Discoperi si tu ha essite parte de un violation de datos con { -product-name }. Registra te pro alertas re futur violationes e obtener suggestiones pro mantener tu contos secur.
 show-all = Monstrar toto
 fxa-scan-another-email = Vole tu verificar un altere adresse de e-mail?
-sign-in = Authentica te
-sign-out = Disconnexion
+sign-in = Aperir session
+sign-out = Clauder session
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Gerer { -brand-fxa }
 have-an-account = Ha tu ja un conto?
@@ -312,7 +312,7 @@ breach-overview-new = Le { $breachDate }, { $breachTitle } ha essite violate. Po
 monitor-preferences = { -product-short-name } Preferentias
 # When a user is signed in, this appears in the drop down menu 
 # and is followed by the user's primary Firefox Account email. 
-signed-in-as = Authenticate como: { $userEmail }
+signed-in-as = In session como: { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
 filter-by = Filtrar per categoria:
@@ -337,9 +337,9 @@ email-verified = Email verificate con successo!
 email-added-to-subscription = Nos te avisara si tu { $email } essera involvite in un nove violation de datos.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
-email-verified-view-dashboard = { $nestedSignInLink } pro vider e tractar tote le adresse email que tu ha registrate pro esser controlate pro violationes.
+email-verified-view-dashboard = Pro vider e gerer tote le adresses de e-mail que tu ha inscribite pro surveliantia contra violationes, { $nestedSignInLink }.
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
-sign-in-nested = authenticar se
+sign-in-nested = aperir session
 
 
 
