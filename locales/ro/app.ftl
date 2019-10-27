@@ -162,24 +162,24 @@ create-strong-passwords = Cum să creezi parole puternice
 stop-reusing-pw = Nu refolosi parolele
 create-unique-pw = Creează parole unice și salvează-le într-un loc sigur, cum ar fi un manager de parole.
 five-myths = 5 mituri despre managerii de parole
-create-a-fxa = Creează { -brand-fxa } pentru un raport complet despre breșe și ca să primești alerte.
+create-a-fxa = Creează un { -brand-fxa } pentru un raport complet despre încălcările securității datelor și pentru a primi alerte.
 feat-security-tips = Ponturi de securitate pentru protejarea conturilor
-feat-sensitive = Căutare avansată în breșe de date sensibile
-feat-enroll-multiple = Înregistrează mai multe adrese de e-mail pentru monitorizarea breșelor
+feat-sensitive = Căutare avansată în încălcările cunoscute ale securității datelor
+feat-enroll-multiple = Înregistrează mai multe adrese de e-mail pentru monitorizarea încălcărilor securității datelor
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
     { $breachCount ->
-        [one] Apare în { $breachCount } breșă cunoscută
-        [few] Apare în { $breachCount } breșe cunoscute
-       *[other] Apare în { $breachCount } de breșe cunoscute
+        [one] Apare într-o încălcare cunoscută a securității datelor.
+        [few] Apare în { $breachCount } încălcări cunoscute a securității datelor.
+       *[other] Apare în { $breachCount } de încălcări cunoscute a securității datelor.
     }
-check-for-breaches = Verifică pentru breșe
+check-for-breaches = Verifică încălcările securității datelor
 find-out-what-hackers-know = Află ce știu hackerii despre tine. Află cum să fii cu un pas înaintea lor.
-search-for-your-email = Caută-ți adresa de e-mail în breșe de date publice datând încă din 2007.
+search-for-your-email = Caută-ți adresa de e-mail în încălcările publice ale securității datelor datând încă din 2007.
 back-to-top = Înapoi sus
-comm-opt-0 = Trimite-mi un mesaj pe e-mail dacă adresele mele de e-mail de mai jos apar într-o breșă de date.
-comm-opt-1 = Trimite toate alertele privind încălcările securității la { $primaryEmail }.
+comm-opt-0 = Trimite-mi un mesaj pe e-mail dacă adresele mele de e-mail de mai jos apar într-o încălcare a securității datelor.
+comm-opt-1 = Trimite toate alertele privind încălcările securității datelor la { $primaryEmail }.
 stop-monitoring-this = Nu mai monitoriza acest e-mail.
 resend-verification = Retrimite  mesajul e-mail de verificare
 add-new-email = Adaugă o adresă nouă de e-mail
@@ -190,7 +190,7 @@ send-verification = Trimite linkul de verificare
 # alerts for all of their monitored email addresses to a single 
 # email address.
 breach-summary = Rezumatul încălcării securității datelor
-show-breaches-for-this-email = Afișează toate breșele pentru acest e-mail.
+show-breaches-for-this-email = Afișează toate încălcările securității datelor pentru acest e-mail.
 link-change-primary = Schimbă adresa de e-mail primară
 remove-fxm = Elimină { -product-name }
 remove-fxm-blurb = Dezactivează alertele { -product-name }. { -brand-fxa } tău va rămâne activ și poți primi alte comunicări legate de cont.
