@@ -18,7 +18,7 @@ error-could-not-add-email = Adresa de e-mail nu a putut fi adăugată în baza d
 error-not-subscribed = Această adresă de e-mail nu este abonată la { -product-name }.
 error-hibp-throttled = Prea multe conexiuni la { -brand-HIBP }.
 error-hibp-connect = Eroare de conectare la { -brand-HIBP }.
-error-hibp-load-breaches = Nu s-au putut încărca breșele.
+error-hibp-load-breaches = Nu s-au putut încărca încălcările securității datelor.
 error-must-be-signed-in = Trebuie să fii autentificat(ă) la { -brand-fxa }.
 error-to-finish-verifying = Pentru a finaliza verificarea acestui e-mail pentru { -product-name }, trebuie să fii autentificat în e-mailul primar al contului tău.
 home-title = { -product-name }
@@ -46,16 +46,16 @@ signup-modal-sent = Trimis!
 sign-up = Înregistrează-te
 form-signup-error = Trebuie să fie o adresă de e-mail validă
 # breach-date = the calendar date a particular data theft occurred. 
-breach-date = Data breșei:
+breach-date = Data încălcării securității datelor:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Conturi compromise:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Date compromise:
 unsub-headline = Dezabonează-te de la { -product-name-nowrap }
-unsub-blurb = Prin dezabonare, adresa ta de e-mail va fi eliminată din lista { -product-name-nowrap } și nu vei mai primi alerte când sunt anunțate breșe noi.
+unsub-blurb = Prin dezabonare, adresa ta de e-mail va fi eliminată din lista { -product-name-nowrap } și nu vei mai primi alerte când sunt anunțate încălcări noi ale securității datelor.
 unsub-button = Dezabonează-te
 # Breach data provided by Have I Been Pwned.
-hibp-attribution = Datele privind breșele sunt furnizate de { $hibp-link }
+hibp-attribution = Încălcările securității datelor sunt furnizate de { $hibp-link }
 share-twitter = Majoritatea persoanelor au aproximativ 100 de conturi online. A fost expus vreunul dintre conturile tale într-o breșă de date? Află.
 share-facebook-headline = Află dacă ai fost parte a unei breșe de date
 share-facebook-blurb = Au fost expuse conturile tale online într-o breșă de date?
@@ -179,7 +179,7 @@ find-out-what-hackers-know = Află ce știu hackerii despre tine. Află cum să 
 search-for-your-email = Caută-ți adresa de e-mail în breșe de date publice datând încă din 2007.
 back-to-top = Înapoi sus
 comm-opt-0 = Trimite-mi un mesaj pe e-mail dacă adresele mele de e-mail de mai jos apar într-o breșă de date.
-comm-opt-1 = Trimite toate alertele de breșe la { $primaryEmail }.
+comm-opt-1 = Trimite toate alertele privind încălcările securității la { $primaryEmail }.
 stop-monitoring-this = Nu mai monitoriza acest e-mail.
 resend-verification = Retrimite  mesajul e-mail de verificare
 add-new-email = Adaugă o adresă nouă de e-mail
@@ -189,7 +189,7 @@ send-verification = Trimite linkul de verificare
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-breach-summary = Rezumatul breșei
+breach-summary = Rezumatul încălcării securității datelor
 show-breaches-for-this-email = Afișează toate breșele pentru acest e-mail.
 link-change-primary = Schimbă adresa de e-mail primară
 remove-fxm = Elimină { -product-name }
@@ -197,7 +197,7 @@ remove-fxm-blurb = Dezactivează alertele { -product-name }. { -brand-fxa } tău
 # Button title
 manage-email-addresses = Gestionează adresele de e-mail
 # Link title
-latest-breach-link = Vezi dacă ai fost implicat(ă) în această breșă
+latest-breach-link = Vezi dacă ai fost implicat(ă) în această încălcare a securității datelor
 welcome-back = Bine ai revenit, { $userName }!
 welcome-user = Bine ai venit, { $userName }!
 breach-alert-subject = { -product-name } ți-a găsit adresa de e-mail într-o breșă nouă de date.
