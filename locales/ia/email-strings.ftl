@@ -56,7 +56,7 @@ faq-list-headline = Demandas frequente
 # Link Title
 faq-v2-1 = Io non recognosce iste companias o sitos web. Proque me concerne iste violation?
 # Link Title
-faq-v2-2 = Besonia io de facer alco si un violation eveniva annos retro o es solo un vetere conto?
+faq-v2-2 = Debe io facer alcun cosa si un violation eveniva multe annos retro o si le conto in question es ancian?
 # Link Title
 faq-v2-3 = Io ha justo trovate que io es in un violation de datos. Que debe io facer?
 # Link Title
