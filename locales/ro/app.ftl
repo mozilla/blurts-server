@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -10,6 +8,9 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Cont Firefox
+
+
+
 terms-and-privacy = Termeni și confidențialitate
 GitHub-link-title = GitHub
 error-scan-page-token = Ai încercat să scanezi prea multe adrese de e-mail într-un timp prea scurt. Din motive de securitate, ți-am blocat accesul la căutări noi. Poți încerca mai târziu.
@@ -188,7 +189,7 @@ send-verification = Trimite linkul de verificare
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-breach-summary = Rezumat breșă
+breach-summary = Rezumatul breșei
 show-breaches-for-this-email = Afișează toate breșele pentru acest e-mail.
 link-change-primary = Schimbă adresa de e-mail primară
 remove-fxm = Elimină { -product-name }
@@ -214,9 +215,9 @@ faq2 = De ce a durat atât de mult să fiu informat(ă) despre această breșă?
 faq3 = Cum știu că acesta este un mesaj legitim de e-mail de la { -product-name }?
 new-breaches-found =
     { $breachCount ->
-        [one] BREȘĂ NOUĂ DESCOPERITĂ
-        [few] BREȘE NOI DESCOPERITE
-       *[other] DE BREȘE NOI DESCOPERITE
+        [one] { $breachCount } BREȘĂ NOUĂ DESCOPERITĂ
+        [few] { $breachCount } BREȘE NOI DESCOPERITE
+       *[other] { $breachCount } DE BREȘE NOI DESCOPERITE
     }
 sign-up-headline-1 = Primește alerte curente cu un { -brand-fxa }.
 account-not-required = Browserul { -brand-name } nu este necesar pentru un { -brand-fxa }. Poți primi informații despre serviciile { -brand-Mozilla }.
@@ -251,7 +252,6 @@ error-csrf-headline = Sesiune expirată
 error-csrf-blurb = Selectează butonul Înapoi din browser, reîncarcă pagina și încearcă din nou.
 error-invalid-unsub = Cum să te dezabonezi de la alertele { -product-name }
 error-invalid-unsub-blurb = Va trebui să te dezabonezi folosind unul dintre mesajele de e-mail trimise de { -product-name }. Verifică-ți căsuța poștală pentru mesaje de la { -brand-team-email }. Selectează linkul de dezabonare din partea de jos a mesajului.
-login-link = Autentifică-te
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -260,15 +260,6 @@ email-addresses-being-monitored =
         [one] adresă de e-mail monitorizată
         [few] adrese de e-mail monitorizate
        *[other] de adrese de e-mail monitorizate
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-        [one] breșă de date ți-a expus informațiile
-        [few] breșe de date ți-au expus informațiile
-       *[other] de breșe de date ți-au expus informațiile
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -350,6 +341,13 @@ want-to-add = Vrei să adaugi încă o adresă de e-mail?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Verifică linkul trimis către { $userEmail } ca să îl adaugi în { -product-name }.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
