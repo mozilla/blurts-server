@@ -1,6 +1,5 @@
 "use strict";
 
-
 async function getEmailMockUps(req, res) {
   const email = "example@email.com";
 
@@ -9,7 +8,7 @@ async function getEmailMockUps(req, res) {
     req.query.type = "email_verify";
   }
 
-  if (["breachAlert", "singleBreach", "multipleBreaches", "noBreaches", "email_verify"].indexOf(req.query.type) === -1) {
+  if (["breachAlert", "pre-fxa", "singleBreach", "multipleBreaches", "noBreaches", "email_verify"].indexOf(req.query.type) === -1) {
     return res.redirect("/email-l10n");
   }
 
@@ -20,6 +19,12 @@ async function getEmailMockUps(req, res) {
 
   const emailContent = ((req) => {
     switch(req.query.type) {
+      case "pre-fxa":
+        return {
+          emailSubject: req.fluentFormat("pre-fxa-subject"),
+          preFxaEmail: true,
+          breachAlert: null,
+        };
       case "noBreaches":
         return {
           emailSubject: req.fluentFormat("email-subject-no-breaches"),
@@ -54,7 +59,6 @@ async function getEmailMockUps(req, res) {
     }
   })(req);
 
-
   res.render("email_l10n", {
     layout: "email_l10n_mockups.hbs",
     unsafeBreachesForEmail: emailContent.unsafeBreachesForEmail,
@@ -65,6 +69,7 @@ async function getEmailMockUps(req, res) {
     emailSubject: emailContent.emailSubject,
     preFxaSubscriber: emailContent.preFxaSubscriber,
     email,
+    preFxaEmail: emailContent.preFxaEmail,
   });
 }
 

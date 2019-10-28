@@ -263,3 +263,13 @@ table.breach-stats,
 p.email-subject {
   padding-bottom: 4rem;
 }
+
+img.pre-fxa-icon {
+  max-width: 90px;
+  margin-bottom: 16px;
+}
+
+.pre-fxa-tout {
+  padding-bottom: 40px;
+  max-width: 360px;
+}
