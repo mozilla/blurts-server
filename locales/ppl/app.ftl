@@ -21,6 +21,17 @@ error-not-subscribed = Ini correoj tesu kipia itukay tik { -product-name }.
 error-hibp-throttled = Miak nemit sajsalujtuk itech { -brand-HIBP }.
 error-hibp-connect = Te welik musalua itech { -brand-HIBP }.
 error-hibp-load-breaches = Te kineshtia keman kinekit kalakit ichtaka
+error-must-be-signed-in = Nemi pal tikpia mutukay ijtik { -brand-fxa }.
+error-to-finish-verifying = Pal titamia tikita yek ini correoj ipal { -product-name }, nemi pal tikpia mutukay ken ne achtu cuentaj ipal ne correoj.
+home-title = { -product-name }
+home-not-found = Iswat te muajsik.
+user-add-too-many-emails = Tikpepeta muchi ne correoj tiweli tikpepeta
+user-add-email-verify-subject = Shikita su yek nemi mutukay tik { -product-name }.
+user-add-duplicate-email = Ini correoj mutalijtuka tik { -product-name }.
+user-add-duplicate-email-part-2 = Shipashalu tik mu { $preferencesLink } pal tikpepeta ne estadoj ipal { $userEmail }.
+error-headline = Tatakul
+user-verify-token-error = Kineki se token pal tikita yek.
+user-verify-email-report-subject = Ne talneshtilis ipal mu { -product-name }
 
 ## What to do after data breach tips
 
