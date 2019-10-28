@@ -7,9 +7,15 @@
 -brand-name = Firefox
 -brand-Mozilla = Mozilla
 -brand-HIBP = Ngà gahuín Pwned
+-brand-fxa = Si kuendâ Firefox
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
 
 
 
+terms-and-privacy = Nuguan' ganikò' nī sa gini'in 'ngo rïnt
+GitHub-link-title = GitHub
 
 ## What to do after data breach tips
 
