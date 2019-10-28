@@ -90,27 +90,28 @@
             
             <!--Firefox Monitor Logo-->
             <tr>
-              <td align="center" border="0" cellpadding="0" cellspacing="0" style="border-width: 0px; border-collapse: collapse; padding-bottom: 20px;">
+              <td align="center" border="0" cellpadding="0" cellspacing="0" style="border-width: 0px; border-collapse: collapse; padding-bottom: 16px;">
                 <img align="center" src="{{ SERVER_URL }}/img/firefox-monitor-logo.png" width="70px" style="width: 70px;">
               </td>
             </tr>
 
             <!--Firefox Monitor Logotype-->
             <tr>
-              <td align="center" border="0" cellpadding="0" cellspacing="0" style="border-width: 0px; border-collapse: collapse; padding-bottom: 20px;">
-                <img align="center" src="{{ SERVER_URL }}/img/email_images/fxm-lg-drk.png" style="width: 100%; min-width: 100px; max-width: 200px; display: block; margin: auto;" />
+              <td align="center" border="0" cellpadding="0" cellspacing="0" style="border-width: 0px; border-collapse: collapse; padding-bottom: 24px;">
+                <img align="center" src="{{ SERVER_URL }}/img/email_images/fxm-lg-drk.png" style="width: 100%; min-width: 100px; max-width: 156px; display: block; margin: auto;" />
               </td>
             </tr>
             
             <!-- header -->
-            <tr>
-              <td align="center" width="100%" border="0" cellpadding="0" cellspacing="0" style="border-width: 0px; border-collapse: collapse; padding-bottom: 20px; width: 100%; text-align: center;">
-                <h2 class="email-hl" align="center" style="color: #20123a; font-size: 24px; text-align: center; line-height: 1.25; margin: auto; font-family: sans-serif;">
-                  {{{ getEmailHeader }}}
-                </h2>
-              </td>
-            </tr>
-
+            {{#unless preFxaEmail}}
+              <tr>
+                <td align="center" width="100%" border="0" cellpadding="0" cellspacing="0" style="border-width: 0px; border-collapse: collapse; padding-bottom: 20px; width: 100%; text-align: center;">
+                  <h2 class="email-hl" align="center" style="color: #20123a; font-size: 24px; text-align: center; line-height: 1.25; margin: auto; font-family: sans-serif;">
+                    {{{ getEmailHeader }}}
+                  </h2>
+                </td>
+              </tr>
+            {{/unless}}
             <!--email content-->
             <tr>
               <td border="0" cellpadding="0" cellspacing="0" style="border-width: 0px;">
@@ -118,20 +119,20 @@
               </td>
             </tr>
             <tr>
-              <td style="padding-bottom: 20px" border="0" cellpadding="0" cellspacing="0" style="border-width: 0px;">
+              <td border="0" cellpadding="0" cellspacing="0" style="padding-bottom: 40px; border-bottom: 1px solid #eee;">
                 {{> email_partials/email_button href=ctaHref}}
               </td>
             </tr>
             {{#showFaqs}}
               <!--FAQs-->
               <tr>
-                <td align="center" style="padding: 20px 0;">
+                <td align="center">
                   {{> email_partials/email_faqs}}
                 </td>
               </tr>
             {{/showFaqs}}
             <tr>
-              <td align="center" border="0" cellpadding="0" cellspacing="0" style="border-width: 0px; border-collapse: collapse; padding-bottom: 20px;">
+              <td align="center" border="0" cellpadding="0" cellspacing="0" style="border-width: 0px; border-collapse: collapse; padding-bottom: 30px; padding-top: 30px;">
                 {{> email_partials/email_footer}}
               </td>
             </tr>
