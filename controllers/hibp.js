@@ -87,7 +87,7 @@ async function notify (req, res) {
     log.info("notify", {recipient});
     const { recipientEmail, breachedEmail, signupLanguage, preFxaSubscriber } = getAddressesAndLanguageForEmail(recipient);
     const campaignId = (preFxaSubscriber) ? "preFXA-see-all-breaches" : "see-all-breaches";
-    const ctaHref = EmailUtils.getEmailCtaHref(utmID, campaignId, preFxaSubscriber);
+    const ctaHref = EmailUtils.getEmailCtaHref(utmID, campaignId);
 
     const requestedLanguage = signupLanguage ? acceptedLanguages(signupLanguage) : "";
     const supportedLocales = negotiateLanguages(
