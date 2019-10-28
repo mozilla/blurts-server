@@ -17,6 +17,10 @@
 terms-and-privacy = Tay nechtuktia wan tay nupal ichtaka
 GitHub-link-title = GitHub
 error-could-not-add-email = Te welik mutalia se dirección correoj tik ne basej ipal datos.
+error-not-subscribed = Ini correoj tesu kipia itukay tik { -product-name }.
+error-hibp-throttled = Miak nemit sajsalujtuk itech { -brand-HIBP }.
+error-hibp-connect = Te welik musalua itech { -brand-HIBP }.
+error-hibp-load-breaches = Te kineshtia keman kinekit kalakit ichtaka
 
 ## What to do after data breach tips
 
