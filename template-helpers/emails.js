@@ -261,6 +261,11 @@ function getEmailCTA(args) {
     return LocaleUtils.fluentFormat(locales, "see-all-breaches");
   }
 
+  // TODO: Remove after sending pre-fxa one-off email
+  if (args.data.root.preFxaEmail) {
+    return LocaleUtils.fluentFormat(locales, "create-account");
+  }
+
   return LocaleUtils.fluentFormat(locales, "view-my-dashboard-cta");
 }
 
