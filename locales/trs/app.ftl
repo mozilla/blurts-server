@@ -21,6 +21,11 @@ error-could-not-add-email = Nu ga'ue na'nïn si direksiûn korrêo riña mà nej
 error-not-subscribed = Nitāj si tàj direksiûn korrêo na riña { -product-name }.
 error-hibp-throttled = Ûta nìko koneksiûn hua guendâ { -brand-HIBP }.
 error-hibp-connect = Na'ue gātu riña { -brand-HIBP }.
+error-hibp-load-breaches = Nu ga'ue nadigânj nej sa giran' sañū.
+error-must-be-signed-in = Da'uît gayi'ìt sesiûn riña si { -brand-fxa }.
+error-to-finish-verifying = Da' dunahuít sun natsít direksiûn nan ngà { -product-name }, da'uît gatūt ngà si korreôt yitïnj doj.
+home-title = { -product-name }
+home-not-found = Nu narì'ij pâjina.
 
 ## What to do after data breach tips
 
