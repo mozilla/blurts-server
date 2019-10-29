@@ -100,9 +100,9 @@ monitor-another-email = Want to monitor another email?
 
 
 # Subject line of email
-pre-fxa-subject = An update from Firefox Monitor
+pre-fxa-subject = An update from {-product-name}
 
-pre-fxa-headline = What's changing with {-product-name}
+pre-fxa-headline = What’s changing with {-product-name}
 pre-fxa-blurb = Here’s what’s changed since you signed up for {-product-name}, the service that 
   monitors known data breaches for your personal info. We’re linking it to {-brand-name} accounts.
 
@@ -115,7 +115,7 @@ pre-fxa-p-2 = See all data breaches in one place so you know which passwords to 
   The breach dashboard is only available with an account.
 
 pre-fxa-tout-3 = Keep getting email alerts
-pre-fxa-p-3 = You’ll still receive alerts from Firefox Monitor. We’ll let you know if your info 
+pre-fxa-p-3 = You’ll still receive alerts from {-product-name}. We’ll let you know if your info 
   appears in a new data breach.
 
 # Button at the bottom of pre-fxa email.
