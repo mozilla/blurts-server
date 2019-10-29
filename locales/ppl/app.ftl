@@ -108,6 +108,7 @@ open-fxa-menu = Shiktapu ne pashalualis { -brand-fxa }
 latest-breach = Yankwik taichtekilis ipal mudatoj tikachilijtuk
 # Link title
 more-about-this-breach = Shikmati ukchupi keman taichtekikket mudatoj
+take-control = Shimukwepa wan shitajshiti mudatoj
 
 ## What to do after data breach tips
 
