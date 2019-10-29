@@ -26,6 +26,9 @@ error-must-be-signed-in = Da'uît gayi'ìt sesiûn riña si { -brand-fxa }.
 error-to-finish-verifying = Da' dunahuít sun natsít direksiûn nan ngà { -product-name }, da'uît gatūt ngà si korreôt yitïnj doj.
 home-title = { -product-name }
 home-not-found = Nu narì'ij pâjina.
+oauth-invalid-session = Nitāj si huā hue'ê sesiûn nan
+scan-title = { -product-name } : Nej sa nari'ij ngà natsi
+user-add-invalid-email = Nitāj si ni'ñānj korreô nan
 
 ## What to do after data breach tips
 
