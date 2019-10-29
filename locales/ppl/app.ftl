@@ -117,6 +117,14 @@ how-hackers-work = Shimumachti ken ne hackers kaltapanat.
 monitor-your-online-accounts = Shikchiwa se mucuentaj iwan { -brand-fxa }pal tikpepeta kwak kaltapanat
 stay-alert = Shikishpelwi ne yankwik kaltapanalis
 if-your-info = Asu muinformación nesi tik se kaltapanalis yankwik, tiu-timetztitaniliat se tanawatilis.
+search-all-emails = Shiktemu itzalan muchi ne itujtukay correoj asu kaltapanket tik yejemet wan ma metznawatikan keman metzmajmawat uksenpa.
+monitor-several-emails = Shikpepeta miak correoj
+take-action = Shiktajpia wan shikpalewi mucuejcuentaj
+keep-your-data-safe = Shimumachti tay muneki pal tiktajpia mudatoj wan hackers te kichtekit ichtaka.
+website-breach = Kaltapanalis ipal iswat ka matapan
+sensitive-breach = Kaltapanalis ipal ne datuj tik se iswat ka matapan
+data-aggregator-breach = Kaltapanalis tik ne kiachitilia dajdatoj
+unverified-breach = Kaltapanalis teuk mupepettuk
 
 ## What to do after data breach tips
 
