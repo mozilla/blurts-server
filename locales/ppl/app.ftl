@@ -32,9 +32,19 @@ user-add-duplicate-email-part-2 = Shipashalu tik mu { $preferencesLink } pal tik
 error-headline = Tatakul
 user-verify-token-error = Kineki se token pal tikita yek.
 user-verify-email-report-subject = Ne talneshtilis ipal mu { -product-name }
+user-unsubscribe-token-error = Pal tikishtia mutukay, kineki se token.
+user-unsubscribe-token-email-error = Pal tikishtia mutukay, kineki se token wan emailHash.
+user-unsubscribe-title = { -product-name } : Shikishti mutukay
+pwt-section-headline = Taketzalis ichtaka = Chupiuk tajpialis
+landing-headline = Nikan tipewa timutajpia itech ne hackers.
+scan-placeholder = Shikalakti itukay correoj
+scan-submit = Shiktemu mucorreoj
+scan-error = Ma yek ne correoj.
 download-firefox-banner-button = Shiktemulti { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Mutitanijtuk!
+sign-up = Shikchiwa mucuentaj
+unsub-button = Shikishti mutukay
 
 ## What to do after data breach tips
 
