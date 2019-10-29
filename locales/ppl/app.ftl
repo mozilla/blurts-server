@@ -46,6 +46,12 @@ signup-modal-sent = Mutitanijtuk!
 sign-up = Shikchiwa mucuentaj
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Keman kinekit kalakit ichtaka:
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Cuejcuentaj ijtakujtuk:
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Keman ijtakawij:
+unsub-headline = Shikishti mutukay tik { -product-name-nowrap }
+unsub-blurb = Yajini yawi kishtia ne itukay mucorreoj tik ne listaj { -product-name-nowrap } wan tea yawit metznawatia keman kinekit kalakit ichtaka uksenpa.
 unsub-button = Shikishti mutukay
 sign-in = Shiktali mutukay
 
