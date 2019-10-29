@@ -44,7 +44,10 @@ download-firefox-banner-button = Shiktemulti { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Mutitanijtuk!
 sign-up = Shikchiwa mucuentaj
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = Keman kinekit kalakit ichtaka:
 unsub-button = Shikishti mutukay
+sign-in = Shiktali mutukay
 
 ## What to do after data breach tips
 
