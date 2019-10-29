@@ -46,6 +46,7 @@ download-firefox-banner-button = Shiktemulti { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Mutitanijtuk!
 sign-up = Shikchiwa mucuentaj
+form-signup-error = Shiktali se itukay correoj kia tekiti
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Keman kinekit kalakit ichtaka:
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -58,7 +59,12 @@ unsub-button = Shikishti mutukay
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = { $hibp-link } tamakak ne datoj ipanpa ne kaltapanalis
 share-twitter = Achka muchi kipia 100 cuentaj salujtuk. Have any of yours been exposed in a data breach? Find out.
+share-facebook-headline = Shikita asu mudatoj kichtektiwit ichtaka.
 sign-in = Shiktali mutukay
+sign-out = Shikishti mutukay
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Shitajpia { -brand-fxa }
+have-an-account = Tikpia se cuentaj?
 fxa-pwt-summary-4 = Tajpianimet ipal taketzalis ichtaka ken 1Password, LastPass, Dashlane, wan Bitwarden kiana mutajtaketzalis ichtaka wan kiishtukilia mumaku. Yejemet yawit kichiwat tajtaketzalis ichtaka chupiuk tajpaltik.
 
 ## What to do after data breach tips
