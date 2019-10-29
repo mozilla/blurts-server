@@ -16,6 +16,7 @@
 
 terms-and-privacy = Tay nechtuktia wan tay nupal ichtaka
 GitHub-link-title = GitHub
+error-scan-page-token = Tikejekua tiktemua miak correoj uksejsenpa. Muita chupi tesajsay, yajika timetztzakwilijtiwit ka kiajan. Tiu-tiweli tikejekua nemanha.
 error-could-not-add-email = Te welik mutalia se dirección correoj tik ne basej ipal datos.
 error-not-subscribed = Ini correoj tesu kipia itukay tik { -product-name }.
 error-hibp-throttled = Miak nemit sajsalujtuk itech { -brand-HIBP }.
@@ -53,7 +54,10 @@ compromised-data = Keman ijtakawij:
 unsub-headline = Shikishti mutukay tik { -product-name-nowrap }
 unsub-blurb = Yajini yawi kishtia ne itukay mucorreoj tik ne listaj { -product-name-nowrap } wan tea yawit metznawatia keman kinekit kalakit ichtaka uksenpa.
 unsub-button = Shikishti mutukay
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = { $hibp-link } tamakak ne datoj ipanpa ne kaltapanalis
 sign-in = Shiktali mutukay
+fxa-pwt-summary-4 = Tajpianimet ipal taketzalis ichtaka ken 1Password, LastPass, Dashlane, wan Bitwarden kiana mutajtaketzalis ichtaka wan kiishtukilia mumaku. Yejemet yawit kichiwat tajtaketzalis ichtaka chupiuk tajpaltik.
 
 ## What to do after data breach tips
 
