@@ -86,6 +86,28 @@ fxa-wtd-blurb-2 =
     correoj, wan ujukse iswat ka matapan kan tiktajpia ne muinformación.
 fxa-what-to-do-blurb-3 = Achka muchi ne taichtekilis ipal datoj kiwawana ne itukay mucorreoj wan taketzalis-ichtaka, man sejse kia kanat weyuk datoj ipal mutumin. . ¶
 fxa-what-to-do-subhead-4 = Ma metzpalewi tikelnamiki muchi mutajtaketzalis ichtaka wan ma kitajpia.
+fxa-what-to-do-blurb-4 =
+    Ne tajpianimet ipal taktezalis ichtaka ken 1Password, LastPass, Dashlane, wan Bitwarden kianat wan kitajpia
+    mutaketzalis ichtaka wan kishtukat tik ne iswat ka matapan. Shikwi se tajpiani ipal taketzalis ichtaka 
+    wan shiktali tik mutanutzalis wan tepustapuani pal tesu nemi pal tikelnamiki muchi yejemet.
+# Alerts is a noun
+sign-up-for-alerts = Shikchiwa se cuentaj pal metznawatiat
+# Link title
+frequently-asked-questions = Ne tay miak kitajtanit
+about-firefox-monitor = Ipanpa { -product-name }
+# Link title
+preferences = Tay nikneki
+# Link title
+home = Nuchan
+# Link title
+security-tips = Tanajnawatil pal tiktajpia mudatoj
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Shiktapu ne pashalualis { -brand-fxa }
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = Yankwik taichtekilis ipal mudatoj tikachilijtuk
+# Link title
+more-about-this-breach = Shikmati ukchupi keman taichtekikket mudatoj
 
 ## What to do after data breach tips
 
