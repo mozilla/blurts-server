@@ -61,15 +61,31 @@ hibp-attribution = { $hibp-link } tamakak ne datoj ipanpa ne kaltapanalis
 share-twitter = Achka muchi kipia 100 cuentaj salujtuk. Have any of yours been exposed in a data breach? Find out.
 share-facebook-headline = Shikita asu mudatoj kichtektiwit ichtaka.
 share-facebook-blurb = Tichikuyulua ajaka kichtek ush kineki kikwi ne mukwejkwentaj online?
-og-site-description = Shikmajmati asu kaltapan tik mudajdatoj iwan { -product-name }. Shikchiwa se cuentaj pal tikmajmati asu kaltapanaskiat wan pal metznawatiat ken titajpia yek mucuejcuentaj.
-show-all = Shiknesthi muchi
+og-site-description = Shikita asu ajaka kichtek ichtaka mudatoj iwan { -product-name }. Shikchiwa se cuentaj pal timetznawatisket wan timetzmachtisket  ken tiktajpia mucuentaj.
+show-all = Shikneshti muchi
 fxa-scan-another-email = Tikneki tikpepeta ukse correoj?
 sign-in = Shiktali mutukay
 sign-out = Shikishti mutukay
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Shitajpia { -brand-fxa }
 have-an-account = Tikpia se cuentaj?
+fxa-pwt-summary-2 = Ne taketzalis ichtaka kutu u iwan maya se taketzalis, yaja te uij pal kimatit ne hackers.
 fxa-pwt-summary-4 = Tajpianimet ipal taketzalis ichtaka ken 1Password, LastPass, Dashlane, wan Bitwarden kiana mutajtaketzalis ichtaka wan kiishtukilia mumaku. Yejemet yawit kichiwat tajtaketzalis ichtaka chupiuk tajpaltik.
+fxa-pwt-summary-6 =
+    Ne taichtekilis ipal mudatoj panu ukseujseujti an. Asu mudatoj nesi tik seuk taichtekilis,  ¶
+    { -product-name } metznawatis — pal tesu tikejkawa panu uksenpa wan tiktajpia mucuejcuentaj ukyek.
+fxa-what-to-do-blurb-1 =
+    Asu te tiweli tikalaki tik mucuentaj, shiknawati ne iswat ka matapan ma metzilwi ken tikyankwilia. 
+    Tikita se cuentaj tesu tikmati? Mudajdatoj anka munamaskiat 
+    u mumajmakatuk ka senkak. Yajini anka nusan se cuentaj tiklelnamikik 
+    tikchiwki u anka se compañíaj kipatak ne tujtukay.
+fxa-what-to-do-subhead-2 = Makaya shikalakti ne sesan taketzalis-ichtaka wan shikpata nujme kan tikalaktijtuk.
+fxa-wtd-blurb-2 =
+    Ne hackers anka kikalaktisket ne sesan taketzalis ichtaka wan kikwisket mucorreoj pal kalakit tik ujukse cuentaj. 
+    Shikchiwa se taketzalis ichtaka te kenha wan ma te keman mukwijtuk ipal sejse cuentaj, wan ipal ne icuentaj mutuminkal,
+    correoj, wan ujukse iswat ka matapan kan tiktajpia ne muinformación.
+fxa-what-to-do-blurb-3 = Achka muchi ne taichtekilis ipal datoj kiwawana ne itukay mucorreoj wan taketzalis-ichtaka, man sejse kia kanat weyuk datoj ipal mutumin. . ¶
+fxa-what-to-do-subhead-4 = Ma metzpalewi tikelnamiki muchi mutajtaketzalis ichtaka wan ma kitajpia.
 
 ## What to do after data breach tips
 
