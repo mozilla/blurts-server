@@ -26,6 +26,7 @@ error-must-be-signed-in = Nemi pal tikpia mutukay ijtik { -brand-fxa }.
 error-to-finish-verifying = Pal titamia tikita yek ini correoj ipal { -product-name }, nemi pal tikpia mutukay ken ne achtu cuentaj ipal ne correoj.
 home-title = { -product-name }
 home-not-found = Iswat te muajsik.
+user-add-invalid-email = Correoj te yek
 user-add-too-many-emails = Tikpepeta muchi ne correoj tiweli tikpepeta
 user-add-email-verify-subject = Shikita su yek nemi mutukay tik { -product-name }.
 user-add-duplicate-email = Ini correoj mutalijtuka tik { -product-name }.
@@ -56,6 +57,7 @@ unsub-blurb = Yajini yawi kishtia ne itukay mucorreoj tik ne listaj { -product-n
 unsub-button = Shikishti mutukay
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = { $hibp-link } tamakak ne datoj ipanpa ne kaltapanalis
+share-twitter = Achka muchi kipia 100 cuentaj salujtuk. Have any of yours been exposed in a data breach? Find out.
 sign-in = Shiktali mutukay
 fxa-pwt-summary-4 = Tajpianimet ipal taketzalis ichtaka ken 1Password, LastPass, Dashlane, wan Bitwarden kiana mutajtaketzalis ichtaka wan kiishtukilia mumaku. Yejemet yawit kichiwat tajtaketzalis ichtaka chupiuk tajpaltik.
 
