@@ -16,6 +16,11 @@
 
 terms-and-privacy = Nuguan' ganikò' nī sa gini'in 'ngo rïnt
 GitHub-link-title = GitHub
+error-scan-page-token = Ûta nìko yì'nïn' direksiûn korrêo ganatsít dòj nï' diû. Yi'ì dan nu a'nïnj ñûnj ganatsít doj ngà'. Ga'ue ganatsít man nanâ doj.
+error-could-not-add-email = Nu ga'ue na'nïn si direksiûn korrêo riña mà nej nuguàn'àn nìko.
+error-not-subscribed = Nitāj si tàj direksiûn korrêo na riña { -product-name }.
+error-hibp-throttled = Ûta nìko koneksiûn hua guendâ { -brand-HIBP }.
+error-hibp-connect = Na'ue gātu riña { -brand-HIBP }.
 
 ## What to do after data breach tips
 
