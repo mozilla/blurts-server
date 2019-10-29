@@ -60,6 +60,10 @@ unsub-button = Shikishti mutukay
 hibp-attribution = { $hibp-link } tamakak ne datoj ipanpa ne kaltapanalis
 share-twitter = Achka muchi kipia 100 cuentaj salujtuk. Have any of yours been exposed in a data breach? Find out.
 share-facebook-headline = Shikita asu mudatoj kichtektiwit ichtaka.
+share-facebook-blurb = Tichikuyulua ajaka kichtek ush kineki kikwi ne mukwejkwentaj online?
+og-site-description = Shikmajmati asu kaltapan tik mudajdatoj iwan { -product-name }. Shikchiwa se cuentaj pal tikmajmati asu kaltapanaskiat wan pal metznawatiat ken titajpia yek mucuejcuentaj.
+show-all = Shiknesthi muchi
+fxa-scan-another-email = Tikneki tikpepeta ukse correoj?
 sign-in = Shiktali mutukay
 sign-out = Shikishti mutukay
 # Manage Firefox Account, link to page where account holders can change their account settings.
