@@ -50,15 +50,15 @@ if(typeof(ga) !== "undefined") {
   ga("set", "anonymizeIp", true);
   ga("set", "transport", "beacon");
 
-
-  // Strip token and hash values from pings sent to GA
   const loc = document.location;
-  let pageValue = loc.pathname + loc.search;
+  let pageValue = loc.href;
+
+    // Replace token and hash values before sending URL to GA
   if (loc.search && (loc.search.includes("token=") || loc.search.includes("hash="))) {
-    pageValue = loc.href.replace(/token=\w+&?/, "").replace(/hash=\w+&?/, "");
+    pageValue = loc.href.replace(/\?token=[A-Za-z0-9_-]+/, "").replace(/&hash=[A-Za-z0-9_-]+/, "");
   }
+
   ga("set", "location", pageValue);
   ga("set", "page", pageValue);
-
 	ga("send", "pageview");
 }
