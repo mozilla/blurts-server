@@ -154,6 +154,9 @@ const HIBP = {
     let latestBreach = {};
     let latestBreachDateTime = new Date(0);
     for (const breach of breaches) {
+      if (breach.IsSensitive) {
+        continue;
+      }
       const breachAddedDate = new Date(breach.AddedDate);
       if (breachAddedDate > latestBreachDateTime) {
         latestBreachDateTime = breachAddedDate;
