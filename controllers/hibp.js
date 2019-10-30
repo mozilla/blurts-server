@@ -5,7 +5,6 @@ const { negotiateLanguages, acceptedLanguages } = require("fluent-langneg");
 const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
-const EmailHelpers = require("../template-helpers/emails.js");
 const HIBP = require("../hibp");
 const { LocaleUtils } = require ("../locale-utils");
 const mozlog = require("../log");
@@ -123,42 +122,6 @@ async function notify (req, res) {
   );
 }
 
-async function sendEmailToPreFxaSubscribers (req, res) {
-const subscribers = [ /* summoning groooooovecoder */  ];
-  const notifiedSubscribers = [];
-  const utmID = "pre-fxa";
-  for (const subscriber of subscribers) {
-    const signupLanguage = subscriber.signup_language;
-    const subscriberEmail = subscriber.email;
-    const requestedLanguage = signupLanguage ? acceptedLanguages(signupLanguage) : "";
-    const supportedLocales = negotiateLanguages(
-      requestedLanguage,
-      req.app.locals.AVAILABLE_LANGUAGES,
-      {defaultLocale: "en"}
-    );
-
-    if (!notifiedSubscribers.includes(subscriberEmail)) {
-      await EmailUtils.sendEmail(
-        subscriberEmail,
-        LocaleUtils.fluentFormat(supportedLocales, "pre-fxa-subject"), // email subject
-        "default_email", // email template
-        {
-          supportedLocales,
-          SERVER_URL: req.app.locals.SERVER_URL,
-          unsubscribeUrl: EmailUtils.getUnsubscribeUrl(subscriber, utmID), // need to test the flow for legacy users who want to unsubscribe
-          ctaHref: EmailHelpers.getPreFxaUtmParams(req.app.locals.SERVER_URL, "create-account-button", subscriberEmail),
-          whichPartial: "email_partials/pre-fxa",
-          preFxaEmail: true,
-          email: subscriberEmail,
-        },
-      );
-      notifiedSubscribers.push(subscriberEmail);
-    }
-  }
-
-  res.redirect("/email-l10n");
-
-}
 
 async function breaches (req, res, next) {
   res.append("Last-Modified", req.app.locals.mostRecentBreachDateTime);
@@ -167,9 +130,7 @@ async function breaches (req, res, next) {
 
 
 
-
 module.exports = {
   notify,
   breaches,
-  sendEmailToPreFxaSubscribers,
 };
