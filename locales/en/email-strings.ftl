@@ -104,7 +104,7 @@ pre-fxa-subject = An update from {-product-name}
 
 pre-fxa-headline = What’s changing with {-product-name}
 pre-fxa-blurb = Here’s what’s changed since you signed up for {-product-name}, the service that 
-  monitors known data breaches for your personal info. We’re linking it to {-brand-name} accounts.
+  monitors known data breaches for your personal info. We’re linking it to Firefox accounts.
 
 pre-fxa-tout-1 = Stay alert to more breaches
 pre-fxa-p-1 = <a>Create an account</a> to monitor up to 15 email address for 
