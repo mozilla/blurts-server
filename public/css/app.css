@@ -483,6 +483,7 @@ ul li {
 
 .txt-light {
   color: var(--grey8);
+  line-height: 1.5;
 }
 
 .txt-cntr {

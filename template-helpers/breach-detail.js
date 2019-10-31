@@ -175,6 +175,7 @@ function getBreachDetail(args) {
 
   const breachDetail = {
     overview: {
+      headline: LocaleUtils.fluentFormat(locales, "breach-overview-title"),
       copy: LocaleUtils.fluentFormat(locales, "breach-overview-new", {
         addedDate: `<span class='bold'>${prettyDate(breach.AddedDate, locales)}</span>`,
         breachDate: `<span class='bold'>${prettyDate(breach.BreachDate, locales)}</span>`,
