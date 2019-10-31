@@ -1,8 +1,8 @@
-/* eslint-env browser */
-/* eslint-disable no-unused-vars */
 "use strict";
-/* global ga */
 
+/* eslint-disable no-unused-vars */
+/* global _dntEnabled */
+/* global ga */
 
 
 const hasParent = (el, selector) => {
@@ -67,10 +67,9 @@ function getFxaUtms(url) {
 }
 
 function saveReferringPageData(utmParams) {
-  const bodyDataset = document.body.dataset;
   if (sessionStorage) {
     getUTMNames().forEach(param => {
-      if(!sessionStorage[param]) {
+      if(utmParams.get(param)) {
         sessionStorage[param] = utmParams.get(param);
       }
     });
@@ -84,9 +83,49 @@ function getUTMNames() {
 
 (() => {
   const win = window;
-  if (win.location.search.includes("utm_") && win.history.replaceState) {
-    saveReferringPageData(new URL(win.location).searchParams);
-    win.history.replaceState({}, "", win.location.toString().replace(/[?&]utm_.*/g, ""));
+  const winLocationSearch = win.location.search;
+
+  let winLocation = win.location;
+
+  // Check for DoNotTrack header before running GA script
+  if (!_dntEnabled()) {
+    (function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments);},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m);
+    })(window,document,"script","https://www.google-analytics.com/analytics.js","ga");
+  }
+
+  // Remove token and hash values from URL so that they aren't sent to GA
+  if (winLocationSearch.includes("token=") || winLocationSearch.includes("hash=")) {
+    winLocation = winLocation.toString().replace(/[?&]token=[A-Za-z0-9_-]+/, "").replace(/&hash=[A-Za-z0-9_-]+/, "");
+    win.history.replaceState({}, "", winLocation);
+  }
+
+  const gaEnabled = (typeof(ga) !== "undefined");
+  const utmParamsInUrl = (winLocationSearch.includes("utm_"));
+
+  const removeUtmsFromUrl = () => {
+    if (utmParamsInUrl) {
+      win.history.replaceState({}, "", winLocation.toString().replace(/[?&]utm_.*/g, ""));
+    }
+  };
+
+  // Store UTM params in session
+  if (utmParamsInUrl) {
+    saveReferringPageData(new URL(winLocation).searchParams);
+  }
+
+  if (gaEnabled) {
+    ga("create", "UA-77033033-16");
+    ga("set", "anonymizeIp", true);
+    ga("set", "transport", "beacon");
+    ga("send", "pageview", {
+      hitCallback: function() {
+        removeUtmsFromUrl();
+      },
+    });
+  } else {
+    removeUtmsFromUrl();
   }
 
   const setMetricsIds = (el) => {
@@ -99,6 +138,7 @@ function getUTMNames() {
     }
     return;
   };
+
   // Update data-event-category and data-fxa-entrypoint if the element
   // is nested inside a sign up banner.
   document.querySelectorAll("#scan-user-email, .open-oauth").forEach(el => {
