@@ -76,10 +76,21 @@ pre-fxa-message = <a>Skapa ett gratis { -brand-fxa }</a> och du kan lägga till 
 monitor-another-email = Vill du övervaka en ny e-postadress?
 # Subject line of email
 pre-fxa-subject = En uppdatering från { -product-name }
+pre-fxa-headline = Vad förändras med { -product-name }
+pre-fxa-blurb =
+    Det här är vad som har ändrats sedan du registrerade dig för { -product-name }, tjänsten som
+    övervakar kända dataintrång för din personliga information. Vi länkar det till ditt Firefox-konto.
 pre-fxa-tout-1 = Var uppmärksam på fler intrång
 pre-fxa-p-1 =
     <a>Skapa ett konto</a> för att övervaka upp till 15 e-postadresser för
     dataintrång. Vi rekommenderar att du lägger till alla e-postadresser som du har använt för att skapa onlinekonton.
 pre-fxa-tout-2 = Få en översikt
+pre-fxa-p-2 =
+    Se alla dataintrång på ett ställe så att du vet vilka lösenord som ska ändras.
+    Översikten är endast tillgänglig med ett konto.
+pre-fxa-tout-3 = Fortsätt få e-postvarningar
+pre-fxa-p-3 =
+    Du kommer fortfarande att få varningar från { -product-name }. Vi berättar om din information
+    förekommer i ett nytt dataintrång.
 # Button at the bottom of pre-fxa email.
 create-account = Skapa konto
