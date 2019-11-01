@@ -69,5 +69,14 @@ monitor-another-email = Vole tu adder un altere adresse email?
 # Subject line of email
 pre-fxa-subject = Un actualisation de { -product-name }
 pre-fxa-headline = Que cambia con { -product-name }
+pre-fxa-blurb = Ecce lo que es cambiate desde tu te inscribeva a { -product-name }, le servicio que controla note violationes de datos pro tu informationes personal. Nos lo liga al contos Firefox.
+pre-fxa-tout-1 = Sta alerte a altere violationes
+pre-fxa-p-1 = <a>Crea un conto</a> pro controlar fin a 15 adresse email pro violationes de datos. Nos consilia adder ulle adresses email que tu ha usate pro crear contos online.
+pre-fxa-tout-2 = Da un vista al pannello de controlo
+pre-fxa-p-2 =
+    Vide tote le violationes de datos in un loco, assi tu sape qual contrasignos cambiar. 
+    Le pannello de controlo violation es solo disponibile con un conto.
+pre-fxa-tout-3 = Continuar reciper avisos email
+pre-fxa-p-3 = Tu recipera ancora avisos de { -product-name }.
 # Button at the bottom of pre-fxa email.
 create-account = Crear conto
