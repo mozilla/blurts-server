@@ -76,8 +76,10 @@ main.breach-detail {
 }
 
 .breach-type {
-  font-size: 0.9rem;
+  font-size: 16px;
+  font-weight: 700;
   color: var(--grey6);
+  margin-bottom: 12px;
 }
 
 .priority-data-classes-list {
