@@ -2,47 +2,12 @@
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
-click-to-verify = Seleccioná el botón Verificar mi correo electrónico dentro de las 24 horas para confirmar tu cuenta de Firefox Monitor. Tu informe estará en camino.
-verify-my-email = Verificar mi correo electrónico
-report-scan-another-email = Escanear otro correo electrónico en { -product-name }
-automated-message = Este es un correo electrónico automático; si lo recibiste por error, no tenés que hacer nada.
-# Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
-we-sent-this-alert = Enviamos este mensaje a { $userEmail } porque la dirección de correo electrónico optó por las alertas de { -product-name }.
-unsubscribe-email-link = Si no querés más alertas de { -product-name }, cancelá la suscripción.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Informe  de { -product-name }
 report-date = Fecha del informe:
 email-address = Dirección de correo electrónico:
-# A list of next steps someone should take if their information has been involved in a data breach.
-what-to-do-next = Qué hacer a continuación
-report-headline =
-    { $breachCount ->
-        [0] Por ahora, todo bien
-        [one] Tu cuenta apareció en { $breachCount } violación.
-       *[other] Tus cuentas aparecieron en { $breachCount } violaciones.
-    }
-report-subhead-no-breaches = Tu cuenta no aparece en nuestro informe completo de violaciones. Son buenas noticias, pero hay más que podés hacer. Las violaciones de datos ocurren en cualquier momento, así que seguí leyendo para saber cómo podés proteger tus contraseñas.
-report-subhead-found-breaches = Aquí está tu informe completo de Firefox Monitor, que incluye todas las violaciones de datos conocidas que contienen esta dirección de correo electrónico.
-report-pwt-blurb = Las contraseñas son tan valiosas que miles de ellas son robadas cada día y negociadas o vendidas en el mercado negro. Las contraseñas más seguras protegen tus cuentas y toda la información personal incluida en ellas.
-report-pwt-headline-1 = Usá una contraseña diferente para cada cuenta
-report-pwt-summary-1 = Reutilizar la misma contraseña en todas partes abre la puerta a los piratas. Pueden usar esa contraseña para iniciar sesión en tus otras cuentas.
-report-pwt-headline-2 = Creá contraseñas seguras y únicas.
-report-pwt-summary-2 = Los piratas usan miles de contraseñas comunes para tratar de adivinar la tuya. Cuanto más larga y aleatoria sea tu contraseña, será más difícil de adivinar.
-report-pwt-headline-3 = Tratá las preguntas de seguridad como contraseñas adicionales
-report-pwt-summary-3 = Los sitios web no verifican que tus respuestas sean precisas, solo que coincidan cada vez. Creá respuestas largas y aleatorias y guardalas en un lugar seguro.
-report-pwt-headline-4 = Usá un administrador de contraseñas
-report-pwt-summary-4 = Los servicios como 1Password, LastPass, Dashlane y Bitwarden generan contraseñas seguras, las almacenan de forma segura y las rellenan en sitios web para que no tengas que recordar cada una de ellas.
 # A link to legal information about mozilla products.
 legal = Legal
-# Share Firefox Monitor by email subject line
-share-by-email-subject = Fijate si fuiste parte de una violación de datos.
-# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
-share-by-email-message =
-    Hola,
-    { -brand-name } tiene un servicio gratuito donde podés verificar si fuiste parte de una violación de datos. Funciona así:
-    1. Andá a { "https://monitor.firefox.com" } y buscá tu correo electrónico.
-    2. Fijate si tus cuentas en línea se expusieron en una violación de datos.
-    3. Obtené consejos de { -product-name } sobre lo que hacer a continuación.
 # Unsubscribe link in email.
 email-unsub-link = Cancelar suscripción
 # This string appears in the footer of breach report and breach alert emails.
@@ -107,3 +72,21 @@ faq-v2-4 = ¿Cómo trata { -product-name } a los sitios con información privada
 pre-fxa-message = <a> Creá una { -brand-fxa } </a> gratuita y podés agregar hasta 15 direcciones de correo electrónico.
 # Section headline
 monitor-another-email = ¿Querés consultar por otro correo electrónico?
+# Subject line of email
+pre-fxa-subject = Una actualización de { -product-name }
+pre-fxa-headline = ¿Qué está cambiando con { -product-name }
+pre-fxa-blurb =
+    Esto es lo que cambió desde que te registraste en { -product-name }, el servicio que
+    controla las violaciones de datos conocidas para tu información personal. Lo estamos vinculando a las cuentas de Firefox.
+pre-fxa-tout-1 = Mantenete alerta a las nuevas violaciones
+pre-fxa-p-1 = <a> Crear una cuenta</a> para controlar hasta 15 direcciones de correo electrónico para detectar violaciones de datos. Recomendamos agregar cualquier dirección de correo electrónico que usaste para crear cuentas en línea.
+pre-fxa-tout-2 = Obtené una vista del cuadro de mandos
+pre-fxa-p-2 =
+    Encontrá todas las violaciones de datos en un solo lugar para saber qué contraseñas te conviene cambiar.
+    El cuadro de violaciones solo está disponible con una cuenta.
+pre-fxa-tout-3 = Seguí recibiendo alertas por correo electrónico
+pre-fxa-p-3 =
+    Vas a seguir recibiendo alertas de { -product-name }. Te vamos a informar si tu información
+    aparece en una nueva violación de datos.
+# Button at the bottom of pre-fxa email.
+create-account = Crear cuenta
