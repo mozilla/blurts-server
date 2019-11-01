@@ -40,6 +40,7 @@ test("user add POST with email adds unverified subscriber and sends verification
     url: "/user/add",
     body: { email: testUserAddEmail },
     session: { user: testSubscriber },
+    user: testSubscriber,
     fluentFormat: jest.fn(),
     headers: {
       referer: "",
@@ -84,6 +85,7 @@ test("user add POST with upperCaseAddress adds email_address record with lowerca
     url: "/user/add",
     body: { email: testUserAddEmail },
     session: { user: testSubscriber },
+    user: testSubscriber,
     fluentFormat: jest.fn(),
     headers: {
       referer: "",
@@ -120,6 +122,7 @@ test("user resendEmail with valid session and email id resets email_address reco
     body: { emailId: testEmailAddressId },
     session: { user: testSubscriber },
     fluentFormat: jest.fn(),
+    user: testSubscriber,
   });
   const resp = httpMocks.createResponse();
   EmailUtils.sendEmail.mockResolvedValue(true);
@@ -142,6 +145,7 @@ test("user updateCommunicationOptions request with valid session updates DB", as
     url: "/user/update-comm-option",
     body: { communicationOption: 0 },
     session: { user: testSubscriber },
+    user: testSubscriber,
   });
   const resp = httpMocks.createResponse();
 
@@ -218,6 +222,7 @@ test("user verify request with valid token verifies user and redirects to dashbo
       session: { user: testSubscriber },
       fluentFormat: jest.fn(),
       app: { locals: { breaches: testBreaches } },
+      user: testSubscriber,
     });
   const resp = httpMocks.createResponse();
 
@@ -241,6 +246,7 @@ test("user verify request with valid token but wrong user session does NOT verif
       session: { user: testSubscriber },
       fluentFormat: jest.fn(),
       app: { locals: { breaches: testBreaches } },
+      user: testSubscriber,
     });
   const resp = httpMocks.createResponse();
 
@@ -262,6 +268,7 @@ test("user verify request for already verified user doesn't send extra email", a
   mockRequest.session = { user: testSubscriber };
   mockRequest.query = { token: alreadyVerifiedToken };
   mockRequest.app = { locals: { breaches: testBreaches } };
+  mockRequest.user = testSubscriber;
   const resp = httpMocks.createResponse();
 
   // Call code-under-test
@@ -365,25 +372,18 @@ test("user unsubscribe POST request with valid session and emailId for email_add
 test("user removeEmail POST request with valid session but wrong emailId for email_address throws error and doesnt remove email", async () => {
   const testEmailAddress = TEST_EMAIL_ADDRESSES.all_emails_to_primary;
   const testEmailId = testEmailAddress.id;
-  const req = { fluentFormat: jest.fn(), body: { emailId: testEmailId }, session: { user: TEST_SUBSCRIBERS.firefox_account }};
+  const req = {
+    fluentFormat: jest.fn(),
+    body: { emailId: testEmailId },
+    session: { user: TEST_SUBSCRIBERS.firefox_account },
+    user: TEST_SUBSCRIBERS.firefox_account,
+  };
   const resp = httpMocks.createResponse();
 
   await expect(user.removeEmail(req, resp)).rejects.toThrow("error-not-subscribed");
 
   const emailAddress = await DB.getEmailByToken(testEmailAddress.verification_token);
   expect(emailAddress.id).toEqual(testEmailId);
-});
-
-
-test("user/remove-fxm GET request with invalid session returns error", async () => {
-  const req = httpMocks.createRequest({
-    method: "GET",
-    url: "/user/remove-fxm",
-    fluentFormat: jest.fn(),
-  });
-  const resp = httpMocks.createResponse();
-
-  await expect(user.getRemoveFxm(req, resp)).rejects.toThrow("error-must-be-signed-in");
 });
 
 
@@ -400,18 +400,12 @@ test("user/remove-fxm GET request with valid session returns 200 and renders rem
 });
 
 
-test("user/remove-fxm POST request with invalid session returns error", async () => {
-  // Set up mocks
-  const req = { fluentFormat: jest.fn(), session: {} };
-  const resp = httpMocks.createResponse();
-
-  // Call code-under-test
-  await expect(user.postRemoveFxm(req, resp)).rejects.toThrow("error-must-be-signed-in");
-});
-
-
 test("user remove-fxm POST request with valid session removes from DB and revokes FXA OAuth token", async () => {
-  const req = { fluentFormat: jest.fn(), session: { user: TEST_SUBSCRIBERS.firefox_account, reset: jest.fn() }};
+  const req = {
+    fluentFormat: jest.fn(),
+    session: { user: TEST_SUBSCRIBERS.firefox_account, reset: jest.fn() },
+    user: TEST_SUBSCRIBERS.firefox_account,
+  };
   const resp = httpMocks.createResponse();
   FXA.revokeOAuthTokens = jest.fn();
 
