@@ -123,11 +123,11 @@ async function notify (req, res) {
   );
 }
 
+
 async function breaches (req, res, next) {
   res.append("Last-Modified", req.app.locals.mostRecentBreachDateTime);
   res.json(req.app.locals.breaches);
 }
-
 
 
 

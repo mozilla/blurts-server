@@ -97,3 +97,26 @@ pre-fxa-message = <a>Create a free {-brand-fxa}</a>, and you can add up to 15 em
 
 # Section headline
 monitor-another-email = Want to monitor another email?
+
+
+# Subject line of email
+pre-fxa-subject = An update from {-product-name}
+
+pre-fxa-headline = What’s changing with {-product-name}
+pre-fxa-blurb = Here’s what’s changed since you signed up for {-product-name}, the service that 
+  monitors known data breaches for your personal info. We’re linking it to Firefox accounts.
+
+pre-fxa-tout-1 = Stay alert to more breaches
+pre-fxa-p-1 = <a>Create an account</a> to monitor up to 15 email address for 
+  data breaches. We recommend adding any email addresses you’ve used to create online accounts.
+
+pre-fxa-tout-2 = Get a dashboard view
+pre-fxa-p-2 = See all data breaches in one place so you know which passwords to change. 
+  The breach dashboard is only available with an account.
+
+pre-fxa-tout-3 = Keep getting email alerts
+pre-fxa-p-3 = You’ll still receive alerts from {-product-name}. We’ll let you know if your info 
+  appears in a new data breach.
+
+# Button at the bottom of pre-fxa email.
+create-account = Create Account
