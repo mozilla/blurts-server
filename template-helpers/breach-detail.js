@@ -117,15 +117,16 @@ function compareBreachDates(breach) {
   return false;
 }
 
-function getTips(locales, breachType) {
+function getTips(locales, breachType, changePWLink) {
   let tips = [];
   if (breachType === "website-breach") {
     tips = [
       {
         title: "change-pw",
         subtitle: "even-for-old",
-        linkTitle: "what-to-do-after-breach",
-        href: "/security-tips#after-breach",
+        changePWBtn: true,
+        linkTitle: "change-pw-site",
+        href: changePWLink,
         svgClass: "change-password",
       },
       {
@@ -186,13 +187,14 @@ function getBreachDetail(args) {
     categoryId: getBreachCategory(breach),
     category: LocaleUtils.fluentFormat(locales, getBreachCategory(breach)),
     changePWLink: changePWLink,
+    changePWLinkTitle: LocaleUtils.fluentFormat(locales, "change-pw-site"),
     dataClasses: {
       headline: LocaleUtils.fluentFormat(locales, "what-data"),
       dataTypes: localizeAndPrioritizeDataClasses(locales, breach),
     },
     whatToDoTips: {
       headline: LocaleUtils.fluentFormat(locales, "wtd-after-website"),
-      tips: getTips(locales, "website-breach"),
+      tips: getTips(locales, "website-breach", changePWLink),
     },
   };
   switch (breachDetail.categoryId) {
