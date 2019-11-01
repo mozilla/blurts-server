@@ -60,7 +60,7 @@ unsub-blurb = Isto removera tu email ab le lista de { -product-name-nowrap } e t
 unsub-button = Remover le subscription
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Datos re le violation fornite per { $hibp-link }
-share-twitter = Le major parte del personas ha circa 100 contos online. Ha essite exponite ullos del tue a un violation de datos?
+share-twitter = Le major parte del gente ha circa 100 contos in linea. Ha un del tues essite exponite in un violation de datos? Verifica lo.
 share-facebook-headline = Discoperi si tu ha essite parte de un violation de datos
 share-facebook-blurb = Ha tu contos online essite exponite a un violation de datos?
 og-site-description = Discoperi si tu ha essite parte de un violation de datos con { -product-name }. Registra te pro alertas re futur violationes e obtener suggestiones pro mantener tu contos secur.
