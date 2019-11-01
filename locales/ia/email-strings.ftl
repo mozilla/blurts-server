@@ -66,3 +66,8 @@ faq-v2-4 = Como tracta { -product-name } le sitos sensibile?
 pre-fxa-message = <a>Crea un gratuite { -brand-fxa }</a>, e tu potera adder usque 15 adresses email.
 # Section headline
 monitor-another-email = Vole tu adder un altere adresse email?
+# Subject line of email
+pre-fxa-subject = Un actualisation de { -product-name }
+pre-fxa-headline = Que cambia con { -product-name }
+# Button at the bottom of pre-fxa email.
+create-account = Crear conto
