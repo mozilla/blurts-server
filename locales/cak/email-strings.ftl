@@ -75,7 +75,7 @@ pre-fxa-message = <a>Titz'uk jun sipan { -brand-fxa }</a>, richin natz'aqatisaj 
 # Section headline
 monitor-another-email = ¿La nawajo' nanik'oj jun chik taqoya'l?
 # Subject line of email
-pre-fxa-subject = Ju k'exoj petenäq pa { -product-name }
+pre-fxa-subject = Jun ruk'exoj { -product-name }
 pre-fxa-headline = Achike nijal rik'in { -product-name }
 pre-fxa-blurb =
     Ja re' jalatajnäq toq xatz'ib'aj ab'i' pa { -product-name }, re samaj 
@@ -84,3 +84,13 @@ pre-fxa-tout-1 = Tachajij awi' chi kiwäch ri k'ak'a' taq tz'ilanem
 pre-fxa-p-1 =
     <a>Tatz'uku' jun rub'i' taqoya'l</a> richin ye'achajij k'a 15 taqoya'l richin 
     yekanöx tz'ilanem taq tzij. Nqachilab'ej chi ke'atz'aqatisaj xab'achike taqoya'l xawokisaj richin xe'atz'ük taq taqoya'l pa k'amab'ey.
+pre-fxa-tout-2 = Tik'ul ruwa jun rukajtz'ik taqoj
+pre-fxa-p-2 =
+    Ke'atz'eta' pa jun k'ojlib'äl ronojel ri kitz'ilanem taq tzij richin ye'ajäl ri ewan taq tzij k'atzinel yejal. 
+    Ri rukajtz'ik tz'ilanem xa xe wachel richin jun taqoya'l.
+pre-fxa-tout-3 = Jantape' tak'ulu' rutzijol kik'ayewal taqoya'l
+pre-fxa-p-3 =
+    K'a xke'ak'ül kitz'ilanem { -product-name }. Xtiqaya' rutzijol chawe we ri awetamab'al 
+    xtiwachin pa jun k'ak'a' rutz'ilanem tzij.
+# Button at the bottom of pre-fxa email.
+create-account = Titz'uk Rub'i' Taqoya'l
