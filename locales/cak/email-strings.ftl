@@ -74,3 +74,6 @@ faq-v2-4 = ¿Achike rub'anikil nub'än { -product-name } chi ke ri k'ayew taq ru
 pre-fxa-message = <a>Titz'uk jun sipan { -brand-fxa }</a>, richin natz'aqatisaj k'a 15 rochochib'al taq taqoya'l.
 # Section headline
 monitor-another-email = ¿La nawajo' nanik'oj jun chik taqoya'l?
+# Subject line of email
+pre-fxa-subject = Ju k'exoj petenäq pa { -product-name }
+pre-fxa-headline = Achike nijal rik'in { -product-name }
