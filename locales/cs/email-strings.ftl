@@ -70,6 +70,17 @@ faq-v2-4 = Jak { -product-name } zachází s úniky citlivých dat?
 pre-fxa-message = <a>Vytvořte si zdarma { -brand-fxa }</a> a můžete přidat až 15 e-mailových adres.
 # Section headline
 monitor-another-email = Chcete monitorovat další e-mailovou adresu?
+# Subject line of email
+pre-fxa-subject = Nejnovější informace od { -product-name(case: "gen") }
+pre-fxa-headline = Co se u { -product-name(case: "gen") } změnilo
 pre-fxa-blurb = Zde jsou informace o změnách, které byly provedeny od okamžiku vaší registrace do { -product-name(case: "gen") }, což je služba monitorující známé úniky dat pro případ, že se v nich objeví vaše osobní údaje. Propojujeme ji s účtem Firefoxu.
 pre-fxa-tout-1 = Buďte informováni o větším množství úniků
 pre-fxa-p-1 = <a>Vytvořte si účet</a> a nechte si monitorovat až 15 e-mailových adres pro případ úniku dat. Doporučujeme přidat každou e-mailovou adresu, kterou jste použili při vytváření internetových účtů.
+pre-fxa-tout-2 = Získejte svou nástěnku s úniky
+pre-fxa-p-2 =
+    Mějte všechny úniky dat pěkně na jednom místě, abyste věděli, která hesla máte změnit.
+    Nástěnka s přehledem úniků je k dispozici pouze s účtem.
+pre-fxa-tout-3 = Dostávejte dál e-mailová upozornění
+pre-fxa-p-3 = Stále budete dostávat upozornění od { -product-name(case: "gen") }. Dáme vám vědět, když se vaše údaje vyskytnou v novém úniku dat.
+# Button at the bottom of pre-fxa email.
+create-account = Vytvořit účet
