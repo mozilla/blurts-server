@@ -77,3 +77,10 @@ monitor-another-email = ¿La nawajo' nanik'oj jun chik taqoya'l?
 # Subject line of email
 pre-fxa-subject = Ju k'exoj petenäq pa { -product-name }
 pre-fxa-headline = Achike nijal rik'in { -product-name }
+pre-fxa-blurb =
+    Ja re' jalatajnäq toq xatz'ib'aj ab'i' pa { -product-name }, re samaj 
+    yeruchajij ri taq kitz'ilanem tzij etaman kiwäch richin ri awetamab'al. Yeqaxïm kik'in ri rub'i' ataqoya'l richin Firefox.
+pre-fxa-tout-1 = Tachajij awi' chi kiwäch ri k'ak'a' taq tz'ilanem
+pre-fxa-p-1 =
+    <a>Tatz'uku' jun rub'i' taqoya'l</a> richin ye'achajij k'a 15 taqoya'l richin 
+    yekanöx tz'ilanem taq tzij. Nqachilab'ej chi ke'atz'aqatisaj xab'achike taqoya'l xawokisaj richin xe'atz'ük taq taqoya'l pa k'amab'ey.
