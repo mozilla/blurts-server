@@ -65,6 +65,7 @@ monitor-another-email = 想要監控其它信箱嗎？
 # Subject line of email
 pre-fxa-subject = 來自 { -product-name } 的新消息
 pre-fxa-headline = { -product-name } 有什麼變化
+pre-fxa-blurb = 自您註冊能夠監控個人資料是否在資料外洩事件中流出的 { -product-name } 服務之後，有這些新鮮事。我們將把本服務與 Firefox 帳號連結起來。
 pre-fxa-tout-1 = 注意更多新的資料外洩事件
 pre-fxa-tout-3 = 繼續接收電子郵件警報
 # Button at the bottom of pre-fxa email.
