@@ -75,3 +75,8 @@ faq-v2-4 = Kuinka { -product-name } kohtelee arkaluonteisia sivustoja?
 pre-fxa-message = <a>Luo ilmainen { -brand-fxa }</a>, sen jälkeen voit lisätä jopa 15 sähköpostiosoitetta.
 # Section headline
 monitor-another-email = Haluatko seurata myös muita sähköpostiosoitteita?
+# Subject line of email
+pre-fxa-subject = Päivitys palvelusta { -product-name }
+pre-fxa-tout-3 = Vastaanota sähköpostihälytyksiä
+# Button at the bottom of pre-fxa email.
+create-account = Luo tili
