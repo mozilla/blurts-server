@@ -253,7 +253,7 @@ manage-email-addresses = Spravovat e-mailové adresy
 latest-breach-link = Zjistit, jestli jste byli součástí tohoto úniku
 welcome-back = Vítejte zpět, { $userName }!
 welcome-user = Vítejte, { $userName }!
-breach-alert-subject = { -product-name } našel vaši e-mailovou adresu v novém úniku dat.
+breach-alert-subject = { -product-name } našel vaši e-mailovou adresu v novém úniku dat
 your-info-was-discovered-headline = Vaše údaje byly nalezeny v novém úniku dat.
 your-info-was-discovered-blurb =
     Jste zaregistrováni k obdržení upozornění od služby { -product-name },
