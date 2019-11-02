@@ -67,6 +67,10 @@ pre-fxa-subject = 來自 { -product-name } 的新消息
 pre-fxa-headline = { -product-name } 有什麼變化
 pre-fxa-blurb = 自您註冊能夠監控個人資料是否在資料外洩事件中流出的 { -product-name } 服務之後，有這些新鮮事。我們將把本服務與 Firefox 帳號連結起來。
 pre-fxa-tout-1 = 注意更多新的資料外洩事件
+pre-fxa-p-1 = <a>註冊帳號</a>即可監控最多 15 組電子郵件信箱資料是否遭外洩。我們建議您將所有使用過的信箱都加入檢查。
+pre-fxa-tout-2 = 取得儀錶板畫面
+pre-fxa-p-2 = 在同一個地方就可以看到所有資料外洩事件，讓您知道要改掉哪些密碼。註冊帳號之後才可看到外洩事件儀錶板。
 pre-fxa-tout-3 = 繼續接收電子郵件警報
+pre-fxa-p-3 = 當您出現在新的資料外洩事件十，還是會收到來自 { -product-name } 的警報內容。
 # Button at the bottom of pre-fxa email.
 create-account = 註冊帳號
