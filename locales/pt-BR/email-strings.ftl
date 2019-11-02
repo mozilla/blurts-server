@@ -77,3 +77,9 @@ monitor-another-email = Quer monitorar outro e-mail?
 # Subject line of email
 pre-fxa-subject = Uma notícia do { -product-name }
 pre-fxa-headline = Quais as mudanças no { -product-name }
+pre-fxa-blurb =
+    Eis o que mudou desde que você se inscreveu no { -product-name }, o serviço que 
+    monitora se suas informações pessoais aparecem em vazamentos conhecidos de dados. Nós o vinculamos às Contas Firefox.
+pre-fxa-tout-1 = Fique alerta a mais vazamentos
+pre-fxa-p-1 = <a>Crie uma conta</a> para monitorar até 15 endereços de e-mail em vazamentos de dados. Recomendamos adicionar todos os endereços de e-mail que você usou para criar contas online.
+pre-fxa-tout-2 = Obtenha um painel de visão geral
