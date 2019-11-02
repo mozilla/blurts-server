@@ -80,5 +80,17 @@ pre-fxa-headline = Änderungen an { -product-name }
 pre-fxa-blurb =
     Folgendes hat sich geändert, seit Sie sich bei { -product-name } angemeldet haben, dem Dienst
     der bekannte Datenlecks Ihrer persönlichen Daten beobachtet. Wir verknüpfen ihn mit Firefox-Konten.
+pre-fxa-tout-1 = Lassen Sie sich bei mehr Datenlecks warnen
+pre-fxa-p-1 =
+    <a>Erstellen Sie ein Konto</a>, um bis zu 15 E-Mail-Adressen auf Datenlecks
+     zu überwachen. Es wird empfohlen, E-Mail-Adressen hinzuzufügen, die Sie zum Erstellen von Online-Konten verwendet haben.
+pre-fxa-tout-2 = Wir bieten eine übersichtliche Auflistung
+pre-fxa-p-2 =
+    Zeigen Sie alle Datenlecks an einem Ort an, damit Sie wissen, welche Passwörter geändert werden müssen.
+    Die Datenleck-Übersicht ist nur mit einem Konto verfügbar.
+pre-fxa-tout-3 = Erhalten Sie weiterhin E-Mail-Benachrichtigungen
+pre-fxa-p-3 =
+    Sie erhalten weiterhin Benachrichtigungen von{ -product-name }. Wir informieren Sie, wenn Ihre 
+    Daten in einem neuen Datenleck auftauchen.
 # Button at the bottom of pre-fxa email.
 create-account = Konto erstellen
