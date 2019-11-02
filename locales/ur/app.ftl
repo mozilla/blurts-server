@@ -62,10 +62,13 @@ how-fxm-3-headline = اپنے براؤزر میں اطلاعات حاصل کری
 
 ## What to do after data breach tips
 
+change-pw = اپنا پاس ورڈ تبدیل کریں
 add-new-email = ایک نیا ای میل پتہ شامل کریں
 
 ## Updated error messages
 
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = مینیو
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
