@@ -62,3 +62,17 @@ faq-v2-4 = { -product-name } 如何处理这些敏感网站？
 pre-fxa-message = <a>创建免费的 { -brand-fxa }，您最多可添加 15 个电子邮件地址。
 # Section headline
 monitor-another-email = 要监控其他电子邮件地址吗？
+# Subject line of email
+pre-fxa-subject = { -product-name } 的更新
+pre-fxa-headline = { -product-name } 的变化
+pre-fxa-blurb = { -product-name } —— 保障个人信息的数据泄露监控服务，在您注册之后已经有一些改变。我们已将它与 Firefox 账号相连。
+pre-fxa-tout-1 = 警惕新发生的数据泄露
+pre-fxa-p-1 = <a>创建一个账号</a>，监控最多 15 个电子邮件地址是否涉及到数据泄露。我们推荐您添加常用于网上账号的所有电子邮件地址。
+pre-fxa-tout-2 = 获得概况面板
+pre-fxa-p-2 =
+    同一个地方检查已知的所有数据泄露，了解您需要更换哪些密码。
+    该面板仅供注册用户使用。
+pre-fxa-tout-3 = 接收电子邮件通知
+pre-fxa-p-3 = 您仍然会收到 { -product-name } 的警讯。如果您的信息出现在新发生的数据泄漏中，我们会通知您。
+# Button at the bottom of pre-fxa email.
+create-account = 创建账号
