@@ -49,6 +49,17 @@ preferences = Innstillinger
 home = Hjem
 # Link title
 breaches = Datalekkasjer
+# Link title
+security-tips = Sikkerhetstips
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Åpne { -brand-fxa }-navigasjon
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = SISTE DATALEKKASJE SOM ER LAGT TIL
+# Link title
+more-about-this-breach = Mer om denne datalekkasjen
+# How Firefox Monitor works
+how-fxm-works = Hvordan { -product-name } fungerer
 
 ## What to do after data breach tips
 
