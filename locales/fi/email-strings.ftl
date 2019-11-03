@@ -77,6 +77,9 @@ pre-fxa-message = <a>Luo ilmainen { -brand-fxa }</a>, sen jälkeen voit lisätä
 monitor-another-email = Haluatko seurata myös muita sähköpostiosoitteita?
 # Subject line of email
 pre-fxa-subject = Päivitys palvelusta { -product-name }
+pre-fxa-headline = Mitä uutuuksia { -product-name } saa
+pre-fxa-tout-1 = Pysy ajan tasalla uusien vuotojen suhteen
+pre-fxa-tout-2 = Hanki kojelautanäkymä
 pre-fxa-tout-3 = Vastaanota sähköpostihälytyksiä
 # Button at the bottom of pre-fxa email.
 create-account = Luo tili
