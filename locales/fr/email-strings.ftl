@@ -74,3 +74,7 @@ faq-v2-4 = Comment { -product-name } traite-t-il les sites sensibles ?
 pre-fxa-message = <a>Créez un { -brand-fxa } gratuit</a> et vous pourrez ajouter jusqu’à 15 adresses électroniques.
 # Section headline
 monitor-another-email = Vous souhaitez vérifier une autre adresse électronique ?
+pre-fxa-tout-1 = Tenez-vous au courant des nouvelles fuites de données
+pre-fxa-tout-3 = Continuez à recevoir des alertes par courrier électronique
+# Button at the bottom of pre-fxa email.
+create-account = Créer un compte
