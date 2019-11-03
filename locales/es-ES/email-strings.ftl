@@ -85,3 +85,12 @@ pre-fxa-p-1 =
     <a>Crear una cuenta</a> para controlar hasta 15 direcciones de correo electrónico para
     detectar filtraciones de datos. Recomendamos añadir cualquier dirección de correo electrónico que hayas usado para crear cuentas en línea.
 pre-fxa-tout-2 = Obtén un un panel con la vista general
+pre-fxa-p-2 =
+    Mira en un solo lugar todas las filtraciones de datos para saber qué contraseñas te conviene cambiar.
+    El panel de filtraciones solo está disponible con una cuenta.
+pre-fxa-tout-3 = Sigue recibiendo alertas por correo electrónico
+pre-fxa-p-3 =
+    Seguirás recibiendo alertas de { -product-name }. Te informaremos si tu información
+    aparece en una nueva filtración de datos.
+# Button at the bottom of pre-fxa email.
+create-account = Crear cuenta
