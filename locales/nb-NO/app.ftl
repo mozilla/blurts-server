@@ -60,9 +60,12 @@ latest-breach = SISTE DATALEKKASJE SOM ER LAGT TIL
 more-about-this-breach = Mer om denne datalekkasjen
 # How Firefox Monitor works
 how-fxm-works = Hvordan { -product-name } fungerer
+how-fxm-3-headline = Få varsler i nettleseren din
 
 ## What to do after data breach tips
 
+change-pw = Endre passordet ditt
+back-to-top = Tilbake til toppen
 
 ## Updated error messages
 
