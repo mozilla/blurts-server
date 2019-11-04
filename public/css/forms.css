@@ -181,33 +181,48 @@ input[type="radio"] {
 
 .checkmark {
   background-color: rgba(255, 255, 255, 1);
-  height: 32px;
-  width: 32px;
-  border-radius: 4px;
-  display: block;
+  height: 24px;
+  width: 24px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  top: 0;
-  bottom: 0;
   margin: auto;
   border: 1px solid var(--grey90a3);
   transition: background-color 0.15s ease-in-out;
 }
 
-.radio-container:hover .checkmark {
+.radio-container:hover .checkmark::after {
+  opacity: 1;
   background-color: rgba(12, 12, 13, 0.04);
   transition: background-color 0.15s ease-in-out;
 }
 
-input[type="radio"]:checked ~ .checkmark {
-  transition: background-color 0.15s ease-in-out;
-  background-image: url(/img/checkbox-check.svg);
-  background-repeat: no-repeat;
-  background-size: 13px;
-  background-position: center center;
+input[type="radio"] ~ .checkmark::after {
+  position: absolute;
+  content: "";
+  display: block;
+  height: 12px;
+  width: 12px;
+  opacity: 0;
+  flex: 1;
+  border-radius: 100%;
+  background-color: rgba(245, 245, 245, 0);
+  pointer-events: none;
+  transition: all 0.2s ease;
 }
 
-input[type="radio"]:checked:hover ~ .checkmark {
-  background-color: rgba(245, 245, 245, 1);
+input[type="radio"]:checked ~ .checkmark::after {
+  opacity: 1;
+  background-color: var(--violet3);
+  transition: all 0.4s ease;
+}
+
+input[type="radio"]:checked:hover ~ .checkmark::after {
+  opacity: 1;
+  background-color: var(--violet3);
+  transition: all 0.2s ease;
 }
 
 input[type="radio"]:focus ~ .checkmark {
@@ -253,11 +268,12 @@ input[type="radio"]:focus ~ .checkmark {
 }
 
 .radio-label {
-  margin-left: 48px;
+  padding-left: 32px;
   font-weight: 400;
   color: var(--textLight);
   font-size: 16px;
   line-height: 1.5;
+  padding-top: 2px;
 }
 
 @media screen and (max-width: 800px) {
