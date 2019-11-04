@@ -416,3 +416,5 @@ create-strong-passwords-desc = Use senhas fortes, seguras e difíceis de adivinh
 steps-to-protect-desc = Compreenda as ameaças mais comuns e saiba o que zelar.
 five-myths-desc = Saiba como evitar hábitos ruins com senhas, que facilitam o trabalho de um hacker.
 take-further-steps-desc = Descubra como atenuar os riscos de roubo de identidade para impedir perdas financeiras.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Alterações salvas!
