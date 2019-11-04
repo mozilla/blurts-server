@@ -546,3 +546,6 @@ create-strong-passwords-desc = Make your passwords strong, secure, and hard to g
 steps-to-protect-desc = Understand the most common threats and know what to look out for.
 five-myths-desc = Learn how to avoid bad password habits that make a hacker’s work easy.
 take-further-steps-desc = Find out how to mitigate the risks of identity theft to prevent financial loss.
+
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Changes saved!
