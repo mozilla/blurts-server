@@ -1,0 +1,32 @@
+  <table align="center" width="100%" style="max-width: 330px;">
+    <tr>
+      <td align="center">
+        <h2 class="email-hl" align="center" style="color: #20123a; font-size: 24px; text-align: center; line-height: 1.25; margin: auto; font-family: sans-serif;">
+          {{{ getEmailHeader }}}
+        </h2>
+      </td>
+    </tr>
+  </table>
+
+  <table align="center" width="100%" style="max-width: 400px;">
+    <tr>
+      <td align="center">
+        <p class="email-subhead" style="color: #0c0c0d; font-size: 16px; font-weight: 300; font-family: sans-serif; text-align: center; margin: 0; padding: 0 0 40px 0; line-height: 1.5;">
+          {{ getString "pre-fxa-blurb" }}
+        </p>
+      </td>
+    </tr>
+  </table>
+{{#each (getPreFxaTouts)}}
+  <table class="pre-fxa-tout" align="center" width="100%" style="max-width: 320px; padding-bottom: 40px;">
+    <tr>
+      <td align="center" style="max-width: 320px;">
+        <img src="{{ imgSrc }}" class="pre-fxa-icon" alt="" align="center" style="max-width: 90px;" />
+        <h2 style="color: rgb(32, 18, 58); font-size: 20px; font-weight: 700;font-family: sans-serif; line-height: 1.4; padding-bottom: 4px; padding-top: 12px; margin-bottom: 0; margin-top: 0;">{{headline}}</h2>
+        <p style="color: #0c0c0d; font-size: 15px; font-weight: 300; font-family: sans-serif; line-height: 1.5; text-align: center; margin: 0; padding: 0; line-height: 1.5;">
+          {{{ paragraph }}}
+        </p>
+      </td>
+    </tr>
+  </table>
+{{/each}}

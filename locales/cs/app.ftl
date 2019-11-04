@@ -232,7 +232,7 @@ find-out-what-hackers-know = Odhalte, co už o vás hackeři vědí. Zjistěte, 
 search-for-your-email = Vyhledejte svou e-mailovou adresu ve veřejně dostupných únicích dat sahajících zpět do roku 2007.
 back-to-top = Zpět na začátek
 comm-opt-0 = Poslat mi e-mail, pokud se jedna z mých níže uvedených e-mailových adres objeví v nějakém úniku dat.
-comm-opt-1 = Posílat všechna upozornění na úniky dat na { $primaryEmail }.
+comm-opt-1 = Posílat všechna upozornění na úniky dat na { $primaryEmail }
 stop-monitoring-this = Přestat monitorovat tuto e-mailovou adresu.
 resend-verification = Znovu poslat ověřovací e-mail
 add-new-email = Přidání nové e-mailové adresy
@@ -253,7 +253,7 @@ manage-email-addresses = Spravovat e-mailové adresy
 latest-breach-link = Zjistit, jestli jste byli součástí tohoto úniku
 welcome-back = Vítejte zpět, { $userName }!
 welcome-user = Vítejte, { $userName }!
-breach-alert-subject = { -product-name } našel vaši e-mailovou adresu v novém úniku dat.
+breach-alert-subject = { -product-name } našel vaši e-mailovou adresu v novém úniku dat
 your-info-was-discovered-headline = Vaše údaje byly nalezeny v novém úniku dat.
 your-info-was-discovered-blurb =
     Jste zaregistrováni k obdržení upozornění od služby { -product-name },
@@ -331,7 +331,7 @@ email-addresses-being-monitored =
 # your localization, because it would result in the number showing twice.
 passwords-exposed =
     { $passwords ->
-        [one] vašich heslo bylo vyzrazeno souhrnně ve všech únicích
+        [one] vaše heslo bylo vyzrazeno souhrnně ve všech únicích
         [few] vaše hesla byla vyzrazena souhrnně ve všech únicích
        *[other] vašich hesel bylo vyzrazeno souhrnně ve všech únicích
     }
@@ -381,6 +381,9 @@ other-known-breaches-found =
 additional-information-including = Další informace, jmenovitě:
 # Title
 email-addresses-title = E-mailové adresy
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Přehled
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
@@ -414,7 +417,7 @@ email-verified = E-mailová adresa byla úspěšně ověřena.
 email-added-to-subscription = Pokud se adresa { $email } objeví v nějakém úniku dat, dostanete upozornění.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
-email-verified-view-dashboard = Pro zobrazení a správu adres, které jste přihlásili k odběru informací o únicích dat, { $nestedSignInLink }.
+email-verified-view-dashboard = Pro zobrazení a správu adres, které jste nechali monitorovat pro případ úniku dat, { $nestedSignInLink }.
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = se přihlaste
 

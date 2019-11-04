@@ -39,7 +39,7 @@ user-verify-email-report-subject = Tu reporto de { -product-name }
 user-unsubscribe-token-error = Remover se del inscription require un jeton.
 user-unsubscribe-token-email-error = Remover se del inscription require un jeton e un emailHash.
 user-unsubscribe-title = { -product-name } : remover le inscription
-pwt-section-headline = Contrasignos plu forte = Melior protection
+pwt-section-headline = Contrasignos plus forte = Melior protection
 landing-headline = Tu derecto de esser secur contra hackers comencia ci.
 scan-placeholder = Insere le adresse de e-mail
 scan-submit = Cerca tu adresse de e-mail
@@ -47,7 +47,7 @@ scan-error = Debe esser un adresse de e-mail valide.
 download-firefox-banner-button = Discarga { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Inviate!
-sign-up = Registrar se
+sign-up = Inscriber se
 form-signup-error = Debe esser un adresse de email valide
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Data del violation de securitate:
@@ -60,14 +60,14 @@ unsub-blurb = Isto removera tu email ab le lista de { -product-name-nowrap } e t
 unsub-button = Remover le subscription
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Datos re le violation fornite per { $hibp-link }
-share-twitter = Le major parte del personas ha circa 100 contos online. Ha essite exponite ullos del tue a un violation de datos?
+share-twitter = Le major parte del gente ha circa 100 contos in linea. Ha un del tues essite exponite in un violation de datos? Verifica lo.
 share-facebook-headline = Discoperi si tu ha essite parte de un violation de datos
 share-facebook-blurb = Ha tu contos online essite exponite a un violation de datos?
 og-site-description = Discoperi si tu ha essite parte de un violation de datos con { -product-name }. Registra te pro alertas re futur violationes e obtener suggestiones pro mantener tu contos secur.
 show-all = Monstrar toto
 fxa-scan-another-email = Vole tu verificar un altere adresse de e-mail?
-sign-in = Authentica te
-sign-out = Disconnexion
+sign-in = Aperir session
+sign-out = Clauder session
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Gerer { -brand-fxa }
 have-an-account = Ha tu ja un conto?
@@ -77,7 +77,7 @@ fxa-pwt-summary-6 = Violationes de datos es in accrescimento. Si tu personal inf
 fxa-what-to-do-blurb-1 = Si tu non pote acceder, contacta le sito web pro demandar como actualisar illo. Vide un conto que tu non recognosce? Tu datos poterea haber essite vendite o redistribuite. Iste poterea alsi ser un conto que tu oblidava haber create o un compania que ha cambiate nomines.
 fxa-what-to-do-subhead-2 = Cessa de usar le contrasigno exponite e cambia illo ubique tu ha usate illo.
 fxa-wtd-blurb-2 = Piratas pote tentar de usar iste contrasigno con tu adresse de e-mail pro acceder a altere contos. Crea un contrasigno differente e unic pro cata conto, particularmente pro tu conto bancari, conto de e-mail, e altere sitos web ubi tu registra informationes personal.
-fxa-what-to-do-blurb-3 = Le major parte del violationes expone solo emails e contrasignos, ma alcunos include sensibile informationes financiari. Si tu conto bancari o numeros de carta de credito ha essite exponite, avisa tu banca pro possibile fraude. Verifica le extractos conto bancari pro cargas que tu non recognosce.
+fxa-what-to-do-blurb-3 = Le major parte del violationes expone solmente adresses de e-mail e contrasignos, ma alcunes include sensibile informationes financiari. Si tu conto bancari o numeros de carta de credito ha essite exponite, alerta tu banca al possibilitate de fraude. Survelia le extractos de conto pro pagamentos que tu non recognosce.
 fxa-what-to-do-subhead-4 = Obtene adjuta a rememorar tote tu contrasignos e pro los retener secur.
 fxa-what-to-do-blurb-4 = Le gestores de contrasignos, como 1Password, LastPass, Dashlane e Bitwarden, reserva tu contrasignos securmente e stipa los in sitos web pro te. Usa un gestor de contrasigno sur tu telephono e computator assi tu non ha a rememorar los tote.
 # Alerts is a noun
@@ -99,7 +99,7 @@ open-fxa-menu = Aperi le navigation de { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ULTIME VIOLATION ADDITE
 # Link title
-more-about-this-breach = Altero re iste violation
+more-about-this-breach = Plus sur iste violation
 take-control = Reprende le controlo de tu datos personal.
 cant-stop-hackers = Tu non pote stoppar le hackers. Salvo a te pote evitar le mal habitudes que rende facile lor labor.
 read-more-tips = Lege altere consilios pro le securitate
@@ -127,7 +127,7 @@ sensitive-sites-copy = { -product-name } revela solmente le contos associate con
 delayed-reporting-headline = Perque il ha requirite assi longe tempore pro signalar iste violation?
 delayed-reporting-copy = Il pote aliquando prender menses o annos proque le credentiales exponite in un violation de datos appare sur le web obscur. Violationes es addite a nostre base de datos a pena illos ha essite discoperite e verificate.
 about-fxm-headline = A proposito de { -product-name }
-about-fxm-blurb = { -product-name } adverti si tu contos online era implicate in un violation de datos. Discoperi si tu ha essite implicate in un violation de datos, recipe avisos re nove violationes, e prende mesuras pro proteger tu contos online. { -product-name } es fornite per { -brand-Mozilla }.
+about-fxm-blurb = { -product-name } te adverti si tu contos in linea ha essite implicate in un violation de datos. Discoperi si tu es victima de un tal violation, recipe avisos sur nove violationes, e prende mesuras pro proteger tu contos in linea. { -product-name } es fornite per { -brand-Mozilla }.
 fxm-warns-you = { -product-name } te adverti si tu adresse de e-mail ha essite divulgate in un violation de datos in linea. Vide si tu informationes ha essite divulgate, apprende a proteger melio tu contos in linea, e recipe alertas si tu adresse de e-mail appare in un nove violation.
 # How Firefox Monitor works
 how-fxm-works = Como functiona { -product-name }
@@ -142,7 +142,7 @@ wtd-after-data-agg = Que facer post un violation de aggregator de datos
 what-is-data-agg = Que es un aggregator de datos?
 what-is-data-agg-blurb = La aggregatores de datos o mediatores de datos, collige informationes ex registrationes public e los compra ex altere companias. Illes compila iste datos pro vender los a companias pro propositos de marketing. Le victimas de iste violationes ha minor riscos de fraudes financiari, ma le hackers poterea usar iste datos pro finger se illes o profilar se pro illes.
 protect-your-privacy = Protege tu confidentialitate online
-no-pw-to-change = Diversemente de un violation de sito web, il ha nulle contrasigno a cambiar.
+no-pw-to-change = Contrarimente a un violation de sito web, il non ha un contrasigno a cambiar.
 avoid-personal-info = Evitar de usar informationes personal in le contrasignos
 avoid-personal-info-blurb = Il es facile trovar anniversarios, adresses e familiares online. Tener iste parolas foras de tu contrasignos.
 
@@ -164,8 +164,8 @@ feat-enroll-multiple = Inscribe plure emails in le controlo del violationes
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
     { $breachCount ->
-        [one] Es implicate in { $breachCount } note violation.
-       *[other] Es implicate in { $breachCount } note violationes.
+        [one] Appare in { $breachCount } violation cognoscite.
+       *[other] Appare in { $breachCount } violationes cognoscite.
     }
 check-for-breaches = Controla pro violationes
 find-out-what-hackers-know = Discoperi lo que le hackers jam sape de te. Apprende como esser sempre un passo avante a illes.
@@ -202,8 +202,8 @@ ba-next-step-blurb-1 = Un forte contrasigno usa un combination de majusculas e m
 ba-next-step-2 = Cessa integremente de usar le contrasigno exponite.
 ba-next-step-blurb-2 = Cybercriminales poterea trovar tu contrasigno sur le web obscur e lo usa pro te authenticar a tu altere contos. Le melior maniera de proteger tu contos es usar unic contrasignos pro cata un.
 ba-next-step-3 = Recipe adjuta pro le creation de melior contrasignos e mantener los secur.
-ba-next-step-blurb-3 = Usa un gestor de contrasigno pro crear contrasignos forte e unic. Le gestores de contrasignos reserva con securitate tote tu authenticationes, assi que tu pote acceder los inter tote tu apparatos.
-faq1 = Io non recognosce iste compania o sito web. Perque es io in iste violation?
+ba-next-step-blurb-3 = Usa un gestor de contrasignos pro crear contrasignos forte e unic. Le gestores de contrasignos immagazina con securitate tote tu authenticationes, assi que tu pote acceder a illos sur tote tu apparatos.
+faq1 = Io non recognosce iste compania o sito web. Proque me concerne iste violation?
 faq2 = Perque il ha requirite assi longe tempore pro notificar me de iste violation?
 faq3 = Como sape io si isto es un email legitime de { -product-name }?
 new-breaches-found =
@@ -213,7 +213,7 @@ new-breaches-found =
     }
 sign-up-headline-1 = Recipe avisos in corso con un { -brand-fxa }.
 account-not-required = { -brand-name } navigator non necessari a un { -brand-fxa }. Tu pote reciper information re le servicios de { -brand-Mozilla }.
-was-your-info-exposed = Era tu information exponite in le violation de datos { $breachName }?
+was-your-info-exposed = Ha tu information essite exponite in le violation de datos de { $breachName }?
 find-out-if = Discoperi si tu datos era exponite in iste violation.
 fb-not-comp = Iste email non appareva in le violation { $breachName }.
 other-breaches-found =
@@ -224,10 +224,10 @@ other-breaches-found =
 fb-comp-only = Iste email appareva in le violation de datos { $breachName }.Iste email appareva in le violation { $breachName }.
 fb-comp-and-others =
     { $breachCount ->
-        [one] Iste email appareva in { $breachCount } note violation de datos, includite { $breachName }.
-       *[other] Iste email appareva in { $breachCount } note violationes de datos, includite { $breachName }.
+        [one] Iste e-mail appareva in { $breachCount } violation cognoscite de datos, includite { $breachName }.
+       *[other] Iste e-mail appareva in { $breachCount } violationes cognoscite de datos, includite { $breachName }.
     }
-no-other-breaches-found = Nulle altere violationes trovate ex un recerca de base.
+no-other-breaches-found = Nulle altere violation ha essite trovate in un recerca basic.
 no-results-blurb = Nos lo regretta, ille violation non es in nostre base de datos.
 all-breaches-headline = Tote le violationes in { -product-name }
 search-breaches = Cercar violationes
@@ -241,7 +241,7 @@ error-bot-blurb = Nos suspecta que tu poterea esser un robot perque tu ha cercat
 error-csrf-headline = Session foras tempore limite
 error-csrf-blurb = Selige le button Receder de tu navigator, recarga le pagina e prova de novo.
 error-invalid-unsub = Como remover le inscription al avisos de { -product-name }
-error-invalid-unsub-blurb = Tu debera remover te del inscription per un del emails que { -product-name } te ha inviate. Controlar tu cassa de ingresso pro messages de { -brand-team-email }. Selige le ligamine de remotion ex inrolamento, al fundo del email.
+error-invalid-unsub-blurb = Tu debera disabonar te un del messages que { -product-name } te ha inviate. Controla tu cassa de entrata pro messages de { -brand-team-email }. Clicca sur le ligamine de disabonamento al fundo del message.
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -255,23 +255,23 @@ email-addresses-being-monitored =
 # your localization, because it would result in the number showing twice.
 passwords-exposed =
     { $passwords ->
-        [one] contrasigno exponite tra tote le violationes
-       *[other] contrasignos exponite tra tote le violationes
+        [one] Contrasigno exponite inter tote le violationes
+       *[other] Contrasignos exponite inter tote le violationes
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
     { $breaches ->
-        [one] Violation de datos note que exponeva tu informationes
-       *[other] Violationes de datos note que exponeva tu informationes
+        [one] violation cognoscite de datos ha exponite tu info
+       *[other] violationes cognoscite de datos ha exponite tu info
     }
 # Button
 see-additional-breaches = Vider altere violationes
 scan-results-known-breaches =
     { $breachCount ->
-        [one] Iste email appareva in 1 violation de datos note.
-       *[other] Iste email appareva in { $breachCount } violationes de datos note.
+        [one] Iste e-mail appareva in 1 violation cognoscite de datos.
+       *[other] Iste e-mail appareva in { $breachCount } violationes cognoscite de datos.
     }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
@@ -293,14 +293,17 @@ find-out = Discoperir.
 new-unsub-error = Tu debera remover te del inscription per un del emails inviate ab { -product-name }.
 other-known-breaches-found =
     { $breachCount ->
-        [one] Comocunque, illo appareva in { $breachCount } altere note violation.
-       *[other] Comocunque, illo appareva in { $breachCount } altere note violationes.
+        [one] Nonobstante, illo appareva in { $breachCount } altere violation cognoscite.
+       *[other] Nonobstante, illo appareva in { $breachCount } altere violationes cognoscite.
     }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = Altere informationes, includite:
 # Title
 email-addresses-title = Adresses de e-mail
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Vision general
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
@@ -309,7 +312,7 @@ breach-overview-new = Le { $breachDate }, { $breachTitle } ha essite violate. Po
 monitor-preferences = { -product-short-name } Preferentias
 # When a user is signed in, this appears in the drop down menu 
 # and is followed by the user's primary Firefox Account email. 
-signed-in-as = Authenticate como: { $userEmail }
+signed-in-as = In session como: { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
 filter-by = Filtrar per categoria:
@@ -334,9 +337,9 @@ email-verified = Email verificate con successo!
 email-added-to-subscription = Nos te avisara si tu { $email } essera involvite in un nove violation de datos.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
-email-verified-view-dashboard = { $nestedSignInLink } pro vider e tractar tote le adresse email que tu ha registrate pro esser controlate pro violationes.
+email-verified-view-dashboard = Pro vider e gerer tote le adresses de e-mail que tu ha inscribite pro surveliantia contra violationes, { $nestedSignInLink }.
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
-sign-in-nested = authenticar se
+sign-in-nested = aperir session
 
 
 

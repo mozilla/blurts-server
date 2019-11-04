@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -37,6 +35,12 @@
                 [lower] обліковим записом Firefox
             }
     }
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = Умови та конфіденційність
 GitHub-link-title = GitHub
 error-scan-page-token = Ви намагалися сканувати забагато адрес електронної пошти за короткий проміжок часу. З міркувань безпеки ми тимчасово заблокували вам доступ до нових пошуків. Ви зможете спробувати знову пізніше.
@@ -331,7 +335,6 @@ error-invalid-unsub-blurb =
     Вам необхідно скасувати підписку в одному з надісланих вам листів від { -product-name }. 
     Знайдіть у своїй скриньці вхідне повідомлення від { -brand-team-email }. 
     Перейдіть за посиланням для скасування підписки в нижній частині повідомлення.
-login-link = Увійти
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -340,15 +343,6 @@ email-addresses-being-monitored =
         [one] Адреса електронної пошти відстежується
         [few] Адреси електронної пошти відстежуються
        *[many] Адрес електронної пошти відстежуються
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-        [one] Витік даних викрив вашу інформацію
-        [few] Витоки даних викрили вашу інформацію
-       *[many] Витоків даних викрили вашу інформацію
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -405,6 +399,9 @@ other-known-breaches-found =
 additional-information-including = Додаткова інформація, включаючи:
 # Title
 email-addresses-title = Адреси електронної пошти
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Огляд
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.

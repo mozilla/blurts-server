@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -10,6 +8,12 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Tài khoản Firefox
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = Điều khoản & quyền riêng tư
 GitHub-link-title = GitHub
 error-scan-page-token = Bạn đang cố quét quá nhiều địa chỉ email trong một khoảng thời gian ngắn. Vì lý do bảo mật, chúng tôi đã tạm thời chặn bạn khỏi các tìm kiếm mới. Bạn có thể thử lại sau.
@@ -299,20 +303,12 @@ error-invalid-unsub-blurb =
     Bạn cần hủy đăng ký từ một trong những email mà { -product-name }
     đã gửi cho bạn. Kiểm tra hộp thư đến của bạn để tìm thư được gửi từ
     { -brand-team-email }. Chọn liên kết hủy đăng ký ở dưới cùng của email.
-login-link = Đăng nhập
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
 email-addresses-being-monitored =
     { $emails ->
        *[other] Địa chỉ email đang được giám sát
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-       *[other] Vi phạm dữ liệu đã tiết lộ thông tin của bạn
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -361,6 +357,9 @@ other-known-breaches-found =
 additional-information-including = Thông tin bổ sung, bao gồm:
 # Title
 email-addresses-title = Địa chỉ email
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Tổng quan
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.

@@ -1,16 +1,16 @@
 .breach-card {
-  --logoDmns: 1.5rem;
-  --logoMargin: 1rem;
+  --logoDmns: 24px;
+  --logoMargin: 20px;
   --breachInfoPadding: calc(var(--logoMargin) * 2 + var(--logoDmns));
 
   padding: 1.5rem  3.25rem 1.5rem 1.5rem;
-  border-radius: 0.7rem;
+  border-radius: 8px;
   display: flex;
   flex-direction: row;
   overflow: hidden;
   margin: 0.5rem;
   transform: scale(1);
-  color: var(--color);
+  color: var(--ink);
   background-color: rgba(255, 255, 255, 1);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.15s ease-in-out;
@@ -22,67 +22,35 @@ a.breach-card:hover {
 
 .breach-key {
   font-size: 12px;
-  margin-top: 0.75rem;
+  margin-top: 8px;
   color: #5b5b5b;
 }
 
 .breach-value {
-  font-size: 15px;
-  color: var(--color);
+  font-size: 14px;
+  color: var(--ink);
   font-weight: 500;
 }
 
 .breach-key,
 .breach-value {
-  line-height: 1.2rem;
+  line-height: 1.5;
 }
+
+/* .more-about-this-breach {
+  font-size: 14px;
+} */
 
 .breach-card:hover {
   transform: scale(1.01);
   transition: all 0.15s ease-in-out;
 }
 
-a.breach-card:focus,
-a.latest-breach-link {
-  border: 1px solid rgba(255, 255, 255, 0);
-  outline: none;
-  box-shadow: none;
-  transition: all 0.15s ease-in-out;
-}
-
-.latest-breach-link,
-.more-about-this-breach {
-  display: flex;
-  align-items: center;
-  color: var(--blue4);
-  font-weight: 500;
-  opacity: 1;
-  transition: all 0.15s ease-in-out;
-}
-
-.latest-breach-link:hover,
-.more-about-this-breach:hover {
-  text-decoration: underline;
-  transition: all 0.15s ease-in-out;
-}
-
-a.latest-breach-link {
-  font-weight: 500;
-  color: var(--blue4);
-  padding-left: 4rem;
-  padding-bottom: 1.5rem;
-}
-
-.breach-card-title-wrapper {
-  padding: 0 var(--logoMargin);
-  align-content: center;
-  width: 100%;
-}
-
 .breach-title {
   padding-top: 2px;
   font-size: 18px;
   font-weight: 600;
+  font-family: "Metropolis", sans-serif;
 }
 
 .breach-info-wrapper {
@@ -93,11 +61,6 @@ a.latest-breach-link {
 .breach-logo {
   max-height: var(--logoDmns);
   max-width: var(--logoDmns);
-}
-
-.latest-breach .breach-logo {
-  max-height: 2.5rem;
-  max-width: 2.5rem;
 }
 
 .breach-logo-wrapper { /* reduce jumping on lazyload */
@@ -111,11 +74,11 @@ a.latest-breach-link {
 }
 
 .latest-breach .breach-logo-wrapper {
-  margin-left: 1.5rem;
+  margin-left: 20px;
 }
 
 .breach-card-link-wrap {
-  padding-top: 1.25rem;
+  padding-top: 12px;
 }
 
 .breach-title,
@@ -128,13 +91,13 @@ a.latest-breach-link {
 
 .two-up {
   flex: 1 1 45%;
-  margin: 1rem;
+  margin: var(--padding);
   max-width: 46%; /* prevent stretching in scan results */
 }
 
 .scan-res-breaches .two-up {
   flex: 1 1 47%;
-  margin: 1rem 0;
+  margin: var(--padding) 8px;
   max-width: 47%;
 }
 

@@ -25,9 +25,11 @@
             <section class="email-body">
               <img class="l10n-fxm-logo" src="/img/firefox-monitor-logo.png" alt="Firefox Monitor Logo" />
               <img class="l10n-fxm-logotype" src="/img/email_images/fxm-lg-drk.png" alt="Firefox Monitor" />
-              <h2 class="email-hl">
-                {{{ getEmailHeader }}}
-              </h2>
+              {{#unless preFxaEmail}}
+                <h2 class="email-hl">
+                  {{{ getEmailHeader }}}
+                </h2>
+              {{/unless}}
               {{> (lookup . 'whichPartial')}}
               {{> email_partials/email_button }}
             </section>
@@ -47,6 +49,7 @@
           <a href="/email-l10n/?partial=report&type=multipleBreaches">Report with Multiple Breaches</a>
           <a href="/email-l10n/?partial=report&type=noBreaches">Report with No Breaches</a>
           <a href="/email-l10n/?partial=report&type=breachAlert">Breach Alert</a>
+          <a href="/email-l10n/?partial=pre-fxa&type=pre-fxa">Pre-FxA Subscriber</a>
         </nav>
       </div>
     </section>

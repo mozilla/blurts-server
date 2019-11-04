@@ -2,56 +2,12 @@
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
-click-to-verify = Klicka på knappen "Verifiera min e-postadress" inom 24 timmar för att bekräfta ditt Firefox Monitor-konto. Din rapport skickas sedan till dig.
-verify-my-email = Verifiera min e-postadress
-report-scan-another-email = Skanna en annan e-postadress i { -product-name }
-automated-message = Detta är ett automatiserat e-postmeddelande; om du fått det felaktigt krävs ingen åtgärd.
-# Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
-we-sent-this-alert = Vi skickade det här meddelandet till { $userEmail } eftersom e-postadressen har valt att få varningar från { -product-name }.
-unsubscribe-email-link = Om du inte längre vill ha varningar från { -product-name }, avbryt prenumerationen.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Rapport { -product-name }
 report-date = Rapportdatum:
 email-address = E-postadress:
-# A list of next steps someone should take if their information has been involved in a data breach.
-what-to-do-next = Nästa steg
-report-headline =
-    { $breachCount ->
-        [0] Än så länge är allt bra.
-        [one] Ditt konto figurerar i { $breachCount } överträdelse.
-       *[other] Dina konton figurerar i { $breachCount } överträdelser.
-    }
-report-subhead-no-breaches =
-    Ditt konto visas inte i vår fullständiga rapport om överträdelser.
-    Det är goda nyheter, men det finns mer du kan göra.
-    Dataöverträdelser inträffar när som helst, så läs vidare för att lära dig hur du kan skydda dina lösenord.
-report-subhead-found-breaches = Här är din fullständiga Firefox Monitor rapport, som innehåller alla kända dataöverträdelser som innehåller den här e-postadressen.
-report-pwt-blurb = Lösenord är så värdefulla att tusentals av dem stjäls varje dag och handlas eller säljs på den svarta marknaden. Starkare lösenord skyddar dina konton och all personlig information som finns inom dem.
-report-pwt-headline-1 = Använd olika lösenord för varje konto
-report-pwt-summary-1 =
-    Återanvända samma lösenord överallt öppnar dörren för hackare. 
-    De kan använda det lösenordet för att logga in på dina andra konton.
-report-pwt-headline-2 = Skapa starka, unika lösenord
-report-pwt-summary-2 =
-    Hackers använder listor med vanliga lösenord för att försöka gissa ditt.
-    Ju längre och mer slumpmässigt ditt lösenord är desto svårare blir det att stjäla.
-report-pwt-headline-3 = Behandla säkerhetsfrågor som extra lösenord
-report-pwt-summary-3 =
-    Webbplatser kontrollerar inte att dina svar är korrekta, bara att de matchar varje gång.
-    Skapa långa, slumpmässiga svar och lagra dem någonstans säkert.
-report-pwt-headline-4 = Använd en lösenordshanterare
-report-pwt-summary-4 = Tjänster som 1Password, LastPass, Dashlane och Bitwarden genererar starka lösenord, lagra dem säkert och lägg till dem på webbplatser så att du inte behöver komma ihåg alla dina lösenord.
 # A link to legal information about mozilla products.
 legal = Juridisk information
-# Share Firefox Monitor by email subject line
-share-by-email-subject = Se om du har blivit utsatt för ett dataintrång.
-# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
-share-by-email-message =
-    Hej,
-    { -brand-name } har en gratis tjänst där du kan kontrollera om du har varit med i ett dataintrång. Så här fungerar det:
-    1. Gå till { "https://monitor.firefox.com" } och sök på din e-postadress.
-    2. Se om dina konton på nätet har blivit utsatta för ett dataintrång.
-    3. Hämta tips från { -product-name } om vad du ska göra härnäst.
 # Unsubscribe link in email.
 email-unsub-link = Avsluta prenumeration
 # This string appears in the footer of breach report and breach alert emails.
@@ -118,3 +74,23 @@ faq-v2-4 = Hur behandlar { -product-name } känsliga webbplatser?
 pre-fxa-message = <a>Skapa ett gratis { -brand-fxa }</a> och du kan lägga till upp till 15 e-postadresser.
 # Section headline
 monitor-another-email = Vill du övervaka en ny e-postadress?
+# Subject line of email
+pre-fxa-subject = En uppdatering från { -product-name }
+pre-fxa-headline = Vad förändras med { -product-name }
+pre-fxa-blurb =
+    Det här är vad som har ändrats sedan du registrerade dig för { -product-name }, tjänsten som
+    övervakar kända dataintrång för din personliga information. Vi länkar det till ditt Firefox-konto.
+pre-fxa-tout-1 = Var uppmärksam på fler intrång
+pre-fxa-p-1 =
+    <a>Skapa ett konto</a> för att övervaka upp till 15 e-postadresser för
+    dataintrång. Vi rekommenderar att du lägger till alla e-postadresser som du har använt för att skapa onlinekonton.
+pre-fxa-tout-2 = Få en översikt
+pre-fxa-p-2 =
+    Se alla dataintrång på ett ställe så att du vet vilka lösenord som ska ändras.
+    Översikten är endast tillgänglig med ett konto.
+pre-fxa-tout-3 = Fortsätt få e-postvarningar
+pre-fxa-p-3 =
+    Du kommer fortfarande att få varningar från { -product-name }. Vi berättar om din information
+    förekommer i ett nytt dataintrång.
+# Button at the bottom of pre-fxa email.
+create-account = Skapa konto

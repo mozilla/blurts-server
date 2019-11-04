@@ -2,40 +2,40 @@
  
  <div class="about-noodles">
   <main class="clear-header about-fxm container" data-page-label="About Firefox Monitor">
-      <div class="row about-row">
-        <div class="col-8">
-          <div class="fx-monitor-svg"></div>
-          <h2 class="headline wrap-headline">{{ getString "landing-headline" }}</h2>
-          <p class="wrap-headline">{{ getString "fxm-warns-you" }}</p>
-        </div>
-      </div>
-  </main>
- </div>
-  <section class="bg-white container">
-    <div class="row about-row flx-col">
-      <div class="content-wrap">
-        <div class="col-12">
-          <h3>{{ getString "how-fxm-works" }}</h3>
-        </div>
-        <div class="col-12 how-fxm-works no-vertical-padding space-between">
-          {{#each (getAboutPageStrings) }}
-            <div class="fxm-card-wrap flx">
-              <div class="fxm-card flx flx-col space-between">
-                <div>
-                  <h4 class="how-fxm-headline">{{ this.headline }}</h4>
-                  <p class="how-fxm-works-blurb">{{ this.subhead }}</p>
-                </div>
-                  {{#ifCompare this.ctaId "===" "signUp"}} 
-                    <button {{> analytics/fxa id="fx-monitor-about-page-sign-up" }} data-event-category="About Page SignUp" class="btn-grey open-oauth about-cta">
-                      {{ this.localizedCta }}
-                    </button>
-                  {{else}}
-                    <a class="btn-grey demi about-cta" target="_blank" href="{{ this.href }}">{{ this.localizedCta }}</a>
-                  {{/ifCompare}}
-              </div>
-            </div>
-          {{/each}}
-        </div>
+    <div class="row about-row">
+      <div class="col-8">
+        <div class="fx-monitor-svg"></div>
+        <h2 class="headline mw-550">{{ getString "landing-headline" }}</h2>
+        <p class="mw-550 sb-callout-body">{{ getString "fxm-warns-you" }}</p>
       </div>
     </div>
-  </section>
+    <section class="row">
+      <div class="gradient-inset about-row flx-col">
+        <div class="content-wrap">
+          <div class="col-12 txt-cntr">
+            <h3 class="feature-tip-headline bold ff-Met">{{ getString "how-fxm-works" }}</h3>
+          </div>
+            <div class="col-12 how-fxm-works flx-row no-vertical-padding space-between">
+              {{#each (getAboutPageStrings) }}
+                <div class="fxm-card-wrap flx">
+                  <div class="fxm-card flx flx-col space-between">
+                    <div class="txt-cntr">
+                      <h4 class="how-fxm-headline feature-title ff-Met">{{ this.headline }}</h4>
+                      <p class="how-fxm-works-blurb feature-subhead txt-light">{{ this.subhead }}</p>
+                    </div>
+                    {{#ifCompare this.ctaId "===" "signUp"}} 
+                      <button {{> analytics/fxa id="fx-monitor-about-page-sign-up" }} data-event-category="About Page SignUp" class="btn-violet-secondary btn-transparent btn-small open-oauth about-cta">
+                        {{ this.localizedCta }}
+                      </button>
+                    {{else}}
+                      <a class="btn-violet-secondary btn-transparent btn-small about-cta" target="_blank" href="{{ this.href }}">{{ this.localizedCta }}</a>
+                    {{/ifCompare}}
+                  </div>
+                </div>
+              {{/each}}
+            </div>å
+          </div>
+        </div>
+      </section>
+    </main>
+ </div>

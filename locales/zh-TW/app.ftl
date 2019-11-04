@@ -292,6 +292,9 @@ other-known-breaches-found =
 additional-information-including = 其他資訊，包含:
 # Title
 email-addresses-title = 電子郵件地址
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = 概觀
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.

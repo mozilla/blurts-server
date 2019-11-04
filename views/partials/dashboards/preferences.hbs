@@ -1,6 +1,6 @@
 {{#getUserPreferences}}
   <section class="container clear-header preferences sr" data-page-label="Preferences">
-    <div class="row jst-cntr">
+    <div class="row jst-cntr no-vertical-padding">
       <div class="pref">
         <h2 class="pref-headline">{{ getString "monitor-preferences" }}</span></h2>
       </div>
@@ -9,7 +9,7 @@
   <section>
     <div class="row flx-col">
       <div class="pref">
-        <h3 class="pref-section-headline">{{ getString "breach-alert-notifications" }}</h3>
+        <h3 class="pref-section-headline section-headline txt-purple7">{{ getString "breach-alert-notifications" }}</h3>
         <section>
           {{#each communicationOptions}}
             <label class="radio-container">
@@ -21,7 +21,7 @@
         </section>
       </div>
       <div class="pref">
-        <h3 class="pref-section-headline">{{ getString "email-addresses-title" }}</h3>
+        <h3 class="pref-section-headline section-headline txt-purple7">{{ getString "email-addresses-title" }}</h3>
         {{#each emails}}
           {{#ifCompare email_addresses.length ">" 0}}
             <h4 class="email-pref {{ this.className }}">{{ this.subhead }}</h4>
@@ -42,7 +42,8 @@
         {{/ifCompare}}
       </div>
       <div class="pref remove">
-        <a href="/user/remove-fxm"><h3 class="remove-fxm subhead">{{ getString "remove-fxm" }}{{> svg/arrow-head-right }}</h3></a>
+        {{> dashboards/remove-fxm-headline-subhead }}
+        <a class="remove-fxm btn-transparent btn-red btn-small" href="/user/remove-fxm">{{ getString "remove-fxm" }}</a>
       </div>
     </div>
   </section>

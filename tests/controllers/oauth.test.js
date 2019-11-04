@@ -49,6 +49,7 @@ test("confirmed request checks session cookie, calls FXA for token and email, ad
   EmailUtils.sendEmail = jest.fn();
   // Mock the getToken, got, and render calls
   const mockRequest = getMockRequest(userAddLanguages, mockState);
+  mockRequest.query = { state: mockState };
   const mockResponse = { redirect: jest.fn()};
   const mockFxAClient = { code : { getToken: jest.fn().mockReturnValueOnce({ accessToken: "testToken"}) } };
   got.mockResolvedValue({ body: `{"email": "${testFxAEmail}"}` });
@@ -78,6 +79,7 @@ test("confirmed request checks session cookie, calls FXA for token and email, re
   const mockState = "123456789";
   const userAddLanguages = "en-US,en;q=0.5";
   const mockRequest = getMockRequest(userAddLanguages, mockState);
+  mockRequest.query = { state: mockState };
   const mockResponse = { redirect: jest.fn() };
   const mockFxAClient = { code : { getToken: jest.fn().mockReturnValueOnce({ accessToken: "testToken"}) } };
 
@@ -109,11 +111,22 @@ test("confirmed request without session state cookie throws Error", async () => 
 });
 
 
-test("confirmed request with bad session state cookie throws Error", async () => {
+test("confirmed request with no session state cookie throws Error", async () => {
   // Mock request, but don't mock the getToken call to trigger the client-oauth2 error
   mockRequest.session = { state: { } };
   mockRequest.originalUrl = "";
   const mockResponse = {};
 
-  await expect(confirmed(mockRequest, mockResponse)).rejects.toThrow("Invalid state");
+  await expect(confirmed(mockRequest, mockResponse)).rejects.toThrow("oauth-invalid-session");
+});
+
+
+test("confirmed request with bad session state cookie throws Error", async () => {
+  // Mock request, but don't mock the getToken call to trigger the client-oauth2 error
+  mockRequest.session = { state: 12345 };
+  mockRequest.query = { state: 67890 };
+  mockRequest.originalUrl = "";
+  const mockResponse = {};
+
+  await expect(confirmed(mockRequest, mockResponse)).rejects.toThrow("oauth-invalid-session");
 });

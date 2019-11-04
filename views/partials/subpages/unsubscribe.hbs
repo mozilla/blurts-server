@@ -6,7 +6,7 @@
     <input type="hidden" name="emailHash" value="{{ hash }}">
     <div class="input-group-button">
       <input type="submit" class="button submit unsub" value="{{getString "unsub-button"}}" data-server-url="{{ SERVER_URL }}">
-      <img class="loader" src="/img/loader.gif" alt="" />
+      {{> forms/loader}}
     </div>
   </form>
 </section>

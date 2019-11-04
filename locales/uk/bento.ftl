@@ -11,6 +11,8 @@ fx-mobile = Браузер { -brand-name } для мобільного
 
 
 
+# Aria label for the Bento button
+bento-button-title = Додатки і сервіси { -brand-name }
 # Bento headline
 fx-makes-tech = { -brand-name } це технологія, яка захищає вашу приватність у мережі.
 # A link at the bottom of the Bento menu

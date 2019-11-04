@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = مانیٹر
@@ -10,6 +8,12 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox اکاؤنٹ
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = شرائط اور رازداری
 GitHub-link-title = GitHub
 error-not-subscribed = یہ ایمیل ایڈریس { -product-name } مے سبسکرائب نہیں ہے۔
@@ -58,8 +62,17 @@ how-fxm-3-headline = اپنے براؤزر میں اطلاعات حاصل کری
 
 ## What to do after data breach tips
 
+change-pw = اپنا پاس ورڈ تبدیل کریں
 add-new-email = ایک نیا ای میل پتہ شامل کریں
 
 ## Updated error messages
 
-login-link = لاگ ان
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = مینیو
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+
+
+

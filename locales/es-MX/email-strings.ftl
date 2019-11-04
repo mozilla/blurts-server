@@ -70,6 +70,8 @@ email-verify-footer-copy = Estás recibiendo este correo por que te suscribiste 
 view-my-dashboard-cta = Ver mi panel de control
 # Button text
 verify-email-cta = Verificar correo
+# Button text
+see-all-breaches = Ver todas las filtraciones
 # Headline of verification email
 email-link-expires = Este enlace expira en 24 horas
 email-verify-blurb = Verifica tu correo para añadirlo a { -product-name } y registrarte para alertas de nuevas filtraciones.
@@ -89,5 +91,30 @@ email-subject-no-breaches = { -product-name } se encontraron filtraciones conoci
 email-subject-verify = Verifica tu correo para { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Saber más acerca de { $fxmLink }
+email-sensitive-disclaimer =
+    Debido a la naturaleza sensible de esta filtración, no se harán públicas las direcciones de correo afectadas.
+    Has recibido esta alerta porque se ha comprobado que eres el propietario de esta dirección de correo.
+fxm-warns-you-no-breaches =
+    { -product-name } te advierte sobre las filtraciones de datos que afectan a tu información personal.
+    Por ahora no se ha encontrado ninguna. Te enviaremos una alerta si tu dirección de correo aparece en una nueva filtración.
+fxm-warns-you-found-breaches =
+    { -product-name } te advierte sobre las filtraciones de datos que afectan a tu información personal.
+    También te has suscrito para recibir alertas si tu dirección de correo aparece en una nueva filtración.
+email-breach-alert-blurb =
+    { -product-name } te advierte sobre las filtraciones de datos que afectan a tu información personal.
+    Acabamos de recibir información sobre la filtración de datos de otra empresa.
 # List headline
 faq-list-headline = Preguntas frecuentemente realizadas
+# Link Title
+faq-v2-1 = No reconozco a ninguna de estas compañías o sitios web. ¿Por qué aparezco en la filtración?
+# Link Title
+faq-v2-2 = ¿Debo hacer algo si la filtración se produjo hace años o si es una cuenta antigua?
+# Link Title
+faq-v2-3 = Acabo de ver que mis datos aparecen en una filtración. ¿Qué hago ahora?
+# Link Title
+faq-v2-4 = ¿Cómo gestiona { -product-name } los sitios sensibles?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Crea una { -brand-fxa } gratuita</a> y podrás añadir hasta 15 direcciones de correo electrónico.
+# Section headline
+monitor-another-email = ¿Quieres consultar otro correo electrónico?

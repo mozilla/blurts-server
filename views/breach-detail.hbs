@@ -16,12 +16,12 @@
   </main>
 
 <!--dataClasses-->
-  <section class="bg-light">
+  <section class="bg-light detail-section">
     <div class="row jst-cntr flx-col">
-      <div class="col-8 overview">
+      <div class="mw-8 overview">
         {{> breach-detail-content-group overview}}
         {{#if delayedReporting }}
-          <a class="text-link" href="#delayed-reporting">
+          <a class="text-link blue-link" href="#delayed-reporting">
             {{delayedReporting.headline}}
           </a>
         {{/if}}
@@ -30,30 +30,33 @@
   </section>
   <section class="detail-section bg-white">
     <div class="row jst-cntr flx-col">
-      <div class="col-8 breach-details">
+      <div class="mw-8 breach-details">
         {{> breach-detail-content-group dataClasses}}
-        {{> hibp-attribution}}
       </div>
     </div>
   </section>
 
   <section class="detail-section bg-light">
     <div class="row jst-cntr flx-col">
-      <div class="col-8 breach-detail what-to-do-tips">
+      <div class="mw-8 breach-detail what-to-do-tips">
         {{> breach-detail-content-group whatToDoTips}}
       </div>
     </div>
   </section>
-  <section class="detail-section bg-white">
+  <section class="bg-split">
     <div class="row jst-cntr flx-col">
       {{#unless ./../req.session.user}}
-        {{> sign-up-banners/scan-results-sign-up }}
+        {{> sign-up-banners/breach-detail-sign-up-banner }}
       {{/unless}}
-      <div id="what-is-this-breach" class="col-8 breach-details">
+    </div>
+  </section>
+  <section class="detail-section bg-white">
+    <div class="row jst-cntr flx-col">
+      <div id="what-is-this-breach" class="mw-8 breach-details">
         {{> breach-detail-content-group whatIsThisBreach}}
       </div>
       {{#if delayedReporting}}
-        <div id="delayed-reporting" class="col-8 breach-details">
+        <div id="delayed-reporting" class="mw-8 breach-details">
           {{> breach-detail-content-group delayedReporting}}
         </div>
       {{/if}}

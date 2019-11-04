@@ -2,58 +2,12 @@
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
-click-to-verify = Klicke innerhalb von 24 Stunden auf die Schaltfläche „Meine E-Mail-Adresse bestätigen“, um dein Firefox-Monitor-Konto zu bestätigen. Dein Bericht wird dann an dich gesendet.
-verify-my-email = Meine E-Mail-Adresse bestätigen
-report-scan-another-email = Eine weitere E-Mail-Adresse in { -product-name } scannen
-automated-message = Dies ist eine automatisierte E-Mail; solltest du diese fälschlicherweise erhalten haben, musst du nichts tun.
-# Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
-we-sent-this-alert = Wir haben diese Nachricht an { $userEmail } gesendet, weil die E-Mail-Adresse Warnungen von { -product-name } aktiviert hat.
-unsubscribe-email-link = Wenn du keine Warnungen von { -product-name } mehr erhalten möchtest, melde dich einfach ab.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Bericht zu { -product-name }
 report-date = Datum des Berichts:
 email-address = E-Mail-Adresse:
-# A list of next steps someone should take if their information has been involved in a data breach.
-what-to-do-next = Nächste Schritte
-report-headline =
-    { $breachCount ->
-        [0] So weit, so gut.
-        [one] Dein Konto ist von { $breachCount } Datenleck betroffen.
-       *[other] Dein Konto ist von { $breachCount } Datenlecks betroffen.
-    }
-report-subhead-no-breaches =
-    Dein Konto erscheint nicht in unserem vollständigen Bericht über Datenlecks.
-    Das sind gute Nachrichten, aber du kannst noch mehr tun.
-    Datenschutzverletzungen passieren jederzeit. Lies weiter, um zu erfahren, wie du deine Passwörter schützen kannst.
-report-subhead-found-breaches = Hier ist dein vollständiger Bericht von Firefox Monitor, der alle bekannten Datenlecks enthält, in dem diese E-Mail-Adresse vorkommt.
-report-pwt-blurb =
-    Passwörter sind so wertvoll, dass Tausende von ihnen jeden Tag gestohlen und auf dem Schwarzmarkt gehandelt oder verkauft werden.
-    Stärkere Passwörter schützen deine Konten und alle persönlichen Informationen, die sich darin befinden.
-report-pwt-headline-1 = Verwende für jedes Konto ein anderes Passwort
-report-pwt-summary-1 =
-    Dasselbe Passwort überall zu verwenden, öffnet Hackern Tür und Tor.
-    Hacker können dieses Passwort verwenden, um sich auch bei deinen anderen Konten anzumelden.
-report-pwt-headline-2 = Erstelle starke, einzigartige Passwörter
-report-pwt-summary-2 =
-    Hacker verwenden Listen gewöhnlicher Passwörter, um zu versuchen, auch deine zu erraten.
-    Je länger und zufälliger dein Passwort ist, desto schwieriger lässt es sich stehlen.
-report-pwt-headline-3 = Behandele Sicherheitsfragen wie zusätzliche Passwörter
-report-pwt-summary-3 = Websites überprüfen nicht den Wahrheitsgehalt deiner Antworten, sondern nur, ob sie immer gleich sind. Erstelle lange, beliebige Antworten und speichere sie an einem sicheren Ort ab.
-report-pwt-headline-4 = Verwende einen Passwort-Manager
-report-pwt-summary-4 =
-    Passwort-Manager wie 1Password, LastPass, Dashlane und Bitwarden speichern deine Passwörter und tragen sie auf Websites für dich ein.
-    Sie helfen dir sogar dabei, sichere Passwörter zu erstellen.
 # A link to legal information about mozilla products.
 legal = Rechtliches
-# Share Firefox Monitor by email subject line
-share-by-email-subject = Überprüfe, ob du von einem Datenleck betroffen bist.
-# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
-share-by-email-message =
-    Hallo,
-    { -brand-name } bietet einen kostenlosen Dienst, der für dich überprüft, ob du von einem Datenleck betroffen bist. So funktioniert es:
-    1. Geh auf { "https://monitor.firefox.com" } und suche nach deiner E-Mail-Adresse.
-    2. Überprüfe, ob deine Online-Konten schon einmal Teil eines Datenleck wurden.
-    3. Hol dir Tipps von { -product-name } für die nächsten Schritte.
 # Unsubscribe link in email.
 email-unsub-link = Abonnement entfernen
 # This string appears in the footer of breach report and breach alert emails.
@@ -120,3 +74,23 @@ faq-v2-4 = Wie behandelt { -product-name } vertrauliche Websites?
 pre-fxa-message = <a>Erstellen Sie ein kostenloses { -brand-fxa }</a>, dann können Sie bis zu 15 E-Mail-Adressen hinzufügen.
 # Section headline
 monitor-another-email = Sollen noch weitere E-Mail-Adressen überwacht werden?
+# Subject line of email
+pre-fxa-subject = Neuigkeiten zu { -product-name }
+pre-fxa-headline = Änderungen an { -product-name }
+pre-fxa-blurb =
+    Folgendes hat sich geändert, seit Sie sich bei { -product-name } angemeldet haben, dem Dienst
+    der bekannte Datenlecks Ihrer persönlichen Daten beobachtet. Wir verknüpfen ihn mit Firefox-Konten.
+pre-fxa-tout-1 = Lassen Sie sich bei mehr Datenlecks warnen
+pre-fxa-p-1 =
+    <a>Erstellen Sie ein Konto</a>, um bis zu 15 E-Mail-Adressen auf Datenlecks
+     zu überwachen. Es wird empfohlen, E-Mail-Adressen hinzuzufügen, die Sie zum Erstellen von Online-Konten verwendet haben.
+pre-fxa-tout-2 = Wir bieten eine übersichtliche Auflistung
+pre-fxa-p-2 =
+    Zeigen Sie alle Datenlecks an einem Ort an, damit Sie wissen, welche Passwörter geändert werden müssen.
+    Die Datenleck-Übersicht ist nur mit einem Konto verfügbar.
+pre-fxa-tout-3 = Erhalten Sie weiterhin E-Mail-Benachrichtigungen
+pre-fxa-p-3 =
+    Sie erhalten weiterhin Benachrichtigungen von{ -product-name }. Wir informieren Sie, wenn Ihre 
+    Daten in einem neuen Datenleck auftauchen.
+# Button at the bottom of pre-fxa email.
+create-account = Konto erstellen

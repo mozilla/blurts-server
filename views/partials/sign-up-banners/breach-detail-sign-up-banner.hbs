@@ -1,9 +1,13 @@
-<section class="container monitor-features bg-dark">
-  <div class="row flx-col jst-cntr">
-    <div class="col-12 flx-cntr txt-cntr">
-      <h2 class="skinny-headline">{{ getString "monitor-your-online-accounts" }}</h2>
-        {{> sign-up-button buttonValue="sign-up-for-alerts" }}
-        <p class="desc">{{ getString "create-a-fxa" }}</p>
-    </div>
-  </div>
-</section>
+
+      <div class="sign-up-wrapper breach-detail-sign-up drop-shadow fxa-signup-gradient">
+        <div class="mw-8 sign-up-banner">
+          <div class="sign-up-headline-list-wrapper flx flx-col">
+            <h2 class="sign-up-headline">{{ getString "sign-up-headline-1" }}</h2>
+            {{> feature-list}}
+          </div>
+          <div class="flx flx-col sign-up-cta">
+            {{> sign-up-button buttonValue="sign-up-for-alerts"}}
+            {{> sign-up-banners/browser-not-required }}
+          </div>
+        </div>
+      </div>

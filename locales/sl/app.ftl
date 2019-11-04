@@ -94,6 +94,11 @@ fxa-pwt-summary-2 =
     Uporabite vsaj dve besedi ter kombinacijo črk, številk in posebnih znakov.
 fxa-pwt-summary-4 = Upravitelji gesel kot so 1Password, LastPass, Dashlane in Bitwarden shranjujejo vaša gesla in jih namesto vas izpolnjujejo na spletnih mestih. Pomagali vam bodo tudi pri ustvarjanju močnih gesel.
 fxa-pwt-summary-6 = Število kraj podatkov se povečuje. Če se vaši osebni podatki pojavijo v novi kraji podatkov, vam { -product-name } pošlje opozorilo. Tako lahko hitro ukrepate in zaščitite svoje račune.
+fxa-what-to-do-blurb-1 =
+    Če se ne morete prijaviti, se obrnite na lastnika spletne strani. 
+    Opazite račun, ki ga ne prepoznate? Vaše podatke lahko nepridipravi 
+    prodajo ali uporabijo brez vaše vednosti. To se lahko zgodi tudi z računi, na 
+    katere ste že pozabili ali je prišlo do spremembe imena podjetja.
 fxa-what-to-do-subhead-2 = Ne uporabljajte izpostavljenega gesla in ga spremenite povsod, kjer ste ga uporabili.
 fxa-wtd-blurb-2 = Hekerji lahko vaše geslo in e-poštni naslov poskusijo znova uporabiti za dostop do drugih računov. Za vsak račun ustvarite edinstveno geslo, še posebej za svoj bančni račun, e-pošto in druga spletna mesta, kjer shranjujete osebne podatke.
 fxa-what-to-do-blurb-3 =
@@ -118,6 +123,8 @@ breaches = Kraje podatkov
 # Link title
 security-tips = Varnostni nasveti
 fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Odpri navigacijo { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ZADNJA DODANA KRAJA PODATKOV
 # Link title
@@ -145,7 +152,16 @@ unverified-breach-plural = Nepotrjene kraje podatkov
 spam-list-breach-plural = Kraje podatkov neželene pošte
 what-data = Kateri podatki so bili ogroženi:
 sensitive-sites = Kako { -product-name } obravnava občutljiva spletna mesta?
+sensitive-sites-copy =
+    { -product-name } razkriva račune, povezane s temi 
+    vrstami kraj, samo po potrditvi e-poštnega naslova. To pomeni, da samo vi 
+    vidite, ali so bili vaši podatki del te kraje podatkov (razen, če ima kdo drug 
+    dostop do vašega e-poštnega računa).
 delayed-reporting-headline = Zakaj je trajalo toliko časa, da je bila kraja podatkov prijavljena?
+delayed-reporting-copy =
+    Včasih traja mesece ali leta, da pride do izpostavitve poverilnic 
+    v primeru kraje podatkov. Kraje podatkov se dodajo v našo bazo 
+    takoj ko so odkrite in preverjene.
 about-fxm-headline = O { -product-name }ju
 about-fxm-blurb =
     { -product-name } vas opozori, če so bili vaši spletni računi vključeni v krajo podatkov.  
@@ -177,7 +193,13 @@ how-fxm-3-blurb =
 wtd-after-website = Kaj storiti po kraji podatkov spletne strani
 wtd-after-data-agg = Kaj storiti po kraji podatkov zbiralnika podatkov
 what-is-data-agg = Kaj je zbiralnik podatkov?
+what-is-data-agg-blurb =
+    Zbiralniki podatkov ali posredniki podatkov, zbirajo podatke iz javno 
+    dostopnih virov in kupujejo od drugih podjetij. Zbrane podatke prodajajo podjetjem 
+    za namene oglaševanja. Za žrtve teh kraj podatkov je malo verjetno, da bi doživele finančno 
+    goljufijo, vendar lahko hekerji te podatke uporabijo za lažno predstavljanje ali ustvarjanje njihovega profila.
 protect-your-privacy = Zaščitite svojo spletno zasebnost
+no-pw-to-change = Za razliko od kraj podatkov spletnih strani, tukaj ni gesla, ki bi ga lahko spremenili.
 avoid-personal-info = Izogibajte se uporabi osebnih podatkov v geslih
 avoid-personal-info-blurb = Na spletu lahko preprosto najdete rojstne dneve, naslove in imena družinskih članov. Izogibajte se uporabi teh besed v geslih.
 
@@ -244,6 +266,10 @@ ba-next-step-blurb-1 =
     posebne znake in številke. Ne vsebuje osebnih podatkov, kot so 
     naslov, rojstni dan ali družinska imena.
 ba-next-step-2 = Popolnoma prenehajte uporabljati izpostavljeno geslo.
+ba-next-step-blurb-2 =
+    Spletni napadalci bi lahko na temnem spletu našli vaše geslo in ga uporabili 
+    za prijavo v vaše druge račune. Najboljši način zaščite vaših računov 
+    je, da za vsakega uporabite edinstveno geslo.
 ba-next-step-3 = Pomagajte si pri ustvarjanju boljših gesel in njihovi zaščiti.
 ba-next-step-blurb-3 =
     Uporabite upravitelja gesel za ustvarjanje močnih, edinstvenih gesel. Upravitelji gesel varno shranjujejo vse vaše
@@ -288,9 +314,17 @@ currently-showing = Prikazano:
 ## Updated error messages
 
 error-bot-headline = Iskanja so začasno onemogočena
+error-bot-blurb =
+    Skrbi nas, da ste morda bot, ker ste v kratkem času 
+    iskali več e-poštnih naslovov. Za zdaj so vaša iskanja 
+    onemogočena. Poskusite znova kasneje.
 error-csrf-headline = Seja je potekla
 error-csrf-blurb = V brskalniku izberite gumb Nazaj, ponovno naložite stran in poskusite znova.
 error-invalid-unsub = Kako se odjaviti od opozoril { -product-name }ja
+error-invalid-unsub-blurb =
+    Odjaviti se boste morali iz enega od poslanih 
+    e-poštnih sporočil { -product-name }ja. V nabiralniku preverite prejeta sporočila 
+    { -brand-team-email }. Na dnu e-poštnega sporočila izberite povezavo za odjavo.
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -360,6 +394,9 @@ other-known-breaches-found =
 additional-information-including = Dodatne informacije, vključno z:
 # Title
 email-addresses-title = E-poštni naslovi
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Pregled
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
@@ -389,6 +426,13 @@ verify-the-link = Potrdite povezavo poslano na { $userEmail }, da e-poštni nasl
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+email-verified = E-poštni naslov uspešno preverjen!
+email-added-to-subscription = Opozorili vas bomo, v kolikor se bo naslov { $email } pojavil v novi kraji podatkov.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = { $nestedSignInLink } se za ogled in upravljanje vseh e-poštnih naslovov, s katerimi ste se prijavili na spremljanje kraj podatkov.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = Prijavite se
 
 
 

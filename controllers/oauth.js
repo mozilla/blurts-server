@@ -58,6 +58,10 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
     throw new FluentError("oauth-invalid-session");
   }
 
+  if (req.session.state !== req.query.state) {
+    throw new FluentError("oauth-invalid-session");
+  }
+
   const fxaUser = await client.code.getToken(req.originalUrl, { state: req.session.state });
   // Clear the session.state to clean up and avoid any replays
   req.session.state = null;
@@ -105,7 +109,7 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
         recipientEmail: email,
         date: req.fluentFormat(new Date()),
         unsafeBreachesForEmail: unsafeBreachesForEmail,
-        ctaHref: EmailUtils.getViewMyDashboardHref(utmID),
+        ctaHref: EmailUtils.getEmailCtaHref(utmID, "view-my-dashboard"),
         unsubscribeUrl: EmailUtils.getUnsubscribeUrl(verifiedSubscriber, utmID),
         whichPartial: "email_partials/report",
       }

@@ -22,12 +22,17 @@ error-not-subscribed = Man rutz'ib'an ta rub'i' re rochochib'al taqoya'l re' { -
 error-hibp-throttled = K'ïy taq rokem ri { -brand-HIBP }.
 error-hibp-connect = Xsach toq nok pa { -brand-HIBP }.
 error-hibp-load-breaches = Man xesamajib'ëx ta ri taq mak.
+error-must-be-signed-in = K'o chi natikirisaj molojri'ïl pa ri { -brand-fxa }.
+error-to-finish-verifying = Richin nak'isib'ej rujikib'anik re taqoya'l re' richin { -product-name }, k'o chi yatok pa ri nab'ey rutaqoya'l rub'i' ataqoya'l.
 home-title = { -product-name }
 home-not-found = Man xilitäj ta ruxaq.
 oauth-invalid-session = Man okel ta ri molojri'ïl
 scan-title = { -product-name } : Ruq'i'oj Tz'ajwachib'enïk
 user-add-invalid-email = Man okel ta ri Taqoya'l
+user-add-too-many-emails = Nanik'oj ronojel ri taq taqoya'l ya'on q'ij.
 user-add-email-verify-subject = Tanik'oj ri rutz'ib'axik ab'i' pa { -product-name }.
+user-add-duplicate-email = Xtz'aqatisäx yan re taqoya'l re' { -product-name }.
+user-add-duplicate-email-part-2 = Tatz'eta' ri { $preferencesLink } richin nanik'oj achike rub'anon ri { $userEmail }.
 error-headline = Sachoj
 user-verify-token-error = K'atzinel ri rutoken jikib'anïk.
 user-verify-email-report-subject = Ri { -product-name } atzijol
@@ -36,7 +41,7 @@ user-unsubscribe-token-email-error = Richin nayüj tz'ib'anïk b'i'aj rajowaxik 
 user-unsubscribe-title = { -product-name } : Tiyuj tz'ib'anïk b'i'aj
 pwt-section-headline = Ütz Ewan taq Tzij = Ütz Chajinïk
 landing-headline = Wawe' nitikïr ri ach'ojib'al richin at jikïl chi kiwäch ri ajjaker.
-scan-placeholder = Titz'ib'äx Rochochib'al Taqoya'l
+scan-placeholder = Tatz'ib'aj Rochochib'al Taqoya'l
 scan-submit = Takanoj ri Ataqoya'l
 scan-error = K'o chi jun okel taqoya'l.
 download-firefox-banner-button = Tiqasäx { -brand-name }
@@ -104,7 +109,7 @@ home = Tikirib'äl
 # Link title
 breaches = Taq tz'ilanem
 # Link title
-security-tips = Jikomal taq Na'oj
+security-tips = Jikom taq Na'oj
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Tijaq { -brand-fxa } okem pa k'amaya'l
@@ -112,12 +117,12 @@ open-fxa-menu = Tijaq { -brand-fxa } okem pa k'amaya'l
 latest-breach = RUK'ISIB'ÄL TZ'ILANEM XTZ'AQATISÄX
 # Link title
 more-about-this-breach = Ch'aqa' chik chi rij re tz'ilanem re'
-take-control = Tik'oje' pan aq'a' ri awetamab'al.
+take-control = Xa xe awik'in tik'oje' ri awetamab'al.
 cant-stop-hackers = Man yatikïr ta ye'aq'ät ri ajjak. Po yatikïr naq'ät itzel taq na'oj richin anin nikib'än ri kisamaj.
-read-more-tips = Tawetamaj ch'aqa' chik chi kij Jikomal taq Na'oj
+read-more-tips = Tawetamaj ch'aqa' chik chi kij Jikom taq Na'oj
 how-hackers-work = Tetamäx rub'eyal yesamäj ri ajjak
 monitor-your-online-accounts = Tatz'ib'aj ab'i' richin nanik'oj ri kitz'ilanem jikomal rik'in { -brand-fxa }.
-stay-alert = Kak'ase' chi kiwäch k'ak'a' taq tz'ilanem
+stay-alert = Tawetamala' kiwa ri k'ak'a' taq tz'ilanem
 if-your-info = We ri awetamab'al nik'oje' pa jun k'ak'a' tz'ilanem, niqatäq jun rutzijol chawe.
 search-all-emails = Ke'ak'anoj kitz'ilanem ri kochochib'al ataqoya'l chuqa' tak'ulu' kitzijol k'ak'a' taq tz'ilanem.
 monitor-several-emails = Ke'anik'oj k'ïy taq taqoya'l
@@ -207,8 +212,8 @@ appears-in-x-breaches =
        *[other] Q'aläj pa { $breachCount } taq tz'ilanem etaman kiwäch.
     }
 check-for-breaches = Ke'akanoj taq Tz'ilanem
-find-out-what-hackers-know = Tawila' achike ketaman ri ajjak chawij. Tawila' achike rub'eyal nab'eyij chi kiwäch.
-search-for-your-email = Takanoj ri rochochib'al ataqoya'l pa kitz'ilanem aj winäq taq tzij k'a 2007.
+find-out-what-hackers-know = Tawila' achike ketaman ri ajjak chawij. Tawila' achike rub'eyal yanab'eyij chi kiwäch.
+search-for-your-email = Takanoj ri rochochib'al ataqoya'l pa aj winäq kitz'ilanem taq tzij k'a richin ri 2007.
 back-to-top = Titzolin Ajsik
 comm-opt-0 = Tiya' rutzijol chwe we ri rochochib'al nutaqoya'l k'o pa jun kitz'ilanem tzij.
 comm-opt-1 = Titaq ronojel rutzijol tz'ilanem chi re { $primaryEmail }.
@@ -313,6 +318,14 @@ passwords-exposed =
         [one] Ewan tzij k'utun pa ronojel taq  tz'ilanem
        *[other] Ewan taq tzij ek'utun pa ronojel taq tz'ilanem
     }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] Tz'ilanem tzij etaman ruwäch, xkik'üt ri awetamab'al.
+       *[other] Taq tz'ilanem tzij etaman kiwäch, xkik'üt ri awetamab'al.
+    }
 # Button
 see-additional-breaches = Ketz'et Kitz'aqat taq Tz'ilanem
 scan-results-known-breaches =
@@ -351,6 +364,13 @@ other-known-breaches-found =
 additional-information-including = Ruwi' etamab'äl, nitz'aqatisäx:
 # Title
 email-addresses-title = Kochochib'al Taqoya'l
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Chijun rutzijoxkil
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = Ri { $breachDate }, { $breachTitle } xuk'ulwachij jun tz'ilanem. Toq xilitäj chuqa' toq xjikib'äx ri tz'ilanem, xtz'aqatisäx pa qacholxe'el richin { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Taq rajowab'al { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
@@ -367,10 +387,42 @@ join-firefox = K'o jun rub'anikil richin nachajij awichinanem. Tatunu' awi' { -b
 # Link title
 learn-more-link = Tetamäx ch'aqa' chik.
 email-sent = ¡Xtaq ri Taqoya'l!
+# Form title
+want-to-add = ¿La nawajo' natz'aqatisaj chik jun taqoya'l?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Tanik'oj ri ximonel xtaq pa { $userEmail } richin nitz'aqatisäx pa { -product-name }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+email-verified = ¡Ütz Xnik'öx ri Taqoya'l!
+email-added-to-subscription = Xtiqaya' rutzijol chawe we ri { $email } xtiq'alajin pa tz'ilanem tzij.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = Richin natz'ët chuqa' nanuk'samajij ronojel ri taq taqoya'l xe'atz'ib'aj richin nanik'oj kitz'ilanem, { $nestedSignInLink }.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = titikirisäx molojri'ïl
 
 
 
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Ke'anuk'samajij ronojel ri taq rochochib'al taqoya'l pa { $preferencesLink }.
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Kitz'ijol Taq Tz'ilanem
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Xtz'aqatisäx tz'ilanem:
+how-hackers-work-desc = Ke'achajij ri ewan taq atzij chi kiwäch ri ajkematz'ib'il tz'ilanela', ruma ja ri' kan nikajo' rije'.
+what-to-do-after-breach-desc = Ke'apisa' ri kib'i' ataqoya'l richin man yeqa ta pa taq itzel q'ab'aj ri taq atzij.
+create-strong-passwords-desc = Tab'ana' chi e köw, e jikïl chuqa' k'ayew richin ye'ilitäj ri ewan taq atzij.
+steps-to-protect-desc = Tino pan awi' ri taq tz'ilanem e k'o q'ij q'ij chuqa' tawetamaj achike ri majub'ey namestaj.
+five-myths-desc = Tawetamaj nachajij awi' chi kiwäch ri itzel taq na'oj, ri yeruto' ri kematz'ib'il taq ajjak richin yekeleq'aj ri ewan taq atzij.
+take-further-steps-desc = Tawila' rub'eyal nach'utinisaj ri k'ayewal rik'in ri releq'axik ab'anikil, richin man teleq'äx apwaq.

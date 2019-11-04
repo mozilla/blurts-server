@@ -99,10 +99,9 @@ const EmailUtils = {
     return req.fluentFormat("email-subject-found-breaches");
   },
 
-  getViewMyDashboardHref(emailType) {
-    let url = new URL(AppConstants.SERVER_URL);
-    url = this.appendUtmParams(url, "view-my-dashboard", emailType);
-    return url;
+  getEmailCtaHref(emailType, campaign) {
+    const url = new URL(AppConstants.SERVER_URL);
+    return this.appendUtmParams(url, campaign, emailType);
   },
 
   getVerificationUrl(subscriber) {

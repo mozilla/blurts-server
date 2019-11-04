@@ -1,8 +1,8 @@
 <section id="fx-account-features" class="container gradient-container {{ variableClasses }}">
   <div class="row flx-col jst-cntr {{ variableClasses }}">
-    <div class="bg-white gradient-inset">
+    <div class="gradient-inset">
       <div class="col-12 flx-cntr txt-cntr feat-headline-wrapper">
-        <h2 class="headline feature-tip-headline">
+        <h2 class="feature-tip-headline">
           {{#if featuredBreach }}
             {{ getString "find-out-if" }}
           {{else}}
@@ -19,11 +19,11 @@
         <div class="feature-tip-content-wrapper feature-button">
           <div class="feature-tip-content txt-cntr">
             {{#if featuredBreach.IsSensitive}}
-              <button class="violet-btn open-oauth" data-event-category="Sign Up Button" {{>analytics/fxa id="fx-monitor-sign-up-button"}}>
+              <button class="btn-violet-primary open-oauth" data-event-category="Sign Up Button" {{>analytics/fxa id="fx-monitor-sign-up-button"}}>
                 {{ getString "sign-up" }}
               </button>
             {{else}}
-              <button class="violet-btn open-oauth" data-event-category="Sign Up Button" {{>analytics/fxa id="fx-monitor-sign-up-for-alerts"}}>
+              <button class="btn-violet-primary open-oauth" data-event-category="Sign Up Button" {{>analytics/fxa id="fx-monitor-sign-up-for-alerts"}}>
                 {{ getString "sign-up-for-alerts" }}
               </button>
             {{/if}}

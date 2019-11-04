@@ -1,18 +1,18 @@
+.how-fxm-headline {
+  margin-top: 0;
+}
+
 .how-fxm-works {
   flex-direction: row;
 }
 
-.how-fxm-works-blurb {
-  font-size: 1rem;
-}
-
 .about-fxm {
   color: rgba(255, 255, 255, 1);
-  background-color: #20123aa3;
+  background-color: #1d1133e0;
 }
 
 .about-noodles {
-  background-color: var(--color);
+  background-color: var(--ink);
   background-image: url("/img/landing/background-noodle-right.svg");
   background-repeat: no-repeat;
   background-position: right;
@@ -31,11 +31,12 @@
 
 .fxm-card-wrap {
   flex: 1;
-  padding: 0 calc(var(--padding) * 2) calc(var(--padding) * 2) 0;
+  padding: var(--padding);
+  margin: 0 auto var(--padding) auto;
 }
 
-.about-cta {
-  align-self: flex-start;
+.about-cta.btn-transparent.btn-small {
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 1100px) {

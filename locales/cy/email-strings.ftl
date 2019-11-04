@@ -2,59 +2,12 @@
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
-click-to-verify = Cliciwch y botwm Gwirio fy E-bost o fewn 24 awr i gadarnhau eich cyfrif Firefox Monitor. Yna bydd eich adroddiad yn cael ei anfon atoch.
-verify-my-email = Gwirio fy E-bost
-report-scan-another-email = Sganio E-bost arall gyda { -product-name }
-automated-message = E-bost awtomatig yw hwn; os ydych wedi derbyn yr e-bost hwn ar gam, nid oes angen gweithredu.
-# Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
-we-sent-this-alert = Rydym wedi anfon y neges hon at { $userEmail } oherwydd dewisodd y cyfeiriad e-bost rybuddion gan { -product-name }.
-unsubscribe-email-link = Os nad oes angen rhybuddion { -product-name } arnoch chi, dad-danysgrifwch.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Adroddiad { -product-name }
 report-date = Dyddiad yr Adroddiad:
 email-address = Cyfeiriad E-bost:
-# A list of next steps someone should take if their information has been involved in a data breach.
-what-to-do-next = Beth i'w Wneud Nesaf
-report-headline =
-    { $breachCount ->
-        [zero] Go lew, hyd yma
-        [one] Ymddangosodd eich cyfrif mewn { $breachCount } tor-data.
-        [two] Ymddangosodd eich cyfrifon mewn { $breachCount } tor-data.
-        [few] Ymddangosodd eich cyfrifon mewn { $breachCount } tor-data.
-        [many] Ymddangosodd eich cyfrifon mewn { $breachCount } tor-data.
-       *[other] Ymddangosodd eich cyfrifon mewn { $breachCount } tor-data.
-    }
-report-subhead-no-breaches =
-    Nid yw'ch cyfrif yn ymddangos yn ein hadroddiad llawn o doriadau.
-    Mae hynny'n newyddion da, ond mae mwy y gallwch chi ei wneud.
-    Mae tor-data yn digwydd ar unrhyw adeg, felly parhewch i ddarllenwch i wybod sut y gallwch ddiogelu eich cyfrineiriau.
-report-subhead-found-breaches = Hwn yw eich adroddiad Firefox Monitor llawn, sy'n cynnwys yr holl dor-data sy'n hysbys am y cyfeiriad e-bost hwn.
-report-pwt-blurb =
-    Mae cyfrineiriau mor werthfawr, mae miloedd ohonyn nhw'n cael eu dwyn bob dydd a'u masnachu neu eu gwerthu ar y farchnad ddu.
-    Mae cyfrineiriau cryfach yn diogelu'ch cyfrifon a'r holl fanylion personol sy'n bodoli o'u mewn.
-report-pwt-headline-1 = Defnyddio cyfrinair gwahanol ar gyfer pob cyfrif
-report-pwt-summary-1 =
-    Mae ailddefnyddio'r un cyfrinair ym mhobman yn agor y drws i hacwyr.
-    Maen nhw'n gallu defnyddio'r cyfrinair hwnnw i fewngofnodi i'ch cyfrifon eraill.
-report-pwt-headline-2 = Creu cyfrineiriau cryf, unigryw
-report-pwt-summary-2 =
-    Mae hacwyr yn defnyddio rhestrau o filoedd o gyfrineiriau cyffredin i geisio dyfalu eich un chi.
-    Yr hiraf a mwyaf annisgwyl ydyw, yr anoddaf fydd i'w ddyfalu.
-report-pwt-headline-3 = Rhaid trin cwestiynau diogelwch fel cyfrineiriau ychwanegol
-report-pwt-summary-3 = Nid yw gwefannau yn gwirio bod eich atebion yn gywir, dim ond eu bod yn cyfateb bob tro. Crëwch atebion hir, ar hap a'u storio yn rhywle diogel.
-report-pwt-headline-4 = Defnyddio rheolwr cyfrinair
-report-pwt-summary-4 = Mae gwasanaethau fel 1Password, LastPass, Dashlane, a Bitwarden yn creu cyfrineiriau cryf, yn eu storio'n ddiogel, a'u llenwi i mewn i wefannau felly does dim rhaid i chi gofio pob un.
 # A link to legal information about mozilla products.
 legal = Cyfreithiol
-# Share Firefox Monitor by email subject line
-share-by-email-subject = Gweld os ydych chi wedi bod yn rhan o dor-data.
-# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
-share-by-email-message =
-    Helo,
-    Mae gan { -brand-name } wasanaeth am ddim lle gallwch wirio i weld a ydych wedi bod yn rhan o dor- data. Dyma sut mae'n gweithio:
-    1. Ewch i { "https://monitor.firefox.com" } a chwiliwch am eich e-bost.
-    2. Edrychwch i weld os yw eich cyfrifon ar-lein wedi'u datgelu mewn tor-data.
-    3. Derbyn awgrymiadau gan { -product-name } am yr hyn i'w wneud nesaf.
 # Unsubscribe link in email.
 email-unsub-link = Dad-danysgrifio
 # This string appears in the footer of breach report and breach alert emails.
@@ -111,3 +64,21 @@ faq-v2-4 = Sut mae { -product-name } yn trin gwefannau sensitif?
 pre-fxa-message = <a> Crëwch { -brand-fxa } </a> am ddim, a gallwch ychwanegu hyd at 15 cyfeiriad e-bost.
 # Section headline
 monitor-another-email = Am fonitro e-bost arall?
+# Subject line of email
+pre-fxa-subject = Diweddariad gan { -product-name }
+pre-fxa-headline = Beth sy'n newid gyda { -product-name }
+pre-fxa-blurb =
+    Dyma beth sydd wedi newid ers i chi gofrestru ar gyfer { -product-name }, y gwasanaeth sydd
+    yn monitro toriadau data hysbys er gwybodaeth i chi. Rydym yn ei gysylltu â chyfrifon Firefox.
+pre-fxa-tout-1 = Cadw'n effro i ragor o dor-data
+pre-fxa-p-1 = <a>Crëwch cyfrif </a> i fonitro hyd at 15 cyfeiriad e-bost am dor-data. Rydym yn argymell ychwanegu unrhyw gyfeiriade-bost rydych chi wedi'u defnyddio i greu cyfrifon ar-lein.
+pre-fxa-tout-2 = Cael golygfa bwrdd gwaith
+pre-fxa-p-2 =
+    Gweld yr holl dor-data mewn un man fel eich bod chi'n gwybod pa gyfrineiriau i'w newid.
+    Dim ond gyda chyfrif y mae'r bwrdd gwaith tor-data ar gael.
+pre-fxa-tout-3 = Parhau i dderbyn rhybuddion e-bost
+pre-fxa-p-3 =
+    Byddwch yn dal i dderbyn rhybuddion gan { -product-name }. Byddwn yn rhoi gwybod i chi a yw'ch manylion
+    yn ymddangos mewn tor-data newydd.
+# Button at the bottom of pre-fxa email.
+create-account = Creu Cyfrif

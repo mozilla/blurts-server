@@ -3,7 +3,7 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  background-color: var(--color);
+  background-color: var(--inkDark);
   z-index: 2;
   box-shadow: 0 0 5px 0 #20123a1c;
   transition: all 0.2s ease;
@@ -12,6 +12,14 @@ header {
 header.show-shadow {
   box-shadow: 2px 2px 10px rgba(24, 24, 24, 0.75);
   transition: all 0.2s ease;
+}
+
+.desktop-menu:hover .active-link::after {
+  opacity: 0;
+}
+
+.active-link:hover::after {
+  opacity: 1;
 }
 
 .show-nav-bars {
@@ -32,22 +40,22 @@ header.show-shadow {
   transition: all 0.3s ease;
 }
 
+.sign-in.btn-white {
+  white-space: nowrap;
+}
+
 .fxm-branding {
   position: relative;
 }
 
 .fx-monitor-logo-wrapper,
-.desktop-menu {
-  flex: 1 1 100%;
-}
-
-.fx-monitor-logo-wrapper:hover {
-  opacity: 1;
+.bento-sign-up {
+  flex: 1 1 30%;
 }
 
 /* Fx-Monitor logo */
 .sprite.fx-monitor-logo {
-  background: url("/img/gradient-sprites.png") -281px 0;
+  background: url("/img/fx-bento-sprites.png") -220px 0;
   min-width: 40px;
   height: 40px;
 }
@@ -55,7 +63,8 @@ header.show-shadow {
 .fx-monitor-logotype {
   background: url("/img/svg/fx-monitor-logotype.svg");
   width: 100%;
-  margin-left: var(--margin);
+  max-width: 212px;
+  margin-left: 8px;
   background-position: left;
   background-size: contain;
   background-repeat: no-repeat;
@@ -70,66 +79,62 @@ nav {
 
 .nav-link {
   background-color: rgba(255, 255, 255, 0);
-  padding-right: calc(1rem + 1vw);
-  padding-left: calc(1rem + 1vw);
+  padding-right: calc(16px + 1vw);
+  padding-left: calc(16px + 1vw);
   justify-content: center;
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  font-size: 16px;
 }
 
 .active-link {
   font-weight: 700;
+  display: block;
+}
+
+.active-link-underline {
   position: relative;
 }
 
 .active-link-underline::after {
-  height: 0.15rem;
+  height: 2px;
   background: var(--monitorGradient);
   opacity: 0;
   display: block;
   content: "";
   position: absolute;
-  bottom: -10px;
+  bottom: -8px;
   left: 0;
+  width: 0;
+  margin: auto;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+}
+
+.active-link::after {
   right: 0;
-}
-
-.active-link-underline.active-link::after {
+  width: 100%;
   opacity: 1;
-  transition: opacity 0.15s ease-in-out;
+  animation: activeLinkUnderline ease 0.25s;
+  -webkit-animation: activeLinkUnderline ease 0.25s;
+  -moz-animation: activeLinkUnderline ease 0.25s;
+  transition: all 0.1s ease-in-out;
 }
 
-.drop-down-menu {
+.nav-link:hover .active-link-underline::after {
+  width: 100%;
+  opacity: 1;
+  transition: all 0.2s ease;
+}
+
+.drop-down-menu,
+.mobile-menu .active-link-underline::after {
   display: none;
-}
-
-.sign-in {
-  margin-left: 1rem;
-  white-space: nowrap;
-}
-
-.sign-in:hover {
-  background-color: var(--blue4);
-  border: 1px solid var(--blue4);
-}
-
-.sign-in:active {
-  background-color: var(--blue5);
-  border: 1px solid var(--blue5);
-}
-
-.sign-in:focus,
-.sign-in:active {
-  border-width: 1px;
-  outline: none;
-  box-shadow: none;
 }
 
 .signed-in-as-wrap {
   display: flex;
   position: relative;
-  margin-bottom: 1rem;
-  padding: 0.5rem 0;
+  margin-bottom: 8px;
 }
 
 .signed-in-as-wrap::after {
@@ -143,17 +148,18 @@ nav {
 }
 
 .signed-in-as {
-  padding: 0.75rem 2rem;
-  color: #9595a3;
-  font-size: 0.95rem;
+  padding: 20px;
+  color: rgb(32, 18, 58);
+  font-size: 12px;
+  line-height: 1;
 }
 
 .nav-user-email {
   display: block;
-  color: var(--color);
+  color: rgb(32, 18, 58);
   font-weight: 600;
-  padding-top: 2px;
-  font-size: 1.1rem;
+  padding-top: 8px;
+  font-size: 14px;
 }
 
 /* signed-in user avatar */
@@ -164,55 +170,73 @@ nav {
   align-items: center;
   position: relative;
   overflow: hidden;
-  border: 2px solid rgba(0, 0, 0, 0);
+  box-shadow: 0 0 0 1px #fff0, 0 0 0 3px #4f42ff00;
+  border: 2px solid rgba(255, 255, 255, 1);
+  pointer-events: all;
+}
+
+.avatar-wrapper:hover {
+  box-shadow: 0 0 0 2px rgba(63, 96, 217, 0.8), 0 0 0 6px rgba(63, 97, 217, 0.2);
+  transition: all 0.2s ease;
+}
+
+.avatar-wrapper:focus,
+.avatar-wrapper:focus-within {
+  border: 2px solid rgba(255, 255, 255, 1);
+  box-shadow: 0 0 0 2px rgb(63, 97, 217), 0 0 0 4px rgba(63, 97, 217, 0.3);
+  outline: none;
 }
 
 .fxa-menu-wrapper {
   cursor: pointer;
-  margin-left: 1rem;
   position: relative;
+}
+
+img.avatar,
+.fxa-menu-wrapper,
+.fxa-menu {
+  pointer-events: none !important;
 }
 
 .avatar-wrapper,
 .avatar {
-  height: 36px;
-  width: 36px;
+  height: 42px;
+  width: 42px;
 }
 
 /* signed-in user menu */
 .fxa-menu {
   padding-top: 3.25rem;
-  height: 10rem;
   position: absolute;
   top: 0;
-  right: 0;
+  right: -4px;
   z-index: 2;
-  pointer-events: none;
+  pointer-events: none !important;
   transition: all 0.15s ease-in-out;
 }
 
 .fxa-menu-links {
-  background-color: rgb(249, 247, 253);
-  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
+  background-color: rgb(249, 249, 250);
+  box-shadow: 0 7px 12px -3px rgba(28, 28, 29, 0.502);
   display: none;
   flex-direction: column;
-  padding-bottom: 1rem;
+  padding-bottom: 8px;
   visibility: hidden;
-  border-radius: var(--radius);
-  overflow: hidden;
-  transition: visibility 0.15s ease;
+  border-radius: 8px;
+  transform: translateY(0);
+  transition: all 0.15s ease;
 }
 
-.fxa-menu::before {
-  max-height: 0.75rem;
+.fxa-menu-links::before {
+  border-top-left-radius: 1px;
   content: "";
   display: block;
   position: absolute;
-  top: 44px;
-  right: 12px;
-  height: 0.75rem;
-  width: 0.75rem;
-  background-color: rgb(249, 247, 253);
+  top: -5px;
+  right: 20px;
+  height: 12px;
+  width: 12px;
+  background-color: rgb(249, 249, 250);
   opacity: 1;
   margin: auto;
   z-index: 2;
@@ -221,35 +245,30 @@ nav {
   visibility: hidden;
 }
 
-.fxa-menu-wrapper:hover .fxa-menu::before {
+.menu-open .fxa-menu-links::before {
   visibility: visible;
 }
 
-.menu-open .close-menu {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  z-index: 2;
-}
-
-.fxa-menu-wrapper:hover .fxa-menu-links,
-.fxa-menu:hover .fxa-menu-links,
 .menu-open .fxa-menu-links,
-.fxa-menu-links:hover {
+.avatar-wrapper:hover .fxa-menu-links {
   display: flex;
   visibility: visible;
-  transition: visibility 0.15s ease;
+  transform: translateY(8px);
+  animation: fxaMenuAppear ease 0.3s;
+  -webkit-animation: fxaMenuAppear ease 0.3s;
+  -moz-animation: fxaMenuAppear ease 0.3s;
+  transition: all 0.25s ease;
 }
 
-.fxa-menu-wrapper:hover .fxa-menu {
+.menu-open .fxa-menu-links {
   pointer-events: all;
 }
 
 .fxa-menu-link {
-  padding: 0.75rem 2rem;
-  color: rgba(21, 20, 23, 0.77);
+  min-width: 280px;
+  padding: 10px 20px;
+  color: rgb(32, 18, 58);
+  font-size: 12px;
   background-color: rgba(255, 255, 255, 0);
   transition: all 0.15s ease;
 }
@@ -265,63 +284,41 @@ nav {
   transition: all 0.15s ease;
 }
 
-.top-bar {
-  z-index: 1;
-  position: relative;
-  background-color: #1d1133;
-  padding: 1rem 1.75rem;
-  border-bottom: 1px solid #2b2156;
-  color: rgba(255, 255, 255, 1);
-  font-size: 16px;
-}
+@media screen and (max-width: 1200px) {
+  .bento-sign-up {
+    flex: 0 1 auto;
+  }
 
-.learn-more {
-  margin-left: 0.5rem;
-  color: rgba(255, 255, 255, 1);
-  text-decoration: underline;
-  white-space: nowrap;
-}
+  .desktop-menu {
+    justify-content: flex-end;
+  }
 
-.join-fx-wrap {
-  align-items: center;
-}
-
-.join-fx-img {
-  content: "";
-  background-image: url("/img/firefox-master-logo.png");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
-  min-width: 24px;
-  height: 24px;
-  margin: auto 16px auto auto;
+  .nav-link {
+    padding-right: 0;
+  }
 }
 
 @media screen and (max-width: 800px) {
+  .bento-sign-up {
+    margin-left: 0;
+  }
+
   .desktop-menu {
     flex: 1 1 auto;
   }
 
   .fx-monitor-logotype {
-    margin-left: 0.25rem;
     height: 25px;
   }
 
-  .top-bar {
-    font-size: 14px;
-  }
-
-  .desktop-menu .nav-link {
-    display: none;
-  }
-
+  .desktop-menu .nav-link,
   .active-link::after {
     display: none;
   }
 
   .mobile-nav {
     visibility: visible;
-    background-color: #1c1033;
+    background-color: var(--ink);
     box-shadow: 0 2px 2px -1px #0202024d;
     transition: all 0.2s ease;
     padding: 0;
@@ -333,15 +330,12 @@ nav {
 
   .mobile-menu a.nav-link {
     color: rgba(255, 255, 255, 0.9);
-    padding: 0.75rem 1rem;
+    padding: 12px 16px;
     border-radius: 4px;
-    transition: all 0.15s ease-in-out;
   }
 
   .mobile-menu .nav-link:hover {
-    background-color: var(--color);
-    opacity: 1;
-    transition: all 0.15s ease-in-out;
+    background-color: var(--ink);
   }
 
   .mobile-menu {
@@ -390,7 +384,7 @@ nav {
   }
 
   .mobile-menu-open .drop-down-menu {
-    border-bottom: 1px solid var(--color);
+    border-bottom: 1px solid var(--ink);
     transition: border-bottom 0.15s ease;
   }
 
@@ -400,7 +394,7 @@ nav {
   }
 
   .drop-down-menu svg.toggle-down {
-    opacity: 0.7;
+    opacity: 0.9;
     right: 2.75rem;
   }
 
@@ -421,25 +415,13 @@ nav {
     right: 2rem;
   }
 
-  .top-bar {
-    text-align: left;
-    font-size: 12px;
-  }
-
+  .fxa-menu-link,
   .nav-user-email {
-    font-size: 1rem;
+    font-size: 16px;
   }
 
-  .sprite.fx-monitor-logo {
-    transform: scale(0.9);
-  }
-
-  .fx-monitor-logotype {
-    height: 18px;
-  }
-
-  .sign-in {
-    padding: 0.65rem 1.35rem;
+  .fx-monitor-logo-wrapper {
+    flex: 1 1 100%;
   }
 
   .mobile-menu {
@@ -452,6 +434,39 @@ nav {
   }
 
   .nav-link.drop-down-menu {
-    padding: 1rem 1.75rem;
+    padding: 16px 25px;
+  }
+
+  .fxa-menu-link {
+    min-width: auto;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .fx-monitor-logotype {
+    display: none;
+  }
+}
+
+@keyframes fxaMenuAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes activeLinkUnderline {
+  0% {
+    opacity: 0;
+    width: 100%;
+  }
+
+  100% {
+    opacity: 1;
   }
 }

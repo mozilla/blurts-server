@@ -2,61 +2,12 @@
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
-click-to-verify =
-    Чтобы подтвердить свой аккаунт Firefox Monitor, нажмите «Подтвердить мою электронную почту» в течение 24 часов.
-    Сразу после этого мы отправим отчёт о ваших аккаунтах.
-verify-my-email = Подтвердить мою электронную почту
-report-scan-another-email = Сканировать другую электронную почту в { -product-name }
-automated-message = Это автоматическое сообщение; если вы получили его по ошибке, не требуется никаких действий.
-# Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
-we-sent-this-alert = Мы отправили это сообщение на { $userEmail }, так как этот адрес электронной почты подписан на уведомления от { -product-name }.
-unsubscribe-email-link = Если вы больше не хотите получать уведомления от { -product-name }, отпишитесь.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Отчёт { -product-name }
 report-date = Дата отчёта:
 email-address = Адрес электронной почты:
-# A list of next steps someone should take if their information has been involved in a data breach.
-what-to-do-next = Что делать дальше
-report-headline =
-    { $breachCount ->
-        [0] Сейчас всё хорошо.
-        [one] Ваши аккаунты обнаружены в { $breachCount } атаке.
-        [few] Ваши аккаунты обнаружены в { $breachCount } атаках.
-       *[other] Ваши аккаунты обнаружены в { $breachCount } атаках.
-    }
-report-subhead-no-breaches =
-    По результатам полной проверки ваши аккаунты в безопасности.
-    Это хорошие новости, но вы можете сделать больше.
-    Компрометация данных может произойти в любое время, поэтому прочитайте о том, как защитить свои пароли.
-report-subhead-found-breaches = Вот ваш полный отчёт Firefox Monitor, который включает в себя все известные утечки данных, в которых фигурирует этот адрес электронной почты.
-report-pwt-blurb =
-    Пароли настолько ценны, что тысячи украденных из них каждый день продаются на чёрном рынке.
-    Более сложные пароли защищают ваши аккаунты и всю личную информацию, которая находится внутри них.
-report-pwt-headline-1 = Используйте разные пароли для разных аккаунтов
-report-pwt-summary-1 =
-    Повторное использование одного и того же пароля везде оставляет широко открытой дверь для кражи личных данных.
-    Любой, у кого есть этот пароль, сможет войти во все ваши аккаунты.
-report-pwt-headline-2 = Создавайте сложные, уникальные пароли
-report-pwt-summary-2 =
-    Хакеры используют списки популярных паролей, чтобы попытаться угадать ваши.
-    Чем длиннее и уникальнее окажется ваш, тем сложнее будет его украсть.
-report-pwt-headline-3 = Относитесь к вопросам для восстановления как к дополнительным паролям
-report-pwt-summary-3 =
-    Веб-сайты не проверяют, что ваши ответы на вопросы являются правдой, они просто проверяют, что они совпадают.
-    Создавайте длинные случайные ответы и храните их где-нибудь в безопасности.
-report-pwt-headline-4 = Используйте менеджер паролей
-report-pwt-summary-4 = Такие сервисы, как 1Password, LastPass, Dashlane и Bitwarden, генерируют сложные пароли, а также надежно их хранят и автоматически их заполняют на веб-сайтах, так что вам не нужно помнить их все.
 # A link to legal information about mozilla products.
 legal = Юридическая информация
-# Share Firefox Monitor by email subject line
-share-by-email-subject = Проверьте, не стали ли вы жертвой утечки данных.
-# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
-share-by-email-message =
-    Привет!
-    { -brand-name } имеет бесплатный сервис, где вы можете проверить, не стали ли вы жертвой утечки данных. Вот как это работает:
-    1. Зайдите на { "https://monitor.firefox.com" } и выполните поиск по адресу своей электронной почты.
-    2. Посмотрите, не были ли ваши аккаунты затронуты утечками данных.
-    3. Получите подсказки от { -product-name } о том, что делать дальше.
 # Unsubscribe link in email.
 email-unsub-link = Отписаться
 # This string appears in the footer of breach report and breach alert emails.
@@ -123,3 +74,7 @@ faq-v2-4 = Как { -product-name } обращается с сайтами с к
 pre-fxa-message = <a>Создайте бесплатный { -brand-fxa }</a>, и вы сможете добавить до 15 адресов электронной почты.
 # Section headline
 monitor-another-email = Хотите проверить ещё один адрес электронной почты?
+# Subject line of email
+pre-fxa-subject = Обновление от { -product-name }
+# Button at the bottom of pre-fxa email.
+create-account = Создать аккаунт

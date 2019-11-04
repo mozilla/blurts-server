@@ -1,13 +1,13 @@
-  <footer class="bg-white">
+  <footer>
     <ul class="row-full-width">
       <li class="footer-link-wrapper moz-link">
-        <a class="footer-link mozilla-logo-wrapper" href="https://www.mozilla.org" {{>analytics/outbound-link eventLabel="Mozilla.org"}} target="_blank" aria-label="Open Mozilla.org in new window">
+        <a class="footer-link mozilla-logo-wrapper" href="https://www.mozilla.org" {{>analytics/outbound-link eventLabel="Mozilla.org"}} target="_blank" rel="noopener"  aria-label="Open Mozilla.org in new window">
           {{> svg/Mozilla }}
         </a>
       </li>
       {{#each (getFooterLinks)}}
       <li class="footer-link-wrapper">
-        <a class="footer-link" href="{{ this.href }}" {{> analytics/outbound-link eventLabel=this.title }} {{#if openNewWindow}} target="_blank" {{/if}}>
+        <a class="footer-link" href="{{ this.href }}" {{> analytics/outbound-link eventLabel=this.title }} {{#if openNewWindow}} target="_blank" {{/if}} rel="noopener">
           {{ this.stringId }}
         </a>
       </li>

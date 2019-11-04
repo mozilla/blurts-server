@@ -32,6 +32,55 @@ function emailBreachStats(args) {
   return emailBreachStats;
 }
 
+function getPreFxaUtmParams(serverUrl, content, userEmail) {
+  const url = new URL(`${serverUrl}/oauth/init`);
+  const utmParams = {
+    utm_source: "fx-monitor",
+    utm_medium: "fx-monitor-email",
+    utm_content: content,
+    utm_campaign: "pre-fxa-subscribers",
+    email: userEmail,
+  };
+  for (const param in utmParams) {
+    url.searchParams.append(param, utmParams[param]);
+  }
+  return url;
+}
+
+function getPreFxaTouts(args) {
+  const locales = args.data.root.supportedLocales;
+  const serverUrl = args.data.root.SERVER_URL;
+  const userEmail = args.data.root.email;
+
+  const fxaTouts = [
+    {
+      imgSrc: `${serverUrl}/img/email_images/pictogram-alert.png`,
+      headline: LocaleUtils.fluentFormat(locales, "pre-fxa-tout-1"),
+      paragraph: LocaleUtils.fluentFormat(locales,"pre-fxa-p-1"),
+    },
+    {
+      imgSrc: `${serverUrl}/img/email_images/pictogram-advice.png`,
+      headline: LocaleUtils.fluentFormat(locales, "pre-fxa-tout-2"),
+      paragraph: LocaleUtils.fluentFormat(locales,"pre-fxa-p-2"),
+    },
+    {
+      imgSrc: `${serverUrl}/img/email_images/pictogram-email.png`,
+      headline: LocaleUtils.fluentFormat(locales, "pre-fxa-tout-3"),
+      paragraph: LocaleUtils.fluentFormat(locales,"pre-fxa-p-3"),
+    },
+  ];
+
+  // replace placeholder anchor tag markup in first tout to make link
+  // add UTM params which are passed to FxA for account creation
+  const fxaTout1 = fxaTouts[0].paragraph;
+  const url = getPreFxaUtmParams(serverUrl, "create-account-link", userEmail);
+  if ((/<a>/).test(fxaTout1) && (/<\/a>/).test(fxaTout1)) {
+    const openingAnchorTag = `<a class="pre-fxa-nested-link" href="${url}" style="color: #0060df; font-family: sans-serif; font-weight: 300; font-size: 15px; text-decoration: none;">`;
+    fxaTouts[0].paragraph = fxaTout1.replace("<a>", openingAnchorTag);
+  }
+
+  return fxaTouts;
+}
 
 function getUnsafeBreachesForEmailReport(args) {
   const locales = args.data.root.supportedLocales;
@@ -64,6 +113,10 @@ function getEmailHeader(args) {
 
   if (emailType === "email_partials/email_verify") {
     return LocaleUtils.fluentFormat(locales, "email-link-expires");
+  }
+
+  if (emailType ==="email_partials/pre-fxa") {
+    return LocaleUtils.fluentFormat(locales, "pre-fxa-headline");
   }
 
   if (args.data.root.breachAlert) {
@@ -208,6 +261,11 @@ function getEmailCTA(args) {
     return LocaleUtils.fluentFormat(locales, "see-all-breaches");
   }
 
+  // TODO: Remove after sending pre-fxa one-off email
+  if (args.data.root.preFxaEmail) {
+    return LocaleUtils.fluentFormat(locales, "create-account");
+  }
+
   return LocaleUtils.fluentFormat(locales, "view-my-dashboard-cta");
 }
 
@@ -258,6 +316,8 @@ module.exports = {
   getEmailHeader,
   getEmailFooterCopy,
   getEmailCTA,
+  getPreFxaTouts,
+  getPreFxaUtmParams,
   getReportHeader,
   getServerUrlForNestedEmailPartial,
   getUnsafeBreachesForEmailReport,

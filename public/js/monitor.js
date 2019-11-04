@@ -1,4 +1,5 @@
 "use strict";
+
 /* global sendPing */
 /* global getFxaUtms */
 /* global hashEmailAndSend */
@@ -41,7 +42,9 @@ function doOauth(el) {
   });
   if (sessionStorage && sessionStorage.length > 0) {
     const lastScannedEmail = sessionStorage.getItem(`scanned_${sessionStorage.length}`);
-    url.searchParams.append("email", lastScannedEmail);
+    if (lastScannedEmail) {
+      url.searchParams.append("email", lastScannedEmail);
+    }
   }
   window.location.assign(url);
 }
@@ -136,7 +139,7 @@ function toggleArticles() {
   });
 }
 
-function hideShowNavBars(win, navBar) {
+function hideShowNavBars(win, navBar, bentoButton) {
   win.onscroll = function(e) {
     // catch a window that has resized from less than 600px
     // to greater than 600px and unhide navigation.
@@ -150,7 +153,11 @@ function hideShowNavBars(win, navBar) {
       return;
     }
 
-    if (this.oldScroll < this.scrollY) {
+    if (
+        this.oldScroll < this.scrollY &&
+        navBar.classList.contains("show-nav-bars") &&
+        !bentoButton.classList.contains("active")
+      ) {
       navBar.classList = ["hide-nav-bars"];
       this.oldScroll = this.scrollY;
       return;
@@ -169,20 +176,22 @@ function toggleMobileFeatures(topNavBar) {
   const win = window;
   const windowWidth = win.innerWidth;
   if (windowWidth > 800) {
-    const emailCards = document.querySelectorAll(".col-9.email-card:not(.zero-breaches)");
+    const emailCards = document.querySelectorAll(".mw-750.email-card:not(.zero-breaches)");
       emailCards.forEach(card => {
         card.classList.add("active");
       });
       return;
     }
 
-  const closeActiveEmailCards = document.querySelectorAll(".col-9.email-card.active");
+  const bentoButton = document.querySelector(".fx-bento-content");
+  const closeActiveEmailCards = document.querySelectorAll(".mw-750.email-card.active");
     closeActiveEmailCards.forEach(card => {
       card.classList.remove("active");
     });
 
     if (windowWidth < 600) {
-      hideShowNavBars(win, topNavBar);
+      hideShowNavBars(win, topNavBar, bentoButton);
+      addBentoObserver();
     }
 }
 
@@ -208,6 +217,21 @@ function styleActiveLink(locationHref) {
   if (locationHref.indexOf("/security-tips") !== -1) {
     return document.querySelector(".nav-link[href*='/security-tips']").firstChild.classList.add("active-link");
   }
+}
+
+function addBentoObserver(){
+  const bodyClasses = document.body.classList;
+  const bentoButton = document.querySelector(".fx-bento-content");
+  const observerConfig = { attributes: true };
+  const watchBentoChanges = function(bentoEl, observer) {
+    for(const mutation of bentoEl) {
+      if (mutation.type === "attributes") {
+        bodyClasses.toggle("bento-open", bentoButton.classList.contains("active"));
+      }
+    }
+  };
+  const observer = new MutationObserver(watchBentoChanges);
+  observer.observe(bentoButton, observerConfig);
 }
 
 ( async() => {
@@ -236,7 +260,7 @@ function styleActiveLink(locationHref) {
 
   document.querySelectorAll(".breach-logo:not(.lazy-img)").forEach(logo => {
     logo.addEventListener("error", (missingLogo) => {
-      missingLogo.target.src = "/img/logos/missing-logo-icon.png";
+      missingLogo.target.src = "/img/svg/placeholder.svg";
     });
   });
 

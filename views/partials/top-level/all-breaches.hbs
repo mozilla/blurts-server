@@ -3,7 +3,7 @@
   <main class="all-breaches-main clear-header" data-page-label="All Breaches">
     <div class="row">
       <div class="col-12 no-vertical-padding">
-        <h2 class="top-headline all-breaches-headline">{{ getString "all-breaches-headline" }}</h2>
+        <h2 class="top-headline all-breaches-headline txt-cntr mw-500">{{ getString "all-breaches-headline" }}</h2>
       </div>
     </div>
   </main>
@@ -11,14 +11,13 @@
     <div class="row flx-col">
       <div class="col-12 txt-cntr no-vertical-padding">
         {{> fuzzy-find }}
-        <span id="no-results-blurb" class="no-results-blurb">{{ getString "no-results-blurb" }}</span>
         {{> hibp-attribution }}
       </div>
     </div>
     <div class="row flx-col">
       <!-- breach cards -->
       <div id="all-breaches" class="all-breaches flx"></div>
-      <button id="show-hidden-breaches" class="col violet-btn show-all-breaches">{{ getString "show-all" }}</button>
+      <button id="show-hidden-breaches" class="btn-violet-primary show-all-breaches">{{ getString "show-all" }}</button>
     </div>
   </section>
 </div>

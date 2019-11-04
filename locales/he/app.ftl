@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -10,6 +8,12 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = האם עקצו אותי
 -brand-fxa = חשבון Firefox
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = תנאים ופרטיות
 GitHub-link-title = GitHub
 error-scan-page-token = ניסית לסרוק יותר מדי כתובות דוא"ל בפרק זמן קצר. משיקולי אבטחה, חסמנו את חיפושיך באופן זמני. יהיה ניתן לחפש שוב מאוחר יותר.
@@ -107,3 +111,10 @@ filter-by = סינון לפי קטגוריה:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = תפריט
 to-affected-email = שליחת התראות על דליפות לכתובת הדוא״ל המושפעת
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+
+
+

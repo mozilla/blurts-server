@@ -1,5 +1,6 @@
 ## Breach Data Classes
 
+account-balances = Llogari bankare
 address-book-contacts = Kontakte libri adresash
 age-groups = Grupe moshash
 ages = Mosha

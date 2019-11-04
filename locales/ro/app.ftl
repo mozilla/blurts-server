@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -10,6 +8,9 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Cont Firefox
+
+
+
 terms-and-privacy = Termeni și confidențialitate
 GitHub-link-title = GitHub
 error-scan-page-token = Ai încercat să scanezi prea multe adrese de e-mail într-un timp prea scurt. Din motive de securitate, ți-am blocat accesul la căutări noi. Poți încerca mai târziu.
@@ -17,7 +18,7 @@ error-could-not-add-email = Adresa de e-mail nu a putut fi adăugată în baza d
 error-not-subscribed = Această adresă de e-mail nu este abonată la { -product-name }.
 error-hibp-throttled = Prea multe conexiuni la { -brand-HIBP }.
 error-hibp-connect = Eroare de conectare la { -brand-HIBP }.
-error-hibp-load-breaches = Nu s-au putut încărca breșele.
+error-hibp-load-breaches = Nu s-au putut încărca încălcările securității datelor.
 error-must-be-signed-in = Trebuie să fii autentificat(ă) la { -brand-fxa }.
 error-to-finish-verifying = Pentru a finaliza verificarea acestui e-mail pentru { -product-name }, trebuie să fii autentificat în e-mailul primar al contului tău.
 home-title = { -product-name }
@@ -45,16 +46,16 @@ signup-modal-sent = Trimis!
 sign-up = Înregistrează-te
 form-signup-error = Trebuie să fie o adresă de e-mail validă
 # breach-date = the calendar date a particular data theft occurred. 
-breach-date = Data breșei:
+breach-date = Data încălcării securității datelor:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Conturi compromise:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Date compromise:
 unsub-headline = Dezabonează-te de la { -product-name-nowrap }
-unsub-blurb = Prin dezabonare, adresa ta de e-mail va fi eliminată din lista { -product-name-nowrap } și nu vei mai primi alerte când sunt anunțate breșe noi.
+unsub-blurb = Prin dezabonare, adresa ta de e-mail va fi eliminată din lista { -product-name-nowrap } și nu vei mai primi alerte când sunt anunțate încălcări noi ale securității datelor.
 unsub-button = Dezabonează-te
 # Breach data provided by Have I Been Pwned.
-hibp-attribution = Datele privind breșele sunt furnizate de { $hibp-link }
+hibp-attribution = Încălcările securității datelor sunt furnizate de { $hibp-link }
 share-twitter = Majoritatea persoanelor au aproximativ 100 de conturi online. A fost expus vreunul dintre conturile tale într-o breșă de date? Află.
 share-facebook-headline = Află dacă ai fost parte a unei breșe de date
 share-facebook-blurb = Au fost expuse conturile tale online într-o breșă de date?
@@ -161,24 +162,24 @@ create-strong-passwords = Cum să creezi parole puternice
 stop-reusing-pw = Nu refolosi parolele
 create-unique-pw = Creează parole unice și salvează-le într-un loc sigur, cum ar fi un manager de parole.
 five-myths = 5 mituri despre managerii de parole
-create-a-fxa = Creează { -brand-fxa } pentru un raport complet despre breșe și ca să primești alerte.
+create-a-fxa = Creează un { -brand-fxa } pentru un raport complet despre încălcările securității datelor și pentru a primi alerte.
 feat-security-tips = Ponturi de securitate pentru protejarea conturilor
-feat-sensitive = Căutare avansată în breșe de date sensibile
-feat-enroll-multiple = Înregistrează mai multe adrese de e-mail pentru monitorizarea breșelor
+feat-sensitive = Căutare avansată în încălcările cunoscute ale securității datelor
+feat-enroll-multiple = Înregistrează mai multe adrese de e-mail pentru monitorizarea încălcărilor securității datelor
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
     { $breachCount ->
-        [one] Apare în { $breachCount } breșă cunoscută
-        [few] Apare în { $breachCount } breșe cunoscute
-       *[other] Apare în { $breachCount } de breșe cunoscute
+        [one] Apare într-o încălcare cunoscută a securității datelor.
+        [few] Apare în { $breachCount } încălcări cunoscute a securității datelor.
+       *[other] Apare în { $breachCount } de încălcări cunoscute a securității datelor.
     }
-check-for-breaches = Verifică pentru breșe
+check-for-breaches = Verifică încălcările securității datelor
 find-out-what-hackers-know = Află ce știu hackerii despre tine. Află cum să fii cu un pas înaintea lor.
-search-for-your-email = Caută-ți adresa de e-mail în breșe de date publice datând încă din 2007.
+search-for-your-email = Caută-ți adresa de e-mail în încălcările publice ale securității datelor datând încă din 2007.
 back-to-top = Înapoi sus
-comm-opt-0 = Trimite-mi un mesaj pe e-mail dacă adresele mele de e-mail de mai jos apar într-o breșă de date.
-comm-opt-1 = Trimite toate alertele de breșe la { $primaryEmail }.
+comm-opt-0 = Trimite-mi un mesaj pe e-mail dacă adresele mele de e-mail de mai jos apar într-o încălcare a securității datelor.
+comm-opt-1 = Trimite toate alertele privind încălcările securității datelor la { $primaryEmail }.
 stop-monitoring-this = Nu mai monitoriza acest e-mail.
 resend-verification = Retrimite  mesajul e-mail de verificare
 add-new-email = Adaugă o adresă nouă de e-mail
@@ -188,15 +189,15 @@ send-verification = Trimite linkul de verificare
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-breach-summary = Rezumat breșă
-show-breaches-for-this-email = Afișează toate breșele pentru acest e-mail.
+breach-summary = Rezumatul încălcării securității datelor
+show-breaches-for-this-email = Afișează toate încălcările securității datelor pentru acest e-mail.
 link-change-primary = Schimbă adresa de e-mail primară
 remove-fxm = Elimină { -product-name }
 remove-fxm-blurb = Dezactivează alertele { -product-name }. { -brand-fxa } tău va rămâne activ și poți primi alte comunicări legate de cont.
 # Button title
 manage-email-addresses = Gestionează adresele de e-mail
 # Link title
-latest-breach-link = Vezi dacă ai fost implicat(ă) în această breșă
+latest-breach-link = Vezi dacă ai fost implicat(ă) în această încălcare a securității datelor
 welcome-back = Bine ai revenit, { $userName }!
 welcome-user = Bine ai venit, { $userName }!
 breach-alert-subject = { -product-name } ți-a găsit adresa de e-mail într-o breșă nouă de date.
@@ -214,9 +215,9 @@ faq2 = De ce a durat atât de mult să fiu informat(ă) despre această breșă?
 faq3 = Cum știu că acesta este un mesaj legitim de e-mail de la { -product-name }?
 new-breaches-found =
     { $breachCount ->
-        [one] BREȘĂ NOUĂ DESCOPERITĂ
-        [few] BREȘE NOI DESCOPERITE
-       *[other] DE BREȘE NOI DESCOPERITE
+        [one] { $breachCount } BREȘĂ NOUĂ DESCOPERITĂ
+        [few] { $breachCount } BREȘE NOI DESCOPERITE
+       *[other] { $breachCount } DE BREȘE NOI DESCOPERITE
     }
 sign-up-headline-1 = Primește alerte curente cu un { -brand-fxa }.
 account-not-required = Browserul { -brand-name } nu este necesar pentru un { -brand-fxa }. Poți primi informații despre serviciile { -brand-Mozilla }.
@@ -251,7 +252,6 @@ error-csrf-headline = Sesiune expirată
 error-csrf-blurb = Selectează butonul Înapoi din browser, reîncarcă pagina și încearcă din nou.
 error-invalid-unsub = Cum să te dezabonezi de la alertele { -product-name }
 error-invalid-unsub-blurb = Va trebui să te dezabonezi folosind unul dintre mesajele de e-mail trimise de { -product-name }. Verifică-ți căsuța poștală pentru mesaje de la { -brand-team-email }. Selectează linkul de dezabonare din partea de jos a mesajului.
-login-link = Autentifică-te
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -260,15 +260,6 @@ email-addresses-being-monitored =
         [one] adresă de e-mail monitorizată
         [few] adrese de e-mail monitorizate
        *[other] de adrese de e-mail monitorizate
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-        [one] breșă de date ți-a expus informațiile
-        [few] breșe de date ți-au expus informațiile
-       *[other] de breșe de date ți-au expus informațiile
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -350,6 +341,13 @@ want-to-add = Vrei să adaugi încă o adresă de e-mail?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Verifică linkul trimis către { $userEmail } ca să îl adaugi în { -product-name }.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere

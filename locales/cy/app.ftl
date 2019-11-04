@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -10,6 +8,12 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Cyfrif Firefox
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = Telerau a Phreifatrwydd
 GitHub-link-title = GitHub
 error-scan-page-token = Rydych wedi ceisio sganio gormod o gyfeiriadau e-bost mewn cyfnod byr. Am resymau diogelwch, rydym wedi eich rhwystro dros dro rhag chwiliadau newydd. Fe gewch chi geisio eto yn ddiweddarach.
@@ -286,7 +290,6 @@ error-csrf-headline = Daeth y sesiwn i ben
 error-csrf-blurb = Dewiswch fotwm nól eich porwr, ail-lwytho'r dudalen, a cheisio eto.
 error-invalid-unsub = Sut i ddad-danysgrifio o rybuddion { -product-name }
 error-invalid-unsub-blurb = Bydd angen i chi ddad-danysgrifio o un o'r e-byst anfonodd { -product-name } atoch chi. Gwiriwch eich blwch derbyn am negeseuon o { -brand-team-email }. Dewiswch y ddolen dad-danysgrifio ar waelod yr e-bost.
-login-link = Mewngofnodi
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -298,18 +301,6 @@ email-addresses-being-monitored =
         [few] Cyfeiriad e-bost yn cael eu monitro
         [many] Cyfeiriad e-bost yn cael eu monitro
        *[other] Cyfeiriad e-bost yn cael eu monitro
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-        [zero] Dim tor-data
-        [one] Mae tor-data wedi datgelu eich manylion
-        [two] Mae tor-data wedi datgelu eich manylion
-        [few] Mae tor-data wedi datgelu eich manylion
-        [many] Mae tor-data wedi datgelu eich manylion
-       *[other] Mae tor-data wedi datgelu eich manylion
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -378,6 +369,9 @@ other-known-breaches-found =
 additional-information-including = Gwybodaeth ychwanegol, gan gynnwys:
 # Title
 email-addresses-title = Cyfeiriadau E-bost
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Trosolwg
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.

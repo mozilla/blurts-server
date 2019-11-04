@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -10,6 +8,12 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Cuenta de Firefox
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = Términos y Privacidad
 GitHub-link-title = GitHub
 error-scan-page-token = Intentaste escanear demasiadas direcciones de correo electrónico en un corto periodo de tiempo. Por cuestiones de seguridad, hemos bloqueado tus búsquedas temporalmente. Puedes intentarlo de nuevo más tarde.
@@ -25,8 +29,10 @@ home-not-found = Página no encontrada.
 oauth-invalid-session = Sesión inválida
 scan-title = { -product-name } : Resultados del escaneo
 user-add-invalid-email = Correo electrónico inválido
+user-add-too-many-emails = Estás monitoreando el número máximo de direcciones de correo.
 user-add-email-verify-subject = Verifica tu suscripción a { -product-name }.
 user-add-duplicate-email = Este correo ya se ha añadido a { -product-name }.
+user-add-duplicate-email-part-2 = Visita tu { $preferencesLink } para comprobar el estado de { $userEmail }.
 error-headline = Error
 user-verify-token-error = Se requiere el token de verificación.
 user-verify-email-report-subject = Tu reporte de { -product-name }
@@ -266,7 +272,6 @@ error-invalid-unsub-blurb =
     Tendrás que cancelar la suscripción desde uno de los correos
     que te envió { -product-name }. Busca correos de { -brand-team-email }
     en tu bandeja de entrada. Al final del correo, selecciona el enlace Cancelar suscripción.
-login-link = Iniciar sesión
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -274,14 +279,6 @@ email-addresses-being-monitored =
     { $emails ->
         [one] Dirección de correo monitoreada
        *[other] Direcciones de correo monitoreadas
-    }
-# This string is displayed under a large numeral that indicates the total number
-# of data breaches that have exposed the user’s information. Don’t add $breaches to
-# your localization, because it would result in the number showing twice.
-data-breaches-exposed =
-    { $breaches ->
-        [one] Una filtración de datos ha expuesto tu información
-       *[other] Filtraciones de datos han expuesto tu información
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -334,6 +331,13 @@ other-known-breaches-found =
 additional-information-including = Información adicional, incluyendo:
 # Title
 email-addresses-title = Direcciones de correo electrónico
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Vista general
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = El { $breachDate }, tuvo lugar la filtración { $breachTitle }. Una vez descubierta y verificada la filtración, la agregamos a nuestra base de datos el { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Preferencias de { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
@@ -355,6 +359,20 @@ want-to-add = ¿Quieres agregar otro correo?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Comprueba el enlace que se envió a { $userEmail } para agregarlo a { -product-name }.
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+email-verified = ¡Correo electrónico verificado correctamente!
+email-added-to-subscription = Te avisaremos si { $email } aparece en una filtración de datos.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = Para ver y administrar todos los correos electrónicos que has registrado para monitorizar filtraciones, { $nestedSignInLink }.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = iniciar sesión
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
