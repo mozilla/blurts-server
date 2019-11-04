@@ -363,3 +363,5 @@ create-strong-passwords-desc = Rende tu contrasignos forte, secur e difficile a 
 steps-to-protect-desc = Comprende le plus commun menacias e sape que cercar.
 five-myths-desc = Apprende a evitar habitos de mal contrasigno que rende facile le labor de un hacker.
 take-further-steps-desc = Discoperi como mitigar le riscos de furto de identitate pro prevenir perdita financiari.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Cambios salvate!
