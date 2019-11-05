@@ -358,3 +358,5 @@ create-strong-passwords-desc = 让您的密码更强大、更安全、更难猜�
 steps-to-protect-desc = 了解最常见的威胁，并了解要注意哪些事项。
 five-myths-desc = 了解如何避免设置密码的坏习惯，让密码更难遭到黑客窃取。
 take-further-steps-desc = 了解如何降低身份遭窃的风险，防止经济损失。
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = 更改已保存！
