@@ -424,3 +424,5 @@ create-strong-passwords-desc = Maak uw wachtwoorden sterk, veilig en moeilijk te
 steps-to-protect-desc = Maak uzelf wegwijs in de meest voorkomende bedreigingen en leer waar u op moet letten.
 five-myths-desc = Leer hoe u slechte wachtwoordgewoonten, die het werk van een hacker makkelijk maken, kunt vermijden.
 take-further-steps-desc = Ontdek hoe u de risico’s van identiteitsdiefstal kunt beperken om financieel verlies te vermijden.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Wijzigingen opgeslagen!
