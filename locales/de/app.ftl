@@ -373,3 +373,5 @@ create-strong-passwords-desc = Verwende starke, sichere und schwer zu erratene P
 steps-to-protect-desc = Verstehe die häufigsten Bedrohungen und erfahre, worauf du achten musst.
 five-myths-desc = Erfahre, wie du schlechte Passwort-Gewohnheiten vermeidest, die die Arbeit eines Hackers erleichtern.
 take-further-steps-desc = Erfahre, wie du das Risiko eines Identitätsdiebstahls verringern kannst, um finanzielle Verluste zu vermeiden.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Änderungen gespeichert!
