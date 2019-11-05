@@ -443,3 +443,5 @@ create-strong-passwords-desc = Vytvářejte hesla silná, bezpečná a těžko u
 steps-to-protect-desc = Porozumějte nejběžnějším hrozbám a poznejte, na co je třeba dávat pozor.
 five-myths-desc = Zjistěte, jak se vyvarovat špatných zvyků, které hackerům usnadňují práci.
 take-further-steps-desc = Zjistěte, jak snížit rizika krádeže identity a předejít tak finanční ztrátě.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Změny uloženy
