@@ -393,3 +393,5 @@ create-strong-passwords-desc = Haz que tus contraseñas sean potentes, seguras y
 steps-to-protect-desc = Comprende las amenazas más frecuentes y entérate de lo que no debes perder de vista.
 five-myths-desc = Aprende a evitar los malos hábitos que facilitan a los piratas informáticos robar contraseñas.
 take-further-steps-desc = Descubre cómo mitigar los riesgos del robo de identidad para evitar perder tu dinero.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = ¡Cambios guardados!
