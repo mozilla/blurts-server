@@ -17,6 +17,23 @@
 terms-and-privacy = Mboguatarã ha ñemigua
 GitHub-link-title = GitHub
 home-title = { -product-name }
+home-not-found = Kuatiarogue oĩ’ỹva.
+oauth-invalid-session = Tembiapo oiko’ỹva
+scan-title = { -product-name } : Ñemoha’ãnga rapykuere
+user-add-invalid-email = Ñanduti veve oiko’ỹva
+error-headline = Javy
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = ¡Mondopyre!
+sign-up = Mboheraguapy
+form-signup-error = Oikova’erã ñanduti veve kundaharape
+unsub-button = Eheja ñemboheraguapy
+show-all = Ehechaukapa
+fxa-scan-another-email = ¿Ehechase ambue ñanduti veve?
+sign-in = Eñepyrũ tembiapo
+sign-out = Emboty tembiapo
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Eñangareko { -brand-fxa }
+have-an-account = ¿Erekóma mba’ete?
 
 ## What to do after data breach tips
 
