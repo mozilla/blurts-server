@@ -428,3 +428,5 @@ create-strong-passwords-desc = Gör dina lösenord starka, säkra och svåra att
 steps-to-protect-desc = Förstå de vanligaste hoten och lär dig vad du ska leta efter.
 five-myths-desc = Lär dig hur du undviker dåliga lösenordsvanor som gör en hackars jobb enklare.
 take-further-steps-desc = Ta reda på hur man kan mildra riskerna för identitetsstöld för att förhindra ekonomisk förlust.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Ändringar sparade!
