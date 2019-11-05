@@ -9,3 +9,5 @@ fx-lockwise = { -brand-lockwise }
 
 
 
+# Aria label for button that closes the Bento menu
+mobile-close-bento-button-title = Lukk meny

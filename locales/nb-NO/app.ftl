@@ -34,6 +34,12 @@ user-add-email-verify-subject = Bekreft abonnementet ditt på { -product-name }.
 user-add-duplicate-email = Denne e-postadressen er allerede lagt til { -product-name }.
 user-add-duplicate-email-part-2 = Besøk { $preferencesLink } for å kontrollere statusen for { $userEmail }.
 error-headline = Feil
+user-verify-token-error = Bekreftelsessymbol er påkrevd.
+user-verify-email-report-subject = Din { -product-name }-rapport
+user-unsubscribe-token-error = Avmelding krever et symbol.
+user-unsubscribe-token-email-error = Avmelding krever et symbol og en emailHash.
+user-unsubscribe-title = { -product-name }: Avslutt abonnement
+pwt-section-headline = Sterkere passord = bedre beskyttelse
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Sendt!
 sign-up = Registrer deg
@@ -52,6 +58,7 @@ sign-in = Logg inn
 sign-out = Logg ut
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Behandle { -brand-fxa }
+have-an-account = Har du allerede en konto?
 # Alerts is a noun
 sign-up-for-alerts = Registrer deg for varslinger
 # Link title
@@ -72,6 +79,7 @@ open-fxa-menu = Åpne { -brand-fxa }-navigasjon
 latest-breach = SISTE DATALEKKASJE SOM ER LAGT TIL
 # Link title
 more-about-this-breach = Mer om denne datalekkasjen
+about-fxm-headline = Om { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Hvordan { -product-name } fungerer
 how-fxm-3-headline = Få varsler i nettleseren din
