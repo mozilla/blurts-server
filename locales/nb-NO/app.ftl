@@ -16,9 +16,23 @@
 
 terms-and-privacy = Vilkår og personvern
 GitHub-link-title = GitHub
+error-scan-page-token = Du prøvde å skanne for mange e-postadresser på kort tid. Av sikkerhetsgrunner har vi midlertidig blokkert deg fra nye søk. Du kan prøve igjen senere.
+error-could-not-add-email = Kunne ikke legge til e-postadressen i databasen.
+error-not-subscribed = Denne e-postadressen abonnerer ikke på { -product-name }.
+error-hibp-throttled = For mange tilkoblinger til { -brand-HIBP }
+error-hibp-connect = Klarte ikke å koble til { -brand-HIBP }.
+error-hibp-load-breaches = Klarte ikke å laste datalekkasjer.
+error-must-be-signed-in = Du må være innlogget på { -brand-fxa }.
+error-to-finish-verifying = For å fullføre bekreftelsen av denne e-postadressen for { -product-name }, må du være innlogget med den primære e-postadressen for kontoen din.
 home-title = { -product-name }
 home-not-found = Fant ikke siden.
+oauth-invalid-session = Ugyldig økt
+scan-title = { -product-name }: Skanningsresultater
 user-add-invalid-email = Ugyldig epostadresse
+user-add-too-many-emails = Du overvåker det maksimale antallet e-postadresser.
+user-add-email-verify-subject = Bekreft abonnementet ditt på { -product-name }.
+user-add-duplicate-email = Denne e-postadressen er allerede lagt til { -product-name }.
+user-add-duplicate-email-part-2 = Besøk { $preferencesLink } for å kontrollere statusen for { $userEmail }.
 error-headline = Feil
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Sendt!
