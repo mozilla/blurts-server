@@ -94,7 +94,7 @@ fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Opne navigering for { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
-latest-breach = SISTE DATALEKASJE SOM ER LAGT TIL
+latest-breach = SISTE DATALEKKASJE SOM ER LAGT TIL
 # Link title
 more-about-this-breach = Meir om denne datalekkasjen
 take-control = Ta tilbake kontrollen over personopplysningane dine.
