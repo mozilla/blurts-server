@@ -74,5 +74,23 @@ faq-v2-4 = Hoe behandelt { -product-name } gevoelige websites?
 pre-fxa-message = <a>Maak een gratis { -brand-fxa }</a> en u kunt tot 15 e-mailadressen toevoegen.
 # Section headline
 monitor-another-email = Wilt u een ander e-mailadres volgen?
+# Subject line of email
+pre-fxa-subject = Een update van { -product-name }
+pre-fxa-headline = Wat verandert er aan { -product-name }
+pre-fxa-blurb =
+    Dit is er gewijzigd sinds u zich hebt aangemeld voor { -product-name }, de service die 
+    bekende datalekken monitort voor uw persoonlijke gegevens. We koppelen deze aan Firefox-accounts.
+pre-fxa-tout-1 = Blijf alert op meer datalekken
+pre-fxa-p-1 =
+    <a>Maak een account aan</a> om tot 15 e-mailadressen te monitoren op 
+    datalekken. We raden aan om alle e-mailadressen, die u hebt gebruikt om online accounts aan te maken, toe te voegen.
+pre-fxa-tout-2 = Ontvang een dashboardweergave
+pre-fxa-p-2 =
+    Bekijk alle datalekken op een plaats, zodat u weet welke wachtwoorden u moet wijzigen. 
+    Het datalekdashboard is alleen beschikbaar met een account.
+pre-fxa-tout-3 = Blijf e-mailmeldingen ontvangen
+pre-fxa-p-3 =
+    U ontvangt nog steeds meldingen van { -product-name }. We laten u weten of uw gegevens 
+    in een nieuw datalek verschijnen.
 # Button at the bottom of pre-fxa email.
 create-account = Account aanmaken
