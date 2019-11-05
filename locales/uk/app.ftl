@@ -461,3 +461,5 @@ create-strong-passwords-desc = Створюйте надійні, безпечн
 steps-to-protect-desc = Дізнайтеся про найбільш поширені загрози, а також на що необхідно звертати увагу.
 five-myths-desc = Навчіться, як позбутися поганих звичок поводження з паролями, що роблять вас легкою здобиччю для хакерів.
 take-further-steps-desc = Дізнайтеся, як зменшити ризики викрадення особистої інформації, щоб запобігти фінансовим збиткам.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Зміни збережено!
