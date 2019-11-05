@@ -34,16 +34,37 @@ sign-out = Emboty tembiapo
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Eñangareko { -brand-fxa }
 have-an-account = ¿Erekóma mba’ete?
+# Alerts is a noun
+sign-up-for-alerts = Eñemboheraguapy og̃uahẽ hag̃ua kyhyjerã
+# Link title
+frequently-asked-questions = Porandu py’ỹigua
+about-firefox-monitor = { -product-name } rehegua
+# Link title
+preferences = Jerohoryvéva
+# Link title
+home = Ñepyrũ
+# Link title
+breaches = Ñembyai
 
 ## What to do after data breach tips
 
 
 ## Updated error messages
 
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Poravorã
+# Link title
+learn-more-link = Kuaave.
+email-sent = ¡Ñandutiveve mondopyre!
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = eñepyrũ tembiapo
 
 
 
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Mboguapy mbojuajupyre:
