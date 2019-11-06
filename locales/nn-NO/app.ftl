@@ -265,3 +265,5 @@ sign-in-nested = logg inn
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Datalekkasje lagt til:
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Endringar lagra!
