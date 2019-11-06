@@ -114,7 +114,6 @@ take-control = Shimukwepa wan shitajshiti mudatoj
 cant-stop-hackers = Tesu tiweli ma ne hackers kichtekit nemit mudatoj, man tiweli tikajkawa tikchiwa tay tesu metzpalewia wan muchiwa ukyek mutekiw.
 read-more-tips = Shiamatachiayuk ipanpa ne tanajnawatil.
 how-hackers-work = Shimumachti ken ne hackers kaltapanat.
-monitor-your-online-accounts = Shikchiwa se mucuentaj iwan { -brand-fxa }pal tikpepeta kwak kaltapanat
 stay-alert = Shikishpelwi ne yankwik kaltapanalis
 if-your-info = Asu muinformación nesi tik se kaltapanalis yankwik, tiu-timetztitaniliat se tanawatilis.
 search-all-emails = Shiktemu itzalan muchi ne itujtukay correoj asu kaltapanket tik yejemet wan ma metznawatikan keman metzmajmawat uksenpa.
