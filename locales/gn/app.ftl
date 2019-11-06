@@ -22,6 +22,12 @@ oauth-invalid-session = Tembiapo oiko’ỹva
 scan-title = { -product-name } : Ñemoha’ãnga rapykuere
 user-add-invalid-email = Ñanduti veve oiko’ỹva
 error-headline = Javy
+user-unsubscribe-title = { -product-name } : Eheja ñemboheraguapy
+pwt-section-headline = Ñe’ẽñemi imbaretevéva = Nemo’ãvéva
+landing-headline = Nde derécho esẽvo mba’evai apohágui oñepyrũ ápe.
+scan-placeholder = Ehai ne ñanduti veve kundaharape
+scan-submit = Eheka ne ñanduti veve
+scan-error = Ñanduti veve oikova’erã.
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = ¡Mondopyre!
 sign-up = Mboheraguapy
