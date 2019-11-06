@@ -28,10 +28,18 @@ landing-headline = Nde derécho esẽvo mba’evai apohágui oñepyrũ ápe.
 scan-placeholder = Ehai ne ñanduti veve kundaharape
 scan-submit = Eheka ne ñanduti veve
 scan-error = Ñanduti veve oikova’erã.
+download-firefox-banner-button = Emboguejy { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = ¡Mondopyre!
 sign-up = Mboheraguapy
 form-signup-error = Oikova’erã ñanduti veve kundaharape
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = Arange oñembyaihague:
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Mba’ete ivaikuaáva:
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Mba’ekuaarã ivaikuaáva:
+unsub-headline = Eheja mboheraguapy { -product-name-nowrap } pegua
 unsub-button = Eheja ñemboheraguapy
 show-all = Ehechaukapa
 fxa-scan-another-email = ¿Ehechase ambue ñanduti veve?
@@ -51,12 +59,24 @@ preferences = Jerohoryvéva
 home = Ñepyrũ
 # Link title
 breaches = Ñembyai
+# Link title
+security-tips = Ñe’ẽporã tekorosãrã
+fxa-account = { -brand-fxa }
 
 ## What to do after data breach tips
 
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Jehechauka:
 
 ## Updated error messages
 
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Jejuhu
+# Title
+email-addresses-title = Ñanduti veve kundaharape
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Jehechapa
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Poravorã
 # Link title
