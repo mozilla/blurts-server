@@ -106,10 +106,17 @@ menu = Meny
 # Link title
 learn-more-link = Les mer.
 email-sent = E-post er sendt!
+# Form title
+want-to-add = Vil du legge til en annen e-postadresse?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Bekreft lenken som er sendt til { $userEmail } for å legge den til { -product-name }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+email-verified = E-postadresse bekreftet!
+email-added-to-subscription = Vi vil advare deg hvis { $email } forekommer i en datalekkasje.
 
 
 
