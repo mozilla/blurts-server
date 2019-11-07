@@ -124,6 +124,9 @@ website-breach = Kaltapanalis ipal iswat ka matapan
 sensitive-breach = Kaltapanalis ipal ne datuj tik se iswat ka matapan
 data-aggregator-breach = Kaltapanalis tik ne kiachitilia dajdatoj
 unverified-breach = Kaltapanalis teuk mupepettuk
+spam-list-breach = Kaltapanalis tik ne listaj ipal correoj kupajsul
+website-breach-plural = Kaltapanalis tik ne iswat ipal matapan
+sensitive-breach-plural = Kaltapanalis tesajsay
 
 ## What to do after data breach tips
 
