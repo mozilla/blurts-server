@@ -31,5 +31,17 @@ test("requireSessionUser redirects to /oauth/init if no user", async () => {
   await requireSessionUser(req, res, next);
 
   const mockRedirectCallArgs = res.redirect.mock.calls[0];
-  expect(mockRedirectCallArgs[0]).toBe("/oauth/init");
+  expect(mockRedirectCallArgs[0]).toBe("/oauth/init?");
+});
+
+
+test("requireSessionUser redirect preserves utm params", async () => {
+  const req = { session: { }, query: {"utm_campaign": "direct-to-dashboard"} };
+  const res = { redirect: jest.fn() };
+  const next = jest.fn();
+
+  await requireSessionUser(req, res, next);
+
+  const mockRedirectCallArgs = res.redirect.mock.calls[0];
+  expect(mockRedirectCallArgs[0]).toBe("/oauth/init?utm_campaign=direct-to-dashboard");
 });

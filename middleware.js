@@ -1,5 +1,6 @@
 "use strict";
 
+const { URLSearchParams } = require("url");
 
 const { negotiateLanguages, acceptedLanguages } = require("fluent-langneg");
 const Sentry = require("@sentry/node");
@@ -104,7 +105,8 @@ async function _getRequestSessionUser(req, res, next) {
 async function requireSessionUser(req, res, next) {
   const user = await _getRequestSessionUser(req);
   if (!user) {
-    return res.redirect("/oauth/init");
+    const queryParams = new URLSearchParams(req.query).toString();
+    return res.redirect(`/oauth/init?${queryParams}`);
   }
   req.user = user;
   next();
