@@ -76,6 +76,8 @@ monitor-several-emails = Ema’ẽke heta ñanduti vevére
 website-breach = Ñanduti renda ñembyai
 sensitive-breach = Ñanduti renda ñembyai vai
 data-aggregator-breach = Mba’ekuaarã mbyatyha ñembyai
+unverified-breach = Ñembyai ndojehechajeýiva
+spam-list-breach = Ñembyai rysýi eipota’ỹva
 
 ## What to do after data breach tips
 
