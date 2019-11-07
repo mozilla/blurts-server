@@ -59,7 +59,7 @@ unsub-headline = Avslutt abonnementet på { -product-name-nowrap }
 unsub-button = Avslutt abonnementet
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Informasjonen om datalekkasjen kjem frå { $hibp-link }
-share-facebook-headline = Finn ut om du har vore utsett for ein datalekkasje.
+share-facebook-headline = Finn ut om du har vore utsett for ein datalekkasje
 share-facebook-blurb = Har kontoane dine på nettet blitt utsett for datalekkasje?
 show-all = Vis alle
 fxa-scan-another-email = Vil du kontrollere ei anna e-postadresse?
