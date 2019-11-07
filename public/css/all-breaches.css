@@ -42,7 +42,7 @@ button.fuzzy-find-show-breaches {
   border-radius: 50%;
   padding: 0;
   opacity: 0;
-  transition: opacity 0.15s ease-in-out;
+  transition: opacity 0.1s ease-in-out;
 }
 
 .show-all-breaches.btn-violet-primary {
@@ -50,44 +50,21 @@ button.fuzzy-find-show-breaches {
 }
 
 #no-results-blurb {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
   pointer-events: none;
+  display: none;
   opacity: 0;
-  display: flex;
-  margin: auto;
-  background-color: var(--violet3);
-  color: rgba(255, 255, 255, 1);
-  padding: 8px 16px;
-  position: absolute;
-  bottom: -26px;
-  left: 16px;
-  right: 16px;
-  transform: translateY(0);
-  border-radius: 4px;
+  margin: 48px auto auto auto;
+  color: var(--purple7);
   transition: all 0.15s ease-in-out;
 }
 
 #no-results-blurb.show {
-  opacity: 1;
-  box-shadow: 2px 3px 10px -1px #3339422e, -2px -3px 10px 1px #33394205;
-  transition: all 0.15s ease-in-out;
-}
-
-#no-results-blurb.show::before {
-  height: 1rem;
-  width: 1rem;
-  transform: rotate(45deg);
-  background-color: var(--violet3);
-  position: absolute;
-  top: -4px;
-  z-index: -1;
-  content: "";
   display: inline-block;
-}
-
-#no-results-blurb.show,
-#no-results-blur.show::before {
-  transform: translateY(7px);
-  transition: all 0.15s ease-in-out;
+  opacity: 1;
+  transition: all 0.1s ease-in-out;
 }
 
 button.fuzzy-find-show-breaches.show {
