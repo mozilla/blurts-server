@@ -40,6 +40,10 @@ user-unsubscribe-token-error = Avmelding krever et symbol.
 user-unsubscribe-token-email-error = Avmelding krever et symbol og en emailHash.
 user-unsubscribe-title = { -product-name }: Avslutt abonnement
 pwt-section-headline = Sterkere passord = bedre beskyttelse
+scan-placeholder = Skriv inn e-postadresse
+scan-submit = Søk etter din e-postadresse
+scan-error = E-postadressen må være gyldig.
+download-firefox-banner-button = Last ned { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Sendt!
 sign-up = Registrer deg
@@ -50,10 +54,13 @@ breach-date = Dato for datalekkasje:
 compromised-accounts = Kompromiterte kontoer:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Kompromiterte data:
+unsub-headline = Avslutt abonnementet på { -product-name-nowrap }
 unsub-button = Stopp abonnement
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Informasjonen om datalekkasjen kommer fra { $hibp-link }
+share-facebook-headline = Finn ut om du har vært utsatt for en datalekkasje
 show-all = Vis alle
+fxa-scan-another-email = Vil du kontollere en annen e-postadresse?
 sign-in = Logg inn
 sign-out = Logg ut
 # Manage Firefox Account, link to page where account holders can change their account settings.
@@ -79,6 +86,7 @@ open-fxa-menu = Åpne { -brand-fxa }-navigasjon
 latest-breach = SISTE DATALEKKASJE SOM ER LAGT TIL
 # Link title
 more-about-this-breach = Mer om denne datalekkasjen
+read-more-tips = Les flere sikkerhetstips
 about-fxm-headline = Om { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Hvordan { -product-name } fungerer
@@ -88,9 +96,16 @@ how-fxm-3-headline = Få varsler i nettleseren din
 
 change-pw = Endre passordet ditt
 back-to-top = Tilbake til toppen
+welcome-back = Velkommen tilbake, { $userName }!
+welcome-user = Velkommen { $userName }!
 
 ## Updated error messages
 
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Meny
+# Link title
+learn-more-link = Les mer.
+email-sent = E-post er sendt!
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
