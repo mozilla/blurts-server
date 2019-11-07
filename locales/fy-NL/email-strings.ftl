@@ -2,60 +2,12 @@
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
-click-to-verify =
-    Selektearje binnen 24 oer de knop ‘Myn e-mailadres ferifiearje’ om jo Firefox Monitor-account te befêstigjen. 
-    Jo rapport is dan ûnderweis.
-verify-my-email = Myn e-mailadres ferifiearje
-report-scan-another-email = Noch in e-mailadres skanne yn { -product-name }
-automated-message = Dit is in automatisearre e-mailberjocht; as jo it by fersin ûntfongen hawwe, hoege jo neat te dwaan.
-# Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
-we-sent-this-alert = Wy hawwe dit berjocht nei { $userEmail } stjoerd, omdat it e-mailadres ynskreaun is foar warskôgingen fan { -product-name }.
-unsubscribe-email-link = As jo gjin warskôgingen fan { -product-name } mear ûntfange wolle, skriuw jo dan út.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = { -product-name }-rapport
 report-date = Rapportdatum:
 email-address = E-mailadres:
-# A list of next steps someone should take if their information has been involved in a data breach.
-what-to-do-next = Folgjende stappen
-report-headline =
-    { $breachCount ->
-        [0] Oant no ta alles goed.
-        [one] Jo account komt foar yn { $breachCount } lek.
-       *[other] Jo account komt foar yn { $breachCount } lekken.
-    }
-report-subhead-no-breaches =
-    Jo account komt net foar yn ús folsleine rapport fan datalekken. 
-    Dat is goed nijs, mar jo kinne mear dwaan. 
-    Datalekken kinne altyd foarkomme, dus lês fierder om te sjen hoe't jo jo wachtwurden beskermje kinne.
-report-subhead-found-breaches = Hjir is jo folsleine Firefox Monitor-rapport, wêryn alle bekende datalekken stean wêryn dit e-mailadres foarkomt.
-report-pwt-blurb =
-    Wachtwurden binne sa weardefol, dat der deistich tûzenen fan stellen en ferhannele of ferkocht wurde op de swarte merk. 
-    Sterkere wachtwurden beskermje jo accounts en alle persoanlike gegevens dy't deryn bewarre wurde.
-report-pwt-headline-1 = Brûk foar elk account in oar wachtwurd
-report-pwt-summary-1 =
-    It oeral opnij brûken fan wachtwurden iepenet de doar foar hackers. 
-    Se kinne dat wachtwurd brûke om har by jo oare accounts oan te melden.
-report-pwt-headline-2 = Meitsje sterke, unike wachtwurden
-report-pwt-summary-2 =
-    Hackers brûke listen mei faaks brûkte wachtwurden om dat fan jo te probearje te rieden. 
-    Hoe langer en mear willekeurich jo wachtwurd is, hoe swierder it is om it te stellen.
-report-pwt-headline-3 = Behannelje befeiligingsfragen as ekstra wachtwurden
-report-pwt-summary-3 =
-    Websites kontrolearje net oft jo antwurden krekt binne, allinnich oft se elke kear oerienkomme. 
-    Meitsje lange, willekeurige antwurden en bewarje se op in feilich plak.
-report-pwt-headline-4 = Brûk in wachtwurdbehearder
-report-pwt-summary-4 = Tsjinsten lykas 1Password, LastPass, Dashlane en Bitwarden generearje sterke wachtwurden, bewarje se befeiligd en folje se op websites yn, sadat jo se net allegearre hoege te ûnthâlden.
 # A link to legal information about mozilla products.
 legal = Juridysk
-# Share Firefox Monitor by email subject line
-share-by-email-subject = Untdek oft jo troffen binne troch in datalek.
-# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
-share-by-email-message =
-    Hallo,
-    { -brand-name } hat in fergeze tsjinst wêrmei't jo kontrolearje kinne oft jo troffen binne troch in datalek. Sa wurket it:
-    1. Gean nei { "https://monitor.firefox.com" } en sykje nei jo e-mailadres.
-    2. Sjoch oft jo online accounts troffen binne troch in datalek.
-    3. Untfang tips fan { -product-name } oer wat jo fierder dwaan kinne.
 # Unsubscribe link in email.
 email-unsub-link = Ofmelde
 # This string appears in the footer of breach report and breach alert emails.
@@ -122,3 +74,23 @@ faq-v2-4 = Hoe behannelet { -product-name } gefoelige websites?
 pre-fxa-message = <a>Meitsje in fergees { -brand-fxa }</a> en jo kinne maksimaal 15 e-mailadressen tafoegje.
 # Section headline
 monitor-another-email = Wolle jo in oar e-mailadres kontrolearje?
+# Subject line of email
+pre-fxa-subject = In fernijing fan { -product-name }
+pre-fxa-headline = Wat wiziget der oan { -product-name }
+pre-fxa-blurb =
+    Dit is der wizige sûnt jo jo oanmeld hawwe foar { -product-name }, de service dy't 
+    bekende datalekken monitort foar jo persoanlike gegevens. Wy keppelje dizze oan Firefox-accounts.
+pre-fxa-tout-1 = Bliuw alert op mear datalekken
+pre-fxa-p-1 =
+    <a>Meitsje in account oan</a> om oant 15 e-mailadressen te monitoarjen op 
+    datalekken. We riede oan om alle e-mailadressen, dy't jo brûkt hawwe om online accounts oan te meitsjen, ta te foegjen.
+pre-fxa-tout-2 = Untfang in dashboerdwerjefte
+pre-fxa-p-2 =
+    Besjoch alle datalekken op ien plak, sadat jo witte hokker wachtwurden jo wizigje moatte. 
+    It datalekdashboerd is allinnich beskikber mei in account.
+pre-fxa-tout-3 = Bliuw e-mailmeldingen ûntfange
+pre-fxa-p-3 =
+    Jo ûntfange noch hieltyd meldingen fan { -product-name }. Wy litte jo witte oft jo gegevens 
+    yn in nij datalek ferskine.
+# Button at the bottom of pre-fxa email.
+create-account = Account oanmeitsje
