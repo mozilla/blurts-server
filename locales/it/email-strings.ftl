@@ -62,6 +62,15 @@ faq-v2-4 = In che modo vengono trattati i siti contenenti dati sensibili in { -p
 pre-fxa-message = <a>Crea un { -brand-fxa }</a> gratuito, puoi aggiungere fino a 15 indirizzi email.
 # Section headline
 monitor-another-email = Vuoi monitorare un altro indirizzo email?
+# Subject line of email
+pre-fxa-subject = Un aggiornamento da { -product-name }
+pre-fxa-headline = Che cosa sta cambiando in { -product-name }
+pre-fxa-blurb = Ecco che cosa è cambiato da quando hai registrato un account su { -product-name }, il servizio che tiene sotto controllo le violazioni note dei dati utente sensibili: presto sarà collegato all’account Firefox.
 pre-fxa-tout-1 = Rimani aggiornato sulle nuove violazioni
+pre-fxa-p-1 = <a>Crea un account</a> per tenere sotto controllo le violazioni di dati su fino a 15 indirizzi email contemporaneamente. Raccomandiamo di aggiungere tutti gli indirizzi email usati per creare account online.
+pre-fxa-tout-2 = Visualizza tutto su un pannello
+pre-fxa-p-2 = Tieni sotto controllo tutte le violazioni dati da un’unica postazione per vedere quali password hanno bisogno di essere modificate. Il pannello di sorveglianza delle violazioni è disponibile soltanto con un account.
+pre-fxa-tout-3 = Continua a ricevere avvisi email
+pre-fxa-p-3 = Riceverai altri avvisi da { -product-name } per informarti ogni volta che i tuoi dati sensibili verranno coinvolti in una nuova violazione.
 # Button at the bottom of pre-fxa email.
 create-account = Crea account
