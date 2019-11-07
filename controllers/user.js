@@ -15,25 +15,9 @@ const sha1 = require("../sha1-utils");
 const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
 
 
-async function _getRequestSessionUser(req) {
-  if (req.session && req.session.user) {
-    // make sure the user object has all subscribers and email_addresses properties
-    return DB.getSubscriberById(req.session.user.id);
-  }
-  return null;
-}
-
-async function _requireSessionUser(req,res) {
-  if (!req.session || !req.session.user) {
-    // TODO: can we do a nice redirect to sign in instead of an error?
-    throw new FluentError("error-must-be-signed-in");
-  }
-  return _getRequestSessionUser(req);
-}
-
 async function removeEmail(req, res) {
   const emailId = req.body.emailId;
-  const sessionUser = await _requireSessionUser(req);
+  const sessionUser = req.user;
   const existingEmail = await DB.getEmailById(emailId);
   if (existingEmail.subscriber_id !== sessionUser.id) {
     throw new FluentError("error-not-subscribed");
@@ -45,7 +29,7 @@ async function removeEmail(req, res) {
 
 async function resendEmail(req, res) {
   const emailId = req.body.emailId;
-  const sessionUser = await _requireSessionUser(req);
+  const sessionUser = req.user;
   const existingEmail = await DB.getEmailById(emailId);
 
   if (!existingEmail || !existingEmail.subscriber_id) {
@@ -77,7 +61,7 @@ async function resendEmail(req, res) {
 }
 
 async function updateCommunicationOptions(req, res) {
-  const sessionUser = await _requireSessionUser(req);
+  const sessionUser = req.user;
   // 0 = Send breach alerts to the email address found in brew breach.
   // 1 = Send all breach alerts to user's primary email address.
   const allEmailsToPrimary = (Number(req.body.communicationOption) === 1) ? true : false;
@@ -101,7 +85,7 @@ function _checkForDuplicateEmail(sessionUser, email) {
 
 
 async function add(req, res) {
-  const sessionUser = await _requireSessionUser(req);
+  const sessionUser = await req.user;
   const email = req.body.email;
   if (!email || !isemail.validate(email)) {
     throw new FluentError("user-add-invalid-email");
@@ -188,7 +172,7 @@ function getNewBreachesForEmailEntriesSinceDate(emailEntries, date) {
 
 
 async function getDashboard(req, res) {
-  const user = await _requireSessionUser(req);
+  const user = req.user;
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
   let lastAddedEmail = null;
@@ -250,7 +234,7 @@ async function verify(req, res) {
     throw new FluentError("error-not-subscribed");
   }
 
-  const sessionUser = await _getRequestSessionUser(req);
+  const sessionUser = await req.user;
   if (sessionUser && existingEmail.subscriber_id !== sessionUser.id) {
     // TODO: more specific error message?
     // e.g., "This email verification token is not valid for this account"
@@ -305,7 +289,7 @@ async function getUnsubscribe(req, res) {
 
 
 async function getRemoveFxm(req, res) {
-  const sessionUser = await _requireSessionUser(req);
+  const sessionUser = req.user;
 
   res.render("subpage", {
     title: req.fluentFormat("remove-fxm"),
@@ -317,7 +301,7 @@ async function getRemoveFxm(req, res) {
 
 
 async function postRemoveFxm(req, res) {
-  const sessionUser = await _requireSessionUser(req);
+  const sessionUser = req.user;
   await DB.removeSubscriber(sessionUser);
   await FXA.revokeOAuthTokens(sessionUser);
 
@@ -350,7 +334,7 @@ async function postUnsubscribe(req, res) {
 
 
 async function getPreferences(req, res) {
-  const user = await _requireSessionUser(req);
+  const user = req.user;
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
 
