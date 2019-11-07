@@ -62,6 +62,20 @@ breaches = Ñembyai
 # Link title
 security-tips = Ñe’ẽporã tekorosãrã
 fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Embojuruja { -brand-fxa } kundahára
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = ÑEMBYAI IPYAHUVÉVA MBOJUAJUPYRE
+# Link title
+more-about-this-breach = Eikuaave ñembyai rehegua
+take-control = Eguerujey ne maranduete.
+read-more-tips = Ehechave ñe’ẽporã tekorosãrã
+how-hackers-work = Eikuaa mba’éichapa omba’apo umi hackers
+stay-alert = Ejesarekóke kyhyjerã ñembyai pyahúre
+monitor-several-emails = Ema’ẽke heta ñanduti vevére
+website-breach = Ñanduti renda ñembyai
+sensitive-breach = Ñanduti renda ñembyai vai
+data-aggregator-breach = Mba’ekuaarã mbyatyha ñembyai
 
 ## What to do after data breach tips
 
