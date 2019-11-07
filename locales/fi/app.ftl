@@ -24,7 +24,7 @@
 
 terms-and-privacy = Ehdot ja yksityisyys
 GitHub-link-title = GitHub
-error-scan-page-token = Yrität tarkistaa liian monta sähköpostiosoitetta todella lyhyessä ajassa. Turvallisuussyistä olemme väliaikaisesti estäneet sinut uusilta hauilta. Voit yrittää myöhemmin uudelleen.
+error-scan-page-token = Yrität tarkistaa liian montaa sähköpostiosoitetta todella lyhyessä ajassa. Turvallisuussyistä olemme väliaikaisesti estäneet sinut uusilta hauilta. Voit yrittää myöhemmin uudelleen.
 error-could-not-add-email = Sähköpostiosoitetta ei voitu lisätä tietokantaan.
 error-not-subscribed = Tätä sähköpostiosoitetta ei ole tilattu { -product-name }iin.
 error-hibp-throttled = Liian monta yhteyttä tuotteeseen { -brand-HIBP }.
@@ -434,3 +434,5 @@ create-strong-passwords-desc = Tee salasanoistasi vahvoja, turvallisia ja vaikea
 steps-to-protect-desc = Ymmärrä useimmat yleisimmät uhat ja tiedä mihin varautua.
 five-myths-desc = Opi, kuinka välttää huonot salasanakäytännöt.
 take-further-steps-desc = Ota selvää, kuinka voit pienentää identiteettivarkauden riskejä estääksesi taloudellisia menetyksiä.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Muutokset tallennettu!
