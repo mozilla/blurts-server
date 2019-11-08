@@ -369,3 +369,5 @@ create-strong-passwords-desc = Crea password complesse, sicure e difficili da in
 steps-to-protect-desc = Impara a conoscere le minacce più comuni per capire a cosa fare attenzione.
 five-myths-desc = Evita le cattive abitudini che servono le tue password agli hacker su un piatto d’argento.
 take-further-steps-desc = Scopri come mitigare i rischi di furto d’identità per scongiurare perdite finanziarie.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Modifiche salvate.
