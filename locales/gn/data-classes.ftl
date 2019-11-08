@@ -92,3 +92,7 @@ profile-photos = Ta’ãnga mba’eteguáva
 purchases = Jogua
 purchasing-habits = Jogua meme
 recovery-email-addresses = Ñanduti veve jeguerujey kundaharape
+relationship-statuses = Jeiko rekotee
+religions = Tupãrovia
+salutations = Maitei
+school-grades-class-levels = Mbo’ehao mbo’esysy (mbo’ehakoty rehegua)
