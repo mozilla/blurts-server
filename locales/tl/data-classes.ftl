@@ -10,3 +10,4 @@ imsi-numbers = IMSI numbers
 photos = Mga Larawan
 pins = PINs
 religions = Mga Relihiyon
+years-of-birth = Taon ng kapanganakan

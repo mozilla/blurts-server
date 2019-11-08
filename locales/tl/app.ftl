@@ -15,8 +15,12 @@
 
 GitHub-link-title = GitHub
 home-title = { -product-name }
+home-not-found = Hindi makita ang pahina.
+oauth-invalid-session = Imbalidong sesyon
 user-add-invalid-email = Inbalidong Email
 error-headline = May Mali
+scan-submit = Hanapin sa Iyong Email
+download-firefox-banner-button = i-Download ang { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Naipadala na!
 show-all = Ipakita Lahat
