@@ -10,9 +10,17 @@ audio-recordings = Mba'epu ñongatuete
 auth-tokens = Tokens mboajeha
 avatars = Avatars
 bank-account-numbers = Mba’ete banco pegua papapy
+beauty-ratings = Mba’eporã jeporavo
+biometric-data = Biométrico mba’ekuaarã
 # This string is the shortened version of "Biographies", and 
 # refers to biographical data about a user.
 bios = Haijehegua
+browser-user-agent-details = Puruhára pytyvõha kundahára mba’emimi
+browsing-histories = Kundaha rembiasakue
+buying-preferences = Erohoryvéva jejogua
+car-ownership-statuses = Mba’yruguata mba’etee rehegua
+career-levels = Carréra rapykuere
+cellular-network-names = Red celular réra
 chat-logs = Chat rehegua jehaipy
 credit-card-cvv = Kuatia’atã ñamurã CVV
 pins = PINs
