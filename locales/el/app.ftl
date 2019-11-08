@@ -1,8 +1,6 @@
-# String IDs beginning with "-product" and "-brand" should remain in English.
-# They should not be:
-# - Declined to adapt to grammatical case.
-# - Transliterated.
-# - Translated.
+## The following messages are brand and should be kept entirely in English
+## unless otherwise indicated.
+
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
@@ -10,6 +8,12 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Λογαριασμός Firefox
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+
+
+
 terms-and-privacy = Όροι και απόρρητο
 GitHub-link-title = GitHub
 error-scan-page-token = Προσπαθήσατε να σαρώσετε πάρα πολλές διευθύνσεις email σε μικρό χρονικό διάστημα. Για λόγους ασφαλείας, σάς έχουμε αποκλείσει προσωρινά από νέες αναζητήσεις. Θα μπορέσετε να δοκιμάσετε ξανά αργότερα.
@@ -169,7 +173,6 @@ currently-showing = Εμφάνιση:
 ## Updated error messages
 
 error-csrf-headline = Ο χρόνος συνεδρίας έληξε
-login-link = Σύνδεση
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
@@ -200,6 +203,13 @@ learn-more-link = Μάθετε περισσότερα.
 email-sent = Απεστάλη email!
 # Form title
 want-to-add = Θέλετε να προσθέσετε ένα άλλο email;
+
+## These are part of a confirmation page that appears after a user has verified
+## an additional email to Firefox Monitor.
+
+
+
+
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
