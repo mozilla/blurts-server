@@ -83,9 +83,9 @@ const DB = {
     // We don't want to get subscribers records where the email address has
     // since been added "under" an FxA subscription
     const allEmailAddressesSubquery = knex("email_addresses").select("email");
-    const preFxaSubscribers = await knex("subscribers").where({
-      "fxa_uid": "",
-    }).andWhere(
+    const preFxaSubscribers = await knex("subscribers").whereRaw(
+      "(fxa_uid = '') IS NOT FALSE"
+    ).andWhere(
       "primary_email", "not in", allEmailAddressesSubquery
     );
     return preFxaSubscribers;
