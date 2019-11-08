@@ -46,4 +46,5 @@ const { LocaleUtils } = require ("../locale-utils");
     }
   }
   console.log(`Notified subscribers: ${JSON.stringify(notifiedSubscribers)}`);
+  process.exit();
 })();
