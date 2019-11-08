@@ -110,3 +110,5 @@ sign-in-nested = eñepyrũ tembiapo
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Mboguapy mbojuajupyre:
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = ¡Moambuepy ñongatupyre!
