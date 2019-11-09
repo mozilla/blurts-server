@@ -75,3 +75,12 @@ pre-fxa-subject = Një përditësim nga { -product-name }
 pre-fxa-headline = Ç’po ndryshon me { -product-name }
 pre-fxa-blurb = Ja se ç’ka ndryshuar që kur u regjistruat për { -product-name }, shërbimi që mbikëqyr cenime të ditur të dhënash për të dhënat tuaja personale. Po e lidhim me llogaritë Firefox.
 pre-fxa-tout-1 = Jini i njoftuar për më tepër ceinme
+pre-fxa-p-1 = <a>Krijoni një llogari</a> që të mbikëqyrni deri në 15 adresa email për cenime të dhënash. Këshillojmë shtimin e çfarëdo adresash që keni përdorur për të krijuar llogari në internet.
+pre-fxa-tout-2 = Merrni një pamje si pult
+pre-fxa-p-2 =
+    Shihni krejt të dhënat në një vend, që kështu të dini se cilët fjalëkalime të ndryshoni. 
+    Pulti i cenimeve mund të kihet vetëm me një llogari.
+pre-fxa-tout-3 = Vazhdoni të merrni sinjalizime me email
+pre-fxa-p-3 = Do të merrni ende sinjalizime prej { -product-name }. Do t’ju bëjmë të ditur, nëse të dhënat tuaja shfaqen në një cenim të ri të dhënash.
+# Button at the bottom of pre-fxa email.
+create-account = Krijoje Llogarinë

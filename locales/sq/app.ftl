@@ -379,3 +379,5 @@ create-strong-passwords-desc = Bëjini fjalëkalimet tuaj të fortë, të sigurt
 steps-to-protect-desc = Kuptoni kërcënimet më të rëndomta dhe dini se ç’duhet kërkuar.
 five-myths-desc = Mësoni si të shmangen huqe të këqija për fjalëkalimet që e bëjnë të lehtë punën e hacker-ave.
 take-further-steps-desc = Shihni se si të ulen rreziqet e vjedhjes së identitetit për të parandaluar humbje financiare.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Ndryshimet u ruajtën!
