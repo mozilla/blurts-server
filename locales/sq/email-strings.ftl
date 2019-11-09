@@ -2,60 +2,12 @@
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
-click-to-verify =
-    Që të ripohoni llogarinë tuaj Firefox Monitor, klikoni brenda 24 orësh mbi butonin Verifiko Email-in Tim. 
-    Mandej raporti juaj do të jetë rrugës për te ju.
-verify-my-email = Verifiko Email-in Tim
-report-scan-another-email = Skanoni Një Tjetër Email në { -product-name }
-automated-message = Ky është një email i automatizuar; nëse e morët gabimisht, s’ka nevojë të bëni gjë.
-# Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
-we-sent-this-alert = E dërguam këtë mesazh te { $userEmail } ngaqë për adresën email është zgjedhur përfshirja në sinjalizime nga { -product-name }.
-unsubscribe-email-link = Nëse s’doni më sinjalizim rreth { -product-name }, shpajtohuni.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Raport { -product-name }
 report-date = Datë Raporti:
 email-address = Adresë Email:
-# A list of next steps someone should take if their information has been involved in a data breach.
-what-to-do-next = Ç’të Bëhet Më Pas
-report-headline =
-    { $breachCount ->
-        [0] Deri këtu, në rregull.
-        [one] Llogaria juaj shfaqet në { $breachCount } shkelje.
-       *[other] Llogaria juaj shfaqet në { $breachCount } shkelje.
-    }
-report-subhead-no-breaches =
-    Llogaria juaj s’duket te raporti ynë i plotë i shkeljeve. 
-    Kaq është mirë, por mund të bëni më tepër. 
-    Shkeljet e të dhënave ndodhin kurdo, ndaj lexoni më tej që të mësoni se si mund mbroni fjalëkalimet tuaj.
-report-subhead-found-breaches = Ja raporti i plotë Firefox Monitor për ju, që përfshin krejt shkeljet e njohura të të dhënave që përmbajnë këtë adresë email.
-report-pwt-blurb =
-    Fjalëkalimet janë kaq të vyer, saqë  përditë vidhen mijëra të tillë dhe shkëmbehen ose shiten në treg të zi. 
-    Fjalëkalimet më të fuqishëm mbrojnë llogaritë tuaja dhe të dhënat personale brenda tyre.
-report-pwt-headline-1 = Përdorni një fjalëkalim të ndryshëm për çdo llogari
-report-pwt-summary-1 =
-    Përdorimi i të njëjtit fjalëkalim kudo e lë derën hapur për hacker-at. 
-    Që mund ta përdorin atë fjalëkalim për të hyrë në llogaritë tuaja të tjera.
-report-pwt-headline-2 = Krijoni fjalëkalime të fuqishëm, unikë
-report-pwt-summary-2 =
-    Për të provuar të gjejnë tuajin, hackera-t përdorin lista fjalëkalimesh të rëndomtë. 
-    Sa më i gjatë dhe i rastësishëm të jetë fjalëkalimi juaj, aq më e vështirë do të jetë të vidhet.
-report-pwt-headline-3 = Pyetjet e sigurisë shihini si fjalëkalime ekstra
-report-pwt-summary-3 =
-    Sajtet nuk kontrollojnë nëse përgjigjet tuaja janë të sakta a jo, ata thjesht shohin nëse përputhen çdo herë. 
-    Krijoni përgjigje të gjata, kuturu, dhe depozitojini diku në një vend pa rrezik.
-report-pwt-headline-4 = Përdorni një përgjegjës fjalëkalimesh
-report-pwt-summary-4 = Shërbime të tillë si 1Password, LastPass, Dashlane, dhe Bitwarden prodhojnë fjalëkalime të fuqishëm, i depozitojnë në mënyrë të sigurt, dhe i japin për sajtet, ndaj s’ju duhet të mbani mend secilin prej tyre.
 # A link to legal information about mozilla products.
 legal = Ligjore
-# Share Firefox Monitor by email subject line
-share-by-email-subject = Shihni nëse jeni prekur nga ndonjë shkelje e të dhënave.
-# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
-share-by-email-message =
-    Njatjeta,
-    { -brand-name }-i ka një shërbim falas në të cilin mund të kontrolloni për të parë nëse keni qenë prekur nga ndonjë shkelje të dhënash. Ja se si funksionon:
-    1. Shkoni te { "https://monitor.firefox.com" } dhe kërkoni për email-in tuaj.
-    2. Shihni nëse llogaritë tuaja internetore kanë qenë të ekspozuara në ndonjë shkelje të dhënash.
-    3. Get tips from { -product-name } about what to do next.
 # Unsubscribe link in email.
 email-unsub-link = Shpajtohuni
 # This string appears in the footer of breach report and breach alert emails.
@@ -118,3 +70,8 @@ faq-v2-4 = Si i trajton { -product-name } sajtet me të dhëna rezervat?
 pre-fxa-message = <a>Krijoni një { -brand-fxa } falas</a>, dhe mund të shtoni deri në 15 adresa email.
 # Section headline
 monitor-another-email = Doni të mbikëqyret tjetër email?
+# Subject line of email
+pre-fxa-subject = Një përditësim nga { -product-name }
+pre-fxa-headline = Ç’po ndryshon me { -product-name }
+pre-fxa-blurb = Ja se ç’ka ndryshuar që kur u regjistruat për { -product-name }, shërbimi që mbikëqyr cenime të ditur të dhënash për të dhënat tuaja personale. Po e lidhim me llogaritë Firefox.
+pre-fxa-tout-1 = Jini i njoftuar për më tepër ceinme
