@@ -40,6 +40,7 @@ user-unsubscribe-token-error = Avmelding krever et symbol.
 user-unsubscribe-token-email-error = Avmelding krever et symbol og en emailHash.
 user-unsubscribe-title = { -product-name }: Avslutt abonnement
 pwt-section-headline = Sterkere passord = bedre beskyttelse
+landing-headline = Din beskyttelse mot hackere starter her.
 scan-placeholder = Skriv inn e-postadresse
 scan-submit = Søk etter din e-postadresse
 scan-error = E-postadressen må være gyldig.
@@ -55,10 +56,14 @@ compromised-accounts = Kompromiterte kontoer:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Kompromiterte data:
 unsub-headline = Avslutt abonnementet på { -product-name-nowrap }
+unsub-blurb = Dette vil fjerne e-postadressen din fra { -product-name-nowrap }-listen, og du vil ikke lenger motta varsler når nye datalekkasjer oppdages.
 unsub-button = Stopp abonnement
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Informasjonen om datalekkasjen kommer fra { $hibp-link }
+share-twitter = De fleste har rundt 100 kontoer på nettet. Har noen av dem blitt utsatt for en datalekkasje? Finn ut.
 share-facebook-headline = Finn ut om du har vært utsatt for en datalekkasje
+share-facebook-blurb = Har kontoene dine på nettet blitt utsatt for en datalekkasje?
+og-site-description = Finn ut om du har vært en del av en datalekkasje med { -product-name }. Registrer deg for varsler om nye datalekkasjer og få tips for å sikre dine kontoer.
 show-all = Vis alle
 fxa-scan-another-email = Vil du kontollere en annen e-postadresse?
 sign-in = Logg inn
@@ -66,6 +71,10 @@ sign-out = Logg ut
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Behandle { -brand-fxa }
 have-an-account = Har du allerede en konto?
+fxa-pwt-summary-2 =
+    Korte passord med bare ett ord er enkle for hackere å gjette. 
+    Bruk minst to ord og en kombinasjon av bokstaver, sifre og spesialtegn.
+fxa-what-to-do-subhead-2 = Slutt å bruke det eksponerte passordet, og endre det overalt hvor du har brukt det.
 # Alerts is a noun
 sign-up-for-alerts = Registrer deg for varslinger
 # Link title
