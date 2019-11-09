@@ -52,12 +52,16 @@ unsub-button = رکنیت ختم کریں
 show-all = تمام دکھائیں
 sign-in = سائن ان کریں
 sign-out = سائن آؤٹ کریں
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = { -brand-fxa } بندرست کریں
+have-an-account = کیا آپ کا اکاؤنٹ ہے؟
 about-firefox-monitor = { -product-name } کے بارے میں
 # Link title
 preferences = ترجیحات
 # Link title
 home = ابتدائی صفحہ
 fxa-account = { -brand-fxa }
+take-control = اپنے ذاتی کويف کا دوبارہ کنٹرول حاصل کریں۔
 how-fxm-3-headline = اپنے براؤزر میں اطلاعات حاصل کریں
 
 ## What to do after data breach tips
