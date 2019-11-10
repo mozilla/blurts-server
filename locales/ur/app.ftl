@@ -50,6 +50,7 @@ compromised-data = سمجھوتہ ہوا ڈیٹا:
 unsub-headline = { -product-name-nowrap } سے ان سبسکرائب کریں
 unsub-button = رکنیت ختم کریں
 show-all = تمام دکھائیں
+fxa-scan-another-email = کسی اور ای میل کی پڑتال کرنا چاہتے ہیں؟
 sign-in = سائن ان کریں
 sign-out = سائن آؤٹ کریں
 # Manage Firefox Account, link to page where account holders can change their account settings.
@@ -62,15 +63,21 @@ preferences = ترجیحات
 home = ابتدائی صفحہ
 fxa-account = { -brand-fxa }
 take-control = اپنے ذاتی کويف کا دوبارہ کنٹرول حاصل کریں۔
+about-fxm-headline = { -product-name } کے بارے میں
 how-fxm-3-headline = اپنے براؤزر میں اطلاعات حاصل کریں
 
 ## What to do after data breach tips
 
 change-pw = اپنا پاس ورڈ تبدیل کریں
 add-new-email = ایک نیا ای میل پتہ شامل کریں
+# Button title
+manage-email-addresses = ای میل پتہ بندرست کریں
 
 ## Updated error messages
 
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = جائزہ
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = مینیو
 
