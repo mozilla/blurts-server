@@ -315,6 +315,9 @@ other-known-breaches-found =
 additional-information-including = Ek bilgiler:
 # Title
 email-addresses-title = E-posta adresi
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Genel Bakış
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
@@ -374,3 +377,5 @@ create-strong-passwords-desc = Güçlü, güvenli ve tahmin etmesi zor parolalar
 steps-to-protect-desc = Sık karşılaşılan tehditlerin farkında olun ve nelere dikkat etmeniz gerektiğini öğrenin.
 five-myths-desc = Hacker'ların işini kolaylaştıran kötü parola alışkanlıklarından kaçınmayı öğrenin.
 take-further-steps-desc = Mali kaybı önlemek üzere kimlik hırsızlığı risklerini nasıl azaltabileceğinizi öğrenin.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Değişiklikler kaydedildi!
