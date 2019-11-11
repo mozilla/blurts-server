@@ -7,10 +7,10 @@
           <img class="breach-detail-logo breach-logo" alt="{{ breach.Name }} logo" src="/img/logos/{{ breach.LogoPath }}" />
         </div>
         <h2 class="headline breach-detail-headline">{{ breach.Title }}</h2>
-        <a class="breach-type demi" href="#what-is-this-breach">{{ category }}</a>
-        {{#if changePWLink}}
-          <h1><a class="change-pw-site btn-small btn-violet-secondary btn-transparent" rel="nofollow noopener noreferrer" target="_blank" href="{{ changePWLink }}">{{changePWLinkTitle}}</a></h1>
+        {{#if breach.Domain}}
+          <a class="blue-link" href="https://www.{{ breach.Domain }}" rel="nofollow noopener noreferrer" target="_blank">www.{{ breach.Domain }}</a>
         {{/if}}
+        <a class="breach-type demi" href="#what-is-this-breach">{{ category }}</a>
       </div>
     </div>
   </main>
