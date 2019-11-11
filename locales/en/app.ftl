@@ -248,6 +248,7 @@ avoid-personal-info-blurb = It’s easy to find birthdays, addresses, and family
 ## What to do after data breach tips
 
 change-pw = Change your password
+change-pw-site = Change password for this site
 even-for-old = Even for old accounts, it’s important to update your password.
 
 make-new-pw-unique = Make the new password different and unique

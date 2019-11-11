@@ -4,7 +4,7 @@
               <h3 class="feature-title">{{ title }}</h3>
               <h4 class="feature-subhead">{{ subtitle }}</h4>
               {{#if linkTitle }}
-                <a class="feature-tip-link blue-link" href="{{ href }}">{{ linkTitle }}</a> 
+                <a class="feature-tip-link blue-link {{#if changePWBtn }} btn-small btn-violet-secondary btn-transparent {{/if}} " href="{{ href }}">{{ linkTitle }}</a>
               {{/if}}
             </div>
           </div>
