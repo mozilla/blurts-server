@@ -153,6 +153,7 @@ avoid-personal-info-blurb = 在网络上很容易查找到生日、地址、和�
 ## What to do after data breach tips
 
 change-pw = 更改您的密码
+change-pw-site = 更改此网站密码
 even-for-old = 就算是旧账号，改密码也很重要。
 make-new-pw-unique = 让新密码不同且唯一
 strength-of-your-pw = 密码的强度直接影响您的在线安全。
