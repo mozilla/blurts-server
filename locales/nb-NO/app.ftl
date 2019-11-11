@@ -77,6 +77,9 @@ fxa-pwt-summary-2 =
 fxa-pwt-summary-4 =
     Passordbehandlere som 1Password, LastPass, Dashlane og Bitwarden lagrer dine
     passord og fyller dem inn på nettsteder for deg. De vil til og med hjelpe deg med å lage sterke passord.
+fxa-pwt-summary-6 =
+    Datalekkasjer øker. Hvis din personlige informasjon vises i en ny datalekkasje, så sender 
+    { -product-name } deg et varsel - slik at du kan iverksette tiltak og beskytte kontoene dine.
 fxa-what-to-do-subhead-2 = Slutt å bruke det eksponerte passordet, og endre det overalt hvor du har brukt det.
 # Alerts is a noun
 sign-up-for-alerts = Registrer deg for varslinger
