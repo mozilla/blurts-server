@@ -74,6 +74,9 @@ have-an-account = Har du allerede en konto?
 fxa-pwt-summary-2 =
     Korte passord med bare ett ord er enkle for hackere å gjette. 
     Bruk minst to ord og en kombinasjon av bokstaver, sifre og spesialtegn.
+fxa-pwt-summary-4 =
+    Passordbehandlere som 1Password, LastPass, Dashlane og Bitwarden lagrer dine
+    passord og fyller dem inn på nettsteder for deg. De vil til og med hjelpe deg med å lage sterke passord.
 fxa-what-to-do-subhead-2 = Slutt å bruke det eksponerte passordet, og endre det overalt hvor du har brukt det.
 # Alerts is a noun
 sign-up-for-alerts = Registrer deg for varslinger
