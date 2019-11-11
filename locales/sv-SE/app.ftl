@@ -196,6 +196,7 @@ avoid-personal-info-blurb = Det är enkelt att hitta födelsedagar, adresser och
 ## What to do after data breach tips
 
 change-pw = Ändra ditt lösenord
+change-pw-site = Ändra lösenord för den här webbplatsen
 even-for-old = Även för gamla konton är det viktigt att uppdatera ditt lösenord.
 make-new-pw-unique = Gör det nya lösenordet annorlunda och unikt
 strength-of-your-pw = Styrkan på dina lösenord påverkar direkt din säkerhet online.
