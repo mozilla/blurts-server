@@ -109,7 +109,7 @@ function boldVioletText(recipientEmail, addBlockDisplayToEmail=false) {
 function getEmailHeader(args) {
   const locales = args.data.root.supportedLocales;
   const emailType = args.data.root.whichPartial;
-  const recipientEmail = args.data.root.recipientEmail;
+  const breachedEmail = args.data.root.breachedEmail;
 
   if (emailType === "email_partials/email_verify") {
     return LocaleUtils.fluentFormat(locales, "email-link-expires");
@@ -120,13 +120,13 @@ function getEmailHeader(args) {
   }
 
   if (args.data.root.breachAlert) {
-    return LocaleUtils.fluentFormat(locales, "email-alert-hl", { userEmail: boldVioletText(recipientEmail, true) });
+    return LocaleUtils.fluentFormat(locales, "email-alert-hl", { userEmail: boldVioletText(breachedEmail, true) });
   }
 
   const userBreaches = args.data.root.unsafeBreachesForEmail;
 
   if (userBreaches.length === 0) {
-    return LocaleUtils.fluentFormat(locales, "email-no-breaches-hl", { userEmail: boldVioletText(recipientEmail, true)});
+    return LocaleUtils.fluentFormat(locales, "email-no-breaches-hl", { userEmail: boldVioletText(breachedEmail, true)});
   }
 
   return LocaleUtils.fluentFormat(locales, "email-found-breaches-hl");
