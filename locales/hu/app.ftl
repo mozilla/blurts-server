@@ -428,3 +428,5 @@ create-strong-passwords-desc = Válasszon erős, biztonságos és nehezen kital�
 steps-to-protect-desc = Ismerje meg a leggyakoribb fenyegetéseket, és tudja meg, hogy mire kell figyelnie.
 five-myths-desc = Ismerje meg, hogyan kerülheti el azokat a rossz szokásokat a jelszavainál, amelyek megkönnyítik a hackerek munkáját.
 take-further-steps-desc = Tudja meg hogyan csökkentheti a személyazonosság-lopással kapcsolatos kockázatokat, hogy megakadályozza az anyagi veszteségeket.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Módosítások mentve.
