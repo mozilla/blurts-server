@@ -80,6 +80,11 @@ fxa-pwt-summary-4 =
 fxa-pwt-summary-6 =
     Datalekkasjer øker. Hvis din personlige informasjon vises i en ny datalekkasje, så sender 
     { -product-name } deg et varsel - slik at du kan iverksette tiltak og beskytte kontoene dine.
+fxa-what-to-do-blurb-1 =
+    Hvis du ikke kan logge inn, kan du kontakte nettstedet for å spørre hvordan du oppdaterer det. 
+    Ser du en konto du ikke kjenner? Dine data kan ha blitt solgt 
+    eller gitt videre. Dette kan også være en konto, du har glemt at, du har
+    opprettet eller et selskap som har skiftet navn.
 fxa-what-to-do-subhead-2 = Slutt å bruke det eksponerte passordet, og endre det overalt hvor du har brukt det.
 # Alerts is a noun
 sign-up-for-alerts = Registrer deg for varslinger
@@ -102,6 +107,9 @@ latest-breach = SISTE DATALEKKASJE SOM ER LAGT TIL
 # Link title
 more-about-this-breach = Mer om denne datalekkasjen
 read-more-tips = Les flere sikkerhetstips
+stay-alert = Vær oppmerksom på nye datalekkasjer
+if-your-info = Hvis informasjonen din dukker opp i en ny datalekkasje, sender vi deg et varsel.
+search-all-emails = Gjennomsøk alle dine e-postadresser for datalekkasjer og få varsler om nye trusler.
 about-fxm-headline = Om { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Hvordan { -product-name } fungerer
