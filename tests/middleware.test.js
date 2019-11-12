@@ -1,18 +1,23 @@
 "use strict";
 
 
+const DB  = require("../db/DB");
+const { FXA } = require("../lib/fxa");
 const { requireSessionUser } = require("../middleware");
-
-
 const { TEST_SUBSCRIBERS } = require("../db/seeds/test_subscribers");
+
 
 require("./resetDB");
 
 
-test("requireSessionUser sets req.user", async () => {
+test("requireSessionUser calls getProfileData, updateFxAProfileData, and sets req.user", async () => {
   const req = { session: { user: TEST_SUBSCRIBERS.firefox_account } };
   const res = jest.fn();
   const next = jest.fn();
+  jest.mock("../db/DB");
+  jest.mock("../lib/fxa");
+  FXA.getProfileData = jest.fn();
+  DB.updateFxAProfileData = jest.fn();
 
   await requireSessionUser(req, res, next);
 
@@ -20,6 +25,12 @@ test("requireSessionUser sets req.user", async () => {
   expect(Number(req.user.fxa_uid)).toEqual(Number(TEST_SUBSCRIBERS.firefox_account.fxa_uid));
   const mockNextCalls = next.mock.calls;
   expect(mockNextCalls.length).toBe(1);
+
+  const mockGetProfileDataCalls = FXA.getProfileData.mock.calls;
+  expect(mockGetProfileDataCalls.length).toBe(1);
+  expect(mockGetProfileDataCalls[0][0]).toBe(TEST_SUBSCRIBERS.firefox_account.fxa_access_token);
+  const mockUpdateFxAProfileDataCalls = DB.updateFxAProfileData.mock.calls;
+  expect(mockUpdateFxAProfileDataCalls.length).toBe(1);
 });
 
 
