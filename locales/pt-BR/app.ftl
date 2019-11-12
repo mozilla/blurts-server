@@ -186,6 +186,7 @@ avoid-personal-info-blurb = É fácil encontrar online datas de aniversários, e
 ## What to do after data breach tips
 
 change-pw = Mude sua senha
+change-pw-site = Mude a senha neste site
 even-for-old = Mesmo em contas antigas, é importante atualizar suas senhas.
 make-new-pw-unique = Torne a nova senha diferente e única
 strength-of-your-pw = A força de suas senhas afeta diretamente sua segurança online.
