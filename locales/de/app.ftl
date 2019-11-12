@@ -159,6 +159,7 @@ avoid-personal-info-blurb = Geburtstage, Adressen und Namen von Familienmitglied
 ## What to do after data breach tips
 
 change-pw = Ändere dein Passwort
+change-pw-site = Passwort für diese Website ändern
 even-for-old = Auch für ältere Accounts sollten Passwörter erneuert werden.
 make-new-pw-unique = Das neue Passwort sollte anders und einzigartig sein.
 strength-of-your-pw = Die Stärke deines Passworts hat direkte Auswirkungen auf deine Online-Sicherheit.
