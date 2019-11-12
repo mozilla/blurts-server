@@ -124,6 +124,16 @@ function getUTMNames() {
         removeUtmsFromUrl();
       },
     });
+
+    document.querySelectorAll("send-ga-ping").forEach((el) => {
+      el.addEventListener("click", async(e) => {
+        const eventCategory = e.target.dataset.eventCategory;
+        const eventAction = e.target.dataset.eventAction;
+        const eventLabel = e.target.dataset.eventLabel;
+        ga("send", "event", eventCategory, eventAction, eventLabel);
+      });
+    });
+
   } else {
     removeUtmsFromUrl();
   }
