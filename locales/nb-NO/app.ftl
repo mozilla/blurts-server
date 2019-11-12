@@ -110,6 +110,16 @@ read-more-tips = Les flere sikkerhetstips
 stay-alert = Vær oppmerksom på nye datalekkasjer
 if-your-info = Hvis informasjonen din dukker opp i en ny datalekkasje, sender vi deg et varsel.
 search-all-emails = Gjennomsøk alle dine e-postadresser for datalekkasjer og få varsler om nye trusler.
+monitor-several-emails = Overvåk flere e-postadresser
+take-action = Beskytt kontoene dine aktivt
+website-breach = Nettsteds-datalekkasje
+sensitive-breach = Sensitiv nettsteds-datalekkasje
+data-aggregator-breach = Datainnsamlingslekkasje
+unverified-breach = Ubekreftet datalekkasje
+spam-list-breach = Spamlistelekkasje
+website-breach-plural = Nettsteds-datalekkasjer
+sensitive-breach-plural = Sensitive lekkasjer
+data-aggregator-breach-plural = Datainnsamlingslekkasjer
 about-fxm-headline = Om { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Hvordan { -product-name } fungerer
@@ -121,9 +131,18 @@ change-pw = Endre passordet ditt
 back-to-top = Tilbake til toppen
 welcome-back = Velkommen tilbake, { $userName }!
 welcome-user = Velkommen { $userName }!
+search-breaches = Søk etter datalekkasjer
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Viser:
 
 ## Updated error messages
 
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Resultat for: { $userEmail }
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Finn ut
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Meny
 # Link title
