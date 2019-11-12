@@ -207,6 +207,7 @@ avoid-personal-info-blurb = Je snadné na internetu najít datumy narození, adr
 ## What to do after data breach tips
 
 change-pw = Změňte si své heslo
+change-pw-site = Změňte si na tomto serveru heslo
 even-for-old = I pro staré účty platí, že je důležité vytvořit nové heslo.
 make-new-pw-unique = Dbejte na to, aby bylo nové heslo odlišné a jedinečné
 strength-of-your-pw = Síla vašich hesel má přímý vliv na vaší bezpečnost na internetu.
