@@ -173,6 +173,7 @@ avoid-personal-info-blurb = Mae'n hawdd dod o hyd i ben-blwyddi, cyfeiriadau ac 
 ## What to do after data breach tips
 
 change-pw = Newidiwch eich cyfrinair
+change-pw-site = Newid cyfrinair y wefan hon
 even-for-old = Hyd yn oed ar gyfer hen gyfrifon, mae'n bwysig diweddaru eich cyfrinair.
 make-new-pw-unique = Gwnewch y cyfrinair newydd yn wahanol ac yn unigryw
 strength-of-your-pw = Mae cryfder eich cyfrineiriau yn effeithio'n uniongyrchol ar eich diogelwch ar-lein.
@@ -431,3 +432,5 @@ create-strong-passwords-desc = Gwnewch eich cyfrineiriau'n gryf, yn ddiogel ac y
 steps-to-protect-desc = Deallwch y bygythiadau mwyaf cyffredin a gwybod beth i edrych amdano.
 five-myths-desc = Dysgwch sut i osgoi arferion cyfrinair gwael sy'n gwneud gwaith hacwyr yn hawdd.
 take-further-steps-desc = Darganfyddwch sut i leihau risgiau dwyn hunaniaeth er mwyn rhwystro colledion ariannol.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Newidiadau wedi'u cadw!
