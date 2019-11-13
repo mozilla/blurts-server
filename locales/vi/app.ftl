@@ -196,6 +196,7 @@ avoid-personal-info-blurb = Nó dễ dàng tìm thấy ngày sinh nhật, địa
 ## What to do after data breach tips
 
 change-pw = Thay đổi mật khẩu của bạn
+change-pw-site = Thay đổi mật khẩu cho trang web này
 even-for-old = Ngay cả đối với các tài khoản cũ, điều quan trọng là cập nhật mật khẩu của bạn.
 make-new-pw-unique = Làm cho mật khẩu mới khác biệt
 strength-of-your-pw = Độ mạnh của mật khẩu của bạn ảnh hưởng trực tiếp đến bảo mật trực tuyến của bạn.
@@ -419,3 +420,5 @@ create-strong-passwords-desc = Làm cho mật khẩu của bạn mạnh mẽ, an
 steps-to-protect-desc = Hiểu các mối đe dọa phổ biến nhất và biết những gì cần chú ý.
 five-myths-desc = Tìm hiểu cách tránh các thói quen đặt mật khẩu xấu khiến kẻ xấu đánh cắp nó dễ dàng.
 take-further-steps-desc = Tìm hiểu làm thế nào để giảm thiểu rủi ro của hành vi trộm cắp danh tính để ngăn ngừa tổn thất tài chính.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Các thay đổi đã được lưu!

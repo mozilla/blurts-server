@@ -2,61 +2,12 @@
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
-click-to-verify =
-    Chọn nút Xác nhận email của tôi trong vòng 24 giờ để xác nhận tài khoản Firefox Monitor của bạn.
-    Báo cáo của bạn sau đó sẽ được gửi đến.
-verify-my-email = Xác nhận email của tôi
-report-scan-another-email = Quét một email khác trong { -product-name }
-automated-message = Đây là một email tự động; nếu bạn nhận được nó do lỗi, bạn không cần thực hiện hành động nào.
-# Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
-we-sent-this-alert = Chúng tôi đã gửi tin nhắn này tới { $userEmail } vì địa chỉ email đã chọn tham gia nhận thông báo từ { -product-name }.
-unsubscribe-email-link = Nếu bạn không còn muốn nhận thông báo { -product-name } nữa, hãy hủy đăng ký.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Báo cáo { -product-name }
 report-date = Ngày báo cáo:
 email-address = Địa chỉ email:
-# A list of next steps someone should take if their information has been involved in a data breach.
-what-to-do-next = Tôi phải làm gì tiếp theo
-report-headline =
-    { $breachCount ->
-        [0] Không có vấn đề gì cả.
-       *[other] Tài khoản của bạn đã xuất hiện trong { $breachCount } vi phạm.
-    }
-report-subhead-no-breaches =
-    Tài khoản của bạn không xuất hiện trong báo cáo đầy đủ về các vi phạm.
-    Đó là tin tốt lành, nhưng có nhiều thứ bạn có thể làm.
-    Vi phạm dữ liệu xảy ra bất cứ lúc nào, vì vậy hãy đọc tiếp để tìm hiểu cách bạn có thể bảo vệ mật khẩu của mình.
-report-subhead-found-breaches = Tại đây là bản báo cáo Firefox Monitor đầy đủ của bạn, bao gồm tất cả các vi phạm dữ liệu đã biết có chứa địa chỉ email này.
-report-pwt-blurb =
-    Mật khẩu rất có giá trị, hàng ngàn trong số chúng bị đánh cắp mỗi ngày và được giao dịch hoặc bán trên thị trường chợ đen.
-    Mật khẩu mạnh hơn là cách để bảo vệ tài khoản của bạn và tất cả thông tin cá nhân nằm trong đó.
-report-pwt-headline-1 = Sử dụng một mật khẩu khác nhau cho mỗi tài khoản
-report-pwt-summary-1 =
-    Sử dụng lại cùng một mật khẩu ở mọi tài khoản sẽ mở ra cơ hội cho tin tặc.
-    Họ có thể sử dụng mật khẩu đó để đăng nhập vào các tài khoản khác của bạn.
-report-pwt-headline-2 = Tạo mật khẩu mạnh, khó đoán
-report-pwt-summary-2 =
-    Tin tặc sử dụng danh sách các mật khẩu phổ biến để cố gắng đoán mật khẩu của bạn.
-    Mật khẩu của bạn càng dài và càng ngẫu nhiên thì càng khó bị đánh cắp.
-report-pwt-headline-3 = Xử lý các câu hỏi bảo mật như mật khẩu bổ sung
-report-pwt-summary-3 =
-    Các trang web không kiểm tra xem câu trả lời của bạn có chính xác không, chỉ cần biết là chúng có khớp như khi bạn tạo tài khoản hay không.
-    Tạo câu trả lời dài, ngẫu nhiên và lưu trữ chúng ở nơi an toàn.
-report-pwt-headline-4 = Sử dụng trình quản lý mật khẩu
-report-pwt-summary-4 =
-    Các dịch vụ như 1Password, LastPass, Dashlane và Bitwarden tạo mật khẩu mạnh, lưu trữ chúng một cách an toàn,
-    và điền chúng vào các trang web để bạn không cần phải nhớ từng cái một.
 # A link to legal information about mozilla products.
 legal = Thông tin pháp lý
-# Share Firefox Monitor by email subject line
-share-by-email-subject = Xem nếu bạn đã từng là một phần của vi phạm dữ liệu.
-# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
-share-by-email-message =
-    Chào bạn,
-    { -brand-name } có một dịch vụ miễn phí, nơi bạn có thể kiểm tra xem bạn có phải là một phần của vi phạm dữ liệu hay không. Đây là cách thức hoạt động của nó:
-    1. Truy cập { "https://monitor.firefox.com" } và tìm kiếm email của bạn.
-    2. Xem các tài khoản trực tuyến của bạn đã bị lộ do vi phạm dữ liệu.
-    3. Nhận các mẹo từ { -product-name } về những việc cần làm tiếp theo.
 # Unsubscribe link in email.
 email-unsub-link = Hủy đăng ký
 # This string appears in the footer of breach report and breach alert emails.
@@ -123,3 +74,23 @@ faq-v2-4 = { -product-name } xử lý các trang web nhạy cảm như thế nà
 pre-fxa-message = <a>Tạo { -brand-fxa } miễn phí</a> và bạn có thể thêm tối đa 15 địa chỉ email.
 # Section headline
 monitor-another-email = Bạn muốn theo dõi một email khác?
+# Subject line of email
+pre-fxa-subject = Một bản cập nhật từ { -product-name }
+pre-fxa-headline = Những gì thay đổi với { -product-name }
+pre-fxa-blurb =
+    Tại đây, những gì đã thay đổi kể từ khi bạn đăng ký { -product-name }, dịch vụ giám sát các vi phạm
+    dữ liệu đã biết cho thông tin cá nhân của bạn. Chúng tôi liên kết nó với các tài khoản Firefox.
+pre-fxa-tout-1 = Cảnh giác với nhiều vi phạm
+pre-fxa-p-1 =
+    <a>Tạo tài khoản</a> để theo dõi tối đa 15 địa chỉ email cho vi phạm dữ liệu. 
+    Chúng tôi khuyên bạn nên thêm bất kỳ địa chỉ email nào mà bạn đã sử dụng để tạo tài khoản trực tuyến.
+pre-fxa-tout-2 = Nhận một cái nhìn bảng điều khiển
+pre-fxa-p-2 =
+    Xem tất cả các vi phạm dữ liệu ở một nơi để bạn biết nên thay đổi mật khẩu nào. 
+    Bảng điều khiển vi phạm chỉ có sẵn với một tài khoản.
+pre-fxa-tout-3 = Tiếp tục nhận thông báo qua email
+pre-fxa-p-3 =
+    Bạn vẫn sẽ nhận được thông báo từ { -product-name }. Chúng tôi sẽ cho bạn biết 
+    nếu thông tin của bạn xuất hiện trong một vi phạm dữ liệu mới.
+# Button at the bottom of pre-fxa email.
+create-account = Tạo tài khoản
