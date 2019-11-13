@@ -86,6 +86,11 @@ fxa-what-to-do-blurb-1 =
     eller gitt videre. Dette kan også være en konto, du har glemt at, du har
     opprettet eller et selskap som har skiftet navn.
 fxa-what-to-do-subhead-2 = Slutt å bruke det eksponerte passordet, og endre det overalt hvor du har brukt det.
+fxa-what-to-do-subhead-4 = Få hjelp til å huske alle passordene dine og holde dem trygge.
+fxa-what-to-do-blurb-4 =
+    Passordbehandlere som 1Password, LastPass, Dashlane og Bitwarden lagrer din
+    passord sikkert og fyll dem inn på nettsteder for deg. Bruk en passordbehandler
+    på telefonen og datamaskinen din, slik at du ikke trenger å huske dem alle.
 # Alerts is a noun
 sign-up-for-alerts = Registrer deg for varslinger
 # Link title
@@ -106,7 +111,11 @@ open-fxa-menu = Åpne { -brand-fxa }-navigasjon
 latest-breach = SISTE DATALEKKASJE SOM ER LAGT TIL
 # Link title
 more-about-this-breach = Mer om denne datalekkasjen
+take-control = Ta tilbake kontrollen over dine personlige data.
+cant-stop-hackers = Du kan ikke stoppe hackere fra å hacke. Men du kan unngå dårlige vaner som gjør det lett for dem.
 read-more-tips = Les flere sikkerhetstips
+how-hackers-work = Forstå hvordan hackere jobber
+monitor-your-online-accounts = Registrer deg for overvåking av datalekkasjer med en { -brand-fxa }.
 stay-alert = Vær oppmerksom på nye datalekkasjer
 if-your-info = Hvis informasjonen din dukker opp i en ny datalekkasje, sender vi deg et varsel.
 search-all-emails = Gjennomsøk alle dine e-postadresser for datalekkasjer og få varsler om nye trusler.
@@ -129,6 +138,20 @@ how-fxm-3-headline = Få varsler i nettleseren din
 
 change-pw = Endre passordet ditt
 back-to-top = Tilbake til toppen
+resend-verification = Send e-postbekreftelse på nytt
+add-new-email = Legg til en ny e-postadresse
+send-verification = Send bekreftelseslenke
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-summary = Datalekkasjeoppsummering
+show-breaches-for-this-email = Vis alle datalekkasjer for denne e-postadressen.
+link-change-primary = Endre primær e-postadresse
+remove-fxm = Fjern { -product-name }
+# Button title
+manage-email-addresses = Håndter e-postadresser
 welcome-back = Velkommen tilbake, { $userName }!
 welcome-user = Velkommen { $userName }!
 search-breaches = Søk etter datalekkasjer
