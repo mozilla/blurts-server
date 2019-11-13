@@ -172,7 +172,7 @@ remove-fxm = Fjern { -product-name }
 # Button title
 manage-email-addresses = Handter e-postadresser
 # Link title
-latest-breach-link = Sjå om du har vore involvert i ein datalekkasje
+latest-breach-link = Sjå om du var involvert i denne datalekkasjen
 welcome-back = Velkomen tilbake, { $userName }!
 welcome-user = Velkomen, { $userName }!
 breach-alert-subject = { -product-name } fann e-postadressa di i ein ny datalekkasje.
