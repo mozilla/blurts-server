@@ -133,7 +133,6 @@ function getUTMNames() {
         ga("send", "event", eventCategory, eventAction, eventLabel);
       });
     });
-
   } else {
     removeUtmsFromUrl();
   }
@@ -203,7 +202,7 @@ function getUTMNames() {
     document.querySelectorAll("[data-ga-link]").forEach((el) => {
       el.addEventListener("click", async(e) => {
         const linkId = `Link ID: ${e.target.dataset.eventLabel}`;
-        await sendPing(el, "Click", `${linkId} // ${pageLocation}`);
+        await sendPing(el, "Click", `${linkId}`);
       });
     });
   }

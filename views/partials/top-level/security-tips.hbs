@@ -10,7 +10,7 @@
           <li class="security-tip-list-item flx">
             <div class="article-icon {{ class }}">{{> (lookup . 'pathToPartial') }}</div>
             <div class="flx flx-col">
-              <a class="security-tip-link flx {{ class }}" href="#{{ class }}">{{ stringId }}{{> svg/arrow-head-right }}</a>
+              <a class="security-tip-link flx {{ class }} send-ga-ping" href="#{{ class }}" {{>analytics/security-tips-link linkTitle=title}}>{{ stringId }}{{> svg/arrow-head-right }}</a>
               <p class="security-tip-link-subhead">{{ subhead }}</p>
             </div>
           </li>
