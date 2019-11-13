@@ -93,6 +93,7 @@ nav {
 
 .active-link-underline {
   position: relative;
+  pointer-events: none; /* Make sure span attributes aren't used for GA ping */
 }
 
 .active-link-underline::after {
