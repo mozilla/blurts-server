@@ -152,6 +152,8 @@ link-change-primary = Endre primær e-postadresse
 remove-fxm = Fjern { -product-name }
 # Button title
 manage-email-addresses = Håndter e-postadresser
+# Link title
+latest-breach-link = Se om du var involvert i denne datalekkasjen
 welcome-back = Velkommen tilbake, { $userName }!
 welcome-user = Velkommen { $userName }!
 search-breaches = Søk etter datalekkasjer
