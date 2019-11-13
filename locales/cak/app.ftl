@@ -193,6 +193,7 @@ avoid-personal-info-blurb = Man k'ayew ta nikïl ruq'ijul ajuna', awochochib'al 
 ## What to do after data breach tips
 
 change-pw = Tajala' ri ewan atzij
+change-pw-site = Tijal ewan rutzij re ruxaq re'
 even-for-old = Chuqa' pa ri ojer rub'i' ataqoya'l, k'atzinel ye'ak'ëx ri ewan atzij.
 make-new-pw-unique = Tab'ana' chi ri k'ak'a' ewan tzij jun wi chuqa' man jun ta chik
 strength-of-your-pw = Ri kijomal ewan taq atzij k'o nub'än pa ruwi' ri ajikomal pan k'amab'ey.
@@ -426,3 +427,5 @@ create-strong-passwords-desc = Tab'ana' chi e köw, e jikïl chuqa' k'ayew richi
 steps-to-protect-desc = Tino pan awi' ri taq tz'ilanem e k'o q'ij q'ij chuqa' tawetamaj achike ri majub'ey namestaj.
 five-myths-desc = Tawetamaj nachajij awi' chi kiwäch ri itzel taq na'oj, ri yeruto' ri kematz'ib'il taq ajjak richin yekeleq'aj ri ewan taq atzij.
 take-further-steps-desc = Tawila' rub'eyal nach'utinisaj ri k'ayewal rik'in ri releq'axik ab'anikil, richin man teleq'äx apwaq.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = ¡Xeyak ri jaloj!
