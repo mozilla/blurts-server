@@ -192,6 +192,7 @@ avoid-personal-info-blurb = Het is gemakkelijk om verjaardagen, adressen en name
 ## What to do after data breach tips
 
 change-pw = Wijzig uw wachtwoord
+change-pw-site = Wachtwoord voor deze website wijzigen
 even-for-old = Zelfs voor oude accounts is het belangrijk om uw wachtwoord bij te werken.
 make-new-pw-unique = Maak het nieuwe wachtwoord anders en uniek
 strength-of-your-pw = De kracht van uw wachtwoorden heeft direct invloed op uw online veiligheid.
