@@ -28,7 +28,7 @@
                         {{ this.localizedCta }}
                       </button>
                     {{else}}
-                      <a class="btn-violet-secondary btn-transparent btn-small about-cta" target="_blank" href="{{ this.href }}">{{ this.localizedCta }}</a>
+                      <a class="btn-violet-secondary btn-transparent btn-small about-cta send-ga-ping" data-event-category="{{ eventCategory}}" data-event-label="About Page" data-event-action="Click" {{#if download}} target="_blank" {{/if}} href="{{ this.href }}">{{ this.localizedCta }}</a>
                     {{/ifCompare}}
                   </div>
                 </div>
