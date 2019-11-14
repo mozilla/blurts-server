@@ -28,6 +28,9 @@ oauth-invalid-session = Tembiapo oiko’ỹva
 scan-title = { -product-name } : Ñemoha’ãnga rapykuere
 user-add-invalid-email = Ñanduti veve oiko’ỹva
 error-headline = Javy
+user-verify-token-error = Oñekotevẽ token jehechajeyrã.
+user-verify-email-report-subject = Ne marandu { -product-name } rehe
+user-unsubscribe-token-error = Ehejátarõ mboheraguapy eikotvẽ kuaaukaha.
 user-unsubscribe-title = { -product-name } : Eheja ñemboheraguapy
 pwt-section-headline = Ñe’ẽñemi imbaretevéva = Nemo’ãvéva
 landing-headline = Nde derécho esẽvo mba’evai apohágui oñepyrũ ápe.
@@ -47,6 +50,8 @@ compromised-accounts = Mba’ete ivaikuaáva:
 compromised-data = Mba’ekuaarã ivaikuaáva:
 unsub-headline = Eheja mboheraguapy { -product-name-nowrap } pegua
 unsub-button = Eheja ñemboheraguapy
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Mba’ekuaarã ivaikuaáva ome’ẽ { $hibp-link }
 show-all = Ehechaukapa
 fxa-scan-another-email = ¿Ehechase ambue ñanduti veve?
 sign-in = Eñepyrũ tembiapo
@@ -84,6 +89,14 @@ sensitive-breach = Ñanduti renda ñembyai vai
 data-aggregator-breach = Mba’ekuaarã mbyatyha ñembyai
 unverified-breach = Ñembyai ndojehechajeýiva
 spam-list-breach = Ñembyai rysýi eipota’ỹva
+website-breach-plural = Ñanduti renda ñembyai
+sensitive-breach-plural = Ñembyai Ikangýva
+data-aggregator-breach-plural = Mba’ekuaarã mbyatyha ñembyai
+unverified-breach-plural = Ñembyai ojehechajey’ỹva
+spam-list-breach-plural = Oñembyai ñandutiveve rysýi eipota’ỹva
+what-data = Mba’ete mba’ekuaarã ivaikuaa:
+sensitive-sites = ¿Mba’e ojapo { -product-name } umi tenda ikangývare?
+about-fxm-headline = { -product-name } rehegua
 
 ## What to do after data breach tips
 
