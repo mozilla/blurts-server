@@ -97,9 +97,22 @@ spam-list-breach-plural = Oñembyai ñandutiveve rysýi eipota’ỹva
 what-data = Mba’ete mba’ekuaarã ivaikuaa:
 sensitive-sites = ¿Mba’e ojapo { -product-name } umi tenda ikangývare?
 about-fxm-headline = { -product-name } rehegua
+# How Firefox Monitor works
+how-fxm-works = Mba’écha omba’apo { -product-name }
+how-fxm-1-headline = Eheka vevuimi
+how-fxm-2-headline = Eñemboheraguapy ehecha hag̃ua ñembyai
+how-fxm-3-headline = Erekóta marandu’i kundahárape
+wtd-after-website = Mba’e ejapóta ñanduti kuatiarogue oñembyai rire
+wtd-after-data-agg = Mba’e ejapóta oñembyai rire mba’ekuaarã mbojuapyhára
+what-is-data-agg = ¿Mba’e mba’ekuaarã mbojuapyhára?
+protect-your-privacy = Emo’ã ñemigua ñandutípe
 
 ## What to do after data breach tips
 
+change-pw = Emoambue ñe’ẽñemi
+change-pw-site = Emoambue ñe’ẽñemi ko tendápe g̃uarã
+create-strong-passwords = Mba’éicha emoheñóita ñe’ẽñemi hekorosãva
+back-to-top = Ejevy ñepyrũhápe
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Jehechauka:
 
