@@ -89,5 +89,8 @@ pre-fxa-p-2 =
     Tekintse meg az összes adatsértést egy helyen, hogy tudja, mely jelszavakat kell megváltoztatnia. 
     Az adatsértés vezérlőpult csak akkor érhető el, ha rendelkezik fiókkal.
 pre-fxa-tout-3 = E-mail értesítések fenntartása
+pre-fxa-p-3 =
+    A { -product-name }tól továbbra is kap értesítéseket. Értesíteni fogjuk, ha az Ön adatai 
+    új adatsértésben jelentek meg.
 # Button at the bottom of pre-fxa email.
 create-account = Fiók létrehozása

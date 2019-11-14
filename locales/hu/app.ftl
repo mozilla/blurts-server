@@ -196,6 +196,7 @@ avoid-personal-info-blurb = A születésnapok, a címek és a családtagok nevei
 ## What to do after data breach tips
 
 change-pw = Változtassa meg a jelszavát
+change-pw-site = Jelszó cseréje ennél az oldalnál
 even-for-old = Még a régi fiókok esetén is fontos a jelszavak frissítése.
 make-new-pw-unique = Az új jelszó legyen különböző és egyedi
 strength-of-your-pw = A jelszavak erőssége közvetlenül befolyásolja az online biztonságát.
