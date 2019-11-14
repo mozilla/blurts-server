@@ -179,7 +179,6 @@ function getUTMNames() {
     const eventTriggers = [
       "#scan-user-email",
       "#add-another-email-form",
-      ".scan-res .show-remaining-breaches",
       ".open-oauth",
     ];
 
