@@ -81,7 +81,7 @@ function getBreachArray(breaches, args) {
   // since we aren't ever showing them now anyway?
   breaches = filterBreaches(breaches);
   breaches = sortBreaches(breaches);
-
+  breaches = breaches.filter(breach => !breach.IsSensitive);
   breaches.forEach(breach => {
     getLocalizedBreachValues(locales, breach);
     delete(breach.Description);
