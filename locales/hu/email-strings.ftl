@@ -77,7 +77,17 @@ monitor-another-email = Egy másik e-mail címet is figyelni szeretne?
 # Subject line of email
 pre-fxa-subject = Frissítés a { -product-name }tól
 pre-fxa-headline = Mi változik a { -product-name }ban
+pre-fxa-blurb =
+    Ezek változtak, mióta feliratkozott a { -product-name }ra, a szolgáltatásra, amely 
+    az ismert adatsértéseket figyeli az Ön személyes adatait keresve. Ezt összekötjük a Firefox fiókokkal.
 pre-fxa-tout-1 = Figyeljen a további adatsértésekre
+pre-fxa-p-1 =
+    <a>Hozzon létre egy fiókot</a>, amellyel akár 15 e-mail címet figyelhet meg, 
+    adatsértést keresve. Javasoljuk, hogy minden olyan e-mail címet adjon hozzá, amelyet online fiókok létrehozásához használt.
+pre-fxa-tout-2 = Vezérlőpult nézet beszerzése
+pre-fxa-p-2 =
+    Tekintse meg az összes adatsértést egy helyen, hogy tudja, mely jelszavakat kell megváltoztatnia. 
+    Az adatsértés vezérlőpult csak akkor érhető el, ha rendelkezik fiókkal.
 pre-fxa-tout-3 = E-mail értesítések fenntartása
 # Button at the bottom of pre-fxa email.
 create-account = Fiók létrehozása
