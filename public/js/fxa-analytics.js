@@ -8,7 +8,7 @@
 const hasParent = (el, selector) => {
   while (el.parentNode) {
     el = el.parentNode;
-    if (el.id === selector)
+    if (el.dataset && el.dataset.analyticsId === selector)
       return el;
   }
   return null;
@@ -17,10 +17,6 @@ const hasParent = (el, selector) => {
 const setMetricsIds = (el) => {
   if (hasParent(el, "scan-another-email")) {
     el.dataset.eventCategory = "Scan Another Email Form";
-  }
-  if (el.dataset.entrypoint && hasParent(el, "sign-up-banner")) {
-    el.dataset.eventCategory = `${el.dataset.eventCategory} - Banner`;
-    el.dataset.entrypoint = `${el.dataset.entrypoint}-banner`;
   }
   return;
 };

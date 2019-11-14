@@ -5,7 +5,7 @@
             <h2 class="sign-up-headline">{{ getString "sign-up-headline-1" }}</h2>
             {{> feature-list}}
           </div>
-          <div class="flx flx-col sign-up-cta">
+          <div class="flx flx-col sign-up-cta" data-analytics-id="sign-up-banner">
             <button class="open-oauth btn-white btn-transparent btn-big"  {{> analytics/fxa id="fx-monitor-alert-me-btn" }} data-event-category="Alert me about new breaches">
               {{ getString "alert-about-new-breaches" }}
             </button>
