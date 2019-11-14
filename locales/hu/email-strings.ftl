@@ -78,3 +78,6 @@ monitor-another-email = Egy másik e-mail címet is figyelni szeretne?
 pre-fxa-subject = Frissítés a { -product-name }tól
 pre-fxa-headline = Mi változik a { -product-name }ban
 pre-fxa-tout-1 = Figyeljen a további adatsértésekre
+pre-fxa-tout-3 = E-mail értesítések fenntartása
+# Button at the bottom of pre-fxa email.
+create-account = Fiók létrehozása
