@@ -4,13 +4,14 @@ const { URLSearchParams } = require("url");
 
 const { negotiateLanguages, acceptedLanguages } = require("fluent-langneg");
 const Sentry = require("@sentry/node");
+
 const AppConstants = require("./app-constants");
 Sentry.init({
   dsn: AppConstants.SENTRY_DSN,
   environment: AppConstants.NODE_ENV,
 });
-
 const DB = require("./db/DB");
+const { FXA } = require("./lib/fxa");
 const { FluentError } = require("./locale-utils");
 const mozlog = require("./log");
 
@@ -102,12 +103,16 @@ async function _getRequestSessionUser(req, res, next) {
   return null;
 }
 
+
 async function requireSessionUser(req, res, next) {
   const user = await _getRequestSessionUser(req);
   if (!user) {
     const queryParams = new URLSearchParams(req.query).toString();
     return res.redirect(`/oauth/init?${queryParams}`);
   }
+  const fxaProfileData = await FXA.getProfileData(user.fxa_access_token);
+  await DB.updateFxAProfileData(user, fxaProfileData);
+  req.session.user = user;
   req.user = user;
   next();
 }

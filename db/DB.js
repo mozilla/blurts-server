@@ -7,7 +7,7 @@ const Knex = require("knex");
 
 const { FluentError } = require("../locale-utils");
 const AppConstants = require("../app-constants");
-const FXA = require("../lib/fxa");
+const { FXA } = require("../lib/fxa");
 const HIBP = require("../hibp");
 const Basket = require("../basket");
 const getSha1 = require("../sha1-utils");
@@ -294,6 +294,14 @@ const DB = {
       FXA.destroyOAuthToken({refresh_token: subscriber.fxa_refresh_token});
     }
     return updatedSubscriber;
+  },
+
+  async updateFxAProfileData(subscriber, fxaProfileData) {
+    await knex("subscribers").where("id", subscriber.id)
+    .update({
+      fxa_profile_json: fxaProfileData,
+    });
+    return this.getSubscriberById(subscriber.id);
   },
 
   async setBreachesLastShownNow(subscriber) {

@@ -3,7 +3,7 @@
 const got = require("got");
 
 const { TEST_SUBSCRIBERS } = require("../db/seeds/test_subscribers");
-const FXA = require("../lib/fxa");
+const { FXA } = require("../lib/fxa");
 
 
 jest.mock("got");
