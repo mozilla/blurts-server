@@ -16,6 +16,12 @@
 
 terms-and-privacy = Mboguatarã ha ñemigua
 GitHub-link-title = GitHub
+error-scan-page-token = Eñeha’ãkuri emoha’ãnda heta ñanduti veve kundaharape ndahetái árape. Tekorosã rupi, rojoko nde jeheka sapy’ami. Ikatu eha’ãjey uperire.
+error-could-not-add-email = Ndaikatúi embojuaju ñanduti veve kundaharape mba’ekuaarã rendápe.
+error-not-subscribed = Ko ñanduti veve kundaharape noñemboheraguapýi { -product-name } ndive.
+error-hibp-throttled = Hetáma oikéva { -brand-HIBP } ndive.
+error-hibp-connect = Ojavy eikévo { -brand-HIBP } ndive.
+error-hibp-load-breaches = Ndaikatúi emyanyhẽ tekorosã jejavy.
 home-title = { -product-name }
 home-not-found = Kuatiarogue oĩ’ỹva.
 oauth-invalid-session = Tembiapo oiko’ỹva
