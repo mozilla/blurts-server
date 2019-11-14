@@ -39,6 +39,7 @@ function getAboutPageStrings(args) {
       subhead: "how-fxm-1-blurb",
       localizedCta: LocaleUtils.fluentFormat(locales, "scan-submit"),
       href: "/",
+      eventCategory: "About Page: Search Your Email",
     },
     {
       headline:"how-fxm-2-headline",
@@ -51,6 +52,8 @@ function getAboutPageStrings(args) {
       subhead: "how-fxm-3-blurb",
       localizedCta: LocaleUtils.fluentFormat(locales, "download-firefox-banner-button"),
       href: "https://www.mozilla.org/firefox",
+      eventCategory: "About Page: Download Firefox",
+      download: "download",
     },
   ];
 

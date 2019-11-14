@@ -32,7 +32,7 @@
 
               {{#if prefs}} <!--user preferences dashboard / show trashcan to delete email-->
                 {{#if primary}}
-                  <a href="https://support.mozilla.org/kb/change-primary-email-address-firefox-accounts" target="_blank" rel="noopener noreferrer" class="change-primary-email blue-link hide-mobile">{{ getString "link-change-primary" }}</a>
+                  <a href="https://support.mozilla.org/kb/change-primary-email-address-firefox-accounts" target="_blank" rel="noopener noreferrer" class="change-primary-email blue-link hide-mobile" {{> analytics/internal-link eventLabel="Change Primary Email Address" }}>{{ getString "link-change-primary" }}</a>
                 {{else}}
                   {{> forms/remove-email-form }}
                 {{/if}}

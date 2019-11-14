@@ -8,7 +8,7 @@
 const hasParent = (el, selector) => {
   while (el.parentNode) {
     el = el.parentNode;
-    if (el.id === selector)
+    if (el.dataset && el.dataset.analyticsId === selector)
       return el;
   }
   return null;
@@ -17,10 +17,6 @@ const hasParent = (el, selector) => {
 const setMetricsIds = (el) => {
   if (hasParent(el, "scan-another-email")) {
     el.dataset.eventCategory = "Scan Another Email Form";
-  }
-  if (el.dataset.entrypoint && hasParent(el, "sign-up-banner")) {
-    el.dataset.eventCategory = `${el.dataset.eventCategory} - Banner`;
-    el.dataset.entrypoint = `${el.dataset.entrypoint}-banner`;
   }
   return;
 };
@@ -133,7 +129,6 @@ function getUTMNames() {
         ga("send", "event", eventCategory, eventAction, eventLabel);
       });
     });
-
   } else {
     removeUtmsFromUrl();
   }
@@ -179,7 +174,6 @@ function getUTMNames() {
     const eventTriggers = [
       "#scan-user-email",
       "#add-another-email-form",
-      ".scan-res .show-remaining-breaches",
       ".open-oauth",
     ];
 
@@ -204,7 +198,7 @@ function getUTMNames() {
     document.querySelectorAll("[data-ga-link]").forEach((el) => {
       el.addEventListener("click", async(e) => {
         const linkId = `Link ID: ${e.target.dataset.eventLabel}`;
-        await sendPing(el, "Click", `${linkId} // ${pageLocation}`);
+        await sendPing(el, "Click", `${linkId}`);
       });
     });
   }

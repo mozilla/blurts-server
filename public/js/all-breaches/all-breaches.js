@@ -1,5 +1,7 @@
 "use strict";
 
+/* global sendPing */
+
 function replaceLogo(e) {
   e.target.src = "/img/logos/missing-logo-icon.png";
   e.target.removeEventListener("error", replaceLogo);
@@ -63,9 +65,11 @@ function makeBreaches(breaches, LocalizedBreachCardStrings, breachCardWrapper, b
   for (const breach of breaches) {
     const card = document.createElement("a");
 
-    card["classList"] = "breach-card three-up ab drop-shadow";
+    card["classList"] = "breach-card three-up ab drop-shadow send-ga-ping";
     card["href"] = `/breach-details/${breach.Name}`;
-    card["data-breach-title"] = breach.Title;
+    card.dataset.eventCategory = "All Breaches: More about this breach";
+    card.dataset.eventAction = "Click";
+    card.dataset.eventLabel = breach.Title;
     fragment.appendChild(card);
 
     const logoWrapper = makeDiv("breach-logo-wrapper", card);
@@ -132,6 +136,7 @@ function initBreaches() {
     const [fuzzyShowAll, showHiddenBreaches] = document.querySelectorAll(".show-all-breaches");
 
     showHiddenBreaches.addEventListener("click", (e) => {
+      sendPing(e.target, "Click", "All Breaches Page");
       doBreaches(breaches);
       showHiddenBreaches.classList.add("hide");
     });
@@ -180,7 +185,12 @@ function initBreaches() {
       doBreaches(filteredBreachArray);
       return false;
     };
-
+    fuzzyFinder.addEventListener("keydown", () => {
+      const finderInput = fuzzyFinder.querySelector("input[type=text]");
+      if (finderInput.value === "") {
+        sendPing(fuzzyFinder, "Engage", "All Breaches Page");
+      }
+    });
     fuzzyFinder.addEventListener("keyup", searchBreaches);
     fuzzyFinder.addEventListener("submit", searchBreaches);
   }

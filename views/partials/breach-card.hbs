@@ -19,9 +19,9 @@
     </div>
     <div class="breach-card-link-wrap">
       {{#if latestBreach}}
-        <span class="more-about-this-breach blue-link">{{ getString "latest-breach-link" }}</span>
+        <span class="more-about-this-breach blue-link" {{> analytics/internal-link eventLabel="Latest Breach: See if you were in this breach" }}>{{ getString "latest-breach-link" }}</span>
       {{else}}
-        <span class="more-about-this-breach blue-link">{{ LocalizedBreachCardStrings.MoreInfoLink }}</span>
+        <span class="more-about-this-breach blue-link" {{> analytics/internal-link eventLabel="Breach Card: More about this breach" }}>{{ LocalizedBreachCardStrings.MoreInfoLink }}</span>
       {{/if}}
     </div>
   </div>

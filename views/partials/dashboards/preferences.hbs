@@ -43,7 +43,7 @@
       </div>
       <div class="pref remove">
         {{> dashboards/remove-fxm-headline-subhead }}
-        <a class="remove-fxm btn-transparent btn-red btn-small" href="/user/remove-fxm">{{ getString "remove-fxm" }}</a>
+        <a class="remove-fxm btn-transparent btn-red btn-small" href="/user/remove-fxm" {{> analytics/internal-link eventLabel="Remove FXM - Dashboard" }}>{{ getString "remove-fxm" }}</a>
       </div>
     </div>
   </section>
