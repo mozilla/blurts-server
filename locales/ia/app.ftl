@@ -34,10 +34,10 @@ user-add-email-verify-subject = Verifica tu subscription a { -product-name }.
 user-add-duplicate-email = Iste email ha jam essite addite a { -product-name }.
 user-add-duplicate-email-part-2 = Vade sur { $preferencesLink } pro controlar le stato de { $userEmail }.
 error-headline = Error
-user-verify-token-error = Un jeton de verification es necesse.
+user-verify-token-error = Un token de verification es necessari.
 user-verify-email-report-subject = Tu reporto de { -product-name }
-user-unsubscribe-token-error = Remover se del inscription require un jeton.
-user-unsubscribe-token-email-error = Remover se del inscription require un jeton e un emailHash.
+user-unsubscribe-token-error = Le disinscription require un token.
+user-unsubscribe-token-email-error = Disinscriber se require un token e un emailHash.
 user-unsubscribe-title = { -product-name } : remover le inscription
 pwt-section-headline = Contrasignos plus forte = Melior protection
 landing-headline = Tu derecto de esser secur contra hackers comencia ci.
