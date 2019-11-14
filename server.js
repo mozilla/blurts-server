@@ -17,7 +17,10 @@ const { URL } = require("url");
 const EmailUtils = require("./email-utils");
 const HBSHelpers = require("./template-helpers/");
 const HIBP = require("./hibp");
-const {addRequestToResponse, pickLanguage, logErrors, localizeErrorMessages, clientErrorHandler, errorHandler} = require("./middleware");
+const {
+  addRequestToResponse, pickLanguage, logErrors, localizeErrorMessages,
+  clientErrorHandler, errorHandler, recordVisitFromEmail,
+} = require("./middleware");
 const { LocaleUtils } = require("./locale-utils");
 const mozlog = require("./log");
 
@@ -162,6 +165,7 @@ app.use(sessions({
 
 app.use(pickLanguage);
 app.use(addRequestToResponse);
+app.use(recordVisitFromEmail);
 
 app.use("/", DockerflowRoutes);
 app.use("/hibp", HibpRoutes);
