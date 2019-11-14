@@ -96,3 +96,5 @@ relationship-statuses = Jeiko rekotee
 religions = Tupãrovia
 salutations = Maitei
 school-grades-class-levels = Mbo’ehao mbo’esysy (mbo’ehakoty rehegua)
+time-zones = Tendaguasu aravogua
+travel-habits = Jehokuévo ejapomeméva

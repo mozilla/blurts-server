@@ -113,11 +113,26 @@ change-pw = Emoambue ñe’ẽñemi
 change-pw-site = Emoambue ñe’ẽñemi ko tendápe g̃uarã
 create-strong-passwords = Mba’éicha emoheñóita ñe’ẽñemi hekorosãva
 back-to-top = Ejevy ñepyrũhápe
+stop-monitoring-this = Anive ehechaiterei ko ñanduti veve kundaharape.
+resend-verification = Emondojey ñandutiveve jehechajeyrã
+add-new-email = Emoĩve ñanduti veve kundaharape pyahu
+send-verification = Emondo juajuha jehechajeyrã
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-summary = Ñembyai ñemomichĩ
+show-breaches-for-this-email = Ehechauka opaite ñembyai ko ñanduti veve rehegua.
+link-change-primary = Emoambue ñanduti veve kundaharape ñepyrũgua
+remove-fxm = Emboguete { -product-name }
+search-breaches = Ñembyai jeheka
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Jehechauka:
 
 ## Updated error messages
 
+error-csrf-headline = Tembiapo oiko’ỹva
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Jejuhu
 # Title
