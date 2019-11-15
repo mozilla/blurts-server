@@ -14,10 +14,8 @@
         {{/getScanResultsHeadline}}
       {{else}}
         <h2 class="headline scan-results-headline">{{{ fluentNestedBold "scan-results-known-breaches" breachCount=foundBreaches.length }}}</h2>
-
-        <!--temp marketing "Alert me about new breaches" link-->
-        {{#if newScanPage}}
-          <button class="open-oauth blue-link temp-marketing-alert-me-link" {{> analytics/fxa id="fx-monitor-alert-me-blue-link" }} data-event-category="Alert me about new breaches - Blue link">
+        {{#if newScanPage}} <!-- New trial UI for testing call to actions -->
+          <button class="open-oauth blue-link temp-marketing-alert-me-link" {{> analytics/fxa id="fx-monitor-alert-me-blue-link" }} data-event-category="Alert me about new breaches">
             {{ getString "alert-about-new-breaches" }}
           </button>
         {{else}}
@@ -43,11 +41,15 @@
   </div>
 </main>
 <section>
-  {{#if newScanPage}}
-  <!--temp marketing Sign Up callout-->
+  {{#if newScanPage}} <!-- New trial UI for testing call to actions -->
     <div class="row txt-cntr jst-cntr flx-col temp-marketing-callout">
       <h2 class="temp-marketing-hl mw-400">{{ getString "sign-up-headline-1" }}</h2>
-      <button class="open-oauth temp-marketing-btn-blue" {{> analytics/fxa id="fx-monitor-alert-me-blue-btn" }} data-event-category="Alert me about new breaches - Blue button">{{ getString "alert-about-new-breaches" }}</button>
+        <!--  
+          the `data-event-category` attribute for this button is "Alert me about new breaches - Banner" 
+          to match the "Alert me.." button on the other version of the scan results page and to make comparisons 
+          between this button and the "Alert me.." button on the other version of the scan results page easier
+        -->
+      <button class="open-oauth temp-marketing-btn-blue" {{> analytics/fxa id="fx-monitor-alert-me-blue-btn" }} data-event-category="Alert me about new breaches - Banner">{{ getString "alert-about-new-breaches" }}</button>
       {{> sign-up-banners/browser-not-required }}
     </div>
   {{else}}
