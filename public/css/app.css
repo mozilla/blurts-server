@@ -145,6 +145,10 @@ h3,
   line-height: 1.14;
 }
 
+.mw-400 {
+  max-width: 400px;
+}
+
 .mw-500 {
   max-width: 500px;
 }

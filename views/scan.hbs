@@ -14,9 +14,17 @@
         {{/getScanResultsHeadline}}
       {{else}}
         <h2 class="headline scan-results-headline">{{{ fluentNestedBold "scan-results-known-breaches" breachCount=foundBreaches.length }}}</h2>
-        <button class="btn-violet-secondary open-oauth btn-small btn-transparent" {{> analytics/fxa id="fx-monitor-alert-me-btn" }} data-event-category="Alert me about new breaches">
-          {{ getString "alert-about-new-breaches" }}
-        </button>
+
+        <!--temp marketing "Alert me about new breaches" link-->
+        {{#if newMarketingScanPage}}
+          <button class="open-oauth blue-link temp-marketing-alert-me-link" {{> analytics/fxa id="fx-monitor-alert-me-blue-link" }} data-event-category="Alert me about new breaches - Blue link">
+            {{ getString "alert-about-new-breaches" }}
+          </button>
+        {{else}}
+          <button class="btn-violet-secondary open-oauth btn-small btn-transparent" {{> analytics/fxa id="fx-monitor-alert-me-btn" }} data-event-category="Alert me about new breaches">
+            {{ getString "alert-about-new-breaches" }}
+          </button>
+        {{/if}}
       {{/if}}
     </div>
   </div>
@@ -35,12 +43,21 @@
   </div>
 </main>
 <section>
-  <div class="row jst-cntr flx-col">
-    {{> scan-another-email addClass="stacked"}}
-  </div>
-  <div class="fxa-signup-gradient">
-    <div class="row fxa-signup-banner scan-res">
-    {{> sign-up-banners/scan-results-sign-up }}
+  {{#if newMarketingScanPage}}
+  <!--temp marketing Sign Up callout-->
+    <div class="row txt-cntr jst-cntr flx-col temp-marketing-callout">
+      <h2 class="temp-marketing-hl mw-400">{{ getString "sign-up-headline-1" }}</h2>
+      <button class="open-oauth temp-marketing-btn-blue" {{> analytics/fxa id="fx-monitor-alert-me-blue-btn" }} data-event-category="Alert me about new breaches - Blue button">{{ getString "alert-about-new-breaches" }}</button>
+      {{> sign-up-banners/browser-not-required }}
     </div>
-  </div>
+  {{else}}
+    <div class="row jst-cntr flx-col">
+      {{> scan-another-email addClass="stacked"}}
+    </div>
+    <div class="fxa-signup-gradient">
+      <div class="row fxa-signup-banner scan-res">
+      {{> sign-up-banners/scan-results-sign-up }}
+      </div>
+    </div>
+  {{/if}}
 </section>
