@@ -16,7 +16,7 @@
         <h2 class="headline scan-results-headline">{{{ fluentNestedBold "scan-results-known-breaches" breachCount=foundBreaches.length }}}</h2>
 
         <!--temp marketing "Alert me about new breaches" link-->
-        {{#if newMarketingScanPage}}
+        {{#if newScanPage}}
           <button class="open-oauth blue-link temp-marketing-alert-me-link" {{> analytics/fxa id="fx-monitor-alert-me-blue-link" }} data-event-category="Alert me about new breaches - Blue link">
             {{ getString "alert-about-new-breaches" }}
           </button>
@@ -43,7 +43,7 @@
   </div>
 </main>
 <section>
-  {{#if newMarketingScanPage}}
+  {{#if newScanPage}}
   <!--temp marketing Sign Up callout-->
     <div class="row txt-cntr jst-cntr flx-col temp-marketing-callout">
       <h2 class="temp-marketing-hl mw-400">{{ getString "sign-up-headline-1" }}</h2>
