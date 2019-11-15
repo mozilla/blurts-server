@@ -153,6 +153,7 @@ avoid-personal-info-blurb = È facile trovare online informazioni su compleanni,
 ## What to do after data breach tips
 
 change-pw = Cambia la tua password
+change-pw-site = Modifica la password per questo sito
 even-for-old = È importante aggiornare la password anche per account vecchi.
 make-new-pw-unique = Rendi la nuova password diversa e unica
 strength-of-your-pw = La complessità delle tue password influisce direttamente sulla tua sicurezza online.
