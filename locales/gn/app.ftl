@@ -106,12 +106,15 @@ wtd-after-website = Mba’e ejapóta ñanduti kuatiarogue oñembyai rire
 wtd-after-data-agg = Mba’e ejapóta oñembyai rire mba’ekuaarã mbojuapyhára
 what-is-data-agg = ¿Mba’e mba’ekuaarã mbojuapyhára?
 protect-your-privacy = Emo’ã ñemigua ñandutípe
+avoid-personal-info = Ani eipuru marandu jehegua ñe’ẽñemíme
 
 ## What to do after data breach tips
 
 change-pw = Emoambue ñe’ẽñemi
 change-pw-site = Emoambue ñe’ẽñemi ko tendápe g̃uarã
+make-new-pw-unique = Ejapo ñe’ẽñemi pyahúgui iñambue ha ha’eñóva
 create-strong-passwords = Mba’éicha emoheñóita ñe’ẽñemi hekorosãva
+check-for-breaches = Eheka ñembyai
 back-to-top = Ejevy ñepyrũhápe
 stop-monitoring-this = Anive ehechaiterei ko ñanduti veve kundaharape.
 resend-verification = Emondojey ñandutiveve jehechajeyrã
@@ -126,6 +129,20 @@ breach-summary = Ñembyai ñemomichĩ
 show-breaches-for-this-email = Ehechauka opaite ñembyai ko ñanduti veve rehegua.
 link-change-primary = Emoambue ñanduti veve kundaharape ñepyrũgua
 remove-fxm = Emboguete { -product-name }
+# Button title
+manage-email-addresses = Eñangareko ñanduti veve kundaharapére
+# Link title
+latest-breach-link = Ehecha oñembyaípa ne mba’ekuaarã
+welcome-back = ¡Eg̃uahẽporãitejey { $userName }!
+welcome-user = ¡Eg̃uahẽporãite, { $userName }!
+what-to-do-after-breach = Mba’e ejapóta oñembyai rire ne mba’ekuaarã:
+ba-next-step-1 = Emoambue ne ñe’ẽñemi hekorosã ha ha’eñóvare.
+new-breaches-found =
+    { $breachCount ->
+        [one] { $breachCount } ÑEMBYAI PYAHU JUHUPYRE
+       *[other] { $breachCount } ÑEMBYAI PYAHU JUHUPYRE
+    }
+sign-up-headline-1 = Og̃uahẽta kyhyjerã { -brand-fxa } ndive.
 search-breaches = Ñembyai jeheka
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Jehechauka:
