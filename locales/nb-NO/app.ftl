@@ -129,6 +129,15 @@ spam-list-breach = Spamlistelekkasje
 website-breach-plural = Nettsteds-datalekkasjer
 sensitive-breach-plural = Sensitive lekkasjer
 data-aggregator-breach-plural = Datainnsamlingslekkasjer
+unverified-breach-plural = Ubekreftede datalekkasjer
+spam-list-breach-plural = Spamlistelekkasjer
+what-data = Hvilke data ble kompromittert:
+sensitive-sites = Hvordan behandler { -product-name } sensitive nettsteder?
+delayed-reporting-headline = Hvorfor tok det så lang tid å rapportere denne datalekkasjen?
+delayed-reporting-copy =
+    Det kan noen ganger ta måneder eller år for data involvert 
+    i en datalekkasje dukker opp på nettsteder som brukes av kriminelle (kjent som det mørke nettet eller dark web). Datalekkasjer blir lagt til i vår database 
+    så snart de er oppdaget og bekreftet.
 about-fxm-headline = Om { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Hvordan { -product-name } fungerer
