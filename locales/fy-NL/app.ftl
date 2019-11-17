@@ -192,6 +192,7 @@ avoid-personal-info-blurb = It is maklik om jierdagen, adressen en nammen fan fa
 ## What to do after data breach tips
 
 change-pw = Wizigje jo wachtwurd
+change-pw-site = Wachtwurd foar dizze website wizigje
 even-for-old = Sels foar âlde accounts is it wichtich om jo wachtwurd by te wurkjen.
 make-new-pw-unique = Meitsje it nije wachtwurd oars en unyk
 strength-of-your-pw = De krêft fan jo wachtwurden hat daliks ynfloed op jo online feilichheid.
