@@ -159,6 +159,7 @@ avoid-personal-info-blurb = Il est facile de trouver en ligne les dates d’anni
 ## What to do after data breach tips
 
 change-pw = Changez votre mot de passe
+change-pw-site = Changer le mot de passe pour ce site
 even-for-old = Même pour les anciens comptes, il est important de mettre à jour votre mot de passe.
 make-new-pw-unique = Choisissez un mot de passe différent et unique
 strength-of-your-pw = La force de vos mots de passe a un impact direct sur votre sécurité en ligne.
