@@ -74,7 +74,7 @@ monitor-another-email = Vil du overvåge en anden mailadresse?
 pre-fxa-subject = Nyheder fra { -product-name }
 pre-fxa-tout-1 = Få advarsler om flere datalæk
 pre-fxa-p-2 =
-    Se alle datalæk på ét sted, så du ved, hvilke adgangskoder der skal skiftes. ¶
+    Se alle datalæk på ét sted, så du ved, hvilke adgangskoder der skal skiftes. 
     Oversigten med datalæk er kun tilgængelig med en konto.
 # Button at the bottom of pre-fxa email.
 create-account = Opret konto
