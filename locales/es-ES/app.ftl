@@ -170,6 +170,7 @@ avoid-personal-info-blurb = Es muy fácil descubrir cumpleaños, direcciones y n
 ## What to do after data breach tips
 
 change-pw = Cambia tu contraseña
+change-pw-site = Cambiar contraseña para este sitio
 even-for-old = Incluso en las cuentas antiguas: es importante que la actualices.
 make-new-pw-unique = Consigue que la nueva contraseña sea diferente y única
 strength-of-your-pw = La seguridad de tus contraseñas tiene un impacto directo en tu seguridad en línea.
@@ -398,3 +399,5 @@ create-strong-passwords-desc = Haz que tus contraseñas sean seguras y difícile
 steps-to-protect-desc = Te ayudamos a entender las amenazas más comunes y cómo saber qué buscar.
 five-myths-desc = Descubre cómo evitar que los malos hábitos al crear contraseñas les facilite el trabajo a los hackeadores.
 take-further-steps-desc = Descubre cómo mitigar los riesgos de robo de identidad para evitar pérdidas financieras.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = ¡Cambios guardados!
