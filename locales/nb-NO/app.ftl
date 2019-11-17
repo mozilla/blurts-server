@@ -141,6 +141,8 @@ delayed-reporting-copy =
 about-fxm-headline = Om { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Hvordan { -product-name } fungerer
+how-fxm-1-headline = Utfør et enkelt søk
+how-fxm-2-headline = Registrer deg for datalekkasjeovervåking
 how-fxm-3-headline = Få varsler i nettleseren din
 
 ## What to do after data breach tips
