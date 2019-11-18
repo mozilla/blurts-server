@@ -4,8 +4,9 @@ const httpMocks = require("node-mocks-http");
 
 const DB = require("../../db/DB");
 const EmailUtils = require("../../email-utils");
-const FXA = require("../../lib/fxa");
+const { FXA } = require("../../lib/fxa");
 const getSha1 = require("../../sha1-utils");
+const HIBP = require("../../hibp");
 const user = require("../../controllers/user");
 
 const { testBreaches } = require ("../test-breaches");
@@ -460,4 +461,118 @@ test("user unsubscribe POST request with invalid token and throws error", async 
   const resp = { redirect: jest.fn() };
 
   await expect(user.postUnsubscribe(req, resp)).rejects.toThrow("error-not-subscribed");
+});
+
+
+test("user breach-stats POST request with no token responds unauthorized", async () => {
+  const req = { };
+  const mockStatus = jest.fn();
+  const mockJson = { json: jest.fn() };
+  mockStatus.mockReturnValueOnce(mockJson);
+
+  const resp = { status: mockStatus };
+
+  await user.getBreachStats(req, resp);
+
+  const statusCallArgs = mockStatus.mock.calls[0];
+  const jsonCallArgs = mockJson.json.mock.calls[0];
+
+  expect(statusCallArgs[0]).toEqual(401);
+  expect(jsonCallArgs[0].errorMessage).toMatch("Authorization");
+});
+
+
+test("user breach-stats POST request with FXA http error responds with FXA error", async () => {
+  const mockFXAStatusCode = "1234";
+  const req = { token: "test-token" };
+  const mockStatus = jest.fn();
+  const mockJson = { json: jest.fn() };
+  mockStatus.mockReturnValueOnce(mockJson);
+  FXA.verifyOAuthToken = jest.fn();
+  FXA.verifyOAuthToken.mockReturnValueOnce({name: "HTTPError", statusCode: mockFXAStatusCode });
+
+  const resp = { status: mockStatus };
+
+  await user.getBreachStats(req, resp);
+
+  const statusCallArgs = mockStatus.mock.calls[0];
+  const jsonCallArgs = mockJson.json.mock.calls[0];
+
+  expect(statusCallArgs[0]).toEqual(mockFXAStatusCode);
+  expect(jsonCallArgs[0].errorMessage).toMatch("FXA returned message");
+});
+
+
+test("user breach-stats POST request with FXA response that has no Monitor scope responds unauthorized", async () => {
+  const req = { token: "test-token" };
+  const mockStatus = jest.fn();
+  const mockJson = { json: jest.fn() };
+  mockStatus.mockReturnValueOnce(mockJson);
+  FXA.verifyOAuthToken = jest.fn();
+  FXA.verifyOAuthToken.mockReturnValueOnce({body: { scope: [] } });
+
+  const resp = { status: mockStatus };
+
+  await user.getBreachStats(req, resp);
+
+  const statusCallArgs = mockStatus.mock.calls[0];
+  const jsonCallArgs = mockJson.json.mock.calls[0];
+
+  expect(statusCallArgs[0]).toEqual(401);
+  expect(jsonCallArgs[0].errorMessage).toMatch("Monitor scope");
+});
+
+
+test("user breach-stats POST request with FXA response for a user unknown to Monitor returns 404", async () => {
+  const req = { token: "test-token" };
+  const mockStatus = jest.fn();
+  const mockJson = { json: jest.fn() };
+  mockStatus.mockReturnValueOnce(mockJson);
+  FXA.verifyOAuthToken = jest.fn();
+  FXA.verifyOAuthToken.mockReturnValueOnce({
+      body: {
+        scope: [user.FXA_MONITOR_SCOPE],
+        user: "unknown-fxa-uid",
+      },
+  });
+
+  const resp = { status: mockStatus };
+
+  await user.getBreachStats(req, resp);
+
+  const statusCallArgs = mockStatus.mock.calls[0];
+  const jsonCallArgs = mockJson.json.mock.calls[0];
+
+  expect(statusCallArgs[0]).toEqual(404);
+  expect(jsonCallArgs[0].errorMessage).toMatch("Cannot find Monitor subscriber");
+});
+
+
+test("user breach-stats POST request with FXA response for Monitor user returns breach stats json", async () => {
+  const testSubscriberFxAUID = TEST_SUBSCRIBERS.firefox_account.fxa_uid;
+  const req = {
+    token: "test-token",
+    app: { locals: { breaches: testBreaches } },
+  };
+  FXA.verifyOAuthToken = jest.fn();
+  FXA.verifyOAuthToken.mockReturnValueOnce({
+      body: {
+        scope: [user.FXA_MONITOR_SCOPE],
+        user: testSubscriberFxAUID,
+      },
+  });
+  HIBP.getBreachesForEmail = jest.fn();
+  HIBP.getBreachesForEmail.mockReturnValue([]);
+
+  const resp = { json: jest.fn() };
+
+  await user.getBreachStats(req, resp);
+
+  const jsonCallArgs = resp.json.mock.calls[0];
+
+  expect(jsonCallArgs[0]).toMatchObject({
+    monitoredEmails: expect.anything(),
+    numBreaches: expect.anything(),
+    passwords: expect.anything(),
+  });
 });

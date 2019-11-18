@@ -6,7 +6,7 @@ const isemail = require("isemail");
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const { FluentError } = require("../locale-utils");
-const FXA = require("../lib/fxa");
+const { FXA } = require("../lib/fxa");
 const HIBP = require("../hibp");
 const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
@@ -388,6 +388,7 @@ function logout(req, res) {
 
 
 module.exports = {
+  FXA_MONITOR_SCOPE,
   getPreferences,
   getDashboard,
   getBreachStats,
