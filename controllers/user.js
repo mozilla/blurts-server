@@ -388,6 +388,7 @@ function logout(req, res) {
 
 
 module.exports = {
+  FXA_MONITOR_SCOPE,
   getPreferences,
   getDashboard,
   getBreachStats,
