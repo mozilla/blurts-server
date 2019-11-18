@@ -149,6 +149,7 @@ avoid-personal-info-blurb = Il es facile trovar anniversarios, adresses e famili
 ## What to do after data breach tips
 
 change-pw = Cambia tu contrasigno.
+change-pw-site = Cambiar contrasigno pro iste sito
 even-for-old = Mesmo pro vetere contos, il es importante actualisar tu contrasigno.
 make-new-pw-unique = Crea le nove contrasigno differente e unic
 strength-of-your-pw = Le fortia de tu contrasignos impinge directemente tu securitate online.
