@@ -15,7 +15,7 @@
       {{else}}
         <h2 class="headline scan-results-headline">{{{ fluentNestedBold "scan-results-known-breaches" breachCount=foundBreaches.length }}}</h2>
         {{#if newScanPage}} <!-- New trial UI for testing call to actions -->
-          <button class="open-oauth blue-link temp-marketing-alert-me-link" {{> analytics/fxa id="fx-monitor-alert-me-blue-link" }} data-event-category="Alert me about new breaches">
+          <button id="new-scan-page" class="open-oauth blue-link temp-marketing-alert-me-link" {{> analytics/fxa id="fx-monitor-alert-me-blue-link" }} data-event-category="Alert me about new breaches">
             {{ getString "alert-about-new-breaches" }}
           </button>
         {{else}}
