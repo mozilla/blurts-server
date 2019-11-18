@@ -4,7 +4,7 @@ const httpMocks = require("node-mocks-http");
 
 const DB = require("../../db/DB");
 const EmailUtils = require("../../email-utils");
-const FXA = require("../../lib/fxa");
+const { FXA } = require("../../lib/fxa");
 const getSha1 = require("../../sha1-utils");
 const user = require("../../controllers/user");
 
