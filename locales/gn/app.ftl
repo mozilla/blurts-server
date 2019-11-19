@@ -85,6 +85,7 @@ more-about-this-breach = Eikuaave ñembyai rehegua
 take-control = Eguerujey ne maranduete.
 read-more-tips = Ehechave ñe’ẽporã tekorosãrã
 how-hackers-work = Eikuaa mba’éichapa omba’apo umi hackers
+monitor-your-online-accounts = Eñemboheraguapy ehecha hag̃ua ñambyai { -brand-fxa } ndive.
 stay-alert = Ejesarekóke kyhyjerã ñembyai pyahúre
 monitor-several-emails = Ema’ẽke heta ñanduti vevére
 take-action = Eñemongu’e emo’ã hag̃ua ne mba’ete
