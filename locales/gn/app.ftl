@@ -185,6 +185,29 @@ email-addresses-being-monitored =
         [one] Ñanduti veve kundaharape ojehapykueho
        *[other] Ñanduti veve kundaharapekuéra ojehapykueho
     }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Ñe’ẽñemi ojekuaareíva opaite ñembyai rupive
+       *[other] Ñe’ẽñemikuéra ojekuaareíva opaite ñembyai rupive
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] Mba’ekuaarã ñembyai ojekuaáva omomarãkuaa ne marandu
+       *[other] Mba’ekuaarãkuéra ñembyai ojekuaáva omomarãkuaa ne marandu
+    }
+# Button
+see-additional-breaches = Ehecha ñembyai mbojuajupyre
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Japopyre: { $userEmail } peg̃uarã
+other-monitored-emails = Ambue ñanduti veve ojehapykuehóva
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Jejuhu
 # Title
