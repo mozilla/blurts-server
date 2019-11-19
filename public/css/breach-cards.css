@@ -3,7 +3,7 @@
   --logoMargin: 20px;
   --breachInfoPadding: calc(var(--logoMargin) * 2 + var(--logoDmns));
 
-  padding: 1.5rem  3.25rem 1.5rem 1.5rem;
+  padding: 20px;
   border-radius: 8px;
   display: flex;
   flex-direction: row;
@@ -36,10 +36,6 @@ a.breach-card:hover {
 .breach-value {
   line-height: 1.5;
 }
-
-/* .more-about-this-breach {
-  font-size: 14px;
-} */
 
 .breach-card:hover {
   transform: scale(1.01);
@@ -110,12 +106,6 @@ a.breach-card:hover {
   .three-up {
     max-width: 48%;
     flex: 1 1 48%;
-  }
-
-  .breach-card.ec.two-up {
-    flex: 1 1 100%;
-    display: none;
-    max-width: 100%;
   }
 
   .email-card.active .breach-card.ec.two-up {
