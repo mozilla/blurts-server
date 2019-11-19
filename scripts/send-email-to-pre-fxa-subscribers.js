@@ -28,7 +28,7 @@ const { LocaleUtils } = require ("../locale-utils");
     );
 
     if (!notifiedSubscribers.includes(subscriberEmail)) {
-      await EmailUtils.sendEmail(
+      const sendInfo = await EmailUtils.sendEmail(
         subscriberEmail,
         LocaleUtils.fluentFormat(supportedLocales, "pre-fxa-subject"), // email subject
         "default_email", // email template
@@ -43,6 +43,7 @@ const { LocaleUtils } = require ("../locale-utils");
         },
       );
       notifiedSubscribers.push(subscriberEmail);
+      console.log(`Sent email to ${subscriberEmail}, info: ${JSON.stringify(sendInfo)}`);
     }
   }
   console.log(`Notified subscribers: ${JSON.stringify(notifiedSubscribers)}`);
