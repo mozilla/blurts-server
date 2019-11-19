@@ -85,7 +85,7 @@ more-about-this-breach = Eikuaave ñembyai rehegua
 take-control = Eguerujey ne maranduete.
 read-more-tips = Ehechave ñe’ẽporã tekorosãrã
 how-hackers-work = Eikuaa mba’éichapa omba’apo umi hackers
-monitor-your-online-accounts = Eñemboheraguapy ehecha hag̃ua ñambyai { -brand-fxa } ndive.
+monitor-your-online-accounts = Eñemboheraguapy ehecha hag̃ua ñembyai { -brand-fxa } ndive.
 stay-alert = Ejesarekóke kyhyjerã ñembyai pyahúre
 monitor-several-emails = Ema’ẽke heta ñanduti vevére
 take-action = Eñemongu’e emo’ã hag̃ua ne mba’ete
@@ -123,11 +123,20 @@ make-new-pw-unique = Ejapo ñe’ẽñemi pyahúgui iñambue ha ha’eñóva
 create-strong-passwords = Mba’éicha emoheñóita ñe’ẽñemi hekorosãva
 stop-reusing-pw = Anive eipuru peteĩ ñe’ẽñemi memete
 five-myths = 5 mombe’ugua’u ñe’ẽñemi ñangarekoha rehegua
+create-a-fxa = Emoheñói { -brand-fxa } eñemomarandu hag̃ua ñembyaíre ha og̃uahẽta ndéve kyhyjerã.
 feat-security-tips = Tekorosãrã emo’ã hag̃ua ne mba’ete
 feat-sensitive = Jeheka ha’evéva ñembyai ñemiguávape
 feat-enroll-multiple = Ehai heta ñanduti veve ñembyai jehechápe
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Ojekuaa { $breachCount }-pe ñembyai jehecháva.
+       *[other] Ojekuaa { $breachCount }-pe ñembyaikuéra jehecháva.
+    }
 check-for-breaches = Eheka ñembyai
 back-to-top = Ejevy ñepyrũhápe
+comm-opt-1 = Emondo opaite kyhyjerã ñembyai rehegua { $primaryEmail }-pe.
 stop-monitoring-this = Anive ehechaiterei ko ñanduti veve kundaharape.
 resend-verification = Emondojey ñandutiveve jehechajeyrã
 add-new-email = Emoĩve ñanduti veve kundaharape pyahu
@@ -147,21 +156,35 @@ manage-email-addresses = Eñangareko ñanduti veve kundaharapére
 latest-breach-link = Ehecha oñembyaípa ne mba’ekuaarã
 welcome-back = ¡Eg̃uahẽporãitejey { $userName }!
 welcome-user = ¡Eg̃uahẽporãite, { $userName }!
+breach-alert-subject = { -product-name } ojuhu ne ñanduti veve mba’ekuaarã ñembyai pyahúpe.
 what-to-do-after-breach = Mba’e ejapóta oñembyai rire ne mba’ekuaarã:
 ba-next-step-1 = Emoambue ne ñe’ẽñemi hekorosã ha ha’eñóvare.
+ba-next-step-2 = Anive eipuru ñe’ẽñemi ojekuaareíva.
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } ÑEMBYAI PYAHU JUHUPYRE
        *[other] { $breachCount } ÑEMBYAI PYAHU JUHUPYRE
     }
 sign-up-headline-1 = Og̃uahẽta kyhyjerã { -brand-fxa } ndive.
+no-other-breaches-found = Ndojejuhúi ambue ñembyai jeheka ñepyrũguávape.
+no-results-blurb = Rombyasy, pe ñembyai ndaipóri ore mba’ekuaarã rendápe.
+all-breaches-headline = Opaite ñembyai { -product-name }-pe.
 search-breaches = Ñembyai jeheka
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Jehechauka:
 
 ## Updated error messages
 
+error-bot-headline = Jeheka ojejokóva sapy’ami
 error-csrf-headline = Tembiapo oiko’ỹva
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] Ñanduti veve kundaharape ojehapykueho
+       *[other] Ñanduti veve kundaharapekuéra ojehapykueho
+    }
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Jejuhu
 # Title
