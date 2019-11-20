@@ -30,10 +30,13 @@ scan-title = { -product-name } : Ñemoha’ãnga rapykuere
 user-add-invalid-email = Ñanduti veve oiko’ỹva
 user-add-too-many-emails = Ehechahína hetavéva ñanduti veve ikatuháicha.
 user-add-email-verify-subject = Ehechajei ne ñemboheraguapy { -product-name }-pe.
+user-add-duplicate-email = Ko ñanduti veve ojuajúma { -product-name } rehe.
+user-add-duplicate-email-part-2 = Eho nde { $preferencesLink }-pe ehechajey hag̃ua { $userEmail } rekotee.
 error-headline = Javy
 user-verify-token-error = Oñekotevẽ token jehechajeyrã.
 user-verify-email-report-subject = Ne marandu { -product-name } rehe
 user-unsubscribe-token-error = Ehejátarõ mboheraguapy eikotvẽ kuaaukaha.
+user-unsubscribe-token-email-error = Ehejátarõ mboheraguapy eikotevẽ token ha peteĩ emailHash.
 user-unsubscribe-title = { -product-name } : Eheja ñemboheraguapy
 pwt-section-headline = Ñe’ẽñemi imbaretevéva = Nemo’ãvéva
 landing-headline = Nde derécho esẽvo mba’evai apohágui oñepyrũ ápe.
@@ -55,6 +58,8 @@ unsub-headline = Eheja mboheraguapy { -product-name-nowrap } pegua
 unsub-button = Eheja ñemboheraguapy
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Mba’ekuaarã ivaikuaáva ome’ẽ { $hibp-link }
+share-facebook-headline = Ehecha ndépa eiméra'e mba’ekuaarã ñembyaípe.
+share-facebook-blurb = ¿Ne mba’ete ñandutípe ojehechauka mba’ekuaarã ñembyaípe?
 show-all = Ehechaukapa
 fxa-scan-another-email = ¿Ehechase ambue ñanduti veve?
 sign-in = Eñepyrũ tembiapo
@@ -135,6 +140,7 @@ appears-in-x-breaches =
        *[other] Ojekuaa { $breachCount }-pe ñembyaikuéra jehecháva.
     }
 check-for-breaches = Eheka ñembyai
+search-for-your-email = Eheka ne ñanduti veve mba’ekuaarã ñembyai opavaveguávape ehóvo 2007 peve.
 back-to-top = Ejevy ñepyrũhápe
 comm-opt-1 = Emondo opaite kyhyjerã ñembyai rehegua { $primaryEmail }-pe.
 stop-monitoring-this = Anive ehechaiterei ko ñanduti veve kundaharape.
@@ -157,9 +163,11 @@ latest-breach-link = Ehecha oñembyaípa ne mba’ekuaarã
 welcome-back = ¡Eg̃uahẽporãitejey { $userName }!
 welcome-user = ¡Eg̃uahẽporãite, { $userName }!
 breach-alert-subject = { -product-name } ojuhu ne ñanduti veve mba’ekuaarã ñembyai pyahúpe.
+your-info-was-discovered-headline = Ne marandu ojehecha mba’ekuaarã ñembyai pyahúpe.
 what-to-do-after-breach = Mba’e ejapóta oñembyai rire ne mba’ekuaarã:
 ba-next-step-1 = Emoambue ne ñe’ẽñemi hekorosã ha ha’eñóvare.
 ba-next-step-2 = Anive eipuru ñe’ẽñemi ojekuaareíva.
+ba-next-step-3 = Eñepytyvõuka emoheñói hag̃ua ñe’ẽñemi oikóva ha ereko tekorosãme.
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } ÑEMBYAI PYAHU JUHUPYRE
