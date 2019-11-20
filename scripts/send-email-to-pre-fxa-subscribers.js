@@ -14,7 +14,7 @@ const { LocaleUtils } = require ("../locale-utils");
   EmailUtils.init();
 
   const subscribers = await DB.getPreFxaSubscribers();
-  console.log(`Found ${subscribers.length} pre-FxA subscribers whose email hasn't been added to an FxA subscription.`);
+  console.log(`Found ${subscribers.length} subscriber records with empty fxa_uid.`);
   const notifiedSubscribers = [];
   const utmID = "pre-fxa";
   for (const subscriber of subscribers) {
