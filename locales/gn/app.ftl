@@ -174,6 +174,9 @@ new-breaches-found =
        *[other] { $breachCount } ÑEMBYAI PYAHU JUHUPYRE
     }
 sign-up-headline-1 = Og̃uahẽta kyhyjerã { -brand-fxa } ndive.
+find-out-if = Ehecha ne mba’ekuaarãpa oñembyaikuaápara’e.
+fb-not-comp = Ko ñanduti veve ndojehechái ñembyaípe { $breachName }.
+fb-comp-only = Ko ñanduti veve ojehecha ñembyaípe { $breachName }.
 no-other-breaches-found = Ndojejuhúi ambue ñembyai jeheka ñepyrũguávape.
 no-results-blurb = Rombyasy, pe ñembyai ndaipóri ore mba’ekuaarã rendápe.
 all-breaches-headline = Opaite ñembyai { -product-name }-pe.
@@ -185,6 +188,7 @@ currently-showing = Jehechauka:
 
 error-bot-headline = Jeheka ojejokóva sapy’ami
 error-csrf-headline = Tembiapo oiko’ỹva
+error-invalid-unsub = Mba’éicha ikatu aipe’a mboheguapy kyhyjerãva { -product-name }
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -216,6 +220,9 @@ see-additional-breaches = Ehecha ñembyai mbojuajupyre
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Japopyre: { $userEmail } peg̃uarã
 other-monitored-emails = Ambue ñanduti veve ojehapykuehóva
+email-verification-required = Ñanduti veve jehechajey jerurepyre
+fxa-primary-email = { -brand-fxa } Ñanduti - Tuichavéva
+what-is-a-website-breach = ¿Mba’e ñembyai ñanduti rendápe?
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Jejuhu
 # Title
