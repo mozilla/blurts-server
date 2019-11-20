@@ -86,7 +86,7 @@ const scanResult = async(req, selfScan=false) => {
     }
   }
 
-  const newScanPage = ((Math.random() * (10 - 1) + 1) >= 5);
+  const newScanPage = ((Math.random() * 10) >= 5);
 
   return {
     title,
