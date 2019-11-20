@@ -121,6 +121,7 @@ if-your-info = Hvis informasjonen din dukker opp i en ny datalekkasje, sender vi
 search-all-emails = Gjennomsøk alle dine e-postadresser for datalekkasjer og få varsler om nye trusler.
 monitor-several-emails = Overvåk flere e-postadresser
 take-action = Beskytt kontoene dine aktivt
+keep-your-data-safe = Finn ut hva du trenger å gjøre for å beskytte dine data mot cyberkriminelle.
 website-breach = Nettsteds-datalekkasje
 sensitive-breach = Sensitiv nettsteds-datalekkasje
 data-aggregator-breach = Datainnsamlingslekkasje
@@ -133,6 +134,11 @@ unverified-breach-plural = Ubekreftede datalekkasjer
 spam-list-breach-plural = Spamlistelekkasjer
 what-data = Hvilke data ble kompromittert:
 sensitive-sites = Hvordan behandler { -product-name } sensitive nettsteder?
+sensitive-sites-copy =
+    { -product-name } viser bare kontoer tilknyttet disse 
+    typer lekkasjer etter at en e-postadresse er bekreftet. Dette betyr at du er 
+    den eneste personen som kan se om informasjonen din var i denne datalekkasjen (med mindre noen 
+    andre har tilgang til din e-postkonto).
 delayed-reporting-headline = Hvorfor tok det så lang tid å rapportere denne datalekkasjen?
 delayed-reporting-copy =
     Det kan noen ganger ta måneder eller år for data involvert 
@@ -144,6 +150,7 @@ how-fxm-works = Hvordan { -product-name } fungerer
 how-fxm-1-headline = Utfør et enkelt søk
 how-fxm-2-headline = Registrer deg for datalekkasjeovervåking
 how-fxm-3-headline = Få varsler i nettleseren din
+wtd-after-website = Hva en skal gjøre etter en nettstedsdatalekkasje:
 
 ## What to do after data breach tips
 
