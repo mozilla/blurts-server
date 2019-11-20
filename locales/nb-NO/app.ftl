@@ -153,6 +153,9 @@ how-fxm-3-headline = Få varsler i nettleseren din
 wtd-after-website = Hva en skal gjøre etter en nettstedsdatalekkasje:
 wtd-after-data-agg = Hva en skal gjøre etter en datainnsamlingslekkasje:
 what-is-data-agg = Hva er en datainnsamler?
+protect-your-privacy = Beskytt ditt personvern på nettet
+no-pw-to-change = I motsetning til nettstedsdatalekkasjer, er det ingen passord som kan endres.
+avoid-personal-info = Unngå å bruke personlig informasjon i passord
 
 ## What to do after data breach tips
 
