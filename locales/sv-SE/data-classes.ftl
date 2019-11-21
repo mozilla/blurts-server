@@ -64,6 +64,8 @@ ip-addresses = IP-adresser
 job-titles = Jobbtitlar
 mac-addresses = MAC-adresser
 marital-statuses = Civilstånd
+# Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
+mnemonic-phrases = Mnemoniska fraser
 names = Namn
 nationalities = Nationaliteter
 net-worths = Nettovärden
