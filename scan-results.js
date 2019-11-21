@@ -86,6 +86,8 @@ const scanResult = async(req, selfScan=false) => {
     }
   }
 
+  const newScanPage = ((Math.random() * 10) >= 5);
+
   return {
     title,
     foundBreaches,
@@ -97,6 +99,7 @@ const scanResult = async(req, selfScan=false) => {
     fullReport,
     userDash,
     scannedEmailId,
+    newScanPage,
   };
 };
 
