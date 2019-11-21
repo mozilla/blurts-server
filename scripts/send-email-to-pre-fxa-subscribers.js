@@ -11,6 +11,12 @@ const EmailUtils = require("../email-utils");
 const { LocaleUtils } = require ("../locale-utils");
 
 const PAGE_SIZE = process.env.PAGE_SIZE;
+const START_PAGE = process.env.START_PAGE;
+
+if (!START_PAGE) {
+  console.error("You must provide a START_PAGE environment variable.");
+  process.exit();
+}
 
 
 (async (req) => {
@@ -19,13 +25,14 @@ const PAGE_SIZE = process.env.PAGE_SIZE;
   const notifiedSubscribers = [];
   const utmID = "pre-fxa";
 
-  const subscribersResult = await DB.getPreFxaSubscribersPage({ perPage: PAGE_SIZE, currentPage: 1 });
+  const subscribersResult = await DB.getPreFxaSubscribersPage({ perPage: PAGE_SIZE, currentPage: START_PAGE, isLengthAware: true });
+  const numPagesToProcess = subscribersResult.pagination.lastPage - START_PAGE;
   console.log(`Found ${subscribersResult.pagination.total} subscriber records with empty fxa_uid.`);
-  console.log(`Will process ${subscribersResult.pagination.lastPage} pages of size ${PAGE_SIZE}.`);
+  console.log(`Will process ${numPagesToProcess} pages of size ${PAGE_SIZE}, starting with page ${START_PAGE} and ending with page ${subscribersResult.pagination.lastPage}.`);
   const lastPage = subscribersResult.pagination.lastPage;
 
 
-  for (let currentPage = 1; currentPage <= lastPage; currentPage++) {
+  for (let currentPage = START_PAGE; currentPage <= lastPage; currentPage++) {
     console.log(`Processing page ${currentPage} of ${lastPage}.`);
     const subscribersPageResult = await DB.getPreFxaSubscribersPage({ perPage: PAGE_SIZE, currentPage });
     for (const subscriber of subscribersPageResult.data) {
