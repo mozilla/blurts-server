@@ -77,10 +77,22 @@
   margin-bottom: calc(var(--padding) * 1.25);
 }
 
+.temp-marketing-img {
+  max-width: 320px;
+}
+
 .temp-marketing-hl {
-  color: var(--purple7);
-  font-size: 32px;
+  color: #20123a;
+  font-size: 24px;
   line-height: 1.13;
+  margin-bottom: 4px;
+}
+
+.temp-marketing-p {
+  color: var(--grey8);
+  line-height: 1.5;
+  margin: 0 auto 16px auto;
+  font-size: 18px;
 }
 
 .temp-marketing-alert-me-link {
