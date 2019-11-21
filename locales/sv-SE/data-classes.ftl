@@ -26,6 +26,7 @@ chat-logs = Chattloggar
 credit-card-cvv = Kreditkort CVV
 credit-cards = Kreditkort
 credit-status-information = Kreditstatusinformation
+cryptocurrency-wallet-hashes = Hash-värden kryptovaluta-plånbok
 customer-feedback = Kundåterkoppling
 customer-interactions = Kundinteraktioner
 dates-of-birth = Födelsedatum
