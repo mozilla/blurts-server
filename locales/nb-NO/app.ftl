@@ -86,6 +86,14 @@ fxa-what-to-do-blurb-1 =
     eller gitt videre. Dette kan også være en konto, du har glemt at, du har
     opprettet eller et selskap som har skiftet navn.
 fxa-what-to-do-subhead-2 = Slutt å bruke det eksponerte passordet, og endre det overalt hvor du har brukt det.
+fxa-wtd-blurb-2 =
+    Hackere kan prøve å bruke din e-postadresse og det samme passordet ditt for å komme inn på andre kontoer. 
+    Lag et annet og unikt passord for hver konto, spesielt for din nettbank, 
+    din e-postadresse og andre nettsteder der du lagrer personlig informasjon.
+fxa-what-to-do-blurb-3 =
+    De fleste datalekkasjer inneholder kun e-postadresse og passord, men noen inkluderer sensitiv økonomisk informasjon. 
+    Hvis din bankkonto eller ditt betalingskort-nummer har blitt lekket, så må du varsle banken din om mulig svindel. 
+    Hold øye med kontobevegelser du ikke kjenner igjen.
 fxa-what-to-do-subhead-4 = Få hjelp til å huske alle passordene dine og holde dem trygge.
 fxa-what-to-do-blurb-4 =
     Passordbehandlere som 1Password, LastPass, Dashlane og Bitwarden lagrer din
@@ -160,6 +168,14 @@ avoid-personal-info = Unngå å bruke personlig informasjon i passord
 ## What to do after data breach tips
 
 change-pw = Endre passordet ditt
+change-pw-site = Endre passord for dette nettstedet
+even-for-old = Selv for gamle kontoer er det viktig å oppdatere passordet ditt.
+make-new-pw-unique = Lag det nye passordet annerledes og unikt
+strength-of-your-pw = Hvor sikker du er på nettet, avhenger av hvor sikre dine passord er.
+create-strong-passwords = Slik lager du sterke passord
+stop-reusing-pw = Slutt med å bruke de samme passordene
+create-unique-pw = Lag unike passord og lagre dem et sikkert sted, som en passordbehandler.
+five-myths = 5 myter om passordbehandlere
 back-to-top = Tilbake til toppen
 resend-verification = Send e-postbekreftelse på nytt
 add-new-email = Legg til en ny e-postadresse
