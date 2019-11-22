@@ -74,3 +74,4 @@ faq-v2-4 = Kako { -product-name } obravnava občutljive strani?
 pre-fxa-message = <a>Ustvarite brezplačen { -brand-fxa }</a> in dodajte do 15 e-poštnih naslovov.
 # Section headline
 monitor-another-email = Želite spremljati še en e-poštni naslov?
+pre-fxa-tout-1 = Bodite pozorni na več kraj podatkov
