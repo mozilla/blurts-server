@@ -59,15 +59,15 @@ async function recordVisitFromEmail (req, res, next) {
   if (req.query.utm_medium && req.query.utm_medium !== "email") {
     next();
   }
-  if (!req.query.subscriber_id || !Number.isInteger(req.query.subscriber_id)) {
+  if (!req.query.subscriber_id || !Number.isInteger(Number(req.query.subscriber_id))) {
     next();
   }
   const subscriber = await DB.getSubscriberById(req.query.subscriber_id);
-  if (!subscriber.fxa_uid) {
+  if (!subscriber.fxa_uid || subscriber.fxa_uid === "") {
     next();
   }
   const fxaMetricsFlowPath = `metrics-flow?entrypoint=breach-alert-email&event_type=engage&uid=${subscriber.fxa_uid}&service=${AppConstants.OAUTH_CLIENT_ID}`;
-  await FXA.sendMetricsFlowPing(fxaMetricsFlowPath);
+  const fxaResult = await FXA.sendMetricsFlowPing(fxaMetricsFlowPath);
   next();
 }
 
