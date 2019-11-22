@@ -52,6 +52,26 @@ function pickLanguage (req, res, next) {
 }
 
 
+async function recordVisitFromEmail (req, res, next) {
+  if (req.query.utm_source && req.query.utm_source !== "fx-monitor") {
+    next();
+  }
+  if (req.query.utm_medium && req.query.utm_medium !== "email") {
+    next();
+  }
+  if (!req.query.subscriber_id || !Number.isInteger(req.query.subscriber_id)) {
+    next();
+  }
+  const subscriber = await DB.getSubscriberById(req.query.subscriber_id);
+  if (!subscriber.fxa_uid) {
+    next();
+  }
+  const fxaMetricsFlowPath = `metrics-flow?entrypoint=breach-alert-email&event_type=engage&uid=${subscriber.fxa_uid}&service=${AppConstants.OAUTH_CLIENT_ID}`;
+  await FXA.sendMetricsFlowPing(fxaMetricsFlowPath);
+  next();
+}
+
+
 // Helps handle errors for all async route controllers
 // See https://medium.com/@Abazhenov/using-async-await-in-express-with-node-8-b8af872c0016
 function asyncMiddleware (fn) {
@@ -122,6 +142,7 @@ async function requireSessionUser(req, res, next) {
 module.exports = {
   addRequestToResponse,
   pickLanguage,
+  recordVisitFromEmail,
   asyncMiddleware,
   logErrors,
   localizeErrorMessages,

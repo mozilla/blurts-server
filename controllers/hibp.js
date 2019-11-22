@@ -85,9 +85,12 @@ async function notify (req, res) {
 
   for (const recipient of recipients) {
     log.info("notify", {recipient});
+    // Get subscriber ID from "subscriber_id" property (if email_addresses record)
+    // or from "id" property (if subscribers record)
+    const subscriberId = recipient.subscriber_id || recipient.id;
     const { recipientEmail, breachedEmail, signupLanguage, preFxaSubscriber } = getAddressesAndLanguageForEmail(recipient);
     const campaignId = (preFxaSubscriber) ? "preFXA-see-all-breaches" : "see-all-breaches";
-    const ctaHref = EmailUtils.getEmailCtaHref(utmID, campaignId);
+    const ctaHref = EmailUtils.getEmailCtaHref(utmID, campaignId, subscriberId);
 
     const requestedLanguage = signupLanguage ? acceptedLanguages(signupLanguage) : "";
     const supportedLocales = negotiateLanguages(
@@ -104,9 +107,10 @@ async function notify (req, res) {
         {
           breachedEmail,
           recipientEmail,
+          subscriberId,
           supportedLocales,
           breachAlert,
-          SERVER_URL: req.app.locals.SERVER_URL,
+          SERVER_URL: AppConstants.SERVER_URL,
           unsubscribeUrl: EmailUtils.getUnsubscribeUrl(recipient, utmID),
           ctaHref: ctaHref,
           whichPartial: "email_partials/report",
