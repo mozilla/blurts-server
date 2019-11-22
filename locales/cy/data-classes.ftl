@@ -64,6 +64,8 @@ ip-addresses = Cyfeiriad IP
 job-titles = Teitlau swyddi
 mac-addresses = Cyfeiriadau MAC
 marital-statuses = Statws priodasol
+# Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
+mnemonic-phrases = Ymadroddion mnemonig
 names = Enwau
 nationalities = Cenedligrwydd
 net-worths = Gwerth net
