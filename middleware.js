@@ -53,7 +53,10 @@ function pickLanguage (req, res, next) {
 
 
 async function recordVisitFromEmail (req, res, next) {
-  if (req.query.utm_source && req.query.utm_source !== "fx-monitor-email") {
+  if (req.query.utm_source && req.query.utm_source !== "fx-monitor") {
+    next();
+  }
+  if (req.query.utm_medium && req.query.utm_medium !== "email") {
     next();
   }
   if (!req.query.subscriber_id || !Number.isInteger(req.query.subscriber_id)) {
@@ -63,7 +66,7 @@ async function recordVisitFromEmail (req, res, next) {
   if (!subscriber.fxa_uid) {
     next();
   }
-  const fxaMetricsFlowPath = `metrics-flow?event_type=engage&uid=${subscriber.fxa_uid}&service=${AppConstants.OAUTH_CLIENT_ID}`;
+  const fxaMetricsFlowPath = `metrics-flow?entrypoint=breach-alert-email&event_type=engage&uid=${subscriber.fxa_uid}&service=${AppConstants.OAUTH_CLIENT_ID}`;
   await FXA.sendMetricsFlowPing(fxaMetricsFlowPath);
   next();
 }

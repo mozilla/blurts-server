@@ -81,7 +81,7 @@ const EmailUtils = {
 
   appendUtmParams(url, campaign, content) {
     const utmParameters = {
-      utm_source: "fx-monitor-email",
+      utm_source: "fx-monitor",
       utm_medium: "email",
       utm_campaign: campaign,
       utm_content: content,

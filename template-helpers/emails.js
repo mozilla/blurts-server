@@ -35,8 +35,8 @@ function emailBreachStats(args) {
 function getPreFxaUtmParams(serverUrl, content, userEmail) {
   const url = new URL(`${serverUrl}/oauth/init`);
   const utmParams = {
-    utm_source: "fx-monitor-email",
-    utm_medium: "email",
+    utm_source: "fx-monitor",
+    utm_medium: "fx-monitor-email",
     utm_content: content,
     utm_campaign: "pre-fxa-subscribers",
     email: userEmail,
@@ -136,7 +136,7 @@ function getEmailHeader(args) {
 function makeFaqLink(target, campaign) {
   const url = new URL(`https://support.mozilla.org/kb/firefox-monitor-faq${target}`);
   const utmParameters = {
-    utm_source: "fx-monitor-email",
+    utm_source: "fx-monitor",
     utm_medium: "email",
     utm_campaign: campaign,
   };
@@ -153,7 +153,7 @@ function makePreFxaSubscriberMessage(args) {
   const url = new URL(`${serverUrl}/#fx-account-features`);
 
   const utmParameters = {
-    utm_source : "fx-monitor-email",
+    utm_source : "fx-monitor",
     utm_medium : "email",
     utm_content : "breach-alert",
     utm_campaign : "pre-fxa-subscribers",
