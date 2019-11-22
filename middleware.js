@@ -60,6 +60,9 @@ async function recordVisitFromEmail (req, res, next) {
     next();
   }
   const subscriber = await DB.getSubscriberById(req.query.subscriber_id);
+  if (!subscriber.fxa_uid) {
+    next();
+  }
   const fxaMetricsFlowPath = `metrics-flow?event_type=engage&uid=${subscriber.fxa_uid}&service=${AppConstants.OAUTH_CLIENT_ID}`;
   await FXA.sendMetricsFlowPing(fxaMetricsFlowPath);
   next();
