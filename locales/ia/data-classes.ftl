@@ -64,6 +64,8 @@ ip-addresses = Adresses IP
 job-titles = professiones
 mac-addresses = adresses MAC
 marital-statuses = statos conjugal
+# Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
+mnemonic-phrases = Phrases mnemonic
 names = Nomines
 nationalities = Nationalitates
 net-worths = Valores nette
