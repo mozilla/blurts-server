@@ -27,9 +27,9 @@ function dhm(t){
 
 
 (async () => {
-  const breachesResponse = await HIBP.req("/breaches");
+  const breachesResponse = await HIBP.req("/api/v3/breaches");
   const breaches = breachesResponse.body;
-  const dataClassesResponse = await HIBP.req("/dataclasses");
+  const dataClassesResponse = await HIBP.req("/api/v3/dataclasses");
   const dataClassesArray = dataClassesResponse.body;
   const dataClasses = dataClassesArray.map(dataClassStr => {
     const dataClass = {
@@ -48,10 +48,10 @@ function dhm(t){
 
   for (const breach of breaches) {
     const breachDate = new Date(breach.BreachDate);
-    if (breachDate < beginningDateLimit) {
+    const addedDate = new Date(breach.AddedDate);
+    if (addedDate < beginningDateLimit) {
       continue;
     }
-    const addedDate = new Date(breach.AddedDate);
     const parsedDomainTLD = psl.parse(breach.Domain).tld;
     if (breachTLDs.hasOwnProperty(parsedDomainTLD)) {
       breachTLDs[parsedDomainTLD]++;
