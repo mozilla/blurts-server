@@ -6,7 +6,7 @@
         <div class="breach-detail-logo-wrapper">
           <img class="breach-detail-logo breach-logo" alt="{{ breach.Name }} logo" src="/img/logos/{{ breach.LogoPath }}" />
         </div>
-        <h2 class="headline breach-detail-headline">{{ breach.Title }}</h2>
+        <h2 class="headline breach-detail-headline txt-cntr mw-8">{{ breach.Title }}</h2>
         {{#if breach.Domain}}
           <a class="blue-link send-ga-ping" href="https://www.{{ breach.Domain }}" rel="nofollow noopener noreferrer" data-event-label="{{ breach.Domain }}" data-event-action="Engage" data-event-category="Breach Detail: Website URL Link" target="_blank">www.{{ breach.Domain }}</a>
         {{/if}}
