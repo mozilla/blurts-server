@@ -26,6 +26,7 @@ chat-logs = Cofnodion sgwrsio
 credit-card-cvv = CVV cerdyn credyd
 credit-cards = Cardiau credyd
 credit-status-information = Manylion statws credyd
+cryptocurrency-wallet-hashes = Hashiad waled cryptoarian
 customer-feedback = Adborth cwsmeriaid
 customer-interactions = Rhyngweithio cwsmeriaid
 dates-of-birth = Dyddiadau geni
