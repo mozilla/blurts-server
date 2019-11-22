@@ -15,7 +15,7 @@ function getVars(args) {
 // How to dynamically detect Data Aggregator breaches?
 
 function getBreachCategory(breach) {
-  if (["Exactis", "Apollo", "YouveBeenScraped", "ElasticsearchSalesLeads", "Estonia", "MasterDeeds"].includes(breach.Name)) {
+  if (["Exactis", "Apollo", "YouveBeenScraped", "ElasticsearchSalesLeads", "Estonia", "MasterDeeds", "PDL"].includes(breach.Name)) {
     return "data-aggregator-breach";
   }
   if (!breach.IsVerified) {
