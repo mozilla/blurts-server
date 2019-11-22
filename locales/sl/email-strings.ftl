@@ -75,3 +75,5 @@ pre-fxa-message = <a>Ustvarite brezplačen { -brand-fxa }</a> in dodajte do 15 e
 # Section headline
 monitor-another-email = Želite spremljati še en e-poštni naslov?
 pre-fxa-tout-1 = Bodite pozorni na več kraj podatkov
+# Button at the bottom of pre-fxa email.
+create-account = Ustvarite račun

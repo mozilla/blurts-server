@@ -206,6 +206,7 @@ avoid-personal-info-blurb = Na spletu lahko preprosto najdete rojstne dneve, nas
 ## What to do after data breach tips
 
 change-pw = Spremenite svoje geslo
+change-pw-site = Spremeni geslo za to stran
 even-for-old = Tudi za starejše račune je pomembno redno posodabljanje gesel.
 make-new-pw-unique = Novo geslo naj bo drugačno in edinstveno
 strength-of-your-pw = Moč vaših gesel neposredno vpliva na vašo spletno varnost.
@@ -456,3 +457,5 @@ create-strong-passwords-desc = Gesla naj bodo močna, varna in težko uganljiva.
 steps-to-protect-desc = Razumite najpogostejše grožnje in vedite, na kaj morate biti pozorni.
 five-myths-desc = Spoznajte, kako se izogniti slabim navadam pri ustvarjanju gesel, ki olajšajo delo hekerjev.
 take-further-steps-desc = Ugotovite, kako zmanjšati tveganje za krajo identitete, in se izognite morebitnim finančnim težavam.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Spremembe so bile shranjene!
