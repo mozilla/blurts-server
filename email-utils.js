@@ -99,8 +99,9 @@ const EmailUtils = {
     return req.fluentFormat("email-subject-found-breaches");
   },
 
-  getEmailCtaHref(emailType, campaign) {
-    const url = new URL(AppConstants.SERVER_URL);
+  getEmailCtaHref(emailType, campaign, subscriberId=null) {
+    const subscriberParamPath = (subscriberId) ? `/?subscriber_id=${subscriberId}` : "/";
+    const url = new URL(subscriberParamPath, AppConstants.SERVER_URL);
     return this.appendUtmParams(url, campaign, emailType);
   },
 

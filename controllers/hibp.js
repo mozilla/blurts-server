@@ -90,7 +90,7 @@ async function notify (req, res) {
     const subscriberId = recipient.subscriber_id || recipient.id;
     const { recipientEmail, breachedEmail, signupLanguage, preFxaSubscriber } = getAddressesAndLanguageForEmail(recipient);
     const campaignId = (preFxaSubscriber) ? "preFXA-see-all-breaches" : "see-all-breaches";
-    const ctaHref = EmailUtils.getEmailCtaHref(utmID, campaignId);
+    const ctaHref = EmailUtils.getEmailCtaHref(utmID, campaignId, subscriberId);
 
     const requestedLanguage = signupLanguage ? acceptedLanguages(signupLanguage) : "";
     const supportedLocales = negotiateLanguages(
