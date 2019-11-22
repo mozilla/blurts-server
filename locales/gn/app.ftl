@@ -230,8 +230,17 @@ email-addresses-title = Ñanduti veve kundaharape
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Jehechapa
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = { -product-short-name } oguerohoryvéva
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Eike: { $userEmail } ramo
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Embogua jehechaukaha rupi:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Poravorã
+to-affected-email = Emondo ñembyai kyhyjerã ñanduti veve imarãkuapavape
 # Link title
 learn-more-link = Kuaave.
 email-sent = ¡Ñandutiveve mondopyre!
@@ -239,11 +248,18 @@ email-sent = ¡Ñandutiveve mondopyre!
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+email-verified = ¡Ñanduti veve ojechajeypyréva!
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = eñepyrũ tembiapo
 
 
 
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Ñemomarandu kyhyjerã ojejapo’ỹva rupi
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Mboguapy mbojuajupyre:
