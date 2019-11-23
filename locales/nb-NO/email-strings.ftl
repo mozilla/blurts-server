@@ -16,8 +16,23 @@ verify-email-cta = Bekreft e-post
 see-all-breaches = Vis alle datalekkasjer
 # Headline of verification email
 email-link-expires = Denne lenken utløper om 24 timer
+# Email headline
+email-breach-summary-for-email = Datalekkasje-oppsummering for { $userEmail }
+# Email headline
+email-no-breaches-hl = { $userEmail } dukket opp i 0 kjente datalekkasjer
+# Email headline
+email-alert-hl = { $userEmail } dukket opp i en ny datalekkasje
+# Subject line of email
+email-subject-found-breaches = { -product-name } fant din informasjon i disse datalekkasjene
+# Subject line of email
+email-subject-no-breaches = { -product-name } fant ingen kjente datalekkasjer
+# Subject line of email
+email-subject-verify = Bekreft e-postadressen din for { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Les mer om { $fxmLink }
+email-sensitive-disclaimer =
+    På grunn av denne datalekkasjens følsomme natur, er de involverte e-postadressene ikke offentlig tilgjengelig. 
+    Du mottar dette varselet fordi du er den bekreftede eieren av denne e-postadressen.
 # List headline
 faq-list-headline = Ofte stilte spørsmål
 # Button at the bottom of pre-fxa email.

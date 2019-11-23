@@ -201,6 +201,7 @@ latest-breach-link = Se om du var involvert i denne datalekkasjen
 welcome-back = Velkommen tilbake, { $userName }!
 welcome-user = Velkommen { $userName }!
 breach-alert-subject = { -product-name } fant e-postaddressen din i en ny datalekkasje
+your-info-was-discovered-headline = Din personlige informasjon ble oppdaget i en ny datalekkasje
 what-to-do-after-breach = Hva en skal gjøre etter en datalekkasje:
 ba-next-step-1 = Endre passordet ditt til et sterkt, unikt passord.
 ba-next-step-blurb-1 =
