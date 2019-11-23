@@ -26,6 +26,7 @@ chat-logs = Registros de chat
 credit-card-cvv = CVV de carta de credito
 credit-cards = Cartas de credito
 credit-status-information = Informationes sur e stato del credito
+cryptocurrency-wallet-hashes = Hashes de portafolio de cryptomonetas
 customer-feedback = Commentarios del clientes
 customer-interactions = interactiones del clientes
 dates-of-birth = Datas de nascentia
