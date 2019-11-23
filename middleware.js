@@ -70,7 +70,10 @@ async function recordVisitFromEmail (req, res, next) {
     next();
     return;
   }
-  const fxaMetricsFlowPath = `metrics-flow?entrypoint=breach-alert-email&event_type=engage&uid=${subscriber.fxa_uid}&service=${AppConstants.OAUTH_CLIENT_ID}`;
+  const breachDetailsRE = /breach-details\/(\w*)$/;
+  const capturedMatch = req.path.match(breachDetailsRE);
+  const utmContent = (capturedMatch) ? `&utm_content=${capturedMatch[1]}` : "";
+  const fxaMetricsFlowPath = `metrics-flow?utm_source=${req.query.utm_source}&utm_medium=${req.query.utm_medium}${utmContent}&event_type=engage&uid=${subscriber.fxa_uid}&service=${AppConstants.OAUTH_CLIENT_ID}`;
   const fxaResult = await FXA.sendMetricsFlowPing(fxaMetricsFlowPath);
   log.info(`fxaResult: ${fxaResult}`);
   next();
