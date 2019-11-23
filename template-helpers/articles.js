@@ -125,7 +125,7 @@ const articleCopy = {
             subhead: "Certain words should be avoided in all passwords.",
             paragraphs: [
               "Many people use familiar people, places, or things in passwords because it makes their passwords easy to remember. This also makes your passwords easy for hackers to guess.",
-              "According to a study conducted by Google, <span class='demi'>passwords that contain the following information are considered insecure because they’re easy to figure out.</span> You can find much of this info after reviewing someone’s social media profiles.",
+              "According to a study conducted by Google, <span class='demi'>passwords that contain the following information are considered insecure because they’re easy to figure out automatically.</span> You can find much of this info after reviewing someone’s social media profiles.",
             ],
             list: [
               "Pet names",
