@@ -242,6 +242,9 @@ other-known-breaches-found =
 additional-information-including = ข้อมูลเพิ่มเติม รวมถึง:
 # Title
 email-addresses-title = ที่อยู่อีเมล
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = ภาพรวม
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = ค่ากำหนด { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
@@ -267,6 +270,9 @@ verify-the-link = ตรวจสอบลิงก์ที่ส่งไป�
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+email-verified = ยืนยันอีเมลสำเร็จ!
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = ลงชื่อเข้า
 
 
 
