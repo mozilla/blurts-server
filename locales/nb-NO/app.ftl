@@ -200,6 +200,7 @@ manage-email-addresses = Håndter e-postadresser
 latest-breach-link = Se om du var involvert i denne datalekkasjen
 welcome-back = Velkommen tilbake, { $userName }!
 welcome-user = Velkommen { $userName }!
+breach-alert-subject = { -product-name } fant e-postaddressen din i en ny datalekkasje
 what-to-do-after-breach = Hva en skal gjøre etter en datalekkasje:
 ba-next-step-1 = Endre passordet ditt til et sterkt, unikt passord.
 ba-next-step-blurb-1 =
@@ -253,3 +254,19 @@ sign-in-nested = logg inn
 
 
 
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Behandle alle e-postadressene i { $preferencesLink }.
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Varsler om datalekkasje
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Datalekkasje lagt til:
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Endringer lagret!
