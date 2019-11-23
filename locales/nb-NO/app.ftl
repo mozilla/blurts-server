@@ -176,7 +176,12 @@ create-strong-passwords = Slik lager du sterke passord
 stop-reusing-pw = Slutt med å bruke de samme passordene
 create-unique-pw = Lag unike passord og lagre dem et sikkert sted, som en passordbehandler.
 five-myths = 5 myter om passordbehandlere
+create-a-fxa = Lag en { -brand-fxa } for din fulle rapport om datalekkasjer og for å få varsler.
+feat-security-tips = Sikkerhetstips for å beskytte dine konto
+feat-sensitive = Avansert søk i sensitive datalekkasjer
 back-to-top = Tilbake til toppen
+comm-opt-1 = Send alle varsler om datalekkasjer til { $primaryEmail }.
+stop-monitoring-this = Slutt å overvåke denne e-postadressen
 resend-verification = Send e-postbekreftelse på nytt
 add-new-email = Legg til en ny e-postadresse
 send-verification = Send bekreftelseslenke
@@ -195,6 +200,13 @@ manage-email-addresses = Håndter e-postadresser
 latest-breach-link = Se om du var involvert i denne datalekkasjen
 welcome-back = Velkommen tilbake, { $userName }!
 welcome-user = Velkommen { $userName }!
+what-to-do-after-breach = Hva en skal gjøre etter en datalekkasje:
+ba-next-step-1 = Endre passordet ditt til et sterkt, unikt passord.
+ba-next-step-blurb-1 =
+    Et sterkt passord bruker en kombinasjon av store og små bokstaver, 
+    spesialtegn og tall. Den inneholder ikke personlig informasjon som 
+    adresse, bursdag eller navn på familiemedlemmer.
+ba-next-step-2 = Slutt helt med å bruke det eksponerte passordet.
 search-breaches = Søk etter datalekkasjer
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Viser:
@@ -207,6 +219,19 @@ currently-showing = Viser:
 results-for = Resultat for: { $userEmail }
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Finn ut
+# Title
+email-addresses-title = E-postadresser
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Oversikt
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = { -product-short-name }-innstillinger
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Logget inn som: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Filtrer etter kategori:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Meny
 # Link title
@@ -223,6 +248,8 @@ verify-the-link = Bekreft lenken som er sendt til { $userEmail } for å legge de
 
 email-verified = E-postadresse bekreftet!
 email-added-to-subscription = Vi vil advare deg hvis { $email } forekommer i en datalekkasje.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = logg inn
 
 
 
