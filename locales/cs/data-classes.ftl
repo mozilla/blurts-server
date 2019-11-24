@@ -26,6 +26,7 @@ chat-logs = Historie chatů
 credit-card-cvv = CVV platebních karet
 credit-cards = Platební karty
 credit-status-information = Informace o úvěruschopnosti
+cryptocurrency-wallet-hashes = Hashe kryptoměnové peněženky
 customer-feedback = Zpětná vazba zákazníků
 customer-interactions = Zákaznické interakce
 dates-of-birth = Data narození
