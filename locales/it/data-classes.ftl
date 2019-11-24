@@ -26,6 +26,7 @@ chat-logs = registri di chat
 credit-card-cvv = CVV di carta di credito
 credit-cards = carte di credito
 credit-status-information = informazioni sullo stato del credito
+cryptocurrency-wallet-hashes = Hash del portafoglio di criptovaluta
 customer-feedback = valutazioni dei clienti
 customer-interactions = interazioni con i clienti
 dates-of-birth = date di nascita
@@ -64,6 +65,8 @@ ip-addresses = indirizzi IP
 job-titles = qualifiche lavorative
 mac-addresses = indirizzi MAC
 marital-statuses = stati coniugali
+# Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
+mnemonic-phrases = Frasi mnemoniche
 names = nomi
 nationalities = nazionalità
 net-worths = patrimoni netti
