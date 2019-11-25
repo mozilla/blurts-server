@@ -52,7 +52,7 @@ fxm-warns-you-no-breaches =
 fxm-warns-you-found-breaches = { -product-name } te adverti sur violationes de datos que implica tu informationes personal. Tu es etiam inscribite pro reciper avisos si tu adresse de e-mail appare in un nove violation.
 email-breach-alert-blurb = { -product-name } te adverti re violationes de datos que involve tu informationes personal. Nos ha justo recipite detalios re un altere violation de datos de un compania.
 # List headline
-faq-list-headline = Demandas frequente
+faq-list-headline = Folio a questiones
 # Link Title
 faq-v2-1 = Io non recognosce iste companias o sitos web. Proque me concerne iste violation?
 # Link Title

@@ -83,7 +83,7 @@ fxa-what-to-do-blurb-4 = Le gestores de contrasignos, como 1Password, LastPass, 
 # Alerts is a noun
 sign-up-for-alerts = Inscribe te al avisos
 # Link title
-frequently-asked-questions = Demandas frequente
+frequently-asked-questions = Folio a questiones
 about-firefox-monitor = A proposito de { -product-name }
 # Link title
 preferences = Preferentias
