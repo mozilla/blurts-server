@@ -100,7 +100,7 @@ const priorityDataClasses = {
     weight: 89,
     pathToGlyph: "svg/glyphs/pins",
   },
-  "phsyical-addresses": {
+  "physical-addresses": {
     weight: 88,
     pathToGlyph: "svg/glyphs/physical-addresses",
   },
