@@ -33,6 +33,9 @@ learn-more-about-fxm = Les mer om { $fxmLink }
 email-sensitive-disclaimer =
     På grunn av denne datalekkasjens følsomme natur, er de involverte e-postadressene ikke offentlig tilgjengelig. 
     Du mottar dette varselet fordi du er den bekreftede eieren av denne e-postadressen.
+fxm-warns-you-no-breaches =
+    { -product-name } advarer deg om datalekkasjer som involverer din personlige informasjon. 
+    Så langt har det ikke hendt. Vi sender deg et varsel hvis e-postadressen din vises i en ny datalekkasje.
 # List headline
 faq-list-headline = Ofte stilte spørsmål
 # Button at the bottom of pre-fxa email.
