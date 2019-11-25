@@ -18,5 +18,27 @@ verify-email-cta = Ñanduti veve jehechajey
 see-all-breaches = Ehechapaite ñembyai
 # Headline of verification email
 email-link-expires = Ko juajuha opáta 24 aravópe
+email-verify-blurb = Ehechajey ne ñanduti veve embojuaju hag̃ua { -product-name } ha eñemboheraguapy og̃uahẽ hag̃ua kyhyjerã ñembyai rehegua.
+# Email headline
+email-found-breaches-hl = Ko’ãva ne mba’ekuaarã ñembyai oikova’ekue
+# Email headline
+email-breach-summary-for-email = Ñembyai oikova’ekue { $userEmail } peg̃uarã
+# Email headline
+email-no-breaches-hl = { $userEmail } ojehecha 0 mba’ekuaarã ñembyai kuaapyrépe
+# Email headline
+email-alert-hl = { $userEmail } ojehecha mba’ekuaarã ñembyai pyahúpe
+# Subject line of email
+email-subject-found-breaches = { -product-name } ojuhu ne marandu ko’ã ñembyaípe
+# Subject line of email
+email-subject-no-breaches = { -product-name } ndojuhúi ñembyai kuaapyrépe
+# Subject line of email
+email-subject-verify = Ehechajey ne ñanduti veve { -product-name } peg̃uarã
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = Eikuaave { $fxmLink } rehegua
+# Section headline
+monitor-another-email = ¿Eporanduse ambue ñanduti veve rupive?
+# Subject line of email
+pre-fxa-subject = { -product-name } mbohekopyahu
+pre-fxa-tout-1 = Ejesarekóke ñembyai pyahúre
 # Button at the bottom of pre-fxa email.
 create-account = Emoheñói mba’ete
