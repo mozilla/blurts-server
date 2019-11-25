@@ -380,3 +380,5 @@ create-strong-passwords-desc = Créez des mots de passe robustes, sûrs et diffi
 steps-to-protect-desc = Comprendre les menaces les plus courantes et savoir quoi rechercher.
 five-myths-desc = Apprendre à éviter les mauvaises habitudes de mots de passe qui facilitent le travail d’un pirate informatique.
 take-further-steps-desc = Découvrir comment atténuer les risques de vol d’identité afin de prévenir les pertes financières.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Modifications enregistrées.
