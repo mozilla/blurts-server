@@ -84,7 +84,7 @@ fxa-what-to-do-blurb-1 = As jo jo net oanmelde kinne, nim dan kontakt op mei de 
 fxa-what-to-do-subhead-2 = Stop mei it gebrûk fan it lekte wachtwurd, en wizigje it op de plakken wêr't jo it brûkt hawwe.
 fxa-wtd-blurb-2 =
     Hackers kinne probearje itselde wachtwurd en jo e-mailadres te brûken foar tagong ta oare accounts.  
-    Meitsje foar elk account in oar en unyk wachtwurd oan, foaral foar jo bankrekkening, 
+    Meitsje foar elk account in oar en unyk wachtwurd oan, foaral foar jo bankrekken, 
     e-mailaccount en oare websites wêr't jo persoanlike gegevens bewarje.
 fxa-what-to-do-blurb-3 =
     De measte lekken omfetsje allinnich e-mailadressen en wachtwurden, mar guon befetsje ek gefoelige finansjele ynformaasje. 
