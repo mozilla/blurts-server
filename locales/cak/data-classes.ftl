@@ -26,6 +26,7 @@ chat-logs = Kitz'ib'axik taq chat
 credit-card-cvv = CVV kichin taq timpwäq
 credit-cards = Taq t'impwäq
 credit-status-information = Retamab'al rub'anikil k'as
+cryptocurrency-wallet-hashes = Rajawal rupwaqb'al richin kriptopwaq
 customer-feedback = Rutzij winäq
 customer-interactions = Taq rub'anik winäq
 dates-of-birth = Ruq'ijul alaxanïk
@@ -64,6 +65,8 @@ ip-addresses = IP taq ochochib'äl
 job-titles = Kib'i' samaj
 mac-addresses = MAC taq ochochib'äl
 marital-statuses = Rub'anikil melab'al
+# Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
+mnemonic-phrases = Nataq'inoj taq q'aptzij
 names = Taq b'i'aj
 nationalities = Taq amaq'el
 net-worths = Rup'alb'al ch'akoj
