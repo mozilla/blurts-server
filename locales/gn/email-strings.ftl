@@ -10,5 +10,13 @@ email-address = Ñanduti veve kundaharape:
 legal = Añetegua
 # Unsubscribe link in email.
 email-unsub-link = Ñemboheraguapy jeheja
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Ehecha Ñangarekoha mba’erupa
+# Button text
+verify-email-cta = Ñanduti veve jehechajey
+# Button text
+see-all-breaches = Ehechapaite ñembyai
+# Headline of verification email
+email-link-expires = Ko juajuha opáta 24 aravópe
 # Button at the bottom of pre-fxa email.
 create-account = Emoheñói mba’ete
