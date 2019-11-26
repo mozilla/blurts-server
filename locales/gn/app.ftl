@@ -255,6 +255,10 @@ email-addresses-title = Ñanduti veve kundaharape
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Jehechapa
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = Ko { $breachDate }, { $breachTitle } oñembyai. Ojejuhu rire ha ojehechajey ko ñembyai, oñembojuajúma ore mba’ekuaarã rendápe ko { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } oguerohoryvéva
 # When a user is signed in, this appears in the drop down menu 
@@ -266,9 +270,16 @@ filter-by = Embogua jehechaukaha rupi:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Poravorã
 to-affected-email = Emondo ñembyai kyhyjerã ñanduti veve imarãkuapavape
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Oĩ peteĩ hendáicha emo’ã hag̃ua ne ñemigua. Eipuru { -brand-name }.
 # Link title
 learn-more-link = Kuaave.
 email-sent = ¡Ñandutiveve mondopyre!
+# Form title
+want-to-add = ¿Embojuajuse ambue ñandutiveve?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Ehechajey juajuha emondóva { $userEmail }-pe embojuaju hag̃ua { -product-name } rehe.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
@@ -279,6 +290,11 @@ sign-in-nested = eñepyrũ tembiapo
 
 
 
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Eñangareko opaite ñanduti vevére { $preferencesLink }-pe.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach

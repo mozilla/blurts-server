@@ -35,10 +35,17 @@ email-subject-no-breaches = { -product-name } ndojuhúi ñembyai kuaapyrépe
 email-subject-verify = Ehechajey ne ñanduti veve { -product-name } peg̃uarã
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Eikuaave { $fxmLink } rehegua
+# List headline
+faq-list-headline = Porandu py’ỹiguáva
+# Link Title
+faq-v2-4 = ¿Mba’éicha oipuru { -product-name } tendakuéra imarandu ñemívape?
 # Section headline
 monitor-another-email = ¿Eporanduse ambue ñanduti veve rupive?
 # Subject line of email
 pre-fxa-subject = { -product-name } mbohekopyahu
+pre-fxa-headline = ¿Mba’e pe iñambuéva { -product-name } ndive
 pre-fxa-tout-1 = Ejesarekóke ñembyai pyahúre
+pre-fxa-tout-2 = Ereko mba’erupa tuichaháicha
+pre-fxa-tout-3 = Og̃uahẽ meméta kyhyjerã ñanduti vevépe
 # Button at the bottom of pre-fxa email.
 create-account = Emoheñói mba’ete
