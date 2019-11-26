@@ -238,8 +238,18 @@ steps-to-protect = Jeku’e ejapova’erã emo’ã hag̃ua nde reraite ñandut�
 take-further-steps = Ejapo hetamba’e emo’ã hag̃ua nde reraite
 alert-about-new-breaches = Che myangekóike ñembyai pyahúre.
 see-if-youve-been-part = Ehecha ndépa eiméra'e mba’ekuaarã ñembyai ñandutípe.
+get-ongoing-breach-monitoring = Eguereko mba’ekuaarã ñembyai jehecha py’ỹi heta ñanduti vevépe g̃uarã.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Jejuhu
+new-unsub-error = Eikotevẽ esẽ peteĩ ñanduti veve omondova’ekuégui { -product-name }
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Upeicharõ jepe, ojehecha { $breachCount } ñembyai kuaapyrépe.
+       *[other] Upeicharõ jepe, ojehecha { $breachCount } ñembyai kuaapyrépe.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Marandu ojo’áva, oikehápe:
 # Title
 email-addresses-title = Ñanduti veve kundaharape
 # This is a section headline on the breach detail page that appears above
