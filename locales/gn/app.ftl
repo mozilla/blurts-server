@@ -125,14 +125,18 @@ what-is-data-agg = ¿Mba’e mba’ekuaarã mbojuapyhára?
 protect-your-privacy = Emo’ã ñemigua ñandutípe
 no-pw-to-change = Ñanduti renda juavygua ñembyai, ndaipóri ñe’ẽñemi emoambueva’erã.
 avoid-personal-info = Ani eipuru marandu jehegua ñe’ẽñemíme
+avoid-personal-info-blurb = Ndahasýi aramboty jejuhu, kundaharape ha pehengue réra ñandutípe. Ani eipuru ko’ã ñe’ẽ ne ñe’ẽñemíme.
 
 ## What to do after data breach tips
 
 change-pw = Emoambue ñe’ẽñemi
 change-pw-site = Emoambue ñe’ẽñemi ko tendápe g̃uarã
+even-for-old = Avei mba’ete itujáva, embohekopyahúke ne ñe’ẽñemi.
 make-new-pw-unique = Ejapo ñe’ẽñemi pyahúgui iñambue ha ha’eñóva
+strength-of-your-pw = Ne ñe’ẽñemi mbaretekue oñomoirũ ne rekorosã ñandutí pegua ndive.
 create-strong-passwords = Mba’éicha emoheñóita ñe’ẽñemi hekorosãva
 stop-reusing-pw = Anive eipuru peteĩ ñe’ẽñemi memete
+create-unique-pw = Emoheñói ñe’ẽñemi ha’etéva ha eñongatu tenda hekorosãvape, peteĩ ñe’ẽñemi ñangarekohápe.
 five-myths = 5 mombe’ugua’u ñe’ẽñemi ñangarekoha rehegua
 create-a-fxa = Emoheñói { -brand-fxa } eñemomarandu hag̃ua ñembyaíre ha og̃uahẽta ndéve kyhyjerã.
 feat-security-tips = Tekorosãrã emo’ã hag̃ua ne mba’ete
@@ -229,6 +233,11 @@ other-monitored-emails = Ambue ñanduti veve ojehapykuehóva
 email-verification-required = Ñanduti veve jehechajey jerurepyre
 fxa-primary-email = { -brand-fxa } Ñanduti - Tuichavéva
 what-is-a-website-breach = ¿Mba’e ñembyai ñanduti rendápe?
+security-tips-headline = Ñe’ẽporã tekorosãrã emo’ã hag̃ua hackers-gui.
+steps-to-protect = Jeku’e ejapova’erã emo’ã hag̃ua nde reraite ñandutípe
+take-further-steps = Ejapo hetamba’e emo’ã hag̃ua nde reraite
+alert-about-new-breaches = Che myangekóike ñembyai pyahúre.
+see-if-youve-been-part = Ehecha ndépa eiméra'e mba’ekuaarã ñembyai ñandutípe.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Jejuhu
 # Title
