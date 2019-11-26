@@ -67,6 +67,8 @@ sign-out = Emboty tembiapo
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Eñangareko { -brand-fxa }
 have-an-account = ¿Erekóma mba’ete?
+fxa-what-to-do-subhead-2 = Anive eipuru ñe’ẽñemi ojekuaareíva ha emoambue opaite tenda eipuruhápe.
+fxa-what-to-do-subhead-4 = Eñepytyvõuka nemandu’a hag̃ua opaite ne ñe’ẽñemíre ha ereko tekorosãme.
 # Alerts is a noun
 sign-up-for-alerts = Eñemboheraguapy og̃uahẽ hag̃ua kyhyjerã
 # Link title
@@ -88,6 +90,7 @@ latest-breach = ÑEMBYAI IPYAHUVÉVA MBOJUAJUPYRE
 # Link title
 more-about-this-breach = Eikuaave ñembyai rehegua
 take-control = Eguerujey ne maranduete.
+cant-stop-hackers = Ndaikatúi emboyke mba’evai apohápe, hákatu emboykekuaa tembiapo vai omopotĩtava chupekuéra tape.
 read-more-tips = Ehechave ñe’ẽporã tekorosãrã
 how-hackers-work = Eikuaa mba’éichapa omba’apo umi hackers
 monitor-your-online-accounts = Eñemboheraguapy ehecha hag̃ua ñembyai { -brand-fxa } ndive.
