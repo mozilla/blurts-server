@@ -74,6 +74,21 @@ faq-v2-4 = Kako { -product-name } obravnava občutljive strani?
 pre-fxa-message = <a>Ustvarite brezplačen { -brand-fxa }</a> in dodajte do 15 e-poštnih naslovov.
 # Section headline
 monitor-another-email = Želite spremljati še en e-poštni naslov?
+# Subject line of email
+pre-fxa-subject = Posodobitev { -product-name }ja
+pre-fxa-headline = Kaj je novega v { -product-name }ju
+pre-fxa-blurb = Tukaj so novosti od vaše prijave v storitev { -product-name }, ki spremlja znane kraje podatkov za vaše osebne podatke. Povezali smo ga s Firefox Računi.
 pre-fxa-tout-1 = Bodite pozorni na več kraj podatkov
+pre-fxa-p-1 =
+    <a>Ustvarite račun</a> in spremljajte do 15 e-poštnih naslovov 
+    za kraje podatkov. Priporočamo vam, da dodate vse e-poštne naslove, ki ste jih uporabili za ustvarjanje spletnih računov.
+pre-fxa-tout-2 = Nadzorna plošča kraj podatkov
+pre-fxa-p-2 =
+    Oglejte si vse kraje podatkov na enem mestu, tako boste vedeli, katera gesla spremeniti. 
+    Nadzorna plošča kraj podatkov je na voljo samo ob prijavi z računom.
+pre-fxa-tout-3 = Še naprej prejemajte opozorila po e-pošti
+pre-fxa-p-3 =
+    Še vedno boste prejemali opozorila { -product-name }ja. Obvestili vas bomo, če se bodo vaši podatki 
+    pojavili v novi kraji podatkov.
 # Button at the bottom of pre-fxa email.
 create-account = Ustvarite račun
