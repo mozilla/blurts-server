@@ -10,7 +10,7 @@ audio-recordings = Registrationes audio
 auth-tokens = Tokens de authentication
 avatars = Avatares
 bank-account-numbers = Numeros de conto bancari
-beauty-ratings = Valutationes de beltate
+beauty-ratings = Evalutationes de beltate
 biometric-data = Datos biometric
 # This string is the shortened version of "Biographies", and 
 # refers to biographical data about a user.
