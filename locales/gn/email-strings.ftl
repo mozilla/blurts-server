@@ -38,6 +38,8 @@ learn-more-about-fxm = Eikuaave { $fxmLink } rehegua
 # List headline
 faq-list-headline = Porandu py’ỹiguáva
 # Link Title
+faq-v2-3 = Ajuhu ramoite peteĩ mba’ekuaarã ñembyai. ¿Mba’e ajapokuaa?
+# Link Title
 faq-v2-4 = ¿Mba’éicha oipuru { -product-name } tendakuéra imarandu ñemívape?
 # Section headline
 monitor-another-email = ¿Eporanduse ambue ñanduti veve rupive?

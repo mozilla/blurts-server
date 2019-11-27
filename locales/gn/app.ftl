@@ -310,7 +310,9 @@ breach-alert-notifications = Ñemomarandu kyhyjerã ojejapo’ỹva rupi
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Mboguapy mbojuajupyre:
+what-to-do-after-breach-desc = Ejoko ne mba’ete eguereko hag̃ua ne marandu mombyry iñañávagui.
 create-strong-passwords-desc = Ejapo ne ñe’ẽñemi imbaretéva, hekorosã ha hasýva ojekuaa hag̃ua.
 steps-to-protect-desc = Eikumby kyhyjerã hetavéva eikuaa hag̃ua mba’etépa pe ehekava’erã.
+five-myths-desc = Eikuaa mb’aéichapa emboykéta ñe’ẽñemi jepuruvai nombohasýiva hekovaíva rembiapo.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = ¡Moambuepy ñongatupyre!
