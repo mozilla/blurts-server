@@ -50,6 +50,8 @@ show-all = Mostra-ho tot
 fxa-scan-another-email = Voleu comprovar una altra adreça?
 sign-in = Inicia la sessió
 sign-out = Tanca la sessió
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Gestiona el { -brand-fxa }
 have-an-account = Ja teniu un compte?
 # Link title
 frequently-asked-questions = Preguntes més freqüents
@@ -104,3 +106,5 @@ want-to-add = Voleu afegir una altra adreça?
 
 
 
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = S'han desat els canvis.
