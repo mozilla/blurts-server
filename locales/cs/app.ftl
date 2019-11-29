@@ -73,11 +73,11 @@ GitHub-link-title = GitHub
 error-scan-page-token = Pokusili jste se zkontrolovat příliš mnoho e-mailových adres ve velmi krátkém čase. Z bezpečnostních důvodů jsme další vyhledávání dočasně zablokovali. Zkuste to prosím znovu později.
 error-could-not-add-email = E-mailovou adresu se nepodařilo přidat do databáze.
 error-not-subscribed = Tato e-mailová adresa není zaregistrována k příjmu upozornění od { -product-name(case: "gen") }.
-error-hibp-throttled = Příliš mnoho spojení ke službě { -brand-HIBP }.
+error-hibp-throttled = Příliš mnoho spojení k { -brand-HIBP }.
 error-hibp-connect = Chyba při připojování k { -brand-HIBP }.
 error-hibp-load-breaches = Nepodařilo se načíst informace o únicích.
 error-must-be-signed-in = Musíte být přihlášeni do svého { -brand-fxa(case: "gen") }.
-error-to-finish-verifying = Pro dokončení ověření této e-mailové adresy pro { -product-name } musíte být přihlášeni pod svým primárním e-mailovým účtem.
+error-to-finish-verifying = Pro dokončení ověření této e-mailové adresy pro { -product-name(case: "acc") } musíte být přihlášeni pod svým primárním e-mailovým účtem.
 home-title = { -product-name }
 home-not-found = Stránka nenalezena.
 oauth-invalid-session = Neplatná relace
@@ -183,16 +183,16 @@ sensitive-sites-copy = Účty, které jsou spojené s těmito typy úniků, { -p
 delayed-reporting-headline = Proč nahlášení tohoto úniku trvalo tak dlouho?
 delayed-reporting-copy = Občas to může trvat měsíce či roky, než se přihlašovací údaje vyzrazené v úniku dat objeví na temném Webu. Úniky jsou přidány do naší databáze, jakmile byly odhaleny a potvrzeny.
 about-fxm-headline = O { -product-name(case: "gen") }.
-about-fxm-blurb = { -product-name } vás upozorní, jestliže byly vaše internetové účty součástí úniku dat. Zjistěte, jestli se vaše osobní údaje nestaly součástí nějakého úniku dat, dostávejte upozornění na nové úniky a podnikněte kroky k ochraně svých internetových účtů. Službu { -product-name } zajišťuje organizace { -brand-Mozilla }.
+about-fxm-blurb = { -product-name } vás upozorní, jestliže byly vaše internetové účty součástí úniku dat. Zjistěte, jestli se vaše osobní údaje nestaly součástí nějakého úniku dat, dostávejte upozornění na nové úniky a podnikněte kroky k ochraně svých internetových účtů. { -product-name(case: "acc") } zajišťuje { -brand-Mozilla }.
 fxm-warns-you = { -product-name } vás upozorní, jestliže byla vaše e-mailová adresa vyzrazena v nějakém internetovém úniku dat. Ověřte si, jestli nebyly vaše osobní údaje vyzrazeny, zjistěte, jak lépe ochránit své internetové účty, a buďte upozorněni v případě, že se vaše e-mailová adresa objeví v novém úniku dat.
 # How Firefox Monitor works
 how-fxm-works = Jak { -product-name } funguje
 how-fxm-1-headline = Proveďte základní vyhledávání
 how-fxm-1-blurb = Vyhledejte svou e-mailovou adresu ve veřejně dostupných únicích dat sahajících zpět do roku 2007. Toto základní vyhledávání zobrazí všechny úniky dat kromě těch, které obsahují citlivé osobní údaje.
 how-fxm-2-headline = Zaregistrujte se k monitorování úniků
-how-fxm-2-blurb = Vytvořte si { -brand-fxa }, abyste mohli monitorovat svou e-mailovou adresu pro případ probíhajících úniků. Ihned po ověření své e-mailové adresy rovněž obdržíte kompletní hlášení o předchozích únicích včetně úniků citlivých údajů.
+how-fxm-2-blurb = Vytvořte si { -brand-fxa(case: "acc") }, abyste mohli monitorovat svou e-mailovou adresu pro případ probíhajících úniků. Ihned po ověření své e-mailové adresy rovněž obdržíte kompletní hlášení o předchozích únicích včetně úniků citlivých údajů.
 how-fxm-3-headline = Dostávejte oznámení ve svém prohlížeči
-how-fxm-3-blurb = Pokud používáte { -brand-name }, obdržíte oznámení, jestliže navštívíte web, u něhož došlo k úniku dat. Hned si pak ověřte, jestli jste byli součástí tohoto úniku a co s tím můžete dělat.
+how-fxm-3-blurb = Pokud používáte { -brand-name(case: "acc") }, obdržíte oznámení, jestliže navštívíte web, u něhož došlo k úniku dat. Hned si pak ověřte, jestli jste byli součástí tohoto úniku a co s tím můžete dělat.
 wtd-after-website = Co dělat po úniku z webových stránek
 wtd-after-data-agg = Co dělat po úniku z agregátoru dat
 what-is-data-agg = Co je to agregátor dat?
@@ -215,7 +215,7 @@ create-strong-passwords = Jak vytvářet silná hesla
 stop-reusing-pw = Přestaňte používat hesla opakovaně
 create-unique-pw = Vytvořte si jedinečná hesla a uschovejte je na nějakém bezpečném místě, např. ve správci hesel.
 five-myths = 5 mýtů o správcích hesel
-create-a-fxa = Vytvořte si { -brand-fxa } pro dostávání upozornění na nové úniky a obdržení svého kompletního hlášení.
+create-a-fxa = Vytvořte si { -brand-fxa(case: "acc") } pro dostávání upozornění na nové úniky a obdržení svého kompletního hlášení.
 feat-security-tips = Bezpečnostní tipy, jak zabezpečit své účty
 feat-sensitive = Pokročilé vyhledávání v únicích citlivých údajů
 feat-enroll-multiple = Nechte si monitorovat více e-mailových adres
@@ -246,7 +246,7 @@ send-verification = Poslat ověřovací odkaz
 breach-summary = Souhrnné informace
 show-breaches-for-this-email = Zobrazit všechny úniky pro tuto adresu.
 link-change-primary = Změnit primární e-mailovou adresu
-remove-fxm = Vypnout { -product-name }
+remove-fxm = Vypnout { -product-name(case: "acc") }
 remove-fxm-blurb = Tímto zrušíte zasílání upozornění { -product-name(case: "ins") }. Váš { -brand-fxa } zůstane aktivní a můžete dostávat jiné zprávy týkající se vašeho účtu.
 # Button title
 manage-email-addresses = Spravovat e-mailové adresy
@@ -257,7 +257,7 @@ welcome-user = Vítejte, { $userName }!
 breach-alert-subject = { -product-name } našel vaši e-mailovou adresu v novém úniku dat
 your-info-was-discovered-headline = Vaše údaje byly nalezeny v novém úniku dat.
 your-info-was-discovered-blurb =
-    Jste zaregistrováni k obdržení upozornění od služby { -product-name },
+    Jste zaregistrováni k obdržení upozornění od { -product-name(case: "gen") },
     jestliže se vaše e-mailová adresa objeví v nějakém úniku dat. Zde je vše, co o tomto úniku víme.
 what-to-do-after-breach = Co dělat po úniku dat:
 ba-next-step-1 = Změňte heslo a nové vytvořte silné a jedinečné.
@@ -274,7 +274,7 @@ ba-next-step-3 = Získejte pomoc s tvorbou lepších hesel a jejich uchováván�
 ba-next-step-blurb-3 = Pro vytváření silných a jedinečných hesel používejte správce hesel. Správci hesel bezpečně uchovávají všechny vaše přihlašovací údaje, takže k nim máte přístup ve všech svých zařízeních.
 faq1 = Tato společnost či web mi nic neříká. Proč jsem součástí tohoto úniku?
 faq2 = Proč trvalo tak dlouho, než jsem byl o tomto úniku informován?
-faq3 = Jak poznám, že tato e-mailová zpráva opravdu pochází od služby { -product-name }?
+faq3 = Jak poznám, že tato e-mailová zpráva opravdu pochází od { -product-name(case: "gen") }?
 new-breaches-found =
     { $breachCount ->
         [one] NALEZEN { $breachCount } NOVÝ ÚNIK DAT
@@ -314,7 +314,7 @@ error-bot-blurb =
     několik e-mailových adres . Pro teď máte další vyhledávání zablokováno. Můžete to opět zkusit později.
 error-csrf-headline = Vypršel časový limit relace
 error-csrf-blurb = Klepněte v prohlížeči na tlačítko Zpět, aktualizujte stránku a akci opakujte.
-error-invalid-unsub = Jak zrušit příjem upozornění od služby { -product-name }
+error-invalid-unsub = Jak zrušit příjem upozornění od { -product-name(case: "gen") }
 error-invalid-unsub-blurb =
     Zrušit příjem budete muset prostřednictvím jedné z e-mailových zpráv, kterou vám { -product-name } odeslal. Podívejte se do své e-mailové schránky po zprávách od
     { -brand-team-email }. V dolní části zprávy pak klepněte na odkaz pro zrušení příjmu.
@@ -401,7 +401,7 @@ filter-by = Filtrovat podle kategorie:
 menu = Nabídka
 to-affected-email = Poslat upozornění na únik na postiženou e-mailovou adresu
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
-join-firefox = Existuje způsob, jak ochránit své soukromí. Používejte { -brand-name }.
+join-firefox = Existuje způsob, jak ochránit své soukromí. Používejte { -brand-name(case: "acc") }.
 # Link title
 learn-more-link = Zjistit více.
 email-sent = E-mail odeslán!

@@ -42,7 +42,7 @@ email-subject-found-breaches = { -product-name } našel vaše údaje v těchto �
 # Subject line of email
 email-subject-no-breaches = { -product-name } nenašel žádné známé úniky dat
 # Subject line of email
-email-subject-verify = Ověření e-mailové adresy pro { -product-name }
+email-subject-verify = Ověření e-mailové adresy pro { -product-name(case: "acc") }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Zjistit více o službě { $fxmLink }
 email-sensitive-disclaimer =
@@ -67,7 +67,7 @@ faq-v2-3 = Právě jsem zjistil, že byly mé údaje součástí úniku dat. Co 
 faq-v2-4 = Jak { -product-name } zachází s úniky citlivých dat?
 # This string contains nested markup that becomes a link to Firefox Monitor
 # later in the code. Please do not modify or remove "<a>" and "</a>".
-pre-fxa-message = <a>Vytvořte si zdarma { -brand-fxa }</a> a můžete přidat až 15 e-mailových adres.
+pre-fxa-message = <a>Vytvořte si zdarma { -brand-fxa(case: "acc") }</a> a můžete přidat až 15 e-mailových adres.
 # Section headline
 monitor-another-email = Chcete monitorovat další e-mailovou adresu?
 # Subject line of email

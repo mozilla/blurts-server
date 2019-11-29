@@ -16,6 +16,6 @@ bento-button-title = Aplikace a služby { -brand-name }
 # Bento headline
 fx-makes-tech = { -brand-name } je technologie, která bojuje za vaše soukromí na internetu.
 # A link at the bottom of the Bento menu
-made-by-mozilla = Od organizace { -brand-Mozilla }
+made-by-mozilla = Od { -brand-Mozilla(case: "gen") }
 # Aria label for button that closes the Bento menu
 mobile-close-bento-button-title = Zavřít nabídku
