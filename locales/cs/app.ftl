@@ -315,9 +315,7 @@ error-bot-blurb =
 error-csrf-headline = Vypršel časový limit relace
 error-csrf-blurb = Klepněte v prohlížeči na tlačítko Zpět, aktualizujte stránku a akci opakujte.
 error-invalid-unsub = Jak zrušit příjem upozornění od { -product-name(case: "gen") }
-error-invalid-unsub-blurb =
-    Zrušit příjem budete muset prostřednictvím jedné z e-mailových zpráv, kterou vám { -product-name } odeslal. Podívejte se do své e-mailové schránky po zprávách od
-    { -brand-team-email }. V dolní části zprávy pak klepněte na odkaz pro zrušení příjmu.
+error-invalid-unsub-blurb = Zrušit příjem budete muset prostřednictvím jedné z e-mailových zpráv, kterou vám { -product-name } odeslal. Podívejte se do své e-mailové schránky po zprávách od { -brand-team-email(case: "gen") }. V dolní části zprávy pak klepněte na odkaz pro zrušení příjmu.
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
