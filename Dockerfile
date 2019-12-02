@@ -12,13 +12,8 @@ COPY package-lock.json package-lock.json
 
 RUN npm install && rm -rf ~app/.npm /tmp/*
 
-COPY . /app
-
-USER root
+COPY --chown=app:app . /app
 
 RUN npm run build:all
 
-RUN chown app:app /app
-
-USER app
 CMD NODE_ICU_DATA=./node_modules/full-icu node server.js
