@@ -150,8 +150,10 @@ appears-in-x-breaches =
        *[other] Ojekuaa { $breachCount }-pe ñembyaikuéra jehecháva.
     }
 check-for-breaches = Eheka ñembyai
+find-out-what-hackers-know = Ejeporeka mba’épa hekovaíva ñandutípe oikuaa ndehegui. Eñeha’ã eiko tenondeve chuguikuéra.
 search-for-your-email = Eheka ne ñanduti veve mba’ekuaarã ñembyai opavaveguávape ehóvo 2007 peve.
 back-to-top = Ejevy ñepyrũhápe
+comm-opt-0 = Embou ñanduti veve peteĩva che ñanduti veve osẽramo mba’ekuaarã ñembyaípe.
 comm-opt-1 = Emondo opaite kyhyjerã ñembyai rehegua { $primaryEmail }-pe.
 stop-monitoring-this = Anive ehechaiterei ko ñanduti veve kundaharape.
 resend-verification = Emondojey ñandutiveve jehechajeyrã
@@ -178,15 +180,29 @@ what-to-do-after-breach = Mba’e ejapóta oñembyai rire ne mba’ekuaarã:
 ba-next-step-1 = Emoambue ne ñe’ẽñemi hekorosã ha ha’eñóvare.
 ba-next-step-2 = Anive eipuru ñe’ẽñemi ojekuaareíva.
 ba-next-step-3 = Eñepytyvõuka emoheñói hag̃ua ñe’ẽñemi oikóva ha ereko tekorosãme.
+faq1 = Ndaikuaái ko mba’apohaguasu térã ñanduti renda. ¿Mba’ére aime ko ñembyaípe?
+faq2 = ¿Mba’ére eha’arõite ko ñembyai ñemomarandu?
+faq3 = ¿Mba’éicha aikuaáta ko ñanduti veve ha’eha { -product-name } mba’e?
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } ÑEMBYAI PYAHU JUHUPYRE
        *[other] { $breachCount } ÑEMBYAI PYAHU JUHUPYRE
     }
 sign-up-headline-1 = Og̃uahẽta kyhyjerã { -brand-fxa } ndive.
+account-not-required = Kundahára { -brand-name } natekotevẽi { -brand-fxa } peg̃uarã. Eñemomarandukuaa { -brand-Mozilla } mba’epuru rehegua.
+was-your-info-exposed = ¿Ne marandu oĩkuri mba’ekuaarã ñembyaípe { $breachName }?
 find-out-if = Ehecha ne mba’ekuaarãpa oñembyaikuaápara’e.
 fb-not-comp = Ko ñanduti veve ndojehechái ñembyaípe { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Upéicharamo jepe, osẽramo ambue { $breachCount } ñembyaípe.
+       *[other] Upéicharamo jepe, osẽramo ambuekuéra { $breachCount } ñembyaípe.
+    }
 fb-comp-only = Ko ñanduti veve ojehecha ñembyaípe { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+       *[other] Ko ñanduti veve ojeheja { $breachCount } mba’ekuaarã ñembyai ojekuaávape, oikehápe { $breachName }.
+    }
 no-other-breaches-found = Ndojejuhúi ambue ñembyai jeheka ñepyrũguávape.
 no-results-blurb = Rombyasy, pe ñembyai ndaipóri ore mba’ekuaarã rendápe.
 all-breaches-headline = Opaite ñembyai { -product-name }-pe.
