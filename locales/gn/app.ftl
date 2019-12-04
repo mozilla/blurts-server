@@ -214,6 +214,7 @@ currently-showing = Jehechauka:
 
 error-bot-headline = Jeheka ojejokóva sapy’ami
 error-csrf-headline = Tembiapo oiko’ỹva
+error-csrf-blurb = Eiporavo votõ kundahára kupépe, emyanyhẽ kuatiarogue ha eha’ãjey.
 error-invalid-unsub = Mba’éicha ikatu aipe’a mboheguapy kyhyjerãva { -product-name }
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
