@@ -71,6 +71,6 @@ pre-fxa-p-1 = <a>註冊帳號</a>即可監控最多 15 組電子郵件信箱資�
 pre-fxa-tout-2 = 取得儀錶板畫面
 pre-fxa-p-2 = 在同一個地方就可以看到所有資料外洩事件，讓您知道要改掉哪些密碼。註冊帳號之後才可看到外洩事件儀錶板。
 pre-fxa-tout-3 = 繼續接收電子郵件警報
-pre-fxa-p-3 = 當您出現在新的資料外洩事件十，還是會收到來自 { -product-name } 的警報內容。
+pre-fxa-p-3 = 當您出現在新的資料外洩事件時，還是會收到來自 { -product-name } 的警報內容。
 # Button at the bottom of pre-fxa email.
 create-account = 註冊帳號
