@@ -23,6 +23,7 @@ error-hibp-throttled = Hetáma oikéva { -brand-HIBP } ndive.
 error-hibp-connect = Ojavy eikévo { -brand-HIBP } ndive.
 error-hibp-load-breaches = Ndaikatúi emyanyhẽ tekorosã jejavy.
 error-must-be-signed-in = Emoñepyrũ tembiapo { -brand-fxa }-pe.
+error-to-finish-verifying = Emohu’ãvo jehechajey ko ñanduti veve { -product-name } peg̃uarã, eikeva’erã ne mba’ete ñanduti veve ñepyrũguávape.
 home-title = { -product-name }
 home-not-found = Kuatiarogue oĩ’ỹva.
 oauth-invalid-session = Tembiapo oiko’ỹva
@@ -308,6 +309,9 @@ verify-the-link = Ehechajey juajuha emondóva { $userEmail }-pe embojuaju hag̃u
 
 email-verified = ¡Ñanduti veve ojechajeypyréva!
 email-added-to-subscription = Romomarandúta { $email } ojehecháramo mba’ekuaarã ñembyaípe.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = Ehecha ha eñangareko opaite ñanduti veve emboheguapyva’ekue ojehapykueho hag̃ua ñembyaikuéra, { $nestedSignInLink }.
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = eñepyrũ tembiapo
 
@@ -327,6 +331,7 @@ breach-alert-notifications = Ñemomarandu kyhyjerã ojejapo’ỹva rupi
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Mboguapy mbojuajupyre:
+how-hackers-work-desc = Emo’ã ne ñe’ẽñemi mba’evai apoha ñandutiguávagui, ha’éva pe eipotavéva.
 what-to-do-after-breach-desc = Ejoko ne mba’ete eguereko hag̃ua ne marandu mombyry iñañávagui.
 create-strong-passwords-desc = Ejapo ne ñe’ẽñemi imbaretéva, hekorosã ha hasýva ojekuaa hag̃ua.
 steps-to-protect-desc = Eikumby kyhyjerã hetavéva eikuaa hag̃ua mba’etépa pe ehekava’erã.
