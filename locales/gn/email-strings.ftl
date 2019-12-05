@@ -45,6 +45,9 @@ faq-v2-2 = ¿Ajapova’erã mba’e oiko rire ñembyai heta arýma, térã kóva
 faq-v2-3 = Ajuhu ramoite peteĩ mba’ekuaarã ñembyai. ¿Mba’e ajapokuaa?
 # Link Title
 faq-v2-4 = ¿Mba’éicha oipuru { -product-name } tendakuéra imarandu ñemívape?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Emoheñói { -brand-fxa }</a>, reigua ha ikatúta embojuaju 15 ñanduti veve peve.
 # Section headline
 monitor-another-email = ¿Eporanduse ambue ñanduti veve rupive?
 # Subject line of email
