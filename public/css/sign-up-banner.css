@@ -9,20 +9,12 @@
 
 .breach-detail-sign-up {
   border-radius: 16px;
-  margin-bottom: 20px;
-  padding: 40px;
-  margin-left: var(--padding);
-  margin-right: var(--padding);
   box-shadow: 0 2px 12px -2px #1c1c1d80;
-}
-
-.breach-detail-sign-up .sign-up-banner {
-  padding: 0;
 }
 
 .sign-up-feature-list {
   max-width: 500px;
-  margin-bottom: 0;
+  margin: 0;
 }
 
 .fxa-signup-banner {
@@ -52,15 +44,15 @@
 }
 
 .sign-up-cta::before {
-  width: 80px;
-  height: 88px;
+  width: 76px;
+  height: 50px;
   content: "";
   display: block;
-  background-image: url(/img/svg/sign-up-banner-icon.svg);
+  background-image: url(/img/svg/fxa-tout-yellow-env.svg);
   background-repeat: no-repeat;
   background-position: bottom center;
   background-size: contain;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .sign-up-cta p,
@@ -98,18 +90,18 @@ p.have-an-account {
 }
 
 .sign-up-headline {
-  font-size: 32px;
+  font-size: 24px;
   line-height: 1.17;
   color: rgba(255, 255, 255, 1);
-  max-width: 400px;
-  margin: auto auto auto 0;
+  max-width: 320px;
+  margin: 0 0 16px 0;
 }
 
 .sign-up-feature {
   line-height: 1.5;
   font-size: 16px;
   font-weight: 500;
-  margin: 0.5rem 0;
+  margin: 0 0 8px 0;
   display: flex;
 }
 
@@ -125,16 +117,11 @@ p.have-an-account {
   max-width: 300px;
   text-align: center;
   align-items: center;
-  margin: auto 0;
   flex: 1;
   justify-content: center;
 }
 
 @media screen and (max-width: 800px) {
-  .sign-up-headline {
-    font-size: var(--headline);
-  }
-
   .col-12.feat-headline-wrapper {
     padding-bottom: 0;
   }
@@ -146,25 +133,16 @@ p.have-an-account {
 
   h2.sign-up-headline {
     text-align: center;
-    margin: auto;
-    max-width: 420px;
+    margin: 0 auto 24px auto;
   }
 
   .sign-up-cta,
   .sign-up-feature-list {
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: var(--padding);
   }
 
   .sign-up-cta {
-    margin-top: 16px;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .sign-up-banner {
-    padding-left: 0;
-    padding-right: 0;
+    margin-top: 24px;
   }
 }

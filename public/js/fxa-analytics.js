@@ -124,8 +124,8 @@ function getUTMNames() {
       },
     });
 
-    document.querySelectorAll(".send-ga-ping").forEach((el) => {
-      el.addEventListener("click", async(e) => {
+    document.querySelectorAll(".send-ga-ping, [data-send-ga-ping]").forEach((el) => {
+      el.addEventListener("click", (e) => {
         const eventCategory = e.target.dataset.eventCategory;
         const eventAction = e.target.dataset.eventAction;
         const eventLabel = e.target.dataset.eventLabel;
