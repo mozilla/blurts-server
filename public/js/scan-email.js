@@ -21,7 +21,8 @@ async function sha1(message) {
 async function hashEmailAndSend(emailFormSubmitEvent) {
   emailFormSubmitEvent.preventDefault();
   const emailForm = emailFormSubmitEvent.target;
-  let userEmail = document.getElementById("scan-email").value;
+  const emailInput = document.getElementById("scan-email");
+  const userEmail = emailInput.value;
 
   // show loader and hash email
   emailForm.classList.add("loading-data");
@@ -35,7 +36,7 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
   }
 
   // clear input, send ping, and submit
-  userEmail = "";
+  emailInput.value = "";
   sendPing(emailForm, "Success");
   emailForm.submit();
 }
