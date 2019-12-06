@@ -1,6 +1,6 @@
 "use strict";
 
-const { localizeAndPrioritizeDataClasses } = require("./breach-detail");
+const { getSortedDataClasses } = require("./breach-detail");
 const { prettyDate, localeString, localizedBreachDataClasses } = require("./hbs-helpers");
 const { LocaleUtils } = require("./../locale-utils");
 const { filterBreaches } = require("./../hibp");
@@ -16,7 +16,7 @@ function getLocalizedBreachCardStrings(locales) {
 
 function dataClassesforCards(breach, locales) {
   const topTwoClasses = [];
-  const dataClasses = localizeAndPrioritizeDataClasses(locales, breach, true);
+  const dataClasses = getSortedDataClasses(locales, breach);
 
   dataClasses.priority.forEach(dataType => {
     topTwoClasses.push(dataType.dataType);
