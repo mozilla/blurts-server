@@ -71,6 +71,12 @@ sign-out = Emboty tembiapo
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Eñangareko { -brand-fxa }
 have-an-account = ¿Erekóma mba’ete?
+fxa-pwt-summary-2 =
+    Ñe’ẽñemi mbykýva peteĩ ñe’ẽnteva ndahasýi ijeikuaa mba’evai apohápe g̃uarã. 
+    Eipuru sa’ivéramo mokõi ñe’ẽ ha embojopyru tai, papapy ha ambueve.
+fxa-pwt-summary-4 =
+    Ñe’ẽñemi ñangarekoha 1Password, LastPass, Dashlane ha Bitwarden oñongatu ne 
+    ñe’ẽñemi ha omoinge ñanduti rendápe. Ikatu avei nepytyvõ emoheñói hag̃ua ñe’ẽñemi hekorosãva.
 fxa-what-to-do-subhead-2 = Anive eipuru ñe’ẽñemi ojekuaareíva ha emoambue opaite tenda eipuruhápe.
 fxa-what-to-do-subhead-4 = Eñepytyvõuka nemandu’a hag̃ua opaite ne ñe’ẽñemíre ha ereko tekorosãme.
 # Alerts is a noun
