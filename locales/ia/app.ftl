@@ -285,7 +285,7 @@ what-is-a-website-breach = Qual es un violation de sito web?
 website-breach-blurb = Un violation de datos de sito web eveni quando le cybercriminales roba, copia o expone informationes personal de contos online. Illo sole esser un resultato de hackers que trova un puncto debile in le securitate del sito web. Violationes pote alsi evenir quando informationes del conto es revelate per accidente.
 security-tips-headline = Consilios de securitate pro proteger te contra hackers
 steps-to-protect = Mesuras a prender pro proteger tu identitate in linea
-take-further-steps = Prende altere mesuras pro proteger tu identitate
+take-further-steps = Prende passos ulterior pro proteger tu identitate
 alert-about-new-breaches = Avisar me re nove violationes
 see-if-youve-been-part = Vide si tu ha essite parte de un violation de datos online.
 get-ongoing-breach-monitoring = Survelia continuemente le violationes de datos pro plure adresses de e-mail.
@@ -361,7 +361,7 @@ breach-added-label = Violation addite:
 how-hackers-work-desc = Protege tu contrasignos ab cybercriminales, pois que es illos que illes desira plus.
 what-to-do-after-breach-desc = Bloca tu contos pro evitar que tu informationes cade in manos improprie.
 create-strong-passwords-desc = Rende tu contrasignos forte, secur e difficile a divinar.
-steps-to-protect-desc = Comprende le plus commun menacias e sape que cercar.
+steps-to-protect-desc = Comprende le menacias le plus commun e sape a que prestar attention.
 five-myths-desc = Apprende a evitar habitos de mal contrasigno que rende facile le labor de un hacker.
 take-further-steps-desc = Discoperi como mitigar le riscos de furto de identitate pro prevenir perdita financiari.
 # This message appears after a user has successfully updated their communication settings.

@@ -14,7 +14,7 @@ fx-mobile = { -brand-name } navigator pro mobile
 # Aria label for the Bento button
 bento-button-title = { -brand-name } applicationes e servicios
 # Bento headline
-fx-makes-tech = { -brand-name } es technologia que lucta pro tu confidentialitate in rete.
+fx-makes-tech = { -brand-name } es technologia que lucta pro tu vita private in linea.
 # A link at the bottom of the Bento menu
 made-by-mozilla = Producite per { -brand-Mozilla }
 # Aria label for button that closes the Bento menu
