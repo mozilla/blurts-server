@@ -153,17 +153,36 @@ delayed-reporting-copy =
     i en datalekkasje dukker opp på nettsteder som brukes av kriminelle (kjent som det mørke nettet eller dark web). Datalekkasjer blir lagt til i vår database 
     så snart de er oppdaget og bekreftet.
 about-fxm-headline = Om { -product-name }
+fxm-warns-you =
+    { -product-name } advarer deg om e-postadressen din har blitt eksponert 
+    i en datalekkasje på nettet. Se om informasjonen din er blitt eksponert, lær hvordan 
+    du kan beskytte dine konto på nettet, og bli varslet om e-postadressen din 
+    vises i en ny lekkasje.
 # How Firefox Monitor works
 how-fxm-works = Hvordan { -product-name } fungerer
 how-fxm-1-headline = Utfør et enkelt søk
+how-fxm-1-blurb =
+    Søk etter e-postadressen din blant offentliggjorte datalekkasjer tilbake 
+    til 2007. Dette grunnleggende søket vil vise de fleste lekkasjer, 
+    men ikke de som inneholder sensitiv personlig informasjon.
 how-fxm-2-headline = Registrer deg for datalekkasjeovervåking
+how-fxm-2-blurb =
+    Opprett en { -brand-fxa } for å overvåke din e-postaddresse for pågående datalekkasjer. 
+    Når du har verifisert e-postadressen, vil du også motta en full rapport om tidligere datalekkasjer, 
+    inkludert sensitive lekkasjer.
 how-fxm-3-headline = Få varsler i nettleseren din
 wtd-after-website = Hva en skal gjøre etter en nettstedsdatalekkasje:
 wtd-after-data-agg = Hva en skal gjøre etter en datainnsamlingslekkasje:
 what-is-data-agg = Hva er en datainnsamler?
+what-is-data-agg-blurb =
+    Datainnsamlere, eller datameglere, samler inn informasjon fra offentlige registre og kjøper den 
+    fra andre selskaper. De samler disse dataene for å selge dem til selskaper til markedsføringsformål. 
+    Ofre for disse lekkasjene har mindre sannsynlighet for å oppleve økonomisk 
+    svindel, men hackere kan bruke disse dataene for å opptre som dem eller profilere dem.
 protect-your-privacy = Beskytt ditt personvern på nettet
 no-pw-to-change = I motsetning til nettstedsdatalekkasjer, er det ingen passord som kan endres.
 avoid-personal-info = Unngå å bruke personlig informasjon i passord
+avoid-personal-info-blurb = Det er enkelt å finne bursdager, adresser og familiemedlemmer på nettet. Bruk ikke disse ord i dine passord.
 
 ## What to do after data breach tips
 
@@ -179,6 +198,13 @@ five-myths = 5 myter om passordbehandlere
 create-a-fxa = Lag en { -brand-fxa } for din fulle rapport om datalekkasjer og for å få varsler.
 feat-security-tips = Sikkerhetstips for å beskytte dine konto
 feat-sensitive = Avansert søk i sensitive datalekkasjer
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Vises i { $breachCount } kjent datalekkasje.
+       *[other] Vises i { $breachCount } kjente datalekkasjer.
+    }
 back-to-top = Tilbake til toppen
 comm-opt-1 = Send alle varsler om datalekkasjer til { $primaryEmail }.
 stop-monitoring-this = Slutt å overvåke denne e-postadressen
