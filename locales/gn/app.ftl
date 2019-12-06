@@ -129,6 +129,9 @@ how-fxm-works = Mba’écha omba’apo { -product-name }
 how-fxm-1-headline = Eheka vevuimi
 how-fxm-2-headline = Eñemboheraguapy ehecha hag̃ua ñembyai
 how-fxm-3-headline = Erekóta marandu’i kundahárape
+how-fxm-3-blurb =
+    Eipurúramo { -brand-name }, og̃uahẽta ndéve marandu’i eikéramo 
+    tenda ñembyaipyrépe. Ehecháke eimépara’e pe ñembyaípe ha mba’épa ikatu ejapo péva renondépe.
 wtd-after-website = Mba’e ejapóta ñanduti kuatiarogue oñembyai rire
 wtd-after-data-agg = Mba’e ejapóta oñembyai rire mba’ekuaarã mbojuapyhára
 what-is-data-agg = ¿Mba’e mba’ekuaarã mbojuapyhára?

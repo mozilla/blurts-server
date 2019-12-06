@@ -55,6 +55,12 @@ pre-fxa-subject = { -product-name } mbohekopyahu
 pre-fxa-headline = ¿Mba’e pe iñambuéva { -product-name } ndive
 pre-fxa-tout-1 = Ejesarekóke ñembyai pyahúre
 pre-fxa-tout-2 = Ereko mba’erupa tuichaháicha
+pre-fxa-p-2 =
+    Ejuhu opaite mba’ekuaarã ñembyai peteĩ tendápe año eikuaa hag̃ua mba’e ñe’ẽñemípa emoambuéta. 
+    Pe ñembyai kora ehechakuaa peteĩ mba’ete rupive.
 pre-fxa-tout-3 = Og̃uahẽ meméta kyhyjerã ñanduti vevépe
+pre-fxa-p-3 =
+    Og̃uahẽta ndéve kyhyjerã { -product-name } guive. Reñemomarandúta ne marandu 
+    osẽramo mba’ekuaarã ñembyai pyahúpe.
 # Button at the bottom of pre-fxa email.
 create-account = Emoheñói mba’ete
