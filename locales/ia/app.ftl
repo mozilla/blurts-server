@@ -205,7 +205,7 @@ ba-next-step-blurb-2 = Cybercriminales poterea trovar tu contrasigno sur le web 
 ba-next-step-3 = Recipe adjuta pro le creation de melior contrasignos e mantener los secur.
 ba-next-step-blurb-3 = Usa un gestor de contrasignos pro crear contrasignos forte e unic. Le gestores de contrasignos immagazina con securitate tote tu authenticationes, assi que tu pote acceder a illos sur tote tu apparatos.
 faq1 = Io non recognosce iste compania o sito web. Proque me concerne iste violation?
-faq2 = Perque il ha requirite assi longe tempore pro notificar me de iste violation?
+faq2 = Proque ha il prendite tante tempore notificar me de iste violation?
 faq3 = Como sape io si isto es un email legitime de { -product-name }?
 new-breaches-found =
     { $breachCount ->
