@@ -181,6 +181,9 @@ breach-summary = Ñembyai ñemomichĩ
 show-breaches-for-this-email = Ehechauka opaite ñembyai ko ñanduti veve rehegua.
 link-change-primary = Emoambue ñanduti veve kundaharape ñepyrũgua
 remove-fxm = Emboguete { -product-name }
+remove-fxm-blurb =
+    Eipe’a kyhyjerã { -product-name }-gui. { -brand-fxa } hendy meméta ha ikatúta og̃uahẽ 
+    ambue ñemomarandu ne mba’ete reheguáva.
 # Button title
 manage-email-addresses = Eñangareko ñanduti veve kundaharapére
 # Link title
@@ -189,6 +192,9 @@ welcome-back = ¡Eg̃uahẽporãitejey { $userName }!
 welcome-user = ¡Eg̃uahẽporãite, { $userName }!
 breach-alert-subject = { -product-name } ojuhu ne ñanduti veve mba’ekuaarã ñembyai pyahúpe.
 your-info-was-discovered-headline = Ne marandu ojehecha mba’ekuaarã ñembyai pyahúpe.
+your-info-was-discovered-blurb =
+    Eñemboheraguapy ou hag̃ua ndéve kyhyjerã { -product-name }-gui 
+    ne ñanduti veve ojehechávo mba’ekuaarã ñembyaípe. Ápe oĩ roikuaáva ñembyai rehegua.
 what-to-do-after-breach = Mba’e ejapóta oñembyai rire ne mba’ekuaarã:
 ba-next-step-1 = Emoambue ne ñe’ẽñemi hekorosã ha ha’eñóvare.
 ba-next-step-2 = Anive eipuru ñe’ẽñemi ojekuaareíva.
