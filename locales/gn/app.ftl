@@ -199,6 +199,9 @@ what-to-do-after-breach = Mba’e ejapóta oñembyai rire ne mba’ekuaarã:
 ba-next-step-1 = Emoambue ne ñe’ẽñemi hekorosã ha ha’eñóvare.
 ba-next-step-2 = Anive eipuru ñe’ẽñemi ojekuaareíva.
 ba-next-step-3 = Eñepytyvõuka emoheñói hag̃ua ñe’ẽñemi oikóva ha ereko tekorosãme.
+ba-next-step-blurb-3 =
+    Oipuru ñe’ẽñemi ñangarekoha omoheñói hag̃ua ñe’ẽñemi hekorosãva ha ha’eñóva. Ko’ã ñangarekoha ombyaty opaite ne
+    rembiapo ñepyrũ hekorosãva eike hag̃ua opaite ne mba’e’oka guive.
 faq1 = Ndaikuaái ko mba’apohaguasu térã ñanduti renda. ¿Mba’ére aime ko ñembyaípe?
 faq2 = ¿Mba’ére eha’arõite ko ñembyai ñemomarandu?
 faq3 = ¿Mba’éicha aikuaáta ko ñanduti veve ha’eha { -product-name } mba’e?
