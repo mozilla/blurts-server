@@ -205,7 +205,11 @@ appears-in-x-breaches =
         [one] Vises i { $breachCount } kjent datalekkasje.
        *[other] Vises i { $breachCount } kjente datalekkasjer.
     }
+check-for-breaches = Se etter datalekkasjer
+find-out-what-hackers-know = Finn ut hva hackere allerede vet om deg. Lær hvordan du kan ligge et skritt foran dem.
+search-for-your-email = Søk etter e-postadressen blant offentlige datalekkasjer som går tilbake til 2007.
 back-to-top = Tilbake til toppen
+comm-opt-0 = Varsle meg på e-post hvis en av mine e-postadresser listet opp nedenfor dukker opp i en datalekkasje.
 comm-opt-1 = Send alle varsler om datalekkasjer til { $primaryEmail }.
 stop-monitoring-this = Slutt å overvåke denne e-postadressen
 resend-verification = Send e-postbekreftelse på nytt
@@ -228,6 +232,9 @@ welcome-back = Velkommen tilbake, { $userName }!
 welcome-user = Velkommen { $userName }!
 breach-alert-subject = { -product-name } fant e-postaddressen din i en ny datalekkasje
 your-info-was-discovered-headline = Din personlige informasjon ble oppdaget i en ny datalekkasje
+your-info-was-discovered-blurb =
+    Du er registrert for å motta { -product-name }-varsler 
+    når e-postadressen din vises i en datalekkasje. Dette er hva vi vet om dette bruddet.
 what-to-do-after-breach = Hva en skal gjøre etter en datalekkasje:
 ba-next-step-1 = Endre passordet ditt til et sterkt, unikt passord.
 ba-next-step-blurb-1 =
@@ -235,6 +242,32 @@ ba-next-step-blurb-1 =
     spesialtegn og tall. Den inneholder ikke personlig informasjon som 
     adresse, bursdag eller navn på familiemedlemmer.
 ba-next-step-2 = Slutt helt med å bruke det eksponerte passordet.
+ba-next-step-blurb-2 =
+    Cyberkriminelle kan finne passordet ditt på det mørke nettet og bruke det 
+    til å logge på dine andre kontoer. Den beste måten å beskytte kontoene dine på 
+    er å bruke unike passord for hver konto.
+ba-next-step-3 = Få hjelp til å lage bedre passord og til å oppbevare dem sikkert.
+ba-next-step-blurb-3 =
+    Bruk en passordbehandler for å lage sterke, unike passord. Passordbehandlere lagrer alle dine 
+    innloggingsdetaljer på en sikker måte slik at du kan få tilgang til dem på alle dine enheter.
+faq1 = Jeg kjenner ikke igjen dette selskapet eller nettstedet. Hvorfor er jeg i denne datalekkasjen?
+faq2 = Hvorfor tok det så lang tid å varsle meg om denne datalekkasjen?
+faq3 = Hvordan vet jeg at dette er en legitim e-postmelding fra { -product-name }?
+new-breaches-found =
+    { $breachCount ->
+        [one] FANT { $breachCount } NY DATALEKKASJE
+       *[other] FANT { $breachCount } NYE DATALEKKASJER
+    }
+sign-up-headline-1 = Få de nyeste advarsler med en { -brand-fxa }.
+account-not-required = Du trenger ikke ha en { -brand-name }-nettleser for å bruke en { -brand-fxa }. Ved å melde deg på vil du kunne motta informasjon om tjenester fra { -brand-Mozilla }.
+was-your-info-exposed = Ble informasjonen din kompromittert i datalekkasjen { $breachName }?
+find-out-if = Finn ut om dine opplysninger ble kompromittert i denne datalekkasjen.
+fb-not-comp = Denne e-postadressen ble ikke funnet i datalekkasjen { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Den dukket imidlertid opp i { $breachCount } annen datalekkasje.
+       *[other] Den dukket imidlertid opp i { $breachCount } andre datalekkasjer.
+    }
 search-breaches = Søk etter datalekkasjer
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Viser:
@@ -295,5 +328,6 @@ breach-alert-notifications = Varsler om datalekkasje
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Datalekkasje lagt til:
+five-myths-desc = Lær hvordan du unngår dårlige passordvaner som gjør arbeidet til en hacker enkelt.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Endringer lagret!
