@@ -56,11 +56,14 @@ compromised-accounts = Mba’ete ivaikuaáva:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Mba’ekuaarã ivaikuaáva:
 unsub-headline = Eheja mboheraguapy { -product-name-nowrap } pegua
+unsub-blurb = Kóva omboguéta ne ñanduti veve { -product-name-nowrap } rysýigui ha nog̃uahẽvéima ndéve kyhyjerã ñembyai pyahu rehegua.
 unsub-button = Eheja ñemboheraguapy
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Mba’ekuaarã ivaikuaáva ome’ẽ { $hibp-link }
+share-twitter = Heta tapicha oguereko 100 mba’ete rupi ñandutípe. ¿Oĩ hína ne mba’ekuaarã oñeñambyaíva? Ehecha mávapa.
 share-facebook-headline = Ehecha ndépa eiméra'e mba’ekuaarã ñembyaípe.
 share-facebook-blurb = ¿Ne mba’ete ñandutípe ojehechauka mba’ekuaarã ñembyaípe?
+og-site-description = Ehecha eĩpara’e mba’ekuaarã ñambyaípe { -product-name } ndive. Eñemboheraguapy og̃uahẽ hag̃ua ndéve kyhyjerã ñembyai oikokuaáva ha erekóta ñe’ẽporã ne mba’ete rekorosã.
 show-all = Ehechaukapa
 fxa-scan-another-email = ¿Ehechase ambue ñanduti veve?
 sign-in = Eñepyrũ tembiapo
