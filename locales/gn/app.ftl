@@ -77,6 +77,9 @@ fxa-pwt-summary-2 =
 fxa-pwt-summary-4 =
     Ñe’ẽñemi ñangarekoha 1Password, LastPass, Dashlane ha Bitwarden oñongatu ne 
     ñe’ẽñemi ha omoinge ñanduti rendápe. Ikatu avei nepytyvõ emoheñói hag̃ua ñe’ẽñemi hekorosãva.
+fxa-pwt-summary-6 =
+    Umi mba’ekuaarã ñembyai okakuaave. Ne maranduete ojehecha mba’ekuaarã ñembyai pyahúpe, 
+    { -product-name } ombou kyhyjerã — ikatukuaa hag̃uáicha emo’ã ne mba’ete.
 fxa-what-to-do-subhead-2 = Anive eipuru ñe’ẽñemi ojekuaareíva ha emoambue opaite tenda eipuruhápe.
 fxa-what-to-do-subhead-4 = Eñepytyvõuka nemandu’a hag̃ua opaite ne ñe’ẽñemíre ha ereko tekorosãme.
 # Alerts is a noun
@@ -197,6 +200,10 @@ your-info-was-discovered-blurb =
     ne ñanduti veve ojehechávo mba’ekuaarã ñembyaípe. Ápe oĩ roikuaáva ñembyai rehegua.
 what-to-do-after-breach = Mba’e ejapóta oñembyai rire ne mba’ekuaarã:
 ba-next-step-1 = Emoambue ne ñe’ẽñemi hekorosã ha ha’eñóvare.
+ba-next-step-blurb-1 =
+    Ñe’ẽñemi hekorosãva ombojopyru tai’i ha taiguasu, 
+    papapy ha ambueve. Ndoguerekói marandu mba’eteéva aichagua 
+    kundaharape, arareñói térã ára pehengue rehegua.
 ba-next-step-2 = Anive eipuru ñe’ẽñemi ojekuaareíva.
 ba-next-step-3 = Eñepytyvõuka emoheñói hag̃ua ñe’ẽñemi oikóva ha ereko tekorosãme.
 ba-next-step-blurb-3 =
