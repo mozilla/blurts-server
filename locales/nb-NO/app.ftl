@@ -268,6 +268,12 @@ other-breaches-found =
         [one] Den dukket imidlertid opp i { $breachCount } annen datalekkasje.
        *[other] Den dukket imidlertid opp i { $breachCount } andre datalekkasjer.
     }
+fb-comp-only = Denne e-postadressen forekom i datalekkasjen { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+       *[other] Denne e-postadressen forekom i { $breachCount } kjente datalekkasjer, inkludert { $breachName }.
+    }
+no-other-breaches-found = Ingen andre datalekkasjer ble funnet i dette grunnleggende søket.
 search-breaches = Søk etter datalekkasjer
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Viser:
