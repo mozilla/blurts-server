@@ -9,38 +9,38 @@ rec-ssn =
   Look for accounts, loans, or credit cards you don’t recognize.
 
 # Recommendation subhead
-rec-pw-primary-subhead = Change your password
+rec-pw-1-subhead = Change your password
 # Link title
-rec-pw-primary-cta = Change password for this site
-rec-pw-primary = 
+rec-pw-1-cta = Change password for this site
+rec-pw-1 = 
   Make this password unique and different from any others you use. 
   A good strategy to follow is to combine two or more unrelated 
-  words to create an entire pass phrase.
+  words to create an entire passphrase.
 
 # Recommendation subhead
-rec-pw-secondary-subhead = Update other logins using the same password
+rec-pw-2-subhead = Update other logins using the same password
 # Link title
-rec-pw-secondary-cta-fx = View logins in {-brand-name}
-rec-pw-secondary =
+rec-pw-2-cta-fx = View logins in { -brand-name }
+rec-pw-2 =
   Reusing passwords turns a single data breach into many. Now that this 
   password is out there, hackers could use it to get in to other accounts.
 
 # Recommendation subhead
-rec-pw-tertiary-subhead = Use a password manager to take your passwords everywhere
+rec-pw-3-subhead = Use a password manager to take your passwords everywhere
 # Link title
-rec-pw-tertiary-cta = Get {-brand-lockwise}
-rec-pw-tertiary-fx = 
-  Use {-brand-lockwise} to securely access the passwords you’ve saved in 
-  {-brand-name} from anywhere — even outside of the browser.
-rec-pw-tertiary-non-fx = 
-  Use {-brand-lockwise} to keep track of all your different 
+rec-pw-3-cta = Get { -brand-lockwise }
+rec-pw-3-fx = 
+  Use { -brand-lockwise } to securely access the passwords you’ve saved in 
+  { -brand-name } from anywhere — even outside of the browser.
+rec-pw-3-non-fx = 
+  Use { -brand-lockwise } to keep track of all your different 
   passwords and access them securely from your phone or tablet.
 
 # Recommendation subhead
-rec-pw-quaternary-subhead = Set up two-factor authentication
+rec-pw-4-subhead = Set up two-factor authentication (2FA)
 # Link title
-rec-pw-quaternary-cta = See sites that offer 2FA
-rec-pw-quaternary = 
+rec-pw-4-cta = See sites that offer 2FA
+rec-pw-4 = 
   Many websites offer 2FA as an extra security measure. This requires 
   another piece of information to log in to your account, such as a 
   one-time code you receive via text. 
@@ -60,19 +60,19 @@ rec-cc =
 # Recommendation subhead
 rec-ip-subhead = Use a service that masks your IP address
 # Link title
-rec-ip-us-cta = Try {-brand-fpn}
+rec-ip-us-cta = Try { -brand-fpn }
 rec-ip-us =
   Your Internet Protocol address (IP address) pinpoints your location 
-  and internet service provider. A service like {-brand-fpn} 
+  and internet service provider. A service like { -brand-fpn } 
   masks your IP address to hide your location.
 rec-ip-non-us = 
   Your Internet Protocol address (IP address) pinpoints your location 
-  and internet service provider. With a VPN, you can hide your location 
+  and internet service provider. With a virtual private network (VPN), you can hide your location 
   and mask your IP address.  
 
 rec-hist-pw-subhead = Avoid reusing passwords
 # Link title
-rec-hist-pw-cta-fx = View logins in {-brand-name}
+rec-hist-pw-cta-fx = View logins in { -brand-name }
 rec-hist-pw = 
   Use unique, strong passwords for every account. If one password gets 
   exposed in a data breach, you’ll only need to update that one login. 
@@ -130,7 +130,7 @@ rec-gen-3-subhead = Be cautious about giving out personal information
 # Link title
 rec-gen-3-cta = Read more security tips
 rec-gen-3 =
-  Don’t hand out personal data if you don't have to. If you are asked to 
+  Don’t hand out personal data if you don’t have to. If you are asked to 
   enter or give out your email address, ZIP code, or phone number, you can say no. 
 
 # Recommendation subhead

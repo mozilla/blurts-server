@@ -65,7 +65,7 @@ module.exports = {
             ctaShouldOpenNewTab: true,
             recIconClassName: "rec-ssn",
           },
-        ] : "",
+        ] : null,
       },
       "passwords": {
         weight: 100,
@@ -73,35 +73,35 @@ module.exports = {
         recommendations: [
           {
             recommendationCopy : {
-              subhead: "rec-pw-primary-subhead",
-              cta: changePWLink ? "rec-pw-primary-cta" : "",
-              body: "rec-pw-primary",
+              subhead: "rec-pw-1-subhead",
+              cta: changePWLink ? "rec-pw-1-cta" : "",
+              body: "rec-pw-1",
             },
             ctaHref: changePWLink,
             ctaShouldOpenNewTab: true,
-            recIconClassName: "rec-pw-primary",
+            recIconClassName: "rec-pw-1",
           },
           {
             recommendationCopy : {
-              subhead: "rec-pw-secondary-subhead",
+              subhead: "rec-pw-2-subhead",
               // Comment this CTA back in once monitor.firefox.com
               // has been added to the whitelist and is able to open about:logins
               // https://searchfox.org/mozilla-central/source/browser/app/permissions
-              // cta: isUserBrowserFirefox ? "rec-pw-secondary-cta-fx" : "",
-              body: "rec-pw-secondary",
+              // cta: isUserBrowserFirefox ? "rec-pw-2-cta-fx" : "",
+              body: "rec-pw-2",
             },
-            recIconClassName: "rec-pw-secondary",
+            recIconClassName: "rec-pw-2",
             // ctaHref: "", // Will open about:logins in the future or the lockwise website.
           },
           {
             recommendationCopy : {
-              subhead: "rec-pw-tertiary-subhead",
-              cta: "rec-pw-tertiary-cta",
-              body: isUserBrowserFirefox ? "rec-pw-tertiary-fx" : "rec-pw-tertiary-non-fx",
+              subhead: "rec-pw-3-subhead",
+              cta: "rec-pw-3-cta",
+              body: isUserBrowserFirefox ? "rec-pw-3-fx" : "rec-pw-3-non-fx",
             },
             ctaHref: "https://www.mozilla.org/firefox/lockwise/",
             ctaShouldOpenNewTab: true,
-            recIconClassName: "rec-pw-tertiary",
+            recIconClassName: "rec-pw-3",
           },
         ],
       },
@@ -254,13 +254,13 @@ module.exports = {
   getFourthPasswordRecommendation(locales) {
     return {
       recommendationCopy: {
-        subhead: LocaleUtils.fluentFormat(locales, "rec-pw-quaternary-subhead"),
-        body: LocaleUtils.fluentFormat(locales, "rec-pw-quaternary"),
-        cta: LocaleUtils.fluentFormat(locales, "rec-pw-quaternary-cta"),
+        subhead: LocaleUtils.fluentFormat(locales, "rec-pw-4-subhead"),
+        body: LocaleUtils.fluentFormat(locales, "rec-pw-4"),
+        cta: LocaleUtils.fluentFormat(locales, "rec-pw-4-cta"),
       },
       ctaHref: "https://twofactorauth.org/",
       ctaShouldOpenNewTab: true,
-      recIconClassName: "rec-pw-quaternary",
+      recIconClassName: "rec-pw-4",
     };
   },
 };

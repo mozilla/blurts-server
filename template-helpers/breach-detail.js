@@ -10,7 +10,7 @@ function localize(locales, stringId, args) {
 }
 
 
-function getBreachName(args) {
+function getBreachTitle(args) {
   return args.data.root.featuredBreach.Title;
 }
 
@@ -25,7 +25,7 @@ function getVars(args) {
 
 
 function getBreachCategory(breach) {
-  if (["Exactis", "Apollo", "YouveBeenScraped", "ElasticsearchSalesLeads", "Estonia", "MasterDeeds"].includes(breach.Name)) {
+  if (["Exactis", "Apollo", "YouveBeenScraped", "ElasticsearchSalesLeads", "Estonia", "MasterDeeds", "PDL"].includes(breach.Name)) {
     return "data-aggregator-breach";
   }
   if (breach.IsSensitive) {
@@ -193,5 +193,5 @@ module.exports = {
   getBreachDetail,
   getBreachCategory,
   getSortedDataClasses,
-  getBreachName,
+  getBreachTitle,
 };

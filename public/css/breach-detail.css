@@ -109,19 +109,19 @@ main.breach-detail {
   background-repeat: no-repeat;
 }
 
-.rec-pw-primary {
+.rec-pw-1 {
   background-image: url("/img/recommendation-icons/change-password.svg");
 }
 
-.rec-pw-secondary {
+.rec-pw-2 {
   background-image: url("/img/recommendation-icons/change-password.svg");
 }
 
-.rec-pw-tertiary {
+.rec-pw-3 {
   background-image: url("/img/recommendation-icons/store-safe-place.svg");
 }
 
-.rec-pw-quaternary {
+.rec-pw-4 {
   background-image: url("/img/recommendation-icons/set-2FA.svg");
 }
 
@@ -220,8 +220,8 @@ button.fade-out {
     background-position: bottom center;
   }
 
-  .rec-pw-primary,
-  .rec-pw-secondary,
+  .rec-pw-1,
+  .rec-pw-2,
   .rec-gen-4,
   .rec-hist-pw,
   .rec-ip-non-us,
