@@ -67,7 +67,7 @@ async function notify (req, res) {
     }
   }
 
-  if (breachAlert.IsSpamList || breachAlert.IsFabricated || !breachAlert.IsVerified) {
+  if (breachAlert.IsSpamList || breachAlert.IsFabricated || !breachAlert.IsVerified || breachAlert.Domain === "") {
     log.info(`${breachAlert.Name} is fabricated, a spam list, not associated with a website, or unverified. \n Breach Alert not sent.`);
     return res.status(200).json(
       {info: "Breach loaded into database. Subscribers not notified."}
