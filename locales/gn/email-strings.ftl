@@ -62,6 +62,9 @@ monitor-another-email = ¿Eporanduse ambue ñanduti veve rupive?
 # Subject line of email
 pre-fxa-subject = { -product-name } mbohekopyahu
 pre-fxa-headline = ¿Mba’e pe iñambuéva { -product-name } ndive
+pre-fxa-blurb =
+    Kóva ha’e iñambuéva eñemboheraguapy guive { -product-name }-pe, pe mba’epuru 
+    ohechaa mba’ekuaarã ñembyai ojekuaáva ne marandurãite. Rombojuajuhína Firefox mba’ete ndive.
 pre-fxa-tout-1 = Ejesarekóke ñembyai pyahúre
 pre-fxa-tout-2 = Ereko mba’erupa tuichaháicha
 pre-fxa-p-2 =
