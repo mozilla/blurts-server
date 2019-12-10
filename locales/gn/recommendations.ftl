@@ -20,3 +20,5 @@ rec-pw-4-subhead = Emboheko pe ñemoneĩ mokõi factor rehegua (2FA)
 rec-pw-4-cta = Ehecha tenda oikuave’ẽva 2FA
 # Recommendation subhead
 rec-bank-acc-subhead = Ehechameme banco pegua kuatia
+# Link title
+rec-ip-us-cta = Eñe’ẽ { -brand-fpn }
