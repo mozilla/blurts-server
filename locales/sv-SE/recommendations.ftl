@@ -112,5 +112,11 @@ rec-gen-2 =
 rec-gen-3-subhead = Var försiktig när du lämnar ut personlig information
 # Link title
 rec-gen-3-cta = Läs fler säkerhetstips
+rec-gen-3 =
+    Dela inte ut personuppgifter om du inte behöver. Om du blir ombedd att 
+    ange eller ge ut din e-postadress, postnummer eller telefonnummer kan du säga nej.
 # Recommendation subhead
 rec-gen-4-subhead = Uppdatera programvara och appar regelbundet
+rec-gen-4 =
+    Att uppdatera dina smartphone-appar, webbläsare och operativsystem gör dina 
+    enheter säkrare. Dessa uppdateringar åtgärdar buggar, programvarusårbarheter och säkerhetsproblem.
