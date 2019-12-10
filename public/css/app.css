@@ -533,15 +533,13 @@ ul li {
 }
 
 .drop-shadow {
-  transform: scale(1);
   box-shadow: 0 0 1px 1px #607d8b08, 1px 1px 10px #4341571a;
-  transition: box-shadow 0.15s ease-in-out, transform 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
 }
 
 .drop-shadow:hover {
-  transform: scale(1.01);
-  box-shadow: 1px 1px 10px #4341573a;
-  transition: box-shadow 0.15s ease-in-out, transform 0.15s ease-in-out;
+  box-shadow: 0 0 1px 1px #607d8b12, 1px 1px 12px #4341574d;
+  transition: all 0.15s ease-in-out;
 }
 
 .source-info {
