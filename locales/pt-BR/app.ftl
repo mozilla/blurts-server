@@ -11,6 +11,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
 
 
@@ -419,3 +420,11 @@ five-myths-desc = Saiba como evitar hábitos ruins com senhas, que facilitam o t
 take-further-steps-desc = Descubra como atenuar os riscos de roubo de identidade para impedir perdas financeiras.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Alterações salvas!
+# Section headline
+rec-section-headline = O que fazer a respeito desse vazamento
+rec-section-subhead = Recomendamos que você siga estas etapas para manter suas informações pessoais seguras e proteger sua identidade digital.
+# Section headline
+rec-section-headline-no-pw = O que fazer para proteger suas informações pessoais
+rec-section-subhead-no-pw = Apesar de não ter sido expostas senhas neste vazamento, ainda existem etapas que você pode seguir para proteger melhor suas informações pessoais.
+# Button
+see-additional-recs = Ver recomendações adicionais
