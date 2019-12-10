@@ -115,6 +115,7 @@ function getUTMNames() {
     ga("create", "UA-77033033-16");
     ga("set", "anonymizeIp", true);
     ga("set", "transport", "beacon");
+
     ga("send", "pageview", {
       hitCallback: function() {
         removeUtmsFromUrl();

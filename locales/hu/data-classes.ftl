@@ -26,6 +26,7 @@ chat-logs = Csevegőnaplók
 credit-card-cvv = Bankkártyák CVV adatai
 credit-cards = Bankkártyák
 credit-status-information = Hitelképességi információk
+cryptocurrency-wallet-hashes = Kriptopénztárca ujjlenyomatok
 customer-feedback = Vásárlói visszajelzések
 customer-interactions = Vásárlói interakciók
 dates-of-birth = Születési idők
@@ -64,6 +65,8 @@ ip-addresses = IP-címek
 job-titles = Beosztások
 mac-addresses = MAC-címek
 marital-statuses = Családi állapotok
+# Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
+mnemonic-phrases = Mnemonikus mondatok
 names = Nevek
 nationalities = Nemzetiségek
 net-worths = Nettó bevételek

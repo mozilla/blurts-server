@@ -80,6 +80,8 @@ manage-email-addresses = ای میل پتہ بندرست کریں
 breach-overview-title = جائزہ
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = مینیو
+# Link title
+learn-more-link = مزید سیکھیں۔
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.

@@ -26,6 +26,7 @@ chat-logs = Keskustelulokit
 credit-card-cvv = Luottokortin CVV
 credit-cards = Luottokortit
 credit-status-information = Luottokelpoisuustieto
+cryptocurrency-wallet-hashes = Kryptovaluuttalompakon tiivisteet
 customer-feedback = Asiakaspalaute
 customer-interactions = Asiakasteot
 dates-of-birth = Syntymäajat
@@ -64,6 +65,8 @@ ip-addresses = IP-osoitteet
 job-titles = Työnimikkeet
 mac-addresses = MAC-osoitteet
 marital-statuses = Siviilisäädyt
+# Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
+mnemonic-phrases = Muistitekniset ilmaisut
 names = Nimet
 nationalities = Kansalaisuudet
 net-worths = Nettovarallisuudet

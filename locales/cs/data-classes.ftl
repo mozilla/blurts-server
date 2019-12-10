@@ -26,6 +26,7 @@ chat-logs = Historie chatů
 credit-card-cvv = CVV platebních karet
 credit-cards = Platební karty
 credit-status-information = Informace o úvěruschopnosti
+cryptocurrency-wallet-hashes = Hashe kryptoměnové peněženky
 customer-feedback = Zpětná vazba zákazníků
 customer-interactions = Zákaznické interakce
 dates-of-birth = Data narození
@@ -64,6 +65,8 @@ ip-addresses = IP adresy
 job-titles = Názvy pracovních pozic
 mac-addresses = MAC adresy
 marital-statuses = Rodinné stavy
+# Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
+mnemonic-phrases = Mnemotechnické fráze
 names = Jména
 nationalities = Národnosti
 net-worths = Čisté jmění

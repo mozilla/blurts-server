@@ -289,7 +289,7 @@ fb-comp-and-others =
     }
 no-other-breaches-found = Inga andra intrång hittades från en grundläggande sökning.
 no-results-blurb = Tyvärr, intrånget finns inte i vår databas.
-all-breaches-headline = Alla intrång  i { -product-name }
+all-breaches-headline = Alla intrång i { -product-name }
 search-breaches = Sök intrång
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Visar:

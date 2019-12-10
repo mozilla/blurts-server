@@ -74,7 +74,17 @@ faq-v2-4 = Comment { -product-name } traite-t-il les sites sensibles ?
 pre-fxa-message = <a>Créez un { -brand-fxa } gratuit</a> et vous pourrez ajouter jusqu’à 15 adresses électroniques.
 # Section headline
 monitor-another-email = Vous souhaitez vérifier une autre adresse électronique ?
+# Subject line of email
+pre-fxa-subject = Du nouveau pour { -product-name }
+pre-fxa-headline = Ce qui change avec { -product-name }
+pre-fxa-blurb = Voici ce qui a changé depuis votre inscription à { -product-name }, le service qui surveille l’apparition de vos informations personnelles dans les fuites de données connues : nous le lions aux comptes Firefox.
 pre-fxa-tout-1 = Tenez-vous au courant des nouvelles fuites de données
+pre-fxa-p-1 = <a>Créer un compte</a> et surveillez les fuites de données pour jusqu’à 15 adresses électroniques. Nous vous recommandons d’ajouter toutes les adresses électroniques que vous avez utilisées pour créer des comptes en ligne.
+pre-fxa-tout-2 = Obtenez une vue d’ensemble depuis le tableau de bord
+pre-fxa-p-2 = Visualisez toutes les fuites de données en un seul endroit afin de connaître les mots de passe à changer. Le tableau de bord des fuites de données est accessible uniquement avec un compte.
 pre-fxa-tout-3 = Continuez à recevoir des alertes par courrier électronique
+pre-fxa-p-3 =
+    Vous recevrez toujours les alertes de { -product-name }. Nous vous ferons savoir si vos informations
+    apparaissent dans une nouvelle fuite de données.
 # Button at the bottom of pre-fxa email.
 create-account = Créer un compte

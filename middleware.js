@@ -52,6 +52,34 @@ function pickLanguage (req, res, next) {
 }
 
 
+async function recordVisitFromEmail (req, res, next) {
+  if (req.query.utm_source && req.query.utm_source !== "fx-monitor") {
+    next();
+    return;
+  }
+  if (req.query.utm_medium && req.query.utm_medium !== "email") {
+    next();
+    return;
+  }
+  if (!req.query.subscriber_id || !Number.isInteger(Number(req.query.subscriber_id))) {
+    next();
+    return;
+  }
+  const subscriber = await DB.getSubscriberById(req.query.subscriber_id);
+  if (!subscriber.fxa_uid || subscriber.fxa_uid === "") {
+    next();
+    return;
+  }
+  const breachDetailsRE = /breach-details\/(\w*)$/;
+  const capturedMatch = req.path.match(breachDetailsRE);
+  const utmContent = (capturedMatch) ? `&utm_content=${capturedMatch[1]}` : "";
+  const fxaMetricsFlowPath = `metrics-flow?utm_source=${req.query.utm_source}&utm_medium=${req.query.utm_medium}${utmContent}&event_type=engage&uid=${subscriber.fxa_uid}&service=${AppConstants.OAUTH_CLIENT_ID}`;
+  const fxaResult = await FXA.sendMetricsFlowPing(fxaMetricsFlowPath);
+  log.info(`fxaResult: ${fxaResult}`);
+  next();
+}
+
+
 // Helps handle errors for all async route controllers
 // See https://medium.com/@Abazhenov/using-async-await-in-express-with-node-8-b8af872c0016
 function asyncMiddleware (fn) {
@@ -122,6 +150,7 @@ async function requireSessionUser(req, res, next) {
 module.exports = {
   addRequestToResponse,
   pickLanguage,
+  recordVisitFromEmail,
   asyncMiddleware,
   logErrors,
   localizeErrorMessages,

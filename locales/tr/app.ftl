@@ -167,6 +167,7 @@ avoid-personal-info-blurb = Doğum günleri, adresler ve akrabalarınızın adla
 ## What to do after data breach tips
 
 change-pw = Parolanızı değiştirin
+change-pw-site = Bu sitedeki parolanızı değiştirin
 even-for-old = Eski hesaplarınızın bile parolalarınızı güncellemeniz önemli.
 make-new-pw-unique = Yeni parolanız eskisinden ve tüm parolalarınızdan farklı olsun
 strength-of-your-pw = Parolalarınızın kalitesi, internetteki güvenliğinizi doğrudan etkiler.
@@ -213,6 +214,7 @@ welcome-back = Yeniden hoş geldin { $userName }!
 welcome-user = Hoş geldin { $userName }!
 breach-alert-subject = { -product-name } yeni bir veri ihlalinde e-posta adresinizi buldu
 your-info-was-discovered-headline = Bilgileriniz yeni bir veri ihlalinde tespit edildi.
+your-info-was-discovered-blurb = E-posta adresiniz bir veri ihlalinde karşımıza çıkarsa size haber vermemiz için { -product-name }’e kaydolmuştunuz. İşte bu ihlal hakkında öğrendiklerimiz…
 what-to-do-after-breach = Veri ihlalinden sonra ne yapılmalı?
 ba-next-step-1 = Parolanızı güçlü ve benzersiz bir parolayla değiştirin.
 ba-next-step-blurb-1 = Güçlü bir parola büyük ve küçük harflerin, özel karakterlerin ve rakamların bileşiminden oluşur. Adresiniz, doğum tarihiz ve akrabalarınızın adları gibi kişisel bilgileri içermez.

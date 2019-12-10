@@ -160,6 +160,7 @@ avoid-personal-info-blurb = Tifin n yizmaz n tlalit, tansiwin, akked yismawen n 
 ## What to do after data breach tips
 
 change-pw = Beddel awal-ik uffir
+change-pw-site = Beddel awal uffir i usmel-a
 even-for-old = Ula i yimiḍanen iqbuṛen, yelha ad tbeddleḍ awal-ik uffir.
 make-new-pw-unique = Fren awal uffir asuf yemgaraden
 strength-of-your-pw = Tazmert n wawalen-ik uffiren ad tḥaz srid taɣellist-ik deg Internet.
@@ -382,3 +383,5 @@ create-strong-passwords-desc = Rnu awalen uffiren iǧehden, iɣelsanen, iweɛren
 steps-to-protect-desc = Gzu yir timsal yettwassnen daɣen issin ayen tettnadiḍ.
 five-myths-desc = Issin amek ara tettut yir tanumi n wawalen uffiren yessifsusen axeddim i yimakaren imsenselkamen.
 take-further-steps-desc = Wali amek ara tesneɣseḍ takerḍa n timagit akken ad theggiḍ ayen ilaqen i ṛwaḥ n tedrimt.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Abeddel yettwasekles

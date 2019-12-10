@@ -161,6 +161,7 @@ avoid-personal-info-blurb = Është e lehtë të gjesh datëlindje, adresa dhe e
 ## What to do after data breach tips
 
 change-pw = Ndryshoni fjalëkalimin tuaj
+change-pw-site = Ndryshoni fjalëkalim për këtë sajt
 even-for-old = Madje edhe për llogari të dikurshme, është e rëndësishme të përditësoni fjalëkalimin tuaj.
 make-new-pw-unique = Bëjeni fjalëkalimin e ri të ndryshëm dhe unik
 strength-of-your-pw = Fortësia e fjalëkalimeve tuaj ka ndikim të drejtpërdrejt mbi sigurinë tuaj në internet.

@@ -10,7 +10,7 @@ audio-recordings = Registrationes audio
 auth-tokens = Tokens de authentication
 avatars = Avatares
 bank-account-numbers = Numeros de conto bancari
-beauty-ratings = Valutationes de beltate
+beauty-ratings = Evalutationes de beltate
 biometric-data = Datos biometric
 # This string is the shortened version of "Biographies", and 
 # refers to biographical data about a user.
@@ -26,6 +26,7 @@ chat-logs = Registros de chat
 credit-card-cvv = CVV de carta de credito
 credit-cards = Cartas de credito
 credit-status-information = Informationes sur e stato del credito
+cryptocurrency-wallet-hashes = Hashes de portafolio de cryptomonetas
 customer-feedback = Commentarios del clientes
 customer-interactions = interactiones del clientes
 dates-of-birth = Datas de nascentia
@@ -64,6 +65,8 @@ ip-addresses = Adresses IP
 job-titles = professiones
 mac-addresses = adresses MAC
 marital-statuses = statos conjugal
+# Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
+mnemonic-phrases = Phrases mnemonic
 names = Nomines
 nationalities = Nationalitates
 net-worths = Valores nette

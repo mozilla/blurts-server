@@ -4,6 +4,7 @@
 // eslint-disable-next-line node/no-extraneous-require
 const uuidv4 = require("uuid/v4");
 const Knex = require("knex");
+const { attachPaginate } = require("knex-paginate");
 
 const { FluentError } = require("../locale-utils");
 const AppConstants = require("../app-constants");
@@ -16,6 +17,8 @@ const mozlog = require("../log");
 const knexConfig = require("./knexfile");
 
 let knex = Knex(knexConfig);
+attachPaginate();
+
 const log = mozlog("DB");
 
 
@@ -79,16 +82,11 @@ const DB = {
     return subscriberAndEmails;
   },
 
-  async getPreFxaSubscribers() {
-    // We don't want to get subscribers records where the email address has
-    // since been added "under" an FxA subscription
-    const allEmailAddressesSubquery = knex("email_addresses").select("email");
-    const preFxaSubscribers = await knex("subscribers").whereRaw(
-      "(fxa_uid = '') IS NOT FALSE"
-    ).andWhere(
-      "primary_email", "not in", allEmailAddressesSubquery
-    );
-    return preFxaSubscribers;
+  async getPreFxaSubscribersPage(pagination) {
+    return await knex("subscribers")
+      .whereRaw("(fxa_uid = '') IS NOT FALSE")
+      .paginate(pagination);
+
   },
 
   async getSubscriberByEmail(email) {

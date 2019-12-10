@@ -26,6 +26,7 @@ chat-logs = Chatlochboeken
 credit-card-cvv = Creditcard-CVV
 credit-cards = Creditcards
 credit-status-information = Ynformaasje oer kreditsteat
+cryptocurrency-wallet-hashes = Cryptocurrency-portemonnee-hashes
 customer-feedback = Klantekommentaar
 customer-interactions = Ynteraksje mei klanten
 dates-of-birth = Bertedatum
@@ -64,6 +65,8 @@ ip-addresses = IP-adressen
 job-titles = Funksjetitels
 mac-addresses = MAC-adressen
 marital-statuses = Troude steaten
+# Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
+mnemonic-phrases = Mnemonyske sinnen
 names = Nammen
 nationalities = Nasjonaliteiten
 net-worths = Fermogenswearden

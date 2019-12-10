@@ -59,7 +59,7 @@ unsub-headline = Remover le subscription de { -product-name-nowrap }
 unsub-blurb = Isto removera tu email ab le lista de { -product-name-nowrap } e tu non recipera plus alertas quando nove violationes es annunciate.
 unsub-button = Remover le subscription
 # Breach data provided by Have I Been Pwned.
-hibp-attribution = Datos re le violation fornite per { $hibp-link }
+hibp-attribution = Datos sur le violation fornite per { $hibp-link }
 share-twitter = Le major parte del gente ha circa 100 contos in linea. Ha un del tues essite exponite in un violation de datos? Verifica lo.
 share-facebook-headline = Discoperi si tu ha essite parte de un violation de datos
 share-facebook-blurb = Ha tu contos online essite exponite a un violation de datos?
@@ -83,7 +83,7 @@ fxa-what-to-do-blurb-4 = Le gestores de contrasignos, como 1Password, LastPass, 
 # Alerts is a noun
 sign-up-for-alerts = Inscribe te al avisos
 # Link title
-frequently-asked-questions = Demandas frequente
+frequently-asked-questions = Folio a questiones
 about-firefox-monitor = A proposito de { -product-name }
 # Link title
 preferences = Preferentias
@@ -124,7 +124,7 @@ spam-list-breach-plural = Violationes de lista de spam
 what-data = Que datos ha essite compromittite:
 sensitive-sites = Como { -product-name } tracta le sitos sensibile?
 sensitive-sites-copy = { -product-name } revela solmente le contos associate con iste typos de violationes post que un adresse de e-mail ha essite verificate. Isto significa tu es le sol persona qui pote vider si tu informationes es includite in iste violation (a minus que alcuno altere ha accesso a tu conto de e-mail).
-delayed-reporting-headline = Perque il ha requirite assi longe tempore pro signalar iste violation?
+delayed-reporting-headline = Proque ha prendite tante tempore signalar iste violation?
 delayed-reporting-copy = Il pote aliquando prender menses o annos proque le credentiales exponite in un violation de datos appare sur le web obscur. Violationes es addite a nostre base de datos a pena illos ha essite discoperite e verificate.
 about-fxm-headline = A proposito de { -product-name }
 about-fxm-blurb = { -product-name } te adverti si tu contos in linea ha essite implicate in un violation de datos. Discoperi si tu es victima de un tal violation, recipe avisos sur nove violationes, e prende mesuras pro proteger tu contos in linea. { -product-name } es fornite per { -brand-Mozilla }.
@@ -205,7 +205,7 @@ ba-next-step-blurb-2 = Cybercriminales poterea trovar tu contrasigno sur le web 
 ba-next-step-3 = Recipe adjuta pro le creation de melior contrasignos e mantener los secur.
 ba-next-step-blurb-3 = Usa un gestor de contrasignos pro crear contrasignos forte e unic. Le gestores de contrasignos immagazina con securitate tote tu authenticationes, assi que tu pote acceder a illos sur tote tu apparatos.
 faq1 = Io non recognosce iste compania o sito web. Proque me concerne iste violation?
-faq2 = Perque il ha requirite assi longe tempore pro notificar me de iste violation?
+faq2 = Proque ha il prendite tante tempore notificar me de iste violation?
 faq3 = Como sape io si isto es un email legitime de { -product-name }?
 new-breaches-found =
     { $breachCount ->
@@ -283,9 +283,9 @@ email-verification-required = Verification del email obligatori.
 fxa-primary-email = Email de { -brand-fxa }:  primari
 what-is-a-website-breach = Qual es un violation de sito web?
 website-breach-blurb = Un violation de datos de sito web eveni quando le cybercriminales roba, copia o expone informationes personal de contos online. Illo sole esser un resultato de hackers que trova un puncto debile in le securitate del sito web. Violationes pote alsi evenir quando informationes del conto es revelate per accidente.
-security-tips-headline = Consilios pro le securitate pro proteger te mesme ab hackers
-steps-to-protect = Mesuras a prender pro proteger tu identitate online
-take-further-steps = Prende altere mesuras pro proteger tu identitate
+security-tips-headline = Consilios de securitate pro proteger te contra hackers
+steps-to-protect = Mesuras a prender pro proteger tu identitate in linea
+take-further-steps = Prende passos ulterior pro proteger tu identitate
 alert-about-new-breaches = Avisar me re nove violationes
 see-if-youve-been-part = Vide si tu ha essite parte de un violation de datos online.
 get-ongoing-breach-monitoring = Survelia continuemente le violationes de datos pro plure adresses de e-mail.
@@ -359,9 +359,9 @@ breach-alert-notifications = Notificationes de alerta de violation
 # and is followed by that date. 
 breach-added-label = Violation addite:
 how-hackers-work-desc = Protege tu contrasignos ab cybercriminales, pois que es illos que illes desira plus.
-what-to-do-after-breach-desc = Bloca tu contos pro mantener tu informationes foras de manos errate.
+what-to-do-after-breach-desc = Bloca tu contos pro evitar que tu informationes cade in manos improprie.
 create-strong-passwords-desc = Rende tu contrasignos forte, secur e difficile a divinar.
-steps-to-protect-desc = Comprende le plus commun menacias e sape que cercar.
+steps-to-protect-desc = Comprende le menacias le plus commun e sape a que prestar attention.
 five-myths-desc = Apprende a evitar habitos de mal contrasigno que rende facile le labor de un hacker.
 take-further-steps-desc = Discoperi como mitigar le riscos de furto de identitate pro prevenir perdita financiari.
 # This message appears after a user has successfully updated their communication settings.

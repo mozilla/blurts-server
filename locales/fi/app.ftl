@@ -202,6 +202,7 @@ avoid-personal-info-blurb = Verkosta on helppo löytää syntymäpäiviä, osoit
 ## What to do after data breach tips
 
 change-pw = Vaihda salasanasi
+change-pw-site = Vaihda salasana tälle sivustolle
 even-for-old = Myös vanhojen käyttäjätunnusten salasanoja on tärkeä päivittää.
 make-new-pw-unique = Tee uudesta salasanasta erilainen ja yksilöllinen
 strength-of-your-pw = Salasanan vahvuus vaikuttaa suoraan turvallisuutesi verkossa.

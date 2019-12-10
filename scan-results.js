@@ -86,6 +86,7 @@ const scanResult = async(req, selfScan=false) => {
     }
   }
 
+
   return {
     title,
     foundBreaches,

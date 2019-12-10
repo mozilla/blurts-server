@@ -26,6 +26,7 @@ chat-logs = Cofnodion sgwrsio
 credit-card-cvv = CVV cerdyn credyd
 credit-cards = Cardiau credyd
 credit-status-information = Manylion statws credyd
+cryptocurrency-wallet-hashes = Hashiad waled cryptoarian
 customer-feedback = Adborth cwsmeriaid
 customer-interactions = Rhyngweithio cwsmeriaid
 dates-of-birth = Dyddiadau geni
@@ -64,6 +65,8 @@ ip-addresses = Cyfeiriad IP
 job-titles = Teitlau swyddi
 mac-addresses = Cyfeiriadau MAC
 marital-statuses = Statws priodasol
+# Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
+mnemonic-phrases = Ymadroddion mnemonig
 names = Enwau
 nationalities = Cenedligrwydd
 net-worths = Gwerth net

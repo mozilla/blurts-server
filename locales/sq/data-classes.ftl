@@ -25,6 +25,7 @@ chat-logs = Regjistra bisedash
 credit-card-cvv = CVV karte krediti
 credit-cards = Karta krediti
 credit-status-information = Informacion gjendjeje krediti
+cryptocurrency-wallet-hashes = Hashe portofolash kriptomonedhash
 customer-feedback = Përshtypje klienti
 customer-interactions = Ndërveprime klienti
 dates-of-birth = Data lindjesh
@@ -62,6 +63,8 @@ ip-addresses = Adresa IP
 job-titles = Emërtesa vendi pune
 mac-addresses = Adresa MAC
 marital-statuses = Gjendje martesore
+# Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
+mnemonic-phrases = Fraza mnemonike
 names = Emra
 nationalities = Shtetësi
 net-worths = Pasuri neto

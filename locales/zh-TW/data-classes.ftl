@@ -26,6 +26,7 @@ chat-logs = 聊天紀錄
 credit-card-cvv = 信用卡驗證碼
 credit-cards = 信用卡
 credit-status-information = 信用狀態資訊
+cryptocurrency-wallet-hashes = 加密貨幣錢包雜湊碼
 customer-feedback = 顧客意見回饋
 customer-interactions = 顧客互動
 dates-of-birth = 生日
@@ -64,6 +65,8 @@ ip-addresses = IP 地址
 job-titles = 工作頭銜
 mac-addresses = MAC 地址
 marital-statuses = 婚姻狀態
+# Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
+mnemonic-phrases = 幫助記憶的詞彙
 names = 姓名
 nationalities = 國籍
 net-worths = 淨值

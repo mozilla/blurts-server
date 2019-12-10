@@ -11,6 +11,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 ##
 
 terms-and-privacy = Terms & Privacy
@@ -550,3 +551,14 @@ take-further-steps-desc = Find out how to mitigate the risks of identity theft t
 
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Changes saved!
+
+# Section headline
+rec-section-headline = What to do for this breach
+rec-section-subhead = We recommend you take these steps to keep your personal info safe and protect your digital identity.
+
+# Section headline
+rec-section-headline-no-pw = What to do to protect your personal info
+rec-section-subhead-no-pw = Though passwords weren’t exposed in this breach, there are still steps you can take to better protect your personal info.
+
+# Button
+see-additional-recs = See Additional Recommendations
