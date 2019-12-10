@@ -20,7 +20,7 @@
 .breach-stat-number {
   font-size: 56px;
   line-height: 1.14;
-  min-width: 2rem;
+  min-width: 60px;
 }
 
 .breach-stat-row {
@@ -73,20 +73,5 @@
   .breach-stat-number {
     width: auto;
     font-size: 30px;
-    min-width: 6rem;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .welcome-back {
-    font-size: 1.25rem;
-  }
-
-  .dash-stats {
-    font-size: 0.9rem;
-  }
-
-  .breach-stat-number {
-    min-width: 60px;
   }
 }
