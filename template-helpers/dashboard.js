@@ -14,7 +14,7 @@ function getBreachesForEachEmail(args) {
         a.breaches.length === 0 && b.breaches.length > 0 ||
         b.breaches.length === 0 && a.breaches.length > 0
       ) {
-      return -1;
+      return b.breaches.length - a.breaches.length;
     }
     return 0;
   });
