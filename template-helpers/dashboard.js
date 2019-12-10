@@ -4,12 +4,12 @@ const { LocaleUtils } = require("./../locale-utils");
 const { makeBreachCards } = require("./breaches");
 
 function getBreachesForEachEmail(args) {
-  let verifiedEmails = args.data.root.verifiedEmails;
+  const verifiedEmails = args.data.root.verifiedEmails;
   const locales = args.data.root.req.supportedLocales;
   let breachesFound = false;
 
   // move emails with 0 breaches to the bottom of the page
-  verifiedEmails = verifiedEmails.sort((a, b) => {
+  verifiedEmails.sort((a, b) => {
     if (
         a.breaches.length === 0 && b.breaches.length > 0 ||
         b.breaches.length === 0 && a.breaches.length > 0
