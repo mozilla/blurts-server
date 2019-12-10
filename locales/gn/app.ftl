@@ -368,3 +368,9 @@ five-myths-desc = Eikuaa mb’aéichapa emboykéta ñe’ẽñemi jepuruvai nomb
 take-further-steps-desc = Ehecha mba’éichapa emboykéta teratee ñemonda ani hag̃ua ñe apañuãi viru rekópe.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = ¡Moambuepy ñongatupyre!
+# Section headline
+rec-section-headline = ¿Mba’e ejapóta ko ñembyaípe?
+# Section headline
+rec-section-headline-no-pw = Mba’e ejapóta emo’ã hag̃ua ne maranduete
+# Button
+see-additional-recs = Ehecha ñe’ẽporã jo’apyre
