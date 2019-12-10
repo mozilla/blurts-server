@@ -11,6 +11,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
 
 
@@ -431,3 +432,11 @@ five-myths-desc = Lär dig hur du undviker dåliga lösenordsvanor som gör en h
 take-further-steps-desc = Ta reda på hur man kan mildra riskerna för identitetsstöld för att förhindra ekonomisk förlust.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Ändringar sparade!
+# Section headline
+rec-section-headline = Vad du ska göra för detta intrång
+rec-section-subhead = Vi rekommenderar att du vidtar dessa steg för att skydda din personliga information och skydda din digitala identitet.
+# Section headline
+rec-section-headline-no-pw = Vad du ska göra för att skydda din personliga information
+rec-section-subhead-no-pw = Även om lösenord inte avslöjades i detta intrång, finns det fortfarande åtgärder du kan vidta för att bättre skydda din personliga information.
+# Button
+see-additional-recs = Se ytterligare rekommendationer
