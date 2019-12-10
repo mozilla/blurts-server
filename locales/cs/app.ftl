@@ -65,6 +65,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
 
 
@@ -444,3 +445,11 @@ five-myths-desc = Zjistěte, jak se vyvarovat špatných zvyků, které hackerů
 take-further-steps-desc = Zjistěte, jak snížit rizika krádeže identity a předejít tak finanční ztrátě.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Změny uloženy
+# Section headline
+rec-section-headline = Co dělat s tímto únikem dat
+rec-section-subhead = Pro ochranu vašich osobních údajů a vaší digitální identity doporučujeme následující kroky.
+# Section headline
+rec-section-headline-no-pw = Co dělat pro ochranu vašich osobních údajů
+rec-section-subhead-no-pw = Přestože součástí úniku nebyla hesla, doporučujeme učinit následující kroky pro lepší ochranu vašich osobních údajů.
+# Button
+see-additional-recs = Podívejte se na další doporučení
