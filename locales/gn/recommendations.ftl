@@ -20,5 +20,19 @@ rec-pw-4-subhead = Emboheko pe ñemoneĩ mokõi factor rehegua (2FA)
 rec-pw-4-cta = Ehecha tenda oikuave’ẽva 2FA
 # Recommendation subhead
 rec-bank-acc-subhead = Ehechameme banco pegua kuatia
+# Recommendation subhead
+rec-cc-subhead = Ehechameme kuatia’atã ñemuha kuatia
+# Recommendation subhead
+rec-ip-subhead = Eipuru mba’epuru omokañýva nde IP kundaharape
 # Link title
 rec-ip-us-cta = Eñe’ẽ { -brand-fpn }
+rec-hist-pw-subhead = Aníke eipurujo’a ñe’ẽñemi
+# Link title
+rec-hist-pw-cta-fx = Ehecha tembiapo ñepyrũ { -brand-name }
+rec-hist-pw =
+    Eipuru ñe’ẽñemi ha’ete ha hekorosãva peteĩteĩva mba’etépe g̃uarã. Pe ñe’ẽñemi oreko ¶
+    ijehe mba’ekuaarã ñembyai, tekotevẽ embohekopyahu tembiapo ñepyrũ año.
+# Recommendation subhead
+rec-sec-qa-subhead = Emoheñói mbohovái porandu hekorosãva rehegua
+# Recommendation subhead
+rec-phone-num-subhead = Aníke emoherakuã ne pumbyry papapy
