@@ -376,5 +376,8 @@ changes-saved = Modifiche salvate.
 # Section headline
 rec-section-headline = Che cosa fare per questa violazione
 rec-section-subhead = Ti consigliamo di adottare queste misure per mantenere le tue informazioni personali al sicuro e proteggere la tua identità digitale.
+# Section headline
+rec-section-headline-no-pw = Come proteggere le tue informazioni personali
+rec-section-subhead-no-pw = Anche se nessuna password è stata esposta in questa violazione, puoi sempre adottare nuove misure per proteggere meglio le tue informazioni personali.
 # Button
 see-additional-recs = Vedi altri suggerimenti
