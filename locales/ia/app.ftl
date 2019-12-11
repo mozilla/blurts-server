@@ -370,3 +370,8 @@ changes-saved = Cambios salvate!
 # Section headline
 rec-section-headline = Que facer pro iste violation
 rec-section-subhead = Nos consilia que tu face iste passos pro mantener tu informationes personal secur e proteger tu identitate digital.
+# Section headline
+rec-section-headline-no-pw = Que facer pro proteger tu informationes personal
+rec-section-subhead-no-pw = Ben que in iste violation non ha essite exponite contrasignos, il ha ancora passos que tu pote facer pro proteger melio tu informationes personal.
+# Button
+see-additional-recs = Vide altere recommendationes
