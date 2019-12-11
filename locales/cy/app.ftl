@@ -107,12 +107,12 @@ home = Cartref
 # Link title
 breaches = Tor-data
 # Link title
-security-tips = Cynghorion Diogelwch
+security-tips = Awgrymiadau Diogelwch
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Agor llywio { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
-latest-breach = YCHWANEGWYD Y TOR-DATA DIWEDDARAF
+latest-breach = DYMA'R TOR-DATA DIWEDDARAF
 # Link title
 more-about-this-breach = Rhagor am y tor-data hwn
 take-control = Rheolwch eich data personol eich hun.
@@ -198,7 +198,7 @@ appears-in-x-breaches =
        *[other] Yn ymddangos mewn { $breachCount } tor-data.
     }
 check-for-breaches = Gwirio am Dor-data
-find-out-what-hackers-know = Canfod beth mae hacwyr eisoes yn ei wybod amdanoch chi. Dysgwch sut i aros un cam o'u blaen.
+find-out-what-hackers-know = Gweld beth mae hacwyr eisoes yn ei wybod amdanoch chi. Dysgwch sut i aros un cam o'u blaen.
 search-for-your-email = Chwiliwch am eich cyfeiriad e-bost mewn tor-data cyhoeddus sy'n mynd yn ôl i 2007.
 back-to-top = Nôl i'r Brig
 comm-opt-0 = E-bostiwch fi os yw un o'm cyfeiriadau e-bost isod yn ymddangos mewn achos o dor-data.
@@ -352,7 +352,7 @@ security-tips-headline = Awgrymiadau diogelwch i ddiogelu eich hun rhag hacwyr
 steps-to-protect = Camau i'w cymryd i ddiogelu eich hunaniaeth ar-lein
 take-further-steps = Cymrwch gamau pellach i ddiogelu eich hunaniaeth
 alert-about-new-breaches = Rhowch wybod i mi am dor-data newydd
-see-if-youve-been-part = Gweld os ydych wedi bod yn rhan o dor-data ar-lein.
+see-if-youve-been-part = Ydych chi wedi bod yn rhan o dor-data ar-lein?
 get-ongoing-breach-monitoring = Derbyn monitro tor-data parhaus ar gyfeiriadau e-bost lluosog.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Canfod
