@@ -36,3 +36,21 @@ rec-hist-pw =
 rec-sec-qa-subhead = Emoheñói mbohovái porandu hekorosãva rehegua
 # Recommendation subhead
 rec-phone-num-subhead = Aníke emoherakuã ne pumbyry papapy
+# Recommendation subhead
+rec-dob-subhead = Aníke eipuru nde jehegua PINs-pe
+# Recommendation subhead
+rec-pins-subhead = Emohekorosãvéke ne PINs
+rec-pins =
+    Peteĩ PIN hekorosãva ndorekói marandu ndejehegua, ne arareñói ¶
+    térã kundaharape. Orekova’erã papapy nde añoite eikuaáva ha ndaikatuiva ojekuaarei.
+# Recommendation subhead
+rec-address-subhead = Aníke eipuru kundaharape ñe’ẽñemíme
+# Recommendation subhead
+rec-gen-1-subhead = Eipuru ñe’ẽñemi ha’eño ha hekorosãva peteĩteĩva mba’etépe g̃uarã
+# Link title
+rec-gen-1-cta = Mba’éicha emoheñóita ñe’ẽñemi hekorosãva
+rec-gen-1 =
+    Ñe’ẽñemi eipurujeýrõ ombyaikuaa opaite ne mba’ete. Kóva he’ise pe ¶
+    ñe’ẽñemi ojehechakuaa, umi mba’evaiapoha oreko mba’eñemi heta mba’ete rehegua.
+# Recommendation subhead
+rec-gen-2-subhead = Embyaty ñe’ẽñemi tenda hekorosãvape
