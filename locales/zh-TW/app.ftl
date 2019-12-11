@@ -11,6 +11,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
 
 
@@ -357,3 +358,5 @@ five-myths-desc = 了解如何避免設定密碼的壞習慣，讓密碼更難�
 take-further-steps-desc = 了解如何降低身分遭竊的風險，防止財物損失。
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = 變更已儲存！
+# Button
+see-additional-recs = 看其他建議
