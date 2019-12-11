@@ -11,6 +11,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
 
 
@@ -361,3 +362,11 @@ five-myths-desc = 了解如何避免设置密码的坏习惯，让密码更难�
 take-further-steps-desc = 了解如何降低身份遭窃的风险，防止经济损失。
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = 更改已保存！
+# Section headline
+rec-section-headline = 泄露了该怎么办
+rec-section-subhead = 我们建议您采取以下措施来确保您的个人信息安全及保护您的数字身份。
+# Section headline
+rec-section-headline-no-pw = 如何保护您的个人信息
+rec-section-subhead-no-pw = 尽管此外泄事件并未泄露密码，但您仍可采取一些措施来更好地保护您的个人信息。
+# Button
+see-additional-recs = 看看其他建议
