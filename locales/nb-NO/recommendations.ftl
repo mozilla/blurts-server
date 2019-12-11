@@ -28,5 +28,25 @@ rec-bank-acc =
     kostnader. Gi beskjed til banken din hvis du ser noe du ikke kjenner igjen
 # Recommendation subhead
 rec-cc-subhead = Overvåk kredittkortkontoutskriftene dine
+# Recommendation subhead
+rec-ip-subhead = Bruk en tjeneste som maskerer din IP-adresse
 # Link title
 rec-ip-us-cta = Prøv { -brand-fpn }
+rec-ip-us =
+    Din Internet Protocol-adresse (IP-adresse) kan si noe om hvor du befinner deg 
+    og din internettleverandør. En tjeneste som { -brand-fpn } 
+    maskerer IP-adressen din for å skjule plasseringen din.
+rec-hist-pw-subhead = Unngå å bruke passord på nytt
+# Link title
+rec-hist-pw-cta-fx = Se innlogginger i { -brand-name }
+# Recommendation subhead
+rec-gen-2-subhead = Lagre passord på et trygt sted
+# Link title
+rec-gen-2-cta = Myter om passordbehandlere
+rec-gen-2 =
+    Legg innloggingsdetaljene dine på et sikkert sted som bare du har tilgang til, for eksempel en 
+    passordbehandler. Dette gjør det også enkelt å holde oversikt over alle de forskjellige passordene dine.
+# Recommendation subhead
+rec-gen-3-subhead = Vær forsiktig med å gi ut personlig informasjon
+# Link title
+rec-gen-3-cta = Les flere sikkerhetstips
