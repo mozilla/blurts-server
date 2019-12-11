@@ -15,6 +15,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
 
 
@@ -372,3 +373,8 @@ five-myths-desc = Evita le cattive abitudini che servono le tue password agli ha
 take-further-steps-desc = Scopri come mitigare i rischi di furto d’identità per scongiurare perdite finanziarie.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Modifiche salvate.
+# Section headline
+rec-section-headline = Che cosa fare per questa violazione
+rec-section-subhead = Ti consigliamo di adottare queste misure per mantenere le tue informazioni personali al sicuro e proteggere la tua identità digitale.
+# Button
+see-additional-recs = Vedi altri suggerimenti
