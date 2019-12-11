@@ -11,6 +11,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Rhwydwaith Preifat Firefox
 
 
 
@@ -434,3 +435,11 @@ five-myths-desc = Dysgwch sut i osgoi arferion cyfrinair gwael sy'n gwneud gwait
 take-further-steps-desc = Darganfyddwch sut i leihau risgiau dwyn hunaniaeth er mwyn rhwystro colledion ariannol.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Newidiadau wedi'u cadw!
+# Section headline
+rec-section-headline = Beth i'w wneud am y tor-data hwn
+rec-section-subhead = Rydym yn argymell eich bod yn cymryd y camau hyn i gadw'ch manylion personol yn ddiogel ac amddiffyn eich hunaniaeth ddigidol.
+# Section headline
+rec-section-headline-no-pw = Beth i'w wneud i ddiogelu eich manylion personol
+rec-section-subhead-no-pw = Er nad oedd cyfrineiriau wedi'u hamlygu yn y tor-data hwn, mae yna gamau y gallwch eu cymryd o hyd i ddiogelu eich manylion personol yn well.
+# Button
+see-additional-recs = Gweler yr Argymhellion Ychwanegol
