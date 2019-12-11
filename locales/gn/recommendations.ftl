@@ -58,5 +58,7 @@ rec-gen-2-subhead = Embyaty ñe’ẽñemi tenda hekorosãvape
 rec-gen-2-cta = Mombe’ugua’u ñe’ẽñemi ñangarekohára rehegua
 # Recommendation subhead
 rec-gen-3-subhead = Ehecháke mávapepa ikatu embohasa marandu ndejehegua
+# Link title
+rec-gen-3-cta = Emoñe’ẽve tekorosã rehegua
 # Recommendation subhead
 rec-gen-4-subhead = Embohekopyahu meme software ha tembipuru’i

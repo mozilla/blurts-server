@@ -370,7 +370,9 @@ take-further-steps-desc = Ehecha mba’éichapa emboykéta teratee ñemonda ani 
 changes-saved = ¡Moambuepy ñongatupyre!
 # Section headline
 rec-section-headline = ¿Mba’e ejapóta ko ñembyaípe?
+rec-section-subhead = Ro’e ndéve eguata hag̃ua ko tapére ha emohekorosã ne maranduete ha péicha emo’ã nde reratee ñandutípe.
 # Section headline
 rec-section-headline-no-pw = Mba’e ejapóta emo’ã hag̃ua ne maranduete
+rec-section-subhead-no-pw = Umi ñe’ẽñemi ndojehechakuaáiramo jeje ko ñembyaípe, oĩ gueteri heta mba’e ikatúva rejapo emo’ãve hag̃ua ne maranduete.
 # Button
 see-additional-recs = Ehecha ñe’ẽporã jo’apyre
