@@ -103,3 +103,18 @@ rec-gen-1 =
 rec-gen-2-subhead = Cadwch eich cyfrineiriau mewn man diogel
 # Link title
 rec-gen-2-cta = Mythau am reolwyr cyfrinair
+rec-gen-2 =
+    Cadwch eich manylion mewngofnodi mewn man diogel, lle dim ond chi
+    sy'n gallu cael mynediad atyn nhw, fel mewn rheolwr cyfrinair. Mae hyn hefyd yn ei gwneud hi'n hawdd cadw golwg ar eich holl gyfrineiriau gwahanol.
+# Recommendation subhead
+rec-gen-3-subhead = Byddwch yn ofalus am rannu manylion personol
+# Link title
+rec-gen-3-cta = Darllenwch ragor o awgrymiadau diogelwch
+rec-gen-3 =
+    Peidiwch â rhannu data personol os nad oes raid i chi wneud hynny. 
+    Os oes gofyn i chi roi eich cyfeiriad e-bost, cod ZIP, neu rif ffôn, gallwch ddweud na.
+# Recommendation subhead
+rec-gen-4-subhead = Diweddarwch feddalwedd ac apiau'n rheolaidd
+rec-gen-4 =
+    Mae diweddaru eich apiau ffôn clyfar, porwyr, a systemau gweithredu yn gwneud eich
+    dyfeisiau'n fwy diogel. Mae'r diweddariadau hyn yn cywiro gwallau, gwendidau meddalwedd, a phroblemau diogelwch.
