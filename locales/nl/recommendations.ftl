@@ -5,3 +5,5 @@ rec-hist-pw =
 rec-sec-qa-subhead = Maak unieke antwoorden voor beveiligingsvragen
 # Recommendation subhead
 rec-phone-num-subhead = Vermijd het verstrekken van uw telefoonnummer
+# Recommendation subhead
+rec-gen-4-subhead = Werk software en apps regelmatig bij
