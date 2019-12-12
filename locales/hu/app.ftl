@@ -11,6 +11,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
 
 
@@ -431,3 +432,5 @@ five-myths-desc = Ismerje meg, hogyan kerülheti el azokat a rossz szokásokat a
 take-further-steps-desc = Tudja meg hogyan csökkentheti a személyazonosság-lopással kapcsolatos kockázatokat, hogy megakadályozza az anyagi veszteségeket.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Módosítások mentve.
+# Section headline
+rec-section-headline = Mi a teendő ezzel az adatsértéssel?
