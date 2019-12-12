@@ -1,26 +1,31 @@
-          {{> dashboards/new-breach-message variableClass="show-mobile"}}
+          {{> dashboards/new-breach-message}}
           <div class="
             email-card
             toggle-parent
             inactive
-            card
-            mw-750
             {{#ifCompare breaches.length "===" 0}} zero-breaches {{/ifCompare}}
-            {{#unless primary}}{{#if verified}} verified {{/if}}{{/unless}} 
+            {{#if primary}}
+              primary-email-card
+            {{else}}
+              {{#if verified}}
+                verified
+              {{/if}}
+            {{/if}}
             {{#if prefs}} 
               preferences
             {{else}}
+              breaches-dash
             {{/if}}
-              {{#if hasNewBreaches}}
-                new-breaches
-              {{/if}}
+            {{#if hasNewBreaches}}
+              new-breaches
+            {{/if}}
             ">
             <div class="e-toggle-info-wrapper">
               <div class="e-info">
-                <span class="e-address">{{ email }}</span>
+                <span class="e-address overflow-break">{{ email }}</span>
                 {{#if verified}}
                   <!-- show breach count for verified emails -->
-                  <span class="e-num-breaches">{{{ fluentNestedBold "appears-in-x-breaches" breachCount=breaches.length }}}</span>
+                  <span class="e-num-breaches">{{{ getString "appears-in-x-breaches" breachCount=breaches.length }}}</span>
                 {{else}}
                   <!-- show resend-email link for unverified emails -->
                   <div class="button-resend-wrapper flx">
@@ -30,23 +35,22 @@
                 {{/if}}
               </div>
 
-              {{#if prefs}} <!--user preferences dashboard / show trashcan to delete email-->
+              {{#if prefs}} <!--preferences dashboard / show trashcan to delete email-->
                 {{#if primary}}
                   <a href="https://support.mozilla.org/kb/change-primary-email-address-firefox-accounts" target="_blank" rel="noopener noreferrer" class="change-primary-email blue-link hide-mobile" {{> analytics/internal-link eventLabel="Change Primary Email Address" }}>{{ getString "link-change-primary" }}</a>
                 {{else}}
                   {{> forms/remove-email-form }}
                 {{/if}}
-              {{else}} <!-- user breaches dashboard / show toggle -->
+              {{else}} <!-- breaches dashboard / show toggle -->
                 {{#ifCompare breaches.length ">" 0}}
                   <button class="toggle svg-wrap show-email-breaches" aria-label="{{ getString "show-breaches-for-this-email" }}">
                     {{> svg/toggle-down }}
                   </button>
-                  {{> dashboards/new-breach-message variableClass="hide-mobile"}}
                 {{/ifCompare}}
               {{/if}}
             </div>
 
-            {{#unless prefs}} <!-- user breaches dashboard, show breaches for each email on toggle click-->
+            {{#unless prefs}} <!-- breaches dashboard, show breaches for each email on toggle click-->
               <div class="e-breach-list">
                 {{#if this.foundBreaches}}
                   {{> breach-groups foundBreaches variableClasses="two-up ec" }}

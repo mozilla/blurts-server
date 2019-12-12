@@ -1,48 +1,34 @@
-<div class="ab-br sr">
-  <main id="dashboard" class="dashboard clear-header" data-page-label="User Dashboard">
-    <div class="row jst-cntr">
-      <div class="mw-750 txt-cntr padding-top-zero">
-        <span class="welcome-back">{{{ welcomeMessage }}}</span>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row jst-cntr flx-col">
-        <div class="mw-750 no-vertical-padding">
-          <h2 class="pref-headline breach-summary">{{ getString "breach-summary" }}</h2>
-        </div>
-        <div class="mw-750 card dash-stats no-vertical-padding">
-          {{> breach-stats addClasses="user-stats"}}
-        </div>
-      </div>
-    </div>
-  </main>
-</div>
-<section class="bg-light container">
-  <div class="row jst-cntr flx-col dash-row">
-    <div class="mw-750 no-vertical-padding">
-      <div class="flx space-between cntr link-header-wrapper">
-        <h2 class="pref-headline">{{ getString "email-addresses-title" }}</h2>
-        {{> dashboards/manage-email-link variableClass="hide-mobile"}}
-      </div>
-    </div>
-    <div class="email-cards flx flx-col jst-cntr">
-      {{#getBreachesForEachEmail}}
-        {{#each this.verifiedEmails}}
-          {{> email-card }}
-        {{/each}}
-        {{#if breachesFound }}
-          {{> hibp-attribution variableClasses="dash-attribution txt-cntr"}}
-        {{/if}}
-      {{/getBreachesForEachEmail}}
+
+<main id="dashboard" class=" ab-br sr dashboard clear-header jst-cntr flx" data-page-label="User Dashboard">
+  <div class="mw-860 flx flx-col">
+    <span class="welcome-back">{{ welcomeMessage }}</span>
+    <h2 class="pref-headline breach-summary">{{ getString "breach-summary" }}</h2>
+    <div class="dash-stats">
+      {{> breach-stats addClasses="user-stats"}}
     </div>
   </div>
-</section>
+</main>
+<div class="mw-860 jst-cntr flx-col">
+  <div class="flx space-between cntr link-header-wrapper">
+    <h2 class="pref-headline">{{ getString "email-addresses-title" }}</h2>
+    {{> dashboards/manage-email-link variableClass="hide-mobile"}}
+  </div>
+  <div class="email-cards flx flx-col jst-cntr">
+    {{#getBreachesForEachEmail}}
+      {{#each this.verifiedEmails}}
+        {{> email-card }}
+      {{/each}}
+      {{#if breachesFound }}
+        {{> hibp-attribution variableClasses="dash-attribution txt-cntr"}}
+      {{/if}}
+    {{/getBreachesForEachEmail}}
+  </div>
+</div>
 {{!-- TODO: remove this when https://github.com/mozilla/blurts-server/issues/1148 is fixed --}}
 {{#ifCompare verifiedEmails.length "<" 15}}
-<section class="">
   <div class="row jst-cntr">
     <div id="dashboard-add-email" class="dashboard-add-email flx flx-col">
-      <h2 class="scan-another-email-headline txt-purple7 section-headline">{{getString "want-to-add" }}</h2>
+      <h2 class="txt-purple7 section-headline txt-cntr">{{getString "want-to-add" }}</h2>
       {{> forms/add-another-email-form }}
       {{#if lastAddedEmail}}
         <span class="dashboard-email-sent bold"> {{ getString "email-sent" }}</span>
@@ -52,6 +38,5 @@
       {{/if}}
     </div>
   </div>
-</section>
 {{/ifCompare}}
 {{> take-back-control/take-back-control-banner additionalClasses="dash-take-back-wrapper"}}

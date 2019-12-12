@@ -2,7 +2,7 @@
   --logoDmns: 24px;
   --logoMargin: 20px;
 
-  padding: 1.5rem  3.25rem 1.5rem 1.5rem;
+  padding: 20px;
   border-radius: 8px;
   display: flex;
   margin: 0.5rem;
@@ -91,12 +91,6 @@
   .three-up {
     max-width: 48%;
     flex: 1 1 48%;
-  }
-
-  .breach-card.ec.two-up {
-    flex: 1 1 100%;
-    display: none;
-    max-width: 100%;
   }
 
   .email-card.active .breach-card.ec.two-up {

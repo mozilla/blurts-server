@@ -8,6 +8,17 @@ function getBreachesForEachEmail(args) {
   const locales = args.data.root.req.supportedLocales;
   let breachesFound = false;
 
+  // move emails with 0 breaches to the bottom of the page
+  verifiedEmails.sort((a, b) => {
+    if (
+        a.breaches.length === 0 && b.breaches.length > 0 ||
+        b.breaches.length === 0 && a.breaches.length > 0
+      ) {
+      return b.breaches.length - a.breaches.length;
+    }
+    return 0;
+  });
+
   verifiedEmails.forEach(email => {
     const breachCards = makeBreachCards(email.breaches, locales);
     email.foundBreaches = {};
@@ -31,7 +42,7 @@ function getBreachesForEachEmail(args) {
 
 function welcomeMessage(args) {
   const locales = args.data.root.req.supportedLocales;
-  const userEmail = `<span class="bold">${args.data.root.req.session.user.fxa_profile_json.email}</span>`;
+  const userEmail = args.data.root.req.session.user.fxa_profile_json.email;
   if (args.data.root.req.session.newUser) {
     return LocaleUtils.fluentFormat(locales, "welcome-user", { userName: userEmail });
   }
@@ -49,7 +60,7 @@ function makeEmailAddedToSubscriptionString(email, args) {
 function makeEmailVerifiedString(args) {
   const locales = args.data.root.req.supportedLocales;
   let nestedSignInLink = LocaleUtils.fluentFormat(locales, "sign-in-nested", {});
-  nestedSignInLink = `<a class="text-link bold" href="/oauth/init">${nestedSignInLink}</a>`;
+  nestedSignInLink = `<a class="text-link bold blue-link" href="/oauth/init">${nestedSignInLink}</a>`;
 
   return LocaleUtils.fluentFormat(locales, "email-verified-view-dashboard", { nestedSignInLink: nestedSignInLink});
 }
@@ -88,7 +99,7 @@ function getUserPreferences(args) {
   const communicationOptions = [
     {
       optionDescription: "Send breach alerts to the affected email address.",
-      labelString: LocaleUtils.fluentFormat(locales, "to-affected-email", {primaryEmail: `<span class="bold">${primaryEmail.email}</span>`}),
+      labelString: LocaleUtils.fluentFormat(locales, "to-affected-email"),
       optionId: "0",
       optionChecked: (communicationOption === 0) ? "checked" : "",
     },
