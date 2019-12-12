@@ -56,6 +56,10 @@ rec-ip-us-cta = Experimente o { -brand-fpn }
 rec-ip-us =
     Seu endereço IP indica sua localização e seu provedor de acesso à internet. 
     Um serviço como o { -brand-fpn } mascara seu endereço IP para ocultar sua localização.
+rec-ip-non-us =
+    Seu endereço IP indica sua localização e seu provedor de acesso à internet. 
+    Com uma rede privativa virtual (VPN), você pode ocultar sua localização 
+    e mascarar seu endereço IP.
 rec-hist-pw-subhead = Evite reusar senhas
 # Link title
 rec-hist-pw-cta-fx = Ver contas no { -brand-name }
