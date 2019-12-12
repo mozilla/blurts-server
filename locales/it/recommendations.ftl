@@ -10,6 +10,8 @@ rec-pw-3-cta = Installa { -brand-lockwise }
 rec-pw-4-subhead = Configura l'autenticazione a due fattori (2FA)
 # Recommendation subhead
 rec-bank-acc-subhead = Sorveglia i movimenti del tuo conto in banca
+# Recommendation subhead
+rec-ip-subhead = Usa un servizio che maschera il tuo indirizzo IP
 # Link title
 rec-ip-us-cta = Prova { -brand-fpn }
 rec-hist-pw-subhead = Evita di riutilizzare le password
