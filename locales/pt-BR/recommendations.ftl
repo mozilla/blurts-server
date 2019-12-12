@@ -78,21 +78,44 @@ rec-phone-num =
     em novas contas ou serviços. Se não for obrigatório, não informe.
 # Recommendation subhead
 rec-dob-subhead = Evite usar informações pessoais em PINs
+rec-dob =
+    Como sua data de nascimento pode ser facilmente encontrada em registros públicos, 
+    é melhor evitar usá-la em senhas e PINs. Pessoas que sabem seu aniversário podem 
+    também adivinhar facilmente seu PIN.
 # Recommendation subhead
 rec-pins-subhead = Reforce a segurança de seus PINs
+rec-pins =
+    Um PIN forte não contém informações pessoais, como sua data de nascimento 
+    ou seu endereço. Deve ser um número que só você conhece e não pode ser facilmente adivinhado.
 # Recommendation subhead
 rec-address-subhead = Evite usar endereços em senhas
+rec-address =
+    Usar endereços ou o nome da rua em que você cresceu enfraquece 
+    suas senhas. Como é fácil encontrar essas informações publicamente, 
+    tais senhas são fáceis de adivinhar.
 # Recommendation subhead
 rec-gen-1-subhead = Use uma senha forte e única em cada conta
 # Link title
 rec-gen-1-cta = Como criar senhas fortes
+rec-gen-1 =
+    Reusar senhas coloca todas as suas contas em risco. Significa que 
+    se uma senha é exposta, os hackers têm as chaves de muitas contas.
 # Recommendation subhead
 rec-gen-2-subhead = Armazene senhas em um lugar seguro
 # Link title
 rec-gen-2-cta = Mitos sobre gerenciadores de senhas
+rec-gen-2 =
+    Coloque os detalhes de suas contas em um lugar seguro que só você pode acessar, como um 
+    gerenciador de senhas. Isso também facilita o controle de todas as suas diferentes senhas.
 # Recommendation subhead
 rec-gen-3-subhead = Seja cauteloso ao fornecer informações pessoais
 # Link title
 rec-gen-3-cta = Ler mais dicas de segurança
+rec-gen-3 =
+    Não forneça seus dados pessoais se não for necessário. Se for solicitado que 
+    informe seu endereço de e-mail, código postal ou número de telefone, você pode dizer não.
 # Recommendation subhead
 rec-gen-4-subhead = Atualize programas e aplicativos regularmente
+rec-gen-4 =
+    Atualizar aplicativos, navegadores e o sistema operacional de seu celular torna seu dispositivo 
+    mais seguro. Essas atualizações corrigem erros, vulnerabilidades e problemas de segurança.
