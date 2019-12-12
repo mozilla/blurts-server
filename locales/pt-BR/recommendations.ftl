@@ -74,5 +74,25 @@ rec-sec-qa =
 # Recommendation subhead
 rec-phone-num-subhead = Evite compartilhar seu número de telefone
 rec-phone-num =
-    Tente evitar fornecer seu número de telefone ao se cadastrar em novas 
-    contas ou serviços. Se o número de telefone não for obrigatório, não o informe.
+    Tente evitar fornecer seu número de telefone ao se cadastrar 
+    em novas contas ou serviços. Se não for obrigatório, não informe.
+# Recommendation subhead
+rec-dob-subhead = Evite usar informações pessoais em PINs
+# Recommendation subhead
+rec-pins-subhead = Reforce a segurança de seus PINs
+# Recommendation subhead
+rec-address-subhead = Evite usar endereços em senhas
+# Recommendation subhead
+rec-gen-1-subhead = Use uma senha forte e única em cada conta
+# Link title
+rec-gen-1-cta = Como criar senhas fortes
+# Recommendation subhead
+rec-gen-2-subhead = Armazene senhas em um lugar seguro
+# Link title
+rec-gen-2-cta = Mitos sobre gerenciadores de senhas
+# Recommendation subhead
+rec-gen-3-subhead = Seja cauteloso ao fornecer informações pessoais
+# Link title
+rec-gen-3-cta = Ler mais dicas de segurança
+# Recommendation subhead
+rec-gen-4-subhead = Atualize programas e aplicativos regularmente
