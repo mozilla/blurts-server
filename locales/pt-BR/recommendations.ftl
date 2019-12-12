@@ -63,3 +63,16 @@ rec-ip-non-us =
 rec-hist-pw-subhead = Evite reusar senhas
 # Link title
 rec-hist-pw-cta-fx = Ver contas no { -brand-name }
+rec-hist-pw =
+    Use uma senha forte e única em cada conta. Se uma delas for exposta 
+    em um vazamento de dados, você só precisa alterar nessa conta.
+# Recommendation subhead
+rec-sec-qa-subhead = Crie respostas únicas para perguntas de segurança
+rec-sec-qa =
+    Muitos sites fazem as mesmas perguntas. Se uma resposta vazar, a informação 
+    estará exposta. Crie respostas longas e aleatórias e guarde em algum lugar seguro.
+# Recommendation subhead
+rec-phone-num-subhead = Evite compartilhar seu número de telefone
+rec-phone-num =
+    Tente evitar fornecer seu número de telefone ao se cadastrar em novas 
+    contas ou serviços. Se o número de telefone não for obrigatório, não o informe.
