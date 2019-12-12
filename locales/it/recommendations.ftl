@@ -30,4 +30,14 @@ rec-gen-1-subhead = Usa password uniche e complesse per ogni account
 # Link title
 rec-gen-1-cta = Come creare password complesse
 rec-gen-1 = Riutilizzare le password mette a rischio tutti i tuoi account. Se una password viene esposta in una violazione, gli hacker avranno automaticamente accesso anche ad altri account.
+# Recommendation subhead
+rec-gen-2-subhead = Conserva le password in un posto sicuro
+# Link title
+rec-gen-2-cta = Miti sui gestori di password
+rec-gen-2 = Conserva le tue credenziali in un posto sicuro a cui solo tu puoi accedere, ad esempio uno strumento di gestione delle password. Questo rende anche più semplice la gestione di tutte le diverse password.
+# Recommendation subhead
+rec-gen-3-subhead = Condividi le tue informazioni personali con cautela
+# Link title
+rec-gen-3-cta = Leggi altri consigli sulla sicurezza
+rec-gen-3 = Non fornire dati personali se non è strettamente necessario. Se ti viene chiesto di inserire il tuo indirizzo email, codice postale o numero di telefono, puoi sempre dire di no.
 rec-gen-4 = L’aggiornamento delle app sul tuo telefono, dei browser e dei sistemi operativi rende i tuoi dispositivi più sicuri. Questi aggiornamenti risolvono bug, vulnerabilità del software e problemi di sicurezza.
