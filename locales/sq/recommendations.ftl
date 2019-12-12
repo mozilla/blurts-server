@@ -79,11 +79,22 @@ rec-address =
 rec-gen-1-subhead = Përdorni fjalëkalime unikë, të fuqishëm, për çdo llogari
 # Link title
 rec-gen-1-cta = Si të krijohen fjalëkalime të fuqishëm
+rec-gen-1 =
+    Ripërdorimi i fjalëkalimeve i vë në rrezik krejt llogaritë tuaj. Kjo
+    do të thotë se nëse ekspozohet një fjalëkalim, hacker-at kanë
+     çelësat e mjaft llogarive.
 # Recommendation subhead
 rec-gen-2-subhead = Ruajini fjalëkalimet në një vend të parrezik
 # Link title
 rec-gen-2-cta = Mite rreth përgjegjësish fjalëkalimesh
+rec-gen-2 = Vendosini hollësitë e kredencialeve tuaja në një vend të sigurt ku mund të hyni vetëm ju, bie fjala, në një përgjegjës fjalëkalimesh. Kjo e bën të lehtë mbajtjen nën kontroll të krejt fjalëkalimeve tuaj të ndryshëm.
+# Recommendation subhead
+rec-gen-3-subhead = Jini të kujdesshëm, kur vjen puna te dhënie të dhënash personale
 # Link title
 rec-gen-3-cta = Lexoni më tepër ndihmëza sigurie
+rec-gen-3 =
+    Mos jepni të dhëna personale, nëse s’duhet doemos.Nëse ju kërkohet 
+    të futni diku apo jepni adresën tuaj email, kodin ZIP, ose numër telefoni, mund të përgjigjeni jo.
 # Recommendation subhead
 rec-gen-4-subhead = Përmirësoni rregullisht software-in dhe aplikacionet
+rec-gen-4 = Përditësimi i aplikacioneve tuaja në telefon, e shfletuesit dhe sistemeve tuaj operativë i bën pajisjet tuaja më të sigurta. Këto përditësime ndreqin të meta, cenueshmëri software-i dhe probleme sigurie.
