@@ -11,6 +11,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Red privada de Firefox
 
 
 
@@ -395,3 +396,11 @@ five-myths-desc = Aprendé cómo evitar los malos hábitos de contraseñas que f
 take-further-steps-desc = Descubrí cómo mitigar los riesgos del robo de identidad para evitar pérdidas financieras.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = ¡Cambios guardados!
+# Section headline
+rec-section-headline = ¿Qué hacer con esta violación?
+rec-section-subhead = Te recomendamos que sigas estos pasos para mantener segura tu información personal y proteger tu identidad digital.
+# Section headline
+rec-section-headline-no-pw = Qué hacer para proteger tu información personal
+rec-section-subhead-no-pw = Aunque las contraseñas no estuvieron expuestas en esta violación, hay pasos que podés seguir para proteger mejor tu información personal.
+# Button
+see-additional-recs = Ver recomendaciones adicionales
