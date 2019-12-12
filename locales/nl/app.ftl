@@ -11,6 +11,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
 
 
@@ -427,3 +428,5 @@ five-myths-desc = Leer hoe u slechte wachtwoordgewoonten, die het werk van een h
 take-further-steps-desc = Ontdek hoe u de risico’s van identiteitsdiefstal kunt beperken om financieel verlies te vermijden.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Wijzigingen opgeslagen!
+# Section headline
+rec-section-headline = Wat kunt u doen voor dit datalek
