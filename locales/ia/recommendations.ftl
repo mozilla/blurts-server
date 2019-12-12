@@ -17,5 +17,8 @@ rec-pw-1 =
 rec-pw-2-subhead = Renova altere credentiales que usa identic contrasigno
 # Link title
 rec-pw-2-cta-fx = Vide le credentiales in { -brand-name }
+rec-pw-2 =
+    Quando on re-utilisa le contrasignos un singule violation de datos pote portar a plure alteros.
+    Un vice que un contrasigno es exponite alora hackers poterea usar lo pro acceder a altere contos.
 # Link title
 rec-gen-1-cta = Como crear contrasignos forte
