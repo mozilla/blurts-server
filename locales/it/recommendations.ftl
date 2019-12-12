@@ -25,6 +25,7 @@ rec-pins-subhead = Rafforza la sicurezza dei tuoi PIN
 rec-pins = Un PIN complesso non contiene informazioni personali, come la data di nascita o il proprio indirizzo. Dovrebbe essere un numero che solamente tu conosci e che non può essere facilmente indovinato.
 # Recommendation subhead
 rec-address-subhead = Evita gli indirizzi nelle password
+rec-address = Utilizzare il tuo indirizzo o il nome della strada in cui sei cresciuto indebolisce le tue password. Trattandosi di informazioni pubblicamente reperibili, rendono le tue password più facili da indovinare.
 # Recommendation subhead
 rec-gen-1-subhead = Usa password uniche e complesse per ogni account
 # Link title
