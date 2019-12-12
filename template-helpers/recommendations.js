@@ -14,6 +14,7 @@ module.exports = {
         },
         ctaHref: "https://monitor.firefox.com/security-tips#strong-passwords",
         ctaShouldOpenNewTab: false,
+        ctaAnalyticsId: "How to create strong passwords",
         recIconClassName: "rec-gen-1",
       },
       {
@@ -24,6 +25,7 @@ module.exports = {
         },
         ctaHref: "https://monitor.firefox.com/security-tips#five-myths",
         ctaShouldOpenNewTab: false,
+        ctaAnalyticsId: "Myths about password managers",
         recIconClassName: "rec-gen-2",
       },
       {
@@ -34,6 +36,7 @@ module.exports = {
         },
         ctaHref: "https://monitor.firefox.com/security-tips#steps-to-protect",
         ctaShouldOpenNewTab: false,
+        ctaAnalyticsId: "Read more security tips",
         recIconClassName: "rec-gen-3",
       },
       {
@@ -63,6 +66,7 @@ module.exports = {
             },
             ctaHref: "https://www.annualcreditreport.com/index.action",
             ctaShouldOpenNewTab: true,
+            ctaAnalyticsId: "Request credit reports",
             recIconClassName: "rec-ssn",
           },
         ] : null,
@@ -79,6 +83,7 @@ module.exports = {
             },
             ctaHref: changePWLink,
             ctaShouldOpenNewTab: true,
+            ctaAnalyticsId: "Change password for this site",
             recIconClassName: "rec-pw-1",
           },
           {
@@ -101,6 +106,7 @@ module.exports = {
             },
             ctaHref: "https://www.mozilla.org/firefox/lockwise/",
             ctaShouldOpenNewTab: true,
+            ctaAnalyticsId: "View logins in Firefox Lockwise",
             recIconClassName: "rec-pw-3",
           },
         ],
@@ -160,6 +166,7 @@ module.exports = {
             },
             ctaHref: "https://fpn.firefox.com",
             ctaShouldOpenNewTab: true,
+            ctaAnalyticsId: "Try Firefox Private Network",
             recIconClassName: isUserLocaleEnUs ? "rec-ip-us" : "rec-ip-non-us",
           },
         ],
@@ -260,6 +267,7 @@ module.exports = {
       },
       ctaHref: "https://twofactorauth.org/",
       ctaShouldOpenNewTab: true,
+      ctaAnalyticsId: "See sites that offer 2FA",
       recIconClassName: "rec-pw-4",
     };
   },

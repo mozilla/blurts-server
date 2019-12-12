@@ -124,6 +124,15 @@ function getUTMNames() {
       },
     });
 
+    // Temporarily send "View" and "Engage" pings for recommendation CTAs.
+    document.querySelectorAll(".recommendation-cta").forEach(cta => {
+      const eventLabel = cta.dataset.eventLabel;
+      ga("send", "event", "Breach Detail: Recommendation CTA", "View", eventLabel);
+      cta.addEventListener("click", () => {
+        ga("send", "event", "Breach Detail: Recommendation CTA", "Engage", eventLabel);
+      });
+    });
+
     document.querySelectorAll(".send-ga-ping, [data-send-ga-ping]").forEach((el) => {
       el.addEventListener("click", (e) => {
         const eventCategory = e.target.dataset.eventCategory;
