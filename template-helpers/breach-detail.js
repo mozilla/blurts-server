@@ -1,31 +1,35 @@
 "use strict";
 
 const { LocaleUtils } = require("./../locale-utils");
-const { prettyDate, localizedBreachDataClasses } = require("./hbs-helpers");
+const { prettyDate } = require("./hbs-helpers");
+const { getAllPriorityDataClasses, getAllGenericRecommendations, getFourthPasswordRecommendation } = require("./recommendations");
+
+
+function localize(locales, stringId, args) {
+  return LocaleUtils.fluentFormat(locales, stringId, args);
+}
+
+
+function getBreachTitle(args) {
+  return args.data.root.featuredBreach.Title;
+}
+
 
 function getVars(args) {
   const locales = args.data.root.req.supportedLocales;
   const breach = args.data.root.featuredBreach;
   const changePWLink = args.data.root.changePWLink;
-  return { locales, breach, changePWLink };
+  const isUserBrowserFirefox = (/Firefox/i.test(args.data.root.req.headers["user-agent"]));
+  return { locales, breach, changePWLink, isUserBrowserFirefox };
 }
 
-// REMAINING QUESTIONS:
-// How to actually categorize these?
-// How to dynamically detect Data Aggregator breaches?
 
 function getBreachCategory(breach) {
   if (["Exactis", "Apollo", "YouveBeenScraped", "ElasticsearchSalesLeads", "Estonia", "MasterDeeds", "PDL"].includes(breach.Name)) {
     return "data-aggregator-breach";
   }
-  if (!breach.IsVerified) {
-    return "unverified-breach";
-  }
   if (breach.IsSensitive) {
     return "sensitive-breach";
-  }
-  if (breach.IsSpamList) {
-    return  "spam-list-breach";
   }
   if (breach.Domain !== "") {
     return "website-breach";
@@ -33,78 +37,28 @@ function getBreachCategory(breach) {
   return "data-aggregator-breach";
 }
 
-function breachCategory(args) {
-  const { locales, breach } = getVars(args);
-  const breachCategory = getBreachCategory(breach);
-  return LocaleUtils.fluentFormat(locales, breachCategory, args.hash);
+
+function getSortedDataClasses(locales, breach, isUserBrowserFirefox=false, isUserLocaleEnUs=false, changePWLink=false) {
+  const priorityDataClasses = getAllPriorityDataClasses(isUserBrowserFirefox, isUserLocaleEnUs, changePWLink);
+
+  const sortedDataClasses = {
+    priority: [],
+    lowerPriority: [],
+  };
+
+  const dataClasses = breach.DataClasses;
+  dataClasses.forEach(dataClass => {
+    const dataType = localize(locales, dataClass);
+    if (priorityDataClasses[dataClass]) {
+      priorityDataClasses[dataClass]["dataType"] = dataType;
+      sortedDataClasses.priority.push(priorityDataClasses[dataClass]);
+      return;
+    }
+    sortedDataClasses.lowerPriority.push(dataType);
+  });
+  sortedDataClasses.priority.sort((a,b) => { return b.weight - a.weight; });
+  return sortedDataClasses;
 }
-
-
-// Big TODO : How should we assign weight to these data types?
-
-const priorityDataClasses = {
-  "government-issued-ids" : {
-    weight: 101,
-    pathToGlyph: "svg/glyphs/social-security-numbers",
-  },
-  "social-security-numbers" : {
-    weight: 101,
-    pathToGlyph: "svg/glyphs/social-security-numbers",
-  },
-  "passwords": {
-    weight: 100,
-    pathToGlyph: "svg/glyphs/passwords",
-    actions: "", // future functionality?
-  },
-  "bank-account-numbers": {
-    weight: 99,
-    pathToGlyph: "svg/glyphs/bank-account-numbers",
-  },
-  "credit-cards": {
-    weight: 98,
-    pathToGlyph: "svg/glyphs/credit-cards",
-  },
-  "credit-card-cvv": {
-    weight: 97,
-    pathToGlyph: "svg/glyphs/credit-card-cvvs",
-  },
-  "partial-credit-card-data": {
-    weight: 96,
-    pathToGlyph: "svg/glyphs/partial-credit-card-data",
-  },
-  "ip-addresses": {
-    weight: 95,
-    pathToGlyph: "svg/glyphs/ip-addresses",
-  },
-  "historical-passwords": {
-    weight: 94,
-    pathToGlyph: "svg/glyphs/historical-passwords",
-  },
-  "security-questions-and-answers": {
-    weight: 93,
-    pathToGlyph: "svg/glyphs/security-questions-and-answers",
-  },
-  "phone-numbers": {
-    weight: 92,
-    pathToGlyph: "svg/glyphs/phone-numbers",
-  },
-  "email-addresses": {
-    weight: 91,
-    pathToGlyph: "svg/glyphs/email-addresses",
-  },
-  "dates-of-birth": {
-    weight: 90,
-    pathToGlyph: "svg/glyphs/dates-of-birth",
-  },
-  "pins": {
-    weight: 89,
-    pathToGlyph: "svg/glyphs/pins",
-  },
-  "physical-addresses": {
-    weight: 88,
-    pathToGlyph: "svg/glyphs/physical-addresses",
-  },
-};
 
 function compareBreachDates(breach) {
   const breachDate = new Date(breach.BreachDate);
@@ -117,151 +71,127 @@ function compareBreachDates(breach) {
   return false;
 }
 
-function getTips(locales, breachType, changePWLink) {
-  let tips = [];
-  if (breachType === "website-breach") {
-    tips = [
-      {
-        title: "change-pw",
-        subtitle: "even-for-old",
-        changePWBtn: true,
-        linkTitle: "change-pw-site",
-        href: changePWLink,
-        svgClass: "change-password",
-      },
-      {
-        title: "make-new-pw-unique",
-        subtitle: "strength-of-your-pw",
-        linkTitle: "create-strong-passwords",
-        href: "/security-tips#strong-passwords",
-        svgClass: "stronger-password",
-      },
-      {
-        title: "stop-reusing-pw",
-        subtitle: "create-unique-pw",
-        linkTitle: "five-myths",
-        href: "/security-tips#five-myths",
-        svgClass: "manage-password",
-      },
-    ];
-  } else {
-    tips = [
-      {
-        title: "protect-your-privacy",
-        subtitle: "no-pw-to-change",
-        linkTitle: "steps-to-protect",
-        href: "/security-tips#steps-to-protect",
-        svgClass: "protect-personal-info",
-      },
-      {
-        title: "avoid-personal-info",
-        subtitle: "avoid-personal-info-blurb",
-        linkTitle: "create-strong-passwords",
-        href: "/security-tips#strong-passwords",
-        svgClass: "data-compromised",
-      },
-    ];
-  }
+function getGenericFillerRecs(locales, numberOfRecsNeeded) {
+  let genericRecommendations = getAllGenericRecommendations();
 
-  tips.forEach(tip => {
-    ["title", "subtitle", "linkTitle"].forEach(key =>{
-      tip[key] = LocaleUtils.fluentFormat(locales, tip[key]);
-    });
+  genericRecommendations = genericRecommendations
+    .slice(0, numberOfRecsNeeded); // Slice array down to number of needed recommendations
+
+  genericRecommendations.forEach(rec => {
+    for (const pieceOfCopy in rec.recommendationCopy) {
+      rec.recommendationCopy[pieceOfCopy] = localize(locales, rec.recommendationCopy[pieceOfCopy]);
+    }
   });
-  return tips;
+  return genericRecommendations;
 }
 
-
 function getBreachDetail(args) {
-  const { locales, breach, changePWLink } = getVars(args);
+  const { locales, breach, changePWLink, isUserBrowserFirefox } = getVars(args);
+  const { sortedDataClasses, recommendations } = getSortedDataClassesAndRecs(locales, breach, isUserBrowserFirefox, changePWLink);
+  const breachCategory = getBreachCategory(breach);
+  const breachExposedPasswords = breach.DataClasses.includes("passwords");
 
   const breachDetail = {
+    breach: breach,
     overview: {
-      headline: LocaleUtils.fluentFormat(locales, "breach-overview-title"),
-      copy: LocaleUtils.fluentFormat(locales, "breach-overview-new", {
+      headline: localize(locales, "breach-overview-title"),
+      copy: localize(locales, "breach-overview-new", {
         addedDate: `<span class='bold'>${prettyDate(breach.AddedDate, locales)}</span>`,
         breachDate: `<span class='bold'>${prettyDate(breach.BreachDate, locales)}</span>`,
         breachTitle: breach.Title,
       }),
     },
-    breach: breach,
-    categoryId: getBreachCategory(breach),
-    category: LocaleUtils.fluentFormat(locales, getBreachCategory(breach)),
+
+    categoryId: breachCategory,
+    category: localize(locales, breachCategory),
     changePWLink: changePWLink,
-    changePWLinkTitle: LocaleUtils.fluentFormat(locales, "change-pw-site"),
+
     dataClasses: {
-      headline: LocaleUtils.fluentFormat(locales, "what-data"),
-      dataTypes: localizeAndPrioritizeDataClasses(locales, breach),
+      headline: localize(locales, "what-data"),
+      dataTypes: sortedDataClasses,
     },
-    whatToDoTips: {
-      headline: LocaleUtils.fluentFormat(locales, "wtd-after-website"),
-      tips: getTips(locales, "website-breach", changePWLink),
+
+    recommendations: {
+      headline: breachExposedPasswords ? localize(locales, "rec-section-headline") : localize(locales, "rec-section-headline-no-pw"),
+      copy: breachExposedPasswords ? localize(locales, "rec-section-subhead") : localize(locales, "rec-section-subhead-no-pw"),
+      recommendationsList: recommendations,
     },
   };
+
+  // Add correct "What is a ... breach" copy.
   switch (breachDetail.categoryId) {
     case "data-aggregator-breach":
       breachDetail.whatIsThisBreach = {
-        headline: LocaleUtils.fluentFormat(locales, "what-is-data-agg"),
-        copy: LocaleUtils.fluentFormat(locales, "what-is-data-agg-blurb"),
-      };
-      breachDetail.whatToDoTips = {
-        headline: LocaleUtils.fluentFormat(locales, "wtd-after-data-agg"),
-        tips: getTips(locales, "data-agg"),
+        headline: localize(locales, "what-is-data-agg"),
+        copy: localize(locales, "what-is-data-agg-blurb"),
       };
       break;
     case "sensitive-breach":
       breachDetail.whatIsThisBreach = {
-        headline: LocaleUtils.fluentFormat(locales, "sensitive-sites"),
-        copy: LocaleUtils.fluentFormat(locales, "sensitive-sites-copy"),
+        headline: localize(locales, "sensitive-sites"),
+        copy: localize(locales, "sensitive-sites-copy"),
       };
       break;
     default:
       breachDetail.whatIsThisBreach = {
-        headline: LocaleUtils.fluentFormat(locales, "what-is-a-website-breach"),
-        copy: LocaleUtils.fluentFormat(locales, "website-breach-blurb"),
+        headline: localize(locales, "what-is-a-website-breach"),
+        copy: localize(locales, "website-breach-blurb"),
       };
   }
 
+  // Compare the breach date to the breach added date
+  // and show the "Why did it take so long to tell me about this breach?"
+  // message if necessary.
   if (compareBreachDates(breach)) {
     breachDetail.delayedReporting = {
-      headline: LocaleUtils.fluentFormat(locales, "delayed-reporting-headline"),
-      copy: LocaleUtils.fluentFormat(locales, "delayed-reporting-copy"),
+      headline: localize(locales, "delayed-reporting-headline"),
+      copy: localize(locales, "delayed-reporting-copy"),
     };
   }
   return args.fn(breachDetail);
 }
 
 
-function localizeAndPrioritizeDataClasses(locales, breach, forBreachCard = false) {
-  const localizedDataClasses = {
-    priority: [],
-    lowerPriority: [],
-  };
-  for (const dataClass of breach.DataClasses) {
+function getSortedDataClassesAndRecs(locales, breach, isUserBrowserFirefox=false, changePWLink=false) {
+  const isUserLocaleEnUs = (locales[0] === "en");
+  const sortedDataClasses = getSortedDataClasses(locales, breach, isUserBrowserFirefox, isUserLocaleEnUs, changePWLink);
 
-    const dataClassObj = {
-      dataType: LocaleUtils.fluentFormat(locales, dataClass),
-      weight: 0,
-    };
-    if (priorityDataClasses.hasOwnProperty(dataClass)) {
-      dataClassObj.weight = priorityDataClasses[dataClass].weight;
-      dataClassObj.actions = priorityDataClasses[dataClass].actions;
-      dataClassObj.pathToGlyph = priorityDataClasses[dataClass].pathToGlyph;
-      localizedDataClasses.priority.push(dataClassObj);
-    } else {
-      localizedDataClasses.lowerPriority.push(dataClass);
+  let recommendations = [];
+
+  // Check each priority data class for a recommendation
+  // and push localized recommendations into new array.
+  sortedDataClasses.priority.forEach(dataClass => {
+    if (dataClass.recommendations) {
+      const recs = dataClass.recommendations;
+      recs.forEach(rec => {
+        for (const pieceOfCopy in rec.recommendationCopy) {
+          rec.recommendationCopy[pieceOfCopy] = localize(locales, rec.recommendationCopy[pieceOfCopy]);
+        }
+        recommendations.push(rec);
+      });
     }
+  });
+
+  // If the breach exposed passwords, push the fourth password recommendation
+  // to the end of the recommendations list regardless of list length.
+  if (breach.DataClasses.includes("passwords")) {
+    recommendations.push(getFourthPasswordRecommendation(locales));
   }
-  if (!forBreachCard) {
-    localizedDataClasses.lowerPriority = localizedBreachDataClasses(localizedDataClasses.lowerPriority, locales);
+
+  // If there are fewer than four recommendations,
+  // backfill with generic recommendations.
+  const minimumNumberOfRecs = 4;
+  if (recommendations.length < minimumNumberOfRecs) {
+    const numberOfRecsNeeded = minimumNumberOfRecs - recommendations.length;
+    const genericRecs = getGenericFillerRecs(locales, numberOfRecsNeeded);
+    recommendations = recommendations.concat(genericRecs);
   }
-  localizedDataClasses.priority.sort((a,b) => (a.weight < b.weight) ? 1 : ((b.weight < a.weight) ? -1 : 0));
-  return localizedDataClasses;
+  return {sortedDataClasses, recommendations};
 }
 
 module.exports = {
-  breachCategory,
   getBreachDetail,
   getBreachCategory,
-  localizeAndPrioritizeDataClasses,
+  getSortedDataClasses,
+  getBreachTitle,
 };
