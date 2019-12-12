@@ -36,6 +36,7 @@ rec-bank-acc-subhead = Mbikëqyrni shkresat tuaja bankare
 rec-bank-acc = Kontrollojini shkresat tuaja bankare për veprimtari të dyshimtë ose të pazakontë. Njoftoni bankën tuaj, nëse shihni ndonjë gjë që nuk e prisni
 # Recommendation subhead
 rec-cc-subhead = Mbikëqyrni shkresa rreth kartës tuaj të kreditit
+rec-cc = Shihni për pagesa të çuditshme në kartën tuaj të kreditit. Mund të doni të kërkoni një kartë të re me një numër të ri prej emetuesit të kartës tuaj të kreditit.
 # Recommendation subhead
 rec-ip-subhead = Përdorni një shërbim që maskon adresën tuaj IP
 # Link title
@@ -43,11 +44,37 @@ rec-ip-us-cta = Provoni { -brand-fpn }
 rec-ip-us =
     Adresa juaj e Protokollit Internet (adresë IP) lejon të përcaktohet me saktësi vendndodhja juaj dhe furnizuesi i shërbimit internet për ju. Një shërbim si { -brand-fpn } 
     e maskon adresën tuaj IP për të fshehur vendndodhjen tuaj.
+rec-ip-non-us =
+    Adresa juaj e Protokollit Internet (adresë IP) lejon të përcaktohet me saktësi vendndodhja juaj dhe furnizuesi i shërbimit internet për ju. Me një rrjet virtual privat (VPN), mund të fshihni vendndodhjen tuaj
+    dhe të maskoni adresën tuaj IP.
 rec-hist-pw-subhead = Shmangni ripërdorim fjalëkalimesh
 # Link title
 rec-hist-pw-cta-fx = Shihni kredenciale hyrjesh te { -brand-name }
+rec-hist-pw = Përdorni fjalëkalime unikë, të fuqishëm, për çdo llogari. Nëse një fjalëkalim ekspozohet në një shkelje të dhënash, do t’ju duhet të përditësoni vetëm ato kredenciale hyrjesh.
 # Recommendation subhead
 rec-sec-qa-subhead = Krijoni përgjigje unike për pyetje sigurie
+rec-sec-qa =
+    Mjaft sajte bëjnë të njëjtën pyetje. Nëse ekspozohet një përgjigje,
+    të dhënat mbeten zbuluar. Krijoni përgjigje të gjata, kuturu dhe depozitojini diku në një vend pa rrezik.
+# Recommendation subhead
+rec-phone-num-subhead = Shmangni dhënien të tjerëve të numrit tuaj të telefonit
+rec-phone-num = Shmangni dhënien e numrit tuaj të telefonit kur regjistroheni për llogari apo shërbime të reja. Nëse një numër telefoni s’është i domosdoshëm, mos e jepni.
+# Recommendation subhead
+rec-dob-subhead = Shmangni përdorimin e të dhënave personale në PIN-e
+rec-dob =
+    Ngaqë datëlindja juaj është e zbulueshme kollaj në regjistra publikë, 
+    më e mira është të shmanget përdorimi në fjalëkalime dhe PIN-e. Persona që
+    dinë datëlindjen tuaj, munde fare lehtë të hamendësojnë edhe PIN-in tuaj.  
+    it’s best to avoid using it in passwords and PINs. People who 
+    know your birthday could also very easily guess your PIN.
+# Recommendation subhead
+rec-pins-subhead = Forconi sigurinë e PIN-eve tuaj
+rec-pins = Një PIN i fuqishëm nuk përmban të dhëna personale, bie fjala, datëlindjen apo adresën tuaj. Duhet të jetë një numër që e dini vetëm ju dhe s’mund të hamendësohet kollaj.
+# Recommendation subhead
+rec-address-subhead = Shmangni përdorim adresash në fjalëkalime
+rec-address =
+    Përdorimi i adresave apo rrugëve ku u rritët dobëson fjakalimet tuaj. 
+    Ngaqë është lehtë të gjenden të dhëna të tilla publike, kjo i bën këto fjalëkalime të lehtë për t’u hamendësuar.
 # Recommendation subhead
 rec-gen-1-subhead = Përdorni fjalëkalime unikë, të fuqishëm, për çdo llogari
 # Link title
