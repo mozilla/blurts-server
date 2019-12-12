@@ -28,3 +28,16 @@ rec-pw-3-cta = Obtené { -brand-lockwise }
 rec-pw-3-fx =
     Usá { -brand-lockwise } para acceder de forma segura a las contraseñas que guardaste en
     { -brand-name } desde cualquier lugar, incluso fuera del navegador.
+rec-pw-3-non-fx =
+    Usá { -brand-lockwise } para realizar el seguimiento de todas tus
+    contraseñas y acceder a ellas de forma segura desde tu teléfono o tableta.
+# Recommendation subhead
+rec-pw-4-subhead = Configurar la autenticación de dos factores (2FA)
+# Link title
+rec-pw-4-cta = Ver sitios que ofrecen 2FA
+rec-pw-4 =
+    Muchos sitios web ofrecen 2FA como medida de seguridad adicional. Esto requiere
+    otra información para iniciar sesión en tu cuenta, como un
+    código único que recibís por mensaje de texto.
+# Recommendation subhead
+rec-bank-acc-subhead = Monitoreá tus extractos bancarios
