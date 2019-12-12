@@ -272,14 +272,6 @@ function addBentoObserver(){
     button.addEventListener("click", (e) => doOauth(e.target));
   });
 
-  document.querySelectorAll("#see-additional-recs").forEach(button => {
-    button.addEventListener("click", () => {
-      button.classList.add("fade-out");
-      const overflowRecs = document.getElementById("overflow-recs");
-      overflowRecs.classList.remove("hide");
-    });
-  });
-
   const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
   dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));
 })();

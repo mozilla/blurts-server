@@ -144,11 +144,6 @@ h3,
   font-weight: 700;
 }
 
-.small-section-headline {
-  font-size: 20px;
-  margin-bottom: 16px;
-}
-
 .top-headline {
   font-size: var(--topHeadline);
   font-weight: 700;
@@ -445,11 +440,10 @@ ul li {
   max-width: 66.66666667%;
 }
 
-.mw-700 {
-  padding: 0 24px;
-  max-width: 744px;
+.mw-8 {
+  padding: var(--padding);
+  max-width: 720px;
   width: 100%;
-  overflow-wrap: break-word;
 }
 
 .col-9 {
@@ -663,10 +657,6 @@ div.sprite {
   .show-mobile {
     display: flex;
     visibility: visible;
-  }
-
-  .mw-700 {
-    max-width: var(--maxWidth);
   }
 
   .col-6 {
