@@ -18,3 +18,13 @@ rec-pw-1 =
 rec-pw-2-subhead = Actualizá otros inicios de sesión con la misma contraseña
 # Link title
 rec-pw-2-cta-fx = Ver inicios de sesión en { -brand-name }
+rec-pw-2 =
+    Reutilizar contraseñas convierte una sola violación de datos en muchas. Ahora que esto
+    la contraseña está disponible, los piratas informáticos podrían usarla para ingresar a otras cuentas.
+# Recommendation subhead
+rec-pw-3-subhead = Usá un administrador de contraseñas para llevar tus contraseñas a todas partes
+# Link title
+rec-pw-3-cta = Obtené { -brand-lockwise }
+rec-pw-3-fx =
+    Usá { -brand-lockwise } para acceder de forma segura a las contraseñas que guardaste en
+    { -brand-name } desde cualquier lugar, incluso fuera del navegador.
