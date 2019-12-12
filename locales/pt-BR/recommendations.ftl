@@ -46,8 +46,16 @@ rec-bank-acc =
     incomuns. Notifique seu banco se encontrar qualquer coisa fora do comum.
 # Recommendation subhead
 rec-cc-subhead = Monitore seus extratos de cartão de crédito
+rec-cc =
+    Procure cobranças estranhas no seu cartão de crédito. Se precisar você pode
+    solicitar um novo cartão com outro número ao emissor do seu cartão de crédito.
 # Recommendation subhead
 rec-ip-subhead = Use um serviço que oculta seu endereço IP
 # Link title
 rec-ip-us-cta = Experimente o { -brand-fpn }
+rec-ip-us =
+    Seu endereço IP indica sua localização e seu provedor de acesso à internet. 
+    Um serviço como o { -brand-fpn } mascara seu endereço IP para ocultar sua localização.
 rec-hist-pw-subhead = Evite reusar senhas
+# Link title
+rec-hist-pw-cta-fx = Ver contas no { -brand-name }
