@@ -120,7 +120,7 @@ cant-stop-hackers = Does dim modd rhwystro hacwyr rhag hacio. Ond gallwch osgoi 
 read-more-tips = Darllen Rhagor o Awgrymiadau Diogelwch
 how-hackers-work = Deall sut mae hacwyr yn gweithio
 monitor-your-online-accounts = Cofrestrwch ar gyfer monitro tor-data gyda { -brand-fxa }
-stay-alert = Aros yn effro i dor-data newydd
+stay-alert = Cadw'n effro am dor-data newydd
 if-your-info = Os bydd eich manylion yn ymddangos mewn tor-data newydd, byddwn yn anfon rhybudd atoch.
 search-all-emails = Chwiliwch am eich holl gyfeiriadau e-bost am dor-data a chael rhybudd am fygythiadau newydd.
 monitor-several-emails = Monitro sawl cyfrif e-bost
@@ -198,7 +198,7 @@ appears-in-x-breaches =
        *[other] Yn ymddangos mewn { $breachCount } tor-data.
     }
 check-for-breaches = Gwirio am Dor-data
-find-out-what-hackers-know = Gweld beth mae hacwyr eisoes yn ei wybod amdanoch chi. Dysgwch sut i aros un cam o'u blaen.
+find-out-what-hackers-know = Dyma beth mae hacwyr eisoes yn ei wybod amdanoch chi. Dysgwch sut i aros un cam o'u blaen.
 search-for-your-email = Chwiliwch am eich cyfeiriad e-bost mewn tor-data cyhoeddus sy'n mynd yn ôl i 2007.
 back-to-top = Nôl i'r Brig
 comm-opt-0 = E-bostiwch fi os yw un o'm cyfeiriadau e-bost isod yn ymddangos mewn achos o dor-data.
