@@ -136,6 +136,10 @@ spam-list-breach-plural = Oñembyai ñandutiveve rysýi eipota’ỹva
 what-data = Mba’ete mba’ekuaarã ivaikuaa:
 sensitive-sites = ¿Mba’e ojapo { -product-name } umi tenda ikangývare?
 delayed-reporting-headline = Mba’ére eha’arõiterei ñembyai ñemomarandu
+delayed-reporting-copy =
+    Ikatu oraha heta jasy térã ary umi credencial ojehechakuaáva rehegua ¶
+    mba’ekuaarã ñembyaíva osẽkuaáva ñanduti ypytũme. Umi ñembyai ojuajúta ñane mba’ekuaarã rendápe ¶
+    pya’ete ojejuhu térã ojehechajey rire.
 about-fxm-headline = { -product-name } rehegua
 # How Firefox Monitor works
 how-fxm-works = Mba’écha omba’apo { -product-name }
