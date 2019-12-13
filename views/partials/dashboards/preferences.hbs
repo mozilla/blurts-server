@@ -1,47 +1,63 @@
 {{#getUserPreferences}}
-  <section class="container clear-header preferences sr" data-page-label="Preferences">
-    <div class="row jst-cntr no-vertical-padding">
-      <div class="pref">
-        <h2 class="pref-headline">{{ getString "monitor-preferences" }}</span></h2>
-      </div>
+  <section class="clear-header preferences sr jst-cntr flx" data-page-label="Preferences">
+    <div class="pref">
+      <h2 class="pref-headline">{{ getString "monitor-preferences" }}</h2>
     </div>
   </section>
-  <section>
-    <div class="row flx-col">
-      <div class="pref">
-        <h3 class="pref-section-headline section-headline txt-purple7">{{ getString "breach-alert-notifications" }}</h3>
-        <section>
-          {{#each communicationOptions}}
-            <label class="radio-container">
-              <input class="radio-comm-option" data-comm-option="{{ optionId }}" data-form-action="update-comm-option" data-csrf-token="{{ ./../../csrfToken }}" type="radio" {{ optionChecked }} name="1">
-              <span class="radio-label">{{{ labelString }}}</span>
-              <span class="checkmark"></span>
-            </label>
-          {{/each}}
-        </section>
-      </div>
-      <div class="pref">
-        <h3 class="pref-section-headline section-headline txt-purple7">{{ getString "email-addresses-title" }}</h3>
-        {{#each emails}}
-          {{#ifCompare email_addresses.length ">" 0}}
-            <h4 class="email-pref {{ this.className }}">{{ this.subhead }}</h4>
-            {{#each this.email_addresses}}
-              {{> email-card prefs=./../../../preferences csrfToken=./../../csrfToken}}
-            {{/each}}
-          {{/ifCompare}}
+  <section class="flx flx-col">
+  
+    <!-- Communication Preferences -->
+    <div class="pref">
+      <h3 class="pref-section-headline section-headline txt-purple7">{{ getString "breach-alert-notifications" }}</h3>
+      <div>
+        {{#each communicationOptions}}
+          <label class="radio-container">
+            <input class="radio-comm-option" data-comm-option="{{ optionId }}" data-form-action="update-comm-option" data-csrf-token="{{ ./../../csrfToken }}" type="radio" {{ optionChecked }} name="1">
+            <span class="radio-label overflow-break">{{{ labelString }}}</span>
+            <span class="checkmark"></span>
+          </label>
         {{/each}}
       </div>
-      <div class="pref">
-        {{!-- TODO: remove this when https://github.com/mozilla/blurts-server/issues/1148 is fixed --}}
-        {{#ifCompare emails.total ">=" 15}}
-          <h4 class="email-pref">{{ getString "user-add-too-many-emails" }}</h4>
-        {{/ifCompare}}
-        {{#ifCompare emails.total "<" 15}}
-          <h4 class="email-pref add-new">{{ getString "add-new-email" }}</h4>
-          {{> forms/add-another-email-form csrfToken=../csrfToken}}
-        {{/ifCompare}}
-      </div>
-      <div class="pref remove">
+    </div>
+
+    <!-- Primary / Verified / Unverified Emails -->
+    <div class="pref">
+      <h3 class="pref-section-headline section-headline txt-purple7">{{ getString "email-addresses-title" }}</h3>
+
+      <!-- Primary Email -->
+      <h4 class="email-pref {{ emails.primary.className }}">{{ emails.primary.subhead }}</h4>
+      {{#each emails.primary.email_addresses}}
+        {{> email-card prefs=./../../preferences}}
+      {{/each}}
+
+      <!-- Secondary Emails -->
+      {{#ifCompare emails.secondary.email_addresses.length ">" 0}}
+        <h4 class="email-pref {{ emails.secondary.className }}">{{ emails.secondary.subhead }}</h4>
+        {{#each emails.secondary.email_addresses}}
+          {{> email-card prefs=./../../preferences csrfToken=./../csrfToken}}
+        {{/each}}
+      {{/ifCompare}}
+
+      <!-- Add New Email Form -->
+      {{!-- TODO: remove this when https://github.com/mozilla/blurts-server/issues/1148 is fixed --}}
+      {{#ifCompare emails.total ">=" 15}}
+        <h4 class="email-pref">{{ getString "user-add-too-many-emails" }}</h4>
+      {{/ifCompare}}
+      {{#ifCompare emails.total "<" 15}}
+        <h4 class="email-pref add-new">{{ getString "add-new-email" }}</h4>
+        {{> forms/add-another-email-form csrfToken=../csrfToken}}
+      {{/ifCompare}}
+
+      <!-- Unverified Emails -->
+      {{#ifCompare emails.unverified.email_addresses.length ">" 0}}
+        <h4 class="email-pref {{ emails.unverified.className }}">{{ emails.unverified.subhead }}</h4>
+        {{#each emails.unverified.email_addresses}}
+          {{> email-card prefs=./../../preferences csrfToken=./../csrfToken}}
+        {{/each}}
+      {{/ifCompare}}
+
+      <!-- Remove Firefox Monitor -->
+      <div class="pref-remove">
         {{> dashboards/remove-fxm-headline-subhead }}
         <a class="remove-fxm btn-transparent btn-red btn-small" href="/user/remove-fxm" {{> analytics/internal-link eventLabel="Remove FXM - Dashboard" }}>{{ getString "remove-fxm" }}</a>
       </div>

@@ -11,6 +11,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
 
 
@@ -357,3 +358,11 @@ five-myths-desc = 了解如何避免設定密碼的壞習慣，讓密碼更難�
 take-further-steps-desc = 了解如何降低身分遭竊的風險，防止財物損失。
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = 變更已儲存！
+# Section headline
+rec-section-headline = 這場資料外洩事件我該怎麼辦？
+rec-section-subhead = 我們建議您採取下列行動，來確保個人資訊安全，並保護您的數位身分。
+# Section headline
+rec-section-headline-no-pw = 該做哪些事來保護個資？
+rec-section-subhead-no-pw = 雖然這次資料外洩事件沒有流出密碼，但還是有一些更能保護個人資訊的方式。
+# Button
+see-additional-recs = 看其他建議

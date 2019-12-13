@@ -10,6 +10,11 @@ email-address = Ñanduti veve kundaharape:
 legal = Añetegua
 # Unsubscribe link in email.
 email-unsub-link = Ñemboheraguapy jeheja
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    Og̃uahẽ ndéve ko ñanduti veve eñemboheguapy rupi ha omboúta ndéve kyhyjerã { -product-name }. 
+    Kóva ha’e ñanduti veve ijeheguíva. Eñepytyvõ hag̃ua eike { $faqLink }-pe.
 # Button text that takes the user to their signed in user dashboard.
 view-my-dashboard-cta = Ehecha Ñangarekoha mba’erupa
 # Button text
@@ -35,6 +40,10 @@ email-subject-no-breaches = { -product-name } ndojuhúi ñembyai kuaapyrépe
 email-subject-verify = Ehechajey ne ñanduti veve { -product-name } peg̃uarã
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Eikuaave { $fxmLink } rehegua
+email-breach-alert-blurb =
+    { -product-name } omombe’u ndéve mba’ekuaarã ñembyai ne mba’eteéva rehegua. 
+    
+    Og̃uahẽramo mba’emimi mba’ekuaarã ñembyai rehegua ambue mba’apohaguasu guive.
 # List headline
 faq-list-headline = Porandu py’ỹiguáva
 # Link Title
@@ -53,6 +62,9 @@ monitor-another-email = ¿Eporanduse ambue ñanduti veve rupive?
 # Subject line of email
 pre-fxa-subject = { -product-name } mbohekopyahu
 pre-fxa-headline = ¿Mba’e pe iñambuéva { -product-name } ndive
+pre-fxa-blurb =
+    Kóva ha’e iñambuéva eñemboheraguapy guive { -product-name }-pe, pe mba’epuru 
+    ohechaa mba’ekuaarã ñembyai ojekuaáva ne marandurãite. Rombojuajuhína Firefox mba’ete ndive.
 pre-fxa-tout-1 = Ejesarekóke ñembyai pyahúre
 pre-fxa-tout-2 = Ereko mba’erupa tuichaháicha
 pre-fxa-p-2 =

@@ -11,6 +11,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox-Datenschutznetzwerk
 
 
 
@@ -376,3 +377,11 @@ five-myths-desc = Erfahre, wie du schlechte Passwort-Gewohnheiten vermeidest, di
 take-further-steps-desc = Erfahre, wie du das Risiko eines Identitätsdiebstahls verringern kannst, um finanzielle Verluste zu vermeiden.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Änderungen gespeichert!
+# Section headline
+rec-section-headline = Was müssen Sie bei diesem Datenleck tun?
+rec-section-subhead = Wir empfehlen Ihnen, diese Schritte zu unternehmen, um Ihre persönlichen Daten und Ihre digitale Identität zu schützen.
+# Section headline
+rec-section-headline-no-pw = Was tun, um Ihre persönlichen Daten zu schützen?
+rec-section-subhead-no-pw = Obwohl bei diesem Datenleck keine Passwörter offengelegt wurden, können Sie dennoch Maßnahmen ergreifen, um Ihre persönlichen Daten besser zu schützen.
+# Button
+see-additional-recs = Siehe zusätzliche Empfehlungen

@@ -11,6 +11,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
 
 
@@ -307,6 +308,7 @@ see-if-youve-been-part = Veri ihlallerinde verileriniz çalınmış olabilir mi?
 get-ongoing-breach-monitoring = İstediğiniz sayıda e-posta adresinin ihlallerini sürekli olarak takip edin.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Öğrenin
+new-unsub-error = { -product-name } tarafından gönderilen e-postalardaki linkleri kullanarak üyelikten çıkabilirsiniz.
 other-known-breaches-found =
     { $breachCount ->
         [one] Ancak başka { $breachCount } ihlalde yer alıyor.
@@ -381,3 +383,8 @@ five-myths-desc = Hacker'ların işini kolaylaştıran kötü parola alışkanl�
 take-further-steps-desc = Mali kaybı önlemek üzere kimlik hırsızlığı risklerini nasıl azaltabileceğinizi öğrenin.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Değişiklikler kaydedildi!
+# Section headline
+rec-section-headline = Bu ihlalle ilgili ne yapmalısınız?
+# Section headline
+rec-section-headline-no-pw = Kişisel bilgilerinizi korumak için ne yapmalısınız?
+rec-section-subhead-no-pw = Bu ihlal kapsamında parolalar ele geçirilmemiş olsa da kişisel bilgilerinizi daha iyi korumak için atabileceğiniz adımlar var.

@@ -262,15 +262,16 @@ input[type="radio"]:focus ~ .checkmark {
 .radio-container {
   margin-bottom: 24px;
   display: flex;
-  position: relative;
-  min-height: 32px;
-  align-items: center;
+}
+
+.radio-container:last-of-type {
+  margin-bottom: 0;
 }
 
 .radio-label {
   padding-left: 32px;
   font-weight: 400;
-  color: var(--textLight);
+  color: var(--grey8);
   font-size: 16px;
   line-height: 1.5;
   padding-top: 2px;

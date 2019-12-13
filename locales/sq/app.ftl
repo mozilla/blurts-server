@@ -11,6 +11,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
 
 
@@ -382,3 +383,11 @@ five-myths-desc = Mësoni si të shmangen huqe të këqija për fjalëkalimet q�
 take-further-steps-desc = Shihni se si të ulen rreziqet e vjedhjes së identitetit për të parandaluar humbje financiare.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Ndryshimet u ruajtën!
+# Section headline
+rec-section-headline = Ç’të bëhet për këtë shkelje
+rec-section-subhead = Këshillojmë të ndërmerrni këto hapa për t’i mbajtur të dhënat tuaja personale të sigurta dhe për të mbrojtur identitetin tuaj dixhital.
+# Section headline
+rec-section-headline-no-pw = Ç’të bëhet për të mbrojtur të dhënat tuaja personale
+rec-section-subhead-no-pw = Edhe pse në këtë shkelje nuk u ekspozuan fjalëkalime, prapë ka hapa që është mirë të ndërmerren për të mbrojtur të dhënat tuaja personale.
+# Button
+see-additional-recs = Shihni Rekomandime Shtesë

@@ -1,8 +1,12 @@
 .welcome-back {
-  font-size: 1.1rem;
-  font-family: "Metropolis", sans-serif;
-  display: inline-block;
-  line-height: 130%;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--grey8);
+  margin: auto;
+}
+
+.dashboard.clear-header {
+  padding-top: 116px;
 }
 
 h2.pref-headline {
@@ -19,28 +23,30 @@ h3.pref-section-headline.remove {
 }
 
 h2.pref-headline.breach-summary {
-  margin-bottom: var(--padding);
+  margin-top: calc(var(--padding) * 5);
+  margin-bottom: 24px;
 }
 
 .pref {
   width: 100%;
-  max-width: 620px;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   align-self: center;
-  justify-self: center;
-  padding: 0;
 }
 
-.pref.remove {
+.pref .email-add {
+  margin-bottom: 0;
+}
+
+.pref-remove {
   margin-bottom: 60px;
-  display: block;
 }
 
-.container.preferences {
+.preferences {
   background-size: auto;
   padding-top: 16rem;
-  padding-bottom: 60px;
+  padding-bottom: 40px;
 }
 
 .email-pref {
@@ -48,10 +54,6 @@ h2.pref-headline.breach-summary {
   margin: 40px 0 12px 0;
   font-weight: 600;
   color: #686869;
-}
-
-.email-pref.add-new {
-  margin-top: 60px;
 }
 
 .email-pref.fxa-primary-email {
@@ -75,10 +77,6 @@ h2.pref-headline.breach-summary {
   display: inline-block;
 }
 
-.radio-label span.bold {
-  color: var(--ink);
-}
-
 .trash-can {
   position: absolute;
   top: 0;
@@ -90,11 +88,12 @@ h2.pref-headline.breach-summary {
 }
 
 .link-header-wrapper {
-  margin: var(--padding) 0;
+  margin: 80px 0 60px 0;
 }
 
 .email-cards {
   width: 100%;
+  margin-bottom: 80px;
 }
 
 span.dashboard-email-sent {
@@ -130,23 +129,32 @@ span.email-confirmed {
   padding: 60px 0;
 }
 
-@media screen and (max-width: 1100px) {
-  .email-cards .e-info {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
 @media screen and (max-width: 900px) {
   .pref {
-    padding: 0 var(--padding);
+    padding: 0 24px;
   }
 }
 
 @media screen and (max-width: 800px) {
-  .email-cards,
-  .mw-750.no-vertical-padding {
-    padding: 1rem;
+  .email-cards {
+    margin-bottom: 40px;
+  }
+
+  .link-header-wrapper {
+    margin-bottom: 24px;
+  }
+
+  .email-cards .e-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dashboard.clear-header {
+    padding-top: 156px;
+  }
+
+  .pref .email-add {
+    margin-bottom: 8px;
   }
 }
 
@@ -155,34 +163,12 @@ span.email-confirmed {
     font-size: 2rem;
   }
 
-  h2.pref-headline.breach-summary {
-    margin-bottom: var(--padding);
-  }
-
-  .link-header-wrapper {
-    margin-bottom: 0;
-  }
-
-  .welcome-back,
-  .section-headline.dash {
-    font-size: 1.1rem;
-    text-align: left;
-  }
-
   .welcome-back {
-    padding-top: 0;
+    font-size: 14px;
   }
 
   .pref {
-    padding: 0 0.5rem;
-  }
-
-  h3.pref-section-headline {
-    margin: 3rem 0 2rem 0;
-  }
-
-  .email-cards,
-  .mw-750.no-vertical-padding {
-    padding: 0.5rem;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 }

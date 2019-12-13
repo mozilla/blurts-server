@@ -1,7 +1,7 @@
 <main class="container bg-light clear-header" {{> analytics/results_page_label }}>
   <div class="row jst-cntr scan-results">
 
-    <div class="mw-860 headline-col">
+    <div class="mw-860 headline-col overflow-break">
       {{#if scannedEmailId }} <!-- show the email address that was scanned -->
         <p id="scanned-email-address" class="scanned-email-address">{{ getString "results-for" userEmail="" }} <span id="scannedEmail" data-scanned-email-id={{ scannedEmailId }} class="bold"></span></p>
       {{/if}}

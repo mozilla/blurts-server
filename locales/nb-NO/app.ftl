@@ -268,16 +268,63 @@ other-breaches-found =
         [one] Den dukket imidlertid opp i { $breachCount } annen datalekkasje.
        *[other] Den dukket imidlertid opp i { $breachCount } andre datalekkasjer.
     }
+fb-comp-only = Denne e-postadressen forekom i datalekkasjen { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+       *[other] Denne e-postadressen forekom i { $breachCount } kjente datalekkasjer, inkludert { $breachName }.
+    }
+no-other-breaches-found = Ingen andre datalekkasjer ble funnet i dette grunnleggende søket.
+no-results-blurb = Beklager, men denne datalekkasjen er ikke i vår database.
+all-breaches-headline = Alle datalekkasjar i { -product-name }
 search-breaches = Søk etter datalekkasjer
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Viser:
 
 ## Updated error messages
 
+error-bot-headline = Søk er midlertidig suspendert
+error-csrf-headline = Tidsavbrudd i økten
+error-csrf-blurb = Bruk tilbake-knappen for nettleseren, last inn siden på nytt og prøv igjen.
+error-invalid-unsub = Slik melder du deg av abonnementet på { -product-name }-varsler
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] e-postadresse som overvåkes
+       *[other] e-postadresser som overvåkes
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] passord eksponert fra alle datalekkasjer.
+       *[other] passord eksponert fra alle datalekkasjer.
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] kjente datalekkasje har eksponert din informasjon
+       *[other] kjente datalekkasjer har eksponert din informasjon
+    }
+# Button
+see-additional-breaches = Se ytterligere datalekkasjer
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Denne e-postadressen er involvert i 1 kjent datalekkasje
+       *[other] Denne e-postadressen er involvert i { $breachCount } kjente datalekkasje
+    }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Resultat for: { $userEmail }
+other-monitored-emails = Andre overvåkede e-postadresser
+email-verification-required = E-postbekreftelse kreves
+fxa-primary-email = { -brand-fxa } E-post - primær
+what-is-a-website-breach = Hva er en nettstedsdatalekkasje?
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Finn ut
 # Title

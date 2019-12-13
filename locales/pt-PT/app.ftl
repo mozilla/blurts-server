@@ -192,6 +192,7 @@ avoid-personal-info-blurb = É fácil encontrar aniversários, moradas e nomes d
 ## What to do after data breach tips
 
 change-pw = Altere a sua palavra-passe
+change-pw-site = Altere a palavra-passe para este site
 even-for-old = Mesmo para as contas antigas, é importante atualizar a sua palavra-passe.
 make-new-pw-unique = Torne a nova palavra-passe diferente e única
 strength-of-your-pw = A força das suas palavras-passe tem um impacto direto na sua segurança online.
@@ -362,6 +363,9 @@ other-known-breaches-found =
 additional-information-including = Informação adicional, incluindo:
 # Title
 email-addresses-title = Endereços de e-mail
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Sinopse
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
@@ -421,3 +425,5 @@ create-strong-passwords-desc = Torne as suas palavras-passe fortes, seguras e di
 steps-to-protect-desc = Compreenda as ameaças mais comuns e saiba ao que deve estar atento.
 five-myths-desc = Saiba como evitar más práticas para palavras-passe que facilitam o trabalho aos piratas.
 take-further-steps-desc = Descubra como mitigar os riscos de roubo de identidade que levam a perdas financeiras.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Alterações guardadas!

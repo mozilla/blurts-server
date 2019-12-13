@@ -176,7 +176,7 @@ function toggleMobileFeatures(topNavBar) {
   const win = window;
   const windowWidth = win.innerWidth;
   if (windowWidth > 800) {
-    const emailCards = document.querySelectorAll(".mw-750.email-card:not(.zero-breaches)");
+    const emailCards = document.querySelectorAll(".breaches-dash.email-card:not(.zero-breaches)");
       emailCards.forEach(card => {
         card.classList.add("active");
       });
@@ -184,7 +184,7 @@ function toggleMobileFeatures(topNavBar) {
     }
 
   const bentoButton = document.querySelector(".fx-bento-content");
-  const closeActiveEmailCards = document.querySelectorAll(".mw-750.email-card.active");
+  const closeActiveEmailCards = document.querySelectorAll(".breaches-dash.email-card.active");
     closeActiveEmailCards.forEach(card => {
       card.classList.remove("active");
     });

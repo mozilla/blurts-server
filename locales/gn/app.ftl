@@ -11,6 +11,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Ñanduti Ñemigua
 
 
 
@@ -77,7 +78,19 @@ fxa-pwt-summary-2 =
 fxa-pwt-summary-4 =
     Ñe’ẽñemi ñangarekoha 1Password, LastPass, Dashlane ha Bitwarden oñongatu ne 
     ñe’ẽñemi ha omoinge ñanduti rendápe. Ikatu avei nepytyvõ emoheñói hag̃ua ñe’ẽñemi hekorosãva.
+fxa-pwt-summary-6 =
+    Umi mba’ekuaarã ñembyai okakuaave. Ne maranduete ojehecha mba’ekuaarã ñembyai pyahúpe, 
+    { -product-name } ombou kyhyjerã — ikatukuaa hag̃uáicha emo’ã ne mba’ete.
+fxa-what-to-do-blurb-1 =
+    Eñepyrũkuaárõ tembiapo, eñe’ẽ ñanduti renda ndive eporandu hag̃ua mba’éichapa embohekopyahúta. 
+    ¿Ehecha peteĩ mba’ete eikuaa’ỹva? Ne mba’ekuaarã ikatu oñevendémara’e 
+    térã oñemyasãima. Kóva avei ikatu ha’e mba’ete nderesaráiva emoheñói hag̃ua térã  peteĩ mba’apohaguasu omoambuéva héra.
 fxa-what-to-do-subhead-2 = Anive eipuru ñe’ẽñemi ojekuaareíva ha emoambue opaite tenda eipuruhápe.
+fxa-wtd-blurb-2 = Los piratas informáticos pueden intentar reutilizar tu contraseña expuesta para acceder a otras cuentas. Crea una contraseña diferente y única para cada cuenta, especialmente para tu cuenta bancaria, tu correo electrónico y otros sitios web en los que guardas información personal.
+fxa-what-to-do-blurb-3 =
+    Heta mba’evai ohechauka ñanduti veve ha ñe’ẽñemi año, hákatu oĩ avei omoinge marandu virugua ñemiguáva. ¶
+    Ne mba’ete banco térã kuatia’atã ñemurã papapy ojehechakuaa kuri, emombe’u ne báncope ikatuha oiko mba’evai. ¶
+    Ehechajey umi je’epyre eikuaa’ỹva.
 fxa-what-to-do-subhead-4 = Eñepytyvõuka nemandu’a hag̃ua opaite ne ñe’ẽñemíre ha ereko tekorosãme.
 # Alerts is a noun
 sign-up-for-alerts = Eñemboheraguapy og̃uahẽ hag̃ua kyhyjerã
@@ -123,6 +136,10 @@ spam-list-breach-plural = Oñembyai ñandutiveve rysýi eipota’ỹva
 what-data = Mba’ete mba’ekuaarã ivaikuaa:
 sensitive-sites = ¿Mba’e ojapo { -product-name } umi tenda ikangývare?
 delayed-reporting-headline = Mba’ére eha’arõiterei ñembyai ñemomarandu
+delayed-reporting-copy =
+    Ikatu oraha heta jasy térã ary umi credencial ojehechakuaáva rehegua ¶
+    mba’ekuaarã ñembyaíva osẽkuaáva ñanduti ypytũme. Umi ñembyai ojuajúta ñane mba’ekuaarã rendápe ¶
+    pya’ete ojejuhu térã ojehechajey rire.
 about-fxm-headline = { -product-name } rehegua
 # How Firefox Monitor works
 how-fxm-works = Mba’écha omba’apo { -product-name }
@@ -197,6 +214,10 @@ your-info-was-discovered-blurb =
     ne ñanduti veve ojehechávo mba’ekuaarã ñembyaípe. Ápe oĩ roikuaáva ñembyai rehegua.
 what-to-do-after-breach = Mba’e ejapóta oñembyai rire ne mba’ekuaarã:
 ba-next-step-1 = Emoambue ne ñe’ẽñemi hekorosã ha ha’eñóvare.
+ba-next-step-blurb-1 =
+    Ñe’ẽñemi hekorosãva ombojopyru tai’i ha taiguasu, 
+    papapy ha ambueve. Ndoguerekói marandu mba’eteéva aichagua 
+    kundaharape, arareñói térã ára pehengue rehegua.
 ba-next-step-2 = Anive eipuru ñe’ẽñemi ojekuaareíva.
 ba-next-step-3 = Eñepytyvõuka emoheñói hag̃ua ñe’ẽñemi oikóva ha ereko tekorosãme.
 ba-next-step-blurb-3 =
@@ -360,3 +381,11 @@ five-myths-desc = Eikuaa mb’aéichapa emboykéta ñe’ẽñemi jepuruvai nomb
 take-further-steps-desc = Ehecha mba’éichapa emboykéta teratee ñemonda ani hag̃ua ñe apañuãi viru rekópe.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = ¡Moambuepy ñongatupyre!
+# Section headline
+rec-section-headline = ¿Mba’e ejapóta ko ñembyaípe?
+rec-section-subhead = Ro’e ndéve eguata hag̃ua ko tapére ha emohekorosã ne maranduete ha péicha emo’ã nde reratee ñandutípe.
+# Section headline
+rec-section-headline-no-pw = Mba’e ejapóta emo’ã hag̃ua ne maranduete
+rec-section-subhead-no-pw = Umi ñe’ẽñemi ndojehechakuaáiramo jeje ko ñembyaípe, oĩ gueteri heta mba’e ikatúva rejapo emo’ãve hag̃ua ne maranduete.
+# Button
+see-additional-recs = Ehecha ñe’ẽporã jo’apyre

@@ -66,7 +66,7 @@ job-titles = professions
 mac-addresses = adresses MAC
 marital-statuses = état matrimonial
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
-mnemonic-phrases = phrases mnémoniques
+mnemonic-phrases = expressions mnémoniques
 names = noms
 nationalities = nationalités
 net-worths = valeurs nettes

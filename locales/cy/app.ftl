@@ -11,6 +11,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Rhwydwaith Preifat Firefox
 
 
 
@@ -106,12 +107,12 @@ home = Cartref
 # Link title
 breaches = Tor-data
 # Link title
-security-tips = Cynghorion Diogelwch
+security-tips = Awgrymiadau Diogelwch
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Agor llywio { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
-latest-breach = YCHWANEGWYD Y TOR-DATA DIWEDDARAF
+latest-breach = DYMA'R TOR-DATA DIWEDDARAF
 # Link title
 more-about-this-breach = Rhagor am y tor-data hwn
 take-control = Rheolwch eich data personol eich hun.
@@ -119,7 +120,7 @@ cant-stop-hackers = Does dim modd rhwystro hacwyr rhag hacio. Ond gallwch osgoi 
 read-more-tips = Darllen Rhagor o Awgrymiadau Diogelwch
 how-hackers-work = Deall sut mae hacwyr yn gweithio
 monitor-your-online-accounts = Cofrestrwch ar gyfer monitro tor-data gyda { -brand-fxa }
-stay-alert = Aros yn effro i dor-data newydd
+stay-alert = Cadw'n effro am dor-data newydd
 if-your-info = Os bydd eich manylion yn ymddangos mewn tor-data newydd, byddwn yn anfon rhybudd atoch.
 search-all-emails = Chwiliwch am eich holl gyfeiriadau e-bost am dor-data a chael rhybudd am fygythiadau newydd.
 monitor-several-emails = Monitro sawl cyfrif e-bost
@@ -197,7 +198,7 @@ appears-in-x-breaches =
        *[other] Yn ymddangos mewn { $breachCount } tor-data.
     }
 check-for-breaches = Gwirio am Dor-data
-find-out-what-hackers-know = Canfod beth mae hacwyr eisoes yn ei wybod amdanoch chi. Dysgwch sut i aros un cam o'u blaen.
+find-out-what-hackers-know = Dyma beth mae hacwyr eisoes yn ei wybod amdanoch chi. Dysgwch sut i aros un cam o'u blaen.
 search-for-your-email = Chwiliwch am eich cyfeiriad e-bost mewn tor-data cyhoeddus sy'n mynd yn ôl i 2007.
 back-to-top = Nôl i'r Brig
 comm-opt-0 = E-bostiwch fi os yw un o'm cyfeiriadau e-bost isod yn ymddangos mewn achos o dor-data.
@@ -351,7 +352,7 @@ security-tips-headline = Awgrymiadau diogelwch i ddiogelu eich hun rhag hacwyr
 steps-to-protect = Camau i'w cymryd i ddiogelu eich hunaniaeth ar-lein
 take-further-steps = Cymrwch gamau pellach i ddiogelu eich hunaniaeth
 alert-about-new-breaches = Rhowch wybod i mi am dor-data newydd
-see-if-youve-been-part = Gweld os ydych wedi bod yn rhan o dor-data ar-lein.
+see-if-youve-been-part = Ydych chi wedi bod yn rhan o dor-data ar-lein?
 get-ongoing-breach-monitoring = Derbyn monitro tor-data parhaus ar gyfeiriadau e-bost lluosog.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Canfod
@@ -434,3 +435,11 @@ five-myths-desc = Dysgwch sut i osgoi arferion cyfrinair gwael sy'n gwneud gwait
 take-further-steps-desc = Darganfyddwch sut i leihau risgiau dwyn hunaniaeth er mwyn rhwystro colledion ariannol.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Newidiadau wedi'u cadw!
+# Section headline
+rec-section-headline = Beth i'w wneud am y tor-data hwn
+rec-section-subhead = Rydym yn argymell eich bod yn cymryd y camau hyn i gadw'ch manylion personol yn ddiogel ac amddiffyn eich hunaniaeth ddigidol.
+# Section headline
+rec-section-headline-no-pw = Beth i'w wneud i ddiogelu eich manylion personol
+rec-section-subhead-no-pw = Er nad oedd cyfrineiriau wedi'u hamlygu yn y tor-data hwn, mae yna gamau y gallwch eu cymryd o hyd i ddiogelu eich manylion personol yn well.
+# Button
+see-additional-recs = Gweler yr Argymhellion Ychwanegol

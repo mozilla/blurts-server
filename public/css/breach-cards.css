@@ -1,23 +1,13 @@
 .breach-card {
   --logoDmns: 24px;
   --logoMargin: 20px;
-  --breachInfoPadding: calc(var(--logoMargin) * 2 + var(--logoDmns));
 
-  padding: 1.5rem  3.25rem 1.5rem 1.5rem;
+  padding: 20px;
   border-radius: 8px;
   display: flex;
-  flex-direction: row;
-  overflow: hidden;
   margin: 0.5rem;
-  transform: scale(1);
   color: var(--ink);
   background-color: rgba(255, 255, 255, 1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.15s ease-in-out;
-}
-
-a.breach-card:hover {
-  opacity: 1;
 }
 
 .breach-key {
@@ -35,15 +25,6 @@ a.breach-card:hover {
 .breach-key,
 .breach-value {
   line-height: 1.5;
-}
-
-/* .more-about-this-breach {
-  font-size: 14px;
-} */
-
-.breach-card:hover {
-  transform: scale(1.01);
-  transition: all 0.15s ease-in-out;
 }
 
 .breach-title {
@@ -110,12 +91,6 @@ a.breach-card:hover {
   .three-up {
     max-width: 48%;
     flex: 1 1 48%;
-  }
-
-  .breach-card.ec.two-up {
-    flex: 1 1 100%;
-    display: none;
-    max-width: 100%;
   }
 
   .email-card.active .breach-card.ec.two-up {
