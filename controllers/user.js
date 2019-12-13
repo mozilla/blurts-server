@@ -125,16 +125,36 @@ async function add(req, res) {
   res.redirect("/user/preferences");
 }
 
-async function bundleVerifiedEmails(email, ifPrimary, id, verificationStatus, allBreaches) {
+function getResolvedBreachesForEmail(user, email) {
+  if (typeof user.resolved_breaches !== "object") {
+    return [];
+  }
+  return user.resolved_breaches.hasOwnProperty(email) ? user.resolved_breaches[email] : [];
+}
+
+function annotateFoundBreachesAsResolvedOrNot(foundBreaches, resolvedBreaches) {
+  const annotatedFoundBreaches = [];
+  foundBreaches.forEach( (breach, index) => {
+    const IsResolved = resolvedBreaches.includes(index) ? true : false;
+    const annotatedBreach = Object.assign({IsResolved, recencyIndex: index}, breach);
+    annotatedFoundBreaches.push(annotatedBreach);
+  });
+  return annotatedFoundBreaches;
+}
+
+async function bundleVerifiedEmails(options) {
+  const { user, email, recordId, recordVerified, allBreaches} = options;
   const lowerCaseEmailSha = sha1(email.toLowerCase());
   const foundBreaches = await HIBP.getBreachesForEmail(lowerCaseEmailSha, allBreaches, true);
+  const resolvedBreaches = getResolvedBreachesForEmail(user, email);
+  const annotatedFoundBreaches = annotateFoundBreachesAsResolvedOrNot(foundBreaches, resolvedBreaches);
 
   const emailEntry = {
     "email": email,
-    "breaches": foundBreaches,
-    "primary": ifPrimary,
-    "id": id,
-    "verified": verificationStatus,
+    "breaches": annotatedFoundBreaches,
+    "primary": email === user.primary_email,
+    "id": recordId,
+    "verified": recordVerified,
   };
 
   return emailEntry;
@@ -144,11 +164,10 @@ async function getAllEmailsAndBreaches(user, allBreaches) {
   const monitoredEmails = await DB.getUserEmails(user.id);
   let verifiedEmails = [];
   const unverifiedEmails = [];
-  verifiedEmails.push(await bundleVerifiedEmails(user.primary_email, true, user.id, user.primary_verified, allBreaches));
+  verifiedEmails.push(await bundleVerifiedEmails({user, email: user.primary_email, recordId: user.id, recordVerified: user.primary_verified, allBreaches}));
   for (const email of monitoredEmails) {
     if (email.verified) {
-      const formattedEmail = await bundleVerifiedEmails(email.email, false, email.id, email.verified, allBreaches);
-      verifiedEmails.push(formattedEmail);
+      verifiedEmails.push(await bundleVerifiedEmails({user, email: email.email, recordId: email.id, recordVerified: email.verified, allBreaches}));
     } else {
       unverifiedEmails.push(email);
     }
