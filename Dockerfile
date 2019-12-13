@@ -2,6 +2,8 @@ FROM node:10-alpine
 
 RUN addgroup -g 10001 app && \
     adduser -D -G app -h /app -u 10001 app
+RUN npm update -g
+RUN rm -rf /tmp/*
 
 WORKDIR /app
 
