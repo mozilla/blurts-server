@@ -1,5 +1,7 @@
 main.breach-detail {
   min-height: 40vh;
+  padding-left: 24px;
+  padding-right: 24px;
   color: var(--grey1);
 }
 
@@ -11,35 +13,27 @@ main.breach-detail {
   text-decoration: underline;
 }
 
+.delayed-reporting {
+  margin-top: 18px;
+  display: inline-block;
+}
+
 .detail-section {
-  padding: 40px 0;
+  padding: 60px 0;
 }
 
-.feat-img.change-password {
-  background-image: url("/img/svg/change-password.svg");
+.detail-section.bg-split {
+  padding: 0 0 20px 0;
 }
 
-.feat-img.stronger-password {
-  background-image: url("/img/svg/stronger-password.svg");
-}
-
-.feat-img.manage-password {
-  background-image: url("/img/svg/manage-password.svg");
-}
-
-.feat-img.data-compromised {
-  background-image: url("/img/svg/data-compromised.svg");
-  margin-top: 0 !important;
-}
-
-.feat-img.protect-personal-info {
-  background-image: url("/img/svg/protect-personal-info.svg");
-  margin-top: 0 !important;
+.bg-split .mw-700 {
+  padding: 0;
 }
 
 .breach-detail-headline {
   margin: auto auto 8px auto;
   color: var(--ink);
+  max-width: 100%;
 }
 
 .breach-detail-logo-wrapper {
@@ -62,7 +56,7 @@ main.breach-detail {
 }
 
 .overview p {
-  margin: 20px 0;
+  margin: 20px 0 0 0;
 }
 
 .additional-data-types {
@@ -83,16 +77,16 @@ main.breach-detail {
 .priority-data-classes-list {
   width: 100%;
   flex-wrap: wrap;
+  margin: 0;
 }
 
 .lower-priority-data-types {
   margin-top: 0;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .priority-data-type {
-  margin-top: var(--padding);
-  margin-bottom: var(--padding);
+  margin-bottom: 28px;
 }
 
 .data-type {
@@ -104,20 +98,135 @@ main.breach-detail {
   margin: 0;
 }
 
-.what-to-do-tips {
+/* recommendations */
+
+.rec-img {
+  min-width: 52px;
+  height: 48px;
+  margin: 0 auto;
+  background-position: top center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.rec-pw-1 {
+  background-image: url("/img/recommendation-icons/change-password.svg");
+}
+
+.rec-pw-2 {
+  background-image: url("/img/recommendation-icons/change-password.svg");
+}
+
+.rec-pw-3 {
+  background-image: url("/img/recommendation-icons/store-safe-place.svg");
+}
+
+.rec-pw-4 {
+  background-image: url("/img/recommendation-icons/set-2FA.svg");
+}
+
+.rec-ssn {
+  background-image: url("/img/recommendation-icons/review-credit.svg");
+}
+
+.rec-bank-acc {
+  background-image: url("/img/recommendation-icons/monitor-bank.svg");
+}
+
+.rec-cc {
+  background-image: url("/img/recommendation-icons/monitor-credit-cards.svg");
+}
+
+.rec-ip-non-us {
+  background-image: url("/img/recommendation-icons/use-mask-location-service.svg");
+}
+
+.rec-ip-us {
+  background-image: url("/img/recommendation-icons/use-mask-IP-service.svg");
+}
+
+.rec-hist-pw {
+  background-image: url("/img/recommendation-icons/change-password.svg");
+}
+
+.rec-sec-qa {
+  background-image: url("/img/recommendation-icons/unique-answers.svg");
+}
+
+.rec-phone-num {
+  background-image: url("/img/recommendation-icons/avoid-sharing-phone.svg");
+}
+
+.rec-dob {
+  background-image: url("/img/recommendation-icons/strengthen-pin-security.svg");
+}
+
+.rec-pins {
+  background-image: url("/img/recommendation-icons/strengthen-pin-security.svg");
+}
+
+.rec-address {
+  background-image: url("/img/recommendation-icons/avoid-address.svg");
+}
+
+.rec-gen-1 {
+  background-image: url("/img/recommendation-icons/unique-strong-pwds.svg");
+}
+
+.rec-gen-2 {
+  background-image: url("/img/recommendation-icons/store-safe-place.svg");
+}
+
+.rec-gen-3 {
+  background-image: url("/img/recommendation-icons/avoid-personal-info.svg");
+}
+
+.rec-gen-4 {
+  background-image: url("/img/recommendation-icons/update-regularly.svg");
+}
+
+.overflow-recs {
+  visibility: visible;
+  transition: all 0.3s ease;
+}
+
+button.fade-out {
+  opacity: 0;
+  padding-top: 0;
   padding-bottom: 0;
+  min-height: 0;
+  border: none;
+  font-size: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
 }
 
 @media screen and (max-width: 800px) {
-  .priority-data-type {
-    flex: 1 1 100%;
+  .bg-split .mw-700 {
+    padding: 0 24px;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .what-to-do-tips h2.section-headline {
+  .breach-recommendations {
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 400px;
+  }
+
+  .rec-img {
+    height: 52px;
+    width: 100%;
+    margin: 0 auto 20px;
+    background-position: bottom center;
+  }
+
+  .rec-pw-1,
+  .rec-pw-2,
+  .rec-gen-4,
+  .rec-hist-pw,
+  .rec-ip-non-us,
+  .rec-ip-us,
+  .rec-sec-qa {
+    height: 40px;
   }
 }
