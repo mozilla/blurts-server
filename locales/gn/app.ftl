@@ -81,7 +81,16 @@ fxa-pwt-summary-4 =
 fxa-pwt-summary-6 =
     Umi mba’ekuaarã ñembyai okakuaave. Ne maranduete ojehecha mba’ekuaarã ñembyai pyahúpe, 
     { -product-name } ombou kyhyjerã — ikatukuaa hag̃uáicha emo’ã ne mba’ete.
+fxa-what-to-do-blurb-1 =
+    Eñepyrũkuaárõ tembiapo, eñe’ẽ ñanduti renda ndive eporandu hag̃ua mba’éichapa embohekopyahúta. 
+    ¿Ehecha peteĩ mba’ete eikuaa’ỹva? Ne mba’ekuaarã ikatu oñevendémara’e 
+    térã oñemyasãima. Kóva avei ikatu ha’e mba’ete nderesaráiva emoheñói hag̃ua térã  peteĩ mba’apohaguasu omoambuéva héra.
 fxa-what-to-do-subhead-2 = Anive eipuru ñe’ẽñemi ojekuaareíva ha emoambue opaite tenda eipuruhápe.
+fxa-wtd-blurb-2 = Los piratas informáticos pueden intentar reutilizar tu contraseña expuesta para acceder a otras cuentas. Crea una contraseña diferente y única para cada cuenta, especialmente para tu cuenta bancaria, tu correo electrónico y otros sitios web en los que guardas información personal.
+fxa-what-to-do-blurb-3 =
+    Heta mba’evai ohechauka ñanduti veve ha ñe’ẽñemi año, hákatu oĩ avei omoinge marandu virugua ñemiguáva. ¶
+    Ne mba’ete banco térã kuatia’atã ñemurã papapy ojehechakuaa kuri, emombe’u ne báncope ikatuha oiko mba’evai. ¶
+    Ehechajey umi je’epyre eikuaa’ỹva.
 fxa-what-to-do-subhead-4 = Eñepytyvõuka nemandu’a hag̃ua opaite ne ñe’ẽñemíre ha ereko tekorosãme.
 # Alerts is a noun
 sign-up-for-alerts = Eñemboheraguapy og̃uahẽ hag̃ua kyhyjerã
