@@ -65,5 +65,22 @@ rec-pins-subhead = Reinfortia le securitate de tu PINs
 rec-pins = Un PIN forte non contine information personal como tu data de nascentia o adresse. Debe esser un numero que solmente tu cognosce e que non es facile a divinar.
 # Recommendation subhead
 rec-address-subhead = Non usa adresses in contrasignos
+rec-address = Usar adresses o le strata ubi tu cresceva debilita tu contrasignos. Post que es facile trovar tal informationes publicamente, isto rende tal contrasignos facile a divinar.
+# Recommendation subhead
+rec-gen-1-subhead = Usa un contrasigno unic e forte pro cata conto
 # Link title
 rec-gen-1-cta = Como crear contrasignos forte
+rec-gen-1 = Le reuso de contrasignos pone tote tu contos a risco. Si un contrasigno se expone, le hackers habera le clave a multe contos.
+# Recommendation subhead
+rec-gen-2-subhead = Conserva contrasignos in un loco secur
+# Link title
+rec-gen-2-cta = Mythos sur le gestores de contrasignos
+rec-gen-2 = Mitte tu credentiales in un loco secur a que solmente tu pote acceder, como un gestor de contrasignos. Isto etiam rende plus facile tener tracia de tote tu differente contrasignos.
+# Recommendation subhead
+rec-gen-3-subhead = Sia prudente quando tu divulga informationes personal
+# Link title
+rec-gen-3-cta = Leger altere consilios de securitate
+rec-gen-3 = Non forni datos personal si tu pote evitar lo. Si un sito te demanda de inserer o divulgar tu adresse de email, codice postal o numero de telephono, tu pote dicer no.
+# Recommendation subhead
+rec-gen-4-subhead = Actualisa regularmente tu programmas e applicationes
+rec-gen-4 = Actualisar tu applicationes, navigatores del web e systemas de operation rende tu apparatos plus secur. Iste actualisationes repara defectos, vulnerabilitates e problemas de securitate.
