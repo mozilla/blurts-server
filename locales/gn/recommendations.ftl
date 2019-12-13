@@ -23,6 +23,9 @@ rec-pw-4-subhead = Emboheko pe ñemoneĩ mokõi factor rehegua (2FA)
 rec-pw-4-cta = Ehecha tenda oikuave’ẽva 2FA
 # Recommendation subhead
 rec-bank-acc-subhead = Ehechameme banco pegua kuatia
+rec-bank-acc =
+    Ehecha banco pegua kuatia tembiapo vai térã oikomeme’ỹva 
+    Emombe’u ne báncope ehecháramo mba'e eikuaaporã’ỹva
 # Recommendation subhead
 rec-cc-subhead = Ehechameme kuatia’atã ñemuha kuatia
 # Recommendation subhead
