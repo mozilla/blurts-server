@@ -10,21 +10,43 @@ rec-ssn =
 rec-pw-1-subhead = 更改您的密码
 # Link title
 rec-pw-1-cta = 更改该网站密码
+# Recommendation subhead
+rec-pw-2-subhead = 更换共用相同密码的登录口令
 # Link title
 rec-pw-2-cta-fx = 在 { -brand-name } 查看登录信息
+rec-pw-2 = 重用同一个密码的后果是，当任意一处发生泄露，其他位置也因此陷入危险。而现在，这个密码已经暴露，黑客可能利用它“撞库”来攻破您的其他账号。
 # Recommendation subhead
 rec-pw-3-subhead = 使用密码管理器随身携带密码
 # Link title
 rec-pw-3-cta = 获取 { -brand-lockwise }
+rec-pw-3-fx =
+    使用 { -brand-lockwise } 确保你能随时随地、安全地访问在 
+    { -brand-name } 中保存的密码——包括浏览器以外。
 # Recommendation subhead
 rec-pw-4-subhead = 设置双因子验证（2FA）
 # Link title
 rec-pw-4-cta = 查看提供双因子验证（2FA）的网站
 rec-pw-4 = 许多网站提供双因子验证（2FA）作为额外的安全措施。须有另一条信息才能登录账户，例如您通过短信收到的一次性代码。
+# Recommendation subhead
+rec-bank-acc-subhead = 监控您的银行对帐单
+rec-bank-acc =
+    检查您的银行对帐单是否有可疑动态或异常
+    收费。如有发现不明之处，请通知您的银行
+# Recommendation subhead
+rec-cc-subhead = 监控您的信用卡对帐单
+rec-cc = 查探您的信用卡是否受到了奇怪的收费。如有发生，请考虑向卡签发机构申请新号码的信用卡。
+# Recommendation subhead
+rec-ip-subhead = 使用一项服务掩藏您的 IP 地址
 # Link title
 rec-ip-us-cta = 试用 { -brand-fpn }
+rec-ip-us =
+    您的互联网协议地址（IP 地址）可用来精准定位您的所在位置
+    和互联网服务提供商。{ -brand-fpn } 这样的服务
+    可帮助您掩盖您的 IP 地址，以免您的位置泄露。
 rec-ip-non-us = 您的互联网协议地址（IP 地址）可精确定位您的位置和网络运营商。使用 VPN 则可以伪装您的 IP 地址，以此隐藏自己的位置。
 rec-hist-pw-subhead = 避免重复使用密码
+# Link title
+rec-hist-pw-cta-fx = 在 { -brand-name } 中查看登录信息
 # Recommendation subhead
 rec-sec-qa-subhead = 为密保问题设置独特的答案
 # Recommendation subhead
