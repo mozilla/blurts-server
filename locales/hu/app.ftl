@@ -434,3 +434,9 @@ take-further-steps-desc = Tudja meg hogyan csökkentheti a személyazonosság-lo
 changes-saved = Módosítások mentve.
 # Section headline
 rec-section-headline = Mi a teendő ezzel az adatsértéssel?
+rec-section-subhead = Javasoljuk, hogy tegye meg ezeket a lépéseket a személyes adatai biztonságának és a digitális személyazonosságának védelme érdekében.
+# Section headline
+rec-section-headline-no-pw = Mit tegyen a személyes adatainak védelme érdekében?
+rec-section-subhead-no-pw = Bár a jelszavak nem kerültek ki ebben az adatsértésben, még mindig tehet többet a személyes adatai védelme érdekében.
+# Button
+see-additional-recs = További javaslatok megtekintése
