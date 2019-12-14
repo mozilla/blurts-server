@@ -63,7 +63,17 @@
         [ins] Účtem Firefoxu
     }
 -brand-pocket = Pocket
--brand-lockwise = Firefox Lockwise
+-brand-lockwise =
+    { $case ->
+       *[nom] Firefox Lockwise
+        [gen] Firefoxu Lockwise
+        [dat] Firefoxu Lockwise
+        [acc] Firefox Lockwise
+        [voc] Firefoxe Lockwise
+        [loc] Firefoxu Lockwise
+        [ins] Firefoxem Lockwise
+    }
+    .gender = masculine
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 
@@ -260,7 +270,7 @@ your-info-was-discovered-headline = Vaše údaje byly nalezeny v novém úniku d
 your-info-was-discovered-blurb =
     Jste zaregistrováni k obdržení upozornění od { -product-name(case: "gen") },
     jestliže se vaše e-mailová adresa objeví v nějakém úniku dat. Zde je vše, co o tomto úniku víme.
-what-to-do-after-breach = Co dělat po úniku dat:
+what-to-do-after-breach = Co dělat po úniku dat
 ba-next-step-1 = Změňte heslo a nové vytvořte silné a jedinečné.
 ba-next-step-blurb-1 =
     Silné heslo používá kombinaci velkých a malých písmen,
