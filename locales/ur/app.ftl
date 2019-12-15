@@ -11,6 +11,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox نجی نیٹ ورک
 
 
 
@@ -56,19 +57,27 @@ sign-out = سائن آؤٹ کریں
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = { -brand-fxa } بندرست کریں
 have-an-account = کیا آپ کا اکاؤنٹ ہے؟
+# Link title
+frequently-asked-questions = اکثر پوچھے گئے سوالات
 about-firefox-monitor = { -product-name } کے بارے میں
 # Link title
 preferences = ترجیحات
 # Link title
 home = ابتدائی صفحہ
+# Link title
+security-tips = سلامتی  نسخے
 fxa-account = { -brand-fxa }
 take-control = اپنے ذاتی کويف کا دوبارہ کنٹرول حاصل کریں۔
+monitor-several-emails = متعدد ای میلز کی نگرانی کریں
+delayed-reporting-headline = اس خلاف ورزی کی رپورٹ دینے میں اتنا وقت کیوں لگا؟
 about-fxm-headline = { -product-name } کے بارے میں
 how-fxm-3-headline = اپنے براؤزر میں اطلاعات حاصل کریں
+protect-your-privacy = اپنی آن لائن رازداری کی حفاظت کریں
 
 ## What to do after data breach tips
 
 change-pw = اپنا پاس ورڈ تبدیل کریں
+change-pw-site = اس سائٹ کے لئے پاس ورڈ تبدیل کریں
 add-new-email = ایک نیا ای میل پتہ شامل کریں
 # Button title
 manage-email-addresses = ای میل پتہ بندرست کریں
