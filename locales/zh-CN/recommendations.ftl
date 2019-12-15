@@ -58,22 +58,28 @@ rec-phone-num-subhead = 避免分享您的手机号码
 rec-phone-num = 注册新账户或服务时，尽量避免透露您的手机号。若不需手机号也能使用，就不要输入。
 # Recommendation subhead
 rec-dob-subhead = 避免在 PIN 码中使用个人信息
+rec-dob = 因为您的出生日期很容易在公共记录中找到，所以最好避免在密码和 PIN 码中使用。否则知道您生日的人也很容易就猜到您的 PIN 码。
 # Recommendation subhead
 rec-pins-subhead = 加强 PIN 码的安全性
+rec-pins = 高强度的 PIN 码中不应包含个人信息，例如您的出生日期或家庭住址。它应该是一串只有您本人知道且不易猜到的数字。
 # Recommendation subhead
 rec-address-subhead = 避免在密码中使用地址
+rec-address = 使用您长居的地址或街道会削弱密码，因为在公开记录中找到这些并不难，致使密码很容易被猜中。
 # Recommendation subhead
 rec-gen-1-subhead = 为每个账号使用不同且高强度的密码
 # Link title
 rec-gen-1-cta = 如何创建高强度密码
+rec-gen-1 = 重复使用密码会使您的所有账号面临风险。这意味着有任一密码被泄露，黑客便能侵入众多账号。
 # Recommendation subhead
 rec-gen-2-subhead = 将密码存放在安全的地方
 # Link title
 rec-gen-2-cta = 关于密码管理器的误解
+rec-gen-2 = 请将您的登录信息放在只有您可以访问的安全之处，例如密码管理器。这也使得您可以轻松管理所有密码。
 # Recommendation subhead
 rec-gen-3-subhead = 提供个人信息时须谨慎
 # Link title
 rec-gen-3-cta = 阅读更多安全提示
+rec-gen-3 = 如非必需，不要交出个人数据。若被要求提供邮箱地址、邮政编码或手机号码，您可以直接拒绝。
 # Recommendation subhead
 rec-gen-4-subhead = 定期更新软件和应用
 rec-gen-4 =
