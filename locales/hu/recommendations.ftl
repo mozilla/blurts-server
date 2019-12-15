@@ -1,4 +1,8 @@
 # Recommendation subhead
+rec-ssn-subhead = Tekintse át a hitelkártya-jelentéseit
+# Link title
+rec-ssn-cta = Kérjen hitelkártya-jelentéseket
+# Recommendation subhead
 rec-pw-1-subhead = Változtassa meg a jelszavát
 # Link title
 rec-pw-1-cta = Cserélje le a jelszavát ennél az oldalnál
@@ -38,3 +42,21 @@ rec-bank-acc =
     keresve. Értesítse bankját, ha olyan dolgot lát, amelyet nem ismer fel.
 # Recommendation subhead
 rec-cc-subhead = Kövesse a hitelkártya kivonatait
+rec-cc =
+    Figyeljen a furcsa terhelésekre a hitelkártyáján. Lehet, hogy érdemes
+    új kártyát igényelnie (új kártyaszámmal) a hitelkártya kibocsátójától.
+# Recommendation subhead
+rec-ip-subhead = Használjon olyan szolgáltatást, amely elfedi az IP-címét
+# Link title
+rec-ip-us-cta = Próbálja ki a { -brand-fpn }öt
+rec-ip-us =
+    Az Internet Protocol címe (IP-címe) pontosan meghatározza a helyét
+    és internetszolgáltatóját. Egy olyan szolgáltatás, mint a { -brand-fpn }
+    elrejtik az IP-címét, hogy elrejtse a helyét.
+rec-ip-non-us =
+    Az Internet Protocol címe (IP-címe) pontosan meghatározza a helyét
+    és internetszolgáltatóját. Egy virtuális magánhálózattal (VPN-nel) elrejtheti
+    a tartózkodási helyét és az IP-címét.
+rec-hist-pw-subhead = Kerülje a jelszavak újbóli felhasználását
+# Link title
+rec-hist-pw-cta-fx = Bejelentkezések megtekintése a { -brand-name }ban
