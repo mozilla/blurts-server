@@ -434,3 +434,5 @@ rec-section-subhead = Wy riede jo oan de folgjende stappen te nimmen om jo perso
 # Section headline
 rec-section-headline-no-pw = Wat kinne jo dwaan om jo persoanlike gegevens te beskermjen
 rec-section-subhead-no-pw = Hoewol by dit datalek gjin wachtwurden lekt binne, binne der noch hieltyd stappen dy't jo nimme kinne om jo personlike gegevens better te beskermjen.
+# Button
+see-additional-recs = Oanfoljende oanrekommandaasjes
