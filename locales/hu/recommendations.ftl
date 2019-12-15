@@ -2,6 +2,10 @@
 rec-ssn-subhead = Tekintse át a hitelkártya-jelentéseit
 # Link title
 rec-ssn-cta = Kérjen hitelkártya-jelentéseket
+rec-ssn =
+    A törvény szerint évente három ingyenes hitelkártya-jelentést kérhet.
+    A kérésük és áttekintésük nem befolyásolják a hitelképességét.
+    Keressen olyan bankszámlákat, hiteleket vagy hitelkártyákat, melyeket nem ismer fel.
 # Recommendation subhead
 rec-pw-1-subhead = Változtassa meg a jelszavát
 # Link title
@@ -60,3 +64,25 @@ rec-ip-non-us =
 rec-hist-pw-subhead = Kerülje a jelszavak újbóli felhasználását
 # Link title
 rec-hist-pw-cta-fx = Bejelentkezések megtekintése a { -brand-name }ban
+rec-hist-pw =
+    Használjon egyedi, erős jelszavakat minden fiókhoz. Ha kikerül egy jelszava
+    egy adatsértés esetén, akkor csak azt a bejelentkezést kell frissítenie.
+# Recommendation subhead
+rec-sec-qa-subhead = Hozzon létre egyedi válaszokat a biztonsági kérdésekhez
+rec-sec-qa =
+    Sok weboldal ugyanazokat a kérdéseket teszi fel. Ha egy válasza kikerül,
+    akkor az információ nyilvános lesz. Készítsen hosszú, véletlenszerű válaszokat,
+    és tárolja őket biztonságos helyen.
+# Recommendation subhead
+rec-phone-num-subhead = Kerülje el a telefonszáma megosztását
+rec-phone-num =
+    Próbálja meg kerülni a telefonszáma megadását, ha új szolgáltatásra
+    iratkozik fel. Ha a telefonszám nem kötelező, ne adja meg.
+# Recommendation subhead
+rec-dob-subhead = Ne használjon személyes információkat a PIN-kódokban
+rec-dob =
+    A születési ideje könnyen megtalálható nyilvános adatokban,
+    jobb elkerülni a használatát a jelszavakban és PIN-kódokban. Akik
+    ismerik a születésnapját, könnyedén kitalálhatják a PIN-kódját.
+# Recommendation subhead
+rec-pins-subhead = Erősítse meg a PIN-kódjai biztonságát
