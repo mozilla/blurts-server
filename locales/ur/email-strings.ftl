@@ -8,5 +8,11 @@ report-date = رپورٹ کی تاریخ:
 email-address = ایمیل اڈریسیس :
 # A link to legal information about mozilla products.
 legal = قانونی
+# Button text
+verify-email-cta = ای میل کی توثیق کریں
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = { $fxmLink } کے بارے میں مزید سیکھیں
+# List headline
+faq-list-headline = اکثر پوچھے گئے سوالات
+# Button at the bottom of pre-fxa email.
+create-account = اکاؤنٹ بنائیں
