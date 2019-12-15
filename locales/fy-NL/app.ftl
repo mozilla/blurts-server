@@ -11,6 +11,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
 
 
@@ -427,3 +428,9 @@ five-myths-desc = Lear hoe't jo slimme wachtwurdgewoanten, dy't it wurk fan in h
 take-further-steps-desc = Untdek hoe't jo de risiko’s fan identiteitstellerij beheine kinne om finansjeel ferlies te mijen.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Wizigingen bewarre!
+# Section headline
+rec-section-headline = Wat kinne jo dwaan foar dit datalek
+rec-section-subhead = Wy riede jo oan de folgjende stappen te nimmen om jo persoanlike gegevens feilich te hâlden en jo digitale identiteit te beskermjen.
+# Section headline
+rec-section-headline-no-pw = Wat kinne jo dwaan om jo persoanlike gegevens te beskermjen
+rec-section-subhead-no-pw = Hoewol by dit datalek gjin wachtwurden lekt binne, binne der noch hieltyd stappen dy't jo nimme kinne om jo personlike gegevens better te beskermjen.
