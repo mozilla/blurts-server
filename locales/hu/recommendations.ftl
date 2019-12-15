@@ -118,3 +118,7 @@ rec-gen-3 =
     irányítószámát vagy telefonszámát, akkor mondhat nemet.
 # Recommendation subhead
 rec-gen-4-subhead = Rendszeresen frissítse a szoftvereit és alkalmazásait
+rec-gen-4 =
+    Az okostelefonos alkalmazások, böngészők és operációs rendszerek frissítése
+    biztonságosabbá teszi az eszközeit. Ezek hibákat, sérülékenységeket
+    és biztonsági problémákat javítanak.
