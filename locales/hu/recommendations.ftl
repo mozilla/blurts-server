@@ -20,5 +20,21 @@ rec-pw-3-cta = { -brand-lockwise } beszerzése
 rec-pw-3-fx =
     Használja a { -brand-lockwise }-ot, hogy bárhol biztonságosan elérje a
     { -brand-name }ba mentett jelszavait – akár a böngészőn kívül is.
+rec-pw-3-non-fx =
+    Használja a { -brand-lockwise }-t, hogy nyomon követhesse a különböző
+    jelszavait, és biztonságosan elérje őket a telefonján vagy táblagépén.
 # Recommendation subhead
 rec-pw-4-subhead = Állítson be kétfaktoros hitelesítést (2FA)
+# Link title
+rec-pw-4-cta = Tekintse meg a 2FA-t kínáló webhelyeket
+rec-pw-4 =
+    Számos weboldal biztosít kétfaktoros hitelesítést további biztonsági intézkedésként.
+    Ekkor további információkra lesz szüksége a fiókjába történő bejelentkezéshez,
+    például egy SMS-ben kapott egyszer használatos kódra.
+# Recommendation subhead
+rec-bank-acc-subhead = Kövesse a bankszámlakivonatait
+rec-bank-acc =
+    Ellenőrizze a bankszámlakivonatait gyanús tevékenységet vagy szokatlan terheléseket
+    keresve. Értesítse bankját, ha olyan dolgot lát, amelyet nem ismer fel.
+# Recommendation subhead
+rec-cc-subhead = Kövesse a hitelkártya kivonatait
