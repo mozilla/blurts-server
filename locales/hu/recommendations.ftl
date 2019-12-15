@@ -86,3 +86,35 @@ rec-dob =
     ismerik a születésnapját, könnyedén kitalálhatják a PIN-kódját.
 # Recommendation subhead
 rec-pins-subhead = Erősítse meg a PIN-kódjai biztonságát
+rec-pins =
+    Egy erős PIN-kód nem tartalmaz személyes információkat, mint születésnap
+    vagy lakcím. Egy olyan szám legyen, amelyet csak Ön ismer, és nem található ki könnyen.
+# Recommendation subhead
+rec-address-subhead = Kerülje a címek használatát a jelszavakban
+rec-address =
+    A lakcímének vagy annak az utcának a nevének használata, ahol felnőtt,
+    gyengíti a jelszavait. Mivel ezt az információt könnyű nyilvánosan megtalálni,
+    így könnyen kitalálhatóvá teszi a jelszavait.
+# Recommendation subhead
+rec-gen-1-subhead = Használjon egyedi, erős jelszavakat minden fiókhoz
+# Link title
+rec-gen-1-cta = Hogyan hozzon létre erős jelszavakat
+rec-gen-1 =
+    A jelszó újbóli felhasználása az összes fiókját veszélyezteti. Ez azt jelenti,
+    hogy ha az egyik jelszava kikerül, akkor a hackerek sok fiókhoz fognak hozzáférni.
+# Recommendation subhead
+rec-gen-2-subhead = Tárolja a jelszavakat biztonságos helyen
+# Link title
+rec-gen-2-cta = Mítoszok a jelszókezelőkről
+rec-gen-2 =
+    Helyezze olyan biztonságos helyre a bejelentkezési adatait, ahol csak Ön fér hozzá,
+    például egy jelszókezelőben. Ez megkönnyíti a különböző jelszavai nyomon követését is.
+# Recommendation subhead
+rec-gen-3-subhead = Legyen óvatos, amikor személyes információkat oszt meg
+# Link title
+rec-gen-3-cta = Olvasson további biztonsági tippeket
+rec-gen-3 =
+    Ne adja ki a személyes adatait, ha nem muszáj. Ha elkérik az e-mail címét,
+    irányítószámát vagy telefonszámát, akkor mondhat nemet.
+# Recommendation subhead
+rec-gen-4-subhead = Rendszeresen frissítse a szoftvereit és alkalmazásait
