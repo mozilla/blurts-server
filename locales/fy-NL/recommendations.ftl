@@ -110,3 +110,13 @@ rec-gen-2 =
     wachtwurdbehearder. Hjirmei kinne jo al jo ferskate wachtwurden ienfâldich byhâlde.
 # Recommendation subhead
 rec-gen-3-subhead = Wês foarsichtich mei it ferstrekken fan persoanlike ynformaasje
+# Link title
+rec-gen-3-cta = Mear befeiligingstips
+rec-gen-3 =
+    Jou gjin persoanlike ynformaasje as dit net nedich is. As jo frege wurdt om jo e-mailadres, 
+    postkoade of telefoannûmer yn te jaan of te ferstrekken, kinne jo wegerje.
+# Recommendation subhead
+rec-gen-4-subhead = Wurkje software en apps regelmjittich by
+rec-gen-4 =
+    Bywurkjen fan jo snoadfoan-apps, browsers en bestjoeringssystemen makket jo 
+    apparaten feiliger. Dizze fernijingen ferhelpe bugs, kwetsberheden yn software en befeiligingsproblemen.
