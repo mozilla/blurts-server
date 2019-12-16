@@ -3,6 +3,8 @@
 /* global sendPing */
 /* global getFxaUtms */
 /* global hashEmailAndSend */
+/* global sendRecommendationPings */
+/* global ga */
 
 if (typeof TextEncoder === "undefined") {
   const cryptoScript = document.createElement("script");
@@ -277,6 +279,12 @@ function addBentoObserver(){
       button.classList.add("fade-out");
       const overflowRecs = document.getElementById("overflow-recs");
       overflowRecs.classList.remove("hide");
+      if (typeof(ga) !== "undefined") {
+        // Send "Click" ping for #see-additional-recs click
+        ga("send", "event", "Breach Details: See Additional Recommendations" , "Click", "See Additional Recommendations");
+        // Send "View" pings for any CTAs that become visible on #see-additional-recs click
+        sendRecommendationPings(".overflow-rec-cta");
+      }
     });
   });
 
