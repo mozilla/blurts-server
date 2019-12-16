@@ -32,7 +32,7 @@ rec-pw-4 =
     Molti siti web offrono l’autenticazione a due fattori come misura di sicurezza extra. 
     La 2FA richiede un’informazione aggiuntiva per accedere al tuo account, per esempio un codice “usa e getta” trasmesso per SMS.
 # Recommendation subhead
-rec-bank-acc-subhead = Sorveglia i movimenti del tuo conto in banca
+rec-bank-acc-subhead = Tieni sotto controlli i movimenti del tuo conto corrente
 rec-bank-acc = Verifica che i movimenti del tuo conto corrente non presentino attività sospette o addebiti insoliti. Avvisa la tua banca se noti qualche operazione che non riconosci.
 # Recommendation subhead
 rec-cc-subhead = Tieni sotto controllo gli estratti conto della tua carta di credito
