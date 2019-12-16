@@ -55,3 +55,10 @@ rec-ip-us =
     Tu dirección de protocolo de Internet (dirección IP) señala tu ubicación
     y tu proveedor de servicios de internet. Un servicio como { -brand-fpn }
     enmascara tu dirección IP para ocultar tu ubicación.
+rec-ip-non-us =
+    Tu dirección de protocolo de Internet (dirección IP) señala tu ubicación
+    y tu proveedor de servicios de internet. Con una red privada virtual (VPN), podés ocultar tu ubicación
+    y enmascarar tu dirección IP.
+rec-hist-pw-subhead = Evitá reutilizar contraseñas
+# Link title
+rec-hist-pw-cta-fx = Ver inicios de sesión en { -brand-name }
