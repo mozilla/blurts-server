@@ -106,7 +106,7 @@ module.exports = {
             },
             ctaHref: "https://www.mozilla.org/firefox/lockwise/",
             ctaShouldOpenNewTab: true,
-            ctaAnalyticsId: "View logins in Firefox Lockwise",
+            ctaAnalyticsId: "Get Firefox Lockwise",
             recIconClassName: "rec-pw-3",
           },
         ],
