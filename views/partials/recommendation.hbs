@@ -1,0 +1,10 @@
+          <div class="feature-tip-content-wrapper col txt-cntr">
+            <div class="rec-img {{ recIconClassName }}"></div>
+            <div class="feature-tip-content">
+              <h3 class="feature-title">{{ recommendationCopy.subhead }}</h3>
+              <h4 class="feature-subhead">{{ recommendationCopy.body }}</h4>
+              {{#if recommendationCopy.cta}}
+                <a class="{{ ctaClassName }} recommendation-cta feature-tip-link blue-link" href="{{ ctaHref }}" data-event-label="{{ ctaAnalyticsId }}" {{#if ctaShouldOpenNewTab}} target="_blank" rel="noopener noreferrer"{{/if}}>{{ recommendationCopy.cta }}</a>
+              {{/if}}
+            </div>
+          </div>

@@ -430,3 +430,9 @@ take-further-steps-desc = Ontdek hoe u de risico’s van identiteitsdiefstal kun
 changes-saved = Wijzigingen opgeslagen!
 # Section headline
 rec-section-headline = Wat kunt u doen voor dit datalek
+rec-section-subhead = We raden u aan de volgende stappen te nemen om uw persoonlijke gegevens veilig te houden en uw digitale identiteit te beschermen.
+# Section headline
+rec-section-headline-no-pw = Wat kunt u doen om uw persoonlijke gegevens te beschermen
+rec-section-subhead-no-pw = Hoewel bij dit datalek geen wachtwoorden zijn gelekt, zijn er nog steeds stappen die u kunt nemen om uw persoonlijke gegevens beter te beschermen.
+# Button
+see-additional-recs = Aanvullende aanbevelingen

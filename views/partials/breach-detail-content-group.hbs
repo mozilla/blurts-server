@@ -1,14 +1,29 @@
-              <h2 class="section-headline txt-purple7">{{ this.headline }}</h2>
-
+              
+            <div class="mw-700 breach-detail {{ sectionId }}">
+              {{#if smallerSectionHeadline}}
+                <h2 class="small-section-headline txt-purple7 bold">{{ this.headline }}</h2>
+              {{else}}
+                <h2 class="section-headline txt-purple7">{{ this.headline }}</h2>
+              {{/if}}
               {{#if this.copy }}
                 <p class="txt-light">{{{ this.copy }}}</p>
               {{/if}}
-
-              {{#if this.tips }}
+              {{#if delayedReporting }}
+                <a class="text-link blue-link delayed-reporting" href="#delayed-reporting">{{delayedReporting.headline}}</a>
+              {{/if}}
+              {{#if this.recommendationsList }}
                 <div class="flx feature-tip-group">
-                  {{#each tips}}
-                    {{> feature-tip-group this}}
-                  {{/each}}
+                  {{#eachFromTo recommendationsList  0 4}}
+                    {{> recommendation this ctaClassName="first-four-recs"}}
+                  {{/eachFromTo}}
+                  {{#ifCompare recommendationsList.length ">" 4}}
+                    <button id="see-additional-recs" class="btn-violet-secondary btn-transparent btn-small">{{getString "see-additional-recs"}}</button>
+                    <div id="overflow-recs" class="overflow-recs flx flx-col hide">
+                    {{#eachFromTo recommendationsList  4 recommendationsList.length}}
+                      {{> recommendation this ctaClassName="overflow-rec-cta"}}
+                    {{/eachFromTo}}
+                    </div>
+                  {{/ifCompare}}
                 </div>
               {{/if}}
               
@@ -34,3 +49,4 @@
                     </div>
                   {{/if}}
               {{/if}}
+            </div>

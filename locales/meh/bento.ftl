@@ -9,3 +9,7 @@ fx-lockwise = { -brand-lockwise }
 
 
 
+# A link at the bottom of the Bento menu
+made-by-mozilla = Nsa´a { -brand-Mozilla }
+# Aria label for button that closes the Bento menu
+mobile-close-bento-button-title = Nakasɨ menu

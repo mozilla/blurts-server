@@ -71,6 +71,16 @@ function getUTMNames() {
   return ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
 }
 
+function sendRecommendationPings(ctaSelector) {
+  document.querySelectorAll(ctaSelector).forEach(cta => {
+    const eventLabel = cta.dataset.eventLabel;
+    ga("send", "event", "Breach Detail: Recommendation CTA", "View", eventLabel);
+    cta.addEventListener("click", () => {
+      ga("send", "event", "Breach Detail: Recommendation CTA", "Engage", eventLabel);
+    });
+  });
+}
+
 (() => {
   const win = window;
   const winLocationSearch = win.location.search;
@@ -116,8 +126,11 @@ function getUTMNames() {
       },
     });
 
-    document.querySelectorAll(".send-ga-ping").forEach((el) => {
-      el.addEventListener("click", async(e) => {
+    // Send "View" pings for any visible recommendation CTAs.
+    sendRecommendationPings(".first-four-recs");
+
+    document.querySelectorAll(".send-ga-ping, [data-send-ga-ping]").forEach((el) => {
+      el.addEventListener("click", (e) => {
         const eventCategory = e.target.dataset.eventCategory;
         const eventAction = e.target.dataset.eventAction;
         const eventLabel = e.target.dataset.eventLabel;
