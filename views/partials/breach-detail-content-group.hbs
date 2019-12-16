@@ -14,13 +14,13 @@
               {{#if this.recommendationsList }}
                 <div class="flx feature-tip-group">
                   {{#eachFromTo recommendationsList  0 4}}
-                    {{> recommendation this}}
+                    {{> recommendation this ctaClassName="first-four-recs"}}
                   {{/eachFromTo}}
                   {{#ifCompare recommendationsList.length ">" 4}}
-                    <button id="see-additional-recs" class="btn-violet-secondary btn-transparent btn-small" data-send-ga-ping="" data-event-category="See Additional Recommendations" data-event-label="{{ getBreachTitle }}" data-event-action="Click">{{getString "see-additional-recs"}}</button>
+                    <button id="see-additional-recs" class="btn-violet-secondary btn-transparent btn-small">{{getString "see-additional-recs"}}</button>
                     <div id="overflow-recs" class="overflow-recs flx flx-col hide">
                     {{#eachFromTo recommendationsList  4 recommendationsList.length}}
-                      {{> recommendation this}}
+                      {{> recommendation this ctaClassName="overflow-rec-cta"}}
                     {{/eachFromTo}}
                     </div>
                   {{/ifCompare}}
