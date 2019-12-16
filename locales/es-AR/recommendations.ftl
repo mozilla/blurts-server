@@ -41,3 +41,17 @@ rec-pw-4 =
     código único que recibís por mensaje de texto.
 # Recommendation subhead
 rec-bank-acc-subhead = Monitoreá tus extractos bancarios
+rec-bank-acc =
+    Revisá tus extractos bancarios por si hubiera actividad sospechosa o 
+    cargos no habituales. Notificá a tu banco si ves algo que no reconocés
+# Recommendation subhead
+rec-cc-subhead = Controlá los extractos de tu tarjeta de crédito
+rec-cc = Estate atento a los cargos extraños en tu tarjeta de crédito. Puede que quieras solicitar una nueva tarjeta con un nuevo número al emisor de tu tarjeta de crédito.
+# Recommendation subhead
+rec-ip-subhead = Usá un servicio que oculte tu dirección IP
+# Link title
+rec-ip-us-cta = Probá  { -brand-fpn }
+rec-ip-us =
+    Tu dirección de protocolo de Internet (dirección IP) señala tu ubicación
+    y tu proveedor de servicios de internet. Un servicio como { -brand-fpn }
+    enmascara tu dirección IP para ocultar tu ubicación.
