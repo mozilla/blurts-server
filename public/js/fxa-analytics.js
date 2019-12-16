@@ -14,13 +14,6 @@ const hasParent = (el, selector) => {
   return null;
 };
 
-const setMetricsIds = (el) => {
-  if (hasParent(el, "scan-another-email")) {
-    el.dataset.eventCategory = "Scan Another Email Form";
-  }
-  return;
-};
-
 
 function getLocation() {
   const eventLocation = document.querySelectorAll("[data-page-label]");
@@ -30,6 +23,7 @@ function getLocation() {
     return "Page ID: Undefined Page";
   }
 }
+
 
 async function sendPing(el, eventAction, eventLabel = null) {
   if (typeof(ga) !== "undefined" && !el.classList.contains("hide")) {
@@ -148,9 +142,6 @@ function sendRecommendationPings(ctaSelector) {
   }
 
   const setMetricsIds = (el) => {
-    if (hasParent(el, "scan-another-email")) {
-      el.dataset.eventCategory = "Scan Another Email Form";
-    }
     if (el.dataset.entrypoint && hasParent(el, "sign-up-banner")) {
       el.dataset.eventCategory = `${el.dataset.eventCategory} - Banner`;
       el.dataset.entrypoint = `${el.dataset.entrypoint}-banner`;

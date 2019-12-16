@@ -28,7 +28,7 @@
 {{#ifCompare verifiedEmails.length "<" 15}}
   <div class="row jst-cntr">
     <div id="dashboard-add-email" class="dashboard-add-email flx flx-col">
-      <h2 class="txt-purple7 section-headline txt-cntr">{{getString "want-to-add" }}</h2>
+      <h2 class="section-headline txt-purple7 txt-cntr">{{getString "want-to-add" }}</h2>
       {{> forms/add-another-email-form }}
       {{#if lastAddedEmail}}
         <span class="dashboard-email-sent bold"> {{ getString "email-sent" }}</span>

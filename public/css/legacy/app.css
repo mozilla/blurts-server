@@ -1331,22 +1331,6 @@ span.breach-info .medium {
   margin-right: var(--gap);
 }
 
-/* SCAN ANOTHER EMAIL  */
-
-.scan-another-email .section-wrapper {
-  margin-top: 0;
-  justify-content: center;
-}
-
-.scan-another-email .half {
-  flex-direction: column;
-  align-items: left;
-}
-
-.scan-another-email .privacy-policy {
-  align-self: flex-start;
-}
-
 /* //// HIBP ATTRIBUTION */
 
 .source-info {
