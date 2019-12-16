@@ -62,3 +62,7 @@ rec-ip-non-us =
 rec-hist-pw-subhead = Evitá reutilizar contraseñas
 # Link title
 rec-hist-pw-cta-fx = Ver inicios de sesión en { -brand-name }
+rec-hist-pw = Usá contraseñas únicas y seguras para cada cuenta. Si se expone una contraseña en una violación de datos, solo vas a necesitar actualizar ese único inicio de sesión.
+# Recommendation subhead
+rec-sec-qa-subhead = Creá respuestas únicas para las preguntas de seguridad
+rec-sec-qa = Muchos sitios web hacen las mismas preguntas. Si una respuesta queda expuesta, la información se conoce. Creá respuestas largas y aleatorias y guardalas en un lugar seguro.
