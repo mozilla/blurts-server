@@ -125,7 +125,6 @@
   .headline-col {
     text-align: left;
     max-width: 500px;
-    padding: calc(var(--padding) * 2) calc(var(--padding) * 2) 0 calc(var(--padding) * 2);
   }
 
   .scanned-email-address {
