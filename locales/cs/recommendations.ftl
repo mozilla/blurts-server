@@ -93,3 +93,27 @@ rec-address =
     lze snadno veřejně dohledat a díky tomu i uhodnout vaše heslo.
 # Recommendation subhead
 rec-gen-1-subhead = Pro každý svůj účet použijte silné a jedinečné heslo
+# Link title
+rec-gen-1-cta = Jak vytvářet silná hesla
+rec-gen-1 =
+    Opětovným používáním stejného hesla vystavujete riziku všechny své účtu. 
+    Pokud toto heslo unikne s jedním účtem, hackeři ho mohou použít i pro ostatní.
+# Recommendation subhead
+rec-gen-2-subhead = Ukládejte svá hesla na bezpečném místě
+# Link title
+rec-gen-2-cta = Mýty o správcích hesel
+rec-gen-2 =
+    Ukládejte své přihlašovací údaje bezpečně, například pomocí správce hesel. 
+    Ty vám navíc udrží přehled, jaké všechny účty a různá hesla máte.
+# Recommendation subhead
+rec-gen-3-subhead = Nerozdávejte zbytečně své osobní údaje
+# Link title
+rec-gen-3-cta = Další bezpečnostní tipy
+rec-gen-3 =
+    Pokud opravdu nemusíte, své osobní údaje nikomu nedávejte. Pokud vás 
+    nějaká služba požádá o e-mail, adresu nebo telefon, vždy můžete odmítnout.
+# Recommendation subhead
+rec-gen-4-subhead = Pravidelně aktualizujte své programy a aplikace
+rec-gen-4 =
+    Aktualizováním aplikací ve svém telefonu, svého prohlížeče a operačního systému 
+    můžete zvýšit jejich bezpečnost. Aktualizace totiž opravují chyby, a to i ty bezpečnostní.
