@@ -11,6 +11,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
 
 
@@ -422,3 +423,11 @@ five-myths-desc = Tìm hiểu cách tránh các thói quen đặt mật khẩu x
 take-further-steps-desc = Tìm hiểu làm thế nào để giảm thiểu rủi ro của hành vi trộm cắp danh tính để ngăn ngừa tổn thất tài chính.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Các thay đổi đã được lưu!
+# Section headline
+rec-section-headline = Nên làm gì với vi phạm này
+rec-section-subhead = Chúng tôi khuyên bạn nên thực hiện các bước này để giữ thông tin cá nhân của bạn an toàn và bảo vệ danh tính kỹ thuật số của bạn.
+# Section headline
+rec-section-headline-no-pw = Phải làm gì để bảo vệ thông tin cá nhân của bạn
+rec-section-subhead-no-pw = Mặc dù mật khẩu không lộ ra trong vi phạm này, vẫn có những bước bạn có thể thực hiện để bảo vệ thông tin cá nhân của mình tốt hơn.
+# Button
+see-additional-recs = Xem các khuyến nghị bổ sung

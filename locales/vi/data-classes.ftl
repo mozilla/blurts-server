@@ -26,6 +26,7 @@ chat-logs = Nhật ký trò chuyện
 credit-card-cvv = Thẻ tín dụng CVV
 credit-cards = Thẻ tín dụng
 credit-status-information = Thông tin trạng thái tín dụng
+cryptocurrency-wallet-hashes = Hàm băm ví tiền điện tử
 customer-feedback = Phản hồi của khách hàng
 customer-interactions = Tương tác của khách hàng
 dates-of-birth = Ngày sinh
@@ -64,6 +65,8 @@ ip-addresses = Các địa chỉ IP
 job-titles = Chức danh công việc
 mac-addresses = Địa chỉ MAC
 marital-statuses = Tình trạng hôn nhân
+# Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
+mnemonic-phrases = Từ vựng giúp ghi nhớ
 names = Tên
 nationalities = Quốc tịch
 net-worths = Giá trị ròng
