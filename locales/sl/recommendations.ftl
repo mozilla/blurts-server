@@ -17,5 +17,9 @@ rec-address-subhead = Izogibajte se uporabi naslovov v geslih
 rec-gen-1-cta = Kako ustvariti zapletena gesla
 # Link title
 rec-gen-2-cta = Zmote o upraviteljih gesel
+# Recommendation subhead
+rec-gen-3-subhead = Bodite previdni pri posredovanju osebnih podatkov
 # Link title
 rec-gen-3-cta = Preberite več varnostnih nasvetov
+# Recommendation subhead
+rec-gen-4-subhead = Redno posodabljajte programsko opremo in aplikacije
