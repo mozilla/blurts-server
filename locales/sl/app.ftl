@@ -460,4 +460,5 @@ five-myths-desc = Spoznajte, kako se izogniti slabim navadam pri ustvarjanju ges
 take-further-steps-desc = Ugotovite, kako zmanjšati tveganje za krajo identitete, in se izognite morebitnim finančnim težavam.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Spremembe so bile shranjene!
+rec-section-subhead = Priporočamo vam naslednje ukrepe, da ohranite varnost svojih osebnih podatkov in zaščitite svojo digitalno identiteto.
 rec-section-subhead-no-pw = Čeprav gesla v tej kraji podatkov niso bila izpostavljena, lahko še vedno ukrepate, da bolje zaščitite svoje osebne podatke.
