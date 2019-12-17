@@ -22,9 +22,13 @@ rec-cc-subhead = Surveillez vos relevés de carte bancaire
 rec-cc = Vérifiez l’absence de dépenses inhabituelles effectuées avec votre carte. Pensez à demander une nouvelle carte avec un nouveau numéro à l’émetteur de votre carte bancaire en cas de doute.
 rec-hist-pw-subhead = Évitez de réutiliser vos mots de passe
 rec-hist-pw = Utilisez un mot de passe fort et unique pour chacun de vos comptes. Si un de vos mots de passe est compromis, vous n’aurez alors que le compte associé à mettre à jour avec un nouveau mot de passe.
+# Link title
+rec-gen-1-cta = Comment créer des mots de passe robustes
 # Recommendation subhead
 rec-gen-2-subhead = Conservez vos mots de passe en lieu sûr
 # Link title
 rec-gen-2-cta = Idées reçues sur les gestionnaires de mots de passe
 # Link title
 rec-gen-3-cta = Découvrir davantage de conseils pour votre sécurité
+# Recommendation subhead
+rec-gen-4-subhead = Mettez régulièrement à jour les logiciels et les applications
