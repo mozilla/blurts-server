@@ -51,6 +51,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
 
 
@@ -230,6 +231,7 @@ avoid-personal-info-blurb = Na internete je jednoduché nájsť dátumy narodeni
 ## What to do after data breach tips
 
 change-pw = Zmeňte svoje heslo
+change-pw-site = Zmeňte si na tejto stránke heslo
 even-for-old = Aj pre staré účty platí, že je dôležité vytvoriť si nové heslo.
 make-new-pw-unique = Dbajte na to, aby bolo nové heslo odlišné a jedinečné
 strength-of-your-pw = Sila vašich hesiel má priamy vplyv na vašu bezpečnosť na internete.
@@ -469,3 +471,11 @@ five-myths-desc = Zistite, ako sa vyvarovať zlozvykom, ktoré hackerom uľahču
 take-further-steps-desc = Zistite, ako znížiť riziko krádeže identity a predísť tak finančnej strate.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Zmeny boli uložené!
+# Section headline
+rec-section-headline = Čo robiť s týmto únikom dát
+rec-section-subhead = Pre ochranu vašich osobných údajov a vašej digitálnej identity odporúčame nasledujúce kroky.
+# Section headline
+rec-section-headline-no-pw = Čo robiť pre ochranu vašich osobných údajov
+rec-section-subhead-no-pw = Napriek tomu, že súčasťou úniku neboli heslá, odporúčame urobiť nasledujúce kroky pre lepšiu ochranu vašich osobných údajov.
+# Button
+see-additional-recs = Pozrite sa na ďalšie odporúčania
