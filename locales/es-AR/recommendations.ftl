@@ -66,3 +66,8 @@ rec-hist-pw = Usá contraseñas únicas y seguras para cada cuenta. Si se expone
 # Recommendation subhead
 rec-sec-qa-subhead = Creá respuestas únicas para las preguntas de seguridad
 rec-sec-qa = Muchos sitios web hacen las mismas preguntas. Si una respuesta queda expuesta, la información se conoce. Creá respuestas largas y aleatorias y guardalas en un lugar seguro.
+# Recommendation subhead
+rec-phone-num-subhead = Evitá compartir tu número de teléfono
+rec-phone-num =
+    Intentá evitar dar tu número de teléfono cuando te registres para nuevas
+    cuentas o servicios. Si no se necesita un número de teléfono, no lo ingreses.
