@@ -99,3 +99,18 @@ rec-gen-1 =
 rec-gen-2-subhead = Guardá las contraseñas en un lugar seguro
 # Link title
 rec-gen-2-cta = Mitos sobre los administradores de contraseñas
+rec-gen-2 =
+    Guardá tus datos de inicio de sesión en un lugar seguro al que puedas acceder solo vos , como un
+    administrador de contraseñas. Esto también facilita el seguimiento de todas tus diferentes contraseñas.
+# Recommendation subhead
+rec-gen-3-subhead = Tené cuidado al dar información personal
+# Link title
+rec-gen-3-cta = Ver más consejos de seguridad
+rec-gen-3 =
+    No entregues datos personales si no es necesario. Si te piden que
+    ingreses o des tu dirección de correo electrónico, código postal o número de teléfono, podés decir que no.
+# Recommendation subhead
+rec-gen-4-subhead = Actualizar software y aplicaciones en forma regular
+rec-gen-4 =
+    La actualización de las aplicaciones, navegadores y sistemas operativos de tu teléfono inteligente hace que tus
+    dispositivos sean más seguros. Estas actualizaciones corrigen errores, vulnerabilidades de software y problemas de seguridad.
