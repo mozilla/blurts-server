@@ -14,6 +14,9 @@ rec-pw-2-cta-fx = Ehecha tembiapo ñepyrũ { -brand-name }-pe
 rec-pw-3-subhead = Eipuru ñe’ẽñemi ñangarekoha eraha hag̃ua ne ñe’ẽñemi opa hendápe
 # Link title
 rec-pw-3-cta = Ereko { -brand-lockwise }
+rec-pw-3-fx =
+    Eipuru { -brand-lockwise } eike hag̃ua tekorosãme ñe’ẽñemi eñongatuva’ekue
+    { -brand-name }-pe oimeraẽva tenda guive, ikatu avei kundaháragui okápe.
 rec-pw-3-non-fx =
     Eipuru { -brand-lockwise } ehapykueho hag̃ua opaite ne 
     ñe’ẽñemi ha eike tekorosãme ne pumbyry térã tableta rupive.
