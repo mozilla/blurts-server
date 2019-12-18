@@ -72,7 +72,10 @@ pre-fxa-message = <a>Opret en gratis { -brand-fxa }</a> , så du kan tilføje op
 monitor-another-email = Vil du overvåge en anden mailadresse?
 # Subject line of email
 pre-fxa-subject = Nyheder fra { -product-name }
+pre-fxa-headline = Ændringer i { -product-name }
+pre-fxa-blurb = Vi har ændret noget, siden du tilmeldte dig { -product-name } - en service der holder øje med, om dine personlige data optræder i kendte datalæk. Din profil er nu tilknyttet din Firefox-konto.
 pre-fxa-tout-1 = Få advarsler om flere datalæk
+pre-fxa-tout-2 = Få et bedre overblik
 pre-fxa-p-2 =
     Se alle datalæk på ét sted, så du ved, hvilke adgangskoder der skal skiftes. 
     Oversigten med datalæk er kun tilgængelig med en konto.
