@@ -6,6 +6,8 @@ rec-pw-1 =
     Rendez ce mot de passe unique et différent de tous vos autres mots de passe. 
     Une bonne stratégie consiste à combiner deux ou plusieurs mots sans rapport  
     entre eux afin de créer une phrase de passe plus sécurisée.
+# Recommendation subhead
+rec-pw-2-subhead = Modifiez les identifiants qui utilisent le même mot de passe
 rec-pw-2 = La réutilisation d’un même mot de passe démultiplie les conséquences d’une fuite de données affectant un seul de vos comptes. Votre mot de passe compromis peut en effet permettre aux pirates d’accéder à vos autres comptes.
 # Recommendation subhead
 rec-pw-3-subhead = Utilisez un gestionnaire de mots de passe pour emporter vos mots de passe partout
@@ -28,6 +30,7 @@ rec-gen-1-cta = Comment créer des mots de passe robustes
 rec-gen-2-subhead = Conservez vos mots de passe en lieu sûr
 # Link title
 rec-gen-2-cta = Idées reçues sur les gestionnaires de mots de passe
+rec-gen-2 = Préservez vos informations de connexion dans un endroit sûr auquel vous seul·e pouvez accéder, tel qu’un gestionnaire de mots de passe. Cette précaution a également l’avantage de faciliter le suivi et la mise à jour de tous vos différents mots de passe.
 # Link title
 rec-gen-3-cta = Découvrir davantage de conseils pour votre sécurité
 # Recommendation subhead
