@@ -28,10 +28,17 @@ rec-bank-acc =
     Emombe’u ne báncope ehecháramo mba'e eikuaaporã’ỹva
 # Recommendation subhead
 rec-cc-subhead = Ehechameme kuatia’atã ñemuha kuatia
+rec-cc =
+    Ema’ẽ tapiáke nde kuatia’atã ñemurã. Ikatu hína 
+    ejerure kuatia’atã ñemurã pyahu ipapapy pyahúva me'ẽhárape.
 # Recommendation subhead
 rec-ip-subhead = Eipuru mba’epuru omokañýva nde IP kundaharape
 # Link title
 rec-ip-us-cta = Eñe’ẽ { -brand-fpn }
+rec-ip-us =
+    Ne kundaharape ñanduti pegua (IP kundaharape) ohechauka ne rendaite
+    ha ne ñanduti me’ẽhára. Peteĩ mba’epuru { -brand-fpn } rehegua
+    omoypytũ nde IP kundaharape oñomi hag̃ua ne rendaite.
 rec-hist-pw-subhead = Aníke eipurujo’a ñe’ẽñemi
 # Link title
 rec-hist-pw-cta-fx = Ehecha tembiapo ñepyrũ { -brand-name }
@@ -40,6 +47,9 @@ rec-hist-pw =
     ijehe mba’ekuaarã ñembyai, tekotevẽ embohekopyahu tembiapo ñepyrũ año.
 # Recommendation subhead
 rec-sec-qa-subhead = Emoheñói mbohovái porandu hekorosãva rehegua
+rec-sec-qa =
+    Heta ñanduti renda oporandu peteĩchaite. Peteĩ mbohovái ojehecháramo, pe 
+    marandu ojekuaa. Emoheñói mbohovái ipuku ha jereguáva ha eñongatu tenda hekorosãvape.
 # Recommendation subhead
 rec-phone-num-subhead = Aníke emoherakuã ne pumbyry papapy
 # Recommendation subhead
