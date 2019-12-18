@@ -71,3 +71,31 @@ rec-phone-num-subhead = Evitá compartir tu número de teléfono
 rec-phone-num =
     Intentá evitar dar tu número de teléfono cuando te registres para nuevas
     cuentas o servicios. Si no se necesita un número de teléfono, no lo ingreses.
+# Recommendation subhead
+rec-dob-subhead = Evitá usar información personal en los PINs
+rec-dob =
+    Debido a que tu fecha de nacimiento es fácil de encontrar en los registros públicos,
+    es mejor evitar usarlo en contraseñas y PINs. Los que
+    saben la fecha de tu cumpleaños también podrían adivinar fácilmente tu PIN.
+# Recommendation subhead
+rec-pins-subhead = Fortalecé la seguridad de tus PINs
+rec-pins =
+    Un PIN seguro no contiene información personal, como tu fecha de nacimiento
+    o dirección. Debe ser un número que solo vos conocés y no se pueda adivinar fácilmente.
+# Recommendation subhead
+rec-address-subhead = Evitá usar direcciones en contraseñas
+rec-address =
+    Usar direcciones o la calle donde creciste debilita tus
+    contraseñas. Dado que es fácil encontrar esta información públicamente, hace que estas
+    contraseñas sean fáciles de adivinar.
+# Recommendation subhead
+rec-gen-1-subhead = Usá contraseñas únicas y seguras para cada cuenta
+# Link title
+rec-gen-1-cta = Cómo crear contraseñas seguras
+rec-gen-1 =
+    La reutilización de la contraseña pone en riesgo todas tus cuentas. Esto significa que si
+    una contraseña queda expuesta, los piratas informáticos tienen las claves de muchas cuentas.
+# Recommendation subhead
+rec-gen-2-subhead = Guardá las contraseñas en un lugar seguro
+# Link title
+rec-gen-2-cta = Mitos sobre los administradores de contraseñas
