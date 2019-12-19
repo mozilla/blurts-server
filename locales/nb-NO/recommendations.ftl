@@ -2,6 +2,10 @@
 rec-ssn-subhead = Gå gjennom kredittrapportene dine
 # Link title
 rec-ssn-cta = Be om kredittrapporter
+rec-ssn =
+    Du får tre gratis kredittrapporter i året ved lov. 
+    Å be om og gjennomgå dem påvirker ikke kreditten din. 
+    Se etter kontoer, lån eller kredittkort du ikke kjenner igjen.
 # Recommendation subhead
 rec-pw-1-subhead = Endre passordet ditt
 # Link title

@@ -11,6 +11,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
 
 
@@ -325,13 +326,25 @@ other-monitored-emails = Andre overvåkede e-postadresser
 email-verification-required = E-postbekreftelse kreves
 fxa-primary-email = { -brand-fxa } E-post - primær
 what-is-a-website-breach = Hva er en nettstedsdatalekkasje?
+security-tips-headline = Sikkerhetstips for å beskytte deg mot hackere
+steps-to-protect = Hva du kan gjøre for å beskytte identiteten din på nettet
+take-further-steps = Ta ytterligere forhåndsregler for å beskytte identiteten din
+alert-about-new-breaches = Varsle meg om nye datalekkasjer
+see-if-youve-been-part = Se om du har vært omfattet av en datalekkasje på nettet
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Finn ut
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Tilleggsinformasjon, inkludert:
 # Title
 email-addresses-title = E-postadresser
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Oversikt
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = Den { $breachDate } ble { $breachTitle } utsatt for en datalekkasje. Når datalekkasjen ble oppdaget og bekreftet, ble det lagt til databasen vår den { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name }-innstillinger
 # When a user is signed in, this appears in the drop down menu 
@@ -342,6 +355,9 @@ signed-in-as = Logget inn som: { $userEmail }
 filter-by = Filtrer etter kategori:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Meny
+to-affected-email = Send alle advarsler om datalekkasjer til den berørte e-postadressen
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Det finnes en måte å ta vare på personvernet ditt. Bruk { -brand-name }.
 # Link title
 learn-more-link = Les mer.
 email-sent = E-post er sendt!
@@ -356,6 +372,9 @@ verify-the-link = Bekreft lenken som er sendt til { $userEmail } for å legge de
 
 email-verified = E-postadresse bekreftet!
 email-added-to-subscription = Vi vil advare deg hvis { $email } forekommer i en datalekkasje.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = For å se og administrere alle e-postmeldinger du har registrert deg for overvåking av datalekkasjer, { $nestedSignInLink }.
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = logg inn
 
@@ -375,6 +394,19 @@ breach-alert-notifications = Varsler om datalekkasje
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Datalekkasje lagt til:
+how-hackers-work-desc = Beskytt passordene dine mot kriminelle på nettet, siden det er det de er mest interessert i.
+what-to-do-after-breach-desc = Sikre dine kontoer, slik at dine informasjoner ikke havner i feile hender.
+create-strong-passwords-desc = Gjør passordene dine sterke, sikre og vanskelige å gjette.
+steps-to-protect-desc = Forstå de vanligste truslene og vite hva du skal se etter.
 five-myths-desc = Lær hvordan du unngår dårlige passordvaner som gjør arbeidet til en hacker enkelt.
+take-further-steps-desc = Finn ut hvordan du kan redusere risikoen for identitetstyveri for å forhindre økonomisk tap.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Endringer lagret!
+# Section headline
+rec-section-headline = Hva du skal gjøre for denne datalekkasjen
+rec-section-subhead = Vi anbefaler at du tar disse stegene for å holde din personlige informasjon trygg og beskytte din digitale identitet.
+# Section headline
+rec-section-headline-no-pw = Hva du skal gjøre for å beskytte din personlige informasjon
+rec-section-subhead-no-pw = Selv om passord ikke ble lekket i denne datalekkasjen, er det fremdeles steg du kan ta for å bedre beskytte din personlige informasjon.
+# Button
+see-additional-recs = Se ytterlige anbefalinger
