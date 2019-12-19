@@ -61,7 +61,7 @@ unsub-blurb = Dette vil fjerne e-postadressen din fra { -product-name-nowrap }-l
 unsub-button = Stopp abonnement
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Informasjonen om datalekkasjen kommer fra { $hibp-link }
-share-twitter = De fleste har rundt 100 kontoer på nettet. Har noen av dem blitt utsatt for en datalekkasje? Finn ut.
+share-twitter = De fleste har rundt 100 kontoer på nettet. Har noen av dem blitt utsatt for en datalekkasje? Finn ut av det.
 share-facebook-headline = Finn ut om du har vært utsatt for en datalekkasje
 share-facebook-blurb = Har kontoene dine på nettet blitt utsatt for en datalekkasje?
 og-site-description = Finn ut om du har vært en del av en datalekkasje med { -product-name }. Registrer deg for varsler om nye datalekkasjer og få tips for å sikre dine kontoer.
