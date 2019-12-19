@@ -154,6 +154,11 @@ delayed-reporting-copy =
     i en datalekkasje dukker opp på nettsteder som brukes av kriminelle (kjent som det mørke nettet eller dark web). Datalekkasjer blir lagt til i vår database 
     så snart de er oppdaget og bekreftet.
 about-fxm-headline = Om { -product-name }
+about-fxm-blurb =
+    { -product-name } advarer om dine kontoer på nettet har vært involvert i en 
+    datalekkasje. Finn ut om du har vært i en datalekkasje, få varsler om nye datalekkasjer, 
+    og ta forhåndsregler for å beskytte dine kontoer på nettet. { -product-name } er laget 
+    av { -brand-Mozilla }.
 fxm-warns-you =
     { -product-name } advarer deg om e-postadressen din har blitt eksponert 
     i en datalekkasje på nettet. Se om informasjonen din er blitt eksponert, lær hvordan 
@@ -342,6 +347,7 @@ other-monitored-emails = Andre overvåkede e-postadresser
 email-verification-required = E-postbekreftelse kreves
 fxa-primary-email = { -brand-fxa } E-post - primær
 what-is-a-website-breach = Hva er en nettstedsdatalekkasje?
+website-breach-blurb = En nettsteds-datalekkasje kan skyldes cyber-kriminelle som stjeler, kopierer eller eksponerer personlig informasjon fra kontoer på nettet. Det er vanligvis et resultat av at hackere finner et svakt punkt i nettstedets sikkerhetsforanstaltninger. Datalekkasje kan også skje når kontoinformasjon blir lekket ved et uhell.
 security-tips-headline = Sikkerhetstips for å beskytte deg mot hackere
 steps-to-protect = Hva du kan gjøre for å beskytte identiteten din på nettet
 take-further-steps = Ta ytterligere forhåndsregler for å beskytte identiteten din

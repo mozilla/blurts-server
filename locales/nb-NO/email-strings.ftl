@@ -10,12 +10,17 @@ email-address = E-postadresse:
 legal = Juridisk
 # Unsubscribe link in email.
 email-unsub-link = Avslutt abonnement
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Vis min oversikt
 # Button text
 verify-email-cta = Bekreft e-post
 # Button text
 see-all-breaches = Vis alle datalekkasjer
 # Headline of verification email
 email-link-expires = Denne lenken utløper om 24 timer
+email-verify-blurb = Bekreft e-postadressen din for å legge den til { -product-name } og registrere deg for varsler om datalekkasjer.
+# Email headline
+email-found-breaches-hl = Her er et sammendrag av tidligere datalekkasjer
 # Email headline
 email-breach-summary-for-email = Datalekkasje-oppsummering for { $userEmail }
 # Email headline
