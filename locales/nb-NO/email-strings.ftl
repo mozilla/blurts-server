@@ -10,6 +10,18 @@ email-address = E-postadresse:
 legal = Juridisk
 # Unsubscribe link in email.
 email-unsub-link = Avslutt abonnement
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb =
+    Du mottar denne e-postmeldingen fordi du registrerte deg for { -product-name }-varsler.
+    Vil du ikke lenger ha disse e-postmeldingene? { $unsubLink }. Dette er en automatisert e-post. Hvis du ønsker brukerstøtte, besøk { $faqLink }.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    Du mottar denne e-postmeldingen fordi du registrerte deg for { -product-name }-varsler. 
+    Dette er en automatisert e-post. Hvis du ønsker brukerstøtte, besøk { $faqLink }.
 # Button text that takes the user to their signed in user dashboard.
 view-my-dashboard-cta = Vis min oversikt
 # Button text
@@ -41,8 +53,27 @@ email-sensitive-disclaimer =
 fxm-warns-you-no-breaches =
     { -product-name } advarer deg om datalekkasjer som involverer din personlige informasjon. 
     Så langt har det ikke hendt. Vi sender deg et varsel hvis e-postadressen din vises i en ny datalekkasje.
+fxm-warns-you-found-breaches =
+    { -product-name } advarer deg om datalekkasjer som involverer din personlige informasjon. 
+    Du er også registrert for å motta varsler hvis e-postadressen din opptrer i en ny datalekkasje.
+email-breach-alert-blurb =
+    { -product-name } advarer deg om datalekkasjer som involverer din personlige informasjon. 
+    Vi har nettopp mottatt detaljer om et annet selskaps datalekkasje.
 # List headline
 faq-list-headline = Ofte stilte spørsmål
+# Link Title
+faq-v2-1 = Jeg kjenner ikke igjen noen av disse selskapene eller nettstededer. Hvorfor er jeg i denne datalekkasjen?
+# Link Title
+faq-v2-2 = Trenger jeg gjøre noe hvis en datalekkasje skjedde for mange år siden, eller hvis det er en gammel konto?
+# Link Title
+faq-v2-3 = Jeg har nettopp funnet ut at jeg er omfattet av en datalekkasje. Hva gjør jeg nå?
+# Link Title
+faq-v2-4 = Hvordan behandler { -product-name } sensitive nettsteder?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Opprett en gratis { -brand-fxa }</a>, og du kan legge til opptil 15 e-postadresser.
+# Section headline
+monitor-another-email = Vil du overvåke en annen e-postadresse?
 # Subject line of email
 pre-fxa-subject = En oppdatering fra { -product-name }
 pre-fxa-headline = Endringer i { -product-name }
@@ -57,5 +88,9 @@ pre-fxa-tout-2 = Få en oversikt
 pre-fxa-p-2 =
     Se alle datalekkasjer ett sted slik at du vet hvilke passord du bør endre. 
     Oversikten med datalekkasjer er bare tilgjengelig med en konto.
+pre-fxa-tout-3 = Fortsett å få e-postvarsler
+pre-fxa-p-3 =
+    Du vil fortsatt motta varsler fra { -product-name }. Vi gir beskjed om informasjonen din 
+    vises i en ny datalekkasje.
 # Button at the bottom of pre-fxa email.
 create-account = Opprett konto
