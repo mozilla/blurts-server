@@ -1,7 +1,15 @@
 # Recommendation subhead
+rec-ssn-subhead = Gå gjennom kredittrapportene dine
+# Link title
+rec-ssn-cta = Be om kredittrapporter
+# Recommendation subhead
 rec-pw-1-subhead = Endre passordet ditt
 # Link title
 rec-pw-1-cta = Endre passord for dette nettstedet
+rec-pw-1 =
+    Gjør dette passordet unikt og forskjellig fra alle de andre du bruker. 
+    En god strategi å følge er å kombinere to eller flere ubeslektede 
+    ord for å lage en hel passordfrase.
 # Recommendation subhead
 rec-pw-2-subhead = Oppdater andre innlogginger som bruker det samme passordet
 # Link title
@@ -23,6 +31,10 @@ rec-pw-3-non-fx =
 rec-pw-4-subhead = Konfigurer tofaktorautentisering (2FA)
 # Link title
 rec-pw-4-cta = Se nettsteder som tilbyr 2FA
+rec-pw-4 =
+    Mange nettsteder tilbyr 2FA (tofaktorautentisering) som et ekstra sikkerhetstiltak. Dette krever 
+    et annet stykke informasjon for å logge på kontoen din, for eksempel en 
+    engangskode du mottar via SMS.
 # Recommendation subhead
 rec-bank-acc-subhead = Overvåk dine kontoutskrifter
 rec-bank-acc =
@@ -41,11 +53,26 @@ rec-ip-us =
     Din Internet Protocol-adresse (IP-adresse) kan si noe om hvor du befinner deg 
     og din internettleverandør. En tjeneste som { -brand-fpn } 
     maskerer IP-adressen din for å skjule plasseringen din.
+rec-ip-non-us =
+    Din Internet Protocol-adresse (IP-adresse) kan si noe om hvor du befinner deg 
+    og din internettleverandør. Med et virtuelt privat nettverk (VPN) kan du skjule posisjonen din
+    og maskere din IP-adresse.
 rec-hist-pw-subhead = Unngå å bruke passord på nytt
 # Link title
 rec-hist-pw-cta-fx = Se innlogginger i { -brand-name }
+rec-hist-pw =
+    Bruk unike, sterke passord for hver konto. Hvis ett passord blir
+    utsatt i en datalekkasje, trenger du bare å oppdatere den ene påloggingen.
+# Recommendation subhead
+rec-sec-qa-subhead = Lag unike svar for sikkerhetsspørsmål
+rec-sec-qa =
+    Mange nettsteder stiller de samme spørsmålene. Hvis ett svar blir utsatt, er 
+    informasjonen ute. Lag lange, tilfeldige svar og lagre dem på et sikkert sted.
 # Recommendation subhead
 rec-phone-num-subhead = Unngå å dele telefonnummeret ditt
+rec-phone-num =
+    Prøv å unngå å oppgi telefonnummeret ditt når du registrerer deg for nye 
+    kontoer eller tjenester. Hvis du ikke trenger et telefonnummer, trenger du ikke å oppgi det.
 # Recommendation subhead
 rec-dob-subhead = Unngå å bruke personlig informasjon i PIN-koder
 rec-dob =
