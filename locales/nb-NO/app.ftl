@@ -172,6 +172,10 @@ how-fxm-2-blurb =
     Når du har verifisert e-postadressen, vil du også motta en full rapport om tidligere datalekkasjer, 
     inkludert sensitive lekkasjer.
 how-fxm-3-headline = Få varsler i nettleseren din
+how-fxm-3-blurb =
+    Hvis du bruker { -brand-name }, vil du motta et varsel hvis du besøker ett 
+    nettsted som har hatt en datalekkasje. Se med det samme om du ble rammet av datalekkasjen 
+    og om hva du kan gjøre med det.
 wtd-after-website = Hva en skal gjøre etter en nettstedsdatalekkasje:
 wtd-after-data-agg = Hva en skal gjøre etter en datainnsamlingslekkasje:
 what-is-data-agg = Hva er en datainnsamler?
@@ -288,9 +292,17 @@ currently-showing = Viser:
 ## Updated error messages
 
 error-bot-headline = Søk er midlertidig suspendert
+error-bot-blurb =
+    Vi mistenker at du kan være en bot fordi du søkte 
+    på flere e-postadresser i løpet av kort tid. Foreløpig er du blokkert 
+    fra nye søk. Du kan prøve igjen senere.
 error-csrf-headline = Tidsavbrudd i økten
 error-csrf-blurb = Bruk tilbake-knappen for nettleseren, last inn siden på nytt og prøv igjen.
 error-invalid-unsub = Slik melder du deg av abonnementet på { -product-name }-varsler
+error-invalid-unsub-blurb =
+    Du må melde deg av abonnementet på en av e-postmeldingene 
+    som { -product-name } sendte deg. Sjekk innboksen for meldinger fra 
+    { -brand-team-email }. Velg avmeldingslenken nederst i e-posten.
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
