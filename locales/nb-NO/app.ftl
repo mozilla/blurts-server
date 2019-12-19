@@ -199,6 +199,7 @@ five-myths = 5 myter om passordbehandlere
 create-a-fxa = Lag en { -brand-fxa } for din fulle rapport om datalekkasjer og for å få varsler.
 feat-security-tips = Sikkerhetstips for å beskytte dine konto
 feat-sensitive = Avansert søk i sensitive datalekkasjer
+feat-enroll-multiple = Få overvåket flere e-postadresser for datalekkasje
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
@@ -225,6 +226,9 @@ breach-summary = Datalekkasjeoppsummering
 show-breaches-for-this-email = Vis alle datalekkasjer for denne e-postadressen.
 link-change-primary = Endre primær e-postadresse
 remove-fxm = Fjern { -product-name }
+remove-fxm-blurb =
+    Slå av { -product-name }-varsler. Din { -brand-fxa } vil være aktiv, og du vil muligens motta 
+    andre meldinger vedrørende din konto.
 # Button title
 manage-email-addresses = Håndter e-postadresser
 # Link title
@@ -331,8 +335,15 @@ steps-to-protect = Hva du kan gjøre for å beskytte identiteten din på nettet
 take-further-steps = Ta ytterligere forhåndsregler for å beskytte identiteten din
 alert-about-new-breaches = Varsle meg om nye datalekkasjer
 see-if-youve-been-part = Se om du har vært omfattet av en datalekkasje på nettet
+get-ongoing-breach-monitoring = Få løpende datalekkasjeovervåkning av flere e-postadresser
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Finn ut
+new-unsub-error = Du må melde deg av abonnementet på en av e-postmeldingene som { -product-name } sendte.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Den dukket imidlertid opp i { $breachCount } annen kjent datalekkasje.
+       *[other] Den dukket imidlertid opp i { $breachCount } andre kjente datalekkasjer.
+    }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = Tilleggsinformasjon, inkludert:
@@ -404,9 +415,9 @@ take-further-steps-desc = Finn ut hvordan du kan redusere risikoen for identitet
 changes-saved = Endringer lagret!
 # Section headline
 rec-section-headline = Hva du skal gjøre for denne datalekkasjen
-rec-section-subhead = Vi anbefaler at du tar disse stegene for å holde din personlige informasjon trygg og beskytte din digitale identitet.
+rec-section-subhead = Vi anbefaler at du tar disse forhåndsregler for å holde din personlige informasjon trygg og beskytte din digitale identitet.
 # Section headline
 rec-section-headline-no-pw = Hva du skal gjøre for å beskytte din personlige informasjon
-rec-section-subhead-no-pw = Selv om passord ikke ble lekket i denne datalekkasjen, er det fremdeles steg du kan ta for å bedre beskytte din personlige informasjon.
+rec-section-subhead-no-pw = Selv om passord ikke ble lekket i denne datalekkasjen, er det fremdeles forhåndsregler du kan ta for å bedre beskytte din personlige informasjon.
 # Button
 see-additional-recs = Se ytterlige anbefalinger
