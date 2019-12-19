@@ -43,5 +43,19 @@ fxm-warns-you-no-breaches =
     Så langt har det ikke hendt. Vi sender deg et varsel hvis e-postadressen din vises i en ny datalekkasje.
 # List headline
 faq-list-headline = Ofte stilte spørsmål
+# Subject line of email
+pre-fxa-subject = En oppdatering fra { -product-name }
+pre-fxa-headline = Endringer i { -product-name }
+pre-fxa-blurb =
+    Dette er hva som er endret siden du registrerte deg for { -product-name }, tjenesten som 
+    overvåker kjente datalekkasjer for din personlige informasjon. Vi kobler det til Firefox-kontoer.
+pre-fxa-tout-1 = Vær oppmerksom på flere datalekkasjer
+pre-fxa-p-1 =
+    <a>Opprett en konto</a> for å overvåke opptil 15 e-postadresser for
+    datalekkasjer. Vi anbefaler å legge til e-postadresser du har brukt for å opprette kontoer på nettet.
+pre-fxa-tout-2 = Få en oversikt
+pre-fxa-p-2 =
+    Se alle datalekkasjer ett sted slik at du vet hvilke passord du bør endre. 
+    Oversikten med datalekkasjer er bare tilgjengelig med en konto.
 # Button at the bottom of pre-fxa email.
 create-account = Opprett konto
