@@ -79,6 +79,8 @@ fxa-pwt-summary-4 =
 fxa-pwt-summary-6 =
     Datalekkasjar aukar. Om din personlege informasjon vert avslørt i ein datalekkasje, 
     vil { -product-name } sende deg ei åtvaring - slik at du kan ta forholdsreglar og verne kontoane dine.
+fxa-what-to-do-subhead-2 = Slutt å bruke det eksponerte passordet, og endre det overalt der du har brukt det.
+fxa-what-to-do-subhead-4 = Få hjelp til å hugse alle passorda dine og halde dei trygge.
 # Alerts is a noun
 sign-up-for-alerts = Registrer deg for varsel
 # Link title
@@ -106,6 +108,7 @@ how-hackers-work = Forstå korleis hackarar jobbar
 monitor-your-online-accounts = Registrer deg for overvaking av datalekkasjar med ein { -brand-fxa }.
 stay-alert = Ver på vakt for nye datalekkasjar
 if-your-info = Om din informasjon dukkar opp i ein ny datalekkasje, sender vi deg ei åtvaring.
+search-all-emails = Søk gjennom alle e-postadressene dine for datalekkasjar og få varsel om nye truslar.
 monitor-several-emails = Overvak fleire e-postadresser
 take-action = Beskytt kontoane dine aktivt
 keep-your-data-safe = Finn ut kva du må gjere for å beskytte dataa dine frå cyberkriminelle.
@@ -141,9 +144,13 @@ avoid-personal-info = Unngå å bruke personleg informasjon i passord
 ## What to do after data breach tips
 
 change-pw = Endre passordet ditt
+change-pw-site = Endre passord for denne nettstaden
+even-for-old = Sjølv for gamle kontoar er det viktig å oppdatere passordet ditt.
 make-new-pw-unique = Lag det nye passordet annaleis og unikt
+strength-of-your-pw = Styrken på passorda dine påverkar direkte sikkerheita di på nettet.
 create-strong-passwords = Slik lagar du sterke passord
 stop-reusing-pw = Slutt med å bruke dei same passorda
+create-unique-pw = Lag unike passord og lagre dei på ein sikker stad, til dømes i ein passordhandterar.
 five-myths = 5 myter om passordhandterarar
 feat-sensitive = Avansert søk i sensitive datalekkasjar
 # This string is shown beneath each of the user’s email addresses to indicate
