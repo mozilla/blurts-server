@@ -11,6 +11,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
 
 
@@ -56,6 +57,7 @@ compromised-accounts = Kompromiterte kontoar:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Kompromiterte data:
 unsub-headline = Avslutt abonnementet på { -product-name-nowrap }
+unsub-blurb = Dette vil fjerne e-postadressa di frå { -product-name-nowrap }-lista, og du vil ikkje lenger motta varsel når nye datalekkasjar vert oppdaga.
 unsub-button = Avslutt abonnementet
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Informasjonen om datalekkasjen kjem frå { $hibp-link }
