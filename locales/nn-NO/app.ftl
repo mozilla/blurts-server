@@ -61,8 +61,10 @@ unsub-blurb = Dette vil fjerne e-postadressa di frå { -product-name-nowrap }-li
 unsub-button = Avslutt abonnementet
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Informasjonen om datalekkasjen kjem frå { $hibp-link }
+share-twitter = Dei fleste har rundt 100 kontoar på nettet. Har nokre av dei blitt utsette for ein datalekkasje? Finn ut av det.
 share-facebook-headline = Finn ut om du har vore utsett for ein datalekkasje
 share-facebook-blurb = Har kontoane dine på nettet blitt utsett for datalekkasje?
+og-site-description = Finn ut om du har vore del av ein datalekkasje med { -product-name }. Registrer deg for varsel om nye datalekkasjar og få tips for å sikre kontoane dine.
 show-all = Vis alle
 fxa-scan-another-email = Vil du kontrollere ei anna e-postadresse?
 sign-in = Logg inn
@@ -79,6 +81,11 @@ fxa-pwt-summary-4 =
 fxa-pwt-summary-6 =
     Datalekkasjar aukar. Om din personlege informasjon vert avslørt i ein datalekkasje, 
     vil { -product-name } sende deg ei åtvaring - slik at du kan ta forholdsreglar og verne kontoane dine.
+fxa-what-to-do-blurb-1 =
+    Dersom du ikkje kan logge inn, kan du kontakte nettstaden for å spørje korleis du oppdaterer det. 
+    Ser du ein konto du ikkje kjenner? Dine data kan ha blitt selde
+    eller gitt vidare. Dette kan også vere ein konto, du har gløymt at, du har
+    oppretta eller eit selskap som har skifta namn.
 fxa-what-to-do-subhead-2 = Slutt å bruke det eksponerte passordet, og endre det overalt der du har brukt det.
 fxa-what-to-do-subhead-4 = Få hjelp til å hugse alle passorda dine og halde dei trygge.
 # Alerts is a noun
@@ -139,7 +146,9 @@ wtd-after-website = Kva ein skal gjere gjere etter ein nettstadlekkasje
 wtd-after-data-agg = Kva ein skal gjere etter ein datainnsamlingslekkasje
 what-is-data-agg = Kva er ein datainnsamlar?
 protect-your-privacy = Ta vare på personvernet ditt på nettet
+no-pw-to-change = I motsetnad til nettstad-datalekkasjer, er det ingen passord som kan endrast.
 avoid-personal-info = Unngå å bruke personleg informasjon i passord
+avoid-personal-info-blurb = Det er enkelt å finne fødselsdagar, adresser og familiemedlemmar på nettet. Bruk ikkje desse orda i passorda dine.
 
 ## What to do after data breach tips
 
@@ -152,7 +161,10 @@ create-strong-passwords = Slik lagar du sterke passord
 stop-reusing-pw = Slutt med å bruke dei same passorda
 create-unique-pw = Lag unike passord og lagre dei på ein sikker stad, til dømes i ein passordhandterar.
 five-myths = 5 myter om passordhandterarar
+create-a-fxa = Lag ein { -brand-fxa } for din fulle rapport om datalekkasjar og for å få varsel.
+feat-security-tips = Sikkerheitstips for å beskytte kontoen din
 feat-sensitive = Avansert søk i sensitive datalekkasjar
+feat-enroll-multiple = Få overvaka fleire e-postadresser for datalekkasje
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
@@ -164,6 +176,7 @@ check-for-breaches = Sjå etter datalekkasjar
 find-out-what-hackers-know = Finn ut kva hackarar allereie veit om deg. Lær deg korleis du kan vere eitt steg framom dei.
 search-for-your-email = Søk etter e-postadressa di i offentlege datalekkasjar som går tilbake til 2007.
 back-to-top = Tilbake til toppen
+comm-opt-0 = Varsle meg på e-post dersom ei av e-postadressene mine som er ført opp nedanfor dukkar opp i ein datalekkasje.
 comm-opt-1 = Send åtvaringar om datalekkasjar til { $primaryEmail }.
 stop-monitoring-this = Slutt å overvake denne e-postadressa.
 resend-verification = Send stadfestings e-posten på nytt
@@ -178,6 +191,9 @@ breach-summary = Datalekkasjeoppsummering
 show-breaches-for-this-email = Vis alle datalekkasjar for denne e-postadressa.
 link-change-primary = Endre primær e-postadresse
 remove-fxm = Fjern { -product-name }
+remove-fxm-blurb =
+    Slå av { -product-name }-varsel. { -brand-fxa } vil vere aktiv, og du vil kanskje motta 
+    andre meldingar vedrørande kontoen din.
 # Button title
 manage-email-addresses = Handter e-postadresser
 # Link title
@@ -185,8 +201,15 @@ latest-breach-link = Sjå om du var involvert i denne datalekkasjen
 welcome-back = Velkomen tilbake, { $userName }!
 welcome-user = Velkomen, { $userName }!
 breach-alert-subject = { -product-name } fann e-postadressa di i ein ny datalekkasje.
+your-info-was-discovered-headline = Din personege informasjon vart oppdaga i ein ny datalekkasje
+your-info-was-discovered-blurb =
+    Du er registrert for å få { -product-name }-varsel
+    når e-postadressa di er i ein datalekkasje. Dette er det vi veit om denne datalekkasjen.
 what-to-do-after-breach = Kva skal du gjere etter ein datalekkasje:
+ba-next-step-1 = Endre passordet ditt til eit sterkt, unikt passord.
 ba-next-step-2 = Slutt heilt med å bruke det eksponerte passordet.
+faq1 = Eg kjenner ikkje att dette selskapet eller denne nettstaden. Kvifor er eg i denne datalekkasjen?
+faq2 = Kvifor tok det så lang tid å varsle meg om denne datalekkasjen?
 new-breaches-found =
     { $breachCount ->
         [one] FANN { $breachCount } NY DATALEKKASJE
