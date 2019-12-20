@@ -152,6 +152,16 @@ delayed-reporting-copy =
     i ein datalekkasje dukkar opp på nettstadar som vert brukte av kriminelle (kjent som det mørke nettet eller dark web). Datalekkasjar blir lagt til i databasen vår 
     så snart dei er oppdaga og stadfesta.
 about-fxm-headline = Om { -product-name }
+about-fxm-blurb =
+    { -product-name } åtvarar om kontoane dine på nettet har vore involvert i ein 
+    datalekkasje. Finn ut om du har vore i ein datalekkasje, få varsel om nye datalekkasjar, 
+    og set inn tiltak for å beskytte kontoane dine på nettet. { -product-name } er laga 
+    av { -brand-Mozilla }.
+fxm-warns-you =
+    { -product-name } åtvarar deg om e-postadressa di har blitt eksponert 
+    i ein datalekkasje på nettet. Sjå om informasjonen din har blitt eksponert, lær korleis 
+    du kan beskytte kontoane dine på nettet, og bli varsla om e-postadressa di 
+    er i ein ny lekkasje.
 # How Firefox Monitor works
 how-fxm-works = Korleis { -product-name } fungerer
 how-fxm-1-headline = Utfør eit enkelt søk
@@ -160,10 +170,23 @@ how-fxm-1-blurb =
     går tilbake til 2007. Dette enkle søket  vil vise dei fleste datalekkasjar, men ikkje
     dei som inneheld kjenslevar, personleg informasjon.
 how-fxm-2-headline = Registrer deg for datalekkasjeovervaking
+how-fxm-2-blurb =
+    Opprett ein { -brand-fxa } for å overvake e-postaddressa di for pågåande datalekkasjar. 
+    Når du har stadfesta e-postadressa, vil du også få ein full rapport om tidlegare datalekkasjar, 
+    inkludert sensitive lekkasjar.
 how-fxm-3-headline = Få meldingar i nettlesaren din
+how-fxm-3-blurb =
+    Dersom du brukar { -brand-name }, vil du få eit varsel dersom du besøkjer ein 
+    nettstad som har hatt ein datalekkasje. Sjå med det same om du vart ramma av datalekkasjen 
+    og kva du kan gjere med det.
 wtd-after-website = Kva ein skal gjere gjere etter ein nettstadlekkasje
 wtd-after-data-agg = Kva ein skal gjere etter ein datainnsamlingslekkasje
 what-is-data-agg = Kva er ein datainnsamlar?
+what-is-data-agg-blurb =
+    Datainnsamlarar, eller datameklarar, samlear inn informasjon frå offentlege register og kjøper den 
+    frå andre selskap. Dei samlar desse dataa for å selje dei til selskap for marknadsføringsformål. 
+    Offera for desse lekkasjane har mindre sannsynlegheit for å oppleve økonomisk 
+    svindel, men hackarar kan bruke desse dataa for å opptre som dei eller profilere dei.
 protect-your-privacy = Ta vare på personvernet ditt på nettet
 no-pw-to-change = I motsetnad til nettstad-datalekkasjer, er det ingen passord som kan endrast.
 avoid-personal-info = Unngå å bruke personleg informasjon i passord
@@ -226,7 +249,16 @@ your-info-was-discovered-blurb =
     når e-postadressa di er i ein datalekkasje. Dette er det vi veit om denne datalekkasjen.
 what-to-do-after-breach = Kva skal du gjere etter ein datalekkasje:
 ba-next-step-1 = Endre passordet ditt til eit sterkt, unikt passord.
+ba-next-step-blurb-1 =
+    Eit sterkt passord brukar ein kombinasjon av store og små bokstavar, 
+    spesialteikn og tal. Det inneheld ikkje personleg informasjon som 
+    adresse, fødselsdag eller namn på familiemedlemmar.
 ba-next-step-2 = Slutt heilt med å bruke det eksponerte passordet.
+ba-next-step-blurb-2 =
+    Cyberkriminelle kan finne passordet ditt på det mørke nettet og bruke det 
+    til å logge på dei andre kontoane dine. Den beste måten å beskytte kontoane dine på 
+    er å bruke unike passord for kvar konto.
+ba-next-step-3 = Få hjelp til å lage betre passord og til å oppbevare dei sikkert.
 faq1 = Eg kjenner ikkje att dette selskapet eller denne nettstaden. Kvifor er eg i denne datalekkasjen?
 faq2 = Kvifor tok det så lang tid å varsle meg om denne datalekkasjen?
 faq3 = Korleis veit eg at dette er ei legitim e-postmelding frå { -product-name }?
