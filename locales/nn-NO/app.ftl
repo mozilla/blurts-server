@@ -390,19 +390,50 @@ learn-more-link = Les meir.
 email-sent = E-post er sendt!
 # Form title
 want-to-add = Vil du leggje til ei anna e-postadresse?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Stadest lenka som er sendt til { $userEmail } for å leggje henne til i { -product-name }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+email-verified = E-postadresse stadfesta!
+email-added-to-subscription = Vi vil åtvare deg dersom{ $email } er i ein datalekkasje.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = For å sjå og administrere alle e-postmeldingar du har registrert deg for overvaking av datalekkasjer, { $nestedSignInLink }.
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = logg inn
 
 
 
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Handter alle e-postadressene i { $preferencesLink }.
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Varsekl om datalekkasje
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Datalekkasje lagt til:
+how-hackers-work-desc = Beskytt passorda dine mot kriminelle på nettet, sidan det er dei dei er mest interesserte i.
+what-to-do-after-breach-desc = Sikre kontoane dine, slik at informasjonen din ikkje hamnar i feil hender.
+create-strong-passwords-desc = Gjer passorda dine sterke, sikre og vanskelege å gjette.
+steps-to-protect-desc = Forstå dei vanlegaste truslane og lær deg kva du skal sjå etter.
+five-myths-desc = Lær korleis du unngår dårlege passordvanar som gjer arbeidet til ein hackar enkelt.
+take-further-steps-desc = Finn ut korleis du kan redusere risikoen for identitetstjuveri for å hindre økonomiske tap.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Endringar lagra!
+# Section headline
+rec-section-headline = Kva må du gjere med denne datalekkasjen?
+rec-section-subhead = Vi tilrår at du gjer dette for å halde den personlege informasjonen din trygg, og beskytte den digitale identiteten din.
+# Section headline
+rec-section-headline-no-pw = Kva du skal gjere for å beskytte den personlege informasjonen din
+rec-section-subhead-no-pw = Sjølv om passord ikkje vart lekne i denne datalekkasjen, er det framleis ting du kan gjere for å ta betre vare på den personlege informasjonen din.
 # Button
 see-additional-recs = Sjå ytterlegare tilrådingar

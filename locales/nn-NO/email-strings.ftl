@@ -10,6 +10,13 @@ email-address = E-postadresse:
 legal = Juridisk informasjon
 # Unsubscribe link in email.
 email-unsub-link = Avslutt abonnementet
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb =
+    Du får denne e-postmeldinga fordi du registrerte deg for { -product-name }-varsel.
+    Vil du ikkje lenger ha desse e-postmeldingane? { $unsubLink }. Dette er ein automatisert e-post. Dersom du ønskjer brukarstøtte, gå til { $faqLink }.
 # Button text that takes the user to their signed in user dashboard.
 view-my-dashboard-cta = Vis oversynet mitt
 # Button text
