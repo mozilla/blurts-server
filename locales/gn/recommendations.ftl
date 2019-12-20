@@ -55,6 +55,9 @@ rec-sec-qa =
     marandu ojekuaa. Emoheñói mbohovái ipuku ha jereguáva ha eñongatu tenda hekorosãvape.
 # Recommendation subhead
 rec-phone-num-subhead = Aníke emoherakuã ne pumbyry papapy
+rec-phone-num =
+    Ani eme’ẽ ne pumbyry papapy eñemboheraguapývo mba’ete
+    ipyahúvape térã mba’epururãme. Nereikotevẽiramo pumbyry papapy, anínte emoinge.
 # Recommendation subhead
 rec-dob-subhead = Aníke eipuru nde jehegua PINs-pe
 # Recommendation subhead

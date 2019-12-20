@@ -10,6 +10,13 @@ email-address = Ñanduti veve kundaharape:
 legal = Añetegua
 # Unsubscribe link in email.
 email-unsub-link = Ñemboheraguapy jeheja
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb =
+    Oguahẽ ndéve ñandutiveve eñemboheguapýre { -product-name } ñembyaípe. 
+    ¿Ndereipotavéimarõ? { $unsubLink }. Kóva ha’e ñandutiveve ijeheguíva. Eikotevẽramo pytyvõ, eike kuatiarogue { $faqLink }-pe.
 # This string appears in the footer of verification emails. { $faqLink } is a link
 # to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-verify-footer-copy =
