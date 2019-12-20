@@ -247,7 +247,7 @@ your-info-was-discovered-headline = Din personege informasjon vart oppdaga i ein
 your-info-was-discovered-blurb =
     Du er registrert for å få { -product-name }-varsel
     når e-postadressa di er i ein datalekkasje. Dette er det vi veit om denne datalekkasjen.
-what-to-do-after-breach = Kva skal du gjere etter ein datalekkasje:
+what-to-do-after-breach = Kva skal du gjere etter ein datalekkasje
 ba-next-step-1 = Endre passordet ditt til eit sterkt, unikt passord.
 ba-next-step-blurb-1 =
     Eit sterkt passord brukar ein kombinasjon av store og små bokstavar, 
@@ -430,7 +430,7 @@ take-further-steps-desc = Finn ut korleis du kan redusere risikoen for identitet
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Endringar lagra!
 # Section headline
-rec-section-headline = Kva må du gjere med denne datalekkasjen?
+rec-section-headline = Kva må du gjere med denne datalekkasjen
 rec-section-subhead = Vi tilrår at du gjer dette for å halde den personlege informasjonen din trygg, og beskytte den digitale identiteten din.
 # Section headline
 rec-section-headline-no-pw = Kva du skal gjere for å beskytte den personlege informasjonen din
