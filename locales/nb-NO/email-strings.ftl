@@ -62,7 +62,7 @@ email-breach-alert-blurb =
 # List headline
 faq-list-headline = Ofte stilte spørsmål
 # Link Title
-faq-v2-1 = Jeg kjenner ikke igjen noen av disse selskapene eller nettstededer. Hvorfor er jeg i denne datalekkasjen?
+faq-v2-1 = Jeg kjenner ikke igjen noen av disse selskapene eller nettsteder. Hvorfor er jeg i denne datalekkasjen?
 # Link Title
 faq-v2-2 = Trenger jeg gjøre noe hvis en datalekkasje skjedde for mange år siden, eller hvis det er en gammel konto?
 # Link Title
