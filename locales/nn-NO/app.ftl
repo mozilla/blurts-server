@@ -210,15 +210,29 @@ ba-next-step-1 = Endre passordet ditt til eit sterkt, unikt passord.
 ba-next-step-2 = Slutt heilt med å bruke det eksponerte passordet.
 faq1 = Eg kjenner ikkje att dette selskapet eller denne nettstaden. Kvifor er eg i denne datalekkasjen?
 faq2 = Kvifor tok det så lang tid å varsle meg om denne datalekkasjen?
+faq3 = Korleis veit eg at dette er ei legitim e-postmelding frå { -product-name }?
 new-breaches-found =
     { $breachCount ->
         [one] FANN { $breachCount } NY DATALEKKASJE
        *[other] FANN { $breachCount } NYE DATALEKKASJAR
     }
+sign-up-headline-1 = Få dei nyaste åtvaringane med ein { -brand-fxa }.
 account-not-required = Du treng ikkje å ha ein { -brand-name }-nettlesar for å bruke ein { -brand-fxa }. Ved å melde deg på kan du få informasjon om tenester frå { -brand-Mozilla }.
 was-your-info-exposed = Er opplysningane dine kompromitterte i datalekkasjen { $breachName }?
 find-out-if = Finn ut om dine opplysningar vart eksponerte i denne datalekkasjen.
+fb-not-comp = Denne e-postadressa vart ikkje funnen i datalekkasjen { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Men ho dukka opp i { $breachCount } annan datalekkasje.
+       *[other] Men ho dukka opp i { $breachCount } andre datalekkasjar.
+    }
+fb-comp-only = Denne e-postadressa var i datalekkasjen { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+       *[other] Denne e-postadressa var i { $breachCount } kjende datalekkasjar, inkludert { $breachName }.
+    }
 no-other-breaches-found = Ingen andre datalekkasjar vart funne i dette grunnleggjande søket.
+no-results-blurb = Beklagar, men denne datalekkasjen er ikkje i databasen vår.
 all-breaches-headline = Alle datalekkasjar i { -product-name }
 search-breaches = Søk etter datalekkasjar
 # "Appears in-page as: Showing: All Breaches"
@@ -226,7 +240,9 @@ currently-showing = Viser:
 
 ## Updated error messages
 
+error-bot-headline = Søk er mellombels suspendert
 error-csrf-headline = Tidsavbrot i økta
+error-invalid-unsub = Slik melder du deg av abonnementet på { -product-name }-varsel
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -243,6 +259,16 @@ passwords-exposed =
         [one] Passord eksponert i alle datalekkasjane
        *[other] Passorda eksponerte i alle datalekkasjane
     }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] Kjend datalekkasje har eksponert informasjonen din
+       *[other] Kjende datalekkasjar har eksponert informasjonen din
+    }
+# Button
+see-additional-breaches = Sjå ytterlegare datalekkasjar
 scan-results-known-breaches =
     { $breachCount ->
         [one] Denne e-postadressa er involvert i 1 kjend datalekkasje.
@@ -258,16 +284,21 @@ fxa-primary-email = { -brand-fxa } E-post - Primær
 what-is-a-website-breach = Kva er ein nettstadlekkasje?
 security-tips-headline = Tryggingstips for å verne deg mot hackarar
 steps-to-protect = Kva du kan gjere for å beskytte identiteten din på nettet
+take-further-steps = Gjer enno meir for å beskytte identiteten din
 alert-about-new-breaches = Varsle meg om nye datalekkasjar
 see-if-youve-been-part = Sjå om du har vore omfatta av ein datalekkasje på nettet.
 get-ongoing-breach-monitoring = Få løpande datalekkasjeovervaking av fleire e-postadresser.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Sjekk no
+new-unsub-error = Du må melde deg av abonnementet på ei av e-postmeldingane som { -product-name } sende.
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = Tilleggsinformasjon, inkludert:
 # Title
 email-addresses-title = E-postadresser
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Oversyn
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name }-innstillingar
 # When a user is signed in, this appears in the drop down menu 
@@ -299,3 +330,5 @@ sign-in-nested = logg inn
 breach-added-label = Datalekkasje lagt til:
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Endringar lagra!
+# Button
+see-additional-recs = Sjå ytterlegare tilrådingar

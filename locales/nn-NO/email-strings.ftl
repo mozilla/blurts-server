@@ -10,12 +10,15 @@ email-address = E-postadresse:
 legal = Juridisk informasjon
 # Unsubscribe link in email.
 email-unsub-link = Avslutt abonnementet
+# Button text that takes the user to their signed in user dashboard.
+view-my-dashboard-cta = Vis oversynet mitt
 # Button text
 verify-email-cta = Stadfest e-post
 # Button text
 see-all-breaches = Vis alle datalekkasjane
 # Headline of verification email
 email-link-expires = Denne lenka går ut om 24 timar
+email-verify-blurb = Stadfest e-postadressa di for å leggje ho til i { -product-name } og registrere deg for varsel om datalekkasjear.
 # Email headline
 email-breach-summary-for-email = Datalekkasje-oppsummering for { $userEmail }
 # Subject line of email

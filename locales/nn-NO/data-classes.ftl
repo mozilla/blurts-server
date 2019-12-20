@@ -26,6 +26,7 @@ chat-logs = Chatteloggar
 credit-card-cvv = CVV-kodar for betalingskort
 credit-cards = Betalingskort
 credit-status-information = Informasjon om betalingsevne
+cryptocurrency-wallet-hashes = Hash-verdiar for kryptovaluta-lommebøker
 customer-feedback = Tilbakemeldingar frå kundar
 customer-interactions = Kundesamhandling
 dates-of-birth = Fødselsdatoar
@@ -64,6 +65,8 @@ ip-addresses = IP-adresser
 job-titles = Jobbtitlar
 mac-addresses = MAC-adresser
 marital-statuses = Sivilstand
+# Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
+mnemonic-phrases = Mnemoniske frasar
 names = Namn
 nationalities = Nasjonalitetar
 net-worths = Formue
