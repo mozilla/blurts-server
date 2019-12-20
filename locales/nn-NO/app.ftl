@@ -87,7 +87,17 @@ fxa-what-to-do-blurb-1 =
     eller gitt vidare. Dette kan også vere ein konto, du har gløymt at, du har
     oppretta eller eit selskap som har skifta namn.
 fxa-what-to-do-subhead-2 = Slutt å bruke det eksponerte passordet, og endre det overalt der du har brukt det.
+fxa-wtd-blurb-2 =
+    Hackarar kan prøve å bruke e-postadressa di og det same passordet ditt for å kome inn på andre kontoar. 
+    Lag eit anna og unikt passord for kvar konto, spesielt for nettbanken din, e-postadressa di og andre nettstadar der du lagrar personleg informasjon.
+fxa-what-to-do-blurb-3 =
+    Dei fleste datalekkasjar inneheld berre e-postadresse og passord, men nokre inkluderer sensitiv økonomisk informasjon. 
+    Dersom bankkontoen din eller betalingskort-nummeret ditt har blitt lekne, så må du varsle banken din om mogleg svindel. 
+    Hald auge med konto-bevegelsar du ikkje kjenner igjen.
 fxa-what-to-do-subhead-4 = Få hjelp til å hugse alle passorda dine og halde dei trygge.
+fxa-what-to-do-blurb-4 =
+    Passordhandterarar som 1Password, LastPass, Dashlane og Bitwarden lagrar passorda dine sikkert og fyller dei inn på nettstadar for deg. Bruk ein passordhandterar
+    på telefonen din og datamaskina di, slik at du ikkje må hugse alle saman.
 # Alerts is a noun
 sign-up-for-alerts = Registrer deg for varsel
 # Link title
@@ -131,7 +141,16 @@ unverified-breach-plural = Ubekrefta datalekkasjar
 spam-list-breach-plural = Spamlistelekkasjar
 what-data = Kva for nokre data er kompromitterte:
 sensitive-sites = Korleis behandlar { -product-name } sensitive nettstadar?
+sensitive-sites-copy =
+    { -product-name } viser berre kontoar knytte til desse 
+    typar lekkasjar etter at ei e-postadresse er stadfesta. Dette tyder at du er 
+    den einaste personen som kan sjå om informasjonen din var i denne datalekkasjen (med mindre nokon 
+    andre har tilgang til e-postkontoen din).
 delayed-reporting-headline = Kvifor tok det så lang tid å rapportere denne datalekkasjen?
+delayed-reporting-copy =
+    Det kan nokre gongar ta månadar eller år før data involverte 
+    i ein datalekkasje dukkar opp på nettstadar som vert brukte av kriminelle (kjent som det mørke nettet eller dark web). Datalekkasjar blir lagt til i databasen vår 
+    så snart dei er oppdaga og stadfesta.
 about-fxm-headline = Om { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Korleis { -product-name } fungerer
