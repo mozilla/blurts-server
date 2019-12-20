@@ -75,9 +75,14 @@ pre-fxa-subject = Nyheder fra { -product-name }
 pre-fxa-headline = Ændringer i { -product-name }
 pre-fxa-blurb = Vi har ændret noget, siden du tilmeldte dig { -product-name } - en service der holder øje med, om dine personlige data optræder i kendte datalæk. Din profil er nu tilknyttet din Firefox-konto.
 pre-fxa-tout-1 = Få advarsler om flere datalæk
+pre-fxa-p-1 = <a>Opret en konto</a> for at holde øje med op til 15 mailadresser og få besked, hvis de er ramt af datalæk. Vi anbefaler, at du tilføjer alle mailadresser, du bruger til at oprette online-konti.
 pre-fxa-tout-2 = Få et bedre overblik
 pre-fxa-p-2 =
     Se alle datalæk på ét sted, så du ved, hvilke adgangskoder der skal skiftes. 
     Oversigten med datalæk er kun tilgængelig med en konto.
+pre-fxa-tout-3 = Fortsæt med at modtage advarsler via mail
+pre-fxa-p-3 =
+    Du vil stadig modtage advarsler fra { -product-name }. Vi informerer dig, hvis dine personlige data 
+    optræder i en ny datalæk.
 # Button at the bottom of pre-fxa email.
 create-account = Opret konto
