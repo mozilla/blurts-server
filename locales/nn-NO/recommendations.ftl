@@ -10,14 +10,27 @@ rec-ssn =
 rec-pw-1-subhead = Endre passordet ditt
 # Link title
 rec-pw-1-cta = Endre passord for denne nettstaden
+rec-pw-1 =
+    Gjer dette passordet unikt og ulikt frå alle de andre du brukar. 
+    Ein god strategi å følgje er å kombinere to eller fleire ikkje-relaterte 
+    ord for å lage ein heil passordfrase.
 # Recommendation subhead
 rec-pw-2-subhead = Oppdater andre innloggingar som brukar det same passordet
 # Link title
 rec-pw-2-cta-fx = Vis innloggingar på { -brand-name }
+rec-pw-2 =
+    Ombruk av passord kan gjere ein enkel datalekkasje til mange. No som dette 
+    passordet er der ute, kan hackarar bruke det for å kome seg inn på andre kontoear.
 # Recommendation subhead
 rec-pw-3-subhead = Bruk ein passord-handterar for å ta passorda dine med deg overalt
 # Link title
 rec-pw-3-cta = Last ned { -brand-lockwise }
+rec-pw-3-fx =
+    Bruk { -brand-lockwise } for å få sikker tilgang til passorda du har lagra i 
+    { -brand-name } kvar som helst — også utanfor nettlesaren.
+rec-pw-3-non-fx =
+    Bruk { -brand-lockwise } for å halde oversikt over alle dei ulike 
+    passorda og få tilgang til dei sikkert frå telefonen eller nettbrettet.
 # Recommendation subhead
 rec-pw-4-subhead = Konfigurer tofaktorautentisering (2FA)
 # Link title
