@@ -76,7 +76,7 @@ fxa-pwt-summary-2 =
     Korte passord med bare ett ord er enkle for hackere å gjette. 
     Bruk minst to ord og en kombinasjon av bokstaver, sifre og spesialtegn.
 fxa-pwt-summary-4 =
-    Passordbehandlere som 1Password, LastPass, Dashlane og Bitwarden lagrer dine
+    Program for passordbehandling som 1Password, LastPass, Dashlane og Bitwarden lagrer dine
     passord og fyller dem inn på nettsteder for deg. De vil til og med hjelpe deg med å lage sterke passord.
 fxa-pwt-summary-6 =
     Datalekkasjer øker. Hvis din personlige informasjon vises i en ny datalekkasje, så sender 
@@ -97,8 +97,8 @@ fxa-what-to-do-blurb-3 =
     Hold øye med kontobevegelser du ikke kjenner igjen.
 fxa-what-to-do-subhead-4 = Få hjelp til å huske alle passordene dine og holde dem trygge.
 fxa-what-to-do-blurb-4 =
-    Passordbehandlere som 1Password, LastPass, Dashlane og Bitwarden lagrer din
-    passord sikkert og fyll dem inn på nettsteder for deg. Bruk en passordbehandler
+    Program for passordbehandling som 1Password, LastPass, Dashlane og Bitwarden lagrer din
+    passord sikkert og fyller dem inn på nettsteder for deg. Bruk en passordbehandler
     på telefonen og datamaskinen din, slik at du ikke trenger å huske dem alle.
 # Alerts is a noun
 sign-up-for-alerts = Registrer deg for varslinger
@@ -150,7 +150,7 @@ sensitive-sites-copy =
     andre har tilgang til din e-postkonto).
 delayed-reporting-headline = Hvorfor tok det så lang tid å rapportere denne datalekkasjen?
 delayed-reporting-copy =
-    Det kan noen ganger ta måneder eller år for data involvert 
+    Det kan noen ganger ta måneder eller år før data involvert 
     i en datalekkasje dukker opp på nettsteder som brukes av kriminelle (kjent som det mørke nettet eller dark web). Datalekkasjer blir lagt til i vår database 
     så snart de er oppdaget og bekreftet.
 about-fxm-headline = Om { -product-name }
