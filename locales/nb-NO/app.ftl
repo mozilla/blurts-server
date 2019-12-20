@@ -432,7 +432,7 @@ take-further-steps-desc = Finn ut hvordan du kan redusere risikoen for identitet
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Endringer lagret!
 # Section headline
-rec-section-headline = Hva du skal gjøre for denne datalekkasjen
+rec-section-headline = Hva du skal gjøre med denne datalekkasjen
 rec-section-subhead = Vi anbefaler at du tar disse forhåndsregler for å holde din personlige informasjon trygg og beskytte din digitale identitet.
 # Section headline
 rec-section-headline-no-pw = Hva du skal gjøre for å beskytte din personlige informasjon
