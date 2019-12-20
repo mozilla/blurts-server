@@ -259,6 +259,9 @@ ba-next-step-blurb-2 =
     til å logge på dei andre kontoane dine. Den beste måten å beskytte kontoane dine på 
     er å bruke unike passord for kvar konto.
 ba-next-step-3 = Få hjelp til å lage betre passord og til å oppbevare dei sikkert.
+ba-next-step-blurb-3 =
+    Bruk ein passord-handterar for å lage sterke, unike passord. Passord-handterarar lagrar alle 
+    innloggingsdetaljane dine på ein sikker måte slik at du kan få tilgang til dei på alle einingane dine.
 faq1 = Eg kjenner ikkje att dette selskapet eller denne nettstaden. Kvifor er eg i denne datalekkasjen?
 faq2 = Kvifor tok det så lang tid å varsle meg om denne datalekkasjen?
 faq3 = Korleis veit eg at dette er ei legitim e-postmelding frå { -product-name }?
@@ -292,8 +295,17 @@ currently-showing = Viser:
 ## Updated error messages
 
 error-bot-headline = Søk er mellombels suspendert
+error-bot-blurb =
+    Vi mistenker at du kan vere ein bot fordi du søkte 
+    på fleire e-postadresser i løpet av kort tid. Foreløpig er du blokkert 
+    frå nye søk. Du kan prøve igjen seinare.
 error-csrf-headline = Tidsavbrot i økta
+error-csrf-blurb = Bruk tilbake-knappen for nettlesaren, last inn sida på nytt og prøv igjen.
 error-invalid-unsub = Slik melder du deg av abonnementet på { -product-name }-varsel
+error-invalid-unsub-blurb =
+    Du må melde deg av abonnementet på ei av e-postmeldingane 
+    som { -product-name } sende deg. Sjekk innboksen for meldingar frå 
+    { -brand-team-email }. Vel avmeldingslenka nedst i e-posten.
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -333,6 +345,7 @@ other-monitored-emails = Andre overvaka e-postadresser
 email-verification-required = E-poststadfesting påkravd
 fxa-primary-email = { -brand-fxa } E-post - Primær
 what-is-a-website-breach = Kva er ein nettstadlekkasje?
+website-breach-blurb = Ein nettstad-datalekkasje kan skyldast cyber-kriminelle som stel, kopierer eller eksponerer personleg informasjon frå kontoar på nettet. Det er vanlegvis eit resultat av at hackarar finn eit svakt punkt i sikkerheita til nettstaden. Datalekkasje kan også skje når kontoinformasjon blir leken ved eit uhell.
 security-tips-headline = Tryggingstips for å verne deg mot hackarar
 steps-to-protect = Kva du kan gjere for å beskytte identiteten din på nettet
 take-further-steps = Gjer enno meir for å beskytte identiteten din
@@ -342,6 +355,11 @@ get-ongoing-breach-monitoring = Få løpande datalekkasjeovervaking av fleire e-
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Sjekk no
 new-unsub-error = Du må melde deg av abonnementet på ei av e-postmeldingane som { -product-name } sende.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Men den dukka opp i { $breachCount } annan kjend datalekkasje.
+       *[other] Men den dukka opp i { $breachCount } andre kjende datalekkasjar.
+    }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = Tilleggsinformasjon, inkludert:
@@ -350,6 +368,10 @@ email-addresses-title = E-postadresser
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Oversyn
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = Den { $breachDate } vart { $breachTitle } utsett for ein datalekkasje. Når datalekkasjen vart oppdaga og stadfesta, vart han lagt til i databasen vår den { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name }-innstillingar
 # When a user is signed in, this appears in the drop down menu 
@@ -360,6 +382,7 @@ signed-in-as = Innlogga som: { $userEmail }
 filter-by = Filtrer etter kategori:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Meny
+to-affected-email = Send alle åtvaringar om datalekkasjar til den ramma e-postadressa
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
 join-firefox = Det finst ein måte å ta vare på personvernet ditt. Ver med { -brand-name } på ferda.
 # Link title
