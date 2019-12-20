@@ -37,7 +37,7 @@ rec-pw-4-subhead = Konfigurer tofaktorautentisering (2FA)
 rec-pw-4-cta = Se nettsteder som tilbyr 2FA
 rec-pw-4 =
     Mange nettsteder tilbyr 2FA (tofaktorautentisering) som et ekstra sikkerhetstiltak. Dette krever 
-    et annet stykke informasjon for å logge på kontoen din, for eksempel en 
+    ytterligere informasjon for å logge på kontoen din, for eksempel en 
     engangskode du mottar via SMS.
 # Recommendation subhead
 rec-bank-acc-subhead = Overvåk dine kontoutskrifter

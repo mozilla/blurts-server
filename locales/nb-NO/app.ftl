@@ -77,7 +77,7 @@ fxa-pwt-summary-2 =
     Bruk minst to ord og en kombinasjon av bokstaver, sifre og spesialtegn.
 fxa-pwt-summary-4 =
     Program for passordbehandling som 1Password, LastPass, Dashlane og Bitwarden lagrer dine
-    passord og fyller dem inn på nettsteder for deg. De vil til og med hjelpe deg med å lage sterke passord.
+    passord og fyller dem ut på nettsteder for deg. De vil til og med hjelpe deg med å lage sterke passord.
 fxa-pwt-summary-6 =
     Datalekkasjer øker. Hvis din personlige informasjon vises i en ny datalekkasje, så sender 
     { -product-name } deg et varsel - slik at du kan iverksette tiltak og beskytte kontoene dine.
@@ -98,7 +98,7 @@ fxa-what-to-do-blurb-3 =
 fxa-what-to-do-subhead-4 = Få hjelp til å huske alle passordene dine og holde dem trygge.
 fxa-what-to-do-blurb-4 =
     Program for passordbehandling som 1Password, LastPass, Dashlane og Bitwarden lagrer din
-    passord sikkert og fyller dem inn på nettsteder for deg. Bruk en passordbehandler
+    passord sikkert og fyller dem ut på nettsteder for deg. Bruk en passordbehandler
     på telefonen og datamaskinen din, slik at du ikke trenger å huske dem alle.
 # Alerts is a noun
 sign-up-for-alerts = Registrer deg for varslinger
