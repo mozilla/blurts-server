@@ -79,17 +79,43 @@ rec-phone-num =
     kontoar eller tenester. Dersom du ikkje treng eit telefonnummer, treng du ikkje å skrive det inn.
 # Recommendation subhead
 rec-dob-subhead = Unngå å bruke personleg informasjon i PIN-kodar
+rec-dob =
+    Fordi fødselsdatoen din er lett å finne i offentlege register, 
+    er det best å unngå å bruke det i passord og PIN-kodar. Folk som 
+    veit når fødselsdagen din er, kan også veldig lett gjette PIN-koden din.
+# Recommendation subhead
+rec-pins-subhead = Styrk sikkerheita i PIN-kodane dine
+rec-pins =
+    Ein sterk PIN-kode inneheld ikkje personleg informasjon, til dømes fødselsdato 
+    eller adresse. Det skal vere eit nummer berre du kjenner, og som ikkje lett kan gjettast.
 # Recommendation subhead
 rec-address-subhead = Unngå å bruke adresser i passord
+rec-address =
+    Å bruke adresser eller gata der du vaks opp, svekker passorda dine. Sidan det er enkelt å finne denne informasjonen offentlig, gjer det slike 
+    passord lett å gjette.
+# Recommendation subhead
+rec-gen-1-subhead = Bruk unike, sterke passord for kvar konto
 # Link title
 rec-gen-1-cta = Slik lagar du sterke passord
+rec-gen-1 =
+    Ombruk av passord aukar risikoen for alle kontoeane dine. Dette tyder at dersom 
+    eitt passord blir leke, har hackarar nøklane til mange kontoar.
 # Recommendation subhead
 rec-gen-2-subhead = Lagre passord på ein trygg stad
 # Link title
 rec-gen-2-cta = Mytar om passordhandterarar
+rec-gen-2 =
+    Legg innloggingsdetaljane dine på ein sikkert stad som berre du har tilgang til, til dømes i ein 
+    passordhandterar. Dette gjer det også enkelt å halde oversikt over alle dei ulike passorda dine.
 # Recommendation subhead
 rec-gen-3-subhead = Ver varsam med å gje frå deg personleg informasjon
 # Link title
 rec-gen-3-cta = Les fleire sikkerheitstips
+rec-gen-3 =
+    Ikkje del ut personopplysningar dersom du ikkje treng det. Dersom du blir bedd om å 
+    oppgi eller gi ut e-postadresse, postnummer eller telefonnummer kan du seie nei.
 # Recommendation subhead
 rec-gen-4-subhead = Oppdater programvare og appar regelmessig
+rec-gen-4 =
+    Ved å oppdatere smarttelefon-appane, nettlesarane og operativsystema vert 
+    einingane dine sikrare. Desse oppdateringane løyser feil, programvaresårbarheiter og sikkerheitsproblem.
