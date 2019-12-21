@@ -383,3 +383,11 @@ five-myths-desc = Apprendre à éviter les mauvaises habitudes de mots de passe 
 take-further-steps-desc = Découvrir comment atténuer les risques de vol d’identité afin de prévenir les pertes financières.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Modifications enregistrées.
+# Section headline
+rec-section-headline = Que faire pour cette fuite de données
+rec-section-subhead = Nous vous recommandons de prendre ces mesures pour protéger vos informations personnelles ainsi que votre identité numérique.
+# Section headline
+rec-section-headline-no-pw = Que pouvez-vous faire pour protéger vos données personnelles
+rec-section-subhead-no-pw = Bien que les mots de passe n’aient pas été exposés dans cette fuite de données, vous pouvez toujours prendre des mesures pour mieux protéger vos informations personnelles.
+# Button
+see-additional-recs = Voir les recommandations supplémentaires
