@@ -252,7 +252,7 @@ comm-opt-1 = Надсилати сповіщення про всі витоки 
 stop-monitoring-this = Припинити відстежувати цю е-пошту.
 resend-verification = Надіслати лист підтвердження ще раз
 add-new-email = Додати нову адресу е-пошти
-send-verification = Надіслати посилання для підтвердження
+send-verification = Надіслати підтвердження
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
