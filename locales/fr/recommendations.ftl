@@ -46,8 +46,13 @@ rec-hist-pw-subhead = Évitez de réutiliser vos mots de passe
 rec-hist-pw = Utilisez un mot de passe fort et unique pour chacun de vos comptes. Si un de vos mots de passe est compromis, vous n’aurez alors que le compte associé à mettre à jour avec un nouveau mot de passe.
 # Recommendation subhead
 rec-sec-qa-subhead = Créez des réponses uniques aux questions de sécurité
+rec-sec-qa = De nombreux sites web posent les mêmes questions. Si une réponse est dévoilée, l’information est dans la nature. Créez des réponses longues et aléatoires, et conservez-les en lieu sûr.
 # Recommendation subhead
 rec-phone-num-subhead = Évitez de partager votre numéro de téléphone
+rec-phone-num = Essayez de ne pas donner votre numéro de téléphone lors de la création d’un compte ou de l’inscription à un service. Si un numéro de téléphone n’est pas requis, ne le saisissez pas.
+rec-dob = Puisque votre date de naissance est aisément trouvable dans des documents publics, il vaut mieux éviter de l’utiliser dans les mots de passe et les codes PIN. Les personnes qui connaissent votre date de naissance pourraient également deviner très facilement votre code PIN.
+# Recommendation subhead
+rec-pins-subhead = Renforcez la sécurité de vos codes PIN
 # Link title
 rec-gen-1-cta = Comment créer des mots de passe robustes
 # Recommendation subhead
