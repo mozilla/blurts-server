@@ -437,3 +437,11 @@ five-myths-desc = Opi, kuinka välttää huonot salasanakäytännöt.
 take-further-steps-desc = Ota selvää, kuinka voit pienentää identiteettivarkauden riskejä estääksesi taloudellisia menetyksiä.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Muutokset tallennettu!
+# Section headline
+rec-section-headline = Mitä tehdä tälle vuodolle
+rec-section-subhead = Suosittelemme sinua tekemään seuraavat asiat suojataksesi henkilökohtaisia tietojasi ja digitaalista henkilöyttäsi.
+# Section headline
+rec-section-headline-no-pw = Mitä tehdä henkilökohtaisten tietojen suojaamiseksi
+rec-section-subhead-no-pw = Vaikka salasanoja ei paljastunutkaan tässä vuodossa, voit tehdä asioita suojataksesi henkilökohtaisia tietojasi aiempaa paremmin.
+# Button
+see-additional-recs = Katso lisäsuositukset
