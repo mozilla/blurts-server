@@ -2,6 +2,7 @@
 rec-ssn-subhead = Consultez vos relevés bancaires
 # Link title
 rec-ssn-cta = Demander des relevés bancaires
+rec-ssn = Vous obtenez trois rapports de crédit gratuits par an selon la loi. Les demander et les examiner n’affecte pas votre crédit. Recherchez les comptes, les prêts ou les cartes de crédit que vous ne reconnaissez pas.
 # Recommendation subhead
 rec-pw-1-subhead = Modifiez votre mot de passe
 # Link title
