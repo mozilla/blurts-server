@@ -43,7 +43,13 @@ rec-ip-us =
     Votre adresse de protocole Internet (adresse IP) identifie votre emplacement
     et votre fournisseur de services internet. Un service comme { -brand-fpn }
     masque votre adresse IP pour cacher votre emplacement.
+rec-ip-non-us =
+    Votre adresse de protocole Internet (adresse IP) identifie votre emplacement
+    et fournisseur de services Internet. Avec un réseau privé virtuel (VPN), vous pouvez masquer votre position
+    et masquer votre adresse IP.
 rec-hist-pw-subhead = Évitez de réutiliser vos mots de passe
+# Link title
+rec-hist-pw-cta-fx = Afficher les identifiants dans { -brand-name }
 rec-hist-pw = Utilisez un mot de passe fort et unique pour chacun de vos comptes. Si un de vos mots de passe est compromis, vous n’aurez alors que le compte associé à mettre à jour avec un nouveau mot de passe.
 # Recommendation subhead
 rec-sec-qa-subhead = Créez des réponses uniques aux questions de sécurité
@@ -51,9 +57,16 @@ rec-sec-qa = De nombreux sites web posent les mêmes questions. Si une réponse 
 # Recommendation subhead
 rec-phone-num-subhead = Évitez de partager votre numéro de téléphone
 rec-phone-num = Essayez de ne pas donner votre numéro de téléphone lors de la création d’un compte ou de l’inscription à un service. Si un numéro de téléphone n’est pas requis, ne le saisissez pas.
+# Recommendation subhead
+rec-dob-subhead = Évitez d’utiliser des informations personnelles dans votre code PIN
 rec-dob = Puisque votre date de naissance est aisément trouvable dans des documents publics, il vaut mieux éviter de l’utiliser dans les mots de passe et les codes PIN. Les personnes qui connaissent votre date de naissance pourraient également deviner très facilement votre code PIN.
 # Recommendation subhead
 rec-pins-subhead = Renforcez la sécurité de vos codes PIN
+rec-pins =
+    Un code PIN robuste ne contient pas d’informations personnelles, telles que votre date de naissance ou
+    votre adresse. Ce devrait être un nombre que vous seul connaissez et qui ne peut pas être facilement deviné.
+# Recommendation subhead
+rec-address-subhead = Évitez d’utiliser des adresses dans vos mots de passe
 # Link title
 rec-gen-1-cta = Comment créer des mots de passe robustes
 # Recommendation subhead
@@ -61,6 +74,8 @@ rec-gen-2-subhead = Conservez vos mots de passe en lieu sûr
 # Link title
 rec-gen-2-cta = Idées reçues sur les gestionnaires de mots de passe
 rec-gen-2 = Préservez vos informations de connexion dans un endroit sûr auquel vous seul·e pouvez accéder, tel qu’un gestionnaire de mots de passe. Cette précaution a également l’avantage de faciliter le suivi et la mise à jour de tous vos différents mots de passe.
+# Recommendation subhead
+rec-gen-3-subhead = Soyez prudent·e lorsque vous divulguez des informations personnelles
 # Link title
 rec-gen-3-cta = Découvrir davantage de conseils pour votre sécurité
 # Recommendation subhead
