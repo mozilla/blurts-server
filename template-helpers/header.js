@@ -12,6 +12,7 @@ function getSignedInAs(args) {
 }
 
 function navLinks(args) {
+  const hostUrl = args.data.root.req.url;
   const serverUrl = args.data.root.constants.SERVER_URL;
   const locales = args.data.root.req.supportedLocales;
   const links = [
@@ -19,16 +20,19 @@ function navLinks(args) {
       title: "Home",
       stringId: "home",
       href: `${serverUrl}/`,
+      activeLink: (hostUrl === "/" || hostUrl === "/dashboard"),
     },
     {
       title: "Breaches",
       stringId: "breaches",
       href: `${serverUrl}/breaches`,
+      activeLink: (hostUrl === "/breaches"),
     },
     {
       title: "Security Tips",
       stringId: "security-tips",
       href: `${serverUrl}/security-tips`,
+      activeLink: (hostUrl === "/security-tips"),
     },
   ];
 
