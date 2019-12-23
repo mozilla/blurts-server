@@ -10,6 +10,9 @@ rec-pw-1-cta = Emoambue ñe’ẽñemi ko tendápe g̃uarã
 rec-pw-2-subhead = Embohekopyahu ambue tembiapo ñepyrũ ko ñe’ẽñemímente
 # Link title
 rec-pw-2-cta-fx = Ehecha tembiapo ñepyrũ { -brand-name }-pe
+rec-pw-2 =
+    Eipurujeývo ñe’ẽñemi ombohetakuaa mba’ekuaarã ñembyai. Kóva oikóvo 
+    ñe’ẽñemi eipurukuaa, umi mba’evai apoha ikatu oipuru oike hag̃ua ambue mba’etépe.
 # Recommendation subhead
 rec-pw-3-subhead = Eipuru ñe’ẽñemi ñangarekoha eraha hag̃ua ne ñe’ẽñemi opa hendápe
 # Link title
@@ -24,6 +27,10 @@ rec-pw-3-non-fx =
 rec-pw-4-subhead = Emboheko pe ñemoneĩ mokõi factor rehegua (2FA)
 # Link title
 rec-pw-4-cta = Ehecha tenda oikuave’ẽva 2FA
+rec-pw-4 =
+    Heta ñanduti renda ome’ẽse 2FA tekorosãverãramo. Kóva oikotevẽ 
+    ambue marandu omoñepyrũ hag̃ua tembiapo ne mba’etépe, peteĩ 
+    ayvu ha’eñóvaramo og̃uahẽ ñe’ẽmondo haipyre rupi.
 # Recommendation subhead
 rec-bank-acc-subhead = Ehechameme banco pegua kuatia
 rec-bank-acc =
