@@ -67,8 +67,17 @@ rec-pins =
     votre adresse. Ce devrait être un nombre que vous seul connaissez et qui ne peut pas être facilement deviné.
 # Recommendation subhead
 rec-address-subhead = Évitez d’utiliser des adresses dans vos mots de passe
+rec-address =
+    Utiliser des adresses ou bien la rue où vous avez grandi affaiblit vos
+    mots de passe. Comme il est facile de trouver ces informations publiquement, cela rend ces
+    mots de passe faciles à deviner.
+# Recommendation subhead
+rec-gen-1-subhead = Utilisez un mot de passe unique et robuste pour chaque compte
 # Link title
 rec-gen-1-cta = Comment créer des mots de passe robustes
+rec-gen-1 =
+    La réutilisation des mots de passe met tous vos comptes en danger, car si
+    un seul mot de passe est exposé, les pirates ont accès à tous vos autres comptes.
 # Recommendation subhead
 rec-gen-2-subhead = Conservez vos mots de passe en lieu sûr
 # Link title
@@ -78,5 +87,9 @@ rec-gen-2 = Préservez vos informations de connexion dans un endroit sûr auquel
 rec-gen-3-subhead = Soyez prudent·e lorsque vous divulguez des informations personnelles
 # Link title
 rec-gen-3-cta = Découvrir davantage de conseils pour votre sécurité
+rec-gen-3 =
+    Ne communiquez pas de données personnelles si ce n’est pas indispensable. Si on vous demande de
+    saisir ou donner votre adresse électronique, votre code postal ou votre numéro de téléphone, vous pouvez dire NON.
 # Recommendation subhead
 rec-gen-4-subhead = Mettez régulièrement à jour les logiciels et les applications
+rec-gen-4 = Les mises à jour des applications, du navigateur et du système d’exploitation sont bonnes pour votre smartphone. Elles corrigent des bogues, des vulnérabilités logicielles et des problèmes de sécurité.
