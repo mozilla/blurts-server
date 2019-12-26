@@ -15,8 +15,12 @@ rec-ip-us-cta = { -brand-fpn } کو آزمائیں
 rec-hist-pw-subhead = پاس ورڈ کو دوبارہ استعمال کرنے سے گریز کریں
 # Link title
 rec-hist-pw-cta-fx = { -brand-name } میں لاگ ان دیکھیں
+# Link title
+rec-gen-1-cta = مضبوط پاس ورڈ کیسے بنائیں
 # Recommendation subhead
 rec-gen-2-subhead = محفوظ مقام پر پاس ورڈ محفوظ کریں
+# Recommendation subhead
+rec-gen-3-subhead = ذاتی معلومات دینے میں محتاط رہیں
 # Link title
 rec-gen-3-cta = مزید سلامتی  نسخے پڑھیں
 # Recommendation subhead
