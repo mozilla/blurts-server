@@ -10,9 +10,12 @@ email-address = ایمیل اڈریسیس :
 legal = قانونی
 # Button text
 verify-email-cta = ای میل کی توثیق کریں
+# Headline of verification email
+email-link-expires = یہ ربط 24 گھنٹوں میں راعد المیعاد ہو جاتا ہے۔
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = { $fxmLink } کے بارے میں مزید سیکھیں
 # List headline
 faq-list-headline = اکثر پوچھے گئے سوالات
+pre-fxa-headline = { -product-name } کے ساتھ کیا تبدیل ہو رہا ہے
 # Button at the bottom of pre-fxa email.
 create-account = اکاؤنٹ بنائیں
