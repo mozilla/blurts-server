@@ -78,6 +78,10 @@ rec-pins =
     térã kundaharape. Orekova’erã papapy nde añoite eikuaáva ha ndaikatuiva ojekuaarei.
 # Recommendation subhead
 rec-address-subhead = Aníke eipuru kundaharape ñe’ẽñemíme
+rec-address =
+    Eipurúrõ kundaharape térã tape eiko hague omokangy ne 
+    ñe’ẽñemi. Mba’ekuaarã ndahasýiva ijuhu oimehápe, péva rupi ko’ã 
+    ñe’ẽñemi ndahasýi ijekuaa.
 # Recommendation subhead
 rec-gen-1-subhead = Eipuru ñe’ẽñemi ha’eño ha hekorosãva peteĩteĩva mba’etépe g̃uarã
 # Link title
@@ -89,9 +93,18 @@ rec-gen-1 =
 rec-gen-2-subhead = Embyaty ñe’ẽñemi tenda hekorosãvape
 # Link title
 rec-gen-2-cta = Mombe’ugua’u ñe’ẽñemi ñangarekohára rehegua
+rec-gen-2 =
+    Eñongatu ne mba’ekuaarã rembiapo ñepyrũ tenda hekorosãvape eikekuaahápe neañomi, peteĩ 
+    ñe’ẽñemi ñangarekoha. Kóva nepytyvõta ehapykueho hag̃ua ne ñe’ẽñeminguéra.
 # Recommendation subhead
 rec-gen-3-subhead = Ehecháke mávapepa ikatu embohasa marandu ndejehegua
 # Link title
 rec-gen-3-cta = Emoñe’ẽve tekorosã rehegua
+rec-gen-3 =
+    Ani eme’ẽ mba’ekuaarã ndejehegua natekotevẽirõ. Ojejerurérõ 
+    emoingévo térã eme’ẽ ñanduti veve kundaharape, código postal térã pumbyry papapy, ikatu embotove.
 # Recommendation subhead
 rec-gen-4-subhead = Embohekopyahu meme software ha tembipuru’i
+rec-gen-4 =
+    Pe ñembohekopyahu tembipuru’i, kundahára ha apopyvusu oku’éva ne pumbyry ha’evéva ojapo 
+    mba’e’okágui hekorosãva. Ko’ã ñembohekopyahu omoiporã jejavy, software ñembyaikuaa ha tekorosã apañuãi.
