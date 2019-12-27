@@ -67,6 +67,10 @@ rec-phone-num =
     ipyahúvape térã mba’epururãme. Nereikotevẽiramo pumbyry papapy, anínte emoinge.
 # Recommendation subhead
 rec-dob-subhead = Aníke eipuru nde jehegua PINs-pe
+rec-dob =
+    Ndahasýi rupi nereñoiha ára ijuhu, 
+    ani eipuru ñe’ẽñemi ha PINs. Umi 
+    oikuaáva ne aramboty arange ikatu avei oike ne PIN-pe.
 # Recommendation subhead
 rec-pins-subhead = Emohekorosãvéke ne PINs
 rec-pins =
