@@ -1,4 +1,12 @@
 # Recommendation subhead
+rec-ssn-subhead = Revisa tus estados de cuenta de créditos
+# Link title
+rec-ssn-cta = Solicita tus estados de cuenta de créditos
+rec-ssn =
+    Recibes tres estados de cuenta de créditos al año por ley. 
+    Solicitarlos y revisarlos no afecta tus créditos. 
+    Revisa por cuentas, préstamos o tarjetas de crédito que no reconozcas.
+# Recommendation subhead
 rec-pw-1-subhead = Cambia tu contraseña
 # Link title
 rec-pw-1-cta = Cambia tu contraseña para este sitio
@@ -33,6 +41,10 @@ rec-ip-subhead = Usa un servicio que enmascare tu dirección IP
 # Link title
 rec-ip-us-cta = Prueba { -brand-fpn }
 rec-hist-pw-subhead = Evita reutilizar contraseñas
+# Link title
+rec-hist-pw-cta-fx = Ver conexiones en { -brand-name }
+# Recommendation subhead
+rec-sec-qa-subhead = Crea respuestas únicas para preguntas de seguridad
 # Recommendation subhead
 rec-phone-num-subhead = Evita compartir tu número de teléfono
 # Recommendation subhead
