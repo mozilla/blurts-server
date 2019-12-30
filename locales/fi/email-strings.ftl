@@ -16,12 +16,12 @@ email-unsub-link = Lopeta tilaus
 # Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-footer-blurb =
     Saat tämän viestin, koska tilasit { -product-name } -hälytykset.
-    Haluatko eroon näistä viesteistä? { $unsubLink }. Tämä on automaattinen viesti. Tuki tarjolla { $faqLink }.
+    Haluatko eroon näistä viesteistä? { $unsubLink }. Tämä on automaattinen viesti. Tukea on tarjolla sivulla { $faqLink }.
 # This string appears in the footer of verification emails. { $faqLink } is a link
 # to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-verify-footer-copy =
-    Saat tämän viestin, koska tilasit { -product-name } -hälytykset.
-    Tämä on automaattinen viesti. Tuki tarjolla { $faqLink }.
+    Saat tämän viestin, koska tilasit { -product-name } -hälytykset. 
+    Tämä on automaattinen viesti. Tukea on tarjolla sivulla { $faqLink }.
 # Button text that takes the user to their signed in user dashboard.
 view-my-dashboard-cta = Näytä kojelauta
 # Button text
