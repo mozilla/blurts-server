@@ -21,6 +21,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
 
 
@@ -405,3 +406,5 @@ five-myths-desc = Узнайте, как избегать простых пар�
 take-further-steps-desc = Узнайте, как уменьшить риск кражи личных данных, чтобы предотвратить финансовые потери.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Изменения сохранены!
+# Button
+see-additional-recs = Посмотреть дополнительные рекомендации
