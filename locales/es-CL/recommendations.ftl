@@ -10,10 +10,17 @@ rec-ssn =
 rec-pw-1-subhead = Cambia tu contraseña
 # Link title
 rec-pw-1-cta = Cambia tu contraseña para este sitio
+rec-pw-1 =
+    Haz que esta contraseña sea única y diferente a otras que usas 
+    Una buena estrategia a seguir es combinar dos o más palabras 
+    no relacionadas para crear una contraseña entera.
 # Recommendation subhead
 rec-pw-2-subhead = Actualiza otras conexiones en las que usas la misma contraseña
 # Link title
 rec-pw-2-cta-fx = Ver conexiones en { -brand-name }
+rec-pw-2 =
+    Reutilizar contraseñas transforma una filtración de datos puntual en muchas. Ahora que esa 
+    contraseña está dando vueltas por ahí, los hackers pueden usarla para entrar a otras cuentas.
 # Recommendation subhead
 rec-pw-3-subhead = Usa un administrador de contraseñas para llevar las tuyas a todas partes
 # Link title
@@ -31,6 +38,9 @@ rec-pw-4-cta = Mira los sitios que ofrecen 2FA
 rec-pw-4 = Muchos sitios web ofrecen 2FA como medida de seguridad adicional. Esto requiere de otra información para conectarte a tu cuenta, como un código de un solo uso que recibes como mensaje de texto.
 # Recommendation subhead
 rec-bank-acc-subhead = Monitorea tus estados de cuenta bancaria
+rec-bank-acc =
+    Revisa tus estados de cuenta del banco en busca de actividad sospechosa o cargos 
+    inusuales. Notifica a tu banco si encuentras algo que no reconoces
 # Recommendation subhead
 rec-cc-subhead = Monitorea tus estados de cuenta de tarjetas de crédito
 rec-cc =
@@ -45,8 +55,14 @@ rec-hist-pw-subhead = Evita reutilizar contraseñas
 rec-hist-pw-cta-fx = Ver conexiones en { -brand-name }
 # Recommendation subhead
 rec-sec-qa-subhead = Crea respuestas únicas para preguntas de seguridad
+rec-sec-qa =
+    Muchos sitios preguntan siempre lo mismo. Si una de esas respuestas queda expuesta, la 
+    información es liberada. Crea respuestas largas y aleatorias, y guárdalas en un lugar seguro.
 # Recommendation subhead
 rec-phone-num-subhead = Evita compartir tu número de teléfono
+rec-phone-num =
+    Intenta evitar dar tu número de teléfono al registrar nuevas 
+    cuentas o servicios. Si un número de teléfono no es requerido, no lo ingreses.
 # Recommendation subhead
 rec-dob-subhead = Evita usar información personal en los PINs
 rec-dob =
