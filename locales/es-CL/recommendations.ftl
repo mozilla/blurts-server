@@ -50,9 +50,18 @@ rec-cc =
 rec-ip-subhead = Usa un servicio que enmascare tu dirección IP
 # Link title
 rec-ip-us-cta = Prueba { -brand-fpn }
+rec-ip-us =
+    Tu dirección de protocolo de Internet (dirección IP) señala tu ubicación 
+    y tu proveedor de servicios de internet. Un servicio como { -brand-fpn } 
+    enmascara tu dirección IP para ocultar tu ubicación.
+rec-ip-non-us =
+    Tu dirección de protocolo de Internet (dirección IP) señala tu ubicación 
+    y tu proveedor de servicios de internet. Con una red privada virtual (VPN), puedes ocultar tu ubicación 
+    y enmascarar tu dirección IP.
 rec-hist-pw-subhead = Evita reutilizar contraseñas
 # Link title
 rec-hist-pw-cta-fx = Ver conexiones en { -brand-name }
+rec-hist-pw = Usa contraseñas únicas y seguras para cada cuenta. Si una contraseña es expuesta en una filtración de datos, solo tendrás que cambiar esa conexión puntual.
 # Recommendation subhead
 rec-sec-qa-subhead = Crea respuestas únicas para preguntas de seguridad
 rec-sec-qa =
