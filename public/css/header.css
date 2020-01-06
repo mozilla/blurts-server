@@ -86,17 +86,16 @@ nav {
   font-size: 16px;
 }
 
+.nav-link span {
+  position: relative;
+  pointer-events: none; /* Prevents conflicts with GA events that should fire off the wrapping <a> tag. */
+}
+
 .active-link {
   font-weight: 700;
-  display: block;
 }
 
-.active-link-underline {
-  position: relative;
-  pointer-events: none; /* Make sure span attributes aren't used for GA ping */
-}
-
-.active-link-underline::after {
+.nav-link span::after {
   height: 2px;
   background: var(--monitorGradient);
   opacity: 0;
@@ -105,26 +104,18 @@ nav {
   position: absolute;
   bottom: -8px;
   left: 0;
+  right: 0;
   width: 0;
   margin: auto;
   border-radius: 5px;
   transition: all 0.2s ease;
 }
 
-.active-link::after {
-  right: 0;
+.active-link span::after,
+.active-link-underline span::after {
   width: 100%;
-  opacity: 1;
-  animation: activeLinkUnderline ease 0.25s;
-  -webkit-animation: activeLinkUnderline ease 0.25s;
-  -moz-animation: activeLinkUnderline ease 0.25s;
-  transition: all 0.1s ease-in-out;
-}
-
-.nav-link:hover .active-link-underline::after {
-  width: 100%;
-  opacity: 1;
-  transition: all 0.2s ease;
+  opacity: 1 !important;
+  transition: all 0.1s ease;
 }
 
 .drop-down-menu,
@@ -313,7 +304,8 @@ img.avatar,
   }
 
   .desktop-menu .nav-link,
-  .active-link::after {
+  .active-link span::after,
+  .active-link-underline span::after {
     display: none;
   }
 
@@ -458,16 +450,5 @@ img.avatar,
   100% {
     opacity: 1;
     transform: translateY(8px);
-  }
-}
-
-@keyframes activeLinkUnderline {
-  0% {
-    opacity: 0;
-    width: 100%;
-  }
-
-  100% {
-    opacity: 1;
   }
 }
