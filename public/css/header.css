@@ -105,6 +105,7 @@ nav {
   position: absolute;
   bottom: -8px;
   left: 0;
+  right: 0;
   width: 0;
   margin: auto;
   border-radius: 5px;
@@ -113,7 +114,6 @@ nav {
 
 .active-link span::after,
 .active-link-underline span::after {
-  right: 0;
   width: 100%;
   opacity: 1 !important;
   transition: all 0.1s ease;
