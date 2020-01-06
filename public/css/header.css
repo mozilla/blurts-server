@@ -95,7 +95,6 @@ nav {
   font-weight: 700;
 }
 
-.active-link span::after,
 .nav-link span::after {
   height: 2px;
   background: var(--monitorGradient);
