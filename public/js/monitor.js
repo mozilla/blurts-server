@@ -241,6 +241,7 @@ function addBentoObserver(){
   const win = window;
   const header = document.getElementById("header");
   const topNavigation = document.querySelector("#navigation-wrapper");
+
   win.addEventListener("pageshow", function() {
     const previousActiveLink = document.querySelector(".active-link");
     if (previousActiveLink) {
@@ -252,6 +253,8 @@ function addBentoObserver(){
     toggleHeaderStates(header, win);
     document.forms ? (restoreInputs(), addFormListeners()) : null;
   });
+
+  document.forms ? (restoreInputs(), addFormListeners()) : null;
 
   win.addEventListener("resize", () => {
     toggleMobileFeatures(topNavigation);
