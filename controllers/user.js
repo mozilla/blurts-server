@@ -72,6 +72,19 @@ async function updateCommunicationOptions(req, res) {
 }
 
 
+async function resolveBreach(req, res) {
+  const sessionUser = req.user;
+  // TODO: verify that req.body.emailAddressId belongs to sessionUser
+  const updatedSubscriber = await DB.setResolvedBreach({
+    subscriber: sessionUser,
+    emailAddresses: req.body.emailAddressId,
+    recencyIndex: req.body.recencyIndex,
+  });
+  req.session.user = updatedSubscriber;
+  return res.json("Breach marked as resolved.");
+}
+
+
 function _checkForDuplicateEmail(sessionUser, email) {
   if (email === sessionUser.primary_email) {
     throw new FluentError("user-add-duplicate-email");
@@ -422,4 +435,5 @@ module.exports = {
   removeEmail,
   resendEmail,
   updateCommunicationOptions,
+  resolveBreach,
 };

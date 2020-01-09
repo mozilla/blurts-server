@@ -9,7 +9,7 @@ const { asyncMiddleware, requireSessionUser } = require("../middleware");
 const {
   add, verify, logout,
   getDashboard, getPreferences, getBreachStats,
-  removeEmail, resendEmail, updateCommunicationOptions,
+  removeEmail, resendEmail, updateCommunicationOptions, resolveBreach,
   getUnsubscribe, postUnsubscribe, getRemoveFxm, postRemoveFxm,
 } = require("../controllers/user");
 
@@ -23,6 +23,7 @@ router.get("/dashboard", csrfProtection, requireSessionUser, asyncMiddleware(get
 router.get("/preferences", csrfProtection, requireSessionUser, asyncMiddleware(getPreferences));
 router.use("/breach-stats", bearerToken());
 router.get("/breach-stats", urlEncodedParser, asyncMiddleware(getBreachStats));
+router.post("/breach-resolution", urlEncodedParser, csrfProtection, requireSessionUser, asyncMiddleware(resolveBreach));
 router.get("/logout", logout);
 router.post("/email", urlEncodedParser, csrfProtection, requireSessionUser, asyncMiddleware(add));
 router.post("/remove-email", urlEncodedParser, csrfProtection, requireSessionUser, asyncMiddleware(removeEmail));
