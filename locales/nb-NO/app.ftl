@@ -13,7 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Vilkår og personvern
 GitHub-link-title = GitHub
@@ -407,7 +407,7 @@ email-verified-view-dashboard = For å se og administrere alle e-postmeldinger d
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = logg inn
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -439,3 +439,18 @@ rec-section-headline-no-pw = Hva du skal gjøre for å beskytte din personlige i
 rec-section-subhead-no-pw = Selv om passord ikke ble lekket i denne datalekkasjen, er det fremdeles forhåndsregler du kan ta for å bedre beskytte din personlige informasjon.
 # Button
 see-additional-recs = Se ytterlige anbefalinger
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+
+##
+
+progress-complete = Alle kjente datalekkasjer er markert som løst
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
