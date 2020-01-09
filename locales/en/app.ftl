@@ -563,9 +563,16 @@ rec-section-subhead-no-pw = Though passwords weren’t exposed in this breach, t
 # Button
 see-additional-recs = See Additional Recommendations
 
-# This string contains nested markup that becomes a link later in the code.
-# Please do not modify or remove "<a>" and "</a>".
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
 resolve-top-notification = { $affectedEmail } appeared in this breach. <a>What to do next</a>
+
+resolve-top-notification-plural =
+  { $numAffectedEmails ->
+    *[other] { $numAffectedEmails } of your email addresses appeared in this breach. <a>What to do next</a>
+  }
+##
 
 marking-this-subhead = Marking this breach as resolved
 
@@ -640,10 +647,6 @@ progress-complete-message =
   update other logins with stronger passwords.
 ##
 
-# A status indicator that appears in the top right corner of breach cards
-# once they have been resolved.
-resolved = Resolved
-
 resolve-this-breach-link = Resolve this breach
 
 # This string appears in resolved breach cards and is followed by 
@@ -652,3 +655,18 @@ marked-resolved = Marked resolved:
 
 hide-resolved-button = Hide Resolved
 show-resolved-button = Show Resolved
+
+unresolved-passwords-exposed =
+  { $passwords ->
+    [one] Password exposed in unresolved breaches
+   *[other] Passwords exposed in unresolved breaches
+  }
+
+known-data-breaches-resolved = 
+  { $resolvedBreaches ->
+    [one] Known data breach marked as resolved
+   *[other] Known data breaches marked as resolved
+  }
+
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = New
