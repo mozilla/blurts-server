@@ -562,3 +562,111 @@ rec-section-subhead-no-pw = Though passwords weren’t exposed in this breach, t
 
 # Button
 see-additional-recs = See Additional Recommendations
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $affectedEmail } appeared in this breach. <a>What to do next</a>
+
+resolve-top-notification-plural =
+  { $numAffectedEmails ->
+    *[other] { $numAffectedEmails } of your email addresses appeared in this breach. <a>What to do next</a>
+  }
+##
+
+marking-this-subhead = Marking this breach as resolved
+
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body = 
+  <span>Once you’ve taken the steps you can to address this breach</span>,
+  you can mark it as resolved. You can still access details about the breach 
+  from your dashboard at any time.
+
+
+mark-as-resolve-button = Mark as Resolved
+marked-as-resolved-label = Marked as Resolved
+
+
+undo-button = Undo
+
+confirmation-1-subhead = Nice! You’ve just resolved your first breach.
+confirmation-1-body = Keep up the momentum. Check your dashboard to see if there’s more to do.
+confirmation-2-subhead = Take that, hackers!
+confirmation-2-body = You’re taking important steps towards protecting your online accounts.
+confirmation-3-subhead = Another one down. Nice work!
+
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+
+confirmation-3-body = Is your new password unique, strong, and hard to guess? <a>Find out</a>
+
+generic-confirmation-subhead = This breach has been marked as resolved
+generic-confirmation-message = 
+  { $numUnresolvedBreaches ->
+     [one] To see the remaining breach, go to your dashboard.
+    *[other] To see all remaining breaches, go to your dashboard.
+  }
+
+return-to-breach-details-link = Return to breach details
+go-to-dashboard-link = Go to Dashboard
+
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% complete
+
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved = 
+  { $numResolvedBreaches ->
+     *[other] { $numResolvedBreaches } Resolved
+  }
+
+progress-intro-subhead = New in { -product-name }: Mark breaches as resolved
+progress-intro-message =
+  After reviewing the details about a breach and taking steps to protect 
+  your personal info, you can mark breaches as resolved.
+progress-status = 
+  { $numTotalBreaches ->
+     *[other] { $numResolvedBreaches} out of { $numTotalBreaches } breaches marked as resolved
+  }
+progress-complete = All known breaches have been marked as resolved
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+progress-message-1 = 
+  <span>You’re off to a great start!</span> Check out the remaining breaches to learn 
+  what steps to take.  
+progress-message-2 = 
+  <span>Keep it up!</span> Small changes like updating passwords have a big impact on 
+  keeping your personal info safe.
+progress-message-3 = <span>Nice work resolving those breaches!</span> Keep it up. You’ve got a few more to go.
+progress-message-4 = <span>Almost done!</span> You’re nearly to the finish line.
+progress-complete-message = 
+  <span>Feels good, right?</span> If you want to keep going, this is a good time to 
+  update other logins with stronger passwords.
+##
+
+resolve-this-breach-link = Resolve this breach
+
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Marked resolved:
+
+hide-resolved-button = Hide Resolved
+show-resolved-button = Show Resolved
+
+new-breach = New
+
+unresolved-passwords-exposed =
+  { $numPasswords ->
+    [one] Password exposed in unresolved breaches
+   *[other] Passwords exposed in unresolved breaches
+  }
+
+known-data-breaches-resolved = 
+  { $numResolvedBreaches ->
+    [one] Known data breach marked as resolved
+   *[other] Known data breaches marked as resolved
+  }

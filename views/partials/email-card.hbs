@@ -1,9 +1,9 @@
-          {{> dashboards/new-breach-message}}
           <div class="
             email-card
             toggle-parent
             inactive
-            {{#ifCompare breaches.length "===" 0}} zero-breaches {{/ifCompare}}
+            {{#ifCompare numBreaches "===" 0}} zero-breaches {{/ifCompare}}
+            {{#ifCompare numUnresolvedBreaches "===" 0}} zero-unresolved-breaches {{/ifCompare}}
             {{#if primary}}
               primary-email-card
             {{else}}
@@ -25,14 +25,28 @@
                 <span class="e-address overflow-break">{{ email }}</span>
                 {{#if verified}}
                   <!-- show breach count for verified emails -->
-                  <span class="e-num-breaches">{{{ getString "appears-in-x-breaches" breachCount=breaches.length }}}</span>
+                  {{#if prefs}}
+                    <span class="e-num-breaches">{{{ getString "appears-in-x-breaches" breachCount=numBreaches }}}</span>
+                  {{else}}
+                    {{#ifCompare numResolvedBreaches ">" 0}}
+                      <span class="e-num-breaches">{{{ getString "progress-status" numTotalBreaches=numBreaches numResolvedBreaches=numResolvedBreaches}}}</span>
+                    {{else}}
+                      <span class="e-num-breaches">{{{ getString "appears-in-x-breaches" breachCount=numBreaches }}}</span>
+                    {{/ifCompare}}
+                  {{/if}}
                 {{else}}
                   <!-- show resend-email link for unverified emails -->
                   <div class="button-resend-wrapper flx">
                     <button class="resend-email blue-link" data-email-id="{{ id }}" data-form-action="resend-email" data-csrf-token="{{ csrfToken }}">{{ getString "resend-verification" }}</button>
-                    <span class="sending hide"> {{getString "signup-modal-sent"}}</span>
+                    <span class="sending hide"> {{ getString "signup-modal-sent" }}</span>
                   </div>
                 {{/if}}
+                {{#ifCompare numResolvedBreaches ">" 0}}
+                  <button class="toggle-resolved-breaches">
+                    <span class="hide-resolved-message">{{ getString "hide-resolved-button" }}</span>
+                    <span class="show-resolved-message">{{ getString "show-resolved-button" }}</span>
+                  </button>
+                {{/ifCompare}}
               </div>
 
               {{#if prefs}} <!--preferences dashboard / show trashcan to delete email-->
@@ -42,7 +56,7 @@
                   {{> forms/remove-email-form }}
                 {{/if}}
               {{else}} <!-- breaches dashboard / show toggle -->
-                {{#ifCompare breaches.length ">" 0}}
+                {{#ifCompare numBreaches ">" 0}}
                   <button class="toggle svg-wrap show-email-breaches" aria-label="{{ getString "show-breaches-for-this-email" }}">
                     {{> svg/toggle-down }}
                   </button>
@@ -53,7 +67,7 @@
             {{#unless prefs}} <!-- breaches dashboard, show breaches for each email on toggle click-->
               <div class="e-breach-list">
                 {{#if this.foundBreaches}}
-                  {{> breach-groups foundBreaches variableClasses="two-up ec" }}
+                  {{> breach-groups foundBreaches}}
                 {{/if}}
               </div>
             {{/unless}}

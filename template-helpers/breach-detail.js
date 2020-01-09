@@ -1,5 +1,7 @@
 "use strict";
 
+const AppConstants = require("./../app-constants");
+
 const { LocaleUtils } = require("./../locale-utils");
 const { prettyDate } = require("./hbs-helpers");
 const { getAllPriorityDataClasses, getAllGenericRecommendations, getFourthPasswordRecommendation } = require("./recommendations");
@@ -148,7 +150,25 @@ function getBreachDetail(args) {
       copy: localize(locales, "delayed-reporting-copy"),
     };
   }
+
+  const BREACH_RESOLUTION_ENABLED = (AppConstants.BREACH_RESOLUTION_ENABLED === 1);
+  if (BREACH_RESOLUTION_ENABLED && args.data.root.affectedEmailAddresses) {
+    const affectedEmails = args.data.root.affectedEmailAddresses;
+    const numAffectedEmails = affectedEmails.length;
+
+    if (numAffectedEmails > 0) {
+      const affectedEmailNotification = numAffectedEmails > 1 ?
+        localize(locales, "resolve-top-notification-plural", { numAffectedEmails: numAffectedEmails }) :
+        localize(locales, "resolve-top-notification", { affectedEmail: affectedEmails[0].affectedEmailAddress });
+
+      breachDetail.affectedEmailNotification = formatNotificationLink(affectedEmailNotification);
+    }
+  }
   return args.fn(breachDetail);
+}
+
+function formatNotificationLink(message) {
+  return message.replace("<a>", "<a href='");
 }
 
 
@@ -194,4 +214,5 @@ module.exports = {
   getBreachCategory,
   getSortedDataClasses,
   getBreachTitle,
+  localize,
 };

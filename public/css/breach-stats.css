@@ -50,6 +50,87 @@
   margin-bottom: calc(var(--padding) * 4);
 }
 
+.resolved-breach-indicator,
+.progress-header::before {
+  height: 24px;
+  min-width: 24px;
+  display: inline-block;
+  background-color: #20c3a2;
+  background-image: url("/img/svg/white-check.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  content: "";
+  border-radius: 50%;
+}
+
+.progress-header::before {
+  margin-right: 8px;
+}
+
+.progress-bar-wrapper {
+  margin-bottom: calc(var(--padding) * 4);
+}
+
+.progress-bar {
+  -webkit-appearance: none;
+  background: var(--monitorGradient);
+  border-radius: 4px;
+  height: 24px;
+  overflow: hidden;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  width: 100%;
+  direction: rtl;
+  padding: 0;
+  border: none;
+  box-shadow: 0 0 0 1px var(--grey3);
+}
+
+.progress-status-message {
+  color: var(--purple7);
+  margin: auto;
+  max-width: 640px;
+  align-items: center;
+}
+
+.progress-message-subhead {
+  margin-bottom: 8px;
+}
+
+.progress-message-body {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+.img-placeholder {
+  height: 100px;
+  width: 120px;
+  min-width: 120px;
+  margin-right: 16px;
+  background: var(--violet2);
+  border-radius: 8px;
+}
+
+progress[value]::-webkit-progress-bar {
+  background: transparent;
+}
+
+.progress-bar::-moz-progress-bar {
+  background-color: rgba(255, 255, 255, 1);
+  transition: all 0.5s ease;
+}
+
+progress.progress-bar::-webkit-progress-value {
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 30px -9px 0 9px white; /* helps to mask gradient background peak-through */
+  transition: all 0.5s ease;
+}
+
+.percent-complete {
+  align-self: center;
+}
+
 @media screen and (max-width: 800px) {
   .dash-stats {
     flex-direction: column;
@@ -73,5 +154,22 @@
   .breach-stat-number {
     width: auto;
     font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .img-placeholder {
+    margin-bottom: 20px;
+  }
+
+  .progress-status-message {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .percent-complete {
+    display: none;
   }
 }

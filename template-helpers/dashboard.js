@@ -3,7 +3,7 @@
 const { LocaleUtils } = require("./../locale-utils");
 const { makeBreachCards } = require("./breaches");
 
-function getBreachesForEachEmail(args) {
+function getBreachesDashboard(args) {
   const verifiedEmails = args.data.root.verifiedEmails;
   const locales = args.data.root.req.supportedLocales;
   let breachesFound = false;
@@ -21,29 +21,59 @@ function getBreachesForEachEmail(args) {
 
   verifiedEmails.forEach(email => {
     const breachCards = makeBreachCards(email.breaches, locales);
-    email.foundBreaches = {};
-    email.foundBreaches.firstFourBreaches = breachCards.slice(0, 4);
-    email.foundBreaches.remainingBreaches = breachCards.slice(4, breachCards.length);
-    email.foundBreaches.cardType = "two-up ec drop-shadow";
-    email.breaches = breachCards;
-    if (email.breaches.length > 0) {
+
+    if (!breachesFound && breachCards.length > 0) {
       breachesFound = true;
     }
-    if (email.hasNewBreaches) {
-      email.newBreachMessage = LocaleUtils.fluentFormat(locales, "new-breaches-found", { breachCount: email.hasNewBreaches });
+
+    email.numBreaches = breachCards.length;
+    email.numResolvedBreaches = 0;
+    email.numUnresolvedBreaches = 0;
+
+    // Get the number of resolved breaches for email
+    email.breaches.forEach(breach => {
+      if (breach.IsResolved) {
+        email.numResolvedBreaches++;
+      }
+    });
+
+    // Move resolved breaches to the end of breach list
+    if (email.numResolvedBreaches > 0) {
+      breachCards.sort((a,b) => {
+        if (a.IsResolved && !b.IsResolved) {
+          return 1;
+        }
+        if (!a.IsResolved && b.IsResolved) {
+          return -1;
+        }
+      });
+    }
+    delete email.breaches;
+    email.numUnresolvedBreaches = email.numBreaches - email.numResolvedBreaches;
+    email.foundBreaches = {};
+
+    // If there are more than four unresolved breaches, show only the first four by default.
+    if (email.numUnresolvedBreaches > 4) {
+      email.foundBreaches.breachesShownByDefault = breachCards.slice(0, 4);
+      email.foundBreaches.remainingBreaches = breachCards.slice(4, breachCards.length);
+    } else {
+      email.foundBreaches.breachesShownByDefault = breachCards;
     }
   });
   const emailCards = {
     verifiedEmails: verifiedEmails,
     breachesFound: breachesFound,
   };
+
   return args.fn(emailCards);
 }
 
 function welcomeMessage(args) {
   const locales = args.data.root.req.supportedLocales;
   const userEmail = args.data.root.req.session.user.fxa_profile_json.email;
-  if (args.data.root.req.session.newUser) {
+  const newUser = args.data.root.req.session.newUser;
+
+  if (newUser) {
     return LocaleUtils.fluentFormat(locales, "welcome-user", { userName: userEmail });
   }
 
@@ -70,12 +100,18 @@ function getUserPreferences(args) {
   const csrfToken = args.data.root.csrfToken;
   const unverifiedEmails = args.data.root.unverifiedEmails;
   const verifiedEmails = args.data.root.verifiedEmails;
-  const primaryEmail = verifiedEmails.shift();
   const sessionUser = args.data.root.req.session.user;
   const communicationOption = (sessionUser.all_emails_to_primary) ? 1 : 0;
 
   const locales = args.data.root.req.supportedLocales;
   args.data.root.preferences = true;
+
+  verifiedEmails.forEach(email => {
+    email.numBreaches = email.breaches.length;
+    delete email.breaches;
+  });
+
+  const primaryEmail = verifiedEmails.shift();
 
   const emailAddresses = {
     primary: {
@@ -117,7 +153,6 @@ function getUserPreferences(args) {
     communicationOptions: communicationOptions,
     csrfToken: csrfToken,
   };
-
   return args.fn(user);
 }
 
@@ -136,10 +171,9 @@ function getLastAddedEmailStrings(args) {
   return lastAddedEmailStrings;
 }
 
-
 module.exports = {
   getUserPreferences,
-  getBreachesForEachEmail,
+  getBreachesDashboard,
   welcomeMessage,
   getLastAddedEmailStrings,
   makeEmailVerifiedString,
