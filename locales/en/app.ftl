@@ -657,13 +657,13 @@ hide-resolved-button = Hide Resolved
 show-resolved-button = Show Resolved
 
 unresolved-passwords-exposed =
-  { $passwords ->
+  { $numPasswords ->
     [one] Password exposed in unresolved breaches
    *[other] Passwords exposed in unresolved breaches
   }
 
 known-data-breaches-resolved = 
-  { $resolvedBreaches ->
+  { $numResolvedBreaches ->
     [one] Known data breach marked as resolved
    *[other] Known data breaches marked as resolved
   }
