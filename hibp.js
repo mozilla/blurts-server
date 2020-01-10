@@ -100,7 +100,7 @@ const HIBP = {
   },
 
 
-  async getBreachesForEmail(sha1, allBreaches, includeSensitive = false) {
+  async getBreachesForEmail(sha1, allBreaches, includeSensitive = false, filterBreaches = true) {
     let foundBreaches = [];
     const sha1Prefix = sha1.slice(0, 6).toUpperCase();
     const path = `/breachedaccount/range/${sha1Prefix}`;
@@ -117,7 +117,9 @@ const HIBP = {
     for (const breachedAccount of response.body) {
       if (sha1.toUpperCase() === sha1Prefix + breachedAccount.hashSuffix) {
         foundBreaches = allBreaches.filter(breach => breachedAccount.websites.includes(breach.Name));
-        foundBreaches = this.filterBreaches(foundBreaches);
+        if (filterBreaches) {
+          foundBreaches = this.filterBreaches(foundBreaches);
+        }
 
         // NOTE: DO NOT CHANGE THIS SORT LOGIC
         // We store breach resolutions by recency indices,
