@@ -563,6 +563,10 @@ test("user breach-stats POST request with FXA response for Monitor user returns 
   });
   HIBP.getBreachesForEmail = jest.fn();
   HIBP.getBreachesForEmail.mockReturnValue([]);
+  HIBP.getResolvedBreachesForEmail = jest.fn();
+  HIBP.getResolvedBreachesForEmail.mockReturnValue([]);
+  HIBP.filterBreaches = jest.fn();
+  HIBP.filterBreaches.mockReturnValue([]);
 
   const resp = { json: jest.fn() };
 
