@@ -457,6 +457,11 @@ progress-intro-subhead = Nuevo en { -product-name }: marcar violaciones como res
 progress-intro-message =
     Después de revisar los detalles sobre una violación y tomar medidas para proteger
     tu información personal, podés marcarla como resueltas.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } de { $numTotalBreaches } violación marcada como resuelta
+       *[other] { $numResolvedBreaches } de  { $numTotalBreaches } violaciones marcadas como resueltas
+    }
 progress-complete = Todas las violaciones conocidas se marcaron como resueltas
 
 ## These strings contain nested markup that is later used to style the text inside of it.
