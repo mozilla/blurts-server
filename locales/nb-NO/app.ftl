@@ -443,6 +443,7 @@ see-additional-recs = Se ytterlige anbefalinger
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+resolve-top-notification = { $affectedEmail } dukket opp i denne datalekkasjen. <a>Hva du skal gjøre videre</a>
 
 ##
 
@@ -454,3 +455,5 @@ progress-complete = Alle kjente datalekkasjer er markert som løst
 
 ##
 
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Ny
