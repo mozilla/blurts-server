@@ -474,10 +474,71 @@ confirmation-1-subhead = Da! Rydych newydd ddatrys eich tor-data cyntaf.
 confirmation-1-body = Cadwch fynd. Gwiriwch eich bwrdd gwaith i weld os oes mwy i'w wneud.
 confirmation-2-subhead = Dyna un i chi, hacwyr!
 confirmation-2-body = Rydych yn cymryd camau pwysig tuag at ddiogelu eich cyfrifon ar-lein.
+confirmation-3-subhead = Un arall wedi mynd. Gwaith da!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = A yw'ch cyfrinair newydd yn unigryw, yn gryf, ac yn anodd ei ddyfalu? <a>Gweld</a>
+generic-confirmation-subhead = Mae'r tor-data hwn wedi'i nodi fel wedi'i ddatrys
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [zero] I weld yr holl dor-data sy'n weddill, ewch i'ch bwrdd gwaith.
+        [one] I weld y tor-data hwn, ewch i'ch bwrdd gwaith.
+        [two] I weld yr holl dor-data sy'n weddill, ewch i'ch bwrdd gwaith.
+        [few] I weld yr holl dor-data sy'n weddill, ewch i'ch bwrdd gwaith.
+        [many] I weld yr holl dor-data sy'n weddill, ewch i'ch bwrdd gwaith.
+       *[other] I weld yr holl dor-data sy'n weddill, ewch i'ch bwrdd gwaith.
+    }
+return-to-breach-details-link = Nol i fanylion y tor-data
+go-to-dashboard-link = Mynd i'r Bwrdd Gwaith
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% wedi'i gwblhau
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [zero] { $numResolvedBreaches } Wedi'u Datrys
+        [one] { $numResolvedBreaches } Wedi'i Ddatrys
+        [two] { $numResolvedBreaches } Wedi'u Datrys
+        [few] { $numResolvedBreaches } Wedi'u Datrys
+        [many] { $numResolvedBreaches } Wedi'u Datrys
+       *[other] { $numResolvedBreaches } Wedi'u Datrys
+    }
+progress-intro-subhead = Newydd yn { -product-name }: Nodi tor-data eu bod wedi'u datrys
+progress-intro-message =
+    Ar ôl adolygu'r manylion am dor-data a chymryd camau i ddiogelu
+    eich manylion personol, gallwch farcio tor-data fel wedi'u datrys.
+progress-status =
+    { $numTotalBreaches ->
+        [zero] { $numResolvedBreaches } allan o { $numTotalBreaches } wedi'u nodi eu bod wedi'u datrys
+        [one] { $numResolvedBreaches } allan o { $numTotalBreaches } wedi'i farcio fel wedi'i ddatrys
+        [two] { $numResolvedBreaches } allan o { $numTotalBreaches } wedi'u marcio fel wedi'u datrys
+        [few] { $numResolvedBreaches } allan o { $numTotalBreaches } wedi'u marcio fel wedi'u datrys
+        [many] { $numResolvedBreaches } allan o { $numTotalBreaches } wedi'u marcio fel wedi'u datrys
+       *[other] { $numResolvedBreaches } allan o { $numTotalBreaches } wedi'u marcio fel wedi'u datrys
+    }
+progress-complete = Mae'r holl dor-data hysbys wedi'u nodi fel rhai wedi'u datrys
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span> Cychwyn da! </p> Edrychwch ar y tor-data eraill i weld
+    pa gamau i'w cymryd.
+progress-message-2 =
+    <span>Daliwch ati!</p> Mae newidiadau bach fel diweddaru cyfrineiriau yn cael effaith fawr
+    ar gadw'ch manylion personol yn ddiogel.
+progress-message-3 = <span> Gwaith da wrth ddatrys y tor-data hyn! </p>Daliwch ati. Mae'na rhagor i'w gwneud.
+progress-message-4 = <span>Bron wedi gorffen!</span> Rydych chi bron â chyrraedd y diwedd.
+progress-complete-message =
+    <span>Teimlo'n dda, ydy?</p> Os ydych chi am ddal ati, mae hwn yn amser da i
+    diweddaru mewngofnodion eraill gyda chyfrineiriau cryfach.
 
 ##
 
+resolve-this-breach-link = Datrys y tor-data hwn
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Nodi wedi'u Datrys:
+hide-resolved-button = Cuddio'r Datrys
+show-resolved-button = Dangos wedi'u Datrys
