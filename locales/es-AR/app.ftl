@@ -13,7 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Red privada de Firefox
 
-
+##
 
 terms-and-privacy = Términos y privacidad
 GitHub-link-title = GitHub
@@ -372,7 +372,7 @@ email-verified-view-dashboard = Para ver y administrar todos los correos electr�
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = iniciar sesión
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -404,3 +404,25 @@ rec-section-headline-no-pw = Qué hacer para proteger tu información personal
 rec-section-subhead-no-pw = Aunque las contraseñas no estuvieron expuestas en esta violación, hay pasos que podés seguir para proteger mejor tu información personal.
 # Button
 see-additional-recs = Ver recomendaciones adicionales
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $afectadasEmail } apareció en esta violación. <a>Qué hacer a continuación</a>
+
+##
+
+marking-this-subhead = Marcar esta violación como resuelta
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Una vez que hayas tomado los pasos necesarios para abordar esta violación </span>,
+    podés marcarla como resuelta. Todavía podés acceder a detalles sobre la violación
+    desde tu tablero en cualquier momento.
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
