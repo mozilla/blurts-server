@@ -460,7 +460,7 @@ resolve-top-notification-plural =
 
 ##
 
-marking-this-subhead = Nodi'r tor-data hwn fel wedi'i datrys
+marking-this-subhead = Nodi'r tor-data hwn fel wedi'i ddatrys
 # This string contains nested markup that is later used to style the text inside of it.
 # Please do not modify or remove "<span>" and "</span>".
 marking-this-body =
@@ -504,10 +504,10 @@ num-resolved =
         [many] { $numResolvedBreaches } Wedi'u Datrys
        *[other] { $numResolvedBreaches } Wedi'u Datrys
     }
-progress-intro-subhead = Newydd yn { -product-name }: Nodi tor-data eu bod wedi'u datrys
+progress-intro-subhead = Newydd yn { -product-name }: Nodi datrys tor-data
 progress-intro-message =
     Ar ôl adolygu'r manylion am dor-data a chymryd camau i ddiogelu
-    eich manylion personol, gallwch farcio tor-data fel wedi'u datrys.
+    eich manylion personol, gallwch nodi eich bod wedi datrys y tor-data.
 progress-status =
     { $numTotalBreaches ->
         [zero] { $numResolvedBreaches } allan o { $numTotalBreaches } wedi'u nodi eu bod wedi'u datrys
@@ -524,11 +524,12 @@ progress-complete = Mae'r holl dor-data hysbys wedi'u nodi fel rhai wedi'u datry
 
 progress-message-1 =
     <span> Cychwyn da! </p> Edrychwch ar y tor-data eraill i weld
-    pa gamau i'w cymryd.
+    pa gamau sydd angen
+    eu cymryd.
 progress-message-2 =
     <span>Daliwch ati!</p> Mae newidiadau bach fel diweddaru cyfrineiriau yn cael effaith fawr
     ar gadw'ch manylion personol yn ddiogel.
-progress-message-3 = <span> Gwaith da wrth ddatrys y tor-data hyn! </p>Daliwch ati. Mae'na rhagor i'w gwneud.
+progress-message-3 = <span> Gwaith da wrth ddatrys y tor-data hyn! </p>Daliwch ati. Mae'na ragor i'w wneud.
 progress-message-4 = <span>Bron wedi gorffen!</span> Rydych chi bron â chyrraedd y diwedd.
 progress-complete-message =
     <span>Teimlo'n dda, ydy?</p> Os ydych chi am ddal ati, mae hwn yn amser da i
@@ -540,5 +541,25 @@ resolve-this-breach-link = Datrys y tor-data hwn
 # This string appears in resolved breach cards and is followed by 
 # the date the user marked the breach as resolved.
 marked-resolved = Nodi wedi'u Datrys:
-hide-resolved-button = Cuddio'r Datrys
+hide-resolved-button = Cuddio wedi'u Datrys
 show-resolved-button = Dangos wedi'u Datrys
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [zero] Cyfrineiriau wedi'u hamlygu mewn tor-data heb eu datrys
+        [one] Cyfrinair wedi'i amlygu mewn tor-data heb eu datrys
+        [two] Cyfrineiriau wedi'u hamlygu mewn tor-data heb eu datrys
+        [few] Cyfrineiriau wedi'u hamlygu mewn tor-data heb eu datrys
+        [many] Cyfrineiriau wedi'u hamlygu mewn tor-data heb eu datrys
+       *[other] Cyfrineiriau wedi'u hamlygu mewn tor-data heb eu datrys
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [zero] Tor-data hysbys wedi'u nodi fel wedi'u datrys
+        [one] Tor-data hysbys wedi'i nodi fel wedi'i ddatrys
+        [two] Tor-data hysbys wedi'u nodi fel wedi'u datrys
+        [few] Tor-data hysbys wedi'u nodi fel wedi'u datrys
+        [many] Tor-data hysbys wedi'u nodi fel wedi'u datrys
+       *[other] Tor-data hysbys wedi'u nodi fel wedi'u datrys
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Newydd
