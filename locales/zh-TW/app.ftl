@@ -420,6 +420,27 @@ progress-complete = 已將所有事件標示為已處理
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 = <span>這是一個很棒的起點！</span>看看還剩下哪些事件需要處理。
+progress-message-2 = <span>繼續努力！</span>更改密碼這類小小的動作，能對您的線上個資安全有大大保護。
+progress-message-3 = <span>做得好！</span>繼續保持，還剩下幾組就處理完這些資料外洩事件了。
+progress-message-4 = <span>快完成了！</span>就快要抵達終點線啦。
+progress-complete-message = <span>覺得很棒對不對？</span>若您想要繼續處理，可以趁現在把其它網站的登入資訊換成更強的密碼。
 
 ##
 
+resolve-this-breach-link = 處理過此次事件了
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = 已標示為已處理:
+hide-resolved-button = 隱藏處理過的事件
+show-resolved-button = 顯示處理過的事件
+unresolved-passwords-exposed =
+    { $numPasswords ->
+       *[other] 尚未處理的事件中，洩漏出的密碼組數
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+       *[other] 標示為已解決的資料外洩事件數
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = 新事件
