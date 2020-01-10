@@ -438,6 +438,13 @@ see-additional-recs = Ver recomendações adicionais
 mark-as-resolve-button = Marcar como resolvido
 marked-as-resolved-label = Marcado como resolvido
 undo-button = Desfazer
+confirmation-2-subhead = Tome isso, hackers!
+generic-confirmation-subhead = Este vazamento foi marcado como recolvido
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Para ver o vazamento restante, acesse seu painel.
+       *[other] Para ver todos os vazamentos restantes, acesse seu painel.
+    }
 return-to-breach-details-link = Voltar aos detalhes do vazamento
 go-to-dashboard-link = Ir para o painel
 # This string appears above a breach resolution progress bar and indicates
