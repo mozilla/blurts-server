@@ -37,6 +37,8 @@ rec-ip-subhead = Uporabite storitev, ki prikrije vaš IP-naslov.
 rec-ip-us-cta = Preskusite { -brand-fpn }
 rec-hist-pw-subhead = Izogibajte se ponovni uporabi gesel
 # Recommendation subhead
+rec-sec-qa-subhead = Ustvarite edinstvene odgovore na varnostna vprašanja
+# Recommendation subhead
 rec-phone-num-subhead = Izogibajte se delitvi svoje telefonske številke
 rec-phone-num =
     Pri prijavi v nove račune ali storitve se izogibajte vnašanju telefonske številke. 
@@ -58,6 +60,8 @@ rec-gen-1-cta = Kako ustvariti zapletena gesla
 rec-gen-1 =
     Ponovna uporaba gesla ogroža vse vaše račune. To pomeni, da v primeru
     razkritja enega gesla hekerji pridobijo ključe za dostop do številnih računov.
+# Recommendation subhead
+rec-gen-2-subhead = Gesla shranjujte na varno mesto
 # Link title
 rec-gen-2-cta = Zmote o upraviteljih gesel
 # Recommendation subhead
