@@ -409,6 +409,11 @@ see-additional-recs = Ver recomendaciones adicionales
 ## Please do not modify or remove "<a>" and "</a>".
 
 resolve-top-notification = { $afectadasEmail } apareció en esta violación. <a>Qué hacer a continuación</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] { $numAffectedEmails } apareció en esta violación. <a>Qué hacer a continuación</a>
+       *[other] { $afectadasEmail } aparecieron en esta violación. <a>Qué hacer a continuación</a>
+    }
 
 ##
 
@@ -420,6 +425,7 @@ marking-this-body =
     podés marcarla como resuelta. Todavía podés acceder a detalles sobre la violación
     desde tu tablero en cualquier momento.
 mark-as-resolve-button = Marcar como resuelto
+marked-as-resolved-label = Marcado como resuelto
 undo-button = Deshacer
 confirmation-1-subhead = ¡Qué bueno! Resolviste tu primera violación.
 confirmation-1-body = Mantené el impulso. Mirá tu panel de control para ver si hay más para hacer.
@@ -440,6 +446,13 @@ go-to-dashboard-link = Ir al panel de control
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
 progress-percent-complete = { $percentComplete }% completo
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } Resuelta
+       *[other] { $numResolvedBreaches } Resueltas
+    }
 progress-intro-subhead = Nuevo en { -product-name }: marcar violaciones como resueltas
 progress-intro-message =
     Después de revisar los detalles sobre una violación y tomar medidas para proteger
@@ -452,6 +465,32 @@ progress-complete = Todas las violaciones conocidas se marcaron como resueltas
 progress-message-1 =
     <span> ¡Empezaste muy bien! </span> Mirá a las infracciones restantes para aprender
     qué pasos tomar
+progress-message-2 =
+    <span>¡Seguí así!</span> Los pequeños cambios como la actualización de contraseñas tienen un gran impacto en
+    mantener segura tu información personal.
+progress-message-3 = <span>¡Buen trabajo para resolver esas infracciones!</span> Seguí así. Te quedan algunos más.
+progress-message-4 = <span>¡Casi terminado!</span> Ya casi estás en la línea de meta.
+progress-complete-message =
+    <span>Se siente bien, ¿verdad?</span> Si querés continuar, este es un buen momento para
+    actualizar otros inicios de sesión con contraseñas más seguras.
 
 ##
 
+resolve-this-breach-link = Resolver esta violación
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Marcado como resuelto:
+hide-resolved-button = Ocultar resueltos
+show-resolved-button = Mostrar resueltos
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Contraseña expuesta en violaciones no resueltas
+       *[other] Contraseñas expuestas en violaciones no resueltas
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Violación de datos conocida marcada como resuelta
+       *[other] Violaciones de datos conocidas marcadas como resueltas
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Nueva
