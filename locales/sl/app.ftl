@@ -31,7 +31,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Pogoji in zasebnost
 GitHub-link-title = GitHub
@@ -436,7 +436,7 @@ email-verified-view-dashboard = { $nestedSignInLink } se za ogled in upravljanje
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = Prijavite se
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -468,3 +468,20 @@ rec-section-headline-no-pw = Kaj storiti, da zaščitite svoje osebne podatke
 rec-section-subhead-no-pw = Čeprav gesla v tej kraji podatkov niso bila izpostavljena, lahko še vedno ukrepate, da bolje zaščitite svoje osebne podatke.
 # Button
 see-additional-recs = Oglejte si dodatna priporočila
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+
+##
+
+undo-button = Razveljavi
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Novo
