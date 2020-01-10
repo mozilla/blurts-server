@@ -388,6 +388,18 @@ undo-button = 復原
 confirmation-1-subhead = 您剛處理好第一筆資料外洩事件，真棒！
 confirmation-1-body = 再接再厲，到儀錶板看看還有沒有其它該處理的情況。
 confirmation-2-subhead = 駭客，接招吧！
+confirmation-2-body = 您正在採取重要措施來保護自己的帳號安全。
+confirmation-3-subhead = 又搞定一個了，幹得好！
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = 您的新密碼獨特、強大、又很難被猜到嗎？<a>了解更多</a>
+generic-confirmation-subhead = 已將此事件標示為已處理
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+       *[other] 請到儀錶板確認還剩下哪些資料外洩事件。
+    }
+return-to-breach-details-link = 回到事件詳情
+go-to-dashboard-link = 前往儀錶板
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
 progress-percent-complete = 完成 { $percentComplete }%
@@ -398,6 +410,12 @@ num-resolved =
        *[other] 已處理 { $numResolvedBreaches } 筆事件
     }
 progress-intro-subhead = { -product-name } 新功能: 將資料外洩事件標示為已處理
+progress-intro-message = 確認事件詳細資訊並採取行動保護自己的資料後，就可以將事件標示為「已處理」。
+progress-status =
+    { $numTotalBreaches ->
+       *[other] 已處理 { $numResolvedBreaches } 場事件，共 { $numTotalBreaches } 場
+    }
+progress-complete = 已將所有事件標示為已處理
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
