@@ -498,6 +498,10 @@ mark-as-resolve-button = Позначити вирішеним
 marked-as-resolved-label = Позначено вирішеним
 undo-button = Скасувати
 confirmation-1-subhead = Чудово! Ви щойно вирішили свій перший витік даних.
+confirmation-1-body = Не зупиняйтесь на цьому. Перевірте свою оглядову панель, щоб побачити чи необхідно виконати інші дії.
+confirmation-2-subhead = Ось так вам, хакери!
+confirmation-2-body = Ви робите важливі кроки для захисту своїх облікових даних в Інтернеті.
+confirmation-3-subhead = Ще один готовий. Гарна робота!
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
