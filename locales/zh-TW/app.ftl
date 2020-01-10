@@ -13,7 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = 使用條款及隱私權
 GitHub-link-title = GitHub
@@ -334,7 +334,7 @@ email-verified-view-dashboard = 若要檢視或管理所有註冊檢查的信箱
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = 請登入
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -366,3 +366,42 @@ rec-section-headline-no-pw = 該做哪些事來保護個資？
 rec-section-subhead-no-pw = 雖然這次資料外洩事件沒有流出密碼，但還是有一些更能保護個人資訊的方式。
 # Button
 see-additional-recs = 看其他建議
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $affectedEmail } 出現在這場資料外洩事件中。<a>接下來該怎麼辦</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+       *[other] 您有 { $numAffectedEmails } 組信箱出現在這場資料外洩事件中。<a>接下來該怎麼辦</a>
+    }
+
+##
+
+marking-this-subhead = 將此次資料外洩事件標示為已處理
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body = <span>當您針對此次事件採取措施處理後</span>，可以將其標示為「已處理」。可以隨時回到儀錶板來確認此次事件的詳細資訊。
+mark-as-resolve-button = 標示為已處理
+marked-as-resolved-label = 已標示為已處理
+undo-button = 復原
+confirmation-1-subhead = 您剛處理好第一筆資料外洩事件，真棒！
+confirmation-1-body = 再接再厲，到儀錶板看看還有沒有其它該處理的情況。
+confirmation-2-subhead = 駭客，接招吧！
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = 完成 { $percentComplete }%
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+       *[other] 已處理 { $numResolvedBreaches } 筆事件
+    }
+progress-intro-subhead = { -product-name } 新功能: 將資料外洩事件標示為已處理
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
