@@ -145,13 +145,14 @@ function annotateFoundBreachesAsResolvedOrNot(foundBreaches, resolvedBreaches) {
 async function bundleVerifiedEmails(options) {
   const { user, email, recordId, recordVerified, allBreaches} = options;
   const lowerCaseEmailSha = sha1(email.toLowerCase());
-  const foundBreaches = await HIBP.getBreachesForEmail(lowerCaseEmailSha, allBreaches, true);
+  const foundBreaches = await HIBP.getBreachesForEmail(lowerCaseEmailSha, allBreaches, true, false);
   const resolvedBreaches = getResolvedBreachesForEmail(user, email);
   const annotatedFoundBreaches = annotateFoundBreachesAsResolvedOrNot(foundBreaches, resolvedBreaches);
+  const filteredAnnotatedFoundBreaches = HIBP.filterBreaches(annotatedFoundBreaches);
 
   const emailEntry = {
     "email": email,
-    "breaches": annotatedFoundBreaches,
+    "breaches": filteredAnnotatedFoundBreaches,
     "primary": email === user.primary_email,
     "id": recordId,
     "verified": recordVerified,
