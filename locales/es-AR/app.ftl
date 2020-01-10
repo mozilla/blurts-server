@@ -419,6 +419,31 @@ marking-this-body =
     <span>Una vez que hayas tomado los pasos necesarios para abordar esta violación </span>,
     podés marcarla como resuelta. Todavía podés acceder a detalles sobre la violación
     desde tu tablero en cualquier momento.
+mark-as-resolve-button = Marcar como resuelto
+undo-button = Deshacer
+confirmation-1-subhead = ¡Qué bueno! Resolviste tu primera violación.
+confirmation-1-body = Mantené el impulso. Mirá tu panel de control para ver si hay más para hacer.
+confirmation-2-subhead = ¡Fuera piratas!
+confirmation-2-body = Estás tomando medidas importantes para proteger tus cuentas en línea.
+confirmation-3-subhead = Otra más. ¡Muy bien!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = ¿Tu nueva contraseña es única, segura y difícil de adivinar? <a>Descubrilo</a>
+generic-confirmation-subhead = Esta violación fue marcada como resuelta
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Para ver la violación que queda, mirá tu panel de control.
+       *[other] Para ver todas las violaciones restantes, mirá tu panel de control.
+    }
+return-to-breach-details-link = Volver a los detalles de la violación
+go-to-dashboard-link = Ir al panel de control
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% completo
+progress-intro-subhead = Nuevo en { -product-name }: marcar violaciones como resueltas
+progress-intro-message =
+    Después de revisar los detalles sobre una violación y tomar medidas para proteger
+    tu información personal, podés marcarla como resueltas.
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
