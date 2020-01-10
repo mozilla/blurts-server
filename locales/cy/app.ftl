@@ -13,7 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Rhwydwaith Preifat Firefox
 
-
+##
 
 terms-and-privacy = Telerau a Phreifatrwydd
 GitHub-link-title = GitHub
@@ -411,7 +411,7 @@ email-verified-view-dashboard = I weld a rheoli pob e-bost rydych wedi cofrestru
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = mewngofnodi
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -443,3 +443,41 @@ rec-section-headline-no-pw = Beth i'w wneud i ddiogelu eich manylion personol
 rec-section-subhead-no-pw = Er nad oedd cyfrineiriau wedi'u hamlygu yn y tor-data hwn, mae yna gamau y gallwch eu cymryd o hyd i ddiogelu eich manylion personol yn well.
 # Button
 see-additional-recs = Gweler yr Argymhellion Ychwanegol
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = Ymddangosodd { $affectedEmail } yn y tor-data hwn. <a>Beth i'w wneud nesaf</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [zero] Ymddangosodd { $numAffectedEmails } o'ch cyfeiriadau e-bost yn y tor-data hwn. <a>Beth i'w wneud nesaf</a>
+        [one] Ymddangosodd { $numAffectedEmails } o'ch cyfeiriadau e-bost yn y tor-data hwn. <a>Beth i'w wneud nesaf</a>
+        [two] Ymddangosodd { $numAffectedEmails } o'ch cyfeiriadau e-bost yn y tor-data hwn. <a>Beth i'w wneud nesaf</a>
+        [few] Ymddangosodd { $numAffectedEmails } o'ch cyfeiriadau e-bost yn y tor-data hwn. <a>Beth i'w wneud nesaf</a>
+        [many] Ymddangosodd { $numAffectedEmails } o'ch cyfeiriadau e-bost yn y tor-data hwn. <a>Beth i'w wneud nesaf</a>
+       *[other] Ymddangosodd { $numAffectedEmails } o'ch cyfeiriadau e-bost yn y tor-data hwn. <a>Beth i'w wneud nesaf</a>
+    }
+
+##
+
+marking-this-subhead = Nodi'r tor-data hwn fel wedi'i datrys
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Ar ôl i chi gymryd y camau y gallwch i fynd i'r afael â'r tor-data hwn</span>,
+    gallwch ei nodi fel wedi'i ddatrys. Gallwch ddal i gael gafael ar fanylion am y tor-data
+    o'ch bwrdd gwaith ar unrhyw adeg.
+mark-as-resolve-button = Nodi wedi'i Ddatrys
+marked-as-resolved-label = Nodi wedi'i Ddatrys
+undo-button = Dadwneud
+confirmation-1-subhead = Da! Rydych newydd ddatrys eich tor-data cyntaf.
+confirmation-1-body = Cadwch fynd. Gwiriwch eich bwrdd gwaith i weld os oes mwy i'w wneud.
+confirmation-2-subhead = Dyna un i chi, hacwyr!
+confirmation-2-body = Rydych yn cymryd camau pwysig tuag at ddiogelu eich cyfrifon ar-lein.
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
