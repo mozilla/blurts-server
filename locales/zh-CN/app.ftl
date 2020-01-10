@@ -13,7 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = 使用条款和隐私
 GitHub-link-title = GitHub
@@ -338,7 +338,7 @@ email-verified-view-dashboard = 要查看或管理您所有设为监控的电子
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = 请登录
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -370,3 +370,19 @@ rec-section-headline-no-pw = 如何保护您的个人信息
 rec-section-subhead-no-pw = 尽管此外泄事件并未泄露密码，但您仍可采取一些措施来更好地保护您的个人信息。
 # Button
 see-additional-recs = 看看其他建议
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+
+##
+
+marking-this-subhead = 标记此外泄事件为已解决
+undo-button = 撤销
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
