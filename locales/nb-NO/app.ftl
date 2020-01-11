@@ -451,6 +451,7 @@ resolve-top-notification-plural =
 
 ##
 
+undo-button = Angre
 progress-complete = Alle kjente datalekkasjer er markert som løst
 
 ## These strings contain nested markup that is later used to style the text inside of it.
