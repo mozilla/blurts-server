@@ -374,15 +374,77 @@ see-additional-recs = 看看其他建议
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+resolve-top-notification = { $affectedEmail } 出现在此数据外泄事件中。<a>接下来该怎么办</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+       *[other] 您有 { $numAffectedEmails } 个邮箱出现在此外泄事件中。<a>接下来该怎么办</a>
+    }
 
 ##
 
 marking-this-subhead = 标记此外泄事件为已处理
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body = <span>当您针对此事件采取措施处理后</span>，就可将其标记为“已处理”。您可以随时回到仪表盘来访问某次事件的详细信息。
+mark-as-resolve-button = 标记为已处理
+marked-as-resolved-label = 已标记为已处理
 undo-button = 撤销
+confirmation-1-subhead = 您刚刚处理完第一宗外泄事件，真棒！
+confirmation-1-body = 再接再厉，到仪表盘看看是否还有其他需处理的的事件。
+confirmation-2-subhead = 黑客，接招吧！
+confirmation-2-body = 您正在采取重要措施来保护自己的账号安全。
+confirmation-3-subhead = 梅开二度，干得好！
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = 您的新密码足够独特、强健、又很难被猜到吗？<a>了解更多</a>
+generic-confirmation-subhead = 已将此事件标记为已处理
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+       *[other] 请到仪表盘确认还剩下哪些数据外泄事件。
+    }
+return-to-breach-details-link = 回到事件详情
+go-to-dashboard-link = 前往仪表盘
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = 完成 { $percentComplete }%
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+       *[other] 已处理 { $numResolvedBreaches } 起事件
+    }
+progress-intro-subhead = { -product-name } 新功能：将数据外泄事件标记为已处理
+progress-intro-message = 确认事件详细信息并采取措施保护自己的数据后，就可以将事件标记为“已处理”。
+progress-status =
+    { $numTotalBreaches ->
+       *[other] 已处理 { $numResolvedBreaches } 起事件，共 { $numTotalBreaches } 起
+    }
+progress-complete = 已将所有事件标记为已处理
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 = <span>这是一个很棒的开始！</span>看看还剩下哪些事件需要处理。
+progress-message-2 = <span>继续加油！</span>诸如更改密码等微小操作，会对您的网络安全有极大保护。
+progress-message-3 = <span>做得好！</span>继续保持，还剩下几起就处理完这些数据外泄事件了。
+progress-message-4 = <span>快完成了！</span>即将抵达终点。
+progress-complete-message = <span>感觉不错，对吗？</span>若您想继续处理，可以趁现在把其他网站的登录信息换成强度更高的密码。
 
 ##
 
+resolve-this-breach-link = 处理此事件
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = 已标记为已处理：
+hide-resolved-button = 隐藏已处理事件
+show-resolved-button = 显示已处理事件
+unresolved-passwords-exposed =
+    { $numPasswords ->
+       *[other] 在未处理事件中泄露的密码
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+       *[other] 标记为已处理的数据外泄事件数
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = 新事件
