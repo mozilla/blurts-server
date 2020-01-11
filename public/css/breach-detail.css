@@ -226,7 +226,9 @@ button.fade-out {
   .rec-hist-pw,
   .rec-ip-non-us,
   .rec-ip-us,
-  .rec-sec-qa {
+  .rec-sec-qa,
+  .rec-dob,
+  {
     height: 40px;
   }
 }
