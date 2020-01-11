@@ -377,7 +377,7 @@ see-additional-recs = 看看其他建议
 
 ##
 
-marking-this-subhead = 标记此外泄事件为已解决
+marking-this-subhead = 标记此外泄事件为已处理
 undo-button = 撤销
 
 ## These strings contain nested markup that is later used to style the text inside of it.
