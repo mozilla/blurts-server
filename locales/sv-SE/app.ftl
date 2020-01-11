@@ -445,6 +445,11 @@ see-additional-recs = Se ytterligare rekommendationer
 ## Please do not modify or remove "<a>" and "</a>".
 
 resolve-top-notification = { $affectedEmail } förekom i detta intrång. <a>Vad ska jag göra nu?</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] { $numAffectedEmails } av dina e-postadresser förekom i detta intrång. <a>Vad ska jag göra härnäst?</a>
+       *[other] { $numAffectedEmails } av dina e-postadresser förekom i detta intrång. <a>Vad ska jag göra härnäst?</a>
+    }
 
 ##
 
@@ -485,12 +490,48 @@ num-resolved =
        *[other] { $numResolvedBreaches } lösta
     }
 progress-intro-subhead = Nytt i { -product-name }: Markera intrång som lösta
+progress-intro-message =
+    När du har granskat detaljerna om ett intrång och vidtagit åtgärder för att skydda 
+    din personliga information kan du markera intrången som lösta.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } av { $numTotalBreaches } intrång markerat som löst
+       *[other] { $numResolvedBreaches } av { $numTotalBreaches } intrång markerade som lösta
+    }
+progress-complete = Alla kända intrång har markerats som lösta
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>Det är en bra början!</span> Kolla in de återstående intrången för att lära dig 
+    vilka steg du ska vidta.
+progress-message-2 =
+    <span>Fortsätt så!</span> Små förändringar som att uppdatera lösenord har stor inverkan på 
+    att skydda din personliga information.
+progress-message-3 = <span>Bra jobbat med att lösa dessa intrång! </span> Fortsätt så. Du har några kvar.
+progress-message-4 = <span>Nästan klar!</span> Du är nästan i mål.
+progress-complete-message =
+    <span>Det känns bra eller hur?</span> Om du vill fortsätta är det en bra tid att 
+    uppdatera andra inloggningar med starkare lösenord.
 
 ##
 
+resolve-this-breach-link = Lös detta intrång
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Markerad som löst:
 hide-resolved-button = Dölj lösta
 show-resolved-button = Visa lösta
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Lösenord exponerat i olösta intrång
+       *[other] Lösenord exponerade i olösta intrång
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Känt dataintrång markerat som löst
+       *[other] Kända dataintrång markerade som lösta
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Nytt
