@@ -13,7 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Villkor och sekretess
 GitHub-link-title = GitHub
@@ -408,7 +408,7 @@ email-verified-view-dashboard = För att se och hantera alla e-postadresser du h
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = logga in
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -440,3 +440,57 @@ rec-section-headline-no-pw = Vad du ska göra för att skydda din personliga inf
 rec-section-subhead-no-pw = Även om lösenord inte avslöjades i detta intrång, finns det fortfarande åtgärder du kan vidta för att bättre skydda din personliga information.
 # Button
 see-additional-recs = Se ytterligare rekommendationer
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $affectedEmail } förekom i detta intrång. <a>Vad ska jag göra nu?</a>
+
+##
+
+marking-this-subhead = Markera detta intrång som löst
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>När du har vidtagit stegen du kan för att hantera detta intrång</span>,
+    kan du markera det som löst. Du kan fortfarande få åtkomst till detaljer om intrånget
+    från din översikt när som helst.
+mark-as-resolve-button = Markera som löst
+marked-as-resolved-label = Markerad som löst
+undo-button = Ångra
+confirmation-1-subhead = Mycket bra! Du har precis löst ditt första intrång.
+confirmation-1-body = Fortsätt så. Kontrollera översikten för att se om mer behöver göras.
+confirmation-2-subhead = Ta det, hackare!
+confirmation-2-body = Du tar viktiga steg för att skydda dina onlinekonton.
+confirmation-3-subhead = Ännu en färdig. Bra gjort!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Är ditt nya lösenord unikt, starkt och svårt att gissa? <a>Ta reda på det</a>
+generic-confirmation-subhead = Detta intrång har markerats som löst
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Gå till översikten för att se återstående intrång.
+       *[other] Gå till översikten för att se alla återstående intrång.
+    }
+return-to-breach-details-link = Återgå till intrångsdetaljer
+go-to-dashboard-link = Gå till översikten
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% färdig
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } löst
+       *[other] { $numResolvedBreaches } lösta
+    }
+progress-intro-subhead = Nytt i { -product-name }: Markera intrång som lösta
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
+hide-resolved-button = Dölj lösta
+show-resolved-button = Visa lösta
