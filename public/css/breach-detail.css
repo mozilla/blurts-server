@@ -227,7 +227,8 @@ button.fade-out {
   .rec-ip-non-us,
   .rec-ip-us,
   .rec-sec-qa,
-  .rec-dob {
+  .rec-dob,
+  .rec-pins {
     height: 40px;
   }
 }
