@@ -477,6 +477,7 @@ num-resolved =
        *[other] { $numResolvedBreaches } resolvidos
     }
 progress-intro-subhead = Novidade no { -product-name }: Marcar vazamentos como resolvidos
+progress-intro-message = Após revisar os detalhes sobre um vazamento e tomar medidas para proteger suas informações pessoais, você pode marcar vazamentos como resolvidos.
 progress-status =
     { $numTotalBreaches ->
        *[other] { $numResolvedBreaches } de { $numTotalBreaches } vazamentos marcados como resolvidos
@@ -486,6 +487,11 @@ progress-complete = Todos os vazamentos conhecidos foram marcados como resolvido
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 = <span>Você começou bem!</span> Verifique os vazamentos restantes para saber que medidas tomar.
+progress-message-2 = <span>Continue assim!</span> Pequenas mudanças, como alterar senhas, têm um grande impacto em manter suas informações pessoais em segurança.
+progress-message-3 = <span>Bom trabalho resolvendo esses vazamentos!</span> Continue assim. Você ainda tem mais alguns.
+progress-message-4 = <span>Quase pronto!</span> Você está perto do fim.
+progress-complete-message = <span>Sensação boa, né?</span> Se quiser continuar, é um bom momento para alterar outras contas com senhas mais fortes.
 
 ##
 
