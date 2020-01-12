@@ -419,10 +419,76 @@ confirmation-1-subhead = Bun! Tocmai ai rezolvat prima ta breșă.
 confirmation-1-body = Menține ritmul. Verifică tabloul de bord și vezi dacă mai ai ceva de făcut.
 confirmation-2-subhead = Luați de-aici, hackerilor!
 confirmation-2-body = Faci pași importanți spre protejarea conturilor tale online.
+confirmation-3-subhead = Încă una. Bine lucrat!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Parola nouă este unică, puternică și greu de ghicit? <a>Află</a>
+generic-confirmation-subhead = Această breșă a fost marcată ca rezolvată
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Pentru a vedea breșa rămasă, mergi în tabloul de bord.
+        [few] Pentru a vedea toate breșele rămase, mergi în tabloul de bord.
+       *[other] Pentru a vedea toate breșele rămase, mergi în tabloul de bord.
+    }
+return-to-breach-details-link = Revenire la detaliile breșei
+go-to-dashboard-link = Mergi la tabloul de bord
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% finalizat
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } rezolvată
+        [few] { $numResolvedBreaches } rezolvate
+       *[other] { $numResolvedBreaches } rezolvate
+    }
+progress-intro-subhead = Nou în { -product-name }: Marchează breșele ca rezolvate
+progress-intro-message =
+    După examinarea detaliilor și luarea pașilor pentru protecția 
+    informațiilor tale personale, poți marca breșele ca rezolvate.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } din { $numTotalBreaches } breșă marcată ca rezolvată
+        [few] { $numResolvedBreaches } din { $numTotalBreaches } breșe marcate ca rezolvate
+       *[other] { $numResolvedBreaches } din { $numTotalBreaches } de breșe marcate ca rezolvate
+    }
+progress-complete = Toate breșele cunoscute au fost marcate ca rezolvate
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>Ai început bine!</span> Vezi și restul breșelor ca să afli 
+    ce măsuri să iei.
+progress-message-2 =
+    <span>Ține-o tot așa!</span> Schimbările mici, cum ar fi actualizarea parolelor, au un impact mare în 
+    menținerea informațiilor personale în siguranță.
+progress-message-3 = <span>Ai făcut treabă bună la rezolvarea acelor breșe!</span> Ține-o tot așa. Mai ai câteva.
+progress-message-4 = <span>Aproape că ai terminat!</span> Te apropii de final.
+progress-complete-message =
+    <span>Bună senzația, nu?</span> Dacă vrei să continui, acum este momentul să 
+    îți actualizezi celelalte date de autentificare cu parole mai puternice.
 
 ##
 
+resolve-this-breach-link = Rezolvă această breșă
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Marcate ca rezolvate:
+hide-resolved-button = Ascunde-le pe cele rezolvate
+show-resolved-button = Afișează-le pe cele rezolvate
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] parolă expusă în breșe nerezolvate
+        [few] parole expuse în breșe nerezolvate
+       *[other] de parole expuse în breșe nerezolvate
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] breșă cunoscută de date marcată ca rezolvată
+        [few] breșe cunoscute de date marcate ca rezolvate
+       *[other] de breșe cunoscute de date marcate ca rezolvate
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Nou
