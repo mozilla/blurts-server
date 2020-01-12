@@ -8,8 +8,12 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Cont Firefox
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Termeni și confidențialitate
 GitHub-link-title = GitHub
@@ -26,6 +30,7 @@ home-not-found = Pagină negăsită.
 oauth-invalid-session = Sesiune nevalidă
 scan-title = { -product-name } : Rezultatele scanării
 user-add-invalid-email = E-mail invalid
+user-add-too-many-emails = Monitorizezi numărul maxim de adrese de e-mail.
 user-add-email-verify-subject = Verifică-ți abonamentul la { -product-name }.
 user-add-duplicate-email = Acest e-mail a fost deja adăugat în { -product-name }.
 user-add-duplicate-email-part-2 = Intră pe { $preferencesLink } pentru a verifica starea { $userEmail }.
@@ -155,6 +160,7 @@ avoid-personal-info-blurb = Datele de naștere, adresele și numele membrilor fa
 ## What to do after data breach tips
 
 change-pw = Schimbă-ți parola
+change-pw-site = Schimbă parola pentru acest site
 even-for-old = Actualizarea parolelor este importantă, chiar și pentru conturile vechi.
 make-new-pw-unique = Parola nouă trebuie să fie diferită și unică
 strength-of-your-pw = Puterea parolelor are un impact direct asupra securității tale online.
@@ -316,6 +322,9 @@ other-known-breaches-found =
 additional-information-including = Informații suplimentare, inclusiv:
 # Title
 email-addresses-title = Adrese de e-mail
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Prezentare generală
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
@@ -345,8 +354,15 @@ verify-the-link = Verifică linkul trimis către { $userEmail } ca să îl adaug
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+email-verified = Adresă de e-mail verificată cu succes!
+email-added-to-subscription = Îți vom trimite o alertă dacă { $email } apare într-o breșă de date.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = Pentru a vedea și a gestiona toate adresele pe care le-ai înscris pentru monitorizare de breșe, { $nestedSignInLink }
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = autentificare
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -368,3 +384,45 @@ create-strong-passwords-desc = Creează parole puternice, sigure și greu de ghi
 steps-to-protect-desc = Înțelege cele mai frecvente amenințări și află la ce să fii atent.
 five-myths-desc = Află cum să eviți parolele proaste care fac ușoară munca hackerilor.
 take-further-steps-desc = Află cum să reduci riscurile unui furt de identitate pentru a preveni pierderile financiare.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Modificări salvate!
+# Section headline
+rec-section-headline = Ce să faci pentru această breșă
+rec-section-subhead = Îți recomandăm să efectuezi următorii pași pentru a-ți păstra informațiile personale în siguranță și pentru a-ți proteja identitatea digitală.
+# Section headline
+rec-section-headline-no-pw = Ce să faci pentru a-ți proteja informațiile personale
+rec-section-subhead-no-pw = Deși parolele nu au fost expuse în această breșă, încă mai sunt măsuri pe care le poți lua pentru a-ți proteja mai bine informațiile personale.
+# Button
+see-additional-recs = Vezi recomandările suplimentare
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $affectedEmail } a apărut în această breșă. <a>Ce să faci mai departe</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+       *[other] { $numAffectedEmails } dintre adresele tale de e-mail au apărut în această breșă. <a>Ce să faci mai departe</a>
+    }
+
+##
+
+marking-this-subhead = Marcarea acestei breșe ca rezolvată
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Odată ce ai luat măsurile posibile pentru gestionarea acestei breșe</span>,
+    o poți marca drept rezolvată. Poți accesa în continuare detaliile despre breșă din tabloul de bord în orice moment.
+mark-as-resolve-button = Marchează ca rezolvată
+marked-as-resolved-label = Marcată ca rezolvată
+undo-button = Anulează
+confirmation-1-subhead = Bun! Tocmai ai rezolvat prima ta breșă.
+confirmation-1-body = Menține ritmul. Verifică tabloul de bord și vezi dacă mai ai ceva de făcut.
+confirmation-2-subhead = Luați de-aici, hackerilor!
+confirmation-2-body = Faci pași importanți spre protejarea conturilor tale online.
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
