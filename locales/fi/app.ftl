@@ -450,10 +450,20 @@ see-additional-recs = Katso lisäsuositukset
 ## Please do not modify or remove "<a>" and "</a>".
 
 resolve-top-notification = { $affectedEmail } ilmeni tässä vuodossa. <a>Mitä tehdä seuraavaksi</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+       *[other] { $numAffectedEmails } sähköpostiosoitteistasi ilmeni tässä vuodossa. <a>Mitä tehdä seuraavaksi</a>
+    }
 
 ##
 
 marking-this-subhead = Merkitään tämä vuoto selvitetyksi
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Kun olet tehnyt tarvittavat toimet vuotoon liittyen</span>,
+    voit merkitä sen selvitetyksi. Näet kyseisen vuodon tiedot milloin tahansa 
+    kojelaudalta.
 mark-as-resolve-button = Merkitse selvitetyksi
 marked-as-resolved-label = Merkitty selvitetyksi
 undo-button = Kumoa
@@ -461,10 +471,16 @@ confirmation-1-subhead = Hienoa! Selvitit juuri ensimmäisen vuodon.
 confirmation-1-body = Jatka samaan malliin. Tarkista kojelaudalta, onko siellä vielä lisää tehtävää.
 confirmation-2-subhead = Siitä saatte, hakkerit!
 confirmation-2-body = Otat tärkeitä askeleita verkkotiliesi suojaamiseksi.
+confirmation-3-subhead = Taas yksi hoidettu, hienoa työtä!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Onko uusi salasanasi yksilöllinen, vahva ja vaikeasti arvattava? <a>Ota selvää</a>
 generic-confirmation-subhead = Tämä vuoto on merkitty selvitetyksi
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Näet jäljellä olevan vuodon kojelaudalta.
+       *[other] Näet jäljellä olevat vuodot kojelaudalta.
+    }
 return-to-breach-details-link = Palaa vuodon tietoihin
 go-to-dashboard-link = Siirry kojelaudalle
 # This string appears above a breach resolution progress bar and indicates
@@ -477,6 +493,9 @@ num-resolved =
        *[other] { $numResolvedBreaches } selvitetty
     }
 progress-intro-subhead = Uutta { -product-name }issa: Merkitse vuodot selvitetyiksi
+progress-intro-message =
+    Kun olet tutustunut vuodon tietoihin ja ottanut henkilökohtaisia 
+    tietojasi suojaavia askelia, voit merkitä vuodot selvitetyiksi.
 progress-status =
     { $numTotalBreaches ->
        *[other] { $numResolvedBreaches }/{ $numTotalBreaches } vuotoa merkitty selvitetyiksi
@@ -494,6 +513,9 @@ progress-message-2 =
     merkitsevät suuresti henkilökohtaisten tietojen suojaamisessa.
 progress-message-3 = <span>Hienoa työtä vuotojen selvittämisessä!</span> Vielä on muutama jäljellä.
 progress-message-4 = <span>Melkein valmista!</span> Lähestyt maalilinjaa.
+progress-complete-message =
+    <span>Eikö tunnukin hyvältä?</span> Jos haluat jatkaa, nyt on hyvä aika 
+    päivittää muut kirjautumistiedot aiempaa vahvemmilla salasanoilla.
 
 ##
 
@@ -503,5 +525,15 @@ resolve-this-breach-link = Selvitä tämä vuoto
 marked-resolved = Merkitty selvitetyksi:
 hide-resolved-button = Piilota selvitetyt
 show-resolved-button = Näytä selvitetyt
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Salasana paljastunut selvittämättömissä vuodoissa
+       *[other] Salasana paljastunut selvittämättömissä vuodoissa
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Tunnettu tietovuoto merkitty selvitetyksi
+       *[other] Tunnetut tietovuodot merkitty selvitetyksi
+    }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Uusi
