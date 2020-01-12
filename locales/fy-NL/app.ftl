@@ -13,7 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Betingsten en privacy
 GitHub-link-title = GitHub
@@ -404,7 +404,7 @@ email-verified-view-dashboard = { $nestedSignInLink } om alle e-mailadressen dy'
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = oanmelde
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -436,3 +436,37 @@ rec-section-headline-no-pw = Wat kinne jo dwaan om jo persoanlike gegevens te be
 rec-section-subhead-no-pw = Hoewol by dit datalek gjin wachtwurden lekt binne, binne der noch hieltyd stappen dy't jo nimme kinne om jo personlike gegevens better te beskermjen.
 # Button
 see-additional-recs = Oanfoljende oanrekommandaasjes
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $affectedEmail } komt foar yn dit lek. <a>Wat jo no dwaan moatte</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] { $numAffectedEmails } fan jo e-mailadressen komt foar yn dit lek. <a>Wat jo no dwaan moatte</a>
+       *[other] { $numAffectedEmails } fan jo e-mailadressen komme foar yn dit lek. <a>Wat jo no dwaan moatte</a>
+    }
+
+##
+
+marking-this-subhead = Dit datalek as oplost markearje
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Neidat jo de stappen nommen hawwe om dit datalek oan te pakken</span>.
+    kinne jo it as oplost markearje. Jo kinne noch hieltyd op elk winske momint 
+    fan jo dashboerd ôf de details fan it lek besjen.
+mark-as-resolve-button = As oplost markearje
+marked-as-resolved-label = As oplost markearre
+undo-button = Ungedien meitsje
+confirmation-1-subhead = Moai! Jo hawwe sakrekt jo earste datalek oplost.
+confirmation-1-body = Gean sa troch. Sjoch op jo dashboerd om te sjen oft der noch mear te dwaan is.
+confirmation-2-subhead = Pak oan, hackers!
+confirmation-2-body = Jo nimme wichtige stappen om jo online accounts te beskermjen.
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
