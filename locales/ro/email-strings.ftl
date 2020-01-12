@@ -87,3 +87,8 @@ pre-fxa-p-2 =
     Vezi toate breșele de date într-un singur loc pentru a ști ce parole să schimbi. 
     Tabloul de bord pentru breșe este disponibil numai cu un cont.
 pre-fxa-tout-3 = Continuă să primești alerte pe e-mail
+pre-fxa-p-3 =
+    Vei primi în continuare alerte de la { -product-name }. Te vom anunța dacă informațiile tale 
+    apar într-o breșă nouă de date.
+# Button at the bottom of pre-fxa email.
+create-account = Creează cont
