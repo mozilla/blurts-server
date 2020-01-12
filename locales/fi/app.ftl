@@ -20,7 +20,7 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 
-
+##
 
 terms-and-privacy = Ehdot ja yksityisyys
 GitHub-link-title = GitHub
@@ -413,7 +413,7 @@ email-verified-view-dashboard = { $nestedSignInLink }, jotta voit nähdä ja hal
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = Kirjaudu sisään
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -445,3 +445,63 @@ rec-section-headline-no-pw = Mitä tehdä henkilökohtaisten tietojen suojaamise
 rec-section-subhead-no-pw = Vaikka salasanoja ei paljastunutkaan tässä vuodossa, voit tehdä asioita suojataksesi henkilökohtaisia tietojasi aiempaa paremmin.
 # Button
 see-additional-recs = Katso lisäsuositukset
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $affectedEmail } ilmeni tässä vuodossa. <a>Mitä tehdä seuraavaksi</a>
+
+##
+
+marking-this-subhead = Merkitään tämä vuoto selvitetyksi
+mark-as-resolve-button = Merkitse selvitetyksi
+marked-as-resolved-label = Merkitty selvitetyksi
+undo-button = Kumoa
+confirmation-1-subhead = Hienoa! Selvitit juuri ensimmäisen vuodon.
+confirmation-1-body = Jatka samaan malliin. Tarkista kojelaudalta, onko siellä vielä lisää tehtävää.
+confirmation-2-subhead = Siitä saatte, hakkerit!
+confirmation-2-body = Otat tärkeitä askeleita verkkotiliesi suojaamiseksi.
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Onko uusi salasanasi yksilöllinen, vahva ja vaikeasti arvattava? <a>Ota selvää</a>
+generic-confirmation-subhead = Tämä vuoto on merkitty selvitetyksi
+return-to-breach-details-link = Palaa vuodon tietoihin
+go-to-dashboard-link = Siirry kojelaudalle
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete } % valmiina
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+       *[other] { $numResolvedBreaches } selvitetty
+    }
+progress-intro-subhead = Uutta { -product-name }issa: Merkitse vuodot selvitetyiksi
+progress-status =
+    { $numTotalBreaches ->
+       *[other] { $numResolvedBreaches }/{ $numTotalBreaches } vuotoa merkitty selvitetyiksi
+    }
+progress-complete = Kaikki tunnetut vuodot on merkitty selvitetyiksi
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+progress-message-1 =
+    <span>Hieno aloitus!</span> Tutustu jäljellä oleviin vuotoihin 
+    ottaaksesi selvää mitä tehdä seuraavaksi.
+progress-message-2 =
+    <span>Jatka samaan malliin!</span> Pienet muutokset, kuten salasanojen muuttaminen, 
+    merkitsevät suuresti henkilökohtaisten tietojen suojaamisessa.
+progress-message-3 = <span>Hienoa työtä vuotojen selvittämisessä!</span> Vielä on muutama jäljellä.
+progress-message-4 = <span>Melkein valmista!</span> Lähestyt maalilinjaa.
+
+##
+
+resolve-this-breach-link = Selvitä tämä vuoto
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Merkitty selvitetyksi:
+hide-resolved-button = Piilota selvitetyt
+show-resolved-button = Näytä selvitetyt
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Uusi
