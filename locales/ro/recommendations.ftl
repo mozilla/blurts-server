@@ -85,6 +85,15 @@ rec-dob =
     îți știu data nașterii pot și ele să îți ghicească ușor codul PIN.
 # Recommendation subhead
 rec-pins-subhead = Întărește securitatea codurilor PIN
+rec-pins =
+    Un cod PIN puternic nu conține informații personale, cum ar fi data nașterii 
+    sau adresa. Trebuie să fie un număr pe care îl știi numai tu și care să nu poată fi ușor de ghicit.
+# Recommendation subhead
+rec-address-subhead = Evită folosirea de adrese în parole
+rec-address =
+    Folosirea de adrese sau a străzii locului în care ai crescut îți slăbește 
+    parolele. Pentru că sunt informații ușor de găsit în registre publice, fac 
+    aceste parole ușor de ghicit.
 # Recommendation subhead
 rec-gen-1-subhead = Folosește parole unice și puternice pentru fiecare cont
 # Link title
@@ -96,6 +105,9 @@ rec-gen-1 =
 rec-gen-2-subhead = Păstrează parolele într-un loc sigur
 # Link title
 rec-gen-2-cta = Mituri despre managerii de parole
+rec-gen-2 =
+    Păstrează-ți detaliile datelor de autentificare într-un loc sigur, la care numai tu ai acces, precum 
+    un manager de parole. Ușurează și urmărirea tuturor parolelor diferite create.
 # Recommendation subhead
 rec-gen-3-subhead = Fii precaut când îți dai informațiile personale
 # Link title
@@ -105,3 +117,6 @@ rec-gen-3 =
     îți introduci sau să dai adresa de e-mail, codul poștal sau numărul de telefon, poți să refuzi.
 # Recommendation subhead
 rec-gen-4-subhead = Actualizează-ți periodic softurile și aplicațiile
+rec-gen-4 =
+    Actualizarea aplicațiilor, browserelor și sistemelor de operare de pe telefon 
+    face dispozitivele mai sigure. Aceste actualizări rezolvă erori, vulnerabilități software și probleme de securitate.
