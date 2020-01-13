@@ -445,6 +445,11 @@ see-additional-recs = További javaslatok megtekintése
 ## Please do not modify or remove "<a>" and "</a>".
 
 resolve-top-notification = A(z) { $affectedEmail } megjelent ebben az adatsértésben. <a>Mik a további teendők?</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] { $numAffectedEmails } e-mail címe jelent meg ebben az adatsértésben. <a>Mik a további teendők?</a>
+       *[other] { $numAffectedEmails } e-mail címe jelent meg ebben az adatsértésben. <a>Mik a további teendők?</a>
+    }
 
 ##
 
