@@ -1,7 +1,12 @@
 {{#getBreachDetail}}
-
-  <main id="breach-detail" class="breach-detail clear-header bg-white flx jst-cntr" data-page-label="Breach Detail">
+{{> breach-resolution-modal }}
+  <main id="breach-detail" class="breach-detail {{#unless affectedEmailNotification}} clear-header {{/unless}} bg-white flx jst-cntr" data-page-label="Breach Detail">
     <div class="mw-700 detail-section flx-cntr flx flx-col">
+      {{#if affectedEmailNotification}}
+      <div class="affected-email-notification drop-shadow">
+        <p class="ff-Met demi affected-email-message">{{{ this.affectedEmailNotification }}}</p>
+      </div>
+      {{/if}}
       <div class="breach-detail-logo-wrapper">
         <img class="breach-detail-logo breach-logo" alt="{{ breach.Name }} logo" src="/img/logos/{{ breach.LogoPath }}" />
       </div>
@@ -24,13 +29,16 @@
   </section>
 
   <!-- What to do tips -->
-  <section class="detail-section jst-cntr flx flx-col">
+  <section id="what-to-do-next" class="detail-section jst-cntr flx flx-col">
     {{> breach-detail-content-group recommendations sectionId="breach-recommendations"}}
   </section>
 
   <!-- Sign Up Banner -->
   <section class="detail-section bg-split flx jst-cntr flx-col">
     <div class="mw-700 padding-0">
+      {{#if affectedEmails}}
+        {{> affected-emails}}
+      {{/if}}
       {{#unless ./../req.session.user}}
         {{> sign-up-banners/breach-detail-sign-up-banner }}
       {{/unless}}

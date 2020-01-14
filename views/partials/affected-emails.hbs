@@ -1,0 +1,21 @@
+ <div class="resolve-breaches-wrapper drop-shadow">
+  <h3 class="bold resolve-headline txt-cntr">{{ resolutionStrings.subhead }}</h3>
+  <div class="affected-emails-list-wrapper">
+    <p class="resolution-message">{{{ resolutionStrings.message }}}</p>
+    <ul class="affected-emails-list">
+      {{#each affectedEmails}}
+        <li class="flx space-between affected-email-list-item">
+          <p class="flx cntr demi affected-email">{{ emailAddress }}</p>
+            <button data-affected-email="{{ emailAddress}}" data-passwords-exposed="{{ ./../breachExposedPasswords }}" data-recency-index="{{ recencyIndex }}" data-is-resolved="{{ isResolved }}"
+              {{#if isResolved}} class="btn-ghost txt-cntr resolve-button" {{else}} class="btn-blue-primary resolve-button" {{/if}} >
+              {{#if isResolved}}
+                {{ ./../resolutionStrings.resolvedLabel }}<span class="blue-link resolve-undo">{{ ./../resolutionStrings.undoResolvedLabel }}</span>
+              {{else}}
+                {{ ./../resolutionStrings.resolveButtonTitle }}
+              {{/if}}
+            </button>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>

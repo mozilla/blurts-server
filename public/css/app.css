@@ -283,18 +283,41 @@ input[type="submit"]:active {
   box-shadow: 0 2px 8px 0 rgba(14, 13, 26, 0.12), 0 3px 1px -2px rgba(7, 48, 114, 0.12), 0 2px 4px 0 rgba(34, 0, 51, 0.04), 0 0 0 1px rgba(32, 18, 58, 0.04);
 }
 
+button.btn-ghost {
+  border: none;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  min-height: 48px;
+  min-height: auto;
+  align-self: center;
+  color: var(--purple7);
+  min-width: 200px;
+}
+
+.btn-blue-primary,
 button.btn-violet-primary {
   border-radius: 8px;
+  min-height: 48px;
   font-size: 16px;
   max-width: 320px;
   font-weight: 600;
-  background-color: var(--violet4);
-  border: 1px solid var(--violet4);
   width: 100%;
   color: rgba(255, 255, 255, 1);
   padding-right: var(--padding);
   padding-left: var(--padding);
-  min-height: 48px;
+}
+
+.btn-blue-primary {
+  border-radius: 4px;
+  background-color: #0060df;
+  border: 1px solid #0060df;
+  align-self: center;
+}
+
+.btn-violet-primary {
+  background-color: var(--violet4);
+  border: 1px solid var(--violet4);
 }
 
 .btn-violet-primary:hover {

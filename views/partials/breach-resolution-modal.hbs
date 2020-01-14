@@ -1,0 +1,12 @@
+  <div class="breach-resolution-modal flx cntr">
+    <div class="confirmation-modal-wrapper mw-700 flx flx-col cntr">
+      <div class="modal-content flx flx-col txt-cntr">
+        <h1 id="confirmation-headline" class="modal-headline"></h1>
+        <p id="confirmation-progress-message" class="modal-progress-message"></p>
+        <span id="modal-progress-status" class="progress-header demi txt-purple7 flx cntr"></span>
+        <a href="/user/dashboard" class="btn-blue-primary go-to-dash flx jst-cntr">{{ getString "go-to-dashboard-link" }}</a>
+        <a href="/breach-details/{{ breach.Name}}" class="blue-link return-to-breach-details">{{ getString "return-to-breach-details-link" }}</a>
+        <button class="modal close-modal-btn close-modal" aria-label="{{getString "close-modal"}}"></button>
+      </div>
+    </div>
+  </div>

@@ -309,6 +309,74 @@ async function postRemoveFxm(req, res) {
   res.redirect("/");
 }
 
+// Placeholder -- WIP
+async function postResolveBreach(req, res) {
+  const user = req.user;
+
+  // Currently we're sending { affectedEmail, recencyIndex, isResolved, passwordsExposed } in req.body
+  // Not sure if we need all of these or need to send other/additional values?
+
+  const { isResolved } = req.body;
+  if (isResolved === "true") {
+    // the user clicked "Undo" so mark the breach as unresolved
+    return res.redirect("/");
+  }
+
+  const allBreaches = req.app.locals.breaches;
+  const { verifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
+
+  const userBreachStats = resultsSummary(verifiedEmails);
+  const numTotalBreaches = userBreachStats.numBreaches.count;
+  const numResolvedBreaches = userBreachStats.numBreaches.numResolved;
+
+  const localizedModalStrings = {
+    headline: "",
+    progressMessage: "",
+    progressStatus: req.fluentFormat( "progress-status", {
+      numResolvedBreaches: numResolvedBreaches,
+      numTotalBreaches: numTotalBreaches }
+    ),
+    headlineClassName: "",
+  };
+  if (numResolvedBreaches === 1) {
+    localizedModalStrings.headline = req.fluentFormat("confirmation-1-subhead");
+    localizedModalStrings.progressMessage = req.fluentFormat("confirmation-1-body");
+    localizedModalStrings.headlineClassName = "overlay-resolved-first-breach";
+  }
+
+  if (numResolvedBreaches === 2) {
+    localizedModalStrings.headline = req.fluentFormat("confirmation-2-subhead");
+    localizedModalStrings.progressMessage = req.fluentFormat("confirmation-2-body");
+    localizedModalStrings.headlineClassName = "overlay-take-that-hackers";
+  }
+
+  if (numResolvedBreaches === 3) {
+    localizedModalStrings.headline = req.fluentFormat("confirmation-3-subhead");
+    // TO CONSONDER: The "confirmation-3-body" string contains nested markup.
+    // We'll either have to remove it (requiring a string change), or we will have
+    // to inject it into the template using innerHTML (scaryish).
+    // Defaulting to the generic progressMessage for now.
+    localizedModalStrings.progressMessage = req.fluentFormat("generic-confirmation-message", {
+      numUnresolvedBreaches: numTotalBreaches-numResolvedBreaches,
+    });
+    localizedModalStrings.headlineClassName = "overlay-another-breach-resolved";
+  }
+
+  if (numResolvedBreaches > 3 && numResolvedBreaches < numTotalBreaches) {
+    localizedModalStrings.headline = req.fluentFormat("confirmation-2-subhead");
+    localizedModalStrings.progressMessage = req.fluentFormat("confirmation-2-body");
+    localizedModalStrings.headlineClassName = "overlay-marked-as-resolved";
+  }
+
+  if (numResolvedBreaches === numTotalBreaches) {
+    localizedModalStrings.headline = req.fluentFormat("confirmation-2-subhead");
+    localizedModalStrings.progressMessage = req.fluentFormat("progress-complete");
+    localizedModalStrings.headlineClassName = "overlay-marked-as-resolved";
+  }
+
+  res.json(localizedModalStrings);
+}
+
 
 async function postUnsubscribe(req, res) {
   const { token, emailHash } = req.body;
@@ -398,6 +466,7 @@ module.exports = {
   postUnsubscribe,
   getRemoveFxm,
   postRemoveFxm,
+  postResolveBreach,
   logout,
   removeEmail,
   resendEmail,

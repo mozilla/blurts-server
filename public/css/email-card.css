@@ -144,6 +144,7 @@
   transition: all 0.3s ease;
 }
 
+.email-card.zero-unresolved-breaches .e-breach-list,
 .email-card.active .hide-additional-breaches.hide .breach-card,
 .email-card.inactive .hide-additional-breaches.hide .breach-card {
   display: none !important;
@@ -154,10 +155,11 @@
   display: none;
 }
 
+.email-card.zero-unresolved-breaches.show-resolved-breach-cards.active .e-breach-list,
 .show-resolved-breach-cards .breach-card.resolved-breach-card {
   visibility: visible;
   opacity: 0.6;
-  display: flex;
+  display: flex !important;
   transition: all 0.25s ease;
 }
 

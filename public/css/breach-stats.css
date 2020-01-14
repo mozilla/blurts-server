@@ -55,6 +55,7 @@
   height: 24px;
   min-width: 24px;
   display: inline-block;
+  vertical-align: middle;
   background-color: #20c3a2;
   background-image: url("/img/svg/white-check.svg");
   background-repeat: no-repeat;

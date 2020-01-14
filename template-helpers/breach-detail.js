@@ -95,6 +95,7 @@ function getBreachDetail(args) {
 
   const breachDetail = {
     breach: breach,
+    breachExposedPasswords: breachExposedPasswords,
     overview: {
       headline: localize(locales, "breach-overview-title"),
       copy: localize(locales, "breach-overview-new", {
@@ -151,24 +152,48 @@ function getBreachDetail(args) {
     };
   }
 
-  const BREACH_RESOLUTION_ENABLED = (AppConstants.BREACH_RESOLUTION_ENABLED === 1);
-  if (BREACH_RESOLUTION_ENABLED && args.data.root.affectedEmailAddresses) {
-    const affectedEmails = args.data.root.affectedEmailAddresses;
+
+  const BREACH_RESOLUTION_ENABLED = (AppConstants.BREACH_RESOLUTION_ENABLED === "1");
+  if (BREACH_RESOLUTION_ENABLED && args.data.root.affectedEmails) {
+    const affectedEmails = args.data.root.affectedEmails;
     const numAffectedEmails = affectedEmails.length;
+    const unresolvedAffectedEmails = [];
 
     if (numAffectedEmails > 0) {
-      const affectedEmailNotification = numAffectedEmails > 1 ?
+      affectedEmails.forEach(email => {
+        if (!email.isResolved) {
+          unresolvedAffectedEmails.push(email);
+        }
+      });
+    // show top of page alert for any emails involved in this breach where the breach
+    // has not yet been marked as resolved.
+    // if all breaches have been resolved, show nothing
+    if (unresolvedAffectedEmails.length > 0) {
+      const affectedEmailNotification = unresolvedAffectedEmails.length > 1 ?
         localize(locales, "resolve-top-notification-plural", { numAffectedEmails: numAffectedEmails }) :
-        localize(locales, "resolve-top-notification", { affectedEmail: affectedEmails[0].affectedEmailAddress });
+        localize(locales, "resolve-top-notification", { affectedEmail: unresolvedAffectedEmails[0].emailAddress });
 
       breachDetail.affectedEmailNotification = formatNotificationLink(affectedEmailNotification);
+    }
+      breachDetail.affectedEmails = affectedEmails;
+      breachDetail.resolutionStrings = {
+        subhead: localize(locales, "marking-this-subhead"),
+        message: formatResolutionMessage(localize(locales, "marking-this-body")),
+        resolveButtonTitle: localize(locales, "mark-as-resolve-button"),
+        resolvedLabel: localize(locales, "marked-as-resolved-label"),
+        undoResolvedLabel: localize(locales, "undo-button"),
+      };
     }
   }
   return args.fn(breachDetail);
 }
 
+function formatResolutionMessage(message) {
+  return message.replace("<span>", "<span class='demi'>");
+}
+
 function formatNotificationLink(message) {
-  return message.replace("<a>", "<a href='");
+  return message.replace("<a>", "<a class='what-to-do-next blue-link' href='#what-to-do-next'>");
 }
 
 
