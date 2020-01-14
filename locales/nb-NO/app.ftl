@@ -451,7 +451,11 @@ resolve-top-notification-plural =
 
 ##
 
+marking-this-subhead = Merk denne datalekkasjen som løst
+mark-as-resolve-button = Merk som løst
+marked-as-resolved-label = Merket som løst
 undo-button = Angre
+confirmation-1-subhead = Hyggelig! Du har akkurat løst den første datalekkasjen din.
 confirmation-2-subhead = Ta det, hackere!
 progress-complete = Alle kjente datalekkasjer er markert som løst
 
