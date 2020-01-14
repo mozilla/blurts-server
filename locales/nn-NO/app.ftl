@@ -13,7 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Vilkår og personvern
 GitHub-link-title = GitHub
@@ -405,7 +405,7 @@ email-verified-view-dashboard = For å sjå og administrere alle e-postmeldingar
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = logg inn
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -437,3 +437,39 @@ rec-section-headline-no-pw = Kva du skal gjere for å beskytte den personlege in
 rec-section-subhead-no-pw = Sjølv om passord ikkje vart lekne i denne datalekkasjen, er det framleis ting du kan gjere for å ta betre vare på den personlege informasjonen din.
 # Button
 see-additional-recs = Sjå ytterlegare tilrådingar
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $affectedEmail } dukka opp i denne datalekkasjen. <a>Kva skal eg gjere no?</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+       *[other] { $affectedEmail } av e-postadressene dine dukka opp i denne datalekkasjen. <a>Kva skal er det neste eg skal gjere?</a>
+    }
+
+##
+
+marking-this-subhead = Merk denne datalekkasjen som løyst
+mark-as-resolve-button = Merk som løyst
+marked-as-resolved-label = Merkt som løyst
+undo-button = Angre
+confirmation-2-subhead = Ta det, hackarar!
+confirmation-3-subhead = Endå ein er ferdig. Bra jobba!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Er det nye passordet ditt unikt, sterkt og vanskeleg å gjette? <a>FInn ut</a>
+generic-confirmation-subhead = Denne datalekkasjen er merkt som løyst
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Gå til oversikta for å sjå attståande datalekkasjar.
+       *[other] Gå til oversikta for å sjå alle attståande datalekkasjar.
+    }
+return-to-breach-details-link = Gå tilbake til datalekkasjedetaljar
+go-to-dashboard-link = Gå til oversynet
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
