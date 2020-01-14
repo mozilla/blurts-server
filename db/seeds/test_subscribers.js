@@ -15,6 +15,7 @@ exports.TEST_SUBSCRIBERS = {
     fxa_uid: 12345,
     fxa_profile_json: {},
     breaches_last_shown: "2019-04-24 13:27:08.421-05",
+    breaches_resolved: {"firefoxaccount@test.com": [0]},
   },
   all_emails_to_primary: {
     id: 67890,

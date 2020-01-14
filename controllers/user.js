@@ -126,10 +126,10 @@ async function add(req, res) {
 }
 
 function getResolvedBreachesForEmail(user, email) {
-  if (typeof user.resolved_breaches !== "object") {
+  if (typeof user.breaches_resolved !== "object") {
     return [];
   }
-  return user.resolved_breaches.hasOwnProperty(email) ? user.resolved_breaches[email] : [];
+  return user.breaches_resolved.hasOwnProperty(email) ? user.breaches_resolved[email] : [];
 }
 
 function annotateFoundBreachesAsResolvedOrNot(foundBreaches, resolvedBreaches) {
