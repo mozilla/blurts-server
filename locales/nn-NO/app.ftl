@@ -453,7 +453,10 @@ marking-this-subhead = Merk denne datalekkasjen som løyst
 mark-as-resolve-button = Merk som løyst
 marked-as-resolved-label = Merkt som løyst
 undo-button = Angre
+confirmation-1-subhead = Svært bra! Du har akkurat løyst den første datalekkasjen din.
+confirmation-1-body = Fortset slik. Kontroller oversynet for å sjå om der er meir å gjere.
 confirmation-2-subhead = Ta det, hackarar!
+confirmation-2-body = Du tek viktige steg for å verne nettkontoane dine.
 confirmation-3-subhead = Endå ein er ferdig. Bra jobba!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
@@ -466,10 +469,46 @@ generic-confirmation-message =
     }
 return-to-breach-details-link = Gå tilbake til datalekkasjedetaljar
 go-to-dashboard-link = Gå til oversynet
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% fullført
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } løyst
+       *[other] { $numResolvedBreaches } løyste
+    }
+progress-intro-subhead = Nytt i { -product-name }: Marker datalekkasjar som løyste
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } av { $numTotalBreaches } datalekkasje er merkt som løyst
+       *[other] { $numResolvedBreaches } av { $numTotalBreaches } datalekkasjar er merkte som løyste
+    }
+progress-complete = Alle kjende datalekkasjar er merkte som løyste
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-4 = <span>Nesten ferdig!</span> Du er nesten i mål.
 
 ##
 
+resolve-this-breach-link = Løys denne datalekkasjen
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Merkt som løyst
+hide-resolved-button = Gøym løyste
+show-resolved-button = Vis løyste
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Passord eksponert i uløyst datalekkasje
+       *[other] Passord eksponerte i uløyste datalekkasjar
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Kjend datalekkasje merkt som løyst
+       *[other] Kjende datalekkasjar merkte som løyste
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Ny
