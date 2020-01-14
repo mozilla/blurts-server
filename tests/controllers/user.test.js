@@ -16,7 +16,6 @@ require("../resetDB");
 
 
 jest.mock("../../email-utils");
-jest.mock("../../hibp");
 
 const mockRequest = { fluentFormat: jest.fn() };
 
@@ -28,6 +27,72 @@ function expectResponseRenderedSubpagePartial(resp, partial) {
   expect(renderCallArgs[0]).toEqual("subpage");
   expect(renderCallArgs[1].whichPartial).toEqual(partial);
 }
+
+
+test("user getDashboard with valid user renders dashboard with verified emails and their breaches", async () => {
+  const testSubscriberEmail = TEST_SUBSCRIBERS.firefox_account.primary_email;
+  const testSubscriber = await DB.getSubscriberByEmail(testSubscriberEmail);
+  const mockReturnedBreaches = testBreaches.slice(0,2);
+  HIBP.getBreachesForEmail = jest.fn();
+  HIBP.getBreachesForEmail.mockReturnValue(mockReturnedBreaches);
+
+  const req = {
+    app: { locals: { breaches: testBreaches } },
+    csrfToken: jest.fn(),
+    fluentFormat: jest.fn(),
+    session: { user: testSubscriber },
+    user: testSubscriber,
+  };
+  const resp = httpMocks.createResponse();
+  resp.render = jest.fn();
+
+  await user.getDashboard(req, resp);
+
+  expect(resp.statusCode).toEqual(200);
+  expect(resp.render).toHaveBeenCalledTimes(1);
+  const renderCallArgs = resp.render.mock.calls[0];
+  expect(renderCallArgs[0]).toEqual("dashboards");
+  const renderCallContext = renderCallArgs[1];
+  expect(renderCallContext.whichPartial).toEqual("dashboards/breaches-dash");
+
+  expect(renderCallContext.verifiedEmails.length).toEqual(2);
+  expect(renderCallContext.unverifiedEmails.length).toEqual(1);
+  expect(renderCallContext.verifiedEmails[0].breaches.length).toEqual(mockReturnedBreaches.length);
+});
+
+
+test("user getDashboard with valid user renders dashboard with verified emails and resolved breaches", async () => {
+  const testSubscriberEmail = TEST_SUBSCRIBERS.firefox_account.primary_email;
+  const testSubscriber = await DB.getSubscriberByEmail(testSubscriberEmail);
+  const mockReturnedBreaches = testBreaches.slice(0,2);
+  HIBP.getBreachesForEmail = jest.fn();
+  HIBP.getBreachesForEmail.mockReturnValue(mockReturnedBreaches);
+
+  const req = {
+    app: { locals: { breaches: testBreaches } },
+    csrfToken: jest.fn(),
+    fluentFormat: jest.fn(),
+    session: { user: testSubscriber },
+    user: testSubscriber,
+  };
+  const resp = httpMocks.createResponse();
+  resp.render = jest.fn();
+
+  await user.getDashboard(req, resp);
+
+  expect(resp.statusCode).toEqual(200);
+  expect(resp.render).toHaveBeenCalledTimes(1);
+  const renderCallArgs = resp.render.mock.calls[0];
+  expect(renderCallArgs[0]).toEqual("dashboards");
+  const renderCallContext = renderCallArgs[1];
+  expect(renderCallContext.whichPartial).toEqual("dashboards/breaches-dash");
+
+  expect(renderCallContext.verifiedEmails.length).toEqual(2);
+  expect(renderCallContext.unverifiedEmails.length).toEqual(1);
+  expect(renderCallContext.verifiedEmails[0].breaches.length).toEqual(mockReturnedBreaches.length);
+  const resolvedBreaches = renderCallContext.verifiedEmails[0].breaches.filter(b => b.IsResolved);
+  expect(resolvedBreaches.length).toEqual(1);
+});
 
 
 test("user add POST with email adds unverified subscriber and sends verification email", async () => {
@@ -563,10 +628,6 @@ test("user breach-stats POST request with FXA response for Monitor user returns 
   });
   HIBP.getBreachesForEmail = jest.fn();
   HIBP.getBreachesForEmail.mockReturnValue([]);
-  HIBP.getResolvedBreachesForEmail = jest.fn();
-  HIBP.getResolvedBreachesForEmail.mockReturnValue([]);
-  HIBP.filterBreaches = jest.fn();
-  HIBP.filterBreaches.mockReturnValue([]);
 
   const resp = { json: jest.fn() };
 
