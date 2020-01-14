@@ -40,7 +40,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Умови та конфіденційність
 GitHub-link-title = GitHub
@@ -252,7 +252,7 @@ comm-opt-1 = Надсилати сповіщення про всі витоки 
 stop-monitoring-this = Припинити відстежувати цю е-пошту.
 resend-verification = Надіслати лист підтвердження ще раз
 add-new-email = Додати нову адресу е-пошти
-send-verification = Надіслати посилання для підтвердження
+send-verification = Надіслати підтвердження
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
@@ -441,7 +441,7 @@ email-verified-view-dashboard = Щоб переглянути та керува�
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = Увійти
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -473,3 +473,39 @@ rec-section-headline-no-pw = Що робити, щоб захистити сво
 rec-section-subhead-no-pw = Хоча паролі не було викрито в цьому витоці, все ж можна вжити заходів для кращого захисту особистої інформації.
 # Button
 see-additional-recs = Перегляньте додаткові рекомендації
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $affectedEmail } з'явився в цьому витоці. <a>Що робити далі?</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] { $numAffectedEmails } з ваших електронних адрес з'явилася в цьому витоці. <a>Що робити далі?</a>
+        [few] { $numAffectedEmails } з ваших електронних адрес з'явилася в цьому витоці. <a>Що робити далі?</a>
+       *[many] { $numAffectedEmails } з ваших електронних адрес з'явилася в цьому витоці. <a>Що робити далі?</a>
+    }
+
+##
+
+marking-this-subhead = Позначення цього витоку вирішеним
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Як тільки ви вжили заходів щодо усунення цього витоку</span>,
+    можете позначити його вирішеним. Ви й надалі зможете переглядати подробиці  
+    про цей витік на своїй панелі в будь-який час.
+mark-as-resolve-button = Позначити вирішеним
+marked-as-resolved-label = Позначено вирішеним
+undo-button = Скасувати
+confirmation-1-subhead = Чудово! Ви щойно вирішили свій перший витік даних.
+confirmation-1-body = Не зупиняйтесь на цьому. Перевірте свою оглядову панель, щоб побачити чи необхідно виконати інші дії.
+confirmation-2-subhead = Ось так вам, хакери!
+confirmation-2-body = Ви робите важливі кроки для захисту своїх облікових даних в Інтернеті.
+confirmation-3-subhead = Ще один готовий. Гарна робота!
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+

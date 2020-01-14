@@ -13,7 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Voorwaarden en Privacy
 GitHub-link-title = GitHub
@@ -404,7 +404,7 @@ email-verified-view-dashboard = { $nestedSignInLink } om alle e-mailadressen die
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = Meld u aan
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -436,3 +436,98 @@ rec-section-headline-no-pw = Wat kunt u doen om uw persoonlijke gegevens te besc
 rec-section-subhead-no-pw = Hoewel bij dit datalek geen wachtwoorden zijn gelekt, zijn er nog steeds stappen die u kunt nemen om uw persoonlijke gegevens beter te beschermen.
 # Button
 see-additional-recs = Aanvullende aanbevelingen
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $affectedEmail } komt voor in dit lek. <a>Wat u nu moet doen</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] { $numAffectedEmails } van uw e-mailadressen komt voor in dit lek. <a>Wat u nu moet doen</a>
+       *[other] { $numAffectedEmails } van uw e-mailadressen komen voor in dit lek. <a>Wat u nu moet doen</a>
+    }
+
+##
+
+marking-this-subhead = Dit datalek als opgelost markeren
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Nadat u de stappen hebt genomen om dit datalek aan te pakken</span>.
+    kunt u het als opgelost markeren. U kunt nog steeds op elk gewenst moment 
+    vanaf uw dashboard de details van het lek bekijken.
+mark-as-resolve-button = Als opgelost markeren
+marked-as-resolved-label = Als opgelost gemarkeerd
+undo-button = Ongedaan maken
+confirmation-1-subhead = Mooi! U hebt zojuist uw eerste datalek opgelost.
+confirmation-1-body = Ga zo door. Kijk op uw dashboard om te zien of er nog meer te doen is.
+confirmation-2-subhead = Pak aan, hackers!
+confirmation-2-body = U neemt belangrijke stappen om uw online accounts te beschermen.
+confirmation-3-subhead = Nog eentje gedaan. Goed werk!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Is uw nieuwe wachtwoord uniek, sterk en moeilijk te raden? <a>Ontdek het hier</a>
+generic-confirmation-subhead = Dit lek is als opgelost gemarkeerd
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Ga naar uw dashboard om het resterende lek te bekijken.
+       *[other] Ga naar uw dashboard om de resterende lekken te bekijken.
+    }
+return-to-breach-details-link = Terug naar details van het datalek
+go-to-dashboard-link = Naar het dashboard
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% voltooid
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } opgelost
+       *[other] { $numResolvedBreaches } opgelost
+    }
+progress-intro-subhead = Nieuw in { -product-name }: Datalekken als opgelost markeren
+progress-intro-message =
+    Nadat u de details over een datalek hebt bekeken en stappen om uw persoonlijke 
+    gegevens te beschermen hebt genomen, kunt u lekken als opgelost markeren.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } van { $numTotalBreaches } lek als opgelost gemarkeerd
+       *[other] { $numResolvedBreaches } van { $numTotalBreaches } lekken als opgelost gemarkeerd
+    }
+progress-complete = Alle bekende lekken zijn als opgelost gemarkeerd
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+progress-message-1 =
+    <span>U begint goed!</span> Bekijk de resterende lekken om te lezen welke 
+    stappen u kunt nemen.
+progress-message-2 =
+    <span>Ga zo door!</span> Kleine wijzigingen, zoals het bijwerken van wachtwoorden, hebben grote invloed op
+    het veilig houden van uw persoonlijke gegevens.
+progress-message-3 = <span>Goed werk om die lekken op te lossen!</span> Ga zo door. U hebt er nog een paar te gaan.
+progress-message-4 = <span>Bijna klaar!</span> U bent bijna bij de eindstreep.
+progress-complete-message =
+    <span>Voelt goed, hè?</span> Als u door wilt gaan, is dit een goed moment om
+    andere aanmeldingen met sterkere wachtwoorden bij te werken.
+
+##
+
+resolve-this-breach-link = Dit datalek oplossen
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Als opgelost gemarkeerd:
+hide-resolved-button = Opgelost verbergen
+show-resolved-button = Opgelost tonen
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Wachtwoord gelekt in onopgeloste datalekken
+       *[other] Wachtwoorden gelekt in onopgeloste datalekken
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Bekend datalek als opgelost gemarkeerd
+       *[other] Bekende datalekken als opgelost gemarkeerd
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Nieuw

@@ -139,6 +139,10 @@ async function requireSessionUser(req, res, next) {
     return res.redirect(`/oauth/init?${queryParams}`);
   }
   const fxaProfileData = await FXA.getProfileData(user.fxa_access_token);
+  if (fxaProfileData.hasOwnProperty("name") && fxaProfileData.name === "HTTPError") {
+    delete req.session.user;
+    return res.redirect("/");
+  }
   await DB.updateFxAProfileData(user, fxaProfileData);
   req.session.user = user;
   req.user = user;

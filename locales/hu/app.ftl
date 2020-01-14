@@ -13,7 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Feltételek és adatvédelem
 GitHub-link-title = GitHub
@@ -408,7 +408,7 @@ email-verified-view-dashboard = Hogy megtekintse és kezelje az összes e-mail c
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = jelentkezzen be
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -440,3 +440,28 @@ rec-section-headline-no-pw = Mit tegyen a személyes adatainak védelme érdeké
 rec-section-subhead-no-pw = Bár a jelszavak nem kerültek ki ebben az adatsértésben, még mindig tehet többet a személyes adatai védelme érdekében.
 # Button
 see-additional-recs = További javaslatok megtekintése
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = A(z) { $affectedEmail } megjelent ebben az adatsértésben. <a>Mik a további teendők?</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] { $numAffectedEmails } e-mail címe jelent meg ebben az adatsértésben. <a>Mik a további teendők?</a>
+       *[other] { $numAffectedEmails } e-mail címe jelent meg ebben az adatsértésben. <a>Mik a további teendők?</a>
+    }
+
+##
+
+marking-this-subhead = Az adatsértés megjelölése megoldottként
+mark-as-resolve-button = Megjelölés megoldottként
+marked-as-resolved-label = Megjelölve megoldottként
+undo-button = Visszavonás
+confirmation-1-subhead = Szép! Most oldotta meg az első adatsértését.
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+

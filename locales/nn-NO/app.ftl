@@ -13,7 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Vilkår og personvern
 GitHub-link-title = GitHub
@@ -247,7 +247,7 @@ your-info-was-discovered-headline = Din personege informasjon vart oppdaga i ein
 your-info-was-discovered-blurb =
     Du er registrert for å få { -product-name }-varsel
     når e-postadressa di er i ein datalekkasje. Dette er det vi veit om denne datalekkasjen.
-what-to-do-after-breach = Kva skal du gjere etter ein datalekkasje:
+what-to-do-after-breach = Kva skal du gjere etter ein datalekkasje
 ba-next-step-1 = Endre passordet ditt til eit sterkt, unikt passord.
 ba-next-step-blurb-1 =
     Eit sterkt passord brukar ein kombinasjon av store og små bokstavar, 
@@ -405,7 +405,7 @@ email-verified-view-dashboard = For å sjå og administrere alle e-postmeldingar
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = logg inn
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -430,10 +430,104 @@ take-further-steps-desc = Finn ut korleis du kan redusere risikoen for identitet
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Endringar lagra!
 # Section headline
-rec-section-headline = Kva må du gjere med denne datalekkasjen?
+rec-section-headline = Kva må du gjere med denne datalekkasjen
 rec-section-subhead = Vi tilrår at du gjer dette for å halde den personlege informasjonen din trygg, og beskytte den digitale identiteten din.
 # Section headline
 rec-section-headline-no-pw = Kva du skal gjere for å beskytte den personlege informasjonen din
 rec-section-subhead-no-pw = Sjølv om passord ikkje vart lekne i denne datalekkasjen, er det framleis ting du kan gjere for å ta betre vare på den personlege informasjonen din.
 # Button
 see-additional-recs = Sjå ytterlegare tilrådingar
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $affectedEmail } dukka opp i denne datalekkasjen. <a>Kva skal eg gjere no?</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+       *[other] { $affectedEmail } av e-postadressene dine dukka opp i denne datalekkasjen. <a>Kva skal er det neste eg skal gjere?</a>
+    }
+
+##
+
+marking-this-subhead = Merk denne datalekkasjen som løyst
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Når du har gjort det du kan gjere for å handtere denne datalekkasjen</span>,
+    kan du merke han som løyst. Du kan enno få tilgang til detaljar om datalekkasjen
+    frå oversynet ditt når som helst.
+mark-as-resolve-button = Merk som løyst
+marked-as-resolved-label = Merkt som løyst
+undo-button = Angre
+confirmation-1-subhead = Svært bra! Du har akkurat løyst den første datalekkasjen din.
+confirmation-1-body = Fortset slik. Kontroller oversynet for å sjå om der er meir å gjere.
+confirmation-2-subhead = Ta det, hackarar!
+confirmation-2-body = Du tek viktige steg for å verne nettkontoane dine.
+confirmation-3-subhead = Endå ein er ferdig. Bra jobba!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Er det nye passordet ditt unikt, sterkt og vanskeleg å gjette? <a>FInn ut</a>
+generic-confirmation-subhead = Denne datalekkasjen er merkt som løyst
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Gå til oversikta for å sjå attståande datalekkasjar.
+       *[other] Gå til oversikta for å sjå alle attståande datalekkasjar.
+    }
+return-to-breach-details-link = Gå tilbake til datalekkasjedetaljar
+go-to-dashboard-link = Gå til oversynet
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% fullført
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } løyst
+       *[other] { $numResolvedBreaches } løyste
+    }
+progress-intro-subhead = Nytt i { -product-name }: Marker datalekkasjar som løyste
+progress-intro-message =
+    När du har granska detaljane om ein datalekkasje og gjort noko for å beskytte 
+    den personlege informasjonen din, kan du merkje datalekkasjar som løyste.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } av { $numTotalBreaches } datalekkasje er merkt som løyst
+       *[other] { $numResolvedBreaches } av { $numTotalBreaches } datalekkasjar er merkte som løyste
+    }
+progress-complete = Alle kjende datalekkasjar er merkte som løyste
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+progress-message-1 =
+    <span>Det er ein bra start!</span> Sjekk dei siste attståande datalekkasjane for å lære deg 
+    kva du skal gjere
+progress-message-2 =
+    <span>Fortset slik!</span> Små endringar som å oppdatere passord har stor innverknad på 
+    det å beskytte den personlege informasjonen din.
+progress-message-3 = <span>Bra jobba med å løyse desse datalekkasjane! </span> Fortset slik. Du har nokre att.
+progress-message-4 = <span>Nesten ferdig!</span> Du er nesten i mål.
+progress-complete-message =
+    <span>Det kjennest bra, ikkje sant?</span> Om du vil fortsetje passar det bra no 
+    å oppdatere andre innloggingar med sterkare passord.
+
+##
+
+resolve-this-breach-link = Løys denne datalekkasjen
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Merkt som løyst
+hide-resolved-button = Gøym løyste
+show-resolved-button = Vis løyste
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Passord eksponert i uløyst datalekkasje
+       *[other] Passord eksponerte i uløyste datalekkasjar
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Kjend datalekkasje merkt som løyst
+       *[other] Kjende datalekkasjar merkte som løyste
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Ny

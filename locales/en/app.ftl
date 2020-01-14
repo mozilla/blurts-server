@@ -598,7 +598,6 @@ confirmation-3-subhead = Another one down. Nice work!
 
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
-
 confirmation-3-body = Is your new password unique, strong, and hard to guess? <a>Find out</a>
 
 generic-confirmation-subhead = This breach has been marked as resolved
@@ -657,8 +656,6 @@ marked-resolved = Marked resolved:
 hide-resolved-button = Hide Resolved
 show-resolved-button = Show Resolved
 
-new-breach = New
-
 unresolved-passwords-exposed =
   { $numPasswords ->
     [one] Password exposed in unresolved breaches
@@ -670,3 +667,6 @@ known-data-breaches-resolved =
     [one] Known data breach marked as resolved
    *[other] Known data breaches marked as resolved
   }
+
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = New

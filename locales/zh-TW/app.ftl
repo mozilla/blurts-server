@@ -13,7 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = 使用條款及隱私權
 GitHub-link-title = GitHub
@@ -334,7 +334,7 @@ email-verified-view-dashboard = 若要檢視或管理所有註冊檢查的信箱
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = 請登入
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -366,3 +366,81 @@ rec-section-headline-no-pw = 該做哪些事來保護個資？
 rec-section-subhead-no-pw = 雖然這次資料外洩事件沒有流出密碼，但還是有一些更能保護個人資訊的方式。
 # Button
 see-additional-recs = 看其他建議
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $affectedEmail } 出現在這場資料外洩事件中。<a>接下來該怎麼辦</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+       *[other] 您有 { $numAffectedEmails } 組信箱出現在這場資料外洩事件中。<a>接下來該怎麼辦</a>
+    }
+
+##
+
+marking-this-subhead = 將此次資料外洩事件標示為已處理
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body = <span>當您針對此次事件採取措施處理後</span>，可以將其標示為「已處理」。可以隨時回到儀錶板來確認此次事件的詳細資訊。
+mark-as-resolve-button = 標示為已處理
+marked-as-resolved-label = 已標示為已處理
+undo-button = 復原
+confirmation-1-subhead = 您剛處理好第一筆資料外洩事件，真棒！
+confirmation-1-body = 再接再厲，到儀錶板看看還有沒有其它該處理的情況。
+confirmation-2-subhead = 駭客，接招吧！
+confirmation-2-body = 您正在採取重要措施來保護自己的帳號安全。
+confirmation-3-subhead = 又搞定一個了，幹得好！
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = 您的新密碼獨特、強大、又很難被猜到嗎？<a>了解更多</a>
+generic-confirmation-subhead = 已將此事件標示為已處理
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+       *[other] 請到儀錶板確認還剩下哪些資料外洩事件。
+    }
+return-to-breach-details-link = 回到事件詳情
+go-to-dashboard-link = 前往儀錶板
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = 完成 { $percentComplete }%
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+       *[other] 已處理 { $numResolvedBreaches } 筆事件
+    }
+progress-intro-subhead = { -product-name } 新功能: 將資料外洩事件標示為已處理
+progress-intro-message = 確認事件詳細資訊並採取行動保護自己的資料後，就可以將事件標示為「已處理」。
+progress-status =
+    { $numTotalBreaches ->
+       *[other] 已處理 { $numResolvedBreaches } 場事件，共 { $numTotalBreaches } 場
+    }
+progress-complete = 已將所有事件標示為已處理
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+progress-message-1 = <span>這是一個很棒的起點！</span>看看還剩下哪些事件需要處理。
+progress-message-2 = <span>繼續努力！</span>更改密碼這類小小的動作，能對您的線上個資安全有大大保護。
+progress-message-3 = <span>做得好！</span>繼續保持，還剩下幾組就處理完這些資料外洩事件了。
+progress-message-4 = <span>快完成了！</span>就快要抵達終點線啦。
+progress-complete-message = <span>覺得很棒對不對？</span>若您想要繼續處理，可以趁現在把其它網站的登入資訊換成更強的密碼。
+
+##
+
+resolve-this-breach-link = 處理過此次事件了
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = 已標示為已處理:
+hide-resolved-button = 隱藏處理過的事件
+show-resolved-button = 顯示處理過的事件
+unresolved-passwords-exposed =
+    { $numPasswords ->
+       *[other] 尚未處理的事件中，洩漏出的密碼組數
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+       *[other] 標示為已解決的資料外洩事件數
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = 新事件

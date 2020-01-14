@@ -30,12 +30,12 @@ rec-pw-4-subhead = 设置双因子验证（2FA）
 rec-pw-4-cta = 查看提供双因子验证（2FA）的网站
 rec-pw-4 = 许多网站提供双因子验证（2FA）作为额外的安全措施。须有另一条信息才能登录账户，例如您通过短信收到的一次性代码。
 # Recommendation subhead
-rec-bank-acc-subhead = 监控您的银行对帐单
+rec-bank-acc-subhead = 监控您的银行对账单
 rec-bank-acc =
-    检查您的银行对帐单是否有可疑动态或异常
+    检查您的银行对账单是否有可疑动态或异常
     收费。如有发现不明之处，请通知您的银行
 # Recommendation subhead
-rec-cc-subhead = 监控您的信用卡对帐单
+rec-cc-subhead = 监控您的信用卡对账单
 rec-cc = 查探您的信用卡是否受到了奇怪的收费。如有发生，请考虑向卡签发机构申请新号码的信用卡。
 # Recommendation subhead
 rec-ip-subhead = 使用一项服务掩藏您的 IP 地址

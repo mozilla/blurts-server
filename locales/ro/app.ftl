@@ -8,8 +8,12 @@
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Cont Firefox
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Termeni și confidențialitate
 GitHub-link-title = GitHub
@@ -26,6 +30,7 @@ home-not-found = Pagină negăsită.
 oauth-invalid-session = Sesiune nevalidă
 scan-title = { -product-name } : Rezultatele scanării
 user-add-invalid-email = E-mail invalid
+user-add-too-many-emails = Monitorizezi numărul maxim de adrese de e-mail.
 user-add-email-verify-subject = Verifică-ți abonamentul la { -product-name }.
 user-add-duplicate-email = Acest e-mail a fost deja adăugat în { -product-name }.
 user-add-duplicate-email-part-2 = Intră pe { $preferencesLink } pentru a verifica starea { $userEmail }.
@@ -71,7 +76,7 @@ fxa-pwt-summary-2 =
     Parolele scurte, formate dintr-un singur cuvânt, sunt ușor de ghicit pentru hackeri.
     Folosește cel puțin două cuvinte și o combinație de litere, cifre și caractere speciale.
 fxa-pwt-summary-4 =
-    Managerele de parole, cum ar fi 1Password, LastPass, Dashlane și Bitwarden îți stochează
+    Managerii de parole, cum ar fi 1Password, LastPass, Dashlane și Bitwarden îți stochează
     parolele și le completează pe site-uri pentru tine. Te vor ajuta chiar să creezi parole puternice.
 fxa-pwt-summary-6 = Breșele de date sunt în creștere. Dacă informațiile tale cu caracter personal apar într-o breșă de date nouă, { -product-name } îți va trimite o alertă — astfel încât să iei măsuri și să îți protejezi conturile.
 fxa-what-to-do-blurb-1 =
@@ -83,9 +88,9 @@ fxa-wtd-blurb-2 = Hackerii pot încerca să reutilizeze parola și adresa ta de 
 fxa-what-to-do-blurb-3 = Cele mai multe breșe expun numai adrese de e-mail și parole, dar unele includ și date financiare sensibile. În cazul în care ți-au fost expuse contul bancar sau numerele cardurilor de credit, alertează banca asupra unei posibilități de fraudă. Monitorizează-ți extrasele de cont pentru plăți pe care nu le recunoști.
 fxa-what-to-do-subhead-4 = Obține ajutor pentru a ține minte toate parolele și pentru a le păstra în siguranță.
 fxa-what-to-do-blurb-4 =
-    Managerele de parole, cum ar fi 1Password, LastPass, Dashlane și Bitwarden îți stochează
+    Managerii de parole, cum ar fi 1Password, LastPass, Dashlane și Bitwarden îți stochează
     parolele în siguranță și le completează pe site-uri pentru tine. Utilizează un manager de parole
-    pe telefon și pe calculator, astfel încât să nu trebuiască să le ții minte pe toate.
+    pe telefon și pe calculator, ca să nu mai fii nevoit(ă) să le ții minte pe toate.
 # Alerts is a noun
 sign-up-for-alerts = Înregistrează-te pentru alerte
 # Link title
@@ -155,13 +160,14 @@ avoid-personal-info-blurb = Datele de naștere, adresele și numele membrilor fa
 ## What to do after data breach tips
 
 change-pw = Schimbă-ți parola
+change-pw-site = Schimbă parola pentru acest site
 even-for-old = Actualizarea parolelor este importantă, chiar și pentru conturile vechi.
 make-new-pw-unique = Parola nouă trebuie să fie diferită și unică
 strength-of-your-pw = Puterea parolelor are un impact direct asupra securității tale online.
 create-strong-passwords = Cum să creezi parole puternice
 stop-reusing-pw = Nu refolosi parolele
 create-unique-pw = Creează parole unice și salvează-le într-un loc sigur, cum ar fi un manager de parole.
-five-myths = 5 mituri despre managerele de parole
+five-myths = 5 mituri despre managerii de parole
 create-a-fxa = Creează un { -brand-fxa } pentru un raport complet despre încălcările securității datelor și pentru a primi alerte.
 feat-security-tips = Ponturi de securitate pentru protejarea conturilor
 feat-sensitive = Căutare avansată în încălcările cunoscute ale securității datelor
@@ -209,7 +215,7 @@ ba-next-step-blurb-1 = Parolele puternice folosesc o combinație de litere mari 
 ba-next-step-2 = Nu mai folosi deloc parola expusă.
 ba-next-step-blurb-2 = Infractorii cibernetici îți pot găsi parola pe dark web și o pot folosi pentru a intra în celelalte conturi pe care le deții. Cea mai bună cale de a-ți proteja conturile este să folosești parole unice pentru fiecare în parte.
 ba-next-step-3 = Obține ajutor pentru a crea parole mai bune și pentru a le păstra în siguranță.
-ba-next-step-blurb-3 = Folosește un manager de parole pentru a crea parole puternice și unice. Managerele de parole stochează toate datele de autentificare în siguranță, astfel încât să le poți accesa pe toate dispozitivele tale.
+ba-next-step-blurb-3 = Folosește un manager de parole pentru a crea parole puternice și unice. Managerii de parole stochează toate datele de autentificare în siguranță, astfel încât să le poți accesa pe toate dispozitivele.
 faq1 = Nu recunosc această companie sau site web. De ce apar în această breșă?
 faq2 = De ce a durat atât de mult să fiu informat(ă) despre această breșă?
 faq3 = Cum știu că acesta este un mesaj legitim de e-mail de la { -product-name }?
@@ -316,6 +322,9 @@ other-known-breaches-found =
 additional-information-including = Informații suplimentare, inclusiv:
 # Title
 email-addresses-title = Adrese de e-mail
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Prezentare generală
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
@@ -345,8 +354,15 @@ verify-the-link = Verifică linkul trimis către { $userEmail } ca să îl adaug
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+email-verified = Adresă de e-mail verificată cu succes!
+email-added-to-subscription = Îți vom trimite o alertă dacă { $email } apare într-o breșă de date.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = Pentru a vedea și a gestiona toate adresele pe care le-ai înscris pentru monitorizare de breșe, { $nestedSignInLink }
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = autentificare
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -368,3 +384,111 @@ create-strong-passwords-desc = Creează parole puternice, sigure și greu de ghi
 steps-to-protect-desc = Înțelege cele mai frecvente amenințări și află la ce să fii atent.
 five-myths-desc = Află cum să eviți parolele proaste care fac ușoară munca hackerilor.
 take-further-steps-desc = Află cum să reduci riscurile unui furt de identitate pentru a preveni pierderile financiare.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Modificări salvate!
+# Section headline
+rec-section-headline = Ce să faci pentru această breșă
+rec-section-subhead = Îți recomandăm să efectuezi următorii pași pentru a-ți păstra informațiile personale în siguranță și pentru a-ți proteja identitatea digitală.
+# Section headline
+rec-section-headline-no-pw = Ce să faci pentru a-ți proteja informațiile personale
+rec-section-subhead-no-pw = Deși parolele nu au fost expuse în această breșă, încă mai sunt măsuri pe care le poți lua pentru a-ți proteja mai bine informațiile personale.
+# Button
+see-additional-recs = Vezi recomandările suplimentare
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $affectedEmail } a apărut în această breșă. <a>Ce să faci mai departe</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+       *[other] { $numAffectedEmails } dintre adresele tale de e-mail au apărut în această breșă. <a>Ce să faci mai departe</a>
+    }
+
+##
+
+marking-this-subhead = Marcarea acestei breșe ca rezolvată
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Odată ce ai luat măsurile posibile pentru gestionarea acestei breșe</span>,
+    o poți marca drept rezolvată. Poți accesa în continuare detaliile despre breșă din tabloul de bord în orice moment.
+mark-as-resolve-button = Marchează ca rezolvată
+marked-as-resolved-label = Marcată ca rezolvată
+undo-button = Anulează
+confirmation-1-subhead = Bun! Tocmai ai rezolvat prima ta breșă.
+confirmation-1-body = Menține ritmul. Verifică tabloul de bord și vezi dacă mai ai ceva de făcut.
+confirmation-2-subhead = Luați de-aici, hackerilor!
+confirmation-2-body = Faci pași importanți spre protejarea conturilor tale online.
+confirmation-3-subhead = Încă una. Bine lucrat!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Parola nouă este unică, puternică și greu de ghicit? <a>Află</a>
+generic-confirmation-subhead = Această breșă a fost marcată ca rezolvată
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Pentru a vedea breșa rămasă, mergi în tabloul de bord.
+        [few] Pentru a vedea toate breșele rămase, mergi în tabloul de bord.
+       *[other] Pentru a vedea toate breșele rămase, mergi în tabloul de bord.
+    }
+return-to-breach-details-link = Revenire la detaliile breșei
+go-to-dashboard-link = Mergi la tabloul de bord
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% finalizat
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } rezolvată
+        [few] { $numResolvedBreaches } rezolvate
+       *[other] { $numResolvedBreaches } rezolvate
+    }
+progress-intro-subhead = Nou în { -product-name }: Marchează breșele ca rezolvate
+progress-intro-message =
+    După examinarea detaliilor și luarea pașilor pentru protecția 
+    informațiilor tale personale, poți marca breșele ca rezolvate.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } din { $numTotalBreaches } breșă marcată ca rezolvată
+        [few] { $numResolvedBreaches } din { $numTotalBreaches } breșe marcate ca rezolvate
+       *[other] { $numResolvedBreaches } din { $numTotalBreaches } de breșe marcate ca rezolvate
+    }
+progress-complete = Toate breșele cunoscute au fost marcate ca rezolvate
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+progress-message-1 =
+    <span>Ai început bine!</span> Vezi și restul breșelor ca să afli 
+    ce măsuri să iei.
+progress-message-2 =
+    <span>Ține-o tot așa!</span> Schimbările mici, cum ar fi actualizarea parolelor, au un impact mare în 
+    menținerea informațiilor personale în siguranță.
+progress-message-3 = <span>Ai făcut treabă bună la rezolvarea acelor breșe!</span> Ține-o tot așa. Mai ai câteva.
+progress-message-4 = <span>Aproape că ai terminat!</span> Te apropii de final.
+progress-complete-message =
+    <span>Bună senzația, nu?</span> Dacă vrei să continui, acum este momentul să 
+    îți actualizezi celelalte date de autentificare cu parole mai puternice.
+
+##
+
+resolve-this-breach-link = Rezolvă această breșă
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Marcate ca rezolvate:
+hide-resolved-button = Ascunde-le pe cele rezolvate
+show-resolved-button = Afișează-le pe cele rezolvate
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] parolă expusă în breșe nerezolvate
+        [few] parole expuse în breșe nerezolvate
+       *[other] de parole expuse în breșe nerezolvate
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] breșă cunoscută de date marcată ca rezolvată
+        [few] breșe cunoscute de date marcate ca rezolvate
+       *[other] de breșe cunoscute de date marcate ca rezolvate
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Nou

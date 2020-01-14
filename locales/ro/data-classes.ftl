@@ -26,6 +26,7 @@ chat-logs = jurnaluri de chat
 credit-card-cvv = coduri de securitate (CVV/CVC) ale cardurilor de credit
 credit-cards = carduri de credit
 credit-status-information = informații privind starea creditelor
+cryptocurrency-wallet-hashes = Hashuri portofel de criptomonede
 customer-feedback = feedback de la clienți
 customer-interactions = interacțiuni cu clienții
 dates-of-birth = date de naștere
@@ -64,6 +65,8 @@ ip-addresses = adrese IP
 job-titles = profesii/meserii
 mac-addresses = adrese MAC
 marital-statuses = stare civilă
+# Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
+mnemonic-phrases = Fraze mnemonice
 names = nume
 nationalities = naționalități
 net-worths = valori nete

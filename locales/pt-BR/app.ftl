@@ -13,7 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Termos e Privacidade
 GitHub-link-title = GitHub
@@ -67,7 +67,7 @@ share-facebook-blurb = Suas contas online foram expostas em um vazamento de dado
 og-site-description = Descubra se você foi vítima de um vazamento de dados com o { -product-name }. Cadastre-se para receber alertas sobre futuros vazamentos e receber dicas para manter suas contas seguras.
 show-all = Mostrar tudo
 fxa-scan-another-email = Quer verificar outro e-mail?
-sign-in = Entrar
+sign-in = Entre
 sign-out = Sair
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Gerenciar { -brand-fxa }
@@ -396,7 +396,7 @@ email-verified-view-dashboard = Para ver e gerenciar todos os e-mails que você 
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = entre
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -428,3 +428,88 @@ rec-section-headline-no-pw = O que fazer para proteger suas informações pessoa
 rec-section-subhead-no-pw = Apesar de não ter sido expostas senhas neste vazamento, ainda existem etapas que você pode seguir para proteger melhor suas informações pessoais.
 # Button
 see-additional-recs = Ver recomendações adicionais
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $affectedEmail } apareceu neste vazamento. <a>O que fazer agora</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] { $numAffectedEmails } dos seus endereços de e-mail apareceu neste vazamento. <a>O que fazer agora</a>
+       *[other] { $numAffectedEmails } dos seus endereços de e-mail apareceram neste vazamento. <a>O que fazer agora</a>
+    }
+
+##
+
+marking-this-subhead = Marcando este vazamento como resolvido
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Depois de tomar as medidas ao seu alcance para lidar com este vazamento</span>,
+    você pode marcá-lo como resolvido. Os detalhes sobre o vazamento continuam disponíveis no seu painel.
+mark-as-resolve-button = Marcar como resolvido
+marked-as-resolved-label = Marcado como resolvido
+undo-button = Desfazer
+confirmation-1-subhead = Muito bem! Você acabou de resolver seu primeiro vazamento.
+confirmation-1-body = Mantenha o ritmo. Verifique seu painel para ver se há mais o que fazer.
+confirmation-2-subhead = Tome isso, hackers!
+confirmation-2-body = Você está tomando medidas importantes para proteger suas contas online.
+confirmation-3-subhead = Menos um. Bom trabalho!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Sua nova senha é única, forte e difícil de adivinhar? <a>Descubra</a>
+generic-confirmation-subhead = Este vazamento foi marcado como recolvido
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Para ver o vazamento restante, acesse seu painel.
+       *[other] Para ver todos os vazamentos restantes, acesse seu painel.
+    }
+return-to-breach-details-link = Voltar aos detalhes do vazamento
+go-to-dashboard-link = Ir para o painel
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% concluído
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } resolvido
+       *[other] { $numResolvedBreaches } resolvidos
+    }
+progress-intro-subhead = Novidade no { -product-name }: Marcar vazamentos como resolvidos
+progress-intro-message = Após revisar os detalhes sobre um vazamento e tomar medidas para proteger suas informações pessoais, você pode marcar vazamentos como resolvidos.
+progress-status =
+    { $numTotalBreaches ->
+       *[other] { $numResolvedBreaches } de { $numTotalBreaches } vazamentos marcados como resolvidos
+    }
+progress-complete = Todos os vazamentos conhecidos foram marcados como resolvidos
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+progress-message-1 = <span>Você começou bem!</span> Verifique os vazamentos restantes para saber que medidas tomar.
+progress-message-2 = <span>Continue assim!</span> Pequenas mudanças, como alterar senhas, têm um grande impacto em manter suas informações pessoais em segurança.
+progress-message-3 = <span>Bom trabalho resolvendo esses vazamentos!</span> Continue assim. Você ainda tem mais alguns.
+progress-message-4 = <span>Quase pronto!</span> Você está perto do fim.
+progress-complete-message = <span>Sensação boa, né?</span> Se quiser continuar, é um bom momento para alterar outras contas com senhas mais fortes.
+
+##
+
+resolve-this-breach-link = Resolver este vazamento
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Marcados como resolvidos:
+hide-resolved-button = Ocultar resolvidos
+show-resolved-button = Mostrar resolvidos
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Senha exposta em vazamentos não resolvidos
+       *[other] Senhas expostas em vazamentos não resolvidos
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Vazamento de dados conhecido marcado como resolvido
+       *[other] Vazamentos de dados conhecidos marcados como resolvidos
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Novo

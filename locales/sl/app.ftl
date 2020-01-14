@@ -31,7 +31,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Pogoji in zasebnost
 GitHub-link-title = GitHub
@@ -402,7 +402,7 @@ breach-overview-title = Pregled
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview-new = { $breachDate } je prišlo do kraje podatkov { $breachTitle }. Ko je bila kraja odkrita in preverjena, smo jo { $addedDate } dodali v našo bazo podatkov.
+breach-overview-new = Dne { $breachDate } je prišlo do kraje podatkov { $breachTitle }. Ko je bila kraja odkrita in preverjena, smo jo dne { $addedDate } dodali v našo bazo podatkov.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Nastavitve { -product-short-name }ja
 # When a user is signed in, this appears in the drop down menu 
@@ -436,7 +436,7 @@ email-verified-view-dashboard = { $nestedSignInLink } se za ogled in upravljanje
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = Prijavite se
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -468,3 +468,30 @@ rec-section-headline-no-pw = Kaj storiti, da zaščitite svoje osebne podatke
 rec-section-subhead-no-pw = Čeprav gesla v tej kraji podatkov niso bila izpostavljena, lahko še vedno ukrepate, da bolje zaščitite svoje osebne podatke.
 # Button
 see-additional-recs = Oglejte si dodatna priporočila
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $affectedEmail } se je pojavil v tej kraji podatkov. <a>Kaj storiti</a>
+
+##
+
+mark-as-resolve-button = Označi kot razrešeno
+marked-as-resolved-label = Označeno kot razrešeno
+undo-button = Razveljavi
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Ali je vaše novo geslo edinstveno, močno in težko uganljivo? <a>Preverite</a>
+return-to-breach-details-link = Nazaj na podrobnosti o kraji
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% dokončano
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Novo

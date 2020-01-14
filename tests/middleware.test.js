@@ -17,6 +17,7 @@ test("requireSessionUser calls getProfileData, updateFxAProfileData, and sets re
   jest.mock("../db/DB");
   jest.mock("../lib/fxa");
   FXA.getProfileData = jest.fn();
+  FXA.getProfileData.mockReturnValueOnce({});
   DB.updateFxAProfileData = jest.fn();
 
   await requireSessionUser(req, res, next);
@@ -31,6 +32,22 @@ test("requireSessionUser calls getProfileData, updateFxAProfileData, and sets re
   expect(mockGetProfileDataCalls[0][0]).toBe(TEST_SUBSCRIBERS.firefox_account.fxa_access_token);
   const mockUpdateFxAProfileDataCalls = DB.updateFxAProfileData.mock.calls;
   expect(mockUpdateFxAProfileDataCalls.length).toBe(1);
+});
+
+
+test("requireSessionUser clears session user and redirects to / if FXA error", async () => {
+  const req = { session: { user: TEST_SUBSCRIBERS.firefox_account } };
+  const res = { redirect: jest.fn() };
+  const next = jest.fn();
+  jest.mock("../lib/fxa");
+  FXA.getProfileData = jest.fn();
+  FXA.getProfileData.mockReturnValueOnce({ name: "HTTPError" });
+
+  await requireSessionUser(req, res, next);
+
+  expect(req.session.hasOwnProperty("user")).toBeFalsy();
+  const mockRedirectCallArgs = res.redirect.mock.calls[0];
+  expect(mockRedirectCallArgs[0]).toBe("/");
 });
 
 

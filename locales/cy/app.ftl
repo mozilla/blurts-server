@@ -13,7 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Rhwydwaith Preifat Firefox
 
-
+##
 
 terms-and-privacy = Telerau a Phreifatrwydd
 GitHub-link-title = GitHub
@@ -411,7 +411,7 @@ email-verified-view-dashboard = I weld a rheoli pob e-bost rydych wedi cofrestru
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = mewngofnodi
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -443,3 +443,123 @@ rec-section-headline-no-pw = Beth i'w wneud i ddiogelu eich manylion personol
 rec-section-subhead-no-pw = Er nad oedd cyfrineiriau wedi'u hamlygu yn y tor-data hwn, mae yna gamau y gallwch eu cymryd o hyd i ddiogelu eich manylion personol yn well.
 # Button
 see-additional-recs = Gweler yr Argymhellion Ychwanegol
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = Ymddangosodd { $affectedEmail } yn y tor-data hwn. <a>Beth i'w wneud nesaf</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [zero] Ymddangosodd { $numAffectedEmails } o'ch cyfeiriadau e-bost yn y tor-data hwn. <a>Beth i'w wneud nesaf</a>
+        [one] Ymddangosodd { $numAffectedEmails } o'ch cyfeiriadau e-bost yn y tor-data hwn. <a>Beth i'w wneud nesaf</a>
+        [two] Ymddangosodd { $numAffectedEmails } o'ch cyfeiriadau e-bost yn y tor-data hwn. <a>Beth i'w wneud nesaf</a>
+        [few] Ymddangosodd { $numAffectedEmails } o'ch cyfeiriadau e-bost yn y tor-data hwn. <a>Beth i'w wneud nesaf</a>
+        [many] Ymddangosodd { $numAffectedEmails } o'ch cyfeiriadau e-bost yn y tor-data hwn. <a>Beth i'w wneud nesaf</a>
+       *[other] Ymddangosodd { $numAffectedEmails } o'ch cyfeiriadau e-bost yn y tor-data hwn. <a>Beth i'w wneud nesaf</a>
+    }
+
+##
+
+marking-this-subhead = Nodi'r tor-data hwn fel wedi'i ddatrys
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Ar ôl i chi gymryd y camau y gallwch i fynd i'r afael â'r tor-data hwn</span>,
+    gallwch ei nodi fel wedi'i ddatrys. Gallwch ddal i gael gafael ar fanylion am y tor-data
+    o'ch bwrdd gwaith ar unrhyw adeg.
+mark-as-resolve-button = Nodi wedi'i Ddatrys
+marked-as-resolved-label = Nodi wedi'i Ddatrys
+undo-button = Dadwneud
+confirmation-1-subhead = Da! Rydych newydd ddatrys eich tor-data cyntaf.
+confirmation-1-body = Cadwch fynd. Gwiriwch eich bwrdd gwaith i weld os oes mwy i'w wneud.
+confirmation-2-subhead = Dyna un i chi, hacwyr!
+confirmation-2-body = Rydych yn cymryd camau pwysig tuag at ddiogelu eich cyfrifon ar-lein.
+confirmation-3-subhead = Un arall wedi mynd. Gwaith da!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = A yw'ch cyfrinair newydd yn unigryw, yn gryf, ac yn anodd ei ddyfalu? <a>Gweld</a>
+generic-confirmation-subhead = Mae'r tor-data hwn wedi'i nodi fel wedi'i ddatrys
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [zero] I weld yr holl dor-data sy'n weddill, ewch i'ch bwrdd gwaith.
+        [one] I weld y tor-data hwn, ewch i'ch bwrdd gwaith.
+        [two] I weld yr holl dor-data sy'n weddill, ewch i'ch bwrdd gwaith.
+        [few] I weld yr holl dor-data sy'n weddill, ewch i'ch bwrdd gwaith.
+        [many] I weld yr holl dor-data sy'n weddill, ewch i'ch bwrdd gwaith.
+       *[other] I weld yr holl dor-data sy'n weddill, ewch i'ch bwrdd gwaith.
+    }
+return-to-breach-details-link = Nol i fanylion y tor-data
+go-to-dashboard-link = Mynd i'r Bwrdd Gwaith
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% wedi'i gwblhau
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [zero] { $numResolvedBreaches } Wedi'u Datrys
+        [one] { $numResolvedBreaches } Wedi'i Ddatrys
+        [two] { $numResolvedBreaches } Wedi'u Datrys
+        [few] { $numResolvedBreaches } Wedi'u Datrys
+        [many] { $numResolvedBreaches } Wedi'u Datrys
+       *[other] { $numResolvedBreaches } Wedi'u Datrys
+    }
+progress-intro-subhead = Newydd yn { -product-name }: Nodi datrys tor-data
+progress-intro-message =
+    Ar ôl adolygu'r manylion am dor-data a chymryd camau i ddiogelu
+    eich manylion personol, gallwch nodi eich bod wedi datrys y tor-data.
+progress-status =
+    { $numTotalBreaches ->
+        [zero] { $numResolvedBreaches } allan o { $numTotalBreaches } wedi'u nodi eu bod wedi'u datrys
+        [one] { $numResolvedBreaches } allan o { $numTotalBreaches } wedi'i farcio fel wedi'i ddatrys
+        [two] { $numResolvedBreaches } allan o { $numTotalBreaches } wedi'u marcio fel wedi'u datrys
+        [few] { $numResolvedBreaches } allan o { $numTotalBreaches } wedi'u marcio fel wedi'u datrys
+        [many] { $numResolvedBreaches } allan o { $numTotalBreaches } wedi'u marcio fel wedi'u datrys
+       *[other] { $numResolvedBreaches } allan o { $numTotalBreaches } wedi'u marcio fel wedi'u datrys
+    }
+progress-complete = Mae'r holl dor-data hysbys wedi'u nodi fel rhai wedi'u datrys
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+progress-message-1 =
+    <span> Cychwyn da! </p> Edrychwch ar y tor-data eraill i weld
+    pa gamau sydd angen
+    eu cymryd.
+progress-message-2 =
+    <span>Daliwch ati!</p> Mae newidiadau bach fel diweddaru cyfrineiriau yn cael effaith fawr
+    ar gadw'ch manylion personol yn ddiogel.
+progress-message-3 = <span> Gwaith da wrth ddatrys y tor-data hyn! </p>Daliwch ati. Mae'na ragor i'w wneud.
+progress-message-4 = <span>Bron wedi gorffen!</span> Rydych chi bron â chyrraedd y diwedd.
+progress-complete-message =
+    <span>Teimlo'n dda, ydy?</p> Os ydych chi am ddal ati, mae hwn yn amser da i
+    diweddaru mewngofnodion eraill gyda chyfrineiriau cryfach.
+
+##
+
+resolve-this-breach-link = Datrys y tor-data hwn
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Nodi wedi'u Datrys:
+hide-resolved-button = Cuddio wedi'u Datrys
+show-resolved-button = Dangos wedi'u Datrys
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [zero] Cyfrineiriau wedi'u hamlygu mewn tor-data heb eu datrys
+        [one] Cyfrinair wedi'i amlygu mewn tor-data heb eu datrys
+        [two] Cyfrineiriau wedi'u hamlygu mewn tor-data heb eu datrys
+        [few] Cyfrineiriau wedi'u hamlygu mewn tor-data heb eu datrys
+        [many] Cyfrineiriau wedi'u hamlygu mewn tor-data heb eu datrys
+       *[other] Cyfrineiriau wedi'u hamlygu mewn tor-data heb eu datrys
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [zero] Tor-data hysbys wedi'u nodi fel wedi'u datrys
+        [one] Tor-data hysbys wedi'i nodi fel wedi'i ddatrys
+        [two] Tor-data hysbys wedi'u nodi fel wedi'u datrys
+        [few] Tor-data hysbys wedi'u nodi fel wedi'u datrys
+        [many] Tor-data hysbys wedi'u nodi fel wedi'u datrys
+       *[other] Tor-data hysbys wedi'u nodi fel wedi'u datrys
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Newydd

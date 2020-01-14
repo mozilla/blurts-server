@@ -13,7 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox-Datenschutznetzwerk
 
-
+##
 
 terms-and-privacy = Nutzungsbedingungen und Datenschutzerklärung
 GitHub-link-title = GitHub
@@ -353,7 +353,7 @@ email-verified-view-dashboard = Um alle E-Mail-Adressen anzuzeigen und zu verwal
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = melden Sie sich an
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -385,3 +385,98 @@ rec-section-headline-no-pw = Was tun, um Ihre persönlichen Daten zu schützen?
 rec-section-subhead-no-pw = Obwohl bei diesem Datenleck keine Passwörter offengelegt wurden, können Sie dennoch Maßnahmen ergreifen, um Ihre persönlichen Daten besser zu schützen.
 # Button
 see-additional-recs = Siehe zusätzliche Empfehlungen
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $affectedEmail } erscheint in diesem Datenleck. <a>Was sind die nächsten Schritte?</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] { $numAffectedEmails } Ihrer E-Mail-Adressen erscheint in diesem Datenleck. <a>Was sind die nächsten Schritte?</a>
+       *[other] { $numAffectedEmails } Ihrer E-Mail-Adressen erscheint in diesem Datenleck. <a>Was sind die nächsten Schritte?</a>
+    }
+
+##
+
+marking-this-subhead = Dieses Datenleck als erledigt markieren
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Sobald Sie die bei diesem Datenleck erforderlichen Schritte umgesetzt haben</span>,
+    können Sie es als erledigt markieren. Sie können jederzeit aus der Übersicht
+    auf die Details dieses Datenlecks zugreifen.
+mark-as-resolve-button = Als erledigt markieren
+marked-as-resolved-label = Als erledigt markiert
+undo-button = Rückgängig
+confirmation-1-subhead = Sehr gut! Sie haben gerade Ihr erstes Datenleck erledigt.
+confirmation-1-body = Weiter so. Sehen Sie in der Übersicht nach, ob noch mehr zu tun ist.
+confirmation-2-subhead = Nehmt das, Hacker!
+confirmation-2-body = Sie unternehmen wichtige Schritte zum Schutz Ihrer Online-Konten.
+confirmation-3-subhead = Wieder eins weniger. Gut gemacht!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Ist Ihr neues Passwort eindeutig, sicher und schwer zu erraten? <a>Finden Sie es heraus.</a>
+generic-confirmation-subhead = Dieses Datenleck wurde als erledigt markiert
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Rufen Sie Ihre Übersicht auf, um das verbleibende Datenleck zu sehen.
+       *[other] Rufen Sie Ihre Übersicht auf, um die verbleibenden Datenlecks zu sehen.
+    }
+return-to-breach-details-link = Zurück zu den Details des Datenlecks
+go-to-dashboard-link = Zur Übersicht
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% abgeschlossen
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } erledigt
+       *[other] { $numResolvedBreaches } erledigt
+    }
+progress-intro-subhead = Neu in { -product-name }: Datenlecks als behoben markieren
+progress-intro-message =
+    Nachdem Sie die Details zu einem Datenleck überprüft und die notwendigen Schritte zum Schutz
+    Ihrer persönlichen Daten ergriffen haben, können Sie Datenlecks als erledigt markieren.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } von { $numTotalBreaches } Datenlecks als erledigt markiert
+       *[other] { $numResolvedBreaches } von { $numTotalBreaches } Datenlecks als erledigt markiert
+    }
+progress-complete = Alle bekannten Datenlecks wurden als erledigt markiert
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+progress-message-1 =
+    <span>Das war schon sehr gut!</span> Sehen Sie nach den verbleibenden Datenlecks
+    und erfahren Sie, was zu tun ist.
+progress-message-2 =
+    <span>Weiter so!</span> Kleine Schritte wie die Änderung Ihrer Passwörter sind
+    sehr wichtig für den Schutz Ihrer persönlichen Daten.
+progress-message-3 = <span>Sehr gut – diese Datenlecks sind erledigt!</span> Weiter so, ein paar sind noch übrig.
+progress-message-4 = <span>Fast geschafft!</span> Sie sind gleich am Ziel.
+progress-complete-message =
+    <span>Fühlt sich gut an, oder?</span> Wenn Sie weiter machen wollen, sollten sie jetzt
+    andere Zugangsdaten mit stärkeren Passwörtern versehen.
+
+##
+
+resolve-this-breach-link = Dieses Datenleck als erledigt markieren
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Als erledigt markieren:
+hide-resolved-button = Erledigte ausblenden
+show-resolved-button = Erledigte anzeigen
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Passwort in nicht erledigten Datenlecks offengelegt
+       *[other] Passwörter in nicht erledigten Datenlecks offengelegt
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Bekanntes Datenleck als erledigt markiert
+       *[other] Bekannte Datenlecks als erledigt markiert
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Neu

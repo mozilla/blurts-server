@@ -205,20 +205,23 @@ function toggleHeaderStates(header, win) {
   }
 }
 
-function styleActiveLink(locationHref) {
-  let queryString = `.nav-link[href='${locationHref}']`;
-  const activeLink = document.querySelector(queryString);
-  if (activeLink) {
-    return activeLink.firstChild.classList.add("active-link");
-  }
-
-  if (locationHref.indexOf("/dashboard") !== -1) {
-    queryString = queryString.replace("user/dashboard", "");
-    return document.querySelector(queryString).firstChild.classList.add("active-link");
-  }
-  if (locationHref.indexOf("/security-tips") !== -1) {
-    return document.querySelector(".nav-link[href*='/security-tips']").firstChild.classList.add("active-link");
-  }
+function addMainNavListeners() {
+  const inactiveNavLinks = document.querySelectorAll(".nav-link:not(.active-link)");
+  inactiveNavLinks.forEach(link => {
+    /* Remove the .active-link-underline class from any link
+       that isn't the current ".active-link" which occasionally
+       happens when the user navigates to a page using browser
+       backwards/forwards buttons. */
+    if (link.classList.contains("active-link-underline")) {
+      link.classList.remove("active-link-underline");
+    }
+    link.addEventListener("mouseenter", () => {
+      link.classList.add("active-link-underline");
+    });
+    link.addEventListener("mouseleave", () => {
+      link.classList.remove("active-link-underline");
+    });
+  });
 }
 
 function addBentoObserver(){
@@ -241,17 +244,16 @@ function addBentoObserver(){
   const win = window;
   const header = document.getElementById("header");
   const topNavigation = document.querySelector("#navigation-wrapper");
+
   win.addEventListener("pageshow", function() {
-    const previousActiveLink = document.querySelector(".active-link");
-    if (previousActiveLink) {
-      previousActiveLink.classList.remove("active-link");
-    }
-    styleActiveLink(win.location.href);
+    addMainNavListeners();
     toggleMobileFeatures(topNavigation);
     toggleArticles();
     toggleHeaderStates(header, win);
     document.forms ? (restoreInputs(), addFormListeners()) : null;
   });
+
+  document.forms ? (restoreInputs(), addFormListeners()) : null;
 
   win.addEventListener("resize", () => {
     toggleMobileFeatures(topNavigation);
