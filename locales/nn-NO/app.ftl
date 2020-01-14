@@ -450,6 +450,12 @@ resolve-top-notification-plural =
 ##
 
 marking-this-subhead = Merk denne datalekkasjen som løyst
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Når du har gjort det du kan gjere for å handtere denne datalekkasjen</span>,
+    kan du merke han som løyst. Du kan enno få tilgang til detaljar om datalekkasjen
+    frå oversynet ditt når som helst.
 mark-as-resolve-button = Merk som løyst
 marked-as-resolved-label = Merkt som løyst
 undo-button = Angre
@@ -480,6 +486,9 @@ num-resolved =
        *[other] { $numResolvedBreaches } løyste
     }
 progress-intro-subhead = Nytt i { -product-name }: Marker datalekkasjar som løyste
+progress-intro-message =
+    När du har granska detaljane om ein datalekkasje og gjort noko for å beskytte 
+    den personlege informasjonen din, kan du merkje datalekkasjar som løyste.
 progress-status =
     { $numTotalBreaches ->
         [one] { $numResolvedBreaches } av { $numTotalBreaches } datalekkasje er merkt som løyst
@@ -490,7 +499,17 @@ progress-complete = Alle kjende datalekkasjar er merkte som løyste
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>Det er ein bra start!</span> Sjekk dei siste attståande datalekkasjane for å lære deg 
+    kva du skal gjere
+progress-message-2 =
+    <span>Fortset slik!</span> Små endringar som å oppdatere passord har stor innverknad på 
+    det å beskytte den personlege informasjonen din.
+progress-message-3 = <span>Bra jobba med å løyse desse datalekkasjane! </span> Fortset slik. Du har nokre att.
 progress-message-4 = <span>Nesten ferdig!</span> Du er nesten i mål.
+progress-complete-message =
+    <span>Det kjennest bra, ikkje sant?</span> Om du vil fortsetje passar det bra no 
+    å oppdatere andre innloggingar med sterkare passord.
 
 ##
 
