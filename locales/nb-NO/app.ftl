@@ -457,6 +457,8 @@ marked-as-resolved-label = Merket som løst
 undo-button = Angre
 confirmation-1-subhead = Hyggelig! Du har akkurat løst den første datalekkasjen din.
 confirmation-2-subhead = Ta det, hackere!
+confirmation-3-subhead = Enda en er ferdig. Bra jobbet!
+generic-confirmation-subhead = Denne datalekkasjen er merket som løst
 progress-complete = Alle kjente datalekkasjer er markert som løst
 
 ## These strings contain nested markup that is later used to style the text inside of it.
@@ -465,5 +467,11 @@ progress-complete = Alle kjente datalekkasjer er markert som løst
 
 ##
 
+resolve-this-breach-link = Løs denne datalekkasjen
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Merket som løst
+hide-resolved-button = Skjul løste
+show-resolved-button = Vis løste
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Ny
