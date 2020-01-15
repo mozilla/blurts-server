@@ -4,7 +4,7 @@
               <h3 class="feature-title">{{ recommendationCopy.subhead }}</h3>
               <h4 class="feature-subhead">{{ recommendationCopy.body }}</h4>
               {{#if recommendationCopy.cta}}
-                <a class="{{ ctaClassName }} recommendation-cta feature-tip-link blue-link" href="{{ ctaHref }}" data-event-label="{{ ctaAnalyticsId }}" {{#if ctaShouldOpenNewTab}} target="_blank" rel="noopener noreferrer"{{/if}}>{{ recommendationCopy.cta }}</a>
+                <a class="{{ ctaClassName }} recommendation-cta feature-tip-link blue-link" href="{{addUtmParams this}}" data-event-label="{{ ctaAnalyticsId }}" {{#if ctaShouldOpenNewTab}} target="_blank" rel="noopener noreferrer"{{/if}}>{{ recommendationCopy.cta }}</a>
               {{/if}}
             </div>
           </div>
