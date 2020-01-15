@@ -465,3 +465,5 @@ confirmation-1-subhead = Szép! Most oldotta meg az első adatsértését.
 
 ##
 
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Új
