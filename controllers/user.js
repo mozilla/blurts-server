@@ -126,7 +126,7 @@ async function add(req, res) {
 }
 
 function getResolvedBreachesForEmail(user, email) {
-  if (typeof user.breaches_resolved !== "object") {
+  if (user.breaches_resolved === null) {
     return [];
   }
   return user.breaches_resolved.hasOwnProperty(email) ? user.breaches_resolved[email] : [];
@@ -480,6 +480,7 @@ module.exports = {
   getPreferences,
   getDashboard,
   getBreachStats,
+  getAllEmailsAndBreaches,
   add,
   verify,
   getUnsubscribe,

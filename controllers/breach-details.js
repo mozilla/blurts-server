@@ -2,38 +2,32 @@
 
 const HIBP = require("../hibp");
 const { changePWLinks } = require("../lib/changePWLinks");
+const { getAllEmailsAndBreaches } = require("./user");
 
-function getBreachDetail(req, res) {
-  const affectedEmails = [];
-
-  if (req.session.user) {
-    // gather any emails that were exposed in this breach
-    // and whether or not they've been resolved...
-
-    // the template currently expects the affectedEmails array
-    // to look like this...
-
-        // affectedEmails = [
-        //   {
-        //     emailAddress: "firstInvolvedEmail@userEmail.com",
-        //     recencyIndex: "1",
-        //     isResolved: false,
-        //   },
-        //   {
-        //     emailAddress: "secondInvolvedEmail@mailinator.com",
-        //     recencyIndex: "4",
-        //     isResolved: true,
-        //   },
-        // ];
-  }
-
+async function getBreachDetail(req, res) {
   const allBreaches = req.app.locals.breaches;
-
   const breachName = req.params.breachName;
   const featuredBreach = HIBP.getBreachByName(allBreaches, breachName);
 
   if (!featuredBreach) {
     return res.redirect("/");
+  }
+
+  const affectedEmails = [];
+
+  if (req.session.user) {
+    const allEmailsAndBreaches = await getAllEmailsAndBreaches(req.session.user, allBreaches);
+    for (const verifiedEmail of allEmailsAndBreaches.verifiedEmails) {
+      for (const breach of verifiedEmail.breaches) {
+        if (breach.Name === breachName) {
+          affectedEmails.push({
+            emailAddress: verifiedEmail.email,
+            recencyIndex: breach.recencyIndex,
+            isResolved: breach.IsResolved,
+          });
+        }
+      }
+    }
   }
 
   const changePWLink = getChangePWLink(featuredBreach);
