@@ -42,6 +42,7 @@ email-addresses = 電子郵件地址
 email-messages = 電子郵件訊息
 employers = 雇主
 employment-statuses = 就業狀況
+encrypted-keys = 加密金鑰
 ethnicities = 種族
 family-members-names = 家庭成員姓名
 family-plans = 家庭計劃
