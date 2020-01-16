@@ -482,7 +482,6 @@ progress-percent-complete = { $percentComplete } % fullført
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
 num-resolved =
     { $numResolvedBreaches ->
-        [one] { $numResolvedBreaches } løyst
        *[other] { $numResolvedBreaches } løyste
     }
 progress-intro-subhead = Nytt i { -product-name }: Marker datalekkasjar som løyste
@@ -491,7 +490,6 @@ progress-intro-message =
     den personlege informasjonen din, kan du merkje datalekkasjar som løyste.
 progress-status =
     { $numTotalBreaches ->
-        [one] { $numResolvedBreaches } av { $numTotalBreaches } datalekkasje er merkt som løyst
        *[other] { $numResolvedBreaches } av { $numTotalBreaches } datalekkasjar er merkte som løyste
     }
 progress-complete = Alle kjende datalekkasjar er merkte som løyste
