@@ -503,8 +503,35 @@ progress-complete = Az összes ismert adatsértés megjelölve megoldottként
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>Nagyszerű kezdés!</span> Nézze meg a fennmaradó adatsértéseket, és 
+    tudja meg milyen lépéseket kell tennie.
+progress-message-2 =
+    <span>Csak így tovább!</span> Az apró változtatások, mint a jelszavai frissítése, nagy hatással 
+    vannak a személyes adatai biztonságban tartására.
+progress-message-3 = <span>Szép munka, az adatsértések megoldva!</span> Csak így tovább, még néhány van hátra.
+progress-message-4 = <span>Már majdnem kész!</span> Közel a célvonal.
+progress-complete-message =
+    <span>Jó érzés, ugye?</span> Ha folytatni akarja, akkor itt az alkalom, hogy frissítse 
+    a többi bejelentkezését, és erősebb jelszavakat használjon.
 
 ##
 
+resolve-this-breach-link = Ezen adatsértés megoldása
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Megjelölve megoldottként:
+hide-resolved-button = Megoldottak elrejtése
+show-resolved-button = Megoldottak megjelenítése
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Megoldatlan adatsértésekben kikerült jelszó
+       *[other] Megoldatlan adatsértésekben kikerült jelszavak
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Megoldottként megjelölt adatsértés
+       *[other] Megoldottként megjelölt adatsértések
+    }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Új
