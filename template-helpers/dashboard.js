@@ -3,20 +3,6 @@
 const { LocaleUtils } = require("./../locale-utils");
 const { makeBreachCards } = require("./breaches");
 
-function addUtmParams(cta) {
-  const url = new URL(cta.ctaHref);
-  const utmParams = {
-    utm_source: "monitor.firefox.com",
-    utm_medium: "referral",
-    utm_content: cta.ctaAnalyticsId,
-    utm_campaign: "contextual-recommendations",
-  };
-
-  for (const param in utmParams) {
-    url.searchParams.append(param, utmParams[param]);
-  }
-  return url;
-}
 
 function getBreachesForEachEmail(args) {
   const verifiedEmails = args.data.root.verifiedEmails;
@@ -153,7 +139,6 @@ function getLastAddedEmailStrings(args) {
 
 
 module.exports = {
-  addUtmParams,
   getUserPreferences,
   getBreachesForEachEmail,
   welcomeMessage,
