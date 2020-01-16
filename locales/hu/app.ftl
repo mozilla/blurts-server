@@ -478,6 +478,27 @@ generic-confirmation-message =
        *[other] Az összes fennmaradt adatsértés megtekintéséhez ugorjon az irányítópulthoz.
     }
 return-to-breach-details-link = Vissza az adatsértés részleteihez
+go-to-dashboard-link = Ugrás a vezérlőpultra
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% kész
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } megoldva
+       *[other] { $numResolvedBreaches } megoldva
+    }
+progress-intro-subhead = Új a { -product-name }ban: Adatsértések megjelölése megoldottként
+progress-intro-message =
+    Az adatsértés részleteinek áttekintése és a személyes információi érdekében 
+    tett védelmi lépések megtétele után, megjelölheti az adatsértéseket megoldottként.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } / { $numTotalBreaches } adatsértés megjelölve megoldottként
+       *[other] { $numResolvedBreaches } / { $numTotalBreaches } adatsértés megjelölve megoldottként
+    }
+progress-complete = Az összes ismert adatsértés megjelölve megoldottként
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
