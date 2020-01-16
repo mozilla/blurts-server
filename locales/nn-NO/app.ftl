@@ -470,7 +470,7 @@ confirmation-3-body = Er det nye passordet ditt unikt, sterkt og vanskeleg å gj
 generic-confirmation-subhead = Denne datalekkasjen er merkt som løyst
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
-        [one] Gå til oversikta for å sjå attståande datalekkasjar.
+        [one] Gå til oversikta for å sjå attståande datalekkasje.
        *[other] Gå til oversikta for å sjå alle attståande datalekkasjar.
     }
 return-to-breach-details-link = Gå tilbake til datalekkasjedetaljar
