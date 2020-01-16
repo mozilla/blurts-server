@@ -477,7 +477,7 @@ return-to-breach-details-link = Gå tilbake til datalekkasjedetaljar
 go-to-dashboard-link = Gå til oversynet
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
-progress-percent-complete = { $percentComplete }% fullført
+progress-percent-complete = { $percentComplete } % fullført
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
 num-resolved =
