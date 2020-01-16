@@ -458,8 +458,30 @@ undo-button = Angre
 confirmation-1-subhead = Hyggelig! Du har akkurat løst den første datalekkasjen din.
 confirmation-1-body = Fortsett slik. Kontroller oversikten for å se om det er mer å gjøre.
 confirmation-2-subhead = Ta det, hackere!
+confirmation-2-body = Du tar viktige steg for å beskytte nettkontoene dine.
 confirmation-3-subhead = Enda en er ferdig. Bra jobbet!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Er det nye passordet ditt unikt, sterkt og vanskelig å gjette? <a>FInn ut</a>
 generic-confirmation-subhead = Denne datalekkasjen er merket som løst
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Gå til oversikten for å se resterende datalekkasje.
+       *[other] Gå til oversikten for å se alle resterende datalekkasjer.
+    }
+return-to-breach-details-link = Gå tilbake til datalekkasjedetaljer
+go-to-dashboard-link = Gå til oversikten
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete } % fullført
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } løst
+       *[other] { $numResolvedBreaches } løste
+    }
+progress-intro-subhead = Nytt i { -product-name }: Marker datalekkasjer som løst
 progress-complete = Alle kjente datalekkasjer er markert som løst
 
 ## These strings contain nested markup that is later used to style the text inside of it.
