@@ -456,6 +456,7 @@ mark-as-resolve-button = Merk som løst
 marked-as-resolved-label = Merket som løst
 undo-button = Angre
 confirmation-1-subhead = Hyggelig! Du har akkurat løst den første datalekkasjen din.
+confirmation-1-body = Fortsett slik. Kontroller oversikten for å se om det er mer å gjøre.
 confirmation-2-subhead = Ta det, hackere!
 confirmation-3-subhead = Enda en er ferdig. Bra jobbet!
 generic-confirmation-subhead = Denne datalekkasjen er merket som løst
