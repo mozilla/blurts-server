@@ -358,40 +358,45 @@ async function postResolveBreach(req, res) {
     ),
     headlineClassName: "",
   };
-  if (numResolvedBreaches === 1) {
-    localizedModalStrings.headline = req.fluentFormat("confirmation-1-subhead");
-    localizedModalStrings.progressMessage = req.fluentFormat("confirmation-1-body");
-    localizedModalStrings.headlineClassName = "overlay-resolved-first-breach";
-  }
 
-  if (numResolvedBreaches === 2) {
-    localizedModalStrings.headline = req.fluentFormat("confirmation-2-subhead");
-    localizedModalStrings.progressMessage = req.fluentFormat("confirmation-2-body");
-    localizedModalStrings.headlineClassName = "overlay-take-that-hackers";
-  }
+  switch (numResolvedBreaches) {
+    case 1:
+      localizedModalStrings.headline = req.fluentFormat("confirmation-1-subhead");
+      localizedModalStrings.progressMessage = req.fluentFormat("confirmation-1-body");
+      localizedModalStrings.headlineClassName = "overlay-resolved-first-breach";
+      break;
 
-  if (numResolvedBreaches === 3) {
-    localizedModalStrings.headline = req.fluentFormat("confirmation-3-subhead");
-    // TO CONSONDER: The "confirmation-3-body" string contains nested markup.
-    // We'll either have to remove it (requiring a string change), or we will have
-    // to inject it into the template using innerHTML (scaryish).
-    // Defaulting to the generic progressMessage for now.
-    localizedModalStrings.progressMessage = req.fluentFormat("generic-confirmation-message", {
-      numUnresolvedBreaches: numTotalBreaches-numResolvedBreaches,
-    });
-    localizedModalStrings.headlineClassName = "overlay-another-breach-resolved";
-  }
+    case 2:
+      localizedModalStrings.headline = req.fluentFormat("confirmation-2-subhead");
+      localizedModalStrings.progressMessage = req.fluentFormat("confirmation-2-body");
+      localizedModalStrings.headlineClassName = "overlay-take-that-hackers";
+      break;
 
-  if (numResolvedBreaches > 3 && numResolvedBreaches < numTotalBreaches) {
-    localizedModalStrings.headline = req.fluentFormat("confirmation-2-subhead");
-    localizedModalStrings.progressMessage = req.fluentFormat("confirmation-2-body");
-    localizedModalStrings.headlineClassName = "overlay-marked-as-resolved";
-  }
+    case 3:
+      localizedModalStrings.headline = req.fluentFormat("confirmation-3-subhead");
+      // TO CONSIDER: The "confirmation-3-body" string contains nested markup.
+      // We'll either have to remove it (requiring a string change), or we will have
+      // to inject it into the template using innerHTML (scaryish).
+      // Defaulting to the generic progressMessage for now.
+      localizedModalStrings.progressMessage = req.fluentFormat("generic-confirmation-message", {
+        numUnresolvedBreaches: numTotalBreaches-numResolvedBreaches,
+      });
+      localizedModalStrings.headlineClassName = "overlay-another-breach-resolved";
+      break;
 
-  if (numResolvedBreaches === numTotalBreaches) {
-    localizedModalStrings.headline = req.fluentFormat("confirmation-2-subhead");
-    localizedModalStrings.progressMessage = req.fluentFormat("progress-complete");
-    localizedModalStrings.headlineClassName = "overlay-marked-as-resolved";
+    case numTotalBreaches:
+      localizedModalStrings.headline = req.fluentFormat("confirmation-2-subhead");
+      localizedModalStrings.progressMessage = req.fluentFormat("progress-complete");
+      localizedModalStrings.headlineClassName = "overlay-marked-as-resolved";
+      break;
+
+    default:
+      if (numResolvedBreaches > 3) {
+        localizedModalStrings.headline = req.fluentFormat("confirmation-2-subhead");
+        localizedModalStrings.progressMessage = req.fluentFormat("confirmation-2-body");
+        localizedModalStrings.headlineClassName = "overlay-marked-as-resolved";
+      }
+      break;
   }
 
   res.json(localizedModalStrings);
