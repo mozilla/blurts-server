@@ -57,6 +57,7 @@ function getSortedDataClasses(locales, breach, isUserBrowserFirefox=false, isUse
     sortedDataClasses.lowerPriority.push(dataType);
   });
   sortedDataClasses.priority.sort((a,b) => { return b.weight - a.weight; });
+  sortedDataClasses.lowerPriority = sortedDataClasses.lowerPriority.join(", ");
   return sortedDataClasses;
 }
 
