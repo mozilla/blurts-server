@@ -7,7 +7,7 @@
         <li class="flx space-between affected-email-list-item">
           <p class="flx cntr demi affected-email">{{ emailAddress }}</p>
             <button data-affected-email="{{ emailAddress}}" data-passwords-exposed="{{ ./../breachExposedPasswords }}" data-recency-index="{{ recencyIndex }}" data-is-resolved="{{ isResolved }}"
-              {{#if isResolved}} class="btn-ghost txt-cntr resolve-button" {{else}} class="btn-blue-primary resolve-button" {{/if}} >
+              {{#if isResolved}} class="btn-ghost txt-cntr resolve-button" data-analytics-label="undo-mark-as-resolved"{{else}} class="btn-blue-primary resolve-button"  data-analytics-label="mark-as-resolved"{{/if}} >
               {{#if isResolved}}
                 {{ ./../resolutionStrings.resolvedLabel }}<span class="blue-link resolve-undo">{{ ./../resolutionStrings.undoResolvedLabel }}</span>
               {{else}}

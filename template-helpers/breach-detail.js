@@ -193,7 +193,7 @@ function formatResolutionMessage(message) {
 }
 
 function formatNotificationLink(message) {
-  return message.replace("<a>", "<a class='what-to-do-next blue-link' href='#what-to-do-next'>");
+  return message.replace("<a>", "<a class='what-to-do-next blue-link' href='#what-to-do-next' data-analytics-label='what-to-do-next'>");
 }
 
 
