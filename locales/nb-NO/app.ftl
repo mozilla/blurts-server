@@ -478,10 +478,13 @@ progress-percent-complete = { $percentComplete } % fullført
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
 num-resolved =
     { $numResolvedBreaches ->
-        [one] { $numResolvedBreaches } løst
        *[other] { $numResolvedBreaches } løste
     }
 progress-intro-subhead = Nytt i { -product-name }: Marker datalekkasjer som løst
+progress-status =
+    { $numTotalBreaches ->
+       *[other] { $numResolvedBreaches } av { $numTotalBreaches } datalekkasjer er merket som løste
+    }
 progress-complete = Alle kjente datalekkasjer er markert som løst
 
 ## These strings contain nested markup that is later used to style the text inside of it.
@@ -496,5 +499,15 @@ resolve-this-breach-link = Løs denne datalekkasjen
 marked-resolved = Merket som løst
 hide-resolved-button = Skjul løste
 show-resolved-button = Vis løste
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Passord eksponert i uløst datalekkasje
+       *[other] Passord eksponerte i uløste datalekkasjer
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Kjent datalekkasje merket som løst
+       *[other] Kjente datalekkasjer merket som løste
+    }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Ny
