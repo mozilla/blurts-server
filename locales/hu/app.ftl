@@ -454,10 +454,30 @@ resolve-top-notification-plural =
 ##
 
 marking-this-subhead = Az adatsértés megjelölése megoldottként
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Amint megtette a lépéseket, kezelheti ezt az adatsértést</span>,
+    megjelölheti megoldottként. A saját vezérlőpultjáról továbbra is elérheti 
+    az adatsértés részleteit.
 mark-as-resolve-button = Megjelölés megoldottként
 marked-as-resolved-label = Megjelölve megoldottként
 undo-button = Visszavonás
 confirmation-1-subhead = Szép! Most oldotta meg az első adatsértését.
+confirmation-1-body = Tartsa meg a lendületet. Nézze meg a vezérlőpultot, hogy van-e még tennivaló.
+confirmation-2-subhead = Nesze nektek hackerek!
+confirmation-2-body = Fontos lépéseket tesz az online fiókjai védelmének érdekében.
+confirmation-3-subhead = Még egy lecsapva. Szép munka!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Az új jelszava egyedi, erős és nehezen kitalálható? <a>Tudja meg</a>
+generic-confirmation-subhead = Ez az adatsértés megoldottként lett megjelölve
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] A fennmaradt adatsértés megtekintéséhez ugorjon az irányítópulthoz.
+       *[other] Az összes fennmaradt adatsértés megtekintéséhez ugorjon az irányítópulthoz.
+    }
+return-to-breach-details-link = Vissza az adatsértés részleteihez
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
