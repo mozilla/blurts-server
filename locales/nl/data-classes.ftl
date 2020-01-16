@@ -42,6 +42,7 @@ email-addresses = E-mailadressen
 email-messages = E-mailberichten
 employers = Werkgevers
 employment-statuses = Activiteitsstatussen
+encrypted-keys = Versleutelde sleutels
 ethnicities = Etniciteiten
 family-members-names = Namen van familieleden
 family-plans = Familieplannen
