@@ -104,13 +104,22 @@
   line-height: 1.5;
 }
 
-.img-placeholder {
-  height: 100px;
+.breach-resolution-img {
+  height: 115px;
   width: 120px;
   min-width: 120px;
-  margin-right: 16px;
-  background: var(--violet2);
-  border-radius: 8px;
+  margin-right: 20px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+.breach-resolution-intro {
+  background-image: url("/img/svg/breach-resolution-intro.svg");
+}
+
+.breach-resolution-complete {
+  background-image: url("/img/svg/breach-resolution-complete.svg");
 }
 
 progress[value]::-webkit-progress-bar {

@@ -83,6 +83,7 @@ function makeProgressBar(userBreachTotals, locales) {
     return {
       subhead: localize(locales, "progress-intro-subhead"),
       progressMessage: localize(locales, "progress-intro-message"),
+      imageClassName: "breach-resolution-intro",
     };
   }
 
@@ -91,6 +92,7 @@ function makeProgressBar(userBreachTotals, locales) {
     return {
       subhead: localize(locales, "progress-complete"),
       progressMessage: formatProgressMessage(localize(locales, "progress-complete-message")),
+      imageClassName: "breach-resolution-complete",
     };
   }
 

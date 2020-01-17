@@ -16,11 +16,11 @@
           <progress class="progress-bar" max="100" value="{{breachMath 110 "-" progressBar.percentBreachesResolved}}" data-progress-value="{{breachMath 100 "-" progressBar.percentBreachesResolved}}"></progress>
           <span class="progress-message txt-purple7">{{{ progressBar.progressMessage }}}</span>
         {{/if}}
-        {{#if progressBar.subhead}}
+        {{#if progressBar.subhead}} <!-- resolution intro and complete messages -->
           <div class="progress-status-message flx flx-row">
-            <div class="img-placeholder"></div>
+            <div class="{{ progressBar.imageClassName }} breach-resolution-img"></div>
             <div class="flx-col">
-              <h3 class="progress-message-subhead">{{ progressBar.subhead }}</h3>
+              <h3 class="progress-message-subhead bold">{{ progressBar.subhead }}</h3>
               <p class="progress-message-body">{{{ progressBar.progressMessage }}}</p>
             </div>
           </div>
