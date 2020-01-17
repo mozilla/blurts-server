@@ -3,7 +3,6 @@
 const { LocaleUtils } = require("./../locale-utils");
 const { makeBreachCards } = require("./breaches");
 
-
 function getBreachesForEachEmail(args) {
   const verifiedEmails = args.data.root.verifiedEmails;
   const locales = args.data.root.req.supportedLocales;
