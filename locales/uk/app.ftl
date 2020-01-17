@@ -502,6 +502,10 @@ confirmation-1-body = Не зупиняйтесь на цьому. Переві�
 confirmation-2-subhead = Ось так вам, хакери!
 confirmation-2-body = Ви робите важливі кроки для захисту своїх облікових даних в Інтернеті.
 confirmation-3-subhead = Ще один готовий. Гарна робота!
+generic-confirmation-subhead = Цей витік було позначено як вирішений
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% завершено
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
