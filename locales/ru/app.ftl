@@ -420,6 +420,7 @@ see-additional-recs = Посмотреть дополнительные реко
 
 ##
 
+undo-button = Отменить
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
