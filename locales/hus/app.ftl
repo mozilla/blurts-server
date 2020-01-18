@@ -17,6 +17,13 @@
 
 terms-and-privacy = Axi u awil ani yab u awil ka t'aja'
 GitHub-link-title = GitHub
+error-scan-page-token = A exa' ka aliy tekedh yán i correo electrónico al jun i k'ij lej tsipkats. Jaxtam i mapuy an alimtaláb, talbél ne'ets ka awits ka eyendha'.
+error-could-not-add-email = Yab u awil ka punwat an correo electrónico al an Base de datos.
+error-not-subscribed = Axi correo electrónico yab u eyendháb ti { -product-name }
+error-hibp-throttled = Tekedh yán ti eyadh an { -brand-HIBP }.
+error-hibp-connect = Yab i ejtow ki punchiy k'al { -brand-HIBP }
+error-hibp-load-breaches = Yab awits ki tejwa'medha' an filtraciones.
+error-must-be-signed-in = Ka japiy a k'al ti { -brand-fxa }
 
 ## What to do after data breach tips
 
