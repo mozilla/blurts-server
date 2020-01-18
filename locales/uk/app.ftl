@@ -517,19 +517,60 @@ go-to-dashboard-link = Перейти до панелі
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
 progress-percent-complete = { $percentComplete }% завершено
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } вирішений
+        [few] { $numResolvedBreaches } вирішені
+       *[many] { $numResolvedBreaches } вирішених
+    }
+progress-intro-subhead = Нове в { -product-name }: Позначайте витоки вирішеними
+progress-intro-message =
+    Після перегляду подробиць про витік та вжиття заходів щодо захисту 
+    вашої особистої інформації, ви можете позначити витік вирішеним.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } витік з { $numTotalBreaches } позначено вирішеним
+        [few] { $numResolvedBreaches } витоки з { $numTotalBreaches } позначено вирішеними
+       *[many] { $numResolvedBreaches } витоків з { $numTotalBreaches } позначено вирішеними
+    }
 progress-complete = Усі відомі витоки позначено вирішеними
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>Чудовий початок</span> Перевірте інші витоки, щоб дізнатися 
+    які кроки вжити.
 progress-message-2 =
     <span>Продовжуйте!</span> Невеликі зміни, такі як оновлення паролів, мають великий вплив на
     збереження вашої особистої інформації.
+progress-message-3 = <span>Гарна робота з вирішення цих витоків!</span> Так тримати. Вам слід ще дещо зробити.
 progress-message-4 = <span>Майже готово!</span> Ви вже майже закінчили.
+progress-complete-message =
+    <span>Стало краще, чи не так?</span> Якщо ви хочете продовжити, зараз саме час 
+    оновити інші паролі більш надійними.
 
 ##
 
+resolve-this-breach-link = Позначити витік вирішеним
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Позначено вирішеним:
 hide-resolved-button = Сховати вирішені
 show-resolved-button = Показати вирішені
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Викритий пароль у невирішених витоках
+        [few] Викриті паролі у невирішених витоках
+       *[many] Викритих паролів у невирішених витоках
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Відомий витік даних позначено вирішеним
+        [few] Відомі витоки даних позначено вирішеними
+       *[many] Відомих витоків даних позначено вирішеними
+    }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Новий
