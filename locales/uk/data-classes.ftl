@@ -42,6 +42,7 @@ email-addresses = Адреси електронної пошти
 email-messages = Повідомлення електронної пошти
 employers = Роботодавці
 employment-statuses = Статуси зайнятості
+encrypted-keys = Зашифровані ключі
 ethnicities = Етнічні приналежності
 family-members-names = Імена родичів
 family-plans = Сімейні плани

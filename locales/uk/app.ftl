@@ -502,14 +502,34 @@ confirmation-1-body = Не зупиняйтесь на цьому. Переві�
 confirmation-2-subhead = Ось так вам, хакери!
 confirmation-2-body = Ви робите важливі кроки для захисту своїх облікових даних в Інтернеті.
 confirmation-3-subhead = Ще один готовий. Гарна робота!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Ваш новий пароль унікальний, сильний та його важко вгадати? <a>Перевірте</a>
 generic-confirmation-subhead = Цей витік було позначено як вирішений
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Щоб побачити останній витік, перейдіть до вашої панелі.
+        [few] Щоб побачити інші витоки, перейдіть до вашої панелі.
+       *[many] Щоб побачити інші витоки, перейдіть до вашої панелі.
+    }
+return-to-breach-details-link = Повернутися до деталей витоку
+go-to-dashboard-link = Перейти до панелі
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
 progress-percent-complete = { $percentComplete }% завершено
+progress-complete = Усі відомі витоки позначено вирішеними
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-2 =
+    <span>Продовжуйте!</span> Невеликі зміни, такі як оновлення паролів, мають великий вплив на
+    збереження вашої особистої інформації.
+progress-message-4 = <span>Майже готово!</span> Ви вже майже закінчили.
 
 ##
 
+hide-resolved-button = Сховати вирішені
+show-resolved-button = Показати вирішені
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Новий
