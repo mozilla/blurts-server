@@ -17,7 +17,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Termini di utilizzo e privacy
 GitHub-link-title = GitHub
@@ -349,7 +349,7 @@ email-verified-view-dashboard = { $nestedSignInLink } per visualizzare e gestire
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = Accedi
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -381,3 +381,30 @@ rec-section-headline-no-pw = Come proteggere le tue informazioni personali
 rec-section-subhead-no-pw = Anche se nessuna password è stata esposta in questa violazione, puoi sempre adottare nuove misure per proteggere meglio le tue informazioni personali.
 # Button
 see-additional-recs = Vedi altri suggerimenti
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+
+##
+
+confirmation-1-body = Continua così! Controlla il pannello utente per vedere che cos’altro puoi fare per proteggerti.
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Password esposta in violazioni non risolte
+       *[other] Password esposte in violazioni non risolte
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Violazione di dati nota contrassegnata come risolta
+       *[other] Violazioni di dati note contrassegnate come risolte
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Nuova
