@@ -426,6 +426,11 @@ num-resolved =
     }
 progress-intro-subhead = Nuova funzione in { -product-name }: contrassegna le violazioni come risolte
 progress-intro-message = Dopo aver controllato le informazioni su una violazione e aver preso le misure necessarie per proteggere le tue informazioni personali, puoi contrassegnare le violazioni come risolte.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } su { $numTotalBreaches } violazioni contrassegnata come risolta
+       *[other] { $numResolvedBreaches } su { $numTotalBreaches } violazioni contrassegnate come risolte
+    }
 progress-complete = Tutte le violazioni note sono state contrassegnate come risolte
 
 ## These strings contain nested markup that is later used to style the text inside of it.
