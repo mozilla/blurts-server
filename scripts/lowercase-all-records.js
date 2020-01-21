@@ -10,10 +10,9 @@ const getSha1 = require("../sha1-utils");
 
 
 async function subscribeLowercaseHashToHIBP(emailAddress) {
-  const lowerCasedEmail = emailAddress.toLowerCase();
-  const lowerCasedSha1 = getSha1(lowerCasedEmail);
-  await HIBP.subscribeHash(lowerCasedSha1);
-  return lowerCasedSha1;
+  const emailHash = getSha1(emailAddress);
+  await HIBP.subscribeHash(emailHash);
+  return emailHash;
 }
 
 
@@ -23,10 +22,10 @@ async function subscribeLowercaseHashToHIBP(emailAddress) {
   const subsWithUpperCount = subRecordsWithUpperChars.length;
   console.log(`found ${subsWithUpperCount} subscribers records with primary_email != lower(primary_email). fixing ...`);
   for (const subRecord of subRecordsWithUpperChars) {
-    const lowerCasedSha1 = await subscribeLowercaseHashToHIBP(subRecord.primary_email);
+    const emailHash = await subscribeLowercaseHashToHIBP(subRecord.primary_email);
     await knex("subscribers")
       .update({
-        primary_sha1: lowerCasedSha1,
+        primary_sha1: emailHash.toLowerCase(),
       })
       .where("id", subRecord.id);
     console.log(`fixed subscribers record ID: ${subRecord.id}`);
@@ -37,10 +36,10 @@ async function subscribeLowercaseHashToHIBP(emailAddress) {
   const emailsWithUpperCount = emailRecordsWithUpperChars.length;
   console.log(`found ${emailsWithUpperCount} email_addresses records with email != lower(email)`);
   for (const emailRecord of emailRecordsWithUpperChars) {
-    const lowerCasedSha1 = await subscribeLowercaseHashToHIBP(emailRecord.email);
+    const emailHash = await subscribeLowercaseHashToHIBP(emailRecord.email);
     await knex("email_addresses")
       .update({
-        sha1: lowerCasedSha1,
+        sha1: emailHash.toLowerCase(),
       })
       .where("id", emailRecord.id);
     console.log(`fixed email_addresses record ID: ${emailRecord.id}`);
