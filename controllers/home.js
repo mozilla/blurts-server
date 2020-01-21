@@ -1,11 +1,14 @@
 "use strict";
 
 const AppConstants = require("../app-constants");
-const { scanResult } = require("../scan-results");
 const { generatePageToken } = require("./utils");
 
 
 async function home(req, res) {
+
+  if (req.session.user) {
+    return res.redirect("/user/dashboard");
+  }
 
   const formTokens = {
     pageToken: AppConstants.PAGE_TOKEN_TIMER > 0 ? generatePageToken(req) : "",
@@ -15,10 +18,6 @@ async function home(req, res) {
   let featuredBreach = null;
   let scanFeaturedBreach = false;
 
-  if (req.session.user && !req.query.breach) {
-    return res.redirect("/user/dashboard");
-  }
-
   if (req.query.breach) {
     const reqBreachName = req.query.breach.toLowerCase();
     featuredBreach = req.app.locals.breaches.find(breach => breach.Name.toLowerCase() === reqBreachName);
@@ -27,11 +26,6 @@ async function home(req, res) {
       return notFound(req, res);
     }
 
-    const scanRes = await scanResult(req);
-
-    if (scanRes.doorhangerScan) {
-      return res.render("scan", Object.assign(scanRes, formTokens));
-    }
     scanFeaturedBreach = true;
 
     return res.render("monitor", {

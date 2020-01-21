@@ -44,6 +44,11 @@ function _validatePageToken(pageToken, req) {
 
 
 async function post (req, res) {
+
+  if (req.session.user) {
+    return res.redirect("/user/dashboard");
+  }
+
   const emailHash = req.body.emailHash;
   const encryptedPageToken = req.body.pageToken;
   let validPageToken = false;
@@ -65,16 +70,13 @@ async function post (req, res) {
     return res.redirect("/");
   }
 
-  const scanRes = await scanResult(req);
+  const scanRes = await scanResult(req, emailHash);
 
   const formTokens = {
     pageToken: encryptedPageToken,
     csrfToken: req.csrfToken(),
   };
 
-  if (req.session.user && scanRes.selfScan && !req.body.featuredBreach) {
-    return res.redirect("/user/dashboard");
-  }
   res.render("scan", Object.assign(scanRes, formTokens));
 }
 
