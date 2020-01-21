@@ -138,6 +138,7 @@ async function add(req, res) {
   res.redirect("/user/preferences");
 }
 
+
 function getResolvedBreachesForEmail(user, email) {
   if (user.breaches_resolved === null) {
     return [];
@@ -145,23 +146,38 @@ function getResolvedBreachesForEmail(user, email) {
   return user.breaches_resolved.hasOwnProperty(email) ? user.breaches_resolved[email] : [];
 }
 
-function annotateFoundBreachesAsResolvedOrNot(foundBreaches, resolvedBreaches) {
-  const annotatedFoundBreaches = [];
-  foundBreaches.forEach( (breach, index) => {
-    const IsResolved = resolvedBreaches.includes(index) ? true : false;
-    const annotatedBreach = Object.assign({IsResolved, recencyIndex: index}, breach);
-    annotatedFoundBreaches.push(annotatedBreach);
-  });
-  return annotatedFoundBreaches;
+
+function addResolvedOrNot(foundBreaches, resolvedBreaches) {
+  const annotatedBreaches = [];
+  for (const breach of foundBreaches) {
+    const IsResolved = resolvedBreaches.includes(breach.recencyIndex) ? true : false;
+    annotatedBreaches.push(Object.assign({IsResolved}, breach));
+  }
+  return annotatedBreaches;
 }
+
+
+function addRecencyIndex(foundBreaches) {
+  const annotatedBreaches = [];
+  // slice() the array to make a copy so before reversing so we don't
+  // reverse foundBreaches in-place
+  const oldestToNewestFoundBreaches = foundBreaches.slice().reverse();
+  oldestToNewestFoundBreaches.forEach( (annotatingBreach, index) => {
+    const foundBreach = foundBreaches.find( foundBreach => foundBreach.Name === annotatingBreach.Name);
+    annotatedBreaches.push(Object.assign({recencyIndex: index}, foundBreach));
+  });
+  return annotatedBreaches.reverse();
+}
+
 
 async function bundleVerifiedEmails(options) {
   const { user, email, recordId, recordVerified, allBreaches} = options;
   const lowerCaseEmailSha = sha1(email.toLowerCase());
   const foundBreaches = await HIBP.getBreachesForEmail(lowerCaseEmailSha, allBreaches, true, false);
+  const foundBreachesWithRecency = addRecencyIndex(foundBreaches);
   const resolvedBreaches = getResolvedBreachesForEmail(user, email);
-  const annotatedFoundBreaches = annotateFoundBreachesAsResolvedOrNot(foundBreaches, resolvedBreaches);
-  const filteredAnnotatedFoundBreaches = HIBP.filterBreaches(annotatedFoundBreaches);
+  const foundBreachesWithResolutions = addResolvedOrNot(foundBreachesWithRecency, resolvedBreaches);
+  const filteredAnnotatedFoundBreaches = HIBP.filterBreaches(foundBreachesWithResolutions);
 
   const emailEntry = {
     "email": email,
@@ -343,19 +359,30 @@ async function postRemoveFxm(req, res) {
 }
 
 function _updateResolvedBreaches(options) {
-  const { resolvedBreaches, affectedEmail, isResolved, recencyIndexNumber } = options;
+  const {
+    user,
+    affectedEmail,
+    isResolved,
+    recencyIndexNumber,
+  } = options;
   // TODO: clarify the logic here. maybe change the endpoint to PUT /breach-resolution
   // with the new resolution value ?
-  debugger;
+  const userBreachesResolved = user.breaches_resolved === null ? {} : user.breaches_resolved;
   if (isResolved === "false") {
-    return Array.isArray(resolvedBreaches[affectedEmail]) ? resolvedBreaches[affectedEmail].push(recencyIndexNumber) : Object.assign({[affectedEmail]: [recencyIndexNumber]});
+    if (Array.isArray(userBreachesResolved[affectedEmail])) {
+      userBreachesResolved[affectedEmail].push(recencyIndexNumber);
+      return userBreachesResolved;
+    }
+    userBreachesResolved[affectedEmail] = [recencyIndexNumber];
+    return userBreachesResolved;
   }
-  return resolvedBreaches[affectedEmail].filter( el => el !== recencyIndexNumber );
+  userBreachesResolved[affectedEmail] = userBreachesResolved[affectedEmail].filter( el => el !== recencyIndexNumber );
+  return userBreachesResolved;
 }
+
 
 // Placeholder -- WIP
 async function postResolveBreach(req, res) {
-  debugger;
   const sessionUser = req.user;
   const { affectedEmail, recencyIndex, isResolved } = req.body;
   const recencyIndexNumber = Number(recencyIndex);
@@ -368,10 +395,12 @@ async function postResolveBreach(req, res) {
     return res.json("Error: affectedEmail is not valid for this subscriber");
   }
 
-  const resolvedBreaches = getResolvedBreachesForEmail(sessionUser, affectedEmail);
-  const updatedResolvedBreaches = _updateResolvedBreaches(
-    { resolvedBreaches, affectedEmail, isResolved, recencyIndexNumber }
-  );
+  const updatedResolvedBreaches = _updateResolvedBreaches({
+    user: sessionUser,
+    affectedEmail,
+    isResolved,
+    recencyIndexNumber,
+  });
 
   const updatedSubscriber = await DB.setBreachesResolved(
     { user: sessionUser, updatedResolvedBreaches }
