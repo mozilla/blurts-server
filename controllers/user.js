@@ -198,7 +198,7 @@ async function _verify(req) {
   const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
   let unsafeBreachesForEmail = [];
   unsafeBreachesForEmail = await HIBP.getBreachesForEmail(
-    sha1(verifiedEmailHash.email),
+    sha1(verifiedEmailHash.email.toLowerCase()),
     req.app.locals.breaches,
     true,
   );
