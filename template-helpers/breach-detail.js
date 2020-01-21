@@ -5,7 +5,7 @@ const { prettyDate } = require("./hbs-helpers");
 const { getAllPriorityDataClasses, getAllGenericRecommendations, getFourthPasswordRecommendation } = require("./recommendations");
 
 
-function addUtmParams(cta) {
+function addRecommendationUtmParams(cta) {
   try {
     const url = new URL(cta.ctaHref);
     const utmParams = {
@@ -211,7 +211,7 @@ function getSortedDataClassesAndRecs(locales, breach, isUserBrowserFirefox=false
 }
 
 module.exports = {
-  addUtmParams,
+  addRecommendationUtmParams,
   getBreachDetail,
   getBreachCategory,
   getSortedDataClasses,
