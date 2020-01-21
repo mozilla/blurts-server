@@ -342,10 +342,44 @@ async function postRemoveFxm(req, res) {
   res.redirect("/");
 }
 
+function _updateResolvedBreaches(options) {
+  const { resolvedBreaches, affectedEmail, isResolved, recencyIndexNumber } = options;
+  // TODO: clarify the logic here. maybe change the endpoint to PUT /breach-resolution
+  // with the new resolution value ?
+  debugger;
+  if (isResolved === "false") {
+    return Array.isArray(resolvedBreaches[affectedEmail]) ? resolvedBreaches[affectedEmail].push(recencyIndexNumber) : Object.assign({[affectedEmail]: [recencyIndexNumber]});
+  }
+  return resolvedBreaches[affectedEmail].filter( el => el !== recencyIndexNumber );
+}
+
 // Placeholder -- WIP
 async function postResolveBreach(req, res) {
-  const user = req.user;
+  debugger;
+  const sessionUser = req.user;
+  const { affectedEmail, recencyIndex, isResolved } = req.body;
+  const recencyIndexNumber = Number(recencyIndex);
+  const affectedEmailIsSubscriberRecord = sessionUser.primary_email === affectedEmail;
+  const affectedEmailInEmailAddresses = sessionUser.email_addresses.filter( ea => {
+    ea.email === affectedEmail;
+  });
 
+  if (!affectedEmailIsSubscriberRecord && !affectedEmailInEmailAddresses) {
+    return res.json("Error: affectedEmail is not valid for this subscriber");
+  }
+
+  const resolvedBreaches = getResolvedBreachesForEmail(sessionUser, affectedEmail);
+  const updatedResolvedBreaches = _updateResolvedBreaches(
+    { resolvedBreaches, affectedEmail, isResolved, recencyIndexNumber }
+  );
+
+  const updatedSubscriber = await DB.setBreachesResolved(
+    { user: sessionUser, updatedResolvedBreaches }
+  );
+  req.session.user = updatedSubscriber;
+  return res.json("Breach marked as resolved.");
+}
+/*
   // Currently we're sending { affectedEmail, recencyIndex, isResolved, passwordsExposed } in req.body
   // Not sure if we need all of these or need to send other/additional values?
 
@@ -415,6 +449,7 @@ async function postResolveBreach(req, res) {
   res.json(localizedModalStrings);
 }
 
+  */
 
 async function postUnsubscribe(req, res) {
   const { token, emailHash } = req.body;

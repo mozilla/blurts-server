@@ -325,21 +325,14 @@ const DB = {
     return updatedSubscriber;
   },
 
-  async setBreachResolved(options) {
-    const {subscriber, emailAddressId, recencyIndex} = options;
-    if (emailAddressId) {
-      // TODO: SELECT email from email_addresses where ea.id
-      // TODO: if (!subscriber.breaches_resolved[email].includes(recencyIndex) {
-      //   subscriber.breaches_resolved[email].push(recencyIndex);
-      //   UPDATE subscriber SET breaches_resolved = subscriber.breaches_resolved
-      // }
-      // return updatedSubscriber;
-    }
-    // TODO: if (!subscriber.breaches_resolved[subscriber.primary_email].includes(recencyIndex) {
-    //   subscriber.breaches_resolved[subscriber.primary_email].push(recencyIndex);
-    //   UPDATE subscriber SET breaches_resolved = subscriber.breaches_resolved
-    // }
-    // return updatedSubscriber;
+  async setBreachesResolved(options) {
+    const { user, updatedResolvedBreaches } = options;
+    await knex("subscribers")
+    .where("id", user.id)
+    .update({
+      breaches_resolved: updatedResolvedBreaches,
+    });
+    return this.getSubscriberByEmail(user.primary_email);
   },
 
   async removeSubscriber(subscriber) {
