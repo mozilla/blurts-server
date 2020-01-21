@@ -4,9 +4,12 @@
 /* global libpolycrypt */
 /* global sendPing */
 
-async function sha1(message) {
-  message = message.toLowerCase();
-  const msgBuffer = new TextEncoder("utf-8").encode(message);
+async function sha1(emailAddress) {
+
+  // Email addresses must be lowercased before
+  // hashing to return correct results from HIBP
+  emailAddress = emailAddress.toLowerCase();
+  const msgBuffer = new TextEncoder("utf-8").encode(emailAddress);
   let hashBuffer;
   if (/edge/i.test(navigator.userAgent)) {
     hashBuffer = libpolycrypt.sha1(msgBuffer);
@@ -15,6 +18,8 @@ async function sha1(message) {
   }
   const hashArray = Array.from(new Uint8Array(hashBuffer));
   const hashHex = hashArray.map(b => ("00" + b.toString(16)).slice(-2)).join("");
+
+  // Hashes must be uppercased to return correct results from HIBP
   return hashHex.toUpperCase();
 }
 
