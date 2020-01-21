@@ -406,20 +406,17 @@ async function postResolveBreach(req, res) {
     { user: sessionUser, updatedResolvedBreaches }
   );
   req.session.user = updatedSubscriber;
-  return res.json("Breach marked as resolved.");
-}
-/*
+  // return res.json("Breach marked as resolved.");
   // Currently we're sending { affectedEmail, recencyIndex, isResolved, passwordsExposed } in req.body
   // Not sure if we need all of these or need to send other/additional values?
 
-  const { isResolved } = req.body;
   if (isResolved === "true") {
     // the user clicked "Undo" so mark the breach as unresolved
     return res.redirect("/");
   }
 
   const allBreaches = req.app.locals.breaches;
-  const { verifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
+  const { verifiedEmails } = await getAllEmailsAndBreaches(req.user, allBreaches);
 
   const userBreachStats = resultsSummary(verifiedEmails);
   const numTotalBreaches = userBreachStats.numBreaches.count;
@@ -477,8 +474,6 @@ async function postResolveBreach(req, res) {
 
   res.json(localizedModalStrings);
 }
-
-  */
 
 async function postUnsubscribe(req, res) {
   const { token, emailHash } = req.body;
