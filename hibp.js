@@ -100,10 +100,15 @@ const HIBP = {
   },
 
 
-  async getBreachesForEmail(sha1, allBreaches, includeSensitive = false) {
+  getHashPrefix(emailHash) {
+    return emailHash.slice(0, 6);
+  },
+
+
+  async getBreachesForEmail(sha1EmailHash, allBreaches, includeSensitive = false) {
     let foundBreaches = [];
-    const sha1Prefix = sha1.slice(0, 6).toUpperCase();
-    const path = `/breachedaccount/range/${sha1Prefix}`;
+    const emailHashPrefix = this.getHashPrefix(sha1EmailHash);
+    const path = `/breachedaccount/range/${emailHashPrefix}`;
 
     const response = await this.kAnonReq(path);
     if (!response) {
@@ -115,10 +120,10 @@ const HIBP = {
     //   {"hashSuffix":<suffix>,"websites":[<breach1Name>,...]},
     // ]
     for (const breachedAccount of response.body) {
-      if (sha1.toUpperCase() === sha1Prefix + breachedAccount.hashSuffix) {
+      if (sha1EmailHash === emailHashPrefix + breachedAccount.hashSuffix) {
         foundBreaches = allBreaches.filter(breach => breachedAccount.websites.includes(breach.Name));
         foundBreaches = this.filterBreaches(foundBreaches);
-        foundBreaches.sort( (a,b) => {
+        foundBreaches.sort((a,b) => {
           return new Date(b.AddedDate) - new Date(a.AddedDate);
         });
         break;
@@ -167,8 +172,8 @@ const HIBP = {
   },
 
 
-  async subscribeHash(sha1) {
-    const sha1Prefix = sha1.slice(0, 6).toUpperCase();
+  async subscribeHash(sha1EmailHash) {
+    const sha1Prefix = this.getHashPrefix(sha1EmailHash);
     const path = "/range/subscribe";
     const options = {
       method: "POST",

@@ -3,9 +3,10 @@
 const HIBP = require("./hibp");
 
 
-const scanResult = async(req, scannedEmail) => {
+const scanResult = async(req, scannedEmailHash) => {
   const allBreaches = req.app.locals.breaches;
-  const foundBreaches = await HIBP.getBreachesForEmail(scannedEmail, allBreaches);
+
+  const foundBreaches = await HIBP.getBreachesForEmail(scannedEmailHash, allBreaches);
   const title = req.fluentFormat("scan-title");
 
   const thisBreach = (breach) => {
