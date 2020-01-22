@@ -37,7 +37,7 @@ const scanResult = async(req, selfScan=false) => {
 
     if (signedInUser) {
       for (const emailAddress of signedInUser.email_addresses) {
-        if (!selfScan && sha1(emailAddress.email) === req.body.emailHash) {
+        if (!selfScan && sha1.getSha1ForHIBP(emailAddress.email) === req.body.emailHash) {
           selfScan = true;
           break;
         }
@@ -61,7 +61,7 @@ const scanResult = async(req, selfScan=false) => {
   userDash = url.pathname === "/user_dashboard";
 
   if (selfScan) {
-    scannedEmail = sha1(signedInUser.primary_email);
+    scannedEmail = sha1.getSha1ForHIBP(signedInUser.primary_email);
   }
 
   if (scannedEmail) {

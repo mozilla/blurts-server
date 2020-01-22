@@ -65,7 +65,7 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
     let unsafeBreachesForEmail = [];
 
     unsafeBreachesForEmail = await HIBP.getBreachesForEmail(
-      sha1(email),
+      sha1.getSha1ForHIBP(email),
       req.app.locals.breaches,
       true,
     );

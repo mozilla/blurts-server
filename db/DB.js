@@ -117,7 +117,7 @@ const DB = {
     const res = await knex("email_addresses").insert({
       subscriber_id: user.id,
       email: email,
-      sha1: getSha1(email),
+      sha1: getSha1.getLowerCaseSha1(email),
       verification_token: uuidv4(),
       verified: false,
     }).returning("*");
@@ -169,7 +169,7 @@ const DB = {
           const res = await knex("subscribers")
             .update({
               primary_email: email,
-              primary_sha1: getSha1(email.toLowerCase()),
+              primary_sha1: getSha1.getLowerCaseSha1(email),
               primary_verified: verified,
               updated_at: knex.fn.now(),
             })
@@ -183,7 +183,7 @@ const DB = {
         // Always add a verification_token value
         const verification_token = uuidv4();
         const res = await knex("subscribers")
-          .insert({ primary_sha1: getSha1(email.toLowerCase()), primary_email: email, signup_language, primary_verification_token: verification_token, primary_verified: verified })
+          .insert({ primary_sha1: getSha1.getLowerCaseSha1(email), primary_email: email, signup_language, primary_verification_token: verification_token, primary_verified: verified })
           .returning("*");
         return res[0];
       });
@@ -206,7 +206,7 @@ const DB = {
    * @returns {object} subscriber knex object added to DB
    */
   async addSubscriber(email, signupLanguage, fxaAccessToken=null, fxaRefreshToken=null, fxaProfileData=null) {
-    const emailHash = await this._addEmailHash(getSha1(email), email, signupLanguage, true);
+    const emailHash = await this._addEmailHash(getSha1.getLowerCaseSha1(email), email, signupLanguage, true);
     const verified = await this._verifySubscriber(emailHash);
     const verifiedSubscriber = Array.isArray(verified) ? verified[0] : null;
     if (fxaRefreshToken || fxaProfileData) {

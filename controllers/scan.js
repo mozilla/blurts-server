@@ -61,7 +61,7 @@ async function post (req, res) {
     }
   }
 
-  if (!emailHash || emailHash === sha1("")) {
+  if (!emailHash || emailHash === sha1.getSha1ForHIBP("")) {
     return res.redirect("/");
   }
 

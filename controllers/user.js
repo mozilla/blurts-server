@@ -126,8 +126,8 @@ async function add(req, res) {
 }
 
 async function bundleVerifiedEmails(email, ifPrimary, id, verificationStatus, allBreaches) {
-  const lowerCaseEmailSha = sha1(email.toLowerCase());
-  const foundBreaches = await HIBP.getBreachesForEmail(lowerCaseEmailSha, allBreaches, true);
+  const emailHash = sha1.getSha1ForHIBP(email);
+  const foundBreaches = await HIBP.getBreachesForEmail(emailHash, allBreaches, true);
 
   const emailEntry = {
     "email": email,
@@ -198,7 +198,7 @@ async function _verify(req) {
   const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
   let unsafeBreachesForEmail = [];
   unsafeBreachesForEmail = await HIBP.getBreachesForEmail(
-    sha1(verifiedEmailHash.email.toLowerCase()),
+    sha1.getSha1ForHIBP(verifiedEmailHash.email),
     req.app.locals.breaches,
     true,
   );

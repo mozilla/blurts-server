@@ -102,7 +102,7 @@ const HIBP = {
 
   async getBreachesForEmail(sha1, allBreaches, includeSensitive = false) {
     let foundBreaches = [];
-    const sha1Prefix = sha1.slice(0, 6).toUpperCase();
+    const sha1Prefix = sha1.slice(0, 6);
     const path = `/breachedaccount/range/${sha1Prefix}`;
 
     const response = await this.kAnonReq(path);
@@ -115,7 +115,7 @@ const HIBP = {
     //   {"hashSuffix":<suffix>,"websites":[<breach1Name>,...]},
     // ]
     for (const breachedAccount of response.body) {
-      if (sha1.toUpperCase() === sha1Prefix + breachedAccount.hashSuffix) {
+      if (sha1 === sha1Prefix + breachedAccount.hashSuffix) {
         foundBreaches = allBreaches.filter(breach => breachedAccount.websites.includes(breach.Name));
         foundBreaches = this.filterBreaches(foundBreaches);
         foundBreaches.sort( (a,b) => {
@@ -168,6 +168,7 @@ const HIBP = {
 
 
   async subscribeHash(sha1) {
+    // Hashes sent to HIBP should be uppercased
     const sha1Prefix = sha1.slice(0, 6).toUpperCase();
     const path = "/range/subscribe";
     const options = {
