@@ -12,7 +12,7 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 
-
+##
 
 terms-and-privacy = Taq Ojqanem chuqa' Ichinanem
 GitHub-link-title = GitHub
@@ -405,7 +405,7 @@ email-verified-view-dashboard = Richin natz'ët chuqa' nanuk'samajij ronojel ri 
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = titikirisäx molojri'ïl
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -429,3 +429,20 @@ five-myths-desc = Tawetamaj nachajij awi' chi kiwäch ri itzel taq na'oj, ri yer
 take-further-steps-desc = Tawila' rub'eyal nach'utinisaj ri k'ayewal rik'in ri releq'axik ab'anikil, richin man teleq'äx apwaq.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = ¡Xeyak ri jaloj!
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+
+##
+
+undo-button = Titzolïx
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = K'ak'a'
