@@ -16,7 +16,19 @@
 
 terms-and-privacy = Términos y Privacidad
 GitHub-link-title = GitHub
+error-could-not-add-email = Ma ku chikai korreo nu inka kue tutu.
+error-not-subscribed = Koó korreo nu tutu { -product-name }.
+error-hibp-throttled = kua conexion nu { -brand-HIBP }.
+error-hibp-connect = Ma ku ndachitain tsi { -brand-HIBP }.
+error-must-be-signed-in = tsini ñu'u kitsau tsi { -brand-fxa }
 home-title = { -product-name }
+home-not-found = Koo Página ndani'i
+oauth-invalid-session = Ma ku kitsau
+scan-title = { -product-name } : Tutu nduki
+user-add-invalid-email = Vaà korreo
+error-headline = Vaá
+user-verify-token-error = tsiniñu'un token.
+user-verify-email-report-subject = Tutu ña { -product-name }
 fxa-account = { -brand-fxa }
 
 ## What to do after data breach tips
