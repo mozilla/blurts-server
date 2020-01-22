@@ -12,7 +12,7 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 
-
+##
 
 terms-and-privacy = 利用規約と個人情報保護方針
 GitHub-link-title = GitHub
@@ -23,6 +23,7 @@ error-hibp-throttled = { -brand-HIBP } への接続数が多すぎます
 error-hibp-connect = { -brand-HIBP } への接続でエラーが発生しました。
 error-hibp-load-breaches = 侵害データを読み込めませんでした。
 error-must-be-signed-in = { -brand-fxa } でログインしてください。
+error-to-finish-verifying = このメールで { -product-name } の認証を完了するには、主要アドレスでログインする必要があります。
 home-title = { -product-name }
 home-not-found = ページが見つかりません。
 oauth-invalid-session = 不正なセッション
@@ -234,7 +235,7 @@ want-to-add = 別のメールアドレスを追加しますか？
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = ログイン
 
-
+##
 
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
@@ -245,3 +246,17 @@ breach-alert-notifications = 侵害についての通知設定
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = 侵害が追加された日:
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+
+##
+
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+

@@ -17,7 +17,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Termini di utilizzo e privacy
 GitHub-link-title = GitHub
@@ -349,7 +349,7 @@ email-verified-view-dashboard = { $nestedSignInLink } per visualizzare e gestire
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = Accedi
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -381,3 +381,87 @@ rec-section-headline-no-pw = Come proteggere le tue informazioni personali
 rec-section-subhead-no-pw = Anche se nessuna password è stata esposta in questa violazione, puoi sempre adottare nuove misure per proteggere meglio le tue informazioni personali.
 # Button
 see-additional-recs = Vedi altri suggerimenti
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = L’indirizzo { $affectedEmail } è stato coinvolto nella violazione. <a>Che cosa puoi fare ora?</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] { $numAffectedEmails } dei tuoi indirizzi email è stato coinvolto nella violazione. <a>Che cosa puoi fare ora?</a>
+       *[other] { $numAffectedEmails } dei tuoi indirizzi email sono stati coinvolti nella violazione. <a>Che cosa puoi fare ora?</a>
+    }
+
+##
+
+marking-this-subhead = Contrassegnare la violazione come risolta
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body = <span>Una volta prese tutte le contromisure possibili per proteggerti dalla violazione</span>, puoi contrassegnarla come risolta. Potrai accedere in qualsiasi momento alle informazioni sulla violazione dal pannello utente.
+mark-as-resolve-button = Contrassegna come risolta
+marked-as-resolved-label = Contrassegnata come risolta
+undo-button = Annulla
+confirmation-1-subhead = Ottimo! Hai risolto la tua prima violazione.
+confirmation-1-body = Continua così! Controlla il pannello utente per vedere che cos’altro puoi fare per proteggerti.
+confirmation-2-subhead = Beccatevi questo, hacker!
+confirmation-2-body = Stai intraprendendo passi importanti per proteggere i tuoi account online.
+confirmation-3-subhead = Un’altra violazione sistemata. Ottimo lavoro!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = La tua nuova password è univoca, efficace e difficile da indovinare? <a>Scoprilo</a>
+generic-confirmation-subhead = Questa violazione è stata contrassegnata come risolta
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Vai al pannello utente per verificare la violazione rimasta.
+       *[other] Vai al pannello utente per verificare tutte le violazioni rimaste.
+    }
+return-to-breach-details-link = Torna alle informazioni sulla violazione
+go-to-dashboard-link = Vai al pannello utente
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% completato
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } risolta
+       *[other] { $numResolvedBreaches } risolte
+    }
+progress-intro-subhead = Nuova funzione in { -product-name }: contrassegna le violazioni come risolte
+progress-intro-message = Dopo aver controllato le informazioni su una violazione e aver preso le misure necessarie per proteggere le tue informazioni personali, puoi contrassegnare le violazioni come risolte.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } su { $numTotalBreaches } violazioni contrassegnata come risolta
+       *[other] { $numResolvedBreaches } su { $numTotalBreaches } violazioni contrassegnate come risolte
+    }
+progress-complete = Tutte le violazioni note sono state contrassegnate come risolte
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+progress-message-1 = <span>Hai iniziato alla grande!</span> Verifica le violazioni rimaste e scopri quali misure adottare.
+progress-message-2 = <span>Continua così!</span> Anche piccoli accorgimenti, come aggiornare le password, danno un contributo decisivo alla sicurezza delle tue informazioni personali.
+progress-message-3 = <span>Hai risolto parecchie violazioni!</span> Continua così, hai quasi finito.
+progress-message-4 = <span>È quasi fatta!</span> Ormai sei al traguardo.
+progress-complete-message = <span>Una bella soddisfazione, eh?</span> Se vuoi fare ancora di più, questo è un buon momento per aggiornare tutte le tue credenziali con password migliori.
+
+##
+
+resolve-this-breach-link = Risolvi violazione
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Contrassegnata come risolta:
+hide-resolved-button = Nascondi risolte
+show-resolved-button = Mostra risolte
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Password esposta in violazioni non risolte
+       *[other] Password esposte in violazioni non risolte
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Violazione di dati nota contrassegnata come risolta
+       *[other] Violazioni di dati note contrassegnate come risolte
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Nuova

@@ -454,14 +454,84 @@ resolve-top-notification-plural =
 ##
 
 marking-this-subhead = Az adatsértés megjelölése megoldottként
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Amint megtette a lépéseket, kezelheti ezt az adatsértést</span>,
+    megjelölheti megoldottként. A saját vezérlőpultjáról továbbra is elérheti 
+    az adatsértés részleteit.
 mark-as-resolve-button = Megjelölés megoldottként
 marked-as-resolved-label = Megjelölve megoldottként
 undo-button = Visszavonás
 confirmation-1-subhead = Szép! Most oldotta meg az első adatsértését.
+confirmation-1-body = Tartsa meg a lendületet. Nézze meg a vezérlőpultot, hogy van-e még tennivaló.
+confirmation-2-subhead = Nesze nektek hackerek!
+confirmation-2-body = Fontos lépéseket tesz az online fiókjai védelmének érdekében.
+confirmation-3-subhead = Még egy lecsapva. Szép munka!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Az új jelszava egyedi, erős és nehezen kitalálható? <a>Tudja meg</a>
+generic-confirmation-subhead = Ez az adatsértés megoldottként lett megjelölve
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] A fennmaradt adatsértés megtekintéséhez ugorjon az irányítópulthoz.
+       *[other] Az összes fennmaradt adatsértés megtekintéséhez ugorjon az irányítópulthoz.
+    }
+return-to-breach-details-link = Vissza az adatsértés részleteihez
+go-to-dashboard-link = Ugrás a vezérlőpultra
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% kész
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } megoldva
+       *[other] { $numResolvedBreaches } megoldva
+    }
+progress-intro-subhead = Új a { -product-name }ban: Adatsértések megjelölése megoldottként
+progress-intro-message =
+    Az adatsértés részleteinek áttekintése és a személyes információi érdekében 
+    tett védelmi lépések megtétele után, megjelölheti az adatsértéseket megoldottként.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } / { $numTotalBreaches } adatsértés megjelölve megoldottként
+       *[other] { $numResolvedBreaches } / { $numTotalBreaches } adatsértés megjelölve megoldottként
+    }
+progress-complete = Az összes ismert adatsértés megjelölve megoldottként
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>Nagyszerű kezdés!</span> Nézze meg a fennmaradó adatsértéseket, és 
+    tudja meg milyen lépéseket kell tennie.
+progress-message-2 =
+    <span>Csak így tovább!</span> Az apró változtatások, mint a jelszavai frissítése, nagy hatással 
+    vannak a személyes adatai biztonságban tartására.
+progress-message-3 = <span>Szép munka, az adatsértések megoldva!</span> Csak így tovább, még néhány van hátra.
+progress-message-4 = <span>Már majdnem kész!</span> Közel a célvonal.
+progress-complete-message =
+    <span>Jó érzés, ugye?</span> Ha folytatni akarja, akkor itt az alkalom, hogy frissítse 
+    a többi bejelentkezését, és erősebb jelszavakat használjon.
 
 ##
 
+resolve-this-breach-link = Ezen adatsértés megoldása
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Megjelölve megoldottként:
+hide-resolved-button = Megoldottak elrejtése
+show-resolved-button = Megoldottak megjelenítése
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Megoldatlan adatsértésekben kikerült jelszó
+       *[other] Megoldatlan adatsértésekben kikerült jelszavak
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Megoldottként megjelölt adatsértés
+       *[other] Megoldottként megjelölt adatsértések
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Új

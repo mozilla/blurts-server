@@ -42,6 +42,7 @@ email-addresses = Cyfeiriadau e-bost
 email-messages = Negeseuon e-bost
 employers = Cyflogwyr
 employment-statuses = Statws cyflogaeth
+encrypted-keys = Allweddi wedi'u hamgryptio
 ethnicities = Ethnigrwydd
 family-members-names = Enwau aelodau'r teulu
 family-plans = Cynlluniau teuluol

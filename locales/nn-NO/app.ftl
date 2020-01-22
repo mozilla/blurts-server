@@ -470,28 +470,26 @@ confirmation-3-body = Er det nye passordet ditt unikt, sterkt og vanskeleg å gj
 generic-confirmation-subhead = Denne datalekkasjen er merkt som løyst
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
-        [one] Gå til oversikta for å sjå attståande datalekkasjar.
+        [one] Gå til oversikta for å sjå attståande datalekkasje.
        *[other] Gå til oversikta for å sjå alle attståande datalekkasjar.
     }
 return-to-breach-details-link = Gå tilbake til datalekkasjedetaljar
 go-to-dashboard-link = Gå til oversynet
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
-progress-percent-complete = { $percentComplete }% fullført
+progress-percent-complete = { $percentComplete } % fullført
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
 num-resolved =
     { $numResolvedBreaches ->
-        [one] { $numResolvedBreaches } løyst
        *[other] { $numResolvedBreaches } løyste
     }
 progress-intro-subhead = Nytt i { -product-name }: Marker datalekkasjar som løyste
 progress-intro-message =
-    När du har granska detaljane om ein datalekkasje og gjort noko for å beskytte 
+    Når du har granska detaljane om ein datalekkasje og gjort noko for å beskytte 
     den personlege informasjonen din, kan du merkje datalekkasjar som løyste.
 progress-status =
     { $numTotalBreaches ->
-        [one] { $numResolvedBreaches } av { $numTotalBreaches } datalekkasje er merkt som løyst
        *[other] { $numResolvedBreaches } av { $numTotalBreaches } datalekkasjar er merkte som løyste
     }
 progress-complete = Alle kjende datalekkasjar er merkte som løyste
@@ -501,11 +499,11 @@ progress-complete = Alle kjende datalekkasjar er merkte som løyste
 
 progress-message-1 =
     <span>Det er ein bra start!</span> Sjekk dei siste attståande datalekkasjane for å lære deg 
-    kva du skal gjere
+    kva du skal gjere.
 progress-message-2 =
     <span>Fortset slik!</span> Små endringar som å oppdatere passord har stor innverknad på 
     det å beskytte den personlege informasjonen din.
-progress-message-3 = <span>Bra jobba med å løyse desse datalekkasjane! </span> Fortset slik. Du har nokre att.
+progress-message-3 = <span>Bra jobba med å løyse desse datalekkasjane!</span> Fortset slik. Du har nokre att.
 progress-message-4 = <span>Nesten ferdig!</span> Du er nesten i mål.
 progress-complete-message =
     <span>Det kjennest bra, ikkje sant?</span> Om du vil fortsetje passar det bra no 

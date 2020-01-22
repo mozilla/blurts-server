@@ -11,8 +11,9 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Termos e privacidade
 GitHub-link-title = GitHub
@@ -403,7 +404,7 @@ email-verified-view-dashboard = Para ver e gerir todos os e-mails que registou p
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = iniciar sessão
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -427,3 +428,25 @@ five-myths-desc = Saiba como evitar más práticas para palavras-passe que facil
 take-further-steps-desc = Descubra como mitigar os riscos de roubo de identidade que levam a perdas financeiras.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Alterações guardadas!
+# Section headline
+rec-section-headline = O que fazer para esta violação
+rec-section-subhead = Recomendamos que siga estes passos para manter os seus dados pessoais seguros e proteger a sua identidade digital.
+# Section headline
+rec-section-headline-no-pw = O que fazer para proteger os seus dados pessoais
+rec-section-subhead-no-pw = Embora as palavras-passe não tenham sido expostas nesta violação, ainda existem passos que pode fazer para proteger melhor os seus dados pessoais.
+# Button
+see-additional-recs = Ver recomendações adicionais
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+
+##
+
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+

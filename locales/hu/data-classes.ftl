@@ -42,6 +42,7 @@ email-addresses = E-mail címek
 email-messages = E-mail üzenetek
 employers = Munkáltatók
 employment-statuses = Foglalkoztatási állapotok
+encrypted-keys = Titkosított kulcsok
 ethnicities = Etnikai hovatartozások
 family-members-names = Családtagok nevei
 family-plans = Családi tervek

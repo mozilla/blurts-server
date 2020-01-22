@@ -41,6 +41,7 @@ email-addresses = Adresa email
 email-messages = Mesazhe email
 employers = Punëdhënës
 employment-statuses = Gjendje punësimi
+encrypted-keys = Kyçe të fshehtëzuar
 ethnicities = Kombësi
 family-members-names = Emra anëtarësh familjeje
 family-plans = Plane familjare

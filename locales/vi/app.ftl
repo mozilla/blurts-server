@@ -13,7 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Điều khoản & quyền riêng tư
 GitHub-link-title = GitHub
@@ -399,7 +399,7 @@ email-verified-view-dashboard = Để xem và quản lý tất cả các email m
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = đăng nhập
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -431,3 +431,59 @@ rec-section-headline-no-pw = Phải làm gì để bảo vệ thông tin cá nh�
 rec-section-subhead-no-pw = Mặc dù mật khẩu không lộ ra trong vi phạm này, vẫn có những bước bạn có thể thực hiện để bảo vệ thông tin cá nhân của mình tốt hơn.
 # Button
 see-additional-recs = Xem các khuyến nghị bổ sung
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $affectedEmail } đã xuất hiện trong vi phạm này. <a>Phải làm gì tiếp theo</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+       *[other] { $numAffectedEmails } địa chỉ email của bạn đã xuất hiện vi phạm này. <a>Phải làm gì tiếp theo</a>
+    }
+
+##
+
+marking-this-subhead = Đánh dấu vi phạm này là đã giải quyết
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Khi bạn đã thực hiện các bước bạn có thể giải quyết vi phạm này</span>,
+    bạn có thể đánh dấu nó là giải quyết. Bạn vẫn có thể truy cập chi tiết về vi phạm 
+    từ bảng điều khiển của bạn bất cứ lúc nào.
+mark-as-resolve-button = Đánh dấu là đã giải quyết
+marked-as-resolved-label = Đã đánh dấu là đã giải quyết
+undo-button = Hoàn tác
+go-to-dashboard-link = Đi đến bảng điều khiển
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% hoàn thành
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+       *[other] Đã giải quyết { $numResolvedBreaches } mục
+    }
+progress-intro-subhead = Tính năng mới trong { -product-name }: Đánh dấu vi phạm là đã giải quyết
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
+resolve-this-breach-link = Giải quyết vi phạm này
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Đã đánh dấu giải quyết:
+hide-resolved-button = Ẩn mục đã giải quyết
+show-resolved-button = Hiển thị mục đã giải quyết
+unresolved-passwords-exposed =
+    { $numPasswords ->
+       *[other] Mật khẩu bị lộ trong các vi phạm chưa được giải quyết
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+       *[other] Vi phạm dữ liệu đã biết được đánh dấu là đã giải quyết
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Mới

@@ -452,18 +452,82 @@ resolve-top-notification-plural =
 ##
 
 marking-this-subhead = Merk denne datalekkasjen som løst
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Når du har gjort det du kan gjøre for å håndtere denne datalekkasjen</span>,
+    kan du merke den som løst. Du kan fortsatt få tilgang til detaljer om datalekkasjen
+    fra oversikten din når som helst.
 mark-as-resolve-button = Merk som løst
 marked-as-resolved-label = Merket som løst
 undo-button = Angre
 confirmation-1-subhead = Hyggelig! Du har akkurat løst den første datalekkasjen din.
+confirmation-1-body = Fortsett slik. Kontroller oversikten for å se om det er mer å gjøre.
 confirmation-2-subhead = Ta det, hackere!
+confirmation-2-body = Du tar viktige steg for å beskytte nettkontoene dine.
+confirmation-3-subhead = Enda en er ferdig. Bra jobbet!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Er det nye passordet ditt unikt, sterkt og vanskelig å gjette? <a>FInn ut</a>
+generic-confirmation-subhead = Denne datalekkasjen er merket som løst
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Gå til oversikten for å se resterende datalekkasje.
+       *[other] Gå til oversikten for å se alle resterende datalekkasjer.
+    }
+return-to-breach-details-link = Gå tilbake til datalekkasjedetaljer
+go-to-dashboard-link = Gå til oversikten
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete } % fullført
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+       *[other] { $numResolvedBreaches } løste
+    }
+progress-intro-subhead = Nytt i { -product-name }: Marker datalekkasjer som løst
+progress-intro-message =
+    Når du har gjennomgått detaljene om en datalekkasje og tatt skritt for å beskytte
+    din personlige informasjon, kan du merke datalekkasjen som løst.
+progress-status =
+    { $numTotalBreaches ->
+       *[other] { $numResolvedBreaches } av { $numTotalBreaches } datalekkasjer er merket som løste
+    }
 progress-complete = Alle kjente datalekkasjer er markert som løst
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>Det er en bra start!</span> Sjekk de resterende datalekkasjene for å lære deg 
+    hva du skal gjøre.
+progress-message-2 =
+    <span>Fortsett slik!</span> Små endringer som å oppdatere passord har stor innvirkning på 
+    det å beskytte den personlige informasjonen din.
+progress-message-3 = <span>Bra jobbet med å løse disse datalekkasjene!</span> Fortsett slik. Du har noen igjen.
+progress-message-4 = <span>Nesten ferdig!</span> Du er nesten i mål.
+progress-complete-message =
+    <span>Det føles bra, ikke sant?</span> Om du vil fortsette passer det bra nå 
+    å oppdatere andre innlogginger med sterkere passord.
 
 ##
 
+resolve-this-breach-link = Løs denne datalekkasjen
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Merket som løst
+hide-resolved-button = Skjul løste
+show-resolved-button = Vis løste
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Passord eksponert i uløst datalekkasje
+       *[other] Passord eksponerte i uløste datalekkasjer
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Kjent datalekkasje merket som løst
+       *[other] Kjente datalekkasjer merket som løste
+    }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Ny

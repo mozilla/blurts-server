@@ -42,6 +42,7 @@ email-addresses = adrese de e-mail
 email-messages = mesaje de e-mail
 employers = angajatori
 employment-statuses = stare profesională
+encrypted-keys = Taste criptate
 ethnicities = etnii
 family-members-names = nume ale membrilor de familie
 family-plans = planuri familiale

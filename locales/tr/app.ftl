@@ -13,7 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Şartlar ve gizlilik
 GitHub-link-title = GitHub
@@ -359,7 +359,7 @@ email-verified-view-dashboard = İhlal izleme için kaydolduğunuz tüm e-postal
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = giriş yapın
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -385,6 +385,45 @@ take-further-steps-desc = Mali kaybı önlemek üzere kimlik hırsızlığı ris
 changes-saved = Değişiklikler kaydedildi!
 # Section headline
 rec-section-headline = Bu ihlalle ilgili ne yapmalısınız?
+rec-section-subhead = Kişisel bilgilerinizi güvende tutmak ve dijital kimliğinizi korumak için bu adımları uygulamanızı öneririz.
 # Section headline
 rec-section-headline-no-pw = Kişisel bilgilerinizi korumak için ne yapmalısınız?
 rec-section-subhead-no-pw = Bu ihlal kapsamında parolalar ele geçirilmemiş olsa da kişisel bilgilerinizi daha iyi korumak için atabileceğiniz adımlar var.
+# Button
+see-additional-recs = Ek tavsiyelere bakın
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+
+##
+
+mark-as-resolve-button = Çözüldü olarak işaretle
+marked-as-resolved-label = Çözüldü olarak işaretlendi
+undo-button = Geri al
+confirmation-1-subhead = Güzel! İlk ihlalinizi çözdünüz.
+confirmation-2-body = Çevrimiçi hesaplarınızı korumaya yönelik önemli adımlar atıyorsunuz.
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Yeni parolanız benzersiz, güçlü ve tahmin edilmesi zor mu? <a>Öğrenin</a>
+generic-confirmation-subhead = Bu ihlal çözüldü olarak işaretlendi
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Kalan ihlali görmek için kontrol panelinize gidin.
+       *[other] Kalan tüm ihlalleri görmek için kontrol panelinize gidin.
+    }
+return-to-breach-details-link = İhlal ayrıntılarına dön
+go-to-dashboard-link = Panoya git
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = %{ $percentComplete } tamamlandı
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
+resolve-this-breach-link = Bu ihlali çöz
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Yeni

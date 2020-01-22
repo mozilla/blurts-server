@@ -23,7 +23,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Условия и конфиденциальность
 GitHub-link-title = GitHub
@@ -382,7 +382,7 @@ email-verified-view-dashboard = Для просмотра и управлени�
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = войдите
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -406,5 +406,25 @@ five-myths-desc = Узнайте, как избегать простых пар�
 take-further-steps-desc = Узнайте, как уменьшить риск кражи личных данных, чтобы предотвратить финансовые потери.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Изменения сохранены!
+# Section headline
+rec-section-headline = Что сделать для устранения последствий этой утечки
+rec-section-subhead = Мы рекомендуем вам предпринять следующие шаги, чтобы сохранить вашу личную информацию в безопасности и защитить вашу цифровую идентичность.
+# Section headline
+rec-section-headline-no-pw = Что нужно сделать для защиты вашей личной информации
 # Button
 see-additional-recs = Посмотреть дополнительные рекомендации
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+
+##
+
+undo-button = Отменить
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+

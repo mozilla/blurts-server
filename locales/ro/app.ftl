@@ -61,10 +61,10 @@ unsub-blurb = Prin dezabonare, adresa ta de e-mail va fi eliminată din lista { 
 unsub-button = Dezabonează-te
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Încălcările securității datelor sunt furnizate de { $hibp-link }
-share-twitter = Majoritatea persoanelor au aproximativ 100 de conturi online. A fost expus vreunul dintre conturile tale într-o breșă de date? Află.
-share-facebook-headline = Află dacă ai fost parte a unei breșe de date
-share-facebook-blurb = Au fost expuse conturile tale online într-o breșă de date?
-og-site-description = Află dacă ai fost parte a unei breșe de date cu { -product-name }. Înregistrează-te pentru alerte despre viitoare breșe și obține ponturi pentru a-ți menține în siguranță conturile.
+share-twitter = Majoritatea persoanelor au aproximativ 100 de conturi online. A fost expus vreunul dintre conturile tale într-o încălcare a securității datelor? Află.
+share-facebook-headline = Află dacă ai fost implicat(ă) într-o încălcare a securității datelor
+share-facebook-blurb = Au fost expuse conturile tale online într-o încălcare a securității datelor?
+og-site-description = Află dacă ai fost implicat(ă) într-o încălcare a securității datelor cu { -product-name }. Înregistrează-te pentru alerte despre viitoare încălcări a securității datelor și obține ponturi pentru a-ți menține în siguranță conturile.
 show-all = Afișează toate
 fxa-scan-another-email = Vrei să verifici altă adresă de e-mail?
 sign-in = Autentificare
@@ -78,14 +78,14 @@ fxa-pwt-summary-2 =
 fxa-pwt-summary-4 =
     Managerii de parole, cum ar fi 1Password, LastPass, Dashlane și Bitwarden îți stochează
     parolele și le completează pe site-uri pentru tine. Te vor ajuta chiar să creezi parole puternice.
-fxa-pwt-summary-6 = Breșele de date sunt în creștere. Dacă informațiile tale cu caracter personal apar într-o breșă de date nouă, { -product-name } îți va trimite o alertă — astfel încât să iei măsuri și să îți protejezi conturile.
+fxa-pwt-summary-6 = Încălcările securității datelor sunt în creștere. Dacă informațiile tale cu caracter personal apar într-o încălcare nouă a securității datelor, { -product-name } îți va trimite o alertă — astfel încât să iei măsuri și să îți protejezi conturile.
 fxa-what-to-do-blurb-1 =
     Dacă nu te poți autentifica, contactează site-ul web și întreabă-i cum să îți actualizezi datele de identificare.
     Vezi un cont necunoscut? Este posibil ca datele tale să fi fost vândute
     sau redistribuite. Ar putea fi și un cont de care ai uitat sau o companie care și-a schimbat denumirea.
 fxa-what-to-do-subhead-2 = Nu mai folosi parola expusă și schimb-o peste tot pe unde ai folosit-o.
 fxa-wtd-blurb-2 = Hackerii pot încerca să reutilizeze parola și adresa ta de e-mail ca să intre în alte conturi. Creează o parolă diferită și unică pentru fiecare cont, în special pentru contul bancar, e-mail și alte site-uri web pe care salvezi date cu caracter personal.
-fxa-what-to-do-blurb-3 = Cele mai multe breșe expun numai adrese de e-mail și parole, dar unele includ și date financiare sensibile. În cazul în care ți-au fost expuse contul bancar sau numerele cardurilor de credit, alertează banca asupra unei posibilități de fraudă. Monitorizează-ți extrasele de cont pentru plăți pe care nu le recunoști.
+fxa-what-to-do-blurb-3 = Cele mai multe încălcări ale securității datelor expun numai adrese de e-mail și parole, dar unele includ și date financiare sensibile. În cazul în care ți-au fost expuse contul bancar sau numerele cardurilor de credit, alertează banca asupra unei posibilități de fraudă. Monitorizează-ți extrasele de cont pentru plăți pe care nu le recunoști.
 fxa-what-to-do-subhead-4 = Obține ajutor pentru a ține minte toate parolele și pentru a le păstra în siguranță.
 fxa-what-to-do-blurb-4 =
     Managerii de parole, cum ar fi 1Password, LastPass, Dashlane și Bitwarden îți stochează
@@ -101,50 +101,50 @@ preferences = Preferințe
 # Link title
 home = Acasă
 # Link title
-breaches = Breșe
+breaches = Încălcări a securității datelor
 # Link title
 security-tips = Ponturi de securitate
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Deschide navigarea { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
-latest-breach = ULTIMA BREȘĂ ADĂUGATĂ
+latest-breach = ULTIMA ÎNCĂLCARE A SECURITĂȚII DATELOR ADĂUGATĂ
 # Link title
-more-about-this-breach = Mai multe despre această breșă
+more-about-this-breach = Mai multe despre această încălcare a securității datelor
 take-control = Reia controlul asupra datelor tale personale.
 cant-stop-hackers = Nu poți opri hackerii să facă ceea ce fac, dar poți evita obiceiurile proaste care le ușurează munca.
 read-more-tips = Citește mai multe ponturi de securitate
 how-hackers-work = Înțelege modul de operare al hackerilor
-monitor-your-online-accounts = Înscrie-te pentru monitorizarea breșelor cu un { -brand-fxa }.
-stay-alert = Fii la curent cu ultimele breșe
-if-your-info = Dacă informațiile tale apar într-o nouă breșă de date, îți vom trimite o alertă.
-search-all-emails = Caută toate adresele tale de e-mail pentru breșe și primește alerte despre noi amenințări.
+monitor-your-online-accounts = Înscrie-te pentru monitorizarea încălcărilor securității datelor cu un { -brand-fxa }.
+stay-alert = Fii la curent cu ultimele încălcări a securității datelor
+if-your-info = Dacă informațiile tale apar într-o nouă încălcare a securității datelor, îți vom trimite o alertă.
+search-all-emails = Caută toate adresele tale de e-mail pentru încălcări ale securității datelor și primește alerte despre noi amenințări.
 monitor-several-emails = Monitorizează mai multe adrese de e-mail
 take-action = Ia măsuri pentru a-ți proteja conturile
 keep-your-data-safe = Află ce trebuie să faci ca să îți păstrezi datele în siguranță împotriva infractorilor cibernetici.
-website-breach = Breșa unui site web
+website-breach = Încălcarea securității datelor în cazul unui site web
 sensitive-breach = Breșă de date sensibile a site-ului
 data-aggregator-breach = Breșă a agregatoarelor de date
-unverified-breach = Breșă neverificată
+unverified-breach = Ultima încălcare a securității datelor neverificată
 spam-list-breach = Breșă a listei de mesaje nedorite
-website-breach-plural = Breșe de site-uri web
-sensitive-breach-plural = Breșe de date sensibile
-data-aggregator-breach-plural = Breșe ale agregatoarelor de date
-unverified-breach-plural = Breșe neverificate
-spam-list-breach-plural = Breșe ale listelor de mesaje nedorite
+website-breach-plural = Încălcări ale securității datelor în cazul site-urilor web
+sensitive-breach-plural = Încălcări ale securității datelor sensibile
+data-aggregator-breach-plural = Încălcări ale securității datelor în cazul agregatoarelor de date
+unverified-breach-plural = Încălcări neverificate ale securității datelor
+spam-list-breach-plural = Încălcări ale securității datelor în cazul listelor de spam
 what-data = Ce date au fost compromise:
 sensitive-sites = Cum tratează { -product-name } site-urile cu date sensibile?
-sensitive-sites-copy = { -product-name } divulgă conturile asociate cu aceste tipuri de breșe numai după ce a fost verificată o adresă de e-mail. Înseamnă că ești singura persoană care poate vedea dacă informațiile tale au fost implicate în această breșă (dacă nu cumva și altcineva are acces la contul tău de e-mail).
-delayed-reporting-headline = De ce a durat atât de mult raportarea acestei breșe?
-delayed-reporting-copy = Poate dura câteva luni sau câțiva ani pentru ca datele de autentificare expuse într-o breșă de date să apară în dark web. Breșele vin adăugate în baza noastră de date imediat ce au fost descoperite și verificate.
+sensitive-sites-copy = { -product-name } divulgă conturile asociate cu aceste tipuri de încălcări ale securității datelor numai după ce a fost verificată o adresă de e-mail. Acest lucru înseamnă că ești singura persoană care poate vedea dacă informațiile tale au fost implicate în această încălcare a securității datelor (dacă nu cumva și altcineva are acces la contul tău de e-mail).
+delayed-reporting-headline = De ce a durat atât de mult raportarea acestei încălcări a securității datelor?
+delayed-reporting-copy = Poate dura câteva luni sau câțiva ani pentru ca datele de autentificare expuse într-o încălcare a securității datelor să apară în dark web. Încălcările vin adăugate în baza noastră de date imediat ce au fost descoperite și verificate.
 about-fxm-headline = Despre { -product-name }
-about-fxm-blurb = { -product-name } te avertizează în cazul în care conturile tale online au fost implicate într-o breșă de date. Află dacă  ai fost implicat(ă) într-o breșă de date, primește alerte despre breșe noi de date și ia măsuri pentru protejarea conturilor tale online. { -product-name } este furnizat de { -brand-Mozilla }.
-fxm-warns-you = { -product-name } te avertizează dacă adresa ta de e-mail a fost expusă într-o breșă de date online. Vezi dacă ți-au fost expuse informațiile, afli cum să-ți protejezi mai bine conturile online și primești alerte în cazul în care adresa ta de e-mail apare în breșe noi de date.
+about-fxm-blurb = { -product-name } te avertizează în cazul în care conturile tale online au fost implicate într-o încălcare a securității datelor. Află dacă  ai fost implicat(ă) într-o încălcare a securității datelor, primește alerte despre încălcările noi ale securității datelor și ia măsuri pentru protejarea conturilor tale online. { -product-name } este furnizat de { -brand-Mozilla }.
+fxm-warns-you = { -product-name } te avertizează dacă adresa ta de e-mail a fost expusă într-o încălcare online a securității datelor. Vezi dacă ți-au fost expuse informațiile, află cum să-ți protejezi mai bine conturile online și primește alerte în cazul în care adresa ta de e-mail apare în încălcări noi ale securității datelor.
 # How Firefox Monitor works
 how-fxm-works = Cum funcționează { -product-name }
 how-fxm-1-headline = Efectuează o căutare de bază
 how-fxm-1-blurb = Caută-ți adresa de e-mail în breșele publice de date încă din anul 2007. Această căutare de bază va accesa majoritatea breșelor de date, dar nu și pe cele care conține informații personale sensibile.
-how-fxm-2-headline = Înregistrează-te pentru monitorizarea breșelor
+how-fxm-2-headline = Înregistrează-te pentru monitorizarea încălcării securității datelor
 how-fxm-2-blurb = Creează un { -brand-fxa } ca să îți monitorizezi adresa de e-mail pentru breșe curente. Odată ce ți-ai verificat adresa de e-mail, vei primi și un raport complet cu breșele anterioare, inclusiv breșe de date sensibile.
 how-fxm-3-headline = Primește notificări în browser
 how-fxm-3-blurb = Dacă folosești { -brand-name }, vei primi o notificare când intri pe un site care a fost expus unei breșe. Afli imediat dacă ai fost implicat(ă) în breșa respectivă și ce măsuri poți lua.
@@ -246,7 +246,7 @@ fb-comp-and-others =
 no-other-breaches-found = Nicio altă breșă identificată la căutarea de bază.
 no-results-blurb = Ne pare rău, dar breșa aceea nu este în baza noastră de date.
 all-breaches-headline = Toate breșele din { -product-name }
-search-breaches = Caută breșe
+search-breaches = Caută încălcări a securității datelor
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Afișate:
 
@@ -286,7 +286,7 @@ known-data-breaches-exposed =
        *[other] Mai multe breșe de date cunoscute ți-au expus informațiile
     }
 # Button
-see-additional-breaches = Vezi și alte breșe
+see-additional-breaches = Vezi și alte încălcări a securității datelor
 scan-results-known-breaches =
     { $breachCount ->
         [one] Această adresă de e-mail a apărut în 1 breșă cunoscută de date.
@@ -300,13 +300,13 @@ results-for = Rezultate pentru: { $userEmail }
 other-monitored-emails = Alte adrese de e-mail monitorizate
 email-verification-required = Este necesară verificarea adresei de e-mail
 fxa-primary-email = Adresă de e-mail { -brand-fxa } - primară
-what-is-a-website-breach = Ce este o breșă a unui site web?
-website-breach-blurb = O breșă a unui site web apare când infractorii cibernetici fură, copiază sau expun informații cu caracter personal din conturi online. Apare de obicei ca rezultat al faptului că hackerii au identificat un punct slab în securitatea site-ului. Breșele pot apărea și la „scurgerea” accidentală a informațiilor din conturi.
+what-is-a-website-breach = Ce este o încălcare a securității datelor în cazul unui site web?
+website-breach-blurb = O încălcare a securității datelor în cazul unui site web apare când infractorii cibernetici fură, copiază sau expun informații cu caracter personal din conturi online. Apare de obicei ca rezultat al faptului că hackerii au identificat un punct slab în securitatea site-ului. Încălcările pot apărea și la „scurgerea” accidentală a informațiilor din conturi.
 security-tips-headline = Ponturi de securitate pentru a te proteja de hackeri
 steps-to-protect = Pași de luat pentru a-ți proteja identitatea online
 take-further-steps = Ia măsuri suplimentare pentru a-ți proteja identitatea
-alert-about-new-breaches = Trimite-mi alerte pentru breșe noi
-see-if-youve-been-part = Vezi dacă ai fost implicat(ă) într-o breșă de date online.
+alert-about-new-breaches = Trimite-mi alerte pentru încălcările noi ale securității datelor
+see-if-youve-been-part = Vezi dacă ai fost implicat(ă) într-o încălcare a securității datelor
 get-ongoing-breach-monitoring = Obține monitorizare curentă pentru breșe pentru mai multe adrese de e-mail.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Află
@@ -339,7 +339,7 @@ signed-in-as = Autentificat ca: { $userEmail }
 filter-by = Filtrează pe categorii:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Meniu
-to-affected-email = Trimite alerte pentru breșe de date către adresele de e-mail afectate
+to-affected-email = Trimite alerte pentru încălcările securității datelor către adresele de e-mail afectate
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
 join-firefox = Există o modalitate de a-ți proteja viața privată. Alătură-te { -brand-name }.
 # Link title

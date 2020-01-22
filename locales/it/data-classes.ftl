@@ -42,6 +42,7 @@ email-addresses = indirizzi email
 email-messages = messaggi email
 employers = datori di lavoro
 employment-statuses = stati impiego
+encrypted-keys = Chiavi crittate
 ethnicities = etnie
 family-members-names = nomi dei familiari
 family-plans = piani familiari

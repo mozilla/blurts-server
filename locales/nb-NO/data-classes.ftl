@@ -42,6 +42,7 @@ email-addresses = E-postadresser
 email-messages = E-postmeldinger
 employers = Arbeidsgivere
 employment-statuses = Ansettelsesstatus
+encrypted-keys = Krypterte nøkler
 ethnicities = Etnisiteter
 family-members-names = Navn på familiemedlemmer
 family-plans = Familieplaner

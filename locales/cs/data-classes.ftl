@@ -42,6 +42,7 @@ email-addresses = E-mailové adresy
 email-messages = E-mailové zprávy
 employers = Zaměstnavatelé
 employment-statuses = Zaměstnanecké statusy
+encrypted-keys = Šifrované klíče
 ethnicities = Etnické příslušnosti
 family-members-names = Jména rodinných příslušníků
 family-plans = Rodinné plány
