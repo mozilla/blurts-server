@@ -42,6 +42,7 @@ email-addresses = adresses électroniques
 email-messages = messages électroniques
 employers = employeurs
 employment-statuses = situations professionnelles
+encrypted-keys = clés chiffrées
 ethnicities = origines ethniques
 family-members-names = noms des membres de la famille
 family-plans = régimes familiaux

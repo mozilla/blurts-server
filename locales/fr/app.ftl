@@ -404,7 +404,11 @@ resolve-top-notification-plural =
 
 ##
 
+marking-this-subhead = Marquer cette fuite de données comme réglée
+mark-as-resolve-button = Marquer comme réglée
+marked-as-resolved-label = Marquée comme réglée
 undo-button = Annuler
+confirmation-1-subhead = Parfait, vous venez de régler votre première fuite de données.
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
