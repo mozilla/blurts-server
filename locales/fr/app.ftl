@@ -405,10 +405,16 @@ resolve-top-notification-plural =
 ##
 
 marking-this-subhead = Marquer cette fuite de données comme réglée
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body = <span>Une fois que vous aurez pris les mesures nécessaires pour remédier à cette fuite de données</span>, vous pouvez la marquer comme réglée. Vous pouvez toujours accéder aux détails de la fuite depuis votre tableau de bord à tout moment.
 mark-as-resolve-button = Marquer comme réglée
 marked-as-resolved-label = Marquée comme réglée
 undo-button = Annuler
 confirmation-1-subhead = Parfait, vous venez de régler votre première fuite de données.
+confirmation-1-body = Continuez sur votre lancée. Jetez un coup d’œil à votre tableau de bord pour voir s’il n’y a pas autre chose à faire.
+confirmation-2-body = Vous franchissez une étape importante dans la protection vos comptes en ligne.
+confirmation-3-subhead = Encore un problème réglé. Bien joué !
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
