@@ -11,8 +11,7 @@ const getSha1 = require("../sha1-utils");
 
 
 async function subscribeLowercaseHashToHIBP(emailAddress) {
-  const lowerCasedEmail = emailAddress.toLowerCase();
-  const lowerCasedSha1 = getSha1(lowerCasedEmail);
+  const lowerCasedSha1 = getSha1.getSha1ForHIBP(emailAddress);
   await HIBP.subscribeHash(lowerCasedSha1);
   return lowerCasedSha1;
 }

@@ -29,9 +29,9 @@ LocaleUtils.loadLanguagesIntoApp(app);
   };
   rl.question("What email address? ", (answer) => {
     emailAddress = answer;
-    const hash = sha1(emailAddress);
-    const hashPrefix = hash.slice(0, 6).toUpperCase();
-    const hashSuffix = hash.slice(6).toUpperCase();
+    const hash = sha1.getSha1ForHIBP(emailAddress);
+    const hashPrefix = hash.slice(0, 6);
+    const hashSuffix = hash.slice(6);
     rl.question("What breach name? ", async (answer) => {
       breachName = answer;
       const req = {
