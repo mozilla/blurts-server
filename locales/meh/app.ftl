@@ -25,11 +25,25 @@ about-firefox-monitor = Jiee ya’a { -product-name }
 # Link title
 home = Nuu kajie´e
 fxa-account = { -brand-fxa }
+read-more-tips = Ka´vi jiee tu´un kumi koo va´a noo´o
+how-hackers-work = Kuni naja satiñu ñivɨ nani hackers
 about-fxm-headline = Jiee ya’a { -product-name }
+# How Firefox Monitor works
+how-fxm-works = Naja satiñu { -product-name }
 
 ## What to do after data breach tips
 
+change-pw = Sama contraseña kuminu
+change-pw-site = Sama contraseña sitio ya´a
+create-strong-passwords = Naja sá´ánu contraseña va´a
+stop-reusing-pw = Nni´inuka daa contraseña inu
+create-unique-pw = Sá´á contraseñas va´a jee chuva´ama iin nuu va´a, kua iin nuu tetiñu daa contraseñas.
+five-myths = 5 tu´un nakani jiee daa nuu tetiñu contraseñas
 remove-fxm = Xita { -product-name }
+welcome-back = ¡Kusɨɨ inidáni nkantanu tuku, { $userName }!
+welcome-user = ¡Kusɨɨ inidáni nkantanu, { $userName }!
+what-to-do-after-breach = Naku sá´ánu dee ntava yu´uda datos:
+ba-next-step-1 = Sama contraseña noo´o inka vatu jee ntu xini.
 
 ## Updated error messages
 
