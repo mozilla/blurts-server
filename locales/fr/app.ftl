@@ -17,7 +17,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Confidentialité et conditions d’utilisation
 GitHub-link-title = GitHub
@@ -359,7 +359,7 @@ email-verified-view-dashboard = Pour consulter et gérer toutes les adresses él
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = connectez-vous
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -391,3 +391,28 @@ rec-section-headline-no-pw = Que pouvez-vous faire pour protéger vos données p
 rec-section-subhead-no-pw = Bien que les mots de passe n’aient pas été exposés dans cette fuite de données, vous pouvez toujours prendre des mesures pour mieux protéger vos informations personnelles.
 # Button
 see-additional-recs = Voir les recommandations supplémentaires
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $affectedEmail } est apparu dans cette fuite de données. <a>Que faire ?</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] Une de vos adresses électroniques est apparue dans cette fuite de données. <a>Que faire ?</a>
+       *[other] { $numAffectedEmails } de vos adresses électroniques sont apparues dans cette fuite de données. <a>Que faire ?</a>
+    }
+
+##
+
+marking-this-subhead = Marquer cette fuite de données comme réglée
+mark-as-resolve-button = Marquer comme réglée
+marked-as-resolved-label = Marquée comme réglée
+undo-button = Annuler
+confirmation-1-subhead = Parfait, vous venez de régler votre première fuite de données.
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+

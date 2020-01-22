@@ -13,7 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Kushte & Privatësi
 GitHub-link-title = GitHub
@@ -359,7 +359,7 @@ email-verified-view-dashboard = Që të shihni dhe administroni krejt email-et p
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = hyni
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -391,3 +391,23 @@ rec-section-headline-no-pw = Ç’të bëhet për të mbrojtur të dhënat tuaja
 rec-section-subhead-no-pw = Edhe pse në këtë shkelje nuk u ekspozuan fjalëkalime, prapë ka hapa që është mirë të ndërmerren për të mbrojtur të dhënat tuaja personale.
 # Button
 see-additional-recs = Shihni Rekomandime Shtesë
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $affectedEmail } u duk në këtë cenim. <a>Ç’të bëhet më pas</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+       *[other] { $numAffectedEmails } nga adresat tuaja email u dukën në këtë cenim. <a>Ç’të bëhet më pas</a>
+    }
+
+##
+
+marking-this-subhead = Po i vihet shenjë këtij cenimi si i zgjidhur
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
