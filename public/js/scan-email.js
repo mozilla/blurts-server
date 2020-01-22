@@ -4,9 +4,11 @@
 /* global libpolycrypt */
 /* global sendPing */
 
-async function sha1(message) {
-  message = message.toLowerCase();
-  const msgBuffer = new TextEncoder("utf-8").encode(message);
+async function getSha1ForHIBP(scannedEmailAddress) {
+  // Email addresses should be converted to lowercase letters
+  // before hashing
+  scannedEmailAddress = scannedEmailAddress.toLowerCase();
+  const msgBuffer = new TextEncoder("utf-8").encode(scannedEmailAddress);
   let hashBuffer;
   if (/edge/i.test(navigator.userAgent)) {
     hashBuffer = libpolycrypt.sha1(msgBuffer);
@@ -15,6 +17,9 @@ async function sha1(message) {
   }
   const hashArray = Array.from(new Uint8Array(hashBuffer));
   const hashHex = hashArray.map(b => ("00" + b.toString(16)).slice(-2)).join("");
+
+  // Hashes should be converted to uppercase letters
+  // before sending to server and HIBP
   return hashHex.toUpperCase();
 }
 
@@ -26,7 +31,7 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
 
   // show loader and hash email
   emailForm.classList.add("loading-data");
-  emailForm.querySelector("input[name=emailHash]").value = await sha1(userEmail);
+  emailForm.querySelector("input[name=emailHash]").value = await getSha1ForHIBP(userEmail);
 
   // set unhashed email in client's sessionStorage and send key to server
   // so we can pluck these out later in scan-results and not lose them on back clicks
