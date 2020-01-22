@@ -14,9 +14,9 @@ require("../resetDB");
 
 test("notify POST without token should throw error", async() => {
   const testEmail = "victim@spoofattack.com";
-  const testHash = sha1(testEmail);
-  const testPrefix = testHash.slice(0, 6).toUpperCase();
-  const testSuffix = testHash.slice(6).toUpperCase();
+  const testHash = sha1.getSha1ForHIBP(testEmail);
+  const testPrefix = testHash.slice(0, 6);
+  const testSuffix = testHash.slice(6);
 
   const mockRequest = { body: { hashPrefix: testPrefix, hashSuffixes: [testSuffix], breachName: "SomeSensitiveBreach" } };
   const mockResponse = { status: jest.fn(), json: jest.fn() };
@@ -27,10 +27,9 @@ test("notify POST without token should throw error", async() => {
 
 test("notify POST with invalid token should throw error", async() => {
   const testEmail = "victim@spoofattack.com";
-  const testHash = sha1(testEmail);
-  const testPrefix = testHash.slice(0, 6).toUpperCase();
-  const testSuffix = testHash.slice(6).toUpperCase();
-
+  const testHash = sha1.getSha1ForHIBP(testEmail);
+  const testPrefix = testHash.slice(0, 6);
+  const testSuffix = testHash.slice(6);
   const mockRequest = { token: "token-that-doesnt-match-AppConstants", body: { hashPrefix: testPrefix, hashSuffixes: [testSuffix], breachName: "SomeSensitiveBreach" } };
   const mockResponse = { status: jest.fn(), json: jest.fn() };
 
@@ -47,9 +46,9 @@ async function checkNotifyCallsEverythingItShould(breachedEmail, recipientEmail)
   LocaleUtils.fluentFormat = jest.fn();
   HIBPLib.getBreachesForEmail = jest.fn();
 
-  const testHash = sha1(breachedEmail);
-  const testPrefix = testHash.slice(0, 6).toUpperCase();
-  const testSuffix = testHash.slice(6).toUpperCase();
+  const testHash = sha1.getSha1ForHIBP(breachedEmail);
+  const testPrefix = testHash.slice(0, 6);
+  const testSuffix = testHash.slice(6);
   const mockRequest = { token: AppConstants.HIBP_NOTIFY_TOKEN, body: { hashPrefix: testPrefix, hashSuffixes: [testSuffix], breachName: "Test" }, app: { locals: { breaches: testBreaches, AVAILABLE_LANGUAGES: ["en"] } } };
   const mockResponse = { status: jest.fn(), json: jest.fn() };
 
@@ -98,9 +97,9 @@ test("notify POST with unknown breach should throw error", async () => {
   jest.mock("../../hibp");
   HIBPLib.loadBreachesIntoApp = jest.fn();
   const testEmail = "test@example.com";
-  const testHash = sha1(testEmail);
-  const testPrefix = testHash.slice(0, 6).toUpperCase();
-  const testSuffix = testHash.slice(6).toUpperCase();
+  const testHash = sha1.getSha1ForHIBP(testEmail);
+  const testPrefix = testHash.slice(0, 6);
+  const testSuffix = testHash.slice(6);
 
   const mockRequest = { token: AppConstants.HIBP_NOTIFY_TOKEN, body: { hashPrefix: testPrefix, hashSuffixes: [testSuffix], breachName: "Test" }, app: { locals: { breaches: [] } } };
   const mockResponse = { status: jest.fn(), json: jest.fn() };
@@ -120,9 +119,9 @@ test("notify POST for subscriber with no signup_language should default to en", 
 
   await DB.addSubscriber(testEmail);
 
-  const testHash = sha1(testEmail);
-  const testPrefix = testHash.slice(0, 6).toUpperCase();
-  const testSuffix = testHash.slice(6).toUpperCase();
+  const testHash = sha1.getSha1ForHIBP(testEmail);
+  const testPrefix = testHash.slice(0, 6);
+  const testSuffix = testHash.slice(6);
 
   const mockRequest = { token: AppConstants.HIBP_NOTIFY_TOKEN, body: { hashPrefix: testPrefix, hashSuffixes: [testSuffix], breachName: "Test" }, app: { locals: { breaches: testBreaches } } };
   const mockResponse = { status: jest.fn(), json: jest.fn() };

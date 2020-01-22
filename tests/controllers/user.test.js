@@ -106,7 +106,7 @@ test("user add POST with upperCaseAddress adds email_address record with lowerca
   const testSubscriberEmailAddresses = testSubscriberEmailAddressRecords.map(record => record.email);
   expect(testSubscriberEmailAddresses.includes(testUserAddEmail)).toBeTruthy();
   const testSubscriberEmailAddressHashes = testSubscriberEmailAddressRecords.map(record => record.sha1);
-  expect(testSubscriberEmailAddressHashes.includes(getSha1(testUserAddEmail))).toBeTruthy();
+  expect(testSubscriberEmailAddressHashes.includes(getSha1.getLowerCaseSha1(testUserAddEmail))).toBeTruthy();
 });
 
 
@@ -304,7 +304,7 @@ test("user verify request with invalid token returns error", async () => {
 test("user unsubscribe GET request with valid token and hash for primary/subscriber record returns 302 to preferences", async () => {
   // from db/seeds/test_subscribers.js
   const subscriberToken = TEST_SUBSCRIBERS.firefox_account.primary_verification_token;
-  const subscriberHash = getSha1(TEST_SUBSCRIBERS.firefox_account.primary_email);
+  const subscriberHash = getSha1.getLowerCaseSha1(TEST_SUBSCRIBERS.firefox_account.primary_email);
 
   // Set up mocks
   const req = { fluentFormat: jest.fn(), query: { token: subscriberToken, hash: subscriberHash } };
@@ -321,7 +321,7 @@ test("user unsubscribe GET request with valid token and hash for primary/subscri
 test("user unsubscribe GET request with valid token and hash for a secondary email_addresses record renders unsubscribe", async () => {
   // from db/seeds/test_subscribers.js
   const subscriberToken = TEST_EMAIL_ADDRESSES.firefox_account.verification_token;
-  const subscriberHash = getSha1(TEST_EMAIL_ADDRESSES.firefox_account.email);
+  const subscriberHash = getSha1.getLowerCaseSha1(TEST_EMAIL_ADDRESSES.firefox_account.email);
 
   // Set up mocks
   const req = { fluentFormat: jest.fn(), query: { token: subscriberToken, hash: subscriberHash } };
@@ -338,7 +338,7 @@ test("user unsubscribe GET request with valid token and hash for a secondary ema
 test("user unsubscribe GET request with valid token and hash for an old pre-FxA subscriber record renders unsubscribe", async () => {
   // from db/seeds/test_subscribers.js
   const subscriberToken = TEST_SUBSCRIBERS.verified_email.primary_verification_token;
-  const subscriberHash = getSha1(TEST_SUBSCRIBERS.firefox_account.primary_email);
+  const subscriberHash = getSha1.getLowerCaseSha1(TEST_SUBSCRIBERS.firefox_account.primary_email);
 
   // Set up mocks
   const req = { fluentFormat: jest.fn(), query: { token: subscriberToken, hash: subscriberHash } };

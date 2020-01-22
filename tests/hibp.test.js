@@ -69,7 +69,7 @@ test("getBreachesForEmail HIBP responses with status of 429 cause throttled retr
   got.mockClear();
   got.mockRejectedValue( { statusCode: 429 });
 
-  await expect(hibp.getBreachesForEmail(getSha1("unverifiedemail@test.com"), testBreaches)).rejects.toThrow("error-hibp-throttled");
+  await expect(hibp.getBreachesForEmail(getSha1.getSha1ForHIBP("unverifiedemail@test.com"), testBreaches)).rejects.toThrow("error-hibp-throttled");
 
   const gotCalls = got.mock.calls;
   expect(gotCalls.length).toEqual(Number(AppConstants.HIBP_THROTTLE_MAX_TRIES));

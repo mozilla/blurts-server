@@ -26,7 +26,7 @@ const createRequestBody = function(notificationType) {
 test("ses notification with Permanent bounce unsubscribes recipient subscriber", async () => {
   // TODO: restore tests for ["General", "NoEmail", "Suppressed"] sub types
   const testEmail = "bounce@simulator.amazonses.com";
-  const testHashes = [getSha1(testEmail)];
+  const testHashes = [getSha1.getLowerCaseSha1(testEmail)];
 
   await DB.addSubscriber(testEmail);
   let subscribers = await DB.getSubscribersByHashes(testHashes);
@@ -51,7 +51,7 @@ test("ses notification with Complaint unsubscribes recipient subscriber", async 
   const testEmail = "complaint@simulator.amazonses.com";
 
   await DB.addSubscriber(testEmail);
-  let subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
+  let subscribers = await DB.getSubscribersByHashes([getSha1.getLowerCaseSha1(testEmail)]);
   expect(subscribers.length).toEqual(1);
 
   const req = httpMocks.createRequest({
@@ -64,7 +64,7 @@ test("ses notification with Complaint unsubscribes recipient subscriber", async 
   await ses.notification(req, resp);
   expect(resp.statusCode).toEqual(200);
 
-  subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
+  subscribers = await DB.getSubscribersByHashes([getSha1.getLowerCaseSha1(testEmail)]);
   expect(subscribers.length).toEqual(0);
 });
 
@@ -95,7 +95,7 @@ test("ses notification with invalid signature responds with error and doesn't ch
   const testEmail = "complaint@simulator.amazonses.com";
 
   await DB.addSubscriber(testEmail);
-  let subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
+  let subscribers = await DB.getSubscribersByHashes([getSha1.getLowerCaseSha1(testEmail)]);
   expect(subscribers.length).toEqual(1);
 
   const req = httpMocks.createRequest({
@@ -108,7 +108,7 @@ test("ses notification with invalid signature responds with error and doesn't ch
   await expect(ses.notification(req, resp)).rejects.toMatch("invalid");
   expect(resp.statusCode).toEqual(401);
 
-  subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
+  subscribers = await DB.getSubscribersByHashes([getSha1.getLowerCaseSha1(testEmail)]);
   expect(subscribers.length).toEqual(1);
 });
 
@@ -122,7 +122,7 @@ test("sns notification for FxA account deletes monitor subscriber record", async
   const testFxaProfileData = JSON.stringify({uid: testFxaUID});
   await DB.addSubscriber(testEmail, testSignupLanguage, testFxaAccessToken, testFxaRefreshToken, testFxaProfileData);
 
-  let subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
+  let subscribers = await DB.getSubscribersByHashes([getSha1.getLowerCaseSha1(testEmail)]);
   expect(subscribers.length).toEqual(1);
 
   const req = httpMocks.createRequest({
@@ -134,6 +134,6 @@ test("sns notification for FxA account deletes monitor subscriber record", async
   await ses.notification(req, resp);
   expect(resp.statusCode).toEqual(200);
 
-  subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
+  subscribers = await DB.getSubscribersByHashes([getSha1.getLowerCaseSha1(testEmail)]);
   expect(subscribers.length).toEqual(0);
 });

@@ -26,7 +26,7 @@ test("scan POST with empty email hash redirects to home", () => {
 
 
 test("scan POST with hash of empty string redirects to home", () => {
-  mockRequest.body = { emailHash: sha1("") };
+  mockRequest.body = { emailHash: sha1.getSha1ForHIBP("") };
 
   shouldRedirectHome(scan.post, mockRequest);
 });
@@ -36,7 +36,7 @@ test("scan POST with hash should render scan with foundBreaches", async () => {
   const testEmail = "test@example.com";
   const testFoundBreaches = [];
 
-  mockRequest.body = { emailHash: sha1(testEmail) };
+  mockRequest.body = { emailHash: sha1.getSha1ForHIBP(testEmail) };
   mockRequest.app = { locals: { breaches: testBreaches } };
   mockRequest.session = { user: null };
 

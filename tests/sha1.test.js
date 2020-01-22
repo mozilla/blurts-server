@@ -14,5 +14,5 @@ function isHexString(hashDigest) {
 
 
 test("getSha1 returns hex digest", () => {
-  expect(isHexString(getSha1("test@test.com"))).toBeTruthy();
+  expect(isHexString(getSha1.getSha1ForHIBP("test@test.com"))).toBeTruthy();
 });

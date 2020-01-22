@@ -31,7 +31,7 @@ test("getSubscribersByHashes accepts hashes and only returns verified subscriber
     "firefoxaccount@test.com",
     "unverifiedemail@test.com",
     "verifiedemail@test.com",
-  ].map(email => getSha1(email));
+  ].map(email => getSha1.getLowerCaseSha1(email));
   const subscribers = await DB.getSubscribersByHashes(testHashes);
   for (const subscriber of subscribers) {
     expect(subscriber.primary_verified).toBeTruthy();
@@ -43,7 +43,7 @@ test("getEmailAddressesByHashes accepts hashes and only returns verified email_a
   const testHashes = [
     "firefoxaccount-secondary@test.com",
     "firefoxaccount-tertiary@test.com",
-  ].map(email => getSha1(email));
+  ].map(email => getSha1.getLowerCaseSha1(email));
   const emailAddresses = await DB.getEmailAddressesByHashes(testHashes);
   for (const emailAddress of emailAddresses) {
     expect(emailAddress.verified).toBeTruthy();
@@ -72,7 +72,7 @@ test("addSubscriberUnverifiedEmailHash accepts user and email and returns unveri
   const subscriber = await DB.getSubscriberByEmail("firefoxaccount@test.com");
 
   const unverifiedEmailAddress = await DB.addSubscriberUnverifiedEmailHash(subscriber, testEmail);
-  expect(unverifiedEmailAddress.sha1).toBe(getSha1(testEmail));
+  expect(unverifiedEmailAddress.sha1).toBe(getSha1.getLowerCaseSha1(testEmail));
   expect(uuidRE.test(unverifiedEmailAddress.verification_token)).toBeTruthy();
   expect(unverifiedEmailAddress.verified).toBeFalsy();
 });
@@ -87,7 +87,7 @@ test("verifyEmailHash accepts token and returns verified subscriber", async () =
 
   HIBP.subscribeHash.mockResolvedValue(true);
   const verifiedEmailAddress = await DB.verifyEmailHash(unverifiedEmailAddress.verification_token);
-  expect(verifiedEmailAddress.sha1).toBe(getSha1(testEmail));
+  expect(verifiedEmailAddress.sha1).toBe(getSha1.getLowerCaseSha1(testEmail));
   expect(verifiedEmailAddress.verified).toBeTruthy();
 });
 
@@ -106,7 +106,7 @@ test("addSubscriber accepts email, language and returns verified subscriber", as
 
   expect(verifiedSubscriber.primary_email).toBe(testEmail);
   expect(verifiedSubscriber.primary_verified).toBeTruthy();
-  expect(verifiedSubscriber.primary_sha1).toBe(getSha1(testEmail));
+  expect(verifiedSubscriber.primary_sha1).toBe(getSha1.getLowerCaseSha1(testEmail));
 });
 
 
@@ -117,7 +117,7 @@ test("addSubscriber with existing email updates updated_at", async () => {
 
   expect(verifiedSubscriber.primary_email).toBe(testEmail);
   expect(verifiedSubscriber.primary_verified).toBeTruthy();
-  expect(verifiedSubscriber.primary_sha1).toBe(getSha1(testEmail));
+  expect(verifiedSubscriber.primary_sha1).toBe(getSha1.getLowerCaseSha1(testEmail));
   const updatedAt = verifiedSubscriber.updated_at;
 
   await sleep(1000);
@@ -126,7 +126,7 @@ test("addSubscriber with existing email updates updated_at", async () => {
 
   expect(verifiedSubscriber.primary_email).toBe(testEmail);
   expect(verifiedSubscriber.primary_verified).toBeTruthy();
-  expect(verifiedSubscriber.primary_sha1).toBe(getSha1(testEmail));
+  expect(verifiedSubscriber.primary_sha1).toBe(getSha1.getLowerCaseSha1(testEmail));
   expect(verifiedSubscriber.updated_at).not.toBe(updatedAt);
 });
 
@@ -137,7 +137,7 @@ test("addSubscriber accepts upperCasedAddress, and returns verified subscriber w
   const verifiedSubscriber = await DB.addSubscriber(testEmail);
 
   expect(verifiedSubscriber.primary_email).toBe(testEmail);
-  expect(verifiedSubscriber.primary_sha1).toBe(getSha1(testEmail.toLowerCase()));
+  expect(verifiedSubscriber.primary_sha1).toBe(getSha1.getLowerCaseSha1(testEmail));
 });
 
 
@@ -181,11 +181,11 @@ test("removeEmail accepts email and removes from subscribers table", async () =>
   const testEmail = "removingfirefoxaccount@test.com";
 
   const verifiedSubscriber = await DB.addSubscriber(testEmail);
-  const subscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
+  const subscribers = await DB.getSubscribersByHashes([getSha1.getLowerCaseSha1(testEmail)]);
   expect(subscribers.length).toEqual(1);
 
   await DB.removeEmail(verifiedSubscriber.primary_email);
-  const noMoreSubscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
+  const noMoreSubscribers = await DB.getSubscribersByHashes([getSha1.getLowerCaseSha1(testEmail)]);
   expect(noMoreSubscribers.length).toEqual(0);
 });
 
