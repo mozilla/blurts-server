@@ -14,9 +14,16 @@
 
 GitHub-link-title = GitHub
 home-title = { -product-name }
+user-add-invalid-email = Correo ntu vatu
+error-headline = Error
+scan-submit = Nánuku correo noo´o
+download-firefox-banner-button = Xinuun { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Nchuíchí!
 show-all = Kune´yá kuaiyo
+about-firefox-monitor = Jiee ya’a { -product-name }
+# Link title
+home = Nuu kajie´e
 fxa-account = { -brand-fxa }
 about-fxm-headline = Jiee ya’a { -product-name }
 
