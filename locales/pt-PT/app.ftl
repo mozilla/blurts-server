@@ -459,10 +459,75 @@ marking-this-body =
 mark-as-resolve-button = Marcar como resolvida
 marked-as-resolved-label = Marcado como resolvido
 undo-button = Desfazer
+confirmation-1-subhead = Boa! Acabou de resolver a sua primeira intrusão.
+confirmation-1-body = Mantenha o ritmo. Consulte o seu painel para ver se existem mais coisas a resolver.
+confirmation-2-subhead = Tomem lá, piratas!
+confirmation-2-body = Está a tomar medidas importantes para proteger as suas contas na Internet.
+confirmation-3-subhead = Mais uma resolvida. Bom trabalho!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = A sua nova palavra-passe é única, forte e difícil de adivinhar? <a>Descubra se sim</a>
+generic-confirmation-subhead = Esta violação foi marcada como resolvida
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Para ver a violação remanescente, aceda ao seu painel.
+       *[other] Para ver as violações remanescentes, aceda ao seu painel.
+    }
+return-to-breach-details-link = Voltar aos detalhes da violação
+go-to-dashboard-link = Ir para o painel
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% concluídas
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } resolvida
+       *[other] { $numResolvedBreaches } resolvidas
+    }
+progress-intro-subhead = Novo no { -product-name }: marque violações como resolvidas
+progress-intro-message =
+    Depois de analisar os detalhes sobre uma violação e tomar medidas para proteger
+    as suas informações pessoais, pode marcar as violações como resolvidas.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } violação de { $numTotalBreaches } marcada como resolvida
+       *[other] { $numResolvedBreaches } de { $numTotalBreaches } violações marcadas como resolvidas
+    }
+progress-complete = Todas as violações conhecidas foram marcadas como resolvidas
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>Começou bem!</span> Analise as violações remanescentes para saber
+    que medidas deve adotar.
+progress-message-2 =
+    <span>Continue assim!</span> Pequenas alterações, como atualizar palavras-passe, têm um grande impacto
+    na manutenção da confidencialidade das suas informações pessoais.
+progress-message-3 = <span>Bom trabalho ao resolver estas violações!</span> Continue assim. Ainda tem mais algumas para resolver.
+progress-message-4 = <span>Muito perto!</span> Está quase na linha de chegada.
+progress-complete-message =
+    <span>Sabe bem, não é?</span> Se quiser continuar, é um bom momento para
+    atualizar outras credenciais com palavras-passe mais fortes.
 
 ##
 
+resolve-this-breach-link = Resolver esta violação
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Marcada como resolvida:
+hide-resolved-button = Ocultar resolvidas
+show-resolved-button = Mostrar resolvidas
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Palavra-passe exposta em violações não resolvidas
+       *[other] Palavras-passe expostas em violações não resolvidas
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Violação de dados conhecida marcada como resolvida
+       *[other] Violações de dados conhecidas marcadas como resolvidas
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Nova
