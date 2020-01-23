@@ -415,16 +415,65 @@ marked-as-resolved-label = U shënua si i Zgjidhur
 undo-button = Zhbëje
 confirmation-1-subhead = Bukur! Sapo zgjidhët cenimin tuaj të parë.
 confirmation-1-body = Mos e ndalni hovin. Shihni te pulti juaj, mos ka të tjera për t’u bërë.
+confirmation-2-subhead = A dëgjuat, hacker-a?
 confirmation-2-body = Po ndërmerrni hapa të rëndësishëm drejt mbrojtjes së llogarive tuaja internetore.
 confirmation-3-subhead = Iku edhe një. Punë e paqme!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = A është fjalëkalimi juaj unik, i fuqishëm, dhe i zorshëm për t’u marrë me mend? <a>Shiheni</a>
 generic-confirmation-subhead = Këtij cenimi i është vënë shenjë si i zgjidhur
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Që të shihni cenimin e mbetur, shkoni te pulti juaj.
+       *[other] Që të shihni cenimet e mbetura, shkoni te pulti juaj.
+    }
+return-to-breach-details-link = Kthehuni te hollësi cenimi
+go-to-dashboard-link = Kaloni te Pulti
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% i plotësuar
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } i Zgjidhur
+       *[other] { $numResolvedBreaches } të Zgjidhur
+    }
+progress-intro-subhead = E re në { -product-name }: Vëruni shenjë cenimeve si të zgjidhur
+progress-intro-message = Pasi të shqyrtoni hollësitë rreth një cenimi dhe ndërmerrni hapat për të mbrojtur të dhënat tuaja personale, mund t’u vini shenjë cenimeve si të zgjidhur.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } nga { $numTotalBreaches } cenime iu vu shenjë si i zgjidhur
+       *[other] { $numResolvedBreaches } nga { $numTotalBreaches } cenime iu vunë shenjë si të zgjidhur
+    }
+progress-complete = Krejt cenimeve të ditur iu është vënë shenjë si të zgjidhur
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 = <span>Jeni gati për një start të fuqishëm!</span> Shihni cenimet e mbetura, për të mësuar se ç’hapa të ndërmerren.
+progress-message-2 = <span>Vazhdoni kështu!</span> Ndryshime të vockla, si ndryshimi i fjalëkalimeve, kanë ndikim të madh në mbajtjen të parrezik të të dhënave tuaja personale.
+progress-message-3 = <span>Punë e paqme në zgjidhjen e këtyre cenimeve!</span> Vazhdoni kështu. Keni edhe pak të tjerë.
+progress-message-4 = <span>Thuajse mbaruat!</span> Thuajse jeni pranë mbërritjes.
+progress-complete-message = <span>Ju vjen mirë, hë?</span> Nëse doni të vazhdoni, ky është një çast i mirë për të përditësuar kredenciale të tjerë hyrjesh me fjalëkalime më të fuqishëm.
 
 ##
 
+resolve-this-breach-link = Zgjidheni këtë cenim
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Iu vu shenjë si i zgjidhur më:
+hide-resolved-button = Fshihi të Zgjidhurit
+show-resolved-button = Shfaq të Zgjidhurit
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Fjalëkalim i ekspozuar në cenime të pazgjidhur
+       *[other] Fjalëkalime të ekspozuar në cenime të pazgjidhur
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Cenim i ditur të dhënash, shënuar si i zgjidhur
+       *[other] Cenime të ditur të dhënash, shënuar si të zgjidhur
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = E re
