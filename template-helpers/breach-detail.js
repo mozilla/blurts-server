@@ -8,6 +8,9 @@ const { getAllPriorityDataClasses, getAllGenericRecommendations, getFourthPasswo
 function addRecommendationUtmParams(cta) {
   try {
     const url = new URL(cta.ctaHref);
+    if (url.host.match(/mozilla\.org|firefox\.com/) === null) {
+      return cta.ctaHref;
+    }
     const utmParams = {
       utm_source: "monitor.firefox.com",
       utm_medium: "referral",
