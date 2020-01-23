@@ -145,7 +145,7 @@ const HIBP = {
                 !breach.IsSpamList &&
                 !breach.IsFabricated &&
                 breach.IsVerified &&
-                !(breach.Domain === "" && breach.Name !== "PDL")
+                breach.Domain !== ""
     );
   },
 
