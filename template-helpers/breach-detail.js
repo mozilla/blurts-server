@@ -5,6 +5,30 @@ const { prettyDate } = require("./hbs-helpers");
 const { getAllPriorityDataClasses, getAllGenericRecommendations, getFourthPasswordRecommendation } = require("./recommendations");
 
 
+function addRecommendationUtmParams(cta) {
+  try {
+    const url = new URL(cta.ctaHref);
+    if (url.host.match(/mozilla\.org|firefox\.com/) === null) {
+      return cta.ctaHref;
+    }
+    const utmParams = {
+      utm_source: "monitor.firefox.com",
+      utm_medium: "referral",
+      utm_content: cta.ctaAnalyticsId,
+      utm_campaign: "contextual-recommendations",
+    };
+
+    for (const param in utmParams) {
+      url.searchParams.append(param, utmParams[param]);
+    }
+    return url.href;
+  }
+  catch (e) {
+    return cta.ctaHref;
+  }
+}
+
+
 function localize(locales, stringId, args) {
   return LocaleUtils.fluentFormat(locales, stringId, args);
 }
@@ -191,6 +215,7 @@ function getSortedDataClassesAndRecs(locales, breach, isUserBrowserFirefox=false
 }
 
 module.exports = {
+  addRecommendationUtmParams,
   getBreachDetail,
   getBreachCategory,
   getSortedDataClasses,
