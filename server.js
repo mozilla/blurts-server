@@ -155,11 +155,12 @@ app.locals.FXA_ENABLED = AppConstants.FXA_ENABLED;
 app.locals.SERVER_URL = AppConstants.SERVER_URL;
 app.locals.UTM_SOURCE = new URL(AppConstants.SERVER_URL).hostname;
 
+const SESSION_DURATION_HOURS = AppConstants.SESSION_DURATION_HOURS || 48;
 app.use(sessions({
   cookieName: "session",
   secret: AppConstants.COOKIE_SECRET,
-  duration: 60 * 60 * 1000, // 60 minutes
-  activeDuration: 15 * 60 * 1000, // 15 minutes
+  duration: SESSION_DURATION_HOURS * 60 * 60 * 1000, // 48 hours
+  activeDuration: SESSION_DURATION_HOURS * 60 * 60 * 1000, // 48 hours
   cookie: cookie,
 }));
 

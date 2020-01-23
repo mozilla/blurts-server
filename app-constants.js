@@ -10,6 +10,7 @@ const kEnvironmentVariables = [
   "SERVER_URL",
   "PORT",
   "COOKIE_SECRET",
+  "SESSION_DURATION_HOURS",
   "SMTP_URL",
   "EMAIL_FROM",
   "SES_CONFIG_SET",
