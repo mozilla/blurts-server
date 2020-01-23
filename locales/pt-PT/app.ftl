@@ -440,9 +440,25 @@ see-additional-recs = Ver recomendações adicionais
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+resolve-top-notification = { $affectedEmail } apareceu nesta violação. <a>O que fazer a seguir</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] { $numAffectedEmails } endereço de e-mail seu apareceu nesta violação. <a>O que fazer a seguir</a>
+       *[other] { $numAffectedEmails } endereços de e-mail seus apareceram nesta violação. <a>O que fazer a seguir</a>
+    }
 
 ##
 
+marking-this-subhead = Marcar esta violação como resolvida
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Depois de ter tomado as medidas necessárias para minimizar o impato desta violação</span>,
+    pode marcar a situação como resolvida. Pode ainda, a qualquer momento, aceder aos detalhes 
+    sobre a violação no seu painel.
+mark-as-resolve-button = Marcar como resolvida
+marked-as-resolved-label = Marcado como resolvido
+undo-button = Desfazer
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
