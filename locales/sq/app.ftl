@@ -404,6 +404,23 @@ resolve-top-notification-plural =
 ##
 
 marking-this-subhead = Po i vihet shenjë këtij cenimi si i zgjidhur
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Pasi të keni ndërmarrë hapat që mundeni për trajtimin e këtij cenimi</span>,
+    mund t’i vini shenjë si të zgjidhur. Mundeni ende të shihni hollësi rreth cenimit 
+    që nga pulti juaj, në çfarëdo kohe.
+mark-as-resolve-button = Shënojeni si të Zgjidhur
+marked-as-resolved-label = U shënua si i Zgjidhur
+undo-button = Zhbëje
+confirmation-1-subhead = Bukur! Sapo zgjidhët cenimin tuaj të parë.
+confirmation-1-body = Mos e ndalni hovin. Shihni te pulti juaj, mos ka të tjera për t’u bërë.
+confirmation-2-body = Po ndërmerrni hapa të rëndësishëm drejt mbrojtjes së llogarive tuaja internetore.
+confirmation-3-subhead = Iku edhe një. Punë e paqme!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = A është fjalëkalimi juaj unik, i fuqishëm, dhe i zorshëm për t’u marrë me mend? <a>Shiheni</a>
+generic-confirmation-subhead = Këtij cenimi i është vënë shenjë si i zgjidhur
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
