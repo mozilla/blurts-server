@@ -416,6 +416,20 @@ go-to-dashboard-link = Eho ñangarekoha rupápe
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
 progress-percent-complete = { $percentComplete }% oĩmbáma
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } Oĩporãma
+       *[other] { $numResolvedBreaches } Oĩporãma
+    }
+progress-intro-subhead = Ipyahu { -product-name }-pe: emongurusu ñembyai oĩporãmavaramo
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } { $numTotalBreaches } mba’e ñembyai mongurusupyre oĩporãmavaramo
+       *[other] { $numResolvedBreaches } { $numTotalBreaches } mba’e ñembyai mongurusupyre oĩporãmavaramo
+    }
+progress-complete = Opaite ñembyai ojekuaáva oñemongurusu oĩporãmavaramo
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
@@ -423,3 +437,11 @@ progress-percent-complete = { $percentComplete }% oĩmbáma
 
 ##
 
+resolve-this-breach-link = Emoĩporã ko ñembyai
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Oĩporãmavaramo mongurusupyre:
+hide-resolved-button = Emokañy oĩporãpyréva
+show-resolved-button = Ehechauka oĩporãpyréva
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Pyahu

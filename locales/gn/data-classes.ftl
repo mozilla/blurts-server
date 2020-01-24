@@ -42,6 +42,7 @@ email-addresses = Ñanduti veve kundaharape
 email-messages = Ñanduti veve ñe’ẽmondo
 employers = Momba’apohára
 employment-statuses = Mba’apo rekotee
+encrypted-keys = Mba'eñemi mbopapapy
 ethnicities = Atygua mba’ekuaarã
 family-members-names = Pehẽnguekuéra réra
 family-plans = Pehẽnguekuéra aporã
