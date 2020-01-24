@@ -2,6 +2,7 @@
 ## unless otherwise indicated.
 
 -product-name = Firefox Monitor
+-product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
 -brand-Mozilla = Mozilla
