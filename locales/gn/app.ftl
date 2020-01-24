@@ -13,7 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Ñanduti Ñemigua
 
-
+##
 
 terms-and-privacy = Mboguatarã ha ñemigua
 GitHub-link-title = GitHub
@@ -357,7 +357,7 @@ email-verified-view-dashboard = Ehecha ha eñangareko opaite ñanduti veve emboh
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = eñepyrũ tembiapo
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -389,3 +389,23 @@ rec-section-headline-no-pw = Mba’e ejapóta emo’ã hag̃ua ne maranduete
 rec-section-subhead-no-pw = Umi ñe’ẽñemi ndojehechakuaáiramo jeje ko ñembyaípe, oĩ gueteri heta mba’e ikatúva rejapo emo’ãve hag̃ua ne maranduete.
 # Button
 see-additional-recs = Ehecha ñe’ẽporã jo’apyre
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $affectedEmail } osẽ ko ñembyaípe. <a>Mba’e ejapóta ko’ág̃a</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] { $numAffectedEmails } osẽ ko ñembyaípe. <a>Mba’e ejapóta ko’ág̃a</a>
+       *[other] { $numAffectedEmails } osẽ ko ñembyaípe. <a>Mba’e ejapóta ko’ág̃a</a>
+    }
+
+##
+
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
