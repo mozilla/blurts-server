@@ -402,6 +402,20 @@ resolve-top-notification-plural =
 
 ##
 
+marking-this-subhead = Emongurusu ko ñembyai oĩporãmavaramo
+mark-as-resolve-button = Emongurusu oĩporãmavaramo
+marked-as-resolved-label = Oĩporãmavaramo mongurusupyre
+undo-button = Mbojevy
+confirmation-1-subhead = ¡Iporã! Emoĩporã ne ñembyai peteĩha.
+confirmation-1-body = Erekóke kyre’ỹ. Ema’ẽ ne ñangarekoha rupáre ehecha hag̃ua mba’épa ejapovekuaa.
+confirmation-2-subhead = ¡Esẽ mba'evai’apoha!
+confirmation-3-subhead = Ambueve. ¡Iporã añete!
+generic-confirmation-subhead = Ko ñembyai oñemongurusu oĩporãmavaramo
+return-to-breach-details-link = Ejevy pe ñembyai mba’emimíme
+go-to-dashboard-link = Eho ñangarekoha rupápe
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% oĩmbáma
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
