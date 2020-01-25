@@ -105,3 +105,18 @@ rec-gen-1 =
 rec-gen-2-subhead = Armazene as palavras-passe num local seguro
 # Link title
 rec-gen-2-cta = Mitos sobre os gestores de palavras-passe
+rec-gen-2 =
+    Coloque os seus detalhes de autenticação num local seguro que somente você pode aceder, como um
+    gestor de palavras-passe. Isto também facilita o controle de todas as suas diferentes palavras-passe.
+# Recommendation subhead
+rec-gen-3-subhead = Seja cauteloso ao fornecer informações pessoais
+# Link title
+rec-gen-3-cta = Ler mais dicas de segurança
+rec-gen-3 =
+    Não distribua dados pessoais se não for necessário. Se lhe pedirem que
+    digite ou que forneça o seu endereço de e-mail, código postal ou número de telefone, pode dizer não.
+# Recommendation subhead
+rec-gen-4-subhead = Atualize regularmente o software e aplicações
+rec-gen-4 =
+    A atualização de aplicações, navegadores e sistemas operativos torna os seus
+    dispositivos mais seguros. Estas atualizações corrigem falhas, vulnerabilidades de software e problemas de segurança.
