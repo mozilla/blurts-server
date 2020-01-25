@@ -45,7 +45,9 @@
 
 
   function sendResolutionPing(eventAction, eventLabel) {
-    ga("send", "event", "Breach Resolution", eventAction, eventLabel);
+    if (typeof(ga) !== "undefined") {
+      ga("send", "event", "Breach Resolution", eventAction, eventLabel);
+    }
   }
 
 
