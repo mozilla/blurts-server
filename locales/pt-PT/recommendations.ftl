@@ -69,3 +69,39 @@ rec-hist-pw =
     exposta numa violação de dados, você só precisará atualizar essa credencial.
 # Recommendation subhead
 rec-sec-qa-subhead = Crie respostas exclusivas para perguntas de segurança
+rec-sec-qa =
+    Muitos sites fazem as mesmas perguntas. Se uma resposta for exposta, o
+    informação fica desprotegida. Crie respostas longas e aleatórias e guarde-as num lugar seguro.
+# Recommendation subhead
+rec-phone-num-subhead = Evite partilhar o seu número de telefone
+rec-phone-num =
+    Evite fornecer o seu número de telefone ao se registar em novas
+    contas ou serviços. Se um número de telefone não for necessário, não o introduza.
+# Recommendation subhead
+rec-dob-subhead = Evite utilizar informação pessoal em PINs
+rec-dob =
+    Porque é fácil encontrar a sua data de nascimento em registos públicos,
+    é melhor evitar utilizá-la em palavras-passe e PINs. As pessoas que 
+    conhecem a data do seu aniversário também podem adivinhar o seu PIN com muita facilidade.
+# Recommendation subhead
+rec-pins-subhead = Reforce a segurança dos seus PINs
+rec-pins =
+    Um PIN forte não contém informações pessoais, como a sua data de nascimento
+    ou o seu endereço. Deve ser um número que apenas você conhece e que não deve ser facilmente adivinhado.
+# Recommendation subhead
+rec-address-subhead = Evite utilizar endereços nas palavras-passe
+rec-address =
+    Utilizar endereços ou a rua em que você cresceu enfraquece
+    as palavras-passe. Como é fácil encontrar estas informações publicamente, estas fazem com que 
+    seja simples adivinhar as palavras-passe.
+# Recommendation subhead
+rec-gen-1-subhead = Utilize palavras-passe fortes e exclusivas para todas as contas
+# Link title
+rec-gen-1-cta = Como criar palavras-passe fortes
+rec-gen-1 =
+    A reutilização de palavras-passe coloca todas as suas contas em risco. Isto significa que se
+    uma palavra-passe for exposta, os piratas têm as chaves para muitas contas.
+# Recommendation subhead
+rec-gen-2-subhead = Armazene as palavras-passe num local seguro
+# Link title
+rec-gen-2-cta = Mitos sobre os gestores de palavras-passe
