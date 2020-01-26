@@ -14,7 +14,7 @@ rec-pw-1 =
     Crea una password nuova e diversa da quelle utilizzate in precedenza.
     Una buona strategia è combinare due o più parole non correlate in una singola passphrase.
 # Recommendation subhead
-rec-pw-2-subhead = Aggiorna tutte le credenziali che utilizzano la stessa password.
+rec-pw-2-subhead = Aggiorna tutte le credenziali che utilizzano la stessa password
 # Link title
 rec-pw-2-cta-fx = Visualizza le credenziali in { -brand-name }
 rec-pw-2 = Quando riutilizzi le password, una singola violazione può portare a molte altre. Una volta che una password è esposta, gli hacker potrebbero usarla per accedere ad altri account.

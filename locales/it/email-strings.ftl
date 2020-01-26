@@ -45,10 +45,10 @@ email-subject-verify = Verifica il tuo indirizzo email per { -product-name }
 learn-more-about-fxm = Ulteriori informazioni su { $fxmLink }
 email-sensitive-disclaimer = A causa dei dati sensibili oggetto di questa violazione, gli indirizzi email coinvolti non sono stati resi pubblici. Hai ricevuto questo avviso perché sei il proprietario verificato di un indirizzo email interessato.
 fxm-warns-you-no-breaches = { -product-name } ti avvisa quando le tue informazioni personali vengono coinvolte in una violazione. Per il momento il tuo indirizzo email non risulta compromesso, ma se dovesse essere coinvolto in una nuova violazione riceverai un avviso.
-fxm-warns-you-found-breaches = { -product-name } ti permette di scoprire se le tue informazioni personali sono state coinvolte in una violazione. Inoltre ti sei iscritto per ricevere un avviso ogni volta che il tuo indirizzo viene coinvolto in una nuova violazione.
+fxm-warns-you-found-breaches = { -product-name } ti permette di scoprire se le tue informazioni personali sono state coinvolte in una violazione. Inoltre riceverai un avviso ogni volta che il tuo indirizzo viene coinvolto in una nuova violazione.
 email-breach-alert-blurb = { -product-name } ti avvisa quando le tue informazioni personali vengono coinvolte in una violazione. È stata appena segnalata la violazione dati di un’altra società.
 # List headline
-faq-list-headline = Domande più frequenti
+faq-list-headline = domande più frequenti
 # Link Title
 faq-v2-1 = Non riconosco una delle società o dei siti oggetto della violazione. In che modo sono coinvolto?
 # Link Title
@@ -65,7 +65,7 @@ monitor-another-email = Vuoi monitorare un altro indirizzo email?
 # Subject line of email
 pre-fxa-subject = Un aggiornamento da { -product-name }
 pre-fxa-headline = Che cosa sta cambiando in { -product-name }
-pre-fxa-blurb = Ecco che cosa è cambiato da quando hai registrato un account su { -product-name }, il servizio che tiene sotto controllo le violazioni note dei dati utente sensibili: presto sarà collegato all’account Firefox.
+pre-fxa-blurb = Ecco che cosa è cambiato da quando hai registrato un account su { -product-name }, il servizio che tiene sotto controllo le violazioni di dati conosciute che coinvolgono i tuoi dati personali: presto sarà collegato all’account Firefox.
 pre-fxa-tout-1 = Rimani aggiornato sulle nuove violazioni
 pre-fxa-p-1 = <a>Crea un account</a> per tenere sotto controllo le violazioni di dati su fino a 15 indirizzi email contemporaneamente. Raccomandiamo di aggiungere tutti gli indirizzi email usati per creare account online.
 pre-fxa-tout-2 = Visualizza tutto su un pannello
