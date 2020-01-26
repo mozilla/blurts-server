@@ -275,7 +275,7 @@ known-data-breaches-exposed =
        *[other] Violazioni di dati conosciute che hanno esposto le tue informazioni
     }
 # Button
-see-additional-breaches = Vedi ulteriori violazioni
+see-additional-breaches = Mostra ulteriori violazioni
 scan-results-known-breaches =
     { $breachCount ->
         [one] Questa email è stata coinvolta in una violazione di dati conosciuta.
@@ -394,7 +394,7 @@ resolve-top-notification-plural =
 
 ##
 
-marking-this-subhead = Contrassegnare la violazione come risolta
+marking-this-subhead = Contrassegna la violazione come risolta
 # This string contains nested markup that is later used to style the text inside of it.
 # Please do not modify or remove "<span>" and "</span>".
 marking-this-body = <span>Una volta prese tutte le contromisure possibili per proteggerti dalla violazione</span>, puoi contrassegnarla come risolta. Potrai accedere in qualsiasi momento alle informazioni sulla violazione dal pannello utente.
@@ -430,11 +430,11 @@ num-resolved =
 progress-intro-subhead = Nuova funzione in { -product-name }: contrassegna le violazioni come risolte
 progress-intro-message = Dopo aver controllato le informazioni su una violazione e aver preso le misure necessarie per proteggere le tue informazioni personali, puoi contrassegnare le violazioni come risolte.
 progress-status =
-    { $numTotalBreaches ->
-        [one] { $numResolvedBreaches } su { $numTotalBreaches } violazioni contrassegnata come risolta
-       *[other] { $numResolvedBreaches } su { $numTotalBreaches } violazioni contrassegnate come risolte
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } violazione su { $numTotalBreaches } contrassegnata come risolta
+       *[other] { $numResolvedBreaches } violazioni su { $numTotalBreaches } contrassegnate come risolte
     }
-progress-complete = Tutte le violazioni note sono state contrassegnate come risolte
+progress-complete = Tutte le violazioni conosciute sono state contrassegnate come risolte
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
@@ -460,8 +460,8 @@ unresolved-passwords-exposed =
     }
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
-        [one] Violazione di dati nota contrassegnata come risolta
-       *[other] Violazioni di dati note contrassegnate come risolte
+        [one] Violazione di dati conosciuta contrassegnata come risolta
+       *[other] Violazioni di dati conosciute contrassegnate come risolte
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nuova

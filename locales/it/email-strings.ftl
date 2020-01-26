@@ -9,15 +9,15 @@ email-address = Indirizzo email:
 # A link to legal information about mozilla products.
 legal = Note legali
 # Unsubscribe link in email.
-email-unsub-link = Annulla iscrizione
+email-unsub-link = Annulla l’iscrizione
 # This string appears in the footer of breach report and breach alert emails.
 # { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
 # and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
 # Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
-email-footer-blurb = Ricevi questa email perché ti sei iscritto agli avvisi di { -product-name }. Non desideri più ricevere email di questo tipo? { $unsubLink } Questo messaggio è stato inviato automaticamente. Per assistenza consulta { $faqLink }.
+email-footer-blurb = Ricevi questa email perché sei iscritto agli avvisi di { -product-name }. Non desideri più ricevere email di questo tipo? { $unsubLink } Questo messaggio è stato inviato automaticamente. Per assistenza consulta le { $faqLink }.
 # This string appears in the footer of verification emails. { $faqLink } is a link
 # to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
-email-verify-footer-copy = Ricevi questa email perché ti sei iscritto agli avvisi di { -product-name }. Questo messaggio è stato inviato automaticamente. Per assistenza consulta { $faqLink }.
+email-verify-footer-copy = Ricevi questa email perché sei iscritto agli avvisi di { -product-name }. Questo messaggio è stato inviato automaticamente. Per assistenza consulta le { $faqLink }.
 # Button text that takes the user to their signed in user dashboard.
 view-my-dashboard-cta = Visualizza Pannello utente
 # Button text
@@ -28,17 +28,17 @@ see-all-breaches = Vedi tutte le violazioni
 email-link-expires = Questo link scadrà tra 24 ore
 email-verify-blurb = Verifica l’indirizzo email per aggiungerlo a { -product-name } e ricevere avvisi in caso di violazioni.
 # Email headline
-email-found-breaches-hl = Elenco di violazioni dati passate del tuo account
+email-found-breaches-hl = Sommario delle violazioni dati che hanno coinvolto il tuo account in passato
 # Email headline
-email-breach-summary-for-email = Elenco di violazioni dati di { $userEmail }
+email-breach-summary-for-email = Elenco di violazioni dati per { $userEmail }
 # Email headline
-email-no-breaches-hl = { $userEmail } è stato coinvolto in 0 violazioni di dati
+email-no-breaches-hl = { $userEmail } non è stato coinvolto in alcuna violazione di dati conosciuta
 # Email headline
 email-alert-hl = { $userEmail } è stato coinvolto in una nuova violazione di dati
 # Subject line of email
 email-subject-found-breaches = { -product-name } ha trovato i tuoi dati nelle seguenti violazioni
 # Subject line of email
-email-subject-no-breaches = { -product-name } non ha trovato violazioni note
+email-subject-no-breaches = { -product-name } non ha trovato violazioni conosciute
 # Subject line of email
 email-subject-verify = Verifica il tuo indirizzo email per { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
