@@ -415,10 +415,60 @@ confirmation-1-subhead = Parfait, vous venez de régler votre première fuite de
 confirmation-1-body = Continuez sur votre lancée. Jetez un coup d’œil à votre tableau de bord pour voir s’il n’y a pas autre chose à faire.
 confirmation-2-body = Vous franchissez une étape importante dans la protection vos comptes en ligne.
 confirmation-3-subhead = Encore un problème réglé. Bien joué !
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Votre nouveau mot de passe est-il unique, fort et compliqué à deviner ? <a>Vérifier que c’est bien le cas</a>
+generic-confirmation-subhead = Cette fuite a été marquée comme réglée
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Pour voir la fuite restante, accédez à votre tableau de bord.
+       *[other] Pour voir les fuites restantes, accédez à votre tableau de bord.
+    }
+return-to-breach-details-link = Revenir aux détails de la fuite
+go-to-dashboard-link = Accéder au tableau de bord
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } fuite réglée
+       *[other] { $numResolvedBreaches } fuites réglées
+    }
+progress-intro-subhead = Nouveauté sur { -product-name } : marquer les fuites comme réglées
+progress-intro-message = Après avoir examiné les détails d’une fuite de données et pris des mesures pour protéger vos informations personnelles, vous pouvez marquer les fuites comme réglées.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } fuite sur { $numTotalBreaches } marquée comme réglée
+       *[other] { $numResolvedBreaches } fuites sur { $numTotalBreaches } marquées comme réglées
+    }
+progress-complete = Toutes les fuites connues ont été marquées comme réglées
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>C’est un bon début !</span> Consultez les fuites restantes pour en savoir plus
+    sur les mesures à prendre.
+progress-message-2 = <span>Continuez comme ça !</span> De simples changements comme la modification de mots de passe peuvent jouer un rôle majeur dans la protection de vos informations personnelles.
+progress-message-4 = <span>Encore un dernier effort !</span> Vous y êtes presque.
+progress-complete-message = <span>Il semblerait que vous y preniez goût !</span> Si vous souhaitez aller plus loin, c’est le bon moment pour définir des mots de passe robustes pour tous les autres identifiants.
 
 ##
 
+resolve-this-breach-link = Régler cette fuite
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Marquée comme réglée le :
+hide-resolved-button = Masquer les fuites réglées
+show-resolved-button = Afficher les fuites réglées
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] mot de passe compromis parmi les fuites de données non réglées
+       *[other] mots de passe compromis parmi les fuites de données non réglées
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] fuite de données connue marquée comme réglée
+       *[other] fuites de données connues marquées comme réglées
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Fuite récente
