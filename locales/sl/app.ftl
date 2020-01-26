@@ -479,13 +479,28 @@ resolve-top-notification = { $affectedEmail } se je pojavil v tej kraji podatkov
 mark-as-resolve-button = Označi kot razrešeno
 marked-as-resolved-label = Označeno kot razrešeno
 undo-button = Razveljavi
+confirmation-1-subhead = Super! Pravkar ste razrešili prvo krajo podatkov.
+confirmation-1-body = Nadaljujte. Preglejte nadzorno ploščo in preverite, ali je treba še kaj storiti.
+confirmation-2-body = Sprejemate pomembne ukrepe za zaščito svojih spletnih računov.
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Ali je vaše novo geslo edinstveno, močno in težko uganljivo? <a>Preverite</a>
+generic-confirmation-subhead = Ta kraja je bila označena kot razrešena
 return-to-breach-details-link = Nazaj na podrobnosti o kraji
+go-to-dashboard-link = Pojdi na nadzorno ploščo
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
 progress-percent-complete = { $percentComplete }% dokončano
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } razrešena
+        [two] { $numResolvedBreaches } razrešeni
+        [few] { $numResolvedBreaches } razrešene
+       *[other] { $numResolvedBreaches } razrešenih
+    }
+progress-complete = Vse znane kraje podatkov so bile označene kot razrešene
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
@@ -493,5 +508,8 @@ progress-percent-complete = { $percentComplete }% dokončano
 
 ##
 
+resolve-this-breach-link = Razreši to krajo
+hide-resolved-button = Skrij razrešene
+show-resolved-button = Prikaži razrešene
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Novo
