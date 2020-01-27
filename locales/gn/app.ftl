@@ -409,8 +409,17 @@ undo-button = Mbojevy
 confirmation-1-subhead = ¡Iporã! Emoĩporã ne ñembyai peteĩha.
 confirmation-1-body = Erekóke kyre’ỹ. Ema’ẽ ne ñangarekoha rupáre ehecha hag̃ua mba’épa ejapovekuaa.
 confirmation-2-subhead = ¡Esẽ mba'evai’apoha!
+confirmation-2-body = Ejapo mba’e iporã añetéva emo’ã hag̃ua ne mba’ete ñandutípe.
 confirmation-3-subhead = Ambueve. ¡Iporã añete!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = ¿Ne ñe’ẽñemi pyahu oikoite, hekorosã ha hasy ojekuaa hag̃ua? <a>Eikuaasépa</a>
 generic-confirmation-subhead = Ko ñembyai oñemongurusu oĩporãmavaramo
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Ehecha hag̃ua ñembyai opytáva, ema’ẽ ne ñangarekoha rupáre.
+       *[other] Ehecha hag̃ua ñembyai opytáva, ema’ẽ ne ñangarekoha rupáre.
+    }
 return-to-breach-details-link = Ejevy pe ñembyai mba’emimíme
 go-to-dashboard-link = Eho ñangarekoha rupápe
 # This string appears above a breach resolution progress bar and indicates
@@ -424,6 +433,10 @@ num-resolved =
        *[other] { $numResolvedBreaches } Oĩporãma
     }
 progress-intro-subhead = Ipyahu { -product-name }-pe: emongurusu ñembyai oĩporãmavaramo
+progress-intro-message =
+    Ehecha rire umi mba’emimi ñembyai rehegua ha mba’etépa ejapóta emo’ã hag̃ua 
+    
+    ne maranduete, ikatúma emongurusu oĩporãvaramo.
 progress-status =
     { $numTotalBreaches ->
         [one] { $numResolvedBreaches } { $numTotalBreaches } mba’e ñembyai mongurusupyre oĩporãmavaramo
