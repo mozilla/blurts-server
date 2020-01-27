@@ -6,6 +6,7 @@
 -product-short-name = Monitor
 -brand-name = Firefox
 -brand-Mozilla = Mozilla
+-brand-fxa = Cuenta Firefox
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
@@ -13,7 +14,9 @@
 ##
 
 GitHub-link-title = GitHub
+error-must-be-signed-in = Nejika kajie´enu sesión { -brand-fxa }
 home-title = { -product-name }
+home-not-found = Ntu nnani´i página.
 user-add-invalid-email = Correo ntu vatu
 error-headline = Error
 scan-submit = Nánuku correo noo´o
@@ -21,6 +24,9 @@ download-firefox-banner-button = Xinuun { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Nchuíchí!
 show-all = Kune´yá kuaiyo
+sign-in = Kajie´e sesión
+sign-out = Kene sesión
+have-an-account = ¿A kuminu iin cuenta?
 about-firefox-monitor = Jiee ya’a { -product-name }
 # Link title
 home = Nuu kajie´e
@@ -47,6 +53,9 @@ ba-next-step-1 = Sama contraseña noo´o inka vatu jee ntu xini.
 
 ## Updated error messages
 
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Kajie´e sesión kua { $userEmail }
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menú
 # Link title
@@ -55,6 +64,8 @@ learn-more-link = Ka´vi kue´eka.
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = Kajie´e sesión
 
 ##
 
