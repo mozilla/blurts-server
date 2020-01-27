@@ -447,6 +447,13 @@ progress-complete = Opaite ñembyai ojekuaáva oñemongurusu oĩporãmavaramo
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>¡Eñepyrũ porã!</span> Ehecha umi mba’evai hembýva eikuaa hag̃ua 
+    moõ gotyopa ehóta.
+progress-message-2 =
+    <span>¡Emboguata kóicha meme!</span> Umi ñemoambue michĩmíva ñe’ẽñemi ñembohekopyahu ha’e tuicha mba’e 
+    ereko hag̃ua tekorosãme ne maranduete.
+progress-message-3 = <span>¡Ejapoporã emyatyrõ hag̃ua ko’ã mba’evai!</span> Emboguata kóicha meme. Opyta sa’íma.
 
 ##
 
