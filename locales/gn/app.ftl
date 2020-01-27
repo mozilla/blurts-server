@@ -454,6 +454,10 @@ progress-message-2 =
     <span>¡Emboguata kóicha meme!</span> Umi ñemoambue michĩmíva ñe’ẽñemi ñembohekopyahu ha’e tuicha mba’e 
     ereko hag̃ua tekorosãme ne maranduete.
 progress-message-3 = <span>¡Ejapoporã emyatyrõ hag̃ua ko’ã mba’evai!</span> Emboguata kóicha meme. Opyta sa’íma.
+progress-message-4 = <span>¡Opa’íntema!</span> Eg̃uahẽmbotaitéma ehosehápe.
+progress-complete-message =
+    <span>Eñeñandu porã, ¿ajépa?</span> Eku’ese jeýramo, ko’ág̃a ikatúma 
+    embohekopyahu ambue tembiapo ñepyrũ ñe’ẽñemi hekorosãvéva ndive.
 
 ##
 
@@ -463,5 +467,10 @@ resolve-this-breach-link = Emoĩporã ko ñembyai
 marked-resolved = Oĩporãmavaramo mongurusupyre:
 hide-resolved-button = Emokañy oĩporãpyréva
 show-resolved-button = Ehechauka oĩporãpyréva
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Ñe’ẽñemi ojekuaareíva ñembyai oñemoĩporã’ỹva rupi
+       *[other] Ñe’ẽñemikuéra ojekuaareíva ñembyai oñemoĩporã’ỹva rupi
+    }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Pyahu
