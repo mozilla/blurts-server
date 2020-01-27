@@ -472,5 +472,10 @@ unresolved-passwords-exposed =
         [one] Ñe’ẽñemi ojekuaareíva ñembyai oñemoĩporã’ỹva rupi
        *[other] Ñe’ẽñemikuéra ojekuaareíva ñembyai oñemoĩporã’ỹva rupi
     }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Mba’ekuaarã ñembyai ojekuaáva oñemongurusúva oĩporãmavaramo
+       *[other] Mba’ekuaarã ñembyai ojekuaáva oñemongurusúva oĩporãmavaramo
+    }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Pyahu
