@@ -47,6 +47,15 @@ email-subject-no-breaches = { -product-name } ndojuhúi ñembyai kuaapyrépe
 email-subject-verify = Ehechajey ne ñanduti veve { -product-name } peg̃uarã
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Eikuaave { $fxmLink } rehegua
+email-sensitive-disclaimer =
+    Pe ñembiai rehegua ikangy rupi, noñemoherakuãmo’ãi ñandutiveve kundaharape ivaíva. 
+    Og̃uahẽ ndéve ko kyhyjerã ojehechakuaa rupi nemba’eha ko ñandutiveve kundaharape.
+fxm-warns-you-no-breaches =
+    { -product-name } nemongyhyje mba’ekuaarã ñembyai rehegua ombyaikuaáva ne maranduete. 
+    Ko’ág̃a rupi ndojejuhúi mba’eve. Romondóta ndéve kyhyjerã ne ñandutiveve kundaharape oñembyaikuaáramo.
+fxm-warns-you-found-breaches =
+    { -product-name } nemongyhyje mba’ekuaarã ñembyaire omomarãkuaáva ne maranduete. 
+    Eñemboheraguapy og̃uahẽ hag̃ua ndéve kyhyjerã ne ñandutiveve kundaharape imarãkuáramo.
 email-breach-alert-blurb =
     { -product-name } omombe’u ndéve mba’ekuaarã ñembyai ne mba’eteéva rehegua. 
     
@@ -73,6 +82,9 @@ pre-fxa-blurb =
     Kóva ha’e iñambuéva eñemboheraguapy guive { -product-name }-pe, pe mba’epuru 
     ohechaa mba’ekuaarã ñembyai ojekuaáva ne marandurãite. Rombojuajuhína Firefox mba’ete ndive.
 pre-fxa-tout-1 = Ejesarekóke ñembyai pyahúre
+pre-fxa-p-1 =
+    <a>Emoheñói mba’ete</a> ehecha hag̃ua 15 ñanduti veve 
+    ehechakuaa hag̃ua mba’ekuaarã ñembyai. Pembojuaju hag̃ua oimeraẽva ñandutiveve eipuruva’ekue emoheñói hag̃ua ñandutípe.
 pre-fxa-tout-2 = Ereko mba’erupa tuichaháicha
 pre-fxa-p-2 =
     Ejuhu opaite mba’ekuaarã ñembyai peteĩ tendápe año eikuaa hag̃ua mba’e ñe’ẽñemípa emoambuéta. 
