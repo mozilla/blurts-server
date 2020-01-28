@@ -185,7 +185,7 @@ app.use(clientErrorHandler);
 app.use(errorHandler);
 
 EmailUtils.init().then(() => {
-  const listener = app.listen(AppConstants.PORT, () => {
+  const listener = app.listen(AppConstants.PORT, '0.0.0.0', () => {
     log.info("Listening", { port: listener.address().port });
   });
 }).catch(error => {

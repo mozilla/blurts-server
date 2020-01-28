@@ -1,0 +1,56 @@
+{{!< default }}
+{{#if hostRes }}
+<main class="container bg-light clear-header" {{> analytics/results_page_label }}>
+  <div class="row jst-cntr scan-results">
+
+    <div class="mw-860 headline-col overflow-break">
+        <p id="scanned-email-address" class="scanned-email-address">Results for: {{ hostRes.ip_str }} <span id="scannedEmail" data-scanned-email-id={{ hostRes.ip_str }} class="bold"></span></p>
+        <h2 class="headline scan-results-headline">This IP is located in <br/>{{ hostRes.city }}, {{ hostRes.country_name }},<br/> and connected via <br/> {{ hostRes.isp }}.<br/>It has {{ hostRes.data.length }} open devices.</h2>
+    </div>
+  </div>
+
+  <div class="row jst-cntr user-found-breaches fix-col">
+  <div class="mw-860 found-breaches scan-res-breaches">
+  {{#each hostRes.data}}
+      <a class="breach-card two-up drop-shadow ">
+        <div class="breach-logo-wrapper flx">
+          <img alt="" class="breach-logo breach-img" src="/img/logos/missing-logo-icon.png">
+        </div>
+        <div class="breach-info-wrapper flx flx-col">
+          <div class="flx flx-col">
+            <span class="breach-title">{{ this.devicetype }}</span>
+                        <span class="breach-key">Product:</span>
+                        <span class="breach-value">{{ this.product }}</span>
+                        <span class="breach-key">OS:</span>
+                        <span class="breach-value">{{ this.os }}</span>
+                        <span class="breach-key">Port:</span>
+                        <span class="breach-value">{{ this.port }}</span>
+          </div>
+          <div class="breach-card-link-wrap">
+              <span class="more-about-this-breach blue-link" data-ga-link="" data-event-category="Internal Link" data-event-label="Breach Card: More about this breach">More about this device</span>
+          </div>
+        </div>
+      </a>
+  {{/each}}
+  </div>
+  </div>
+
+{{ else }}
+<main class="container monitor-homepage clear-header" data-page-label={{> analytics/landing_page_label }}>
+  <section class="row jst-cntr monitor-landing">
+    <div class="col-12 flx-cntr landing-content">
+          <h2 class="top-headline landing-headline">See if your devices are hackable.</h2>
+          <h3 class="subhead landing-subhead">Your IP address is {{ ip }}. Find out what hackers can see on your network.</h3>
+          <form action="/scan/ip" method="post">
+              <div class="input-group-button">
+                  <input type="submit" value="Check for open devices">
+                  <img class="loader" src="/img/svg/new-loader.svg" alt="">
+              </div>
+          </form>
+      </div>
+
+    </section>
+</main>
+{{/if }}
+
+{{> linking-data/firefox-monitor-product }}

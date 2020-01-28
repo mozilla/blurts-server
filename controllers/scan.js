@@ -1,6 +1,7 @@
 "use strict";
 
 const crypto = require("crypto");
+const shodanClient = require("shodan-client");
 
 const AppConstants = require("../app-constants");
 const { FluentError } = require("../locale-utils");
@@ -84,7 +85,29 @@ function get (req, res) {
 }
 
 
+async function getIP (req, res) {
+  const requestIP = req.headers["x-real-ip"] || req.ip;
+  res.render("ip_monitor", {
+    ip: requestIP,
+  });
+}
+
+
+async function postIP (req, res) {
+  const requestIP = req.headers["x-real-ip"] || req.ip;
+  const exampleIP = AppConstants.SHODAN_EXAMPLE_IP;
+  const ipToCheck = exampleIP || requestIP;
+  const hostRes = await shodanClient.host(ipToCheck, AppConstants.SHODAN_API_KEY);
+  res.render("ip_monitor", {
+    ip: requestIP,
+    hostRes,
+  });
+}
+
+
 module.exports = {
   post,
   get,
+  getIP,
+  postIP,
 };

@@ -34,6 +34,7 @@
     "nodemailer": "^4.6.4",
     "nodemailer-express-handlebars": "^3.0.0",
     "pg": "^7.4.3",
+    "shodan-client": "^3.1.5",
     "sns-validator": "^0.3.4",
     "uuid": "^3.2.1"
   },

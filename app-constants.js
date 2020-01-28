@@ -42,6 +42,8 @@ const kEnvironmentVariables = [
   "SERVER_URL",
   "SUPPORTED_LOCALES",
   "DELETE_UNVERIFIED_SUBSCRIBERS_TIMER",
+  "SHODAN_API_KEY",
+  "SHODAN_EXAMPLE_IP",
 ];
 
 const AppConstants = { };
