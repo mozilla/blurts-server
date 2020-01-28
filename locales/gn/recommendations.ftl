@@ -2,10 +2,18 @@
 rec-ssn-subhead = Ehechajey ne marandu’i viruguáva
 # Link title
 rec-ssn-cta = Ejerure marandu’i viruguáva
+rec-ssn =
+    Eguereko mbohapy marandu’i ñemurã reigua arýpe léipe he’iháicha. 
+    ejerure ha ehechajey nombyaíri ne ñemurã. 
+    Eheka mba’ete, virujepuru térã kuatia’atã ñemurã eikuaa’ỹva.
 # Recommendation subhead
 rec-pw-1-subhead = Emoambue ne ñe’ẽñemi
 # Link title
 rec-pw-1-cta = Emoambue ñe’ẽñemi ko tendápe g̃uarã
+rec-pw-1 =
+    Ejapo ko ñe’ẽñemi ha’eño ha iñambuéva oimeraẽva umi eipurúvagui. 
+    Mba’e iporãva ha’e emojopyru mokõi térã hetave ñe’ẽ ojuehegua’ỹva 
+    ikatuhápe ejapo peteĩ ñe’ẽsyry.
 # Recommendation subhead
 rec-pw-2-subhead = Embohekopyahu ambue tembiapo ñepyrũ ko ñe’ẽñemímente
 # Link title
