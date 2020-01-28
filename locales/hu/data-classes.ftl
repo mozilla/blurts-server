@@ -63,6 +63,7 @@ imsi-numbers = IMSI számok
 income-levels = Bevételi szintek
 instant-messenger-identities = Azonnali üzenetküldő identitások
 ip-addresses = IP-címek
+job-applications = Állásjelentkezések
 job-titles = Beosztások
 mac-addresses = MAC-címek
 marital-statuses = Családi állapotok
