@@ -256,6 +256,10 @@ currently-showing = Jehechauka:
 ## Updated error messages
 
 error-bot-headline = Jeheka ojejokóva sapy’ami
+error-bot-blurb =
+    Oremopy’amokõi nde ha’éramo g̃uarã peteĩ avara’ãnga eheka hetáma rupi 
+    umi ñanduti veve sa’i aravópe. Ko’ág̃a rupi ejejokóma 
+    ehekajey hag̃ua. Ikatu eha’ãjey ag̃amieve.
 error-csrf-headline = Tembiapo oiko’ỹva
 error-csrf-blurb = Eiporavo votõ kundahára kupépe, emyanyhẽ kuatiarogue ha eha’ãjey.
 error-invalid-unsub = Mba’éicha ikatu aipe’a mboheguapy kyhyjerãva { -product-name }
