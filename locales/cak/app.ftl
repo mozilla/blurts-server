@@ -11,6 +11,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Ichinan Ruk'amab'ey Firefox
 
 ##
 
@@ -429,13 +430,27 @@ five-myths-desc = Tawetamaj nachajij awi' chi kiwäch ri itzel taq na'oj, ri yer
 take-further-steps-desc = Tawila' rub'eyal nach'utinisaj ri k'ayewal rik'in ri releq'axik ab'anikil, richin man teleq'äx apwaq.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = ¡Xeyak ri jaloj!
+# Section headline
+rec-section-headline = Achike nib'an rik'in re tz'ilanem re'
+rec-section-subhead = Niqachilab'ej chawe chi tab'ana' ke re' richin ütz kek'oje' ri awetamab'al chuqa' richin nachajij ri kematz'ib'il ab'anikil.
+# Section headline
+rec-section-headline-no-pw = Achike nab'än richin nachajij ri awetamab'al
+rec-section-subhead-no-pw = Estape' man xetz'iläx ta re ta ewan tzij re', k'o ri k'o chi nab'än richin nachajij ri awetamab'al.
+# Button
+see-additional-recs = Ketz'et Rutz'aqat taq Chilab'exïk
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+resolve-top-notification = { $affectedEmail } xwachin pa re tz'ilanem re'. <a>Achike nib'an wakami</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+       *[other] { $numAffectedEmails } ri taq ataqoya'l xewachin pa re tz'ilanem re'. <a>Achike nib'an wakami</a>
+    }
 
 ##
 
+marking-this-subhead = Tiya' retal re tz'ilanem re' achi'el xolon chik
 undo-button = Titzolïx
 
 ## These strings contain nested markup that is later used to style the text inside of it.
