@@ -63,6 +63,7 @@ imsi-numbers = IMSI papapy
 income-levels = Mboy virúpa oike
 instant-messenger-identities = Ñe’ẽmondoha ipya’éva reraite
 ip-addresses = IP kundaharape
+job-applications = Mba’ejerure mba’aporã
 job-titles = Nerenda mba’apohápe
 mac-addresses = MAC kundaharape
 marital-statuses = Emendávapa
