@@ -87,7 +87,8 @@ function makeProgressBar(userBreachTotals, locales) {
     };
   }
 
-  const percentBreachesResolved = Math.floor(numResolvedBreaches / numTotalBreaches * 100);
+  let percentBreachesResolved = Math.floor(numResolvedBreaches / numTotalBreaches * 100);
+  percentBreachesResolved = percentBreachesResolved < 1 ? 1 : percentBreachesResolved;
   if (percentBreachesResolved === 100) {
     return {
       subhead: localize(locales, "progress-complete"),
