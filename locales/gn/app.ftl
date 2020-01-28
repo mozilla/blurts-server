@@ -263,6 +263,10 @@ error-bot-blurb =
 error-csrf-headline = Tembiapo oiko’ỹva
 error-csrf-blurb = Eiporavo votõ kundahára kupépe, emyanyhẽ kuatiarogue ha eha’ãjey.
 error-invalid-unsub = Mba’éicha ikatu aipe’a mboheguapy kyhyjerãva { -product-name }
+error-invalid-unsub-blurb =
+    Ehejarei ñemboheraguapy peteĩva ñanduti veve rupive 
+    omog̃uahẽva { -product-name }. Eheka ñandutiveve { -brand-team-email } 
+    ne ñe’ẽmondo g̃uahẽhápe. Ñandutiveve opávo, eiporavo juajuha Mboheraguapy jeheja.
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
