@@ -63,6 +63,7 @@ imsi-numbers = Rhifau IMSI
 income-levels = Lefelau incwm
 instant-messenger-identities = Hunaniaeth negesydd cyflym
 ip-addresses = Cyfeiriad IP
+job-applications = Ceisiadau am swyddi
 job-titles = Teitlau swyddi
 mac-addresses = Cyfeiriadau MAC
 marital-statuses = Statws priodasol
