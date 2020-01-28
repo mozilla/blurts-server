@@ -57,6 +57,10 @@ rec-ip-us =
     Ne kundaharape ñanduti pegua (IP kundaharape) ohechauka ne rendaite
     ha ne ñanduti me’ẽhára. Peteĩ mba’epuru { -brand-fpn } rehegua
     omoypytũ nde IP kundaharape oñomi hag̃ua ne rendaite.
+rec-ip-non-us =
+    Ne kundaharape ñanduti pegua (IP kundaharape) ohechauka ne rendaite 
+    ha ne ñanduti me’ẽhára. Peteĩ red privada virtual (VPN) ndive, ikatu eñomi ne rendaite 
+    ha ehovañuvã nde IP kundaharape.
 rec-hist-pw-subhead = Aníke eipurujo’a ñe’ẽñemi
 # Link title
 rec-hist-pw-cta-fx = Ehecha tembiapo ñepyrũ { -brand-name }
