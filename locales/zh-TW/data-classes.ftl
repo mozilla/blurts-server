@@ -63,6 +63,7 @@ imsi-numbers = IMSI 號碼
 income-levels = 收入水準
 instant-messenger-identities = 即時通訊身分
 ip-addresses = IP 地址
+job-applications = 求職申請資料
 job-titles = 工作頭銜
 mac-addresses = MAC 地址
 marital-statuses = 婚姻狀態
