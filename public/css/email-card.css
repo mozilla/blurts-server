@@ -1,3 +1,50 @@
+.private-relay-callout {
+  background: var(--monitorGradient);
+  border-radius: 8px;
+  margin: 0 auto 60px;
+  width: 100%;
+}
+
+.private-relay-callout p {
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #42425A;
+}
+
+.private-relay-callout p.bold {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #20123A;
+}
+
+.private-relay-callout a {
+  font-size: 16px;
+}
+
+.private-relay-callout-copy {
+  width: 100%;
+}
+
+.private-relay-callout-copy::before {
+  background-image: url("/img/svg/fxa-tout-yellow-env.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 60px;
+  width: 80px;
+  margin-right: 28px;
+  content: "";
+  display: inline-block;
+  align-self: center;
+}
+
+.relay-border {
+  padding: 28px;
+  background-color: #f9f7fd;
+  margin: .125rem;
+  border-radius: 6px;
+  overflow: hidden;
+}
 
 .email-card.preferences .e-info {
   border-bottom: none;

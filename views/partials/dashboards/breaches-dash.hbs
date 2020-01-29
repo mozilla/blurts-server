@@ -15,9 +15,23 @@
   </div>
   <div class="email-cards flx flx-col jst-cntr">
     {{#getBreachesForEachEmail}}
-      {{#each this.verifiedEmails}}
+      {{#eachFromTo this.verifiedEmails 0 1 }}
         {{> email-card }}
-      {{/each}}
+      {{/eachFromTo}}
+      <div class="private-relay-callout">
+        <div class="relay-border">
+          <div class="private-relay-callout-copy flx">
+            <div>
+              <p class="bold ff-Met purple7">Keep your email addresses hidden for future accounts</p>
+              <p>Use an email masking service to generate a fake email address.</p>
+              <a class="blue-link">Learn how to protect your email</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{#eachFromTo this.verifiedEmails 1 this.verifiedEmails.length }}
+        {{> email-card }}
+      {{/eachFromTo}}
       {{#if breachesFound }}
         {{> hibp-attribution variableClasses="dash-attribution txt-cntr"}}
       {{/if}}
