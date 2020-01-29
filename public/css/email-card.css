@@ -38,12 +38,49 @@
   align-self: center;
 }
 
+.relay-icon {
+  max-width: 400px;
+  margin-bottom: 60px;
+}
+
+.relay-home.featured-breach h2.landing-headline {
+  max-width: 760px !important;
+  margin-bottom: 60px;
+}
+
+h3.relay-lb {
+  font-size: 32px;
+  padding-left: 40px;
+  padding-right: 40px;
+
+}
+
 .relay-border {
   padding: 28px;
   background-color: #f9f7fd;
   margin: .125rem;
   border-radius: 6px;
   overflow: hidden;
+}
+
+.relay-home .sb-callout,
+.relay-home .sb-callout-body {
+  max-width: 760px;
+}
+
+.relay-cta,
+.relay-btn,
+.relay-sub {
+  color: #ffffff;
+}
+
+.relay-btn {
+  
+}
+
+h3.relay-cta {
+  font-size: 32px;
+  max-width: 600px;
 }
 
 .email-card.preferences .e-info {

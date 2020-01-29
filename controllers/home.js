@@ -66,6 +66,14 @@ function getSecurityTips(req, res) {
   });
 }
 
+function getRelay(req, res) {
+  return res.render("monitor", {
+    title: req.fluentFormat("Firefox Private Relay"),
+    whichPartial: "monitor",
+    relay: true,
+  });
+}
+
 function getAboutPage(req, res) {
   return res.render("about",{
     title: req.fluentFormat("about-firefox-monitor"),
@@ -103,4 +111,5 @@ module.exports = {
   getBentoStrings,
   getSecurityTips,
   notFound,
+  getRelay,
 };
