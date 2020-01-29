@@ -128,15 +128,15 @@
     max-width: 48%;
     flex: 1 1 48%;
   }
-
-  .email-card.active .breach-card.ec.two-up {
-    display: flex;
-  }
 }
 
 @media screen and (max-width: 800px) {
   .breach-card {
     margin: 0.75rem 0;
+  }
+
+  .email-card.active .breach-card.ec.two-up {
+    display: flex;
   }
 
   .two-up,
