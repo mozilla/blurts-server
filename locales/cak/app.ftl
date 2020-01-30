@@ -451,7 +451,10 @@ resolve-top-notification-plural =
 ##
 
 marking-this-subhead = Tiya' retal re tz'ilanem re' achi'el xolon chik
+mark-as-resolve-button = Tiya' Retal achi'el Xsol
+marked-as-resolved-label = Xya' Retal achi'el Xsol
 undo-button = Titzolïx
+confirmation-1-subhead = ¡Yalan ütz! Xasöl ri nab'ey atz'ilanem.
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
