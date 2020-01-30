@@ -136,6 +136,11 @@ unverified-breach-plural = Ñembyai ojehechajey’ỹva
 spam-list-breach-plural = Oñembyai ñandutiveve rysýi eipota’ỹva
 what-data = Mba’ete mba’ekuaarã ivaikuaa:
 sensitive-sites = ¿Mba’e ojapo { -product-name } umi tenda ikangývare?
+sensitive-sites-copy =
+    { -product-name } ohechauka umi mba’ete ojokupytýva ko’ã
+    ñembyai rehegua ojehechajey vove ñanduti veve kundaharape. Kóva he’ise nde ha’eha
+    neañomi ehechataha ne marandúpa oñembyaikuaápara’e (peteĩva noiméiramo
+    oikekuaa ne mba’ete ñanduti veve reheguápe).
 delayed-reporting-headline = Mba’ére eha’arõiterei ñembyai ñemomarandu
 delayed-reporting-copy =
     Ikatu oraha heta jasy térã ary umi credencial ojehechakuaáva rehegua ¶
