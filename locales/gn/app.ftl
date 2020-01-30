@@ -228,6 +228,10 @@ ba-next-step-blurb-1 =
     papapy ha ambueve. Ndoguerekói marandu mba’eteéva aichagua 
     kundaharape, arareñói térã ára pehengue rehegua.
 ba-next-step-2 = Anive eipuru ñe’ẽñemi ojekuaareíva.
+ba-next-step-blurb-2 =
+    Umi hekovaíva ñadutípe ikatu ojuhu ne ñe’ẽñemi ñanduti ypytũme 
+    ha oipuru ñepyrũ hag̃ua tembiapo ambue ne mba’etépe. Emo’ãporãve hag̃ua 
+    eipurúke ñe’ẽñemi ha’etéva peteĩteĩvape g̃uarã.
 ba-next-step-3 = Eñepytyvõuka emoheñói hag̃ua ñe’ẽñemi oikóva ha ereko tekorosãme.
 ba-next-step-blurb-3 =
     Oipuru ñe’ẽñemi ñangarekoha omoheñói hag̃ua ñe’ẽñemi hekorosãva ha ha’eñóva. Ko’ã ñangarekoha ombyaty opaite ne
