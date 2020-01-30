@@ -92,6 +92,7 @@ fxa-what-to-do-blurb-3 =
     Ne mba’ete banco térã kuatia’atã ñemurã papapy ojehechakuaa kuri, emombe’u ne báncope ikatuha oiko mba’evai. ¶
     Ehechajey umi je’epyre eikuaa’ỹva.
 fxa-what-to-do-subhead-4 = Eñepytyvõuka nemandu’a hag̃ua opaite ne ñe’ẽñemíre ha ereko tekorosãme.
+fxa-what-to-do-blurb-4 = Umi ñe’ẽñemi ñangarekoha 1Password, LastPass, Dashlane ha Bitwarden ombyaty ne ñe’ẽñemi tekorosãme ha oike ñanduti rendápe. Oipuru peteĩ ñe’ẽñemi ñangarekoha ne pumbyry ha mohendahápe ani hag̃ua ne mandu’apánte.
 # Alerts is a noun
 sign-up-for-alerts = Eñemboheraguapy og̃uahẽ hag̃ua kyhyjerã
 # Link title
@@ -144,6 +145,10 @@ about-fxm-headline = { -product-name } rehegua
 # How Firefox Monitor works
 how-fxm-works = Mba’écha omba’apo { -product-name }
 how-fxm-1-headline = Eheka vevuimi
+how-fxm-1-blurb =
+    Oheka ne ñanduti veve kundaharape mba’ekuaarã ojekuaáva mboguapyrépe 2007 
+    guive. Ko jeheka ypy ohechaukáta heta umi mba’ekuaarã mboguapyre, hákatu 
+    ndoguerekói maranduete ojehayhúva.
 how-fxm-2-headline = Eñemboheraguapy ehecha hag̃ua ñembyai
 how-fxm-3-headline = Erekóta marandu’i kundahárape
 how-fxm-3-blurb =
