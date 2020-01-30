@@ -452,6 +452,7 @@ progress-message-1 =
     <span>C’est un bon début !</span> Consultez les fuites restantes pour en savoir plus
     sur les mesures à prendre.
 progress-message-2 = <span>Continuez comme ça !</span> De simples changements comme la modification de mots de passe peuvent jouer un rôle majeur dans la protection de vos informations personnelles.
+progress-message-3 = <span>Beau travail, ces fuites sont réglées !</span> Continuez comme ça. Il y en a encore quelques-unes.
 progress-message-4 = <span>Encore un dernier effort !</span> Vous y êtes presque.
 progress-complete-message = <span>Il semblerait que vous y preniez goût !</span> Si vous souhaitez aller plus loin, c’est le bon moment pour définir des mots de passe robustes pour tous les autres identifiants.
 
