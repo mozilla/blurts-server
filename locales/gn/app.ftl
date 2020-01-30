@@ -424,6 +424,12 @@ resolve-top-notification-plural =
 ##
 
 marking-this-subhead = Emongurusu ko ñembyai oĩporãmavaramo
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Eñepyrũ vove eku’e emoĩporã hag̃ua ko ñembyai</span>,
+    ikatu emongurusu oĩporãmavaramo. Ikatu gueteri eike mba’emimíme ñembyai rehegua
+    nde tablero guive ejapose vove.
 mark-as-resolve-button = Emongurusu oĩporãmavaramo
 marked-as-resolved-label = Oĩporãmavaramo mongurusupyre
 undo-button = Mbojevy
