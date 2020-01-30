@@ -426,6 +426,9 @@ generic-confirmation-message =
     }
 return-to-breach-details-link = Revenir aux détails de la fuite
 go-to-dashboard-link = Accéder au tableau de bord
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = Terminé à { $percentComplete } %
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
 num-resolved =
