@@ -150,6 +150,10 @@ how-fxm-1-blurb =
     guive. Ko jeheka ypy ohechaukáta heta umi mba’ekuaarã mboguapyre, hákatu 
     ndoguerekói maranduete ojehayhúva.
 how-fxm-2-headline = Eñemboheraguapy ehecha hag̃ua ñembyai
+how-fxm-2-blurb =
+    Emoheñói { -brand-fxa } ema’ẽ hag̃ua mba’ekuaarã mboguapyre ne ñanduti vevépe. 
+    Ehechajeývo ñanduti veve kundaharape, og̃uahẽta marandu’i opaite 
+    ñemboguapyre, oĩhápe marandu’i ojehayhúva.
 how-fxm-3-headline = Erekóta marandu’i kundahárape
 how-fxm-3-blurb =
     Eipurúramo { -brand-name }, og̃uahẽta ndéve marandu’i eikéramo 
