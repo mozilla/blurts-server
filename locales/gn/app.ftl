@@ -147,6 +147,7 @@ delayed-reporting-copy =
     mba’ekuaarã ñembyaíva osẽkuaáva ñanduti ypytũme. Umi ñembyai ojuajúta ñane mba’ekuaarã rendápe ¶
     pya’ete ojejuhu térã ojehechajey rire.
 about-fxm-headline = { -product-name } rehegua
+about-fxm-blurb = { -product-name } omombe’u ne mba’ete ñandutigua ivaikuaápara’e ne mba’ekuaarã. Ehecháke ne mba’ekuaarãpa imarãkuaára’e, og̃uahẽta kyhyjerã ñembyai pyahu ha ehecha mba’éichapa emo’ãkuaa ne mba’ete ñandutípe. { -brand-Mozilla } ohepyme’ẽ { -product-name }.
 fxm-warns-you = { -product-name } ne ñatõi ne mba’ete ñandutigua oĩpara’e mba’ekuaarã ñemboguápe. Ehechajey ne marandúpa oñembyaikuaára’e, eikuaa mba’éichapa ikatu emo’ã porãvéta ne mba’ete ñandutípe ha og̃uahẽta ndéve ne ñanduti veve kundaharapépe ikatúpa oñembyai.
 # How Firefox Monitor works
 how-fxm-works = Mba’écha omba’apo { -product-name }
