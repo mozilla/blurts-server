@@ -16,6 +16,12 @@
 
 terms-and-privacy = Taq taqanem chi'l echeb'alil
 GitHub-link-title = GitHub
+error-scan-page-token = Ktajin kaq'axwachirisaj sib'alaj k'i taqoqxa'nib'al pa jun nitz' ramaj. Rumal taq chajinem atqaq'atem chech k'ak' taq tzukunem. Chab 'ana' chi jumul pa jutz'it.
+error-could-not-add-email = Man xkowinb'ex ta uya'ik le kemriqonib'al pa mulib'al juq'attzij
+error-not-subscribed = We kemriqonib'al man tz'ib'am ta pa { -product-name }
+error-hibp-throttled = Sib'alaj k'i t'iqonem pa { -brand-HIBP }.
+error-hibp-connect = K'axk'olil rech t'iq'onem pa { -brand-HIBP }.
+error-hibp-load-breaches = Man xkowinb'ex ta uya'ik uchuq'ab' taq k'eyowal.
 
 ## What to do after data breach tips
 
