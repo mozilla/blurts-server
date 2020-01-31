@@ -63,6 +63,7 @@ imsi-numbers = numere IMSI
 income-levels = niveluri de venituri
 instant-messenger-identities = identități de mesagerie instantanee
 ip-addresses = adrese IP
+job-applications = Cereri de angajare
 job-titles = profesii/meserii
 mac-addresses = adrese MAC
 marital-statuses = stare civilă
