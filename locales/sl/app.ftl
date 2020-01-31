@@ -473,6 +473,13 @@ see-additional-recs = Oglejte si dodatna priporočila
 ## Please do not modify or remove "<a>" and "</a>".
 
 resolve-top-notification = { $affectedEmail } se je pojavil v tej kraji podatkov. <a>Kaj storiti</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] { $affectedEmail } od vaših e-poštnih naslovov se je pojavil v tej kraji podatkov. <a>Kaj storiti</a>
+        [two] { $affectedEmail } od vaših e-poštnih naslovov sta se pojavila v tej kraji podatkov. <a>Kaj storiti</a>
+        [few] { $affectedEmail } od vaših e-poštnih naslovov so se pojavili v tej kraji podatkov. <a>Kaj storiti</a>
+       *[other] { $affectedEmail } od vaših e-poštnih naslovov se je pojavilo v tej kraji podatkov. <a>Kaj storiti</a>
+    }
 
 ##
 
