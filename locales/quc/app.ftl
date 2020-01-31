@@ -24,6 +24,17 @@ error-hibp-throttled = Sib'alaj k'i t'iqonem pa { -brand-HIBP }.
 error-hibp-connect = K'axk'olil rech t'iq'onem pa { -brand-HIBP }.
 error-hibp-load-breaches = Man xkowinb'ex ta uya'ik uchuq'ab' taq k'eyowal.
 error-must-be-signed-in = Rajawaxik kamajij kemchak pa { -brand-fxa }.
+error-to-finish-verifying = Chech uk'isik uq'atuxik we taqoqxa'n chech { -product-name }, rajawaxik kamajij kemchak pa le taqoqxa'nib'al pa le uk'u'x akemb'i'aj.
+home-title = { -product-name }
+home-not-found = Man riqom ta uxaq wuj.
+oauth-invalid-session = Kemchak man utz taj
+scan-title = { -product-name } : taq uwachinem q'axwachirisanem
+user-add-invalid-email = Taqoqxa'n man utz taj
+user-add-too-many-emails = Ktajin kaq'atuj le nimalaj rajilab'alil kemriqonib'al rech taqoqxa'n.
+user-add-email-verify-subject = Chaq'atuj le utz'ib'axik awib' pa { -product-name }.
+user-add-duplicate-email = We taqoqxa'n ya'om chi pa { -product-name }.
+user-add-duplicate-email-part-2 = Chasolij le { $preferencesLink } chech uq'atuxik le kemub'antajik rech { $userEmail }.
+error-headline = k'axk'olil
 
 ## What to do after data breach tips
 
