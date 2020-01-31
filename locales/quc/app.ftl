@@ -40,6 +40,20 @@ user-verify-email-report-subject = Le woktzijob'al { -product-name }
 user-unsubscribe-token-error = Kajawataj un token chech uchupik utz'ib'axik ib'.
 user-unsubscribe-token-email-error = Kajawataj jun token chech uchupik utz'ib'axik ib' chi'l emailHash.
 user-unsubscribe-title = Uchupik utz'ib'axik ib' { -product-name }
+pwt-section-headline = Nim uchuq'ab' taq retokib'al = Utzalaj chajinem
+landing-headline = Le ya'tal chi awech are chi k'o achajinem kumajij waral.
+scan-placeholder = Chach'apa' kemriqonib'al rech taqoqxa'nib'al
+scan-submit = Chatzukuj le ataqoqxa'n
+scan-error = Rajawaxik jun utz taqoqxa'n
+download-firefox-banner-button = Chaqasaj { -brand-name }
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = Taqom!
+sign-up = Utz'ib'axik ib'
+form-signup-error = Rajawaxik jun utz taqoqxa'n
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = Uq'ijol k'eyowal:
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Taq kemb'i'aj k'o k'eyowal chi rij
 
 ## What to do after data breach tips
 
