@@ -5,10 +5,17 @@
 -product-short-name = Monitor
 -brand-name = Firefox
 -brand-Mozilla = Mozilla
+-brand-HIBP = Have I Been Pwned
+-brand-fxa = Firefox Account
+-brand-pocket = Pocket
+-brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
 ##
 
+terms-and-privacy = Taq taqanem chi'l echeb'alil
+GitHub-link-title = GitHub
 
 ## What to do after data breach tips
 
