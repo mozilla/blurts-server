@@ -26,6 +26,11 @@ rec-bank-acc =
     Tarkista tiliotteesi epäilyttävän toiminnan tai epätavallisten maksujen 
     varalta. Ilmoita pankille, jos huomaat jotain mitä et tunnista tehneesi.
 # Recommendation subhead
+rec-cc-subhead = Seuraa luottokorttisi tapahtumia
+rec-cc =
+    Tarkkaile erityisesti outoja veloituksia luottokortiltasi. Uudella numerolla 
+    varustetun luottokortin pyytäminen luottokortin myöntäjältä saattaa olla hyvä idea.
+# Recommendation subhead
 rec-ip-subhead = Käytä palvelua, joka peittää IP-osoitteesi
 # Link title
 rec-ip-us-cta = Kokeile { -brand-fpn }
