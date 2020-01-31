@@ -57,6 +57,7 @@ compromised-accounts = Taq kemb'i'aj k'o k'eyowal chi rij:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Taq juq'attzij k'o k'axk'olil chi rij:
 unsub-headline = Uchupik utz'ib'axik ib' pa { -product-name-nowrap }
+unsub-blurb = Wa' kuchup le taqoqxa'n pa ucholajil { -product-name-nowrap } mak'u kak'ulaj ta chi taq na'b'anem are taq kq'alajisax k'ak' taq k'eyowal.
 
 ## What to do after data breach tips
 
