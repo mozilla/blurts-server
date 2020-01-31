@@ -331,6 +331,7 @@ other-monitored-emails = Ambue ñanduti veve ojehapykuehóva
 email-verification-required = Ñanduti veve jehechajey jerurepyre
 fxa-primary-email = { -brand-fxa } Ñanduti - Tuichavéva
 what-is-a-website-breach = ¿Mba’e ñembyai ñanduti rendápe?
+website-breach-blurb = Peteĩ ñanduti ñembogua oiko umi hekovaíva ñadutípe omonda, ombokuatia térã ohechaukáramo maranduete ñandutigua. Kóva oiko hekovaíva ñadutípe ojuhúramo nahekorosãiha heta kuatiarogue, ikatu avei oñembogua marandu mba’etégui eheka’ỹre.
 security-tips-headline = Ñe’ẽporã tekorosãrã emo’ã hag̃ua hackers-gui.
 steps-to-protect = Jeku’e ejapova’erã emo’ã hag̃ua nde reraite ñandutípe
 take-further-steps = Ejapo hetamba’e emo’ã hag̃ua nde reraite
