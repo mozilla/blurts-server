@@ -35,6 +35,11 @@ user-add-email-verify-subject = Chaq'atuj le utz'ib'axik awib' pa { -product-nam
 user-add-duplicate-email = We taqoqxa'n ya'om chi pa { -product-name }.
 user-add-duplicate-email-part-2 = Chasolij le { $preferencesLink } chech uq'atuxik le kemub'antajik rech { $userEmail }.
 error-headline = k'axk'olil
+user-verify-token-error = Kajawataj uq'atuxik token.
+user-verify-email-report-subject = Le woktzijob'al { -product-name }
+user-unsubscribe-token-error = Kajawataj un token chech uchupik utz'ib'axik ib'.
+user-unsubscribe-token-email-error = Kajawataj jun token chech uchupik utz'ib'axik ib' chi'l emailHash.
+user-unsubscribe-title = Uchupik utz'ib'axik ib' { -product-name }
 
 ## What to do after data breach tips
 
