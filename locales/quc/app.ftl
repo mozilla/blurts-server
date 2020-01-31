@@ -2,6 +2,7 @@
 ## unless otherwise indicated.
 
 -product-name = Firefox Monitor
+-product-name-nowrap = <span class="nowrap">{ -product-name }</span>
 -product-short-name = Monitor
 -brand-name = Firefox
 -brand-Mozilla = Mozilla
@@ -22,6 +23,7 @@ error-not-subscribed = We kemriqonib'al man tz'ib'am ta pa { -product-name }
 error-hibp-throttled = Sib'alaj k'i t'iqonem pa { -brand-HIBP }.
 error-hibp-connect = K'axk'olil rech t'iq'onem pa { -brand-HIBP }.
 error-hibp-load-breaches = Man xkowinb'ex ta uya'ik uchuq'ab' taq k'eyowal.
+error-must-be-signed-in = Rajawaxik kamajij kemchak pa { -brand-fxa }.
 
 ## What to do after data breach tips
 
