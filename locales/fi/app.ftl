@@ -222,7 +222,7 @@ appears-in-x-breaches =
        *[other] ilmenee { $breachCount } tunnetussa vuodossa.
     }
 check-for-breaches = Tarkista vuotojen varalta
-find-out-what-hackers-know = Ota selvää, mitä hakkerit tietävät sinusta jo nyt. Opi kuinka pysyä yksi askel edellä hakkereita.
+find-out-what-hackers-know = Selvitä mitä hakkerit tietävät sinusta jo nyt. Opi kuinka pysyä yksi askel edellä hakkereita.
 search-for-your-email = Etsi sähköpostiosoitettasi vuoteen 2007 ulottuvista julkisista tietovuodoista.
 back-to-top = Takaisin ylös
 comm-opt-0 = Lähetä minulle sähköpostia, jos jokin alla olevista sähköpostiosoitteistani on osallisena tietovuodossa.
