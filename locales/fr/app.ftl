@@ -413,6 +413,7 @@ marked-as-resolved-label = Marquée comme réglée
 undo-button = Annuler
 confirmation-1-subhead = Parfait, vous venez de régler votre première fuite de données.
 confirmation-1-body = Continuez sur votre lancée. Jetez un coup d’œil à votre tableau de bord pour voir s’il n’y a pas autre chose à faire.
+confirmation-2-subhead = Prenez ça, vils pirates !
 confirmation-2-body = Vous franchissez une étape importante dans la protection vos comptes en ligne.
 confirmation-3-subhead = Encore un problème réglé. Bien joué !
 # This string contains nested markup that becomes a link later in the code.
