@@ -421,14 +421,21 @@ see-additional-recs = Ver recomendaciones adicionales
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+resolve-top-notification = { $affectedEmail } apareció en esta filtración. <a>Qué hacer a continuación</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+       *[other] { $numAffectedEmails } de tus cuentas de correo aparecieron en esta filtración. <a>Qué hacer a continuación</a>
+    }
 
 ##
 
+marking-this-subhead = Marcando esta filtración como resuelta
 mark-as-resolve-button = Marcar como resuelto
 marked-as-resolved-label = Marcado como resuelto
 undo-button = Deshacer
 confirmation-1-subhead = ¡Estupendo! Acabas de resolver tu primera filtración.
 confirmation-1-body = Mantente así. Revisa tu panel de control para ver si es que hay más por hacer.
+confirmation-2-body = Estás tomando importantes medidas para proteger tus cuentas en línea.
 confirmation-3-subhead = Otro menos. ¡Buen trabajo!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
@@ -452,6 +459,7 @@ num-resolved =
        *[other] { $numResolvedBreaches } resueltas
     }
 progress-intro-subhead = Nuevo en { -product-name }: marcar filtraciones como resueltas
+progress-intro-message = Después de revisar los detalles acerca de una filtración y tomar los pasos para proteger tu información personal, puedes marcar las filtraciones como resueltas.
 progress-status =
     { $numTotalBreaches ->
         [one] { $numResolvedBreaches } de { $numTotalBreaches } filtración marcada como resuelta
