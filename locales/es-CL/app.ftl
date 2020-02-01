@@ -13,7 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Red privada de Firefox
 
-
+##
 
 terms-and-privacy = Términos y privacidad
 GitHub-link-title = GitHub
@@ -385,7 +385,7 @@ email-verified-view-dashboard = Para ver y gestionar todos los correos que has r
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = conéctate
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -417,3 +417,70 @@ rec-section-headline-no-pw = Qué hacer para proteger tu información personal
 rec-section-subhead-no-pw = Aunque las contraseñas no estuvieron expuestas en esta violación, hay pasos que podés seguir para proteger mejor tu información personal.
 # Button
 see-additional-recs = Ver recomendaciones adicionales
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+
+##
+
+mark-as-resolve-button = Marcar como resuelto
+marked-as-resolved-label = Marcado como resuelto
+undo-button = Deshacer
+confirmation-1-subhead = ¡Estupendo! Acabas de resolver tu primera filtración.
+confirmation-1-body = Mantente así. Revisa tu panel de control para ver si es que hay más por hacer.
+confirmation-3-subhead = Otro menos. ¡Buen trabajo!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = ¿Es tu nueva contraseña única, fuerte y difícil de adivinar? <a>Averígualo</a>
+generic-confirmation-subhead = Esta filtración ha sido marcada como resuelta
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Para ver la filtración pendiente, ve a tu panel de control.
+       *[other] Para ver todas las filtraciones pendientes, ve a tu panel de control.
+    }
+return-to-breach-details-link = Regresar a los detalles de la filtración
+go-to-dashboard-link = Ir al panel de control
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% completo
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } resuelta
+       *[other] { $numResolvedBreaches } resueltas
+    }
+progress-intro-subhead = Nuevo en { -product-name }: marcar filtraciones como resueltas
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } de { $numTotalBreaches } filtración marcada como resuelta
+       *[other] { $numResolvedBreaches } de  { $numTotalBreaches } filtraciones marcadas como resueltas
+    }
+progress-complete = Todas las filtraciones conocidas han sido marcadas como resuletas
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+progress-message-4 = <span>¡Casi listo!</span> Estás muy cerca de la meta.
+
+##
+
+resolve-this-breach-link = Resolver esta filtración
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Marcada como resuelta:
+hide-resolved-button = Ocultar resueltas
+show-resolved-button = Mostrar resueltas
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Contraseña expuesta en filtraciones no resueltas
+       *[other] Contraseñas expuestas en filtraciones no resueltas
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Filtración de datos conocida marcada como resuelta
+       *[other] Filtraciones de datos conocidas marcadas como resueltas
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Nueva
