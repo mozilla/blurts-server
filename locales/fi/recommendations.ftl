@@ -20,6 +20,10 @@ rec-pw-3-cta = Hanki { -brand-lockwise }
 rec-pw-4-subhead = Ota käyttöön kaksivaiheinen tunnistautuminen (2FA)
 # Link title
 rec-pw-4-cta = Näytä kaksivaiheista tunnistautumista tarjoavat sivustot
+rec-pw-4 =
+    Monet sivustot tarjoavat kaksivaiheista tunnistautumista (2FA) lisäturvan vuoksi. 
+    Tässä mallissa kirjautumisen yhteydessä vaaditaan salasanan lisäksi 
+    esimerkiksi tekstiviestitse toimitettava kertakäyttöinen koodi.
 # Recommendation subhead
 rec-bank-acc-subhead = Seuraa tiliotteitasi
 rec-bank-acc =
@@ -41,6 +45,9 @@ rec-ip-non-us =
     IP-osoitteesi saattaa osoittaa fyysiseen sijaintiisi ja internetpalveluntarjoaajasi.
     VPN-erillisverkon avulla voit piilottaa todellisen IP-osoitteesi ja fyysisen sijaintisi.
 rec-hist-pw-subhead = Älä käytä samaa salasanaa useamman kerran
+rec-hist-pw =
+    Käytä yksilöllisiä ja vahvoja salasanoja jokaisella tilillä. Jos yksi salasana 
+    paljastuu tietovuodossa, sinun tarvitsee vaihtaa vain kyseinen yksi salasana.
 # Recommendation subhead
 rec-sec-qa-subhead = Luo yksilöllisiä vastauksia turvakysymyksiin
 # Recommendation subhead
@@ -50,6 +57,11 @@ rec-phone-num =
     uusia palveluja käyttöön. Jos puhelinnumeroa ei vaadita, älä anna sitä.
 # Recommendation subhead
 rec-dob-subhead = Älä käytä henkilökohtaisia tietoja PIN-koodeissa
+rec-dob =
+    Koska syntymäpäivän voi mahdollisesti selvittää helposti julkisesti 
+    saatavilla olevista tiedoista, syntymäpäivää ei pidä käyttää osana 
+    salasanaa tai PIN-koodissa. Syntymäpäiväsi tietävät ihmiset voivat 
+    näin helposti arvata esimerkiksi PIN-koodisi.
 # Recommendation subhead
 rec-pins-subhead = Vahvista PIN-koodiesi turvallisuutta
 rec-pins =
