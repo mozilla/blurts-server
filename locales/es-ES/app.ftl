@@ -441,6 +441,12 @@ confirmation-3-subhead = Otro menos. ¡Buen trabajo!
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = ¿Tu nueva contraseña es única, robusta y difícil de adivinar? <a>Descúbrelo</a>
 generic-confirmation-subhead = Esta filtración fue marcada como resuelta
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Para ver la filtración pendiente, ve a tu panel de control.
+       *[other] Para ver todas las filtraciones pendientes, ve a tu panel de control.
+    }
+return-to-breach-details-link = Volver a los detalles de la filtración
 go-to-dashboard-link = Ir al panel de control
 
 ## These strings contain nested markup that is later used to style the text inside of it.
