@@ -422,10 +422,25 @@ resolve-top-notification-plural =
 
 ##
 
+marking-this-subhead = Marcando esta filtración como resuelta
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Una vez que hayas seguido los pasos necesarios para afrontar esta filtración/span>,
+    puedes marcarla como resuelta. Todavía puedes acceder en cualquier momento
+    desde tu panel a los detalles sobre la filtración.
 mark-as-resolve-button = Marcar como resuelto
 marked-as-resolved-label = Marcado como resuelto
 undo-button = Deshacer
+confirmation-1-subhead = ¡Perfecto! Acabas de resolver tu primera filtración.
+confirmation-1-body = Mantente así. Revisa tu panel de control para ver si queda algo más por hacer.
 confirmation-2-subhead = ¡Tomad eso, hackers!
+confirmation-2-body = Estás tomando importantes medidas para proteger tus cuentas en línea.
+confirmation-3-subhead = Otro menos. ¡Buen trabajo!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = ¿Tu nueva contraseña es única, robusta y difícil de adivinar? <a>Descúbrelo</a>
+generic-confirmation-subhead = Esta filtración fue marcada como resuelta
 go-to-dashboard-link = Ir al panel de control
 
 ## These strings contain nested markup that is later used to style the text inside of it.
