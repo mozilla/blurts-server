@@ -1,5 +1,6 @@
 "use strict";
 
+const AppConstants = require("../app-constants");
 const isemail = require("isemail");
 
 
@@ -149,6 +150,9 @@ function getResolvedBreachesForEmail(user, email) {
 
 function addResolvedOrNot(foundBreaches, resolvedBreaches) {
   const annotatedBreaches = [];
+  if (AppConstants.BREACH_RESOLUTION_ENABLED !== "1") {
+    return foundBreaches;
+  }
   for (const breach of foundBreaches) {
     const IsResolved = resolvedBreaches.includes(breach.recencyIndex) ? true : false;
     annotatedBreaches.push(Object.assign({IsResolved}, breach));
