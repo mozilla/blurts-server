@@ -6,8 +6,14 @@ rec-ssn-cta = Pyydä luottoraportteja
 rec-pw-1-subhead = Vaihda salasanasi
 # Link title
 rec-pw-1-cta = Vaihda salasana tälle sivustolle
+rec-pw-1 =
+    Tee tästä salasanasta ainutlaatuinen ja erilainen kuin muut salasanasi. 
+    Hyvä strategia on yhdistää kaksi tai useampi toisiinsa liittymätön sana 
+    ja luoda siten ikään kuin tunnuslause.
 # Recommendation subhead
 rec-pw-2-subhead = Päivitä muut samaa salasanaa käyttävät kirjautumistiedot
+# Link title
+rec-pw-2-cta-fx = Näytä kirjautumistiedot { -brand-name }-palvelussa
 rec-pw-2 =
     Saman salasanan käyttäminen useassa palvelussa tarkoittaa, että yksi tietovuoto muuttuu 
     useammaksi tietovuodoksi. Kun salasanasi on paljastunut, pahantahtoiset tahot voivat käyttää 
@@ -16,6 +22,12 @@ rec-pw-2 =
 rec-pw-3-subhead = Käytä salasanojen hallintaan tarkoitettua ohjelmistoa, jotta salanat ovat käytettävissäsi missä oletkin
 # Link title
 rec-pw-3-cta = Hanki { -brand-lockwise }
+rec-pw-3-fx =
+    Käytä { -brand-lockwise }a ja sinulla on turvallinen pääsy { -brand-name }en 
+    tallentamiisi salasanoihin mistä hyvänsä — jopa selaimen ulkopuolelta.
+rec-pw-3-non-fx =
+    Käytä { -brand-lockwise }a pysyäksesi ajan tasalla kaikista salasanoistasi 
+    ja käytä niitä turvallisesti esimerkiksi puhelimeltasi tai tabletiltasi.
 # Recommendation subhead
 rec-pw-4-subhead = Ota käyttöön kaksivaiheinen tunnistautuminen (2FA)
 # Link title
@@ -45,11 +57,16 @@ rec-ip-non-us =
     IP-osoitteesi saattaa osoittaa fyysiseen sijaintiisi ja internetpalveluntarjoaajasi.
     VPN-erillisverkon avulla voit piilottaa todellisen IP-osoitteesi ja fyysisen sijaintisi.
 rec-hist-pw-subhead = Älä käytä samaa salasanaa useamman kerran
+# Link title
+rec-hist-pw-cta-fx = Näytä kirjautumistiedot { -brand-name }-palvelussa
 rec-hist-pw =
     Käytä yksilöllisiä ja vahvoja salasanoja jokaisella tilillä. Jos yksi salasana 
     paljastuu tietovuodossa, sinun tarvitsee vaihtaa vain kyseinen yksi salasana.
 # Recommendation subhead
 rec-sec-qa-subhead = Luo yksilöllisiä vastauksia turvakysymyksiin
+rec-sec-qa =
+    Monet sivustot kysyvät samat kysymykset. Jos yksi vastaus paljastuu, sitä voi 
+    hyödyntää muissa palveluissa. Luo pitkiä ja satunnaisia vastauksia, tallenna vastaukset turvallisesti.
 # Recommendation subhead
 rec-phone-num-subhead = Vältä puhelinnumerosi jakamista
 rec-phone-num =
