@@ -2,6 +2,10 @@
 rec-ssn-subhead = Tarkista luottoraporttisi
 # Link title
 rec-ssn-cta = Pyydä luottoraportteja
+rec-ssn =
+    Omiin luottotietoihin on lakisääteinen tarkastusoikeus vuosittain. 
+    Raportin pyytäminen ja tarkastelu ei vaikuta luottokelpoisuuteesi. 
+    Etsiä tilejä, lainoja ja luottokortteja, joita et tunnista omaksesi.
 # Recommendation subhead
 rec-pw-1-subhead = Vaihda salasanasi
 # Link title
