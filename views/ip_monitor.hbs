@@ -1,14 +1,21 @@
 {{!< default }}
-{{#if hostRes }}
+{{#if viewResults  }}
 <main class="container bg-light clear-header" {{> analytics/results_page_label }}>
   <div class="row jst-cntr scan-results">
 
     <div class="mw-860 headline-col overflow-break">
-        <p id="scanned-email-address" class="scanned-email-address">Results for: <span class="bold">{{ hostRes.ip_str }}</span></p>
+        <p id="scanned-email-address" class="scanned-email-address">Results for: <span class="bold">{{ ip }}</span></p>
+
+{{#if hostRes }}
         <h2 class="headline scan-results-headline">This IP is located in <br/><span class="bold">{{ hostRes.city }}, {{ hostRes.country_name }}</span>,<br/> and connected via <br/><span class="bold">{{ hostRes.isp }}</span>.<br/>It has <span class="bold">{{ hostRes.data.length }}</span> open devices.</h2>
+{{ else }}
+        <h2 class="headline scan-results-headline">This IP is showing <span class="bold">0</span> <br> open devices.</h2>
+        <h6>(Click <a href="/scan/ip/example">here</a> to see an example device.)</h6>
+{{/if }}
     </div>
   </div>
 
+{{#if hostRes }}
   <div class="row jst-cntr user-found-breaches fix-col">
   <div class="mw-860 found-breaches scan-res-breaches">
   {{#each hostRes.data}}
@@ -34,6 +41,10 @@
   {{/each}}
   </div>
   </div>
+{{/if }}
+
+</section>
+
   <div class="mw-860 txt-cntr source-info-wrap">
     <span class="source-info ">
       Device data provided by <a id="hibp-link" class="text-link medium" href="https://www.shodan.io" data-ga-link="" data-event-category="Utility &amp; Outbound Links" data-event-label="Clicked-shodan" target="_blank" rel="noopener noreferrer">shodan.io</a>
@@ -42,14 +53,14 @@
   <section>
   <div class="row txt-cntr jst-cntr flx-col temp-marketing-callout">
     <img class="temp-marketing-img" src="/img/svg/stay-alert.svg" alt="">
-    <h2 class="temp-marketing-hl mw-360">Stay alert when you add new devices</h2>
+    <h2 class="temp-marketing-hl mw-360">Stay alert for new devices</h2>
     <p class="temp-marketing-p mw-360">If your network exposes a new device, we’ll send you an alert.</p>
     <button class="open-oauth temp-marketing-btn-blue" data-entrypoint="fx-monitor-alert-me-blue-btn" data-flow-id="a0438358297451a6be62dadcd79e273a46cc5796d1ff47eed82ebea0abab1660" data-flow-begin-time="1580304037069" data-event-category="Alert me about new devices - Banner">Alert me about new devices</button>
       <span class="browser-not-required">
         Firefox browser not required for a Firefox Account. You may receive info about Mozilla services.
       </span>
   </div>
-</section>
+
 
 {{ else }}
 <main class="container monitor-homepage clear-header" data-page-label={{> analytics/landing_page_label }}>

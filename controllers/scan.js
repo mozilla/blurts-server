@@ -96,12 +96,21 @@ async function getIP (req, res) {
 async function postIP (req, res) {
   const requestIP = req.headers["x-real-ip"] || req.ip;
   const exampleIP = AppConstants.SHODAN_EXAMPLE_IP;
-  const ipToCheck = exampleIP || requestIP;
-  const hostRes = await shodanClient.host(ipToCheck, AppConstants.SHODAN_API_KEY);
-  res.render("ip_monitor", {
-    ip: requestIP,
-    hostRes,
-  });
+  try {
+    const hostRes = await shodanClient.host(requestIP, AppConstants.SHODAN_API_KEY);
+    res.render("ip_monitor", {
+      ip: requestIP,
+      viewResults: true,
+      hostRes,
+      exampleIP,
+    });
+  } catch (err) {
+    res.render("ip_monitor", {
+      ip: requestIP,
+      viewResults: true,
+      exampleIP,
+    });
+  }
 }
 
 
