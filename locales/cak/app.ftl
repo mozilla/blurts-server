@@ -465,10 +465,46 @@ confirmation-1-body = Ke ri' tab'ana'. Tanik'oj ri atz'ib'akajtz'ik richin natz'
 confirmation-2-subhead = ¡Kixanimäj ajjak!
 confirmation-2-body = La nab'än ruk'ojlem awi' richin ye'achajij ri rub'i' taq ataqoya'l pa k'amab'ey.
 confirmation-3-subhead = Jun chik xk'is. ¡Yalan ütz!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = ¿La ruyon, jikïl chuqa' k'ayew richin nilitäj ri k'ak'a' ewan atzij? <a>Tawila'</a>
+generic-confirmation-subhead = Re tz'ilanem re' xya' retal achi'el xsol
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Richin natz'ët ri tz'ilanem, tab'etz'eta' ri atz'ib'akajtz'ik.
+       *[other] Richin ye'atz'ët ri ch'aqa' chik taq tz'ilanem, tab'etz'eta' ri atz'ib'akajtz'ik.
+    }
+return-to-breach-details-link = Keb'etz'et ri taq rub'anikil tz'ilanem
+go-to-dashboard-link = Tib'e pa ri Tz'ib'akajtz'ik
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% tz'aqät
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } Xsol
+       *[other] { $numResolvedBreaches } Xsol
+    }
+progress-intro-subhead = K'ak'a' pa { -product-name }: Tiya' retal tz'ilanem achi'el xesol
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } richin { $numTotalBreaches } tz'ilanem ya'on retal achi'el xsol
+       *[other] { $numResolvedBreaches } richin { $numTotalBreaches } taq tz'ilanem ya'on ketal achi'el esolon
+    }
+progress-complete = Ronojel ri taq tz'ilanem etaman kiwa xya' ketal achi'el xsol
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>¡Ütz xatikirisaj!</span> Ke'atz'eta' ri ch'aqa' chik taq tz'ilanem richin nawetamaj 
+    achike k'o chi nab'än.
+progress-message-2 =
+    <span>¡Ke ri' tab'ana'!</span> Ri ko'öl taq jaloj achi'el ri kik'exoj ewan taq tzij, yalan k'o nub'än richin 
+    nijike' ri awetamab'al.
+progress-message-3 = <span>¡Ütz asamaj richin ye'asöl ri taq k'ayewal ri'!</span> Ke ri' tab'ana'. K'a k'o na jujun.
+progress-message-4 = <span>¡Nik'is yan!</span> B'ama yatapon yan akuchi' yab'eqa.
 
 ##
 
