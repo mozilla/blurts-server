@@ -463,6 +463,8 @@ undo-button = Titzolïx
 confirmation-1-subhead = ¡Yalan ütz! Xasöl ri nab'ey atz'ilanem.
 confirmation-1-body = Ke ri' tab'ana'. Tanik'oj ri atz'ib'akajtz'ik richin natz'ët we k'o jun, ri k'o chi nab'än.
 confirmation-2-subhead = ¡Kixanimäj ajjak!
+confirmation-2-body = La nab'än ruk'ojlem awi' richin ye'achajij ri rub'i' taq ataqoya'l pa k'amab'ey.
+confirmation-3-subhead = Jun chik xk'is. ¡Yalan ütz!
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
