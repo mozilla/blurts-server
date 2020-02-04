@@ -420,7 +420,7 @@ async function postResolveBreach(req, res) {
   }
 
   const allBreaches = req.app.locals.breaches;
-  const { verifiedEmails } = await getAllEmailsAndBreaches(req.user, allBreaches);
+  const { verifiedEmails } = await getAllEmailsAndBreaches(req.session.user, allBreaches);
 
   const userBreachStats = resultsSummary(verifiedEmails);
   const numTotalBreaches = userBreachStats.numBreaches.count;
