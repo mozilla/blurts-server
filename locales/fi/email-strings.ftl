@@ -79,7 +79,16 @@ monitor-another-email = Haluatko seurata myös muita sähköpostiosoitteita?
 pre-fxa-subject = Päivitys palvelusta { -product-name }
 pre-fxa-headline = Mitä uutuuksia { -product-name } saa
 pre-fxa-tout-1 = Pysy ajan tasalla uusien vuotojen suhteen
+pre-fxa-p-1 =
+    <a>Luo tili</a> valvoaksesi enintään 15 sähköpostiosoitetta tietovuotojen varalta. 
+    Suosittelemme lisäämään kaikki sähköpostiosoitteet, joita olet käyttänyt verkkotilejä luodessasi.
 pre-fxa-tout-2 = Hanki kojelautanäkymä
+pre-fxa-p-2 =
+    Näe kaikki tietovuodot yhdestä paikasta, jolloin tiedät mitkä salasanat tulee vaihtaa. 
+    Vuotojen yhteenveto on saatavilla vain kirjautuneille käyttäjille.
 pre-fxa-tout-3 = Vastaanota sähköpostihälytyksiä
+pre-fxa-p-3 =
+    Saat edelleen hälytyksiä { -product-name }ista. Ilmoitamme sinulle, jos 
+    tietojasi ilmenee uudessa tietovuodossa.
 # Button at the bottom of pre-fxa email.
 create-account = Luo tili
