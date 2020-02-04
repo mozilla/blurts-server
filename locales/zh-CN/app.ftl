@@ -47,7 +47,7 @@ scan-submit = 搜索您的电子邮件地址
 scan-error = 须为有效的电子邮件地址。
 download-firefox-banner-button = 下载 { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
-signup-modal-sent = 已发送！
+signup-modal-sent = 发送成功！
 sign-up = 注册
 form-signup-error = 须为有效的电子邮件地址
 # breach-date = the calendar date a particular data theft occurred. 
@@ -320,7 +320,7 @@ to-affected-email = 向受影响的电子邮件地址发送外泄警报
 join-firefox = 有种方法可以保护您的隐私，加入 { -brand-name }。
 # Link title
 learn-more-link = 详细了解。
-email-sent = 邮件已发送！
+email-sent = 邮件发送成功！
 # Form title
 want-to-add = 要添加其他电子邮件地址吗？
 # This is part of a confirmation message that appears after a user has submitted
