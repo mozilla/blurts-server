@@ -63,12 +63,6 @@ if (document.querySelector(".email-card")) {
     btn.addEventListener("click", showRemainingBreaches);
   });
 
-  const progressBar = document.querySelector("progress");
-  if (progressBar) {
-    const progressBarValue = progressBar.dataset.progressValue;
-    progressBar.value = progressBarValue;
-  }
-
   // add listeners to "Hide / Show Resolved" buttons
   document.querySelectorAll(".toggle-resolved-breaches").forEach(btn => {
     btn.addEventListener("click", () => {

@@ -13,7 +13,7 @@
             <span class="progress-header demi txt-purple7 flx cntr">{{ progressBar.progressStatus }}</span>
             <span class="percent-complete txt-purple7">{{ progressBar.percentComplete }}</span>
           </div>
-          <progress class="progress-bar" max="100" value="{{breachMath 110 "-" progressBar.percentBreachesResolved}}" data-progress-value="{{breachMath 100 "-" progressBar.percentBreachesResolved}}"></progress>
+          <progress class="progress-bar" max="100" value="{{breachMath 100 "-" progressBar.percentBreachesResolved}}"></progress>
           <span class="progress-message txt-purple7">{{{ progressBar.progressMessage }}}</span>
         {{/if}}
         {{#if progressBar.subhead}} <!-- resolution intro and complete messages -->
