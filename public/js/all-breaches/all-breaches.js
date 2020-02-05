@@ -62,6 +62,8 @@ function makeBreaches(breaches, LocalizedBreachCardStrings, breachCardWrapper, b
   const fragment = document.createDocumentFragment();
   fragment["id"] = "all-breaches";
 
+  const logosOrigin = document.body.dataset.logosOrigin;
+
   for (const breach of breaches) {
     const card = document.createElement("a");
 
@@ -77,7 +79,7 @@ function makeBreaches(breaches, LocalizedBreachCardStrings, breachCardWrapper, b
     const breachLogo = document.createElement("img");
     breachLogo["alt"] = "";
     breachLogo["classList"] = "breach-logo lazy-img";
-    breachLogo.dataset.src = `/img/logos/${breach.LogoPath}`;
+    breachLogo.dataset.src = `${logosOrigin}/img/logos/${breach.LogoPath}`;
     breachLogo.src = "/img/logos/lazyPlaceHolder.png";
     logoWrapper.appendChild(breachLogo);
 

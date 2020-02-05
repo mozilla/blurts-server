@@ -9,6 +9,7 @@ const kEnvironmentVariables = [
   "NODE_ENV",
   "SERVER_URL",
   "PORT",
+  "LOGOS_ORIGIN",
   "COOKIE_SECRET",
   "SESSION_DURATION_HOURS",
   "SMTP_URL",
@@ -41,7 +42,6 @@ const kEnvironmentVariables = [
   "DATABASE_URL",
   "PAGE_TOKEN_TIMER",
   "SENTRY_DSN",
-  "SERVER_URL",
   "SUPPORTED_LOCALES",
   "DELETE_UNVERIFIED_SUBSCRIBERS_TIMER",
 ];
