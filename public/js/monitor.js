@@ -156,7 +156,7 @@ function hideShowNavBars(win, navBar, bentoButton) {
     }
 
     if (
-        this.oldScroll < this.scrollY &&
+        this.oldScroll < (this.scrollY - 50) &&
         navBar.classList.contains("show-nav-bars") &&
         !bentoButton.classList.contains("active")
       ) {
@@ -198,6 +198,9 @@ function toggleMobileFeatures(topNavBar) {
 }
 
 function toggleHeaderStates(header, win) {
+  if (win.outerWidth < 600) {
+    return;
+  }
   if (win.pageYOffset > 400) {
     header.classList.add("show-shadow");
   } else {
@@ -255,9 +258,17 @@ function addBentoObserver(){
 
   document.forms ? (restoreInputs(), addFormListeners()) : null;
 
+  let windowWidth = win.outerWidth;
+  let windowHeight = win.outerHeight;
   win.addEventListener("resize", () => {
-    toggleMobileFeatures(topNavigation);
-    toggleArticles();
+    const newWindowWidth = win.outerWidth;
+    const newWindowHeight = win.outerHeight;
+    if (newWindowWidth !== windowWidth || newWindowHeight !== windowHeight) {
+      toggleMobileFeatures(topNavigation);
+      toggleArticles();
+      windowWidth = newWindowHeight;
+      windowHeight = newWindowHeight;
+    }
   });
 
   document.addEventListener("scroll", () => toggleHeaderStates(header, win));
