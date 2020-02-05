@@ -147,7 +147,7 @@
 .email-card.zero-unresolved-breaches .e-breach-list,
 .email-card.active .hide-additional-breaches.hide .breach-card,
 .email-card.inactive .hide-additional-breaches.hide .breach-card {
-  display: none !important;
+  display: none;
 }
 
 .breach-card.resolved-breach-card {
@@ -391,6 +391,8 @@ input.remove-email-submit {
     display: none;
   }
 
+  .email-card.zero-unresolved-breaches .e-breach-list,
+  .email-card.zero-unresolved-breaches.active .e-breach-list,
   .active .show-remaining-breaches {
     display: flex;
   }
