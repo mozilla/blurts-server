@@ -1,7 +1,6 @@
 "use strict";
 
 const AppConstants = require("./../app-constants");
-
 const { getSortedDataClasses } = require("./breach-detail");
 const { prettyDate, localeString, localizedBreachDataClasses } = require("./hbs-helpers");
 const { LocaleUtils } = require("./../locale-utils");
@@ -51,6 +50,7 @@ function makeBreachCards(breaches, locales) {
   for (const breachCard of breaches) {
     getLocalizedBreachValues(locales, breachCard);
     breachCard.LocalizedBreachCardStrings = breachCardStrings; // "Compromised Data: , Compromised Accounts: ..."
+    breachCard.LogoUrl = `${AppConstants.LOGOS_ORIGIN}/img/logos/${breachCard.LogoPath}`;
     formattedBreaches.push(breachCard);
   }
   return formattedBreaches;
