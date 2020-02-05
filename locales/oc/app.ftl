@@ -36,12 +36,21 @@ home = Acuèlh
 # Link title
 security-tips = Conseilhs de seguretat
 fxa-account = { -brand-fxa }
+about-fxm-headline = A prepaus de { -product-name }
+# How Firefox Monitor works
+how-fxm-works = Cossí { -product-name } fonciona
 
 ## What to do after data breach tips
 
+change-pw = Cambiatz vòstre senhal
+change-pw-site = Cambiatz vòstre senhal per aqueste site
 
 ## Updated error messages
 
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Menú
+# Link title
+learn-more-link = Ne saber mai.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
