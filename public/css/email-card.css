@@ -6,6 +6,15 @@
   width: auto;
 }
 
+.e-info-content {
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.preferences .e-info-content {
+  flex-direction: column;
+}
+
 .email-card {
   width: 100%;
 }
@@ -346,6 +355,11 @@ input.remove-email-submit {
 }
 
 @media screen and (max-width: 800px) {
+  .e-info-content {
+    flex-direction: column;
+    width: 100%;
+  }
+
   .email-card {
     padding: 20px;
     background-color: rgba(255, 255, 255, 1);
