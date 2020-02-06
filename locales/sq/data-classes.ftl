@@ -61,6 +61,7 @@ imsi-numbers = Numra IMSI
 income-levels = Shkallë të ardhurash
 instant-messenger-identities = Identitete shkëmbimi mesazhesh të atypëratyshëm
 ip-addresses = Adresa IP
+job-applications = Aplikime punësimi
 job-titles = Emërtesa vendi pune
 mac-addresses = Adresa MAC
 marital-statuses = Gjendje martesore
