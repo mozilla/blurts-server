@@ -516,6 +516,9 @@ progress-complete = Vse znane kraje podatkov so bile označene kot razrešene
 ##
 
 resolve-this-breach-link = Razreši to krajo
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Označeno kot razrešeno:
 hide-resolved-button = Skrij razrešene
 show-resolved-button = Prikaži razrešene
 # A status indicator that appears in the top right corner of new breach cards
