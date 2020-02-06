@@ -267,15 +267,12 @@ function addBentoObserver(){
   document.forms ? (restoreInputs(), addFormListeners()) : null;
 
   let windowWidth = win.outerWidth;
-  let windowHeight = win.outerHeight;
   win.addEventListener("resize", () => {
     const newWindowWidth = win.outerWidth;
-    const newWindowHeight = win.outerHeight;
-    if (newWindowWidth !== windowWidth || newWindowHeight !== windowHeight) {
+      if (newWindowWidth !== windowWidth) {
       toggleMobileFeatures(topNavigation);
       toggleArticles();
-      windowWidth = newWindowHeight;
-      windowHeight = newWindowHeight;
+      windowWidth = newWindowWidth;
     }
   });
 
