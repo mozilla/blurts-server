@@ -289,7 +289,6 @@ button.btn-ghost {
   font-family: inherit;
   font-weight: inherit;
   min-height: 48px;
-  min-height: auto;
   align-self: center;
   color: var(--purple7);
   min-width: 200px;

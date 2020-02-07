@@ -3,20 +3,6 @@
 /* global ga */
 
 (()=> {
-  function resetModal(modal) {
-    const confirmationModal = document.querySelector(".breach-resolution-modal.modal-loading.modal-open");
-
-    if (confirmationModal) {
-      // remove active classes
-      ["modal-loading", "modal-open"].forEach(clsName => {
-        confirmationModal.classList.remove(clsName);
-      });
-
-      // restore focus to non-modal page elements
-      trapFocusInModal(confirmationModal, false);
-    }
-  }
-
   function trapFocusInModal(modal, trapFocusInModal=true) {
     const focusableEls = [
       "button",
@@ -119,15 +105,14 @@
         }
         if (response) {
           const { headline, headlineClassName, progressMessage, progressStatus } = await response.json();
-
-          btn.classList.remove("loading");
           confirmationModal.classList.add("modal-open");
           const goToDashboardBtn = confirmationModal.querySelector(".go-to-dash");
           goToDashboardBtn.focus();
-
-          const closeModalBtn = confirmationModal.querySelector(".close-modal-btn");
-          closeModalBtn.addEventListener("click", () => {
-            resetModal();
+          const closeModalBtns = confirmationModal.querySelectorAll(".close-modal");
+          closeModalBtns.forEach(closeModalBtn => {
+            closeModalBtn.addEventListener("click", () => {
+              return window.location.reload();
+            });
           });
 
           const modalHeadline = document.getElementById("confirmation-headline");

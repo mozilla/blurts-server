@@ -354,7 +354,6 @@ button.fade-out {
   height: 100vh;
   width: 100vw;
   position: fixed;
-  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
@@ -442,6 +441,9 @@ button.fade-out {
 
 .blue-link.return-to-breach-details {
   margin: 0 auto;
+  border-top: none;
+  border-left: none;
+  border-right: none;
   border-bottom: 1px solid rgb(2, 80, 187, 0);
   transition: all 0.3s ease;
 }
