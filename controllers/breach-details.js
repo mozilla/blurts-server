@@ -1,6 +1,7 @@
 "use strict";
 
 const HIBP = require("../hibp");
+const DB = require("../db/DB");
 const { changePWLinks } = require("../lib/changePWLinks");
 const { getAllEmailsAndBreaches } = require("./user");
 
@@ -15,7 +16,10 @@ async function getBreachDetail(req, res) {
 
   const affectedEmails = [];
 
-  if (req.session.user) {
+  if (req.session && req.session.user) {
+    const user = await DB.getSubscriberById(req.session.user.id);
+    req.session.user = user;
+
     const allEmailsAndBreaches = await getAllEmailsAndBreaches(req.session.user, allBreaches);
     for (const verifiedEmail of allEmailsAndBreaches.verifiedEmails) {
       for (const breach of verifiedEmail.breaches) {
