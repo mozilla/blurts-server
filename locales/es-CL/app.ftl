@@ -477,7 +477,13 @@ progress-complete = Todas las filtraciones conocidas han sido marcadas como resu
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 = <span>¡Partiste súper bien!</span> Revisa el resto de las filtraciones para saber que medidas tomar.
+progress-message-2 = <span>¡Sigue así!</span> Pequeños cambios como la actualización de contraseñas tienen un gran impacto en mantener segura tu información personal.
+progress-message-3 = <span>¡Excelente trabajo resolviendo esas filtraciones!</span> Sigue así. Te quedan unos pocos más.
 progress-message-4 = <span>¡Casi listo!</span> Estás muy cerca de la meta.
+progress-complete-message =
+    <span>Se siente bien, ¿verdad?</span> Si quieres continuar, este es un buen momento para
+    actualizar otras conexiones con contraseñas más seguras.
 
 ##
 
