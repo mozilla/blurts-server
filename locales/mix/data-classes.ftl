@@ -8,4 +8,5 @@ email-addresses = Tutu nu inka kue korreo
 email-messages = Tu'un inka nu korreo
 employers = Empleados
 races = Nivi
+recovery-email-addresses = Tutu nu inka korreo
 sms-messages = Tu'un SMS
