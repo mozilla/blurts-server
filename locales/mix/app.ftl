@@ -30,10 +30,16 @@ user-add-invalid-email = Vaà korreo
 error-headline = Vaá
 user-verify-token-error = tsiniñu'un token.
 user-verify-email-report-subject = Tutu ña { -product-name }
+# Link title
+home = Kitsa
 fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = Kuna nu nduku { -brand-fxa }
 
 ## What to do after data breach tips
 
+change-pw = Sama tu'un see
+change-pw-site = Sama tu'un see ña sitio
 
 ## Updated error messages
 
@@ -58,3 +64,4 @@ fxa-account = { -brand-fxa }
 
 ##
 
+resolve-this-breach-link = Ndasa vaa filtración
