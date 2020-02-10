@@ -32,7 +32,7 @@ function getBreachStats(args) {
     passwordStat.displayCount = remainingExposedPasswords;
 
     // Change the total number of breaches callout to show the total number of resolved breaches
-    breachesStat.subhead = localize(locales, "known-data-breaches-resolved", { numBreaches: breachesStat.numResolved });
+    breachesStat.subhead = localize(locales, "known-data-breaches-resolved", { numResolvedBreaches: breachesStat.numResolved });
     breachesStat.displayCount = breachesStat.numResolved;
   } else {
 
