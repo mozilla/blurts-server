@@ -17,6 +17,7 @@
 
 terms-and-privacy = Términos y Privacidad
 GitHub-link-title = GitHub
+error-scan-page-token = Ni kunu ndatavu kua tutu nu inka kue korreo xoo kii. takua koo ña ku, ntsasikue ña nudukuku. ku kunaku tsini.
 error-could-not-add-email = Ma ku chikai korreo nu inka kue tutu.
 error-not-subscribed = Koó korreo nu tutu { -product-name }.
 error-hibp-throttled = kua conexion nu { -brand-HIBP }.
@@ -27,6 +28,8 @@ home-not-found = Koo Página ndani'i
 oauth-invalid-session = Ma ku kitsau
 scan-title = { -product-name } : Tutu nduki
 user-add-invalid-email = Vaà korreo
+user-add-too-many-emails = Nduki kue tutu ña korreo.
+user-add-email-verify-subject = Kunchee suscripción nu { -product-name }.
 error-headline = Vaá
 user-verify-token-error = tsiniñu'un token.
 user-verify-email-report-subject = Tutu ña { -product-name }
