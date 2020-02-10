@@ -63,6 +63,7 @@ imsi-numbers = numeri IMSI
 income-levels = livelli di reddito
 instant-messenger-identities = identità di messaggistica istantanea
 ip-addresses = indirizzi IP
+job-applications = Domande di lavoro
 job-titles = qualifiche lavorative
 mac-addresses = indirizzi MAC
 marital-statuses = stati coniugali
