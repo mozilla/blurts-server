@@ -170,6 +170,7 @@ feat-enroll-multiple = Registra più indirizzi email per il monitoraggio delle v
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
     { $breachCount ->
+        [0] Non è stato coinvolto in alcuna violazione conosciuta.
         [one] È stato coinvolto in { $breachCount } violazione conosciuta.
        *[other] È stato coinvolto in { $breachCount } violazioni conosciute.
     }
