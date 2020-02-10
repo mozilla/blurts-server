@@ -36,6 +36,8 @@ input[type="email"] {
   border-radius: 4px;
 }
 
+.go-to-dash:focus,
+.close-modal-btn:focus,
 input[type="text"]:focus,
 input[type="radio"]:focus ~ .checkmark,
 input:focus,

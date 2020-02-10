@@ -11,7 +11,7 @@ const testBreaches = [
     IsSpamList: false,
     IsFabricated: false,
     IsVerified: true,
-    IsRetired: true,
+    IsRetired: false,
   },
   {
     Title: "Test2",
@@ -23,7 +23,7 @@ const testBreaches = [
     IsSpamList: false,
     IsFabricated: false,
     IsVerified: true,
-    IsRetired: true,
+    IsRetired: false,
   },
   {
     Title: "Sensitive",

@@ -43,6 +43,10 @@
   width: 100%;
 }
 
+.show-additional-breaches-wrapper {
+  width: 100%;
+}
+
 .row.scan-results,
 .user-found-breaches {
   margin: 0 auto;

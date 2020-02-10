@@ -5,6 +5,7 @@
   padding: 20px;
   border-radius: 8px;
   display: flex;
+  position: relative;
   margin: 0.5rem;
   color: var(--ink);
   background-color: rgba(255, 255, 255, 1);
@@ -68,8 +69,6 @@
   display: block;
 }
 
-/* breach card inside email card */
-
 .two-up {
   flex: 1 1 45%;
   margin: var(--padding);
@@ -87,20 +86,57 @@
   min-width: 260px;
 }
 
+.new-breach-card {
+  border: 2px solid var(--alertRed);
+}
+
+.resolved-breach-card {
+  border: 2px solid #20c3a2;
+  opacity: 0.6;
+}
+
+.resolved-breach-card span.breach-title {
+  padding-right: 20px;
+}
+
+.resolved-breach-indicator {
+  background-color: #20c3a2;
+  position: absolute;
+  right: 20px;
+}
+
+.breach-card-status {
+  display: flex;
+  margin: 0 0 0 auto;
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.breach-status-message {
+  margin: 0 0 auto 0;
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+.new-breach-message {
+  background-color: var(--alertRed);
+}
+
 @media screen and (max-width: 1000px) {
   .three-up {
     max-width: 48%;
     flex: 1 1 48%;
-  }
-
-  .email-card.active .breach-card.ec.two-up {
-    display: flex;
   }
 }
 
 @media screen and (max-width: 800px) {
   .breach-card {
     margin: 0.75rem 0;
+  }
+
+  .email-card.active .breach-card.ec.two-up {
+    display: flex;
   }
 
   .two-up,

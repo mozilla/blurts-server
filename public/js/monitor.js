@@ -53,7 +53,7 @@ function doOauth(el) {
 
 
 function addFormListeners() {
-  Array.from(document.forms).forEach( form =>  {
+  Array.from(document.forms).forEach(form =>  {
     if (form.querySelector("input[type=email]")) {
       const emailInput = form.querySelector("input[type=email]");
       emailInput.addEventListener("keydown", (e) => {
@@ -77,7 +77,7 @@ function addFormListeners() {
         }
       });
     }
-    form.addEventListener("submit", (e) => handleFormSubmits(e));
+    form.addEventListener("submit", (e) => handleFormSubmits(e), true);
   });
 }
 
@@ -92,16 +92,22 @@ function handleFormSubmits(formEvent) {
     email = thisForm.email.value.trim();
     thisForm.email.value = email;
   }
+  const formClassList = thisForm.classList;
   if (thisForm.email && !isValidEmail(email)) {
     sendPing(thisForm, "Failure");
-    thisForm.classList.add("invalid");
+    formClassList.add("invalid");
     return;
   }
-  if (thisForm.classList.contains("email-scan")) {
+  if (formClassList.contains("email-scan")) {
     hashEmailAndSend(formEvent);
     return;
   }
-  thisForm.classList.add("loading-data");
+  // if the form contains the class "loading-data", it has
+  // already been submitted, so return without re-submitting.
+  if (formClassList.contains("loading-data")) {
+    return;
+  }
+  formClassList.add("loading-data");
   return thisForm.submit();
 }
 
@@ -156,9 +162,9 @@ function hideShowNavBars(win, navBar, bentoButton) {
     }
 
     if (
-        this.oldScroll < this.scrollY &&
+        this.oldScroll < (this.scrollY - 50) &&
         navBar.classList.contains("show-nav-bars") &&
-        !bentoButton.classList.contains("active")
+        !bentoButton._active
       ) {
       navBar.classList = ["hide-nav-bars"];
       this.oldScroll = this.scrollY;
@@ -185,7 +191,7 @@ function toggleMobileFeatures(topNavBar) {
       return;
     }
 
-  const bentoButton = document.querySelector(".fx-bento-content");
+  const bentoButton = document.querySelector("firefox-apps");
   const closeActiveEmailCards = document.querySelectorAll(".breaches-dash.email-card.active");
     closeActiveEmailCards.forEach(card => {
       card.classList.remove("active");
@@ -198,6 +204,9 @@ function toggleMobileFeatures(topNavBar) {
 }
 
 function toggleHeaderStates(header, win) {
+  if (win.outerWidth < 600) {
+    return;
+  }
   if (win.pageYOffset > 400) {
     header.classList.add("show-shadow");
   } else {
@@ -226,17 +235,19 @@ function addMainNavListeners() {
 
 function addBentoObserver(){
   const bodyClasses = document.body.classList;
-  const bentoButton = document.querySelector(".fx-bento-content");
+  const bentoButton = document.querySelector("firefox-apps");
   const observerConfig = { attributes: true };
   const watchBentoChanges = function(bentoEl, observer) {
     for(const mutation of bentoEl) {
       if (mutation.type === "attributes") {
-        bodyClasses.toggle("bento-open", bentoButton.classList.contains("active"));
+        bodyClasses.toggle("bento-open", bentoButton._active);
       }
     }
   };
-  const observer = new MutationObserver(watchBentoChanges);
-  observer.observe(bentoButton, observerConfig);
+  if (bentoButton) {
+    const observer = new MutationObserver(watchBentoChanges);
+    observer.observe(bentoButton, observerConfig);
+  }
 }
 
 ( async() => {
@@ -255,9 +266,14 @@ function addBentoObserver(){
 
   document.forms ? (restoreInputs(), addFormListeners()) : null;
 
+  let windowWidth = win.outerWidth;
   win.addEventListener("resize", () => {
-    toggleMobileFeatures(topNavigation);
-    toggleArticles();
+    const newWindowWidth = win.outerWidth;
+      if (newWindowWidth !== windowWidth) {
+      toggleMobileFeatures(topNavigation);
+      toggleArticles();
+      windowWidth = newWindowWidth;
+    }
   });
 
   document.addEventListener("scroll", () => toggleHeaderStates(header, win));

@@ -325,6 +325,16 @@ const DB = {
     return updatedSubscriber;
   },
 
+  async setBreachesResolved(options) {
+    const { user, updatedResolvedBreaches } = options;
+    await knex("subscribers")
+    .where("id", user.id)
+    .update({
+      breaches_resolved: updatedResolvedBreaches,
+    });
+    return this.getSubscriberByEmail(user.primary_email);
+  },
+
   async removeSubscriber(subscriber) {
     await knex("email_addresses").where({"subscriber_id": subscriber.id}).del();
     await knex("subscribers").where({"id": subscriber.id}).del();

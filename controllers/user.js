@@ -1,5 +1,6 @@
 "use strict";
 
+const AppConstants = require("../app-constants");
 const isemail = require("isemail");
 
 
@@ -72,6 +73,19 @@ async function updateCommunicationOptions(req, res) {
 }
 
 
+async function resolveBreach(req, res) {
+  const sessionUser = req.user;
+  // TODO: verify that req.body.emailAddressId belongs to sessionUser
+  const updatedSubscriber = await DB.setResolvedBreach({
+    subscriber: sessionUser,
+    emailAddresses: req.body.emailAddressId,
+    recencyIndex: req.body.recencyIndex,
+  });
+  req.session.user = updatedSubscriber;
+  return res.json("Breach marked as resolved.");
+}
+
+
 function _checkForDuplicateEmail(sessionUser, email) {
   if (email === sessionUser.primary_email) {
     throw new FluentError("user-add-duplicate-email");
@@ -125,16 +139,56 @@ async function add(req, res) {
   res.redirect("/user/preferences");
 }
 
-async function bundleVerifiedEmails(email, ifPrimary, id, verificationStatus, allBreaches) {
+
+function getResolvedBreachesForEmail(user, email) {
+  if (user.breaches_resolved === null) {
+    return [];
+  }
+  return user.breaches_resolved.hasOwnProperty(email) ? user.breaches_resolved[email] : [];
+}
+
+
+function addResolvedOrNot(foundBreaches, resolvedBreaches) {
+  const annotatedBreaches = [];
+  if (AppConstants.BREACH_RESOLUTION_ENABLED !== "1") {
+    return foundBreaches;
+  }
+  for (const breach of foundBreaches) {
+    const IsResolved = resolvedBreaches.includes(breach.recencyIndex) ? true : false;
+    annotatedBreaches.push(Object.assign({IsResolved}, breach));
+  }
+  return annotatedBreaches;
+}
+
+
+function addRecencyIndex(foundBreaches) {
+  const annotatedBreaches = [];
+  // slice() the array to make a copy so before reversing so we don't
+  // reverse foundBreaches in-place
+  const oldestToNewestFoundBreaches = foundBreaches.slice().reverse();
+  oldestToNewestFoundBreaches.forEach( (annotatingBreach, index) => {
+    const foundBreach = foundBreaches.find( foundBreach => foundBreach.Name === annotatingBreach.Name);
+    annotatedBreaches.push(Object.assign({recencyIndex: index}, foundBreach));
+  });
+  return annotatedBreaches.reverse();
+}
+
+
+async function bundleVerifiedEmails(options) {
+  const { user, email, recordId, recordVerified, allBreaches} = options;
   const lowerCaseEmailSha = sha1(email.toLowerCase());
-  const foundBreaches = await HIBP.getBreachesForEmail(lowerCaseEmailSha, allBreaches, true);
+  const foundBreaches = await HIBP.getBreachesForEmail(lowerCaseEmailSha, allBreaches, true, false);
+  const foundBreachesWithRecency = addRecencyIndex(foundBreaches);
+  const resolvedBreaches = getResolvedBreachesForEmail(user, email);
+  const foundBreachesWithResolutions = addResolvedOrNot(foundBreachesWithRecency, resolvedBreaches);
+  const filteredAnnotatedFoundBreaches = HIBP.filterBreaches(foundBreachesWithResolutions);
 
   const emailEntry = {
     "email": email,
-    "breaches": foundBreaches,
-    "primary": ifPrimary,
-    "id": id,
-    "verified": verificationStatus,
+    "breaches": filteredAnnotatedFoundBreaches,
+    "primary": email === user.primary_email,
+    "id": recordId,
+    "verified": recordVerified,
   };
 
   return emailEntry;
@@ -144,11 +198,10 @@ async function getAllEmailsAndBreaches(user, allBreaches) {
   const monitoredEmails = await DB.getUserEmails(user.id);
   let verifiedEmails = [];
   const unverifiedEmails = [];
-  verifiedEmails.push(await bundleVerifiedEmails(user.primary_email, true, user.id, user.primary_verified, allBreaches));
+  verifiedEmails.push(await bundleVerifiedEmails({user, email: user.primary_email, recordId: user.id, recordVerified: user.primary_verified, allBreaches}));
   for (const email of monitoredEmails) {
     if (email.verified) {
-      const formattedEmail = await bundleVerifiedEmails(email.email, false, email.id, email.verified, allBreaches);
-      verifiedEmails.push(formattedEmail);
+      verifiedEmails.push(await bundleVerifiedEmails({user, email: email.email, recordId: email.id, recordVerified: email.verified, allBreaches}));
     } else {
       unverifiedEmails.push(email);
     }
@@ -309,6 +362,122 @@ async function postRemoveFxm(req, res) {
   res.redirect("/");
 }
 
+function _updateResolvedBreaches(options) {
+  const {
+    user,
+    affectedEmail,
+    isResolved,
+    recencyIndexNumber,
+  } = options;
+  // TODO: clarify the logic here. maybe change the endpoint to PUT /breach-resolution
+  // with the new resolution value ?
+  const userBreachesResolved = user.breaches_resolved === null ? {} : user.breaches_resolved;
+  if (isResolved === "false") {
+    if (Array.isArray(userBreachesResolved[affectedEmail])) {
+      userBreachesResolved[affectedEmail].push(recencyIndexNumber);
+      return userBreachesResolved;
+    }
+    userBreachesResolved[affectedEmail] = [recencyIndexNumber];
+    return userBreachesResolved;
+  }
+  userBreachesResolved[affectedEmail] = userBreachesResolved[affectedEmail].filter( el => el !== recencyIndexNumber );
+  return userBreachesResolved;
+}
+
+
+// Placeholder -- WIP
+async function postResolveBreach(req, res) {
+  const sessionUser = req.user;
+  const { affectedEmail, recencyIndex, isResolved } = req.body;
+  const recencyIndexNumber = Number(recencyIndex);
+  const affectedEmailIsSubscriberRecord = sessionUser.primary_email === affectedEmail;
+  const affectedEmailInEmailAddresses = sessionUser.email_addresses.filter( ea => {
+    ea.email === affectedEmail;
+  });
+
+  if (!affectedEmailIsSubscriberRecord && !affectedEmailInEmailAddresses) {
+    return res.json("Error: affectedEmail is not valid for this subscriber");
+  }
+
+  const updatedResolvedBreaches = _updateResolvedBreaches({
+    user: sessionUser,
+    affectedEmail,
+    isResolved,
+    recencyIndexNumber,
+  });
+
+  const updatedSubscriber = await DB.setBreachesResolved(
+    { user: sessionUser, updatedResolvedBreaches }
+  );
+  req.session.user = updatedSubscriber;
+  // return res.json("Breach marked as resolved.");
+  // Currently we're sending { affectedEmail, recencyIndex, isResolved, passwordsExposed } in req.body
+  // Not sure if we need all of these or need to send other/additional values?
+
+  if (isResolved === "true") {
+    // the user clicked "Undo" so mark the breach as unresolved
+    return res.redirect("/");
+  }
+
+  const allBreaches = req.app.locals.breaches;
+  const { verifiedEmails } = await getAllEmailsAndBreaches(req.session.user, allBreaches);
+
+  const userBreachStats = resultsSummary(verifiedEmails);
+  const numTotalBreaches = userBreachStats.numBreaches.count;
+  const numResolvedBreaches = userBreachStats.numBreaches.numResolved;
+
+  const localizedModalStrings = {
+    headline: "",
+    progressMessage: "",
+    progressStatus: req.fluentFormat( "progress-status", {
+      numResolvedBreaches: numResolvedBreaches,
+      numTotalBreaches: numTotalBreaches }
+    ),
+    headlineClassName: "",
+  };
+
+  switch (numResolvedBreaches) {
+    case 1:
+      localizedModalStrings.headline = req.fluentFormat("confirmation-1-subhead");
+      localizedModalStrings.progressMessage = req.fluentFormat("confirmation-1-body");
+      localizedModalStrings.headlineClassName = "overlay-resolved-first-breach";
+      break;
+
+    case 2:
+      localizedModalStrings.headline = req.fluentFormat("confirmation-2-subhead");
+      localizedModalStrings.progressMessage = req.fluentFormat("confirmation-2-body");
+      localizedModalStrings.headlineClassName = "overlay-take-that-hackers";
+      break;
+
+    case 3:
+      localizedModalStrings.headline = req.fluentFormat("confirmation-3-subhead");
+      // TO CONSIDER: The "confirmation-3-body" string contains nested markup.
+      // We'll either have to remove it (requiring a string change), or we will have
+      // to inject it into the template using innerHTML (scaryish).
+      // Defaulting to the generic progressMessage for now.
+      localizedModalStrings.progressMessage = req.fluentFormat("generic-confirmation-message", {
+        numUnresolvedBreaches: numTotalBreaches-numResolvedBreaches,
+      });
+      localizedModalStrings.headlineClassName = "overlay-another-breach-resolved";
+      break;
+
+    case numTotalBreaches:
+      localizedModalStrings.headline = req.fluentFormat("confirmation-2-subhead");
+      localizedModalStrings.progressMessage = req.fluentFormat("progress-complete");
+      localizedModalStrings.headlineClassName = "overlay-marked-as-resolved";
+      break;
+
+    default:
+      if (numResolvedBreaches > 3) {
+        localizedModalStrings.headline = req.fluentFormat("confirmation-2-subhead");
+        localizedModalStrings.progressMessage = req.fluentFormat("confirmation-2-body");
+        localizedModalStrings.headlineClassName = "overlay-marked-as-resolved";
+      }
+      break;
+  }
+
+  res.json(localizedModalStrings);
+}
 
 async function postUnsubscribe(req, res) {
   const { token, emailHash } = req.body;
@@ -392,14 +561,17 @@ module.exports = {
   getPreferences,
   getDashboard,
   getBreachStats,
+  getAllEmailsAndBreaches,
   add,
   verify,
   getUnsubscribe,
   postUnsubscribe,
   getRemoveFxm,
   postRemoveFxm,
+  postResolveBreach,
   logout,
   removeEmail,
   resendEmail,
   updateCommunicationOptions,
+  resolveBreach,
 };

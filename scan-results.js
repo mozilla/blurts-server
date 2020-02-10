@@ -103,26 +103,44 @@ const scanResult = async(req, selfScan=false) => {
 
 function resultsSummary(verifiedEmails) {
   const breachStats = {
-    monitoredEmails: { count: 0 },
-    numBreaches: { count: 0 },
-    passwords: { count: 0 },
+    monitoredEmails: {
+      count: 0,
+    },
+    numBreaches: {
+      count: 0,
+      numResolved: 0,
+    },
+    passwords: {
+      count: 0,
+      numResolved: 0,
+    },
   };
   let foundBreaches = [];
-
-  breachStats.monitoredEmails.count = verifiedEmails.length;
 
   // combine the breaches for each account, breach duplicates are ok
   // since the user may have multiple accounts with different emails
   verifiedEmails.forEach(email => {
+
     email.breaches.forEach(breach => {
+      if (breach.IsResolved) {
+        breachStats.numBreaches.numResolved++;
+      }
+
       const dataClasses = breach.DataClasses;
       if (dataClasses.includes("passwords")) {
         breachStats.passwords.count++;
+        if (breach.IsResolved) {
+          breachStats.passwords.numResolved++;
+        }
       }
     });
     foundBreaches = [...foundBreaches, ...email.breaches];
   });
-  // tally up total number of breaches
+
+  // total number of verified emails being monitored
+  breachStats.monitoredEmails.count = verifiedEmails.length;
+
+  // total number of breaches across all emails
   breachStats.numBreaches.count = foundBreaches.length;
   return breachStats;
 }

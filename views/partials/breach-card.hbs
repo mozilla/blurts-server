@@ -1,4 +1,8 @@
-<a class="breach-card {{ cardType }} {{#if NewBreach}} new-breach {{/if}}" {{#if latestBreach }} href="/?breach={{ Name }}" {{ else }} href="/breach-details/{{ Name }}" {{/if}}>
+<a 
+  class="breach-card {{ cardType }}
+ {{#if NewBreach}} new-breach {{/if}}
+ {{#if IsResolved}} resolved-breach-card {{/if}}"
+ {{#if latestBreach }} href="/?breach={{ Name }}" {{ else }} href="/breach-details/{{ Name }}" {{/if}}>
   <div class="breach-logo-wrapper flx">
     <img alt="" class="breach-logo breach-img" src="/img/logos/{{ LogoPath }}" />
   </div>
@@ -18,11 +22,17 @@
       {{/if}}
     </div>
     <div class="breach-card-link-wrap">
-      {{#if latestBreach}}
-        <span class="more-about-this-breach blue-link" {{> analytics/internal-link eventLabel="Latest Breach: See if you were in this breach" }}>{{ getString "latest-breach-link" }}</span>
-      {{else}}
-        <span class="more-about-this-breach blue-link" {{> analytics/internal-link eventLabel="Breach Card: More about this breach" }}>{{ LocalizedBreachCardStrings.MoreInfoLink }}</span>
-      {{/if}}
+      {{#getBreachCardCta this}}
+        <span class="more-about-this-breach blue-link" {{> analytics/internal-link eventLabel=ctaAnalyticsLabel }}>{{ ctaTitle }}</span>
+      {{/getBreachCardCta}}
     </div>
+  </div>
+  <div class="breach-card-status">
+    {{#if NewBreach}}
+      <span class="breach-status-message new-breach-message">{{getString "new-breach"}}</span>
+    {{/if}}
+    {{#if IsResolved}}
+      <span class="breach-status-message resolved-breach-indicator"></span>
+    {{/if}}
   </div>
 </a>
