@@ -641,7 +641,7 @@ progress-message-2 =
   <span>Keep it up!</span> Small changes like updating passwords have a big impact on 
   keeping your personal info safe.
 progress-message-3 = <span>Nice work resolving those breaches!</span> Keep it up. You’ve got a few more to go.
-progress-message-4 = <span>Almost done!</span> You’re nearly to the finish line.
+progress-message-4 = <span>Almost done!</span> You’re close to the finish line.
 progress-complete-message = 
   <span>Feels good, right?</span> If you want to keep going, this is a good time to 
   update other logins with stronger passwords.
