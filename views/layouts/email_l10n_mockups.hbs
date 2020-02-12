@@ -31,7 +31,7 @@
                 </h2>
               {{/unless}}
               {{> (lookup . 'whichPartial')}}
-              {{> email_partials/email_button }}
+              {{> email_partials/email_button href=ctaHref }}
             </section>
             {{#showFaqs}}
               <section class="faq-sumo-links">
