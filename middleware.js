@@ -61,21 +61,37 @@ async function recordVisitFromEmail (req, res, next) {
     next();
     return;
   }
-  if (!req.query.subscriber_id || !Number.isInteger(Number(req.query.subscriber_id))) {
+
+  // Send engagement ping to FXA if req.query contains a valid subscriber ID
+  if (req.query.subscriber_id && Number.isInteger(Number(req.query.subscriber_id))) {
+    const subscriber = await DB.getSubscriberById(req.query.subscriber_id);
+
+    if (!subscriber.fxa_uid || subscriber.fxa_uid === "") {
+      next();
+      return;
+    }
+
+    const breachDetailsRE = /breach-details\/(\w*)$/;
+    const capturedMatch = req.path.match(breachDetailsRE);
+    const utmContent = (capturedMatch) ? `&utm_content=${capturedMatch[1]}` : "";
+    const fxaMetricsFlowPath = `metrics-flow?utm_source=${req.query.utm_source}&utm_medium=${req.query.utm_medium}${utmContent}&event_type=engage&uid=${subscriber.fxa_uid}&service=${AppConstants.OAUTH_CLIENT_ID}`;
+    const fxaResult = await FXA.sendMetricsFlowPing(fxaMetricsFlowPath);
+    log.info(`fxaResult: ${fxaResult}`);
+  }
+
+  // Redirect users who have clicked "Resolve this breach" or "Go to Dashboard"
+  // from an email and aren't signed in to the /oauth flow.
+  if (!req.session.user) {
+    const oauthUrl = new URL("/oauth/init", AppConstants.SERVER_URL);
+    ["utm_source", "utm_campaign", "utm_medium"].forEach(param => {
+      if (req.query[param]) {
+        oauthUrl.searchParams.append(param, req.query[param]);
+      }
+    });
+    req.url = `${oauthUrl.pathname}/${oauthUrl.search}`;
     next();
     return;
   }
-  const subscriber = await DB.getSubscriberById(req.query.subscriber_id);
-  if (!subscriber.fxa_uid || subscriber.fxa_uid === "") {
-    next();
-    return;
-  }
-  const breachDetailsRE = /breach-details\/(\w*)$/;
-  const capturedMatch = req.path.match(breachDetailsRE);
-  const utmContent = (capturedMatch) ? `&utm_content=${capturedMatch[1]}` : "";
-  const fxaMetricsFlowPath = `metrics-flow?utm_source=${req.query.utm_source}&utm_medium=${req.query.utm_medium}${utmContent}&event_type=engage&uid=${subscriber.fxa_uid}&service=${AppConstants.OAUTH_CLIENT_ID}`;
-  const fxaResult = await FXA.sendMetricsFlowPing(fxaMetricsFlowPath);
-  log.info(`fxaResult: ${fxaResult}`);
   next();
 }
 
