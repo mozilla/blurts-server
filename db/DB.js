@@ -249,7 +249,7 @@ const DB = {
     await HIBP.subscribeHash(emailHash.sha1);
 
     const verifiedEmail = await knex("email_addresses")
-      .where("email", "=", emailHash.email)
+      .where("id", "=", emailHash.id)
       .update({
         verified: true,
       })
