@@ -7,7 +7,9 @@ rec-pw-1-subhead = Parolanızı değiştirin
 # Link title
 rec-pw-1-cta = Bu sitedeki parolanızı değiştirin
 # Recommendation subhead
-rec-pw-2-subhead = Aynı parolayı kullanarak diğer hesaplarınızı güncelleyin
+rec-pw-2-subhead = Aynı parolayı kullanan diğer hesaplarınızı güncelleyin
+# Recommendation subhead
+rec-pw-3-subhead = Parolalarınızı yanınızda taşımak için parola yöneticisi kullanın
 # Link title
 rec-pw-3-cta = { -brand-lockwise } kullanın
 # Recommendation subhead
@@ -25,6 +27,12 @@ rec-hist-pw-subhead = Aynı parolayı başka yerlerde kullanmayın
 rec-sec-qa-subhead = Güvenlik soruları için benzersiz cevaplar oluşturun
 # Recommendation subhead
 rec-phone-num-subhead = Telefon numaranızı paylaşmaktan kaçının
+# Recommendation subhead
+rec-dob-subhead = PIN’lerde kişisel bilgilerinizi kullanmaktan kaçının
+# Recommendation subhead
+rec-pins-subhead = PIN’lerinizin güvenliğini güçlendirin
+# Recommendation subhead
+rec-address-subhead = Parolalarda adresinizi kullanmayın
 # Recommendation subhead
 rec-gen-1-subhead = Her hesap için benzersiz ve güçlü parolalar kullanın
 # Link title

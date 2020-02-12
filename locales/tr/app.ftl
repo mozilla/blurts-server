@@ -395,9 +395,16 @@ see-additional-recs = Ek tavsiyelere bakın
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+resolve-top-notification = { $affectedEmail } bu ihlalde yer alıyor. <a>Şimdi ne yapmalıyım?</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] { $numAffectedEmails } e-posta adresiniz bu ihlalde yer alıyor. <a>Şimdi ne yapmalıyım?</a>
+       *[other] { $numAffectedEmails } e-posta adresiniz bu ihlalde yer alıyor. <a>Şimdi ne yapmalıyım?</a>
+    }
 
 ##
 
+marking-this-subhead = Bu ihlali çözüldü olarak işaretleyebilirsiniz
 mark-as-resolve-button = Çözüldü olarak işaretle
 marked-as-resolved-label = Çözüldü olarak işaretlendi
 undo-button = Geri al
@@ -417,6 +424,20 @@ go-to-dashboard-link = Panoya git
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
 progress-percent-complete = %{ $percentComplete } tamamlandı
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } çözüldü
+       *[other] { $numResolvedBreaches } çözüldü
+    }
+progress-intro-subhead = Yeni { -product-name } özelliği: İhlalleri "çözüldü" olarak işaretleme
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numTotalBreaches } ihlalden { $numResolvedBreaches } tanesi çözüldü olarak işaretlendi
+       *[other] { $numTotalBreaches } ihlalden { $numResolvedBreaches } tanesi çözüldü olarak işaretlendi
+    }
+progress-complete = Bilinen tüm ihlaller çözüldü olarak işaretlendi
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
@@ -425,5 +446,7 @@ progress-percent-complete = %{ $percentComplete } tamamlandı
 ##
 
 resolve-this-breach-link = Bu ihlali çöz
+hide-resolved-button = Çözülenleri gizle
+show-resolved-button = Çözülenleri göster
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Yeni

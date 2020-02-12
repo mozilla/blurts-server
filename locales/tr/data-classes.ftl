@@ -63,6 +63,7 @@ imsi-numbers = IMSI numaraları
 income-levels = Gelir seviyeleri
 instant-messenger-identities = Anlık mesajlaşma kimlikleri
 ip-addresses = IP adresleri
+job-applications = İş başvuruları
 job-titles = İş unvanları
 mac-addresses = MAC adresleri
 marital-statuses = Medeni durumları
