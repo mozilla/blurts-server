@@ -26,9 +26,6 @@ email-footer-blurb = You’re receiving this email because you signed up for {-p
 email-verify-footer-copy = You’re receiving this email because you signed up for {-product-name} alerts. 
   This is an automated email. For support, visit { $faqLink }.
 
-# Button text that takes the user to their signed in user dashboard.
-view-my-dashboard-cta = View My Dashboard
-
 # Button text
 verify-email-cta = Verify Email
 

@@ -247,26 +247,11 @@ function getEmailFooterCopy(args) {
 function getEmailCTA(args) {
   const locales = args.data.root.supportedLocales;
   const emailType = args.data.root.whichPartial;
-  const userBreaches = args.data.root.unsafeBreachesForEmail;
 
   if (emailType === "email_partials/email_verify") {
     return LocaleUtils.fluentFormat(locales, "verify-email-cta");
   }
-
-  if (userBreaches && (userBreaches.length > 4)) {
-    return LocaleUtils.fluentFormat(locales, "see-additional-breaches");
-  }
-
-  if (args.data.root.breachAlert) {
-    return LocaleUtils.fluentFormat(locales, "see-all-breaches");
-  }
-
-  // TODO: Remove after sending pre-fxa one-off email
-  if (args.data.root.preFxaEmail) {
-    return LocaleUtils.fluentFormat(locales, "create-account");
-  }
-
-  return LocaleUtils.fluentFormat(locales, "view-my-dashboard-cta");
+  return LocaleUtils.fluentFormat(locales, "go-to-dashboard-link");
 }
 
 
