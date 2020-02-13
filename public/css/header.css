@@ -186,6 +186,7 @@ nav {
 .fxa-menu-wrapper {
   cursor: pointer;
   position: relative;
+  user-select: none;
 }
 
 img.avatar,
