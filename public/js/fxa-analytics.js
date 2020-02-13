@@ -31,10 +31,6 @@ async function sendPing(el, eventAction, eventLabel = null) {
       eventLabel = `${getLocation()}`;
     }
     const eventCategory = `[v2] ${el.dataset.eventCategory}`;
-    if (eventCategory.includes("Scan")) {
-      // Append user status to eventLabel for scan form events.
-      eventLabel = `${eventLabel} [Signed in user: ${document.body.dataset.signedInUser}]`;
-    }
     return ga("send", "event", eventCategory, eventAction, eventLabel);
   }
 }
@@ -119,6 +115,7 @@ function sendRecommendationPings(ctaSelector) {
     ga("create", "UA-77033033-16");
     ga("set", "anonymizeIp", true);
     ga("set", "transport", "beacon");
+    ga("set", "dimension6", `${document.body.dataset.signedInUser}`);
 
     ga("send", "pageview", {
       hitCallback: function() {
