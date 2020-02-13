@@ -274,7 +274,7 @@ async function _verify(req) {
       recipientEmail: verifiedEmailHash.email,
       supportedLocales: req.supportedLocales,
       unsafeBreachesForEmail: unsafeBreachesForEmail,
-      ctaHref: EmailUtils.getEmailCtaHref(utmID, "view-my-dashboard"),
+      ctaHref: EmailUtils.getEmailCtaHref(utmID, "go-to-dashboard-link"),
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(verifiedEmailHash, utmID),
       whichPartial: "email_partials/report",
     }
