@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -o errexit -o nounset -o pipefail
+
+cd "$(dirname $0)/../.."
+
+export AWS_SECRET_ACCESS_KEY
+export AWS_ACCESS_KEY_ID
+
+aws s3 sync \
+    --acl "public-read" \
+    --cache-control "max-age=86400" \
+    --delete \
+    public/img/logos/ "s3://${S3_STATIC_BUCKET}/img/logos/"
+
+
+aws cloudfront create-invalidation \
+    --distribution-id "${CLOUDFRONT_STATIC_DISTID}" \
+    --paths "/img/logos/*"
