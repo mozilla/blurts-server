@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -o errexit -o nounset -o pipefail
+
+cd "$(dirname $0)/../.."
+
+aws s3 sync \
+    --acl "public-read" \
+    --cache-control "max-age=3600" \
+    --delete \
+    public/img/logos/ "s3://${S3_STATIC_BUCKET}/img/logos/"
+
+
+aws cloudfront create-invalidation \
+    --distribution-id "${CLOUDFRONT_STATIC_DISTID}" \
+    --paths "/img/logos/*"
