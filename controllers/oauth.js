@@ -84,7 +84,7 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
         recipientEmail: email,
         date: req.fluentFormat(new Date()),
         unsafeBreachesForEmail: unsafeBreachesForEmail,
-        ctaHref: EmailUtils.getEmailCtaHref(utmID, "view-my-dashboard"),
+        ctaHref: EmailUtils.getEmailCtaHref(utmID, "go-to-dashboard-link"),
         unsubscribeUrl: EmailUtils.getUnsubscribeUrl(verifiedSubscriber, utmID),
         whichPartial: "email_partials/report",
       }

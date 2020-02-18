@@ -1,5 +1,7 @@
 "use strict";
 
+const EmailUtils = require("../email-utils");
+
 async function getEmailMockUps(req, res) {
   const email = "example@email.com";
 
@@ -71,6 +73,7 @@ async function getEmailMockUps(req, res) {
     preFxaSubscriber: emailContent.preFxaSubscriber,
     email,
     preFxaEmail: emailContent.preFxaEmail,
+    ctaHref: EmailUtils.getEmailCtaHref("breach-alert", "go-to-dashboard"),
   });
 }
 
