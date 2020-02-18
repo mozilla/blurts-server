@@ -41,7 +41,7 @@ describe("Firefox Monitor homepage", function() {
       .equal(Number(scanResults.numberOfBreaches));
   });
 
-  it("should allow seconday email to be added", function() {
+  it("should allow secondary email to be added", function() {
     const homePage = HomePage;
     const navBar = NavBar;
 
