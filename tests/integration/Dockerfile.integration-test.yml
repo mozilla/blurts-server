@@ -1,0 +1,25 @@
+FROM node:10
+
+RUN useradd -d /app -u 1001 -g 1000 app
+
+RUN npm update -g
+RUN rm -rf /tmp/*
+
+# RUN apk add --no-cache bash
+
+WORKDIR /app
+
+RUN chown app /app
+
+USER app
+
+COPY package.json package.json
+COPY package-lock.json package-lock.json
+
+RUN npm install && rm -rf ~app/.npm /tmp/*
+
+COPY --chown=app:root . /app
+
+RUN npm run build:all
+
+CMD NODE_ICU_DATA=./node_modules/full-icu node server.js

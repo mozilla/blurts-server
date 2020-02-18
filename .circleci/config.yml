@@ -49,6 +49,23 @@ jobs:
                 name: Test Code
                 command: docker run blurts-server npm run lint
 
+    integration-test:
+        docker:
+            - image: docker:18.02.0-ce
+        steps:
+            - setup_remote_docker
+            - run:
+                name: Update npm to latest
+                command: docker run blurts-server npm install npm@latest -g
+            - run:
+                name: Build image and run Intergration Test
+                command: |
+                  cp .env-dist .env
+                  npm install
+                  npm install --only=dev
+                  docker-compose -f tests/interation/docker-compose.yml up --build -d
+                  npm run test:integration-docker
+
     deploy:
         docker:
             - image: docker:18.02.0-ce
@@ -98,7 +115,6 @@ workflows:
           filters:
             tags:
               only: /.*/
-
       - deploy:
           requires:
             - build
@@ -111,3 +127,7 @@ workflows:
           filters:
             branches:
               only: master
+      - integration-test:
+          requires:
+            - build
+

@@ -1,0 +1,28 @@
+version: "3.7"
+services:
+  server:
+    build:
+      context: ../..
+      dockerfile: tests/integration/Dockerfile.integration-test.yml
+    ports:
+      - "6060:6060"
+    depends_on:
+      - postgres
+    environment:
+      - HIBP_KANON_API_TOKEN
+      - HIBP_API_TOKEN
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=blurts
+    expose:
+      - "5432"
+  migration:
+    image: blurts-server_server:latest
+    command: ["./scripts/wait-for-it.sh", "postgres:5432", "--", "npm", "run", "db:migrate"]
+    links:
+      - postgres
+    depends_on:
+      - postgres
