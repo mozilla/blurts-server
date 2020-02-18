@@ -95,6 +95,7 @@ const imgSrc = [
   "'self'",
   "https://www.google-analytics.com",
   "https://firefoxusercontent.com",
+  "https://monitor.cdn.mozilla.net/",
 ];
 
 const connectSrc = [
@@ -153,6 +154,7 @@ const cookie = {httpOnly: true, sameSite: "lax"};
 app.locals.constants = AppConstants;
 app.locals.FXA_ENABLED = AppConstants.FXA_ENABLED;
 app.locals.SERVER_URL = AppConstants.SERVER_URL;
+app.locals.LOGOS_ORIGIN = AppConstants.LOGOS_ORIGIN;
 app.locals.UTM_SOURCE = new URL(AppConstants.SERVER_URL).hostname;
 
 const SESSION_DURATION_HOURS = AppConstants.SESSION_DURATION_HOURS || 48;

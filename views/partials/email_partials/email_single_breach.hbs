@@ -1,13 +1,7 @@
   <table alig="center" bgcolor="#ffffff" width="400px" class="email-breach-listing drop-shadow {{#if breachAlert}} alert-red-border {{/if}}" border-collapse="collapse" style="overflow: hidden; {{#if breachAlert}} border-color: #ff4f5e; border-style: solid; border-width: 2px; {{/if}} text-align: left; background-color: rgba(255, 255, 255, 1); padding: 20px; border-radius: 10px; box-shadow: 0 0 1px 1px rgba(96, 125, 139, 0.03), 1px 1px 10px rgba(67, 65, 87, 0.1); max-width: 400px;">
     <tr>
       <td class="email-breach-image" valign="top" style="padding-bottom: 10px; width: 40px;">
-        <img class="breach-logo" 
-          {{#if breachAlert }}
-            src="{{ SERVER_URL }}/img/logos/missing-logo-icon.png"
-          {{else}}
-            src="{{ SERVER_URL }}/img/logos/{{ LogoPath }}"
-          {{/if}} 
-        width="25" style="width: 25px" />
+        <img class="breach-logo" src="{{ LogoUrl }}" width="25" style="width: 25px" />
       </td>
       <td valign="top" style="vertical-align: top; font-family: sans-serif; width: 100%; padding-left: 20px;">
         <p class="text-bold" style="font-weight: 700; font-size: 17px; font-family: sans-serif; padding-bottom: 10px; margin: 0; color: #20123a;">{{ Title }}</p>
