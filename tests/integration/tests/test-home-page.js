@@ -13,7 +13,7 @@ describe("Firefox Monitor homepage", function() {
   //this.retries(2);
 
   beforeEach(function() {
-    browser.url("http://localhost:6060");
+    browser.url("/");
   });
 
   it("should load the latest breach card", function() {
@@ -61,7 +61,7 @@ describe("Firefox Monitor homepage", function() {
     // FxA password login
     $("#password").waitForExist(5000);
     $("#password").click();
-    $("#password").setValue(global.mailinatorPassword);
+    $("#password").setValue(global.monitorFxaPassword);
     $("#submit-btn").click();
 
     // Begin navigiation in monitor

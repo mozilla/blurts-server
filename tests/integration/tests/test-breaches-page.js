@@ -6,7 +6,7 @@ describe("Firefox Monitor Breaches Page", function() {
   this.retries(2);
 
   beforeEach(function() {
-    browser.url("http://localhost:6060/breaches");
+    browser.url("/breaches");
   });
 
   it("should look like normal", function() {

@@ -6,7 +6,7 @@ describe("Firefox Monitor Security Tips Page", function() {
   this.retries(2);
 
   beforeEach(function() {
-    browser.url("http://localhost:6060/security-tips");
+    browser.url("/security-tips");
   });
 
   it("should look like normal", function() {

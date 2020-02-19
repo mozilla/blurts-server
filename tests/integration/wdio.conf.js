@@ -177,10 +177,9 @@ exports.config = {
       global.expect = chai.expect;
       chai.Should();
 
-      global.baseUrl = "http://localhost:6060";
       global.primaryEmail = "test@mailinator.com";
       global.secondaryEmail = "test" + Math.random() + "@mailinator.com";
-      global.mailinatorPassword = process.env.MAILINATOR_PASSWORD || "a_secure_password";
+      global.monitorFxaPassword = process.env.MONITOR_FXA_PASSWORD || "a_secure_password";
       browser.setWindowSize(1920, 1080);
 
     },

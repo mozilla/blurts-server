@@ -11,6 +11,10 @@ services:
     environment:
       - HIBP_KANON_API_TOKEN
       - HIBP_API_TOKEN
+      - FXA_ENABLED
+      - LOGOS_ORIGIN=null
+      - BREACH_RESOLUTION_ENABLED=false
+      - MONITOR_FXA_PASSWORD
   postgres:
     image: postgres
     restart: always

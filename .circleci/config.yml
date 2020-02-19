@@ -63,7 +63,7 @@ jobs:
                   cp .env-dist .env
                   npm install
                   npm install --only=dev
-                  docker-compose -f tests/interation/docker-compose.yml up --build -d
+                  docker-compose -f tests/integration/docker-compose.yml up --build -d
                   npm run test:integration-docker
 
     deploy:
