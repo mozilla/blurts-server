@@ -13,7 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Conditiones de uso e confidentialitate
 GitHub-link-title = GitHub
@@ -343,7 +343,7 @@ email-verified-view-dashboard = Pro vider e gerer tote le adresses de e-mail que
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = aperir session
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -375,3 +375,22 @@ rec-section-headline-no-pw = Que facer pro proteger tu informationes personal
 rec-section-subhead-no-pw = Ben que in iste violation non ha essite exponite contrasignos, il ha ancora passos que tu pote facer pro proteger melio tu informationes personal.
 # Button
 see-additional-recs = Vide altere recommendationes
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+
+##
+
+mark-as-resolve-button = Marcar como resolvite
+marked-as-resolved-label = Marcate como resolvite
+undo-button = Disfacer
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Nove
