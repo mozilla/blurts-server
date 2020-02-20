@@ -1,5 +1,7 @@
 # Recommendation subhead
 rec-pw-1-subhead = Zmeňte svoje heslo
+# Link title
+rec-pw-3-cta = Prevziať { -brand-lockwise }
 rec-bank-acc =
     Skontrolujte, či sa vo vašich bankových výpisoch nenachádzajú podozrivé aktivity alebo neobvyklé 
     poplatky. Ak uvidíte niečo, čo nepoznáte, informujte svoju banku
@@ -30,6 +32,10 @@ rec-address =
     a tak uhádnuť vaše heslo.
 # Recommendation subhead
 rec-gen-2-subhead = Uložte si heslá na bezpečnom mieste
+# Link title
+rec-gen-2-cta = Mýty o správcoch hesiel
+# Recommendation subhead
+rec-gen-4-subhead = Pravidelne aktualizujte svoje programy a aplikácie
 rec-gen-4 =
     Aktualizáciou vašich aplikácií, prehliadačov a operačných systémov zvyšujete 
     ich bezpečnosť. Aktualizácie opravujú chyby, slabé miesta softvéru a bezpečnostné problémy.

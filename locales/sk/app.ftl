@@ -483,10 +483,19 @@ see-additional-recs = Pozrite sa na ďalšie odporúčania
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+resolve-top-notification = E-mailová adresa { $affectedEmail } sa objavila v tomto úniku. <a>Čo ďalej</a>
 
 ##
 
+mark-as-resolve-button = Označiť ako vyriešené
+marked-as-resolved-label = Označené ako vyriešené
 undo-button = Späť
+return-to-breach-details-link = Späť na podrobnosti o úniku
+go-to-dashboard-link = Prejsť na nástenku
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = Hotovo na { $percentComplete } %
+progress-complete = Všetky známe úniky boli označené ako vyriešené
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
@@ -494,5 +503,7 @@ undo-button = Späť
 
 ##
 
+hide-resolved-button = Skryť vyriešené
+show-resolved-button = Zobraziť vyriešené
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nový
