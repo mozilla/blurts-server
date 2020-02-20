@@ -277,6 +277,7 @@ button {
   border-color: var(--violet6);
 }
 
+.btn-blue-primary:active,
 .btn-transparent:active,
 .btn-violet-primary:active,
 input[type="submit"]:active {
@@ -312,6 +313,11 @@ button.btn-violet-primary {
   background-color: #0060df;
   border: 1px solid #0060df;
   align-self: center;
+}
+
+.btn-blue-primary:hover {
+  background-color: var(--blue4);
+  border-color: var(--blue4);
 }
 
 .btn-violet-primary {
