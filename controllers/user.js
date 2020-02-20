@@ -225,6 +225,7 @@ function getNewBreachesForEmailEntriesSinceDate(emailEntries, date) {
 
 
 async function getDashboard(req, res) {
+  const supportedLocalesIncludeEnglish = req.supportedLocales.includes("en");
   const user = req.user;
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
@@ -245,6 +246,7 @@ async function getDashboard(req, res) {
     verifiedEmails,
     unverifiedEmails,
     userHasSignedUpForRelay,
+    supportedLocalesIncludeEnglish,
     whichPartial: "dashboards/breaches-dash",
   });
 }
