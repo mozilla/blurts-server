@@ -42,7 +42,7 @@
       {{/eachFromTo}}
       {{#if ./../supportedLocalesIncludeEnglish}}
         <div class="private-relay-dashboard-card">
-          <a href="/protect-my-email" class="private-relay-dashboard-card-border flx private-relay-cta" data-analytics-label="join-the-waitlist-link" data-user-is-signed-up={{ userHasSignedUpForRelay }}>
+          <a href="/protect-my-email" class="private-relay-dashboard-card-border flx private-relay-cta" data-analytics-label="join-the-waitlist-link" data-user-is-signed-up={{ ./../userHasSignedUpForRelay }}>
             <div class="private-relay-dashboard-card-content flx">
               <div class="private-relay-dashboard-card-copy">
                 <p class="bold ff-Met private-relay-dashboard-card-subhead">Keep your email addresses hidden for future accounts</p>
