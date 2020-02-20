@@ -118,6 +118,8 @@ function getBreachDetail(args) {
   const breachCategory = getBreachCategory(breach);
   const breachExposedPasswords = breach.DataClasses.includes("passwords");
 
+  breach.LogoUrl = `${AppConstants.LOGOS_ORIGIN}/img/logos/${breach.LogoPath}`;
+
   const breachDetail = {
     breach: breach,
     breachExposedPasswords: breachExposedPasswords,
