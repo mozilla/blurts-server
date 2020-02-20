@@ -41,6 +41,7 @@ test("user getDashboard with valid user renders dashboard with verified emails a
     csrfToken: jest.fn(),
     fluentFormat: jest.fn(),
     session: { user: testSubscriber },
+    supportedLocales: [],
     user: testSubscriber,
   };
   const resp = httpMocks.createResponse();
@@ -73,6 +74,7 @@ test("user getDashboard with valid user renders dashboard with verified emails a
     csrfToken: jest.fn(),
     fluentFormat: jest.fn(),
     session: { user: testSubscriber },
+    supportedLocales: [],
     user: testSubscriber,
   };
   const resp = httpMocks.createResponse();
