@@ -88,12 +88,35 @@ function getBentoStrings(req, res) {
   return res.json(localizedBentoStrings);
 }
 
+function protectMyEmail(req, res) {
+  const userHasSignedUpForRelay = false; // PLACEHOLDER
+  return res.render("private-relay", {
+    title: req.fluentFormat("home-title"),
+    userHasSignedUpForRelay,
+  });
+}
+
+// PLACEHOLDER
+function addEmailToRelayWaitlist(req, res) {
+  // const userPrimaryEmail = req.session.user.primary_email;
+  // try {
+  // add it to the db
+  // } catch(e) {
+  // it didn't work out
+
+  // if (signed out) { return then redirect to home from browser }
+  // if (some other problem) { return res.json("did-not-work-out") }
+  // }
+  return res.json("email-added");
+}
+
 function notFound(req, res) {
   res.status(404);
   res.render("subpage", {
     analyticsID: "error",
     headline: req.fluentFormat("error-headline"),
-    subhead: req.fluentFormat("home-not-found") });
+    subhead: req.fluentFormat("home-not-found"),
+  });
 }
 
 module.exports = {
@@ -102,5 +125,7 @@ module.exports = {
   getAllBreaches,
   getBentoStrings,
   getSecurityTips,
+  protectMyEmail,
+  addEmailToRelayWaitlist,
   notFound,
 };

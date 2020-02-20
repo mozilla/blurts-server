@@ -228,7 +228,9 @@ async function getDashboard(req, res) {
   const user = req.user;
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
+
   let lastAddedEmail = null;
+  const userHasSignedUpForRelay = false;
 
   req.session.user = await DB.setBreachesLastShownNow(user);
   if (req.session.lastAddedEmail) {
@@ -242,6 +244,7 @@ async function getDashboard(req, res) {
     lastAddedEmail,
     verifiedEmails,
     unverifiedEmails,
+    userHasSignedUpForRelay,
     whichPartial: "dashboards/breaches-dash",
   });
 }
