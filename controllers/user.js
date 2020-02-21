@@ -87,11 +87,12 @@ async function resolveBreach(req, res) {
 
 
 function _checkForDuplicateEmail(sessionUser, email) {
-  if (email === sessionUser.primary_email) {
+  email = email.toLowerCase();
+  if (email === sessionUser.primary_email.toLowerCase()) {
     throw new FluentError("user-add-duplicate-email");
   }
   for (const secondaryEmail of sessionUser.email_addresses) {
-    if (email === secondaryEmail.email) {
+    if (email === secondaryEmail.email.toLowerCase()) {
       throw new FluentError("user-add-duplicate-email");
     }
   }
