@@ -313,20 +313,20 @@ function addBentoObserver(){
 
       signUpCallout.classList.add("sending-email");
       try {
-        await fetch(relayEndpoint, {
+        const response = await fetch(relayEndpoint, {
           headers: {
             "Content-Type": "application/json; charset=utf-8",
           },
           mode: "same-origin",
           method: "POST",
           body: JSON.stringify({"emailToAdd": "add-user-email"}),
-        })
-        .then(async(data) => {
+        });
+        if (response && response.status === 200) {
           setTimeout(()=> {
             signUpCallout.classList.add("email-sent");
             signUpCallout.classList.remove("sending-email");
           }, 500);
-        });
+        }
       } catch(e) {
         // we need error messaging
       }
