@@ -11,3 +11,9 @@ fx-mobile = Navegador { -brand-name } itech teposuejkatanojnotsalonimej celulare
 
 ##
 
+# Aria label for the Bento button
+bento-button-title = Tekimej aplicaciones uan tapaleuilmej tein kitemaka { -brand-name }
+# Bento headline
+fx-makes-tech = { -brand-name } yejua tepos tecnología tein motelchikaua uan ijkon Internetkopa kiyekpias tein moaxka
+# A link at the bottom of the Bento menu
+made-by-mozilla = Kichijchiuak { -brand-Mozilla }
