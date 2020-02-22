@@ -17,6 +17,7 @@
 
 terms-and-privacy = Keniuj motekiltis uan Keniuj tiyekpiaj tein tikseliaj
 GitHub-link-title = GitHub
+error-scan-page-token = Yeknenken tikuitoya tel miak correos itech tepos. Kemej yon tamouilil, yekintsin tiktsakuilijkej nochi tein tiktemojtoya. Satepan uelis oksepa tikchiuas.
 
 ## What to do after data breach tips
 
