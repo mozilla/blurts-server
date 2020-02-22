@@ -17,3 +17,5 @@ bento-button-title = Tekimej aplicaciones uan tapaleuilmej tein kitemaka { -bran
 fx-makes-tech = { -brand-name } yejua tepos tecnología tein motelchikaua uan ijkon Internetkopa kiyekpias tein moaxka
 # A link at the bottom of the Bento menu
 made-by-mozilla = Kichijchiuak { -brand-Mozilla }
+# Aria label for button that closes the Bento menu
+mobile-close-bento-button-title = Maj motsakua menú kampa se taixpejpena
