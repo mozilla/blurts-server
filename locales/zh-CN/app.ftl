@@ -317,7 +317,7 @@ filter-by = 按分类筛选：
 menu = 菜单
 to-affected-email = 向受影响的电子邮件地址发送外泄警报
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
-join-firefox = 有种方法可以保护您的隐私，加入 { -brand-name }。
+join-firefox = 捍卫隐私不是幻想。加入 { -brand-name } 一同抗争。
 # Link title
 learn-more-link = 详细了解。
 email-sent = 邮件发送成功！
