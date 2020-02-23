@@ -24,6 +24,11 @@ error-hibp-throttled = Telsenka monajnamiktijtokej itech { -brand-HIBP }.
 error-hibp-connect = Amo uelik monajnamiktij itech { -brand-HIBP }.
 error-hibp-load-breaches = Amo uelik monextij keman oksekin ichtakakalakisnekkej.
 error-must-be-signed-in = Moneki tikalakteuas itech { -brand-fxa } tein tikpia.
+error-to-finish-verifying = Moneki tikalakteuas itech mocuenta tein ika mocorreo tein tayekantok, uan ijkon tiktamiyekitas nejin correo itech { -product-name }.
+home-title = { -product-name }
+home-not-found = Amo kiajsik página.
+oauth-invalid-session = Amo kualtia sesión
+scan-title = { -product-name } : Keniuj kisak tein kiijitak
 
 ## What to do after data breach tips
 
