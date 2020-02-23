@@ -35,6 +35,8 @@ user-add-email-verify-subject = Xikyekita komojkon timoyekijkuiloj itech { -prod
 user-add-duplicate-email = Nejin correo itech tepos moajxitilij ya itech { -product-name }.
 user-add-duplicate-email-part-2 = Xikita  { $preferencesLink } tein tikpia uan ijkon tikyekitas keniuj moajsi { $userEmail }.
 error-headline = Nepolol
+user-verify-token-error = Moneki se token tein ika se kiyekitas tensa.
+user-verify-email-report-subject = Tanauatil tein mitsiluia keniuj moajsi { -product-name }
 
 ## What to do after data breach tips
 
