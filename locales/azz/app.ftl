@@ -29,6 +29,9 @@ home-title = { -product-name }
 home-not-found = Amo kiajsik página.
 oauth-invalid-session = Amo kualtia sesión
 scan-title = { -product-name } : Keniuj kisak tein kiijitak
+user-add-invalid-email = Amo kualtia nejin correo itech tepos
+user-add-too-many-emails = Tikitstok ya nochi correos itech tepos tein se uelis kiitas ika monitor.
+user-add-email-verify-subject = Xikyekita komojkon timoyekijkuiloj itech { -product-name }.
 
 ## What to do after data breach tips
 
