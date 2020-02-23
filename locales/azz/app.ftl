@@ -21,6 +21,9 @@ error-scan-page-token = Yeknenken tikuitoya tel miak correos itech tepos. Kemej 
 error-could-not-add-email = Amo uelik moajxitilij in correo electrónico itech base tein datos.
 error-not-subscribed = Nejin correo itech tepos amo moijkuiloj itech { -product-name }.
 error-hibp-throttled = Telsenka monajnamiktijtokej itech { -brand-HIBP }.
+error-hibp-connect = Amo uelik monajnamiktij itech { -brand-HIBP }.
+error-hibp-load-breaches = Amo uelik monextij keman oksekin ichtakakalakisnekkej.
+error-must-be-signed-in = Moneki tikalakteuas itech { -brand-fxa } tein tikpia.
 
 ## What to do after data breach tips
 
