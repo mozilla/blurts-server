@@ -18,6 +18,9 @@
 terms-and-privacy = Keniuj motekiltis uan Keniuj tiyekpiaj tein tikseliaj
 GitHub-link-title = GitHub
 error-scan-page-token = Yeknenken tikuitoya tel miak correos itech tepos. Kemej yon tamouilil, yekintsin tiktsakuilijkej nochi tein tiktemojtoya. Satepan uelis oksepa tikchiuas.
+error-could-not-add-email = Amo uelik moajxitilij in correo electrónico itech base tein datos.
+error-not-subscribed = Nejin correo itech tepos amo moijkuiloj itech { -product-name }.
+error-hibp-throttled = Telsenka monajnamiktijtokej itech { -brand-HIBP }.
 
 ## What to do after data breach tips
 
