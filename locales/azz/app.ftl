@@ -32,6 +32,9 @@ scan-title = { -product-name } : Keniuj kisak tein kiijitak
 user-add-invalid-email = Amo kualtia nejin correo itech tepos
 user-add-too-many-emails = Tikitstok ya nochi correos itech tepos tein se uelis kiitas ika monitor.
 user-add-email-verify-subject = Xikyekita komojkon timoyekijkuiloj itech { -product-name }.
+user-add-duplicate-email = Nejin correo itech tepos moajxitilij ya itech { -product-name }.
+user-add-duplicate-email-part-2 = Xikita  { $preferencesLink } tein tikpia uan ijkon tikyekitas keniuj moajsi { $userEmail }.
+error-headline = Nepolol
 
 ## What to do after data breach tips
 
