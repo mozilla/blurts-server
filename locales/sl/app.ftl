@@ -483,6 +483,12 @@ resolve-top-notification-plural =
 
 ##
 
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Ko ste izvedli ukrepe za zaščito</span>,
+    lahko to krajo označite kot razrešeno. Do podrobnosti o kraji podatkov 
+    lahko še vedno kadarkoli dostopate na nadzorni plošči.
 mark-as-resolve-button = Označi kot razrešeno
 marked-as-resolved-label = Označeno kot razrešeno
 undo-button = Razveljavi
@@ -506,6 +512,17 @@ num-resolved =
         [two] { $numResolvedBreaches } razrešeni
         [few] { $numResolvedBreaches } razrešene
        *[other] { $numResolvedBreaches } razrešenih
+    }
+progress-intro-subhead = Novo v { -product-name }ju: Označite kraje podatkov kot razrešene
+progress-intro-message =
+    Po pregledu podrobnosti o kraji podatkov in izvedbi ukrepov za zaščito 
+    vaših osebnih podatkov, lahko kraje podatkov označite kot razrešene.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } od { $numTotalBreaches } kraj podatkov je bila označena kot razrešena
+        [two] { $numResolvedBreaches } od { $numTotalBreaches } kraj podatkov sta bili označeni kot razrešeni
+        [few] { $numResolvedBreaches } od { $numTotalBreaches } kraj podatkov so bile označene kot razrešene
+       *[other] { $numResolvedBreaches } od { $numTotalBreaches } kraj podatkov je bilo označenih kot razrešenih
     }
 progress-complete = Vse znane kraje podatkov so bile označene kot razrešene
 
