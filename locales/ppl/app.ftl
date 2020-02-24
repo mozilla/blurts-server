@@ -11,12 +11,13 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Tay nechtuktia wan tay nupal ichtaka
 GitHub-link-title = GitHub
-error-scan-page-token = Tikejekua tiktemua miak correoj uksejsenpa. Muita chupi tesajsay, yajika timetztzakwilijtiwit ka kiajan. Tiu-tiweli tikejekua nemanha.
+error-scan-page-token = Tikejekua tiktemua miak correoj uksejsenpa. Nesi chupi tesajsay, yajika timetztzakwilijtiwit ka kiajan. Tiu-tiweli tikejekua nemanha.
 error-could-not-add-email = Te welik mutalia se dirección correoj tik ne basej ipal datos.
 error-not-subscribed = Ini correoj tesu kipia itukay tik { -product-name }.
 error-hibp-throttled = Miak nemit sajsalujtuk itech { -brand-HIBP }.
@@ -138,5 +139,19 @@ sensitive-breach-plural = Kaltapanalis tesajsay
 ## an additional email to Firefox Monitor.
 
 
+##
 
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+
+##
+
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
 
