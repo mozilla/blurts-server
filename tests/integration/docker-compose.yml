@@ -25,7 +25,8 @@ services:
       - "5432"
   migration:
     image: blurts-server_server:latest
-    command: ["./scripts/wait-for-it.sh", "postgres:5432", "--", "npm", "run", "db:migrate"]
+    command: [
+      "chmod", "+x", "./scripts/wait-for-it.sh", "&&", "./scripts/wait-for-it.sh", "postgres:5432", "--", "npm", "run", "db:migrate"]
     links:
       - postgres
     depends_on:

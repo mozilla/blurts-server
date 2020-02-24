@@ -1,5 +1,3 @@
-/* global browser */
-
 "use strict";
 
 describe("Firefox Monitor Security Tips Page", function() {
