@@ -8,6 +8,6 @@ describe("Firefox Monitor Breaches Page", function() {
   });
 
   it("should look like normal", function() {
-    expect(browser.checkFullPageScreen("Breaches_Page", {})).to.be.within(0, 5);
+    expect(browser.checkFullPageScreen("Breaches_Page", {})).to.be.within(0, 9.99);
   });
 });
