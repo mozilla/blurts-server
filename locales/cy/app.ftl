@@ -563,3 +563,6 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Newydd
+promo-fx-mobile-headline = Preifatrwydd a chyflymder ar ddyfais symudol
+promo-fx-mobile-body = Mae'r porwr { -brand-name } yn gyflym iawn, preifat drwy ragosodiad, ac mae'n rhwystro 2,000+ o dracwyr ar-lein.
+promo-fx-mobile-cta = Cael { -brand-name } Symudol
