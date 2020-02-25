@@ -480,3 +480,6 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Neu
+promo-fx-mobile-headline = Datenschutz und Geschwindigkeit auf Mobilgeräten
+promo-fx-mobile-body = Der { -brand-name }-Browser ist superschnell, schützt standardmäßig die Privatsphäre und blockiert über 2&thinsp;000 Online-Tracker.
+promo-fx-mobile-cta = Holen Sie sich { -brand-name } Mobile
