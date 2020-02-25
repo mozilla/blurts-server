@@ -455,6 +455,15 @@ marked-as-resolved-label = Đã đánh dấu là đã giải quyết
 undo-button = Hoàn tác
 confirmation-1-subhead = Tốt! Bạn đã giải quyết vụ rò rỉ đầu tiên của bạn.
 confirmation-1-body = Giữ đà. Kiểm tra bảng điều khiển của bạn để xem nếu có nhiều việc phải làm.
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Bạn muốn mật khẩu của bạn mạnh mẽ, khó đoán và duy nhất? <a>Tìm hiểu</a>
+generic-confirmation-subhead = Rò rỉ này đã được đánh dấu là đã giải quyết
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+       *[other] Để xem tất cả các rò rỉ còn lại, đi đến bảng điều khiển của bạn.
+    }
+return-to-breach-details-link = Quay lại chi tiết rò rỉ
 go-to-dashboard-link = Đi đến bảng điều khiển
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
@@ -466,10 +475,19 @@ num-resolved =
        *[other] Đã giải quyết { $numResolvedBreaches } mục
     }
 progress-intro-subhead = Tính năng mới trong { -product-name }: Đánh dấu vi phạm là đã giải quyết
+progress-status =
+    { $numTotalBreaches ->
+       *[other] { $numResolvedBreaches } trong số { $numTotalBreaches } vụ rò rỉ đã được đánh dấu là giải quyết
+    }
+progress-complete = Tất cả các rò rỉ đã biết đã được đánh dấu là đã giải quyết
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-2 =
+    <span>Hãy cập nhật!</span> Những thay đổi nhỏ như cập nhật mật khẩu có thể giữ an toàn 
+    thông tin cá nhân của bạn.
+progress-message-4 = <span>Gần xong rồi!</span> Bạn có thể tiến gần đến đích.
 
 ##
 
