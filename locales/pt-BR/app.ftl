@@ -513,3 +513,5 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Novo
+promo-fx-mobile-headline = Privacidade e velocidade no celular
+promo-fx-mobile-body = O navegador { -brand-name } é super rápido, privativo por padrão e bloqueia mais de 2000 rastreadores online.
