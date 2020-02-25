@@ -225,7 +225,7 @@ appears-in-x-breaches =
     { $breachCount ->
         [one] Pojavil se je v eni znani kraji.
         [two] Pojavil se je v dveh znanih krajah.
-        [few] Pojavil se je v treh znanih krajah.
+        [few] Pojavil se je v { $breachCount } znanih krajah.
        *[other] Pojavil se je v { $breachCount } znanih krajah.
     }
 check-for-breaches = Preverite kraje podatkov
@@ -295,7 +295,7 @@ other-breaches-found =
     { $breachCount ->
         [one] Vendar se je pojavil v eni drugi kraji podatkov.
         [two] Vendar se je pojavil v dveh drugih krajah podatkov.
-        [few] Vendar se je pojavil v treh drugih krajah podatkov.
+        [few] Vendar se je pojavil v { $breachCount } drugih krajah podatkov.
        *[other] Vendar se je pojavil v { $breachCount } drugih krajah podatkov.
     }
 fb-comp-only = Ta e-poštni naslov se je pojavil v kraji podatkov { $breachName }.
