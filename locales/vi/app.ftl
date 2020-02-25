@@ -453,6 +453,8 @@ marking-this-body =
 mark-as-resolve-button = Đánh dấu là đã giải quyết
 marked-as-resolved-label = Đã đánh dấu là đã giải quyết
 undo-button = Hoàn tác
+confirmation-1-subhead = Tốt! Bạn đã giải quyết vụ rò rỉ đầu tiên của bạn.
+confirmation-1-body = Giữ đà. Kiểm tra bảng điều khiển của bạn để xem nếu có nhiều việc phải làm.
 go-to-dashboard-link = Đi đến bảng điều khiển
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
