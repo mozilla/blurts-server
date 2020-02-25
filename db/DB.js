@@ -335,6 +335,16 @@ const DB = {
     return this.getSubscriberByEmail(user.primary_email);
   },
 
+  async setWaitlistsJoined(options) {
+    const { user, updatedWaitlistsJoined } = options;
+    await knex("subscribers")
+      .where("id", user.id)
+      .update({
+        waitlists_joined: updatedWaitlistsJoined,
+      });
+    return this.getSubscriberByEmail(user.primary_email);
+  },
+
   async removeSubscriber(subscriber) {
     await knex("email_addresses").where({"subscriber_id": subscriber.id}).del();
     await knex("subscribers").where({"id": subscriber.id}).del();

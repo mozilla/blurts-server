@@ -1,6 +1,7 @@
 "use strict";
 
 const AppConstants = require("../app-constants");
+const DB = require("../db/DB");
 const { scanResult } = require("../scan-results");
 const { generatePageToken } = require("./utils");
 
@@ -96,17 +97,18 @@ function protectMyEmail(req, res) {
   });
 }
 
-// PLACEHOLDER
-function addEmailToRelayWaitlist(req, res) {
-  // const userPrimaryEmail = req.session.user.primary_email;
-  // try {
-  // add it to the db
-  // } catch(e) {
-  // it didn't work out
+function _addEmailRelayToWaitlistsJoined(user) {
+  if (!user.waitlists_joined) {
+    return {"email_relay": {"notified": false} };
+  }
+  user.waitlists_joined["email_relay"] = {"notified": false };
+  return user.waitlists_joined;
+}
 
-  // if (signed out) { return then redirect to home from browser }
-  // if (some other problem) { return res.json("did-not-work-out") }
-  // }
+function addEmailToRelayWaitlist(req, res) {
+  const user = req.user;
+  const updatedWaitlistsJoined = _addEmailRelayToWaitlistsJoined(user);
+  DB.setWaitlistsJoined({user, updatedWaitlistsJoined});
   return res.json("email-added");
 }
 

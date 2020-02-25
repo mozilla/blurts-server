@@ -390,7 +390,6 @@ function _updateResolvedBreaches(options) {
 }
 
 
-// Placeholder -- WIP
 async function postResolveBreach(req, res) {
   const sessionUser = req.user;
   const { affectedEmail, recencyIndex, isResolved } = req.body;
