@@ -11,6 +11,7 @@ const { FXA } = require("../lib/fxa");
 const HIBP = require("../hibp");
 const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
+const { hasUserSignedUpForRelay } = require("./utils");
 
 
 const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
@@ -231,7 +232,7 @@ async function getDashboard(req, res) {
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
 
   let lastAddedEmail = null;
-  const userHasSignedUpForRelay = false;
+  const userHasSignedUpForRelay = hasUserSignedUpForRelay(user);
 
   req.session.user = await DB.setBreachesLastShownNow(user);
   if (req.session.lastAddedEmail) {

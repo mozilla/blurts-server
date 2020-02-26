@@ -21,6 +21,17 @@ function generatePageToken(req) {
   */
 }
 
+function hasUserSignedUpForRelay(user) {
+  if (!user.waitlists_joined) {
+    return false;
+  }
+  if (user.waitlists_joined.hasOwnProperty("email_relay")) {
+    return true;
+  }
+  return false;
+}
+
 module.exports = {
   generatePageToken,
+  hasUserSignedUpForRelay,
 };
