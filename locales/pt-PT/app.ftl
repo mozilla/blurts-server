@@ -533,4 +533,4 @@ known-data-breaches-resolved =
 new-breach = Nova
 promo-fx-mobile-headline = Privacidade e velocidade no telemóvel
 promo-fx-mobile-body = O navegador { -brand-name } é super rápido, privado por predefinição e bloqueia mais de 2000 rastreadores da Internet.
-promo-fx-mobile-cta = Obtenha o { -brand-name } para telemóvel
+promo-fx-mobile-cta = Obtenha o { -brand-name } para o telemóvel
