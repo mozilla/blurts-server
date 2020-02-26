@@ -1,6 +1,5 @@
 "use strict";
 
-const assert = require("assert");
 const HomePage = require("../pages/desktop/home.page");
 const NavBar = require("../regions/navbar.region");
 const UserDashboardPage = require("../pages/desktop/dashboard.page");
@@ -16,10 +15,7 @@ describe("Firefox Monitor homepage", function() {
     const homePage = HomePage;
 
     homePage.waitForPageToLoad();
-    assert(
-        homePage.breachCard.latestBreachCard.isDisplayed(),
-        "Latest Breach card not found"
-    );
+    expect(homePage.breachCard.latestBreachCard.isDisplayed()).to.be.true;
   });
 
   it("should look like normal", function() {
