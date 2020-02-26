@@ -448,3 +448,6 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = 新事件
+promo-fx-mobile-headline = 在移动端也获得隐私保护与高速上网
+promo-fx-mobile-body = { -brand-name } 速度超快、保护隐私、拦截超过 2000 种在线跟踪器。
+promo-fx-mobile-cta = 下载 { -brand-name } 移动版
