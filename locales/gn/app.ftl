@@ -519,3 +519,5 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Pyahu
+promo-fx-mobile-headline = Ñemigua ha pya’ekue pumbyrýpe
+promo-fx-mobile-body = Ko kundahára { -brand-name } ipya’eterei, iñemi ypykue ha ojoko hetave 2,000 tapykuehoha ñandutípe.
