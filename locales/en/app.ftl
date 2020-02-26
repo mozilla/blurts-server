@@ -675,3 +675,25 @@ promo-fx-mobile-headline = Privacy and speed on mobile
 promo-fx-mobile-body = 
   The { -brand-name } browser is super fast, private by default, and blocks 2,000+ online trackers.
 promo-fx-mobile-cta = Get { -brand-name } Mobile
+
+promo-lockwise-headline = Take your passwords everywhere
+promo-lockwise-body =
+  Use { -brand-lockwise } to keep track of all your passwords. 
+  Access them securely from your computer, phone, or tablet.
+promo-lockwise-cta = Get { -brand-lockwise }
+
+promo-fpn-headline = Keep your real location under wraps
+promo-fpn-body = { -brand-name } 
+  Private Network hides your location to throw off the websites 
+  and data collectors that profile you with ads.
+promo-fpn-cta = Get { -brand-name } Private Network
+
+promo-monitor-headline = Get alerted the next time your info gets exposed
+promo-monitor-body = 
+  Want to find out the next time you’re in a data breach and 
+  what to do? Create a { -brand-name } account.
+
+promo-ecosystem-headline = Meet our family of products
+promo-ecosystem-body = 
+  One login. All your devices. A family of products that respect your privacy.
+promo-ecosystem-cta = See All Products
