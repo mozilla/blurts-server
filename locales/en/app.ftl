@@ -12,6 +12,7 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-fx-account = Firefox account
 ##
 
 terms-and-privacy = Terms & Privacy
@@ -684,14 +685,14 @@ promo-lockwise-cta = Get { -brand-lockwise }
 
 promo-fpn-headline = Keep your real location under wraps
 promo-fpn-body = { -brand-name } 
-  Private Network hides your location to throw off the websites 
+  { -brand-fpn } hides your location to throw off the websites 
   and data collectors that profile you with ads.
-promo-fpn-cta = Get { -brand-name } Private Network
+promo-fpn-cta = Get { -brand-fpn }
 
 promo-monitor-headline = Get alerted the next time your info gets exposed
 promo-monitor-body = 
   Want to find out the next time you’re in a data breach and 
-  what to do? Create a { -brand-name } account.
+  what to do? Create a { -brand-fx-account }.
 
 promo-ecosystem-headline = Meet our family of products
 promo-ecosystem-body = 
