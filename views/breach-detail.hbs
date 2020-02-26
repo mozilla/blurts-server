@@ -40,7 +40,15 @@
         {{> affected-emails}}
       {{/if}}
       {{#unless ./../req.session.user}}
-        {{> sign-up-banners/breach-detail-sign-up-banner }}
+        <div class="product-promo drop-shadow flx al-cntr jst-cntr promo-monitor">
+          <div class="promo-content flx-row">
+            <div class="promo-copy flx-flx-col">
+              <h3 class="promo-headline ff-Met">{{ getString "sign-up-headline-1" }}</h3>
+              <p class="promo-body">{{ getString "get-ongoing-breach-monitoring"}} {{ getString "get-ongoing-breach-monitoring"}} {{ getString "get-ongoing-breach-monitoring"}}</p>
+              <button class="promo-cta ff-Met btn-transparent">{{ getString "sign-up-for-alerts" }}</button>
+            </div>
+          </div>
+        </div>
       {{/unless}}
     </div>
   </section>

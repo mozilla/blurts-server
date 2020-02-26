@@ -1,0 +1,78 @@
+.product-promo {
+  overflow: hidden;
+  border-radius: 16px;
+  padding: 32px 42px;
+  color: rgba(255, 255, 255, 1);
+  text-align: left;
+}
+
+.promo-monitor {
+  background-color: #393473;
+}
+
+.promo-mobile {
+  background-color: #123474;
+}
+
+.promo-private-network,
+.promo-ecosystem,
+.promo-lockwise {
+  background-color: #1e1338;
+}
+
+.promo-monitor > .promo-content::before {
+  background-image: url("/img/svg/fxa-tout-yellow-env.svg");
+}
+
+.promo-content::before {
+  margin-right: 36px;
+  min-width: 88px;
+  min-height: 66px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  content: "";
+  display: inline-block;
+}
+
+.promo-headline {
+  font-size: 24px;
+  line-height: 1.17;
+  margin: 0 auto 8px 0;
+}
+
+.promo-body {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0 auto 16px auto;
+}
+
+.promo-cta {
+  border-color: rgba(255, 255, 255, 1);
+  border-radius: 8px;
+  min-height: 40px;
+  color: rgba(255, 255, 255, 1);
+  font-size: 16px;
+  margin: auto auto auto 0;
+  padding: 12px 32px;
+}
+
+@media screen and (max-width: 600px) {
+  .product-promo {
+    padding: 42px;
+  }
+
+  .promo-content {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    max-width: 400px;
+  }
+
+  .promo-content::before {
+    margin: auto auto 16px auto;
+  }
+
+  .promo-headline {
+    font-size: 27px;
+  }
+}
