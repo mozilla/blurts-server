@@ -531,3 +531,6 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Ny
+promo-fx-mobile-headline = Personvern og hastighet på mobil
+promo-fx-mobile-body = Nettleseren { -brand-name } er superrask, privat som standard og blokkerer over 2 000 sporere på nettet.
+promo-fx-mobile-cta = Hent { -brand-name } mobil
