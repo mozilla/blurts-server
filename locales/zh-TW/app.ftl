@@ -445,4 +445,5 @@ known-data-breaches-resolved =
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = 新事件
 promo-fx-mobile-headline = 在行動裝置也獲得隱私保護與高速上網
+promo-fx-mobile-body = { -brand-name } 瀏覽器上網速度超快、預設開啟隱私保護、封鎖超過 2,000 組線上追蹤器。
 promo-fx-mobile-cta = 下載 { -brand-name } 行動版
