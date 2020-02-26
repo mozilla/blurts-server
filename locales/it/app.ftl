@@ -467,4 +467,5 @@ known-data-breaches-resolved =
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nuova
 promo-fx-mobile-headline = Privacy e velocità sui dispositivi mobili
+promo-fx-mobile-body = Il browser { -brand-name } è velocissimo, riservato per impostazione predefinita e blocca oltre 2000 elementi traccianti online.
 promo-fx-mobile-cta = Scarica { -brand-name } per dispositivi mobili
