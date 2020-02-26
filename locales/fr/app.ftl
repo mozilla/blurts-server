@@ -477,3 +477,6 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Fuite récente
+promo-fx-mobile-headline = Vie privée et rapidité sur mobile
+promo-fx-mobile-body = Le navigateur{ -brand-name } est super rapide, privé par défaut et bloque plus de 2000 traqueurs en ligne.
+promo-fx-mobile-cta = Télécharger { -brand-name } mobile
