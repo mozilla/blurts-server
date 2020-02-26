@@ -130,6 +130,7 @@ unverified-breach = Kaltapanalis teuk mupepettuk
 spam-list-breach = Kaltapanalis tik ne listaj ipal correoj kupajsul
 website-breach-plural = Kaltapanalis tik ne iswat ipal matapan
 sensitive-breach-plural = Kaltapanalis tesajsay
+data-aggregator-breach-plural = Kaltapananlis tik ne tasentalilis ipal datos
 
 ## What to do after data breach tips
 
