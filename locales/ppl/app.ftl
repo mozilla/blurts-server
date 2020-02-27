@@ -154,6 +154,10 @@ fxm-warns-you =
 # How Firefox Monitor works
 how-fxm-works = Ken { -product-name } tekiti
 how-fxm-1-headline = Shiktemu se chupi
+how-fxm-1-blurb =
+    Shiktemu ne mudirección ipal correoj tik ne kaltapanalis ipal datoj públicoj 
+    desde 2007. Ini tatemulis yu-kineshtia kachka muchi ne kaltapanalis ipal datoj, pero tesu 
+    yu-kineshtia ne kipiat información ichtaka tupal.
 
 ## What to do after data breach tips
 
