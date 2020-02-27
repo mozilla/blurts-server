@@ -467,9 +467,11 @@ see-additional-recs = Podívejte se na další doporučení
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+resolve-top-notification = E-mailová adresa { $affectedEmail } se objevila v tomto úniku. <a>Co dělat dál</a>
 
 ##
 
+marking-this-subhead = Označení tohoto úniku jako vyřešeného
 progress-intro-subhead = Nově ve { -product-name(case: "loc") }: Označení úniků jako vyřešené
 progress-intro-message = Po přezkoumání podrobností o úniku a přijetí opatření k ochraně vašich osobních údajů můžete označit úniky jako vyřešené.
 
