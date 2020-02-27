@@ -190,7 +190,7 @@ what-is-data-agg-blurb =
     tiếp thị. Nạn nhân của những vụ rò rỉ này ít có khả năng gặp phải vấn đề tài chính
     lừa đảo, nhưng tin tặc có thể sử dụng dữ liệu này để mạo danh hồ sơ.
 protect-your-privacy = Bảo vệ quyền riêng tư trực tuyến của bạn
-no-pw-to-change = Không giống như vi phạm trang web, không có mật khẩu để thay đổi.
+no-pw-to-change = Không giống như trang web bị rò rỉ, không có mật khẩu để thay đổi.
 avoid-personal-info = Tránh sử dụng thông tin cá nhân trong mật khẩu
 avoid-personal-info-blurb = Nó dễ dàng tìm thấy ngày sinh nhật, địa chỉ và tên thành viên gia đình trực tuyến. Giữ nó ra khỏi mật khẩu của bạn.
 
@@ -205,22 +205,22 @@ create-strong-passwords = Cách tạo mật khẩu mạnh
 stop-reusing-pw = Ngừng sử dụng lại mật khẩu cũ
 create-unique-pw = Tạo mật khẩu độc đáo và lưu chúng ở nơi an toàn, như trình quản lý mật khẩu.
 five-myths = 5 huyền thoại về trình quản lý mật khẩu
-create-a-fxa = Tạo { -brand-fxa } để được báo cáo đầy đủ về các vi phạm của bạn và để nhận thông báo.
+create-a-fxa = Tạo { -brand-fxa } để được báo cáo đầy đủ về các rò rỉ mà bạn đã gặp phải và để nhận thông báo.
 feat-security-tips = Mẹo về bảo mật để bảo vệ tài khoản của bạn
-feat-sensitive = Tìm kiếm nâng cao trong các vi phạm nhạy cảm
-feat-enroll-multiple = Đăng ký nhiều email theo dõi vi phạm
+feat-sensitive = Tìm kiếm nâng cao trong các rò rỉ dữ liệu nhạy cảm
+feat-enroll-multiple = Đăng ký nhiều email theo dõi rò rỉ
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
     { $breachCount ->
-       *[other] Xuất hiện trong { $breachCount } vi phạm đã biết.
+       *[other] Xuất hiện trong { $breachCount } rò rỉ dữ liệu đã biết.
     }
-check-for-breaches = Kiểm tra vi phạm
+check-for-breaches = Kiểm tra rò rỉ dữ liệu
 find-out-what-hackers-know = Tìm hiểu những gì tin tặc đã biết về bạn. Tìm hiểu làm thế nào để đi trước họ một bước.
-search-for-your-email = Tìm kiếm địa chỉ email của bạn trong các vi phạm dữ liệu công khai từ năm 2007.
+search-for-your-email = Tìm kiếm địa chỉ email của bạn trong các rò rỉ dữ liệu công khai từ năm 2007.
 back-to-top = Về đầu trang
-comm-opt-0 = Gửi email cho tôi nếu một trong những địa chỉ email của tôi dưới đây xuất hiện vi phạm dữ liệu.
-comm-opt-1 = Gửi tất cả các thông báo vi phạm đến { $primaryEmail }.
+comm-opt-0 = Gửi email cho tôi nếu một trong những địa chỉ email của tôi dưới đây xuất hiện rò rỉ dữ liệu.
+comm-opt-1 = Gửi tất cả các thông báo rò rỉ dữ liệu đến { $primaryEmail }.
 stop-monitoring-this = Dừng theo dõi email này.
 resend-verification = Gửi lại email xác minh
 add-new-email = Thêm một địa chỉ email mới
@@ -230,8 +230,8 @@ send-verification = Gửi liên kết xác minh
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-breach-summary = Tóm tắt vi phạm
-show-breaches-for-this-email = Hiển thị tất cả các vi phạm cho email này.
+breach-summary = Tóm tắt rò rỉ dữ liệu
+show-breaches-for-this-email = Hiển thị tất cả các rò rỉ dữ liệu cho email này.
 link-change-primary = Thay đổi địa chỉ email chính
 remove-fxm = Xóa { -product-name }
 remove-fxm-blurb =
@@ -240,15 +240,15 @@ remove-fxm-blurb =
 # Button title
 manage-email-addresses = Quản lý địa chỉ email
 # Link title
-latest-breach-link = Hãy xem nếu bạn đã bị vi phạm
+latest-breach-link = Hãy xem nếu bạn đã bị rò rỉ dữ liệu
 welcome-back = Chào mừng trở lại, { $userName }!
 welcome-user = Chào mừng, { $userName }!
-breach-alert-subject = { -product-name } đã tìm thấy email của bạn trong một vi phạm dữ liệu mới.
-your-info-was-discovered-headline = Thông tin của bạn đã được phát hiện trong một vi phạm dữ liệu mới.
+breach-alert-subject = { -product-name } đã tìm thấy email của bạn trong một rò rỉ dữ liệu mới.
+your-info-was-discovered-headline = Thông tin của bạn đã được phát hiện trong một rò rỉ dữ liệu mới.
 your-info-was-discovered-blurb =
-    Bạn đã đăng ký để nhận thông báo { -product-name } khi
-    email của bạn xuất hiện vi phạm dữ liệu. Đây là những gì chúng ta biết về vi phạm này.
-what-to-do-after-breach = Phải làm gì sau khi bị vi phạm dữ liệu
+    Bạn đã đăng ký để nhận thông báo { -product-name } khi email của bạn
+    xuất hiện rò rỉ dữ liệu. Đây là những gì chúng ta biết về rò rỉ dữ liệu này.
+what-to-do-after-breach = Phải làm gì sau khi bị rò rỉ dữ liệu
 ba-next-step-1 = Thay đổi mật khẩu của bạn thành một mật khẩu mạnh, độc đáo.
 ba-next-step-blurb-1 =
     Mật khẩu mạnh sử dụng kết hợp chữ hoa và chữ thường,
@@ -263,31 +263,31 @@ ba-next-step-3 = Nhận trợ giúp tạo mật khẩu tốt hơn và giữ chú
 ba-next-step-blurb-3 =
     Sử dụng trình quản lý mật khẩu để tạo mật khẩu mạnh, độc đáo. Quản lý mật khẩu lưu trữ an toàn
     tất cả các đăng nhập của bạn để bạn có thể truy cập chúng trên tất cả các thiết bị của bạn.
-faq1 = Tôi không nhận ra công ty hoặc trang web này. Tại sao tôi ở trong vi phạm?
-faq2 = Tại sao phải mất quá lâu để thông báo cho tôi về vi phạm này?
+faq1 = Tôi không nhận ra công ty hoặc trang web này. Tại sao tôi lại nằm trong rò rỉ dữ liệu đó?
+faq2 = Tại sao phải mất rất lâu để thông báo cho tôi về báo cáo rò rỉ này?
 faq3 = Làm cách nào để biết đây là một email hợp pháp từ { -product-name }?
 new-breaches-found =
     { $breachCount ->
-       *[other] ĐÃ TÌM THẤY { $breachCount } VI PHẠM MỚI
+       *[other] ĐÃ TÌM THẤY { $breachCount } RÒ RỈ DỮ LIỆU MỚI
     }
 sign-up-headline-1 = Nhận thông báo liên tục với { -brand-fxa }.
 account-not-required = Không yêu cầu trình duyệt { -brand-name } cho { -brand-fxa }. Bạn có thể nhận thông tin về các dịch vụ { -brand-Mozilla }.
-was-your-info-exposed = Thông tin của bạn có bị lộ trong vi phạm dữ liệu { $breachName } không?
-find-out-if = Tìm hiểu xem nếu dữ liệu của bạn đã bị lộ trong vi phạm này.
-fb-not-comp = Email này không xuất hiện trong vi phạm { $breachName }.
+was-your-info-exposed = Thông tin của bạn có bị lộ trong rò rỉ dữ liệu { $breachName } không?
+find-out-if = Tìm hiểu xem nếu dữ liệu của bạn đã bị lộ trong rò rỉ dữ liệu này.
+fb-not-comp = Email này không xuất hiện trong rò rỉ dữ liệu { $breachName }.
 other-breaches-found =
     { $breachCount ->
-       *[other] Tuy nhiên, nó đã xuất hiện trong { $breachCount } vi phạm khác.
+       *[other] Tuy nhiên, nó đã xuất hiện trong { $breachCount } rò rỉ dữ liệu khác.
     }
-fb-comp-only = Email này đã xuất hiện trong vi phạm { $breachName }.
+fb-comp-only = Email này đã xuất hiện trong rò rỉ dữ liệu { $breachName }.
 fb-comp-and-others =
     { $breachCount ->
-       *[other] Email này xuất hiện trong { $breachCount } vi phạm dữ liệu đã biết, bao gồm { $breachName }.
+       *[other] Email này xuất hiện trong { $breachCount } rò rỉ dữ liệu đã biết, bao gồm { $breachName }.
     }
-no-other-breaches-found = Không có vi phạm khác được tìm thấy từ tìm kiếm cơ bản.
-no-results-blurb = Xin lỗi, vi phạm đó không có trong cơ sở dữ liệu của chúng tôi.
-all-breaches-headline = Tất cả các vi phạm trong { -product-name }
-search-breaches = Tìm kiếm vi phạm
+no-other-breaches-found = Không có rò rỉ dữ liệu khác được tìm thấy từ tìm kiếm cơ bản.
+no-results-blurb = Xin lỗi, vụ rò rỉ đó không có trong cơ sở dữ liệu của chúng tôi.
+all-breaches-headline = Tất cả các rò rỉ trong { -product-name }
+search-breaches = Tìm kiếm rò rỉ dữ liệu
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Hiển thị:
 
@@ -317,20 +317,20 @@ email-addresses-being-monitored =
 # your localization, because it would result in the number showing twice.
 passwords-exposed =
     { $passwords ->
-       *[other] Mật khẩu được phơi bày trên tất cả các vi phạm
+       *[other] Mật khẩu đã bị tiết lộ trên tất cả các rò rỉ dữ liệu
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
     { $breaches ->
-       *[other] Vi phạm dữ liệu đã biết đã tiết lộ thông tin của bạn
+       *[other] Rò rỉ dữ liệu đã biết đã tiết lộ thông tin của bạn
     }
 # Button
-see-additional-breaches = Xem các vi phạm bổ sung
+see-additional-breaches = Xem các rò rỉ dữ liệu bổ sung
 scan-results-known-breaches =
     { $breachCount ->
-       *[other] Email này xuất hiện trong { $breachCount } vi phạm dữ liệu đã biết.
+       *[other] Email này xuất hiện trong { $breachCount } rò rỉ dữ liệu đã biết.
     }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
@@ -339,20 +339,20 @@ results-for = Kết quả cho: { $userEmail }
 other-monitored-emails = Email được giám sát khác
 email-verification-required = Yêu cầu xác minh email
 fxa-primary-email = { -brand-fxa } Email - Chính
-what-is-a-website-breach = Trang web vi phạm là gì?
-website-breach-blurb = Vi phạm dữ liệu trang web xảy ra khi tội phạm mạng ăn cắp, sao chép hoặc tiết lộ thông tin cá nhân từ tài khoản trực tuyến. Nó thường là kết quả của tin tặc tìm thấy một điểm yếu trong bảo mật của trang web. Vi phạm cũng có thể xảy ra khi thông tin tài khoản bị rò rỉ do lỗi kỹ thuật.
+what-is-a-website-breach = Trang web bị rò rỉ là gì?
+website-breach-blurb = Rò rỉ dữ liệu trang web xảy ra khi tội phạm mạng ăn cắp, sao chép hoặc tiết lộ thông tin cá nhân từ tài khoản trực tuyến. Nó thường là kết quả của tin tặc tìm thấy một điểm yếu trong bảo mật của trang web. Rò rỉ dữ liệu cũng có thể xảy ra khi thông tin tài khoản bị rò rỉ do lỗi kỹ thuật.
 security-tips-headline = Mẹo về bảo mật để bảo vệ bạn khỏi tin tặc
 steps-to-protect = Cách thực hiện để bảo vệ danh tính trực tuyến của bạn
 take-further-steps = Thực hiện các bước tiếp theo để bảo vệ danh tính của bạn
-alert-about-new-breaches = Thông báo cho tôi về những vi phạm mới
-see-if-youve-been-part = Hãy xem nếu bạn đã từng là một phần của vi phạm dữ liệu trực tuyến.
-get-ongoing-breach-monitoring = Nhận giám sát các vi phạm liên tục cho nhiều địa chỉ email.
+alert-about-new-breaches = Thông báo cho tôi về những vụ rò rỉ mới
+see-if-youve-been-part = Hãy xem nếu bạn đã từng là một phần của rò rỉ dữ liệu trực tuyến.
+get-ongoing-breach-monitoring = Nhận giám sát các rò rỉ dữ liệu liên tục cho nhiều địa chỉ email.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Kiểm tra
 new-unsub-error = Bạn cần hủy đăng ký một trong những email mà { -product-name } đã gửi.
 other-known-breaches-found =
     { $breachCount ->
-       *[other] Tuy nhiên, nó đã xuất hiện trong { $breachCount } vi phạm đã biết khác.
+       *[other] Tuy nhiên, nó đã xuất hiện trong { $breachCount } rò rỉ dữ liệu đã biết khác.
     }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
@@ -365,7 +365,7 @@ breach-overview-title = Tổng quan
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview-new = Vào lúc { $breachDate }, { $breachTitle } đã vi phạm. Khi vi phạm được phát hiện và xác minh, nó đã được thêm vào cơ sở dữ liệu của chúng tôi trên { $addedDate }.
+breach-overview-new = Vào lúc { $breachDate }, { $breachTitle } đã bị rò rỉ. Khi vụ rò rỉ được phát hiện và xác minh, nó đã được thêm vào cơ sở dữ liệu của chúng tôi trên { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Tùy chỉnh { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
@@ -376,7 +376,7 @@ signed-in-as = Đã đăng nhập với: { $userEmail }
 filter-by = Lọc theo danh mục:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
-to-affected-email = Gửi thông báo vi phạm đến địa chỉ email bị ảnh hưởng
+to-affected-email = Gửi thông báo vụ rò rỉ đến địa chỉ email bị ảnh hưởng
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
 join-firefox = Đây là một cách để bảo vệ sự riêng tư của bạn. Tham gia { -brand-name }.
 # Link title
@@ -411,10 +411,10 @@ manage-all-emails = Quản lý tất cả các địa chỉ email trong { $prefe
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-breach-alert-notifications = Thông báo vi phạm
+breach-alert-notifications = Thông báo rò rỉ dữ liệu
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
-breach-added-label = Vi phạm đã được thêm:
+breach-added-label = Rò rỉ dữ liệu đã được thêm:
 how-hackers-work-desc = Bảo vệ mật khẩu của bạn khỏi tội phạm mạng, vì đó là điều mà họ quan tâm nhất.
 what-to-do-after-breach-desc = Khóa tài khoản của bạn để giữ thông tin của bạn khỏi tay kẻ xấu.
 create-strong-passwords-desc = Làm cho mật khẩu của bạn mạnh mẽ, an toàn và khó đoán.
