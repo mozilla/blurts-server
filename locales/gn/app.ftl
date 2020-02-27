@@ -530,4 +530,12 @@ promo-lockwise-body =
     Eipuru { -brand-lockwise } ehapykueho hag̃ua opaite ne ñe’ẽñemíme. 
     Eike tekorosãme ne mohendaha, pumbyry térã tableta guive.
 promo-lockwise-cta = Ereko { -brand-lockwise }
+promo-fpn-headline = Eguereko ne rendaite ñemihápe
+promo-fpn-body =
+    { -brand-name } ¶
+    { -brand-fpn } oñomi ne rendaite omboyke hag̃ua umi ñanduti renda ¶
+    ha mba’ekuaarã mbyatyha ohechaukáva marandu’i ndive.
+promo-fpn-cta = Ereko { -brand-fpn }
+promo-monitor-headline = Og̃uahẽta kyhyjerã ne marandu oñembyaikuaa vove
+promo-ecosystem-headline = Eikuaáke ore apopyrekuéra
 promo-ecosystem-cta = Ehecha opaite apopyre
