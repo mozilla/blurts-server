@@ -538,24 +538,17 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nytt
-promo-fx-mobile-headline = Sekretess och hastighet på mobilen
-promo-fx-mobile-body = Webbläsaren { -brand-name } är supersnabb, privat som standard och blockerar över 2 000 online-spårare.
-promo-fx-mobile-cta = Hämta { -brand-name } mobil
+mobile-promo-headline = Hämta { -brand-name } till din telefon och surfplatta
+mobile-promo-body = Snabb, privat och säker surfning överallt där du befinner dig. Hitta { -brand-name } i Google Play och App Store.
+mobile-promo-cta = Hämta { -brand-name } till Android och iOS
 promo-lockwise-headline = Ta med dina lösenord överallt
-promo-lockwise-body =
-    Använd { -brand-lockwise } för att hålla reda på alla dina lösenord.  
-    Få åtkomst till dem säkert från din dator, telefon eller surfplatta.
+lockwise-promo-body = Håll koll på dina inloggningar på alla enheter. Få åtkomst till dem säkert från din dator, telefon eller surfplatta.
 promo-lockwise-cta = Hämta { -brand-lockwise }
-promo-fpn-headline = Dölj din riktiga position
-promo-fpn-body =
-    { -brand-name } 
-    { -brand-fpn } döljer din position för att lura webbplatser 
-    och datainsamlare som profilerar dig med annonser.
+fpn-promo-headline = Dölj din position från webbplatser och spårare
+promo-fpn-body = { -brand-fpn } lurar webbplatser och datainsamlare som profilerar dig med annonser genom att maskera din riktiga IP-adress.
 promo-fpn-cta = Hämta { -brand-fpn }
-promo-monitor-headline = Bli varnad nästa gång din information exponeras
-promo-monitor-body =
-    Vill du vet nästa gång du förekommer i ett dataintrång och 
-    vad du ska göra då? Skapa ett { -brand-fx-account }.
-promo-ecosystem-headline = Möt vår familj av produkter
-promo-ecosystem-body = En inloggning. På alla dina enheter. En familj av produkter som respekterar din integritet.
+monitor-promo-headline = Få reda på nya dataintrång
+monitor-promo-body = Bli meddelad nästa gång din personliga information exponeras i ett känt intrång.
+ecosystem-promo-headline = Skydda ditt liv på nätet med integritetsprodukter
+ecosystem-promo-body = Alla produkter från { -brand-name } respekterar vårt löfte om personlig data: Samla in mindre. Förvara det säkert. Inga hemligheter.
 promo-ecosystem-cta = Se alla produkter
