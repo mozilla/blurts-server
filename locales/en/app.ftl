@@ -137,7 +137,7 @@ fxa-what-to-do-blurb-4 =
   on your phone and computer so you don’t have to remember them all.
 
 # Alerts is a noun
-sign-up-for-alerts = Sign up for Alerts
+sign-up-for-alerts = Sign Up for Alerts
 
 # Link title
 frequently-asked-questions = Frequently Asked Questions
@@ -675,29 +675,26 @@ known-data-breaches-resolved =
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = New
 
-promo-fx-mobile-headline = Privacy and speed on mobile
-promo-fx-mobile-body = 
-  The { -brand-name } browser is super fast, private by default, and blocks 2,000+ online trackers.
-promo-fx-mobile-cta = Get { -brand-name } Mobile
+mobile-promo-headline = Bring { -brand-name } to your phone and tablet
+mobile-promo-body = 
+  Fast, private, and safe browsing everywhere you go. Find { -brand-name } in the Google Play and App Store. 
+mobile-promo-cta = Get { -brand-name } on Android and iOS
 
 promo-lockwise-headline = Take your passwords everywhere
-promo-lockwise-body =
-  Use { -brand-lockwise } to keep track of all your passwords. 
-  Access them securely from your computer, phone, or tablet.
+lockwise-promo-body =
+  Keep track of your logins across all devices. Access them securely from your computer, phone, or tablet.
 promo-lockwise-cta = Get { -brand-lockwise }
 
-promo-fpn-headline = Keep your real location under wraps
+fpn-promo-headline = Mask your location from websites and trackers
 promo-fpn-body = { -brand-name } 
-  { -brand-fpn } hides your location to throw off the websites 
-  and data collectors that profile you with ads.
+  { -brand-fpn } throws off the websites and data collectors that profile you with ads by masking your real IP address.
 promo-fpn-cta = Get { -brand-fpn }
 
-promo-monitor-headline = Get alerted the next time your info gets exposed
-promo-monitor-body = 
-  Want to find out the next time you’re in a data breach and 
-  what to do? Create a { -brand-fx-account }.
+monitor-promo-headline = Find out about new data breaches
+monitor-promo-body = 
+  Get notified the next time your personal info gets exposed in a known breach.
 
-promo-ecosystem-headline = Meet our family of products
-promo-ecosystem-body = 
-  One login. All your devices. A family of products that respect your privacy.
+ecosystem-promo-headline = Protect your life online with privacy-first products
+ecosystem-promo-body = 
+  All { -brand-name } products honor our Personal Data Promise: Take less. Keep it safe. No secrets.
 promo-ecosystem-cta = See All Products
