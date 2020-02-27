@@ -186,6 +186,7 @@ avoid-personal-info-blurb = Te uij muajsit ne tunal tinesik, mudirección, wan n
 change-pw = Shikpata mutaketzalis ichtaka
 change-pw-site = Shikpata ne taketzalis ichtaka ipal ini sitioj
 even-for-old = Ipal ne cuejcuentaj palikman, nemi pal tikyankwilia mutaketzalis ichtaka.
+make-new-pw-unique = Shikchiwa ne yankwik taketzalis ichtaka tekenha wan isel
 
 ## Updated error messages
 
