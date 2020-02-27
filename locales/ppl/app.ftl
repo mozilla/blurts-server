@@ -171,6 +171,11 @@ how-fxm-3-blurb =
 wtd-after-website = Tay nemi pal tikchiwa ipan se kaltapanalis ipal información:
 wtd-after-data-agg = Tay nemi pal tikchiwa ipan se kaltapanalis tik ne tasentalilis ipal datoj:
 what-is-data-agg = Tay se tasentalilis ipal datoj?
+what-is-data-agg-blurb =
+    Ne tasentalilis ipal datoj, u tanamakani ipal datoj, kipena ne iinformación tukniwan, 
+    kiana wan kikuilia ujuksé compañíaj. Kisentepewat ini datoj pal kinamaka ujuksé compañiaj 
+    pal kichiwat marketing. Ne kiejekuat ini kaltapanalis anka te weli kichtekiliat 
+    pero ne pijpirataj welit kikwit ini dajdatoj pal tashijshikuat u pal kichiwat se perfil inpal.
 
 ## What to do after data breach tips
 
