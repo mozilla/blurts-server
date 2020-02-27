@@ -516,14 +516,7 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Novo
-promo-fx-mobile-headline = Privacidade e velocidade no celular
-promo-fx-mobile-body = O navegador { -brand-name } é super rápido, privativo por padrão e bloqueia mais de 2000 rastreadores online.
-promo-fx-mobile-cta = Instale o { -brand-name } no celular
 promo-lockwise-headline = Tenha suas senhas em qualquer lugar
-promo-lockwise-body =
-    Use o { -brand-lockwise } para registrar todas as suas senhas.
-    Acesse-as com segurança no seu computador, celular ou tablet.
 promo-lockwise-cta = Instale o { -brand-lockwise }
-promo-fpn-headline = Mantenha sua localização real em sigilo
 promo-fpn-cta = Instale o { -brand-fpn }
-promo-monitor-headline = Receba um alerta na próxima vez que suas informações forem expostas
+promo-ecosystem-cta = Veja todos os produtos
