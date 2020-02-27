@@ -135,11 +135,7 @@ unverified-breach-plural = Kaltapanalis teuk mupepettuk
 spam-list-breach-plural = Listaj ipal kaltapanalis te tiknekit
 what-data = Katiawel información chuchuluj
 sensitive-sites = Tay { -product-name } kichiwa iwan ne sijsitioj ichtaka?
-sensitive-sites-copy =
-    { -product-name } only reveals accounts associated with these 
-    types of breaches after an email address has been verified. This means you’re the 
-    only person who can see if your information was in this breach (unless someone 
-    else has access to your email account).
+sensitive-sites-copy = { -product-name } semaya kineshtia ne cuejcuentaj senhijilpituk iwan ini tipoj ipal kaltapanalis keman se dirección pal correoj mupepettuka. Kineki ina ka maya taja tiweli tikita asu kikaltapanket muinformación (a menos que uksé weli kalaki tik mucuentaj ipal correoj).
 
 ## What to do after data breach tips
 
