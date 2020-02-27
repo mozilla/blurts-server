@@ -159,6 +159,11 @@ how-fxm-1-blurb =
     desde 2007. Ini tatemulis yu-kineshtia kachka muchi ne kaltapanalis ipal datoj, pero tesu 
     yu-kineshtia ne kipiat información ichtaka tupal.
 how-fxm-2-headline = Shiktali mutukay pal metznawatia ipanpa ne kaltapanalis
+how-fxm-2-blurb =
+    Shikchiwa se { -brand-fxa } pal tikpepeta kaltapanalis wijwitz. 
+    Kan tikpepettuk mucorreoj, tiu-tikpia se reportej ipal muchi ne kaltapanalis panuket, 
+    nusan ne kipiat información ichtaka.
+how-fxm-3-headline = Shikpia tanawatilis tik mutajtachialis
 
 ## What to do after data breach tips
 
