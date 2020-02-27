@@ -470,6 +470,7 @@ see-additional-recs = Podívejte se na další doporučení
 
 ##
 
+progress-intro-subhead = Nově ve { -product-name(case: "loc") }: Označení úniků jako vyřešené
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
