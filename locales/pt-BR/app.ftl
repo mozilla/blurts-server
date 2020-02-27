@@ -516,11 +516,20 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Novo
+mobile-promo-headline = Leve o { -brand-name } para o seu celular e tablet
+mobile-promo-body = Navegação rápida, privativa e segura em qualquer lugar que você vá. Encontre o { -brand-name } no Google Play e na App Store.
+mobile-promo-cta = Instale o { -brand-name } no Android e iOS
 promo-lockwise-headline = Tenha suas senhas em qualquer lugar
+lockwise-promo-body = Acompanhe suas contas em todos os dispositivos. Acesse-as com segurança no seu computador, celular ou tablet.
 promo-lockwise-cta = Instale o { -brand-lockwise }
+fpn-promo-headline = Oculte sua localização de sites e rastreadores
 promo-fpn-body =
     { -brand-name } 
     { -brand-fpn } oculta sua localização para confundir sites 
     e coletores de dados que traçam seu perfil usando anúncios.
 promo-fpn-cta = Instale o { -brand-fpn }
+monitor-promo-headline = Descubra novos vazamentos de dados
+monitor-promo-body = Seja notificado na próxima vez que suas informações pessoais forem expostas em um vazamento conhecido.
+ecosystem-promo-headline = Proteja sua vida online com produtos que põem sua privacidade em primeiro lugar
+ecosystem-promo-body = Todos os produtos { -brand-name } honram nossa promessa de como lidar com dados pessoais: Coletar pouco. Manter seguro. Sem segredos.
 promo-ecosystem-cta = Veja todos os produtos
