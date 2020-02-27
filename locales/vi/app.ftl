@@ -362,10 +362,6 @@ email-addresses-title = Địa chỉ email
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Tổng quan
-# This is a standardized breach overview blurb that appears on all breach detail pages.
-# $breachTitle is the name of the breached company or website.
-# $breachDate and $addedDate are calendar dates.
-breach-overview-new = Vào lúc { $breachDate }, { $breachTitle } đã bị rò rỉ. Khi vụ rò rỉ được phát hiện và xác minh, nó đã được thêm vào cơ sở dữ liệu của chúng tôi trên { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Tùy chỉnh { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
