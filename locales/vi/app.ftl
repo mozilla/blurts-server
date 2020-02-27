@@ -424,31 +424,31 @@ take-further-steps-desc = Tìm hiểu làm thế nào để giảm thiểu rủi
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Các thay đổi đã được lưu!
 # Section headline
-rec-section-headline = Nên làm gì với vi phạm này
+rec-section-headline = Nên làm gì với vụ rò rỉ này
 rec-section-subhead = Chúng tôi khuyên bạn nên thực hiện các bước này để giữ thông tin cá nhân của bạn an toàn và bảo vệ danh tính kỹ thuật số của bạn.
 # Section headline
 rec-section-headline-no-pw = Phải làm gì để bảo vệ thông tin cá nhân của bạn
-rec-section-subhead-no-pw = Mặc dù mật khẩu không lộ ra trong vi phạm này, vẫn có những bước bạn có thể thực hiện để bảo vệ thông tin cá nhân của mình tốt hơn.
+rec-section-subhead-no-pw = Mặc dù mật khẩu không lộ ra trong rò rỉ dữ liệu này, vẫn có những bước bạn có thể thực hiện để bảo vệ thông tin cá nhân của mình tốt hơn.
 # Button
 see-additional-recs = Xem các khuyến nghị bổ sung
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
-resolve-top-notification = { $affectedEmail } đã xuất hiện trong vi phạm này. <a>Phải làm gì tiếp theo</a>
+resolve-top-notification = { $affectedEmail } đã xuất hiện trong vụ rò rỉ này. <a>Phải làm gì tiếp theo</a>
 resolve-top-notification-plural =
     { $numAffectedEmails ->
-       *[other] { $numAffectedEmails } địa chỉ email của bạn đã xuất hiện vi phạm này. <a>Phải làm gì tiếp theo</a>
+       *[other] { $numAffectedEmails } địa chỉ email của bạn đã xuất hiện trong vụ rò rỉ này. <a>Phải làm gì tiếp theo</a>
     }
 
 ##
 
-marking-this-subhead = Đánh dấu vi phạm này là đã giải quyết
+marking-this-subhead = Đánh dấu vụ rò rỉ này là đã giải quyết
 # This string contains nested markup that is later used to style the text inside of it.
 # Please do not modify or remove "<span>" and "</span>".
 marking-this-body =
-    <span>Khi bạn đã thực hiện các bước bạn có thể giải quyết vi phạm này</span>,
-    bạn có thể đánh dấu nó là giải quyết. Bạn vẫn có thể truy cập chi tiết về vi phạm 
+    <span>Khi bạn đã thực hiện các bước bạn có thể giải quyết xong vụ rò rỉ này</span>,
+    bạn có thể đánh dấu nó là giải quyết. Bạn vẫn có thể truy cập chi tiết về rò rỉ dữ liệu 
     từ bảng điều khiển của bạn bất cứ lúc nào.
 mark-as-resolve-button = Đánh dấu là đã giải quyết
 marked-as-resolved-label = Đã đánh dấu là đã giải quyết
@@ -474,7 +474,7 @@ num-resolved =
     { $numResolvedBreaches ->
        *[other] Đã giải quyết { $numResolvedBreaches } mục
     }
-progress-intro-subhead = Tính năng mới trong { -product-name }: Đánh dấu vi phạm là đã giải quyết
+progress-intro-subhead = Tính năng mới trong { -product-name }: Đánh dấu rò rỉ dữ liệu là đã giải quyết
 progress-status =
     { $numTotalBreaches ->
        *[other] { $numResolvedBreaches } trong số { $numTotalBreaches } vụ rò rỉ đã được đánh dấu là giải quyết
@@ -495,7 +495,7 @@ progress-complete-message =
 
 ##
 
-resolve-this-breach-link = Giải quyết vi phạm này
+resolve-this-breach-link = Giải quyết rò rỉ dữ liệu này
 # This string appears in resolved breach cards and is followed by 
 # the date the user marked the breach as resolved.
 marked-resolved = Đã đánh dấu giải quyết:
@@ -503,11 +503,11 @@ hide-resolved-button = Ẩn mục đã giải quyết
 show-resolved-button = Hiển thị mục đã giải quyết
 unresolved-passwords-exposed =
     { $numPasswords ->
-       *[other] Mật khẩu bị lộ trong các vi phạm chưa được giải quyết
+       *[other] Mật khẩu bị lộ trong các rò rỉ dữ liệu chưa được giải quyết
     }
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
-       *[other] Vi phạm dữ liệu đã biết được đánh dấu là đã giải quyết
+       *[other] Rò rỉ dữ liệu đã biết được đánh dấu là đã giải quyết
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Mới
