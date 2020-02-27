@@ -158,6 +158,7 @@ how-fxm-1-blurb =
     Shiktemu ne mudirección ipal correoj tik ne kaltapanalis ipal datoj públicoj 
     desde 2007. Ini tatemulis yu-kineshtia kachka muchi ne kaltapanalis ipal datoj, pero tesu 
     yu-kineshtia ne kipiat información ichtaka tupal.
+how-fxm-2-headline = Shiktali mutukay pal metznawatia ipanpa ne kaltapanalis
 
 ## What to do after data breach tips
 
