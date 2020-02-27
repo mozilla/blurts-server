@@ -12,6 +12,7 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-fx-account = Tài khoản Firefox
 
 ##
 
@@ -362,6 +363,10 @@ email-addresses-title = Địa chỉ email
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Tổng quan
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = Vào lúc { $breachDate }, { $breachTitle } đã bị rò rỉ. Khi vụ rò rỉ được phát hiện và xác minh, nó đã được thêm vào cơ sở dữ liệu của chúng tôi trên { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Tùy chỉnh { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
@@ -510,3 +515,8 @@ new-breach = Mới
 promo-fx-mobile-headline = Quyền riêng tư và tốc độ trên thiết bị di động
 promo-fx-mobile-body = Trình duyệt { -brand-name } siêu nhanh, riêng tư theo mặc định và chặn hơn 2.000 trình theo dõi trực tuyến.
 promo-fx-mobile-cta = Tải xuống { -brand-name } dành cho di động
+promo-lockwise-headline = Mang mật khẩu của bạn đi khắp mọi nơi
+promo-lockwise-body =
+    Sử dụng { -brand-lockwise } để theo dõi tất cả mật khẩu của bạn. 
+    Truy cập chúng an toàn từ máy tính, điện thoại hoặc máy tính bảng của bạn.
+promo-lockwise-cta = Tải { -brand-lockwise }
