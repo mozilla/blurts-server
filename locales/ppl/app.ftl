@@ -134,6 +134,12 @@ data-aggregator-breach-plural = Kaltapanalis tik ne tasentalilis ipal datos
 unverified-breach-plural = Kaltapanalis teuk mupepettuk
 spam-list-breach-plural = Listaj ipal kaltapanalis te tiknekit
 what-data = Katiawel información chuchuluj
+sensitive-sites = Tay { -product-name } kichiwa iwan ne sijsitioj ichtaka?
+sensitive-sites-copy =
+    { -product-name } only reveals accounts associated with these 
+    types of breaches after an email address has been verified. This means you’re the 
+    only person who can see if your information was in this breach (unless someone 
+    else has access to your email account).
 
 ## What to do after data breach tips
 
