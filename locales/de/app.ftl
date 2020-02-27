@@ -15,6 +15,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox-Konto
 terms-and-privacy = Nutzungsbedingungen und Datenschutzerklärung
 GitHub-link-title = GitHub
 error-scan-page-token = Du hast versucht, zu viele E-Mail-Adressen in kurzer Zeit zu überprüfen. Aus Sicherheitsgründen haben wir dich vorübergehend für neue Suchanfragen gesperrt. Du kannst es später erneut versuchen.
@@ -483,3 +486,21 @@ new-breach = Neu
 promo-fx-mobile-headline = Datenschutz und Geschwindigkeit auf Mobilgeräten
 promo-fx-mobile-body = Der { -brand-name }-Browser ist superschnell, schützt standardmäßig die Privatsphäre und blockiert über 2&thinsp;000 Online-Tracker.
 promo-fx-mobile-cta = Holen Sie sich { -brand-name } Mobile
+promo-lockwise-headline = Nehmen Sie Ihre Passwörter überall mit.
+promo-lockwise-body =
+    Mit { -brand-lockwise } können Sie Ihre Passwörter ordnen.
+    Von Ihrem Computer, Handy oder Tablet können Sie dann sicher darauf zugreifen
+promo-lockwise-cta = Holen Sie sich { -brand-lockwise }
+promo-fpn-headline = Verbergen Sie Ihren Standort.
+promo-fpn-body =
+    { -brand-name }
+    { -brand-fpn } verbirgt Ihren Standort, um den Websites und Datensammlern,
+    die Werbung auf Sie anpassen, die Arbeit zu erschweren.
+promo-fpn-cta = Holen Sie sich { -brand-fpn }
+promo-monitor-headline = Erhalten Sie Benachrichtigungen, wenn Ihre Daten geleakt werden.
+promo-monitor-body =
+    Möchten Sie wissen, wenn Sie von einem Datenleck betroffen sind und
+    was Sie dann tun können? Erstellen Sie ein { -brand-fx-account }.
+promo-ecosystem-headline = Das sind die Produkte der Firefox-Familie
+promo-ecosystem-body = Ein Login. Auf all Ihren Geräten. Eine ganze Reihe an Produkten, die Ihre <strong>Privatsphäre</strong> respektieren.
+promo-ecosystem-cta = Alle Produkte ansehen
