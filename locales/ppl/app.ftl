@@ -178,6 +178,7 @@ what-is-data-agg-blurb =
     pero ne pijpirataj welit kikwit ini dajdatoj pal tashijshikuat u pal kichiwat se perfil inpal.
 protect-your-privacy = Shikpalewi ne tay mupal ichtaka.
 no-pw-to-change = Ika tesu se kaltapanalis, te nemi pal mupata ne taketzalis ichtaka.
+avoid-personal-info = Maka shiktali información mupal tik ne taketzalis ichtaka
 
 ## What to do after data breach tips
 
