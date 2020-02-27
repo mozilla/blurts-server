@@ -456,6 +456,7 @@ marked-as-resolved-label = Đã đánh dấu là đã giải quyết
 undo-button = Hoàn tác
 confirmation-1-subhead = Tốt! Bạn đã giải quyết vụ rò rỉ đầu tiên của bạn.
 confirmation-1-body = Giữ đà. Kiểm tra bảng điều khiển của bạn để xem nếu có nhiều việc phải làm.
+confirmation-2-body = Bạn đang thực hiện các bước quan trọng để bảo vệ tài khoản trực tuyến của bạn.
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Bạn muốn mật khẩu của bạn mạnh mẽ, khó đoán và duy nhất? <a>Tìm hiểu</a>
@@ -520,3 +521,15 @@ promo-lockwise-body =
     Sử dụng { -brand-lockwise } để theo dõi tất cả mật khẩu của bạn. 
     Truy cập chúng an toàn từ máy tính, điện thoại hoặc máy tính bảng của bạn.
 promo-lockwise-cta = Tải { -brand-lockwise }
+promo-fpn-body =
+    { -brand-name } 
+    { -brand-fpn } ẩn vị trí của bạn để loại bỏ các trang web 
+    và trình thu thập dữ liệu hồ sơ bạn cho quảng cáo.
+promo-fpn-cta = Tải { -brand-fpn }
+promo-monitor-headline = Nhận cảnh báo vào lần tiếp theo khi thông tin của bạn bị lộ
+promo-monitor-body =
+    Muốn tìm hiểu lần sau khi bạn bị rò rỉ dữ liệu và 
+    phải làm gì? Tạo một tài khoản { -brand-fx-account }.
+promo-ecosystem-headline = Hãy xem các sản phẩm của chúng tôi
+promo-ecosystem-body = Một lần đăng nhập. Tất cả các thiết bị của bạn. Một nhóm sản phẩm tôn trọng quyền riêng tư.
+promo-ecosystem-cta = Xem tất cả sản phẩm
