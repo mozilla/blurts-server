@@ -15,6 +15,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox mba’ete
 terms-and-privacy = Mboguatarã ha ñemigua
 GitHub-link-title = GitHub
 error-scan-page-token = Eñeha’ãkuri emoha’ãnda heta ñanduti veve kundaharape ndahetái árape. Tekorosã rupi, rojoko nde jeheka sapy’ami. Ikatu eha’ãjey uperire.
@@ -522,3 +525,9 @@ new-breach = Pyahu
 promo-fx-mobile-headline = Ñemigua ha pya’ekue pumbyrýpe
 promo-fx-mobile-body = Ko kundahára { -brand-name } ipya’eterei, iñemi ypykue ha ojoko hetave 2,000 tapykuehoha ñandutípe.
 promo-fx-mobile-cta = Ereko { -brand-name } Pumbyry
+promo-lockwise-headline = Eraha ne ñe’ẽñemi opa hendápe
+promo-lockwise-body =
+    Eipuru { -brand-lockwise } ehapykueho hag̃ua opaite ne ñe’ẽñemíme. 
+    Eike tekorosãme ne mohendaha, pumbyry térã tableta guive.
+promo-lockwise-cta = Ereko { -brand-lockwise }
+promo-ecosystem-cta = Ehecha opaite apopyre
