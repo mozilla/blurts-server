@@ -137,6 +137,15 @@ what-data = Katiawel información chuchuluj
 sensitive-sites = Tay { -product-name } kichiwa iwan ne sijsitioj ichtaka?
 sensitive-sites-copy = { -product-name } semaya kineshtia ne cuejcuentaj senhijilpituk iwan ini tipoj ipal kaltapanalis keman se dirección pal correoj mupepettuka. Kineki ina ka maya taja tiweli tikita asu kikaltapanket muinformación (a menos que uksé weli kalaki tik mucuentaj ipal correoj).
 delayed-reporting-headline = Taika tiishtunki titanawatia ipanpa ini kaltapanalis?
+delayed-reporting-copy =
+    Weli ishtuna sejsé metzti u shiwit achtu ma ne crejcredencial mukishtijtuk
+    tik ne kaltapanialis ipal datoj nesikan tik ne Matapan kunyua. Musentaliat ne kaltapanalis tik tubasej ipal datoj kan muajsitiwit wan mupepettiwit.
+about-fxm-headline = Ipanpa { -product-name }
+about-fxm-blurb =
+    { -product-name } tanawatia asu mucuejcuentaj tik ne matapan nemiket tik se  
+    kaltapanalis. Shikmati asu tinemik tik se kaltapanalis, shikita ne tanawatalis ipanpa yajyankwik kaltapanalis, 
+    wan shikpalewi mucuejcuentaj tik ne matapan.  
+    { -brand-Mozilla } metzmaka { -product-name }
 
 ## What to do after data breach tips
 
