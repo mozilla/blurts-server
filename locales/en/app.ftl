@@ -12,8 +12,11 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
--brand-fx-account = Firefox account
 ##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox account
 
 terms-and-privacy = Terms & Privacy
 
