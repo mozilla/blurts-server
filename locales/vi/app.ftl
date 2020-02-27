@@ -79,7 +79,7 @@ fxa-pwt-summary-4 =
     Các trình quản lý mật khẩu như 1Password, LastPass, Dashlane và Bitwarden lưu trữ của bạn
     mật khẩu và điền chúng vào các trang web cho bạn. Họ thậm chí còn giúp bạn tạo mật khẩu mạnh.
 fxa-pwt-summary-6 =
-    Vi phạm dữ liệu đang gia tăng. Nếu thông tin cá nhân của bạn xuất hiện trong một vi phạm dữ liệu mới,
+    Các vụ rò rỉ dữ liệu đang gia tăng. Nếu thông tin cá nhân của bạn xuất hiện trong một rò rỉ dữ liệu mới,
     { -product-name } gửi cho bạn một cảnh báo - để bạn có thể thực hiện hành động và bảo vệ tài khoản của mình.
 fxa-what-to-do-blurb-1 =
     Nếu bạn không thể đăng nhập, hãy liên hệ với trang web để hỏi cách cập nhật.
@@ -92,7 +92,7 @@ fxa-wtd-blurb-2 =
     Tạo một mật khẩu khác nhau và duy nhất cho mọi tài khoản, đặc biệt là cho tài khoản ngân hàng của bạn,
     email và các trang web khác nơi bạn lưu thông tin cá nhân.
 fxa-what-to-do-blurb-3 =
-    Hầu hết các vi phạm chỉ để lộ email và mật khẩu, nhưng một số bao gồm thông tin tài chính nhạy cảm.
+    Hầu hết các rò rỉ dữ liệu chỉ để lộ email và mật khẩu, nhưng một số bao gồm thông tin tài chính nhạy cảm.
     Nếu tài khoản ngân hàng hoặc số thẻ tín dụng của bạn bị lộ, hãy báo cho ngân hàng của bạn biết có thể xảy ra gian lận.
     Giám sát báo cáo cho các khoản phí mà bạn không nhận ra.
 fxa-what-to-do-subhead-4 = Nhận trợ giúp ghi nhớ tất cả mật khẩu của bạn và giữ chúng an toàn.
@@ -110,37 +110,37 @@ preferences = Tùy chỉnh
 # Link title
 home = Trang chủ
 # Link title
-breaches = Vi phạm
+breaches = Rò rỉ dữ liệu
 # Link title
 security-tips = Mẹo về bảo mật
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Mở điều hướng { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
-latest-breach = VI PHẠM MỚI NHẤT ĐƯỢC THÊM
+latest-breach = RÒ RỈ DỮ LIỆU MỚI NHẤT ĐƯỢC THÊM
 # Link title
-more-about-this-breach = Thông tin thêm về vi phạm này
+more-about-this-breach = Thông tin thêm về rò rỉ này
 take-control = Lấy lại quyền kiểm soát dữ liệu cá nhân của bạn.
 cant-stop-hackers = Bạn không thể ngăn chặn tin tặc đánh cắp. Nhưng bạn có thể tránh những thói quen xấu khiến công việc của họ trở nên khó khăn hơn.
 read-more-tips = Đọc thêm về mẹo bảo mật
 how-hackers-work = Hiểu cách thức hoạt động của tin tặc
-monitor-your-online-accounts = Đăng ký để theo dõi vi phạm với { -brand-fxa }
-stay-alert = Cảnh giác với những vi phạm mới
-if-your-info = Nếu thông tin của bạn xuất hiện trong một vi phạm dữ liệu mới, chúng tôi sẽ gửi cho bạn một thông báo.
-search-all-emails = Tìm kiếm tất cả các địa chỉ email của bạn có trong vi phạm và nhận thông báo về các mối đe dọa mới.
+monitor-your-online-accounts = Đăng ký để theo dõi rò rỉ dữ liệu với { -brand-fxa }
+stay-alert = Cảnh giác với những rò rỉ mới
+if-your-info = Nếu thông tin của bạn xuất hiện trong một rò rỉ dữ liệu mới, chúng tôi sẽ gửi cho bạn một thông báo.
+search-all-emails = Tìm kiếm tất cả các địa chỉ email của bạn có trong rò rỉ dữ liệu và nhận thông báo về các mối đe dọa mới.
 monitor-several-emails = Giám sát một số email
 take-action = Hãy hành động để bảo vệ tài khoản của bạn
 keep-your-data-safe = Tìm hiểu những gì bạn cần làm để giữ an toàn cho dữ liệu của bạn khỏi tội phạm mạng.
-website-breach = Trang web vi phạm
-sensitive-breach = Trang web vi phạm nhạy cảm
-data-aggregator-breach = Vi phạm tập hợp dữ liệu
-unverified-breach = Vi phạm chưa được xác minh
-spam-list-breach = Vi phạm danh sách thư rác
-website-breach-plural = Vi phạm trang web
-sensitive-breach-plural = Vi phạm nhạy cảm
-data-aggregator-breach-plural = Vi phạm tập hợp dữ liệu
-unverified-breach-plural = Vi phạm chưa được xác minh
-spam-list-breach-plural = Vi phạm danh sách thư rác
+website-breach = Trang web rò rỉ dữ liệu
+sensitive-breach = Trang web rò rỉ dữ liệu nhạy cảm
+data-aggregator-breach = Rò rỉ tập hợp dữ liệu
+unverified-breach = Rò rỉ chưa được xác minh
+spam-list-breach = Rò rỉ danh sách thư rác
+website-breach-plural = Rò rỉ trang web
+sensitive-breach-plural = Rò rỉ nhạy cảm
+data-aggregator-breach-plural = Rò rỉ tập hợp dữ liệu
+unverified-breach-plural = Rò rỉ chưa được xác minh
+spam-list-breach-plural = Rò rỉ danh sách thư rác
 what-data = Dữ liệu nào đã bị xâm phạm:
 sensitive-sites = Làm thế nào để { -product-name } xử lý các trang web nhạy cảm?
 sensitive-sites-copy =
