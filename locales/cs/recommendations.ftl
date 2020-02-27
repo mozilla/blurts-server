@@ -11,7 +11,7 @@ rec-pw-1-subhead = Změňte si své heslo
 rec-pw-1-cta = Změňte si heslo na tomto serveru
 rec-pw-1 =
     Používejte unikátní hesla, vždy různá pro každý server.
-    Dobrý způsobem je třeba kombinace více zcela nesouvisejících slov.
+    Dobrým způsobem je třeba kombinace více zcela nesouvisejících slov.
 # Recommendation subhead
 rec-pw-2-subhead = Aktualizujte přihlašovací údaje všude, kde jste používali stejné heslo
 # Link title
