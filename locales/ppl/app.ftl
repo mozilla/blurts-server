@@ -184,6 +184,8 @@ avoid-personal-info-blurb = Te uij muajsit ne tunal tinesik, mudirección, wan n
 ## What to do after data breach tips
 
 change-pw = Shikpata mutaketzalis ichtaka
+change-pw-site = Shikpata ne taketzalis ichtaka ipal ini sitioj
+even-for-old = Ipal ne cuejcuentaj palikman, nemi pal tikyankwilia mutaketzalis ichtaka.
 
 ## Updated error messages
 
