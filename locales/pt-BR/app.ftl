@@ -518,5 +518,9 @@ known-data-breaches-resolved =
 new-breach = Novo
 promo-lockwise-headline = Tenha suas senhas em qualquer lugar
 promo-lockwise-cta = Instale o { -brand-lockwise }
+promo-fpn-body =
+    { -brand-name } 
+    { -brand-fpn } oculta sua localização para confundir sites 
+    e coletores de dados que traçam seu perfil usando anúncios.
 promo-fpn-cta = Instale o { -brand-fpn }
 promo-ecosystem-cta = Veja todos os produtos
