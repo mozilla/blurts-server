@@ -176,6 +176,7 @@ what-is-data-agg-blurb =
     kiana wan kikuilia ujuksé compañíaj. Kisentepewat ini datoj pal kinamaka ujuksé compañiaj 
     pal kichiwat marketing. Ne kiejekuat ini kaltapanalis anka te weli kichtekiliat 
     pero ne pijpirataj welit kikwit ini dajdatoj pal tashijshikuat u pal kichiwat se perfil inpal.
+protect-your-privacy = Shikpalewi ne tay mupal ichtaka.
 
 ## What to do after data breach tips
 
