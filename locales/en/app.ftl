@@ -686,7 +686,7 @@ lockwise-promo-body =
 promo-lockwise-cta = Get { -brand-lockwise }
 
 fpn-promo-headline = Mask your location from websites and trackers
-promo-fpn-body = { -brand-name } 
+promo-fpn-body = 
   { -brand-fpn } throws off the websites and data collectors that profile you with ads by masking your real IP address.
 promo-fpn-cta = Get { -brand-fpn }
 
