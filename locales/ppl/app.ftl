@@ -153,6 +153,7 @@ fxm-warns-you =
     nesi tik uksé yankwik kaltapanalis.
 # How Firefox Monitor works
 how-fxm-works = Ken { -product-name } tekiti
+how-fxm-1-headline = Shiktemu se chupi
 
 ## What to do after data breach tips
 
