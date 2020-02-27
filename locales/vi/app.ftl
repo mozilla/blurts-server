@@ -145,49 +145,49 @@ what-data = Dữ liệu nào đã bị xâm phạm:
 sensitive-sites = Làm thế nào để { -product-name } xử lý các trang web nhạy cảm?
 sensitive-sites-copy =
     { -product-name } chỉ tiết lộ các tài khoản được liên kết với những
-    các loại vi phạm sau khi một địa chỉ email đã được xác minh. Điều này có nghĩa là
-    chỉ bạn có thể xem thông tin của bạn có vi phạm hay không (trừ khi có ai đó
+    các loại rò rỉ sau khi một địa chỉ email đã được xác minh. Điều này có nghĩa là
+    chỉ bạn có thể xem thông tin của bạn có bị rò rỉ hay không (trừ khi có ai đó
     có quyền truy cập vào tài khoản email của bạn.)
-delayed-reporting-headline = Tại sao phải mất quá lâu để báo cáo vi phạm này?
+delayed-reporting-headline = Tại sao phải mất rất lâu để báo cáo rò rỉ này?
 delayed-reporting-copy =
-    Đôi khi có thể mất vài tháng hoặc nhiều năm để thông tin đăng nhập trong một
-    vi phạm dữ liệu để xuất hiện trên web tối. Vi phạm sẽ được thêm vào cơ sở
+    Đôi khi có thể mất vài tháng hoặc vài năm để thông tin đăng nhập trong một
+    rò rỉ dữ liệu để xuất hiện trên dark web. Dữ liệu rò rỉ sẽ được thêm vào cơ sở
     dữ liệu của chúng tôi ngay khi chúng được phát hiện và xác minh.
 about-fxm-headline = Giới thiệu về { -product-name }
 about-fxm-blurb =
-    { -product-name } cảnh báo nếu tài khoản trực tuyến của bạn có liên quan đến vi phạm
-    dữ liệu. Tìm hiểu xem bạn đã vi phạm dữ liệu chưa, nhận thông báo về các vi phạm mới,
+    { -product-name } cảnh báo nếu tài khoản trực tuyến của bạn có liên quan đến rò rỉ 
+    dữ liệu. Tìm hiểu xem bạn đã bị rò rỉ dữ liệu chưa, nhận thông báo về các rò rỉ mới,
     và thực hiện các bước để bảo vệ tài khoản trực tuyến của bạn. { -product-name } được
     cung cấp bởi { -brand-Mozilla }.
 fxm-warns-you =
     { -product-name } cảnh báo bạn nếu địa chỉ email của bạn bị lộ trong một
-    vi phạm dữ liệu trực tuyến. Xem thông tin của bạn đã được tiết lộ, tìm hiểu
+    rò rỉ dữ liệu trực tuyến. Nếu thông tin của bạn đã bị tiết lộ, tìm hiểu
     làm thế nào để bảo vệ tốt hơn các tài khoản trực tuyến của bạn và được
-    cảnh báo nếu địa chỉ email của bạn xuất hiện trong một vi phạm mới.
+    cảnh báo nếu địa chỉ email của bạn xuất hiện trong rò rỉ dữ liệu mới.
 # How Firefox Monitor works
 how-fxm-works = Cách { -product-name } hoạt động
 how-fxm-1-headline = Tiến hành tìm kiếm cơ bản
 how-fxm-1-blurb =
-    Tìm kiếm địa chỉ email của bạn trong các vi phạm dữ liệu công khai trở lại
-    năm 2007. Tìm kiếm cơ bản này sẽ hiển thị hầu hết các vi phạm dữ liệu,
+    Tìm kiếm địa chỉ email của bạn trong các rò rỉ dữ liệu công khai từ năm 2007.
+    Tìm kiếm cơ bản này sẽ hiển thị hầu hết các rò rỉ dữ liệu,
     nhưng không phải là các địa chỉ có chứa thông tin cá nhân nhạy cảm.
-how-fxm-2-headline = Đăng ký giám sát vi phạm
+how-fxm-2-headline = Đăng ký giám sát vụ rò rỉ
 how-fxm-2-blurb =
-    Tạo { -brand-fxa } để theo dõi email của bạn đối với các vi phạm đang diễn ra.
+    Tạo { -brand-fxa } để theo dõi email của bạn đối với các rò rỉ đang diễn ra.
     Sau khi bạn xác minh email của mình, bạn cũng sẽ nhận được báo cáo đầy đủ
-    về các vi phạm trong quá khứ bao gồm các vi phạm nhạy cảm.
+    về các rò rỉ dữ liệu trong quá khứ bao gồm các rò rỉ dữ liệu nhạy cảm.
 how-fxm-3-headline = Nhận thông báo trong trình duyệt của bạn
 how-fxm-3-blurb =
-    Nếu bạn sử dụng { -brand-name }, bạn sẽ nhận được thông báo nếu bạn
-    truy cập vào trang web mà bị vi phạm. Tìm ra ngay lập tức nếu bạn đã
-    vi phạm và những gì bạn có thể làm về nó.
-wtd-after-website = Phải làm gì sau khi phát hiện vi phạm trang web
-wtd-after-data-agg = Phải làm gì sau khi phát hiện vi phạm tổng hợp dữ liệu
+    Nếu bạn sử dụng { -brand-name }, bạn sẽ nhận được thông báo nếu
+    bạn truy cập vào trang web mà bị rò rỉ dữ liệu. Tìm ra ngay lập tức
+    nếu bạn đã bị rò rỉ dữ liệu và những gì bạn có thể làm về nó.
+wtd-after-website = Phải làm gì sau khi phát hiện trang web bị rò rỉ
+wtd-after-data-agg = Phải làm gì sau khi phát hiện một tổng hợp dữ liệu bị rò rỉ
 what-is-data-agg = Tập hợp dữ liệu là gì?
 what-is-data-agg-blurb =
     Tập hợp dữ liệu hoặc môi giới dữ liệu, thu thập thông tin từ hồ sơ công chúng và mua
     nó từ các công ty khác. Họ biên dịch dữ liệu này để bán cho các công ty cho mục đích
-    tiếp thị. Nạn nhân của những vi phạm này ít có khả năng gặp phải vấn đề tài chính
+    tiếp thị. Nạn nhân của những vụ rò rỉ này ít có khả năng gặp phải vấn đề tài chính
     lừa đảo, nhưng tin tặc có thể sử dụng dữ liệu này để mạo danh hồ sơ.
 protect-your-privacy = Bảo vệ quyền riêng tư trực tuyến của bạn
 no-pw-to-change = Không giống như vi phạm trang web, không có mật khẩu để thay đổi.
