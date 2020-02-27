@@ -146,6 +146,13 @@ about-fxm-blurb =
     kaltapanalis. Shikmati asu tinemik tik se kaltapanalis, shikita ne tanawatalis ipanpa yajyankwik kaltapanalis, 
     wan shikpalewi mucuejcuentaj tik ne matapan.  
     { -brand-Mozilla } metzmaka { -product-name }
+fxm-warns-you =
+    { -product-name } metznawatia asu mudirección ipal correoj mutapujtuk 
+    tik se kaltapanalis ipal datoj tik ne matapan. Shikita asu muinformación mutapujtuk, shikmati ken 
+    tiweli tikpalewia ukchupi yek mucuejcuentaj tik ne matapan, wan shikwi tanawatilis asu mudirección ipal correoj 
+    nesi tik uksé yankwik kaltapanalis.
+# How Firefox Monitor works
+how-fxm-works = Ken { -product-name } tekiti
 
 ## What to do after data breach tips
 
