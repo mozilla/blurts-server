@@ -19,7 +19,7 @@ rec-pw-2-subhead = Cập nhật thông tin đăng nhập khác bằng cùng mộ
 # Link title
 rec-pw-2-cta-fx = Xem thông tin đăng nhập trong { -brand-name }
 rec-pw-2 =
-    Sử dụng lại mật khẩu biến một vi phạm dữ liệu thành nhiều. Bây giờ mật khẩu này 
+    Sử dụng lại mật khẩu biến một rò rỉ dữ liệu thành nhiều hơn. Bây giờ mật khẩu này 
     đã được sử dụng, tin tặc có thể sử dụng nó để vào các tài khoản khác.
 # Recommendation subhead
 rec-pw-3-subhead = Sử dụng trình quản lý mật khẩu để lấy mật khẩu của bạn ở mọi nơi
@@ -66,7 +66,7 @@ rec-hist-pw-subhead = Tránh sử dụng lại mật khẩu
 rec-hist-pw-cta-fx = Xem thông tin đăng nhập trong { -brand-name }
 rec-hist-pw =
     Sử dụng mật khẩu duy nhất, mạnh mẽ cho mọi tài khoản. Nếu một mật khẩu 
-    bị lộ trong một vi phạm dữ liệu, bạn sẽ chỉ cần cập nhật một lần đăng nhập đó.
+    bị lộ trong một vụ rò rỉ dữ liệu, bạn sẽ chỉ cần cập nhật một lần đăng nhập đó.
 # Recommendation subhead
 rec-sec-qa-subhead = Tạo câu trả lời độc đáo cho câu hỏi bảo mật
 rec-sec-qa =

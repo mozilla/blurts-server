@@ -22,33 +22,31 @@ email-footer-blurb =
 email-verify-footer-copy =
     Bạn nhận được email này vì bạn đã đăng ký thông báo { -product-name }.
     Đây là một email tự động. Để được hỗ trợ, hãy truy cập { $faqLink }.
-# Button text that takes the user to their signed in user dashboard.
-view-my-dashboard-cta = Xem bảng điều khiển của tôi
 # Button text
 verify-email-cta = Xác minh email
 # Button text
-see-all-breaches = Xem tất cả các vi phạm
+see-all-breaches = Xem tất cả các rò rỉ
 # Headline of verification email
 email-link-expires = Liên kết này hết hạn sau 24 giờ
-email-verify-blurb = Xác minh email của bạn để thêm nó vào { -product-name } và đăng ký thông báo vi phạm.
+email-verify-blurb = Xác minh email của bạn để thêm nó vào { -product-name } và đăng ký thông báo rò rỉ.
 # Email headline
-email-found-breaches-hl = Đây là bản tóm tắt của bạn về các vi phạm dữ liệu trong quá khứ
+email-found-breaches-hl = Đây là bản tóm tắt của bạn về các rò rỉ dữ liệu trong quá khứ
 # Email headline
-email-breach-summary-for-email = Tóm tắt vi phạm cho { $userEmail }
+email-breach-summary-for-email = Tóm tắt rò rỉ dữ liệu cho { $userEmail }
 # Email headline
-email-no-breaches-hl = { $userEmail } xuất hiện trong 0 vi phạm dữ liệu đã biết
+email-no-breaches-hl = { $userEmail } không xuất hiện trong rò rỉ dữ liệu đã biết
 # Email headline
-email-alert-hl = { $userEmail } đã xuất hiện trong vi phạm dữ liệu mới
+email-alert-hl = { $userEmail } đã xuất hiện trong rò rỉ dữ liệu mới
 # Subject line of email
-email-subject-found-breaches = { -product-name } đã tìm thấy thông tin của bạn trong những vi phạm này
+email-subject-found-breaches = { -product-name } đã tìm thấy thông tin của bạn trong những rò rỉ dữ liệu này
 # Subject line of email
-email-subject-no-breaches = { -product-name } không tìm thấy vi phạm đã biết
+email-subject-no-breaches = { -product-name } không tìm thấy rò rỉ dữ liệu đã biết
 # Subject line of email
 email-subject-verify = Xác minh email của bạn cho { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Tìm hiểu thêm về { $fxmLink }
 email-sensitive-disclaimer =
-    Do tính chất nhạy cảm của vi phạm này, các email liên quan không được phát hiện công khai.
+    Do tính chất nhạy cảm của rò rỉ dữ liệu này, các email liên quan không được phát hiện công khai.
     Bạn có thể nhận được thông báo này vì bạn là chủ sở hữu đã xác minh của địa chỉ email này.
 fxm-warns-you-no-breaches =
     { -product-name } cảnh báo bạn về các vi phạm dữ liệu liên quan đến thông tin cá nhân của bạn.

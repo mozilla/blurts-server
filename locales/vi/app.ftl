@@ -487,7 +487,11 @@ progress-complete = Tất cả các rò rỉ đã biết đã được đánh d�
 progress-message-2 =
     <span>Hãy cập nhật!</span> Những thay đổi nhỏ như cập nhật mật khẩu có thể giữ an toàn 
     thông tin cá nhân của bạn.
+progress-message-3 = <span>Bạn đã giải quyết các rò rỉ đó!</span> Hãy tiếp tục. Chỉ còn một vài trường hợp để xử lý rò rỉ dữ liệu này.
 progress-message-4 = <span>Gần xong rồi!</span> Bạn có thể tiến gần đến đích.
+progress-complete-message =
+    <span>Bạn cảm thấy tốt, đúng không?</span> Nếu bạn muốn theo kịp, đây là thời điểm tốt để  
+    cập nhật thông tin đăng nhập khác với mật khẩu mạnh hơn.
 
 ##
 
@@ -507,3 +511,6 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Mới
+promo-fx-mobile-headline = Quyền riêng tư và tốc độ trên thiết bị di động
+promo-fx-mobile-body = Trình duyệt { -brand-name } siêu nhanh, riêng tư theo mặc định và chặn hơn 2.000 trình theo dõi trực tuyến.
+promo-fx-mobile-cta = Tải xuống { -brand-name } dành cho di động
