@@ -457,7 +457,7 @@ take-further-steps-desc = Zjistěte, jak snížit rizika krádeže identity a p�
 changes-saved = Změny uloženy
 # Section headline
 rec-section-headline = Co dělat s tímto únikem dat
-rec-section-subhead = Pro ochranu vašich osobních údajů a vaší digitální identity doporučujeme následující kroky.
+rec-section-subhead = Za účelem zabezpečení vašich osobních údajů a ochrany vaší digitální identity doporučujeme podniknout následující opatření.
 # Section headline
 rec-section-headline-no-pw = Co dělat pro ochranu vašich osobních údajů
 rec-section-subhead-no-pw = Přestože součástí úniku nebyla hesla, doporučujeme učinit následující kroky pro lepší ochranu vašich osobních údajů.
