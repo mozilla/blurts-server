@@ -164,6 +164,13 @@ how-fxm-2-blurb =
     Kan tikpepettuk mucorreoj, tiu-tikpia se reportej ipal muchi ne kaltapanalis panuket, 
     nusan ne kipiat información ichtaka.
 how-fxm-3-headline = Shikpia tanawatilis tik mutajtachialis
+how-fxm-3-blurb =
+    Asu tikwi { -brand-name }, tiu-tikpia se tanawatilis asu tipashalua 
+    tik se sitioj kikaltapanket. Shikmati nemanha asu kikaltapan muinformación 
+    wan tay tiweli tikchiwa ipanpa.
+wtd-after-website = Tay nemi pal tikchiwa ipan se kaltapanalis ipal información:
+wtd-after-data-agg = Tay nemi pal tikchiwa ipan se kaltapanalis tik ne tasentalilis ipal datoj:
+what-is-data-agg = Tay se tasentalilis ipal datoj?
 
 ## What to do after data breach tips
 
