@@ -33,6 +33,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox Račun
 terms-and-privacy = Pogoji in zasebnost
 GitHub-link-title = GitHub
 error-scan-page-token = V kratkem časovnem obdobju ste skušali preveriti preveč e-poštnih naslovov. Iz varnostnih razlogov smo vam začasno onemogočili nova iskanja. Znova lahko poskusite kasneje.
@@ -540,3 +543,9 @@ hide-resolved-button = Skrij razrešene
 show-resolved-button = Prikaži razrešene
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Novo
+promo-fx-mobile-headline = Zasebnost in hitrost na mobilnih napravah
+promo-fx-mobile-cta = Prenesite { -brand-name } za mobilne naprave
+promo-lockwise-headline = Vzemite gesla s seboj
+promo-lockwise-cta = Prenesite { -brand-lockwise }
+promo-ecosystem-headline = Spoznajte našo družino izdelkov
+promo-ecosystem-body = Ena prijava. Vse vaše naprave. Družina izdelkov, ki spoštujejo vašo zasebnost.
