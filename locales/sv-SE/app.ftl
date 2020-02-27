@@ -15,6 +15,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox-konto
 terms-and-privacy = Villkor och sekretess
 GitHub-link-title = GitHub
 error-scan-page-token = Du försökte skanna för många e-postadresser inom en kort tidsperiod. Av säkerhetsskäl har vi tillfälligt blockerat dig från nya sökningar. Du kommer att kunna försöka igen senare.
@@ -538,3 +541,21 @@ new-breach = Nytt
 promo-fx-mobile-headline = Sekretess och hastighet på mobilen
 promo-fx-mobile-body = Webbläsaren { -brand-name } är supersnabb, privat som standard och blockerar över 2 000 online-spårare.
 promo-fx-mobile-cta = Hämta { -brand-name } mobil
+promo-lockwise-headline = Ta med dina lösenord överallt
+promo-lockwise-body =
+    Använd { -brand-lockwise } för att hålla reda på alla dina lösenord.  
+    Få åtkomst till dem säkert från din dator, telefon eller surfplatta.
+promo-lockwise-cta = Hämta { -brand-lockwise }
+promo-fpn-headline = Dölj din riktiga position
+promo-fpn-body =
+    { -brand-name } 
+    { -brand-fpn } döljer din position för att lura webbplatser 
+    och datainsamlare som profilerar dig med annonser.
+promo-fpn-cta = Hämta { -brand-fpn }
+promo-monitor-headline = Bli varnad nästa gång din information exponeras
+promo-monitor-body =
+    Vill du vet nästa gång du förekommer i ett dataintrång och 
+    vad du ska göra då? Skapa ett { -brand-fx-account }.
+promo-ecosystem-headline = Möt vår familj av produkter
+promo-ecosystem-body = En inloggning. På alla dina enheter. En familj av produkter som respekterar din integritet.
+promo-ecosystem-cta = Se alla produkter
