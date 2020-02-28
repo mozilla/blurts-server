@@ -535,4 +535,6 @@ promo-fpn-body =
     ha mba’ekuaarã mbyatyha ohechaukáva marandu’i ndive.
 promo-fpn-cta = Ereko { -brand-fpn }
 monitor-promo-headline = Eñemomarandu mba’ekuaarã ñembyai pyahu rehegua
+monitor-promo-body = Og̃uahẽta ndéve marandu’i nemba’etéva ikatúramo oñembyai.
+ecosystem-promo-body = Opaite apopyre { -brand-name } oreko ore ñe’ẽ mba’ekuaarã nemba’évare: he’u’ive. Ereko tekorosãme. Kañygua’ỹre.
 promo-ecosystem-cta = Ehecha opaite apopyre
