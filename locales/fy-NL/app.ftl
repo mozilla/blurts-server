@@ -15,6 +15,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox-account
 terms-and-privacy = Betingsten en privacy
 GitHub-link-title = GitHub
 error-scan-page-token = Jo hawwe te folle e-mailadressen yn in koart tiidrek probearre te skannen. Om befeiligingsredenen hawwe wy jo sykmooglikheid tydlik blokkearre. Jo kinne it letter wer probearje.
@@ -531,3 +534,17 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nij
+mobile-promo-headline = Bring { -brand-name } nei jo telefoan en tablet
+mobile-promo-body = Fluch, privee en feilich sneupe oeral wêr't jo ek binne. Sykje { -brand-name } yn de Google Play en App Store.
+mobile-promo-cta = Download { -brand-name } op Android en iOS
+promo-lockwise-headline = Nim jo wachtwurden oeral mei hinne
+lockwise-promo-body = Hâld jo oanmeldingen by op alle apparaten. Benaderje se feilich fan jo kompjûter, telefoan of tablet ôf.
+promo-lockwise-cta = Download { -brand-lockwise }
+fpn-promo-headline = Maskearje jo lokaasje foar websites en trackers
+promo-fpn-body = { -brand-fpn } smyt de websites en gegevenssammelers dy't jo mei advertinsjes profilearje fuort, troch jo echte IP-adres te maskearjen.
+promo-fpn-cta = Download { -brand-fpn }
+monitor-promo-headline = Kom mear te witten oer nije datalekken
+monitor-promo-body = Untfang de folgjende kear in melding wannear't jo persoanlike gegevens foarkomme yn in bekend datalek.
+ecosystem-promo-headline = Beskermje jo onlinelibben mei produkten dy't privacy foarop stelle
+ecosystem-promo-body = Alles wat { -brand-name } docht, stiet yn it teken fan ús belofte foar persoanlike gegevens: nim minder. Hâld it feilich. Gjin geheimen.
+promo-ecosystem-cta = Alle produkten
