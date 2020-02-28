@@ -36,11 +36,39 @@ user-add-invalid-email = Vaà korreo
 user-add-too-many-emails = Nduki kue tutu ña korreo.
 user-add-email-verify-subject = Kunchee suscripción nu { -product-name }.
 user-add-duplicate-email = Tsa inka korreo ku nu { -product-name }.
+user-add-duplicate-email-part-2 = Kunche'e { $preferencesLink } takua kunu nixi ka { $userEmail }.
 error-headline = Vaá
 user-verify-token-error = tsiniñu'un token.
 user-verify-email-report-subject = Tutu ña { -product-name }
+user-unsubscribe-token-error = Eliminar suscripción quiere un token.
+user-unsubscribe-token-email-error = Eliminar suscripción requiere un token y con correo electrónico.
+user-unsubscribe-title = { -product-name }: Stoo sivi
+pwt-section-headline = Tu'un see kanu = Ña va'a kui
+landing-headline = Tu derecho a estar segura/o de los hackers inicia aquí.
+scan-placeholder = Chaa sivi korreo
+scan-submit = Nduku korreo ku
+scan-error = Vaa sivi Korreo nchau.
+download-firefox-banner-button = Snuu { -brand-name }
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = ¡Tachuin¡
+sign-up = Chaa sivu
+form-signup-error = Va'a sivi korreo yo
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = Fecha de violación:
+# compromised accounts = the total number of user accounts exposed in data breach
+compromised-accounts = Cuentas comprometidas:
+# compromised-data = the kind of user data exposed to hackers in data breach.
+compromised-data = Datos comprometidos:
+unsub-headline = Stoo sivu ña { -product-name-nowrap }
+sign-in = Kitsa
+sign-out = Kee
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Sama { -brand-fxa }
+have-an-account = ¿A tsa kumu kuenta?
 # Alerts is a noun
 sign-up-for-alerts = Chaa sivu takua na chihcuin tu'un
+# Link title
+frequently-asked-questions = Preguntas frecuentes
 about-firefox-monitor = Tsa ña'a { -product-name }
 # Link title
 preferences = Preferencias
