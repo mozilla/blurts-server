@@ -15,6 +15,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Cyfrif Firefox
 terms-and-privacy = Telerau a Phreifatrwydd
 GitHub-link-title = GitHub
 error-scan-page-token = Rydych wedi ceisio sganio gormod o gyfeiriadau e-bost mewn cyfnod byr. Am resymau diogelwch, rydym wedi eich rhwystro dros dro rhag chwiliadau newydd. Fe gewch chi geisio eto yn ddiweddarach.
@@ -563,6 +566,7 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Newydd
-promo-fx-mobile-headline = Preifatrwydd a chyflymder ar ddyfais symudol
-promo-fx-mobile-body = Mae'r porwr { -brand-name } yn gyflym iawn, preifat drwy ragosodiad, ac mae'n rhwystro 2,000+ o dracwyr ar-lein.
-promo-fx-mobile-cta = Cael { -brand-name } Symudol
+mobile-promo-headline = Dewch â { -brand-name } i'ch ffôn a'ch llechen
+mobile-promo-body = Pori cyflym, preifat a diogel ym mhob man yr ewch chi. Mae { -brand-name } ar gael yn Google Play a'r App Store.
+mobile-promo-cta = Estyn { -brand-name } ar Android ac iOS
+promo-lockwise-headline = Ewch â'ch cyfrineiriau i bob man
