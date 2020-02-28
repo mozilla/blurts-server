@@ -522,24 +522,13 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Pyahu
-promo-fx-mobile-headline = Ñemigua ha pya’ekue pumbyrýpe
-promo-fx-mobile-body = Ko kundahára { -brand-name } ipya’eterei, iñemi ypykue ha ojoko hetave 2,000 tapykuehoha ñandutípe.
-promo-fx-mobile-cta = Ereko { -brand-name } Pumbyry
+mobile-promo-headline = Egueru { -brand-name } ne pumbyry ha tablétape
+mobile-promo-body = Eikundaha pya’e, ñemi ha tekorosãme ehohápe. Ejuhúta { -brand-name } Google Play ha App Store rupive.
 promo-lockwise-headline = Eraha ne ñe’ẽñemi opa hendápe
-promo-lockwise-body =
-    Eipuru { -brand-lockwise } ehapykueho hag̃ua opaite ne ñe’ẽñemíme. 
-    Eike tekorosãme ne mohendaha, pumbyry térã tableta guive.
 promo-lockwise-cta = Ereko { -brand-lockwise }
-promo-fpn-headline = Eguereko ne rendaite ñemihápe
 promo-fpn-body =
     { -brand-name } ¶
     { -brand-fpn } oñomi ne rendaite omboyke hag̃ua umi ñanduti renda ¶
     ha mba’ekuaarã mbyatyha ohechaukáva marandu’i ndive.
 promo-fpn-cta = Ereko { -brand-fpn }
-promo-monitor-headline = Og̃uahẽta kyhyjerã ne marandu oñembyaikuaa vove
-promo-monitor-body =
-    Eikuaasépa ne mba’ekuaarã oñembyaikuaa vove ha ¶
-    ¿mba’e ejapóta? Emoheñói { -brand-fx-account }.
-promo-ecosystem-headline = Eikuaáke ore apopyrekuéra
-promo-ecosystem-body = Peteĩ tembiapo ñepyrũ. Opaite ne mba’e’oka. Apopyre aty omomba’éva ne ñemigua.
 promo-ecosystem-cta = Ehecha opaite apopyre
