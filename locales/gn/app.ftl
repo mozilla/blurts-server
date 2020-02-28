@@ -526,6 +526,7 @@ mobile-promo-headline = Egueru { -brand-name } ne pumbyry ha tablétape
 mobile-promo-body = Eikundaha pya’e, ñemi ha tekorosãme ehohápe. Ejuhúta { -brand-name } Google Play ha App Store rupive.
 mobile-promo-cta = Erekóke { -brand-name } Android ha iOS-pe
 promo-lockwise-headline = Eraha ne ñe’ẽñemi opa hendápe
+lockwise-promo-body = Ehapykueho ne rembiapo ñepyrũ opaite mba’e’okápe. Eike tekorosãme ne mohendaha, pumbyry térã tabléta guive.
 promo-lockwise-cta = Ereko { -brand-lockwise }
 fpn-promo-headline = Emokañy ne rendaite ñanduti renda ha tapykuehohágui
 promo-fpn-body =
