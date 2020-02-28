@@ -544,3 +544,7 @@ fpn-promo-headline = Maskeer uw locatie voor websites en trackers
 promo-fpn-body = { -brand-fpn } verwijdert de websites en gegevensverzamelaars die u met advertenties profileren, door uw echte IP-adres te maskeren.
 promo-fpn-cta = Download { -brand-fpn }
 monitor-promo-headline = Kom meer te weten over nieuwe datalekken
+monitor-promo-body = Ontvang de volgende keer een melding wanneer uw persoonlijke gegevens voorkomen in een bekend datalek.
+ecosystem-promo-headline = Bescherm uw onlineleven met producten die privacy voorop stellen
+ecosystem-promo-body = Alles wat { -brand-name } doet, staat in het teken van onze belofte voor persoonlijke gegevens: neem minder. Houd het veilig. Geen geheimen.
+promo-ecosystem-cta = Alle producten
