@@ -60,6 +60,7 @@ compromised-accounts = Cuentas comprometidas:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Datos comprometidos:
 unsub-headline = Stoo sivu ña { -product-name-nowrap }
+show-all = Snaa ntia
 sign-in = Kitsa
 sign-out = Kee
 # Manage Firefox Account, link to page where account holders can change their account settings.
@@ -81,6 +82,7 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = Kuna nu nduku { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ÚLTIMA FILTRACIÓN AÑADIDA
+monitor-several-emails = Kunche'e kua korreo
 
 ## What to do after data breach tips
 
