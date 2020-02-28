@@ -83,6 +83,7 @@ open-fxa-menu = Kuna nu nduku { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ÚLTIMA FILTRACIÓN AÑADIDA
 monitor-several-emails = Kunche'e kua korreo
+take-action = Actúa para proteger tus cuentas
 
 ## What to do after data breach tips
 
