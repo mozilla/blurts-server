@@ -541,3 +541,6 @@ promo-lockwise-headline = Neem uw wachtwoorden overal mee naartoe
 lockwise-promo-body = Houd uw aanmeldingen bij op alle apparaten. Benader ze veilig vanaf uw computer, telefoon of tablet.
 promo-lockwise-cta = Download { -brand-lockwise }
 fpn-promo-headline = Maskeer uw locatie voor websites en trackers
+promo-fpn-body = { -brand-fpn } verwijdert de websites en gegevensverzamelaars die u met advertenties profileren, door uw echte IP-adres te maskeren.
+promo-fpn-cta = Download { -brand-fpn }
+monitor-promo-headline = Kom meer te weten over nieuwe datalekken
