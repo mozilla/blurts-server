@@ -15,6 +15,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox 账户
 terms-and-privacy = 使用条款和隐私
 GitHub-link-title = GitHub
 error-scan-page-token = 您试图在短时间内扫描过多的电子邮件地址。出于安全原因，我们暂时阻止您进行新的搜索。请您稍后再试。
@@ -448,6 +451,11 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = 新事件
-promo-fx-mobile-headline = 在移动端也获得隐私保护与高速上网
-promo-fx-mobile-body = { -brand-name } 速度超快、保护隐私、拦截超过 2000 种在线跟踪器。
-promo-fx-mobile-cta = 下载 { -brand-name } 移动版
+mobile-promo-headline = 推荐下载手机/平板电脑端 { -brand-name }
+mobile-promo-cta = 获取 Android 和 iOS 端 { -brand-name }
+promo-lockwise-headline = 随身携带密码
+promo-lockwise-cta = 获取 { -brand-lockwise }
+fpn-promo-headline = 对网站和跟踪器伪装您的位置
+promo-fpn-body = { -brand-fpn } 通过伪装您的真实 IP 地址，摆脱那些用广告定位您的网站和数据收集器。
+promo-fpn-cta = 获取 { -brand-fpn }
+promo-ecosystem-cta = 一览所有产品
