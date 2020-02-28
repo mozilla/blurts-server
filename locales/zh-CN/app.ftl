@@ -452,10 +452,16 @@ known-data-breaches-resolved =
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = 新事件
 mobile-promo-headline = 推荐下载手机/平板电脑端 { -brand-name }
+mobile-promo-body = 快速、私密且安全地浏览。前往 Google Play 或 App Store 即可下载 { -brand-name }。
 mobile-promo-cta = 获取 Android 和 iOS 端 { -brand-name }
 promo-lockwise-headline = 随身携带密码
+lockwise-promo-body = 掌控所有设备上的登录信息。可从您的计算机、手机或平板电脑安全地进行访问。
 promo-lockwise-cta = 获取 { -brand-lockwise }
 fpn-promo-headline = 对网站和跟踪器伪装您的位置
 promo-fpn-body = { -brand-fpn } 通过伪装您的真实 IP 地址，摆脱那些用广告定位您的网站和数据收集器。
 promo-fpn-cta = 获取 { -brand-fpn }
+monitor-promo-headline = 帮您关心数据泄露事故
+monitor-promo-body = 在您的个人信息出现在数据外泄事件时收到通知。
+ecosystem-promo-headline = 使用尊重隐私的产品保卫您的网络世界
+ecosystem-promo-body = 所有 { -brand-name } 产品，均符合我们对个人数据隐私的承诺：索取更少、确保安全、绝不隐瞒。
 promo-ecosystem-cta = 一览所有产品
