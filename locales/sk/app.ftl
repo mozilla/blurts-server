@@ -55,6 +55,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = účet Firefox
 terms-and-privacy = Podmienky a ochrana súkromia
 GitHub-link-title = GitHub
 error-scan-page-token = Vo veľmi krátkom čase ste sa pokúsili skontrolovať príliš mnoho e-mailových adries. Z bezpečnostných dôvodov sme vám ďalšie vyhľadávanie dočasne zablokovali. Skúste to, prosím, neskôr.
@@ -424,7 +427,7 @@ signed-in-as = Prihlásení ako: { $userEmail }
 filter-by = Filtrovať podľa kategórie:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Ponuka
-to-affected-email = Poslať upozornenie na únik na danú e-mailovú adresu
+to-affected-email = Posielať upozornenia na únik na danú e-mailovú adresu
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
 join-firefox = Existuje spôsob, ako chrániť svoje súkromie. Prihláste sa do { -brand-name(case: "gen") }.
 # Link title
@@ -484,26 +487,103 @@ see-additional-recs = Pozrite sa na ďalšie odporúčania
 ## Please do not modify or remove "<a>" and "</a>".
 
 resolve-top-notification = E-mailová adresa { $affectedEmail } sa objavila v tomto úniku. <a>Čo ďalej</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] { $numAffectedEmails } vaša e-mailová adresa sa objavila v tomto úniku. <a>Čo ďalej</a>
+        [few] { $numAffectedEmails } vaše e-mailové adresy sa objavili v tomto úniku. <a>Čo ďalej</a>
+       *[other] { $numAffectedEmails } vašich e-mailových adries sa objavilo v tomto úniku. <a>Čo ďalej</a>
+    }
 
 ##
 
+marking-this-subhead = Kedy mám označiť únik ako vyriešený
 mark-as-resolve-button = Označiť ako vyriešené
 marked-as-resolved-label = Označené ako vyriešené
 undo-button = Späť
+confirmation-1-subhead = Super! Práve ste vyriešili svoj prvý únik dát.
+confirmation-1-body = Nepoľavujte. Vaša nástenka vám povie, či vás čaká ešte nejaká práca.
+confirmation-2-subhead = Toto hackeri určite nečakali.
+confirmation-2-body = Robíte dôležité kroky k ochrane svojich online účtov.
+confirmation-3-subhead = Vyriešili ste ďalší únik. Skvelá práca!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Je vaše nové heslo jedinečné, silné a ťažko uhádnuteľné? <a>Zistite to</a>
+generic-confirmation-subhead = Tento únik dát bol označený ako vyriešený
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Zostávajúci únik nájdete na nástenke.
+        [few] Zostávajúce úniky nájdete na nástenke.
+       *[other] Zostávajúce úniky nájdete na nástenke.
+    }
 return-to-breach-details-link = Späť na podrobnosti o úniku
 go-to-dashboard-link = Prejsť na nástenku
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
 progress-percent-complete = Hotovo na { $percentComplete } %
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } vyriešený únik
+        [few] { $numResolvedBreaches } vyriešené úniky
+       *[other] { $numResolvedBreaches } vyriešených únikov
+    }
+progress-intro-subhead = Novinka vo { -product-name(case: "loc") }: označovanie únikov ako vyriešené
+progress-intro-message =
+    Po preskúmaní podrobností o úniku a prijatí opatrení na ochranu 
+    vašich osobných údajov môžete označiť úniky ako vyriešené.
+progress-status =
+    { $numTotalBreaches ->
+        [one] Počet únikov označených ako vyriešené: { $numResolvedBreaches } z { $numTotalBreaches }
+        [few] Počet únikov označených ako vyriešené: { $numResolvedBreaches } z { $numTotalBreaches }
+       *[other] Počet únikov označených ako vyriešené: { $numResolvedBreaches } z { $numTotalBreaches }
+    }
 progress-complete = Všetky známe úniky boli označené ako vyriešené
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 = <span>Toto je vynikajúci začiatok!</span> Skontrolujte aj ostatné úniky dát.
+progress-message-2 = <span>Len do toho!</span> Malé zmeny, ako napríklad zmena hesla majú veľký vplyv na bezpečnosť vašich údajov.
+progress-message-3 = <span>Pekná práca s tými únikmi!</span> Ešte vám ich však pár zostáva.
+progress-message-4 = <span>Už máte takmer hotovo!</span> Od cieľovej rovinky ste naozaj blízko.
+progress-complete-message =
+    <span>Je to dobrý pocit, však?</span> Ak stále nemáte dosť, 
+    môžete si zmeniť heslá aj v ostatných účtoch.
 
 ##
 
+resolve-this-breach-link = Vyriešiť tento únik
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Označený ako vyriešený:
 hide-resolved-button = Skryť vyriešené
 show-resolved-button = Zobraziť vyriešené
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] heslo uniklo v nevyriešených únikoch dát
+        [few] heslá unikli v nevyriešených únikoch dát
+       *[other] hesiel uniklo v nevyriešených únikoch dát
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] známy únik dát označený ako vyriešený
+        [few] známe úniky dát označené ako vyriešené
+       *[other] známych únikov dát označených ako vyriešených
+    }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nový
+mobile-promo-headline = { -brand-name } na vašom telefóne a tablete
+mobile-promo-body = Rýchle, súkromné a bezpečné prehliadanie. Nájdite { -brand-name } v Obchode Play a v App Store.
+mobile-promo-cta = Prevziať { -brand-name } na Androide a iOS
+promo-lockwise-headline = Vezmite si svoje heslá so sebou
+lockwise-promo-body = Majte prehľad o svojich prihlasovacích údajoch. Môžete ich upravovať z počítača, telefónu či tabletu.
+promo-lockwise-cta = Prevziať { -brand-lockwise }
+fpn-promo-headline = Skryte svoju polohu pred webovými stránkami a sledovacími prvkami
+promo-fpn-body = { -brand-fpn } maskuje vašu skutočnú ID adresu a bráni webovým stránkam vo vašom profilovaní kvôli lepšiemu cieleniu reklamy.
+promo-fpn-cta = Prevziať { -brand-fpn }
+monitor-promo-headline = Buďte informovaní o nových únikoch dát
+monitor-promo-body = Pošleme vám upozornenie vždy, keď sa vaše údaje objavia v známom úniku dát.
+ecosystem-promo-headline = Celý rad produktov zameraných na súkromie
+ecosystem-promo-body = Všetky produkty s označením { -brand-name } vychádzajú zo zásady, že menej dát je niekedy viac. Vaše dáta udržiavame v bezpečí a nemáme pred vami žiadne tajomstvá.
+promo-ecosystem-cta = Zobraziť všetky produkty
