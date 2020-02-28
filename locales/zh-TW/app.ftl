@@ -15,6 +15,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox 帳號
 terms-and-privacy = 使用條款及隱私權
 GitHub-link-title = GitHub
 error-scan-page-token = 您在短時間內嘗試搜尋太多電子郵件地址，由於安全因素，我們暫時無法讓您進行新搜尋。請稍候再試一次。
@@ -444,6 +447,9 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = 新事件
-promo-fx-mobile-headline = 在行動裝置也獲得隱私保護與高速上網
-promo-fx-mobile-body = { -brand-name } 瀏覽器上網速度超快、預設開啟隱私保護、封鎖超過 2,000 組線上追蹤器。
-promo-fx-mobile-cta = 下載 { -brand-name } 行動版
+mobile-promo-headline = 在手機與平板電腦安裝 { -brand-name }
+mobile-promo-body = 隨時隨地上網，快速隱私又安全。請到 Google Play 與 App Store 尋找 { -brand-name } 下載。
+mobile-promo-cta = 取得 { -brand-name } Android 與 iOS 版
+promo-lockwise-headline = 密碼隨身帶著走
+promo-lockwise-cta = 取得 { -brand-lockwise }
+promo-fpn-cta = 取得 { -brand-fpn }
