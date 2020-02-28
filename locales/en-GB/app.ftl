@@ -15,6 +15,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox account
 terms-and-privacy = Terms and Privacy
 GitHub-link-title = GitHub
 error-scan-page-token = You tried to scan too many email addresses in a short time period. For security reasons, we’ve temporarily blocked you from new searches. You’ll be able to try again later.
@@ -532,6 +535,17 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = New
-promo-fx-mobile-headline = Privacy and speed on mobile
-promo-fx-mobile-body = The { -brand-name } browser is super fast, private by default, and blocks 2,000+ online trackers.
-promo-fx-mobile-cta = Get { -brand-name } Mobile
+mobile-promo-headline = Bring { -brand-name } to your phone and tablet
+mobile-promo-body = Fast, private, and safe browsing everywhere you go. Find { -brand-name } in the Google Play and App Store.
+mobile-promo-cta = Get { -brand-name } on Android and iOS
+promo-lockwise-headline = Take your passwords everywhere
+lockwise-promo-body = Keep track of your logins across all devices. Access them securely from your computer, phone, or tablet.
+promo-lockwise-cta = Get { -brand-lockwise }
+fpn-promo-headline = Mask your location from web sites and trackers
+promo-fpn-body = { -brand-fpn } throws off the web sites and data collectors that profile you with ads by masking your real IP address.
+promo-fpn-cta = Get { -brand-fpn }
+monitor-promo-headline = Find out about new data breaches
+monitor-promo-body = Get notified the next time your personal info gets exposed in a known breach.
+ecosystem-promo-headline = Protect your life online with privacy-first products
+ecosystem-promo-body = All { -brand-name } products honour our Personal Data Promise: Take less. Keep it safe. No secrets.
+promo-ecosystem-cta = See All Products
