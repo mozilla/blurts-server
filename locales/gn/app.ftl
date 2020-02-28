@@ -524,11 +524,14 @@ known-data-breaches-resolved =
 new-breach = Pyahu
 mobile-promo-headline = Egueru { -brand-name } ne pumbyry ha tablétape
 mobile-promo-body = Eikundaha pya’e, ñemi ha tekorosãme ehohápe. Ejuhúta { -brand-name } Google Play ha App Store rupive.
+mobile-promo-cta = Erekóke { -brand-name } Android ha iOS-pe
 promo-lockwise-headline = Eraha ne ñe’ẽñemi opa hendápe
 promo-lockwise-cta = Ereko { -brand-lockwise }
+fpn-promo-headline = Emokañy ne rendaite ñanduti renda ha tapykuehohágui
 promo-fpn-body =
     { -brand-name } ¶
     { -brand-fpn } oñomi ne rendaite omboyke hag̃ua umi ñanduti renda ¶
     ha mba’ekuaarã mbyatyha ohechaukáva marandu’i ndive.
 promo-fpn-cta = Ereko { -brand-fpn }
+monitor-promo-headline = Eñemomarandu mba’ekuaarã ñembyai pyahu rehegua
 promo-ecosystem-cta = Ehecha opaite apopyre
