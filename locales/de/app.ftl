@@ -483,24 +483,19 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Neu
-promo-fx-mobile-headline = Datenschutz und Geschwindigkeit auf Mobilgeräten
-promo-fx-mobile-body = Der { -brand-name }-Browser ist superschnell, schützt standardmäßig die Privatsphäre und blockiert über 2&thinsp;000 Online-Tracker.
-promo-fx-mobile-cta = Holen Sie sich { -brand-name } Mobile
+mobile-promo-headline = { -brand-name } gibt es auch für Ihr Handy und Tablet
+mobile-promo-body = Schnelles, privates und sicheres Surfen überall. Suchen Sie { -brand-name } im Google Play und App Store.
+mobile-promo-cta = Holen Sie sich { -brand-name } für Android und iOS
 promo-lockwise-headline = Nehmen Sie Ihre Passwörter überall mit.
-promo-lockwise-body =
-    Mit { -brand-lockwise } können Sie Ihre Passwörter ordnen.
-    Von Ihrem Computer, Handy oder Tablet können Sie dann sicher darauf zugreifen
+lockwise-promo-body = Organisieren Sie Ihre Zugangsdaten auf allen Geräten. Greifen Sie von Ihrem Computer, Handy oder Tablet sicher darauf zu.
 promo-lockwise-cta = Holen Sie sich { -brand-lockwise }
-promo-fpn-headline = Verbergen Sie Ihren Standort.
+fpn-promo-headline = Verbergen Sie Ihren Standort vor Websites und Trackern
 promo-fpn-body =
-    { -brand-name }
     { -brand-fpn } verbirgt Ihren Standort, um den Websites und Datensammlern,
     die Werbung auf Sie anpassen, die Arbeit zu erschweren.
 promo-fpn-cta = Holen Sie sich { -brand-fpn }
-promo-monitor-headline = Erhalten Sie Benachrichtigungen, wenn Ihre Daten geleakt werden.
-promo-monitor-body =
-    Möchten Sie wissen, wenn Sie von einem Datenleck betroffen sind und
-    was Sie dann tun können? Erstellen Sie ein { -brand-fx-account }.
-promo-ecosystem-headline = Das sind die Produkte der Firefox-Familie
-promo-ecosystem-body = Ein Login. Auf all Ihren Geräten. Eine ganze Reihe an Produkten, die Ihre <strong>Privatsphäre</strong> respektieren.
+monitor-promo-headline = Informieren Sie sich über neue Datenlecks
+monitor-promo-body = Erhalten Sie Benachrichtigungen, wenn Ihre persönlichen Daten in einem neu bekanntgewordenen Datenleck enthalten sind.
+ecosystem-promo-headline = Alle unsere Produkte schützen zuallererst Ihre Privatsphäre online
+ecosystem-promo-body = Hinter all unseren { -brand-name }-Produkten, steht unser Versprechen für Ihre persönlichen Daten: Wenig sammeln. Sicher speichern. Ehrlich sein.
 promo-ecosystem-cta = Alle Produkte ansehen
