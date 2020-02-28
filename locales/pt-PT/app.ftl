@@ -15,6 +15,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Conta Firefox
 terms-and-privacy = Termos e privacidade
 GitHub-link-title = GitHub
 error-scan-page-token = Tentou verificar muitos endereços de email num curto período de tempo. Por motivos de segurança, bloqueámos-lhe de novas pesquisas. Irá poder tentar novamente mais tarde.
@@ -531,6 +534,10 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nova
-promo-fx-mobile-headline = Privacidade e velocidade no telemóvel
-promo-fx-mobile-body = O navegador { -brand-name } é super rápido, privado por predefinição e bloqueia mais de 2000 rastreadores da Internet.
-promo-fx-mobile-cta = Obtenha o { -brand-name } para o telemóvel
+mobile-promo-headline = Traga o { -brand-name } para o seu telemóvel ou tablet
+mobile-promo-body = Navegação rápida, privada e segura onde quer que vá. Encontre o { -brand-name } no Google Play e App Store.
+mobile-promo-cta = Obtenha o { -brand-name } no Android e iOS
+promo-lockwise-headline = Leve as suas palavras-passe para todo o lado
+lockwise-promo-body = Controle as suas credenciais em todos os dispositivos. Tenha acesso às mesmas, com segurança, no seu computador, telefone ou tablet.
+promo-lockwise-cta = Obter o { -brand-lockwise }
+fpn-promo-headline = Mascare a sua localização de sites e de rastreadores
