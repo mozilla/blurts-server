@@ -15,6 +15,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox-fiók
 terms-and-privacy = Feltételek és adatvédelem
 GitHub-link-title = GitHub
 error-scan-page-token = Túl sok e-mail címet próbált ellenőrizni rövid idő alatt. Biztonsági okokból ideiglenesen letiltottuk az új kereséseket. Később újra próbálkozhat.
@@ -535,3 +538,12 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Új
+mobile-promo-headline = Hozza el a { -brand-name }ot telefonjára és táblagépére
+mobile-promo-body = Gyors, privát és biztonságos böngészés bárhová is menjen. Keresse meg a { -brand-name }ot a Google Play és az App Store áruházban.
+mobile-promo-cta = Szerezze meg a { -brand-name }ot Androidra és iOS-re
+promo-lockwise-headline = Vigye magával a jelszavait bárhová
+promo-lockwise-cta = { -brand-lockwise } beszerzése
+fpn-promo-headline = Rejtse el a helyét a weboldalak és nyomkövetők elől
+promo-fpn-body = A { -brand-fpn } félrevezeti a weboldalakat és adatgyűjtőket, melyek profilozzák Önt a hirdetésekkel, azáltal, hogy elrejti a valódi IP-címét.
+promo-fpn-cta = { -brand-fpn } beszerzése
+monitor-promo-headline = Tudjon meg többet az új adatsértésekről
