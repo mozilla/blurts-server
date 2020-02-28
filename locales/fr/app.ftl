@@ -19,6 +19,13 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account =
+    { $capitalization ->
+       *[lowercase] compte Firefox
+        [uppercase] Compte Firefox
+    }
 terms-and-privacy = Confidentialité et conditions d’utilisation
 GitHub-link-title = GitHub
 error-scan-page-token = Vous avez essayé d’analyser trop d’adresses électroniques en peu de temps. Pour des raisons de sécurité, nous avons temporairement bloqué vos nouvelles recherches. Vous pourrez réessayer plus tard.
