@@ -540,3 +540,16 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Uusi
+mobile-promo-headline = Tuo { -brand-name } puhelimeesi ja tablet-laitteeseesi
+mobile-promo-body = Nopeaa, yksityistä ja turvallista selaamista missä tahansa liikutkin. { -brand-name } on saatavilla Google Playsta ja App Storesta.
+mobile-promo-cta = Hanki { -brand-name } Androidille ja iOS:lle
+promo-lockwise-headline = Ota salasanasi mukaan kaikkialle
+lockwise-promo-body = Pidä kirjautumistietosi tallessa kaikilla laitteillasi. Käytä kirjautumistietojasi tietokoneelta, puhelimesta tai tablet-laitteelta.
+promo-lockwise-cta = Hanki { -brand-lockwise }
+fpn-promo-headline = Piilota sijaintisi verkkosivustoilta ja seuraimilta
+promo-fpn-cta = Hanki { -brand-fpn }
+monitor-promo-headline = Pysy ajan tasalla uusista tietovuodoista
+monitor-promo-body = Vastaanota ilmoitus, kun henkilökohtaisia tietojasi paljastuu seuraavan kerran tunnetussa tietovuodossa.
+ecosystem-promo-headline = Suojaa elämääsi verkossa yksityisyyden ensisijaiseksi asettavilla tuotteilla
+ecosystem-promo-body = Kaikki { -brand-name }-tuotteet kunnioittavat henkilötietolupaustamme: Kerää vähemmän. Pidä ne turvassa. Ei salaisuuksia.
+promo-ecosystem-cta = Katso kaikki tuotteet
