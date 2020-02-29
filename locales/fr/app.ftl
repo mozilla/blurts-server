@@ -447,7 +447,7 @@ num-resolved =
 progress-intro-subhead = Nouveauté sur { -product-name } : marquer les fuites comme réglées
 progress-intro-message = Après avoir examiné les détails d’une fuite de données et pris des mesures pour protéger vos informations personnelles, vous pouvez marquer les fuites comme réglées.
 progress-status =
-    { $numTotalBreaches ->
+    { $numResolvedBreaches ->
         [one] { $numResolvedBreaches } fuite sur { $numTotalBreaches } marquée comme réglée
        *[other] { $numResolvedBreaches } fuites sur { $numTotalBreaches } marquées comme réglées
     }
@@ -484,3 +484,4 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Fuite récente
+mobile-promo-headline = Installez { -brand-name } sur votre téléphone et votre tablette
