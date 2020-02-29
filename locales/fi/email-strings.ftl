@@ -22,8 +22,6 @@ email-footer-blurb =
 email-verify-footer-copy =
     Saat tämän viestin, koska tilasit { -product-name } -hälytykset. 
     Tämä on automaattinen viesti. Tukea on tarjolla sivulla { $faqLink }.
-# Button text that takes the user to their signed in user dashboard.
-view-my-dashboard-cta = Näytä kojelauta
 # Button text
 verify-email-cta = Vahvista sähköposti
 # Button text
@@ -78,6 +76,9 @@ monitor-another-email = Haluatko seurata myös muita sähköpostiosoitteita?
 # Subject line of email
 pre-fxa-subject = Päivitys palvelusta { -product-name }
 pre-fxa-headline = Mitä uutuuksia { -product-name } saa
+pre-fxa-blurb =
+    Tässä uusimmat kuulumiset sen jälkeen, kun rekisteröidyt { -product-name }iin, palveluun joka
+    tarkkailee tunnettuissa tietovuodoissa mahdollisesti esiintyviä henkilötietojasi. Linkitämme sen Firefox-tileihin.
 pre-fxa-tout-1 = Pysy ajan tasalla uusien vuotojen suhteen
 pre-fxa-p-1 =
     <a>Luo tili</a> valvoaksesi enintään 15 sähköpostiosoitetta tietovuotojen varalta. 

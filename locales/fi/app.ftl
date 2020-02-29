@@ -19,6 +19,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
 ##
 
@@ -547,6 +548,7 @@ promo-lockwise-headline = Ota salasanasi mukaan kaikkialle
 lockwise-promo-body = Pidä kirjautumistietosi tallessa kaikilla laitteillasi. Käytä kirjautumistietojasi tietokoneelta, puhelimesta tai tablet-laitteelta.
 promo-lockwise-cta = Hanki { -brand-lockwise }
 fpn-promo-headline = Piilota sijaintisi verkkosivustoilta ja seuraimilta
+promo-fpn-body = { -brand-fpn } peittää todellisen IP-osoitteesi ja heittää syrjään verkkosivustot sekä tiedonkerääjät, jotka profiloivat sinua mainoksin.
 promo-fpn-cta = Hanki { -brand-fpn }
 monitor-promo-headline = Pysy ajan tasalla uusista tietovuodoista
 monitor-promo-body = Vastaanota ilmoitus, kun henkilökohtaisia tietojasi paljastuu seuraavan kerran tunnetussa tietovuodossa.
