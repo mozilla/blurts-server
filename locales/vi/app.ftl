@@ -12,10 +12,12 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
--brand-fx-account = Tài khoản Firefox
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Tài khoản Firefox
 terms-and-privacy = Điều khoản & quyền riêng tư
 GitHub-link-title = GitHub
 error-scan-page-token = Bạn đang cố quét quá nhiều địa chỉ email trong một khoảng thời gian ngắn. Vì lý do bảo mật, chúng tôi đã tạm thời chặn bạn khỏi các tìm kiếm mới. Bạn có thể thử lại sau.
@@ -513,23 +515,20 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Mới
-promo-fx-mobile-headline = Quyền riêng tư và tốc độ trên thiết bị di động
-promo-fx-mobile-body = Trình duyệt { -brand-name } siêu nhanh, riêng tư theo mặc định và chặn hơn 2.000 trình theo dõi trực tuyến.
-promo-fx-mobile-cta = Tải xuống { -brand-name } dành cho di động
+mobile-promo-headline = Mang { -brand-name } vào điện thoại và máy tính bảng của bạn
+mobile-promo-body = Duyệt nhanh, riêng tư và an toàn ở mọi nơi bạn đến. Tìm { -brand-name } trong Google Play và App Store.
+mobile-promo-cta = Tải { -brand-name } cho Android và iOS
 promo-lockwise-headline = Mang mật khẩu của bạn đi khắp mọi nơi
-promo-lockwise-body =
-    Sử dụng { -brand-lockwise } để theo dõi tất cả mật khẩu của bạn. 
-    Truy cập chúng an toàn từ máy tính, điện thoại hoặc máy tính bảng của bạn.
+lockwise-promo-body = Theo dõi thông tin đăng nhập của bạn trên tất cả các thiết bị. Truy cập chúng an toàn từ máy tính, điện thoại hoặc máy tính bảng của bạn.
 promo-lockwise-cta = Tải { -brand-lockwise }
+fpn-promo-headline = Che dấu vị trí của bạn từ các trang web và trình theo dõi
 promo-fpn-body =
     { -brand-name } 
     { -brand-fpn } ẩn vị trí của bạn để loại bỏ các trang web 
     và trình thu thập dữ liệu hồ sơ bạn cho quảng cáo.
 promo-fpn-cta = Tải { -brand-fpn }
-promo-monitor-headline = Nhận cảnh báo vào lần tiếp theo khi thông tin của bạn bị lộ
-promo-monitor-body =
-    Muốn tìm hiểu lần sau khi bạn bị rò rỉ dữ liệu và 
-    phải làm gì? Tạo một tài khoản { -brand-fx-account }.
-promo-ecosystem-headline = Hãy xem các sản phẩm của chúng tôi
-promo-ecosystem-body = Một lần đăng nhập. Tất cả các thiết bị của bạn. Một nhóm sản phẩm tôn trọng quyền riêng tư.
+monitor-promo-headline = Tìm hiểu về rò rỉ dữ liệu mới
+monitor-promo-body = Nhận thông báo vào lần tiếp theo thông tin cá nhân của bạn bị lộ trong một rò rỉ dữ liệu đã biết.
+ecosystem-promo-headline = Bảo vệ cuộc sống trực tuyến của bạn với các sản phẩm đầu tiên về bảo mật
+ecosystem-promo-body = Mọi sản phẩm { -brand-name } chúng tôi làm đều tôn vinh lời hứa dữ liệu cá nhân của chúng tôi: Lấy ít hơn. Giữ nó an toàn. Không có bí mật.
 promo-ecosystem-cta = Xem tất cả sản phẩm
