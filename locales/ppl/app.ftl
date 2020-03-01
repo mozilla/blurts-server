@@ -188,6 +188,7 @@ change-pw-site = Shikpata ne taketzalis ichtaka ipal ini sitioj
 even-for-old = Ipal ne cuejcuentaj palikman, nemi pal tikyankwilia mutaketzalis ichtaka.
 make-new-pw-unique = Shikchiwa ne yankwik taketzalis ichtaka tekenha wan isel
 strength-of-your-pw = Asu mutaketzalis ichtaka tajpaltik, ijkiuni timupalewia tik ne matapan
+create-strong-passwords = Ken tikchiwa taketzalis ichtaka tajpaltik
 
 ## Updated error messages
 
