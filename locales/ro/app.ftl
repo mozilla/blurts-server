@@ -15,6 +15,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Cont Firefox
 terms-and-privacy = Termeni și confidențialitate
 GitHub-link-title = GitHub
 error-scan-page-token = Ai încercat să scanezi prea multe adrese de e-mail într-un timp prea scurt. Din motive de securitate, ți-am blocat accesul la căutări noi. Poți încerca mai târziu.
@@ -492,3 +495,17 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nou
+mobile-promo-headline = Adu { -brand-name } pe telefon și tabletă
+mobile-promo-body = Navigare rapidă, privată și sigură oriunde ai merge. Caută { -brand-name } în Google Play și App Store.
+mobile-promo-cta = Încearcă { -brand-name } pe Android și iOS
+promo-lockwise-headline = Ia-ți cu tine parolele oriunde
+lockwise-promo-body = Ții evidența tuturor autentificărilor pe toate dispozitivele. Le accesezi securizat de pe calculator, telefon sau tabletă.
+promo-lockwise-cta = Încearcă { -brand-lockwise }
+fpn-promo-headline = Maschează-ți locația pentru site-uri web și elemente de urmărire
+promo-fpn-body = { -brand-fpn } decartează site-urile web și colectorii de date care îți creează profilul cu reclame, mascându-ți adresa IP reală.
+promo-fpn-cta = Încearcă { -brand-fpn }
+monitor-promo-headline = Află despre noi breșe de date
+monitor-promo-body = Primești notificări data viitoare când informațiile tale personale sunt expuse într-o breșă cunoscută.
+ecosystem-promo-headline = Îți protejezi viața online cu produse care pun confidențialitatea pe primul loc
+ecosystem-promo-body = Toate produsele { -brand-name } onorează promisiunea noastră privind datele cu caracter personal: Luăm mai puțin. Le păstrăm în siguranță. Fără secrete.
+promo-ecosystem-cta = Vezi toate produsele
