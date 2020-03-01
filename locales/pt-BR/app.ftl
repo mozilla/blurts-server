@@ -523,10 +523,7 @@ promo-lockwise-headline = Tenha suas senhas em qualquer lugar
 lockwise-promo-body = Acompanhe suas contas em todos os dispositivos. Acesse-as com segurança no seu computador, celular ou tablet.
 promo-lockwise-cta = Instale o { -brand-lockwise }
 fpn-promo-headline = Oculte sua localização de sites e rastreadores
-promo-fpn-body =
-    { -brand-name } 
-    { -brand-fpn } oculta sua localização para confundir sites 
-    e coletores de dados que traçam seu perfil usando anúncios.
+promo-fpn-body = O { -brand-fpn } oculta seu endereço IP real, despistando os sites e coletores de dados que usam anúncios para tentar traçar um perfil seu.
 promo-fpn-cta = Instale o { -brand-fpn }
 monitor-promo-headline = Descubra novos vazamentos de dados
 monitor-promo-body = Seja notificado na próxima vez que suas informações pessoais forem expostas em um vazamento conhecido.
