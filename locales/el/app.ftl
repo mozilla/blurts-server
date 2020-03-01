@@ -11,6 +11,7 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
 ##
 
@@ -26,12 +27,14 @@ error-hibp-throttled = Πάρα πολλές συνδέσεις στο { -brand-
 error-hibp-connect = Σφάλμα σύνδεσης στο { -brand-HIBP }.
 error-hibp-load-breaches = Αδυναμία φόρτωσης διαρροών.
 error-must-be-signed-in = Πρέπει να συνδεθείτε στο { -brand-fxa } σας.
+error-to-finish-verifying = Για να ολοκληρώσετε την επαλήθευση αυτού του email για το { -product-name }, θα πρέπει να έχετε συνδεθεί με το πρωτεύον email του λογαριασμού σας.
 home-title = { -product-name }
 home-not-found = Η σελίδα δεν βρέθηκε.
 oauth-invalid-session = Άκυρη συνεδρία
 scan-title = { -product-name } : Αποτελέσματα σάρωσης
 user-add-invalid-email = Άκυρο email
 user-add-email-verify-subject = Επαληθεύστε τη συνδρομή σας στο { -product-name }.
+user-add-duplicate-email = Αυτό το email έχει ήδη προστεθεί στο { -product-name }.
 error-headline = Σφάλμα
 user-verify-token-error = Απαιτείται διακριτικό επαλήθευσης.
 user-verify-email-report-subject = Η αναφορά σας για το { -product-name }
@@ -191,6 +194,9 @@ see-if-youve-been-part = Δείτε αν έχετε εμπλακεί σε δια
 additional-information-including = Πρόσθετες πληροφορίες, όπως:
 # Title
 email-addresses-title = Διευθύνσεις email
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Επισκόπηση
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Προτιμήσεις { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
@@ -221,6 +227,8 @@ manage-all-emails = Διαχείριση όλων των διευθύνσεων 
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Προστέθηκε διαρροή:
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Οι αλλαγές αποθηκεύτηκαν!
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
@@ -228,6 +236,7 @@ breach-added-label = Προστέθηκε διαρροή:
 
 ##
 
+undo-button = Αναίρεση
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
@@ -235,3 +244,8 @@ breach-added-label = Προστέθηκε διαρροή:
 
 ##
 
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Νέο
+mobile-promo-cta = Λήψη { -brand-name } σε Android και iOS
+promo-lockwise-cta = Λήψη { -brand-lockwise }
+promo-fpn-cta = Λήψη { -brand-fpn }
