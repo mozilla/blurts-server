@@ -534,3 +534,16 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Ny
+mobile-promo-headline = Ta med { -brand-name } til telefonen og nettbrettet
+mobile-promo-body = Rask, privat og sikker surfing overalt. Finn { -brand-name } i Google Play og App Store.
+mobile-promo-cta = Få { -brand-name } på Android og iOS
+promo-lockwise-headline = Ta med deg passordene dine overalt
+lockwise-promo-body = Hold oversikt over innloggingene dine på alle enheter. Få tilgang til dem sikkert fra din datamaskin, telefon eller nettbrett.
+promo-lockwise-cta = Last ned { -brand-lockwise }
+fpn-promo-headline = Masker plasseringen din fra nettsteder og sporere
+promo-fpn-cta = Få { -brand-fpn }
+monitor-promo-headline = Finn ut om nye datalekkasjer
+monitor-promo-body = Bli varslet neste gang din personlige informasjon blir utsatt i en kjent datalekkasje.
+ecosystem-promo-headline = Vern om livet ditt på nettet med personvernprodukter
+ecosystem-promo-body = Alle { -brand-name }-produkter overholder vår lovnad om private data i alt vi gjør: Samle inn mindre. Oppbevar det sikkert. Ingen hemmeligheter.
+promo-ecosystem-cta = Se alle produkter
