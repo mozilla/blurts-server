@@ -12,8 +12,11 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 
+##
 
-
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Λογαριασμός Firefox
 terms-and-privacy = Όροι και απόρρητο
 GitHub-link-title = GitHub
 error-scan-page-token = Προσπαθήσατε να σαρώσετε πάρα πολλές διευθύνσεις email σε μικρό χρονικό διάστημα. Για λόγους ασφαλείας, σάς έχουμε αποκλείσει προσωρινά από νέες αναζητήσεις. Θα μπορέσετε να δοκιμάσετε ξανά αργότερα.
@@ -208,7 +211,7 @@ want-to-add = Θέλετε να προσθέσετε ένα άλλο email;
 ## an additional email to Firefox Monitor.
 
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -218,3 +221,17 @@ manage-all-emails = Διαχείριση όλων των διευθύνσεων 
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Προστέθηκε διαρροή:
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+
+##
+
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
