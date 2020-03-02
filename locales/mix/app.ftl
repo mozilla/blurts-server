@@ -60,6 +60,7 @@ compromised-accounts = Cuentas comprometidas:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Datos comprometidos:
 unsub-headline = Stoo sivu ña { -product-name-nowrap }
+unsub-button = Stoó sivu
 show-all = Snaa ntia
 sign-in = Kitsa
 sign-out = Kee
@@ -89,6 +90,8 @@ take-action = Actúa para proteger tus cuentas
 
 change-pw = Sama tu'un see
 change-pw-site = Sama tu'un see ña sitio
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Sna'a:
 
 ## Updated error messages
 
