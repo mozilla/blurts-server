@@ -485,6 +485,7 @@ known-data-breaches-resolved =
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Fuite récente
 mobile-promo-headline = Installez { -brand-name } sur votre téléphone et votre tablette
+mobile-promo-body = Une navigation rapide, privée et sûre partout où vous allez. Recherchez { -brand-name } sur Google Play et dans l’App Store.
 mobile-promo-cta = Obtenir { -brand-name } sur Android et iOS
 promo-lockwise-headline = Emportez vos mots de passe partout
 lockwise-promo-body = Gérez vos identifiants sur tous vos appareils. Accédez-y en toute sécurité depuis votre ordinateur, votre téléphone ou votre tablette.
