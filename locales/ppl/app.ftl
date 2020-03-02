@@ -193,6 +193,9 @@ stop-reusing-pw = Makaya shikwi ne sesan taketzalis ichtaka
 create-unique-pw = Shikchiwa sechín tajtaketzalis ichtaka wan shikana né kan te weli mukishtia, ken se tayektaliani ipal taketzalis ichtaka.
 five-myths = 5 mijmitoj ipanpa ne tayektaliani ipal takezalis ichtaka
 create-a-fxa = Shikchiwa se { -brand-fxa } ipal ne reportej patawak ipanpa ne katapanalis wan pal tikpia tanawatilis.
+feat-security-tips = Tanawatilis ipal tapalewilis pal tikmanawi mucuejcuentaj
+feat-sensitive = Tatemulis chupiuk yek ipal kaltapanalis tesajsay
+feat-enroll-multiple = Shikachitili miak correoj kan mupepetat ne kajkaltapanalis
 
 ## Updated error messages
 
