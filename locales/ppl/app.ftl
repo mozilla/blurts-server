@@ -189,6 +189,7 @@ even-for-old = Ipal ne cuejcuentaj palikman, nemi pal tikyankwilia mutaketzalis 
 make-new-pw-unique = Shikchiwa ne yankwik taketzalis ichtaka tekenha wan isel
 strength-of-your-pw = Asu mutaketzalis ichtaka tajpaltik, ijkiuni timupalewia tik ne matapan
 create-strong-passwords = Ken tikchiwa taketzalis ichtaka tajpaltik
+stop-reusing-pw = Makaya shikwi ne sesan taketzalis ichtaka
 
 ## Updated error messages
 
