@@ -192,6 +192,7 @@ create-strong-passwords = Ken tikchiwa taketzalis ichtaka tajpaltik
 stop-reusing-pw = Makaya shikwi ne sesan taketzalis ichtaka
 create-unique-pw = Shikchiwa sechín tajtaketzalis ichtaka wan shikana né kan te weli mukishtia, ken se tayektaliani ipal taketzalis ichtaka.
 five-myths = 5 mijmitoj ipanpa ne tayektaliani ipal takezalis ichtaka
+create-a-fxa = Shikchiwa se { -brand-fxa } ipal ne reportej patawak ipanpa ne katapanalis wan pal tikpia tanawatilis.
 
 ## Updated error messages
 
