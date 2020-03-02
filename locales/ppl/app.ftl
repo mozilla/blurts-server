@@ -203,6 +203,7 @@ appears-in-x-breaches =
         [one] Nesi tik { $breachCount } kaltapanalis matituk.
        *[other] Nesi tik { $breachCount } kajkaltapanalis majmatituk.
     }
+check-for-breaches = Shikpepeta kaltapanalis
 
 ## Updated error messages
 
