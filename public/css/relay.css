@@ -129,7 +129,6 @@
 .private-relay-dashboard-card-body {
   margin: 0;
   color: #42425a;
-  max-width: 500px;
   line-height: 24px;
   font-size: 16px;
 }
@@ -142,7 +141,8 @@
 }
 
 .private-relay-join-waitlist {
-  font-size: 16px;
+  margin: 4px 0 0 0;
+  line-height: 24px;
 }
 
 .private-relay-dashboard-card-content {
@@ -318,12 +318,12 @@
   }
 
   .private-relay-dashboard-card-content::before {
+    max-height: 44px;
     margin-bottom: 16px;
     margin-right: 0;
   }
 
   .private-relay-join-waitlist {
-    display: block;
     margin-top: 16px;
   }
 
