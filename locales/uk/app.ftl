@@ -42,6 +42,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Обліковий запис Firefox
 terms-and-privacy = Умови та конфіденційність
 GitHub-link-title = GitHub
 error-scan-page-token = Ви намагалися сканувати забагато адрес електронної пошти за короткий проміжок часу. З міркувань безпеки ми тимчасово заблокували вам доступ до нових пошуків. Ви зможете спробувати знову пізніше.
@@ -574,3 +577,10 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Новий
+mobile-promo-headline = Встановіть { -brand-name } на свій телефон і планшет
+mobile-promo-body = Швидкий, приватний та безпечний перегляд всюди. Встановіть { -brand-name } з Google Play та App Store.
+mobile-promo-cta = Отримати { -brand-name } на Android та iOS
+promo-lockwise-headline = Майте доступ до своїх паролів всюди
+lockwise-promo-body = Керуйте своїми паролями на всіх пристроях. Отримуйте до них безпечний доступ з комп'ютера, телефона чи планшета.
+promo-lockwise-cta = Отримати { -brand-lockwise }
+fpn-promo-headline = Замаскуйте своє розташування від вебсайтів та засобів стеження
