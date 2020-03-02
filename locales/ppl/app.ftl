@@ -207,6 +207,7 @@ check-for-breaches = Shikpepeta kaltapanalis
 find-out-what-hackers-know = Shikajsi ne tay ne hacker kimatiaya mupanpa. Shimumachti ken tiweli titayakana ka inhishpan.
 search-for-your-email = Shiktemu mudirección correoj tik ne kaltapanalis pal datoj ipal tukniwan hasta 2007.
 back-to-top = Shimukwepa kan tipewa
+comm-opt-0 = Shinechtuktili asu se ipal nudirección ipal correoj muajsi tik ne kaltapanalis ipal datoj.
 
 ## Updated error messages
 
