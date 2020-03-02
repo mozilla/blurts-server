@@ -204,6 +204,9 @@ appears-in-x-breaches =
        *[other] Nesi tik { $breachCount } kajkaltapanalis majmatituk.
     }
 check-for-breaches = Shikpepeta kaltapanalis
+find-out-what-hackers-know = Shikajsi ne tay ne hacker kimatiaya mupanpa. Shimumachti ken tiweli titayakana ka inhishpan.
+search-for-your-email = Shiktemu mudirección correoj tik ne kaltapanalis pal datoj ipal tukniwan hasta 2007.
+back-to-top = Shimukwepa kan tipewa
 
 ## Updated error messages
 
