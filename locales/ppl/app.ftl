@@ -190,6 +190,8 @@ make-new-pw-unique = Shikchiwa ne yankwik taketzalis ichtaka tekenha wan isel
 strength-of-your-pw = Asu mutaketzalis ichtaka tajpaltik, ijkiuni timupalewia tik ne matapan
 create-strong-passwords = Ken tikchiwa taketzalis ichtaka tajpaltik
 stop-reusing-pw = Makaya shikwi ne sesan taketzalis ichtaka
+create-unique-pw = Shikchiwa sechín tajtaketzalis ichtaka wan shikana né kan te weli mukishtia, ken se tayektaliani ipal taketzalis ichtaka.
+five-myths = 5 mijmitoj ipanpa ne tayektaliani ipal takezalis ichtaka
 
 ## Updated error messages
 
