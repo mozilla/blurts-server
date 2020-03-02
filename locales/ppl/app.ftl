@@ -196,6 +196,13 @@ create-a-fxa = Shikchiwa se { -brand-fxa } ipal ne reportej patawak ipanpa ne ka
 feat-security-tips = Tanawatilis ipal tapalewilis pal tikmanawi mucuejcuentaj
 feat-sensitive = Tatemulis chupiuk yek ipal kaltapanalis tesajsay
 feat-enroll-multiple = Shikachitili miak correoj kan mupepetat ne kajkaltapanalis
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Nesi tik { $breachCount } kaltapanalis matituk.
+       *[other] Nesi tik { $breachCount } kajkaltapanalis majmatituk.
+    }
 
 ## Updated error messages
 
