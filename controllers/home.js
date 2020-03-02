@@ -3,7 +3,7 @@
 const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
 const { scanResult } = require("../scan-results");
-const { generatePageToken, hasUserSignedUpForRelay } = require("./utils");
+const { generatePageToken } = require("./utils");
 
 
 async function home(req, res) {
@@ -90,11 +90,8 @@ function getBentoStrings(req, res) {
 }
 
 function protectMyEmail(req, res) {
-  const user = req.user;
-  const userHasSignedUpForRelay = hasUserSignedUpForRelay(user);
   return res.render("private-relay", {
     title: req.fluentFormat("home-title"),
-    userHasSignedUpForRelay,
   });
 }
 

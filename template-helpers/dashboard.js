@@ -2,6 +2,19 @@
 
 const { LocaleUtils } = require("./../locale-utils");
 const { makeBreachCards } = require("./breaches");
+const { hasUserSignedUpForRelay } = require("./../controllers/utils");
+
+function showRelayCallout(args) {
+  const enLocaleIsSupported = args.data.root.req.supportedLocales.includes("en");
+  const userIsOnRelayWaitList = hasUserSignedUpForRelay(args.data.root.req.user);
+  const userIsOnDashboard = args.data.root.whichPartial = "dashboards/breaches-dash";
+
+  if ((userIsOnDashboard && !enLocaleIsSupported) || userIsOnRelayWaitList) {
+    return false;
+  }
+
+  return true;
+}
 
 function getBreachesDashboard(args) {
   const verifiedEmails = args.data.root.verifiedEmails;
@@ -178,4 +191,5 @@ module.exports = {
   getLastAddedEmailStrings,
   makeEmailVerifiedString,
   makeEmailAddedToSubscriptionString,
+  showRelayCallout,
 };

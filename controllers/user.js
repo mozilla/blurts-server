@@ -11,7 +11,6 @@ const { FXA } = require("../lib/fxa");
 const HIBP = require("../hibp");
 const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
-const { hasUserSignedUpForRelay } = require("./utils");
 
 
 const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
@@ -227,13 +226,11 @@ function getNewBreachesForEmailEntriesSinceDate(emailEntries, date) {
 
 
 async function getDashboard(req, res) {
-  const supportedLocalesIncludeEnglish = req.supportedLocales.includes("en");
   const user = req.user;
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
 
   let lastAddedEmail = null;
-  const userHasSignedUpForRelay = hasUserSignedUpForRelay(user);
 
   req.session.user = await DB.setBreachesLastShownNow(user);
   if (req.session.lastAddedEmail) {
@@ -247,8 +244,6 @@ async function getDashboard(req, res) {
     lastAddedEmail,
     verifiedEmails,
     unverifiedEmails,
-    userHasSignedUpForRelay,
-    supportedLocalesIncludeEnglish,
     whichPartial: "dashboards/breaches-dash",
   });
 }
