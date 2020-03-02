@@ -1,8 +1,9 @@
 "use strict";
 
 const AppConstants = require("../app-constants");
+const DB = require("../db/DB");
 const { scanResult } = require("../scan-results");
-const { generatePageToken } = require("./utils");
+const { generatePageToken, hasUserSignedUpForRelay } = require("./utils");
 
 
 async function home(req, res) {
@@ -88,12 +89,37 @@ function getBentoStrings(req, res) {
   return res.json(localizedBentoStrings);
 }
 
+function protectMyEmail(req, res) {
+  const user = req.user;
+  const userHasSignedUpForRelay = hasUserSignedUpForRelay(user);
+  return res.render("private-relay", {
+    title: req.fluentFormat("home-title"),
+    userHasSignedUpForRelay,
+  });
+}
+
+function _addEmailRelayToWaitlistsJoined(user) {
+  if (!user.waitlists_joined) {
+    return {"email_relay": {"notified": false} };
+  }
+  user.waitlists_joined["email_relay"] = {"notified": false };
+  return user.waitlists_joined;
+}
+
+function addEmailToRelayWaitlist(req, res) {
+  const user = req.user;
+  const updatedWaitlistsJoined = _addEmailRelayToWaitlistsJoined(user);
+  DB.setWaitlistsJoined({user, updatedWaitlistsJoined});
+  return res.json("email-added");
+}
+
 function notFound(req, res) {
   res.status(404);
   res.render("subpage", {
     analyticsID: "error",
     headline: req.fluentFormat("error-headline"),
-    subhead: req.fluentFormat("home-not-found") });
+    subhead: req.fluentFormat("home-not-found"),
+  });
 }
 
 module.exports = {
@@ -102,5 +128,7 @@ module.exports = {
   getAllBreaches,
   getBentoStrings,
   getSecurityTips,
+  protectMyEmail,
+  addEmailToRelayWaitlist,
   notFound,
 };

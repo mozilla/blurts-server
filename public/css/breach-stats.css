@@ -75,7 +75,7 @@
 .progress-bar {
   -webkit-appearance: none;
   background: var(--monitorGradient);
-  color: #ffffff; /* removes default blue background on edge */
+  color: #fff; /* removes default blue background on edge */
   border-radius: 4px;
   height: 24px;
   overflow: hidden;

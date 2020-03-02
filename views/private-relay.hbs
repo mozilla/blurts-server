@@ -1,0 +1,55 @@
+{{!< default}}
+
+<main class="container monitor-homepage clear-header private-relay-landing flx jst-cntr">
+  <div class="mw-700">
+    <div class="relay-hero">
+      <h2 class="relay-headline txt-cntr txt-white">Clear inbox clutter. Keep your personal email private.</h2>
+      <h3 class="relay-subhead txt-cntr txt-light-grey">The best way to protect your personal info is to never give it out.</h3>
+    </div>
+
+    <section class="relay-info toggle-parent active">
+      <button class="toggle svg-wrap article-toggle relay-toggle-button" aria-label="show-content">
+        <span class="relay-info-subhead bold ff-Met txt-white">How does using an alias protect my inbox?</span>
+        <svg class="toggle-down" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path class="relay-toggle" fill="#ffffff" d="M8 12a1 1 0 0 1-.707-.293l-5-5a1 1 0 0 1 1.414-1.414L8 9.586l4.293-4.293a1 1 0 0 1 1.414 1.414l-5 5A1 1 0 0 1 8 12z"></path></svg>
+      </button>
+      <p class="relay-info-body txt-light-grey toggle-child">Sick of receiving junk emails you never signed up for? Not sure if your email will be sold to a company you’ve never heard of? By using aliases, you keep your real email off spam lists and away from sketchy companies you may not trust.</p>
+    </section>
+
+    <section class="relay-info toggle-parent active">
+      <button class="toggle svg-wrap article-toggle relay-toggle-button" aria-label="show-content">
+        <span class="relay-info-subhead bold ff-Met txt-white">How does email masking work?</span>
+        <svg class="toggle-down" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path class="relay-toggle" fill="#ffffff" d="M8 12a1 1 0 0 1-.707-.293l-5-5a1 1 0 0 1 1.414-1.414L8 9.586l4.293-4.293a1 1 0 0 1 1.414 1.414l-5 5A1 1 0 0 1 8 12z"></path></svg>
+      </button>
+      <p class="relay-info-body txt-light-grey toggle-child">If an online form or account requires an email address, you can give them an alias instead of your real email. Any emails sent to the alias get forwarded to your real inbox. If you start receiving emails you don’t want, it’s easy to delete the alias. Then, you’ll never receive emails from that unwanted address again.</p>
+    </section>
+
+  </div>
+  <div class="row relay-sign-up-wrapper">
+    <div class="relay-sign-up txt-cntr {{#if userHasSignedUpForRelay}} email-sent {{/if}}">
+      <div class="relay-sign-up-content flx flx-col jst-cntr">
+        <h2 class="relay-sign-up-headline">Join the waitlist for updates</h2>
+          <img alt="{{ req.session.user.primary_email }}" class="relay-avatar" src="{{ req.session.user.fxa_profile_json.avatar }}"/>
+          <span class="relay-sign-up-email">{{ req.session.user.primary_email }}</span>
+          <button class="btn-blue-primary bold ff-Met relay-sign-up-btn private-relay-cta" data-analytics-label="join-the-waitlist-button" data-user-is-signed-up={{ userHasSignedUpForRelay }}>Join the Waitlist</button>
+      </div>
+      <div class="relay-sign-up-confirmation flx flx-col jst-cntr al-cntr">
+        <h2 class="relay-sign-up-headline relay-confirmation-headline">You're on the list!</h2>
+        <p class="relay-confirmation-body"><span class="bold">{{ req.session.user.primary_email }}</span> has been added to the waitlist. We’ll let you know when we have more updates to share about this service.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mw-700">
+    <section class="relay-info relay-bullets">
+      <h4 class="relay-info-subhead masking-options bold ff-Met txt-white">Other email masking options</h4>
+      <ul class="relay-list txt-light-grey">
+        <li>
+          <span>Don’t give out your email address if you don’t have to. No one can steal data that doesn’t exist.</span>
+        </li>
+        <li>
+          <span>Some email providers allow you to create aliases. <a href="https://gmail.googleblog.com/2008/03/2-hidden-ways-to-get-more-from-your.html" class="relay-bullet-link bold" rel="noopener noreferrer nofollow">Gmail offers “plus addressing”</a> and <a href="https://help.yahoo.com/kb/mail/SLN3523.html" class="relay-bullet-link bold" rel="noopener noreferrer nofollow">Yahoo Mail offers disposable email addresses</a>.</span>
+        </li>
+      </ul>
+    </section>
+  </div>
+</main>
