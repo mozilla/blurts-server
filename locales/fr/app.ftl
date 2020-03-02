@@ -485,3 +485,13 @@ known-data-breaches-resolved =
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Fuite récente
 mobile-promo-headline = Installez { -brand-name } sur votre téléphone et votre tablette
+mobile-promo-cta = Obtenir { -brand-name } sur Android et iOS
+promo-lockwise-headline = Emportez vos mots de passe partout
+lockwise-promo-body = Gérez vos identifiants sur tous vos appareils. Accédez-y en toute sécurité depuis votre ordinateur, votre téléphone ou votre tablette.
+promo-lockwise-cta = Installer { -brand-lockwise }
+fpn-promo-headline = Empêchez les sites web et les traqueurs de connaître votre position
+promo-fpn-cta = Obtenir { -brand-fpn }
+monitor-promo-headline = Surveillez les nouvelles fuites de données
+monitor-promo-body = Recevez une alerte la prochaine fois que vos informations personnelles figurent dans une fuite de données connue.
+ecosystem-promo-headline = Tout une gamme de produits qui protègent votre vie privée
+ecosystem-promo-body = Tous les produits { -brand-name } respectent notre « Garantie en matière de données personnelles » : collecter moins de données, les protéger, ne rien cacher.
