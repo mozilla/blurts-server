@@ -5,7 +5,7 @@ const { makeBreachCards } = require("./breaches");
 const { hasUserSignedUpForRelay } = require("./../controllers/utils");
 
 function showRelayCallout(args) {
-  const enLocaleIsSupported = args.data.root.req.supportedLocales.includes("en");
+  const enLocaleIsSupported = args.data.root.req.headers["accept-language"].includes("en");
   const userIsOnRelayWaitList = hasUserSignedUpForRelay(args.data.root.req.user);
   const userIsOnDashboard = args.data.root.whichPartial = "dashboards/breaches-dash";
 
