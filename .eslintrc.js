@@ -35,7 +35,12 @@ module.exports = {
       ],
       env: {
         jest: true,
-      }
+      },
+      globals: {
+        "$": "readonly",
+        "$$": "readonly",
+        "browser": "readonly",
+      },
     },
   ],
   plugins: [

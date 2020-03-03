@@ -11,7 +11,7 @@ services:
     environment:
       - HIBP_KANON_API_TOKEN
       - HIBP_API_TOKEN
-      - FXA_ENABLED
+      - FXA_ENABLED=1
       - LOGOS_ORIGIN=null
       - BREACH_RESOLUTION_ENABLED=false
       - MONITOR_FXA_PASSWORD
@@ -25,8 +25,7 @@ services:
       - "5432"
   migration:
     image: blurts-server_server:latest
-    command: [
-      "chmod", "+x", "./scripts/wait-for-it.sh", "&&", "./scripts/wait-for-it.sh", "postgres:5432", "--", "npm", "run", "db:migrate"]
+    command: bash -c "chmod +x ./scripts/wait-for-it.sh && ./scripts/wait-for-it.sh postgres:5432 -- npm run db:migrate"
     links:
       - postgres
     depends_on:

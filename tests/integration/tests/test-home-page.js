@@ -19,7 +19,11 @@ describe("Firefox Monitor homepage", function() {
   });
 
   it("should look like normal", function() {
-    expect(browser.checkFullPageScreen("Home_Page", {})).to.be.within(0, 9.99);
+    expect(browser.checkFullPageScreen("Home_Page", {
+      hideElements: [
+        $$(".breach-info-wrapper"),
+      ],
+    })).to.be.within(0, 9.99);
   });
 
   it("should load correct number of breaches from an email input", function() {
