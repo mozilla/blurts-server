@@ -40,7 +40,7 @@
       {{#eachFromTo this.verifiedEmails 0 1 }}
         {{> email-card }}
       {{/eachFromTo}}
-      {{#if ./../supportedLocalesIncludeEnglish}}
+      {{#if (showRelayCallout)}}
         <div class="private-relay-dashboard-card">
           <a href="/protect-my-email" class="private-relay-dashboard-card-border flx private-relay-cta" data-analytics-label="join-the-waitlist-link" data-user-is-signed-up={{ ./../userHasSignedUpForRelay }}>
             <div class="private-relay-dashboard-card-content flx">
