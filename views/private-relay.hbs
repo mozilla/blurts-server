@@ -25,7 +25,7 @@
 
   </div>
   <div class="row relay-sign-up-wrapper">
-    <div class="relay-sign-up txt-cntr {{#unless (showRelayCallout)}} email-sent {{/unless}}">
+    <div class="relay-sign-up txt-cntr {{#if (userIsOnRelayWaitList)}} email-sent {{/if}}">
       <div class="relay-sign-up-content flx flx-col jst-cntr">
         <h2 class="relay-sign-up-headline">Join the waitlist for updates</h2>
           <img alt="{{ req.session.user.primary_email }}" class="relay-avatar" src="{{ req.session.user.fxa_profile_json.avatar }}"/>
