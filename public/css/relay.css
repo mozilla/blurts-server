@@ -147,6 +147,7 @@
 
 .private-relay-dashboard-card-content {
   width: 100%;
+  pointer-events: none;
 }
 
 .private-relay-dashboard-card-content::before {
