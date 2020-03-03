@@ -30,7 +30,7 @@
         <h2 class="relay-sign-up-headline">Join the waitlist for updates</h2>
           <img alt="{{ req.session.user.primary_email }}" class="relay-avatar" src="{{ req.session.user.fxa_profile_json.avatar }}"/>
           <span class="relay-sign-up-email">{{ req.session.user.primary_email }}</span>
-          <button class="btn-blue-primary bold ff-Met relay-sign-up-btn private-relay-cta" data-analytics-label="join-the-waitlist-button" data-user-is-signed-up={{ userHasSignedUpForRelay }}>Join the Waitlist</button>
+          <button class="btn-blue-primary bold ff-Met relay-sign-up-btn private-relay-cta" data-analytics-label="join-the-waitlist-button" {{#if (userIsOnRelayWaitList)}} data-user-is-signed-up="true" {{/if}}>Join the Waitlist</button>
       </div>
       <div class="relay-sign-up-confirmation flx flx-col jst-cntr al-cntr">
         <h2 class="relay-sign-up-headline relay-confirmation-headline">You're on the list!</h2>
