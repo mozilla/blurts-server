@@ -15,6 +15,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox taqoya'l
 terms-and-privacy = Taq Ojqanem chuqa' Ichinanem
 GitHub-link-title = GitHub
 error-scan-page-token = Xatojtob'ej xatz'ajwachib'ej yalan k'ïy kochochib'al taqoya'l pa jun ti mej. Richin ajikomal xeqaq'ät ri k'a nimakoj xe'akanoj. Yatikïr natojtob'ej chik pa jun ti ramaj.
@@ -510,3 +513,7 @@ progress-message-4 = <span>¡Nik'is yan!</span> B'ama yatapon yan akuchi' yab'eq
 
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = K'ak'a'
+promo-lockwise-headline = Xab'akuchi' ke'ak'waj ri ewan taq atzij
+promo-lockwise-cta = Tik'ul { -brand-lockwise }
+ecosystem-promo-headline = Nuchajij ak'aslem pa k'amab'ey rik'in taq tikojil nikinab'eysaj ri awichinane
+promo-ecosystem-cta = Ketz'et Ronojel Tikojil
