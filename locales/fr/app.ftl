@@ -491,6 +491,7 @@ promo-lockwise-headline = Emportez vos mots de passe partout
 lockwise-promo-body = Gérez vos identifiants sur tous vos appareils. Accédez-y en toute sécurité depuis votre ordinateur, votre téléphone ou votre tablette.
 promo-lockwise-cta = Installer { -brand-lockwise }
 fpn-promo-headline = Empêchez les sites web et les traqueurs de connaître votre position
+promo-fpn-body = { -brand-fpn } tient à distance les sites et collecteurs de données qui vous profilent avec leurs annonces, en masquant votre véritable adresse IP.
 promo-fpn-cta = Obtenir { -brand-fpn }
 monitor-promo-headline = Surveillez les nouvelles fuites de données
 monitor-promo-body = Recevez une alerte la prochaine fois que vos informations personnelles figurent dans une fuite de données connue.
