@@ -3,6 +3,7 @@
 /* eslint-disable strict */
 
 const { join } = require("path");
+require("dotenv").config();
 
 exports.config = {
     //
@@ -92,7 +93,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: "http://localhost:6060",
+    baseUrl: process.env.SERVER_URL,
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,

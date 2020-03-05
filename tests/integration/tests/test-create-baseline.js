@@ -9,7 +9,7 @@ describe("Firefox Monitor homepage", function() {
     this.retries(2);
 
     beforeEach(function() {
-      browser.url("http://localhost:6060/");
+      browser.url("/");
     });
 
     it("should look like normal", function() {

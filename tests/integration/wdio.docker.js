@@ -23,7 +23,11 @@ exports.config = Object.assign({}, common.config, {
       startDelay: 2000,
     },
     options: {
-      e: ["MOZ_HEADLESS=1", "MALINATOR_PASSWORD=${MAILINATOR_PASSWORD}"],
+      e: ["MOZ_HEADLESS=1",
+          "MALINATOR_PASSWORD=${MAILINATOR_PASSWORD}",
+          "HIBP_KANON_API_TOKEN=${HIBP_KANON_API_TOKEN}",
+          "HIBP_API_TOKEN=${HIBP_API_TOKEN}",
+        ],
       p: ["4444:4444", "5900:5900"],
       shmSize: "2g",
       network: "host",
