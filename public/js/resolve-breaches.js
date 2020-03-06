@@ -29,50 +29,74 @@
     return;
   }
 
-
-  function sendResolutionPing(eventAction, eventLabel) {
+  function sendBreachDetailAnalyticsPing(eventCategory, eventAction, eventLabel) {
     if (typeof(ga) !== "undefined") {
-      ga("send", "event", "Breach Resolution", eventAction, eventLabel);
+      ga("send", "event", eventCategory, eventAction, eventLabel);
     }
   }
 
 
-  // set up IntersectionObserver to watch for resolution event triggers
+  // set up IntersectionObserver to watch for event triggers on breach-details pages
   // and send "View" ping when they become visible in the viewport
-  const availableIntersectionObserver = ("IntersectionObserver" in window);
   const resolveBtns = document.querySelectorAll(".resolve-button, a.what-to-do-next");
+  const productPromos = document.querySelectorAll(".product-promo-wrapper");
+  const gaEventTriggers = [...productPromos, ...resolveBtns];
+
+  const availableIntersectionObserver = ("IntersectionObserver" in window);
   const gaAvailable = typeof(ga) !== undefined;
 
-  if (availableIntersectionObserver && resolveBtns && gaAvailable) {
-    const onResolveButtonsComingIntoView = (entries, observer) => {
+  // TODO: Store this in the dataset of breach resolution event triggers
+  const resolutionEventCategory = "Breach Resolution";
+
+  if (availableIntersectionObserver && gaEventTriggers && gaAvailable) {
+    const onEventTriggersComingIntoView = (entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          sendResolutionPing("View", entry.target.dataset.analyticsLabel);
+          const entryData = entry.target.dataset;
+          const analyticsLabel = entryData.analyticsLabel;
+          if (entry.target.classList.contains("product-promo-wrapper")) {
+            sendBreachDetailAnalyticsPing(entryData.eventCategory, "View", analyticsLabel);
+            observer.unobserve(entry.target);
+            return;
+          }
+          sendBreachDetailAnalyticsPing(resolutionEventCategory, "View", analyticsLabel);
           observer.unobserve(entry.target);
+          return;
         }
       });
     };
 
-    const observer = new IntersectionObserver(onResolveButtonsComingIntoView, { rootMargin: "0px"});
-    resolveBtns.forEach(btn => {
-      observer.observe(btn);
+    const observer = new IntersectionObserver(onEventTriggersComingIntoView, { rootMargin: "0px"});
+    gaEventTriggers.forEach(el => {
+      observer.observe(el);
     });
   }
 
   // Fallback for older browsers without IntersectionObserver:
   // Send "View - No IntersectionObserver" pings on page load, regardless
   // of whether or not the triggers are actually visible.
-  if (!availableIntersectionObserver && resolveBtns && gaAvailable) {
-    resolveBtns.forEach(btn => {
-      sendResolutionPing("View - No IntersectionObserver", btn.dataset.analyticsLabel);
+  if (!availableIntersectionObserver && gaEventTriggers && gaAvailable) {
+    gaEventTriggers.forEach(el => {
+      const elemData = el.dataset;
+      if (el.classList.contains("product-promo-wrappper")) {
+        return sendBreachDetailAnalyticsPing(elemData.eventCategory, "View - No IntersectionObserver", elemData.analyticsLabel);
+      }
+      sendBreachDetailAnalyticsPing(resolutionEventCategory, "View - No IntersectionObserver", elemData.analyticsLabel);
     });
   }
+
+  productPromos.forEach(promo => {
+    promo.addEventListener("click", () => {
+      const promoData = promo.dataset;
+      sendBreachDetailAnalyticsPing(promoData.eventCategory, "Engage", promoData.analyticsLabel);
+    });
+  });
 
 
   resolveBtns.forEach(btn => {
     btn.addEventListener("click", async(e) => {
       if (gaAvailable) {
-        sendResolutionPing("Engage", btn.dataset.analyticsLabel);
+        sendBreachDetailAnalyticsPing(resolutionEventCategory, "Engage", btn.dataset.analyticsLabel);
       }
 
       // If "What to do next" link is clicked, scroll to the list of recommendations.

@@ -174,6 +174,8 @@ function getBreachDetail(args) {
     };
   }
 
+  // Determine which product promo to show
+  breachDetail.promo = getPromoStrings(args);
 
   const BREACH_RESOLUTION_ENABLED = (AppConstants.BREACH_RESOLUTION_ENABLED === "1");
   if (BREACH_RESOLUTION_ENABLED && args.data.root.affectedEmails) {

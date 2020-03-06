@@ -1,0 +1,11 @@
+        <a class="product-promo-wrapper {{#if promo.fxaEntrypoint}} open-oauth{{/if}}" href="{{ promo.promoUrl }}" data-event-category="Product Promotions" data-analytics-label="{{ promo.promoId}}" {{#if promo.fxaEntrypoint}} data-entrypoint="fx-monitor-promo" data-flow-id="" data-flow-begin-time="" {{/if}} target="_blank">
+          <div class="product-promo drop-shadow flx al-cntr jst-cntr {{ promo.promoId }}">
+            <div class="promo-content flx-row">
+              <div class="promo-copy flx-flx-col">
+                <h3 class="promo-headline ff-Met">{{ promo.promoHeadline }}</h3>
+                <p class="promo-body">{{ promo.promoBody }}</p>
+                <button class="promo-cta ff-Met btn-transparent">{{ promo.promoCta }}</button>
+              </div>
+            </div>
+          </div>
+        </a>
