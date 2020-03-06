@@ -1,6 +1,7 @@
 "use strict";
 
 /* global ga */
+/* global doOauth */
 
 (()=> {
   function trapFocusInModal(modal, trapFocusInModal=true) {
@@ -86,9 +87,13 @@
   }
 
   productPromos.forEach(promo => {
-    promo.addEventListener("click", () => {
+    promo.addEventListener("click", (e) => {
       const promoData = promo.dataset;
       sendBreachDetailAnalyticsPing(promoData.eventCategory, "Engage", promoData.analyticsLabel);
+      if (promo.classList.contains("open-oauth")) {
+        e.preventDefault();
+        doOauth(promo);
+      }
     });
   });
 
