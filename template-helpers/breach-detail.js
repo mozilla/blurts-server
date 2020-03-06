@@ -2,9 +2,9 @@
 
 const AppConstants = require("./../app-constants");
 
-const { LocaleUtils } = require("./../locale-utils");
-const { prettyDate } = require("./hbs-helpers");
+const { prettyDate, localize } = require("./hbs-helpers");
 const { getAllPriorityDataClasses, getAllGenericRecommendations, getFourthPasswordRecommendation } = require("./recommendations");
+const { getPromoStrings } = require("./product-promos");
 
 
 function addRecommendationUtmParams(cta) {
@@ -28,11 +28,6 @@ function addRecommendationUtmParams(cta) {
   catch (e) {
     return cta.ctaHref;
   }
-}
-
-
-function localize(locales, stringId, args) {
-  return LocaleUtils.fluentFormat(locales, stringId, args);
 }
 
 
@@ -267,5 +262,4 @@ module.exports = {
   getBreachCategory,
   getSortedDataClasses,
   getBreachTitle,
-  localize,
 };
