@@ -15,6 +15,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox account
 terms-and-privacy = Taq taqanem chi'l echeb'alil
 GitHub-link-title = GitHub
 error-scan-page-token = Ktajin kaq'axwachirisaj sib'alaj k'i taqoqxa'nib'al pa jun nitz' ramaj. Rumal taq chajinem atqaq'atem chech k'ak' taq tzukunem. Chab 'ana' chi jumul pa jutz'it.
@@ -58,6 +61,7 @@ compromised-accounts = Taq kemb'i'aj k'o k'eyowal chi rij:
 compromised-data = Taq juq'attzij k'o k'axk'olil chi rij:
 unsub-headline = Uchupik utz'ib'axik ib' pa { -product-name-nowrap }
 unsub-blurb = Wa' kuchup le taqoqxa'n pa ucholajil { -product-name-nowrap } mak'u kak'ulaj ta chi taq na'b'anem are taq kq'alajisax k'ak' taq k'eyowal.
+unsub-button = Uchupik utz'ib'axik ib'
 
 ## What to do after data breach tips
 
