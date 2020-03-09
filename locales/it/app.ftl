@@ -473,6 +473,17 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nuova
-promo-fx-mobile-headline = Privacy e velocità sui dispositivi mobili
-promo-fx-mobile-body = Il browser { -brand-name } è velocissimo, riservato per impostazione predefinita e blocca oltre 2000 elementi traccianti online.
-promo-fx-mobile-cta = Scarica { -brand-name } per dispositivi mobili
+mobile-promo-headline = Porta { -brand-name } sul tuo telefono e tablet
+mobile-promo-body = Navigazione veloce, privata e sicura ovunque tu vada. Trova { -brand-name } in Google Play e nell‘App Store.
+mobile-promo-cta = Installa { -brand-name } su Android e iOS
+promo-lockwise-headline = Porta le tue password sempre con te
+lockwise-promo-body = Tieni traccia delle tue credenziali di accesso su tutti i dispositivi. Accedi a questi dati in modo sicuro dal tuo computer, telefono o tablet.
+promo-lockwise-cta = Installa { -brand-lockwise }
+fpn-promo-headline = Impedisci a siti web ed elementi traccianti di conoscere la tua posizione
+promo-fpn-body = { -brand-fpn }, mascherando il tuo vero indirizzo IP, tiene alla larga siti web e società di raccolta dati che ti profilano attraverso annunci pubblicitari.
+promo-fpn-cta = Installa { -brand-fpn }
+monitor-promo-headline = Scopri le nuove violazioni di dati
+monitor-promo-body = Ricevi una notifica la prossima volta che le tue informazioni personali vengono esposte in una violazione di dati conosciuta.
+ecosystem-promo-headline = Proteggi la tua vita in rete con prodotti che mettono la privacy al primo posto
+ecosystem-promo-body = Tutti i prodotti { -brand-name } rispettano la nostra “Garanzia sui dati personali”: raccogli meno dati, mantienili al sicuro, nessun segreto.
+promo-ecosystem-cta = Vedi tutti i prodotti
