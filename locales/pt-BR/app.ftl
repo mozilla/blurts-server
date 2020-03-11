@@ -210,7 +210,7 @@ appears-in-x-breaches =
        *[other] Aparece em { $breachCount } vazamentos conhecidos.
     }
 check-for-breaches = Verificar se há vazamentos
-find-out-what-hackers-know = Descubra o que os hackers já sabem sobre você. Saiba como estar um passo à frente deles.
+find-out-what-hackers-know = Descubra o que os hackers já sabem sobre você. Saiba como estar um passo à frente.
 search-for-your-email = Pesquise seu endereço de e-mail em vazamentos de dados tornados públicos desde 2007.
 back-to-top = Voltar ao início
 comm-opt-0 = Enviar e-mail para mim se um de meus endereços de e-mail abaixo aparecer em um vazamento de dados.
