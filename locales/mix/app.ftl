@@ -90,6 +90,7 @@ about-fxm-headline = Tsa ña { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Nixi sachuin { -product-name }
 how-fxm-1-headline = A kunu ndukuku ña'a
+how-fxm-2-headline = Ntachaa takua kuncheu ana nche'e korreoku
 
 ## What to do after data breach tips
 
