@@ -8,14 +8,7 @@
   },
   "participate": {
     "home": "https://github.com/mozilla/blurts-server",
-    "docs": "https://github.com/mozilla/blurts-server/blob/master/README.md",
-    "irc": "irc://irc.mozilla.org/#breach-alerts",
-    "irc-contacts": [
-      "groovecoder",
-      "lesleynorton",
-      "nhnt11",
-      "pdehaan"
-    ]
+    "docs": "https://github.com/mozilla/blurts-server/blob/master/README.md"
   },
   "bugs": {
     "list": "https://github.com/mozilla/blurts-server/issues",
