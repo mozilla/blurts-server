@@ -5,6 +5,10 @@ const HIBP = require("../hibp");
 const RemoteSettings = require("../lib/remote-settings");
 
 
+const SKIP_LIST = [
+  "factual.com",
+];
+
 if (
   !AppConstants.FX_REMOTE_SETTINGS_WRITER_USER ||
   !AppConstants.FX_REMOTE_SETTINGS_WRITER_PASS ||
@@ -18,8 +22,9 @@ if (
 (async () => {
   const allHibpBreaches = await HIBP.req("/breaches");
   const verifiedSiteBreaches = HIBP.filterBreaches(allHibpBreaches.body);
+  const unskippedVerifiedSiteBreaches = verifiedSiteBreaches.filter(breach => !SKIP_LIST.includes(breach.Domain));
 
-  const newBreaches = await RemoteSettings.whichBreachesAreNotInRemoteSettingsYet(verifiedSiteBreaches);
+  const newBreaches = await RemoteSettings.whichBreachesAreNotInRemoteSettingsYet(unskippedVerifiedSiteBreaches);
 
   if (newBreaches.length <= 0) {
     console.log("No new breaches detected.");
