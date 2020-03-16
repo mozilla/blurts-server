@@ -472,6 +472,12 @@ resolve-top-notification = E-mailová adresa { $affectedEmail } se objevila v to
 ##
 
 marking-this-subhead = Označení tohoto úniku jako vyřešeného
+mark-as-resolve-button = Označit jako vyřešené
+marked-as-resolved-label = Označeno jako vyřešené
+undo-button = Zpět
+confirmation-1-subhead = Výborně! Právě jste vyřešili svůj první únik.
+confirmation-2-body = Děláte důležité kroky na cestě k zabezpečení svých online účtů.
+generic-confirmation-subhead = Tento únik byl označen za vyřešený
 progress-intro-subhead = Nově ve { -product-name(case: "loc") }: Označení úniků jako vyřešené
 progress-intro-message = Po přezkoumání podrobností o úniku a přijetí opatření k ochraně vašich osobních údajů můžete označit úniky jako vyřešené.
 
@@ -482,3 +488,6 @@ progress-intro-message = Po přezkoumání podrobností o úniku a přijetí opa
 ##
 
 resolve-this-breach-link = Vyřešit tento únik
+show-resolved-button = Zobrazit vyřešené
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Nový
