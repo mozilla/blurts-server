@@ -5,7 +5,7 @@ services:
       context: ../..
       dockerfile: tests/integration/Dockerfile.integration-test.yml
     ports:
-      - "6060:6060"
+      - ${PORT}:${PORT}
     depends_on:
       - postgres
     environment:
@@ -24,7 +24,7 @@ services:
     expose:
       - "5432"
   migration:
-    image: blurts-server_server:latest
+    image: integration_server:latest
     command: bash -c "chmod +x ./scripts/wait-for-it.sh && ./scripts/wait-for-it.sh postgres:5432 -- npm run db:migrate"
     links:
       - postgres
