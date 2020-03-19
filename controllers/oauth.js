@@ -23,6 +23,8 @@ function init(req, res, next, client = FxAOAuthClient) {
   const url = new URL(client.code.getUri({state}));
   const fxaParams = new URL(req.url, AppConstants.SERVER_URL);
 
+  req.session.returnTo = "/scans";
+
   url.searchParams.append("access_type", "offline");
   url.searchParams.append("action", "email");
 
