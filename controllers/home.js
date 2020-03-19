@@ -68,7 +68,7 @@ async function home(req, res) {
 }
 
 function isExperiment(experimentBranch) {
-  if (experimentBranch) { return true; }
+  if (experimentBranch === "vB" || experimentBranch === "vC") { return true; }
   return false;
 }
 
@@ -80,7 +80,7 @@ function getExperimentBranch(req, sorterNum) {
 
   // If URL param has experimentBranch entry, use that branch;
   if (req.query.experimentBranch) {
-    if (req.query.experimentBranch !== "vB" && req.query.experimentBranch !== "vC" ) {
+    if (req.query.experimentBranch !== "vA" && req.query.experimentBranch !== "vB" && req.query.experimentBranch !== "vC" ) {
       return false;
     } else {
       return req.query.experimentBranch;
@@ -103,7 +103,7 @@ function getExperimentBranch(req, sorterNum) {
     return "vC";
   }
 
-  return false;
+  return "vA";
 }
 
 function getAllBreaches(req, res) {
