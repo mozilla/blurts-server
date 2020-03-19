@@ -17,9 +17,9 @@ async function home(req, res) {
   const experimentBranch = getExperimentBranch(req, coinFlipNumber);
 
   const isUserInExperiment = isExperiment(experimentBranch);
-  let experimentBranchA = false;
-  if (experimentBranch === "branchA" && isUserInExperiment) {
-    experimentBranchA = true;
+  let experimentBranchB = false;
+  if (experimentBranch === "vB" && isUserInExperiment) {
+    experimentBranchB = true;
   }
 
   let featuredBreach = null;
@@ -51,7 +51,7 @@ async function home(req, res) {
       pageToken: formTokens.pageToken,
       csrfToken: formTokens.csrfToken,
       experimentBranch,
-      experimentBranchA,
+      experimentBranchB,
     });
   }
 
@@ -63,7 +63,7 @@ async function home(req, res) {
     csrfToken: formTokens.csrfToken,
     experimentBranch,
     isUserInExperiment,
-    experimentBranchA,
+    experimentBranchB,
   });
 }
 
@@ -80,7 +80,7 @@ function getExperimentBranch(req, sorterNum) {
 
   // If URL param has experimentBranch entry, use that branch;
   if (req.query.experimentBranch) {
-    if (req.query.experimentBranch !== "branchA" && req.query.experimentBranch !== "branchB" ) {
+    if (req.query.experimentBranch !== "vB" && req.query.experimentBranch !== "vC" ) {
       return false;
     } else {
       return req.query.experimentBranch;
@@ -94,13 +94,13 @@ function getExperimentBranch(req, sorterNum) {
 
 
   if (sorterNum <= 33.333) {
-    req.session.experimentBranch = "branchA";
-    return "branchA";
+    req.session.experimentBranch = "vB";
+    return "vB";
   }
 
   if (sorterNum <= 66.666) {
-    req.session.experimentBranch = "branchB";
-    return "branchB";
+    req.session.experimentBranch = "vC";
+    return "vC";
   }
 
   return false;

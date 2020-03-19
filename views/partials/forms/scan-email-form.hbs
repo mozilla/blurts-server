@@ -10,7 +10,7 @@
   {{#if isUserInExperiment}}
   <div class="input-group create-fxa-wrapper">
       <label for="createFxaCheckbox" class="create-fxa-checkbox-wrapper">
-        <input {{#unless experimentBranchA }} checked {{/unless}} class="create-fxa-checkbox-input" id="createFxaCheckbox" type="checkbox" />
+        <input {{#unless experimentBranchB }} checked {{/unless}} class="create-fxa-checkbox-input" id="createFxaCheckbox" type="checkbox" />
         <span class="create-fxa-checkbox-checkmark"></span>
       </label>
       <p>{{ getString "stay-safe-get-alerts" }}</p>
