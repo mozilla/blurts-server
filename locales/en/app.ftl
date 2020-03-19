@@ -698,5 +698,3 @@ ecosystem-promo-headline = Protect your life online with privacy-first products
 ecosystem-promo-body = 
   All { -brand-name } products honor our Personal Data Promise: Take less. Keep it safe. No secrets.
 promo-ecosystem-cta = See All Products
-
-stay-safe-get-alerts = Stay safe: get automated alerts when an account is breached.
