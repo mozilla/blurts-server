@@ -250,6 +250,34 @@ function addBentoObserver(){
   }
 }
 
+function buildExperimentUtms(checked) {
+
+  const experimentBranch = document.body.dataset.experiment;
+  let fxaOptAnswer = "opt_out";
+  if (checked) {
+    fxaOptAnswer = "opt_in";
+  }
+
+  // fx-monitor-alert-me-blue-btn
+  const entrypoint = "fx-monitor-alert-me-blue-link";
+  const entrypoint_experiment = "growthuserflow1";
+  const entrypoint_variation = experimentBranch;
+  const utm_source = document.body.dataset.utm_source;
+  const utm_campaign = "growthuserflow1";
+  const utm_content = fxaOptAnswer;
+  const utm_term = experimentBranch;
+  const form_type = "email";
+  return {
+    entrypoint_variation,
+    entrypoint_experiment,
+    utm_source,
+    utm_campaign,
+    utm_content,
+    utm_term,
+    form_type,
+  };
+}
+
 ( async() => {
   document.addEventListener("touchstart", function(){}, true);
   const win = window;
@@ -370,6 +398,8 @@ function addBentoObserver(){
   const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
   dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));
 
+
+
   if (document.body.dataset.experiment) {
     const submitBtn = document.querySelector("#scan-user-email input[type='submit']");
     const createFxaCheckbox = document.getElementById("createFxaCheckbox");
@@ -377,11 +407,17 @@ function addBentoObserver(){
     submitBtn.addEventListener("click", (e)=> {
       if (createFxaCheckbox.checked) {
         e.preventDefault();
+        const utms = buildExperimentUtms(createFxaCheckbox.checked);
+        // console.log(utms);
         if (typeof(ga) !== "undefined") {
-          // Send "Click" ping for #see-additional-recs click
-          // ga("send", "event", "Breach Details: See Additional Recommendations" , "Click", "See Additional Recommendations");
-          // Send "View" pings for any CTAs that become visible on #see-additional-recs click
-          // sendRecommendationPings(".overflow-rec-cta");
+          ga("send", "event", "" , "Click", "");
+          // ga('send', {
+          //   hitType: 'event',
+          //   eventCategory: 'Video',
+          //   eventAction: 'play',
+          //   eventLabel: 'cats.mp4'
+          // });
+
         }
         doOauth(e.target);
       }
