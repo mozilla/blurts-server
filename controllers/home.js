@@ -13,6 +13,15 @@ async function home(req, res) {
     csrfToken: req.csrfToken(),
   };
 
+  const coinFlipNumber = Math.random() * 100;
+  const experimentBranch = getExperimentBranch(req, coinFlipNumber);
+
+  const isUserInExperiment = isExperiment(experimentBranch);
+  let experimentBranchA = false;
+  if (experimentBranch === "branchA" && isUserInExperiment) {
+    experimentBranchA = true;
+  }
+
   let featuredBreach = null;
   let scanFeaturedBreach = false;
 
@@ -41,6 +50,8 @@ async function home(req, res) {
       scanFeaturedBreach,
       pageToken: formTokens.pageToken,
       csrfToken: formTokens.csrfToken,
+      experimentBranch,
+      experimentBranchA,
     });
   }
 
@@ -50,7 +61,49 @@ async function home(req, res) {
     scanFeaturedBreach,
     pageToken: formTokens.pageToken,
     csrfToken: formTokens.csrfToken,
+    experimentBranch,
+    isUserInExperiment,
+    experimentBranchA,
   });
+}
+
+function isExperiment(experimentBranch) {
+  if (experimentBranch) { return true; }
+  return false;
+}
+
+function getExperimentBranch(req, sorterNum) {
+
+  if (!req.headers["accept-language"].includes("en") ){
+    return false;
+  }
+
+  // If URL param has experimentBranch entry, use that branch;
+  if (req.query.experimentBranch) {
+    if (req.query.experimentBranch !== "branchA" && req.query.experimentBranch !== "branchB" ) {
+      return false;
+    } else {
+      return req.query.experimentBranch;
+    }
+  }
+
+  // If user was already assigned a branch, stay in that branch;
+  if (req.session.experimentBranch) { return req.session.experimentBranch; }
+
+  // Split into four categories
+
+
+  if (sorterNum <= 33.333) {
+    req.session.experimentBranch = "branchA";
+    return "branchA";
+  }
+
+  if (sorterNum <= 66.666) {
+    req.session.experimentBranch = "branchB";
+    return "branchB";
+  }
+
+  return false;
 }
 
 function getAllBreaches(req, res) {

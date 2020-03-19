@@ -369,4 +369,24 @@ function addBentoObserver(){
 
   const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
   dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));
+
+  if (document.body.dataset.experiment) {
+    const submitBtn = document.querySelector("#scan-user-email input[type='submit']");
+    const createFxaCheckbox = document.getElementById("createFxaCheckbox");
+
+    submitBtn.addEventListener("click", (e)=> {
+      if (createFxaCheckbox.checked) {
+        e.preventDefault();
+        if (typeof(ga) !== "undefined") {
+          // Send "Click" ping for #see-additional-recs click
+          // ga("send", "event", "Breach Details: See Additional Recommendations" , "Click", "See Additional Recommendations");
+          // Send "View" pings for any CTAs that become visible on #see-additional-recs click
+          // sendRecommendationPings(".overflow-rec-cta");
+        }
+        doOauth(e.target);
+      }
+    });
+  }
+
+
 })();

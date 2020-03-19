@@ -7,6 +7,15 @@
     <input id="scan-email" class="input-group-field email-to-hash" type="email" name="email" placeholder="{{ getString "scan-placeholder" }}" aria-label="{{ getString "scan-placeholder" }}" autocomplete="off" />
     <span id="invalid-email-message" class="error-message">{{ getString "scan-error" }}</span>
   </div>
+  {{#if isUserInExperiment}}
+  <div class="input-group create-fxa-wrapper">
+      <label for="createFxaCheckbox" class="create-fxa-checkbox-wrapper">
+        <input {{#unless experimentBranchA }} checked {{/unless}} class="create-fxa-checkbox-input" id="createFxaCheckbox" type="checkbox" />
+        <span class="create-fxa-checkbox-checkmark"></span>
+      </label>
+      <p>{{ getString "stay-safe-get-alerts" }}</p>
+  </div>
+  {{/if}}
   <input type="hidden" name="emailHash" />
   {{#if scanFeaturedBreach}}
     <input id="featured" type="hidden" name="featuredBreach" value="{{ featuredBreach.Name }}"/>
