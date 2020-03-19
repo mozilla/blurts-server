@@ -252,30 +252,13 @@ function addBentoObserver(){
 
 function buildExperimentUtms(checked) {
 
-  const experimentBranch = document.body.dataset.experiment;
   let fxaOptAnswer = "opt_out";
   if (checked) {
     fxaOptAnswer = "opt_in";
   }
 
   // fx-monitor-alert-me-blue-btn
-  const entrypoint = "fx-monitor-alert-me-blue-link";
-  const entrypoint_experiment = "growthuserflow1";
-  const entrypoint_variation = experimentBranch;
-  const utm_source = document.body.dataset.utm_source;
-  const utm_campaign = "growthuserflow1";
-  const utm_content = fxaOptAnswer;
-  const utm_term = experimentBranch;
-  const form_type = "email";
-  return {
-    entrypoint_variation,
-    entrypoint_experiment,
-    utm_source,
-    utm_campaign,
-    utm_content,
-    utm_term,
-    form_type,
-  };
+  document.body.dataset.utm_content = fxaOptAnswer;
 }
 
 ( async() => {
@@ -401,13 +384,23 @@ function buildExperimentUtms(checked) {
 
 
   if (document.body.dataset.experiment) {
+
     const submitBtn = document.querySelector("#scan-user-email input[type='submit']");
     const createFxaCheckbox = document.getElementById("createFxaCheckbox");
 
+    createFxaCheckbox.addEventListener("change", (e)=> {
+      document.body.dataset.utm_content = "opt_out";
+      if (event.target.checked) {
+        document.body.dataset.utm_content = "opt_in";
+      }
+    });
+
     submitBtn.addEventListener("click", (e)=> {
+      document.body.dataset.utm_content = "opt_out";
       if (createFxaCheckbox.checked) {
         e.preventDefault();
-        const utms = buildExperimentUtms(createFxaCheckbox.checked);
+        document.body.dataset.utm_content = "opt_in";
+        // const utms = buildExperimentUtms(createFxaCheckbox.checked);
         // console.log(utms);
         if (typeof(ga) !== "undefined") {
           ga("send", "event", "" , "Click", "");
