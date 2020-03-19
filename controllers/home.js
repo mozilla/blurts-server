@@ -18,7 +18,7 @@ async function home(req, res) {
 
   const isUserInExperiment = isExperiment(experimentBranch);
   let experimentBranchB = false;
-  if (experimentBranch === "vB" && isUserInExperiment) {
+  if (experimentBranch === "vb" && isUserInExperiment) {
     experimentBranchB = true;
   }
 
@@ -68,7 +68,7 @@ async function home(req, res) {
 }
 
 function isExperiment(experimentBranch) {
-  if (experimentBranch === "vB" || experimentBranch === "vC") { return true; }
+  if (experimentBranch === "vb" || experimentBranch === "vc") { return true; }
   return false;
 }
 
@@ -80,7 +80,7 @@ function getExperimentBranch(req, sorterNum) {
 
   // If URL param has experimentBranch entry, use that branch;
   if (req.query.experimentBranch) {
-    if (req.query.experimentBranch !== "vA" && req.query.experimentBranch !== "vB" && req.query.experimentBranch !== "vC" ) {
+    if (req.query.experimentBranch !== "va" && req.query.experimentBranch !== "vb" && req.query.experimentBranch !== "vc" ) {
       return false;
     } else {
       return req.query.experimentBranch;
@@ -90,20 +90,18 @@ function getExperimentBranch(req, sorterNum) {
   // If user was already assigned a branch, stay in that branch;
   if (req.session.experimentBranch) { return req.session.experimentBranch; }
 
-  // Split into four categories
-
-
+  // Split into three categories
   if (sorterNum <= 33.333) {
-    req.session.experimentBranch = "vB";
-    return "vB";
+    req.session.experimentBranch = "vb";
+    return "vb";
   }
 
   if (sorterNum <= 66.666) {
-    req.session.experimentBranch = "vC";
-    return "vC";
+    req.session.experimentBranch = "vc";
+    return "vc";
   }
 
-  return "vA";
+  return "va";
 }
 
 function getAllBreaches(req, res) {
