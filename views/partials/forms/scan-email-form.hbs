@@ -24,7 +24,7 @@
     {{#if featuredBreach}}
       <input type="submit" value="{{ getString "find-out" }}"/>
     {{else}}
-      <input type="submit" value="{{ getString "check-for-breaches" }}"/>
+      <input {{#if isUserInExperiment}} {{> analytics/fxa id="fx-monitor-check-for-breaches-blue-btn" }} {{/if}} type="submit" value="{{ getString "check-for-breaches" }}"/>
     {{/if}}
       {{> forms/loader }}
   </div>
