@@ -112,7 +112,7 @@ monitor-your-online-accounts = 使用 { -brand-fxa } 訂閱帳號外洩資訊
 stay-alert = 隨時注意最新的資料外洩事件
 if-your-info = 若您的資訊出現在新的資料外洩事件中，我們會通知您。
 search-all-emails = 搜尋您使用的信箱帳號，看看是否曾發生相關資料外洩事件，也在有新威脅時收到通知。
-monitor-several-emails = 監控多個電子郵件信箱
+monitor-several-emails = 監控多組電子郵件信箱
 take-action = 採取行動，保護帳號
 keep-your-data-safe = 看看做哪些事情，就能保護您的資料不受網路犯罪影響。
 website-breach = 網站資訊外洩
@@ -284,7 +284,7 @@ steps-to-protect = 採取行動來保護線上身分
 take-further-steps = 採取更多行動來保護身分資料
 alert-about-new-breaches = 有新的外洩事件時通知我
 see-if-youve-been-part = 看看您是否也處於線上資料外洩事件之中。
-get-ongoing-breach-monitoring = 持續針對多個電子郵件信箱，監控資料外洩事件。
+get-ongoing-breach-monitoring = 持續針對多組電子郵件信箱監控資料外洩事件。
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = 找找看
 new-unsub-error = 您可以從任何一封 { -product-name } 寄出的郵件取消訂閱。
