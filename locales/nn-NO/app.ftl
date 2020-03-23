@@ -15,6 +15,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox-konto
 terms-and-privacy = Vilkår og personvern
 GitHub-link-title = GitHub
 error-scan-page-token = Du freista å skanne for mange e-postadresser på kort tid. Av tryggingsårsaker har vi mellombels blokkert deg frå nye søk. Du vil kunne gjere nye søk seinare.
@@ -119,7 +122,7 @@ latest-breach = SISTE DATALEKKASJE SOM ER LAGT TIL
 # Link title
 more-about-this-breach = Meir om denne datalekkasjen
 take-control = Ta tilbake kontrollen over personopplysningane dine.
-cant-stop-hackers = Du kan ikkje hindre hackarar i å hacke. Men du kan unngå dårlega vanar som gjer det lett for dei.
+cant-stop-hackers = Du kan ikkje hindre hackarar i å hacke. Men du kan unngå dårlege vanar som gjer det lett for dei.
 read-more-tips = Her er fleire tryggingstips
 how-hackers-work = Forstå korleis hackarar jobbar
 monitor-your-online-accounts = Registrer deg for overvaking av datalekkasjar med ein { -brand-fxa }.
@@ -128,7 +131,7 @@ if-your-info = Om din informasjon dukkar opp i ein ny datalekkasje, sender vi de
 search-all-emails = Søk gjennom alle e-postadressene dine for datalekkasjar og få varsel om nye truslar.
 monitor-several-emails = Overvak fleire e-postadresser
 take-action = Beskytt kontoane dine aktivt
-keep-your-data-safe = Finn ut kva du må gjere for å beskytte dataa dine frå cyberkriminelle.
+keep-your-data-safe = Finn ut kva du må gjere for å beskytte dine data frå cyberkriminelle.
 website-breach = Nettstadlekkasje
 sensitive-breach = Sensitiv nettstadlekkasje
 data-aggregator-breach = Datainnsamlingslekkasje
@@ -529,6 +532,17 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Ny
-promo-fx-mobile-headline = Personvern og fart på mobilen
-promo-fx-mobile-body = Nettlesaren { -brand-name } er superrask, privat som standard, og blokkerer over 2 000 sporfølgjarar på nettet.
-promo-fx-mobile-cta = Hent { -brand-name } mobil
+mobile-promo-headline = Ta med { -brand-name } til telefonen og nettbrettet
+mobile-promo-body = Rask, privat og trygg surfing overalt. Finn { -brand-name } i Google Play og App Store.
+mobile-promo-cta = Få { -brand-name } på Android og iOS
+promo-lockwise-headline = Ta med deg passorda dine overalt
+lockwise-promo-body = Hald oversikt over innloggingane dine på alle einingar. Få trygg tilgang til dei frå datamaskina di, telefonen din eller nettbrettet ditt.
+promo-lockwise-cta = Last ned { -brand-lockwise }
+fpn-promo-headline = Masker plasseringa di frå nettstadar og sporfølgjarar
+promo-fpn-body = { -brand-fpn } lurer nettstadar og datainnsamlarar som profilerer deg med annonsar ved å maskere den verkelege IP-adressa di.
+promo-fpn-cta = Få { -brand-fpn }
+monitor-promo-headline = Finn ut om nye datalekkasjar
+monitor-promo-body = Bli varsla neste gong din personlege informasjon vert eksponert i ein kjend datalekkasje.
+ecosystem-promo-headline = Vern om livet ditt på nettet med personvernprodukt
+ecosystem-promo-body = Alle { -brand-name }-produkt overheld lovnaden vår om private data i alt vi gjer: Samle inn mindre. Oppbevare alt trygt. Ingen hemmelegheiter.
+promo-ecosystem-cta = Vis alle produkta
