@@ -11,9 +11,13 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Aẓetta n tbaḍnit n Firefox
 
+##
 
-
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Amiḍan Firefox
 terms-and-privacy = Tiwtilin akked tbaḍnit
 GitHub-link-title = GitHub
 error-scan-page-token = Tɛeṛḍeḍ ad tgeḍ tasleḍt n ddeqs n tansiwin deg drus n wakud. Ɛef sebba n tɣellist, nessewḥel inadiyen imaynuten akka kra n wakud. Tzmereḍ ad tɛerḍḍ ticki.
@@ -361,7 +365,7 @@ email-verified-view-dashboard = Akken ad twaliḍ daɣen ad tesferkeḍ meṛṛ
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = Kcem
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -385,3 +389,41 @@ five-myths-desc = Issin amek ara tettut yir tanumi n wawalen uffiren yessifsusen
 take-further-steps-desc = Wali amek ara tesneɣseḍ takerḍa n timagit akken ad theggiḍ ayen ilaqen i ṛwaḥ n tedrimt.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Abeddel yettwasekles
+# Section headline
+rec-section-headline = Acu arar xedmeɣ i trewla-a n yisefka
+rec-section-subhead = Ad k-nwelleh ad txedmeḍ kra i ummesten n telɣut-ik tudmawant akked timagit-ik timḍint.
+# Section headline
+rec-section-headline-no-pw = Acu ara txedmeḍ i ummesten n yisefka-ik udmawanen
+rec-section-subhead-no-pw = Xas akken awalen uffiren ur llin ara deg trewla-a n yisefka, tzemreḍ ad tgeḍ kra akken ad tmesneḍ ugar talqut-ik tudmawant.
+# Button
+see-additional-recs = Wali iwellihen-nniḍen
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $affectedEmail } iban-d deg trewla-a n yisefka. <a>Acu ara xedmeɣ?</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] Yiwet seg tansiwin-ik tban-d deg trewla-a n yisefka. <a>Acu ara xedmeɣ?</a>
+       *[other] { $numAffectedEmails }seg tansiwin-ik banent-d deg trewla-a n yisefka. <a>Acu ara xedmeɣ?</a>
+    }
+
+##
+
+marking-this-subhead = Creḍ tarewla-a n yisefka am akken tefra
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body = <span>Ticki txedmeḍ ayen i ilaqen akken ad tefruḍ ayen icudden ɣer trewla-a n yisefka</span>, ad tizmireḍ ad tt-tcerḍeḍ tefra. Tzemreḍ yal tikkelt ad tkecmeḍ ɣer telqayt n trewla n yisefka seg seg tfelwit n usenqed.
+mark-as-resolve-button = Creḍ tefra
+marked-as-resolved-label = Yettwacreḍ tefra
+undo-button = Sefsex
+confirmation-1-subhead = Igerrez! Aql-ak tefriḍ tarewla-ik tamezwarut.
+confirmation-1-body = Kemmel akken tebdiḍ. Ger tiṭ ɣer tfelwit-ik n usenqed akken ad twaliḍ ayen-nniḍen ara txedmeḍ.
+confirmation-2-subhead = Yiwet-nniḍen!
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
