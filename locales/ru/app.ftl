@@ -25,6 +25,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Аккаунт Firefox
 terms-and-privacy = Условия и конфиденциальность
 GitHub-link-title = GitHub
 error-scan-page-token = Вы пытались проверить слишком много адресов электронной почты за короткий промежуток времени. По соображениям безопасности мы временно заблокировали вам доступ к этой функции. Вы сможете попробовать позже.
@@ -420,11 +423,79 @@ see-additional-recs = Посмотреть дополнительные реко
 
 ##
 
+mark-as-resolve-button = Отметить как решённую
+marked-as-resolved-label = Отмечена как решённая
 undo-button = Отменить
+confirmation-1-subhead = Отлично! Вы только что решили свою первую утечку данных.
+confirmation-2-subhead = Получите, хакеры!
+confirmation-3-subhead = Ещё одна решена. Отличная работа!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Является ли ваш пароль уникальным, надёжным и трудно угадываемым? <a>Узнать</a>
+generic-confirmation-subhead = Эта утечка отмечена как решённая
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Чтобы просмотреть оставшиеся утечки, перейти в вашу панель.
+        [few] Чтобы просмотреть оставшиеся утечки, перейти в вашу панель.
+       *[many] Чтобы просмотреть оставшиеся утечки, перейти в вашу панель.
+    }
+return-to-breach-details-link = Вернуться к деталям утечки
+go-to-dashboard-link = Перейти в панель
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% завершено
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } решена
+        [few] { $numResolvedBreaches } решены
+       *[many] { $numResolvedBreaches } решено
+    }
+progress-intro-subhead = Новинка в { -product-name }: Отмечайте утечки как решённые
+progress-intro-message =
+    После просмотра подробностей об утечке и принятия шагов для защиты 
+    вашей личной информации, вы можете отметить её как решённую.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } из { $numTotalBreaches }  утечек отмечены как решённые
+        [few] { $numResolvedBreaches } из { $numTotalBreaches }  утечек отмечены как решённые
+       *[many] { $numResolvedBreaches } из { $numTotalBreaches }  утечек отмечены как решённые
+    }
+progress-complete = Все известные утечки были отмечены как решённые
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-4 = <span>Почти готово!</span>  Вы близки к финишной черте.
 
 ##
 
+resolve-this-breach-link = Решить эту утечку
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Отмеченные решёнными:
+hide-resolved-button = Скрыть решённые
+show-resolved-button = Показать решённые
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Раскрытый пароль в нерешённых утечках
+        [few] Раскрытых пароля в нерешённых утечках
+       *[many] Раскрытых паролей в нерешённых утечках
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Известная утечка отмечена как решённая
+        [few] Известных утечки отмечены как решённые
+       *[many] Известных утечек отмечены как решённые
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Новая
+mobile-promo-headline = Загрузите { -brand-name } на свой телефон и планшет
+mobile-promo-body = Быстрый, приватный и безопасный веб-сёрфинг, куда бы вы не собрались. Загрузите { -brand-name } из Google Play и App Store.
+mobile-promo-cta = Загрузите { -brand-name } для Android и iOS
+promo-lockwise-headline = Возьмите свои пароли с собой
+promo-lockwise-cta = Загрузите { -brand-lockwise }
+promo-fpn-cta = Загрузите { -brand-fpn }
+monitor-promo-headline = Узнавайте о новых утечках данных
+promo-ecosystem-cta = Посмотреть все продукты
