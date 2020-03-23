@@ -79,6 +79,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Účet Firefoxu
 terms-and-privacy = Podmínky a ochrana soukromí
 GitHub-link-title = GitHub
 error-scan-page-token = Pokusili jste se zkontrolovat příliš mnoho e-mailových adres ve velmi krátkém čase. Z bezpečnostních důvodů jsme další vyhledávání dočasně zablokovali. Zkuste to prosím znovu později.
@@ -468,6 +471,12 @@ see-additional-recs = Podívejte se na další doporučení
 ## Please do not modify or remove "<a>" and "</a>".
 
 resolve-top-notification = E-mailová adresa { $affectedEmail } se objevila v tomto úniku. <a>Co dělat dál</a>
+resolve-top-notification-plural =
+    V tomto úniku { $numAffectedEmails ->
+        [one] se objevila jedna vaše e-mailová adresa
+        [few] se objevily { $numAffectedEmails } vaše e-mailové adresy
+       *[other] se objevilo { $numAffectedEmails } vašich e-mailových adres
+    }. <a>Co dělat dál</a>
 
 ##
 
@@ -476,18 +485,49 @@ mark-as-resolve-button = Označit jako vyřešené
 marked-as-resolved-label = Označeno jako vyřešené
 undo-button = Zpět
 confirmation-1-subhead = Výborně! Právě jste vyřešili svůj první únik.
+confirmation-1-body = Nepolevujte. Zkontrolujte svou nástěnku, zda ještě není něco k vyřešení.
 confirmation-2-body = Děláte důležité kroky na cestě k zabezpečení svých online účtů.
+confirmation-3-subhead = Další hotové. Skvělá práce!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Je vaše heslo unikátní, silné a obtížně uhodnutelné? <a>Zjistěte to</a>
 generic-confirmation-subhead = Tento únik byl označen za vyřešený
+return-to-breach-details-link = Zpět na podrobnosti o úniku
+go-to-dashboard-link = Přejít na nástěnku
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = Hotovo na { $percentComplete } %
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } vyřešený únik
+        [few] { $numResolvedBreaches } vyřešené úniky
+       *[other] { $numResolvedBreaches } vyřešených úniků
+    }
 progress-intro-subhead = Nově ve { -product-name(case: "loc") }: Označení úniků jako vyřešené
 progress-intro-message = Po přezkoumání podrobností o úniku a přijetí opatření k ochraně vašich osobních údajů můžete označit úniky jako vyřešené.
+progress-complete = Všechny známé úniky byly označeny jako vyřešené.
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-4 = <span>Téměř hotovo!</span> Jste blízko cílové čáry.
 
 ##
 
 resolve-this-breach-link = Vyřešit tento únik
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Označeno jako vyřešené:
+hide-resolved-button = Skrýt vyřešené
 show-resolved-button = Zobrazit vyřešené
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nový
+mobile-promo-headline = { -brand-name } ve vašem telefonu a tabletu
+mobile-promo-cta = Získejte { -brand-name(case: "acc") } pro Android či iOS
+promo-lockwise-headline = Vezměte si svá hesla všude s sebou
+promo-lockwise-cta = Stáhnout { -brand-lockwise(case: "acc") }
+promo-fpn-cta = Stáhnout { -brand-fpn }
+monitor-promo-headline = Buďte informováni o nových únicích dat
+promo-ecosystem-cta = Zobrazit všechny produkty
