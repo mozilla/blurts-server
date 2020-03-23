@@ -13,8 +13,11 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox نجی نیٹ ورک
 
+##
 
-
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox اکاؤنٹ
 terms-and-privacy = شرائط اور رازداری
 GitHub-link-title = GitHub
 error-not-subscribed = یہ ایمیل ایڈریس { -product-name } مے سبسکرائب نہیں ہے۔
@@ -130,7 +133,7 @@ want-to-add = ایک اور ای میل شامل کرنا چاہتے ہیں؟
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = سائن ان کریں
 
-
+##
 
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = تبدیلیاں محفوظ ہوگئیں!
@@ -138,3 +141,17 @@ changes-saved = تبدیلیاں محفوظ ہوگئیں!
 rec-section-headline-no-pw = اپنی ذاتی معلومات کی حفاظت کے لیے کیا کریں
 # Button
 see-additional-recs = اضافی سفارشات ملاحظہ کریں
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+
+##
+
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
