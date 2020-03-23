@@ -83,6 +83,7 @@ function getExperimentBranch(req, sorterNum) {
     if (req.query.experimentBranch !== "va" && req.query.experimentBranch !== "vb" && req.query.experimentBranch !== "vc" ) {
       return false;
     } else {
+      req.session.experimentBranch = req.query.experimentBranch;
       return req.query.experimentBranch;
     }
   }

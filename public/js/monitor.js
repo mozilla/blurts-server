@@ -39,7 +39,7 @@ function isValidEmail(val) {
 function doOauth(el) {
   let url = new URL("/oauth/init", document.body.dataset.serverUrl);
   url = getFxaUtms(url);
-  ["flowId", "flowBeginTime", "entrypoint"].forEach(key => {
+  ["flowId", "flowBeginTime", "entrypoint", "form_type"].forEach(key => {
     url.searchParams.append(key, encodeURIComponent(el.dataset[key]));
   });
   if (sessionStorage && sessionStorage.length > 0) {
@@ -400,6 +400,7 @@ function buildExperimentUtms(checked) {
       if (createFxaCheckbox.checked) {
         e.preventDefault();
         document.body.dataset.utm_content = "opt_in";
+        e.target.dataset.entrypoint = "fx-monitor-alert-me-blue-link";
         // const utms = buildExperimentUtms(createFxaCheckbox.checked);
         // console.log(utms);
         if (typeof(ga) !== "undefined") {
