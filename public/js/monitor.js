@@ -39,9 +39,17 @@ function isValidEmail(val) {
 function doOauth(el) {
   let url = new URL("/oauth/init", document.body.dataset.serverUrl);
   url = getFxaUtms(url);
+
+  ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
+    if (document.body.dataset[key]) {
+      url.searchParams.append(key, encodeURIComponent(document.body.dataset[key]));
+    }
+  });
+
   ["flowId", "flowBeginTime", "entrypoint", "form_type"].forEach(key => {
     url.searchParams.append(key, encodeURIComponent(el.dataset[key]));
   });
+
   if (sessionStorage && sessionStorage.length > 0) {
     const lastScannedEmail = sessionStorage.getItem(`scanned_${sessionStorage.length}`);
     if (lastScannedEmail) {
@@ -250,17 +258,6 @@ function addBentoObserver(){
   }
 }
 
-function buildExperimentUtms(checked) {
-
-  let fxaOptAnswer = "opt_out";
-  if (checked) {
-    fxaOptAnswer = "opt_in";
-  }
-
-  // fx-monitor-alert-me-blue-btn
-  document.body.dataset.utm_content = fxaOptAnswer;
-}
-
 ( async() => {
   document.addEventListener("touchstart", function(){}, true);
   const win = window;
@@ -401,17 +398,13 @@ function buildExperimentUtms(checked) {
         e.preventDefault();
         document.body.dataset.utm_content = "opt_in";
         e.target.dataset.entrypoint = "fx-monitor-alert-me-blue-link";
-        // const utms = buildExperimentUtms(createFxaCheckbox.checked);
-        // console.log(utms);
         if (typeof(ga) !== "undefined") {
-          ga("send", "event", "" , "Click", "");
-          // ga('send', {
-          //   hitType: 'event',
-          //   eventCategory: 'Video',
-          //   eventAction: 'play',
-          //   eventLabel: 'cats.mp4'
-          // });
-
+          ga("send", {
+            hitType: "event",
+            eventCategory: "growthuserflow1",
+            eventAction: "opt-in",
+            eventLabel: "fx-monitor-alert-me-blue-link",
+          });
         }
         doOauth(e.target);
       }
