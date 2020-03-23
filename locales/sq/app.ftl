@@ -15,6 +15,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Llogari Firefox
 terms-and-privacy = Kushte & Privatësi
 GitHub-link-title = GitHub
 error-scan-page-token = Provuat të skanoni shumë adresa email brenda një kohe të shkurtër. Për arsye sigurie, kemi bllokuar përkohësisht kërkime të reja prej jush. Do të jeni në gjendje të riprovoni më vonë.
@@ -477,3 +480,17 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = E re
+mobile-promo-headline = Silleni { -brand-name } te telefoni dhe tableti juaj
+mobile-promo-body = Shfletim i shpejtë, privat dhe i parrezik kudo që shkoni. Gjejeni { -brand-name } te Google Play dhe App Store.
+mobile-promo-cta = Merreni { -brand-name } në Android dhe iOS
+promo-lockwise-headline = Merrini fjalëkalimet tuaja kudo
+lockwise-promo-body = Mbani nën kontroll kredencialet tuaja të hyrjeve nëpër krejt pajisjet. Përdorini pa rrezik nga kompjuteri, telefoni, ose tableti juaj.
+promo-lockwise-cta = Merrni { -brand-lockwise }
+fpn-promo-headline = Fshihuni vendndodhjen tuaj sajteve dhe gjurmuesve
+promo-fpn-body = { -brand-fpn } hedh tej sajtet dhe grumbulluesit e të dhënave që krijojnë profile për ju përmes reklamash, duke maskuar adresën tuaj të njëmendtë IP.
+promo-fpn-cta = Merrni { -brand-fpn }
+monitor-promo-headline = Mësoni rreth cenimesh të reja të dhënash
+monitor-promo-body = Njoftohuni herës tjetër që të dhënat tuaja personale ekspozohen në një cenim të ditur të dhënash.
+ecosystem-promo-headline = Mbroni jetën tuaj internetore me produkte që vënë privatësinë mbi gjithçka
+ecosystem-promo-body = Krejt produktet { -brand-name } respektojnë Premtimin tonë Mbi të Dhënat Personale: Grumbullim sa më pak. Mbajtje e parrezik. Pa të fshehta.
+promo-ecosystem-cta = Shihni Krejt Produktet
