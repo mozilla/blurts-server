@@ -532,5 +532,7 @@ promo-lockwise-cta = Stáhnout { -brand-lockwise(case: "acc") }
 promo-fpn-body = { -brand-fpn } vás pomocí zamaskování vaší skutečné IP adresy ochrání před sběrem dat a cílenými reklamami.
 promo-fpn-cta = Stáhnout { -brand-fpn }
 monitor-promo-headline = Buďte informováni o nových únicích dat
+monitor-promo-body = Nechte se upozornit, pokud se vaše údaje objeví ve známém úniku dat.
+ecosystem-promo-headline = Buďte na internetu v bezpečí díky produktům, které dbají na vaše soukromí
 ecosystem-promo-body = Žádný { -brand-name } nezneužívá vaše data. Méně dat je vždy více, udržíme je v bezpečí a nemáme před vámi žádná tajemství.
 promo-ecosystem-cta = Zobrazit všechny produkty
