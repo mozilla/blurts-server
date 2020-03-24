@@ -96,7 +96,9 @@ create-strong-passwords = مضبوط پاس ورڈ کیسے بنائیں
 stop-reusing-pw = وہی پاس ورڈ دوبارہ استعمال کرنا بند کریں
 feat-security-tips = آَپ کے اکاؤنٹس کی حفاظت کے لیے سلامتی نکات
 back-to-top = واپس اوپر کی جانب
+stop-monitoring-this = اس ای میل کی نگرانی بند کریں۔
 add-new-email = ایک نیا ای میل پتہ شامل کریں
+remove-fxm = { -product-name } ہٹائیں
 # Button title
 manage-email-addresses = ای میل پتہ بندرست کریں
 welcome-user = خوش آمدید ،  { $userName }
