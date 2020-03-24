@@ -541,6 +541,7 @@ promo-lockwise-headline = Ta med deg passordene dine overalt
 lockwise-promo-body = Hold oversikt over innloggingene dine på alle enheter. Få tilgang til dem sikkert fra din datamaskin, telefon eller nettbrett.
 promo-lockwise-cta = Last ned { -brand-lockwise }
 fpn-promo-headline = Masker plasseringen din fra nettsteder og sporere
+promo-fpn-body = { -brand-fpn } lurer nettsteder og datainnsamlere som profilerer deg med annonser ved å maskere din virkelige IP-adresse.
 promo-fpn-cta = Få { -brand-fpn }
 monitor-promo-headline = Finn ut om nye datalekkasjer
 monitor-promo-body = Bli varslet neste gang din personlige informasjon blir utsatt i en kjent datalekkasje.
