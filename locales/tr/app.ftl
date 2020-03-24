@@ -15,6 +15,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox hesabı
 terms-and-privacy = Şartlar ve gizlilik
 GitHub-link-title = GitHub
 error-scan-page-token = Kısa süre içinde çok fazla e-posta adresi taramaya çalıştınız. Güvenlik nedeniyle yeni aramalar yapmanızı geçici olarak engelledik. Daha sonra yeniden deneyebileceksiniz.
@@ -410,6 +413,7 @@ marked-as-resolved-label = Çözüldü olarak işaretlendi
 undo-button = Geri al
 confirmation-1-subhead = Güzel! İlk ihlalinizi çözdünüz.
 confirmation-2-body = Çevrimiçi hesaplarınızı korumaya yönelik önemli adımlar atıyorsunuz.
+confirmation-3-subhead = Biri daha gitti. İyi iş!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Yeni parolanız benzersiz, güçlü ve tahmin edilmesi zor mu? <a>Öğrenin</a>
