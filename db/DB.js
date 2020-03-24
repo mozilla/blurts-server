@@ -428,6 +428,10 @@ const DB = {
     await knex("subscribers").where("fxa_uid", fxaUID).del();
   },
 
+  async deleteEmailAddressesByUid(uid) {
+    await knex("email_addresses").where({"subscriber_id": uid}).del();
+  },
+
   async createConnection() {
     if (knex === null) {
       knex = Knex(knexConfig);
