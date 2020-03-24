@@ -396,6 +396,17 @@ function addBentoObserver(){
       document.body.dataset.utm_content = "opt_out";
       if (createFxaCheckbox.checked) {
         e.preventDefault();
+
+        // Email Validation
+        const scanForm = document.getElementById("scan-user-email");
+        const scanFormEmailValue = document.querySelector("#scan-user-email input[type='email']");
+
+        if (scanFormEmailValue.value.length < 1  || !isValidEmail(scanFormEmailValue.value)) {
+          scanForm.classList.add("invalid");
+          return;
+        }
+
+        // Analytics
         document.body.dataset.utm_content = "opt_in";
         e.target.dataset.entrypoint = "fx-monitor-alert-me-blue-link";
         if (typeof(ga) !== "undefined") {
