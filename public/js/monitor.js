@@ -37,6 +37,11 @@ function isValidEmail(val) {
 
 
 function doOauth(el) {
+  let email = null;
+  if (document.querySelector("#scan-user-email input[type=email]")) {
+    email = document.querySelector("#scan-user-email input[type=email]").value;
+  }
+
   let url = new URL("/oauth/init", document.body.dataset.serverUrl);
   url = getFxaUtms(url);
 
@@ -52,8 +57,16 @@ function doOauth(el) {
 
   if (sessionStorage && sessionStorage.length > 0) {
     const lastScannedEmail = sessionStorage.getItem(`scanned_${sessionStorage.length}`);
-    if (lastScannedEmail) {
+
+    if (lastScannedEmail && !email) {
+      // Use saved email address only if its' the same as what the user entered previously.
       url.searchParams.append("email", lastScannedEmail);
+    }
+
+    if (email) {
+      sessionStorage.setItem(`scanned_${(sessionStorage.length + 1)}`, email);
+      document.querySelector("#scan-user-email input[name=scannedEmailId]").value = sessionStorage.length;
+      url.searchParams.append("email", email);
     }
   }
   window.location.assign(url);
@@ -399,9 +412,9 @@ function addBentoObserver(){
 
         // Email Validation
         const scanForm = document.getElementById("scan-user-email");
-        const scanFormEmailValue = document.querySelector("#scan-user-email input[type='email']");
+        const scanFormEmailValue = document.querySelector("#scan-user-email input[type='email']").value;
 
-        if (scanFormEmailValue.value.length < 1  || !isValidEmail(scanFormEmailValue.value)) {
+        if (scanFormEmailValue.length < 1  || !isValidEmail(scanFormEmailValue)) {
           scanForm.classList.add("invalid");
           return;
         }
