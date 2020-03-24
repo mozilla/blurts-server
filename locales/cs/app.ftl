@@ -525,9 +525,12 @@ show-resolved-button = Zobrazit vyřešené
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nový
 mobile-promo-headline = { -brand-name } ve vašem telefonu a tabletu
+mobile-promo-body = Rychlé, soukromé a bezpečné prohlížení kamkoliv se hnete. Najděte { -brand-name(case: "acc") } na Google Play a App Storu.
 mobile-promo-cta = Získejte { -brand-name(case: "acc") } pro Android či iOS
 promo-lockwise-headline = Vezměte si svá hesla všude s sebou
 promo-lockwise-cta = Stáhnout { -brand-lockwise(case: "acc") }
+promo-fpn-body = { -brand-fpn } vás pomocí zamaskování vaší skutečné IP adresy ochrání před sběrem dat a cílenými reklamami.
 promo-fpn-cta = Stáhnout { -brand-fpn }
 monitor-promo-headline = Buďte informováni o nových únicích dat
+ecosystem-promo-body = Žádný { -brand-name } nezneužívá vaše data. Méně dat je vždy více, udržíme je v bezpečí a nemáme před vámi žádná tajemství.
 promo-ecosystem-cta = Zobrazit všechny produkty
