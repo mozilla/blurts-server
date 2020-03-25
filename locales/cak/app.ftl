@@ -511,9 +511,13 @@ progress-message-4 = <span>¡Nik'is yan!</span> B'ama yatapon yan akuchi' yab'eq
 
 ##
 
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Xya' retal achi'el xsol:
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = K'ak'a'
 promo-lockwise-headline = Xab'akuchi' ke'ak'waj ri ewan taq atzij
 promo-lockwise-cta = Tik'ul { -brand-lockwise }
+promo-fpn-cta = Tik'ul { -brand-fpn }
 ecosystem-promo-headline = Nuchajij ak'aslem pa k'amab'ey rik'in taq tikojil nikinab'eysaj ri awichinane
 promo-ecosystem-cta = Ketz'et Ronojel Tikojil
