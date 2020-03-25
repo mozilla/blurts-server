@@ -96,6 +96,15 @@ how-fxm-2-headline = Ntachaa takua kuncheu ana nche'e korreoku
 
 change-pw = Sama tu'un see
 change-pw-site = Sama tu'un see ña sitio
+add-new-email = Chaa sivi tsa'a korreoku
+send-verification = Tachu'un tu'un
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-summary = Tutu filtración
+remove-fxm = Xita { -product-name }
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Sna'a:
 
