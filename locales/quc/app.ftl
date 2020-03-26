@@ -62,6 +62,10 @@ compromised-data = Taq juq'attzij k'o k'axk'olil chi rij:
 unsub-headline = Uchupik utz'ib'axik ib' pa { -product-name-nowrap }
 unsub-blurb = Wa' kuchup le taqoqxa'n pa ucholajil { -product-name-nowrap } mak'u kak'ulaj ta chi taq na'b'anem are taq kq'alajisax k'ak' taq k'eyowal.
 unsub-button = Uchupik utz'ib'axik ib'
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Taq juq'attzij rech nimanem taj ya'om rumal
+share-twitter = Nima konojel winaq k'o 100 kikemb'i'aj pa nimk'atz. Wene k'o jun awech b'anom k'ax chech? chawila'
+share-facebook-headline = Chawila' we k'o k'ax b'anom chech ajuq'attzij
 
 ## What to do after data breach tips
 
