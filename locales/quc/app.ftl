@@ -75,6 +75,7 @@ sign-out = Utz'apixik kemchak
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Rilawachixik{ -brand-fxa }
 have-an-account = ¿La k'o akemb'i'aj?
+fxa-pwt-summary-2 = Le taq nitz' retokib'al le xa jun tukelal tzij man k'ax ta uriqik chi kech e b'ank'ax.
 
 ## What to do after data breach tips
 
