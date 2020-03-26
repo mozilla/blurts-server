@@ -80,6 +80,12 @@ fxa-pwt-summary-4 = Taq ilawachinelab' rech taq retokib'al pacha' 1Password, Las
 fxa-pwt-summary-6 =
     Le taq k'axk'olil rech taq juq'attzij ktajin ke'enimarik. We kq'alajin le awinaqilal q'alajisanem pa jun k'ak' k'axk'olil rech taq juq'attzij, ¶
     { -product-name } kutaq jun na'tajisab'al chi awech — are chi utz kachajij le akemb'i'aj.
+fxa-what-to-do-blurb-1 =
+    We man ktkowin taj kamajij kemchak, chach'ab'ej le uk'olib'al web' kata chech jas kab'an chech uk'ak'arisaxik. ¶
+    ¿kawil jun kemb'i'aj le man aweta'am ta uwach? Wene xa xe'ek'ayix b'i le taq ajuq'attzij ¶
+    on jachatal chi jumul. Wa' xuquje' wene jun kemb'i'aj le xasacho ¶
+    xawinaqirisaj on wene xa xuk'ex ub'i' jun k'aywokaj.
+fxa-what-to-do-subhead-2 = Makoj chi le retokib'al k'o k'axk'olil chi rij, chak'exa' pa ronojel jawi' akojom wi.
 
 ## What to do after data breach tips
 
