@@ -20,7 +20,7 @@
 -brand-fx-account = Firefox-account
 terms-and-privacy = Betingsten en privacy
 GitHub-link-title = GitHub
-error-scan-page-token = Jo hawwe te folle e-mailadressen yn in koart tiidrek probearre te skannen. Om befeiligingsredenen hawwe wy jo sykmooglikheid tydlik blokkearre. Jo kinne it letter wer probearje.
+error-scan-page-token = Jo hawwe te folle e-mailadressen yn in koart tiidrek probearre te scannen. Om befeiligingsredenen hawwe wy jo sykmooglikheid tydlik blokkearre. Jo kinne it letter wer probearje.
 error-could-not-add-email = Koe e-mailadres net oan database tafoegje.
 error-not-subscribed = Dit e-mailadres is net abonnearre op { -product-name }.
 error-hibp-throttled = Te folle ferbiningen mei { -brand-HIBP }.
@@ -31,7 +31,7 @@ error-to-finish-verifying = Om de ferifikaasje fan dit e-mailadres foar { -produ
 home-title = { -product-name }
 home-not-found = Side net fûn.
 oauth-invalid-session = Unjildige sesje
-scan-title = { -product-name } : Skanresultaten
+scan-title = { -product-name } : Scanresultaten
 user-add-invalid-email = Unjildich e-mailadres
 user-add-too-many-emails = Jo bewekje it maksimale oantal e-mailadressen.
 user-add-email-verify-subject = Ferifiearje jo abonnemint op { -product-name }.
