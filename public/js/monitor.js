@@ -451,14 +451,14 @@ function addBentoObserver(){
     const createFxaCheckbox = document.getElementById("createFxaCheckbox");
 
     createFxaCheckbox.addEventListener("change", (e)=> {
-      document.body.dataset.utm_content = "opt_out";
+      document.body.dataset.utm_content = "opt-out";
       if (event.target.checked) {
-        document.body.dataset.utm_content = "opt_in";
+        document.body.dataset.utm_content = "opt-in";
       }
     });
 
     submitBtn.addEventListener("click", (e)=> {
-      document.body.dataset.utm_content = "opt_out";
+      document.body.dataset.utm_content = "opt-out";
       if (createFxaCheckbox.checked) {
         e.preventDefault();
 
@@ -472,13 +472,13 @@ function addBentoObserver(){
         }
 
         // Analytics
-        document.body.dataset.utm_content = "opt_in";
+        document.body.dataset.utm_content = "opt-in";
         e.target.dataset.entrypoint = "fx-monitor-alert-me-blue-link";
         if (typeof(ga) !== "undefined") {
           ga("send", {
             hitType: "event",
             eventCategory: "growthuserflow1",
-            eventAction: "opt_in",
+            eventAction: "opt-in",
             eventLabel: "fx-monitor-alert-me-blue-link",
           });
         }
@@ -488,7 +488,7 @@ function addBentoObserver(){
           ga("send", {
             hitType: "event",
             eventCategory: "growthuserflow1",
-            eventAction: "opt_out",
+            eventAction: "opt-out",
             eventLabel: "fx-monitor-alert-me-blue-link",
           });
         }
