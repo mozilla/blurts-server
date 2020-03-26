@@ -37,6 +37,9 @@ function isValidEmail(val) {
 
 
 function doOauth(el) {
+  // Growth Experiment: To sidestep the breach scans form, we have to check if
+  // there is an email address entered into #scan-user-email form.
+  // If so, we set it similiar to what would happen on form submit.
   let email = null;
   if (document.querySelector("#scan-user-email input[type=email]")) {
     email = document.querySelector("#scan-user-email input[type=email]").value;
@@ -45,6 +48,7 @@ function doOauth(el) {
   let url = new URL("/oauth/init", document.body.dataset.serverUrl);
   url = getFxaUtms(url);
 
+  // Growth Experiment: Set UTMs from in-line body tag data elements.
   ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
     if (document.body.dataset[key]) {
       url.searchParams.append(key, encodeURIComponent(document.body.dataset[key]));
@@ -55,21 +59,50 @@ function doOauth(el) {
     url.searchParams.append(key, encodeURIComponent(el.dataset[key]));
   });
 
+  if (!sessionStorage) {
+    window.location.assign(url);
+    return;
+  }
+
+  const scannedEmailId = document.querySelector("#scan-user-email input[name=scannedEmailId]");
+
+
+  // Growth Experiment: This logic is complex to handle the differnt scanerios of users logging into FxA.
+  // A: Control – User Checks for Breach Results, Clicks Alert Signup from /Scans page
+  // B: New experiment - User enters email address for breach results, and gets routed to FxA
+  // C: User Checks for Breach Results, Goes BACK TO HOME, then Checks for breach results with box checked and needs to use NEW email address
   if (sessionStorage && sessionStorage.length > 0) {
+
     const lastScannedEmail = sessionStorage.getItem(`scanned_${sessionStorage.length}`);
 
-    if (lastScannedEmail && !email) {
-      // Use saved email address only if its' the same as what the user entered previously.
-      url.searchParams.append("email", lastScannedEmail);
+    if (email && lastScannedEmail) {
+      switch (email) {
+        case lastScannedEmail:
+          // The last saved email address and the current entry match, so route it to FxA
+          email = lastScannedEmail;
+          break;
+        case !lastScannedEmail:
+          // The last saved email address and the current entry DIFFER, so create a new entry, launch a new FxA login session with new email prefilled.
+          sessionStorage.setItem(`scanned_${(sessionStorage.length + 1)}`, email);
+          scannedEmailId.value = sessionStorage.length;
+          break;
+      }
+    } else {
+      if (lastScannedEmail) {
+        // Control method. User set this by checking breach results
+        email = lastScannedEmail;
+      }
     }
-
-    if (email) {
-      sessionStorage.setItem(`scanned_${(sessionStorage.length + 1)}`, email);
-      document.querySelector("#scan-user-email input[name=scannedEmailId]").value = sessionStorage.length;
-      url.searchParams.append("email", email);
-    }
+  } else if (email && sessionStorage) {
+    // Applies to first time user in experiment has no previous FxA ties.
+    sessionStorage.setItem(`scanned_${(sessionStorage.length + 1)}`, email);
+    scannedEmailId.value = sessionStorage.length;
   }
+
+  // Append whichever email was set, and start OAuth flow!
+  url.searchParams.append("email", email);
   window.location.assign(url);
+
 }
 
 
