@@ -478,11 +478,20 @@ function addBentoObserver(){
           ga("send", {
             hitType: "event",
             eventCategory: "growthuserflow1",
-            eventAction: "opt-in",
+            eventAction: "opt_in",
             eventLabel: "fx-monitor-alert-me-blue-link",
           });
         }
         doOauth(e.target, {emailWatch: true});
+      } else {
+        if (typeof(ga) !== "undefined") {
+          ga("send", {
+            hitType: "event",
+            eventCategory: "growthuserflow1",
+            eventAction: "opt_out",
+            eventLabel: "fx-monitor-alert-me-blue-link",
+          });
+        }
       }
     });
   }
