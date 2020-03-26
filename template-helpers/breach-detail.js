@@ -2,9 +2,9 @@
 
 const AppConstants = require("./../app-constants");
 
-const { LocaleUtils } = require("./../locale-utils");
-const { prettyDate } = require("./hbs-helpers");
+const { prettyDate, localize } = require("./hbs-helpers");
 const { getAllPriorityDataClasses, getAllGenericRecommendations, getFourthPasswordRecommendation } = require("./recommendations");
+const { getPromoStrings } = require("./product-promos");
 
 
 function addRecommendationUtmParams(cta) {
@@ -28,11 +28,6 @@ function addRecommendationUtmParams(cta) {
   catch (e) {
     return cta.ctaHref;
   }
-}
-
-
-function localize(locales, stringId, args) {
-  return LocaleUtils.fluentFormat(locales, stringId, args);
 }
 
 
@@ -179,6 +174,8 @@ function getBreachDetail(args) {
     };
   }
 
+  // Determine which product promo to show
+  breachDetail.promo = getPromoStrings(args);
 
   const BREACH_RESOLUTION_ENABLED = (AppConstants.BREACH_RESOLUTION_ENABLED === "1");
   if (BREACH_RESOLUTION_ENABLED && args.data.root.affectedEmails) {
@@ -267,5 +264,4 @@ module.exports = {
   getBreachCategory,
   getSortedDataClasses,
   getBreachTitle,
-  localize,
 };

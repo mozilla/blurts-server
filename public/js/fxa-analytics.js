@@ -176,9 +176,8 @@ function sendRecommendationPings(ctaSelector) {
     const eventTriggers = [
       "#scan-user-email",
       "#add-another-email-form",
-      ".open-oauth",
+      ".open-oauth:not(.product-promo-wrapper)", // The promo entrypoint events are handled elsewhere.
     ];
-
     // Send number of foundBreaches on Scan, Full Report, and User Dashboard pageviews
     if (pageLocation === ("Scan Results")) {
       const breaches = document.querySelectorAll(".breach-card");

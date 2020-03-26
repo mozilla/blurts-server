@@ -38,22 +38,27 @@
     <div class="mw-700 padding-0">
       {{#if affectedEmails}}
         {{> affected-emails}}
+      {{else}}
+        {{> product-promo}}
       {{/if}}
-      {{#unless ./../req.session.user}}
-        {{> sign-up-banners/breach-detail-sign-up-banner }}
-      {{/unless}}
     </div>
   </section>
 
   <!-- What is this breach? / Why did it take you so long to report it?-->
   <section class="detail-section bg-white jst-cntr flx flx-col">
-      <div id="what-is-this-breach" class="mw-700">
-        {{> breach-detail-content-group whatIsThisBreach smallerSectionHeadline=true}}
+    <div id="what-is-this-breach">
+      {{> breach-detail-content-group whatIsThisBreach smallerSectionHeadline=true}}
+    </div>
+    {{#if delayedReporting}}
+      <div id="delayed-reporting">
+        {{> breach-detail-content-group delayedReporting sectionId="delayed-reporting" smallerSectionHeadline=true}}
       </div>
-      {{#if delayedReporting}}
-        <div id="delayed-reporting" class="mw-700">
-          {{> breach-detail-content-group delayedReporting sectionId="delayed-reporting" smallerSectionHeadline=true}}
-        </div>
-      {{/if}}
+    {{/if}}
+    <!-- show product promo here if breach resolution window is taking up space above-->
+    {{#if affectedEmails}}
+      <div class="mw-700 promo-wrapper">
+        {{> product-promo }}
+      </div>
+    {{/if}}
   </section>
 {{/getBreachDetail}}

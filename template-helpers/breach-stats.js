@@ -2,7 +2,7 @@
 
 const AppConstants = require("../app-constants");
 const { resultsSummary } = require("../scan-results");
-const { localize } = require("./breach-detail");
+const { localize } = require("./hbs-helpers");
 
 
 function getBreachStats(args) {

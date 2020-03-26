@@ -109,6 +109,12 @@ function eachFromTo(ary, min, max, options) {
   return result;
 }
 
+
+function localize(locales, stringId, args) {
+  return LocaleUtils.fluentFormat(locales, stringId, args);
+}
+
+
 function loop(from, to, inc, block) {
   block = block || {fn: function () { return arguments[0]; }};
   const data = block.data || {index: null};
@@ -170,6 +176,7 @@ module.exports = {
   getSupportedLocales,
   fluentNestedBold,
   localizedBreachDataClasses,
+  localize,
   prettyDate,
   localeString,
   getFxaUrl,
