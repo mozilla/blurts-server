@@ -77,6 +77,9 @@ manage-fxa = Rilawachixik{ -brand-fxa }
 have-an-account = ¿La k'o akemb'i'aj?
 fxa-pwt-summary-2 = Le taq nitz' retokib'al le xa jun tukelal tzij man k'ax ta uriqik chi kech e b'ank'ax.
 fxa-pwt-summary-4 = Taq ilawachinelab' rech taq retokib'al pacha' 1Password, LastPass, Dashlane, chi'l Bitwarden kkik'ol taq ¶Taq retokib'al chi'l unojisaxik pa taq uk'olib'al web', xuquje' katkito' chech utzukuxik chajital taq retokib'al.
+fxa-pwt-summary-6 =
+    Le taq k'axk'olil rech taq juq'attzij ktajin ke'enimarik. We kq'alajin le awinaqilal q'alajisanem pa jun k'ak' k'axk'olil rech taq juq'attzij, ¶
+    { -product-name } kutaq jun na'tajisab'al chi awech — are chi utz kachajij le akemb'i'aj.
 
 ## What to do after data breach tips
 
