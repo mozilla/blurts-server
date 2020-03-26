@@ -36,24 +36,16 @@ function isValidEmail(val) {
 }
 
 
-function doOauth(el) {
+function doOauth(el, {emailWatch = false} = {}) {
   // Growth Experiment: To sidestep the breach scans form, we have to check if
   // there is an email address entered into #scan-user-email form.
   // If so, we set it similiar to what would happen on form submit.
-  let email = null;
-  if (document.querySelector("#scan-user-email input[type=email]")) {
-    email = document.querySelector("#scan-user-email input[type=email]").value;
-  }
+  //
+  // Options was added to limit how the watched email input field is injected
+  // in this function. It only moves it if  options.emailWatch is set to TRUE;
 
   let url = new URL("/oauth/init", document.body.dataset.serverUrl);
   url = getFxaUtms(url);
-
-  // Growth Experiment: Set UTMs from in-line body tag data elements.
-  ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
-    if (document.body.dataset[key]) {
-      url.searchParams.append(key, encodeURIComponent(document.body.dataset[key]));
-    }
-  });
 
   ["flowId", "flowBeginTime", "entrypoint", "form_type"].forEach(key => {
     url.searchParams.append(key, encodeURIComponent(el.dataset[key]));
@@ -66,11 +58,37 @@ function doOauth(el) {
 
   const scannedEmailId = document.querySelector("#scan-user-email input[name=scannedEmailId]");
 
+  // Preserve entire control function
+  if (!emailWatch) {
+    if (sessionStorage && sessionStorage.length > 0) {
+      const lastScannedEmail = sessionStorage.getItem(`scanned_${sessionStorage.length}`);
+      if (lastScannedEmail) {
+        url.searchParams.append("email", lastScannedEmail);
+      }
+    }
+    window.location.assign(url);
+    return;
+  }
 
-  // Growth Experiment: This logic is complex to handle the differnt scanerios of users logging into FxA.
-  // A: Control – User Checks for Breach Results, Clicks Alert Signup from /Scans page
-  // B: New experiment - User enters email address for breach results, and gets routed to FxA
-  // C: User Checks for Breach Results, Goes BACK TO HOME, then Checks for breach results with box checked and needs to use NEW email address
+  // Growth Experiment: This logic is complex to handle the different scenarios of users logging into FxA.
+  let email = false;
+
+  if (document.querySelector("#scan-user-email input[type=email]")) {
+    email = document.querySelector("#scan-user-email input[type=email]").value;
+
+    if (!isValidEmail(email)) {
+      email = false;
+    }
+  }
+
+  // Growth Experiment: Set UTMs from in-line body tag data elements.
+  ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
+    if (document.body.dataset[key]) {
+      url.searchParams.append(key, encodeURIComponent(document.body.dataset[key]));
+    }
+  });
+
+
   if (sessionStorage && sessionStorage.length > 0) {
 
     const lastScannedEmail = sessionStorage.getItem(`scanned_${sessionStorage.length}`);
@@ -100,9 +118,10 @@ function doOauth(el) {
   }
 
   // Append whichever email was set, and start OAuth flow!
-  url.searchParams.append("email", email);
+  if (email) {
+    url.searchParams.append("email", email);
+  }
   window.location.assign(url);
-
 }
 
 
@@ -463,7 +482,7 @@ function addBentoObserver(){
             eventLabel: "fx-monitor-alert-me-blue-link",
           });
         }
-        doOauth(e.target);
+        doOauth(e.target, {emailWatch: true});
       }
     });
   }
