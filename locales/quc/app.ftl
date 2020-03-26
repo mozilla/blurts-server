@@ -68,6 +68,13 @@ share-twitter = Nima konojel winaq k'o 100 kikemb'i'aj pa nimk'atz. Wene k'o jun
 share-facebook-headline = Chawila' we k'o k'ax b'anom chech ajuq'attzij
 share-facebook-blurb = Wene xeya'taj pa uk'axal taq akemb'i'aj le e k'o pa nimk'atz'.
 og-site-description = Wene xeya'taj pa uk'axal taq akemb'i'aj le e k'o pa nimk'atz'.
+show-all = Uk'utik ronojel
+fxa-scan-another-email = ¿La kawaj kaq'atuj jun chi taqoqxa'n?
+sign-in = Umajixik kemchak
+sign-out = Utz'apixik kemchak
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Rilawachixik{ -brand-fxa }
+have-an-account = ¿La k'o akemb'i'aj?
 
 ## What to do after data breach tips
 
