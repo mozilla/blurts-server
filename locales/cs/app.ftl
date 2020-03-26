@@ -486,12 +486,19 @@ marked-as-resolved-label = Označeno jako vyřešené
 undo-button = Zpět
 confirmation-1-subhead = Výborně! Právě jste vyřešili svůj první únik.
 confirmation-1-body = Nepolevujte. Zkontrolujte svou nástěnku, zda ještě není něco k vyřešení.
+confirmation-2-subhead = Na to nemáte, hackeři!
 confirmation-2-body = Děláte důležité kroky na cestě k zabezpečení svých online účtů.
 confirmation-3-subhead = Další hotové. Skvělá práce!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Je vaše heslo unikátní, silné a obtížně uhodnutelné? <a>Zjistěte to</a>
 generic-confirmation-subhead = Tento únik byl označen za vyřešený
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Pro zobrazení zbývajícího úniku přejděte na nástěnku.
+        [few] Pro zobrazení zbývajících úniků přejděte na nástěnku.
+       *[other] Pro zobrazení zbývajících úniků přejděte na nástěnku.
+    }
 return-to-breach-details-link = Zpět na podrobnosti o úniku
 go-to-dashboard-link = Přejít na nástěnku
 # This string appears above a breach resolution progress bar and indicates
@@ -512,7 +519,17 @@ progress-complete = Všechny známé úniky byly označeny jako vyřešené.
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>Dobrý začátek!</span> Zkontrolujte zbývající úniky a podívejte se, 
+    jaké kroky podniknout.
+progress-message-2 =
+    <span>Jen do toho!</span> Malé změny, jako je například změna hesla, mají velký vliv
+    na bezpečnost vašich osobních údajů.
+progress-message-3 = <span>Pěkně jste s těmi úniky zamávali!</span> Nepolevujte, ještě vám jich tu pár zbývá.
 progress-message-4 = <span>Téměř hotovo!</span> Jste blízko cílové čáry.
+progress-complete-message =
+    <span>Je to dobrý pocit, že?</span> Pokud stále nemáte dost, můžete nahradit hesla 
+    za silnější i u ostatních účtů.
 
 ##
 
@@ -522,13 +539,27 @@ resolve-this-breach-link = Vyřešit tento únik
 marked-resolved = Označeno jako vyřešené:
 hide-resolved-button = Skrýt vyřešené
 show-resolved-button = Zobrazit vyřešené
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] uniklé heslo v nevyřešených únicích
+        [few] uniklá hesla v nevyřešených únicích
+       *[other] uniklých hesel v nevyřešených únicích
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] známý únik označený jako vyřešený
+        [few] známé úniky označené jako vyřešené
+       *[other] známých úniků označených jako vyřešené
+    }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nový
 mobile-promo-headline = { -brand-name } ve vašem telefonu a tabletu
 mobile-promo-body = Rychlé, soukromé a bezpečné prohlížení kamkoliv se hnete. Najděte { -brand-name(case: "acc") } na Google Play a App Storu.
 mobile-promo-cta = Získejte { -brand-name(case: "acc") } pro Android či iOS
 promo-lockwise-headline = Vezměte si svá hesla všude s sebou
+lockwise-promo-body = Mějte přehled o svých přihlašovacích údajích napříč zařízeními. Přistupujte k nim bezpečně z počítače, telefonu či tabletu.
 promo-lockwise-cta = Stáhnout { -brand-lockwise(case: "acc") }
+fpn-promo-headline = Skryjte svoji polohu před webovými stránkami a sledovacími prvky
 promo-fpn-body = { -brand-fpn } vás pomocí zamaskování vaší skutečné IP adresy ochrání před sběrem dat a cílenými reklamami.
 promo-fpn-cta = Stáhnout { -brand-fpn }
 monitor-promo-headline = Buďte informováni o nových únicích dat
