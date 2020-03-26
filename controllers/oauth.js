@@ -71,7 +71,8 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
 
   getUTMNames().forEach(param => {
     if (req.session.utmContents[param]) {
-      returnURL.searchParams.append(param, encodeURIComponent(req.session.utmContents[param]));
+      returnURL.searchParams.append(param, req.session.utmContents[param]);
+      // returnURL.searchParams.append(param, encodeURIComponent(req.session.utmContents[param]));
     }
   });
 

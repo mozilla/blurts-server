@@ -84,7 +84,7 @@ function doOauth(el, {emailWatch = false} = {}) {
   // Growth Experiment: Set UTMs from in-line body tag data elements.
   ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
     if (document.body.dataset[key]) {
-      url.searchParams.append(key, encodeURIComponent(document.body.dataset[key]));
+      url.searchParams.append(key, document.body.dataset[key]);
     }
   });
 
