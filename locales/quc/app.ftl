@@ -66,6 +66,8 @@ unsub-button = Uchupik utz'ib'axik ib'
 hibp-attribution = Taq juq'attzij rech nimanem taj ya'om rumal
 share-twitter = Nima konojel winaq k'o 100 kikemb'i'aj pa nimk'atz. Wene k'o jun awech b'anom k'ax chech? chawila'
 share-facebook-headline = Chawila' we k'o k'ax b'anom chech ajuq'attzij
+share-facebook-blurb = Wene xeya'taj pa uk'axal taq akemb'i'aj le e k'o pa nimk'atz'.
+og-site-description = Wene xeya'taj pa uk'axal taq akemb'i'aj le e k'o pa nimk'atz'.
 
 ## What to do after data breach tips
 
