@@ -43,7 +43,6 @@ function productPromos(locales, promoUtms, promoKey) {
       promoUrl: "https://www.mozilla.org/firefox" + promoUtms,
     },
   };
-
   if (productPromos[promoKey]) {
     return productPromos[promoKey];
   }
@@ -63,15 +62,15 @@ function getPromoStrings(args) {
   }
 
   const userAgent = templateData.req.headers["user-agent"];
-  const browserIsMobileFirefox = (
-    /Mobile; rv:61.0/i.test(userAgent) ||
+  const isBrowserFirefoxMobile = (
+    (/Mobile/i.test(userAgent) && /Firefox/i.test(userAgent))||
     /FxiOS/i.test(userAgent)
   );
   const PRODUCT_PROMOS_ENABLED = (AppConstants.PRODUCT_PROMOS_ENABLED === "1");
   if (PRODUCT_PROMOS_ENABLED) {
 
     // show promo for mobile unless the user is on Firefox Mobile
-    if (!browserIsMobileFirefox) {
+    if (!isBrowserFirefoxMobile) {
       return productPromos(locales, promoUtms, "fx-mobile");
     }
 
@@ -85,6 +84,9 @@ function getPromoStrings(args) {
     //   return productPromos(locales, promoUtms, "lockwise");
     // }
   }
+
+  // Return generic promo for Firefox's family of products
+  // by default if PRODUCT_PROMOS_ENABLED !-- "1"
   return productPromos(locales, promoUtms, "fx-ecosystem");
 }
 
