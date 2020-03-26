@@ -514,6 +514,16 @@ num-resolved =
     }
 progress-intro-subhead = Nově ve { -product-name(case: "loc") }: Označení úniků jako vyřešené
 progress-intro-message = Po přezkoumání podrobností o úniku a přijetí opatření k ochraně vašich osobních údajů můžete označit úniky jako vyřešené.
+progress-status =
+    { $numResolvedBreaches } { $numTotalBreaches ->
+        [one] z { $numTotalBreaches } úniku
+        [few] ze { $numTotalBreaches } úniků
+       *[other] z { $numTotalBreaches } úniků
+    } { $numResolvedBreaches ->
+        [one] je označen jako vyřešený
+        [few] jsou označeny jako vyřešené
+       *[other] je označeno jako vyřešených
+    }
 progress-complete = Všechny známé úniky byly označeny jako vyřešené.
 
 ## These strings contain nested markup that is later used to style the text inside of it.
