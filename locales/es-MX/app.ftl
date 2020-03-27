@@ -470,6 +470,45 @@ progress-complete = Todas las filtraciones conocidas han sido marcadas como resu
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 = <span>¡Comenzaste muy bien!</span> Revisa el resto de las filtraciones para saber qué medidas tomar.
+progress-message-2 = <span>¡Sigue así!</span> Pequeños cambios como la actualización de contraseñas tienen un gran impacto en mantener segura tu información personal.
+progress-message-3 = <span>¡Excelente trabajo resolviendo esas filtraciones!</span> Sigue así. Te quedan unos pocos más.
+progress-message-4 = <span>¡Casi listo!</span> Estás muy cerca de la meta.
+progress-complete-message =
+    <span>Se siente bien, ¿verdad?</span> Si quieres continuar, este es un buen momento para
+    actualizar otras conexiones con contraseñas más seguras.
 
 ##
 
+resolve-this-breach-link = Resolver esta filtración
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Marcada como resuelta:
+hide-resolved-button = Ocultar resueltas
+show-resolved-button = Mostrar resueltas
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Contraseña expuesta en filtraciones sin resolver
+       *[other] Contraseñas expuestas en filtraciones sin resolver
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Filtración de datos conocida marcada como resuelta
+       *[other] Filtraciones de datos conocidas marcadas como resueltas
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Nueva
+mobile-promo-headline = Lleva { -brand-name } a tu celular y tablet
+mobile-promo-body = Navegación rápida, privada y segura donde sea que vayas. Busca { -brand-name } en Google Play y App Store.
+mobile-promo-cta = Obtén { -brand-name } en Android e iOS
+promo-lockwise-headline = Lleva tus contraseñas a todas partes
+lockwise-promo-body = Mantén un registro de tus conexiones en todos tus dispositivos. Accede a ellas de forma segura desde tu computador, celular o tablet.
+promo-lockwise-cta = Obtener { -brand-lockwise }
+fpn-promo-headline = Oculta tu ubicación de sitios web y rastreadores
+promo-fpn-body = { -brand-fpn } despista a los sitios web y recolectores de datos que te perfilan con publicidad ocultando tu dirección IP real.
+promo-fpn-cta = Obtener { -brand-fpn }
+monitor-promo-headline = Infórmate sobre nuevas filtraciones de datos
+monitor-promo-body = Recibe notificaciones la próxima vez que tu información personal sea expuesta en una filtración conocida.
+ecosystem-promo-headline = Protege tu vida en línea con productos orientados a la privacidad
+ecosystem-promo-body = Todos los productos { -brand-name } honran nuestra promesa de datos personales: Tomar menos. Mantenerlo seguro. Sin secretos.
+promo-ecosystem-cta = Ver todos los productos
