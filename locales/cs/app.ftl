@@ -481,6 +481,12 @@ resolve-top-notification-plural =
 ##
 
 marking-this-subhead = Označení tohoto úniku jako vyřešeného
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Pokud jste učinili kroky vedoucí k odstranění následků tohoto úniku</span>,
+    můžete ho označit jako vyřešený. Na podrobnosti o tomto úniku
+    se můžete kdykoliv podívat na nástěnce.
 mark-as-resolve-button = Označit jako vyřešené
 marked-as-resolved-label = Označeno jako vyřešené
 undo-button = Zpět
