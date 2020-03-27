@@ -16,11 +16,8 @@ async function home(req, res) {
   const coinFlipNumber = Math.random() * 100;
   const experimentBranch = getExperimentBranch(req, coinFlipNumber);
 
-  const isUserInExperiment = isExperiment(experimentBranch);
-  let experimentBranchB = false;
-  if (experimentBranch === "vb" && isUserInExperiment) {
-    experimentBranchB = true;
-  }
+  const isUserInExperiment = (experimentBranch === "vb" || experimentBranch === "vc");
+  const experimentBranchB = (experimentBranch === "vb" && isUserInExperiment);
 
   let featuredBreach = null;
   let scanFeaturedBreach = false;
@@ -65,11 +62,6 @@ async function home(req, res) {
     isUserInExperiment,
     experimentBranchB,
   });
-}
-
-function isExperiment(experimentBranch) {
-  if (experimentBranch === "vb" || experimentBranch === "vc") { return true; }
-  return false;
 }
 
 function getExperimentBranch(req, sorterNum) {
