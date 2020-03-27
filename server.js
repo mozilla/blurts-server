@@ -95,6 +95,7 @@ const imgSrc = [
   "'self'",
   "https://www.google-analytics.com",
   "https://firefoxusercontent.com",
+  "https://mozillausercontent.com/",
   "https://monitor.cdn.mozilla.net/",
 ];
 
