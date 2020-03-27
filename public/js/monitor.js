@@ -484,6 +484,21 @@ function addBentoObserver(){
         }
         doOauth(e.target, {emailWatch: true});
       } else {
+
+        const scanFormActionURL = new URL(scanForm.action);
+
+
+        ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
+          if (document.body.dataset[key]) {
+            scanFormActionURL.searchParams.append(key, document.body.dataset[key]);
+          }
+        });
+
+        const revisedActionURL = scanFormActionURL.pathname + scanFormActionURL.search;
+
+        scanForm.action = revisedActionURL;
+
+
         if (typeof(ga) !== "undefined") {
           ga("send", {
             hitType: "event",
