@@ -73,6 +73,14 @@ function doOauth(el, {emailWatch = false} = {}) {
   // Growth Experiment: This logic is complex to handle the different scenarios of users logging into FxA.
   let email = false;
 
+  let growthTaggedURL = new URL("/oauth/init", document.body.dataset.serverUrl);
+  growthTaggedURL = appendFxaParams(growthTaggedURL, document.body.dataset);
+
+  ["flowId", "flowBeginTime", "entrypoint", "form_type"].forEach(key => {
+    growthTaggedURL.searchParams.append(key, encodeURIComponent(el.dataset[key]));
+  });
+
+
   if (document.querySelector("#scan-user-email input[type=email]")) {
     email = document.querySelector("#scan-user-email input[type=email]").value;
 
@@ -84,7 +92,7 @@ function doOauth(el, {emailWatch = false} = {}) {
   // Growth Experiment: Set UTMs from in-line body tag data elements.
   ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
     if (document.body.dataset[key]) {
-      url.searchParams.append(key, document.body.dataset[key]);
+      growthTaggedURL.searchParams.append(key, document.body.dataset[key]);
     }
   });
 
@@ -119,9 +127,9 @@ function doOauth(el, {emailWatch = false} = {}) {
 
   // Append whichever email was set, and start OAuth flow!
   if (email) {
-    url.searchParams.append("email", email);
+    growthTaggedURL.searchParams.append("email", email);
   }
-  window.location.assign(url);
+  window.location.assign(growthTaggedURL);
 }
 
 
@@ -459,11 +467,14 @@ function addBentoObserver(){
 
     submitBtn.addEventListener("click", (e)=> {
       document.body.dataset.utm_content = "opt-out";
+
+      // Email Validation
+      const scanForm = document.getElementById("scan-user-email");
+
       if (createFxaCheckbox.checked) {
         e.preventDefault();
 
-        // Email Validation
-        const scanForm = document.getElementById("scan-user-email");
+
         const scanFormEmailValue = document.querySelector("#scan-user-email input[type='email']").value;
 
         if (scanFormEmailValue.length < 1  || !isValidEmail(scanFormEmailValue)) {
