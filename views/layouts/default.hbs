@@ -21,7 +21,7 @@
     <link rel="icon" href="/img/favicons/favicon-128.png" sizes="128x128" />
     <link rel="icon" href="/img/favicons/favicon-256.png" sizes="256x256" />
   </head>
-  <body {{> analytics/default_dataset }} {{#if experimentBranch }} {{> analytics/experiment }} data-utm_term="{{experimentBranch}}"  data-experiment="{{experimentBranch}}" form_type="email" data-utm_content="{{#if experimentBranchB }}opt-out{{else}}opt-in{{/if}}" {{/if}} data-bento-app-id="fx-monitor">
+  <body {{> analytics/default_dataset }} data-bento-app-id="fx-monitor" {{#if experimentBranch }} {{> analytics/experiment }} {{/if}}>
     {{> header/header }}
       {{{ body }}}
     {{> footer }}
