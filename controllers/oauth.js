@@ -17,7 +17,7 @@ const log = mozlog("controllers.oauth");
 const utmArray = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
 
 function getUTMNames() {
-  return ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
+  return utmArray;
 }
 
 function init(req, res, next, client = FxAOAuthClient) {
@@ -29,8 +29,6 @@ function init(req, res, next, client = FxAOAuthClient) {
   const fxaParams = new URL(req.url, AppConstants.SERVER_URL);
 
   req.session.utmContents = {};
-
-  req.session.returnTo = "/scans";
 
   url.searchParams.append("access_type", "offline");
   url.searchParams.append("action", "email");
@@ -68,11 +66,9 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
 
   const returnURL = new URL("/user/dashboard", AppConstants.SERVER_URL);
 
-
   getUTMNames().forEach(param => {
     if (req.session.utmContents[param]) {
       returnURL.searchParams.append(param, req.session.utmContents[param]);
-      // returnURL.searchParams.append(param, encodeURIComponent(req.session.utmContents[param]));
     }
   });
 
