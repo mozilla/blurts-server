@@ -15,6 +15,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Cuenta de Firefox
 terms-and-privacy = Términos y Privacidad
 GitHub-link-title = GitHub
 error-scan-page-token = Intentaste escanear demasiadas direcciones de correo electrónico en un corto periodo de tiempo. Por cuestiones de seguridad, hemos bloqueado tus búsquedas temporalmente. Puedes intentarlo de nuevo más tarde.
@@ -397,13 +400,72 @@ five-myths-desc = Aprende a evitar los malos hábitos que facilitan a los pirata
 take-further-steps-desc = Descubre cómo mitigar los riesgos del robo de identidad para evitar perder tu dinero.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = ¡Cambios guardados!
+# Section headline
+rec-section-headline = Qué hacer con esta filtración
+rec-section-subhead = Te recomendamos que sigas estos pasos para mantener tu información privada segura y proteger tu identidad digital
+# Section headline
+rec-section-headline-no-pw = Qué hacer para proteger tu información personal
+rec-section-subhead-no-pw = Aunque las contraseñas no estuvieron expuestas en esta filtración, todavía hay pasos que puedes seguir para proteger mejor tu información personal.
+# Button
+see-additional-recs = Ver recomendaciones adicionales
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+resolve-top-notification = { $affectedEmail } apareció en esta filtración. <a>Qué hacer a continuación</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+       *[other] { $numAffectedEmails } de tus cuentas de correo aparecieron en esta filtración. <a>Qué hacer a continuación</a>
+    }
 
 ##
 
+marking-this-subhead = Marcando esta filtración como resuelta
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Una vez que hayas seguido los pasos necesarios para afrontar esta filtración/span>,
+    puedes marcarla como resuelta. Todavía puedes acceder en cualquier momento
+    desde tu panel a los detalles sobre la filtración.
+mark-as-resolve-button = Marcar como resuelto
+marked-as-resolved-label = Marcado como resuelto
+undo-button = Deshacer
+confirmation-1-subhead = ¡Perfecto! Acabas de resolver tu primera filtración.
+confirmation-1-body = Mantente así. Revisa tu panel de control para ver si queda algo más por hacer.
+confirmation-2-subhead = ¡Tomen eso, hackers!
+confirmation-2-body = Estás tomando importantes medidas para proteger tus cuentas en línea.
+confirmation-3-subhead = Otro menos. ¡Buen trabajo!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = ¿Tu nueva contraseña es única, fuerte y difícil de adivinar? <a>Descúbrelo</a>
+generic-confirmation-subhead = Esta filtración fue marcada como resuelta
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Para ver la filtración pendiente, ve a tu panel de control.
+       *[other] Para ver todas las filtraciones pendientes, ve a tu panel de control.
+    }
+return-to-breach-details-link = Volver a los detalles de la filtración
+go-to-dashboard-link = Ir al panel de control
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% completo
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } resuelta
+       *[other] { $numResolvedBreaches } resueltas
+    }
+progress-intro-subhead = Nuevo en { -product-name }: marcar filtraciones como resueltas
+progress-intro-message =
+    Después de revisar los detalles acerca de una filtración y tomar los pasos para proteger tu 
+    información personal, puedes marcar las filtraciones como resueltas.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } de { $numTotalBreaches } filtración marcada como resuelta
+       *[other] { $numResolvedBreaches } de  { $numTotalBreaches } filtraciones marcadas como resueltas
+    }
+progress-complete = Todas las filtraciones conocidas han sido marcadas como resueltas
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
