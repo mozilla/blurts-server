@@ -86,6 +86,10 @@ fxa-what-to-do-blurb-1 =
     on jachatal chi jumul. Wa' xuquje' wene jun kemb'i'aj le xasacho ¶
     xawinaqirisaj on wene xa xuk'ex ub'i' jun k'aywokaj.
 fxa-what-to-do-subhead-2 = Makoj chi le retokib'al k'o k'axk'olil chi rij, chak'exa' pa ronojel jawi' akojom wi.
+fxa-wtd-blurb-2 =
+    Le e b'ank'ax wene kkikoj le junam retokib'al chi'l le ataqoqxa'nib'al chech okem pa nik'aj chi kemb'i'aj.  ¶
+    Chawinaqirisaj jun jalan chi'l utukelal retokib'al chech jujun taq kemb'i'aj, qas na chech le akemb'i'aj rech ja k'olpwaq, ¶
+    Taqoqxa'nib'al, chi'l nik'aj chi uk'olib'al web' jawi' kk'ol wi winaqilal q'alajisanem.
 
 ## What to do after data breach tips
 
