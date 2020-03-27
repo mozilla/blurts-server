@@ -2,6 +2,7 @@
 
 /* global sendPing */
 /* global getFxaUtms */
+/* global appendFxaParams */
 /* global hashEmailAndSend */
 /* global sendRecommendationPings */
 /* global ga */
@@ -47,7 +48,7 @@ function doOauth(el, {emailWatch = false} = {}) {
   let url = new URL("/oauth/init", document.body.dataset.serverUrl);
   url = getFxaUtms(url);
 
-  ["flowId", "flowBeginTime", "entrypoint", "form_type"].forEach(key => {
+  ["flowId", "flowBeginTime", "entrypoint"].forEach(key => {
     url.searchParams.append(key, encodeURIComponent(el.dataset[key]));
   });
 
@@ -76,10 +77,9 @@ function doOauth(el, {emailWatch = false} = {}) {
   let growthTaggedURL = new URL("/oauth/init", document.body.dataset.serverUrl);
   growthTaggedURL = appendFxaParams(growthTaggedURL, document.body.dataset);
 
-  ["flowId", "flowBeginTime", "entrypoint", "form_type"].forEach(key => {
+  ["flowId", "flowBeginTime", "entrypoint", "form_type", "entrypoint_experiment", "entrypoint_variation"].forEach(key => {
     growthTaggedURL.searchParams.append(key, encodeURIComponent(el.dataset[key]));
   });
-
 
   if (document.querySelector("#scan-user-email input[type=email]")) {
     email = document.querySelector("#scan-user-email input[type=email]").value;
@@ -108,7 +108,8 @@ function doOauth(el, {emailWatch = false} = {}) {
           email = lastScannedEmail;
           break;
         case !lastScannedEmail:
-          // The last saved email address and the current entry DIFFER, so create a new entry, launch a new FxA login session with new email prefilled.
+          // The last saved email address and the current entry DIFFER, so create
+          // a new entry, launch a new FxA login session with new email prefilled.
           sessionStorage.setItem(`scanned_${(sessionStorage.length + 1)}`, email);
           scannedEmailId.value = sessionStorage.length;
           break;
@@ -493,7 +494,9 @@ function addBentoObserver(){
             eventLabel: "fx-monitor-alert-me-blue-link",
           });
         }
+
         doOauth(e.target, {emailWatch: true});
+
       } else {
 
         const scanFormActionURL = new URL(scanForm.action);
