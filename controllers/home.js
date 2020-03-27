@@ -72,12 +72,11 @@ function getExperimentBranch(req, sorterNum) {
 
   // If URL param has experimentBranch entry, use that branch;
   if (req.query.experimentBranch) {
-    if (req.query.experimentBranch !== "va" && req.query.experimentBranch !== "vb" && req.query.experimentBranch !== "vc" ) {
+    if (!["va", "vb", "vc"].includes(req.query.experimentBranch)) {
       return false;
-    } else {
-      req.session.experimentBranch = req.query.experimentBranch;
-      return req.query.experimentBranch;
     }
+    req.session.experimentBranch = req.query.experimentBranch;
+    return req.query.experimentBranch;
   }
 
   // If user was already assigned a branch, stay in that branch;
