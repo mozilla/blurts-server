@@ -54,3 +54,15 @@ rec-ip-us =
     Tu dirección de protocolo de Internet (dirección IP) señala tu ubicación 
     y tu proveedor de servicios de internet. Un servicio como { -brand-fpn } 
     enmascara tu dirección IP para ocultar tu ubicación.
+rec-hist-pw-subhead = Evita reutilizar contraseñas
+# Link title
+rec-hist-pw-cta-fx = Ver inicios de sesión en { -brand-name }
+# Recommendation subhead
+rec-sec-qa-subhead = Crea respuestas únicas para preguntas de seguridad
+# Recommendation subhead
+rec-phone-num-subhead = Evita compartir tu número de teléfono
+rec-phone-num =
+    Intenta evitar dar tu número de teléfono al registrar nuevas 
+    cuentas o servicios. Si un número de teléfono no es requerido, no lo ingreses.
+# Recommendation subhead
+rec-dob-subhead = Evita usar información personal en PINs
