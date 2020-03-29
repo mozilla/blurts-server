@@ -452,36 +452,34 @@ function addBentoObserver(){
   const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
   dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));
 
-
-
   if (document.body.dataset.experiment) {
-
     const submitBtn = document.querySelector("#scan-user-email input[type='submit']");
     const createFxaCheckbox = document.getElementById("createFxaCheckbox");
 
-    createFxaCheckbox.addEventListener("change", (e)=> {
-      document.body.dataset.utm_content = "opt-out";
-      if (event.target.checked) {
-        document.body.dataset.utm_content = "opt-in";
-      }
-    });
+    if (createFxaCheckbox) {
+      createFxaCheckbox.addEventListener("change", (e)=> {
+        document.body.dataset.utm_content = "opt-out";
+        if (event.target.checked) {
+          document.body.dataset.utm_content = "opt-in";
+        }
+      });
+    }
 
     submitBtn.addEventListener("click", (e)=> {
       document.body.dataset.utm_content = "opt-out";
 
       // Email Validation
       const scanForm = document.getElementById("scan-user-email");
+      const scanFormEmailValue = document.querySelector("#scan-user-email input[type='email']").value;
 
-      if (createFxaCheckbox.checked) {
+      if (scanFormEmailValue.length < 1  || !isValidEmail(scanFormEmailValue)) {
+        scanForm.classList.add("invalid");
+        return;
+      }
+
+      if (createFxaCheckbox && createFxaCheckbox.checked) {
+        // Applies only to Branches VB and VC, if the checkbox is CHECKED.
         e.preventDefault();
-
-
-        const scanFormEmailValue = document.querySelector("#scan-user-email input[type='email']").value;
-
-        if (scanFormEmailValue.length < 1  || !isValidEmail(scanFormEmailValue)) {
-          scanForm.classList.add("invalid");
-          return;
-        }
 
         // Analytics
         document.body.dataset.utm_content = "opt-in";
@@ -496,34 +494,29 @@ function addBentoObserver(){
         }
 
         doOauth(e.target, {emailWatch: true});
+        return;
+      }
 
-      } else {
+      const scanFormActionURL = new URL(scanForm.action);
 
-        const scanFormActionURL = new URL(scanForm.action);
-
-
-        ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
-          if (document.body.dataset[key]) {
-            scanFormActionURL.searchParams.append(key, document.body.dataset[key]);
-          }
-        });
-
-        const revisedActionURL = scanFormActionURL.pathname + scanFormActionURL.search;
-
-        scanForm.action = revisedActionURL;
-
-
-        if (typeof(ga) !== "undefined") {
-          ga("send", {
-            hitType: "event",
-            eventCategory: "growthuserflow1",
-            eventAction: "opt-out",
-            eventLabel: "fx-monitor-alert-me-blue-link",
-          });
+      ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
+        if (document.body.dataset[key]) {
+          scanFormActionURL.searchParams.append(key, document.body.dataset[key]);
         }
+      });
+
+      const revisedActionURL = scanFormActionURL.pathname + scanFormActionURL.search;
+
+      scanForm.action = revisedActionURL;
+
+      if (typeof(ga) !== "undefined") {
+        ga("send", {
+          hitType: "event",
+          eventCategory: "growthuserflow1",
+          eventAction: "opt-out",
+          eventLabel: "fx-monitor-alert-me-blue-link",
+        });
       }
     });
   }
-
-
 })();
