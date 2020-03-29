@@ -44,7 +44,6 @@
   background: #cfcfd8;
 }
 
-
 .create-fxa-checkbox-checkmark {
   position: relative;
   height: 24px;
@@ -70,16 +69,4 @@
 
 .create-fxa-checkbox-input:checked ~ .create-fxa-checkbox-checkmark::after {
   display: block;
-}
-
-@media screen and (max-width: 800px) {
-
-}
-
-@media screen and (max-width: 600px) {
-
-}
-
-@media screen and (max-width: 500px) {
-
 }
