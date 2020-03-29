@@ -77,6 +77,10 @@ rec-phone-num =
     cuentas o servicios. Si el número de teléfono no es obligatorio, no lo introduzcas.
 # Recommendation subhead
 rec-dob-subhead = Evita usar información personal en PINs
+rec-dob =
+    Debido a que tu fecha de nacimiento es fácil de encontrar en los registros públicos, 
+    es mejor evitar usarlo en contraseñas y PINs. Quienes sepan 
+    tu fecha de nacimiento también podrían adivinar fácilmente tu PIN.
 # Recommendation subhead
 rec-pins-subhead = Fortalece la seguridad de tus PINs
 rec-pins =
@@ -84,6 +88,10 @@ rec-pins =
     o tu dirección. Debería ser un número que solo tú sabes y no se pueda adivinar fácilmente.
 # Recommendation subhead
 rec-address-subhead = Evita usar direcciones en contraseñas
+rec-address =
+    Usar direcciones o la calle en donde creciste debilita tus 
+    contraseñas. Como es fácil encontrar esta información públicamente, hace que estas
+    contraseñas sean fáciles de adivinar.
 # Recommendation subhead
 rec-gen-1-subhead = Utiliza contraseñas únicas y fuertes para cada cuenta
 # Link title
