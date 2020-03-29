@@ -15,6 +15,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Conto Firefox
 terms-and-privacy = Conditiones de uso e confidentialitate
 GitHub-link-title = GitHub
 error-scan-page-token = Tu ha probate a analysar troppo de adresses de e-mail in un curte periodo de tempore. Pro rationes de securitate, nos te ha temporarimente blocate pro nove recercas. Tu potera probar de novo plus tarde.
@@ -385,6 +388,10 @@ see-additional-recs = Vide altere recommendationes
 mark-as-resolve-button = Marcar como resolvite
 marked-as-resolved-label = Marcate como resolvite
 undo-button = Disfacer
+go-to-dashboard-link = Ir al pannello de controlo
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% complete
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
