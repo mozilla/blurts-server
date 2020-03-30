@@ -63,7 +63,8 @@ function doOauth(el, {emailWatch = false} = {}) {
   // Preserve entire control function
   if (!emailWatch) {
     if (sessionStorage && sessionStorage.length > 0) {
-      const lastScannedEmail = sessionStorage.getItem(`scanned_${sessionStorage.length}`);
+
+      const lastScannedEmail = sessionStorage.getItem("lastScannedEmail");
       if (lastScannedEmail) {
         url.searchParams.append("email", lastScannedEmail);
       }
@@ -93,7 +94,7 @@ function doOauth(el, {emailWatch = false} = {}) {
 
   if (sessionStorage && sessionStorage.length > 0) {
 
-    const lastScannedEmail = sessionStorage.getItem(`scanned_${sessionStorage.length}`);
+    const lastScannedEmail = sessionStorage.getItem("lastScannedEmail");
 
     if (email && lastScannedEmail) {
       switch (email) {
@@ -104,7 +105,8 @@ function doOauth(el, {emailWatch = false} = {}) {
         case !lastScannedEmail:
           // The last saved email address and the current entry DIFFER, so create
           // a new entry, launch a new FxA login session with new email prefilled.
-          sessionStorage.setItem(`scanned_${(sessionStorage.length + 1)}`, email);
+          sessionStorage.removeItem("lastScannedEmail");
+          sessionStorage.setItem("lastScannedEmail", email);
           scannedEmailId.value = sessionStorage.length;
           break;
       }
@@ -116,7 +118,8 @@ function doOauth(el, {emailWatch = false} = {}) {
     }
   } else if (email && sessionStorage) {
     // Applies to first time user in experiment has no previous FxA ties.
-    sessionStorage.setItem(`scanned_${(sessionStorage.length + 1)}`, email);
+    sessionStorage.removeItem("lastScannedEmail");
+    sessionStorage.setItem("lastScannedEmail", email);
     scannedEmailId.value = sessionStorage.length;
   }
 
