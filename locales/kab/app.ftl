@@ -448,3 +448,9 @@ progress-complete = Akk tirewliwin n yisefka ttwacerḍent frant
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Amaynut
 mobile-promo-headline = Sebded { -brand-name } ɣef tiliɣri-inek akked tfelwit-inek n uselkem
+mobile-promo-body = Inig s  wudem arurad, uslig, yerna d aɣelsan anida teddiḍ. Aff-d { -brand-name } deg Google Play akked App Store.
+mobile-promo-cta = Awi-d { -brand-name } ɣef Android akked iOS
+promo-lockwise-headline = Awi awalen uffiren anda teddiḍ
+promo-lockwise-cta = Sebded { -brand-lockwise }
+fpn-promo-headline = Ffer adeg ɣef ismal web akked ineḍfaren
+promo-fpn-cta = Awi-d { -brand-fpn }
