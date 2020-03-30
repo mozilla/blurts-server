@@ -420,6 +420,17 @@ undo-button = Sefsex
 confirmation-1-subhead = Igerrez! Aql-ak tefriḍ tarewla-ik tamezwarut.
 confirmation-1-body = Kemmel akken tebdiḍ. Ger tiṭ ɣer tfelwit-ik n usenqed akken ad twaliḍ ayen-nniḍen ara txedmeḍ.
 confirmation-2-subhead = Yiwet-nniḍen!
+go-to-dashboard-link = Ddu ɣer tfelwit n usenqed
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete } % immed
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } yefra
+       *[other] { $numResolvedBreaches } fran
+    }
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
