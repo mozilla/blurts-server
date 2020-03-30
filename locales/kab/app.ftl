@@ -432,6 +432,12 @@ num-resolved =
        *[other] { $numResolvedBreaches } fran
     }
 progress-intro-subhead = Amaynut di { -product-name }: Creḍ dakken uguren n tɣellist fran
+progress-status =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } seg { $numTotalBreaches } n trewla n yisefka tettwacreḍ tefra
+       *[other] { $numResolvedBreaches } seg { $numTotalBreaches } n trewliwin n yisefka ttwacerḍent frant
+    }
+progress-complete = Akk tirewliwin n yisefka ttwacerḍent frant
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
@@ -439,3 +445,6 @@ progress-intro-subhead = Amaynut di { -product-name }: Creḍ dakken uguren n t�
 
 ##
 
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Amaynut
+mobile-promo-headline = Sebded { -brand-name } ɣef tiliɣri-inek akked tfelwit-inek n uselkem
