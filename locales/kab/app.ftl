@@ -431,6 +431,7 @@ num-resolved =
         [one] { $numResolvedBreaches } yefra
        *[other] { $numResolvedBreaches } fran
     }
+progress-intro-subhead = Amaynut di { -product-name }: Creḍ dakken uguren n tɣellist fran
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
