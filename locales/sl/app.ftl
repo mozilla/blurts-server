@@ -543,9 +543,6 @@ hide-resolved-button = Skrij razrešene
 show-resolved-button = Prikaži razrešene
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Novo
-promo-fx-mobile-headline = Zasebnost in hitrost na mobilnih napravah
-promo-fx-mobile-cta = Prenesite { -brand-name } za mobilne naprave
 promo-lockwise-headline = Vzemite gesla s seboj
 promo-lockwise-cta = Prenesite { -brand-lockwise }
-promo-ecosystem-headline = Spoznajte našo družino izdelkov
-promo-ecosystem-body = Ena prijava. Vse vaše naprave. Družina izdelkov, ki spoštujejo vašo zasebnost.
+ecosystem-promo-headline = Zaščitite svoje spletno življenje z izdelki, ki na prvo mesto postavljajo zasebnost
