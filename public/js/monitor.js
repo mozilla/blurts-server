@@ -2,7 +2,6 @@
 
 /* global sendPing */
 /* global getFxaUtms */
-/* global appendFxaParams */
 /* global hashEmailAndSend */
 /* global sendRecommendationPings */
 /* global ga */
@@ -48,8 +47,10 @@ function doOauth(el, {emailWatch = false} = {}) {
   let url = new URL("/oauth/init", document.body.dataset.serverUrl);
   url = getFxaUtms(url);
 
-  ["flowId", "flowBeginTime", "entrypoint"].forEach(key => {
-    url.searchParams.append(key, encodeURIComponent(el.dataset[key]));
+  ["flowId", "flowBeginTime", "entrypoint", "entrypoint_experiment", "entrypoint_variation", "form_type"].forEach(key => {
+    if (el.dataset[key]) {
+      url.searchParams.append(key, encodeURIComponent(el.dataset[key]));
+    }
   });
 
   if (!sessionStorage) {
@@ -74,13 +75,6 @@ function doOauth(el, {emailWatch = false} = {}) {
   // Growth Experiment: This logic is complex to handle the different scenarios of users logging into FxA.
   let email = false;
 
-  let growthTaggedURL = new URL("/oauth/init", document.body.dataset.serverUrl);
-  growthTaggedURL = appendFxaParams(growthTaggedURL, document.body.dataset);
-
-  ["flowId", "flowBeginTime", "entrypoint", "form_type", "entrypoint_experiment", "entrypoint_variation"].forEach(key => {
-    growthTaggedURL.searchParams.append(key, encodeURIComponent(el.dataset[key]));
-  });
-
   if (document.querySelector("#scan-user-email input[type=email]")) {
     email = document.querySelector("#scan-user-email input[type=email]").value;
 
@@ -89,13 +83,13 @@ function doOauth(el, {emailWatch = false} = {}) {
     }
   }
 
-  // Growth Experiment: Set UTMs from in-line body tag data elements.
+  // Growth Experiment: Reset UTMs from in-line body tag data elements.
   ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
     if (document.body.dataset[key]) {
-      growthTaggedURL.searchParams.append(key, document.body.dataset[key]);
+      url.searchParams.delete(key);
+      url.searchParams.append(key, document.body.dataset[key]);
     }
   });
-
 
   if (sessionStorage && sessionStorage.length > 0) {
 
@@ -128,9 +122,9 @@ function doOauth(el, {emailWatch = false} = {}) {
 
   // Append whichever email was set, and start OAuth flow!
   if (email) {
-    growthTaggedURL.searchParams.append("email", email);
+    url.searchParams.append("email", email);
   }
-  window.location.assign(growthTaggedURL);
+  window.location.assign(url);
 }
 
 
