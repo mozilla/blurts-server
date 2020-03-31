@@ -25,7 +25,7 @@ error-could-not-add-email = Não foi possível adicionar o endereço de email à
 error-not-subscribed = Este endereço de email não está subscrito no { -product-name }.
 error-hibp-throttled = Demasiadas ligações para { -brand-HIBP }.
 error-hibp-connect = Erro ao ligar a { -brand-HIBP }.
-error-hibp-load-breaches = Não foi possível carregar as brechas.
+error-hibp-load-breaches = Não foi possível carregar as falhas de segurança.
 error-must-be-signed-in = Deve estar autenticado na sua { -brand-fxa }.
 error-to-finish-verifying = Para concluir a confirmação deste e-mail para { -product-name }, deve estar autenticado com a sua conta de e-mail primária.
 home-title = { -product-name }
@@ -64,10 +64,10 @@ unsub-blurb = Isto irá remover o seu email da lista do { -product-name-nowrap }
 unsub-button = Cancelar subscrição
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Dados de brechas fornecidos por { $hibp-link }
-share-twitter = A maioria das pessoas tem cerca de 100 contas online. Alguma das suas foi exposta numa brecha de dados? Descubra.
-share-facebook-headline = Descubra se fez parte de uma brecha de dados
-share-facebook-blurb = Alguma das suas contas online foi exposta numa brecha de dados?
-og-site-description = Descubra se fez parte de uma brecha de dados com o { -product-name }. Registe-se para receber alertas acerca de futuras brechas e receba dicas para manter as suas contas seguras.
+share-twitter = A maioria das pessoas tem cerca de 100 contas na Internet. Será que alguma das suas foi exposta numa falha de segurança de dados? Vamos descobrir.
+share-facebook-headline = Descubra se fez parte de uma falha de segurança de dados
+share-facebook-blurb = Alguma das suas contas na Internet foi exposta numa falha de segurança de dados?
+og-site-description = Descubra se fez parte de uma falha de segurança de dados com o { -product-name }. Registe-se para receber alertas acerca de futuras falhas de segurança e receba dicas para manter as suas contas seguras.
 show-all = Mostrar todas
 fxa-scan-another-email = Pretende verificar outro email?
 sign-in = Iniciar sessão
@@ -120,7 +120,7 @@ fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Abrir navegação do { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
-latest-breach = ÚLTIMA BRECHA ADICIONADA
+latest-breach = ÚLTIMA FALHA DE SEGURANÇA ADICIONADA
 # Link title
 more-about-this-breach = Mais acerca desta brecha
 take-control = Retome o controlo dos seus dados pessoais.
