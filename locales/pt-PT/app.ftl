@@ -490,25 +490,25 @@ num-resolved =
     }
 progress-intro-subhead = Novo no { -product-name }: marque falhas de segurança como resolvidas
 progress-intro-message =
-    Depois de analisar os detalhes sobre uma violação e tomar medidas para proteger
-    as suas informações pessoais, pode marcar as violações como resolvidas.
+    Depois de analisar os detalhes sobre uma falha de segurança e tomar medidas para proteger
+    as suas informações pessoais, pode marcar as falhas de segurança como resolvidas.
 progress-status =
     { $numTotalBreaches ->
-        [one] { $numResolvedBreaches } violação de { $numTotalBreaches } marcada como resolvida
-       *[other] { $numResolvedBreaches } de { $numTotalBreaches } violações marcadas como resolvidas
+        [one] { $numResolvedBreaches } (de { $numTotalBreaches }) falha de segurança de  marcada como resolvida
+       *[other] { $numResolvedBreaches } (de { $numTotalBreaches }) falhas de segurança marcadas como resolvidas
     }
-progress-complete = Todas as violações conhecidas foram marcadas como resolvidas
+progress-complete = Todas as falhas de segurança conhecidas foram marcadas como resolvidas
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
 progress-message-1 =
-    <span>Começou bem!</span> Analise as violações remanescentes para saber
+    <span>Começou bem!</span> Analise as falhas de segurança remanescentes para saber
     que medidas deve adotar.
 progress-message-2 =
     <span>Continue assim!</span> Pequenas alterações, como atualizar palavras-passe, têm um grande impacto
     na manutenção da confidencialidade das suas informações pessoais.
-progress-message-3 = <span>Bom trabalho ao resolver estas violações!</span> Continue assim. Ainda tem mais algumas para resolver.
+progress-message-3 = <span>Bom trabalho ao resolver estas falhas de segurança!</span> Continue assim. Ainda tem mais algumas para resolver.
 progress-message-4 = <span>Muito perto!</span> Está quase na linha de chegada.
 progress-complete-message =
     <span>Sabe bem, não é?</span> Se quiser continuar, é um bom momento para
@@ -516,7 +516,7 @@ progress-complete-message =
 
 ##
 
-resolve-this-breach-link = Resolver esta violação
+resolve-this-breach-link = Resolver esta falha de segurança
 # This string appears in resolved breach cards and is followed by 
 # the date the user marked the breach as resolved.
 marked-resolved = Marcada como resolvida:
@@ -524,13 +524,13 @@ hide-resolved-button = Ocultar resolvidas
 show-resolved-button = Mostrar resolvidas
 unresolved-passwords-exposed =
     { $numPasswords ->
-        [one] Palavra-passe exposta em violações não resolvidas
-       *[other] Palavras-passe expostas em violações não resolvidas
+        [one] Palavra-passe exposta em falhas de segurança não resolvidas
+       *[other] Palavras-passe expostas em falhas de segurança não resolvidas
     }
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
-        [one] Violação de dados conhecida marcada como resolvida
-       *[other] Violações de dados conhecidas marcadas como resolvidas
+        [one] Falha de segurança de dados conhecida marcada como resolvida
+       *[other] Falhaa de segurança de dados conhecidas marcadas como resolvidas
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nova
@@ -543,8 +543,8 @@ promo-lockwise-cta = Obter o { -brand-lockwise }
 fpn-promo-headline = Mascare a sua localização de sites e de rastreadores
 promo-fpn-body = O { -brand-fpn } mascara o seu endereço IP real, despistando os sites e coletores de dados que criam um perfil seu com recurso a anúncios.
 promo-fpn-cta = Obtenha o { -brand-fpn }
-monitor-promo-headline = Seja informado de novas violações de dados
-monitor-promo-body = Seja notificado da próxima vez que as suas informações pessoais forem expostas numa violação conhecida.
+monitor-promo-headline = Seja informado de novas falhas de segurança de dados
+monitor-promo-body = Seja notificado da próxima vez que as suas informações pessoais forem expostas numa falha de segurança conhecida.
 ecosystem-promo-headline = Proteja a sua vida na Internet com produtos de privacidade focados na privacidade
 ecosystem-promo-body = Todos os produtos { -brand-name } honram o nosso compromisso com os dados pessoais: recolher menos; manter seguro; sem segredos.
 promo-ecosystem-cta = Ver todos os produtos

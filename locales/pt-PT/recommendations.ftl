@@ -19,8 +19,8 @@ rec-pw-2-subhead = Atualize outras credenciais que utilizem a mesma palavra-pass
 # Link title
 rec-pw-2-cta-fx = Ver credenciais em { -brand-name }
 rec-pw-2 =
-    Reutilizar palavras-passe transforma uma única violação de dados em várias. Agora que esta 
-    palavra-passe foi divulgada, os piratas podem utilizá-la para aceder a outras contas.
+    A reutilização de palavras-passe transforma uma única falha de segurança de dados em várias. Agora que esta 
+    palavra-passe foi divulgada, os piratas informáticos podem utilizá-la para aceder a outras contas.
 # Recommendation subhead
 rec-pw-3-subhead = Utilize um gestor de palavras-passe para levar as suas palavras-passe para todo o lado
 # Link title
@@ -66,7 +66,7 @@ rec-hist-pw-subhead = Evite reutilizar palavras-passe
 rec-hist-pw-cta-fx = Ver as credenciais em { -brand-name }
 rec-hist-pw =
     Utilize palavras-passe fortes e exclusivas para todas as contas. Se uma palavra-passe for
-    exposta numa violação de dados, você só precisará atualizar essa credencial.
+    exposta numa falha de segurança de dados, você só precisará atualizar essa credencial.
 # Recommendation subhead
 rec-sec-qa-subhead = Crie respostas exclusivas para perguntas de segurança
 rec-sec-qa =

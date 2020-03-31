@@ -75,18 +75,18 @@ pre-fxa-subject = Uma atualização do { -product-name }
 pre-fxa-headline = O que está a mudar com o { -product-name }
 pre-fxa-blurb =
     Aqui tem o que mudou desde que se registou no { -product-name }, o serviço que 
-    monitoriza as violações de dados conhecidas para sua informação pessoal. Nós estamos a associar o mesmo às contas do Firefox.
-pre-fxa-tout-1 = Fique atento a mais violações
+    monitoriza as falhas de segurança de dados conhecidas para sua informação pessoal. Nós estamos a associar o serviço às contas do Firefox.
+pre-fxa-tout-1 = Fique atento a mais falhas de segurança
 pre-fxa-p-1 =
     <a>Crie uma conta</a> para monitorizar até 15 endereços de e-mail para 
-    as violações de dados. Nós recomendamos que adicione quaisquer endereços de e-mail que utilizou para criar contas on-line.
+    as falhas de segurança de dados. Nós recomendamos que adicione quaisquer endereços de e-mail que utilizou para criar contas na Internet.
 pre-fxa-tout-2 = Obter uma visualização do painel
 pre-fxa-p-2 =
-    Veja todas as violações de dados num só lugar para saber quais as palavras-passe a alterar. 
-    O painel de violações só está disponível com uma conta.
+    Consulte todas as falhas de segurança de dados num único local, para saber quais as palavras-passe a alterar. 
+    O painel de falhas de segurança só está disponível com uma conta.
 pre-fxa-tout-3 = Continue a receber alertas por e-mail
 pre-fxa-p-3 =
-    Ainda continuará a receber alertas do { -product-name }. Nós iremos informá-lo 
-    se a sua informação aparecer numa nova violação de dados.
+    Irá continuar a receber alertas do { -product-name }. Nós iremos informá-lo 
+    se a sua informação aparecer numa nova falha de segurança de dados.
 # Button at the bottom of pre-fxa email.
 create-account = Criar conta
