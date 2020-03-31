@@ -211,6 +211,8 @@ comm-opt-0 = Shinechtuktili asu se ipal nudirección ipal correoj muajsi tik ne 
 comm-opt-1 = Shiktitani muchi ne kaltapanilis ka { $primaryEmail }.
 stop-monitoring-this = Makaya shikpepeta ini email.
 resend-verification = Shiktitani uksenpa ne correoj kan mupepettuk.
+add-new-email = Shikachtili se yankwik correoj
+send-verification = Shiktitani ne ilpika kan mupepettuk
 
 ## Updated error messages
 
