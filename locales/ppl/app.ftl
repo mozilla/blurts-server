@@ -209,6 +209,8 @@ search-for-your-email = Shiktemu mudirección correoj tik ne kaltapanalis pal da
 back-to-top = Shimukwepa kan tipewa
 comm-opt-0 = Shinechtuktili asu se ipal nudirección ipal correoj muajsi tik ne kaltapanalis ipal datoj.
 comm-opt-1 = Shiktitani muchi ne kaltapanilis ka { $primaryEmail }.
+stop-monitoring-this = Makaya shikpepeta ini email.
+resend-verification = Shiktitani uksenpa ne correoj kan mupepettuk.
 
 ## Updated error messages
 
