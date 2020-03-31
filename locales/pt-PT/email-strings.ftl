@@ -20,23 +20,21 @@ email-footer-blurb = Está a receber este e-mail porque subscreveu a alertas de 
 email-verify-footer-copy =
     Está a receber este e-mail porque subscreveu a alertas de { -product-name }. 
     Este é um e-mail automático. Para apoio, visite { $faqLink }.
-# Button text that takes the user to their signed in user dashboard.
-view-my-dashboard-cta = Ver o meu painel
 # Button text
 verify-email-cta = Confirmar e-mail
 # Button text
 see-all-breaches = Ver todas as brechas
 # Headline of verification email
 email-link-expires = Esta ligação expira em 24 horas
-email-verify-blurb = Confirme o seu e-mail para o adicionar a { -product-name } e subscreva aos alertas de intrusões.
+email-verify-blurb = Confirme o seu e-mail para o adicionar a { -product-name } e subscreva aos alertas de falhas de segurança.
 # Email headline
-email-found-breaches-hl = Eis o seu resumo para intrusões anteriores de dados
+email-found-breaches-hl = Eis o seu resumo para falhas de segurança de dados anteriores
 # Email headline
-email-breach-summary-for-email = Resumo de intrusões para { $userEmail }
+email-breach-summary-for-email = Resumo de falhas de segurança para { $userEmail }
 # Email headline
-email-no-breaches-hl = { $userEmail } apareceu em 0 intrusões de dados conhecidas
+email-no-breaches-hl = { $userEmail } apareceu em 0 falhas de segurança de dados conhecidas
 # Email headline
-email-alert-hl = { $userEmail } apareceu numa nova intrusão de dados
+email-alert-hl = { $userEmail } apareceu numa nova falha de segurança de dados
 # Subject line of email
 email-subject-found-breaches = { -product-name } encontrou a sua informação numa destas intrusões
 # Subject line of email

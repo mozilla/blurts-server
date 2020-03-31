@@ -54,7 +54,7 @@ signup-modal-sent = Enviado!
 sign-up = Registar
 form-signup-error = Tem de ser um email válido
 # breach-date = the calendar date a particular data theft occurred. 
-breach-date = Data da brecha
+breach-date = Data da falha de segurança
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Contas comprometidas:
 # compromised-data = the kind of user data exposed to hackers in data breach.
@@ -373,7 +373,7 @@ breach-overview-title = Sinopse
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview-new = A { $breachDate }, { $breachTitle } foi comprometido. Assim que a intrusão foi descoberta e confirmada, foi adicionada à nossa base de dados a { $addedDate }.
+breach-overview-new = A { $breachDate }, { $breachTitle } foi comprometido. Assim que a falha de segurança foi descoberta e confirmada, foi adicionada à nossa base de dados a { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } - Preferências
 # When a user is signed in, this appears in the drop down menu 
@@ -462,7 +462,7 @@ marking-this-body =
 mark-as-resolve-button = Marcar como resolvida
 marked-as-resolved-label = Marcado como resolvido
 undo-button = Desfazer
-confirmation-1-subhead = Boa! Acabou de resolver a sua primeira intrusão.
+confirmation-1-subhead = Boa! Acabou de resolver a sua primeira falha de segurança.
 confirmation-1-body = Mantenha o ritmo. Consulte o seu painel para ver se existem mais coisas a resolver.
 confirmation-2-subhead = Tomem lá, piratas!
 confirmation-2-body = Está a tomar medidas importantes para proteger as suas contas na Internet.
