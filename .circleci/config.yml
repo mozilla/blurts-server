@@ -59,6 +59,11 @@ jobs:
                 command: |
                     sudo apt update -qqy
                     sudo apt -qqy install npm default-jre default-jdk
+            - run:
+                name: Install Node 10
+                command: |
+                    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+                    sudo apt -qqy install nodejs
             - checkout
             - run:
                 name: Build image and run Intergration Test
