@@ -53,7 +53,6 @@ jobs:
         machine:
             image: ubuntu-1604:201903-01
         steps:
-            - setup_remote_docker
             - run:
                 name: Install dependencies
                 command: |
