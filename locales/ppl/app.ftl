@@ -219,6 +219,7 @@ send-verification = Shiktitani ne ilpika kan mupepettuk
 # alerts for all of their monitored email addresses to a single 
 # email address.
 breach-summary = Ne resumen ipal ne kaltapanilis
+show-breaches-for-this-email = Shikneshti muchi ne kaltapanalis ipal ini correoj.
 
 ## Updated error messages
 
