@@ -59,6 +59,7 @@ jobs:
                 command: |
                     sudo apt update -qqy
                     sudo apt -qqy install npm
+            - checkout
             - run:
                 name: Build image and run Intergration Test
                 command: |
