@@ -53,25 +53,19 @@ jobs:
         machine:
             image: ubuntu-1604:201903-01
         steps:
+            - checkout
             - run:
-                name: Install dependencies
+                name: DO EVERYTHING
                 command: |
                     sudo apt-get update -qqy
                     sudo apt-get -qqy install npm default-jre default-jdk
-            - run:
-                name: Install Node 10
-                command: |
                     curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
                     sudo apt-get -qqy install nodejs
-            - checkout
-            - run:
-                name: Build image and run Intergration Test
-                command: |
-                  cp .env-dist .env
-                  npm install
-                  npm install --only=dev
-                  docker-compose -f tests/integration/docker-compose.yml up --build -d
-                  npm run test:integration-docker
+                    cp .env-dist .env
+                    npm install
+                    npm install --only=dev
+                    docker-compose -f tests/integration/docker-compose.yml up --build -d
+                    npm run test:integration-docker
 
     deploy:
         docker:
