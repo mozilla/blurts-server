@@ -55,16 +55,9 @@ jobs:
         steps:
             - checkout
             - run:
-                name: Fix node version
-                command: |
-                    echo 'export NVM_DIR="/opt/circleci/.nvm"' >> $BASH_ENV
-                    echo ' [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
-                    nvm install v10
-                    nvm alias default v10
-                    node -v
-            - run:
                 name: DO EVERYTHING
                 command: |
+                    node use 10
                     node -v
                     sudo apt-get update -qqy
                     sudo apt-get -qqy install npm default-jre default-jdk
