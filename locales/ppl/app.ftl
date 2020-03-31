@@ -213,6 +213,12 @@ stop-monitoring-this = Makaya shikpepeta ini email.
 resend-verification = Shiktitani uksenpa ne correoj kan mupepettuk.
 add-new-email = Shikachtili se yankwik correoj
 send-verification = Shiktitani ne ilpika kan mupepettuk
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-summary = Ne resumen ipal ne kaltapanilis
 
 ## Updated error messages
 
