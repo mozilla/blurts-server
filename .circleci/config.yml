@@ -51,17 +51,14 @@ jobs:
 
     integration-test:
         docker:
-            - image: docker:18.02.0-ce
+            - image: cimg/base:2020.01
         steps:
             - setup_remote_docker
-            - restore_cache:
-                key: v1-{{.Branch}}
             - run:
-                name: Restore Docker image cache
-                command: docker load -i /cache/docker.tar
-            - run:
-                name: Update npm to latest
-                command: docker run blurts-server npm install npm@latest -g
+                name: Install npm
+                command: |
+                    sudo apt update -qqy
+                    sudo apt -qqy install npm
             - run:
                 name: Build image and run Intergration Test
                 command: |
