@@ -50,7 +50,7 @@ jobs:
                 command: docker run blurts-server npm run lint
 
     integration-test:
-        machine: true
+        machine:
             image: ubuntu-1604:201903-01
         steps:
             - setup_remote_docker
