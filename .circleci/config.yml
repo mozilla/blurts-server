@@ -57,7 +57,7 @@ jobs:
             - run:
                 name: DO EVERYTHING
                 command: |
-                    node use 10
+                    nvm use 10
                     node -v
                     sudo apt-get update -qqy
                     sudo apt-get -qqy install npm default-jre default-jdk
