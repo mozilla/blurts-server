@@ -57,6 +57,9 @@ jobs:
             - restore_cache:
                 key: v1-{{.Branch}}
             - run:
+                name: Restore Docker image cache
+                command: docker load -i /cache/docker.tar
+            - run:
                 name: Update npm to latest
                 command: docker run blurts-server npm install npm@latest -g
             - run:
