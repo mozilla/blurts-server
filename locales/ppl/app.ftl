@@ -225,6 +225,8 @@ remove-fxm = Shikishti { -product-name }
 remove-fxm-blurb =
     Shiksewi ne tanawatilis ipal { -product-name }. Mu{ -brand-fxa } yawi naka mutimakatuk, wan tiu-tikpia  
     seuk tanujnutzalis ipal cuentaj.
+# Button title
+manage-email-addresses = Shiktajpia ne dijdirección ipal correoj
 
 ## Updated error messages
 
