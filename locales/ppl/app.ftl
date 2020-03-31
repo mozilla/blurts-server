@@ -220,6 +220,11 @@ send-verification = Shiktitani ne ilpika kan mupepettuk
 # email address.
 breach-summary = Ne resumen ipal ne kaltapanilis
 show-breaches-for-this-email = Shikneshti muchi ne kaltapanalis ipal ini correoj.
+link-change-primary = Shikpata ne dirección ipan correoj ne nemi ka achtu
+remove-fxm = Shikishti { -product-name }
+remove-fxm-blurb =
+    Shiksewi ne tanawatilis ipal { -product-name }. Mu{ -brand-fxa } yawi naka mutimakatuk, wan tiu-tikpia  
+    seuk tanujnutzalis ipal cuentaj.
 
 ## Updated error messages
 
