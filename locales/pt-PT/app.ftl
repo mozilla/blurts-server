@@ -184,12 +184,12 @@ wtd-after-website = O que fazer depois de uma falha de segurança num site
 wtd-after-data-agg = O que fazer depois de uma falha de segurança num agregador de dados
 what-is-data-agg = O que é um agregador de dados?
 what-is-data-agg-blurb =
-    Um agregador ou agente de dados, recolhe informações de registos 
-    públicos e adquire dados de outras empresas. Trabalham estes dados para os venderem a outras empresas 
-    para fins de marketing. As vítimas destas violações são uma probabilidade mais baixa de fraude financeira 
-    mas os piratas informáticos podem utilizar estes dados para se fazerem passar por essas pessoas ou as perfilar.
+    Agregadores ou agentes de dados, recolhem informações de registos 
+    públicos e adquirem dados de outras empresas. Trabalham estes dados para os venderem a outras empresas 
+    para fins de marketing. As vítimas destas falhas de segurança têm uma probabilidade mais baixa de fraude financeira 
+    mas os piratas informáticos podem utilizar estes dados para se fazerem passar por estas pessoas ou para criarem perfis.
 protect-your-privacy = Proteja a sua privacidade online
-no-pw-to-change = Ao contrário de uma violação de website, não há uma palavra-passe para alterar.
+no-pw-to-change = Ao contrário de uma falha de segurança de site, não há uma palavra-passe para alterar.
 avoid-personal-info = Evite utilizar informação pessoal nas palavras-passe
 avoid-personal-info-blurb = É fácil encontrar aniversários, moradas e nomes de membros de família online. Mantenha estas palavras fora das suas palavras-passe.
 
@@ -204,23 +204,23 @@ create-strong-passwords = Como criar palavras-passe fortes
 stop-reusing-pw = Pare de reutilizar as mesmas palavras-passe
 create-unique-pw = Crie palavras-passe únicas e guarde-as num lugar seguro, tal como um gestor de palavras-passe.
 five-myths = 5 mitos sobre os gestores de palavras-passe
-create-a-fxa = Crie uma { -brand-fxa } para o seu relatório completo das violações e para receber alertas.
+create-a-fxa = Crie uma { -brand-fxa } para ter acesso ao seu relatório completo das falhas de segurança e para receber alertas.
 feat-security-tips = Dicas de segurança para proteger as suas contas
-feat-sensitive = Pesquisa avançada em violações sensíveis
-feat-enroll-multiple = Registar vários e-mails na monitorização de violações
+feat-sensitive = Pesquisa avançada em falhas de segurança sensíveis
+feat-enroll-multiple = Registar vários e-mails para a monitorização de falhas de segurança
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
     { $breachCount ->
-        [one] Aparece em { $breachCount } violação conhecida.
-       *[other] Aparece em { $breachCount } violações conhecidas.
+        [one] Aparece em { $breachCount } falha de segurança conhecida.
+       *[other] Aparece em { $breachCount } falhas de segurança conhecidas.
     }
-check-for-breaches = Consultar violações
+check-for-breaches = Pesquisar por falhas de segurança
 find-out-what-hackers-know = Descubra o que os piratas informáticos já sabem sobre si. Saiba como ficar um passo à frente deles.
-search-for-your-email = Pesquise pelo seu endereço de e-mail em violações públicas de dados até 2007.
+search-for-your-email = Pesquise pelo seu endereço de e-mail em falhas de segurança públicas de dados desde 2007.
 back-to-top = Voltar ao topo
-comm-opt-0 = Enviar um e-mail para mim caso um dos meus endereços de e-mail abaixo aparecer numa violação de dados.
-comm-opt-1 = Enviar todos alertas de violações para { $primaryEmail }.
+comm-opt-0 = Enviar um e-mail para mim caso um dos meus endereços de e-mail abaixo aparecer numa falha de segurança de dados.
+comm-opt-1 = Enviar todos alertas de falhas de segurança para { $primaryEmail }.
 stop-monitoring-this = Pare de monitorizar este e-mail.
 resend-verification = Reenviar e-mail de verificação
 add-new-email = Adicionar um novo endereço de e-mail
@@ -230,8 +230,8 @@ send-verification = Enviar ligação de verificação
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-breach-summary = Resumo da violação
-show-breaches-for-this-email = Mostrar todas as violações para este e-mail.
+breach-summary = Resumo da falha de segurança
+show-breaches-for-this-email = Mostrar todas as falhas de segurança para este e-mail.
 link-change-primary = Alterar endereço de e-mail primário
 remove-fxm = Remover { -product-name }
 remove-fxm-blurb =
@@ -240,15 +240,15 @@ remove-fxm-blurb =
 # Button title
 manage-email-addresses = Gerir endereços de e-mail
 # Link title
-latest-breach-link = Veja se esteve nesta violação
+latest-breach-link = Veja se esteve nesta falha de segurança
 welcome-back = Bem-vindo(a) de volta, { $userName }!
 welcome-user = Bem-vindo(a), { $userName }!
-breach-alert-subject = { -product-name } encontrou o seu e-mail numa nova violação de dados.
-your-info-was-discovered-headline = Os seus dados foram descobertos numa nova violação de dados.
+breach-alert-subject = { -product-name } encontrou o seu e-mail numa nova falha de segurança de dados.
+your-info-was-discovered-headline = Os seus dados foram descobertos numa nova falha de segurança de dados.
 your-info-was-discovered-blurb =
     Registou-se para receber alertas do { -product-name } 
-    quando o seu e-mail aparecer numa violação de dados. Veja o que nós sabemos sobre esta violação.
-what-to-do-after-breach = O que fazer depois de uma violação de dados:
+    quando o seu e-mail aparece numa falha de segurança de dados. Eis o que sabemos sobre esta falha de segurança.
+what-to-do-after-breach = O que fazer depois de uma falha de segurança de dados:
 ba-next-step-1 = Altere a sua palavra-passe para uma palavra-passe forte e única.
 ba-next-step-blurb-1 =
     Uma palavra-passe forte utiliza uma combinação de letras maiúsculas e minúsculas, 
@@ -263,32 +263,32 @@ ba-next-step-3 = Obtenha ajuda para criar melhores palavras-passe e as manter se
 ba-next-step-blurb-3 =
     Utilize um gestor de palavras-passe para criar palavras-passe fortes e únicas. Os gestores de palavras-passe guardam 
     com segurança todas as suas credenciais para que possa aceder às mesmas em todos os seus dispositivos.
-faq1 = Eu não reconheço esta empresa ou website. Por que é que eu estou nesta violação?
-faq2 = Porque é que demorou tanto para me notificarem desta violação?
+faq1 = Eu não reconheço esta empresa ou site. Por que é que eu estou nesta falha de segurança?
+faq2 = Porque é que demorou tanto para me notificarem desta falha de segurança?
 faq3 = Como é que eu sei que é um e-mail legitimo do { -product-name }?
 new-breaches-found =
     { $breachCount ->
-        [one] ENCONTRADA { $breachCount } NOVA VIOLAÇÃO
-       *[other] ENCONTRADAS { $breachCount } NOVAS VIOLAÇÕES
+        [one] ENCONTRADA { $breachCount } NOVA FALHA DE SEGURANÇA
+       *[other] ENCONTRADAS { $breachCount } NOVAS FALHAS DE SEGURANÇA
     }
 sign-up-headline-1 = Receba alertas atuais com uma { -brand-fxa }.
 account-not-required = O navegador { -brand-name } não é obrigatório para uma { -brand-fxa }. Poderá receber informações sobre os serviços da { -brand-Mozilla }.
-was-your-info-exposed = A sua informação foi exposta na violação de dados de { $breachName }?
-find-out-if = Saiba se os seus dados foram expostos nesta violação.
-fb-not-comp = Este e-mail não apareceu na violação { $breachName }.
+was-your-info-exposed = A sua informação foi exposta na falha de segurança de dados de { $breachName }?
+find-out-if = Saiba se os seus dados foram expostos nesta falha de segurança.
+fb-not-comp = Este e-mail não apareceu na falha de segurança { $breachName }.
 other-breaches-found =
     { $breachCount ->
-        [one] Contudo, este apareceu em { $breachCount } outra violação.
-       *[other] Contudo, este apareceu em { $breachCount } outras violações
+        [one] Contudo, este apareceu em { $breachCount } outra falha de segurança.
+       *[other] Contudo, este apareceu em { $breachCount } outras falhas de segurança
     }
-fb-comp-only = Este e-mail apareceu na violação { $breachName }.
+fb-comp-only = Este e-mail apareceu na falha de segurança { $breachName }.
 fb-comp-and-others =
     { $breachCount ->
-        [one] Este e-mail apareceu em { $breachCount } violação de dados conhecida, incluindo { $breachName }.
-       *[other] Este e-mail apareceu em { $breachCount } violações de dados conhecidas, incluindo { $breachName }.
+        [one] Este e-mail apareceu em { $breachCount } falha de segurança de dados conhecida, incluindo { $breachName }.
+       *[other] Este e-mail apareceu em { $breachCount } falhas de segurança de dados conhecidas, incluindo { $breachName }.
     }
-no-other-breaches-found = Nenhuma outra violação encontrada a partir de uma pesquisa básica.
-no-results-blurb = Desculpe, esta violação não está na nossa base de dados.
+no-other-breaches-found = Não foram encontradas outras falhas de segurança a partir de uma pesquisa básica.
+no-results-blurb = Desculpe, esta falha de segurança não está na nossa base de dados.
 all-breaches-headline = Todas as violações no { -product-name }
 search-breaches = Procurar por violações
 # "Appears in-page as: Showing: All Breaches"
