@@ -15,7 +15,7 @@ exports.config = Object.assign({}, common.config, {
     autoSaveBaseline: true,
   }]],
   dockerOptions: {
-    image: "selenium/standalone-firefox-debug",
+    image: "selenium/standalone-firefox",
     healthCheck: {
       url: "http://localhost:4444",
       maxRetries: 3,
@@ -29,6 +29,7 @@ exports.config = Object.assign({}, common.config, {
           "HIBP_API_TOKEN=${HIBP_API_TOKEN}",
         ],
       p: ["4444:4444", "5900:5900"],
+      v: "/dev/shm:/dev/shm",
       shmSize: "2g",
       network: "host",
     },
