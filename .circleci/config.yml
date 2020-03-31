@@ -58,7 +58,7 @@ jobs:
                 name: Install npm
                 command: |
                     sudo apt update -qqy
-                    sudo apt -qqy install npm
+                    sudo apt -qqy install npm default-jre default-jdk
             - checkout
             - run:
                 name: Build image and run Intergration Test
