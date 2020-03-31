@@ -208,6 +208,7 @@ find-out-what-hackers-know = Shikajsi ne tay ne hacker kimatiaya mupanpa. Shimum
 search-for-your-email = Shiktemu mudirección correoj tik ne kaltapanalis pal datoj ipal tukniwan hasta 2007.
 back-to-top = Shimukwepa kan tipewa
 comm-opt-0 = Shinechtuktili asu se ipal nudirección ipal correoj muajsi tik ne kaltapanalis ipal datoj.
+comm-opt-1 = Shiktitani muchi ne kaltapanilis ka { $primaryEmail }.
 
 ## Updated error messages
 
