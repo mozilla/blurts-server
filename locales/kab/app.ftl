@@ -443,7 +443,7 @@ num-resolved =
        *[other] { $numResolvedBreaches } fran
     }
 progress-intro-subhead = Amaynut di { -product-name }: Creḍ dakken uguren n tɣellist fran
-progress-intro-message = Mbeεd asenqed n ttfaṣil yerzan tarewla akked uḥraz n talɣut-inek tudmawant s uḍfar n yimecwaren ilaqen, tzemreḍ ad tcerḍeḍ qef trewliwin frant.
+progress-intro-message = Mbeεd asenqed n ttfaṣil yerzan tarewla akked uḥraz n talɣut-inek tudmawant s uḍfar n yimecwaren ilaqen, tzemreḍ ad tcerḍeḍ ɣef trewliwin frant.
 progress-status =
     { $numResolvedBreaches ->
         [one] { $numResolvedBreaches } seg { $numTotalBreaches } n trewla n yisefka tettwacreḍ tefra
