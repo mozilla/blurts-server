@@ -261,6 +261,10 @@ test("user add request with invalid email throws error", async () => {
 
 test("user verify request with valid token but no session renders email verified page", async () => {
     const validToken = TEST_EMAIL_ADDRESSES.unverified_email_on_firefox_account.verification_token;
+    const mockReturnedBreaches = testBreaches.slice(0,2);
+    HIBP.subscribeHash = jest.fn();
+    HIBP.getBreachesForEmail = jest.fn();
+    HIBP.getBreachesForEmail.mockReturnValue(mockReturnedBreaches);
 
     const req = httpMocks.createRequest({
       method: "GET",
@@ -283,6 +287,10 @@ test("user verify request with valid token verifies user and redirects to dashbo
     const validToken = TEST_EMAIL_ADDRESSES.unverified_email_on_firefox_account.verification_token;
     const testSubscriberEmail = "firefoxaccount@test.com";
     const testSubscriber = await DB.getSubscriberByEmail(testSubscriberEmail);
+    const mockReturnedBreaches = testBreaches.slice(0,2);
+    HIBP.subscribeHash = jest.fn();
+    HIBP.getBreachesForEmail = jest.fn();
+    HIBP.getBreachesForEmail.mockReturnValue(mockReturnedBreaches);
 
     const req = httpMocks.createRequest({
       method: "GET",
