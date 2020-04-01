@@ -66,7 +66,7 @@ jobs:
                     npm install --only=dev
                     sudo chown -R  $USER:$USER .
                     docker-compose -f tests/integration/docker-compose.yml up --build -d
-                    docker-compose -f tests/integration/docker-compose.yml exec firefox npm run test:integration
+                    docker-compose -f tests/integration/docker-compose.yml exec --user root firefox npm run test:integration
 
     deploy:
         docker:
