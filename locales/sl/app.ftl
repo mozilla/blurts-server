@@ -486,6 +486,7 @@ resolve-top-notification-plural =
 
 ##
 
+marking-this-subhead = Označevanje kraje kot razrešene
 # This string contains nested markup that is later used to style the text inside of it.
 # Please do not modify or remove "<span>" and "</span>".
 marking-this-body =
@@ -497,11 +498,20 @@ marked-as-resolved-label = Označeno kot razrešeno
 undo-button = Razveljavi
 confirmation-1-subhead = Super! Pravkar ste razrešili prvo krajo podatkov.
 confirmation-1-body = Nadaljujte. Preglejte nadzorno ploščo in preverite, ali je treba še kaj storiti.
+confirmation-2-subhead = Izvolite hekerji!
 confirmation-2-body = Sprejemate pomembne ukrepe za zaščito svojih spletnih računov.
+confirmation-3-subhead = Še ena je razrešena. Odlično!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Ali je vaše novo geslo edinstveno, močno in težko uganljivo? <a>Preverite</a>
 generic-confirmation-subhead = Ta kraja je bila označena kot razrešena
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Za ogled preostale kraje pojdite na nadzorno ploščo.
+        [two] Za ogled preostalih kraj pojdite na nadzorno ploščo.
+        [few] Za ogled preostalih kraj pojdite na nadzorno ploščo.
+       *[other] Za ogled preostalih kraj pojdite na nadzorno ploščo.
+    }
 return-to-breach-details-link = Nazaj na podrobnosti o kraji
 go-to-dashboard-link = Pojdi na nadzorno ploščo
 # This string appears above a breach resolution progress bar and indicates
@@ -532,6 +542,17 @@ progress-complete = Vse znane kraje podatkov so bile označene kot razrešene
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>Dobro ste začeli!</span> Oglejte si preostale kraje in izvedite, 
+    kako ukrepati.
+progress-message-2 =
+    <span>Kar tako naprej!</span> Majhne spremembe, kot je posodabljanje gesel, imajo velik vpliv na 
+    varovanje vaših osebnih podatkov.
+progress-message-3 = <span>Dobro ste se lotili razreševanja kraj!</span> Kar tako naprej. Še nekaj jih je ostalo.
+progress-message-4 = <span>Skoraj ste končali!</span> Blizu cilja ste.
+progress-complete-message =
+    <span>Dober občutek, kajne?</span> Če želite nadaljevati, je sedaj pravi čas za to, 
+    da posodobite druge prijave z močnejšimi gesli.
 
 ##
 
@@ -541,8 +562,31 @@ resolve-this-breach-link = Razreši to krajo
 marked-resolved = Označeno kot razrešeno:
 hide-resolved-button = Skrij razrešene
 show-resolved-button = Prikaži razrešene
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] geslo je bilo izpostavljeno v nerazrešenih krajah
+        [two] gesli sta bili izpostavljeni v nerazrešenih krajah
+        [few] gesla so bila izpostavljena v nerazrešenih krajah
+       *[other] gesel je bilo izpostavljenih v nerazrešenih krajah
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] znana kraja je bila označena kot razrešena
+        [two] znani kraji sta bili označeni kot razrešeni
+        [few] znane kraje so bile označene kot razrešene
+       *[other] znanih kraj je bilo označenih kot razrešenih
+    }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Novo
+mobile-promo-headline = Imejte { -brand-name } na svojem telefonu in tablici
+mobile-promo-body = Hitro, zasebno in varno brskanje kamorkoli greste. Poiščite { -brand-name } v trgovini Google Play in App Store.
+mobile-promo-cta = Prenesite { -brand-name } za Android in iOS
 promo-lockwise-headline = Vzemite gesla s seboj
 promo-lockwise-cta = Prenesite { -brand-lockwise }
+fpn-promo-headline = Prikrijte svojo lokacijo spletnim mestom in sledilcem.
+promo-fpn-cta = Preskusite { -brand-fpn }
+monitor-promo-headline = Izvedite več o novih krajah podatkov
+monitor-promo-body = Prejmite obvestilo naslednjič, ko bodo vaši podatki izpostavljeni v znani kraji podatkov.
 ecosystem-promo-headline = Zaščitite svoje spletno življenje z izdelki, ki na prvo mesto postavljajo zasebnost
+ecosystem-promo-body = Vsi izdelki { -brand-name } sledijo naši obljubi o ravnanju z osebnimi podatki: Vzemi manj. Ohrani na varnem. Brez skrivnosti.
+promo-ecosystem-cta = Oglejte si vse izdelke

@@ -66,6 +66,8 @@ job-applications = prijave za delovno mesto
 job-titles = službeni nazivi
 mac-addresses = naslovi MAC
 marital-statuses = zakonski statusi
+# Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
+mnemonic-phrases = Memonične fraze
 names = imena
 nationalities = državljanstva
 net-worths = neto prihodki
