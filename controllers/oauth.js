@@ -66,11 +66,13 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
 
   const returnURL = new URL("/user/dashboard", AppConstants.SERVER_URL);
 
-  getUTMNames().forEach(param => {
-    if (req.session.utmContents[param]) {
-      returnURL.searchParams.append(param, req.session.utmContents[param]);
-    }
-  });
+  if (req.session.utmContents) {
+    getUTMNames().forEach(param => {
+      if (req.session.utmContents[param]) {
+        returnURL.searchParams.append(param, req.session.utmContents[param]);
+      }
+    });
+  }
 
   // Check if user is signing up or signing in,
   // then add new users to db and send email.
@@ -110,11 +112,11 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
     );
     req.session.user = verifiedSubscriber;
 
-    return res.redirect(returnURL);
+    return res.redirect(returnURL.pathname + returnURL.search);
   }
   // Update existing user's FxA data
   await DB._updateFxAData(existingUser, fxaUser.accessToken, fxaUser.refreshToken, fxaProfileData);
-  res.redirect(returnURL);
+  res.redirect(returnURL.pathname + returnURL.search);
 }
 
 module.exports = {
