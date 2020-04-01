@@ -16,6 +16,9 @@ services:
       - LOGOS_ORIGIN=null
       - BREACH_RESOLUTION_ENABLED=false
       - MONITOR_FXA_PASSWORD
+      - DATABASE_URL=postgres://postgres@postgres:5432/blurts
+    links:
+      - postgres
   postgres:
     image: postgres
     restart: always
@@ -24,10 +27,28 @@ services:
       - POSTGRES_DB=blurts
     expose:
       - "5432"
+    ports:
+      - "5432:5432"
   migration:
     image: integration_server:latest
     command: bash -c "chmod +x ./scripts/wait-for-it.sh && ./scripts/wait-for-it.sh postgres:5432 -- npm run db:migrate"
+    environment:
+      - DATABASE_URL=postgres://postgres@postgres:5432/blurts
     links:
       - postgres
     depends_on:
       - postgres
+  firefox:
+    image: b4handjr/selenium-firefox:python3-latest
+    env_file: ../../.env
+    environment:
+      - MOZ_HEADLESS=1
+      - MONITOR_FXA_PASSWORD
+    volumes:
+      - ../../:/code
+    expose:
+      - "4444"
+    ports:
+      - "5900:5900"
+    shm_size: 2g
+    network_mode: host

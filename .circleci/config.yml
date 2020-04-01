@@ -61,13 +61,11 @@ jobs:
                     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
                     nvm use 10
                     node -v
-                    sudo apt-get update -qqy
-                    sudo apt-get -qqy install npm default-jre default-jdk
                     cp .env-dist .env
                     npm install
                     npm install --only=dev
                     docker-compose -f tests/integration/docker-compose.yml up --build -d
-                    npm run test:integration-docker
+                    docker-compose -f tests/integration/docker-compose.yml exec firefox npm run test:integration
 
     deploy:
         docker:

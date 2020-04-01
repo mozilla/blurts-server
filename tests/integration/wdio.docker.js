@@ -24,7 +24,7 @@ exports.config = Object.assign({}, common.config, {
     },
     options: {
       e: ["MOZ_HEADLESS=1",
-          "MAILINATOR_PASSWORD=${MAILINATOR_PASSWORD}",
+          "MAILINATOR_PASSWORD=${MONITOR_FXA_PASSWORD}",
           "HIBP_KANON_API_TOKEN=${HIBP_KANON_API_TOKEN}",
           "HIBP_API_TOKEN=${HIBP_API_TOKEN}",
         ],
