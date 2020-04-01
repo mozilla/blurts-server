@@ -66,7 +66,7 @@ async function home(req, res) {
 
 function getExperimentBranch(req, sorterNum) {
 
-  if (!req.headers["accept-language"].includes("en") ){
+  if (req.headers && !req.headers["accept-language"].includes("en") ){
     return false;
   }
 
