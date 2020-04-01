@@ -217,7 +217,7 @@ exports.config = {
      * Function to be executed after a test (in Mocha/Jasmine).
      */
     afterTest: function(test, context, { error, result, duration, passed, retries }) {
-      if (process.env.CIRCLECI) {
+      if (process.env.CIRCLECI == true) {
         const path =  join(process.cwd(), ".tmp/errorShots/error-"+Date.now()+".png");
         browser.saveScreenshot(path);
       }
