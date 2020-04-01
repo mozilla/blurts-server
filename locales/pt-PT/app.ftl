@@ -44,7 +44,7 @@ user-unsubscribe-token-error = Cancelar a subscrição requer um token.
 user-unsubscribe-token-email-error = Cancelar a subscrição requer um token e emailHash.
 user-unsubscribe-title = { -product-name } : Cancelar subscrição
 pwt-section-headline = Palavras-passe mais fortes = melhor proteção
-landing-headline = O seu direito de estar a salvo de hackers começa aqui.
+landing-headline = O seu direito de estar a salvo de piratas informáticos começa aqui.
 scan-placeholder = Inserir endereço de e-mail
 scan-submit = Pesquisar pelo seu e-mail
 scan-error = Tem de ser um email válido.
@@ -76,7 +76,7 @@ sign-out = Terminar sessão
 manage-fxa = Gerir { -brand-fxa }
 have-an-account = Já tem uma conta?
 fxa-pwt-summary-2 =
-    Palavras-passe curtas e de palavra única são fáceis para os hackers adivinharem.
+    Palavras-passe curtas e de palavra única são fáceis de adivinhar para os piratas informáticos.
     Utilize pelo menos duas palavras e uma combinação de letras, dígitos e caracteres especiais.
 fxa-pwt-summary-4 =
     Os gestores de palavras-passe como 1Password, LastPass, Dashlane e Bitwarden armazenam as suas
@@ -91,9 +91,9 @@ fxa-what-to-do-blurb-1 =
     criou ou uma empresa que mudou de nome.
 fxa-what-to-do-subhead-2 = Pare de utilizar a palavra-passe exposta e altere-a em todos os lugares em que a utilizou.
 fxa-wtd-blurb-2 =
-    Os hackers podem tentar utilizar essa mesma palavra-passe e o seu email para aceder a outras contas.
+    Os piratas informáticos podem tentar utilizar essa mesma palavra-passe e o seu e-mail para aceder a outras contas.
     Crie uma palavra-passe diferente e única para cada conta, especialmente para a sua conta bancária,
-    email e outros websites onde guarda informação pessoal.
+    email e outros sites onde guarda informação pessoal.
 fxa-what-to-do-blurb-3 =
     A maioria das brechas apenas expõem emails e palavras-passe, mas algumas incluem informação financeira sensível.
     Se a sua conta bancária ou números de cartão de crédito foram expostos, alerte o seu banco sobre possíveis fraudes.
@@ -124,9 +124,9 @@ latest-breach = ÚLTIMA FALHA DE SEGURANÇA ADICIONADA
 # Link title
 more-about-this-breach = Mais acerca desta brecha
 take-control = Retome o controlo dos seus dados pessoais.
-cant-stop-hackers = Não pode impedir que os hackers invadam. Mas pode evitar maus hábitos que lhes facilitam o trabalho.
+cant-stop-hackers = Não pode impedir que os piratas informáticos sejam piratas. Mas pode evitar os maus hábitos que lhes facilitam o trabalho.
 read-more-tips = Ler mais dicas de segurança
-how-hackers-work = Compreender como é que os hackers funcionam
+how-hackers-work = Compreender como é que os piratas informáticos trabalham
 monitor-your-online-accounts = Registe-se para a monitorização de falhas de segurança com uma { -brand-fxa }.
 stay-alert = Mantenha-se atento às novas falhas de segurança
 if-your-info = Se a sua informação apareceu numa nova falha de segurança de dados, iremos enviar-lhe um alerta.
@@ -348,7 +348,7 @@ email-verification-required = Verificação de email requerida
 fxa-primary-email = Email do { -brand-fxa } - Primário
 what-is-a-website-breach = O que é uma falha de segurança do site?
 website-breach-blurb = Uma falha de segurança de dados de um site ocorre quando os cibercriminosos roubam, copiam ou expõem a informação pessoal de contas na Internet. Geralmente, é a consequência dos piratas informáticos encontrarem um ponto fraco na segurança do site. As falhas de segurança também podem acontecer quando a informação sobre contas é divulgada de forma acidental.
-security-tips-headline = Dicas de segurança para se proteger contra hackers
+security-tips-headline = Dicas de segurança para se proteger contra piratas informáticos
 steps-to-protect = Passos a tomar para proteger a sua identidade online
 take-further-steps = Mais passos para proteger a sua identidade
 alert-about-new-breaches = Alertar-me acerca de novas brechas
