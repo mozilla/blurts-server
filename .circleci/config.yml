@@ -68,7 +68,7 @@ jobs:
                     docker-compose -f tests/integration/docker-compose.yml up --build -d
                     docker-compose -f tests/integration/docker-compose.yml exec --user root firefox npm run test:integration
             - store_artifacts:
-                path: .tmp/errorShots/
+                path: ./tests/integration/errorShots/
 
     deploy:
         docker:
