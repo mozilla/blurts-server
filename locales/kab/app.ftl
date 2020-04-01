@@ -420,6 +420,17 @@ undo-button = Sefsex
 confirmation-1-subhead = Igerrez! Aql-ak tefriḍ tarewla-ik tamezwarut.
 confirmation-1-body = Kemmel akken tebdiḍ. Ger tiṭ ɣer tfelwit-ik n usenqed akken ad twaliḍ ayen-nniḍen ara txedmeḍ.
 confirmation-2-subhead = Yiwet-nniḍen!
+confirmation-2-body = Texeddmeḍ imecwaṛen s wazalen-nsen akken ad tḥerzeḍ imiḍanen-inek usriden.
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Awal-inek uffir amaynut d asuf, yeǧhed, yewεer i tiftin? <a>Ẓer</a>
+generic-confirmation-subhead = Tarewla-agi tettwacreḍ tefra.
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Akken ad twaliḍ tarewla i d-yeqqimen, kcem ɣer tfelwit-inek n usenqed.
+       *[other] Akken ad twaliḍ tirewliwin i d-yeqqimen, kcem ɣer tfelwit-inek n usenqed.
+    }
+return-to-breach-details-link = Uɣal ɣer trewla s telqey
 go-to-dashboard-link = Ddu ɣer tfelwit n usenqed
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
@@ -432,6 +443,7 @@ num-resolved =
        *[other] { $numResolvedBreaches } fran
     }
 progress-intro-subhead = Amaynut di { -product-name }: Creḍ dakken uguren n tɣellist fran
+progress-intro-message = Mbeεd asenqed n ttfaṣil yerzan tarewla akked uḥraz n talɣut-inek tudmawant s uḍfar n yimecwaren ilaqen, tzemreḍ ad tcerḍeḍ qef trewliwin frant.
 progress-status =
     { $numResolvedBreaches ->
         [one] { $numResolvedBreaches } seg { $numTotalBreaches } n trewla n yisefka tettwacreḍ tefra

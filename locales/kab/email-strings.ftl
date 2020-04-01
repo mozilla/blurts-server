@@ -22,8 +22,6 @@ email-footer-blurb =
 email-verify-footer-copy =
     Tremseḍ-d izen-a acku tjerrdeḍ ɣer yilɣa n { -product-name }
     Wagi d izen awurman. I wugar n tallelt, rzu ɣer { $faqLink }-nneɣ.
-# Button text that takes the user to their signed in user dashboard.
-view-my-dashboard-cta = Sken Tafelwit n usenqed-inu
 # Button text
 verify-email-cta = Senqed tansa imayl
 # Button text
@@ -80,3 +78,5 @@ pre-fxa-headline = Acu i ibeddlen deg { -product-name }
 pre-fxa-tout-1 = Qqim deg yisallen ɣef trewliwin-nniḍen n yisefka
 pre-fxa-tout-2 = Awi tafelwit n usenqed
 pre-fxa-tout-3 = Qqi deg yisallen s yimayl
+# Button at the bottom of pre-fxa email.
+create-account = Rnu amiḍan

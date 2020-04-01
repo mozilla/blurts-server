@@ -61,6 +61,7 @@ imsi-numbers = Uṭṭunen IMSI
 income-levels = aswir n lmedxul
 instant-messenger-identities = imuɣna n tirawt taskudant
 ip-addresses = Tansiwin IP
+job-applications = Asuter n uxeddim
 job-titles = axeddim
 mac-addresses = tansiwin MAC
 marital-statuses = addad aɣarim
