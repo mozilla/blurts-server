@@ -16,7 +16,7 @@ async function home(req, res) {
   const coinFlipNumber = Math.random() * 100;
   const experimentBranch = getExperimentBranch(req, coinFlipNumber);
 
-  const isUserInExperiment = (experimentBranch === "vb" || experimentBranch === "vc");
+  const isUserInExperiment = (experimentBranch === "vb");
   const experimentBranchB = (experimentBranch === "vb" && isUserInExperiment);
 
   let featuredBreach = null;
@@ -72,7 +72,7 @@ function getExperimentBranch(req, sorterNum) {
 
   // If URL param has experimentBranch entry, use that branch;
   if (req.query.experimentBranch) {
-    if (!["va", "vb", "vc"].includes(req.query.experimentBranch)) {
+    if (!["va", "vb"].includes(req.query.experimentBranch)) {
       return false;
     }
     req.session.experimentBranch = req.query.experimentBranch;
@@ -82,15 +82,10 @@ function getExperimentBranch(req, sorterNum) {
   // If user was already assigned a branch, stay in that branch;
   if (req.session.experimentBranch) { return req.session.experimentBranch; }
 
-  // Split into three categories
-  if (sorterNum <= 33.333) {
+  // Split into two categories
+  if (sorterNum <= 50) {
     req.session.experimentBranch = "vb";
     return "vb";
-  }
-
-  if (sorterNum <= 66.666) {
-    req.session.experimentBranch = "vc";
-    return "vc";
   }
 
   return "va";
