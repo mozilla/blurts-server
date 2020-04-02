@@ -58,3 +58,56 @@ rec-ip-non-us =
 rec-hist-pw-subhead = Ur ssexdam ara awalen uffiren i tesxedmeḍ yakan.
 # Link title
 rec-hist-pw-cta-fx = Sken inekcumen deg { -brand-name }
+rec-hist-pw =
+    Seqdec awal uffir asuf, iǧehden i yal amiḍan. Ma yella tufid awal uffir 
+    iban-d deg trewla n yisefka , yewwi-d kan fell-ak ad tleqqmeḍ anekcumèagi.
+# Recommendation subhead
+rec-sec-qa-subhead = Eg yiwet kan n tririt i yal asteqsi n tɣellist
+rec-sec-qa =
+    Aṭas n yismal web kifkif tuuttriwin i d-ttakken. Ma yella tella tririt i d-ibanen 
+    talɣut teffeɣ. Eg tiririyin ɣezzifen, yemgaraden, tḥerzeḍ-tent deg wadeg yettwaḍemnen.
+# Recommendation subhead
+rec-phone-num-subhead = Γur-k, ur beṭṭu ara uṭṭun n usiwel-inek
+rec-phone-num =
+    Muqel amek ur tettmudduḍ ara uṭṭun n tilifun-inek mi ara tjerrdeḍ ɣer 
+    umiḍan neɣ umeẓlu imaynuten. Ma yella ur d-yettwasuter ara wuṭṭun n tilifun, ur t-ssekcam ara.
+# Recommendation subhead
+rec-dob-subhead = Ur seqdac ara talɣut tudmawant deg PINs
+rec-dob =
+    Seg wakken azemz n tlalit-ik, yeshel ad yettwaf deg yikalasen izuyaz, 
+    axir ur t-txeddmeḍ ara deg wawalen-inek uffiren d tengalt PINs. Imdanen yeẓran 
+    azemz n tlalit-ik , ishel-asen ad d-afen tangalt-inek n PIN.
+# Recommendation subhead
+rec-pins-subhead = Seǧhed taɣellist n tengalin-inek n PINs
+rec-pins =
+    PIN iǧehden ulac deg-s talɣutin tudmawanin, am wazemz n tlalit-ik 
+    neɣ tansa-ik. Yewwi-d ad yili d uṭṭun i tessneḍ kan keččini rnu ad yiwεiṛ i tiftin.
+# Recommendation subhead
+rec-address-subhead = Ssinef aseqdec n tansiwin deg wawalen uffiren.
+rec-address =
+    Aseqdec n tansiwin neɣ amkan ideg d-tekkreḍ yesseḍεaf awalen-inek 
+    uffir. Akken yeshel ad ttwafent talɣutin-agi deg uzayaz. Ayagi ad yerr 
+    awalen uffiren sehlen i tiftin.
+# Recommendation subhead
+rec-gen-1-subhead = Xdem awal uffir asuf, iǧehden i yal amiḍan
+# Link title
+rec-gen-1-cta = Amek ara d-tesnulfuḍ awalen uffiren iǧehden
+rec-gen-1 =
+    Aεiwed n usexdem n wawalen uffiren ad yerr imiḍanen-inek deg ugur. Ayagi yebɣa ad d-yini 
+    yiwen n wawal uffir ara d-ibanen, imakaren ad sεun tisura n tuget n yimiḍanen.
+# Recommendation subhead
+rec-gen-2-subhead = Sekles awalen uffiren deg umkan i iḥerzen
+# Link title
+rec-gen-2-cta = Ugar n tikta ɣef yimsefrak n wawal uffir
+rec-gen-2 =
+    Err talɣutin-inek n tuqqna deg umkan iḍemnen wuɣur ara tkecmeḍ kan keččini, am 
+    usefrek n wawal uffir. Ayagi ad isishel ula d aḍfar n wawalen akk uffiren yemgaraden.
+# Recommendation subhead
+rec-gen-3-subhead = Ḥader mi ara tmuddeḍ talɣutin tudmawanin
+# Link title
+rec-gen-3-cta = Γer ugar ɣef iwellihen n tɣellist
+rec-gen-3 =
+    Ur ttmuddu ara isefka udmawanen ma yelle ur tesriḍ ara i wayen. Ma yella yettwaḍleb-ak-d ad 
+    teskecmeḍ neɣ ad tmuddeḍ tansa n imayl-inek, tangalt n lbusṭa neɣ uṭṭun n tilifun, tzemreḍ ad tagiḍ.
+# Recommendation subhead
+rec-gen-4-subhead = Leqqem yal ass iseɣzanen d yisnasen
