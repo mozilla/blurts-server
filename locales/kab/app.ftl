@@ -454,15 +454,49 @@ progress-complete = Akk tirewliwin n yisefka ttwacerḍent frant
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>Tebdiḍ akken ilaq!</span>Wali tirewliwin i d-yeggran akken ad teẓreḍ ugar 
+    ɣef wayen ara txedmeḍ.
+progress-message-2 =
+    <span>Kemmel!</span> Isnifal imecṭah am uleqqem n wawalen uffiren sεan azal meqqren ɣef 
+    uḥraz n talɣutin-inek tudmawanin deg tɣellist.
+progress-message-3 = <span>D amahil igerrzen i useɣti n trewliwin-agi! </span> Kemmel. Mazal-ak kra.
+progress-message-4 = <span>Qrib ad tessaliḍ!</span>Tqerbeḍ ɣer yizirig n taggara.
+progress-complete-message =
+    <span>Igerrez akka, neɣ ala?</span> Ma yella tebɣiḍ ad tkemmleḍ, d lweqt igerrzen akken 
+    ad tleqqmeḍ inekcamen-nniḍen s wawalen uffiren iǧehden s waṭas.
 
 ##
 
+resolve-this-breach-link = Fru tarewla-agi.
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Creḍ tefra:
+hide-resolved-button = Ffer tifrat:
+show-resolved-button = Sken tifrat:
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Awal uffir i d-ibanen di trewliwin ur nefri ara.
+       *[other] Awalen uffiren i d-ibanen di trewliwin ur nefri ara.
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Tarewla n yisefka yettwassnen, tettucreḍ tefra.
+       *[other] Tirewliwin n yisefka yettwassnen, ttucerḍent frant.
+    }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Amaynut
 mobile-promo-headline = Sebded { -brand-name } ɣef tiliɣri-inek akked tfelwit-inek n uselkem
 mobile-promo-body = Inig s  wudem arurad, uslig, yerna d aɣelsan anida teddiḍ. Aff-d { -brand-name } deg Google Play akked App Store.
 mobile-promo-cta = Awi-d { -brand-name } ɣef Android akked iOS
 promo-lockwise-headline = Awi awalen uffiren anda teddiḍ
+lockwise-promo-body = Eǧǧ lateṛ n yinekcam-inek ɣef yal allal. Kcem s wudem aɣelsan seg uselkim-inek, seg tilifun-inek neɣ  seg tfelwit-inek n uselken.
 promo-lockwise-cta = Sebded { -brand-lockwise }
 fpn-promo-headline = Ffer adeg ɣef ismal web akked ineḍfaren
+promo-fpn-body = { -brand-fpn } Semneε iman-ik seg yismal Web d yileqqaḍen n yisefka i ak-isekcamen deg udellel s uɣummu n tensa-inek IP taḥeqqanit.
 promo-fpn-cta = Awi-d { -brand-fpn }
+monitor-promo-headline = Ẓer tirewliwin timaynutin n yisefka
+monitor-promo-body = Sya d asawen rmes-d alɣu mi ara d-binent tilɣa-inek tudmawanin deg trewla n yisefka yettwassnen.
+ecosystem-promo-headline = Seḥbiber tudert-inek deg internet s yifarisen yettaken azal i tbaḍnit.
+ecosystem-promo-body = Akk ifarisen-agi { -brand-name } ttqadaren ṭṭmana-nneɣ ɣef yisefka udmawanen: Lqeḍ cwiṭ n yisefka. Mmesten-iten. Ulac tuffriwin.
+promo-ecosystem-cta = Wali akk ifarisen

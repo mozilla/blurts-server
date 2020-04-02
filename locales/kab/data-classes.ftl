@@ -41,6 +41,7 @@ email-addresses = Tansiwin imayl
 email-messages = Iznan imayl
 employers = Ixeddamen
 employment-statuses = Addaden n uxeddim
+encrypted-keys = Tirura tiwgelhanin
 ethnicities = Laṣel
 family-members-names = Ismawen n yiɛeggalen n twacult
 family-plans = Iɣawasen n twacult

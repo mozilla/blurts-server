@@ -75,8 +75,20 @@ monitor-another-email = Tebɣiḍ ad tɛasseḍ imayl-nniḍen?
 # Subject line of email
 pre-fxa-subject = Llqem seg { -product-name }
 pre-fxa-headline = Acu i ibeddlen deg { -product-name }
+pre-fxa-blurb =
+    Ha-t-awayen ibeddlen seg wasmi i tjerrdeḍ ɣer { -product-name }, ameẓlu i 
+    yettεassan tirewliwin n yisefka yettwassnen i talɣutin-inek tudmawanin. Ad t-nernu ɣer yimiḍanen n Firefox.
 pre-fxa-tout-1 = Qqim deg yisallen ɣef trewliwin-nniḍen n yisefka
+pre-fxa-p-1 =
+    <a>Snulfu-d amiḍan</a> i tεessast n wazal n 15 n tansiwin n yimayl i 
+    trewliwin n yisefka. Yelha lukan ad ternuḍ akk tansiwin n yimayl i tesxedmeḍ akken ad txedmeḍ imiḍanen srid.
 pre-fxa-tout-2 = Awi tafelwit n usenqed
+pre-fxa-p-2 =
+    Wali akk tirewliwin n yisefka deg yiwen wadeg akken ad teẓreḍ anwi awalen uffiren ara tbeddleḍ. 
+    Ur d-tettili ara tfelwit n tisileɣt n trewliwin ala s yiwen n umiḍan.
 pre-fxa-tout-3 = Qqi deg yisallen s yimayl
+pre-fxa-p-3 =
+    Mazal tetteṭṭfeḍ-d izen sɣur { -product-name }. Ad ak-id-nxebbeṛ ma yella talɣutin-inek 
+    banent-d deg trewla tamaynut n yisefka.
 # Button at the bottom of pre-fxa email.
 create-account = Rnu amiḍan
