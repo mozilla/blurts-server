@@ -217,8 +217,11 @@ exports.config = {
      * Function to be executed after a test (in Mocha/Jasmine).
      */
     afterTest: function(test, context, { error, result, duration, passed, retries }) {
-      const path =  join(process.cwd(), "./tests/integration/errorShots/error-"+Date.now()+".png");
-      browser.saveScreenshot(path);
+      /* Take screenshots for debugging on circleci */
+      if (process.env.CIRCLECI) {
+        const path =  join(process.cwd(), "./tests/integration/errorShots/error-"+Date.now()+".png");
+        browser.saveScreenshot(path);
+      }
     },
 
 

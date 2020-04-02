@@ -6,7 +6,7 @@
 class ScanResultsPage {
 
   waitForPageToLoad() {
-    $(".scan-results").waitForExist(100000);
+    $(".scan-results").waitForExist(5000);
     return this;
   }
 

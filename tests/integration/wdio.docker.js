@@ -12,7 +12,6 @@ exports.config = Object.assign({}, common.config, {
     formatImageName: process.env.MOZ_HEADLESS ? "{tag}-headless-{width}x{height}" : "{tag}-{width}x{height}",
     screenshotPath: join(process.cwd(), ".tmp/"),
     savePerInstance: true,
-    autoSaveBaseline: true,
   }]],
   dockerOptions: {
     image: "selenium/standalone-firefox",
@@ -24,7 +23,7 @@ exports.config = Object.assign({}, common.config, {
     },
     options: {
       e: ["MOZ_HEADLESS=1",
-          "MAILINATOR_PASSWORD=${MONITOR_FXA_PASSWORD}",
+          "MONITOR_FXA_PASSWORD=${MONITOR_FXA_PASSWORD}",
           "HIBP_KANON_API_TOKEN=${HIBP_KANON_API_TOKEN}",
           "HIBP_API_TOKEN=${HIBP_API_TOKEN}",
         ],
