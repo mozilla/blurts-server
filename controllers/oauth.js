@@ -12,8 +12,13 @@ const HIBP = require("../hibp");
 const mozlog = require("../log");
 const sha1 = require("../sha1-utils");
 
-
 const log = mozlog("controllers.oauth");
+
+const utmArray = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
+
+function getUTMNames() {
+  return utmArray;
+}
 
 function init(req, res, next, client = FxAOAuthClient) {
   // Set a random state string in a cookie so that we can verify
@@ -23,12 +28,18 @@ function init(req, res, next, client = FxAOAuthClient) {
   const url = new URL(client.code.getUri({state}));
   const fxaParams = new URL(req.url, AppConstants.SERVER_URL);
 
+  req.session.utmContents = {};
+
   url.searchParams.append("access_type", "offline");
   url.searchParams.append("action", "email");
 
   for (const param of fxaParams.searchParams.keys()) {
+    if (utmArray.includes(param)) {
+      req.session.utmContents[param] = fxaParams.searchParams.get(param);
+    }
     url.searchParams.append(param, fxaParams.searchParams.get(param));
   }
+
   res.redirect(url);
 }
 
@@ -53,6 +64,16 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
   const existingUser = await DB.getSubscriberByEmail(email);
   req.session.user = existingUser;
 
+  const returnURL = new URL("/user/dashboard", AppConstants.SERVER_URL);
+
+  if (req.session.utmContents) {
+    getUTMNames().forEach(param => {
+      if (req.session.utmContents[param]) {
+        returnURL.searchParams.append(param, req.session.utmContents[param]);
+      }
+    });
+  }
+
   // Check if user is signing up or signing in,
   // then add new users to db and send email.
   if (!existingUser || existingUser.fxa_refresh_token === null) {
@@ -67,7 +88,7 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
     unsafeBreachesForEmail = await HIBP.getBreachesForEmail(
       sha1(email),
       req.app.locals.breaches,
-      true,
+      true
     );
 
     const utmID = "report";
@@ -90,11 +111,12 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
       }
     );
     req.session.user = verifiedSubscriber;
-    return res.redirect("/user/dashboard");
+
+    return res.redirect(returnURL.pathname + returnURL.search);
   }
   // Update existing user's FxA data
   await DB._updateFxAData(existingUser, fxaUser.accessToken, fxaUser.refreshToken, fxaProfileData);
-  res.redirect("/user/dashboard");
+  res.redirect(returnURL.pathname + returnURL.search);
 }
 
 module.exports = {

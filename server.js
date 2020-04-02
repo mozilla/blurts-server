@@ -95,6 +95,7 @@ const imgSrc = [
   "'self'",
   "https://www.google-analytics.com",
   "https://firefoxusercontent.com",
+  "https://mozillausercontent.com/",
   "https://monitor.cdn.mozilla.net/",
 ];
 
@@ -103,6 +104,7 @@ const connectSrc = [
   "https://code.cdn.mozilla.net/fonts/",
   "https://www.google-analytics.com",
   "https://accounts.firefox.com",
+  "https://accounts.stage.mozaws.net/metrics-flow",
 ];
 
 if (AppConstants.FXA_ENABLED) {

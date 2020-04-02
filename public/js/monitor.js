@@ -36,17 +36,96 @@ function isValidEmail(val) {
 }
 
 
-function doOauth(el) {
+function doOauth(el, {emailWatch = false} = {}) {
+  // Growth Experiment: To sidestep the breach scans form, we have to check if
+  // there is an email address entered into #scan-user-email form.
+  // If so, we set it similiar to what would happen on form submit.
+  //
+  // Options was added to limit how the watched email input field is injected
+  // in this function. It only moves it if  options.emailWatch is set to TRUE;
+
   let url = new URL("/oauth/init", document.body.dataset.serverUrl);
   url = getFxaUtms(url);
-  ["flowId", "flowBeginTime", "entrypoint"].forEach(key => {
-    url.searchParams.append(key, encodeURIComponent(el.dataset[key]));
-  });
-  if (sessionStorage && sessionStorage.length > 0) {
-    const lastScannedEmail = sessionStorage.getItem(`scanned_${sessionStorage.length}`);
-    if (lastScannedEmail) {
-      url.searchParams.append("email", lastScannedEmail);
+
+  ["flowId", "flowBeginTime", "entrypoint", "entrypoint_experiment", "entrypoint_variation", "form_type"].forEach(key => {
+    if (el.dataset[key]) {
+      url.searchParams.append(key, encodeURIComponent(el.dataset[key]));
     }
+  });
+
+  if (!sessionStorage) {
+    window.location.assign(url);
+    return;
+  }
+
+  const scannedEmailId = document.querySelector("#scan-user-email input[name=scannedEmailId]");
+
+  // Preserve entire control function
+  if (!emailWatch) {
+    if (sessionStorage && sessionStorage.length > 0) {
+
+      const lastScannedEmail = sessionStorage.getItem("lastScannedEmail");
+      if (lastScannedEmail) {
+        url.searchParams.append("email", lastScannedEmail);
+      }
+    }
+    window.location.assign(url);
+    return;
+  }
+
+  // Growth Experiment: This logic is complex to handle the different scenarios of users logging into FxA.
+  let email = false;
+
+  if (document.querySelector("#scan-user-email input[type=email]")) {
+    email = document.querySelector("#scan-user-email input[type=email]").value;
+
+    if (!isValidEmail(email)) {
+      email = false;
+    }
+  }
+
+  // Growth Experiment: Reset UTMs from in-line body tag data elements.
+  ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
+    if (document.body.dataset[key]) {
+      url.searchParams.delete(key);
+      url.searchParams.append(key, document.body.dataset[key]);
+    }
+  });
+
+  if (sessionStorage && sessionStorage.length > 0) {
+
+    const lastScannedEmail = sessionStorage.getItem("lastScannedEmail");
+
+    if (email && lastScannedEmail) {
+      switch (email) {
+        case lastScannedEmail:
+          // The last saved email address and the current entry match, so route it to FxA
+          email = lastScannedEmail;
+          break;
+        case !lastScannedEmail:
+          // The last saved email address and the current entry DIFFER, so create
+          // a new entry, launch a new FxA login session with new email prefilled.
+          sessionStorage.removeItem("lastScannedEmail");
+          sessionStorage.setItem("lastScannedEmail", email);
+          scannedEmailId.value = sessionStorage.length;
+          break;
+      }
+    } else {
+      if (lastScannedEmail) {
+        // Control method. User set this by checking breach results
+        email = lastScannedEmail;
+      }
+    }
+  } else if (email && sessionStorage) {
+    // Applies to first time user in experiment has no previous FxA ties.
+    sessionStorage.removeItem("lastScannedEmail");
+    sessionStorage.setItem("lastScannedEmail", email);
+    scannedEmailId.value = sessionStorage.length;
+  }
+
+  // Append whichever email was set, and start OAuth flow!
+  if (email) {
+    url.searchParams.append("email", email);
   }
   window.location.assign(url);
 }
@@ -369,4 +448,72 @@ function addBentoObserver(){
 
   const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
   dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));
+
+  if (document.body.dataset.experiment) {
+    const submitBtn = document.querySelector("#scan-user-email input[type='submit']");
+    const createFxaCheckbox = document.getElementById("createFxaCheckbox");
+
+    if (createFxaCheckbox) {
+      createFxaCheckbox.addEventListener("change", (e)=> {
+        document.body.dataset.utm_content = "opt-out";
+        if (event.target.checked) {
+          document.body.dataset.utm_content = "opt-in";
+        }
+      });
+    }
+
+    submitBtn.addEventListener("click", (e)=> {
+      document.body.dataset.utm_content = "opt-out";
+
+      // Email Validation
+      const scanForm = document.getElementById("scan-user-email");
+      const scanFormEmailValue = document.querySelector("#scan-user-email input[type='email']").value;
+
+      if (scanFormEmailValue.length < 1  || !isValidEmail(scanFormEmailValue)) {
+        scanForm.classList.add("invalid");
+        return;
+      }
+
+      if (createFxaCheckbox && createFxaCheckbox.checked) {
+        // Applies only to Branches VB and VC, if the checkbox is CHECKED.
+        e.preventDefault();
+
+        // Analytics
+        document.body.dataset.utm_content = "opt-in";
+        e.target.dataset.entrypoint = "fx-monitor-alert-me-blue-link";
+        if (typeof(ga) !== "undefined") {
+          ga("send", {
+            hitType: "event",
+            eventCategory: "growthuserflow1",
+            eventAction: "opt-in",
+            eventLabel: "fx-monitor-alert-me-blue-link",
+          });
+        }
+
+        doOauth(e.target, {emailWatch: true});
+        return;
+      }
+
+      const scanFormActionURL = new URL(scanForm.action);
+
+      ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
+        if (document.body.dataset[key]) {
+          scanFormActionURL.searchParams.append(key, document.body.dataset[key]);
+        }
+      });
+
+      const revisedActionURL = scanFormActionURL.pathname + scanFormActionURL.search;
+
+      scanForm.action = revisedActionURL;
+
+      if (typeof(ga) !== "undefined") {
+        ga("send", {
+          hitType: "event",
+          eventCategory: "growthuserflow1",
+          eventAction: "opt-out",
+          eventLabel: "fx-monitor-alert-me-blue-link",
+        });
+      }
+    });
+  }
 })();

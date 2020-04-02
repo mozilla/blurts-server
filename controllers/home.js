@@ -13,6 +13,12 @@ async function home(req, res) {
     csrfToken: req.csrfToken(),
   };
 
+  const coinFlipNumber = Math.random() * 100;
+  const experimentBranch = getExperimentBranch(req, coinFlipNumber);
+
+  const isUserInExperiment = (experimentBranch === "vb");
+  const experimentBranchB = (experimentBranch === "vb" && isUserInExperiment);
+
   let featuredBreach = null;
   let scanFeaturedBreach = false;
 
@@ -41,6 +47,8 @@ async function home(req, res) {
       scanFeaturedBreach,
       pageToken: formTokens.pageToken,
       csrfToken: formTokens.csrfToken,
+      experimentBranch,
+      experimentBranchB,
     });
   }
 
@@ -50,7 +58,37 @@ async function home(req, res) {
     scanFeaturedBreach,
     pageToken: formTokens.pageToken,
     csrfToken: formTokens.csrfToken,
+    experimentBranch,
+    isUserInExperiment,
+    experimentBranchB,
   });
+}
+
+function getExperimentBranch(req, sorterNum) {
+
+  if (req.headers && !req.headers["accept-language"].includes("en") ){
+    return false;
+  }
+
+  // If URL param has experimentBranch entry, use that branch;
+  if (req.query.experimentBranch) {
+    if (!["va", "vb"].includes(req.query.experimentBranch)) {
+      return false;
+    }
+    req.session.experimentBranch = req.query.experimentBranch;
+    return req.query.experimentBranch;
+  }
+
+  // If user was already assigned a branch, stay in that branch;
+  if (req.session.experimentBranch) { return req.session.experimentBranch; }
+
+  // Split into two categories
+  if (sorterNum <= 50) {
+    req.session.experimentBranch = "vb";
+    return "vb";
+  }
+
+  return "va";
 }
 
 function getAllBreaches(req, res) {

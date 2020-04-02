@@ -1,0 +1,72 @@
+.temp-exp {
+  position: fixed;
+  background: purple;
+  color: white;
+  width: auto;
+  top: 0;
+  right: 0;
+  text-align: center;
+  z-index: 9999;
+  padding: 0.5em 1em;
+  opacity: 0.5;
+}
+
+.input-group.create-fxa-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 248px;
+  margin: 4px auto 16px;
+}
+
+.create-fxa-wrapper p {
+  text-align: left;
+  color: var(--grey3);
+  margin: 0;
+  padding: 0 0 0 12px;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.create-fxa-checkbox-wrapper {
+  position: relative;
+}
+
+.create-fxa-checkbox-input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.create-fxa-checkbox-checkmark:hover {
+  background: #cfcfd8;
+}
+
+.create-fxa-checkbox-checkmark {
+  position: relative;
+  height: 24px;
+  width: 24px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+}
+
+.create-fxa-checkbox-checkmark::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: none;
+  left: 0;
+  top: 0;
+  border-radius: 4px;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-image: url("/img/svg/purple-check.svg");
+}
+
+.create-fxa-checkbox-input:checked ~ .create-fxa-checkbox-checkmark::after {
+  display: block;
+}
