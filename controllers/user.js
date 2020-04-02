@@ -548,19 +548,11 @@ async function getBreachStats(req, res) {
     numBreaches: breachStats.numBreaches.count,
     passwords: breachStats.passwords.count,
   });
-}
+  }
 
 
 function logout(req, res) {
-  if (req.session.experimentBranch) {
-    // Persist experimentBranch across session reset
-    const experimentBranch = req.session.experimentBranch;
-    req.session.reset();
-    req.session.experimentBranch = experimentBranch;
-  } else {
-    req.session.reset();
-  }
-
+  req.session.reset();
   res.redirect("/");
 }
 
