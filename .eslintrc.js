@@ -31,11 +31,16 @@ module.exports = {
     },
     {
       files: [
-        'tests/integration/**/*.js',
+        'tests/**/*.js',
       ],
       env: {
         jest: true,
       },
+    },
+    {
+      files: [
+        'tests/integration/**/*.js',
+      ],
       globals: {
         "$": "readonly",
         "$$": "readonly",
