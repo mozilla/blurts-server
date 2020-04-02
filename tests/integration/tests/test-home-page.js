@@ -64,6 +64,7 @@ describe("Firefox Monitor homepage", function() {
     const dashboard = UserDashboardPage.waitForPageToLoad();
     dashboard.addEmailBox.setValue(global.secondaryEmail);
     dashboard.verificationLink.click();
+    // Wait for dashboard to reload
     try {
       dashboard.waitForPageToLoad();
       dashboard.manageEmailAddresses();
