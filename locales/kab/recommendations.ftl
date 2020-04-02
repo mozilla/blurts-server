@@ -10,3 +10,5 @@ rec-pw-1-cta = Beddel awal uffir i wadeg-a
 rec-pw-2-subhead = Beddel isulayen i iseqdacen yiwen n wawal uffir
 # Link title
 rec-pw-2-cta-fx = Sken-d isulayen deg { -brand-name }
+# Link title
+rec-pw-4-cta = Wali ismal i d-yettmuddun 2FA
