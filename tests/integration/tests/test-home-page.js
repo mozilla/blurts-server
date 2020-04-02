@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 "use strict";
 
 const HomePage = require("../pages/desktop/home.page");
@@ -5,7 +6,7 @@ const NavBar = require("../regions/navbar.region");
 const UserDashboardPage = require("../pages/desktop/dashboard.page");
 
 describe("Firefox Monitor homepage", function() {
-  this.retries(2);
+  /* this.retries(2); */
 
   beforeEach(function() {
     browser.url("/");
@@ -51,7 +52,6 @@ describe("Firefox Monitor homepage", function() {
       $(".email").setValue(global.primaryEmail);
       $("#submit-btn").click();
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.log(error);
     }
     // FxA password login
@@ -61,11 +61,15 @@ describe("Firefox Monitor homepage", function() {
     $("#submit-btn").click();
 
     // Begin navigiation in monitor
-    const dashboard = UserDashboardPage;
-    dashboard.waitForPageToLoad();
+    const dashboard = UserDashboardPage.waitForPageToLoad();
     dashboard.addEmailBox.setValue(global.secondaryEmail);
     dashboard.verificationLink.click();
-    dashboard.manageEmailAddresses();
+    try {
+      dashboard.waitForPageToLoad();
+      dashboard.manageEmailAddresses();
+    } catch (error) {
+      console.log(error);
+    }
     const email = $$(".e-address")[1];
     // Check email
     expect(email.getText()).to.equal(global.secondaryEmail);

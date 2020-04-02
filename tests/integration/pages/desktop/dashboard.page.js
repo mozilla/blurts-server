@@ -12,6 +12,7 @@ class UserDashboardPage {
   manageEmailAddresses() {
     const UserPreferencesPage = require("./userPreferences.page");
 
+    $(".manage-emails").waitForExist(5000);
     $(".manage-emails").click();
     return UserPreferencesPage.waitForPageToLoad();
   }
