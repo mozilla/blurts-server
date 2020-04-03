@@ -35,7 +35,17 @@ module.exports = {
       ],
       env: {
         jest: true,
-      }
+      },
+    },
+    {
+      files: [
+        'tests/integration/**/*.js',
+      ],
+      globals: {
+        "$": "readonly",
+        "$$": "readonly",
+        "browser": "readonly",
+      },
     },
   ],
   plugins: [

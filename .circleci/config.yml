@@ -49,6 +49,28 @@ jobs:
                 name: Test Code
                 command: docker run blurts-server npm run lint
 
+    integration-test:
+        machine:
+            image: ubuntu-1604:201903-01
+        steps:
+            - checkout
+            - run:
+                name: Build and run tests.
+                command: |
+                    export NVM_DIR="/opt/circleci/.nvm"
+                    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                    nvm use 10
+                    node -v
+                    cp .env-dist .env
+                    npm install
+                    npm install --only=dev
+                    sudo chown -R  $USER:$USER .
+                    mkdir ./tests/integration/errorShots
+                    docker-compose -f tests/integration/docker-compose.yml up --build -d
+                    docker-compose -f tests/integration/docker-compose.yml exec --user root firefox npm run test:integration
+            - store_artifacts:
+                path: ./tests/integration/errorShots/
+
     deploy:
         docker:
             - image: docker:18.02.0-ce
@@ -98,7 +120,6 @@ workflows:
           filters:
             tags:
               only: /.*/
-
       - deploy:
           requires:
             - build
@@ -111,3 +132,7 @@ workflows:
           filters:
             branches:
               only: master
+      - integration-test:
+          requires:
+            - build
+
