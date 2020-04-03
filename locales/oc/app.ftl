@@ -15,6 +15,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Compte Firefox
 GitHub-link-title = GitHub
 home-title = { -product-name }
 home-not-found = Pagina pas trobada.
