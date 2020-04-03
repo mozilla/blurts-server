@@ -139,7 +139,7 @@ delayed-reporting-headline = Acuɣer yewwi aṭas n wakud akken ad tettwammel ta
 delayed-reporting-copy = Ayagi daɣen yezmer ad yawi ddeqs n wagguren neɣ iseggasen akken isulayen ittuḥazen deg trewla n yisefka ad banen deg darkweb. Tirewliwin ad ttwarnunt ɣer taffa-nneɣ n yisefka akken kan ad ttwafent daɣen ad ttwasneqdent.
 about-fxm-headline = Ɣef { -product-name }
 about-fxm-blurb = { -product-name } Ad k-id-yelɣu si imiḍanen-ik srid ttwaɣen deg trewla n yisefka. Wali ma ḥuzan-k, rmes-d ilɣa ɣef trewliwin-nniḍen n yisefka, daɣen issin ad tgeḍ ayen ilaqen i ummesten n yimiḍanen-ik srid. { -product-name } yettunefk-d sɣur { -brand-Mozilla }.
-fxm-warns-you = { -product-name } ad k-id-yelɣu ma yella tansa-ik imayl teddad-d deg trewla n yisefka. Wali ma yella tḥuza-k trewla, issin amek ara tḥ€rzeḍ imiḍanen-ik daɣen rmes alɣu ma yella tansa-ik tban-d deg trewla-nniden n yisefka.
+fxm-warns-you = { -product-name } ad k-id-yelɣu ma yella tansa-ik imayl teddad-d deg trewla n yisefka. Wali ma yella tḥuza-k trewla, issin amek ara tḥerzeḍ imiḍanen-ik daɣen rmes alɣu ma yella tansa-ik tban-d deg trewla-nniden n yisefka.
 # How Firefox Monitor works
 how-fxm-works = Amek iteddu { -product-name }
 how-fxm-1-headline = Teg inadiyen fessusen
