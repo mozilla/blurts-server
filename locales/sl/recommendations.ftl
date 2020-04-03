@@ -48,6 +48,10 @@ rec-ip-us =
     Vaš naslov internetnega protokola (naslov IP) natančno določa vašo lokacijo 
     in ponudnika internetnih storitev. Storitev kot je { -brand-fpn } 
     prikrije vaš naslov IP, da skrije vašo lokacijo.
+rec-ip-non-us =
+    Vaš naslov internetnega protokola (naslov IP) natančno določa vašo lokacijo 
+    in ponudnika internetnih storitev. Z uporabo navideznega zasebnega omrežja (VPN) lahko skrijete vašo lokacijo 
+    in prikrijete vaš naslov IP.
 rec-hist-pw-subhead = Izogibajte se ponovni uporabi gesel
 rec-hist-pw =
     Uporabljajte edinstvena, močna gesla za posamezne račune. Če je eno geslo 
