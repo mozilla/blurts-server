@@ -421,6 +421,7 @@ confirmation-1-subhead = Igerrez! Aql-ak tefriḍ tarewla-ik tamezwarut.
 confirmation-1-body = Kemmel akken tebdiḍ. Ger tiṭ ɣer tfelwit-ik n usenqed akken ad twaliḍ ayen-nniḍen ara txedmeḍ.
 confirmation-2-subhead = Yiwet-nniḍen!
 confirmation-2-body = Texeddmeḍ imecwaṛen s wazalen-nsen akken ad tḥerzeḍ imiḍanen-inek usriden.
+confirmation-3-subhead = Ugur-nniden yefran. Igerrez!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Awal-inek uffir amaynut d asuf, yeǧhed, yewεer i tiftin? <a>Ẓer</a>

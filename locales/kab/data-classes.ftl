@@ -26,6 +26,7 @@ chat-logs = Iɣmisen n usqerdec
 credit-card-cvv = Takarḍa n usmad CVV
 credit-cards = Tikarḍiwin n usmad
 credit-status-information = Talɣut ɣef waddad n tkarḍa
+cryptocurrency-wallet-hashes = Adsil umdin n sselfa n tedrimt tumḍint
 customer-feedback = Iwenniten n yimsaɣen
 customer-interactions = Timyigawin n yimsaɣen
 dates-of-birth = Izmaz n tlalit
