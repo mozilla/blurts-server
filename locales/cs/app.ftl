@@ -306,7 +306,7 @@ other-breaches-found =
         [few] Vyskytuje se však ve { $breachCount } dalších únicích dat.
        *[other] Vyskytuje se však v { $breachCount } dalších únicích dat.
     }
-fb-comp-only = Tato e-mailová adresa se vyskytovala v úniku { $breachName }.
+fb-comp-only = Tato e-mailová adresa se vyskytuje v úniku { $breachName }.
 fb-comp-and-others =
     { $breachCount ->
         [one] Tato e-mailová adresa se vyskytovala v { $breachCount } známém úniku dat, včetně úniku { $breachName }.
