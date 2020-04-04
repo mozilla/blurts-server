@@ -35,6 +35,7 @@ rec-pw-3-non-fx =
 rec-pw-4-subhead = Sbadu asesteb s snat n tarrayin
 # Link title
 rec-pw-4-cta = Wali ismal i d-yettmuddun 2FA
+rec-pw-4 = Ddeqs n yismal web sumuren asesteb s snat n tarrayin akkenad ɣellsen amiḍan-ik. Talɣut-nniḍen tettwasra ihi akken ad teqqneḍ, am tengalt tasuft ara d-tremseḍ s SMS.
 # Recommendation subhead
 rec-bank-acc-subhead = Ɛass tuttriwin-inek n lbanka.
 rec-bank-acc =
@@ -113,3 +114,4 @@ rec-gen-3 =
     teskecmeḍ neɣ ad tmuddeḍ tansa n imayl-inek, tangalt n lbusṭa neɣ uṭṭun n tilifun, tzemreḍ ad tagiḍ.
 # Recommendation subhead
 rec-gen-4-subhead = Leqqem yal ass iseɣzanen d yisnasen
+rec-gen-4 = Aleqqem n yisnasen, iminigens, d yynagrawen n wammud yettarra tiliɣri-ik telha ugar. Yesseɣtay ibugen, uguren n yiseɣzanen akked wuguren n tɣellist.

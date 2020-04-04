@@ -67,6 +67,8 @@ job-applications = Asuter n uxeddim
 job-titles = axeddim
 mac-addresses = tansiwin MAC
 marital-statuses = addad aɣarim
+# Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
+mnemonic-phrases = tinfaliyin yettɛawanen takatut
 names = Ismawen
 nationalities = Taɣlent
 net-worths = Azal yeṣfan
