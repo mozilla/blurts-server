@@ -67,7 +67,7 @@ jobs:
                     sudo chown -R  $USER:$USER .
                     mkdir ./tests/integration/errorShots
                     docker-compose -f tests/integration/docker-compose.yml up --build -d
-                    docker-compose -f tests/integration/docker-compose.yml exec --user root firefox npm run test:integration
+                    docker-compose -f tests/integration/docker-compose.yml exec --user root firefox npm run test:integration-headless-ci
             - store_artifacts:
                 path: ./tests/integration/errorShots/
 
