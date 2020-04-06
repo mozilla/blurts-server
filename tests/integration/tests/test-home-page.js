@@ -6,7 +6,7 @@ const NavBar = require("../regions/navbar.region");
 const UserDashboardPage = require("../pages/desktop/dashboard.page");
 
 describe("Firefox Monitor homepage", function() {
-  /* this.retries(2); */
+  this.retries(2);
 
   beforeEach(function() {
     browser.url("/");
