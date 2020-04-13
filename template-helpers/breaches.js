@@ -78,8 +78,10 @@ function getLocalizedBreachValues(locales, breach) {
   return breach;
 }
 
-function getBreachArray(breaches, args) {
+function getBreachArray(args) {
   const locales = args.data.root.req.supportedLocales;
+
+  let breaches = args.data.root.req.app.locals.breaches;
   breaches = JSON.parse(JSON.stringify(breaches));
   // should we consider filtering the breaches when the app loads
   // since we aren't ever showing them now anyway?
