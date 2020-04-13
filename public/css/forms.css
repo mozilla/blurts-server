@@ -25,6 +25,10 @@ input:-webkit-autofill {
   margin: 12px auto;
 }
 
+.form-desc.experiment {
+  max-width: 285px;
+}
+
 input[type="submit"],
 input[type="email"] {
   height: 48px;

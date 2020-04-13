@@ -104,6 +104,10 @@ function handleFormSubmits(formEvent) {
     thisForm.email.value = email;
   }
   const formClassList = thisForm.classList;
+  // Growth
+  if (formClassList.contains("skip")) {
+    return;
+  }
   if (thisForm.email && !isValidEmail(email)) {
     sendPing(thisForm, "Failure");
     formClassList.add("invalid");
