@@ -16,6 +16,19 @@ async function home(req, res) {
   let featuredBreach = null;
   let scanFeaturedBreach = false;
 
+  let experimentBranch, isUserInExperiment, experimentBranchB;
+
+  if (AppConstants.EXPERIMENT_ACTIVE) {
+    const coinFlipNumber = Math.random() * 100;
+    experimentBranch = getExperimentBranch(req, coinFlipNumber);
+    isUserInExperiment = (experimentBranch === "vb");
+    experimentBranchB = (experimentBranch === "vb" && isUserInExperiment);
+  } else {
+    experimentBranch = false;
+    isUserInExperiment = false;
+    experimentBranchB = false;
+  }
+
   if (req.session.user && !req.query.breach) {
     return res.redirect("/user/dashboard");
   }
@@ -41,6 +54,8 @@ async function home(req, res) {
       scanFeaturedBreach,
       pageToken: formTokens.pageToken,
       csrfToken: formTokens.csrfToken,
+      experimentBranch,
+      experimentBranchB,
     });
   }
 
@@ -50,6 +65,9 @@ async function home(req, res) {
     scanFeaturedBreach,
     pageToken: formTokens.pageToken,
     csrfToken: formTokens.csrfToken,
+    experimentBranch,
+    isUserInExperiment,
+    experimentBranchB,
   });
 }
 
@@ -118,6 +136,35 @@ function notFound(req, res) {
     subhead: req.fluentFormat("home-not-found"),
   });
 }
+
+function getExperimentBranch(req, sorterNum) {
+
+  if (req.headers && !req.headers["accept-language"].includes("en-US") ){
+    return false;
+  }
+
+  // If URL param has experimentBranch entry, use that branch;
+  if (req.query.experimentBranch) {
+    if (!["va", "vb"].includes(req.query.experimentBranch)) {
+      return false;
+    }
+    req.session.experimentBranch = req.query.experimentBranch;
+    return req.query.experimentBranch;
+  }
+
+  // If user was already assigned a branch, stay in that branch;
+  if (req.session.experimentBranch) { return req.session.experimentBranch; }
+
+  // Split into two categories
+  if (sorterNum <= 50) {
+    req.session.experimentBranch = "vb";
+    return "vb";
+  }
+
+  return "va";
+}
+
+
 
 module.exports = {
   home,

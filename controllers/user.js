@@ -552,7 +552,15 @@ async function getBreachStats(req, res) {
 
 
 function logout(req, res) {
+  if (AppConstants.EXPERIMENT_ACTIVE) {
   req.session.reset();
+    // Persist experimentBranch across session reset
+    const experimentBranch = req.session.experimentBranch;
+    req.session.reset();
+    req.session.experimentBranch = experimentBranch;
+  } else {
+    req.session.reset();
+  }
   res.redirect("/");
 }
 
