@@ -2,12 +2,7 @@ data-server-url="{{ SERVER_URL }}"
 data-logos-origin="{{ LOGOS_ORIGIN }}"
 data-fxa-enabled="fxa-enabled"
 data-fxa-address={{ getFxaUrl }}
-
-{{#if req.session.experimentBranch}}
-  data-utm_source="{{ UTM_SOURCE }}"
-{{else}}
-  data-utm_source="{{ SERVER_URL }}"
-{{/if}}
+data-utm_source="{{ SERVER_URL }}"
 
 {{#if req.session.user}}
   data-signed-in-user="true"

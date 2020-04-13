@@ -7,15 +7,6 @@
     <input id="scan-email" class="input-group-field email-to-hash" type="email" name="email" placeholder="{{ getString "scan-placeholder" }}" aria-label="{{ getString "scan-placeholder" }}" autocomplete="off" />
     <span id="invalid-email-message" class="error-message">{{ getString "scan-error" }}</span>
   </div>
-  {{#if isUserInExperiment}}
-  <div class="input-group create-fxa-wrapper">
-      <label for="createFxaCheckbox" class="create-fxa-checkbox-wrapper">
-        <input {{#unless experimentBranchB }} checked {{/unless}} class="create-fxa-checkbox-input" id="createFxaCheckbox" type="checkbox" />
-        <span class="create-fxa-checkbox-checkmark"></span>
-      </label>
-      <p>Stay safe: get automated alerts when an account is breached.</p>
-  </div>
-  {{/if}}
   <input type="hidden" name="emailHash" />
   {{#if scanFeaturedBreach}}
     <input id="featured" type="hidden" name="featuredBreach" value="{{ featuredBreach.Name }}"/>
@@ -24,7 +15,7 @@
     {{#if featuredBreach}}
       <input type="submit" value="{{ getString "find-out" }}"/>
     {{else}}
-      <input {{#if isUserInExperiment}} class="add-metrics-flow-values" data-entrypoint_experiment="growthuserflow1" data-entrypoint_variation={{ experimentBranch }} data-form_type="other" {{> analytics/fxa id="fx-monitor-check-for-breaches-blue-btn" }} {{/if}} type="submit" value="{{ getString "check-for-breaches" }}"/>
+      <input type="submit" value="{{ getString "check-for-breaches" }}"/>
     {{/if}}
       {{> forms/loader }}
   </div>

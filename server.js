@@ -104,7 +104,6 @@ const connectSrc = [
   "https://code.cdn.mozilla.net/fonts/",
   "https://www.google-analytics.com",
   "https://accounts.firefox.com",
-  "https://accounts.stage.mozaws.net/metrics-flow",
 ];
 
 if (AppConstants.FXA_ENABLED) {
