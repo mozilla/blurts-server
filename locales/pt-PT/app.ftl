@@ -216,7 +216,7 @@ appears-in-x-breaches =
        *[other] Aparece em { $breachCount } falhas de segurança conhecidas.
     }
 check-for-breaches = Pesquisar por falhas de segurança
-find-out-what-hackers-know = Descubra o que os piratas informáticos já sabem sobre si. Saiba como ficar um passo à frente deles.
+find-out-what-hackers-know = Descubra o que os piratas informáticos já sabem sobre si e aprenda como ficar um passo à frente dos mesmos.
 search-for-your-email = Pesquise pelo seu endereço de e-mail em falhas de segurança públicas de dados desde 2007.
 back-to-top = Voltar ao topo
 comm-opt-0 = Enviar um e-mail para mim caso um dos meus endereços de e-mail abaixo aparecer numa falha de segurança de dados.
