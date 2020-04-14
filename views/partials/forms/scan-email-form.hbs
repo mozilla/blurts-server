@@ -17,7 +17,7 @@
     {{#if featuredBreach}}
       <input type="submit" value="{{ getString "find-out" }}"/>
     {{else if experimentBranchB}}
-      <input type="submit" class="open-oauth" value="Create a Free Account"/>
+      <input type="submit" class="open-oauth" {{> analytics/fxa id="fx-monitor-create-account-blue-btn" }} value="Create a Free Account"/>
     {{else}}
       <input type="submit" value="{{ getString "check-for-breaches" }}"/>
     {{/if}}

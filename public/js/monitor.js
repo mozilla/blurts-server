@@ -36,15 +36,25 @@ function isValidEmail(val) {
 }
 
 
-function doOauth(el, {emailWatch = false} = {}) {
+function doOauth(el) {
   let url = new URL("/oauth/init", document.body.dataset.serverUrl);
   url = getFxaUtms(url);
 
-  ["flowId", "flowBeginTime", "entrypoint"].forEach(key => {
+  ["flowId", "flowBeginTime", "entrypoint", "entrypoint_experiment", "entrypoint_variation", "form_type"].forEach(key => {
     if (el.dataset[key]) {
       url.searchParams.append(key, encodeURIComponent(el.dataset[key]));
     }
   });
+
+  if (el.dataset.entrypoint === "fx-monitor-create-account-blue-btn") {
+    // Growth Experiment: Reset UTMs from in-line body tag data elements.
+    ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
+      if (document.body.dataset[key]) {
+        url.searchParams.delete(key);
+        url.searchParams.append(key, document.body.dataset[key]);
+      }
+    });
+  }
 
   if (!sessionStorage) {
     window.location.assign(url);
