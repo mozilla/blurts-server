@@ -295,6 +295,33 @@ function addBentoObserver(){
   }
 }
 
+function researchPromoIsVisible() {
+  const researchPromo = document.querySelector(".research-recruitment-wrapper");
+  return (researchPromo && researchPromo.style.display !== "none");
+}
+
+function resizeDashboardMargin() {
+  const userDashboard = document.querySelector("#dashboard.dashboard");
+  if (!userDashboard) {
+    return;
+  }
+  const researchPromo = document.querySelector(".research-recruitment-wrapper");
+  const getHeaderHeight = () => {
+    const header = document.querySelector("header");
+    return header.offsetHeight;
+  };
+
+  if (researchPromoIsVisible()) {
+    researchPromo.style.paddingTop = `calc(${getHeaderHeight()}px + 2rem`;
+  }
+  if (
+    (userDashboard && !researchPromoIsVisible()) ||
+    (userDashboard && !researchPromo)
+    ) {
+    userDashboard.style.paddingTop = `calc(${getHeaderHeight()}px + 80px)`;
+  }
+}
+
 ( async() => {
   document.addEventListener("touchstart", function(){}, true);
   const win = window;
@@ -318,6 +345,7 @@ function addBentoObserver(){
       toggleMobileFeatures(topNavigation);
       toggleArticles();
       windowWidth = newWindowWidth;
+      resizeDashboardMargin();
     }
   });
 
@@ -379,10 +407,10 @@ function addBentoObserver(){
   });
 
   const privateRelayCtas = document.querySelectorAll(".private-relay-cta");
+  const gaAvailable = typeof(ga) !== "undefined";
 
   if (privateRelayCtas.length > 0) {
     const availableIntersectionObserver = ("IntersectionObserver" in window);
-    const gaAvailable = typeof(ga) !== undefined;
 
 
     if (availableIntersectionObserver && gaAvailable) {
@@ -409,6 +437,34 @@ function addBentoObserver(){
         });
       });
     }
+  }
+  const researchPromo = document.querySelector(".research-recruitment-wrapper");
+  const sendRecruitmentPing = (action) => {
+    if (gaAvailable) {
+      ga("send", "event", "Research Recruitment Promo", action, "Recruitment Promo");
+    }
+  };
+  const promoHasAlreadyBeenDismissed = (researchPromo && sessionStorage.getItem("fxMonitorResearchPromo") === "dismissed");
+  const sessionStorageDoesNotExist = (researchPromo && !sessionStorage);
+  const acceptedLanguages = navigator.languages;
+  const acceptedLocalesIncludesEnglish =
+    (acceptedLanguages.includes("en-US") || acceptedLanguages.includes("en"));
+
+  if (promoHasAlreadyBeenDismissed || sessionStorageDoesNotExist || !acceptedLocalesIncludesEnglish) {
+    researchPromo.style.display = "none";
+  }
+
+  resizeDashboardMargin();
+
+  if (researchPromoIsVisible()) {
+    sendRecruitmentPing("View");
+    document.querySelector(".x-close-promo").addEventListener("click", () => {
+      if (sessionStorage) {
+        sessionStorage.setItem("fxMonitorResearchPromo", "dismissed");
+        researchPromo.classList.add("hidden");
+      }
+      sendRecruitmentPing("Engage");
+    });
   }
 
   const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");

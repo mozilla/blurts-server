@@ -6,7 +6,7 @@
 }
 
 .dashboard.clear-header {
-  padding-top: 116px;
+  padding-top: 80px;
   position: relative;
   background-color: rgba(255, 255, 255, 1);
   box-shadow: inset 0 -1px 4px rgba(218, 218, 218, 0.58);
@@ -166,9 +166,9 @@ span.email-confirmed {
     align-items: flex-start;
   }
 
-  .dashboard.clear-header {
+  /* .dashboard.clear-header {
     padding-top: 156px;
-  }
+  } */
 
   .pref .email-add {
     margin-bottom: 8px;
