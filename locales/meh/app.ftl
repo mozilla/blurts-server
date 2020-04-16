@@ -25,6 +25,8 @@ home-not-found = Ntu nnani´i página.
 oauth-invalid-session = Sesión ntu vatu
 user-add-invalid-email = Correo ntu vatu
 error-headline = Error
+user-unsubscribe-title = { -product-name }: Xina suscripción
+scan-placeholder = Chu'un correo electrónico
 scan-submit = Nánuku correo noo´o
 download-firefox-banner-button = Xinuun { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
