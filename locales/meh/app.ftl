@@ -28,12 +28,19 @@ error-headline = Error
 user-unsubscribe-title = { -product-name }: Xina suscripción
 scan-placeholder = Chu'un correo electrónico
 scan-submit = Nánuku correo noo´o
+scan-error = Jiniñu'udani iin correo vatu.
 download-firefox-banner-button = Xinuun { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Nchuíchí!
+form-signup-error = Jiniñu'udani iin correo vatu.
+unsub-headline = Xina suscripción { -product-name-nowrap }
+unsub-button = Nkuvika suscripción
 show-all = Kune´yá kuaiyo
+fxa-scan-another-email = ¿A kuvinu kune'yanu inka correo?
 sign-in = Kajie´e sesión
 sign-out = Kene sesión
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Tetiñu { -brand-fxa }
 have-an-account = ¿A kuminu iin cuenta?
 about-firefox-monitor = Jiee ya’a { -product-name }
 # Link title
