@@ -5,6 +5,7 @@ const DB = require("../db/DB");
 const { scanResult } = require("../scan-results");
 const { generatePageToken } = require("./utils");
 
+const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
 
 async function home(req, res) {
 
@@ -16,17 +17,15 @@ async function home(req, res) {
   let featuredBreach = null;
   let scanFeaturedBreach = false;
 
-  let experimentBranch, isUserInExperiment, experimentBranchB;
+  let experimentBranch = null;
+  let isUserInExperiment = null;
+  let experimentBranchB = null;
 
-  if (AppConstants.EXPERIMENT_ACTIVE) {
+  if (EXPERIMENTS_ENABLED) {
     const coinFlipNumber = Math.random() * 100;
     experimentBranch = getExperimentBranch(req, coinFlipNumber);
     isUserInExperiment = (experimentBranch === "vb");
     experimentBranchB = (experimentBranch === "vb" && isUserInExperiment);
-  } else {
-    experimentBranch = false;
-    isUserInExperiment = false;
-    experimentBranchB = false;
   }
 
   if (req.session.user && !req.query.breach) {
