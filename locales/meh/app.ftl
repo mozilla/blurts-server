@@ -13,10 +13,16 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Cuenta Firefox
+terms-and-privacy = A kumi noo´o maná
 GitHub-link-title = GitHub
+error-not-subscribed = Correo ya'a ntu yɨ'ɨ nuu { -product-name }.
 error-must-be-signed-in = Nejika kajie´enu sesión { -brand-fxa }
 home-title = { -product-name }
 home-not-found = Ntu nnani´i página.
+oauth-invalid-session = Sesión ntu vatu
 user-add-invalid-email = Correo ntu vatu
 error-headline = Error
 scan-submit = Nánuku correo noo´o
