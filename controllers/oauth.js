@@ -111,13 +111,10 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
       }
     );
     req.session.user = verifiedSubscriber;
-
-    console.log("L115: ", returnURL.pathname + returnURL.search);
     return res.redirect(returnURL.pathname + returnURL.search);
   }
   // Update existing user's FxA data
   await DB._updateFxAData(existingUser, fxaUser.accessToken, fxaUser.refreshToken, fxaProfileData);
-    console.log("L120: ", returnURL.pathname + returnURL.search);
     res.redirect(returnURL.pathname + returnURL.search);
 }
 
