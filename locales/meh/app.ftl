@@ -75,6 +75,9 @@ signed-in-as = Kajie´e sesión kua { $userEmail }
 menu = Menú
 # Link title
 learn-more-link = Ka´vi kue´eka.
+email-sent = ¡Nchu'un íchi correo!
+# Form title
+want-to-add = ¿A kuvinu chisonu inka correo?
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
@@ -92,6 +95,7 @@ sign-in-nested = Kajie´e sesión
 ##
 
 undo-button = Tanɨ
+go-to-dashboard-link = Kaka kune'ya panel control
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
@@ -101,3 +105,6 @@ undo-button = Tanɨ
 
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Jíía
+promo-lockwise-headline = Kua´a ji contraseña noo´o ntaka nuu
+promo-lockwise-cta = Taji { -brand-lockwise }
+fpn-promo-headline = Chiyu'u nuu iñinɨ nuu da web ji da k nita noo'o
