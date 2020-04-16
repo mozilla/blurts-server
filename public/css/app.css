@@ -769,3 +769,13 @@ div.sprite {
     padding-right: 3%;
   }
 }
+
+.float-debug {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+  background: rgba(97, 28, 125, 0.73);
+  color: white;
+  padding: 1em 2em;
+}
