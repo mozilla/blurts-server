@@ -393,10 +393,19 @@ undo-button = Disfacer
 confirmation-1-subhead = Bon! Tu ha justo resolvite tu prime violation.
 confirmation-2-subhead = Prende lo, piratas!
 confirmation-3-subhead = Uno plus, resolvite. Optimo!
+return-to-breach-details-link = Retornar al detalios del violation
 go-to-dashboard-link = Ir al pannello de controlo
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
 progress-percent-complete = { $percentComplete }% complete
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } resolvite
+       *[other] { $numResolvedBreaches } resolvite
+    }
+progress-intro-subhead = Nova in { -product-name }: marcar violationes como resolvite
 progress-complete = Tote le violationes note ha essite marcate como resolvite
 
 ## These strings contain nested markup that is later used to style the text inside of it.
