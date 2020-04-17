@@ -382,6 +382,7 @@ see-additional-recs = Vide altere recommendationes
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+resolve-top-notification = { $affectedEmail } appareva in iste violation. <a>Que facer?</a>
 
 ##
 
