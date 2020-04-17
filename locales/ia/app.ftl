@@ -408,16 +408,28 @@ progress-complete = Tote le violationes note ha essite marcate como resolvite
 resolve-this-breach-link = Resolver iste violation
 # This string appears in resolved breach cards and is followed by 
 # the date the user marked the breach as resolved.
-marked-resolved = Marcate resolvite:
+marked-resolved = Marcate le resolvite:
+hide-resolved-button = Celar le resolvite
+show-resolved-button = Monstrar le resolvite
 unresolved-passwords-exposed =
     { $numPasswords ->
         [one] Contrasigno exponite in violationes non resolvite
        *[other] Contrasignos exponite in violationes non resolvite
     }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Violation de datos note marcate como resolvite
+       *[other] Violationes de datos note marcate como resolvite
+    }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nove
+mobile-promo-headline = Installa { -brand-name } sur tu telephono e tu tabletta
 mobile-promo-cta = Installa { -brand-name } sur Android e iOS
 promo-lockwise-headline = Porta tu contrasignos sempre con te
 promo-lockwise-cta = Installar { -brand-lockwise }
+fpn-promo-headline = Cela tu position a sitos e traciatores
 promo-fpn-cta = Installa { -brand-fpn }
+monitor-promo-headline = Discoperi nove violationes de datos
+monitor-promo-body = Recipe un notification si tu informationes personal es exponite in un nove violation de datos note.
+ecosystem-promo-headline = Protege tu vita online con productos de maxime discretion
 promo-ecosystem-cta = Vider tote le productos
