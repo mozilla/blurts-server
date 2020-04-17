@@ -391,6 +391,7 @@ mark-as-resolve-button = Marcar como resolvite
 marked-as-resolved-label = Marcate como resolvite
 undo-button = Disfacer
 confirmation-1-subhead = Bon! Tu ha justo resolvite tu prime violation.
+confirmation-2-subhead = Prende lo, piratas!
 go-to-dashboard-link = Ir al pannello de controlo
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
