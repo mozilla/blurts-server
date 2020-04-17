@@ -401,6 +401,7 @@ progress-percent-complete = { $percentComplete }% complete
 
 ##
 
+resolve-this-breach-link = Resolver iste violation
 unresolved-passwords-exposed =
     { $numPasswords ->
         [one] Contrasigno exponite in violationes non resolvite
@@ -409,5 +410,7 @@ unresolved-passwords-exposed =
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nove
 mobile-promo-cta = Installa { -brand-name } sur Android e iOS
+promo-lockwise-headline = Porta tu contrasignos sempre con te
 promo-lockwise-cta = Installar { -brand-lockwise }
+promo-fpn-cta = Installa { -brand-fpn }
 promo-ecosystem-cta = Vider tote le productos
