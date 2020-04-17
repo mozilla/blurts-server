@@ -392,10 +392,12 @@ marked-as-resolved-label = Marcate como resolvite
 undo-button = Disfacer
 confirmation-1-subhead = Bon! Tu ha justo resolvite tu prime violation.
 confirmation-2-subhead = Prende lo, piratas!
+confirmation-3-subhead = Uno plus, resolvite. Optimo!
 go-to-dashboard-link = Ir al pannello de controlo
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
 progress-percent-complete = { $percentComplete }% complete
+progress-complete = Tote le violationes note ha essite marcate como resolvite
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
@@ -404,6 +406,9 @@ progress-percent-complete = { $percentComplete }% complete
 ##
 
 resolve-this-breach-link = Resolver iste violation
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Marcate resolvite:
 unresolved-passwords-exposed =
     { $numPasswords ->
         [one] Contrasigno exponite in violationes non resolvite
