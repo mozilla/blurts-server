@@ -21,7 +21,6 @@ async function home(req, res) {
   let isUserInExperiment = null;
   let experimentBranchB = null;
 
-  const debugHeadersAcceptLanguage = req.headers["accept-language"];
 
   if (EXPERIMENTS_ENABLED) {
     const coinFlipNumber = Math.random() * 100;
@@ -57,7 +56,6 @@ async function home(req, res) {
       csrfToken: formTokens.csrfToken,
       experimentBranch,
       experimentBranchB,
-      debugHeadersAcceptLanguage,
     });
   }
 
@@ -70,7 +68,6 @@ async function home(req, res) {
     experimentBranch,
     isUserInExperiment,
     experimentBranchB,
-    debugHeadersAcceptLanguage,
   });
 }
 
@@ -142,9 +139,7 @@ function notFound(req, res) {
 
 function getExperimentBranch(req, sorterNum) {
 
-  const language = req.headers["accept-language"].toLowerCase();
-
-  if (req.headers && !language.includes("en-us") ){
+  if (req.headers && !req.headers["accept-language"].toLowerCase().includes("en-us") ){
     return false;
   }
 
