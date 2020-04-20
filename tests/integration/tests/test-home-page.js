@@ -9,7 +9,7 @@ describe("Firefox Monitor homepage", function() {
   this.retries(2);
 
   beforeEach(function() {
-    browser.url("/");
+    browser.url("/?experimentBranch=false");
   });
 
   it("should load the latest breach card", function() {
