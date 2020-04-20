@@ -116,6 +116,11 @@ function sendRecommendationPings(ctaSelector) {
     ga("set", "anonymizeIp", true);
     ga("set", "transport", "beacon");
     ga("set", "dimension6", `${document.body.dataset.signedInUser}`);
+    if (document.body.dataset.experiment) {
+      // If an experiment is active, set the "Growth Experiment Version"
+      // Custom Dimension to whichever branch is active.
+      ga("set", "dimension7", `${document.body.dataset.experiment}`);
+    }
 
     ga("send", "pageview", {
       hitCallback: function() {
