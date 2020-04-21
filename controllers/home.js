@@ -139,7 +139,7 @@ function notFound(req, res) {
 
 function getExperimentBranch(req, sorterNum) {
 
-  if (req.headers && !req.headers["accept-language"].toLowerCase().includes("en-us") ){
+  if (req.headers && !req.headers["accept-language"].includes("en") ){
     return false;
   }
 
