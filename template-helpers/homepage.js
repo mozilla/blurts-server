@@ -31,6 +31,10 @@ function makeLanding(args) {
       body: LocaleUtils.fluentFormat(locales, "sensitive-sites-copy"),
     });
   }
+  // Growth Experiment
+  if (featuredBreach && experimentBranchB) {
+    landingCopy.subhead = "Your free Firefox account alerts you if you’ve been involved in a known data breach.";
+  }
 
   return args.fn(landingCopy);
 
