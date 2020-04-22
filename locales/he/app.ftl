@@ -130,6 +130,19 @@ ba-next-step-blurb-1 =
     תווים מיוחדים ומספרים. הססמה אינה מכילה מידע אישי כמו 
     הכתובת, יום ההולדת או שם המשפחה שלך.
 faq2 = מדוע לקח כל כך הרבה זמן כדי ליידע אותי על דליפה זו?
+new-breaches-found =
+    { $breachCount ->
+        [one] דליפה אחת נמצאה
+       *[other] { $breachCount } דליפות נמצאו
+    }
+was-your-info-exposed = האם המידע שלך נחשף בדליפת הנתונים של { $breachName }?
+fb-not-comp = דוא״ל זה לא נחשף בדליפה של { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] יחד עם זאת, הוא כן נחשף בדליפת נתונים אחת אחרת.
+       *[other] יחד עם זאת, הוא כן נחשף ב־{ $breachCount } דליפות נתונים אחרות.
+    }
+fb-comp-only = דוא״ל זה נחשף בדליפה של { $breachName }.
 search-breaches = חיפוש בדליפות
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = מופיעות:
