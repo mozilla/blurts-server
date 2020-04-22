@@ -120,7 +120,15 @@ welcome-back = ברוכים השבים, { $userName }!
 welcome-user = ברוכים הבאים, { $userName }!
 breach-alert-subject = ‏{ -product-name } מצא את הדוא״ל שלך בדליפת נתונים חדשה
 your-info-was-discovered-headline = המידע שלך התגלה בדליפת נתונים חדשה.
+your-info-was-discovered-blurb =
+    נרשמת לקבלת התראות של { -product-name } 
+    כאשר הדוא״ל שלך מופיע בדליפת נתונים. הנה מה שאנחנו יודעים על דליפה זו.
 what-to-do-after-breach = מה לעשות לאחר דליפת נתונים
+ba-next-step-1 = לשנות את הססמה שלך לססמה חזקה וייחודית.
+ba-next-step-blurb-1 =
+    סיסמה חזקה משתמשת בשילוב של אותיות גדולות וקטנות, 
+    תווים מיוחדים ומספרים. הססמה אינה מכילה מידע אישי כמו 
+    הכתובת, יום ההולדת או שם המשפחה שלך.
 search-breaches = חיפוש בדליפות
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = מופיעות:
