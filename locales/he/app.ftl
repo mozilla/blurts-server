@@ -11,9 +11,13 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = חשבון Firefox
 terms-and-privacy = תנאים ופרטיות
 GitHub-link-title = GitHub
 error-scan-page-token = ניסית לסרוק יותר מדי כתובות דוא"ל בפרק זמן קצר. משיקולי אבטחה, חסמנו את חיפושיך באופן זמני. יהיה ניתן לחפש שוב מאוחר יותר.
@@ -68,6 +72,9 @@ sign-out = התנתקות
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = ניהול { -brand-fxa }
 have-an-account = כבר יש לך חשבון?
+fxa-pwt-summary-2 =
+    ססמאות קצרות וססמאות בנות מילה אחת קלות לניחוש על־ידי פצחנים.
+    יש להשתמש לפחות בשתי מילים ובשילוב של אותיות, ספרות ותווים מיוחדים.
 # Alerts is a noun
 sign-up-for-alerts = הרשמה להתראות
 # Link title
@@ -90,6 +97,7 @@ latest-breach = הדליפה העדכנית ביותר שנוספה
 more-about-this-breach = עוד על הדליפה הזו
 take-control = קבלת השליטה על הנתונים האישיים שלך בחזרה.
 cant-stop-hackers = אי אפשר למנוע מהאקרים לפרוץ. אבל אפשר להימנע מהרגלים רעים שמקלים על עבודתם.
+if-your-info = אם המידע שלך מתגלה בדליפת נתונים חדשה, נשלח לך התרעה.
 monitor-several-emails = ניטור אחר מספר כתובות דוא״ל
 sensitive-sites = כיצד { -product-name } מתייחס לאתרים רגישים?
 
