@@ -139,10 +139,6 @@ function notFound(req, res) {
 
 function getExperimentBranch(req, sorterNum) {
 
-  if (req.headers && !req.headers["accept-language"].includes("en") ){
-    return false;
-  }
-
   // If URL param has experimentBranch entry, use that branch;
   if (req.query.experimentBranch) {
     if (!["va", "vb"].includes(req.query.experimentBranch)) {
@@ -154,6 +150,18 @@ function getExperimentBranch(req, sorterNum) {
 
   // If user was already assigned a branch, stay in that branch;
   if (req.session.experimentBranch) { return req.session.experimentBranch; }
+
+  if (req.headers && req.headers["accept-language"]){
+    const lang = req.headers["accept-language"].split(",");
+    if (!lang[0].includes("en")) {
+      return false;
+    }
+  } else {
+    // We cannot parse req.headers["accept-language"],
+    // so we should not enroll users in the experiment.
+    return false;
+  }
+
 
   // Split into two categories
   if (sorterNum <= 50) {
