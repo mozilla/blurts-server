@@ -4,9 +4,6 @@ services:
 addons:
   postgresql: 9.6
 
-node_js:
-  - 13
-
 matrix:
     include:
         - name: "js lint"
@@ -44,6 +41,3 @@ matrix:
           script:
               - moz-l10n-lint l10n.toml
               - compare-locales l10n.toml . `ls locales`
-
-cache:
-  npm: false
