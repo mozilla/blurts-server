@@ -63,7 +63,7 @@ unsub-headline = Berhenti berlangganan { -product-name-nowrap }
 unsub-blurb = Ini akan menghapus surel Anda dari daftar { -product-name-nowrap } dan Anda tidak akan menerima peringatan lagi ketika ada pengumuman kebocoran yang baru.
 unsub-button = Berhenti Berlangganan
 # Breach data provided by Have I Been Pwned.
-hibp-attribution = Data kebocoran tersedia oleh { $hibp-link }
+hibp-attribution = Data kebocoran disediakan oleh { $hibp-link }
 share-twitter = Kebanyakan orang memiliki sekitar 100 akun daring. Apakah salah satu dari akun Anda terkena pembobolan data? Temukan segera.
 share-facebook-headline = Cari tahu apakah Anda telah menjadi bagian dari pembobolan data
 share-facebook-blurb = Apakah akun daring Anda sudah terpapar dalam pembobolan data?
@@ -444,17 +444,17 @@ resolve-top-notification-plural =
 
 ##
 
-marking-this-subhead = Tandai pelanggaran ini sebagai terselesaikan
+marking-this-subhead = Tandai pelanggaran ini sebagai teratasi
 # This string contains nested markup that is later used to style the text inside of it.
 # Please do not modify or remove "<span>" and "</span>".
 marking-this-body =
     <span>Setelah Anda mengambil langkah-langkah yang Anda bisa untuk mengatasi pelanggaran ini</span>,
-    Anda dapat menandainya sebagai terselesaikan. Anda masih dapat mengakses rincian pelanggaran tersebut
+    Anda dapat menandainya sebagai teratasi. Anda masih dapat mengakses rincian pelanggaran tersebut
     dari dasbor Anda kapan saja.
-mark-as-resolve-button = Tandai sebagai Terselesaikan
-marked-as-resolved-label = Telah ditandai sebagai Terselesaikan
+mark-as-resolve-button = Tandai sebagai Teratasi
+marked-as-resolved-label = Telah ditandai sebagai Teratasi
 undo-button = Urungkan
-confirmation-1-subhead = Bagus! Anda baru saja menyelesaikan pelanggaran pertama Anda.
+confirmation-1-subhead = Bagus! Anda baru saja mengatasi pelanggaran pertama Anda.
 confirmation-1-body = Pertahankan momentumnya. Periksa dasbor Anda untuk melihat apakah ada lagi yang harus dilakukan.
 confirmation-2-subhead = Terima itu, peretas!
 confirmation-2-body = Anda mengambil langkah-langkah penting untuk melindungi akun daring Anda.
@@ -462,15 +462,62 @@ confirmation-3-subhead = Satu lagi jatuh. Kerja bagus!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Apakah kata sandi baru Anda unik, kuat, dan sulit ditebak? <a>Cari tahu</a>
-generic-confirmation-subhead = Pelanggaran ini telah ditandai sebagai terselesaikan
+generic-confirmation-subhead = Pelanggaran ini telah ditandai sebagai teratasi
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
        *[other] Untuk melihat semua pelanggaran yang tersisa, buka dasbor Anda.
     }
+return-to-breach-details-link = Kembali ke rincian pelanggaran
+go-to-dashboard-link = Buka Dasbor
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% selesai
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+       *[other] { $numResolvedBreaches } Teratasi
+    }
+progress-intro-subhead = Baru di { -product-name }: Tandai pelanggaran sebagai teratasi
+progress-intro-message =
+    Setelah meninjau rincian pelanggaran dan mengambil langkah untuk melindungi
+    info pribadi Anda, Anda dapat menandai pelanggaran sebagai teratasi.
+progress-status =
+    { $numTotalBreaches ->
+       *[other] { $numResolvedBreaches } dari { $numTotalBreaches } pelanggaran ditandai sebagai teratasi
+    }
+progress-complete = Semua pelanggaran yang diketahui telah ditandai sebagai teratasi
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>Anda memulai awal yang bagus!</span> Periksa pelanggaran yang tersisa untuk pelajari
+    langkah apa yang harus diambil.
+progress-message-2 =
+    <span>Pertahankan!</span> Perubahan kecil seperti memperbarui kata sandi berdampak besar
+    menjaga keamanan informasi pribadi Anda.
+progress-message-3 = <span>Kerja bagus untuk menyelesaikan pelanggaran itu!</span> Teruskan. Anda masih punya beberapa buah lagi.
+progress-message-4 = <span>Hampir selesai!</span> Anda sudah dekat dengan garis akhir.
+progress-complete-message =
+    <span>Menyenangkan, bukan?</span> Jika Anda ingin melanjutkan, ini saat yang tepat untuk
+    memutakhirkan log masuk lainnya dengan kata sandi yang lebih kuat.
 
 ##
 
+resolve-this-breach-link = Atasi pelanggaran ini
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Tandai telah diatasi:
+hide-resolved-button = Sembunyikan yang Teratasi
+show-resolved-button = Tampilkan yang Teratasi
+unresolved-passwords-exposed =
+    { $numPasswords ->
+       *[other] Kata sandi terbongkar dalam pelanggaran yang belum teratasi
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+       *[other] Pelanggaran data yang dikenal ditandai sebagai teratasi
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Baru
