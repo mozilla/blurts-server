@@ -24,7 +24,7 @@ matrix:
               - "node"
               - 10
           script: "npm run lint:audit"
-              - name: "tests"
+        - name: "tests"
           language: node_js
           node_js:
               - "node"
