@@ -11,9 +11,13 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
+##
 
-
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Akun Firefox
 terms-and-privacy = Ketentuan dan Privasi
 GitHub-link-title = GitHub
 error-scan-page-token = Anda telah coba memindah terlalu banyak alamat surel dalam periode singkat. Demi alasan keamanan, kami memblokir Anda sementara dari pencarian baru. Anda akan dapat mencobanya nanti kembali.
@@ -194,6 +198,7 @@ avoid-personal-info-blurb = Sangat mudah untuk menemukan tanggal lahir, alamat, 
 ## What to do after data breach tips
 
 change-pw = Ubah kata sandi Anda
+change-pw-site = Ubah kata sandi untuk situs ini
 even-for-old = Bahkan untuk akun lama, adalah penting untuk memperbarui kata sandi Anda.
 make-new-pw-unique = Buat kata sandi baru yang berbeda dan unik
 strength-of-your-pw = Kekuatan kombinasi kata sandi Anda secara langsung berdampak pada keamanan daring Anda.
@@ -395,7 +400,7 @@ email-verified-view-dashboard = Untuk melihat dan mengelola semua surel yang And
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = masuk
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -417,3 +422,55 @@ create-strong-passwords-desc = Buat kata sandi Anda kuat, aman, dan sulit diteba
 steps-to-protect-desc = Pahami ancaman yang paling umum dan ketahui apa yang harus diwaspadai.
 five-myths-desc = Pelajari cara menghindari kebiasaan kata sandi buruk yang membuat peretas bekerja dengan mudah.
 take-further-steps-desc = Cari tahu cara mengurangi risiko pencurian identitas untuk mencegah kerugian finansial.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Perubahan disimpan!
+# Section headline
+rec-section-headline = Apa yang harus dilakukan untuk pelanggaran ini
+rec-section-subhead = Kami menyarankan Anda mengambil langkah-langkah ini untuk menjaga informasi pribadi Anda aman dan melindungi identitas digital Anda.
+# Section headline
+rec-section-headline-no-pw = Apa yang harus dilakukan untuk melindungi informasi pribadi Anda
+rec-section-subhead-no-pw = Meskipun kata sandi tidak terbongkar dalam pelanggaran ini, masih ada langkah-langkah yang dapat Anda ambil untuk melindungi informasi pribadi Anda dengan lebih baik.
+# Button
+see-additional-recs = Lihat Rekomendasi Tambahan
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $affectedEmail } muncul dalam pelanggaran ini. <a>Apa yang harus dilakukan selanjutnya</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+       *[other] { $numAffectedEmails } dari alamat surel Anda muncul dalam pelanggaran ini. <a>Apa yang harus dilakukan selanjutnya</a>
+    }
+
+##
+
+marking-this-subhead = Tandai pelanggaran ini sebagai terselesaikan
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Setelah Anda mengambil langkah-langkah yang Anda bisa untuk mengatasi pelanggaran ini</span>,
+    Anda dapat menandainya sebagai terselesaikan. Anda masih dapat mengakses rincian pelanggaran tersebut
+    dari dasbor Anda kapan saja.
+mark-as-resolve-button = Tandai sebagai Terselesaikan
+marked-as-resolved-label = Telah ditandai sebagai Terselesaikan
+undo-button = Urungkan
+confirmation-1-subhead = Bagus! Anda baru saja menyelesaikan pelanggaran pertama Anda.
+confirmation-1-body = Pertahankan momentumnya. Periksa dasbor Anda untuk melihat apakah ada lagi yang harus dilakukan.
+confirmation-2-subhead = Terima itu, peretas!
+confirmation-2-body = Anda mengambil langkah-langkah penting untuk melindungi akun daring Anda.
+confirmation-3-subhead = Satu lagi jatuh. Kerja bagus!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Apakah kata sandi baru Anda unik, kuat, dan sulit ditebak? <a>Cari tahu</a>
+generic-confirmation-subhead = Pelanggaran ini telah ditandai sebagai terselesaikan
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+       *[other] Untuk melihat semua pelanggaran yang tersisa, buka dasbor Anda.
+    }
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
