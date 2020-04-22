@@ -75,6 +75,7 @@ have-an-account = כבר יש לך חשבון?
 fxa-pwt-summary-2 =
     ססמאות קצרות וססמאות בנות מילה אחת קלות לניחוש על־ידי פצחנים.
     יש להשתמש לפחות בשתי מילים ובשילוב של אותיות, ספרות ותווים מיוחדים.
+fxa-pwt-summary-4 = מנהלי ססמאות כגון 1Password, LastPass, Dashlaneו־Bitwarden שומרים את הססמאות שלך וממלאים אותן באתרים עבורך. הם אפילו יעזרו לך לייצר ססמאות חזקות.
 # Alerts is a noun
 sign-up-for-alerts = הרשמה להתראות
 # Link title
@@ -103,8 +104,22 @@ sensitive-sites = כיצד { -product-name } מתייחס לאתרים רגיש�
 
 ## What to do after data breach tips
 
+send-verification = שליחת קישור לאמות
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-summary = קיצור הדליפה
+show-breaches-for-this-email = הצגת כל הדליפות עבור דוא״ל זה.
+link-change-primary = שינוי כתובת דוא״ל ראשית
+remove-fxm = הסרת { -product-name }
 # Button title
 manage-email-addresses = ניהול כתובות דוא״ל
+welcome-back = ברוכים השבים, { $userName }!
+welcome-user = ברוכים הבאים, { $userName }!
+breach-alert-subject = ‏{ -product-name } מצא את הדוא״ל שלך בדליפת נתונים חדשה
+your-info-was-discovered-headline = המידע שלך התגלה בדליפת נתונים חדשה.
 what-to-do-after-breach = מה לעשות לאחר דליפת נתונים
 search-breaches = חיפוש בדליפות
 # "Appears in-page as: Showing: All Breaches"
