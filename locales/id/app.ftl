@@ -521,3 +521,8 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Baru
+mobile-promo-headline = Bawa { -brand-name } ke ponsel dan tablet Anda
+mobile-promo-body = Penjelajahan yang cepat, pribadi, dan aman ke mana pun Anda pergi. Temukan { -brand-name } di Google Play dan App Store.
+mobile-promo-cta = Dapatkan { -brand-name } di Android dan iOS
+promo-lockwise-headline = Bawa kata sandi Anda ke mana saja
+lockwise-promo-body = Pantau log masuk Anda di semua perangkat. Akses dengan aman dari komputer, ponsel, atau tablet Anda.
