@@ -170,6 +170,9 @@ scan-results-known-breaches =
         [one] דוא״ל זה נחשף בדליפת נתונים מוכרת אחת.
        *[other] דוא״ל זה נחשף ב־{ $breachCount } דליפות נתונים מוכרות.
     }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = מידע נוסף, כולל:
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
 filter-by = סינון לפי קטגוריה:
@@ -180,9 +183,13 @@ to-affected-email = שליחת התראות על דליפות לכתובת הד�
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+email-added-to-subscription = נודיע לך אם { $email } נחשף בדליפת נתונים.
 
 ##
 
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = דליפה נוספה:
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
