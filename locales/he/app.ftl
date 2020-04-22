@@ -12,7 +12,7 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 
-
+##
 
 terms-and-privacy = תנאים ופרטיות
 GitHub-link-title = GitHub
@@ -56,10 +56,10 @@ unsub-headline = ביטול הרשמה ל־{ -product-name-nowrap }
 unsub-blurb = פעולה זו תסיר את הדוא"ל שלך מרשימת { -product-name-nowrap }, ולא יישלחו אליך התראות על פרצות חדשות שפורסמו.
 unsub-button = ביטול הרשמה
 # Breach data provided by Have I Been Pwned.
-hibp-attribution = נתוני הפירצה מסופקים על ידי { $hibp-link }
+hibp-attribution = נתוני הדליפה מסופקים על־ידי { $hibp-link }
 share-twitter = לרוב האנשים יש כ־100 חשבונות מקוונים. האם החשבונות שלך נחשפו בפירצה?
 share-facebook-headline = האם היית חלק מפרצה
-share-facebook-blurb = האם החשבונות המקוונים שלך נחשפו בפרצה?
+share-facebook-blurb = האם החשבונות המקוונים שלך נחשפו בדליפת נתונים?
 og-site-description = { -product-name } יבדוק האם היית חלק מפרצה. באפשרותך להירשם להתראות על פרצות עתידיות ועצות לשמירת החשבונות שלך בטוחים.
 show-all = הצגת הכל
 fxa-scan-another-email = רוצה לבדוק כתובת דוא״ל נוספת?
@@ -116,5 +116,19 @@ to-affected-email = שליחת התראות על דליפות לכתובת הד�
 ## an additional email to Firefox Monitor.
 
 
+##
 
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+
+##
+
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
 
