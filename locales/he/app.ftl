@@ -157,6 +157,19 @@ currently-showing = מופיעות:
 ## Updated error messages
 
 error-bot-headline = החיפושים מושהים באופן זמני
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] דליפת נתונים מוכרת אחת חשפה מידע עליך
+       *[other] דליפות נתונים מוכרות חשפו מידע עליך
+    }
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] דוא״ל זה נחשף בדליפת נתונים מוכרת אחת.
+       *[other] דוא״ל זה נחשף ב־{ $breachCount } דליפות נתונים מוכרות.
+    }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
 filter-by = סינון לפי קטגוריה:
