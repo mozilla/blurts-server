@@ -143,6 +143,13 @@ other-breaches-found =
        *[other] יחד עם זאת, הוא כן נחשף ב־{ $breachCount } דליפות נתונים אחרות.
     }
 fb-comp-only = דוא״ל זה נחשף בדליפה של { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] דוא״ל זה נחשף בדליפת נתונים מוכרת אחת, כולל { $breachName }.
+       *[other] דוא״ל זה נחשף ב־{ $breachCount } דליפות נתונים מוכרות, כולל { $breachName }.
+    }
+no-results-blurb = מצטערים, דליפה זו אינה נמצאת בבסיס הנתונים שלנו.
+all-breaches-headline = כל הדליפות ב־{ -product-name }
 search-breaches = חיפוש בדליפות
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = מופיעות:
