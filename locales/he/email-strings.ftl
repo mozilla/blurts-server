@@ -15,7 +15,9 @@ verify-email-cta = אימות דוא״ל
 # Headline of verification email
 email-link-expires = קישור זה יפוג תוך 24 שעות
 # Email headline
-email-no-breaches-hl = הכתובת { $userEmail } לא נחשפה בדליפות נתונים מוכרות.
+email-no-breaches-hl = הכתובת { $userEmail } לא נחשפה בדליפות נתונים מוכרות
+# Email headline
+email-alert-hl = הכתובת { $userEmail } נחשפה בדליפת נתונים חדשה
 # Subject line of email
 email-subject-no-breaches = { -product-name } לא מצא דליפות נתונים מוכרות
 # Subject line of email

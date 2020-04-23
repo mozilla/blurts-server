@@ -110,7 +110,17 @@ create-strong-passwords = כיצד ליצור ססמאות חזקות
 five-myths = 5 מיתוסים על מנהלי ססמאות
 feat-security-tips = עצות אבטחה להגנה על החשבונות שלך
 feat-sensitive = חיפוש מתקדם בדליפות רגישות
-send-verification = שליחת קישור לאמות
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] מופיע בדליפה מוכרת אחת.
+       *[other] מופיע ב־{ $breachCount } דליפות מוכרות.
+    }
+back-to-top = חזרה למעלה
+comm-opt-1 = שליחת כל ההתרעות לדליפות אל { $primaryEmail }.
+add-new-email = הוספת כתובת דוא״ל חדשה
+send-verification = שליחת קישור לאימות
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
@@ -120,6 +130,9 @@ breach-summary = קיצור הדליפה
 show-breaches-for-this-email = הצגת כל הדליפות עבור דוא״ל זה.
 link-change-primary = שינוי כתובת דוא״ל ראשית
 remove-fxm = הסרת { -product-name }
+remove-fxm-blurb =
+    כיבוי ההתרעות של { -product-name }. ה־{ -brand-fxa } שלך ישאר פעיל, ויתכן שיתקבלו 
+    הודעות אחרות הקשורות לחשבון שלך.
 # Button title
 manage-email-addresses = ניהול כתובות דוא״ל
 welcome-back = ברוכים השבים, { $userName }!
@@ -164,6 +177,14 @@ currently-showing = מופיעות:
 ## Updated error messages
 
 error-bot-headline = החיפושים מושהים באופן זמני
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] ססמה אחת נחשפה בכל הדליפות
+       *[other] ססמאות נחשפו בכל הדליפות
+    }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
 # your localization, because it would result in the number showing twice.
@@ -211,3 +232,8 @@ breach-added-label = דליפה נוספה:
 
 ##
 
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] דליפת נתונים מוכרת אחת סומנה שטופלה
+       *[other] דליפות נתונים מוכרות סומנו שטופלו
+    }
