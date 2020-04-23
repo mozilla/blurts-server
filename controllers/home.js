@@ -3,7 +3,7 @@
 const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
 const { scanResult } = require("../scan-results");
-const { generatePageToken } = require("./utils");
+const { generatePageToken, getExperimentBranch } = require("./utils");
 
 const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
 
@@ -25,6 +25,7 @@ async function home(req, res) {
   if (EXPERIMENTS_ENABLED) {
     const coinFlipNumber = Math.random() * 100;
     experimentBranch = getExperimentBranch(req, coinFlipNumber);
+    req.session.experimentBranch = experimentBranch;
     isUserInExperiment = (experimentBranch === "vb");
     experimentBranchB = (experimentBranch === "vb" && isUserInExperiment);
   }
@@ -136,44 +137,6 @@ function notFound(req, res) {
     subhead: req.fluentFormat("home-not-found"),
   });
 }
-
-function getExperimentBranch(req, sorterNum) {
-
-  // If we cannot parse req.headers["accept-language"], we should not
-  // enroll users in the experiment.
-  if (!req.headers || !req.headers["accept-language"]){
-    return false;
-  }
-
-  // If the user doesn't have an English variant langauge selected as their primary language,
-  // we do not enroll them in the experiment.
-  const lang = req.headers["accept-language"].split(",");
-  if (!lang[0].includes("en")) {
-    return false;
-  }
-
-  // If URL param has experimentBranch entry, use that branch;
-  if (req.query.experimentBranch) {
-    if (!["va", "vb"].includes(req.query.experimentBranch)) {
-      return false;
-    }
-    req.session.experimentBranch = req.query.experimentBranch;
-    return req.query.experimentBranch;
-  }
-
-  // If user was already assigned a branch, stay in that branch;
-  if (req.session.experimentBranch) { return req.session.experimentBranch; }
-
-  // Split into two categories
-  if (sorterNum <= 50) {
-    req.session.experimentBranch = "vb";
-    return "vb";
-  }
-
-  return "va";
-}
-
-
 
 module.exports = {
   home,
