@@ -46,7 +46,10 @@ function doOauth(el) {
     }
   });
 
-  if (el.dataset.entrypoint === "fx-monitor-create-account-blue-btn") {
+  // Growth Experiment: OAuth Entry Point IDs are unique to the experiment.
+  const oAuthEntryPointIds = ["fx-monitor-create-account-blue-btn-featuredBreach", "fx-monitor-create-account-blue-btn-homePage"];
+
+  if (oAuthEntryPointIds.includes(el.dataset.entrypoint)) {
     // Growth Experiment: Reset UTMs from in-line body tag data elements.
     ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
       if (document.body.dataset[key]) {
