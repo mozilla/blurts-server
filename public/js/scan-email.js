@@ -31,9 +31,12 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
   // set unhashed email in client's sessionStorage and send key to server
   // so we can pluck these out later in scan-results and not lose them on back clicks
   if (sessionStorage) {
-
-    sessionStorage.setItem(`scanned_${(sessionStorage.length + 1)}`, userEmail);
-    emailForm.querySelector("input[name=scannedEmailId]").value = sessionStorage.length;
+    const lastScannedEmail = sessionStorage.getItem("lastScannedEmail");
+    if (!lastScannedEmail || lastScannedEmail !== userEmail) {
+      sessionStorage.removeItem("lastScannedEmail");
+      sessionStorage.setItem("lastScannedEmail", userEmail);
+      emailForm.querySelector("input[name=scannedEmailId]").value = sessionStorage.length;
+    }
   }
 
   // clear input, send ping, and submit

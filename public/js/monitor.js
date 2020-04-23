@@ -71,7 +71,7 @@ function doOauth(el) {
 
   // Preserve entire control function
   if (sessionStorage && sessionStorage.length > 0) {
-    const lastScannedEmail = sessionStorage.getItem(`scanned_${sessionStorage.length}`);
+    const lastScannedEmail = sessionStorage.getItem("lastScannedEmail");
     if (lastScannedEmail) {
       url.searchParams.append("email", lastScannedEmail);
     }
@@ -138,7 +138,7 @@ function handleFormSubmits(formEvent) {
 
     const revisedActionURL = scanFormActionURL.pathname + scanFormActionURL.search;
 
-    thisForm.action = revisedActionURL;
+    thisForm.action = revisedActionURL.toString();
 
   }
 
