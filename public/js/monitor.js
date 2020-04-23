@@ -48,8 +48,6 @@ function doOauth(el) {
 
   // Growth Experiment: OAuth Entry Point IDs are unique to the experiment.
   const oAuthEntryPointIds = [
-    "fx-monitor-create-account-blue-btn-featuredBreach",
-    "fx-monitor-create-account-blue-btn-homePage",
     "fx-monitor-create-account-blue-btn",
     "fx-monitor-alert-me-blue-link",
   ];

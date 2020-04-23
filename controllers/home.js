@@ -140,6 +140,42 @@ function notFound(req, res) {
   });
 }
 
+// function getExperimentBranch(req, sorterNum) {
+//
+//   // If we cannot parse req.headers["accept-language"], we should not
+//   // enroll users in the experiment.
+//   if (!req.headers || !req.headers["accept-language"]){
+//     return false;
+//   }
+//
+//   // If the user doesn't have an English variant langauge selected as their primary language,
+//   // we do not enroll them in the experiment.
+//   const lang = req.headers["accept-language"].split(",");
+//   if (!lang[0].includes("en")) {
+//     return false;
+//   }
+//
+//   // If URL param has experimentBranch entry, use that branch;
+//   if (req.query.experimentBranch) {
+//     if (!["va", "vb"].includes(req.query.experimentBranch)) {
+//       return false;
+//     }
+//     req.session.experimentBranch = req.query.experimentBranch;
+//     return req.query.experimentBranch;
+//   }
+//
+//   // If user was already assigned a branch, stay in that branch;
+//   if (req.session.experimentBranch) { return req.session.experimentBranch; }
+//
+//   // Split into two categories
+//   if (sorterNum <= 50) {
+//     req.session.experimentBranch = "vb";
+//     return "vb";
+//   }
+//
+//   return "va";
+// }
+
 module.exports = {
   home,
   getAboutPage,

@@ -115,7 +115,7 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
   }
   // Update existing user's FxA data
   await DB._updateFxAData(existingUser, fxaUser.accessToken, fxaUser.refreshToken, fxaProfileData);
-    res.redirect(returnURL.pathname + returnURL.search);
+  res.redirect(returnURL.pathname + returnURL.search);
 }
 
 module.exports = {
