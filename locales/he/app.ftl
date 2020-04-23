@@ -104,6 +104,12 @@ sensitive-sites = כיצד { -product-name } מתייחס לאתרים רגיש�
 
 ## What to do after data breach tips
 
+even-for-old = חשוב לעדכן את הססמה שלך גם עבור חשבונות ישנים.
+strength-of-your-pw = חוזק הססמאות שלך משפיע ישירות על האבטחה המקוונת שלך.
+create-strong-passwords = כיצד ליצור ססמאות חזקות
+five-myths = 5 מיתוסים על מנהלי ססמאות
+feat-security-tips = עצות אבטחה להגנה על החשבונות שלך
+feat-sensitive = חיפוש מתקדם בדליפות רגישות
 send-verification = שליחת קישור לאמות
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
