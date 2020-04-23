@@ -47,7 +47,12 @@ function doOauth(el) {
   });
 
   // Growth Experiment: OAuth Entry Point IDs are unique to the experiment.
-  const oAuthEntryPointIds = ["fx-monitor-create-account-blue-btn-featuredBreach", "fx-monitor-create-account-blue-btn-homePage"];
+  const oAuthEntryPointIds = [
+    "fx-monitor-create-account-blue-btn-featuredBreach",
+    "fx-monitor-create-account-blue-btn-homePage",
+    "fx-monitor-create-account-blue-btn",
+    "fx-monitor-alert-me-blue-link",
+  ];
 
   if (oAuthEntryPointIds.includes(el.dataset.entrypoint)) {
     // Growth Experiment: Reset UTMs from in-line body tag data elements.
