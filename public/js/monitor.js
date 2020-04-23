@@ -126,6 +126,22 @@ function handleFormSubmits(formEvent) {
   if (formClassList.contains("skip")) {
     return;
   }
+
+  if (document.body.dataset.experiment) {
+    const scanFormActionURL = new URL(thisForm.action);
+
+    ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
+      if (document.body.dataset[key]) {
+        scanFormActionURL.searchParams.append(key, document.body.dataset[key]);
+      }
+    });
+
+    const revisedActionURL = scanFormActionURL.pathname + scanFormActionURL.search;
+
+    thisForm.action = revisedActionURL;
+
+  }
+
   if (thisForm.email && !isValidEmail(email)) {
     sendPing(thisForm, "Failure");
     formClassList.add("invalid");
@@ -401,31 +417,5 @@ function addBentoObserver(){
 
   const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
   dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));
-
-  if (document.body.dataset.experiment) {
-    const submitBtn = document.querySelector("#scan-user-email input[type='submit']");
-
-    submitBtn.addEventListener("click", (e)=> {
-
-      // Email Validation
-      const scanForm = document.getElementById("scan-user-email");
-      const scanFormEmailInput = document.getElementById("scan-email");
-
-      if (scanFormEmailInput) {
-        const scanFormActionURL = new URL(scanForm.action);
-
-        ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
-          if (document.body.dataset[key]) {
-            scanFormActionURL.searchParams.append(key, document.body.dataset[key]);
-          }
-        });
-
-        const revisedActionURL = scanFormActionURL.pathname + scanFormActionURL.search;
-
-        scanForm.action = revisedActionURL;
-      }
-
-    });
-  }
 
 })();
