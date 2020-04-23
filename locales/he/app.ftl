@@ -61,8 +61,8 @@ unsub-blurb = פעולה זו תסיר את הדוא"ל שלך מרשימת { -p
 unsub-button = ביטול הרשמה
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = נתוני הדליפה מסופקים על־ידי { $hibp-link }
-share-twitter = לרוב האנשים יש כ־100 חשבונות מקוונים. האם החשבונות שלך נחשפו בפירצה?
-share-facebook-headline = האם היית חלק מפרצה
+share-twitter = לרוב האנשים יש כ־100 חשבונות מקוונים. האם החשבונות שלך נחשפו בדליפת נתונים?
+share-facebook-headline = האם היית חלק מדליפת נתונים
 share-facebook-blurb = האם החשבונות המקוונים שלך נחשפו בדליפת נתונים?
 og-site-description = { -product-name } יבדוק האם היית חלק מפרצה. באפשרותך להירשם להתראות על פרצות עתידיות ועצות לשמירת החשבונות שלך בטוחים.
 show-all = הצגת הכל
@@ -98,7 +98,7 @@ latest-breach = הדליפה העדכנית ביותר שנוספה
 more-about-this-breach = עוד על הדליפה הזו
 take-control = קבלת השליטה על הנתונים האישיים שלך בחזרה.
 cant-stop-hackers = אי אפשר למנוע מהאקרים לפרוץ. אבל אפשר להימנע מהרגלים רעים שמקלים על עבודתם.
-if-your-info = אם המידע שלך מתגלה בדליפת נתונים חדשה, נשלח לך התרעה.
+if-your-info = אם המידע שלך נחשף בדליפת נתונים חדשה, נשלח לך התרעה.
 monitor-several-emails = ניטור אחר מספר כתובות דוא״ל
 sensitive-sites = כיצד { -product-name } מתייחס לאתרים רגישים?
 
