@@ -208,5 +208,15 @@ function sendRecommendationPings(ctaSelector) {
         await sendPing(el, "Click", `${linkId}`);
       });
     });
+
+    document.querySelectorAll(".ga-growth-ping").forEach((el) => {
+      el.addEventListener("click", async(e) => {
+        // Overwrite current event category for active OAuth buttons
+        if (el.dataset.eventCategory !== "fxa-oauth") {
+          el.dataset.eventCategory = "fxa-oauth";
+        }
+        await sendPing(el, el.dataset.eventAction, el.dataset.eventLabel);
+      });
+    });
   }
 })();
