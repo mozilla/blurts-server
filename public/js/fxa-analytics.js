@@ -126,6 +126,7 @@ function sendRecommendationPings(ctaSelector) {
       hitCallback: function() {
         removeUtmsFromUrl();
       },
+      nonInteraction: true,
     });
 
     // Send "View" pings for any visible recommendation CTAs.
