@@ -14,7 +14,7 @@
         {{/getScanResultsHeadline}}
       {{else}}
         <h2 class="headline scan-results-headline">{{{ fluentNestedBold "scan-results-known-breaches" breachCount=foundBreaches.length }}}</h2>
-          <button id="new-scan-page" class="open-oauth blue-link temp-marketing-alert-me-link ga-growth-ping" data-event-label="fx-monitor-alert-me-blue-link" data-event-action="click" {{> analytics/fxa id="fx-monitor-alert-me-blue-link" }} data-event-category="Alert me about new breaches">
+          <button id="new-scan-page" class="open-oauth blue-link temp-marketing-alert-me-link ga-growth-ping" data-event-label="fx-monitor-alert-me-blue-link" {{> analytics/fxa id="fx-monitor-alert-me-blue-link" }} data-event-category="Alert me about new breaches">
             {{ getString "alert-about-new-breaches" }}
           </button>
       {{/if}}
@@ -44,7 +44,7 @@
         to match the "Alert me.." button on the other version of the scan results page and to make comparisons 
         between this button and the "Alert me.." button on the other version of the scan results page easier
       -->
-    <button class="open-oauth temp-marketing-btn-blue ga-growth-ping" data-event-label="fx-monitor-alert-me-blue-btn" data-event-action="click" {{> analytics/fxa id="fx-monitor-alert-me-blue-btn" }} data-event-category="Alert me about new breaches - Banner">{{ getString "alert-about-new-breaches" }}</button>
+    <button class="open-oauth temp-marketing-btn-blue ga-growth-ping" data-event-label="fx-monitor-alert-me-blue-btn" {{> analytics/fxa id="fx-monitor-alert-me-blue-btn" }} data-event-category="Alert me about new breaches - Banner">{{ getString "alert-about-new-breaches" }}</button>
     {{> sign-up-banners/browser-not-required }}
   </div>
 </section>

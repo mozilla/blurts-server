@@ -215,7 +215,7 @@ function sendRecommendationPings(ctaSelector) {
         if (el.dataset.eventCategory !== "fxa-oauth") {
           el.dataset.eventCategory = "fxa-oauth";
         }
-        await sendPing(el, el.dataset.eventAction, el.dataset.eventLabel);
+        await sendPing(el, "Click", el.dataset.eventLabel);
       });
     });
   }
