@@ -110,6 +110,22 @@ currently-showing = Sna'a:
 
 ## Updated error messages
 
+# Title
+email-addresses-title = Lista korreo
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Kunche'e ntia
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = Preferencias de { -product-short-name }
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Kitsa tana { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Katsi categoría:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Katsi
+to-affected-email = Tachu'un lista filtracion ña korreo va'a
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
