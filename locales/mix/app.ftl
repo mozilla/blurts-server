@@ -155,6 +155,19 @@ breach-added-label = Filtración añadida:
 ##
 
 undo-button = Stoò
+confirmation-2-subhead = ¡kunche, hackers!
+confirmation-3-subhead = Ntsi ian. ¡Va'a chu'un!
+go-to-dashboard-link = Kunche'e panel de control
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% ntsinu
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } ntsinu
+       *[other] { $numResolvedBreaches } ntsinu
+    }
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
@@ -163,3 +176,13 @@ undo-button = Stoò
 ##
 
 resolve-this-breach-link = Ndasa vaa filtración
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Tsa ye vai:
+hide-resolved-button = Chika see ña ye va'a
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Tsa'a
+mobile-promo-headline = Kuná { -brand-name } nu celular tsi tablet
+mobile-promo-body = Kunche'e vityi, se'e nchi inkau. Nduku { -brand-name } nu Google Play tsi App Store.
+mobile-promo-cta = Nduku { -brand-name } nu Android tsi iOS
+promo-lockwise-headline = Kuná tu'un see nchi tsiku
