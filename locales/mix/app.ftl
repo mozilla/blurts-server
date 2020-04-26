@@ -186,3 +186,6 @@ mobile-promo-headline = Kuná { -brand-name } nu celular tsi tablet
 mobile-promo-body = Kunche'e vityi, se'e nchi inkau. Nduku { -brand-name } nu Google Play tsi App Store.
 mobile-promo-cta = Nduku { -brand-name } nu Android tsi iOS
 promo-lockwise-headline = Kuná tu'un see nchi tsiku
+promo-lockwise-cta = Kunche'e { -brand-lockwise }
+promo-fpn-cta = Kunche'e { -brand-fpn }
+promo-ecosystem-cta = Kunche'e nti'i producto
