@@ -126,6 +126,8 @@ filter-by = Katsi categoría:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Katsi
 to-affected-email = Tachu'un lista filtracion ña korreo va'a
+# Link title
+learn-more-link = Skua'a kuakaa.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
