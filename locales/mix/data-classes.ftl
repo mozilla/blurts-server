@@ -9,6 +9,9 @@ astrological-signs = Signos astrológicos
 audio-recordings = Grabaciones de audio
 auth-tokens = Tokens de autenticación
 avatars = Avatares
+bank-account-numbers = Números de cuentas de banco
+beauty-ratings = Puntajes de belleza
+biometric-data = Datos biométricos
 # This string is the shortened version of "Biographies", and 
 # refers to biographical data about a user.
 bios = Bios
