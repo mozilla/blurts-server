@@ -128,13 +128,25 @@ menu = Katsi
 to-affected-email = Tachu'un lista filtracion ña korreo va'a
 # Link title
 learn-more-link = Skua'a kuakaa.
+email-sent = Ndachuin korreo!
+# Form title
+want-to-add = ¿A kunu chau inka korreo?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Kunche'e enlace tachu'un nu { $userEmail } takua chau ña nu { -product-name }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+email-verified = ¡Korreo va'a!
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = Kitsaa
 
 ##
 
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Filtración añadida:
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
@@ -142,6 +154,7 @@ learn-more-link = Skua'a kuakaa.
 
 ##
 
+undo-button = Stoò
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
