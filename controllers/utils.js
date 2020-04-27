@@ -58,13 +58,15 @@ function getExperimentBranch(req, sorterNum) {
   // If user was already assigned a branch, stay in that branch;
   if (req.session.experimentBranch) { return req.session.experimentBranch; }
 
-  // Split into two categories
-  if (sorterNum <= 50) {
-    // req.session.experimentBranch = "vb";
+  // Growth Team Experiment 2 only wants to expose 58% of all site traffic to
+  // the experiment. Of the 58% percent inside the experiment, will be split
+  // 50/50 between treatment and control.
+  if (sorterNum < 29) {
+    return "va";
+  } else if (sorterNum > 28 && sorterNum < 58) {
     return "vb";
   }
-
-  return "va";
+  return false;
 }
 
 module.exports = {

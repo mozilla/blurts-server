@@ -2,6 +2,7 @@
 
 const AppConstants = require("../../app-constants");
 const home = require("../../controllers/home");
+const { getExperimentBranch } = require("../../controllers/utils");
 const { scanResult } = require("../../scan-results");
 
 let mockRequest = { fluentFormat: jest.fn(), csrfToken: jest.fn() };
@@ -14,7 +15,6 @@ function addBreachesToMockRequest(mockRequest) {
   mockRequest.app = { locals: { breaches: mockBreaches } };
   return mockRequest;
 }
-
 
 test("home GET without breach renders monitor without breach", () => {
   mockRequest.query = { breach: null };
@@ -60,4 +60,30 @@ test("notFound set status 404 and renders 404", () => {
   const mockRenderCallArgs = mockResponse.render.mock.calls[0];
   expect(mockStatusCallArgs[0]).toBe(404);
   expect(mockRenderCallArgs[0]).toBe("subpage");
+});
+
+test("Experiment 2 Cohort Assignment", () => {
+  mockRequest.headers = {
+    "accept-language": "en",
+  };
+
+  let experimentNumber = 0;
+  let experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
+  expect(experimentBranch).toBe("va");
+
+  experimentNumber = 28;
+  experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
+  expect(experimentBranch).toBe("va");
+
+  experimentNumber = 29;
+  experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
+  expect(experimentBranch).toBe("vb");
+
+  experimentNumber = 58;
+  experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
+  expect(experimentBranch).toBeFalsy();
+
+  experimentNumber = 99;
+  experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
+  expect(experimentBranch).toBeFalsy();
 });

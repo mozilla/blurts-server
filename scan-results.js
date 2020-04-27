@@ -20,7 +20,7 @@ const scanResult = async(req, selfScan=false) => {
   let experimentBranchB = null;
 
   if (EXPERIMENTS_ENABLED) {
-    const coinFlipNumber = Math.random() * 100;
+    const coinFlipNumber = Math.floor(Math.random() * 100);
     experimentBranch = getExperimentBranch(req, coinFlipNumber);
     req.session.experimentBranch = experimentBranch;
     isUserInExperiment = (experimentBranch === "vb");
