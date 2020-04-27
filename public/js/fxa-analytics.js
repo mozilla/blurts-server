@@ -209,14 +209,16 @@ function sendRecommendationPings(ctaSelector) {
       });
     });
 
-    document.querySelectorAll(".ga-growth-ping").forEach((el) => {
-      el.addEventListener("click", async(e) => {
-        // Overwrite current event category for active OAuth buttons
-        if (el.dataset.eventCategory !== "fxa-oauth") {
-          el.dataset.eventCategory = "fxa-oauth";
-        }
-        await sendPing(el, "Click", el.dataset.eventLabel);
+    if (document.body.dataset.experiment) {
+      document.querySelectorAll(".ga-growth-ping").forEach((el) => {
+        el.addEventListener("click", async(e) => {
+          // Overwrite current event category for active OAuth buttons
+          if (el.dataset.eventCategory !== "fxa-oauth") {
+            el.dataset.eventCategory = "fxa-oauth";
+          }
+          await sendPing(el, "Click", el.dataset.eventLabel);
+        });
       });
-    });
+    }
   }
 })();
