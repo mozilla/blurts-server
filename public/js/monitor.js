@@ -36,15 +36,33 @@ function isValidEmail(val) {
 }
 
 
-function doOauth(el, {emailWatch = false} = {}) {
+function doOauth(el) {
   let url = new URL("/oauth/init", document.body.dataset.serverUrl);
   url = getFxaUtms(url);
 
-  ["flowId", "flowBeginTime", "entrypoint"].forEach(key => {
+  ["flowId", "flowBeginTime", "entrypoint", "entrypoint_experiment", "entrypoint_variation", "form_type"].forEach(key => {
     if (el.dataset[key]) {
       url.searchParams.append(key, encodeURIComponent(el.dataset[key]));
     }
   });
+
+  // Growth Experiment: OAuth Entry Point IDs are unique to the experiment.
+  const oAuthEntryPointIds = [
+    "fx-monitor-create-account-blue-btn-featuredBreach",
+    "fx-monitor-create-account-blue-btn-homePage",
+    "fx-monitor-create-account-blue-btn",
+    "fx-monitor-alert-me-blue-link",
+  ];
+
+  if (oAuthEntryPointIds.includes(el.dataset.entrypoint)) {
+    // Growth Experiment: Reset UTMs from in-line body tag data elements.
+    ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
+      if (document.body.dataset[key]) {
+        url.searchParams.delete(key);
+        url.searchParams.append(key, document.body.dataset[key]);
+      }
+    });
+  }
 
   if (!sessionStorage) {
     window.location.assign(url);
@@ -53,7 +71,7 @@ function doOauth(el, {emailWatch = false} = {}) {
 
   // Preserve entire control function
   if (sessionStorage && sessionStorage.length > 0) {
-    const lastScannedEmail = sessionStorage.getItem(`scanned_${sessionStorage.length}`);
+    const lastScannedEmail = sessionStorage.getItem("lastScannedEmail");
     if (lastScannedEmail) {
       url.searchParams.append("email", lastScannedEmail);
     }
@@ -104,6 +122,26 @@ function handleFormSubmits(formEvent) {
     thisForm.email.value = email;
   }
   const formClassList = thisForm.classList;
+  // Growth
+  if (formClassList.contains("skip")) {
+    return;
+  }
+
+  if (document.body.dataset.experiment) {
+    const scanFormActionURL = new URL(thisForm.action);
+
+    ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
+      if (document.body.dataset[key]) {
+        scanFormActionURL.searchParams.append(key, document.body.dataset[key]);
+      }
+    });
+
+    const revisedActionURL = scanFormActionURL.pathname + scanFormActionURL.search;
+
+    thisForm.action = revisedActionURL.toString();
+
+  }
+
   if (thisForm.email && !isValidEmail(email)) {
     sendPing(thisForm, "Failure");
     formClassList.add("invalid");
@@ -316,6 +354,66 @@ function addBentoObserver(){
       }
     });
   });
+
+  document.querySelectorAll(".relay-sign-up-btn").forEach(btn => {
+    btn.addEventListener("click", async(e) => {
+      const relayEndpoint = new URL("/relay-waitlist", document.body.dataset.serverUrl);
+      const signUpCallout = document.querySelector(".relay-sign-up");
+
+      signUpCallout.classList.add("sending-email");
+      try {
+        const response = await fetch(relayEndpoint, {
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+          },
+          mode: "same-origin",
+          method: "POST",
+          body: JSON.stringify({"emailToAdd": "add-user-email"}),
+        });
+        if (response && response.status === 200) {
+          setTimeout(()=> {
+            signUpCallout.classList.add("email-sent");
+            signUpCallout.classList.remove("sending-email");
+          }, 500);
+        }
+      } catch(e) {
+        // we need error messaging
+      }
+    });
+  });
+
+  const privateRelayCtas = document.querySelectorAll(".private-relay-cta");
+
+  if (privateRelayCtas.length > 0) {
+    const availableIntersectionObserver = ("IntersectionObserver" in window);
+    const gaAvailable = typeof(ga) !== undefined;
+
+
+    if (availableIntersectionObserver && gaAvailable) {
+      const sendRelayPing = (eventAction, elemData) => {
+        if (eventAction === "View" && elemData.userIsSignedUp === "true") {
+          return;
+        }
+        ga("send", "event", "Private Relay Test", eventAction, elemData.analyticsLabel);
+      };
+      const onRelayCtasComingIntoView = (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            sendRelayPing("View", entry.target.dataset);
+            observer.unobserve(entry.target);
+          }
+        });
+      };
+      const observer = new IntersectionObserver(onRelayCtasComingIntoView, { rootMargin: "-50px" });
+
+      privateRelayCtas.forEach(relayCta => {
+        observer.observe(relayCta);
+        relayCta.addEventListener("click", (e) => {
+          sendRelayPing("Engage", e.target.dataset);
+        });
+      });
+    }
+  }
 
   const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
   dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));

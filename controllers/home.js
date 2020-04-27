@@ -3,8 +3,9 @@
 const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
 const { scanResult } = require("../scan-results");
-const { generatePageToken } = require("./utils");
+const { generatePageToken, getExperimentBranch } = require("./utils");
 
+const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
 
 async function home(req, res) {
 
@@ -15,6 +16,19 @@ async function home(req, res) {
 
   let featuredBreach = null;
   let scanFeaturedBreach = false;
+
+  let experimentBranch = null;
+  let isUserInExperiment = null;
+  let experimentBranchB = null;
+
+
+  if (EXPERIMENTS_ENABLED) {
+    const coinFlipNumber = Math.floor(Math.random() * 100);
+    experimentBranch = getExperimentBranch(req, coinFlipNumber);
+    req.session.experimentBranch = experimentBranch;
+    isUserInExperiment = (experimentBranch === "vb");
+    experimentBranchB = (experimentBranch === "vb" && isUserInExperiment);
+  }
 
   if (req.session.user && !req.query.breach) {
     return res.redirect("/user/dashboard");
@@ -41,6 +55,8 @@ async function home(req, res) {
       scanFeaturedBreach,
       pageToken: formTokens.pageToken,
       csrfToken: formTokens.csrfToken,
+      experimentBranch,
+      experimentBranchB,
     });
   }
 
@@ -50,6 +66,9 @@ async function home(req, res) {
     scanFeaturedBreach,
     pageToken: formTokens.pageToken,
     csrfToken: formTokens.csrfToken,
+    experimentBranch,
+    isUserInExperiment,
+    experimentBranchB,
   });
 }
 

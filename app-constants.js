@@ -45,6 +45,7 @@ const kEnvironmentVariables = [
   "SENTRY_DSN",
   "SUPPORTED_LOCALES",
   "DELETE_UNVERIFIED_SUBSCRIBERS_TIMER",
+  "EXPERIMENT_ACTIVE",
 ];
 
 const AppConstants = { };

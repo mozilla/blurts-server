@@ -104,6 +104,7 @@ const connectSrc = [
   "https://code.cdn.mozilla.net/fonts/",
   "https://www.google-analytics.com",
   "https://accounts.firefox.com",
+  "https://accounts.stage.mozaws.net/metrics-flow",
 ];
 
 if (AppConstants.FXA_ENABLED) {
@@ -155,6 +156,7 @@ const cookie = {httpOnly: true, sameSite: "lax"};
 app.locals.constants = AppConstants;
 app.locals.FXA_ENABLED = AppConstants.FXA_ENABLED;
 app.locals.SERVER_URL = AppConstants.SERVER_URL;
+app.locals.EXPERIMENT_ACTIVE = AppConstants.EXPERIMENT_ACTIVE;
 app.locals.LOGOS_ORIGIN = AppConstants.LOGOS_ORIGIN;
 app.locals.UTM_SOURCE = new URL(AppConstants.SERVER_URL).hostname;
 

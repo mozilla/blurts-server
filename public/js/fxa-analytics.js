@@ -116,11 +116,17 @@ function sendRecommendationPings(ctaSelector) {
     ga("set", "anonymizeIp", true);
     ga("set", "transport", "beacon");
     ga("set", "dimension6", `${document.body.dataset.signedInUser}`);
+    if (document.body.dataset.experiment) {
+      // If an experiment is active, set the "Growth Experiment Version"
+      // Custom Dimension to whichever branch is active.
+      ga("set", "dimension7", `${document.body.dataset.experiment}`);
+    }
 
     ga("send", "pageview", {
       hitCallback: function() {
         removeUtmsFromUrl();
       },
+      nonInteraction: true,
     });
 
     // Send "View" pings for any visible recommendation CTAs.
@@ -202,5 +208,17 @@ function sendRecommendationPings(ctaSelector) {
         await sendPing(el, "Click", `${linkId}`);
       });
     });
+
+    if (document.body.dataset.experiment) {
+      document.querySelectorAll(".ga-growth-ping").forEach((el) => {
+        el.addEventListener("click", async(e) => {
+          // Overwrite current event category for active OAuth buttons
+          if (el.dataset.eventCategory !== "fxa-oauth") {
+            el.dataset.eventCategory = "fxa-oauth";
+          }
+          await sendPing(el, "Click", el.dataset.eventLabel);
+        });
+      });
+    }
   }
 })();

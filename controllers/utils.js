@@ -31,7 +31,46 @@ function hasUserSignedUpForRelay(user) {
   return false;
 }
 
+function getExperimentBranch(req, sorterNum) {
+
+  // If we cannot parse req.headers["accept-language"], we should not
+  // enroll users in the experiment.
+  if (!req.headers || !req.headers["accept-language"]){
+    return false;
+  }
+
+  // If the user doesn't have an English variant langauge selected as their primary language,
+  // we do not enroll them in the experiment.
+  const lang = req.headers["accept-language"].split(",");
+  if (!lang[0].includes("en")) {
+    return false;
+  }
+
+  // If URL param has experimentBranch entry, use that branch;
+  if (req.query.experimentBranch) {
+    if (!["va", "vb"].includes(req.query.experimentBranch)) {
+      return false;
+    }
+    req.session.experimentBranch = req.query.experimentBranch;
+    return req.query.experimentBranch;
+  }
+
+  // If user was already assigned a branch, stay in that branch;
+  if (req.session.experimentBranch) { return req.session.experimentBranch; }
+
+  // Growth Team Experiment 2 only wants to expose 58% of all site traffic to
+  // the experiment. Of the 58% percent inside the experiment, will be split
+  // 50/50 between treatment and control.
+  if (sorterNum < 29) {
+    return "va";
+  } else if (sorterNum > 28 && sorterNum < 58) {
+    return "vb";
+  }
+  return false;
+}
+
 module.exports = {
   generatePageToken,
   hasUserSignedUpForRelay,
+  getExperimentBranch,
 };

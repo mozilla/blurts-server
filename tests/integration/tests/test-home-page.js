@@ -9,7 +9,7 @@ describe("Firefox Monitor homepage", function() {
   this.retries(2);
 
   beforeEach(function() {
-    browser.url("/");
+    browser.url("/?experimentBranch=false");
   });
 
   it("should load the latest breach card", function() {
@@ -24,7 +24,7 @@ describe("Firefox Monitor homepage", function() {
       hideElements: [
         $$(".breach-info-wrapper"),
       ],
-    })).to.be.within(0, 9.99);
+    })).to.be.within(0, 14.99);
   });
 
   it("should load correct number of breaches from an email input", function() {
