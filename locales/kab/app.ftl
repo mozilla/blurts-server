@@ -84,7 +84,11 @@ fxa-what-to-do-blurb-1 =
     Ma yella ur tezmireḍ ara ad teqqneḍ, nermes asmel web akken ad teẓreḍ amek ara tbeddleḍ inekcumen-ik.
     Tettwaliḍ amiḍan ur tessineḍ ara? Isefka-ik ahat nzan neɣ ttunefken. Ayagi yezmer daɣen d amiḍan i tettuḍ neɣ d takebbanit i yebeddlen isem.
 fxa-what-to-do-subhead-2 = Seḥbes aseqdec n waal uffir yeffɣen, daɣen beddel-it s kra n wanida i t-tesqedceḍ.
-fxa-wtd-blurb-2 = Imakaren imsenselkamen zemren ad ɛerḍen ad alsen aseqdec n wawalen uffiren akked tansa-ik imayl akken ad kecmen ɣer yimiḍanen-nniḍen. Rnu awal uffir-nniden deg yal asmel web, ladɣa i umiḍan-ik n lbanka, tirawt-ik srid d yismal-nniḍen web anida i teskelseḍ isefka-ik udmawanen.
+fxa-wtd-blurb-2 =
+    Imakaren imsenselkamen zemren ad ɛerḍen ad alsen aseqdec n wawalen uffiren akked tansa-ik imayl akken ad kecmen ɣer yimiḍanen-nniḍen. 
+    
+    Rnu awal uffir-nniden deg yal asmel web, ladɣa i umiḍan-ik n lbanka, 
+    tirawt-ik srid d yismal-nniḍen web anida i teskelseḍ isefka-ik udmawanen.
 fxa-what-to-do-blurb-3 =
     Tuget n trewliwin n yisefka ɛnan-t kan imaylen d wawalen uffiren, maca wiyaḍ seddayen ula d isefka nɣef tedrimt iweɛren. 
     Ma yella amiḍan-ik n lbanka neɣ uṭṭunen n tkarḍa ddan deg trewla, lɣu lbanka-ik ɣef ukellex i izemren ad d-yeḍru,
