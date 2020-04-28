@@ -23,13 +23,13 @@
   padding: 0 4rem 0 2rem;
   margin: auto;
   text-align: center;
-  font-size: 17px;
 }
 
 .recruit-message {
   margin: auto 12px auto auto;
   line-height: 1.5;
   display: inline-block;
+  font-size: 15px;
 }
 
 .recruit-info-icon {
@@ -74,5 +74,7 @@
 
   .recruit-message {
     margin-bottom: 8px;
+    max-width: 450px;
+    font-size: 14px;
   }
 }
