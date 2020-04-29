@@ -62,6 +62,16 @@ function doOauth(el) {
         url.searchParams.append(key, document.body.dataset[key]);
       }
     });
+
+    if (typeof(ga) !== "undefined") {
+      ga("send", {
+        hitType: "event",
+        eventCategory: document.body.dataset.utm_campaign,
+        eventAction: document.body.dataset.experiment,
+        eventLabel: el.dataset.entrypoint,
+      });
+    }
+
   }
 
   if (!sessionStorage) {
