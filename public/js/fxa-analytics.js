@@ -122,7 +122,7 @@ function sendRecommendationPings(ctaSelector) {
       ga("set", "dimension7", `${document.body.dataset.experiment}`);
       ga("set", "dimension8", `${document.body.dataset.experiment}`);
       ga("set", "campaignName", `${document.body.dataset.utm_campaign}`);
-      ga("set", "campaignTerm", `${document.body.dataset.utm_term}`);
+      ga("set", "campaignKeyword", `${document.body.dataset.utm_term}`);
     }
 
     ga("send", "pageview", {
