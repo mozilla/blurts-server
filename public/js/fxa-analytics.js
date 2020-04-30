@@ -25,13 +25,13 @@ function getLocation() {
 }
 
 
-async function sendPing(el, eventAction, eventLabel = null) {
+async function sendPing(el, eventAction, eventLabel = null, options = null) {
   if (typeof(ga) !== "undefined" && !el.classList.contains("hide")) {
     if (!eventLabel) {
       eventLabel = `${getLocation()}`;
     }
     const eventCategory = `[v2] ${el.dataset.eventCategory}`;
-    return ga("send", "event", eventCategory, eventAction, eventLabel);
+    return ga("send", "event", eventCategory, eventAction, eventLabel, options);
   }
 }
 
@@ -194,7 +194,7 @@ function sendRecommendationPings(ctaSelector) {
 
     // Send "View" pings and add event listeners.
     document.querySelectorAll(eventTriggers).forEach(el => {
-      sendPing(el, "View", pageLocation);
+      sendPing(el, "View", pageLocation, {nonInteraction: true});
       if (["BUTTON", "A"].includes(el.tagName)) {
         el.addEventListener("click", async(e) => {
           await sendPing(el, "Engage", pageLocation);
