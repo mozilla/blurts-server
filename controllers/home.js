@@ -25,6 +25,8 @@ async function home(req, res) {
   if (EXPERIMENTS_ENABLED) {
     const coinFlipNumber = Math.floor(Math.random() * 100);
     experimentBranch = getExperimentBranch(req, coinFlipNumber);
+    // req.session.excludeFromExperiment is set to remember that the user has been excluded from the experiment.
+    if (!experimentBranch) { req.session.excludeFromExperiment = true; }
     req.session.experimentBranch = experimentBranch;
     isUserInExperiment = (experimentBranch === "vb");
     experimentBranchB = (experimentBranch === "vb" && isUserInExperiment);
