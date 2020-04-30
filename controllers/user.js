@@ -554,9 +554,12 @@ async function getBreachStats(req, res) {
 function logout(req, res) {
   if (AppConstants.EXPERIMENT_ACTIVE) {
     // Persist experimentBranch across session reset
+    const excludeFromExperiment = req.session.excludeFromExperiment;
     const experimentBranch = req.session.experimentBranch;
     req.session.reset();
+    // Reset session vars after sign out event
     req.session.experimentBranch = experimentBranch;
+    req.session.excludeFromExperiment = excludeFromExperiment;
   } else {
     req.session.reset();
   }

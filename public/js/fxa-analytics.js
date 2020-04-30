@@ -120,13 +120,15 @@ function sendRecommendationPings(ctaSelector) {
       // If an experiment is active, set the "Growth Experiment Version"
       // Custom Dimension to whichever branch is active.
       ga("set", "dimension7", `${document.body.dataset.experiment}`);
+      ga("set", "dimension8", `${document.body.dataset.experiment}`);
+      ga("set", "campaignName", `${document.body.dataset.utm_campaign}`);
+      ga("set", "campaignKeyword", `${document.body.dataset.utm_term}`);
     }
 
     ga("send", "pageview", {
       hitCallback: function() {
         removeUtmsFromUrl();
       },
-      nonInteraction: true,
     });
 
     // Send "View" pings for any visible recommendation CTAs.
