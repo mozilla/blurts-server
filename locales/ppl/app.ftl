@@ -231,7 +231,7 @@ manage-email-addresses = Shiktajpia ne dijdirección ipal correoj
 latest-breach-link = Shikita asu tinenki tik ini kaltapanalis
 welcome-back = Yek tiwalajtuk uksenpa { $userName }!
 welcome-user = Yek tiwalajtuk { $userName }!
-breach-alert-subject = { -product-name } kiajsik mucorreoj tik se kaltapanalis ipal yankwik dajdatoj
+breach-alert-subject = { -product-name } kiajsik mucorreoj tik se kaltapanalis yankwik dajdatoj
 your-info-was-discovered-headline = Muajsik muinformación tik se yankwik kaltapanalis datoj
 your-info-was-discovered-blurb =
     { -product-name } metzilwia
@@ -242,6 +242,7 @@ ba-next-step-blurb-1 =
     Se taketzalis tajpaltik kikwi lejletraj wey wan chikitik,
     caracter especial, wan tapual. Te kipia intatka mupanpa ken
     mudirección, keman tinesik nan intujtukay mumiakwan.
+ba-next-step-2 = Makaya shikwi ne taketzalis ichtaka muneshtijkia.
 
 ## Updated error messages
 
