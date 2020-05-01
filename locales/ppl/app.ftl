@@ -243,6 +243,10 @@ ba-next-step-blurb-1 =
     caracter especial, wan tapual. Te kipia intatka mupanpa ken
     mudirección, keman tinesik nan intujtukay mumiakwan.
 ba-next-step-2 = Makaya shikwi ne taketzalis ichtaka muneshtijkia.
+ba-next-step-blurb-2 =
+    Ne teyek takamet tik ne Matapan kiajsiskiat mutaketzalis ichtaka tik ne matapan kunyua wan kikwiskia
+    pal kalaki tik sejseuk cuentaj mupal. Shikwi sanse taketzalis ichtaka pal sejse mucuentaj
+    wan ijkiuni tiktajpia ukchupi yek.
 
 ## Updated error messages
 
