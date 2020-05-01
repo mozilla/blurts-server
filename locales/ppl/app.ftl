@@ -252,6 +252,7 @@ ba-next-step-blurb-3 =
     Shikwi se tajpiani taketzalis ichtaka pal tikchiwa taketzalis ichtaka tajpaltik wan te kenha ken seuk. Ne tajpianimet taketzalis ichtaka tajpia kiana muchi
     mukalakilis pal tiweli tikalaki yek tik muchi muaparatoj
 faq1 = Naja te nikishmati ini compañiaj u sitioj Matapan. Taika ninemi tik ini kaltapanalis?
+faq2 = Taika teutakik nechilwia ipanpa ini kaltapanalis?
 
 ## Updated error messages
 
