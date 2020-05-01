@@ -227,6 +227,11 @@ remove-fxm-blurb =
     seuk tanujnutzalis ipal cuentaj.
 # Button title
 manage-email-addresses = Shiktajpia ne dijdirección ipal correoj
+# Link title
+latest-breach-link = Shikita asu tinenki tik ini kaltapanalis
+welcome-back = Yek tiwalajtuk uksenpa { $userName }!
+welcome-user = Yek tiwalajtuk { $userName }!
+breach-alert-subject = { -product-name } kiajsik mucorreoj tik se kaltapanalis ipal yankwik dajdatoj
 
 ## Updated error messages
 
