@@ -247,6 +247,7 @@ ba-next-step-blurb-2 =
     Ne teyek takamet tik ne Matapan kiajsiskiat mutaketzalis ichtaka tik ne matapan kunyua wan kikwiskia
     pal kalaki tik sejseuk cuentaj mupal. Shikwi sanse taketzalis ichtaka pal sejse mucuentaj
     wan ijkiuni tiktajpia ukchupi yek.
+ba-next-step-3 = Shiktajtani ma metzpalewi tikchiwa ukchupi yek taketzalis ichtaka wan tiktajpia
 
 ## Updated error messages
 
