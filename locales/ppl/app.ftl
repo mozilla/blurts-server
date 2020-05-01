@@ -232,6 +232,16 @@ latest-breach-link = Shikita asu tinenki tik ini kaltapanalis
 welcome-back = Yek tiwalajtuk uksenpa { $userName }!
 welcome-user = Yek tiwalajtuk { $userName }!
 breach-alert-subject = { -product-name } kiajsik mucorreoj tik se kaltapanalis ipal yankwik dajdatoj
+your-info-was-discovered-headline = Muajsik muinformación tik se yankwik kaltapanalis datoj
+your-info-was-discovered-blurb =
+    { -product-name } metzilwia
+     keman mucorreoj muajsi tik se kaltapanalis datoj. Nikan tiweli tikmati ipanpa ini kaltapanalis.
+what-to-do-after-breach = Tay weli tikchiwa kan mukaltapana mudatoj
+ba-next-step-1 = Shikpata mutaketzalis ichtaka iwan seuk ukchupi tajpaltik wan te kenha seuk.
+ba-next-step-blurb-1 =
+    Se taketzalis tajpaltik kikwi lejletraj wey wan chikitik,
+    caracter especial, wan tapual. Te kipia intatka mupanpa ken
+    mudirección, keman tinesik nan intujtukay mumiakwan.
 
 ## Updated error messages
 
