@@ -330,7 +330,7 @@ steps-to-protect = Pași de luat pentru a-ți proteja identitatea online
 take-further-steps = Ia măsuri suplimentare pentru a-ți proteja identitatea
 alert-about-new-breaches = Trimite-mi alerte pentru breșe noi de date
 see-if-youve-been-part = Vezi dacă ai fost implicat(ă) într-o încălcare a securității datelor
-get-ongoing-breach-monitoring = Obține monitorizare curentă pentru breșe pentru mai multe adrese de e-mail.
+get-ongoing-breach-monitoring = Obține monitorizarea continuă a breșelor de date pentru mai multe adrese de e-mail.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Află
 new-unsub-error = Va trebui să te dezabonezi prin intermediul unuia dintre mesajele primite pe e-mail de la { -product-name },
