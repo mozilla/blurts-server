@@ -8,6 +8,6 @@ describe("Firefox Monitor Security Tips Page", function() {
   });
 
   it("should look like normal", function() {
-    expect(browser.checkFullPageScreen("SecurityTips_Page", {})).to.be.within(0, 5);
+    expect(browser.checkFullPageScreen("SecurityTips_Page", {ignoreAntialiasing: true})).to.be.within(0, 15);
   });
 });
