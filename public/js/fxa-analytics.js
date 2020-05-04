@@ -70,7 +70,7 @@ function getUTMNames() {
 function sendRecommendationPings(ctaSelector) {
   document.querySelectorAll(ctaSelector).forEach(cta => {
     const eventLabel = cta.dataset.eventLabel;
-    ga("send", "event", "Breach Detail: Recommendation CTA", "View", eventLabel);
+    ga("send", "event", "Breach Detail: Recommendation CTA", "View", eventLabel, {nonInteraction: true});
     cta.addEventListener("click", () => {
       ga("send", "event", "Breach Detail: Recommendation CTA", "Engage", eventLabel);
     });
