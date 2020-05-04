@@ -31,6 +31,10 @@ async function sendPing(el, eventAction, eventLabel = null, options = null) {
       eventLabel = `${getLocation()}`;
     }
     const eventCategory = `[v2] ${el.dataset.eventCategory}`;
+    // eslint-disable-next-line no-console
+    console.debug(
+      "sendPing: send", "event", eventCategory, eventAction, eventLabel, options
+    );
     return ga("send", "event", eventCategory, eventAction, eventLabel, options);
   }
 }
@@ -70,8 +74,12 @@ function getUTMNames() {
 function sendRecommendationPings(ctaSelector) {
   document.querySelectorAll(ctaSelector).forEach(cta => {
     const eventLabel = cta.dataset.eventLabel;
+    // eslint-disable-next-line no-console
+    console.debug(cta, "sendRecommendationPings: send", "event", "Breach Detail: Recommendation CTA", "View", eventLabel, {nonInteraction: true});
     ga("send", "event", "Breach Detail: Recommendation CTA", "View", eventLabel, {nonInteraction: true});
     cta.addEventListener("click", () => {
+      // eslint-disable-next-line no-console
+      console.debug(cta, "sendRecommendationPings: send", "event", "Breach Detail: Recommendation CTA", "Engage", eventLabel);
       ga("send", "event", "Breach Detail: Recommendation CTA", "Engage", eventLabel);
     });
   });
@@ -127,9 +135,11 @@ function sendRecommendationPings(ctaSelector) {
 
     ga("send", "pageview", {
       hitCallback: function() {
-        removeUtmsFromUrl();
-      },
-    });
+      // eslint-disable-next-line no-console
+      console.debug("send", "pageview");
+      removeUtmsFromUrl();
+    },
+  });
 
     // Send "View" pings for any visible recommendation CTAs.
     sendRecommendationPings(".first-four-recs");
@@ -139,6 +149,8 @@ function sendRecommendationPings(ctaSelector) {
         const eventCategory = e.target.dataset.eventCategory;
         const eventAction = e.target.dataset.eventAction;
         const eventLabel = e.target.dataset.eventLabel;
+        // eslint-disable-next-line no-console
+        console.debug("send-ga-ping: send", "event", eventCategory, eventAction, eventLabel);
         ga("send", "event", eventCategory, eventAction, eventLabel);
       });
     });
@@ -189,6 +201,8 @@ function sendRecommendationPings(ctaSelector) {
     // Send number of foundBreaches on Scan, Full Report, and User Dashboard pageviews
     if (pageLocation === ("Scan Results")) {
       const breaches = document.querySelectorAll(".breach-card");
+      // eslint-disable-next-line no-console
+      console.debug("breach-card: send", "event", "[v2] Breach Count", "Returned Breaches", `${pageLocation}`, breaches.length);
       ga("send", "event", "[v2] Breach Count", "Returned Breaches", `${pageLocation}`, breaches.length);
     }
 
