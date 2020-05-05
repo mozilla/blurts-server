@@ -206,9 +206,8 @@ function sendRecommendationPings(ctaSelector) {
       ga("send", "event", "[v2] Breach Count", "Returned Breaches", `${pageLocation}`, breaches.length);
     }
 
-    // Send "View" pings and add event listeners.
+    // Set event listeners.
     document.querySelectorAll(eventTriggers).forEach(el => {
-      sendPing(el, "View", pageLocation, {nonInteraction: true});
       if (["BUTTON", "A"].includes(el.tagName)) {
         el.addEventListener("click", async(e) => {
           await sendPing(el, "Engage", pageLocation);
