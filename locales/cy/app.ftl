@@ -312,24 +312,24 @@ email-addresses-being-monitored =
 # your localization, because it would result in the number showing twice.
 passwords-exposed =
     { $passwords ->
-        [zero] Cyfrineiriau'n ddiogel
-        [one] Cyfrineiriau wedi'i amlygu ym mhob tor-data
-        [two] Cyfrineiriau wedi'u hamlygu ym mhob tor-data
-        [few] Cyfrineiriau wedi'u hamlygu ym mhob tor-data
-        [many] Cyfrineiriau wedi'u hamlygu ym mhob tor-data
-       *[other] Cyfrineiriau wedi'u hamlygu ym mhob tor-data
+        [zero] Cyfrineiriau wedi'u hamlygu
+        [one] Cyfrinair wedi'i amlygu ym mhob tor-data
+        [two] Gyfrinair wedi'u hamlygu ym mhob tor-data
+        [few] Cyfrinair wedi'u hamlygu ym mhob tor-data
+        [many] Chyfrinair wedi'u hamlygu ym mhob tor-data
+       *[other] Cyfrinair wedi'u hamlygu ym mhob tor-data
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
     { $breaches ->
-        [zero] Mae tor-data hysbys wedi datgelu eich manylion
-        [one] Mae tor-data hysbys wedi datgelu eich manylion
-        [two] Mae tor-data hysbys wedi datgelu eich manylion
-        [few] Mae tor-data hysbys wedi datgelu eich manylion
-        [many] Mae tor-data hysbys wedi datgelu eich manylion
-       *[other] Mae tor-data hysbys wedi datgelu eich manylion
+        [zero] Tor-data hysbys wedi datgelu eich manylion
+        [one] Tor-data hysbys wedi datgelu eich manylion
+        [two] Tor-data hysbys wedi datgelu eich manylion
+        [few] Tor-data hysbys wedi datgelu eich manylion
+        [many] Tor-data hysbys wedi datgelu eich manylion
+       *[other] Tor-data hysbys wedi datgelu eich manylion
     }
 # Button
 see-additional-breaches = Gweld Tor-data Ychwanegol
