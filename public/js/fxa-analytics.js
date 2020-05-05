@@ -136,11 +136,12 @@ function sendRecommendationPings(ctaSelector) {
 
     ga("send", "pageview", {
       hitCallback: function() {
-      // eslint-disable-next-line no-console
-      console.debug("send", "pageview");
-      removeUtmsFromUrl();
-    },
-  });
+        // eslint-disable-next-line no-console
+        console.debug("send", "pageview");
+        removeUtmsFromUrl();
+      }
+    });
+  }
 
     // Send "View" pings for any visible recommendation CTAs.
     sendRecommendationPings(".first-four-recs");
