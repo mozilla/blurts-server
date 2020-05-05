@@ -122,6 +122,7 @@ function sendRecommendationPings(ctaSelector) {
   if (gaEnabled) {
     ga("create", "UA-77033033-16");
     ga("set", "anonymizeIp", true);
+    ga("set", "forceSSL", true);
     ga("set", "transport", "beacon");
     ga("set", "dimension6", `${document.body.dataset.signedInUser}`);
     if (document.body.dataset.experiment) {
