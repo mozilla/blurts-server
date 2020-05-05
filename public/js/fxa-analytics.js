@@ -120,7 +120,7 @@ function sendRecommendationPings(ctaSelector) {
   }
 
   if (gaEnabled) {
-    ga("create", "UA-77033033-16");
+    ga("create", "UA-77033033-16", "auto");
     ga("set", "anonymizeIp", true);
     ga("set", "forceSSL", true);
     ga("set", "transport", "beacon");
