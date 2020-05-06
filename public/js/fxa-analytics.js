@@ -31,6 +31,7 @@ async function sendPing(el, eventAction, eventLabel = null, options = null) {
       eventLabel = `${getLocation()}`;
     }
     const eventCategory = `[v2] ${el.dataset.eventCategory}`;
+    console.debug("send", "event", eventCategory, eventAction, eventLabel, options);
     return ga("send", "event", eventCategory, eventAction, eventLabel, options);
   }
 }
@@ -77,81 +78,26 @@ function sendRecommendationPings(ctaSelector) {
   });
 }
 
-(() => {
-  const win = window;
-  const winLocationSearch = win.location.search;
-
-  let winLocation = win.location;
-
-  // Check for DoNotTrack header before running GA script
-  if (!_dntEnabled()) {
-    (function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments);},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m);
-    })(window,document,"script","https://www.google-analytics.com/analytics.js","ga");
+function  setMetricsIds(el) {
+  if (el.dataset.entrypoint && hasParent(el, "sign-up-banner")) {
+    el.dataset.eventCategory = `${el.dataset.eventCategory} - Banner`;
+    el.dataset.entrypoint = `${el.dataset.entrypoint}-banner`;
   }
+  return;
+}
 
-  // Remove token and hash values from URL so that they aren't sent to GA
-  if (winLocationSearch.includes("token=") || winLocationSearch.includes("hash=")) {
-    winLocation = winLocation.toString().replace(/[?&]token=[A-Za-z0-9_-]+/, "").replace(/&hash=[A-Za-z0-9_-]+/, "");
-    win.history.replaceState({}, "", winLocation);
-  }
+function setGAListeners(){
+  // Send "View" pings for any visible recommendation CTAs.
+  sendRecommendationPings(".first-four-recs");
 
-  const gaEnabled = (typeof(ga) !== "undefined");
-  const utmParamsInUrl = (winLocationSearch.includes("utm_"));
-
-  const removeUtmsFromUrl = () => {
-    if (utmParamsInUrl) {
-      win.history.replaceState({}, "", winLocation.toString().replace(/[?&]utm_.*/g, ""));
-    }
-  };
-
-  // Store UTM params in session
-  if (utmParamsInUrl) {
-    saveReferringPageData(new URL(winLocation).searchParams);
-  }
-
-  if (gaEnabled) {
-    ga("create", "UA-77033033-16");
-    ga("set", "anonymizeIp", true);
-    ga("set", "dimension6", `${document.body.dataset.signedInUser}`);
-    if (document.body.dataset.experiment) {
-      // If an experiment is active, set the "Growth Experiment Version"
-      // Custom Dimension to whichever branch is active.
-      ga("set", "dimension7", `${document.body.dataset.experiment}`);
-      ga("set", "dimension8", `${document.body.dataset.experiment}`);
-      ga("set", "campaignName", `${document.body.dataset.utm_campaign}`);
-      ga("set", "campaignKeyword", `${document.body.dataset.utm_term}`);
-    }
-
-    ga("send", "pageview", {
-      hitCallback: function() {
-        removeUtmsFromUrl();
-      },
+  document.querySelectorAll(".send-ga-ping, [data-send-ga-ping]").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      const eventCategory = e.target.dataset.eventCategory;
+      const eventAction = e.target.dataset.eventAction;
+      const eventLabel = e.target.dataset.eventLabel;
+      ga("send", "event", eventCategory, eventAction, eventLabel, {transport: "beacon"});
     });
-
-    // Send "View" pings for any visible recommendation CTAs.
-    sendRecommendationPings(".first-four-recs");
-
-    document.querySelectorAll(".send-ga-ping, [data-send-ga-ping]").forEach((el) => {
-      el.addEventListener("click", (e) => {
-        const eventCategory = e.target.dataset.eventCategory;
-        const eventAction = e.target.dataset.eventAction;
-        const eventLabel = e.target.dataset.eventLabel;
-        ga("send", "event", eventCategory, eventAction, eventLabel, {transport: "beacon"});
-      });
-    });
-  } else {
-    removeUtmsFromUrl();
-  }
-
-  const setMetricsIds = (el) => {
-    if (el.dataset.entrypoint && hasParent(el, "sign-up-banner")) {
-      el.dataset.eventCategory = `${el.dataset.eventCategory} - Banner`;
-      el.dataset.entrypoint = `${el.dataset.entrypoint}-banner`;
-    }
-    return;
-  };
+  });
 
   // Update data-event-category and data-fxa-entrypoint if the element
   // is nested inside a sign up banner.
@@ -193,7 +139,7 @@ function sendRecommendationPings(ctaSelector) {
 
     // Send "View" pings and add event listeners.
     document.querySelectorAll(eventTriggers).forEach(el => {
-      // sendPing(el, "View", pageLocation, {nonInteraction: true});
+      sendPing(el, "View", pageLocation, {nonInteraction: true});
       if (["BUTTON", "A"].includes(el.tagName)) {
         el.addEventListener("click", async(e) => {
           await sendPing(el, "Engage", pageLocation, {transport: "beacon"});
@@ -222,4 +168,81 @@ function sendRecommendationPings(ctaSelector) {
       });
     }
   }
+
+  window.sessionStorage.setItem("gaInit", true);
+}
+
+(() => {
+  const win = window;
+  const winLocationSearch = win.location.search;
+
+  let winLocation = win.location;
+
+  // Check for DoNotTrack header before running GA script
+  if (!_dntEnabled()) {
+    (function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments);},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m);
+    })(window,document,"script","https://www.google-analytics.com/analytics.js","ga");
+  }
+
+  // Remove token and hash values from URL so that they aren't sent to GA
+  if (winLocationSearch.includes("token=") || winLocationSearch.includes("hash=")) {
+    winLocation = winLocation.toString().replace(/[?&]token=[A-Za-z0-9_-]+/, "").replace(/&hash=[A-Za-z0-9_-]+/, "");
+    win.history.replaceState({}, "", winLocation);
+  }
+
+  const gaEnabled = (typeof(ga) !== "undefined");
+  const utmParamsInUrl = (winLocationSearch.includes("utm_"));
+
+  const removeUtmsFromUrl = () => {
+    if (utmParamsInUrl) {
+      win.history.replaceState({}, "", winLocation.toString().replace(/[?&]utm_.*/g, ""));
+    }
+  };
+
+  // Store UTM params in session
+  if (utmParamsInUrl) {
+    saveReferringPageData(new URL(winLocation).searchParams);
+  }
+
+  const gaInit = new Event("gaInit");
+
+  if (gaEnabled) {
+    ga("create", "UA-77033033-16");
+    ga("set", "anonymizeIp", true);
+    ga("set", "dimension6", `${document.body.dataset.signedInUser}`);
+    if (document.body.dataset.experiment) {
+      // If an experiment is active, set the "Growth Experiment Version"
+      // Custom Dimension to whichever branch is active.
+      ga("set", "dimension7", `${document.body.dataset.experiment}`);
+      ga("set", "dimension8", `${document.body.dataset.experiment}`);
+      ga("set", "campaignName", `${document.body.dataset.utm_campaign}`);
+      ga("set", "campaignKeyword", `${document.body.dataset.utm_term}`);
+    }
+
+    ga("send", "pageview", {
+      hitCallback: function() {
+        console.debug("ga/send: pageview");
+        removeUtmsFromUrl();
+        sessionStorage.removeItem("gaInit");
+        document.dispatchEvent(gaInit);
+      },
+    });
+
+    document.addEventListener("gaInit", (e) => {
+      if (sessionStorage.getItem("gaInit")) {
+        return;
+      }
+      setGAListeners();
+    }, false);
+
+
+
+
+  } else {
+    removeUtmsFromUrl();
+  }
+
+
 })();
