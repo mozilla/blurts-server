@@ -40,22 +40,6 @@ function getExperimentBranch(req, sorterNum) {
     return false;
   }
 
-  // Growth Experiment 3 has no language rules.
-  // // If we cannot parse req.headers["accept-language"], we should not
-  // // enroll users in the experiment.
-  // if (!req.headers || !req.headers["accept-language"]){
-  //   log.debug("No headers or accept-language information present.");
-  //   return false;
-  // }
-
-  // // If the user doesn't have an English variant langauge selected as their primary language,
-  // // we do not enroll them in the experiment.
-  // const lang = req.headers["accept-language"].split(",");
-  // if (!lang[0].includes("en")) {
-  //   log.debug("Preferred language is not English variant: ", lang[0]);
-  //   return false;
-  // }
-
   // If URL param has experimentBranch entry, use that branch;
   if (req.query.experimentBranch) {
     if (!["va", "vb"].includes(req.query.experimentBranch)) {
@@ -74,14 +58,14 @@ function getExperimentBranch(req, sorterNum) {
     return req.session.experimentBranch;
   }
 
-  // Growth Team Experiment 2 only wants to expose 58% of all site traffic to
-  // the experiment. Of the 58% percent inside the experiment, will be split
+  // Growth Team Experiment 2 only wants to expose 60% of all site traffic to
+  // the experiment. Of the 60% percent inside the experiment, will be split
   // 50/50 between treatment and control.
-  if (sorterNum < 49) {
+  if (sorterNum < 30) {
     log.debug("This session has been randomly assigned to the control group. (va)");
     req.session.experimentBranch = "va";
     return "va";
-  } else if (sorterNum > 48) {
+  } else if (sorterNum > 29 && sorterNum < 60) {
     log.debug("This session has been randomly assigned to the treatment group. (vb)");
     req.session.experimentBranch = "vb";
     return "vb";

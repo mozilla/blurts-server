@@ -88,28 +88,33 @@ test("Experiment 3 Cohort Assignment Unit Test", () => {
   mockRequestSessionReset(mockRequest);
 
   // The session is assigned to the control group when the coin flip is 48;
-  experimentNumber = 48;
+  experimentNumber = 29;
   experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
   expect(experimentBranch).toBe("va");
 
   mockRequestSessionReset(mockRequest);
 
   // The session is assigned to the treatment group when the coin flip is 49;
-  experimentNumber = 49;
+  experimentNumber = 30;
+  experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
+  expect(experimentBranch).toBe("vb");
+
+  // The session is assigned to the treatment group when the coin flip is 49;
+  experimentNumber = 59;
   experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
   expect(experimentBranch).toBe("vb");
 
   mockRequestSessionReset(mockRequest);
 
   // The session is assigned to the treatment group when the coin flip is 50
-  experimentNumber = 50;
+  experimentNumber = 60;
   experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
-  expect(experimentBranch).toBe("vb");
+  expect(experimentBranch).toBeFalsy();
 
   mockRequestSessionReset(mockRequest);
 
   // The session is excluded from the experiment when the coin flip is 99
   experimentNumber = 99;
   experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
-  expect(experimentBranch).toBe("vb");
+  expect(experimentBranch).toBeFalsy();
 });
