@@ -221,6 +221,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Se etter datalekkasjer
 find-out-what-hackers-know = Finn ut hva hackere allerede vet om deg. Lær hvordan du kan ligge et skritt foran dem.
+get-email-alerts = Hold deg trygg: Få e-postvarsler når informasjonen din forekommer i en kjent datalekkasje
 search-for-your-email = Søk etter e-postadressen blant offentlige datalekkasjer som går tilbake til 2007.
 back-to-top = Tilbake til toppen
 comm-opt-0 = Varsle meg på e-post hvis en av mine e-postadresser listet opp nedenfor dukker opp i en datalekkasje.
