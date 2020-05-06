@@ -40,6 +40,9 @@ test("user getDashboard with valid user renders dashboard with verified emails a
     app: { locals: { breaches: testBreaches } },
     csrfToken: jest.fn(),
     fluentFormat: jest.fn(),
+    query: {
+      experimentBranch: false,
+    },
     session: { user: testSubscriber },
     supportedLocales: [],
     user: testSubscriber,
@@ -73,6 +76,9 @@ test("user getDashboard with valid user renders dashboard with verified emails a
     app: { locals: { breaches: testBreaches } },
     csrfToken: jest.fn(),
     fluentFormat: jest.fn(),
+    query: {
+      experimentBranch: false,
+    },
     session: { user: testSubscriber },
     supportedLocales: [],
     user: testSubscriber,
