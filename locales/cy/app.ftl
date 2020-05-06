@@ -202,6 +202,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Gwirio am Dor-data
 find-out-what-hackers-know = Dyma beth mae hacwyr eisoes yn ei wybod amdanoch chi. Dysgwch sut i aros un cam o'u blaen.
+get-email-alerts = Cadwch yn ddiogel: Sicrhewch rybuddion e-bost pan fydd eich manylion yn ymddangos mewn tor-data hysbys
 search-for-your-email = Chwiliwch am eich cyfeiriad e-bost mewn tor-data cyhoeddus sy'n mynd yn ôl i 2007.
 back-to-top = Nôl i'r Brig
 comm-opt-0 = E-bostiwch fi os yw un o'm cyfeiriadau e-bost isod yn ymddangos mewn achos o dor-data.
