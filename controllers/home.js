@@ -3,7 +3,7 @@
 const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
 const { scanResult } = require("../scan-results");
-const { generatePageToken, getExperimentBranch } = require("./utils");
+const { generatePageToken } = require("./utils");
 
 const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
 
@@ -17,19 +17,12 @@ async function home(req, res) {
   let featuredBreach = null;
   let scanFeaturedBreach = false;
 
-  let experimentBranch = null;
-  let isUserInExperiment = null;
-  let experimentBranchB = null;
-
-
-  if (EXPERIMENTS_ENABLED) {
-    const coinFlipNumber = Math.floor(Math.random() * 100);
-    experimentBranch = getExperimentBranch(req, coinFlipNumber);
-    // req.session.excludeFromExperiment is set to remember that the user has been excluded from the experiment.
-    if (!experimentBranch) { req.session.excludeFromExperiment = true; }
-    req.session.experimentBranch = experimentBranch;
-    isUserInExperiment = (experimentBranch === "vb");
-    experimentBranchB = (experimentBranch === "vb" && isUserInExperiment);
+  // Growth Experiment: Set experiment branch from the homepage through URL queryParams
+  // but do not render any info on  the /home template.
+  if (EXPERIMENTS_ENABLED && req.query.experimentBranch) {
+    if (["va", "vb"].includes(req.query.experimentBranch)) {
+      req.session.experimentBranch = req.query.experimentBranch;
+    }
   }
 
   if (req.session.user && !req.query.breach) {
@@ -57,8 +50,6 @@ async function home(req, res) {
       scanFeaturedBreach,
       pageToken: formTokens.pageToken,
       csrfToken: formTokens.csrfToken,
-      experimentBranch,
-      experimentBranchB,
     });
   }
 
@@ -68,9 +59,6 @@ async function home(req, res) {
     scanFeaturedBreach,
     pageToken: formTokens.pageToken,
     csrfToken: formTokens.csrfToken,
-    experimentBranch,
-    isUserInExperiment,
-    experimentBranchB,
   });
 }
 
@@ -139,42 +127,6 @@ function notFound(req, res) {
     subhead: req.fluentFormat("home-not-found"),
   });
 }
-
-// function getExperimentBranch(req, sorterNum) {
-//
-//   // If we cannot parse req.headers["accept-language"], we should not
-//   // enroll users in the experiment.
-//   if (!req.headers || !req.headers["accept-language"]){
-//     return false;
-//   }
-//
-//   // If the user doesn't have an English variant langauge selected as their primary language,
-//   // we do not enroll them in the experiment.
-//   const lang = req.headers["accept-language"].split(",");
-//   if (!lang[0].includes("en")) {
-//     return false;
-//   }
-//
-//   // If URL param has experimentBranch entry, use that branch;
-//   if (req.query.experimentBranch) {
-//     if (!["va", "vb"].includes(req.query.experimentBranch)) {
-//       return false;
-//     }
-//     req.session.experimentBranch = req.query.experimentBranch;
-//     return req.query.experimentBranch;
-//   }
-//
-//   // If user was already assigned a branch, stay in that branch;
-//   if (req.session.experimentBranch) { return req.session.experimentBranch; }
-//
-//   // Split into two categories
-//   if (sorterNum <= 50) {
-//     req.session.experimentBranch = "vb";
-//     return "vb";
-//   }
-//
-//   return "va";
-// }
 
 module.exports = {
   home,
