@@ -40,20 +40,21 @@ function getExperimentBranch(req, sorterNum) {
     return false;
   }
 
-  // If we cannot parse req.headers["accept-language"], we should not
-  // enroll users in the experiment.
-  if (!req.headers || !req.headers["accept-language"]){
-    log.debug("No headers or accept-language information present.");
-    return false;
-  }
+  // Growth Experiment 3 has no language rules.
+  // // If we cannot parse req.headers["accept-language"], we should not
+  // // enroll users in the experiment.
+  // if (!req.headers || !req.headers["accept-language"]){
+  //   log.debug("No headers or accept-language information present.");
+  //   return false;
+  // }
 
-  // If the user doesn't have an English variant langauge selected as their primary language,
-  // we do not enroll them in the experiment.
-  const lang = req.headers["accept-language"].split(",");
-  if (!lang[0].includes("en")) {
-    log.debug("Preferred language is not English variant: ", lang[0]);
-    return false;
-  }
+  // // If the user doesn't have an English variant langauge selected as their primary language,
+  // // we do not enroll them in the experiment.
+  // const lang = req.headers["accept-language"].split(",");
+  // if (!lang[0].includes("en")) {
+  //   log.debug("Preferred language is not English variant: ", lang[0]);
+  //   return false;
+  // }
 
   // If URL param has experimentBranch entry, use that branch;
   if (req.query.experimentBranch) {
