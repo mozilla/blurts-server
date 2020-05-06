@@ -76,11 +76,11 @@ function getExperimentBranch(req, sorterNum) {
   // Growth Team Experiment 2 only wants to expose 58% of all site traffic to
   // the experiment. Of the 58% percent inside the experiment, will be split
   // 50/50 between treatment and control.
-  if (sorterNum < 29) {
+  if (sorterNum < 49) {
     log.debug("This session has been randomly assigned to the control group. (va)");
     req.session.experimentBranch = "va";
     return "va";
-  } else if (sorterNum > 28 && sorterNum < 58) {
+  } else if (sorterNum > 48) {
     log.debug("This session has been randomly assigned to the treatment group. (vb)");
     req.session.experimentBranch = "vb";
     return "vb";

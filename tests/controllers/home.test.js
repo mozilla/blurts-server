@@ -71,7 +71,7 @@ test("notFound set status 404 and renders 404", () => {
   expect(mockRenderCallArgs[0]).toBe("subpage");
 });
 
-test("Experiment 2 Cohort Assignment Unit Test", () => {
+test("Experiment 3 Cohort Assignment Unit Test", () => {
   mockRequest.headers = {
     "accept-language": "en",
   };
@@ -87,36 +87,29 @@ test("Experiment 2 Cohort Assignment Unit Test", () => {
 
   mockRequestSessionReset(mockRequest);
 
-  // The session is assigned to the control group when the coin flip is 28;
-  experimentNumber = 28;
+  // The session is assigned to the control group when the coin flip is 48;
+  experimentNumber = 48;
   experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
   expect(experimentBranch).toBe("va");
 
   mockRequestSessionReset(mockRequest);
 
-  // The session is assigned to the treatment group when the coin flip is 29;
-  experimentNumber = 29;
+  // The session is assigned to the treatment group when the coin flip is 49;
+  experimentNumber = 49;
   experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
   expect(experimentBranch).toBe("vb");
 
   mockRequestSessionReset(mockRequest);
 
-  // The session is assigned to the treatment group when the coin flip is 57
-  experimentNumber = 57;
+  // The session is assigned to the treatment group when the coin flip is 50
+  experimentNumber = 50;
   experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
   expect(experimentBranch).toBe("vb");
-
-  mockRequestSessionReset(mockRequest);
-
-  // The session is excluded from the experiment when the coin flip is 58
-  experimentNumber = 58;
-  experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
-  expect(experimentBranch).toBeFalsy();
 
   mockRequestSessionReset(mockRequest);
 
   // The session is excluded from the experiment when the coin flip is 99
   experimentNumber = 99;
   experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
-  expect(experimentBranch).toBeFalsy();
+  expect(experimentBranch).toBe("vb");
 });
