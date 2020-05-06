@@ -177,6 +177,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = 检查是否有外泄事件
 find-out-what-hackers-know = 看看黑客已经掌握了您哪些资料，并了解如何先发制人。
+get-email-alerts = 保持安全：当您的信息出现在已知外泄事件中时，将获得邮件警报
 search-for-your-email = 搜索自2007年起的公开数据外泄事件当中，是否包含您的电子邮件地址。
 back-to-top = 回到顶端
 comm-opt-0 = 如果我的某个电子邮件地址出现在数据外泄事件中，请发邮件通知我。
