@@ -41,6 +41,6 @@ async function hashEmailAndSend(emailFormSubmitEvent) {
 
   // clear input, send ping, and submit
   emailInput.value = "";
-  sendPing(emailForm, "Success");
+  sendPing(emailForm, "Success", null, {transport: "beacon"});
   emailForm.submit();
 }

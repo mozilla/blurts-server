@@ -25,13 +25,13 @@ function getLocation() {
 }
 
 
-async function sendPing(el, eventAction, eventLabel = null) {
+async function sendPing(el, eventAction, eventLabel = null, options = null) {
   if (typeof(ga) !== "undefined" && !el.classList.contains("hide")) {
     if (!eventLabel) {
       eventLabel = `${getLocation()}`;
     }
     const eventCategory = `[v2] ${el.dataset.eventCategory}`;
-    return ga("send", "event", eventCategory, eventAction, eventLabel);
+    return ga("send", "event", eventCategory, eventAction, eventLabel, options);
   }
 }
 
@@ -70,9 +70,9 @@ function getUTMNames() {
 function sendRecommendationPings(ctaSelector) {
   document.querySelectorAll(ctaSelector).forEach(cta => {
     const eventLabel = cta.dataset.eventLabel;
-    ga("send", "event", "Breach Detail: Recommendation CTA", "View", eventLabel);
+    ga("send", "event", "Breach Detail: Recommendation CTA", "View", eventLabel, {nonInteraction: true});
     cta.addEventListener("click", () => {
-      ga("send", "event", "Breach Detail: Recommendation CTA", "Engage", eventLabel);
+      ga("send", "event", "Breach Detail: Recommendation CTA", "Engage", eventLabel, {transport: "beacon"});
     });
   });
 }
@@ -114,7 +114,6 @@ function sendRecommendationPings(ctaSelector) {
   if (gaEnabled) {
     ga("create", "UA-77033033-16");
     ga("set", "anonymizeIp", true);
-    ga("set", "transport", "beacon");
     ga("set", "dimension6", `${document.body.dataset.signedInUser}`);
     if (document.body.dataset.experiment) {
       // If an experiment is active, set the "Growth Experiment Version"
@@ -139,7 +138,7 @@ function sendRecommendationPings(ctaSelector) {
         const eventCategory = e.target.dataset.eventCategory;
         const eventAction = e.target.dataset.eventAction;
         const eventLabel = e.target.dataset.eventLabel;
-        ga("send", "event", eventCategory, eventAction, eventLabel);
+        ga("send", "event", eventCategory, eventAction, eventLabel, {transport: "beacon"});
       });
     });
   } else {
@@ -194,10 +193,10 @@ function sendRecommendationPings(ctaSelector) {
 
     // Send "View" pings and add event listeners.
     document.querySelectorAll(eventTriggers).forEach(el => {
-      sendPing(el, "View", pageLocation);
+      // sendPing(el, "View", pageLocation, {nonInteraction: true});
       if (["BUTTON", "A"].includes(el.tagName)) {
         el.addEventListener("click", async(e) => {
-          await sendPing(el, "Engage", pageLocation);
+          await sendPing(el, "Engage", pageLocation, {transport: "beacon"});
         });
       }
     });
@@ -218,7 +217,7 @@ function sendRecommendationPings(ctaSelector) {
           if (el.dataset.eventCategory !== "fxa-oauth") {
             el.dataset.eventCategory = "fxa-oauth";
           }
-          await sendPing(el, "Click", el.dataset.eventLabel);
+          await sendPing(el, "Click", el.dataset.eventLabel, {transport: "beacon"});
         });
       });
     }

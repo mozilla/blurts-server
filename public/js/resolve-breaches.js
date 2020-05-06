@@ -32,7 +32,12 @@
 
   function sendBreachDetailAnalyticsPing(eventCategory, eventAction, eventLabel) {
     if (typeof(ga) !== "undefined") {
-      ga("send", "event", eventCategory, eventAction, eventLabel);
+      // Set view pings as nonInteraction:true to get accurate bounce rate
+      let options = {};
+      if (eventAction !== "Engage"){
+        options = {nonInteraction: true};
+      }
+      ga("send", "event", eventCategory, eventAction, eventLabel, options);
     }
   }
 

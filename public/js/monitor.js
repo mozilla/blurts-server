@@ -67,6 +67,7 @@ function doOauth(el) {
         eventCategory: document.body.dataset.utm_campaign,
         eventAction: document.body.dataset.experiment,
         eventLabel: el.dataset.entrypoint,
+        transport: "beacon",
       });
     }
 
@@ -123,7 +124,7 @@ function handleFormSubmits(formEvent) {
   const thisForm = formEvent.target;
   let email = "";
 
-  sendPing(thisForm, "Submit");
+  sendPing(thisForm, "Submit", null, {transport: "beacon"});
 
   if (thisForm.email) {
     email = thisForm.email.value.trim();
