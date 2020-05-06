@@ -31,6 +31,7 @@ async function sendPing(el, eventAction, eventLabel = null, options = null) {
       eventLabel = `${getLocation()}`;
     }
     const eventCategory = `[v2] ${el.dataset.eventCategory}`;
+    // eslint-disable-next-line no-console
     console.debug("send", "event", eventCategory, eventAction, eventLabel, options);
     return ga("send", "event", eventCategory, eventAction, eventLabel, options);
   }
@@ -223,6 +224,7 @@ function setGAListeners(){
 
     ga("send", "pageview", {
       hitCallback: function() {
+        // eslint-disable-next-line no-console
         console.debug("ga/send: pageview");
         removeUtmsFromUrl();
         sessionStorage.removeItem("gaInit");
