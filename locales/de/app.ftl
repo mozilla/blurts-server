@@ -184,6 +184,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Auf Datenlecks überprüfen
 find-out-what-hackers-know = Finde heraus, was Hacker bereits über dich wissen und erfahre, wie du ihnen in Zukunft einen Schritt voraus sein kannst.
+get-email-alerts = Auf Nummer sicher gehen: Erhalten Sie E-Mail-Benachrichtigungen, wenn Sie von einem Datenleck betroffen sind
 search-for-your-email = Suche in bekannt gewordenen Datenlecks seit 2007 nach deiner E-Mail-Adresse.
 back-to-top = Zurück zum Anfang
 comm-opt-0 = Sende mir eine E-Mail, sobald eine der folgenden E-Mail-Adressen in einem Datenleck auftaucht.
