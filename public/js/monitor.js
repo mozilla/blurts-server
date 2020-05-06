@@ -138,21 +138,6 @@ function handleFormSubmits(formEvent) {
     return;
   }
 
-  if (document.body.dataset.experiment) {
-    const scanFormActionURL = new URL(thisForm.action);
-
-    ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
-      if (document.body.dataset[key]) {
-        scanFormActionURL.searchParams.append(key, document.body.dataset[key]);
-      }
-    });
-
-    const revisedActionURL = scanFormActionURL.pathname + scanFormActionURL.search;
-
-    thisForm.action = revisedActionURL.toString();
-
-  }
-
   if (thisForm.email && !isValidEmail(email)) {
     sendPing(thisForm, "Failure");
     formClassList.add("invalid");

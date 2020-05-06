@@ -1,35 +1,23 @@
 
-<form id="scan-user-email" class="email-scan form-group {{#if experimentBranchB}}skip{{/if}} {{ addClasses }}" action="/scan" method="post" data-event-category="Email Scan Form" novalidate>
+<form id="scan-user-email" class="email-scan form-group {{ addClasses }}" action="/scan" method="post" data-event-category="Email Scan Form" novalidate>
   <input type="hidden" name="_csrf" value="{{ csrfToken }}">
   <input type="hidden" name="pageToken" value="{{ pageToken }}">
   <input type="hidden" name="scannedEmailId" value="">
-  {{#unless experimentBranchB}}
   <div class="input-group">
     <input id="scan-email" class="input-group-field email-to-hash" type="email" name="email" placeholder="{{ getString "scan-placeholder" }}" aria-label="{{ getString "scan-placeholder" }}" autocomplete="off" />
     <span id="invalid-email-message" class="error-message">{{ getString "scan-error" }}</span>
   </div>
-  {{/unless}}
   <input type="hidden" name="emailHash" />
   {{#if scanFeaturedBreach}}
     <input id="featured" type="hidden" name="featuredBreach" value="{{ featuredBreach.Name }}"/>
   {{/if}}
   <div class="input-group-button">
     {{#if featuredBreach}}
-      {{#if experimentBranchB}}
-        <input type="submit" class="open-oauth ga-growth-ping" data-event-category="fxa-oauth" data-event-label="fx-monitor-create-account-blue-btn-featuredBreach" {{> analytics/fxa id="fx-monitor-create-account-blue-btn-featuredBreach" }} value="Get Started"/>
-      {{else}}
-        <input type="submit" value="{{ getString "find-out" }}"/>
-      {{/if}}
-    {{else if experimentBranchB}}
-      <input type="submit" class="open-oauth ga-growth-ping" data-event-category="fxa-oauth" data-event-label="fx-monitor-create-account-blue-btn-homePage"  {{> analytics/fxa id="fx-monitor-create-account-blue-btn-homePage" }} value="Get Started"/>
+      <input type="submit" value="{{ getString "find-out" }}"/>
     {{else}}
       <input type="submit" value="{{ getString "check-for-breaches" }}"/>
     {{/if}}
       {{> forms/loader }}
   </div>
 </form>
-{{#if experimentBranchB}}
-    <p class="paragraph form-desc txt-cntr txt-purple7 experiment">Firefox browser not required for a Firefox Account. You may receive info about Mozilla&nbsp;services.</p>
-{{else}}
-  <p class="paragraph form-desc txt-cntr txt-purple7">{{ getString "search-for-your-email" }}</p>
-{{/if}}
+<p class="paragraph form-desc txt-cntr txt-purple7">{{ getString "search-for-your-email" }}</p>
