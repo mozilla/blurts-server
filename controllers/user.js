@@ -11,7 +11,6 @@ const { FXA } = require("../lib/fxa");
 const HIBP = require("../hibp");
 const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
-const { getExperimentBranch } = require("./utils");
 
 const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
 
@@ -236,14 +235,14 @@ async function getDashboard(req, res) {
   let isUserInExperiment = null;
   let experimentBranchB = null;
 
-  if (EXPERIMENTS_ENABLED) {
-    const coinFlipNumber = Math.floor(Math.random() * 100);
-    experimentBranch = getExperimentBranch(req, coinFlipNumber);
-    // req.session.excludeFromExperiment is set to remember that the user has been excluded from the experiment.
-    if (!experimentBranch) { req.session.excludeFromExperiment = true; }
-    req.session.experimentBranch = experimentBranch;
-    isUserInExperiment = (experimentBranch === "vb");
-    experimentBranchB = (experimentBranch === "vb" && isUserInExperiment);
+  if (EXPERIMENTS_ENABLED && req.session.experimentBranch) {
+    if (!req.session.excludeFromExperiment) {
+      // eslint-disable-next-line no-console
+      console.debug(`This session has already been assigned: ${req.session.experimentBranch} `);
+      experimentBranch = req.session.experimentBranch;
+      isUserInExperiment = (experimentBranch === "vb");
+      experimentBranchB = (experimentBranch === "vb" && isUserInExperiment);
+    }
   }
 
   let lastAddedEmail = null;
