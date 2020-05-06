@@ -221,6 +221,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Sök efter intrång
 find-out-what-hackers-know = Ta reda på vad hackare redan vet om dig. Lär dig hur du kan vara ett steg före dem.
+get-email-alerts = Håll dig säker: Få e-postvarningar när din information förekommer i ett känt intrång
 search-for-your-email = Sök efter din e-postadress i offentliga dataintrång som går tillbaka till 2007.
 back-to-top = Tillbaka till toppen
 comm-opt-0 = Mejla mig om en av mina e-postadresser nedan förekommer i ett dataintrång.
