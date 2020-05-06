@@ -220,6 +220,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Kiểm tra rò rỉ dữ liệu
 find-out-what-hackers-know = Tìm hiểu những gì tin tặc đã biết về bạn. Tìm hiểu làm thế nào để đi trước họ một bước.
+get-email-alerts = Giữ an toàn: Nhận thông báo qua email khi thông tin của bạn xuất hiện trong một rò rỉ đã biết
 search-for-your-email = Tìm kiếm địa chỉ email của bạn trong các rò rỉ dữ liệu công khai từ năm 2007.
 back-to-top = Về đầu trang
 comm-opt-0 = Gửi email cho tôi nếu một trong những địa chỉ email của tôi dưới đây xuất hiện rò rỉ dữ liệu.
