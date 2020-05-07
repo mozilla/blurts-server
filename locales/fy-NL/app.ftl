@@ -217,6 +217,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Kontrolearje op datalekken
 find-out-what-hackers-know = Untdek wat hackers al oer jo witte. Lear hoe't jo harren in stap yn it foar bliuwe kinne.
+get-email-alerts = Bliuw feilich: ûntfang e-mailberjochten wannear't jo gegevens foarkomme yn in bekend datalek
 search-for-your-email = Sykje werom oant 2007 nei jo e-mailadres yn iepenbiere datalekken.
 back-to-top = Werom nei boppe
 comm-opt-0 = Stjoer my in e-mailberjocht as ien fan myn e-mailadressen hjirûnder yn in datalek ferskynt.
