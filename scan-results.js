@@ -4,7 +4,6 @@ const { URL } = require("url");
 
 const HIBP = require("./hibp");
 const sha1 = require("./sha1-utils");
-
 const { getExperimentBranch } = require("./controllers/utils");
 
 const AppConstants = require("./app-constants");
@@ -37,7 +36,6 @@ const scanResult = async(req, selfScan=false) => {
   let fullReport = false;
   let userDash = false;
   let scannedEmailId = null;
-
 
   if (req.session.user) {
     signedInUser = req.session.user;

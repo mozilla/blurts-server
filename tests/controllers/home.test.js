@@ -71,7 +71,7 @@ test("notFound set status 404 and renders 404", () => {
   expect(mockRenderCallArgs[0]).toBe("subpage");
 });
 
-test("Experiment 2 Cohort Assignment Unit Test", () => {
+test("Experiment 3 Cohort Assignment Unit Test", () => {
   mockRequest.headers = {
     "accept-language": "en",
   };
@@ -87,29 +87,27 @@ test("Experiment 2 Cohort Assignment Unit Test", () => {
 
   mockRequestSessionReset(mockRequest);
 
-  // The session is assigned to the control group when the coin flip is 28;
-  experimentNumber = 28;
+  // The session is assigned to the control group when the coin flip is 29;
+  experimentNumber = 29;
   experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
   expect(experimentBranch).toBe("va");
 
   mockRequestSessionReset(mockRequest);
 
-  // The session is assigned to the treatment group when the coin flip is 29;
-  experimentNumber = 29;
+  // The session is assigned to the treatment group when the coin flip is 30;
+  experimentNumber = 30;
+  experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
+  expect(experimentBranch).toBe("vb");
+
+  // The session is assigned to the treatment group when the coin flip is 59;
+  experimentNumber = 59;
   experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
   expect(experimentBranch).toBe("vb");
 
   mockRequestSessionReset(mockRequest);
 
-  // The session is assigned to the treatment group when the coin flip is 57
-  experimentNumber = 57;
-  experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
-  expect(experimentBranch).toBe("vb");
-
-  mockRequestSessionReset(mockRequest);
-
-  // The session is excluded from the experiment when the coin flip is 58
-  experimentNumber = 58;
+  // The session is assigned to the treatment group when the coin flip is 60
+  experimentNumber = 60;
   experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
   expect(experimentBranch).toBeFalsy();
 

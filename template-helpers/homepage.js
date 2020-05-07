@@ -5,7 +5,6 @@ const { LocaleUtils } = require("./../locale-utils");
 function makeLanding(args) {
   const locales = args.data.root.req.supportedLocales;
   const featuredBreach = args.data.root.featuredBreach;
-  const experimentBranchB = args.data.root.experimentBranchB;
 
   const landingCopy = {};
 
@@ -17,9 +16,6 @@ function makeLanding(args) {
         body: LocaleUtils.fluentFormat(locales, "about-fxm-blurb"),
       },
     ];
-  } else if (experimentBranchB) {
-    landingCopy.headline = LocaleUtils.fluentFormat(locales, "see-if-youve-been-part");
-    landingCopy.subhead = "Your free Firefox account alerts you if you’ve been involved in a known data breach.";
   } else {
     landingCopy.headline = LocaleUtils.fluentFormat(locales, "see-if-youve-been-part");
     landingCopy.subhead = LocaleUtils.fluentFormat(locales, "find-out-what-hackers-know");
@@ -30,10 +26,6 @@ function makeLanding(args) {
       subhead: LocaleUtils.fluentFormat(locales, "sensitive-sites"),
       body: LocaleUtils.fluentFormat(locales, "sensitive-sites-copy"),
     });
-  }
-  // Growth Experiment
-  if (featuredBreach && experimentBranchB) {
-    landingCopy.subhead = "Your free Firefox account alerts you if you’ve been involved in a known data breach.";
   }
 
   return args.fn(landingCopy);

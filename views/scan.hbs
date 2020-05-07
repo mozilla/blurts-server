@@ -14,7 +14,14 @@
         {{/getScanResultsHeadline}}
       {{else}}
         <h2 class="headline scan-results-headline">{{{ fluentNestedBold "scan-results-known-breaches" breachCount=foundBreaches.length }}}</h2>
-          <button id="new-scan-page" class="open-oauth blue-link temp-marketing-alert-me-link ga-growth-ping" data-event-label="fx-monitor-alert-me-blue-link" {{> analytics/fxa id="fx-monitor-alert-me-blue-link" }} data-event-category="Alert me about new breaches">
+        <button id="new-scan-page"
+          class="open-oauth ga-growth-ping {{#if experimentBranchB}} temp-marketing-btn-blue experiment {{else}} blue-link temp-marketing-alert-me-link {{/if}}"
+          {{#if experimentBranchB}}
+            {{> analytics/fxa id="fx-monitor-alert-me-blue-btn-top" }}
+          {{else}}
+            {{> analytics/fxa id="fx-monitor-alert-me-blue-link" }}
+          {{/if}}
+          data-event-category="Alert me about new breaches">
             {{ getString "alert-about-new-breaches" }}
           </button>
       {{/if}}
@@ -39,12 +46,18 @@
     <img class="temp-marketing-img" src="img/svg/stay-alert.svg" alt="" />
     <h2 class="temp-marketing-hl mw-360">{{ getString "stay-alert" }}</h2>
     <p class="temp-marketing-p mw-360">{{ getString "if-your-info" }}</p>
-      <!--  
-        the `data-event-category` attribute for this button is "Alert me about new breaches - Banner" 
-        to match the "Alert me.." button on the other version of the scan results page and to make comparisons 
+      <!--
+        the `data-event-category` attribute for this button is "Alert me about new breaches - Banner"
+        to match the "Alert me.." button on the other version of the scan results page and to make comparisons
         between this button and the "Alert me.." button on the other version of the scan results page easier
       -->
-    <button class="open-oauth temp-marketing-btn-blue ga-growth-ping" data-event-label="fx-monitor-alert-me-blue-btn" {{> analytics/fxa id="fx-monitor-alert-me-blue-btn" }} data-event-category="Alert me about new breaches - Banner">{{ getString "alert-about-new-breaches" }}</button>
+    <button class="open-oauth temp-marketing-btn-blue ga-growth-ping {{#if experimentBranchB}} experiment {{/if}}"
+    {{#if experimentBranchB}}
+      {{> analytics/fxa id="fx-monitor-alert-me-blue-btn-bottom" }}
+    {{else}}
+      {{> analytics/fxa id="fx-monitor-alert-me-blue-btn" }}
+    {{/if}}"
+    data-event-category="Alert me about new breaches - Banner">{{ getString "alert-about-new-breaches" }}</button>
     {{> sign-up-banners/browser-not-required }}
   </div>
 </section>
