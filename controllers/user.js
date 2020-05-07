@@ -237,8 +237,6 @@ async function getDashboard(req, res) {
 
   if (EXPERIMENTS_ENABLED && req.session.experimentBranch) {
     if (!req.session.excludeFromExperiment) {
-      // eslint-disable-next-line no-console
-      console.debug(`This session has already been assigned: ${req.session.experimentBranch} `);
       experimentBranch = req.session.experimentBranch;
       isUserInExperiment = (experimentBranch === "vb");
       experimentBranchB = (experimentBranch === "vb" && isUserInExperiment);
