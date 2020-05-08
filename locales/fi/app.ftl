@@ -227,6 +227,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Tarkista vuotojen varalta
 find-out-what-hackers-know = Selvitä mitä hakkerit tietävät sinusta jo nyt. Opi kuinka pysyä yksi askel edellä hakkereita.
+get-email-alerts = Pysy turvassa: Vastaanota sähköpostitse tieto, kun tietojasi ilmenee tunnetussa tietovuodossa
 search-for-your-email = Etsi sähköpostiosoitettasi vuoteen 2007 ulottuvista julkisista tietovuodoista.
 back-to-top = Takaisin ylös
 comm-opt-0 = Lähetä minulle sähköpostia, jos jokin alla olevista sähköpostiosoitteistani on osallisena tietovuodossa.
