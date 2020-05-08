@@ -221,6 +221,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Adatsértések keresése
 find-out-what-hackers-know = Tudja meg, hogy a hackerek mit tudnak már Önről. Ismerje meg, hogyan tarthat egy lépéssel előttük.
+get-email-alerts = Maradjon biztonságban: e-mail értesítéseket kap, ha adatai ismert adatsértésben érintettek
 search-for-your-email = Keresse meg az e-mail címét a nyilvánosságra került adatsértésekben, egészen 2007-ig.
 back-to-top = Vissza a tetejére
 comm-opt-0 = Küldjenek nekem e-mailt, ha az e-mail címem megjelenik egy adatsértésben.
