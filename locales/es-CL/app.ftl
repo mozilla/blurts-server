@@ -199,6 +199,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Busca filtraciones
 find-out-what-hackers-know = Averigua qué saben de ti los hackers. Descubre cómo ir siempre un paso por delante.
+get-email-alerts = Mantente seguro: recibe alertas por correo cuando tu información aparezca en una filtración conocida
 search-for-your-email = Busca tu dirección de correo en filtraciones de datos públicas yendo hasta 2007.
 back-to-top = Volver al inicio
 comm-opt-0 = Envíame un correo electrónico si alguna de mis direcciones de correo electrónico de las que están a continuación aparece en una filtración de datos.
