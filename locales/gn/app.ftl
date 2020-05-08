@@ -205,6 +205,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Eheka ñembyai
 find-out-what-hackers-know = Ejeporeka mba’épa hekovaíva ñandutípe oikuaa ndehegui. Eñeha’ã eiko tenondeve chuguikuéra.
+get-email-alerts = Eñemohekorosã: og̃uahẽta kyhyjerã ñanduti vevépe ne marandu jehecháva ñembyai kuaapyrévape
 search-for-your-email = Eheka ne ñanduti veve mba’ekuaarã ñembyai opavaveguávape ehóvo 2007 peve.
 back-to-top = Ejevy ñepyrũhápe
 comm-opt-0 = Embou ñanduti veve peteĩva che ñanduti veve osẽramo mba’ekuaarã ñembyaípe.
