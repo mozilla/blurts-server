@@ -91,6 +91,8 @@ about-fxm-headline = Tsa ña { -product-name }
 how-fxm-works = Nixi sachuin { -product-name }
 how-fxm-1-headline = A kunu ndukuku ña'a
 how-fxm-2-headline = Ntachaa takua kuncheu ana nche'e korreoku
+wtd-after-website = Ntyi sau tatu skuinana página web
+what-is-data-agg = ¿Ntyi ku agregador de datos?
 
 ## What to do after data breach tips
 
@@ -105,6 +107,7 @@ send-verification = Tachu'un tu'un
 # email address.
 breach-summary = Tutu filtración
 remove-fxm = Xita { -product-name }
+search-breaches = Nduku filtración
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Sna'a:
 
