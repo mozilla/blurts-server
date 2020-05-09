@@ -15,6 +15,13 @@ biometric-data = Datos biométricos
 # This string is the shortened version of "Biographies", and 
 # refers to biographical data about a user.
 bios = Bios
+browsing-histories = Lista página ntsinu
+buying-preferences = Preferencias de compra
+car-ownership-statuses = Estados de propiedad del coche
+career-levels = Niveles de profesión
+cellular-network-names = Sivi ndusu
+charitable-donations = Donaciones para caridad
+chat-logs = Tutu chat
 email-addresses = Tutu nu inka kue korreo
 email-messages = Tu'un inka nu korreo
 employers = Empleados
