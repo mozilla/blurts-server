@@ -183,6 +183,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Cerca nelle violazioni
 find-out-what-hackers-know = Scopri quello che gli hacker già sanno di te. Impara come rimanere sempre un passo avanti.
+get-email-alerts = Rimani al sicuro: ricevi una notifica via email quando i tuoi dati vengono coinvolti in una violazione di dati conosciuta
 search-for-your-email = Cerca il tuo indirizzo email nelle violazioni di dati di pubblico dominio a partire dal 2007.
 back-to-top = Torna in alto
 comm-opt-0 = Inviami un’email se uno degli indirizzi indicati di seguito appare in una violazione di dati.
