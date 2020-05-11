@@ -631,6 +631,7 @@ test("user breach-stats POST request with FXA response for Monitor user returns 
   const req = {
     token: "test-token",
     app: { locals: { breaches: testBreaches } },
+    query: {},
   };
   FXA.verifyOAuthToken = jest.fn();
   FXA.verifyOAuthToken.mockReturnValueOnce({
@@ -652,5 +653,38 @@ test("user breach-stats POST request with FXA response for Monitor user returns 
     monitoredEmails: expect.anything(),
     numBreaches: expect.anything(),
     passwords: expect.anything(),
+  });
+});
+
+
+test("user breach-stats POST request with includeResolved returns breach stats json with resolved", async () => {
+  const testSubscriberFxAUID = TEST_SUBSCRIBERS.firefox_account.fxa_uid;
+  const req = {
+    token: "test-token",
+    app: { locals: { breaches: testBreaches } },
+    query: {includeResolved: "true"},
+  };
+  FXA.verifyOAuthToken = jest.fn();
+  FXA.verifyOAuthToken.mockReturnValueOnce({
+      body: {
+        scope: [user.FXA_MONITOR_SCOPE],
+        user: testSubscriberFxAUID,
+      },
+  });
+  HIBP.getBreachesForEmail = jest.fn();
+  HIBP.getBreachesForEmail.mockReturnValue([]);
+
+  const resp = { json: jest.fn() };
+
+  await user.getBreachStats(req, resp);
+
+  const jsonCallArgs = resp.json.mock.calls[0];
+
+  expect(jsonCallArgs[0]).toMatchObject({
+    monitoredEmails: expect.anything(),
+    numBreaches: expect.anything(),
+    passwords: expect.anything(),
+    numBreachesResolved: expect.anything(),
+    passwordsResolved: expect.anything(),
   });
 });

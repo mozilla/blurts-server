@@ -559,11 +559,17 @@ async function getBreachStats(req, res) {
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
   const breachStats = resultsSummary(verifiedEmails);
-  return res.json({
+  const baseStats = {
     monitoredEmails: breachStats.monitoredEmails.count,
     numBreaches: breachStats.numBreaches.count,
     passwords: breachStats.passwords.count,
-  });
+  };
+  const resolvedStats = {
+    numBreachesResolved: breachStats.numBreaches.numResolved,
+    passwordsResolved: breachStats.passwords.numResolved,
+  };
+  const returnStats = (req.query.includeResolved === "true") ? Object.assign(baseStats, resolvedStats) : baseStats;
+  return res.json(returnStats);
   }
 
 
