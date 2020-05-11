@@ -110,6 +110,8 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = Chajaqa' { -brand-fxa } rech nik'onem
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = Uk'isb'al k'axk'olil ya'talik
+# Link title
+more-about-this-breach = Nik'aj chi q'alajisanem chi rij we k'axk'olil
 
 ## What to do after data breach tips
 
