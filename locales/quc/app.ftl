@@ -91,6 +91,7 @@ fxa-wtd-blurb-2 =
     Taqoqxa'nib'al, chi'l nik'aj chi uk'olib'al web' jawi' kk'ol wi winaqilal q'alajisanem.
 fxa-what-to-do-blurb-3 = Nima ronojel taq k'axk'olil xew kkib'an k'ax chech taq taqoqxa'nib'al chi'l taq retokib'al, xa k'ut k'o jujun ruk'a'am nim ucholajil q'alajisanem rech pwaqilal. ¶ We kachomaj k'o k'axk'olil chi rij le akemb'i'aj rech ja k'olwaq, on le rajilab'alil uwujil qajanik, chaya' ub'ixik chech le a ja k'olpwaq chi wene k'o k'axk'olil chi rij.  ¶ Che'aq'atuj we kojom kumal nik'aj chik winaq.
 fxa-what-to-do-subhead-4 = Chariqa' tob'anik ruk' unatajisaxik ronojel taq aretokib'al chi'l che'achajij.
+fxa-what-to-do-blurb-4 = Le ilawachinelab' rech taq retokib'al pacha' 1Retokib'al, LastPass, Dashlane, chi'l Bitwarden utz uk'olik taq ¶ aretokib'al kkib'ano chi'l kkiya' pa taq uk'olib'al web'. Chakojo' jun ilawachinel rech taq retokib'al  ¶ pa le ach'aweb'al chi'l pa akematz'ib' are chi man rajawaxik taj ronojel kana'taj chi awech
 
 ## What to do after data breach tips
 
