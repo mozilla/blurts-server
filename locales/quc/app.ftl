@@ -114,6 +114,7 @@ latest-breach = Uk'isb'al k'axk'olil ya'talik
 more-about-this-breach = Nik'aj chi q'alajisanem chi rij we k'axk'olil
 take-control = Chawilawachij le awinaqilal q'alajisanem.
 cant-stop-hackers = Man katkowin taj ke'aq'atej le e b'ank'ax chech ub'anik uk'axk'olil. Xa k'ut utz kaq'atej taq b'anoj le man utz taj chi'l le ktob'anik are chi man k'ax ta ub'anik le kichak.
+read-more-tips = Chasik'ij uwach nik'aj chi taq no'jib'al rech chajinem
 
 ## What to do after data breach tips
 
