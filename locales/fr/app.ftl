@@ -188,6 +188,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Vérifier les fuites de données
 find-out-what-hackers-know = Découvrez ce que les pirates informatiques savent déjà de vous, et apprenez à garder une longueur d’avance sur eux.
+get-email-alerts = Restez en sécurité : recevez des alertes par courriel lorsque vos informations apparaissent dans une fuite de données connue
 search-for-your-email = Recherchez votre adresse électronique parmi les fuites de données publiques remontant jusqu’à 2007.
 back-to-top = Haut de la page
 comm-opt-0 = M’envoyer un courriel si l’une de mes adresses électroniques ci-dessous apparaît dans une fuite de données.
