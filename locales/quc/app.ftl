@@ -89,7 +89,8 @@ fxa-wtd-blurb-2 =
     Le e b'ank'ax wene kkikoj le junam retokib'al chi'l le ataqoqxa'nib'al chech okem pa nik'aj chi kemb'i'aj.  ¶
     Chawinaqirisaj jun jalan chi'l utukelal retokib'al chech jujun taq kemb'i'aj, qas na chech le akemb'i'aj rech ja k'olpwaq, ¶
     Taqoqxa'nib'al, chi'l nik'aj chi uk'olib'al web' jawi' kk'ol wi winaqilal q'alajisanem.
-fxa-what-to-do-blurb-3 = Nima ronojel taq k'axk'olil xew kkib'an k'ax chech taq taqoqxa'nib'al chi'l taq retokib'al, xa k'ut k'o jujun ruk'a'am nim ucholajil q'alajisanem rech pwaqilal. ¶ We kachomaj k'o k'axk'olil chi rij le akemb'i'aj rech ja k'olwaq, on le rajilab'alil uwujil qajanik, chaya' ub'ixik chech le a ja k'olpwaq chi wene k'o k'axk'olil chi rij. Che'aq'atuj we kojom kumal nik'aj chik winaq.
+fxa-what-to-do-blurb-3 = Nima ronojel taq k'axk'olil xew kkib'an k'ax chech taq taqoqxa'nib'al chi'l taq retokib'al, xa k'ut k'o jujun ruk'a'am nim ucholajil q'alajisanem rech pwaqilal. ¶ We kachomaj k'o k'axk'olil chi rij le akemb'i'aj rech ja k'olwaq, on le rajilab'alil uwujil qajanik, chaya' ub'ixik chech le a ja k'olpwaq chi wene k'o k'axk'olil chi rij.  ¶ Che'aq'atuj we kojom kumal nik'aj chik winaq.
+fxa-what-to-do-subhead-4 = Chariqa' tob'anik ruk' unatajisaxik ronojel taq aretokib'al chi'l che'achajij.
 
 ## What to do after data breach tips
 
