@@ -17,7 +17,7 @@
 
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
--brand-fx-account = Firefox account
+-brand-fx-account = Kemb'i'aj rech Firefox
 terms-and-privacy = Taq taqanem chi'l echeb'alil
 GitHub-link-title = GitHub
 error-scan-page-token = Ktajin kaq'axwachirisaj sib'alaj k'i taqoqxa'nib'al pa jun nitz' ramaj. Rumal taq chajinem atqaq'atem chech k'ak' taq tzukunem. Chab 'ana' chi jumul pa jutz'it.
