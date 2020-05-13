@@ -189,6 +189,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Senqed tarewla n yisefka
 find-out-what-hackers-know = Wali ayen ẓran imakaren imsenselkamen fell-ak. daɣen issin ad ten-tizwireḍ.
+get-email-alerts = Qqim d aɣelsan: Ṭṭef-d ilɣa s ttawil n yimayl yal mi ara d-tban talɣut-inek deg trewla yettwassnen.
 search-for-your-email = Nadi tansa-ik deg trewliwin n yisefka izayazen seg 2007.
 back-to-top = Uɣal d asawen
 comm-opt-0 = Azen-iyi-d imayl ma tella yiwet seg tawnsiwin-iw ddaw-a banent-d deg trewla n yisefka.
