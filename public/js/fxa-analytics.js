@@ -155,6 +155,7 @@ function setGAListeners(){
       });
     });
 
+    // Growth Experiment
     if (document.body.dataset.experiment) {
       document.querySelectorAll(".ga-growth-ping").forEach((el) => {
         el.addEventListener("click", async(e) => {
@@ -211,6 +212,8 @@ function setGAListeners(){
     ga("create", "UA-77033033-16");
     ga("set", "anonymizeIp", true);
     ga("set", "dimension6", `${document.body.dataset.signedInUser}`);
+
+    // Growth Experiment
     if (document.body.dataset.experiment) {
       // If an experiment is active, set the "Growth Experiment Version"
       // Custom Dimension to whichever branch is active.

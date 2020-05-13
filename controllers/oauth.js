@@ -14,11 +14,13 @@ const sha1 = require("../sha1-utils");
 
 const log = mozlog("controllers.oauth");
 
+// Growth Experiment
 const utmArray = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
 
-function getUTMNames() {
-  return utmArray;
-}
+// Growth Experiment
+// function getUTMNames() {
+//   return utmArray;
+// }
 
 function init(req, res, next, client = FxAOAuthClient) {
   // Set a random state string in a cookie so that we can verify
@@ -34,6 +36,7 @@ function init(req, res, next, client = FxAOAuthClient) {
   url.searchParams.append("action", "email");
 
   for (const param of fxaParams.searchParams.keys()) {
+    // Growth Experiment
     if (utmArray.includes(param)) {
       req.session.utmContents[param] = fxaParams.searchParams.get(param);
     }
@@ -66,13 +69,14 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
 
   const returnURL = new URL("/user/dashboard", AppConstants.SERVER_URL);
 
-  if (req.session.utmContents) {
-    getUTMNames().forEach(param => {
-      if (req.session.utmContents[param]) {
-        returnURL.searchParams.append(param, req.session.utmContents[param]);
-      }
-    });
-  }
+  // Growth Experiment
+  // if (req.session.utmContents) {
+  //   getUTMNames().forEach(param => {
+  //     if (req.session.utmContents[param]) {
+  //       returnURL.searchParams.append(param, req.session.utmContents[param]);
+  //     }
+  //   });
+  // }
 
   // Check if user is signing up or signing in,
   // then add new users to db and send email.

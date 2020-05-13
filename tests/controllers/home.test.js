@@ -2,19 +2,9 @@
 
 const AppConstants = require("../../app-constants");
 const home = require("../../controllers/home");
-const { getExperimentBranch } = require("../../controllers/utils");
 const { scanResult } = require("../../scan-results");
 
 let mockRequest = { fluentFormat: jest.fn(), csrfToken: jest.fn() };
-
-function mockRequestSessionReset(mockRequest) {
-  mockRequest.session = {
-    excludeFromExperiment: false,
-    experimentBranch: false,
-  };
-  return mockRequest;
-}
-
 
 function addBreachesToMockRequest(mockRequest) {
   const mockBreaches = [
@@ -69,52 +59,4 @@ test("notFound set status 404 and renders 404", () => {
   const mockRenderCallArgs = mockResponse.render.mock.calls[0];
   expect(mockStatusCallArgs[0]).toBe(404);
   expect(mockRenderCallArgs[0]).toBe("subpage");
-});
-
-test("Experiment 3 Cohort Assignment Unit Test", () => {
-  mockRequest.headers = {
-    "accept-language": "en",
-  };
-
-  mockRequest.session = {
-    excludeFromExperiment: false,
-  };
-
-  // The session is assigned to the control group when the coin flip is 0;
-  let experimentNumber = 0;
-  let experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
-  expect(experimentBranch).toBe("va");
-
-  mockRequestSessionReset(mockRequest);
-
-  // The session is assigned to the control group when the coin flip is 29;
-  experimentNumber = 29;
-  experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
-  expect(experimentBranch).toBe("va");
-
-  mockRequestSessionReset(mockRequest);
-
-  // The session is assigned to the treatment group when the coin flip is 30;
-  experimentNumber = 30;
-  experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
-  expect(experimentBranch).toBe("vb");
-
-  // The session is assigned to the treatment group when the coin flip is 59;
-  experimentNumber = 59;
-  experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
-  expect(experimentBranch).toBe("vb");
-
-  mockRequestSessionReset(mockRequest);
-
-  // The session is assigned to the treatment group when the coin flip is 60
-  experimentNumber = 60;
-  experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
-  expect(experimentBranch).toBeFalsy();
-
-  mockRequestSessionReset(mockRequest);
-
-  // The session is excluded from the experiment when the coin flip is 99
-  experimentNumber = 99;
-  experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
-  expect(experimentBranch).toBeFalsy();
 });

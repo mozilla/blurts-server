@@ -112,10 +112,6 @@
   transition: all 0.15s ease-in-out;
 }
 
-.temp-marketing-btn-blue.experiment {
-  margin-top: 16px;
-}
-
 .temp-marketing-btn-blue:hover {
   background-color: var(--blue4);
   transition: all 0.15s ease-in-out;

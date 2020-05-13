@@ -12,10 +12,7 @@ const HIBP = require("../hibp");
 const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
 
-const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
-
 const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
-
 
 async function removeEmail(req, res) {
   const emailId = req.body.emailId;
@@ -231,18 +228,6 @@ async function getDashboard(req, res) {
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
 
-  let experimentBranch = null;
-  let isUserInExperiment = null;
-  let experimentBranchB = null;
-
-  if (EXPERIMENTS_ENABLED && req.session.experimentBranch) {
-    if (!req.session.excludeFromExperiment) {
-      experimentBranch = req.session.experimentBranch;
-      isUserInExperiment = (experimentBranch === "vb");
-      experimentBranchB = (experimentBranch === "vb" && isUserInExperiment);
-    }
-  }
-
   let lastAddedEmail = null;
 
   req.session.user = await DB.setBreachesLastShownNow(user);
@@ -258,9 +243,6 @@ async function getDashboard(req, res) {
     verifiedEmails,
     unverifiedEmails,
     whichPartial: "dashboards/breaches-dash",
-    experimentBranch,
-    isUserInExperiment,
-    experimentBranchB,
   });
 }
 
@@ -568,6 +550,7 @@ async function getBreachStats(req, res) {
 
 
 function logout(req, res) {
+  // Growth Experiment
   if (AppConstants.EXPERIMENT_ACTIVE) {
     // Persist experimentBranch across session reset
     const excludeFromExperiment = req.session.excludeFromExperiment;
