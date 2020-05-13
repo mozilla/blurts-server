@@ -33,10 +33,29 @@ function hasUserSignedUpForRelay(user) {
   return false;
 }
 
-function getExperimentBranch(req, sorterNum) {
+function getExperimentBranch(req, language, sorterNum) {
+
+  if (!sorterNum) {
+    sorterNum = Math.floor(Math.random() * 100);
+  }
 
   if (req.session.excludeFromExperiment && !req.query.experimentBranch) {
     log.debug("This session has already been excluded from the experiment");
+    return false;
+  }
+
+  // If we cannot parse req.headers["accept-language"], we should not
+  // enroll users in the experiment.
+  if (!language || !req.headers || !req.headers["accept-language"]){
+    log.debug("No headers or accept-language information present.");
+    return false;
+  }
+
+  // If the user doesn't have an English variant langauge selected as their primary language,
+  // we do not enroll them in the experiment.
+  const lang = req.headers["accept-language"].split(",");
+  if (language && !lang[0].includes(language)) {
+    log.debug("Preferred language is not English variant: ", lang[0]);
     return false;
   }
 

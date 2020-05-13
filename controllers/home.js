@@ -5,8 +5,6 @@ const DB = require("../db/DB");
 const { scanResult } = require("../scan-results");
 const { generatePageToken } = require("./utils");
 
-const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
-
 async function home(req, res) {
 
   const formTokens = {
@@ -16,14 +14,6 @@ async function home(req, res) {
 
   let featuredBreach = null;
   let scanFeaturedBreach = false;
-
-  // Growth Experiment: Set experiment branch from the homepage through URL queryParams
-  // but do not render any info on  the /home template.
-  if (EXPERIMENTS_ENABLED && req.query.experimentBranch) {
-    if (["va", "vb"].includes(req.query.experimentBranch)) {
-      req.session.experimentBranch = req.query.experimentBranch;
-    }
-  }
 
   if (req.session.user && !req.query.breach) {
     return res.redirect("/user/dashboard");
