@@ -448,11 +448,19 @@ progress-complete = Bilinen tüm ihlaller çözüldü olarak işaretlendi
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-3 = <span>Bu ihlalleri çözmede iyi iş çıkardınız!</span> Böyle devam edin. Birkaç tane daha var.
+progress-message-4 = <span>Neredeyse bitti!</span> Bitiş çizgisine yakınsınız.
 
 ##
 
 resolve-this-breach-link = Bu ihlali çöz
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Çözüldü olarak işaretlendi:
 hide-resolved-button = Çözülenleri gizle
 show-resolved-button = Çözülenleri göster
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Yeni
+mobile-promo-cta = Android ve iOS için { -brand-name } uygulamasını indirin
+promo-lockwise-headline = Parolalarınızı yanınızda taşıyın
+promo-ecosystem-cta = Tüm ürünleri görün
