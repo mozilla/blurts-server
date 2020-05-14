@@ -87,7 +87,7 @@ fxa-pwt-summary-2 = Le password brevi che contengono una singola parola sono fac
 fxa-pwt-summary-4 = I gestori di password come 1Password, LastPass, Dashlane e Bitwarden conservano le tue password e le inseriscono nei siti web per te. Ti aiutano persino a creare password sicure.
 fxa-pwt-summary-6 = Le violazioni dei dati sono in aumento. Se le tue informazioni personali sono coinvolte in una nuova violazioni di dati, { -product-name } ti invia un avviso, così puoi attivarti per proteggere i tuoi account.
 fxa-what-to-do-blurb-1 = Se non riesci più ad accedere, contatta il sito web e chiedi come aggiornare le tue credenziali. Hai trovato nel rapporto un account che non riconosci?  I tuoi dati potrebbero essere stati venduti o ridistribuiti. Potrebbe anche trattarsi di un account che ti eri dimenticato di aver creato, oppure non lo riconosci perché la società che fornisce il servizio ha ne ha modificato il nome.
-fxa-what-to-do-subhead-2 = Non usare più la password esposta e modificala ovunque tu l’abbia utilizzata.
+fxa-what-to-do-subhead-2 = Non usare più la password compromessa e modificala ovunque tu l’abbia utilizzata.
 fxa-wtd-blurb-2 = Gli hacker potrebbero provare la stessa password in combinazione con il tuo indirizzo email per entrare in altri account. Imposta una password diversa e unica per ciascun account, in particolare per il tuo conto in banca, il tuo account email e altri siti che registrano informazioni personali.
 fxa-what-to-do-blurb-3 = Generalmente le violazioni espongono solo email e password, ma alcune includono anche dati finanziari sensibili. Se il tuo conto bancario o il numero della tua carta di credito sono stati violati, avvisa subito la tua banca del rischio di frodi e controlla se negli estratti conto compaiono addebiti che non riconosci.
 fxa-what-to-do-subhead-4 = Usa strumenti che ti aiutino a ricordare tutte le tue password e tenerle al sicuro.
@@ -272,8 +272,8 @@ email-addresses-being-monitored =
 # your localization, because it would result in the number showing twice.
 passwords-exposed =
     { $passwords ->
-        [one] Password esposta da tutte le violazioni
-       *[other] Password esposte da tutte le violazioni
+        [one] Password compromessa in tutte le violazioni
+       *[other] Password compromesse in tutte le violazioni
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
@@ -387,7 +387,7 @@ rec-section-headline = Che cosa fare per questa violazione
 rec-section-subhead = Ti consigliamo di adottare queste misure per mantenere le tue informazioni personali al sicuro e proteggere la tua identità digitale.
 # Section headline
 rec-section-headline-no-pw = Come proteggere le tue informazioni personali
-rec-section-subhead-no-pw = Anche se nessuna password è stata esposta in questa violazione, puoi sempre adottare nuove misure per proteggere meglio le tue informazioni personali.
+rec-section-subhead-no-pw = Anche se nessuna password è stata compromessa in questa violazione, puoi sempre adottare nuove misure per proteggere meglio le tue informazioni personali.
 # Button
 see-additional-recs = Vedi altri suggerimenti
 
@@ -464,8 +464,8 @@ hide-resolved-button = Nascondi risolte
 show-resolved-button = Mostra risolte
 unresolved-passwords-exposed =
     { $numPasswords ->
-        [one] Password esposta in violazioni non risolte
-       *[other] Password esposte in violazioni non risolte
+        [one] Password compromessa in violazioni non risolte
+       *[other] Password compromesse in violazioni non risolte
     }
 known-data-breaches-resolved =
     { $numResolvedBreaches ->

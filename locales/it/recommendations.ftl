@@ -46,7 +46,7 @@ rec-ip-non-us = Il tuo indirizzo di protocollo internet (indirizzo IP) permette 
 rec-hist-pw-subhead = Evita di riutilizzare le password
 # Link title
 rec-hist-pw-cta-fx = Visualizza le credenziali in { -brand-name }
-rec-hist-pw = Usa password univoche e complesse per ogni account. In questo modo, se una password viene esposta in una violazione di dati, dovrai modificare solo quella.
+rec-hist-pw = Usa password univoche e complesse per ogni account. In questo modo, se una password viene compromessa in una violazione di dati, dovrai modificare solo quella.
 # Recommendation subhead
 rec-sec-qa-subhead = Crea risposte sempre diverse alle domande di sicurezza
 rec-sec-qa = Molti siti web pongono le stesse domande di sicurezza. Se la tua risposta viene esposta nella violazione di un sito, l’informazione diventa pubblica. Crea risposte lunghe, casuali e conservale in un posto sicuro.
@@ -66,7 +66,7 @@ rec-address = Utilizzare il tuo indirizzo o il nome della strada in cui sei cres
 rec-gen-1-subhead = Usa password uniche e complesse per ogni account
 # Link title
 rec-gen-1-cta = Come creare password complesse
-rec-gen-1 = Riutilizzare le password mette a rischio tutti i tuoi account. Se una password viene esposta in una violazione, gli hacker avranno automaticamente accesso anche ad altri account.
+rec-gen-1 = Riutilizzare le password mette a rischio tutti i tuoi account. Se una password viene compromessa in una violazione, gli hacker avranno automaticamente accesso anche ad altri account.
 # Recommendation subhead
 rec-gen-2-subhead = Conserva le password in un posto sicuro
 # Link title
