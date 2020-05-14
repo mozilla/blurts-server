@@ -313,6 +313,7 @@ function resizeDashboardMargin() {
 
   if (researchPromoIsVisible()) {
     researchPromo.style.paddingTop = `calc(${getHeaderHeight()}px + 2rem`;
+    return;
   }
   if (
     (userDashboard && !researchPromoIsVisible()) ||
@@ -439,9 +440,9 @@ function resizeDashboardMargin() {
     }
   }
   const researchPromo = document.querySelector(".research-recruitment-wrapper");
-  const sendRecruitmentPing = (action, interactionStatus) => {
+  const sendRecruitmentPing = (action, interactionStatus, transportType) => {
     if (gaAvailable) {
-      ga("send", "event", "Research Recruitment Promo", action, "Recruitment Promo", {nonInteraction: interactionStatus});
+      ga("send", "event", "Research Recruitment Promo", action, "Recruitment Promo", {nonInteraction: interactionStatus}, {transport: transportType});
     }
   };
   const promoHasAlreadyBeenDismissed = (researchPromo && sessionStorage.getItem("fxMonitorResearchPromo") === "dismissed");
@@ -457,13 +458,13 @@ function resizeDashboardMargin() {
   resizeDashboardMargin();
 
   if (researchPromoIsVisible()) {
-    sendRecruitmentPing("View", true);
+    sendRecruitmentPing("View", true, "image");
     document.querySelector(".x-close-promo").addEventListener("click", () => {
       if (sessionStorage) {
         sessionStorage.setItem("fxMonitorResearchPromo", "dismissed");
         researchPromo.classList.add("hidden");
       }
-      sendRecruitmentPing("Engage", false);
+      sendRecruitmentPing("Engage", false, "beacon");
     });
   }
 
