@@ -33,10 +33,11 @@ function hasUserSignedUpForRelay(user) {
   return false;
 }
 
-function getExperimentBranch(req, language, sorterNum) {
+function getExperimentBranch(req, sorterNum = false, language = false) {
 
-  if (!sorterNum) {
+  if (sorterNum === false) {
     sorterNum = Math.floor(Math.random() * 100);
+    log.debug("No coinflip number provided. Coinflip number is ", sorterNum);
   }
 
   if (req.session.excludeFromExperiment && !req.query.experimentBranch) {
@@ -46,17 +47,19 @@ function getExperimentBranch(req, language, sorterNum) {
 
   // If we cannot parse req.headers["accept-language"], we should not
   // enroll users in the experiment.
-  if (!language || !req.headers || !req.headers["accept-language"]){
+  if (language && !req.headers || language && !req.headers["accept-language"]){
     log.debug("No headers or accept-language information present.");
     return false;
   }
 
-  // If the user doesn't have an English variant langauge selected as their primary language,
+  // If the user doesn't have the requested variant langauge selected as their primary language,
   // we do not enroll them in the experiment.
-  const lang = req.headers["accept-language"].split(",");
-  if (language && !lang[0].includes(language)) {
-    log.debug("Preferred language is not English variant: ", lang[0]);
-    return false;
+  if (language) {
+    const lang = req.headers["accept-language"].split(",");
+    if (language && !lang[0].includes(language)) {
+      log.debug(`Preferred language is not ${language} variant: ${lang[0]}`);
+      return false;
+    }
   }
 
   // If URL param has experimentBranch entry, use that branch;
