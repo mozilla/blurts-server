@@ -12,6 +12,8 @@ const HIBP = require("../hibp");
 const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
 
+const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
+
 const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
 
 async function removeEmail(req, res) {
@@ -557,7 +559,7 @@ async function getBreachStats(req, res) {
 
 function logout(req, res) {
   // Growth Experiment
-  if (AppConstants.EXPERIMENT_ACTIVE) {
+  if (EXPERIMENTS_ENABLED) {
     // Persist experimentBranch across session reset
     const excludeFromExperiment = req.session.excludeFromExperiment;
     const experimentBranch = req.session.experimentBranch;
