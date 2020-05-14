@@ -3,6 +3,7 @@
   padding: 2rem 0;
   position: relative;
   visibility: visible;
+  background-color: #2b1e440f;
   transition: all 0.2s ease-in-out;
 }
 
@@ -60,7 +61,6 @@
   border-radius: 50%;
   border: none;
 }
-
 
 @media screen and (max-width: 800px) {
   .recruitment-content {
