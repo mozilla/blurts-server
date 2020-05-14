@@ -406,9 +406,9 @@ function resizeDashboardMargin() {
     }
   }
   const researchPromo = document.querySelector(".research-recruitment-wrapper");
-  const sendRecruitmentPing = (action) => {
+  const sendRecruitmentPing = (action, interactionStatus) => {
     if (gaAvailable) {
-      ga("send", "event", "Research Recruitment Promo", action, "Recruitment Promo");
+      ga("send", "event", "Research Recruitment Promo", action, "Recruitment Promo", {nonInteraction: interactionStatus});
     }
   };
   const promoHasAlreadyBeenDismissed = (researchPromo && sessionStorage.getItem("fxMonitorResearchPromo") === "dismissed");
@@ -424,13 +424,13 @@ function resizeDashboardMargin() {
   resizeDashboardMargin();
 
   if (researchPromoIsVisible()) {
-    sendRecruitmentPing("View");
+    sendRecruitmentPing("View", true);
     document.querySelector(".x-close-promo").addEventListener("click", () => {
       if (sessionStorage) {
         sessionStorage.setItem("fxMonitorResearchPromo", "dismissed");
         researchPromo.classList.add("hidden");
       }
-      sendRecruitmentPing("Engage");
+      sendRecruitmentPing("Engage", false);
     });
   }
 
