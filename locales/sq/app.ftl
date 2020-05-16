@@ -186,6 +186,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Kontrolloni për Cenime
 find-out-what-hackers-know = Shihni se ç’dinë tashmë mbi ju hacker-at. Mësoni se si të jeni përherë një hap para tyre.
+get-email-alerts = Qëndroni i parrezikuar: Merrni sinjalizime me email, kur të dhënat tuaja shfaqen në një cenim të ditur
 search-for-your-email = Kërkoni për adresën tuaj email te të dhëna publike shkeljesh që shkojnë pas deri në 2007-n.
 back-to-top = Mbrapsht te Kreu
 comm-opt-0 = Dërgomëni email,  nëse një nga adresat e mia email më poshtë shfaqet në një shkelje të dhënash.
