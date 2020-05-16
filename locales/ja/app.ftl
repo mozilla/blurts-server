@@ -15,12 +15,15 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox アカウント
 terms-and-privacy = 利用規約と個人情報保護方針
 GitHub-link-title = GitHub
 error-scan-page-token = 短期間に多くのメールアドレスを検索しようとしています。セキュリティ上の理由から、一時的に新たな検索をブロックしました。後ほどまた試してください。
 error-could-not-add-email = メールアドレスをデータベースに追加できませんでした。
 error-not-subscribed = このメールアドレスは { -product-name } に登録されていません。
-error-hibp-throttled = { -brand-HIBP } への接続数が多すぎます
+error-hibp-throttled = { -brand-HIBP } への接続数が多すぎます。
 error-hibp-connect = { -brand-HIBP } への接続でエラーが発生しました。
 error-hibp-load-breaches = 侵害データを読み込めませんでした。
 error-must-be-signed-in = { -brand-fxa } でログインしてください。
