@@ -105,7 +105,7 @@ function setGAListeners(){
   });
 
 
-  document.querySelectorAll(".open-oauth").forEach( async(el) => {
+  document.querySelectorAll(".open-oauth, .add-metrics-flow-values").forEach( async(el) => {
     const fxaUrl = new URL("/metrics-flow?", document.body.dataset.fxaAddress);
 
     try {
