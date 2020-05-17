@@ -36,7 +36,7 @@ function isValidEmail(val) {
 }
 
 
-function doOauth(el) {
+function doOauth(el, {emailWatch = false} = {}) {
   let url = new URL("/oauth/init", document.body.dataset.serverUrl);
   url = getFxaUtms(url);
 
@@ -51,15 +51,68 @@ function doOauth(el) {
     return;
   }
 
-  // Preserve entire control function
-  if (sessionStorage && sessionStorage.length > 0) {
-    const lastScannedEmail = sessionStorage.getItem("lastScannedEmail");
-    if (lastScannedEmail) {
-      url.searchParams.append("email", lastScannedEmail);
+  if (!emailWatch) {
+    // Preserve entire control function
+    if (sessionStorage && sessionStorage.length > 0) {
+      const lastScannedEmail = sessionStorage.getItem("lastScannedEmail");
+      if (lastScannedEmail) {
+        url.searchParams.append("email", lastScannedEmail);
+      }
+    }
+    window.location.assign(url);
+    return;
+  }
+
+  let email = false;
+
+  if (document.querySelector("#scan-user-email input[type=email]")) {
+    email = document.querySelector("#scan-user-email input[type=email]").value;
+
+    if (!isValidEmail(email)) {
+      email = false;
     }
   }
+
+  const scannedEmailId = document.querySelector("#scan-user-email input[name=scannedEmailId]");
+
+  if (sessionStorage && sessionStorage.length > 0) {
+
+    const lastScannedEmail = sessionStorage.getItem("lastScannedEmail");
+
+
+    if (email && lastScannedEmail) {
+      switch (email) {
+        case lastScannedEmail:
+          // The last saved email address and the current entry match, so route it to FxA
+          email = lastScannedEmail;
+          break;
+        case !lastScannedEmail:
+          // The last saved email address and the current entry DIFFER, so create
+          // a new entry, launch a new FxA login session with new email prefilled.
+          sessionStorage.removeItem("lastScannedEmail");
+          sessionStorage.setItem("lastScannedEmail", email);
+          scannedEmailId.value = sessionStorage.length;
+          break;
+      }
+    } else {
+      if (lastScannedEmail) {
+        // Control method. User set this by checking breach results
+        email = lastScannedEmail;
+      }
+    }
+  } else if (email && sessionStorage) {
+    // Applies to first time user in experiment has no previous FxA ties.
+    sessionStorage.removeItem("lastScannedEmail");
+    sessionStorage.setItem("lastScannedEmail", email);
+    scannedEmailId.value = sessionStorage.length;
+  }
+
+  // Append whichever email was set, and start OAuth flow!
+  if (email) {
+    url.searchParams.append("email", email);
+  }
   window.location.assign(url);
-  return;
+
 }
 
 
@@ -437,5 +490,41 @@ function resizeDashboardMargin() {
 
   const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
   dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));
+
+  const submitBtn = document.querySelector("#scan-user-email input[type='submit']");
+  const createFxaCheckbox = document.getElementById("createFxaCheckbox");
+
+  submitBtn.addEventListener("click", (e)=> {
+    document.body.dataset.utm_content = "opt-out";
+
+    // Email Validation
+    const scanForm = document.getElementById("scan-user-email");
+    const scanFormEmailValue = document.querySelector("#scan-user-email input[type='email']").value;
+
+    if (scanFormEmailValue.length < 1  || !isValidEmail(scanFormEmailValue)) {
+      scanForm.classList.add("invalid");
+      return;
+    }
+
+      // Analytics
+      if (typeof(ga) !== "undefined") {
+        ga("send", {
+          hitType: "event",
+          eventCategory: "Sign Up Button",
+          eventAction: "createFxaCheckbox.checked",
+          eventLabel: "fx-monitor-homepage-fxa-checkbox",
+          options: {
+            transport: "beacon",
+          },
+        });
+      }
+
+    if (createFxaCheckbox.checked) {
+      e.preventDefault();
+      doOauth(e.target, {emailWatch: true});
+      return;
+    }
+
+  });
 
 })();

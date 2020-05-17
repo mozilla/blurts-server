@@ -7,6 +7,15 @@
     <input id="scan-email" class="input-group-field email-to-hash" type="email" name="email" placeholder="{{ getString "scan-placeholder" }}" aria-label="{{ getString "scan-placeholder" }}" autocomplete="off" />
     <span id="invalid-email-message" class="error-message">{{ getString "scan-error" }}</span>
   </div>
+  <div class="input-group">
+      <label for="createFxaCheckbox" class="create-fxa-wrapper">
+        <div class="create-fxa-checkbox-wrapper">
+          <input class="create-fxa-checkbox-input" id="createFxaCheckbox" type="checkbox" />
+          <span class="create-fxa-checkbox-checkmark"></span>
+        </div>
+        <p>{{ getString "get-email-alerts" }}</p>
+      </label>
+  </div>
   <input type="hidden" name="emailHash" />
   {{#if scanFeaturedBreach}}
     <input id="featured" type="hidden" name="featuredBreach" value="{{ featuredBreach.Name }}"/>
@@ -15,7 +24,7 @@
     {{#if featuredBreach}}
       <input type="submit" value="{{ getString "find-out" }}"/>
     {{else}}
-      <input type="submit" value="{{ getString "check-for-breaches" }}"/>
+      <input class="add-metrics-flow-values" data-form_type="other" {{> analytics/fxa id="fx-monitor-check-for-breaches-blue-btn" }} type="submit" value="{{ getString "check-for-breaches" }}"/>
     {{/if}}
       {{> forms/loader }}
   </div>
