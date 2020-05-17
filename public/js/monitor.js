@@ -489,9 +489,19 @@ function resizeDashboardMargin() {
   }
 
   const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
+  const submitBtn = document.querySelector("#scan-user-email input[type='submit']");
+
   dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));
 
-  const submitBtn = document.querySelector("#scan-user-email input[type='submit']");
+  const acceptedLanguages = navigator.languages;
+  const acceptedFirstLocalesIncludesEnglish =
+  (acceptedLanguages[0].includes("en-US") || acceptedLanguages[0].includes("en"));
+
+  if (!acceptedFirstLocalesIncludesEnglish) {
+    document.getElementById("fxaCheckbox").style.display = "none";
+    return;
+  }
+
   const createFxaCheckbox = document.getElementById("createFxaCheckbox");
 
   submitBtn.addEventListener("click", (e)=> {
