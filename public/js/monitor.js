@@ -35,6 +35,22 @@ function isValidEmail(val) {
   return re.test(String(val).toLowerCase());
 }
 
+function getSubmittedEmail(){
+  const email = document.querySelector("#scan-user-email input[type=email]").value;
+  if (!isValidEmail(email)) {
+    return false;
+  }
+  return email;
+}
+
+function overwriteLastScannedEmail(email, scannedEmailId) {
+  if (!sessionStorage) {
+    throw new Error("Session storage not available");
+  }
+  sessionStorage.removeItem("lastScannedEmail");
+  sessionStorage.setItem("lastScannedEmail", email);
+  scannedEmailId.value = sessionStorage.length;
+}
 
 function doOauth(el, {emailWatch = false} = {}) {
   let url = new URL("/oauth/init", document.body.dataset.serverUrl);
@@ -51,68 +67,30 @@ function doOauth(el, {emailWatch = false} = {}) {
     return;
   }
 
-  if (!emailWatch) {
+  const lastScannedEmail = sessionStorage.getItem("lastScannedEmail");
+
+  if (emailWatch !== true) {
     // Preserve entire control function
-    if (sessionStorage && sessionStorage.length > 0) {
-      const lastScannedEmail = sessionStorage.getItem("lastScannedEmail");
-      if (lastScannedEmail) {
-        url.searchParams.append("email", lastScannedEmail);
-      }
+    if (lastScannedEmail) {
+      url.searchParams.append("email", lastScannedEmail);
     }
     window.location.assign(url);
     return;
   }
 
-  let email = false;
-
-  if (document.querySelector("#scan-user-email input[type=email]")) {
-    email = document.querySelector("#scan-user-email input[type=email]").value;
-
-    if (!isValidEmail(email)) {
-      email = false;
-    }
-  }
-
+  const submittedEmail = getSubmittedEmail();
   const scannedEmailId = document.querySelector("#scan-user-email input[name=scannedEmailId]");
 
-  if (sessionStorage && sessionStorage.length > 0) {
-
-    const lastScannedEmail = sessionStorage.getItem("lastScannedEmail");
-
-
-    if (email && lastScannedEmail) {
-      switch (email) {
-        case lastScannedEmail:
-          // The last saved email address and the current entry match, so route it to FxA
-          email = lastScannedEmail;
-          break;
-        case !lastScannedEmail:
-          // The last saved email address and the current entry DIFFER, so create
-          // a new entry, launch a new FxA login session with new email prefilled.
-          sessionStorage.removeItem("lastScannedEmail");
-          sessionStorage.setItem("lastScannedEmail", email);
-          scannedEmailId.value = sessionStorage.length;
-          break;
-      }
-    } else {
-      if (lastScannedEmail) {
-        // Control method. User set this by checking breach results
-        email = lastScannedEmail;
-      }
-    }
-  } else if (email && sessionStorage) {
-    // Applies to first time user in experiment has no previous FxA ties.
-    sessionStorage.removeItem("lastScannedEmail");
-    sessionStorage.setItem("lastScannedEmail", email);
-    scannedEmailId.value = sessionStorage.length;
+  if (lastScannedEmail === submittedEmail) {
+    url.searchParams.append("email", lastScannedEmail);
+    window.location.assign(url);
+    return;
   }
 
-  // Append whichever email was set, and start OAuth flow!
-  if (email) {
-    url.searchParams.append("email", email);
-  }
+  // Use the email address the user submitted in FxA Oauth flow
+  overwriteLastScannedEmail(submittedEmail, scannedEmailId);
+  url.searchParams.append("email", submittedEmail);
   window.location.assign(url);
-
 }
 
 
@@ -489,9 +467,9 @@ function resizeDashboardMargin() {
   }
 
   const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
-  const submitBtn = document.querySelector("#scan-user-email input[type='submit']");
-
   dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));
+
+  const submitBtn = document.querySelector("#scan-user-email input[type='submit']");
 
   const acceptedFirstLocalesIncludesEnglish =
   (acceptedLanguages[0].includes("en-US") || acceptedLanguages[0].includes("en"));
