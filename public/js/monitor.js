@@ -475,10 +475,9 @@ function resizeDashboardMargin() {
 
 
 
-  const acceptedFirstLocalesIncludesEnglish =
-  (acceptedLanguages[0].includes("en-US") || acceptedLanguages[0].includes("en"));
+  const acceptedFirstLanguageIsEnglish = acceptedLanguages[0].includes("en");
 
-  if (!acceptedFirstLocalesIncludesEnglish) {
+  if (!acceptedFirstLanguageIsEnglish) {
     document.getElementById("fxaCheckbox").style.display = "none";
     return;
   }
