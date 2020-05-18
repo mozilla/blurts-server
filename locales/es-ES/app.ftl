@@ -148,9 +148,9 @@ fxm-warns-you = { -product-name } te advierte si tus cuentas en línea estuviero
 how-fxm-works = Cómo funciona { -product-name }
 how-fxm-1-headline = Hacer una búsqueda básica
 how-fxm-1-blurb =
-    Busca tu dirección de correo en las filtraciones de datos públicas desde 
+    Busca tu dirección de correo en las filtraciones de datos públicos desde 
     2007. Esta búsqueda básica mostrará la mayoría de las filtraciones de datos, pero no
-    las que contienen información personal sensible.
+    los que contienen información personal sensible.
 how-fxm-2-headline = Registrarse para mantenerse informado sobre las filtraciones
 how-fxm-2-blurb =
     Crea una { -brand-fxa } para monitorizar las filtraciones de datos de tu correo.
@@ -196,7 +196,7 @@ appears-in-x-breaches =
 check-for-breaches = Busca filtraciones
 find-out-what-hackers-know = Averigua qué saben de ti los piratas informáticos. Descubre cómo ir siempre un paso por delante.
 get-email-alerts = Mantente seguro: recibe alertas por correo cuando tu información aparezca en una filtración conocida
-search-for-your-email = Busca tu dirección de correo en filtraciones de datos públicas hasta 2007.
+search-for-your-email = Busca tu dirección de correo en filtraciones de datos públicas desde 2007.
 back-to-top = Volver al inicio
 comm-opt-0 = Avísame si mi dirección de correo aparece en una filtración de datos.
 comm-opt-1 = Enviar todas las alertas de filtraciones a { $primaryEmail }.
