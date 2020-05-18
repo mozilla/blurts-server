@@ -110,7 +110,7 @@ latest-breach = ÚLTIMA FILTRACIÓN AÑADIDA
 # Link title
 more-about-this-breach = Más sobre esta filtración
 take-control = Recupera el control de tu información personal.
-cant-stop-hackers = No puedes evitar que te hackeen, pero sí puedes evitar malas prácticas que le facilitan el trabajo a los hackeadores.
+cant-stop-hackers = No puedes evitar se comprometan datos, pero sí puedes evitar malas prácticas que le facilitan el trabajo a los piratas informáticos.
 read-more-tips = Leer más sobre consejos de seguridad
 how-hackers-work = Descubre cómo trabajan los hackers
 monitor-your-online-accounts = Regístrate para monitorizar filtraciones con un { -brand-fxa }.
@@ -194,7 +194,7 @@ appears-in-x-breaches =
        *[other] Aparece en { $breachCount } filtraciones conocidas.
     }
 check-for-breaches = Busca filtraciones
-find-out-what-hackers-know = Averigua qué saben de ti los hackeadores. Descubre cómo ir siempre un paso por delante.
+find-out-what-hackers-know = Averigua qué saben de ti los piratas informáticos. Descubre cómo ir siempre un paso por delante.
 get-email-alerts = Mantente seguro: recibe alertas por correo cuando tu información aparezca en una filtración conocida
 search-for-your-email = Busca tu dirección de correo en filtraciones de datos públicas hasta 2007.
 back-to-top = Volver al inicio
@@ -402,7 +402,7 @@ how-hackers-work-desc = Protege tus contraseñas de los criminales cibernéticos
 what-to-do-after-breach-desc = Bloquea tus cuentas para que tu información no caiga en las manos equivocadas.
 create-strong-passwords-desc = Haz que tus contraseñas sean seguras y difíciles de adivinar.
 steps-to-protect-desc = Te ayudamos a entender las amenazas más comunes y cómo saber qué buscar.
-five-myths-desc = Descubre cómo evitar que los malos hábitos al crear contraseñas les facilite el trabajo a los hackeadores.
+five-myths-desc = Descubre cómo evitar que los malos hábitos al crear contraseñas les facilite el trabajo a los piratas informáticos.
 take-further-steps-desc = Descubre cómo mitigar los riesgos de robo de identidad para evitar pérdidas financieras.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = ¡Cambios guardados!
