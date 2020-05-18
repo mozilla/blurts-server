@@ -69,7 +69,11 @@ function doOauth(el, {emailWatch = false} = {}) {
 
   const lastScannedEmail = sessionStorage.getItem("lastScannedEmail");
 
-  if (emailWatch !== true) {
+  if (typeof emailWatch !== "boolean") {
+    throw new Error("invalid argument option in doOauth");
+  }
+
+  if (!emailWatch) {
     // Preserve entire control function
     if (lastScannedEmail) {
       url.searchParams.append("email", lastScannedEmail);
