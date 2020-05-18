@@ -493,7 +493,6 @@ function resizeDashboardMargin() {
 
   dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));
 
-  const acceptedLanguages = navigator.languages;
   const acceptedFirstLocalesIncludesEnglish =
   (acceptedLanguages[0].includes("en-US") || acceptedLanguages[0].includes("en"));
 
@@ -505,8 +504,6 @@ function resizeDashboardMargin() {
   const createFxaCheckbox = document.getElementById("createFxaCheckbox");
 
   submitBtn.addEventListener("click", (e)=> {
-    document.body.dataset.utm_content = "opt-out";
-
     // Email Validation
     const scanForm = document.getElementById("scan-user-email");
     const scanFormEmailValue = document.querySelector("#scan-user-email input[type='email']").value;
@@ -516,12 +513,15 @@ function resizeDashboardMargin() {
       return;
     }
 
-      // Analytics
+    if (createFxaCheckbox.checked) {
+      e.preventDefault();
+
+      // Send GA Ping
       if (typeof(ga) !== "undefined") {
         ga("send", {
           hitType: "event",
           eventCategory: "Sign Up Button",
-          eventAction: "createFxaCheckbox.checked",
+          eventAction: "Engage",
           eventLabel: "fx-monitor-homepage-fxa-checkbox",
           options: {
             transport: "beacon",
@@ -529,8 +529,6 @@ function resizeDashboardMargin() {
         });
       }
 
-    if (createFxaCheckbox.checked) {
-      e.preventDefault();
       doOauth(e.target, {emailWatch: true});
       return;
     }
