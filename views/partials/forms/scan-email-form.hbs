@@ -24,7 +24,7 @@
     {{#if featuredBreach}}
       <input type="submit" value="{{ getString "find-out" }}"/>
     {{else}}
-      <input class="add-metrics-flow-values" data-form_type="other" {{> analytics/fxa id="fx-monitor-check-for-breaches-blue-btn" }} type="submit" value="{{ getString "check-for-breaches" }}"/>
+      <input id="checkForBreachesSubmitButton" class="add-metrics-flow-values" data-form_type="other" {{> analytics/fxa id="fx-monitor-check-for-breaches-blue-btn" }} type="submit" value="{{ getString "check-for-breaches" }}"/>
     {{/if}}
       {{> forms/loader }}
   </div>
