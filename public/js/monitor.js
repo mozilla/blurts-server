@@ -484,7 +484,7 @@ function resizeDashboardMargin() {
   }
 
   const createFxaCheckbox = document.getElementById("createFxaCheckbox");
-  const submitBtn = document.getElementById("checkForBreachesSubmitButton");
+  const submitBtn = document.querySelector(".breachesSubmitButton");
 
   if (submitBtn) {
     submitBtn.addEventListener("click", (e)=> {
