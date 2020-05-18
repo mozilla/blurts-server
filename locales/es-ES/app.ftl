@@ -44,7 +44,7 @@ user-unsubscribe-token-error = Se requiere un token para cancelar la suscripció
 user-unsubscribe-token-email-error = Para darse de baja se requiere un token y un hash de correo electrónico.
 user-unsubscribe-title = { -product-name } : Cancelar suscripción
 pwt-section-headline = Contraseñas más robustas = Mejor protección
-landing-headline = Tu derecho a estar a salvo de los criminales informáticos empieza aquí.
+landing-headline = Tu derecho a estar a salvo de los piratas informáticos empieza aquí.
 scan-placeholder = Introduce una dirección de correo electrónico
 scan-submit = Busca tu correo electrónico
 scan-error = Debe ser un correo electrónico válido.
@@ -322,8 +322,8 @@ other-monitored-emails = Otros correos monitorizados
 email-verification-required = Tienes que verificar la dirección de correo
 fxa-primary-email = { -brand-fxa } correo - principal
 what-is-a-website-breach = ¿Qué es una filtración web?
-website-breach-blurb = Una filtración web se da cuando los criminales cibernéticos roban, copian o exponen información personal de cuentas digitales. Suelen ser el resultado de piratas informáticos que encuentran puntos débiles en la seguridad de esas páginas, aunque también puede ser que se filtre información de la cuenta por accidente.
-security-tips-headline = Consejos de seguridad para protegerte frente a hackers
+website-breach-blurb = Una filtración web se da cuando los criminales informáticos roban, copian o exponen información personal de cuentas digitales. Suelen ser el resultado de piratas informáticos que encuentran puntos débiles en la seguridad de esas páginas, aunque también puede ser que se filtre información de la cuenta por accidente.
+security-tips-headline = Consejos de seguridad para protegerte frente a piratas informáticos
 steps-to-protect = Sigue estos pasos para proteger tu identidad en línea
 take-further-steps = Sigue estos consejos para proteger tu identidad
 alert-about-new-breaches = Avisarme cuando haya nuevas filtraciones
@@ -398,7 +398,7 @@ breach-alert-notifications = Notificaciones sobre filtraciones
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Filtración añadida:
-how-hackers-work-desc = Protege tus contraseñas de los criminales cibernéticos, porque eso es lo que más les importa.
+how-hackers-work-desc = Protege tus contraseñas de los criminales informáticos, porque eso es lo que más les importa.
 what-to-do-after-breach-desc = Bloquea tus cuentas para que tu información no caiga en las manos equivocadas.
 create-strong-passwords-desc = Haz que tus contraseñas sean seguras y difíciles de adivinar.
 steps-to-protect-desc = Te ayudamos a entender las amenazas más comunes y cómo saber qué buscar.
@@ -438,7 +438,7 @@ marked-as-resolved-label = Marcado como resuelto
 undo-button = Deshacer
 confirmation-1-subhead = ¡Perfecto! Acabas de resolver tu primera filtración.
 confirmation-1-body = Mantente así. Revisa tu panel de control para ver si queda algo más por hacer.
-confirmation-2-subhead = ¡Tomad eso, hackers!
+confirmation-2-subhead = ¡Tomad eso, piratas informáticos!
 confirmation-2-body = Estás tomando importantes medidas para proteger tus cuentas en línea.
 confirmation-3-subhead = Otro menos. ¡Buen trabajo!
 # This string contains nested markup that becomes a link later in the code.
