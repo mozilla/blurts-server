@@ -473,7 +473,7 @@ function resizeDashboardMargin() {
   const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
   dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));
 
-  const submitBtn = document.querySelector("#scan-user-email input[type='submit']");
+
 
   const acceptedFirstLocalesIncludesEnglish =
   (acceptedLanguages[0].includes("en-US") || acceptedLanguages[0].includes("en"));
@@ -484,37 +484,42 @@ function resizeDashboardMargin() {
   }
 
   const createFxaCheckbox = document.getElementById("createFxaCheckbox");
+  const submitBtn = document.getElementById("checkForBreachesSubmitButton");
 
-  submitBtn.addEventListener("click", (e)=> {
-    // Email Validation
-    const scanForm = document.getElementById("scan-user-email");
-    const scanFormEmailValue = document.querySelector("#scan-user-email input[type='email']").value;
+  if (submitBtn) {
+    submitBtn.addEventListener("click", (e)=> {
+      // Email Validation
+      const scanForm = document.getElementById("scan-user-email");
+      const scanFormEmailValue = document.querySelector("#scan-user-email input[type='email']").value;
 
-    if (scanFormEmailValue.length < 1  || !isValidEmail(scanFormEmailValue)) {
-      scanForm.classList.add("invalid");
-      return;
-    }
-
-    if (createFxaCheckbox.checked) {
-      e.preventDefault();
-
-      // Send GA Ping
-      if (typeof(ga) !== "undefined") {
-        ga("send", {
-          hitType: "event",
-          eventCategory: "Sign Up Button",
-          eventAction: "Engage",
-          eventLabel: "fx-monitor-homepage-fxa-checkbox",
-          options: {
-            transport: "beacon",
-          },
-        });
+      if (scanFormEmailValue.length < 1  || !isValidEmail(scanFormEmailValue)) {
+        scanForm.classList.add("invalid");
+        return;
       }
 
-      doOauth(e.target, {emailWatch: true});
-      return;
-    }
+      if (createFxaCheckbox.checked) {
+        e.preventDefault();
 
-  });
+        // Send GA Ping
+        if (typeof(ga) !== "undefined") {
+          ga("send", {
+            hitType: "event",
+            eventCategory: "Sign Up Button",
+            eventAction: "Engage",
+            eventLabel: "fx-monitor-homepage-fxa-checkbox",
+            options: {
+              transport: "beacon",
+            },
+          });
+        }
+
+        doOauth(e.target, {emailWatch: true});
+        return;
+      }
+
+    });
+  }
+
+
 
 })();
