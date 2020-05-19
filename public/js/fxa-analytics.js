@@ -219,6 +219,7 @@ function setGAListeners(){
       // Custom Dimension to whichever branch is active.
       ga("set", "dimension7", `${document.body.dataset.experiment}`);
       ga("set", "dimension8", `${document.body.dataset.experiment}`);
+      ga("set", "dimension9", `${document.body.dataset.utm_campaign}`);
       ga("set", "campaignName", `${document.body.dataset.utm_campaign}`);
       ga("set", "campaignKeyword", `${document.body.dataset.utm_term}`);
     }
