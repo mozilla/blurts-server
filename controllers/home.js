@@ -28,7 +28,7 @@ async function home(req, res) {
 
   // Growth Experiment
   if (EXPERIMENTS_ENABLED) {
-    experimentBranch = getExperimentBranch(req, "en");
+    experimentBranch = getExperimentBranch(req, false, "en");
     if (!experimentBranch) { req.session.excludeFromExperiment = true; }
     req.session.experimentBranch = experimentBranch;
     isUserInExperiment = (experimentBranch === "vb");
