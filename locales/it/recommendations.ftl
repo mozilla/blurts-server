@@ -17,7 +17,7 @@ rec-pw-1 =
 rec-pw-2-subhead = Aggiorna tutte le credenziali che utilizzano la stessa password
 # Link title
 rec-pw-2-cta-fx = Visualizza le credenziali in { -brand-name }
-rec-pw-2 = Quando riutilizzi le password, una singola violazione può portare a molte altre. Una volta che una password è esposta, gli hacker potrebbero usarla per accedere ad altri account.
+rec-pw-2 = Quando riutilizzi le password, una singola violazione può portare a molte altre. Una volta che una password è compromessa, gli hacker potrebbero usarla per accedere ad altri account.
 # Recommendation subhead
 rec-pw-3-subhead = Usa uno strumento di gestione password per portarle sempre con te
 # Link title

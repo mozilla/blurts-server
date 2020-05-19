@@ -137,10 +137,10 @@ what-data = Quali dati sono stati compromessi:
 sensitive-sites = In che modo vengono gestiti i dati sensibili in { -product-name }?
 sensitive-sites-copy = { -product-name } rivela gli account associati con questo tipo di violazioni solo dopo la verifica dell’indirizzo email. Questo significa che sei l’unica persona in grado di vedere se i tuoi dati sono presenti nella violazione (a meno che qualcun altro abbia accesso alla tua email).
 delayed-reporting-headline = Perché ci è voluto così tanto tempo per segnalare questa violazione?
-delayed-reporting-copy = A volte possono volerci mesi o anni prima che le credenziali esposte in una violazione di dati compaiano nel “dark web”. Le violazioni sono aggiunte al nostro database appena vengono scoperte e verificate.
+delayed-reporting-copy = A volte possono volerci mesi o anni prima che le credenziali compromesse in una violazione di dati compaiano nel “dark web”. Le violazioni sono aggiunte al nostro database appena vengono scoperte e verificate.
 about-fxm-headline = Informazioni su { -product-name }
 about-fxm-blurb = { -product-name } ti avvisa se i tuoi account online sono coinvolti in una violazione di dati. Scopri se sei stato coinvolto in una violazione, ricevi avvisi sulle nuove violazioni e inizia a proteggere i tuoi account online. { -product-name } è realizzato da { -brand-Mozilla }.
-fxm-warns-you = { -product-name } ti avvisa se il tuo indirizzo email è stato esposto in una violazione di dati online. Controlla se i tuoi dati sono esposti, impara come proteggere meglio i tuoi account online e ricevi un avviso se la tua email compare in una nuova violazione.
+fxm-warns-you = { -product-name } ti avvisa se il tuo indirizzo email è stato esposto in una violazione di dati online. Controlla se i tuoi dati sono compromessi, impara come proteggere meglio i tuoi account online e ricevi un avviso se la tua email compare in una nuova violazione.
 # How Firefox Monitor works
 how-fxm-works = Come funziona { -product-name }
 how-fxm-1-headline = Effettua una ricerca di base
@@ -230,8 +230,8 @@ new-breaches-found =
     }
 sign-up-headline-1 = Ricevi avvisi per le violazioni future con un { -brand-fxa }.
 account-not-required = Non è necessario utilizzare il browser { -brand-name } per avere un { -brand-fxa }. Potresti ricevere informazioni relative ai servizi offerti da { -brand-Mozilla }.
-was-your-info-exposed = Le tue informazioni sono state esposte nella violazione di dati di { $breachName }?
-find-out-if = Scopri se i tuoi dati sono stati esposti in questa violazione.
+was-your-info-exposed = Le tue informazioni sono state compromesse nella violazione di dati di { $breachName }?
+find-out-if = Scopri se i tuoi dati sono stati compromessi in questa violazione.
 fb-not-comp = Questa email non è stata coinvolta nella violazione di { $breachName }.
 other-breaches-found =
     { $breachCount ->
@@ -280,8 +280,8 @@ passwords-exposed =
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
     { $breaches ->
-        [one] Violazione di dati conosciuta che ha esposto le tue informazioni
-       *[other] Violazioni di dati conosciute che hanno esposto le tue informazioni
+        [one] Violazione di dati conosciuta che ha compromesso le tue informazioni
+       *[other] Violazioni di dati conosciute che hanno compromesso le tue informazioni
     }
 # Button
 see-additional-breaches = Mostra ulteriori violazioni
