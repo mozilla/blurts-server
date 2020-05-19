@@ -62,6 +62,36 @@ function doOauth(el, {emailWatch = false} = {}) {
     }
   });
 
+  // Growth Experiment: OAuth Entry Point IDs are unique to the experiment.
+  const oAuthEntryPointIds = [
+    // FIXME: Add New Entry Point IDs
+    // "fx-monitor-alert-me-blue-btn-top",
+    // "fx-monitor-alert-me-blue-btn-bottom",
+    "fx-monitor-alert-me-blue-btn",
+    "fx-monitor-alert-me-blue-link",
+  ];
+
+  if (oAuthEntryPointIds.includes(el.dataset.entrypoint)) {
+    // Growth Experiment: Reset UTMs from in-line body tag data elements.
+    ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
+      if (document.body.dataset[key]) {
+        url.searchParams.delete(key);
+        url.searchParams.append(key, document.body.dataset[key]);
+      }
+    });
+
+    if (typeof(ga) !== "undefined") {
+      ga("send", {
+        hitType: "event",
+        eventCategory: document.body.dataset.utm_campaign,
+        eventAction: document.body.dataset.experiment,
+        eventLabel: el.dataset.entrypoint,
+        transport: "beacon",
+      });
+    }
+
+  }
+
   if (!sessionStorage) {
     window.location.assign(url);
     return;

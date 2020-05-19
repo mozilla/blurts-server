@@ -3,7 +3,6 @@
 const AppConstants = require("../app-constants");
 const isemail = require("isemail");
 
-
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const { FluentError } = require("../locale-utils");
@@ -230,6 +229,18 @@ async function getDashboard(req, res) {
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
 
+  let experimentBranch = null;
+  let isUserInExperiment = null;
+  let experimentBranchB = null;
+
+  if (EXPERIMENTS_ENABLED && req.session.experimentBranch) {
+    if (!req.session.excludeFromExperiment) {
+      experimentBranch = req.session.experimentBranch;
+      isUserInExperiment = (experimentBranch === "vb");
+      experimentBranchB = (experimentBranch === "vb" && isUserInExperiment);
+    }
+  }
+
   let lastAddedEmail = null;
 
   req.session.user = await DB.setBreachesLastShownNow(user);
@@ -245,6 +256,9 @@ async function getDashboard(req, res) {
     verifiedEmails,
     unverifiedEmails,
     whichPartial: "dashboards/breaches-dash",
+    experimentBranch,
+    isUserInExperiment,
+    experimentBranchB,
   });
 }
 

@@ -18,9 +18,9 @@ const log = mozlog("controllers.oauth");
 const utmArray = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
 
 // Growth Experiment
-// function getUTMNames() {
-//   return utmArray;
-// }
+function getUTMNames() {
+  return utmArray;
+}
 
 function init(req, res, next, client = FxAOAuthClient) {
   // Set a random state string in a cookie so that we can verify
@@ -70,13 +70,13 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
   const returnURL = new URL("/user/dashboard", AppConstants.SERVER_URL);
 
   // Growth Experiment
-  // if (req.session.utmContents) {
-  //   getUTMNames().forEach(param => {
-  //     if (req.session.utmContents[param]) {
-  //       returnURL.searchParams.append(param, req.session.utmContents[param]);
-  //     }
-  //   });
-  // }
+  if (req.session.utmContents) {
+    getUTMNames().forEach(param => {
+      if (req.session.utmContents[param]) {
+        returnURL.searchParams.append(param, req.session.utmContents[param]);
+      }
+    });
+  }
 
   // Check if user is signing up or signing in,
   // then add new users to db and send email.
