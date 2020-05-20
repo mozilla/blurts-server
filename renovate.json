@@ -1,7 +1,6 @@
 {
   "extends": [
     "config:base",
-    "schedule:weekly",
-    "prHourlyLimit:2"
+    "schedule:weekly"
   ]
 }
