@@ -297,30 +297,16 @@ function addBentoObserver(){
   }
 }
 
-function researchPromoIsVisible() {
-  const researchPromo = document.querySelector(".research-recruitment-wrapper");
-  return (researchPromo && researchPromo.style.display !== "none");
-}
-
 function resizeDashboardMargin() {
   const userDashboard = document.querySelector("#dashboard.dashboard");
   if (!userDashboard) {
     return;
   }
-  const researchPromo = document.querySelector(".research-recruitment-wrapper");
   const getHeaderHeight = () => {
     const header = document.querySelector("header");
     return header.offsetHeight;
   };
-
-  if (researchPromoIsVisible()) {
-    researchPromo.style.paddingTop = `calc(${getHeaderHeight()}px + 2rem`;
-    return;
-  }
-  if (
-    (userDashboard && !researchPromoIsVisible()) ||
-    (userDashboard && !researchPromo)
-    ) {
+  if (userDashboard) {
     userDashboard.style.paddingTop = `calc(${getHeaderHeight()}px + 80px)`;
   }
 }
@@ -441,43 +427,18 @@ function resizeDashboardMargin() {
       });
     }
   }
-  const researchPromo = document.querySelector(".research-recruitment-wrapper");
-  const sendRecruitmentPing = (action, interactionStatus, transportType) => {
-    if (gaAvailable) {
-      ga("send", "event", "Research Recruitment Promo", action, "Recruitment Promo", {nonInteraction: interactionStatus}, {transport: transportType});
-    }
-  };
-  const promoHasAlreadyBeenDismissed = (researchPromo && sessionStorage.getItem("fxMonitorResearchPromo") === "dismissed");
-  const sessionStorageDoesNotExist = (researchPromo && !sessionStorage);
-  const acceptedLanguages = navigator.languages;
-  const acceptedLocalesIncludesEnglish =
-    (acceptedLanguages.includes("en-US") || acceptedLanguages.includes("en"));
-
-  if (promoHasAlreadyBeenDismissed || sessionStorageDoesNotExist || !acceptedLocalesIncludesEnglish) {
-    researchPromo.style.display = "none";
-  }
 
   resizeDashboardMargin();
-
-  if (researchPromoIsVisible()) {
-    sendRecruitmentPing("View", true, "image");
-    document.querySelector(".x-close-promo").addEventListener("click", () => {
-      if (sessionStorage) {
-        sessionStorage.setItem("fxMonitorResearchPromo", "dismissed");
-        researchPromo.classList.add("hidden");
-      }
-      sendRecruitmentPing("Engage", false, "beacon");
-    });
-  }
 
   const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
   dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));
 
 
 
+  const acceptedLanguages = navigator.languages;
   const acceptedFirstLanguageIsEnglish = acceptedLanguages[0].includes("en");
 
-  if (!acceptedFirstLanguageIsEnglish) {
+  if (!acceptedFirstLanguageIsEnglish && document.getElementById("fxaCheckbox")) {
     document.getElementById("fxaCheckbox").style.display = "none";
     return;
   }
