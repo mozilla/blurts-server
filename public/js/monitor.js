@@ -438,7 +438,7 @@ function resizeDashboardMargin() {
   const acceptedLanguages = navigator.languages;
   const acceptedFirstLanguageIsEnglish = acceptedLanguages[0].includes("en");
 
-  if (!acceptedFirstLanguageIsEnglish) {
+  if (!acceptedFirstLanguageIsEnglish && document.getElementById("fxaCheckbox")) {
     document.getElementById("fxaCheckbox").style.display = "none";
     return;
   }
