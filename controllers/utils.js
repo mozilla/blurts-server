@@ -96,8 +96,34 @@ function getExperimentBranch(req, sorterNum = false, language = false) {
   return false;
 }
 
+function getExperimentFlags(req, experimentIsActive) {
+  if (!req) {
+    throw new Error("No request availabe");
+  }
+  const session = req.session;
+
+  const data = {
+    experimentBranch: false,
+    isUserInExperiment: false,
+    experimentBranchB: false,
+  };
+
+  if (session.excludeFromExperiment || !experimentIsActive) {
+    return data;
+  }
+
+  if (session.experimentBranch) {
+    data.experimentBranch = session.experimentBranch;
+    data.isUserInExperiment = (session.experimentBranch === "vb");
+    data.experimentBranchB = (session.experimentBranch === "vb" && data.isUserInExperiment);
+  }
+
+  return data;
+}
+
 module.exports = {
   generatePageToken,
   hasUserSignedUpForRelay,
   getExperimentBranch,
+  getExperimentFlags,
 };

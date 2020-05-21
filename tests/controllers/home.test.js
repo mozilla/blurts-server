@@ -86,49 +86,48 @@ test("Experiment Cohort Assignment Unit Test", () => {
   };
 
 // The session is excluded from the experiment because the set language is German.
-  let experimentBranch = getExperimentBranch(mockRequest, false, "en");
-  expect(experimentBranch).toBeFalsy();
+  getExperimentBranch(mockRequest, false, "en");
+  expect(mockRequest.session.experimentFlags.experimentBranch).toBeFalsy();
 
   mockRequestSessionReset(mockRequest);
-
   // The session is assigned to the control group when the coin flip is 0;
   let experimentNumber = 0;
 
-  experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
-  expect(experimentBranch).toBe("va");
+  getExperimentBranch(mockRequest, experimentNumber);
+  expect(mockRequest.session.experimentFlags.experimentBranch).toBe("va");
 
   mockRequestSessionReset(mockRequest);
 
   // The session is assigned to the control group when the coin flip is 28;
   experimentNumber = 28;
-  experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
-  expect(experimentBranch).toBe("va");
+  getExperimentBranch(mockRequest, experimentNumber);
+  expect(mockRequest.session.experimentFlags.experimentBranch).toBe("va");
 
   mockRequestSessionReset(mockRequest);
 
   // The session is assigned to the treatment group when the coin flip is 29;
   experimentNumber = 29;
-  experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
-  expect(experimentBranch).toBe("vb");
+  getExperimentBranch(mockRequest, experimentNumber);
+  expect(mockRequest.session.experimentFlags.experimentBranch).toBe("vb");
 
   mockRequestSessionReset(mockRequest);
 
   // The session is assigned to the treatment group when the coin flip is 57;
   experimentNumber = 57;
-  experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
-  expect(experimentBranch).toBe("vb");
+  getExperimentBranch(mockRequest, experimentNumber);
+  expect(mockRequest.session.experimentFlags.experimentBranch).toBe("vb");
 
   mockRequestSessionReset(mockRequest);
 
   // The session is assigned to the treatment group when the coin flip is 58
   experimentNumber = 58;
-  experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
-  expect(experimentBranch).toBeFalsy();
+  getExperimentBranch(mockRequest, experimentNumber);
+  expect(mockRequest.session.experimentFlags.experimentBranch).toBeFalsy();
 
   mockRequestSessionReset(mockRequest);
 
   // The session is excluded from the experiment when the coin flip is 99
   experimentNumber = 99;
-  experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
-  expect(experimentBranch).toBeFalsy();
+  getExperimentBranch(mockRequest, experimentNumber);
+  expect(mockRequest.session.experimentFlags.experimentBranch).toBeFalsy();
 });

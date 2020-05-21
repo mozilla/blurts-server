@@ -5,7 +5,7 @@ const { LocaleUtils } = require("./../locale-utils");
 function makeLanding(args) {
   const locales = args.data.root.req.supportedLocales;
   const featuredBreach = args.data.root.featuredBreach;
-  const experimentBranchB = args.data.root.experimentBranchB;
+  const experimentBranchB = args.data.root.experimentFlags.experimentBranchB;
 
   const landingCopy = {};
 
