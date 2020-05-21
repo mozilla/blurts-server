@@ -6,6 +6,7 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:node/recommended",
+    "@mozilla-protocol/eslint-config",
   ],
   overrides: [
     {
