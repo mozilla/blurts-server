@@ -1,28 +1,28 @@
 "use strict";
 
 class HomePage {
-  /* Represents the Home page */
+    /* Represents the Home page */
 
-  waitForPageToLoad() {
-    this.monitorLogo.waitForExist(5000);
-    return this;
-  }
+    waitForPageToLoad() {
+        this.monitorLogo.waitForExist(5000);
+        return this;
+    }
 
-  get monitorLogo() { return $(".fx-monitor-logotype"); }
-  get breachCard() { return new BreachCard(); }
-  get breachEmailAddress() { return $("#scan-email"); }
-  get checkBreachesButton() {
-    $(".input-group-button > input:nth-child(1)").click();
-    const ScanResultsPage = require("./scanResults.page");
+    get monitorLogo() { return $(".fx-monitor-logotype"); }
+    get breachCard() { return new BreachCard(); }
+    get breachEmailAddress() { return $("#scan-email"); }
+    get checkBreachesButton() {
+        $(".input-group-button > input:nth-child(1)").click();
+        const ScanResultsPage = require("./scanResults.page");
 
-    return ScanResultsPage.waitForPageToLoad();
-  }
+        return ScanResultsPage.waitForPageToLoad();
+    }
 }
 
 class BreachCard {
-  /* Represents the Breach card region */
+    /* Represents the Breach card region */
 
-  get latestBreachCard() { return $(".latest-breach"); }
+    get latestBreachCard() { return $(".latest-breach"); }
 
 }
 

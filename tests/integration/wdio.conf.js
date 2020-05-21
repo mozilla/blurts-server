@@ -56,11 +56,11 @@ exports.config = {
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
     capabilities: [{
-      browserName: "firefox",
-      "moz:firefoxOptions": {
-        log: { level: "trace" },
-        prefs: {},
-      },
+        browserName: "firefox",
+        "moz:firefoxOptions": {
+            log: { level: "trace" },
+            prefs: {},
+        },
     }],
     //
     // ===================
@@ -110,13 +110,13 @@ exports.config = {
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
     services: [
-      "firefox-profile", "selenium-standalone", ["image-comparison", {
-        baselineFolder: join(process.cwd(), "./tests/integration/tests/Visual_Baseline/"),
-        formatImageName: process.env.MOZ_HEADLESS ? "{tag}-headless-{width}x{height}" : "{tag}-{width}x{height}",
-        screenshotPath: join(process.cwd(), ".tmp/"),
-        savePerInstance: true,
+        "firefox-profile", "selenium-standalone", ["image-comparison", {
+            baselineFolder: join(process.cwd(), "./tests/integration/tests/Visual_Baseline/"),
+            formatImageName: process.env.MOZ_HEADLESS ? "{tag}-headless-{width}x{height}" : "{tag}-{width}x{height}",
+            screenshotPath: join(process.cwd(), ".tmp/"),
+            savePerInstance: true,
         // autoSaveBaseline: true,
-      }],
+        }],
     ],
 
     // Framework you want to run your specs with.
@@ -173,15 +173,15 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
     before: function (capabilities, specs) {
-      const chai = require("chai");
+        const chai = require("chai");
 
-      global.expect = chai.expect;
-      chai.Should();
+        global.expect = chai.expect;
+        chai.Should();
 
-      global.primaryEmail = "test@mailinator.com";
-      global.secondaryEmail = "test" + Math.random() + "@mailinator.com";
-      global.monitorFxaPassword = process.env.MONITOR_FXA_PASSWORD || "a_secure_password ;)";
-      browser.setWindowSize(1920, 1080);
+        global.primaryEmail = "test@mailinator.com";
+        global.secondaryEmail = "test" + Math.random() + "@mailinator.com";
+        global.monitorFxaPassword = process.env.MONITOR_FXA_PASSWORD || "a_secure_password ;)";
+        browser.setWindowSize(1920, 1080);
 
     },
     /**
@@ -218,11 +218,11 @@ exports.config = {
      * Function to be executed after a test (in Mocha/Jasmine).
      */
     afterTest: function(test, context, { error, result, duration, passed, retries }) {
-      /* Take screenshots for debugging on circleci */
-      if ("ERROR_SHOTS" in process.env) {
-        const path =  join(process.cwd(), "./tests/integration/errorShots/error-"+Date.now()+".png");
-        browser.saveScreenshot(path);
-      }
+        /* Take screenshots for debugging on circleci */
+        if ("ERROR_SHOTS" in process.env) {
+            const path =  join(process.cwd(), "./tests/integration/errorShots/error-"+Date.now()+".png");
+            browser.saveScreenshot(path);
+        }
     },
 
 

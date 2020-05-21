@@ -8,8 +8,8 @@ const PROMPT = "\nEnter an email address to get the SHA1 hash as it would appear
 console.log(PROMPT);
 
 stdin.addListener("data", data => {
-  const trimmedString = data.toString().trim();
-  const sha1 = getSha1(trimmedString);
-  console.log(`You entered: [${trimmedString}], sha1 hash of lowercase: ${sha1}`);
-  console.log(PROMPT);
+    const trimmedString = data.toString().trim();
+    const sha1 = getSha1(trimmedString);
+    console.log(`You entered: [${trimmedString}], sha1 hash of lowercase: ${sha1}`);
+    console.log(PROMPT);
 });

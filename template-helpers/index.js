@@ -14,18 +14,18 @@ const scanResults = require("./scan-results");
 const signUpBanners = require("./sign-up-banners");
 
 module.exports = {
-  helpers: Object.assign(
-    articles,
-    breachDetail,
-    breaches,
-    breachStats,
-    dashboard,
-    emails,
-    footer,
-    header,
-    homepage,
-    legacyHelpers,
-    scanResults,
-    signUpBanners,
-  ),
+    helpers: Object.assign(
+        articles,
+        breachDetail,
+        breaches,
+        breachStats,
+        dashboard,
+        emails,
+        footer,
+        header,
+        homepage,
+        legacyHelpers,
+        scanResults,
+        signUpBanners,
+    ),
 };

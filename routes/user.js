@@ -7,10 +7,10 @@ const csrf = require("csurf");
 
 const { asyncMiddleware, requireSessionUser } = require("../middleware");
 const {
-  add, verify, logout,
-  getDashboard, getPreferences, getBreachStats,
-  removeEmail, resendEmail, updateCommunicationOptions,
-  getUnsubscribe, postUnsubscribe, getRemoveFxm, postRemoveFxm, postResolveBreach,
+    add, verify, logout,
+    getDashboard, getPreferences, getBreachStats,
+    removeEmail, resendEmail, updateCommunicationOptions,
+    getUnsubscribe, postUnsubscribe, getRemoveFxm, postRemoveFxm, postResolveBreach,
 } = require("../controllers/user");
 
 const router = express.Router();
