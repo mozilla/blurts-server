@@ -26,6 +26,7 @@ async function subscribeLowercaseHashToHIBP(emailAddress) {
         const lowerCasedSha1 = await subscribeLowercaseHashToHIBP(subRecord.primary_email);
         await knex("subscribers")
             .update({
+                // eslint-disable-next-line camelcase
                 primary_sha1: lowerCasedSha1,
             })
             .where("id", subRecord.id);

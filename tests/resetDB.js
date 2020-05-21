@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 "use strict";
 
 const Knex = require("knex");

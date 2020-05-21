@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 "use strict";
 const { URL } = require("url");
 

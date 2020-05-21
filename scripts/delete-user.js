@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 "use strict";
 
 const readline = require("readline");

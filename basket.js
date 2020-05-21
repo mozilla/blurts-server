@@ -17,6 +17,7 @@ const Basket = {
             newsletters: AppConstants.BASKET_NEWSLETTER,
             optin: "Y",
             "api-key": AppConstants.BASKET_API_KEY,
+            // eslint-disable-next-line camelcase
             source_url: "monitor.firefox.com",
         };
         const url = `${AppConstants.BASKET_URL}/news/subscribe/`;
