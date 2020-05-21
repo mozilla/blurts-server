@@ -6,9 +6,8 @@ const HIBP = require("./hibp");
 const sha1 = require("./sha1-utils");
 
 // Growth Experiment
-// const { getExperimentBranch } = require("./controllers/utils");
-// const AppConstants = require("./app-constants");
-// const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
+const AppConstants = require("./app-constants");
+const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
 
 const scanResult = async(req, selfScan=false) => {
 
@@ -16,18 +15,19 @@ const scanResult = async(req, selfScan=false) => {
   let scannedEmail = null;
 
   // Growth Experiment
-  // let experimentBranch = null;
-  // let isUserInExperiment = null;
-  // let experimentBranchB = null;
+  let experimentBranch = null;
+  let isUserInExperiment = null;
+  let experimentBranchB = null;
 
   // Growth Experiment
-  // if (EXPERIMENTS_ENABLED) {
-  //   experimentBranch = getExperimentBranch(req, "en");
-  //   if (!experimentBranch) { req.session.excludeFromExperiment = true; }
-  //   req.session.experimentBranch = experimentBranch;
-  //   isUserInExperiment = (experimentBranch === "vb");
-  //   experimentBranchB = (experimentBranch === "vb" && isUserInExperiment);
-  // }
+  if (EXPERIMENTS_ENABLED && req.session.experimentBranch) {
+    if (!req.session.excludeFromExperiment) {
+      experimentBranch = req.session.experimentBranch;
+      isUserInExperiment = (experimentBranch === "vb");
+      experimentBranchB = (experimentBranch === "vb" && isUserInExperiment);
+    }
+  }
+
 
   const title = req.fluentFormat("scan-title");
   let foundBreaches = [];
@@ -102,7 +102,6 @@ const scanResult = async(req, selfScan=false) => {
     }
   }
 
-
   return {
     title,
     foundBreaches,
@@ -114,9 +113,9 @@ const scanResult = async(req, selfScan=false) => {
     fullReport,
     userDash,
     scannedEmailId,
-    // experimentBranch,
-    // isUserInExperiment,
-    // experimentBranchB,
+    experimentBranch,
+    isUserInExperiment,
+    experimentBranchB,
   };
 };
 
