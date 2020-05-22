@@ -161,7 +161,8 @@ const DB = {
     },
 
     // Used internally.
-    async _addEmailHash(sha1, email, signupLanguage, verified = false) {
+    // eslint-disable-next-line camelcase
+    async _addEmailHash(sha1, email, signup_language, verified = false) {
         try {
             return await this._getSha1EntryAndDo(sha1, async aEntry => {
                 // Entry existed, patch the email value if supplied.
@@ -181,9 +182,10 @@ const DB = {
                 return aEntry;
             }, async () => {
                 // Always add a verification_token value
-                const verificationToken = uuidv4();
+                // eslint-disable-next-line camelcase
+                const verification_token = uuidv4();
                 const res = await knex("subscribers")
-                    .insert({ primary_sha1: getSha1(email.toLowerCase()), primary_email: email, signupLanguage, primary_verification_token: verificationToken, primary_verified: verified })
+                    .insert({ primary_sha1: getSha1(email.toLowerCase()), primary_email: email, signup_language, primary_verification_token: verification_token, primary_verified: verified })
                     .returning("*");
                 return res[0];
             });
