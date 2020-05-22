@@ -23,6 +23,8 @@ LocaleUtils.loadLanguagesIntoApp(app);
     let emailAddress,
         breachName;
     const resp = {
+        // FIXME: no op
+        // eslint-disable-next-line no-empty-function
         status: () => {},
         json: (arg) => {
             console.log(JSON.stringify(arg));

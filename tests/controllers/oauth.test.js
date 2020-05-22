@@ -54,7 +54,7 @@ test("confirmed request checks session cookie, calls FXA for token and email, ad
     const mockFxAClient = { code : { getToken: jest.fn().mockReturnValueOnce({ accessToken: "testToken"}) } };
     got.mockResolvedValue({ body: `{"email": "${testFxAEmail}"}` });
 
-    await confirmed(mockRequest, mockResponse, () => {}, mockFxAClient);
+    await confirmed(mockRequest, mockResponse, mockFxAClient);
 
     const mockFxACallArgs = mockFxAClient.code.getToken.mock.calls[0];
     expect(mockFxACallArgs[0]).toBe(mockRequest.originalUrl);
@@ -87,7 +87,7 @@ test("confirmed request checks session cookie, calls FXA for token and email, re
     got.mockResolvedValue({ body: `{"email": "firefoxaccount@test.com"}` });
     /*eslint-enable quotes*/
 
-    await confirmed(mockRequest, mockResponse, () => {}, mockFxAClient);
+    await confirmed(mockRequest, mockResponse, mockFxAClient);
 
     const mockFxACallArgs = mockFxAClient.code.getToken.mock.calls[0];
     expect(mockFxACallArgs[0]).toBe(mockRequest.originalUrl);

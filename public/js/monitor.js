@@ -15,6 +15,8 @@ if (typeof TextEncoder === "undefined") {
 
 
 function findAncestor(el, cls) {
+    // FIXME: no op
+    // eslint-disable-next-line no-empty
     while ((el = el.parentElement) && !el.classList.contains(cls)){}
     return el;
 }
@@ -362,6 +364,8 @@ function resizeDashboardMargin() {
 }
 
 ( async() => {
+    // FIXME: no op
+    // eslint-disable-next-line no-empty-function
     document.addEventListener("touchstart", function(){}, true);
     const win = window;
     const header = document.getElementById("header");

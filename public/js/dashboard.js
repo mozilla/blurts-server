@@ -21,9 +21,7 @@ async function sendForm(action, formBody={}) {
 
 async function sendCommunicationOption(e) {
     const { formAction, commOption, csrfToken } = e.target.dataset;
-    sendForm(formAction, { communicationOption: commOption, _csrf: csrfToken })
-        .then(data => {}) /*decide what to do with data */
-        .catch(e => {})/* decide how to handle errors */;
+    sendForm(formAction, { communicationOption: commOption, _csrf: csrfToken });
 }
 
 async function resendEmail(e) {
@@ -37,8 +35,7 @@ async function resendEmail(e) {
                 const span = resendEmailBtn.nextElementSibling;
                 span.classList.remove("hide");
             }, 1000);
-        }) /*decide what to do with data */
-        .catch(e => {})/* decide how to handle errors */;
+        });
 }
 
 function hideShowOverflowBreaches(showBreachesButton, overflowBreaches) {
