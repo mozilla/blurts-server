@@ -4,7 +4,6 @@
 
 "use strict";
 
-
 describe("Firefox Monitor homepage", function() {
     this.retries(2);
 

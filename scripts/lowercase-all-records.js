@@ -1,6 +1,5 @@
 "use strict";
 
-
 const _knex = require("knex");
 const knexConfig = require("../db/knexfile");
 const knex = _knex(knexConfig);
@@ -8,14 +7,12 @@ const knex = _knex(knexConfig);
 const HIBP = require("../hibp");
 const getSha1 = require("../sha1-utils");
 
-
 async function subscribeLowercaseHashToHIBP(emailAddress) {
     const lowerCasedEmail = emailAddress.toLowerCase();
     const lowerCasedSha1 = getSha1(lowerCasedEmail);
     await HIBP.subscribeHash(lowerCasedSha1);
     return lowerCasedSha1;
 }
-
 
 (async () => {
     const subRecordsWithUpperChars = await knex.select("id", "primary_email").from("subscribers")

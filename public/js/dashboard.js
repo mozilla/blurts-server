@@ -1,7 +1,6 @@
 "use strict";
 /* global findAncestor */
 
-
 async function sendForm(action, formBody={}) {
     const response = await fetch(`/user/${action}`, {
         headers: {
@@ -52,7 +51,6 @@ function showRemainingBreaches(e) {
     const additionalBreaches = emailCard.querySelector(".show-additional-breaches");
     hideShowOverflowBreaches(showBreachesButton, additionalBreaches);
 }
-
 
 if (document.querySelector(".email-card")) {
 

@@ -9,9 +9,7 @@ const HIBP = require("../hibp");
 const { LocaleUtils } = require ("../locale-utils");
 const mozlog = require("../log");
 
-
 const log = mozlog("controllers.hibp");
-
 
 // Get addresses and language from either subscribers or
 // email_addresses fields
@@ -127,13 +125,10 @@ async function notify (req, res) {
     );
 }
 
-
 async function breaches (req, res, next) {
     res.append("Last-Modified", req.app.locals.mostRecentBreachDateTime);
     res.json(req.app.locals.breaches);
 }
-
-
 
 module.exports = {
     notify,

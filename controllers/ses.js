@@ -6,10 +6,8 @@ const DB = require("../db/DB");
 
 const mozlog = require("../log");
 
-
 const validator = new MessageValidator();
 const log = mozlog("controllers.ses");
-
 
 async function notification(req, res) {
     const message = JSON.parse(req.body);
@@ -32,7 +30,6 @@ async function notification(req, res) {
     });
 }
 
-
 async function handleNotification(notification) {
     log.info("received-SNS", { id: notification.MessageId });
     const message = JSON.parse(notification.Message);
@@ -44,7 +41,6 @@ async function handleNotification(notification) {
     }
 }
 
-
 async function handleFxAMessage(message) {
     switch (message.event) {
     case "delete":
@@ -55,11 +51,9 @@ async function handleFxAMessage(message) {
     }
 }
 
-
 async function handleDeleteMessage(message) {
     await DB.deleteSubscriberByFxAUID(message.uid);
 }
-
 
 async function handleSESMessage(message) {
     switch (message.eventType) {
@@ -74,7 +68,6 @@ async function handleSESMessage(message) {
     }
 }
 
-
 async function handleBounceMessage(message) {
     const bounce = message.bounce;
     if (bounce.bounceType === "Permanent") {
@@ -82,12 +75,10 @@ async function handleBounceMessage(message) {
     }
 }
 
-
 async function handleComplaintMessage(message) {
     const complaint = message.complaint;
     return await removeSubscribersFromDB(complaint.complainedRecipients);
 }
-
 
 async function removeSubscribersFromDB(recipients) {
     for (const recipient of recipients) {

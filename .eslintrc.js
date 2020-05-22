@@ -58,6 +58,7 @@ module.exports = {
     "eol-last": ["error", "always"],
     "eqeqeq": "error",
     "no-console": ["error", {allow: ["error", "info", "warn"]}],
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
     "no-process-env": "error",
     "no-trailing-spaces": "error",
     "no-unused-vars": ["error", {vars: "all", args: "none", ignoreRestSiblings: false}],

@@ -37,7 +37,6 @@ const BreachRoutes= require("./routes/breach-details");
 const log = mozlog("server");
 const app = express();
 
-
 function devOrHeroku() {
     return ["dev", "heroku"].includes(AppConstants.NODE_ENV);
 }

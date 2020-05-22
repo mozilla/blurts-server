@@ -1,14 +1,11 @@
 "use strict";
 
-
 const DB  = require("../db/DB");
 const { FXA } = require("../lib/fxa");
 const { requireSessionUser } = require("../middleware");
 const { TEST_SUBSCRIBERS } = require("../db/seeds/test_subscribers");
 
-
 require("./resetDB");
-
 
 test("requireSessionUser calls getProfileData, updateFxAProfileData, and sets req.user", async () => {
     const req = { session: { user: TEST_SUBSCRIBERS.firefox_account } };
@@ -34,7 +31,6 @@ test("requireSessionUser calls getProfileData, updateFxAProfileData, and sets re
     expect(mockUpdateFxAProfileDataCalls.length).toBe(1);
 });
 
-
 test("requireSessionUser clears session user and redirects to / if FXA error", async () => {
     const req = { session: { user: TEST_SUBSCRIBERS.firefox_account } };
     const res = { redirect: jest.fn() };
@@ -50,7 +46,6 @@ test("requireSessionUser clears session user and redirects to / if FXA error", a
     expect(mockRedirectCallArgs[0]).toBe("/");
 });
 
-
 test("requireSessionUser redirects to /oauth/init if no user", async () => {
     const req = { session: { } };
     const res = { redirect: jest.fn() };
@@ -61,7 +56,6 @@ test("requireSessionUser redirects to /oauth/init if no user", async () => {
     const mockRedirectCallArgs = res.redirect.mock.calls[0];
     expect(mockRedirectCallArgs[0]).toBe("/oauth/init?");
 });
-
 
 test("requireSessionUser redirect preserves utm params", async () => {
     const req = { session: { }, query: {"utm_campaign": "direct-to-dashboard"} };

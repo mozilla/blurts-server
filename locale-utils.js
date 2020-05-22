@@ -11,14 +11,12 @@ const { FluentBundle } = require("fluent");
 const AppConstants = require("./app-constants");
 const mozlog = require("./log");
 
-
 const log = mozlog("locale-utils");
 
 const localesDir = "locales";
 
 const availableLanguages = [];
 const fluentBundles = {};
-
 
 class FluentError extends Error {
     constructor(fluentID = null, ...params) {
@@ -32,7 +30,6 @@ class FluentError extends Error {
         this.message = fluentID;
     }
 }
-
 
 const LocaleUtils = {
     init() {

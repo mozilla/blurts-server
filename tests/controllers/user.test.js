@@ -14,11 +14,9 @@ const { TEST_SUBSCRIBERS, TEST_EMAIL_ADDRESSES } = require("../../db/seeds/test_
 
 require("../resetDB");
 
-
 jest.mock("../../email-utils");
 
 const mockRequest = { fluentFormat: jest.fn() };
-
 
 function expectResponseRenderedSubpagePartial(resp, partial) {
     expect(resp.statusCode).toEqual(200);
@@ -27,7 +25,6 @@ function expectResponseRenderedSubpagePartial(resp, partial) {
     expect(renderCallArgs[0]).toEqual("subpage");
     expect(renderCallArgs[1].whichPartial).toEqual(partial);
 }
-
 
 test("user getDashboard with valid user renders dashboard with verified emails and their breaches", async () => {
     const testSubscriberEmail = TEST_SUBSCRIBERS.firefox_account.primary_email;
@@ -60,7 +57,6 @@ test("user getDashboard with valid user renders dashboard with verified emails a
     expect(renderCallContext.unverifiedEmails.length).toEqual(1);
     expect(renderCallContext.verifiedEmails[0].breaches.length).toEqual(mockReturnedBreaches.length);
 });
-
 
 test("user getDashboard with valid user renders dashboard with verified emails and resolved breaches", async () => {
     const testSubscriberEmail = TEST_SUBSCRIBERS.firefox_account.primary_email;
@@ -98,7 +94,6 @@ test("user getDashboard with valid user renders dashboard with verified emails a
     const resolvedBreaches = renderCallContext.verifiedEmails[0].breaches.filter(b => b.IsResolved);
     expect(resolvedBreaches.length).toEqual(1);
 });
-
 
 test("user add POST with email adds unverified subscriber and sends verification email", async () => {
     const testUserAddEmail = "addingnewemail@test.com";
@@ -144,7 +139,6 @@ test("user add POST with email adds unverified subscriber and sends verification
     expect(mockCallArgs).toContain("default_email");
 });
 
-
 test("user add POST with upperCaseAddress adds email_address record with lowercaseaddress sha1", async () => {
     const testUserAddEmail = "addingUpperCaseEmail@test.com";
     const testSubscriberEmail = "firefoxaccount@test.com";
@@ -179,7 +173,6 @@ test("user add POST with upperCaseAddress adds email_address record with lowerca
     expect(testSubscriberEmailAddressHashes.includes(getSha1(testUserAddEmail))).toBeTruthy();
 });
 
-
 test("user resendEmail with valid session and email id resets email_address record and sends new verification email", async () => {
     const testSubscriberEmail = TEST_SUBSCRIBERS.firefox_account.primary_email;
     const testSubscriber = await DB.getSubscriberByEmail(testSubscriberEmail);
@@ -207,7 +200,6 @@ test("user resendEmail with valid session and email id resets email_address reco
     expect(startingTestEmailAddress.verification_token).not.toEqual(resetTestEmailAddress.verification_token);
 });
 
-
 test("user updateCommunicationOptions request with valid session updates DB", async () => {
     const testSubscriberEmail = TEST_SUBSCRIBERS.firefox_account.primary_email;
     const testSubscriber = await DB.getSubscriberByEmail(testSubscriberEmail);
@@ -228,7 +220,6 @@ test("user updateCommunicationOptions request with valid session updates DB", as
     const updatedTestSubscriber = await DB.getSubscriberByEmail(testSubscriberEmail);
     expect(updatedTestSubscriber.all_emails_to_primary).toBeFalsy();
 
-
     req.body = { communicationOption: 1 };
 
     // Call code-under-test
@@ -239,9 +230,7 @@ test("user updateCommunicationOptions request with valid session updates DB", as
     expect(againUpdatedTestSubscriber.all_emails_to_primary).toBeTruthy();
 });
 
-
 // TODO: more tests of resendEmail failure scenarios
-
 
 test("user add request with invalid email throws error", async () => {
     const testSubscriberEmail = "firefoxaccount@test.com";
@@ -260,7 +249,6 @@ test("user add request with invalid email throws error", async () => {
     // Call code-under-test
     await expect(user.add(req, resp)).rejects.toThrow("user-add-invalid-email");
 });
-
 
 test("user verify request with valid token but no session renders email verified page", async () => {
     const validToken = TEST_EMAIL_ADDRESSES.unverified_email_on_firefox_account.verification_token;
@@ -284,7 +272,6 @@ test("user verify request with valid token but no session renders email verified
     const emailAddress = await DB.getEmailByToken(validToken);
     expect(emailAddress.verified).toBeTruthy();
 });
-
 
 test("user verify request with valid token verifies user and redirects to dashboard", async () => {
     const validToken = TEST_EMAIL_ADDRESSES.unverified_email_on_firefox_account.verification_token;
@@ -313,7 +300,6 @@ test("user verify request with valid token verifies user and redirects to dashbo
     expect(emailAddress.verified).toBeTruthy();
 });
 
-
 test("user verify request with valid token but wrong user session does NOT verify email address", async () => {
     const validToken = TEST_EMAIL_ADDRESSES.unverified_email_on_firefox_account.verification_token;
     const testSubscriberEmail = "verifiedemail@test.com";
@@ -335,7 +321,6 @@ test("user verify request with valid token but wrong user session does NOT verif
     const emailAddress = await DB.getEmailByToken(validToken);
     expect(emailAddress.verified).toBeFalsy();
 });
-
 
 test("user verify request for already verified user doesn't send extra email", async () => {
     const alreadyVerifiedToken = TEST_EMAIL_ADDRESSES.firefox_account.verification_token;
@@ -359,7 +344,6 @@ test("user verify request for already verified user doesn't send extra email", a
     expect(EmailUtils.sendEmail).not.toHaveBeenCalled();
 });
 
-
 test("user verify request with invalid token returns error", async () => {
     const invalidToken = "123456789";
     const testSubscriberEmail = "firefoxaccount@test.com";
@@ -378,7 +362,6 @@ test("user verify request with invalid token returns error", async () => {
     await expect(user.verify(req, resp)).rejects.toThrow("error-not-subscribed");
 });
 
-
 test("user unsubscribe GET request with valid token and hash for primary/subscriber record returns 302 to preferences", async () => {
     // from db/seeds/test_subscribers.js
     const subscriberToken = TEST_SUBSCRIBERS.firefox_account.primary_verification_token;
@@ -394,7 +377,6 @@ test("user unsubscribe GET request with valid token and hash for primary/subscri
     expect(resp.statusCode).toEqual(302);
     expect(resp._getRedirectUrl()).toEqual("/user/preferences");
 });
-
 
 test("user unsubscribe GET request with valid token and hash for a secondary email_addresses record renders unsubscribe", async () => {
     // from db/seeds/test_subscribers.js
@@ -412,7 +394,6 @@ test("user unsubscribe GET request with valid token and hash for a secondary ema
     expectResponseRenderedSubpagePartial(resp, "subpages/unsubscribe");
 });
 
-
 test("user unsubscribe GET request with valid token and hash for an old pre-FxA subscriber record renders unsubscribe", async () => {
     // from db/seeds/test_subscribers.js
     const subscriberToken = TEST_SUBSCRIBERS.verified_email.primary_verification_token;
@@ -428,7 +409,6 @@ test("user unsubscribe GET request with valid token and hash for an old pre-FxA 
 
     expectResponseRenderedSubpagePartial(resp, "subpages/unsubscribe");
 });
-
 
 test("user unsubscribe POST request with valid session and emailId for email_address removes from DB", async () => {
     const validToken = TEST_EMAIL_ADDRESSES.firefox_account.verification_token;
@@ -447,7 +427,6 @@ test("user unsubscribe POST request with valid session and emailId for email_add
     expect(emailAddress).toBeUndefined();
 });
 
-
 test("user removeEmail POST request with valid session but wrong emailId for email_address throws error and doesnt remove email", async () => {
     const testEmailAddress = TEST_EMAIL_ADDRESSES.all_emails_to_primary;
     const testEmailId = testEmailAddress.id;
@@ -465,7 +444,6 @@ test("user removeEmail POST request with valid session but wrong emailId for ema
     expect(emailAddress.id).toEqual(testEmailId);
 });
 
-
 test("user/remove-fxm GET request with valid session returns 200 and renders remove_fxm", async () => {
     // Set up mocks
     const req = { fluentFormat: jest.fn(), csrfToken: jest.fn(), session: { user: TEST_SUBSCRIBERS.firefox_account }};
@@ -477,7 +455,6 @@ test("user/remove-fxm GET request with valid session returns 200 and renders rem
 
     expectResponseRenderedSubpagePartial(resp, "subpages/remove_fxm");
 });
-
 
 test("user remove-fxm POST request with valid session removes from DB and revokes FXA OAuth token", async () => {
     const req = {
@@ -498,7 +475,6 @@ test("user remove-fxm POST request with valid session removes from DB and revoke
     expect(req.session.reset).toHaveBeenCalledTimes(1);
 });
 
-
 test("user unsubscribe GET request with invalid token returns error", async () => {
     const invalidToken = "123456789";
 
@@ -511,7 +487,6 @@ test("user unsubscribe GET request with invalid token returns error", async () =
 
     await expect(user.getUnsubscribe(req, resp)).rejects.toThrow("error-not-subscribed");
 });
-
 
 test("user unsubscribe POST request with valid hash and token for email_address removes from DB", async () => {
     const validToken = TEST_EMAIL_ADDRESSES.firefox_account.verification_token;
@@ -530,7 +505,6 @@ test("user unsubscribe POST request with valid hash and token for email_address 
     expect(emailAddress).toBeUndefined();
 });
 
-
 test("user unsubscribe POST request with invalid token and throws error", async () => {
     const invalidToken = "123456789";
     const invalidHash = "0123456789abcdef";
@@ -540,7 +514,6 @@ test("user unsubscribe POST request with invalid token and throws error", async 
 
     await expect(user.postUnsubscribe(req, resp)).rejects.toThrow("error-not-subscribed");
 });
-
 
 test("user breach-stats POST request with no token responds unauthorized", async () => {
     const req = { };
@@ -558,7 +531,6 @@ test("user breach-stats POST request with no token responds unauthorized", async
     expect(statusCallArgs[0]).toEqual(401);
     expect(jsonCallArgs[0].errorMessage).toMatch("Authorization");
 });
-
 
 test("user breach-stats POST request with FXA http error responds with FXA error", async () => {
     const mockFXAStatusCode = "1234";
@@ -580,7 +552,6 @@ test("user breach-stats POST request with FXA http error responds with FXA error
     expect(jsonCallArgs[0].errorMessage).toMatch("FXA returned message");
 });
 
-
 test("user breach-stats POST request with FXA response that has no Monitor scope responds unauthorized", async () => {
     const req = { token: "test-token" };
     const mockStatus = jest.fn();
@@ -599,7 +570,6 @@ test("user breach-stats POST request with FXA response that has no Monitor scope
     expect(statusCallArgs[0]).toEqual(401);
     expect(jsonCallArgs[0].errorMessage).toMatch("Monitor scope");
 });
-
 
 test("user breach-stats POST request with FXA response for a user unknown to Monitor returns 404", async () => {
     const req = { token: "test-token" };
@@ -624,7 +594,6 @@ test("user breach-stats POST request with FXA response for a user unknown to Mon
     expect(statusCallArgs[0]).toEqual(404);
     expect(jsonCallArgs[0].errorMessage).toMatch("Cannot find Monitor subscriber");
 });
-
 
 test("user breach-stats POST request with FXA response for Monitor user returns breach stats json", async () => {
     const testSubscriberFxAUID = TEST_SUBSCRIBERS.firefox_account.fxa_uid;
@@ -655,7 +624,6 @@ test("user breach-stats POST request with FXA response for Monitor user returns 
         passwords: expect.anything(),
     });
 });
-
 
 test("user breach-stats POST request with includeResolved returns breach stats json with resolved", async () => {
     const testSubscriberFxAUID = TEST_SUBSCRIBERS.firefox_account.fxa_uid;

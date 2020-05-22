@@ -7,11 +7,8 @@ const { FluentError } = require("./locale-utils");
 const mozlog = require("./log");
 const pkg = require("./package.json");
 
-
 const HIBP_USER_AGENT = `${pkg.name}/${pkg.version}`;
 const log = mozlog("hibp");
-
-
 
 const HIBP = {
     _addStandardOptions (options = {}) {
@@ -99,7 +96,6 @@ const HIBP = {
         log.info("done-loading-breaches");
     },
 
-
     async getBreachesForEmail(sha1, allBreaches, includeSensitive = false, filterBreaches = true) {
         let foundBreaches = [];
         const sha1Prefix = sha1.slice(0, 6).toUpperCase();
@@ -140,11 +136,9 @@ const HIBP = {
         );
     },
 
-
     getBreachByName(allBreaches, breachName) {
         return allBreaches.find(breach => breach.Name.toLowerCase() === breachName.toLowerCase());
     },
-
 
     filterBreaches(breaches) {
         return breaches.filter(
@@ -155,7 +149,6 @@ const HIBP = {
                 breach.Domain !== ""
         );
     },
-
 
     getLatestBreach(breaches) {
         let latestBreach = {};
@@ -172,7 +165,6 @@ const HIBP = {
         }
         return latestBreach;
     },
-
 
     async subscribeHash(sha1) {
         const sha1Prefix = sha1.slice(0, 6).toUpperCase();

@@ -8,7 +8,6 @@ const hibp = require("../hibp");
 
 const { testBreaches } = require("./test-breaches");
 
-
 jest.mock("got");
 
 test("req adds hibp api root and standard options; NOT token", async() => {
@@ -22,7 +21,6 @@ test("req adds hibp api root and standard options; NOT token", async() => {
     expect(gotCallArgs[1].headers["User-Agent"]).toContain("blurts-server");
     expect(gotCallArgs[1].json).toBe(true);
 });
-
 
 test("loadBreachesIntoApp adds app.locals.breaches|breachesLoadedDateTime|mostRecentBreachDateTime", async() => {
     got.mockClear();
@@ -40,7 +38,6 @@ test("loadBreachesIntoApp adds app.locals.breaches|breachesLoadedDateTime|mostRe
     expect(app.locals.mostRecentBreachDateTime).toEqual(latestBreach.AddedDate);
 });
 
-
 test("filterBreaches removes retired, spam list, fabricated, unverified, and non-website breaches", async() => {
     let foundSensitive = false;
     for (const breach of testBreaches) {
@@ -51,7 +48,6 @@ test("filterBreaches removes retired, spam list, fabricated, unverified, and non
     }
     expect(foundSensitive).toBe(true);
 
-
     const safeBreaches = hibp.filterBreaches(testBreaches);
 
     for (const breach of safeBreaches) {
@@ -61,7 +57,6 @@ test("filterBreaches removes retired, spam list, fabricated, unverified, and non
         expect(breach.IsVerified).toBe(true);
     }
 });
-
 
 test("getBreachesForEmail HIBP responses with status of 429 cause throttled retries up to HIBP_THROTTLE_MAX_TRIES", async() => {
     // Assumes running with max tries of 3 and delay of 1000

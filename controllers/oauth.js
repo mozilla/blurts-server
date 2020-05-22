@@ -46,7 +46,6 @@ function init(req, res, client = FxAOAuthClient) {
     res.redirect(url);
 }
 
-
 async function confirmed(req, res, client = FxAOAuthClient) {
     if (!req.session.state) {
         throw new FluentError("oauth-invalid-session");
@@ -97,7 +96,6 @@ async function confirmed(req, res, client = FxAOAuthClient) {
 
         const utmID = "report";
         const reportSubject = EmailUtils.getReportSubject(unsafeBreachesForEmail, req);
-
 
         await EmailUtils.sendEmail(
             email,

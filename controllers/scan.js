@@ -17,7 +17,6 @@ function _decryptPageToken(encryptedPageToken) {
     return decryptedPageToken;
 }
 
-
 function _validatePageToken(pageToken, req) {
     const requestIP = req.headers["x-real-ip"] || req.ip;
     const pageTokenIP = pageToken.ip;
@@ -41,7 +40,6 @@ function _validatePageToken(pageToken, req) {
   */
     return pageToken;
 }
-
 
 async function post (req, res) {
     const emailHash = req.body.emailHash;
@@ -78,11 +76,9 @@ async function post (req, res) {
     res.render("scan", Object.assign(scanRes, formTokens));
 }
 
-
 function get (req, res) {
     res.redirect("/");
 }
-
 
 module.exports = {
     post,

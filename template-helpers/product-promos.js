@@ -49,7 +49,6 @@ function productPromos(locales, promoUtms, promoKey) {
     productPromos["fx-ecosystem"];
 }
 
-
 function getPromoStrings(args) {
     const templateData = args.data.root;
     const locales = templateData.req.supportedLocales;

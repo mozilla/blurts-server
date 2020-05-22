@@ -2,7 +2,6 @@
 
 const {vers, heartbeat} = require("../../controllers/dockerflow");
 
-
 test("GET __version__ calls sendFile", () => {
     const mockRequest = {};
     const mockResponse = { sendFile: jest.fn() };

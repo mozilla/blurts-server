@@ -21,7 +21,6 @@ function dhm(t){
     return [d, pad(h), pad(m)].join(":");
 }
 
-
 (async () => {
     const breaches = await HIBP.req("/breaches");
 

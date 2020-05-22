@@ -1,6 +1,5 @@
 "use strict";
 
-
 exports.up = function(knex) {
     return knex.schema.table("email_addresses", table => {
         table.index("email", "email_addresses_email_idx");

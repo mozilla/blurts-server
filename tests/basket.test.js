@@ -5,7 +5,6 @@ const got = require("got");
 const AppConstants = require("../app-constants");
 const basket = require("../basket");
 
-
 jest.mock("got");
 
 test("subscribe calls got with expected url and options", async () => {

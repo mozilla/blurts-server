@@ -4,7 +4,6 @@ const AppConstants = require("./../app-constants");
 const { LocaleUtils } = require("./../locale-utils");
 const mozlog = require("./../log");
 
-
 const log = mozlog("template-helpers/hbs-helpers");
 
 function getSupportedLocales(args) {
@@ -20,12 +19,10 @@ function getSupportedLocales(args) {
     return null;
 }
 
-
 function getString (id, args) {
     const supportedLocales = getSupportedLocales(args);
     return LocaleUtils.fluentFormat(supportedLocales, id, args.hash);
 }
-
 
 function getStrings(stringArr, locales) {
     stringArr.forEach(string => {
@@ -35,7 +32,6 @@ function getStrings(stringArr, locales) {
     return stringArr;
 }
 
-
 function fluentFxa (id, args) {
     const supportedLocales = args.data.root.req.supportedLocales;
     if (AppConstants.FXA_ENABLED) {
@@ -43,7 +39,6 @@ function fluentFxa (id, args) {
     }
     return LocaleUtils.fluentFormat(supportedLocales, id, args.hash);
 }
-
 
 function getStringID (id, number, args) {
     // const supportedLocales = args.data.root.req.supportedLocales;
@@ -54,7 +49,6 @@ function getStringID (id, number, args) {
     // return LocaleUtils.fluentFormat(supportedLocales, id);
 }
 
-
 function localizedBreachDataClasses(dataClasses, locales) {
     const localizedDataClasses = [];
     for (const dataClass of dataClasses) {
@@ -62,7 +56,6 @@ function localizedBreachDataClasses(dataClasses, locales) {
     }
     return localizedDataClasses.join(", ");
 }
-
 
 function fluentNestedBold(id, args) {
     const supportedLocales = args.data.root.req.supportedLocales;
@@ -78,14 +71,12 @@ function fluentNestedBold(id, args) {
     return localizedStrings;
 }
 
-
 function prettyDate(date, locales) {
     const jsDate = new Date(date);
     const options = {year: "numeric", month: "long", day: "numeric"};
     const intlDateTimeFormatter = new Intl.DateTimeFormat(locales, options);
     return intlDateTimeFormatter.format(jsDate);
 }
-
 
 function localeString(numericInput, locales) {
     const intlNumberFormatter = new Intl.NumberFormat(locales);
@@ -95,7 +86,6 @@ function localeString(numericInput, locales) {
 function getFxaUrl() {
     return AppConstants.FXA_SETTINGS_URL;
 }
-
 
 function eachFromTo(ary, min, max, options) {
     if(!ary || ary.length === 0)
@@ -109,11 +99,9 @@ function eachFromTo(ary, min, max, options) {
     return result;
 }
 
-
 function localize(locales, stringId, args) {
     return LocaleUtils.fluentFormat(locales, stringId, args);
 }
-
 
 function loop(from, to, inc, block) {
     block = block || {fn: function () { return arguments[0]; }};
@@ -125,7 +113,6 @@ function loop(from, to, inc, block) {
     }
     return output;
 }
-
 
 function ifCompare(v1, operator, v2, options) {
     //https://stackoverflow.com/questions/28978759/length-check-in-a-handlebars-js-if-conditional
@@ -150,7 +137,6 @@ function ifCompare(v1, operator, v2, options) {
     return;
 }
 
-
 function breachMath(lValue, operator = null, rValue = null) {
     lValue = parseFloat(lValue);
     let returnValue = lValue;
@@ -166,7 +152,6 @@ function breachMath(lValue, operator = null, rValue = null) {
     }
     return returnValue;
 }
-
 
 module.exports = {
     getString,

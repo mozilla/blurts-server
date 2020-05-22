@@ -42,7 +42,6 @@ test("home GET without breach renders monitor without breach", () => {
     expect(mockRenderCallArgs[1].featuredBreach).toBe(null);
 });
 
-
 test("home GET with breach renders monitor with breach", async() => {
     const testBreach = {Name: "Test"};
     mockRequest.query = { breach: testBreach.Name };
@@ -50,7 +49,6 @@ test("home GET with breach renders monitor with breach", async() => {
     mockRequest.session = { user: null };
     mockRequest.url = { url: "https://www.mozilla.com" };
     mockRequest.app.locals.SERVER_URL = AppConstants.SERVER_URL;
-
 
     const mockResponse = { render: jest.fn(), redirect: jest.fn() };
     home.home(mockRequest, mockResponse);
@@ -62,7 +60,6 @@ test("home GET with breach renders monitor with breach", async() => {
     expect(mockRenderCallArgs[0]).toBe("monitor");
     expect(mockRenderCallArgs[1].featuredBreach).toEqual(testBreach);
 });
-
 
 test("notFound set status 404 and renders 404", () => {
     const mockResponse = { status: jest.fn(), render: jest.fn() };

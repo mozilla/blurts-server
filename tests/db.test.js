@@ -7,15 +7,12 @@ const getSha1 = require("../sha1-utils");
 
 require("./resetDB");
 
-
 jest.mock("../hibp");
 jest.mock("../basket");
-
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-
 
 test("getSubscriberByToken accepts token and returns subscriber", async () => {
     const testEmail = "unverifiedemail@test.com";
@@ -38,7 +35,6 @@ test("getSubscribersByHashes accepts hashes and only returns verified subscriber
     }
 });
 
-
 test("getEmailAddressesByHashes accepts hashes and only returns verified email_addresses", async () => {
     const testHashes = [
         "firefoxaccount-secondary@test.com",
@@ -50,20 +46,17 @@ test("getEmailAddressesByHashes accepts hashes and only returns verified email_a
     }
 });
 
-
 test("getEmailByToken accepts token and returns email_addresses record", async () => {
     const testEmailAddress = TEST_EMAIL_ADDRESSES.firefox_account;
     const emailAddress = await DB.getEmailByToken(testEmailAddress.verification_token);
     expect(emailAddress.email).toEqual(testEmailAddress.email);
 });
 
-
 test("getEmailById accepts id and returns email_addresses record", async () => {
     const testEmailAddress = TEST_EMAIL_ADDRESSES.unverified_email_on_firefox_account;
     const emailAddress = await DB.getEmailById(testEmailAddress.id);
     expect(emailAddress.email).toEqual(testEmailAddress.email);
 });
-
 
 test("addSubscriberUnverifiedEmailHash accepts user and email and returns unverified email_address with sha1 hash and verification token", async () => {
     const testEmail = "test@test.com";
@@ -77,7 +70,6 @@ test("addSubscriberUnverifiedEmailHash accepts user and email and returns unveri
     expect(unverifiedEmailAddress.verified).toBeFalsy();
 });
 
-
 test("verifyEmailHash accepts token and returns verified subscriber", async () => {
     const testEmail = "verifyEmailHash@test.com";
     const subscriber = await DB.getSubscriberByEmail("firefoxaccount@test.com");
@@ -90,7 +82,6 @@ test("verifyEmailHash accepts token and returns verified subscriber", async () =
     expect(verifiedEmailAddress.sha1).toBe(getSha1(testEmail));
     expect(verifiedEmailAddress.verified).toBeTruthy();
 });
-
 
 test("verifyEmailHash accepts token and returns single verified subscriber", async () => {
     const testEmail = "verifyEmailHash@test.com";
@@ -110,13 +101,11 @@ test("verifyEmailHash accepts token and returns single verified subscriber", asy
     expect(unverifiedEmailAddress2.verified).toBeFalsy();
 });
 
-
 test("addSubscriber invalid argument", async () => {
     const testEmail = "test".repeat(255);
 
     await expect(DB.addSubscriber(testEmail)).rejects.toThrow("error-could-not-add-email");
 });
-
 
 test("addSubscriber accepts email, language and returns verified subscriber", async () => {
     const testEmail = "newfirefoxaccount@test.com";
@@ -127,7 +116,6 @@ test("addSubscriber accepts email, language and returns verified subscriber", as
     expect(verifiedSubscriber.primary_verified).toBeTruthy();
     expect(verifiedSubscriber.primary_sha1).toBe(getSha1(testEmail));
 });
-
 
 test("addSubscriber with existing email updates updated_at", async () => {
     const testEmail = "newfirefoxaccount@test.com";
@@ -149,7 +137,6 @@ test("addSubscriber with existing email updates updated_at", async () => {
     expect(verifiedSubscriber.updated_at).not.toBe(updatedAt);
 });
 
-
 test("addSubscriber accepts upperCasedAddress, and returns verified subscriber with lowercase address hash", async () => {
     const testEmail = "upperCasedAddress@test.com";
 
@@ -158,7 +145,6 @@ test("addSubscriber accepts upperCasedAddress, and returns verified subscriber w
     expect(verifiedSubscriber.primary_email).toBe(testEmail);
     expect(verifiedSubscriber.primary_sha1).toBe(getSha1(testEmail.toLowerCase()));
 });
-
 
 test("setBreachesLastShown updates column and returns subscriber", async() => {
     const startingSubscriber = await DB.getSubscriberByEmail("firefoxaccount@test.com");
@@ -170,7 +156,6 @@ test("setBreachesLastShown updates column and returns subscriber", async() => {
     expect (new Date(updatedSubscriber.breaches_last_shown).getTime()).toBeGreaterThan(new Date(startingSubscriber.breaches_last_shown).getTime());
 });
 
-
 test("setAllEmailsToPrimary updates column and returns subscriber", async() => {
     const startingSubscriber = await DB.getSubscriberByEmail("firefoxaccount@test.com");
 
@@ -179,7 +164,6 @@ test("setAllEmailsToPrimary updates column and returns subscriber", async() => {
     const updatedSubscriber = await DB.getSubscriberByEmail(startingSubscriber.primary_email);
     expect (updatedSubscriber.all_emails_to_primary).toBeFalsy();
 });
-
 
 test("removeSubscriber accepts subscriber and removes everything from subscribers and email_addresses tables", async () => {
     const startingSubscriber = await DB.getSubscriberByEmail(TEST_SUBSCRIBERS.firefox_account.primary_email);
@@ -195,7 +179,6 @@ test("removeSubscriber accepts subscriber and removes everything from subscriber
     expect(noMoreEmailAddress).toBeUndefined();
 });
 
-
 test("removeEmail accepts email and removes from subscribers table", async () => {
     const testEmail = "removingfirefoxaccount@test.com";
 
@@ -207,7 +190,6 @@ test("removeEmail accepts email and removes from subscribers table", async () =>
     const noMoreSubscribers = await DB.getSubscribersByHashes([getSha1(testEmail)]);
     expect(noMoreSubscribers.length).toEqual(0);
 });
-
 
 test("removeEmail accepts email and removes from email_addresses table", async () => {
     const testEmailAddress = TEST_EMAIL_ADDRESSES.all_emails_to_primary;

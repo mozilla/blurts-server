@@ -3,11 +3,9 @@
 const fs = require("fs");
 const path = require("path");
 
-
 const AppConstants = require("../app-constants");
 const mozlog = require("../log");
 const {version, homepage} = require("../package.json");
-
 
 const log = mozlog("controllers.dockerflow");
 const versionJsonPath = path.join(__dirname, "..", "version.json");
@@ -33,7 +31,6 @@ if (!fs.existsSync(versionJsonPath)) {
     fs.writeFileSync(versionJsonPath, JSON.stringify(versionJson, null, 2) + "\n");
 }
 
-
 function vers (req, res) {
     if (AppConstants.NODE_ENV === "heroku") {
     /* eslint-disable no-process-env */
@@ -47,7 +44,6 @@ function vers (req, res) {
     }
     return res.sendFile(versionJsonPath);
 }
-
 
 function heartbeat (req, res) {
     return res.send("OK");

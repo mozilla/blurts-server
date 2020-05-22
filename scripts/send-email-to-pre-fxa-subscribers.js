@@ -18,7 +18,6 @@ if (!START_PAGE) {
     process.exit();
 }
 
-
 (async (req) => {
     const localeUtils = LocaleUtils.init();
     EmailUtils.init();
@@ -30,7 +29,6 @@ if (!START_PAGE) {
     console.log(`Found ${subscribersResult.pagination.total} subscriber records with empty fxa_uid.`);
     console.log(`Will process ${numPagesToProcess} pages of size ${PAGE_SIZE}, starting with page ${START_PAGE} and ending with page ${subscribersResult.pagination.lastPage}.`);
     const lastPage = subscribersResult.pagination.lastPage;
-
 
     for (let currentPage = START_PAGE; currentPage <= lastPage; currentPage++) {
         console.log(`Processing page ${currentPage} of ${lastPage}.`);

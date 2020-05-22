@@ -11,12 +11,9 @@ const {init, confirmed} = require("../../controllers/oauth");
 require("../resetDB");
 const {testBreaches} = require("../test-breaches");
 
-
 jest.mock("got");
 
-
 const mockRequest = { fluentFormat: jest.fn() };
-
 
 test("init request sets session cookie and redirects with access_type=offline", () => {
     mockRequest.session = { };
@@ -30,7 +27,6 @@ test("init request sets session cookie and redirects with access_type=offline", 
     expect(mockRedirectCallArgs[0].href).toMatch("access_type=offline");
 });
 
-
 function getMockRequest(userAddLanguages = "en-US,en;q=0.5", sessionState="test-state") {
     return {
         app: { locals: { breaches: testBreaches } },
@@ -40,7 +36,6 @@ function getMockRequest(userAddLanguages = "en-US,en;q=0.5", sessionState="test-
         originalUrl: "",
     };
 }
-
 
 test("confirmed request checks session cookie, calls FXA for token and email, adds new subscriber with signup language, and redirects", async () => {
     const testFxAEmail = "fxa-new-user@test.com";
@@ -73,7 +68,6 @@ test("confirmed request checks session cookie, calls FXA for token and email, ad
     expect(mockRedirectCallArgs[0]).toBe("/user/dashboard");
 });
 
-
 test("confirmed request checks session cookie, calls FXA for token and email, recognizes existing subscriber and redirects", async () => {
     EmailUtils.sendEmail = jest.fn();
     const mockState = "123456789";
@@ -102,14 +96,12 @@ test("confirmed request checks session cookie, calls FXA for token and email, re
     expect(mockRedirectCallArgs[0]).toMatch("/");
 });
 
-
 test("confirmed request without session state cookie throws Error", async () => {
     mockRequest.session = {};
     const mockResponse = {};
 
     await expect(confirmed(mockRequest, mockResponse)).rejects.toThrowError("oauth-invalid-session");
 });
-
 
 test("confirmed request with no session state cookie throws Error", async () => {
     // Mock request, but don't mock the getToken call to trigger the client-oauth2 error
@@ -119,7 +111,6 @@ test("confirmed request with no session state cookie throws Error", async () => 
 
     await expect(confirmed(mockRequest, mockResponse)).rejects.toThrow("oauth-invalid-session");
 });
-
 
 test("confirmed request with bad session state cookie throws Error", async () => {
     // Mock request, but don't mock the getToken call to trigger the client-oauth2 error

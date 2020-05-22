@@ -2,7 +2,6 @@
 
 const getSha1 = require("../../sha1-utils");
 
-
 exports.TEST_SUBSCRIBERS = {
     firefox_account: {
         id: 12345,

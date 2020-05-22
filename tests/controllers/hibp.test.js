@@ -11,7 +11,6 @@ const sha1 = require("../../sha1-utils");
 const { testBreaches } = require("../test-breaches");
 require("../resetDB");
 
-
 test("notify POST without token should throw error", async() => {
     const testEmail = "victim@spoofattack.com";
     const testHash = sha1(testEmail);
@@ -24,7 +23,6 @@ test("notify POST without token should throw error", async() => {
     await expect(hibp.notify(mockRequest, mockResponse)).rejects.toThrow("HIBP notify endpoint requires valid authorization token.");
 });
 
-
 test("notify POST with invalid token should throw error", async() => {
     const testEmail = "victim@spoofattack.com";
     const testHash = sha1(testEmail);
@@ -36,7 +34,6 @@ test("notify POST with invalid token should throw error", async() => {
 
     await expect(hibp.notify(mockRequest, mockResponse)).rejects.toThrow("HIBP notify endpoint requires valid authorization token.");
 });
-
 
 async function checkNotifyCallsEverythingItShould(breachedEmail, recipientEmail) {
     if (recipientEmail === undefined) {
@@ -77,12 +74,10 @@ test("good notify POST with breach, subscriber hash prefix and suffixes should c
     await checkNotifyCallsEverythingItShould(testEmail);
 });
 
-
 test("good notify POST with breach, secondary email hash prefix and suffixes should call sendEmail and respond with 200", async () => {
     const testSecondaryEmail = "firefoxaccount-secondary@test.com";
     await checkNotifyCallsEverythingItShould(testSecondaryEmail);
 });
-
 
 test("good notify POST with breach, secondary email hash prefix and suffixes, all_emails_to_primary should call sendEmail to primary_email and respond with 200", async () => {
     const testBreachedEmail = "secondary_sending_to_primary@test.com";
@@ -90,9 +85,7 @@ test("good notify POST with breach, secondary email hash prefix and suffixes, al
     await checkNotifyCallsEverythingItShould(testBreachedEmail, expectedRecipientEmail);
 });
 
-
 // TODO: test("notify POST with unknown breach should successfully reload breaches")
-
 
 test("notify POST with unknown breach should throw error", async () => {
     jest.mock("../../hibp");
@@ -107,7 +100,6 @@ test("notify POST with unknown breach should throw error", async () => {
 
     await expect(hibp.notify(mockRequest, mockResponse)).rejects.toThrow("Unrecognized breach: test");
 });
-
 
 test("notify POST for subscriber with no signup_language should default to en", async () => {
     jest.mock("../../email-utils");

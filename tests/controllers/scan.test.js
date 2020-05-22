@@ -7,9 +7,7 @@ const scan = require("../../controllers/scan");
 const { testBreaches } = require ("../test-breaches");
 require("../resetDB");
 
-
 jest.mock("../../hibp");
-
 
 const mockRequest = { fluentFormat: jest.fn() };
 
@@ -17,20 +15,17 @@ test("scan GET redirects to home", () => {
     shouldRedirectHome(scan.get, mockRequest);
 });
 
-
 test("scan POST with empty email hash redirects to home", () => {
     mockRequest.body = { emailHash: null };
 
     shouldRedirectHome(scan.post, mockRequest);
 });
 
-
 test("scan POST with hash of empty string redirects to home", () => {
     mockRequest.body = { emailHash: sha1("") };
 
     shouldRedirectHome(scan.post, mockRequest);
 });
-
 
 test("scan POST with hash should render scan with foundBreaches", async () => {
     const testEmail = "test@example.com";
@@ -57,7 +52,6 @@ test("scan POST with hash should render scan with foundBreaches", async () => {
     expect(mockRenderCallArgs[1].foundBreaches).toBe(testFoundBreaches);
     expect(mockRenderCallArgs[1].hasOwnProperty("featuredBreach")).toBeFalsy();
 });
-
 
 function shouldRedirectHome(fn, req) {
     const mockResponse = { redirect: jest.fn() };

@@ -4,7 +4,6 @@ const AppConstants = require("../app-constants");
 const HIBP = require("../hibp");
 const RemoteSettings = require("../lib/remote-settings");
 
-
 const SKIP_LIST = [
     "factual.com",
 ];
@@ -17,7 +16,6 @@ if (
     console.error("updatebreaches requires FX_REMOTE_SETTINGS_WRITER_SERVER, FX_REMOTE_SETTINGS_WRITER_USER, FX_REMOTE_SETTINGS_WRITER_PASS.");
     process.exit(1);
 }
-
 
 (async () => {
     const allHibpBreaches = await HIBP.req("/breaches");

@@ -95,7 +95,6 @@ function makeEmailAddedToSubscriptionString(email, args) {
     return LocaleUtils.fluentFormat(locales, "email-added-to-subscription", { email: nestedEmail });
 }
 
-
 function makeEmailVerifiedString(args) {
     const locales = args.data.root.req.supportedLocales;
     let nestedSignInLink = LocaleUtils.fluentFormat(locales, "sign-in-nested", {});
@@ -103,7 +102,6 @@ function makeEmailVerifiedString(args) {
 
     return LocaleUtils.fluentFormat(locales, "email-verified-view-dashboard", { nestedSignInLink: nestedSignInLink});
 }
-
 
 function getUserPreferences(args) {
     const csrfToken = args.data.root.csrfToken;

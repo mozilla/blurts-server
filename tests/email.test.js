@@ -5,9 +5,7 @@ const nodemailer = require("nodemailer");
 const EmailUtils = require("../email-utils");
 const { TEST_SUBSCRIBERS, TEST_EMAIL_ADDRESSES } = require("../db/seeds/test_subscribers");
 
-
 jest.mock("nodemailer");
-
 
 test("EmailUtils.init with empty host doesnt invoke nodemailer", () => {
     nodemailer.createTransport = jest.fn();
@@ -18,7 +16,6 @@ test("EmailUtils.init with empty host doesnt invoke nodemailer", () => {
     expect(mockCreateTransport.calls.length).toBe(1);
     expect(mockCreateTransport.calls[0][0]).toEqual({jsonTransport: true});
 });
-
 
 test("EmailUtils.init with user, pass, host, port invokes nodemailer.createTransport", () => {
     const testSmtpUrl = "smtps://test:test@test:1";
@@ -31,7 +28,6 @@ test("EmailUtils.init with user, pass, host, port invokes nodemailer.createTrans
     expect(mockCreateTransport.calls[0][0]).toBe(testSmtpUrl);
 });
 
-
 test("EmailUtils.sendEmail with recipient, subject, template, context calls gTransporter.sendMail", () => {
     const testSmtpUrl = "smtps://test:test@test:1";
     const sendMailArgs = ["test@example.com", "subject", "template.hbs", {breach: "Test"}];
@@ -43,7 +39,6 @@ test("EmailUtils.sendEmail with recipient, subject, template, context calls gTra
     // TODO: find a way to expect gTransporter.sendMail
 });
 
-
 test("EmailUtils.getUnsubscribeUrl works with subscriber record", () => {
     const subscriberRecord = TEST_SUBSCRIBERS.firefox_account;
 
@@ -53,7 +48,6 @@ test("EmailUtils.getUnsubscribeUrl works with subscriber record", () => {
     expect(unsubUrl).toMatch(subscriberRecord.primary_verification_token);
 
 });
-
 
 test("EmailUtils.getUnsubscribeUrl works with email_address record", () => {
     const emailAddressRecord = TEST_EMAIL_ADDRESSES.firefox_account;

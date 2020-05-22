@@ -41,7 +41,6 @@
         }
     }
 
-
     // set up IntersectionObserver to watch for event triggers on breach-details pages
     // and send "View" ping when they become visible in the viewport
     const resolveBtns = document.querySelectorAll(".resolve-button, a.what-to-do-next");
@@ -101,7 +100,6 @@
             }
         });
     });
-
 
     resolveBtns.forEach(btn => {
         btn.addEventListener("click", async(e) => {

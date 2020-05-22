@@ -7,7 +7,6 @@ const log = mozlog("controllers.utils");
 
 const AppConstants = require("../app-constants");
 
-
 function generatePageToken(req) {
     const pageToken = {ip: req.ip, date: new Date(), nonce: uuidv4()};
     const cipher = crypto.createCipher("aes-256-cbc", AppConstants.COOKIE_SECRET);

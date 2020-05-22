@@ -2,7 +2,6 @@
 
 const { LocaleUtils } = require("./../locale-utils");
 
-
 function signUpBannerBulletPoints(args) {
     const locales = args.data.root.req.supportedLocales;
     const bulletPoints = [

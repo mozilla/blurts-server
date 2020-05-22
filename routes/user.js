@@ -19,7 +19,6 @@ const jsonParser = bodyParser.json();
 const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 const csrfProtection = csrf();
 
-
 router.get("/dashboard", csrfProtection, requireSessionUser, asyncMiddleware(getDashboard));
 router.get("/preferences", csrfProtection, requireSessionUser, asyncMiddleware(getPreferences));
 router.use("/breach-stats", bearerToken());

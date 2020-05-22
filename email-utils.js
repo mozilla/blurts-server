@@ -10,7 +10,6 @@ const hbs = require("nodemailer-express-handlebars");
 const HBSHelpers = require("./template-helpers/");
 const mozlog = require("./log");
 
-
 const log = mozlog("email-utils");
 
 const hbsOptions = {
@@ -44,7 +43,6 @@ const EmailUtils = {
         gTransporter.use("compile", hbs(hbsOptions));
         return Promise.resolve(gTransporterVerification);
     },
-
 
     sendEmail(aRecipient, aSubject, aTemplate, aContext) {
         if (!gTransporter) {

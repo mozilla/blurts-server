@@ -2,7 +2,6 @@
 
 const AppConstants = require("../app-constants");
 
-
 // For runtime, use DATABASE_URL
 const RUNTIME_CONFIG = {
     client: "postgresql",

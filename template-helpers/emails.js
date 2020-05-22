@@ -7,7 +7,6 @@ const { LocaleUtils } = require("./../locale-utils");
 const { makeBreachCards } = require("./breaches");
 const { prettyDate } = require("./hbs-helpers");
 
-
 function emailBreachStats(args) {
     const locales = args.data.root.supportedLocales;
     const userBreaches = args.data.root.unsafeBreachesForEmail;
@@ -92,7 +91,6 @@ function getUnsafeBreachesForEmailReport(args) {
     return makeBreachCards(foundBreaches, locales);
 }
 
-
 function boldVioletText(breachedEmail, addBlockDisplayToEmail=false) {
     let optionalDisplayProperty = "";
 
@@ -104,7 +102,6 @@ function boldVioletText(breachedEmail, addBlockDisplayToEmail=false) {
     breachedEmail = breachedEmail.replace(/([@.:])/g, "<span>$1</span>");
     return `<span class="rec-email text-bold" style=" ${optionalDisplayProperty} font-weight: 700; color: #9059ff; font-family: sans-serif; text-decoration: none;"> ${breachedEmail}</span>`;
 }
-
 
 function getEmailHeader(args) {
     const locales = args.data.root.supportedLocales;
@@ -131,7 +128,6 @@ function getEmailHeader(args) {
 
     return LocaleUtils.fluentFormat(locales, "email-found-breaches-hl");
 }
-
 
 function makeFaqLink(target, campaign) {
     const url = new URL(`https://support.mozilla.org/kb/firefox-monitor-faq${target}`);
@@ -169,7 +165,6 @@ function makePreFxaSubscriberMessage(args) {
     return preFxaMessage;
 }
 
-
 function getBreachAlertFaqs(args) {
     const supportedLocales = args.data.root.supportedLocales;
     const faqs = [
@@ -202,7 +197,6 @@ function getBreachAlertFaqs(args) {
     return "".concat(...functionedFaqs);
 }
 
-
 function getReportHeader(args) {
     const locales = args.data.root.supportedLocales;
     const reportHeader = {
@@ -219,7 +213,6 @@ function getReportHeader(args) {
     }
     return args.fn(reportHeader);
 }
-
 
 function getEmailFooterCopy(args) {
     const locales = args.data.root.supportedLocales;
@@ -243,7 +236,6 @@ function getEmailFooterCopy(args) {
     return localizedFooterCopy;
 }
 
-
 function getEmailCTA(args) {
     const locales = args.data.root.supportedLocales;
     const emailType = args.data.root.whichPartial;
@@ -254,13 +246,11 @@ function getEmailCTA(args) {
     return LocaleUtils.fluentFormat(locales, "go-to-dashboard-link");
 }
 
-
 function getBreachSummaryHeadline(args) {
     const locales = args.data.root.supportedLocales;
     const breachedEmail = args.data.root.breachedEmail;
     return LocaleUtils.fluentFormat(locales, "email-breach-summary-for-email", { userEmail: boldVioletText(breachedEmail) });
 }
-
 
 function getBreachAlert(args) {
     const locales = args.data.root.supportedLocales;
@@ -268,7 +258,6 @@ function getBreachAlert(args) {
     const breachAlertCard = makeBreachCards(breachAlert, locales);
     return args.fn(breachAlertCard[0]);
 }
-
 
 // Show FAQs if the email type is a report with breaches, or a breach alert.
 function showFaqs(args) {
@@ -291,7 +280,6 @@ function ifPreFxaSubscriber(args) {
 function getServerUrlForNestedEmailPartial(args) {
     return args.data.root.SERVER_URL;
 }
-
 
 module.exports = {
     emailBreachStats,

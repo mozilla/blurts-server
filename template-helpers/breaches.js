@@ -132,7 +132,6 @@ function getBreachCardCta(breach, args) {
     });
 }
 
-
 module.exports = {
     lastAddedBreach,
     getFoundBreaches,

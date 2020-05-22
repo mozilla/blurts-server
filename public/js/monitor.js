@@ -13,14 +13,12 @@ if (typeof TextEncoder === "undefined") {
     scripts.parentNode.insertBefore(cryptoScript, scripts);
 }
 
-
 function findAncestor(el, cls) {
     // FIXME: no op
     // eslint-disable-next-line no-empty
     while ((el = el.parentElement) && !el.classList.contains(cls)){}
     return el;
 }
-
 
 function toggleEl(e) {
     const toggleButton = e.target;
@@ -29,7 +27,6 @@ function toggleEl(e) {
         toggleParent.classList.toggle(className);
     });
 }
-
 
 function isValidEmail(val) {
     // https://stackoverflow.com/a/46181
@@ -129,7 +126,6 @@ function doOauth(el, {emailWatch = false} = {}) {
     url.searchParams.append("email", submittedEmail);
     window.location.assign(url);
 }
-
 
 function addFormListeners() {
     Array.from(document.forms).forEach(form =>  {
@@ -455,7 +451,6 @@ function resizeDashboardMargin() {
     if (privateRelayCtas.length > 0) {
         const availableIntersectionObserver = ("IntersectionObserver" in window);
 
-
         if (availableIntersectionObserver && gaAvailable) {
             const sendRelayPing = (eventAction, elemData) => {
                 if (eventAction === "View" && elemData.userIsSignedUp === "true") {
@@ -486,8 +481,6 @@ function resizeDashboardMargin() {
 
     const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
     dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));
-
-
 
     const acceptedLanguages = navigator.languages;
     const acceptedFirstLanguageIsEnglish = acceptedLanguages[0].includes("en");
@@ -533,7 +526,5 @@ function resizeDashboardMargin() {
 
         });
     }
-
-
 
 })();

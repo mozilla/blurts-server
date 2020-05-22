@@ -3,7 +3,6 @@
 const HBSHelpers = require("../template-helpers/hbs-helpers");
 const { LocaleUtils } = require("../locale-utils");
 
-
 test("localizedBreachDataClasses joins array by ',' and renders fluent translation or fluent ID", () => {
     LocaleUtils.init();
     LocaleUtils.loadLanguagesIntoApp({locals: {}});
@@ -27,13 +26,11 @@ test("localizedBreachDataClasses joins array by ',' and renders fluent translati
     expect(notFoundDisplay).toEqual("fdhsaigp12, jfdiosapgys8");
 });
 
-
 test("localeString adds commas to numbers", () => {
     const supportedLocales = ["en"];
     const display = HBSHelpers.localeString(1000000, supportedLocales);
     expect(display).toEqual("1,000,000");
 });
-
 
 test("breachMath accepts operators", () => {
     expect(HBSHelpers.breachMath(1, "+", 2)).toBe(3);

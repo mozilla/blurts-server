@@ -7,7 +7,6 @@ const AppConstants = require("../app-constants");
 const mozlog = require("../log");
 const {notification} = require("../controllers/ses");
 
-
 const log = mozlog("routes.ses");
 // eslint-disable-next-line new-cap
 const router = express.Router();

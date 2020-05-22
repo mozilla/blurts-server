@@ -12,7 +12,6 @@ const router = express.Router();
 const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 const csrfProtection = csrf();
 
-
 router.post("/", urlEncodedParser, csrfProtection, asyncMiddleware(post));
 router.get("/", get);
 

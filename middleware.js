@@ -15,16 +15,13 @@ const { FXA } = require("./lib/fxa");
 const { FluentError } = require("./locale-utils");
 const mozlog = require("./log");
 
-
 const log = mozlog("middleware");
-
 
 // adds the request object to a res.local var
 function addRequestToResponse (req, res, next) {
     res.locals.req = req;
     next();
 }
-
 
 // picks available language by Accept-Language and assigns to request
 function pickLanguage (req, res, next) {
@@ -50,7 +47,6 @@ function pickLanguage (req, res, next) {
 
     next();
 }
-
 
 async function recordVisitFromEmail (req, res, next) {
     if (req.query.utm_source && req.query.utm_source !== "fx-monitor") {
@@ -103,7 +99,6 @@ async function recordVisitFromEmail (req, res, next) {
     next();
 }
 
-
 // Helps handle errors for all async route controllers
 // See https://medium.com/@Abazhenov/using-async-await-in-express-with-node-8-b8af872c0016
 function asyncMiddleware (fn) {
@@ -112,13 +107,11 @@ function asyncMiddleware (fn) {
     };
 }
 
-
 function logErrors (err, req, res, next) {
     log.error("error", {stack: err.stack});
     Sentry.captureException(err);
     next(err);
 }
-
 
 function localizeErrorMessages (err, req, res, next) {
     if (err instanceof FluentError) {
@@ -127,7 +120,6 @@ function localizeErrorMessages (err, req, res, next) {
     next(err);
 }
 
-
 function clientErrorHandler (err, req, res, next) {
     if (req.xhr || req.headers["content-type"] === "application/json") {
         res.status(500).send({ message: err.message });
@@ -135,7 +127,6 @@ function clientErrorHandler (err, req, res, next) {
         next(err);
     }
 }
-
 
 function errorHandler (err, req, res, next) {
     res.status(500);
@@ -146,7 +137,6 @@ function errorHandler (err, req, res, next) {
     });
 }
 
-
 async function _getRequestSessionUser(req, res, next) {
     if (req.session && req.session.user) {
     // make sure the user object has all subscribers and email_addresses properties
@@ -154,7 +144,6 @@ async function _getRequestSessionUser(req, res, next) {
     }
     return null;
 }
-
 
 async function requireSessionUser(req, res, next) {
     const user = await _getRequestSessionUser(req);
@@ -172,8 +161,6 @@ async function requireSessionUser(req, res, next) {
     req.user = user;
     next();
 }
-
-
 
 module.exports = {
     addRequestToResponse,

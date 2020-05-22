@@ -71,7 +71,6 @@ async function updateCommunicationOptions(req, res) {
     return res.json("Comm options updated");
 }
 
-
 async function resolveBreach(req, res) {
     const sessionUser = req.user;
     // TODO: verify that req.body.emailAddressId belongs to sessionUser
@@ -84,7 +83,6 @@ async function resolveBreach(req, res) {
     return res.json("Breach marked as resolved.");
 }
 
-
 function _checkForDuplicateEmail(sessionUser, email) {
     email = email.toLowerCase();
     if (email === sessionUser.primary_email.toLowerCase()) {
@@ -96,7 +94,6 @@ function _checkForDuplicateEmail(sessionUser, email) {
         }
     }
 }
-
 
 async function add(req, res) {
     const sessionUser = await req.user;
@@ -114,7 +111,6 @@ async function add(req, res) {
     const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(
         req.session.user, email
     );
-
 
     await EmailUtils.sendEmail(
         email,
@@ -139,14 +135,12 @@ async function add(req, res) {
     res.redirect("/user/preferences");
 }
 
-
 function getResolvedBreachesForEmail(user, email) {
     if (user.breaches_resolved === null) {
         return [];
     }
     return user.breaches_resolved.hasOwnProperty(email) ? user.breaches_resolved[email] : [];
 }
-
 
 function addResolvedOrNot(foundBreaches, resolvedBreaches) {
     const annotatedBreaches = [];
@@ -160,7 +154,6 @@ function addResolvedOrNot(foundBreaches, resolvedBreaches) {
     return annotatedBreaches;
 }
 
-
 function addRecencyIndex(foundBreaches) {
     const annotatedBreaches = [];
     // slice() the array to make a copy so before reversing so we don't
@@ -172,7 +165,6 @@ function addRecencyIndex(foundBreaches) {
     });
     return annotatedBreaches.reverse();
 }
-
 
 async function bundleVerifiedEmails(options) {
     const { user, email, recordId, recordVerified, allBreaches} = options;
@@ -210,7 +202,6 @@ async function getAllEmailsAndBreaches(user, allBreaches) {
     return { verifiedEmails, unverifiedEmails };
 }
 
-
 function getNewBreachesForEmailEntriesSinceDate(emailEntries, date) {
     for (const emailEntry of emailEntries) {
         const newBreachesForEmail = emailEntry.breaches.filter(breach => breach.AddedDate >= date);
@@ -222,7 +213,6 @@ function getNewBreachesForEmailEntriesSinceDate(emailEntries, date) {
     }
     return emailEntries;
 }
-
 
 async function getDashboard(req, res) {
     const user = req.user;
@@ -262,7 +252,6 @@ async function getDashboard(req, res) {
     });
 }
 
-
 async function _verify(req) {
     const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
     let unsafeBreachesForEmail = [];
@@ -274,7 +263,6 @@ async function _verify(req) {
 
     const utmID = "report";
     const emailSubject = EmailUtils.getReportSubject(unsafeBreachesForEmail, req);
-
 
     await EmailUtils.sendEmail(
         verifiedEmailHash.email,
@@ -291,7 +279,6 @@ async function _verify(req) {
         }
     );
 }
-
 
 async function verify(req, res) {
     if (!req.query.token) {
@@ -325,7 +312,6 @@ async function verify(req, res) {
     });
 }
 
-
 // legacy /user/unsubscribe controller for pre-FxA unsubscribe links
 async function getUnsubscribe(req, res) {
     if (!req.query.token) {
@@ -356,7 +342,6 @@ async function getUnsubscribe(req, res) {
     });
 }
 
-
 async function getRemoveFxm(req, res) {
     const sessionUser = req.user;
 
@@ -367,7 +352,6 @@ async function getRemoveFxm(req, res) {
         csrfToken: req.csrfToken(),
     });
 }
-
 
 async function postRemoveFxm(req, res) {
     const sessionUser = req.user;
@@ -399,7 +383,6 @@ function _updateResolvedBreaches(options) {
     userBreachesResolved[affectedEmail] = userBreachesResolved[affectedEmail].filter( el => el !== recencyIndexNumber );
     return userBreachesResolved;
 }
-
 
 async function postResolveBreach(req, res) {
     const sessionUser = req.user;
@@ -516,7 +499,6 @@ async function postUnsubscribe(req, res) {
     res.redirect("/");
 }
 
-
 async function getPreferences(req, res) {
     const user = req.user;
     const allBreaches = req.app.locals.breaches;
@@ -529,7 +511,6 @@ async function getPreferences(req, res) {
         verifiedEmails, unverifiedEmails,
     });
 }
-
 
 async function getBreachStats(req, res) {
     if (!req.token) {
@@ -570,7 +551,6 @@ async function getBreachStats(req, res) {
     return res.json(returnStats);
 }
 
-
 function logout(req, res) {
     // Growth Experiment
     if (EXPERIMENTS_ENABLED) {
@@ -586,7 +566,6 @@ function logout(req, res) {
     }
     res.redirect("/");
 }
-
 
 module.exports = {
     FXA_MONITOR_SCOPE,

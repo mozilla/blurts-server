@@ -1,6 +1,5 @@
 "use strict";
 
-
 // eslint-disable-next-line node/no-extraneous-require
 const uuidv4 = require("uuid/v4");
 const _knex = require("knex");
@@ -20,7 +19,6 @@ let knex = _knex(knexConfig);
 attachPaginate();
 
 const log = mozlog("DB");
-
 
 const DB = {
     async getSubscriberByToken(token) {
@@ -111,7 +109,6 @@ const DB = {
         }
         return emailAddresses[0];
     },
-
 
     async addSubscriberUnverifiedEmailHash(user, email) {
         const res = await knex("email_addresses").insert({

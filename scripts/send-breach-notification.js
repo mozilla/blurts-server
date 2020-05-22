@@ -14,7 +14,6 @@ const rl = readline.createInterface({
 });
 const app = { locals: { breaches: [], AVAILABLE_LANGUAGES: ["en"] } };
 
-
 LocaleUtils.init();
 LocaleUtils.loadLanguagesIntoApp(app);
 

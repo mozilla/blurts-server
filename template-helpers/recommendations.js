@@ -2,7 +2,6 @@
 
 const { LocaleUtils } = require("./../locale-utils");
 
-
 module.exports = {
     getAllGenericRecommendations() {
         return [

@@ -5,9 +5,7 @@ const got = require("got");
 const AppConstants = require("./app-constants");
 const mozlog = require("./log");
 
-
 const log = mozlog("basket");
-
 
 const Basket = {
 
@@ -35,6 +33,5 @@ const Basket = {
     },
 
 };
-
 
 module.exports = Basket;

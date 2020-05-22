@@ -4,7 +4,6 @@ const AppConstants = require("../app-constants");
 const { resultsSummary } = require("../scan-results");
 const { localize } = require("./hbs-helpers");
 
-
 function getBreachStats(args) {
     const verifiedEmails = args.data.root.verifiedEmails;
     const locales = args.data.root.req.supportedLocales;
@@ -66,7 +65,6 @@ function getProgressMessage(locales, percentBreachesResolved) {
     }
     return formatProgressMessage(localize(locales, "progress-message-4"));
 }
-
 
 function makeProgressBar(userBreachTotals, locales) {
     const numTotalBreaches = userBreachTotals.count;

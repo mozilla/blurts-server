@@ -6,7 +6,6 @@ const { prettyDate, localize } = require("./hbs-helpers");
 const { getAllPriorityDataClasses, getAllGenericRecommendations, getFourthPasswordRecommendation } = require("./recommendations");
 const { getPromoStrings } = require("./product-promos");
 
-
 function addRecommendationUtmParams(cta) {
     try {
         const url = new URL(cta.ctaHref);
@@ -30,11 +29,9 @@ function addRecommendationUtmParams(cta) {
     }
 }
 
-
 function getBreachTitle(args) {
     return args.data.root.featuredBreach.Title;
 }
-
 
 function getVars(args) {
     const locales = args.data.root.req.supportedLocales;
@@ -43,7 +40,6 @@ function getVars(args) {
     const isUserBrowserFirefox = (/Firefox/i.test(args.data.root.req.headers["user-agent"]));
     return { locales, breach, changePWLink, isUserBrowserFirefox };
 }
-
 
 function getBreachCategory(breach) {
     if (["Exactis", "Apollo", "YouveBeenScraped", "ElasticsearchSalesLeads", "Estonia", "MasterDeeds", "PDL"].includes(breach.Name)) {
@@ -57,7 +53,6 @@ function getBreachCategory(breach) {
     }
     return "data-aggregator-breach";
 }
-
 
 function getSortedDataClasses(locales, breach, isUserBrowserFirefox=false, isUserLocaleEnUs=false, changePWLink=false) {
     const priorityDataClasses = getAllPriorityDataClasses(isUserBrowserFirefox, isUserLocaleEnUs, changePWLink);
@@ -219,7 +214,6 @@ function formatResolutionMessage(message) {
 function formatNotificationLink(message) {
     return message.replace("<a>", "<a class='what-to-do-next blue-link' href='#what-to-do-next' data-analytics-label='what-to-do-next'>");
 }
-
 
 function getSortedDataClassesAndRecs(locales, breach, isUserBrowserFirefox=false, changePWLink=false) {
     const isUserLocaleEnUs = (locales[0] === "en");

@@ -28,7 +28,6 @@ const scanResult = async(req, selfScan=false) => {
         }
     }
 
-
     const title = req.fluentFormat("scan-title");
     let foundBreaches = [];
     let specificBreach = null;

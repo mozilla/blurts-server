@@ -4,7 +4,6 @@
 /* global _dntEnabled */
 /* global ga */
 
-
 const hasParent = (el, selector) => {
     while (el.parentNode) {
         el = el.parentNode;
@@ -14,7 +13,6 @@ const hasParent = (el, selector) => {
     return null;
 };
 
-
 function getLocation() {
     const eventLocation = document.querySelectorAll("[data-page-label]");
     if (eventLocation.length > 0) {
@@ -23,7 +21,6 @@ function getLocation() {
         return "Page ID: Undefined Page";
     }
 }
-
 
 async function sendPing(el, eventAction, eventLabel = null, options = null) {
     if (typeof(ga) !== "undefined" && !el.classList.contains("hide")) {
@@ -103,7 +100,6 @@ function setGAListeners(){
     document.querySelectorAll("#scan-user-email, .open-oauth").forEach(el => {
         setMetricsIds(el);
     });
-
 
     document.querySelectorAll(".open-oauth, .add-metrics-flow-values").forEach( async(el) => {
         const fxaUrl = new URL("/metrics-flow?", document.body.dataset.fxaAddress);
@@ -239,12 +235,8 @@ function setGAListeners(){
             setGAListeners();
         }, false);
 
-
-
-
     } else {
         removeUtmsFromUrl();
     }
-
 
 })();

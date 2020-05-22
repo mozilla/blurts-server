@@ -1,14 +1,11 @@
 "use strict";
 
-
 const _knex = require("knex");
 const knexConfig = require("../db/knexfile");
 const knex = _knex(knexConfig);
 
-
 const HIBP = require("../hibp");
 const getSha1 = require("../sha1-utils");
-
 
 async function subscribeLowercaseHashToHIBP(emailAddress) {
     const lowerCasedEmail = emailAddress.toLowerCase();
@@ -16,7 +13,6 @@ async function subscribeLowercaseHashToHIBP(emailAddress) {
     await HIBP.subscribeHash(lowerCasedSha1);
     return lowerCasedSha1;
 }
-
 
 (async () => {
     const chunkSize = process.argv[2];

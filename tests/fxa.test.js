@@ -5,9 +5,7 @@ const got = require("got");
 const { TEST_SUBSCRIBERS } = require("../db/seeds/test_subscribers");
 const { FXA } = require("../lib/fxa");
 
-
 jest.mock("got");
-
 
 test("revokeOAuthToken calls oauth destroy with fxa_refresh_token", async () => {
     const subscriber = TEST_SUBSCRIBERS.firefox_account;

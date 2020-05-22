@@ -1,6 +1,5 @@
 "use strict";
 
-
 // open/close signed-in user fxa menu and set tabbing
 function toggleMenu (evt) {
     evt.stopPropagation();
