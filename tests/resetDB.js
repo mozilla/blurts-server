@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 "use strict";
 
-const Knex = require("knex");
+const _knex = require("knex");
 
 const DB = require("../db/DB");
 const knexConfig = require("../db/knexfile");
@@ -16,7 +16,7 @@ beforeAll(() => {
 
 // Reset the subscribers records before each test
 beforeEach(async () => {
-    const knex = Knex(knexConfig);
+    const knex = _knex(knexConfig);
     await knex("email_addresses").del();
     await knex("subscribers").del();
     await knex("subscribers").insert(Object.values(test_data.TEST_SUBSCRIBERS));

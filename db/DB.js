@@ -3,7 +3,7 @@
 
 // eslint-disable-next-line node/no-extraneous-require
 const uuidv4 = require("uuid/v4");
-const Knex = require("knex");
+const _knex = require("knex");
 const { attachPaginate } = require("knex-paginate");
 
 const { FluentError } = require("../locale-utils");
@@ -16,7 +16,7 @@ const mozlog = require("../log");
 
 const knexConfig = require("./knexfile");
 
-let knex = Knex(knexConfig);
+let knex = _knex(knexConfig);
 attachPaginate();
 
 const log = mozlog("DB");
@@ -161,7 +161,7 @@ const DB = {
     },
 
     // Used internally.
-    async _addEmailHash(sha1, email, signup_language, verified = false) {
+    async _addEmailHash(sha1, email, signupLanguage, verified = false) {
         try {
             return await this._getSha1EntryAndDo(sha1, async aEntry => {
                 // Entry existed, patch the email value if supplied.
@@ -181,9 +181,9 @@ const DB = {
                 return aEntry;
             }, async () => {
                 // Always add a verification_token value
-                const verification_token = uuidv4();
+                const verificationToken = uuidv4();
                 const res = await knex("subscribers")
-                    .insert({ primary_sha1: getSha1(email.toLowerCase()), primary_email: email, signup_language, primary_verification_token: verification_token, primary_verified: verified })
+                    .insert({ primary_sha1: getSha1(email.toLowerCase()), primary_email: email, signupLanguage, primary_verification_token: verificationToken, primary_verified: verified })
                     .returning("*");
                 return res[0];
             });
@@ -434,7 +434,7 @@ const DB = {
 
     async createConnection() {
         if (knex === null) {
-            knex = Knex(knexConfig);
+            knex = _knex(knexConfig);
         }
     },
 

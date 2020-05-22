@@ -1,9 +1,9 @@
 "use strict";
 
 
-const Knex = require("knex");
+const _knex = require("knex");
 const knexConfig = require("../db/knexfile");
-const knex = Knex(knexConfig);
+const knex = _knex(knexConfig);
 
 const HIBP = require("../hibp");
 const getSha1 = require("../sha1-utils");
