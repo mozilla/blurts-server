@@ -9,6 +9,7 @@ const {notification} = require("../controllers/ses");
 
 
 const log = mozlog("routes.ses");
+// eslint-disable-next-line new-cap
 const router = express.Router();
 const textParser = bodyParser.text();
 

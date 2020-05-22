@@ -9,6 +9,7 @@ const jsonParser = bodyParser.json();
 const {home, getAboutPage, getAllBreaches, getBentoStrings, getSecurityTips, protectMyEmail, addEmailToRelayWaitlist, notFound} = require("../controllers/home");
 const { requireSessionUser } = require("../middleware");
 
+// eslint-disable-next-line new-cap
 const router = express.Router();
 const csrfProtection = csrf();
 

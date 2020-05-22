@@ -13,6 +13,7 @@ const {
     getUnsubscribe, postUnsubscribe, getRemoveFxm, postRemoveFxm, postResolveBreach,
 } = require("../controllers/user");
 
+// eslint-disable-next-line new-cap
 const router = express.Router();
 const jsonParser = bodyParser.json();
 const urlEncodedParser = bodyParser.urlencoded({ extended: false });

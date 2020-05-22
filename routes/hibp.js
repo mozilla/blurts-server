@@ -9,6 +9,7 @@ const {asyncMiddleware} = require("../middleware");
 const {notify, breaches} = require("../controllers/hibp");
 
 
+// eslint-disable-next-line new-cap
 const router = express.Router();
 const jsonParser = bodyParser.json();
 

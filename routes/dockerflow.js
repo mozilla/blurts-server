@@ -4,6 +4,7 @@ const express = require("express");
 const {vers, heartbeat} = require("../controllers/dockerflow");
 
 
+// eslint-disable-next-line new-cap
 const router = express.Router();
 
 
@@ -13,4 +14,3 @@ router.get("/__lbheartbeat__", heartbeat);
 
 
 module.exports = router;
-

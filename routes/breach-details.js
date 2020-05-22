@@ -5,6 +5,7 @@ const { getBreachDetail } = require("../controllers/breach-details");
 const { asyncMiddleware } = require("../middleware");
 
 
+// eslint-disable-next-line new-cap
 const router = express.Router();
 
 

@@ -8,7 +8,7 @@ function replaceLogo(e) {
     return true;
 }
 
-function breachImages() {
+function BreachImages() {
     this.active = false;
     this.lazyLoad = () => {
         const lazyImages = [].slice.call(document.querySelectorAll(".lazy-img"));
@@ -118,7 +118,7 @@ function initBreaches() {
         const breachWrapper = document.getElementById("breach-array-json");
         const {LocalizedBreachCardStrings, breaches} = JSON.parse(breachWrapper.dataset.breachArray);
 
-        const breachLogos = new breachImages();
+        const breachLogos = new BreachImages();
         document.addEventListener("scroll", breachLogos.lazyLoad);
         window.addEventListener("resize", breachLogos.lazyLoad);
         window.addEventListener("orientationchange", breachLogos.lazyLoad);
