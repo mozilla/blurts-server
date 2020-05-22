@@ -1,5 +1,5 @@
 "use strict";
-
+/*eslint radix: ["error", "as-needed"]*/
 /* global ga */
 
 function getFxAppLinkInfo(localizedBentoStrings, referringSiteURL) {
@@ -300,4 +300,3 @@ if (typeof(customElements) !== "undefined") {
         document.body.classList.add("hide-bento");
     });
 }
-

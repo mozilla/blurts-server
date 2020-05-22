@@ -176,6 +176,7 @@ exports.config = {
         const chai = require("chai");
 
         global.expect = chai.expect;
+        // eslint-disable-next-line new-cap
         chai.Should();
 
         global.primaryEmail = "test@mailinator.com";
