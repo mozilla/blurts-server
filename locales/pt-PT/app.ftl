@@ -531,7 +531,7 @@ unresolved-passwords-exposed =
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
         [one] Falha de segurança de dados conhecida marcada como resolvida
-       *[other] Falhaa de segurança de dados conhecidas marcadas como resolvidas
+       *[other] Falha de segurança de dados conhecidas marcadas como resolvidas
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nova
