@@ -212,15 +212,15 @@ feat-enroll-multiple = Registar vários e-mails para a monitorização de falhas
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
     { $breachCount ->
-        [one] Aparece em { $breachCount } falha de segurança conhecida.
-       *[other] Aparece em { $breachCount } falhas de segurança conhecidas.
+        [one] Aparece em { $breachCount } violação de dados conhecida.
+       *[other] Aparece em { $breachCount } violações de dados conhecidas.
     }
 check-for-breaches = Pesquisar por falhas de segurança
 find-out-what-hackers-know = Descubra o que os piratas informáticos já sabem sobre si e aprenda como ficar um passo à frente dos mesmos.
 get-email-alerts = Mantenha-se seguro: receba alertas por e-mail quando a sua informação aparecer numa falha conhecida
 search-for-your-email = Pesquise pelo seu endereço de e-mail em falhas de segurança públicas de dados desde 2007.
 back-to-top = Voltar ao topo
-comm-opt-0 = Enviar um e-mail para mim caso um dos meus endereços de e-mail abaixo aparecer numa falha de segurança de dados.
+comm-opt-0 = Enviar um e-mail para mim caso um dos meus endereços de e-mail abaixo aparecer numa violação de dados.
 comm-opt-1 = Enviar todos alertas de falhas de segurança para { $primaryEmail }.
 stop-monitoring-this = Pare de monitorizar este e-mail.
 resend-verification = Reenviar e-mail de verificação
@@ -231,7 +231,7 @@ send-verification = Enviar ligação de verificação
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-breach-summary = Resumo da falha de segurança
+breach-summary = Resumo da violação de dados
 show-breaches-for-this-email = Mostrar todas as falhas de segurança para este e-mail.
 link-change-primary = Alterar endereço de e-mail primário
 remove-fxm = Remover { -product-name }
@@ -241,15 +241,15 @@ remove-fxm-blurb =
 # Button title
 manage-email-addresses = Gerir endereços de e-mail
 # Link title
-latest-breach-link = Veja se esteve nesta falha de segurança
+latest-breach-link = Veja se esteve nesta violação de dados
 welcome-back = Bem-vindo(a) de volta, { $userName }!
 welcome-user = Bem-vindo(a), { $userName }!
-breach-alert-subject = { -product-name } encontrou o seu e-mail numa nova falha de segurança de dados.
-your-info-was-discovered-headline = Os seus dados foram descobertos numa nova falha de segurança de dados.
+breach-alert-subject = O { -product-name } encontrou o seu e-mail numa nova violação de dados.
+your-info-was-discovered-headline = Os seus dados foram descobertos numa nova violação de dados.
 your-info-was-discovered-blurb =
     Registou-se para receber alertas do { -product-name } 
-    quando o seu e-mail aparece numa falha de segurança de dados. Eis o que sabemos sobre esta falha de segurança.
-what-to-do-after-breach = O que fazer depois de uma falha de segurança de dados:
+    quando o seu e-mail aparece numa violação de dados. Eis o que sabemos sobre esta violação de dados.
+what-to-do-after-breach = O que fazer depois de uma violação de dados:
 ba-next-step-1 = Altere a sua palavra-passe para uma palavra-passe forte e única.
 ba-next-step-blurb-1 =
     Uma palavra-passe forte utiliza uma combinação de letras maiúsculas e minúsculas, 
@@ -264,32 +264,32 @@ ba-next-step-3 = Obtenha ajuda para criar melhores palavras-passe e as manter se
 ba-next-step-blurb-3 =
     Utilize um gestor de palavras-passe para criar palavras-passe fortes e únicas. Os gestores de palavras-passe guardam 
     com segurança todas as suas credenciais para que possa aceder às mesmas em todos os seus dispositivos.
-faq1 = Eu não reconheço esta empresa ou site. Por que é que eu estou nesta falha de segurança?
-faq2 = Porque é que demorou tanto para me notificarem desta falha de segurança?
+faq1 = Eu não reconheço esta empresa ou site. Porque é que eu estou nesta violação de dados?
+faq2 = Porque é que demorou tanto para me notificarem desta violação de dados?
 faq3 = Como é que eu sei que é um e-mail legitimo do { -product-name }?
 new-breaches-found =
     { $breachCount ->
-        [one] ENCONTRADA { $breachCount } NOVA FALHA DE SEGURANÇA
-       *[other] ENCONTRADAS { $breachCount } NOVAS FALHAS DE SEGURANÇA
+        [one] ENCONTRADA { $breachCount } NOVA VIOLAÇÃO DE DADOS
+       *[other] ENCONTRADAS { $breachCount } NOVAS VIOLAÇÕES DE DADOS
     }
 sign-up-headline-1 = Receba alertas atuais com uma { -brand-fxa }.
 account-not-required = O navegador { -brand-name } não é obrigatório para uma { -brand-fxa }. Poderá receber informações sobre os serviços da { -brand-Mozilla }.
-was-your-info-exposed = A sua informação foi exposta na falha de segurança de dados de { $breachName }?
-find-out-if = Saiba se os seus dados foram expostos nesta falha de segurança.
-fb-not-comp = Este e-mail não apareceu na falha de segurança { $breachName }.
+was-your-info-exposed = A sua informação foi exposta na violação de dados de { $breachName }?
+find-out-if = Saiba se os seus dados foram expostos nesta violação de dados.
+fb-not-comp = Este e-mail não apareceu na violação de dados { $breachName }.
 other-breaches-found =
     { $breachCount ->
-        [one] Contudo, este apareceu em { $breachCount } outra falha de segurança.
-       *[other] Contudo, este apareceu em { $breachCount } outras falhas de segurança
+        [one] Contudo, este apareceu em { $breachCount } outra violação de dados.
+       *[other] Contudo, este apareceu em { $breachCount } outras violações de dados.
     }
-fb-comp-only = Este e-mail apareceu na falha de segurança { $breachName }.
+fb-comp-only = Este e-mail apareceu na violação de dados { $breachName }.
 fb-comp-and-others =
     { $breachCount ->
-        [one] Este e-mail apareceu em { $breachCount } falha de segurança de dados conhecida, incluindo { $breachName }.
-       *[other] Este e-mail apareceu em { $breachCount } falhas de segurança de dados conhecidas, incluindo { $breachName }.
+        [one] Este e-mail apareceu em { $breachCount } violação de dados conhecida, incluindo { $breachName }.
+       *[other] Este e-mail apareceu em { $breachCount } violações de dados conhecidas, incluindo { $breachName }.
     }
 no-other-breaches-found = Não foram encontradas outras falhas de segurança a partir de uma pesquisa básica.
-no-results-blurb = Lamentamos, mas esta falha de segurança não está na nossa base de dados.
+no-results-blurb = Lamentamos, mas esta violação de dados não está na nossa base de dados.
 all-breaches-headline = Todas as falhas de segurança no { -product-name }
 search-breaches = Procurar por falhas de segurança
 # "Appears in-page as: Showing: All Breaches"
@@ -347,21 +347,21 @@ results-for = Resultados para: { $userEmail }
 other-monitored-emails = Outros emails monitorizados
 email-verification-required = Verificação de email requerida
 fxa-primary-email = Email do { -brand-fxa } - Primário
-what-is-a-website-breach = O que é uma falha de segurança do site?
-website-breach-blurb = Uma falha de segurança de dados de um site ocorre quando os cibercriminosos roubam, copiam ou expõem a informação pessoal de contas na Internet. Geralmente, é a consequência dos piratas informáticos encontrarem um ponto fraco na segurança do site. As falhas de segurança também podem acontecer quando a informação sobre contas é divulgada de forma acidental.
+what-is-a-website-breach = O que é uma violação de dados do site?
+website-breach-blurb = Uma violação de dados de um site ocorre quando os cibercriminosos roubam, copiam ou expõem a informação pessoal de contas na Internet. Geralmente, é a consequência dos piratas informáticos encontrarem um ponto fraco na segurança do site. As violações de dados também podem acontecer quando a informação sobre contas é divulgada de forma acidental.
 security-tips-headline = Dicas de segurança para se proteger contra piratas informáticos
 steps-to-protect = Passos a tomar para proteger a sua identidade online
 take-further-steps = Mais passos para proteger a sua identidade
 alert-about-new-breaches = Alertar-me acerca de novas brechas
-see-if-youve-been-part = Veja se fez parte de uma falha de segurança de dados na Internet.
+see-if-youve-been-part = Veja se fez parte de uma violação de dados na Internet.
 get-ongoing-breach-monitoring = Obtenha a monitorização contínua de falhas de segurança para vários endereços de e-mail.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Descobrir
 new-unsub-error = Terá de cancelar a subscrição de um dos e-mails que o { -product-name } lhe enviou.
 other-known-breaches-found =
     { $breachCount ->
-        [one] Contudo, este apareceu em { $breachCount } outra falha de segurança conhecida.
-       *[other] Contudo, este apareceu em { $breachCount } outras falhas de segurança conhecidas.
+        [one] Contudo, este apareceu em { $breachCount } outra violação de dados conhecida.
+       *[other] Contudo, este apareceu em { $breachCount } outras violações de dados conhecidas.
     }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
@@ -374,7 +374,7 @@ breach-overview-title = Sinopse
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview-new = A { $breachDate }, { $breachTitle } foi comprometido. Assim que a falha de segurança foi descoberta e confirmada, foi adicionada à nossa base de dados a { $addedDate }.
+breach-overview-new = A { $breachDate }, { $breachTitle } foi comprometido. Assim que a violação de dados foi descoberta e confirmada, foi adicionada à nossa base de dados a { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } - Preferências
 # When a user is signed in, this appears in the drop down menu 
@@ -401,7 +401,7 @@ verify-the-link = Verifique a ligação enviada para { $userEmail } para adicion
 ## an additional email to Firefox Monitor.
 
 email-verified = E-mail confirmado com sucesso!
-email-added-to-subscription = Iremos alertá-lo se { $email } aparecer numa falha de segurança de dados.
+email-added-to-subscription = Iremos alertá-lo se { $email } aparecer numa violação de dados.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
 email-verified-view-dashboard = Para ver e gerir todos os e-mails que registou para a monitorização de falhas de segurança, { $nestedSignInLink }.
@@ -433,37 +433,37 @@ take-further-steps-desc = Descubra como mitigar os riscos de roubo de identidade
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Alterações guardadas!
 # Section headline
-rec-section-headline = O que fazer para esta falha de segurança
+rec-section-headline = O que fazer para esta violação de dados
 rec-section-subhead = Recomendamos que siga estes passos para manter os seus dados pessoais seguros e proteger a sua identidade digital.
 # Section headline
 rec-section-headline-no-pw = O que fazer para proteger os seus dados pessoais
-rec-section-subhead-no-pw = Embora as palavras-passe não tenham sido expostas nesta falha de segurança, ainda existem passos que pode executar para proteger melhor os seus dados pessoais.
+rec-section-subhead-no-pw = Embora as palavras-passe não tenham sido expostas nesta violação de dados, ainda existem passos que pode executar para proteger melhor os seus dados pessoais.
 # Button
 see-additional-recs = Ver recomendações adicionais
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
-resolve-top-notification = { $affectedEmail } apareceu nesta falha de segurança. <a>O que fazer a seguir</a>
+resolve-top-notification = { $affectedEmail } apareceu nesta violação de dados. <a>O que fazer a seguir</a>
 resolve-top-notification-plural =
     { $numAffectedEmails ->
-        [one] { $numAffectedEmails } endereço de e-mail seu apareceu nesta falha de segurança. <a>O que fazer a seguir</a>
-       *[other] { $numAffectedEmails } endereços de e-mail seus apareceram nesta falha de segurança. <a>O que fazer a seguir</a>
+        [one] { $numAffectedEmails } endereço de e-mail seu apareceu nesta violação de dados. <a>O que fazer a seguir</a>
+       *[other] { $numAffectedEmails } endereços de e-mail seus apareceram nesta violação de dados. <a>O que fazer a seguir</a>
     }
 
 ##
 
-marking-this-subhead = Marcar esta falha de segurança como resolvida
+marking-this-subhead = Marcar esta violação de dados como resolvida
 # This string contains nested markup that is later used to style the text inside of it.
 # Please do not modify or remove "<span>" and "</span>".
 marking-this-body =
-    <span>Depois de ter tomado as medidas necessárias para minimizar o impacto desta falha de segurança</span>,
+    <span>Depois de ter tomado as medidas necessárias para minimizar o impacto desta violação de dados</span>,
     pode marcar a situação como resolvida. Pode ainda, a qualquer momento, aceder aos detalhes 
-    sobre a falha de segurança no seu painel.
+    sobre a violação de dados no seu painel.
 mark-as-resolve-button = Marcar como resolvida
 marked-as-resolved-label = Marcado como resolvido
 undo-button = Desfazer
-confirmation-1-subhead = Boa! Acabou de resolver a sua primeira falha de segurança.
+confirmation-1-subhead = Boa! Acabou de resolver a sua primeira violação de dados.
 confirmation-1-body = Mantenha o ritmo. Consulte o seu painel para ver se existem mais coisas a resolver.
 confirmation-2-subhead = Tomem lá, piratas!
 confirmation-2-body = Está a tomar medidas importantes para proteger as suas contas na Internet.
@@ -471,13 +471,13 @@ confirmation-3-subhead = Mais uma resolvida. Bom trabalho!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = A sua nova palavra-passe é única, forte e difícil de adivinhar? <a>Descubra se sim</a>
-generic-confirmation-subhead = Esta falha de segurança foi marcada como resolvida
+generic-confirmation-subhead = Esta violação de dados foi marcada como resolvida
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
-        [one] Para ver a falha de segurança remanescente, aceda ao seu painel.
-       *[other] Para ver as falhas de segurança remanescentes, aceda ao seu painel.
+        [one] Para ver a violação de dados remanescente, aceda ao seu painel.
+       *[other] Para ver as violações de dados remanescentes, aceda ao seu painel.
     }
-return-to-breach-details-link = Voltar aos detalhes da falha de segurança
+return-to-breach-details-link = Voltar aos detalhes da violação de dados
 go-to-dashboard-link = Ir para o painel
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
@@ -491,12 +491,12 @@ num-resolved =
     }
 progress-intro-subhead = Novo no { -product-name }: marque falhas de segurança como resolvidas
 progress-intro-message =
-    Depois de analisar os detalhes sobre uma falha de segurança e tomar medidas para proteger
-    as suas informações pessoais, pode marcar as falhas de segurança como resolvidas.
+    Depois de analisar os detalhes sobre uma violação de dados e tomar medidas para proteger
+    as suas informações pessoais, pode marcar as violações de dados como resolvidas.
 progress-status =
     { $numTotalBreaches ->
-        [one] { $numResolvedBreaches } (de { $numTotalBreaches }) falha de segurança de  marcada como resolvida
-       *[other] { $numResolvedBreaches } (de { $numTotalBreaches }) falhas de segurança marcadas como resolvidas
+        [one] { $numResolvedBreaches } (de { $numTotalBreaches }) violação de dados de  marcada como resolvida
+       *[other] { $numResolvedBreaches } (de { $numTotalBreaches }) violações de dados marcadas como resolvidas
     }
 progress-complete = Todas as falhas de segurança conhecidas foram marcadas como resolvidas
 
@@ -517,7 +517,7 @@ progress-complete-message =
 
 ##
 
-resolve-this-breach-link = Resolver esta falha de segurança
+resolve-this-breach-link = Resolver esta violação de dados
 # This string appears in resolved breach cards and is followed by 
 # the date the user marked the breach as resolved.
 marked-resolved = Marcada como resolvida:
@@ -530,8 +530,8 @@ unresolved-passwords-exposed =
     }
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
-        [one] Falha de segurança de dados conhecida marcada como resolvida
-       *[other] Falha de segurança de dados conhecidas marcadas como resolvidas
+        [one] Violação de dados conhecida marcada como resolvida
+       *[other] Violações de dados conhecidas marcadas como resolvidas
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nova
@@ -545,7 +545,7 @@ fpn-promo-headline = Mascare a sua localização de sites e de rastreadores
 promo-fpn-body = O { -brand-fpn } mascara o seu endereço IP real, despistando os sites e coletores de dados que criam um perfil seu com recurso a anúncios.
 promo-fpn-cta = Obtenha o { -brand-fpn }
 monitor-promo-headline = Seja informado de novas falhas de segurança de dados
-monitor-promo-body = Seja notificado da próxima vez que as suas informações pessoais forem expostas numa falha de segurança conhecida.
+monitor-promo-body = Seja notificado da próxima vez que as suas informações pessoais forem expostas numa violação de dados conhecida.
 ecosystem-promo-headline = Proteja a sua vida na Internet com produtos de privacidade focados na privacidade
 ecosystem-promo-body = Todos os produtos { -brand-name } honram o nosso compromisso com os dados pessoais: recolher menos; manter seguro; sem segredos.
 promo-ecosystem-cta = Ver todos os produtos

@@ -34,7 +34,7 @@ email-breach-summary-for-email = Resumo de falhas de segurança para { $userEmai
 # Email headline
 email-no-breaches-hl = { $userEmail } apareceu em 0 falhas de segurança de dados conhecidas
 # Email headline
-email-alert-hl = { $userEmail } apareceu numa nova falha de segurança de dados
+email-alert-hl = { $userEmail } apareceu numa nova violação de dados
 # Subject line of email
 email-subject-found-breaches = { -product-name } encontrou a sua informação numa destas falhas de segurança
 # Subject line of email
@@ -44,11 +44,11 @@ email-subject-verify = Confirme o seu e-mail para { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Saiba mais sobre { $fxmLink }
 email-sensitive-disclaimer =
-    Devido à natureza sensível desta falha de segurança, os e-mails envolvidos não são pesquisáveis publicamente. 
+    Devido à natureza sensível desta violação de dados, os e-mails envolvidos não são pesquisáveis publicamente. 
     Se está a receber este alerta, isto deve-se ao facto de ser o proprietário confirmado deste endereço de e-mail.
 fxm-warns-you-no-breaches =
-    { -product-name } alerta sobre falhas de segurança de dados que envolvam os seus dados pessoais. 
-    Até ao momento, não foram encontradas falhas de segurança. Nós iremos enviar-lhe um alerta se o seu endereço de e-mail aparecer numa nova falha de segurança.
+    O { -product-name } alerta sobre violações de dados que envolvam os seus dados pessoais. 
+    Até ao momento, não foram encontradas violações de dados. Nós iremos enviar-lhe um alerta se o seu endereço de e-mail aparecer numa nova violação de dados.
 fxm-warns-you-found-breaches =
     { -product-name } alerta sobre falhas de segurança de dados que envolvam os seus dados pessoais. 
     Também tem ativa a subscrição ao envio de alertas se o seu endereço de e-mail for encontrado numa nova falha de segurança.
