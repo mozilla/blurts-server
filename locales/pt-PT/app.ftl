@@ -120,7 +120,7 @@ fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Abrir navegação do { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
-latest-breach = ÚLTIMA FALHA DE SEGURANÇA ADICIONADA
+latest-breach = ÚLTIMA VIOLAÇÃO DE DADOS ADICIONADA
 # Link title
 more-about-this-breach = Mais acerca desta brecha
 take-control = Retome o controlo dos seus dados pessoais.
@@ -129,7 +129,7 @@ read-more-tips = Ler mais dicas de segurança
 how-hackers-work = Compreender como é que os piratas informáticos trabalham
 monitor-your-online-accounts = Registe-se para a monitorização de falhas de segurança com uma { -brand-fxa }.
 stay-alert = Mantenha-se atento às novas falhas de segurança
-if-your-info = Se a sua informação apareceu numa nova falha de segurança de dados, iremos enviar-lhe um alerta.
+if-your-info = Se a sua informação apareceu numa nova violação de dados, iremos enviar-lhe um alerta.
 search-all-emails = Procure por falhas de segurança para todos os seus endereços de e-mail e receba alertas sobre novas ameaças.
 monitor-several-emails = Monitorize vários emails
 take-action = Tome medidas para proteger as suas contas
@@ -147,22 +147,22 @@ spam-list-breach-plural = Brechas de listas de spam
 what-data = Que dados foram comprometidos:
 sensitive-sites = Como é que o { -product-name } trata sites sensíveis?
 sensitive-sites-copy =
-    { -product-name } só revela as contas associadas com estes 
-    tipos de falhas de segurança depois de um endereço de e-mail ter sido confirmado. Isto significa que 
-    você é a única pessoa que pode ver se a sua informação estava numa falha de segurança (a menos que 
+    { -product-name } só revela as contas associadas com a estes 
+    tipos de violações de dados depois de um endereço de e-mail ter sido confirmado. Isto significa que 
+    você é a única pessoa que pode ver se a sua informação estava numa violação de dados (a menos que 
     alguém tenha acesso à sua conta de e-mail).
-delayed-reporting-headline = Porque demorou tanto tempo até esta falha de segurança ser reportada?
+delayed-reporting-headline = Porque demorou tanto tempo até esta violação de dados ser reportada?
 delayed-reporting-copy =
     Pode demorar meses ou até mesmo anos para as credenciais expostas 
-    numa falha de segurança de dados aparecerem na dark web. As falhas de segurança são adicionadas à nossa base de dados 
+    numa violação de dados aparecerem na dark web. As violações de dados são adicionadas à nossa base de dados 
     assim que são descobertas e validadas.
 about-fxm-headline = Acerca do { -product-name }
 about-fxm-blurb = { -product-name } indica que as suas contas online estiveram envolvidas numa fuga de dados. Descubra se esteve numa fuga de dados, obtenha alertas sobre novas fugas e execute os procedimentos para proteger as suas contas onlines. { -product-name } é fornecido por { -brand-Mozilla }.
 fxm-warns-you =
-    { -product-name } indica se o seu endereço de e-mail foi exposto 
-    numa falha de segurança de dados na Internet. Confirme se a sua informação foi exposta, aprenda a 
+    O { -product-name } indica se o seu endereço de e-mail foi exposto 
+    numa violação de dados na Internet. Confirme se a sua informação foi exposta, aprenda a 
     proteger melhor as suas contas na Internet e receba alertas caso o seu endereço de e-mail 
-    apareça numa nova falha de segurança.
+    apareça numa nova violação de dados.
 # How Firefox Monitor works
 how-fxm-works = Como é que o { -product-name } funciona
 how-fxm-1-headline = Realizar uma pesquisa básica
@@ -177,11 +177,11 @@ how-fxm-2-blurb =
     incluindo falhas de segurança sensíveis.
 how-fxm-3-headline = Receba notificações no seu navegador
 how-fxm-3-blurb =
-    Se utilizar { -brand-name }, irá receber uma notificação se visitar um 
-    site cujos dados tenham sido acedidos. Saiba imediatamente se faz parte dessa falha de segurança 
+    Se utilizar o { -brand-name }, irá receber uma notificação se visitar um 
+    site cujos dados tenham sido acedidos. Saiba imediatamente se faz parte dessa violação de dados 
     e o que pode fazer relativamente a isso.
-wtd-after-website = O que fazer depois de uma falha de segurança num site
-wtd-after-data-agg = O que fazer depois de uma falha de segurança num agregador de dados
+wtd-after-website = O que fazer depois de uma violação de dados num site
+wtd-after-data-agg = O que fazer depois de uma violação de dados num agregador de dados
 what-is-data-agg = O que é um agregador de dados?
 what-is-data-agg-blurb =
     Agregadores ou agentes de dados, recolhem informações de registos 
@@ -189,7 +189,7 @@ what-is-data-agg-blurb =
     para fins de marketing. As vítimas destas falhas de segurança têm uma probabilidade mais baixa de fraude financeira 
     mas os piratas informáticos podem utilizar estes dados para se fazerem passar por estas pessoas ou para criarem perfis.
 protect-your-privacy = Proteja a sua privacidade online
-no-pw-to-change = Ao contrário de uma falha de segurança de site, não há uma palavra-passe para alterar.
+no-pw-to-change = Ao contrário de uma violação de dados num site, não há uma palavra-passe para alterar.
 avoid-personal-info = Evite utilizar informação pessoal nas palavras-passe
 avoid-personal-info-blurb = É fácil encontrar aniversários, moradas e nomes de membros de família online. Mantenha estas palavras fora das suas palavras-passe.
 
