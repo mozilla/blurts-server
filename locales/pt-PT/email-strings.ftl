@@ -26,19 +26,19 @@ verify-email-cta = Confirmar e-mail
 see-all-breaches = Ver todas as brechas
 # Headline of verification email
 email-link-expires = Esta ligação expira em 24 horas
-email-verify-blurb = Confirme o seu e-mail para o adicionar a { -product-name } e subscreva aos alertas de falhas de segurança.
+email-verify-blurb = Confirme o seu e-mail para o adicionar a { -product-name } e subscreva aos alertas de violações de dados.
 # Email headline
-email-found-breaches-hl = Eis o seu resumo para falhas de segurança de dados anteriores
+email-found-breaches-hl = Eis o seu resumo para violações de dados de dados anteriores
 # Email headline
-email-breach-summary-for-email = Resumo de falhas de segurança para { $userEmail }
+email-breach-summary-for-email = Resumo de violações de dados para { $userEmail }
 # Email headline
-email-no-breaches-hl = { $userEmail } apareceu em 0 falhas de segurança de dados conhecidas
+email-no-breaches-hl = { $userEmail } apareceu em 0 violações de dados conhecidas
 # Email headline
 email-alert-hl = { $userEmail } apareceu numa nova violação de dados
 # Subject line of email
-email-subject-found-breaches = { -product-name } encontrou a sua informação numa destas falhas de segurança
+email-subject-found-breaches = { -product-name } encontrou a sua informação numa destas violações de dados
 # Subject line of email
-email-subject-no-breaches = { -product-name } não encontrou falhas de segurança conhecidas
+email-subject-no-breaches = { -product-name } não encontrou violações de dados conhecidas
 # Subject line of email
 email-subject-verify = Confirme o seu e-mail para { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
@@ -50,19 +50,19 @@ fxm-warns-you-no-breaches =
     O { -product-name } alerta sobre violações de dados que envolvam os seus dados pessoais. 
     Até ao momento, não foram encontradas violações de dados. Nós iremos enviar-lhe um alerta se o seu endereço de e-mail aparecer numa nova violação de dados.
 fxm-warns-you-found-breaches =
-    { -product-name } alerta sobre falhas de segurança de dados que envolvam os seus dados pessoais. 
-    Também tem ativa a subscrição ao envio de alertas se o seu endereço de e-mail for encontrado numa nova falha de segurança.
+    O { -product-name } alerta sobre violações de dados que envolvam os seus dados pessoais. 
+    Também tem ativa a subscrição ao envio de alertas se o seu endereço de e-mail for encontrado numa nova violação de dados.
 email-breach-alert-blurb =
-    { -product-name } alerta sobre falhas de segurança de dados que envolvam os seus dados pessoais. 
-    Acabámos de receber detalhes sobre uma falha de segurança nos dados de outra empresa.
+    O { -product-name } alerta sobre violações de dados que envolvam os seus dados pessoais. 
+    Acabámos de receber detalhes sobre uma violação de dados de outra empresa.
 # List headline
 faq-list-headline = Perguntas frequentes
 # Link Title
-faq-v2-1 = Eu não reconheço nenhuma destas empresas ou sites. Porque estou envolvido nesta falha de segurança?
+faq-v2-1 = Eu não reconheço nenhuma destas empresas ou sites. Porque estou envolvido nesta violação de dados?
 # Link Title
-faq-v2-2 = Preciso de fazer alguma coisa se a falha de segurança aconteceu há vários anos ou se esta é uma conta antiga?
+faq-v2-2 = Preciso de fazer alguma coisa se a violação de dados aconteceu há vários anos ou se esta é uma conta antiga?
 # Link Title
-faq-v2-3 = Acabei de descobrir que estou numa falha de segurança de dados. O que preciso de fazer a seguir?
+faq-v2-3 = Acabei de descobrir que estou numa violação de dados. O que preciso de fazer a seguir?
 # Link Title
 faq-v2-4 = Como é que { -product-name } trata sites sensíveis?
 # This string contains nested markup that becomes a link to Firefox Monitor
@@ -75,18 +75,18 @@ pre-fxa-subject = Uma atualização do { -product-name }
 pre-fxa-headline = O que está a mudar com o { -product-name }
 pre-fxa-blurb =
     Aqui tem o que mudou desde que se registou no { -product-name }, o serviço que 
-    monitoriza as falhas de segurança de dados conhecidas para sua informação pessoal. Nós estamos a associar o serviço às contas do Firefox.
-pre-fxa-tout-1 = Fique atento a mais falhas de segurança
+    monitoriza as violações de dados conhecidas para sua informação pessoal. Nós estamos a associar o serviço às contas do Firefox.
+pre-fxa-tout-1 = Fique atento a mais violações de dados
 pre-fxa-p-1 =
     <a>Crie uma conta</a> para monitorizar até 15 endereços de e-mail para 
-    as falhas de segurança de dados. Nós recomendamos que adicione quaisquer endereços de e-mail que utilizou para criar contas na Internet.
+    as violações de dados. Nós recomendamos que adicione quaisquer endereços de e-mail que utilizou para criar contas na Internet.
 pre-fxa-tout-2 = Obter uma visualização do painel
 pre-fxa-p-2 =
-    Consulte todas as falhas de segurança de dados num único local, para saber quais as palavras-passe a alterar. 
-    O painel de falhas de segurança só está disponível com uma conta.
+    Consulte todas as violações de dados num único local, para saber quais as palavras-passe a alterar. 
+    O painel de violações de dados só está disponível com uma conta.
 pre-fxa-tout-3 = Continue a receber alertas por e-mail
 pre-fxa-p-3 =
     Irá continuar a receber alertas do { -product-name }. Nós iremos informá-lo 
-    se a sua informação aparecer numa nova falha de segurança de dados.
+    se a sua informação aparecer numa nova violação de dados.
 # Button at the bottom of pre-fxa email.
 create-account = Criar conta
