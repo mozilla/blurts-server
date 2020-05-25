@@ -244,6 +244,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Prohledat úniky
 find-out-what-hackers-know = Odhalte, co už o vás hackeři vědí. Zjistěte, jak být stále o krok před nimi.
+get-email-alerts = Zůstaňte v bezpečí: Nechte se upozornit, pokud se vaše údaje objeví ve známém úniku dat.
 search-for-your-email = Vyhledejte svou e-mailovou adresu ve veřejně dostupných únicích dat sahajících zpět do roku 2007.
 back-to-top = Zpět na začátek
 comm-opt-0 = Poslat mi e-mail, pokud se jedna z mých níže uvedených e-mailových adres objeví v nějakém úniku dat.
