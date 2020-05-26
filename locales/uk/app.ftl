@@ -171,7 +171,7 @@ data-aggregator-breach-plural = Витоки даних з агрегатора
 unverified-breach-plural = Непідтверджені витоки даних
 spam-list-breach-plural = Витоки списку надсилання спаму
 what-data = Які дані скомпрометовані:
-sensitive-sites = Як { -product-name } ставиться до сайтів з конфіденційною інформацією?
+sensitive-sites = Як { -product-name } поводиться з сайтами, що містять вразливу інформацію?
 sensitive-sites-copy =
     { -product-name } розкриває лише облікові записи, пов'язані з цими 
     типами витоків даних, після підтвердження адреси електронної пошти. Це означає, що ви 
