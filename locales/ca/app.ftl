@@ -85,10 +85,24 @@ about-fxm-headline = Quant al { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Com funciona el { -product-name }
 what-is-data-agg = Què és un agregador de dades?
+what-is-data-agg-blurb = Els agregadors de dades, o intermediaris de dades, recopilen informació de registres públics i la compren a altres empreses. Recopilen aquestes dades per vendre-les a empreses amb finalitats de màrqueting. Les víctimes d'aquestes filtracions són menys propenses a sofrir frau financer, però els pirates informàtics podrien fer servir aquestes dades per suplantar-les o crear perfils seus.
+protect-your-privacy = Protegiu la vostra privadesa a la xarxa
 
 ## What to do after data breach tips
 
+change-pw = Canvieu la contrasenya
+change-pw-site = Canvieu la contrasenya d'aquest lloc
 create-strong-passwords = Com crear contrasenyes segures
+stop-reusing-pw = Deixeu de reutilitzar les mateixes contrasenyes
+create-unique-pw = Creeu contrasenyes úniques i deseu-les en algun lloc segur, com ara un gestor de contrasenyes.
+five-myths = 5 mites sobre els gestors de contrasenyes
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Apareix en { $breachCount } filtració coneguda.
+       *[other] Apareix en { $breachCount } filtracions conegudes.
+    }
 back-to-top = Torna a dalt
 welcome-user = Us donem la benvinguda, { $userName }.
 # "Appears in-page as: Showing: All Breaches"
