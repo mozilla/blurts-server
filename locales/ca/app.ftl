@@ -35,9 +35,13 @@ scan-title = { -product-name }: Resultats de l'anàlisi
 user-add-invalid-email = L'adreça electrònica no és vàlida
 user-add-too-many-emails = Esteu supervisant el nombre màxim d'adreces electròniques.
 user-add-email-verify-subject = Verifiqueu la vostra subscripció al { -product-name }.
+user-add-duplicate-email = Aquesta adreça electrònica ja s'ha afegit al { -product-name }.
+user-add-duplicate-email-part-2 = Aneu a { $preferencesLink } per comprovar l'estat de { $userEmail }.
 error-headline = Error
 user-unsubscribe-title = { -product-name } : Cancel·la la subscripció
 pwt-section-headline = Contrasenyes més segures = Millor protecció
+scan-placeholder = Escriviu una adreça electrònica
+scan-submit = Cerqueu la vostra adreça electrònica
 scan-error = Ha de ser un correu electrònic vàlid.
 download-firefox-banner-button = Baixa el { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
@@ -50,6 +54,7 @@ breach-date = Data de la filtració:
 compromised-accounts = Comptes afectats:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Dades afectades:
+unsub-headline = Cancel·leu la subscripció al { -product-name-nowrap }
 unsub-button = Cancel·la la subscripció
 show-all = Mostra-ho tot
 fxa-scan-another-email = Voleu comprovar una altra adreça?
