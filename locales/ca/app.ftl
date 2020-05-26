@@ -11,9 +11,13 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
+##
 
-
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Compte del Firefox
 terms-and-privacy = Condicions i privadesa
 GitHub-link-title = GitHub
 error-scan-page-token = Heu cercat massa adreces electròniques en un període de temps curt. Per motius de seguretat, us hem blocat temporalment i no podreu fer cerques noves. Torneu a provar-ho més tard.
@@ -30,6 +34,7 @@ oauth-invalid-session = La sessió no és vàlida
 scan-title = { -product-name }: Resultats de l'anàlisi
 user-add-invalid-email = L'adreça electrònica no és vàlida
 user-add-too-many-emails = Esteu supervisant el nombre màxim d'adreces electròniques.
+user-add-email-verify-subject = Verifiqueu la vostra subscripció al { -product-name }.
 error-headline = Error
 user-unsubscribe-title = { -product-name } : Cancel·la la subscripció
 pwt-section-headline = Contrasenyes més segures = Millor protecció
@@ -104,7 +109,21 @@ want-to-add = Voleu afegir una altra adreça?
 ## an additional email to Firefox Monitor.
 
 
-
+##
 
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = S'han desat els canvis.
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+
+##
+
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
