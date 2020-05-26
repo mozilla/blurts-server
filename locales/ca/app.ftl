@@ -56,6 +56,8 @@ compromised-accounts = Comptes afectats:
 compromised-data = Dades afectades:
 unsub-headline = Cancel·leu la subscripció al { -product-name-nowrap }
 unsub-button = Cancel·la la subscripció
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Informació de les filtracions de dades proporcionada per { $hibp-link }
 show-all = Mostra-ho tot
 fxa-scan-another-email = Voleu comprovar una altra adreça?
 sign-in = Inicia la sessió
@@ -78,9 +80,11 @@ fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Obre la navegació del { -brand-fxa }
 take-control = Recupereu el control de les vostres dades personals.
+website-breach = Filtració de dades de lloc web
 about-fxm-headline = Quant al { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Com funciona el { -product-name }
+what-is-data-agg = Què és un agregador de dades?
 
 ## What to do after data breach tips
 
