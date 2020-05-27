@@ -43,6 +43,7 @@ user-verify-email-report-subject = Tanauatil tein mitsiluia keniuj moajsi { -pro
 user-unsubscribe-token-error = Komo tikneki amo timoyekijkuilojtos ya, moneki se token.
 user-unsubscribe-token-email-error = Komo tikneki amo timoyekijkuilojtos ya, moneki se token uan emailHash.
 user-unsubscribe-title = { -product-name } : Maj amo nimoyekijkuilojto ya
+pwt-section-headline = Okachi chikauak moichtakatajtol = okachi kuali timonejmachpias
 
 ## What to do after data breach tips
 
