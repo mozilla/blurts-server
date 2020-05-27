@@ -40,6 +40,9 @@ user-add-duplicate-email-part-2 = Xikita  { $preferencesLink } tein tikpia uan i
 error-headline = Nepolol
 user-verify-token-error = Moneki se token tein ika se kiyekitas tensa.
 user-verify-email-report-subject = Tanauatil tein mitsiluia keniuj moajsi { -product-name }
+user-unsubscribe-token-error = Komo tikneki amo timoyekijkuilojtos ya, moneki se token.
+user-unsubscribe-token-email-error = Komo tikneki amo timoyekijkuilojtos ya, moneki se token uan emailHash.
+user-unsubscribe-title = { -product-name } : Maj amo nimoyekijkuilojto ya
 
 ## What to do after data breach tips
 
