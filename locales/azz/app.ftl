@@ -53,7 +53,10 @@ download-firefox-banner-button = Xiktemoui { -brand-name }
 signup-modal-sent = ¡Motitanik ya!
 sign-up = Xikchiua mocuenta
 form-signup-error = Xikijkuilo se correo tein yekmelauj kualtia
+# breach-date = the calendar date a particular data theft occurred. 
+breach-date = Tapoual keman aksa kinekik ichtakakalak:
 unsub-headline = Maj amo nimoyekijkuiloto ya itech  { -product-name-nowrap }
+unsub-blurb = Nejin kiajchiuas mocorreo kampa moijkuilojtinemij itech { -product-name-nowrap } uan amo mitsnauatis keman oksekin kinekiskej ichtakakalakiskej.
 
 ## What to do after data breach tips
 
