@@ -54,6 +54,7 @@ module.exports = {
   ],
   root: true,
   rules: {
+    "camelcase": ["error", {properties: "never"}],
     "comma-dangle": ["error", {arrays: "always-multiline", objects: "always-multiline"}],
     "eol-last": ["error", "always"],
     "eqeqeq": "error",
