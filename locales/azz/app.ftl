@@ -53,6 +53,7 @@ download-firefox-banner-button = Xiktemoui { -brand-name }
 signup-modal-sent = ¡Motitanik ya!
 sign-up = Xikchiua mocuenta
 form-signup-error = Xikijkuilo se correo tein yekmelauj kualtia
+unsub-headline = Maj amo nimoyekijkuiloto ya itech  { -product-name-nowrap }
 
 ## What to do after data breach tips
 
