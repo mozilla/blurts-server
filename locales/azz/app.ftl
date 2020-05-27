@@ -44,6 +44,14 @@ user-unsubscribe-token-error = Komo tikneki amo timoyekijkuilojtos ya, moneki se
 user-unsubscribe-token-email-error = Komo tikneki amo timoyekijkuilojtos ya, moneki se token uan emailHash.
 user-unsubscribe-title = { -product-name } : Maj amo nimoyekijkuilojto ya
 pwt-section-headline = Okachi chikauak moichtakatajtol = okachi kuali timonejmachpias
+landing-headline = Nikan peua timopaleuia tachtekinij hackers.
+scan-placeholder = Xikijkuilo mocorreo itech tepos
+scan-submit = Xiktemo mocorreo
+scan-error = Moneki se correo tein kualtia.
+download-firefox-banner-button = Xiktemoui { -brand-name }
+# Appears after Firefox Monitor has sent a verification email to a new user. 
+signup-modal-sent = ¡Motitanik ya!
+sign-up = Xikchiua mocuenta
 
 ## What to do after data breach tips
 
