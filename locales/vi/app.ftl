@@ -459,7 +459,9 @@ marked-as-resolved-label = Đã đánh dấu là đã giải quyết
 undo-button = Hoàn tác
 confirmation-1-subhead = Tốt! Bạn đã giải quyết vụ rò rỉ đầu tiên của bạn.
 confirmation-1-body = Giữ đà. Kiểm tra bảng điều khiển của bạn để xem nếu có nhiều việc phải làm.
+confirmation-2-subhead = Nắm lấy điều đó, tin tặc!
 confirmation-2-body = Bạn đang thực hiện các bước quan trọng để bảo vệ tài khoản trực tuyến của bạn.
+confirmation-3-subhead = Một thứ khác đã xuống. Công việc đang hoàn hảo!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Bạn muốn mật khẩu của bạn mạnh mẽ, khó đoán và duy nhất? <a>Tìm hiểu</a>
@@ -480,6 +482,9 @@ num-resolved =
        *[other] Đã giải quyết { $numResolvedBreaches } mục
     }
 progress-intro-subhead = Tính năng mới trong { -product-name }: Đánh dấu rò rỉ dữ liệu là đã giải quyết
+progress-intro-message =
+    Sau khi xem xét các chi tiết về rò rỉ và thực hiện các bước để bảo vệ
+    thông tin cá nhân của bạn, bạn có thể đánh dấu rò rỉ là đã giải quyết.
 progress-status =
     { $numTotalBreaches ->
        *[other] { $numResolvedBreaches } trong số { $numTotalBreaches } vụ rò rỉ đã được đánh dấu là giải quyết
@@ -489,6 +494,9 @@ progress-complete = Tất cả các rò rỉ đã biết đã được đánh d�
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>Bạn có một khởi đầu tuyệt vời!</span> Kiểm tra các rò rỉ còn lại để tìm hiểu 
+    những bước cần thực hiện.
 progress-message-2 =
     <span>Hãy cập nhật!</span> Những thay đổi nhỏ như cập nhật mật khẩu có thể giữ an toàn 
     thông tin cá nhân của bạn.
