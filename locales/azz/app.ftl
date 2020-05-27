@@ -52,6 +52,7 @@ download-firefox-banner-button = Xiktemoui { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = ¡Motitanik ya!
 sign-up = Xikchiua mocuenta
+form-signup-error = Xikijkuilo se correo tein yekmelauj kualtia
 
 ## What to do after data breach tips
 
