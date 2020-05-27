@@ -80,14 +80,6 @@
   font-size: 18px;
 }
 
-.temp-marketing-alert-me-link {
-  color: var(--blue3);
-  border: none;
-  outline: none;
-  font-size: 16px;
-  margin-top: 16px;
-}
-
 .temp-marketing-callout {
   margin: 20px auto 80px auto;
 }
@@ -110,6 +102,10 @@
   padding-left: var(--padding);
   min-height: 48px;
   transition: all 0.15s ease-in-out;
+}
+
+.temp-marketing-btn-blue.button-top {
+  margin-top: 16px;
 }
 
 .temp-marketing-btn-blue:hover {
