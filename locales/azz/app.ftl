@@ -15,6 +15,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Cuenta Firefox
 terms-and-privacy = Keniuj motekiltis uan Keniuj tiyekpiaj tein tikseliaj
 GitHub-link-title = GitHub
 error-scan-page-token = Yeknenken tikuitoya tel miak correos itech tepos. Kemej yon tamouilil, yekintsin tiktsakuilijkej nochi tein tiktemojtoya. Satepan uelis oksepa tikchiuas.
