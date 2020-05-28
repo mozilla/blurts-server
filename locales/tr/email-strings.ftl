@@ -20,8 +20,6 @@ email-footer-blurb = Bu e-postayı { -product-name } uyarılarına kaydolduğunu
 email-verify-footer-copy =
     Bu e-postayı { -product-name } uyarılarına kaydolduğunuz için alıyorsunuz.
     Bu otomatik bir e-postadır. Destek için { $faqLink } sayfasını ziyaret edebilirsiniz.
-# Button text that takes the user to their signed in user dashboard.
-view-my-dashboard-cta = Kontrol panelimi göster
 # Button text
 verify-email-cta = E-postayı doğrula
 # Button text
@@ -68,5 +66,9 @@ monitor-another-email = Başka bir e-postayı izlemek ister misiniz?
 pre-fxa-subject = { -product-name } haberleri
 pre-fxa-headline = { -product-name }'de neler değişiyor?
 pre-fxa-tout-1 = Daha fazla ihlale karşı tetikte kalın
+pre-fxa-p-1 =
+    Veri ihlallerine karşı 15 adede kadar e-posta adresini izlemek için <a>hesap açın</a>. 
+    Çevrimiçi hesaplar açarken kullandığınız tüm e-posta adreslerinizi eklemenizi öneririz.
+pre-fxa-tout-3 = E-posta uyarıları almaya devam et
 # Button at the bottom of pre-fxa email.
 create-account = Hesap oluştur

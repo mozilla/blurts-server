@@ -31,6 +31,9 @@ rec-phone-num-subhead = Telefon numaranızı paylaşmaktan kaçının
 rec-dob-subhead = PIN’lerde kişisel bilgilerinizi kullanmaktan kaçının
 # Recommendation subhead
 rec-pins-subhead = PIN’lerinizin güvenliğini güçlendirin
+rec-pins =
+    Güçlü bir PIN, doğum tarihiniz veya adresiniz gibi kişisel bilgiler içermez. 
+    Sadece sizin bildiğiniz bir sayı olmalı ve kolayca tahmin edilememeli.
 # Recommendation subhead
 rec-address-subhead = Parolalarda adresinizi kullanmayın
 # Recommendation subhead
