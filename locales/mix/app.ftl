@@ -93,6 +93,9 @@ how-fxm-1-headline = A kunu ndukuku ña'a
 how-fxm-2-headline = Ntachaa takua kuncheu ana nche'e korreoku
 wtd-after-website = Ntyi sau tatu skuinana página web
 what-is-data-agg = ¿Ntyi ku agregador de datos?
+protect-your-privacy = Proteger tu privacidad en línea
+no-pw-to-change = Kue tsiniñu samu tu'un seé.
+avoid-personal-info = Nchau sivu tsi tu'un seé
 
 ## What to do after data breach tips
 
