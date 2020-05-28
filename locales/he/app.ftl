@@ -101,6 +101,7 @@ cant-stop-hackers = אי אפשר למנוע מהאקרים לפרוץ. אבל �
 if-your-info = אם המידע שלך נחשף בדליפת נתונים חדשה, נשלח לך התרעה.
 monitor-several-emails = ניטור אחר מספר כתובות דוא״ל
 sensitive-sites = כיצד { -product-name } מתייחס לאתרים רגישים?
+protect-your-privacy = הגנה על הפרטיות המקוונת שלך
 
 ## What to do after data breach tips
 
@@ -207,6 +208,8 @@ filter-by = סינון לפי קטגוריה:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = תפריט
 to-affected-email = שליחת התראות על דליפות לכתובת הדוא״ל המושפעת
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = יש דרך להגן על הפרטיות שלך. להצטרף ל־{ -brand-name }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
