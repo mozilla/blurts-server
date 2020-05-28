@@ -48,5 +48,9 @@ rec-gen-2-cta = Parola yöneticileri hakkındaki efsaneler
 rec-gen-3-subhead = Kişisel bilgilerinizi verirken dikkatli olun
 # Link title
 rec-gen-3-cta = Daha dazla güvenlik ipucu
+rec-gen-3 = Gerekmiyorsa kişisel verilerinizi vermeyin. E-posta adresinizi, ev adresinizi veya telefon numaranızı vermeniz istenirse "hayır" diyebilirsiniz.
 # Recommendation subhead
 rec-gen-4-subhead = Yazılım ve uygulamalarınızı güncel tutun
+rec-gen-4 =
+    Akıllı telefon uygulamalarınızı, tarayıcılarınızı ve işletim sistemlerinizi güncellemek, 
+    cihazlarınızı daha güvenli hale getirir. Bu güncellemeler hataları, yazılım açıklarını ve güvenlik sorunlarını giderir.
