@@ -106,16 +106,19 @@ keep-your-data-safe = サイバー犯罪からデータを安全に保つため�
 website-breach = ウェブサイト侵害
 unverified-breach = 未確認の侵害
 website-breach-plural = ウェブサイト侵害
+unverified-breach-plural = 未確認の侵害
 what-data = 漏洩したデータ:
 delayed-reporting-headline = なぜ、この侵害の報告に時間がかかったのですか？
 about-fxm-headline = { -product-name } について
 about-fxm-blurb = あなたのオンラインアカウントがデータ侵害に巻き込まれている場合、{ -product-name } が警告します。データ侵害を受けていないか確認し、新しい侵害についての警告を受け取り、オンラインアカウントを保護する措置を取りましょう。{ -product-name } は、{ -brand-Mozilla } によって提供されています。
+how-fxm-3-headline = ブラウザーで通知を受け取る
 wtd-after-website = ウェブサイト侵害の後にするべきこと:
 protect-your-privacy = オンラインプライバシーを保護する
 
 ## What to do after data breach tips
 
 change-pw = パスワードを変更する
+change-pw-site = このサイトのパスワードを変更する
 even-for-old = 古いアカウントであっても、パスワードをアップデートすることは大切です。
 make-new-pw-unique = 新しいパスワードを他とは異なるユニークなものにする
 strength-of-your-pw = パスワードの強度は、直接オンラインセキュリティに影響します。
@@ -137,6 +140,7 @@ find-out-what-hackers-know = ハッカーが既にあなたについて知って
 search-for-your-email = 2007 年までさかのぼって、メールアドレスがデータ侵害を受けているか検索します。
 back-to-top = トップに戻る
 comm-opt-1 = すべての通知を { $primaryEmail } に送る。
+stop-monitoring-this = このメールの監視を停止する。
 resend-verification = 認証メールを再送する
 add-new-email = 新しいメールアドレスを追加
 send-verification = 認証リンクを送信する
@@ -157,6 +161,7 @@ welcome-back = おかえりなさい、{ $userName } さん！
 welcome-user = ようこそ、{ $userName } さん！
 breach-alert-subject = { -product-name } が、あなたのメールアドレスの新しいデータ侵害を発見しました。
 what-to-do-after-breach = データ侵害があった後にするべきこと
+ba-next-step-1 = パスワードを強力で一意のパスワードに変更する。
 sign-up-headline-1 = { -brand-fxa } で継続して警告を受け取りましょう。
 account-not-required = { -brand-name } ブラウザーは { -brand-fxa }には必要ありません。{ -brand-Mozilla } サービスについての情報を受け取るでしょう。
 was-your-info-exposed = { $breachName } のデータ侵害にさらされていますか？
@@ -257,6 +262,9 @@ breach-alert-notifications = 侵害についての通知設定
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = 侵害が追加された日:
+how-hackers-work-desc = サイバー犯罪者からあなたのパスワードを守りましょう。サイバー犯罪者はパスワードに最も関心があります。
+what-to-do-after-breach-desc = アカウントをロックして、あなたの情報が悪意のある人の手に渡らないようにしましょう。
+create-strong-passwords-desc = パスワードは強力で安全で推測しにくいものにしましょう。
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
