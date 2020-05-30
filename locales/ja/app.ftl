@@ -34,6 +34,8 @@ oauth-invalid-session = 不正なセッション
 scan-title = { -product-name } : スキャン結果
 user-add-invalid-email = メールアドレスが正しくありません
 user-add-email-verify-subject = { -product-name } の登録を確認してください。
+user-add-duplicate-email = このメールは既に { -product-name } に追加されています。
+user-add-duplicate-email-part-2 = { $preferencesLink } にアクセスして、{ $userEmail } のステータスを確認してください。
 error-headline = エラー
 user-verify-token-error = 検証トークンが必要です。
 user-verify-email-report-subject = あなたの { -product-name } レポート
@@ -86,6 +88,8 @@ breaches = データ侵害
 # Link title
 security-tips = セキュリティの秘訣
 fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = { -brand-fxa } ナビゲーションを開く
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = 最近追加されたデータ侵害
 # Link title
@@ -100,6 +104,7 @@ if-your-info = あなたの情報が新しいデータ侵害にさらされた�
 monitor-several-emails = 複数のメールアドレスを監視する
 keep-your-data-safe = サイバー犯罪からデータを安全に保つために必要なことを見つけましょう。
 website-breach = ウェブサイト侵害
+unverified-breach = 未確認の侵害
 website-breach-plural = ウェブサイト侵害
 what-data = 漏洩したデータ:
 delayed-reporting-headline = なぜ、この侵害の報告に時間がかかったのですか？
