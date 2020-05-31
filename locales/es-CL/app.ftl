@@ -244,7 +244,7 @@ ba-next-step-3 = Obtén ayuda para crear mejores contraseñas y mantenerlas segu
 ba-next-step-blurb-3 =
     Usa un administrador de contraseñas para crear contraseñas seguras y únicas. 
     Los administradores de contraseñas guardan de forma segura 
-    todas tus conexiones para que puedas acceder a ellas en todos tus dispositivos.
+    todas tus credenciales para que puedas acceder a ellas en todos tus dispositivos.
 faq1 = No reconozco esta empresa o sitio web. ¿Por qué aparezco en la filtración?
 faq2 = ¿Por qué tomó tanto tiempo notificarme sobre esta filtración?
 faq3 = ¿Cómo sé que este es un correo electrónico legítimo de { -product-name }?
@@ -487,7 +487,7 @@ progress-message-3 = <span>¡Excelente trabajo resolviendo esas filtraciones!</s
 progress-message-4 = <span>¡Casi listo!</span> Estás muy cerca de la meta.
 progress-complete-message =
     <span>Se siente bien, ¿verdad?</span> Si quieres continuar, este es un buen momento para
-    actualizar otras conexiones con contraseñas más seguras.
+    actualizar otras credenciales con contraseñas más seguras.
 
 ##
 
@@ -513,7 +513,7 @@ mobile-promo-headline = Lleva { -brand-name } a tu celular y tablet
 mobile-promo-body = Navegación rápida, privada y segura donde sea que vayas. Busca { -brand-name } en Google Play y App Store.
 mobile-promo-cta = Obtén { -brand-name } en Android e iOS
 promo-lockwise-headline = Lleva tus contraseñas a todas partes
-lockwise-promo-body = Mantén un registro de tus conexiones en todos tus dispositivos. Accede a ellas de forma segura desde tu computador, celular o tablet.
+lockwise-promo-body = Mantén un registro de tus credenciales en todos tus dispositivos. Accede a ellas de forma segura desde tu computador, celular o tablet.
 promo-lockwise-cta = Obtén { -brand-lockwise }
 fpn-promo-headline = Enmascara tu ubicación ante sitios web y rastreadores
 promo-fpn-body = { -brand-fpn } despista a los sitios web y recolectores de datos que te perfilan con publicidad enmascarando tu dirección IP real.

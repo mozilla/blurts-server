@@ -15,9 +15,9 @@ rec-pw-1 =
     Una buena estrategia a seguir es combinar dos o más palabras 
     no relacionadas para crear una contraseña entera.
 # Recommendation subhead
-rec-pw-2-subhead = Actualiza otras conexiones en las que usas la misma contraseña
+rec-pw-2-subhead = Actualiza otras credenciales en las que usas la misma contraseña
 # Link title
-rec-pw-2-cta-fx = Ver conexiones en { -brand-name }
+rec-pw-2-cta-fx = Ver credenciales en { -brand-name }
 rec-pw-2 =
     Reutilizar contraseñas transforma una filtración de datos puntual en muchas. Ahora que esa 
     contraseña está dando vueltas por ahí, los hackers pueden usarla para entrar a otras cuentas.
@@ -60,7 +60,7 @@ rec-ip-non-us =
     y enmascarar tu dirección IP.
 rec-hist-pw-subhead = Evita reutilizar contraseñas
 # Link title
-rec-hist-pw-cta-fx = Ver conexiones en { -brand-name }
+rec-hist-pw-cta-fx = Ver credenciales en { -brand-name }
 rec-hist-pw = Usa contraseñas únicas y seguras para cada cuenta. Si una contraseña es expuesta en una filtración de datos, solo tendrás que cambiar esa conexión puntual.
 # Recommendation subhead
 rec-sec-qa-subhead = Crea respuestas únicas para preguntas de seguridad
