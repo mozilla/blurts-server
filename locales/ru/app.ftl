@@ -73,7 +73,7 @@ unsub-headline = Отписаться от уведомлений { -product-nam
 unsub-blurb = Это действие удалит ваш адрес электронной почты из списка { -product-name-nowrap } и вы больше не будет получать уведомления о новых угрозах.
 unsub-button = Отписаться
 # Breach data provided by Have I Been Pwned.
-hibp-attribution = Данные об угрозах предоставлены { $hibp-link }
+hibp-attribution = Данные об утечках предоставлены { $hibp-link }
 share-twitter = Многие люди имеют по 100 аккаунтов. Затронули ли какой-либо из ваших утечки данных? Узнайте это.
 share-facebook-headline = Узнайте, не стали ли вы жертвой утечки данных
 share-facebook-blurb = Затронули ли какой-то из ваших аккаунтов утечки данных?
@@ -498,7 +498,7 @@ progress-complete-message =
 
 ##
 
-resolve-this-breach-link = Решить эту утечку
+resolve-this-breach-link = Разобраться с этой утечкой
 # This string appears in resolved breach cards and is followed by 
 # the date the user marked the breach as resolved.
 marked-resolved = Отмеченные решёнными:
