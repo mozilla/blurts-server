@@ -17,6 +17,15 @@ rec-cc-subhead = Pantau laporan kartu kredit Anda
 rec-hist-pw-subhead = Hindari penggunaan kembali kata sandi
 # Link title
 rec-hist-pw-cta-fx = Lihat info masuk di { -brand-name }
+# Recommendation subhead
+rec-gen-1-subhead = Gunakan kata sandi yang unik dan kuat untuk setiap akun
+# Link title
+rec-gen-1-cta = Cara membuat kata sandi yang kuat
+rec-gen-1 =
+    Penggunaan kembali kata sandi membuat semua akun Anda dalam risiko. Ini berarti jika
+    satu kata sandi terekspos, peretas memiliki kunci ke banyak akun.
+# Recommendation subhead
+rec-gen-2-subhead = Simpan kata sandi di tempat yang aman
 # Link title
 rec-gen-2-cta = Mitos tentang pengelola kata sandi
 rec-gen-2 =
