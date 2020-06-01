@@ -62,37 +62,6 @@ function doOauth(el, {emailWatch = false} = {}) {
     }
   });
 
-  // Growth Experiment: OAuth Entry Point IDs are unique to the experiment.
-  const oAuthEntryPointIds = [
-    "fx-monitor-create-account-blue-btn-homePage",
-    "fx-monitor-create-account-blue-btn-featuredBreach",
-    "fx-monitor-check-for-breaches-blue-btn",
-    "fx-monitor-find-out-blue-btn",
-    "fx-monitor-alert-me-blue-btn",
-    "fx-monitor-alert-me-blue-link",
-  ];
-
-  if (oAuthEntryPointIds.includes(el.dataset.entrypoint)) {
-    // Growth Experiment: Reset UTMs from in-line body tag data elements.
-    ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
-      if (document.body.dataset[key]) {
-        url.searchParams.delete(key);
-        url.searchParams.append(key, document.body.dataset[key]);
-      }
-    });
-
-    if (typeof(ga) !== "undefined") {
-      ga("send", {
-        hitType: "event",
-        eventCategory: document.body.dataset.utm_campaign,
-        eventAction: document.body.dataset.experiment,
-        eventLabel: el.dataset.entrypoint,
-        transport: "beacon",
-      });
-    }
-
-  }
-
   if (!sessionStorage) {
     window.location.assign(url);
     return;
@@ -171,24 +140,6 @@ function handleFormSubmits(formEvent) {
   }
 
   const formClassList = thisForm.classList;
-
-  if (formClassList.contains("skip")) {
-    return;
-  }
-
-  if (document.body.dataset.experiment) {
-    const scanFormActionURL = new URL(thisForm.action);
-
-    ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
-      if (document.body.dataset[key]) {
-        scanFormActionURL.searchParams.append(key, document.body.dataset[key]);
-      }
-    });
-
-    const revisedActionURL = scanFormActionURL.pathname + scanFormActionURL.search;
-
-    thisForm.action = revisedActionURL.toString();
-  }
 
   if (thisForm.email && !isValidEmail(email)) {
     sendPing(thisForm, "Failure");
