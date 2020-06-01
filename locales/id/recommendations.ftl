@@ -10,6 +10,10 @@ rec-ssn =
 rec-pw-1-subhead = Ubah kata sandi Anda
 # Link title
 rec-pw-1-cta = Ubah kata sandi untuk situs ini
+rec-pw-1 =
+    Buat kata sandi ini unik dan berbeda dari kata sandi lain yang Anda gunakan. 
+    Strategi yang baik untuk diikuti adalah menggabungkan dua atau lebih kata yang tidak terkait 
+    untuk membentuk keseluruhan frasa sandi.
 # Recommendation subhead
 rec-pw-2-subhead = Perbarui info masuk lain menggunakan kata sandi yang sama
 # Link title
