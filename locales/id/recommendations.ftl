@@ -1,5 +1,11 @@
 # Recommendation subhead
 rec-ssn-subhead = Tinjau laporan kredit Anda
+# Link title
+rec-ssn-cta = Minta laporan kredit
+rec-ssn =
+    Anda berhak mendapatkan tiga laporan kredit gratis setahun secara hukum. 
+    Meminta dan mengulasnya tidak memengaruhi kredit Anda. 
+    Cari akun, pinjaman, atau kartu kredit yang tidak Anda kenal.
 # Recommendation subhead
 rec-pw-1-subhead = Ubah kata sandi Anda
 # Link title
