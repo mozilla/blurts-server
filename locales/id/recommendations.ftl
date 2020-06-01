@@ -17,8 +17,13 @@ rec-cc-subhead = Pantau laporan kartu kredit Anda
 rec-hist-pw-subhead = Hindari penggunaan kembali kata sandi
 # Link title
 rec-hist-pw-cta-fx = Lihat info masuk di { -brand-name }
+# Recommendation subhead
+rec-gen-3-subhead = Berhati-hatilah dalam memberikan informasi pribadi
 # Link title
 rec-gen-3-cta = Baca kiat keamanan lainnya
+rec-gen-3 =
+    Jangan membagikan data pribadi Anda jika tidak diperlukan. Jika Anda diminta
+    memasukkan atau memberikan alamat surel, kode pos, atau nomor telepon, Anda bisa mengatakan tidak.
 # Recommendation subhead
 rec-gen-4-subhead = Perbarui perangkat lunak dan aplikasi secara teratur
 rec-gen-4 =
