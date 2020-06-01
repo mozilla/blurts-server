@@ -41,6 +41,10 @@ rec-pins =
     atau alamat. Sebaiknya hanya angka yang Anda tahu dan tidak bisa ditebak dengan mudah.
 # Recommendation subhead
 rec-address-subhead = Hindari menggunakan alamat dalam kata sandi
+rec-address =
+    Menggunakan alamat atau jalan tempat Anda dibesarkan melemahkan 
+    kata sandi Anda. Karena mudah untuk menemukan informasi ini secara publik, sehingga membuat 
+    kata sandi mudah ditebak.
 # Recommendation subhead
 rec-gen-1-subhead = Gunakan kata sandi yang unik dan kuat untuk setiap akun
 # Link title
