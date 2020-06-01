@@ -17,6 +17,11 @@ rec-cc-subhead = Pantau laporan kartu kredit Anda
 rec-hist-pw-subhead = Hindari penggunaan kembali kata sandi
 # Link title
 rec-hist-pw-cta-fx = Lihat info masuk di { -brand-name }
+# Link title
+rec-gen-2-cta = Mitos tentang pengelola kata sandi
+rec-gen-2 =
+    Simpan detail info masuk Anda di tempat aman hanya Anda yang bisa akses , seperti 
+    pengelola kata sandi. Ini juga memudahkan untuk melacak semua kata sandi Anda yang berbeda.
 # Recommendation subhead
 rec-gen-3-subhead = Berhati-hatilah dalam memberikan informasi pribadi
 # Link title
