@@ -10,7 +10,7 @@
     "@sentry/node": "4.2.3",
     "arg": "2.0.0",
     "basic-auth": "2.0.0",
-    "babel-minify": "0.4.3",
+    "babel-minify": "0.5.1",
     "body-parser": "1.18.3",
     "clean-css-cli": "4.2.1",
     "client-oauth2": "4.2.1",
