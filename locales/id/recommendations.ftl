@@ -11,6 +11,8 @@ rec-pw-2-cta-fx = Lihat info masuk di { -brand-name }
 rec-pw-2 =
     Penggunaan ulang kata sandi mengubah satu kebocoran data menjadi banyak. Sekarang 
     kata sandi ini sudah diketahui, peretas dapat menggunakannya untuk masuk ke akun lain.
+# Recommendation subhead
+rec-pw-3-subhead = Gunakan pengelola kata sandi untuk membawa kata sandi Anda ke mana saja
 # Link title
 rec-pw-3-cta = Dapatkan { -brand-lockwise }
 # Recommendation subhead
@@ -28,6 +30,17 @@ rec-ip-us-cta = Coba { -brand-fpn }
 rec-hist-pw-subhead = Hindari penggunaan kembali kata sandi
 # Link title
 rec-hist-pw-cta-fx = Lihat info masuk di { -brand-name }
+# Recommendation subhead
+rec-phone-num-subhead = Hindari membagikan nomor telepon Anda
+# Recommendation subhead
+rec-dob-subhead = Hindari penggunaan informasi pribadi dalam PINs
+# Recommendation subhead
+rec-pins-subhead = Perkuat keamanan PINs Anda
+rec-pins =
+    PIN yang kuat tidak mengandung informasi pribadi, seperti tanggal lahir Anda 
+    atau alamat. Sebaiknya hanya angka yang Anda tahu dan tidak bisa ditebak dengan mudah.
+# Recommendation subhead
+rec-address-subhead = Hindari menggunakan alamat dalam kata sandi
 # Recommendation subhead
 rec-gen-1-subhead = Gunakan kata sandi yang unik dan kuat untuk setiap akun
 # Link title
