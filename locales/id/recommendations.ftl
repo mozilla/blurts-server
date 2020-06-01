@@ -28,6 +28,9 @@ rec-pw-3-cta = Dapatkan { -brand-lockwise }
 rec-pw-3-fx =
     Gunakan { -brand-lockwise } untuk mengakses kata sandi yang Anda simpan dengan aman di 
     { -brand-name } dari mana saja — bahkan di luar peramban.
+rec-pw-3-non-fx =
+    Gunakan { -brand-lockwise } untuk melacak semua kata sandi Anda yang 
+    berbeda dan akses semua dengan aman dari ponsel atau tablet Anda.
 # Recommendation subhead
 rec-pw-4-subhead = Atur otentikasi dua-faktor (2FA)
 # Link title
