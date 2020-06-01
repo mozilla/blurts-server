@@ -8,12 +8,23 @@ rec-pw-1-cta = Ubah kata sandi untuk situs ini
 rec-pw-2-subhead = Perbarui info masuk lain menggunakan kata sandi yang sama
 # Link title
 rec-pw-2-cta-fx = Lihat info masuk di { -brand-name }
+rec-pw-2 =
+    Penggunaan ulang kata sandi mengubah satu kebocoran data menjadi banyak. Sekarang 
+    kata sandi ini sudah diketahui, peretas dapat menggunakannya untuk masuk ke akun lain.
 # Link title
 rec-pw-3-cta = Dapatkan { -brand-lockwise }
+# Recommendation subhead
+rec-pw-4-subhead = Atur otentikasi dua-faktor (2FA)
+# Link title
+rec-pw-4-cta = Lihat situs yang menawarkan 2FA
 # Recommendation subhead
 rec-bank-acc-subhead = Pantau laporan bank Anda
 # Recommendation subhead
 rec-cc-subhead = Pantau laporan kartu kredit Anda
+# Recommendation subhead
+rec-ip-subhead = Gunakan layanan yang menutupi alamat IP Anda
+# Link title
+rec-ip-us-cta = Coba { -brand-fpn }
 rec-hist-pw-subhead = Hindari penggunaan kembali kata sandi
 # Link title
 rec-hist-pw-cta-fx = Lihat info masuk di { -brand-name }
