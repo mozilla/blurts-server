@@ -292,6 +292,10 @@ error-bot-blurb =
 error-csrf-headline = Ne sesión puliwki
 error-csrf-blurb = Shikpachu ne botón ka ipan ipal ne tay iwan titajtachia, shikalaki uksenpa tik ne iswat, wan shikejeku uksenpa.
 error-invalid-unsub = Ken nikishtia nutukay tik ne tanawatilis { -product-name }
+error-invalid-unsub-blurb =
+    Tinemi pal tikishtia mutukay tik se ipal 
+    ne cojcorreoj { -product-name } metztitanilij. Shikita ne mucorreoj wan shiktemu se titani ipal
+    { -brand-team-email }. Shikpachu ne ilpika ne muajsi ka ikshi ne correoj pal tikishtia mutukay .
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
