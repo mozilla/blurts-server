@@ -6,6 +6,8 @@ rec-ssn =
     Anda berhak mendapatkan tiga laporan kredit gratis setahun secara hukum. 
     Meminta dan mengulasnya tidak memengaruhi kredit Anda. 
     Cari akun, pinjaman, atau kartu kredit yang tidak Anda kenal.
+# Recommendation subhead
+rec-pw-1-subhead = Ubah kata sandi Anda
 # Link title
 rec-pw-1-cta = Ubah kata sandi untuk situs ini
 rec-pw-1 =
@@ -44,6 +46,8 @@ rec-ip-us-cta = Coba { -brand-fpn }
 rec-hist-pw-subhead = Hindari penggunaan kembali kata sandi
 # Link title
 rec-hist-pw-cta-fx = Lihat info masuk di { -brand-name }
+# Recommendation subhead
+rec-sec-qa-subhead = Sediakan jawaban unik untuk pertanyaan keamanan
 # Recommendation subhead
 rec-phone-num-subhead = Hindari membagikan nomor telepon Anda
 # Recommendation subhead
