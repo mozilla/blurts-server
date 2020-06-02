@@ -334,6 +334,7 @@ results-for = Walkisalis ipal: { $userEmail }
 other-monitored-emails = Seuk correoj mupepettuk
 email-verification-required = Muneki mupepeta mucorreoj
 fxa-primary-email = { -brand-fxa } Correoj - Ne Achtu
+what-is-a-website-breach = Tay se mukaltapanalis sitioj?
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
