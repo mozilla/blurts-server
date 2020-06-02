@@ -270,9 +270,21 @@ other-breaches-found =
        *[other] Melka, yaja neski tik { $breachCount } seuk mukaltapanalis.
     }
 fb-comp-only = Ini correoj neski tik ne mukaltapanalis { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Ini correoj neski tik { $breachCount } mukaltapanalis ipal majmattuk dajdatoj, nusan{ $breachName }.
+       *[other] Ini correoj neski tik { $breachCount } mukaltapanalis ipal majmattuk dajdatoj, nusan{ $breachName }.
+    }
+no-other-breaches-found = Te muajsik seuk mukaltapanalis tik ini talul tatemulis.
+no-results-blurb = Uni mukaltapanalis tesu kanaj tik ne basej ipal dajdatoj tupal.
+all-breaches-headline = Muchi ne mukaltapanalis tik { -product-name }
+search-breaches = Shiktemu mukaltapanalis
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Shikneshti:
 
 ## Updated error messages
 
+error-bot-headline = Ne kanaj tatemulis an
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
