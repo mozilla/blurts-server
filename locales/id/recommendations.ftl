@@ -42,6 +42,9 @@ rec-bank-acc =
     wajar. Beri tahu bank Anda jika Anda menemukan sesuatu yang janggal.
 # Recommendation subhead
 rec-cc-subhead = Pantau laporan kartu kredit Anda
+rec-cc =
+    Awasi tagihan ganjil pada kartu kredit Anda. Anda mungkin ingin 
+    mengajukan kartu baru dengan nomor baru dari penerbit kartu kredit Anda.
 # Recommendation subhead
 rec-ip-subhead = Gunakan layanan yang menutupi alamat IP Anda
 # Link title
