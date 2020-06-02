@@ -43,9 +43,16 @@ rec-cc-subhead = Pantau laporan kartu kredit Anda
 rec-ip-subhead = Gunakan layanan yang menutupi alamat IP Anda
 # Link title
 rec-ip-us-cta = Coba { -brand-fpn }
+rec-ip-non-us =
+    Alamat Protokol Internet (alamat PI) Anda menunjukkan dengan tepat lokasi Anda 
+    dan penyedia layanan internet. Dengan jaringan privat maya (JPM), Anda dapat menyembunyikan lokasi 
+    dan menutupi alamat PI Anda.
 rec-hist-pw-subhead = Hindari penggunaan kembali kata sandi
 # Link title
 rec-hist-pw-cta-fx = Lihat info masuk di { -brand-name }
+rec-hist-pw =
+    Gunakan kata sandi unik dan kuat untuk setiap akun. Jika satu kata sandi 
+    terekspos dalam pelanggaran data, Anda hanya perlu memperbarui satu info masuk tersebut.
 # Recommendation subhead
 rec-sec-qa-subhead = Sediakan jawaban unik untuk pertanyaan keamanan
 rec-sec-qa =
