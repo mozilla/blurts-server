@@ -285,6 +285,13 @@ currently-showing = Shikneshti:
 ## Updated error messages
 
 error-bot-headline = Ne kanaj tatemulis an
+error-bot-blurb =
+    Timukakasujtiwit ika anka taja se bot ika tiktemuj 
+    miak dijdirección correoj sujsul talul. Sanuk tajta timutentzaktuk
+    wan te tiweli titatemua. Shikejeku neman.
+error-csrf-headline = Ne sesión puliwki
+error-csrf-blurb = Shikpachu ne botón ka ipan ipal ne tay iwan titajtachia, shikalaki uksenpa tik ne iswat, wan shikejeku uksenpa.
+error-invalid-unsub = Ken nikishtia nutukay tik ne tanawatilis { -product-name }
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
