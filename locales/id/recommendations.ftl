@@ -57,9 +57,13 @@ rec-phone-num =
     Usahakan untuk tidak memberikan nomor telepon Anda saat mendaftarkan 
     akun atau layanan baru. Jika nomor telepon tidak diperlukan, jangan masukkan.
 # Recommendation subhead
-rec-dob-subhead = Hindari penggunaan informasi pribadi dalam PINs
+rec-dob-subhead = Hindari penggunaan informasi pribadi dalam PIN
+rec-dob =
+    Karena tanggal lahir Anda mudah ditemukan di catatan publik, 
+    adalah tepat untuk menghindari penggunaannya dalam kata sandi dan PIN. Orang yang 
+    tahu ulang tahun Anda juga bisa dengan sangat mudah menebak PIN Anda.
 # Recommendation subhead
-rec-pins-subhead = Perkuat keamanan PINs Anda
+rec-pins-subhead = Perkuat keamanan PIN Anda
 rec-pins =
     PIN yang kuat tidak mengandung informasi pribadi, seperti tanggal lahir Anda 
     atau alamat. Sebaiknya hanya angka yang Anda tahu dan tidak bisa ditebak dengan mudah.
