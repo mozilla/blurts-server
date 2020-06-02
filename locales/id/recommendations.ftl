@@ -46,6 +46,10 @@ rec-cc-subhead = Pantau laporan kartu kredit Anda
 rec-ip-subhead = Gunakan layanan yang menutupi alamat IP Anda
 # Link title
 rec-ip-us-cta = Coba { -brand-fpn }
+rec-ip-us =
+    Alamat Protokol Internet (alamat PI) Anda menunjukkan dengan tepat lokasi 
+    dan penyedia layanan internet Anda. Layanan seperti { -brand-fpn } 
+    menutupi alamat PI untuk menyembunyikan lokasi Anda.
 rec-ip-non-us =
     Alamat Protokol Internet (alamat PI) Anda menunjukkan dengan tepat lokasi Anda 
     dan penyedia layanan internet. Dengan jaringan privat maya (JPM), Anda dapat menyembunyikan lokasi 
