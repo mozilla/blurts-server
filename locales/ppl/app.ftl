@@ -335,7 +335,12 @@ other-monitored-emails = Seuk correoj mupepettuk
 email-verification-required = Muneki mupepeta mucorreoj
 fxa-primary-email = { -brand-fxa } Correoj - Ne Achtu
 what-is-a-website-breach = Tay se mukaltapanalis sitioj?
-website-breach-blurb = Se mukaltapanalis, u keman se mukaltapana tik mudajdatoj keman ne taichtekit kishkupina wan kalkishtia wan kineshtia muinformación tik ne cuejcuentaj matapan. Panu seujseujti keman ne taichtekit kiajsit kan ne welit mukaltapanat. Uni panu nusan keman ne información ne cuejcuentaj chulua.
+website-breach-blurb = Se mukaltapanalis u keman se mukaltapana tik mudajdatoj, yaja ne taichtekit kishkupina wan kalkishtia wan kineshtia muinformación tik ne cuejcuentaj matapan. Panu seujseujti ika ne taichtekit kiajsit kan ne te uij welit mukaltapanat. Uni panu nusan keman ne información ne cuejcuentaj chulua.
+security-tips-headline = Tanawatilis pal timumanawia itech ne taichtekit
+steps-to-protect = Ken tiweli tikpalewia muidentidad matapan
+take-further-steps = Shikchiwa seuk pal tikpalewia muidentidad
+alert-about-new-breaches = Shinechnawati keman mukaltapanat uksenpa
+see-if-youve-been-part = Shikita asu se mukaltapan tik mudajdatoj matapan
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
