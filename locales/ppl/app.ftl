@@ -253,6 +253,12 @@ ba-next-step-blurb-3 =
     mukalakilis pal tiweli tikalaki yek tik muchi muaparatoj
 faq1 = Naja te nikishmati ini compañiaj u sitioj Matapan. Taika ninemi tik ini kaltapanalis?
 faq2 = Taika teutakik nechilwia ipanpa ini kaltapanalis?
+faq3 = Ken nikmati asu ini se correoj tejkia ipal { -product-name }?
+new-breaches-found =
+    { $breachCount ->
+        [one] { $breachCount } UKSENPA MUKALTAPANKET
+       *[other] { $breachCount } UKSENPA MUKALTAPANKET
+    }
 
 ## Updated error messages
 
