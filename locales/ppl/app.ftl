@@ -296,6 +296,22 @@ error-invalid-unsub-blurb =
     Tinemi pal tikishtia mutukay tik se ipal 
     ne cojcorreoj { -product-name } metztitanilij. Shikita ne mucorreoj wan shiktemu se titani ipal
     { -brand-team-email }. Shikpachu ne ilpika ne muajsi ka ikshi ne correoj pal tikishtia mutukay .
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] Ne idirección mucorreoj mupepeta nemi
+       *[other] Ne idijdirección mucorreoj mupepeta nemi
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Ne ichtaka taketzalis muneshtijket tik muchi ne mukaltapanalis
+       *[other] Ne ijichtaka taketzalis muneshtijket tik muchi ne mukaltapanalis
+    }
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
