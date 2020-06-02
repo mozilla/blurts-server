@@ -37,6 +37,9 @@ rec-pw-4-subhead = Atur otentikasi dua-faktor (2FA)
 rec-pw-4-cta = Lihat situs yang menawarkan 2FA
 # Recommendation subhead
 rec-bank-acc-subhead = Pantau laporan bank Anda
+rec-bank-acc =
+    Periksa laporan bank Anda untuk aktivitas mencurigakan atau biaya tidak 
+    wajar. Beri tahu bank Anda jika Anda menemukan sesuatu yang janggal.
 # Recommendation subhead
 rec-cc-subhead = Pantau laporan kartu kredit Anda
 # Recommendation subhead
