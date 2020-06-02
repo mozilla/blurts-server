@@ -10,3 +10,5 @@ fx-mobile = เบราว์เซอร์ { -brand-name } สำหรับ
 bento-button-title = แอปและบริการของ { -brand-name }
 # Bento headline
 fx-makes-tech = { -brand-name } เป็นเทคโนโลยีที่ต่อสู้เพื่อความเป็นส่วนตัวออนไลน์ของคุณ
+# Aria label for button that closes the Bento menu
+mobile-close-bento-button-title = ปิดเมนู
