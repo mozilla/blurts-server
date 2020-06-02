@@ -35,6 +35,10 @@ rec-pw-3-non-fx =
 rec-pw-4-subhead = Atur otentikasi dua-faktor (2FA)
 # Link title
 rec-pw-4-cta = Lihat situs yang menawarkan 2FA
+rec-pw-4 =
+    Banyak situs web menawarkan 2FA sebagai langkah pengamanan tambahan. 
+    Dibutuhkan infromasi terpisah untuk masuk ke akun Anda, seperti 
+    kode sekali pakai yang Anda terima melalui teks.
 # Recommendation subhead
 rec-bank-acc-subhead = Pantau laporan bank Anda
 rec-bank-acc =
