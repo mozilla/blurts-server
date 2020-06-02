@@ -259,6 +259,17 @@ new-breaches-found =
         [one] { $breachCount } UKSENPA MUKALTAPANKET
        *[other] { $breachCount } UKSENPA MUKALTAPANKET
     }
+sign-up-headline-1 = Shikpia tanawatilis iwan { -brand-fxa }.
+account-not-required = Ne taiwan titajtachia { -brand-name } tesu muneki pal { -brand-fxa }. Tiweli tikpia información ipanpa tay ne tamaka { -brand-Mozilla }.
+was-your-info-exposed = Ne muinformación muneshtij keman muichtektuk ne dajdatoj { $breachName }?
+find-out-if = Shikmati asu mudajdatoj muneshtijket keman mukaltapanket.
+fb-not-comp = Ne correoj tesu neski tik ne mukaltapanalis { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Melka, yaja neski tik { $breachCount } seuk mukaltapanalis.
+       *[other] Melka, yaja neski tik { $breachCount } seuk mukaltapanalis.
+    }
+fb-comp-only = Ini correoj neski tik ne mukaltapanalis { $breachName }.
 
 ## Updated error messages
 
