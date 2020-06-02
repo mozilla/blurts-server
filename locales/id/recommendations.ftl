@@ -48,8 +48,14 @@ rec-hist-pw-subhead = Hindari penggunaan kembali kata sandi
 rec-hist-pw-cta-fx = Lihat info masuk di { -brand-name }
 # Recommendation subhead
 rec-sec-qa-subhead = Sediakan jawaban unik untuk pertanyaan keamanan
+rec-sec-qa =
+    Banyak situs web mengajukan pertanyaan yang sama. Jika satu jawaban terekspos, maka 
+    informasi tersebar keluar. Buat jawaban yang panjang, acak, dan simpan di tempat yang aman.
 # Recommendation subhead
 rec-phone-num-subhead = Hindari membagikan nomor telepon Anda
+rec-phone-num =
+    Usahakan untuk tidak memberikan nomor telepon Anda saat mendaftarkan 
+    akun atau layanan baru. Jika nomor telepon tidak diperlukan, jangan masukkan.
 # Recommendation subhead
 rec-dob-subhead = Hindari penggunaan informasi pribadi dalam PINs
 # Recommendation subhead
