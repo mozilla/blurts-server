@@ -5,10 +5,21 @@ const { URL } = require("url");
 const HIBP = require("./hibp");
 const sha1 = require("./sha1-utils");
 
+// Growth Experiment
+const AppConstants = require("./app-constants");
+const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
+
 const scanResult = async(req, selfScan=false) => {
 
   const allBreaches = req.app.locals.breaches;
   let scannedEmail = null;
+
+  // Growth Experiment
+  if (EXPERIMENTS_ENABLED && req.session.experimentBranch) {
+    if (!req.session.excludeFromExperiment) {
+      // Set session experiment variables
+    }
+  }
 
   const title = req.fluentFormat("scan-title");
   let foundBreaches = [];
@@ -94,6 +105,7 @@ const scanResult = async(req, selfScan=false) => {
     fullReport,
     userDash,
     scannedEmailId,
+    // TODO: Expose session experiment variables to template
   };
 };
 

@@ -4,7 +4,9 @@ const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
 const HIBP = require("../hibp");
 const { scanResult } = require("../scan-results");
-const { generatePageToken } = require("./utils");
+const { generatePageToken, getExperimentBranch } = require("./utils");
+
+const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
 
 function _getFeaturedBreach(allBreaches, breachQueryValue) {
   if (!breachQueryValue) {
@@ -29,6 +31,12 @@ async function home(req, res) {
     return res.redirect("/user/dashboard");
   }
 
+  if (EXPERIMENTS_ENABLED) {
+    // Growth Experiment
+  }
+
+  // TODO: Set session experiment variables
+
   if (req.query.breach) {
     featuredBreach = _getFeaturedBreach(req.app.locals.breaches, req.query.breach);
 
@@ -49,6 +57,7 @@ async function home(req, res) {
       scanFeaturedBreach,
       pageToken: formTokens.pageToken,
       csrfToken: formTokens.csrfToken,
+      // TODO: Expose session experiment variables to template
     });
   }
 
@@ -58,6 +67,7 @@ async function home(req, res) {
     scanFeaturedBreach,
     pageToken: formTokens.pageToken,
     csrfToken: formTokens.csrfToken,
+    // TODO: Expose session experiment variables to template
   });
 }
 
