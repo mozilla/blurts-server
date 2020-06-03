@@ -9,6 +9,12 @@ const pkg = require("./package.json");
 
 
 const HIBP_USER_AGENT = `${pkg.name}/${pkg.version}`;
+// When HIBP "re-names" a breach, it keeps its old 'Name' value but gets a new 'Title'
+// We use 'Name' in Firefox (via Remote Settings), so we have to maintain our own mapping of re-named breaches.
+const RENAMED_BREACHES = ["covve"];
+const RENAMED_BREACHES_MAP = {
+  "covve": "db8151dd",
+};
 const log = mozlog("hibp");
 
 
@@ -142,7 +148,12 @@ const HIBP = {
 
 
   getBreachByName(allBreaches, breachName) {
-    return allBreaches.find(breach => breach.Name.toLowerCase() === breachName.toLowerCase());
+    breachName = breachName.toLowerCase();
+    if (RENAMED_BREACHES.includes(breachName)) {
+      breachName = RENAMED_BREACHES_MAP[breachName];
+    }
+    const foundBreach = allBreaches.find(breach => breach.Name.toLowerCase() === breachName);
+    return foundBreach;
   },
 
 
