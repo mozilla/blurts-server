@@ -218,6 +218,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Periksa Pelanggaran Data
 find-out-what-hackers-know = Cari tahu apa yang sudah diketahui peretas tentang Anda. Pelajari cara agar selalu selangkah lebih depan dari mereka.
+get-email-alerts = Tetap aman: Dapatkan lansiran surel saat info Anda muncul dalam pelanggaran yang diketahui
 search-for-your-email = Cari alamat surel Anda yang tersangkut kebocoran data publik sejak 2007.
 back-to-top = Kembali ke Atas
 comm-opt-0 = Kirim saya surel jika salah satu alamat surel saya di bawah ini tersangkut dalam kebocoran data.
@@ -533,4 +534,5 @@ promo-fpn-cta = Dapatkan { -brand-fpn }
 monitor-promo-headline = Cari tahu tentang pelanggaran data baru
 monitor-promo-body = Dapatkan pemberitahuan ketika informasi pribadi Anda terungkap dalam pelanggaran yang diketahui.
 ecosystem-promo-headline = Lindungi kehidupan daring Anda dengan produk yang mengutamakan privasi
+ecosystem-promo-body = Semua produk { -brand-name } menghormati Janji Data Pribadi kami: Ambil lebih sedikit. Jaga agar tetap aman. Tidak ada rahasia.
 promo-ecosystem-cta = Lihat Semua Produk
