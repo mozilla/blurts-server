@@ -174,6 +174,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Controla pro violationes
 find-out-what-hackers-know = Discoperi lo que le hackers jam sape de te. Apprende como esser sempre un passo avante a illes.
+get-email-alerts = Sta secur: recipe avisos email quando tu informationes appare in un note violation
 search-for-your-email = Cerca tu adresse email in violationes public de datos a partir de 2007.
 back-to-top = Receder al apice
 comm-opt-0 = Adverti me per e-mail si un de mi adresses listate hic infra appare in un violation de datos.
