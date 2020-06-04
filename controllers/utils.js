@@ -35,13 +35,16 @@ function hasUserSignedUpForRelay(user) {
 
 function getExperimentBranch(req, sorterNum = false, language = false) {
 
+  const session = req.session.experimentFlags;
+
   if (sorterNum === false) {
     sorterNum = Math.floor(Math.random() * 100);
     log.debug("No coinflip number provided. Coinflip number is ", sorterNum);
   }
 
-  if (req.session.excludeFromExperiment && !req.query.experimentBranch) {
+  if (session.excludeFromExperiment && !req.query.experimentBranch) {
     log.debug("This session has already been excluded from the experiment");
+    session.excludeFromExperiment = true;
     return false;
   }
 
@@ -49,6 +52,7 @@ function getExperimentBranch(req, sorterNum = false, language = false) {
   // enroll users in the experiment.
   if (language && !req.headers || language && !req.headers["accept-language"]){
     log.debug("No headers or accept-language information present.");
+    session.excludeFromExperiment = true;
     return false;
   }
 
@@ -58,6 +62,7 @@ function getExperimentBranch(req, sorterNum = false, language = false) {
     const lang = req.headers["accept-language"].split(",");
     if (language && !lang[0].includes(language)) {
       log.debug(`Preferred language is not ${language} variant: ${lang[0]}`);
+      session.excludeFromExperiment = true;
       return false;
     }
   }
@@ -66,18 +71,19 @@ function getExperimentBranch(req, sorterNum = false, language = false) {
   if (req.query.experimentBranch) {
     if (!["va", "vb"].includes(req.query.experimentBranch)) {
       log.debug("The requested branch is unknown: ", req.query.experimentBranch);
+      session.excludeFromExperiment = true;
       return false;
     }
     log.debug("This session has been set to the requested branch: ", req.query.experimentBranch);
-    req.session.excludeFromExperiment = false;
-    req.session.experimentBranch = req.query.experimentBranch;
+    session.excludeFromExperiment = false;
+    session.experimentBranch = req.query.experimentBranch;
     return req.query.experimentBranch;
   }
 
   // If user was already assigned a branch, stay in that branch;
-  if (req.session.experimentBranch) {
-    log.debug("This session has already been assigned: ", req.session.experimentBranch);
-    return req.session.experimentBranch;
+  if (session.experimentBranch) {
+    log.debug("This session has already been assigned: ", session.experimentBranch);
+    return session.experimentBranch;
   }
 
   // Growth Team Experiment 2 only wants to expose 29/29/42 of all site traffic to
@@ -85,19 +91,41 @@ function getExperimentBranch(req, sorterNum = false, language = false) {
   // 50/50 between treatment and control.
   if (sorterNum < 29) {
     log.debug("This session has been randomly assigned to the control group. (va)");
-    req.session.experimentBranch = "va";
+    session.experimentBranch = "va";
     return "va";
   } else if (sorterNum > 28 && sorterNum < 58) {
     log.debug("This session has been randomly assigned to the treatment group. (vb)");
-    req.session.experimentBranch = "vb";
+    session.experimentBranch = "vb";
     return "vb";
   }
   log.debug("This session has randomly been removed from the experiment");
+  session.excludeFromExperiment = true;
   return false;
 }
+
+function getExperimentFlags(req, EXPERIMENTS_ENABLED) {
+  if (!req) {
+    throw new Error("No request availabe");
+  }
+
+  if (req.session.experimentFlags && EXPERIMENTS_ENABLED) {
+    return req.session.experimentFlags;
+  }
+
+  const experimentFlags = {
+    experimentBranch: false,
+    isUserInExperiment: false,
+    experimentBranchB: false,
+    excludeFromExperiment: false,
+  };
+
+  return experimentFlags;
+}
+
 
 module.exports = {
   generatePageToken,
   hasUserSignedUpForRelay,
   getExperimentBranch,
+  getExperimentFlags,
 };

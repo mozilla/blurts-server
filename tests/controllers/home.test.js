@@ -8,7 +8,7 @@ const { scanResult } = require("../../scan-results");
 let mockRequest = { fluentFormat: jest.fn(), csrfToken: jest.fn() };
 
 function mockRequestSessionReset(mockRequest) {
-  mockRequest.session = {
+  mockRequest.session.experimentFlags = {
     excludeFromExperiment: false,
     experimentBranch: false,
   };
@@ -89,15 +89,18 @@ test("Experiment Cohort Assignment Unit Test", () => {
   let experimentBranch = getExperimentBranch(mockRequest, false, "en");
   expect(experimentBranch).toBeFalsy();
 
+
   mockRequestSessionReset(mockRequest);
 
   // The session is assigned to the control group when the coin flip is 0;
   let experimentNumber = 0;
 
+
   experimentBranch = getExperimentBranch(mockRequest, experimentNumber);
   expect(experimentBranch).toBe("va");
 
   mockRequestSessionReset(mockRequest);
+
 
   // The session is assigned to the control group when the coin flip is 28;
   experimentNumber = 28;

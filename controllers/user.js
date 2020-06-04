@@ -12,6 +12,7 @@ const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
 
 const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
+const { getExperimentFlags } = require("./utils");
 
 const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
 
@@ -229,10 +230,9 @@ async function getDashboard(req, res) {
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
 
-  if (EXPERIMENTS_ENABLED && req.session.experimentBranch) {
-    // Growth Experiment
-    // TODO: Set session experiment variables
-  }
+  // Growth Experiment
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+  req.session.experimentFlags = experimentFlags;
 
   let lastAddedEmail = null;
 
@@ -249,7 +249,7 @@ async function getDashboard(req, res) {
     verifiedEmails,
     unverifiedEmails,
     whichPartial: "dashboards/breaches-dash",
-    // TODO: Expose session experiment variables to template
+    experimentFlags,
   });
 }
 
@@ -563,6 +563,23 @@ async function getBreachStats(req, res) {
 
 
 function logout(req, res) {
+  // Growth Experiment
+  if (EXPERIMENTS_ENABLED && req.session.experimentFlags) {
+    // Persist experimentBranch across session reset
+    const excludeFromExperiment = req.session.experimentFlags.excludeFromExperiment;
+    const experimentBranch = req.session.experimentFlags.experimentBranch;
+    req.session.reset();
+    // Reset session vars after sign out event
+    req.session.experimentFlags = {
+      experimentBranch,
+      excludeFromExperiment,
+    };
+
+    // Return
+    res.redirect("/");
+    return;
+  }
+
   req.session.reset();
   res.redirect("/");
 }
