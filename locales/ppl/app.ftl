@@ -344,6 +344,24 @@ see-if-youve-been-part = Shikita asu se mukaltapan tik mudajdatoj matapan
 get-ongoing-breach-monitoring = Shikpepeta mukaltapanalis tik miak dijdirección correoj.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Shikmajmati
+new-unsub-error = Shikwi se ipal mucojcorreoj ne { -product-name } kititan pal tikishtia mutukay.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Melka yaja kia nesik tik { $breachCount } seuk mukaltapanalis matituk
+       *[other] Melka yaja kia nesik tik { $breachCount } sejseuk mukaltapanalis matituk
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Ukchupi información, wan nusan:
+# Title
+email-addresses-title = Dijdirección correoj
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Ken nesi muchi
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = Ne { $breachDate }, mukaltapanket tik { $breachTitle }. Kan muajsik wan muyekitak ne mukaltapanalis, yaja mutalij tik ne basej dajdatoj tik { $addedDate }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
