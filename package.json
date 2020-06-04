@@ -7,7 +7,7 @@
     "url": "https://github.com/mozilla/blurts-server/issues"
   },
   "dependencies": {
-    "@sentry/node": "4.2.3",
+    "@sentry/node": "4.6.6",
     "arg": "2.0.1",
     "basic-auth": "2.0.0",
     "babel-minify": "0.5.1",
