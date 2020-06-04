@@ -427,11 +427,17 @@ num-resolved =
     }
 progress-intro-subhead = Nova in { -product-name }: marcar violationes como resolvite
 progress-intro-message = Post revider le detalios re un violation e prender mesuras pro proteger tu informationes personal, tu pote marcar violationes como resolvite
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numBreachesResolved } de { $numTotalBreaches } violationes marcate como resolvite
+       *[other] { $numBreachesResolved } de { $numTotalBreaches } violationes marcate como resolvite
+    }
 progress-complete = Tote le violationes note ha essite marcate como resolvite
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-2 = <span>Continua assi!</span> Micre cambiamentos como actualisation de contrasignos ha un grande impacto pro mantener secur tu informationes personal.
 
 ##
 
