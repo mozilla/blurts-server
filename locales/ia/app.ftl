@@ -437,7 +437,9 @@ progress-complete = Tote le violationes note ha essite marcate como resolvite
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 = <span>Tu veni de un optime initio!</span> Discoperi le restante violationes pro apprender que mensuras prender.<
 progress-message-2 = <span>Continua assi!</span> Micre cambiamentos como actualisation de contrasignos ha un grande impacto pro mantener secur tu informationes personal.
+progress-message-3 = <span>Optime labor a resolver ille violationes!</span> Continua assi. Ancora un poco.
 
 ##
 
