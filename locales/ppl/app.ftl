@@ -342,6 +342,8 @@ take-further-steps = Shikchiwa seuk pal tikpalewia muidentidad
 alert-about-new-breaches = Shinechnawati keman mukaltapanat uksenpa
 see-if-youve-been-part = Shikita asu se mukaltapan tik mudajdatoj matapan
 get-ongoing-breach-monitoring = Shikpepeta mukaltapanalis tik miak dijdirección correoj.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Shikmajmati
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
