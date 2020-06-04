@@ -441,6 +441,7 @@ progress-message-1 = <span>Tu veni de un optime initio!</span> Discoperi le rest
 progress-message-2 = <span>Continua assi!</span> Micre cambiamentos como actualisation de contrasignos ha un grande impacto pro mantener secur tu informationes personal.
 progress-message-3 = <span>Optime labor a resolver ille violationes!</span> Continua assi. Ancora un poco.
 progress-message-4 = <span>Quasi facite!</span> Tu es presso le linea de fin.
+progress-complete-message = <span>Prende gusto, justo?</span> Si tu desira facer plus, isto es un bon tempore pro actualisar altere credentiales con contrasignos plus forte.
 
 ##
 
@@ -469,6 +470,7 @@ promo-lockwise-headline = Porta tu contrasignos sempre con te
 lockwise-promo-body = Mantene tracia de tu accessos inter tote le apparatos. Accede los con securitate de tu computator, telephono o tabletta.
 promo-lockwise-cta = Installar { -brand-lockwise }
 fpn-promo-headline = Cela tu position a sitos e traciatores
+promo-fpn-body = { -brand-fpn } tene distante le collectores de sitos web e datos que te profila con avisos publicitari per mascar tu real adresse IP.
 promo-fpn-cta = Installa { -brand-fpn }
 monitor-promo-headline = Discoperi nove violationes de datos
 monitor-promo-body = Recipe un notification si tu informationes personal es exponite in un nove violation de datos note.
