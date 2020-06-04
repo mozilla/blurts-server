@@ -384,6 +384,11 @@ see-additional-recs = Vide altere recommendationes
 ## Please do not modify or remove "<a>" and "</a>".
 
 resolve-top-notification = { $affectedEmail } appareva in iste violation. <a>Que facer?</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] { $numAffectedEmails } de tu adresses email appareva in iste violation. <a>Que facer?</a>
+       *[other] { $numAffectedEmails } de tu adresses email appareva in iste violation. <a>Que facer?</a>
+    }
 
 ##
 
