@@ -64,12 +64,10 @@ function doOauth(el, {emailWatch = false} = {}) {
 
   // Growth Experiment: OAuth Entry Point IDs are unique to the experiment.
   const oAuthEntryPointIds = [
-    "fx-monitor-create-account-blue-btn-homePage",
-    "fx-monitor-create-account-blue-btn-featuredBreach",
     "fx-monitor-check-for-breaches-blue-btn",
     "fx-monitor-find-out-blue-btn",
-    "fx-monitor-alert-me-blue-btn",
-    "fx-monitor-alert-me-blue-link",
+    "fx-monitor-alert-me-blue-btn-top",
+    "fx-monitor-alert-me-blue-btn-bottom",
   ];
 
   if (oAuthEntryPointIds.includes(el.dataset.entrypoint)) {
@@ -81,7 +79,7 @@ function doOauth(el, {emailWatch = false} = {}) {
       }
     });
 
-    if (typeof(ga) !== "undefined") {
+    if (typeof(ga) !== "undefined" && document.body.dataset.experiment) {
       ga("send", {
         hitType: "event",
         eventCategory: document.body.dataset.utm_campaign,
@@ -485,14 +483,15 @@ function resizeDashboardMargin() {
   const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
   dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));
 
-
-
   const acceptedLanguages = navigator.languages;
   const acceptedFirstLanguageIsEnglish = acceptedLanguages[0].includes("en");
 
   if (!acceptedFirstLanguageIsEnglish && document.getElementById("fxaCheckbox")) {
-    document.getElementById("fxaCheckbox").style.display = "none";
-    return;
+    // Growth Experiment -This overrides the language filter if they've been sorted into the treatment cohort.
+    if (document.body.dataset.experiment !== "vb" || !document.body.dataset.experiment) {
+      document.getElementById("fxaCheckbox").style.display = "none";
+      return;
+    }
   }
 
   const createFxaCheckbox = document.getElementById("createFxaCheckbox");
