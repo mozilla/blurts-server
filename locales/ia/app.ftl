@@ -402,7 +402,17 @@ undo-button = Disfacer
 confirmation-1-subhead = Bon! Tu ha justo resolvite tu prime violation.
 confirmation-1-body = Mantene te assi. Verifica tu pannello de controlo pro vider si il ha altero a facer.
 confirmation-2-subhead = Prende lo, piratas!
+confirmation-2-body = Tu prende importante mensurar verso le protection de tu contos online.
 confirmation-3-subhead = Uno plus, resolvite. Optimo!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Es tu nove contrasigno unic, forte e difficile a divinar? <a>Discoperi lo</a>
+generic-confirmation-subhead = Isto violation ha essite marcate como resolvite
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Pro vider le violation restante, va a tu pannello de controlo.
+       *[other] Pro vider le violationes restante, va a tu pannello de controlo.
+    }
 return-to-breach-details-link = Retornar al detalios del violation
 go-to-dashboard-link = Ir al pannello de controlo
 # This string appears above a breach resolution progress bar and indicates
@@ -416,6 +426,7 @@ num-resolved =
        *[other] { $numResolvedBreaches } resolvite
     }
 progress-intro-subhead = Nova in { -product-name }: marcar violationes como resolvite
+progress-intro-message = Post revider le detalios re un violation e prender mesuras pro proteger tu informationes personal, tu pote marcar violationes como resolvite
 progress-complete = Tote le violationes note ha essite marcate como resolvite
 
 ## These strings contain nested markup that is later used to style the text inside of it.
