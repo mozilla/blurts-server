@@ -475,4 +475,5 @@ promo-fpn-cta = Installa { -brand-fpn }
 monitor-promo-headline = Discoperi nove violationes de datos
 monitor-promo-body = Recipe un notification si tu informationes personal es exponite in un nove violation de datos note.
 ecosystem-promo-headline = Protege tu vita online con productos de maxime discretion
+ecosystem-promo-body = Tote le productos { -brand-name } honora nostre Promissa re datos personal: Prende minus. Mantene los secur. Nulle secretos.
 promo-ecosystem-cta = Vider tote le productos
