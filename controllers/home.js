@@ -2,10 +2,18 @@
 
 const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
+const HIBP = require("../hibp");
 const { scanResult } = require("../scan-results");
-const { generatePageToken, getExperimentBranch } = require("./utils");
+const { generatePageToken } = require("./utils");
 
-const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
+function _getFeaturedBreach(allBreaches, breachQueryValue) {
+  if (!breachQueryValue) {
+    return null;
+  }
+  const lowercaseBreachValue = breachQueryValue.toLowerCase();
+  return HIBP.getBreachByName(allBreaches, lowercaseBreachValue);
+}
+
 
 async function home(req, res) {
 
@@ -17,27 +25,12 @@ async function home(req, res) {
   let featuredBreach = null;
   let scanFeaturedBreach = false;
 
-  // Growth Experiment
-  let experimentBranch = null;
-  let isUserInExperiment = null;
-  let experimentBranchB = null;
-
   if (req.session.user && !req.query.breach) {
     return res.redirect("/user/dashboard");
   }
 
-  // Growth Experiment
-  if (EXPERIMENTS_ENABLED) {
-    experimentBranch = getExperimentBranch(req, false, "en");
-    if (!experimentBranch) { req.session.excludeFromExperiment = true; }
-    req.session.experimentBranch = experimentBranch;
-    isUserInExperiment = (experimentBranch === "vb");
-    experimentBranchB = (experimentBranch === "vb" && isUserInExperiment);
-  }
-
   if (req.query.breach) {
-    const reqBreachName = req.query.breach.toLowerCase();
-    featuredBreach = req.app.locals.breaches.find(breach => breach.Name.toLowerCase() === reqBreachName);
+    featuredBreach = _getFeaturedBreach(req.app.locals.breaches, req.query.breach);
 
     if (!featuredBreach) {
       return notFound(req, res);
@@ -56,8 +49,6 @@ async function home(req, res) {
       scanFeaturedBreach,
       pageToken: formTokens.pageToken,
       csrfToken: formTokens.csrfToken,
-      experimentBranch,
-      experimentBranchB,
     });
   }
 
@@ -67,9 +58,6 @@ async function home(req, res) {
     scanFeaturedBreach,
     pageToken: formTokens.pageToken,
     csrfToken: formTokens.csrfToken,
-    experimentBranch,
-    isUserInExperiment,
-    experimentBranchB,
   });
 }
 

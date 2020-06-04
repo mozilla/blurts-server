@@ -41,6 +41,7 @@ email-addresses = ที่อยู่อีเมล
 email-messages = ข้อความอีเมล
 employers = นายจ้าง
 employment-statuses = สถานะการจ้างงาน
+encrypted-keys = คีย์ที่เข้ารหัส
 ethnicities = ชาติพันธุ์
 family-members-names = ชื่อสมาชิกครอบครัว
 family-plans = แผนครอบครัว

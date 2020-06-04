@@ -14,10 +14,6 @@
   margin-bottom: 0;
 }
 
-.featured-breach.experiment-subhead h2.landing-headline {
-  margin-bottom: 22px;
-}
-
 .landing-bottom-bar {
   background-image: url(/img/landing/background-noodle-middle.svg), linear-gradient(224deg, #2150c8, #712291);
   background-repeat: no-repeat;
@@ -141,7 +137,6 @@ h3.sb-callout {
     min-height: 100vh;
   }
 
-  .featured-breach.experiment-subhead h2.landing-headline,
   .featured-breach h2.landing-headline,
   h2.landing-headline,
   .landing-subhead {

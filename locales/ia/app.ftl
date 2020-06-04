@@ -174,6 +174,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Controla pro violationes
 find-out-what-hackers-know = Discoperi lo que le hackers jam sape de te. Apprende como esser sempre un passo avante a illes.
+get-email-alerts = Sta secur: recipe avisos email quando tu informationes appare in un note violation
 search-for-your-email = Cerca tu adresse email in violationes public de datos a partir de 2007.
 back-to-top = Receder al apice
 comm-opt-0 = Adverti me per e-mail si un de mi adresses listate hic infra appare in un violation de datos.
@@ -383,16 +384,35 @@ see-additional-recs = Vide altere recommendationes
 ## Please do not modify or remove "<a>" and "</a>".
 
 resolve-top-notification = { $affectedEmail } appareva in iste violation. <a>Que facer?</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] { $numAffectedEmails } de tu adresses email appareva in iste violation. <a>Que facer?</a>
+       *[other] { $numAffectedEmails } de tu adresses email appareva in iste violation. <a>Que facer?</a>
+    }
 
 ##
 
 marking-this-subhead = Marcar iste violation como resolvite
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body = <span>Un vice que tu ha prendite le mensuras que tu pote pro resolver iste violation</span>, tu pote marcar lo como resolvite. Tu potera sempre acceder ancora al detalios re le violation, ab tu pannello de controlo.
 mark-as-resolve-button = Marcar como resolvite
 marked-as-resolved-label = Marcate como resolvite
 undo-button = Disfacer
 confirmation-1-subhead = Bon! Tu ha justo resolvite tu prime violation.
+confirmation-1-body = Mantene te assi. Verifica tu pannello de controlo pro vider si il ha altero a facer.
 confirmation-2-subhead = Prende lo, piratas!
+confirmation-2-body = Tu prende importante mensurar verso le protection de tu contos online.
 confirmation-3-subhead = Uno plus, resolvite. Optimo!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Es tu nove contrasigno unic, forte e difficile a divinar? <a>Discoperi lo</a>
+generic-confirmation-subhead = Isto violation ha essite marcate como resolvite
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Pro vider le violation restante, va a tu pannello de controlo.
+       *[other] Pro vider le violationes restante, va a tu pannello de controlo.
+    }
 return-to-breach-details-link = Retornar al detalios del violation
 go-to-dashboard-link = Ir al pannello de controlo
 # This string appears above a breach resolution progress bar and indicates
@@ -406,11 +426,22 @@ num-resolved =
        *[other] { $numResolvedBreaches } resolvite
     }
 progress-intro-subhead = Nova in { -product-name }: marcar violationes como resolvite
+progress-intro-message = Post revider le detalios re un violation e prender mesuras pro proteger tu informationes personal, tu pote marcar violationes como resolvite
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numBreachesResolved } de { $numTotalBreaches } violationes marcate como resolvite
+       *[other] { $numBreachesResolved } de { $numTotalBreaches } violationes marcate como resolvite
+    }
 progress-complete = Tote le violationes note ha essite marcate como resolvite
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 = <span>Tu veni de un optime initio!</span> Discoperi le restante violationes pro apprender que mensuras prender.<
+progress-message-2 = <span>Continua assi!</span> Micre cambiamentos como actualisation de contrasignos ha un grande impacto pro mantener secur tu informationes personal.
+progress-message-3 = <span>Optime labor a resolver ille violationes!</span> Continua assi. Ancora un poco.
+progress-message-4 = <span>Quasi facite!</span> Tu es presso le linea de fin.
+progress-complete-message = <span>Prende gusto, justo?</span> Si tu desira facer plus, isto es un bon tempore pro actualisar altere credentiales con contrasignos plus forte.
 
 ##
 
@@ -433,12 +464,16 @@ known-data-breaches-resolved =
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nove
 mobile-promo-headline = Installa { -brand-name } sur tu telephono e tu tabletta
+mobile-promo-body = Navigation veloce, private e secur ubique tu va. Trova { -brand-name } in Google Play e App Store.
 mobile-promo-cta = Installa { -brand-name } sur Android e iOS
 promo-lockwise-headline = Porta tu contrasignos sempre con te
+lockwise-promo-body = Mantene tracia de tu accessos inter tote le apparatos. Accede los con securitate de tu computator, telephono o tabletta.
 promo-lockwise-cta = Installar { -brand-lockwise }
 fpn-promo-headline = Cela tu position a sitos e traciatores
+promo-fpn-body = { -brand-fpn } tene distante le collectores de sitos web e datos que te profila con avisos publicitari per mascar tu real adresse IP.
 promo-fpn-cta = Installa { -brand-fpn }
 monitor-promo-headline = Discoperi nove violationes de datos
 monitor-promo-body = Recipe un notification si tu informationes personal es exponite in un nove violation de datos note.
 ecosystem-promo-headline = Protege tu vita online con productos de maxime discretion
+ecosystem-promo-body = Tote le productos { -brand-name } honora nostre Promissa re datos personal: Prende minus. Mantene los secur. Nulle secretos.
 promo-ecosystem-cta = Vider tote le productos

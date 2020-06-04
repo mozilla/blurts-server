@@ -253,9 +253,115 @@ ba-next-step-blurb-3 =
     mukalakilis pal tiweli tikalaki yek tik muchi muaparatoj
 faq1 = Naja te nikishmati ini compañiaj u sitioj Matapan. Taika ninemi tik ini kaltapanalis?
 faq2 = Taika teutakik nechilwia ipanpa ini kaltapanalis?
+faq3 = Ken nikmati asu ini se correoj tejkia ipal { -product-name }?
+new-breaches-found =
+    { $breachCount ->
+        [one] { $breachCount } UKSENPA MUKALTAPANKET
+       *[other] { $breachCount } UKSENPA MUKALTAPANKET
+    }
+sign-up-headline-1 = Shikpia tanawatilis iwan { -brand-fxa }.
+account-not-required = Ne taiwan titajtachia { -brand-name } tesu muneki pal { -brand-fxa }. Tiweli tikpia información ipanpa tay ne tamaka { -brand-Mozilla }.
+was-your-info-exposed = Ne muinformación muneshtij keman muichtektuk ne dajdatoj { $breachName }?
+find-out-if = Shikmati asu mudajdatoj muneshtijket keman mukaltapanket.
+fb-not-comp = Ne correoj tesu neski tik ne mukaltapanalis { $breachName }.
+other-breaches-found =
+    { $breachCount ->
+        [one] Melka, yaja neski tik { $breachCount } seuk mukaltapanalis.
+       *[other] Melka, yaja neski tik { $breachCount } seuk mukaltapanalis.
+    }
+fb-comp-only = Ini correoj neski tik ne mukaltapanalis { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Ini correoj neski tik { $breachCount } mukaltapanalis ipal majmattuk dajdatoj, nusan{ $breachName }.
+       *[other] Ini correoj neski tik { $breachCount } mukaltapanalis ipal majmattuk dajdatoj, nusan{ $breachName }.
+    }
+no-other-breaches-found = Te muajsik seuk mukaltapanalis tik ini talul tatemulis.
+no-results-blurb = Uni mukaltapanalis tesu kanaj tik ne basej ipal dajdatoj tupal.
+all-breaches-headline = Muchi ne mukaltapanalis tik { -product-name }
+search-breaches = Shiktemu mukaltapanalis
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Shikneshti:
 
 ## Updated error messages
 
+error-bot-headline = Ne kanaj tatemulis an
+error-bot-blurb =
+    Timukakasujtiwit ika anka taja se bot ika tiktemuj 
+    miak dijdirección correoj sujsul talul. Sanuk tajta timutentzaktuk
+    wan te tiweli titatemua. Shikejeku neman.
+error-csrf-headline = Ne sesión puliwki
+error-csrf-blurb = Shikpachu ne botón ka ipan ipal ne tay iwan titajtachia, shikalaki uksenpa tik ne iswat, wan shikejeku uksenpa.
+error-invalid-unsub = Ken nikishtia nutukay tik ne tanawatilis { -product-name }
+error-invalid-unsub-blurb =
+    Tinemi pal tikishtia mutukay tik se ipal 
+    ne cojcorreoj { -product-name } metztitanilij. Shikita ne mucorreoj wan shiktemu se titani ipal
+    { -brand-team-email }. Shikpachu ne ilpika ne muajsi ka ikshi ne correoj pal tikishtia mutukay .
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] Ne idirección mucorreoj mupepeta nemi
+       *[other] Ne idijdirección mucorreoj mupepeta nemi
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Ne ichtaka taketzalis muneshtijket tik muchi ne mukaltapanalis
+       *[other] Ne ijichtaka taketzalis muneshtijket tik muchi ne mukaltapanalis
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] Se yankwik mukaltapanalis matituk kineshtijtuk muinformación
+       *[other] Yajyankwik mukaltapanalis matituk kineshtijtuk muinformación
+    }
+# Button
+see-additional-breaches = Shikita sejseuk mukaltapanalis
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Ini correoj neski tik 1 mukaltapanalis matituk
+       *[other] Ini correoj neski tik { $breachCount } mukajkaltapanalis matituk
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Walkisalis ipal: { $userEmail }
+other-monitored-emails = Seuk correoj mupepettuk
+email-verification-required = Muneki mupepeta mucorreoj
+fxa-primary-email = { -brand-fxa } Correoj - Ne Achtu
+what-is-a-website-breach = Tay se mukaltapanalis sitioj?
+website-breach-blurb = Se mukaltapanalis u keman se mukaltapana tik mudajdatoj, yaja ne taichtekit kishkupina wan kalkishtia wan kineshtia muinformación tik ne cuejcuentaj matapan. Panu seujseujti ika ne taichtekit kiajsit kan ne te uij welit mukaltapanat. Uni panu nusan keman ne información ne cuejcuentaj chulua.
+security-tips-headline = Tanawatilis pal timumanawia itech ne taichtekit
+steps-to-protect = Ken tiweli tikpalewia muidentidad matapan
+take-further-steps = Shikchiwa seuk pal tikpalewia muidentidad
+alert-about-new-breaches = Shinechnawati keman mukaltapanat uksenpa
+see-if-youve-been-part = Shikita asu se mukaltapan tik mudajdatoj matapan
+get-ongoing-breach-monitoring = Shikpepeta mukaltapanalis tik miak dijdirección correoj.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Shikmajmati
+new-unsub-error = Shikwi se ipal mucojcorreoj ne { -product-name } kititan pal tikishtia mutukay.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Melka yaja kia nesik tik { $breachCount } seuk mukaltapanalis matituk
+       *[other] Melka yaja kia nesik tik { $breachCount } sejseuk mukaltapanalis matituk
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Ukchupi información, wan nusan:
+# Title
+email-addresses-title = Dijdirección correoj
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Ken nesi muchi
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = Ne { $breachDate }, mukaltapanket tik { $breachTitle }. Kan muajsik wan muyekitak ne mukaltapanalis, yaja mutalij tik ne basej dajdatoj tik { $addedDate }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
