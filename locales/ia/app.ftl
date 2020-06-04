@@ -440,6 +440,7 @@ progress-complete = Tote le violationes note ha essite marcate como resolvite
 progress-message-1 = <span>Tu veni de un optime initio!</span> Discoperi le restante violationes pro apprender que mensuras prender.<
 progress-message-2 = <span>Continua assi!</span> Micre cambiamentos como actualisation de contrasignos ha un grande impacto pro mantener secur tu informationes personal.
 progress-message-3 = <span>Optime labor a resolver ille violationes!</span> Continua assi. Ancora un poco.
+progress-message-4 = <span>Quasi facite!</span> Tu es presso le linea de fin.
 
 ##
 
@@ -462,8 +463,10 @@ known-data-breaches-resolved =
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nove
 mobile-promo-headline = Installa { -brand-name } sur tu telephono e tu tabletta
+mobile-promo-body = Navigation veloce, private e secur ubique tu va. Trova { -brand-name } in Google Play e App Store.
 mobile-promo-cta = Installa { -brand-name } sur Android e iOS
 promo-lockwise-headline = Porta tu contrasignos sempre con te
+lockwise-promo-body = Mantene tracia de tu accessos inter tote le apparatos. Accede los con securitate de tu computator, telephono o tabletta.
 promo-lockwise-cta = Installar { -brand-lockwise }
 fpn-promo-headline = Cela tu position a sitos e traciatores
 promo-fpn-cta = Installa { -brand-fpn }
