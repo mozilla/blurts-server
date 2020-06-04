@@ -33,18 +33,60 @@ function hasUserSignedUpForRelay(user) {
   return false;
 }
 
-function getExperimentBranch(req, sorterNum = false, language = false) {
+function chooseVariation(variations, sorterNum){
+
+  let totalPercentage = 0;
+
+  // calculate and store total percentage of variations
+  for (const v in variations) {
+    if (variations.hasOwnProperty(v) && typeof variations[v] === "number") {
+      // multiply by 100 to allow for percentages to the hundredth
+      // (and avoid floating point math errors)
+      totalPercentage += (variations[v] * 100);
+    }
+  }
+
+  totalPercentage = totalPercentage / 100;
+
+  // Make sure totalPercent is between 0 and 100
+  if (totalPercentage === 0 || totalPercentage > 100) {
+    throw new Error(`The total percentage ${totalPercentage} is out of bounds!`);
+  }
+
+  // make sure random number falls in the distribution range
+  let runningTotal;
+  let choice;
+
+  if (sorterNum <= totalPercentage) {
+      runningTotal = 0;
+
+      // loop through all variations
+      for (const v in variations) {
+          // check if random number falls within current variation range
+          if (sorterNum <= (variations[v] + runningTotal)) {
+              // if so, we have found our variation
+              choice = v;
+              break;
+          }
+
+          // tally variation percentages for the next loop iteration
+          runningTotal += variations[v];
+      }
+    }
+
+    return choice;
+
+}
+
+function getExperimentBranch(req, sorterNum = false, language = false, variations) {
 
   const session = req.session.experimentFlags;
-
-  if (sorterNum === false) {
-    sorterNum = Math.floor(Math.random() * 100);
-    log.debug("No coinflip number provided. Coinflip number is ", sorterNum);
-  }
 
   if (session.excludeFromExperiment && !req.query.experimentBranch) {
     log.debug("This session has already been excluded from the experiment");
     session.excludeFromExperiment = true;
+    session.experimentBranch = false;
+    session.treatmentBranch = false;
     return false;
   }
 
@@ -53,25 +95,38 @@ function getExperimentBranch(req, sorterNum = false, language = false) {
   if (language && !req.headers || language && !req.headers["accept-language"]){
     log.debug("No headers or accept-language information present.");
     session.excludeFromExperiment = true;
+    session.experimentBranch = false;
+    session.treatmentBranch = false;
     return false;
   }
 
   // If the user doesn't have the requested variant langauge selected as their primary language,
   // we do not enroll them in the experiment.
   if (language) {
+
+    if (!Array.isArray(language)) {
+      throw new Error("The language param is not an array");
+    }
     const lang = req.headers["accept-language"].split(",");
-    if (language && !lang[0].includes(language)) {
-      log.debug(`Preferred language is not ${language} variant: ${lang[0]}`);
+
+    // Check to make sure one of the experiment langauge(s) is the top-preferred language.
+    const firstLangMatch = (element) => lang[0].includes(element);
+    if (language && !language.some(firstLangMatch)) {
+      log.debug(`Preferred language is not [${language}] variant: ${lang[0]}`);
       session.excludeFromExperiment = true;
+      session.experimentBranch = false;
+      session.treatmentBranch = false;
       return false;
     }
   }
 
   // If URL param has experimentBranch entry, use that branch;
   if (req.query.experimentBranch) {
-    if (!["va", "vb"].includes(req.query.experimentBranch)) {
+    if (!Object.keys(variations).includes(req.query.experimentBranch)) {
       log.debug("The requested branch is unknown: ", req.query.experimentBranch);
       session.excludeFromExperiment = true;
+      session.experimentBranch = false;
+      session.treatmentBranch = false;
       return false;
     }
     log.debug("This session has been set to the requested branch: ", req.query.experimentBranch);
@@ -86,21 +141,28 @@ function getExperimentBranch(req, sorterNum = false, language = false) {
     return session.experimentBranch;
   }
 
-  // Growth Team Experiment 2 only wants to expose 29/29/42 of all site traffic to
-  // the experiment. Of the 58% percent inside the experiment, will be split
-  // 50/50 between treatment and control.
-  if (sorterNum < 29) {
-    log.debug("This session has been randomly assigned to the control group. (va)");
-    session.experimentBranch = "va";
-    return "va";
-  } else if (sorterNum > 28 && sorterNum < 58) {
-    log.debug("This session has been randomly assigned to the treatment group. (vb)");
-    session.experimentBranch = "vb";
-    return "vb";
+  if (sorterNum === false) {
+    sorterNum = Math.floor(Math.random() * 10000) + 1;
+    sorterNum = sorterNum/100;
+    // sorterNum = Math.floor(Math.random() * 100);
+    log.debug("No coinflip number provided. Coinflip number is ", sorterNum);
+  } else {
+    log.debug("Coinflip number provided. Coinflip number is ", sorterNum);
   }
-  log.debug("This session has randomly been removed from the experiment");
-  session.excludeFromExperiment = true;
-  return false;
+
+  const assignedCohort = chooseVariation(variations, sorterNum);
+
+  if (!assignedCohort) {
+    log.debug("This session has randomly been removed from the experiment");
+    session.excludeFromExperiment = true;
+    return false;
+  }
+
+  log.debug(`This session has been randomly assigned to the ${assignedCohort} cohort.`);
+  session.experimentBranch = assignedCohort;
+  if (assignedCohort === "vb") { session.treatmentBranch = true; }
+  return assignedCohort;
+
 }
 
 function getExperimentFlags(req, EXPERIMENTS_ENABLED) {
@@ -114,11 +176,11 @@ function getExperimentFlags(req, EXPERIMENTS_ENABLED) {
 
   const experimentFlags = {
     experimentBranch: false,
-    isUserInExperiment: false,
-    experimentBranchB: false,
+    treatmentBranch: false,
     excludeFromExperiment: false,
   };
 
+  req.session.experimentFlags = experimentFlags;
   return experimentFlags;
 }
 

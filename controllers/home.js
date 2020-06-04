@@ -31,11 +31,13 @@ async function home(req, res) {
   }
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
-  req.session.experimentFlags = experimentFlags;
 
   // Growth Experiment
   if (EXPERIMENTS_ENABLED) {
-    getExperimentBranch(req);
+    getExperimentBranch(req, false, ["de", "fr"], {
+      "va": 25,
+      "vb": 25,
+    });
   }
 
   if (req.query.breach) {

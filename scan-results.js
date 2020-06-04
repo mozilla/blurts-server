@@ -17,7 +17,6 @@ const scanResult = async(req, selfScan=false) => {
 
   // Growth Experiment
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
-  req.session.experimentFlags = experimentFlags;
 
   const title = req.fluentFormat("scan-title");
   let foundBreaches = [];

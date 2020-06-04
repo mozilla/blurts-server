@@ -232,7 +232,6 @@ async function getDashboard(req, res) {
 
   // Growth Experiment
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
-  req.session.experimentFlags = experimentFlags;
 
   let lastAddedEmail = null;
 
