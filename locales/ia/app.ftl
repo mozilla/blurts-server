@@ -393,6 +393,9 @@ resolve-top-notification-plural =
 ##
 
 marking-this-subhead = Marcar iste violation como resolvite
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body = <span>Un vice que tu ha prendite le mensuras que tu pote pro resolver iste violation</span>, tu pote marcar lo como resolvite. Tu pote ancora acceder sempre al detalios re le violation ab tu pannello de controlo.
 mark-as-resolve-button = Marcar como resolvite
 marked-as-resolved-label = Marcate como resolvite
 undo-button = Disfacer
