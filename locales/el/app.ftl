@@ -216,6 +216,8 @@ want-to-add = Θέλετε να προσθέσετε ένα άλλο email;
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = σύνδεση
 
 ##
 
