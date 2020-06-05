@@ -57,7 +57,7 @@ compromised-data = Dades afectades:
 unsub-headline = Cancel·leu la subscripció al { -product-name-nowrap }
 unsub-button = Cancel·la la subscripció
 # Breach data provided by Have I Been Pwned.
-hibp-attribution = Informació de les filtracions de dades proporcionada per { $hibp-link }
+hibp-attribution = Informació de les filtracions proporcionada per { $hibp-link }
 show-all = Mostra-ho tot
 fxa-scan-another-email = Voleu comprovar una altra adreça?
 sign-in = Inicia la sessió
@@ -73,14 +73,14 @@ preferences = Preferències
 # Link title
 home = Inici
 # Link title
-breaches = Filtracions de dades
+breaches = Filtracions
 # Link title
 security-tips = Consells de seguretat
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Obre la navegació del { -brand-fxa }
 take-control = Recupereu el control de les vostres dades personals.
-website-breach = Filtració de dades de lloc web
+website-breach = Filtració de lloc web
 about-fxm-headline = Quant al { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Com funciona el { -product-name }
@@ -103,7 +103,14 @@ appears-in-x-breaches =
         [one] Apareix en { $breachCount } filtració coneguda.
        *[other] Apareix en { $breachCount } filtracions conegudes.
     }
+check-for-breaches = Comprova les filtracions
 back-to-top = Torna a dalt
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-summary = Resum de filtracions
 welcome-user = Us donem la benvinguda, { $userName }.
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = S'està mostrant:
