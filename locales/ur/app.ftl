@@ -150,6 +150,7 @@ see-additional-recs = اضافی سفارشات ملاحظہ کریں
 
 ##
 
+undo-button = کالعدم کریں
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
