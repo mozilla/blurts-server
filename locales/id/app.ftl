@@ -262,9 +262,7 @@ ba-next-step-blurb-2 =
     masuk ke akun Anda yang lain. Cara terbaik untuk melindungi akun Anda
     adalah dengan menggunakan kata sandi unik untuk masing-masing akun.
 ba-next-step-3 = Dapatkan bantuan untuk membuat kata sandi yang lebih baik dan menjaganya tetap aman.
-ba-next-step-blurb-3 =
-    Gunakan pengelola kata sandi untuk membuat kata sandi yang kuat dan unik. Pengelola kata sandi menyimpan semua log masuk Anda dengan aman
-    sehingga Anda dapat mengaksesnya di semua perangkat Anda.
+ba-next-step-blurb-3 = Gunakan pengelola kata sandi untuk membuat kata sandi yang kuat dan unik. Pengelola kata sandi menyimpan semua info masuk Anda dengan aman agar dapat diakses di semua perangkat Anda.
 faq1 = Saya tidak mengenali perusahaan atau situs web ini. Mengapa saya tersangkut pembobolan ini?
 faq2 = Mengapa butuh waktu lama untuk memberi tahu saya tentang pembobolan ini?
 faq3 = Bagaimana saya tahu ini adalah surel yang sah dari { -product-name }?
@@ -501,8 +499,8 @@ progress-message-2 =
 progress-message-3 = <span>Kerja bagus untuk menyelesaikan pelanggaran itu!</span> Teruskan. Anda masih punya beberapa buah lagi.
 progress-message-4 = <span>Hampir selesai!</span> Anda sudah dekat dengan garis akhir.
 progress-complete-message =
-    <span>Menyenangkan, bukan?</span> Jika Anda ingin melanjutkan, ini saat yang tepat untuk
-    memutakhirkan log masuk lainnya dengan kata sandi yang lebih kuat.
+    <span>Menyenangkan bukan?</span> Jika Anda ingin melanjutkan, ini saat yang tepat untuk
+    memutakhirkan info masuk lainnya dengan kata sandi yang lebih kuat.
 
 ##
 
@@ -526,7 +524,7 @@ mobile-promo-headline = Bawa { -brand-name } ke ponsel dan tablet Anda
 mobile-promo-body = Penjelajahan yang cepat, pribadi, dan aman ke mana pun Anda pergi. Temukan { -brand-name } di Google Play dan App Store.
 mobile-promo-cta = Dapatkan { -brand-name } di Android dan iOS
 promo-lockwise-headline = Bawa kata sandi Anda ke mana saja
-lockwise-promo-body = Pantau log masuk Anda di semua perangkat. Akses dengan aman dari komputer, ponsel, atau tablet Anda.
+lockwise-promo-body = Pantau info masuk Anda di semua perangkat. Akses dengan aman dari komputer, ponsel, atau tablet Anda.
 promo-lockwise-cta = Dapatkan { -brand-lockwise }
 fpn-promo-headline = Tutupi lokasi Anda dari situs web dan pelacak
 promo-fpn-body = { -brand-fpn } membuang situs web dan pengumpul data yang menggunakan iklan untuk memprofil Anda dengan menutupi alamat IP asli Anda.
