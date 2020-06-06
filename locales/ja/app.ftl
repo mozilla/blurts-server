@@ -133,7 +133,7 @@ feat-enroll-multiple = 複数のメールアドレスを登録して侵害を監
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
     { $breachCount ->
-       *[other] 既知のデータ侵害は { $breachCount } 件あります。
+       *[other] 既知のデータ侵害は { $breachCount } 件です。
     }
 check-for-breaches = データ侵害を確認する
 find-out-what-hackers-know = ハッカーが既にあなたについて知っていることを調査しましょう。一歩先に行く方法を学んでください。
