@@ -14,7 +14,7 @@ email-unsub-link = Anular a subscrição
 # { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
 # and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
 # Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
-email-footer-blurb = Está a receber este e-mail porque subscreveu a alertas de { -product-name }. Não está interessado em receber este e-mails? { $unsubLink }. Este é um e-mail automático. Para apoio, visite { $faqLink }.
+email-footer-blurb = Está a receber este e-mail porque subscreveu a alertas de { -product-name }. Não está interessado em receber estes e-mails? { $unsubLink }. Este é um e-mail automático. Para apoio, consulte as { $faqLink }.
 # This string appears in the footer of verification emails. { $faqLink } is a link
 # to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-verify-footer-copy =
