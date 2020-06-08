@@ -23,16 +23,16 @@ email-verify-footer-copy =
 # Button text
 verify-email-cta = Verifică e-mailul
 # Button text
-see-all-breaches = Vezi toate breșele
+see-all-breaches = Vezi toate încălcările securității datelor
 # Headline of verification email
 email-link-expires = Acest link expiră în 24 de ore
-email-verify-blurb = Verifică-ți e-mailul pentru a-l adăuga la { -product-name } și ca să te abonezi la alerte despre breșe de securitate.
+email-verify-blurb = Verifică-ți e-mailul pentru a-l adăuga la { -product-name } și ca să te abonezi la alerte privind încălcările securității datelor.
 # Email headline
 email-found-breaches-hl = Iată rezumatul tău privind încălcările securității datelor din trecut
 # Email headline
-email-breach-summary-for-email = Rezumatul breșelor pentru { $userEmail }
+email-breach-summary-for-email = Rezumatul încălcărilor securității datelor pentru { $userEmail }
 # Email headline
-email-no-breaches-hl = { $userEmail } a apărut în 0 breșe de securitate cunoscute
+email-no-breaches-hl = { $userEmail } a apărut în 0 încălcări cunoscute ale securității datelor
 # Email headline
 email-alert-hl = { $userEmail } a apărut într-o nouă încălcare a securității datelor
 # Subject line of email

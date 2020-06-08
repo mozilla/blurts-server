@@ -424,12 +424,12 @@ resolve-top-notification-plural =
 
 ##
 
-marking-this-subhead = Marcarea acestei breșe ca rezolvată
+marking-this-subhead = Marcarea acestei încălcări a securității datelor ca rezolvată
 # This string contains nested markup that is later used to style the text inside of it.
 # Please do not modify or remove "<span>" and "</span>".
 marking-this-body =
-    <span>Odată ce ai luat măsurile posibile pentru gestionarea acestei breșe</span>,
-    o poți marca drept rezolvată. Poți accesa în continuare detaliile despre breșă din tabloul de bord în orice moment.
+    <span>Odată ce ai luat măsurile posibile pentru gestionarea acestei încălcări a securității datelor</span>, 
+    o poți marca drept rezolvată. Poți accesa oricând detaliile despre încălcare din tabloul de bord.
 mark-as-resolve-button = Marchează ca rezolvată
 marked-as-resolved-label = Marcată ca rezolvată
 undo-button = Anulează
@@ -444,11 +444,11 @@ confirmation-3-body = Parola nouă este unică, puternică și greu de ghicit? <
 generic-confirmation-subhead = Această breșă a fost marcată ca rezolvată
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
-        [one] Pentru a vedea breșa rămasă, mergi în tabloul de bord.
-        [few] Pentru a vedea toate breșele rămase, mergi în tabloul de bord.
-       *[other] Pentru a vedea toate breșele rămase, mergi în tabloul de bord.
+        [one] Pentru a vedea încălcarea rămasă, mergi în tabloul de bord.
+        [few] Pentru a vedea toate încălcările rămase, mergi în tabloul de bord.
+       *[other] Pentru a vedea toate încălcările rămase, mergi în tabloul de bord.
     }
-return-to-breach-details-link = Revenire la detaliile breșei
+return-to-breach-details-link = Revino la detaliile privind încălcarea
 go-to-dashboard-link = Mergi la tabloul de bord
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
@@ -461,10 +461,10 @@ num-resolved =
         [few] { $numResolvedBreaches } rezolvate
        *[other] { $numResolvedBreaches } rezolvate
     }
-progress-intro-subhead = Nou în { -product-name }: Marchează breșele ca rezolvate
+progress-intro-subhead = Nou în { -product-name }: Marchează încălcările ca rezolvate
 progress-intro-message =
-    După examinarea detaliilor și luarea pașilor pentru protecția 
-    informațiilor tale personale, poți marca breșele ca rezolvate.
+    După examinarea detaliilor unei încălcări a securității datelor și luarea pașilor pentru protecția 
+    informațiilor tale personale, poți marca încălcările ca rezolvate.
 progress-status =
     { $numTotalBreaches ->
         [one] { $numResolvedBreaches } din { $numTotalBreaches } încălcare marcată ca rezolvată
@@ -477,12 +477,12 @@ progress-complete = Toate încălcările cunoscute au fost marcate ca rezolvate
 ## Please do not modify or remove "<span>" and "</span>".
 
 progress-message-1 =
-    <span>Ai început bine!</span> Vezi și restul breșelor ca să afli 
+    <span>Ai început bine!</span> Vezi și restul încălcărilor ca să afli 
     ce măsuri să iei.
 progress-message-2 =
     <span>Ține-o tot așa!</span> Schimbările mici, cum ar fi actualizarea parolelor, au un impact mare în 
     menținerea informațiilor personale în siguranță.
-progress-message-3 = <span>Ai făcut treabă bună la rezolvarea acelor breșe!</span> Ține-o tot așa. Mai ai câteva.
+progress-message-3 = <span>Ai făcut treabă bună la rezolvarea acelor încălcări!</span> Ține-o tot așa. Mai ai câteva.
 progress-message-4 = <span>Aproape că ai terminat!</span> Te apropii de final.
 progress-complete-message =
     <span>Bună senzația, nu?</span> Dacă vrei să continui, acum este momentul să 
@@ -498,9 +498,9 @@ hide-resolved-button = Ascunde-le pe cele rezolvate
 show-resolved-button = Afișează-le pe cele rezolvate
 unresolved-passwords-exposed =
     { $numPasswords ->
-        [one] parolă expusă în breșe nerezolvate
-        [few] parole expuse în breșe nerezolvate
-       *[other] de parole expuse în breșe nerezolvate
+        [one] parolă expusă în încălcări nerezolvate ale securității datelor
+        [few] parole expuse în încălcări nerezolvate ale securității datelor
+       *[other] de parole expuse în încălcări nerezolvate ale securității datelor
     }
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
