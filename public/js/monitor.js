@@ -6,6 +6,8 @@
 /* global sendRecommendationPings */
 /* global ga */
 
+const utmParams = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ];
+
 if (typeof TextEncoder === "undefined") {
   const cryptoScript = document.createElement("script");
   const scripts = document.getElementsByTagName("script")[0];
@@ -72,7 +74,7 @@ function doOauth(el, {emailWatch = false} = {}) {
 
   if (oAuthEntryPointIds.includes(el.dataset.entrypoint)) {
     // Growth Experiment: Reset UTMs from in-line body tag data elements.
-    ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
+    utmParams.forEach(key => {
       if (document.body.dataset[key]) {
         url.searchParams.delete(key);
         url.searchParams.append(key, document.body.dataset[key]);
@@ -179,7 +181,7 @@ function handleFormSubmits(formEvent) {
   if (document.body.dataset.experiment) {
     const scanFormActionURL = new URL(thisForm.action);
 
-    ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ].forEach(key => {
+    utmParams.forEach(key => {
       if (document.body.dataset[key]) {
         scanFormActionURL.searchParams.append(key, document.body.dataset[key]);
       }
