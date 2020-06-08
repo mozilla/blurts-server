@@ -139,8 +139,8 @@ what-data = Ce date au fost compromise:
 sensitive-sites = Cum tratează { -product-name } site-urile cu date sensibile?
 sensitive-sites-copy =
     { -product-name } divulgă conturile asociate cu aceste 
-    tipuri de breșe de date numai după ce a fost verificată o adresă de e-mail. Înseamnă că ești 
-    singura persoană care poate vedea dacă informațiile tale au fost implicate în această breșă de date 
+    tipuri de încălcări ale securității datelor numai după ce a fost verificată o adresă de e-mail. Acest lucru înseamnă că ești 
+    singura persoană care poate vedea dacă informațiile tale au fost implicate în această încălcare a securității datelor 
     (dacă nu cumva și altcineva are acces la contul tău de e-mail).
 delayed-reporting-headline = De ce a durat atât de mult să se raporteze această breșă de date?
 delayed-reporting-copy =
@@ -150,9 +150,9 @@ delayed-reporting-copy =
 about-fxm-headline = Despre { -product-name }
 about-fxm-blurb =
     { -product-name } te avertizează în cazul în care conturile tale online au fost implicate într-o 
-    breșă de date. Afli dacă ai fost implicat(ă) într-o breșă de date, primești alerte despre breșe noi de date, 
-    și iei măsuri ca să îți protejezi conturile online. { -product-name } este furnizat 
-    de { -brand-Mozilla }.
+    încălcare a securității datelor. Află dacă ai fost implicat(ă) într-o încălcare a securității datelor, primește alerte 
+    despre încălcările noi ale securității datelor și iei măsuri pentru protejarea conturilor tale online. { -product-name } 
+    este furnizat de { -brand-Mozilla }.
 fxm-warns-you =
     { -product-name } te avertizează dacă adresa ta de e-mail a fost expusă 
     într-o breșă de date online. Vezi dacă ți-au fost expuse informațiile, află cum 
