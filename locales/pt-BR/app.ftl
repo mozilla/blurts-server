@@ -151,7 +151,7 @@ sensitive-sites-copy =
     tipos de vazamento após um endereço de e-mail ter sido validado. Significa que você é 
     a única pessoa que pode ver se suas informações apareceram em um vazamento (a menos que
     mais alguém tenha acesso à sua conta de e-mail).
-delayed-reporting-headline = Por que demorou tanto para reportar este vazamento?
+delayed-reporting-headline = Por que demorou tanto para relatar este vazamento?
 delayed-reporting-copy = Às vezes demora meses ou anos para que credenciais expostas em um vazamento de dados apareça na dark web. Vazamentos são adicionados ao nosso banco de dados assim que são descobertos e confirmados.
 about-fxm-headline = Sobre o { -product-name }
 about-fxm-blurb = O { -product-name } avisa se suas contas online estiveram envolvidas em um vazamento de dados. Descubra se você esteve em algum vazamento de dados, receba alertas sobre novos vazamentos e tome medidas para proteger suas contas online. O { -product-name } é fornecido pela { -brand-Mozilla }.
