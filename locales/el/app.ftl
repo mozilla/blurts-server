@@ -251,3 +251,4 @@ new-breach = Νέο
 mobile-promo-cta = Λήψη { -brand-name } σε Android και iOS
 promo-lockwise-cta = Λήψη { -brand-lockwise }
 promo-fpn-cta = Λήψη { -brand-fpn }
+promo-ecosystem-cta = Προβολή όλων των προϊόντων

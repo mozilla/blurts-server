@@ -26,6 +26,7 @@ chat-logs = Αρχεία συνομιλιών
 credit-card-cvv = CVV πιστωτικής κάρτας
 credit-cards = Πιστωτικές κάρτες
 credit-status-information = Πληροφορίες πιστωτικής κατάστασης
+cryptocurrency-wallet-hashes = Hashes πορτοφολιού κρυπτονομισμάτων
 customer-feedback = Σχόλια καταναλωτή
 customer-interactions = Αλληλεπιδράσεις πελάτη
 dates-of-birth = Ημερομηνίες γέννησης
