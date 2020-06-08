@@ -565,14 +565,9 @@ function logout(req, res) {
   // Growth Experiment
   if (EXPERIMENTS_ENABLED && req.session.experimentFlags) {
     // Persist experimentBranch across session reset
-    const excludeFromExperiment = req.session.experimentFlags.excludeFromExperiment;
-    const experimentBranch = req.session.experimentFlags.experimentBranch;
+    const sessionExperimentFlags = req.session.experimentFlags;
     req.session.reset();
-    // Reset session vars after sign out event
-    req.session.experimentFlags = {
-      experimentBranch,
-      excludeFromExperiment,
-    };
+    req.session.experimentFlags = sessionExperimentFlags;
 
     // Return
     res.redirect("/");
