@@ -78,15 +78,19 @@ function chooseVariation(variations, sorterNum){
 
 }
 
+function unEnrollSession(session) {
+  session.excludeFromExperiment = true;
+  session.experimentBranch = false;
+  session.treatmentBranch = false;
+}
+
 function getExperimentBranch(req, sorterNum = false, language = false, variations) {
 
   const session = req.session.experimentFlags;
 
   if (session.excludeFromExperiment && !req.query.experimentBranch) {
     log.debug("This session has already been excluded from the experiment");
-    session.excludeFromExperiment = true;
-    session.experimentBranch = false;
-    session.treatmentBranch = false;
+    unEnrollSession(session);
     return false;
   }
 
@@ -94,9 +98,7 @@ function getExperimentBranch(req, sorterNum = false, language = false, variation
   // enroll users in the experiment.
   if (language && !req.headers || language && !req.headers["accept-language"]){
     log.debug("No headers or accept-language information present.");
-    session.excludeFromExperiment = true;
-    session.experimentBranch = false;
-    session.treatmentBranch = false;
+    unEnrollSession(session);
     return false;
   }
 
@@ -113,9 +115,7 @@ function getExperimentBranch(req, sorterNum = false, language = false, variation
     const firstLangMatch = (element) => lang[0].includes(element);
     if (language && !language.some(firstLangMatch)) {
       log.debug(`Preferred language is not [${language}] variant: ${lang[0]}`);
-      session.excludeFromExperiment = true;
-      session.experimentBranch = false;
-      session.treatmentBranch = false;
+      unEnrollSession(session);
       return false;
     }
   }
@@ -124,9 +124,7 @@ function getExperimentBranch(req, sorterNum = false, language = false, variation
   if (req.query.experimentBranch) {
     if (!Object.keys(variations).includes(req.query.experimentBranch)) {
       log.debug("The requested branch is unknown: ", req.query.experimentBranch);
-      session.excludeFromExperiment = true;
-      session.experimentBranch = false;
-      session.treatmentBranch = false;
+      unEnrollSession(session);
       return false;
     }
     log.debug("This session has been set to the requested branch: ", req.query.experimentBranch);
