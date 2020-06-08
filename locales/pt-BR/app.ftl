@@ -480,8 +480,8 @@ num-resolved =
         [one] { $numResolvedBreaches } resolvido
        *[other] { $numResolvedBreaches } resolvidos
     }
-progress-intro-subhead = Novidade no { -product-name }: Marcar vazamentos como resolvidos
-progress-intro-message = Após revisar os detalhes sobre um vazamento e tomar medidas para proteger suas informações pessoais, você pode marcar vazamentos como resolvidos.
+progress-intro-subhead = Novidade no { -product-name }: marcar vazamentos como resolvidos
+progress-intro-message = Após revisar os detalhes sobre um vazamento e tomar medidas para proteger suas informações pessoais, você pode marcar alertas de vazamentos como resolvidos.
 progress-status =
     { $numTotalBreaches ->
        *[other] { $numResolvedBreaches } de { $numTotalBreaches } vazamentos marcados como resolvidos
