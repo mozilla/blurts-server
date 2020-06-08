@@ -517,7 +517,7 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Novo
-mobile-promo-headline = Leve o { -brand-name } para o seu celular e tablet
+mobile-promo-headline = Leve o { -brand-name } para seu celular e tablet
 mobile-promo-body = Navegação rápida, privativa e segura em qualquer lugar que você vá. Encontre o { -brand-name } no Google Play e na App Store.
 mobile-promo-cta = Instale o { -brand-name } no Android e iOS
 promo-lockwise-headline = Tenha suas senhas em qualquer lugar
