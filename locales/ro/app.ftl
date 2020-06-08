@@ -171,7 +171,7 @@ wtd-after-data-agg = Ce să faci după o breșă a unui agregator de date
 what-is-data-agg = Ce sunt agregatoarele de date?
 what-is-data-agg-blurb = Agregatoarele de date, cunoscute și sub denumirea de brokeri de date, colectează informații din înregistrări publice și cumpără date de la alte companii. Ele compilează aceste date pentru a le vinde altor companii în scopuri de marketing. Victimele acestor încălcări a securității datelor prezintă o probabilitate mai mică de fraude financiare, dar hackerii pot folosi aceste date pentru a le uzurpa identitatea sau pentru profilare.
 protect-your-privacy = Protejează-ți confidențialitatea online
-no-pw-to-change = Spre deosebire  de breșele site-urilor web, nu există nicio parolă de schimbat.
+no-pw-to-change = Spre deosebire de încălcarea securității datelor în cazul unui site web, nu există nicio parolă de schimbat.
 avoid-personal-info = Evită folosirea de informații personale în parole
 avoid-personal-info-blurb = Datele de naștere, adresele și numele membrilor familiei sunt ușor de găsit online. Nu introdu asemenea cuvinte în parole.
 
@@ -239,9 +239,9 @@ faq2 = De ce a durat atât de mult să fiu informat(ă) despre această breșă?
 faq3 = Cum știu că acesta este un mesaj legitim de e-mail de la { -product-name }?
 new-breaches-found =
     { $breachCount ->
-        [one] { $breachCount } BREȘĂ NOUĂ DESCOPERITĂ
-        [few] { $breachCount } BREȘE NOI DESCOPERITE
-       *[other] { $breachCount } DE BREȘE NOI DESCOPERITE
+        [one] { $breachCount } NOUĂ ÎNCĂLCARE DESCOPERITĂ A SECURITĂȚII DATELOR
+        [few] { $breachCount } NOI ÎNCĂLCĂRI DESCOPERITE ALE SECURITĂȚII DATELOR
+       *[other] { $breachCount } DE NOI ÎNCĂLCĂRI DESCOPERITE ALE SECURITĂȚII DATELOR
     }
 sign-up-headline-1 = Primește alerte curente cu un { -brand-fxa }.
 account-not-required = Browserul { -brand-name } nu este necesar pentru un { -brand-fxa }. Poți primi informații despre serviciile { -brand-Mozilla }.
@@ -250,9 +250,9 @@ find-out-if = Află dacă datele tale au fost expuse în această breșă.
 fb-not-comp = Această adresă de e-mail nu apare în breșa { $breachName }.
 other-breaches-found =
     { $breachCount ->
-        [one] Însă apare în { $breachCount } altă breșă.
-        [few] Însă apare în { $breachCount } alte breșe.
-       *[other] Însă apare în { $breachCount } de alte breșe.
+        [one] Însă a apărut într-o altă încălcare.
+        [few] Însă a apărut în alte { $breachCount } încălcări.
+       *[other] Însă a apărut în alte { $breachCount } de încălcări.
     }
 fb-comp-only = Această adresă de e-mail a apărut în breșa { $breachName }.
 fb-comp-and-others =
@@ -290,9 +290,9 @@ email-addresses-being-monitored =
 # your localization, because it would result in the number showing twice.
 passwords-exposed =
     { $passwords ->
-        [one] parolă expusă în toate breșele
-        [few] parole expuse în toate breșele
-       *[other] de parole expuse în toate breșele
+        [one] parolă expusă în toate încălcările securității datelor
+        [few] parole expuse în toate încălcările securității datelor
+       *[other] de parole expuse în toate încălcările securității datelor
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
@@ -331,9 +331,9 @@ find-out = Află
 new-unsub-error = Va trebui să te dezabonezi prin intermediul unuia dintre mesajele primite pe e-mail de la { -product-name },
 other-known-breaches-found =
     { $breachCount ->
-        [one] Însă a apărut în { $breachCount } altă breșă cunoscută.
-        [few] Însă a apărut în { $breachCount } alte breșe cunoscute.
-       *[other] Însă a apărut în { $breachCount } de alte breșe cunoscute.
+        [one] Însă a apărut într-o altă încălcare cunoscută.
+        [few] Însă a apărut în alte { $breachCount } încălcări cunoscute.
+       *[other] Însă a apărut în alte { $breachCount } de încălcări cunoscute.
     }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
@@ -376,7 +376,7 @@ email-verified = Adresă de e-mail verificată cu succes!
 email-added-to-subscription = Îți vom trimite o alertă dacă { $email } apare într-o breșă de date.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
-email-verified-view-dashboard = Pentru a vedea și a gestiona toate adresele pe care le-ai înscris pentru monitorizare de breșe, { $nestedSignInLink }
+email-verified-view-dashboard = Pentru a vedea și a gestiona toate e-mailurile pe care le-ai înscris pentru monitorizarea încălcării securității datelor, { $nestedSignInLink }
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = autentificare
 
@@ -392,7 +392,7 @@ manage-all-emails = Gestionează toate adresele de e-mail din { $preferencesLink
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-breach-alert-notifications = Notificări privind alertele de breșe
+breach-alert-notifications = Notificări privind alertele pentru încălcările securității datelor
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Încălcare adăugată:

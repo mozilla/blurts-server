@@ -36,15 +36,15 @@ email-no-breaches-hl = { $userEmail } a apărut în 0 breșe de securitate cunos
 # Email headline
 email-alert-hl = { $userEmail } a apărut într-o nouă încălcare a securității datelor
 # Subject line of email
-email-subject-found-breaches = { -product-name } ți-a găsit informații în aceste breșe
+email-subject-found-breaches = { -product-name } ți-a găsit informații în aceste încălcări ale securității datelor
 # Subject line of email
-email-subject-no-breaches = { -product-name } nu a găsit breșe cunoscute
+email-subject-no-breaches = { -product-name } nu a găsit încălcări cunoscute ale securității datelor
 # Subject line of email
 email-subject-verify = Verifică-ți e-mailul pentru { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Află mai multe despre { $fxmLink }
 email-sensitive-disclaimer =
-    Datorită caracterului sensibil al acestei breșe de securitate, e-mailurile implicate nu sunt dezvăluite public.
+    Datorită caracterului sensibil al acestei încălcări a securității datelor, e-mailurile implicate nu sunt dezvăluite public. 
     Primești această alertă deoarece ești deținătorul confirmat al acestei adrese de e-mail.
 fxm-warns-you-no-breaches =
     { -product-name } te avertizează cu privire la încălcările securității datelor în care sunt implicate informațiile tale cu caracter personal.
