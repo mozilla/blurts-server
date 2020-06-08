@@ -200,10 +200,10 @@ appears-in-x-breaches =
     }
 check-for-breaches = Verifică încălcările securității datelor
 find-out-what-hackers-know = Află ce știu hackerii despre tine. Află cum să fii cu un pas înaintea lor.
-search-for-your-email = Caută-ți adresa de e-mail în breșe de date publice care merg până în 2007.
+search-for-your-email = Caută-ți adresa de e-mail în încălcările publice ale securității datelor datând încă din 2007.
 back-to-top = Înapoi sus
 comm-opt-0 = Trimite-mi un mesaj pe e-mail dacă adresele mele de e-mail de mai jos apar într-o încălcare a securității datelor.
-comm-opt-1 = Trimite toate alertele pentru breșe de date la { $primaryEmail }.
+comm-opt-1 = Trimite toate alertele privind încălcările securității datelor la { $primaryEmail }.
 stop-monitoring-this = Nu mai monitoriza acest e-mail.
 resend-verification = Retrimite  mesajul e-mail de verificare
 add-new-email = Adaugă o adresă nouă de e-mail
@@ -214,7 +214,7 @@ send-verification = Trimite linkul de verificare
 # alerts for all of their monitored email addresses to a single 
 # email address.
 breach-summary = Rezumatul încălcării securității datelor
-show-breaches-for-this-email = Afișează toate breșele de date pentru această adresă de e-mail.
+show-breaches-for-this-email = Afișează toate încălcările securității datelor pentru acest e-mail.
 link-change-primary = Schimbă adresa de e-mail primară
 remove-fxm = Elimină { -product-name }
 remove-fxm-blurb = Dezactivează alertele { -product-name }. { -brand-fxa } tău va rămâne activ și poți primi alte comunicări legate de cont.
@@ -257,9 +257,9 @@ other-breaches-found =
 fb-comp-only = Această adresă de e-mail a apărut în breșa { $breachName }.
 fb-comp-and-others =
     { $breachCount ->
-        [one] Această adresă de e-mail a apărut în { $breachCount } breșă cunoscută de date, inclusiv { $breachName }.
-        [few] Această adresă de e-mail a apărut în { $breachCount } breșe cunoscute de date, inclusiv { $breachName }.
-       *[other] Această adresă de e-mail a apărut în { $breachCount } de breșe cunoscute de date, inclusiv { $breachName }.
+        [one] Această adresă de e-mail a apărut în { $breachCount } încălcare cunoscută a securității datelor, inclusiv { $breachName }.
+        [few] Această adresă de e-mail a apărut în { $breachCount } încălcări cunoscute a securității datelor, inclusiv { $breachName }.
+       *[other] Această adresă de e-mail a apărut în { $breachCount } de încălcări cunoscute a securității datelor, inclusiv { $breachName }.
     }
 no-other-breaches-found = Nicio altă breșă identificată la căutarea de bază.
 no-results-blurb = Ne pare rău, dar breșa aceea nu este în baza noastră de date.
@@ -299,17 +299,17 @@ passwords-exposed =
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
     { $breaches ->
-        [one] O breșă de date cunoscută ți-a expus informațiile
-        [few] Mai multe breșe de date cunoscute ți-au expus informațiile
-       *[other] Mai multe breșe de date cunoscute ți-au expus informațiile
+        [one] O încălcare cunoscută a securității datelor ți-a expus informațiile
+        [few] Mai multe încălcări cunoscute a securității datelor ți-au expus informațiile
+       *[other] Mai multe încălcări cunoscute a securității datelor ți-au expus informațiile
     }
 # Button
 see-additional-breaches = Vezi și alte încălcări a securității datelor
 scan-results-known-breaches =
     { $breachCount ->
-        [one] Această adresă de e-mail a apărut în 1 breșă cunoscută de date.
-        [few] Această adresă de e-mail a apărut în { $breachCount } breșe cunoscute.
-       *[other] Această adresă de e-mail a apărut în { $breachCount } de breșe cunoscute.
+        [one] Această adresă de e-mail a apărut în 1 încălcare cunoscută a securității datelor.
+        [few] Această adresă de e-mail a apărut în { $breachCount } încălcări cunoscute a securității datelor.
+       *[other] Această adresă de e-mail a apărut în { $breachCount } de încălcări cunoscute a securității datelor.
     }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
@@ -323,9 +323,9 @@ website-breach-blurb = O încălcare a securității datelor în cazul unui site
 security-tips-headline = Ponturi de securitate pentru a te proteja de hackeri
 steps-to-protect = Pași de luat pentru a-ți proteja identitatea online
 take-further-steps = Ia măsuri suplimentare pentru a-ți proteja identitatea
-alert-about-new-breaches = Trimite-mi alerte pentru breșe noi de date
+alert-about-new-breaches = Trimite-mi alerte pentru încălcările noi ale securității datelor
 see-if-youve-been-part = Vezi dacă ai fost implicat(ă) într-o încălcare a securității datelor
-get-ongoing-breach-monitoring = Obține monitorizarea continuă a breșelor de date pentru mai multe adrese de e-mail.
+get-ongoing-breach-monitoring = Obține monitorizarea continuă a încălcărilor securității datelor pentru mai multe adrese de e-mail.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Află
 new-unsub-error = Va trebui să te dezabonezi prin intermediul unuia dintre mesajele primite pe e-mail de la { -product-name },
@@ -357,7 +357,7 @@ signed-in-as = Autentificat ca: { $userEmail }
 filter-by = Filtrează pe categorii:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Meniu
-to-affected-email = Trimite alertele pentru breșe de date la adresa de e-mail afectată
+to-affected-email = Trimite alerte pentru încălcările securității datelor către adresele de e-mail afectate
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
 join-firefox = Există o modalitate de a-ți proteja viața privată. Alătură-te { -brand-name }.
 # Link title
@@ -519,7 +519,7 @@ promo-lockwise-cta = Încearcă { -brand-lockwise }
 fpn-promo-headline = Maschează-ți locația pentru site-uri web și elemente de urmărire
 promo-fpn-body = { -brand-fpn } decartează site-urile web și colectorii de date care îți creează profilul cu reclame, mascându-ți adresa IP reală.
 promo-fpn-cta = Încearcă { -brand-fpn }
-monitor-promo-headline = Află despre noi breșe de date
+monitor-promo-headline = Află despre noile încălcări ale securității datelor
 monitor-promo-body = Primești notificări data viitoare când informațiile tale personale sunt expuse într-o breșă cunoscută.
 ecosystem-promo-headline = Îți protejezi viața online cu produse care pun confidențialitatea pe primul loc
 ecosystem-promo-body = Toate produsele { -brand-name } onorează promisiunea noastră privind datele cu caracter personal: Luăm mai puțin. Le păstrăm în siguranță. Fără secrete.

@@ -28,7 +28,7 @@ see-all-breaches = Vezi toate breșele
 email-link-expires = Acest link expiră în 24 de ore
 email-verify-blurb = Verifică-ți e-mailul pentru a-l adăuga la { -product-name } și ca să te abonezi la alerte despre breșe de securitate.
 # Email headline
-email-found-breaches-hl = Iată rezumatul tău privind breșele de date din trecut
+email-found-breaches-hl = Iată rezumatul tău privind încălcările securității datelor din trecut
 # Email headline
 email-breach-summary-for-email = Rezumatul breșelor pentru { $userEmail }
 # Email headline
@@ -75,15 +75,15 @@ pre-fxa-subject = O actualizare de la { -product-name }
 pre-fxa-headline = Ce se schimbă cu { -product-name }
 pre-fxa-blurb =
     Iată ce s-a schimbat de când te-ai înscris pentru { -product-name }, serviciul care 
-    monitorizează breșele cunoscute de date pentru informațiile tale personale. Îl legăm de conturile Firefox.
-pre-fxa-tout-1 = Rămâi la curent cu mai multe breșe de date
+    monitorizează încălcările cunoscute ale securității datelor pentru informațiile tale cu caracter personal. Îl legăm de conturile Firefox.
+pre-fxa-tout-1 = Rămâi la curent cu mai multe încălcări ale securității datelor
 pre-fxa-p-1 =
     <a>Creează un cont</a> ca să monitorizezi până la 15 adrese de e-mail pentru 
-    breșe de date. Își recomandăm să adaugi orice adrese de e-mail pe care le-ai folosit ca să creezi conturi online.
+    încălcările securității datelor. Îți recomandăm să adaugi orice adrese de e-mail pe care le-ai folosit ca să creezi conturi online.
 pre-fxa-tout-2 = Obține o vizualizare pe tabloul de bord
 pre-fxa-p-2 =
-    Vezi toate breșele de date într-un singur loc pentru a ști ce parole să schimbi. 
-    Tabloul de bord pentru breșe este disponibil numai cu un cont.
+    Vezi toate încălcările securității datelor într-un singur loc pentru a ști ce parole să schimbi. 
+    Tabloul de bord pentru încălcările securității datelor este disponibil numai cu un cont.
 pre-fxa-tout-3 = Continuă să primești alerte pe e-mail
 pre-fxa-p-3 =
     Vei primi în continuare alerte de la { -product-name }. Te vom anunța dacă informațiile tale 
