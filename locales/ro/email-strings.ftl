@@ -20,8 +20,6 @@ email-footer-blurb = Primești acest e-mail deoarece te-ai înscris pentru alert
 email-verify-footer-copy =
     Primești acest e-mail deoarece te-ai înscris pentru alertele { -product-name }.
     Acesta este un e-mail automat. Pentru asistență, vizitează { $faqLink }.
-# Button text that takes the user to their signed in user dashboard.
-view-my-dashboard-cta = Vizualizare tablou de bord
 # Button text
 verify-email-cta = Verifică e-mailul
 # Button text
@@ -36,7 +34,7 @@ email-breach-summary-for-email = Rezumatul breșelor pentru { $userEmail }
 # Email headline
 email-no-breaches-hl = { $userEmail } a apărut în 0 breșe de securitate cunoscute
 # Email headline
-email-alert-hl = { $userEmail } a apărut într-o nouă breșă de securitate
+email-alert-hl = { $userEmail } a apărut într-o nouă încălcare a securității datelor
 # Subject line of email
 email-subject-found-breaches = { -product-name } ți-a găsit informații în aceste breșe
 # Subject line of email
@@ -49,14 +47,14 @@ email-sensitive-disclaimer =
     Datorită caracterului sensibil al acestei breșe de securitate, e-mailurile implicate nu sunt dezvăluite public.
     Primești această alertă deoarece ești deținătorul confirmat al acestei adrese de e-mail.
 fxm-warns-you-no-breaches =
-    { -product-name } te avertizează cu privire la breșele de date în care sunt implicate informațiile tale cu caracter personal.
-    Până în prezent, nu au fost găsite breșe. Îți vom trimite o alertă dacă adresa ta de e-mail apare într-o nouă breșă.
+    { -product-name } te avertizează cu privire la încălcările securității datelor în care sunt implicate informațiile tale cu caracter personal.
+    Până în prezent, nu au fost găsite încălcări. Îți vom trimite o alertă dacă adresa ta de e-mail apare într-o nouă încălcare.
 fxm-warns-you-found-breaches =
-    { -product-name } te avertizează cu privire la breșele de date în care sunt implicate informațiile tale cu caracter personal.
-    De asemenea, te-ai înscris pentru a primi alerte dacă adresa ta de e-mail apare într-o nouă breșă.
+    { -product-name } te avertizează cu privire la încălcările securității datelor în care sunt implicate informațiile tale cu caracter personal.
+    De asemenea, te-ai înscris pentru a primi alerte dacă adresa ta de e-mail apare într-o nouă încălcare.
 email-breach-alert-blurb =
-    { -product-name } te avertizează cu privire la breșele de date în care sunt implicate informațiile tale cu caracter personal.
-    Tocmai am primit detalii despre o altă breșă de date a unei companii.
+    { -product-name } te avertizează cu privire la încălcările securității datelor în care sunt implicate informațiile tale cu caracter personal.
+    Tocmai am primit detalii despre o încălcare a securității datelor referitoare la o altă companie.
 # List headline
 faq-list-headline = Întrebări adresate frecvent
 # Link Title

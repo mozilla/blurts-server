@@ -324,7 +324,7 @@ other-monitored-emails = Alte adrese de e-mail monitorizate
 email-verification-required = Este necesară verificarea adresei de e-mail
 fxa-primary-email = Adresă de e-mail { -brand-fxa } - primară
 what-is-a-website-breach = Ce este o încălcare a securității datelor în cazul unui site web?
-website-breach-blurb = Breșele de date pe site-urile web apar când infractorii cibernetici fură, copiază sau expun date cu caracter personal din conturi online. Sunt de obicei rezultatul identificării de către hackerii a unui punct slab în securitatea site-ului. Breșele pot apărea și la divulgarea accidentală a datelor aferente conturilor.
+website-breach-blurb = O încălcare a securității datelor în cazul unui site web apare când infractorii cibernetici fură, copiază sau expun informații cu caracter personal din conturi online. Este de obicei rezultatul identificării de către hackeri a unui punct slab în securitatea site-ului web. Încălcările pot apărea și la divulgarea accidentală a datelor aferente conturilor.
 security-tips-headline = Ponturi de securitate pentru a te proteja de hackeri
 steps-to-protect = Pași de luat pentru a-ți proteja identitatea online
 take-further-steps = Ia măsuri suplimentare pentru a-ți proteja identitatea
@@ -400,7 +400,7 @@ manage-all-emails = Gestionează toate adresele de e-mail din { $preferencesLink
 breach-alert-notifications = Notificări privind alertele de breșe
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
-breach-added-label = Breșă adăugată:
+breach-added-label = Încălcare adăugată:
 how-hackers-work-desc = Protejează-ți parolele de infractorii cibernetici, din moment ce acestea sunt cele mai importante pentru ei.
 what-to-do-after-breach-desc = Închide-ți conturile pentru ca informațiile tale să nu cadă în mâini necurate.
 create-strong-passwords-desc = Creează parole puternice, sigure și greu de ghicit.
@@ -410,7 +410,7 @@ take-further-steps-desc = Află cum să reduci riscurile unui furt de identitate
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Modificări salvate!
 # Section headline
-rec-section-headline = Ce să faci pentru această breșă
+rec-section-headline = Ce să faci pentru această încălcare a securității datelor
 rec-section-subhead = Îți recomandăm să efectuezi următorii pași pentru a-ți păstra informațiile personale în siguranță și pentru a-ți proteja identitatea digitală.
 # Section headline
 rec-section-headline-no-pw = Ce să faci pentru a-ți proteja informațiile personale
@@ -495,7 +495,7 @@ progress-complete-message =
 
 ##
 
-resolve-this-breach-link = Rezolvă această breșă
+resolve-this-breach-link = Rezolvă această încălcare
 # This string appears in resolved breach cards and is followed by 
 # the date the user marked the breach as resolved.
 marked-resolved = Marcate ca rezolvate:
