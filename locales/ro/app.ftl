@@ -25,7 +25,7 @@ error-could-not-add-email = Adresa de e-mail nu a putut fi adăugată în baza d
 error-not-subscribed = Această adresă de e-mail nu este abonată la { -product-name }.
 error-hibp-throttled = Prea multe conexiuni la { -brand-HIBP }.
 error-hibp-connect = Eroare de conectare la { -brand-HIBP }.
-error-hibp-load-breaches = Breșele de date nu au putut fi încărcate.
+error-hibp-load-breaches = Nu s-au putut încărca încălcările securității datelor.
 error-must-be-signed-in = Trebuie să fii autentificat(ă) la { -brand-fxa }.
 error-to-finish-verifying = Pentru a finaliza verificarea acestui e-mail pentru { -product-name }, trebuie să fii autentificat în e-mailul primar al contului tău.
 home-title = { -product-name }
@@ -54,20 +54,20 @@ signup-modal-sent = Trimis!
 sign-up = Înregistrează-te
 form-signup-error = Trebuie să fie o adresă de e-mail validă
 # breach-date = the calendar date a particular data theft occurred. 
-breach-date = Data breșei de date:
+breach-date = Data încălcării securității datelor:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Conturi compromise:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Date compromise:
 unsub-headline = Dezabonează-te de la { -product-name-nowrap }
-unsub-blurb = Prin dezabonare, adresa ta de e-mail va fi eliminată din lista { -product-name-nowrap } și nu vei mai primi alerte când sunt anunțate breșe noi de date.
+unsub-blurb = Prin dezabonare, adresa ta de e-mail va fi eliminată din lista { -product-name-nowrap } și nu vei mai primi alerte când sunt anunțate încălcări noi ale securității datelor.
 unsub-button = Dezabonează-te
 # Breach data provided by Have I Been Pwned.
-hibp-attribution = Informațiile despre breșele de date sunt furnizate de { $hibp-link }
+hibp-attribution = Datele privind încălcările securității datelor sunt furnizate de { $hibp-link }
 share-twitter = Majoritatea persoanelor au aproximativ 100 de conturi online. A fost expus vreunul dintre conturile tale într-o breșă de date? Află.
 share-facebook-headline = Află dacă ai fost implicat(ă) într-o breșă de date
 share-facebook-blurb = Au fost expuse conturile tale online într-o breșă de date?
-og-site-description = Află dacă ai fost implicat(ă) într-o breșă de date cu { -product-name }. Înregistrează-te pentru alerte despre breșe viitoare și obține ponturi ca să-ți păstrezi conturile în siguranță.
+og-site-description = Află dacă ai fost implicat(ă) într-o încălcare a securității datelor cu { -product-name }. Înregistrează-te pentru alerte despre viitoare încălcări a securității datelor și obține ponturi pentru a-ți păstra conturile în siguranță.
 show-all = Afișează toate
 fxa-scan-another-email = Vrei să verifici altă adresă de e-mail?
 sign-in = Autentificare
@@ -81,19 +81,14 @@ fxa-pwt-summary-2 =
 fxa-pwt-summary-4 =
     Managerii de parole, cum ar fi 1Password, LastPass, Dashlane și Bitwarden îți stochează
     parolele și le completează pe site-uri pentru tine. Te vor ajuta chiar să creezi parole puternice.
-fxa-pwt-summary-6 =
-    Breșele de date sunt din ce în ce mai multe. Dacă datele tale cu caracter personal apar într-o breșă nouă de date, 
-    { -product-name } îți va trimite o alertă — ca să poți lua măsuri și să îți protejezi conturile.
+fxa-pwt-summary-6 = Încălcările securității datelor sunt în creștere. Dacă informațiile tale cu caracter personal apar într-o încălcare nouă a securității datelor, { -product-name } îți va trimite o alertă — astfel încât să iei măsuri și să îți protejezi conturile.
 fxa-what-to-do-blurb-1 =
     Dacă nu te poți autentifica, contactează site-ul web și întreabă-i cum să îți actualizezi datele de identificare.
     Vezi un cont necunoscut? Este posibil ca datele tale să fi fost vândute
     sau redistribuite. Ar putea fi și un cont de care ai uitat sau o companie care și-a schimbat denumirea.
 fxa-what-to-do-subhead-2 = Nu mai folosi parola expusă și schimb-o peste tot pe unde ai folosit-o.
 fxa-wtd-blurb-2 = Hackerii pot încerca să reutilizeze parola și adresa ta de e-mail ca să intre în alte conturi. Creează o parolă diferită și unică pentru fiecare cont, în special pentru contul bancar, e-mail și alte site-uri web pe care salvezi date cu caracter personal.
-fxa-what-to-do-blurb-3 =
-    Cele mai multe breșe de date expun numai adrese de e-mail și parole, dar unele includ și date financiare sensibile. 
-    Dacă ți-a(u) fost expus(e) contul bancar sau numerele cardurilor de credit, alertează banca asupra unei posibilități de fraudă. 
-    Monitorizează-ți extrasele de cont pentru plăți pe care nu le recunoști.
+fxa-what-to-do-blurb-3 = Cele mai multe încălcări ale securității datelor expun numai adrese de e-mail și parole, dar unele includ și date financiare sensibile. În cazul în care ți-au fost expuse contul bancar sau numerele cardurilor de credit, alertează banca asupra unei posibilități de fraudă. Monitorizează-ți extrasele de cont pentru plăți pe care nu le recunoști.
 fxa-what-to-do-subhead-4 = Obține ajutor pentru a ține minte toate parolele și pentru a le păstra în siguranță.
 fxa-what-to-do-blurb-4 =
     Managerii de parole, cum ar fi 1Password, LastPass, Dashlane și Bitwarden îți stochează
@@ -109,7 +104,7 @@ preferences = Preferințe
 # Link title
 home = Acasă
 # Link title
-breaches = Breșe de date
+breaches = Încălcări a securității datelor
 # Link title
 security-tips = Ponturi de securitate
 fxa-account = { -brand-fxa }
@@ -123,10 +118,10 @@ take-control = Reia controlul asupra datelor tale personale.
 cant-stop-hackers = Nu poți opri hackerii să facă ceea ce fac, dar poți evita obiceiurile proaste care le ușurează munca.
 read-more-tips = Citește mai multe ponturi de securitate
 how-hackers-work = Înțelege modul de operare al hackerilor
-monitor-your-online-accounts = Înscrie-te pentru monitorizarea breșelor de date cu un { -brand-fxa }.
-stay-alert = Fii la curent cu ultimele breșe de date
+monitor-your-online-accounts = Înscrie-te pentru monitorizarea încălcărilor securității datelor cu un { -brand-fxa }.
+stay-alert = Fii la curent cu ultimele încălcări a securității datelor
 if-your-info = Dacă informațiile tale apar într-o breșă nouă de date, îți vom trimite o alertă.
-search-all-emails = Caută toate adresele tale de e-mail pentru breșe de date și primește alerte despre noi amenințări.
+search-all-emails = Caută toate adresele tale de e-mail pentru încălcări ale securității datelor și primește alerte despre noi amenințări.
 monitor-several-emails = Monitorizează mai multe adrese de e-mail
 take-action = Ia măsuri pentru a-ți proteja conturile
 keep-your-data-safe = Află ce trebuie să faci ca să îți păstrezi datele în siguranță împotriva infractorilor cibernetici.
@@ -135,11 +130,11 @@ sensitive-breach = Breșă de date sensibile a site-ului
 data-aggregator-breach = Breșă a agregatoarelor de date
 unverified-breach = Ultima breșă de date neverificată
 spam-list-breach = Breșă a listei de mesaje nedorite
-website-breach-plural = Breșe de date pe site-uri web
-sensitive-breach-plural = Breșe de date sensibile
-data-aggregator-breach-plural = Breșe de date pe agregatoare de date
-unverified-breach-plural = Breșe de date neverificate
-spam-list-breach-plural = Breșe de date pe liste de mesaje nesolicitate
+website-breach-plural = Încălcări ale securității datelor în cazul site-urilor web
+sensitive-breach-plural = Încălcări ale securității datelor sensibile
+data-aggregator-breach-plural = Încălcări ale securității datelor în cazul agregatoarelor de date
+unverified-breach-plural = Încălcări neverificate ale securității datelor
+spam-list-breach-plural = Încălcări ale securității datelor în cazul listelor de spam
 what-data = Ce date au fost compromise:
 sensitive-sites = Cum tratează { -product-name } site-urile cu date sensibile?
 sensitive-sites-copy =
@@ -174,7 +169,7 @@ how-fxm-3-blurb = Dacă folosești { -brand-name }, vei primi o notificare când
 wtd-after-website = Ce să faci după o breșă pe un site web
 wtd-after-data-agg = Ce să faci după o breșă a unui agregator de date
 what-is-data-agg = Ce sunt agregatoarele de date?
-what-is-data-agg-blurb = Agregatoarele de date, cunoscute și sub denumirea de brokeri de date, colectează informații din înregistrări publice și cumpără date de la alte companii. Ele compilează aceste date pentru a le vinde altor companii în scopuri de marketing. Victimele acestor breșe prezintă o probabilitate mai mică de fraude financiare, dar hackerii pot folosi aceste date pentru a le uzurpa identitatea sau pentru profilare.
+what-is-data-agg-blurb = Agregatoarele de date, cunoscute și sub denumirea de brokeri de date, colectează informații din înregistrări publice și cumpără date de la alte companii. Ele compilează aceste date pentru a le vinde altor companii în scopuri de marketing. Victimele acestor încălcări a securității datelor prezintă o probabilitate mai mică de fraude financiare, dar hackerii pot folosi aceste date pentru a le uzurpa identitatea sau pentru profilare.
 protect-your-privacy = Protejează-ți confidențialitatea online
 no-pw-to-change = Spre deosebire  de breșele site-urilor web, nu există nicio parolă de schimbat.
 avoid-personal-info = Evită folosirea de informații personale în parole
@@ -191,9 +186,9 @@ create-strong-passwords = Cum să creezi parole puternice
 stop-reusing-pw = Nu refolosi parolele
 create-unique-pw = Creează parole unice și salvează-le într-un loc sigur, cum ar fi un manager de parole.
 five-myths = 5 mituri despre managerii de parole
-create-a-fxa = Creează un { -brand-fxa } pentru un raport complet despre breșe de date și ca să primești alerte.
+create-a-fxa = Creează un { -brand-fxa } pentru un raport complet despre încălcările securității datelor și pentru a primi alerte.
 feat-security-tips = Ponturi de securitate pentru protejarea conturilor
-feat-sensitive = Căutare avansată în breșe de date sensibile
+feat-sensitive = Căutare avansată în încălcările cunoscute ale securității datelor
 feat-enroll-multiple = Înregistrează mai multe adrese de e-mail pentru monitorizarea încălcărilor securității datelor
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
@@ -203,7 +198,7 @@ appears-in-x-breaches =
         [few] Apare în { $breachCount } încălcări cunoscute a securității datelor.
        *[other] Apare în { $breachCount } de încălcări cunoscute a securității datelor.
     }
-check-for-breaches = Caută breșe de date
+check-for-breaches = Verifică încălcările securității datelor
 find-out-what-hackers-know = Află ce știu hackerii despre tine. Află cum să fii cu un pas înaintea lor.
 search-for-your-email = Caută-ți adresa de e-mail în breșe de date publice care merg până în 2007.
 back-to-top = Înapoi sus
@@ -472,11 +467,11 @@ progress-intro-message =
     informațiilor tale personale, poți marca breșele ca rezolvate.
 progress-status =
     { $numTotalBreaches ->
-        [one] { $numResolvedBreaches } din { $numTotalBreaches } breșă marcată ca rezolvată
-        [few] { $numResolvedBreaches } din { $numTotalBreaches } breșe marcate ca rezolvate
-       *[other] { $numResolvedBreaches } din { $numTotalBreaches } de breșe marcate ca rezolvate
+        [one] { $numResolvedBreaches } din { $numTotalBreaches } încălcare marcată ca rezolvată
+        [few] { $numResolvedBreaches } din { $numTotalBreaches } încălcări marcate ca rezolvate
+       *[other] { $numResolvedBreaches } din { $numTotalBreaches } de încălcări marcate ca rezolvate
     }
-progress-complete = Toate breșele cunoscute au fost marcate ca rezolvate
+progress-complete = Toate încălcările cunoscute au fost marcate ca rezolvate
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
@@ -509,9 +504,9 @@ unresolved-passwords-exposed =
     }
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
-        [one] breșă cunoscută de date marcată ca rezolvată
-        [few] breșe cunoscute de date marcate ca rezolvate
-       *[other] de breșe cunoscute de date marcate ca rezolvate
+        [one] încălcare cunoscută a securității datelor marcată ca rezolvată
+        [few] încălcări cunoscute a securității datelor marcate ca rezolvate
+       *[other] de încălcări cunoscute a securității datelor marcate ca rezolvate
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nou
