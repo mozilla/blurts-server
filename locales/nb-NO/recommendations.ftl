@@ -66,7 +66,7 @@ rec-hist-pw-subhead = Unngå å bruke passord på nytt
 rec-hist-pw-cta-fx = Se innlogginger i { -brand-name }
 rec-hist-pw =
     Bruk unike, sterke passord for hver konto. Hvis ett passord blir
-    utsatt i en datalekkasje, trenger du bare å oppdatere den ene påloggingen.
+    eksponert i en datalekkasje, trenger du bare å oppdatere den ene påloggingen.
 # Recommendation subhead
 rec-sec-qa-subhead = Lag unike svar for sikkerhetsspørsmål
 rec-sec-qa =
