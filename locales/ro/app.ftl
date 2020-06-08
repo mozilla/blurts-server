@@ -130,7 +130,7 @@ search-all-emails = Caută toate adresele tale de e-mail pentru breșe de date �
 monitor-several-emails = Monitorizează mai multe adrese de e-mail
 take-action = Ia măsuri pentru a-ți proteja conturile
 keep-your-data-safe = Află ce trebuie să faci ca să îți păstrezi datele în siguranță împotriva infractorilor cibernetici.
-website-breach = Breșă de date pe un site web
+website-breach = Încălcarea securității datelor în cazul unui site web
 sensitive-breach = Breșă de date sensibile a site-ului
 data-aggregator-breach = Breșă a agregatoarelor de date
 unverified-breach = Ultima breșă de date neverificată
@@ -150,7 +150,7 @@ sensitive-sites-copy =
 delayed-reporting-headline = De ce a durat atât de mult să se raporteze această breșă de date?
 delayed-reporting-copy =
     Uneori, poate dura câteva luni sau ani ca datele de autentificare expuse 
-    într-o breșă de date să apară pe webul întunecat. Breșele sunt adăugate în baza noastră de date 
+    într-o încălcare a securității datelor să apară pe webul întunecat. Încălcările sunt adăugate în baza noastră de date 
     imediat ce sunt descoperite și verificate.
 about-fxm-headline = Despre { -product-name }
 about-fxm-blurb =
@@ -166,9 +166,9 @@ fxm-warns-you =
 # How Firefox Monitor works
 how-fxm-works = Cum funcționează { -product-name }
 how-fxm-1-headline = Efectuează o căutare de bază
-how-fxm-1-blurb = Caută-ți adresa de e-mail în breșele publice de date încă din anul 2007. Această căutare de bază va accesa majoritatea breșelor de date, dar nu și pe cele care conține informații personale sensibile.
+how-fxm-1-blurb = Caută-ți adresa de e-mail în încălcările publice ale securității datelor încă din anul 2007. Această căutare de bază va accesa majoritatea încălcările securității datelor, dar nu și pe cele care conține informații cu caracter personal sensibile.
 how-fxm-2-headline = Înregistrează-te pentru monitorizarea încălcării securității datelor
-how-fxm-2-blurb = Creează un { -brand-fxa } ca să îți monitorizezi adresa de e-mail pentru breșe curente. Odată ce ți-ai verificat adresa de e-mail, vei primi și un raport complet cu breșele anterioare, inclusiv breșe de date sensibile.
+how-fxm-2-blurb = Creează un { -brand-fxa } ca să îți monitorizezi adresa de e-mail pentru încălcările curente ale securității datelor. Odată ce ți-ai verificat adresa de e-mail, vei primi și un raport complet cu încălcările anterioare, inclusiv încălcările securității datelor sensibile.
 how-fxm-3-headline = Primește notificări în browser
 how-fxm-3-blurb = Dacă folosești { -brand-name }, vei primi o notificare când intri pe un site care a fost expus unei breșe. Afli imediat dacă ai fost implicat(ă) în breșa respectivă și ce măsuri poți lua.
 wtd-after-website = Ce să faci după o breșă pe un site web
@@ -229,7 +229,7 @@ manage-email-addresses = Gestionează adresele de e-mail
 latest-breach-link = Vezi dacă ai fost implicat(ă) în această încălcare a securității datelor
 welcome-back = Bine ai revenit, { $userName }!
 welcome-user = Bine ai venit, { $userName }!
-breach-alert-subject = { -product-name } ți-a găsit adresa de e-mail într-o breșă nouă de date.
+breach-alert-subject = { -product-name } ți-a găsit adresa de e-mail într-o încălcare nouă a securității datelor
 your-info-was-discovered-headline = Informațiile tale au fost găsite într-o breșă nouă de date.
 your-info-was-discovered-blurb = Te-ai înscris ca să primești alerte { -product-name } în cazul în care adresa ta de e-mail apare într-o breșă de date. Iată ce știm despre această breșă.
 what-to-do-after-breach = Ce să faci după o breșă de date
@@ -268,7 +268,7 @@ fb-comp-and-others =
     }
 no-other-breaches-found = Nicio altă breșă identificată la căutarea de bază.
 no-results-blurb = Ne pare rău, dar breșa aceea nu este în baza noastră de date.
-all-breaches-headline = Toate breșele din { -product-name }
+all-breaches-headline = Toate încălcările securității datelor din { -product-name }
 search-breaches = Caută încălcări a securității datelor
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Afișate:
