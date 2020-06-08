@@ -155,6 +155,19 @@ function setGAListeners(){
       });
     });
 
+    // Growth Experiment
+    if (document.body.dataset.experiment) {
+      document.querySelectorAll(".ga-growth-ping").forEach((el) => {
+        el.addEventListener("click", async(e) => {
+          // Overwrite current event category for active OAuth buttons
+          if (el.dataset.eventCategory !== "fxa-oauth") {
+            el.dataset.eventCategory = "fxa-oauth";
+          }
+          await sendPing(el, "Click", el.dataset.eventLabel, {transport: "beacon"});
+        });
+      });
+    }
+
   }
 
   window.sessionStorage.setItem("gaInit", true);
@@ -200,6 +213,17 @@ function setGAListeners(){
     ga("create", "UA-77033033-16");
     ga("set", "anonymizeIp", true);
     ga("set", "dimension6", `${document.body.dataset.signedInUser}`);
+
+    // Growth Experiment
+    if (document.body.dataset.experiment) {
+      // If an experiment is active, set the "Growth Experiment Version"
+      // Custom Dimension to whichever branch is active.
+      ga("set", "dimension7", `${document.body.dataset.experiment}`);
+      ga("set", "dimension8", `${document.body.dataset.experiment}`);
+      ga("set", "dimension9", `${document.body.dataset.utm_campaign}`);
+      ga("set", "campaignName", `${document.body.dataset.utm_campaign}`);
+      ga("set", "campaignKeyword", `${document.body.dataset.utm_term}`);
+    }
 
     ga("send", "pageview", {
       hitCallback: function() {

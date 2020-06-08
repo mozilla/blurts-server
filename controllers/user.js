@@ -11,6 +11,9 @@ const HIBP = require("../hibp");
 const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
 
+const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
+const { getExperimentFlags } = require("./utils");
+
 const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
 
 async function removeEmail(req, res) {
@@ -227,6 +230,9 @@ async function getDashboard(req, res) {
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
 
+  // Growth Experiment
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
   let lastAddedEmail = null;
 
   req.session.user = await DB.setBreachesLastShownNow(user);
@@ -242,6 +248,7 @@ async function getDashboard(req, res) {
     verifiedEmails,
     unverifiedEmails,
     whichPartial: "dashboards/breaches-dash",
+    experimentFlags,
   });
 }
 
@@ -252,7 +259,7 @@ async function _verify(req) {
   unsafeBreachesForEmail = await HIBP.getBreachesForEmail(
     sha1(verifiedEmailHash.email.toLowerCase()),
     req.app.locals.breaches,
-    true,
+    true
   );
 
   const utmID = "report";
@@ -555,6 +562,18 @@ async function getBreachStats(req, res) {
 
 
 function logout(req, res) {
+  // Growth Experiment
+  if (EXPERIMENTS_ENABLED && req.session.experimentFlags) {
+    // Persist experimentBranch across session reset
+    const sessionExperimentFlags = req.session.experimentFlags;
+    req.session.reset();
+    req.session.experimentFlags = sessionExperimentFlags;
+
+    // Return
+    res.redirect("/");
+    return;
+  }
+
   req.session.reset();
   res.redirect("/");
 }

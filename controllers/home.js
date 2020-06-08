@@ -4,7 +4,9 @@ const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
 const HIBP = require("../hibp");
 const { scanResult } = require("../scan-results");
-const { generatePageToken } = require("./utils");
+const { generatePageToken, getExperimentBranch, getExperimentFlags } = require("./utils");
+
+const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
 
 function _getFeaturedBreach(allBreaches, breachQueryValue) {
   if (!breachQueryValue) {
@@ -13,7 +15,6 @@ function _getFeaturedBreach(allBreaches, breachQueryValue) {
   const lowercaseBreachValue = breachQueryValue.toLowerCase();
   return HIBP.getBreachByName(allBreaches, lowercaseBreachValue);
 }
-
 
 async function home(req, res) {
 
@@ -27,6 +28,16 @@ async function home(req, res) {
 
   if (req.session.user && !req.query.breach) {
     return res.redirect("/user/dashboard");
+  }
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  // Growth Experiment
+  if (EXPERIMENTS_ENABLED) {
+    getExperimentBranch(req, false, ["de", "fr"], {
+      "va": 25,
+      "vb": 25,
+    });
   }
 
   if (req.query.breach) {
@@ -49,6 +60,7 @@ async function home(req, res) {
       scanFeaturedBreach,
       pageToken: formTokens.pageToken,
       csrfToken: formTokens.csrfToken,
+      experimentFlags,
     });
   }
 
@@ -58,6 +70,7 @@ async function home(req, res) {
     scanFeaturedBreach,
     pageToken: formTokens.pageToken,
     csrfToken: formTokens.csrfToken,
+    experimentFlags,
   });
 }
 
