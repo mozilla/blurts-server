@@ -165,7 +165,7 @@ how-fxm-1-blurb = Caută-ți adresa de e-mail în încălcările publice ale sec
 how-fxm-2-headline = Înregistrează-te pentru monitorizarea încălcării securității datelor
 how-fxm-2-blurb = Creează un { -brand-fxa } ca să îți monitorizezi adresa de e-mail pentru încălcările curente ale securității datelor. Odată ce ți-ai verificat adresa de e-mail, vei primi și un raport complet cu încălcările anterioare, inclusiv încălcările securității datelor sensibile.
 how-fxm-3-headline = Primește notificări în browser
-how-fxm-3-blurb = Dacă folosești { -brand-name }, vei primi o notificare când intri pe un site care a fost expus unei breșe. Afli imediat dacă ai fost implicat(ă) în breșa respectivă și ce măsuri poți lua.
+how-fxm-3-blurb = Dacă folosești { -brand-name }, vei primi o notificare când intri pe un site care a fost expus unei încălcări a securității datelor. Afli imediat dacă ai fost implicat(ă) în încălcarea respectivă și ce măsuri poți lua.
 wtd-after-website = Ce să faci după o breșă pe un site web
 wtd-after-data-agg = Ce să faci după o breșă a unui agregator de date
 what-is-data-agg = Ce sunt agregatoarele de date?
@@ -245,16 +245,16 @@ new-breaches-found =
     }
 sign-up-headline-1 = Primește alerte curente cu un { -brand-fxa }.
 account-not-required = Browserul { -brand-name } nu este necesar pentru un { -brand-fxa }. Poți primi informații despre serviciile { -brand-Mozilla }.
-was-your-info-exposed = Ți-au fost expuse informațiile în breșa de date { $breachName }?
+was-your-info-exposed = Ți-au fost expuse informațiile în încălcarea securității datelor de pe { $breachName }?
 find-out-if = Află dacă datele tale au fost expuse în această breșă.
-fb-not-comp = Această adresă de e-mail nu apare în breșa { $breachName }.
+fb-not-comp = Această adresă de e-mail nu apare în încălcarea securității datelor de pe { $breachName }.
 other-breaches-found =
     { $breachCount ->
         [one] Însă a apărut într-o altă încălcare.
         [few] Însă a apărut în alte { $breachCount } încălcări.
        *[other] Însă a apărut în alte { $breachCount } de încălcări.
     }
-fb-comp-only = Această adresă de e-mail a apărut în breșa { $breachName }.
+fb-comp-only = Această adresă de e-mail a apărut în încălcarea securității datelor de pe { $breachName }.
 fb-comp-and-others =
     { $breachCount ->
         [one] Această adresă de e-mail a apărut în { $breachCount } încălcare cunoscută a securității datelor, inclusiv { $breachName }.
@@ -262,9 +262,9 @@ fb-comp-and-others =
        *[other] Această adresă de e-mail a apărut în { $breachCount } de încălcări cunoscute a securității datelor, inclusiv { $breachName }.
     }
 no-other-breaches-found = Nicio altă breșă identificată la căutarea de bază.
-no-results-blurb = Ne pare rău, dar breșa aceea nu este în baza noastră de date.
+no-results-blurb = Ne pare rău, acea încălcare a securității datelor nu este în baza noastră de date.
 all-breaches-headline = Toate încălcările securității datelor din { -product-name }
-search-breaches = Caută încălcări a securității datelor
+search-breaches = Caută încălcări ale securității datelor
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Afișate:
 
@@ -346,7 +346,7 @@ breach-overview-title = Prezentare generală
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview-new = Pe { $breachDate }, { $breachTitle } a suferit o breșă. Odată ce breșa a fost descoperită și verificată, aceasta a fost adăugată în baza noastră de date în data de { $addedDate }.
+breach-overview-new = Pe { $breachDate }, { $breachTitle } a suferit o încălcare a securității datelor. Odată ce încălcarea a fost descoperită și verificată, aceasta a fost adăugată în baza noastră de date în data de { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Preferințe { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
