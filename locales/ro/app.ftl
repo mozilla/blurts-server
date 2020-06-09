@@ -67,7 +67,7 @@ hibp-attribution = Datele privind încălcările securității datelor sunt furn
 share-twitter = Majoritatea persoanelor au aproximativ 100 de conturi online. A fost expus vreunul dintre conturile tale într-o încălcare a securității datelor? Află.
 share-facebook-headline = Află dacă ai fost implicat(ă) într-o încălcare a securității datelor
 share-facebook-blurb = Au fost expuse conturile tale online într-o încălcare a securității datelor?
-og-site-description = Află dacă ai fost implicat(ă) într-o încălcare a securității datelor cu { -product-name }. Înregistrează-te pentru alerte despre viitoare încălcări a securității datelor și obține ponturi pentru a-ți păstra conturile în siguranță.
+og-site-description = Află dacă ai fost implicat(ă) într-o încălcare a securității datelor cu { -product-name }. Înregistrează-te pentru alerte despre viitoare încălcări ale securității datelor și obține ponturi pentru a-ți păstra conturile în siguranță.
 show-all = Afișează toate
 fxa-scan-another-email = Vrei să verifici altă adresă de e-mail?
 sign-in = Autentificare
@@ -104,7 +104,7 @@ preferences = Preferințe
 # Link title
 home = Acasă
 # Link title
-breaches = Încălcări a securității datelor
+breaches = Încălcări ale securității datelor
 # Link title
 security-tips = Ponturi de securitate
 fxa-account = { -brand-fxa }
@@ -119,7 +119,7 @@ cant-stop-hackers = Nu poți opri hackerii să facă ceea ce fac, dar poți evit
 read-more-tips = Citește mai multe ponturi de securitate
 how-hackers-work = Înțelege modul de operare al hackerilor
 monitor-your-online-accounts = Înscrie-te pentru monitorizarea încălcărilor securității datelor cu un { -brand-fxa }.
-stay-alert = Fii la curent cu ultimele încălcări a securității datelor
+stay-alert = Fii la curent cu ultimele încălcări ale securității datelor
 if-your-info = Dacă informațiile tale apar într-o nouă încălcare a securității datelor, îți vom trimite o alertă.
 search-all-emails = Caută toate adresele tale de e-mail pentru încălcări ale securității datelor și primește alerte despre noi amenințări.
 monitor-several-emails = Monitorizează mai multe adrese de e-mail
@@ -169,7 +169,7 @@ how-fxm-3-blurb = Dacă folosești { -brand-name }, vei primi o notificare când
 wtd-after-website = Ce să faci după o încălcare a securității datelor în cazul unui site web:
 wtd-after-data-agg = Ce să faci după o încălcare a securității datelor în cazul unui agregator de date:
 what-is-data-agg = Ce sunt agregatoarele de date?
-what-is-data-agg-blurb = Agregatoarele de date, cunoscute și sub denumirea de brokeri de date, colectează informații din înregistrări publice și cumpără date de la alte companii. Ele compilează aceste date pentru a le vinde altor companii în scopuri de marketing. Victimele acestor încălcări a securității datelor prezintă o probabilitate mai mică de fraude financiare, dar hackerii pot folosi aceste date pentru a le uzurpa identitatea sau pentru profilare.
+what-is-data-agg-blurb = Agregatoarele de date, cunoscute și sub denumirea de brokeri de date, colectează informații din înregistrări publice și cumpără date de la alte companii. Ele compilează aceste date pentru a le vinde altor companii în scopuri de marketing. Victimele acestor încălcări ale securității datelor prezintă o probabilitate mai mică de fraude financiare, dar hackerii pot folosi aceste date pentru a le uzurpa identitatea sau pentru profilare.
 protect-your-privacy = Protejează-ți confidențialitatea online
 no-pw-to-change = Spre deosebire de încălcarea securității datelor în cazul unui site web, nu există nicio parolă de schimbat.
 avoid-personal-info = Evită folosirea de informații personale în parole
@@ -304,7 +304,7 @@ known-data-breaches-exposed =
        *[other] Mai multe încălcări cunoscute a securității datelor ți-au expus informațiile
     }
 # Button
-see-additional-breaches = Vezi și alte încălcări a securității datelor
+see-additional-breaches = Vezi și alte încălcări ale securității datelor
 scan-results-known-breaches =
     { $breachCount ->
         [one] Această adresă de e-mail a apărut într-o încălcare cunoscută a securității datelor.
