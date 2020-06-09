@@ -126,10 +126,10 @@ monitor-several-emails = Monitorizează mai multe adrese de e-mail
 take-action = Ia măsuri pentru a-ți proteja conturile
 keep-your-data-safe = Află ce trebuie să faci ca să îți păstrezi datele în siguranță împotriva infractorilor cibernetici.
 website-breach = Încălcarea securității datelor în cazul unui site web
-sensitive-breach = Breșă de date sensibile a site-ului
-data-aggregator-breach = Breșă a agregatoarelor de date
+sensitive-breach = Încălcare în cazul unui site web sensibil
+data-aggregator-breach = Încălcare în cazul agregatoarelor de date
 unverified-breach = Încălcare neverificată
-spam-list-breach = Breșă a listei de mesaje nedorite
+spam-list-breach = Încălcare a securității datelor în cazul listelor de spam
 website-breach-plural = Încălcări ale securității datelor în cazul site-urilor web
 sensitive-breach-plural = Încălcări ale securității datelor sensibile
 data-aggregator-breach-plural = Încălcări ale securității datelor în cazul agregatoarelor de date
@@ -142,7 +142,7 @@ sensitive-sites-copy =
     tipuri de încălcări ale securității datelor numai după ce a fost verificată o adresă de e-mail. Acest lucru înseamnă că ești 
     singura persoană care poate vedea dacă informațiile tale au fost implicate în această încălcare a securității datelor 
     (dacă nu cumva și altcineva are acces la contul tău de e-mail).
-delayed-reporting-headline = De ce a durat atât de mult să se raporteze această breșă de date?
+delayed-reporting-headline = De ce a durat atât de mult să se raporteze această încălcare a securității datelor?
 delayed-reporting-copy =
     Uneori, poate dura câteva luni sau ani ca datele de autentificare expuse 
     într-o încălcare a securității datelor să apară pe webul întunecat. Încălcările sunt adăugate în baza noastră de date 
@@ -419,7 +419,7 @@ see-additional-recs = Vezi recomandările suplimentare
 resolve-top-notification = { $affectedEmail } a apărut în această breșă. <a>Ce să faci mai departe</a>
 resolve-top-notification-plural =
     { $numAffectedEmails ->
-       *[other] { $numAffectedEmails } dintre adresele tale de e-mail au apărut în această breșă. <a>Ce să faci mai departe</a>
+       *[other] { $numAffectedEmails } dintre adresele tale de e-mail au apărut în această încălcare a securității datelor. <a>Ce să faci mai departe</a>
     }
 
 ##
@@ -441,7 +441,7 @@ confirmation-3-subhead = Încă una. Bine lucrat!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Parola nouă este unică, puternică și greu de ghicit? <a>Află</a>
-generic-confirmation-subhead = Această breșă a fost marcată ca rezolvată
+generic-confirmation-subhead = Această încălcare a fost marcată ca rezolvată
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
         [one] Pentru a vedea încălcarea rămasă, mergi în tabloul de bord.

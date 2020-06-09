@@ -87,6 +87,6 @@ pre-fxa-p-2 =
 pre-fxa-tout-3 = Continuă să primești alerte pe e-mail
 pre-fxa-p-3 =
     Vei primi în continuare alerte de la { -product-name }. Te vom anunța dacă informațiile tale 
-    apar într-o breșă nouă de date.
+    apar într-o nouă încălcare a securității datelor.
 # Button at the bottom of pre-fxa email.
 create-account = Creează cont

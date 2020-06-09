@@ -66,7 +66,7 @@ rec-hist-pw-subhead = Evită refolosirea parolelor
 rec-hist-pw-cta-fx = Vezi datele de autentificare în { -brand-name }
 rec-hist-pw =
     Folosește parole unice și puternice pentru fiecare cont. Dacă o parolă este 
-    expusă într-o breșă de date, va trebui să actualizezi numai datele de autentificare respective.
+    expusă într-o încălcare a securității datelor, va trebui să actualizezi numai datele de autentificare respective.
 # Recommendation subhead
 rec-sec-qa-subhead = Creează răspunsuri unice la întrebările de securitate
 rec-sec-qa =
