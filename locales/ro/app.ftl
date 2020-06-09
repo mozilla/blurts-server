@@ -64,9 +64,9 @@ unsub-blurb = Prin dezabonare, adresa ta de e-mail va fi eliminată din lista { 
 unsub-button = Dezabonează-te
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Datele privind încălcările securității datelor sunt furnizate de { $hibp-link }
-share-twitter = Majoritatea persoanelor au aproximativ 100 de conturi online. A fost expus vreunul dintre conturile tale într-o breșă de date? Află.
-share-facebook-headline = Află dacă ai fost implicat(ă) într-o breșă de date
-share-facebook-blurb = Au fost expuse conturile tale online într-o breșă de date?
+share-twitter = Majoritatea persoanelor au aproximativ 100 de conturi online. A fost expus vreunul dintre conturile tale într-o încălcare a securității datelor? Află.
+share-facebook-headline = Află dacă ai fost implicat(ă) într-o încălcare a securității datelor
+share-facebook-blurb = Au fost expuse conturile tale online într-o încălcare a securității datelor?
 og-site-description = Află dacă ai fost implicat(ă) într-o încălcare a securității datelor cu { -product-name }. Înregistrează-te pentru alerte despre viitoare încălcări a securității datelor și obține ponturi pentru a-ți păstra conturile în siguranță.
 show-all = Afișează toate
 fxa-scan-another-email = Vrei să verifici altă adresă de e-mail?
@@ -111,16 +111,16 @@ fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Deschide navigarea { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
-latest-breach = ULTIMA BREȘĂ DE DATE ADĂUGATĂ
+latest-breach = ULTIMA ÎNCĂLCARE A SECURITĂȚII DATELOR ADĂUGATĂ
 # Link title
-more-about-this-breach = Mai multe despre această breșă de date
+more-about-this-breach = Mai multe despre această încălcare
 take-control = Reia controlul asupra datelor tale personale.
 cant-stop-hackers = Nu poți opri hackerii să facă ceea ce fac, dar poți evita obiceiurile proaste care le ușurează munca.
 read-more-tips = Citește mai multe ponturi de securitate
 how-hackers-work = Înțelege modul de operare al hackerilor
 monitor-your-online-accounts = Înscrie-te pentru monitorizarea încălcărilor securității datelor cu un { -brand-fxa }.
 stay-alert = Fii la curent cu ultimele încălcări a securității datelor
-if-your-info = Dacă informațiile tale apar într-o breșă nouă de date, îți vom trimite o alertă.
+if-your-info = Dacă informațiile tale apar într-o nouă încălcare a securității datelor, îți vom trimite o alertă.
 search-all-emails = Caută toate adresele tale de e-mail pentru încălcări ale securității datelor și primește alerte despre noi amenințări.
 monitor-several-emails = Monitorizează mai multe adrese de e-mail
 take-action = Ia măsuri pentru a-ți proteja conturile
@@ -128,7 +128,7 @@ keep-your-data-safe = Află ce trebuie să faci ca să îți păstrezi datele î
 website-breach = Încălcarea securității datelor în cazul unui site web
 sensitive-breach = Breșă de date sensibile a site-ului
 data-aggregator-breach = Breșă a agregatoarelor de date
-unverified-breach = Ultima breșă de date neverificată
+unverified-breach = Încălcare neverificată
 spam-list-breach = Breșă a listei de mesaje nedorite
 website-breach-plural = Încălcări ale securității datelor în cazul site-urilor web
 sensitive-breach-plural = Încălcări ale securității datelor sensibile
@@ -155,9 +155,9 @@ about-fxm-blurb =
     este furnizat de { -brand-Mozilla }.
 fxm-warns-you =
     { -product-name } te avertizează dacă adresa ta de e-mail a fost expusă 
-    într-o breșă de date online. Vezi dacă ți-au fost expuse informațiile, află cum 
+    într-o încălcare online a securității datelor. Vezi dacă ți-au fost expuse informațiile, află cum 
     să îți protejezi mai bine conturile online și primește alerte în cazul în care adresa 
-    ta de e-mail apare într-o breșă nouă de date.
+    ta de e-mail apare într-o încălcare nouă.
 # How Firefox Monitor works
 how-fxm-works = Cum funcționează { -product-name }
 how-fxm-1-headline = Efectuează o căutare de bază
