@@ -32,7 +32,7 @@ rec-pw-3-non-fx =
     Semres { -brand-lockwise } akken ad teskelseḍ lateṛ n wawalen akk 
     uffiren, tkecmeḍ ɣer-sen mebla ugur seg tilifun-inek neɣ seg tfelwit n uselkem.
 # Recommendation subhead
-rec-pw-4-subhead = Sbadu asesteb s snat n tarrayin
+rec-pw-4-subhead = Sbadu asesteb s sin tarrayin
 # Link title
 rec-pw-4-cta = Wali ismal i d-yettmuddun 2FA
 rec-pw-4 = Ddeqs n yismal web sumuren asesteb s snat n tarrayin akkenad ɣellsen amiḍan-ik. Talɣut-nniḍen tettwasra ihi akken ad teqqneḍ, am tengalt tasuft ara d-tremseḍ s SMS.
