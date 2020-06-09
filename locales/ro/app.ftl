@@ -44,7 +44,7 @@ user-unsubscribe-token-error = Este necesar un jeton pentru dezabonare.
 user-unsubscribe-token-email-error = Este necesar un jeton și emailHash pentru dezabonare.
 user-unsubscribe-title = { -product-name } : Dezabonare
 pwt-section-headline = Parole mai puternice = Protecție mai bună
-landing-headline = Dreptul tău de protecție împotriva hackerilor începe aici.
+landing-headline = Dreptul tău la protecția împotriva hackerilor începe aici.
 scan-placeholder = Introdu adresa de e-mail
 scan-submit = Caută-ți adresa de e-mail
 scan-error = Trebuie să fie o adresă de e-mail validă.
