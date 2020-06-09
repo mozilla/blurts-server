@@ -307,7 +307,7 @@ known-data-breaches-exposed =
 see-additional-breaches = Vezi și alte încălcări a securității datelor
 scan-results-known-breaches =
     { $breachCount ->
-        [one] Această adresă de e-mail a apărut în 1 încălcare cunoscută a securității datelor.
+        [one] Această adresă de e-mail a apărut într-o încălcare cunoscută a securității datelor.
         [few] Această adresă de e-mail a apărut în { $breachCount } încălcări cunoscute a securității datelor.
        *[other] Această adresă de e-mail a apărut în { $breachCount } de încălcări cunoscute a securității datelor.
     }
@@ -324,7 +324,7 @@ security-tips-headline = Ponturi de securitate pentru a te proteja de hackeri
 steps-to-protect = Pași de luat pentru a-ți proteja identitatea online
 take-further-steps = Ia măsuri suplimentare pentru a-ți proteja identitatea
 alert-about-new-breaches = Trimite-mi alerte pentru încălcările noi ale securității datelor
-see-if-youve-been-part = Vezi dacă ai fost implicat(ă) într-o încălcare a securității datelor
+see-if-youve-been-part = Vezi dacă ai fost implicat(ă) într-o încălcare a securității datelor.
 get-ongoing-breach-monitoring = Obține monitorizarea continuă a încălcărilor securității datelor pentru mai multe adrese de e-mail.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Află
@@ -520,7 +520,7 @@ fpn-promo-headline = Maschează-ți locația pentru site-uri web și elemente de
 promo-fpn-body = { -brand-fpn } decartează site-urile web și colectorii de date care îți creează profilul cu reclame, mascându-ți adresa IP reală.
 promo-fpn-cta = Încearcă { -brand-fpn }
 monitor-promo-headline = Află despre noile încălcări ale securității datelor
-monitor-promo-body = Primești notificări data viitoare când informațiile tale personale sunt expuse într-o breșă cunoscută.
+monitor-promo-body = Primești notificări data viitoare când informațiile tale cu caracter personal sunt expuse într-o încălcare cunoscută.
 ecosystem-promo-headline = Îți protejezi viața online cu produse care pun confidențialitatea pe primul loc
 ecosystem-promo-body = Toate produsele { -brand-name } onorează promisiunea noastră privind datele cu caracter personal: Luăm mai puțin. Le păstrăm în siguranță. Fără secrete.
 promo-ecosystem-cta = Vezi toate produsele

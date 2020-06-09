@@ -19,7 +19,7 @@ rec-pw-2-subhead = Actualizează-ți alte date de autentificare folosind aceeaș
 # Link title
 rec-pw-2-cta-fx = Vezi datele de autentificare în { -brand-name }
 rec-pw-2 =
-    Reutilizarea parolelor transformă o breșă de date în mai multe. Acum că această 
+    Refolosirea parolelor transformă o încălcare a securității datelor în mai multe. Acum că această 
     parolă a fost expusă, hackerii o pot folosi să îți intre în alte conturi.
 # Recommendation subhead
 rec-pw-3-subhead = Folosește un manager de parole și ia cu tine parolele oriunde
