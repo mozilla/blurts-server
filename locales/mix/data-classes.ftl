@@ -22,6 +22,7 @@ career-levels = Niveles de profesión
 cellular-network-names = Sivi ndusu
 charitable-donations = Donaciones para caridad
 chat-logs = Tutu chat
+credit-cards = Tarjetas de crédito
 email-addresses = Tutu nu inka kue korreo
 email-messages = Tu'un inka nu korreo
 employers = Empleados
