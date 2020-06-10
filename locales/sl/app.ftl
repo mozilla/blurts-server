@@ -582,6 +582,7 @@ mobile-promo-headline = Imejte { -brand-name } na svojem telefonu in tablici
 mobile-promo-body = Hitro, zasebno in varno brskanje kamorkoli greste. Poiščite { -brand-name } v trgovini Google Play in App Store.
 mobile-promo-cta = Prenesite { -brand-name } za Android in iOS
 promo-lockwise-headline = Vzemite gesla s seboj
+lockwise-promo-body = Spremljajte svoje prijave na vseh napravah. Varno dostopajte do njih na računalniku, telefonu ali tablici.
 promo-lockwise-cta = Prenesite { -brand-lockwise }
 fpn-promo-headline = Prikrijte svojo lokacijo spletnim mestom in sledilcem.
 promo-fpn-cta = Preskusite { -brand-fpn }
