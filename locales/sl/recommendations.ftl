@@ -72,6 +72,9 @@ rec-phone-num =
 rec-dob-subhead = Izogibajte se uporabi osebnih podatkov v PIN-kodah
 # Recommendation subhead
 rec-pins-subhead = Okrepite varnost PIN-kod
+rec-pins =
+    Močna PIN-koda ne vsebuje osebnih podatkov, na primer vašega rojstnega datuma 
+    ali naslova. Morala bi biti številka, ki jo poznate samo vi in je ni enostavno uganiti.
 # Recommendation subhead
 rec-address-subhead = Izogibajte se uporabi naslovov v geslih
 rec-address =
