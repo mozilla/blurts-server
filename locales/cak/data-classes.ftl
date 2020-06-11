@@ -63,6 +63,7 @@ imsi-numbers = IMSI taq ajilab'äl
 income-levels = Rupalb'al rokem pwäq
 instant-messenger-identities = Kiwäch anin tzijol
 ip-addresses = IP taq ochochib'äl
+job-applications = Ruk'utuj samaj
 job-titles = Kib'i' samaj
 mac-addresses = MAC taq ochochib'äl
 marital-statuses = Rub'anikil melab'al
