@@ -218,6 +218,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Ke'akanoj taq Tz'ilanem
 find-out-what-hackers-know = Tawila' achike ketaman ri ajjak chawij. Tawila' achike rub'eyal yanab'eyij chi kiwäch.
+get-email-alerts = Jikïl kak'oje': Tak'ulu' rutzijol taq k'ayewal pa taqoya'l toq ri awetamab'al xuk'ulwachij jun tz'ilanem etaman ruwa
 search-for-your-email = Takanoj ri rochochib'al ataqoya'l pa aj winäq kitz'ilanem taq tzij k'a richin ri 2007.
 back-to-top = Titzolin Ajsik
 comm-opt-0 = Tiya' rutzijol chwe we ri rochochib'al nutaqoya'l k'o pa jun kitz'ilanem tzij.
