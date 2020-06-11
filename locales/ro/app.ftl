@@ -225,17 +225,17 @@ latest-breach-link = Vezi dacă ai fost implicat(ă) în această încălcare a 
 welcome-back = Bine ai revenit, { $userName }!
 welcome-user = Bine ai venit, { $userName }!
 breach-alert-subject = { -product-name } ți-a găsit adresa de e-mail într-o încălcare nouă a securității datelor
-your-info-was-discovered-headline = Informațiile tale au fost găsite într-o breșă nouă de date.
-your-info-was-discovered-blurb = Te-ai înscris ca să primești alerte { -product-name } în cazul în care adresa ta de e-mail apare într-o breșă de date. Iată ce știm despre această breșă.
-what-to-do-after-breach = Ce să faci după o breșă de date
+your-info-was-discovered-headline = Informațiile tale au fost găsite într-o nouă încălcare.
+your-info-was-discovered-blurb = Te-ai înscris ca să primești alerte { -product-name } în cazul în care adresa ta de e-mail apare într-o încălcare a securității datelor. Iată ce știm despre această încălcare.
+what-to-do-after-breach = Ce să faci după o încălcare a securității datelor
 ba-next-step-1 = Schimbă parola cu una puternică și unică.
 ba-next-step-blurb-1 = Parolele puternice folosesc o combinație de litere mari și  mici, caractere speciale și cifre. Nu conțin informații personale, cum ar fi date de naștere, adrese sau nume ale membrilor de familie.
 ba-next-step-2 = Nu mai folosi deloc parola expusă.
 ba-next-step-blurb-2 = Infractorii cibernetici îți pot găsi parola pe dark web și o pot folosi pentru a intra în celelalte conturi pe care le deții. Cea mai bună cale de a-ți proteja conturile este să folosești parole unice pentru fiecare în parte.
 ba-next-step-3 = Obține ajutor pentru a crea parole mai bune și pentru a le păstra în siguranță.
 ba-next-step-blurb-3 = Folosește un manager de parole pentru a crea parole puternice și unice. Managerii de parole stochează toate datele de autentificare în siguranță, astfel încât să le poți accesa pe toate dispozitivele.
-faq1 = Nu recunosc această companie sau site web. De ce apar în această breșă?
-faq2 = De ce a durat atât de mult să fiu informat(ă) despre această breșă?
+faq1 = Nu recunosc această companie sau site web. De ce apar în această încălcare?
+faq2 = De ce a durat atât de mult să fiu informat(ă) despre această încălcare a securității datelor?
 faq3 = Cum știu că acesta este un mesaj legitim de e-mail de la { -product-name }?
 new-breaches-found =
     { $breachCount ->
@@ -246,7 +246,7 @@ new-breaches-found =
 sign-up-headline-1 = Primește alerte curente cu un { -brand-fxa }.
 account-not-required = Browserul { -brand-name } nu este necesar pentru un { -brand-fxa }. Poți primi informații despre serviciile { -brand-Mozilla }.
 was-your-info-exposed = Ți-au fost expuse informațiile în încălcarea securității datelor de pe { $breachName }?
-find-out-if = Află dacă datele tale au fost expuse în această breșă.
+find-out-if = Află dacă datele tale au fost expuse în această încălcare a securității datelor.
 fb-not-comp = Această adresă de e-mail nu apare în încălcarea securității datelor de pe { $breachName }.
 other-breaches-found =
     { $breachCount ->
@@ -261,7 +261,7 @@ fb-comp-and-others =
         [few] Această adresă de e-mail a apărut în { $breachCount } încălcări cunoscute a securității datelor, inclusiv { $breachName }.
        *[other] Această adresă de e-mail a apărut în { $breachCount } de încălcări cunoscute a securității datelor, inclusiv { $breachName }.
     }
-no-other-breaches-found = Nicio altă breșă identificată la căutarea de bază.
+no-other-breaches-found = Nicio altă încălcare identificată la căutarea de bază.
 no-results-blurb = Ne pare rău, acea încălcare a securității datelor nu este în baza noastră de date.
 all-breaches-headline = Toate încălcările securității datelor din { -product-name }
 search-breaches = Caută încălcări ale securității datelor
@@ -373,7 +373,7 @@ verify-the-link = Verifică linkul trimis către { $userEmail } ca să îl adaug
 ## an additional email to Firefox Monitor.
 
 email-verified = Adresă de e-mail verificată cu succes!
-email-added-to-subscription = Îți vom trimite o alertă dacă { $email } apare într-o breșă de date.
+email-added-to-subscription = Îți vom trimite o alertă dacă { $email } apare într-o încălcare a securității datelor.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
 email-verified-view-dashboard = Pentru a vedea și a gestiona toate e-mailurile pe care le-ai înscris pentru monitorizarea încălcării securității datelor, { $nestedSignInLink }
@@ -409,14 +409,14 @@ rec-section-headline = Ce să faci pentru această încălcare a securității d
 rec-section-subhead = Îți recomandăm să efectuezi următorii pași pentru a-ți păstra informațiile personale în siguranță și pentru a-ți proteja identitatea digitală.
 # Section headline
 rec-section-headline-no-pw = Ce să faci pentru a-ți proteja informațiile personale
-rec-section-subhead-no-pw = Deși parolele nu au fost expuse în această breșă, încă mai sunt măsuri pe care le poți lua pentru a-ți proteja mai bine informațiile personale.
+rec-section-subhead-no-pw = Deși parolele nu au fost expuse în această încălcare a securității datelor, încă mai sunt măsuri pe care le poți lua pentru a-ți proteja mai bine informațiile personale.
 # Button
 see-additional-recs = Vezi recomandările suplimentare
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
-resolve-top-notification = { $affectedEmail } a apărut în această breșă. <a>Ce să faci mai departe</a>
+resolve-top-notification = { $affectedEmail } a apărut în această încălcare a securității datelor. <a>Ce să faci mai departe</a>
 resolve-top-notification-plural =
     { $numAffectedEmails ->
        *[other] { $numAffectedEmails } dintre adresele tale de e-mail au apărut în această încălcare a securității datelor. <a>Ce să faci mai departe</a>
