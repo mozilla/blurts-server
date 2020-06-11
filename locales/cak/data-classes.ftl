@@ -42,6 +42,7 @@ email-addresses = Kochochib'al taqoya'l
 email-messages = Rutzijol Taqoya'l
 employers = Samajela'
 employment-statuses = Kib'anikil samaj
+encrypted-keys = Kexe'el ewan rusik'ixik
 ethnicities = Winaqil
 family-members-names = Kib'i' ach'alalri'ïl
 family-plans = Kinuk'samaj ach'alalri'ïl

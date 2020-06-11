@@ -537,8 +537,16 @@ known-data-breaches-resolved =
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = K'ak'a'
 mobile-promo-headline = Tak'waj { -brand-name } pan awoyonib'al chuqa' pan ach'utikematz'ib'
+mobile-promo-body = Anin, ichinan, chuqa' jikïl okem pa k'amaya'l xab'akuchi' yab'e wi. Takanoj { -brand-name } pa Google Play chuqa' App Store.
+mobile-promo-cta = Tak'ulu' { -brand-name } pa Android chuqa' iOS
 promo-lockwise-headline = Xab'akuchi' ke'ak'waj ri ewan taq atzij
+lockwise-promo-body = Tak'waj jun rucholajem ri awokem pa ronojel ri taq awokisab'al. Ütz jikïl katok chi kipam rik'in ri akematz'ib', oyonib'äl o ach'uti kematz'ib'.
 promo-lockwise-cta = Tik'ul { -brand-lockwise }
+fpn-promo-headline = Tawewaj ri ak'ojlem chi kiwäch ri ajk'amaya'l ruxaq chuqa' ojqanela'
+promo-fpn-body = { -brand-fpn } yerusäch ri ajk'amaya'l ruxaq chuqa' ri molonel taq tzij, ri nikiya' awetal rik'in eltzijol, akuchi' nikewaj ri qitzij IP awochochib'al.
 promo-fpn-cta = Tik'ul { -brand-fpn }
+monitor-promo-headline = Tawetamaj chi kij ri k'ak'a' kitz'ilanem taq tzij
+monitor-promo-body = Tak'ulu' rutzijol toq ri awetamab'al xtiwachin pa jun tz'ilanem etaman ruwa.
 ecosystem-promo-headline = Nuchajij ak'aslem pa k'amab'ey rik'in taq tikojil nikinab'eysaj ri awichinane
+ecosystem-promo-body = Ronojel ri taq { -brand-name } tikojil, nukamelaj ri Rusujik Tzij chi rij Qatzij: Jub'a' etamab'äl nuk'äm. Nijikib'äx. Majun ewäl ta.
 promo-ecosystem-cta = Ketz'et Ronojel Tikojil
