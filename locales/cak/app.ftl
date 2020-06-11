@@ -491,6 +491,9 @@ num-resolved =
        *[other] { $numResolvedBreaches } Xsol
     }
 progress-intro-subhead = K'ak'a' pa { -product-name }: Tiya' retal tz'ilanem achi'el xesol
+progress-intro-message =
+    Chi rij ninik'öx rucholajil tz'ilanem chuqa' nojqäx rub'eyal richin nichajïx ri 
+    awetamab'al, yatikïr naya' kan retal achi'el chi xsol.
 progress-status =
     { $numTotalBreaches ->
         [one] { $numResolvedBreaches } richin { $numTotalBreaches } tz'ilanem ya'on retal achi'el xsol
@@ -509,14 +512,31 @@ progress-message-2 =
     nijike' ri awetamab'al.
 progress-message-3 = <span>¡Ütz asamaj richin ye'asöl ri taq k'ayewal ri'!</span> Ke ri' tab'ana'. K'a k'o na jujun.
 progress-message-4 = <span>¡Nik'is yan!</span> B'ama yatapon yan akuchi' yab'eqa.
+progress-complete-message =
+    <span>¿Ütz ninäx qupe'?</span> We nawajo' nasamajij, wakami yalan jeb'ël richin 
+    ye'ak'ëx ch'aqa' chik taq okem rik'in jikïl ewan taq tzij.
 
 ##
 
+resolve-this-breach-link = Tisol re tz'ilanem re'
 # This string appears in resolved breach cards and is followed by 
 # the date the user marked the breach as resolved.
 marked-resolved = Xya' retal achi'el xsol:
+hide-resolved-button = Tewäx ri Xesol
+show-resolved-button = Kek'ut ri Xesol
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] K'utun ewan tzij pa taq tz'ilanem ri man esolon ta
+       *[other] K'utun ewan taq tzij pa taq tz'ilanem ri man esolon ta
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Rutz'ilanem tzij etaman ruwa chi ya'on retal chi solon chik
+       *[other] Kitz'ilanem taq tzij etaman kiwa chi ya'on ketal chi esolon chik
+    }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = K'ak'a'
+mobile-promo-headline = Tak'waj { -brand-name } pan awoyonib'al chuqa' pan ach'utikematz'ib'
 promo-lockwise-headline = Xab'akuchi' ke'ak'waj ri ewan taq atzij
 promo-lockwise-cta = Tik'ul { -brand-lockwise }
 promo-fpn-cta = Tik'ul { -brand-fpn }
