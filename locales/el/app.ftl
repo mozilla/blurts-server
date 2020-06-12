@@ -125,8 +125,10 @@ take-control = Ανακτήστε τον έλεγχο των προσωπικώ�
 read-more-tips = Διαβάστε περισσότερες συμβουλές ασφαλείας
 monitor-several-emails = Εποπτεία πολλών emails
 website-breach = Διαρροή ιστοσελίδας
+unverified-breach = Μη επαληθευμένη διαρροή
 website-breach-plural = Διαρροές ιστοσελίδας
 sensitive-breach-plural = Ευαίσθητες διαρροές
+unverified-breach-plural = Μη επαληθευμένες διαρροές
 what-data = Ποια δεδομένα παραβιάστηκαν:
 sensitive-sites = Πώς αντιμετωπίζει το { -product-name } τις ευαίσθητες ιστοσελίδες;
 about-fxm-headline = Σχετικά με το { -product-name }
@@ -137,6 +139,13 @@ how-fxm-2-headline = Εγγραφείτε για παρακολούθηση πα
 ## What to do after data breach tips
 
 change-pw = Αλλαγή κωδικού πρόσβασης
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Εμφανίζεται σε { $breachCount } γνωστή παραβίαση.
+       *[other] Εμφανίζεται σε { $breachCount } γνωστές παραβιάσεις.
+    }
 check-for-breaches = Έλεγχος για παραβιάσεις
 back-to-top = Πίσω στην κορυφή
 stop-monitoring-this = Διακοπή εποπτείας αυτού του email.
@@ -187,6 +196,7 @@ other-monitored-emails = Άλλα εποπτευμένα emails
 email-verification-required = Απαιτείται επαλήθευση email
 fxa-primary-email = Email του { -brand-fxa } - Πρωτεύον
 what-is-a-website-breach = Τι είναι μια παραβίαση ιστοσελίδας;
+security-tips-headline = Συμβουλές ασφάλειας για να προστατευτείτε από τους χάκερ
 alert-about-new-breaches = Ειδοποίηση σχετικά με νέες παραβιάσεις
 see-if-youve-been-part = Δείτε αν έχετε εμπλακεί σε διαρροή δεδομένων στο διαδίκτυο.
 # This string appears on breach detail pages and is followed by a list
