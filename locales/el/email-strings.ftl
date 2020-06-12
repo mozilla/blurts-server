@@ -53,5 +53,6 @@ monitor-another-email = Θέλετε να παρακολουθήσετε κάπ�
 # Subject line of email
 pre-fxa-subject = Μια ενημέρωση από το { -product-name }
 pre-fxa-headline = Τι αλλάζει με το { -product-name }
+pre-fxa-tout-3 = Συνέχεια λήψης ειδοποιήσεων μέσω email
 # Button at the bottom of pre-fxa email.
 create-account = Δημιουργία λογαριασμού

@@ -161,6 +161,9 @@ breach-summary = Περίληψη παραβίασης
 show-breaches-for-this-email = Εμφάνιση όλων των παραβιάσεων για αυτό το email.
 link-change-primary = Αλλαγή πρωτεύουσας διεύθυνσης email
 remove-fxm = Αφαίρεση του { -product-name }
+remove-fxm-blurb =
+    Απενεργοποίηση των ειδοποιήσεων του { -product-name }. Ο { -brand-fxa } σας θα παραμείνει ενεργός και ίσως 
+    λάβετε άλλες ειδοποιήσεις σχετικά με το λογαριασμό.
 # Button title
 manage-email-addresses = Διαχείριση διευθύνσεων email
 # Link title
