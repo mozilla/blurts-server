@@ -160,7 +160,7 @@ send-verification = Αποστολή συνδέσμου επαλήθευσης
 breach-summary = Περίληψη παραβίασης
 show-breaches-for-this-email = Εμφάνιση όλων των παραβιάσεων για αυτό το email.
 link-change-primary = Αλλαγή πρωτεύουσας διεύθυνσης email
-remove-fxm = Αφαίρεση { -product-name }
+remove-fxm = Αφαίρεση του { -product-name }
 # Button title
 manage-email-addresses = Διαχείριση διευθύνσεων email
 # Link title
@@ -169,6 +169,7 @@ welcome-back = Καλώς ορίσατε και πάλι, { $userName }!
 welcome-user = Καλώς ορίσατε, { $userName }!
 breach-alert-subject = Το { -product-name } βρήκε το email σας σε νέα παραβίαση δεδομένων
 your-info-was-discovered-headline = Οι πληροφορίες σας ανακαλύφθηκαν σε μια νέα παραβίαση δεδομένων.
+what-to-do-after-breach = Τι να κάνετε μετά από μια παραβίαση δεδομένων
 faq1 = Δεν αναγνωρίζω αυτή την εταιρεία ή ιστοσελίδα. Γιατί είμαι σε αυτή την παραβίαση;
 faq2 = Γιατί πέρασε τόσος καιρός μέχρι να ενημερωθώ για αυτή την παραβίαση;
 faq3 = Πώς ξέρω αν αυτό είναι ένα γνήσιο email από το { -product-name };
@@ -179,6 +180,12 @@ new-breaches-found =
     }
 fb-not-comp = Αυτό το email δεν εμφανίστηκε στην παραβίαση { $breachName }.
 fb-comp-only = Αυτό το email εμφανίστηκε στην παραβίαση { $breachName }.
+fb-comp-and-others =
+    { $breachCount ->
+        [one] Αυτό το email εμφανίστηκε σε { $breachCount } γνωστές παραβιάσεις δεδομένων, όπως το { $breachName }.
+       *[other] Αυτά τα email εμφανίστηκαν σε { $breachCount } γνωστές παραβιάσεις δεδομένων, όπως το { $breachName }.
+    }
+no-other-breaches-found = Δεν βρέθηκαν άλλες παραβιάσεις με τη βασική αναζήτηση.
 no-results-blurb = Λυπούμαστε, αυτή η παραβίαση δεν είναι στη βάση δεδομένων μας.
 all-breaches-headline = Όλες οι παραβιάσεις στο { -product-name }
 search-breaches = Αναζήτηση παραβιάσεων
@@ -199,6 +206,8 @@ what-is-a-website-breach = Τι είναι μια παραβίαση ιστοσ�
 security-tips-headline = Συμβουλές ασφάλειας για να προστατευτείτε από τους χάκερ
 alert-about-new-breaches = Ειδοποίηση σχετικά με νέες παραβιάσεις
 see-if-youve-been-part = Δείτε αν έχετε εμπλακεί σε διαρροή δεδομένων στο διαδίκτυο.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Μάθετε
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = Πρόσθετες πληροφορίες, όπως:
@@ -207,6 +216,10 @@ email-addresses-title = Διευθύνσεις email
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Επισκόπηση
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = Στις { $breachDate }, το { $breachTitle } παραβιάστηκε. Μόλις ανακαλύφθηκε και επαληθεύτηκε η παραβίαση, προστέθηκε στη βάση δεδομένων μας στις { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Προτιμήσεις { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
@@ -249,6 +262,10 @@ changes-saved = Οι αλλαγές αποθηκεύτηκαν!
 ##
 
 undo-button = Αναίρεση
+go-to-dashboard-link = Μετάβαση στον πίνακα
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% ολοκλήρωση
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
@@ -256,9 +273,12 @@ undo-button = Αναίρεση
 
 ##
 
+hide-resolved-button = Απόκρυψη επιλυμένων
+show-resolved-button = Εμφάνιση επιλυμένων
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Νέο
 mobile-promo-cta = Λήψη { -brand-name } σε Android και iOS
 promo-lockwise-cta = Λήψη { -brand-lockwise }
 promo-fpn-cta = Λήψη { -brand-fpn }
+monitor-promo-headline = Μάθετε για νέες παραβιάσεις δεδομένων
 promo-ecosystem-cta = Προβολή όλων των προϊόντων

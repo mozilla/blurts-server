@@ -10,12 +10,26 @@ email-address = Διεύθυνση email:
 legal = Νομικά
 # Unsubscribe link in email.
 email-unsub-link = Κατάργηση εγγραφής
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb =
+    Λαμβάνετε αυτό το email επειδή έχετε εγγραφεί στις ειδοποιήσεις του { -product-name }.
+    Δεν θέλετε πλέον αυτά τα emails; { $unsubLink }. Αυτό είναι ένα αυτοματοποιημένο email. Για υποστήριξη, επισκεφθείτε τις { $faqLink }.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    Λαμβάνετε αυτό το email επειδή έχετε εγγραφεί στις ειδοποιήσεις του { -product-name }.
+    Αυτό είναι ένα αυτοματοποιημένο email. Για υποστήριξη, επισκεφθείτε τις { $faqLink }.
 # Button text
 verify-email-cta = Επαλήθευση email
 # Button text
 see-all-breaches = Προβολή όλων των παραβιάσεων
 # Headline of verification email
 email-link-expires = Αυτός ο σύνδεσμος λήγει σε 24 ώρες
+# Email headline
+email-found-breaches-hl = Ορίστε μια σύνοψη των προηγούμενων παραβιάσεων δεδομένων
 # Email headline
 email-breach-summary-for-email = Περίληψη παραβίασης για το { $userEmail }
 # Email headline
