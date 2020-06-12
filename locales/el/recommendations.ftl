@@ -1,3 +1,5 @@
+# Recommendation subhead
+rec-pw-1-subhead = Αλλάξτε τον κωδικό πρόσβασής σας
 # Link title
 rec-pw-2-cta-fx = Προβολή συνδέσεων στο { -brand-name }
 # Link title
