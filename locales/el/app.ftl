@@ -124,6 +124,7 @@ more-about-this-breach = Σχετικά με αυτή τη διαρροή
 take-control = Ανακτήστε τον έλεγχο των προσωπικών σας δεδομένων.
 read-more-tips = Διαβάστε περισσότερες συμβουλές ασφαλείας
 how-hackers-work = Κατανοήστε πώς λειτουργούν οι χάκερ
+monitor-your-online-accounts = Εγγραφείτε για παρακολούθηση παραβιάσεων με ένα { -brand-fxa }.
 monitor-several-emails = Εποπτεία πολλών emails
 website-breach = Διαρροή ιστοσελίδας
 unverified-breach = Μη επαληθευμένη διαρροή
