@@ -123,6 +123,7 @@ latest-breach = ΠΡΟΣΤΕΘΗΚΕ Η ΤΕΛΕΥΤΑΙΑ ΔΙΑΡΡΟΗ
 more-about-this-breach = Σχετικά με αυτή τη διαρροή
 take-control = Ανακτήστε τον έλεγχο των προσωπικών σας δεδομένων.
 read-more-tips = Διαβάστε περισσότερες συμβουλές ασφαλείας
+how-hackers-work = Κατανοήστε πώς λειτουργούν οι χάκερ
 monitor-several-emails = Εποπτεία πολλών emails
 website-breach = Διαρροή ιστοσελίδας
 unverified-breach = Μη επαληθευμένη διαρροή
@@ -135,6 +136,7 @@ about-fxm-headline = Σχετικά με το { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Πώς λειτουργεί το { -product-name }
 how-fxm-2-headline = Εγγραφείτε για παρακολούθηση παραβιάσεων
+protect-your-privacy = Προστατέψτε το διαδικτυακό σας απόρρητο
 
 ## What to do after data breach tips
 

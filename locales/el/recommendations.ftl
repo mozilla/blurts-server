@@ -18,3 +18,5 @@ rec-pw-3-cta = Λήψη { -brand-lockwise }
 rec-ip-us-cta = Δοκιμή του { -brand-fpn }
 # Link title
 rec-gen-3-cta = Διαβάστε περισσότερες συμβουλές ασφαλείας
+# Recommendation subhead
+rec-gen-4-subhead = Ενημερώνετε τακτικά το λογισμικό και τις εφαρμογές
