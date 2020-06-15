@@ -15,7 +15,7 @@
 
 ##
 
-terms-and-privacy = Tay nechtuktia wan tay nupal ichtaka
+terms-and-privacy = Tay nechtuktia wan Teichtakayu
 GitHub-link-title = GitHub
 error-scan-page-token = Tikejekua tiktemua miak correoj uksejsenpa. Nesi chupi tesajsay, yajika timetztzakwilijtiwit ka kiajan. Tiu-tiweli tikejekua nemanha.
 error-could-not-add-email = Te welik mutalia se idirección correoj tik ne basej ipal datos.
