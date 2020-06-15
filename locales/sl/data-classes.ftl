@@ -26,6 +26,7 @@ chat-logs = dnevniki klepeta
 credit-card-cvv = kode CVV kreditnih kartic
 credit-cards = kreditne kartice
 credit-status-information = informacije o kreditnem stanju
+cryptocurrency-wallet-hashes = Prstni odtisi kriptodenarnice
 customer-feedback = povratne informacije strank
 customer-interactions = interakcije s strankami
 dates-of-birth = datumi rojstva

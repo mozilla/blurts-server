@@ -233,6 +233,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Preverite kraje podatkov
 find-out-what-hackers-know = Ugotovite, kaj o vas hekerji že vedo. Naučite se, kako ostati korak pred njimi.
+get-email-alerts = Ostanite varni: prejemajte opozorila po e-pošti, ko se vaši podatki pojavijo v znani kraji
 search-for-your-email = Poiščite svoj e-poštni naslov med javnimi krajami podatkov do leta 2007.
 back-to-top = Nazaj na vrh
 comm-opt-0 = Obvesti me po e-pošti, če se kateri od spodnjih e-poštnih naslovov pojavi v kraji podatkov.
@@ -585,6 +586,7 @@ promo-lockwise-headline = Vzemite gesla s seboj
 lockwise-promo-body = Spremljajte svoje prijave na vseh napravah. Varno dostopajte do njih na računalniku, telefonu ali tablici.
 promo-lockwise-cta = Prenesite { -brand-lockwise }
 fpn-promo-headline = Prikrijte svojo lokacijo spletnim mestom in sledilcem.
+promo-fpn-body = { -brand-fpn } vas zavaruje pred spletnimi mesti in zbiralci podatkov, ki o vas naredijo profil in vas zatrpajo z oglasi, tako da prikrije vaš resnični naslov IP.
 promo-fpn-cta = Preskusite { -brand-fpn }
 monitor-promo-headline = Izvedite več o novih krajah podatkov
 monitor-promo-body = Prejmite obvestilo naslednjič, ko bodo vaši podatki izpostavljeni v znani kraji podatkov.

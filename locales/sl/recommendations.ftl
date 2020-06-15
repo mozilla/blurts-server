@@ -40,6 +40,9 @@ rec-bank-acc =
     Obvestite svojo banko, če vidite nekaj, česar ne prepoznate.
 # Recommendation subhead
 rec-cc-subhead = Spremljajte izpiske kreditnih kartic
+rec-cc =
+    Bodite pozorni na nenavadne stroške svoje kreditne kartice. Morda boste želeli 
+    pri izdajatelju kartice zahtevati novo številko kartice.
 # Recommendation subhead
 rec-ip-subhead = Uporabite storitev, ki prikrije vaš IP-naslov.
 # Link title
@@ -70,6 +73,10 @@ rec-phone-num =
     Če telefonska številka ni zahtevana, je ne vnesite.
 # Recommendation subhead
 rec-dob-subhead = Izogibajte se uporabi osebnih podatkov v PIN-kodah
+rec-dob =
+    Ker je vaš datum rojstva enostavno najti v javnih evidencah,
+    je najbolje, da se mu izogibate pri uporabi v geslih in PIN-kodah. Ljudje, ki
+    vedo, kdaj imate rojstni dan, bi lahko zelo enostavno uganili tudi PIN-kodo.
 # Recommendation subhead
 rec-pins-subhead = Okrepite varnost PIN-kod
 rec-pins =
