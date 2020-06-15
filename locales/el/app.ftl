@@ -33,6 +33,7 @@ home-not-found = Η σελίδα δεν βρέθηκε.
 oauth-invalid-session = Άκυρη συνεδρία
 scan-title = { -product-name } : Αποτελέσματα σάρωσης
 user-add-invalid-email = Άκυρο email
+user-add-too-many-emails = Παρακολουθείτε τον μέγιστο αριθμό διευθύνσεων email.
 user-add-email-verify-subject = Επαληθεύστε τη συνδρομή σας στο { -product-name }.
 user-add-duplicate-email = Αυτό το email έχει ήδη προστεθεί στο { -product-name }.
 error-headline = Σφάλμα
@@ -136,17 +137,25 @@ sensitive-breach-plural = Ευαίσθητες διαρροές
 unverified-breach-plural = Μη επαληθευμένες διαρροές
 what-data = Ποια δεδομένα παραβιάστηκαν:
 sensitive-sites = Πώς αντιμετωπίζει το { -product-name } τις ευαίσθητες ιστοσελίδες;
+delayed-reporting-headline = Γιατί πέρασε τόσος καιρός πριν αναφερθεί αυτή η διαρροή;
 about-fxm-headline = Σχετικά με το { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Πώς λειτουργεί το { -product-name }
 how-fxm-1-headline = Πραγματοποιήστε μια βασική αναζήτηση
 how-fxm-2-headline = Εγγραφείτε για παρακολούθηση παραβιάσεων
 how-fxm-3-headline = Λάβετε ειδοποιήσεις στο πρόγραμμα περιήγησής σας
+wtd-after-website = Τι να κάνετε μετά από μια παραβίαση ιστοσελίδας:
 protect-your-privacy = Προστατέψτε το διαδικτυακό σας απόρρητο
 
 ## What to do after data breach tips
 
 change-pw = Αλλαγή κωδικού πρόσβασης
+change-pw-site = Αλλαγή κωδικού πρόσβασης για αυτή την ιστοσελίδα
+create-strong-passwords = Πώς να δημιουργήσετε ισχυρούς κωδικούς πρόσβασης
+stop-reusing-pw = Σταματήστε να χρησιμοποιείτε ξανά τους ίδιους κωδικούς πρόσβασης
+five-myths = 5 μύθοι για τις εφαρμογές διαχείρισης κωδικών πρόσβασης
+feat-security-tips = Συμβουλές ασφάλειας για την προστασία των λογαριασμών σας
+feat-sensitive = Σύνθετη αναζήτηση σε ευαίσθητες διαρροές
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
@@ -221,6 +230,7 @@ email-verification-required = Απαιτείται επαλήθευση email
 fxa-primary-email = Email του { -brand-fxa } - Πρωτεύον
 what-is-a-website-breach = Τι είναι μια παραβίαση ιστοσελίδας;
 security-tips-headline = Συμβουλές ασφάλειας για να προστατευτείτε από τους χάκερ
+take-further-steps = Λάβετε περαιτέρω μέτρα για να προστατεύσετε την ταυτότητά σας
 alert-about-new-breaches = Ειδοποίηση σχετικά με νέες παραβιάσεις
 see-if-youve-been-part = Δείτε αν έχετε εμπλακεί σε διαρροή δεδομένων στο διαδίκτυο.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
@@ -256,6 +266,8 @@ want-to-add = Θέλετε να προσθέσετε ένα άλλο email;
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+email-verified = Επιτυχής επαλήθευση email!
+email-added-to-subscription = Θα σας ειδοποιήσουμε αν το { $email } εμφανιστεί σε νέα διαρροή δεδομένων.
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = σύνδεση
 
@@ -271,6 +283,8 @@ manage-all-emails = Διαχείριση όλων των διευθύνσεων 
 breach-added-label = Προστέθηκε διαρροή:
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Οι αλλαγές αποθηκεύτηκαν!
+# Button
+see-additional-recs = Προβολή επιπρόσθετων προτάσεων
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
@@ -278,6 +292,8 @@ changes-saved = Οι αλλαγές αποθηκεύτηκαν!
 
 ##
 
+mark-as-resolve-button = Επισήμανση ως λυμένη
+marked-as-resolved-label = Επισημάνθηκε ως λυμένη
 undo-button = Αναίρεση
 return-to-breach-details-link = Επιστροφή στις λεπτομέρειες παραβίασης
 go-to-dashboard-link = Μετάβαση στον πίνακα
