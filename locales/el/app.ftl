@@ -129,6 +129,7 @@ stay-alert = Μείνετε σε εγρήγορση για νέες παραβι
 if-your-info = Αν οι πληροφορίες σας εμφανιστούν σε νέα παραβίαση δεδομένων, θα σας ειδοποιήσουμε.
 monitor-several-emails = Εποπτεία πολλών emails
 website-breach = Διαρροή ιστοσελίδας
+sensitive-breach = Παραβίαση ευαίσθητης ιστοσελίδας
 unverified-breach = Μη επαληθευμένη διαρροή
 website-breach-plural = Διαρροές ιστοσελίδας
 sensitive-breach-plural = Ευαίσθητες διαρροές
@@ -138,7 +139,9 @@ sensitive-sites = Πώς αντιμετωπίζει το { -product-name } τι�
 about-fxm-headline = Σχετικά με το { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Πώς λειτουργεί το { -product-name }
+how-fxm-1-headline = Πραγματοποιήστε μια βασική αναζήτηση
 how-fxm-2-headline = Εγγραφείτε για παρακολούθηση παραβιάσεων
+how-fxm-3-headline = Λάβετε ειδοποιήσεις στο πρόγραμμα περιήγησής σας
 protect-your-privacy = Προστατέψτε το διαδικτυακό σας απόρρητο
 
 ## What to do after data breach tips
@@ -276,6 +279,7 @@ changes-saved = Οι αλλαγές αποθηκεύτηκαν!
 ##
 
 undo-button = Αναίρεση
+return-to-breach-details-link = Επιστροφή στις λεπτομέρειες παραβίασης
 go-to-dashboard-link = Μετάβαση στον πίνακα
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
@@ -287,6 +291,7 @@ progress-percent-complete = { $percentComplete }% ολοκλήρωση
 
 ##
 
+resolve-this-breach-link = Επίλυση παραβίασης
 hide-resolved-button = Απόκρυψη επιλυμένων
 show-resolved-button = Εμφάνιση επιλυμένων
 # A status indicator that appears in the top right corner of new breach cards
