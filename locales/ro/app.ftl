@@ -81,7 +81,7 @@ fxa-pwt-summary-2 =
 fxa-pwt-summary-4 =
     Managerii de parole, cum ar fi 1Password, LastPass, Dashlane și Bitwarden îți stochează
     parolele și le completează pe site-uri pentru tine. Te vor ajuta chiar să creezi parole puternice.
-fxa-pwt-summary-6 = Încălcările securității datelor sunt în creștere. Dacă informațiile tale cu caracter personal apar într-o încălcare nouă a securității datelor, { -product-name } îți va trimite o alertă — astfel încât să iei măsuri și să îți protejezi conturile.
+fxa-pwt-summary-6 = Încălcările securității datelor sunt în creștere. Dacă informațiile tale cu caracter personal apar într-o nouă încălcare a securității datelor, { -product-name } îți va trimite o alertă — astfel încât să iei măsuri și să îți protejezi conturile.
 fxa-what-to-do-blurb-1 =
     Dacă nu te poți autentifica, contactează site-ul web și întreabă-i cum să îți actualizezi datele de identificare.
     Vezi un cont necunoscut? Este posibil ca datele tale să fi fost vândute
@@ -125,16 +125,16 @@ search-all-emails = Caută toate adresele tale de e-mail pentru încălcări ale
 monitor-several-emails = Monitorizează mai multe adrese de e-mail
 take-action = Ia măsuri pentru a-ți proteja conturile
 keep-your-data-safe = Află ce trebuie să faci ca să îți păstrezi datele în siguranță împotriva infractorilor cibernetici.
-website-breach = Încălcarea securității datelor în cazul unui site web
+website-breach = Încălcare în cazul unui site web
 sensitive-breach = Încălcare în cazul unui site web sensibil
 data-aggregator-breach = Încălcare în cazul agregatoarelor de date
 unverified-breach = Încălcare neverificată
 spam-list-breach = Încălcare a securității datelor în cazul listelor de spam
-website-breach-plural = Încălcări ale securității datelor în cazul site-urilor web
+website-breach-plural = Încălcări în cazul site-urilor web
 sensitive-breach-plural = Încălcări ale securității datelor sensibile
-data-aggregator-breach-plural = Încălcări ale securității datelor în cazul agregatoarelor de date
-unverified-breach-plural = Încălcări neverificate ale securității datelor
-spam-list-breach-plural = Încălcări ale securității datelor în cazul listelor de spam
+data-aggregator-breach-plural = Încălcări în cazul agregatoarelor de date
+unverified-breach-plural = Încălcări neverificate
+spam-list-breach-plural = Încălcări în cazul listelor de spam
 what-data = Ce date au fost compromise:
 sensitive-sites = Cum tratează { -product-name } site-urile cu date sensibile?
 sensitive-sites-copy =
@@ -225,7 +225,7 @@ manage-email-addresses = Gestionează adresele de e-mail
 latest-breach-link = Vezi dacă ai fost implicat(ă) în această încălcare a securității datelor
 welcome-back = Bine ai revenit, { $userName }!
 welcome-user = Bine ai venit, { $userName }!
-breach-alert-subject = { -product-name } ți-a găsit adresa de e-mail într-o încălcare nouă a securității datelor
+breach-alert-subject = { -product-name } ți-a găsit adresa de e-mail într-o nouă încălcare a securității datelor
 your-info-was-discovered-headline = Informațiile tale au fost găsite într-o nouă încălcare.
 your-info-was-discovered-blurb = Te-ai înscris ca să primești alerte { -product-name } în cazul în care adresa ta de e-mail apare într-o încălcare a securității datelor. Iată ce știm despre această încălcare.
 what-to-do-after-breach = Ce să faci după o încălcare a securității datelor
@@ -308,9 +308,9 @@ known-data-breaches-exposed =
 see-additional-breaches = Vezi și alte încălcări ale securității datelor
 scan-results-known-breaches =
     { $breachCount ->
-        [one] Această adresă de e-mail a apărut într-o încălcare cunoscută a securității datelor.
-        [few] Această adresă de e-mail a apărut în { $breachCount } încălcări cunoscute a securității datelor.
-       *[other] Această adresă de e-mail a apărut în { $breachCount } de încălcări cunoscute a securității datelor.
+        [one] Acest e-mail a apărut într-o încălcare cunoscută a securității datelor.
+        [few] Acest e-mail a apărut în { $breachCount } încălcări cunoscute ale securității datelor.
+       *[other] Acest e-mail a apărut în { $breachCount } de încălcări cunoscute ale securității datelor.
     }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
@@ -506,8 +506,8 @@ unresolved-passwords-exposed =
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
         [one] încălcare cunoscută a securității datelor marcată ca rezolvată
-        [few] încălcări cunoscute a securității datelor marcate ca rezolvate
-       *[other] de încălcări cunoscute a securității datelor marcate ca rezolvate
+        [few] încălcări cunoscute ale securității datelor marcate ca rezolvate
+       *[other] de încălcări cunoscute ale securității datelor marcate ca rezolvate
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nou
