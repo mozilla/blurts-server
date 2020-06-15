@@ -17,7 +17,7 @@
 
 terms-and-privacy = Tay nechtuktia wan Teichtakayu
 GitHub-link-title = GitHub
-error-scan-page-token = Tikejekua tiktemua miak correoj uksejsenpa. Nesi chupi tesajsay, yajika timetztzakwilijtiwit ka kiajan. Tiu-tiweli tikejekua nemanha.
+error-scan-page-token = Tiktemujtuk miak  tik achi kawit. Ipal titamanawiat, tiktzakwilijtiwit yankwik tatemulis. Shikejeku neman.
 error-could-not-add-email = Te welik mutalia se idirección correoj tik ne basej ipal datos.
 error-not-subscribed = Ini correoj tesu kipia itukay tik { -product-name }.
 error-hibp-throttled = Miak nemit sajsalujtuk itech { -brand-HIBP }.
