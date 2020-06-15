@@ -195,8 +195,8 @@ feat-enroll-multiple = Înregistrează mai multe adrese de e-mail pentru monitor
 appears-in-x-breaches =
     { $breachCount ->
         [one] Apare într-o încălcare cunoscută a securității datelor.
-        [few] Apare în { $breachCount } încălcări cunoscute a securității datelor.
-       *[other] Apare în { $breachCount } de încălcări cunoscute a securității datelor.
+        [few] Apare în { $breachCount } încălcări cunoscute ale securității datelor.
+       *[other] Apare în { $breachCount } de încălcări cunoscute ale securității datelor.
     }
 check-for-breaches = Verifică încălcările securității datelor
 find-out-what-hackers-know = Află ce știu hackerii despre tine. Află cum să fii cu un pas înaintea lor.
@@ -259,8 +259,8 @@ fb-comp-only = Această adresă de e-mail a apărut în încălcarea securităț
 fb-comp-and-others =
     { $breachCount ->
         [one] Această adresă de e-mail a apărut în { $breachCount } încălcare cunoscută a securității datelor, inclusiv { $breachName }.
-        [few] Această adresă de e-mail a apărut în { $breachCount } încălcări cunoscute a securității datelor, inclusiv { $breachName }.
-       *[other] Această adresă de e-mail a apărut în { $breachCount } de încălcări cunoscute a securității datelor, inclusiv { $breachName }.
+        [few] Această adresă de e-mail a apărut în { $breachCount } încălcări cunoscute ale securității datelor, inclusiv { $breachName }.
+       *[other] Această adresă de e-mail a apărut în { $breachCount } de încălcări cunoscute ale securității datelor, inclusiv { $breachName }.
     }
 no-other-breaches-found = Nicio altă încălcare identificată la căutarea de bază.
 no-results-blurb = Ne pare rău, acea încălcare a securității datelor nu este în baza noastră de date.
@@ -300,9 +300,9 @@ passwords-exposed =
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
     { $breaches ->
-        [one] O încălcare cunoscută a securității datelor ți-a expus informațiile
-        [few] Mai multe încălcări cunoscute a securității datelor ți-au expus informațiile
-       *[other] Mai multe încălcări cunoscute a securității datelor ți-au expus informațiile
+        [one] încălcare cunoscută a securității datelor ți-a expus informațiile
+        [few] încălcări cunoscute ale securității datelor ți-au expus informațiile
+       *[other] de încălcări cunoscute ale securității datelor ți-au expus informațiile
     }
 # Button
 see-additional-breaches = Vezi și alte încălcări ale securității datelor
