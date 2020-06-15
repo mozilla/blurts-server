@@ -221,6 +221,14 @@ currently-showing = Εμφάνιση:
 ## Updated error messages
 
 error-csrf-headline = Ο χρόνος συνεδρίας έληξε
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] Διεύθυνση email υπό εποπτεία
+       *[other] Διευθύνσεις email υπό εποπτεία
+    }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
@@ -289,6 +297,7 @@ see-additional-recs = Προβολή επιπρόσθετων προτάσεων
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+resolve-top-notification = Το { $affectedEmail } εμφανίστηκε σε αυτή την παραβίαση. <a>Τι να κάνετε στη συνέχεια</a>
 
 ##
 
