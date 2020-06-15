@@ -122,6 +122,7 @@ if-your-info = We kq'alajin le aq'alajisanem pa jun k'ak' k'axk'olil, kqataq b'i
 search-all-emails = Che'atzukuj ronojel taq kemriqonib'al rech taqoqxa'nib'al awech chi'l che'ariqa' taq na'b'anem chi rij taq k'axk'olil.
 monitor-several-emails = Che'awilawachij k'ialaj taq taq'oqxa'n
 take-action = Chab'ana' jachike rajawaxik chech uchajixik taq kemb'i'aj
+keep-your-data-safe = Che'ariqa' jas kab'ano chech uchajixik taq juq'attzij chech uq'atexik taq kemelaq'omab'.
 
 ## What to do after data breach tips
 
