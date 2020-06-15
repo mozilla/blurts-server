@@ -123,6 +123,7 @@ search-all-emails = Che'atzukuj ronojel taq kemriqonib'al rech taqoqxa'nib'al aw
 monitor-several-emails = Che'awilawachij k'ialaj taq taq'oqxa'n
 take-action = Chab'ana' jachike rajawaxik chech uchajixik taq kemb'i'aj
 keep-your-data-safe = Che'ariqa' jas kab'ano chech uchajixik taq juq'attzij chech uq'atexik taq kemelaq'omab'.
+website-breach = k'axk'olil rech uk'olib'al web'
 
 ## What to do after data breach tips
 
