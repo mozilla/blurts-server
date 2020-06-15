@@ -117,6 +117,7 @@ cant-stop-hackers = Man katkowin taj ke'aq'atej le e b'ank'ax chech ub'anik uk'a
 read-more-tips = Chasik'ij uwach nik'aj chi taq no'jib'al rech chajinem
 how-hackers-work = Uk'oxomaxik jas ke'echakun e b'ank'ax
 monitor-your-online-accounts = Chatz'ib'aj awib' pa rilawachixik taq k'axk'olil ruk' { -brand-fxa }.
+stay-alert = Chatatab'ej we k'o nik'aj chi taq k'axk'olil
 
 ## What to do after data breach tips
 
