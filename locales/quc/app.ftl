@@ -121,6 +121,7 @@ stay-alert = Chatatab'ej we k'o nik'aj chi taq k'axk'olil
 if-your-info = We kq'alajin le aq'alajisanem pa jun k'ak' k'axk'olil, kqataq b'i na'b'anem chi awech.
 search-all-emails = Che'atzukuj ronojel taq kemriqonib'al rech taqoqxa'nib'al awech chi'l che'ariqa' taq na'b'anem chi rij taq k'axk'olil.
 monitor-several-emails = Che'awilawachij k'ialaj taq taq'oqxa'n
+take-action = Chab'ana' jachike rajawaxik chech uchajixik taq kemb'i'aj
 
 ## What to do after data breach tips
 
