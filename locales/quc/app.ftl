@@ -118,6 +118,9 @@ read-more-tips = Chasik'ij uwach nik'aj chi taq no'jib'al rech chajinem
 how-hackers-work = Uk'oxomaxik jas ke'echakun e b'ank'ax
 monitor-your-online-accounts = Chatz'ib'aj awib' pa rilawachixik taq k'axk'olil ruk' { -brand-fxa }.
 stay-alert = Chatatab'ej we k'o nik'aj chi taq k'axk'olil
+if-your-info = We kq'alajin le aq'alajisanem pa jun k'ak' k'axk'olil, kqataq b'i na'b'anem chi awech.
+search-all-emails = Che'atzukuj ronojel taq kemriqonib'al rech taqoqxa'nib'al awech chi'l che'ariqa' taq na'b'anem chi rij taq k'axk'olil.
+monitor-several-emails = Che'awilawachij k'ialaj taq taq'oqxa'n
 
 ## What to do after data breach tips
 
