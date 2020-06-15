@@ -200,6 +200,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Verifică încălcările securității datelor
 find-out-what-hackers-know = Află ce știu hackerii despre tine. Află cum să fii cu un pas înaintea lor.
+get-email-alerts = Rămâi în siguranță: Primește alerte pe e-mail când informațiile tale apar într-o încălcare cunoscută a securității datelor
 search-for-your-email = Caută-ți adresa de e-mail în încălcările publice ale securității datelor datând încă din 2007.
 back-to-top = Înapoi sus
 comm-opt-0 = Trimite-mi un mesaj pe e-mail dacă adresele mele de e-mail de mai jos apar într-o încălcare a securității datelor.
