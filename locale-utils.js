@@ -10,6 +10,7 @@ const { FluentBundle } = require("fluent");
 
 const AppConstants = require("./app-constants");
 const mozlog = require("./log");
+const {supportedLocales} = require("./package.json");
 
 
 const log = mozlog("locale-utils");
@@ -36,7 +37,6 @@ class FluentError extends Error {
 
 const LocaleUtils = {
   init() {
-    const supportedLocales = AppConstants.SUPPORTED_LOCALES;
     let languageDirectories = supportedLocales.split(",");
     if (supportedLocales === "*") {
       languageDirectories = fs.readdirSync( localesDir ).filter(item => {
