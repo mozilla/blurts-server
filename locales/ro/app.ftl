@@ -420,6 +420,8 @@ see-additional-recs = Vezi recomandările suplimentare
 resolve-top-notification = { $affectedEmail } a apărut în această încălcare a securității datelor. <a>Ce să faci mai departe</a>
 resolve-top-notification-plural =
     { $numAffectedEmails ->
+        [one] { $numAffectedEmails } dintre adresele tale de e-mail a apărut în această încălcare a securității datelor. <a>Ce să faci mai departe</a>
+        [few] { $numAffectedEmails } dintre adresele tale de e-mail au apărut în această încălcare a securității datelor. <a>Ce să faci mai departe</a>
        *[other] { $numAffectedEmails } dintre adresele tale de e-mail au apărut în această încălcare a securității datelor. <a>Ce să faci mai departe</a>
     }
 
