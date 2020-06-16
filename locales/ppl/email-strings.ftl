@@ -46,7 +46,7 @@ email-subject-verify = Shiknelti mutitantukay ipal { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Shimumachti ipanpa { $fxmLink }
 email-sensitive-disclaimer =
-    Ipanpa ne taichtekilis ichtaka, ne titanamat te weli mutemua.
+    Ipanpa nejmach ini taichtekilis, ne titanamat te weli mutemua.
     Tikselia ini tanawatilis ika taja ne itekuyu ini titantukayit.
 fxm-warns-you-no-breaches =
     { -product-name } metznawatia ipanpa se tamatil taichtekilis ne nemi itech mutamatilisyu.
@@ -65,8 +65,16 @@ faq-v2-1 = Te nikishmati ini tekipan u tzawalamat. Taika ninemi tik ini taichtek
 faq-v2-2 = Ninemi pal nikchiwa taya asu panuk se taichtekilis ashan miak shiwit wan asu ini ishtapual te yankwik?
 # Link Title
 faq-v2-3 = San nikmatki ka ninemi tik se tamatil taichtekilis. Tay nikchiwa?
+# Link Title
+faq-v2-4 = { -product-name } ken kimati se nejmach tzawalamat?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Shikchiwa se takulijtuk { -brand-fxa }, wan weli tiktalia san 15 titantukayit.
+# Section headline
+monitor-another-email = Tikneki tikishkupawia ukse titantukayit?
 # Subject line of email
 pre-fxa-subject = Se tayankwililis ipal { -product-name }
+pre-fxa-headline = Ken yawi mupata { -product-name }
 pre-fxa-tout-3 = Shiktukti senpa ne amatukayit tanawatilis
 # Button at the bottom of pre-fxa email.
 create-account = Shikchiwa Ishtapual
