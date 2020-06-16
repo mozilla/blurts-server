@@ -182,7 +182,7 @@ avoid-personal-info-blurb = Te uij muajsit ne tunal tinesik, mudirección, wan n
 
 change-pw = Shikpata muichtakatajkwilul
 change-pw-site = Shikpata ne ichtakatajkwilul ipal ini tzawalamat
-even-for-old = Ipal ne cuejcuentaj palikman, nemi pal tikyankwilia mutaketzalis ichtaka.
+even-for-old = Nusan iwan se muishmachiu palikman, nemi pal tikyankwilia muichtakatajkwilul.
 make-new-pw-unique = Shikchiwa ne yankwik taketzalis ichtaka tekenha wan isel
 strength-of-your-pw = Asu mutaketzalis ichtaka tajpaltik, ijkiuni timupalewia tik ne matapan
 create-strong-passwords = Ken tikchiwa taketzalis ichtaka tajpaltik
