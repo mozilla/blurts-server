@@ -167,7 +167,7 @@ how-fxm-3-blurb =
     wan tay tiweli tikchiwa ipanpa.
 wtd-after-website = Tay nemi pal tikchiwa ipan se kaltapanalis ipal información:
 wtd-after-data-agg = Tay nemi pal tikchiwa ipan se kaltapanalis tik ne tasentalilis ipal datoj:
-what-is-data-agg = Tay se tasentalilis ipal datoj?
+what-is-data-agg = Tay se tasentalilis ipal tamatil?
 what-is-data-agg-blurb =
     Ne tasentalilis ipal datoj, u tanamakani ipal datoj, kipena ne iinformación tukniwan, 
     kiana wan kikuilia ujuksé compañíaj. Kisentepewat ini datoj pal kinamaka ujuksé compañiaj 
@@ -180,8 +180,8 @@ avoid-personal-info-blurb = Te uij muajsit ne tunal tinesik, mudirección, wan n
 
 ## What to do after data breach tips
 
-change-pw = Shikpata mutaketzalis ichtaka
-change-pw-site = Shikpata ne taketzalis ichtaka ipal ini sitioj
+change-pw = Shikpata muichtakatajkwilul
+change-pw-site = Shikpata ne ichtakatajkwilul ipal ini tzawalamat
 even-for-old = Ipal ne cuejcuentaj palikman, nemi pal tikyankwilia mutaketzalis ichtaka.
 make-new-pw-unique = Shikchiwa ne yankwik taketzalis ichtaka tekenha wan isel
 strength-of-your-pw = Asu mutaketzalis ichtaka tajpaltik, ijkiuni timupalewia tik ne matapan
