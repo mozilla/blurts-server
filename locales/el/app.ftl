@@ -36,6 +36,7 @@ user-add-invalid-email = Άκυρο email
 user-add-too-many-emails = Παρακολουθείτε τον μέγιστο αριθμό διευθύνσεων email.
 user-add-email-verify-subject = Επαληθεύστε τη συνδρομή σας στο { -product-name }.
 user-add-duplicate-email = Αυτό το email έχει ήδη προστεθεί στο { -product-name }.
+user-add-duplicate-email-part-2 = Επισκεφθείτε τις { $preferencesLink } σας για να ελέγξετε την κατάσταση του { $userEmail }.
 error-headline = Σφάλμα
 user-verify-token-error = Απαιτείται διακριτικό επαλήθευσης.
 user-verify-email-report-subject = Η αναφορά σας για το { -product-name }
@@ -123,18 +124,26 @@ latest-breach = ΠΡΟΣΤΕΘΗΚΕ Η ΤΕΛΕΥΤΑΙΑ ΔΙΑΡΡΟΗ
 # Link title
 more-about-this-breach = Σχετικά με αυτή τη διαρροή
 take-control = Ανακτήστε τον έλεγχο των προσωπικών σας δεδομένων.
+cant-stop-hackers = Δεν μπορείτε να εμποδίσετε τους χάκερ από το να χακάρουν. Αλλά μπορείτε να αποφύγετε τις κακές συνήθειες που κάνουν τη δουλειά τους εύκολη.
 read-more-tips = Διαβάστε περισσότερες συμβουλές ασφαλείας
 how-hackers-work = Κατανοήστε πώς λειτουργούν οι χάκερ
 monitor-your-online-accounts = Εγγραφείτε για παρακολούθηση παραβιάσεων με ένα { -brand-fxa }.
 stay-alert = Μείνετε σε εγρήγορση για νέες παραβιάσεις
 if-your-info = Αν οι πληροφορίες σας εμφανιστούν σε νέα παραβίαση δεδομένων, θα σας ειδοποιήσουμε.
+search-all-emails = Αναζητήστε όλες τις διευθύνσεις email σας για παραβιάσεις και λάβετε ειδοποιήσεις σχετικά με νέες απειλές.
 monitor-several-emails = Εποπτεία πολλών emails
-website-breach = Διαρροή ιστοσελίδας
+take-action = Λάβετε μέτρα για την προστασία των λογαριασμών σας
+keep-your-data-safe = Μάθετε τι πρέπει να κάνετε για να διατηρήσετε τα δεδομένα σας ασφαλή από εγκληματίες του κυβερνοχώρου.
+website-breach = Παραβίαση ιστοσελίδας
 sensitive-breach = Παραβίαση ευαίσθητης ιστοσελίδας
-unverified-breach = Μη επαληθευμένη διαρροή
+data-aggregator-breach = Παραβίαση συγκέντρωσης δεδομένων
+unverified-breach = Μη επαληθευμένη παραβίαση
+spam-list-breach = Παραβίαση λίστας ανεπιθύμητων
 website-breach-plural = Διαρροές ιστοσελίδας
-sensitive-breach-plural = Ευαίσθητες διαρροές
-unverified-breach-plural = Μη επαληθευμένες διαρροές
+sensitive-breach-plural = Ευαίσθητες παραβιάσεις
+data-aggregator-breach-plural = Παραβιάσεις συγκέντρωσης δεδομένων
+unverified-breach-plural = Μη επαληθευμένες παραβιάσεις
+spam-list-breach-plural = Παραβιάσεις λίστας ανεπιθύμητων
 what-data = Ποια δεδομένα παραβιάστηκαν:
 sensitive-sites = Πώς αντιμετωπίζει το { -product-name } τις ευαίσθητες ιστοσελίδες;
 delayed-reporting-headline = Γιατί πέρασε τόσος καιρός πριν αναφερθεί αυτή η διαρροή;
@@ -286,6 +295,12 @@ sign-in-nested = σύνδεση
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
 manage-all-emails = Διαχείριση όλων των διευθύνσεων email στις { $preferencesLink }.
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Ειδοποιήσεις παραβιάσεων
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Προστέθηκε διαρροή:
