@@ -66,11 +66,11 @@ share-facebook-headline = Shikita asu mudatoj kichtektiwit ichtaka.
 share-facebook-blurb = Tichikuyulua ajaka kichtek ush kineki kikwi ne mukwejkwentaj online?
 og-site-description = Shikita asu ajaka kichtek ichtaka mudatoj iwan { -product-name }. Shikchiwa se cuentaj pal timetznawatisket wan timetzmachtisket  ken tiktajpia mucuentaj.
 show-all = Shikneshti muchi
-fxa-scan-another-email = Tikneki tikpepeta ukse correoj?
+fxa-scan-another-email = Tikneki tikpepeta ukse titantukayit?
 sign-in = Shiktali mutukay
 sign-out = Shikishti mutukay
 # Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Shitajpia { -brand-fxa }
+manage-fxa = Shiktuktia { -brand-fxa }
 have-an-account = Tikpia se cuentaj?
 fxa-pwt-summary-2 = Ne taketzalis ichtaka kutu u iwan maya se taketzalis, yaja te uij pal kimatit ne hackers.
 fxa-pwt-summary-4 = Tajpianimet ipal taketzalis ichtaka ken 1Password, LastPass, Dashlane, wan Bitwarden kiana mutajtaketzalis ichtaka wan kiishtukilia mumaku. Yejemet yawit kichiwat tajtaketzalis ichtaka chupiuk tajpaltik.
