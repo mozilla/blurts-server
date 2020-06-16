@@ -28,6 +28,7 @@ verify-email-cta = Επαλήθευση email
 see-all-breaches = Προβολή όλων των παραβιάσεων
 # Headline of verification email
 email-link-expires = Αυτός ο σύνδεσμος λήγει σε 24 ώρες
+email-verify-blurb = Επαληθεύστε το email σας για να το προσθέσετε στο { -product-name } και εγγραφείτε για ειδοποιήσεις παραβίασης.
 # Email headline
 email-found-breaches-hl = Ορίστε μια σύνοψη των προηγούμενων παραβιάσεων δεδομένων
 # Email headline
