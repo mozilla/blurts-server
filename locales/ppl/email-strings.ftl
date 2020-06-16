@@ -30,6 +30,10 @@ see-all-breaches = Shikita Muchi Tapetawalis
 email-link-expires = Ini ilpika puliwi tik 24 horaj.
 email-verify-blurb = Shiknelti mutitantukay pal tiktalia iwan { -product-name } wan shiktali mutukay pal tiknawatiat tapetawalis.
 # Email headline
+email-found-breaches-hl = Nikan nemi mutapualis ipal tamatilichtekilis
+# Email headline
+email-breach-summary-for-email = Ne itapualis ne tamatilichtekilis ipal { $userEmail }
+# Email headline
 email-no-breaches-hl = { $userEmail } nest tik 0 tamatil tapetawalis
 # Email headline
 email-alert-hl = { $userEmail } nesik tik se yankwik tamatil tapetawalis
@@ -41,7 +45,20 @@ email-subject-no-breaches = { -product-name } te kiajsik se tapetawal
 email-subject-verify = Shiknelti mutitantukay ipal { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Shimumachti ipanpa { $fxmLink }
+email-sensitive-disclaimer =
+    Ipanpa ne taichtekilis ichtaka, ne titanamat te weli mutemua.
+    Tikselia ini tanawatilis ika taja ne itekuyu ini titantukayit.
+fxm-warns-you-no-breaches =
+    { -product-name } metznawatia ipanpa se tamatil taichtekilis ne nemi itech mutamatilisyu.
+    Ijkiashan, te kanaj se taichtekilis. Tiu-timetznawatiat asu mutitantukay nesi tik se yankwik taichtekilis.
+fxm-warns-you-found-breaches =
+    { -product-name } metznawatia ipanpa se tamatil taichtekilis ne nemi itech mutamatilisyu.
+    Nusan tiktalijtuk mutukay pal tikselia tanawatilis asu mutitantukay nesi tik se yankwik taichtekilis.
+email-breach-alert-blurb =
+    { -product-name } metznawatia ipanpa se tamatil taichtekilis ne nemi itech mutamatilisyu.
+    San tikselijket tamatilis ipanpa se taichtekilis tik seuk tekipan.
 # Subject line of email
 pre-fxa-subject = Se tayankwililis ipal { -product-name }
+pre-fxa-tout-3 = Shiktukti senpa ne amatukayit tanawatilis
 # Button at the bottom of pre-fxa email.
 create-account = Shikchiwa Ishtapual
