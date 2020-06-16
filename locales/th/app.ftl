@@ -33,6 +33,7 @@ home-not-found = ไม่พบหน้า
 oauth-invalid-session = วาระไม่ถูกต้อง
 scan-title = { -product-name }: ผลลัพธ์การสแกน
 user-add-invalid-email = อีเมลไม่ถูกต้อง
+user-add-too-many-emails = คุณกำลังตรวจสอบจำนวนสูงสุดของอีเมล
 user-add-email-verify-subject = ยืนยันการบอกรับ { -product-name } ของคุณ
 user-add-duplicate-email = อีเมลนี้ได้ถูกเพิ่มไปยัง { -product-name } แล้ว
 user-add-duplicate-email-part-2 = เยี่ยมชม { $preferencesLink } ของคุณเพื่อตรวจสอบสถานะของ { $userEmail }
