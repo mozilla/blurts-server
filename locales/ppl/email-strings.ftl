@@ -8,6 +8,12 @@ report-date = Itunal ne Tenewalis:
 email-address = Titantukayit:
 # Unsubscribe link in email.
 email-unsub-link = Shinechkishti
+# Email headline
+email-no-breaches-hl = { $userEmail } nest tik 0 tamatil tapetawalis
+# Email headline
+email-alert-hl = { $userEmail } nesik tik se yankwik tamatil tapetawalis
+# Subject line of email
+email-subject-found-breaches = { -product-name } kiajsik mutamatilis tik se tapetawalis
 # Subject line of email
 email-subject-no-breaches = { -product-name } te kiajsik se tapetawal
 # Subject line of email
