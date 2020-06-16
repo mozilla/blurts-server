@@ -57,6 +57,10 @@ fxm-warns-you-found-breaches =
 email-breach-alert-blurb =
     { -product-name } metznawatia ipanpa se tamatil taichtekilis ne nemi itech mutamatilisyu.
     San tikselijket tamatilis ipanpa se taichtekilis tik seuk tekipan.
+# List headline
+faq-list-headline = Tay Senpa Tajtanit
+# Link Title
+faq-v2-1 = Te nikishmati ini tekipan u tzawalamat. Taika ninemi tik ini taichtekilis?
 # Subject line of email
 pre-fxa-subject = Se tayankwililis ipal { -product-name }
 pre-fxa-tout-3 = Shiktukti senpa ne amatukayit tanawatilis
