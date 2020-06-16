@@ -61,6 +61,10 @@ email-breach-alert-blurb =
 faq-list-headline = Tay Senpa Tajtanit
 # Link Title
 faq-v2-1 = Te nikishmati ini tekipan u tzawalamat. Taika ninemi tik ini taichtekilis?
+# Link Title
+faq-v2-2 = Ninemi pal nikchiwa taya asu panuk se taichtekilis ashan miak shiwit wan asu ini ishtapual te yankwik?
+# Link Title
+faq-v2-3 = San nikmatki ka ninemi tik se tamatil taichtekilis. Tay nikchiwa?
 # Subject line of email
 pre-fxa-subject = Se tayankwililis ipal { -product-name }
 pre-fxa-tout-3 = Shiktukti senpa ne amatukayit tanawatilis
