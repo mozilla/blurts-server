@@ -16,4 +16,4 @@ fx-makes-tech = { -brand-name } ne tepustekitilis ka kimanawia ne mutajpialis ka
 # A link at the bottom of the Bento menu
 made-by-mozilla = Ne Kichiwtuk { -brand-Mozilla }
 # Aria label for button that closes the Bento menu
-mobile-close-bento-button-title = Shiktzakwa
+mobile-close-bento-button-title = Shiktzakwa ne tatemulamat
