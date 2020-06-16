@@ -8,6 +8,10 @@ report-date = Itunal ne Tenewalis:
 email-address = Titantukayit:
 # Unsubscribe link in email.
 email-unsub-link = Shinechkishti
+# Button text
+verify-email-cta = Shiknelti Titantukayit
+# Button text
+see-all-breaches = Shikita Muchi Tapetawalis
 # Email headline
 email-no-breaches-hl = { $userEmail } nest tik 0 tamatil tapetawalis
 # Email headline
@@ -20,5 +24,7 @@ email-subject-no-breaches = { -product-name } te kiajsik se tapetawal
 email-subject-verify = Shiknelti mutitantukay ipal { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Shimumachti ipanpa { $fxmLink }
+# Subject line of email
+pre-fxa-subject = Se yankwika ipal { -product-name }
 # Button at the bottom of pre-fxa email.
 create-account = Shikchiwa Ishtapual
