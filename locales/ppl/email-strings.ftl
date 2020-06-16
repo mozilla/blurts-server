@@ -10,10 +10,25 @@ email-address = Titantukayit:
 legal = Tajtuli
 # Unsubscribe link in email.
 email-unsub-link = Shikishti mutukay
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb =
+    Tikselia ini titanamat ika tiktalijtuk mutukay iwan { -product-name }
+    tanawatilis. Tea tikneki ini titanamat? { $unsubLink }. Ini se titanamat. Ken tepalewilis, shikita { $faqLink }.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    Tikselia ini titanamat ika tiktalijtuk mutukay iwan { -product-name } tanawatilis.
+     Ini se titanamat. Ken tepalewilis, shikita { $faqLink }.
 # Button text
 verify-email-cta = Shiknelti Titantukayit
 # Button text
 see-all-breaches = Shikita Muchi Tapetawalis
+# Headline of verification email
+email-link-expires = Ini ilpika puliwi tik 24 horaj.
+email-verify-blurb = Shiknelti mutitantukay pal tiktalia iwan { -product-name } wan shiktali mutukay pal tiknawatiat tapetawalis.
 # Email headline
 email-no-breaches-hl = { $userEmail } nest tik 0 tamatil tapetawalis
 # Email headline
