@@ -6,8 +6,10 @@
 firefox-monitor-report = { -product-name } Shikteilwi
 report-date = Itunal ne Tenewalis:
 email-address = Titantukayit:
+# A link to legal information about mozilla products.
+legal = Tajtuli
 # Unsubscribe link in email.
-email-unsub-link = Shinechkishti
+email-unsub-link = Shikishti mutukay
 # Button text
 verify-email-cta = Shiknelti Titantukayit
 # Button text
@@ -25,6 +27,6 @@ email-subject-verify = Shiknelti mutitantukay ipal { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Shimumachti ipanpa { $fxmLink }
 # Subject line of email
-pre-fxa-subject = Se yankwil ipal { -product-name }
+pre-fxa-subject = Se tayankwililis ipal { -product-name }
 # Button at the bottom of pre-fxa email.
 create-account = Shikchiwa Ishtapual
