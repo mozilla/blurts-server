@@ -71,7 +71,7 @@ sign-in = Shiktali mutukay
 sign-out = Shikishti mutukay
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Shiktuktia { -brand-fxa }
-have-an-account = Tikpia se cuentaj?
+have-an-account = Tikpia se ishtapual?
 fxa-pwt-summary-2 = Ne taketzalis ichtaka kutu u iwan maya se taketzalis, yaja te uij pal kimatit ne hackers.
 fxa-pwt-summary-4 = Tajpianimet ipal taketzalis ichtaka ken 1Password, LastPass, Dashlane, wan Bitwarden kiana mutajtaketzalis ichtaka wan kiishtukilia mumaku. Yejemet yawit kichiwat tajtaketzalis ichtaka chupiuk tajpaltik.
 fxa-pwt-summary-6 =
