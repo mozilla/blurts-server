@@ -13,3 +13,7 @@ fx-mobile = { -brand-name } Tachialuni pal Matawikal
 
 # Bento headline
 fx-makes-tech = { -brand-name } ne tepustekitilis ka kimanawia ne mutajpialis ka matapan.
+# A link at the bottom of the Bento menu
+made-by-mozilla = Ne Kichiwtuk { -brand-Mozilla }
+# Aria label for button that closes the Bento menu
+mobile-close-bento-button-title = Shiktzakwa
