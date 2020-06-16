@@ -25,6 +25,6 @@ email-subject-verify = Shiknelti mutitantukay ipal { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Shimumachti ipanpa { $fxmLink }
 # Subject line of email
-pre-fxa-subject = Se yankwika ipal { -product-name }
+pre-fxa-subject = Se yankwil ipal { -product-name }
 # Button at the bottom of pre-fxa email.
 create-account = Shikchiwa Ishtapual
