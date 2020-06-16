@@ -248,6 +248,11 @@ email-addresses-being-monitored =
     }
 # Button
 see-additional-breaches = Προβολή επιπρόσθετων παραβιάσεων
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] Αυτό το email εμφανίστηκε σε 1 γνωστή παραβίαση δεδομένων.
+       *[other] Αυτό το email εμφανίστηκε σε { $breachCount } γνωστές παραβιάσεις δεδομένων.
+    }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
@@ -260,6 +265,7 @@ security-tips-headline = Συμβουλές ασφάλειας για να πρ�
 take-further-steps = Λάβετε περαιτέρω μέτρα για να προστατεύσετε την ταυτότητά σας
 alert-about-new-breaches = Ειδοποίηση σχετικά με νέες παραβιάσεις
 see-if-youve-been-part = Δείτε αν έχετε εμπλακεί σε διαρροή δεδομένων στο διαδίκτυο.
+get-ongoing-breach-monitoring = Λάβετε συνεχή εποπτεία παραβίασης για πολλαπλές διευθύνσεις email.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Μάθετε
 new-unsub-error = Θα πρέπει να καταργήσετε την εγγραφή σας από ένα από τα email που έστειλε το { -product-name }.
@@ -290,6 +296,8 @@ signed-in-as = Σε σύνδεση ως: { $userEmail }
 filter-by = Φιλτράρισμα κατά κατηγορία:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Μενού
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = Υπάρχει τρόπος να προστατέψετε το απόρρητό σας. Γίνετε μέλος του { -brand-name }.
 # Link title
 learn-more-link = Μάθετε περισσότερα.
 email-sent = Απεστάλη email!
@@ -329,6 +337,10 @@ see-additional-recs = Προβολή επιπρόσθετων προτάσεων
 ## Please do not modify or remove "<a>" and "</a>".
 
 resolve-top-notification = Το { $affectedEmail } εμφανίστηκε σε αυτή την παραβίαση. <a>Τι να κάνετε στη συνέχεια</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+       *[other] { $numAffectedEmails } από τις διευθύνσεις email σας εμφανίστηκαν σε αυτή την παραβίαση. <a>Τι να κάνετε στη συνέχεια</a>
+    }
 
 ##
 
