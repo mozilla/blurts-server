@@ -154,10 +154,7 @@ fxm-warns-you =
 # How Firefox Monitor works
 how-fxm-works = Ken { -product-name } tekiti
 how-fxm-1-headline = Shiktemu se chupi
-how-fxm-1-blurb =
-    Shiktemu ne mudirección ipal correoj tik ne kaltapanalis ipal datoj públicoj 
-    desde 2007. Ini tatemulis yu-kineshtia kachka muchi ne kaltapanalis ipal datoj, pero tesu 
-    yu-kineshtia ne kipiat información ichtaka tupal.
+how-fxm-1-blurb = Shiktemu ne mutitantukay tik ne tamatilichtekilis ne pejket tik 2007. Ini tatemulis yu-kineshtia kachka muchi ne tamatilichtekilis, pero tesu yu-kineshtia ichtaka tamatilis mupanpa.
 how-fxm-2-headline = Shiktali mutukay pal metznawatia ipanpa ne kaltapanalis
 how-fxm-2-blurb =
     Shikchiwa se { -brand-fxa } pal tikpepeta kaltapanalis wijwitz. 
