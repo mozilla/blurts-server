@@ -67,6 +67,7 @@ hibp-attribution = Taq juq'attzij rech nimanem taj ya'om rumal
 share-twitter = Nima konojel winaq k'o 100 kikemb'i'aj pa nimk'atz. Wene k'o jun awech b'anom k'ax chech? chawila'
 share-facebook-headline = Chawila' we k'o k'ax b'anom chech ajuq'attzij
 share-facebook-blurb = Wene xeya'taj pa uk'axal taq akemb'i'aj le e k'o pa nimk'atz'.
+og-site-description = Chawila' we k'o taq k'eyowal b'anom chi awech rech taq juq'attzij ruk' { -product-name }. Chatz'ib'aj awib' chech uk'ulaxik chi rij taq uk'axk'olil aq'anoq chi'l chariqa' taq no'jib'al chech uchajixik taq akem'iaj
 show-all = Uk'utik ronojel
 fxa-scan-another-email = ¿La kawaj kaq'atuj jun chi taqoqxa'n?
 sign-in = Umajixik kemchak
