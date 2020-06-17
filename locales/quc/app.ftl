@@ -126,6 +126,8 @@ take-action = Chab'ana' jachike rajawaxik chech uchajixik taq kemb'i'aj
 keep-your-data-safe = Che'ariqa' jas kab'ano chech uchajixik taq juq'attzij chech uq'atexik taq kemelaq'omab'.
 website-breach = k'axk'olil rech uk'olib'al web'
 sensitive-breach = Na'b'alil k'eyowal rech taq uk'olib'al web'
+data-aggregator-breach = K'eyowal rech ya'l taq juq'attzij.
+unverified-breach = K'eyowal man q'atutal taj
 
 ## What to do after data breach tips
 
