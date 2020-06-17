@@ -79,7 +79,7 @@ monitor-several-emails = متعدد ای میلز کی نگرانی کریں
 delayed-reporting-headline = اس خلاف ورزی کی رپورٹ دینے میں اتنا وقت کیوں لگا؟
 about-fxm-headline = { -product-name } کے بارے میں
 # How Firefox Monitor works
-how-fxm-works = { -product-name } کس طرح کام کرتا ہے
+how-fxm-works = { -product-name } کیسے کام کرتا ہے
 how-fxm-1-headline = ایک بنیادی تلاش کریں
 how-fxm-3-headline = اپنے براؤزر میں اطلاعات حاصل کریں
 protect-your-privacy = اپنی آن لائن رازداری کی حفاظت کریں
