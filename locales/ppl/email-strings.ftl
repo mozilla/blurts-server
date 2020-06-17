@@ -83,6 +83,9 @@ pre-fxa-p-1 =
     <a>Shikchiwa se ishtapual</a> pal tikishkupawia san 15 titantukayit ipal 
     tamatil taichtekilis. Tinat ma shiktali ankakeski titantukayit tikpia pal kichiwa ishtapal ka matapan.
 pre-fxa-tout-2 = Shikilwiti ne itachialis ne tamatil
+pre-fxa-p-2 =
+    Shikita muchi tamatil taichtekilis ka senkak pal tikmati katiawel ichtakatajkwilul pal tikpata.
+    Ne taichtekilis tamatiltachialis semaya ijtuk iwan se ishtapual.
 pre-fxa-tout-3 = Shiktukti senpa ne amatukayit tanawatilis
 # Button at the bottom of pre-fxa email.
 create-account = Shikchiwa Ishtapual
