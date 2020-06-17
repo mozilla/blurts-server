@@ -79,6 +79,9 @@ pre-fxa-blurb =
     Ini tay mupatak kwak tipan tiktalij mutukay tik { -product-name } , ne tayekultilis ne 
     kishkupawia tamatil taichtekilis kan nemi mutamatilsyu. Tiknepanuat iwan ne Firefox ishtapal.
 pre-fxa-tout-1 = Shikchia asu nemi seuk taichtekilis
+pre-fxa-p-1 =
+    <a>Shikchiwa se ishtapual</a> pal tikishkupawia san 15 titantukayit ipal 
+    tamatil taichtekilis. Tinat ma shiktali ankakeski titantukayit tikpia pal kichiwa ishtapal ka matapan.
 pre-fxa-tout-3 = Shiktukti senpa ne amatukayit tanawatilis
 # Button at the bottom of pre-fxa email.
 create-account = Shikchiwa Ishtapual
