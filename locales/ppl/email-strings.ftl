@@ -25,22 +25,22 @@ email-verify-footer-copy =
 # Button text
 verify-email-cta = Shiknelti Titantukayit
 # Button text
-see-all-breaches = Shikita Muchi Tapetawalis
+see-all-breaches = Shikita Muchi Taichtekilis
 # Headline of verification email
 email-link-expires = Ini ilpika puliwi tik 24 horaj.
-email-verify-blurb = Shiknelti mutitantukay pal tiktalia iwan { -product-name } wan shiktali mutukay pal tiknawatiat tapetawalis.
+email-verify-blurb = Shiknelti mutitantukay pal tiktalia iwan { -product-name } wan shiktali mutukay pal tiknawatiat taichtekilis.
 # Email headline
 email-found-breaches-hl = Nikan nemi mutapualis ipal tamatilichtekilis
 # Email headline
 email-breach-summary-for-email = Ne itapualis ne tamatilichtekilis ipal { $userEmail }
 # Email headline
-email-no-breaches-hl = { $userEmail } nest tik 0 tamatil tapetawalis
+email-no-breaches-hl = { $userEmail } nest tik 0 tamatil taichtekilis
 # Email headline
-email-alert-hl = { $userEmail } nesik tik se yankwik tamatil tapetawalis
+email-alert-hl = { $userEmail } nesik tik se yankwik tamatil taichtekilis
 # Subject line of email
-email-subject-found-breaches = { -product-name } kiajsik mutamatilis tik se tapetawalis
+email-subject-found-breaches = { -product-name } kiajsik mutamatilis tik se taichtekilis
 # Subject line of email
-email-subject-no-breaches = { -product-name } te kiajsik se tapetawal
+email-subject-no-breaches = { -product-name } te kiajsik se taichtekilis
 # Subject line of email
 email-subject-verify = Shiknelti mutitantukay ipal { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
@@ -87,5 +87,8 @@ pre-fxa-p-2 =
     Shikita muchi tamatil taichtekilis ka senkak pal tikmati katiawel ichtakatajkwilul pal tikpata.
     Ne taichtekilis tamatiltachialis semaya ijtuk iwan se ishtapual.
 pre-fxa-tout-3 = Shiktukti senpa ne amatukayit tanawatilis
+pre-fxa-p-3 =
+    Kenhayuk tikselis tanawatilis ipal { -product-name }. Timetznawatisket asu mutamatilisyu
+    ijtuk tik se yankwik tamatilichtekilis.
 # Button at the bottom of pre-fxa email.
 create-account = Shikchiwa Ishtapual
