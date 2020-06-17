@@ -12,7 +12,7 @@ fx-mobile = { -brand-name } Tachialuni pal Matawikal
 ##
 
 # Aria label for the Bento button
-bento-button-title = { -brand-name } tajtatka wan tayekultilis
+bento-button-title = { -brand-name } tatka wan tayekultilis
 # Bento headline
 fx-makes-tech = { -brand-name } ne tepustekitilis ka kimanawia ne muichtakayu ka matapan.
 # A link at the bottom of the Bento menu
