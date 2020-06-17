@@ -1,3 +1,3 @@
 ## Breach Data Classes
 
-account-balances = Ishtapualtatka
+account-balances = Ishpualtatka
