@@ -67,7 +67,7 @@ hibp-attribution = Taq juq'attzij rech nimanem taj ya'om rumal
 share-twitter = Nima konojel winaq k'o 100 kikemb'i'aj pa nimk'atz. Wene k'o jun awech b'anom k'ax chech? chawila'
 share-facebook-headline = Chawila' we k'o k'ax b'anom chech ajuq'attzij
 share-facebook-blurb = Wene xeya'taj pa uk'axal taq akemb'i'aj le e k'o pa nimk'atz'.
-og-site-description = Chawila' we k'o taq k'eyowal b'anom chi awech rech taq juq'attzij ruk' { -product-name }. Chatz'ib'aj awib' chech uk'ulaxik chi rij taq uk'axk'olil aq'anoq chi'l chariqa' taq no'jib'al chech uchajixik taq akem'iaj
+og-site-description = Chawila' we k'o taq k'eyowal b'anom chi awech rech taq juq'attzij ruk' { -product-name }. Chatz'ib'aj awib' chech uk'ulaxik chi rij taq uk'eyowal aq'anoq chi'l chariqa' taq no'jib'al chech uchajixik taq akemb'i'aj.
 show-all = Uk'utik ronojel
 fxa-scan-another-email = ¿La kawaj kaq'atuj jun chi taqoqxa'n?
 sign-in = Umajixik kemchak
@@ -125,6 +125,7 @@ monitor-several-emails = Che'awilawachij k'ialaj taq taq'oqxa'n
 take-action = Chab'ana' jachike rajawaxik chech uchajixik taq kemb'i'aj
 keep-your-data-safe = Che'ariqa' jas kab'ano chech uchajixik taq juq'attzij chech uq'atexik taq kemelaq'omab'.
 website-breach = k'axk'olil rech uk'olib'al web'
+sensitive-breach = Na'b'alil k'eyowal rech taq uk'olib'al web'
 
 ## What to do after data breach tips
 
