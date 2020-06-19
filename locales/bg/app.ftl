@@ -5,10 +5,16 @@
 -product-short-name = монитор
 -brand-name = Firefox
 -brand-Mozilla = Mozilla
+-brand-fxa = Firefox Account
+-brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
+-brand-send = Firefox Send
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = сметка на Firefox
 terms-and-privacy = Условия и поверителност
 GitHub-link-title = GitHub
 home-not-found = Страницата не е намерена.
