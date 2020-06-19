@@ -37,6 +37,8 @@ unsub-button = Отписване
 
 ## Updated error messages
 
+# Link title
+learn-more-link = Научете повече.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
