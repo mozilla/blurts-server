@@ -114,7 +114,7 @@ rec-gen-3-subhead = Be cautious about giving out personal information
 rec-gen-3-cta = Read more security tips
 rec-gen-3 =
     Don’t hand out personal data if you don’t have to. If you are asked to 
-    enter or give out your email address, ZIP code, or phone number, you can say no.
+    enter or give out your email address, postal code, or phone number, you can say no.
 # Recommendation subhead
 rec-gen-4-subhead = Update software and apps regularly
 rec-gen-4 =
