@@ -17,22 +17,22 @@
 
 terms-and-privacy = Tay nechtuktia wan Teichtakayu
 GitHub-link-title = GitHub
-error-scan-page-token = Tiktemujtuk miak titantukait tik achi kawit. Ken tamanawilis, tiktzaktiwit ka tikchiwa yankwik tatemulis. Shikejeku neman.
-error-could-not-add-email = Te tiktalijket ne titantukait tik ne tamatilkimil.
-error-not-subscribed = Ini correoj tesu kipia itukay tik { -product-name }.
+error-scan-page-token = Tiktemujtuk miak amatitantukayit tik achi kawit. Ken tamanawilis, tiktzaktiwit ka tikchiwa yankwik tatemulis. Shikejeku neman.
+error-could-not-add-email = Te tiktalijket ne amatitantukayit tik ne tamatilkimil.
+error-not-subscribed = Ini amatitantukayit tesu kipia itukay tik { -product-name }.
 error-hibp-throttled = Miak nemit sajsalujtuk itech { -brand-HIBP }.
 error-hibp-connect = Te welik musalua itech { -brand-HIBP }.
 error-hibp-load-breaches = Te kineshtia keman kinekit kalakit ichtaka
 error-must-be-signed-in = Nemi pal tikpia mutukay ijtik { -brand-fxa }.
-error-to-finish-verifying = Pal titamia tikita yek ini correoj ipal { -product-name }, nemi pal tikpia mutukay ken ne achtu cuentaj ipal ne correoj.
+error-to-finish-verifying = Pal titamia tikita yek ini amatitanti ipal { -product-name }, nemi pal tikpia mutukay ken ne achtu cuentaj ipal ne amatitanti.
 home-title = { -product-name }
 home-not-found = Iswat te muajsik.
 oauth-invalid-session = Ne sesión tesu yek
 scan-title = { -product-name } : Shikchiwa escanear ne tay kiski
-user-add-invalid-email = Correoj te yek
-user-add-too-many-emails = Tikpepeta muchi ne correoj weli tikpepeta
+user-add-invalid-email = Te Yek Amatitanti
+user-add-too-many-emails = Tikpepeta muchi ne amatitantukayit weli tikpepeta
 user-add-email-verify-subject = Shikita su yek nemi mutukay tik { -product-name }.
-user-add-duplicate-email = Ini correoj mutalijtuka tik { -product-name }.
+user-add-duplicate-email = Ini amatitanti mutalijtuka tik { -product-name }.
 user-add-duplicate-email-part-2 = Shipashalu tik mu { $preferencesLink } pal tikpepeta ne estadoj ipal { $userEmail }.
 error-headline = Tatakul
 user-verify-token-error = Kineki se token pal tikita yek.
@@ -42,9 +42,9 @@ user-unsubscribe-token-email-error = Pal tikishtia mutukay, kineki se token wan 
 user-unsubscribe-title = { -product-name } : Shikishti mutukay
 pwt-section-headline = Taketzalis ichtaka = Chupiuk tajpialis
 landing-headline = Nikan tipewa timutajpia itech ne hackers.
-scan-placeholder = Shikalakti itukay correoj
-scan-submit = Shiktemu mucorreoj
-scan-error = Ma yek ne correoj.
+scan-placeholder = Shikalakti ne Amatitantukayit
+scan-submit = Shiktemu Muamatitantukay
+scan-error = Muneki se yek amatitanti.
 download-firefox-banner-button = Shiktemulti { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Mutitanijtuk!
@@ -373,6 +373,7 @@ menu = Tapejpenalamat
 join-firefox = Weli tikmanawia muichtakayu. Shikishtuka { -brand-name }.
 # Link title
 learn-more-link = Shimumachtiuk!
+email-sent = Ne amatitanti yajtuk!
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
