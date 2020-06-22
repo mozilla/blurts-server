@@ -359,6 +359,11 @@ breach-overview-title = Ken nesi muchi
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = Ne { $breachDate }, mukaltapanket tik { $breachTitle }. Kan muajsik wan muyekitak ne mukaltapanalis, yaja mutalij tik ne basej dajdatoj tik { $addedDate }.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = Mutanekilisyu
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Timukalaktij ken: { $userEmail }
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
