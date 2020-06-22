@@ -49,7 +49,7 @@ download-firefox-banner-button = Shiktemulti { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Mutitanijtuk!
 sign-up = Shikchiwa mucuentaj
-form-signup-error = Shiktali se itukay correoj kia tekiti
+form-signup-error = Muneki se yek amatitanti.
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Keman kinekit kalakit ichtaka:
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -57,7 +57,7 @@ compromised-accounts = Cuejcuentaj ijtakujtuk:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Keman ijtakawij:
 unsub-headline = Shikishti mutukay tik { -product-name-nowrap }
-unsub-blurb = Yajini yawi kishtia ne itukay mucorreoj tik ne listaj { -product-name-nowrap } wan tea yawit metznawatia keman kinekit kalakit ichtaka uksenpa.
+unsub-blurb = Yajini yawi kishtia ne itukay muamatitan tik ne listaj { -product-name-nowrap } wan tea yawi metznawatia keman kinekit kalakit ichtaka uksenpa.
 unsub-button = Shikishti mutukay
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = { $hibp-link } tamakak ne datoj ipanpa ne kaltapanalis
@@ -373,7 +373,7 @@ menu = Tapejpenalamat
 join-firefox = Weli tikmanawia muichtakayu. Shikishtuka { -brand-name }.
 # Link title
 learn-more-link = Shimumachtiuk!
-email-sent = Ne amatitanti yajtuk!
+email-sent = Ne amatitanti mutitanijtuk!
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
