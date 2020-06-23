@@ -255,8 +255,16 @@ error-csrf-headline = Ο χρόνος συνεδρίας έληξε
 # your localization, because it would result in the number showing twice.
 email-addresses-being-monitored =
     { $emails ->
-        [one] Διεύθυνση email υπό εποπτεία
-       *[other] Διευθύνσεις email υπό εποπτεία
+        [one] διεύθυνση email υπό εποπτεία
+       *[other] διευθύνσεις email υπό εποπτεία
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] γνωστή παραβίαση δεδομένων έχει εκθέσει τις πληροφορίες σας
+       *[other] γνωστές παραβιάσεις δεδομένων έχουν εκθέσει τις πληροφορίες σας
     }
 # Button
 see-additional-breaches = Προβολή επιπρόσθετων παραβιάσεων
