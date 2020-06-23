@@ -305,6 +305,7 @@ other-monitored-emails = İzlenen diğer e-postalar
 email-verification-required = E-posta doğrulaması gerekiyor
 fxa-primary-email = { -brand-fxa } e-postası - birincil
 what-is-a-website-breach = Web sitesi ihlali nedir?
+website-breach-blurb = Siber suçlular çevrimiçi hesaplardan kişisel bilgileri çaldığında, kopyaladığında veya ifşa ettiğinde web sitesinde veri ihlali meydana gelir. Genellikle hacker'ların web sitesinin güvenliğinde zayıf bir nokta bulması sonucunda oluşur. Hesap bilgileri kazayla sızdırıldığında da ihlaller meydana gelebilir.
 security-tips-headline = Hacker’lardan korunmanız için güvenlik ipuçları
 steps-to-protect = Çevrimiçi kimliğinizi korumak için yapmanız gerekenler
 take-further-steps = Kimliğinizi korumak için birkaç adım daha atın
@@ -410,6 +411,11 @@ resolve-top-notification-plural =
 ##
 
 marking-this-subhead = Bu ihlali çözüldü olarak işaretleyebilirsiniz
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Bu ihlali gidermek için gereken adımları attıktan sonra</span> onu
+    "çözüldü" olarak işaretleyebilirsiniz. İhlal ile ilgili bilgilere panonuzdan istediğiniz zaman erişebilirsiniz.
 mark-as-resolve-button = Çözüldü olarak işaretle
 marked-as-resolved-label = Çözüldü olarak işaretlendi
 undo-button = Geri al
@@ -448,6 +454,12 @@ progress-complete = Bilinen tüm ihlaller çözüldü olarak işaretlendi
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>Harika bir başlangıç yaptınız!</span> Atabileceğiniz diğer adımları öğrenmek için 
+    kalan ihlallere göz atın.
+progress-message-2 =
+    <span>Böyle devam edin!</span> Parolalarınızı güncellemek gibi küçük değişiklikler bile 
+    kişisel bilgilerinizin güvenliğini sağlamada büyük etki yaratabilir.
 progress-message-3 = <span>Bu ihlalleri çözmede iyi iş çıkardınız!</span> Böyle devam edin. Birkaç tane daha var.
 progress-message-4 = <span>Neredeyse bitti!</span> Bitiş çizgisine yakınsınız.
 
@@ -461,8 +473,11 @@ hide-resolved-button = Çözülenleri gizle
 show-resolved-button = Çözülenleri göster
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Yeni
+mobile-promo-headline = { -brand-name } uygulamasını telefon ve tabletinize indirin
+mobile-promo-body = Her yerde hızlı, gizli ve güvenli gezinti. { -brand-name } uygulamasını Google Play ve App Store’dan indirebilirsiniz.
 mobile-promo-cta = Android ve iOS için { -brand-name } uygulamasını indirin
 promo-lockwise-headline = Parolalarınızı yanınızda taşıyın
+lockwise-promo-body = Hesaplarınızı tüm cihazlarınızla eşitleyin. Onlara bilgisayarınızdan, telefonunuzdan veya tabletinizden güvenli bir şekilde erişin.
 promo-lockwise-cta = { -brand-lockwise } kullanın
 fpn-promo-headline = Web sitelerinden ve izleyicilerden konumunuzu saklayın
 promo-fpn-body = { -brand-fpn } gerçek IP adresinizi maskeleyerek, reklamlara dayalı profilinizi oluşturan web sitelerinden ve veri toplayıcılarından sizi kurtarır.

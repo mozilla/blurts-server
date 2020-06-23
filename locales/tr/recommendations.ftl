@@ -8,6 +8,8 @@ rec-pw-1-subhead = Parolanızı değiştirin
 rec-pw-1-cta = Bu sitedeki parolanızı değiştirin
 # Recommendation subhead
 rec-pw-2-subhead = Aynı parolayı kullanan diğer hesaplarınızı güncelleyin
+# Link title
+rec-pw-2-cta-fx = Hesapları { -brand-name } içinde görün
 # Recommendation subhead
 rec-pw-3-subhead = Parolalarınızı yanınızda taşımak için parola yöneticisi kullanın
 # Link title
