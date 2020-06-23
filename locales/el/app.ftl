@@ -339,7 +339,7 @@ manage-all-emails = Διαχείριση όλων των διευθύνσεων 
 breach-alert-notifications = Ειδοποιήσεις παραβιάσεων
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
-breach-added-label = Προστέθηκε διαρροή:
+breach-added-label = Ημερομηνία προσθήκης:
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Οι αλλαγές αποθηκεύτηκαν!
 # Button
@@ -356,7 +356,7 @@ resolve-top-notification-plural =
 
 ##
 
-marking-this-subhead = Γίνεται επισήμανση αυτής της παραβίασης ως επιλυμμένης
+marking-this-subhead = Επισήμανση αυτής της παραβίασης ως επιλυμμένης
 mark-as-resolve-button = Επισήμανση ως λυμένη
 marked-as-resolved-label = Επισημάνθηκε ως λυμένη
 undo-button = Αναίρεση
