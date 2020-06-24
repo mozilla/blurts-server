@@ -48,7 +48,7 @@ rec-bank-acc =
 rec-cc-subhead = Ehechameme kuatia’atã ñemuha kuatia
 rec-cc =
     Ema’ẽ tapiáke nde kuatia’atã ñemurã. Ikatu hína 
-    ejerure kuatia’atã ñemurã pyahu ipapapy pyahúva me'ẽhárape.
+    ejerure kuatia’atã ñemurã pyahu ipapapy pyahúva me’ẽhárape.
 # Recommendation subhead
 rec-ip-subhead = Eipuru mba’epuru omokañýva nde IP kundaharape
 # Link title
