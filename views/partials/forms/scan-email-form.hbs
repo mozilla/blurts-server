@@ -21,9 +21,21 @@
   {{/if}}
   <div class="input-group-button">
     {{#if featuredBreach}}
-        <input class="breachesSubmitButton add-metrics-flow-values" data-form_type="other" {{> analytics/fxa id="fx-monitor-find-out-blue-btn" }} type="submit" value="{{ getString "find-out" }}"/>
+        <input class="breachesSubmitButton add-metrics-flow-values" data-form_type="other"
+          {{#if experimentFlags.treatmentBranch }}
+            {{> analytics/fxa id="fx-monitor-homepage-find-out-blue-btn-exp4v2" }}
+          {{else}}
+            {{> analytics/fxa id="fx-monitor-homepage-find-out-blue-btn" }}
+          {{/if}}
+        type="submit" value="{{ getString "find-out" }}"/>
     {{else}}
-       <input class="breachesSubmitButton add-metrics-flow-values" data-form_type="other" {{> analytics/fxa id="fx-monitor-check-for-breaches-blue-btn" }} type="submit" value="{{ getString "check-for-breaches" }}"/>
+        <input class="breachesSubmitButton add-metrics-flow-values" data-form_type="other"
+          {{#if experimentFlags.treatmentBranch }}
+            {{> analytics/fxa id="fx-monitor-homepage-check-for-breaches-blue-btn-checked-exp4v2" }}
+          {{else}}
+            {{> analytics/fxa id="fx-monitor-homepage-check-for-breaches-blue-btn" }}
+          {{/if}}
+        type="submit" value="{{ getString "check-for-breaches" }}"/>
     {{/if}}
       {{> forms/loader }}
   </div>

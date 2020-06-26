@@ -12,6 +12,7 @@ function mockRequestSessionReset(mockRequest) {
     excludeFromExperiment: false,
     experimentBranch: false,
     treatmentBranch: false,
+    controlBranch: false,
   };
 
   mockRequest.headers = {
