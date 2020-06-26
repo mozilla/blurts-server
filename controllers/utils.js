@@ -33,25 +33,30 @@ function hasUserSignedUpForRelay(user) {
   return false;
 }
 
+function getTotalPercentage(variations) {
+    let percentage = 0;
+    // calculate and store total percentage of variations
+    for (const v in variations) {
+      if (variations.hasOwnProperty(v) && typeof variations[v] === "number") {
+        // multiply by 100 to allow for percentages to the hundredth
+        // (and avoid floating point math errors)
+        percentage += (variations[v] * 100);
+      }
+    }
+
+    const totalPercentage = percentage / 100;
+
+    // Make sure totalPercent is between 0 and 100
+    if (totalPercentage === 0 || totalPercentage > 100) {
+      throw new Error(`The total percentage ${totalPercentage} is out of bounds!`);
+    }
+
+    return percentage;
+}
+
 function chooseVariation(variations, sorterNum){
 
-  let totalPercentage = 0;
-
-  // calculate and store total percentage of variations
-  for (const v in variations) {
-    if (variations.hasOwnProperty(v) && typeof variations[v] === "number") {
-      // multiply by 100 to allow for percentages to the hundredth
-      // (and avoid floating point math errors)
-      totalPercentage += (variations[v] * 100);
-    }
-  }
-
-  totalPercentage = totalPercentage / 100;
-
-  // Make sure totalPercent is between 0 and 100
-  if (totalPercentage === 0 || totalPercentage > 100) {
-    throw new Error(`The total percentage ${totalPercentage} is out of bounds!`);
-  }
+  const totalPercentage = getTotalPercentage(variations);
 
   // make sure random number falls in the distribution range
   let runningTotal;
