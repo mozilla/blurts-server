@@ -5,6 +5,7 @@ const { URL } = require("url");
 const HIBP = require("./hibp");
 const sha1 = require("./sha1-utils");
 
+// Growth Experiment
 const AppConstants = require("./app-constants");
 const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
 const { getExperimentFlags } = require("./controllers/utils");
@@ -14,6 +15,7 @@ const scanResult = async(req, selfScan=false) => {
   const allBreaches = req.app.locals.breaches;
   let scannedEmail = null;
 
+  // Growth Experiment
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
   const title = req.fluentFormat("scan-title");
