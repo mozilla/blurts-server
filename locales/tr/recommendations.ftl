@@ -32,19 +32,51 @@ rec-pw-3-non-fx =
 rec-pw-4-subhead = İki aşamalı kimlik doğrulamasını (2FA) kullanın
 # Link title
 rec-pw-4-cta = 2FA sunan sitelere bakın
+rec-pw-4 =
+    Birçok web sitesi, ekstra bir güvenlik önlemi olarak 2FA (iki faktörlü doğrulama) sunar. Bu, hesabınıza 
+    giriş yapmak için kısa mesajla (SMS) aldığınız bir defalık kod gibi başka bir 
+    bilgiyi de girmenizi gerektirir.
 # Recommendation subhead
 rec-bank-acc-subhead = Banka hesap özetlerinizi takip edin
+rec-bank-acc =
+    Şüpheli etkinlik veya olağandışı ücretler için banka ekstrelerinizi kontrol edin. 
+    Tanımadığınız bir şey görürseniz bankanıza bildirin
 # Recommendation subhead
 rec-cc-subhead = Kredi kartı hesap özetlerinizi takip edin
+rec-cc =
+    Kredi kartınızdaki tuhaf ücretlere dikkat edin. 
+    Gerekirse kredi kartınızı iptal ederek yeni bir kredi kartı talep edin.
 # Recommendation subhead
 rec-ip-subhead = IP adresinizi gizleyen bir servis kullanın
+# Link title
+rec-ip-us-cta = { -brand-fpn }'i deneyin
+rec-ip-us =
+    IP adresiniz konumunuzu ve internet servis sağlayıcısınızı açığa çıkarır. { -brand-fpn } gibi bir hizmeti kullanarak
+    IP adresinizi maskeleyip konumunuzu gizleyebilirsiniz.
+rec-ip-non-us =
+    İnternet Protokolü adresiniz (IP adresi) konumunuzu ve internet servis 
+    sağlayıcınızı belirler. Sanal özel ağ (VPN) ile konumunuzu gizleyebilir ve 
+    IP adresinizi maskeleyebilirsiniz.
 rec-hist-pw-subhead = Aynı parolayı başka yerlerde kullanmayın
+# Link title
+rec-hist-pw-cta-fx = { -brand-name } hesaplarınızı görüntüleyin
+rec-hist-pw = Her hesap için benzersiz, güçlü parolalar kullanın. Veri ihlali durumunda bir parola açığa çıkarsa yalnızca bir hesabı güncellemeniz gerekir.
 # Recommendation subhead
 rec-sec-qa-subhead = Güvenlik soruları için benzersiz cevaplar oluşturun
+rec-sec-qa =
+    Birçok web sitesi aynı soruları sorar. Eğer bir cevap açığa çıkarsa 
+    bilgiler de açığa çıkar. Uzun ve rastgele cevaplar oluşturun ve bunları güvenli bir yerde saklayın.
 # Recommendation subhead
 rec-phone-num-subhead = Telefon numaranızı paylaşmaktan kaçının
+rec-phone-num =
+    Yeni hesaplara veya hizmetlere kaydolurken telefon numaranızı 
+    vermekten kaçının. Telefon numarası gerekmiyorsa numarayı girmeyin.
 # Recommendation subhead
 rec-dob-subhead = PIN’lerde kişisel bilgilerinizi kullanmaktan kaçının
+rec-dob =
+    Doğum tarihinizi herkese açık kayıtlarda bulmak kolay olduğundan, 
+    parolalarda ve PIN'lerde kullanmaktan kaçınmak en iyisidir. Doğum gününüzü 
+    bilen kişiler PIN'inizi kolayca tahmin edebilirler.
 # Recommendation subhead
 rec-pins-subhead = PIN’lerinizin güvenliğini güçlendirin
 rec-pins =
@@ -52,14 +84,24 @@ rec-pins =
     Sadece sizin bildiğiniz bir sayı olmalı ve kolayca tahmin edilememeli.
 # Recommendation subhead
 rec-address-subhead = Parolalarda adresinizi kullanmayın
+rec-address =
+    Adresleri veya büyüdüğünüz sokağı kullanmak parolalarınızı
+    zayıflatır. Bu bilgileri herkese açık olarak bulmak kolay olduğundan, bu şifrelerin 
+    tahmin edilmesini kolaylaştırır.
 # Recommendation subhead
 rec-gen-1-subhead = Her hesap için benzersiz ve güçlü parolalar kullanın
 # Link title
 rec-gen-1-cta = Güçlü parolalar nasıl oluşturulur?
+rec-gen-1 =
+    Aynı parolayı başka yerlerde de kullanamk tüm hesaplarınızı riske atar. Hacker'lar bir parolanızı 
+    ele geçirirse diğer hesaplarınıza da girebilirler.
 # Recommendation subhead
 rec-gen-2-subhead = Parolaları güvenli bir yerde saklayın
 # Link title
 rec-gen-2-cta = Parola yöneticileri hakkındaki efsaneler
+rec-gen-2 =
+    Hesaplarınızı parola yöneticisi gibi yalnızca sizin erişebileceğiniz güvenli bir yere kaydedin.  
+    Bu aynı zamanda tüm farklı parolalarınızı izlemenizi de kolaylaştırır.
 # Recommendation subhead
 rec-gen-3-subhead = Kişisel bilgilerinizi verirken dikkatli olun
 # Link title
