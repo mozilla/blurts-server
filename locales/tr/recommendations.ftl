@@ -93,7 +93,7 @@ rec-gen-1-subhead = Her hesap için benzersiz ve güçlü parolalar kullanın
 # Link title
 rec-gen-1-cta = Güçlü parolalar nasıl oluşturulur?
 rec-gen-1 =
-    Aynı parolayı başka yerlerde de kullanamk tüm hesaplarınızı riske atar. Hacker'lar bir parolanızı 
+    Aynı parolayı başka yerlerde de kullanmak tüm hesaplarınızı riske atar. Hacker'lar bir parolanızı 
     ele geçirirse diğer hesaplarınıza da girebilirler.
 # Recommendation subhead
 rec-gen-2-subhead = Parolaları güvenli bir yerde saklayın
