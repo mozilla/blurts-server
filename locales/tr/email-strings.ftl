@@ -65,10 +65,18 @@ monitor-another-email = Başka bir e-postayı izlemek ister misiniz?
 # Subject line of email
 pre-fxa-subject = { -product-name } haberleri
 pre-fxa-headline = { -product-name }'de neler değişiyor?
+pre-fxa-blurb =
+    Bilinen veri ihlallerinde kişisel verilerinizi izleyen { -product-name } hizmetine 
+    kaydolduğunuzdan bu yana bazı değişiklikler oldu. Bu hizmeti Firefox hesaplarına bağlıyoruz.
 pre-fxa-tout-1 = Daha fazla ihlale karşı tetikte kalın
 pre-fxa-p-1 =
     Veri ihlallerine karşı 15 adede kadar e-posta adresini izlemek için <a>hesap açın</a>. 
     Çevrimiçi hesaplar açarken kullandığınız tüm e-posta adreslerinizi eklemenizi öneririz.
+pre-fxa-tout-2 = Kontrol panelini görün
+pre-fxa-p-2 =
+    Tüm veri ihlallerini tek bir yerde görerek hangi parolaları değiştirmeniz gerektiğini anlayabilirsiniz.
+    Kontrol paneli yalnızca hesabınız varsa kullanılabilir.
 pre-fxa-tout-3 = E-posta uyarıları almaya devam et
+pre-fxa-p-3 = { -product-name } uyarılarını almaya devam edeceksiniz. Bilgileriniz yeni bir veri ihlalinde yer alırsa size haber vereceğiz.
 # Button at the bottom of pre-fxa email.
 create-account = Hesap oluştur

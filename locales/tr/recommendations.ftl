@@ -2,18 +2,32 @@
 rec-ssn-subhead = Kredi raporlarınızı inceleyin
 # Link title
 rec-ssn-cta = Kredi raporu isteyin
+rec-ssn =
+    ABD'de yasa gereği yılda üç ücretsiz kredi raporu alabilirsiniz. 
+    
+    Bunları talep etmek ve incelemek kredinizi etkilemez. 
+    
+    Tanımadığınız hesaplara, kredilere ve kredi kartlarına dikkat edin.
 # Recommendation subhead
 rec-pw-1-subhead = Parolanızı değiştirin
 # Link title
 rec-pw-1-cta = Bu sitedeki parolanızı değiştirin
+rec-pw-1 =
+    Benzersiz ve başka yerlerde kullanmadığınız bir parola seçin. 
+    Birbiriyle ilgisiz iki veya daha fazla kelimeyi birleştirerek iyi bir parola oluşturabilirsiniz.
 # Recommendation subhead
 rec-pw-2-subhead = Aynı parolayı kullanan diğer hesaplarınızı güncelleyin
 # Link title
 rec-pw-2-cta-fx = Hesapları { -brand-name } içinde görün
+rec-pw-2 = Aynı parolayı başka yerlerde de kullanmak, tek bir veri ihlalini birçok veri ihlaline dönüştürür. Hacker'lar artık bu parolayı diğer hesaplarınıza girmek için de kullanabilirler.
 # Recommendation subhead
 rec-pw-3-subhead = Parolalarınızı yanınızda taşımak için parola yöneticisi kullanın
 # Link title
 rec-pw-3-cta = { -brand-lockwise } kullanın
+rec-pw-3-fx = { -brand-name }’a kaydettiğiniz parolalara her yerden, hatta tarayıcı dışından bile güvenle erişmek için { -brand-lockwise }’ı kullanabilirsiniz.
+rec-pw-3-non-fx =
+    Tüm parolalarınızı kaydetmek ve onlara telefonunuzdan 
+    veya tabletinizden güvenli bir şekilde erişmek için { -brand-lockwise }’ı kullanın.
 # Recommendation subhead
 rec-pw-4-subhead = İki aşamalı kimlik doğrulamasını (2FA) kullanın
 # Link title
