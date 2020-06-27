@@ -420,6 +420,8 @@ mark-as-resolve-button = Çözüldü olarak işaretle
 marked-as-resolved-label = Çözüldü olarak işaretlendi
 undo-button = Geri al
 confirmation-1-subhead = Güzel! İlk ihlalinizi çözdünüz.
+confirmation-1-body = Böyle devam edin. Çözülecek diğer ihlalleri görmek için kontrol panelinize bakın.
+confirmation-2-subhead = Hacker’lara kapak olsun!
 confirmation-2-body = Çevrimiçi hesaplarınızı korumaya yönelik önemli adımlar atıyorsunuz.
 confirmation-3-subhead = Biri daha gitti. İyi iş!
 # This string contains nested markup that becomes a link later in the code.
@@ -444,6 +446,9 @@ num-resolved =
        *[other] { $numResolvedBreaches } çözüldü
     }
 progress-intro-subhead = Yeni { -product-name } özelliği: İhlalleri "çözüldü" olarak işaretleme
+progress-intro-message =
+    Bir ihlalle ilgili ayrıntıları inceleyip kişisel bilgilerinizi korumak için gereken adımları attıktan sonra 
+    o ihlali “çözüldü” olarak işaretleyebilirsiniz.
 progress-status =
     { $numTotalBreaches ->
         [one] { $numTotalBreaches } ihlalden { $numResolvedBreaches } tanesi çözüldü olarak işaretlendi
@@ -462,6 +467,7 @@ progress-message-2 =
     kişisel bilgilerinizin güvenliğini sağlamada büyük etki yaratabilir.
 progress-message-3 = <span>Bu ihlalleri çözmede iyi iş çıkardınız!</span> Böyle devam edin. Birkaç tane daha var.
 progress-message-4 = <span>Neredeyse bitti!</span> Bitiş çizgisine yakınsınız.
+progress-complete-message = <span>Hoşunuza gitti mi?</span> Vaktiniz varsa şimdi diğer hesaplarınızı da daha güçlü parolalarla güncellemenizi öneririz.
 
 ##
 
@@ -471,6 +477,16 @@ resolve-this-breach-link = Bu ihlali çöz
 marked-resolved = Çözüldü olarak işaretlendi:
 hide-resolved-button = Çözülenleri gizle
 show-resolved-button = Çözülenleri göster
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] parola çözülmemiş ihlallerde ele geçirildi
+       *[other] parola çözülmemiş ihlallerde ele geçirildi
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] veri ihlali “çözüldü” olarak işaretlendi
+       *[other] veri ihlali “çözüldü” olarak işaretlendi
+    }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Yeni
 mobile-promo-headline = { -brand-name } uygulamasını telefon ve tabletinize indirin
