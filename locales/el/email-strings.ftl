@@ -48,6 +48,8 @@ learn-more-about-fxm = Μάθετε περισσότερα σχετικά με �
 # List headline
 faq-list-headline = Συχνές ερωτήσεις
 # Link Title
+faq-v2-1 = Δεν αναγνωρίζω κάποια από αυτές τις εταιρείες ή ιστοσελίδες. Γιατί είμαι σε αυτή την παραβίαση;
+# Link Title
 faq-v2-4 = Πώς αντιμετωπίζει το { -product-name } τις ευαίσθητες ιστοσελίδες;
 # Section headline
 monitor-another-email = Θέλετε να παρακολουθήσετε κάποιο άλλο email;
@@ -55,5 +57,8 @@ monitor-another-email = Θέλετε να παρακολουθήσετε κάπ�
 pre-fxa-subject = Μια ενημέρωση από το { -product-name }
 pre-fxa-headline = Τι αλλάζει με το { -product-name }
 pre-fxa-tout-3 = Συνέχεια λήψης ειδοποιήσεων μέσω email
+pre-fxa-p-3 =
+    Θα εξακολουθείτε να λαμβάνετε ειδοποιήσεις από το { -product-name }. Θα σας ενημερώσουμε αν
+    εμφανιστούν τα στοιχεία σας σε μια νέα παραβίαση δεδομένων.
 # Button at the bottom of pre-fxa email.
 create-account = Δημιουργία λογαριασμού
