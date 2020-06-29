@@ -187,7 +187,7 @@ what-is-data-agg-blurb =
     Data-samlers of gegevenshannelers sammelje ynformaasje út iepenbiere
     boarnen en keapje dizze fan oare bedriuwen. Se fetsje dizze gegevens tegearre om se foar marketingdoeleinen
     oan bedriuwen te ferkeapjen. Slachtoffers fan dizze lekken hawwe minder kâns om troch finansjele fraude troffen te
-    wurden, mar hackers soenen dizze gegevens brûke kinne om harren as har foar te dwaan of harren te profilearjen.
+    wurden, mar hackers soene dizze gegevens brûke kinne om harren as har foar te dwaan of harren te profilearjen.
 protect-your-privacy = Jo online privacy beskermje
 no-pw-to-change = Yn tsjinstelling ta in websitedatalek, is der gjin wachtwurd dat wizige wurde moat.
 avoid-personal-info = Mij it gebrûk fan persoanlike gegevens yn wachtwurden
