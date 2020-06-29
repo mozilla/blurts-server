@@ -4,7 +4,7 @@ const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
 const HIBP = require("../hibp");
 const { scanResult } = require("../scan-results");
-const { generatePageToken, getExperimentFlags } = require("./utils");
+const { generatePageToken, getExperimentBranch, getExperimentFlags } = require("./utils");
 
 const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
 
@@ -31,6 +31,14 @@ async function home(req, res) {
   }
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  // Growth Experiment
+  if (EXPERIMENTS_ENABLED) {
+    getExperimentBranch(req, false, ["de", "fr"], {
+      "va": 25,
+      "vb": 25,
+    });
+  }
 
   if (req.query.breach) {
     featuredBreach = _getFeaturedBreach(req.app.locals.breaches, req.query.breach);

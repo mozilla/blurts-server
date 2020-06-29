@@ -33,25 +33,30 @@ function hasUserSignedUpForRelay(user) {
   return false;
 }
 
+function getTotalPercentage(variations) {
+    let percentage = 0;
+    // calculate and store total percentage of variations
+    for (const v in variations) {
+      if (variations.hasOwnProperty(v) && typeof variations[v] === "number") {
+        // multiply by 100 to allow for percentages to the hundredth
+        // (and avoid floating point math errors)
+        percentage += (variations[v] * 100);
+      }
+    }
+
+    const totalPercentage = percentage / 100;
+
+    // Make sure totalPercent is between 0 and 100
+    if (totalPercentage === 0 || totalPercentage > 100) {
+      throw new Error(`The total percentage ${totalPercentage} is out of bounds!`);
+    }
+
+    return percentage;
+}
+
 function chooseVariation(variations, sorterNum){
 
-  let totalPercentage = 0;
-
-  // calculate and store total percentage of variations
-  for (const v in variations) {
-    if (variations.hasOwnProperty(v) && typeof variations[v] === "number") {
-      // multiply by 100 to allow for percentages to the hundredth
-      // (and avoid floating point math errors)
-      totalPercentage += (variations[v] * 100);
-    }
-  }
-
-  totalPercentage = totalPercentage / 100;
-
-  // Make sure totalPercent is between 0 and 100
-  if (totalPercentage === 0 || totalPercentage > 100) {
-    throw new Error(`The total percentage ${totalPercentage} is out of bounds!`);
-  }
+  const totalPercentage = getTotalPercentage(variations);
 
   // make sure random number falls in the distribution range
   let runningTotal;
@@ -82,6 +87,18 @@ function unEnrollSession(session) {
   session.excludeFromExperiment = true;
   session.experimentBranch = false;
   session.treatmentBranch = false;
+  session.controlBranch = false;
+}
+
+function setBranchVariable(branch, sessionExperimentFlags) {
+  if (branch === "va") {
+    sessionExperimentFlags.controlBranch = true;
+    sessionExperimentFlags.treatmentBranch = false;
+  }
+  if (branch === "vb") {
+    sessionExperimentFlags.treatmentBranch = true;
+    sessionExperimentFlags.controlBranch = false;
+  }
 }
 
 function getExperimentBranch(req, sorterNum = false, language = false, variations) {
@@ -130,12 +147,14 @@ function getExperimentBranch(req, sorterNum = false, language = false, variation
     log.debug("This session has been set to the requested branch: ", req.query.experimentBranch);
     sessionExperimentFlags.excludeFromExperiment = false;
     sessionExperimentFlags.experimentBranch = req.query.experimentBranch;
+    setBranchVariable(sessionExperimentFlags.experimentBranch, sessionExperimentFlags);
     return req.query.experimentBranch;
   }
 
   // If user was already assigned a branch, stay in that branch;
   if (sessionExperimentFlags.experimentBranch) {
     log.debug("This session has already been assigned: ", sessionExperimentFlags.experimentBranch);
+    setBranchVariable(sessionExperimentFlags.experimentBranch, sessionExperimentFlags);
     return sessionExperimentFlags.experimentBranch;
   }
 
@@ -158,7 +177,7 @@ function getExperimentBranch(req, sorterNum = false, language = false, variation
 
   log.debug(`This session has been randomly assigned to the ${assignedCohort} cohort.`);
   sessionExperimentFlags.experimentBranch = assignedCohort;
-  if (assignedCohort === "vb") { sessionExperimentFlags.treatmentBranch = true; }
+  setBranchVariable(sessionExperimentFlags.experimentBranch, sessionExperimentFlags);
   return assignedCohort;
 
 }
@@ -175,6 +194,7 @@ function getExperimentFlags(req, EXPERIMENTS_ENABLED) {
   const experimentFlags = {
     experimentBranch: false,
     treatmentBranch: false,
+    controlBranch: false,
     excludeFromExperiment: false,
   };
 
