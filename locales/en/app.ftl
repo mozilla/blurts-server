@@ -12,7 +12,7 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
--brand-fpn-2 = Mozilla VPN
+-brand-mozilla-vpn = Mozilla VPN
 ##
 
 # “account” can be localized, “Firefox” must be treated as a brand,
