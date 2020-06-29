@@ -16,13 +16,7 @@
         <h2 class="headline scan-results-headline">{{{ fluentNestedBold "scan-results-known-breaches" breachCount=foundBreaches.length }}}</h2>
         <button id="new-scan-page"
           class="open-oauth temp-marketing-btn-blue button-top"
-          {{#if experimentFlags.controlBranch }}
-            {{> analytics/fxa id="fx-monitor-scan-alert-me-blue-btn-top-exp4v2" }}
-          {{else if experimentFlags.treatmentBranch }}
-            {{> analytics/fxa id="fx-monitor-scan-alert-me-blue-btn-top-unchecked-exp4v2" }}
-          {{else}}
-            {{> analytics/fxa id="fx-monitor-scan-alert-me-blue-btn-top" }}
-          {{/if}}
+          {{> analytics/fxa id="fx-monitor-alert-me-blue-btn-top" }}
           data-event-category="Alert me about new breaches"> {{ getString "alert-about-new-breaches" }} </button>
       {{/if}}
     </div>
@@ -52,13 +46,7 @@
         between this button and the "Alert me.." button on the other version of the scan results page easier
       -->
     <button class="open-oauth temp-marketing-btn-blue "
-    {{#if experimentFlags.controlBranch }}
-      {{> analytics/fxa id="fx-monitor-scan-alert-me-blue-btn-bottom-exp4v2" }}
-    {{else if experimentFlags.treatmentBranch }}
-      {{> analytics/fxa id="fx-monitor-scan-alert-me-blue-btn-bottom-unchecked-exp4v2" }}
-    {{else}}
-      {{> analytics/fxa id="fx-monitor-scan-alert-me-blue-btn-bottom" }}
-    {{/if}}
+      {{> analytics/fxa id="fx-monitor-alert-me-blue-btn-bottom" }}
       data-event-category="Alert me about new breaches - Banner">{{ getString "alert-about-new-breaches" }}</button>
     {{> sign-up-banners/browser-not-required }}
   </div>
