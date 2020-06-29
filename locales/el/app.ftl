@@ -368,6 +368,7 @@ marking-this-subhead = Επισήμανση αυτής της παραβίαση
 mark-as-resolve-button = Επισήμανση ως λυμένη
 marked-as-resolved-label = Επισημάνθηκε ως λυμένη
 undo-button = Αναίρεση
+generic-confirmation-subhead = Αυτή η παραβίαση έχει επισημανθεί ως επιλυμένη
 return-to-breach-details-link = Επιστροφή στις λεπτομέρειες παραβίασης
 go-to-dashboard-link = Μετάβαση στον πίνακα
 # This string appears above a breach resolution progress bar and indicates
