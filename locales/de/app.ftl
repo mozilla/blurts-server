@@ -461,7 +461,7 @@ progress-message-2 =
 progress-message-3 = <span>Sehr gut – diese Datenlecks sind erledigt!</span> Weiter so, ein paar sind noch übrig.
 progress-message-4 = <span>Fast geschafft!</span> Sie sind gleich am Ziel.
 progress-complete-message =
-    <span>Fühlt sich gut an, oder?</span> Wenn Sie weiter machen wollen, sollten sie jetzt
+    <span>Fühlt sich gut an, oder?</span> Wenn Sie weiter machen wollen, sollten Sie jetzt
     andere Zugangsdaten mit stärkeren Passwörtern versehen.
 
 ##
