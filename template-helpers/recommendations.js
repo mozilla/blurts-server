@@ -164,7 +164,7 @@ module.exports = {
               cta: isUserLocaleEnUs ? "rec-ip-us-cta" : "",
               body: isUserLocaleEnUs ? "rec-ip-us" : "rec-ip-non-us",
             },
-            ctaHref: "https://fpn.firefox.com",
+            ctaHref: "https://vpn.mozilla.org",
             ctaShouldOpenNewTab: true,
             ctaAnalyticsId: "Try Firefox Private Network",
             recIconClassName: isUserLocaleEnUs ? "rec-ip-us" : "rec-ip-non-us",

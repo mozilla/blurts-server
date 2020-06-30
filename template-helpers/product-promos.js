@@ -33,7 +33,7 @@ function productPromos(locales, promoUtms, promoKey) {
       promoBody: localize(locales, "promo-fpn-body"),
       promoCta: localize(locales, "promo-fpn-cta"),
       promoId: "promo-fpn",
-      promoUrl: "https://fpn.firefox.com" + promoUtms,
+      promoUrl: "https://vpn.mozilla.org" + promoUtms,
     },
     "fx-ecosystem": {
       promoHeadline: localize(locales, "ecosystem-promo-headline"),
