@@ -50,3 +50,5 @@ rec-ip-subhead = Usa un servicio que oculte tu IP
 rec-ip-us-cta = Kunche'e { -brand-fpn }
 # Link title
 rec-gen-2-cta = Tu'un tsa tu'un see
+# Link title
+rec-gen-3-cta = Kavi nixi kunchau meu
