@@ -129,6 +129,13 @@ sensitive-breach = Na'b'alil k'eyowal rech taq uk'olib'al web'
 data-aggregator-breach = K'eyowal rech ya'l taq juq'attzij.
 unverified-breach = K'eyowal man q'atutal taj
 spam-list-breach = K'eyowal rech ucholajil mestaqoqxa'nib'al
+website-breach-plural = Taq k'eyowal rech uk'olib'al web'
+sensitive-breach-plural = Taq k'eyowal rech na'b'alil
+data-aggregator-breach-plural = Taq k'eyowal rech ya'b'al taq juq'attzij
+unverified-breach-plural = Taq k'eyowal man q'atutal taj
+spam-list-breach-plural = Taq k'eyowal rech ucholajil mestaqoqxa'nib'al
+what-data = Jachike taq juq'attzij xkib'an k'amq'ab':
+sensitive-sites = Jas kub'an { -product-name } chech  taq wokk'olib'al rech na'b'alil
 
 ## What to do after data breach tips
 
