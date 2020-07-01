@@ -128,6 +128,7 @@ website-breach = k'axk'olil rech uk'olib'al web'
 sensitive-breach = Na'b'alil k'eyowal rech taq uk'olib'al web'
 data-aggregator-breach = K'eyowal rech ya'l taq juq'attzij.
 unverified-breach = K'eyowal man q'atutal taj
+spam-list-breach = K'eyowal rech ucholajil mestaqoqxa'nib'al
 
 ## What to do after data breach tips
 
