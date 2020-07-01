@@ -60,7 +60,11 @@ compromised-accounts = Cuentas comprometidas:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Datos comprometidos:
 unsub-headline = Stoo sivu ña { -product-name-nowrap }
+unsub-blurb = Ku  stoi korreo nu { -product-name-nowrap } cha koo tutu ku snai nukú.
 unsub-button = Stoó sivu
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Filtración de datos proporcionada por { $hibp-link }
+share-twitter = La mayoría de las personas tienen alrededor de 100 cuentas en línea. ¿Alguno de los tuyos fue expuesta a una violación de datos? Averigua.
 show-all = Snaa ntia
 sign-in = Kitsa
 sign-out = Kee
