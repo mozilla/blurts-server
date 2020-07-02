@@ -8,7 +8,6 @@ require("intl-pluralrules");
 
 const { FluentBundle } = require("fluent");
 
-const AppConstants = require("./app-constants");
 const mozlog = require("./log");
 const {supportedLocales} = require("./package.json");
 
