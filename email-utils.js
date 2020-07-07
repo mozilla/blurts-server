@@ -107,8 +107,8 @@ const EmailUtils = {
 
   getVerificationUrl(subscriber) {
     let url = new URL(`${AppConstants.SERVER_URL}/user/verify`);
-    url.searchParams.append("token", encodeURIComponent(subscriber.verification_token));
     url = this.appendUtmParams(url, "verified-subscribers", "account-verification-email");
+    url.searchParams.append("token", encodeURIComponent(subscriber.verification_token));
     return url;
   },
 
