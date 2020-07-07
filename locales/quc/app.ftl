@@ -141,6 +141,7 @@ sensitive-sites-copy =
     uwach taq k'eyowal are taq kq'atutaj kemriqonib'al rech taqoqxa'nib'al. Are wa' kub'ij xew at  ¶ katkowinik kawilo we xk'oji' le aq'alajisanem pa k'eyowal (xew we k'o alachinaq ¶ le k'o rokem pa le akemb'i'aj rech taqoqxa'nib'al).
 delayed-reporting-headline = ¿Jasche naj kuk'am uwoktzijob'exik we uk'eyowal?
 delayed-reporting-copy = K'or kuk'am jampa' ik' on jampa junab' are chi kk'utuk k'axk'olil rech q'alajisab'al elaq'juq'attzij pa le uq'eqal web'. Le taq juq'attzij ke'eya'pa aninaqil pa le mulib'al juq'attzij are taq ke'eriqitajik chi'l ke'eq'atutajik
+about-fxm-headline = Chi rij { -product-name }
 
 ## What to do after data breach tips
 
