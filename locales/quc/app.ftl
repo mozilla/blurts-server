@@ -130,17 +130,17 @@ data-aggregator-breach = K'eyowal rech ya'l taq juq'attzij.
 unverified-breach = K'eyowal man q'atutal taj
 spam-list-breach = K'eyowal rech ucholajil mestaqoqxa'nib'al
 website-breach-plural = Taq k'eyowal rech uk'olib'al web'
-sensitive-breach-plural = Taq k'eyowal rech na'b'alil
-data-aggregator-breach-plural = Taq k'eyowal rech ya'b'al taq juq'attzij
-unverified-breach-plural = Taq k'eyowal man q'atutal taj
-spam-list-breach-plural = Taq k'eyowal rech ucholajil mestaqoqxa'nib'al
+sensitive-breach-plural = Taq elaq'juq'attzij rech na'b'alil
+data-aggregator-breach-plural = Taq elaq'juq'attzij rech ya'b'al taq juq'attzij
+unverified-breach-plural = Taq elaq'juq'attzij man q'atutal taj
+spam-list-breach-plural = Taq elaq'juq'attzij rech ucholajil mestaqoqxa'nib'al
 what-data = Jachike taq juq'attzij xkib'an k'amq'ab':
 sensitive-sites = Jas kub'an { -product-name } chech  taq wokk'olib'al rech na'b'alil
 sensitive-sites-copy =
-    { -product-name } xew kuk'ut kemb'i'aj le uximom rib' ruk'  ¶
-    uwach taq k'eyowal are taq kq'atutaj kemriqonib'al rech taqoqxa'nib'al. Are wa' kub'ij xew at  ¶ katkowinik kawilo we xk'oji' le aq'alajisanem pa k'eyowal (xew we k'o alachinaq ¶ le k'o rokem pa le akemb'i'aj rech taqoqxa'nib'al).
-delayed-reporting-headline = ¿Jasche naj kuk'am uwoktzijob'exik we uk'eyowal?
-delayed-reporting-copy = K'or kuk'am jampa' ik' on jampa junab' are chi kk'utuk k'axk'olil rech q'alajisab'al elaq'juq'attzij pa le uq'eqal web'. Le taq juq'attzij ke'eya'pa aninaqil pa le mulib'al juq'attzij are taq ke'eriqitajik chi'l ke'eq'atutajik
+    { -product-name } xew kuk'ut kemb'i'aj le uximom rib' ruk' ¶
+    uwach taq elaq'juq'attzij are taq kq'atutaj kemriqonib'al rech taqoqxa'nib'al. Are wa' kub'ij xew at  ¶ katkowinik kawilo we xk'oji' le aq'alajisanem pa elaq'juq'attzi (xew we k'o alachinaq ¶ le k'o rokem pa le akemb'i'aj rech taqoqxa'nib'al).
+delayed-reporting-headline = ¿Jasche naj kuk'am uwoktzijob'exik we elaq'juq'attzij?
+delayed-reporting-copy = K'or kuk'am jampa' ik' on jampa junab' are chi kk'utuk uk'axk'olil rech q'alajisab'al ¶ pa jun elaq'juq'attzij rech uq'eqal web'. Le taq elaq'juq'attzij aninaqil ke'eya' pa le mulib'al juq'attzij ¶ are taq ke'eriqitajik chi'l ke'eq'atutajik.
 about-fxm-headline = Chi rij { -product-name }
 about-fxm-blurb =
     { -product-name } kuya' ub'ixik we xe'ek'oji' taq akemb'i'aj pa nimk'atz pa jun ¶ elaq'juq'attzij. Chawila' we atk'olinaq pa jun elaq'juq'attzij, chariqa' taq na'b'anem chi rij taq k'ak' elaq'juq'attzij, ¶
