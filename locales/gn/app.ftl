@@ -65,7 +65,7 @@ unsub-button = Eheja ñemboheraguapy
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Mba’ekuaarã ivaikuaáva ome’ẽ { $hibp-link }
 share-twitter = Heta tapicha oguereko 100 mba’ete rupi ñandutípe. ¿Oĩ hína ne mba’ekuaarã oñeñambyaíva? Ehecha mávapa.
-share-facebook-headline = Ehecha ndépa eiméra'e mba’ekuaarã ñembyaípe.
+share-facebook-headline = Ehecha ndépa eiméra’e mba’ekuaarã ñembyaípe.
 share-facebook-blurb = ¿Ne mba’ete ñandutípe ojehechauka mba’ekuaarã ñembyaípe?
 og-site-description = Ehecha eĩpara’e mba’ekuaarã ñambyaípe { -product-name } ndive. Eñemboheraguapy og̃uahẽ hag̃ua ndéve kyhyjerã ñembyai oikokuaáva ha erekóta ñe’ẽporã ne mba’ete rekorosã.
 show-all = Ehechaukapa
@@ -340,7 +340,7 @@ security-tips-headline = Ñe’ẽporã tekorosãrã emo’ã hag̃ua hackers-gu
 steps-to-protect = Jeku’e ejapova’erã emo’ã hag̃ua nde reraite ñandutípe
 take-further-steps = Ejapo hetamba’e emo’ã hag̃ua nde reraite
 alert-about-new-breaches = Che myangekóike ñembyai pyahúre.
-see-if-youve-been-part = Ehecha ndépa eiméra'e mba’ekuaarã ñembyai ñandutípe.
+see-if-youve-been-part = Ehecha ndépa eiméra’e mba’ekuaarã ñembyai ñandutípe.
 get-ongoing-breach-monitoring = Eguereko mba’ekuaarã ñembyai jehecha py’ỹi heta ñanduti vevépe g̃uarã.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Jejuhu
