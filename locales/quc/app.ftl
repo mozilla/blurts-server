@@ -103,14 +103,14 @@ preferences = Taq ajawatajem
 # Link title
 home = Majib'al
 # Link title
-breaches = Taq k'axk'olil
+breaches = Taq elaq'juq'attzij
 # Link title
 security-tips = Taq no'jib'al rech chajib'al
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Chajaqa' { -brand-fxa } rech nik'onem
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
-latest-breach = Uk'isb'al elaq'juq'attzij ya'talik
+latest-breach = UK'ISB'AL ELAQ'JUQ'ATTZIJ YA'TALIK
 # Link title
 more-about-this-breach = Nik'aj chi q'alajisanem chi rij we elaq'juq'attzij
 take-control = Chawilawachij le awinaqilal q'alajisanem.
