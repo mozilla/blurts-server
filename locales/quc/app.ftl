@@ -136,6 +136,9 @@ unverified-breach-plural = Taq k'eyowal man q'atutal taj
 spam-list-breach-plural = Taq k'eyowal rech ucholajil mestaqoqxa'nib'al
 what-data = Jachike taq juq'attzij xkib'an k'amq'ab':
 sensitive-sites = Jas kub'an { -product-name } chech  taq wokk'olib'al rech na'b'alil
+sensitive-sites-copy =
+    { -product-name } xew kuk'ut kemb'i'aj le uximom rib' ruk'  ¶
+    uwach taq k'eyowal are taq kq'atutaj kemriqonib'al rech taqoqxa'nib'al. Are wa' kub'ij xew at  ¶ katkowinik kawilo we xk'oji' le aq'alajisanem pa k'eyowal (xew we k'o alachinaq ¶ le k'o rokem pa le akemb'i'aj rech taqoqxa'nib'al).
 
 ## What to do after data breach tips
 
