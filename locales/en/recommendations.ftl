@@ -71,7 +71,7 @@ rec-ip-non-us =
   and mask your IP address.
 
 # Recommendation subhead
-rec-moz-vpn-cta = try { -brand-mozilla-vpn }
+rec-moz-vpn-cta = Try { -brand-mozilla-vpn }
 rec-moz-vpn =
   Your Internet Protocol address (IP address) can reveal your location and internet service provider. A service like
   { -brand-fpn } hides your IP address and location for { -brand-name } and a service like { -brand-mozilla-vpn } hides your
