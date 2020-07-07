@@ -6,5 +6,8 @@
               {{#if recommendationCopy.cta}}
                 <a class="{{ ctaClassName }} recommendation-cta feature-tip-link blue-link" href="{{addRecommendationUtmParams this}}" data-event-label="{{ ctaAnalyticsId }}" {{#if ctaShouldOpenNewTab}} target="_blank" rel="noopener noreferrer"{{/if}}>{{ recommendationCopy.cta }}</a>
               {{/if}}
+              {{#if recommendationCopy.cta2}}
+                <a class="{{ ctaClassName }} recommendation-cta cta2 feature-tip-link blue-link" href="{{addRecommendationUtmParams secondaryCta}}" data-event-label="{{ secondaryCta.analyticsId }}" {{#if ctaShouldOpenNewTab}} target="_blank" rel="noopener noreferrer"{{/if}}>{{ recommendationCopy.cta2 }}</a>
+              {{/if}}
             </div>
           </div>
