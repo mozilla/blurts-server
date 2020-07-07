@@ -175,7 +175,7 @@ what-is-data-agg-blurb =
     Umi mba’ekuaarã mbyatyha omono’õ marandu opavave mba’évagui 
     ha avei ojogua ambue mba’apohaguasúgui. Ombojuaju marandu ovende hag̃ua ambue 
     mba’apohaguasúpe jekuaaukarãve. Umi ohupytýva ko’ã ñembyai ndorekói 
-    araka'eve viru ñemonda, hákatu umi hekovaíva ñadutípe ikatu oipuru pe marandu omyendague hag̃ua chupe.
+    araka’eve viru ñemonda, hákatu umi hekovaíva ñadutípe ikatu oipuru pe marandu omyendague hag̃ua chupe.
 protect-your-privacy = Emo’ã ñemigua ñandutípe
 no-pw-to-change = Ñanduti renda juavygua ñembyai, ndaipóri ñe’ẽñemi emoambueva’erã.
 avoid-personal-info = Ani eipuru marandu jehegua ñe’ẽñemíme
