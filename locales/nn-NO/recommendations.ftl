@@ -61,6 +61,8 @@ rec-ip-non-us =
     Internet Protocol-adressa di (IP-adresse) kan seie noko om kvar du er 
     og kvar internettleverandøren din er. Med eit virtuelt privat nettverk (VPN) kan du gøyme posisjonen din
     og maskere IP-adressa di.
+# Recommendation subhead
+rec-moz-vpn-cta = Prøv { -brand-mozilla-vpn }
 rec-hist-pw-subhead = Unngå å bruke passord på nytt
 # Link title
 rec-hist-pw-cta-fx = Vis innloggingar på { -brand-name }
