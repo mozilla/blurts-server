@@ -140,12 +140,12 @@ sensitive-sites-copy =
     { -product-name } xew kuk'ut kemb'i'aj le uximom rib' ruk' ¶
     uwach taq retztaqan are taq kq'atutaj kemriqonib'al rech taqoqxa'nib'al. Are wa' kub'ij xew at  ¶ katkowinik kawilo we xk'oji' le aq'alajisanem pa retztaqan (xew we k'o alachinaq ¶ le k'o rokem pa le akemb'i'aj rech taqoqxa'nib'al).
 delayed-reporting-headline = ¿Jasche naj kuk'am uwoktzijob'exik we retztaqan?
-delayed-reporting-copy = K'or kuk'am jampa' ik' on jampa junab' are chi kk'utuk uk'axk'olil rech q'alajisab'al ¶ pa jun elaq'juq'attzij rech uq'eqal web'. Le taq elaq'juq'attzij aninaqil ke'eya' pa le mulib'al juq'attzij ¶ are taq ke'eriqitajik chi'l ke'eq'atutajik.
+delayed-reporting-copy = K'or kuk'am jampa' ik' on jampa junab' are chi kk'utuk uk'axk'olil rech q'alajisab'al ¶ pa jun retztaqan rech uq'eqal web'. Le taq retztaqan aninaqil ke'eya' pa le mulib'al juq'attzij ¶ are taq ke'eriqitajik chi'l ke'eq'atutajik.
 about-fxm-headline = Chi rij { -product-name }
 about-fxm-blurb =
-    { -product-name } kuya' ub'ixik we xe'ek'oji' taq akemb'i'aj pa nimk'atz pa jun ¶ elaq'juq'attzij. Chawila' we atk'olinaq pa jun elaq'juq'attzij, chariqa' taq na'b'anem chi rij taq k'ak' elaq'juq'attzij, ¶
+    { -product-name } kuya' ub'ixik we xe'ek'oji' taq akemb'i'aj pa nimk'atz pa jun ¶ retztaqan. Chawila' we atk'olinaq pa jun retztaqan, chariqa' taq na'b'anem chi rij taq k'ak' retztaqanj, ¶
     chi'l chab'ana' taq ucholajil chech uchajixik taq akemb'i'aj pa nimk'atz. { -product-name } ya'tal ¶ rumal. { -brand-Mozilla }.
-fxm-warns-you = { -product-name } kuya' ub'ixik chi awech we xk'oji' le akemriqonib'al rech taqoqxa'nib'al pa uk'axk'olil  ¶ pa jun elaq'juq'attzij pa nimk'atz. Chawila' we xk'oji' le aq'alajisam pa jun uk'axk'olil, chaweta'maj jas ¶ kb'an chech utz uchajixik le taq akemb'i'aj pa nimk'atz, chi'l chariqa' na'tajisanem we kk'utun le akemriqonib'al ¶ rech taqoqxa'nib'al pa jun k'ak' k'eyowal.
+fxm-warns-you = { -product-name } kuya' ub'ixik chi awech we xk'oji' le akemriqonib'al rech taqoqxa'nib'al pa uk'axk'olil  ¶ pa jun retztaqan pa nimk'atz. Chawila' we xk'oji' le aq'alajisam pa jun uk'axk'olil, chaweta'maj jas ¶ kb'an chech utz uchajixik le taq akemb'i'aj pa nimk'atz, chi'l chariqa' na'tajisanem we kk'utun le akemriqonib'al ¶ rech taqoqxa'nib'al pa jun k'ak' retztaqan.
 # How Firefox Monitor works
 how-fxm-works = Jas kchakun { -product-name }
 
