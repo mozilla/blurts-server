@@ -61,6 +61,12 @@ rec-ip-non-us =
     Ihre Internet-Protocol-Adresse (IP-Adresse) zeigt Ihren Standort
     und Internet-Dienstanbieter. Mit einem Virtuellen Privaten Netzwerk (VPN) können Sie
     Ihren Standort verbergen und Ihre IP-Adresse verschleiern.
+# Recommendation subhead
+rec-moz-vpn-cta = Probieren Sie { -brand-mozilla-vpn } aus
+rec-moz-vpn =
+    Ihre Internetprotokolladresse (IP-Adresse) kann Ihren Standort und Ihren Internetdienstanbieter offenbaren. Ein Dienst wie
+    { -brand-fpn } verbirgt Ihre IP-Adresse und Ihren Standort für { -brand-name } und ein Dienst wie { -brand-mozilla-vpn } verbirgt Ihre
+    IP-Adresse und Ihren Standort für Ihr gesamtes Gerät.
 rec-hist-pw-subhead = Vermeiden Sie die Wiederverwendung von Passwörtern
 # Link title
 rec-hist-pw-cta-fx = Zugangsdaten in { -brand-name } ansehen
