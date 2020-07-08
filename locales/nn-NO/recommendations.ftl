@@ -63,6 +63,9 @@ rec-ip-non-us =
     og maskere IP-adressa di.
 # Recommendation subhead
 rec-moz-vpn-cta = Prøv { -brand-mozilla-vpn }
+rec-moz-vpn =
+    IP-adressa di kan avsløre plasseringa di og internettleverandøren din. Ei teneste som
+    { -brand-fpn } skjuler IP-adressa di og posisjonen din for { -brand-name } og ei teneste som { -brand-mozilla-vpn } skjuler IP-adressea og plasseringa di for heile eininga.
 rec-hist-pw-subhead = Unngå å bruke passord på nytt
 # Link title
 rec-hist-pw-cta-fx = Vis innloggingar på { -brand-name }
