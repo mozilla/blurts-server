@@ -25,7 +25,7 @@ error-could-not-add-email = Man xkowinb'ex ta uya'ik le kemriqonib'al pa mulib'a
 error-not-subscribed = We kemriqonib'al man tz'ib'am ta pa { -product-name }
 error-hibp-throttled = Sib'alaj k'i t'iqonem pa { -brand-HIBP }.
 error-hibp-connect = K'axk'olil rech t'iq'onem pa { -brand-HIBP }.
-error-hibp-load-breaches = Man xkowinb'ex ta uya'ik uchuq'ab' taq k'eyowal.
+error-hibp-load-breaches = Man xkowinb'ex ta uya'ik uchuq'ab' taq retztaqan.
 error-must-be-signed-in = Rajawaxik kamajij kemchak pa { -brand-fxa }.
 error-to-finish-verifying = Chech uk'isik uq'atuxik we taqoqxa'n chech { -product-name }, rajawaxik kamajij kemchak pa le taqoqxa'nib'al pa le uk'u'x akemb'i'aj.
 home-title = { -product-name }
@@ -54,20 +54,20 @@ signup-modal-sent = Taqom!
 sign-up = Utz'ib'axik ib'
 form-signup-error = Rajawaxik jun utz taqoqxa'n
 # breach-date = the calendar date a particular data theft occurred. 
-breach-date = Uq'ijol k'eyowal:
+breach-date = Uq'ijol retztaqan:
 # compromised accounts = the total number of user accounts exposed in data breach
-compromised-accounts = Taq kemb'i'aj k'o k'eyowal chi rij:
+compromised-accounts = Taq kemb'i'aj k'o retztaqan chi rij:
 # compromised-data = the kind of user data exposed to hackers in data breach.
-compromised-data = Taq juq'attzij k'o k'axk'olil chi rij:
+compromised-data = Taq juq'attzij k'o retztaqan chi rij:
 unsub-headline = Uchupik utz'ib'axik ib' pa { -product-name-nowrap }
-unsub-blurb = Wa' kuchup le taqoqxa'n pa ucholajil { -product-name-nowrap } mak'u kak'ulaj ta chi taq na'b'anem are taq kq'alajisax k'ak' taq k'eyowal.
+unsub-blurb = Wa' kuchup le taqoqxa'n pa ucholajil { -product-name-nowrap } mak'u kak'ulaj ta chi taq na'b'anem are taq kq'alajisax k'ak' taq retztaqan.
 unsub-button = Uchupik utz'ib'axik ib'
 # Breach data provided by Have I Been Pwned.
-hibp-attribution = Taq juq'attzij rech nimanem taj ya'om rumal
-share-twitter = Nima konojel winaq k'o 100 kikemb'i'aj pa nimk'atz. Wene k'o jun awech b'anom k'ax chech? chawila'
-share-facebook-headline = Chawila' we k'o k'ax b'anom chech ajuq'attzij
-share-facebook-blurb = Wene xeya'taj pa uk'axal taq akemb'i'aj le e k'o pa nimk'atz'.
-og-site-description = Chawila' we k'o taq elaq'juq'atzij b'anom chi awech rech taq juq'attzij ruk' { -product-name }. Chatz'ib'aj awib' chech uk'ulaxik chi rij taq uk'eyowal aq'anoq chi'l chariqa' taq no'jib'al chech uchajixik taq akemb'i'aj.
+hibp-attribution = Taq juq'attzij rech retztaqan ya'om rumal { $hibp-link }
+share-twitter = Nima konojel winaq k'o 100 kikemb'i'aj pa nimk'atz. Wene k'o jun awech b'anom retztaqan chech? chawila'.
+share-facebook-headline = Chawila' we k'o retztaqan b'anom chech ajuq'attzij
+share-facebook-blurb = ¡Wene e ya'om taq akemb'i'aj pa nimk'atz pa jun retztaqan rech juq'attzij?
+og-site-description = Chawila' we k'o taq retztaqan b'anom chi awech rech taq juq'attzij ruk' { -product-name }. Chatz'ib'aj awib' chech uk'ulaxik chi rij taq retztaqan aq'anoq chi'l chariqa' taq no'jib'al chech uchajixik taq akemb'i'aj.
 show-all = Uk'utik ronojel
 fxa-scan-another-email = ¿La kawaj kaq'atuj jun chi taqoqxa'n?
 sign-in = Umajixik kemchak
@@ -78,7 +78,7 @@ have-an-account = ¿La k'o akemb'i'aj?
 fxa-pwt-summary-2 = Le taq nitz' retokib'al le xa jun tukelal tzij man k'ax ta uriqik chi kech e b'ank'ax.
 fxa-pwt-summary-4 = Taq ilawachinelab' rech taq retokib'al pacha' 1Password, LastPass, Dashlane, chi'l Bitwarden kkik'ol taq ¶Taq retokib'al chi'l unojisaxik pa taq uk'olib'al web', xuquje' katkito' chech utzukuxik chajital taq retokib'al.
 fxa-pwt-summary-6 =
-    Le taq elaq'juq'attzij rech taq juq'attzij ktajin ke'enimarik. We kq'alajin le awinaqilal q'alajisanem pa jun k'ak' k'axk'olil rech taq juq'attzij, ¶
+    Le taq retztaqan rech taq juq'attzij ktajin ke'enimarik. We kq'alajin le awinaqilal q'alajisanem pa jun k'ak' retztaqan rech taq juq'attzij, ¶
     { -product-name } kutaq jun na'tajisab'al chi awech — are chi utz kachajij le akemb'i'aj.
 fxa-what-to-do-blurb-1 =
     We man ktkowin taj kamajij kemchak, chach'ab'ej le uk'olib'al web' kata chech jas kab'an chech uk'ak'arisaxik. ¶
@@ -90,7 +90,7 @@ fxa-wtd-blurb-2 =
     Le e b'ank'ax wene kkikoj le junam retokib'al chi'l le ataqoqxa'nib'al chech okem pa nik'aj chi kemb'i'aj.  ¶
     Chawinaqirisaj jun jalan chi'l utukelal retokib'al chech jujun taq kemb'i'aj, qas na chech le akemb'i'aj rech ja k'olpwaq, ¶
     Taqoqxa'nib'al, chi'l nik'aj chi uk'olib'al web' jawi' kk'ol wi winaqilal q'alajisanem.
-fxa-what-to-do-blurb-3 = Nima ronojel taq elaq'juq'attzij xew kkib'an k'ax chech taq taqoqxa'nib'al chi'l taq retokib'al, xa k'ut k'o jujun ruk'a'am nim ucholajil q'alajisanem rech pwaqilal. ¶ We kachomaj k'o k'axk'olil chi rij le akemb'i'aj rech ja k'olwaq, on le rajilab'alil uwujil qajanik, chaya' ub'ixik chech le a ja k'olpwaq chi wene k'o k'axk'olil chi rij.  ¶ Che'aq'atuj we kojom kumal nik'aj chik winaq.
+fxa-what-to-do-blurb-3 = Nima ronojel taq retztaqan xew kkib'an k'ax chech taq taqoqxa'nib'al chi'l taq retokib'al, xa k'ut k'o jujun ruk'a'am nim ucholajil q'alajisanem rech pwaqilal. ¶ We kachomaj k'o k'axk'olil chi rij le akemb'i'aj rech ja k'olwaq, on le rajilab'alil uwujil qajanik, chaya' ub'ixik chech le a ja k'olpwaq chi wene k'o k'axk'olil chi rij.  ¶ Che'aq'atuj we kojom kumal nik'aj chik winaq.
 fxa-what-to-do-subhead-4 = Chariqa' tob'anik ruk' unatajisaxik ronojel taq aretokib'al chi'l che'achajij.
 fxa-what-to-do-blurb-4 = Le ilawachinelab' rech taq retokib'al pacha' 1Retokib'al, LastPass, Dashlane, chi'l Bitwarden utz uk'olik taq ¶ aretokib'al kkib'ano chi'l kkiya' pa taq uk'olib'al web'. Chakojo' jun ilawachinel rech taq retokib'al  ¶ pa le ach'aweb'al chi'l pa akematz'ib' are chi man rajawaxik taj ronojel kana'taj chi awech
 # Alerts is a noun
@@ -103,23 +103,23 @@ preferences = Taq ajawatajem
 # Link title
 home = Majib'al
 # Link title
-breaches = Taq elaq'juq'attzij
+breaches = Taq retztaqan
 # Link title
 security-tips = Taq no'jib'al rech chajib'al
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Chajaqa' { -brand-fxa } rech nik'onem
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
-latest-breach = UK'ISB'AL ELAQ'JUQ'ATTZIJ YA'TALIK
+latest-breach = UK'ISB'AL RETZTAQAN YA'TALIK
 # Link title
-more-about-this-breach = Nik'aj chi q'alajisanem chi rij we elaq'juq'attzij
+more-about-this-breach = Nik'aj chi q'alajisanem chi rij we retztaqan
 take-control = Chawilawachij le awinaqilal q'alajisanem.
 cant-stop-hackers = Man katkowin taj ke'aq'atej le e b'ank'ax chech ub'anik uk'axk'olil. Xa k'ut utz kaq'atej taq b'anoj le man utz taj chi'l le ktob'anik are chi man k'ax ta ub'anik le kichak.
 read-more-tips = Chasik'ij uwach nik'aj chi taq no'jib'al rech chajinem
 how-hackers-work = Uk'oxomaxik jas ke'echakun e b'ank'ax
-monitor-your-online-accounts = Chatz'ib'aj awib' pa rilawachixik taq elaq'juq'attzij ruk' { -brand-fxa }.
-stay-alert = Chatatab'ej we k'o nik'aj chi taq elaq'juq'attzij
-if-your-info = We kq'alajin le aq'alajisanem pa jun k'ak' elaq'juq'attzij, kqataq b'i na'b'anem chi awech.
+monitor-your-online-accounts = Chatz'ib'aj awib' pa rilawachixik taq retztaqan ruk' { -brand-fxa }.
+stay-alert = Chatatab'ej we k'o nik'aj chi taq retztaqan
+if-your-info = We kq'alajin le aq'alajisanem pa jun k'ak' retztaqan, kqataq b'i na'b'anem chi awech.
 search-all-emails = Che'atzukuj pa ronojel taq akemriqonib'al rech taqoqxa'nib'al we k'o elaq'juq'attzij chi'l che'ariqa' taq na'b'anem chi rij taq k'axk'olil.
 monitor-several-emails = Che'awilawachij k'ialaj taq taq'oqxa'n
 take-action = Chab'ana' jachike rajawaxik chech uchajixik taq kemb'i'aj
