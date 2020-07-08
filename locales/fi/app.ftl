@@ -20,6 +20,7 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 

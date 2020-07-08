@@ -60,6 +60,8 @@ rec-ip-us =
 rec-ip-non-us =
     IP-osoitteesi saattaa osoittaa fyysiseen sijaintiisi ja internetpalveluntarjoaajasi.
     VPN-erillisverkon avulla voit piilottaa todellisen IP-osoitteesi ja fyysisen sijaintisi.
+# Recommendation subhead
+rec-moz-vpn-cta = Kokeile { -brand-mozilla-vpn }:ää
 rec-hist-pw-subhead = Älä käytä samaa salasanaa useamman kerran
 # Link title
 rec-hist-pw-cta-fx = Näytä kirjautumistiedot { -brand-name }-palvelussa
