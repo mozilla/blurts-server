@@ -61,6 +61,8 @@ rec-ip-non-us =
     Ne kundaharape ñanduti pegua (IP kundaharape) ohechauka ne rendaite 
     ha ne ñanduti me’ẽhára. Peteĩ red privada virtual (VPN) ndive, ikatu eñomi ne rendaite 
     ha ehovañuvã nde IP kundaharape.
+# Recommendation subhead
+rec-moz-vpn-cta = Eñe’ẽ { -brand-mozilla-vpn }
 rec-hist-pw-subhead = Aníke eipurujo’a ñe’ẽñemi
 # Link title
 rec-hist-pw-cta-fx = Ehecha tembiapo ñepyrũ { -brand-name }

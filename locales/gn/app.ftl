@@ -12,6 +12,7 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Ñanduti Ñemigua
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
