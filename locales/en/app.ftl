@@ -12,6 +12,7 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 ##
 
 # “account” can be localized, “Firefox” must be treated as a brand,
@@ -692,7 +693,7 @@ promo-fpn-body =
 promo-fpn-cta = Get { -brand-fpn }
 
 monitor-promo-headline = Find out about new data breaches
-monitor-promo-body = 
+monitor-promo-body =
   Get notified the next time your personal info gets exposed in a known breach.
 
 ecosystem-promo-headline = Protect your life online with privacy-first products

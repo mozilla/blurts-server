@@ -68,7 +68,14 @@ rec-ip-us =
 rec-ip-non-us = 
   Your Internet Protocol address (IP address) pinpoints your location 
   and internet service provider. With a virtual private network (VPN), you can hide your location 
-  and mask your IP address.  
+  and mask your IP address.
+
+# Recommendation subhead
+rec-moz-vpn-cta = Try { -brand-mozilla-vpn }
+rec-moz-vpn =
+  Your Internet Protocol address (IP address) can reveal your location and internet service provider. A service like
+  { -brand-fpn } hides your IP address and location for { -brand-name } and a service like { -brand-mozilla-vpn } hides your
+  IP address and location for your entire device.
 
 rec-hist-pw-subhead = Avoid reusing passwords
 # Link title
