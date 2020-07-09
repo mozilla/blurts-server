@@ -69,7 +69,7 @@ faq-v2-3 = San nikmatki ka ninemi tik se tamatil taichtekilis. Tay nikchiwa?
 faq-v2-4 = { -product-name } ken kimati se nejmach tzawalamat?
 # This string contains nested markup that becomes a link to Firefox Monitor
 # later in the code. Please do not modify or remove "<a>" and "</a>".
-pre-fxa-message = <a>Shikchiwa se takulijtuk { -brand-fxa }, wan weli tiktalia san 15 titantukayit.
+pre-fxa-message = <a>Shikchiwa se takulijtuk { -brand-fxa }</a>, wan weli tiktalia san 15 titantukayit.
 # Section headline
 monitor-another-email = Tikneki tikishkupawia ukse titantukayit?
 # Subject line of email
