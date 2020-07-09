@@ -174,9 +174,11 @@ avoid-personal-info-blurb = Man k'ax ta uriqik taq ralaxb'al, taq kemriqonib'al 
 change-pw = Chak'exa' le aretokib'al
 change-pw-site = Chak'exa' le aretok'ib'al rech we uk'olib'al web'
 even-for-old = Pine' ajer taq kemb'i'aj, rajawaxik kak'ak'arisaj aretokib'al.
-make-new-pw-unique = Chab'ana' chech le aretokib'al chi jalanik chi'l utukelal
+make-new-pw-unique = Chab'ana' chech le aretokib'al chi jalan ub'antajik chi'l utukelal
 strength-of-your-pw = We qas nim ucholajil aretokib'al sib'alaj nim uchajixik le chajib'al pa nimk'atz kub'ano.
 create-strong-passwords = Jas uwinaqirisaxik kowilal taq retokib'al
+stop-reusing-pw = Chaq'atab'a ukojik chi jumul taq retokib'al le akojom chik
+create-unique-pw = Chawinaqirisaj jalan taq retokib'al ch'l chak'olo' apawije' chajib'al, pacha' ilawachib'al retokib'al.
 
 ## Updated error messages
 
