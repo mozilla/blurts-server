@@ -425,7 +425,7 @@ marking-this-subhead = Marcando esta filtración como resuelta
 # This string contains nested markup that is later used to style the text inside of it.
 # Please do not modify or remove "<span>" and "</span>".
 marking-this-body =
-    <span>Una vez que hayas seguido los pasos necesarios para afrontar esta filtración/span>,
+    <span>Una vez que hayas seguido los pasos necesarios para afrontar esta filtración</span>,
     puedes marcarla como resuelta. Todavía puedes acceder en cualquier momento
     desde tu panel a los detalles sobre la filtración.
 mark-as-resolve-button = Marcar como resuelto
