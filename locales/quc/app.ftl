@@ -131,7 +131,7 @@ unverified-breach = Retztaqan man q'atutal taj
 spam-list-breach = Retztaqan rech ucholajil mestaqoqxa'nib'al
 website-breach-plural = Taq retztaqan rech uk'olib'al web'
 sensitive-breach-plural = Taq retztaqan rech na'b'alil
-data-aggregator-breach-plural = Taq retztaqan rech ya'b'al taq juq'attzij
+data-aggregator-breach-plural = Taq retztaqan rech ya'l taq juq'attzij
 unverified-breach-plural = Taq retztaqan man q'atutal taj
 spam-list-breach-plural = Taq retztaqan rech ucholajil mestaqoqxa'nib'al
 what-data = Jachike taq juq'attzij xkib'an k'amq'ab':
@@ -157,6 +157,7 @@ how-fxm-2-blurb = Chawinaqirisaj jun { -brand-fxa } chech rilawachixik le ataqoq
 how-fxm-3-headline = Chak'ulaj taq ub'ixikil pa le nik'onel
 how-fxm-3-blurb = We kakoj{ -brand-name }, kariq na jun ub'ixikil we kasolij jun ¶ jun wokk'olib'al web' le b'anom retztaqan chech. chawila' we chi'l at b'anom we retztaqan chi awech... chi'l jas rajawaxik kab'an chech.
 wtd-after-website = Jas kb'anik are taq xb'antaj jun retztaqan chech jun wokk'olib'al web':
+wtd-after-data-agg = Jas kb'anik are taq xb'antaj jun retztaqan chech le ya'l juq'attzij:
 
 ## What to do after data breach tips
 
