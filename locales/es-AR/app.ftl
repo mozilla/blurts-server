@@ -412,11 +412,11 @@ see-additional-recs = Ver recomendaciones adicionales
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
-resolve-top-notification = { $afectadasEmail } apareció en esta violación. <a>Qué hacer a continuación</a>
+resolve-top-notification = { $affectedEmail } apareció en esta violación. <a>Qué hacer a continuación</a>
 resolve-top-notification-plural =
     { $numAffectedEmails ->
         [one] { $numAffectedEmails } apareció en esta violación. <a>Qué hacer a continuación</a>
-       *[other] { $afectadasEmail } aparecieron en esta violación. <a>Qué hacer a continuación</a>
+       *[other] { $numAffectedEmails } aparecieron en esta violación. <a>Qué hacer a continuación</a>
     }
 
 ##
