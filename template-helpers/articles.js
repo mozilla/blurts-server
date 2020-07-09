@@ -332,7 +332,7 @@ const articleCopy = {
             ],
             listHeadline: "A good password manager:",
             list: [
-              "Doesn’t know your master password (so hackers can never steal it)",
+              "Doesn’t know your primary password (so hackers can never steal it)",
               "Only stores encrypted versions of your credentials and data on their servers ",
               "Does not store any of your data on their servers",
               "Can generate strong, secure password",
@@ -354,7 +354,7 @@ const articleCopy = {
             subhead: "<span class='myth'>Myth 3:</span> Storing all my passwords in one place makes them vulnerable to hackers.",
             paragraphs: [
               "Password managers don’t store all your credentials together in one place. Any data you store in a password manager — passwords, logins, security questions, and other sensitive info — is securely encrypted. Even if the password manager gets hacked, cyber criminals would not be able to see your logins.",
-              "The only way to access your data is with a single master password that only you know. You use this password to unlock the manager on your computer, phone, or other devices. Once it’s unlocked, a password manager can fill in your logins to websites and apps.",
+              "The only way to access your data is with a single primary password that only you know. You use this password to unlock the manager on your computer, phone, or other devices. Once it’s unlocked, a password manager can fill in your logins to websites and apps.",
             ],
           },
           {
