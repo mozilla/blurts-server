@@ -133,5 +133,6 @@
     "test:integration-headless-ci": "MOZ_HEADLESS=1 ERROR_SHOTS=1 wdio tests/integration/wdio.conf.js",
     "test:integration-docker": "MOZ_HEADLESS=1 wdio tests/integration/wdio.docker.js",
     "test": "run-s test:db:migrate test:tests test:coveralls"
-  }
+  },
+  "supportedLocales": "cak,cs,cy,da,de,el,en,en-CA,en-GB,es-AR,es-CL,es-ES,es-MX,fi,fr,fy-NL,gn,hu,kab,ia,id,it,ja,nb-NO,nl,nn-NO,pt-BR,pt-PT,ro,ru,sk,sl,sq,sv-SE,tr,uk,vi,zh-CN,zh-TW"
 }
