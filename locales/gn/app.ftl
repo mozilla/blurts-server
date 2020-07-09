@@ -532,7 +532,6 @@ lockwise-promo-body = Ehapykueho ne rembiapo ñepyrũ opaite mba’e’okápe. E
 promo-lockwise-cta = Ereko { -brand-lockwise }
 fpn-promo-headline = Emokañy ne rendaite ñanduti renda ha tapykuehohágui
 promo-fpn-body =
-    { -brand-name } ¶
     { -brand-fpn } oñomi ne rendaite omboyke hag̃ua umi ñanduti renda ¶
     ha mba’ekuaarã mbyatyha ohechaukáva marandu’i ndive.
 promo-fpn-cta = Ereko { -brand-fpn }
