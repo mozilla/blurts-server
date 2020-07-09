@@ -18,8 +18,6 @@ email-footer-blurb = 您收到此电子邮件，是因为您曾经注册过 { -p
 # This string appears in the footer of verification emails. { $faqLink } is a link
 # to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-verify-footer-copy = 您收到此电子邮件，是因为您曾经注册过 { -product-name } 警报。这是一封自动发送的邮件。如需帮助，请访问 { $faqLink }。
-# Button text that takes the user to their signed in user dashboard.
-view-my-dashboard-cta = 查看我的面板
 # Button text
 verify-email-cta = 验证邮箱
 # Button text
@@ -59,7 +57,7 @@ faq-v2-3 = 我刚刚发现自己遭受了数据外泄。接下来我该怎么做
 faq-v2-4 = { -product-name } 如何处理这些敏感网站？
 # This string contains nested markup that becomes a link to Firefox Monitor
 # later in the code. Please do not modify or remove "<a>" and "</a>".
-pre-fxa-message = <a>创建免费的 { -brand-fxa }，您最多可添加 15 个电子邮件地址。
+pre-fxa-message = <a>创建免费的 { -brand-fxa }</a>，您最多可添加 15 个电子邮件地址。
 # Section headline
 monitor-another-email = 要监控其他电子邮件地址吗？
 # Subject line of email
