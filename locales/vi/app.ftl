@@ -532,7 +532,6 @@ lockwise-promo-body = Theo dõi thông tin đăng nhập của bạn trên tất
 promo-lockwise-cta = Tải { -brand-lockwise }
 fpn-promo-headline = Che dấu vị trí của bạn từ các trang web và trình theo dõi
 promo-fpn-body =
-    { -brand-name } 
     { -brand-fpn } ẩn vị trí của bạn để loại bỏ các trang web 
     và trình thu thập dữ liệu hồ sơ bạn cho quảng cáo.
 promo-fpn-cta = Tải { -brand-fpn }
