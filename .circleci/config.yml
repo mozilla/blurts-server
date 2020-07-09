@@ -68,8 +68,17 @@ jobs:
                     mkdir ./tests/integration/errorShots
                     docker-compose -f tests/integration/docker-compose.yml up --build -d
                     docker-compose -f tests/integration/docker-compose.yml exec --user root firefox npm run test:integration-headless-ci
+                    docker-compose -f tests/integration/docker-compose.yml logs server &> tests/integration/server.log
+                    docker-compose -f tests/integration/docker-compose.yml logs postgres &> tests/integration/postgres.log
+                    docker-compose -f tests/integration/docker-compose.yml logs firefox &> tests/integration/firefox.log
             - store_artifacts:
                 path: ./tests/integration/errorShots/
+            - store_artifacts:
+                path: ./tests/integration/server.log
+            - store_artifacts:
+                path: ./tests/integration/postgres.log
+            - store_artifacts:
+                path: ./tests/integration/firefox.log
 
     deploy:
         docker:
