@@ -429,8 +429,8 @@ progress-intro-subhead = Nova in { -product-name }: marcar violationes como reso
 progress-intro-message = Post revider le detalios re un violation e prender mesuras pro proteger tu informationes personal, tu pote marcar violationes como resolvite
 progress-status =
     { $numTotalBreaches ->
-        [one] { $numBreachesResolved } de { $numTotalBreaches } violationes marcate como resolvite
-       *[other] { $numBreachesResolved } de { $numTotalBreaches } violationes marcate como resolvite
+        [one] { $numResolvedBreaches } de { $numTotalBreaches } violationes marcate como resolvite
+       *[other] { $numResolvedBreaches } de { $numTotalBreaches } violationes marcate como resolvite
     }
 progress-complete = Tote le violationes note ha essite marcate como resolvite
 
