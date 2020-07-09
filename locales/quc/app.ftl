@@ -165,9 +165,13 @@ what-is-data-agg-blurb =
     chech ub'anik taq k'ayinem. Le taq e riqol uk'axal rech taq we retztaqan man qas ta e k'o pa uk'eyowal chech uriqik uk'axal rech pwaqilal.¶
     sub'unem, xa  k'ut le taq b'ank'ax wene kkikoj we juq'attzij chech kijalwachixik.
 protect-your-privacy = Chachajij le awechab'alil pa nimk'atz'
+no-pw-to-change = Le uk'exb'alil jun retztaqan rech uk'olib'al web', man k'o taq retokib'al kk'exik.
+avoid-personal-info = Makoj winaqilal q'alajisanem pa taq retokib'al
+avoid-personal-info-blurb = Man k'ax ta uriqik taq ralaxb'al, taq kemriqonib'al chi'l taq kib'i' ajupaja pa nimk'atz, makoj wa' taq tzij pa taq aretokib'al.
 
 ## What to do after data breach tips
 
+change-pw = Chak'exa' le aretokib'al
 
 ## Updated error messages
 
