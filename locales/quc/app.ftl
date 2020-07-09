@@ -33,7 +33,7 @@ home-not-found = Man riqom ta uxaq wuj.
 oauth-invalid-session = Kemchak man utz taj
 scan-title = { -product-name } : taq uwachinem q'axwachirisanem
 user-add-invalid-email = Taqoqxa'n man utz taj
-user-add-too-many-emails = Ktajin kaq'atuj le nimalaj rajilab'alil kemriqonib'al rech taqoqxa'n.
+user-add-too-many-emails = Ktajin kawilawachij le nimalaj rajilab'alil kemriqonib'al rech taqoqxa'n.
 user-add-email-verify-subject = Chaq'atuj le utz'ib'axik awib' pa { -product-name }.
 user-add-duplicate-email = We taqoqxa'n ya'om chi pa { -product-name }.
 user-add-duplicate-email-part-2 = Chasolij le { $preferencesLink } chech uq'atuxik le kemub'antajik rech { $userEmail }.
@@ -150,8 +150,12 @@ fxm-warns-you = { -product-name } kuya' ub'ixik chi awech we xk'oji' le akemriqo
 how-fxm-works = Jas kchakun { -product-name }
 how-fxm-1-headline = Ub'anik jun tzukunem qas kk'ojik
 how-fxm-1-blurb =
-    Chatzukuj taq kemriqonib'al rech taqoqx'anib'al pa taq retztaqan rech juq'attzij le e petinaqpa ri 2007 loq . We tzukunem qas kkkojik kuk'ut nima ronojel ta ,,,,,, xa man k'uk'ut ta
+    Chatzukuj taq kemriqonib'al rech taqoqx'anib'al pa taq retztaqan rech juq'attzij le e petinaq  ¶              pa ri 2007 loq . We tzukunem qas kkojik kuk'ut nima ronojel taq retztaqan xa k'ut man kuk'ut ta  ¶
     le kuk'a'am taq juq'attzij rech na'b'alil.
+how-fxm-2-headline = Chatz'ib'aj awib' pa jun rilawachixik retztaqan
+how-fxm-2-blurb =
+    Chawinaqirisaj jun { -brand-fxa } chech rilawachixik le ataqoqxa'nib'al chech utzukuxik taq reto monitor your email for ongoing breaches. tztaqanem,rified your email, you’ll also receive a full report of past breaches, 
+    including sensitive breaches.
 
 ## What to do after data breach tips
 
