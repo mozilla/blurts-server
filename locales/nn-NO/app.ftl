@@ -449,7 +449,7 @@ see-additional-recs = Sjå ytterlegare tilrådingar
 resolve-top-notification = { $affectedEmail } dukka opp i denne datalekkasjen. <a>Kva skal eg gjere no?</a>
 resolve-top-notification-plural =
     { $numAffectedEmails ->
-       *[other] { $affectedEmail } av e-postadressene dine dukka opp i denne datalekkasjen. <a>Kva skal er det neste eg skal gjere?</a>
+       *[other] { $numAffectedEmails } av e-postadressene dine dukka opp i denne datalekkasjen. <a>Kva skal er det neste eg skal gjere?</a>
     }
 
 ##
