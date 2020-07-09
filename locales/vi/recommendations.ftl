@@ -61,6 +61,12 @@ rec-ip-non-us =
     Địa chỉ Giao thức Internet (địa chỉ IP) xác định chính xác vị trí của bạn và nhà 
     cung cấp dịch vụ internet. Với mạng riêng ảo (VPN), bạn có thể ẩn vị trí 
     của mình và che dấu địa chỉ IP của bạn.
+# Recommendation subhead
+rec-moz-vpn-cta = Hãy thử { -brand-mozilla-vpn }
+rec-moz-vpn =
+    Địa chỉ giao thức Internet (địa chỉ IP) của bạn có thể tiết lộ vị trí và nhà cung cấp dịch vụ internet của bạn. Một dịch vụ
+    như { -brand-fpn } sẽ ẩn địa chỉ IP và vị trí của bạn cho { -brand-name } và một dịch vụ như { -brand-mozilla-vpn } ẩn
+    địa chỉ IP và vị trí của bạn cho toàn bộ thiết bị của bạn.
 rec-hist-pw-subhead = Tránh sử dụng lại mật khẩu
 # Link title
 rec-hist-pw-cta-fx = Xem thông tin đăng nhập trong { -brand-name }
