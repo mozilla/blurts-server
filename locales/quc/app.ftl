@@ -194,6 +194,23 @@ appears-in-x-breaches =
 check-for-breaches = Chaq'atuj taq retztaqan
 find-out-what-hackers-know = Chariqa' jachike e b'ank'ax keta'am chi awach, Chaweta'maj jas kab'ano are chi katnab'ej jun ucholajil chi kiwach.
 get-email-alerts = Chachajij awib': Chariqa' taq taqoqxa'nib'al rech na'b'anem are taq kq'alajin le aq'alajisanem pa jun eta'matal retztaqan
+search-for-your-email = Chatzukuj le akemriqonib'al rech taqoqxaibnib'al rech pa taq retztaqan rech juq'attzij kech uk'iyal ruk' tzalijem pa 2007.
+back-to-top = Tzalijem pa uwi'
+comm-opt-0 = Chataqa' jun nutaqoqxa'nib'al chi wech we k'o jun chi kech taq nukemriqonib'al rech taqoqxa'nib'al chi uxe' kk'utun pa jun retztaqan rech juq'attzij.
+comm-opt-1 = Chataqa' ronojel taq retztaqan pa { $primaryEmail }.
+stop-monitoring-this = Chaq'atab'a' rilawachixik we taqoqxa'nib'al
+resend-verification = Chataqa' chi jumul le q'atub'al taqoqxa'nib'al
+add-new-email = Chaya' jun k'ak' kemriqonib'al rech taqoqxa'nib'al
+send-verification = Chataqa' jun kemriqonib'al rech q'atub'al
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-summary = Nitz'arisanem rech retztaqan
+show-breaches-for-this-email = Chak'utu' ronojel taq retztaqan rech we taqoqxa'nib'al.
+link-change-primary = Chak'exa' nab'e kemriqonib'al rech taqoqxa'nib'al.
+remove-fxm = Chachupu' { -product-name }
 
 ## Updated error messages
 
