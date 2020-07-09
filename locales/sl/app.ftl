@@ -479,10 +479,10 @@ see-additional-recs = Oglejte si dodatna priporočila
 resolve-top-notification = { $affectedEmail } se je pojavil v tej kraji podatkov. <a>Kaj storiti</a>
 resolve-top-notification-plural =
     { $numAffectedEmails ->
-        [one] { $affectedEmail } od vaših e-poštnih naslovov se je pojavil v tej kraji podatkov. <a>Kaj storiti</a>
-        [two] { $affectedEmail } od vaših e-poštnih naslovov sta se pojavila v tej kraji podatkov. <a>Kaj storiti</a>
-        [few] { $affectedEmail } od vaših e-poštnih naslovov so se pojavili v tej kraji podatkov. <a>Kaj storiti</a>
-       *[other] { $affectedEmail } od vaših e-poštnih naslovov se je pojavilo v tej kraji podatkov. <a>Kaj storiti</a>
+        [one] { $numAffectedEmails } od vaših e-poštnih naslovov se je pojavil v tej kraji podatkov. <a>Kaj storiti</a>
+        [two] { $numAffectedEmails } od vaših e-poštnih naslovov sta se pojavila v tej kraji podatkov. <a>Kaj storiti</a>
+        [few] { $numAffectedEmails } od vaših e-poštnih naslovov so se pojavili v tej kraji podatkov. <a>Kaj storiti</a>
+       *[other] { $numAffectedEmails } od vaših e-poštnih naslovov se je pojavilo v tej kraji podatkov. <a>Kaj storiti</a>
     }
 
 ##
