@@ -172,6 +172,9 @@ avoid-personal-info-blurb = Man k'ax ta uriqik taq ralaxb'al, taq kemriqonib'al 
 ## What to do after data breach tips
 
 change-pw = Chak'exa' le aretokib'al
+change-pw-site = Chak'exa' le aretok'ib'al rech we uk'olib'al web'
+even-for-old = Pine' ajer taq kemb'i'aj, rajawaxik kak'ak'arisaj aretokib'al.
+make-new-pw-unique = Chab'ana' chech le aretokib'al chi jalanik chi'l utukelal
 
 ## Updated error messages
 
