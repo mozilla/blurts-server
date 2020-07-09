@@ -527,7 +527,7 @@ progress-complete = Mae'r holl dor-data hysbys wedi'u nodi fel rhai wedi'u datry
 ## Please do not modify or remove "<span>" and "</span>".
 
 progress-message-1 =
-    <span> Cychwyn da! </p> Edrychwch ar y tor-data eraill i weld
+    <span>Cychwyn da!</span> Edrychwch ar y tor-data eraill i weld
     pa gamau sydd angen
     eu cymryd.
 progress-message-2 =
