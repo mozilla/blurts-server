@@ -531,12 +531,12 @@ progress-message-1 =
     pa gamau sydd angen
     eu cymryd.
 progress-message-2 =
-    <span>Daliwch ati!</p> Mae newidiadau bach fel diweddaru cyfrineiriau yn cael effaith fawr
+    <span>Daliwch ati!</span> Mae newidiadau bach fel diweddaru cyfrineiriau yn cael effaith fawr
     ar gadw'ch manylion personol yn ddiogel.
-progress-message-3 = <span> Gwaith da wrth ddatrys y tor-data hyn! </p>Daliwch ati. Mae'na ragor i'w wneud.
+progress-message-3 = <span>Gwaith da wrth ddatrys y tor-data hyn!</span> Daliwch ati. Mae'na ragor i'w wneud.
 progress-message-4 = <span>Bron wedi gorffen!</span> Rydych chi bron â chyrraedd y diwedd.
 progress-complete-message =
-    <span>Teimlo'n dda, ydy?</p> Os ydych chi am ddal ati, mae hwn yn amser da i
+    <span>Teimlo'n dda, ydy?</span> Os ydych chi am ddal ati, mae hwn yn amser da i
     diweddaru mewngofnodion eraill gyda chyfrineiriau cryfach.
 
 ##
