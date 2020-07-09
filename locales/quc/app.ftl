@@ -159,6 +159,12 @@ how-fxm-3-blurb = We kakoj{ -brand-name }, kariq na jun ub'ixikil we kasolij jun
 wtd-after-website = Jas kb'anik are taq xb'antaj jun retztaqan chech jun wokk'olib'al web':
 wtd-after-data-agg = Jas kb'anik are taq xb'antaj jun retztaqan chech le ya'l juq'attzij:
 what-is-data-agg = ¿Jas uwach ri' jun ya'l juq'attzij?
+what-is-data-agg-blurb =
+    Le taq ya'l juq'attzij o taq mulinel taq juq'attzij, kkimuluj q'alajisanem kech uk'iyal ¶
+    taq cholajib'al chi'l kkiloq chi kech e nik'aj chi k'aywokaj, kkimulij we taq juq'attzij k'ate k'u ri' kkik'ayij chi kech e nik'aj chi k'aywokaj ¶
+    chech ub'anik taq k'ayinem. Le taq e riqol uk'axal rech taq we retztaqan man qas ta e k'o pa uk'eyowal chech uriqik uk'axal rech pwaqilal.¶
+    sub'unem, xa  k'ut le taq b'ank'ax wene kkikoj we juq'attzij chech kijalwachixik.
+protect-your-privacy = Chachajij le awechab'alil pa nimk'atz'
 
 ## What to do after data breach tips
 
