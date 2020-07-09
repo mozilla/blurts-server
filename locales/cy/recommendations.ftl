@@ -59,6 +59,12 @@ rec-ip-non-us =
     Mae eich cyfeiriad Protocol Rhyngrwyd (cyfeiriad IP) yn nodi'ch lleoliad
     a'ch darparwr gwasanaeth rhyngrwyd. Gyda rhwydwaith preifat rhithwir (VPN), gallwch guddio'ch lleoliad
     a chuddio'ch cyfeiriad IP.
+# Recommendation subhead
+rec-moz-vpn-cta = Rhowch gynnig ar { -brand-mozilla-vpn }
+rec-moz-vpn =
+    Gall eich cyfeiriad Protocol Rhyngrwyd (cyfeiriad IP) ddatgelu eich lleoliad a'ch darparwr gwasanaeth rhyngrwyd. Mae gwasanaeth fel
+     { -brand-fpn } yn cuddio cyfeiriad IP a lleoliad eich porwr { -brand-name } ac mae gwasanaeth fel { -brand-mozilla-vpn } yn cuddio
+    cyfeiriad IP a lleoliad eich dyfais i gyd.
 rec-hist-pw-subhead = Peidio ailddefnyddio cyfrineiriau
 # Link title
 rec-hist-pw-cta-fx = Gweld mewngofnodi yn { -brand-name }
