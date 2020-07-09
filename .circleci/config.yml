@@ -57,6 +57,7 @@ jobs:
             - run:
                 name: Build and run tests.
                 command: |
+                    set -e
                     export NVM_DIR="/opt/circleci/.nvm"
                     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
                     nvm use 10
