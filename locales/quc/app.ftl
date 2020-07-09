@@ -193,6 +193,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Chaq'atuj taq retztaqan
 find-out-what-hackers-know = Chariqa' jachike e b'ank'ax keta'am chi awach, Chaweta'maj jas kab'ano are chi katnab'ej jun ucholajil chi kiwach.
+get-email-alerts = Chachajij awib': Chariqa' taq taqoqxa'nib'al rech na'b'anem are taq kq'alajin le aq'alajisanem pa jun eta'matal retztaqan
 
 ## Updated error messages
 
