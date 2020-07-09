@@ -155,6 +155,8 @@ how-fxm-1-blurb =
 how-fxm-2-headline = Chatz'ib'aj awib' pa jun rilawachixik retztaqan
 how-fxm-2-blurb = Chawinaqirisaj jun { -brand-fxa } chech rilawachixik le ataqoqxa'nib'al chech utzukuxik taq retztaqan. ¶ Are taq kq'atutaj le ataqoqxa'nib'al, xuquje' kak'ulaj jun tz'aqat woktzijob'al rech taq retztaqan kanoq, ¶ rachi'l taq retztaqan rech na'b'alil.
 how-fxm-3-headline = Chak'ulaj taq ub'ixikil pa le nik'onel
+how-fxm-3-blurb = We kakoj{ -brand-name }, kariq na jun ub'ixikil we kasolij jun ¶ jun wokk'olib'al web' le b'anom retztaqan chech. chawila' we chi'l at b'anom we retztaqan chi awech... chi'l jas rajawaxik kab'an chech.
+wtd-after-website = Jas kb'anik are taq xb'antaj jun retztaqan chech jun wokk'olib'al web':
 
 ## What to do after data breach tips
 
