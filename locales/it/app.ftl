@@ -329,7 +329,7 @@ breach-overview-new = Il giorno { $breachDate }, { $breachTitle } è stato viola
 monitor-preferences = Preferenze di { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
 # and is followed by the user's primary Firefox Account email. 
-signed-in-as = Accesso effettuato come:
+signed-in-as = Accesso effettuato come: { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
 filter-by = Filtra per categoria:
