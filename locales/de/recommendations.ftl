@@ -37,7 +37,7 @@ rec-pw-4-subhead = Nutzen Sie 2-Faktor-Authentifizierung (2FA)
 rec-pw-4-cta = Websites ansehen, die 2FA anbieten
 rec-pw-4 =
     Viele Websites bieten 2FA als zusätzliche Sicherheitsmaßnahme an. Dafür braucht man
-    weitere Informationen zum Anmelden in Ihrem Konto, z.&thinsp;B. einen
+    weitere Informationen zum Anmelden in Ihrem Konto, z. B. einen
     Einmalcode, den Sie per SMS erhalten.
 # Recommendation subhead
 rec-bank-acc-subhead = Überwachen Sie Ihre Kontoauszüge
