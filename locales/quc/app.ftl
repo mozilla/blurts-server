@@ -149,6 +149,9 @@ fxm-warns-you = { -product-name } kuya' ub'ixik chi awech we xk'oji' le akemriqo
 # How Firefox Monitor works
 how-fxm-works = Jas kchakun { -product-name }
 how-fxm-1-headline = Ub'anik jun tzukunem qas kk'ojik
+how-fxm-1-blurb =
+    Chatzukuj taq kemriqonib'al rech taqoqx'anib'al pa taq retztaqan rech juq'attzij le e petinaqpa ri 2007 loq . We tzukunem qas kkkojik kuk'ut nima ronojel ta ,,,,,, xa man k'uk'ut ta
+    le kuk'a'am taq juq'attzij rech na'b'alil.
 
 ## What to do after data breach tips
 
