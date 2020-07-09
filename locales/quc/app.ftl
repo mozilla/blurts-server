@@ -179,6 +179,20 @@ strength-of-your-pw = We qas nim ucholajil aretokib'al sib'alaj nim uchajixik le
 create-strong-passwords = Jas uwinaqirisaxik kowilal taq retokib'al
 stop-reusing-pw = Chaq'atab'a ukojik chi jumul taq retokib'al le akojom chik
 create-unique-pw = Chawinaqirisaj jalan taq retokib'al ch'l chak'olo' apawije' chajib'al, pacha' ilawachib'al retokib'al.
+five-myths = 5 ub'ixikil chi rij taq ilawachib'a retokib'al
+create-a-fxa = Chawinaqirisaj jun { -brand-fxa } chech le tz'aqat wokb'ixikil rech taq retztaqan chi'l uriqik taq na'b'anem.
+feat-security-tips = Taq no'jinem chech uchajixik taq akemb'i'aj
+feat-sensitive = Cholpaqal taq tzukunem pa taq retztaqan rech nab'alil.
+feat-enroll-multiple = Chatz'ib'aj k'i taqoqxa'nib'al pa le rilawachixik retztaqan
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+        [one] Kk'utun pa{ $breachCount } eta'matal retztaqan.
+       *[other] Kk'utun pa { $breachCount } eta'matal taq retztaqan.
+    }
+check-for-breaches = Chaq'atuj taq retztaqan
+find-out-what-hackers-know = Chariqa' jachike e b'ank'ax keta'am chi awach, Chaweta'maj jas kab'ano are chi katnab'ej jun ucholajil chi kiwach.
 
 ## Updated error messages
 
