@@ -46,6 +46,9 @@ rec-ip-us =
     和互联网服务提供商。{ -brand-fpn } 这样的服务
     可帮助您掩盖您的 IP 地址，以免您的位置泄露。
 rec-ip-non-us = 您的互联网协议地址（IP 地址）可精确定位您的位置和网络运营商。使用 VPN 则可以伪装您的 IP 地址，以此隐藏自己的位置。
+# Recommendation subhead
+rec-moz-vpn-cta = 试用 { -brand-mozilla-vpn }
+rec-moz-vpn = 您的互联网协议地址（IP 地址）会暴露您的位置和网络运营商。{ -brand-fpn } 服务可以隐藏您的 { -brand-name } 的 IP 地址和位置。{ -brand-mozilla-vpn } 服务则可以隐藏整台设备的 IP 地址和位置。
 rec-hist-pw-subhead = 避免重复使用密码
 # Link title
 rec-hist-pw-cta-fx = 在 { -brand-name } 中查看登录信息
