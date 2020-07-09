@@ -55,7 +55,7 @@ currently-showing = Ipinakikita:
 
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
-progress-percent-complete = { $precentComplete }% kumpleto
+progress-percent-complete = { $percentComplete }% kumpleto
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
