@@ -153,9 +153,8 @@ how-fxm-1-blurb =
     Chatzukuj taq kemriqonib'al rech taqoqx'anib'al pa taq retztaqan rech juq'attzij le e petinaq  ¶              pa ri 2007 loq . We tzukunem qas kkojik kuk'ut nima ronojel taq retztaqan xa k'ut man kuk'ut ta  ¶
     le kuk'a'am taq juq'attzij rech na'b'alil.
 how-fxm-2-headline = Chatz'ib'aj awib' pa jun rilawachixik retztaqan
-how-fxm-2-blurb =
-    Chawinaqirisaj jun { -brand-fxa } chech rilawachixik le ataqoqxa'nib'al chech utzukuxik taq reto monitor your email for ongoing breaches. tztaqanem,rified your email, you’ll also receive a full report of past breaches, 
-    including sensitive breaches.
+how-fxm-2-blurb = Chawinaqirisaj jun { -brand-fxa } chech rilawachixik le ataqoqxa'nib'al chech utzukuxik taq retztaqan. ¶ Are taq kq'atutaj le ataqoqxa'nib'al, xuquje' kak'ulaj jun tz'aqat woktzijob'al rech taq retztaqan kanoq, ¶ rachi'l taq retztaqan rech na'b'alil.
+how-fxm-3-headline = Chak'ulaj taq ub'ixikil pa le nik'onel
 
 ## What to do after data breach tips
 
