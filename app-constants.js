@@ -42,9 +42,11 @@ const kEnvironmentVariables = [
   "DATABASE_URL",
   "PAGE_TOKEN_TIMER",
   "PRODUCT_PROMOS_ENABLED",
+  "REDIS_URL",
   "SENTRY_DSN",
   "DELETE_UNVERIFIED_SUBSCRIBERS_TIMER",
   "EXPERIMENT_ACTIVE",
+  "MAX_NUM_ADDRESSES",
 ];
 
 const AppConstants = { };
