@@ -43,6 +43,8 @@ rec-ip-subhead = Usa un servizio che maschera il tuo indirizzo IP
 rec-ip-us-cta = Prova { -brand-fpn }
 rec-ip-us = Il tuo indirizzo di protocollo internet (indirizzo IP) permette di risalire alla tua posizione e al tuo fornitore di servizi internet. Un servizio come { -brand-fpn } maschera il tuo indirizzo IP per nascondere la tua posizione.
 rec-ip-non-us = Il tuo indirizzo di protocollo internet (indirizzo IP) permette di risalire alla tua posizione e al tuo fornitore di servizi internet. Con una rete privata virtuale (VPN), puoi nascondere la tua posizione e mascherare il tuo indirizzo IP.
+# Recommendation subhead
+rec-moz-vpn-cta = Prova { -brand-mozilla-vpn }
 rec-hist-pw-subhead = Evita di riutilizzare le password
 # Link title
 rec-hist-pw-cta-fx = Visualizza le credenziali in { -brand-name }
