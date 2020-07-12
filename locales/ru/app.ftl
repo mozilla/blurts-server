@@ -475,9 +475,9 @@ progress-intro-message =
     вашей личной информации, вы можете отметить её как решённую.
 progress-status =
     { $numTotalBreaches ->
-        [one] { $numResolvedBreaches } из { $numTotalBreaches }  утечек отмечены как решённые
-        [few] { $numResolvedBreaches } из { $numTotalBreaches }  утечек отмечены как решённые
-       *[many] { $numResolvedBreaches } из { $numTotalBreaches }  утечек отмечены как решённые
+        [one] { $numResolvedBreaches } из { $numTotalBreaches } утечек отмечены как решённые
+        [few] { $numResolvedBreaches } из { $numTotalBreaches } утечек отмечены как решённые
+       *[many] { $numResolvedBreaches } из { $numTotalBreaches } утечек отмечены как решённые
     }
 progress-complete = Все известные утечки были отмечены как решённые
 
@@ -491,7 +491,7 @@ progress-message-2 =
     <span>Так держать!</span> Несложные действия, такие как смена паролей, имеют огромное влияние на 
     безопасность вашей личной информации.
 progress-message-3 = <span>Отличная работа по решению утечек данных!</span> Продолжайте. Вам осталось сделать всего несколько шагов.
-progress-message-4 = <span>Почти готово!</span>  Вы близки к финишной черте.
+progress-message-4 = <span>Почти готово!</span> Вы близки к финишной черте.
 progress-complete-message =
     <span>Стало лучше, не так ли?</span> Если вы хотите продолжить, сейчас самое время 
     сменить свои пароли на более надёжные.
