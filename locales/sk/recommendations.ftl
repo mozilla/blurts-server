@@ -58,6 +58,9 @@ rec-ip-non-us =
     Vaša internetová adresa (IP adresa) prezrádza vašu polohu a informácie 
     o poskytovateľovi internetového pripojenia. S použitím virtuálnej privátnej 
     siete (VPN) môžete skryť svoju IP adresu a tým aj  svoju polohu.
+# Recommendation subhead
+rec-moz-vpn-cta = Vyskúšajte { -brand-mozilla-vpn }
+rec-moz-vpn = Vaša IP adresa môže vyzradiť vašu polohu a poskytovateľa pripojenia na internet. Služba ako { -brand-fpn } skryje vašu IP adresu a polohu pre { -brand-name } a služba ako { -brand-mozilla-vpn } skryje vašu IP adresu a polohu pre celé zariadenie.
 rec-hist-pw-subhead = Vyhnite sa opakovanému použitiu hesiel
 # Link title
 rec-hist-pw-cta-fx = Zobraziť prihlasovacie údaje vo { -brand-name(case: "loc") }
