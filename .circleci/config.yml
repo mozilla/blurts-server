@@ -57,7 +57,6 @@ jobs:
             - run:
                 name: Build and run tests.
                 command: |
-                    set +e
                     export NVM_DIR="/opt/circleci/.nvm"
                     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
                     nvm use 10
@@ -69,6 +68,10 @@ jobs:
                     mkdir ./tests/integration/errorShots
                     docker-compose -f tests/integration/docker-compose.yml up --build -d
                     docker-compose -f tests/integration/docker-compose.yml exec --user root firefox npm run test:integration-headless-ci
+            - run:
+                name: Capture Logs.
+                when: on_fail
+                command: |
                     docker-compose -f tests/integration/docker-compose.yml logs server &> tests/integration/server.log
                     docker-compose -f tests/integration/docker-compose.yml logs postgres &> tests/integration/postgres.log
                     docker-compose -f tests/integration/docker-compose.yml logs firefox &> tests/integration/firefox.log
