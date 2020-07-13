@@ -3,6 +3,7 @@
 /* eslint-disable strict */
 
 const { join } = require("path");
+const video = require("wdio-video-reporter");
 require("dotenv").config();
 
 exports.config = {
@@ -133,7 +134,11 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: ["dot", "spec"],
+    reporters: ["dot", "spec", [video, {
+      saveAllVideos: false,
+      videoSlowdownMultiplier: 25,
+      outputDir: "tests/integration/errorShots/videos",
+    }]],
 
     //
     // Options to be passed to Mocha.
