@@ -3,7 +3,7 @@
 /* eslint-disable strict */
 
 const { join } = require("path");
-const video = require('wdio-video-reporter');
+const video = require("wdio-video-reporter");
 require("dotenv").config();
 
 exports.config = {
@@ -137,7 +137,7 @@ exports.config = {
     reporters: ["dot", "spec", [video, {
       saveAllVideos: false,
       videoSlowdownMultiplier: 25,
-      outputDir: "tests/integration/errorShots/videos"
+      outputDir: "tests/integration/errorShots/videos",
     }]],
 
     //
