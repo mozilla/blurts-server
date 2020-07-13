@@ -19,7 +19,7 @@
     "cpr": "3.0.1",
     "csurf": "1.11.0",
     "dotenv": "5.0.1",
-    "express": "4.16.3",
+    "express": "4.17.1",
     "express-bearer-token": "2.2.0",
     "express-handlebars": "3.1.0",
     "fluent": "0.10.0",
