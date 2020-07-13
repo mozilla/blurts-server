@@ -17,7 +17,7 @@
     "client-sessions": "0.8.0",
     "concat": "1.0.3",
     "cpr": "3.0.1",
-    "csurf": "1.9.0",
+    "csurf": "1.11.0",
     "dotenv": "5.0.1",
     "express": "4.16.3",
     "express-bearer-token": "2.2.0",
