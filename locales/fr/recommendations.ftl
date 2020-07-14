@@ -47,6 +47,8 @@ rec-ip-non-us =
     Votre adresse de protocole Internet (adresse IP) identifie votre emplacement
     et fournisseur de services Internet. Avec un réseau privé virtuel (VPN), vous pouvez masquer votre position
     et masquer votre adresse IP.
+# Recommendation subhead
+rec-moz-vpn-cta = Essayer { -brand-mozilla-vpn }
 rec-hist-pw-subhead = Évitez de réutiliser vos mots de passe
 # Link title
 rec-hist-pw-cta-fx = Afficher les identifiants dans { -brand-name }
