@@ -12,6 +12,7 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Aẓetta n tbaḍnit n Firefox
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 

@@ -58,6 +58,8 @@ rec-ip-non-us =
     Tansa-inek n uneggaf internet (tansa IP) teskan-d adeg ideg telliḍ 
     d usaǧǧaw n umeẓli internet. Akked  uzeṭṭa uslig uhlis (VPN), tzemreḍ ad teffreḍ adeg-inek 
     ad teffreḍ daɣen tansa-inek IP.
+# Recommendation subhead
+rec-moz-vpn-cta = Ɛreḍ { -brand-mozilla-vpn }
 rec-hist-pw-subhead = Ur ssexdam ara awalen uffiren i tesxedmeḍ yakan.
 # Link title
 rec-hist-pw-cta-fx = Sken inekcumen deg { -brand-name }
