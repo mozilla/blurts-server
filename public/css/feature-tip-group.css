@@ -78,8 +78,9 @@
   color: #42425a;
 }
 
-.feature-tip-link {
-  display: block;
+.cta2 {
+  margin-left: 24px;
+  margin-right: 24px;
 }
 
 .breach-detail .feature-tip-group {
@@ -174,6 +175,11 @@
   .breach-detail .feature-tip-content {
     margin: auto;
     text-align: center;
+  }
+
+  .recommendation-cta {
+    display: block;
+    margin-top: 12px;
   }
 
   .breach-detail .feature-tip-content-wrapper {
