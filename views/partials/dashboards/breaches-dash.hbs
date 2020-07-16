@@ -48,7 +48,6 @@
     </div>
   </div>
 {{/getBreachesDashboard}}
-{{!-- TODO: remove this when https://github.com/mozilla/blurts-server/issues/1148 is fixed --}}
 {{#ifCompare verifiedEmails.length "<" MAX_NUM_ADDRESSES}}
   <div class="row jst-cntr">
     <div id="dashboard-add-email" class="dashboard-add-email flx flx-col">
@@ -63,4 +62,32 @@
     </div>
   </div>
 {{/ifCompare}}
+{{#if userHasUnlimited }}
+  <div class="row jst-cntr">
+    <h3>You can add unlimited addresses!</h3>
+    <br/>
+    <div id="dashboard-add-email" class="dashboard-add-email flx flx-col">
+      <h2 class="section-headline txt-purple7 txt-cntr">{{getString "want-to-add" }}</h2>
+      {{> forms/add-another-email-form }}
+      {{#if lastAddedEmail}}
+        <span class="dashboard-email-sent bold"> {{ getString "email-sent" }}</span>
+        {{#each (getLastAddedEmailStrings)}}
+          <p class="confirm-submit txt-cntr">{{{ this }}}</p>
+        {{/each}}
+      {{/if}}
+    </div>
+  </div>
+{{/if}}
+{{#ifCompare verifiedEmails.length ">=" MAX_NUM_ADDRESSES}}
+<div class="row jst-cntr">
+    {{#unless userHasUnlimited }}
+        <h3>You've reached your limit of free addresses</h3>
+    {{/unless}}
+</div>
+{{/ifCompare}}
+{{#unless userHasUnlimited }}
+<div class="row jst-cntr">
+    <a class="btn-violet-secondary btn-transparent btn-small" href="https://accounts.stage.mozaws.net/subscriptions/products/prod_Het56ernNdtSBs?plan=price_1H5ZIyKb9q6OnNsLcnAPwqw6" target="_blank">Buy Unlimited addresses!</a>
+</div>
+{{/unless}}
 {{> take-back-control/take-back-control-banner additionalClasses="dash-take-back-wrapper"}}

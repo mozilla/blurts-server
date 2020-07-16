@@ -7,6 +7,7 @@ const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const { FluentError } = require("../locale-utils");
 const { FXA } = require("../lib/fxa");
+const mozlog = require("../log");
 const HIBP = require("../hibp");
 const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
@@ -15,6 +16,9 @@ const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
 const { getExperimentFlags, getUTMContents } = require("./utils");
 
 const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
+
+const log = mozlog("controllers.user");
+
 
 async function removeEmail(req, res) {
   const emailId = req.body.emailId;
@@ -226,6 +230,9 @@ function getNewBreachesForEmailEntriesSinceDate(emailEntries, date) {
 
 async function getDashboard(req, res) {
   const user = req.user;
+  const userHasUnlimited = (user.fxa_profile_json.hasOwnProperty("subscriptions") && user.fxa_profile_json.subscriptions.includes("monitor-unlimited")) ? true : false;
+  log.info("user.fxa_profile_json", { fxa_profile_json: user.fxa_profile_json });
+  log.info("userHasUnlimited", { userHasUnlimited });
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
   const utmOverrides = getUTMContents(req);
@@ -246,6 +253,7 @@ async function getDashboard(req, res) {
     lastAddedEmail,
     verifiedEmails,
     unverifiedEmails,
+    userHasUnlimited,
     whichPartial: "dashboards/breaches-dash",
     experimentFlags,
     utmOverrides,
