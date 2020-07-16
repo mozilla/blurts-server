@@ -49,6 +49,7 @@ rec-ip-non-us =
     et masquer votre adresse IP.
 # Recommendation subhead
 rec-moz-vpn-cta = Essayer { -brand-mozilla-vpn }
+rec-moz-vpn = Votre adresse de protocole Internet (adresse IP) peut révéler votre emplacement et votre fournisseur d’accès à Internet. Un service comme { -brand-fpn } masque votre adresse IP et votre emplacement pour { -brand-name } et un service comme { -brand-mozilla-vpn } masque votre adresse IP et votre emplacement pour l’ensemble de votre appareil.
 rec-hist-pw-subhead = Évitez de réutiliser vos mots de passe
 # Link title
 rec-hist-pw-cta-fx = Afficher les identifiants dans { -brand-name }
