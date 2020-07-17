@@ -61,6 +61,12 @@ rec-ip-non-us =
     Adresa ta de protocol Internet (adresa IP) îți indică locația 
     și furnizorul de servicii de Internet. Cu o rețea privată virtuală (VPN), poți să îți ascunzi locația 
     și îți maschezi adresa IP.
+# Recommendation subhead
+rec-moz-vpn-cta = Încearcă { -brand-mozilla-vpn }
+rec-moz-vpn =
+    Adresa ta de protocol Internet (adresă IP) îți poate divulga locația și furnizorul de servicii de Internet. Un serviciu precum
+    { -brand-fpn } îți ascunde adresa IP și locația pentru { -brand-name }, iar un serviciu precum { -brand-mozilla-vpn } îți ascunde
+    adresa IP și locația pentru tot dispozitivul.
 rec-hist-pw-subhead = Evită refolosirea parolelor
 # Link title
 rec-hist-pw-cta-fx = Vezi datele de autentificare în { -brand-name }
