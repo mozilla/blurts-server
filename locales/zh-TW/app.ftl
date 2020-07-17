@@ -388,7 +388,7 @@ marking-this-subhead = 將此次資料外洩事件標示為已處理
 # Please do not modify or remove "<span>" and "</span>".
 marking-this-body = <span>當您針對此次事件採取措施處理後</span>，可以將其標示為「已處理」。可以隨時回到儀錶板來確認此次事件的詳細資訊。
 mark-as-resolve-button = 標示為已處理
-marked-as-resolved-label = 已標示為已處理
+marked-as-resolved-label = 已標示為處理完成
 undo-button = 復原
 confirmation-1-subhead = 您剛處理好第一筆資料外洩事件，真棒！
 confirmation-1-body = 再接再厲，到儀錶板看看還有沒有其它該處理的情況。
@@ -436,7 +436,7 @@ progress-complete-message = <span>覺得很棒對不對？</span>若您想要繼
 resolve-this-breach-link = 處理過此次事件了
 # This string appears in resolved breach cards and is followed by 
 # the date the user marked the breach as resolved.
-marked-resolved = 已標示為已處理:
+marked-resolved = 已標示為處理完成:
 hide-resolved-button = 隱藏處理過的事件
 show-resolved-button = 顯示處理過的事件
 unresolved-passwords-exposed =
