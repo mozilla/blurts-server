@@ -351,6 +351,8 @@ breach-alert-notifications = Ειδοποιήσεις παραβιάσεων
 breach-added-label = Ημερομηνία προσθήκης:
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Οι αλλαγές αποθηκεύτηκαν!
+# Section headline
+rec-section-headline-no-pw = Τι πρέπει να κάνετε για να προστατέψετε τα προσωπικά σας δεδομένα
 # Button
 see-additional-recs = Προβολή επιπρόσθετων προτάσεων
 
@@ -369,16 +371,27 @@ marking-this-subhead = Επισήμανση αυτής της παραβίαση
 mark-as-resolve-button = Επισήμανση ως λυμένη
 marked-as-resolved-label = Επισημάνθηκε ως λυμένη
 undo-button = Αναίρεση
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Είναι ο νέος σας κωδικός πρόσβασης μοναδικός, ισχυρός και δύσκολος; <a>Μάθετε εδώ</a>
 generic-confirmation-subhead = Αυτή η παραβίαση έχει επισημανθεί ως επιλυμένη
 return-to-breach-details-link = Επιστροφή στις λεπτομέρειες παραβίασης
 go-to-dashboard-link = Μετάβαση στον πίνακα
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
 progress-percent-complete = { $percentComplete }% ολοκλήρωση
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+       *[other] Επιλύθηκαν { $numResolvedBreaches }
+    }
+progress-intro-subhead = Νέο στο { -product-name }: Επισήμανση παραβιάσεων ως επιλυμένων
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-4 = <span>Σχεδόν τελειώσατε!</span> Είστε κοντά στη γραμμή τερματισμού.
 
 ##
 
@@ -387,6 +400,7 @@ hide-resolved-button = Απόκρυψη επιλυμένων
 show-resolved-button = Εμφάνιση επιλυμένων
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Νέο
+mobile-promo-headline = Φέρτε το { -brand-name } στο τηλέφωνο και το tablet σας
 mobile-promo-cta = Λήψη { -brand-name } σε Android και iOS
 promo-lockwise-cta = Λήψη { -brand-lockwise }
 fpn-promo-headline = Καλύψτε την τοποθεσία σας από ιστοσελίδες και ιχνηλάτες
