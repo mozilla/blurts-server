@@ -20,6 +20,8 @@ rec-pw-4-cta = Δείτε ιστοσελίδες που προσφέρουν 2FA
 rec-ip-subhead = Χρησιμοποιήστε μια υπηρεσία που αποκρύπτει τη διεύθυνση IP σας
 # Link title
 rec-ip-us-cta = Δοκιμή του { -brand-fpn }
+# Recommendation subhead
+rec-moz-vpn-cta = Δοκιμή του { -brand-mozilla-vpn }
 # Link title
 rec-hist-pw-cta-fx = Προβολή συνδέσεων στο { -brand-name }
 # Recommendation subhead
