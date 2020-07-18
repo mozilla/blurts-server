@@ -12,6 +12,7 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
@@ -38,6 +39,9 @@ user-add-email-verify-subject = Verifiqueu la vostra subscripció al { -product-
 user-add-duplicate-email = Aquesta adreça electrònica ja s'ha afegit al { -product-name }.
 user-add-duplicate-email-part-2 = Aneu a { $preferencesLink } per comprovar l'estat de { $userEmail }.
 error-headline = Error
+user-verify-token-error = Cal el testimoni de verificació.
+user-verify-email-report-subject = El vostre informe del { -product-name }
+user-unsubscribe-token-error = Cal un testimoni per cancel·lar la subscripció.
 user-unsubscribe-title = { -product-name } : Cancel·la la subscripció
 pwt-section-headline = Contrasenyes més segures = Millor protecció
 scan-placeholder = Escriviu una adreça electrònica
