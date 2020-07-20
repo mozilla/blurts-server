@@ -55,6 +55,8 @@ rec-ip-non-us =
     Vaš naslov internetnega protokola (naslov IP) natančno določa vašo lokacijo 
     in ponudnika internetnih storitev. Z uporabo navideznega zasebnega omrežja (VPN) lahko skrijete vašo lokacijo 
     in prikrijete vaš naslov IP.
+# Recommendation subhead
+rec-moz-vpn-cta = Poskusite { -brand-mozilla-vpn }
 rec-hist-pw-subhead = Izogibajte se ponovni uporabi gesel
 # Link title
 rec-hist-pw-cta-fx = Oglejte si prijave v { -brand-name }
