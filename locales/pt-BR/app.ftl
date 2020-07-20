@@ -426,7 +426,7 @@ take-further-steps-desc = Descubra como atenuar os riscos de roubo de identidade
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Alterações salvas!
 # Section headline
-rec-section-headline = O que fazer a respeito desse vazamento
+rec-section-headline = O que fazer a respeito deste vazamento
 rec-section-subhead = Recomendamos que você siga estas etapas para manter suas informações pessoais seguras e proteger sua identidade digital.
 # Section headline
 rec-section-headline-no-pw = O que fazer para proteger suas informações pessoais
@@ -446,7 +446,7 @@ resolve-top-notification-plural =
 
 ##
 
-marking-this-subhead = Marcando este vazamento como resolvido
+marking-this-subhead = Marcar este vazamento como resolvido
 # This string contains nested markup that is later used to style the text inside of it.
 # Please do not modify or remove "<span>" and "</span>".
 marking-this-body =

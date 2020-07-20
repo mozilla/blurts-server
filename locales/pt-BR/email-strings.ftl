@@ -22,8 +22,6 @@ email-footer-blurb =
 email-verify-footer-copy =
     Você está recebendo esses e-mails porque se inscreveu para receber alertas do { -product-name }. 
     Este é um e-mail automático. Para obter suporte, visite { $faqLink }.
-# Button text that takes the user to their signed in user dashboard.
-view-my-dashboard-cta = Ver meu painel
 # Button text
 verify-email-cta = Verificar e-mail
 # Button text
@@ -64,7 +62,7 @@ faq-list-headline = Perguntas frequentes
 # Link Title
 faq-v2-1 = Não reconheço uma dessas empresas ou sites. Por que estou neste vazamento?
 # Link Title
-faq-v2-2 = Preciso fazer alguma coisa se um vazamento aconteceu anos atrás, ou esta é uma conta antiga?
+faq-v2-2 = Preciso fazer alguma coisa se um vazamento aconteceu anos atrás, ou se esta é uma conta antiga?
 # Link Title
 faq-v2-3 = Acabei de descobrir que estou em um vazamento de dados. O que fazer agora?
 # Link Title
