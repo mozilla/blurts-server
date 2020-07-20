@@ -335,8 +335,8 @@ passwords-exposed =
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
     { $breaches ->
-        [one] Ismert adatsértésben kikerültek az információi
-       *[other] Ismert adatsértésekben kikerültek az információi
+        [one] Ismert adatsértésben kerültek ki az információi
+       *[other] Ismert adatsértésben kerültek ki az információi
     }
 # Button
 see-additional-breaches = További adatsértések megtekintése
