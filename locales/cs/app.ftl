@@ -230,7 +230,7 @@ create-strong-passwords = Jak vytvářet silná hesla
 stop-reusing-pw = Přestaňte používat hesla opakovaně
 create-unique-pw = Vytvořte si jedinečná hesla a uschovejte je na nějakém bezpečném místě, např. ve správci hesel.
 five-myths = 5 mýtů o správcích hesel
-create-a-fxa = Vytvořte si { -brand-fxa(case: "acc") } pro dostávání upozornění na nové úniky a obdržení svého kompletního hlášení.
+create-a-fxa = Vytvořte si { -brand-fxa(case: "acc", capitalization: "lower") } pro příjem upozornění na nové úniky a obdržení svého kompletního hlášení.
 feat-security-tips = Bezpečnostní tipy, jak zabezpečit své účty
 feat-sensitive = Pokročilé vyhledávání v únicích citlivých údajů
 feat-enroll-multiple = Nechte si monitorovat více e-mailových adres
@@ -263,7 +263,7 @@ breach-summary = Souhrnné informace
 show-breaches-for-this-email = Zobrazit všechny úniky pro tuto adresu.
 link-change-primary = Změnit primární e-mailovou adresu
 remove-fxm = Vypnout { -product-name(case: "acc") }
-remove-fxm-blurb = Tímto zrušíte zasílání upozornění { -product-name(case: "ins") }. Váš { -brand-fxa } zůstane aktivní a můžete dostávat jiné zprávy týkající se vašeho účtu.
+remove-fxm-blurb = Tímto zrušíte zasílání upozornění { -product-name(case: "ins") }. Váš { -brand-fxa(capitalization: "lower") } zůstane aktivní a můžete dostávat jiné zprávy týkající se vašeho účtu.
 # Button title
 manage-email-addresses = Spravovat e-mailové adresy
 # Link title
@@ -297,7 +297,7 @@ new-breaches-found =
         [few] NALEZENY { $breachCount } NOVÉ ÚNIKY DAT
        *[other] NALEZENO { $breachCount } NOVÝCH ÚNIKŮ DAT
     }
-sign-up-headline-1 = Dostávejte průběžně upozornění pomocí { -brand-fxa(case: "gen") }.
+sign-up-headline-1 = Dostávejte průběžně upozornění pomocí { -brand-fxa(case: "gen", capitalization: "lower") }.
 account-not-required = Pro vytvoření { -brand-fxa(case: "gen", capitalization: "lower") } není nutné mít prohlížeč { -brand-name }. Můžete dostávat informace o službách { -brand-Mozilla(case: "gen") }.
 was-your-info-exposed = Byly vaše údaje vyzrazeny v úniku { $breachName }?
 find-out-if = Zjistěte, jestli byly vaše údaje vyzrazeny v tomto úniku.
@@ -373,7 +373,7 @@ scan-results-known-breaches =
 results-for = Výsledky pro: { $userEmail }
 other-monitored-emails = Další monitorované e-mailové adresy
 email-verification-required = Vyžadováno ověření e-mailové adresy
-fxa-primary-email = E-mailová adresa { -brand-fxa(case: "gen") } (primární)
+fxa-primary-email = E-mailová adresa { -brand-fxa(case: "gen", capitalization: "lower") } (primární)
 what-is-a-website-breach = Co je to únik dat z webových stránek?
 website-breach-blurb = Únik dat z webových stránek se odehraje, když kyberzločinci odcizí, zkopírují nebo zveřejní osobní údaje z internetových účtů. Zpravidla je to výsledkem činnosti hackerů, kteří nalezli slabé místo v zabezpečení webu. K úniku osobních údajů z účtu však také může dojít nedopatřením.
 security-tips-headline = Bezpečnostní tipy, jak se chránit před hackery
