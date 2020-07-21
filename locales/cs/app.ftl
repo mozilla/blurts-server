@@ -91,7 +91,7 @@ error-not-subscribed = Tato e-mailová adresa není zaregistrována k příjmu u
 error-hibp-throttled = Příliš mnoho spojení k { -brand-HIBP }.
 error-hibp-connect = Chyba při připojování k { -brand-HIBP }.
 error-hibp-load-breaches = Nepodařilo se načíst informace o únicích.
-error-must-be-signed-in = Musíte být přihlášeni do svého { -brand-fxa(case: "gen") }.
+error-must-be-signed-in = Musíte být přihlášeni do svého { -brand-fxa(case: "gen", capitalization: "lower") }.
 error-to-finish-verifying = Pro dokončení ověření této e-mailové adresy pro { -product-name(case: "acc") } musíte být přihlášeni pod svým primárním e-mailovým účtem.
 home-title = { -product-name }
 home-not-found = Stránka nenalezena.
@@ -134,11 +134,11 @@ share-facebook-headline = Zjistěte, zda byla vaše data součástí nějakého 
 share-facebook-blurb = Byl některý z vašich účtů součástí nějakého úniku dat?
 og-site-description = { -product-name } zjistí, jestli byla vaše data součástí nějakého úniku. Pro větší bezpečí se také přihlaste k zasílání výstrah o budoucích únicích.
 show-all = Zobrazit vše
-fxa-scan-another-email = Chcete zkontrolovat další e-mail?
+fxa-scan-another-email = Chcete zkontrolovat další e-mailovou adresu?
 sign-in = Přihlásit se
 sign-out = Odhlášení
 # Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Správa { -brand-fxa(case: "gen") }
+manage-fxa = Správa { -brand-fxa(case: "gen", capitalization: "lower") }
 have-an-account = Již máte účet?
 fxa-pwt-summary-2 =
     Krátké jednoslovné heslo je velmi snadné uhodnout. Používejte alespoň
@@ -166,7 +166,7 @@ breaches = Úniky
 security-tips = Bezpečnostní tipy
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
-open-fxa-menu = Otevřít nabídku { -brand-fxa(case: "gen") }
+open-fxa-menu = Otevřít nabídku { -brand-fxa(case: "gen", capitalization: "lower") }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = NAPOSLEDY PŘIDANÝ ÚNIK
 # Link title
@@ -205,7 +205,7 @@ how-fxm-works = Jak { -product-name } funguje
 how-fxm-1-headline = Proveďte základní vyhledávání
 how-fxm-1-blurb = Vyhledejte svou e-mailovou adresu ve veřejně dostupných únicích dat sahajících zpět do roku 2007. Toto základní vyhledávání zobrazí všechny úniky dat kromě těch, které obsahují citlivé osobní údaje.
 how-fxm-2-headline = Zaregistrujte se k monitorování úniků
-how-fxm-2-blurb = Vytvořte si { -brand-fxa(case: "acc") }, abyste mohli monitorovat svou e-mailovou adresu pro případ probíhajících úniků. Ihned po ověření své e-mailové adresy rovněž obdržíte kompletní hlášení o předchozích únicích včetně úniků citlivých údajů.
+how-fxm-2-blurb = Vytvořte si { -brand-fxa(case: "acc", capitalization: "lower") }, abyste mohli monitorovat svou e-mailovou adresu pro případ probíhajících úniků. Ihned po ověření své e-mailové adresy rovněž obdržíte kompletní hlášení o předchozích únicích včetně úniků citlivých údajů.
 how-fxm-3-headline = Dostávejte oznámení ve svém prohlížeči
 how-fxm-3-blurb = Pokud používáte { -brand-name(case: "acc") }, obdržíte oznámení, jestliže navštívíte web, u něhož došlo k úniku dat. Hned si pak ověřte, jestli jste byli součástí tohoto úniku a co s tím můžete dělat.
 wtd-after-website = Co dělat po úniku z webových stránek
