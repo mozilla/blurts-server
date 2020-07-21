@@ -175,7 +175,7 @@ take-control = Získejte opět kontrolu nad svými osobními údaji.
 cant-stop-hackers = Nemůžete zabránit hackerům v nabourávání se do počítačů. Ale můžete se vyvarovat špatných zvyků, které jim usnadňují práci.
 read-more-tips = Další bezpečnostní tipy
 how-hackers-work = Jak pracují hackeři
-monitor-your-online-accounts = Zaregistrujte se k monitorování úniků pomocí { -brand-fxa(case: "gen") }.
+monitor-your-online-accounts = Zaregistrujte se k monitorování úniků pomocí { -brand-fxa(case: "gen", capitalization: "lower") }.
 stay-alert = Buďte informováni o nových únicích
 if-your-info = Jestliže budou vaše údaje součástí nového úniku dat, zašleme vám upozornění.
 search-all-emails = Vyhledejte všechny své e-mailové adresy v únicích dat a dostávejte upozornění na nové úniky.
@@ -298,7 +298,7 @@ new-breaches-found =
        *[other] NALEZENO { $breachCount } NOVÝCH ÚNIKŮ DAT
     }
 sign-up-headline-1 = Dostávejte průběžně upozornění pomocí { -brand-fxa(case: "gen") }.
-account-not-required = Pro vytvoření { -brand-fxa(case: "gen") } není nutné mít prohlížeč { -brand-name }. Můžete dostávat informace o službách { -brand-Mozilla(case: "gen") }.
+account-not-required = Pro vytvoření { -brand-fxa(case: "gen", capitalization: "lower") } není nutné mít prohlížeč { -brand-name }. Můžete dostávat informace o službách { -brand-Mozilla(case: "gen") }.
 was-your-info-exposed = Byly vaše údaje vyzrazeny v úniku { $breachName }?
 find-out-if = Zjistěte, jestli byly vaše údaje vyzrazeny v tomto úniku.
 fb-not-comp = Tato e-mailová adresa se nevyskytuje v úniku { $breachName }.
@@ -363,9 +363,9 @@ known-data-breaches-exposed =
 see-additional-breaches = Zobrazit další úniky
 scan-results-known-breaches =
     { $breachCount ->
-        [one] Tato e-mailová adresa se objevila v 1 známém úniku dat.
-        [few] Tato e-mailová adresa se objevila ve { $breachCount } známých únicích dat.
-       *[other] Tato e-mailová adresa se objevila v { $breachCount } známých únicích dat.
+        [one] Tato e-mailová adresa se vyskytuje v 1 známém úniku dat.
+        [few] Tato e-mailová adresa se vyskytuje ve { $breachCount } známých únicích dat.
+       *[other] Tato e-mailová adresa se vyskytuje v { $breachCount } známých únicích dat.
     }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
@@ -475,9 +475,9 @@ see-additional-recs = Podívejte se na další doporučení
 resolve-top-notification = E-mailová adresa { $affectedEmail } se objevila v tomto úniku. <a>Co dělat dál</a>
 resolve-top-notification-plural =
     V tomto úniku { $numAffectedEmails ->
-        [one] se objevila jedna vaše e-mailová adresa
-        [few] se objevily { $numAffectedEmails } vaše e-mailové adresy
-       *[other] se objevilo { $numAffectedEmails } vašich e-mailových adres
+        [one] se vyskytuje { $numAffectedEmails } vaše e-mailová adresa
+        [few] se vyskytují { $numAffectedEmails } vaše e-mailové adresy
+       *[other] se vyskytuje { $numAffectedEmails } vašich e-mailových adres
     }. <a>Co dělat dál</a>
 
 ##

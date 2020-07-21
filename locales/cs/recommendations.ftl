@@ -82,8 +82,7 @@ rec-phone-num =
 rec-dob-subhead = Nepoužívejte osobní údaje v PINech
 rec-dob =
     Protože vaše datum narození lze snadno veřejně dohledat, 
-    nepoužívejte ho pro vytvoření svého PINu. Lidé, kteří znají 
-    datum vašich narozenin mohou váš PIN velmi snadno uhodnout.
+    nepoužívejte ho pro vytvoření svého PINu. Lidé, kteří ví, kdy máte narozeniny, mohou váš PIN velmi snadno uhodnout.
 # Recommendation subhead
 rec-pins-subhead = Posilte své PINy
 rec-pins =
