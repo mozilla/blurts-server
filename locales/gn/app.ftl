@@ -453,7 +453,7 @@ marked-as-resolved-label = Oĩporãmavaramo mongurusupyre
 undo-button = Mbojevy
 confirmation-1-subhead = ¡Iporã! Emoĩporã ne ñembyai peteĩha.
 confirmation-1-body = Erekóke kyre’ỹ. Ema’ẽ ne ñangarekoha rupáre ehecha hag̃ua mba’épa ejapovekuaa.
-confirmation-2-subhead = ¡Esẽ mba'evai’apoha!
+confirmation-2-subhead = ¡Esẽ mba’evai’apoha!
 confirmation-2-body = Ejapo mba’e iporã añetéva emo’ã hag̃ua ne mba’ete ñandutípe.
 confirmation-3-subhead = Ambueve. ¡Iporã añete!
 # This string contains nested markup that becomes a link later in the code.
