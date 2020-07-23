@@ -34,9 +34,9 @@ async function home(req, res) {
 
   // Growth Experiment
   if (EXPERIMENTS_ENABLED) {
-    getExperimentBranch(req, false, ["de", "fr"], {
-      "va": 25,
-      "vb": 25,
+    getExperimentBranch(req, false, ["en"], {
+      "va": 50,
+      "vb": 50,
     });
   }
 

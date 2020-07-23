@@ -489,11 +489,8 @@ function resizeDashboardMargin() {
   const acceptedFirstLanguageIsEnglish = acceptedLanguages[0].includes("en");
 
   if (!acceptedFirstLanguageIsEnglish && document.getElementById("fxaCheckbox")) {
-    // Growth Experiment -This overrides the language filter if they've been sorted into the treatment cohort.
-    if (document.body.dataset.experiment !== "vb" || !document.body.dataset.experiment) {
-      document.getElementById("fxaCheckbox").style.display = "none";
-      return;
-    }
+    document.getElementById("fxaCheckbox").style.display = "none";
+    return;
   }
 
   const createFxaCheckbox = document.getElementById("createFxaCheckbox");
