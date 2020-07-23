@@ -63,6 +63,10 @@ rec-ip-non-us =
     ha ehovañuvã nde IP kundaharape.
 # Recommendation subhead
 rec-moz-vpn-cta = Eñe’ẽ { -brand-mozilla-vpn }
+rec-moz-vpn =
+    Ne ñanduti kundaharape raperekoite (IP kundaharape) ikatu oikuaauka ne rendaite ha ñanduti me’ẽhára. Mba’epuru
+    { -brand-fpn } omokañykuaa pe IP kundaharape ha ne rendaite { -brand-name } peg̃uarã ha mba’epuru { -brand-mozilla-vpn } ichagua omokañy ne
+    IP kundaharape ha ne rendaite opaite mba’e’okápe.
 rec-hist-pw-subhead = Aníke eipurujo’a ñe’ẽñemi
 # Link title
 rec-hist-pw-cta-fx = Ehecha tembiapo ñepyrũ { -brand-name }
