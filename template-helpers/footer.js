@@ -3,8 +3,12 @@
 const { getStrings } = require("./hbs-helpers");
 const { LocaleUtils } = require("./../locale-utils");
 
+const AppConstants = require("../app-constants");
+const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
+
 function getFooterLinks(args) {
   const locales = args.data.root.req.supportedLocales;
+
   const footerLinks = [
     {
       title: "About Firefox Monitor",
@@ -27,6 +31,18 @@ function getFooterLinks(args) {
       href: "https://github.com/mozilla/blurts-server",
     },
   ];
+
+  // Growth Experiment: Only add the footer share line if user is on VB branch
+  if (EXPERIMENTS_ENABLED && args.data.root.req.session.experimentFlags.treatmentBranch) {
+    const shareMonitorFooter = {
+      title: "Share Monitor",
+      stringId: "share-monitor",
+      href: "/share/purple",
+    };
+
+    footerLinks.splice(2, 0, shareMonitorFooter);
+  }
+
 
   return getStrings(footerLinks, locales);
 }

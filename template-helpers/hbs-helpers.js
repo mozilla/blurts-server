@@ -30,7 +30,12 @@ function getString (id, args) {
 function getStrings(stringArr, locales) {
   stringArr.forEach(string => {
     const stringId = string.stringId;
-    string.stringId =LocaleUtils.fluentFormat(locales, stringId);
+    // Growth Experiment: Catch EN* Experimnal Strings
+    if (stringId === "share-monitor") {
+      string.stringId = "Share Monitor";
+    } else {
+      string.stringId =LocaleUtils.fluentFormat(locales, stringId);
+    }
   });
   return stringArr;
 }
