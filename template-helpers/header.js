@@ -3,6 +3,9 @@
 const { getStrings, getFxaUrl } = require("./hbs-helpers");
 const { LocaleUtils } = require("./../locale-utils");
 
+const AppConstants = require("../app-constants");
+const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
+
 function getSignedInAs(args) {
   const locales = args.data.root.req.supportedLocales;
   const userEmail = args.data.root.req.session.user.primary_email;
@@ -58,6 +61,18 @@ function fxaMenuLinks(args) {
       href: "/user/logout",
     },
   ];
+
+  // Growth Experiment: Only add the avatar share link if user is on VB branch
+  if (EXPERIMENTS_ENABLED && args.data.root.req.session.experimentFlags.treatmentBranch) {
+    const shareMonitorFooter = {
+      title: "Share Monitor",
+      stringId: "share-monitor",
+      href: "/share/orange",
+      experiment: "js-share-modal",
+    };
+
+    fxaLinks.unshift(shareMonitorFooter);
+  }
 
   return getStrings(fxaLinks, locales);
 }
