@@ -16,11 +16,6 @@ function _getFeaturedBreach(allBreaches, breachQueryValue) {
   return HIBP.getBreachByName(allBreaches, lowercaseBreachValue);
 }
 
-function _getBreachRequest(query = false, param = false) {
-  if (query) { return query; }
-  if (param) { return param; }
-}
-
 async function home(req, res) {
   const formTokens = {
     pageToken: AppConstants.PAGE_TOKEN_TIMER > 0 ? generatePageToken(req) : "",
@@ -44,11 +39,13 @@ async function home(req, res) {
     });
   }
 
-  if (req.query.breach || req.params.breach) {
+  if (req.params && req.params.breach) {
+    req.query.breach = req.params.breach;
+  }
 
-    const requestedBreach = _getBreachRequest(req.query.breach, req.params.breach);
+  if (req.query.breach) {
 
-    featuredBreach = _getFeaturedBreach(req.app.locals.breaches, requestedBreach);
+    featuredBreach = _getFeaturedBreach(req.app.locals.breaches, req.query.breach);
 
     if (!featuredBreach) {
       return notFound(req, res);
@@ -70,6 +67,8 @@ async function home(req, res) {
       experimentFlags,
     });
   }
+
+
 
   res.render("monitor", {
     title: req.fluentFormat("home-title"),
