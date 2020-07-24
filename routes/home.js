@@ -13,6 +13,7 @@ const router = express.Router();
 const csrfProtection = csrf();
 
 router.get("/", csrfProtection, home);
+router.get("/share/", csrfProtection, home);
 router.get("/share/purple", csrfProtection, home);
 router.get("/share/red", csrfProtection, home);
 router.get("/share/blue", csrfProtection, home);
