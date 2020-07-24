@@ -39,6 +39,7 @@
     <div class="email-cards flx flx-col jst-cntr">
       {{#each this.verifiedEmails }}
         {{> email-card }}
+        {{> experiment--share-promo-dashboard}}
       {{/each}}
       {{#if breachesFound }}
         {{> hibp-attribution variableClasses="dash-attribution txt-cntr"}}

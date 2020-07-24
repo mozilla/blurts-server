@@ -16,8 +16,12 @@ function _getFeaturedBreach(allBreaches, breachQueryValue) {
   return HIBP.getBreachByName(allBreaches, lowercaseBreachValue);
 }
 
-async function home(req, res) {
+function _getBreachRequest(query = false, param = false) {
+  if (query) { return query; }
+  if (param) { return param; }
+}
 
+async function home(req, res) {
   const formTokens = {
     pageToken: AppConstants.PAGE_TOKEN_TIMER > 0 ? generatePageToken(req) : "",
     csrfToken: req.csrfToken(),
@@ -40,8 +44,11 @@ async function home(req, res) {
     });
   }
 
-  if (req.query.breach) {
-    featuredBreach = _getFeaturedBreach(req.app.locals.breaches, req.query.breach);
+  if (req.query.breach || req.params.breach) {
+
+    const requestedBreach = _getBreachRequest(req.query.breach, req.params.breach);
+
+    featuredBreach = _getFeaturedBreach(req.app.locals.breaches, requestedBreach);
 
     if (!featuredBreach) {
       return notFound(req, res);

@@ -8,7 +8,7 @@
         <span class="signed-in-as">{{{ getSignedInAs }}}</span>
       </div>
       {{#each (fxaMenuLinks)}}
-        <a class="fxa-menu-link" {{> analytics/internal-link eventLabel=this.title }} href="{{ this.href }}">{{ this.stringId }}</a>
+        <a class="fxa-menu-link {{this.experiment}}" {{> analytics/internal-link eventLabel=this.title }} href="{{ this.href }}">{{ this.stringId }}</a>
       {{/each}}
     </div>
   </div>
