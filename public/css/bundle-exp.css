@@ -489,10 +489,6 @@ footer.upgrade-bundle-test,
 }
 
 @media screen and (max-width: 900px) {
-  .upgrade-nested-user-email {
-    word-wrap: break-word;
-  }
-
   .upgrade-h1 {
     font-size: 43px;
   }

@@ -15,7 +15,7 @@
     </div>
   {{/unless}}
     <div class="upgrade-modal-joined flx jst-cntr flx-col {{#if req.session.user.waitlists_joined.privacy_bundle}} show-modal-panel {{/if}}">
-      <h1 class="upgrade-modal-h1 txt-cntr"><span class="violet upgrade-nested-user-email">{{ req.session.user.primary_email }}</span> has been added to the test panel</h1>
+      <h1 class="upgrade-modal-h1 txt-cntr"><span class="violet upgrade-nested-user-email">You have been added to the test panel</h1>
       <p class="upgrade-modal-p  txt-cntr">While we work on Firefox Privacy Defender, you can still enjoy many of the benefits we described using these products:</p>
       <div class="flx flx-row fx-products">
         {{#each (fxProducts)}}
