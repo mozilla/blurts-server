@@ -31,7 +31,7 @@
     "intl-pluralrules": "0.2.1",
     "isemail": "3.2.0",
     "knex": "0.19.5",
-    "knex-paginate": "1.1.0",
+    "knex-paginate": "1.2.2",
     "lodash": "4.17.19",
     "mozlog": "2.2.0",
     "nodemailer": "4.7.0",
