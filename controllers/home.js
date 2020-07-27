@@ -118,9 +118,9 @@ function protectMyEmail(req, res) {
 
 function _addEmailRelayToWaitlistsJoined(user) {
   if (!user.waitlists_joined) {
-    return {"email_relay": {"notified": false} };
+    return {"privacy_bundle": {"notified": false} };
   }
-  user.waitlists_joined["email_relay"] = {"notified": false };
+  user.waitlists_joined["privacy_bundle"] = {"notified": false };
   return user.waitlists_joined;
 }
 
@@ -128,7 +128,14 @@ function addEmailToRelayWaitlist(req, res) {
   const user = req.user;
   const updatedWaitlistsJoined = _addEmailRelayToWaitlistsJoined(user);
   DB.setWaitlistsJoined({user, updatedWaitlistsJoined});
-  return res.json("email-added");
+  return res.json("email-not-added");
+}
+
+
+function getUpgrade(req, res) {
+  res.render("upgrade", {
+    title: "Firefox Privacy Defender",
+  });
 }
 
 function notFound(req, res) {
@@ -146,6 +153,7 @@ module.exports = {
   getAllBreaches,
   getBentoStrings,
   getSecurityTips,
+  getUpgrade,
   protectMyEmail,
   addEmailToRelayWaitlist,
   notFound,

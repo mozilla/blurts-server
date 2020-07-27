@@ -35,8 +35,17 @@ function navLinks(args) {
       activeLink: (hostUrl === "/security-tips"),
     },
   ];
+  const headerLinks = getStrings(links, locales);
 
-  return getStrings(links, locales);
+  if (locales[0].includes("en") && args.data.root.req.session && args.data.root.req.session.user) {
+    headerLinks.push({
+      title: "Upgrade",
+      stringId: "Upgrade",
+      href: `${serverUrl}/upgrade`,
+      activeLink: (hostUrl === "/upgrade"),
+    });
+  }
+  return headerLinks;
 }
 
 function fxaMenuLinks(args) {

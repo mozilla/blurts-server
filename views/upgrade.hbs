@@ -1,0 +1,120 @@
+<div class="upgrade-modal close-upgrade-modal">
+  <div class="upgrade-modal-content">
+    <button class="upgrade-x-close close-upgrade-modal">Close Modal</button>
+
+  {{#unless req.session.user.waitlists_joined.privacy_bundle}}
+    <div class="upgrade-modal-join flx flx-col jst-cntr txt-cntr show-modal-panel">
+      <h1 class="upgrade-modal-h1">You Just Helped Us With An Experiment!</h1>
+      <h2 class="upgrade-modal-h2">Thank you for your interest in Firefox Plus Unlimited</h2>
+      <p class="upgrade-modal-p">Firefox Privacy Defender is currently unavailable at this time, but your engagement with this concept helps us get one step closer to building something that serves your needs.<span class="bold">  If you’d like to be a sounding board for this and other upcoming Mozilla experiments, please join the test panel below.</span></p>
+      <img class="upgrade-avatar" src="{{ req.session.user.fxa_profile_json.avatar }}" alt="{{ req.session.user.primary_email }}">
+      <span class="upgrade-user-email">{{ req.session.user.primary_email }}</span>
+      <button class="upgrade-join-waitlist btn-blue-primary">Join Test Panel</button>
+    </div>
+  {{/unless}}
+    <div class="upgrade-modal-joined flx jst-cntr flx-col {{#if req.session.user.waitlists_joined.privacy_bundle}} show-modal-panel {{/if}}">
+
+      <h1 class="upgrade-modal-h1 txt-cntr"><span class="violet">{{ req.session.user.primary_email }}</span> has been added to the test panel</h1>
+      <p class="upgrade-modal-p  txt-cntr">While we work on Firefox Privacy Defender, you can still enjoy many of the benefits we described using these products:</p>
+      <div class="flx flx-row fx-products">
+        {{#each (fxProducts)}}
+          <div class="flx flx-col fx-product">
+            <a class="txt-cntr fx-product-name ff-Met {{ this.className }}" href="{{ this.href }}" target="_blank" rel="noopener">{{ this.title }}</a>
+          </div>
+        {{/each}}
+      </div>
+      <button class="btn-blue-primary close-upgrade-modal upgrade-go-to-dash">Go to Dashboard</button>
+    </div>
+
+    <div class="modal-error-message flx jst-cntr flx-col">
+      <p class="modal-error-p txt-cntr">Oops! Looks like something didn't work out correctly. Please try again in a few minutes, or <a href="https://github.com/mozilla/blurts-server/" target="_blank" rel="noopener noreferrer">file an issue</a> in our GitHub repository.</p>
+      <button class="btn-blue-primary close-upgrade-modal upgrade-go-to-dash">Go to Dashboard</button>
+    </div>
+
+  </div>
+</div>
+
+{{#if req.session.user }}
+<div class="flx flx-col upgrade-hero">
+  <main class="txt-cntr flx flx-col jst-cntr row-full-width upgrade-fade-in">
+    <h1 class="upgrade-h1">
+      Firefox Plus Unlimited
+    </h1>
+    <h2 class="upgrade-subhead upgrade-main-subhead">
+      Premium accounts monitoring, email masking and password management, with safe browsing over the Firefox Private Network.
+    </h2>
+    <button class="upgrade-now upgrade-btn flx flx-col" data-page-location="upgrade-now-hero-button">
+      <span class="upgrade-now-line-1">Upgrade Now</span>
+      <span class="upgrade-now-line-2">$39.99 USD/Year</span>
+    </button>
+  </main>
+  <div class="upgrade-bg-split row-full-width">
+  <section class="upgrade-section flx just-cntr flx-row bg-white upgrade-two-up">
+    <div class="auto upgrade-fade-in">
+      <h2 class="upgrade-subhead upgrade-feature-subhead txt-cntr bolt-stars">
+        Keep all your online accounts, passwords and browsing data <span class="bold">private and safe</span> in one, easy-to-find place.
+      </h2>
+    </div>
+    <div class="upgrade-list-wrapper">
+      <ul class="upgrade-list">
+        {{#each (upgradeList)}}
+          <li class="upgrade-list-item upgrade-fade-in">
+            {{{ this }}}
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </section>
+  </div>
+</div>
+<div class="flx-col upgrade-bg-light">
+  <div class="row-full-width flx-col">
+    <div class="upgrade-three-up">
+      <section class="upgrade-section">
+        <div class="upgrade-features flx flx-row">
+          {{#each (upgradeFeatureList)}}
+            <div class="upgrade-feature txt-cntr flx flx-col">
+              <h3 class="upgrade-feature-headline {{ this.className }}">{{ this.title }}</h3>
+              <h4 class="upgrade-feature-subtitle">{{ this.subtitle }}</h4>
+              <p class="upgrade-feature-body">{{ this.body }}</p>
+            </div>
+          {{/each}}
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="bg-blue bg-blue-shapes">
+  <div class="fx-features-wrapper bg-split-reverse row-full-width">
+  <section class="upgrade-section row-full-width fx-features flx flx-col">
+    <div class="flx flx-row jst-cntr">
+      <div class="upgrade-fx-logo"></div>
+      <h2 class="upgrade-subhead fx-features-subhead">And because it’s integrated with Firefox, you also get:</h2>
+    </div>
+    <div class="upgrade-fx-features-list-wrapper flx flx-col upgrade-list-wrapper">
+      <ul class="upgrade-fx-features-list">
+        {{#each (upgradeFirefoxFeatureList)}}
+          <li class="upgrade-list-item upgrade-fx-features-list-item">
+            {{{ this }}}
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </section>
+  </div>
+
+  <section class="ready-to-upgrade row-full-width jst-cntr flx-col flx">
+    {{!-- <h2 class="upgrade-support txt-white txt-cntr">Responsive, Professional Support Over the Web to Serve You</h2> --}}
+    <h2 class="upgrade-subhead ready-to-upgrade-hl txt-white txt-cntr">Ready to upgrade for complete peace of mind?</h2>
+    <button class="upgrade-now upgrade-btn flx flx-col" data-page-location="upgrade-now-footer-button">
+      <span class="upgrade-now-line-1">Upgrade Now</span>
+      <span class="upgrade-now-line-2">$39.99 USD/Year</span>
+    </button>
+  </section>
+</div>
+
+{{else}}
+  <h1>Please log in to your account to view this page</h1>
+  <button>Sign In</button>
+{{/if}}
+
