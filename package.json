@@ -39,7 +39,7 @@
     "npm-run-all": "4.1.5",
     "pg": "7.4.3",
     "sns-validator": "0.3.4",
-    "uuid": "3.2.1"
+    "uuid": "3.4.0"
   },
   "devDependencies": {
     "@wdio/cli": "5.18.6",
