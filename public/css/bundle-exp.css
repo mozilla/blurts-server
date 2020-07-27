@@ -347,6 +347,7 @@ footer.upgrade-bundle-test,
 .upgrade-modal-h1 {
   margin: auto auto 1rem auto;
   font-size: 32px;
+  max-width: 660px;
   color: var(--ink);
 }
 
@@ -385,7 +386,7 @@ footer.upgrade-bundle-test,
 }
 
 .upgrade-modal-p {
-  max-width: 760px;
+  max-width: 660px;
   font-size: 16px;
   font-weight: 400;
   color: var(--grey8);
@@ -454,7 +455,7 @@ footer.upgrade-bundle-test,
 
 .fx-product {
   max-width: 49%;
-  margin: auto 1rem;
+  margin: auto 2rem;
   height: 140px;
   justify-content: center;
 }
@@ -488,6 +489,10 @@ footer.upgrade-bundle-test,
 }
 
 @media screen and (max-width: 900px) {
+  .upgrade-nested-user-email {
+    word-wrap: break-word;
+  }
+
   .upgrade-h1 {
     font-size: 43px;
   }
