@@ -27,7 +27,7 @@ function fxProducts() {
 
 function upgradeList() {
   return [
-    "With <span class='bold'>Firefox Unlimited</span>, be the boss of your data.",
+    "With <span class='bold'>Firefox Privacy Defender</span>, be the boss of your data.",
     "Learn when sites you use get breached so you can take steps to defend your identity",
     "Foil the plans some companies have to leverage or re-sell your data.",
   ];
