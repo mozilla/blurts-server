@@ -81,8 +81,8 @@ footer.upgrade-bundle-test,
 }
 
 .upgrade-now-line-2 {
-  font-size: 14px;
-  font-weight: 300;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .upgrade-join-waitlist:focus,
@@ -141,13 +141,6 @@ footer.upgrade-bundle-test,
   padding: 1rem;
   width: 33.333%;
   background-color: rgba(255, 255, 255, 0);
-  transition: all 0.3s ease;
-  border-radius: 8px;
-}
-
-.upgrade-feature:hover {
-  background-color: #eeebf2;
-  transition: all 0.3s ease;
 }
 
 .txt-white {
@@ -205,11 +198,6 @@ footer.upgrade-bundle-test,
 .upgrade-bg-light {
   padding: 2rem 0;
   background: linear-gradient(var(--bgLight), #eeebf2);
-}
-
-.upgrade-half {
-  width: 50%;
-  margin: auto;
 }
 
 .upgrade-fx-logo,
@@ -303,23 +291,6 @@ footer.upgrade-bundle-test,
   max-width: 720px;
 }
 
-.upgrade-support {
-  margin: auto auto 4rem auto;
-  max-width: 400px;
-  line-height: 1.4;
-}
-
-.upgrade-support::before {
-  content: "";
-  display: block;
-  height: 100px;
-  margin: auto auto 2rem auto;
-  background-image: url("/img/upgrade/SVG/upgrade-support.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
-
 .fx-features-wrapper::before {
   content: "";
   display: block;
@@ -334,6 +305,7 @@ footer.upgrade-bundle-test,
 }
 
 .upgrade-modal {
+  padding: 2rem;
   position: absolute;
   top: 0;
   height: 100vh;
@@ -355,6 +327,7 @@ footer.upgrade-bundle-test,
   visibility: visible;
   opacity: 1;
   pointer-events: all;
+  overflow: auto;
   transition: all 0.3s ease;
 }
 
@@ -378,6 +351,7 @@ footer.upgrade-bundle-test,
 }
 
 .upgrade-modal-h2 {
+  line-height: 1.3;
   font-size: 20px;
   font-weight: 300;
   color: var(--inkLight);
@@ -385,6 +359,7 @@ footer.upgrade-bundle-test,
 }
 
 .upgrade-avatar {
+  display: block;
   border-radius: 50%;
   height: 80px;
   width: 80px;
@@ -395,22 +370,18 @@ footer.upgrade-bundle-test,
   color: var(--blue4);
   font-weight: 500;
   font-family: var(--ffMet);
+  display: block;
   margin: 0 auto 2rem auto;
 }
 
 .upgrade-modal-join,
 .upgrade-modal-joined,
 .modal-error-message {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  text-align: center;
   margin: auto;
   padding: 2rem;
   pointer-events: none;
-  visibility: hidden;
-  opacity: 0;
+  display: none;
 }
 
 .upgrade-modal-p {
@@ -442,21 +413,16 @@ footer.upgrade-bundle-test,
 }
 
 .show-modal-panel {
+  display: block;
   pointer-events: all;
   visibility: visible !important;
   opacity: 1 !important;
+  overflow: auto;
 }
 
 .close-upgrade-modal,
 .upgrade-join-waitlist {
   margin-bottom: auto;
-}
-
-.upgrade-modal-joined-p {
-  margin: auto auto 2rem auto;
-  font-size: 20px;
-  max-width: 380px;
-  line-height: 1.5;
 }
 
 .fx-product-name::before {
@@ -471,7 +437,7 @@ footer.upgrade-bundle-test,
 }
 
 .fx-products {
-  justify-content: center;
+  justify-content: space-between;
   margin-bottom: 4rem;
   max-width: 760px;
   flex-wrap: wrap;
@@ -487,6 +453,7 @@ footer.upgrade-bundle-test,
 }
 
 .fx-product {
+  max-width: 49%;
   margin: auto 1rem;
   height: 140px;
   justify-content: center;
@@ -556,8 +523,34 @@ footer.upgrade-bundle-test,
 }
 
 @media screen and (max-width: 600px) {
-  .upgrade-feature-headline::before {
+  .fx-products,
+  .upgrade-feature-headline::before,
+  .upgrade-modal-p,
+  .upgrade-modal-h2 {
     margin-bottom: 1rem;
+  }
+
+  .upgrade-modal-content {
+    min-height: 100vh;
+    min-width: 100vw;
+    border-radius: 0;
+  }
+
+  .upgrade-modal {
+    padding: 0;
+  }
+
+  .upgrade-avatar {
+    height: 60px;
+    width: 60px;
+  }
+
+  .upgrade-modal-h1 {
+    font-size: 27px;
+  }
+
+  .upgrade-modal-p {
+    font-size: 15px;
   }
 
   .hl-upgrade-btn-wrapper {
@@ -568,5 +561,33 @@ footer.upgrade-bundle-test,
     margin: 12px auto 0 auto;
     width: 100%;
     max-width: 320px;
+  }
+
+  .fx-products {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+  }
+
+  .fx-product {
+    height: auto;
+    max-width: 100%;
+    align-items: flex-start;
+    margin: auto 1rem 2rem 0;
+  }
+
+  .fx-product-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+  }
+
+  .fx-product-name::before {
+    display: inline-block;
+    margin: auto 1rem auto 0;
+    background-position: left center;
+    height: 40px;
   }
 }
