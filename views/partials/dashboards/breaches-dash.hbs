@@ -36,7 +36,7 @@
       <h2 class="pref-headline">{{ getString "email-addresses-title" }}</h2>
       {{> dashboards/manage-email-link variableClass="hide-mobile"}}
     </div>
-    <div class="email-cards flx flx-col jst-cntr">
+    <div class="email-cards flx flx-col jst-cntr {{#if experimentFlags.treatmentBranch}}experiment{{/if}}">
       {{#each this.verifiedEmails }}
         {{> email-card }}
         {{> experiment--share-promo-dashboard}}
