@@ -67,7 +67,7 @@
     "stylelint": "9.10.1",
     "stylelint-config-standard": "18.2.0",
     "uglify-js": "3.4.9",
-    "wdio-docker-service": "2.3.0",
+    "wdio-docker-service": "2.4.0",
     "wdio-image-comparison-service": "1.9.0",
     "wdio-video-reporter": "^2.0.0"
   },
