@@ -125,6 +125,9 @@ function _addEmailRelayToWaitlistsJoined(user) {
 }
 
 function addEmailToRelayWaitlist(req, res) {
+  if (!req.user) {
+    return res.redirect("/");
+  }
   const user = req.user;
   const updatedWaitlistsJoined = _addEmailRelayToWaitlistsJoined(user);
   DB.setWaitlistsJoined({user, updatedWaitlistsJoined});
@@ -133,7 +136,10 @@ function addEmailToRelayWaitlist(req, res) {
 
 
 function getUpgrade(req, res) {
-  res.render("upgrade", {
+  if (!req.session.user) {
+    return res.redirect("/");
+  }
+  return res.render("upgrade", {
     title: "Firefox Privacy Defender",
   });
 }
