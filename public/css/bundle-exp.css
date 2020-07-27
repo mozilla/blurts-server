@@ -92,11 +92,11 @@ footer.upgrade-bundle-test,
 }
 
 .upgrade-h1 {
-  font-size: 52px;
+  font-size: 43px;
   color: rgba(0, 0, 0, 0);
   background-image: url("/img/upgrade/SVG/privacy-defender.svg");
   background-repeat: no-repeat;
-  margin: auto auto 0 auto;
+  margin: auto auto 1rem auto;
   background-position: bottom center;
 }
 
