@@ -62,7 +62,7 @@
     "node-mocks-http": "1.8.1",
     "nodemon": "1.19.4",
     "npm-audit-ci-wrapper": "2.6.6",
-    "onchange": "6.1.0",
+    "onchange": "6.1.1",
     "postcss-cli": "6.1.3",
     "stylelint": "9.10.1",
     "stylelint-config-standard": "18.3.0",
