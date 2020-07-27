@@ -1,5 +1,10 @@
+.email-cards.experiment .share-monitor--dashboard {
+  display: block;
+}
+
 .share-monitor--dashboard {
   margin: 0 0 3rem;
+  display: none;
 }
 
 .share-monitor--dashboard h3 {
