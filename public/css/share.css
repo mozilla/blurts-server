@@ -75,7 +75,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 8px;
+  border-radius: 4px;
   padding: 2rem;
   color: var(--borderColor);
   display: flex;
@@ -120,19 +120,19 @@
 }
 
 .copy-form-btn {
-  background: var(--blue4);
+  background: var(--blue3);
   color: white;
   appearance: none;
   -moz-appearance: none;
   border: none;
   padding: 0 1rem;
-  font-size: 1.2rem;
-  height: 40px;
-  line-height: 40px;
+  font-size: 16px;
+  height: 50px;
+  line-height: 50px;
   display: block;
   width: 80px;
   text-align: center;
-  border-radius: 0 8px 8px 0;
+  border-radius: 0 4px 4px 0;
 }
 
 .copy-form-btn span {
@@ -141,17 +141,17 @@
 
 .copy-form-input {
   background: var(--borderColor);
-  padding: 0 0.5em;
+  padding: 0 0 0 1em;
   appearance: none;
   -moz-appearance: none;
   display: block;
   width: calc(100% - 80px);
-  font-size: 1.2rem;
+  font-size: 16px;
   border: none;
   outline: none;
-  height: 40px;
-  line-height: 40px;
-  border-radius: 8px 0 0 8px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 4px 0 0 4px;
 }
 
 .share-monitor--modal-content .disclaimer {
@@ -191,7 +191,7 @@
   }
   .copy-form-input {
     width: 100%;
-    border-radius: 8px;
+    border-radius: 4px;
     padding: 6px 12px;
     height: auto;
     line-height: auto;
@@ -199,7 +199,7 @@
   .copy-form-btn {
     margin-top: 1rem;
     width: 100%;
-    border-radius: 8px;
+    border-radius: 4px;
     height: auto;
     line-height: 1.6em;
     padding: 0.5em;
