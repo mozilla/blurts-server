@@ -7,7 +7,7 @@
       </li>
       {{#each (getFooterLinks)}}
       <li class="footer-link-wrapper">
-        <a class="footer-link {{this.experiment}}" href="{{ this.href }}" {{> analytics/outbound-link eventLabel=this.title }} {{#if openNewWindow}} target="_blank" {{/if}} rel="noopener">
+        <a class="footer-link {{this.experiment}}" href="{{ this.href }}" {{> analytics/outbound-link eventLabel=this.title }} {{#if this.label}} data-label="{{ this.label }}" {{/if}}  {{#if openNewWindow}} target="_blank" {{/if}} rel="noopener">
           {{ this.stringId }}
         </a>
       </li>

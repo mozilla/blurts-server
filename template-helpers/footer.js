@@ -41,6 +41,7 @@ function getFooterLinks(args) {
       stringId: "share-monitor",
       href: "/share/purple",
       experiment: "js-share-modal",
+      label: "share-modal--footer",
     };
 
     footerLinks.splice(2, 0, shareMonitorFooter);

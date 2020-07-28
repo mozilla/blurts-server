@@ -1,10 +1,27 @@
 "use strict";
 
-function copyURL() {
-	// TODO: Add GA event
+/* global ga */
+
+function selectURL(e, skipAnalyticsPing = false) {
 	const shareModalInput = document.getElementById("shareModalInput");
+
+	// If an a user-init'd focus, send analytics ping
+	if (!skipAnalyticsPing) {
+		sendShareModalPing(shareModalInput);
+	}
+
 	shareModalInput.select();
   shareModalInput.setSelectionRange(0, 99999);
+}
+
+
+function copyURL(e) {
+	// TODO: Add GA event
+	sendShareModalPing(e.target);
+	const shareModalInput = document.getElementById("shareModalInput");
+	shareModalInput.removeEventListener("focus", selectURL);
+	selectURL(null, true);
+	shareModalInput.addEventListener("focus", selectURL);
 	document.execCommand("copy");
 }
 
@@ -18,6 +35,16 @@ function keyPress(e) {
 function closeShareModal() {
 	const shareModal = document.getElementById("shareModal");
 	shareModal.style.display = "none";
+}
+
+function sendShareModalPing(el) {
+	if (typeof(ga) !== "undefined") {
+		const eventCategory = "exp5-share-modal";
+		const eventAction = el.dataset.eventAction;
+		const eventLabel = el.dataset.eventLabel;
+		const options = {};
+    return ga("send", "event", eventCategory, eventAction, eventLabel, options);
+  }
 }
 
 function initShareModal(href, breachText) {
@@ -42,13 +69,8 @@ function initShareModal(href, breachText) {
 		shareTextBreach.classList.add("hidden");
 	}
 
-	// Event Listeners ----
-	shareModalInput.addEventListener("focus", (e)=>{
-		// TODO: Add GA event
-		shareModalInput.select();
-	});
-
 	document.addEventListener("keydown", keyPress);
+	shareModalInput.addEventListener("focus", selectURL);
 	shareModalCopy.addEventListener("click", copyURL);
 	btnCloseShareModal.addEventListener("click", closeShareModal);
 
@@ -70,16 +92,7 @@ if (btnOpenShareModal) {
 	btnOpenShareModal.forEach( el => {
 		el.addEventListener("click", (e)=> {
 			e.preventDefault();
-			openShareModal(e.target);
+			openShareModal(e.target, e.target.dataset.breach);
 		});
-	});
-}
-
-const btnOpenShareModalBreach = document.querySelector(".js-share-modal-breach");
-
-if (btnOpenShareModalBreach) {
-	btnOpenShareModalBreach.addEventListener("click", (e)=> {
-		e.preventDefault();
-		openShareModal(e.target, true);
 	});
 }

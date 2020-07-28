@@ -166,6 +166,17 @@ function setGAListeners(){
           await sendPing(el, "Click", el.dataset.eventLabel, {transport: "beacon"});
         });
       });
+
+      document.querySelectorAll(".js-share-modal, .js-share-modal-breach").forEach((el) => {
+        if (el.dataset.label) {
+          el.dataset.eventLabel = el.dataset.label;
+        }
+
+        if (el.dataset.eventCategory !== "exp5-share-modal") {
+          el.dataset.eventCategory = "exp5-share-modal";
+        }
+      });
+
     }
 
   }

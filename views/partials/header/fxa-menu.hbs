@@ -1,5 +1,5 @@
 <div class="fxa-menu-wrapper">
-  <div id="avatar-wrapper" class="avatar-wrapper {{ addClass }}" tabindex="0" aria-label="{{ getString "open-fxa-menu" }}">
+  <div id="avatar-wrapper" data-ga-link="" data-event-category="avatar-menu" data-event-label="open-fxa-menu-open" class="avatar-wrapper {{ addClass }}" tabindex="0" aria-label="{{ getString "open-fxa-menu" }}">
     <img alt="{{ req.session.user.primary_email }}" class="avatar" src="{{ req.session.user.fxa_profile_json.avatar }}"/>
   </div>
   <div id="fxa-menu" class="fxa-menu">
@@ -8,7 +8,7 @@
         <span class="signed-in-as">{{{ getSignedInAs }}}</span>
       </div>
       {{#each (fxaMenuLinks)}}
-        <a class="fxa-menu-link {{this.experiment}}" {{> analytics/internal-link eventLabel=this.title }} href="{{ this.href }}">{{ this.stringId }}</a>
+        <a class="fxa-menu-link {{this.experiment}}" {{> analytics/internal-link eventLabel=this.title }} {{#if this.label}} data-label="{{ this.label }}" {{/if}} href="{{ this.href }}">{{ this.stringId }}</a>
       {{/each}}
     </div>
   </div>

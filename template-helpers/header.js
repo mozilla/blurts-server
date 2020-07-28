@@ -69,6 +69,7 @@ function fxaMenuLinks(args) {
       stringId: "share-monitor",
       href: "/share/orange",
       experiment: "js-share-modal",
+      label: "share-modal--header",
     };
 
     fxaLinks.unshift(shareMonitorFooter);
