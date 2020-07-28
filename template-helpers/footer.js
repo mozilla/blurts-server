@@ -5,6 +5,7 @@ const { LocaleUtils } = require("./../locale-utils");
 
 const AppConstants = require("../app-constants");
 const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
+const { getExperimentFlags } = require("../controllers/utils");
 
 function getFooterLinks(args) {
   const locales = args.data.root.req.supportedLocales;
@@ -33,7 +34,8 @@ function getFooterLinks(args) {
   ];
 
   // Growth Experiment: Only add the footer share line if user is on VB branch
-  if (EXPERIMENTS_ENABLED && args.data.root.req.session.experimentFlags.treatmentBranch) {
+  const experimentFlags = getExperimentFlags(args.data.root.req, EXPERIMENTS_ENABLED);
+  if (EXPERIMENTS_ENABLED && experimentFlags.treatmentBranch) {
     const shareMonitorFooter = {
       title: "Share Monitor",
       stringId: "share-monitor",
