@@ -2,6 +2,10 @@
   display: block;
 }
 
+.email-cards.experiment .share-monitor--dashboard ~ .share-monitor--dashboard {
+  display: none;
+}
+
 .share-monitor--dashboard {
   margin: 0 0 3rem;
   display: none;
