@@ -12,7 +12,7 @@ const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
 
 const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
-const { getExperimentFlags } = require("./utils");
+const { getExperimentFlags, getUTMContents } = require("./utils");
 
 const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
 
@@ -229,6 +229,7 @@ async function getDashboard(req, res) {
   const user = req.user;
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
+  const utmOverrides = getUTMContents(req);
 
   // Growth Experiment
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
@@ -249,6 +250,7 @@ async function getDashboard(req, res) {
     unverifiedEmails,
     whichPartial: "dashboards/breaches-dash",
     experimentFlags,
+    utmOverrides,
   });
 }
 

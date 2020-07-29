@@ -4,7 +4,12 @@ const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
 const HIBP = require("../hibp");
 const { scanResult } = require("../scan-results");
-const { generatePageToken, getExperimentBranch, getExperimentFlags } = require("./utils");
+const {
+  generatePageToken,
+  getExperimentBranch,
+  getExperimentFlags,
+  getUTMContents,
+} = require("./utils");
 
 const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
 
@@ -29,6 +34,14 @@ async function home(req, res) {
     return res.redirect("/user/dashboard");
   }
 
+  // Rewrites the /share/{COLOR} links to /
+  if (req.session.redirectHome) {
+    req.session.redirectHome = false;
+    return res.redirect("/");
+  }
+
+  // Note - If utmOverrides get set, they are unenrolled from the experiment
+  const utmOverrides = getUTMContents(req);
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
   // Growth Experiment
@@ -38,6 +51,7 @@ async function home(req, res) {
       "vb": 50,
     });
   }
+
 
   if (req.params && req.params.breach) {
     req.query.breach = req.params.breach;
@@ -65,10 +79,9 @@ async function home(req, res) {
       pageToken: formTokens.pageToken,
       csrfToken: formTokens.csrfToken,
       experimentFlags,
+      utmOverrides,
     });
   }
-
-
 
   res.render("monitor", {
     title: req.fluentFormat("home-title"),
@@ -77,6 +90,7 @@ async function home(req, res) {
     pageToken: formTokens.pageToken,
     csrfToken: formTokens.csrfToken,
     experimentFlags,
+    utmOverrides,
   });
 }
 

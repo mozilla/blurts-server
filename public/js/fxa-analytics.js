@@ -225,6 +225,17 @@ function setGAListeners(){
     ga("set", "anonymizeIp", true);
     ga("set", "dimension6", `${document.body.dataset.signedInUser}`);
 
+
+    // Set Share URL UTMs
+    if ( document.body.dataset.utm_campaign && !document.body.dataset.experiment ) {
+      // campaignName
+      ga("set", "campaignName", `${document.body.dataset.utm_campaign}`);
+      ga("set", "dimension9", `${document.body.dataset.utm_campaign}`);
+      // campaignKeyword / term
+      ga("set", "campaignKeyword", `${document.body.dataset.utm_term}`);
+      ga("set", "dimension8", `${document.body.dataset.utm_term}`);
+    }
+
     // Growth Experiment
     if (document.body.dataset.experiment) {
       // If an experiment is active, set the "Growth Experiment Version"
@@ -235,6 +246,7 @@ function setGAListeners(){
       ga("set", "campaignName", `${document.body.dataset.utm_campaign}`);
       ga("set", "campaignKeyword", `${document.body.dataset.utm_term}`);
     }
+
 
     ga("send", "pageview", {
       hitCallback: function() {

@@ -15,6 +15,7 @@ const { FXA } = require("./lib/fxa");
 const { FluentError } = require("./locale-utils");
 const mozlog = require("./log");
 
+const HIBP = require("./hibp");
 
 const log = mozlog("middleware");
 
@@ -173,6 +174,55 @@ async function requireSessionUser(req, res, next) {
   next();
 }
 
+function getShareUTMs(req, res, next) {
+  const generalShareUrls = [
+    "/share/orange",
+    "/share/purple",
+    "/share/blue",
+    "/share/",
+  ];
+
+  const colors = [
+    "orange",
+    "purple",
+    "blue",
+  ];
+
+  const urlArray = req.url.split("/");
+  const color = urlArray.slice(-1)[0];
+
+  req.session.utmOverrides = {
+    campaignName: "shareLinkTraffic",
+    campaignTerm: "default",
+  };
+
+  // Set Color Var in UTM
+  if (color.length && colors.includes(color)) {
+    req.session.utmOverrides.campaignTerm = color;
+  }
+
+  if (color.length && !colors.includes(color)) {
+    const allBreaches = req.app.locals.breaches;
+    const breachName = color;
+    const featuredBreach = HIBP.getBreachByName(allBreaches, breachName);
+
+    if (featuredBreach) {
+      req.session.utmOverrides.campaignTerm = featuredBreach.Name;
+    }
+  }
+
+  if (generalShareUrls.includes(req.url)) {
+    // If not breach specific, redirect to "/"
+    req.session.redirectHome = true;
+  }
+
+  // Kick user from experiment
+  req.session.experimentFlags = {
+    excludeFromExperiment: true,
+  };
+
+  next();
+}
 
 
 module.exports = {
@@ -185,4 +235,5 @@ module.exports = {
   clientErrorHandler,
   errorHandler,
   requireSessionUser,
+  getShareUTMs,
 };
