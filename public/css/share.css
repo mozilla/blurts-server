@@ -196,17 +196,17 @@
   .copy-form-input {
     width: 100%;
     border-radius: 4px;
-    padding: 6px 12px;
+    padding: 1em;
     height: auto;
-    line-height: auto;
+    line-height: normal;
   }
   .copy-form-btn {
     margin-top: 1rem;
     width: 100%;
     border-radius: 4px;
     height: auto;
-    line-height: 1.6em;
-    padding: 0.5em;
+    line-height: normal;
+    padding: 1em 12px;
   }
   .copy-form-btn span {
     display: inline;
