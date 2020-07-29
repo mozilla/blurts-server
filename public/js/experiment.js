@@ -16,12 +16,11 @@ function selectURL(e, skipAnalyticsPing = false) {
 
 
 function copyURL(e) {
-	// TODO: Add GA event
 	sendShareModalPing(e.target);
 	const shareModalInput = document.getElementById("shareModalInput");
+	// Remove select listener after this event is fired. (Dup engagement)
 	shareModalInput.removeEventListener("focus", selectURL);
 	selectURL(null, true);
-	shareModalInput.addEventListener("focus", selectURL);
 	document.execCommand("copy");
 }
 
@@ -82,7 +81,6 @@ function initShareModal(href, breachText) {
 }
 
 function openShareModal(target, breach = false) {
-	// TODO: Add GA event
 	initShareModal(target.href, breach);
 }
 
