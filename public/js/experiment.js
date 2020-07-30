@@ -38,7 +38,7 @@ function closeShareModal() {
 
 function sendShareModalPing(el) {
 	if (typeof(ga) !== "undefined") {
-		const eventCategory = "exp5-share-modal";
+		const eventCategory = "[v2] exp5-share-modal";
 		const eventAction = el.dataset.eventAction;
 		const eventLabel = el.dataset.eventLabel;
 		const options = {};
@@ -46,7 +46,7 @@ function sendShareModalPing(el) {
   }
 }
 
-function initShareModal(href, breachText) {
+function initShareModal(target, breachText) {
 	const shareModal = document.getElementById("shareModal");
 	const shareModalInput = document.getElementById("shareModalInput");
 	const shareModalCopy = document.getElementById("shareModalCopy");
@@ -54,8 +54,13 @@ function initShareModal(href, breachText) {
 	const shareTextBreach = document.getElementById("shareTextBreach");
 	const shareTextGeneral = document.getElementById("shareTextGeneral");
 
+	const shareModalLocation = target.dataset.eventLabel;
+
+	shareModalCopy.dataset.eventLabel = shareModalLocation;
+	shareModalInput.dataset.eventLabel = shareModalLocation;
+
 	// Set input to correct URL value;
-	shareModalInput.value = href;
+	shareModalInput.value = target.href;
 
 	// Make modal visible
 	shareModal.style.display = "block";
@@ -81,7 +86,7 @@ function initShareModal(href, breachText) {
 }
 
 function openShareModal(target, breach = false) {
-	initShareModal(target.href, breach);
+	initShareModal(target, breach);
 }
 
 const btnOpenShareModal = document.querySelectorAll(".js-share-modal");
