@@ -43,7 +43,7 @@ rec-pw-4 =
 rec-bank-acc-subhead = Ehechameme banco pegua kuatia
 rec-bank-acc =
     Ehecha banco pegua kuatia tembiapo vai térã oikomeme’ỹva 
-    Emombe’u ne báncope ehecháramo mba'e eikuaaporã’ỹva
+    Emombe’u ne báncope ehecháramo mba’e eikuaaporã’ỹva
 # Recommendation subhead
 rec-cc-subhead = Ehechameme kuatia’atã ñemuha kuatia
 rec-cc =
