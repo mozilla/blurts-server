@@ -176,16 +176,16 @@ async function requireSessionUser(req, res, next) {
 
 function getShareUTMs(req, res, next) {
   const generalShareUrls = [
-    "/share/orange",
-    "/share/purple",
-    "/share/blue",
+    "/share/orange", //Header
+    "/share/purple", // Footer
+    "/share/blue",  // user/dashboard
     "/share/",
   ];
 
   const colors = [
-    "orange",
-    "purple",
-    "blue",
+    "orange", //Header
+    "purple", // Footer
+    "blue", // user/dashboard
   ];
 
   const urlArray = req.url.split("/");

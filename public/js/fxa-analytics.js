@@ -167,6 +167,7 @@ function setGAListeners(){
         });
       });
 
+      // Set Share Modal GA Params on individual elements
       document.querySelectorAll(".js-share-modal, .js-share-modal-breach").forEach((el) => {
         if (el.dataset.label) {
           el.dataset.eventLabel = el.dataset.label;
@@ -176,9 +177,7 @@ function setGAListeners(){
           el.dataset.eventCategory = "exp5-share-modal";
         }
       });
-
     }
-
   }
 
   window.sessionStorage.setItem("gaInit", true);
