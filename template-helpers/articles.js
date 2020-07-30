@@ -184,7 +184,7 @@ const articleCopy = {
             },
             {
               do: "Do make your passwords at least 8 characters long. Aim for 12-15 characters.",
-              dont: "Use short, one-word passwords, like sunshine, monkey, or football.",
+              dont: "Don't use short, one-word passwords, like sunshine, monkey, or football.",
             },
             {
               do: "Do intersperse numbers, symbols, and special characters throughout.",
