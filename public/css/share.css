@@ -104,6 +104,7 @@
 }
 
 .share-monitor--modal-text h2 {
+  color: #ffffff;
   font-size: 32px;
   margin: 0;
 }
@@ -155,7 +156,7 @@
 }
 
 .copy-form-input {
-  background: var(--borderColor);
+  background: #ffffff;
   padding: 0 0 0 1em;
   appearance: none;
   -moz-appearance: none;
