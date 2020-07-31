@@ -5,15 +5,17 @@
   background-position: bottom left, bottom right;
   background-repeat: no-repeat;
   background-size: auto, 50%;
-  min-height: 80vh;
 }
 
 footer.upgrade-bundle-test,
 .upgrade-bundle-test #navigation-wrapper,
-.upgrade-bundle-test .mobile-menu,
-.upgrade-bundle-test .mobile-nav,
-.upgrade-bundle-test .nav-link.drop-down-menu {
+.upgrade-bundle-test .mobile-nav {
   background-color: #0c1e44 !important;
+}
+
+.upgrade-bundle-test .mobile-menu,
+.upgrade-bundle-test .nav-link.drop-down-menu {
+  background-color: #10285b !important;
 }
 
 .upgrade-bundle-test .nav-link.drop-down-menu {
@@ -87,7 +89,8 @@ footer.upgrade-bundle-test,
 
 .upgrade-join-waitlist:focus,
 .close-upgrade-modal:focus,
-.upgrade-btn:focus {
+.upgrade-btn:focus,
+.survey-link:focus {
   box-shadow: 0 0 1px 1px #0a84ff, 0 0 0 4px rgba(10, 132, 255, 0.3);
 }
 
@@ -488,7 +491,51 @@ footer.upgrade-bundle-test,
   margin: auto auto 2rem auto;
 }
 
+.survey-intro {
+  margin: 2rem auto 0 auto;
+  font-weight: 400;
+  max-width: 360px;
+  line-height: 1.5;
+  font-size: 17px;
+}
+
+.survey-link {
+  display: block;
+  color: var(--blue3);
+  border: none;
+  text-decoration: underline;
+  font-size: 17px;
+  margin: 1rem auto;
+}
+
+.survey-link:hover {
+  color: var(--blue4);
+}
+
+.survey-link:active {
+  color: var(--blue5);
+}
+
+.upgrade-no-thanks {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
 @media screen and (max-width: 900px) {
+  .survey-intro {
+    margin-top: 1rem;
+  }
+
+  .survey-link {
+    margin-bottom: 0;
+  }
+
+  .fx-products {
+    margin-bottom: 2rem;
+  }
+
   .upgrade-h1 {
     font-size: 43px;
   }
@@ -523,12 +570,20 @@ footer.upgrade-bundle-test,
   }
 }
 
-@media screen and (max-width: 600px) {
-  .fx-products,
+@media screen and (max-width: 700px) {
   .upgrade-feature-headline::before,
   .upgrade-modal-p,
   .upgrade-modal-h2 {
     margin-bottom: 1rem;
+  }
+
+  .survey-intro {
+    margin: 1rem auto 0 auto;
+  }
+
+  .fx-products,
+  .survey-link {
+    margin-bottom: 0;
   }
 
   .upgrade-modal-content {
@@ -575,6 +630,7 @@ footer.upgrade-bundle-test,
     height: auto;
     max-width: 100%;
     align-items: flex-start;
+    justify-content: flex-start;
     margin: auto 1rem 2rem 0;
   }
 
@@ -590,5 +646,10 @@ footer.upgrade-bundle-test,
     margin: auto 1rem auto 0;
     background-position: left center;
     height: 40px;
+    width: 40px;
+  }
+
+  .upgrade-hero {
+    padding-top: 10rem;
   }
 }

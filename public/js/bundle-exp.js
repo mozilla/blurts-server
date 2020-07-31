@@ -11,13 +11,13 @@
     return;
   }
 
-  const sendBundleTestPing = (eventAction, eventLabel) => {
+  const sendBundleTestPing = (eAction, eLabel) => {
     if (typeof(ga) !== "undefined") {
       ga("send", {
         hitType: "event",
-        eventCategory: "Privacy Bundle Test",
-        eventAction: "Engage",
-        eventLabel: "header-link",
+        eventCategory: "Privacy Defender Test",
+        eventAction: eAction,
+        eventLabel: eLabel,
         transport: "beacon",
       });
     }
@@ -32,9 +32,12 @@
   // Add listener to dashboard "Upgrade" button
   const upgradeDashboardBtn = document.querySelector(".upgrade-dash.upgrade-btn");
   if (upgradeDashboardBtn) {
+    if (upgradeDashboardBtn.classList.contains("waitlist-joined")) {
+      sendBundleTestPing("View", "dashboard-upgrade-button");
+    }
     upgradeDashboardBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      sendBundleTestPing("Engage", "dashboard-button");
+      sendBundleTestPing("Engage", "dashboard-upgrade-button");
       window.location = `${serverUrl}/upgrade`;
     });
   }
@@ -113,12 +116,18 @@
       });
     });
 
+    document.querySelector(".upgrade-take-survey").addEventListener("click", () => {
+      sendBundleTestPing("Engage", "survey-link");
+      window.open("https://qsurvey.mozilla.com/s3/Firefox-Plus-Unlimited-Promo-Feedback?cohort=xx");
+      return;
+    });
+
     if (modalJoinWaitlistBtn) {
       modalJoinWaitlistBtn.addEventListener("click", async() => {
         modalJoinWaitlistBtn.disabled = true;
         sendBundleTestPing("clicked-join-test-panel", "modal-join-test-panel-btn");
 
-        const waitlistEndpoint = new URL("/relay-waitlist", document.body.dataset.serverUrl);
+        const waitlistEndpoint = new URL("/premium-waitlist", document.body.dataset.serverUrl);
         try {
           const response = await fetch(waitlistEndpoint, {
             headers: {

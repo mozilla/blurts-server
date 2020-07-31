@@ -116,7 +116,7 @@ function protectMyEmail(req, res) {
   });
 }
 
-function _addEmailRelayToWaitlistsJoined(user) {
+function _addPrivacyBundleToWaitlistsJoined(user) {
   if (!user.waitlists_joined) {
     return {"privacy_bundle": {"notified": false} };
   }
@@ -124,12 +124,12 @@ function _addEmailRelayToWaitlistsJoined(user) {
   return user.waitlists_joined;
 }
 
-function addEmailToRelayWaitlist(req, res) {
+function addPrivacyBundleToRelayWaitlist(req, res) {
   if (!req.user) {
     return res.redirect("/");
   }
   const user = req.user;
-  const updatedWaitlistsJoined = _addEmailRelayToWaitlistsJoined(user);
+  const updatedWaitlistsJoined = _addPrivacyBundleToWaitlistsJoined(user);
   DB.setWaitlistsJoined({user, updatedWaitlistsJoined});
   return res.json("email-not-added");
 }
@@ -161,6 +161,6 @@ module.exports = {
   getSecurityTips,
   getUpgrade,
   protectMyEmail,
-  addEmailToRelayWaitlist,
+  addPrivacyBundleToRelayWaitlist,
   notFound,
 };

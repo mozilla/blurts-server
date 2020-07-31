@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 
 const jsonParser = bodyParser.json();
 
-const {home, getAboutPage, getAllBreaches, getBentoStrings, getSecurityTips, protectMyEmail, addEmailToRelayWaitlist, getUpgrade, notFound} = require("../controllers/home");
+const {home, getAboutPage, getAllBreaches, getBentoStrings, getSecurityTips, protectMyEmail, addPrivacyBundleToRelayWaitlist, getUpgrade, notFound} = require("../controllers/home");
 const { requireSessionUser } = require("../middleware");
 
 const router = express.Router();
@@ -18,7 +18,7 @@ router.get("/breaches", getAllBreaches);
 router.get("/security-tips", getSecurityTips);
 router.get("/getBentoStrings", getBentoStrings);
 router.get("/protect-my-email", requireSessionUser, protectMyEmail);
-router.post("/relay-waitlist", jsonParser, requireSessionUser, addEmailToRelayWaitlist);
+router.post("/premium-waitlist", jsonParser, requireSessionUser, addPrivacyBundleToRelayWaitlist);
 router.get("/upgrade", getUpgrade);
 router.use(notFound);
 
