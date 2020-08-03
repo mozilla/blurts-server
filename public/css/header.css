@@ -13,6 +13,10 @@ header.show-shadow {
   transition: all 0.2s ease;
 }
 
+.desktop-menu {
+  width: 100%;
+}
+
 .desktop-menu:hover .active-link::after {
   opacity: 0;
 }
@@ -302,6 +306,7 @@ img.avatar,
 
   .desktop-menu {
     flex: 1 1 auto;
+    width: auto;
   }
 
   .fx-monitor-logotype {

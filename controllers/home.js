@@ -108,19 +108,32 @@ function protectMyEmail(req, res) {
   });
 }
 
-function _addEmailRelayToWaitlistsJoined(user) {
+function _addPrivacyBundleToWaitlistsJoined(user) {
   if (!user.waitlists_joined) {
-    return {"email_relay": {"notified": false} };
+    return {"privacy_bundle": {"notified": false} };
   }
-  user.waitlists_joined["email_relay"] = {"notified": false };
+  user.waitlists_joined["privacy_bundle"] = {"notified": false };
   return user.waitlists_joined;
 }
 
-function addEmailToRelayWaitlist(req, res) {
+function addEmailToBundleWaitlist(req, res) {
+  if (!req.user) {
+    return res.redirect("/");
+  }
   const user = req.user;
-  const updatedWaitlistsJoined = _addEmailRelayToWaitlistsJoined(user);
+  const updatedWaitlistsJoined = _addPrivacyBundleToWaitlistsJoined(user);
   DB.setWaitlistsJoined({user, updatedWaitlistsJoined});
-  return res.json("email-added");
+  return res.json("email-not-added");
+}
+
+
+function getUpgrade(req, res) {
+  if (!req.session.user) {
+    return res.redirect("/");
+  }
+  return res.render("upgrade", {
+    title: "Firefox Privacy Defender",
+  });
 }
 
 function notFound(req, res) {
@@ -138,7 +151,8 @@ module.exports = {
   getAllBreaches,
   getBentoStrings,
   getSecurityTips,
+  getUpgrade,
   protectMyEmail,
-  addEmailToRelayWaitlist,
+  addEmailToBundleWaitlist,
   notFound,
 };
