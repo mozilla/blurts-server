@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 
 const jsonParser = bodyParser.json();
 
-const {home, getAboutPage, getAllBreaches, getBentoStrings, getSecurityTips, protectMyEmail, addPrivacyBundleToRelayWaitlist, getUpgrade, notFound} = require("../controllers/home");
+const {home, getAboutPage, getAllBreaches, getBentoStrings, getSecurityTips, protectMyEmail, addEmailToBundleWaitlist, getUpgrade, notFound} = require("../controllers/home");
 const { requireSessionUser } = require("../middleware");
 
 const router = express.Router();
