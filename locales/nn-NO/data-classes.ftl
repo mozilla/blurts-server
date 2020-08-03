@@ -65,6 +65,7 @@ instant-messenger-identities = Identitetar på Instant messenger-tenester
 ip-addresses = IP-adresser
 job-applications = Jobbsøknadar
 job-titles = Jobbtitlar
+living-costs = Levekostnadar
 mac-addresses = MAC-adresser
 marital-statuses = Sivilstand
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
@@ -78,6 +79,7 @@ parenting-plans = Foreldreplanar
 partial-credit-card-data = Delvis kreditkortdata
 passport-numbers = Passnummer
 password-hints = Passordhint
+password-strengths = Passordstyrke
 passwords = Passord
 payment-histories = Betalingshistorikk
 payment-methods = Betalingsmåtar
