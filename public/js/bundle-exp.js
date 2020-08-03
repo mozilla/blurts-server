@@ -118,7 +118,7 @@
 
     document.querySelector(".upgrade-take-survey").addEventListener("click", () => {
       sendBundleTestPing("Engage", "survey-link");
-      window.open("https://qsurvey.mozilla.com/s3/Firefox-Plus-Unlimited-Promo-Feedback?cohort=xx");
+      window.open("https://qsurvey.mozilla.com/s3/Firefox-Plus-Unlimited-Promo-Feedback");
       return;
     });
 
