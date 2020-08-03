@@ -124,7 +124,7 @@ function _addPrivacyBundleToWaitlistsJoined(user) {
   return user.waitlists_joined;
 }
 
-function addPrivacyBundleToRelayWaitlist(req, res) {
+function addEmailToBundleWaitlist(req, res) {
   if (!req.user) {
     return res.redirect("/");
   }
@@ -161,6 +161,6 @@ module.exports = {
   getSecurityTips,
   getUpgrade,
   protectMyEmail,
-  addPrivacyBundleToRelayWaitlist,
+  addEmailToBundleWaitlist,
   notFound,
 };
