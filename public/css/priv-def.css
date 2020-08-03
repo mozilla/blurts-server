@@ -1,0 +1,41 @@
+.privacy-defender {
+  --transitions: color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  border: 2px solid #9059ff12;
+  border-radius: 8px;
+  padding: 4rem;
+}
+
+.priv-def-link {
+  font-weight: 600;
+  display: block;
+  color: var(--ink);
+  margin: 1rem auto;
+  font-size: 1.25rem;
+  padding: 1rem;
+  border-radius: 4px;
+  pointer-events: all;
+  background: rgba(255, 255, 255, 0);
+  box-shadow: 0 0 0 1px #9059ff00, 0 0 0 4px #ab71ff00;
+  transition: var(--transitions);
+}
+
+.priv-def-link:hover,
+.priv-def-link:focus {
+  color: var(--purple);
+  background-color: #9059ff0a;
+  transition: var(--transitions);
+}
+
+.priv-def-link:focus {  
+  box-shadow: 0 0 0 1px #9059ff80, 0 0 0 4px #ab71ff5c;
+}
+
+.priv-def-link:active {
+  box-shadow: 0 0 0 1px #9059ff90, 0 0 0 4px #ac71ff67;
+  background: #9059ff1a;
+  transition: var(--transitions);
+}
+
+.dashboard.clear-header {
+  pointer-events: none;
+}
