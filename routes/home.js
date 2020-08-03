@@ -18,7 +18,7 @@ router.get("/breaches", getAllBreaches);
 router.get("/security-tips", getSecurityTips);
 router.get("/getBentoStrings", getBentoStrings);
 router.get("/protect-my-email", requireSessionUser, protectMyEmail);
-router.post("/premium-waitlist", jsonParser, requireSessionUser, addPrivacyBundleToRelayWaitlist);
+router.post("/premium-waitlist", jsonParser, requireSessionUser, addEmailToBundleWaitlist);
 router.get("/upgrade", getUpgrade);
 router.use(notFound);
 
