@@ -1,7 +1,7 @@
 .privacy-defender {
   --transitions: color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-  border: 2px solid #9059ff12;
-  border-radius: 8px;
+  border: 2px solid #9059ff85;
+  border-radius: 16px;
   padding: 4rem;
 }
 
