@@ -87,6 +87,11 @@ footer.upgrade-bundle-test,
   font-weight: 400;
 }
 
+.upgrade-now-line-1,
+.upgrade-now-line-2 {
+  pointer-events: none;
+}
+
 .upgrade-join-waitlist:focus,
 .close-upgrade-modal:focus,
 .upgrade-btn:focus,
