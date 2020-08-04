@@ -28,6 +28,6 @@ module.exports = {
     legacyHelpers,
     scanResults,
     signUpBanners,
-    upgrade,
+    upgrade
   ),
 };
