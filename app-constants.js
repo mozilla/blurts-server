@@ -3,7 +3,7 @@
 /* eslint-disable no-process-env */
 
 const path = require("path");
-require("dotenv").load({path: path.join(__dirname, ".env")});
+require("dotenv").config({path: path.join(__dirname, ".env")});
 
 const kEnvironmentVariables = [
   "NODE_ENV",
