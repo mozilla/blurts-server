@@ -1,6 +1,3 @@
-/* global $$ */
-/* global $ */
-
 "use strict";
 
 class ScanResultsPage {
