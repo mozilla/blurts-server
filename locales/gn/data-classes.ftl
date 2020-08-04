@@ -65,6 +65,7 @@ instant-messenger-identities = Ñe’ẽmondoha ipya’éva reraite
 ip-addresses = IP kundaharape
 job-applications = Mba’ejerure mba’aporã
 job-titles = Nerenda mba’apohápe
+living-costs = Tekove repy
 mac-addresses = MAC kundaharape
 marital-statuses = Emendávapa
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
