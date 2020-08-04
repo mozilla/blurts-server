@@ -127,15 +127,6 @@ function addEmailToBundleWaitlist(req, res) {
 }
 
 
-function getUpgrade(req, res) {
-  if (!req.session.user) {
-    return res.redirect("/");
-  }
-  return res.render("upgrade", {
-    title: "Firefox Privacy Defender",
-  });
-}
-
 function notFound(req, res) {
   res.status(404);
   res.render("subpage", {
@@ -151,7 +142,6 @@ module.exports = {
   getAllBreaches,
   getBentoStrings,
   getSecurityTips,
-  getUpgrade,
   protectMyEmail,
   addEmailToBundleWaitlist,
   notFound,

@@ -36,15 +36,6 @@ function navLinks(args) {
     },
   ];
   const headerLinks = getStrings(links, locales);
-
-  if (locales[0].includes("en") && args.data.root.req.session && args.data.root.req.session.user) {
-    headerLinks.push({
-      title: "Upgrade",
-      stringId: "Upgrade",
-      href: `${serverUrl}/upgrade`,
-      activeLink: (hostUrl === "/upgrade"),
-    });
-  }
   return headerLinks;
 }
 
