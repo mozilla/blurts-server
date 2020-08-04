@@ -11,7 +11,7 @@
     return;
   }
 
-  const sendBundleTestPing = (eAction, eLabel) => {
+  const sendBundleTestPing = (eAction, eLabel, nonInteraction=false) => {
     if (typeof(ga) !== "undefined") {
       ga("send", {
         hitType: "event",
@@ -19,6 +19,7 @@
         eventAction: eAction,
         eventLabel: eLabel,
         transport: "beacon",
+        nonInteraction: nonInteraction,
       });
     }
   };
@@ -32,9 +33,7 @@
   // Add listener to dashboard "Upgrade" button
   const upgradeDashboardBtn = document.querySelector(".upgrade-dash.upgrade-btn");
   if (upgradeDashboardBtn) {
-    if (upgradeDashboardBtn.classList.contains("waitlist-joined")) {
-      sendBundleTestPing("View", "dashboard-upgrade-button");
-    }
+    sendBundleTestPing("View", "dashboard-upgrade-button", true);
     upgradeDashboardBtn.addEventListener("click", (e) => {
       e.preventDefault();
       sendBundleTestPing("Engage", "dashboard-upgrade-button");
