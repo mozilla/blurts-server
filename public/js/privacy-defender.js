@@ -11,7 +11,7 @@
     return;
   }
 
-  const sendBundleTestPing = (eAction, eLabel, interactionStatus=false) => {
+  const sendBundleTestPing = (eAction, eLabel, nonInteraction=false) => {
     if (typeof(ga) !== "undefined") {
       ga("send", {
         hitType: "event",
@@ -19,7 +19,7 @@
         eventAction: eAction,
         eventLabel: eLabel,
         transport: "beacon",
-        nonInteraction: interactionStatus,
+        nonInteraction: nonInteraction,
       });
     }
   };
