@@ -11,7 +11,7 @@ rec-pw-1-subhead = Endre passordet ditt
 # Link title
 rec-pw-1-cta = Endre passord for denne nettstaden
 rec-pw-1 =
-    Gjer dette passordet unikt og ulikt frå alle de andre du brukar. 
+    Gjer dette passordet unikt og ulikt frå alle dei andre du brukar. 
     Ein god strategi å følgje er å kombinere to eller fleire ikkje-relaterte 
     ord for å lage ein heil passordfrase.
 # Recommendation subhead
