@@ -99,6 +99,14 @@ footer.upgrade-bundle-test,
   box-shadow: 0 0 1px 1px #0a84ff, 0 0 0 4px rgba(10, 132, 255, 0.3);
 }
 
+span.upgrade-privacy-notice {
+  max-width: 500px;
+  color: var(--grey6);
+  margin-top: 2rem;
+  line-height: 1.5;
+  font-size: .9rem;
+}
+
 .upgrade-h1 {
   font-size: 43px;
   color: rgba(0, 0, 0, 0);
