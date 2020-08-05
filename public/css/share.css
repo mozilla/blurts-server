@@ -94,7 +94,7 @@
 }
 
 .share-monitor--modal-text {
-  max-width: 550px;
+  max-width: 560px;
   width: 100%;
   padding: 1em 0;
 }
@@ -227,6 +227,6 @@
     display: inline;
   }
   .share-monitor--modal-text h2 {
-    font-size: 24px;
+    font-size: 28px;
   }
 }
