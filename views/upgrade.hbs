@@ -9,7 +9,7 @@
         <img class="upgrade-avatar" src="{{ req.session.user.fxa_profile_json.avatar }}" alt="{{ req.session.user.primary_email }}">
         <span class="upgrade-user-email">{{ req.session.user.primary_email }}</span>
         <button class="upgrade-join-waitlist btn-blue-primary">Join Test Panel</button>
-        <span class="upgrade-privacy-notice">By clicking “Join Test Panel” you agree to our <a href="https://www.mozilla.org/privacy/mozilla-vpn/">Privacy Policy</a>. Your information will only be used to notify you about Firefox experiments. </span>
+        <span class="upgrade-privacy-notice">By clicking “Join Test Panel” you agree to our <a target="_blank" rel="noopener noreferrer" href="https://www.mozilla.org/privacy/">Privacy Policy</a>. Your information will only be used to notify you about Firefox experiments. </span>
       </div>
     </div>
   {{/unless}}
