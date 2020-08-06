@@ -1,5 +1,3 @@
-/* global $ */
-
 "use strict";
 
 class UserPreferencesPage {
