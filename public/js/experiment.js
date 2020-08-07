@@ -38,10 +38,10 @@ function closeShareModal() {
 
 function sendShareModalPing(el) {
   if (typeof(ga) !== "undefined") {
-  const eventCategory = "[v2] exp5-share-modal";
-  const eventAction = el.dataset.eventAction;
-  const eventLabel = el.dataset.eventLabel;
-  const options = {};
+    const eventCategory = "[v2] exp5-share-modal";
+    const eventAction = el.dataset.eventAction;
+    const eventLabel =  `Link ID: ${el.dataset.eventLabel}`;
+    const options = {};
     return ga("send", "event", eventCategory, eventAction, eventLabel, options);
   }
 }
