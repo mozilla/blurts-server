@@ -1,14 +1,16 @@
 "use strict";
 
+console.log("test");
+
 const Knex = require("knex");
 const knexConfig = require("../db/knexfile");
 const knex = Knex(knexConfig);
 
 const HIBP = require("../hibp");
-const getSha1 = require("../sha1-utils");
 
-async function checkIfBreachesExist(email, breaches) {
-  const breachResults = await HIBP.getBreachesForEmail(email, breaches, true);
+async function checkIfBreachesExist(sha1, breaches) {
+  const breachResults = await HIBP.getBreachesForEmail(sha1, breaches, true);
+  console.log("checkIfBreachesExist", breachResults);
 
   if (breachResults.length > 1) {
     return true;
@@ -18,25 +20,35 @@ async function checkIfBreachesExist(email, breaches) {
 }
 
 (async () => {
-  const allHibpBreaches = await HIBP.req("/breaches");
+  console.log("init");
+
+  const allHibpBreachesResp = await HIBP.req("/breaches");
+  const allHibpBreaches = allHibpBreachesResp.body;
 
   // "SELECT primary_email, primary_sha1 FROM subscribers WHERE signup_language LIKE 'en%' AND breaches_resolved IS NULL ORDER BY random();"
-  const query = knex("subscribers").where("signup_language", "like", "en%").andWhere({breaches_resolved: null}).orderByRaw("RANDOM()").select("primary_email", "primary_sha1");
+
+  // TODO: Make limit number a command line arguemnt
+
+  const results = await knex("subscribers").where("signup_language", "like", "en%").andWhere({breaches_resolved: null}).orderByRaw("RANDOM()").limit(100).select("primary_email", "primary_sha1");
 
   const cohort = [];
 
-  query.then( async (resp, index) => {
-    console.log(resp, index);
-    if (cohort.length > 10000) {
+
+  for (const record of results) {
+    // console.log(record);
+    // TODO: Make target number a command line arguemnt
+
+    if (cohort.length > 10) {
       // Print Cohort
       console.log(cohort);
-      return;
+      break;
     }
 
-    resp.forEach(item => {
-      const sha1 = item.primary_sha1;
-      const isValidCohortMember = checkIfBreachesExist(sha1, allHibpBreaches);
-      if (isValidCohortMember) { cohort.push(item.primary_email); }
-    });
-  });
+    const sha1 = record.primary_sha1;
+    const isValidCohortMember = await checkIfBreachesExist(sha1, allHibpBreaches);
+    if (isValidCohortMember) { cohort.push(record.primary_email); }
+  }
+
+  console.log(cohort);
+
 })();
