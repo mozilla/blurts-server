@@ -5,9 +5,8 @@ const DB = require("../db/DB");
 const AppConstants = require("../app-constants");
 const { changePWLinks } = require("../lib/changePWLinks");
 const { getAllEmailsAndBreaches } = require("./user");
-
-const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
 const { getExperimentFlags } = require("./utils");
+const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
 
 async function getBreachDetail(req, res) {
   const allBreaches = req.app.locals.breaches;

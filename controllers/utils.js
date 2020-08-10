@@ -184,7 +184,7 @@ function getExperimentBranch(req, sorterNum = false, language = false, variation
 
 function getUTMContents(req) {
   if (!req) {
-    throw new Error("No request availabe");
+    throw new Error("No request available");
   }
 
   // If UTMs are set previously, set them again.
@@ -198,7 +198,7 @@ function getUTMContents(req) {
 
 function getExperimentFlags(req, EXPERIMENTS_ENABLED) {
   if (!req) {
-    throw new Error("No request availabe");
+    throw new Error("No request available");
   }
 
   if (req.session.experimentFlags && EXPERIMENTS_ENABLED) {

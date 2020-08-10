@@ -30,7 +30,7 @@ function getString (id, args) {
 function getStrings(stringArr, locales) {
   stringArr.forEach(string => {
     const stringId = string.stringId;
-    // Growth Experiment: Catch EN* Experimnal Strings
+    // Growth Experiment: Catch EN* Experimental Strings
     if (stringId === "share-monitor") {
       string.stringId = "Share Monitor";
     } else {

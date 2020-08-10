@@ -7,7 +7,7 @@ function selectURL(e, skipAnalyticsPing = false) {
 
   // If an a user-init'd focus, send analytics ping
   if (!skipAnalyticsPing) {
-  sendShareModalPing(shareModalInput);
+    sendShareModalPing(shareModalInput);
   }
 
   shareModalInput.select();
@@ -27,7 +27,7 @@ function copyURL(e) {
 function keyPress(e) {
   if(e.key === "Escape") {
     closeShareModal();
-  document.removeEventListener("keydown", keyPress);
+    document.removeEventListener("keydown", keyPress);
   }
 }
 
@@ -66,11 +66,11 @@ function initShareModal(target, breachText) {
   shareModal.style.display = "block";
 
   if (breachText) {
-  shareTextGeneral.classList.add("hidden");
-  shareTextBreach.classList.remove("hidden");
+    shareTextGeneral.classList.add("hidden");
+    shareTextBreach.classList.remove("hidden");
   } else {
-  shareTextGeneral.classList.remove("hidden");
-  shareTextBreach.classList.add("hidden");
+    shareTextGeneral.classList.remove("hidden");
+    shareTextBreach.classList.add("hidden");
   }
 
   document.addEventListener("keydown", keyPress);
@@ -79,9 +79,9 @@ function initShareModal(target, breachText) {
   btnCloseShareModal.addEventListener("click", closeShareModal);
 
   shareModal.addEventListener("click", (e)=>{
-  // If the click is INSIDE the modal, ignore it.
-  if (e.target !== shareModal) { return; }
-  closeShareModal();
+    // If the click is INSIDE the modal, ignore it.
+    if (e.target !== shareModal) { return; }
+    closeShareModal();
   });
 }
 
