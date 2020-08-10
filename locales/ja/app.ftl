@@ -105,6 +105,7 @@ monitor-several-emails = 複数のメールアドレスを監視する
 keep-your-data-safe = サイバー犯罪からデータを安全に保つために必要なことを見つけましょう。
 website-breach = ウェブサイト侵害
 unverified-breach = 未確認の侵害
+spam-list-breach = スパムリスト侵害
 website-breach-plural = ウェブサイト侵害
 unverified-breach-plural = 未確認の侵害
 what-data = 漏洩したデータ:
