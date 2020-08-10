@@ -43,15 +43,16 @@ function getArgsValue(argument) {
 }
 
 (async () => {
-  console.log("init");
-
-  console.log(process.argv);
+  console.log("Script starting");
 
   const allHibpBreachesResp = await HIBP.req("/breaches");
   const allHibpBreaches = allHibpBreachesResp.body;
 
   const limitQuery = getArgsValue("--limit");
   const cohortSize = getArgsValue("--cohort-size");
+
+  console.log(`The limit of this query is ${limitQuery}`);
+  console.log(`The target cohort size of this query is ${cohortSize}`);
 
   // "SELECT primary_email, primary_sha1 FROM subscribers WHERE signup_language LIKE 'en%' AND breaches_resolved IS NULL ORDER BY random();"
 
@@ -71,5 +72,6 @@ function getArgsValue(argument) {
     if (isValidCohortMember) { cohort.push(record.primary_email); }
   }
 
+  console.log("Script completed! See final output:");
   console.log(cohort.toString());
 })();
