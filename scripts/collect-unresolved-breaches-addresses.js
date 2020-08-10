@@ -11,7 +11,7 @@ const HIBP = require("../hibp");
 async function checkIfBreachesExist(sha1, breaches) {
   const breachResults = await HIBP.getBreachesForEmail(sha1, breaches, true);
 
-  if (breachResults.length > 1) {
+  if (breachResults.length >= 1) {
     return true;
   }
 
