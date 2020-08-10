@@ -61,7 +61,7 @@ function getArgsValue(argument) {
   const cohort = [];
 
   for (const record of results) {
-    if (cohort.length >= cohortSize) {
+    if (cohort.length > cohortSize) {
       // Cohort size reached
       break;
     }
@@ -73,4 +73,7 @@ function getArgsValue(argument) {
 
   console.log("Script completed! See final output:");
   console.log(cohort.toString());
+
+  process.exit();
+
 })();
