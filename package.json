@@ -28,7 +28,7 @@
     "git-rev-sync": "1.12.0",
     "got": "8.3.2",
     "helmet": "3.23.3",
-    "intl-pluralrules": "0.2.1",
+    "intl-pluralrules": "1.2.1",
     "isemail": "3.2.0",
     "knex": "0.19.5",
     "knex-paginate": "1.2.2",
