@@ -229,6 +229,13 @@ ba-next-step-blurb-2 = Le e kemelaq'omab' wene kkiriq le aretokib'al pa le uq'eq
 ba-next-step-3 = Chariqa' tob'anem chech uwinaqirisaxik utzalaj taq retokib'al chi'l kichajixik.
 ba-next-step-blurb-3 = Chakojo' jun ilawachinel retokib'al chech uwinaqirisaxik ukowilal, utukelal retokib'al.  Le Ilawachinelab' rech retokib'al kkik'ol pa chajinem ronojel taq ¶ umajixik taq kemchak pa ronojel taq awiqkemchakub'al.
 faq1 = Man weta'am ta uwach we k'aywokaj on uk'olib'al web'. Jasche ink'o pa we jun retztaqan?
+faq2 = ¿Jas che sib'alaj knajtin ub'ixikil chi wech pa jun retztqan?
+faq3 = ¿Jas kinb'an chech reta'maxik we tzij rech { -product-name } we taqoqxa'nib'al?
+new-breaches-found =
+    { $breachCount ->
+        [one] { $breachCount } K'AK' RETZTAQAN RIQITAJINAQ
+       *[other] { $breachCount } K'AK' RETZTAQAN RIQITAJINAQ
+    }
 
 ## Updated error messages
 
