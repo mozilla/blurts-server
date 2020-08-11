@@ -102,12 +102,6 @@ function getBentoStrings(req, res) {
   return res.json(localizedBentoStrings);
 }
 
-function protectMyEmail(req, res) {
-  return res.render("private-relay", {
-    title: req.fluentFormat("home-title"),
-  });
-}
-
 function _addPrivacyBundleToWaitlistsJoined(user) {
   if (!user.waitlists_joined) {
     return {"privacy_bundle": {"notified": false} };
@@ -142,7 +136,6 @@ module.exports = {
   getAllBreaches,
   getBentoStrings,
   getSecurityTips,
-  protectMyEmail,
   addEmailToBundleWaitlist,
   notFound,
 };
