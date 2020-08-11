@@ -4,9 +4,6 @@
       <span class="welcome-back">{{ welcomeMessage }}</span>
       <div class="flx flx-row hl-upgrade-btn-wrapper">
         <h2 class="pref-headline breach-summary">{{ getString "breach-summary" }}</h2>
-        {{#if (localeIsEn)}}
-          <button class="upgrade upgrade-dash upgrade-btn {{#if ./../req.user.waitlists_joined.privacy_bundle}} waitlist-joined {{/if}}">Upgrade Now</button>
-        {{/if}}
       </div>
       <div class="dash-stats">
         {{> breach-stats addClasses="user-stats"}}
