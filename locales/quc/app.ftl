@@ -211,6 +211,9 @@ breach-summary = Nitz'arisanem rech retztaqan
 show-breaches-for-this-email = Chak'utu' ronojel taq retztaqan rech we taqoqxa'nib'al.
 link-change-primary = Chak'exa' nab'e kemriqonib'al rech taqoqxa'nib'al.
 remove-fxm = Chachupu' { -product-name }
+remove-fxm-blurb = Che'achupu' taq na'b'anem { -product-name }. Le { -brand-fxa }awech ktziji' na, xuquje' wene kya' jun chi kemb'i'aj chi awech le kjunamataj ruk' taq tzijonem.
+# Button title
+manage-email-addresses = Chawilawachij kemriqonib'al rech taqoqxa'nib'al
 
 ## Updated error messages
 
