@@ -238,6 +238,15 @@ new-breaches-found =
     }
 sign-up-headline-1 = Amaq'el chak'ulaj taq na'b'anem ruk' jun { -brand-fxa }.
 account-not-required = { -brand-name } man rajawaxik ta le nik'onel chech jun { -brand-fxa }. Wene' kak'ulaj q'alajisanem chi rij { -brand-Mozilla } taq pataninem.
+was-your-info-exposed = ¿La xk'oji' le aq'alajisanem pa uk'axk'olil pa le { $breachName } retztaqan rech juq'attzij?
+find-out-if = Chawila' we xk'oji' le ajuq'attzij pa uk'axk'olil pa we retztaqan.
+fb-not-comp = We taqoqxa'nib'al man xq'alajin ta pa le { $breachName } retztaqan.
+other-breaches-found =
+    { $breachCount ->
+        [one] Xa k'ut man xq'alajin ta pa { $breachCount } jun chi retztaqan.
+       *[other] Xa k'ut man xq'alajin ta pa { $breachCount } jun chi retztaqan.
+    }
+fb-comp-only = Le taqoqxa'nib'al xk'utun pa { $breachName } retztaqan.
 
 ## Updated error messages
 
