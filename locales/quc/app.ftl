@@ -214,6 +214,12 @@ remove-fxm = Chachupu' { -product-name }
 remove-fxm-blurb = Che'achupu' taq na'b'anem { -product-name }. Le { -brand-fxa }awech ktziji' na, xuquje' wene kya' jun chi kemb'i'aj chi awech le kjunamataj ruk' taq tzijonem.
 # Button title
 manage-email-addresses = Chawilawachij kemriqonib'al rech taqoqxa'nib'al
+# Link title
+latest-breach-link = Chawila' we xatk'oji' na pa we retztaqan
+welcome-back = Utz atzalijem pa, { $userName }!
+welcome-user = Utz apetik, { $userName }!
+breach-alert-subject = { -product-name } chariqa' ataqoqxa'nib'al pa jun k'ak' retztaqan rech juq'attzij
+your-info-was-discovered-headline = Xriqitaj le aq'alajisanem pa jun k'ak' retztaqan rech juq'attzij.
 
 ## Updated error messages
 
