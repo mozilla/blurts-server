@@ -220,6 +220,8 @@ welcome-back = Utz atzalijem pa, { $userName }!
 welcome-user = Utz apetik, { $userName }!
 breach-alert-subject = { -product-name } chariqa' ataqoqxa'nib'al pa jun k'ak' retztaqan rech juq'attzij
 your-info-was-discovered-headline = Xriqitaj le aq'alajisanem pa jun k'ak' retztaqan rech juq'attzij.
+your-info-was-discovered-blurb = Attz'ib'am are chi kopan taq na'b'anem awuk' { -product-name } ¶ aretaq kk'utun le ataqoqxa'nib'al pa jun retztaqan rech juq'attzij. Waral k'o wi jachike le qeta'am chi rij we retztaqan.
+what-to-do-after-breach = Jas kab'ano are taq kxajtaj jun retztaqan rech juq'attzij
 
 ## Updated error messages
 
