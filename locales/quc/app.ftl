@@ -227,6 +227,8 @@ ba-next-step-blurb-1 = Jun kowilal retokib'al kukoj jun xolanem rech nim tz'ib' 
 ba-next-step-2 = Makoj chi le jun retokib'al le k'o pa uk'axal.
 ba-next-step-blurb-2 = Le e kemelaq'omab' wene kkiriq le aretokib'al pa le uq'eqal web' chech ukojik ¶ chech okem a nik'aj chi taq kemb'i'aj ¶ are ukoik utukelal taq retokib'al chi jujunal.
 ba-next-step-3 = Chariqa' tob'anem chech uwinaqirisaxik utzalaj taq retokib'al chi'l kichajixik.
+ba-next-step-blurb-3 = Chakojo' jun ilawachinel retokib'al chech uwinaqirisaxik ukowilal, utukelal retokib'al.  Le Ilawachinelab' rech retokib'al kkik'ol pa chajinem ronojel taq ¶ umajixik taq kemchak pa ronojel taq awiqkemchakub'al.
+faq1 = Man weta'am ta uwach we k'aywokaj on uk'olib'al web'. Jasche ink'o pa we jun retztaqan?
 
 ## Updated error messages
 
