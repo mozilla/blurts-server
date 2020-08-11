@@ -225,6 +225,7 @@ what-to-do-after-breach = Jas kab'ano are taq kxajtaj jun retztaqan rech juq'att
 ba-next-step-1 = Chak'exa' le ataqoqxa'nib'al pa jun kowilal utukelal retokib'al.
 ba-next-step-blurb-1 = Jun kowilal retokib'al kukoj jun xolanem rech nim tz'ib' chi'l nitz' tz'ib', nim ucholajil taq tz'ib', ¶ chi'l taq ajilab'al. Man ruk'a'am ta winaqilal q'alaljisanem pacha' ¶ le akemriqonib'al, ralaxb'al, chi'l kib'i' taq ajupaja.
 ba-next-step-2 = Makoj chi le jun retokib'al le k'o pa uk'axal.
+ba-next-step-blurb-2 = Le e kemelaq'omab' wene kkiriq le aretokib'al pa le uq'eqal web' chech ukojik ¶ chech okem a nik'aj chi taq kemb'i'aj ¶ are ukoik utukelal taq retokib'al chi jujunal.
 
 ## Updated error messages
 
