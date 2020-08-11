@@ -236,6 +236,8 @@ new-breaches-found =
         [one] { $breachCount } K'AK' RETZTAQAN RIQITAJINAQ
        *[other] { $breachCount } K'AK' RETZTAQAN RIQITAJINAQ
     }
+sign-up-headline-1 = Amaq'el chak'ulaj taq na'b'anem ruk' jun { -brand-fxa }.
+account-not-required = { -brand-name } man rajawaxik ta le nik'onel chech jun { -brand-fxa }. Wene' kak'ulaj q'alajisanem chi rij { -brand-Mozilla } taq pataninem.
 
 ## Updated error messages
 
