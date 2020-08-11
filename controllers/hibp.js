@@ -115,7 +115,7 @@ async function notify (req, res) {
           ctaHref: ctaHref,
           whichPartial: "email_partials/report",
           preFxaSubscriber,
-        },
+        }
       );
       notifiedRecipients.push(breachedEmail);
     }

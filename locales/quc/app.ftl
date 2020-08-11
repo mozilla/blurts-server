@@ -211,6 +211,45 @@ breach-summary = Nitz'arisanem rech retztaqan
 show-breaches-for-this-email = Chak'utu' ronojel taq retztaqan rech we taqoqxa'nib'al.
 link-change-primary = Chak'exa' nab'e kemriqonib'al rech taqoqxa'nib'al.
 remove-fxm = Chachupu' { -product-name }
+remove-fxm-blurb = Che'achupu' taq na'b'anem { -product-name }. Le { -brand-fxa }awech ktziji' na, xuquje' wene kya' jun chi kemb'i'aj chi awech le kjunamataj ruk' taq tzijonem.
+# Button title
+manage-email-addresses = Chawilawachij kemriqonib'al rech taqoqxa'nib'al
+# Link title
+latest-breach-link = Chawila' we xatk'oji' na pa we retztaqan
+welcome-back = Utz atzalijem pa, { $userName }!
+welcome-user = Utz apetik, { $userName }!
+breach-alert-subject = { -product-name } chariqa' ataqoqxa'nib'al pa jun k'ak' retztaqan rech juq'attzij
+your-info-was-discovered-headline = Xriqitaj le aq'alajisanem pa jun k'ak' retztaqan rech juq'attzij.
+your-info-was-discovered-blurb = Attz'ib'am are chi kopan taq na'b'anem awuk' { -product-name } ¶ aretaq kk'utun le ataqoqxa'nib'al pa jun retztaqan rech juq'attzij. Waral k'o wi jachike le qeta'am chi rij we retztaqan.
+what-to-do-after-breach = Jas kab'ano are taq kxajtaj jun retztaqan rech juq'attzij
+ba-next-step-1 = Chak'exa' le ataqoqxa'nib'al pa jun kowilal utukelal retokib'al.
+ba-next-step-blurb-1 = Jun kowilal retokib'al kukoj jun xolanem rech nim tz'ib' chi'l nitz' tz'ib', nim ucholajil taq tz'ib', ¶ chi'l taq ajilab'al. Man ruk'a'am ta winaqilal q'alaljisanem pacha' ¶ le akemriqonib'al, ralaxb'al, chi'l kib'i' taq ajupaja.
+ba-next-step-2 = Makoj chi le jun retokib'al le k'o pa uk'axal.
+ba-next-step-blurb-2 = Le e kemelaq'omab' wene kkiriq le aretokib'al pa le uq'eqal web' chech ukojik ¶ chech okem a nik'aj chi taq kemb'i'aj ¶ are ukoik utukelal taq retokib'al chi jujunal.
+ba-next-step-3 = Chariqa' tob'anem chech uwinaqirisaxik utzalaj taq retokib'al chi'l kichajixik.
+ba-next-step-blurb-3 = Chakojo' jun ilawachinel retokib'al chech uwinaqirisaxik ukowilal, utukelal retokib'al.  Le Ilawachinelab' rech retokib'al kkik'ol pa chajinem ronojel taq ¶ umajixik taq kemchak pa ronojel taq awiqkemchakub'al.
+faq1 = Man weta'am ta uwach we k'aywokaj on uk'olib'al web'. Jasche ink'o pa we jun retztaqan?
+faq2 = ¿Jas che sib'alaj knajtin ub'ixikil chi wech pa jun retztqan?
+faq3 = ¿Jas kinb'an chech reta'maxik we tzij rech { -product-name } we taqoqxa'nib'al?
+new-breaches-found =
+    { $breachCount ->
+        [one] { $breachCount } K'AK' RETZTAQAN RIQITAJINAQ
+       *[other] { $breachCount } K'AK' RETZTAQAN RIQITAJINAQ
+    }
+sign-up-headline-1 = Amaq'el chak'ulaj taq na'b'anem ruk' jun { -brand-fxa }.
+account-not-required = { -brand-name } man rajawaxik ta le nik'onel chech jun { -brand-fxa }. Wene' kak'ulaj q'alajisanem chi rij { -brand-Mozilla } taq pataninem.
+was-your-info-exposed = ¿La xk'oji' le aq'alajisanem pa uk'axk'olil pa le { $breachName } retztaqan rech juq'attzij?
+find-out-if = Chawila' we xk'oji' le ajuq'attzij pa uk'axk'olil pa we retztaqan.
+fb-not-comp = We taqoqxa'nib'al man xq'alajin ta pa le { $breachName } retztaqan.
+other-breaches-found =
+    { $breachCount ->
+        [one] Xa k'ut man xq'alajin ta pa { $breachCount } jun chi retztaqan.
+       *[other] Xa k'ut man xq'alajin ta pa { $breachCount } jun chi retztaqan.
+    }
+fb-comp-only = Le taqoqxa'nib'al xk'utun pa { $breachName } retztaqan.
+no-other-breaches-found = Man xriqitaj ta nik'aj chi taq retztaqan pa jun tzukunem qas eta'matalik.
+no-results-blurb = Chakuyu', le retztaqan man k'o ta pa le mulib'al juq'attzij.
+all-breaches-headline = Ronojel juq'attzij pa { -product-name }
 
 ## Updated error messages
 

@@ -58,7 +58,7 @@ if (!START_PAGE) {
             whichPartial: "email_partials/pre-fxa",
             preFxaEmail: true,
             email: subscriberEmail,
-          },
+          }
         );
         notifiedSubscribers.push(subscriberEmail);
         console.log(`Sent email to ${subscriberEmail}, info: ${JSON.stringify(sendInfo)}`);

@@ -13,11 +13,11 @@ rec-pw-1-cta = Schimbă parola pentru acest site
 rec-pw-1 =
     Fă această parolă unică și diferită de toate celelalte pe care le folosești. 
     O strategie bună e să combini două sau mai multe cuvinte 
-    care nu au nicio legătură unul cu altul ca să creezi o parolă întreagă.
+    care nu au nicio legătură unul cu altul ca să creezi o parolă.
 # Recommendation subhead
 rec-pw-2-subhead = Actualizează-ți alte date de autentificare folosind aceeași parolă
 # Link title
-rec-pw-2-cta-fx = Vezi datele de autentificare în { -brand-name }
+rec-pw-2-cta-fx = Vezi datele de autentificare din { -brand-name }
 rec-pw-2 =
     Refolosirea parolelor transformă o încălcare a securității datelor în mai multe. Acum că această 
     parolă a fost expusă, hackerii o pot folosi să îți intre în alte conturi.
