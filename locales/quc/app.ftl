@@ -247,6 +247,9 @@ other-breaches-found =
        *[other] Xa k'ut man xq'alajin ta pa { $breachCount } jun chi retztaqan.
     }
 fb-comp-only = Le taqoqxa'nib'al xk'utun pa { $breachName } retztaqan.
+no-other-breaches-found = Man xriqitaj ta nik'aj chi taq retztaqan pa jun tzukunem qas eta'matalik.
+no-results-blurb = Chakuyu', le retztaqan man k'o ta pa le mulib'al juq'attzij.
+all-breaches-headline = Ronojel juq'attzij pa { -product-name }
 
 ## Updated error messages
 
