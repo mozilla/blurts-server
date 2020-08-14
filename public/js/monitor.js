@@ -6,6 +6,8 @@
 /* global sendRecommendationPings */
 /* global ga */
 
+const utmParams = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content" ];
+
 if (typeof TextEncoder === "undefined") {
   const cryptoScript = document.createElement("script");
   const scripts = document.getElementsByTagName("script")[0];
@@ -61,6 +63,35 @@ function doOauth(el, {emailWatch = false} = {}) {
       url.searchParams.append(key, encodeURIComponent(el.dataset[key]));
     }
   });
+
+  // Growth Experiment: OAuth Entry Point IDs are unique to the experiment.
+  const oAuthEntryPointIds = [
+    "fx-monitor-check-for-breaches-blue-btn",
+    "fx-monitor-find-out-blue-btn",
+    "fx-monitor-alert-me-blue-btn-top",
+    "fx-monitor-alert-me-blue-btn-bottom",
+  ];
+
+  if (oAuthEntryPointIds.includes(el.dataset.entrypoint)) {
+    // Growth Experiment: Reset UTMs from in-line body tag data elements.
+    utmParams.forEach(key => {
+      if (document.body.dataset[key]) {
+        url.searchParams.delete(key);
+        url.searchParams.append(key, document.body.dataset[key]);
+      }
+    });
+
+    if (typeof(ga) !== "undefined" && document.body.dataset.experiment) {
+      ga("send", {
+        hitType: "event",
+        eventCategory: document.body.dataset.utm_campaign,
+        eventAction: document.body.dataset.experiment,
+        eventLabel: el.dataset.entrypoint,
+        transport: "beacon",
+      });
+    }
+
+  }
 
   if (!sessionStorage) {
     window.location.assign(url);
@@ -140,6 +171,26 @@ function handleFormSubmits(formEvent) {
   }
 
   const formClassList = thisForm.classList;
+
+  // Growth Experiment
+  if (formClassList.contains("skip")) {
+    return;
+  }
+
+  // Growth Experiment
+  if (document.body.dataset.experiment) {
+    const scanFormActionURL = new URL(thisForm.action);
+
+    utmParams.forEach(key => {
+      if (document.body.dataset[key]) {
+        scanFormActionURL.searchParams.append(key, document.body.dataset[key]);
+      }
+    });
+
+    const revisedActionURL = scanFormActionURL.pathname + scanFormActionURL.search;
+
+    thisForm.action = revisedActionURL.toString();
+  }
 
   if (thisForm.email && !isValidEmail(email)) {
     sendPing(thisForm, "Failure");
@@ -442,8 +493,14 @@ function checkIfTier1(preferredLanguage) {
   const preferredLanguages = navigator.languages;
   const preferredFirstLanguageIsTier1 = checkIfTier1(preferredLanguages[0]);
 
-  if (!preferredFirstLanguageIsTier1) {
-    return;
+  if (!preferredFirstLanguageIsTier1 && document.getElementById("fxaCheckbox")) {
+    // Growth Experiment -This overrides the language filter if they've been sorted into the treatment cohort.
+    if (document.body.dataset.experiment === "vb" && document.body.dataset.experiment) {
+      // Do Nothing
+    } else {
+      document.getElementById("fxaCheckbox").style.display = "none";
+      return;
+    }
   }
 
   if (document.getElementById("fxaCheckbox")) {

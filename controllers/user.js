@@ -231,6 +231,7 @@ async function getDashboard(req, res) {
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
   const utmOverrides = getUTMContents(req);
 
+  // Growth Experiment
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
   let lastAddedEmail = null;
@@ -563,6 +564,18 @@ async function getBreachStats(req, res) {
 
 
 function logout(req, res) {
+  // Growth Experiment
+  if (EXPERIMENTS_ENABLED && req.session.experimentFlags) {
+    // Persist experimentBranch across session reset
+    const sessionExperimentFlags = req.session.experimentFlags;
+    req.session.reset();
+    req.session.experimentFlags = sessionExperimentFlags;
+
+    // Return
+    res.redirect("/");
+    return;
+  }
+
   req.session.reset();
   res.redirect("/");
 }

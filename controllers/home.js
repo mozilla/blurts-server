@@ -6,6 +6,7 @@ const HIBP = require("../hibp");
 const { scanResult } = require("../scan-results");
 const {
   generatePageToken,
+  getExperimentBranch,
   getExperimentFlags,
   getUTMContents,
 } = require("./utils");
@@ -42,6 +43,15 @@ async function home(req, res) {
   // Note - If utmOverrides get set, they are unenrolled from the experiment
   const utmOverrides = getUTMContents(req);
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  // Growth Experiment
+  if (EXPERIMENTS_ENABLED) {
+    getExperimentBranch(req, false, ["de", "fr"], {
+      "va": 25,
+      "vb": 25,
+    });
+  }
+
 
   if (req.params && req.params.breach) {
     req.query.breach = req.params.breach;
