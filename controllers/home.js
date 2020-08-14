@@ -44,11 +44,18 @@ async function home(req, res) {
   const utmOverrides = getUTMContents(req);
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
+  // These languages were pulled from https://pontoon.mozilla.org/projects/firefox-monitor-website. Each language has the string "get-email-alerts" from app.ftl translated and had at least 75% of all the strings translated.
+  // Things to note:
+  // - This test applies to every where BUT Tier 1 languages (EN, DE, and FR).
+  // - This includes variations of each languages, so all Spanish version (Spain, Mexico, etc)
+  //   are included by including "ES"
+  const experimentLanguages = ["cak", "cs", "cy", "es", "fi", "fy", "gn", "hu", "ia", "id", "it", "kab", "nb", "nl", "nn", "pt", "ro", "ru", "sk", "sl", "sq", "sv", "tr", "uk", "vi", "zh"];
+
   // Growth Experiment
   if (EXPERIMENTS_ENABLED) {
-    getExperimentBranch(req, false, ["de", "fr"], {
-      "va": 25,
-      "vb": 25,
+    getExperimentBranch(req, false, experimentLanguages, {
+      "va": 50,
+      "vb": 50,
     });
   }
 
