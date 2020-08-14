@@ -12,6 +12,7 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
@@ -90,6 +91,9 @@ latest-breach = ÚLTIMA FILTRACIÓN AÑADIDA
 monitor-several-emails = Kunche'e kua korreo
 take-action = Actúa para proteger tus cuentas
 website-breach = Va'a sitio web
+sensitive-breach = Filtración de datos sensible del sitio web
+data-aggregator-breach = Filtración de recopilador de datos
+unverified-breach = Filtración va'á
 about-fxm-headline = Tsa ña { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Nixi sachuin { -product-name }
