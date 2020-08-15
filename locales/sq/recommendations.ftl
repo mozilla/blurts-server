@@ -47,6 +47,11 @@ rec-ip-us =
 rec-ip-non-us =
     Adresa juaj e Protokollit Internet (adresë IP) lejon të përcaktohet me saktësi vendndodhja juaj dhe furnizuesi i shërbimit internet për ju. Me një rrjet virtual privat (VPN), mund të fshihni vendndodhjen tuaj
     dhe të maskoni adresën tuaj IP.
+# Recommendation subhead
+rec-moz-vpn-cta = Provoni { -brand-mozilla-vpn }
+rec-moz-vpn =
+    Adresa juaj e Protokollit Internet (adresa IP) mund të nxjerrë sheshit vendndodhjen tuaj dhe furnizuesin e shërbimit internet. Një shërbim si
+    { -brand-fpn } e fsheh adresën tuaj IP dhe vendndodhjen për { -brand-name } dhe një shërbim si { -brand-mozilla-vpn } adresën IP dhe vendndodhjen tuaj për krejt pajisjen tuaj.
 rec-hist-pw-subhead = Shmangni ripërdorim fjalëkalimesh
 # Link title
 rec-hist-pw-cta-fx = Shihni kredenciale hyrjesh te { -brand-name }
