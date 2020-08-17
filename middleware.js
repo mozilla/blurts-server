@@ -15,6 +15,7 @@ const { FXA } = require("./lib/fxa");
 const { FluentError } = require("./locale-utils");
 const mozlog = require("./log");
 
+const HIBP = require("./hibp");
 
 const log = mozlog("middleware");
 
@@ -173,6 +174,63 @@ async function requireSessionUser(req, res, next) {
   next();
 }
 
+function getShareUTMs(req, res, next) {
+  // Step 1: See if the user needs to be redirected to the homepage or to a breach-detail page.
+  const generalShareUrls = [
+    "/share/orange", //Header
+    "/share/purple", // Footer
+    "/share/blue",  // user/dashboard
+    "/share/",
+  ];
+
+  if (generalShareUrls.includes(req.url)) {
+    // If not breach specific, redirect to "/"
+    req.session.redirectHome = true;
+  }
+
+  const inNotInActiveExperiment = (!req.session.experimentFlags);
+
+  // Excluse user from experiment if they don't have any experimentFlags set already.
+  if (inNotInActiveExperiment) {
+
+    // Step 2: Determine if user needs to have share-link UTMs set
+    const colors = [
+      "orange", //Header
+      "purple", // Footer
+      "blue", // user/dashboard
+    ];
+
+    const urlArray = req.url.split("/");
+    const color = urlArray.slice(-1)[0];
+
+    req.session.utmOverrides = {
+      campaignName: "shareLinkTraffic",
+      campaignTerm: "default",
+    };
+
+    // Set Color Var in UTM
+    if (color.length && colors.includes(color)) {
+      req.session.utmOverrides.campaignTerm = color;
+    }
+
+    if (color.length && !colors.includes(color)) {
+      const allBreaches = req.app.locals.breaches;
+      const breachName = color;
+      const featuredBreach = HIBP.getBreachByName(allBreaches, breachName);
+
+      if (featuredBreach) {
+        req.session.utmOverrides.campaignTerm = featuredBreach.Name;
+      }
+    }
+
+    // Exclude share users
+    req.session.experimentFlags = {
+      excludeFromExperiment: true,
+    };
+  }
+
+  next();
+}
 
 
 module.exports = {
@@ -185,4 +243,5 @@ module.exports = {
   clientErrorHandler,
   errorHandler,
   requireSessionUser,
+  getShareUTMs,
 };

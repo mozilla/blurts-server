@@ -155,6 +155,29 @@ function setGAListeners(){
       });
     });
 
+    // Growth Experiment
+    if (document.body.dataset.experiment) {
+      document.querySelectorAll(".ga-growth-ping").forEach((el) => {
+        el.addEventListener("click", async(e) => {
+          // Overwrite current event category for active OAuth buttons
+          if (el.dataset.eventCategory !== "fxa-oauth") {
+            el.dataset.eventCategory = "fxa-oauth";
+          }
+          await sendPing(el, "Click", el.dataset.eventLabel, {transport: "beacon"});
+        });
+      });
+
+      // Set Share Modal GA Params on individual elements
+      document.querySelectorAll(".js-share-modal, .js-share-modal-breach").forEach((el) => {
+        if (el.dataset.label) {
+          el.dataset.eventLabel = el.dataset.label;
+        }
+
+        if (el.dataset.eventCategory !== "exp5-share-modal") {
+          el.dataset.eventCategory = "exp5-share-modal";
+        }
+      });
+    }
   }
 
   window.sessionStorage.setItem("gaInit", true);
@@ -200,6 +223,29 @@ function setGAListeners(){
     ga("create", "UA-77033033-16");
     ga("set", "anonymizeIp", true);
     ga("set", "dimension6", `${document.body.dataset.signedInUser}`);
+
+
+    // Set Share URL UTMs
+    if ( document.body.dataset.utm_campaign && !document.body.dataset.experiment ) {
+      // campaignName
+      ga("set", "campaignName", `${document.body.dataset.utm_campaign}`);
+      ga("set", "dimension9", `${document.body.dataset.utm_campaign}`);
+      // campaignKeyword / term
+      ga("set", "campaignKeyword", `${document.body.dataset.utm_term}`);
+      ga("set", "dimension8", `${document.body.dataset.utm_term}`);
+    }
+
+    // Growth Experiment
+    if (document.body.dataset.experiment) {
+      // If an experiment is active, set the "Growth Experiment Version"
+      // Custom Dimension to whichever branch is active.
+      ga("set", "dimension7", `${document.body.dataset.experiment}`);
+      ga("set", "dimension8", `${document.body.dataset.experiment}`);
+      ga("set", "dimension9", `${document.body.dataset.utm_campaign}`);
+      ga("set", "campaignName", `${document.body.dataset.utm_campaign}`);
+      ga("set", "campaignKeyword", `${document.body.dataset.utm_term}`);
+    }
+
 
     ga("send", "pageview", {
       hitCallback: function() {

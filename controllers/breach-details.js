@@ -2,8 +2,11 @@
 
 const HIBP = require("../hibp");
 const DB = require("../db/DB");
+const AppConstants = require("../app-constants");
 const { changePWLinks } = require("../lib/changePWLinks");
 const { getAllEmailsAndBreaches } = require("./user");
+const { getExperimentFlags } = require("./utils");
+const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
 
 async function getBreachDetail(req, res) {
   const allBreaches = req.app.locals.breaches;
@@ -35,11 +38,15 @@ async function getBreachDetail(req, res) {
   }
 
   const changePWLink = getChangePWLink(featuredBreach);
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
   res.render("breach-detail", {
     title: req.fluentFormat("home-title"),
     featuredBreach,
     changePWLink,
     affectedEmails,
+    experimentFlags,
   });
 }
 
