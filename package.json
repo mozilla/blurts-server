@@ -33,7 +33,7 @@
     "knex": "0.19.5",
     "knex-paginate": "1.2.2",
     "lodash": "4.17.19",
-    "mozlog": "2.2.0",
+    "mozlog": "3.0.1",
     "nodemailer": "4.7.0",
     "nodemailer-express-handlebars": "3.3.0",
     "npm-run-all": "4.1.5",
