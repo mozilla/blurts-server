@@ -257,6 +257,10 @@ currently-showing = Uk'utik
 ## Updated error messages
 
 error-bot-headline = Q'atem taq tzukunem chanim
+error-bot-blurb = Wene xa at bot rumal xatzukuj ¶ k'iyalaj kemriqonib'al reh taqoqxa'nib'al pa re jutz'it. Chech we chanim, atq'atem ¶ chech ub'anik nik'aj chi taq tzukunem, Utz kab'an chi pa jutz'it.
+error-csrf-headline = Xk'is uq'ijol le kemchak
+error-csrf-blurb = Chacha' le pitz'b'al rech tzalijem rech le anik'onel, chak'ak'arisaj le uxaq wuj, k'ate k'u ri' chab'ana' chi jumul.
+error-invalid-unsub = Jas uchupik utz'ib'axik ib' pa taq na'b'anem { -product-name }
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
