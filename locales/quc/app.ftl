@@ -300,6 +300,7 @@ results-for = Uwachinem chech: { $userEmail }
 other-monitored-emails = Jun chi taqoqxa'nib'al ktajin kq'atuxik
 email-verification-required = Kajawataj q'atunem pa taqoqxa'nib'al
 fxa-primary-email = { -brand-fxa } Taqoqxa'nib'al - Nab'e
+what-is-a-website-breach = ¿Jas uwach ri' jun retztaqan rech uk'olib'al web'?
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
