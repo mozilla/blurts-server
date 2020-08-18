@@ -304,6 +304,7 @@ what-is-a-website-breach = ¿Jas uwach ri' jun retztaqan rech uk'olib'al web'?
 website-breach-blurb = Kxajtaj jun retztaqan rech juq'attzij rech uk'olib'al web' are taq le ekemelaq'omab' ke'elaq'anik, on kkelesaj uwach on kkiya' winaqilal q'alajisanem pa taq kemb'i'aj rech nimk'atz, Are wa' jun uwachinem kech taq e b'ank'ax are taq kkiriq jun uk'olib'al web' le man k'o ta uchuq'ab'. Le taq retztaqan xuquje' kxajtajik are taq kq'alajisax  le q'alajisanem le man chub'anik taj.
 security-tips-headline = Taq no'jib'al rech chajinem chech achajixik chi kiwach e b'ank'ax
 steps-to-protect = Taq ucholajil rech uchajixik le awinaqilal pa nimk'atz
+take-further-steps = Chab'ana' we taq ucholajil rech uchajixik le awinaqilal
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
