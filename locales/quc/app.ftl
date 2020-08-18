@@ -298,6 +298,8 @@ scan-results-known-breaches =
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Uwachinem chech: { $userEmail }
 other-monitored-emails = Jun chi taqoqxa'nib'al ktajin kq'atuxik
+email-verification-required = Kajawataj q'atunem pa taqoqxa'nib'al
+fxa-primary-email = { -brand-fxa } Taqoqxa'nib'al - Nab'e
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
