@@ -261,6 +261,7 @@ error-bot-blurb = Wene xa at bot rumal xatzukuj ¶ k'iyalaj kemriqonib'al reh ta
 error-csrf-headline = Xk'is uq'ijol le kemchak
 error-csrf-blurb = Chacha' le pitz'b'al rech tzalijem rech le anik'onel, chak'ak'arisaj le uxaq wuj, k'ate k'u ri' chab'ana' chi jumul.
 error-invalid-unsub = Jas uchupik utz'ib'axik ib' pa taq na'b'anem { -product-name }
+error-invalid-unsub-blurb = Rajawaxik kachup utz'ib'axik ib' pa jun chi kech ¶  taq taqoqxa'nib'al { -product-name } taqom chi awech. Chaq'atuj le k'oltaqoqxa'nib'al rech taq oqxa'n pa ¶ { -brand-team-email }. Chacha' le kemwiqb'al rech uchupik utz'ib'axik ib' chi uxe' le taqoqxa'nib'al.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
