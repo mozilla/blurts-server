@@ -324,6 +324,9 @@ learn-more-link = Μάθετε περισσότερα.
 email-sent = Απεστάλη email!
 # Form title
 want-to-add = Θέλετε να προσθέσετε ένα άλλο email;
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Επαληθεύστε το σύνδεσμο που απεστάλη στο { $userEmail } για να το προσθέσετε στο { -product-name }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.

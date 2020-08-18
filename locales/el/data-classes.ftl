@@ -65,6 +65,7 @@ instant-messenger-identities = Ταυτότητες άμεσης ανταλλα�
 ip-addresses = Διευθύνσεις IP
 job-applications = Αιτήσεις εργασίας
 job-titles = Τίτλοι επαγγελμάτων
+living-costs = Έξοδα διαβίωσης
 mac-addresses = Διευθύνσεις MAC
 marital-statuses = Οικογενειακές καταστάσεις
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
