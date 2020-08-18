@@ -278,6 +278,26 @@ passwords-exposed =
         [one] retokib'al k'o pa uk'axk'olil pa ronojel taq retztaqan
        *[other] taq retokib'al k'o pa uk'axk'olil pa ronojel taq retztaqan
     }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] Le retztaqan rech juq'attzij le eta'matalik uya'om le aq'alajisanem pa uk'axk'olil
+       *[other] Le taq retztaqan rech juq'attzij le eta'matalik uya'om le aq'alajisanem pa uk'axk'olil
+    }
+# Button
+see-additional-breaches = Chawila' utz'aqatil taq retztaqan
+scan-results-known-breaches =
+    { $breachCount ->
+        [one] We taqoqxa'nib'al xk'utun pa 1 eta'matal retztaqan rech juq'attzij.
+       *[other] We taqoqxa'nib'al xk'utun pa { $breachCount } eta'matal retztaqan rech juq'attzij.
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Uwachinem chech: { $userEmail }
+other-monitored-emails = Jun chi taqoqxa'nib'al ktajin kq'atuxik
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
