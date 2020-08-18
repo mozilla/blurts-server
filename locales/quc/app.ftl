@@ -262,6 +262,22 @@ error-csrf-headline = Xk'is uq'ijol le kemchak
 error-csrf-blurb = Chacha' le pitz'b'al rech tzalijem rech le anik'onel, chak'ak'arisaj le uxaq wuj, k'ate k'u ri' chab'ana' chi jumul.
 error-invalid-unsub = Jas uchupik utz'ib'axik ib' pa taq na'b'anem { -product-name }
 error-invalid-unsub-blurb = Rajawaxik kachup utz'ib'axik ib' pa jun chi kech ¶  taq taqoqxa'nib'al { -product-name } taqom chi awech. Chaq'atuj le k'oltaqoqxa'nib'al rech taq oqxa'n pa ¶ { -brand-team-email }. Chacha' le kemwiqb'al rech uchupik utz'ib'axik ib' chi uxe' le taqoqxa'nib'al.
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] kemriqonib'al rech taqoqxa'nib'al ktajin kq'atuxik
+       *[other] kemriqonib'al rech taq taqoqxa'nib'al ktajin kq'atuxik
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] retokib'al k'o pa uk'axk'olil pa ronojel taq retztaqan
+       *[other] taq retokib'al k'o pa uk'axk'olil pa ronojel taq retztaqan
+    }
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
