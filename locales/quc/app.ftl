@@ -250,9 +250,13 @@ fb-comp-only = Le taqoqxa'nib'al xk'utun pa { $breachName } retztaqan.
 no-other-breaches-found = Man xriqitaj ta nik'aj chi taq retztaqan pa jun tzukunem qas eta'matalik.
 no-results-blurb = Chakuyu', le retztaqan man k'o ta pa le mulib'al juq'attzij.
 all-breaches-headline = Ronojel juq'attzij pa { -product-name }
+search-breaches = Taq retztaqan rech tzukunem
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = Uk'utik
 
 ## Updated error messages
 
+error-bot-headline = Q'atem taq tzukunem chanim
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
