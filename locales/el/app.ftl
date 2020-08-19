@@ -283,6 +283,7 @@ email-verification-required = Απαιτείται επαλήθευση email
 fxa-primary-email = Email του { -brand-fxa } - Πρωτεύον
 what-is-a-website-breach = Τι είναι μια παραβίαση ιστοσελίδας;
 security-tips-headline = Συμβουλές ασφάλειας για να προστατευτείτε από τους χάκερ
+steps-to-protect = Βήματα για την προστασία της διαδικτυακής σας ταυτότητας
 take-further-steps = Λάβετε περαιτέρω μέτρα για να προστατεύσετε την ταυτότητά σας
 alert-about-new-breaches = Ειδοποίηση σχετικά με νέες παραβιάσεις
 see-if-youve-been-part = Δείτε αν έχετε εμπλακεί σε διαρροή δεδομένων στο διαδίκτυο.
@@ -354,6 +355,8 @@ breach-alert-notifications = Ειδοποιήσεις παραβιάσεων
 breach-added-label = Ημερομηνία προσθήκης:
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Οι αλλαγές αποθηκεύτηκαν!
+# Section headline
+rec-section-headline = Τι να κάνετε για αυτή την παραβίαση
 # Section headline
 rec-section-headline-no-pw = Τι πρέπει να κάνετε για να προστατέψετε τα προσωπικά σας δεδομένα
 # Button

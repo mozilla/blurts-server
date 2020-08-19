@@ -27,7 +27,13 @@ rec-hist-pw-cta-fx = Προβολή συνδέσεων στο { -brand-name }
 # Recommendation subhead
 rec-sec-qa-subhead = Δημιουργήστε μοναδικές απαντήσεις για τις ερωτήσεις ασφαλείας
 # Recommendation subhead
+rec-phone-num-subhead = Αποφύγετε την κοινοποίηση του αριθμού τηλεφώνου σας
+# Recommendation subhead
 rec-pins-subhead = Ενισχύστε την ασφάλεια των PIN σας
+# Recommendation subhead
+rec-gen-1-subhead = Χρησιμοποιήστε μοναδικούς, ισχυρούς κωδικούς πρόσβασης για κάθε λογαριασμό
+# Recommendation subhead
+rec-gen-2-subhead = Αποθηκεύστε τους κωδικούς πρόσβασης σε ασφαλές μέρος
 # Link title
 rec-gen-3-cta = Διαβάστε περισσότερες συμβουλές ασφαλείας
 # Recommendation subhead
