@@ -52,7 +52,7 @@ scan-error = Trebuie să fie o adresă de e-mail validă.
 download-firefox-banner-button = Descarcă { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Trimis!
-sign-up = Înregistrează-te
+sign-up = Înregistrare
 form-signup-error = Trebuie să fie o adresă de e-mail validă
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Data încălcării securității datelor:
