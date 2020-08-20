@@ -361,7 +361,7 @@ filter-by = Filtrează pe categorii:
 menu = Meniu
 to-affected-email = Trimite alerte pentru încălcările securității datelor către adresele de e-mail afectate
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
-join-firefox = Există o modalitate de a-ți proteja viața privată. Alătură-te { -brand-name }.
+join-firefox = Există o modalitate de a-ți proteja viața privată. Folosește { -brand-name }.
 # Link title
 learn-more-link = Află mai multe.
 email-sent = Mesajul de e-mail a fost trimis!
