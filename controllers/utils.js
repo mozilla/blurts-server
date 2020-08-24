@@ -182,23 +182,9 @@ function getExperimentBranch(req, sorterNum = false, language = false, variation
 
 }
 
-function getUTMContents(req) {
-  if (!req) {
-    throw new Error("No request available");
-  }
-
-  // If UTMs are set previously, set them again.
-  if (req.session.utmOverrides) {
-    return req.session.utmOverrides;
-  }
-
-  req.session.utmOverrides = false;
-  return false;
-}
-
 function getExperimentFlags(req, EXPERIMENTS_ENABLED) {
   if (!req) {
-    throw new Error("No request available");
+    throw new Error("No request availabe");
   }
 
   if (req.session.experimentFlags && EXPERIMENTS_ENABLED) {
@@ -222,5 +208,4 @@ module.exports = {
   hasUserSignedUpForRelay,
   getExperimentBranch,
   getExperimentFlags,
-  getUTMContents,
 };

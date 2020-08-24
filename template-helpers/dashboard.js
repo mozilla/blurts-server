@@ -13,7 +13,6 @@ function userIsOnRelayWaitList(args) {
 }
 
 function getBreachesDashboard(args) {
-  const experimentFlags = args.data.root.experimentFlags;
   const verifiedEmails = args.data.root.verifiedEmails;
   const locales = args.data.root.req.supportedLocales;
   let breachesFound = false;
@@ -73,7 +72,6 @@ function getBreachesDashboard(args) {
   const emailCards = {
     verifiedEmails: verifiedEmails,
     breachesFound: breachesFound,
-    experimentFlags: experimentFlags,
   };
 
   return args.fn(emailCards);

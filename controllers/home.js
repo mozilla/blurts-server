@@ -4,12 +4,7 @@ const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
 const HIBP = require("../hibp");
 const { scanResult } = require("../scan-results");
-const {
-  generatePageToken,
-  getExperimentBranch,
-  getExperimentFlags,
-  getUTMContents,
-} = require("./utils");
+const { generatePageToken, getExperimentFlags } = require("./utils");
 
 const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
 
@@ -22,6 +17,7 @@ function _getFeaturedBreach(allBreaches, breachQueryValue) {
 }
 
 async function home(req, res) {
+
   const formTokens = {
     pageToken: AppConstants.PAGE_TOKEN_TIMER > 0 ? generatePageToken(req) : "",
     csrfToken: req.csrfToken(),
@@ -34,31 +30,9 @@ async function home(req, res) {
     return res.redirect("/user/dashboard");
   }
 
-  // Rewrites the /share/{COLOR} links to /
-  if (req.session.redirectHome) {
-    req.session.redirectHome = false;
-    return res.redirect("/");
-  }
-
-  // Note - If utmOverrides get set, they are unenrolled from the experiment
-  const utmOverrides = getUTMContents(req);
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
-  // Growth Experiment
-  if (EXPERIMENTS_ENABLED) {
-    getExperimentBranch(req, false, ["en"], {
-      "va": 50,
-      "vb": 50,
-    });
-  }
-
-
-  if (req.params && req.params.breach) {
-    req.query.breach = req.params.breach;
-  }
-
   if (req.query.breach) {
-
     featuredBreach = _getFeaturedBreach(req.app.locals.breaches, req.query.breach);
 
     if (!featuredBreach) {
@@ -79,7 +53,6 @@ async function home(req, res) {
       pageToken: formTokens.pageToken,
       csrfToken: formTokens.csrfToken,
       experimentFlags,
-      utmOverrides,
     });
   }
 
@@ -90,7 +63,6 @@ async function home(req, res) {
     pageToken: formTokens.pageToken,
     csrfToken: formTokens.csrfToken,
     experimentFlags,
-    utmOverrides,
   });
 }
 

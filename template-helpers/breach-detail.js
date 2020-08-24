@@ -62,12 +62,9 @@ function getBreachCategory(breach) {
 function getSortedDataClasses(locales, breach, isUserBrowserFirefox=false, isUserLocaleEnUs=false, isUserLocalEn=false, changePWLink=false) {
   const priorityDataClasses = getAllPriorityDataClasses(isUserBrowserFirefox, isUserLocaleEnUs, changePWLink);
 
-  const experimentFlags = breach.experimentFlags;
-
   const sortedDataClasses = {
     priority: [],
     lowerPriority: [],
-    experimentFlags: experimentFlags,
   };
 
   const dataClasses = breach.DataClasses;
@@ -111,7 +108,6 @@ function getGenericFillerRecs(locales, numberOfRecsNeeded) {
 }
 
 function getBreachDetail(args) {
-  const experimentFlags = args.data.root.experimentFlags;
   const acceptsLanguages = args.data.root.req.acceptsLanguages();
   const { locales, breach, changePWLink, isUserBrowserFirefox } = getVars(args);
   const { sortedDataClasses, recommendations } = getSortedDataClassesAndRecs(acceptsLanguages, locales, breach, isUserBrowserFirefox, changePWLink);
@@ -146,8 +142,6 @@ function getBreachDetail(args) {
       copy: breachExposedPasswords ? localize(locales, "rec-section-subhead") : localize(locales, "rec-section-subhead-no-pw"),
       recommendationsList: recommendations,
     },
-
-    experimentFlags: experimentFlags,
   };
 
   // Add correct "What is a ... breach" copy.
