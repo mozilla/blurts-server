@@ -59,7 +59,7 @@ function getBreachCategory(breach) {
 }
 
 
-function getSortedDataClasses(locales, breach, isUserBrowserFirefox=false, isUserLocaleEnUs=false, changePWLink=false) {
+function getSortedDataClasses(locales, breach, isUserBrowserFirefox=false, isUserLocaleEnUs=false, isUserLocalEn=false, changePWLink=false) {
   const priorityDataClasses = getAllPriorityDataClasses(isUserBrowserFirefox, isUserLocaleEnUs, changePWLink);
 
   const experimentFlags = breach.experimentFlags;
@@ -112,8 +112,9 @@ function getGenericFillerRecs(locales, numberOfRecsNeeded) {
 
 function getBreachDetail(args) {
   const experimentFlags = args.data.root.experimentFlags;
+  const acceptsLanguages = args.data.root.req.acceptsLanguages();
   const { locales, breach, changePWLink, isUserBrowserFirefox } = getVars(args);
-  const { sortedDataClasses, recommendations } = getSortedDataClassesAndRecs(locales, breach, isUserBrowserFirefox, changePWLink);
+  const { sortedDataClasses, recommendations } = getSortedDataClassesAndRecs(acceptsLanguages, locales, breach, isUserBrowserFirefox, changePWLink);
   const breachCategory = getBreachCategory(breach);
   const breachExposedPasswords = breach.DataClasses.includes("passwords");
 
@@ -227,9 +228,10 @@ function formatNotificationLink(message) {
 }
 
 
-function getSortedDataClassesAndRecs(locales, breach, isUserBrowserFirefox=false, changePWLink=false) {
-  const isUserLocaleEnUs = (locales[0] === "en");
-  const sortedDataClasses = getSortedDataClasses(locales, breach, isUserBrowserFirefox, isUserLocaleEnUs, changePWLink);
+function getSortedDataClassesAndRecs(acceptsLanguages, locales, breach, isUserBrowserFirefox=false, changePWLink=false) {
+  const isUserLocaleEn = (acceptsLanguages[0].toLowerCase().startsWith("en"));
+  const isUserLocaleEnUs = (acceptsLanguages[0].toLowerCase() === "en-us");
+  const sortedDataClasses = getSortedDataClasses(locales, breach, isUserBrowserFirefox, isUserLocaleEnUs, isUserLocaleEn, changePWLink);
 
   let recommendations = [];
 

@@ -48,7 +48,7 @@ module.exports = {
       },
     ];
   },
-  getAllPriorityDataClasses(isUserBrowserFirefox=false, isUserLocaleEnUs=false, changePWLink=null) {
+  getAllPriorityDataClasses(isUserBrowserFirefox=false, isUserLocaleEnUs=false, isUserLocaleEn=false, changePWLink=null) {
     return  {
       "government-issued-ids" : {
         weight: 101,
@@ -162,13 +162,13 @@ module.exports = {
             recommendationCopy: {
               subhead: "rec-ip-subhead",
               cta: isUserLocaleEnUs ? "rec-ip-us-cta" : "",
-              cta2: isUserLocaleEnUs ? "rec-moz-vpn-cta" : "",
+              cta2: isUserLocaleEn ? "rec-moz-vpn-cta" : "",
               body: isUserLocaleEnUs ? "rec-moz-vpn" : "rec-ip-non-us",
             },
             ctaHref: "https://fpn.firefox.com",
             ctaShouldOpenNewTab: true,
             ctaAnalyticsId: "Try Firefox Private Network",
-            secondaryCta: isUserLocaleEnUs ? {
+            secondaryCta: isUserLocaleEn ? {
               ctaHref: "https://vpn.mozilla.org",
               ctaAnalyticsId: "Try Mozilla VPN",
             } : "",
