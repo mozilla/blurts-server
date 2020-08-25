@@ -323,9 +323,9 @@ known-data-breaches-exposed =
 see-additional-breaches = Vezi și alte breșe de date
 scan-results-known-breaches =
     { $breachCount ->
-        [one] Acest e-mail a apărut într-o încălcare cunoscută a securității datelor.
-        [few] Acest e-mail a apărut în { $breachCount } încălcări cunoscute ale securității datelor.
-       *[other] Acest e-mail a apărut în { $breachCount } de încălcări cunoscute ale securității datelor.
+        [one] Adresa de e-mail a apărut în 1 breșă cunoscută de date.
+        [few] Adresa de e-mail a apărut în { $breachCount } breșe cunoscute de date.
+       *[other] Adresa de e-mail a apărut în { $breachCount } de breșe cunoscute de date.
     }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
@@ -335,21 +335,21 @@ other-monitored-emails = Alte adrese de e-mail monitorizate
 email-verification-required = Este necesară verificarea adresei de e-mail
 fxa-primary-email = Adresă de e-mail { -brand-fxa } - primară
 what-is-a-website-breach = Ce este o încălcare a securității datelor în cazul unui site web?
-website-breach-blurb = O încălcare a securității datelor în cazul unui site web apare când infractorii cibernetici fură, copiază sau expun informații cu caracter personal din conturi online. Este de obicei rezultatul identificării de către hackeri a unui punct slab în securitatea site-ului web. Încălcările pot apărea și la divulgarea accidentală a datelor aferente conturilor.
+website-breach-blurb = Breșele de date în cazul site-urilor web apar când infractorii cibernetici fură, copiază sau expun date cu caracter personal din conturi online. Sunt rezultatul identificării de către hackeri a unui punct slab în securitatea unui site web. Breșele pot însemna și divulgarea accidentală a datelor aferente conturilor.
 security-tips-headline = Ponturi de securitate pentru a te proteja de hackeri
 steps-to-protect = Pași de luat pentru a-ți proteja identitatea online
 take-further-steps = Ia măsuri suplimentare pentru a-ți proteja identitatea
-alert-about-new-breaches = Trimite-mi alerte pentru încălcările noi ale securității datelor
+alert-about-new-breaches = Trimite-mi alerte despre breșe noi de date
 see-if-youve-been-part = Vezi dacă ai fost implicat(ă) într-o încălcare a securității datelor.
-get-ongoing-breach-monitoring = Obține monitorizarea continuă a încălcărilor securității datelor pentru mai multe adrese de e-mail.
+get-ongoing-breach-monitoring = Monitorizează în continuu breșele de date pentru mai multe adrese de e-mail.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Află
 new-unsub-error = Va trebui să te dezabonezi prin intermediul unuia dintre mesajele primite pe e-mail de la { -product-name },
 other-known-breaches-found =
     { $breachCount ->
-        [one] Însă a apărut într-o altă încălcare cunoscută.
-        [few] Însă a apărut în alte { $breachCount } încălcări cunoscute.
-       *[other] Însă a apărut în alte { $breachCount } de încălcări cunoscute.
+        [one] Însă a apărut în { $breachCount } altă breșă cunoscută.
+        [few] Însă a apărut în alte { $breachCount } breșe cunoscute.
+       *[other] Însă a apărut în alte { $breachCount } de breșe cunoscute.
     }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
@@ -373,7 +373,7 @@ signed-in-as = Autentificat ca: { $userEmail }
 filter-by = Filtrează pe categorii:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Meniu
-to-affected-email = Trimite alerte pentru încălcările securității datelor către adresele de e-mail afectate
+to-affected-email = Trimite alerte despre breșele de date la adresele de e-mail afectate
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
 join-firefox = Există o modalitate de a-ți proteja viața privată. Folosește { -brand-name }.
 # Link title
@@ -392,7 +392,7 @@ email-verified = Adresă de e-mail verificată cu succes!
 email-added-to-subscription = Îți vom trimite o alertă dacă { $email } apare într-o încălcare a securității datelor.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
-email-verified-view-dashboard = Pentru a vedea și a gestiona toate e-mailurile pe care le-ai înscris pentru monitorizarea încălcării securității datelor, { $nestedSignInLink }
+email-verified-view-dashboard = Pentru a vedea și a gestiona toate adresele de e-mail pe care le-ai înscris pentru monitorizarea breșelor de date, { $nestedSignInLink }.
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = autentificare
 
@@ -408,7 +408,7 @@ manage-all-emails = Gestionează toate adresele de e-mail din { $preferencesLink
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-breach-alert-notifications = Notificări privind alertele pentru încălcările securității datelor
+breach-alert-notifications = Notificări de alerte despre breșe de date
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Încălcare adăugată:
@@ -442,12 +442,12 @@ resolve-top-notification-plural =
 
 ##
 
-marking-this-subhead = Marcarea acestei încălcări a securității datelor ca rezolvată
+marking-this-subhead = Marchează breșa de date ca rezolvată
 # This string contains nested markup that is later used to style the text inside of it.
 # Please do not modify or remove "<span>" and "</span>".
 marking-this-body =
-    <span>Odată ce ai luat măsurile posibile pentru gestionarea acestei încălcări a securității datelor</span>, 
-    o poți marca drept rezolvată. Poți accesa oricând detaliile despre încălcare din tabloul de bord.
+    <span>Odată ce ai luat măsurile posibile pentru gestionarea acestei breșe</span>, 
+    o poți marca drept rezolvată. Ai oricând acces la detalii în tabloul de bord.
 mark-as-resolve-button = Marchează ca rezolvată
 marked-as-resolved-label = Marcată ca rezolvată
 undo-button = Anulează
@@ -462,9 +462,9 @@ confirmation-3-body = Parola nouă este unică, puternică și greu de ghicit? <
 generic-confirmation-subhead = Această încălcare a fost marcată ca rezolvată
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
-        [one] Pentru a vedea încălcarea rămasă, mergi în tabloul de bord.
-        [few] Pentru a vedea toate încălcările rămase, mergi în tabloul de bord.
-       *[other] Pentru a vedea toate încălcările rămase, mergi în tabloul de bord.
+        [one] Pentru a vedea breșa rămasă, mergi în tabloul de bord.
+        [few] Pentru a vedea toate breșele rămase, mergi în tabloul de bord.
+       *[other] Pentru a vedea toate breșele rămase, mergi în tabloul de bord.
     }
 return-to-breach-details-link = Revino la detaliile privind încălcarea
 go-to-dashboard-link = Mergi la tabloul de bord
@@ -479,28 +479,28 @@ num-resolved =
         [few] { $numResolvedBreaches } rezolvate
        *[other] { $numResolvedBreaches } rezolvate
     }
-progress-intro-subhead = Nou în { -product-name }: Marchează încălcările ca rezolvate
+progress-intro-subhead = Nou în { -product-name }: Marchează breșele ca rezolvate
 progress-intro-message =
-    După examinarea detaliilor unei încălcări a securității datelor și luarea pașilor pentru protecția 
-    informațiilor tale personale, poți marca încălcările ca rezolvate.
+    După ce ai examinat detaliile unei breșe de date și ai luat măsuri pentru protejarea 
+    datelor tale personale, poți marca breșele ca rezolvate.
 progress-status =
     { $numTotalBreaches ->
-        [one] { $numResolvedBreaches } din { $numTotalBreaches } încălcare marcată ca rezolvată
-        [few] { $numResolvedBreaches } din { $numTotalBreaches } încălcări marcate ca rezolvate
-       *[other] { $numResolvedBreaches } din { $numTotalBreaches } de încălcări marcate ca rezolvate
+        [one] { $numResolvedBreaches } din { $numTotalBreaches } breșă marcată ca rezolvată
+        [few] { $numResolvedBreaches } din { $numTotalBreaches } breșe marcate ca rezolvate
+       *[other] { $numResolvedBreaches } din { $numTotalBreaches } de breșe marcate ca rezolvate
     }
-progress-complete = Toate încălcările cunoscute au fost marcate ca rezolvate
+progress-complete = Toate breșele cunoscute de date au fost marcate ca rezolvate
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
 progress-message-1 =
-    <span>Ai început bine!</span> Vezi și restul încălcărilor ca să afli 
+    <span>Ai început bine!</span> Vezi și restul breșelor de date ca să afli 
     ce măsuri să iei.
 progress-message-2 =
     <span>Ține-o tot așa!</span> Schimbările mici, cum ar fi actualizarea parolelor, au un impact mare în 
     menținerea informațiilor personale în siguranță.
-progress-message-3 = <span>Ai făcut treabă bună la rezolvarea acelor încălcări!</span> Ține-o tot așa. Mai ai câteva.
+progress-message-3 = <span>Bună treabă! Ai rezolvat câteva breșe.</span> Ține-o tot așa. Mai ai câteva.
 progress-message-4 = <span>Aproape că ai terminat!</span> Te apropii de final.
 progress-complete-message =
     <span>Bună senzația, nu?</span> Dacă vrei să continui, acum este momentul să 
@@ -516,15 +516,15 @@ hide-resolved-button = Ascunde-le pe cele rezolvate
 show-resolved-button = Afișează-le pe cele rezolvate
 unresolved-passwords-exposed =
     { $numPasswords ->
-        [one] parolă expusă în încălcări nerezolvate ale securității datelor
-        [few] parole expuse în încălcări nerezolvate ale securității datelor
-       *[other] de parole expuse în încălcări nerezolvate ale securității datelor
+        [one] parolă expusă în breșe nerezolvate de date
+        [few] parole expuse în breșe nerezolvate de date
+       *[other] de parole expuse în în breșe nerezolvate de date
     }
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
-        [one] încălcare cunoscută a securității datelor marcată ca rezolvată
-        [few] încălcări cunoscute ale securității datelor marcate ca rezolvate
-       *[other] de încălcări cunoscute ale securității datelor marcate ca rezolvate
+        [one] breșă cunoscută de date marcată ca rezolvată
+        [few] breșe cunoscute de date marcate ca rezolvate
+       *[other] de breșe cunoscute de date marcate ca rezolvate
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nou
@@ -537,7 +537,7 @@ promo-lockwise-cta = Descarcă { -brand-lockwise }
 fpn-promo-headline = Maschează-ți locația față de site-uri web și elemente de urmărire
 promo-fpn-body = { -brand-fpn } decartează site-urile web și colectorii de date care îți creează profilul cu reclame, mascându-ți adresa IP reală.
 promo-fpn-cta = Descarcă { -brand-fpn }
-monitor-promo-headline = Află despre noile încălcări ale securității datelor
+monitor-promo-headline = Află despre breșe noi de date
 monitor-promo-body = Primești notificări data viitoare când informațiile tale cu caracter personal sunt expuse într-o încălcare cunoscută.
 ecosystem-promo-headline = Îți protejezi viața online cu produse care pun confidențialitatea pe primul loc
 ecosystem-promo-body = Toate produsele { -brand-name } onorează promisiunea noastră privind datele cu caracter personal: Luăm mai puțin. Le păstrăm în siguranță. Fără secrete.
