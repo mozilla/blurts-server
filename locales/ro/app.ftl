@@ -218,7 +218,7 @@ find-out-what-hackers-know = Află ce știu hackerii despre tine. Află cum să 
 get-email-alerts = Rămâi în siguranță: Primește alerte pe e-mail când informațiile tale apar într-o breșă cunoscută de date
 search-for-your-email = Caută-ți adresa de e-mail în breșe de date cunoscute datând încă din 2007.
 back-to-top = Înapoi sus
-comm-opt-0 = Trimite-mi un mesaj pe e-mail dacă adresele mele de e-mail de mai jos apar într-o încălcare a securității datelor.
+comm-opt-0 = Trimite-mi un mesaj pe e-mail dacă adresele mele de e-mail de mai jos apar într-o breșă de date.
 comm-opt-1 = Trimite toate alertele de breșe de date la { $primaryEmail }.
 stop-monitoring-this = Nu mai monitoriza acest e-mail.
 resend-verification = Retrimite  mesajul e-mail de verificare
@@ -237,21 +237,21 @@ remove-fxm-blurb = Dezactivează alertele { -product-name }. { -brand-fxa } tău
 # Button title
 manage-email-addresses = Gestionează adresele de e-mail
 # Link title
-latest-breach-link = Vezi dacă ai fost implicat(ă) în această încălcare a securității datelor
+latest-breach-link = Vezi dacă ai fost implicat(ă) în această breșă de date
 welcome-back = Bine ai revenit, { $userName }!
 welcome-user = Bine ai venit, { $userName }!
-breach-alert-subject = { -product-name } ți-a găsit adresa de e-mail într-o nouă încălcare a securității datelor
-your-info-was-discovered-headline = Informațiile tale au fost găsite într-o nouă încălcare.
-your-info-was-discovered-blurb = Te-ai înscris ca să primești alerte { -product-name } în cazul în care adresa ta de e-mail apare într-o încălcare a securității datelor. Iată ce știm despre această încălcare.
-what-to-do-after-breach = Ce să faci după o încălcare a securității datelor
+breach-alert-subject = { -product-name } ți-a găsit adresa de e-mail într-o breșă nouă de date
+your-info-was-discovered-headline = Informațiile tale au fost găsite într-o breșă nouă de date.
+your-info-was-discovered-blurb = Te-ai înscris ca să primești alerte { -product-name } dacă adresa ta de e-mail apare într-o breșă de date. Iată ce știm despre această breșă.
+what-to-do-after-breach = Ce să faci după o breșă de date
 ba-next-step-1 = Schimbă parola cu una puternică și unică.
 ba-next-step-blurb-1 = Parolele puternice folosesc o combinație de litere mari și  mici, caractere speciale și cifre. Nu conțin informații personale, cum ar fi date de naștere, adrese sau nume ale membrilor de familie.
 ba-next-step-2 = Nu mai folosi deloc parola expusă.
 ba-next-step-blurb-2 = Infractorii cibernetici îți pot găsi parola pe dark web și o pot folosi pentru a intra în celelalte conturi pe care le deții. Cea mai bună cale de a-ți proteja conturile este să folosești parole unice pentru fiecare în parte.
 ba-next-step-3 = Obține ajutor pentru a crea parole mai bune și pentru a le păstra în siguranță.
 ba-next-step-blurb-3 = Folosește un manager de parole pentru a crea parole puternice și unice. Managerii de parole stochează toate datele de autentificare în siguranță, astfel încât să le poți accesa pe toate dispozitivele.
-faq1 = Nu recunosc această companie sau site web. De ce apar în această încălcare?
-faq2 = De ce a durat atât de mult să fiu informat(ă) despre această încălcare a securității datelor?
+faq1 = Nu recunosc compania sau site-ul web. De ce apar în această breșă de date?
+faq2 = De ce a durat atât de mult să fiu informat(ă) despre această breșă de date?
 faq3 = Cum știu că acesta este un mesaj legitim de e-mail de la { -product-name }?
 new-breaches-found =
     { $breachCount ->
