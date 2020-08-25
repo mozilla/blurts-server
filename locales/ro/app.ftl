@@ -26,7 +26,7 @@ error-could-not-add-email = Adresa de e-mail nu a putut fi adăugată în baza d
 error-not-subscribed = Această adresă de e-mail nu este abonată la { -product-name }.
 error-hibp-throttled = Prea multe conexiuni la { -brand-HIBP }.
 error-hibp-connect = Eroare de conectare la { -brand-HIBP }.
-error-hibp-load-breaches = Nu s-au putut încărca încălcările securității datelor.
+error-hibp-load-breaches = Breșele de date nu au putut fi încărcate.
 error-must-be-signed-in = Trebuie să fii autentificat(ă) la { -brand-fxa }.
 error-to-finish-verifying = Pentru a finaliza verificarea acestui e-mail pentru { -product-name }, trebuie să fii autentificat în e-mailul primar al contului tău.
 home-title = { -product-name }
@@ -55,20 +55,20 @@ signup-modal-sent = Trimis!
 sign-up = Înregistrare
 form-signup-error = Trebuie să fie o adresă de e-mail validă
 # breach-date = the calendar date a particular data theft occurred. 
-breach-date = Data încălcării securității datelor:
+breach-date = Data breșei de date:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Conturi compromise:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Date compromise:
 unsub-headline = Dezabonează-te de la { -product-name-nowrap }
-unsub-blurb = Prin dezabonare, adresa ta de e-mail va fi eliminată din lista { -product-name-nowrap } și nu vei mai primi alerte când sunt anunțate încălcări noi ale securității datelor.
+unsub-blurb = Adresa ta de e-mail va fi eliminată din lista { -product-name-nowrap } și nu vei mai primi alerte când sunt anunțate breșe noi de date.
 unsub-button = Dezabonează-te
 # Breach data provided by Have I Been Pwned.
-hibp-attribution = Datele privind încălcările securității datelor sunt furnizate de { $hibp-link }
+hibp-attribution = Informațiile despre breșa de date sunt furnizate de { $hibp-link }
 share-twitter = Majoritatea persoanelor au aproximativ 100 de conturi online. A fost expus vreunul dintre conturile tale într-o încălcare a securității datelor? Află.
 share-facebook-headline = Află dacă ai fost implicat(ă) într-o încălcare a securității datelor
 share-facebook-blurb = Au fost expuse conturile tale online într-o încălcare a securității datelor?
-og-site-description = Află dacă ai fost implicat(ă) într-o încălcare a securității datelor cu { -product-name }. Înregistrează-te pentru alerte despre viitoare încălcări ale securității datelor și obține ponturi pentru a-ți păstra conturile în siguranță.
+og-site-description = Află dacă ai fost implicat(ă) într-o breșă de date folosind { -product-name }. Înregistrează-te pentru alerte despre breșe viitoare de date și ponturi pentru a-ți păstra conturile în siguranță.
 show-all = Afișează toate
 fxa-scan-another-email = Vrei să verifici altă adresă de e-mail?
 sign-in = Autentificare
@@ -82,14 +82,17 @@ fxa-pwt-summary-2 =
 fxa-pwt-summary-4 =
     Managerii de parole, cum ar fi 1Password, LastPass, Dashlane și Bitwarden îți stochează
     parolele și le completează pe site-uri pentru tine. Te vor ajuta chiar să creezi parole puternice.
-fxa-pwt-summary-6 = Încălcările securității datelor sunt în creștere. Dacă informațiile tale cu caracter personal apar într-o nouă încălcare a securității datelor, { -product-name } îți va trimite o alertă — astfel încât să iei măsuri și să îți protejezi conturile.
+fxa-pwt-summary-6 = Breșele de securitate a datelor sunt tot mai multe. Dacă datele tale cu caracter personal apar într-o breșă nouă de date, { -product-name } îți va trimite o alertă — ca să iei măsuri și să îți protejezi conturile.
 fxa-what-to-do-blurb-1 =
     Dacă nu te poți autentifica, contactează site-ul web și întreabă-i cum să îți actualizezi datele de identificare.
     Vezi un cont necunoscut? Este posibil ca datele tale să fi fost vândute
     sau redistribuite. Ar putea fi și un cont de care ai uitat sau o companie care și-a schimbat denumirea.
 fxa-what-to-do-subhead-2 = Nu mai folosi parola expusă și schimb-o peste tot pe unde ai folosit-o.
 fxa-wtd-blurb-2 = Hackerii pot încerca să reutilizeze parola și adresa ta de e-mail ca să intre în alte conturi. Creează o parolă diferită și unică pentru fiecare cont, în special pentru contul bancar, e-mail și alte site-uri web pe care salvezi date cu caracter personal.
-fxa-what-to-do-blurb-3 = Cele mai multe încălcări ale securității datelor expun numai adrese de e-mail și parole, dar unele includ și date financiare sensibile. În cazul în care ți-au fost expuse contul bancar sau numerele cardurilor de credit, alertează banca asupra unei posibilități de fraudă. Monitorizează-ți extrasele de cont pentru plăți pe care nu le recunoști.
+fxa-what-to-do-blurb-3 =
+    Cele mai multe breșe de date expun numai adrese de e-mail și parole, dar unele includ și date financiare sensibile. 
+    Dacă ți-au fost expuse conturi bancare sau numere de carduri de credit, alertează banca asupra unei posibilități de fraudă. 
+    Urmărește extrasele de cont pentru plăți pe care nu le recunoști.
 fxa-what-to-do-subhead-4 = Obține ajutor pentru a ține minte toate parolele și pentru a le păstra în siguranță.
 fxa-what-to-do-blurb-4 =
     Managerii de parole, cum ar fi 1Password, LastPass, Dashlane și Bitwarden îți stochează
@@ -105,7 +108,7 @@ preferences = Preferințe
 # Link title
 home = Acasă
 # Link title
-breaches = Încălcări ale securității datelor
+breaches = Breșe de date
 # Link title
 security-tips = Ponturi de securitate
 fxa-account = { -brand-fxa }
