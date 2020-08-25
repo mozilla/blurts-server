@@ -306,21 +306,21 @@ email-addresses-being-monitored =
 # your localization, because it would result in the number showing twice.
 passwords-exposed =
     { $passwords ->
-        [one] parolă expusă în toate încălcările securității datelor
-        [few] parole expuse în toate încălcările securității datelor
-       *[other] de parole expuse în toate încălcările securității datelor
+        [one] parolă expusă în toate breșele de date
+        [few] parole expuse în toate breșele de date
+       *[other] de parole expuse în toate breșele de date
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
     { $breaches ->
-        [one] încălcare cunoscută a securității datelor ți-a expus informațiile
-        [few] încălcări cunoscute ale securității datelor ți-au expus informațiile
-       *[other] de încălcări cunoscute ale securității datelor ți-au expus informațiile
+        [one] breșă cunoscută de date ți-a expus informațiile
+        [few] breșe cunoscute de date ți-au expus informațiile
+       *[other] de breșe cunoscute de date ți-au expus informațiile
     }
 # Button
-see-additional-breaches = Vezi și alte încălcări ale securității datelor
+see-additional-breaches = Vezi și alte breșe de date
 scan-results-known-breaches =
     { $breachCount ->
         [one] Acest e-mail a apărut într-o încălcare cunoscută a securității datelor.
