@@ -66,6 +66,10 @@
   margin-top: 0;
 }
 
+.feature-tip-link {
+  margin-right: 24px;
+}
+
 .feature-title {
   margin-bottom: 8px;
   font-weight: 700;
@@ -79,7 +83,6 @@
 }
 
 .cta2 {
-  margin-left: 24px;
   margin-right: 24px;
 }
 
