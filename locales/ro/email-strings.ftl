@@ -50,11 +50,11 @@ fxm-warns-you-no-breaches =
     { -product-name } te avertizează cu privire la breșele de date în care sunt implicate datele tale cu caracter personal.
     Până acum nu au fost găsite breșe. Îți vom trimite o alertă dacă adresa ta de e-mail apare într-o breșă nouă.
 fxm-warns-you-found-breaches =
-    { -product-name } te avertizează cu privire la încălcările securității datelor în care sunt implicate informațiile tale cu caracter personal.
-    De asemenea, te-ai înscris pentru a primi alerte dacă adresa ta de e-mail apare într-o nouă încălcare.
+    { -product-name } te avertizează cu privire la breșele de date în care sunt implicate datele tale cu caracter personal.
+    De asemenea, te-ai înscris pentru alerte dacă adresa ta de e-mail apare în breșe noi.
 email-breach-alert-blurb =
-    { -product-name } te avertizează cu privire la încălcările securității datelor în care sunt implicate informațiile tale cu caracter personal.
-    Tocmai am primit detalii despre o încălcare a securității datelor referitoare la o altă companie.
+    { -product-name } te avertizează cu privire la breșele de date în care sunt implicate datele tale cu caracter personal.
+    Tocmai am primit detalii despre o breșă de date suferită de altă companie.
 # List headline
 faq-list-headline = Întrebări adresate frecvent
 # Link Title
@@ -75,15 +75,15 @@ pre-fxa-subject = O actualizare de la { -product-name }
 pre-fxa-headline = Ce se schimbă cu { -product-name }
 pre-fxa-blurb =
     Iată ce s-a schimbat de când te-ai înscris pentru { -product-name }, serviciul care 
-    monitorizează încălcările cunoscute ale securității datelor pentru informațiile tale cu caracter personal. Îl legăm de conturile Firefox.
-pre-fxa-tout-1 = Rămâi la curent cu mai multe încălcări ale securității datelor
+    monitorizează breșele cunoscute de date pentru informațiile tale cu caracter personal. Îl legăm la conturile Firefox.
+pre-fxa-tout-1 = Rămâi la curent cu mai multe breșe de date
 pre-fxa-p-1 =
     <a>Creează un cont</a> ca să monitorizezi până la 15 adrese de e-mail pentru 
-    încălcările securității datelor. Îți recomandăm să adaugi orice adrese de e-mail pe care le-ai folosit ca să creezi conturi online.
+    breșe de date. Îți recomandăm să adaugi orice adrese de e-mail pe care le-ai folosit ca să creezi conturi online.
 pre-fxa-tout-2 = Obține o vizualizare pe tabloul de bord
 pre-fxa-p-2 =
-    Vezi toate încălcările securității datelor într-un singur loc pentru a ști ce parole să schimbi. 
-    Tabloul de bord pentru încălcările securității datelor este disponibil numai cu un cont.
+    Vezi toate breșele de date într-un singur loc pentru a ști ce parole să schimbi. 
+    Tabloul de bord pentru breșe de date poate fi accesat numai cu un cont.
 pre-fxa-tout-3 = Continuă să primești alerte pe e-mail
 pre-fxa-p-3 =
     Vei primi în continuare alerte de la { -product-name }. Te vom anunța dacă informațiile tale 
