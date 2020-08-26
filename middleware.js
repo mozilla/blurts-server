@@ -188,7 +188,7 @@ function getShareUTMs(req, res, next) {
     req.session.redirectHome = true;
   }
 
-  const inNotInActiveExperiment = (!req.session.experimentFlags);
+  const inNotInActiveExperiment = (req.session.experimentFlags.excludeFromExperiment);
 
   // Excluse user from experiment if they don't have any experimentFlags set already.
   if (inNotInActiveExperiment) {
@@ -202,6 +202,7 @@ function getShareUTMs(req, res, next) {
 
     const urlArray = req.url.split("/");
     const color = urlArray.slice(-1)[0];
+
 
     req.session.utmOverrides = {
       campaignName: "shareLinkTraffic",
