@@ -324,6 +324,21 @@ email-addresses-title = Kemriqonib'al rech taqoqxa'nib'al
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Nitz'arisanem
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = Pa { $breachDate }. { $breachTitle } xb'an retztaqan. Are taq xriqitaj le retztaqan chi'l xq'atutajik. xya'taj pa le mulib'al juq'attzij pa { $addedDate }.
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = { -product-short-name } taq ajawatalik
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = Chamajij kemchak pacha: { $userEmail }
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = Chacha' chi cholajib'al:
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = Cholokib'al
+to-affected-email = Chataqa' taq nab'anem rech retztaqan pa le kemriqonib'al rech taqoqxa'nib'al le uriqom k'ax
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
