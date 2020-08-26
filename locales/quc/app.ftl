@@ -319,6 +319,8 @@ other-known-breaches-found =
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = Utz'aqatil q'alajisanem rachi'l:
+# Title
+email-addresses-title = Kemriqonib'al rech taqoqxa'nib'al
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
