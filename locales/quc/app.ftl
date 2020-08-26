@@ -321,6 +321,9 @@ other-known-breaches-found =
 additional-information-including = Utz'aqatil q'alajisanem rachi'l:
 # Title
 email-addresses-title = Kemriqonib'al rech taqoqxa'nib'al
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = Nitz'arisanem
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
