@@ -188,10 +188,17 @@ function getShareUTMs(req, res, next) {
     req.session.redirectHome = true;
   }
 
-  const inNotInActiveExperiment = (req.session.experimentFlags.excludeFromExperiment);
+  // If user has no reference to experiment (default), add skip override
+  if (typeof(req.session.experimentFlags) === "undefined") {
+    req.session.experimentFlags = {
+      excludeFromExperiment: true,
+    };
+  }
+
+  const excludedFromExperiment = (req.session.experimentFlags.excludeFromExperiment);
 
   // Excluse user from experiment if they don't have any experimentFlags set already.
-  if (inNotInActiveExperiment) {
+  if (excludedFromExperiment) {
 
     // Step 2: Determine if user needs to have share-link UTMs set
     const colors = [
