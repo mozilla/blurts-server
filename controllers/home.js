@@ -6,7 +6,6 @@ const HIBP = require("../hibp");
 const { scanResult } = require("../scan-results");
 const {
   generatePageToken,
-  getExperimentBranch,
   getExperimentFlags,
   getUTMContents,
 } = require("./utils");
