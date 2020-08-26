@@ -94,6 +94,13 @@ website-breach = Va'a sitio web
 sensitive-breach = Filtración de datos sensible del sitio web
 data-aggregator-breach = Filtración de recopilador de datos
 unverified-breach = Filtración va'á
+spam-list-breach = Lista va'á
+website-breach-plural = Filtraciones de sitios web
+sensitive-breach-plural = Filtraciones sensibles
+data-aggregator-breach-plural = Filtraciones de recopiladores de datos
+unverified-breach-plural = Filtraciones sin verificar
+spam-list-breach-plural = Listas de filtraciones no deseadas
+what-data = Qué datos fueron comprometidos:
 about-fxm-headline = Tsa ña { -product-name }
 # How Firefox Monitor works
 how-fxm-works = Nixi sachuin { -product-name }
@@ -131,6 +138,35 @@ currently-showing = Sna'a:
 
 ## Updated error messages
 
+error-csrf-headline = Ntsinu
+error-csrf-blurb = Katavi  botón sata ña navegador ku, nta sa tsa'a página cha kitsa tuku.
+error-invalid-unsub = Nixi stoo sivú nu { -product-name }
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+        [one] Dirección de correo monitoreada
+       *[other] Direcciones de correo monitoreadas
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Contraseña expuesta en todas las filtraciones
+       *[other] Contraseñas expuestas en todas las filtraciones
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+        [one] Filtración de datos conocida ha expuesto tu información
+       *[other] Filtraciones de datos conocidas han expuesto tu información
+    }
+# Button
+see-additional-breaches = Ver filtraciones adicionales
 # Title
 email-addresses-title = Lista korreo
 # This is a section headline on the breach detail page that appears above
@@ -179,6 +215,8 @@ rec-section-headline = Ntyi sau tsi filtración
 
 ##
 
+mark-as-resolve-button = Katavi ña va'a ye
+marked-as-resolved-label = Tsa ye vai
 undo-button = Stoò
 confirmation-2-subhead = ¡kunche, hackers!
 confirmation-3-subhead = Ntsi ian. ¡Va'a chu'un!
