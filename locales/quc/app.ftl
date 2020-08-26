@@ -355,9 +355,29 @@ verify-the-link = Chaq'atuj le kemwiqb'al taqom pa { $userEmail }chech uya'ik pa
 
 email-verified = Taqoqxa'nib'al utz uq'atuxik b'anom!
 email-added-to-subscription = Kqaya' nab'anem chi awech we { $email }kk'utun pa jun retztaqan rech juq'attzij.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = Chech rilik chi'l rilawachixik ronojel taq taqoqxa'b'al atz'ib'am awib' pa rilawachixik retztaqan, { $nestedSignInLink }.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = chamajij kemchak
 
 ##
 
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = Chawilawachij ronojel taq kemriqonib'al rech taqoqxa'nib'al pa { $preferencesLink }.
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Ub'ixikil rech na'b'anem rech retztaqan
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = Retztaqan ya'talik:
+how-hackers-work-desc = Chachajij le aretokib'al chi kiwach kemelaq'omab', rumal are la' qas kekam chi rij.
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
