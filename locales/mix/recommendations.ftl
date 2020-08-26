@@ -51,6 +51,10 @@ rec-ip-us-cta = Kunche'e { -brand-fpn }
 # Recommendation subhead
 rec-moz-vpn-cta = Kunche'e { -brand-mozilla-vpn }
 # Link title
+rec-hist-pw-cta-fx = Kunche'e nchi nikitasu nu{ -brand-name }
+# Link title
 rec-gen-2-cta = Tu'un tsa tu'un see
 # Link title
 rec-gen-3-cta = Kavi nixi kunchau meu
+# Recommendation subhead
+rec-gen-4-subhead = Sama kue software tsi aplicacion
