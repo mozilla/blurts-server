@@ -310,6 +310,15 @@ see-if-youve-been-part = Chawila' we chi'l at ariqom jun retztaqan rech juq'attz
 get-ongoing-breach-monitoring = Chariqa' junelik rilawachixik  taq retztaqan chech uk'iyal taq kemriqonib'al rech taqoqxa'nib'al
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Chariqa'
+new-unsub-error = Rajawaxik kachup utz'ib'axik awib' pa jun chi kech taq taqoqxa'nib'al { -product-name } taqom.
+other-known-breaches-found =
+    { $breachCount ->
+        [one] Xa k'ut, xk'utun pa { $breachCount } jun chi eta'matal retztaqan.
+       *[other] Xa k'ut, xk'utun pa { $breachCount }  nik'aj chi eta'matal taq retztaqan.
+    }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = Utz'aqatil q'alajisanem rachi'l:
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
