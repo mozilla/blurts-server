@@ -380,6 +380,13 @@ breach-added-label = Retztaqan ya'talik:
 how-hackers-work-desc = Chachajij le aretokib'al chi kiwach kemelaq'omab', rumal are la' qas kkaj.
 what-to-do-after-breach-desc = Chaq'atej taq akemb'i'aj  chech uchajixik le aq'alajisanem.
 create-strong-passwords-desc = Chab'ana' kowilal chech le aretokib'al, chajitalik, chi'l k'ax uriqik.
+steps-to-protect-desc = Chak'oxomaj le uk'axal qas kb'anik chi'l chaweta'maj jas katzukuj.
+five-myths-desc = Chaweta'maj uq'atexik taq retokib'al le man k'o ta uchuq'ab' le kub'ano' chi man k'ax ta uriqik chi kech le e b'ank'ax.
+take-further-steps-desc = Chaweta'maj jas kb'an chech uq'atexik relaq'axik winaqilal chech uq'atexik relaq'axik me'rkortil.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Xk'olotaj taq k'exonem
+# Section headline
+rec-section-headline = Jas kb'an chech we retztaqan
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
