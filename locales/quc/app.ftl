@@ -377,7 +377,9 @@ breach-alert-notifications = Ub'ixikil rech na'b'anem rech retztaqan
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Retztaqan ya'talik:
-how-hackers-work-desc = Chachajij le aretokib'al chi kiwach kemelaq'omab', rumal are la' qas kekam chi rij.
+how-hackers-work-desc = Chachajij le aretokib'al chi kiwach kemelaq'omab', rumal are la' qas kkaj.
+what-to-do-after-breach-desc = Chaq'atej taq akemb'i'aj  chech uchajixik le aq'alajisanem.
+create-strong-passwords-desc = Chab'ana' kowilal chech le aretokib'al, chajitalik, chi'l k'ax uriqik.
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
