@@ -30,7 +30,7 @@ function getString (id, args) {
 function getStrings(stringArr, locales) {
   stringArr.forEach(string => {
     const stringId = string.stringId;
-    string.stringId =LocaleUtils.fluentFormat(locales, stringId);
+    string.stringId = LocaleUtils.fluentFormat(locales, stringId);
   });
   return stringArr;
 }
