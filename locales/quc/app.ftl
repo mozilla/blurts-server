@@ -339,10 +339,22 @@ filter-by = Chacha' chi cholajib'al:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Cholokib'al
 to-affected-email = Chataqa' taq nab'anem rech retztaqan pa le kemriqonib'al rech taqoqxa'nib'al le uriqom k'ax
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = K'o jun ub'e'al chech uchajixik le acheb'alil. Chat'iqa' awib' { -brand-name }.
+# Link title
+learn-more-link = Chaweta'maj nik'aj chik.
+email-sent = Taqoqxa'nib'al xtaqik
+# Form title
+want-to-add = ¿Kawaj kaya' jun chi taqoqxa'nib'al?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = Chaq'atuj le kemwiqb'al taqom pa { $userEmail }chech uya'ik pa { -product-name }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+email-verified = Taqoqxa'nib'al utz uq'atuxik b'anom!
+email-added-to-subscription = Kqaya' nab'anem chi awech we { $email }kk'utun pa jun retztaqan rech juq'attzij.
 
 ##
 
