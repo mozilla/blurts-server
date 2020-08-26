@@ -59,7 +59,7 @@ breach-date = Uq'ijol retztaqan:
 compromised-accounts = Taq kemb'i'aj k'o retztaqan chi rij:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Taq juq'attzij k'o retztaqan chi rij:
-unsub-headline = Uchupik utz'ib'axik ib' pa { -product-name-nowrap }
+unsub-headline = Chachupu' utz'ib'axik awib' pa { -product-name-nowrap }
 unsub-blurb = Wa' kuchup le taqoqxa'n pa ucholajil { -product-name-nowrap } mak'u kak'ulaj ta chi taq na'b'anem are taq kq'alajisax k'ak' taq retztaqan.
 unsub-button = Uchupik utz'ib'axik ib'
 # Breach data provided by Have I Been Pwned.
@@ -307,6 +307,9 @@ steps-to-protect = Taq ucholajil rech uchajixik le awinaqilal pa nimk'atz
 take-further-steps = Chab'ana' we taq ucholajil rech uchajixik le awinaqilal
 alert-about-new-breaches = Chana'b'aj chi wech chi rij k'ak' taq retztaqan
 see-if-youve-been-part = Chawila' we chi'l at ariqom jun retztaqan rech juq'attzij pa nimk'atz
+get-ongoing-breach-monitoring = Chariqa' junelik rilawachixik  taq retztaqan chech uk'iyal taq kemriqonib'al rech taqoqxa'nib'al
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Chariqa'
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
