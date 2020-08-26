@@ -34,7 +34,7 @@ email-breach-summary-for-email = Rezumatul breșelor de date pentru { $userEmail
 # Email headline
 email-no-breaches-hl = { $userEmail } a apărut în 0 breșe cunoscute de date
 # Email headline
-email-alert-hl = { $userEmail } a apărut într-o nouă încălcare a securității datelor
+email-alert-hl = { $userEmail } a apărut într-o breșă nouă de date
 # Subject line of email
 email-subject-found-breaches = { -product-name } ți-a găsit informațiile în aceste breșe de date
 # Subject line of email
@@ -58,11 +58,11 @@ email-breach-alert-blurb =
 # List headline
 faq-list-headline = Întrebări adresate frecvent
 # Link Title
-faq-v2-1 = Nu recunosc una dintre aceste companii sau site-uri web. De ce mă aflu în această încălcare?
+faq-v2-1 = Nu recunosc una (unul) dintre aceste companii sau site-uri web. De ce apar în această breșă?
 # Link Title
-faq-v2-2 = Trebuie să fac ceva dacă o încălcare a securității datelor a avut loc cu ani în urmă sau acesta este un cont vechi?
+faq-v2-2 = Trebuie să fac ceva dacă o breșă de date a avut loc cu ani în urmă sau dacă este implicat un cont vechi?
 # Link Title
-faq-v2-3 = Tocmai am aflat că mă aflu într-o încălcare a securității datelor. Ce fac în continuare?
+faq-v2-3 = Tocmai am aflat că am fost implicat(ă) într-o breșă de date. Ce să fac în continuare?
 # Link Title
 faq-v2-4 = Cum tratează { -product-name } site-urile sensibile?
 # This string contains nested markup that becomes a link to Firefox Monitor
@@ -87,6 +87,6 @@ pre-fxa-p-2 =
 pre-fxa-tout-3 = Continuă să primești alerte pe e-mail
 pre-fxa-p-3 =
     Vei primi în continuare alerte de la { -product-name }. Te vom anunța dacă informațiile tale 
-    apar într-o nouă încălcare a securității datelor.
+    apar în breșe noi de date.
 # Button at the bottom of pre-fxa email.
 create-account = Creează cont

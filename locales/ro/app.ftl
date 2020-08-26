@@ -340,7 +340,7 @@ security-tips-headline = Ponturi de securitate pentru a te proteja de hackeri
 steps-to-protect = Pași de luat pentru a-ți proteja identitatea online
 take-further-steps = Ia măsuri suplimentare pentru a-ți proteja identitatea
 alert-about-new-breaches = Trimite-mi alerte despre breșe noi de date
-see-if-youve-been-part = Vezi dacă ai fost implicat(ă) într-o încălcare a securității datelor.
+see-if-youve-been-part = Vezi dacă ai fost implicat(ă) într-o breșă de date.
 get-ongoing-breach-monitoring = Monitorizează în continuu breșele de date pentru mai multe adrese de e-mail.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Află
@@ -362,7 +362,7 @@ breach-overview-title = Prezentare generală
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview-new = Pe { $breachDate }, { $breachTitle } a suferit o încălcare a securității datelor. Odată ce încălcarea a fost descoperită și verificată, aceasta a fost adăugată în baza noastră de date în data de { $addedDate }.
+breach-overview-new = Pe { $breachDate }, { $breachTitle } a suferit o breșă de date. Odată breșa descoperită și verificată, a fost adăugată în baza noastră de date la data de { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Preferințe { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
@@ -389,7 +389,7 @@ verify-the-link = Verifică linkul trimis către { $userEmail } ca să îl adaug
 ## an additional email to Firefox Monitor.
 
 email-verified = Adresă de e-mail verificată cu succes!
-email-added-to-subscription = Îți vom trimite o alertă dacă { $email } apare într-o încălcare a securității datelor.
+email-added-to-subscription = Îți vom trimite o alertă dacă { $email } apare într-o breșă de date.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
 email-verified-view-dashboard = Pentru a vedea și a gestiona toate adresele de e-mail pe care le-ai înscris pentru monitorizarea breșelor de date, { $nestedSignInLink }.
@@ -411,7 +411,7 @@ manage-all-emails = Gestionează toate adresele de e-mail din { $preferencesLink
 breach-alert-notifications = Notificări de alerte despre breșe de date
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
-breach-added-label = Încălcare adăugată:
+breach-added-label = Breșă de date adăugată:
 how-hackers-work-desc = Protejează-ți parolele de infractorii cibernetici, din moment ce acestea sunt cele mai importante pentru ei.
 what-to-do-after-breach-desc = Închide-ți conturile pentru ca informațiile tale să nu cadă în mâini necurate.
 create-strong-passwords-desc = Creează parole puternice, sigure și greu de ghicit.
@@ -421,23 +421,23 @@ take-further-steps-desc = Află cum să reduci riscurile unui furt de identitate
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Modificări salvate!
 # Section headline
-rec-section-headline = Ce să faci pentru această încălcare a securității datelor
+rec-section-headline = Ce să faci pentru această breșă de date
 rec-section-subhead = Îți recomandăm să efectuezi următorii pași pentru a-ți păstra informațiile personale în siguranță și pentru a-ți proteja identitatea digitală.
 # Section headline
 rec-section-headline-no-pw = Ce să faci pentru a-ți proteja informațiile personale
-rec-section-subhead-no-pw = Deși parolele nu au fost expuse în această încălcare a securității datelor, încă mai sunt măsuri pe care le poți lua pentru a-ți proteja mai bine informațiile personale.
+rec-section-subhead-no-pw = Deși nu au fost expuse parole în această breșă de date, mai sunt câteva măsuri pe care le poți lua pentru a-ți proteja mai bine informațiile personale.
 # Button
 see-additional-recs = Vezi recomandările suplimentare
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
-resolve-top-notification = { $affectedEmail } a apărut în această încălcare a securității datelor. <a>Ce să faci mai departe</a>
+resolve-top-notification = { $affectedEmail } a apărut în această breșă de date. <a>Ce să faci mai departe</a>
 resolve-top-notification-plural =
     { $numAffectedEmails ->
-        [one] { $numAffectedEmails } dintre adresele tale de e-mail a apărut în această încălcare a securității datelor. <a>Ce să faci mai departe</a>
-        [few] { $numAffectedEmails } dintre adresele tale de e-mail au apărut în această încălcare a securității datelor. <a>Ce să faci mai departe</a>
-       *[other] { $numAffectedEmails } dintre adresele tale de e-mail au apărut în această încălcare a securității datelor. <a>Ce să faci mai departe</a>
+        [one] { $numAffectedEmails } dintre adresele tale de e-mail a apărut în această breșă de date. <a>Ce să faci mai departe</a>
+        [few] { $numAffectedEmails } dintre adresele tale de e-mail au apărut în această breșă de date. <a>Ce să faci mai departe</a>
+       *[other] { $numAffectedEmails } dintre adresele tale de e-mail au apărut în această breșă de date. <a>Ce să faci mai departe</a>
     }
 
 ##
@@ -451,7 +451,7 @@ marking-this-body =
 mark-as-resolve-button = Marchează ca rezolvată
 marked-as-resolved-label = Marcată ca rezolvată
 undo-button = Anulează
-confirmation-1-subhead = Bun! Tocmai ai rezolvat prima ta încălcare a securității datelor.
+confirmation-1-subhead = Bun! Tocmai ai rezolvat prima breșă de date.
 confirmation-1-body = Menține ritmul. Verifică tabloul de bord și vezi dacă mai ai ceva de făcut.
 confirmation-2-subhead = Luați de-aici, hackerilor!
 confirmation-2-body = Faci pași importanți spre protejarea conturilor tale online.
@@ -459,14 +459,14 @@ confirmation-3-subhead = Încă una. Bine lucrat!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Parola nouă este unică, puternică și greu de ghicit? <a>Află</a>
-generic-confirmation-subhead = Această încălcare a fost marcată ca rezolvată
+generic-confirmation-subhead = Breșa de date a fost marcată ca rezolvată
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
         [one] Pentru a vedea breșa rămasă, mergi în tabloul de bord.
         [few] Pentru a vedea toate breșele rămase, mergi în tabloul de bord.
        *[other] Pentru a vedea toate breșele rămase, mergi în tabloul de bord.
     }
-return-to-breach-details-link = Revino la detaliile privind încălcarea
+return-to-breach-details-link = Revenire la detaliile breșei de date
 go-to-dashboard-link = Mergi la tabloul de bord
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
@@ -508,7 +508,7 @@ progress-complete-message =
 
 ##
 
-resolve-this-breach-link = Rezolvă această încălcare
+resolve-this-breach-link = Rezolvă breșa de date
 # This string appears in resolved breach cards and is followed by 
 # the date the user marked the breach as resolved.
 marked-resolved = Marcate ca rezolvate:
@@ -538,7 +538,7 @@ fpn-promo-headline = Maschează-ți locația față de site-uri web și elemente
 promo-fpn-body = { -brand-fpn } decartează site-urile web și colectorii de date care îți creează profilul cu reclame, mascându-ți adresa IP reală.
 promo-fpn-cta = Descarcă { -brand-fpn }
 monitor-promo-headline = Află despre breșe noi de date
-monitor-promo-body = Primești notificări data viitoare când informațiile tale cu caracter personal sunt expuse într-o încălcare cunoscută.
+monitor-promo-body = Primești notificări data viitoare când informațiile tale cu caracter personal sunt expuse într-o breșă cunoscută de date.
 ecosystem-promo-headline = Îți protejezi viața online cu produse care pun confidențialitatea pe primul loc
 ecosystem-promo-body = Toate produsele { -brand-name } onorează promisiunea noastră privind datele cu caracter personal: Luăm mai puțin. Le păstrăm în siguranță. Fără secrete.
 promo-ecosystem-cta = Vezi toate produsele
