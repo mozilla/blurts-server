@@ -261,24 +261,24 @@ new-breaches-found =
     }
 sign-up-headline-1 = Primește alerte curente cu un { -brand-fxa }.
 account-not-required = Browserul { -brand-name } nu este necesar pentru un { -brand-fxa }. Poți primi informații despre serviciile { -brand-Mozilla }.
-was-your-info-exposed = Ți-au fost expuse informațiile în încălcarea securității datelor de pe { $breachName }?
-find-out-if = Află dacă datele tale au fost expuse în această încălcare a securității datelor.
-fb-not-comp = Această adresă de e-mail nu apare în încălcarea securității datelor de pe { $breachName }.
+was-your-info-exposed = Ți-au fost expuse informațiile în breșa de date de pe { $breachName }?
+find-out-if = Află dacă datele tale au fost expuse în această breșă de date.
+fb-not-comp = Această adresă de e-mail nu apare în breșa de date de pe { $breachName }.
 other-breaches-found =
     { $breachCount ->
         [one] Însă a apărut { $breachCount } altă breșă.
         [few] Însă a apărut în alte { $breachCount } breșe.
        *[other] Însă a apărut în alte { $breachCount } de breșe.
     }
-fb-comp-only = Această adresă de e-mail a apărut în încălcarea securității datelor de pe { $breachName }.
+fb-comp-only = Această adresă de e-mail a apărut în breșa de date de pe { $breachName }.
 fb-comp-and-others =
     { $breachCount ->
         [one] Adresa de e-mail a apărut în { $breachCount } breșă cunoscută de date, inclusiv { $breachName }.
         [few] Adresa de e-mail a apărut în { $breachCount } breșe cunoscute de date, inclusiv { $breachName }.
        *[other] Adresa de e-mail a apărut în { $breachCount } de breșe cunoscute de date, inclusiv { $breachName }.
     }
-no-other-breaches-found = Nicio altă încălcare identificată la căutarea de bază.
-no-results-blurb = Ne pare rău, acea încălcare a securității datelor nu este în baza noastră de date.
+no-other-breaches-found = Nicio altă breșă de date identificată la căutarea de bază.
+no-results-blurb = Ne pare rău, breșa nu este în baza noastră de date.
 all-breaches-headline = Toate breșele de date din { -product-name }
 search-breaches = Caută breșe de date
 # "Appears in-page as: Showing: All Breaches"
@@ -334,7 +334,7 @@ results-for = Rezultate pentru: { $userEmail }
 other-monitored-emails = Alte adrese de e-mail monitorizate
 email-verification-required = Este necesară verificarea adresei de e-mail
 fxa-primary-email = Adresă de e-mail { -brand-fxa } - primară
-what-is-a-website-breach = Ce este o încălcare a securității datelor în cazul unui site web?
+what-is-a-website-breach = Ce sunt breșele de date de pe site-uri web?
 website-breach-blurb = Breșele de date în cazul site-urilor web apar când infractorii cibernetici fură, copiază sau expun date cu caracter personal din conturi online. Sunt rezultatul identificării de către hackeri a unui punct slab în securitatea unui site web. Breșele pot însemna și divulgarea accidentală a datelor aferente conturilor.
 security-tips-headline = Ponturi de securitate pentru a te proteja de hackeri
 steps-to-protect = Pași de luat pentru a-ți proteja identitatea online
