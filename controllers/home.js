@@ -44,6 +44,10 @@ async function home(req, res) {
   const utmOverrides = getUTMContents(req);
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
+  if (req.params && req.params.breach) {
+    req.query.breach = req.params.breach;
+  }
+
   if (req.query.breach) {
 
     featuredBreach = _getFeaturedBreach(req.app.locals.breaches, req.query.breach);
