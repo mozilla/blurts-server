@@ -48,6 +48,8 @@ rec-cc =
 rec-ip-subhead = Usa un servicio que oculte tu IP
 # Link title
 rec-ip-us-cta = Kunche'e { -brand-fpn }
+# Recommendation subhead
+rec-moz-vpn-cta = Kunche'e { -brand-mozilla-vpn }
 # Link title
 rec-gen-2-cta = Tu'un tsa tu'un see
 # Link title
