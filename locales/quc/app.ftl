@@ -305,6 +305,8 @@ website-breach-blurb = Kxajtaj jun retztaqan rech juq'attzij rech uk'olib'al web
 security-tips-headline = Taq no'jib'al rech chajinem chech achajixik chi kiwach e b'ank'ax
 steps-to-protect = Taq ucholajil rech uchajixik le awinaqilal pa nimk'atz
 take-further-steps = Chab'ana' we taq ucholajil rech uchajixik le awinaqilal
+alert-about-new-breaches = Chana'b'aj chi wech chi rij k'ak' taq retztaqan
+see-if-youve-been-part = Chawila' we chi'l at ariqom jun retztaqan rech juq'attzij pa nimk'atz
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
