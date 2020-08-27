@@ -114,7 +114,6 @@ function getBentoStrings(req, res) {
     fxMobile: req.fluentFormat("fx-mobile"),
     fxMonitor: req.fluentFormat("fx-monitor"),
     pocket: req.fluentFormat("pocket"),
-    fxSend: req.fluentFormat("fx-send"),
     mobileCloseBentoButtonTitle: req.fluentFormat("mobile-close-bento-button-title"),
   };
   return res.json(localizedBentoStrings);
