@@ -61,6 +61,12 @@ rec-ip-non-us =
     Alamat Protokol Internet (alamat PI) Anda menunjukkan dengan tepat lokasi Anda 
     dan penyedia layanan internet. Dengan jaringan privat maya (JPM), Anda dapat menyembunyikan lokasi 
     dan menutupi alamat PI Anda.
+# Recommendation subhead
+rec-moz-vpn-cta = Coba { -brand-mozilla-vpn }
+rec-moz-vpn =
+    Alamat Protokol Internet (alamat IP) Anda dapat mengungkapkan lokasi dan penyedia layanan internet Anda. Sebuah layanan seperti
+    { -brand-fpn } menyembunyikan alamat IP dan lokasi Anda untuk { -brand-name } dan layanan seperti { -brand-mozilla-vpn } menyembunyikan
+    Alamat IP dan lokasi untuk seluruh perangkat Anda.
 rec-hist-pw-subhead = Hindari penggunaan kembali kata sandi
 # Link title
 rec-hist-pw-cta-fx = Lihat info masuk di { -brand-name }
