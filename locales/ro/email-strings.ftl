@@ -30,7 +30,7 @@ email-verify-blurb = Verifică-ți adresa de e-mail pentru a o adăuga în { -pr
 # Email headline
 email-found-breaches-hl = Iată rezumatul tău cu breșe de date vechi
 # Email headline
-email-breach-summary-for-email = Rezumatul breșelor de date pentru { $userEmail }
+email-breach-summary-for-email = Rezumatul încălcărilor securității datelor pentru { $userEmail }
 # Email headline
 email-no-breaches-hl = { $userEmail } a apărut în 0 breșe cunoscute de date
 # Email headline

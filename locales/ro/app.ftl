@@ -55,7 +55,7 @@ signup-modal-sent = Trimis!
 sign-up = Înregistrare
 form-signup-error = Trebuie să fie o adresă de e-mail validă
 # breach-date = the calendar date a particular data theft occurred. 
-breach-date = Data breșei de date:
+breach-date = Data încălcării securității datelor:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Conturi compromise:
 # compromised-data = the kind of user data exposed to hackers in data breach.
@@ -65,9 +65,9 @@ unsub-blurb = Adresa ta de e-mail va fi eliminată din lista { -product-name-now
 unsub-button = Dezabonează-te
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Informațiile despre breșa de date sunt furnizate de { $hibp-link }
-share-twitter = Majoritatea persoanelor au aproximativ 100 de conturi online. A fost expus vreunul dintre conturile tale într-o breșă de date? Află.
-share-facebook-headline = Află dacă ai fost implicat(ă) într-o breșă de date
-share-facebook-blurb = Au fost expuse conturile tale online într-o breșă de date?
+share-twitter = Majoritatea persoanelor au aproximativ 100 de conturi online. A fost expus vreunul dintre conturile tale într-o încălcare a securității datelor? Află.
+share-facebook-headline = Află dacă ai fost implicat(ă) într-o încălcare a securității datelor
+share-facebook-blurb = Au fost expuse conturile tale online într-o încălcare a securității datelor?
 og-site-description = Află dacă ai fost implicat(ă) într-o breșă de date folosind { -product-name }. Înregistrează-te pentru alerte despre breșe viitoare de date și ponturi pentru a-ți păstra conturile în siguranță.
 show-all = Afișează toate
 fxa-scan-another-email = Vrei să verifici altă adresă de e-mail?
@@ -122,14 +122,14 @@ take-control = Reia controlul asupra datelor tale personale.
 cant-stop-hackers = Nu poți opri hackerii să facă ceea ce fac, dar poți evita obiceiurile proaste care le ușurează munca.
 read-more-tips = Citește mai multe ponturi de securitate
 how-hackers-work = Înțelege modul de operare al hackerilor
-monitor-your-online-accounts = Înscrie-te pentru monitorizarea breșelor de date cu un { -brand-fxa }.
+monitor-your-online-accounts = Înscrie-te pentru monitorizarea încălcărilor securității datelor cu un { -brand-fxa }.
 stay-alert = Fii la curent cu ultimele breșe de date
 if-your-info = Dacă informațiile tale apar într-o breșă nouă de date, îți vom trimite o alertă.
 search-all-emails = Verifică-ți toate adresele de e-mail pentru breșe de date și primește alerte despre noi amenințări.
 monitor-several-emails = Monitorizează mai multe adrese de e-mail
 take-action = Ia măsuri pentru a-ți proteja conturile
 keep-your-data-safe = Află ce trebuie să faci ca să îți păstrezi datele în siguranță împotriva infractorilor cibernetici.
-website-breach = Breșă de date pe un site web
+website-breach = Încălcare în cazul unui site web
 sensitive-breach = Breșă de date sensibile pe un site web
 data-aggregator-breach = Breșă de date pe agregatoare de date
 unverified-breach = Breșă neverificată
@@ -165,10 +165,8 @@ fxm-warns-you =
 # How Firefox Monitor works
 how-fxm-works = Cum funcționează { -product-name }
 how-fxm-1-headline = Efectuează o căutare de bază
-how-fxm-1-blurb =
-    Caută-ți adresa de e-mail în breșe de date publice încă 
-    din anul 2007. Această căutare de bază va accesa majoritatea breșelor de date, dar nu și pe cele care conțin date sensibile cu caracter personal.
-how-fxm-2-headline = Înregistrează-te pentru monitorizarea breșelor de date
+how-fxm-1-blurb = Caută-ți adresa de e-mail în încălcările publice ale securității datelor încă din anul 2007. Această căutare de bază va accesa majoritatea încălcărilor securității datelor, dar nu și pe cele care conțin informații cu caracter personal sensibile.
+how-fxm-2-headline = Înregistrează-te pentru monitorizarea încălcării securității datelor
 how-fxm-2-blurb =
     Creează un { -brand-fxa } ca să îți monitorizezi adresa de e-mail pentru breșe de date curente. 
     Odată ce ți-ai verificat adresa de e-mail, vei primi și un raport complet cu breșele anterioare, 
@@ -204,7 +202,7 @@ five-myths = 5 mituri despre managerii de parole
 create-a-fxa = Creează un { -brand-fxa } pentru un raport complet despre breșe de date și alerte.
 feat-security-tips = Ponturi de securitate pentru protejarea conturilor
 feat-sensitive = Căutare avansată în breșe cunoscute de date sensibile
-feat-enroll-multiple = Înregistrează mai multe adrese de e-mail pentru monitorizarea breșelor de date
+feat-enroll-multiple = Înregistrează mai multe adrese de e-mail pentru monitorizarea încălcărilor securității datelor
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
@@ -229,7 +227,7 @@ send-verification = Trimite linkul de verificare
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-breach-summary = Rezumatul breșei de date
+breach-summary = Rezumatul încălcării securității datelor
 show-breaches-for-this-email = Afișează toate breșele de date pentru acest e-mail.
 link-change-primary = Schimbă adresa de e-mail primară
 remove-fxm = Elimină { -product-name }
@@ -392,7 +390,7 @@ email-verified = Adresă de e-mail verificată cu succes!
 email-added-to-subscription = Îți vom trimite o alertă dacă { $email } apare într-o breșă de date.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
-email-verified-view-dashboard = Pentru a vedea și a gestiona toate adresele de e-mail pe care le-ai înscris pentru monitorizarea breșelor de date, { $nestedSignInLink }.
+email-verified-view-dashboard = Pentru a vedea și a gestiona toate adresele de e-mail pe care le-ai înscris pentru monitorizarea încălcării securității datelor, { $nestedSignInLink }
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = autentificare
 
@@ -466,7 +464,7 @@ generic-confirmation-message =
         [few] Pentru a vedea toate breșele rămase, mergi în tabloul de bord.
        *[other] Pentru a vedea toate breșele rămase, mergi în tabloul de bord.
     }
-return-to-breach-details-link = Revenire la detaliile breșei de date
+return-to-breach-details-link = Revino la detaliile privind încălcarea
 go-to-dashboard-link = Mergi la tabloul de bord
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
@@ -495,7 +493,7 @@ progress-complete = Toate breșele cunoscute de date au fost marcate ca rezolvat
 ## Please do not modify or remove "<span>" and "</span>".
 
 progress-message-1 =
-    <span>Ai început bine!</span> Vezi și restul breșelor de date ca să afli 
+    <span>Ai început bine!</span> Vezi și restul încălcărilor ca să afli 
     ce măsuri să iei.
 progress-message-2 =
     <span>Ține-o tot așa!</span> Schimbările mici, cum ar fi actualizarea parolelor, au un impact mare în 
@@ -522,9 +520,9 @@ unresolved-passwords-exposed =
     }
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
-        [one] breșă cunoscută de date marcată ca rezolvată
-        [few] breșe cunoscute de date marcate ca rezolvate
-       *[other] de breșe cunoscute de date marcate ca rezolvate
+        [one] încălcare cunoscută a securității datelor marcată ca rezolvată
+        [few] încălcări cunoscute ale securității datelor marcate ca rezolvate
+       *[other] de încălcări cunoscute ale securității datelor marcate ca rezolvate
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nou
