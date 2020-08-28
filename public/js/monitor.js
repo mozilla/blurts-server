@@ -312,6 +312,18 @@ function resizeDashboardMargin() {
   }
 }
 
+function checkIfTier1(preferredLanguage) {
+  const tier1Languages = ["de", "en", "fr"];
+
+  tier1Languages.forEach( lang => {
+    if (preferredLanguage.includes(lang) ) {
+      return true;
+    }
+  });
+
+  return false;
+}
+
 ( async() => {
   document.addEventListener("touchstart", function(){}, true);
   const win = window;
@@ -434,12 +446,15 @@ function resizeDashboardMargin() {
   const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
   dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));
 
-  const acceptedLanguages = navigator.languages;
-  const acceptedFirstLanguageIsEnglish = acceptedLanguages[0].includes("en");
+  const preferredLanguages = navigator.languages;
+  const preferredFirstLanguageIsTier1 = checkIfTier1(preferredLanguages[0]);
 
-  if (!acceptedFirstLanguageIsEnglish && document.getElementById("fxaCheckbox")) {
-    document.getElementById("fxaCheckbox").style.display = "none";
+  if (!preferredFirstLanguageIsTier1) {
     return;
+  }
+
+  if (document.getElementById("fxaCheckbox")) {
+    document.getElementById("fxaCheckbox").style.display = "block";
   }
 
   const createFxaCheckbox = document.getElementById("createFxaCheckbox");

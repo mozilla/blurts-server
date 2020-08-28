@@ -279,6 +279,10 @@ input[type="radio"]:focus ~ .checkmark {
   padding-top: 2px;
 }
 
+.create-fxa-checkbox {
+  display: none;
+}
+
 .create-fxa-wrapper {
   display: flex;
   align-items: center;
