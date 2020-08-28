@@ -130,38 +130,35 @@ monitor-several-emails = Monitorizează mai multe adrese de e-mail
 take-action = Ia măsuri pentru a-ți proteja conturile
 keep-your-data-safe = Află ce trebuie să faci ca să îți păstrezi datele în siguranță împotriva infractorilor cibernetici.
 website-breach = Încălcare în cazul unui site web
-sensitive-breach = Încălcare în cazul unui site web sensibil
-data-aggregator-breach = Încălcare în cazul agregatoarelor de date
+sensitive-breach = Încălcare a securității datelor în cazul unui site web sensibil
+data-aggregator-breach = Încălcare a securității datelor în cazul unui agregator de date
 unverified-breach = Încălcare a securității datelor neverificată
 spam-list-breach = Încălcare a securității datelor în cazul listelor de spam
 website-breach-plural = Breșe de site-uri
 sensitive-breach-plural = Breșe de date sensibile
-data-aggregator-breach-plural = Breșe de agregatoare de date
+data-aggregator-breach-plural = Încălcari ale securității datelor în cazul agregatoarelor de date
 unverified-breach-plural = Breșe neverificate
 spam-list-breach-plural = Breșe de liste de spam
 what-data = Ce date au fost compromise:
 sensitive-sites = Cum tratează { -product-name } site-urile cu date sensibile?
 sensitive-sites-copy =
     { -product-name } divulgă conturile asociate cu aceste 
-    tipuri de breșe de date numai după ce a fost verificată o adresă de e-mail. Înseamnă că ești 
-    singura persoană care poate vedea dacă informațiile tale au fost implicate în această breșă de date 
-    (dacă nu cumva are și altcineva acces la contul tău de e-mail).
-delayed-reporting-headline = De ce a durat atât de mult să se raporteze această breșă de date?
-delayed-reporting-copy =
-    Uneori poate dura luni sau ani ca datele de autentificare expuse 
-    într-o breșă de date să apară pe webul întunecat. Breșele sunt adăugate în baza noastră de date 
-    imediat ce sunt descoperite și verificate.
+    tipuri de încălcări ale securității datelor numai după ce a fost verificată o adresă de e-mail. Acest lucru înseamnă că ești 
+    singura persoană care poate vedea dacă informațiile tale au fost implicate în această încălcare a securității datelor 
+    (dacă nu cumva și altcineva are acces la contul tău de e-mail).
+delayed-reporting-headline = De ce a durat atât de mult să se raporteze această încălcare a securității datelor?
+delayed-reporting-copy = Uneori, poate dura luni sau ani ca datele de autentificare expuse într-o încălcare a securității datelor să apară pe webul întunecat. Încălcările sunt adăugate în baza noastră de date imediat ce sunt descoperite și verificate.
 about-fxm-headline = Despre { -product-name }
 about-fxm-blurb =
     { -product-name } te avertizează în cazul în care conturile tale online au fost implicate într-o 
-    breșă de date. Afli dacă ai fost implicat(ă) într-o breșă de date, primești alerte 
-    despre breșe noi de date și iei măsuri pentru protejarea conturilor tale online. { -product-name } 
+    încălcare a securității datelor. Află dacă ai fost implicat(ă) într-o încălcare a securității datelor, primește alerte 
+    despre noile încălcări ale securității datelor și ia măsuri pentru protejarea conturilor tale online. { -product-name } 
     este furnizat de { -brand-Mozilla }.
 fxm-warns-you =
     { -product-name } te avertizează dacă adresa ta de e-mail a fost expusă 
-    într-o breșă de date online. Vezi dacă ți-au fost expuse informațiile, află cum 
+    într-o încălcare a securității datelor online. Vezi dacă ți-au fost expuse informațiile, află cum 
     să îți protejezi mai bine conturile online și primește alerte în cazul în care adresa 
-    ta de e-mail apare în breșe noi.
+    ta de e-mail apare într-o încălcare nouă.
 # How Firefox Monitor works
 how-fxm-works = Cum funcționează { -product-name }
 how-fxm-1-headline = Efectuează o căutare de bază
@@ -172,17 +169,11 @@ how-fxm-2-blurb =
     Odată ce ți-ai verificat adresa de e-mail, vei primi și un raport complet cu breșele anterioare, 
     inclusiv breșele de date sensibile.
 how-fxm-3-headline = Primește notificări în browser
-how-fxm-3-blurb =
-    Dacă folosești { -brand-name }, vei primi o notificare când intri pe un 
-    site care a suferit o breșă de date. Afli imediat dacă ai fost implicat(ă) în breșa respectivă 
-    și ce măsuri poți lua.
-wtd-after-website = Ce să faci după o breșă de date pe un site web:
-wtd-after-data-agg = Ce să faci după o breșă de date pe agregatoare de date:
+how-fxm-3-blurb = Dacă folosești { -brand-name }, vei primi o notificare când intri pe un site care a fost suferit o încălcare a securității datelor. Afli imediat dacă ai fost implicat(ă) în încălcarea respectivă și ce măsuri poți lua.
+wtd-after-website = Ce să faci după o încălcare a securității datelor în cazul unui site web:
+wtd-after-data-agg = Ce să faci după o încălcare a securității datelor în cazul unui agregator de date:
 what-is-data-agg = Ce sunt agregatoarele de date?
-what-is-data-agg-blurb =
-    Agregatoarele de date, denumite și brokeri de date, colectează informații din înregistrări 
-    publice și cumpără date de la alte companii. Ele compilează aceste date și le vând altor companii 
-    în scopuri de marketing. Probabilitatea ca victimele acestor breșe de date să devină victime ale fraudelor financiare este mică, dar hackerii pot folosi datele pentru a le uzurpa identitatea sau pentru profilare.
+what-is-data-agg-blurb = Agregatoarele de date, denumite și brokeri de date, colectează informații din înregistrări publice și cumpără date de la alte companii. Ele compilează aceste date și le vând altor companii în scopuri de marketing. Probabilitatea ca victimele acestor încălcări a securității datelor să devină victime ale fraudelor financiare este mică, dar hackerii pot folosi datele pentru a le uzurpa identitatea sau pentru profilare.
 protect-your-privacy = Protejează-ți confidențialitatea online
 no-pw-to-change = Spre deosebire de breșele de date de pe site-uri web, nu trebuie schimbată nicio parolă.
 avoid-personal-info = Evită folosirea de informații personale în parole
@@ -207,16 +198,16 @@ feat-enroll-multiple = Înregistrează mai multe adrese de e-mail pentru monitor
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
     { $breachCount ->
-        [one] Apare în { $breachCount } breșă cunoscută de date.
-        [few] Apare în { $breachCount } breșe cunoscute de date.
-       *[other] Apare în { $breachCount } de breșe cunoscute de date.
+        [one] Apare într-o încălcare cunoscută a securității datelor.
+        [few] Apare în { $breachCount } încălcări cunoscute ale securității datelor.
+       *[other] Apare în { $breachCount } de încălcări cunoscute ale securității datelor.
     }
 check-for-breaches = Verifică în breșe de date
 find-out-what-hackers-know = Află ce știu hackerii despre tine. Află cum să fii cu un pas înaintea lor.
-get-email-alerts = Rămâi în siguranță: Primește alerte pe e-mail când informațiile tale apar într-o breșă cunoscută de date
+get-email-alerts = Rămâi în siguranță: Primește alerte pe e-mail când informațiile tale apar într-o încălcare cunoscută a securității datelor
 search-for-your-email = Caută-ți adresa de e-mail în breșe de date cunoscute datând încă din 2007.
 back-to-top = Înapoi sus
-comm-opt-0 = Trimite-mi un mesaj pe e-mail dacă adresele mele de e-mail de mai jos apar într-o breșă de date.
+comm-opt-0 = Trimite-mi un mesaj pe e-mail dacă adresele mele de e-mail de mai jos apar într-o încălcare a securității datelor.
 comm-opt-1 = Trimite toate alertele de breșe de date la { $primaryEmail }.
 stop-monitoring-this = Nu mai monitoriza acest e-mail.
 resend-verification = Retrimite  mesajul e-mail de verificare
