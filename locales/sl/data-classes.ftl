@@ -89,6 +89,7 @@ photos = fotografije
 physical-addresses = fizični naslovi
 physical-attributes = fizični atributi
 pins = kode PIN
+places-of-birth = kraji rojstva
 political-donations = politične donacije
 political-views = politični nazori
 private-messages = zasebna sporočila
