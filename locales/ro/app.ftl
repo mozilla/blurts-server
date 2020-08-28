@@ -129,7 +129,7 @@ search-all-emails = Verifică-ți toate adresele de e-mail pentru breșe de date
 monitor-several-emails = Monitorizează mai multe adrese de e-mail
 take-action = Ia măsuri pentru a-ți proteja conturile
 keep-your-data-safe = Află ce trebuie să faci ca să îți păstrezi datele în siguranță împotriva infractorilor cibernetici.
-website-breach = Încălcare în cazul unui site web
+website-breach = Încălcare a securității datelor în cazul unui site web
 sensitive-breach = Încălcare a securității datelor în cazul unui site web sensibil
 data-aggregator-breach = Încălcare a securității datelor în cazul unui agregator de date
 unverified-breach = Încălcare a securității datelor neverificată
@@ -226,13 +226,13 @@ remove-fxm-blurb = Dezactivează alertele { -product-name }. { -brand-fxa } tău
 # Button title
 manage-email-addresses = Gestionează adresele de e-mail
 # Link title
-latest-breach-link = Vezi dacă ai fost implicat(ă) în această breșă de date
+latest-breach-link = Vezi dacă ai fost implicat(ă) în această încălcare a securității datelor
 welcome-back = Bine ai revenit, { $userName }!
 welcome-user = Bine ai venit, { $userName }!
-breach-alert-subject = { -product-name } ți-a găsit adresa de e-mail într-o breșă nouă de date
-your-info-was-discovered-headline = Informațiile tale au fost găsite într-o breșă nouă de date.
-your-info-was-discovered-blurb = Te-ai înscris ca să primești alerte { -product-name } dacă adresa ta de e-mail apare într-o breșă de date. Iată ce știm despre această breșă.
-what-to-do-after-breach = Ce să faci după o breșă de date
+breach-alert-subject = { -product-name } ți-a găsit adresa de e-mail într-o nouă încălcare a securității datelor
+your-info-was-discovered-headline = Informațiile tale au fost găsite într-o nouă încălcare.
+your-info-was-discovered-blurb = Te-ai înscris ca să primești alerte { -product-name } atunci când adresa ta de e-mail apare într-o încălcare a securității datelor. Iată ce știm despre această încălcare.
+what-to-do-after-breach = Ce să faci după o încălcare a securității datelor
 ba-next-step-1 = Schimbă parola cu una puternică și unică.
 ba-next-step-blurb-1 = Parolele puternice folosesc o combinație de litere mari și  mici, caractere speciale și cifre. Nu conțin informații personale, cum ar fi date de naștere, adrese sau nume ale membrilor de familie.
 ba-next-step-2 = Nu mai folosi deloc parola expusă.
@@ -400,7 +400,7 @@ manage-all-emails = Gestionează toate adresele de e-mail din { $preferencesLink
 breach-alert-notifications = Notificări de alerte despre breșe de date
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
-breach-added-label = Breșă de date adăugată:
+breach-added-label = Încălcare adăugată:
 how-hackers-work-desc = Protejează-ți parolele de infractorii cibernetici, din moment ce acestea sunt cele mai importante pentru ei.
 what-to-do-after-breach-desc = Închide-ți conturile pentru ca informațiile tale să nu cadă în mâini necurate.
 create-strong-passwords-desc = Creează parole puternice, sigure și greu de ghicit.
@@ -410,7 +410,7 @@ take-further-steps-desc = Află cum să reduci riscurile unui furt de identitate
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Modificări salvate!
 # Section headline
-rec-section-headline = Ce să faci pentru această breșă de date
+rec-section-headline = Ce să faci pentru această încălcare a securității datelor
 rec-section-subhead = Îți recomandăm să efectuezi următorii pași pentru a-ți păstra informațiile personale în siguranță și pentru a-ți proteja identitatea digitală.
 # Section headline
 rec-section-headline-no-pw = Ce să faci pentru a-ți proteja informațiile personale
