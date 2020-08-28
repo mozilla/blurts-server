@@ -68,7 +68,7 @@ hibp-attribution = Informațiile despre breșa de date sunt furnizate de { $hibp
 share-twitter = Majoritatea persoanelor au aproximativ 100 de conturi online. A fost expus vreunul dintre conturile tale într-o încălcare a securității datelor? Află.
 share-facebook-headline = Află dacă ai fost implicat(ă) într-o încălcare a securității datelor
 share-facebook-blurb = Au fost expuse conturile tale online într-o încălcare a securității datelor?
-og-site-description = Află dacă ai fost implicat(ă) într-o breșă de date folosind { -product-name }. Înregistrează-te pentru alerte despre breșe viitoare de date și ponturi pentru a-ți păstra conturile în siguranță.
+og-site-description = Află dacă ai fost implicat(ă) într-o încălcare a securității datelor cu { -product-name }. Înregistrează-te pentru alerte despre viitoare încălcări ale securității datelor și obține ponturi pentru a-ți păstra conturile în siguranță.
 show-all = Afișează toate
 fxa-scan-another-email = Vrei să verifici altă adresă de e-mail?
 sign-in = Autentificare
@@ -82,7 +82,7 @@ fxa-pwt-summary-2 =
 fxa-pwt-summary-4 =
     Managerii de parole, cum ar fi 1Password, LastPass, Dashlane și Bitwarden îți stochează
     parolele și le completează pe site-uri pentru tine. Te vor ajuta chiar să creezi parole puternice.
-fxa-pwt-summary-6 = Breșele de securitate a datelor sunt tot mai multe. Dacă datele tale cu caracter personal apar într-o breșă nouă de date, { -product-name } îți va trimite o alertă — ca să iei măsuri și să îți protejezi conturile.
+fxa-pwt-summary-6 = Încălcările securității datelor sunt tot mai multe. Dacă datele tale cu caracter personal apar într-o nouă încălcare a securității datelor, { -product-name } îți va trimite o alertă — ca să iei măsuri și să îți protejezi conturile.
 fxa-what-to-do-blurb-1 =
     Dacă nu te poți autentifica, contactează site-ul web și întreabă-i cum să îți actualizezi datele de identificare.
     Vezi un cont necunoscut? Este posibil ca datele tale să fi fost vândute
@@ -115,25 +115,25 @@ fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Deschide navigarea { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
-latest-breach = ULTIMA BREȘĂ DE DATE ADĂUGATĂ
+latest-breach = ULTIMA ÎNCĂLCARE A SECURITĂȚII DATELOR ADĂUGATĂ
 # Link title
-more-about-this-breach = Mai multe despre această breșă de date
+more-about-this-breach = Mai multe despre această încălcare
 take-control = Reia controlul asupra datelor tale personale.
 cant-stop-hackers = Nu poți opri hackerii să facă ceea ce fac, dar poți evita obiceiurile proaste care le ușurează munca.
 read-more-tips = Citește mai multe ponturi de securitate
 how-hackers-work = Înțelege modul de operare al hackerilor
 monitor-your-online-accounts = Înscrie-te pentru monitorizarea încălcărilor securității datelor cu un { -brand-fxa }.
 stay-alert = Fii la curent cu ultimele breșe de date
-if-your-info = Dacă informațiile tale apar într-o breșă nouă de date, îți vom trimite o alertă.
+if-your-info = Dacă informațiile tale apar într-o nouă încălcare a securității datelor, îți vom trimite o alertă.
 search-all-emails = Verifică-ți toate adresele de e-mail pentru breșe de date și primește alerte despre noi amenințări.
 monitor-several-emails = Monitorizează mai multe adrese de e-mail
 take-action = Ia măsuri pentru a-ți proteja conturile
 keep-your-data-safe = Află ce trebuie să faci ca să îți păstrezi datele în siguranță împotriva infractorilor cibernetici.
 website-breach = Încălcare în cazul unui site web
-sensitive-breach = Breșă de date sensibile pe un site web
-data-aggregator-breach = Breșă de date pe agregatoare de date
-unverified-breach = Breșă neverificată
-spam-list-breach = Breșă de date pe liste de spam
+sensitive-breach = Încălcare în cazul unui site web sensibil
+data-aggregator-breach = Încălcare în cazul agregatoarelor de date
+unverified-breach = Încălcare a securității datelor neverificată
+spam-list-breach = Încălcare a securității datelor în cazul listelor de spam
 website-breach-plural = Breșe de site-uri
 sensitive-breach-plural = Breșe de date sensibile
 data-aggregator-breach-plural = Breșe de agregatoare de date
