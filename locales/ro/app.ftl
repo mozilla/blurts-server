@@ -132,9 +132,9 @@ data-aggregator-breach = Încălcare în cazul unui agregator de date
 unverified-breach = Încălcare neverificată
 spam-list-breach = Încălcare în cazul unei liste de spam
 website-breach-plural = Încălcări în cazul site-urilor web
-sensitive-breach-plural = Breșe de date sensibile
-data-aggregator-breach-plural = Încălcari ale securității datelor în cazul agregatoarelor de date
-unverified-breach-plural = Breșe neverificate
+sensitive-breach-plural = Încălcări ale securității datelor sensibile
+data-aggregator-breach-plural = Încălcari în cazul agregatoarelor de date
+unverified-breach-plural = Încălcări neverificate
 spam-list-breach-plural = Încălcări în cazul listelor de spam
 what-data = Ce date au fost compromise:
 sensitive-sites = Cum tratează { -product-name } site-urile cu date sensibile?
@@ -161,10 +161,7 @@ how-fxm-works = Cum funcționează { -product-name }
 how-fxm-1-headline = Efectuează o căutare de bază
 how-fxm-1-blurb = Caută-ți adresa de e-mail în încălcările publice ale securității datelor încă din anul 2007. Această căutare de bază va accesa majoritatea încălcărilor securității datelor, dar nu și pe cele care conțin informații cu caracter personal sensibile.
 how-fxm-2-headline = Înregistrează-te pentru monitorizarea încălcării securității datelor
-how-fxm-2-blurb =
-    Creează un { -brand-fxa } ca să îți monitorizezi adresa de e-mail pentru breșe de date curente. 
-    Odată ce ți-ai verificat adresa de e-mail, vei primi și un raport complet cu breșele anterioare, 
-    inclusiv breșele de date sensibile.
+how-fxm-2-blurb = Creează un { -brand-fxa } ca să îți monitorizezi adresa de e-mail pentru încălcările curente ale securității datelor. Odată ce ți-ai verificat adresa de e-mail, vei primi și un raport complet cu încălcările anterioare, inclusiv încălcările securității datelor sensibile.
 how-fxm-3-headline = Primește notificări în browser
 how-fxm-3-blurb = Dacă folosești { -brand-name }, vei primi o notificare când intri pe un site care a fost suferit o încălcare a securității datelor. Afli imediat dacă ai fost implicat(ă) în încălcarea respectivă și ce măsuri poți lua.
 wtd-after-website = Ce să faci după o încălcare a securității datelor în cazul unui site web:
@@ -172,7 +169,7 @@ wtd-after-data-agg = Ce să faci după o încălcare a securității datelor în
 what-is-data-agg = Ce sunt agregatoarele de date?
 what-is-data-agg-blurb = Agregatoarele de date, denumite și brokeri de date, colectează informații din înregistrări publice și cumpără date de la alte companii. Ele compilează aceste date și le vând altor companii în scopuri de marketing. Probabilitatea ca victimele acestor încălcări a securității datelor să devină victime ale fraudelor financiare este mică, dar hackerii pot folosi datele pentru a le uzurpa identitatea sau pentru profilare.
 protect-your-privacy = Protejează-ți confidențialitatea online
-no-pw-to-change = Spre deosebire de breșele de date de pe site-uri web, nu trebuie schimbată nicio parolă.
+no-pw-to-change = Spre deosebire de încălcarea securității datelor în cazul unui site web, nu trebuie schimbată nicio parolă.
 avoid-personal-info = Evită folosirea de informații personale în parole
 avoid-personal-info-blurb = Datele de naștere, adresele și numele membrilor familiei sunt ușor de găsit online. Nu introdu asemenea cuvinte în parole.
 
@@ -187,9 +184,9 @@ create-strong-passwords = Cum să creezi parole puternice
 stop-reusing-pw = Nu refolosi parolele
 create-unique-pw = Creează parole unice și salvează-le într-un loc sigur, cum ar fi un manager de parole.
 five-myths = 5 mituri despre managerii de parole
-create-a-fxa = Creează un { -brand-fxa } pentru un raport complet despre breșe de date și alerte.
+create-a-fxa = Creează un { -brand-fxa } pentru un raport complet despre încălcările securității datelor și pentru a primi alerte.
 feat-security-tips = Ponturi de securitate pentru protejarea conturilor
-feat-sensitive = Căutare avansată în breșe cunoscute de date sensibile
+feat-sensitive = Căutare avansată în încălcările cunoscute ale securității datelor sensibile
 feat-enroll-multiple = Înregistrează mai multe adrese de e-mail pentru monitorizarea încălcărilor securității datelor
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
@@ -199,13 +196,13 @@ appears-in-x-breaches =
         [few] Apare în { $breachCount } încălcări cunoscute ale securității datelor.
        *[other] Apare în { $breachCount } de încălcări cunoscute ale securității datelor.
     }
-check-for-breaches = Verifică în breșe de date
+check-for-breaches = Caută încălcări ale securității datelor
 find-out-what-hackers-know = Află ce știu hackerii despre tine. Află cum să fii cu un pas înaintea lor.
 get-email-alerts = Rămâi în siguranță: Primește alerte pe e-mail când informațiile tale apar într-o încălcare cunoscută a securității datelor
-search-for-your-email = Caută-ți adresa de e-mail în breșe de date cunoscute datând încă din 2007.
+search-for-your-email = Caută-ți adresa de e-mail în încălcările publice ale securității datelor datând încă din 2007.
 back-to-top = Înapoi sus
 comm-opt-0 = Trimite-mi un mesaj pe e-mail dacă adresele mele de e-mail de mai jos apar într-o încălcare a securității datelor.
-comm-opt-1 = Trimite toate alertele de breșe de date la { $primaryEmail }.
+comm-opt-1 = Trimite toate alertele privind încălcările securității datelor la { $primaryEmail }.
 stop-monitoring-this = Nu mai monitoriza acest e-mail.
 resend-verification = Retrimite  mesajul e-mail de verificare
 add-new-email = Adaugă o adresă nouă de e-mail
@@ -216,7 +213,7 @@ send-verification = Trimite linkul de verificare
 # alerts for all of their monitored email addresses to a single 
 # email address.
 breach-summary = Rezumatul încălcării securității datelor
-show-breaches-for-this-email = Afișează toate breșele de date pentru acest e-mail.
+show-breaches-for-this-email = Afișează toate încălcările securității datelor pentru acest e-mail.
 link-change-primary = Schimbă adresa de e-mail primară
 remove-fxm = Elimină { -product-name }
 remove-fxm-blurb = Dezactivează alertele { -product-name }. { -brand-fxa } tău va rămâne activ și poți primi alte comunicări legate de cont.
@@ -265,8 +262,8 @@ fb-comp-and-others =
     }
 no-other-breaches-found = Nicio altă încălcare identificată la căutarea de bază.
 no-results-blurb = Ne pare rău, breșa nu este în baza noastră de date.
-all-breaches-headline = Toate breșele de date din { -product-name }
-search-breaches = Caută breșe de date
+all-breaches-headline = Toate încălcările securității datelor din { -product-name }
+search-breaches = Caută încălcări ale securității datelor
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Afișate:
 
@@ -333,9 +330,9 @@ find-out = Află
 new-unsub-error = Va trebui să te dezabonezi prin intermediul unuia dintre mesajele primite pe e-mail de la { -product-name },
 other-known-breaches-found =
     { $breachCount ->
-        [one] Însă a apărut în { $breachCount } altă breșă cunoscută.
-        [few] Însă a apărut în alte { $breachCount } breșe cunoscute.
-       *[other] Însă a apărut în alte { $breachCount } de breșe cunoscute.
+        [one] Însă a apărut într-o altă încălcare cunoscută.
+        [few] Însă a apărut în alte { $breachCount } încălcări cunoscute.
+       *[other] Însă a apărut în alte { $breachCount } de încălcări cunoscute.
     }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
@@ -348,7 +345,7 @@ breach-overview-title = Prezentare generală
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview-new = Pe { $breachDate }, { $breachTitle } a suferit o breșă de date. Odată breșa descoperită și verificată, a fost adăugată în baza noastră de date la data de { $addedDate }.
+breach-overview-new = Pe { $breachDate }, { $breachTitle } a suferit o încălcare a securității datelor. Odată ce încălcarea a fost descoperită și verificată, aceasta a fost adăugată în baza noastră de date la data de { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = Preferințe { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
@@ -375,7 +372,7 @@ verify-the-link = Verifică linkul trimis către { $userEmail } ca să îl adaug
 ## an additional email to Firefox Monitor.
 
 email-verified = Adresă de e-mail verificată cu succes!
-email-added-to-subscription = Îți vom trimite o alertă dacă { $email } apare într-o breșă de date.
+email-added-to-subscription = Îți vom trimite o alertă dacă { $email } apare într-o încălcare a securității datelor.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
 email-verified-view-dashboard = Pentru a vedea și a gestiona toate adresele de e-mail pe care le-ai înscris pentru monitorizarea încălcării securității datelor, { $nestedSignInLink }
@@ -494,7 +491,7 @@ progress-complete-message =
 
 ##
 
-resolve-this-breach-link = Rezolvă breșa de date
+resolve-this-breach-link = Rezolvă această încălcare
 # This string appears in resolved breach cards and is followed by 
 # the date the user marked the breach as resolved.
 marked-resolved = Marcate ca rezolvate:

@@ -53,8 +53,8 @@ fxm-warns-you-found-breaches =
     { -product-name } te avertizează cu privire la breșele de date în care sunt implicate datele tale cu caracter personal.
     De asemenea, te-ai înscris pentru alerte dacă adresa ta de e-mail apare în breșe noi.
 email-breach-alert-blurb =
-    { -product-name } te avertizează cu privire la breșele de date în care sunt implicate datele tale cu caracter personal.
-    Tocmai am primit detalii despre o breșă de date suferită de altă companie.
+    { -product-name } te avertizează cu privire la încălcările securității datelor în care sunt implicate informațiile tale cu caracter personal.
+    Tocmai am primit detalii despre o încălcare a securității datelor suferită de o altă companie.
 # List headline
 faq-list-headline = Întrebări adresate frecvent
 # Link Title
