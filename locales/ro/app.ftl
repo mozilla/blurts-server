@@ -239,19 +239,19 @@ ba-next-step-2 = Nu mai folosi deloc parola expusă.
 ba-next-step-blurb-2 = Infractorii cibernetici îți pot găsi parola pe dark web și o pot folosi pentru a intra în celelalte conturi pe care le deții. Cea mai bună cale de a-ți proteja conturile este să folosești parole unice pentru fiecare în parte.
 ba-next-step-3 = Obține ajutor pentru a crea parole mai bune și pentru a le păstra în siguranță.
 ba-next-step-blurb-3 = Folosește un manager de parole pentru a crea parole puternice și unice. Managerii de parole stochează toate datele de autentificare în siguranță, astfel încât să le poți accesa pe toate dispozitivele.
-faq1 = Nu recunosc compania sau site-ul web. De ce apar în această breșă de date?
-faq2 = De ce a durat atât de mult să fiu informat(ă) despre această breșă de date?
+faq1 = Nu recunosc această companie sau site web. De ce apar în această încălcare?
+faq2 = De ce a durat atât de mult să fiu informat(ă) despre această încălcare a securității datelor?
 faq3 = Cum știu că acesta este un mesaj legitim de e-mail de la { -product-name }?
 new-breaches-found =
     { $breachCount ->
-        [one] { $breachCount } NOUĂ BREȘĂ DE DATE DESCOPERITĂ
-        [few] { $breachCount } NOI BREȘE DE DATE DESCOPERITE
-       *[other] { $breachCount } DE NOI BREȘE DE DATE DESCOPERITE
+        [one] { $breachCount } NOUĂ ÎNCĂLCARE DESCOPERITĂ A SECURITĂȚII DATELOR
+        [few] { $breachCount } NOI ÎNCĂLCĂRI DESCOPERITE ALE SECURITĂȚII DATELOR
+       *[other] { $breachCount } DE NOI ÎNCĂLCĂRI DESCOPERITE ALE SECURITĂȚII DATELOR
     }
 sign-up-headline-1 = Primește alerte curente cu un { -brand-fxa }.
 account-not-required = Browserul { -brand-name } nu este necesar pentru un { -brand-fxa }. Poți primi informații despre serviciile { -brand-Mozilla }.
 was-your-info-exposed = Ți-au fost expuse informațiile în breșa de date de pe { $breachName }?
-find-out-if = Află dacă datele tale au fost expuse în această breșă de date.
+find-out-if = Află dacă datele tale au fost expuse în această încălcare a securității datelor.
 fb-not-comp = Această adresă de e-mail nu apare în breșa de date de pe { $breachName }.
 other-breaches-found =
     { $breachCount ->
