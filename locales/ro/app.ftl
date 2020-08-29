@@ -26,7 +26,7 @@ error-could-not-add-email = Adresa de e-mail nu a putut fi adăugată în baza d
 error-not-subscribed = Această adresă de e-mail nu este abonată la { -product-name }.
 error-hibp-throttled = Prea multe conexiuni la { -brand-HIBP }.
 error-hibp-connect = Eroare de conectare la { -brand-HIBP }.
-error-hibp-load-breaches = Breșele de date nu au putut fi încărcate.
+error-hibp-load-breaches = Încălcările securității datelor nu au putut fi încărcate.
 error-must-be-signed-in = Trebuie să fii autentificat(ă) la { -brand-fxa }.
 error-to-finish-verifying = Pentru a finaliza verificarea acestui e-mail pentru { -product-name }, trebuie să fii autentificat în e-mailul primar al contului tău.
 home-title = { -product-name }
@@ -61,7 +61,7 @@ compromised-accounts = Conturi compromise:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Date compromise:
 unsub-headline = Dezabonează-te de la { -product-name-nowrap }
-unsub-blurb = Adresa ta de e-mail va fi eliminată din lista { -product-name-nowrap } și nu vei mai primi alerte când sunt anunțate breșe noi de date.
+unsub-blurb = Adresa ta de e-mail va fi eliminată din lista { -product-name-nowrap } și nu vei mai primi alerte când sunt anunțate încălcări noi ale securității datelor.
 unsub-button = Dezabonează-te
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Informațiile despre breșa de date sunt furnizate de { $hibp-link }
@@ -89,10 +89,7 @@ fxa-what-to-do-blurb-1 =
     sau redistribuite. Ar putea fi și un cont de care ai uitat sau o companie care și-a schimbat denumirea.
 fxa-what-to-do-subhead-2 = Nu mai folosi parola expusă și schimb-o peste tot pe unde ai folosit-o.
 fxa-wtd-blurb-2 = Hackerii pot încerca să reutilizeze parola și adresa ta de e-mail ca să intre în alte conturi. Creează o parolă diferită și unică pentru fiecare cont, în special pentru contul bancar, e-mail și alte site-uri web pe care salvezi date cu caracter personal.
-fxa-what-to-do-blurb-3 =
-    Cele mai multe breșe de date expun numai adrese de e-mail și parole, dar unele includ și date financiare sensibile. 
-    Dacă ți-au fost expuse conturi bancare sau numere de carduri de credit, alertează banca asupra unei posibilități de fraudă. 
-    Urmărește extrasele de cont pentru plăți pe care nu le recunoști.
+fxa-what-to-do-blurb-3 = Cele mai multe încălcări ale securității datelor expun numai adrese de e-mail și parole, dar unele includ și date financiare sensibile. Dacă ți-au fost expuse conturi bancare sau numerele cardurilor de credit, alertează banca asupra unei posibilități de fraudă. Urmărește extrasele de cont pentru plăți pe care nu le recunoști.
 fxa-what-to-do-subhead-4 = Obține ajutor pentru a ține minte toate parolele și pentru a le păstra în siguranță.
 fxa-what-to-do-blurb-4 =
     Managerii de parole, cum ar fi 1Password, LastPass, Dashlane și Bitwarden îți stochează
@@ -108,7 +105,7 @@ preferences = Preferințe
 # Link title
 home = Acasă
 # Link title
-breaches = Breșe de date
+breaches = Încălcări ale securității datelor
 # Link title
 security-tips = Ponturi de securitate
 fxa-account = { -brand-fxa }
@@ -123,18 +120,18 @@ cant-stop-hackers = Nu poți opri hackerii să facă ceea ce fac, dar poți evit
 read-more-tips = Citește mai multe ponturi de securitate
 how-hackers-work = Înțelege modul de operare al hackerilor
 monitor-your-online-accounts = Înscrie-te pentru monitorizarea încălcărilor securității datelor cu un { -brand-fxa }.
-stay-alert = Fii la curent cu ultimele breșe de date
+stay-alert = Fii la curent cu ultimele încălcări ale securității datelor
 if-your-info = Dacă informațiile tale apar într-o nouă încălcare a securității datelor, îți vom trimite o alertă.
-search-all-emails = Verifică-ți toate adresele de e-mail pentru breșe de date și primește alerte despre noi amenințări.
+search-all-emails = Verifică-ți toate adresele de e-mail pentru încălcări ale securității datelor și primește alerte despre noi amenințări.
 monitor-several-emails = Monitorizează mai multe adrese de e-mail
 take-action = Ia măsuri pentru a-ți proteja conturile
 keep-your-data-safe = Află ce trebuie să faci ca să îți păstrezi datele în siguranță împotriva infractorilor cibernetici.
-website-breach = Încălcare a securității datelor în cazul unui site web
+website-breach = Încălcare în cazul unui site web
 sensitive-breach = Încălcare a securității datelor în cazul unui site web sensibil
 data-aggregator-breach = Încălcare a securității datelor în cazul unui agregator de date
 unverified-breach = Încălcare a securității datelor neverificată
 spam-list-breach = Încălcare a securității datelor în cazul listelor de spam
-website-breach-plural = Breșe de site-uri
+website-breach-plural = Încălcări în cazul site-urilor web
 sensitive-breach-plural = Breșe de date sensibile
 data-aggregator-breach-plural = Încălcari ale securității datelor în cazul agregatoarelor de date
 unverified-breach-plural = Breșe neverificate
@@ -255,18 +252,18 @@ find-out-if = Află dacă datele tale au fost expuse în această încălcare a 
 fb-not-comp = Această adresă de e-mail nu apare în breșa de date de pe { $breachName }.
 other-breaches-found =
     { $breachCount ->
-        [one] Însă a apărut { $breachCount } altă breșă.
-        [few] Însă a apărut în alte { $breachCount } breșe.
-       *[other] Însă a apărut în alte { $breachCount } de breșe.
+        [one] Însă a apărut într-o altă încălcare.
+        [few] Însă a apărut în alte { $breachCount } încălcări.
+       *[other] Însă a apărut în alte { $breachCount } de încălcări.
     }
 fb-comp-only = Această adresă de e-mail a apărut în breșa de date de pe { $breachName }.
 fb-comp-and-others =
     { $breachCount ->
-        [one] Adresa de e-mail a apărut în { $breachCount } breșă cunoscută de date, inclusiv { $breachName }.
-        [few] Adresa de e-mail a apărut în { $breachCount } breșe cunoscute de date, inclusiv { $breachName }.
-       *[other] Adresa de e-mail a apărut în { $breachCount } de breșe cunoscute de date, inclusiv { $breachName }.
+        [one] Această adresă de e-mail a apărut în { $breachCount } încălcare cunoscută a securității datelor, inclusiv { $breachName }.
+        [few] Această adresă de e-mail a apărut în { $breachCount } încălcări cunoscute ale securității datelor, inclusiv { $breachName }.
+       *[other] Această adresă de e-mail a apărut în { $breachCount } de încălcări cunoscute ale securității datelor, inclusiv { $breachName }.
     }
-no-other-breaches-found = Nicio altă breșă de date identificată la căutarea de bază.
+no-other-breaches-found = Nicio altă încălcare identificată la căutarea de bază.
 no-results-blurb = Ne pare rău, breșa nu este în baza noastră de date.
 all-breaches-headline = Toate breșele de date din { -product-name }
 search-breaches = Caută breșe de date
@@ -304,17 +301,17 @@ passwords-exposed =
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
     { $breaches ->
-        [one] breșă cunoscută de date ți-a expus informațiile
-        [few] breșe cunoscute de date ți-au expus informațiile
-       *[other] de breșe cunoscute de date ți-au expus informațiile
+        [one] încălcare cunoscută a securității datelor ți-a expus informațiile
+        [few] încălcări cunoscute ale securității datelor ți-au expus informațiile
+       *[other] de încălcări cunoscute ale securității datelor ți-au expus informațiile
     }
 # Button
 see-additional-breaches = Vezi și alte breșe de date
 scan-results-known-breaches =
     { $breachCount ->
-        [one] Adresa de e-mail a apărut în 1 breșă cunoscută de date.
-        [few] Adresa de e-mail a apărut în { $breachCount } breșe cunoscute de date.
-       *[other] Adresa de e-mail a apărut în { $breachCount } de breșe cunoscute de date.
+        [one] Aceeastă adresă de e-mail a apărut într-o încălcare cunoscută a securității datelor.
+        [few] Aceeastă adresă de e-mail a apărut în { $breachCount } încălcări cunoscute ale securității datelor.
+       *[other] Aceeastă adresă de e-mail a apărut în { $breachCount } de încălcări cunoscute ale securității datelor.
     }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
@@ -323,13 +320,13 @@ results-for = Rezultate pentru: { $userEmail }
 other-monitored-emails = Alte adrese de e-mail monitorizate
 email-verification-required = Este necesară verificarea adresei de e-mail
 fxa-primary-email = Adresă de e-mail { -brand-fxa } - primară
-what-is-a-website-breach = Ce sunt breșele de date de pe site-uri web?
+what-is-a-website-breach = Ce este o încălcare a securității datelor în cazul unui site web?
 website-breach-blurb = Breșele de date în cazul site-urilor web apar când infractorii cibernetici fură, copiază sau expun date cu caracter personal din conturi online. Sunt rezultatul identificării de către hackeri a unui punct slab în securitatea unui site web. Breșele pot însemna și divulgarea accidentală a datelor aferente conturilor.
 security-tips-headline = Ponturi de securitate pentru a te proteja de hackeri
 steps-to-protect = Pași de luat pentru a-ți proteja identitatea online
 take-further-steps = Ia măsuri suplimentare pentru a-ți proteja identitatea
 alert-about-new-breaches = Trimite-mi alerte despre breșe noi de date
-see-if-youve-been-part = Vezi dacă ai fost implicat(ă) într-o breșă de date.
+see-if-youve-been-part = Vezi dacă ai fost implicat(ă) într-o încălcare a securității datelor.
 get-ongoing-breach-monitoring = Monitorizează în continuu breșele de date pentru mai multe adrese de e-mail.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Află
