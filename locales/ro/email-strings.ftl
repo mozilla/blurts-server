@@ -26,7 +26,7 @@ verify-email-cta = Verifică e-mailul
 see-all-breaches = Vezi toate breșele de date
 # Headline of verification email
 email-link-expires = Acest link expiră în 24 de ore
-email-verify-blurb = Verifică-ți adresa de e-mail pentru a o adăuga în { -product-name } și ca să te abonezi la alerte despre breșe de date.
+email-verify-blurb = Verifică-ți adresa de e-mail pentru a o adăuga în { -product-name } și abonează-te la alertele privind încălcările securității datelor.
 # Email headline
 email-found-breaches-hl = Iată rezumatul tău cu breșe de date vechi
 # Email headline

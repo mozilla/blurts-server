@@ -285,9 +285,9 @@ email-addresses-being-monitored =
 # your localization, because it would result in the number showing twice.
 passwords-exposed =
     { $passwords ->
-        [one] parolă expusă în toate breșele de date
-        [few] parole expuse în toate breșele de date
-       *[other] de parole expuse în toate breșele de date
+        [one] parolă expusă în toate încălcările securității datelor
+        [few] parole expuse în toate încălcările securității datelor
+       *[other] de parole expuse în toate încălcările securității datelor
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
@@ -318,9 +318,9 @@ website-breach-blurb = O încălcare a securității datelor în cazul unui site
 security-tips-headline = Ponturi de securitate pentru a te proteja de hackeri
 steps-to-protect = Pași de luat pentru a-ți proteja identitatea online
 take-further-steps = Ia măsuri suplimentare pentru a-ți proteja identitatea
-alert-about-new-breaches = Trimite-mi alerte despre breșe noi de date
+alert-about-new-breaches = Trimite-mi alerte despre noi încălcări ale securității datelor
 see-if-youve-been-part = Vezi dacă ai fost implicat(ă) într-o încălcare online a securității datelor.
-get-ongoing-breach-monitoring = Monitorizează în continuu breșele de date pentru mai multe adrese de e-mail.
+get-ongoing-breach-monitoring = Obține monitorizare continuă a încălcărilor securității datelor pentru mai multe adrese de e-mail.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Află
 new-unsub-error = Va trebui să te dezabonezi prin intermediul unuia dintre mesajele primite pe e-mail de la { -product-name },
@@ -352,7 +352,7 @@ signed-in-as = Autentificat ca: { $userEmail }
 filter-by = Filtrează pe categorii:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Meniu
-to-affected-email = Trimite alerte despre breșele de date la adresele de e-mail afectate
+to-affected-email = Trimite alerte privind încălcările securității datelor către adresele de e-mail afectate
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
 join-firefox = Există o modalitate de a-ți proteja viața privată. Folosește { -brand-name }.
 # Link title
@@ -387,7 +387,7 @@ manage-all-emails = Gestionează toate adresele de e-mail din { $preferencesLink
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-breach-alert-notifications = Notificări de alerte despre breșe de date
+breach-alert-notifications = Notificări pentru alertele privind încălcările securității datelor
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Încălcare adăugată:
