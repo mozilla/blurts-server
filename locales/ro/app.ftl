@@ -151,11 +151,7 @@ about-fxm-blurb =
     încălcare a securității datelor. Află dacă ai fost implicat(ă) într-o încălcare a securității datelor, primește alerte 
     despre noile încălcări ale securității datelor și ia măsuri pentru protejarea conturilor tale online. { -product-name } 
     este furnizat de { -brand-Mozilla }.
-fxm-warns-you =
-    { -product-name } te avertizează dacă adresa ta de e-mail a fost expusă 
-    într-o încălcare a securității datelor online. Vezi dacă ți-au fost expuse informațiile, află cum 
-    să îți protejezi mai bine conturile online și primește alerte în cazul în care adresa 
-    ta de e-mail apare într-o încălcare nouă.
+fxm-warns-you = { -product-name } te avertizează dacă adresa ta de e-mail a fost expusă într-o încălcare online a securității datelor. Vezi dacă ți-au fost expuse informațiile, află cum să îți protejezi mai bine conturile online și primește alerte în cazul în care adresa ta de e-mail apare într-o încălcare nouă.
 # How Firefox Monitor works
 how-fxm-works = Cum funcționează { -product-name }
 how-fxm-1-headline = Efectuează o căutare de bază
@@ -303,7 +299,7 @@ known-data-breaches-exposed =
        *[other] de încălcări cunoscute ale securității datelor ți-au expus informațiile
     }
 # Button
-see-additional-breaches = Vezi și alte breșe de date
+see-additional-breaches = Vezi și alte încălcări ale securității datelor
 scan-results-known-breaches =
     { $breachCount ->
         [one] Aceeastă adresă de e-mail a apărut într-o încălcare cunoscută a securității datelor.
@@ -323,7 +319,7 @@ security-tips-headline = Ponturi de securitate pentru a te proteja de hackeri
 steps-to-protect = Pași de luat pentru a-ți proteja identitatea online
 take-further-steps = Ia măsuri suplimentare pentru a-ți proteja identitatea
 alert-about-new-breaches = Trimite-mi alerte despre breșe noi de date
-see-if-youve-been-part = Vezi dacă ai fost implicat(ă) într-o încălcare a securității datelor.
+see-if-youve-been-part = Vezi dacă ai fost implicat(ă) într-o încălcare online a securității datelor.
 get-ongoing-breach-monitoring = Monitorizează în continuu breșele de date pentru mai multe adrese de e-mail.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Află
@@ -408,19 +404,19 @@ rec-section-headline = Ce să faci pentru această încălcare a securității d
 rec-section-subhead = Îți recomandăm să efectuezi următorii pași pentru a-ți păstra informațiile personale în siguranță și pentru a-ți proteja identitatea digitală.
 # Section headline
 rec-section-headline-no-pw = Ce să faci pentru a-ți proteja informațiile personale
-rec-section-subhead-no-pw = Deși nu au fost expuse parole în această breșă de date, mai sunt câteva măsuri pe care le poți lua pentru a-ți proteja mai bine informațiile personale.
+rec-section-subhead-no-pw = Deși nu au fost expuse parole în această încălcare a securității datelor, mai sunt câteva măsuri pe care le poți lua pentru a-ți proteja mai bine informațiile personale.
 # Button
 see-additional-recs = Vezi recomandările suplimentare
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
-resolve-top-notification = { $affectedEmail } a apărut în această breșă de date. <a>Ce să faci mai departe</a>
+resolve-top-notification = { $affectedEmail } a apărut în această încălcare a securității datelor. <a>Ce să faci mai departe</a>
 resolve-top-notification-plural =
     { $numAffectedEmails ->
-        [one] { $numAffectedEmails } dintre adresele tale de e-mail a apărut în această breșă de date. <a>Ce să faci mai departe</a>
-        [few] { $numAffectedEmails } dintre adresele tale de e-mail au apărut în această breșă de date. <a>Ce să faci mai departe</a>
-       *[other] { $numAffectedEmails } dintre adresele tale de e-mail au apărut în această breșă de date. <a>Ce să faci mai departe</a>
+        [one] { $numAffectedEmails } dintre adresele tale de e-mail a apărut în această încălcare a securității datelor. <a>Ce să faci mai departe</a>
+        [few] { $numAffectedEmails } dintre adresele tale de e-mail au apărut în această încălcare a securității datelor. <a>Ce să faci mai departe</a>
+       *[other] { $numAffectedEmails } dintre adresele tale de e-mail au apărut în această încălcare a securității datelor. <a>Ce să faci mai departe</a>
     }
 
 ##
@@ -434,7 +430,7 @@ marking-this-body =
 mark-as-resolve-button = Marchează ca rezolvată
 marked-as-resolved-label = Marcată ca rezolvată
 undo-button = Anulează
-confirmation-1-subhead = Bun! Tocmai ai rezolvat prima breșă de date.
+confirmation-1-subhead = Bun! Tocmai ai rezolvat prima ta încălcare a securității datelor.
 confirmation-1-body = Menține ritmul. Verifică tabloul de bord și vezi dacă mai ai ceva de făcut.
 confirmation-2-subhead = Luați de-aici, hackerilor!
 confirmation-2-body = Faci pași importanți spre protejarea conturilor tale online.
@@ -468,9 +464,9 @@ progress-intro-message =
     datelor tale personale, poți marca breșele ca rezolvate.
 progress-status =
     { $numTotalBreaches ->
-        [one] { $numResolvedBreaches } din { $numTotalBreaches } breșă marcată ca rezolvată
-        [few] { $numResolvedBreaches } din { $numTotalBreaches } breșe marcate ca rezolvate
-       *[other] { $numResolvedBreaches } din { $numTotalBreaches } de breșe marcate ca rezolvate
+        [one] { $numResolvedBreaches } din { $numTotalBreaches } încălcare marcată ca rezolvată
+        [few] { $numResolvedBreaches } din { $numTotalBreaches } încălcări marcate ca rezolvate
+       *[other] { $numResolvedBreaches } din { $numTotalBreaches } de încălcări marcate ca rezolvate
     }
 progress-complete = Toate breșele cunoscute de date au fost marcate ca rezolvate
 
@@ -521,7 +517,7 @@ fpn-promo-headline = Maschează-ți locația față de site-uri web și elemente
 promo-fpn-body = { -brand-fpn } decartează site-urile web și colectorii de date care îți creează profilul cu reclame, mascându-ți adresa IP reală.
 promo-fpn-cta = Descarcă { -brand-fpn }
 monitor-promo-headline = Află despre breșe noi de date
-monitor-promo-body = Primești notificări data viitoare când informațiile tale cu caracter personal sunt expuse într-o breșă cunoscută de date.
+monitor-promo-body = Primești notificări data viitoare când informațiile tale cu caracter personal sunt expuse într-o încălcare cunoscută.
 ecosystem-promo-headline = Îți protejezi viața online cu produse care pun confidențialitatea pe primul loc
 ecosystem-promo-body = Toate produsele { -brand-name } onorează promisiunea noastră privind datele cu caracter personal: Luăm mai puțin. Le păstrăm în siguranță. Fără secrete.
 promo-ecosystem-cta = Vezi toate produsele

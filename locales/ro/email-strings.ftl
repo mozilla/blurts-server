@@ -34,7 +34,7 @@ email-breach-summary-for-email = Rezumatul încălcărilor securității datelor
 # Email headline
 email-no-breaches-hl = { $userEmail } a apărut în 0 breșe cunoscute de date
 # Email headline
-email-alert-hl = { $userEmail } a apărut într-o breșă nouă de date
+email-alert-hl = { $userEmail } a apărut într-o nouă încălcare a securității datelor
 # Subject line of email
 email-subject-found-breaches = { -product-name } ți-a găsit informațiile în aceste breșe de date
 # Subject line of email
@@ -47,8 +47,8 @@ email-sensitive-disclaimer =
     Datorită caracterului sensibil al acestei breșe de date, adresele de e-mail implicate nu pot fi dezvăluite public. 
     Primești această alertă deoarece ești posesorul confirmat al acestei adrese de e-mail.
 fxm-warns-you-no-breaches =
-    { -product-name } te avertizează cu privire la breșele de date în care sunt implicate datele tale cu caracter personal.
-    Până acum nu au fost găsite breșe. Îți vom trimite o alertă dacă adresa ta de e-mail apare într-o breșă nouă.
+    { -product-name } te avertizează cu privire la încălcările securității datelor în care sunt implicate informațiile tale cu caracter personal.
+    Până în prezent nu au fost găsite încălcări. Îți vom trimite o alertă dacă adresa ta de e-mail apare într-o nouă încălcare.
 fxm-warns-you-found-breaches =
     { -product-name } te avertizează cu privire la breșele de date în care sunt implicate datele tale cu caracter personal.
     De asemenea, te-ai înscris pentru alerte dacă adresa ta de e-mail apare în breșe noi.
@@ -58,11 +58,11 @@ email-breach-alert-blurb =
 # List headline
 faq-list-headline = Întrebări adresate frecvent
 # Link Title
-faq-v2-1 = Nu recunosc una (unul) dintre aceste companii sau site-uri web. De ce apar în această breșă?
+faq-v2-1 = Nu recunosc una (unul) dintre aceste companii sau site-uri web. De ce apar în această încălcare?
 # Link Title
-faq-v2-2 = Trebuie să fac ceva dacă o breșă de date a avut loc cu ani în urmă sau dacă este implicat un cont vechi?
+faq-v2-2 = Trebuie să fac ceva dacă o încălcare a securității datelor a avut loc cu ani în urmă sau dacă este implicat un cont vechi?
 # Link Title
-faq-v2-3 = Tocmai am aflat că am fost implicat(ă) într-o breșă de date. Ce să fac în continuare?
+faq-v2-3 = Tocmai am aflat că am fost implicat(ă) într-o încălcare a securității datelor. Ce să fac în continuare?
 # Link Title
 faq-v2-4 = Cum tratează { -product-name } site-urile sensibile?
 # This string contains nested markup that becomes a link to Firefox Monitor
