@@ -64,7 +64,7 @@ unsub-headline = Dezabonează-te de la { -product-name-nowrap }
 unsub-blurb = Adresa ta de e-mail va fi eliminată din lista { -product-name-nowrap } și nu vei mai primi alerte când sunt anunțate încălcări noi ale securității datelor.
 unsub-button = Dezabonează-te
 # Breach data provided by Have I Been Pwned.
-hibp-attribution = Informațiile despre breșa de date sunt furnizate de { $hibp-link }
+hibp-attribution = Datele privind încălcările securității datelor sunt furnizate de { $hibp-link }
 share-twitter = Majoritatea persoanelor au aproximativ 100 de conturi online. A fost expus vreunul dintre conturile tale într-o încălcare a securității datelor? Află.
 share-facebook-headline = Află dacă ai fost implicat(ă) într-o încălcare a securității datelor
 share-facebook-blurb = Au fost expuse conturile tale online într-o încălcare a securității datelor?
@@ -240,16 +240,16 @@ new-breaches-found =
     }
 sign-up-headline-1 = Primește alerte curente cu un { -brand-fxa }.
 account-not-required = Browserul { -brand-name } nu este necesar pentru un { -brand-fxa }. Poți primi informații despre serviciile { -brand-Mozilla }.
-was-your-info-exposed = Ți-au fost expuse informațiile în breșa de date de pe { $breachName }?
+was-your-info-exposed = Ți-au fost expuse informațiile în încălcarea securității datelor de pe { $breachName }?
 find-out-if = Află dacă datele tale au fost expuse în această încălcare a securității datelor.
-fb-not-comp = Această adresă de e-mail nu apare în breșa de date de pe { $breachName }.
+fb-not-comp = Această adresă de e-mail nu apare în încălcarea securității datelor de pe { $breachName }.
 other-breaches-found =
     { $breachCount ->
         [one] Însă a apărut într-o altă încălcare.
         [few] Însă a apărut în alte { $breachCount } încălcări.
        *[other] Însă a apărut în alte { $breachCount } de încălcări.
     }
-fb-comp-only = Această adresă de e-mail a apărut în breșa de date de pe { $breachName }.
+fb-comp-only = Această adresă de e-mail a apărut în încălcarea securității datelor de pe { $breachName }.
 fb-comp-and-others =
     { $breachCount ->
         [one] Această adresă de e-mail a apărut în { $breachCount } încălcare cunoscută a securității datelor, inclusiv { $breachName }.
@@ -257,7 +257,7 @@ fb-comp-and-others =
        *[other] Această adresă de e-mail a apărut în { $breachCount } de încălcări cunoscute ale securității datelor, inclusiv { $breachName }.
     }
 no-other-breaches-found = Nicio altă încălcare identificată la căutarea de bază.
-no-results-blurb = Ne pare rău, breșa nu este în baza noastră de date.
+no-results-blurb = Ne pare rău, acea încălcare a securității datelor nu este în baza noastră de date.
 all-breaches-headline = Toate încălcările securității datelor din { -product-name }
 search-breaches = Caută încălcări ale securității datelor
 # "Appears in-page as: Showing: All Breaches"
@@ -421,12 +421,12 @@ resolve-top-notification-plural =
 
 ##
 
-marking-this-subhead = Marchează breșa de date ca rezolvată
+marking-this-subhead = Marchează această încălcare a securității datelor ca rezolvată
 # This string contains nested markup that is later used to style the text inside of it.
 # Please do not modify or remove "<span>" and "</span>".
 marking-this-body =
-    <span>Odată ce ai luat măsurile posibile pentru gestionarea acestei breșe</span>, 
-    o poți marca drept rezolvată. Ai oricând acces la detalii în tabloul de bord.
+    <span>Odată ce ai luat măsurile posibile pentru gestionarea acestei încălcări a securității datelor</span>, 
+    o poți marca drept rezolvată. Poți accesa oricând detaliile despre încălcare în tabloul de bord.
 mark-as-resolve-button = Marchează ca rezolvată
 marked-as-resolved-label = Marcată ca rezolvată
 undo-button = Anulează
@@ -438,12 +438,12 @@ confirmation-3-subhead = Încă una. Bine lucrat!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Parola nouă este unică, puternică și greu de ghicit? <a>Află</a>
-generic-confirmation-subhead = Breșa de date a fost marcată ca rezolvată
+generic-confirmation-subhead = Această încălcare a fost marcată ca rezolvată
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
-        [one] Pentru a vedea breșa rămasă, mergi în tabloul de bord.
-        [few] Pentru a vedea toate breșele rămase, mergi în tabloul de bord.
-       *[other] Pentru a vedea toate breșele rămase, mergi în tabloul de bord.
+        [one] Pentru a vedea încălcarea rămasă, mergi în tabloul de bord.
+        [few] Pentru a vedea toate încălcările rămase, mergi în tabloul de bord.
+       *[other] Pentru a vedea toate încălcările rămase, mergi în tabloul de bord.
     }
 return-to-breach-details-link = Revino la detaliile privind încălcarea
 go-to-dashboard-link = Mergi la tabloul de bord
@@ -458,17 +458,15 @@ num-resolved =
         [few] { $numResolvedBreaches } rezolvate
        *[other] { $numResolvedBreaches } rezolvate
     }
-progress-intro-subhead = Nou în { -product-name }: Marchează breșele ca rezolvate
-progress-intro-message =
-    După ce ai examinat detaliile unei breșe de date și ai luat măsuri pentru protejarea 
-    datelor tale personale, poți marca breșele ca rezolvate.
+progress-intro-subhead = Nou în { -product-name }: Marchează încălcările ca rezolvate
+progress-intro-message = După ce ai examinat detaliile unei încălcări a securității datelor și ai luat măsuri pentru protejarea informațiilor tale personale, poți marca încălcările ca rezolvate.
 progress-status =
     { $numTotalBreaches ->
         [one] { $numResolvedBreaches } din { $numTotalBreaches } încălcare marcată ca rezolvată
         [few] { $numResolvedBreaches } din { $numTotalBreaches } încălcări marcate ca rezolvate
        *[other] { $numResolvedBreaches } din { $numTotalBreaches } de încălcări marcate ca rezolvate
     }
-progress-complete = Toate breșele cunoscute de date au fost marcate ca rezolvate
+progress-complete = Toate încălcările cunoscute ale securității datelor au fost marcate ca rezolvate
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
@@ -479,7 +477,7 @@ progress-message-1 =
 progress-message-2 =
     <span>Ține-o tot așa!</span> Schimbările mici, cum ar fi actualizarea parolelor, au un impact mare în 
     menținerea informațiilor personale în siguranță.
-progress-message-3 = <span>Bună treabă! Ai rezolvat câteva breșe.</span> Ține-o tot așa. Mai ai câteva.
+progress-message-3 = <span>Ai făcut treabă bună la rezolvarea acelor încălcări!</span> Ține-o tot așa. Mai ai câteva.
 progress-message-4 = <span>Aproape că ai terminat!</span> Te apropii de final.
 progress-complete-message =
     <span>Bună senzația, nu?</span> Dacă vrei să continui, acum este momentul să 
@@ -495,9 +493,9 @@ hide-resolved-button = Ascunde-le pe cele rezolvate
 show-resolved-button = Afișează-le pe cele rezolvate
 unresolved-passwords-exposed =
     { $numPasswords ->
-        [one] parolă expusă în breșe nerezolvate de date
-        [few] parole expuse în breșe nerezolvate de date
-       *[other] de parole expuse în în breșe nerezolvate de date
+        [one] parolă expusă în încălcări nerezolvate ale securității datelor
+        [few] parole expuse în încălcări nerezolvate ale securității datelor
+       *[other] de parole expuse în încălcări nerezolvate ale securității datelor
     }
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
@@ -516,7 +514,7 @@ promo-lockwise-cta = Descarcă { -brand-lockwise }
 fpn-promo-headline = Maschează-ți locația față de site-uri web și elemente de urmărire
 promo-fpn-body = { -brand-fpn } decartează site-urile web și colectorii de date care îți creează profilul cu reclame, mascându-ți adresa IP reală.
 promo-fpn-cta = Descarcă { -brand-fpn }
-monitor-promo-headline = Află despre breșe noi de date
+monitor-promo-headline = Află despre noile încălcări ale securității datelor
 monitor-promo-body = Primești notificări data viitoare când informațiile tale cu caracter personal sunt expuse într-o încălcare cunoscută.
 ecosystem-promo-headline = Îți protejezi viața online cu produse care pun confidențialitatea pe primul loc
 ecosystem-promo-body = Toate produsele { -brand-name } onorează promisiunea noastră privind datele cu caracter personal: Luăm mai puțin. Le păstrăm în siguranță. Fără secrete.
