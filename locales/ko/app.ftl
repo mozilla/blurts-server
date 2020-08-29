@@ -94,6 +94,73 @@ fxa-wtd-blurb-2 =
     해커는 동일한 비밀번호와 이메일을 사용하여 다른 계정에 접근하려고 할 수 있습니다.
     이메일 및 개인 정보를 저장하는 기타 웹 사이트 특히, 온라인 결제 계좌, 인터넷 뱅킹 
     사이트에서 서로 다른 고유한 비밀번호를 만드세요
+fxa-what-to-do-blurb-3 =
+    대부분의 침해는 이메일과 비밀번호만 유출되지만 일부는 민감한 재무 정보를 포함할 수 있습니다.
+    은행 계좌 또는 신용 카드 번호가 노출 된 경우 사기 가능성에 대해 은행에 알려야 합니다.
+    알 수 없는 결제 청구 내역을 모니터링해야 합니다.
+fxa-what-to-do-subhead-4 = 모든 비밀번호를 기억하고 안전하게 유지하는 데 도움을 받으세요.
+fxa-what-to-do-blurb-4 =
+    1Password, LastPass, Dashlane 및 Bitwarden과 같은 비밀번호 관리 프로그램은
+    웹 사이트 비밀번호를 자동으로 만들고 입력합니다. 강력한 비밀번호를 만드는데도 도움이 됩니다.
+# Alerts is a noun
+sign-up-for-alerts = 알림 가입 신청
+# Link title
+frequently-asked-questions = 자주 묻는 질문
+about-firefox-monitor = { -product-name } 소개
+# Link title
+preferences = 환경 설정
+# Link title
+home = 첫화면
+# Link title
+breaches = 유출 내역
+# Link title
+security-tips = 보안 정보
+fxa-account = { -brand-fxa }
+# Aria button message to open menu. "Open Firefox Account Navigation"
+open-fxa-menu = { -brand-fxa } 열기
+# Appears above a snippet about the breach most recently reported to Firefox Monitor.
+latest-breach = 최근 유출 내역
+# Link title
+more-about-this-breach = 상세 정보
+take-control = 개인 데이터에 대한 통제권을 되찾으세요.
+cant-stop-hackers = 해킹을 막을 수는 없습니다. 하지만 해킹을 어렵게 할 수는 있습니다.
+read-more-tips = 보안 정보 더 살펴보기
+how-hackers-work = 해킹 방식 이해
+monitor-your-online-accounts = { -brand-fxa } 침해 모니터링 가입하기
+stay-alert = 신규 데이터 유출 사고 알림
+if-your-info = 여러분의 개인 정보가 신규 데이터 유출로 노출되는 경우, 미리 경고를 보내드립니다.
+search-all-emails = 모든 이메일 주소에서 침해를 검색 및 새로운 위협에 대한 경고를 받습니다.
+monitor-several-emails = 여러 이메일 주소 모니터링
+take-action = 계정 보호를 위한 조치
+keep-your-data-safe = 해커로부터 데이터를 안전하게 보호하기 위해 해야 할 일을 알아보세요.
+website-breach = 웹 사이트 유출
+sensitive-breach = 민감한 웹 사이트 유출
+data-aggregator-breach = 데이터 수집 유출
+unverified-breach = 확인되지 않은 유출
+spam-list-breach = 스팸 목록 유출
+website-breach-plural = 웹 사이트 유출
+sensitive-breach-plural = 민감한 유출
+data-aggregator-breach-plural = 데이터 수집기 유출
+unverified-breach-plural = 확인되지 않은 유출
+spam-list-breach-plural = 스팸 목록 유출
+what-data = 유출된 데이터 :
+sensitive-sites = { -product-name }은 민감한 사이트를 어떻게 관리합니까?
+sensitive-sites-copy =
+    { -product-name }은 이메일 주소가 확인된 후에만
+    이러한 유형의 위반과 관련된 계정을 표시합니다. 
+    즉, 여러분의 이메일 계정에 접근 가능한 사람만이 
+    개인 정보가 침해되었는지 여부를 확인할 수 있습니다.
+delayed-reporting-headline = 유출 정보 보고에 오랜 시간이 걸린 이유는 무엇인가요?
+delayed-reporting-copy =
+    데이터 유출로 인해 노출된 정보들이 다크 웹에 나타나는 데 
+    수 개월 또는 수 년이 걸릴 수 있습니다. 유출을 확인하는 대로 
+    즉시 데이터베이스에 추가됩니다.
+about-fxm-headline = { -product-name } 정보
+about-fxm-blurb =
+    { -product-name }은 온라인 계정의 데이터 유출과 관련된 경우 경고합니다. 
+    데이터 유출이 있었는지 확인하고 새로운 유출에 대한 알림을 받아 계정을 
+    보호하기 위한 조치를 취할 수 있습니다.
+    { -product-name }은 { -brand-Mozilla }에서 제공합니다.
 
 ## What to do after data breach tips
 
