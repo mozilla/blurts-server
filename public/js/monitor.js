@@ -314,14 +314,7 @@ function resizeDashboardMargin() {
 
 function checkIfTier1(preferredLanguage) {
   const tier1Languages = ["de", "en", "fr"];
-
-  tier1Languages.forEach( lang => {
-    if (preferredLanguage.includes(lang) ) {
-      return true;
-    }
-  });
-
-  return false;
+  return tier1Languages.some(lang => preferredLanguage.includes(lang));
 }
 
 ( async() => {
