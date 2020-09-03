@@ -61,7 +61,7 @@
     "jest-tap-reporter": "1.9.0",
     "node-mocks-http": "1.9.0",
     "nodemon": "^2.0.4",
-    "npm-audit-ci-wrapper": "2.6.6",
+    "npm-audit-ci-wrapper": "3.0.1",
     "onchange": "6.1.1",
     "postcss-cli": "6.1.3",
     "stylelint": "9.10.1",
