@@ -12,6 +12,7 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
@@ -295,6 +296,8 @@ breach-alert-notifications = การแจ้งเตือนการรั
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = เพิ่มการรั่วไหลเมื่อ:
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = บันทึกการเปลี่ยนแปลงแล้ว!
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
