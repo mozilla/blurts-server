@@ -184,9 +184,56 @@ how-fxm-3-blurb =
 wtd-after-website = 웹 사이트 유출 후 해야 할 일 :
 wtd-after-data-agg = 데이터 수집 유출 후 수행할 작업 :
 what-is-data-agg = 데이터 수집기는 무엇인가요?
+what-is-data-agg-blurb =
+    데이터 수집기 또는 브로커는 공개 기록에서 정보를 수집하는 회사에서 구입합니다. 
+    이 데이터를 종합하여 마케팅 목적으로 다른 회사에 판매합니다. 이러한 침해의 피해자는 
+    금융 사기를 경험할 가능성은 적지만 해커가 이를 사용하여 신분을 가장할 수 있습니다.
+protect-your-privacy = 온라인 개인 정보 보호
+no-pw-to-change = 웹 사이트 유출에도 변경해야 할 비밀번호가 없습니다.
+avoid-personal-info = 비밀번호에 개인 정보 사용하지 않기
+avoid-personal-info-blurb = 온라인에서 생일, 주소, 가족 이름을 쉽게 찾을 수 있습니다. 이 단어를 비밀번호에서 제외하세요.
 
 ## What to do after data breach tips
 
+change-pw = 비밀번호 변경
+change-pw-site = 이 사이트의 비밀번호 변경
+even-for-old = 이전 계정의 경우에도 비밀번호를 업데이트하는 것이 중요합니다.
+make-new-pw-unique = 새 비밀번호를 독특하게 만들기
+strength-of-your-pw = 비밀번호 강도는 온라인 보안에 직접적인 영향을 줍니다.
+create-strong-passwords = 강력한 비밀번호를 만드는 방법
+stop-reusing-pw = 동일한 비밀번호 재사용 중지
+create-unique-pw = 고유한 비밀번호를 만들어 비밀번호 관리자와 같이 안전한 곳에 저장하세요.
+five-myths = 비밀번호 관리자에 대한 5가지 오해
+create-a-fxa = 유출 내역에 대한 보고서를 작성하고, 알림을 받으려면 { -brand-fxa }를 만드세요.
+feat-security-tips = 계정 보호를 위한 보안 팁
+feat-sensitive = 민감한 유출 내역에 대한 고급 검색
+feat-enroll-multiple = 침해 모니터링을 위해 여러 이메일 등록하기
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in. 
+appears-in-x-breaches =
+    { $breachCount ->
+       *[other] { $breachCount }개의  유출 내역이 있습니다.
+    }
+check-for-breaches = 유출 여부 확인하기
+find-out-what-hackers-know = 해커가 여러분에 대해 얼마나 알고 있는지 살펴보세요. 한발 앞서는 방법을 배울 수 있습니다.
+get-email-alerts = 보안 방법 : 유출이 일어난 것인 확인될 때 이메일 알림을 받습니다.
+search-for-your-email = 2007년부터 외부에 공개된 전체 데이터 침해 내역에서 여러분의 이메일 주소를 검색하세요.
+back-to-top = 맨 위로
+comm-opt-0 = 아래 이메일 주소 중 하나가 유출이 된 것이 확인되면 알림을 보내주세요.
+comm-opt-1 = 모든 유출 내역을 { $primaryEmail }로 보냅니다.
+stop-monitoring-this = 이메일 모니터링을 중지합니다.
+resend-verification = 확인 이메일 재전송
+add-new-email = 새 이메일 주소 추가
+send-verification = 확인 링크 보내기
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-summary = 유출 내역 요약
+show-breaches-for-this-email = 이 이메일에 대한 모든 유출 내역을 표시합니다.
+link-change-primary = 기본 이메일 주소 변경
+remove-fxm = { -product-name } 제거
 
 ## Updated error messages
 
