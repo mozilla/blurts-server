@@ -161,6 +161,29 @@ about-fxm-blurb =
     데이터 유출이 있었는지 확인하고 새로운 유출에 대한 알림을 받아 계정을 
     보호하기 위한 조치를 취할 수 있습니다.
     { -product-name }은 { -brand-Mozilla }에서 제공합니다.
+fxm-warns-you =
+    { -product-name }은 이메일 주소가 온라인 데이터 유출로 노출 된 경우 경고합니다.
+    여러분의 정보가 노출되었는지 확인하고, 온라인 계정을 더 잘 보호하는 방법을 배우고, 
+    이메일 주소가 다시 유출이 되면 알림을 받으시기 바랍니다.
+# How Firefox Monitor works
+how-fxm-works = { -product-name } 작동 방식
+how-fxm-1-headline = 기본 검색 수행
+how-fxm-1-blurb =
+    2007년 부터 공개된 데이터 침해에서 여러분의 이메일 주소를 검색하세요.
+    기본 검색 기능은 대부분의 데이터 침해를 살펴보지만 민감한 개인 정보가 
+    직접 포함된 것은 아닙니다.
+how-fxm-2-headline = 유출 모니터링 등록하기
+how-fxm-2-blurb =
+    지속적인 유출에 대해 모니터링하려면 { -brand-fxa }를 만드세요. 
+    이메일을 확인하면 민감한 위반을 포함하여 과거 위반 사항에 대한 
+    전체 보고서를 받게 됩니다.
+how-fxm-3-headline = 브라우저에서 알림 받기
+how-fxm-3-blurb =
+    { -brand-name }을 사용하는 경우 침해 된 사이트를 방문하면 알림을 받게 됩니다. 
+    해당 침해의 일부였는지 그리고 이에 대해 무엇을 할 수 있는지 즉시 확인하세요.
+wtd-after-website = 웹 사이트 유출 후 해야 할 일 :
+wtd-after-data-agg = 데이터 수집 유출 후 수행할 작업 :
+what-is-data-agg = 데이터 수집기는 무엇인가요?
 
 ## What to do after data breach tips
 
