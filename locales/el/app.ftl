@@ -394,11 +394,19 @@ num-resolved =
        *[other] Επιλύθηκαν { $numResolvedBreaches }
     }
 progress-intro-subhead = Νέο στο { -product-name }: Επισήμανση παραβιάσεων ως επιλυμένων
+progress-status =
+    { $numTotalBreaches ->
+       *[other] { $numResolvedBreaches } από { $numTotalBreaches } παραβιάσεις έχουν επισημανθεί ως επιλυμένες
+    }
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-3 = <span>Καλή δουλειά με την επίλυση διαρροών!</span> Συνεχίστε έτσι. Απομένουν λίγες ακόμα.
 progress-message-4 = <span>Σχεδόν τελειώσατε!</span> Είστε κοντά στη γραμμή τερματισμού.
+progress-complete-message =
+    <span>Ωραίο δεν είναι;</span> Αν θέλετε να συνεχίσετε, είναι η κατάλληλη στιγμή να 
+    ενημερώσετε άλλες συνδέσεις με ισχυρότερους κωδικούς πρόσβασης.
 
 ##
 
@@ -416,4 +424,5 @@ promo-lockwise-cta = Λήψη { -brand-lockwise }
 fpn-promo-headline = Καλύψτε την τοποθεσία σας από ιστοσελίδες και ιχνηλάτες
 promo-fpn-cta = Λήψη { -brand-fpn }
 monitor-promo-headline = Μάθετε για νέες παραβιάσεις δεδομένων
+ecosystem-promo-body = Όλα τα προϊόντα { -brand-name } τιμούν την υπόσχεση μας σχετικά με τα προσωπικά δεδομένα: Λιγότερα δεδομένα. Με ασφάλεια. Χωρίς μυστικά.
 promo-ecosystem-cta = Προβολή όλων των προϊόντων

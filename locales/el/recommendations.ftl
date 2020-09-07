@@ -10,6 +10,8 @@ rec-ssn =
 rec-pw-1-subhead = Αλλάξτε τον κωδικό πρόσβασής σας
 # Link title
 rec-pw-1-cta = Αλλαγή κωδικού πρόσβασης για αυτή την ιστοσελίδα
+# Recommendation subhead
+rec-pw-2-subhead = Ενημερώστε άλλες συνδέσεις με τον ίδιο κωδικό πρόσβασης
 # Link title
 rec-pw-2-cta-fx = Προβολή συνδέσεων στο { -brand-name }
 # Link title
