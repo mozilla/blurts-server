@@ -377,6 +377,7 @@ marking-this-subhead = Επισήμανση αυτής της παραβίαση
 mark-as-resolve-button = Επισήμανση ως λυμένη
 marked-as-resolved-label = Επισημάνθηκε ως λυμένη
 undo-button = Αναίρεση
+confirmation-2-body = Λαμβάνετε σημαντικά βήματα για την προστασία των διαδικτυακών λογαριασμών σας.
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Είναι ο νέος σας κωδικός πρόσβασης μοναδικός, ισχυρός και δύσκολος; <a>Μάθετε εδώ</a>
@@ -402,6 +403,9 @@ progress-message-4 = <span>Σχεδόν τελειώσατε!</span> Είστε 
 ##
 
 resolve-this-breach-link = Επίλυση παραβίασης
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Επισημασμένα ως επιλυμένα:
 hide-resolved-button = Απόκρυψη επιλυμένων
 show-resolved-button = Εμφάνιση επιλυμένων
 # A status indicator that appears in the top right corner of new breach cards

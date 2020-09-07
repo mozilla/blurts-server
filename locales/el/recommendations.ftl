@@ -29,11 +29,17 @@ rec-sec-qa-subhead = Δημιουργήστε μοναδικές απαντήσ�
 # Recommendation subhead
 rec-phone-num-subhead = Αποφύγετε την κοινοποίηση του αριθμού τηλεφώνου σας
 # Recommendation subhead
+rec-dob-subhead = Αποφύγετε τη χρήση προσωπικών πληροφοριών σε PIN
+# Recommendation subhead
 rec-pins-subhead = Ενισχύστε την ασφάλεια των PIN σας
 # Recommendation subhead
 rec-gen-1-subhead = Χρησιμοποιήστε μοναδικούς, ισχυρούς κωδικούς πρόσβασης για κάθε λογαριασμό
+# Link title
+rec-gen-1-cta = Τρόπος δημιουργίας ισχυρών κωδικών πρόσβασης
 # Recommendation subhead
 rec-gen-2-subhead = Αποθηκεύστε τους κωδικούς πρόσβασης σε ασφαλές μέρος
+# Link title
+rec-gen-2-cta = Μύθοι σχετικά με τη διαχείριση κωδικών πρόσβασης
 # Link title
 rec-gen-3-cta = Διαβάστε περισσότερες συμβουλές ασφαλείας
 # Recommendation subhead
