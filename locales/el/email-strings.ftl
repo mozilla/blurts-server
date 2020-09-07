@@ -45,6 +45,18 @@ email-subject-no-breaches = Το { -product-name } δεν βρήκε γνωστ�
 email-subject-verify = Επαλήθευση email για το { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Μάθετε περισσότερα σχετικά με το { $fxmLink }
+email-sensitive-disclaimer =
+    Λόγω της ευαίσθητης φύσης της διαρροής, τα εμπλεκόμενα emails δεν ανιχνεύονται δημόσια. 
+    Λαμβάνετε αυτή την ειδοποίηση επειδή είστε επαληθευμένος κάτοχος αυτής της διεύθυνσης email.
+fxm-warns-you-no-breaches =
+    Το { -product-name } σας προειδοποιεί σχετικά με παραβιάσεις που αφορούν προσωπικά σας δεδομένα. 
+    Μέχρι στιγμής, δεν έχουν βρεθεί διαρροές. Θα σας ειδοποιήσουμε αν εμφανιστεί η διεύθυνση email σας σε κάποια νέα παραβίαση.
+fxm-warns-you-found-breaches =
+    Το { -product-name } σας προειδοποιεί σχετικά με παραβιάσεις που αφορούν προσωπικά σας δεδομένα. 
+    Έχετε εγγραφεί για λήψη ειδοποιήσεων αν εμφανιστεί η διεύθυνση email σας σε κάποια νέα παραβίαση.
+email-breach-alert-blurb =
+    Το { -product-name } σας προειδοποιεί σχετικά με παραβιάσεις που αφορούν προσωπικά σας δεδομένα. 
+    Μόλις λάβαμε στοιχεία σχετικά με παραβίαση δεδομένων άλλης εταιρείας.
 # List headline
 faq-list-headline = Συχνές ερωτήσεις
 # Link Title
@@ -63,6 +75,9 @@ monitor-another-email = Θέλετε να παρακολουθήσετε κάπ�
 # Subject line of email
 pre-fxa-subject = Μια ενημέρωση από το { -product-name }
 pre-fxa-headline = Τι αλλάζει με το { -product-name }
+pre-fxa-p-1 =
+    <a>Δημιουργήστε ένα λογαριασμό</a> για εποπτεία έως και 15 διευθύνσεων email για 
+    διαρροές δεδομένων. Προτείνουμε να προσθέσετε όσες διευθύνσεις email έχετε χρησιμοποιήσει σε διαδικτυακούς λογαριασμούς.
 pre-fxa-tout-2 = Προβολή πίνακα ελέγχου
 pre-fxa-tout-3 = Συνέχεια λήψης ειδοποιήσεων μέσω email
 pre-fxa-p-3 =
