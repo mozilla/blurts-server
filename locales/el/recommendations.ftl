@@ -37,6 +37,8 @@ rec-dob-subhead = Αποφύγετε τη χρήση προσωπικών πλη
 # Recommendation subhead
 rec-pins-subhead = Ενισχύστε την ασφάλεια των PIN σας
 # Recommendation subhead
+rec-address-subhead = Αποφύγετε τη χρήση διευθύνσεων σε κωδικούς πρόσβασης
+# Recommendation subhead
 rec-gen-1-subhead = Χρησιμοποιήστε μοναδικούς, ισχυρούς κωδικούς πρόσβασης για κάθε λογαριασμό
 # Link title
 rec-gen-1-cta = Τρόπος δημιουργίας ισχυρών κωδικών πρόσβασης

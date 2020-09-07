@@ -377,11 +377,17 @@ marking-this-subhead = Επισήμανση αυτής της παραβίαση
 mark-as-resolve-button = Επισήμανση ως λυμένη
 marked-as-resolved-label = Επισημάνθηκε ως λυμένη
 undo-button = Αναίρεση
+confirmation-1-subhead = Ωραία! Μόλις επιλύσατε την πρώτη σας παραβίαση.
 confirmation-2-body = Λαμβάνετε σημαντικά βήματα για την προστασία των διαδικτυακών λογαριασμών σας.
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Είναι ο νέος σας κωδικός πρόσβασης μοναδικός, ισχυρός και δύσκολος; <a>Μάθετε εδώ</a>
 generic-confirmation-subhead = Αυτή η παραβίαση έχει επισημανθεί ως επιλυμένη
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Για να δείτε την εναπομείνουσα διαρροή, μεταβείτε στον πίνακα ελέγχου.
+       *[other] Για να δείτε τις εναπομείνουσες διαρροές, μεταβείτε στον πίνακα ελέγχου.
+    }
 return-to-breach-details-link = Επιστροφή στις λεπτομέρειες παραβίασης
 go-to-dashboard-link = Μετάβαση στον πίνακα
 # This string appears above a breach resolution progress bar and indicates
@@ -398,6 +404,7 @@ progress-status =
     { $numTotalBreaches ->
        *[other] { $numResolvedBreaches } από { $numTotalBreaches } παραβιάσεις έχουν επισημανθεί ως επιλυμένες
     }
+progress-complete = Όλες οι γνωστές παραβιάσεις έχουν επισημανθεί ως επιλυμένες
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
@@ -416,6 +423,16 @@ resolve-this-breach-link = Επίλυση παραβίασης
 marked-resolved = Επισημασμένα ως επιλυμένα:
 hide-resolved-button = Απόκρυψη επιλυμένων
 show-resolved-button = Εμφάνιση επιλυμένων
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Εκτεθειμένος κωδικός πρόσβασης σε μη επιλυμένες παραβιάσεις
+       *[other] Εκτεθειμένοι κωδικοί πρόσβασης σε μη επιλυμένες παραβιάσεις
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Γνωστή παραβίαση δεδομένων επισημάνθηκε ως επιλυμένη
+       *[other] Γνωστές παραβιάσεις δεδομένων επισημάνθηκαν ως επιλυμένες
+    }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Νέο
 mobile-promo-headline = Φέρτε το { -brand-name } στο τηλέφωνο και το tablet σας
