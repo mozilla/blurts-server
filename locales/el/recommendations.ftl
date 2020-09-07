@@ -14,6 +14,8 @@ rec-pw-1-cta = Αλλαγή κωδικού πρόσβασης για αυτή τ
 rec-pw-2-cta-fx = Προβολή συνδέσεων στο { -brand-name }
 # Link title
 rec-pw-3-cta = Λήψη { -brand-lockwise }
+# Recommendation subhead
+rec-pw-4-subhead = Ρύθμιση ελέγχου ταυτότητας δύο παραγόντων (2FA)
 # Link title
 rec-pw-4-cta = Δείτε ιστοσελίδες που προσφέρουν 2FA
 # Recommendation subhead
