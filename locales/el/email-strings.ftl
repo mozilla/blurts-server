@@ -50,12 +50,20 @@ faq-list-headline = Συχνές ερωτήσεις
 # Link Title
 faq-v2-1 = Δεν αναγνωρίζω κάποια από αυτές τις εταιρείες ή ιστοσελίδες. Γιατί είμαι σε αυτή την παραβίαση;
 # Link Title
+faq-v2-2 = Χρειάζεται να κάνω κάτι αν μια παραβίαση συνέβη πριν χρόνια ή σε παλιό λογαριασμό;
+# Link Title
+faq-v2-3 = Μόλις έμαθα ότι έχω επηρεαστεί από διαρροή δεδομένων. Τι πρέπει να κάνω;
+# Link Title
 faq-v2-4 = Πώς αντιμετωπίζει το { -product-name } τις ευαίσθητες ιστοσελίδες;
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Δημιουργήστε ένα δωρεάν { -brand-fxa }</a> και θα μπορείτε να προσθέσετε έως 15 διευθύνσεις email.
 # Section headline
 monitor-another-email = Θέλετε να παρακολουθήσετε κάποιο άλλο email;
 # Subject line of email
 pre-fxa-subject = Μια ενημέρωση από το { -product-name }
 pre-fxa-headline = Τι αλλάζει με το { -product-name }
+pre-fxa-tout-2 = Προβολή πίνακα ελέγχου
 pre-fxa-tout-3 = Συνέχεια λήψης ειδοποιήσεων μέσω email
 pre-fxa-p-3 =
     Θα εξακολουθείτε να λαμβάνετε ειδοποιήσεις από το { -product-name }. Θα σας ενημερώσουμε αν
