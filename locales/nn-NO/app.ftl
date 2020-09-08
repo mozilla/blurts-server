@@ -548,3 +548,4 @@ monitor-promo-body = Bli varsla neste gong din personlege informasjon vert ekspo
 ecosystem-promo-headline = Vern om livet ditt på nettet med personvernprodukt
 ecosystem-promo-body = Alle { -brand-name }-produkt overheld lovnaden vår om private data i alt vi gjer: Samle inn mindre. Oppbevare alt trygt. Ingen hemmelegheiter.
 promo-ecosystem-cta = Vis alle produkta
+steps-to-resolve-headline = Framgangsmåte for å løyse denne datalekkasjen
