@@ -550,3 +550,4 @@ monitor-promo-body = Get notified the next time your personal info gets exposed 
 ecosystem-promo-headline = Protect your life online with privacy-first products
 ecosystem-promo-body = All { -brand-name } products honour our Personal Data Promise: Take less. Keep it safe. No secrets.
 promo-ecosystem-cta = See All Products
+steps-to-resolve-headline = Steps to resolve this breach
