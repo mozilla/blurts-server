@@ -554,3 +554,4 @@ monitor-promo-body = Kapjon értesítést, ha a személyes adatai kikerülnek eg
 ecosystem-promo-headline = Védje meg az online életét az adatvédelmet előre helyező termékeinkkel
 ecosystem-promo-body = Az összes { -brand-name } termék betartja a személyes adatokra vonatkozó ígéretünket: Gyűjts kevesebbet. Tartsd biztonságban. Nincsenek titkok.
 promo-ecosystem-cta = Összes termék megtekintése
+steps-to-resolve-headline = Lépések az adatsértés megoldása érdekében
