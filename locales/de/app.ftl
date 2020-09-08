@@ -501,3 +501,4 @@ monitor-promo-body = Erhalten Sie Benachrichtigungen, wenn Ihre persönlichen Da
 ecosystem-promo-headline = Alle unsere Produkte schützen zuallererst Ihre Privatsphäre online
 ecosystem-promo-body = Hinter all unseren { -brand-name }-Produkten, steht unser Versprechen für Ihre persönlichen Daten: Wenig sammeln. Sicher speichern. Ehrlich sein.
 promo-ecosystem-cta = Alle Produkte ansehen
+steps-to-resolve-headline = Schritte zur Behebung dieses Datenlecks
