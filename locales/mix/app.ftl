@@ -167,6 +167,12 @@ known-data-breaches-exposed =
     }
 # Button
 see-additional-breaches = Ver filtraciones adicionales
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = Tutu : { $userEmail }
+other-monitored-emails = Otros correos monitoreados
+fxa-primary-email = { -brand-fxa } korreo - principal
 # Title
 email-addresses-title = Lista korreo
 # This is a section headline on the breach detail page that appears above
