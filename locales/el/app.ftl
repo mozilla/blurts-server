@@ -443,3 +443,4 @@ promo-fpn-cta = Λήψη { -brand-fpn }
 monitor-promo-headline = Μάθετε για νέες παραβιάσεις δεδομένων
 ecosystem-promo-body = Όλα τα προϊόντα { -brand-name } τιμούν την υπόσχεση μας σχετικά με τα προσωπικά δεδομένα: Λιγότερα δεδομένα. Με ασφάλεια. Χωρίς μυστικά.
 promo-ecosystem-cta = Προβολή όλων των προϊόντων
+steps-to-resolve-headline = Βήματα επίλυσης για αυτή τη διαρροή
