@@ -54,13 +54,41 @@
 -brand-HIBP = Have I Been Pwned
 -brand-fxa =
     { $case ->
-       *[nom] Účet Firefoxu
-        [gen] Účtu Firefoxu
-        [dat] Účtu Firefoxu
-        [acc] Účet Firefoxu
-        [voc] Účte Firefoxu
-        [loc] Účtu Firefoxu
-        [ins] Účtem Firefoxu
+       *[nom]
+            { $capitalization ->
+               *[upper] Účet Firefoxu
+                [lower] účet Firefoxu
+            }
+        [gen]
+            { $capitalization ->
+               *[upper] Účtu Firefoxu
+                [lower] účtu Firefoxu
+            }
+        [dat]
+            { $capitalization ->
+               *[upper] Účtu Firefoxu
+                [lower] účtu Firefoxu
+            }
+        [acc]
+            { $capitalization ->
+               *[upper] Účet Firefoxu
+                [lower] účet Firefoxu
+            }
+        [voc]
+            { $capitalization ->
+               *[upper] Účte Firefoxu
+                [lower] účte Firefoxu
+            }
+        [loc]
+            { $capitalization ->
+               *[upper] Účtu Firefoxu
+                [lower] účtu Firefoxu
+            }
+        [ins]
+            { $capitalization ->
+               *[upper] Účtem Firefoxu
+                [lower] účtem Firefoxu
+            }
     }
 -brand-pocket = Pocket
 -brand-lockwise =
@@ -245,7 +273,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Prohledat úniky
 find-out-what-hackers-know = Odhalte, co už o vás hackeři vědí. Zjistěte, jak být stále o krok před nimi.
-get-email-alerts = Zůstaňte v bezpečí: Nechte se upozornit, pokud se vaše údaje objeví ve známém úniku dat.
+get-email-alerts = Zůstaňte v bezpečí: Nechte se upozornit, jestliže se vaše údaje objeví ve známém úniku dat.
 search-for-your-email = Vyhledejte svou e-mailovou adresu ve veřejně dostupných únicích dat sahajících zpět do roku 2007.
 back-to-top = Zpět na začátek
 comm-opt-0 = Poslat mi e-mail, pokud se jedna z mých níže uvedených e-mailových adres objeví v nějakém úniku dat.
@@ -581,7 +609,7 @@ fpn-promo-headline = Skryjte svoji polohu před webovými stránkami a sledovac�
 promo-fpn-body = { -brand-fpn } vás pomocí zamaskování vaší skutečné IP adresy ochrání před sběrem dat a cílenými reklamami.
 promo-fpn-cta = Stáhnout { -brand-fpn }
 monitor-promo-headline = Buďte informováni o nových únicích dat
-monitor-promo-body = Nechte se upozornit, pokud se vaše údaje objeví ve známém úniku dat.
+monitor-promo-body = Nechte se upozornit, jestliže se vaše údaje objeví ve známém úniku dat.
 ecosystem-promo-headline = Buďte na internetu v bezpečí díky produktům, které dbají na vaše soukromí
 ecosystem-promo-body = Žádný { -brand-name } nezneužívá vaše data. Méně dat je vždy více, udržíme je v bezpečí a nemáme před vámi žádná tajemství.
 promo-ecosystem-cta = Zobrazit všechny produkty
