@@ -613,3 +613,4 @@ monitor-promo-body = Nechte se upozornit, jestliže se vaše údaje objeví ve z
 ecosystem-promo-headline = Buďte na internetu v bezpečí díky produktům, které dbají na vaše soukromí
 ecosystem-promo-body = Žádný { -brand-name } nezneužívá vaše data. Méně dat je vždy více, udržíme je v bezpečí a nemáme před vámi žádná tajemství.
 promo-ecosystem-cta = Zobrazit všechny produkty
+steps-to-resolve-headline = Kroky vedoucí k vyřešení tohoto úniku
