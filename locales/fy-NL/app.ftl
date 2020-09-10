@@ -550,3 +550,4 @@ monitor-promo-body = Untfang de folgjende kear in melding wannear't jo persoanli
 ecosystem-promo-headline = Beskermje jo onlinelibben mei produkten dy't privacy foarop stelle
 ecosystem-promo-body = Alles wat { -brand-name } docht, stiet yn it teken fan ús belofte foar persoanlike gegevens: nim minder. Hâld it feilich. Gjin geheimen.
 promo-ecosystem-cta = Alle produkten
+steps-to-resolve-headline = Stappen om dit lek op te lossen
