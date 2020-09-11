@@ -39,3 +39,52 @@ email-no-breaches-hl = { $userEmail }의 알려진 데이터 유출 사례는 0�
 email-alert-hl = { $userEmail }이 새로 유출된 것으로 보입니다
 # Subject line of email
 email-subject-found-breaches = { -product-name }가 아래 유출 사례에서 일치하는 정보를 찾았습니다
+# Subject line of email
+email-subject-no-breaches = { -product-name }가 알려진 유출 사례에서 일치하는 정보를 찾지 못했습니다
+# Subject line of email
+email-subject-verify = { -product-name }의 이메일 인증을 완료하세요
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = { $fxmLink }에 대해서 알아보기
+email-sensitive-disclaimer =
+    고유의 민감한 특성으로 인해, 유출된 이메일은 공개적으로 찾아볼 수 없습니다.
+    이 알림은 유출된 이메일의 인증된 소유자이시기에 발송되었습니다.
+fxm-warns-you-no-breaches =
+    { -product-name }는 개인정보와 관련된 데이터 유출에 대해 알려드립니다.
+    그러나, 아직 유출 사례가 없습니다. 새 유출 사례에서 일치하는 이메일 주소를 발견하게 된다면 알려드리겠습니다.
+fxm-warns-you-found-breaches =
+    { -product-name }는 개인정보와 관련된 데이터 유출에 대해 알려드립니다. 
+    또한 새 유출 사례에서 일치하는 이메일 주소가 발견될 경우 알림을 받기로 설정하셨습니다.
+email-breach-alert-blurb =
+    { -product-name }는 개인정보와 관련된 데이터 유출에 대해 알려드립니다. 
+    방금 다른 회사의 데이터 유출 사례에 대한 정보를 받았습니다.
+# List headline
+faq-list-headline = 자주 묻는 질문
+# Link Title
+faq-v2-1 = 저는 이런 회사나 웹사이트를 모릅니다. 제 데이터가 왜 이곳에서 유출되었나요?
+# Link Title
+faq-v2-2 = 유출이 수년 전의 일이거나 오래된 계정에서 일어난 일이여도 해야 할 일이 있나요?
+# Link Title
+faq-v2-3 = 방금 데이터 유출을 확인했습니다. 다음에 무엇을 하면 되나요?
+# Link Title
+faq-v2-4 = { -product-name }는 민감한 사이트를 어떻게 관리합니까?
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>무료 { -brand-fxa }</a>를 생성하시면, 최대 15개의 이메일 주소를 추가하실 수 있습니다.
+# Section headline
+monitor-another-email = 다른 이메일에 대한 유출 여부를 받아보시겠습니까?
+# Subject line of email
+pre-fxa-subject = { -product-name } 업데이트
+pre-fxa-headline = { -product-name }의 변경점
+pre-fxa-blurb = 다음은 개인정보 유출을 안내하는 서비스인 { -product-name }에 가입하신 이래 변경된 사항입니다. Firefox 계정에 이 서비스를 연결하고 있습니다.
+pre-fxa-tout-1 = 추가적인 데이터 유출 사고 알림
+pre-fxa-p-1 =
+    <a>계정을 생성</a>하셔서 최대 15개까지 이메일 주소를 추가하고
+    유출 사례를 확인하세요. 온라인 계정을 만드는 데 사용한 이메일 주소를 추가하시기를 추천드립니다.
+pre-fxa-tout-2 = 대시보드 확인하기
+pre-fxa-p-2 =
+    모든 데이터 유출을 한 곳에서 보시고 변경해야 할 비밀번호를 확인하세요. 
+    유출 대시보드는 계정에 로그인된 상태에서만 이용하실 수 있습니다.
+pre-fxa-tout-3 = 계속 이메일 알림 받기
+pre-fxa-p-3 = { -product-name }에서 계속 알림을 받습니다. 새로운 데이터 유출을 발견하면 알려드리겠습니다.
+# Button at the bottom of pre-fxa email.
+create-account = 계정 생성
