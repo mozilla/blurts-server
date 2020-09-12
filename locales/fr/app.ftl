@@ -500,3 +500,4 @@ monitor-promo-body = Recevez une alerte la prochaine fois que vos informations p
 ecosystem-promo-headline = Tout une gamme de produits qui protègent votre vie privée
 ecosystem-promo-body = Tous les produits { -brand-name } respectent notre « Garantie en matière de données personnelles » : collecter moins de données, les protéger, ne rien cacher.
 promo-ecosystem-cta = Voir tous les produits
+steps-to-resolve-headline = Mesures à prendre pour résoudre cette fuite
