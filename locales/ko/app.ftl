@@ -257,9 +257,101 @@ ba-next-step-2 = 유출된 비밀번호는 다시 사용하지 마세요.
 ba-next-step-blurb-2 =
     사이버 범죄자는 다크 웹에서 비밀번호를 찾아 다른 계정에 로그인하는 데 사용할 수 있습니다. 
     계정을 보호하는 가장 좋은 방법은 각 계정에 대해 고유한 암호를 사용하는 것입니다.
+ba-next-step-3 = 더 나은 비밀번호를 만들고 안전하게 유지하는 데 도움을 받으세요.
+ba-next-step-blurb-3 =
+    비밀번호 관리자를 사용하여 강력하고 고유 한 비밀번호를 만듭니다. 
+    모든 로그인 정보를 안전하게 저장하므로 모든 기기에서 접근할 수 있습니다.
+faq1 = 현재 회사와 웹 사이트에 가입한 적이 없습니다. 왜 제 데이터가 유출된건가요?
+faq2 = 왜 유출 사실을 고지해 주는데 이렇게 오래 걸렸습니까?
+faq3 = { -product-name }에서 보낸 합법적인 이메일인지 어떻게 알 수 있나요?
+new-breaches-found =
+    { $breachCount ->
+       *[other] 신규 { $breachCount } 개의 유출 발견
+    }
+sign-up-headline-1 = { -brand-fxa }로 지속적인 알림을 받으세요.
+account-not-required = { -brand-fxa }에는 { -brand-name } 브라우저가 필요하지 않습니다. { -brand-Mozilla } 서비스에 대한 정보를 받을 수 있습니다.
+was-your-info-exposed = 여러분의 정보가 { $breachName } 데이터 유출로 노출 되었습니까?
+find-out-if = 여러분의 데이터가 유출로 노출되었는지 확인하세요.
+fb-not-comp = 본 이메일은 { $breachName }에 유출되지 않았습니다.
+other-breaches-found =
+    { $breachCount ->
+       *[other] 그러나, { $breachCount }개의 다른 유출 내역이 있습니다.
+    }
+fb-comp-only = 본 이메일은 { $breachName } 유출에 포함되어 있습니다.
+fb-comp-and-others =
+    { $breachCount ->
+       *[other] 본 이메일은 { $breachName }을 포함하여 { $breachCount }개의 알려진 데이터 유출이 있습니다.
+    }
+no-other-breaches-found = 기본 검색에서 발견된 다른 유출은 없습니다.
+no-results-blurb = 죄송합니다. 해당 유출은 데이터베이스에 없습니다.
+all-breaches-headline = { -product-name } 모든 유출 내역
+search-breaches = 유출 내역 검색하기
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = 보기:
 
 ## Updated error messages
 
+error-bot-headline = 일시적 검색 중단
+error-bot-blurb =
+    단기간에 여러 개의 이메일 주소를 검색했기 때문에 봇이 아닐까 걱정됩니다. 
+    현재로서는 새로운 검색 활동이 차단되었습니다. 
+    나중에 다시 시도 할 수 있습니다.
+error-csrf-headline = 세션 시간 초과
+error-csrf-blurb = 웹 브라우저의 뒤로 버튼을 선택하여 페이지를 새로 고침 한 다음 다시 시도하세요.
+error-invalid-unsub = { -product-name } 알림 수신 거부 방법
+error-invalid-unsub-blurb =
+    { -product-name }에서 보낸 이메일 중 하나를 수신 거부해야 합니다. 
+    받은 편지함에서 { -brand-team-email }의 메시지를 확인하세요. 
+    이메일 하단에서 수신 거부 링크를 선택합니다.
+# This string is displayed under a large numeral that indicates the total number
+# of email address a user has signed up for monitoring. Don’t add $emails to
+# your localization, because it would result in the number showing twice.
+email-addresses-being-monitored =
+    { $emails ->
+       *[other] 모니터링 중인 이메일 주소
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+       *[other] 모든 유출에 노출된 비밀번호
+    }
+# This string is displayed under a large numeral that indicates the total number
+# of data breaches that have exposed the user’s information. Don’t add $breaches to
+# your localization, because it would result in the number showing twice.
+known-data-breaches-exposed =
+    { $breaches ->
+       *[other] 개인 정보가 노출된 알려진 데이터 유출 사고
+    }
+# Button
+see-additional-breaches = 추가 유출 사항 보기
+scan-results-known-breaches =
+    { $breachCount ->
+       *[other] 현재 이메일 주소는 { $breachCount }건의 유출이 있었습니다.
+    }
+# This string is shown at the top of the scan results page and is followed
+# by the email address that the user searched.
+# In page, it reads "Results for: searchedEmail@monitor.com"
+results-for = 결과 : { $userEmail }
+other-monitored-emails = 모니터링 중인 기타 이메일
+email-verification-required = 이메일 확인 필요
+fxa-primary-email = { -brand-fxa } 이메일 - 기본
+what-is-a-website-breach = 웹 사이트 유출이란 무엇입니까?
+website-breach-blurb = 웹 사이트 데이터 침해 사고는 사이버 범죄자가 온라인 계정에서 개인 정보를 도용, 복사 또는 노출 할 때 발생합니다. 일반적으로 해커가 웹 사이트의 보안에서 취약한 부분을 찾은 결과입니다. 실수로 계정 정보가 유출 된 경우에도 침해가 발생할 수 있습니다.
+security-tips-headline = 해커로부터 자신을 보호하기 위한 보안 팁
+steps-to-protect = 온라인 신원을 보호하기 위해 취해야 할 조치
+take-further-steps = 신원 보호를 위한 추가 조치
+alert-about-new-breaches = 새로운 침해 사고 알림 받기
+see-if-youve-been-part = 온라인 데이터 유출에 포함되었는지 확인하세요.
+get-ongoing-breach-monitoring = 여러 이메일 주소에 대한 지속적인 침해 모니터링을 받으세요.
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = 찾아보기
+new-unsub-error = { -product-name }에서 보낸 이메일 중 하나를 수신 거부해야 합니다.
+other-known-breaches-found =
+    { $breachCount ->
+       *[other] 그러나, { $breachCount }개의 다른 유출 내역이 있습니다.
+    }
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
