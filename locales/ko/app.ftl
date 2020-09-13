@@ -234,6 +234,13 @@ breach-summary = 유출 내역 요약
 show-breaches-for-this-email = 이 이메일에 대한 모든 유출 내역을 표시합니다.
 link-change-primary = 기본 이메일 주소 변경
 remove-fxm = { -product-name } 제거
+remove-fxm-blurb =
+    { -product-name } 알림을 끕니다. { -brand-fxa }는 활성 상태로 유지되며 
+    다른 계정 관련 정보를 받을 수 있습니다.
+# Button title
+manage-email-addresses = 이메일 주소 관리
+# Link title
+latest-breach-link = 유출 여부 확인 하기
 welcome-back = { $userName }님, 다시 오신 것을 환영합니다!
 welcome-user = { $userName }님, 환영합니다!
 breach-alert-subject = { -product-name }가 새로 유출된 자료에서 일치하는 이메일을 찾았습니다
@@ -242,6 +249,11 @@ your-info-was-discovered-blurb =
     데이터 유출 자료에서 일치하는 이메일이 발견되면
     { -product-name } 알림을 받기로 하셨습니다. 이번 유출에 대해서 알려진 사항은 다음과 같습니다.
 what-to-do-after-breach = 데이터 유출 후 해야 할 일
+ba-next-step-1 = 강력하고 고유한 비빌번호로 변경하세요.
+ba-next-step-blurb-1 =
+    강력한 비밀번호는 대문자와 소문자, 특수 문자 및 숫자의 조합을 사용합니다. 
+    주소, 생일, 가족 이름과 같은 개인 정보는 포함되지 않는 것이 좋습니다.
+ba-next-step-2 = 유출된 비밀번호는 다시 사용하지 마세요.
 ba-next-step-blurb-2 =
     사이버 범죄자는 다크 웹에서 비밀번호를 찾아 다른 계정에 로그인하는 데 사용할 수 있습니다. 
     계정을 보호하는 가장 좋은 방법은 각 계정에 대해 고유한 암호를 사용하는 것입니다.
