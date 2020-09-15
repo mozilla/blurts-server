@@ -595,3 +595,4 @@ monitor-promo-body = Pošleme vám upozornenie vždy, keď sa vaše údaje objav
 ecosystem-promo-headline = Celý rad produktov zameraných na súkromie
 ecosystem-promo-body = Všetky produkty s označením { -brand-name } vychádzajú zo zásady, že menej dát je niekedy viac. Vaše dáta udržiavame v bezpečí a nemáme pred vami žiadne tajomstvá.
 promo-ecosystem-cta = Zobraziť všetky produkty
+steps-to-resolve-headline = Kroky vedúce k vyriešeniu tohto úniku
