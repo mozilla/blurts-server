@@ -387,6 +387,7 @@ take-further-steps-desc = Chaweta'maj jas kb'an chech uq'atexik relaq'axik winaq
 changes-saved = Xk'olotaj taq k'exonem
 # Section headline
 rec-section-headline = Jas kb'an chech we retztaqan
+rec-section-subhead = Kqaya' u
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
