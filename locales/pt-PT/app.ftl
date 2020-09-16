@@ -550,3 +550,4 @@ monitor-promo-body = Seja notificado da próxima vez que as suas informações p
 ecosystem-promo-headline = Proteja a sua vida na Internet com produtos de privacidade focados na privacidade
 ecosystem-promo-body = Todos os produtos { -brand-name } honram o nosso compromisso com os dados pessoais: recolher menos; manter seguro; sem segredos.
 promo-ecosystem-cta = Ver todos os produtos
+steps-to-resolve-headline = Passos para resolver esta violação
