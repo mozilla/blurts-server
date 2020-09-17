@@ -35,8 +35,8 @@ function dataClassesforCards(breach, locales) {
 
 function sortBreaches(breaches) {
   breaches = breaches.sort((a,b) => {
-    const oldestBreach = new Date(a.BreachDate);
-    const newestBreach = new Date(b.BreachDate);
+    const oldestBreach = new Date(a.AddedDate);
+    const newestBreach = new Date(b.AddedDate);
     return newestBreach-oldestBreach;
   });
   return breaches;
