@@ -482,7 +482,7 @@ test("user/remove-fxm GET request with valid session returns 200 and renders rem
 test("user remove-fxm POST request with valid session removes from DB and revokes FXA OAuth token", async () => {
   const req = {
     fluentFormat: jest.fn(),
-    session: { user: TEST_SUBSCRIBERS.firefox_account, reset: jest.fn() },
+    session: { user: TEST_SUBSCRIBERS.firefox_account, destroy: jest.fn() },
     user: TEST_SUBSCRIBERS.firefox_account,
   };
   const resp = httpMocks.createResponse();
@@ -495,7 +495,7 @@ test("user remove-fxm POST request with valid session removes from DB and revoke
   const subscriber = await DB.getEmailByToken(TEST_SUBSCRIBERS.firefox_account.primary_verification_token);
   expect(subscriber).toBeUndefined();
   expect(FXA.revokeOAuthTokens).toHaveBeenCalledTimes(1);
-  expect(req.session.reset).toHaveBeenCalledTimes(1);
+  expect(req.session.destroy).toHaveBeenCalledTimes(1);
 });
 
 
