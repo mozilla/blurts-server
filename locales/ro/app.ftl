@@ -80,7 +80,7 @@ fxa-pwt-summary-2 =
     Parolele scurte, formate dintr-un singur cuvânt, sunt ușor de ghicit pentru hackeri.
     Folosește cel puțin două cuvinte și o combinație de litere, cifre și caractere speciale.
 fxa-pwt-summary-4 =
-    Managerii de parole, cum ar fi 1Password, LastPass, Dashlane și Bitwarden îți stochează
+    Managerele de parole, cum ar fi 1Password, LastPass, Dashlane și Bitwarden îți stochează
     parolele și le completează pe site-uri pentru tine. Te vor ajuta chiar să creezi parole puternice.
 fxa-pwt-summary-6 = Încălcările securității datelor sunt tot mai multe. Dacă datele tale cu caracter personal apar într-o nouă încălcare a securității datelor, { -product-name } îți va trimite o alertă — ca să iei măsuri și să îți protejezi conturile.
 fxa-what-to-do-blurb-1 =
@@ -92,9 +92,9 @@ fxa-wtd-blurb-2 = Hackerii pot încerca să reutilizeze parola și adresa ta de 
 fxa-what-to-do-blurb-3 = Cele mai multe încălcări ale securității datelor expun numai adrese de e-mail și parole, dar unele includ și date financiare sensibile. Dacă ți-au fost expuse conturi bancare sau numerele cardurilor de credit, alertează banca asupra unei posibilități de fraudă. Urmărește extrasele de cont pentru plăți pe care nu le recunoști.
 fxa-what-to-do-subhead-4 = Obține ajutor pentru a ține minte toate parolele și pentru a le păstra în siguranță.
 fxa-what-to-do-blurb-4 =
-    Managerii de parole, cum ar fi 1Password, LastPass, Dashlane și Bitwarden îți stochează
-    parolele în siguranță și le completează pe site-uri pentru tine. Utilizează un manager de parole
-    pe telefon și pe calculator, ca să nu mai fii nevoit(ă) să le ții minte pe toate.
+    Managerele de parole, cum ar fi 1Password, LastPass, Dashlane și Bitwarden îți stochează
+    parolele în siguranță și le completează pe site-uri pentru tine. Folosește un manager de parole
+    pe telefon și pe calculator, astfel încât să nu trebuiască să le ții minte pe toate.
 # Alerts is a noun
 sign-up-for-alerts = Înregistrează-te pentru alerte
 # Link title
@@ -179,7 +179,7 @@ strength-of-your-pw = Puterea parolelor are un impact direct asupra securități
 create-strong-passwords = Cum să creezi parole puternice
 stop-reusing-pw = Nu refolosi parolele
 create-unique-pw = Creează parole unice și salvează-le într-un loc sigur, cum ar fi un manager de parole.
-five-myths = 5 mituri despre managerii de parole
+five-myths = 5 mituri despre managerele de parole
 create-a-fxa = Creează un { -brand-fxa } pentru un raport complet despre încălcările securității datelor și pentru a primi alerte.
 feat-security-tips = Ponturi de securitate pentru protejarea conturilor
 feat-sensitive = Căutare avansată în încălcările cunoscute ale securității datelor sensibile
@@ -228,7 +228,7 @@ ba-next-step-blurb-1 = Parolele puternice folosesc o combinație de litere mari 
 ba-next-step-2 = Nu mai folosi deloc parola expusă.
 ba-next-step-blurb-2 = Infractorii cibernetici îți pot găsi parola pe dark web și o pot folosi pentru a intra în celelalte conturi pe care le deții. Cea mai bună cale de a-ți proteja conturile este să folosești parole unice pentru fiecare în parte.
 ba-next-step-3 = Obține ajutor pentru a crea parole mai bune și pentru a le păstra în siguranță.
-ba-next-step-blurb-3 = Folosește un manager de parole pentru a crea parole puternice și unice. Managerii de parole stochează toate datele de autentificare în siguranță, astfel încât să le poți accesa pe toate dispozitivele.
+ba-next-step-blurb-3 = Folosește un manager de parole pentru a crea parole puternice și unice. Managerele de parole stochează toate datele de autentificare în siguranță, astfel încât să le poți accesa pe toate dispozitivele tale.
 faq1 = Nu recunosc această companie sau site web. De ce apar în această încălcare?
 faq2 = De ce a durat atât de mult să fiu informat(ă) despre această încălcare a securității datelor?
 faq3 = Cum știu că acesta este un mesaj legitim de e-mail de la { -product-name }?

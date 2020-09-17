@@ -110,7 +110,7 @@ rec-gen-1 =
 # Recommendation subhead
 rec-gen-2-subhead = Păstrează parolele într-un loc sigur
 # Link title
-rec-gen-2-cta = Mituri despre managerii de parole
+rec-gen-2-cta = Mituri despre managerele de parole
 rec-gen-2 =
     Păstrează-ți detaliile datelor de autentificare într-un loc sigur, la care numai tu ai acces, precum 
     un manager de parole. Ușurează și urmărirea tuturor parolelor diferite create.
