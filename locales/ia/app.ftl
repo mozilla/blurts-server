@@ -478,3 +478,4 @@ monitor-promo-body = Recipe un notification si tu informationes personal es expo
 ecosystem-promo-headline = Protege tu vita online con productos de maxime discretion
 ecosystem-promo-body = Tote le productos { -brand-name } honora nostre Promissa re datos personal: Prende minus. Mantene los secur. Nulle secretos.
 promo-ecosystem-cta = Vider tote le productos
+steps-to-resolve-headline = Grados pro resolver iste violation

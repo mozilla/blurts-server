@@ -489,3 +489,4 @@ monitor-promo-body = Ricevi una notifica la prossima volta che le tue informazio
 ecosystem-promo-headline = Proteggi la tua vita in rete con prodotti che mettono la privacy al primo posto
 ecosystem-promo-body = Tutti i prodotti { -brand-name } rispettano la nostra “Garanzia sui dati personali”: raccogli meno dati, mantienili al sicuro, nessun segreto.
 promo-ecosystem-cta = Vedi tutti i prodotti
+steps-to-resolve-headline = Passaggi per risolvere questa violazione

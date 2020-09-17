@@ -377,10 +377,17 @@ marking-this-subhead = Επισήμανση αυτής της παραβίαση
 mark-as-resolve-button = Επισήμανση ως λυμένη
 marked-as-resolved-label = Επισημάνθηκε ως λυμένη
 undo-button = Αναίρεση
+confirmation-1-subhead = Ωραία! Μόλις επιλύσατε την πρώτη σας παραβίαση.
+confirmation-2-body = Λαμβάνετε σημαντικά βήματα για την προστασία των διαδικτυακών λογαριασμών σας.
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Είναι ο νέος σας κωδικός πρόσβασης μοναδικός, ισχυρός και δύσκολος; <a>Μάθετε εδώ</a>
 generic-confirmation-subhead = Αυτή η παραβίαση έχει επισημανθεί ως επιλυμένη
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Για να δείτε την εναπομείνουσα διαρροή, μεταβείτε στον πίνακα ελέγχου.
+       *[other] Για να δείτε τις εναπομείνουσες διαρροές, μεταβείτε στον πίνακα ελέγχου.
+    }
 return-to-breach-details-link = Επιστροφή στις λεπτομέρειες παραβίασης
 go-to-dashboard-link = Μετάβαση στον πίνακα
 # This string appears above a breach resolution progress bar and indicates
@@ -393,17 +400,39 @@ num-resolved =
        *[other] Επιλύθηκαν { $numResolvedBreaches }
     }
 progress-intro-subhead = Νέο στο { -product-name }: Επισήμανση παραβιάσεων ως επιλυμένων
+progress-status =
+    { $numTotalBreaches ->
+       *[other] { $numResolvedBreaches } από { $numTotalBreaches } παραβιάσεις έχουν επισημανθεί ως επιλυμένες
+    }
+progress-complete = Όλες οι γνωστές παραβιάσεις έχουν επισημανθεί ως επιλυμένες
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-3 = <span>Καλή δουλειά με την επίλυση διαρροών!</span> Συνεχίστε έτσι. Απομένουν λίγες ακόμα.
 progress-message-4 = <span>Σχεδόν τελειώσατε!</span> Είστε κοντά στη γραμμή τερματισμού.
+progress-complete-message =
+    <span>Ωραίο δεν είναι;</span> Αν θέλετε να συνεχίσετε, είναι η κατάλληλη στιγμή να 
+    ενημερώσετε άλλες συνδέσεις με ισχυρότερους κωδικούς πρόσβασης.
 
 ##
 
 resolve-this-breach-link = Επίλυση παραβίασης
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Επισημασμένα ως επιλυμένα:
 hide-resolved-button = Απόκρυψη επιλυμένων
 show-resolved-button = Εμφάνιση επιλυμένων
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Εκτεθειμένος κωδικός πρόσβασης σε μη επιλυμένες παραβιάσεις
+       *[other] Εκτεθειμένοι κωδικοί πρόσβασης σε μη επιλυμένες παραβιάσεις
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Γνωστή παραβίαση δεδομένων επισημάνθηκε ως επιλυμένη
+       *[other] Γνωστές παραβιάσεις δεδομένων επισημάνθηκαν ως επιλυμένες
+    }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Νέο
 mobile-promo-headline = Φέρτε το { -brand-name } στο τηλέφωνο και το tablet σας
@@ -412,4 +441,6 @@ promo-lockwise-cta = Λήψη { -brand-lockwise }
 fpn-promo-headline = Καλύψτε την τοποθεσία σας από ιστοσελίδες και ιχνηλάτες
 promo-fpn-cta = Λήψη { -brand-fpn }
 monitor-promo-headline = Μάθετε για νέες παραβιάσεις δεδομένων
+ecosystem-promo-body = Όλα τα προϊόντα { -brand-name } τιμούν την υπόσχεση μας σχετικά με τα προσωπικά δεδομένα: Λιγότερα δεδομένα. Με ασφάλεια. Χωρίς μυστικά.
 promo-ecosystem-cta = Προβολή όλων των προϊόντων
+steps-to-resolve-headline = Βήματα επίλυσης για αυτή τη διαρροή

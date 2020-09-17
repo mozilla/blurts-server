@@ -541,3 +541,4 @@ monitor-promo-body = Nhận thông báo vào lần tiếp theo thông tin cá nh
 ecosystem-promo-headline = Bảo vệ cuộc sống trực tuyến của bạn với các sản phẩm đầu tiên về bảo mật
 ecosystem-promo-body = Mọi sản phẩm { -brand-name } chúng tôi làm đều tôn vinh lời hứa dữ liệu cá nhân của chúng tôi: Lấy ít hơn. Giữ nó an toàn. Không có bí mật.
 promo-ecosystem-cta = Xem tất cả sản phẩm
+steps-to-resolve-headline = Các bước để giải quyết rò rỉ này

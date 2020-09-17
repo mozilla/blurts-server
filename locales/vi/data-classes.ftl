@@ -70,6 +70,7 @@ mac-addresses = Địa chỉ MAC
 marital-statuses = Tình trạng hôn nhân
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
 mnemonic-phrases = Từ vựng giúp ghi nhớ
+mothers-maiden-names = Tên thời con gái
 names = Tên
 nationalities = Quốc tịch
 net-worths = Giá trị ròng
@@ -115,6 +116,7 @@ social-connections = Kết nối xã hội
 social-media-profiles = Hồ sơ truyền thông xã hội
 social-security-numbers = Số an sinh xã hội
 spoken-languages = Ngôn ngữ nói
+spouses-names = Tên vợ/chồng
 support-tickets = Vé hỗ trợ
 survey-results = Kết quả khảo sát
 taxation-records = Hồ sơ thuế

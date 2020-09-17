@@ -554,3 +554,4 @@ monitor-promo-body = Bli meddelad nästa gång din personliga information expone
 ecosystem-promo-headline = Skydda ditt liv på nätet med integritetsprodukter
 ecosystem-promo-body = Alla produkter från { -brand-name } respekterar vårt löfte om personlig data: Samla in mindre. Förvara det säkert. Inga hemligheter.
 promo-ecosystem-cta = Se alla produkter
+steps-to-resolve-headline = Åtgärder för att lösa detta intrång

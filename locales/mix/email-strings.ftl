@@ -16,6 +16,8 @@ verify-email-cta = Kunchee Korreo
 see-all-breaches = Kunche'e filtración
 # Headline of verification email
 email-link-expires = Enlace yo ku ntoi titsi 24 horas
+# Email headline
+email-breach-summary-for-email = Tutu filtración { $userEmail }
 pre-fxa-tout-2 = Kunche'e kanu ña
 pre-fxa-tout-3 = Na tachuin  korreo
 # Button at the bottom of pre-fxa email.

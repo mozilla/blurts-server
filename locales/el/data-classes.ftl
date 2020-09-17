@@ -70,6 +70,7 @@ mac-addresses = Διευθύνσεις MAC
 marital-statuses = Οικογενειακές καταστάσεις
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
 mnemonic-phrases = Μνημονικές φράσεις
+mothers-maiden-names = Πατρικά ονόματα μητέρων
 names = Ονόματα
 nationalities = Εθνικότητες
 net-worths = Καθαρές αξίες

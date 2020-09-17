@@ -504,3 +504,4 @@ monitor-promo-body = Kişisel bilgileriniz yeni bir veri ihlalinde ele geçerili
 ecosystem-promo-headline = Gizliliğinize önem veren ürünlerle internetteki yaşamınızı koruyun
 ecosystem-promo-body = Tüm { -brand-name } ürünleri Kişisel Veri Sözümüzü yerine getirir: Daha az veri topla. Güvenle sakla. Sır tutma.
 promo-ecosystem-cta = Tüm ürünleri görün
+steps-to-resolve-headline = Bu ihlali giderme adımları

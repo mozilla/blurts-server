@@ -582,3 +582,4 @@ monitor-promo-body = Derbyniwch neges y tro nesaf y bydd eich manylion personol 
 ecosystem-promo-headline = Diogelwch eich bywyd ar-lein gyda chynnyrch preifatrwydd-yn-gyntaf
 ecosystem-promo-body = Mae pob un o gynnyrch { -brand-name } yn anrhydeddu ein Addewid Data Personol: Cymryd llai. Cadw nhw'n ddiogel. Dim cyfrinachau.
 promo-ecosystem-cta = Gweld yr Holl Gynnyrch
+steps-to-resolve-headline = Camau i ddatrys y tor-data hwn

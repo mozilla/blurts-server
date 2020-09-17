@@ -540,3 +540,4 @@ monitor-promo-body = Og̃uahẽta ndéve marandu’i nemba’etéva ikatúramo o
 ecosystem-promo-headline = Emo’ã nde rekove ñandutípe apopyre iñemiguáva ndive
 ecosystem-promo-body = Opaite apopyre { -brand-name } oreko ore ñe’ẽ mba’ekuaarã nemba’évare: he’u’ive. Ereko tekorosãme. Kañygua’ỹre.
 promo-ecosystem-cta = Ehecha opaite apopyre
+steps-to-resolve-headline = Tape emoĩporã hag̃ua ko ñembyai

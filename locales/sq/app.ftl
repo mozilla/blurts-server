@@ -496,3 +496,4 @@ monitor-promo-body = Njoftohuni herës tjetër që të dhënat tuaja personale e
 ecosystem-promo-headline = Mbroni jetën tuaj internetore me produkte që vënë privatësinë mbi gjithçka
 ecosystem-promo-body = Krejt produktet { -brand-name } respektojnë Premtimin tonë Mbi të Dhënat Personale: Grumbullim sa më pak. Mbajtje e parrezik. Pa të fshehta.
 promo-ecosystem-cta = Shihni Krejt Produktet
+steps-to-resolve-headline = Hapa për të zgjidhur këtë cenim

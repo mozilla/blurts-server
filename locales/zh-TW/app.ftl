@@ -463,3 +463,4 @@ monitor-promo-body = 在您的個人資訊出現在下一場外洩事件時獲�
 ecosystem-promo-headline = 透過隱私優先的產品保護您的線上生活
 ecosystem-promo-body = 所有 { -brand-name } 都遵循我們對個人資料隱私的承諾: 能少拿就少拿、確保資料安全、絕不偷偷來。
 promo-ecosystem-cta = 看所有產品
+steps-to-resolve-headline = 解決此資料外洩事件的步驟
