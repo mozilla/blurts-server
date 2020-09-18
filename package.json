@@ -66,6 +66,7 @@
     "npm-audit-ci-wrapper": "3.0.1",
     "onchange": "6.1.1",
     "postcss-cli": "6.1.3",
+    "redis-mock": "0.52.0",
     "stylelint": "9.10.1",
     "stylelint-config-standard": "18.3.0",
     "uglify-js": "3.10.2",
