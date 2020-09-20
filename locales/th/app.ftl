@@ -218,6 +218,7 @@ new-breaches-found =
     }
 sign-up-headline-1 = รับการแจ้งเตือนแบบต่อเนื่องด้วย { -brand-fxa }
 account-not-required = ไม่จำเป็นต้องใช้เบราว์เซอร์ { -brand-name } สำหรับ { -brand-fxa } คุณอาจได้รับข้อมูลเกี่ยวกับบริการของ { -brand-Mozilla }
+was-your-info-exposed = ข้อมูลของคุณถูกเปิดเผยในการรั่วไหลของข้อมูล { $breachName } หรือไม่
 all-breaches-headline = การรั่วไหลทั้งหมดใน { -product-name }
 search-breaches = ค้นหาการรั่วไหล
 # "Appears in-page as: Showing: All Breaches"
