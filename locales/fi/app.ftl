@@ -557,3 +557,4 @@ monitor-promo-body = Vastaanota ilmoitus, kun henkilökohtaisia tietojasi paljas
 ecosystem-promo-headline = Suojaa elämääsi verkossa yksityisyyden ensisijaiseksi asettavilla tuotteilla
 ecosystem-promo-body = Kaikki { -brand-name }-tuotteet kunnioittavat henkilötietolupaustamme: Kerää vähemmän. Pidä ne turvassa. Ei salaisuuksia.
 promo-ecosystem-cta = Katso kaikki tuotteet
+steps-to-resolve-headline = Vaiheet tämän vuodon ratkaisemiseksi
