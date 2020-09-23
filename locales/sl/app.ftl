@@ -594,3 +594,4 @@ monitor-promo-body = Prejmite obvestilo naslednjič, ko bodo vaši podatki izpos
 ecosystem-promo-headline = Zaščitite svoje spletno življenje z izdelki, ki na prvo mesto postavljajo zasebnost
 ecosystem-promo-body = Vsi izdelki { -brand-name } sledijo naši obljubi o ravnanju z osebnimi podatki: Vzemi manj. Ohrani na varnem. Brez skrivnosti.
 promo-ecosystem-cta = Oglejte si vse izdelke
+steps-to-resolve-headline = Koraki za razrešitev te kraje podatkov
