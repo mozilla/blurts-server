@@ -149,6 +149,11 @@ what-data = Ποια δεδομένα παραβιάστηκαν:
 sensitive-sites = Πώς αντιμετωπίζει το { -product-name } τις ευαίσθητες ιστοσελίδες;
 delayed-reporting-headline = Γιατί πέρασε τόσος καιρός πριν αναφερθεί αυτή η διαρροή;
 about-fxm-headline = Σχετικά με το { -product-name }
+about-fxm-blurb =
+    Το { -product-name } σας προειδοποιεί αν εμφανιστούν οι διαδικτυακοί σας λογαριασμοί 
+    σε κάποιο παραβίαση δεδομένων. Μάθετε αν έχετε επηρεαστεί, λάβετε ειδοποιήσεις για νέες διαρροές 
+    και λάβετε μέτρα για την προστασία των λογαριασμών σας. Το { -product-name } παρέχεται 
+    από τη { -brand-Mozilla }.
 # How Firefox Monitor works
 how-fxm-works = Πώς λειτουργεί το { -product-name }
 how-fxm-1-headline = Πραγματοποιήστε μια βασική αναζήτηση
@@ -158,6 +163,10 @@ how-fxm-1-blurb =
     αυτά που περιέχουν ευαίσθητες προσωπικές πληροφορίες.
 how-fxm-2-headline = Εγγραφείτε για παρακολούθηση παραβιάσεων
 how-fxm-3-headline = Λάβετε ειδοποιήσεις στο πρόγραμμα περιήγησής σας
+how-fxm-3-blurb =
+    Με το { -brand-name }, θα λάβετε μια ειδοποίηση αν επισκεφθείτε 
+    κάποια παραβιασμένη ιστοσελίδα. Μάθετε άμεσα αν επηρεαστήκατε από τη διαρροή, 
+    καθώς και τι μπορείτε να κάνετε γι' αυτό.
 wtd-after-website = Τι να κάνετε μετά από μια παραβίαση ιστοσελίδας:
 wtd-after-data-agg = Τι πρέπει να κάνετε μετά από μια παραβίαση συγκέντρωσης δεδομένων:
 protect-your-privacy = Προστατέψτε το διαδικτυακό σας απόρρητο
@@ -227,6 +236,7 @@ new-breaches-found =
        *[other] ΒΡΕΘΗΚΑΝ { $breachCount } ΝΕΕΣ ΠΑΡΑΒΙΑΣΕΙΣ
     }
 sign-up-headline-1 = Λάβετε συνεχείς ειδοποιήσεις με ένα { -brand-fxa }.
+account-not-required = Δεν απαιτείται το { -brand-name } για ένα { -brand-fxa }. Μπορείτε να λάβετε πληροφορίες σχετικά με τις υπηρεσίες { -brand-Mozilla }.
 was-your-info-exposed = Εκτέθηκαν οι πληροοφορίες σας στην παραβίαση δεδομένων { $breachName };
 find-out-if = Μάθετε αν τα δεδομένα σας εκτέθηκαν σε αυτή την παραβίαση.
 fb-not-comp = Αυτό το email δεν εμφανίστηκε στην παραβίαση { $breachName }.
@@ -250,6 +260,7 @@ currently-showing = Εμφάνιση:
 
 ## Updated error messages
 
+error-bot-headline = Προσωρινή αναστολή αναζητήσεων
 error-csrf-headline = Ο χρόνος συνεδρίας έληξε
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
