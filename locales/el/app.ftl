@@ -196,7 +196,7 @@ appears-in-x-breaches =
        *[other] Εμφανίζεται σε { $breachCount } γνωστές παραβιάσεις.
     }
 check-for-breaches = Έλεγχος για παραβιάσεις
-find-out-what-hackers-know = Ανακαλύψτε τι γνωρίζουν ήδη οι χάκερ για εσάς. Μάθετε πώς να είστε πάντα ένα βήμα μπροστά τους.
+find-out-what-hackers-know = Ανακαλύψτε τι γνωρίζουν ήδη οι hackers για εσάς. Μάθετε πώς να είστε πάντα ένα βήμα μπροστά.
 search-for-your-email = Αναζητήστε τη διεύθυνση email σας σε παραβιάσεις δημόσιων δεδομένων από το 2007.
 back-to-top = Πίσω στην κορυφή
 comm-opt-1 = Αποστολή όλων των ειδοποιήσεων παραβιάσεων στο { $primaryEmail }.
@@ -301,7 +301,7 @@ security-tips-headline = Συμβουλές ασφάλειας για να πρ�
 steps-to-protect = Βήματα για την προστασία της διαδικτυακής σας ταυτότητας
 take-further-steps = Λάβετε περαιτέρω μέτρα για να προστατεύσετε την ταυτότητά σας
 alert-about-new-breaches = Ειδοποίηση σχετικά με νέες παραβιάσεις
-see-if-youve-been-part = Δείτε αν έχετε εμπλακεί σε διαρροή δεδομένων στο διαδίκτυο.
+see-if-youve-been-part = Δείτε αν έχετε εμπλακεί σε παραβίαση δεδομένων.
 get-ongoing-breach-monitoring = Λάβετε συνεχή εποπτεία παραβίασης για πολλαπλές διευθύνσεις email.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Μάθετε
