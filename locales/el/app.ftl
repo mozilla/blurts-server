@@ -64,7 +64,7 @@ unsub-headline = Κατάργησης εγγραφής από το { -product-na
 unsub-blurb = Το email σας θα αφαιρεθεί από τη λίστα του { -product-name-nowrap } και δεν θα λαμβάνετε πλέον ειδοποιήσεις όταν ανακοινώνονται νέες παραβιάσεις.
 unsub-button = Κατάργηση εγγραφής
 # Breach data provided by Have I Been Pwned.
-hibp-attribution = Δεδομένα παραβίασης από το { $hibp-link }
+hibp-attribution = Τα δεδομένα παραβιάσεων παρέχονται από το { $hibp-link }
 share-twitter = Οι περισσότεροι άνθρωποι έχουν περίπου 100 διαδικτυακούς λογαριασμούς. Έχει εκτεθεί κάποιος από τους δικούς σας σε παραβίαση δεδομένων; Μάθετε.
 share-facebook-headline = Μάθετε αν υπήρξατε θύμα της παραβίασης δεδομένων
 share-facebook-blurb = Έχουν εκτεθεί οι διαδικτυακοί σας λογαριασμοί σε παραβίαση δεδομένων;
@@ -123,13 +123,13 @@ open-fxa-menu = Άνοιγμα πλοήγησης { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ΠΡΟΣΦΑΤΗ ΠΡΟΣΘΗΚΗ
 # Link title
-more-about-this-breach = Σχετικά με αυτή τη διαρροή
+more-about-this-breach = Περισσότερα για αυτή την παραβίαση
 take-control = Ανακτήστε τον έλεγχο των προσωπικών σας δεδομένων.
 cant-stop-hackers = Δεν μπορείτε να εμποδίσετε τους χάκερ από το να χακάρουν. Αλλά μπορείτε να αποφύγετε τις κακές συνήθειες που κάνουν τη δουλειά τους εύκολη.
 read-more-tips = Διαβάστε περισσότερες συμβουλές ασφαλείας
 how-hackers-work = Κατανοήστε πώς δρουν οι hackers
 monitor-your-online-accounts = Εγγραφείτε για παρακολούθηση παραβιάσεων με ένα { -brand-fxa }.
-stay-alert = Μείνετε σε εγρήγορση για νέες παραβιάσεις
+stay-alert = Ενημέρωση για νέες παραβιάσεις
 if-your-info = Αν οι πληροφορίες σας εμφανιστούν σε νέα παραβίαση δεδομένων, θα σας ειδοποιήσουμε.
 search-all-emails = Αναζητήστε όλες τις διευθύνσεις email σας για παραβιάσεις και λάβετε ειδοποιήσεις σχετικά με νέες απειλές.
 monitor-several-emails = Εποπτεία πολλών emails
@@ -219,7 +219,7 @@ remove-fxm-blurb =
 # Button title
 manage-email-addresses = Διαχείριση διευθύνσεων email
 # Link title
-latest-breach-link = Δείτε αν εμπλέκεστε σε αυτή τη διαρροή
+latest-breach-link = Δείτε αν επηρεαστήκατε από αυτή την παραβίαση
 welcome-back = Καλώς ορίσατε και πάλι, { $userName }!
 welcome-user = Καλώς ορίσατε, { $userName }!
 breach-alert-subject = Το { -product-name } βρήκε το email σας σε νέα παραβίαση δεδομένων
