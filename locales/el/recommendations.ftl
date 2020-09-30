@@ -26,6 +26,7 @@ rec-ip-subhead = Χρησιμοποιήστε μια υπηρεσία που α�
 rec-ip-us-cta = Δοκιμή του { -brand-fpn }
 # Recommendation subhead
 rec-moz-vpn-cta = Δοκιμή του { -brand-mozilla-vpn }
+rec-hist-pw-subhead = Αποφύγετε την επαναχρησιμοποίηση κωδικών πρόσβασης
 # Link title
 rec-hist-pw-cta-fx = Προβολή συνδέσεων στο { -brand-name }
 # Recommendation subhead
@@ -48,5 +49,8 @@ rec-gen-2-subhead = Αποθηκεύστε τους κωδικούς πρόσβ�
 rec-gen-2-cta = Μύθοι σχετικά με τη διαχείριση κωδικών πρόσβασης
 # Link title
 rec-gen-3-cta = Διαβάστε περισσότερες συμβουλές ασφαλείας
+rec-gen-3 =
+    Μην μοιράζεστε τα προσωπικά σας δεδομένα αν δεν χρειάζεται. Αν σας ζητηθεί να 
+    εισάγετε τη διεύθυνση email σας, τον ταχυδρομικό κώδικα ή τον αριθμό τηλεφώνου σας, μπορείτε να πείτε όχι.
 # Recommendation subhead
 rec-gen-4-subhead = Ενημερώνετε τακτικά το λογισμικό και τις εφαρμογές
