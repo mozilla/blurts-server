@@ -42,7 +42,7 @@ rec-address-subhead = Αποφύγετε τη χρήση διευθύνσεων 
 # Recommendation subhead
 rec-gen-1-subhead = Χρησιμοποιήστε μοναδικούς, ισχυρούς κωδικούς πρόσβασης για κάθε λογαριασμό
 # Link title
-rec-gen-1-cta = Τρόπος δημιουργίας ισχυρών κωδικών πρόσβασης
+rec-gen-1-cta = Δημιουργία ισχυρών κωδικών πρόσβασης
 # Recommendation subhead
 rec-gen-2-subhead = Αποθηκεύστε τους κωδικούς πρόσβασης σε ασφαλές μέρος
 # Link title
