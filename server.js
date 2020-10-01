@@ -12,7 +12,6 @@ const connectRedis = require("connect-redis");
 const express = require("express");
 const exphbs = require("express-handlebars");
 const helmet = require("helmet");
-const redis = require("redis");
 const session = require("express-session");
 const { URL } = require("url");
 
@@ -38,8 +37,17 @@ const BreachRoutes= require("./routes/breach-details");
 
 const log = mozlog("server");
 
-const redisStore = connectRedis(session);
-const redisClient = redis.createClient({url: AppConstants.REDIS_URL });
+function getRedisStore() {
+  const redisStoreConstructor = connectRedis(session);
+  if (["", "redis-mock"].includes(AppConstants.REDIS_URL)) {
+    // eslint-disable-next-line node/no-unpublished-require
+    const redis = require("redis-mock");
+    return new redisStoreConstructor({ client: redis.createClient() });
+  }
+  const redis = require("redis");
+  return new redisStoreConstructor({ client: redis.createClient({url: AppConstants.REDIS_URL }) });
+}
+
 const app = express();
 
 
@@ -175,7 +183,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   secret: AppConstants.COOKIE_SECRET,
-  store: new redisStore({ client: redisClient }),
+  store: getRedisStore(),
 }));
 
 app.use(pickLanguage);
