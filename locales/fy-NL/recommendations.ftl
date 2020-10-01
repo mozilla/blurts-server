@@ -61,6 +61,12 @@ rec-ip-non-us =
     Jo Internet Protocol-adres (IP-adres) bringt jo lokaasje 
     en ynternetprovider oan it ljocht. Mei in firtueel partikulier netwurk (VPN) kinne jo jo lokaasje ferbergje 
     en jo IP-adres maskearje.
+# Recommendation subhead
+rec-moz-vpn-cta = Probearje { -brand-mozilla-vpn }
+rec-moz-vpn =
+    Jo Internet Protocol (IP)-adres kin jo lokaasje en ynternetprovider ûnthulle. In service as
+    { -brand-fpn } ferstoppet jo IP-adres en lokaasje foar { -brand-name } en in service as { -brand-mozilla-vpn } ferstoppet jo
+    IP-adres en lokaasje foar jo folsleine apparaat.
 rec-hist-pw-subhead = Mij opnij gebrûk fan wachtwurden
 # Link title
 rec-hist-pw-cta-fx = Oanmeldingen besjen yn { -brand-name }

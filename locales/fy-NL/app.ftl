@@ -12,12 +12,16 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox-account
 terms-and-privacy = Betingsten en privacy
 GitHub-link-title = GitHub
-error-scan-page-token = Jo hawwe te folle e-mailadressen yn in koart tiidrek probearre te skannen. Om befeiligingsredenen hawwe wy jo sykmooglikheid tydlik blokkearre. Jo kinne it letter wer probearje.
+error-scan-page-token = Jo hawwe te folle e-mailadressen yn in koart tiidrek probearre te scannen. Om befeiligingsredenen hawwe wy jo sykmooglikheid tydlik blokkearre. Jo kinne it letter wer probearje.
 error-could-not-add-email = Koe e-mailadres net oan database tafoegje.
 error-not-subscribed = Dit e-mailadres is net abonnearre op { -product-name }.
 error-hibp-throttled = Te folle ferbiningen mei { -brand-HIBP }.
@@ -28,7 +32,7 @@ error-to-finish-verifying = Om de ferifikaasje fan dit e-mailadres foar { -produ
 home-title = { -product-name }
 home-not-found = Side net fûn.
 oauth-invalid-session = Unjildige sesje
-scan-title = { -product-name } : Skanresultaten
+scan-title = { -product-name } : Scanresultaten
 user-add-invalid-email = Unjildich e-mailadres
 user-add-too-many-emails = Jo bewekje it maksimale oantal e-mailadressen.
 user-add-email-verify-subject = Ferifiearje jo abonnemint op { -product-name }.
@@ -184,7 +188,7 @@ what-is-data-agg-blurb =
     Data-samlers of gegevenshannelers sammelje ynformaasje út iepenbiere
     boarnen en keapje dizze fan oare bedriuwen. Se fetsje dizze gegevens tegearre om se foar marketingdoeleinen
     oan bedriuwen te ferkeapjen. Slachtoffers fan dizze lekken hawwe minder kâns om troch finansjele fraude troffen te
-    wurden, mar hackers soenen dizze gegevens brûke kinne om harren as har foar te dwaan of harren te profilearjen.
+    wurden, mar hackers soene dizze gegevens brûke kinne om harren as har foar te dwaan of harren te profilearjen.
 protect-your-privacy = Jo online privacy beskermje
 no-pw-to-change = Yn tsjinstelling ta in websitedatalek, is der gjin wachtwurd dat wizige wurde moat.
 avoid-personal-info = Mij it gebrûk fan persoanlike gegevens yn wachtwurden
@@ -214,6 +218,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Kontrolearje op datalekken
 find-out-what-hackers-know = Untdek wat hackers al oer jo witte. Lear hoe't jo harren in stap yn it foar bliuwe kinne.
+get-email-alerts = Bliuw feilich: ûntfang e-mailberjochten wannear't jo gegevens foarkomme yn in bekend datalek
 search-for-your-email = Sykje werom oant 2007 nei jo e-mailadres yn iepenbiere datalekken.
 back-to-top = Werom nei boppe
 comm-opt-0 = Stjoer my in e-mailberjocht as ien fan myn e-mailadressen hjirûnder yn in datalek ferskynt.
@@ -531,3 +536,18 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nij
+mobile-promo-headline = Bring { -brand-name } nei jo telefoan en tablet
+mobile-promo-body = Fluch, privee en feilich sneupe oeral wêr't jo ek binne. Sykje { -brand-name } yn de Google Play en App Store.
+mobile-promo-cta = Download { -brand-name } op Android en iOS
+promo-lockwise-headline = Nim jo wachtwurden oeral mei hinne
+lockwise-promo-body = Hâld jo oanmeldingen by op alle apparaten. Benaderje se feilich fan jo kompjûter, telefoan of tablet ôf.
+promo-lockwise-cta = Download { -brand-lockwise }
+fpn-promo-headline = Maskearje jo lokaasje foar websites en trackers
+promo-fpn-body = { -brand-fpn } smyt de websites en gegevenssammelers dy't jo mei advertinsjes profilearje fuort, troch jo echte IP-adres te maskearjen.
+promo-fpn-cta = Download { -brand-fpn }
+monitor-promo-headline = Kom mear te witten oer nije datalekken
+monitor-promo-body = Untfang de folgjende kear in melding wannear't jo persoanlike gegevens foarkomme yn in bekend datalek.
+ecosystem-promo-headline = Beskermje jo onlinelibben mei produkten dy't privacy foarop stelle
+ecosystem-promo-body = Alles wat { -brand-name } docht, stiet yn it teken fan ús belofte foar persoanlike gegevens: nim minder. Hâld it feilich. Gjin geheimen.
+promo-ecosystem-cta = Alle produkten
+steps-to-resolve-headline = Stappen om dit lek op te lossen

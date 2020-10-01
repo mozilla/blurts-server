@@ -12,9 +12,13 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Red privada de Firefox
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Cuenta de Firefox
 terms-and-privacy = Términos y privacidad
 GitHub-link-title = GitHub
 error-scan-page-token = Has intentado escanear demasiadas direcciones de correo electrónico en un breve periodo de tiempo. Por razones de seguridad, hemos bloqueado tus búsquedas temporalmente. Puedes volver a intentarlo de nuevo más tarde.
@@ -41,7 +45,7 @@ user-unsubscribe-token-error = Se requiere un token para cancelar la suscripció
 user-unsubscribe-token-email-error = Para darse de baja se requiere un token y un hash de correo electrónico.
 user-unsubscribe-title = { -product-name } : Cancelar suscripción
 pwt-section-headline = Contraseñas más robustas = Mejor protección
-landing-headline = Tu derecho a estar a salvo de los criminales informáticos empieza aquí.
+landing-headline = Tu derecho a estar a salvo de los piratas informáticos empieza aquí.
 scan-placeholder = Introduce una dirección de correo electrónico
 scan-submit = Busca tu correo electrónico
 scan-error = Debe ser un correo electrónico válido.
@@ -107,7 +111,7 @@ latest-breach = ÚLTIMA FILTRACIÓN AÑADIDA
 # Link title
 more-about-this-breach = Más sobre esta filtración
 take-control = Recupera el control de tu información personal.
-cant-stop-hackers = No puedes evitar que te hackeen, pero sí puedes evitar malas prácticas que le facilitan el trabajo a los hackeadores.
+cant-stop-hackers = No puedes evitar se comprometan datos, pero sí puedes evitar malas prácticas que le facilitan el trabajo a los piratas informáticos.
 read-more-tips = Leer más sobre consejos de seguridad
 how-hackers-work = Descubre cómo trabajan los hackers
 monitor-your-online-accounts = Regístrate para monitorizar filtraciones con un { -brand-fxa }.
@@ -145,9 +149,9 @@ fxm-warns-you = { -product-name } te advierte si tus cuentas en línea estuviero
 how-fxm-works = Cómo funciona { -product-name }
 how-fxm-1-headline = Hacer una búsqueda básica
 how-fxm-1-blurb =
-    Busca tu dirección de correo en las filtraciones de datos públicas desde 
+    Busca tu dirección de correo en las filtraciones de datos públicos desde 
     2007. Esta búsqueda básica mostrará la mayoría de las filtraciones de datos, pero no
-    las que contienen información personal sensible.
+    los que contienen información personal sensible.
 how-fxm-2-headline = Registrarse para mantenerse informado sobre las filtraciones
 how-fxm-2-blurb =
     Crea una { -brand-fxa } para monitorizar las filtraciones de datos de tu correo.
@@ -191,8 +195,9 @@ appears-in-x-breaches =
        *[other] Aparece en { $breachCount } filtraciones conocidas.
     }
 check-for-breaches = Busca filtraciones
-find-out-what-hackers-know = Averigua qué saben de ti los hackeadores. Descubre cómo ir siempre un paso por delante.
-search-for-your-email = Busca tu dirección de correo en filtraciones de datos públicas hasta 2007.
+find-out-what-hackers-know = Averigua qué saben de ti los piratas informáticos. Descubre cómo ir siempre un paso por delante.
+get-email-alerts = Mantente seguro: recibe alertas por correo cuando tu información aparezca en una filtración conocida
+search-for-your-email = Busca tu dirección de correo en filtraciones de datos públicas desde 2007.
 back-to-top = Volver al inicio
 comm-opt-0 = Avísame si mi dirección de correo aparece en una filtración de datos.
 comm-opt-1 = Enviar todas las alertas de filtraciones a { $primaryEmail }.
@@ -318,8 +323,8 @@ other-monitored-emails = Otros correos monitorizados
 email-verification-required = Tienes que verificar la dirección de correo
 fxa-primary-email = { -brand-fxa } correo - principal
 what-is-a-website-breach = ¿Qué es una filtración web?
-website-breach-blurb = Una filtración web se da cuando los criminales cibernéticos roban, copian o exponen información personal de cuentas digitales. Suelen ser el resultado de piratas informáticos que encuentran puntos débiles en la seguridad de esas páginas, aunque también puede ser que se filtre información de la cuenta por accidente.
-security-tips-headline = Consejos de seguridad para protegerte frente a hackers
+website-breach-blurb = Una filtración web se da cuando los criminales informáticos roban, copian o exponen información personal de cuentas digitales. Suelen ser el resultado de piratas informáticos que encuentran puntos débiles en la seguridad de esas páginas, aunque también puede ser que se filtre información de la cuenta por accidente.
+security-tips-headline = Consejos de seguridad para protegerte frente a piratas informáticos
 steps-to-protect = Sigue estos pasos para proteger tu identidad en línea
 take-further-steps = Sigue estos consejos para proteger tu identidad
 alert-about-new-breaches = Avisarme cuando haya nuevas filtraciones
@@ -394,11 +399,11 @@ breach-alert-notifications = Notificaciones sobre filtraciones
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Filtración añadida:
-how-hackers-work-desc = Protege tus contraseñas de los criminales cibernéticos, porque eso es lo que más les importa.
+how-hackers-work-desc = Protege tus contraseñas de los criminales informáticos, porque eso es lo que más les importa.
 what-to-do-after-breach-desc = Bloquea tus cuentas para que tu información no caiga en las manos equivocadas.
 create-strong-passwords-desc = Haz que tus contraseñas sean seguras y difíciles de adivinar.
 steps-to-protect-desc = Te ayudamos a entender las amenazas más comunes y cómo saber qué buscar.
-five-myths-desc = Descubre cómo evitar que los malos hábitos al crear contraseñas les facilite el trabajo a los hackeadores.
+five-myths-desc = Descubre cómo evitar que los malos hábitos al crear contraseñas les facilite el trabajo a los piratas informáticos.
 take-further-steps-desc = Descubre cómo mitigar los riesgos de robo de identidad para evitar pérdidas financieras.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = ¡Cambios guardados!
@@ -407,25 +412,115 @@ rec-section-headline = Qué hacer con esta filtración
 rec-section-subhead = Te recomendamos que sigas estos pasos para mantener tu información privada segura y proteger tu identidad digital
 # Section headline
 rec-section-headline-no-pw = Qué hacer para proteger tu información personal
+rec-section-subhead-no-pw = Aunque las contraseñas no estuvieron expuestas en esta filtración, todavía hay pasos que puedes seguir para proteger mejor tu información personal.
 # Button
 see-additional-recs = Ver recomendaciones adicionales
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+resolve-top-notification = { $affectedEmail } apareció en esta filtración. <a>Qué hacer a continuación</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+       *[other] { $numAffectedEmails } de tus cuentas de correo aparecieron en esta filtración. <a>Qué hacer a continuación</a>
+    }
 
 ##
 
+marking-this-subhead = Marcando esta filtración como resuelta
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Una vez que hayas seguido los pasos necesarios para afrontar esta filtración</span>,
+    puedes marcarla como resuelta. Todavía puedes acceder en cualquier momento
+    desde tu panel a los detalles sobre la filtración.
 mark-as-resolve-button = Marcar como resuelto
 marked-as-resolved-label = Marcado como resuelto
 undo-button = Deshacer
-confirmation-2-subhead = ¡Tomad eso, hackers!
+confirmation-1-subhead = ¡Perfecto! Acabas de resolver tu primera filtración.
+confirmation-1-body = Mantente así. Revisa tu panel de control para ver si queda algo más por hacer.
+confirmation-2-subhead = ¡Tomad eso, piratas informáticos!
+confirmation-2-body = Estás tomando importantes medidas para proteger tus cuentas en línea.
+confirmation-3-subhead = Otro menos. ¡Buen trabajo!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = ¿Tu nueva contraseña es única, robusta y difícil de adivinar? <a>Descúbrelo</a>
+generic-confirmation-subhead = Esta filtración fue marcada como resuelta
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Para ver la filtración pendiente, ve a tu panel de control.
+       *[other] Para ver todas las filtraciones pendientes, ve a tu panel de control.
+    }
+return-to-breach-details-link = Volver a los detalles de la filtración
 go-to-dashboard-link = Ir al panel de control
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% completado
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } resuelta
+       *[other] { $numResolvedBreaches } resueltas
+    }
+progress-intro-subhead = Nuevo en { -product-name }: marcar filtraciones como resueltas
+progress-intro-message =
+    Después de revisar los detalles sobre una filtración y tomar las medidas para proteger 
+    tu información personal, puedes marcar las filtraciones como resueltas.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } de { $numTotalBreaches } filtración marcada como resuelta
+       *[other] { $numResolvedBreaches } de  { $numTotalBreaches } filtraciones marcadas como resueltas
+    }
+progress-complete = Todas las filtraciones conocidas se han marcado como resueltas
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>¡Has tenido un gran comienzo!</span> Echa un vistazo a las filtraciones restantes para saber
+    qué pasos tomar.
+progress-message-2 =
+    <span>¡Sigue así!</span> Los pequeños cambios como la actualización de contraseñas tienen un gran impacto para 
+    mantener segura tu información personal.
+progress-message-3 = <span>¡Buen trabajo resolviendo esas filtraciones!</span> Continúa así. Quedan algunas más.
+progress-message-4 = <span>¡Casi terminado!</span> Estás muy cerca de la línea de meta.
+progress-complete-message =
+    <span>¿Te sientes bien, verdad?</span> Si quieres continuar, éste es un buen momento para 
+    actualizar otros inicios de sesión con contraseñas más seguras.
 
 ##
 
+resolve-this-breach-link = Resolver esta filtración
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Marcada como resuelta:
+hide-resolved-button = Ocultar resueltas
 show-resolved-button = Mostrar resueltos
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Contraseña expuesta en filtraciones no resueltas
+       *[other] Contraseñas expuestas en filtraciones no resueltas
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Filtración de datos conocida marcada como resuelta
+       *[other] Filtraciones de datos conocidas marcadas como resueltas
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Nueva
+mobile-promo-headline = Lleva { -brand-name } en tu teléfono y tableta
+mobile-promo-body = Navegación rápida, privada y segura donde quiera que vayas. Encuentra { -brand-name } en Google Play y App Store.
+mobile-promo-cta = Obtén { -brand-name } en Android e iOS
+promo-lockwise-headline = Lleva tus contraseñas a todas partes
+lockwise-promo-body = Mantén tus inicios de sesión en todos tus dispositivos. Accede a ellos de forma segura desde tu ordenador, móvil o tablet.
+promo-lockwise-cta = Obtener { -brand-lockwise }
+fpn-promo-headline = Oculta tu ubicación de sitios web y rastreadores
+promo-fpn-body = { -brand-fpn } despista a los sitios web y recopiladores de datos que te perfilan con publicidad enmascarando tu dirección IP real.
+promo-fpn-cta = Obtener { -brand-fpn }
+monitor-promo-headline = Infórmate sobre nuevas filtraciones de datos
+monitor-promo-body = Recibe notificaciones la próxima vez que tu información personal sea expuesta en una filtración conocida.
+ecosystem-promo-headline = Protege tu vida en línea con productos orientados a la privacidad
+ecosystem-promo-body = Todos los productos { -brand-name } cumplen nuestra promesa de datos personales: Guardar menos datos. Mantenerlos seguros. Sin secretos.
+promo-ecosystem-cta = Ver todos los productos
+steps-to-resolve-headline = Pasos para resolver esta filtración

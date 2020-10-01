@@ -89,7 +89,7 @@ async function notify (req, res) {
     // or from "id" property (if subscribers record)
     const subscriberId = recipient.subscriber_id || recipient.id;
     const { recipientEmail, breachedEmail, signupLanguage, preFxaSubscriber } = getAddressesAndLanguageForEmail(recipient);
-    const campaignId = (preFxaSubscriber) ? "preFXA-see-all-breaches" : "see-all-breaches";
+    const campaignId = "go-to-dashboard-link";
     const ctaHref = EmailUtils.getEmailCtaHref(utmID, campaignId, subscriberId);
 
     const requestedLanguage = signupLanguage ? acceptedLanguages(signupLanguage) : "";
@@ -115,7 +115,7 @@ async function notify (req, res) {
           ctaHref: ctaHref,
           whichPartial: "email_partials/report",
           preFxaSubscriber,
-        },
+        }
       );
       notifiedRecipients.push(breachedEmail);
     }

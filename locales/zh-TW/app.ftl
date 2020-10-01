@@ -12,9 +12,13 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox 帳號
 terms-and-privacy = 使用條款及隱私權
 GitHub-link-title = GitHub
 error-scan-page-token = 您在短時間內嘗試搜尋太多電子郵件地址，由於安全因素，我們暫時無法讓您進行新搜尋。請稍候再試一次。
@@ -109,7 +113,7 @@ monitor-your-online-accounts = 使用 { -brand-fxa } 訂閱帳號外洩資訊
 stay-alert = 隨時注意最新的資料外洩事件
 if-your-info = 若您的資訊出現在新的資料外洩事件中，我們會通知您。
 search-all-emails = 搜尋您使用的信箱帳號，看看是否曾發生相關資料外洩事件，也在有新威脅時收到通知。
-monitor-several-emails = 監控多個電子郵件信箱
+monitor-several-emails = 監控多組電子郵件信箱
 take-action = 採取行動，保護帳號
 keep-your-data-safe = 看看做哪些事情，就能保護您的資料不受網路犯罪影響。
 website-breach = 網站資訊外洩
@@ -170,6 +174,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = 檢查是否有外洩事件
 find-out-what-hackers-know = 看看駭客已經知道你的哪些事情，也了解如何搶先一步遠離他們。
+get-email-alerts = 確保安全: 當您的資訊出現在已知的資料外洩事件時，收到警報通知
 search-for-your-email = 搜尋自 2007 年起的公開資料外洩事故當中，是否包含您的電子郵件帳號。
 back-to-top = 回到頁面頂端
 comm-opt-0 = 當下列我的任一個電子郵件信箱地址出現在資料外洩事故時，發信通知我。
@@ -281,7 +286,7 @@ steps-to-protect = 採取行動來保護線上身分
 take-further-steps = 採取更多行動來保護身分資料
 alert-about-new-breaches = 有新的外洩事件時通知我
 see-if-youve-been-part = 看看您是否也處於線上資料外洩事件之中。
-get-ongoing-breach-monitoring = 持續針對多個電子郵件信箱，監控資料外洩事件。
+get-ongoing-breach-monitoring = 持續針對多組電子郵件信箱監控資料外洩事件。
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = 找找看
 new-unsub-error = 您可以從任何一封 { -product-name } 寄出的郵件取消訂閱。
@@ -383,7 +388,7 @@ marking-this-subhead = 將此次資料外洩事件標示為已處理
 # Please do not modify or remove "<span>" and "</span>".
 marking-this-body = <span>當您針對此次事件採取措施處理後</span>，可以將其標示為「已處理」。可以隨時回到儀錶板來確認此次事件的詳細資訊。
 mark-as-resolve-button = 標示為已處理
-marked-as-resolved-label = 已標示為已處理
+marked-as-resolved-label = 已標示為處理完成
 undo-button = 復原
 confirmation-1-subhead = 您剛處理好第一筆資料外洩事件，真棒！
 confirmation-1-body = 再接再厲，到儀錶板看看還有沒有其它該處理的情況。
@@ -431,7 +436,7 @@ progress-complete-message = <span>覺得很棒對不對？</span>若您想要繼
 resolve-this-breach-link = 處理過此次事件了
 # This string appears in resolved breach cards and is followed by 
 # the date the user marked the breach as resolved.
-marked-resolved = 已標示為已處理:
+marked-resolved = 已標示為處理完成:
 hide-resolved-button = 隱藏處理過的事件
 show-resolved-button = 顯示處理過的事件
 unresolved-passwords-exposed =
@@ -444,3 +449,18 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = 新事件
+mobile-promo-headline = 在手機與平板電腦安裝 { -brand-name }
+mobile-promo-body = 隨時隨地上網，快速隱私又安全。請到 Google Play 與 App Store 尋找 { -brand-name } 下載。
+mobile-promo-cta = 取得 { -brand-name } Android 與 iOS 版
+promo-lockwise-headline = 密碼隨身帶著走
+lockwise-promo-body = 在您的所有裝置都能管理登入資訊。安全地在電腦、手機、平板電腦使用。
+promo-lockwise-cta = 取得 { -brand-lockwise }
+fpn-promo-headline = 隱藏您的所在地點，不讓網站與追蹤器發現
+promo-fpn-body = { -brand-fpn } 會隱藏您的實際 IP 地址，不讓網站與廣告投放程式收集您的資料。
+promo-fpn-cta = 取得 { -brand-fpn }
+monitor-promo-headline = 看看有哪些新的資料外洩事件
+monitor-promo-body = 在您的個人資訊出現在下一場外洩事件時獲得通知。
+ecosystem-promo-headline = 透過隱私優先的產品保護您的線上生活
+ecosystem-promo-body = 所有 { -brand-name } 都遵循我們對個人資料隱私的承諾: 能少拿就少拿、確保資料安全、絕不偷偷來。
+promo-ecosystem-cta = 看所有產品
+steps-to-resolve-headline = 解決此資料外洩事件的步驟

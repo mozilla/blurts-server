@@ -249,7 +249,7 @@ const DB = {
     await HIBP.subscribeHash(emailHash.sha1);
 
     const verifiedEmail = await knex("email_addresses")
-      .where("email", "=", emailHash.email)
+      .where("id", "=", emailHash.id)
       .update({
         verified: true,
       })
@@ -323,6 +323,26 @@ const DB = {
     .returning("*");
     const updatedSubscriber = Array.isArray(updated) ? updated[0] : null;
     return updatedSubscriber;
+  },
+
+  async setBreachesResolved(options) {
+    const { user, updatedResolvedBreaches } = options;
+    await knex("subscribers")
+    .where("id", user.id)
+    .update({
+      breaches_resolved: updatedResolvedBreaches,
+    });
+    return this.getSubscriberByEmail(user.primary_email);
+  },
+
+  async setWaitlistsJoined(options) {
+    const { user, updatedWaitlistsJoined } = options;
+    await knex("subscribers")
+      .where("id", user.id)
+      .update({
+        waitlists_joined: updatedWaitlistsJoined,
+      });
+    return this.getSubscriberByEmail(user.primary_email);
   },
 
   async removeSubscriber(subscriber) {
@@ -406,6 +426,10 @@ const DB = {
 
   async deleteSubscriberByFxAUID(fxaUID) {
     await knex("subscribers").where("fxa_uid", fxaUID).del();
+  },
+
+  async deleteEmailAddressesByUid(uid) {
+    await knex("email_addresses").where({"subscriber_id": uid}).del();
   },
 
   async createConnection() {

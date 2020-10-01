@@ -3,13 +3,15 @@
 /* eslint-disable no-process-env */
 
 const path = require("path");
-require("dotenv").load({path: path.join(__dirname, ".env")});
+require("dotenv").config({path: path.join(__dirname, ".env")});
 
 const kEnvironmentVariables = [
   "NODE_ENV",
   "SERVER_URL",
   "PORT",
+  "LOGOS_ORIGIN",
   "COOKIE_SECRET",
+  "SESSION_DURATION_HOURS",
   "SMTP_URL",
   "EMAIL_FROM",
   "SES_CONFIG_SET",
@@ -17,6 +19,7 @@ const kEnvironmentVariables = [
   "BASKET_URL",
   "BASKET_API_KEY",
   "BASKET_NEWSLETTER",
+  "BREACH_RESOLUTION_ENABLED",
   "FXA_ENABLED",
   "FXA_SETTINGS_URL",
   "FX_REMOTE_SETTINGS_WRITER_SERVER",
@@ -38,12 +41,14 @@ const kEnvironmentVariables = [
   "HIBP_NOTIFY_TOKEN",
   "DATABASE_URL",
   "PAGE_TOKEN_TIMER",
+  "PRODUCT_PROMOS_ENABLED",
+  "REDIS_URL",
   "SENTRY_DSN",
-  "SERVER_URL",
-  "SUPPORTED_LOCALES",
   "DELETE_UNVERIFIED_SUBSCRIBERS_TIMER",
   "SHODAN_API_KEY",
   "SHODAN_EXAMPLE_IP",
+  "EXPERIMENT_ACTIVE",
+  "MAX_NUM_ADDRESSES",
 ];
 
 const AppConstants = { };

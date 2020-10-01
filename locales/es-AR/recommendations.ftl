@@ -59,6 +59,12 @@ rec-ip-non-us =
     Tu dirección de protocolo de Internet (dirección IP) señala tu ubicación
     y tu proveedor de servicios de internet. Con una red privada virtual (VPN), podés ocultar tu ubicación
     y enmascarar tu dirección IP.
+# Recommendation subhead
+rec-moz-vpn-cta = Pruobá { -brand-mozilla-vpn }
+rec-moz-vpn =
+    Tu dirección de Protocolo de Internet (dirección IP) puede revelar tu ubicación y tu proveedor de servicios de Internet. Un servicio como
+    t{ -brand-fpn } oculta su dirección IP y ubicación para  { -brand-name } y un servicio como { -brand-mozilla-vpn } oculta tu
+    Dirección IP y ubicación para todo tu dispositivo.
 rec-hist-pw-subhead = Evitá reutilizar contraseñas
 # Link title
 rec-hist-pw-cta-fx = Ver inicios de sesión en { -brand-name }

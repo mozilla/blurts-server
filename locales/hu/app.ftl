@@ -12,9 +12,13 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox-fiók
 terms-and-privacy = Feltételek és adatvédelem
 GitHub-link-title = GitHub
 error-scan-page-token = Túl sok e-mail címet próbált ellenőrizni rövid idő alatt. Biztonsági okokból ideiglenesen letiltottuk az új kereséseket. Később újra próbálkozhat.
@@ -218,6 +222,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Adatsértések keresése
 find-out-what-hackers-know = Tudja meg, hogy a hackerek mit tudnak már Önről. Ismerje meg, hogyan tarthat egy lépéssel előttük.
+get-email-alerts = Maradjon biztonságban: e-mail értesítéseket kap, ha adatai ismert adatsértésben érintettek
 search-for-your-email = Keresse meg az e-mail címét a nyilvánosságra került adatsértésekben, egészen 2007-ig.
 back-to-top = Vissza a tetejére
 comm-opt-0 = Küldjenek nekem e-mailt, ha az e-mail címem megjelenik egy adatsértésben.
@@ -330,8 +335,8 @@ passwords-exposed =
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
     { $breaches ->
-        [one] Ismert adatsértésben kikerültek az információi
-       *[other] Ismert adatsértésekben kikerültek az információi
+        [one] Ismert adatsértésben kerültek ki az információi
+       *[other] Ismert adatsértésben kerültek ki az információi
     }
 # Button
 see-additional-breaches = További adatsértések megtekintése
@@ -535,3 +540,18 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Új
+mobile-promo-headline = Hozza el a { -brand-name }ot telefonjára és táblagépére
+mobile-promo-body = Gyors, privát és biztonságos böngészés bárhová is menjen. Keresse meg a { -brand-name }ot a Google Play és az App Store áruházban.
+mobile-promo-cta = Szerezze meg a { -brand-name }ot Androidra és iOS-re
+promo-lockwise-headline = Vigye magával a jelszavait bárhová
+lockwise-promo-body = Kövesse nyomon bejelentkezéseit az összes eszközén. Érje el azokat biztonságosan a számítógépéről, telefonjáról vagy táblagépéről.
+promo-lockwise-cta = { -brand-lockwise } beszerzése
+fpn-promo-headline = Rejtse el a helyét a weboldalak és nyomkövetők elől
+promo-fpn-body = A { -brand-fpn } félrevezeti a weboldalakat és adatgyűjtőket, melyek profilozzák Önt a hirdetésekkel, azáltal, hogy elrejti a valódi IP-címét.
+promo-fpn-cta = { -brand-fpn } beszerzése
+monitor-promo-headline = Tudjon meg többet az új adatsértésekről
+monitor-promo-body = Kapjon értesítést, ha a személyes adatai kikerülnek egy ismert adatsértésben.
+ecosystem-promo-headline = Védje meg az online életét az adatvédelmet előre helyező termékeinkkel
+ecosystem-promo-body = Az összes { -brand-name } termék betartja a személyes adatokra vonatkozó ígéretünket: Gyűjts kevesebbet. Tartsd biztonságban. Nincsenek titkok.
+promo-ecosystem-cta = Összes termék megtekintése
+steps-to-resolve-headline = Lépések az adatsértés megoldása érdekében

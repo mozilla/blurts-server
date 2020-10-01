@@ -12,9 +12,13 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Red privada de Firefox
+-brand-mozilla-vpn = VPN de Mozilla
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Cuenta de Firefox
 terms-and-privacy = Términos y privacidad
 GitHub-link-title = GitHub
 error-scan-page-token = Intentaste escanear demasiadas direcciones de correo electrónico en un corto período de tiempo. Por razones de seguridad, bloqueamos tus búsquedas temporariamente. Podés probar de nuevo dentro de un rato.
@@ -187,6 +191,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Buscar violaciones
 find-out-what-hackers-know = Averiguá lo que los piratas informáticos saben acerca tuyo. Descubrí cómo estar siempre un paso adelante de ellos.
+get-email-alerts = Mantenete seguro: recibí alertas por correo electrónico cuando tu información aparezca en una violación conocida
 search-for-your-email = Buscá tu dirección de correo en violaciones de datos públicos yendo hasta 2007.
 back-to-top = Volver al inicio
 comm-opt-0 = Enviame un correo electrónico si alguna de mis direcciones de correo electrónico de las que están a continuación aparece en una violación de datos.
@@ -408,11 +413,11 @@ see-additional-recs = Ver recomendaciones adicionales
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
-resolve-top-notification = { $afectadasEmail } apareció en esta violación. <a>Qué hacer a continuación</a>
+resolve-top-notification = { $affectedEmail } apareció en esta violación. <a>Qué hacer a continuación</a>
 resolve-top-notification-plural =
     { $numAffectedEmails ->
         [one] { $numAffectedEmails } apareció en esta violación. <a>Qué hacer a continuación</a>
-       *[other] { $afectadasEmail } aparecieron en esta violación. <a>Qué hacer a continuación</a>
+       *[other] { $numAffectedEmails } aparecieron en esta violación. <a>Qué hacer a continuación</a>
     }
 
 ##
@@ -499,3 +504,18 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nueva
+mobile-promo-headline = Traé { -brand-name } a tu teléfono y tableta
+mobile-promo-body = Navegación rápida, privada y segura donde quiera que vayas. Encontrá { -brand-name } en Google Play y App Store.
+mobile-promo-cta = Obtené { -brand-name } en Android e iOS
+promo-lockwise-headline = Llevá tus contraseñas a todas partes
+lockwise-promo-body = Mantené el registro de tus inicios de sesión en todos tus dispositivos. Accedé a los mismos de forma segura desde tu computadora, celular o tableta.
+promo-lockwise-cta = Obtené { -brand-lockwise }
+fpn-promo-headline = Ocultá tu ubicación de sitios web y rastreadores
+promo-fpn-body = { -brand-fpn } elimina los sitios web y los recopiladores de datos que te perfilan con publicidad enmascarando tu verdadera dirección IP.
+promo-fpn-cta = Obtené  { -brand-fpn }
+monitor-promo-headline = Informate sobre nuevas violaciones de datos
+monitor-promo-body = Recibí notificaciones cuando tu información personal se encuentre en una violación de datos conocida.
+ecosystem-promo-headline = Protegé tu vida en línea con productos que priorizan la privacidad
+ecosystem-promo-body = Todos los productos { -brand-name } cumplen nuestra promesa de datos personales: tome menos. Mantenelo seguro. Sin secretos.
+promo-ecosystem-cta = Ver todos los productos
+steps-to-resolve-headline = Pasos para resolver esta violación

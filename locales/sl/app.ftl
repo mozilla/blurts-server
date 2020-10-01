@@ -30,9 +30,13 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox Račun
 terms-and-privacy = Pogoji in zasebnost
 GitHub-link-title = GitHub
 error-scan-page-token = V kratkem časovnem obdobju ste skušali preveriti preveč e-poštnih naslovov. Iz varnostnih razlogov smo vam začasno onemogočili nova iskanja. Znova lahko poskusite kasneje.
@@ -225,11 +229,12 @@ appears-in-x-breaches =
     { $breachCount ->
         [one] Pojavil se je v eni znani kraji.
         [two] Pojavil se je v dveh znanih krajah.
-        [few] Pojavil se je v treh znanih krajah.
+        [few] Pojavil se je v { $breachCount } znanih krajah.
        *[other] Pojavil se je v { $breachCount } znanih krajah.
     }
 check-for-breaches = Preverite kraje podatkov
 find-out-what-hackers-know = Ugotovite, kaj o vas hekerji že vedo. Naučite se, kako ostati korak pred njimi.
+get-email-alerts = Ostanite varni: prejemajte opozorila po e-pošti, ko se vaši podatki pojavijo v znani kraji
 search-for-your-email = Poiščite svoj e-poštni naslov med javnimi krajami podatkov do leta 2007.
 back-to-top = Nazaj na vrh
 comm-opt-0 = Obvesti me po e-pošti, če se kateri od spodnjih e-poštnih naslovov pojavi v kraji podatkov.
@@ -295,7 +300,7 @@ other-breaches-found =
     { $breachCount ->
         [one] Vendar se je pojavil v eni drugi kraji podatkov.
         [two] Vendar se je pojavil v dveh drugih krajah podatkov.
-        [few] Vendar se je pojavil v treh drugih krajah podatkov.
+        [few] Vendar se je pojavil v { $breachCount } drugih krajah podatkov.
        *[other] Vendar se je pojavil v { $breachCount } drugih krajah podatkov.
     }
 fb-comp-only = Ta e-poštni naslov se je pojavil v kraji podatkov { $breachName }.
@@ -473,19 +478,42 @@ see-additional-recs = Oglejte si dodatna priporočila
 ## Please do not modify or remove "<a>" and "</a>".
 
 resolve-top-notification = { $affectedEmail } se je pojavil v tej kraji podatkov. <a>Kaj storiti</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] { $numAffectedEmails } od vaših e-poštnih naslovov se je pojavil v tej kraji podatkov. <a>Kaj storiti</a>
+        [two] { $numAffectedEmails } od vaših e-poštnih naslovov sta se pojavila v tej kraji podatkov. <a>Kaj storiti</a>
+        [few] { $numAffectedEmails } od vaših e-poštnih naslovov so se pojavili v tej kraji podatkov. <a>Kaj storiti</a>
+       *[other] { $numAffectedEmails } od vaših e-poštnih naslovov se je pojavilo v tej kraji podatkov. <a>Kaj storiti</a>
+    }
 
 ##
 
+marking-this-subhead = Označevanje kraje kot razrešene
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Ko ste izvedli ukrepe za zaščito</span>,
+    lahko to krajo označite kot razrešeno. Do podrobnosti o kraji podatkov 
+    lahko še vedno kadarkoli dostopate na nadzorni plošči.
 mark-as-resolve-button = Označi kot razrešeno
 marked-as-resolved-label = Označeno kot razrešeno
 undo-button = Razveljavi
 confirmation-1-subhead = Super! Pravkar ste razrešili prvo krajo podatkov.
 confirmation-1-body = Nadaljujte. Preglejte nadzorno ploščo in preverite, ali je treba še kaj storiti.
+confirmation-2-subhead = Izvolite hekerji!
 confirmation-2-body = Sprejemate pomembne ukrepe za zaščito svojih spletnih računov.
+confirmation-3-subhead = Še ena je razrešena. Odlično!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Ali je vaše novo geslo edinstveno, močno in težko uganljivo? <a>Preverite</a>
 generic-confirmation-subhead = Ta kraja je bila označena kot razrešena
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Za ogled preostale kraje pojdite na nadzorno ploščo.
+        [two] Za ogled preostalih kraj pojdite na nadzorno ploščo.
+        [few] Za ogled preostalih kraj pojdite na nadzorno ploščo.
+       *[other] Za ogled preostalih kraj pojdite na nadzorno ploščo.
+    }
 return-to-breach-details-link = Nazaj na podrobnosti o kraji
 go-to-dashboard-link = Pojdi na nadzorno ploščo
 # This string appears above a breach resolution progress bar and indicates
@@ -500,16 +528,70 @@ num-resolved =
         [few] { $numResolvedBreaches } razrešene
        *[other] { $numResolvedBreaches } razrešenih
     }
+progress-intro-subhead = Novo v { -product-name }ju: Označite kraje podatkov kot razrešene
+progress-intro-message =
+    Po pregledu podrobnosti o kraji podatkov in izvedbi ukrepov za zaščito 
+    vaših osebnih podatkov, lahko kraje podatkov označite kot razrešene.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } od { $numTotalBreaches } kraj podatkov je bila označena kot razrešena
+        [two] { $numResolvedBreaches } od { $numTotalBreaches } kraj podatkov sta bili označeni kot razrešeni
+        [few] { $numResolvedBreaches } od { $numTotalBreaches } kraj podatkov so bile označene kot razrešene
+       *[other] { $numResolvedBreaches } od { $numTotalBreaches } kraj podatkov je bilo označenih kot razrešenih
+    }
 progress-complete = Vse znane kraje podatkov so bile označene kot razrešene
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>Dobro ste začeli!</span> Oglejte si preostale kraje in izvedite, 
+    kako ukrepati.
+progress-message-2 =
+    <span>Kar tako naprej!</span> Majhne spremembe, kot je posodabljanje gesel, imajo velik vpliv na 
+    varovanje vaših osebnih podatkov.
+progress-message-3 = <span>Dobro ste se lotili razreševanja kraj!</span> Kar tako naprej. Še nekaj jih je ostalo.
+progress-message-4 = <span>Skoraj ste končali!</span> Blizu cilja ste.
+progress-complete-message =
+    <span>Dober občutek, kajne?</span> Če želite nadaljevati, je sedaj pravi čas za to, 
+    da posodobite druge prijave z močnejšimi gesli.
 
 ##
 
 resolve-this-breach-link = Razreši to krajo
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Označeno kot razrešeno:
 hide-resolved-button = Skrij razrešene
 show-resolved-button = Prikaži razrešene
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] geslo je bilo izpostavljeno v nerazrešenih krajah
+        [two] gesli sta bili izpostavljeni v nerazrešenih krajah
+        [few] gesla so bila izpostavljena v nerazrešenih krajah
+       *[other] gesel je bilo izpostavljenih v nerazrešenih krajah
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] znana kraja je bila označena kot razrešena
+        [two] znani kraji sta bili označeni kot razrešeni
+        [few] znane kraje so bile označene kot razrešene
+       *[other] znanih kraj je bilo označenih kot razrešenih
+    }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Novo
+mobile-promo-headline = Imejte { -brand-name } na svojem telefonu in tablici
+mobile-promo-body = Hitro, zasebno in varno brskanje kamorkoli greste. Poiščite { -brand-name } v trgovini Google Play in App Store.
+mobile-promo-cta = Prenesite { -brand-name } za Android in iOS
+promo-lockwise-headline = Vzemite gesla s seboj
+lockwise-promo-body = Spremljajte svoje prijave na vseh napravah. Varno dostopajte do njih na računalniku, telefonu ali tablici.
+promo-lockwise-cta = Prenesite { -brand-lockwise }
+fpn-promo-headline = Prikrijte svojo lokacijo spletnim mestom in sledilcem.
+promo-fpn-body = { -brand-fpn } vas zavaruje pred spletnimi mesti in zbiralci podatkov, ki o vas naredijo profil in vas zatrpajo z oglasi, tako da prikrije vaš resnični naslov IP.
+promo-fpn-cta = Preskusite { -brand-fpn }
+monitor-promo-headline = Izvedite več o novih krajah podatkov
+monitor-promo-body = Prejmite obvestilo naslednjič, ko bodo vaši podatki izpostavljeni v znani kraji podatkov.
+ecosystem-promo-headline = Zaščitite svoje spletno življenje z izdelki, ki na prvo mesto postavljajo zasebnost
+ecosystem-promo-body = Vsi izdelki { -brand-name } sledijo naši obljubi o ravnanju z osebnimi podatki: Vzemi manj. Ohrani na varnem. Brez skrivnosti.
+promo-ecosystem-cta = Oglejte si vse izdelke
+steps-to-resolve-headline = Koraki za razrešitev te kraje podatkov

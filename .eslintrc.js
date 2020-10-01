@@ -1,7 +1,9 @@
+"use strict";
+
 module.exports = {
   env: {
     es6: true,
-    node: true
+    node: true,
   },
   extends: [
     "eslint:recommended",
@@ -10,32 +12,45 @@ module.exports = {
   overrides: [
     {
       files: [
-        'public/js/**/*.js'
+        "public/js/**/*.js",
       ],
       env: {
         browser: true,
-        node: false
+        node: false,
       },
       rules: {
-        "strict": "off"
-      }
+        "strict": "off",
+      },
     },
     {
       files: [
-        'scripts/*.js',
+        "scripts/*.js",
       ],
       rules: {
         "no-console": "off",
         "no-process-exit": "off",
-      }
+      },
     },
     {
       files: [
-        'tests/**/*.js',
+        "tests/**/*.js",
       ],
       env: {
         jest: true,
-      }
+      },
+    },
+    {
+      files: [
+        "tests/integration/**/*.js",
+      ],
+      globals: {
+        "$": "readonly",
+        "$$": "readonly",
+        "browser": "readonly",
+      },
+      rules: {
+        "valid-jsdoc": "off",
+      },
     },
   ],
   plugins: [
@@ -48,6 +63,7 @@ module.exports = {
     "eqeqeq": "error",
     "no-console": ["error", {allow: ["error", "info", "warn"]}],
     "no-process-env": "error",
+    "no-prototype-builtins": "off",
     "no-trailing-spaces": "error",
     "no-unused-vars": ["error", {vars: "all", args: "none", ignoreRestSiblings: false}],
     "no-var": "error",
@@ -58,5 +74,5 @@ module.exports = {
     "semi": ["error", "always"],
     "strict": ["error", "safe"],
     "valid-jsdoc": "warn",
-  }
+  },
 };

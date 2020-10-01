@@ -13,13 +13,13 @@ rec-pw-1-cta = Schimbă parola pentru acest site
 rec-pw-1 =
     Fă această parolă unică și diferită de toate celelalte pe care le folosești. 
     O strategie bună e să combini două sau mai multe cuvinte 
-    care nu au nicio legătură unul cu altul ca să creezi o parolă întreagă.
+    care nu au nicio legătură unul cu altul ca să creezi o parolă.
 # Recommendation subhead
 rec-pw-2-subhead = Actualizează-ți alte date de autentificare folosind aceeași parolă
 # Link title
-rec-pw-2-cta-fx = Vezi datele de autentificare în { -brand-name }
+rec-pw-2-cta-fx = Vezi datele de autentificare din { -brand-name }
 rec-pw-2 =
-    Reutilizarea parolelor transformă o breșă de date în mai multe. Acum că această 
+    Refolosirea parolelor transformă o încălcare a securității datelor în mai multe. Acum că această 
     parolă a fost expusă, hackerii o pot folosi să îți intre în alte conturi.
 # Recommendation subhead
 rec-pw-3-subhead = Folosește un manager de parole și ia cu tine parolele oriunde
@@ -61,12 +61,18 @@ rec-ip-non-us =
     Adresa ta de protocol Internet (adresa IP) îți indică locația 
     și furnizorul de servicii de Internet. Cu o rețea privată virtuală (VPN), poți să îți ascunzi locația 
     și îți maschezi adresa IP.
+# Recommendation subhead
+rec-moz-vpn-cta = Încearcă { -brand-mozilla-vpn }
+rec-moz-vpn =
+    Adresa ta de protocol Internet (adresă IP) îți poate divulga locația și furnizorul de servicii de Internet. Un serviciu precum
+    { -brand-fpn } îți ascunde adresa IP și locația pentru { -brand-name }, iar un serviciu precum { -brand-mozilla-vpn } îți ascunde
+    adresa IP și locația pentru tot dispozitivul.
 rec-hist-pw-subhead = Evită refolosirea parolelor
 # Link title
 rec-hist-pw-cta-fx = Vezi datele de autentificare în { -brand-name }
 rec-hist-pw =
     Folosește parole unice și puternice pentru fiecare cont. Dacă o parolă este 
-    expusă într-o breșă de date, va trebui să actualizezi numai datele de autentificare respective.
+    expusă într-o încălcare a securității datelor, va trebui să actualizezi numai datele de autentificare respective.
 # Recommendation subhead
 rec-sec-qa-subhead = Creează răspunsuri unice la întrebările de securitate
 rec-sec-qa =
@@ -104,7 +110,7 @@ rec-gen-1 =
 # Recommendation subhead
 rec-gen-2-subhead = Păstrează parolele într-un loc sigur
 # Link title
-rec-gen-2-cta = Mituri despre managerii de parole
+rec-gen-2-cta = Mituri despre managerele de parole
 rec-gen-2 =
     Păstrează-ți detaliile datelor de autentificare într-un loc sigur, la care numai tu ai acces, precum 
     un manager de parole. Ușurează și urmărirea tuturor parolelor diferite create.

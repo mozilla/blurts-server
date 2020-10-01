@@ -1,15 +1,17 @@
-        {{#each firstFourBreaches }}
-          {{> breach-card cardType=./../cardType}}
+        {{#each breachesShownByDefault }}
+          {{> breach-card cardType="two-up ec drop-shadow" breachesDash=true}}
         {{/each}}
 
         {{#if remainingBreaches }}
-          <button class="show-remaining-breaches btn-violet-secondary btn-small btn-transparent" data-event-category="Show All Breaches">
-            {{ getString "see-additional-breaches" }}
-          </button>
+          <div class="flx show-remaining-breaches-wrapper">
+            <button class="show-remaining-breaches btn-violet-secondary btn-small btn-transparent" data-event-category="Show All Breaches">
+              {{ getString "see-additional-breaches" }}
+            </button>
+          </div>
           <!-- foundBreaches 4-foundBreaches.length -->
           <div id="additional-breaches" class="show-additional-breaches hide flx">
             {{#each remainingBreaches }}
-              {{> breach-card cardType=./../cardType}}
+              {{> breach-card cardType="two-up ec drop-shadow" breachesDash=true}}
             {{/each}}
           </div>  
         {{/if}}

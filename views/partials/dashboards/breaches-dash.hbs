@@ -1,31 +1,55 @@
-
-<main id="dashboard" class=" ab-br sr dashboard clear-header jst-cntr flx" data-page-label="User Dashboard">
-  <div class="mw-860 flx flx-col">
-    <span class="welcome-back">{{ welcomeMessage }}</span>
-    <h2 class="pref-headline breach-summary">{{ getString "breach-summary" }}</h2>
-    <div class="dash-stats">
-      {{> breach-stats addClasses="user-stats"}}
+{{#getBreachStats}}
+  <main id="dashboard" class="dashboard clear-header jst-cntr flx flx-col" data-page-label="User Dashboard">
+    <div class="mw-860 flx flx-col">
+      <span class="welcome-back">{{ welcomeMessage }}</span>
+      <div class="flx flx-row hl-upgrade-btn-wrapper">
+        <h2 class="pref-headline breach-summary">{{ getString "breach-summary" }}</h2>
+      </div>
+      <div class="dash-stats">
+        {{> breach-stats addClasses="user-stats"}}
+      </div>
+      {{#if progressBar}}
+      <div class="progress-bar-wrapper">
+        {{#if progressBar.progressStatus}}
+          <div class="flx space-between h-padding">
+            <span class="progress-header demi txt-purple7 flx cntr">{{ progressBar.progressStatus }}</span>
+            <span class="percent-complete txt-purple7">{{ progressBar.percentComplete }}</span>
+          </div>
+          <progress class="progress-bar" max="100" value="{{breachMath 100 "-" progressBar.percentBreachesResolved}}"></progress>
+          <span class="progress-message txt-purple7">{{{ progressBar.progressMessage }}}</span>
+        {{/if}}
+        {{#if progressBar.subhead}} <!-- resolution intro and complete messages -->
+          <div class="progress-status-message flx flx-row">
+            <div class="{{ progressBar.imageClassName }} breach-resolution-img"></div>
+            <div class="flx-col">
+              <h3 class="progress-message-subhead bold">{{ progressBar.subhead }}</h3>
+              <p class="progress-message-body">{{{ progressBar.progressMessage }}}</p>
+            </div>
+          </div>
+        {{/if}}
+      </div>
+    {{/if}}
     </div>
-  </div>
-</main>
-<div class="mw-860 jst-cntr flx-col">
-  <div class="flx space-between cntr link-header-wrapper">
-    <h2 class="pref-headline">{{ getString "email-addresses-title" }}</h2>
-    {{> dashboards/manage-email-link variableClass="hide-mobile"}}
-  </div>
-  <div class="email-cards flx flx-col jst-cntr">
-    {{#getBreachesForEachEmail}}
-      {{#each this.verifiedEmails}}
+  </main>
+{{/getBreachStats}}
+{{#getBreachesDashboard}}
+  <div class="mw-860 jst-cntr flx-col">
+    <div class="flx space-between cntr link-header-wrapper">
+      <h2 class="pref-headline">{{ getString "email-addresses-title" }}</h2>
+      {{> dashboards/manage-email-link variableClass="hide-mobile"}}
+    </div>
+    <div class="email-cards flx flx-col jst-cntr">
+      {{#each this.verifiedEmails }}
         {{> email-card }}
       {{/each}}
       {{#if breachesFound }}
         {{> hibp-attribution variableClasses="dash-attribution txt-cntr"}}
       {{/if}}
-    {{/getBreachesForEachEmail}}
+    </div>
   </div>
-</div>
+{{/getBreachesDashboard}}
 {{!-- TODO: remove this when https://github.com/mozilla/blurts-server/issues/1148 is fixed --}}
-{{#ifCompare verifiedEmails.length "<" 15}}
+{{#ifCompare verifiedEmails.length "<" MAX_NUM_ADDRESSES}}
   <div class="row jst-cntr">
     <div id="dashboard-add-email" class="dashboard-add-email flx flx-col">
       <h2 class="section-headline txt-purple7 txt-cntr">{{getString "want-to-add" }}</h2>

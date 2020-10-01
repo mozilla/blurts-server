@@ -9,6 +9,12 @@ const pkg = require("./package.json");
 
 
 const HIBP_USER_AGENT = `${pkg.name}/${pkg.version}`;
+// When HIBP "re-names" a breach, it keeps its old 'Name' value but gets a new 'Title'
+// We use 'Name' in Firefox (via Remote Settings), so we have to maintain our own mapping of re-named breaches.
+const RENAMED_BREACHES = ["covve"];
+const RENAMED_BREACHES_MAP = {
+  "covve": "db8151dd",
+};
 const log = mozlog("hibp");
 
 
@@ -100,7 +106,7 @@ const HIBP = {
   },
 
 
-  async getBreachesForEmail(sha1, allBreaches, includeSensitive = false) {
+  async getBreachesForEmail(sha1, allBreaches, includeSensitive = false, filterBreaches = true) {
     let foundBreaches = [];
     const sha1Prefix = sha1.slice(0, 6).toUpperCase();
     const path = `/breachedaccount/range/${sha1Prefix}`;
@@ -117,10 +123,17 @@ const HIBP = {
     for (const breachedAccount of response.body) {
       if (sha1.toUpperCase() === sha1Prefix + breachedAccount.hashSuffix) {
         foundBreaches = allBreaches.filter(breach => breachedAccount.websites.includes(breach.Name));
-        foundBreaches = this.filterBreaches(foundBreaches);
+        if (filterBreaches) {
+          foundBreaches = this.filterBreaches(foundBreaches);
+        }
+
+        // NOTE: DO NOT CHANGE THIS SORT LOGIC
+        // We store breach resolutions by recency indices,
+        // so that our DB does not contain any part of any user's list of accounts
         foundBreaches.sort( (a,b) => {
           return new Date(b.AddedDate) - new Date(a.AddedDate);
         });
+
         break;
       }
     }
@@ -135,7 +148,12 @@ const HIBP = {
 
 
   getBreachByName(allBreaches, breachName) {
-    return allBreaches.find(breach => breach.Name.toLowerCase() === breachName.toLowerCase());
+    breachName = breachName.toLowerCase();
+    if (RENAMED_BREACHES.includes(breachName)) {
+      breachName = RENAMED_BREACHES_MAP[breachName];
+    }
+    const foundBreach = allBreaches.find(breach => breach.Name.toLowerCase() === breachName);
+    return foundBreach;
   },
 
 

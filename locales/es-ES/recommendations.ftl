@@ -1,4 +1,12 @@
 # Recommendation subhead
+rec-ssn-subhead = Revisa tus extractos bancarios
+# Link title
+rec-ssn-cta = Solicitar extractos bancarios
+rec-ssn =
+    Dispones de tres extractos bancarios gratuitos al año por ley. 
+    Solicitarlos y revisarlos no afecta tu crédito. 
+    Revísalos buscando cuentas, préstamos o tarjetas de crédito que no reconozcas.
+# Recommendation subhead
 rec-pw-1-subhead = Cambia tu contraseña
 # Link title
 rec-pw-1-cta = Cambiar tu contraseña para este sitio
@@ -10,14 +18,27 @@ rec-pw-1 =
 rec-pw-2-subhead = Actualiza otros inicios de sesión con la misma contraseña
 # Link title
 rec-pw-2-cta-fx = Ver inicios de sesión en { -brand-name }
+rec-pw-2 =
+    Reutilizar contraseñas convierte una sola filtración de datos en muchas. Ahora, que esta 
+    contraseña ha sido descubierta, los hackers podrían usarla para acceder a otras cuentas.
 # Recommendation subhead
 rec-pw-3-subhead = Usa un administrador de contraseñas para tener tus contraseñas en cualquier lugar
 # Link title
 rec-pw-3-cta = Obtener { -brand-lockwise }
+rec-pw-3-fx =
+    Usa { -brand-lockwise } para acceder de forma segura a las contraseñas que guardaste en 
+    { -brand-name } desde cualquier lugar — incluso fuera del navegador.
+rec-pw-3-non-fx =
+    Usa { -brand-lockwise } para mantener organizadas todas tus 
+    contraseñas y acceder a ellas de forma segura desde tu móvil o tableta.
 # Recommendation subhead
 rec-pw-4-subhead = Establecer verificación en dos pasos
 # Link title
 rec-pw-4-cta = Ver sitios que ofrecen 2FA
+rec-pw-4 =
+    Muchos sitios web ofrecen 2FA como medida de seguridad adicional. Esto requiere 
+    información adicional para iniciar sesión en tu cuenta, como un 
+    código único que recibes por SMS.
 # Recommendation subhead
 rec-bank-acc-subhead = Revisa tus extractos bancarios
 rec-bank-acc =
@@ -25,19 +46,47 @@ rec-bank-acc =
     inusuales. Notifica a tu banco si encuentras algo que no reconoces
 # Recommendation subhead
 rec-cc-subhead = Monitoriza los extractos de tu tarjeta de crédito
+rec-cc =
+    Revisa en busca de cargos extraños en tu tarjeta de crédito. Puede que quieras 
+    solicitar al emisor de la tarjeta una nueva,  con un nuevo número.
 # Recommendation subhead
 rec-ip-subhead = Usa un servicio que oculte tu IP
 # Link title
 rec-ip-us-cta = Prueba { -brand-fpn }
+rec-ip-us =
+    Tu dirección de protocolo de Internet (dirección IP) señala tu ubicación 
+    y tu proveedor de servicios de internet. Un servicio como { -brand-fpn } 
+    enmascara tu dirección IP para ocultar tu ubicación.
+rec-ip-non-us =
+    Tu dirección de protocolo de Internet (dirección IP) señala tu ubicación 
+    y tu proveedor de servicios de internet. Con una red privada virtual (VPN), puedes ocultar tu ubicación 
+    y enmascarar tu dirección IP.
+# Recommendation subhead
+rec-moz-vpn-cta = Prueba { -brand-mozilla-vpn }
+rec-moz-vpn =
+    Tu dirección del protocolo de internet (dirección IP) puede revelar tu ubicación y tu proveedor de servicios de Internet. Un servicio como
+    { -brand-fpn } oculta tu dirección IP y ubicación para { -brand-name } y un servicio como { -brand-mozilla-vpn } oculta tu
+    dirección IP y ubicación en todo tu dispositivo.
 rec-hist-pw-subhead = Evita reutilizar contraseñas
 # Link title
 rec-hist-pw-cta-fx = Ver inicios de sesión en { -brand-name }
+rec-hist-pw = Usa contraseñas únicas y seguras para cada cuenta. Si una contraseña es expuesta en una filtración de datos, solo tendrás que cambiar esa conexión puntual.
 # Recommendation subhead
 rec-sec-qa-subhead = Crea respuestas únicas para preguntas de seguridad
+rec-sec-qa =
+    Muchos sitios preguntan siempre lo mismo. Si una de esas respuestas queda expuesta, la 
+    información se puede usar en otros sitios. Crea respuestas largas y aleatorias, y guárdalas en un lugar seguro.
 # Recommendation subhead
 rec-phone-num-subhead = Evita compartir tu número de teléfono
+rec-phone-num =
+    Intenta evitar dar tu número de teléfono al registrar nuevas 
+    cuentas o servicios. Si el número de teléfono no es obligatorio, no lo introduzcas.
 # Recommendation subhead
 rec-dob-subhead = Evita usar información personal en PINs
+rec-dob =
+    Debido a que tu fecha de nacimiento es fácil de encontrar en los registros públicos, 
+    es mejor evitar usarlo en contraseñas y PINs. Quienes sepan 
+    tu fecha de nacimiento también podrían adivinar fácilmente tu PIN.
 # Recommendation subhead
 rec-pins-subhead = Fortalece la seguridad de tus PINs
 rec-pins =
@@ -45,6 +94,10 @@ rec-pins =
     o tu dirección. Debería ser un número que solo tú sabes y no se pueda adivinar fácilmente.
 # Recommendation subhead
 rec-address-subhead = Evita usar direcciones en contraseñas
+rec-address =
+    Usar direcciones o la calle en donde creciste debilita tus 
+    contraseñas. Como es fácil encontrar esta información públicamente, hace que estas
+    contraseñas sean fáciles de adivinar.
 # Recommendation subhead
 rec-gen-1-subhead = Utiliza contraseñas únicas y fuertes para cada cuenta
 # Link title

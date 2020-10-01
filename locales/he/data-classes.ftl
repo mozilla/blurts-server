@@ -41,6 +41,7 @@ email-addresses = כתובות דוא״ל
 email-messages = הודעות דוא״ל
 employers = מעסיקים
 employment-statuses = מצב העסקה
+encrypted-keys = מפתחות מוצפנים
 ethnicities = השתייכות אתנית
 family-members-names = שמות בני משפחה
 family-plans = תוכניות משפחה

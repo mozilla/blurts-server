@@ -13,8 +13,11 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox نجی نیٹ ورک
 
+##
 
-
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox اکاؤنٹ
 terms-and-privacy = شرائط اور رازداری
 GitHub-link-title = GitHub
 error-not-subscribed = یہ ایمیل ایڈریس { -product-name } مے سبسکرائب نہیں ہے۔
@@ -76,7 +79,7 @@ monitor-several-emails = متعدد ای میلز کی نگرانی کریں
 delayed-reporting-headline = اس خلاف ورزی کی رپورٹ دینے میں اتنا وقت کیوں لگا؟
 about-fxm-headline = { -product-name } کے بارے میں
 # How Firefox Monitor works
-how-fxm-works = { -product-name } کس طرح کام کرتا ہے
+how-fxm-works = { -product-name } کیسے کام کرتا ہے
 how-fxm-1-headline = ایک بنیادی تلاش کریں
 how-fxm-3-headline = اپنے براؤزر میں اطلاعات حاصل کریں
 protect-your-privacy = اپنی آن لائن رازداری کی حفاظت کریں
@@ -93,7 +96,9 @@ create-strong-passwords = مضبوط پاس ورڈ کیسے بنائیں
 stop-reusing-pw = وہی پاس ورڈ دوبارہ استعمال کرنا بند کریں
 feat-security-tips = آَپ کے اکاؤنٹس کی حفاظت کے لیے سلامتی نکات
 back-to-top = واپس اوپر کی جانب
+stop-monitoring-this = اس ای میل کی نگرانی بند کریں۔
 add-new-email = ایک نیا ای میل پتہ شامل کریں
+remove-fxm = { -product-name } ہٹائیں
 # Button title
 manage-email-addresses = ای میل پتہ بندرست کریں
 welcome-user = خوش آمدید ،  { $userName }
@@ -130,7 +135,7 @@ want-to-add = ایک اور ای میل شامل کرنا چاہتے ہیں؟
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = سائن ان کریں
 
-
+##
 
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = تبدیلیاں محفوظ ہوگئیں!
@@ -138,3 +143,18 @@ changes-saved = تبدیلیاں محفوظ ہوگئیں!
 rec-section-headline-no-pw = اپنی ذاتی معلومات کی حفاظت کے لیے کیا کریں
 # Button
 see-additional-recs = اضافی سفارشات ملاحظہ کریں
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+
+##
+
+undo-button = کالعدم کریں
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+

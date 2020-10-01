@@ -5,11 +5,16 @@ const { URL } = require("url");
 const HIBP = require("./hibp");
 const sha1 = require("./sha1-utils");
 
+const AppConstants = require("./app-constants");
+const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
+const { getExperimentFlags } = require("./controllers/utils");
 
 const scanResult = async(req, selfScan=false) => {
 
   const allBreaches = req.app.locals.breaches;
   let scannedEmail = null;
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
   const title = req.fluentFormat("scan-title");
   let foundBreaches = [];
@@ -21,11 +26,9 @@ const scanResult = async(req, selfScan=false) => {
   let userDash = false;
   let scannedEmailId = null;
 
-
   if (req.session.user) {
     signedInUser = req.session.user;
   }
-
 
   // Checks if the user scanning their own verified email.
   if (req.body && req.body.emailHash) {
@@ -86,7 +89,6 @@ const scanResult = async(req, selfScan=false) => {
     }
   }
 
-
   return {
     title,
     foundBreaches,
@@ -98,31 +100,50 @@ const scanResult = async(req, selfScan=false) => {
     fullReport,
     userDash,
     scannedEmailId,
+    experimentFlags,
   };
 };
 
 function resultsSummary(verifiedEmails) {
   const breachStats = {
-    monitoredEmails: { count: 0 },
-    numBreaches: { count: 0 },
-    passwords: { count: 0 },
+    monitoredEmails: {
+      count: 0,
+    },
+    numBreaches: {
+      count: 0,
+      numResolved: 0,
+    },
+    passwords: {
+      count: 0,
+      numResolved: 0,
+    },
   };
   let foundBreaches = [];
-
-  breachStats.monitoredEmails.count = verifiedEmails.length;
 
   // combine the breaches for each account, breach duplicates are ok
   // since the user may have multiple accounts with different emails
   verifiedEmails.forEach(email => {
+
     email.breaches.forEach(breach => {
+      if (breach.IsResolved) {
+        breachStats.numBreaches.numResolved++;
+      }
+
       const dataClasses = breach.DataClasses;
       if (dataClasses.includes("passwords")) {
         breachStats.passwords.count++;
+        if (breach.IsResolved) {
+          breachStats.passwords.numResolved++;
+        }
       }
     });
     foundBreaches = [...foundBreaches, ...email.breaches];
   });
-  // tally up total number of breaches
+
+  // total number of verified emails being monitored
+  breachStats.monitoredEmails.count = verifiedEmails.length;
+
+  // total number of breaches across all emails
   breachStats.numBreaches.count = foundBreaches.length;
   return breachStats;
 }

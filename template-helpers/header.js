@@ -35,8 +35,8 @@ function navLinks(args) {
       activeLink: (hostUrl === "/security-tips"),
     },
   ];
-
-  return getStrings(links, locales);
+  const headerLinks = getStrings(links, locales);
+  return headerLinks;
 }
 
 function fxaMenuLinks(args) {

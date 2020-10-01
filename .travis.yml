@@ -8,27 +8,19 @@ matrix:
     include:
         - name: "js lint"
           language: node_js
-          node_js:
-              - "node"
-              - "lts/*"
+          node_js: 10
           script: "npm run lint:js"
         - name: "css lint"
           language: node_js
-          node_js:
-              - "node"
-              - "lts/*"
+          node_js: 10
           script: "npm run lint:css"
         - name: "npm audit"
           language: node_js
-          node_js:
-              - "node"
-              - "lts/*"
+          node_js: 10
           script: "npm run lint:audit"
         - name: "tests"
           language: node_js
-          node_js:
-              - "node"
-              - "lts/*"
+          node_js: 10
           env:
               - NODE_ENV=tests
           install:
@@ -45,9 +37,3 @@ matrix:
           script:
               - moz-l10n-lint l10n.toml
               - compare-locales l10n.toml . `ls locales`
-
-
-
-
-
-

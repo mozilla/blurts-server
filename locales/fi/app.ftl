@@ -19,9 +19,14 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox-tili
 terms-and-privacy = Ehdot ja yksityisyys
 GitHub-link-title = GitHub
 error-scan-page-token = Yrität tarkistaa liian montaa sähköpostiosoitetta todella lyhyessä ajassa. Turvallisuussyistä olemme väliaikaisesti estäneet sinut uusilta hauilta. Voit yrittää myöhemmin uudelleen.
@@ -222,7 +227,8 @@ appears-in-x-breaches =
        *[other] ilmenee { $breachCount } tunnetussa vuodossa.
     }
 check-for-breaches = Tarkista vuotojen varalta
-find-out-what-hackers-know = Ota selvää, mitä hakkerit tietävät sinusta jo nyt. Opi kuinka pysyä yksi askel edellä hakkereita.
+find-out-what-hackers-know = Selvitä mitä hakkerit tietävät sinusta jo nyt. Opi kuinka pysyä yksi askel edellä hakkereita.
+get-email-alerts = Pysy turvassa: Vastaanota sähköpostitse tieto, kun tietojasi ilmenee tunnetussa tietovuodossa
 search-for-your-email = Etsi sähköpostiosoitettasi vuoteen 2007 ulottuvista julkisista tietovuodoista.
 back-to-top = Takaisin ylös
 comm-opt-0 = Lähetä minulle sähköpostia, jos jokin alla olevista sähköpostiosoitteistani on osallisena tietovuodossa.
@@ -537,3 +543,18 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Uusi
+mobile-promo-headline = Tuo { -brand-name } puhelimeesi ja tablet-laitteeseesi
+mobile-promo-body = Nopeaa, yksityistä ja turvallista selaamista missä tahansa liikutkin. { -brand-name } on saatavilla Google Playsta ja App Storesta.
+mobile-promo-cta = Hanki { -brand-name } Androidille ja iOS:lle
+promo-lockwise-headline = Ota salasanasi mukaan kaikkialle
+lockwise-promo-body = Pidä kirjautumistietosi tallessa kaikilla laitteillasi. Käytä kirjautumistietojasi tietokoneelta, puhelimesta tai tablet-laitteelta.
+promo-lockwise-cta = Hanki { -brand-lockwise }
+fpn-promo-headline = Piilota sijaintisi verkkosivustoilta ja seuraimilta
+promo-fpn-body = { -brand-fpn } peittää todellisen IP-osoitteesi ja heittää syrjään verkkosivustot sekä tiedonkerääjät, jotka profiloivat sinua mainoksin.
+promo-fpn-cta = Hanki { -brand-fpn }
+monitor-promo-headline = Pysy ajan tasalla uusista tietovuodoista
+monitor-promo-body = Vastaanota ilmoitus, kun henkilökohtaisia tietojasi paljastuu seuraavan kerran tunnetussa tietovuodossa.
+ecosystem-promo-headline = Suojaa elämääsi verkossa yksityisyyden ensisijaiseksi asettavilla tuotteilla
+ecosystem-promo-body = Kaikki { -brand-name }-tuotteet kunnioittavat henkilötietolupaustamme: Kerää vähemmän. Pidä ne turvassa. Ei salaisuuksia.
+promo-ecosystem-cta = Katso kaikki tuotteet
+steps-to-resolve-headline = Vaiheet tämän vuodon ratkaisemiseksi

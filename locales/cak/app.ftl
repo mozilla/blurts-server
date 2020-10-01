@@ -12,9 +12,13 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Ichinan Ruk'amab'ey Firefox
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox taqoya'l
 terms-and-privacy = Taq Ojqanem chuqa' Ichinanem
 GitHub-link-title = GitHub
 error-scan-page-token = Xatojtob'ej xatz'ajwachib'ej yalan k'ïy kochochib'al taqoya'l pa jun ti mej. Richin ajikomal xeqaq'ät ri k'a nimakoj xe'akanoj. Yatikïr natojtob'ej chik pa jun ti ramaj.
@@ -215,6 +219,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Ke'akanoj taq Tz'ilanem
 find-out-what-hackers-know = Tawila' achike ketaman ri ajjak chawij. Tawila' achike rub'eyal yanab'eyij chi kiwäch.
+get-email-alerts = Jikïl kak'oje': Tak'ulu' rutzijol taq k'ayewal pa taqoya'l toq ri awetamab'al xuk'ulwachij jun tz'ilanem etaman ruwa
 search-for-your-email = Takanoj ri rochochib'al ataqoya'l pa aj winäq kitz'ilanem taq tzij k'a richin ri 2007.
 back-to-top = Titzolin Ajsik
 comm-opt-0 = Tiya' rutzijol chwe we ri rochochib'al nutaqoya'l k'o pa jun kitz'ilanem tzij.
@@ -451,13 +456,98 @@ resolve-top-notification-plural =
 ##
 
 marking-this-subhead = Tiya' retal re tz'ilanem re' achi'el xolon chik
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Toq ab'anon chik ronojel richin natz'ët ruwa re tz'ilanem re'</span>,
+    yatikïr naya' retal achi'el solon chik. K'a yatikïr yatok pa ri taq rub'anikil tz'ilanem 
+    pa ri atz'ib'akajtz'ik xab'achike ramaj.
+mark-as-resolve-button = Tiya' Retal achi'el Xsol
+marked-as-resolved-label = Xya' Retal achi'el Xsol
 undo-button = Titzolïx
+confirmation-1-subhead = ¡Yalan ütz! Xasöl ri nab'ey atz'ilanem.
+confirmation-1-body = Ke ri' tab'ana'. Tanik'oj ri atz'ib'akajtz'ik richin natz'ët we k'o jun, ri k'o chi nab'än.
+confirmation-2-subhead = ¡Kixanimäj ajjak!
+confirmation-2-body = La nab'än ruk'ojlem awi' richin ye'achajij ri rub'i' taq ataqoya'l pa k'amab'ey.
+confirmation-3-subhead = Jun chik xk'is. ¡Yalan ütz!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = ¿La ruyon, jikïl chuqa' k'ayew richin nilitäj ri k'ak'a' ewan atzij? <a>Tawila'</a>
+generic-confirmation-subhead = Re tz'ilanem re' xya' retal achi'el xsol
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Richin natz'ët ri tz'ilanem, tab'etz'eta' ri atz'ib'akajtz'ik.
+       *[other] Richin ye'atz'ët ri ch'aqa' chik taq tz'ilanem, tab'etz'eta' ri atz'ib'akajtz'ik.
+    }
+return-to-breach-details-link = Keb'etz'et ri taq rub'anikil tz'ilanem
+go-to-dashboard-link = Tib'e pa ri Tz'ib'akajtz'ik
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% tz'aqät
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } Xsol
+       *[other] { $numResolvedBreaches } Xsol
+    }
+progress-intro-subhead = K'ak'a' pa { -product-name }: Tiya' retal tz'ilanem achi'el xesol
+progress-intro-message =
+    Chi rij ninik'öx rucholajil tz'ilanem chuqa' nojqäx rub'eyal richin nichajïx ri 
+    awetamab'al, yatikïr naya' kan retal achi'el chi xsol.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } richin { $numTotalBreaches } tz'ilanem ya'on retal achi'el xsol
+       *[other] { $numResolvedBreaches } richin { $numTotalBreaches } taq tz'ilanem ya'on ketal achi'el esolon
+    }
+progress-complete = Ronojel ri taq tz'ilanem etaman kiwa xya' ketal achi'el xsol
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>¡Ütz xatikirisaj!</span> Ke'atz'eta' ri ch'aqa' chik taq tz'ilanem richin nawetamaj 
+    achike k'o chi nab'än.
+progress-message-2 =
+    <span>¡Ke ri' tab'ana'!</span> Ri ko'öl taq jaloj achi'el ri kik'exoj ewan taq tzij, yalan k'o nub'än richin 
+    nijike' ri awetamab'al.
+progress-message-3 = <span>¡Ütz asamaj richin ye'asöl ri taq k'ayewal ri'!</span> Ke ri' tab'ana'. K'a k'o na jujun.
+progress-message-4 = <span>¡Nik'is yan!</span> B'ama yatapon yan akuchi' yab'eqa.
+progress-complete-message =
+    <span>¿Ütz ninäx qupe'?</span> We nawajo' nasamajij, wakami yalan jeb'ël richin 
+    ye'ak'ëx ch'aqa' chik taq okem rik'in jikïl ewan taq tzij.
 
 ##
 
+resolve-this-breach-link = Tisol re tz'ilanem re'
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Xya' retal achi'el xsol:
+hide-resolved-button = Tewäx ri Xesol
+show-resolved-button = Kek'ut ri Xesol
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] K'utun ewan tzij pa taq tz'ilanem ri man esolon ta
+       *[other] K'utun ewan taq tzij pa taq tz'ilanem ri man esolon ta
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Rutz'ilanem tzij etaman ruwa chi ya'on retal chi solon chik
+       *[other] Kitz'ilanem taq tzij etaman kiwa chi ya'on ketal chi esolon chik
+    }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = K'ak'a'
+mobile-promo-headline = Tak'waj { -brand-name } pan awoyonib'al chuqa' pan ach'utikematz'ib'
+mobile-promo-body = Anin, ichinan, chuqa' jikïl okem pa k'amaya'l xab'akuchi' yab'e wi. Takanoj { -brand-name } pa Google Play chuqa' App Store.
+mobile-promo-cta = Tak'ulu' { -brand-name } pa Android chuqa' iOS
+promo-lockwise-headline = Xab'akuchi' ke'ak'waj ri ewan taq atzij
+lockwise-promo-body = Tak'waj jun rucholajem ri awokem pa ronojel ri taq awokisab'al. Ütz jikïl katok chi kipam rik'in ri akematz'ib', oyonib'äl o ach'uti kematz'ib'.
+promo-lockwise-cta = Tik'ul { -brand-lockwise }
+fpn-promo-headline = Tawewaj ri ak'ojlem chi kiwäch ri ajk'amaya'l ruxaq chuqa' ojqanela'
+promo-fpn-body = { -brand-fpn } yerusäch ri ajk'amaya'l ruxaq chuqa' ri molonel taq tzij, ri nikiya' awetal rik'in eltzijol, akuchi' nikewaj ri qitzij IP awochochib'al.
+promo-fpn-cta = Tik'ul { -brand-fpn }
+monitor-promo-headline = Tawetamaj chi kij ri k'ak'a' kitz'ilanem taq tzij
+monitor-promo-body = Tak'ulu' rutzijol toq ri awetamab'al xtiwachin pa jun tz'ilanem etaman ruwa.
+ecosystem-promo-headline = Nuchajij ak'aslem pa k'amab'ey rik'in taq tikojil nikinab'eysaj ri awichinane
+ecosystem-promo-body = Ronojel ri taq { -brand-name } tikojil, nukamelaj ri Rusujik Tzij chi rij Qatzij: Jub'a' etamab'äl nuk'äm. Nijikib'äx. Majun ewäl ta.
+promo-ecosystem-cta = Ketz'et Ronojel Tikojil

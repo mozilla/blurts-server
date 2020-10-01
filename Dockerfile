@@ -12,7 +12,7 @@ USER app
 COPY package.json package.json
 COPY package-lock.json package-lock.json
 
-RUN npm install && rm -rf ~app/.npm /tmp/*
+RUN npm install --production && rm -rf ~app/.npm /tmp/*
 
 COPY --chown=app:app . /app
 

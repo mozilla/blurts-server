@@ -12,7 +12,12 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 ##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox account
 
 terms-and-privacy = Terms & Privacy
 
@@ -133,7 +138,7 @@ fxa-what-to-do-blurb-4 =
   on your phone and computer so you don’t have to remember them all.
 
 # Alerts is a noun
-sign-up-for-alerts = Sign up for Alerts
+sign-up-for-alerts = Sign Up for Alerts
 
 # Link title
 frequently-asked-questions = Frequently Asked Questions
@@ -276,6 +281,7 @@ appears-in-x-breaches =
 
 check-for-breaches = Check for Breaches
 find-out-what-hackers-know = Find out what hackers already know about you. Learn how to stay a step ahead of them.
+get-email-alerts = Stay safe: Get email alerts when your info appears in a known breach
 search-for-your-email = Search for your email address in public data breaches going back to 2007.
 
 back-to-top = Back to Top
@@ -641,7 +647,7 @@ progress-message-2 =
   <span>Keep it up!</span> Small changes like updating passwords have a big impact on 
   keeping your personal info safe.
 progress-message-3 = <span>Nice work resolving those breaches!</span> Keep it up. You’ve got a few more to go.
-progress-message-4 = <span>Almost done!</span> You’re nearly to the finish line.
+progress-message-4 = <span>Almost done!</span> You’re close to the finish line.
 progress-complete-message = 
   <span>Feels good, right?</span> If you want to keep going, this is a good time to 
   update other logins with stronger passwords.
@@ -670,3 +676,29 @@ known-data-breaches-resolved =
 
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = New
+
+mobile-promo-headline = Bring { -brand-name } to your phone and tablet
+mobile-promo-body = 
+  Fast, private, and safe browsing everywhere you go. Find { -brand-name } in the Google Play and App Store. 
+mobile-promo-cta = Get { -brand-name } on Android and iOS
+
+promo-lockwise-headline = Take your passwords everywhere
+lockwise-promo-body =
+  Keep track of your logins across all devices. Access them securely from your computer, phone, or tablet.
+promo-lockwise-cta = Get { -brand-lockwise }
+
+fpn-promo-headline = Mask your location from websites and trackers
+promo-fpn-body = 
+  { -brand-fpn } throws off the websites and data collectors that profile you with ads by masking your real IP address.
+promo-fpn-cta = Get { -brand-fpn }
+
+monitor-promo-headline = Find out about new data breaches
+monitor-promo-body =
+  Get notified the next time your personal info gets exposed in a known breach.
+
+ecosystem-promo-headline = Protect your life online with privacy-first products
+ecosystem-promo-body = 
+  All { -brand-name } products honor our Personal Data Promise: Take less. Keep it safe. No secrets.
+promo-ecosystem-cta = See All Products
+
+steps-to-resolve-headline = Steps to resolve this breach

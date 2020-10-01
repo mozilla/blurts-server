@@ -11,7 +11,7 @@ rec-pw-1-subhead = Endre passordet ditt
 # Link title
 rec-pw-1-cta = Endre passord for denne nettstaden
 rec-pw-1 =
-    Gjer dette passordet unikt og ulikt frå alle de andre du brukar. 
+    Gjer dette passordet unikt og ulikt frå alle dei andre du brukar. 
     Ein god strategi å følgje er å kombinere to eller fleire ikkje-relaterte 
     ord for å lage ein heil passordfrase.
 # Recommendation subhead
@@ -61,6 +61,11 @@ rec-ip-non-us =
     Internet Protocol-adressa di (IP-adresse) kan seie noko om kvar du er 
     og kvar internettleverandøren din er. Med eit virtuelt privat nettverk (VPN) kan du gøyme posisjonen din
     og maskere IP-adressa di.
+# Recommendation subhead
+rec-moz-vpn-cta = Prøv { -brand-mozilla-vpn }
+rec-moz-vpn =
+    IP-adressa di kan avsløre plasseringa di og internettleverandøren din. Ei teneste som
+    { -brand-fpn } skjuler IP-adressa di og plasseringa di for { -brand-name }, og ei teneste som { -brand-mozilla-vpn } skjuler IP-adressea og plasseringa di for heile eininga.
 rec-hist-pw-subhead = Unngå å bruke passord på nytt
 # Link title
 rec-hist-pw-cta-fx = Vis innloggingar på { -brand-name }

@@ -25,17 +25,13 @@ function getLocation() {
 }
 
 
-async function sendPing(el, eventAction, eventLabel = null) {
+async function sendPing(el, eventAction, eventLabel = null, options = null) {
   if (typeof(ga) !== "undefined" && !el.classList.contains("hide")) {
     if (!eventLabel) {
       eventLabel = `${getLocation()}`;
     }
     const eventCategory = `[v2] ${el.dataset.eventCategory}`;
-    if (eventCategory.includes("Scan")) {
-      // Append user status to eventLabel for scan form events.
-      eventLabel = `${eventLabel} [Signed in user: ${document.body.dataset.signedInUser}]`;
-    }
-    return ga("send", "event", eventCategory, eventAction, eventLabel);
+    return ga("send", "event", eventCategory, eventAction, eventLabel, options);
   }
 }
 
@@ -50,7 +46,7 @@ function appendFxaParams(url, storageObject) {
 
 function getFxaUtms(url) {
   if (sessionStorage) {
-    return appendFxaParams(url, sessionStorage);
+    url = appendFxaParams(url, sessionStorage);
   }
 
   return appendFxaParams(url, document.body.dataset);
@@ -74,11 +70,94 @@ function getUTMNames() {
 function sendRecommendationPings(ctaSelector) {
   document.querySelectorAll(ctaSelector).forEach(cta => {
     const eventLabel = cta.dataset.eventLabel;
-    ga("send", "event", "Breach Detail: Recommendation CTA", "View", eventLabel);
+    ga("send", "event", "Breach Detail: Recommendation CTA", "View", eventLabel, {nonInteraction: true});
     cta.addEventListener("click", () => {
-      ga("send", "event", "Breach Detail: Recommendation CTA", "Engage", eventLabel);
+      ga("send", "event", "Breach Detail: Recommendation CTA", "Engage", eventLabel, {transport: "beacon"});
     });
   });
+}
+
+function  setMetricsIds(el) {
+  if (el.dataset.entrypoint && hasParent(el, "sign-up-banner")) {
+    el.dataset.eventCategory = `${el.dataset.eventCategory} - Banner`;
+    el.dataset.entrypoint = `${el.dataset.entrypoint}-banner`;
+  }
+  return;
+}
+
+function setGAListeners(){
+  // Send "View" pings for any visible recommendation CTAs.
+  sendRecommendationPings(".first-four-recs");
+
+  document.querySelectorAll(".send-ga-ping, [data-send-ga-ping]").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      const eventCategory = e.target.dataset.eventCategory;
+      const eventAction = e.target.dataset.eventAction;
+      const eventLabel = e.target.dataset.eventLabel;
+      ga("send", "event", eventCategory, eventAction, eventLabel, {transport: "beacon"});
+    });
+  });
+
+  // Update data-event-category and data-fxa-entrypoint if the element
+  // is nested inside a sign up banner.
+  document.querySelectorAll("#scan-user-email, .open-oauth").forEach(el => {
+    setMetricsIds(el);
+  });
+
+
+  document.querySelectorAll(".open-oauth").forEach( async(el) => {
+    const fxaUrl = new URL("/metrics-flow?", document.body.dataset.fxaAddress);
+
+    try {
+      const response = await fetch(fxaUrl, {credentials: "omit"});
+      fxaUrl.searchParams.append("entrypoint", encodeURIComponent(el.dataset.entrypoint));
+      if (response && response.status === 200) {
+        const {flowId, flowBeginTime} = await response.json();
+        el.dataset.flowId = flowId;
+        el.dataset.flowBeginTime = flowBeginTime;
+      }
+    } catch(e) {
+      // should we do anything with this?
+    }
+  });
+
+  if (typeof(ga) !== "undefined") {
+    const pageLocation = getLocation();
+
+    // Elements for which we send Google Analytics "View" pings...
+    const eventTriggers = [
+      "#scan-user-email",
+      "#add-another-email-form",
+      ".open-oauth:not(.product-promo-wrapper)", // The promo entrypoint events are handled elsewhere.
+    ];
+    // Send number of foundBreaches on Scan, Full Report, and User Dashboard pageviews
+    if (pageLocation === ("Scan Results")) {
+      const breaches = document.querySelectorAll(".breach-card");
+      ga("send", "event", "[v2] Breach Count", "Returned Breaches", `${pageLocation}`, breaches.length);
+    }
+
+    // Send "View" pings and add event listeners.
+    document.querySelectorAll(eventTriggers).forEach(el => {
+      sendPing(el, "View", pageLocation, {nonInteraction: true});
+      if (["BUTTON", "A"].includes(el.tagName)) {
+        el.addEventListener("click", async(e) => {
+          await sendPing(el, "Engage", pageLocation, {transport: "beacon"});
+        });
+      }
+    });
+
+    // Add event listeners to event triggering elements
+    // for which we do not send "View" pings.
+    document.querySelectorAll("[data-ga-link]").forEach((el) => {
+      el.addEventListener("click", async(e) => {
+        const linkId = `Link ID: ${e.target.dataset.eventLabel}`;
+        await sendPing(el, "Click", `${linkId}`);
+      });
+    });
+
+  }
+
+  window.sessionStorage.setItem("gaInit", true);
 }
 
 (() => {
@@ -115,98 +194,34 @@ function sendRecommendationPings(ctaSelector) {
     saveReferringPageData(new URL(winLocation).searchParams);
   }
 
+  const gaInit = new Event("gaInit");
+
   if (gaEnabled) {
     ga("create", "UA-77033033-16");
     ga("set", "anonymizeIp", true);
-    ga("set", "transport", "beacon");
+    ga("set", "dimension6", `${document.body.dataset.signedInUser}`);
 
     ga("send", "pageview", {
       hitCallback: function() {
         removeUtmsFromUrl();
+        sessionStorage.removeItem("gaInit");
+        document.dispatchEvent(gaInit);
       },
     });
 
-    // Send "View" pings for any visible recommendation CTAs.
-    sendRecommendationPings(".first-four-recs");
+    document.addEventListener("gaInit", (e) => {
+      if (sessionStorage.getItem("gaInit")) {
+        return;
+      }
+      setGAListeners();
+    }, false);
 
-    document.querySelectorAll(".send-ga-ping, [data-send-ga-ping]").forEach((el) => {
-      el.addEventListener("click", (e) => {
-        const eventCategory = e.target.dataset.eventCategory;
-        const eventAction = e.target.dataset.eventAction;
-        const eventLabel = e.target.dataset.eventLabel;
-        ga("send", "event", eventCategory, eventAction, eventLabel);
-      });
-    });
+
+
+
   } else {
     removeUtmsFromUrl();
   }
 
-  const setMetricsIds = (el) => {
-    if (el.dataset.entrypoint && hasParent(el, "sign-up-banner")) {
-      el.dataset.eventCategory = `${el.dataset.eventCategory} - Banner`;
-      el.dataset.entrypoint = `${el.dataset.entrypoint}-banner`;
-    }
-    return;
-  };
 
-  // Update data-event-category and data-fxa-entrypoint if the element
-  // is nested inside a sign up banner.
-  document.querySelectorAll("#scan-user-email, .open-oauth").forEach(el => {
-    setMetricsIds(el);
-  });
-
-
-  document.querySelectorAll(".open-oauth").forEach( async(el) => {
-    const fxaUrl = new URL("/metrics-flow?", document.body.dataset.fxaAddress);
-
-    try {
-      const response = await fetch(fxaUrl, {credentials: "omit"});
-      fxaUrl.searchParams.append("entrypoint", encodeURIComponent(el.dataset.entrypoint));
-      if (response && response.status === 200) {
-        const {flowId, flowBeginTime} = await response.json();
-        el.dataset.flowId = flowId;
-        el.dataset.flowBeginTime = flowBeginTime;
-      }
-    } catch(e) {
-      // should we do anything with this?
-    }
-  });
-
-  if (typeof(ga) !== "undefined") {
-    const pageLocation = getLocation();
-
-    // Elements for which we send Google Analytics "View" pings...
-    const eventTriggers = [
-      "#scan-user-email",
-      "#add-another-email-form",
-      ".open-oauth",
-    ];
-
-    // Send number of foundBreaches on Scan, Full Report, and User Dashboard pageviews
-    if (pageLocation === ("Scan Results")) {
-      const breaches = document.querySelectorAll(".breach-card");
-      ga("send", "event", "[v2] Breach Count", "Returned Breaches", `${pageLocation}`, breaches.length);
-    }
-
-    // Send "View" pings and add event listeners.
-    document.querySelectorAll(eventTriggers).forEach(el => {
-      sendPing(el, "View", pageLocation);
-      if (["BUTTON", "A"].includes(el.tagName)) {
-        el.addEventListener("click", async(e) => {
-          await sendPing(el, "Engage", pageLocation);
-        });
-      }
-    });
-
-    // Add event listeners to event triggering elements
-    // for which we do not send "View" pings.
-    document.querySelectorAll("[data-ga-link]").forEach((el) => {
-      el.addEventListener("click", async(e) => {
-        const linkId = `Link ID: ${e.target.dataset.eventLabel}`;
-        await sendPing(el, "Click", `${linkId}`);
-      });
-    });
-  }
 })();
-
-

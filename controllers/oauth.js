@@ -12,7 +12,6 @@ const HIBP = require("../hibp");
 const mozlog = require("../log");
 const sha1 = require("../sha1-utils");
 
-
 const log = mozlog("controllers.oauth");
 
 function init(req, res, next, client = FxAOAuthClient) {
@@ -23,12 +22,15 @@ function init(req, res, next, client = FxAOAuthClient) {
   const url = new URL(client.code.getUri({state}));
   const fxaParams = new URL(req.url, AppConstants.SERVER_URL);
 
+  req.session.utmContents = {};
+
   url.searchParams.append("access_type", "offline");
   url.searchParams.append("action", "email");
 
   for (const param of fxaParams.searchParams.keys()) {
     url.searchParams.append(param, fxaParams.searchParams.get(param));
   }
+
   res.redirect(url);
 }
 
@@ -53,6 +55,8 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
   const existingUser = await DB.getSubscriberByEmail(email);
   req.session.user = existingUser;
 
+  const returnURL = new URL("/user/dashboard", AppConstants.SERVER_URL);
+
   // Check if user is signing up or signing in,
   // then add new users to db and send email.
   if (!existingUser || existingUser.fxa_refresh_token === null) {
@@ -67,7 +71,7 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
     unsafeBreachesForEmail = await HIBP.getBreachesForEmail(
       sha1(email),
       req.app.locals.breaches,
-      true,
+      true
     );
 
     const utmID = "report";
@@ -84,17 +88,17 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
         recipientEmail: email,
         date: req.fluentFormat(new Date()),
         unsafeBreachesForEmail: unsafeBreachesForEmail,
-        ctaHref: EmailUtils.getEmailCtaHref(utmID, "view-my-dashboard"),
+        ctaHref: EmailUtils.getEmailCtaHref(utmID, "go-to-dashboard-link"),
         unsubscribeUrl: EmailUtils.getUnsubscribeUrl(verifiedSubscriber, utmID),
         whichPartial: "email_partials/report",
       }
     );
     req.session.user = verifiedSubscriber;
-    return res.redirect("/user/dashboard");
+    return res.redirect(returnURL.pathname + returnURL.search);
   }
   // Update existing user's FxA data
   await DB._updateFxAData(existingUser, fxaUser.accessToken, fxaUser.refreshToken, fxaProfileData);
-  res.redirect("/user/dashboard");
+  res.redirect(returnURL.pathname + returnURL.search);
 }
 
 module.exports = {

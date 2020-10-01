@@ -17,7 +17,7 @@ rec-pw-1 =
 rec-pw-2-subhead = Aggiorna tutte le credenziali che utilizzano la stessa password
 # Link title
 rec-pw-2-cta-fx = Visualizza le credenziali in { -brand-name }
-rec-pw-2 = Quando riutilizzi le password, una singola violazione può portare a molte altre. Una volta che una password è esposta, gli hacker potrebbero usarla per accedere ad altri account.
+rec-pw-2 = Quando riutilizzi le password, una singola violazione può portare a molte altre. Una volta che una password è compromessa, gli hacker potrebbero usarla per accedere ad altri account.
 # Recommendation subhead
 rec-pw-3-subhead = Usa uno strumento di gestione password per portarle sempre con te
 # Link title
@@ -43,10 +43,13 @@ rec-ip-subhead = Usa un servizio che maschera il tuo indirizzo IP
 rec-ip-us-cta = Prova { -brand-fpn }
 rec-ip-us = Il tuo indirizzo di protocollo internet (indirizzo IP) permette di risalire alla tua posizione e al tuo fornitore di servizi internet. Un servizio come { -brand-fpn } maschera il tuo indirizzo IP per nascondere la tua posizione.
 rec-ip-non-us = Il tuo indirizzo di protocollo internet (indirizzo IP) permette di risalire alla tua posizione e al tuo fornitore di servizi internet. Con una rete privata virtuale (VPN), puoi nascondere la tua posizione e mascherare il tuo indirizzo IP.
+# Recommendation subhead
+rec-moz-vpn-cta = Prova { -brand-mozilla-vpn }
+rec-moz-vpn = Il tuo indirizzo IP (Internet Protocol) può rivelare la tua posizione e il tuo provider di servizi Internet. Un servizio come { -brand-fpn } nasconde il tuo indirizzo IP e posizione su { -brand-name }, mentre un servizio come { -brand-mozilla-vpn } nasconde il tuo Indirizzo IP e posizione sull’intero dispositivo.
 rec-hist-pw-subhead = Evita di riutilizzare le password
 # Link title
 rec-hist-pw-cta-fx = Visualizza le credenziali in { -brand-name }
-rec-hist-pw = Usa password univoche e complesse per ogni account. In questo modo, se una password viene esposta in una violazione di dati, dovrai modificare solo quella.
+rec-hist-pw = Usa password univoche e complesse per ogni account. In questo modo, se una password viene compromessa in una violazione di dati, dovrai modificare solo quella.
 # Recommendation subhead
 rec-sec-qa-subhead = Crea risposte sempre diverse alle domande di sicurezza
 rec-sec-qa = Molti siti web pongono le stesse domande di sicurezza. Se la tua risposta viene esposta nella violazione di un sito, l’informazione diventa pubblica. Crea risposte lunghe, casuali e conservale in un posto sicuro.
@@ -66,7 +69,7 @@ rec-address = Utilizzare il tuo indirizzo o il nome della strada in cui sei cres
 rec-gen-1-subhead = Usa password uniche e complesse per ogni account
 # Link title
 rec-gen-1-cta = Come creare password complesse
-rec-gen-1 = Riutilizzare le password mette a rischio tutti i tuoi account. Se una password viene esposta in una violazione, gli hacker avranno automaticamente accesso anche ad altri account.
+rec-gen-1 = Riutilizzare le password mette a rischio tutti i tuoi account. Se una password viene compromessa in una violazione, gli hacker avranno automaticamente accesso anche ad altri account.
 # Recommendation subhead
 rec-gen-2-subhead = Conserva le password in un posto sicuro
 # Link title

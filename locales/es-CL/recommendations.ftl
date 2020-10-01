@@ -15,9 +15,9 @@ rec-pw-1 =
     Una buena estrategia a seguir es combinar dos o más palabras 
     no relacionadas para crear una contraseña entera.
 # Recommendation subhead
-rec-pw-2-subhead = Actualiza otras conexiones en las que usas la misma contraseña
+rec-pw-2-subhead = Actualiza otras credenciales en las que usas la misma contraseña
 # Link title
-rec-pw-2-cta-fx = Ver conexiones en { -brand-name }
+rec-pw-2-cta-fx = Ver credenciales en { -brand-name }
 rec-pw-2 =
     Reutilizar contraseñas transforma una filtración de datos puntual en muchas. Ahora que esa 
     contraseña está dando vueltas por ahí, los hackers pueden usarla para entrar a otras cuentas.
@@ -58,10 +58,16 @@ rec-ip-non-us =
     Tu dirección de protocolo de Internet (dirección IP) señala tu ubicación 
     y tu proveedor de servicios de internet. Con una red privada virtual (VPN), puedes ocultar tu ubicación 
     y enmascarar tu dirección IP.
+# Recommendation subhead
+rec-moz-vpn-cta = Prueba { -brand-mozilla-vpn }
+rec-moz-vpn =
+    Tu dirección del protocolo de internet (dirección IP) puede revelar tu ubicación y tu proveedor de servicios de Internet. Un servicio como
+    { -brand-fpn } oculta tu dirección IP y ubicación en { -brand-name } y un servicio como { -brand-mozilla-vpn } oculta tu
+    dirección IP y ubicación en todo tu dispositivo.
 rec-hist-pw-subhead = Evita reutilizar contraseñas
 # Link title
-rec-hist-pw-cta-fx = Ver conexiones en { -brand-name }
-rec-hist-pw = Usa contraseñas únicas y seguras para cada cuenta. Si una contraseña es expuesta en una filtración de datos, solo tendrás que cambiar esa conexión puntual.
+rec-hist-pw-cta-fx = Ver credenciales en { -brand-name }
+rec-hist-pw = Usa contraseñas únicas y seguras para cada cuenta. Si una contraseña es expuesta en una filtración de datos, solo tendrás que cambiarla para esa credencial puntual.
 # Recommendation subhead
 rec-sec-qa-subhead = Crea respuestas únicas para preguntas de seguridad
 rec-sec-qa =
@@ -101,7 +107,7 @@ rec-gen-2-subhead = Guarda las contraseñas en un lugar seguro
 # Link title
 rec-gen-2-cta = Mitos sobre los administradores de contraseñas
 rec-gen-2 =
-    Guarda tus datos de conexión en un lugar seguro al que puedas acceder solo tu, como un 
+    Guarda los detalles de tu credencial en un lugar seguro al que puedas acceder solo tu, como un 
     administrador de contraseñas. Esto también facilita el mantener organizadas todas tus diferentes contraseñas.
 # Recommendation subhead
 rec-gen-3-subhead = Ten cuidado al dar información personal

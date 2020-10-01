@@ -12,9 +12,13 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Rhwydwaith Preifat Firefox
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Cyfrif Firefox
 terms-and-privacy = Telerau a Phreifatrwydd
 GitHub-link-title = GitHub
 error-scan-page-token = Rydych wedi ceisio sganio gormod o gyfeiriadau e-bost mewn cyfnod byr. Am resymau diogelwch, rydym wedi eich rhwystro dros dro rhag chwiliadau newydd. Fe gewch chi geisio eto yn ddiweddarach.
@@ -199,6 +203,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Gwirio am Dor-data
 find-out-what-hackers-know = Dyma beth mae hacwyr eisoes yn ei wybod amdanoch chi. Dysgwch sut i aros un cam o'u blaen.
+get-email-alerts = Cadwch yn ddiogel: Sicrhewch rybuddion e-bost pan fydd eich manylion yn ymddangos mewn tor-data hysbys
 search-for-your-email = Chwiliwch am eich cyfeiriad e-bost mewn tor-data cyhoeddus sy'n mynd yn ôl i 2007.
 back-to-top = Nôl i'r Brig
 comm-opt-0 = E-bostiwch fi os yw un o'm cyfeiriadau e-bost isod yn ymddangos mewn achos o dor-data.
@@ -309,24 +314,24 @@ email-addresses-being-monitored =
 # your localization, because it would result in the number showing twice.
 passwords-exposed =
     { $passwords ->
-        [zero] Cyfrineiriau'n ddiogel
-        [one] Cyfrineiriau wedi'i amlygu ym mhob tor-data
-        [two] Cyfrineiriau wedi'u hamlygu ym mhob tor-data
-        [few] Cyfrineiriau wedi'u hamlygu ym mhob tor-data
-        [many] Cyfrineiriau wedi'u hamlygu ym mhob tor-data
-       *[other] Cyfrineiriau wedi'u hamlygu ym mhob tor-data
+        [zero] Cyfrineiriau wedi'u hamlygu
+        [one] Cyfrinair wedi'i amlygu ym mhob tor-data
+        [two] Gyfrinair wedi'u hamlygu ym mhob tor-data
+        [few] Cyfrinair wedi'u hamlygu ym mhob tor-data
+        [many] Chyfrinair wedi'u hamlygu ym mhob tor-data
+       *[other] Cyfrinair wedi'u hamlygu ym mhob tor-data
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
     { $breaches ->
-        [zero] Mae tor-data hysbys wedi datgelu eich manylion
-        [one] Mae tor-data hysbys wedi datgelu eich manylion
-        [two] Mae tor-data hysbys wedi datgelu eich manylion
-        [few] Mae tor-data hysbys wedi datgelu eich manylion
-        [many] Mae tor-data hysbys wedi datgelu eich manylion
-       *[other] Mae tor-data hysbys wedi datgelu eich manylion
+        [zero] Tor-data hysbys wedi datgelu eich manylion
+        [one] Tor-data hysbys wedi datgelu eich manylion
+        [two] Tor-data hysbys wedi datgelu eich manylion
+        [few] Tor-data hysbys wedi datgelu eich manylion
+        [many] Tor-data hysbys wedi datgelu eich manylion
+       *[other] Tor-data hysbys wedi datgelu eich manylion
     }
 # Button
 see-additional-breaches = Gweld Tor-data Ychwanegol
@@ -523,16 +528,16 @@ progress-complete = Mae'r holl dor-data hysbys wedi'u nodi fel rhai wedi'u datry
 ## Please do not modify or remove "<span>" and "</span>".
 
 progress-message-1 =
-    <span> Cychwyn da! </p> Edrychwch ar y tor-data eraill i weld
+    <span>Cychwyn da!</span> Edrychwch ar y tor-data eraill i weld
     pa gamau sydd angen
     eu cymryd.
 progress-message-2 =
-    <span>Daliwch ati!</p> Mae newidiadau bach fel diweddaru cyfrineiriau yn cael effaith fawr
+    <span>Daliwch ati!</span> Mae newidiadau bach fel diweddaru cyfrineiriau yn cael effaith fawr
     ar gadw'ch manylion personol yn ddiogel.
-progress-message-3 = <span> Gwaith da wrth ddatrys y tor-data hyn! </p>Daliwch ati. Mae'na ragor i'w wneud.
+progress-message-3 = <span>Gwaith da wrth ddatrys y tor-data hyn!</span> Daliwch ati. Mae'na ragor i'w wneud.
 progress-message-4 = <span>Bron wedi gorffen!</span> Rydych chi bron â chyrraedd y diwedd.
 progress-complete-message =
-    <span>Teimlo'n dda, ydy?</p> Os ydych chi am ddal ati, mae hwn yn amser da i
+    <span>Teimlo'n dda, ydy?</span> Os ydych chi am ddal ati, mae hwn yn amser da i
     diweddaru mewngofnodion eraill gyda chyfrineiriau cryfach.
 
 ##
@@ -563,3 +568,18 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Newydd
+mobile-promo-headline = Dewch â { -brand-name } i'ch ffôn a'ch tabled
+mobile-promo-body = Pori cyflym, preifat a diogel ym mhob man yr ewch chi. Mae { -brand-name } ar gael yn Google Play a'r App Store.
+mobile-promo-cta = Estyn { -brand-name } ar Android ac iOS
+promo-lockwise-headline = Ewch â'ch cyfrineiriau i bob man
+lockwise-promo-body = Cadwch olwg ar eich mewngofnodi ar draws pob dyfais. Cewch fynediad diogel iddyn nhw o'ch cyfrifiadur, ffôn neu dabled.
+promo-lockwise-cta = Estyn { -brand-lockwise }
+fpn-promo-headline = Cuddiwch eich lleoliad rhag gwefannau a thracwyr
+promo-fpn-body = Mae { -brand-fpn } yn drysu'r gwefannau a'r casglwyr data sy'n eich proffilio gyda hysbysebion trwy guddio'ch cyfeiriad IP go iawn.
+promo-fpn-cta = Estyn { -brand-fpn }
+monitor-promo-headline = Dysgwch ragor am dor-data newydd
+monitor-promo-body = Derbyniwch neges y tro nesaf y bydd eich manylion personol yn cael ei datgelu mewn tor-data hysbys.
+ecosystem-promo-headline = Diogelwch eich bywyd ar-lein gyda chynnyrch preifatrwydd-yn-gyntaf
+ecosystem-promo-body = Mae pob un o gynnyrch { -brand-name } yn anrhydeddu ein Addewid Data Personol: Cymryd llai. Cadw nhw'n ddiogel. Dim cyfrinachau.
+promo-ecosystem-cta = Gweld yr Holl Gynnyrch
+steps-to-resolve-headline = Camau i ddatrys y tor-data hwn

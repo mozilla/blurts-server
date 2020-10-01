@@ -15,6 +15,7 @@ const { FXA } = require("./lib/fxa");
 const { FluentError } = require("./locale-utils");
 const mozlog = require("./log");
 
+const HIBP = require("./hibp");
 
 const log = mozlog("middleware");
 
@@ -61,21 +62,45 @@ async function recordVisitFromEmail (req, res, next) {
     next();
     return;
   }
-  if (!req.query.subscriber_id || !Number.isInteger(Number(req.query.subscriber_id))) {
-    next();
-    return;
-  }
-  const subscriber = await DB.getSubscriberById(req.query.subscriber_id);
-  if (!subscriber.fxa_uid || subscriber.fxa_uid === "") {
-    next();
-    return;
-  }
+
   const breachDetailsRE = /breach-details\/(\w*)$/;
   const capturedMatch = req.path.match(breachDetailsRE);
-  const utmContent = (capturedMatch) ? `&utm_content=${capturedMatch[1]}` : "";
-  const fxaMetricsFlowPath = `metrics-flow?utm_source=${req.query.utm_source}&utm_medium=${req.query.utm_medium}${utmContent}&event_type=engage&uid=${subscriber.fxa_uid}&service=${AppConstants.OAUTH_CLIENT_ID}`;
-  const fxaResult = await FXA.sendMetricsFlowPing(fxaMetricsFlowPath);
-  log.info(`fxaResult: ${fxaResult}`);
+
+  // Send engagement ping to FXA if req.query contains a valid subscriber ID
+  if (req.query.subscriber_id && Number.isInteger(Number(req.query.subscriber_id))) {
+    const subscriber = await DB.getSubscriberById(req.query.subscriber_id);
+
+    if (!subscriber.fxa_uid || subscriber.fxa_uid === "") {
+      next();
+      return;
+    }
+    const utmContent = (capturedMatch) ? `&utm_content=${capturedMatch[1]}` : "";
+    const fxaMetricsFlowPath = `metrics-flow?utm_source=${req.query.utm_source}&utm_medium=${req.query.utm_medium}${utmContent}&event_type=engage&uid=${subscriber.fxa_uid}&service=${AppConstants.OAUTH_CLIENT_ID}`;
+    const fxaResult = await FXA.sendMetricsFlowPing(fxaMetricsFlowPath);
+    log.info(`fxaResult: ${fxaResult}`);
+  }
+
+  if (req.session.user) {
+    next();
+    return;
+  }
+
+  // Redirect users who have clicked "Resolve this breach" or "Go to Dashboard" from an email
+  // and aren't signed in to the /oauth flow.
+  if (
+    req.query.utm_campaign && req.query.utm_campaign === "resolve-this-breach-link" ||
+    req.query.utm_campaign && req.query.utm_campaign === "go-to-dashboard-link"
+    ) {
+    const oauthUrl = new URL("/oauth/init", AppConstants.SERVER_URL);
+    ["utm_source", "utm_campaign", "utm_medium"].forEach(param => {
+      if (req.query[param]) {
+        oauthUrl.searchParams.append(param, req.query[param]);
+      }
+    });
+    req.url = `${oauthUrl.pathname}/${oauthUrl.search}`;
+    next();
+    return;
+  }
   next();
 }
 
@@ -149,6 +174,71 @@ async function requireSessionUser(req, res, next) {
   next();
 }
 
+function getShareUTMs(req, res, next) {
+  // Step 1: See if the user needs to be redirected to the homepage or to a breach-detail page.
+  const generalShareUrls = [
+    "/share/orange", //Header
+    "/share/purple", // Footer
+    "/share/blue",  // user/dashboard
+    "/share/",
+  ];
+
+  if (generalShareUrls.includes(req.url)) {
+    // If not breach specific, redirect to "/"
+    req.session.redirectHome = true;
+  }
+
+  // If user has no reference to experiment (default), add skip override
+  if (typeof(req.session.experimentFlags) === "undefined") {
+    req.session.experimentFlags = {
+      excludeFromExperiment: true,
+    };
+  }
+
+  const excludedFromExperiment = (req.session.experimentFlags.excludeFromExperiment);
+
+  // Excluse user from experiment if they don't have any experimentFlags set already.
+  if (excludedFromExperiment) {
+
+    // Step 2: Determine if user needs to have share-link UTMs set
+    const colors = [
+      "orange", //Header
+      "purple", // Footer
+      "blue", // user/dashboard
+    ];
+
+    const urlArray = req.url.split("/");
+    const color = urlArray.slice(-1)[0];
+
+
+    req.session.utmOverrides = {
+      campaignName: "shareLinkTraffic",
+      campaignTerm: "default",
+    };
+
+    // Set Color Var in UTM
+    if (color.length && colors.includes(color)) {
+      req.session.utmOverrides.campaignTerm = color;
+    }
+
+    if (color.length && !colors.includes(color)) {
+      const allBreaches = req.app.locals.breaches;
+      const breachName = color;
+      const featuredBreach = HIBP.getBreachByName(allBreaches, breachName);
+
+      if (featuredBreach) {
+        req.session.utmOverrides.campaignTerm = featuredBreach.Name;
+      }
+    }
+
+    // Exclude share users
+    req.session.experimentFlags = {
+      excludeFromExperiment: true,
+    };
+  }
+
+  next();
+}
 
 
 module.exports = {
@@ -161,4 +251,5 @@ module.exports = {
   clientErrorHandler,
   errorHandler,
   requireSessionUser,
+  getShareUTMs,
 };

@@ -2,72 +2,35 @@
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
-click-to-verify =
-    Επιλέξτε το κουμπί "Επαλήθευση email" μέσα σε 24 ώρες για επιβεβαίωση του λογαριασμού σας στο Firefox Monitor. 
-    Τότε, θα ετοιμαστεί και θα αποσταλεί η αναφορά σας.
-verify-my-email = Επαλήθευση email
-report-scan-another-email = Σάρωση άλλου email στο { -product-name }
-automated-message = Αυτό είναι ένα αυτοματοποιημένο email· αν το λάβατε κατά λάθος, δεν απαιτείται καμία ενέργεια.
-# Without HTML markup reads: We sent this message to [user’s email address] because the email address opted into alerts from Firefox Monitor.
-we-sent-this-alert = Στείλαμε αυτό το μήνυμα στο { $userEmail }, επειδή έγινε εγγραφή της διεύθυνσης email στις ειδοποιήσεις από το { -product-name }.
-unsubscribe-email-link = Αν δεν επιθυμείτε πλέον ειδοποιήσεις από το { -product-name }, καταργήστε την εγγραφή σας.
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Αναφορά { -product-name }
 report-date = Ημερομηνία αναφοράς:
 email-address = Διεύθυνση email:
-# A list of next steps someone should take if their information has been involved in a data breach.
-what-to-do-next = Τι να κάνετε μετά
-report-headline =
-    { $breachCount ->
-        [0] Μέχρι στιγμής, όλα καλά.
-        [one] Ο λογαριασμός σας εμφανίστηκε σε { $breachCount } παραβίαση.
-       *[other] Οι λογαριασμοί σας εμφανίστηκαν σε { $breachCount } παραβιάσεις.
-    }
-report-subhead-no-breaches =
-    Ο λογαριασμό σας δεν εμφανίζεται στην πλήρη αναφορά παραβιάσεών μας. 
-    Αυτά είναι καλά νέα, αλλά μπορείτε να κάνετε περισσότερα. 
-    Παραβιάσεις δεδομένων μπορούν να συμβούν ανά πάσα στιγμή, γι' αυτό διαβάστε για να μάθετε πώς να προστατέψετε τους κωδικούς πρόσβασής σας.
-report-subhead-found-breaches = Ορίστε η πλήρης αναφορά σας από το Firefox Monitor, η οποία συμπεριλαμβάνει όλες τις γνωστές παραβιάσεις δεδομένων που περιέχουν αυτή τη διεύθυνση email.
-report-pwt-blurb =
-    Οι κωδικοί πρόσβασης είναι τόσο πολύτιμοι, που χιλιάδες υποκλέπτονται κάθε μέρα και ανταλλάσσονται ή πωλούνται στη μαύρη αγορά. 
-    Οι ισχυρότεροι κωδικοί πρόσβασης προστατεύουν τους λογαριασμούς σας και όλες τις προσωπικές σας πληροφορίες που περιέχουν.
-report-pwt-headline-1 = Χρήση διαφορετικού κωδικού για κάθε λογαριασμό
-report-pwt-summary-1 =
-    Η εκ νέου χρήση του ίδιου κωδικού πρόσβασης παντού ανοίγει την πόρτα για τους hackers. 
-    Μπορούν να χρησιμοποιήσουν αυτό τον κωδικό πρόσβασης για να συνδεθούν στους άλλους λογαριασμούς σας.
-report-pwt-headline-2 = Δημιουργία ισχυρών, μοναδικών κωδικών
-report-pwt-summary-2 =
-    Οι χάκερς χρησιμοποιούν λίστες κοινών κωδικών για να μαντέψουν το δικό σας. 
-    Όσο πιο μεγάλος και τυχαίος είναι ο κώδικός σας, τόσο πιο δύσκολα θα κλαπεί.
-report-pwt-headline-3 = Οι ερωτήσεις ασφαλείας είναι επιπλέον κωδικοί πρόσβασης
-report-pwt-summary-3 =
-    Οι ιστοσελίδες δεν ελέγχουν αν οι απαντήσεις είναι ακριβείς, ελέγχουν απλά αν ταιριάζουν. 
-    Δημιουργήστε μεγάλες, τυχαίες απαντήσεις και αποθηκεύστε τις σε ασφαλές μέρος.
-report-pwt-headline-4 = Χρήση εφαρμογής διαχείρισης κωδικών
-report-pwt-summary-4 =
-    Υπηρεσίες, όπως τα 1Password, LastPass, Dashlane και Bitwarden δημιουργούν ισχυρούς κωδικούς πρόσβασης, τους αποθηκεύουν με ασφάλεια 
-    και τους συμπληρώνουν στις ιστοσελίδες έτσι, ώστε να μην χρειάζεται να τους θυμάστε.
 # A link to legal information about mozilla products.
 legal = Νομικά
-# Share Firefox Monitor by email subject line
-share-by-email-subject = Δείτε αν έχετε επηρεαστεί από τη διαρροή δεδομένων.
-# Share Firefox Monitor by email message. {"https://monitor.firefox.com"} should not be translated or modified. 
-share-by-email-message =
-    Γεια,
-    Το { -brand-name } παρέχει μια δωρεάν υπηρεσία, όπου μπορείς να ελέγξεις αν έχεις επηρεαστεί από κάποια διαρροή δεδομένων. Ορίστε πώς λειτουργεί:
-    1. Πήγαινε στο { "https://monitor.firefox.com" } και αναζήτησε το email σου.
-    2. Δες αν οι διαδικτυακοί σου λογαριασμοί έχουν εκτεθεί σε κάποια παραβίαση δεδομένων.
-    3. Λάβε συμβουλές από το { -product-name } σχετικά με το τι να κάνεις μετά.
 # Unsubscribe link in email.
 email-unsub-link = Κατάργηση εγγραφής
-# Button text that takes the user to their signed in user dashboard.
-view-my-dashboard-cta = Προβολή πίνακα ελέγχου
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb =
+    Λαμβάνετε αυτό το email επειδή έχετε εγγραφεί στις ειδοποιήσεις του { -product-name }.
+    Δεν θέλετε πλέον αυτά τα emails; { $unsubLink }. Αυτό είναι ένα αυτοματοποιημένο email. Για υποστήριξη, επισκεφθείτε τις { $faqLink }.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    Λαμβάνετε αυτό το email επειδή έχετε εγγραφεί στις ειδοποιήσεις του { -product-name }.
+    Αυτό είναι ένα αυτοματοποιημένο email. Για υποστήριξη, επισκεφθείτε τις { $faqLink }.
 # Button text
 verify-email-cta = Επαλήθευση email
 # Button text
 see-all-breaches = Προβολή όλων των παραβιάσεων
 # Headline of verification email
 email-link-expires = Αυτός ο σύνδεσμος λήγει σε 24 ώρες
+email-verify-blurb = Επαληθεύστε το email σας για να το προσθέσετε στο { -product-name } και εγγραφείτε για ειδοποιήσεις παραβίασης.
+# Email headline
+email-found-breaches-hl = Ορίστε μια σύνοψη των προηγούμενων παραβιάσεων δεδομένων
 # Email headline
 email-breach-summary-for-email = Περίληψη παραβίασης για το { $userEmail }
 # Email headline
@@ -82,7 +45,50 @@ email-subject-no-breaches = Το { -product-name } δεν βρήκε γνωστ�
 email-subject-verify = Επαλήθευση email για το { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Μάθετε περισσότερα σχετικά με το { $fxmLink }
+email-sensitive-disclaimer =
+    Λόγω της ευαίσθητης φύσης της διαρροής, τα εμπλεκόμενα emails δεν ανιχνεύονται δημόσια. 
+    Λαμβάνετε αυτή την ειδοποίηση επειδή είστε επαληθευμένος κάτοχος αυτής της διεύθυνσης email.
+fxm-warns-you-no-breaches =
+    Το { -product-name } σας προειδοποιεί σχετικά με παραβιάσεις που αφορούν προσωπικά σας δεδομένα. 
+    Μέχρι στιγμής, δεν έχουν βρεθεί διαρροές. Θα σας ειδοποιήσουμε αν εμφανιστεί η διεύθυνση email σας σε κάποια νέα παραβίαση.
+fxm-warns-you-found-breaches =
+    Το { -product-name } σας προειδοποιεί σχετικά με παραβιάσεις που αφορούν προσωπικά σας δεδομένα. 
+    Έχετε εγγραφεί για λήψη ειδοποιήσεων αν εμφανιστεί η διεύθυνση email σας σε κάποια νέα παραβίαση.
+email-breach-alert-blurb =
+    Το { -product-name } σας προειδοποιεί σχετικά με παραβιάσεις που αφορούν προσωπικά σας δεδομένα. 
+    Μόλις λάβαμε στοιχεία σχετικά με παραβίαση δεδομένων άλλης εταιρείας.
 # List headline
 faq-list-headline = Συχνές ερωτήσεις
 # Link Title
+faq-v2-1 = Δεν αναγνωρίζω κάποια από αυτές τις εταιρείες ή ιστοσελίδες. Γιατί είμαι σε αυτή την παραβίαση;
+# Link Title
+faq-v2-2 = Χρειάζεται να κάνω κάτι αν μια παραβίαση συνέβη πριν χρόνια ή σε παλιό λογαριασμό;
+# Link Title
+faq-v2-3 = Μόλις έμαθα ότι έχω επηρεαστεί από διαρροή δεδομένων. Τι πρέπει να κάνω;
+# Link Title
 faq-v2-4 = Πώς αντιμετωπίζει το { -product-name } τις ευαίσθητες ιστοσελίδες;
+# This string contains nested markup that becomes a link to Firefox Monitor
+# later in the code. Please do not modify or remove "<a>" and "</a>".
+pre-fxa-message = <a>Δημιουργήστε ένα δωρεάν { -brand-fxa }</a> και θα μπορείτε να προσθέσετε έως 15 διευθύνσεις email.
+# Section headline
+monitor-another-email = Θέλετε να παρακολουθήσετε κάποιο άλλο email;
+# Subject line of email
+pre-fxa-subject = Μια ενημέρωση από το { -product-name }
+pre-fxa-headline = Τι αλλάζει με το { -product-name }
+pre-fxa-blurb =
+    Δείτε τι άλλαξε αφού κάνατε εγγραφή στο { -product-name }, η υπηρεσία που 
+    εποπτεύει γνωστές παραβιάσεις δεδομένων για τα προσωπικά σας στοιχεία. Το συνδέουμε με το λογαριασμό Firefox.
+pre-fxa-tout-1 = Μείνετε σε εγρήγορση για περισσότερες παραβιάσεις
+pre-fxa-p-1 =
+    <a>Δημιουργήστε ένα λογαριασμό</a> για εποπτεία έως και 15 διευθύνσεων email για 
+    διαρροές δεδομένων. Προτείνουμε να προσθέσετε όσες διευθύνσεις email έχετε χρησιμοποιήσει σε διαδικτυακούς λογαριασμούς.
+pre-fxa-tout-2 = Προβολή πίνακα ελέγχου
+pre-fxa-p-2 =
+    Δείτε όλες τις παραβιάσεις σε ένα μέρος ώστε να ξέρετε ποιους κωδικούς πρόσβασης να αλλάξετε. 
+    Ο πίνακας ελέγχου διαρροών διατίθεται μόνο αν έχετε λογαριασμό.
+pre-fxa-tout-3 = Συνέχεια λήψης ειδοποιήσεων μέσω email
+pre-fxa-p-3 =
+    Θα εξακολουθείτε να λαμβάνετε ειδοποιήσεις από το { -product-name }. Θα σας ενημερώσουμε αν
+    εμφανιστούν τα στοιχεία σας σε μια νέα παραβίαση δεδομένων.
+# Button at the bottom of pre-fxa email.
+create-account = Δημιουργία λογαριασμού

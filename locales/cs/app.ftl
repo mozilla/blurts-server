@@ -54,13 +54,41 @@
 -brand-HIBP = Have I Been Pwned
 -brand-fxa =
     { $case ->
-       *[nom] Účet Firefoxu
-        [gen] Účtu Firefoxu
-        [dat] Účtu Firefoxu
-        [acc] Účet Firefoxu
-        [voc] Účte Firefoxu
-        [loc] Účtu Firefoxu
-        [ins] Účtem Firefoxu
+       *[nom]
+            { $capitalization ->
+               *[upper] Účet Firefoxu
+                [lower] účet Firefoxu
+            }
+        [gen]
+            { $capitalization ->
+               *[upper] Účtu Firefoxu
+                [lower] účtu Firefoxu
+            }
+        [dat]
+            { $capitalization ->
+               *[upper] Účtu Firefoxu
+                [lower] účtu Firefoxu
+            }
+        [acc]
+            { $capitalization ->
+               *[upper] Účet Firefoxu
+                [lower] účet Firefoxu
+            }
+        [voc]
+            { $capitalization ->
+               *[upper] Účte Firefoxu
+                [lower] účte Firefoxu
+            }
+        [loc]
+            { $capitalization ->
+               *[upper] Účtu Firefoxu
+                [lower] účtu Firefoxu
+            }
+        [ins]
+            { $capitalization ->
+               *[upper] Účtem Firefoxu
+                [lower] účtem Firefoxu
+            }
     }
 -brand-pocket = Pocket
 -brand-lockwise =
@@ -76,9 +104,13 @@
     .gender = masculine
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 
+##
 
-
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Účet Firefoxu
 terms-and-privacy = Podmínky a ochrana soukromí
 GitHub-link-title = GitHub
 error-scan-page-token = Pokusili jste se zkontrolovat příliš mnoho e-mailových adres ve velmi krátkém čase. Z bezpečnostních důvodů jsme další vyhledávání dočasně zablokovali. Zkuste to prosím znovu později.
@@ -87,7 +119,7 @@ error-not-subscribed = Tato e-mailová adresa není zaregistrována k příjmu u
 error-hibp-throttled = Příliš mnoho spojení k { -brand-HIBP }.
 error-hibp-connect = Chyba při připojování k { -brand-HIBP }.
 error-hibp-load-breaches = Nepodařilo se načíst informace o únicích.
-error-must-be-signed-in = Musíte být přihlášeni do svého { -brand-fxa(case: "gen") }.
+error-must-be-signed-in = Musíte být přihlášeni do svého { -brand-fxa(case: "gen", capitalization: "lower") }.
 error-to-finish-verifying = Pro dokončení ověření této e-mailové adresy pro { -product-name(case: "acc") } musíte být přihlášeni pod svým primárním e-mailovým účtem.
 home-title = { -product-name }
 home-not-found = Stránka nenalezena.
@@ -130,11 +162,11 @@ share-facebook-headline = Zjistěte, zda byla vaše data součástí nějakého 
 share-facebook-blurb = Byl některý z vašich účtů součástí nějakého úniku dat?
 og-site-description = { -product-name } zjistí, jestli byla vaše data součástí nějakého úniku. Pro větší bezpečí se také přihlaste k zasílání výstrah o budoucích únicích.
 show-all = Zobrazit vše
-fxa-scan-another-email = Chcete zkontrolovat další e-mail?
+fxa-scan-another-email = Chcete zkontrolovat další e-mailovou adresu?
 sign-in = Přihlásit se
 sign-out = Odhlášení
 # Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Správa { -brand-fxa(case: "gen") }
+manage-fxa = Správa { -brand-fxa(case: "gen", capitalization: "lower") }
 have-an-account = Již máte účet?
 fxa-pwt-summary-2 =
     Krátké jednoslovné heslo je velmi snadné uhodnout. Používejte alespoň
@@ -162,7 +194,7 @@ breaches = Úniky
 security-tips = Bezpečnostní tipy
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
-open-fxa-menu = Otevřít nabídku { -brand-fxa(case: "gen") }
+open-fxa-menu = Otevřít nabídku { -brand-fxa(case: "gen", capitalization: "lower") }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = NAPOSLEDY PŘIDANÝ ÚNIK
 # Link title
@@ -171,7 +203,7 @@ take-control = Získejte opět kontrolu nad svými osobními údaji.
 cant-stop-hackers = Nemůžete zabránit hackerům v nabourávání se do počítačů. Ale můžete se vyvarovat špatných zvyků, které jim usnadňují práci.
 read-more-tips = Další bezpečnostní tipy
 how-hackers-work = Jak pracují hackeři
-monitor-your-online-accounts = Zaregistrujte se k monitorování úniků pomocí { -brand-fxa(case: "gen") }.
+monitor-your-online-accounts = Zaregistrujte se k monitorování úniků pomocí { -brand-fxa(case: "gen", capitalization: "lower") }.
 stay-alert = Buďte informováni o nových únicích
 if-your-info = Jestliže budou vaše údaje součástí nového úniku dat, zašleme vám upozornění.
 search-all-emails = Vyhledejte všechny své e-mailové adresy v únicích dat a dostávejte upozornění na nové úniky.
@@ -201,7 +233,7 @@ how-fxm-works = Jak { -product-name } funguje
 how-fxm-1-headline = Proveďte základní vyhledávání
 how-fxm-1-blurb = Vyhledejte svou e-mailovou adresu ve veřejně dostupných únicích dat sahajících zpět do roku 2007. Toto základní vyhledávání zobrazí všechny úniky dat kromě těch, které obsahují citlivé osobní údaje.
 how-fxm-2-headline = Zaregistrujte se k monitorování úniků
-how-fxm-2-blurb = Vytvořte si { -brand-fxa(case: "acc") }, abyste mohli monitorovat svou e-mailovou adresu pro případ probíhajících úniků. Ihned po ověření své e-mailové adresy rovněž obdržíte kompletní hlášení o předchozích únicích včetně úniků citlivých údajů.
+how-fxm-2-blurb = Vytvořte si { -brand-fxa(case: "acc", capitalization: "lower") }, abyste mohli monitorovat svou e-mailovou adresu pro případ probíhajících úniků. Ihned po ověření své e-mailové adresy rovněž obdržíte kompletní hlášení o předchozích únicích včetně úniků citlivých údajů.
 how-fxm-3-headline = Dostávejte oznámení ve svém prohlížeči
 how-fxm-3-blurb = Pokud používáte { -brand-name(case: "acc") }, obdržíte oznámení, jestliže navštívíte web, u něhož došlo k úniku dat. Hned si pak ověřte, jestli jste byli součástí tohoto úniku a co s tím můžete dělat.
 wtd-after-website = Co dělat po úniku z webových stránek
@@ -226,7 +258,7 @@ create-strong-passwords = Jak vytvářet silná hesla
 stop-reusing-pw = Přestaňte používat hesla opakovaně
 create-unique-pw = Vytvořte si jedinečná hesla a uschovejte je na nějakém bezpečném místě, např. ve správci hesel.
 five-myths = 5 mýtů o správcích hesel
-create-a-fxa = Vytvořte si { -brand-fxa(case: "acc") } pro dostávání upozornění na nové úniky a obdržení svého kompletního hlášení.
+create-a-fxa = Vytvořte si { -brand-fxa(case: "acc", capitalization: "lower") } pro příjem upozornění na nové úniky a obdržení svého kompletního hlášení.
 feat-security-tips = Bezpečnostní tipy, jak zabezpečit své účty
 feat-sensitive = Pokročilé vyhledávání v únicích citlivých údajů
 feat-enroll-multiple = Nechte si monitorovat více e-mailových adres
@@ -241,6 +273,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Prohledat úniky
 find-out-what-hackers-know = Odhalte, co už o vás hackeři vědí. Zjistěte, jak být stále o krok před nimi.
+get-email-alerts = Zůstaňte v bezpečí: Nechte se upozornit, jestliže se vaše údaje objeví ve známém úniku dat.
 search-for-your-email = Vyhledejte svou e-mailovou adresu ve veřejně dostupných únicích dat sahajících zpět do roku 2007.
 back-to-top = Zpět na začátek
 comm-opt-0 = Poslat mi e-mail, pokud se jedna z mých níže uvedených e-mailových adres objeví v nějakém úniku dat.
@@ -258,7 +291,7 @@ breach-summary = Souhrnné informace
 show-breaches-for-this-email = Zobrazit všechny úniky pro tuto adresu.
 link-change-primary = Změnit primární e-mailovou adresu
 remove-fxm = Vypnout { -product-name(case: "acc") }
-remove-fxm-blurb = Tímto zrušíte zasílání upozornění { -product-name(case: "ins") }. Váš { -brand-fxa } zůstane aktivní a můžete dostávat jiné zprávy týkající se vašeho účtu.
+remove-fxm-blurb = Tímto zrušíte zasílání upozornění { -product-name(case: "ins") }. Váš { -brand-fxa(capitalization: "lower") } zůstane aktivní a můžete dostávat jiné zprávy týkající se vašeho účtu.
 # Button title
 manage-email-addresses = Spravovat e-mailové adresy
 # Link title
@@ -292,8 +325,8 @@ new-breaches-found =
         [few] NALEZENY { $breachCount } NOVÉ ÚNIKY DAT
        *[other] NALEZENO { $breachCount } NOVÝCH ÚNIKŮ DAT
     }
-sign-up-headline-1 = Dostávejte průběžně upozornění pomocí { -brand-fxa(case: "gen") }.
-account-not-required = Pro vytvoření { -brand-fxa(case: "gen") } není nutné mít prohlížeč { -brand-name }. Můžete dostávat informace o službách { -brand-Mozilla(case: "gen") }.
+sign-up-headline-1 = Dostávejte průběžně upozornění pomocí { -brand-fxa(case: "gen", capitalization: "lower") }.
+account-not-required = Pro vytvoření { -brand-fxa(case: "gen", capitalization: "lower") } není nutné mít prohlížeč { -brand-name }. Můžete dostávat informace o službách { -brand-Mozilla(case: "gen") }.
 was-your-info-exposed = Byly vaše údaje vyzrazeny v úniku { $breachName }?
 find-out-if = Zjistěte, jestli byly vaše údaje vyzrazeny v tomto úniku.
 fb-not-comp = Tato e-mailová adresa se nevyskytuje v úniku { $breachName }.
@@ -303,7 +336,7 @@ other-breaches-found =
         [few] Vyskytuje se však ve { $breachCount } dalších únicích dat.
        *[other] Vyskytuje se však v { $breachCount } dalších únicích dat.
     }
-fb-comp-only = Tato e-mailová adresa se vyskytovala v úniku { $breachName }.
+fb-comp-only = Tato e-mailová adresa se vyskytuje v úniku { $breachName }.
 fb-comp-and-others =
     { $breachCount ->
         [one] Tato e-mailová adresa se vyskytovala v { $breachCount } známém úniku dat, včetně úniku { $breachName }.
@@ -358,9 +391,9 @@ known-data-breaches-exposed =
 see-additional-breaches = Zobrazit další úniky
 scan-results-known-breaches =
     { $breachCount ->
-        [one] Tato e-mailová adresa se objevila v 1 známém úniku dat.
-        [few] Tato e-mailová adresa se objevila ve { $breachCount } známých únicích dat.
-       *[other] Tato e-mailová adresa se objevila v { $breachCount } známých únicích dat.
+        [one] Tato e-mailová adresa se vyskytuje v 1 známém úniku dat.
+        [few] Tato e-mailová adresa se vyskytuje ve { $breachCount } známých únicích dat.
+       *[other] Tato e-mailová adresa se vyskytuje v { $breachCount } známých únicích dat.
     }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
@@ -368,7 +401,7 @@ scan-results-known-breaches =
 results-for = Výsledky pro: { $userEmail }
 other-monitored-emails = Další monitorované e-mailové adresy
 email-verification-required = Vyžadováno ověření e-mailové adresy
-fxa-primary-email = E-mailová adresa { -brand-fxa(case: "gen") } (primární)
+fxa-primary-email = E-mailová adresa { -brand-fxa(case: "gen", capitalization: "lower") } (primární)
 what-is-a-website-breach = Co je to únik dat z webových stránek?
 website-breach-blurb = Únik dat z webových stránek se odehraje, když kyberzločinci odcizí, zkopírují nebo zveřejní osobní údaje z internetových účtů. Zpravidla je to výsledkem činnosti hackerů, kteří nalezli slabé místo v zabezpečení webu. K úniku osobních údajů z účtu však také může dojít nedopatřením.
 security-tips-headline = Bezpečnostní tipy, jak se chránit před hackery
@@ -431,7 +464,7 @@ email-verified-view-dashboard = Pro zobrazení a správu adres, které jste nech
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = se přihlaste
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -457,9 +490,127 @@ take-further-steps-desc = Zjistěte, jak snížit rizika krádeže identity a p�
 changes-saved = Změny uloženy
 # Section headline
 rec-section-headline = Co dělat s tímto únikem dat
-rec-section-subhead = Pro ochranu vašich osobních údajů a vaší digitální identity doporučujeme následující kroky.
+rec-section-subhead = Za účelem zabezpečení vašich osobních údajů a ochrany vaší digitální identity doporučujeme podniknout následující opatření.
 # Section headline
 rec-section-headline-no-pw = Co dělat pro ochranu vašich osobních údajů
 rec-section-subhead-no-pw = Přestože součástí úniku nebyla hesla, doporučujeme učinit následující kroky pro lepší ochranu vašich osobních údajů.
 # Button
 see-additional-recs = Podívejte se na další doporučení
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = E-mailová adresa { $affectedEmail } se objevila v tomto úniku. <a>Co dělat dál</a>
+resolve-top-notification-plural =
+    V tomto úniku { $numAffectedEmails ->
+        [one] se vyskytuje { $numAffectedEmails } vaše e-mailová adresa
+        [few] se vyskytují { $numAffectedEmails } vaše e-mailové adresy
+       *[other] se vyskytuje { $numAffectedEmails } vašich e-mailových adres
+    }. <a>Co dělat dál</a>
+
+##
+
+marking-this-subhead = Označení tohoto úniku jako vyřešeného
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Pokud jste učinili kroky vedoucí k odstranění následků tohoto úniku</span>,
+    můžete ho označit jako vyřešený. Na podrobnosti o tomto úniku
+    se můžete kdykoliv podívat na nástěnce.
+mark-as-resolve-button = Označit jako vyřešené
+marked-as-resolved-label = Označeno jako vyřešené
+undo-button = Zpět
+confirmation-1-subhead = Výborně! Právě jste vyřešili svůj první únik.
+confirmation-1-body = Nepolevujte. Zkontrolujte svou nástěnku, zda ještě není něco k vyřešení.
+confirmation-2-subhead = Na to nemáte, hackeři!
+confirmation-2-body = Děláte důležité kroky na cestě k zabezpečení svých online účtů.
+confirmation-3-subhead = Další hotové. Skvělá práce!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Je vaše heslo unikátní, silné a obtížně uhodnutelné? <a>Zjistěte to</a>
+generic-confirmation-subhead = Tento únik byl označen za vyřešený
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Pro zobrazení zbývajícího úniku přejděte na nástěnku.
+        [few] Pro zobrazení zbývajících úniků přejděte na nástěnku.
+       *[other] Pro zobrazení zbývajících úniků přejděte na nástěnku.
+    }
+return-to-breach-details-link = Zpět na podrobnosti o úniku
+go-to-dashboard-link = Přejít na nástěnku
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = Hotovo na { $percentComplete } %
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } vyřešený únik
+        [few] { $numResolvedBreaches } vyřešené úniky
+       *[other] { $numResolvedBreaches } vyřešených úniků
+    }
+progress-intro-subhead = Nově ve { -product-name(case: "loc") }: Označení úniků jako vyřešené
+progress-intro-message = Po přezkoumání podrobností o úniku a přijetí opatření k ochraně vašich osobních údajů můžete označit úniky jako vyřešené.
+progress-status =
+    { $numResolvedBreaches } { $numTotalBreaches ->
+        [one] z { $numTotalBreaches } úniku
+        [few] ze { $numTotalBreaches } úniků
+       *[other] z { $numTotalBreaches } úniků
+    } { $numResolvedBreaches ->
+        [one] je označen jako vyřešený
+        [few] jsou označeny jako vyřešené
+       *[other] je označeno jako vyřešených
+    }
+progress-complete = Všechny známé úniky byly označeny jako vyřešené.
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+progress-message-1 =
+    <span>Dobrý začátek!</span> Zkontrolujte zbývající úniky a podívejte se, 
+    jaké kroky podniknout.
+progress-message-2 =
+    <span>Jen do toho!</span> Malé změny, jako je například změna hesla, mají velký vliv
+    na bezpečnost vašich osobních údajů.
+progress-message-3 = <span>Pěkně jste s těmi úniky zamávali!</span> Nepolevujte, ještě vám jich tu pár zbývá.
+progress-message-4 = <span>Téměř hotovo!</span> Jste blízko cílové čáry.
+progress-complete-message =
+    <span>Je to dobrý pocit, že?</span> Pokud stále nemáte dost, můžete nahradit hesla 
+    za silnější i u ostatních účtů.
+
+##
+
+resolve-this-breach-link = Vyřešit tento únik
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Označeno jako vyřešené:
+hide-resolved-button = Skrýt vyřešené
+show-resolved-button = Zobrazit vyřešené
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] uniklé heslo v nevyřešených únicích
+        [few] uniklá hesla v nevyřešených únicích
+       *[other] uniklých hesel v nevyřešených únicích
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] známý únik označený jako vyřešený
+        [few] známé úniky označené jako vyřešené
+       *[other] známých úniků označených jako vyřešené
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Nový
+mobile-promo-headline = { -brand-name } ve vašem telefonu a tabletu
+mobile-promo-body = Rychlé, soukromé a bezpečné prohlížení kamkoliv se hnete. Najděte { -brand-name(case: "acc") } na Google Play a App Storu.
+mobile-promo-cta = Získejte { -brand-name(case: "acc") } pro Android či iOS
+promo-lockwise-headline = Vezměte si svá hesla všude s sebou
+lockwise-promo-body = Mějte přehled o svých přihlašovacích údajích napříč zařízeními. Přistupujte k nim bezpečně z počítače, telefonu či tabletu.
+promo-lockwise-cta = Stáhnout { -brand-lockwise(case: "acc") }
+fpn-promo-headline = Skryjte svoji polohu před webovými stránkami a sledovacími prvky
+promo-fpn-body = { -brand-fpn } vás pomocí zamaskování vaší skutečné IP adresy ochrání před sběrem dat a cílenými reklamami.
+promo-fpn-cta = Stáhnout { -brand-fpn }
+monitor-promo-headline = Buďte informováni o nových únicích dat
+monitor-promo-body = Nechte se upozornit, jestliže se vaše údaje objeví ve známém úniku dat.
+ecosystem-promo-headline = Buďte na internetu v bezpečí díky produktům, které dbají na vaše soukromí
+ecosystem-promo-body = Žádný { -brand-name } nezneužívá vaše data. Méně dat je vždy více, udržíme je v bezpečí a nemáme před vámi žádná tajemství.
+promo-ecosystem-cta = Zobrazit všechny produkty
+steps-to-resolve-headline = Kroky vedoucí k vyřešení tohoto úniku

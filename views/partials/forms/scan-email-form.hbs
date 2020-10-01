@@ -1,4 +1,3 @@
-
 <form id="scan-user-email" class="email-scan form-group {{ addClasses }}" action="/scan" method="post" data-event-category="Email Scan Form" novalidate>
   <input type="hidden" name="_csrf" value="{{ csrfToken }}">
   <input type="hidden" name="pageToken" value="{{ pageToken }}">
@@ -7,17 +6,27 @@
     <input id="scan-email" class="input-group-field email-to-hash" type="email" name="email" placeholder="{{ getString "scan-placeholder" }}" aria-label="{{ getString "scan-placeholder" }}" autocomplete="off" />
     <span id="invalid-email-message" class="error-message">{{ getString "scan-error" }}</span>
   </div>
+  <div class="input-group create-fxa-checkbox" id="fxaCheckbox">
+      <label for="createFxaCheckbox" class="create-fxa-wrapper">
+        <div class="create-fxa-checkbox-wrapper">
+          <input class="create-fxa-checkbox-input" id="createFxaCheckbox" type="checkbox" />
+          <span class="create-fxa-checkbox-checkmark"></span>
+        </div>
+        <p>{{ getString "get-email-alerts" }}</p>
+      </label>
+  </div>
   <input type="hidden" name="emailHash" />
   {{#if scanFeaturedBreach}}
     <input id="featured" type="hidden" name="featuredBreach" value="{{ featuredBreach.Name }}"/>
   {{/if}}
   <div class="input-group-button">
     {{#if featuredBreach}}
-      <input type="submit" value="{{ getString "find-out" }}"/>
+        <input class="breachesSubmitButton add-metrics-flow-values" data-form_type="other" {{> analytics/fxa id="fx-monitor-find-out-blue-btn" }} type="submit" value="{{ getString "find-out" }}"/>
     {{else}}
-      <input type="submit" value="{{ getString "check-for-breaches" }}"/>
+        <input class="breachesSubmitButton add-metrics-flow-values" data-form_type="other" {{> analytics/fxa id="fx-monitor-check-for-breaches-blue-btn" }} type="submit" value="{{ getString "check-for-breaches" }}"/>
     {{/if}}
       {{> forms/loader }}
   </div>
 </form>
+
 <p class="paragraph form-desc txt-cntr txt-purple7">{{ getString "search-for-your-email" }}</p>

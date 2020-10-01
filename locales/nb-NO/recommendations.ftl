@@ -61,12 +61,18 @@ rec-ip-non-us =
     Din Internet Protocol-adresse (IP-adresse) kan si noe om hvor du befinner deg 
     og din internettleverandør. Med et virtuelt privat nettverk (VPN) kan du skjule posisjonen din
     og maskere din IP-adresse.
+# Recommendation subhead
+rec-moz-vpn-cta = Prøv { -brand-mozilla-vpn }
+rec-moz-vpn =
+    IP-adressen din kan avsløre plasseringen din og internettleverandøren din. En tjeneste som
+    { -brand-fpn } skjuler IP-adressen din og plasseringen din for { -brand-name } og en tjeneste som { -brand-mozilla-vpn } skjuler din
+    IP-adresse og plassering for hele enheten.
 rec-hist-pw-subhead = Unngå å bruke passord på nytt
 # Link title
 rec-hist-pw-cta-fx = Se innlogginger i { -brand-name }
 rec-hist-pw =
     Bruk unike, sterke passord for hver konto. Hvis ett passord blir
-    utsatt i en datalekkasje, trenger du bare å oppdatere den ene påloggingen.
+    eksponert i en datalekkasje, trenger du bare å oppdatere den ene påloggingen.
 # Recommendation subhead
 rec-sec-qa-subhead = Lag unike svar for sikkerhetsspørsmål
 rec-sec-qa =

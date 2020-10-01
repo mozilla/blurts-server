@@ -13,19 +13,34 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Cuenta Firefox
+terms-and-privacy = A kumi noo´o maná
 GitHub-link-title = GitHub
+error-not-subscribed = Correo ya'a ntu yɨ'ɨ nuu { -product-name }.
 error-must-be-signed-in = Nejika kajie´enu sesión { -brand-fxa }
 home-title = { -product-name }
 home-not-found = Ntu nnani´i página.
+oauth-invalid-session = Sesión ntu vatu
 user-add-invalid-email = Correo ntu vatu
 error-headline = Error
+user-unsubscribe-title = { -product-name }: Xina suscripción
+scan-placeholder = Chu'un correo electrónico
 scan-submit = Nánuku correo noo´o
+scan-error = Jiniñu'udani iin correo vatu.
 download-firefox-banner-button = Xinuun { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Nchuíchí!
+form-signup-error = Jiniñu'udani iin correo vatu.
+unsub-headline = Xina suscripción { -product-name-nowrap }
+unsub-button = Nkuvika suscripción
 show-all = Kune´yá kuaiyo
+fxa-scan-another-email = ¿A kuvinu kune'yanu inka correo?
 sign-in = Kajie´e sesión
 sign-out = Kene sesión
+# Manage Firefox Account, link to page where account holders can change their account settings.
+manage-fxa = Tetiñu { -brand-fxa }
 have-an-account = ¿A kuminu iin cuenta?
 about-firefox-monitor = Jiee ya’a { -product-name }
 # Link title
@@ -60,6 +75,9 @@ signed-in-as = Kajie´e sesión kua { $userEmail }
 menu = Menú
 # Link title
 learn-more-link = Ka´vi kue´eka.
+email-sent = ¡Nchu'un íchi correo!
+# Form title
+want-to-add = ¿A kuvinu chisonu inka correo?
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
@@ -77,6 +95,7 @@ sign-in-nested = Kajie´e sesión
 ##
 
 undo-button = Tanɨ
+go-to-dashboard-link = Kaka kune'ya panel control
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
@@ -86,3 +105,6 @@ undo-button = Tanɨ
 
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Jíía
+promo-lockwise-headline = Kua´a ji contraseña noo´o ntaka nuu
+promo-lockwise-cta = Taji { -brand-lockwise }
+fpn-promo-headline = Chiyu'u nuu iñinɨ nuu da web ji da k nita noo'o

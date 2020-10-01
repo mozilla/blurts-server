@@ -3,10 +3,9 @@
 const fs = require("fs");
 const path = require("path");
 
-
 const AppConstants = require("../app-constants");
 const mozlog = require("../log");
-const {version, homepage} = require("../package.json");
+const {version, homepage, supportedLocales} = require("../package.json");
 
 
 const log = mozlog("controllers.dockerflow");
@@ -27,7 +26,7 @@ if (!fs.existsSync(versionJsonPath)) {
     commit,
     source: homepage,
     version,
-    languages: AppConstants.SUPPORTED_LOCALES,
+    languages: supportedLocales,
   };
 
   fs.writeFileSync(versionJsonPath, JSON.stringify(versionJson, null, 2) + "\n");
@@ -41,7 +40,7 @@ function vers (req, res) {
       commit: process.env.HEROKU_SLUG_COMMIT,
       version: process.env.HEROKU_SLUG_COMMIT,
       source: homepage,
-      languages: AppConstants.SUPPORTED_LOCALES,
+      languages: "*",
     });
     /* eslint-enable no-process-env */
   }

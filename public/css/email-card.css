@@ -6,6 +6,15 @@
   width: auto;
 }
 
+.e-info-content {
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.preferences .e-info-content {
+  flex-direction: column;
+}
+
 .email-card {
   width: 100%;
 }
@@ -17,7 +26,8 @@
 }
 
 .email-card.breaches-dash:last-of-type,
-.breaches-dash.zero-breaches {
+.breaches-dash.zero-breaches,
+.breaches-dash.zero-unresolved-breaches {
   margin-bottom: 32px;
 }
 
@@ -118,6 +128,15 @@
   transition: all 0.2s ease;
 }
 
+.active .show-additional-breaches.hide .breach-card {
+  display: none;
+  max-height: 0;
+}
+
+.show-remaining-breaches-wrapper {
+  width: 100%;
+}
+
 .show-remaining-breaches.btn-violet-secondary {
   margin: 16px auto auto auto;
 }
@@ -129,45 +148,47 @@
 .email-card.active .e-breach-list {
   visibility: visible;
   opacity: 1;
-  max-height: 20000px;
+  max-height: 1000000px;
   padding-top: 16px;
   transition: all 0.3s ease;
 }
 
-.email-card.active .show-additional-breaches.hide .breach-card,
-.email-card.inactive .show-additinal-breaches.hide .breach-card {
-  display: none !important;
-}
-
-/* new breaches */
-.new-breach-message-wrapper {
-  margin: auto auto 8px 0;
-  align-items: center;
-}
-
-.pref .new-breach-message-wrapper {
+.email-card.zero-unresolved-breaches .e-breach-list,
+.email-card.active .hide-additional-breaches.hide .breach-card,
+.email-card.inactive .hide-additional-breaches.hide .breach-card {
   display: none;
 }
 
-.new-breach-icon {
-  width: 16px;
-  height: 16px;
-  margin-right: 8px;
+.breach-card.resolved-breach-card {
+  visibility: hidden;
+  display: none;
 }
 
-.new-breach-message {
-  color: var(--alertRed);
-  font-weight: 600;
+.email-card.zero-unresolved-breaches.show-resolved-breach-cards.active .e-breach-list,
+.show-resolved-breach-cards .breach-card.resolved-breach-card {
+  visibility: visible;
+  opacity: 0.6;
+  display: flex !important;
+  transition: all 0.25s ease;
 }
 
-.breach-card.ec.new-breach {
-  border: 1px solid var(--alertRed);
+.hide-resolved-message,
+.show-resolved-breach-cards span.show-resolved-message {
+  visibility: hidden;
+  display: none;
 }
 
-.breach-card.ec {
-  border: 1px solid rgba(0, 0, 0, 0);
-  background-color: rgba(255, 255, 255, 1);
-  color: var(--ink);
+.show-resolved-breach-cards span.hide-resolved-message {
+  display: flex;
+  visibility: visible;
+}
+
+button.toggle-resolved-breaches {
+  margin: auto 0 auto auto;
+  border: 0;
+  font-size: 14px;
+  color: #42435a;
+  pointer-events: all;
 }
 
 .e-toggle-info-wrapper {
@@ -334,15 +355,16 @@ input.remove-email-submit {
 }
 
 @media screen and (max-width: 800px) {
+  .e-info-content {
+    flex-direction: column;
+    width: 100%;
+  }
+
   .email-card {
     padding: 20px;
     background-color: rgba(255, 255, 255, 1);
     border-radius: 8px;
     border: 1px solid #e8e8e8;
-  }
-
-  .new-breach-message-wrapper {
-    margin-top: 12px;
   }
 
   .email-card.breaches-dash:last-of-type,
@@ -369,6 +391,12 @@ input.remove-email-submit {
     color: var(--grey8);
   }
 
+  .breach-card.resolved-breach-card {
+    display: flex;
+    visibility: visible;
+  }
+
+  .toggle-resolved-breaches,
   .ec.breach-card, /* Hide breach cards until the email-card is toggled down */
   .active .show-additional-breaches.hide .ec.breach-card, /* Hides any breaches gated behind "Show Remaining Breaches" button when there are more than 4 to an email. */
   .active .show-remaining-breaches.hide, /* Hide "Show Remaining Breaches"" button after it has been clicked */
@@ -377,6 +405,8 @@ input.remove-email-submit {
     display: none;
   }
 
+  .email-card.zero-unresolved-breaches .e-breach-list,
+  .email-card.zero-unresolved-breaches.active .e-breach-list,
   .active .show-remaining-breaches {
     display: flex;
   }

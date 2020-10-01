@@ -11,9 +11,14 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 
+##
 
-
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = บัญชี Firefox
 terms-and-privacy = ข้อกำหนดและความเป็นส่วนตัว
 GitHub-link-title = GitHub
 error-scan-page-token = คุณพยายามสแกนที่อยู่อีเมลมากเกินไปในช่วงเวลาสั้น ๆ เพื่อเหตุผลด้านความปลอดภัย เราได้บล็อกคุณจากการค้นหาใหม่ชั่วคราว คุณจะสามารถลองอีกครั้งในภายหลัง
@@ -29,6 +34,7 @@ home-not-found = ไม่พบหน้า
 oauth-invalid-session = วาระไม่ถูกต้อง
 scan-title = { -product-name }: ผลลัพธ์การสแกน
 user-add-invalid-email = อีเมลไม่ถูกต้อง
+user-add-too-many-emails = คุณกำลังตรวจสอบจำนวนสูงสุดของอีเมล
 user-add-email-verify-subject = ยืนยันการบอกรับ { -product-name } ของคุณ
 user-add-duplicate-email = อีเมลนี้ได้ถูกเพิ่มไปยัง { -product-name } แล้ว
 user-add-duplicate-email-part-2 = เยี่ยมชม { $preferencesLink } ของคุณเพื่อตรวจสอบสถานะของ { $userEmail }
@@ -139,6 +145,10 @@ what-data = ชนิดข้อมูลที่ถูกบุกรุก:
 sensitive-sites = { -product-name } จัดการกับไซต์ที่ละเอียดอ่อนอย่างไร?
 delayed-reporting-headline = ทำไมจึงใช้เวลานานในการรายงานการละเมิดนี้?
 about-fxm-headline = เกี่ยวกับ { -product-name }
+about-fxm-blurb =
+    { -product-name } จะเตือนเมื่อบัญชีออนไลน์ของคุณเกี่ยวข้องในข้อมูลที่รั่วไหล 
+    ค้นหาว่าคุณอยู่ในข้อมูลที่รั่วไหลหรือไม่ รับการแจ้งเตือนเกี่ยวกับการรั่วไหลใหม่ 
+    และดำเนินการเพื่อปกป้องบัญชีออนไลน์ของคุณ { -product-name } จัดเตรียมโดย { -brand-Mozilla }
 # How Firefox Monitor works
 how-fxm-works = วิธีที่ { -product-name } ทำงาน
 how-fxm-1-headline = ทำการค้นหาพื้นฐาน
@@ -164,6 +174,8 @@ create-unique-pw = สร้างรหัสผ่านที่ไม่ซ�
 five-myths = ตำนาน 5 เรื่องเกี่ยวกับตัวจัดการรหัสผ่าน
 create-a-fxa = สร้าง{ -brand-fxa } เพื่อรับรายงานการละเมิดอย่างสมบูรณ์และรับการแจ้งเตือน
 feat-security-tips = เคล็ดลับความปลอดภัยเพื่อปกป้องบัญชีของคุณ
+feat-sensitive = ค้นหาขั้นสูงในการรั่วไหลที่ละเอียดอ่อน
+feat-enroll-multiple = ลงทะเบียนหลายอีเมลในการเฝ้าดูการรั่วไหล
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
@@ -204,6 +216,9 @@ new-breaches-found =
     { $breachCount ->
        *[other] พบ { $breachCount } การรั่วไหลใหม่
     }
+sign-up-headline-1 = รับการแจ้งเตือนแบบต่อเนื่องด้วย { -brand-fxa }
+account-not-required = ไม่จำเป็นต้องใช้เบราว์เซอร์ { -brand-name } สำหรับ { -brand-fxa } คุณอาจได้รับข้อมูลเกี่ยวกับบริการของ { -brand-Mozilla }
+was-your-info-exposed = ข้อมูลของคุณถูกเปิดเผยในการรั่วไหลของข้อมูล { $breachName } หรือไม่
 all-breaches-headline = การรั่วไหลทั้งหมดใน { -product-name }
 search-breaches = ค้นหาการรั่วไหล
 # "Appears in-page as: Showing: All Breaches"
@@ -274,7 +289,7 @@ email-verified = ยืนยันอีเมลสำเร็จ!
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = ลงชื่อเข้า
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -290,3 +305,23 @@ breach-alert-notifications = การแจ้งเตือนการรั
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = เพิ่มการรั่วไหลเมื่อ:
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = บันทึกการเปลี่ยนแปลงแล้ว!
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+
+##
+
+undo-button = เลิกทำ
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = ใหม่
+promo-fpn-cta = รับ { -brand-fpn }

@@ -12,9 +12,13 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox hesabı
 terms-and-privacy = Şartlar ve gizlilik
 GitHub-link-title = GitHub
 error-scan-page-token = Kısa süre içinde çok fazla e-posta adresi taramaya çalıştınız. Güvenlik nedeniyle yeni aramalar yapmanızı geçici olarak engelledik. Daha sonra yeniden deneyebileceksiniz.
@@ -189,6 +193,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = İhlalleri kontrol et
 find-out-what-hackers-know = Hacker’ların sizin hakkınızda neler bildiklerini öğrenin, onların bir adım önüne geçin.
+get-email-alerts = Güvende kalın: Bilgileriniz yeni bir ihlalde yer alırsa e-posta uyarıları alın
 search-for-your-email = 2007’ye uzanan bilindik veri ihlallerinde e-posta adresinizi arayın.
 back-to-top = Başa dön
 comm-opt-0 = Aşağıdaki e-posta adreslerimden birisi bir veri ihlalinde tespit edilirse bana e-posta gönder.
@@ -261,6 +266,7 @@ error-bot-blurb = Kısa süre içerisinde çok fazla e-posta adresi sorguladığ
 error-csrf-headline = Oturum zaman aşımına uğradı
 error-csrf-blurb = Tarayıcınızın geri düğmesine tıklayın, sayfayı tazeleyin ve tekrar deneyin.
 error-invalid-unsub = { -product-name } uyarılarından ayrılma
+error-invalid-unsub-blurb = Abonelikten çıkmak için size gönderilen { -product-name } e-postalarından birini kullanmalısınız. Gelen kutunuzda { -brand-team-email } tarafından gönderilen iletilerden birini bulup e-postanın altındaki abonelikten çıkma bağlantısına tıklayın.
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -300,6 +306,7 @@ other-monitored-emails = İzlenen diğer e-postalar
 email-verification-required = E-posta doğrulaması gerekiyor
 fxa-primary-email = { -brand-fxa } e-postası - birincil
 what-is-a-website-breach = Web sitesi ihlali nedir?
+website-breach-blurb = Siber suçlular çevrimiçi hesaplardan kişisel bilgileri çaldığında, kopyaladığında veya ifşa ettiğinde web sitesinde veri ihlali meydana gelir. Genellikle hacker'ların web sitesinin güvenliğinde zayıf bir nokta bulması sonucunda oluşur. Hesap bilgileri kazayla sızdırıldığında da ihlaller meydana gelebilir.
 security-tips-headline = Hacker’lardan korunmanız için güvenlik ipuçları
 steps-to-protect = Çevrimiçi kimliğinizi korumak için yapmanız gerekenler
 take-further-steps = Kimliğinizi korumak için birkaç adım daha atın
@@ -395,14 +402,29 @@ see-additional-recs = Ek tavsiyelere bakın
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+resolve-top-notification = { $affectedEmail } bu ihlalde yer alıyor. <a>Şimdi ne yapmalıyım?</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] { $numAffectedEmails } e-posta adresiniz bu ihlalde yer alıyor. <a>Şimdi ne yapmalıyım?</a>
+       *[other] { $numAffectedEmails } e-posta adresiniz bu ihlalde yer alıyor. <a>Şimdi ne yapmalıyım?</a>
+    }
 
 ##
 
+marking-this-subhead = Bu ihlali çözüldü olarak işaretleyebilirsiniz
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Bu ihlali gidermek için gereken adımları attıktan sonra</span> onu
+    "çözüldü" olarak işaretleyebilirsiniz. İhlal ile ilgili bilgilere panonuzdan istediğiniz zaman erişebilirsiniz.
 mark-as-resolve-button = Çözüldü olarak işaretle
 marked-as-resolved-label = Çözüldü olarak işaretlendi
 undo-button = Geri al
 confirmation-1-subhead = Güzel! İlk ihlalinizi çözdünüz.
+confirmation-1-body = Böyle devam edin. Çözülecek diğer ihlalleri görmek için kontrol panelinize bakın.
+confirmation-2-subhead = Hacker’lara kapak olsun!
 confirmation-2-body = Çevrimiçi hesaplarınızı korumaya yönelik önemli adımlar atıyorsunuz.
+confirmation-3-subhead = Biri daha gitti. İyi iş!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Yeni parolanız benzersiz, güçlü ve tahmin edilmesi zor mu? <a>Öğrenin</a>
@@ -417,13 +439,69 @@ go-to-dashboard-link = Panoya git
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
 progress-percent-complete = %{ $percentComplete } tamamlandı
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } çözüldü
+       *[other] { $numResolvedBreaches } çözüldü
+    }
+progress-intro-subhead = Yeni { -product-name } özelliği: İhlalleri "çözüldü" olarak işaretleme
+progress-intro-message =
+    Bir ihlalle ilgili ayrıntıları inceleyip kişisel bilgilerinizi korumak için gereken adımları attıktan sonra 
+    o ihlali “çözüldü” olarak işaretleyebilirsiniz.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numTotalBreaches } ihlalden { $numResolvedBreaches } tanesi çözüldü olarak işaretlendi
+       *[other] { $numTotalBreaches } ihlalden { $numResolvedBreaches } tanesi çözüldü olarak işaretlendi
+    }
+progress-complete = Bilinen tüm ihlaller çözüldü olarak işaretlendi
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>Harika bir başlangıç yaptınız!</span> Atabileceğiniz diğer adımları öğrenmek için 
+    kalan ihlallere göz atın.
+progress-message-2 =
+    <span>Böyle devam edin!</span> Parolalarınızı güncellemek gibi küçük değişiklikler bile 
+    kişisel bilgilerinizin güvenliğini sağlamada büyük etki yaratabilir.
+progress-message-3 = <span>Bu ihlalleri çözmede iyi iş çıkardınız!</span> Böyle devam edin. Birkaç tane daha var.
+progress-message-4 = <span>Neredeyse bitti!</span> Bitiş çizgisine yakınsınız.
+progress-complete-message = <span>Hoşunuza gitti mi?</span> Vaktiniz varsa şimdi diğer hesaplarınızı da daha güçlü parolalarla güncellemenizi öneririz.
 
 ##
 
 resolve-this-breach-link = Bu ihlali çöz
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Çözüldü olarak işaretlendi:
+hide-resolved-button = Çözülenleri gizle
+show-resolved-button = Çözülenleri göster
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] parola çözülmemiş ihlallerde ele geçirildi
+       *[other] parola çözülmemiş ihlallerde ele geçirildi
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] veri ihlali “çözüldü” olarak işaretlendi
+       *[other] veri ihlali “çözüldü” olarak işaretlendi
+    }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Yeni
+mobile-promo-headline = { -brand-name } uygulamasını telefon ve tabletinize indirin
+mobile-promo-body = Her yerde hızlı, gizli ve güvenli gezinti. { -brand-name } uygulamasını Google Play ve App Store’dan indirebilirsiniz.
+mobile-promo-cta = Android ve iOS için { -brand-name } uygulamasını indirin
+promo-lockwise-headline = Parolalarınızı yanınızda taşıyın
+lockwise-promo-body = Hesaplarınızı tüm cihazlarınızla eşitleyin. Onlara bilgisayarınızdan, telefonunuzdan veya tabletinizden güvenli bir şekilde erişin.
+promo-lockwise-cta = { -brand-lockwise } kullanın
+fpn-promo-headline = Web sitelerinden ve izleyicilerden konumunuzu saklayın
+promo-fpn-body = { -brand-fpn } gerçek IP adresinizi maskeleyerek, reklamlara dayalı profilinizi oluşturan web sitelerinden ve veri toplayıcılarından sizi kurtarır.
+promo-fpn-cta = { -brand-fpn } kullanın
+monitor-promo-headline = Yeni veri ihlallerinden haberiniz olsun
+monitor-promo-body = Kişisel bilgileriniz yeni bir veri ihlalinde ele geçerilirse size haber verelim.
+ecosystem-promo-headline = Gizliliğinize önem veren ürünlerle internetteki yaşamınızı koruyun
+ecosystem-promo-body = Tüm { -brand-name } ürünleri Kişisel Veri Sözümüzü yerine getirir: Daha az veri topla. Güvenle sakla. Sır tutma.
+promo-ecosystem-cta = Tüm ürünleri görün
+steps-to-resolve-headline = Bu ihlali giderme adımları

@@ -11,9 +11,14 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 
+##
 
-
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Akun Firefox
 terms-and-privacy = Ketentuan dan Privasi
 GitHub-link-title = GitHub
 error-scan-page-token = Anda telah coba memindah terlalu banyak alamat surel dalam periode singkat. Demi alasan keamanan, kami memblokir Anda sementara dari pencarian baru. Anda akan dapat mencobanya nanti kembali.
@@ -59,7 +64,7 @@ unsub-headline = Berhenti berlangganan { -product-name-nowrap }
 unsub-blurb = Ini akan menghapus surel Anda dari daftar { -product-name-nowrap } dan Anda tidak akan menerima peringatan lagi ketika ada pengumuman kebocoran yang baru.
 unsub-button = Berhenti Berlangganan
 # Breach data provided by Have I Been Pwned.
-hibp-attribution = Data kebocoran tersedia oleh { $hibp-link }
+hibp-attribution = Data kebocoran disediakan oleh { $hibp-link }
 share-twitter = Kebanyakan orang memiliki sekitar 100 akun daring. Apakah salah satu dari akun Anda terkena pembobolan data? Temukan segera.
 share-facebook-headline = Cari tahu apakah Anda telah menjadi bagian dari pembobolan data
 share-facebook-blurb = Apakah akun daring Anda sudah terpapar dalam pembobolan data?
@@ -194,6 +199,7 @@ avoid-personal-info-blurb = Sangat mudah untuk menemukan tanggal lahir, alamat, 
 ## What to do after data breach tips
 
 change-pw = Ubah kata sandi Anda
+change-pw-site = Ubah kata sandi untuk situs ini
 even-for-old = Bahkan untuk akun lama, adalah penting untuk memperbarui kata sandi Anda.
 make-new-pw-unique = Buat kata sandi baru yang berbeda dan unik
 strength-of-your-pw = Kekuatan kombinasi kata sandi Anda secara langsung berdampak pada keamanan daring Anda.
@@ -213,6 +219,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Periksa Pelanggaran Data
 find-out-what-hackers-know = Cari tahu apa yang sudah diketahui peretas tentang Anda. Pelajari cara agar selalu selangkah lebih depan dari mereka.
+get-email-alerts = Tetap aman: Dapatkan lansiran surel saat info Anda muncul dalam pelanggaran yang diketahui
 search-for-your-email = Cari alamat surel Anda yang tersangkut kebocoran data publik sejak 2007.
 back-to-top = Kembali ke Atas
 comm-opt-0 = Kirim saya surel jika salah satu alamat surel saya di bawah ini tersangkut dalam kebocoran data.
@@ -256,9 +263,7 @@ ba-next-step-blurb-2 =
     masuk ke akun Anda yang lain. Cara terbaik untuk melindungi akun Anda
     adalah dengan menggunakan kata sandi unik untuk masing-masing akun.
 ba-next-step-3 = Dapatkan bantuan untuk membuat kata sandi yang lebih baik dan menjaganya tetap aman.
-ba-next-step-blurb-3 =
-    Gunakan pengelola kata sandi untuk membuat kata sandi yang kuat dan unik. Pengelola kata sandi menyimpan semua log masuk Anda dengan aman
-    sehingga Anda dapat mengaksesnya di semua perangkat Anda.
+ba-next-step-blurb-3 = Gunakan pengelola kata sandi untuk membuat kata sandi yang kuat dan unik. Pengelola kata sandi menyimpan semua info masuk Anda dengan aman agar dapat diakses di semua perangkat Anda.
 faq1 = Saya tidak mengenali perusahaan atau situs web ini. Mengapa saya tersangkut pembobolan ini?
 faq2 = Mengapa butuh waktu lama untuk memberi tahu saya tentang pembobolan ini?
 faq3 = Bagaimana saya tahu ini adalah surel yang sah dari { -product-name }?
@@ -395,7 +400,7 @@ email-verified-view-dashboard = Untuk melihat dan mengelola semua surel yang And
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = masuk
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -417,3 +422,116 @@ create-strong-passwords-desc = Buat kata sandi Anda kuat, aman, dan sulit diteba
 steps-to-protect-desc = Pahami ancaman yang paling umum dan ketahui apa yang harus diwaspadai.
 five-myths-desc = Pelajari cara menghindari kebiasaan kata sandi buruk yang membuat peretas bekerja dengan mudah.
 take-further-steps-desc = Cari tahu cara mengurangi risiko pencurian identitas untuk mencegah kerugian finansial.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Perubahan disimpan!
+# Section headline
+rec-section-headline = Apa yang harus dilakukan untuk pelanggaran ini
+rec-section-subhead = Kami menyarankan Anda mengambil langkah-langkah ini untuk menjaga informasi pribadi Anda aman dan melindungi identitas digital Anda.
+# Section headline
+rec-section-headline-no-pw = Apa yang harus dilakukan untuk melindungi informasi pribadi Anda
+rec-section-subhead-no-pw = Meskipun kata sandi tidak terbongkar dalam pelanggaran ini, masih ada langkah-langkah yang dapat Anda ambil untuk melindungi informasi pribadi Anda dengan lebih baik.
+# Button
+see-additional-recs = Lihat Rekomendasi Tambahan
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $affectedEmail } muncul dalam pelanggaran ini. <a>Apa yang harus dilakukan selanjutnya</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+       *[other] { $numAffectedEmails } dari alamat surel Anda muncul dalam pelanggaran ini. <a>Apa yang harus dilakukan selanjutnya</a>
+    }
+
+##
+
+marking-this-subhead = Tandai pelanggaran ini sebagai teratasi
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Setelah Anda mengambil langkah-langkah yang Anda bisa untuk mengatasi pelanggaran ini</span>,
+    Anda dapat menandainya sebagai teratasi. Anda masih dapat mengakses rincian pelanggaran tersebut
+    dari dasbor Anda kapan saja.
+mark-as-resolve-button = Tandai sebagai Teratasi
+marked-as-resolved-label = Telah ditandai sebagai Teratasi
+undo-button = Urungkan
+confirmation-1-subhead = Bagus! Anda baru saja mengatasi pelanggaran pertama Anda.
+confirmation-1-body = Pertahankan momentumnya. Periksa dasbor Anda untuk melihat apakah ada lagi yang harus dilakukan.
+confirmation-2-subhead = Terima itu, peretas!
+confirmation-2-body = Anda mengambil langkah-langkah penting untuk melindungi akun daring Anda.
+confirmation-3-subhead = Satu lagi jatuh. Kerja bagus!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Apakah kata sandi baru Anda unik, kuat, dan sulit ditebak? <a>Cari tahu</a>
+generic-confirmation-subhead = Pelanggaran ini telah ditandai sebagai teratasi
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+       *[other] Untuk melihat semua pelanggaran yang tersisa, buka dasbor Anda.
+    }
+return-to-breach-details-link = Kembali ke rincian pelanggaran
+go-to-dashboard-link = Buka Dasbor
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% selesai
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+       *[other] { $numResolvedBreaches } Teratasi
+    }
+progress-intro-subhead = Baru di { -product-name }: Tandai pelanggaran sebagai teratasi
+progress-intro-message =
+    Setelah meninjau rincian pelanggaran dan mengambil langkah untuk melindungi
+    info pribadi Anda, Anda dapat menandai pelanggaran sebagai teratasi.
+progress-status =
+    { $numTotalBreaches ->
+       *[other] { $numResolvedBreaches } dari { $numTotalBreaches } pelanggaran ditandai sebagai teratasi
+    }
+progress-complete = Semua pelanggaran yang diketahui telah ditandai sebagai teratasi
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+progress-message-1 =
+    <span>Anda memulai awal yang bagus!</span> Periksa pelanggaran yang tersisa untuk pelajari
+    langkah apa yang harus diambil.
+progress-message-2 =
+    <span>Pertahankan!</span> Perubahan kecil seperti memperbarui kata sandi berdampak besar
+    menjaga keamanan informasi pribadi Anda.
+progress-message-3 = <span>Kerja bagus untuk menyelesaikan pelanggaran itu!</span> Teruskan. Anda masih punya beberapa buah lagi.
+progress-message-4 = <span>Hampir selesai!</span> Anda sudah dekat dengan garis akhir.
+progress-complete-message =
+    <span>Menyenangkan bukan?</span> Jika Anda ingin melanjutkan, ini saat yang tepat untuk
+    memutakhirkan info masuk lainnya dengan kata sandi yang lebih kuat.
+
+##
+
+resolve-this-breach-link = Atasi pelanggaran ini
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Tandai telah diatasi:
+hide-resolved-button = Sembunyikan yang Teratasi
+show-resolved-button = Tampilkan yang Teratasi
+unresolved-passwords-exposed =
+    { $numPasswords ->
+       *[other] Kata sandi terbongkar dalam pelanggaran yang belum teratasi
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+       *[other] Pelanggaran data yang dikenal ditandai sebagai teratasi
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Baru
+mobile-promo-headline = Bawa { -brand-name } ke ponsel dan tablet Anda
+mobile-promo-body = Penjelajahan yang cepat, pribadi, dan aman ke mana pun Anda pergi. Temukan { -brand-name } di Google Play dan App Store.
+mobile-promo-cta = Dapatkan { -brand-name } di Android dan iOS
+promo-lockwise-headline = Bawa kata sandi Anda ke mana saja
+lockwise-promo-body = Pantau info masuk Anda di semua perangkat. Akses dengan aman dari komputer, ponsel, atau tablet Anda.
+promo-lockwise-cta = Dapatkan { -brand-lockwise }
+fpn-promo-headline = Tutupi lokasi Anda dari situs web dan pelacak
+promo-fpn-body = { -brand-fpn } membuang situs web dan pengumpul data yang menggunakan iklan untuk memprofil Anda dengan menutupi alamat IP asli Anda.
+promo-fpn-cta = Dapatkan { -brand-fpn }
+monitor-promo-headline = Cari tahu tentang pelanggaran data baru
+monitor-promo-body = Dapatkan pemberitahuan ketika informasi pribadi Anda terungkap dalam pelanggaran yang diketahui.
+ecosystem-promo-headline = Lindungi kehidupan daring Anda dengan produk yang mengutamakan privasi
+ecosystem-promo-body = Semua produk { -brand-name } menghormati Janji Data Pribadi kami: Ambil lebih sedikit. Jaga agar tetap aman. Tidak ada rahasia.
+promo-ecosystem-cta = Lihat Semua Produk

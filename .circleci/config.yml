@@ -34,7 +34,7 @@ jobs:
 
     test:
         docker:
-            - image: docker:18.02.0-ce
+            - image: docker:18.06.3-ce
         steps:
             - setup_remote_docker
             - restore_cache:
@@ -49,9 +49,44 @@ jobs:
                 name: Test Code
                 command: docker run blurts-server npm run lint
 
+    integration-test:
+        machine:
+            image: ubuntu-1604:201903-01
+        steps:
+            - checkout
+            - run:
+                name: Build and run tests.
+                command: |
+                    export NVM_DIR="/opt/circleci/.nvm"
+                    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+                    nvm use 10
+                    node -v
+                    cp .env-dist .env
+                    npm install
+                    npm install --only=dev
+                    sudo chown -R  $USER:$USER .
+                    mkdir ./tests/integration/errorShots
+                    docker-compose -f tests/integration/docker-compose.yml up --build -d
+                    docker-compose -f tests/integration/docker-compose.yml exec --user root firefox npm run test:integration-headless-ci
+            - run:
+                name: Capture Logs.
+                when: on_fail
+                command: |
+                    docker-compose -f tests/integration/docker-compose.yml logs server &> tests/integration/server.log
+                    docker-compose -f tests/integration/docker-compose.yml logs postgres &> tests/integration/postgres.log
+                    docker-compose -f tests/integration/docker-compose.yml logs firefox &> tests/integration/firefox.log
+            - store_artifacts:
+                path: ./tests/integration/errorShots/
+            - store_artifacts:
+                path: ./tests/integration/server.log
+            - store_artifacts:
+                path: ./tests/integration/postgres.log
+            - store_artifacts:
+                path: ./tests/integration/firefox.log
+
     deploy:
         docker:
-            - image: docker:18.02.0-ce
+            - image: docker:18.06.3-ce
         steps:
             - setup_remote_docker
             - restore_cache:
@@ -75,6 +110,20 @@ jobs:
                         docker images
                         docker push "${DOCKERHUB_REPO}:${CIRCLE_TAG}"
                     fi
+    deploy_static:
+        docker:
+            - image: circleci/python:3.8
+        steps:
+            - checkout
+            - run:
+                name: Install AWS CLI
+                command: |
+                  sudo pip install --upgrade pip
+                  sudo pip install --upgrade awscli
+            - run:
+                name: Sync static content to S3
+                command: |
+                    ./.circleci/scripts/sync-static
 
 workflows:
   version: 2
@@ -84,7 +133,6 @@ workflows:
           filters:
             tags:
               only: /.*/
-
       - deploy:
           requires:
             - build
@@ -93,3 +141,11 @@ workflows:
               only: /.*/
             branches:
                 only: master
+      - deploy_static:
+          filters:
+            branches:
+              only: master
+      - integration-test:
+          requires:
+            - build
+

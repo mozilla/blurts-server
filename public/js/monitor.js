@@ -35,25 +35,71 @@ function isValidEmail(val) {
   return re.test(String(val).toLowerCase());
 }
 
+function getSubmittedEmail(){
+  const email = document.querySelector("#scan-user-email input[type=email]").value;
+  if (!isValidEmail(email)) {
+    return false;
+  }
+  return email;
+}
 
-function doOauth(el) {
+function overwriteLastScannedEmail(email, scannedEmailId) {
+  if (!sessionStorage) {
+    throw new Error("Session storage not available");
+  }
+  sessionStorage.removeItem("lastScannedEmail");
+  sessionStorage.setItem("lastScannedEmail", email);
+  scannedEmailId.value = sessionStorage.length;
+}
+
+function doOauth(el, {emailWatch = false} = {}) {
   let url = new URL("/oauth/init", document.body.dataset.serverUrl);
   url = getFxaUtms(url);
-  ["flowId", "flowBeginTime", "entrypoint"].forEach(key => {
-    url.searchParams.append(key, encodeURIComponent(el.dataset[key]));
+
+  ["flowId", "flowBeginTime", "entrypoint", "entrypoint_experiment", "entrypoint_variation", "form_type"].forEach(key => {
+    if (el.dataset[key]) {
+      url.searchParams.append(key, encodeURIComponent(el.dataset[key]));
+    }
   });
-  if (sessionStorage && sessionStorage.length > 0) {
-    const lastScannedEmail = sessionStorage.getItem(`scanned_${sessionStorage.length}`);
+
+  if (!sessionStorage) {
+    window.location.assign(url);
+    return;
+  }
+
+  const lastScannedEmail = sessionStorage.getItem("lastScannedEmail");
+
+  if (typeof emailWatch !== "boolean") {
+    throw new Error("invalid argument option in doOauth");
+  }
+
+  if (!emailWatch) {
+    // Preserve entire control function
     if (lastScannedEmail) {
       url.searchParams.append("email", lastScannedEmail);
     }
+    window.location.assign(url);
+    return;
   }
+
+  const submittedEmail = getSubmittedEmail();
+  const scannedEmailId = document.querySelector("#scan-user-email input[name=scannedEmailId]");
+
+  if (lastScannedEmail === submittedEmail) {
+    url.searchParams.append("email", lastScannedEmail);
+    window.location.assign(url);
+    return;
+  }
+
+  // Use the email address the user submitted in FxA Oauth flow
+  overwriteLastScannedEmail(submittedEmail, scannedEmailId);
+  url.searchParams.append("email", submittedEmail);
   window.location.assign(url);
 }
 
 
 function addFormListeners() {
-  Array.from(document.forms).forEach( form =>  {
+  Array.from(document.forms).forEach(form =>  {
     if (form.querySelector("input[type=email]")) {
       const emailInput = form.querySelector("input[type=email]");
       emailInput.addEventListener("keydown", (e) => {
@@ -77,7 +123,7 @@ function addFormListeners() {
         }
       });
     }
-    form.addEventListener("submit", (e) => handleFormSubmits(e));
+    form.addEventListener("submit", (e) => handleFormSubmits(e), true);
   });
 }
 
@@ -86,22 +132,30 @@ function handleFormSubmits(formEvent) {
   const thisForm = formEvent.target;
   let email = "";
 
-  sendPing(thisForm, "Submit");
+  sendPing(thisForm, "Submit", null, {transport: "beacon"});
 
   if (thisForm.email) {
     email = thisForm.email.value.trim();
     thisForm.email.value = email;
   }
+
+  const formClassList = thisForm.classList;
+
   if (thisForm.email && !isValidEmail(email)) {
     sendPing(thisForm, "Failure");
-    thisForm.classList.add("invalid");
+    formClassList.add("invalid");
     return;
   }
-  if (thisForm.classList.contains("email-scan")) {
+  if (formClassList.contains("email-scan")) {
     hashEmailAndSend(formEvent);
     return;
   }
-  thisForm.classList.add("loading-data");
+  // if the form contains the class "loading-data", it has
+  // already been submitted, so return without re-submitting.
+  if (formClassList.contains("loading-data")) {
+    return;
+  }
+  formClassList.add("loading-data");
   return thisForm.submit();
 }
 
@@ -156,9 +210,9 @@ function hideShowNavBars(win, navBar, bentoButton) {
     }
 
     if (
-        this.oldScroll < this.scrollY &&
+        this.oldScroll < (this.scrollY - 50) &&
         navBar.classList.contains("show-nav-bars") &&
-        !bentoButton.classList.contains("active")
+        !bentoButton._active
       ) {
       navBar.classList = ["hide-nav-bars"];
       this.oldScroll = this.scrollY;
@@ -185,7 +239,7 @@ function toggleMobileFeatures(topNavBar) {
       return;
     }
 
-  const bentoButton = document.querySelector(".fx-bento-content");
+  const bentoButton = document.querySelector("firefox-apps");
   const closeActiveEmailCards = document.querySelectorAll(".breaches-dash.email-card.active");
     closeActiveEmailCards.forEach(card => {
       card.classList.remove("active");
@@ -198,6 +252,9 @@ function toggleMobileFeatures(topNavBar) {
 }
 
 function toggleHeaderStates(header, win) {
+  if (win.outerWidth < 600) {
+    return;
+  }
   if (win.pageYOffset > 400) {
     header.classList.add("show-shadow");
   } else {
@@ -226,17 +283,38 @@ function addMainNavListeners() {
 
 function addBentoObserver(){
   const bodyClasses = document.body.classList;
-  const bentoButton = document.querySelector(".fx-bento-content");
+  const bentoButton = document.querySelector("firefox-apps");
   const observerConfig = { attributes: true };
   const watchBentoChanges = function(bentoEl, observer) {
     for(const mutation of bentoEl) {
       if (mutation.type === "attributes") {
-        bodyClasses.toggle("bento-open", bentoButton.classList.contains("active"));
+        bodyClasses.toggle("bento-open", bentoButton._active);
       }
     }
   };
-  const observer = new MutationObserver(watchBentoChanges);
-  observer.observe(bentoButton, observerConfig);
+  if (bentoButton) {
+    const observer = new MutationObserver(watchBentoChanges);
+    observer.observe(bentoButton, observerConfig);
+  }
+}
+
+function resizeDashboardMargin() {
+  const userDashboard = document.querySelector("#dashboard.dashboard");
+  if (!userDashboard) {
+    return;
+  }
+  const getHeaderHeight = () => {
+    const header = document.querySelector("header");
+    return header.offsetHeight;
+  };
+  if (userDashboard) {
+    userDashboard.style.paddingTop = `calc(${getHeaderHeight()}px + 80px)`;
+  }
+}
+
+function checkIfTier1(preferredLanguage) {
+  const tier1Languages = ["de", "en", "fr"];
+  return tier1Languages.some(lang => preferredLanguage.includes(lang));
 }
 
 ( async() => {
@@ -255,9 +333,15 @@ function addBentoObserver(){
 
   document.forms ? (restoreInputs(), addFormListeners()) : null;
 
+  let windowWidth = win.outerWidth;
   win.addEventListener("resize", () => {
-    toggleMobileFeatures(topNavigation);
-    toggleArticles();
+    const newWindowWidth = win.outerWidth;
+      if (newWindowWidth !== windowWidth) {
+      toggleMobileFeatures(topNavigation);
+      toggleArticles();
+      windowWidth = newWindowWidth;
+      resizeDashboardMargin();
+    }
   });
 
   document.addEventListener("scroll", () => toggleHeaderStates(header, win));
@@ -290,6 +374,119 @@ function addBentoObserver(){
     });
   });
 
+  document.querySelectorAll(".relay-sign-up-btn").forEach(btn => {
+    btn.addEventListener("click", async(e) => {
+      const relayEndpoint = new URL("/relay-waitlist", document.body.dataset.serverUrl);
+      const signUpCallout = document.querySelector(".relay-sign-up");
+
+      signUpCallout.classList.add("sending-email");
+      try {
+        const response = await fetch(relayEndpoint, {
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+          },
+          mode: "same-origin",
+          method: "POST",
+          body: JSON.stringify({"emailToAdd": "add-user-email"}),
+        });
+        if (response && response.status === 200) {
+          setTimeout(()=> {
+            signUpCallout.classList.add("email-sent");
+            signUpCallout.classList.remove("sending-email");
+          }, 500);
+        }
+      } catch(e) {
+        // we need error messaging
+      }
+    });
+  });
+
+  const privateRelayCtas = document.querySelectorAll(".private-relay-cta");
+  const gaAvailable = typeof(ga) !== "undefined";
+
+  if (privateRelayCtas.length > 0) {
+    const availableIntersectionObserver = ("IntersectionObserver" in window);
+
+
+    if (availableIntersectionObserver && gaAvailable) {
+      const sendRelayPing = (eventAction, elemData) => {
+        if (eventAction === "View" && elemData.userIsSignedUp === "true") {
+          return;
+        }
+        ga("send", "event", "Private Relay Test", eventAction, elemData.analyticsLabel);
+      };
+      const onRelayCtasComingIntoView = (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            sendRelayPing("View", entry.target.dataset);
+            observer.unobserve(entry.target);
+          }
+        });
+      };
+      const observer = new IntersectionObserver(onRelayCtasComingIntoView, { rootMargin: "-50px" });
+
+      privateRelayCtas.forEach(relayCta => {
+        observer.observe(relayCta);
+        relayCta.addEventListener("click", (e) => {
+          sendRelayPing("Engage", e.target.dataset);
+        });
+      });
+    }
+  }
+
+  resizeDashboardMargin();
+
   const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
   dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));
+
+  const preferredLanguages = navigator.languages;
+  const preferredFirstLanguageIsTier1 = checkIfTier1(preferredLanguages[0]);
+
+  if (!preferredFirstLanguageIsTier1) {
+    return;
+  }
+
+  if (document.getElementById("fxaCheckbox")) {
+    document.getElementById("fxaCheckbox").style.display = "block";
+  }
+
+  const createFxaCheckbox = document.getElementById("createFxaCheckbox");
+  const submitBtn = document.querySelector(".breachesSubmitButton");
+
+  if (submitBtn) {
+    submitBtn.addEventListener("click", (e)=> {
+      // Email Validation
+      const scanForm = document.getElementById("scan-user-email");
+      const scanFormEmailValue = document.querySelector("#scan-user-email input[type='email']").value;
+
+      if (scanFormEmailValue.length < 1  || !isValidEmail(scanFormEmailValue)) {
+        scanForm.classList.add("invalid");
+        return;
+      }
+
+      if (createFxaCheckbox.checked) {
+        e.preventDefault();
+
+        // Send GA Ping
+        if (typeof(ga) !== "undefined") {
+          ga("send", {
+            hitType: "event",
+            eventCategory: "Sign Up Button",
+            eventAction: "Engage",
+            eventLabel: "fx-monitor-homepage-fxa-checkbox",
+            options: {
+              transport: "beacon",
+            },
+          });
+        }
+
+        doOauth(e.target, {emailWatch: true});
+        return;
+      }
+
+    });
+  }
+
+
+
 })();

@@ -12,9 +12,13 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Conta Firefox
 terms-and-privacy = Termos e Privacidade
 GitHub-link-title = GitHub
 error-scan-page-token = Você tentou analisar endereços de e-mail demais em um curto espaço de tempo. Por motivos de segurança, bloqueamos temporariamente novas buscas suas. Você poderá tentar novamente mais tarde.
@@ -148,7 +152,7 @@ sensitive-sites-copy =
     tipos de vazamento após um endereço de e-mail ter sido validado. Significa que você é 
     a única pessoa que pode ver se suas informações apareceram em um vazamento (a menos que
     mais alguém tenha acesso à sua conta de e-mail).
-delayed-reporting-headline = Por que demorou tanto para reportar este vazamento?
+delayed-reporting-headline = Por que demorou tanto para relatar este vazamento?
 delayed-reporting-copy = Às vezes demora meses ou anos para que credenciais expostas em um vazamento de dados apareça na dark web. Vazamentos são adicionados ao nosso banco de dados assim que são descobertos e confirmados.
 about-fxm-headline = Sobre o { -product-name }
 about-fxm-blurb = O { -product-name } avisa se suas contas online estiveram envolvidas em um vazamento de dados. Descubra se você esteve em algum vazamento de dados, receba alertas sobre novos vazamentos e tome medidas para proteger suas contas online. O { -product-name } é fornecido pela { -brand-Mozilla }.
@@ -207,7 +211,8 @@ appears-in-x-breaches =
        *[other] Aparece em { $breachCount } vazamentos conhecidos.
     }
 check-for-breaches = Verificar se há vazamentos
-find-out-what-hackers-know = Descubra o que os hackers já sabem sobre você. Saiba como estar um passo à frente deles.
+find-out-what-hackers-know = Descubra o que os hackers já sabem sobre você. Saiba como estar um passo à frente.
+get-email-alerts = Mantenha-se protegido: Receba alertas por e-mail quando suas informações aparecerem em um vazamento de dados conhecido
 search-for-your-email = Pesquise seu endereço de e-mail em vazamentos de dados tornados públicos desde 2007.
 back-to-top = Voltar ao início
 comm-opt-0 = Enviar e-mail para mim se um de meus endereços de e-mail abaixo aparecer em um vazamento de dados.
@@ -421,7 +426,7 @@ take-further-steps-desc = Descubra como atenuar os riscos de roubo de identidade
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Alterações salvas!
 # Section headline
-rec-section-headline = O que fazer a respeito desse vazamento
+rec-section-headline = O que fazer a respeito deste vazamento
 rec-section-subhead = Recomendamos que você siga estas etapas para manter suas informações pessoais seguras e proteger sua identidade digital.
 # Section headline
 rec-section-headline-no-pw = O que fazer para proteger suas informações pessoais
@@ -441,7 +446,7 @@ resolve-top-notification-plural =
 
 ##
 
-marking-this-subhead = Marcando este vazamento como resolvido
+marking-this-subhead = Marcar este vazamento como resolvido
 # This string contains nested markup that is later used to style the text inside of it.
 # Please do not modify or remove "<span>" and "</span>".
 marking-this-body =
@@ -476,8 +481,8 @@ num-resolved =
         [one] { $numResolvedBreaches } resolvido
        *[other] { $numResolvedBreaches } resolvidos
     }
-progress-intro-subhead = Novidade no { -product-name }: Marcar vazamentos como resolvidos
-progress-intro-message = Após revisar os detalhes sobre um vazamento e tomar medidas para proteger suas informações pessoais, você pode marcar vazamentos como resolvidos.
+progress-intro-subhead = Novidade no { -product-name }: marcar vazamentos como resolvidos
+progress-intro-message = Após revisar os detalhes sobre um vazamento e tomar medidas para proteger suas informações pessoais, você pode marcar alertas de vazamentos como resolvidos.
 progress-status =
     { $numTotalBreaches ->
        *[other] { $numResolvedBreaches } de { $numTotalBreaches } vazamentos marcados como resolvidos
@@ -513,3 +518,18 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Novo
+mobile-promo-headline = Leve o { -brand-name } para seu celular e tablet
+mobile-promo-body = Navegação rápida, privativa e segura em qualquer lugar que você vá. Encontre o { -brand-name } no Google Play e na App Store.
+mobile-promo-cta = Instale o { -brand-name } no Android e iOS
+promo-lockwise-headline = Tenha suas senhas em qualquer lugar
+lockwise-promo-body = Acompanhe suas contas em todos os dispositivos. Acesse-as com segurança no seu computador, celular ou tablet.
+promo-lockwise-cta = Instale o { -brand-lockwise }
+fpn-promo-headline = Oculte sua localização de sites e rastreadores
+promo-fpn-body = O { -brand-fpn } oculta seu endereço IP real, despistando os sites e coletores de dados que usam anúncios para tentar traçar um perfil seu.
+promo-fpn-cta = Instale o { -brand-fpn }
+monitor-promo-headline = Descubra novos vazamentos de dados
+monitor-promo-body = Seja notificado na próxima vez que suas informações pessoais forem expostas em um vazamento conhecido.
+ecosystem-promo-headline = Proteja sua vida online com produtos que põem sua privacidade em primeiro lugar
+ecosystem-promo-body = Todos os produtos { -brand-name } honram nossa promessa de como lidar com dados pessoais: Coletar pouco. Manter seguro. Sem segredos.
+promo-ecosystem-cta = Veja todos os produtos
+steps-to-resolve-headline = Passos para resolver este vazamento

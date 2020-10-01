@@ -1,8 +1,10 @@
 "use strict";
 
-const { LocaleUtils } = require("./../locale-utils");
-const { prettyDate } = require("./hbs-helpers");
+const AppConstants = require("./../app-constants");
+
+const { prettyDate, localize } = require("./hbs-helpers");
 const { getAllPriorityDataClasses, getAllGenericRecommendations, getFourthPasswordRecommendation } = require("./recommendations");
+const { getPromoStrings } = require("./product-promos");
 
 
 function addRecommendationUtmParams(cta) {
@@ -26,11 +28,6 @@ function addRecommendationUtmParams(cta) {
   catch (e) {
     return cta.ctaHref;
   }
-}
-
-
-function localize(locales, stringId, args) {
-  return LocaleUtils.fluentFormat(locales, stringId, args);
 }
 
 
@@ -62,7 +59,7 @@ function getBreachCategory(breach) {
 }
 
 
-function getSortedDataClasses(locales, breach, isUserBrowserFirefox=false, isUserLocaleEnUs=false, changePWLink=false) {
+function getSortedDataClasses(locales, breach, isUserBrowserFirefox=false, isUserLocaleEnUs=false, isUserLocalEn=false, changePWLink=false) {
   const priorityDataClasses = getAllPriorityDataClasses(isUserBrowserFirefox, isUserLocaleEnUs, changePWLink);
 
   const sortedDataClasses = {
@@ -111,13 +108,17 @@ function getGenericFillerRecs(locales, numberOfRecsNeeded) {
 }
 
 function getBreachDetail(args) {
+  const acceptsLanguages = args.data.root.req.acceptsLanguages();
   const { locales, breach, changePWLink, isUserBrowserFirefox } = getVars(args);
-  const { sortedDataClasses, recommendations } = getSortedDataClassesAndRecs(locales, breach, isUserBrowserFirefox, changePWLink);
+  const { sortedDataClasses, recommendations } = getSortedDataClassesAndRecs(acceptsLanguages, locales, breach, isUserBrowserFirefox, changePWLink);
   const breachCategory = getBreachCategory(breach);
   const breachExposedPasswords = breach.DataClasses.includes("passwords");
 
+  breach.LogoUrl = `${AppConstants.LOGOS_ORIGIN}/img/logos/${breach.LogoPath}`;
+
   const breachDetail = {
     breach: breach,
+    breachExposedPasswords: breachExposedPasswords,
     overview: {
       headline: localize(locales, "breach-overview-title"),
       copy: localize(locales, "breach-overview-new", {
@@ -173,13 +174,58 @@ function getBreachDetail(args) {
       copy: localize(locales, "delayed-reporting-copy"),
     };
   }
+
+  // Determine which product promo to show
+  breachDetail.promo = getPromoStrings(args);
+
+  const BREACH_RESOLUTION_ENABLED = (AppConstants.BREACH_RESOLUTION_ENABLED === "1");
+  if (BREACH_RESOLUTION_ENABLED && args.data.root.affectedEmails) {
+    const affectedEmails = args.data.root.affectedEmails;
+    const numAffectedEmails = affectedEmails.length;
+    const unresolvedAffectedEmails = [];
+
+    if (numAffectedEmails > 0) {
+      affectedEmails.forEach(email => {
+        if (!email.isResolved) {
+          unresolvedAffectedEmails.push(email);
+        }
+      });
+    // show top of page alert for any emails involved in this breach where the breach
+    // has not yet been marked as resolved.
+    // if all breaches have been resolved, show nothing
+    if (unresolvedAffectedEmails.length > 0) {
+      const affectedEmailNotification = unresolvedAffectedEmails.length > 1 ?
+        localize(locales, "resolve-top-notification-plural", { numAffectedEmails: numAffectedEmails }) :
+        localize(locales, "resolve-top-notification", { affectedEmail: unresolvedAffectedEmails[0].emailAddress });
+
+      breachDetail.affectedEmailNotification = formatNotificationLink(affectedEmailNotification);
+    }
+      breachDetail.affectedEmails = affectedEmails;
+      breachDetail.resolutionStrings = {
+        subhead: localize(locales, "marking-this-subhead"),
+        message: formatResolutionMessage(localize(locales, "marking-this-body")),
+        resolveButtonTitle: localize(locales, "mark-as-resolve-button"),
+        resolvedLabel: localize(locales, "marked-as-resolved-label"),
+        undoResolvedLabel: localize(locales, "undo-button"),
+      };
+    }
+  }
   return args.fn(breachDetail);
 }
 
+function formatResolutionMessage(message) {
+  return message.replace("<span>", "<span class='demi'>");
+}
 
-function getSortedDataClassesAndRecs(locales, breach, isUserBrowserFirefox=false, changePWLink=false) {
-  const isUserLocaleEnUs = (locales[0] === "en");
-  const sortedDataClasses = getSortedDataClasses(locales, breach, isUserBrowserFirefox, isUserLocaleEnUs, changePWLink);
+function formatNotificationLink(message) {
+  return message.replace("<a>", "<a class='what-to-do-next blue-link' href='#what-to-do-next' data-analytics-label='what-to-do-next'>");
+}
+
+
+function getSortedDataClassesAndRecs(acceptsLanguages, locales, breach, isUserBrowserFirefox=false, changePWLink=false) {
+  const isUserLocaleEn = (acceptsLanguages[0].toLowerCase().startsWith("en"));
+  const isUserLocaleEnUs = (acceptsLanguages[0].toLowerCase() === "en-us");
+  const sortedDataClasses = getSortedDataClasses(locales, breach, isUserBrowserFirefox, isUserLocaleEnUs, isUserLocaleEn, changePWLink);
 
   let recommendations = [];
 

@@ -19,8 +19,8 @@ rec-pw-2-subhead = Atualize outras credenciais que utilizem a mesma palavra-pass
 # Link title
 rec-pw-2-cta-fx = Ver credenciais em { -brand-name }
 rec-pw-2 =
-    Reutilizar palavras-passe transforma uma única violação de dados em várias. Agora que esta 
-    palavra-passe foi divulgada, os piratas podem utilizá-la para aceder a outras contas.
+    A reutilização de palavras-passe transforma uma única violação de dados em várias. Agora que esta 
+    palavra-passe foi divulgada, os piratas informáticos podem utilizá-la para aceder a outras contas.
 # Recommendation subhead
 rec-pw-3-subhead = Utilize um gestor de palavras-passe para levar as suas palavras-passe para todo o lado
 # Link title
@@ -61,12 +61,18 @@ rec-ip-non-us =
     O seu endereço do protocolo da Internet (endereço IP) indica a sua localização
     e provedor de serviço de Internet. Com uma rede virtual privada (VPN), você pode ocultar sua localização
     e mascarar o seu endereço de IP.
+# Recommendation subhead
+rec-moz-vpn-cta = Experimente a { -brand-mozilla-vpn }
+rec-moz-vpn =
+    O seu endereço de protocolo da Internet (endereço IP) pode revelar a sua localização e fornecedor de serviços de Internet. Um serviço como a 
+    { -brand-fpn } oculta o seu endereço de IP e localização no { -brand-name } e um serviço como a { -brand-mozilla-vpn } oculta o seu 
+    endereço IP e localização para todas as comunicações do seu dispositivo.
 rec-hist-pw-subhead = Evite reutilizar palavras-passe
 # Link title
 rec-hist-pw-cta-fx = Ver as credenciais em { -brand-name }
 rec-hist-pw =
     Utilize palavras-passe fortes e exclusivas para todas as contas. Se uma palavra-passe for
-    exposta numa violação de dados, você só precisará atualizar essa credencial.
+    exposta numa violação de dados, só precisará de atualizar essa credencial.
 # Recommendation subhead
 rec-sec-qa-subhead = Crie respostas exclusivas para perguntas de segurança
 rec-sec-qa =

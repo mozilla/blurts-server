@@ -12,9 +12,13 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox 账户
 terms-and-privacy = 使用条款和隐私
 GitHub-link-title = GitHub
 error-scan-page-token = 您试图在短时间内扫描过多的电子邮件地址。出于安全原因，我们暂时阻止您进行新的搜索。请您稍后再试。
@@ -47,7 +51,7 @@ scan-submit = 搜索您的电子邮件地址
 scan-error = 须为有效的电子邮件地址。
 download-firefox-banner-button = 下载 { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
-signup-modal-sent = 已发送！
+signup-modal-sent = 发送成功！
 sign-up = 注册
 form-signup-error = 须为有效的电子邮件地址
 # breach-date = the calendar date a particular data theft occurred. 
@@ -105,7 +109,7 @@ open-fxa-menu = 打开 { -brand-fxa }导航栏
 latest-breach = 最新公开的外泄事件
 # Link title
 more-about-this-breach = 关于此数据外泄事件的更多信息
-take-control = 收回个人数据的控制权。
+take-control = 光复你的个人数据。
 cant-stop-hackers = 您无法阻止黑客入侵，但可以通过改变习惯，让他们更难得手。
 read-more-tips = 阅读更多安全提示
 how-hackers-work = 了解黑客的手段
@@ -174,6 +178,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = 检查是否有外泄事件
 find-out-what-hackers-know = 看看黑客已经掌握了您哪些资料，并了解如何先发制人。
+get-email-alerts = 保持安全：当您的信息出现在已知外泄事件中时，将获得邮件警报
 search-for-your-email = 搜索自2007年起的公开数据外泄事件当中，是否包含您的电子邮件地址。
 back-to-top = 回到顶端
 comm-opt-0 = 如果我的某个电子邮件地址出现在数据外泄事件中，请发邮件通知我。
@@ -317,10 +322,10 @@ filter-by = 按分类筛选：
 menu = 菜单
 to-affected-email = 向受影响的电子邮件地址发送外泄警报
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
-join-firefox = 有种方法可以保护您的隐私，加入 { -brand-name }。
+join-firefox = 捍卫隐私不是幻想。加入 { -brand-name } 一同抗争。
 # Link title
 learn-more-link = 详细了解。
-email-sent = 邮件已发送！
+email-sent = 邮件发送成功！
 # Form title
 want-to-add = 要添加其他电子邮件地址吗？
 # This is part of a confirmation message that appears after a user has submitted
@@ -448,3 +453,18 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = 新事件
+mobile-promo-headline = 推荐下载手机/平板电脑端 { -brand-name }
+mobile-promo-body = 快速、私密且安全地浏览。前往 Google Play 或 App Store 即可下载 { -brand-name }。
+mobile-promo-cta = 获取 Android 和 iOS 端 { -brand-name }
+promo-lockwise-headline = 随身携带密码
+lockwise-promo-body = 掌控所有设备上的登录信息。可从您的计算机、手机或平板电脑安全地进行访问。
+promo-lockwise-cta = 获取 { -brand-lockwise }
+fpn-promo-headline = 对网站和跟踪器伪装您的位置
+promo-fpn-body = { -brand-fpn } 通过伪装您的真实 IP 地址，摆脱那些用广告定位您的网站和数据收集器。
+promo-fpn-cta = 获取 { -brand-fpn }
+monitor-promo-headline = 帮您关心数据泄露事故
+monitor-promo-body = 在您的个人信息出现在数据外泄事件时收到通知。
+ecosystem-promo-headline = 使用尊重隐私的产品保卫您的网络世界
+ecosystem-promo-body = 所有 { -brand-name } 产品，均符合我们对个人数据隐私的承诺：索取更少、确保安全、绝不隐瞒。
+promo-ecosystem-cta = 一览所有产品
+steps-to-resolve-headline = 外泄事件处理步骤

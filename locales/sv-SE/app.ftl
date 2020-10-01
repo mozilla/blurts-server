@@ -12,9 +12,13 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox-konto
 terms-and-privacy = Villkor och sekretess
 GitHub-link-title = GitHub
 error-scan-page-token = Du försökte skanna för många e-postadresser inom en kort tidsperiod. Av säkerhetsskäl har vi tillfälligt blockerat dig från nya sökningar. Du kommer att kunna försöka igen senare.
@@ -218,6 +222,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Sök efter intrång
 find-out-what-hackers-know = Ta reda på vad hackare redan vet om dig. Lär dig hur du kan vara ett steg före dem.
+get-email-alerts = Håll dig säker: Få e-postvarningar när din information förekommer i ett känt intrång
 search-for-your-email = Sök efter din e-postadress i offentliga dataintrång som går tillbaka till 2007.
 back-to-top = Tillbaka till toppen
 comm-opt-0 = Mejla mig om en av mina e-postadresser nedan förekommer i ett dataintrång.
@@ -535,3 +540,18 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nytt
+mobile-promo-headline = Hämta { -brand-name } till din telefon och surfplatta
+mobile-promo-body = Snabb, privat och säker surfning överallt där du befinner dig. Hitta { -brand-name } i Google Play och App Store.
+mobile-promo-cta = Hämta { -brand-name } till Android och iOS
+promo-lockwise-headline = Ta med dina lösenord överallt
+lockwise-promo-body = Håll koll på dina inloggningar på alla enheter. Få åtkomst till dem säkert från din dator, telefon eller surfplatta.
+promo-lockwise-cta = Hämta { -brand-lockwise }
+fpn-promo-headline = Dölj din position från webbplatser och spårare
+promo-fpn-body = { -brand-fpn } lurar webbplatser och datainsamlare som profilerar dig med annonser genom att maskera din riktiga IP-adress.
+promo-fpn-cta = Hämta { -brand-fpn }
+monitor-promo-headline = Få reda på nya dataintrång
+monitor-promo-body = Bli meddelad nästa gång din personliga information exponeras i ett känt intrång.
+ecosystem-promo-headline = Skydda ditt liv på nätet med integritetsprodukter
+ecosystem-promo-body = Alla produkter från { -brand-name } respekterar vårt löfte om personlig data: Samla in mindre. Förvara det säkert. Inga hemligheter.
+promo-ecosystem-cta = Se alla produkter
+steps-to-resolve-headline = Åtgärder för att lösa detta intrång

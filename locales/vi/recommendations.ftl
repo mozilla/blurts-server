@@ -19,7 +19,7 @@ rec-pw-2-subhead = Cập nhật thông tin đăng nhập khác bằng cùng mộ
 # Link title
 rec-pw-2-cta-fx = Xem thông tin đăng nhập trong { -brand-name }
 rec-pw-2 =
-    Sử dụng lại mật khẩu biến một vi phạm dữ liệu thành nhiều. Bây giờ mật khẩu này 
+    Sử dụng lại mật khẩu biến một rò rỉ dữ liệu thành nhiều hơn. Bây giờ mật khẩu này 
     đã được sử dụng, tin tặc có thể sử dụng nó để vào các tài khoản khác.
 # Recommendation subhead
 rec-pw-3-subhead = Sử dụng trình quản lý mật khẩu để lấy mật khẩu của bạn ở mọi nơi
@@ -61,12 +61,18 @@ rec-ip-non-us =
     Địa chỉ Giao thức Internet (địa chỉ IP) xác định chính xác vị trí của bạn và nhà 
     cung cấp dịch vụ internet. Với mạng riêng ảo (VPN), bạn có thể ẩn vị trí 
     của mình và che dấu địa chỉ IP của bạn.
+# Recommendation subhead
+rec-moz-vpn-cta = Hãy thử { -brand-mozilla-vpn }
+rec-moz-vpn =
+    Địa chỉ giao thức Internet (địa chỉ IP) của bạn có thể tiết lộ vị trí và nhà cung cấp dịch vụ internet của bạn. Một dịch vụ
+    như { -brand-fpn } sẽ ẩn địa chỉ IP và vị trí của bạn cho { -brand-name } và một dịch vụ như { -brand-mozilla-vpn } ẩn
+    địa chỉ IP và vị trí của bạn cho toàn bộ thiết bị của bạn.
 rec-hist-pw-subhead = Tránh sử dụng lại mật khẩu
 # Link title
 rec-hist-pw-cta-fx = Xem thông tin đăng nhập trong { -brand-name }
 rec-hist-pw =
     Sử dụng mật khẩu duy nhất, mạnh mẽ cho mọi tài khoản. Nếu một mật khẩu 
-    bị lộ trong một vi phạm dữ liệu, bạn sẽ chỉ cần cập nhật một lần đăng nhập đó.
+    bị lộ trong một vụ rò rỉ dữ liệu, bạn sẽ chỉ cần cập nhật một lần đăng nhập đó.
 # Recommendation subhead
 rec-sec-qa-subhead = Tạo câu trả lời độc đáo cho câu hỏi bảo mật
 rec-sec-qa =

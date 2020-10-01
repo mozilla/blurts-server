@@ -1,12 +1,26 @@
 "use strict";
 
 const AppConstants = require("../app-constants");
+const DB = require("../db/DB");
+const HIBP = require("../hibp");
 const { scanResult } = require("../scan-results");
-const { generatePageToken } = require("./utils");
+const {
+  generatePageToken,
+  getExperimentFlags,
+  getUTMContents,
+} = require("./utils");
 
+const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
+
+function _getFeaturedBreach(allBreaches, breachQueryValue) {
+  if (!breachQueryValue) {
+    return null;
+  }
+  const lowercaseBreachValue = breachQueryValue.toLowerCase();
+  return HIBP.getBreachByName(allBreaches, lowercaseBreachValue);
+}
 
 async function home(req, res) {
-
   const formTokens = {
     pageToken: AppConstants.PAGE_TOKEN_TIMER > 0 ? generatePageToken(req) : "",
     csrfToken: req.csrfToken(),
@@ -19,9 +33,23 @@ async function home(req, res) {
     return res.redirect("/user/dashboard");
   }
 
+  // Rewrites the /share/{COLOR} links to /
+  if (req.session.redirectHome) {
+    req.session.redirectHome = false;
+    return res.redirect("/");
+  }
+
+  // Note - If utmOverrides get set, they are unenrolled from the experiment
+  const utmOverrides = getUTMContents(req);
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  if (req.params && req.params.breach) {
+    req.query.breach = req.params.breach;
+  }
+
   if (req.query.breach) {
-    const reqBreachName = req.query.breach.toLowerCase();
-    featuredBreach = req.app.locals.breaches.find(breach => breach.Name.toLowerCase() === reqBreachName);
+
+    featuredBreach = _getFeaturedBreach(req.app.locals.breaches, req.query.breach);
 
     if (!featuredBreach) {
       return notFound(req, res);
@@ -40,6 +68,8 @@ async function home(req, res) {
       scanFeaturedBreach,
       pageToken: formTokens.pageToken,
       csrfToken: formTokens.csrfToken,
+      experimentFlags,
+      utmOverrides,
     });
   }
 
@@ -49,6 +79,8 @@ async function home(req, res) {
     scanFeaturedBreach,
     pageToken: formTokens.pageToken,
     csrfToken: formTokens.csrfToken,
+    experimentFlags,
+    utmOverrides,
   });
 }
 
@@ -82,18 +114,37 @@ function getBentoStrings(req, res) {
     fxMobile: req.fluentFormat("fx-mobile"),
     fxMonitor: req.fluentFormat("fx-monitor"),
     pocket: req.fluentFormat("pocket"),
-    fxSend: req.fluentFormat("fx-send"),
     mobileCloseBentoButtonTitle: req.fluentFormat("mobile-close-bento-button-title"),
   };
   return res.json(localizedBentoStrings);
 }
+
+function _addPrivacyBundleToWaitlistsJoined(user) {
+  if (!user.waitlists_joined) {
+    return {"privacy_bundle": {"notified": false} };
+  }
+  user.waitlists_joined["privacy_bundle"] = {"notified": false };
+  return user.waitlists_joined;
+}
+
+function addEmailToBundleWaitlist(req, res) {
+  if (!req.user) {
+    return res.redirect("/");
+  }
+  const user = req.user;
+  const updatedWaitlistsJoined = _addPrivacyBundleToWaitlistsJoined(user);
+  DB.setWaitlistsJoined({user, updatedWaitlistsJoined});
+  return res.json("email-not-added");
+}
+
 
 function notFound(req, res) {
   res.status(404);
   res.render("subpage", {
     analyticsID: "error",
     headline: req.fluentFormat("error-headline"),
-    subhead: req.fluentFormat("home-not-found") });
+    subhead: req.fluentFormat("home-not-found"),
+  });
 }
 
 module.exports = {
@@ -102,5 +153,6 @@ module.exports = {
   getAllBreaches,
   getBentoStrings,
   getSecurityTips,
+  addEmailToBundleWaitlist,
   notFound,
 };

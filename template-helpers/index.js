@@ -26,6 +26,6 @@ module.exports = {
     homepage,
     legacyHelpers,
     scanResults,
-    signUpBanners,
+    signUpBanners
   ),
 };

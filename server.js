@@ -8,10 +8,11 @@ Sentry.init({
   environment: AppConstants.NODE_ENV,
 });
 
+const connectRedis = require("connect-redis");
 const express = require("express");
 const exphbs = require("express-handlebars");
 const helmet = require("helmet");
-const sessions = require("client-sessions");
+const session = require("express-session");
 const { URL } = require("url");
 
 const EmailUtils = require("./email-utils");
@@ -35,6 +36,18 @@ const EmailL10nRoutes= require("./routes/email-l10n");
 const BreachRoutes= require("./routes/breach-details");
 
 const log = mozlog("server");
+
+function getRedisStore() {
+  const redisStoreConstructor = connectRedis(session);
+  if (["", "redis-mock"].includes(AppConstants.REDIS_URL)) {
+    // eslint-disable-next-line node/no-unpublished-require
+    const redis = require("redis-mock");
+    return new redisStoreConstructor({ client: redis.createClient() });
+  }
+  const redis = require("redis");
+  return new redisStoreConstructor({ client: redis.createClient({url: AppConstants.REDIS_URL }) });
+}
+
 const app = express();
 
 
@@ -95,6 +108,8 @@ const imgSrc = [
   "'self'",
   "https://www.google-analytics.com",
   "https://firefoxusercontent.com",
+  "https://mozillausercontent.com/",
+  "https://monitor.cdn.mozilla.net/",
 ];
 
 const connectSrc = [
@@ -102,6 +117,7 @@ const connectSrc = [
   "https://code.cdn.mozilla.net/fonts/",
   "https://www.google-analytics.com",
   "https://accounts.firefox.com",
+  "https://accounts.stage.mozaws.net/metrics-flow",
 ];
 
 if (AppConstants.FXA_ENABLED) {
@@ -146,21 +162,28 @@ const hbs = exphbs.create({
 app.engine("hbs", hbs.engine);
 app.set("view engine", "hbs");
 
-const cookie = {httpOnly: true, sameSite: "lax"};
-
 // TODO: refactor all templates to use constants.VAR
 // instead of assigning these 1-by-1 to app.locales
 app.locals.constants = AppConstants;
 app.locals.FXA_ENABLED = AppConstants.FXA_ENABLED;
 app.locals.SERVER_URL = AppConstants.SERVER_URL;
+app.locals.MAX_NUM_ADDRESSES = AppConstants.MAX_NUM_ADDRESSES;
+app.locals.EXPERIMENT_ACTIVE = AppConstants.EXPERIMENT_ACTIVE;
+app.locals.LOGOS_ORIGIN = AppConstants.LOGOS_ORIGIN;
 app.locals.UTM_SOURCE = new URL(AppConstants.SERVER_URL).hostname;
 
-app.use(sessions({
-  cookieName: "session",
+const SESSION_DURATION_HOURS = AppConstants.SESSION_DURATION_HOURS || 48;
+app.use(session({
+  cookie: {
+    httpOnly: true,
+    maxAge: SESSION_DURATION_HOURS * 60 * 60 * 1000, // 48 hours
+    rolling: true,
+    sameSite: "lax",
+  },
+  resave: false,
+  saveUninitialized: true,
   secret: AppConstants.COOKIE_SECRET,
-  duration: 60 * 60 * 1000, // 60 minutes
-  activeDuration: 15 * 60 * 1000, // 15 minutes
-  cookie: cookie,
+  store: getRedisStore(),
 }));
 
 app.use(pickLanguage);

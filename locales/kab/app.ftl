@@ -11,9 +11,14 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Aẓetta n tbaḍnit n Firefox
+-brand-mozilla-vpn = Mozilla VPN
 
+##
 
-
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Amiḍan Firefox
 terms-and-privacy = Tiwtilin akked tbaḍnit
 GitHub-link-title = GitHub
 error-scan-page-token = Tɛeṛḍeḍ ad tgeḍ tasleḍt n ddeqs n tansiwin deg drus n wakud. Ɛef sebba n tɣellist, nessewḥel inadiyen imaynuten akka kra n wakud. Tzmereḍ ad tɛerḍḍ ticki.
@@ -80,7 +85,11 @@ fxa-what-to-do-blurb-1 =
     Ma yella ur tezmireḍ ara ad teqqneḍ, nermes asmel web akken ad teẓreḍ amek ara tbeddleḍ inekcumen-ik.
     Tettwaliḍ amiḍan ur tessineḍ ara? Isefka-ik ahat nzan neɣ ttunefken. Ayagi yezmer daɣen d amiḍan i tettuḍ neɣ d takebbanit i yebeddlen isem.
 fxa-what-to-do-subhead-2 = Seḥbes aseqdec n waal uffir yeffɣen, daɣen beddel-it s kra n wanida i t-tesqedceḍ.
-fxa-wtd-blurb-2 = Imakaren imsenselkamen zemren ad ɛerḍen ad alsen aseqdec n wawalen uffiren akked tansa-ik imayl akken ad kecmen ɣer yimiḍanen-nniḍen. Rnu awal uffir-nniden deg yal asmel web, ladɣa i umiḍan-ik n lbanka, tirawt-ik srid d yismal-nniḍen web anida i teskelseḍ isefka-ik udmawanen.
+fxa-wtd-blurb-2 =
+    Imakaren imsenselkamen zemren ad ɛerḍen ad alsen aseqdec n wawalen uffiren akked tansa-ik imayl akken ad kecmen ɣer yimiḍanen-nniḍen. 
+    
+    Rnu awal uffir-nniden deg yal asmel web, ladɣa i umiḍan-ik n lbanka, 
+    tirawt-ik srid d yismal-nniḍen web anida i teskelseḍ isefka-ik udmawanen.
 fxa-what-to-do-blurb-3 =
     Tuget n trewliwin n yisefka ɛnan-t kan imaylen d wawalen uffiren, maca wiyaḍ seddayen ula d isefka nɣef tedrimt iweɛren. 
     Ma yella amiḍan-ik n lbanka neɣ uṭṭunen n tkarḍa ddan deg trewla, lɣu lbanka-ik ɣef ukellex i izemren ad d-yeḍru,
@@ -135,7 +144,7 @@ delayed-reporting-headline = Acuɣer yewwi aṭas n wakud akken ad tettwammel ta
 delayed-reporting-copy = Ayagi daɣen yezmer ad yawi ddeqs n wagguren neɣ iseggasen akken isulayen ittuḥazen deg trewla n yisefka ad banen deg darkweb. Tirewliwin ad ttwarnunt ɣer taffa-nneɣ n yisefka akken kan ad ttwafent daɣen ad ttwasneqdent.
 about-fxm-headline = Ɣef { -product-name }
 about-fxm-blurb = { -product-name } Ad k-id-yelɣu si imiḍanen-ik srid ttwaɣen deg trewla n yisefka. Wali ma ḥuzan-k, rmes-d ilɣa ɣef trewliwin-nniḍen n yisefka, daɣen issin ad tgeḍ ayen ilaqen i ummesten n yimiḍanen-ik srid. { -product-name } yettunefk-d sɣur { -brand-Mozilla }.
-fxm-warns-you = { -product-name } ad k-id-yelɣu ma yella tansa-ik imayl teddad-d deg trewla n yisefka. Wali ma yella tḥuza-k trewla, issin amek ara tḥ€rzeḍ imiḍanen-ik daɣen rmes alɣu ma yella tansa-ik tban-d deg trewla-nniden n yisefka.
+fxm-warns-you = { -product-name } ad k-id-yelɣu ma yella tansa-ik imayl teddad-d deg trewla n yisefka. Wali ma yella tḥuza-k trewla, issin amek ara tḥerzeḍ imiḍanen-ik daɣen rmes alɣu ma yella tansa-ik tban-d deg trewla-nniden n yisefka.
 # How Firefox Monitor works
 how-fxm-works = Amek iteddu { -product-name }
 how-fxm-1-headline = Teg inadiyen fessusen
@@ -181,6 +190,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Senqed tarewla n yisefka
 find-out-what-hackers-know = Wali ayen ẓran imakaren imsenselkamen fell-ak. daɣen issin ad ten-tizwireḍ.
+get-email-alerts = Qqim d aɣelsan: Ṭṭef-d ilɣa s ttawil n yimayl yal mi ara d-tban talɣut-inek deg trewla yettwassnen.
 search-for-your-email = Nadi tansa-ik deg trewliwin n yisefka izayazen seg 2007.
 back-to-top = Uɣal d asawen
 comm-opt-0 = Azen-iyi-d imayl ma tella yiwet seg tawnsiwin-iw ddaw-a banent-d deg trewla n yisefka.
@@ -361,7 +371,7 @@ email-verified-view-dashboard = Akken ad twaliḍ daɣen ad tesferkeḍ meṛṛ
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = Kcem
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -385,3 +395,115 @@ five-myths-desc = Issin amek ara tettut yir tanumi n wawalen uffiren yessifsusen
 take-further-steps-desc = Wali amek ara tesneɣseḍ takerḍa n timagit akken ad theggiḍ ayen ilaqen i ṛwaḥ n tedrimt.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Abeddel yettwasekles
+# Section headline
+rec-section-headline = Acu arar xedmeɣ i trewla-a n yisefka
+rec-section-subhead = Ad k-nwelleh ad txedmeḍ kra i ummesten n telɣut-ik tudmawant akked timagit-ik timḍint.
+# Section headline
+rec-section-headline-no-pw = Acu ara txedmeḍ i ummesten n yisefka-ik udmawanen
+rec-section-subhead-no-pw = Xas akken awalen uffiren ur llin ara deg trewla-a n yisefka, tzemreḍ ad tgeḍ kra akken ad tmesneḍ ugar talqut-ik tudmawant.
+# Button
+see-additional-recs = Wali iwellihen-nniḍen
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+resolve-top-notification = { $affectedEmail } iban-d deg trewla-a n yisefka. <a>Acu ara xedmeɣ?</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] Yiwet seg tansiwin-ik tban-d deg trewla-a n yisefka. <a>Acu ara xedmeɣ?</a>
+       *[other] { $numAffectedEmails }seg tansiwin-ik banent-d deg trewla-a n yisefka. <a>Acu ara xedmeɣ?</a>
+    }
+
+##
+
+marking-this-subhead = Creḍ tarewla-a n yisefka am akken tefra
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body = <span>Ticki txedmeḍ ayen i ilaqen akken ad tefruḍ ayen icudden ɣer trewla-a n yisefka</span>, ad tizmireḍ ad tt-tcerḍeḍ tefra. Tzemreḍ yal tikkelt ad tkecmeḍ ɣer telqayt n trewla n yisefka seg seg tfelwit n usenqed.
+mark-as-resolve-button = Creḍ tefra
+marked-as-resolved-label = Yettwacreḍ tefra
+undo-button = Sefsex
+confirmation-1-subhead = Igerrez! Aql-ak tefriḍ tarewla-ik tamezwarut.
+confirmation-1-body = Kemmel akken tebdiḍ. Ger tiṭ ɣer tfelwit-ik n usenqed akken ad twaliḍ ayen-nniḍen ara txedmeḍ.
+confirmation-2-subhead = Yiwet-nniḍen!
+confirmation-2-body = Texeddmeḍ imecwaṛen s wazalen-nsen akken ad tḥerzeḍ imiḍanen-inek usriden.
+confirmation-3-subhead = Ugur-nniden yefran. Igerrez!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Awal-inek uffir amaynut d asuf, yeǧhed, yewεer i tiftin? <a>Ẓer</a>
+generic-confirmation-subhead = Tarewla-agi tettwacreḍ tefra.
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Akken ad twaliḍ tarewla i d-yeqqimen, kcem ɣer tfelwit-inek n usenqed.
+       *[other] Akken ad twaliḍ tirewliwin i d-yeqqimen, kcem ɣer tfelwit-inek n usenqed.
+    }
+return-to-breach-details-link = Uɣal ɣer trewla s telqey
+go-to-dashboard-link = Ddu ɣer tfelwit n usenqed
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete } % immed
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } yefra
+       *[other] { $numResolvedBreaches } fran
+    }
+progress-intro-subhead = Amaynut di { -product-name }: Creḍ dakken uguren n tɣellist fran
+progress-intro-message = Mbeεd asenqed n ttfaṣil yerzan tarewla akked uḥraz n talɣut-inek tudmawant s uḍfar n yimecwaren ilaqen, tzemreḍ ad tcerḍeḍ ɣef trewliwin frant.
+progress-status =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } seg { $numTotalBreaches } n trewla n yisefka tettwacreḍ tefra
+       *[other] { $numResolvedBreaches } seg { $numTotalBreaches } n trewliwin n yisefka ttwacerḍent frant
+    }
+progress-complete = Akk tirewliwin n yisefka ttwacerḍent frant
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+progress-message-1 =
+    <span>Tebdiḍ akken ilaq!</span>Wali tirewliwin i d-yeggran akken ad teẓreḍ ugar 
+    ɣef wayen ara txedmeḍ.
+progress-message-2 =
+    <span>Kemmel!</span> Isnifal imecṭah am uleqqem n wawalen uffiren sεan azal meqqren ɣef 
+    uḥraz n talɣutin-inek tudmawanin deg tɣellist.
+progress-message-3 = <span>D amahil igerrzen i useɣti n trewliwin-agi! </span> Kemmel. Mazal-ak kra.
+progress-message-4 = <span>Qrib ad tessaliḍ!</span>Tqerbeḍ ɣer yizirig n taggara.
+progress-complete-message =
+    <span>Igerrez akka, neɣ ala?</span> Ma yella tebɣiḍ ad tkemmleḍ, d lweqt igerrzen akken 
+    ad tleqqmeḍ inekcamen-nniḍen s wawalen uffiren iǧehden s waṭas.
+
+##
+
+resolve-this-breach-link = Fru tarewla-agi.
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Creḍ tefra:
+hide-resolved-button = Ffer tifrat:
+show-resolved-button = Sken tifrat:
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Awal uffir i d-ibanen di trewliwin ur nefri ara.
+       *[other] Awalen uffiren i d-ibanen di trewliwin ur nefri ara.
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Tarewla n yisefka yettwassnen, tettucreḍ tefra.
+       *[other] Tirewliwin n yisefka yettwassnen, ttucerḍent frant.
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Amaynut
+mobile-promo-headline = Sebded { -brand-name } ɣef tiliɣri-inek akked tfelwit-inek n uselkem
+mobile-promo-body = Inig s  wudem arurad, uslig, yerna d aɣelsan anida teddiḍ. Aff-d { -brand-name } deg Google Play akked App Store.
+mobile-promo-cta = Awi-d { -brand-name } ɣef Android akked iOS
+promo-lockwise-headline = Awi awalen uffiren anda teddiḍ
+lockwise-promo-body = Eǧǧ lateṛ n yinekcam-inek ɣef yal allal. Kcem s wudem aɣelsan seg uselkim-inek, seg tilifun-inek neɣ  seg tfelwit-inek n uselken.
+promo-lockwise-cta = Sebded { -brand-lockwise }
+fpn-promo-headline = Ffer adeg ɣef ismal web akked ineḍfaren
+promo-fpn-body = { -brand-fpn } Semneε iman-ik seg yismal Web d yileqqaḍen n yisefka i ak-isekcamen deg udellel s uɣummu n tensa-inek IP taḥeqqanit.
+promo-fpn-cta = Awi-d { -brand-fpn }
+monitor-promo-headline = Ẓer tirewliwin timaynutin n yisefka
+monitor-promo-body = Sya d asawen rmes-d alɣu mi ara d-binent tilɣa-inek tudmawanin deg trewla n yisefka yettwassnen.
+ecosystem-promo-headline = Seḥbiber tudert-inek deg internet s yifarisen yettaken azal i tbaḍnit.
+ecosystem-promo-body = Akk ifarisen-agi { -brand-name } ttqadaren ṭṭmana-nneɣ ɣef yisefka udmawanen: Lqeḍ cwiṭ n yisefka. Mmesten-iten. Ulac tuffriwin.
+promo-ecosystem-cta = Wali akk ifarisen

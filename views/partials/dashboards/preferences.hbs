@@ -40,10 +40,10 @@
 
       <!-- Add New Email Form -->
       {{!-- TODO: remove this when https://github.com/mozilla/blurts-server/issues/1148 is fixed --}}
-      {{#ifCompare emails.total ">=" 15}}
+      {{#ifCompare emails.total ">=" MAX_NUM_ADDRESSES}}
         <h4 class="email-pref">{{ getString "user-add-too-many-emails" }}</h4>
       {{/ifCompare}}
-      {{#ifCompare emails.total "<" 15}}
+      {{#ifCompare emails.total "<" MAX_NUM_ADDRESSES}}
         <h4 class="email-pref add-new">{{ getString "add-new-email" }}</h4>
         {{> forms/add-another-email-form csrfToken=../csrfToken}}
       {{/ifCompare}}

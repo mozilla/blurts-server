@@ -92,6 +92,25 @@ test("verifyEmailHash accepts token and returns verified subscriber", async () =
 });
 
 
+test("verifyEmailHash accepts token and returns single verified subscriber", async () => {
+  const testEmail = "verifyEmailHash@test.com";
+  const subscriber = await DB.getSubscriberByEmail("firefoxaccount@test.com");
+  const subscriber2 = await DB.getSubscriberByEmail("all_emails_to_primary@test.com");
+
+  const unverifiedEmailAddress = await DB.addSubscriberUnverifiedEmailHash(subscriber, testEmail);
+  expect(unverifiedEmailAddress.verified).toBeFalsy();
+
+  const unverifiedEmailAddress2 = await DB.addSubscriberUnverifiedEmailHash(subscriber2, testEmail);
+  expect(unverifiedEmailAddress2.verified).toBeFalsy();
+
+  HIBP.subscribeHash.mockResolvedValue(true);
+  const verifiedEmailAddress = await DB.verifyEmailHash(unverifiedEmailAddress.verification_token);
+  expect(verifiedEmailAddress.sha1).toBe(getSha1(testEmail));
+  expect(verifiedEmailAddress.verified).toBeTruthy();
+  expect(unverifiedEmailAddress2.verified).toBeFalsy();
+});
+
+
 test("addSubscriber invalid argument", async () => {
   const testEmail = "test".repeat(255);
 

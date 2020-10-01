@@ -20,8 +20,6 @@ email-footer-blurb = Tento e-mail jste obdrželi, protože jste se zaregistroval
 email-verify-footer-copy =
     Tento e-mail jste obdrželi, protože jste se zaregistrovali k příjmu upozornění od { -product-name(case: "gen") }.
     Toto je automaticky zaslaný e-mail. Potřebujete-li pomoc, navštivte { $faqLink }.
-# Button text that takes the user to their signed in user dashboard.
-view-my-dashboard-cta = Zobrazit mou nástěnku
 # Button text
 verify-email-cta = Ověřit e-mailovou adresu
 # Button text
@@ -32,11 +30,11 @@ email-verify-blurb = Ověřte svou e-mailovou adresu, aby byla přidána do { -p
 # Email headline
 email-found-breaches-hl = Zde je váš souhrn dřívějších úniků
 # Email headline
-email-breach-summary-for-email = Souhrnné informace o únicích pro { $userEmail }
+email-breach-summary-for-email = Souhrnné informace o únicích pro adresu { $userEmail }
 # Email headline
-email-no-breaches-hl = { $userEmail } se nevyskytuje v žádném známém úniku dat
+email-no-breaches-hl = Adresa { $userEmail } se nevyskytuje v žádném známém úniku dat
 # Email headline
-email-alert-hl = { $userEmail } se objevila v novém úniku dat
+email-alert-hl = Adresa { $userEmail } se objevila v novém úniku dat
 # Subject line of email
 email-subject-found-breaches = { -product-name } našel vaše údaje v těchto únicích dat
 # Subject line of email
@@ -67,7 +65,7 @@ faq-v2-3 = Právě jsem zjistil, že byly mé údaje součástí úniku dat. Co 
 faq-v2-4 = Jak { -product-name } zachází s úniky citlivých dat?
 # This string contains nested markup that becomes a link to Firefox Monitor
 # later in the code. Please do not modify or remove "<a>" and "</a>".
-pre-fxa-message = <a>Vytvořte si zdarma { -brand-fxa(case: "acc") }</a> a můžete přidat až 15 e-mailových adres.
+pre-fxa-message = <a>Vytvořte si zdarma { -brand-fxa(case: "acc", capitalization: "lower") }</a> a můžete přidat až 15 e-mailových adres.
 # Section headline
 monitor-another-email = Chcete monitorovat další e-mailovou adresu?
 # Subject line of email

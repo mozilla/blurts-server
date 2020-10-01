@@ -16,9 +16,17 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account =
+    { $capitalization ->
+       *[lowercase] compte Firefox
+        [uppercase] Compte Firefox
+    }
 terms-and-privacy = Confidentialité et conditions d’utilisation
 GitHub-link-title = GitHub
 error-scan-page-token = Vous avez essayé d’analyser trop d’adresses électroniques en peu de temps. Pour des raisons de sécurité, nous avons temporairement bloqué vos nouvelles recherches. Vous pourrez réessayer plus tard.
@@ -181,6 +189,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Vérifier les fuites de données
 find-out-what-hackers-know = Découvrez ce que les pirates informatiques savent déjà de vous, et apprenez à garder une longueur d’avance sur eux.
+get-email-alerts = Restez en sécurité : recevez des alertes par courriel lorsque vos informations apparaissent dans une fuite de données connue
 search-for-your-email = Recherchez votre adresse électronique parmi les fuites de données publiques remontant jusqu’à 2007.
 back-to-top = Haut de la page
 comm-opt-0 = M’envoyer un courriel si l’une de mes adresses électroniques ci-dessous apparaît dans une fuite de données.
@@ -413,6 +422,7 @@ marked-as-resolved-label = Marquée comme réglée
 undo-button = Annuler
 confirmation-1-subhead = Parfait, vous venez de régler votre première fuite de données.
 confirmation-1-body = Continuez sur votre lancée. Jetez un coup d’œil à votre tableau de bord pour voir s’il n’y a pas autre chose à faire.
+confirmation-2-subhead = Et une de plus !
 confirmation-2-body = Vous franchissez une étape importante dans la protection vos comptes en ligne.
 confirmation-3-subhead = Encore un problème réglé. Bien joué !
 # This string contains nested markup that becomes a link later in the code.
@@ -426,6 +436,9 @@ generic-confirmation-message =
     }
 return-to-breach-details-link = Revenir aux détails de la fuite
 go-to-dashboard-link = Accéder au tableau de bord
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = Terminé à { $percentComplete } %
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
 num-resolved =
@@ -436,7 +449,7 @@ num-resolved =
 progress-intro-subhead = Nouveauté sur { -product-name } : marquer les fuites comme réglées
 progress-intro-message = Après avoir examiné les détails d’une fuite de données et pris des mesures pour protéger vos informations personnelles, vous pouvez marquer les fuites comme réglées.
 progress-status =
-    { $numTotalBreaches ->
+    { $numResolvedBreaches ->
         [one] { $numResolvedBreaches } fuite sur { $numTotalBreaches } marquée comme réglée
        *[other] { $numResolvedBreaches } fuites sur { $numTotalBreaches } marquées comme réglées
     }
@@ -449,6 +462,7 @@ progress-message-1 =
     <span>C’est un bon début !</span> Consultez les fuites restantes pour en savoir plus
     sur les mesures à prendre.
 progress-message-2 = <span>Continuez comme ça !</span> De simples changements comme la modification de mots de passe peuvent jouer un rôle majeur dans la protection de vos informations personnelles.
+progress-message-3 = <span>Beau travail, ces fuites sont réglées !</span> Continuez comme ça. Il y en a encore quelques-unes.
 progress-message-4 = <span>Encore un dernier effort !</span> Vous y êtes presque.
 progress-complete-message = <span>Il semblerait que vous y preniez goût !</span> Si vous souhaitez aller plus loin, c’est le bon moment pour définir des mots de passe robustes pour tous les autres identifiants.
 
@@ -472,3 +486,18 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Fuite récente
+mobile-promo-headline = Installez { -brand-name } sur votre téléphone et votre tablette
+mobile-promo-body = Une navigation rapide, privée et sûre partout où vous allez. Recherchez { -brand-name } sur Google Play et dans l’App Store.
+mobile-promo-cta = Obtenir { -brand-name } sur Android et iOS
+promo-lockwise-headline = Emportez vos mots de passe partout
+lockwise-promo-body = Gérez vos identifiants sur tous vos appareils. Accédez-y en toute sécurité depuis votre ordinateur, votre téléphone ou votre tablette.
+promo-lockwise-cta = Installer { -brand-lockwise }
+fpn-promo-headline = Empêchez les sites web et les traqueurs de connaître votre position
+promo-fpn-body = { -brand-fpn } tient à distance les sites et collecteurs de données qui vous profilent avec leurs annonces, en masquant votre véritable adresse IP.
+promo-fpn-cta = Obtenir { -brand-fpn }
+monitor-promo-headline = Surveillez les nouvelles fuites de données
+monitor-promo-body = Recevez une alerte la prochaine fois que vos informations personnelles figurent dans une fuite de données connue.
+ecosystem-promo-headline = Tout une gamme de produits qui protègent votre vie privée
+ecosystem-promo-body = Tous les produits { -brand-name } respectent notre « Garantie en matière de données personnelles » : collecter moins de données, les protéger, ne rien cacher.
+promo-ecosystem-cta = Voir tous les produits
+steps-to-resolve-headline = Mesures à prendre pour résoudre cette fuite

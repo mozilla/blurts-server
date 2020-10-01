@@ -43,6 +43,9 @@ rec-ip-subhead = Usa un servicio que masca tu adresse IP
 rec-ip-us-cta = Prova { -brand-fpn }
 rec-ip-us = Tu adresse de protocollo internet (IP) indica tu position geographic e fornitor de servicio internet. Un servicio como { -brand-fpn } masca tu adresse IP e cela tu position.
 rec-ip-non-us = Tu adresse de protocollo internet (IP) indica tu position geographic e fornitor de servicio internet. Con un rete virtual private (VPN), tu pote celar tu position e mascar tu adresse IP.
+# Recommendation subhead
+rec-moz-vpn-cta = Prova { -brand-mozilla-vpn }
+rec-moz-vpn = Tu adresse de protocollo Internet (adresse IP) pote revelar tu position e tu fornitor de servicio internet. Un servicio como { -brand-fpn } cela tu addresse IP e tu position pro { -brand-name } e un servicio como { -brand-mozilla-vpn } cela tu addresse IP e tu position pro tu apparato integre.
 rec-hist-pw-subhead = Non reusa contrasignos
 # Link title
 rec-hist-pw-cta-fx = Vide le credentiales in { -brand-name }

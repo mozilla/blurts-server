@@ -12,9 +12,13 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox-account
 terms-and-privacy = Voorwaarden en Privacy
 GitHub-link-title = GitHub
 error-scan-page-token = U hebt te veel e-mailadressen in een korte tijdsperiode geprobeerd te scannen. Om beveiligingsredenen hebben we uw zoekmogelijkheid tijdelijk geblokkeerd. U kunt het later weer proberen.
@@ -214,6 +218,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Controleer op datalekken
 find-out-what-hackers-know = Ontdek wat hackers al over u weten. Leer hoe u hen een stap voor kunt blijven.
+get-email-alerts = Blijf veilig: ontvang e-mailwaarschuwingen wanneer uw gegevens voorkomen in een bekend datalek
 search-for-your-email = Zoek terug tot 2007 naar uw e-mailadres in openbare datalekken.
 back-to-top = Terug naar boven
 comm-opt-0 = Stuur mij een e-mailbericht als een van mijn e-mailadressen hieronder in een datalek verschijnt.
@@ -531,3 +536,18 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nieuw
+mobile-promo-headline = Breng { -brand-name } naar uw telefoon en tablet
+mobile-promo-body = Snel, privé en veilig browsen waar u ook bent. Zoek { -brand-name } in de Google Play en App Store.
+mobile-promo-cta = Download { -brand-name } op Android en iOS
+promo-lockwise-headline = Neem uw wachtwoorden overal mee naartoe
+lockwise-promo-body = Houd uw aanmeldingen bij op alle apparaten. Benader ze veilig vanaf uw computer, telefoon of tablet.
+promo-lockwise-cta = Download { -brand-lockwise }
+fpn-promo-headline = Maskeer uw locatie voor websites en trackers
+promo-fpn-body = { -brand-fpn } verwijdert de websites en gegevensverzamelaars die u met advertenties profileren, door uw echte IP-adres te maskeren.
+promo-fpn-cta = Download { -brand-fpn }
+monitor-promo-headline = Kom meer te weten over nieuwe datalekken
+monitor-promo-body = Ontvang de volgende keer een melding wanneer uw persoonlijke gegevens voorkomen in een bekend datalek.
+ecosystem-promo-headline = Bescherm uw onlineleven met producten die privacy voorop stellen
+ecosystem-promo-body = Alles wat { -brand-name } doet, staat in het teken van onze belofte voor persoonlijke gegevens: neem minder. Houd het veilig. Geen geheimen.
+promo-ecosystem-cta = Alle producten
+steps-to-resolve-headline = Stappen om dit lek op te lossen

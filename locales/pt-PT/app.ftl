@@ -12,9 +12,13 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Conta Firefox
 terms-and-privacy = Termos e privacidade
 GitHub-link-title = GitHub
 error-scan-page-token = Tentou verificar muitos endereços de email num curto período de tempo. Por motivos de segurança, bloqueámos-lhe de novas pesquisas. Irá poder tentar novamente mais tarde.
@@ -22,7 +26,7 @@ error-could-not-add-email = Não foi possível adicionar o endereço de email à
 error-not-subscribed = Este endereço de email não está subscrito no { -product-name }.
 error-hibp-throttled = Demasiadas ligações para { -brand-HIBP }.
 error-hibp-connect = Erro ao ligar a { -brand-HIBP }.
-error-hibp-load-breaches = Não foi possível carregar as brechas.
+error-hibp-load-breaches = Não foi possível carregar as violações de dados.
 error-must-be-signed-in = Deve estar autenticado na sua { -brand-fxa }.
 error-to-finish-verifying = Para concluir a confirmação deste e-mail para { -product-name }, deve estar autenticado com a sua conta de e-mail primária.
 home-title = { -product-name }
@@ -41,7 +45,7 @@ user-unsubscribe-token-error = Cancelar a subscrição requer um token.
 user-unsubscribe-token-email-error = Cancelar a subscrição requer um token e emailHash.
 user-unsubscribe-title = { -product-name } : Cancelar subscrição
 pwt-section-headline = Palavras-passe mais fortes = melhor proteção
-landing-headline = O seu direito de estar a salvo de hackers começa aqui.
+landing-headline = O seu direito de estar a salvo de piratas informáticos começa aqui.
 scan-placeholder = Inserir endereço de e-mail
 scan-submit = Pesquisar pelo seu e-mail
 scan-error = Tem de ser um email válido.
@@ -51,7 +55,7 @@ signup-modal-sent = Enviado!
 sign-up = Registar
 form-signup-error = Tem de ser um email válido
 # breach-date = the calendar date a particular data theft occurred. 
-breach-date = Data da brecha
+breach-date = Data da violação de dados
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Contas comprometidas:
 # compromised-data = the kind of user data exposed to hackers in data breach.
@@ -61,10 +65,10 @@ unsub-blurb = Isto irá remover o seu email da lista do { -product-name-nowrap }
 unsub-button = Cancelar subscrição
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Dados de brechas fornecidos por { $hibp-link }
-share-twitter = A maioria das pessoas tem cerca de 100 contas online. Alguma das suas foi exposta numa brecha de dados? Descubra.
-share-facebook-headline = Descubra se fez parte de uma brecha de dados
-share-facebook-blurb = Alguma das suas contas online foi exposta numa brecha de dados?
-og-site-description = Descubra se fez parte de uma brecha de dados com o { -product-name }. Registe-se para receber alertas acerca de futuras brechas e receba dicas para manter as suas contas seguras.
+share-twitter = A maioria das pessoas tem cerca de 100 contas na Internet. Será que alguma das suas foi exposta numa violação de dados? Vamos descobrir.
+share-facebook-headline = Descubra se fez parte de uma violação de dados
+share-facebook-blurb = Alguma das suas contas na Internet foi exposta numa violação de dados?
+og-site-description = Descubra se fez parte de uma violação de dados com o { -product-name }. Registe-se para receber alertas acerca de futuras violações de dados e receba dicas para manter as suas contas seguras.
 show-all = Mostrar todas
 fxa-scan-another-email = Pretende verificar outro email?
 sign-in = Iniciar sessão
@@ -73,7 +77,7 @@ sign-out = Terminar sessão
 manage-fxa = Gerir { -brand-fxa }
 have-an-account = Já tem uma conta?
 fxa-pwt-summary-2 =
-    Palavras-passe curtas e de palavra única são fáceis para os hackers adivinharem.
+    Palavras-passe curtas e de palavra única são fáceis de adivinhar para os piratas informáticos.
     Utilize pelo menos duas palavras e uma combinação de letras, dígitos e caracteres especiais.
 fxa-pwt-summary-4 =
     Os gestores de palavras-passe como 1Password, LastPass, Dashlane e Bitwarden armazenam as suas
@@ -88,9 +92,9 @@ fxa-what-to-do-blurb-1 =
     criou ou uma empresa que mudou de nome.
 fxa-what-to-do-subhead-2 = Pare de utilizar a palavra-passe exposta e altere-a em todos os lugares em que a utilizou.
 fxa-wtd-blurb-2 =
-    Os hackers podem tentar utilizar essa mesma palavra-passe e o seu email para aceder a outras contas.
+    Os piratas informáticos podem tentar utilizar essa mesma palavra-passe e o seu e-mail para aceder a outras contas.
     Crie uma palavra-passe diferente e única para cada conta, especialmente para a sua conta bancária,
-    email e outros websites onde guarda informação pessoal.
+    email e outros sites onde guarda informação pessoal.
 fxa-what-to-do-blurb-3 =
     A maioria das brechas apenas expõem emails e palavras-passe, mas algumas incluem informação financeira sensível.
     Se a sua conta bancária ou números de cartão de crédito foram expostos, alerte o seu banco sobre possíveis fraudes.
@@ -117,17 +121,17 @@ fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Abrir navegação do { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
-latest-breach = ÚLTIMA BRECHA ADICIONADA
+latest-breach = ÚLTIMA VIOLAÇÃO DE DADOS ADICIONADA
 # Link title
 more-about-this-breach = Mais acerca desta brecha
 take-control = Retome o controlo dos seus dados pessoais.
-cant-stop-hackers = Não pode impedir que os hackers invadam. Mas pode evitar maus hábitos que lhes facilitam o trabalho.
+cant-stop-hackers = Não pode impedir que os piratas informáticos sejam piratas. Mas pode evitar os maus hábitos que lhes facilitam o trabalho.
 read-more-tips = Ler mais dicas de segurança
-how-hackers-work = Compreender como é que os hackers funcionam
-monitor-your-online-accounts = Inscreva-se para uma monitorização de violações com { -brand-fxa }.
-stay-alert = Mantenha-se atento às novas violações
-if-your-info = Se a sua informação apareceu numa nova violação de dados, nós iremos enviar-lhe um alerta.
-search-all-emails = Procure por violações em todos os seus endereços de e-mail e receba alertas sobre novas ameaças.
+how-hackers-work = Compreender como é que os piratas informáticos trabalham
+monitor-your-online-accounts = Registe-se para a monitorização de violações de dados com uma { -brand-fxa }.
+stay-alert = Mantenha-se atento às novas violações de dados
+if-your-info = Se a sua informação apareceu numa nova violação de dados, iremos enviar-lhe um alerta.
+search-all-emails = Procure por violações de dados para todos os seus endereços de e-mail e receba alertas sobre novas ameaças.
 monitor-several-emails = Monitorize vários emails
 take-action = Tome medidas para proteger as suas contas
 keep-your-data-safe = Descubra o que precisa de fazer para manter os seus dados seguros de cibercriminosos.
@@ -144,22 +148,22 @@ spam-list-breach-plural = Brechas de listas de spam
 what-data = Que dados foram comprometidos:
 sensitive-sites = Como é que o { -product-name } trata sites sensíveis?
 sensitive-sites-copy =
-    { -product-name } só revela as contas associadas com estes 
-    tipos de violações depois de um endereço de e-mail ter sido verificado. Isto significa que 
-    é a única pessoa que pode ver se a sua informação estava numa violação (a menos que 
+    { -product-name } só revela as contas associadas com a estes 
+    tipos de violações de dados depois de um endereço de e-mail ter sido confirmado. Isto significa que 
+    você é a única pessoa que pode ver se a sua informação estava numa violação de dados (a menos que 
     alguém tenha acesso à sua conta de e-mail).
-delayed-reporting-headline = Porque demorou tanto tempo até esta violação ser reportada?
+delayed-reporting-headline = Porque demorou tanto tempo até esta violação de dados ser reportada?
 delayed-reporting-copy =
     Pode demorar meses ou até mesmo anos para as credenciais expostas 
-    numa violação de dados aparecerem na dark web. As violações são adicionadas à nossa base de dados 
+    numa violação de dados aparecerem na dark web. As violações de dados são adicionadas à nossa base de dados 
     assim que são descobertas e validadas.
 about-fxm-headline = Acerca do { -product-name }
 about-fxm-blurb = { -product-name } indica que as suas contas online estiveram envolvidas numa fuga de dados. Descubra se esteve numa fuga de dados, obtenha alertas sobre novas fugas e execute os procedimentos para proteger as suas contas onlines. { -product-name } é fornecido por { -brand-Mozilla }.
 fxm-warns-you =
-    { -product-name } indica se o seu endereço de e-mail foi exposto 
-    numa violação de dados online. Confirme se a sua informação foi exposta, aprenda a 
-    proteger melhor as suas contas online e receba alertas caso o seu endereço de e-mail 
-    apareça numa nova violação.
+    O { -product-name } indica se o seu endereço de e-mail foi exposto 
+    numa violação de dados na Internet. Confirme se a sua informação foi exposta, aprenda a 
+    proteger melhor as suas contas na Internet e receba alertas caso o seu endereço de e-mail 
+    apareça numa nova violação de dados.
 # How Firefox Monitor works
 how-fxm-works = Como é que o { -product-name } funciona
 how-fxm-1-headline = Realizar uma pesquisa básica
@@ -167,26 +171,26 @@ how-fxm-1-blurb =
     Procure pelo seu endereço de e-mail em violações de dados públicas desde 
     2007. Esta pesquisa básica vai apresentar a maior parte das violações de dados, mas não 
     as que contenham dados pessoais sensíveis.
-how-fxm-2-headline = Registe-se para monitorizar violações
+how-fxm-2-headline = Registe-se para monitorizar violações de dados
 how-fxm-2-blurb =
-    Crie uma { -brand-fxa } para monitorizar o seu e-mail sobre violações atuais. 
-    Assim que confirmar o seu e-mail, irá também receber um relatório completo sobre violações anteriores, 
-    incluindo violações sensíveis.
+    Crie uma { -brand-fxa } para monitorizar o seu e-mail relativamente a violações de dados atuais. 
+    Assim que confirmar o seu e-mail, irá também receber um relatório completo sobre violações de dados anteriores, 
+    incluindo violações de dados sensíveis.
 how-fxm-3-headline = Receba notificações no seu navegador
 how-fxm-3-blurb =
-    Se utilizar { -brand-name }, irá receber uma notificação se visitar um 
-    site cujos dados tenham sido violados. Saiba imediatamente se faz parte dessa violação 
-    e o que pode fazer quanto a isso.
-wtd-after-website = O que fazer depois de uma brecha de website
-wtd-after-data-agg = O que fazer depois de uma brecha de agregador de dados
+    Se utilizar o { -brand-name }, irá receber uma notificação se visitar um 
+    site cujos dados tenham sido acedidos. Saiba imediatamente se faz parte dessa violação de dados 
+    e o que pode fazer relativamente a isso.
+wtd-after-website = O que fazer depois de uma violação de dados num site
+wtd-after-data-agg = O que fazer depois de uma violação de dados num agregador de dados
 what-is-data-agg = O que é um agregador de dados?
 what-is-data-agg-blurb =
-    Um agregador ou agente de dados, recolhe informações de registos 
-    públicos e adquire dados de outras empresas. Trabalham estes dados para os venderem a outras empresas 
-    para fins de marketing. As vítimas destas violações são uma probabilidade mais baixa de fraude financeira 
-    mas os piratas informáticos podem utilizar estes dados para se fazerem passar por essas pessoas ou as perfilar.
+    Agregadores ou agentes de dados, recolhem informações de registos 
+    públicos e adquirem dados de outras empresas. Trabalham estes dados para os venderem a outras empresas 
+    para fins de marketing. As vítimas destas violações de dados têm uma probabilidade mais baixa de fraude financeira 
+    mas os piratas informáticos podem utilizar estes dados para se fazerem passar por estas pessoas ou para criarem perfis.
 protect-your-privacy = Proteja a sua privacidade online
-no-pw-to-change = Ao contrário de uma violação de website, não há uma palavra-passe para alterar.
+no-pw-to-change = Ao contrário de uma violação de dados num site, não há uma palavra-passe para alterar.
 avoid-personal-info = Evite utilizar informação pessoal nas palavras-passe
 avoid-personal-info-blurb = É fácil encontrar aniversários, moradas e nomes de membros de família online. Mantenha estas palavras fora das suas palavras-passe.
 
@@ -201,23 +205,24 @@ create-strong-passwords = Como criar palavras-passe fortes
 stop-reusing-pw = Pare de reutilizar as mesmas palavras-passe
 create-unique-pw = Crie palavras-passe únicas e guarde-as num lugar seguro, tal como um gestor de palavras-passe.
 five-myths = 5 mitos sobre os gestores de palavras-passe
-create-a-fxa = Crie uma { -brand-fxa } para o seu relatório completo das violações e para receber alertas.
+create-a-fxa = Crie uma { -brand-fxa } para ter acesso ao seu relatório completo das violações de dados e para receber alertas.
 feat-security-tips = Dicas de segurança para proteger as suas contas
-feat-sensitive = Pesquisa avançada em violações sensíveis
-feat-enroll-multiple = Registar vários e-mails na monitorização de violações
+feat-sensitive = Pesquisa avançada em violações de dados sensíveis
+feat-enroll-multiple = Registar vários e-mails para a monitorização de violações de dados
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
     { $breachCount ->
-        [one] Aparece em { $breachCount } violação conhecida.
-       *[other] Aparece em { $breachCount } violações conhecidas.
+        [one] Aparece em { $breachCount } violação de dados conhecida.
+       *[other] Aparece em { $breachCount } violações de dados conhecidas.
     }
-check-for-breaches = Consultar violações
-find-out-what-hackers-know = Descubra o que os piratas informáticos já sabem sobre si. Saiba como ficar um passo à frente deles.
-search-for-your-email = Pesquise pelo seu endereço de e-mail em violações públicas de dados até 2007.
+check-for-breaches = Pesquisar por violações de dados
+find-out-what-hackers-know = Descubra o que os piratas informáticos já sabem sobre si e aprenda como ficar um passo à frente dos mesmos.
+get-email-alerts = Mantenha-se seguro: receba alertas por e-mail quando a sua informação aparecer numa falha conhecida
+search-for-your-email = Pesquise pelo seu endereço de e-mail em violações de dados públicas de dados desde 2007.
 back-to-top = Voltar ao topo
 comm-opt-0 = Enviar um e-mail para mim caso um dos meus endereços de e-mail abaixo aparecer numa violação de dados.
-comm-opt-1 = Enviar todos alertas de violações para { $primaryEmail }.
+comm-opt-1 = Enviar todos alertas de violações de dados para { $primaryEmail }.
 stop-monitoring-this = Pare de monitorizar este e-mail.
 resend-verification = Reenviar e-mail de verificação
 add-new-email = Adicionar um novo endereço de e-mail
@@ -227,8 +232,8 @@ send-verification = Enviar ligação de verificação
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-breach-summary = Resumo da violação
-show-breaches-for-this-email = Mostrar todas as violações para este e-mail.
+breach-summary = Resumo da violação de dados
+show-breaches-for-this-email = Mostrar todas as violações de dados para este e-mail.
 link-change-primary = Alterar endereço de e-mail primário
 remove-fxm = Remover { -product-name }
 remove-fxm-blurb =
@@ -237,14 +242,14 @@ remove-fxm-blurb =
 # Button title
 manage-email-addresses = Gerir endereços de e-mail
 # Link title
-latest-breach-link = Veja se esteve nesta violação
+latest-breach-link = Veja se esteve nesta violação de dados
 welcome-back = Bem-vindo(a) de volta, { $userName }!
 welcome-user = Bem-vindo(a), { $userName }!
-breach-alert-subject = { -product-name } encontrou o seu e-mail numa nova violação de dados.
+breach-alert-subject = O { -product-name } encontrou o seu e-mail numa nova violação de dados.
 your-info-was-discovered-headline = Os seus dados foram descobertos numa nova violação de dados.
 your-info-was-discovered-blurb =
     Registou-se para receber alertas do { -product-name } 
-    quando o seu e-mail aparecer numa violação de dados. Veja o que nós sabemos sobre esta violação.
+    quando o seu e-mail aparece numa violação de dados. Eis o que sabemos sobre esta violação de dados.
 what-to-do-after-breach = O que fazer depois de uma violação de dados:
 ba-next-step-1 = Altere a sua palavra-passe para uma palavra-passe forte e única.
 ba-next-step-blurb-1 =
@@ -260,34 +265,34 @@ ba-next-step-3 = Obtenha ajuda para criar melhores palavras-passe e as manter se
 ba-next-step-blurb-3 =
     Utilize um gestor de palavras-passe para criar palavras-passe fortes e únicas. Os gestores de palavras-passe guardam 
     com segurança todas as suas credenciais para que possa aceder às mesmas em todos os seus dispositivos.
-faq1 = Eu não reconheço esta empresa ou website. Por que é que eu estou nesta violação?
-faq2 = Porque é que demorou tanto para me notificarem desta violação?
+faq1 = Eu não reconheço esta empresa ou site. Porque é que eu estou nesta violação de dados?
+faq2 = Porque é que demorou tanto para me notificarem desta violação de dados?
 faq3 = Como é que eu sei que é um e-mail legitimo do { -product-name }?
 new-breaches-found =
     { $breachCount ->
-        [one] ENCONTRADA { $breachCount } NOVA VIOLAÇÃO
-       *[other] ENCONTRADAS { $breachCount } NOVAS VIOLAÇÕES
+        [one] ENCONTRADA { $breachCount } NOVA VIOLAÇÃO DE DADOS
+       *[other] ENCONTRADAS { $breachCount } NOVAS VIOLAÇÕES DE DADOS
     }
 sign-up-headline-1 = Receba alertas atuais com uma { -brand-fxa }.
 account-not-required = O navegador { -brand-name } não é obrigatório para uma { -brand-fxa }. Poderá receber informações sobre os serviços da { -brand-Mozilla }.
 was-your-info-exposed = A sua informação foi exposta na violação de dados de { $breachName }?
-find-out-if = Saiba se os seus dados foram expostos nesta violação.
-fb-not-comp = Este e-mail não apareceu na violação { $breachName }.
+find-out-if = Saiba se os seus dados foram expostos nesta violação de dados.
+fb-not-comp = Este e-mail não apareceu na violação de dados { $breachName }.
 other-breaches-found =
     { $breachCount ->
-        [one] Contudo, este apareceu em { $breachCount } outra violação.
-       *[other] Contudo, este apareceu em { $breachCount } outras violações
+        [one] Contudo, este apareceu em { $breachCount } outra violação de dados.
+       *[other] Contudo, este apareceu em { $breachCount } outras violações de dados.
     }
-fb-comp-only = Este e-mail apareceu na violação { $breachName }.
+fb-comp-only = Este e-mail apareceu na violação de dados { $breachName }.
 fb-comp-and-others =
     { $breachCount ->
         [one] Este e-mail apareceu em { $breachCount } violação de dados conhecida, incluindo { $breachName }.
        *[other] Este e-mail apareceu em { $breachCount } violações de dados conhecidas, incluindo { $breachName }.
     }
-no-other-breaches-found = Nenhuma outra violação encontrada a partir de uma pesquisa básica.
-no-results-blurb = Desculpe, esta violação não está na nossa base de dados.
-all-breaches-headline = Todas as violações no { -product-name }
-search-breaches = Procurar por violações
+no-other-breaches-found = Não foram encontradas outras violações de dados a partir de uma pesquisa básica.
+no-results-blurb = Lamentamos, mas esta violação de dados não está na nossa base de dados.
+all-breaches-headline = Todas as violações de dados no { -product-name }
+search-breaches = Procurar por violações de dados
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = A mostrar:
 
@@ -343,21 +348,21 @@ results-for = Resultados para: { $userEmail }
 other-monitored-emails = Outros emails monitorizados
 email-verification-required = Verificação de email requerida
 fxa-primary-email = Email do { -brand-fxa } - Primário
-what-is-a-website-breach = O que é uma violação do website?
-website-breach-blurb = Uma violação de dados do website ocorre quando os cibercriminosos roubam, copiam ou expõem a informação pessoal das contas online. Geralmente, é a consequência dos piratas informáticos encontrarem um ponto fraco na segurança do website. As violações também podem acontecer quando a informação de contas é divulgada acidentalmente.
-security-tips-headline = Dicas de segurança para se proteger contra hackers
+what-is-a-website-breach = O que é uma violação de dados do site?
+website-breach-blurb = Uma violação de dados de um site ocorre quando os cibercriminosos roubam, copiam ou expõem a informação pessoal de contas na Internet. Geralmente, é a consequência dos piratas informáticos encontrarem um ponto fraco na segurança do site. As violações de dados também podem acontecer quando a informação sobre contas é divulgada de forma acidental.
+security-tips-headline = Dicas de segurança para se proteger contra piratas informáticos
 steps-to-protect = Passos a tomar para proteger a sua identidade online
 take-further-steps = Mais passos para proteger a sua identidade
 alert-about-new-breaches = Alertar-me acerca de novas brechas
-see-if-youve-been-part = Veja se fez parte de uma violação de dados online.
-get-ongoing-breach-monitoring = Obtenha a monitorização de violações atuais para múltiplos endereços de e-mail.
+see-if-youve-been-part = Veja se fez parte de uma violação de dados na Internet.
+get-ongoing-breach-monitoring = Obtenha a monitorização contínua de violações de dados para vários endereços de e-mail.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Descobrir
 new-unsub-error = Terá de cancelar a subscrição de um dos e-mails que o { -product-name } lhe enviou.
 other-known-breaches-found =
     { $breachCount ->
-        [one] Contudo, este apareceu em { $breachCount } outra violação conhecida.
-       *[other] Contudo, este apareceu em { $breachCount } outras violações conhecidas.
+        [one] Contudo, este apareceu em { $breachCount } outra violação de dados conhecida.
+       *[other] Contudo, este apareceu em { $breachCount } outras violações de dados conhecidas.
     }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
@@ -370,7 +375,7 @@ breach-overview-title = Sinopse
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview-new = A { $breachDate }, { $breachTitle } foi comprometido. Assim que a intrusão foi descoberta e confirmada, foi adicionada à nossa base de dados a { $addedDate }.
+breach-overview-new = A { $breachDate }, { $breachTitle } foi comprometido. Assim que a violação de dados foi descoberta e confirmada, foi adicionada à nossa base de dados a { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } - Preferências
 # When a user is signed in, this appears in the drop down menu 
@@ -381,7 +386,7 @@ signed-in-as = Sessão iniciada como: { $userEmail }
 filter-by = Filtrar por categoria:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
-to-affected-email = Enviar alertas de violação para o endereço de e-mail afetado
+to-affected-email = Enviar alertas de violações de dados para o endereço de e-mail afetado
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
 join-firefox = Existe um modo para proteger a sua privacidade. Registe-se em { -brand-name }.
 # Link title
@@ -397,10 +402,10 @@ verify-the-link = Verifique a ligação enviada para { $userEmail } para adicion
 ## an additional email to Firefox Monitor.
 
 email-verified = E-mail confirmado com sucesso!
-email-added-to-subscription = Nós iremos alertá-lo se { $email } aparecer numa violação de dados.
+email-added-to-subscription = Iremos alertá-lo se { $email } aparecer numa violação de dados.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
-email-verified-view-dashboard = Para ver e gerir todos os e-mails que registou para monitorização de violações, { $nestedSignInLink }.
+email-verified-view-dashboard = Para ver e gerir todos os e-mails que registou para a monitorização de violações de dados, { $nestedSignInLink }.
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = iniciar sessão
 
@@ -429,37 +434,37 @@ take-further-steps-desc = Descubra como mitigar os riscos de roubo de identidade
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Alterações guardadas!
 # Section headline
-rec-section-headline = O que fazer para esta violação
+rec-section-headline = O que fazer para esta violação de dados
 rec-section-subhead = Recomendamos que siga estes passos para manter os seus dados pessoais seguros e proteger a sua identidade digital.
 # Section headline
 rec-section-headline-no-pw = O que fazer para proteger os seus dados pessoais
-rec-section-subhead-no-pw = Embora as palavras-passe não tenham sido expostas nesta violação, ainda existem passos que pode fazer para proteger melhor os seus dados pessoais.
+rec-section-subhead-no-pw = Embora as palavras-passe não tenham sido expostas nesta violação de dados, ainda existem passos que pode executar para proteger melhor os seus dados pessoais.
 # Button
 see-additional-recs = Ver recomendações adicionais
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
-resolve-top-notification = { $affectedEmail } apareceu nesta violação. <a>O que fazer a seguir</a>
+resolve-top-notification = { $affectedEmail } apareceu nesta violação de dados. <a>O que fazer a seguir</a>
 resolve-top-notification-plural =
     { $numAffectedEmails ->
-        [one] { $numAffectedEmails } endereço de e-mail seu apareceu nesta violação. <a>O que fazer a seguir</a>
-       *[other] { $numAffectedEmails } endereços de e-mail seus apareceram nesta violação. <a>O que fazer a seguir</a>
+        [one] { $numAffectedEmails } endereço de e-mail seu apareceu nesta violação de dados. <a>O que fazer a seguir</a>
+       *[other] { $numAffectedEmails } endereços de e-mail seus apareceram nesta violação de dados. <a>O que fazer a seguir</a>
     }
 
 ##
 
-marking-this-subhead = Marcar esta violação como resolvida
+marking-this-subhead = Marcar esta violação de dados como resolvida
 # This string contains nested markup that is later used to style the text inside of it.
 # Please do not modify or remove "<span>" and "</span>".
 marking-this-body =
-    <span>Depois de ter tomado as medidas necessárias para minimizar o impato desta violação</span>,
+    <span>Depois de ter tomado as medidas necessárias para minimizar o impacto desta violação de dados</span>,
     pode marcar a situação como resolvida. Pode ainda, a qualquer momento, aceder aos detalhes 
-    sobre a violação no seu painel.
+    sobre a violação de dados no seu painel.
 mark-as-resolve-button = Marcar como resolvida
 marked-as-resolved-label = Marcado como resolvido
 undo-button = Desfazer
-confirmation-1-subhead = Boa! Acabou de resolver a sua primeira intrusão.
+confirmation-1-subhead = Boa! Acabou de resolver a sua primeira violação de dados.
 confirmation-1-body = Mantenha o ritmo. Consulte o seu painel para ver se existem mais coisas a resolver.
 confirmation-2-subhead = Tomem lá, piratas!
 confirmation-2-body = Está a tomar medidas importantes para proteger as suas contas na Internet.
@@ -467,13 +472,13 @@ confirmation-3-subhead = Mais uma resolvida. Bom trabalho!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = A sua nova palavra-passe é única, forte e difícil de adivinhar? <a>Descubra se sim</a>
-generic-confirmation-subhead = Esta violação foi marcada como resolvida
+generic-confirmation-subhead = Esta violação de dados foi marcada como resolvida
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
-        [one] Para ver a violação remanescente, aceda ao seu painel.
-       *[other] Para ver as violações remanescentes, aceda ao seu painel.
+        [one] Para ver a violação de dados remanescente, aceda ao seu painel.
+       *[other] Para ver as violações de dados remanescentes, aceda ao seu painel.
     }
-return-to-breach-details-link = Voltar aos detalhes da violação
+return-to-breach-details-link = Voltar aos detalhes da violação de dados
 go-to-dashboard-link = Ir para o painel
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
@@ -485,27 +490,27 @@ num-resolved =
         [one] { $numResolvedBreaches } resolvida
        *[other] { $numResolvedBreaches } resolvidas
     }
-progress-intro-subhead = Novo no { -product-name }: marque violações como resolvidas
+progress-intro-subhead = Novo no { -product-name }: marque violações de dados como resolvidas
 progress-intro-message =
-    Depois de analisar os detalhes sobre uma violação e tomar medidas para proteger
-    as suas informações pessoais, pode marcar as violações como resolvidas.
+    Depois de analisar os detalhes sobre uma violação de dados e tomar medidas para proteger
+    as suas informações pessoais, pode marcar as violações de dados como resolvidas.
 progress-status =
     { $numTotalBreaches ->
-        [one] { $numResolvedBreaches } violação de { $numTotalBreaches } marcada como resolvida
-       *[other] { $numResolvedBreaches } de { $numTotalBreaches } violações marcadas como resolvidas
+        [one] { $numResolvedBreaches } (de { $numTotalBreaches }) violação de dados de  marcada como resolvida
+       *[other] { $numResolvedBreaches } (de { $numTotalBreaches }) violações de dados marcadas como resolvidas
     }
-progress-complete = Todas as violações conhecidas foram marcadas como resolvidas
+progress-complete = Todas as violações de dados conhecidas foram marcadas como resolvidas
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
 progress-message-1 =
-    <span>Começou bem!</span> Analise as violações remanescentes para saber
+    <span>Começou bem!</span> Analise as violações de dados remanescentes para saber
     que medidas deve adotar.
 progress-message-2 =
     <span>Continue assim!</span> Pequenas alterações, como atualizar palavras-passe, têm um grande impacto
     na manutenção da confidencialidade das suas informações pessoais.
-progress-message-3 = <span>Bom trabalho ao resolver estas violações!</span> Continue assim. Ainda tem mais algumas para resolver.
+progress-message-3 = <span>Bom trabalho ao resolver estas violações de dados!</span> Continue assim. Ainda tem mais algumas para resolver.
 progress-message-4 = <span>Muito perto!</span> Está quase na linha de chegada.
 progress-complete-message =
     <span>Sabe bem, não é?</span> Se quiser continuar, é um bom momento para
@@ -513,7 +518,7 @@ progress-complete-message =
 
 ##
 
-resolve-this-breach-link = Resolver esta violação
+resolve-this-breach-link = Resolver esta violação de dados
 # This string appears in resolved breach cards and is followed by 
 # the date the user marked the breach as resolved.
 marked-resolved = Marcada como resolvida:
@@ -521,8 +526,8 @@ hide-resolved-button = Ocultar resolvidas
 show-resolved-button = Mostrar resolvidas
 unresolved-passwords-exposed =
     { $numPasswords ->
-        [one] Palavra-passe exposta em violações não resolvidas
-       *[other] Palavras-passe expostas em violações não resolvidas
+        [one] Palavra-passe exposta em violações de dados não resolvidas
+       *[other] Palavras-passe expostas em violações de dados não resolvidas
     }
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
@@ -531,3 +536,18 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nova
+mobile-promo-headline = Traga o { -brand-name } para o seu telemóvel ou tablet
+mobile-promo-body = Navegação rápida, privada e segura onde quer que vá. Encontre o { -brand-name } no Google Play e App Store.
+mobile-promo-cta = Obtenha o { -brand-name } no Android e iOS
+promo-lockwise-headline = Leve as suas palavras-passe para todo o lado
+lockwise-promo-body = Controle as suas credenciais em todos os dispositivos. Tenha acesso às mesmas, com segurança, no seu computador, telefone ou tablet.
+promo-lockwise-cta = Obter o { -brand-lockwise }
+fpn-promo-headline = Mascare a sua localização de sites e de rastreadores
+promo-fpn-body = O { -brand-fpn } mascara o seu endereço IP real, despistando os sites e coletores de dados que criam um perfil seu com recurso a anúncios.
+promo-fpn-cta = Obtenha o { -brand-fpn }
+monitor-promo-headline = Seja informado de novas violações de dados
+monitor-promo-body = Seja notificado da próxima vez que as suas informações pessoais forem expostas numa violação de dados conhecida.
+ecosystem-promo-headline = Proteja a sua vida na Internet com produtos de privacidade focados na privacidade
+ecosystem-promo-body = Todos os produtos { -brand-name } honram o nosso compromisso com os dados pessoais: recolher menos; manter seguro; sem segredos.
+promo-ecosystem-cta = Ver todos os produtos
+steps-to-resolve-headline = Passos para resolver esta violação

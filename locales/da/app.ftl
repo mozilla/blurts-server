@@ -11,8 +11,9 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
 
-
+##
 
 terms-and-privacy = Vilkår og beskyttelse af personlige oplysninger
 GitHub-link-title = GitHub
@@ -197,6 +198,7 @@ avoid-personal-info-blurb = Det er nemt at finde fødselsdatoer, adresser og nav
 ## What to do after data breach tips
 
 change-pw = Skift din adgangskode
+change-pw-site = Skift adgangskode for dette websted
 even-for-old = Selv for gamle konti er det vigtigt at opdatere dine adgangskoder.
 make-new-pw-unique = Gør den nye adgangskode anderledes og unik
 strength-of-your-pw = Hvor sikker du er på nettet afhænger af, hvor sikre dine adgangskoder er.
@@ -406,7 +408,7 @@ email-verified-view-dashboard = { $nestedSignInLink } for at se og håndtere all
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = Log ind
 
-
+##
 
 # This is part of a confirmation message that appears after a user has submited the
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
@@ -428,3 +430,21 @@ create-strong-passwords-desc = Gør dine adgangskoder stærke, sikre og svære a
 steps-to-protect-desc = Forstå de mest almindelige trusler, og hvad du skal holde øje med.
 five-myths-desc = Undgå dårlige adgangskode-vaner, som gør det nemt for hackerne.
 take-further-steps-desc = Find ud af, hvordan du mindsker riskoen for identitetstyveri og undgår økonomiske tab.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = Ændringer gemt!
+# Button
+see-additional-recs = Se flere anbefalinger
+
+## This string contains nested markup that becomes a link later in the code.
+## Please do not modify or remove "<a>" and "</a>".
+
+
+##
+
+
+## These strings contain nested markup that is later used to style the text inside of it.
+## Please do not modify or remove "<span>" and "</span>".
+
+
+##
+

@@ -11,10 +11,14 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
--brand-fpn = Firefox-Datenschutznetzwerk
+-brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox-Konto
 terms-and-privacy = Nutzungsbedingungen und Datenschutzerklärung
 GitHub-link-title = GitHub
 error-scan-page-token = Du hast versucht, zu viele E-Mail-Adressen in kurzer Zeit zu überprüfen. Aus Sicherheitsgründen haben wir dich vorübergehend für neue Suchanfragen gesperrt. Du kannst es später erneut versuchen.
@@ -135,8 +139,8 @@ spam-list-breach-plural = Datenlecks von Spam-Listen
 what-data = Welche Daten wurden kompromittiert:
 sensitive-sites = Wie geht { -product-name } mit sensiblen Websites um?
 sensitive-sites-copy = { -product-name } zeigt die von dem Datenleck betroffenen Konten nur an, nachdem eine E-Mail-Adresse verifiziert wurde. Das bedeutet, dass auch nur du sehen kannst, ob deine Daten Teil eines Leaks wurden. (Es sei denn, jemand anderes hat Zugang zu deinem E-Mail-Konto.)
-delayed-reporting-headline = Warum hat es so lange gedauert, bis dieses Leck gemeldet wurde.
-delayed-reporting-copy = Es kann manchmal Monate oder Jahre dauern bis offengelegte Daten aus einem Datenleck im Dark Web auftauchen. Lecks werden, sobald sie entdeckt und verifiziert wurden, zu unserer Datenbank hinzugefügt.
+delayed-reporting-headline = Warum hat es so lange gedauert, bis dieses Leck gemeldet wurde?
+delayed-reporting-copy = Es kann manchmal Monate oder Jahre dauern, bis offengelegte Daten aus einem Datenleck im Dark Web auftauchen. Lecks werden, sobald sie entdeckt und verifiziert wurden, zu unserer Datenbank hinzugefügt.
 about-fxm-headline = Über { -product-name }
 about-fxm-blurb = { -product-name } warnt dich, wenn deine Online-Konten von einem Datenleck betroffen sind. Finde heraus, ob du Teil eines Datenleaks geworden bist, lass dich bei neuen Leaks warnen und unternimm die wichtigsten Schritte, um deine Online-Konten zu schützen. { -product-name } wird von { -brand-Mozilla } zur Verfügung gestellt.
 fxm-warns-you = { -product-name } warnt dich, wenn deine E-Mail-Adresse bei einem Datenleck offengelegt wurde. Finde heraus, ob Informationen von dir geleakt wurden, lerne, wie du deine Online-Konten besser schützen kannst und lass dich warnen, sobald deine E-Mail-Adresse in einem neuen Datenleck auftaucht.
@@ -181,6 +185,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Auf Datenlecks überprüfen
 find-out-what-hackers-know = Finde heraus, was Hacker bereits über dich wissen und erfahre, wie du ihnen in Zukunft einen Schritt voraus sein kannst.
+get-email-alerts = Auf Nummer sicher gehen: Erhalten Sie E-Mail-Benachrichtigungen, wenn Sie von einem Datenleck betroffen sind
 search-for-your-email = Suche in bekannt gewordenen Datenlecks seit 2007 nach deiner E-Mail-Adresse.
 back-to-top = Zurück zum Anfang
 comm-opt-0 = Sende mir eine E-Mail, sobald eine der folgenden E-Mail-Adressen in einem Datenleck auftaucht.
@@ -292,7 +297,7 @@ results-for = Ergebnisse für: { $userEmail }
 other-monitored-emails = Weitere überprüfte E-Mail-Adressen
 email-verification-required = E-Mail-Verifizierung erforderlich
 fxa-primary-email = { -brand-fxa } E-Mail-Adresse - Primär
-what-is-a-website-breach = Was ist eine Website-Datenleck?
+what-is-a-website-breach = Was ist ein Website-Datenleck?
 website-breach-blurb = Ein Datenleak einer Website liegt vor, wenn Cyber-Kriminelle persönliche Daten aus Online-Konten stehlen, kopieren oder offenlegen. Das passiert meist dann, wenn Hacker eine Schwachstelle in der Sicherheit der Website finden. Es kann aber auch vorkommen, dass Kontoinformationen versehentlich geleakt werden.
 security-tips-headline = Sicherheitstipps, die dich vor Hackern schützen
 steps-to-protect = Das kannst du tun, um deine Online-Identität zu schützen
@@ -457,7 +462,7 @@ progress-message-2 =
 progress-message-3 = <span>Sehr gut – diese Datenlecks sind erledigt!</span> Weiter so, ein paar sind noch übrig.
 progress-message-4 = <span>Fast geschafft!</span> Sie sind gleich am Ziel.
 progress-complete-message =
-    <span>Fühlt sich gut an, oder?</span> Wenn Sie weiter machen wollen, sollten sie jetzt
+    <span>Fühlt sich gut an, oder?</span> Wenn Sie weiter machen wollen, sollten Sie jetzt
     andere Zugangsdaten mit stärkeren Passwörtern versehen.
 
 ##
@@ -480,3 +485,20 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Neu
+mobile-promo-headline = { -brand-name } gibt es auch für Ihr Handy und Tablet
+mobile-promo-body = Schnelles, privates und sicheres Surfen überall. Suchen Sie { -brand-name } im Google Play und App Store.
+mobile-promo-cta = Holen Sie sich { -brand-name } für Android und iOS
+promo-lockwise-headline = Nehmen Sie Ihre Passwörter überall mit.
+lockwise-promo-body = Organisieren Sie Ihre Zugangsdaten auf allen Geräten. Greifen Sie von Ihrem Computer, Handy oder Tablet sicher darauf zu.
+promo-lockwise-cta = Holen Sie sich { -brand-lockwise }
+fpn-promo-headline = Verbergen Sie Ihren Standort vor Websites und Trackern
+promo-fpn-body =
+    { -brand-fpn } verbirgt Ihren Standort, um den Websites und Datensammlern,
+    die Werbung auf Sie anpassen, die Arbeit zu erschweren.
+promo-fpn-cta = Holen Sie sich { -brand-fpn }
+monitor-promo-headline = Informieren Sie sich über neue Datenlecks
+monitor-promo-body = Erhalten Sie Benachrichtigungen, wenn Ihre persönlichen Daten in einem neu bekanntgewordenen Datenleck enthalten sind.
+ecosystem-promo-headline = Alle unsere Produkte schützen zuallererst Ihre Privatsphäre online
+ecosystem-promo-body = Hinter all unseren { -brand-name }-Produkten, steht unser Versprechen für Ihre persönlichen Daten: Wenig sammeln. Sicher speichern. Ehrlich sein.
+promo-ecosystem-cta = Alle Produkte ansehen
+steps-to-resolve-headline = Schritte zur Behebung dieses Datenlecks

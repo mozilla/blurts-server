@@ -16,9 +16,17 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account =
+    { $capitalization ->
+       *[lowercase] account Firefox
+        [uppercase] Account Firefox
+    }
 terms-and-privacy = Termini di utilizzo e privacy
 GitHub-link-title = GitHub
 error-scan-page-token = Hai cercato troppi indirizzi email in un breve lasso di tempo. Per motivi di sicurezza la funzione di ricerca è stata temporaneamente sospesa. Potrai riprovare più tardi.
@@ -80,7 +88,7 @@ fxa-pwt-summary-2 = Le password brevi che contengono una singola parola sono fac
 fxa-pwt-summary-4 = I gestori di password come 1Password, LastPass, Dashlane e Bitwarden conservano le tue password e le inseriscono nei siti web per te. Ti aiutano persino a creare password sicure.
 fxa-pwt-summary-6 = Le violazioni dei dati sono in aumento. Se le tue informazioni personali sono coinvolte in una nuova violazioni di dati, { -product-name } ti invia un avviso, così puoi attivarti per proteggere i tuoi account.
 fxa-what-to-do-blurb-1 = Se non riesci più ad accedere, contatta il sito web e chiedi come aggiornare le tue credenziali. Hai trovato nel rapporto un account che non riconosci?  I tuoi dati potrebbero essere stati venduti o ridistribuiti. Potrebbe anche trattarsi di un account che ti eri dimenticato di aver creato, oppure non lo riconosci perché la società che fornisce il servizio ha ne ha modificato il nome.
-fxa-what-to-do-subhead-2 = Non usare più la password esposta e modificala ovunque tu l’abbia utilizzata.
+fxa-what-to-do-subhead-2 = Non usare più la password compromessa e modificala ovunque tu l’abbia utilizzata.
 fxa-wtd-blurb-2 = Gli hacker potrebbero provare la stessa password in combinazione con il tuo indirizzo email per entrare in altri account. Imposta una password diversa e unica per ciascun account, in particolare per il tuo conto in banca, il tuo account email e altri siti che registrano informazioni personali.
 fxa-what-to-do-blurb-3 = Generalmente le violazioni espongono solo email e password, ma alcune includono anche dati finanziari sensibili. Se il tuo conto bancario o il numero della tua carta di credito sono stati violati, avvisa subito la tua banca del rischio di frodi e controlla se negli estratti conto compaiono addebiti che non riconosci.
 fxa-what-to-do-subhead-4 = Usa strumenti che ti aiutino a ricordare tutte le tue password e tenerle al sicuro.
@@ -130,10 +138,10 @@ what-data = Quali dati sono stati compromessi:
 sensitive-sites = In che modo vengono gestiti i dati sensibili in { -product-name }?
 sensitive-sites-copy = { -product-name } rivela gli account associati con questo tipo di violazioni solo dopo la verifica dell’indirizzo email. Questo significa che sei l’unica persona in grado di vedere se i tuoi dati sono presenti nella violazione (a meno che qualcun altro abbia accesso alla tua email).
 delayed-reporting-headline = Perché ci è voluto così tanto tempo per segnalare questa violazione?
-delayed-reporting-copy = A volte possono volerci mesi o anni prima che le credenziali esposte in una violazione di dati compaiano nel “dark web”. Le violazioni sono aggiunte al nostro database appena vengono scoperte e verificate.
+delayed-reporting-copy = A volte possono volerci mesi o anni prima che le credenziali compromesse in una violazione di dati compaiano nel “dark web”. Le violazioni sono aggiunte al nostro database appena vengono scoperte e verificate.
 about-fxm-headline = Informazioni su { -product-name }
 about-fxm-blurb = { -product-name } ti avvisa se i tuoi account online sono coinvolti in una violazione di dati. Scopri se sei stato coinvolto in una violazione, ricevi avvisi sulle nuove violazioni e inizia a proteggere i tuoi account online. { -product-name } è realizzato da { -brand-Mozilla }.
-fxm-warns-you = { -product-name } ti avvisa se il tuo indirizzo email è stato esposto in una violazione di dati online. Controlla se i tuoi dati sono esposti, impara come proteggere meglio i tuoi account online e ricevi un avviso se la tua email compare in una nuova violazione.
+fxm-warns-you = { -product-name } ti avvisa se il tuo indirizzo email è stato esposto in una violazione di dati online. Controlla se i tuoi dati sono compromessi, impara come proteggere meglio i tuoi account online e ricevi un avviso se la tua email compare in una nuova violazione.
 # How Firefox Monitor works
 how-fxm-works = Come funziona { -product-name }
 how-fxm-1-headline = Effettua una ricerca di base
@@ -170,11 +178,13 @@ feat-enroll-multiple = Registra più indirizzi email per il monitoraggio delle v
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
     { $breachCount ->
+        [0] Non è stato coinvolto in alcuna violazione conosciuta.
         [one] È stato coinvolto in { $breachCount } violazione conosciuta.
        *[other] È stato coinvolto in { $breachCount } violazioni conosciute.
     }
 check-for-breaches = Cerca nelle violazioni
 find-out-what-hackers-know = Scopri quello che gli hacker già sanno di te. Impara come rimanere sempre un passo avanti.
+get-email-alerts = Rimani al sicuro: ricevi una notifica via email quando i tuoi dati vengono coinvolti in una violazione di dati conosciuta
 search-for-your-email = Cerca il tuo indirizzo email nelle violazioni di dati di pubblico dominio a partire dal 2007.
 back-to-top = Torna in alto
 comm-opt-0 = Inviami un’email se uno degli indirizzi indicati di seguito appare in una violazione di dati.
@@ -221,8 +231,8 @@ new-breaches-found =
     }
 sign-up-headline-1 = Ricevi avvisi per le violazioni future con un { -brand-fxa }.
 account-not-required = Non è necessario utilizzare il browser { -brand-name } per avere un { -brand-fxa }. Potresti ricevere informazioni relative ai servizi offerti da { -brand-Mozilla }.
-was-your-info-exposed = Le tue informazioni sono state esposte nella violazione di dati di { $breachName }?
-find-out-if = Scopri se i tuoi dati sono stati esposti in questa violazione.
+was-your-info-exposed = Le tue informazioni sono state compromesse nella violazione di dati di { $breachName }?
+find-out-if = Scopri se i tuoi dati sono stati compromessi in questa violazione.
 fb-not-comp = Questa email non è stata coinvolta nella violazione di { $breachName }.
 other-breaches-found =
     { $breachCount ->
@@ -263,16 +273,16 @@ email-addresses-being-monitored =
 # your localization, because it would result in the number showing twice.
 passwords-exposed =
     { $passwords ->
-        [one] Password esposta da tutte le violazioni
-       *[other] Password esposte da tutte le violazioni
+        [one] Password compromessa in tutte le violazioni
+       *[other] Password compromesse in tutte le violazioni
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
     { $breaches ->
-        [one] Violazione di dati conosciuta che ha esposto le tue informazioni
-       *[other] Violazioni di dati conosciute che hanno esposto le tue informazioni
+        [one] Violazione di dati conosciuta che ha compromesso le tue informazioni
+       *[other] Violazioni di dati conosciute che hanno compromesso le tue informazioni
     }
 # Button
 see-additional-breaches = Mostra ulteriori violazioni
@@ -320,7 +330,7 @@ breach-overview-new = Il giorno { $breachDate }, { $breachTitle } è stato viola
 monitor-preferences = Preferenze di { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
 # and is followed by the user's primary Firefox Account email. 
-signed-in-as = Accesso effettuato come:
+signed-in-as = Accesso effettuato come: { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
 filter-by = Filtra per categoria:
@@ -328,7 +338,7 @@ filter-by = Filtra per categoria:
 menu = Menu
 to-affected-email = Invia avvisi relativi alle violazioni all’indirizzo email coinvolto
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
-join-firefox = C’è un modo per proteggere la tua privacy. Entra a far parte di { -brand-name }.
+join-firefox = C’è un modo per proteggere la tua privacy. Entra in { -brand-name }.
 # Link title
 learn-more-link = Ulteriori informazioni.
 email-sent = Email inviata.
@@ -378,7 +388,7 @@ rec-section-headline = Che cosa fare per questa violazione
 rec-section-subhead = Ti consigliamo di adottare queste misure per mantenere le tue informazioni personali al sicuro e proteggere la tua identità digitale.
 # Section headline
 rec-section-headline-no-pw = Come proteggere le tue informazioni personali
-rec-section-subhead-no-pw = Anche se nessuna password è stata esposta in questa violazione, puoi sempre adottare nuove misure per proteggere meglio le tue informazioni personali.
+rec-section-subhead-no-pw = Anche se nessuna password è stata compromessa in questa violazione, puoi sempre adottare nuove misure per proteggere meglio le tue informazioni personali.
 # Button
 see-additional-recs = Vedi altri suggerimenti
 
@@ -455,8 +465,8 @@ hide-resolved-button = Nascondi risolte
 show-resolved-button = Mostra risolte
 unresolved-passwords-exposed =
     { $numPasswords ->
-        [one] Password esposta in violazioni non risolte
-       *[other] Password esposte in violazioni non risolte
+        [one] Password compromessa in violazioni non risolte
+       *[other] Password compromesse in violazioni non risolte
     }
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
@@ -465,3 +475,18 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nuova
+mobile-promo-headline = Porta { -brand-name } sul tuo telefono e tablet
+mobile-promo-body = Navigazione veloce, privata e sicura ovunque tu vada. Trova { -brand-name } in Google Play e nell‘App Store.
+mobile-promo-cta = Installa { -brand-name } su Android e iOS
+promo-lockwise-headline = Porta le tue password sempre con te
+lockwise-promo-body = Tieni traccia delle tue credenziali di accesso su tutti i dispositivi. Accedi a questi dati in modo sicuro dal tuo computer, telefono o tablet.
+promo-lockwise-cta = Installa { -brand-lockwise }
+fpn-promo-headline = Impedisci a siti web ed elementi traccianti di conoscere la tua posizione
+promo-fpn-body = { -brand-fpn }, mascherando il tuo vero indirizzo IP, tiene alla larga siti web e società di raccolta dati che ti profilano attraverso annunci pubblicitari.
+promo-fpn-cta = Installa { -brand-fpn }
+monitor-promo-headline = Scopri le nuove violazioni di dati
+monitor-promo-body = Ricevi una notifica la prossima volta che le tue informazioni personali vengono esposte in una violazione di dati conosciuta.
+ecosystem-promo-headline = Proteggi la tua vita in rete con prodotti che mettono la privacy al primo posto
+ecosystem-promo-body = Tutti i prodotti { -brand-name } rispettano la nostra “Garanzia sui dati personali”: raccogli meno dati, mantienili al sicuro, nessun segreto.
+promo-ecosystem-cta = Vedi tutti i prodotti
+steps-to-resolve-headline = Passaggi per risolvere questa violazione

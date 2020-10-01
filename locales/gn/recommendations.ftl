@@ -2,10 +2,18 @@
 rec-ssn-subhead = Ehechajey ne marandu’i viruguáva
 # Link title
 rec-ssn-cta = Ejerure marandu’i viruguáva
+rec-ssn =
+    Eguereko mbohapy marandu’i ñemurã reigua arýpe léipe he’iháicha. 
+    ejerure ha ehechajey nombyaíri ne ñemurã. 
+    Eheka mba’ete, virujepuru térã kuatia’atã ñemurã eikuaa’ỹva.
 # Recommendation subhead
 rec-pw-1-subhead = Emoambue ne ñe’ẽñemi
 # Link title
 rec-pw-1-cta = Emoambue ñe’ẽñemi ko tendápe g̃uarã
+rec-pw-1 =
+    Ejapo ko ñe’ẽñemi ha’eño ha iñambuéva oimeraẽva umi eipurúvagui. 
+    Mba’e iporãva ha’e emojopyru mokõi térã hetave ñe’ẽ ojuehegua’ỹva 
+    ikatuhápe ejapo peteĩ ñe’ẽsyry.
 # Recommendation subhead
 rec-pw-2-subhead = Embohekopyahu ambue tembiapo ñepyrũ ko ñe’ẽñemímente
 # Link title
@@ -35,12 +43,12 @@ rec-pw-4 =
 rec-bank-acc-subhead = Ehechameme banco pegua kuatia
 rec-bank-acc =
     Ehecha banco pegua kuatia tembiapo vai térã oikomeme’ỹva 
-    Emombe’u ne báncope ehecháramo mba'e eikuaaporã’ỹva
+    Emombe’u ne báncope ehecháramo mba’e eikuaaporã’ỹva
 # Recommendation subhead
 rec-cc-subhead = Ehechameme kuatia’atã ñemuha kuatia
 rec-cc =
     Ema’ẽ tapiáke nde kuatia’atã ñemurã. Ikatu hína 
-    ejerure kuatia’atã ñemurã pyahu ipapapy pyahúva me'ẽhárape.
+    ejerure kuatia’atã ñemurã pyahu ipapapy pyahúva me’ẽhárape.
 # Recommendation subhead
 rec-ip-subhead = Eipuru mba’epuru omokañýva nde IP kundaharape
 # Link title
@@ -49,6 +57,16 @@ rec-ip-us =
     Ne kundaharape ñanduti pegua (IP kundaharape) ohechauka ne rendaite
     ha ne ñanduti me’ẽhára. Peteĩ mba’epuru { -brand-fpn } rehegua
     omoypytũ nde IP kundaharape oñomi hag̃ua ne rendaite.
+rec-ip-non-us =
+    Ne kundaharape ñanduti pegua (IP kundaharape) ohechauka ne rendaite 
+    ha ne ñanduti me’ẽhára. Peteĩ red privada virtual (VPN) ndive, ikatu eñomi ne rendaite 
+    ha ehovañuvã nde IP kundaharape.
+# Recommendation subhead
+rec-moz-vpn-cta = Eñe’ẽ { -brand-mozilla-vpn }
+rec-moz-vpn =
+    Ne ñanduti kundaharape raperekoite (IP kundaharape) ikatu oikuaauka ne rendaite ha ñanduti me’ẽhára. Mba’epuru
+    { -brand-fpn } omokañykuaa pe IP kundaharape ha ne rendaite { -brand-name } peg̃uarã ha mba’epuru { -brand-mozilla-vpn } ichagua omokañy ne
+    IP kundaharape ha ne rendaite opaite mba’e’okápe.
 rec-hist-pw-subhead = Aníke eipurujo’a ñe’ẽñemi
 # Link title
 rec-hist-pw-cta-fx = Ehecha tembiapo ñepyrũ { -brand-name }
