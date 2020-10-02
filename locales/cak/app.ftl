@@ -551,3 +551,4 @@ monitor-promo-body = Tak'ulu' rutzijol toq ri awetamab'al xtiwachin pa jun tz'il
 ecosystem-promo-headline = Nuchajij ak'aslem pa k'amab'ey rik'in taq tikojil nikinab'eysaj ri awichinane
 ecosystem-promo-body = Ronojel ri taq { -brand-name } tikojil, nukamelaj ri Rusujik Tzij chi rij Qatzij: Jub'a' etamab'äl nuk'äm. Nijikib'äx. Majun ewäl ta.
 promo-ecosystem-cta = Ketz'et Ronojel Tikojil
+steps-to-resolve-headline = Rub'eyal richin nisol re tz'ilanem

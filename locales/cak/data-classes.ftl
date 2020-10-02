@@ -65,10 +65,12 @@ instant-messenger-identities = Kiwäch anin tzijol
 ip-addresses = IP taq ochochib'äl
 job-applications = Ruk'utuj samaj
 job-titles = Kib'i' samaj
+living-costs = Rajil k'aslem
 mac-addresses = MAC taq ochochib'äl
 marital-statuses = Rub'anikil melab'al
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
 mnemonic-phrases = Nataq'inoj taq q'aptzij
+mothers-maiden-names = Kib'i' te'ej toq k'a man e te'ej ta
 names = Taq b'i'aj
 nationalities = Taq amaq'el
 net-worths = Rup'alb'al ch'akoj
