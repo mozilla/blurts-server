@@ -66,6 +66,8 @@ unsub-button = Stoó sivu
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Filtración de datos proporcionada por { $hibp-link }
 share-twitter = La mayoría de las personas tienen alrededor de 100 cuentas en línea. ¿Alguno de los tuyos fue expuesta a una violación de datos? Averigua.
+share-facebook-headline = Nduku ntyi ña va'a
+share-facebook-blurb = ¿Kuenta ku yee ña va'a?
 show-all = Snaa ntia
 sign-in = Kitsa
 sign-out = Kee
@@ -116,6 +118,7 @@ avoid-personal-info = Nchau sivu tsi tu'un seé
 
 change-pw = Sama tu'un see
 change-pw-site = Sama tu'un see ña sitio
+check-for-breaches = Nduku filtracion
 add-new-email = Chaa sivi tsa'a korreoku
 send-verification = Tachu'un tu'un
 # This string is a header on the user preferences page and
