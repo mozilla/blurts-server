@@ -14,3 +14,13 @@ rec-pw-2-cta-fx = Titz'et rutikirisaxik molojri'ïl pa { -brand-name }
 rec-pw-3-subhead = Tawokisaj jun runuk'unel ewan tzij richin xab'akuchi' ye'ak'waj ri ewan taq atzij
 # Link title
 rec-pw-3-cta = Tik'ul { -brand-lockwise }
+# Link title
+rec-hist-pw-cta-fx = Titz'et rutikirisaxik molojri'ïl pa { -brand-name }
+# Recommendation subhead
+rec-dob-subhead = Man tawokisaj awetamab'al pa PINs
+# Link title
+rec-gen-1-cta = Achike rub'eya'l ye'atz'ük' ütz ewan taq tzij
+# Link title
+rec-gen-2-cta = Tz'ukun taq na'oj chi kij ri kinuk'samajel ewan tzij
+# Link title
+rec-gen-3-cta = Tawetamaj ch'aqa' chik chi kij jikom taq na'oj
