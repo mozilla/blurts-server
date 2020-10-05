@@ -1,3 +1,6 @@
+{{#if CONVERT_EXPERIMENTS_ID }}
+  <script type="text/javascript" src="{{ CONVERT_EXPERIMENTS_DOMAIN }}/js/{{ CONVERT_EXPERIMENTS_ID }}.js"></script>
+{{/if}}
 {{#ifCompare UTM_SOURCE "===" "localhost"}}
   <link rel="stylesheet" href="/css/all-breaches.css">
   <link rel="stylesheet" href="/css/app.css">
@@ -45,4 +48,5 @@
   {{/ifCompare}}
 
   <script type="text/javascript" src="/dist/app.min.js" defer></script>
+
 {{/ifCompare}}

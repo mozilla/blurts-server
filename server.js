@@ -104,6 +104,12 @@ if (AppConstants.NODE_ENV === "heroku") {
   }));
 }
 
+const CONVERT_EXPERIMENTS_DOMAIN = "https://cdn-3.convertexperiments.com";
+if (AppConstants.CONVERT_EXPERIMENTS_ID) {
+  SCRIPT_SOURCES.push("'unsafe-inline'");
+  SCRIPT_SOURCES.push(CONVERT_EXPERIMENTS_DOMAIN);
+}
+
 const imgSrc = [
   "'self'",
   "https://www.google-analytics.com",
@@ -169,6 +175,8 @@ app.locals.FXA_ENABLED = AppConstants.FXA_ENABLED;
 app.locals.SERVER_URL = AppConstants.SERVER_URL;
 app.locals.MAX_NUM_ADDRESSES = AppConstants.MAX_NUM_ADDRESSES;
 app.locals.EXPERIMENT_ACTIVE = AppConstants.EXPERIMENT_ACTIVE;
+app.locals.CONVERT_EXPERIMENTS_ID = AppConstants.CONVERT_EXPERIMENTS_ID;
+app.locals.CONVERT_EXPERIMENTS_DOMAIN = CONVERT_EXPERIMENTS_DOMAIN;
 app.locals.LOGOS_ORIGIN = AppConstants.LOGOS_ORIGIN;
 app.locals.UTM_SOURCE = new URL(AppConstants.SERVER_URL).hostname;
 
