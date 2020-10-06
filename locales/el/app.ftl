@@ -456,6 +456,7 @@ promo-lockwise-cta = Λήψη { -brand-lockwise }
 fpn-promo-headline = Καλύψτε την τοποθεσία σας από ιστοσελίδες και ιχνηλάτες
 promo-fpn-cta = Λήψη { -brand-fpn }
 monitor-promo-headline = Μάθετε για νέες παραβιάσεις δεδομένων
+ecosystem-promo-headline = Προστατέψτε τη ζωή σας στο διαδίκτυο με προϊόντα που σέβονται το απόρρητο
 ecosystem-promo-body = Όλα τα προϊόντα { -brand-name } τιμούν την υπόσχεση μας σχετικά με τα προσωπικά δεδομένα: Λιγότερα δεδομένα. Με ασφάλεια. Χωρίς μυστικά.
 promo-ecosystem-cta = Προβολή όλων των προϊόντων
 steps-to-resolve-headline = Βήματα επίλυσης για αυτή τη διαρροή
