@@ -271,3 +271,4 @@ promo-lockwise-headline = Kuná tu'un see nchi tsiku
 promo-lockwise-cta = Kunche'e { -brand-lockwise }
 promo-fpn-cta = Kunche'e { -brand-fpn }
 promo-ecosystem-cta = Kunche'e nti'i producto
+steps-to-resolve-headline = Nixi ndu va'a filtración
