@@ -21,6 +21,25 @@ function getSupportedLocales(args) {
 }
 
 
+function englishInAcceptLanguages(args) {
+  const acceptedLanguages = args.data.root.req.acceptsLanguages();
+  return acceptedLanguages.some(locale => locale.startsWith("en"));
+}
+
+
+function recruitmentBanner(args) {
+  if (!AppConstants.RECRUITMENT_BANNER_LINK || !AppConstants.RECRUITMENT_BANNER_TEXT) {
+    return;
+  }
+
+  if (!englishInAcceptLanguages(args)) {
+    return;
+  }
+
+  return `<div class="recruitment-banner"><a id="recruitment-banner" href="${AppConstants.RECRUITMENT_BANNER_LINK}"  target="_blank" rel="noopener noreferrer" data-ga-link="" data-event-category="Recruitment" data-event-label="${AppConstants.RECRUITMENT_BANNER_TEXT}">${AppConstants.RECRUITMENT_BANNER_TEXT}</a></div>`;
+}
+
+
 function getString (id, args) {
   const supportedLocales = getSupportedLocales(args);
   return LocaleUtils.fluentFormat(supportedLocales, id, args.hash);
@@ -169,6 +188,8 @@ function breachMath(lValue, operator = null, rValue = null) {
 
 
 module.exports = {
+  recruitmentBanner,
+  englishInAcceptLanguages,
   getString,
   getStrings,
   fluentFxa,
