@@ -119,6 +119,7 @@ avoid-personal-info = Nchau sivu tsi tu'un seé
 change-pw = Sama tu'un see
 change-pw-site = Sama tu'un see ña sitio
 check-for-breaches = Nduku filtracion
+back-to-top = Nchiko sata
 add-new-email = Chaa sivi tsa'a korreoku
 send-verification = Tachu'un tu'un
 # This string is a header on the user preferences page and
@@ -176,6 +177,8 @@ see-additional-breaches = Ver filtraciones adicionales
 results-for = Tutu : { $userEmail }
 other-monitored-emails = Otros correos monitoreados
 fxa-primary-email = { -brand-fxa } korreo - principal
+# This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
+find-out = Nduku
 # Title
 email-addresses-title = Lista korreo
 # This is a section headline on the breach detail page that appears above
@@ -210,6 +213,12 @@ sign-in-nested = Kitsaa
 
 ##
 
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = Notificaciones sobre filtraciones
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Filtración añadida:
@@ -227,6 +236,7 @@ rec-section-headline = Ntyi sau tsi filtración
 mark-as-resolve-button = Katavi ña va'a ye
 marked-as-resolved-label = Tsa ye vai
 undo-button = Stoò
+confirmation-1-subhead = ¡Perfecto! Acabas de resolver tu primera filtración.
 confirmation-2-subhead = ¡kunche, hackers!
 confirmation-3-subhead = Ntsi ian. ¡Va'a chu'un!
 go-to-dashboard-link = Kunche'e panel de control
