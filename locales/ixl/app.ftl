@@ -36,6 +36,10 @@ about-fxm-headline = Ti' u { -product-name }
 
 ## Updated error messages
 
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = { -product-short-name } Uve' ni chit asa'
+# Link title
+learn-more-link = Ootzi ka'te.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
