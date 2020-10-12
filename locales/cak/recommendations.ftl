@@ -14,6 +14,8 @@ rec-pw-2-cta-fx = Titz'et rutikirisaxik molojri'ïl pa { -brand-name }
 rec-pw-3-subhead = Tawokisaj jun runuk'unel ewan tzij richin xab'akuchi' ye'ak'waj ri ewan taq atzij
 # Link title
 rec-pw-3-cta = Tik'ul { -brand-lockwise }
+# Recommendation subhead
+rec-moz-vpn-cta = Titojtob'ëx { -brand-mozilla-vpn }
 # Link title
 rec-hist-pw-cta-fx = Titz'et rutikirisaxik molojri'ïl pa { -brand-name }
 # Recommendation subhead
