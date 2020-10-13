@@ -3,6 +3,9 @@ jobs:
     build:
         docker:
             - image: docker:stable-git
+              auth:
+                username: $DOCKER_USER
+                password: $DOCKER_PASS
         working_directory: /dockerflow
         steps:
             - checkout
@@ -17,6 +20,15 @@ jobs:
                     "$CIRCLE_PROJECT_USERNAME" \
                     "$CIRCLE_PROJECT_REPONAME" \
                     "$CIRCLE_BUILD_URL" > version.json
+
+            - run:
+                name: Login to dockerhub
+                command: |
+                    if [ "${DOCKER_USER}" == "" ] || [ "${DOCKER_PASS}" == "" ]; then
+                      echo "Skipping Login to Dockerhub, credentials not available."
+                    else
+                      echo "${DOCKER_PASS}" | docker login -u="${DOCKER_USER}" --password-stdin
+                    fi
 
             - run:
                 name: Build docker image
