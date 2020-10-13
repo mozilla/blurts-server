@@ -198,6 +198,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Έλεγχος για παραβιάσεις
 find-out-what-hackers-know = Ανακαλύψτε τι γνωρίζουν ήδη οι hackers για εσάς. Μάθετε πώς να είστε πάντα ένα βήμα μπροστά.
+get-email-alerts = Μείνετε ασφαλείς: Λάβετε ειδοποιήσεις μέσω email, σε περίπτωση που εμφανιστούν οι πληροφορίες σας σε γνωστή παραβίαση δεδομένων
 search-for-your-email = Αναζητήστε τη διεύθυνση email σας σε παραβιάσεις δημόσιων δεδομένων από το 2007.
 back-to-top = Πίσω στην κορυφή
 comm-opt-1 = Αποστολή όλων των ειδοποιήσεων παραβιάσεων στο { $primaryEmail }.
@@ -334,6 +335,7 @@ signed-in-as = Σε σύνδεση ως: { $userEmail }
 filter-by = Φιλτράρισμα κατά κατηγορία:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Μενού
+to-affected-email = Αποστολή ειδοποιήσεων παραβίασης στην επηρεασμένη διεύθυνση email
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
 join-firefox = Υπάρχει τρόπος να προστατέψετε το απόρρητό σας. Γίνετε μέλος του { -brand-name }.
 # Link title
@@ -369,6 +371,7 @@ breach-alert-notifications = Ειδοποιήσεις παραβιάσεων
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Ημερομηνία προσθήκης:
+steps-to-protect-desc = Ενημερωθείτε για τις πιο κοινές απειλές και μάθετε τι να προσέξετε περισσότερο
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Οι αλλαγές αποθηκεύτηκαν!
 # Section headline
@@ -394,6 +397,7 @@ mark-as-resolve-button = Επισήμανση ως λυμένη
 marked-as-resolved-label = Επισημάνθηκε ως λυμένη
 undo-button = Αναίρεση
 confirmation-1-subhead = Ωραία! Μόλις επιλύσατε την πρώτη σας παραβίαση.
+confirmation-2-subhead = Άλλη μια νίκη εναντίον των hackers!
 confirmation-2-body = Λαμβάνετε σημαντικά βήματα για την προστασία των διαδικτυακών λογαριασμών σας.
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
