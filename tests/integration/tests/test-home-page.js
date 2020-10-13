@@ -2,8 +2,9 @@
 "use strict";
 
 const HomePage = require("../pages/desktop/home.page");
-const NavBar = require("../regions/navbar.region");
-const UserDashboardPage = require("../pages/desktop/dashboard.page");
+// Don't need these until secondary email test is restored
+// const NavBar = require("../regions/navbar.region");
+// const UserDashboardPage = require("../pages/desktop/dashboard.page");
 
 describe("Firefox Monitor homepage", function() {
 
@@ -37,6 +38,7 @@ describe("Firefox Monitor homepage", function() {
       .equal(Number(scanResults.numberOfBreaches));
   });
 
+  /*
   it("should allow secondary email to be added", function() {
     const homePage = HomePage;
     const navBar = NavBar;
@@ -77,4 +79,5 @@ describe("Firefox Monitor homepage", function() {
     browser.refresh();
     expect(email.getText()).to.equal(global.primaryEmail);
   });
+  */
 });
