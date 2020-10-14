@@ -42,6 +42,10 @@ firefox-apps:active {
   background-color: var(--bentoClickBgColor);
 }
 
+.fx-bento-hide-vpn .moz-vpn {
+  display: none;
+}
+
 .fx-bento-hide-overflow {
   position: relative;
   overflow: hidden;
@@ -170,6 +174,13 @@ a.fx-bento-app-link {
 
 .fx-bento-app-link-span.fx-mobile::before {
   background-position-x: -104px;
+}
+
+.fx-bento-app-link-span.moz-vpn::before {
+  background: url(/img/svg/logos/vpn-logo.svg) !important;
+  background-position: center !important;
+  background-size: var(--appIconHeight) !important;
+  background-repeat: no-repeat !important;
 }
 
 .fx-bento-link:hover,

@@ -8,6 +8,7 @@ function getFxAppLinkInfo(localizedBentoStrings, referringSiteURL) {
     [localizedBentoStrings.pocket, "https://app.adjust.com/hr2n0yz?engagement_type=fallback_click&fallback=https%3A%2F%2Fgetpocket.com%2Ffirefox_learnmore%3Fsrc%3Dff_bento&fallback_lp=https%3A%2F%2Fapps.apple.com%2Fapp%2Fpocket-save-read-grow%2Fid309601447", "pocket"],
     [localizedBentoStrings.fxDesktop, `https://www.mozilla.org/firefox/new/?utm_source=${referringSiteURL}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`, "fx-desktop"],
     [localizedBentoStrings.fxMobile, `http://mozilla.org/firefox/mobile?utm_source=${referringSiteURL}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`, "fx-mobile"],
+    [localizedBentoStrings.mozVPN, `https://vpn.mozilla.org/?utm_source=${referringSiteURL}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`, "moz-vpn"],
   ];
 }
 
@@ -43,6 +44,7 @@ async function getlocalizedBentoStrings() {
       fxMonitor: "Firefox Monitor",
       fxLockwise: "Firefox Lockwise",
       pocket: "Pocket",
+      mozVPN: "Mozilla VPN",
     };
   }
   return localizedBentoStrings;
@@ -66,6 +68,13 @@ class FirefoxApps extends HTMLElement {
 
     this._bentoWrapper = document.createElement("div");
     this._bentoWrapper.classList = "fx-bento-content-wrapper";
+
+    const browserLanguage = window.navigator.language;
+    if (!browserLanguage.includes("en")) {
+      this._bentoWrapper.classList.add("fx-bento-hide-vpn");
+    }
+
+
     this._bentoHideOverflow = createAndAppendEl(this._bentoWrapper, "div", "fx-bento-hide-overflow");
     this._bentoContent = createAndAppendEl(this._bentoHideOverflow, "div", "fx-bento-content");
 
@@ -273,7 +282,11 @@ class FirefoxApps extends HTMLElement {
   }
 
   makeAppList() {
+
+    // const browserLanguage = window.navigator.language
     const appLinks = getFxAppLinkInfo(this._localizedBentoStrings, this._currentSite);
+
+    // appLinks.push([localizedBentoStrings.mozVPN, `https://vpn.mozilla.org/?utm_source=${referringSiteURL}&utm_medium=referral&utm_campaign=bento&utm_content=desktop`, "moz-vpn"])
     appLinks.forEach(app => {
       const newLink = document.createElement("a");
       const newLinkSpan = createAndAppendEl(newLink, "span", `fx-bento-app-link-span ${app[2]}`);
