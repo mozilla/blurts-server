@@ -304,7 +304,7 @@ new-breaches-found =
        *[many] ЗНАЙДЕНО { $breachCount } НОВИХ ВИТОКІВ ДАНИХ
     }
 sign-up-headline-1 = Отримуйте сповіщення за допомогою { -brand-fxa(case: "gen") }.
-account-not-required = Браузер { -brand-name } не обов'язковий для { -brand-fxa(case: "gen") }. Ви можете отримувати інформацію про сервіси { -brand-Mozilla }.
+account-not-required = Браузер { -brand-name } не обов'язковий для { -brand-fxa(case: "gen") }. Ви можете отримувати інформацію про служби { -brand-Mozilla }.
 was-your-info-exposed = Чи була ваша інформація розкрита у витоці даних { $breachName }?
 find-out-if = Дізнайтеся, чи потрапили ваші дані до цього витоку.
 fb-not-comp = Ця адреса електронної пошти не з'являється у витоці даних { $breachName }.
