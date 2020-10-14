@@ -27,6 +27,11 @@ function englishInAcceptLanguages(args) {
 }
 
 
+function escapeHtmlAttributeChars(text) {
+  return text.replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+}
+
+
 function recruitmentBanner(args) {
   if (!AppConstants.RECRUITMENT_BANNER_LINK || !AppConstants.RECRUITMENT_BANNER_TEXT) {
     return;
@@ -36,7 +41,7 @@ function recruitmentBanner(args) {
     return;
   }
 
-  return `<div class="recruitment-banner"><a id="recruitment-banner" href="${AppConstants.RECRUITMENT_BANNER_LINK}"  target="_blank" rel="noopener noreferrer" data-ga-link="" data-event-category="Recruitment" data-event-label="${AppConstants.RECRUITMENT_BANNER_TEXT}">${AppConstants.RECRUITMENT_BANNER_TEXT}</a></div>`;
+  return `<div class="recruitment-banner"><a id="recruitment-banner" href="${AppConstants.RECRUITMENT_BANNER_LINK}"  target="_blank" rel="noopener noreferrer" data-ga-link="" data-event-category="Recruitment" data-event-label="${escapeHtmlAttributeChars(AppConstants.RECRUITMENT_BANNER_TEXT)}">${AppConstants.RECRUITMENT_BANNER_TEXT}</a></div>`;
 }
 
 
