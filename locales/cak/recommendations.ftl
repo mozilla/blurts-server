@@ -2,6 +2,10 @@
 rec-ssn-subhead = Ke'anik'oj ri rutzijol apwaq
 # Link title
 rec-ssn-cta = Tak'utuj rutzijol apwaq
+rec-ssn =
+    Ye'ak'ül oxi' rucholb'al pwäq pa juna' ruma ri taqonem tzij.
+    Nak'utuj chuqa' nanik'oj man nutz'ila' ta ri apwäq.
+    Ke'anik'oj ri pwäq, qajoj o rutarjeta' kre'ito' ri man awetaman ta kiwäch.
 # Recommendation subhead
 rec-pw-1-subhead = Tajala' ri ewan atzij
 # Link title
