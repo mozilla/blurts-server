@@ -60,6 +60,10 @@ rec-ip-non-us =
     ad teffreḍ daɣen tansa-inek IP.
 # Recommendation subhead
 rec-moz-vpn-cta = Ɛreḍ { -brand-mozilla-vpn }
+rec-moz-vpn =
+    Tansa-k•m n uneggaf n internet (tansa IP) tezmer ad d-tmel adig d yimefki n umeẓluyen n internet. Ameẓlu am
+    { -brand-fpn } itteffer tansa-k•m IP d wadig ɣef { -brand-name } akked umeẓlu am { -brand-mozilla-vpn } itteffer 
+    tansa-k•m IP d wadig ɣef yibenk-ik•im akk.
 rec-hist-pw-subhead = Ur ssexdam ara awalen uffiren i tesxedmeḍ yakan.
 # Link title
 rec-hist-pw-cta-fx = Sken inekcumen deg { -brand-name }
