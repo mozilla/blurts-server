@@ -507,3 +507,4 @@ monitor-promo-body = Sya d asawen rmes-d alɣu mi ara d-binent tilɣa-inek tudma
 ecosystem-promo-headline = Seḥbiber tudert-inek deg internet s yifarisen yettaken azal i tbaḍnit.
 ecosystem-promo-body = Akk ifarisen-agi { -brand-name } ttqadaren ṭṭmana-nneɣ ɣef yisefka udmawanen: Lqeḍ cwiṭ n yisefka. Mmesten-iten. Ulac tuffriwin.
 promo-ecosystem-cta = Wali akk ifarisen
+steps-to-resolve-headline = Isurifen ɣef ferru n trewla-a
