@@ -352,6 +352,14 @@ other-known-breaches-found =
     { $breachCount ->
        *[other] 그러나, { $breachCount }개의 다른 유출 내역이 있습니다.
     }
+# This string appears on breach detail pages and is followed by a list
+# of data classes that the breach exposed.
+additional-information-including = 다음을 포함한 추가 정보:
+# Title
+email-addresses-title = 이메일 주소
+# This is a section headline on the breach detail page that appears above
+# a short summary about the breach.
+breach-overview-title = 개요
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
