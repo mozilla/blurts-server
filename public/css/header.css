@@ -21,6 +21,12 @@ header.show-shadow {
   opacity: 1;
 }
 
+.recruitment-banner {
+  background-color: #f9f7fd;
+  padding: .5em;
+  text-align: center;
+}
+
 #navigation-wrapper {
   background-color: var(--inkDark);
 }
