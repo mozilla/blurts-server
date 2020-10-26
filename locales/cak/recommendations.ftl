@@ -18,10 +18,16 @@ rec-pw-1 =
 rec-pw-2-subhead = Ke'ak'exa' ch'aqa' chik tikirib'äl molojri'ïl rik'in xa jun ewan tzij
 # Link title
 rec-pw-2-cta-fx = Titz'et rutikirisaxik molojri'ïl pa { -brand-name }
+rec-pw-2 =
+    Nokisäx chik jun ewan tzij nujalwachij jun kitz'ilanem tzij. Wakami chi ri 
+    ewan tzij ri' nib'yajlan ke taq ri', ri ajjak yetikïr nikokisaj richin ye'ok pa jun chik rub'i' taqoya'l.
 # Recommendation subhead
 rec-pw-3-subhead = Tawokisaj jun runuk'unel ewan tzij richin xab'akuchi' ye'ak'waj ri ewan taq atzij
 # Link title
 rec-pw-3-cta = Tik'ul { -brand-lockwise }
+rec-pw-3-fx =
+    Tawokisaj { -brand-lockwise } richin ütz yatok pa ewan taq tzij e'ayakon pa 
+    { -brand-name } xab'akuchi' — ke ri' chuqa' toq man at k'o ta pan okik'amaya'l.
 # Recommendation subhead
 rec-pw-4-subhead = Tichap jikib'anïk pa ka'i'-xak (2FA)
 # Link title
