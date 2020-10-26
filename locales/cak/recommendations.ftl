@@ -10,6 +10,10 @@ rec-ssn =
 rec-pw-1-subhead = Tajala' ri ewan atzij
 # Link title
 rec-pw-1-cta = Tijal ewan rutzij re ruxaq re'
+rec-pw-1 =
+    Tab'ana' chi re re ewan tzij re' achi'el ruyonil chuqa' man junam ta rik'in jun chik. 
+    Jun jeb'ël rub'eyal ja ri kitunik ka'i' o ch'aqa' taq tzij ri man kiximon ta 
+    ki' richin nitz'uk jun pajtzij.
 # Recommendation subhead
 rec-pw-2-subhead = Ke'ak'exa' ch'aqa' chik tikirib'äl molojri'ïl rik'in xa jun ewan tzij
 # Link title
