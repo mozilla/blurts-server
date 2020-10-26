@@ -35,6 +35,12 @@ rec-pw-3-non-fx =
 rec-pw-4-subhead = Tichap jikib'anïk pa ka'i'-xak (2FA)
 # Link title
 rec-pw-4-cta = Ketz'et taq ruxaq nikisüj 2FA
+rec-pw-4 =
+    K'ïy ajk'amaya'l ruxaq nikisüj 2FA achi'el rutz'aqat jikomal. Re re' nrajo' 
+    juley chik etamab'äl richin yatok pa rub'i' ataqoya'l, achi'el jun 
+    b'itz'ib' jumul nokisäx ri nak'ül achi'el jun rutzijol pan awoyonib'al.
+# Recommendation subhead
+rec-bank-acc-subhead = Ke'anik'oj ri rub'anikil apwaq pan yakb'äl pwäq
 # Recommendation subhead
 rec-moz-vpn-cta = Titojtob'ëx { -brand-mozilla-vpn }
 # Link title
