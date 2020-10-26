@@ -28,6 +28,9 @@ rec-pw-3-cta = Tik'ul { -brand-lockwise }
 rec-pw-3-fx =
     Tawokisaj { -brand-lockwise } richin ütz yatok pa ewan taq tzij e'ayakon pa 
     { -brand-name } xab'akuchi' — ke ri' chuqa' toq man at k'o ta pan okik'amaya'l.
+rec-pw-3-non-fx =
+    Tawokisaj { -brand-lockwise } richin ütz ye'anük ri jalajöj 
+    ewan taq tzij chuqa' ütz ye'awokiaj pan awoyonib'al o atawlet.
 # Recommendation subhead
 rec-pw-4-subhead = Tichap jikib'anïk pa ka'i'-xak (2FA)
 # Link title
