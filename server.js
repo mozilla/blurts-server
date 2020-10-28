@@ -175,6 +175,8 @@ app.locals.MAX_NUM_ADDRESSES = AppConstants.MAX_NUM_ADDRESSES;
 app.locals.EXPERIMENT_ACTIVE = AppConstants.EXPERIMENT_ACTIVE;
 app.locals.RECRUITMENT_BANNER_LINK = AppConstants.RECRUITMENT_BANNER_LINK;
 app.locals.RECRUITMENT_BANNER_TEXT = AppConstants.RECRUITMENT_BANNER_TEXT;
+app.locals.STRIPE_PROD_ID = AppConstants.STRIPE_PROD_ID;
+app.locals.STRIPE_PRICE_ID = AppConstants.STRIPE_PRICE_ID;
 app.locals.LOGOS_ORIGIN = AppConstants.LOGOS_ORIGIN;
 app.locals.UTM_SOURCE = new URL(AppConstants.SERVER_URL).hostname;
 

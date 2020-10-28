@@ -87,7 +87,7 @@
 {{/ifCompare}}
 {{#unless userHasUnlimited }}
 <div class="row jst-cntr">
-    <a class="btn-violet-secondary btn-transparent btn-small" href="https://accounts.stage.mozaws.net/subscriptions/products/prod_Het56ernNdtSBs?plan=price_1H5ZIyKb9q6OnNsLcnAPwqw6" target="_blank">Buy Unlimited addresses!</a>
+    <a class="btn-violet-secondary btn-transparent btn-small" href="https://accounts.stage.mozaws.net/subscriptions/products/{{ STRIPE_PROD_ID }}?plan={{ STRIPE_PRICE_ID }}" target="_blank">Buy Unlimited addresses!</a>
 </div>
 {{/unless}}
 {{> take-back-control/take-back-control-banner additionalClasses="dash-take-back-wrapper"}}

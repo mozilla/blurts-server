@@ -49,6 +49,8 @@ const kEnvironmentVariables = [
   "DELETE_UNVERIFIED_SUBSCRIBERS_TIMER",
   "EXPERIMENT_ACTIVE",
   "MAX_NUM_ADDRESSES",
+  "STRIPE_PROD_ID",
+  "STRIPE_PRICE_ID",
 ];
 
 const AppConstants = { };
