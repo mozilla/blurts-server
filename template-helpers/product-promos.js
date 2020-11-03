@@ -21,13 +21,6 @@ function productPromos(locales, promoUtms, promoKey) {
       promoId: "promo-mobile",
       promoUrl: "http://mozilla.org/firefox/mobile" + promoUtms,
     },
-    "lockwise": {
-      promoHeadline: localize(locales, "promo-lockwise-headline"),
-      promoBody: localize(locales, "lockwise-promo-body"),
-      promoCta: localize(locales, "promo-lockwise-cta"),
-      promoId: "promo-lockwise",
-      promoUrl: "https://bhqf.adj.st/?adjust_t=6tteyjo&adj_deeplink=lockwise%3A%2F%2F&adj_fallback=https%3A%2F%2Fwww.mozilla.org%2Fen-US%2Ffirefox%2Flockwise" + promoUtms,
-    },
     "fpn": {
       promoHeadline: localize(locales, "fpn-promo-headline"),
       promoBody: localize(locales, "promo-fpn-body"),
