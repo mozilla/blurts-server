@@ -388,6 +388,8 @@ changes-saved = Xk'olotaj taq k'exonem
 # Section headline
 rec-section-headline = Jas kb'an chech we retztaqan
 rec-section-subhead = Kqaya' u
+# Section headline
+rec-section-headline-no-pw = Jan kb'an chech uchajixik le awinaqilal q'alaljisanem
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
