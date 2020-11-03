@@ -390,10 +390,14 @@ rec-section-headline = Jas kb'an chech we retztaqan
 rec-section-subhead = Kqaya' u
 # Section headline
 rec-section-headline-no-pw = Jan kb'an chech uchajixik le awinaqilal q'alaljisanem
+rec-section-subhead-no-pw = Pine man xe'ek'oji' ta taq retokib'al pa uk'axk'olil pa we retztaqan, k'a k'o na taq ucholajil le utz kab'ano chech qas utz uchajixik le awinaqilal q'alajisanem.
+# Button
+see-additional-recs = Chawila' taq utz'aqatil no'jib'al
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+resolve-top-notification = { $affectedEmail } xk'utun pa we jun retztaqan. <a>Jas kb'anik </a>
 
 ##
 
