@@ -407,6 +407,15 @@ resolve-top-notification-plural =
 ##
 
 marking-this-subhead = Chakojo' retal we retztaqan pacha' solom
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Are taq xb'antaj we ta ucholajil chech rilik uta'ik we retztaqan</span>,¶
+    Utz kakoj retal pacha solom. Utz na, katok pa taq ucholajil chi rij le retztaqan ¶
+    pa le k'olwokaj rech rilawachixik xaq jampa'.
+mark-as-resolve-button = Chakojo' retal pacha' solom
+marked-as-resolved-label = Kojom retal pacha' solom
+undo-button = Chupb'al
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
