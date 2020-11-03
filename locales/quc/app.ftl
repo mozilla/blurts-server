@@ -425,6 +425,16 @@ confirmation-3-subhead = ¡Xqaj chi jun. Utz chak!
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Le ak'ak' retokib'al la jalanik, k'o uchuq'ab' chi'l la k'ax uch'akik? <a> Chariqa'</a>
 generic-confirmation-subhead = We retztaqan kojom retal pacha' solom
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Chech rilik le retztaqan kraj na, utz katb'e pa le ak'olwokaj rech rilawachixik.
+       *[other] Chech rilik ronojel taq retztaqan kraj na, utz katb'e pa le ak'olwokaj rech rilawachixik.
+    }
+return-to-breach-details-link = Chattzalija pa taq cholajil rech retztaqan
+go-to-dashboard-link = Utz katb'e pa k'olwokaj reh rilawachixik
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete } % tz'aqat
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
