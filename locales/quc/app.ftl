@@ -418,6 +418,8 @@ marked-as-resolved-label = Kojom retal pacha' solom
 undo-button = Chupb'al
 confirmation-1-subhead = Utz, solotaj le nab'e retztaqan awumal.
 confirmation-1-body = Chak'olo' le na'tab'al. chawila' le ak'olwokaj rech rilawachixik chech rilik we k'o na nik'aj chik kb'anik.
+confirmation-2-subhead = Che'ik'ama' la', e b'ank'ax!
+confirmation-2-body = Ktajin kab'an nim ub'antajik taq cholajil chech uchajixik taq akemb'i'aj pa nimk'atz.
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
