@@ -398,9 +398,15 @@ see-additional-recs = Chawila' taq utz'aqatil no'jib'al
 ## Please do not modify or remove "<a>" and "</a>".
 
 resolve-top-notification = { $affectedEmail } xk'utun pa we jun retztaqan. <a>Jas kb'anik </a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] { $numAffectedEmails } rech le ataqoqxa'nib'al xk'utun pa we retztaqan
+       *[other] <a>Jas kb'an loq</a>
+    }
 
 ##
 
+marking-this-subhead = Chakojo' retal we retztaqan pacha' solom
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
