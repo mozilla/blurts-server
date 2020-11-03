@@ -98,17 +98,6 @@ module.exports = {
             recIconClassName: "rec-pw-2",
             // ctaHref: "", // Will open about:logins in the future or the lockwise website.
           },
-          {
-            recommendationCopy : {
-              subhead: "rec-pw-3-subhead",
-              cta: "rec-pw-3-cta",
-              body: isUserBrowserFirefox ? "rec-pw-3-fx" : "rec-pw-3-non-fx",
-            },
-            ctaHref: "https://www.mozilla.org/firefox/lockwise/",
-            ctaShouldOpenNewTab: true,
-            ctaAnalyticsId: "Get Firefox Lockwise",
-            recIconClassName: "rec-pw-3",
-          },
         ],
       },
       "bank-account-numbers": {
