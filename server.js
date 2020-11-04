@@ -83,8 +83,9 @@ try {
 
 // Use helmet to set security headers
 // only enable HSTS on heroku; Ops handles it in stage & prod configs
-const hsts = AppConstants.NODE_ENV === "heroku" ? true : false;
-app.use(helmet({ hsts }));
+if (AppConstants.NODE_ENV === "heroku") {
+  app.use(helmet.hsts({ maxAge: 60 * 60 * 24 * 365 * 2 })); // 2 years
+}
 
 const SCRIPT_SOURCES = ["'self'", "https://www.google-analytics.com/analytics.js"];
 const STYLE_SOURCES = ["'self'", "https://code.cdn.mozilla.net/fonts/"];
@@ -98,10 +99,6 @@ if (AppConstants.NODE_ENV === "heroku") {
   SCRIPT_SOURCES.push(PONTOON_DOMAIN);
   STYLE_SOURCES.push(PONTOON_DOMAIN);
   FRAME_ANCESTORS.push(PONTOON_DOMAIN);
-  app.use(helmet.frameguard({
-    action: "allow-from",
-    domain: PONTOON_DOMAIN,
-  }));
 }
 
 const imgSrc = [
@@ -147,6 +144,13 @@ app.use(helmet.contentSecurityPolicy({
   },
 }));
 app.use(helmet.referrerPolicy({ policy: "strict-origin-when-cross-origin" }));
+
+// helmet no longer sets X-Content-Type-Options, so set it manually
+app.use((req, res, next) => {
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  next();
+});
+
 app.use(express.static("public", {
   setHeaders: res => res.set("Cache-Control",
     "public, maxage=" + 10 * 60 * 1000 + ", s-maxage=" + 24 * 60 * 60 * 1000),
@@ -181,6 +185,7 @@ app.use(session({
     maxAge: SESSION_DURATION_HOURS * 60 * 60 * 1000, // 48 hours
     rolling: true,
     sameSite: "lax",
+    secure: AppConstants.NODE_ENV !== "dev",
   },
   resave: false,
   saveUninitialized: true,
