@@ -431,7 +431,7 @@ generic-confirmation-message =
        *[other] Chech rilik ronojel taq retztaqan kraj na, utz katb'e pa le ak'olwokaj rech rilawachixik.
     }
 return-to-breach-details-link = Chattzalija pa taq cholajil rech retztaqan
-go-to-dashboard-link = Utz katb'e pa k'olwokaj reh rilawachixik
+go-to-dashboard-link = Utz katb'e pa k'olwokaj rech rilawachixik
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
 progress-percent-complete = { $percentComplete } % tz'aqat
