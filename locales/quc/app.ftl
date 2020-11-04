@@ -435,6 +435,13 @@ go-to-dashboard-link = Utz katb'e pa k'olwokaj rech rilawachixik
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
 progress-percent-complete = { $percentComplete } % tz'aqat
+progress-intro-subhead = At k'ak' pa { -product-name }: chakojo' retal taq retztaqan pacha' solom
+progress-intro-message = Are taq chilitaj taq ucholajil chi rij le retztaqan chi'l ub'anik taq ucholajil chech uchajixik ¶ le awinaqilal q'alajisanem, utz kakoj retal taq retztaqan pacha' solom.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } chi rij { $numTotalBreaches }
+       *[other] taq retztaqan kojom retal pacha' solom
+    }
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
