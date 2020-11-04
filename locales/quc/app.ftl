@@ -442,6 +442,7 @@ progress-status =
         [one] { $numResolvedBreaches } chi rij { $numTotalBreaches }
        *[other] taq retztaqan kojom retal pacha' solom
     }
+progress-complete = Ronojel taq retztaqan le man eta'matal taj kojom retal pacha' solom
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
