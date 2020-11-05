@@ -480,3 +480,6 @@ known-data-breaches-resolved =
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = K'ak'
 mobile-promo-headline = Chak'ama' { -brand-name } pa le ach'aweb'al chi'l pa le t'in kemahib'il
+mobile-promo-body = Aninaq, echeb'alil, chi'l chajital nik'onel apawije' katb'e wi. Chariqa' { -brand-name } pa le Google Play chi'l pa App Store.
+mobile-promo-cta = Chariqa' { -brand-name } chi'l Android chi'l iOS
+promo-lockwise-headline = Chak'ama' b'i taq aretokib'al apawije'
