@@ -479,3 +479,4 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = K'ak'
+mobile-promo-headline = Chak'ama' { -brand-name } pa le ach'aweb'al chi'l pa le t'in kemahib'il
