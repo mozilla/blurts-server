@@ -483,3 +483,5 @@ mobile-promo-headline = Chak'ama' { -brand-name } pa le ach'aweb'al chi'l pa le 
 mobile-promo-body = Aninaq, echeb'alil, chi'l chajital nik'onel apawije' katb'e wi. Chariqa' { -brand-name } pa le Google Play chi'l pa App Store.
 mobile-promo-cta = Chariqa' { -brand-name } chi'l Android chi'l iOS
 promo-lockwise-headline = Chak'ama' b'i taq aretokib'al apawije'
+lockwise-promo-body = Chacholajij taq umajixik kemchak pa ronojel taq awiqkemchakub'al. Chatokoq pa chajital okem pa le akematz'ib', ch'aweb'al  on alaj t'inkemachib'il.
+promo-lockwise-cta = Chariqa' { -brand-lockwise }
