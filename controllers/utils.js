@@ -9,10 +9,18 @@ const AppConstants = require("../app-constants");
 
 
 function generatePageToken(req) {
-  const pageToken = {ip: req.ip, date: new Date(), nonce: uuidv4()};
-  const cipher = crypto.createCipher("aes-256-cbc", AppConstants.COOKIE_SECRET);
-  const encryptedPageToken = [cipher.update(JSON.stringify(pageToken), "utf8", "base64"), cipher.final("base64")].join("");
-  return encryptedPageToken;
+  const pageToken = { ip: req.ip, date: new Date(), nonce: uuidv4() };
+
+  const iv = crypto.randomBytes(16); // AES uses block sizes of 16 bytes
+  const key = crypto.pbkdf2Sync(AppConstants.COOKIE_SECRET, iv.toString(), 10000, 32, "sha512");
+  const cipher = crypto.createCipheriv("aes-256-cbc", key, iv);
+
+  const encryptedPageToken = Buffer.concat([
+    cipher.update(JSON.stringify(pageToken)),
+    cipher.final(),
+  ]);
+
+  return iv.toString("base64") + "." + encryptedPageToken.toString("base64");
 
   /* TODO: block on scans-per-ip instead of scans-per-timespan
   if (req.session.scans === undefined){
