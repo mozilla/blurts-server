@@ -455,6 +455,15 @@ progress-message-2 =
     uchajixik le awinaqilal q'alajisanem.
 progress-message-3 = <span>Utz chak xab'ano chech usolik taq retztaqan</span>jela' kab'an chech. K'o na nik'aj chik kab'ano.
 progress-message-4 = <span>Xpe rutzirik</span> Atk'o chi chi unaqaj le nab'e juch'.
+progress-complete-message =
+    <span>utz una'ik, tzij?</span>We kawaj kab'an na, wa' jun utz uq'ijol ¶                                          
+    chak'ak'arisaj nik'aj chi okem ruk' taq retokib'al qas k'o uchuq'ab'.
 
 ##
 
+resolve-this-breach-link = Chasolo' we retztaqan
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Kojom retal pacha' solom:
+hide-resolved-button = Owatal solom
+show-resolved-button = k'utb'al solom
