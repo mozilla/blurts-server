@@ -15,7 +15,7 @@ the "what" and "why" of data breach alerts.
 
 ### Requirements
 
-* [Node](https://nodejs.org/) 8+ (with npm)
+* [Node](https://nodejs.org/) 10 (with npm)
 * [Postgres](https://www.postgresql.org/)
 
 ### Install
