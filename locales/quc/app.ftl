@@ -447,6 +447,7 @@ progress-complete = Ronojel taq retztaqan le man eta'matal taj kojom retal pacha
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 = <span>silab'alaj utz umajixik ab'anom</span>chawila' taq retztaqam k'a maja na chech reta'maxik
 
 ##
 
