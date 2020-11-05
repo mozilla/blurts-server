@@ -453,6 +453,7 @@ progress-message-1 =
 progress-message-2 =
     <span>¡chawila'!</span>nitz'aq taq k'exonem pacha' uk'ak'arisaxik taq retokib'al sib'alaj nim kub'an pa ¶                                                                                                                                                               
     uchajixik le awinaqilal q'alajisanem.
+progress-message-3 = <span>Utz chak xab'ano chech usolik taq retztaqan</span>jela' kab'an chech. K'o na nik'aj chik kab'ano.
 
 ##
 
