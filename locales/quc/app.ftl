@@ -467,3 +467,8 @@ resolve-this-breach-link = Chasolo' we retztaqan
 marked-resolved = Kojom retal pacha' solom:
 hide-resolved-button = Owatal solom
 show-resolved-button = k'utb'al solom
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Retokib'al k'o pa uk'axk'olil pa taq retztaqan le man solom taj
+       *[other] Taq retokib'al k'o pa uk'axk'olil pa taq retztaqan le man solom taj
+    }
