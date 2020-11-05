@@ -485,3 +485,4 @@ mobile-promo-cta = Chariqa' { -brand-name } chi'l Android chi'l iOS
 promo-lockwise-headline = Chak'ama' b'i taq aretokib'al apawije'
 lockwise-promo-body = Chacholajij taq umajixik kemchak pa ronojel taq awiqkemchakub'al. Chatokoq pa chajital okem pa le akematz'ib', ch'aweb'al  on alaj t'inkemachib'il.
 promo-lockwise-cta = Chariqa' { -brand-lockwise }
+fpn-promo-headline = Chawowaj le ak'olib'al pa taq uk'olib'al web' chi'l taq terenelab'
