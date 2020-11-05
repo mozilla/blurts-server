@@ -472,3 +472,10 @@ unresolved-passwords-exposed =
         [one] Retokib'al k'o pa uk'axk'olil pa taq retztaqan le man solom taj
        *[other] Taq retokib'al k'o pa uk'axk'olil pa taq retztaqan le man solom taj
     }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] eta'matal retztaqan rech juq'attzij kojom retal pacha' solom
+       *[other] eta'matal retztaqan rech taq juq'attzij kojom retal pacha' solom
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = K'ak'
