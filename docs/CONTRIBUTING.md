@@ -26,4 +26,4 @@ can, but please be patient - especially if your change is large.
 ## Getting started with the code
 blurts-server tries to follow a README-driven development practice, so our
 instructions for installing, running, and testing code are in
-[README.md](https://github.com/mozilla/blurts-server/blob/master/README.md).
+[README.md](https://github.com/mozilla/blurts-server/blob/main/README.md).

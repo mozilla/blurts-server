@@ -8,7 +8,7 @@
   },
   "participate": {
     "home": "https://github.com/mozilla/blurts-server",
-    "docs": "https://github.com/mozilla/blurts-server/blob/master/README.md"
+    "docs": "https://github.com/mozilla/blurts-server/blob/main/README.md"
   },
   "bugs": {
     "list": "https://github.com/mozilla/blurts-server/issues",
