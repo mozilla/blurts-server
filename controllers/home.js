@@ -110,7 +110,6 @@ function getBentoStrings(req, res) {
     bentoHeadline: req.fluentFormat("fx-makes-tech"),
     bentoBottomLink: req.fluentFormat("made-by-mozilla"),
     fxDesktop: req.fluentFormat("fx-desktop"),
-    fxLockwise: req.fluentFormat("fx-lockwise"),
     fxMobile: req.fluentFormat("fx-mobile"),
     fxMonitor: req.fluentFormat("fx-monitor"),
     pocket: req.fluentFormat("pocket"),
