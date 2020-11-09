@@ -42,7 +42,6 @@ async function getlocalizedBentoStrings() {
       fxDesktop: "Firefox Browser for Desktop",
       fxMobile: "Firefox Browser for Mobile",
       fxMonitor: "Firefox Monitor",
-      fxLockwise: "Firefox Lockwise",
       pocket: "Pocket",
       mozVPN: "Mozilla VPN",
     };

@@ -447,6 +447,42 @@ progress-complete = Ronojel taq retztaqan le man eta'matal taj kojom retal pacha
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>silab'alaj utz umajixik ab'anom</span>chawila' taq retztaqam k'a maja na chawila' jachike kraj na chech reta'maxik ¶                                                                                                                                        
+     jachike taq ucholajil kab'ano.
+progress-message-2 =
+    <span>¡chawila'!</span>nitz'aq taq k'exonem pacha' uk'ak'arisaxik taq retokib'al sib'alaj nim kub'an pa ¶                                                                                                                                                               
+    uchajixik le awinaqilal q'alajisanem.
+progress-message-3 = <span>Utz chak xab'ano chech usolik taq retztaqan</span>jela' kab'an chech. K'o na nik'aj chik kab'ano.
+progress-message-4 = <span>Xpe rutzirik</span> Atk'o chi chi unaqaj le nab'e juch'.
+progress-complete-message =
+    <span>utz una'ik, tzij?</span>We kawaj kab'an na, wa' jun utz uq'ijol ¶                                          
+    chak'ak'arisaj nik'aj chi okem ruk' taq retokib'al qas k'o uchuq'ab'.
 
 ##
 
+resolve-this-breach-link = Chasolo' we retztaqan
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Kojom retal pacha' solom:
+hide-resolved-button = Owatal solom
+show-resolved-button = k'utb'al solom
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Retokib'al k'o pa uk'axk'olil pa taq retztaqan le man solom taj
+       *[other] Taq retokib'al k'o pa uk'axk'olil pa taq retztaqan le man solom taj
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] eta'matal retztaqan rech juq'attzij kojom retal pacha' solom
+       *[other] eta'matal retztaqan rech taq juq'attzij kojom retal pacha' solom
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = K'ak'
+mobile-promo-headline = Chak'ama' { -brand-name } pa le ach'aweb'al chi'l pa le t'in kemahib'il
+mobile-promo-body = Aninaq, echeb'alil, chi'l chajital nik'onel apawije' katb'e wi. Chariqa' { -brand-name } pa le Google Play chi'l pa App Store.
+mobile-promo-cta = Chariqa' { -brand-name } chi'l Android chi'l iOS
+promo-lockwise-headline = Chak'ama' b'i taq aretokib'al apawije'
+lockwise-promo-body = Chacholajij taq umajixik kemchak pa ronojel taq awiqkemchakub'al. Chatokoq pa chajital okem pa le akematz'ib', ch'aweb'al  on alaj t'inkemachib'il.
+promo-lockwise-cta = Chariqa' { -brand-lockwise }
+fpn-promo-headline = Chawowaj le ak'olib'al pa taq uk'olib'al web' chi'l taq terenelab'
