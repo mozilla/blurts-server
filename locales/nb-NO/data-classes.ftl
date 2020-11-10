@@ -78,6 +78,7 @@ nicknames = Kallenavn
 occupations = Yrke
 parenting-plans = Foreldreplaner
 partial-credit-card-data = Delvis betalingskorts-data
+partial-dates-of-birth = Delvis fødselsdatoer
 passport-numbers = Passnummer
 password-hints = Passordhint
 password-strengths = Passordstyrke
