@@ -78,6 +78,7 @@ nicknames = Smeknamn
 occupations = Yrken
 parenting-plans = Föräldraplaner
 partial-credit-card-data = Delvis kreditkortsdata
+partial-dates-of-birth = Delar av födelsedatum
 passport-numbers = Passnummer
 password-hints = Lösenordstips
 password-strengths = Lösenordsstyrka
