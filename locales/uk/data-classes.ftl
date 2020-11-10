@@ -78,6 +78,7 @@ nicknames = Псевдоніми
 occupations = Заняття
 parenting-plans = Планування батьківства
 partial-credit-card-data = Частини даних про кредитні картки
+partial-dates-of-birth = Часткові дати народження
 passport-numbers = Номери паспортів
 password-hints = Підказки паролів
 password-strengths = Надійність пароля
