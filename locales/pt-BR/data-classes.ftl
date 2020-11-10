@@ -78,6 +78,7 @@ nicknames = Apelidos
 occupations = Trabalhos
 parenting-plans = Planejamento familiar
 partial-credit-card-data = Dados parciais de cartões de crédito
+partial-dates-of-birth = Datas de nascimento parciais
 passport-numbers = Números de passaporte
 password-hints = Dicas de senha
 password-strengths = Força da senha
