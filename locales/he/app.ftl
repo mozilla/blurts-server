@@ -12,6 +12,7 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
@@ -101,6 +102,9 @@ cant-stop-hackers = אי אפשר למנוע מהאקרים לפרוץ. אבל �
 if-your-info = אם המידע שלך נחשף בדליפת נתונים חדשה, נשלח לך התרעה.
 monitor-several-emails = ניטור אחר מספר כתובות דוא״ל
 sensitive-sites = כיצד { -product-name } מתייחס לאתרים רגישים?
+about-fxm-headline = על אודות { -product-name }
+# How Firefox Monitor works
+how-fxm-works = איך { -product-name } עובד
 protect-your-privacy = הגנה על הפרטיות המקוונת שלך
 
 ## What to do after data breach tips
