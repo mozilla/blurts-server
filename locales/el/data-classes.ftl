@@ -78,6 +78,7 @@ nicknames = Ψευδώνυμα
 occupations = Επαγγέλματα
 parenting-plans = Γονικά σχέδια
 partial-credit-card-data = Μερικά δεδομένα πιστωτικών καρτών
+partial-dates-of-birth = Μερικές ημερομηνίες γέννησης
 passport-numbers = Αριθμοί διαβατηρίου
 password-hints = Υποδείξεις κωδικών πρόσβασης
 password-strengths = Ισχύες κωδικών πρόσβασης
