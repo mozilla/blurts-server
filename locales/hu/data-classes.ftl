@@ -78,6 +78,7 @@ nicknames = Becenevek
 occupations = Foglalkozások
 parenting-plans = Családtervezési tervek
 partial-credit-card-data = Részleges hitelkártyaadatok
+partial-dates-of-birth = Részleges születési dátumok
 passport-numbers = Útlevélszámok
 password-hints = Jelszóemlékeztetők
 password-strengths = Jelszóerősségek
