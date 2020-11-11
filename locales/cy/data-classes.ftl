@@ -78,6 +78,7 @@ nicknames = Llysenwau
 occupations = Galwedigaethau
 parenting-plans = Cynlluniau magu plant
 partial-credit-card-data = Data cerdyn credyd rhannol
+partial-dates-of-birth = Dyddiadau geni rhannol
 passport-numbers = Rhifau pasbort
 password-hints = Awgrymiadau cyfrinair
 password-strengths = Cryfder cyfrinair
