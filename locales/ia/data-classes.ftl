@@ -78,6 +78,7 @@ nicknames = Pseudonymos
 occupations = Occupationes
 parenting-plans = Planos de education
 partial-credit-card-data = Datos partial del carta de credito
+partial-dates-of-birth = Datas de nascentia partial
 passport-numbers = numeros de passaporto
 password-hints = Suggestiones del contrasigno
 password-strengths = Fortias del contrasigno
