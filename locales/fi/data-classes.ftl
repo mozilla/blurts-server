@@ -78,6 +78,7 @@ nicknames = Nimimerkit
 occupations = Ammatit
 parenting-plans = Vanhemmuussuunnitelmat
 partial-credit-card-data = Osittaiset luottokorttitiedot
+partial-dates-of-birth = Osittaiset syntymäajat
 passport-numbers = Passinumerot
 password-hints = Salasanavihjeet
 password-strengths = Salasanojen vahvuudet
