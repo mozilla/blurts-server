@@ -78,6 +78,7 @@ nicknames = Bijnamen
 occupations = Beroepen
 parenting-plans = Ouderschapsplannen
 partial-credit-card-data = Gedeeltelijke creditcardgegevens
+partial-dates-of-birth = Gedeeltelijke geboortedata
 passport-numbers = Paspoortnummers
 password-hints = Wachtwoordhints
 password-strengths = Wachtwoordsterktes
