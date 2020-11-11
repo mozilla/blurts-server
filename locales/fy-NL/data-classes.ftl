@@ -78,6 +78,7 @@ nicknames = Bynammen
 occupations = Beroppen
 parenting-plans = Alderskipsplannen
 partial-credit-card-data = Part fan creditcardgegevens
+partial-dates-of-birth = Parten fan bertedata
 passport-numbers = Paspoartnûmers
 password-hints = Wachtwurdhints
 password-strengths = Wachtwurdsterktes
