@@ -78,6 +78,7 @@ nicknames = Teragua’u
 occupations = Mba’e rejapo
 parenting-plans = Pehẽnguekuéra aporã
 partial-credit-card-data = Mba’ekuaarã vore kuatia’atã ñemurã rehegua
+partial-dates-of-birth = Teñoiha arange voreguáva
 passport-numbers = Pasaporte papapy
 password-hints = Ñe’ẽñemi je’eporã
 password-strengths = Ñe’ẽñemi mbaretekue
