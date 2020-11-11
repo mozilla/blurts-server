@@ -78,6 +78,7 @@ nicknames = 昵称
 occupations = 职业
 parenting-plans = 育儿计划
 partial-credit-card-data = 部分信用卡数据
+partial-dates-of-birth = 部分生日日期
 passport-numbers = 护照号码
 password-hints = 密码提示
 password-strengths = 密码强度
