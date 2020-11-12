@@ -78,6 +78,7 @@ nicknames = Takma adlar
 occupations = Meslekler
 parenting-plans = Ebeveynlik planları
 partial-credit-card-data = Kısmi kredi kartı verileri
+partial-dates-of-birth = Kısmi doğum tarihleri
 passport-numbers = Pasaport numaraları
 password-hints = Parola ipuçları
 password-strengths = Parola güçleri
