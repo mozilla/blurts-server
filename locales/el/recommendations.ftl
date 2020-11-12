@@ -24,6 +24,10 @@ rec-pw-4-subhead = Ρύθμιση ελέγχου ταυτότητας δύο π�
 # Link title
 rec-pw-4-cta = Δείτε ιστοσελίδες που προσφέρουν 2FA
 # Recommendation subhead
+rec-bank-acc-subhead = Ελέγξτε τις κινήσεις του τραπεζικού σας λογαριασμού
+# Recommendation subhead
+rec-cc-subhead = Ελέγξτε τις κινήσεις της πιστωτικής σας κάρτας
+# Recommendation subhead
 rec-ip-subhead = Χρησιμοποιήστε μια υπηρεσία που αποκρύπτει τη διεύθυνση IP σας
 # Link title
 rec-ip-us-cta = Δοκιμή του { -brand-fpn }
