@@ -227,6 +227,9 @@ welcome-back = Καλώς ορίσατε και πάλι, { $userName }!
 welcome-user = Καλώς ορίσατε, { $userName }!
 breach-alert-subject = Το { -product-name } βρήκε το email σας σε νέα παραβίαση δεδομένων
 your-info-was-discovered-headline = Οι πληροφορίες σας ανακαλύφθηκαν σε μια νέα παραβίαση δεδομένων.
+your-info-was-discovered-blurb =
+    Έχετε εγγραφεί στις ειδοποιήσεις του { -product-name } 
+    όταν το email σας εμφανιστεί σε παραβίαση δεδομένων. Δείτε τι γνωρίζουμε για αυτή την παραβίαση.
 what-to-do-after-breach = Ενέργειες μετά από μια παραβίαση δεδομένων
 ba-next-step-1 = Αλλάξτε τον κωδικό πρόσβασής σας με έναν ισχυρό και μοναδικό κωδικό.
 ba-next-step-blurb-1 =
@@ -374,6 +377,7 @@ breach-alert-notifications = Ειδοποιήσεις παραβιάσεων
 # and is followed by that date. 
 breach-added-label = Ημερομηνία προσθήκης:
 steps-to-protect-desc = Ενημερωθείτε για τις πιο κοινές απειλές και μάθετε τι να προσέξετε περισσότερο
+five-myths-desc = Μάθετε πώς να αποφεύγετε τις συχνά λάθη κωδικών πρόσβασης που διευκολύνουν ένα hacker.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Οι αλλαγές αποθηκεύτηκαν!
 # Section headline
@@ -399,6 +403,7 @@ mark-as-resolve-button = Επισήμανση ως λυμένη
 marked-as-resolved-label = Επισημάνθηκε ως λυμένη
 undo-button = Αναίρεση
 confirmation-1-subhead = Ωραία! Μόλις επιλύσατε την πρώτη σας παραβίαση.
+confirmation-1-body = Συνεχίστε ακάθεκτα. Ελέγξτε τον πίνακα ελέγχου σας για να δείτε αν υπάρχουν περισσότερες εργασίες.
 confirmation-2-subhead = Άλλη μια νίκη εναντίον των hackers!
 confirmation-2-body = Λαμβάνετε σημαντικά βήματα για την προστασία των διαδικτυακών λογαριασμών σας.
 # This string contains nested markup that becomes a link later in the code.
