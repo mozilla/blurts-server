@@ -377,6 +377,9 @@ verify-the-link = Επαληθεύστε το σύνδεσμο που απεστ
 
 email-verified = Επιτυχής επαλήθευση email!
 email-added-to-subscription = Θα σας ειδοποιήσουμε αν το { $email } εμφανιστεί σε νέα διαρροή δεδομένων.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = Για να δείτε και να διαχειριστείτε όλα τα email που έχετε καταχωρήσει για εποπτεία παραβιάσεων, { $nestedSignInLink }.
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = σύνδεση
 
@@ -396,12 +399,16 @@ breach-alert-notifications = Ειδοποιήσεις παραβιάσεων
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Ημερομηνία προσθήκης:
+what-to-do-after-breach-desc = Κλειδώστε τους λογαριασμούς σας για να μην πέσουν τα στοιχεία σας σε λάθος χέρια.
+create-strong-passwords-desc = Δημιουργήστε ισχυρούς κωδικούς πρόσβασης που δεν μαντεύονται εύκολα.
 steps-to-protect-desc = Ενημερωθείτε για τις πιο κοινές απειλές και μάθετε τι να προσέξετε περισσότερο
 five-myths-desc = Μάθετε πώς να αποφεύγετε τις συχνά λάθη κωδικών πρόσβασης που διευκολύνουν ένα hacker.
+take-further-steps-desc = Μάθετε πώς μπορείτε να μετριάσετε τους κινδύνους κλοπής ταυτότητας, για να αποφύγετε τυχόν οικονομικές απώλειες.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Οι αλλαγές αποθηκεύτηκαν!
 # Section headline
 rec-section-headline = Τι να κάνετε για αυτή την παραβίαση
+rec-section-subhead = Σας συνιστούμε να ακολουθήσετε τα παρακάτω βήματα για την προστασία των προσωπικών στοιχείων και της ψηφιακής σας ταυτότητας.
 # Section headline
 rec-section-headline-no-pw = Τι πρέπει να κάνετε για να προστατέψετε τα προσωπικά σας δεδομένα
 # Button
