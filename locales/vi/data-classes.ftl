@@ -78,6 +78,7 @@ nicknames = Biệt danh
 occupations = Nghề nghiệp
 parenting-plans = Kế hoạch nuôi dạy con
 partial-credit-card-data = Dữ liệu một phần thẻ tín dụng
+partial-dates-of-birth = Một phần ngày sinh
 passport-numbers = Số hộ chiếu
 password-hints = Mật khẩu gợi ý
 password-strengths = Độ mạnh mật khẩu
