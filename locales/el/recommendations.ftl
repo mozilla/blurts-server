@@ -43,6 +43,10 @@ rec-ip-non-us =
     την τοποθεσία και τη διεύθυνση IP σας.
 # Recommendation subhead
 rec-moz-vpn-cta = Δοκιμή του { -brand-mozilla-vpn }
+rec-moz-vpn =
+    Η διεύθυνση IP (Internet Protocol) σας μπορεί να αποκαλύψει την τοποθεσία και τον πάροχο διαδικτύου σας. Μια υπηρεσία όπως το
+    { -brand-fpn } αποκρύπτει τη διεύθυνση IP και την τοποθεσία σας για το { -brand-name }, ενώ μια υπηρεσία όπως το { -brand-mozilla-vpn } αποκρύπτει τη
+    διεύθυνση IP και την τοποθεσία ολόκληρης της συσκευή σας.
 rec-hist-pw-subhead = Αποφύγετε την επαναχρησιμοποίηση κωδικών πρόσβασης
 # Link title
 rec-hist-pw-cta-fx = Προβολή συνδέσεων στο { -brand-name }

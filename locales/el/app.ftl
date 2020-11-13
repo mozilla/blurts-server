@@ -171,6 +171,10 @@ how-fxm-1-blurb =
     Αυτή η βασική αναζήτηση θα ανασύρει τις περισσότερες παραβιάσεις δεδομένων, αλλά όχι
     αυτά που περιέχουν ευαίσθητες προσωπικές πληροφορίες.
 how-fxm-2-headline = Εγγραφή για εποπτεία παραβιάσεων
+how-fxm-2-blurb =
+    Δημιουργήστε ένα { -brand-fxa } ώστε να εποπτεύετε συνεχώς το email σας για παραβιάσεις. 
+    Μόλις επαληθεύσετε το email σας, θα λάβετε επίσης μια πλήρη αναφορά παλαιών παραβιάσεων, 
+    καθώς και παραβιάσεων ευαίσθητων δεδομένων.
 how-fxm-3-headline = Eιδοποιήσεις στο πρόγραμμα περιήγησής σας
 how-fxm-3-blurb =
     Με το { -brand-name }, θα λάβετε μια ειδοποίηση αν επισκεφθείτε 
@@ -286,6 +290,7 @@ error-bot-blurb =
     διευθύνσεις email σε μικρό χρονικό διάστημα. Δεν μπορείτε προς το παρόν 
     να κάνετε νέες αναζητήσεις. Μπορείτε να δοκιμάσετε ξανά αργότερα.
 error-csrf-headline = Ο χρόνος συνεδρίας έληξε
+error-invalid-unsub = Κατάργηση εγγραφής από τις ειδοποιήσεις του { -product-name }
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
