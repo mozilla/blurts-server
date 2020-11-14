@@ -78,6 +78,7 @@ nicknames = Nicknames
 occupations = Occupations
 parenting-plans = Parenting plans
 partial-credit-card-data = Partial credit card data
+partial-dates-of-birth = Partial dates of birth
 passport-numbers = Passport numbers
 password-hints = Password hints
 password-strengths = Password strengths
