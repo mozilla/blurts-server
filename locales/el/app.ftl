@@ -439,6 +439,7 @@ confirmation-1-subhead = Ωραία! Μόλις επιλύσατε την πρώ
 confirmation-1-body = Συνεχίστε ακάθεκτα. Ελέγξτε τον πίνακα ελέγχου σας για να δείτε αν υπάρχουν περισσότερες εργασίες.
 confirmation-2-subhead = Άλλη μια νίκη εναντίον των hackers!
 confirmation-2-body = Λαμβάνετε σημαντικά βήματα για την προστασία των διαδικτυακών λογαριασμών σας.
+confirmation-3-subhead = Αντιμετωπίστηκε ακόμη ένα. Καλή δουλειά!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Είναι ο νέος σας κωδικός πρόσβασης μοναδικός, ισχυρός και δύσκολος; <a>Μάθετε εδώ</a>
