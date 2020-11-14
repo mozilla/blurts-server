@@ -458,6 +458,12 @@ resolve-top-notification-plural =
 ##
 
 marking-this-subhead = Επισήμανση αυτής της παραβίασης ως επιλυμμένης
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Μόλις ολοκληρώσετε τα βήματα για τη διευθέτηση αυτής της παραβίασης</span>,
+    μπορείτε να την επισημάνετε ως επιλυμένη. Μπορείτε να δείτε ακόμη τα στοιχεία της 
+    παραβίασης από τον πίνακα ελέγχου σας, ανά πάσα στιγμή.
 mark-as-resolve-button = Επισήμανση ως λυμένη
 marked-as-resolved-label = Επισημάνθηκε ως λυμένη
 undo-button = Αναίρεση
