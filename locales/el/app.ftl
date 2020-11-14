@@ -251,6 +251,10 @@ ba-next-step-blurb-1 =
     ειδικούς χαρακτήρες και αριθμούς. Δεν περιέχει προσωπικές πληροφορίες όπως
     τη διεύθυνσή σας, τα γενέθλιά σας ή οικογενειακά ονόματα.
 ba-next-step-2 = Σταματήστε τη χρήση του εκτεθειμένου κωδικό πρόσβασης.
+ba-next-step-blurb-2 =
+    Οι κυβερνοεγκληματίες μπορούν να βρουν τον κωδικό πρόσβασής σας στο dark web 
+    για να συνδεθούν σε άλλους λογαριασμούς σας. Ο καλύτερος τρόπος προστασίας 
+    είναι να χρησιμοποιείτε μοναδικό κωδικό πρόσβασης για κάθε λογαριασμό.
 ba-next-step-3 = Μάθετε πώς να δημιουργήσετε καλύτερους κωδικούς πρόσβασης και πώς να τους προστατέψετε.
 faq1 = Δεν αναγνωρίζω αυτή την εταιρεία ή ιστοσελίδα. Γιατί είμαι σε αυτή την παραβίαση;
 faq2 = Γιατί πέρασε τόσος καιρός μέχρι να ενημερωθώ για αυτή την παραβίαση;
@@ -291,6 +295,7 @@ error-bot-blurb =
     διευθύνσεις email σε μικρό χρονικό διάστημα. Δεν μπορείτε προς το παρόν 
     να κάνετε νέες αναζητήσεις. Μπορείτε να δοκιμάσετε ξανά αργότερα.
 error-csrf-headline = Ο χρόνος συνεδρίας έληξε
+error-csrf-blurb = Πατήστε το κουμπί "Πίσω" του προγράμματος περιήγησής σας, κάντε ανανέωση της σελίδας και δοκιμάστε ξανά.
 error-invalid-unsub = Κατάργηση εγγραφής από τις ειδοποιήσεις του { -product-name }
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
@@ -399,6 +404,7 @@ breach-alert-notifications = Ειδοποιήσεις παραβιάσεων
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = Ημερομηνία προσθήκης:
+how-hackers-work-desc = Προστατέψτε τους κωδικούς πρόσβασής σας από κυβερνοεγκληματίες, καθώς αυτοί τους ενδιαφέρουν περισσότερο.
 what-to-do-after-breach-desc = Κλειδώστε τους λογαριασμούς σας για να μην πέσουν τα στοιχεία σας σε λάθος χέρια.
 create-strong-passwords-desc = Δημιουργήστε ισχυρούς κωδικούς πρόσβασης που δεν μαντεύονται εύκολα.
 steps-to-protect-desc = Ενημερωθείτε για τις πιο κοινές απειλές και μάθετε τι να προσέξετε περισσότερο
@@ -490,12 +496,14 @@ known-data-breaches-resolved =
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Νέο
 mobile-promo-headline = Φέρτε το { -brand-name } στο τηλέφωνο και το tablet σας
+mobile-promo-body = Γρήγορη, ιδιωτική και ασφαλής περιήγηση όπου κι αν βρίσκεστε. Βρείτε το { -brand-name } στο Google Play και το App Store.
 mobile-promo-cta = Λήψη { -brand-name } σε Android και iOS
 promo-lockwise-headline = Πάρτε τους κωδικούς πρόσβασής σας παντού
 promo-lockwise-cta = Λήψη { -brand-lockwise }
 fpn-promo-headline = Καλύψτε την τοποθεσία σας από ιστοσελίδες και ιχνηλάτες
 promo-fpn-cta = Λήψη { -brand-fpn }
 monitor-promo-headline = Μάθετε για νέες παραβιάσεις δεδομένων
+monitor-promo-body = Λάβετε ειδοποίηση την επόμενη φορά που θα διαρρεύσουν τα προσωπικά στοιχεία σας σε μια γνωστή παραβίαση.
 ecosystem-promo-headline = Προστατέψτε τη ζωή σας στο διαδίκτυο με προϊόντα που σέβονται το απόρρητο
 ecosystem-promo-body = Όλα τα προϊόντα { -brand-name } τιμούν την υπόσχεση μας σχετικά με τα προσωπικά δεδομένα: Λιγότερα δεδομένα. Με ασφάλεια. Χωρίς μυστικά.
 promo-ecosystem-cta = Προβολή όλων των προϊόντων
