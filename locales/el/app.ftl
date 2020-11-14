@@ -306,6 +306,14 @@ email-addresses-being-monitored =
        *[other] διευθύνσεις email υπό εποπτεία
     }
 # This string is displayed under a large numeral that indicates the total number
+# of data breaches that exposed a user’s password. Don’t add $passwords to
+# your localization, because it would result in the number showing twice.
+passwords-exposed =
+    { $passwords ->
+        [one] Εκτεθειμένος κωδικός πρόσβασης σε όλες τις παραβιάσεις
+       *[other] Εκτεθειμένοι κωδικοί πρόσβασης σε όλες τις παραβιάσεις
+    }
+# This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
@@ -470,6 +478,12 @@ progress-complete = Όλες οι γνωστές παραβιάσεις έχου
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>Κάνατε μια εξαιρετική αρχή!</span> Δείτε τις υπόλοιπες παραβιάσεις για να μάθετε 
+    ποια μέτρα πρέπει να πάρετε.
+progress-message-2 =
+    <span>Συνεχίστε!</span> Μικρές αλλαγές, όπως η ενημέρωση κωδικών πρόσβασης, μπορεί να επηρεάσουν 
+    σημαντικά την προστασία των προσωπικών σας δεδομένων.
 progress-message-3 = <span>Καλή δουλειά με την επίλυση διαρροών!</span> Συνεχίστε έτσι. Απομένουν λίγες ακόμα.
 progress-message-4 = <span>Σχεδόν τελειώσατε!</span> Είστε κοντά στη γραμμή τερματισμού.
 progress-complete-message =
@@ -500,8 +514,10 @@ mobile-promo-headline = Φέρτε το { -brand-name } στο τηλέφωνο 
 mobile-promo-body = Γρήγορη, ιδιωτική και ασφαλής περιήγηση όπου κι αν βρίσκεστε. Βρείτε το { -brand-name } στο Google Play και το App Store.
 mobile-promo-cta = Λήψη { -brand-name } σε Android και iOS
 promo-lockwise-headline = Πάρτε τους κωδικούς πρόσβασής σας παντού
+lockwise-promo-body = Παρακολουθήστε τις συνδέσεις σας σε όλες τις συσκευές σας. Ασφαλής πρόσβαση από υπολογιστή, τηλέφωνο ή tablet.
 promo-lockwise-cta = Λήψη { -brand-lockwise }
 fpn-promo-headline = Καλύψτε την τοποθεσία σας από ιστοσελίδες και ιχνηλάτες
+promo-fpn-body = Το { -brand-fpn } αποπροσανατολίζει τις ιστοσελίδες και τα στοιχεία συλλογής δεδομένων που δημιουργούν διαφημιστικά προφίλ για εσάς, αποκρύπτοντας την πραγματική διεύθυνση IP σας.
 promo-fpn-cta = Λήψη { -brand-fpn }
 monitor-promo-headline = Μάθετε για νέες παραβιάσεις δεδομένων
 monitor-promo-body = Λάβετε ειδοποίηση την επόμενη φορά που θα διαρρεύσουν τα προσωπικά στοιχεία σας σε μια γνωστή παραβίαση.
