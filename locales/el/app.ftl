@@ -188,6 +188,11 @@ how-fxm-3-blurb =
 wtd-after-website = Τι να κάνετε μετά από μια παραβίαση ιστοσελίδας:
 wtd-after-data-agg = Τι πρέπει να κάνετε μετά από μια παραβίαση συγκέντρωσης δεδομένων:
 what-is-data-agg = Τι είναι ο συναθροιστής δεδομένων;
+what-is-data-agg-blurb =
+    Οι συναθροιστές δεδομένων, ή data brokers, συλλέγουν πληροφορίες από δημόσια αρχεία 
+    και τις αγοράζουν από άλλες εταιρείες. Συνδυάζουν αυτά τα δεδομένα για να τα πουλήσουν 
+    σε εταιρείες για σκοπούς μάρκετινγκ. Τα θύματα αυτών των παραβιάσεων δεν εξαπατώνται 
+    συνήθως, αλλά οι hacker μπορούν να τους πλαστοπροσωπήσουν.
 protect-your-privacy = Προστατέψτε το διαδικτυακό σας απόρρητο
 no-pw-to-change = Σε αντίθεση με μια παραβίαση ιστοσελίδας, δεν υπάρχει κάποιος κωδικός πρόσβασης για να αλλάξετε.
 avoid-personal-info = Αποφύγετε τη χρήση προσωπικών πληροφοριών σε κωδικούς πρόσβασης
@@ -305,6 +310,10 @@ error-bot-blurb =
 error-csrf-headline = Ο χρόνος συνεδρίας έληξε
 error-csrf-blurb = Πατήστε το κουμπί "Πίσω" του προγράμματος περιήγησής σας, κάντε ανανέωση της σελίδας και δοκιμάστε ξανά.
 error-invalid-unsub = Κατάργηση εγγραφής από τις ειδοποιήσεις του { -product-name }
+error-invalid-unsub-blurb =
+    Θα πρέπει να καταργήσετε τη συνδρομή σας σε κάποιο από τα 
+    email του { -product-name }. Ελέγξτε τα εισερχόμενά σας για μηνύματα από το 
+    { -brand-team-email }. Επιλέξτε το σύνδεσμο κατάργησης εγγραφής στο κάτω μέρος.
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
