@@ -78,6 +78,7 @@ nicknames = Přezdívky
 occupations = Povolání
 parenting-plans = Plány rodičovství
 partial-credit-card-data = Částečné údaje o platebních kartách
+partial-dates-of-birth = Neúplná data narození
 passport-numbers = Čísla cestovních pasů
 password-hints = Nápovědy k heslům
 password-strengths = Síly hesel
