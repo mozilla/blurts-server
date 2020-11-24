@@ -278,8 +278,8 @@ other-breaches-found =
 fb-comp-only = Este email apareceu no vazamento de { $breachName }
 fb-comp-and-others =
     { $breachCount ->
-        [one] Este e-mail apareceu em { $breachCount } vazamento de dados conhecido, incluindo { $breachName }.
-       *[other] Este e-mail apareceu em { $breachCount } vazamentos de dados conhecidos, incluindo { $breachName }.
+        [one] Este email apareceu em { $breachCount } vazamento de dados conhecido, incluindo { $breachName }.
+       *[other] Este email apareceu em { $breachCount } vazamentos de dados conhecidos, incluindo { $breachName }.
     }
 no-other-breaches-found = Nenhum outro vazamento foi encontrado em uma pesquisa básica.
 no-results-blurb = Desculpe, aquele vazamento não está em nosso banco de dados.
@@ -293,22 +293,22 @@ currently-showing = Exibindo:
 error-bot-headline = Pesquisas temporariamente suspensas
 error-bot-blurb =
     Estamos preocupados, você pode ser um 'bot' porque pesquisou vários 
-    endereços de e-mail em um curto período de tempo. No momento você está 
+    endereços de email em um curto período de tempo. No momento você está 
     bloqueado de fazer novas pesquisas. Você pode tentar novamente mais tarde.
 error-csrf-headline = A sessão expirou
 error-csrf-blurb = Selecione o botão de voltar do seu navegador, recarregue a página e tente novamente.
 error-invalid-unsub = Como cancelar a inscrição de alertas do { -product-name }
 error-invalid-unsub-blurb =
-    Você precisa cancelar a inscrição a partir de um dos e-mails que 
+    Você precisa cancelar a inscrição a partir de um dos emails que 
     o { -product-name } enviou a você. Procure na sua caixa de entrada mensagens 
-    de { -brand-team-email }. Selecione o link de cancelar inscrição no final do e-mail.
+    de { -brand-team-email }. Selecione o link de cancelar inscrição no final do email.
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
 email-addresses-being-monitored =
     { $emails ->
-        [one] Endereço de e-mail sendo monitorado
-       *[other] Endereços de e-mail sendo monitorados
+        [one] Endereço de email sendo monitorado
+       *[other] Endereços de email sendo monitorados
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -330,16 +330,16 @@ known-data-breaches-exposed =
 see-additional-breaches = Ver vazamentos adicionais
 scan-results-known-breaches =
     { $breachCount ->
-        [one] Este e-mail apareceu em 1 vazamento de dados conhecido.
-       *[other] Este e-mail apareceu em { $breachCount } vazamentos de dados conhecidos.
+        [one] Este email apareceu em 1 vazamento de dados conhecido.
+       *[other] Este email apareceu em { $breachCount } vazamentos de dados conhecidos.
     }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Resultados de: { $userEmail }
-other-monitored-emails = Outros e-mails monitorados
+other-monitored-emails = Outros emails monitorados
 email-verification-required = Verificação de email é necessária
-fxa-primary-email = E-mail da { -brand-fxa } - Principal
+fxa-primary-email = Email da { -brand-fxa } - Principal
 what-is-a-website-breach = O que é um vazamento de site?
 website-breach-blurb = Um vazamento de dados de site acontece quando criminosos cibernéticos roubam, copiam ou expõem informações pessoais de contas online. Geralmente é resultado de hackers procurando um ponto fraco na segurança do site. Vazamentos também podem acontecer quando informações de contas são vazados por acidente.
 security-tips-headline = Dicas de segurança para se proteger de hackers
@@ -347,10 +347,10 @@ steps-to-protect = Medidas a tomar para proteger sua identidade online
 take-further-steps = Tome medidas adicionais para proteger sua identidade
 alert-about-new-breaches = Me alertar sobre novos vazamentos
 see-if-youve-been-part = Veja se você foi vítima de um vazamento de dados online.
-get-ongoing-breach-monitoring = Tenha monitoramento contínuo de vazamentos para vários endereços de e-mail.
+get-ongoing-breach-monitoring = Tenha monitoramento contínuo de vazamentos para vários endereços de email.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Descobrir
-new-unsub-error = Você precisa cancelar a inscrição a partir de um dos e-mails que o { -product-name } enviou.
+new-unsub-error = Você precisa cancelar a inscrição a partir de um dos emails que o { -product-name } enviou.
 other-known-breaches-found =
     { $breachCount ->
         [one] No entanto, apareceu em { $breachCount } outro vazamento conhecido.
@@ -360,7 +360,7 @@ other-known-breaches-found =
 # of data classes that the breach exposed.
 additional-information-including = Informações adicionais, incluindo:
 # Title
-email-addresses-title = Endereços de e-mail
+email-addresses-title = Endereços de email
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Visão geral
@@ -378,14 +378,14 @@ signed-in-as = Acessando como: { $userEmail }
 filter-by = Filtrar por categoria:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
-to-affected-email = Enviar alertas de vazamento para os endereços de e-mail afetados
+to-affected-email = Enviar alertas de vazamento para os endereços de email afetados
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
 join-firefox = Existe um meio de proteger sua privacidade. Use o { -brand-name }.
 # Link title
 learn-more-link = Saiba mais.
-email-sent = E-mail enviado!
+email-sent = Email enviado!
 # Form title
-want-to-add = Quer adicionar outro e-mail?
+want-to-add = Quer adicionar outro email?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Clique no link de confirmação enviado para { $userEmail } para adicionar ao { -product-name }.
@@ -393,11 +393,11 @@ verify-the-link = Clique no link de confirmação enviado para { $userEmail } pa
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
-email-verified = E-mail confirmado com sucesso!
+email-verified = Email confirmado com sucesso!
 email-added-to-subscription = Alertaremos você, caso { $email } apareça em um vazamento de dados.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
-email-verified-view-dashboard = Para ver e gerenciar todos os e-mails que você cadastrou para monitoramento de vazamentos, { $nestedSignInLink }.
+email-verified-view-dashboard = Para ver e gerenciar todos os emails que você cadastrou para monitoramento de vazamentos, { $nestedSignInLink }.
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = entre
 
@@ -407,7 +407,7 @@ sign-in-nested = entre
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
-manage-all-emails = Gerencie todos os endereços de e-mail nas { $preferencesLink }.
+manage-all-emails = Gerencie todos os endereços de email nas { $preferencesLink }.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
@@ -440,8 +440,8 @@ see-additional-recs = Ver recomendações adicionais
 resolve-top-notification = { $affectedEmail } apareceu neste vazamento. <a>O que fazer agora</a>
 resolve-top-notification-plural =
     { $numAffectedEmails ->
-        [one] { $numAffectedEmails } dos seus endereços de e-mail apareceu neste vazamento. <a>O que fazer agora</a>
-       *[other] { $numAffectedEmails } dos seus endereços de e-mail apareceram neste vazamento. <a>O que fazer agora</a>
+        [one] { $numAffectedEmails } dos seus endereços de email apareceu neste vazamento. <a>O que fazer agora</a>
+       *[other] { $numAffectedEmails } dos seus endereços de email apareceram neste vazamento. <a>O que fazer agora</a>
     }
 
 ##

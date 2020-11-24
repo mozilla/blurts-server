@@ -116,7 +116,7 @@ rec-gen-3-subhead = Seja cauteloso ao fornecer informações pessoais
 rec-gen-3-cta = Ler mais dicas de segurança
 rec-gen-3 =
     Não forneça seus dados pessoais se não for necessário. Se for solicitado que 
-    informe seu endereço de e-mail, código postal ou número de telefone, você pode dizer não.
+    informe seu endereço de email, código postal ou número de telefone, você pode dizer não.
 # Recommendation subhead
 rec-gen-4-subhead = Atualize programas e aplicativos regularmente
 rec-gen-4 =
