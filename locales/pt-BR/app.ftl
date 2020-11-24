@@ -36,24 +36,24 @@ scan-title = { -product-name }: Resultados da Análise
 user-add-invalid-email = Endereço de email inválido
 user-add-too-many-emails = Você está monitorando o número máximo de endereços de email.
 user-add-email-verify-subject = Confirme sua inscrição no { -product-name }.
-user-add-duplicate-email = Este e-mail já foi adicionado ao { -product-name }.
+user-add-duplicate-email = Este email já foi adicionado ao { -product-name }.
 user-add-duplicate-email-part-2 = Visite suas { $preferencesLink } para verificar o status de { $userEmail }.
 error-headline = Erro
 user-verify-token-error = Token de verificação é necessário.
 user-verify-email-report-subject = Seu relatório do { -product-name }
 user-unsubscribe-token-error = É necessário um token para cancelar a inscrição.
-user-unsubscribe-token-email-error = Para cancelar a inscrição são necessários um token e um hash de e-mail.
+user-unsubscribe-token-email-error = Para cancelar a inscrição são necessários um token e um hash de email.
 user-unsubscribe-title = { -product-name }: Cancelar a inscrição
 pwt-section-headline = Senhas Fortes = Mais Proteção
 landing-headline = Seu direito de ficar seguro contra hackers começa aqui.
-scan-placeholder = Digite um endereço de e-mail
-scan-submit = Procure seu endereço de e-mail
-scan-error = Precisa ser um endereço de e-mail válido.
+scan-placeholder = Digite um endereço de email
+scan-submit = Procure seu endereço de email
+scan-error = Precisa ser um endereço de email válido.
 download-firefox-banner-button = Baixe o { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Enviado!
 sign-up = Cadastre-se
-form-signup-error = Precisa ser um endereço de e-mail válido
+form-signup-error = Precisa ser um endereço de email válido
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Data do vazamento:
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -61,7 +61,7 @@ compromised-accounts = Contas comprometidas:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Dados comprometidos:
 unsub-headline = Cancelar a inscrição no { -product-name-nowrap }
-unsub-blurb = Isso irá remover seu endereço de e-mail da lista do { -product-name-nowrap } e você não irá mais receber alertas quando novos vazamentos forem anunciados.
+unsub-blurb = Seu endereço de email será removido da lista do { -product-name-nowrap } e você não irá mais receber alertas quando novos vazamentos forem anunciados.
 unsub-button = Cancelar a inscrição
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Dados de vazamentos fornecidos por { $hibp-link }
@@ -70,7 +70,7 @@ share-facebook-headline = Descubra se você foi vítima de um vazamento de dados
 share-facebook-blurb = Suas contas online foram expostas em um vazamento de dados?
 og-site-description = Descubra se você foi vítima de um vazamento de dados com o { -product-name }. Cadastre-se para receber alertas sobre futuros vazamentos e receber dicas para manter suas contas seguras.
 show-all = Mostrar tudo
-fxa-scan-another-email = Quer verificar outro e-mail?
+fxa-scan-another-email = Quer verificar outro email?
 sign-in = Entre
 sign-out = Sair
 # Manage Firefox Account, link to page where account holders can change their account settings.
@@ -92,11 +92,11 @@ fxa-what-to-do-blurb-1 =
     criou, ou uma empresa que mudou de nome.
 fxa-what-to-do-subhead-2 = Pare de usar a senha exposta, e mude em todo lugar que a usou.
 fxa-wtd-blurb-2 =
-    Hackers podem tentar usar esta mesma senha e seu e-mail para invadir outras contas.  
+    Hackers podem tentar usar esta mesma senha e seu email para invadir outras contas.  
     Crie uma senha diferente e única para cada conta, especialmente para sua conta de banco, 
-    e-mail e outros sites onde você salva informações pessoais.
+    email e outros sites onde salva informações pessoais.
 fxa-what-to-do-blurb-3 =
-    A maioria dos vazamentos só expõem e-mails e senhas, mas alguns incluem informações financeiras confidenciais. 
+    A maioria dos vazamentos só expõe emails e senhas, mas alguns incluem informações financeiras confidenciais. 
     Se números de sua conta de banco ou cartão de crédito foram expostos, alerte seu banco para a possibilidade de fraudes. 
     Monitore o extrato para ver se há cobranças que você não reconhece.
 fxa-what-to-do-subhead-4 = Receba ajuda para lembrar todas as suas senhas e mantê-las em segurança.
@@ -131,8 +131,8 @@ how-hackers-work = Entenda como os hackers trabalham
 monitor-your-online-accounts = Inscreva-se no monitoramento de vazamentos de dados com uma { -brand-fxa }.
 stay-alert = Receba alertas sobre novos vazamentos
 if-your-info = Se suas informações surgirem em um novo vazamento de dados, enviaremos um alerta.
-search-all-emails = Pesquise vazamentos de todas as suas contas de e-mail e receba alertas de novas ameaças.
-monitor-several-emails = Monitore vários e-mails
+search-all-emails = Pesquise vazamentos de todas as suas contas de email e receba alertas de novas ameaças.
+monitor-several-emails = Monitore vários emails
 take-action = Tome atitude para proteger suas contas
 keep-your-data-safe = Descubra o que você precisa fazer para manter seus dados protegidos contra criminosos cibernéticos.
 website-breach = Vazamento de site
@@ -149,27 +149,27 @@ what-data = Que dados foram comprometidos:
 sensitive-sites = Com o { -product-name } trata sites sensíveis?
 sensitive-sites-copy =
     O { -product-name } só revela contas associadas a esses 
-    tipos de vazamento após um endereço de e-mail ter sido validado. Significa que você é 
+    tipos de vazamento após um endereço de email ter sido validado. Significa que você é 
     a única pessoa que pode ver se suas informações apareceram em um vazamento (a menos que
-    mais alguém tenha acesso à sua conta de e-mail).
+    mais alguém tenha acesso à sua conta de email).
 delayed-reporting-headline = Por que demorou tanto para relatar este vazamento?
 delayed-reporting-copy = Às vezes demora meses ou anos para que credenciais expostas em um vazamento de dados apareça na dark web. Vazamentos são adicionados ao nosso banco de dados assim que são descobertos e confirmados.
 about-fxm-headline = Sobre o { -product-name }
 about-fxm-blurb = O { -product-name } avisa se suas contas online estiveram envolvidas em um vazamento de dados. Descubra se você esteve em algum vazamento de dados, receba alertas sobre novos vazamentos e tome medidas para proteger suas contas online. O { -product-name } é fornecido pela { -brand-Mozilla }.
 fxm-warns-you =
-    O { -product-name } avisa se seu endereço de e-mail foi exposto em um
+    O { -product-name } avisa se seu endereço de email foi exposto em um
     vazamento de dados online. Veja se suas informações foram expostas,
     aprenda como proteger melhor suas contas online e receba alertas
-    caso seu endereço de e-mail apareça em um novo vazamento.
+    caso seu endereço de email apareça em um novo vazamento.
 # How Firefox Monitor works
 how-fxm-works = Como o { -product-name } funciona
 how-fxm-1-headline = Faça uma pesquisa básica
 how-fxm-1-blurb =
-    Pesquise seu endereço de e-mail em vazamentos de dados tornados públicos desde 2007.
+    Pesquise seu endereço de email em vazamentos de dados tornados públicos desde 2007.
     Esta pesquisa básica traz à tona a maioria dos vazamentos de dados,
     mas não os que contêm informações pessoais sensíveis.
 how-fxm-2-headline = Cadastre-se para ter monitoramento de vazamentos
-how-fxm-2-blurb = Crie uma { -brand-fxa } para monitorar seu e-mail em vazamentos futuros. Após confirmar seu e-mail, receberá também um relatório completo de vazamentos já detectados, incluindo vazamentos sensíveis.
+how-fxm-2-blurb = Crie uma { -brand-fxa } para monitorar seu email em vazamentos futuros. Após validar seu email, receberá também um relatório completo de vazamentos já detectados, incluindo vazamentos sensíveis.
 how-fxm-3-headline = Receba notificações em seu navegador
 how-fxm-3-blurb =
     Se você usar o { -brand-name }, receberá uma notificação se visitar 
@@ -202,7 +202,7 @@ five-myths = 5 mitos sobre gerenciadores de senhas
 create-a-fxa = Crie uma { -brand-fxa } para obter seu relatório completo de vazamentos e receber alertas.
 feat-security-tips = Dicas de segurança para proteger suas contas
 feat-sensitive = Pesquisa avançada em vazamentos sensíveis
-feat-enroll-multiple = Inscreva vários e-mails na monitoração de vazamentos
+feat-enroll-multiple = Inscreva vários emails na monitoração de vazamentos
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
@@ -212,14 +212,14 @@ appears-in-x-breaches =
     }
 check-for-breaches = Verificar se há vazamentos
 find-out-what-hackers-know = Descubra o que os hackers já sabem sobre você. Saiba como estar um passo à frente.
-get-email-alerts = Mantenha-se protegido: Receba alertas por e-mail quando suas informações aparecerem em um vazamento de dados conhecido
-search-for-your-email = Pesquise seu endereço de e-mail em vazamentos de dados tornados públicos desde 2007.
+get-email-alerts = Mantenha-se protegido: Receba alertas por email quando suas informações aparecerem em um vazamento de dados conhecido
+search-for-your-email = Pesquise seu endereço de email em vazamentos de dados tornados públicos desde 2007.
 back-to-top = Voltar ao início
-comm-opt-0 = Enviar e-mail para mim se um de meus endereços de e-mail abaixo aparecer em um vazamento de dados.
+comm-opt-0 = Enviar email para mim se um de meus endereços de email abaixo aparecer em um vazamento de dados.
 comm-opt-1 = Enviar todos os alertas de vazamento para { $primaryEmail }.
-stop-monitoring-this = Parar de monitorar este e-mail.
-resend-verification = Enviar e-mail de verificação novamente
-add-new-email = Adicionar um novo endereço de e-mail
+stop-monitoring-this = Parar de monitorar este email.
+resend-verification = Enviar email de verificação novamente
+add-new-email = Adicionar um novo endereço de email
 send-verification = Enviar link de confirmação
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
@@ -227,23 +227,23 @@ send-verification = Enviar link de confirmação
 # alerts for all of their monitored email addresses to a single 
 # email address.
 breach-summary = Resumo de vazamentos
-show-breaches-for-this-email = Mostrar todos os vazamentos deste e-mail.
-link-change-primary = Alterar endereço de e-mail principal
+show-breaches-for-this-email = Mostrar todos os vazamentos deste email.
+link-change-primary = Alterar endereço de email principal
 remove-fxm = Remover do { -product-name }
 remove-fxm-blurb =
     Desativar alertas do { -product-name }. Sua { -brand-fxa } continuará ativa e você pode receber
     outras comunicações relacionadas à conta.
 # Button title
-manage-email-addresses = Gerenciar endereços de e-mail
+manage-email-addresses = Gerenciar endereços de email
 # Link title
 latest-breach-link = Veja se você estava neste vazamento
 welcome-back = Bom ver você de volta, { $userName }!
 welcome-user = Boas-vindas, { $userName }!
-breach-alert-subject = O { -product-name } encontrou seu e-mail em um novo vazamento de dados.
+breach-alert-subject = O { -product-name } encontrou seu email em um novo vazamento de dados.
 your-info-was-discovered-headline = Suas informações foram descobertas em um novo vazamento de dados.
 your-info-was-discovered-blurb =
     Você se cadastrou para receber alertas do { -product-name }
-    quando seu e-mail aparecer em um vazamento de dados. Veja o que sabemos sobre este vazamento.
+    quando seu email aparecer em um vazamento de dados. Veja o que sabemos sobre este vazamento.
 what-to-do-after-breach = O que fazer após um vazamento de dados
 ba-next-step-1 = Mude sua senha para uma senha forte e única.
 ba-next-step-blurb-1 =
@@ -259,7 +259,7 @@ ba-next-step-3 = Obtenha ajuda para criar senhas melhores e mantê-las protegida
 ba-next-step-blurb-3 = Use um gerenciador de senhas para criar senhas fortes e únicas. Gerenciadores de senhas armazenam com segurança todas as suas contas, assim você pode acessá-las em todos os seus dispositivos.
 faq1 = Não reconheço essa empresa ou site. Por que estou neste vazamento?
 faq2 = Por que demorou tanto para me notificar deste vazamento?
-faq3 = Como saber se este é um e-mail legítimo do { -product-name }?
+faq3 = Como saber se este é um email legítimo do { -product-name }?
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } NOVO VAZAMENTO ENCONTRADO
@@ -269,13 +269,13 @@ sign-up-headline-1 = Receba alertas sobre novos vazamentos com uma { -brand-fxa 
 account-not-required = O navegador { -brand-name } não é obrigatório para ter uma { -brand-fxa }. Você pode receber informações sobre serviços da { -brand-Mozilla }.
 was-your-info-exposed = Suas informações foram expostas no vazamento de dados de { $breachName }?
 find-out-if = Descubra se seus dados foram expostos neste vazamento.
-fb-not-comp = Este e-mail não apareceu no vazamento de { $breachName }.
+fb-not-comp = Este email não apareceu no vazamento de { $breachName }.
 other-breaches-found =
     { $breachCount ->
         [one] No entanto, ele apareceu em { $breachCount } outro vazamento.
        *[other] No entanto, ele apareceu em { $breachCount } outros vazamentos.
     }
-fb-comp-only = Este e-mail apareceu no vazamento { $breachName }
+fb-comp-only = Este email apareceu no vazamento de { $breachName }
 fb-comp-and-others =
     { $breachCount ->
         [one] Este e-mail apareceu em { $breachCount } vazamento de dados conhecido, incluindo { $breachName }.
