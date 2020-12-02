@@ -398,6 +398,18 @@ breach-alert-notifications = 유출 경고 알림
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = 추가된 유출:
+create-strong-passwords-desc = 암호를 강하게, 안전하게, 그리고 추측하기 어렵게 만들어 주세요.
+steps-to-protect-desc = 가장 일반적인 위협을 이해하고 주의해야 할 사항을 파악합니다.
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = 변경 내용이 저장되었습니다!
+# Section headline
+rec-section-headline = 이 유출에 대한 조치
+rec-section-subhead = 개인 정보를 안전하게 유지하고 디지털 신원을 보호할려면 다음 단계를 수행하는 것이 좋습니다.
+# Section headline
+rec-section-headline-no-pw = 개인 정보를 보호할수 있는 방법
+rec-section-subhead-no-pw = 이 유출에 암호가 노출되지는 않았지만 개인 정보를 더 잘 보호할 수 있는 방법이 있습니다.
+# Button
+see-additional-recs = 추가 권장 사항보기
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
