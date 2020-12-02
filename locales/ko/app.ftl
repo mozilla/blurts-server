@@ -417,6 +417,25 @@ see-additional-recs = 추가 권장 사항보기
 
 ##
 
+marking-this-subhead = 이 유출을 해결됨으로 표시
+mark-as-resolve-button = 해결됨으로 표시
+marked-as-resolved-label = 해결됨으로 표시됨
+undo-button = 실행 취소
+confirmation-2-body = 온라인 계정을 보호하기 위해 중요한 조치를 취하고 있습니다.
+confirmation-3-subhead = 또 하나가 해결되었습니다. 잘 했어요!
+go-to-dashboard-link = 대시보드로 가기
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% 완료
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+       *[other] { $numResolvedBreaches } 해결됨
+    }
+progress-intro-message =
+    유출에 대한 세부사항을 검토하고 개인 정보를 보호가기 위한 조치를 취한 후, 
+    유출을 해결 된 것으로 표시할 수 있습니다.
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
