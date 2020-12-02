@@ -362,13 +362,42 @@ email-addresses-title = 이메일 주소
 breach-overview-title = 개요
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } 설정
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = { $userEmail } 주소로 로그인
+# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
+menu = 메뉴
+to-affected-email = 영향을 받은 이메일 주소로 위반 경고를 보냅니다.
+# This string appears in a banner at the top of each page and is followed by a "Learn More" link.
+join-firefox = 개인 정보를 보호하는 방법이 있습니다. { -brand-name }와 함께 하세요.
+# Link title
+learn-more-link = 자세히 보기
+email-sent = 이메일을 보냈습니다!
+# Form title
+want-to-add = 다를 이메일을 추가 하겠습니까?
+# This is part of a confirmation message that appears after a user has submitted
+# the form to add an additional email to Firefox Monitor.
+verify-the-link = { $userEmail }으로 보낸 링크를 확인해서 { -product-name }에 추가하세요.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
+email-verified = 이메일이 성공적으로 확인되었습니다!
+email-added-to-subscription = 데이터 유출에 { $email }이 나오면 알려드리겠습니다.
+# This message is used as a text for the subscribe link in email-verified-view-dashboard
+sign-in-nested = 로그인
 
 ##
 
+# This string is a header on the user preferences page and
+# appears above a check-box list of user options which allow
+# the user to choose whether or not they want to receive breach
+# alerts for all of their monitored email addresses to a single 
+# email address.
+breach-alert-notifications = 유출 경고 알림
+# This string is a label for the calendar date a breach is added to the database
+# and is followed by that date. 
+breach-added-label = 추가된 유출:
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
