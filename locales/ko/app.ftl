@@ -360,6 +360,8 @@ email-addresses-title = 이메일 주소
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = 개요
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = { -product-short-name } 설정
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
