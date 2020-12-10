@@ -25,7 +25,7 @@ rec-pw-3-cta = Installa { -brand-lockwise }
 rec-pw-3-fx = Usa { -brand-lockwise } per accedere dovunque e in modo sicuro alle password salvate in { -brand-name }, persino fuori dal browser!
 rec-pw-3-non-fx = Usa { -brand-lockwise } per tenere traccia delle differenti password e accedervi in modo sicuro da telefono o tablet.
 # Recommendation subhead
-rec-pw-4-subhead = Configura l'autenticazione a due fattori (2FA)
+rec-pw-4-subhead = Configura l’autenticazione a due fattori (2FA)
 # Link title
 rec-pw-4-cta = Scopri i siti che offrono l’autenticazione a due fattori (2FA)
 rec-pw-4 =

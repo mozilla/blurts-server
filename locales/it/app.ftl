@@ -259,7 +259,7 @@ error-bot-blurb = Crediamo che tu possa essere un bot perché hai cercato divers
 error-csrf-headline = La sessione è scaduta
 error-csrf-blurb = Seleziona il pulsante Indietro del browser, ricarica la pagina e riprova.
 error-invalid-unsub = Come annullare l’iscrizione agli avvisi di { -product-name }
-error-invalid-unsub-blurb = Dovrai annullare l'iscrizione utilizzando una delle email inviate da { -product-name }. Controlla la tua casella di posta per i messaggi da { -brand-team-email }. Seleziona il link per annullare l’iscrizione nella parte finale dell'email.
+error-invalid-unsub-blurb = Dovrai annullare l’iscrizione utilizzando una delle email inviate da { -product-name }. Controlla la tua casella di posta per i messaggi da { -brand-team-email }. Seleziona il link per annullare l’iscrizione nella parte finale dell’email.
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -308,7 +308,7 @@ see-if-youve-been-part = Verifica se sei stato coinvolto in una violazione di da
 get-ongoing-breach-monitoring = Tieni traccia delle violazioni in corso per più indirizzi email.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Scopri
-new-unsub-error = Dovrai annullare l'iscrizione utilizzando una delle email inviate da { -product-name }.
+new-unsub-error = Dovrai annullare l’iscrizione utilizzando una delle email inviate da { -product-name }.
 other-known-breaches-found =
     { $breachCount ->
         [one] Tuttavia, è stato coinvolta in un’altra violazione conosciuta.
