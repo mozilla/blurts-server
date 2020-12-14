@@ -117,6 +117,7 @@ social-connections = aẓṭṭa n tmussniwin
 social-media-profiles = imuɣna n yiẓeḍwa n tmetti
 social-security-numbers = uṭṭunen n tɣellist inmettiyen
 spoken-languages = tutlayin tettmeslayeḍ
+spouses-names = Ismawen n uzgaz d tmeṭṭut-is
 support-tickets = asuter n tallelt
 survey-results = igmaḍ n tefranin
 taxation-records = Ikalasen n tebzert
