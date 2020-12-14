@@ -78,6 +78,7 @@ nicknames = Meffer ismawen
 occupations = Ixeddimen
 parenting-plans = amtawa n yimawlan
 partial-credit-card-data = kra n yisefka n tkarḍiwin n usmad
+partial-dates-of-birth = Azemz n tlalit abruyan
 passport-numbers = Uṭṭunen n yipaupuṛen
 password-hints = Imataren n wawalen uffiren
 password-strengths = Tizemmar n wawal uffir
