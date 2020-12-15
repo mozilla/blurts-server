@@ -43,6 +43,8 @@ rec-pw-4 =
 rec-bank-acc-subhead = Ke'anik'oj ri rub'anikil apwaq pan yakb'äl pwäq
 # Recommendation subhead
 rec-cc-subhead = Ke'anik'oj ri atarjeta' richin kre'ito' pan yakb'äl pwäq
+# Link title
+rec-ip-us-cta = Tatojtob'ej { -brand-fpn }
 # Recommendation subhead
 rec-moz-vpn-cta = Titojtob'ëx { -brand-mozilla-vpn }
 # Link title
