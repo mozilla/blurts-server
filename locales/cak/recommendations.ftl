@@ -49,8 +49,16 @@ rec-ip-subhead = Tawokisaj jun samajib'äl nrewaj ri IP awochochib'al
 rec-ip-us-cta = Tatojtob'ej { -brand-fpn }
 # Recommendation subhead
 rec-moz-vpn-cta = Titojtob'ëx { -brand-mozilla-vpn }
+rec-hist-pw-subhead = Man ke'awokisaj chik ewan taq tzij e'okisan chik
 # Link title
 rec-hist-pw-cta-fx = Titz'et rutikirisaxik molojri'ïl pa { -brand-name }
+rec-hist-pw =
+    Ke'awokisaj jumul chuqa' jikïl ewan taq tzij chi ke jujun rub'i' ataqoya'l. We jun ewan tzij nitz'iläx 
+    pa jun kitz'ilanem taq tzij, xa xe k'o chi xtajäl ri okem ri'.
+# Recommendation subhead
+rec-sec-qa-subhead = Ke'atz'uku' jujun kitzolin tzij ri taq k'utunïk richin jikomanïk
+# Recommendation subhead
+rec-phone-num-subhead = Man takomonij ri rajilab'al awoyonib'al
 # Recommendation subhead
 rec-dob-subhead = Man tawokisaj awetamab'al pa PINs
 # Link title
