@@ -78,6 +78,7 @@ nicknames = Tz'ukun b'i'aj
 occupations = Taq samaj
 parenting-plans = Runuk'samaj ach'alalri'ïl
 partial-credit-card-data = Rutzij nab'ey peraj t'impwäq
+partial-dates-of-birth = Peraj taq ruq'ijul alaxïk
 passport-numbers = Kajilab'al taq b'eyawujil
 password-hints = Kichilab'exik ewan tzij
 password-strengths = Rochoch ewan tzij
