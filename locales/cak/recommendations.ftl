@@ -59,8 +59,19 @@ rec-hist-pw =
 rec-sec-qa-subhead = Ke'atz'uku' jujun kitzolin tzij ri taq k'utunïk richin jikomanïk
 # Recommendation subhead
 rec-phone-num-subhead = Man takomonij ri rajilab'al awoyonib'al
+rec-phone-num =
+    Tatojtob'ej man naya' ri rajilab'al awoyonib'al toq natz'ib'aj ab'i' pa k'ak'a' 
+    rub'i' ataqoya'l o taq samajib'äl. We man najowäx ta rajilab'äl oyonib'äl, man tatz'ib'aj.
 # Recommendation subhead
 rec-dob-subhead = Man tawokisaj awetamab'al pa PINs
+rec-dob =
+    Ruma chi ri rajilab'al awalaxik man k'ayew ta nilitäj pa kitz'ib'axik q'atb'alil tzij, 
+    ütz man ke'okisäx pa ewan taq tzij chuqa' PINs. Ri ketaman 
+    ri rajilab'al awalaxik chuqa' anin yetikïr nikïl ri PIN.
+# Recommendation subhead
+rec-pins-subhead = Ke'animirisaj ri kijikomal PINs awichin
+# Recommendation subhead
+rec-address-subhead = Man ke'awokisaj ochochib'äl pa ewan taq tzij
 # Link title
 rec-gen-1-cta = Achike rub'eya'l ye'atz'ük' ütz ewan taq tzij
 # Link title
