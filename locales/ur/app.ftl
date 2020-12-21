@@ -12,6 +12,7 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox نجی نیٹ ورک
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
@@ -62,6 +63,8 @@ sign-out = سائن آؤٹ کریں
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = { -brand-fxa } بندرست کریں
 have-an-account = کیا آپ کا اکاؤنٹ ہے؟
+# Alerts is a noun
+sign-up-for-alerts = الرٹس کے لئے سائن اپ کریں
 # Link title
 frequently-asked-questions = اکثر پوچھے گئے سوالات
 about-firefox-monitor = { -product-name } کے بارے میں
@@ -98,6 +101,7 @@ feat-security-tips = آَپ کے اکاؤنٹس کی حفاظت کے لیے سل
 back-to-top = واپس اوپر کی جانب
 stop-monitoring-this = اس ای میل کی نگرانی بند کریں۔
 add-new-email = ایک نیا ای میل پتہ شامل کریں
+send-verification = توثیقی ربط ارسال  کریں
 remove-fxm = { -product-name } ہٹائیں
 # Button title
 manage-email-addresses = ای میل پتہ بندرست کریں
