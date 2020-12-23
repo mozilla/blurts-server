@@ -59,7 +59,7 @@
     "eslint-plugin-node": "6.0.1",
     "faucet": "0.0.1",
     "htmllint-cli": "0.0.7",
-    "jest": "26.4.2",
+    "jest": "26.6.3",
     "jest-tap-reporter": "1.9.0",
     "node-mocks-http": "1.9.0",
     "nodemon": "2.0.4",
