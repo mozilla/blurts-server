@@ -15,12 +15,12 @@ email-unsub-link = Cancele a inscrição
 # and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
 # Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-footer-blurb =
-    Você está recebendo esses emails porque se inscreveu para receber alertas do { -product-name }.
+    Você recebeu este email porque se inscreveu para receber alertas do { -product-name }.
     Não quer mais receber? { $unsubLink }. Este é um email automático. Para obter suporte, visite { $faqLink }.
 # This string appears in the footer of verification emails. { $faqLink } is a link
 # to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-verify-footer-copy =
-    Você está recebendo esses emails porque se inscreveu para receber alertas do { -product-name }. 
+    Você recebeu este email porque se inscreveu para receber alertas do { -product-name }. 
     Este é um email automático. Para obter suporte, visite { $faqLink }.
 # Button text
 verify-email-cta = Verificar email
@@ -47,7 +47,7 @@ email-subject-verify = Confirme seu email no { -product-name }
 learn-more-about-fxm = Saiba mais sobre o { $fxmLink }
 email-sensitive-disclaimer =
     Devido à natureza sensível deste vazamento, emails envolvidos não podem ser descobertos publicamente. 
-    Você está recebendo este alerta porque confirmou ser o dono deste endereço de email.
+    Você recebeu este alerta porque confirmou ser o dono deste endereço de email.
 fxm-warns-you-no-breaches =
     O { -product-name } avisa sobre vazamentos de dados que envolvem suas informações pessoais. 
     Até agora, nenhum vazamento foi encontrado. Enviaremos a você um alerta caso seu endereço de email apareça em um novo vazamento.
