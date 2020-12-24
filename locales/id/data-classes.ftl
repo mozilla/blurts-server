@@ -78,6 +78,7 @@ nicknames = Nama alias
 occupations = Pekerjaan
 parenting-plans = Rencana pengasuhan anak
 partial-credit-card-data = Data kartu kredit parsial
+partial-dates-of-birth = Tanggal lahir parsial
 passport-numbers = Nomor paspor
 password-hints = Bantuan kata sandi
 password-strengths = Kekuatan sandi:

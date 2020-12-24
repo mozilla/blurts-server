@@ -535,3 +535,4 @@ monitor-promo-body = Dapatkan pemberitahuan ketika informasi pribadi Anda terung
 ecosystem-promo-headline = Lindungi kehidupan daring Anda dengan produk yang mengutamakan privasi
 ecosystem-promo-body = Semua produk { -brand-name } menghormati Janji Data Pribadi kami: Ambil lebih sedikit. Jaga agar tetap aman. Tidak ada rahasia.
 promo-ecosystem-cta = Lihat Semua Produk
+steps-to-resolve-headline = Langkah-langkah untuk mengatasi pelanggaran ini
