@@ -15,6 +15,9 @@
 
 ##
 
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox-konto
 terms-and-privacy = Vilkår og beskyttelse af personlige oplysninger
 GitHub-link-title = GitHub
 error-scan-page-token = Du har forsøgt at skanne for mange mail-adresser inden for et kort tidsrum. Vi har af sikkerhedsgrunde blokeret din mulighed for at søge indtil videre. Du kan prøve igen senere.
@@ -441,10 +444,63 @@ see-additional-recs = Se flere anbefalinger
 
 ##
 
+marking-this-subhead = Markerer denne datalæk som løst
+mark-as-resolve-button = Marker som løst
+marked-as-resolved-label = Markeret som løst
+undo-button = Fortryd
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = Er din nye adgangskode unik, stærk og svær at gætte? <a>Find ud af det</a>
+generic-confirmation-subhead = Denne datalæk er blevet markeret som løst
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% fuldført
+# This string appears in the purple callouts at the top of the user dashboard and shows
+# the total number of breaches a user has resolved. For instance, "5 Resolved".
+num-resolved =
+    { $numResolvedBreaches ->
+        [one] { $numResolvedBreaches } løst
+       *[other] { $numResolvedBreaches } løste
+    }
+progress-intro-subhead = Nyt i { -product-name }: Markér datalæk som løst
+progress-intro-message =
+    Når du har gennemgået detaljerne om en datalæk og taget skridt til at beskytte 
+    dine personlige oplysninger, kan du markere lækken som løst.
+progress-status =
+    { $numTotalBreaches ->
+        [one] { $numResolvedBreaches } ud af { $numTotalBreaches } datalæk markeret som løst
+       *[other] { $numResolvedBreaches } ud af { $numTotalBreaches } datalæk markeret som løste
+    }
+progress-complete = Alle kendte datalæk er blevet markeret som løste
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-4 = <span>Næsten færdig!</span> Du er tæt på at være i mål.
 
 ##
 
+resolve-this-breach-link = Løs denne datalæk
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = Markeret som løst:
+hide-resolved-button = Skjul løste
+show-resolved-button = Vis løste
+unresolved-passwords-exposed =
+    { $numPasswords ->
+        [one] Adgangskode kompromitteret i uløste datalæk
+       *[other] Adgangskoder kompromitteret i uløste datalæk
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+        [one] Kendt datalæk markeret som løst
+       *[other] Kendte datalæk markeret som løste
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = Ny
+mobile-promo-body = Hurtig, privat og sikker browsing uanset hvor du er. Find { -brand-name } på Google Play og App Store.
+promo-lockwise-headline = Tag dine adgangskoder med overalt
+promo-lockwise-cta = Hent { -brand-lockwise }
+monitor-promo-body = Få besked næste gang dine personlige data bliver kompromitteret i en kendt datalæk
+ecosystem-promo-headline = Beskyt dit online-liv med produkter, der sætter privatlivet først
+promo-ecosystem-cta = Se alle produkter
