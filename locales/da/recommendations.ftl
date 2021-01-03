@@ -32,3 +32,5 @@ rec-gen-2-cta = Myter om programmer til håndtering af adgangskoder
 rec-gen-3-subhead = Vær forsigtig med at udlevere personlige oplysninger
 # Link title
 rec-gen-3-cta = Læs flere sikkerhedstips
+# Recommendation subhead
+rec-gen-4-subhead = Opdater software og apps regelmæssigt
