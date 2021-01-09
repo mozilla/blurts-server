@@ -452,6 +452,8 @@ undo-button = Fortryd
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Er din nye adgangskode unik, stærk og svær at gætte? <a>Find ud af det</a>
 generic-confirmation-subhead = Denne datalæk er blevet markeret som løst
+return-to-breach-details-link = Vend tilbage til detaljer om datalæk
+go-to-dashboard-link = Gå til oversigten
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
 progress-percent-complete = { $percentComplete }% fuldført
@@ -498,9 +500,15 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Ny
+mobile-promo-headline = Få { -brand-name } på din telefon og tablet
 mobile-promo-body = Hurtig, privat og sikker browsing uanset hvor du er. Find { -brand-name } på Google Play og App Store.
+mobile-promo-cta = Få { -brand-name } til Android og iOS
 promo-lockwise-headline = Tag dine adgangskoder med overalt
+lockwise-promo-body = Hold styr på dine logins på tværs af enheder. Opret sikkert adgang til dem fra din computer, telefon eller tablet.
 promo-lockwise-cta = Hent { -brand-lockwise }
+fpn-promo-headline = Skjul din placering fra websteder og sporings-mekanismer
+promo-fpn-body = { -brand-fpn } skjuler din rigtige IP-adresse fra websteder og dataindsamlere, der skaber profiler af dig ved hjælp af reklamer.
+promo-fpn-cta = Få { -brand-fpn }
 monitor-promo-body = Få besked næste gang dine personlige data bliver kompromitteret i en kendt datalæk
 ecosystem-promo-headline = Beskyt dit online-liv med produkter, der sætter privatlivet først
 promo-ecosystem-cta = Se alle produkter
