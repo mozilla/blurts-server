@@ -52,6 +52,10 @@ rec-ip-subhead = Brug en tjeneste, der maskerer din IP-adresse
 # Link title
 rec-ip-us-cta = Prøv { -brand-fpn }
 # Recommendation subhead
+rec-moz-vpn-cta = Prøv { -brand-mozilla-vpn }
+# Link title
+rec-hist-pw-cta-fx = Se logins i { -brand-name }
+# Recommendation subhead
 rec-phone-num-subhead = Undgå at dele dit telefonnummer
 # Recommendation subhead
 rec-dob-subhead = Undgå at bruge personlige informationer i PIN-koder
