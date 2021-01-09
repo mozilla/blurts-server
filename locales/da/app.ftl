@@ -12,6 +12,7 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
 
 ##
 
@@ -509,6 +510,9 @@ promo-lockwise-cta = Hent { -brand-lockwise }
 fpn-promo-headline = Skjul din placering fra websteder og sporings-mekanismer
 promo-fpn-body = { -brand-fpn } skjuler din rigtige IP-adresse fra websteder og dataindsamlere, der skaber profiler af dig ved hjælp af reklamer.
 promo-fpn-cta = Få { -brand-fpn }
+monitor-promo-headline = Hold dig opdateret om nye datalæk
 monitor-promo-body = Få besked næste gang dine personlige data bliver kompromitteret i en kendt datalæk
 ecosystem-promo-headline = Beskyt dit online-liv med produkter, der sætter privatlivet først
+ecosystem-promo-body = Alle { -brand-name }-produkter lever op til vores løfte om personlige data: Gem mindre. Beskyt alt. Ingen hemmeligheder.
 promo-ecosystem-cta = Se alle produkter
+steps-to-resolve-headline = Fremgangsmåde til at løse denne datalæk
