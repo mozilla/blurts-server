@@ -46,10 +46,21 @@ rec-bank-acc =
     ri man pa rub'eyal ta. Taya' rutzijol chi ri apwaqb'al we k'o jun ri man ütz ta natz'ët
 # Recommendation subhead
 rec-cc-subhead = Ke'anik'oj ri atarjeta' richin kre'ito' pan yakb'äl pwäq
+rec-cc =
+    Tanik'oj richin ye'akanoj ri man relik ta taq samaj chi rij ri atarjeta' richin kre'ito'. Rik'in jub'a' nawajo' 
+    nak'utuj jun k'ak'a' tarjeta' rik'in k'ak'a' rajilab'al, ri xtuya' chawe ri ya'öl tarjeta'.
 # Recommendation subhead
 rec-ip-subhead = Tawokisaj jun samajib'äl nrewaj ri IP awochochib'al
 # Link title
 rec-ip-us-cta = Tatojtob'ej { -brand-fpn }
+rec-ip-us =
+    Ri rochochib'al Rub'eyal Nisamäj ri K'amaya'l (IP ochochib'äl) nuya' retal ri ak'ojlib'al 
+    chuqa' ri ya'öl asamajib'al richin k'amaya'l. Jun samaj achi'el  { -brand-fpn } 
+    nuya' ruk'oj ri IP awochochib'al richin nrewaj ri ak'ojlib'al.
+rec-ip-non-us =
+    Ri rochochib'al Rub'eyal Nisamäj ri K'amaya'l (IP ochochib'äl) nuya' retal ri ak'ojlib'al 
+    chuqa' ri ya'öl asamajib'al richin k'amaya'l. Rik'in jun ichinan kematz'ib'il k'amab'ey (VPN) yatikïr nawewaj ri ak'ojlib'al 
+    richin naya' ruk'oj ri IP awochochib'al.
 # Recommendation subhead
 rec-moz-vpn-cta = Titojtob'ëx { -brand-mozilla-vpn }
 rec-hist-pw-subhead = Man ke'awokisaj chik ewan taq tzij e'okisan chik
