@@ -75,6 +75,9 @@ rec-hist-pw =
     pa jun kitz'ilanem taq tzij, xa xe k'o chi xtajäl ri okem ri'.
 # Recommendation subhead
 rec-sec-qa-subhead = Ke'atz'uku' jujun kitzolin tzij ri taq k'utunïk richin jikomanïk
+rec-sec-qa =
+    K'ïy ajk'amaya'l taq ruxaq jantape' junam ri nikik'utuj. We jun chi ke ri taq tzolin tzij nik'ut, ri 
+    etamab'äl tikirel nokisäx pa ch'aqa' chik taq ruxaq. Ketz'uk nima'q tzolin taq tzij chuqa' kek'exlöx richin yeyak pa jun jikïl k'ojlib'äl.
 # Recommendation subhead
 rec-phone-num-subhead = Man takomonij ri rajilab'al awoyonib'al
 rec-phone-num =
