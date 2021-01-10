@@ -63,6 +63,10 @@ rec-ip-non-us =
     richin naya' ruk'oj ri IP awochochib'al.
 # Recommendation subhead
 rec-moz-vpn-cta = Titojtob'ëx { -brand-mozilla-vpn }
+rec-moz-vpn =
+    Ri rochochib'al Rub'eyal Nisamäj ri K'amaya'l (IP ochochib'äl) nuya' retal ri ak'ojlib'al chuqa' ri ya'öl asamajib'al richin k'amaya'l. Jun samaj achi'el  
+    { -brand-fpn }  nrewaj ri IP awochochib'al chuqa' ri ak'ojlib'al richin { -brand-name } chuqa' jun samajib'äl achi'el { -brand-mozilla-vpn } nrewaj ri 
+    IP awochochib'al chuqa' ak'ojlib'al pa ronojel taq awokisab'al.
 rec-hist-pw-subhead = Man ke'awokisaj chik ewan taq tzij e'okisan chik
 # Link title
 rec-hist-pw-cta-fx = Titz'et rutikirisaxik molojri'ïl pa { -brand-name }
