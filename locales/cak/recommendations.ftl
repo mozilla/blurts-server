@@ -41,6 +41,9 @@ rec-pw-4 =
     b'itz'ib' jumul nokisäx ri nak'ül achi'el jun rutzijol pan awoyonib'al.
 # Recommendation subhead
 rec-bank-acc-subhead = Ke'anik'oj ri rub'anikil apwaq pan yakb'äl pwäq
+rec-bank-acc =
+    Ke'anik'oj ri taq rukwenta' apwaqb'al richin naya' ketal ri itzel taq samaj o tojïk 
+    ri man pa rub'eyal ta. Taya' rutzijol chi ri apwaqb'al we k'o jun ri man ütz ta natz'ët
 # Recommendation subhead
 rec-cc-subhead = Ke'anik'oj ri atarjeta' richin kre'ito' pan yakb'äl pwäq
 # Recommendation subhead
