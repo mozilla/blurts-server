@@ -91,8 +91,17 @@ rec-dob =
     ri rajilab'al awalaxik chuqa' anin yetikïr nikïl ri PIN.
 # Recommendation subhead
 rec-pins-subhead = Ke'animirisaj ri kijikomal PINs awichin
+rec-pins =
+    Jun utziläj PIN k'o chi man ruk'wan ta retamab'al winäq, achi'el ri ruq'ijul ralaxik 
+    o ri awochochib'al. K'o ta chi jun ajilab'äl ri xa xe rat atetamayon chuqa' man ta anin nilitäj.
 # Recommendation subhead
 rec-address-subhead = Man ke'awokisaj ochochib'äl pa ewan taq tzij
+rec-address =
+    Ye'awokisaj taq ochochib'äl o ri b'ey akuchi' xataläx nrelesaj ruchuqa' ri 
+    ewan taq atzij. Ruma man k'ayew ta nilitäj ri winaqil etamab'äl ri', nub'än chi re 
+    ewan taq tzij re' anin ye'ilitäj.
+# Recommendation subhead
+rec-gen-1-subhead = Tawokisaj jun ewan tzij chuqa' k'o kuchuq'a' richin jun rub'i' taqoya'l
 # Link title
 rec-gen-1-cta = Achike rub'eya'l ye'atz'ük' ütz ewan taq tzij
 # Link title
