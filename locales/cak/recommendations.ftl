@@ -104,7 +104,25 @@ rec-address =
 rec-gen-1-subhead = Tawokisaj jun ewan tzij chuqa' k'o kuchuq'a' richin jun rub'i' taqoya'l
 # Link title
 rec-gen-1-cta = Achike rub'eya'l ye'atz'ük' ütz ewan taq tzij
+rec-gen-1 =
+    Toq ye'awokisaj chik ri ewan tzij yeruya' pa k'ayewal ronojel ri kib'i' ataqoya'l. Re re' nuq'ajuj chi wi 
+    niq'alajisäx kan jun ewan tzij, xtik'oje' pa kiq'a' ri ajjak ri ruk'u'x kitzij k'ïy kib'i' taqoya'l.
+# Recommendation subhead
+rec-gen-2-subhead = Ke'ayaka' ri ewan taq tzij pa jun jikïl k'ojlib'äl
 # Link title
 rec-gen-2-cta = Tz'ukun taq na'oj chi kij ri kinuk'samajel ewan tzij
+rec-gen-2 =
+    Ke'aya' ri rub'anikil rutikirib'al molojri'ïl pa jun jikïl k'ojlib'äl, akuchi' xa xe rat yatikïr yatok, achi'el jun 
+    kinuk'samajel ewan taq tzij. Re re' man k'ayew ta nub'än chawe richin ye'atz'ët ronojel ri jalajöj ewan taq atzij.
+# Recommendation subhead
+rec-gen-3-subhead = Tachajij awi' toq naya' ri awetamab'al
 # Link title
 rec-gen-3-cta = Tawetamaj ch'aqa' chik chi kij jikom taq na'oj
+rec-gen-3 =
+    Man taya' ri awetamab'al we man k'atzinel ta. We nik'utüx chawe chi 
+    tatz'ib'aj o taya' ri rochochib'al ataqoya'l, codigo postal, o rajilab'al awoyonib'al, yatikïr nab'ij chi mani.
+# Recommendation subhead
+rec-gen-4-subhead = Jantape' ke'ak'exa' ri cholkema' chuqa' taq chokoy
+rec-gen-4 =
+    Toq ye'ak'ëx ri taq chokoy, taq okik'amaya'l chuqa' ri taq rusistema operativo awoyonib'al nub'än chi ri 
+    awokisab'al jantape' e jikiïl. Re taq k'exoj re' yekichojmirisaj ri taq sachoj, taq k'ayewal chuqa' taq ruk'ayewal jikomal.
