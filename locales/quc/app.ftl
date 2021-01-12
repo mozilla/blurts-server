@@ -488,3 +488,6 @@ promo-lockwise-cta = Chariqa' { -brand-lockwise }
 fpn-promo-headline = Chawowaj le ak'olib'al pa taq uk'olib'al web' chi'l taq terenelab'
 promo-fpn-body = { -brand-fpn } Kuchup taq uk'olib'al web' chi'l taq mulib'al juq'attzij le katuk'utu ruk' taq  kemtzijob'elil le kuch'uq le qas akemriqonib'al IP.
 promo-fpn-cta = Chariqa' { -brand-fpn }
+monitor-promo-headline = Chariq'a' nik'aj chik chi rij taq retztaqan rech juq'attzij
+monitor-promo-body = Chariqa' ub'ixikil pa le jumul chik kk'oji' le awinaqilal q'alajisanem pa jun eta'matal retztaqan
+ecosystem-promo-headline = Chachajij le ak'aslemal pa nimk'atz ruk' taq nab'e k'ayij rech echeb'alil.
