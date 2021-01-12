@@ -491,3 +491,6 @@ promo-fpn-cta = Chariqa' { -brand-fpn }
 monitor-promo-headline = Chariq'a' nik'aj chik chi rij taq retztaqan rech juq'attzij
 monitor-promo-body = Chariqa' ub'ixikil pa le jumul chik kk'oji' le awinaqilal q'alajisanem pa jun eta'matal retztaqan
 ecosystem-promo-headline = Chachajij le ak'aslemal pa nimk'atz ruk' taq nab'e k'ayij rech echeb'alil.
+ecosystem-promo-body = Ronojel taq k'ayij rech { -brand-name } kkib'an le qatzujum chi rij winaqilal q'alajisanem: xa nitz' kab'ano, chaya' pa chajib'al, man k'o ta owatalik.
+promo-ecosystem-cta = Chawila' ronojel taq k'ayij
+steps-to-resolve-headline = Taq  ucholajil rech usolik we retztaqan
