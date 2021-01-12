@@ -12,9 +12,25 @@ const sha1 = require("../sha1-utils");
 const log = mozlog("controllers.scan");
 
 function _decryptPageToken(encryptedPageToken) {
-  const decipher = crypto.createDecipher("aes-256-cbc", AppConstants.COOKIE_SECRET);
-  const decryptedPageToken = JSON.parse([decipher.update(encryptedPageToken, "base64", "utf8"), decipher.final("utf8")].join(""));
-  return decryptedPageToken;
+  let decipher;
+
+  if (encryptedPageToken.slice(24, 25) === ".") {
+    // iv becomes 24 characters long when represented as base64: ceil(16 / 3) * 4 = 24
+    const iv = Buffer.from(encryptedPageToken.slice(0, 24), "base64");
+    const key = crypto.pbkdf2Sync(AppConstants.COOKIE_SECRET, iv.toString(), 10000, 32, "sha512");
+
+    decipher = crypto.createDecipheriv("aes-256-cbc", key, iv);
+    encryptedPageToken = encryptedPageToken.slice(25);
+  } else {
+    decipher = crypto.createDecipher("aes-256-cbc", AppConstants.COOKIE_SECRET);
+  }
+
+  const decryptedPageToken = Buffer.concat([
+    decipher.update(Buffer.from(encryptedPageToken, "base64")),
+    decipher.final(),
+  ]).toString("utf8");
+
+  return JSON.parse(decryptedPageToken);
 }
 
 
