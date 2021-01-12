@@ -15,3 +15,4 @@ biometric-data = Juq'attzij rech q'alwinaqilal
 # This string is the shortened version of "Biographies", and 
 # refers to biographical data about a user.
 bios = K'aslem
+browser-user-agent-details = Taq ucholajil kojonel rech nik'onel
