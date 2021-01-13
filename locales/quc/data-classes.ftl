@@ -19,3 +19,5 @@ browser-user-agent-details = Taq ucholajil kojonel rech nik'onel
 browsing-histories = Taq b'anatal kanoq rech tzukunem
 buying-preferences = Taq ajawatajem rech loq'omanem
 car-ownership-statuses = Taq kemub'antajik echeb'alil rech ch'ich'
+career-levels = Taq ucholajil eqele'n
+cellular-network-names = Ub'i' taq achib'il kemk'at
