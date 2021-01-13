@@ -30,3 +30,4 @@ cryptocurrency-wallet-hashes = Hash rech alaj k'olib'al rech t'inpwaq
 customer-feedback = Utzijoxik rech loq'o'manel
 customer-interactions = Taq kemb'anowem rech loq'o'manel
 dates-of-birth = Taq uq'ijol ralaxb'al
+deceased-date = Uq'ijol kamib'al
