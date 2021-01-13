@@ -12,7 +12,7 @@ fx-mobile = { -brand-name } Nik'onel rech Achib'il ch'aweb'al
 ##
 
 # Aria label for the Bento button
-bento-button-title = { -brand-name } Taq wiqkemchakub'al chi'l taq patanib'al
+bento-button-title = { -brand-name } Taq kojkemchak chi'l taq patanib'al
 # Bento headline
 fx-makes-tech = { -brand-name } are k'ak' eta'mab'al le kukoj uchuq'ab' chech le echeb'alil rech nimk'atz.
 # A link at the bottom of the Bento menu
