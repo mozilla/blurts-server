@@ -47,3 +47,6 @@ ethnicities = Taq komon
 family-members-names = Kib'i' uwinaqilal ajupaja
 family-plans = Taq cholb'anowem
 family-structure = ub'antajik ajupaja
+financial-investments = Ub'e'al pwaqilal
+financial-transactions = Taq q'axpwaq rech pwaqilal
+fitness-levels = Taq ucholajil utzb'antajik
