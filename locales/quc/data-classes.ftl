@@ -44,3 +44,6 @@ employers = E ya'l chak
 employment-statuses = Kemub'antajik chak
 encrypted-keys = Wiqotal taq pitz'b'al
 ethnicities = Taq komon
+family-members-names = Kib'i' uwinaqilal ajupaja
+family-plans = Taq cholb'anowem
+family-structure = ub'antajik ajupaja
