@@ -50,3 +50,4 @@ family-structure = ub'antajik ajupaja
 financial-investments = Ub'e'al pwaqilal
 financial-transactions = Taq q'axpwaq rech pwaqilal
 fitness-levels = Taq ucholajil utzb'antajik
+genders = Taq b'anatajilal
