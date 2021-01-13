@@ -32,3 +32,7 @@ customer-interactions = Taq kemb'anowem rech loq'o'manel
 dates-of-birth = Taq uq'ijol ralaxb'al
 deceased-date = Uq'ijol kamikal
 deceased-statuses = Taq kemub'antajik kamikal
+device-information = Q'alajisanem rech wiqkemchakub'al
+device-usage-tracking-data = Taq juq'attzij rech uterne'xik ukojik wiqkemchakub'al
+drinking-habits = Naq'atal ub'anik uqumuxik
+drug-habits = Naq'atal ub'anik kunab'al
