@@ -16,3 +16,6 @@ biometric-data = Juq'attzij rech q'alwinaqilal
 # refers to biographical data about a user.
 bios = K'aslem
 browser-user-agent-details = Taq ucholajil kojonel rech nik'onel
+browsing-histories = Taq b'anatal kanoq rech tzukunem
+buying-preferences = Taq ajawatajem rech loq'omanem
+car-ownership-statuses = Taq kemub'antajik echeb'alil rech ch'ich'
