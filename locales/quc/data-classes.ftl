@@ -26,3 +26,7 @@ chat-logs = Taq cholajinem rech tz'ib'tzijonem
 credit-card-cvv = Uwujil qajanik rech CVV
 credit-cards = Taq uwujil qajanik
 credit-status-information = Q'alajisanem rech kemub'antajik qajanik
+cryptocurrency-wallet-hashes = Hash rech alaj k'olib'al rech t'inpwaq
+customer-feedback = Utzijoxik rech loq'o'manel
+customer-interactions = Taq kemb'anowem rech loq'o'manel
+dates-of-birth = Taq uq'ijol ralaxb'al
