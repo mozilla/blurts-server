@@ -43,3 +43,4 @@ email-messages = Taq oqxa'n rech taqoqxa'nib'al
 employers = E ya'l chak
 employment-statuses = Kemub'antajik chak
 encrypted-keys = Wiqotal taq pitz'b'al
+ethnicities = Taq komon
