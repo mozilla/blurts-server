@@ -111,8 +111,8 @@ jobs:
                 name: Deploy to Dockerhub
                 command: |
                     echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-                    # deploy master
-                    if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                    # deploy main branch
+                    if [ "${CIRCLE_BRANCH}" == "main" ]; then
                         docker tag blurts-server ${DOCKERHUB_REPO}:latest
                         docker push ${DOCKERHUB_REPO}:latest
                     elif  [ ! -z "${CIRCLE_TAG}" ]; then
@@ -152,11 +152,11 @@ workflows:
             tags:
               only: /.*/
             branches:
-                only: master
+                only: main
       - deploy_static:
           filters:
             branches:
-              only: master
+              only: main
       - integration-test:
           requires:
             - build
