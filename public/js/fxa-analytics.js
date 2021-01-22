@@ -39,7 +39,7 @@ function appendFxaParams(url, storageObject) {
   getUTMNames().forEach(param => {
     if (storageObject[param] && !url.searchParams.get(param)) {
       // Bug #2011 - This logic only allows params to be set/passed
-      // on to FxA isn't that param isn't already set.
+      // on to FxA if that param isn't already set.
       // (Example: Overwriting a utm_source)
       url.searchParams.append(param, encodeURIComponent(storageObject[param]));
     }
