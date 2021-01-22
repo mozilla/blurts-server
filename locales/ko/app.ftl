@@ -440,7 +440,7 @@ resolve-top-notification = 이 침해에 { $affectedEmail }이 포함되었습�
 marking-this-subhead = 이 유출을 해결됨으로 표시
 # This string contains nested markup that is later used to style the text inside of it.
 # Please do not modify or remove "<span>" and "</span>".
-marking-this-body = <span>이 위반 사항을 해결하기 위해 취한 조치를 취했으면 </ span>, 해결 된 것으로 표시 할 수 있습니다. 언제든지 대시 보드에서 위반에 대한 세부 정보에 액세스 할 수 있습니다.
+marking-this-body = <span>이 침해 사항을 해결하기 위해 취한 조치를 취했으면 </ span>, 해결 된 것으로 표시 할 수 있습니다. 언제든지 대시 보드에서 위반에 대한 세부 정보에 액세스 할 수 있습니다.
 mark-as-resolve-button = 해결됨으로 표시
 marked-as-resolved-label = 해결됨으로 표시됨
 undo-button = 실행 취소
