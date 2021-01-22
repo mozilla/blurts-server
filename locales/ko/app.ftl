@@ -360,11 +360,18 @@ email-addresses-title = 이메일 주소
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = 개요
+# This is a standardized breach overview blurb that appears on all breach detail pages.
+# $breachTitle is the name of the breached company or website.
+# $breachDate and $addedDate are calendar dates.
+breach-overview-new = { $breachDate }에 { $breachTitle }이 위반되었읍니다. 위반이 발견되고 확인되면 { $addedDate }에 우리의 데이터베이스에 추가되었습니다.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } 설정
 # When a user is signed in, this appears in the drop down menu 
 # and is followed by the user's primary Firefox Account email. 
 signed-in-as = { $userEmail } 주소로 로그인
+# Appears on the All Breaches page and is followed by a list of filter options
+# that a user can filter the visible breaches by.
+filter-by = 카테고리 별 필터링
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = 메뉴
 to-affected-email = 영향을 받은 이메일 주소로 위반 경고를 보냅니다.
@@ -384,11 +391,19 @@ verify-the-link = { $userEmail }으로 보낸 링크를 확인해서 { -product-
 
 email-verified = 이메일이 성공적으로 확인되었습니다!
 email-added-to-subscription = 데이터 유출에 { $email }이 나오면 알려드리겠습니다.
+# This message is displayed after the user has verified their email address.
+# { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
+email-verified-view-dashboard = 위반 모니터링에 가입한 이메일들을 보고 관리할려면 { $nestedSignInLink }.
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = 로그인
 
 ##
 
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = { $preferencesLink }의 모든 이메일 주소를 관리하세요.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
@@ -398,8 +413,12 @@ breach-alert-notifications = 유출 경고 알림
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = 추가된 유출:
+how-hackers-work-desc = 사이버 범죄자가 가장 아끼는 암호를 보호해 주세요.
+what-to-do-after-breach-desc = 계정을 잠궈서 개인 정보를 잘못된 사람으로서부터 보호하세요.
 create-strong-passwords-desc = 암호를 강하게, 안전하게, 그리고 추측하기 어렵게 만들어 주세요.
 steps-to-protect-desc = 가장 일반적인 위협을 이해하고 주의해야 할 사항을 파악합니다.
+five-myths-desc = 해커의 일을 쉽게 만드는 나쁜 암호 습관을 어떻게 피할수 있는지 알아보세요.
+take-further-steps-desc = 재정적 손실을 방지하기 위해 신원 도용의 위험을 완화하는 방법을 알아보세요.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = 변경 내용이 저장되었습니다!
 # Section headline
@@ -414,15 +433,31 @@ see-additional-recs = 추가 권장 사항보기
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+resolve-top-notification = 이 침해에 { $affectedEmail }이 포함되었습니다. <a>다음</a>
 
 ##
 
 marking-this-subhead = 이 유출을 해결됨으로 표시
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body = <span>이 위반 사항을 해결하기 위해 취한 조치를 취했으면 </ span>, 해결 된 것으로 표시 할 수 있습니다. 언제든지 대시 보드에서 위반에 대한 세부 정보에 액세스 할 수 있습니다.
 mark-as-resolve-button = 해결됨으로 표시
 marked-as-resolved-label = 해결됨으로 표시됨
 undo-button = 실행 취소
+confirmation-1-subhead = 좋습니다! 당신은 방금 첫 번째 침해를 해결하였습니다.
+confirmation-1-body = 추진력을 유지하세요. 할 일이 더 남았는지 보기 위해 대시보드를 확인하세요.
+confirmation-2-subhead = 받아라, 해커들!
 confirmation-2-body = 온라인 계정을 보호하기 위해 중요한 조치를 취하고 있습니다.
 confirmation-3-subhead = 또 하나가 해결되었습니다. 잘 했어요!
+# This string contains nested markup that becomes a link later in the code.
+# Please do not modify or remove "<a>" and "</a>".
+confirmation-3-body = 당신의 새 비밀번호가 독특하고 강력하며 추측하기 어렵습니까? <a> 찾아보기</a>
+generic-confirmation-subhead = 이 침해는 해결 된 것으로 표시됨
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+       *[other] 남아있는 모든 침해 사항을 보시려면 대시보드로 이동하세요.
+    }
+return-to-breach-details-link = 침해 정보로 돌아가기
 go-to-dashboard-link = 대시보드로 가기
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
@@ -433,9 +468,15 @@ num-resolved =
     { $numResolvedBreaches ->
        *[other] { $numResolvedBreaches } 해결됨
     }
+progress-intro-subhead = { -product-name }의 새로운 기능: 침해 해결 표시
 progress-intro-message =
     유출에 대한 세부사항을 검토하고 개인 정보를 보호가기 위한 조치를 취한 후, 
     유출을 해결 된 것으로 표시할 수 있습니다.
+progress-status =
+    { $numTotalBreaches ->
+       *[other] { $numResolvedBreaches } 중 { $numTotalBreaches } 침해가 해결됨으로 표시됨
+    }
+progress-complete = 모든 참해가 해결됨으로 표시됨
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
