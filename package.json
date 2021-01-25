@@ -41,7 +41,7 @@
     "pg": "7.18.2",
     "redis": "3.0.2",
     "sns-validator": "0.3.4",
-    "uuid": "3.4.0"
+    "uuid": "8.3.2"
   },
   "devDependencies": {
     "@wdio/cli": "5.23.0",
