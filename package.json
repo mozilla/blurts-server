@@ -72,7 +72,7 @@
     "uglify-js": "3.11.5",
     "wdio-docker-service": "2.4.0",
     "wdio-image-comparison-service": "1.13.6",
-    "wdio-video-reporter": "2.0.1"
+    "wdio-video-reporter": "3.1.1"
   },
   "engines": {
     "node": "10"
