@@ -61,7 +61,7 @@
     "htmllint-cli": "0.0.7",
     "jest": "26.4.2",
     "jest-tap-reporter": "1.9.0",
-    "node-mocks-http": "1.9.0",
+    "node-mocks-http": "1.10.1",
     "nodemon": "2.0.4",
     "npm-audit-ci-wrapper": "3.0.1",
     "onchange": "6.1.1",
