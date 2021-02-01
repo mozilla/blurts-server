@@ -15,7 +15,7 @@ rec-pw-1 =
     Strategaeth dda i'w dilyn yw cyfuno dau neu fwy o eiriau
     digyswllt er mwyn creu cyfrinymadrodd cyfan.
 # Recommendation subhead
-rec-pw-2-subhead = Diweddarwch fewngofnodi eraill gan ddefnyddio'r un cyfrinair
+rec-pw-2-subhead = Diweddarwch fewngofnodion eraill sy'n defnyddio'r un cyfrinair
 # Link title
 rec-pw-2-cta-fx = Gweld mewngofnodi yn { -brand-name }
 rec-pw-2 =
