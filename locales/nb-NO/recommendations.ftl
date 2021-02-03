@@ -52,6 +52,10 @@ rec-cc =
 # Recommendation subhead
 rec-email-subhead = Bruk e-postaliaser
 rec-email-cta = Prøv { -brand-relay }
+rec-email =
+    Å gi ut din virkelige e-postadresse gjør det lettere for hackere eller sporere å
+    finn passordene dine eller følge deg på deg på nettet. En tjeneste som { -brand-relay }
+    skjuler din virkelige e-postadresse mens du videresender e-post til den virkelige innboksen din.
 # Recommendation subhead
 rec-ip-subhead = Bruk en tjeneste som maskerer din IP-adresse
 # Link title
