@@ -57,6 +57,10 @@ rec-ip-non-us =
     in prikrijete vaš naslov IP.
 # Recommendation subhead
 rec-moz-vpn-cta = Poskusite { -brand-mozilla-vpn }
+rec-moz-vpn =
+    Vaš naslov IP (internetni protokol) lahko razkrije vašo lokacijo in ponudnika internetnih storitev. Storitev, kot je
+    { -brand-fpn }, skrije vaš naslov IP in lokacijo za { -brand-name }, storitev, kot je { -brand-mozilla-vpn }, pa skrije vaš
+    IP in lokacijo za celotno napravo.
 rec-hist-pw-subhead = Izogibajte se ponovni uporabi gesel
 # Link title
 rec-hist-pw-cta-fx = Oglejte si prijave v { -brand-name }

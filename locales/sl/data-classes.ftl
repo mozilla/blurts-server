@@ -78,6 +78,7 @@ nicknames = vzdevki
 occupations = poklici
 parenting-plans = načrti za starševstvo
 partial-credit-card-data = delni podatki o kreditnih karticah
+partial-dates-of-birth = delni rojstni datumi
 passport-numbers = številke potnih listov
 password-hints = namigi za gesla
 password-strengths = Moči gesel
