@@ -282,7 +282,7 @@ comm-opt-1 = Posílat všechna upozornění na úniky dat na { $primaryEmail }
 stop-monitoring-this = Přestat monitorovat tuto e-mailovou adresu.
 resend-verification = Znovu poslat ověřovací e-mail
 add-new-email = Přidání nové e-mailové adresy
-send-verification = Poslat ověřovací odkaz
+send-verification = Zaslat ověřovací odkaz
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach

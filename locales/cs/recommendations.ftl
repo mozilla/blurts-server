@@ -50,6 +50,10 @@ rec-cc =
 # Recommendation subhead
 rec-email-subhead = Použijte e-mailové aliasy
 rec-email-cta = Vyzkoušejte { -brand-relay }
+rec-email =
+    Poskytnutí skutečné e-mailové adresy usnadňuje hackerům nebo sledovacím prvkům
+    zjištění vašeho hesla nebo cílení na vás na internetu. Služba jako je { -brand-relay }
+    skryje vaši skutečnou e-mailovou adresu, přičemž e-maily bude přeposílat do vaší skutečné poštovní schránky.
 # Recommendation subhead
 rec-ip-subhead = Použijte službu, které skryje vaši IP adresu
 # Link title
