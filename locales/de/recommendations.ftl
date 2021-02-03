@@ -50,6 +50,13 @@ rec-cc =
     Achten Sie auf ungewöhnliche Belastungen Ihrer Kreditkarte. Gegebenenfalls
     sollten Sie von Ihrem Kreditkartenanbieter eine neue Karte mit neuer Nummer anfordern.
 # Recommendation subhead
+rec-email-subhead = E-Mail-Aliase verwenden
+rec-email-cta = Probieren Sie { -brand-relay } aus
+rec-email =
+    Wenn Sie Ihre echte E-Mail-Adresse angeben, können Hacker oder Tracker leichter
+    Ihre Passwörter ermitteln oder Sie im Internet verfolgen. Ein Dienst wie { -brand-relay }
+    versteckt Ihre echte E-Mail-Adresse und leitet gleichzeitig E-Mails an Ihren echten Posteingang weiter.
+# Recommendation subhead
 rec-ip-subhead = Verwenden Sie einen Dienst, der Ihre IP-Adresse maskiert
 # Link title
 rec-ip-us-cta = Probieren Sie { -brand-fpn } aus
