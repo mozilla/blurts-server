@@ -50,6 +50,9 @@ rec-cc =
     Se upp för konstiga avgifter på ditt kreditkort. Du kanske vill 
     begära ett nytt kort med ett nytt nummer från din kreditkortsutgivare.
 # Recommendation subhead
+rec-email-subhead = Använd e-postalias
+rec-email-cta = Prova { -brand-relay }
+# Recommendation subhead
 rec-ip-subhead = Använd en tjänst som maskerar din IP-adress
 # Link title
 rec-ip-us-cta = Prova { -brand-fpn }
