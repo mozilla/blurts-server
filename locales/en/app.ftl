@@ -13,6 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 -brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 ##
 
 # “account” can be localized, “Firefox” must be treated as a brand,

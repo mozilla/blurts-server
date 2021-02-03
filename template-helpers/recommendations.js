@@ -210,6 +210,19 @@ module.exports = {
       "email-addresses": {
         weight: 91,
         pathToGlyph: "svg/glyphs/email-addresses",
+        recommendations: [
+          {
+            recommendationCopy: {
+              subhead: "rec-email-subhead",
+              body: "rec-email",
+              cta: "rec-email-cta",
+            },
+            ctaHref: "https://relay.firefox.com/",
+            ctaShouldOpenNewTab: true,
+            ctaAnalyticsId: "Try Firefox Relay",
+            recIconClassName: "rec-email",
+          },
+        ],
       },
       "dates-of-birth": {
         weight: 90,
