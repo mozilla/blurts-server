@@ -75,6 +75,7 @@ net-worths = Pasuri neto
 nicknames = Nofka
 occupations = Punësime
 partial-credit-card-data = Të dhëna të pjesshme karte krediti
+partial-dates-of-birth = Datëlindje të pjesshme
 passport-numbers = Numra pasaportash
 password-hints = Ndihmëza fjalëkalimesh
 password-strengths = Fortësi fjalëkalimi
