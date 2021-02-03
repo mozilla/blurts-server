@@ -50,6 +50,9 @@ rec-cc =
     Se opp for merkelige kostnader på kredittkortet ditt. Det kan være lurt 
     å be om et nytt kort med et nytt nummer fra kredittkortutstederen din.
 # Recommendation subhead
+rec-email-subhead = Bruk e-postaliaser
+rec-email-cta = Prøv { -brand-relay }
+# Recommendation subhead
 rec-ip-subhead = Bruk en tjeneste som maskerer din IP-adresse
 # Link title
 rec-ip-us-cta = Prøv { -brand-fpn }
