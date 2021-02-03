@@ -48,6 +48,9 @@ rec-cc =
     Podívejte se po podivných platbách uskutečněných vaší kartou.  
     Pokud nějaké najdete, požádejte o vydání nové karty s jiným číslem.
 # Recommendation subhead
+rec-email-subhead = Použijte e-mailové aliasy
+rec-email-cta = Vyzkoušejte { -brand-relay }
+# Recommendation subhead
 rec-ip-subhead = Použijte službu, které skryje vaši IP adresu
 # Link title
 rec-ip-us-cta = Vyzkoušejte { -brand-fpn }
