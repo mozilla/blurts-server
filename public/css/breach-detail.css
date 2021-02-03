@@ -184,6 +184,10 @@ main.breach-detail {
   background-image: url("/img/recommendation-icons/update-regularly.svg");
 }
 
+.rec-email {
+  background-image: url("/img/recommendation-icons/masked-email.svg");
+}
+
 .overflow-recs {
   visibility: visible;
   transition: all 0.3s ease;
