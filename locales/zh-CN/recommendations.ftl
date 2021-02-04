@@ -37,10 +37,12 @@ rec-bank-acc =
 # Recommendation subhead
 rec-cc-subhead = 监控您的信用卡对账单
 rec-cc = 查探您的信用卡是否受到了奇怪的收费。如有发生，请考虑向卡签发机构申请新号码的信用卡。
+# Recommendation subhead
+rec-email-subhead = 给邮箱披上“马甲”
 rec-email-cta = 试用 { -brand-relay }
 rec-email =
     真实的邮箱地址容易被黑客找到密码，或被跟踪者定位。
-    建议使用像 { -brand-relay } 这样的邮件中转服务，隐藏真实邮箱地址。
+    建议使用像 { -brand-relay } 这类的邮件中继服务，隐藏真实邮箱地址。
 # Recommendation subhead
 rec-ip-subhead = 使用一项服务掩藏您的 IP 地址
 # Link title
