@@ -50,6 +50,9 @@ rec-cc =
 # Recommendation subhead
 rec-email-subhead = Defnyddiwch arallenwau e-bost
 rec-email-cta = Rhowch gynnig ar { -brand-relay }
+rec-email =
+    Mae rhoi eich cyfeiriad e-bost go iawn yn ei gwneud hi'n haws i hacwyr neu dracwyr ddod o hyd i'ch cyfrineiriau neu eich targedu ar-lein. Mae gwasanaeth fel { -brand-relay }
+    yn cuddio'ch cyfeiriad e-bost go iawn wrth anfon e-byst i'ch mewnflwch go iawn.
 # Recommendation subhead
 rec-ip-subhead = Defnyddiwch wasanaeth sy'n cuddio'ch cyfeiriad IP
 # Link title
