@@ -43,6 +43,7 @@ rec-cc-subhead = Spremljajte izpiske kreditnih kartic
 rec-cc =
     Bodite pozorni na nenavadne stroške svoje kreditne kartice. Morda boste želeli 
     pri izdajatelju kartice zahtevati novo številko kartice.
+rec-email-cta = Preskusite { -brand-relay }
 # Recommendation subhead
 rec-ip-subhead = Uporabite storitev, ki prikrije vaš IP-naslov.
 # Link title
