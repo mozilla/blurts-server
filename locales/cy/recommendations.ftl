@@ -48,6 +48,9 @@ rec-cc =
     Cadwch lygad ar daliadau annisgwyl ar eich cerdyn credyd. Efallai y bydd angen
     gofyn am gerdyn newydd gyda rhif newydd gan gyhoeddwr eich cerdyn credyd.
 # Recommendation subhead
+rec-email-subhead = Defnyddiwch arallenwau e-bost
+rec-email-cta = Rhowch gynnig ar { -brand-relay }
+# Recommendation subhead
 rec-ip-subhead = Defnyddiwch wasanaeth sy'n cuddio'ch cyfeiriad IP
 # Link title
 rec-ip-us-cta = Rhowch gynnig ar { -brand-fpn }
