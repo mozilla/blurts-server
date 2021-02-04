@@ -37,6 +37,7 @@ rec-bank-acc =
 # Recommendation subhead
 rec-cc-subhead = 监控您的信用卡对账单
 rec-cc = 查探您的信用卡是否受到了奇怪的收费。如有发生，请考虑向卡签发机构申请新号码的信用卡。
+rec-email-cta = 试用 { -brand-relay }
 # Recommendation subhead
 rec-ip-subhead = 使用一项服务掩藏您的 IP 地址
 # Link title
