@@ -50,6 +50,13 @@ rec-cc =
     Look out for strange charges on your credit card. You may want 
     to request a new card with a new number from your credit card issuer.
 # Recommendation subhead
+rec-email-subhead = Use email aliases
+rec-email-cta = Try { -brand-relay }
+rec-email =
+    Giving out your real email address makes it easier for hackers or trackers to
+    find your passwords or target you online. A service like { -brand-relay }
+    hides your real email address while forwarding emails to your real inbox.
+# Recommendation subhead
 rec-ip-subhead = Use a service that masks your IP address
 # Link title
 rec-ip-us-cta = Try { -brand-fpn }
