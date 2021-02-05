@@ -13,6 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 -brand-mozilla-vpn = VPN Mozilla
+-brand-relay = Firefox Relay
 
 ##
 
