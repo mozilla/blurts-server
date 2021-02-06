@@ -38,6 +38,9 @@ rec-bank-acc = Verifica que tu extractos bancari non include alcun transaction s
 rec-cc-subhead = Survelia tu extractos de carta de credito
 rec-cc = Presta attention al debitos estranie sur tu carta de credito. Si necessari, demanda a tu emissor un nove carta con un nove numero.
 # Recommendation subhead
+rec-email-subhead = Usar aliases de email
+rec-email-cta = Prova { -brand-relay }
+# Recommendation subhead
 rec-ip-subhead = Usa un servicio que masca tu adresse IP
 # Link title
 rec-ip-us-cta = Prova { -brand-fpn }
