@@ -38,6 +38,9 @@ rec-bank-acc = Verifica che i movimenti del tuo conto corrente non presentino at
 rec-cc-subhead = Tieni sotto controllo gli estratti conto della tua carta di credito
 rec-cc = Presta attenzione ad addebiti insoliti sulla tua carta di credito. Se necessario, chiedi al tuo istituto di credito di emettere una nuova carta con un numero diverso.
 # Recommendation subhead
+rec-email-subhead = Utilizza alias per le email
+rec-email-cta = Prova { -brand-relay }
+# Recommendation subhead
 rec-ip-subhead = Usa un servizio che maschera il tuo indirizzo IP
 # Link title
 rec-ip-us-cta = Prova { -brand-fpn }
