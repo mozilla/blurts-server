@@ -40,6 +40,10 @@ rec-cc = Presta attenzione ad addebiti insoliti sulla tua carta di credito. Se n
 # Recommendation subhead
 rec-email-subhead = Utilizza alias per le email
 rec-email-cta = Prova { -brand-relay }
+rec-email =
+    Fornendo il tuo indirizzo email autentico rendi più facile per hacker ed elementi traccianti 
+    scoprire le tue password o individuarti online. { -brand-relay } è un servizio
+    che inoltra i messaggi alla tua casella di posta senza rivelare il tuo indirizzo email reale.
 # Recommendation subhead
 rec-ip-subhead = Usa un servizio che maschera il tuo indirizzo IP
 # Link title
