@@ -50,6 +50,13 @@ rec-cc =
     Revisa en busca de cargos extraños en tu tarjeta de crédito. Puede que quieras 
     solicitar al emisor de la tarjeta una nueva,  con un nuevo número.
 # Recommendation subhead
+rec-email-subhead = Usar alias de correo electrónico
+rec-email-cta = Prueba { -brand-relay }
+rec-email =
+    Dar tu dirección de correo electrónico real facilita que los hackers o rastreadores
+    encuentren tus contraseñas o te encuentren en línea. Un servicio como { -brand-relay }
+    oculta tu dirección de correo electrónico real mientras reenvía correos a tu bandeja de entrada real.
+# Recommendation subhead
 rec-ip-subhead = Usa un servicio que oculte tu IP
 # Link title
 rec-ip-us-cta = Prueba { -brand-fpn }
