@@ -49,6 +49,7 @@ rec-cc-subhead = Uw creditcardafschriften controleren
 rec-cc =
     Let op vreemde kosten op uw creditcard. U wilt misschien 
     een nieuwe kaart met een nieuw nummer aanvragen bij uw creditcardmaatschappij.
+rec-email-cta = { -brand-relay } proberen
 # Recommendation subhead
 rec-ip-subhead = Gebruik een service die uw IP-adres maskeert
 # Link title
