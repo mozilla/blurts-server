@@ -50,6 +50,13 @@ rec-cc =
     Let op frjemde kosten op jo creditcard. Jo wolle miskien 
     in nije kaart mei in nij nûmer oanfreegje by jo creditcardmaatskippij.
 # Recommendation subhead
+rec-email-subhead = E-mailaliassen brûke
+rec-email-cta = { -brand-relay } probearje
+rec-email =
+    Troch jo echte e-mailadres te jaan, meitsje jo it makliker foar hackers of trackers om
+    jo wachtwurden te finen of jo online op it harspit nimme. In tsjinst as { -brand-relay }
+    ferberget jo echte e-mailadres en stjoert e-mailberjochten troch nei jo echte postfek.
+# Recommendation subhead
 rec-ip-subhead = Brûk in tsjinst dy't jo IP-adres maskearret
 # Link title
 rec-ip-us-cta = { -brand-fpn } probearje
