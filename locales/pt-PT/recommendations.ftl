@@ -50,6 +50,9 @@ rec-cc =
     Procure por cobranças estranhas no seu cartão de crédito. Pode querer 
     solicitar um novo cartão com um novo número ao emissor do cartão de crédito.
 # Recommendation subhead
+rec-email-subhead = Utilizar pseudónimos de e-mail
+rec-email-cta = Experimente o { -brand-relay }
+# Recommendation subhead
 rec-ip-subhead = Utilize um serviço que mascare o seu endereço IP
 # Link title
 rec-ip-us-cta = Experimente o { -brand-fpn }
