@@ -52,6 +52,10 @@ rec-cc =
 # Recommendation subhead
 rec-email-subhead = Utilizar pseudónimos de e-mail
 rec-email-cta = Experimente o { -brand-relay }
+rec-email =
+    Fornecer o seu endereço de e-mail real faz com que seja mais simples aos piratas informáticos ou rastreadores
+    descobrir as suas palavras-passe ou monitorizá-lo na Internet. Um serviço como o { -brand-relay }
+    oculta o seu endereço de e-mail real, enquanto reencaminha mensagens para a sua caixa de correio real.
 # Recommendation subhead
 rec-ip-subhead = Utilize um serviço que mascare o seu endereço IP
 # Link title
