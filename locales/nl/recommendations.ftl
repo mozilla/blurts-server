@@ -49,7 +49,13 @@ rec-cc-subhead = Uw creditcardafschriften controleren
 rec-cc =
     Let op vreemde kosten op uw creditcard. U wilt misschien 
     een nieuwe kaart met een nieuw nummer aanvragen bij uw creditcardmaatschappij.
+# Recommendation subhead
+rec-email-subhead = E-mailaliassen gebruiken
 rec-email-cta = { -brand-relay } proberen
+rec-email =
+    Door uw echte e-mailadres te verstrekken, maakt u het gemakkelijker voor hackers of trackers om
+    uw wachtwoorden te vinden of u online op de korrel te nemen. Een service als { -brand-relay }
+    verbergt uw echte e-mailadres en stuurt e-mailberichten door naar uw echte postvak.
 # Recommendation subhead
 rec-ip-subhead = Gebruik een service die uw IP-adres maskeert
 # Link title
