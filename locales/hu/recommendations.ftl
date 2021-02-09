@@ -50,6 +50,13 @@ rec-cc =
     Figyeljen a furcsa terhelésekre a hitelkártyáján. Lehet, hogy érdemes
     új kártyát igényelnie (új kártyaszámmal) a hitelkártya kibocsátójától.
 # Recommendation subhead
+rec-email-subhead = Használjon e-mail álneveket
+rec-email-cta = Próbálja ki a { -brand-relay }t
+rec-email =
+    A valódi e-mail-címének megadása megkönnyíti a hackerek vagy követők számára, hogy
+    megtalálják a jelszavát vagy Önt célozzák az interneten. Egy olyan szolgáltatás, mint a { -brand-relay },
+    elrejti a valódi e-mail-címét, miközben továbbítja azokat a valódi postaládájába.
+# Recommendation subhead
 rec-ip-subhead = Használjon olyan szolgáltatást, amely elfedi az IP-címét
 # Link title
 rec-ip-us-cta = Próbálja ki a { -brand-fpn }öt
