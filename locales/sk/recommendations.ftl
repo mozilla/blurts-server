@@ -47,6 +47,13 @@ rec-cc =
     Skontrolujte, či neboli prostredníctvom vašej karty uskutočnené 
     podozrivé transakcie. Ak áno, požiadajte o vydanie novej.
 # Recommendation subhead
+rec-email-subhead = Používajte e-mailové aliasy
+rec-email-cta = Vyskúšajte { -brand-relay }
+rec-email =
+    Poskytnutie skutočnej e-mailovej adresy uľahčuje prácu hackerom alebo
+    sledovacím prvkom pri zisťovaní vášho hesla. Služby ako { -brand-relay } skrývajú
+    vašu skutočnú e-mailovú adresu, pričom e-maily budú preposielané do vašej skutočnej e-mailovej schránky.
+# Recommendation subhead
 rec-ip-subhead = Používajte službu, ktorá skryje vašu IP adresu
 # Link title
 rec-ip-us-cta = Vyskúšajte { -brand-fpn }
