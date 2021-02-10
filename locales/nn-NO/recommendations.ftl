@@ -50,6 +50,13 @@ rec-cc =
     Sjå opp for merkelege kostnadar på kredittkortet ditt. Det kan vere lurt 
     å be om eit nytt kort med eit nytt nummer frå kredittkortutskrivaren din.
 # Recommendation subhead
+rec-email-subhead = Bruk e-postalias
+rec-email-cta = Prøv { -brand-relay }
+rec-email =
+    Å gi ut den verkelege e-postadressa di gjer det lettare for hackarar eller sporarar å
+    finn passorda dine eller følgje deg på deg på nettet. Ei tjeneste som { -brand-relay }
+    skjuler den verkelege e-postadressa di mens du vidaresender e-post til den verkelege innboksen din.
+# Recommendation subhead
 rec-ip-subhead = Bruk ei teneste som maskerer IP-adressa di
 # Link title
 rec-ip-us-cta = Prøv { -brand-fpn }
