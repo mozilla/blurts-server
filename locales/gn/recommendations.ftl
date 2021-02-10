@@ -52,6 +52,10 @@ rec-cc =
 # Recommendation subhead
 rec-email-subhead = Eipuru ñanduti veve rera’anga
 rec-email-cta = Eipuru { -brand-relay }
+rec-email =
+    Eme’ẽvo ne ñanduti veve ha’etéva remoĩma umi mba’evaiapoha ha tapykuehoha
+    ojuhúvo ne ñe’ẽñemi térã ndejuhúvo ñandutípe. Ko { -brand-relay } rembiapo
+    ha’e omokañývo ne ñanduti veve emondojey aja ñandutiveve ne g̃uahẽhame.
 # Recommendation subhead
 rec-ip-subhead = Eipuru mba’epuru omokañýva nde IP kundaharape
 # Link title
