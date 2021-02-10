@@ -50,6 +50,9 @@ rec-cc =
     Ema’ẽ tapiáke nde kuatia’atã ñemurã. Ikatu hína 
     ejerure kuatia’atã ñemurã pyahu ipapapy pyahúva me’ẽhárape.
 # Recommendation subhead
+rec-email-subhead = Eipuru ñanduti veve rera’anga
+rec-email-cta = Eipuru { -brand-relay }
+# Recommendation subhead
 rec-ip-subhead = Eipuru mba’epuru omokañýva nde IP kundaharape
 # Link title
 rec-ip-us-cta = Eñe’ẽ { -brand-fpn }
