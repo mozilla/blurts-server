@@ -15,7 +15,7 @@
     "clean-css-cli": "4.3.0",
     "client-oauth2": "4.3.2",
     "concat": "1.0.3",
-    "connect-redis": "5.0.0",
+    "connect-redis": "5.1.0",
     "cpr": "3.0.1",
     "csurf": "1.11.0",
     "dotenv": "8.2.0",
