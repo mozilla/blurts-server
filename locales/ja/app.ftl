@@ -13,6 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 -brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
@@ -271,9 +272,17 @@ create-strong-passwords-desc = パスワードは強力で安全で推測しに�
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+resolve-top-notification = { $affectedEmail } は、この侵害を受けています。<a>何をするべきかはこちらをご覧ください</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+       *[other] { $numAffectedEmails } 個のメールアドレスが、この侵害を受けています。<a>何をするべきかはこちらをご覧ください</a>
+    }
 
 ##
 
+marking-this-subhead = この侵害を解決済みとしてマークする
+mark-as-resolve-button = 解決済みとしてマーク
+marked-as-resolved-label = 解決済みとしてマークされました
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
