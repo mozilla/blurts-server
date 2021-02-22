@@ -33,7 +33,7 @@
     "isemail": "3.2.0",
     "knex": "0.21.12",
     "knex-paginate": "1.2.2",
-    "lodash": "4.17.19",
+    "lodash": "4.17.21",
     "mozlog": "3.0.1",
     "nodemailer": "4.7.0",
     "nodemailer-express-handlebars": "3.3.0",
