@@ -21,10 +21,54 @@ header.show-shadow {
   opacity: 1;
 }
 
-.recruitment-banner {
+.recruitment-banner, .micro-survey-banner {
   background-color: #f9f7fd;
   padding: .5em;
   text-align: center;
+}
+
+.micro-survey-banner {
+  background: rgba(255,255,255,0.1);
+}
+
+.micro-survey-banner.hidden {
+  display: none;
+}
+
+.micro-survey-options {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.micro-survey-options .micro-survey-option {
+  border-radius: 4px;
+  margin-right: 1rem;
+  background-color: var(--violet4);
+  transition: background 0.1s ease-out;
+}
+
+.micro-survey-options .micro-survey-option:hover {
+  background-color: var(--blue3);
+}
+
+
+.micro-survey-options-numeric .micro-survey-option {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.micro-survey-options-likert .micro-survey-option {
+    padding: 0.5rem 0.75rem;
+}
+
+.micro-survey-options li:last-child  {
+  margin-right: 0;
 }
 
 #navigation-wrapper {

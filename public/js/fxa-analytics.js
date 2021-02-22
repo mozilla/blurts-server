@@ -163,6 +163,173 @@ function setGAListeners(){
   window.sessionStorage.setItem("gaInit", true);
 }
 
+function resetBodyPadding() {
+  const header = document.querySelector("header");
+  const headerHeight = header.clientHeight;
+  document.body.style.paddingTop = headerHeight + "px";
+  return;
+}
+
+function isGoogleAnalyticsAvailable() {
+  return (typeof(ga) !== "undefined");
+}
+
+function setSurveyedCookie() {
+  const date = new Date();
+  date.setTime(date.getTime() + 30*24*60*60*1000);
+  document.cookie = "surveyed=true; expires=" + date.toUTCString();
+  const microSurveyBanner = document.getElementById("micro-survey-banner");
+  if (microSurveyBanner) {
+    microSurveyBanner.remove();
+  }
+}
+
+function analyticsSurveyLogic() {
+
+  if (!isGoogleAnalyticsAvailable) {
+    return;
+  }
+
+  const microSurveyBanner = document.getElementById("micro-survey-banner");
+  if (!microSurveyBanner) {
+    return;
+  }
+
+  const alreadySurveyed = document.cookie.split("; ").some((item) => item.trim().startsWith("surveyed="));
+  if (alreadySurveyed) {
+    microSurveyBanner.remove();
+    return;
+  }
+
+  // Unhide the micro survey
+  microSurveyBanner.classList.remove("hidden");
+
+  const surveyPrompt = document.getElementById("micro-survey-prompt");
+  const surveyType = surveyPrompt.dataset.surveyType;
+  const surveyOptions = document.getElementById("micro-survey-options");
+  switch (surveyType) {
+    case "nps": {
+      const notLikely = document.createElement("li");
+      notLikely.textContent = "Not likely";
+      notLikely.classList = "nps-bookend";
+      surveyOptions.appendChild(notLikely);
+      [...Array(10).keys()].forEach(option => {
+        const li = document.createElement("li");
+        li.classList = "micro-survey-option";
+        li.textContent = option + 1;
+        li.dataset.eventCategory = "NPS Survey";
+        li.dataset.eventAction = "submitted";
+        li.dataset.eventValue = option + 1;
+        if (option < 6) {
+          li.dataset.eventLabel = "detractor";
+          li.dataset.npsValue = -1;
+        } else if (option < 8) {
+          li.dataset.eventLabel = "passive";
+          li.dataset.npsValue = 0;
+        } else {
+          li.dataset.eventLabel = "promoter";
+          li.dataset.npsValue = 1;
+        }
+        li.addEventListener("click", (evt) => {
+          const eventData = li.dataset;
+          ga("send", "event",
+            eventData.eventCategory,
+            eventData.eventAction,
+            eventData.eventLabel,
+            eventData.eventValue,
+            {
+              dimension1: eventData.eventLabel,
+              metric1: 1,
+              metric2: eventData.eventValue,
+              metric3: eventData.npsValue,
+            }
+          );
+        });
+
+        li.addEventListener("click", setSurveyedCookie);
+        surveyOptions.appendChild(li);
+      });
+      const veryLikely = document.createElement("li");
+      veryLikely.textContent = "Very likely";
+      veryLikely.classList = "nps-bookend";
+      surveyOptions.appendChild(veryLikely);
+    break;
+    }
+    case "pmf": {
+      const options = [
+        "Very disappointed", "Somewhat disappointed", "I wouldn't care",
+      ];
+      options.forEach(option => {
+        const li = document.createElement("li");
+        li.classList = "micro-survey-option";
+        li.textContent = option;
+        li.dataset.eventCategory = "PMF Survey";
+        li.dataset.eventAction = "submitted";
+        li.dataset.eventLabel = option;
+        li.addEventListener("click", setSurveyedCookie);
+        li.addEventListener("click", (evt) => {
+          const eventData = li.dataset;
+          ga("send", "event",
+            eventData.eventCategory,
+            eventData.eventAction,
+            eventData.eventLabel,
+            eventData.eventValue
+          );
+        });
+        surveyOptions.appendChild(li);
+      });
+      break;
+    }
+    case "usability":
+    case "credibility":
+    case "appearance": {
+      let countMetric = "metric4";
+      let rankMetric = "metric5";
+      if (surveyType === "credibility") {
+        countMetric = "metric6";
+        rankMetric = "metric7";
+      }
+      if (surveyType === "appearance") {
+        countMetric = "metric8";
+        rankMetric = "metric9";
+      }
+
+      const options = [
+        "Strongly disagree", "Disagree", "Unsure", "Agree", "Strongly agree",
+      ];
+      let eventValue = 1;
+      options.forEach(option => {
+        const li = document.createElement("li");
+        li.classList = "micro-survey-option";
+        li.textContent = option;
+        li.dataset.eventCategory = `SUPR-Q Survey ${surveyType}`;
+        li.dataset.eventAction = "submitted";
+        li.dataset.eventLabel = option;
+        li.dataset.eventValue = eventValue;
+        li.addEventListener("click", setSurveyedCookie);
+        li.addEventListener("click", (evt) => {
+          const eventData = li.dataset;
+          const gaFieldsObject = {
+              [countMetric]: 1,
+              [rankMetric]: eventData.eventValue,
+          };
+          ga("send", "event",
+            eventData.eventCategory,
+            eventData.eventAction,
+            eventData.eventLabel,
+            eventData.eventValue,
+            gaFieldsObject
+          );
+        });
+        eventValue++;
+        surveyOptions.appendChild(li);
+      });
+      break;
+    }
+  }
+  resetBodyPadding();
+}
+
 (() => {
   const win = window;
   const winLocationSearch = win.location.search;
@@ -219,8 +386,7 @@ function setGAListeners(){
       setGAListeners();
     }, false);
 
-
-
+    analyticsSurveyLogic();
 
   } else {
     removeUtmsFromUrl();
