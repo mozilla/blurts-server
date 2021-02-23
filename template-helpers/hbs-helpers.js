@@ -62,13 +62,13 @@ function microsurveyBanner(args) {
   }
 
   const bannerOpeningDiv = "<div id=\"micro-survey-banner\" class=\"micro-survey-banner hidden\">";
-  const nowSecond = Math.floor(new Date().getTime() / 1000);
+  const nowSecond = Math.abs(Math.floor(new Date().getTime() / 1000)) % 10;
   let surveyElements;
   switch (nowSecond) {
     case 1:
     case 6: {
       surveyElements = `
-        <span id="micro-survey-prompt" data-survey-type="nps">On a scale from 1-10, how likely are you to recommend Relay to a friend or colleague?</span>
+        <span id="micro-survey-prompt" data-survey-type="nps">On a scale from 1-10, how likely are you to recommend Monitor to a friend or colleague?</span>
         <ul id="micro-survey-options" class="micro-survey-options micro-survey-options-numeric"></ul>
       `;
       break;
@@ -76,7 +76,7 @@ function microsurveyBanner(args) {
     case 2:
     case 7: {
       surveyElements = `
-        <span id="micro-survey-prompt" data-survey-type="usability">Is Relay easy to use?</span>
+        <span id="micro-survey-prompt" data-survey-type="usability">Is Monitor easy to use?</span>
         <ul id="micro-survey-options" class="micro-survey-options micro-survey-options-likert"></ul>
       `;
       break;
@@ -84,7 +84,7 @@ function microsurveyBanner(args) {
     case 3:
     case 8: {
       surveyElements = `
-        <span id="micro-survey-prompt" data-survey-type="credibility">Do you feel Relay is trustworthy?</span>
+        <span id="micro-survey-prompt" data-survey-type="credibility">Do you feel Monitor is trustworthy?</span>
         <ul id="micro-survey-options" class="micro-survey-options micro-survey-options-likert"></ul>
       `;
       break;
@@ -92,14 +92,14 @@ function microsurveyBanner(args) {
     case 4:
     case 9: {
       surveyElements = `
-        <span id="micro-survey-prompt" data-survey-type="appearance">Does Relay have a clean and simple presentation?</span>
+        <span id="micro-survey-prompt" data-survey-type="appearance">Does Monitor have a clean and simple presentation?</span>
         <ul id="micro-survey-options" class="micro-survey-options micro-survey-options-likert"></ul>
       `;
       break;
     }
     default: {
       surveyElements = `
-        <span id="micro-survey-prompt" data-survey-type="pmf">How would you feel if you could no longer use Relay?</span>
+        <span id="micro-survey-prompt" data-survey-type="pmf">How would you feel if you could no longer use Monitor?</span>
         <ul id="micro-survey-options" class="micro-survey-options micro-survey-options-likert"></ul>
       `;
       break;
