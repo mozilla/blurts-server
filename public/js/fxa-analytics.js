@@ -239,9 +239,9 @@ function analyticsSurveyLogic() {
             eventData.eventValue,
             {
               dimension1: eventData.eventLabel,
-              metric1: 1,
-              metric2: eventData.eventValue,
-              metric3: eventData.npsValue,
+              metric2: 1,
+              metric3: eventData.eventValue,
+              metric4: eventData.npsValue,
             }
           );
         });
@@ -283,15 +283,15 @@ function analyticsSurveyLogic() {
     case "usability":
     case "credibility":
     case "appearance": {
-      let countMetric = "metric4";
-      let rankMetric = "metric5";
+      let countMetric = "metric5";
+      let rankMetric = "metric6";
       if (surveyType === "credibility") {
-        countMetric = "metric6";
-        rankMetric = "metric7";
+        countMetric = "metric7";
+        rankMetric = "metric8";
       }
       if (surveyType === "appearance") {
-        countMetric = "metric8";
-        rankMetric = "metric9";
+        countMetric = "metric9";
+        rankMetric = "metric10";
       }
 
       const options = [
