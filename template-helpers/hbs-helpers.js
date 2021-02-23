@@ -62,7 +62,7 @@ function microsurveyBanner(args) {
   }
 
   const bannerOpeningDiv = "<div id=\"micro-survey-banner\" class=\"micro-survey-banner hidden\">";
-  const nowSecond = new Date().getTime() / 1000;
+  const nowSecond = Math.floor(new Date().getTime() / 1000);
   let surveyElements;
   switch (nowSecond) {
     case 1:
