@@ -100,20 +100,8 @@ Subscribe with a Firefox Account is controlled via the `FXA_ENABLED`
 environment variable. (See `.env-dist`)
 
 The repo comes with a development FxA oauth app pre-configured in `.env`, which
-should work fine running the app on http://localhost:6060
-
-To use a different Firefox Accounts oauth relying party,
-you'll need to [create an FxA Oauth Client](https://oauth-stable.dev.lcip.org/console/clients) and then set some `OAUTH` config values.
-
-You can set and source these via the `.env` file:
-
-```sh
-OAUTH_CLIENT_ID=<your-fxa-oauth-client-id>
-OAUTH_CLIENT_SECRET=<your-fxa-oauth-client-secret>
-OAUTH_AUTHORIZATION_URI="https://oauth-stable.dev.lcip.org/v1/authorization"
-OAUTH_PROFILE_URI="https://stable.dev.lcip.org/profile/v1/profile"
-OAUTH_TOKEN_URI="https://oauth-stable.dev.lcip.org/v1/token"
-```
+should work fine running the app on http://localhost:6060. You'll need to get
+the `OAUTH_CLIENT_SECRET` value from someone in #fxmonitor-engineering.
 
 ## Testing
 
