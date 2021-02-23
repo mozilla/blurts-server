@@ -44,6 +44,71 @@ function recruitmentBanner(args) {
   return `<div class="recruitment-banner"><a id="recruitment-banner" href="${AppConstants.RECRUITMENT_BANNER_LINK}"  target="_blank" rel="noopener noreferrer" data-ga-link="" data-event-category="Recruitment" data-event-label="${escapeHtmlAttributeChars(AppConstants.RECRUITMENT_BANNER_TEXT)}">${AppConstants.RECRUITMENT_BANNER_TEXT}</a></div>`;
 }
 
+function microsurveyBanner(args) {
+  // don't show micro survey if we're already showing a recruitment banner
+  if (AppConstants.RECRUITMENT_BANNER_LINK && AppConstants.RECRUITMENT_BANNER_TEXT) {
+    return;
+  }
+
+  // don't show micro survey if language isn't English
+  // TODO: localize micro survey questions
+  if (!englishInAcceptLanguages(args)) {
+    return;
+  }
+
+  // don't show micro survey if user is not signed in
+  if (!args.data.root.req.session.user){
+    return;
+  }
+
+  const bannerOpeningDiv = "<div id=\"micro-survey-banner\" class=\"micro-survey-banner hidden\">";
+  const nowSecond = Math.abs(Math.floor(new Date().getTime() / 1000)) % 10;
+  let surveyElements;
+  switch (nowSecond) {
+    case 1:
+    case 6: {
+      surveyElements = `
+        <span id="micro-survey-prompt" data-survey-type="nps">On a scale from 1-10, how likely are you to recommend Monitor to a friend or colleague?</span>
+        <ul id="micro-survey-options" class="micro-survey-options micro-survey-options-numeric"></ul>
+      `;
+      break;
+    }
+    case 2:
+    case 7: {
+      surveyElements = `
+        <span id="micro-survey-prompt" data-survey-type="usability">Is Monitor easy to use?</span>
+        <ul id="micro-survey-options" class="micro-survey-options micro-survey-options-likert"></ul>
+      `;
+      break;
+    }
+    case 3:
+    case 8: {
+      surveyElements = `
+        <span id="micro-survey-prompt" data-survey-type="credibility">Do you feel Monitor is trustworthy?</span>
+        <ul id="micro-survey-options" class="micro-survey-options micro-survey-options-likert"></ul>
+      `;
+      break;
+    }
+    case 4:
+    case 9: {
+      surveyElements = `
+        <span id="micro-survey-prompt" data-survey-type="appearance">Does Monitor have a clean and simple presentation?</span>
+        <ul id="micro-survey-options" class="micro-survey-options micro-survey-options-likert"></ul>
+      `;
+      break;
+    }
+    default: {
+      surveyElements = `
+        <span id="micro-survey-prompt" data-survey-type="pmf">How would you feel if you could no longer use Monitor?</span>
+        <ul id="micro-survey-options" class="micro-survey-options micro-survey-options-likert"></ul>
+      `;
+      break;
+    }
+  }
+  const bannerClosingDev = "</div>";
+
+  return [bannerOpeningDiv, surveyElements, bannerClosingDev].join("");
+}
 
 function getString (id, args) {
   const supportedLocales = getSupportedLocales(args);
@@ -194,6 +259,7 @@ function breachMath(lValue, operator = null, rValue = null) {
 
 module.exports = {
   recruitmentBanner,
+  microsurveyBanner,
   englishInAcceptLanguages,
   getString,
   getStrings,

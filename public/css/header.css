@@ -21,10 +21,70 @@ header.show-shadow {
   opacity: 1;
 }
 
-.recruitment-banner {
+.recruitment-banner,
+.micro-survey-banner {
   background-color: #f9f7fd;
-  padding: .5em;
+  padding: 0.5em;
   text-align: center;
+}
+
+#micro-survey-prompt {
+  font-size: 1.1rem;
+}
+
+.micro-survey-banner {
+  background-color: #d8b7f7;
+  font-weight: bold;
+  padding-top: 1rem;
+}
+
+.micro-survey-banner.hidden {
+  display: none;
+}
+
+.micro-survey-options {
+  padding: 0;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.micro-survey-options .micro-survey-option {
+  border-radius: 4px;
+  margin-right: 1rem;
+  color: var(--violet5);
+  border: 2px solid var(--violet5);
+  transition: all 0.1s ease-out;
+  cursor: pointer;
+}
+
+.micro-survey-options .micro-survey-option:hover {
+  border-color: var(--violet6);
+  background: var(--violet6);
+  color: var(--grey1);
+}
+
+.micro-survey-options-numeric .micro-survey-option {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.micro-survey-options-likert .micro-survey-option {
+  padding: 0.5rem 0.75rem;
+}
+
+.nps-bookend {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.micro-survey-options li:last-child {
+  margin-right: 0;
 }
 
 #navigation-wrapper {
@@ -412,6 +472,12 @@ img.avatar,
     padding-right: 2.75rem;
     text-align: left;
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .micro-survey-banner {
+    display: none;
   }
 }
 
