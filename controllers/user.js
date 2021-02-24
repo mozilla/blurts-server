@@ -230,7 +230,9 @@ function getNewBreachesForEmailEntriesSinceDate(emailEntries, date) {
 
 async function getDashboard(req, res) {
   const user = req.user;
-  const userHasUnlimited = (user.fxa_profile_json.hasOwnProperty("subscriptions") && user.fxa_profile_json.subscriptions.includes("monitor-unlimited")) ? true : false;
+  const subscriptionsWithUnlimited = AppConstants.SUBSCRIPTIONS_WITH_UNLIMITED.split(",");
+  const userHasSubscriptions = user.fxa_profile_json.hasOwnProperty("subscriptions");
+  const userHasUnlimited = (userHasSubscriptions && subscriptionsWithUnlimited.filter(sub => user.fxa_profile_json.subscriptions.includes(sub))) ? true : false;
   log.info("user.fxa_profile_json", { fxa_profile_json: user.fxa_profile_json });
   log.info("userHasUnlimited", { userHasUnlimited });
   const allBreaches = req.app.locals.breaches;
