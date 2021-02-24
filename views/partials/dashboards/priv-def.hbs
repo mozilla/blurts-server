@@ -1,6 +1,3 @@
       <div class="privacy-defender">
-        <a target="_blank" class="priv-def-link ff-Met" href="http://127.0.0.1:8000/accounts/fxa/login/?process=login&auth_params=%26prompt%3Dnone%26login_hint%3D{{ req.session.user.primary_email }}">Relay</a>
-        <!--
-        <a target="_blank" class="priv-def-link ff-Met" href="https://stage.guardian.nonprod.cloudops.mozgcp.net/">Private Network</a>
-        -->
+        <a target="_blank" class="priv-def-link ff-Met" href="{{ RELAY_HOST_URL }}/accounts/fxa/login/?process=login&auth_params=%26prompt%3Dnone%26login_hint%3D{{ req.session.user.primary_email }}">Add Relay to your Monitor account</a>
       </div>

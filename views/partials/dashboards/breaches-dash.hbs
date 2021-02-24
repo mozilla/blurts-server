@@ -86,9 +86,11 @@
     {{/unless}}
 </div>
 {{/ifCompare}}
+{{#if PREMIUM_ENABLED }}
 {{#unless userHasUnlimited }}
 <div class="row jst-cntr">
     <a class="btn-violet-secondary btn-transparent btn-small" href="https://accounts.stage.mozaws.net/subscriptions/products/{{ PREMIUM_PROD_ID }}?plan={{ PREMIUM_PRICE_ID }}" target="_blank">Buy Unlimited addresses!</a>
 </div>
 {{/unless}}
+{{/if}}
 {{> take-back-control/take-back-control-banner additionalClasses="dash-take-back-wrapper"}}
