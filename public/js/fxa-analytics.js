@@ -163,13 +163,6 @@ function setGAListeners(){
   window.sessionStorage.setItem("gaInit", true);
 }
 
-function resetBodyPadding() {
-  const header = document.querySelector("header");
-  const headerHeight = header.clientHeight;
-  document.body.style.paddingTop = headerHeight + "px";
-  return;
-}
-
 function isGoogleAnalyticsAvailable() {
   return (typeof(ga) !== "undefined");
 }
@@ -327,7 +320,6 @@ function analyticsSurveyLogic() {
       break;
     }
   }
-  resetBodyPadding();
 }
 
 (() => {
