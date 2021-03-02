@@ -33,6 +33,7 @@ dates-of-birth = Datas de nascimento
 deceased-date = Datas de falecimento
 deceased-statuses = Status de falecimento
 device-information = Informação de dispositivo
+device-serial-numbers = Números de série do dispositivo
 device-usage-tracking-data = Dados de rastreamento de uso de dispositivo
 drinking-habits = Hábitos de bebidas
 drug-habits = Hábitos de uso de drogas
