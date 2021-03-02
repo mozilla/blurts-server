@@ -33,6 +33,7 @@ dates-of-birth = Födelsedatum
 deceased-date = Dödsdatum
 deceased-statuses = Dödsannonser
 device-information = Enhetsinformation
+device-serial-numbers = Serienummer på enheter
 device-usage-tracking-data = Spårningsdata för enhetsanvändning
 drinking-habits = Drickvanor
 drug-habits = Drogvanor
@@ -66,6 +67,7 @@ ip-addresses = IP-adresser
 job-applications = Jobbansökningar
 job-titles = Jobbtitlar
 living-costs = Levnadskostnader
+login-histories = Inloggningshistorik
 mac-addresses = MAC-adresser
 marital-statuses = Civilstånd
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
