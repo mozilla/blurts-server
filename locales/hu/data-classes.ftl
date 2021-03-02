@@ -33,6 +33,7 @@ dates-of-birth = Születési idők
 deceased-date = Halálozási idők
 deceased-statuses = Halálozási állapotok
 device-information = Eszközinformációk
+device-serial-numbers = Eszköz sorozatszámok
 device-usage-tracking-data = Eszközhasználati követési adatok
 drinking-habits = Alkoholfogyasztási szokások
 drug-habits = Kábítószer-fogyasztási szokások
@@ -66,6 +67,7 @@ ip-addresses = IP-címek
 job-applications = Állásjelentkezések
 job-titles = Beosztások
 living-costs = Megélhetési költségek
+login-histories = Bejelentkezési előzmények
 mac-addresses = MAC-címek
 marital-statuses = Családi állapotok
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
