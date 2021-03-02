@@ -33,6 +33,7 @@ dates-of-birth = Bertedatum
 deceased-date = Datum fan ferstjerren
 deceased-statuses = Steat fan ferstjerren
 device-information = Apparaatgegevens
+device-serial-numbers = Searjenûmers fan apparaten
 device-usage-tracking-data = Folchgegevens oer apparaatgebrûk
 drinking-habits = Drinkgewoanten
 drug-habits = Drugsgewoanten
