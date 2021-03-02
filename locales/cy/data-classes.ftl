@@ -33,6 +33,7 @@ dates-of-birth = Dyddiadau geni
 deceased-date = Dyddiad marw
 deceased-statuses = Statws ymadawedig
 device-information = Manylion dyfais
+device-serial-numbers = Rhifau cyfresol dyfeisiau
 device-usage-tracking-data = Data tracio defnydd y ddyfais
 drinking-habits = Arferion yfed
 drug-habits = Arferion cyffuriau
@@ -66,6 +67,7 @@ ip-addresses = Cyfeiriad IP
 job-applications = Ceisiadau am swyddi
 job-titles = Teitlau swyddi
 living-costs = Costau byw
+login-histories = Hanesion mewngofnodi
 mac-addresses = Cyfeiriadau MAC
 marital-statuses = Statws priodasol
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
