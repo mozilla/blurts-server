@@ -67,6 +67,7 @@ ip-addresses = Endereços IP
 job-applications = Pedidos de emprego
 job-titles = Cargo profissional
 living-costs = Custo de vida
+login-histories = Históricos de acesso a contas
 mac-addresses = Endereço MAC
 marital-statuses = Estado civil
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
