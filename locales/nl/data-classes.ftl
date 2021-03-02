@@ -33,6 +33,7 @@ dates-of-birth = Geboortedata
 deceased-date = Overlijdensdatum
 deceased-statuses = Overlijdensstatussen
 device-information = Apparaatgegevens
+device-serial-numbers = Serienummers van apparaten
 device-usage-tracking-data = Volggegevens over apparaatgebruik
 drinking-habits = Drinkgewoonten
 drug-habits = Drugsgewoonten
