@@ -33,6 +33,7 @@ dates-of-birth = Teñoiha ára
 deceased-date = Ñemanoha ára
 deceased-statuses = Ñemanoha rekotee
 device-information = Mba’e’oka marandu
+device-serial-numbers = Mba’e’oka papapy hekoetáva
 device-usage-tracking-data = Mba’e’oka jepuru mba’ekuaarã rapykuehoha
 drinking-habits = Guari ñemokõ meme
 drug-habits = Droga je’u meme
@@ -66,6 +67,7 @@ ip-addresses = IP kundaharape
 job-applications = Mba’ejerure mba’aporã
 job-titles = Nerenda mba’apohápe
 living-costs = Tekove repy
+login-histories = Tembiapo ñepyrũ rembiasakue
 mac-addresses = MAC kundaharape
 marital-statuses = Emendávapa
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
