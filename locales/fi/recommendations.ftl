@@ -53,6 +53,10 @@ rec-cc =
 # Recommendation subhead
 rec-email-subhead = Käytä sähköpostialiaksia
 rec-email-cta = Kokeile { -brand-relay }ta
+rec-email =
+    Oikean sähköpostiosoitteesi antaminen helpottaa pahojen tahojen ja seurainten
+    löytää salasanasi tai maalittaa sinut verkossa. Palvelu kuten { -brand-relay }
+    piilottaa todellisen sähköpostiosoitteesi ja välittää viestit todelliseen postilaatikkoosi.
 # Recommendation subhead
 rec-ip-subhead = Käytä palvelua, joka peittää IP-osoitteesi
 # Link title
