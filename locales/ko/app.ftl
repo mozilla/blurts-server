@@ -481,6 +481,28 @@ progress-complete = 모든 참해가 해결됨으로 표시됨
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>시작이 좋습니다!</span> 어떤 조치를 취해야하는지 알아보기 위해 나머지 위반 사항을
+    확인하십시오.
+progress-message-4 = <span>거의 다 됐습니다!</ span> 결승선이 바로 앞입니다.
 
 ##
 
+resolve-this-breach-link = 위반사항 해결
+# This string appears in resolved breach cards and is followed by 
+# the date the user marked the breach as resolved.
+marked-resolved = 해결됨으로 표시:
+hide-resolved-button = 해결 된 항목 숨기기
+show-resolved-button = 해결된 항목 표시
+unresolved-passwords-exposed =
+    { $numPasswords ->
+       *[other] 비밀번호가 해결되지 않은 위반 사항에  노출됨
+    }
+known-data-breaches-resolved =
+    { $numResolvedBreaches ->
+       *[other] 해결된 것으로 표시된 알려진 데이터 유출
+    }
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = 신규
+mobile-promo-headline = 휴대전화 및 태블릿에 { -brand-name } 가져오기
+mobile-promo-cta = Android와 iOS 에 { -brand-name } 받기
