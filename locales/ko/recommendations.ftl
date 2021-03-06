@@ -31,3 +31,22 @@ rec-pw-4 =
     필요합니다.
 # Recommendation subhead
 rec-bank-acc-subhead = 은행 명세서 모니터링
+rec-bank-acc =
+    은행 명세서에 의심스러운 활동이나 비정상적인 요금이 있는지 확인하세요.
+    만약 알 수 없는 내용을 보게 된다면 은행에 알립니다.
+# Recommendation subhead
+rec-cc-subhead = 신용 카드 명세서 모니터링
+rec-cc =
+    신용카드에 이상한 청구가 있지는 않은지 확인하세요.
+    신용 카드 발급 기관으로부터 새 카드를 발급받아야 할 지도 모릅니다.
+# Recommendation subhead
+rec-ip-subhead = IP 주소를 숨기는 서비스 사용
+# Link title
+rec-ip-us-cta = { -brand-fpn } 사용해보기
+# Recommendation subhead
+rec-moz-vpn-cta = { -brand-mozilla-vpn } 사용해보기
+rec-hist-pw-subhead = 비밀번호 재사용 방지
+# Link title
+rec-hist-pw-cta-fx = { -brand-name }에서 로그인 보기
+# Recommendation subhead
+rec-sec-qa-subhead = 보안 질문에 대한 고유한 답변 만들기
