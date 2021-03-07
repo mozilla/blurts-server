@@ -67,6 +67,7 @@ ip-addresses = IP-адреса
 job-applications = Заявления о приёме на работу
 job-titles = Названия должностей
 living-costs = Расходы на проживание
+login-histories = Истории логинов
 mac-addresses = MAC-адреса
 marital-statuses = Семейные положения
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
