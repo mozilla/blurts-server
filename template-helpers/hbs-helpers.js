@@ -50,56 +50,75 @@ function microsurveyBanner(args) {
     return;
   }
 
-  // don't show micro survey if language isn't English
-  // TODO: localize micro survey questions
-  if (!englishInAcceptLanguages(args)) {
-    return;
-  }
-
   // don't show micro survey if user is not signed in
   if (!args.data.root.req.session.user){
     return;
   }
 
-  const bannerOpeningDiv = "<div id=\"micro-survey-banner\" class=\"micro-survey-banner hidden\">";
-  const nowSecond = Math.abs(Math.floor(new Date().getTime() / 1000)) % 10;
+  const microSurveyResponseIds = [
+    "micro-survey-strongly-disagree-response",
+    "micro-survey-disagree-response",
+    "micro-survey-unsure-response",
+    "micro-survey-agree-response",
+    "micro-survey-strongly-agree-response",
+    "micro-survey-very-disappointed-response",
+    "micro-survey-somewhat-disappointed-response",
+    "micro-survey-dont-care-response",
+    "micro-survey-not-likely-response",
+    "micro-survey-very-likely-response",
+  ];
+  const enLocaleArgs = {
+    hash: args.hash, data: {root: {req: {supportedLocales: ["en"]} } },
+  };
+  let bannerOpeningDivDataset = "";
+  microSurveyResponseIds.forEach(id => {
+    bannerOpeningDivDataset += ` data-${id}-translated="${getString(id, args)}" `;
+    bannerOpeningDivDataset += ` data-${id}-english="${getString(id, enLocaleArgs)}" `;
+  });
+  const bannerOpeningDiv = `<div id="micro-survey-banner" class="micro-survey-banner hidden" ${bannerOpeningDivDataset}>`;
+  const nowSecond = new Date().getSeconds() % 10;
   let surveyElements;
   switch (nowSecond) {
     case 1:
     case 6: {
+      const promptStr = getString("micro-survey-nps-prompt", args);
       surveyElements = `
-        <span id="micro-survey-prompt" data-survey-type="nps">On a scale from 1-10, how likely are you to recommend Monitor to a friend or colleague?</span>
+        <span id="micro-survey-prompt" data-survey-type="nps">${promptStr}</span>
         <ul id="micro-survey-options" class="micro-survey-options micro-survey-options-numeric"></ul>
       `;
       break;
     }
     case 2:
     case 7: {
+      const promptStr = getString("micro-survey-usability-prompt", args);
       surveyElements = `
-        <span id="micro-survey-prompt" data-survey-type="usability">Is Monitor easy to use?</span>
+        <span id="micro-survey-prompt" data-survey-type="usability">${promptStr}</span>
         <ul id="micro-survey-options" class="micro-survey-options micro-survey-options-likert"></ul>
       `;
       break;
     }
     case 3:
     case 8: {
+      const promptStr = getString("micro-survey-credibility-prompt", args);
       surveyElements = `
-        <span id="micro-survey-prompt" data-survey-type="credibility">Do you feel Monitor is trustworthy?</span>
+        <span id="micro-survey-prompt" data-survey-type="credibility">${promptStr}</span>
         <ul id="micro-survey-options" class="micro-survey-options micro-survey-options-likert"></ul>
       `;
       break;
     }
     case 4:
     case 9: {
+      const promptStr = getString("micro-survey-appearance-prompt", args);
       surveyElements = `
-        <span id="micro-survey-prompt" data-survey-type="appearance">Does Monitor have a clean and simple presentation?</span>
+        <span id="micro-survey-prompt" data-survey-type="appearance">${promptStr}</span>
         <ul id="micro-survey-options" class="micro-survey-options micro-survey-options-likert"></ul>
       `;
       break;
     }
     default: {
+      const promptStr = getString("micro-survey-pmf-prompt", args);
       surveyElements = `
-        <span id="micro-survey-prompt" data-survey-type="pmf">How would you feel if you could no longer use Monitor?</span>
+        <span id="micro-survey-prompt" data-survey-type="pmf">${promptStr}</span>
         <ul id="micro-survey-options" class="micro-survey-options micro-survey-options-likert"></ul>
       `;
       break;
