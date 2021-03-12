@@ -52,7 +52,7 @@
     "@wdio/selenium-standalone-service": "5.16.10",
     "@wdio/spec-reporter": "5.23.0",
     "@wdio/sync": "5.23.0",
-    "chai": "4.2.0",
+    "chai": "4.3.4",
     "clean-css-cli": "4.3.0",
     "coveralls": "3.1.0",
     "eslint": "7.12.1",
