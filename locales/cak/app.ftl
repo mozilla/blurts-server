@@ -13,6 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Ichinan Ruk'amab'ey Firefox
 -brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 

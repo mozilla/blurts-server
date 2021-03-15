@@ -33,6 +33,7 @@ dates-of-birth = Ruq'ijul alaxanïk
 deceased-date = Ruq'ijul kamïk
 deceased-statuses = Rub'anikil kamïk
 device-information = Retamab'al oyonib'äl
+device-serial-numbers = Rajilab'al rajilab'al okisab'äl
 device-usage-tracking-data = Kitzij rojqanïk rokisaxik oyonib'äl
 drinking-habits = Ruk'ulunem qumuj
 drug-habits = Ruk'ulunem jub'
@@ -66,6 +67,7 @@ ip-addresses = IP taq ochochib'äl
 job-applications = Ruk'utuj samaj
 job-titles = Kib'i' samaj
 living-costs = Rajil k'aslem
+login-histories = Rub'anob'al tikirib'äl molojri'ïl
 mac-addresses = MAC taq ochochib'äl
 marital-statuses = Rub'anikil melab'al
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.

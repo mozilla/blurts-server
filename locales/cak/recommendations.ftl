@@ -50,6 +50,9 @@ rec-cc =
     Tanik'oj richin ye'akanoj ri man relik ta taq samaj chi rij ri atarjeta' richin kre'ito'. Rik'in jub'a' nawajo' 
     nak'utuj jun k'ak'a' tarjeta' rik'in k'ak'a' rajilab'al, ri xtuya' chawe ri ya'öl tarjeta'.
 # Recommendation subhead
+rec-email-subhead = Tawokisaj tz'ukun rub'i' taqoya'l
+rec-email-cta = Tatojtob'ej { -brand-relay }
+# Recommendation subhead
 rec-ip-subhead = Tawokisaj jun samajib'äl nrewaj ri IP awochochib'al
 # Link title
 rec-ip-us-cta = Tatojtob'ej { -brand-fpn }
