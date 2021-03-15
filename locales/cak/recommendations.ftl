@@ -52,6 +52,10 @@ rec-cc =
 # Recommendation subhead
 rec-email-subhead = Tawokisaj tz'ukun rub'i' taqoya'l
 rec-email-cta = Tatojtob'ej { -brand-relay }
+rec-email =
+    Toq naya' ri qitzij rochochib'al ataqoya'l anin yekïl
+    ri ewan taq atzij ri ajjak pa k'amab'ey. Jun samaj achi'el { -brand-relay }
+    tawewaj ri qitzij rochochib'al ataqoya'l toq ye'atäq taqoya'l pa qitzij ataqob'al.
 # Recommendation subhead
 rec-ip-subhead = Tawokisaj jun samajib'äl nrewaj ri IP awochochib'al
 # Link title
