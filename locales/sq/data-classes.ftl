@@ -32,6 +32,7 @@ dates-of-birth = Data lindjesh
 deceased-date = Data vdekjesh
 deceased-statuses = Gjendje vdekjeje
 device-information = Të dhëna pajisjeje
+device-serial-numbers = Numra serialë pajisjesh
 device-usage-tracking-data = Të dhëna gjurmimi përdorimi pajisjeje
 drinking-habits = Zakone pirjeje
 drug-habits = Zakone drogimi
@@ -64,6 +65,7 @@ ip-addresses = Adresa IP
 job-applications = Aplikime punësimi
 job-titles = Emërtesa vendi pune
 living-costs = Kosto jetese
+login-histories = Kronologji hyrjesh
 mac-addresses = Adresa MAC
 marital-statuses = Gjendje martesore
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
