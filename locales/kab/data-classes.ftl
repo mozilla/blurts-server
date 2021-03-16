@@ -33,6 +33,7 @@ dates-of-birth = Izmaz n tlalit
 deceased-date = Azemz n tmettant
 deceased-statuses = Addaden n tmettant
 device-information = Talɣut n yibenk
+device-serial-numbers = Imḍanen n uzrir n yibenk
 device-usage-tracking-data = ISefka n uḍfaṛ n useqdec n yibenkan
 drinking-habits = Tanumi n tisit
 drug-habits = Tanumi n useqdec n lehyuf
@@ -66,6 +67,7 @@ ip-addresses = Tansiwin IP
 job-applications = Asuter n uxeddim
 job-titles = axeddim
 living-costs = Tisqamin n tmeddurt
+login-histories = Azray n unekcum
 mac-addresses = tansiwin MAC
 marital-statuses = addad aɣarim
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
