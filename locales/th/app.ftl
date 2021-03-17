@@ -219,6 +219,19 @@ new-breaches-found =
 sign-up-headline-1 = รับการแจ้งเตือนแบบต่อเนื่องด้วย { -brand-fxa }
 account-not-required = ไม่จำเป็นต้องใช้เบราว์เซอร์ { -brand-name } สำหรับ { -brand-fxa } คุณอาจได้รับข้อมูลเกี่ยวกับบริการของ { -brand-Mozilla }
 was-your-info-exposed = ข้อมูลของคุณถูกเปิดเผยในการรั่วไหลของข้อมูล { $breachName } หรือไม่
+find-out-if = ตรวจสอบว่าข้อมูลของคุณถูกเปิดเผยในข้อมูลที่รั่วไหลนี้หรือไม่
+fb-not-comp = อีเมลนี้ไม่ปรากฏในการรั่วไหล { $breachName }
+other-breaches-found =
+    { $breachCount ->
+       *[other] อย่างไรก็ตาม อีเมลดังกล่าวยังคงปรากฏใน { $breachCount } การรั่วไหลอื่น ๆ
+    }
+fb-comp-only = อีเมลนปรากฏในการรั่วไหล { $breachName }
+fb-comp-and-others =
+    { $breachCount ->
+       *[other] อีเมลนี้ปรากฏใน { $breachCount } การรั่วไหลของข้อมูลที่ทราบ รวมถึง { $breachName }
+    }
+no-other-breaches-found = ไม่พบการรั่วไหลอื่น ๆ จากการค้นหาแบบพื้นฐาน
+no-results-blurb = ขออภัย การรั่วไหลดังกล่าวไม่ได้อยู่ในฐานข้อมูลของเรา
 all-breaches-headline = การรั่วไหลทั้งหมดใน { -product-name }
 search-breaches = ค้นหาการรั่วไหล
 # "Appears in-page as: Showing: All Breaches"
