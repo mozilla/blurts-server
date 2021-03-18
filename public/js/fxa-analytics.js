@@ -203,7 +203,7 @@ function analyticsSurveyLogic() {
   switch (surveyType) {
     case "nps": {
       const notLikely = document.createElement("li");
-      notLikely.textContent = "Not likely";
+      notLikely.textContent = microSurveyBanner.getAttribute("data-micro-survey-not-likely-response-translated");
       notLikely.classList = "nps-bookend";
       surveyOptions.appendChild(notLikely);
       [...Array(10).keys()].forEach(option => {
@@ -243,22 +243,24 @@ function analyticsSurveyLogic() {
         surveyOptions.appendChild(li);
       });
       const veryLikely = document.createElement("li");
-      veryLikely.textContent = "Very likely";
+      veryLikely.textContent = microSurveyBanner.getAttribute("data-micro-survey-very-likely-response-translated");
       veryLikely.classList = "nps-bookend";
       surveyOptions.appendChild(veryLikely);
     break;
     }
     case "pmf": {
       const options = [
-        "Very disappointed", "Somewhat disappointed", "I wouldn't care",
+        "micro-survey-very-disappointed-response",
+        "micro-survey-somewhat-disappointed-response",
+        "micro-survey-dont-care-response",
       ];
       options.forEach(option => {
         const li = document.createElement("li");
         li.classList = "micro-survey-option";
-        li.textContent = option;
+        li.textContent = microSurveyBanner.getAttribute(`data-${option}-translated`);
         li.dataset.eventCategory = "PMF Survey";
         li.dataset.eventAction = "submitted";
-        li.dataset.eventLabel = option;
+        li.dataset.eventLabel = microSurveyBanner.getAttribute(`data-${option}-english`);
         li.addEventListener("click", setSurveyedCookie);
         li.addEventListener("click", (evt) => {
           const eventData = li.dataset;
@@ -288,16 +290,20 @@ function analyticsSurveyLogic() {
       }
 
       const options = [
-        "Strongly disagree", "Disagree", "Unsure", "Agree", "Strongly agree",
+        "micro-survey-strongly-disagree-response",
+        "micro-survey-disagree-response",
+        "micro-survey-unsure-response",
+        "micro-survey-agree-response",
+        "micro-survey-strongly-agree-response",
       ];
       let eventValue = 1;
       options.forEach(option => {
         const li = document.createElement("li");
         li.classList = "micro-survey-option";
-        li.textContent = option;
+        li.textContent = microSurveyBanner.getAttribute(`data-${option}-translated`);
         li.dataset.eventCategory = `SUPR-Q Survey ${surveyType}`;
         li.dataset.eventAction = "submitted";
-        li.dataset.eventLabel = option;
+        li.dataset.eventLabel = microSurveyBanner.getAttribute(`data-${option}-english`);
         li.dataset.eventValue = eventValue;
         li.addEventListener("click", setSurveyedCookie);
         li.addEventListener("click", (evt) => {
