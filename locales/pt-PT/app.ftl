@@ -121,6 +121,17 @@ security-tips = Dicas de segurança
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Abrir navegação do { -brand-fxa }
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled 1-10.
+micro-survey-nps-prompt = Numa escala de 1 a 10, qual é a probabilidade de recomendar o { -product-short-name } a um amigo ou colega?
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = Pouco provável
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = Muito provável
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = É fácil de utilizar o { -product-short-name }?
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ÚLTIMA VIOLAÇÃO DE DADOS ADICIONADA
 # Link title
