@@ -147,6 +147,50 @@ security-tips = Поради щодо безпеки
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Відкрийте { -brand-fxa }
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled 1-10.
+micro-survey-nps-prompt = За оцінкою від 1 до 10, наскільки ймовірно, що ви порекомендуєте { -product-short-name } друзям чи колегам?
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = Швидше не порекомендую
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = Обов'язково порекомендую
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = Чи легко користуватися { -product-short-name }?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = Чи відчуваєте ви, що { -product-short-name } заслуговує на довіру?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = Чи має { -product-short-name } зрозуміле й просте подання?
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = Категорично не погоджуюсь
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = Не погоджуюсь
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = Не знаю
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = Погоджуюсь
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Цілком погоджуюсь
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = Як би ви почувались, якби більше не змогли використовувати { -product-short-name }?
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = Дуже засмучено
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = Дещо засмучено
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = Мені байдуже
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = Додано новий витік даних
 # Link title

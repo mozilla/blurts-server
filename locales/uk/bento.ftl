@@ -6,7 +6,7 @@ fx-lockwise = { -brand-lockwise }
 ## If possible, keep "Firefox Browser" in English, but feel free 
 ## to translate browser if that doesn't work for your language.
 
-fx-desktop = Браузер { -brand-name } для робочого столу
+fx-desktop = Браузер { -brand-name } для комп'ютерів
 fx-mobile = Браузер { -brand-name } для мобільного
 
 ##
