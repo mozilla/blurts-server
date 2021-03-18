@@ -121,6 +121,50 @@ security-tips = Dicas de segurança
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Abrir navegação na { -brand-fxa }
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled 1-10.
+micro-survey-nps-prompt = Numa de escala de 1 a 10, qual é a probabilidade de você recomendar o { -product-short-name } para um amigo ou colega?
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = Pouco provável
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = Muito provável
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = O { -product-short-name } é fácil de usar?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = Você acha o { -product-short-name } confiável?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = O { -product-short-name } tem uma apresentação limpa e simples?
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = Discordo totalmente
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = Discordo
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = Não tenho certeza
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = Concordo
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Concordo plenamente
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = Como você se sentiria se não pudesse mais usar o { -product-short-name }?
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = Muito desapontado
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = Um pouco desapontado
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = Eu não me importaria
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ÚLTIMO VAZAMENTO ADICIONADO
 # Link title
