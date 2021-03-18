@@ -132,6 +132,39 @@ micro-survey-very-likely-response = Muito provável
 # top of the site. It is followed by a list of clickable buttons labeled:
 # strongly-disagree, disagree, unsure, agree, strongly-agree
 micro-survey-usability-prompt = É fácil de utilizar o { -product-short-name }?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = Acha que o { -product-short-name } é confiável?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = O { -product-short-name } tem uma apresentação simples e limpa?
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = Discordo fortemente
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = Discordo
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = Não tenho a certeza
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = Concordo
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Concordo plenamente
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = Como se sentiria se deixasse de puder utilizar o { -product-short-name }?
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = Muito desapontado
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = Um pouco desapontado
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = Indiferente
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ÚLTIMA VIOLAÇÃO DE DADOS ADICIONADA
 # Link title
