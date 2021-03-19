@@ -114,6 +114,31 @@ security-tips = Ñe’ẽporã tekorosãrã
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Embojuruja { -brand-fxa } kundahára
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled 1-10.
+micro-survey-nps-prompt = Embopapapýtarõ 1 ha 10 peve, ¿mboýpa eréta orekoha { -product-short-name } ne angirũ térã rembiapoirũme?
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = Hasy oikóvo
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = Ikatuete oiko
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = ¿{ -product-short-name } ndahasýipa ipuru?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = ¿Eñandu { -product-short-name } jeroviahápa?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = ¿Oreko { -product-short-name } jehecharã ipotĩ ha hasy’ỹva?
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = Namoneĩriete
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = Namoneĩri
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ÑEMBYAI IPYAHUVÉVA MBOJUAJUPYRE
 # Link title
