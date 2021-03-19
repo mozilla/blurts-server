@@ -121,6 +121,50 @@ security-tips = Biztonsági tippek
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = A { -brand-fxa } navigáció megnyitása
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled 1-10.
+micro-survey-nps-prompt = 1-től 10-ig terjedő skálán, mekkora valószínűséggel ajánlaná a { -product-short-name }t egy barátjának vagy kollégájának?
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = Nem valószínű
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = Nagyon valószínű
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = Könnyen használható a { -product-short-name }?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = Megbízhatónak érzi a { -product-short-name }t?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = A { -product-short-name }nak letisztult és egyszerű a megjelenése?
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = Egyáltalán nem ért egyet
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = Nem ért egyet
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = Bizonytalan
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = Egyetért
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Teljesen egyetért
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = Mit érezne, ha már nem használhatná a { -product-short-name }t?
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = Nagyon csalódna
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = Kissé csalódna
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = Nem érdekelné
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = LEGUTÓBB HOZZÁADOTT ADATSÉRTÉS
 # Link title
