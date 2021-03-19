@@ -139,6 +139,25 @@ micro-survey-strongly-disagree-response = Namoneĩriete
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
 micro-survey-disagree-response = Namoneĩri
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = Ndaikuaaporãi
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = Amoneĩ
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Amoneĩmbaite
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = ¿Mba’ẽichapa eñeñandúta ndereipurukuavéiramo { -product-short-name }?
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = Atĩeterei
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = Atĩ’imi
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = Mba’evete chéve
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ÑEMBYAI IPYAHUVÉVA MBOJUAJUPYRE
 # Link title
