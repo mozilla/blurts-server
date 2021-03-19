@@ -116,6 +116,31 @@ security-tips = Awgrymiadau Diogelwch
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Agor llywio { -brand-fxa }
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled 1-10.
+micro-survey-nps-prompt = Ar raddfa o 1-10, pa mor debygol ydych chi i argymell { -product-short-name } i ffrind neu gydweithiwr?
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = Ddim yn debygol
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = Yn debygol iawn
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = A yw { -product-short-name } yn hawdd ei ddefnyddio?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = Ydych chi'n teimlo bod { -product-short-name } yn ddibynadwy?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = A oes gan { -product-short-name } gyflwyniad glân a syml?
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = Anghytuno'n gryf
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = Anghytuno
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = DYMA'R TOR-DATA DIWEDDARAF
 # Link title
