@@ -106,6 +106,38 @@ security-tips = 安全提示
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = 打开 { -brand-fxa }导航栏
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled 1-10.
+micro-survey-nps-prompt = 在 1 到 10 的范围内，您向朋友或同事推荐 { -product-short-name } 的可能性有多大？
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = 不太可能
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = 极有可能
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = { -product-short-name } 易于使用吗？
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = 您认为 { -product-short-name } 值得信赖吗？
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = { -product-short-name } 的界面显示简洁吗？
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = 不确定
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = 若不能再使用 { -product-short-name }，您会觉得？
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = 非常失望
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = 有点失望
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = 没有感觉
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = 最新公开的外泄事件
 # Link title
