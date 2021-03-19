@@ -141,6 +141,25 @@ micro-survey-strongly-disagree-response = Anghytuno'n gryf
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
 micro-survey-disagree-response = Anghytuno
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = Ansicr
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = Cytuno
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Cytuno'n gryf
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = Sut fyddech chi'n teimlo pe na bo modd i chi'n ddefnyddio { -product-short-name } mwyach?
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = Siomedig iawn
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = Braidd yn siomedig
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = Dim gwahaniaeth
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = DYMA'R TOR-DATA DIWEDDARAF
 # Link title
