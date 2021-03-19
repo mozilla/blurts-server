@@ -127,7 +127,19 @@ micro-survey-credibility-prompt = 您认为 { -product-short-name } 值得信赖
 micro-survey-appearance-prompt = { -product-short-name } 的界面显示简洁吗？
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
+micro-survey-strongly-disagree-response = 强烈反对
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = 反对
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
 micro-survey-unsure-response = 不确定
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = 同意
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = 非常同意
 # This survey question is periodically shown to signed-in users along the very
 # top of the site. It is followed by a list of clickable buttons labeled:
 # very-disappointed, somewhat-disappointed, dont-care
