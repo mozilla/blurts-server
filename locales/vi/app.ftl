@@ -121,6 +121,50 @@ security-tips = Mẹo về bảo mật
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Mở điều hướng { -brand-fxa }
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled 1-10.
+micro-survey-nps-prompt = Trên thang điểm từ 1-10, bạn có muốn giới thiệu { -product-short-name } cho bạn bè hoặc đồng nghiệp không?
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = Không muốn
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = Rất muốn
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = { -product-short-name } có dễ sử dụng không?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = Bạn có cảm thấy { -product-short-name } đáng tin cậy không?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = { -product-short-name } có bản trình bày rõ ràng và đơn giản không?
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = Hoàn toàn không đồng ý
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = Không đồng ý
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = Phân vân
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = Đồng ý
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Hoàn toàn đồng ý
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = Bạn sẽ cảm thấy thế nào nếu không sử dụng { -product-short-name } nữa?
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = Rất thất vọng
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = Một phần thất vọng
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = Tôi không quan tâm
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = RÒ RỈ DỮ LIỆU MỚI NHẤT ĐƯỢC THÊM
 # Link title
