@@ -102,6 +102,31 @@ security-tips = 安全小秘訣
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = 開啟 { -brand-fxa } 導航列
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = 非常不願意
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = 非常願意
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = 非常不同意
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = 不同意
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = 沒意見
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = 同意
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = 非常同意
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = 非常失望
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = 有點失望
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = 我沒差
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = 最新公開的外洩事件
 # Link title
