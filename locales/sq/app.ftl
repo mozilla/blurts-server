@@ -112,6 +112,50 @@ security-tips = Ndihmëza Sigurie
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Hapni lëvizjen nëpër { -brand-fxa }
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled 1-10.
+micro-survey-nps-prompt = Sipas një shkalle vlerësimi nga 1 deri në 10, sa gjasa ka t’ia rekomandoni { -product-short-name }-in një shoku apo kolegu?
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = S’ka gjasa
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = Shumë
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = A është { -product-short-name } i lehtë për t’u përdorur?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = A ju duket { -product-short-name }-i i besueshëm?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = A ka { -product-short-name }-i një paraqitje të qëruar dhe të thjeshtë?
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = Nuk pajtohem fare
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = Nuk pajtohem
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = I pasigurt
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = Pajtohem
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Pajtohem fort
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = Si do të ndiheshit, po të mos mundnit ta përdornit më { -product-short-name }?
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = Shumë i zhgënjyer
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = Disi i zhgënjyer
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = S’më  bëhet vonë
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = SHKELJA MË E RE E SHTUAR
 # Link title
