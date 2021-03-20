@@ -125,6 +125,7 @@ spam-list-breach = スパムリスト侵害
 website-breach-plural = ウェブサイト侵害
 unverified-breach-plural = 未確認の侵害
 what-data = 漏洩したデータ:
+sensitive-sites = { -product-name } は機密性の高いサイトをどのように扱いますか？
 delayed-reporting-headline = なぜ、この侵害の報告に時間がかかったのですか？
 about-fxm-headline = { -product-name } について
 about-fxm-blurb = あなたのオンラインアカウントがデータ侵害に巻き込まれている場合、{ -product-name } が警告します。データ侵害を受けていないか確認し、新しい侵害についての警告を受け取り、オンラインアカウントを保護する措置を取りましょう。{ -product-name } は、{ -brand-Mozilla } によって提供されています。
