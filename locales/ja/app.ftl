@@ -88,6 +88,7 @@ fxa-what-to-do-blurb-1 =
     見覚えのないアカウントがありますか？ あなたのデータが販売されたり、再配布されたりしている可能性があります。
     また、作成したことを忘れてしまったアカウントや、名前を変更した会社の可能性もあります。
 fxa-what-to-do-subhead-2 = 漏洩したパスワードの使用を中止し、それを使用しているすべての場所でパスワードを変更してください。
+fxa-what-to-do-subhead-4 = すべてのパスワードを記憶するための助けを得て安全に保管しましょう。
 # Alerts is a noun
 sign-up-for-alerts = 登録して通知を受け取る
 # Link title
@@ -115,6 +116,7 @@ how-hackers-work = ハッカーの手段を理解する
 monitor-your-online-accounts = { -brand-fxa }でデータ侵害の監視に登録しましょう。
 stay-alert = 新しいデータ侵害の警告を受け取る
 if-your-info = あなたの情報が新しいデータ侵害にさらされた場合、警告を送信します。
+search-all-emails = すべてのメールアドレスを検索して侵害がないか確認し、新たな脅威の警告を受け取りましょう。
 monitor-several-emails = 複数のメールアドレスを監視する
 keep-your-data-safe = サイバー犯罪からデータを安全に保つために必要なことを見つけましょう。
 website-breach = ウェブサイト侵害
@@ -126,6 +128,7 @@ what-data = 漏洩したデータ:
 delayed-reporting-headline = なぜ、この侵害の報告に時間がかかったのですか？
 about-fxm-headline = { -product-name } について
 about-fxm-blurb = あなたのオンラインアカウントがデータ侵害に巻き込まれている場合、{ -product-name } が警告します。データ侵害を受けていないか確認し、新しい侵害についての警告を受け取り、オンラインアカウントを保護する措置を取りましょう。{ -product-name } は、{ -brand-Mozilla } によって提供されています。
+how-fxm-2-headline = アカウント登録して侵害を監視する
 how-fxm-3-headline = ブラウザーで通知を受け取る
 wtd-after-website = ウェブサイト侵害の後にするべきこと:
 protect-your-privacy = オンラインプライバシーを保護する
@@ -184,6 +187,8 @@ fb-not-comp = このメールアドレスは、{ $breachName } のデータ侵�
 no-results-blurb = データベース内に侵害は見つかりませんでした。
 all-breaches-headline = { -product-name } 内のすべてのデータ侵害
 search-breaches = データ侵害を検索
+# "Appears in-page as: Showing: All Breaches"
+currently-showing = 表示中:
 
 ## Updated error messages
 
@@ -209,6 +214,8 @@ known-data-breaches-exposed =
     { $breaches ->
        *[other] 既知のデータ侵害を受けているあなたの情報
     }
+# Button
+see-additional-breaches = 追加のデータ侵害を見る
 scan-results-known-breaches =
     { $breachCount ->
        *[other] このメールアドレスは { $breachCount } 個の既知のデータ侵害があります。
@@ -295,6 +302,9 @@ resolve-top-notification-plural =
 marking-this-subhead = この侵害を解決済みとしてマークする
 mark-as-resolve-button = 解決済みとしてマーク
 marked-as-resolved-label = 解決済みとしてマークされました
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% 完了
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
@@ -302,3 +312,4 @@ marked-as-resolved-label = 解決済みとしてマークされました
 
 ##
 
+monitor-promo-headline = 新しいデータ侵害について調べる
