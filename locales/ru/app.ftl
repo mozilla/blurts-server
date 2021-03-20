@@ -130,6 +130,21 @@ security-tips = Советы по безопасности
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Открыть { -brand-fxa }
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = Категорически не согласен
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = Не согласен
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = Не уверен
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = Согласен
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Категорически согласен
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ПОСЛЕДНЯЯ УТЕЧКА ДОБАВЛЕНА
 # Link title
