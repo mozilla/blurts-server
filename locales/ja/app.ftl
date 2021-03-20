@@ -35,6 +35,7 @@ home-not-found = ページが見つかりません。
 oauth-invalid-session = 不正なセッション
 scan-title = { -product-name } : スキャン結果
 user-add-invalid-email = メールアドレスが正しくありません
+user-add-too-many-emails = 監視しているメールアドレスの数が制限に達しています。
 user-add-email-verify-subject = { -product-name } の登録を確認してください。
 user-add-duplicate-email = このメールは既に { -product-name } に追加されています。
 user-add-duplicate-email-part-2 = { $preferencesLink } にアクセスして、{ $userEmail } のステータスを確認してください。
@@ -76,6 +77,12 @@ sign-out = ログアウト
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = { -brand-fxa }の管理
 have-an-account = 既にアカウントをお持ちですか？
+fxa-pwt-summary-2 =
+    短い 1 語のパスワードは、ハッカーが推測しやすいものです。
+    少なくとも 2 つの単語と、文字、数字、および特殊文字の組み合わせを使用してください。
+fxa-pwt-summary-4 =
+    1Password、LastPass、Dashlane、Bitwarden のようなパスワードマネージャーは、パスワードを保存し、ウェブサイトに入力してくれます。
+    また、強力なパスワードを作成するのにも役立ちます。
 # Alerts is a noun
 sign-up-for-alerts = 登録して通知を受け取る
 # Link title
