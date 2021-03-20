@@ -160,6 +160,50 @@ security-tips = Bezpečnostné tipy
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Otvoriť ponuku { -brand-fxa(case: "gen") }
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled 1-10.
+micro-survey-nps-prompt = Aká je pravdepodobnosť, že na stupnici od 1 do 10 odporučíte { -product-short-name } priateľovi alebo kolegovi?
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = Malá pravdepodobnosť
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = Veľká pravdepodobnosť
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = Používa sa { -product-short-name } jednoducho?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = Máte pocit, že je produkt { -product-short-name } dôveryhodný?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = Pôsobí na vás { -product-short-name } čistým a jednoduchým dojmom?
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = Rozhodne nesúhlasím
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = Nesúhlasím
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = Neviem
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = Súhlasím
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Rozhodne súhlasím
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = Ako by ste sa cítili, ak by ste { -product-short-name } už nemohli používať?
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = Veľmi sklamane
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = Trochu sklamane
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = Bolo by mi to jedno
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = NAPOSLEDY PRIDANÝ ÚNIK
 # Link title
