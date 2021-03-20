@@ -128,6 +128,8 @@ what-data = 漏洩したデータ:
 delayed-reporting-headline = なぜ、この侵害の報告に時間がかかったのですか？
 about-fxm-headline = { -product-name } について
 about-fxm-blurb = あなたのオンラインアカウントがデータ侵害に巻き込まれている場合、{ -product-name } が警告します。データ侵害を受けていないか確認し、新しい侵害についての警告を受け取り、オンラインアカウントを保護する措置を取りましょう。{ -product-name } は、{ -brand-Mozilla } によって提供されています。
+# How Firefox Monitor works
+how-fxm-works = { -product-name } の仕組み
 how-fxm-2-headline = アカウント登録して侵害を監視する
 how-fxm-3-headline = ブラウザーで通知を受け取る
 wtd-after-website = ウェブサイト侵害の後にするべきこと:
@@ -192,7 +194,14 @@ currently-showing = 表示中:
 
 ## Updated error messages
 
+error-bot-headline = 検索が一時停止されました
+error-bot-blurb =
+    短時間に複数のメールアドレスが検索されたため、ボットの疑いがあります。現在、新たな検索がブロックされています。
+    後でもう一度お試しください。
 error-csrf-headline = セッションがタイムアウトしました
+error-csrf-blurb = ブラウザの戻るボタンをクリックし、ページを再読み込みして、もう一度試してください。
+error-invalid-unsub = { -product-name } 警告の購読を解除する方法
+error-invalid-unsub-blurb = { -product-name } から送信されたメールで、いずれかを購読解除する必要があります。{ -brand-team-email } からのメールが届いていないか、受信トレイを確認し、そのメールの下部にある配信停止リンクを選択してください。
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -224,6 +233,7 @@ scan-results-known-breaches =
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = { $userEmail } についての結果
+other-monitored-emails = その他の監視対象メールアドレス
 email-verification-required = メールアドレスの認証が必要です
 fxa-primary-email = { -brand-fxa } メールアドレス - 主要
 what-is-a-website-breach = ウェブサイト侵害とは何ですか？
@@ -275,6 +285,11 @@ sign-in-nested = ログイン
 
 ##
 
+# This is part of a confirmation message that appears after a user has submited the
+# form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
+# to the Preferences page. The code and text for the link is generated elsewhere
+# using the { preferences } string.
+manage-all-emails = { $preferencesLink } ですべてのメールアドレスを管理します。
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
@@ -287,6 +302,13 @@ breach-added-label = 侵害が追加された日:
 how-hackers-work-desc = サイバー犯罪者からあなたのパスワードを守りましょう。サイバー犯罪者はパスワードに最も関心があります。
 what-to-do-after-breach-desc = アカウントをロックして、あなたの情報が悪意のある人の手に渡らないようにしましょう。
 create-strong-passwords-desc = パスワードは強力で安全で推測しにくいものにしましょう。
+steps-to-protect-desc = もっとも一般的な脅威を理解し、注意すべき点を把握しましょう。
+five-myths-desc = すぐにハッキングされてしまうような安易なパスワードの悪習慣を避ける方法を学びましょう。
+take-further-steps-desc = 金銭的な損失を防ぐために個人情報盗難のリスクを軽減する方法を確認しましょう。
+# This message appears after a user has successfully updated their communication settings.
+changes-saved = 変更が保存されました！
+# Button
+see-additional-recs = 追加の推奨事項を見る
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
@@ -302,6 +324,8 @@ resolve-top-notification-plural =
 marking-this-subhead = この侵害を解決済みとしてマークする
 mark-as-resolve-button = 解決済みとしてマーク
 marked-as-resolved-label = 解決済みとしてマークされました
+undo-button = 元に戻す
+go-to-dashboard-link = ダッシュボードに移動
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
 progress-percent-complete = { $percentComplete }% 完了
@@ -312,4 +336,6 @@ progress-percent-complete = { $percentComplete }% 完了
 
 ##
 
+promo-lockwise-headline = どこでもパスワードが使える
 monitor-promo-headline = 新しいデータ侵害について調べる
+promo-ecosystem-cta = すべての製品を見る

@@ -1,5 +1,7 @@
 # Recommendation subhead
 rec-pw-1-subhead = パスワードを変更する
+# Link title
+rec-pw-1-cta = このサイトのパスワードを変更する
 # Recommendation subhead
 rec-pw-4-subhead = 二要素認証 (2FA) をセットアップする
 # Recommendation subhead
