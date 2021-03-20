@@ -130,6 +130,25 @@ security-tips = Советы по безопасности
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Открыть { -brand-fxa }
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled 1-10.
+micro-survey-nps-prompt = По шкале от 1 до 10, насколько вероятно, что вы порекомендуете { -product-short-name } другу или коллеге?
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = Не очень вероятно
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = Очень вероятно
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = Легко ли использовать { -product-short-name }?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = Считаете ли вы, что { -product-short-name } заслуживает доверия?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = Является ли презентация { -product-short-name } простой и понятной?
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
 micro-survey-strongly-disagree-response = Категорически не согласен
@@ -145,6 +164,16 @@ micro-survey-agree-response = Согласен
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
 micro-survey-strongly-agree-response = Категорически согласен
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = Что бы вы почувствовали, если бы больше не могли использовать { -product-short-name }?
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = Я был бы очень разочарован
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = Я был бы немного разочарован
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = Мне было бы все равно
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ПОСЛЕДНЯЯ УТЕЧКА ДОБАВЛЕНА
 # Link title
