@@ -343,4 +343,5 @@ progress-percent-complete = { $percentComplete }% 完了
 
 promo-lockwise-headline = どこでもパスワードが使える
 monitor-promo-headline = 新しいデータ侵害について調べる
+monitor-promo-body = 今後、公表されたデータ侵害であなたの個人情報が漏洩した場合に通知を受け取れます。
 promo-ecosystem-cta = すべての製品を見る
