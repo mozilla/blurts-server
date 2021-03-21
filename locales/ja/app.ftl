@@ -157,7 +157,7 @@ appears-in-x-breaches =
        *[other] 既知のデータ侵害は { $breachCount } 件です。
     }
 check-for-breaches = データ侵害を確認する
-find-out-what-hackers-know = ハッカーが既にあなたについて知っていることを調査しましょう。一歩先に行く方法を学んでください。
+find-out-what-hackers-know = あなたのことがハッカーに知られていないか調査しましょう。一歩先に行く方法を学んでください。
 search-for-your-email = 2007 年までさかのぼって、メールアドレスがデータ侵害を受けているか検索します。
 back-to-top = トップに戻る
 comm-opt-1 = すべての通知を { $primaryEmail } に送る。
@@ -243,7 +243,7 @@ security-tips-headline = ハッカーからあなたを守るセキュリティ�
 steps-to-protect = オンラインであなたを保護する手順
 take-further-steps = あなたを守るさらなる手順
 alert-about-new-breaches = 新しい侵害があった場合に通知する。
-see-if-youve-been-part = オンラインのデータ侵害に含まれていないか確認しましょう。
+see-if-youve-been-part = オンラインのデータ侵害に含まれていないか確認しよう。
 get-ongoing-breach-monitoring = 複数のメールアドレスに対してデータ侵害の監視をしましょう。
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = 調査する
