@@ -3,14 +3,19 @@ rec-pw-1-subhead = パスワードを変更する
 # Link title
 rec-pw-1-cta = このサイトのパスワードを変更する
 rec-pw-1 = これを他で使用するパスワードとは異なるユニークなものにしてください。2 つ以上の全く関連のない単語を組み合わせてパスフレーズを作成すると良いでしょう。
+# Recommendation subhead
+rec-pw-2-subhead = 同じパスワードを使用している他のサイトのログイン情報を更新する
 # Link title
 rec-pw-2-cta-fx = { -brand-name } のログイン情報を見る
+rec-pw-2 = パスワードを再利用すると、たった 1 つのデータ侵害が多くに影響を及ぼします。今、このパスワードが外部に漏れてしまったので、ハッカーがこれを利用してアカウントに侵入する可能性があります。
 # Link title
 rec-pw-3-cta = { -brand-lockwise } を入手
 # Recommendation subhead
 rec-pw-4-subhead = 二要素認証 (2FA) をセットアップする
 # Link title
 rec-pw-4-cta = 二要素認証を提供するサイトを見る
+# Recommendation subhead
+rec-email-subhead = 別名のメールアドレスを使う
 # Link title
 rec-ip-us-cta = { -brand-fpn } を試す
 rec-hist-pw-subhead = パスワードの再利用を避けましょう

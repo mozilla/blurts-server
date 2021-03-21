@@ -131,6 +131,7 @@ about-fxm-headline = { -product-name } について
 about-fxm-blurb = あなたのオンラインアカウントがデータ侵害に巻き込まれている場合、{ -product-name } が警告します。データ侵害を受けていないか確認し、新しい侵害についての警告を受け取り、オンラインアカウントを保護する措置を取りましょう。{ -product-name } は、{ -brand-Mozilla } によって提供されています。
 # How Firefox Monitor works
 how-fxm-works = { -product-name } の仕組み
+how-fxm-1-blurb = 2007 年までさかのぼって、メールアドレスがデータ侵害を受けていないか検索します。この基本的な検索でほとんどのデータ侵害が明らかにされますが、機密性の高い個人情報を含むものではありません。
 how-fxm-2-headline = アカウント登録して侵害を監視する
 how-fxm-3-headline = ブラウザーで通知を受け取る
 wtd-after-website = ウェブサイト侵害の後にするべきこと:
@@ -308,6 +309,9 @@ five-myths-desc = すぐにハッキングされてしまうような安易な�
 take-further-steps-desc = 金銭的な損失を防ぐために個人情報盗難のリスクを軽減する方法を確認しましょう。
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = 変更が保存されました！
+# Section headline
+rec-section-headline = この侵害への対処方法
+rec-section-subhead = あなたの個人情報を安全に保ち、デジタル ID を保護するために、以下の手順を行うことをおすすめします。
 # Button
 see-additional-recs = 追加の推奨事項を見る
 
