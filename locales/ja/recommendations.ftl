@@ -14,8 +14,11 @@ rec-pw-3-cta = { -brand-lockwise } を入手
 rec-pw-4-subhead = 二要素認証 (2FA) をセットアップする
 # Link title
 rec-pw-4-cta = 二要素認証を提供するサイトを見る
+rec-pw-4 = 多くのウェブサイトは、追加のセキュリティ対策として二要素認証 (2 Factor Authentication) を提供しています。これは、ショートメッセージで受け取る一度限りのセキュリティコードなど、アカウントにログインするための別の情報を必要とします。
 # Recommendation subhead
 rec-email-subhead = 別名のメールアドレスを使う
+rec-email-cta = { -brand-relay } を試す
+rec-email = 本物のメールアドレスを外部に渡すと、ハッカーやトラッカーがあなたのパスワードを見つけやすくなり、オンラインでのターゲットになるかもしれません。{ -brand-relay } のようなサービスを利用して別名のメールアドレスを使い、本物のメールアドレスの受信トレイに転送しましょう。
 # Link title
 rec-ip-us-cta = { -brand-fpn } を試す
 rec-hist-pw-subhead = パスワードの再利用を避けましょう
