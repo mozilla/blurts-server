@@ -151,7 +151,7 @@ module.exports = {
             recommendationCopy: {
               subhead: "rec-ip-subhead",
               cta: isUserLocaleEnUs ? "rec-ip-us-cta" : "",
-              cta2: isUserLocaleEn ? "rec-moz-vpn-cta" : "",
+              cta2: isUserLocaleEnUs ? "rec-moz-vpn-cta" : "",
               body: isUserLocaleEnUs ? "rec-moz-vpn" : "rec-ip-non-us",
             },
             ctaHref: "https://fpn.firefox.com",
