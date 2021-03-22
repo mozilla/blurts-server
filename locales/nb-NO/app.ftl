@@ -128,6 +128,43 @@ micro-survey-nps-prompt = På en skala fra 1-10, hvor sannsynlig er det at du an
 micro-survey-not-likely-response = Lite sannsynlig
 # This is a survey response to the micro-survey-nps-prompt question.
 micro-survey-very-likely-response = Svært sannsynlig
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = Er { -product-short-name } lett å bruke?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = Føler du at { -product-short-name } er pålitelig?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = Har { -product-short-name } en ren og enkel presentasjon?
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = Helt uenig
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = Uenig
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = Usikker
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = Enig
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Helt enig
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = Hva ville du føle hvis du ikke lenger kunne bruke { -product-short-name }?
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = Veldig skuffet
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = Noe skuffet
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = Jeg bryr meg ikke
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = SISTE DATALEKKASJE SOM ER LAGT TIL
 # Link title
