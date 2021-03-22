@@ -124,6 +124,10 @@ open-fxa-menu = Åpne { -brand-fxa }-navigasjon
 # This survey question is periodically shown to signed-in users along the very
 # top of the site. It is followed by a list of clickable buttons labeled 1-10.
 micro-survey-nps-prompt = På en skala fra 1-10, hvor sannsynlig er det at du anbefaler { -product-short-name } til en venn eller kollega?
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = Lite sannsynlig
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = Svært sannsynlig
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = SISTE DATALEKKASJE SOM ER LAGT TIL
 # Link title
