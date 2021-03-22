@@ -121,6 +121,22 @@ security-tips = Συμβουλές ασφαλείας
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Άνοιγμα πλοήγησης { -brand-fxa }
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = Πιστεύετε πως το { -product-short-name } είναι αξιόπιστο;
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = Διαφωνώ απόλυτα
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = Διαφωνώ
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = Συμφωνώ
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Συμφωνώ απολύτως
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ΠΡΟΣΦΑΤΗ ΠΡΟΣΘΗΚΗ
 # Link title
