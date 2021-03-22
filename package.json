@@ -32,7 +32,7 @@
     "intl-pluralrules": "1.2.1",
     "isemail": "3.2.0",
     "knex": "0.21.12",
-    "knex-paginate": "1.2.2",
+    "knex-paginate": "2.1.0",
     "lodash": "4.17.19",
     "mozlog": "3.0.1",
     "nodemailer": "4.7.0",
