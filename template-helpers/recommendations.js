@@ -150,17 +150,12 @@ module.exports = {
           {
             recommendationCopy: {
               subhead: "rec-ip-subhead",
-              cta: isUserLocaleEnUs ? "rec-ip-us-cta" : "",
-              cta2: isUserLocaleEnUs ? "rec-moz-vpn-cta" : "",
+              cta: isUserLocaleEnUs ? "rec-moz-vpn-cta" : "",
               body: isUserLocaleEnUs ? "rec-moz-vpn" : "rec-ip-non-us",
             },
-            ctaHref: "https://fpn.firefox.com",
+            ctaHref: "https://vpn.mozilla.org",
             ctaShouldOpenNewTab: true,
-            ctaAnalyticsId: "Try Firefox Private Network",
-            secondaryCta: isUserLocaleEn ? {
-              ctaHref: "https://vpn.mozilla.org",
-              ctaAnalyticsId: "Try Mozilla VPN",
-            } : "",
+            ctaAnalyticsId: "Try Mozilla VPN",
             recIconClassName: isUserLocaleEnUs ? "rec-ip-us" : "rec-ip-non-us",
           },
         ],
