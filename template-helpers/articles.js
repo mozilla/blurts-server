@@ -224,7 +224,7 @@ const articleCopy = {
             subhead: "Be wary of public Wi-Fi networks.",
             paragraphs: [
               "You can get Wi-Fi almost anywhere. But these open networks are the most vulnerable and tend to be the least secure. This includes the free Wi-Fi at restaurants, libraries, airports, and other public spaces. If you can avoid it, don’t use public Wi-Fi. Most importantly, don’t use these networks to log in to financial sites or shop online. It’s easy for anyone to see what you’re doing.",
-              "Instead, we recommend using a Virtual Private Network (VPN), which lets you use public Wi-Fi more securely and keeps your online behavior private. A VPN routes your connection through a secure server that encrypts your data before you land on a web page. ",
+              "Instead, we recommend using a Virtual Private Network (like <a target='_blank' href='https://vpn.mozilla.org/?utm_source=monitor.firefox.com&utm_medium=referral&utm_campaign=monitor-security-tips'>Mozilla VPN</a>), which lets you use public Wi-Fi more securely and keeps your online behavior private. A VPN routes your connection through a secure server that encrypts your data before you land on a web page. ",
             ],
           },
           {
@@ -237,7 +237,7 @@ const articleCopy = {
               "Use unique, strong passwords for every account",
               "Use a password manager to remember all your passwords for you",
               "Turn on two-factor authentication for an extra layer of security",
-              "Use a VPN (Virtual Private Network) when using public Wi-Fi",
+              "Use a VPN (like&nbsp;<a target='_blank' href='https://vpn.mozilla.org/?utm_source=monitor.firefox.com&utm_medium=referral&utm_campaign=monitor-security-tips'>Mozilla VPN</a>) when using public Wi-Fi",
               "Update to the latest version of all software and apps",
             ],
           },
