@@ -153,7 +153,7 @@ module.exports = {
               cta: isUserLocaleEnUs ? "rec-moz-vpn-cta" : "",
               body: isUserLocaleEnUs ? "rec-moz-vpn" : "rec-ip-non-us",
             },
-            ctaHref: "https://vpn.mozilla.org",
+            ctaHref: "https://vpn.mozilla.org?utm_source=monitor.firefox.com&utm_medium=referral&utm_campaign=monitor-recommendations",
             ctaShouldOpenNewTab: true,
             ctaAnalyticsId: "Try Mozilla VPN",
             recIconClassName: isUserLocaleEnUs ? "rec-ip-us" : "rec-ip-non-us",
