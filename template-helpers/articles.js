@@ -237,7 +237,7 @@ const articleCopy = {
               "Use unique, strong passwords for every account",
               "Use a password manager to remember all your passwords for you",
               "Turn on two-factor authentication for an extra layer of security",
-              "Use a VPN (like <a target='_blank' href='https://vpn.mozilla.org/?utm_source=monitor.firefox.com&utm_medium=referral&utm_campaign=monitor-security-tips'> Mozilla VPN</a>) when using public Wi-Fi",
+              "Use a VPN (like&nbsp;<a target='_blank' href='https://vpn.mozilla.org/?utm_source=monitor.firefox.com&utm_medium=referral&utm_campaign=monitor-security-tips'>Mozilla VPN</a>) when using public Wi-Fi",
               "Update to the latest version of all software and apps",
             ],
           },
