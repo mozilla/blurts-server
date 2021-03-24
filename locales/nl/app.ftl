@@ -117,6 +117,50 @@ security-tips = Beveiligingstips
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = { -brand-fxa }-navigatie openen
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled 1-10.
+micro-survey-nps-prompt = Op een schaal van 1-10, hoe waarschijnlijk is het dat u { -product-short-name } aanbeveelt bij een vriend of collega?
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = Niet waarschijnlijk
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = Zeer waarschijnlijk
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = Is { -product-short-name } gemakkelijk te gebruiken?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = Vindt u { -product-short-name } betrouwbaar?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = Heeft { -product-short-name } een duidelijke en eenvoudige uitstraling?
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = Sterk oneens
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = Oneens
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = Weet niet
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = Eens
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Sterk eens
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = Hoe zou u zich voelen als u { -product-short-name } niet meer zou kunnen gebruiken?
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = Zeer teleurgesteld
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = Enigszins teleurgesteld
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = Maakt mij niet uit
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = LAATST TOEGEVOEGDE DATALEK
 # Link title
