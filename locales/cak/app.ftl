@@ -119,6 +119,9 @@ security-tips = Jikom taq Na'oj
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Tijaq { -brand-fxa } okem pa k'amaya'l
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled 1-10.
+micro-survey-nps-prompt = Pa jun etab'äl 1-10, ¿Jarupe' mul nachilab'ej ta ri { -product-short-name } chi re jun awachib'il o jun awachib'äl pa samaj?
 # This is a survey response to the micro-survey-nps-prompt question.
 micro-survey-not-likely-response = Rik'in jub'a'
 # This is a survey response to the micro-survey-nps-prompt question.
@@ -131,6 +134,35 @@ micro-survey-usability-prompt = ¿La man k'ayew ta nokisäx ri { -product-short-
 # top of the site. It is followed by a list of clickable buttons labeled:
 # strongly-disagree, disagree, unsure, agree, strongly-agree
 micro-survey-credibility-prompt = ¿La natz'ët chi ri { -product-short-name } ütz nakuqub'a' ak'u'x chi rij?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = ¿La k'o jun ch'ajch'öj chuqa' ütz niq'alajin ruwa ri { -product-short-name }?
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = Man ütz ta nitz'et
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = Kan man ütz ta nitz'et
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = Man in jikïl ta
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = Ütz
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Kan ütz
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = ¿Achike ta k'a nab'än we man yatikïr ta chik nawokisaj { -product-short-name }?
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = Itzel ninna'on
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = jub'a' itzel ninna'on
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = Majun rejqalem
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = RUK'ISIB'ÄL TZ'ILANEM XTZ'AQATISÄX
 # Link title
