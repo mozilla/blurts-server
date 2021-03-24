@@ -129,6 +129,50 @@ security-tips = Turvallisuusvinkit
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Avaa { -brand-fxa }-navigointi
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled 1-10.
+micro-survey-nps-prompt = Asteikolla 1-10, kuinka todennäköisesti suosittelisit { -product-short-name }ia ystävillesi tai työkavereillesi?
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = Epätodennäköisesti
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = Hyvin todennäköisesti
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = Onko { -product-short-name } helppo käyttää?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = Vaikuttaako { -product-short-name } luotettavalta?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = Onko { -product-short-name }in esitystapa selkeä ja yksinkertainen?
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = Vahvasti eri mieltä
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = Eri mieltä
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = Epävarma
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = Samaa mieltä
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Vahvasti samaa mieltä
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = Miltä sinusta tuntuisi, jos { -product-short-name } ei olisi enää käytettävissä?
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = Hyvin pettynyt
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = Hieman pettynyt
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = Ei merkitystä
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = VIIMEISIN LISÄTTY TIETOVUOTO
 # Link title
