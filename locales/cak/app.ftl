@@ -119,6 +119,18 @@ security-tips = Jikom taq Na'oj
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Tijaq { -brand-fxa } okem pa k'amaya'l
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = Rik'in jub'a'
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = Rik'in jub'a' ke ri'
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = ¿La man k'ayew ta nokisäx ri { -product-short-name }?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = ¿La natz'ët chi ri { -product-short-name } ütz nakuqub'a' ak'u'x chi rij?
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = RUK'ISIB'ÄL TZ'ILANEM XTZ'AQATISÄX
 # Link title
