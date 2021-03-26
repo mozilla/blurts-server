@@ -31,11 +31,11 @@ function generatePageToken(req) {
   */
 }
 
-function hasUserSignedUpForRelay(user) {
+function hasUserSignedUpForWaitlist(user, waitlist) {
   if (!user.waitlists_joined) {
     return false;
   }
-  if (user.waitlists_joined.hasOwnProperty("email_relay")) {
+  if (user.waitlists_joined.hasOwnProperty(waitlist)) {
     return true;
   }
   return false;
@@ -227,7 +227,7 @@ function getExperimentFlags(req, EXPERIMENTS_ENABLED) {
 
 module.exports = {
   generatePageToken,
-  hasUserSignedUpForRelay,
+  hasUserSignedUpForWaitlist,
   getExperimentBranch,
   getExperimentFlags,
   getUTMContents,
