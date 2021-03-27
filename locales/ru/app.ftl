@@ -148,32 +148,32 @@ micro-survey-credibility-prompt = Считаете ли вы, что { -product-
 # This survey question is periodically shown to signed-in users along the very
 # top of the site. It is followed by a list of clickable buttons labeled:
 # strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = Является ли презентация { -product-short-name } простой и понятной?
+micro-survey-appearance-prompt = Является ли интерфейс { -product-short-name } простым и понятным?
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
-micro-survey-strongly-disagree-response = Категорически не согласен
+micro-survey-strongly-disagree-response = Совсем не соглашаюсь
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
-micro-survey-disagree-response = Не согласен
+micro-survey-disagree-response = Не соглашаюсь
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
-micro-survey-unsure-response = Не уверен
+micro-survey-unsure-response = Не знаю
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
-micro-survey-agree-response = Согласен
+micro-survey-agree-response = Соглашаюсь
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
-micro-survey-strongly-agree-response = Категорически согласен
+micro-survey-strongly-agree-response = Полностью соглашаюсь
 # This survey question is periodically shown to signed-in users along the very
 # top of the site. It is followed by a list of clickable buttons labeled:
 # very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Что бы вы почувствовали, если бы больше не могли использовать { -product-short-name }?
+micro-survey-pmf-prompt = Как бы отнеслись к тому, что более не смогли бы использовать { -product-short-name }?
 # This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Я был бы очень разочарован
+micro-survey-very-disappointed-response = Я сильно разочаруюсь
 # This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Я был бы немного разочарован
+micro-survey-somewhat-disappointed-response = Я немного разочаруюсь
 # This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Мне было бы все равно
+micro-survey-dont-care-response = Мне будет всё равно
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ПОСЛЕДНЯЯ УТЕЧКА ДОБАВЛЕНА
 # Link title
