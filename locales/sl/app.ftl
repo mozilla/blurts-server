@@ -142,6 +142,32 @@ micro-survey-very-likely-response = Zelo verjetno
 # top of the site. It is followed by a list of clickable buttons labeled:
 # strongly-disagree, disagree, unsure, agree, strongly-agree
 micro-survey-usability-prompt = Je { -product-short-name } preprost za uporabo?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = Ali čutite, da je { -product-short-name } vreden zaupanja?
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = Se sploh ne strinjam
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = Se ne strinjam
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = Se strinjam
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Se popolnoma strinjam
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = Kako bi se počutili, če ne bi mogli več uporabljati { -product-short-name }ja?
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = Zelo razočarano
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = Nekoliko razočarano
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = Bilo bi mi vseeno
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ZADNJA DODANA KRAJA PODATKOV
 # Link title
