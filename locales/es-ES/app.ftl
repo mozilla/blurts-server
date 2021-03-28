@@ -118,6 +118,39 @@ micro-survey-very-likely-response = Muy probablemente
 # top of the site. It is followed by a list of clickable buttons labeled:
 # strongly-disagree, disagree, unsure, agree, strongly-agree
 micro-survey-usability-prompt = ¿Es fácil usar { -product-short-name }?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = ¿Sientes que { -product-short-name } es de confianza?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = ¿Tiene { -product-short-name } una presentación limpia y sencilla?
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = Totalmente en desacuerdo
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = En desacuerdo
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = No estoy seguro
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = Estoy de acuerdo
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Totalmente de acuerdo
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = ¿Cómo te sentirías si no pudieras volver a usar { -product-short-name }?
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = Muy decepcionado
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = Algo decepcionado
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = No me importaría
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ÚLTIMA FILTRACIÓN AÑADIDA
 # Link title
