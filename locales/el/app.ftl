@@ -122,9 +122,24 @@ fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Άνοιγμα πλοήγησης { -brand-fxa }
 # This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled 1-10.
+micro-survey-nps-prompt = Από το 1 έως το 10, πόσο πιθανό είναι να συστήσετε το { -product-short-name } σε έναν φίλο ή συνάδελφό σας;
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = Καθόλου πιθανό
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = Πολύ πιθανό
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = Είναι το { -product-short-name } εύκολο στη χρήση;
+# This survey question is periodically shown to signed-in users along the very
 # top of the site. It is followed by a list of clickable buttons labeled:
 # strongly-disagree, disagree, unsure, agree, strongly-agree
 micro-survey-credibility-prompt = Πιστεύετε πως το { -product-short-name } είναι αξιόπιστο;
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = Διαθέτει το { -product-short-name } μια απλή και σαφή παρουσίαση;
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
 micro-survey-strongly-disagree-response = Διαφωνώ απόλυτα
@@ -133,10 +148,19 @@ micro-survey-strongly-disagree-response = Διαφωνώ απόλυτα
 micro-survey-disagree-response = Διαφωνώ
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
+micro-survey-unsure-response = Δεν ξέρω σίγουρα
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
 micro-survey-agree-response = Συμφωνώ
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
-micro-survey-strongly-agree-response = Συμφωνώ απολύτως
+micro-survey-strongly-agree-response = Συμφωνώ απόλυτα
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = Πώς θα νιώθατε αν δεν μπορούσατε πλέον να χρησιμοποιήσετε το { -product-short-name };
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = Μεγάλη απογοήτευση
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ΠΡΟΣΦΑΤΗ ΠΡΟΣΘΗΚΗ
 # Link title
