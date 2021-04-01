@@ -161,6 +161,10 @@ micro-survey-strongly-agree-response = Συμφωνώ απόλυτα
 micro-survey-pmf-prompt = Πώς θα νιώθατε αν δεν μπορούσατε πλέον να χρησιμοποιήσετε το { -product-short-name };
 # This is a survey response that follows the pmf prompt
 micro-survey-very-disappointed-response = Μεγάλη απογοήτευση
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = Μερική απογοήτευση
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = Δεν θα με ένοιαζε
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ΠΡΟΣΦΑΤΗ ΠΡΟΣΘΗΚΗ
 # Link title
