@@ -153,8 +153,16 @@ micro-survey-agree-response = Einig
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
 micro-survey-strongly-agree-response = Heilt einig
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = Kva ville reaksjonen din vere dersom du ikkje lenger kunne bruke { -product-short-name }?
 # This is a survey response that follows the pmf prompt
 micro-survey-very-disappointed-response = Veldig skuffa
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = Litt skuffa
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = Eg bryr meg ikkje
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = SISTE DATALEKKASJE SOM ER LAGT TIL
 # Link title
