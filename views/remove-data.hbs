@@ -12,7 +12,7 @@
         <span class="relay-info-subhead bold ff-Met txt-white">Why remove your personal information?</span>
         <svg class="toggle-down" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path class="relay-toggle" fill="#ffffff" d="M8 12a1 1 0 0 1-.707-.293l-5-5a1 1 0 0 1 1.414-1.414L8 9.586l4.293-4.293a1 1 0 0 1 1.414 1.414l-5 5A1 1 0 0 1 8 12z"></path></svg>
       </button>
-      <p class="relay-info-body txt-light-grey toggle-child">When your personal information is online, you might be an easier target for identity theft, fraud, or even cyberstalking. Advertisers, companies, and hackers can quickly figure out your name, phone number, home address, family information, or even social security numbers and passwords.</p>
+      <p class="relay-info-body txt-light-grey toggle-child">When your personal information is online, you might be an easier target for identity theft, fraud, or even cyberstalking. Advertisers, companies, and hackers can quickly figure out a lot of information about you, like your name, home address, family information, or even social security numbers and passwords.</p>
     </section>
 
     <section class="relay-info toggle-parent active">
@@ -20,7 +20,7 @@
         <span class="relay-info-subhead bold ff-Met txt-white">How do we remove it?</span>
         <svg class="toggle-down" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path class="relay-toggle" fill="#ffffff" d="M8 12a1 1 0 0 1-.707-.293l-5-5a1 1 0 0 1 1.414-1.414L8 9.586l4.293-4.293a1 1 0 0 1 1.414 1.414l-5 5A1 1 0 0 1 8 12z"></path></svg>
       </button>
-      <p class="relay-info-body txt-light-grey toggle-child">We are creating a privacy service to monitor hundreds of thousands of websites for your personal information and remove it from sites that put you and your loved ones at risk. Click below if you are interested in finding out more.</p>
+      <p class="relay-info-body txt-light-grey toggle-child">We are creating a privacy service to monitor websites for your personal information and remove it from sites that put you and your loved ones at risk. It’s not available yet, but blick below if you are interested in finding out more.</p>
     </section>
 
   </div>
@@ -32,10 +32,12 @@
           <img alt="{{ req.session.user.primary_email }}" class="relay-avatar" src="{{ req.session.user.fxa_profile_json.avatar }}"/>
           <span class="relay-sign-up-email">{{ req.session.user.primary_email }}</span>
           <button class="btn-blue-primary bold ff-Met relay-sign-up-btn private-relay-cta" data-analytics-label="join-the-waitlist-button" data-user-is-signed-up={{ userHasSignedUpForRemoveData }}>Join the Waitlist</button>
+          <p><a href="https://www.mozilla.org/en-US/privacy/" target="_blank">Privacy Policy</a></p>
       </div>
       <div class="relay-sign-up-confirmation flx flx-col jst-cntr al-cntr">
         <h2 class="relay-sign-up-headline relay-confirmation-headline">You're on the list!</h2>
         <p class="relay-confirmation-body"><span class="bold">{{ req.session.user.primary_email }}</span> has been added to the waitlist. We’ll let you know when we have more updates to share about this service.</p>
+        <p class="relay-confirmation-body">We'd also love for you to <span class="bold"><a href="https://survey.alchemer.com/s3/6275633/Data-Removal-Service-Waitlist" target="_blank">answer a few questions about this service</a></span>, so we can make it more relevant and useful to you.</p>
       </div>
     </div>
   </div>
@@ -43,23 +45,7 @@
   <div class="mw-700">
     <section class="relay-info relay-bullets">
       <h4 class="relay-info-subhead masking-options bold ff-Met txt-white">What can I do now?</h4>
-      <ul class="relay-list txt-light-grey">
-        <li>
-          <span>You can request to have your information removed from data brokers or online profiler companies. Make the request to:
-          <a class="relay-bullet-link bold" href="https://www.spokeo.com/privacy/control" rel="noopener noreferrer" target="_blank">Spokeo</a>, 
-          <a class="relay-bullet-link bold" href="https://radaris.com/control/privacy" rel="noopener noreferrer" target="_blank">Radaris</a>, 
-          <a class="relay-bullet-link bold" href="https://whitepagesprivacy.zendesk.com/hc/en-us/requests/new" rel="noopener noreferrer" target="_blank">Whitepages</a>, 
-          <a class="relay-bullet-link bold" href="https://www.intelius.com/opt-out/" rel="noopener noreferrer" target="_blank">Intelius</a>, 
-          <a class="relay-bullet-link bold" href="https://www.beenverified.com/app/optout/search" rel="noopener noreferrer" target="_blank">BeenVerified</a>, 
-          <a class="relay-bullet-link bold" href="https://isapps.acxiom.com/optout/optout.aspx" rel="noopener noreferrer" target="_blank">Acxiom</a>, 
-          <a class="relay-bullet-link bold" href="https://infotracer.com/optout/" rel="noopener noreferrer" target="_blank">Infotracer</a>, 
-          <a class="relay-bullet-link bold" href="https://risk.lexisnexis.com/consumer-and-data-access-policies" rel="noopener noreferrer" target="_blank">Lexis Nexis</a>, and 
-          <a class="relay-bullet-link bold" href="https://www.truepeoplesearch.com/removal" rel="noopener noreferrer" target="_blank">TruePeopleSearch</a>.</span>
-        </li>
-        <li>
-          <span>You can also learn more by checking out <a class="relay-bullet-link bold" href="https://soundcloud.com/user-98066669/138-online-data-removal-updates" rel="noopener noreferrer" target="_blank">this Privacy, Security, and OSINT podcast episode about Online Data Removal</a>, and get their <a class="relay-bullet-link bold" href="https://gate.sc/?url=https%3A%2F%2Finteltechniques.com%2Fdata%2Fworkbook.pdf&token=1d9eb5-1-1616783838447" rel="noopener noreferrer" target="_blank">free personal data removal workbook and credit freeze guide</a>.</span>
-        </li>
-      </ul>
+          <p class="relay-info-body txt-light-grey toggle-child">You can learn more by checking out <a class="relay-bullet-link bold" href="https://soundcloud.com/user-98066669/138-online-data-removal-updates" rel="noopener noreferrer" target="_blank">this Privacy, Security, and OSINT podcast episode about Online Data Removal</a>, and get their <a class="relay-bullet-link bold" href="https://gate.sc/?url=https%3A%2F%2Finteltechniques.com%2Fdata%2Fworkbook.pdf&token=1d9eb5-1-1616783838447" rel="noopener noreferrer" target="_blank">free personal data removal workbook and credit freeze guide</a>.</p>
     </section>
   </div>
 </main>
