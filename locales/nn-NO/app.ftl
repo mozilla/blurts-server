@@ -119,6 +119,42 @@ security-tips = Tryggingstips
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Opne navigering for { -brand-fxa }
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled 1-10.
+micro-survey-nps-prompt = På ein skala frå 1-10, kor sannsynleg er det at du tilrår { -product-short-name } til ein venn eller kollega?
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = Lite sannsynleg
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = Svært sannsynleg
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = Er { -product-short-name } lett å bruke?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = Synest du at { -product-short-name } er påliteleg?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = Har { -product-short-name } ein rein og enkel presentasjon?
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = Heilt ueinig
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = Ueinig
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = Usikker
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = Einig
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Heilt einig
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = Veldig skuffa
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = SISTE DATALEKKASJE SOM ER LAGT TIL
 # Link title
