@@ -1,7 +1,7 @@
 "use strict";
 
 const { LocaleUtils } = require("./../locale-utils");
-const { fluentNestedBold } = require("./hbs-helpers");
+const { fluentNestedBold, getString } = require("./hbs-helpers");
 
 function getScanResultsHeadline(args) {
   const locales = args.data.root.req.supportedLocales;
@@ -41,6 +41,27 @@ function getScanResultsHeadline(args) {
   return args.fn(headlineStrings);
 }
 
+function getFacebookResultMessage(id, args) {
+  let message = getString(id, args);
+  message = message.replace("<span>", "<span class='bold'>");
+  let ctaHref;
+  switch (id) {
+    case "facebook-breach-what-to-do-1":
+      ctaHref = "https://blog.mozilla.org/firefox/facebook-data-leak-explained/";
+      break;
+    case "facebook-breach-what-to-do-2":
+      ctaHref = "https://blog.mozilla.org/firefox/mozilla-explains-sim-swapping/";
+      break;
+    case "facebook-breach-what-to-do-3":
+      ctaHref = "/breach-details/Facebook";
+      break;
+  }
+  message = message.replace("<a>", `<a href="${ctaHref}">`);
+
+  return message;
+}
+
 module.exports = {
   getScanResultsHeadline,
+  getFacebookResultMessage,
 };

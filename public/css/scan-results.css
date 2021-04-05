@@ -135,3 +135,7 @@
     padding: 0 var(--padding);
   }
 }
+
+.facebook-notes {
+  text-align: left;
+}
